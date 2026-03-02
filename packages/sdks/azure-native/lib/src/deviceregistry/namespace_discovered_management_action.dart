@@ -56,14 +56,14 @@ class NamespaceDiscoveredManagementAction {
 
   factory NamespaceDiscoveredManagementAction.fromMap(Map<String, dynamic> map) {
     return NamespaceDiscoveredManagementAction(
-      actionConfiguration: map['actionConfiguration'] == null ? null : (map['actionConfiguration'] as String).input(),
-      actionType: map['actionType'] == null ? null : (map['actionType'] as String).input(),
-      lastUpdatedOn: map['lastUpdatedOn'] == null ? null : (map['lastUpdatedOn'] as String).input(),
+      actionConfiguration: map['actionConfiguration'] == null ? null : (map['actionConfiguration']! as String).input(),
+      actionType: map['actionType'] == null ? null : (map['actionType']! as String).input(),
+      lastUpdatedOn: map['lastUpdatedOn'] == null ? null : (map['lastUpdatedOn']! as String).input(),
       name: (map['name'] as String).input(),
       targetUri: (map['targetUri'] as String).input(),
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as int).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
-      typeRef: map['typeRef'] == null ? null : (map['typeRef'] as String).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds']! as int).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
+      typeRef: map['typeRef'] == null ? null : (map['typeRef']! as String).input(),
     );
   }
 }

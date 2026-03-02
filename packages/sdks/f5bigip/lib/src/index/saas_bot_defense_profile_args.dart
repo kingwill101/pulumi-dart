@@ -67,8 +67,8 @@ class SaasBotDefenseProfileArgs {
     return SaasBotDefenseProfileArgs(
       apiKey: (map['apiKey'] as String).input(),
       applicationId: (map['applicationId'] as String).input(),
-      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       name: (map['name'] as String).input(),
       protectedEndpoints: (pulumi.Input.decodeList<SaasBotDefenseProfileProtectedEndpoint>(map['protectedEndpoints'], (value) => SaasBotDefenseProfileProtectedEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
       shapeProtectionPool: (map['shapeProtectionPool'] as String).input(),

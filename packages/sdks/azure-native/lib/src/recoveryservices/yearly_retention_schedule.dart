@@ -50,12 +50,12 @@ class YearlyRetentionSchedule {
 
   factory YearlyRetentionSchedule.fromMap(Map<String, dynamic> map) {
     return YearlyRetentionSchedule(
-      monthsOfYear: map['monthsOfYear'] == null ? null : (pulumi.Input.decodeList<MonthOfYear>(map['monthsOfYear'], (value) => MonthOfYear.fromValue(value as String))).input(),
-      retentionDuration: map['retentionDuration'] == null ? null : (RetentionDuration.fromMap((map['retentionDuration'] as Map).cast<String, dynamic>())).input(),
-      retentionScheduleDaily: map['retentionScheduleDaily'] == null ? null : (DailyRetentionFormat.fromMap((map['retentionScheduleDaily'] as Map).cast<String, dynamic>())).input(),
-      retentionScheduleFormatType: map['retentionScheduleFormatType'] == null ? null : (map['retentionScheduleFormatType'] as String).input(),
-      retentionScheduleWeekly: map['retentionScheduleWeekly'] == null ? null : (WeeklyRetentionFormat.fromMap((map['retentionScheduleWeekly'] as Map).cast<String, dynamic>())).input(),
-      retentionTimes: map['retentionTimes'] == null ? null : ((map['retentionTimes'] as List).cast<String>()).input(),
+      monthsOfYear: map['monthsOfYear'] == null ? null : (pulumi.Input.decodeList<MonthOfYear>(map['monthsOfYear']!, (value) => MonthOfYear.fromValue(value as String))).input(),
+      retentionDuration: map['retentionDuration'] == null ? null : (RetentionDuration.fromMap((map['retentionDuration']! as Map).cast<String, dynamic>())).input(),
+      retentionScheduleDaily: map['retentionScheduleDaily'] == null ? null : (DailyRetentionFormat.fromMap((map['retentionScheduleDaily']! as Map).cast<String, dynamic>())).input(),
+      retentionScheduleFormatType: map['retentionScheduleFormatType'] == null ? null : (map['retentionScheduleFormatType']! as String).input(),
+      retentionScheduleWeekly: map['retentionScheduleWeekly'] == null ? null : (WeeklyRetentionFormat.fromMap((map['retentionScheduleWeekly']! as Map).cast<String, dynamic>())).input(),
+      retentionTimes: map['retentionTimes'] == null ? null : ((map['retentionTimes']! as List).cast<String>()).input(),
     );
   }
 }

@@ -51,12 +51,12 @@ class EcsDeploymentSetArgs {
 
   factory EcsDeploymentSetArgs.fromMap(Map<String, dynamic> map) {
     return EcsDeploymentSetArgs(
-      deploymentSetName: map['deploymentSetName'] == null ? null : (map['deploymentSetName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      granularity: map['granularity'] == null ? null : (map['granularity'] as String).input(),
-      onUnableToRedeployFailedInstance: map['onUnableToRedeployFailedInstance'] == null ? null : (map['onUnableToRedeployFailedInstance'] as String).input(),
-      strategy: map['strategy'] == null ? null : (map['strategy'] as String).input(),
+      deploymentSetName: map['deploymentSetName'] == null ? null : (map['deploymentSetName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      granularity: map['granularity'] == null ? null : (map['granularity']! as String).input(),
+      onUnableToRedeployFailedInstance: map['onUnableToRedeployFailedInstance'] == null ? null : (map['onUnableToRedeployFailedInstance']! as String).input(),
+      strategy: map['strategy'] == null ? null : (map['strategy']! as String).input(),
     );
   }
 }

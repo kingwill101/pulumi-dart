@@ -46,9 +46,9 @@ class KubernetesPermissionPermission {
   factory KubernetesPermissionPermission.fromMap(Map<String, dynamic> map) {
     return KubernetesPermissionPermission(
       cluster: (map['cluster'] as String).input(),
-      isCustom: map['isCustom'] == null ? null : (map['isCustom'] as bool).input(),
-      isRamRole: map['isRamRole'] == null ? null : (map['isRamRole'] as bool).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      isCustom: map['isCustom'] == null ? null : (map['isCustom']! as bool).input(),
+      isRamRole: map['isRamRole'] == null ? null : (map['isRamRole']! as bool).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
       roleName: (map['roleName'] as String).input(),
       roleType: (map['roleType'] as String).input(),
     );

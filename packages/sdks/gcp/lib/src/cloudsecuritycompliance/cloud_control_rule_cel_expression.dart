@@ -29,7 +29,7 @@ class CloudControlRuleCelExpression {
   factory CloudControlRuleCelExpression.fromMap(Map<String, dynamic> map) {
     return CloudControlRuleCelExpression(
       expression: (map['expression'] as String).input(),
-      resourceTypesValues: map['resourceTypesValues'] == null ? null : (CloudControlRuleCelExpressionResourceTypesValues.fromMap((map['resourceTypesValues'] as Map).cast<String, dynamic>())).input(),
+      resourceTypesValues: map['resourceTypesValues'] == null ? null : (CloudControlRuleCelExpressionResourceTypesValues.fromMap((map['resourceTypesValues']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

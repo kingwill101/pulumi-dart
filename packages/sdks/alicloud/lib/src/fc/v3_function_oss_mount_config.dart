@@ -21,7 +21,7 @@ class V3FunctionOssMountConfig {
 
   factory V3FunctionOssMountConfig.fromMap(Map<String, dynamic> map) {
     return V3FunctionOssMountConfig(
-      mountPoints: map['mountPoints'] == null ? null : (pulumi.Input.decodeList<V3FunctionOssMountConfigMountPoint>(map['mountPoints'], (value) => V3FunctionOssMountConfigMountPoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mountPoints: map['mountPoints'] == null ? null : (pulumi.Input.decodeList<V3FunctionOssMountConfigMountPoint>(map['mountPoints']!, (value) => V3FunctionOssMountConfigMountPoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

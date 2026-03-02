@@ -67,15 +67,15 @@ class AzureDataLakeStoreOutputDataSourceResponse {
 
   factory AzureDataLakeStoreOutputDataSourceResponse.fromMap(Map<String, dynamic> map) {
     return AzureDataLakeStoreOutputDataSourceResponse(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
-      dateFormat: map['dateFormat'] == null ? null : (map['dateFormat'] as String).input(),
-      filePathPrefix: map['filePathPrefix'] == null ? null : (map['filePathPrefix'] as String).input(),
-      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      timeFormat: map['timeFormat'] == null ? null : (map['timeFormat'] as String).input(),
-      tokenUserDisplayName: map['tokenUserDisplayName'] == null ? null : (map['tokenUserDisplayName'] as String).input(),
-      tokenUserPrincipalName: map['tokenUserPrincipalName'] == null ? null : (map['tokenUserPrincipalName'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode']! as String).input(),
+      dateFormat: map['dateFormat'] == null ? null : (map['dateFormat']! as String).input(),
+      filePathPrefix: map['filePathPrefix'] == null ? null : (map['filePathPrefix']! as String).input(),
+      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      timeFormat: map['timeFormat'] == null ? null : (map['timeFormat']! as String).input(),
+      tokenUserDisplayName: map['tokenUserDisplayName'] == null ? null : (map['tokenUserDisplayName']! as String).input(),
+      tokenUserPrincipalName: map['tokenUserPrincipalName'] == null ? null : (map['tokenUserPrincipalName']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

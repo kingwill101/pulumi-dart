@@ -55,13 +55,13 @@ class VirtualApplianceSiteArgs {
 
   factory VirtualApplianceSiteArgs.fromMap(Map<String, dynamic> map) {
     return VirtualApplianceSiteArgs(
-      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networkVirtualApplianceName: (map['networkVirtualApplianceName'] as String).input(),
-      o365Policy: map['o365Policy'] == null ? null : (Office365PolicyProperties.fromMap((map['o365Policy'] as Map).cast<String, dynamic>())).input(),
+      o365Policy: map['o365Policy'] == null ? null : (Office365PolicyProperties.fromMap((map['o365Policy']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      siteName: map['siteName'] == null ? null : (map['siteName'] as String).input(),
+      siteName: map['siteName'] == null ? null : (map['siteName']! as String).input(),
     );
   }
 }

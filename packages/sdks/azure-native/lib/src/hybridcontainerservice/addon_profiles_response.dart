@@ -26,8 +26,8 @@ class AddonProfilesResponse {
 
   factory AddonProfilesResponse.fromMap(Map<String, dynamic> map) {
     return AddonProfilesResponse(
-      config: map['config'] == null ? null : ((map['config'] as Map).cast<String, String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      config: map['config'] == null ? null : ((map['config']! as Map).cast<String, String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

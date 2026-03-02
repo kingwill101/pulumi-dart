@@ -42,7 +42,7 @@ class GetNpmPackagesResult {
       id: map['id'] as String,
       location: map['location'] as String,
       npmPackages: pulumi.Input.decodeList<GetNpmPackagesNpmPackage>(map['npmPackages'], (value) => GetNpmPackagesNpmPackage.fromMap((value as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       repositoryId: map['repositoryId'] as String,
     );
   }

@@ -25,8 +25,8 @@ class DataExchangeSharingEnvironmentConfig {
 
   factory DataExchangeSharingEnvironmentConfig.fromMap(Map<String, dynamic> map) {
     return DataExchangeSharingEnvironmentConfig(
-      dcrExchangeConfig: map['dcrExchangeConfig'] == null ? null : ((map['dcrExchangeConfig'] as Map).cast<String, dynamic>()).input(),
-      defaultExchangeConfig: map['defaultExchangeConfig'] == null ? null : ((map['defaultExchangeConfig'] as Map).cast<String, dynamic>()).input(),
+      dcrExchangeConfig: map['dcrExchangeConfig'] == null ? null : ((map['dcrExchangeConfig']! as Map).cast<String, dynamic>()).input(),
+      defaultExchangeConfig: map['defaultExchangeConfig'] == null ? null : ((map['defaultExchangeConfig']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

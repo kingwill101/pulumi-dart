@@ -25,8 +25,8 @@ class DomainDevicesGraphicSpiceListenerNetwork {
 
   factory DomainDevicesGraphicSpiceListenerNetwork.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicSpiceListenerNetwork(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
     );
   }
 }

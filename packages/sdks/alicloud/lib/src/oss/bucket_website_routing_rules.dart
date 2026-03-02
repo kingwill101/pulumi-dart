@@ -21,7 +21,7 @@ class BucketWebsiteRoutingRules {
 
   factory BucketWebsiteRoutingRules.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteRoutingRules(
-      routingRules: map['routingRules'] == null ? null : (pulumi.Input.decodeList<BucketWebsiteRoutingRulesRoutingRule>(map['routingRules'], (value) => BucketWebsiteRoutingRulesRoutingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routingRules: map['routingRules'] == null ? null : (pulumi.Input.decodeList<BucketWebsiteRoutingRulesRoutingRule>(map['routingRules']!, (value) => BucketWebsiteRoutingRulesRoutingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

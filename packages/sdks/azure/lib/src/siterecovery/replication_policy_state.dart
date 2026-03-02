@@ -43,11 +43,11 @@ class ReplicationPolicyState {
 
   factory ReplicationPolicyState.fromMap(Map<String, dynamic> map) {
     return ReplicationPolicyState(
-      applicationConsistentSnapshotFrequencyInMinutes: map['applicationConsistentSnapshotFrequencyInMinutes'] == null ? null : (map['applicationConsistentSnapshotFrequencyInMinutes'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recoveryPointRetentionInMinutes: map['recoveryPointRetentionInMinutes'] == null ? null : (map['recoveryPointRetentionInMinutes'] as int).input(),
-      recoveryVaultName: map['recoveryVaultName'] == null ? null : (map['recoveryVaultName'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      applicationConsistentSnapshotFrequencyInMinutes: map['applicationConsistentSnapshotFrequencyInMinutes'] == null ? null : (map['applicationConsistentSnapshotFrequencyInMinutes']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      recoveryPointRetentionInMinutes: map['recoveryPointRetentionInMinutes'] == null ? null : (map['recoveryPointRetentionInMinutes']! as int).input(),
+      recoveryVaultName: map['recoveryVaultName'] == null ? null : (map['recoveryVaultName']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

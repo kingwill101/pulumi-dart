@@ -20,7 +20,7 @@ class GetNamespaceTopicEventSubscriptionFullUrlResult {
 
   factory GetNamespaceTopicEventSubscriptionFullUrlResult.fromMap(Map<String, dynamic> map) {
     return GetNamespaceTopicEventSubscriptionFullUrlResult(
-      endpointUrl: map['endpointUrl'] == null ? null : map['endpointUrl'] as String,
+      endpointUrl: map['endpointUrl'] == null ? null : map['endpointUrl']! as String,
     );
   }
 }

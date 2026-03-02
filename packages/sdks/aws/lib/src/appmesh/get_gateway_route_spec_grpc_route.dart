@@ -25,8 +25,8 @@ class GetGatewayRouteSpecGrpcRoute {
 
   factory GetGatewayRouteSpecGrpcRoute.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecGrpcRoute(
-      actions: (pulumi.Input.decodeList<GetGatewayRouteSpecGrpcRouteAction>(map['actions'], (value) => GetGatewayRouteSpecGrpcRouteAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matches: (pulumi.Input.decodeList<GetGatewayRouteSpecGrpcRouteMatch>(map['matches'], (value) => GetGatewayRouteSpecGrpcRouteMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      actions: (pulumi.Input.decodeList<GetGatewayRouteSpecGrpcRouteAction>(map['actions']!, (value) => GetGatewayRouteSpecGrpcRouteAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matches: (pulumi.Input.decodeList<GetGatewayRouteSpecGrpcRouteMatch>(map['matches']!, (value) => GetGatewayRouteSpecGrpcRouteMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

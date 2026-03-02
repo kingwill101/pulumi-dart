@@ -20,7 +20,7 @@ class DistributionRestrictions {
 
   factory DistributionRestrictions.fromMap(Map<String, dynamic> map) {
     return DistributionRestrictions(
-      geoRestriction: (DistributionRestrictionsGeoRestriction.fromMap((map['geoRestriction'] as Map).cast<String, dynamic>())).input(),
+      geoRestriction: (DistributionRestrictionsGeoRestriction.fromMap((map['geoRestriction']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

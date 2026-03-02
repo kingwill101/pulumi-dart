@@ -20,7 +20,7 @@ class SdkvoiceGlobalSettingsVoiceConnector {
 
   factory SdkvoiceGlobalSettingsVoiceConnector.fromMap(Map<String, dynamic> map) {
     return SdkvoiceGlobalSettingsVoiceConnector(
-      cdrBucket: map['cdrBucket'] == null ? null : (map['cdrBucket'] as String).input(),
+      cdrBucket: map['cdrBucket'] == null ? null : ((map['cdrBucket'] as String).input()).input(),
     );
   }
 }

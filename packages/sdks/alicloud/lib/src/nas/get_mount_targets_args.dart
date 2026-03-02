@@ -69,16 +69,16 @@ class GetMountTargetsArgs {
 
   factory GetMountTargetsArgs.fromMap(Map<String, dynamic> map) {
     return GetMountTargetsArgs(
-      accessGroupName: map['accessGroupName'] == null ? null : (map['accessGroupName'] as String).input(),
+      accessGroupName: map['accessGroupName'] == null ? null : (map['accessGroupName']! as String).input(),
       fileSystemId: (map['fileSystemId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      mountTargetDomain: map['mountTargetDomain'] == null ? null : (map['mountTargetDomain'] as String).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      mountTargetDomain: map['mountTargetDomain'] == null ? null : (map['mountTargetDomain']! as String).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

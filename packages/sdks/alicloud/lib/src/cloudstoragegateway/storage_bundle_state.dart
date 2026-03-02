@@ -26,8 +26,8 @@ class StorageBundleState {
 
   factory StorageBundleState.fromMap(Map<String, dynamic> map) {
     return StorageBundleState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      storageBundleName: map['storageBundleName'] == null ? null : (map['storageBundleName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      storageBundleName: map['storageBundleName'] == null ? null : (map['storageBundleName']! as String).input(),
     );
   }
 }

@@ -40,9 +40,9 @@ class DataCollectionRuleDataSourcesExtension {
 
   factory DataCollectionRuleDataSourcesExtension.fromMap(Map<String, dynamic> map) {
     return DataCollectionRuleDataSourcesExtension(
-      extensionJson: map['extensionJson'] == null ? null : (map['extensionJson'] as String).input(),
+      extensionJson: map['extensionJson'] == null ? null : (map['extensionJson']! as String).input(),
       extensionName: (map['extensionName'] as String).input(),
-      inputDataSources: map['inputDataSources'] == null ? null : ((map['inputDataSources'] as List).cast<String>()).input(),
+      inputDataSources: map['inputDataSources'] == null ? null : ((map['inputDataSources']! as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
       streams: ((map['streams'] as List).cast<String>()).input(),
     );

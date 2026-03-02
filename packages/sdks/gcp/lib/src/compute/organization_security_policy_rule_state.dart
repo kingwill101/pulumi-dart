@@ -78,16 +78,16 @@ class OrganizationSecurityPolicyRuleState {
 
   factory OrganizationSecurityPolicyRuleState.fromMap(Map<String, dynamic> map) {
     return OrganizationSecurityPolicyRuleState(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
-      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging'] as bool).input(),
-      match: map['match'] == null ? null : (OrganizationSecurityPolicyRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
-      preview: map['preview'] == null ? null : (map['preview'] as bool).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      targetResources: map['targetResources'] == null ? null : ((map['targetResources'] as List).cast<String>()).input(),
-      targetServiceAccounts: map['targetServiceAccounts'] == null ? null : ((map['targetServiceAccounts'] as List).cast<String>()).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
+      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging']! as bool).input(),
+      match: map['match'] == null ? null : (OrganizationSecurityPolicyRuleMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
+      preview: map['preview'] == null ? null : (map['preview']! as bool).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      targetResources: map['targetResources'] == null ? null : ((map['targetResources']! as List).cast<String>()).input(),
+      targetServiceAccounts: map['targetServiceAccounts'] == null ? null : ((map['targetServiceAccounts']! as List).cast<String>()).input(),
     );
   }
 }

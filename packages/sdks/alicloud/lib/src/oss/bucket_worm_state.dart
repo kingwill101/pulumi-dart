@@ -43,11 +43,11 @@ class BucketWormState {
 
   factory BucketWormState.fromMap(Map<String, dynamic> map) {
     return BucketWormState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      retentionPeriodInDays: map['retentionPeriodInDays'] == null ? null : (map['retentionPeriodInDays'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      wormId: map['wormId'] == null ? null : (map['wormId'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      retentionPeriodInDays: map['retentionPeriodInDays'] == null ? null : (map['retentionPeriodInDays']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      wormId: map['wormId'] == null ? null : (map['wormId']! as String).input(),
     );
   }
 }

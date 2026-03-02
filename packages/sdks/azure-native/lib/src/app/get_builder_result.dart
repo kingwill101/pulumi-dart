@@ -75,15 +75,15 @@ class GetBuilderResult {
   factory GetBuilderResult.fromMap(Map<String, dynamic> map) {
     return GetBuilderResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      containerRegistries: map['containerRegistries'] == null ? null : pulumi.Input.decodeList<ContainerRegistryResponse>(map['containerRegistries'], (value) => ContainerRegistryResponse.fromMap((value as Map).cast<String, dynamic>())),
+      containerRegistries: map['containerRegistries'] == null ? null : pulumi.Input.decodeList<ContainerRegistryResponse>(map['containerRegistries']!, (value) => ContainerRegistryResponse.fromMap((value as Map).cast<String, dynamic>())),
       environmentId: map['environmentId'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

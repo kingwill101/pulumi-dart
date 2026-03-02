@@ -45,7 +45,7 @@ class TopicAuthorizationRuleArgs {
 
   factory TopicAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return TopicAuthorizationRuleArgs(
-      authorizationRuleName: map['authorizationRuleName'] == null ? null : (map['authorizationRuleName'] as String).input(),
+      authorizationRuleName: map['authorizationRuleName'] == null ? null : (map['authorizationRuleName']! as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       rights: (pulumi.Input.decodeList<AccessRights>(map['rights'], (value) => AccessRights.fromValue(value as String))).input(),

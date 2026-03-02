@@ -69,16 +69,16 @@ class AgentAgentAliasState {
 
   factory AgentAgentAliasState.fromMap(Map<String, dynamic> map) {
     return AgentAgentAliasState(
-      agentAliasArn: map['agentAliasArn'] == null ? null : (map['agentAliasArn'] as String).input(),
-      agentAliasId: map['agentAliasId'] == null ? null : (map['agentAliasId'] as String).input(),
-      agentAliasName: map['agentAliasName'] == null ? null : (map['agentAliasName'] as String).input(),
-      agentId: map['agentId'] == null ? null : (map['agentId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routingConfigurations: map['routingConfigurations'] == null ? null : (pulumi.Input.decodeList<AgentAgentAliasRoutingConfiguration>(map['routingConfigurations'], (value) => AgentAgentAliasRoutingConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (AgentAgentAliasTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      agentAliasArn: map['agentAliasArn'] == null ? null : ((map['agentAliasArn'] as String).input()).input(),
+      agentAliasId: map['agentAliasId'] == null ? null : ((map['agentAliasId'] as String).input()).input(),
+      agentAliasName: map['agentAliasName'] == null ? null : ((map['agentAliasName'] as String).input()).input(),
+      agentId: map['agentId'] == null ? null : ((map['agentId'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      routingConfigurations: map['routingConfigurations'] == null ? null : ((pulumi.Input.decodeList<AgentAgentAliasRoutingConfiguration>(map['routingConfigurations']!, (value) => AgentAgentAliasRoutingConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((AgentAgentAliasTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -44,7 +44,7 @@ class GetConsumerGroupsGroup {
       id: (map['id'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
       remark: (map['remark'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

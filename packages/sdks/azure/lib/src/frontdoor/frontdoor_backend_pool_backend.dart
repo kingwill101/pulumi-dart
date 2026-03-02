@@ -51,12 +51,12 @@ class FrontdoorBackendPoolBackend {
   factory FrontdoorBackendPoolBackend.fromMap(Map<String, dynamic> map) {
     return FrontdoorBackendPoolBackend(
       address: (map['address'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       hostHeader: (map['hostHeader'] as String).input(),
       httpPort: (map['httpPort'] as int).input(),
       httpsPort: (map['httpsPort'] as int).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

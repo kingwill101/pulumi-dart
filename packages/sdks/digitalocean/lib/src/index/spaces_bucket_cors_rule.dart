@@ -35,10 +35,10 @@ class SpacesBucketCorsRule {
 
   factory SpacesBucketCorsRule.fromMap(Map<String, dynamic> map) {
     return SpacesBucketCorsRule(
-      allowedHeaders: map['allowedHeaders'] == null ? null : ((map['allowedHeaders'] as List).cast<String>()).input(),
+      allowedHeaders: map['allowedHeaders'] == null ? null : ((map['allowedHeaders']! as List).cast<String>()).input(),
       allowedMethods: ((map['allowedMethods'] as List).cast<String>()).input(),
       allowedOrigins: ((map['allowedOrigins'] as List).cast<String>()).input(),
-      maxAgeSeconds: map['maxAgeSeconds'] == null ? null : (map['maxAgeSeconds'] as int).input(),
+      maxAgeSeconds: map['maxAgeSeconds'] == null ? null : (map['maxAgeSeconds']! as int).input(),
     );
   }
 }

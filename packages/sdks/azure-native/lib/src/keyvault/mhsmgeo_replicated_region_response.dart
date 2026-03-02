@@ -31,8 +31,8 @@ class MHSMGeoReplicatedRegionResponse {
 
   factory MHSMGeoReplicatedRegionResponse.fromMap(Map<String, dynamic> map) {
     return MHSMGeoReplicatedRegionResponse(
-      isPrimary: map['isPrimary'] == null ? null : (map['isPrimary'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      isPrimary: map['isPrimary'] == null ? null : (map['isPrimary']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

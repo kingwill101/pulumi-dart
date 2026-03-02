@@ -20,7 +20,7 @@ class FlowMetadataCatalogConfig {
 
   factory FlowMetadataCatalogConfig.fromMap(Map<String, dynamic> map) {
     return FlowMetadataCatalogConfig(
-      glueDataCatalog: map['glueDataCatalog'] == null ? null : (FlowMetadataCatalogConfigGlueDataCatalog.fromMap((map['glueDataCatalog'] as Map).cast<String, dynamic>())).input(),
+      glueDataCatalog: map['glueDataCatalog'] == null ? null : ((FlowMetadataCatalogConfigGlueDataCatalog.fromMap((map['glueDataCatalog']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

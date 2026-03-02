@@ -70,16 +70,16 @@ class ReservationComputeBeta {
 
   factory ReservationComputeBeta.fromMap(Map<String, dynamic> map) {
     return ReservationComputeBeta(
-      aggregateReservation: map['aggregateReservation'] == null ? null : (AllocationAggregateReservationComputeBeta.fromMap((map['aggregateReservation'] as Map).cast<String, dynamic>())).input(),
-      deleteAfterDuration: map['deleteAfterDuration'] == null ? null : (DurationComputeBeta.fromMap((map['deleteAfterDuration'] as Map).cast<String, dynamic>())).input(),
-      deleteAtTime: map['deleteAtTime'] == null ? null : (map['deleteAtTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourcePolicies: map['resourcePolicies'] == null ? null : ((map['resourcePolicies'] as Map).cast<String, String>()).input(),
-      shareSettings: map['shareSettings'] == null ? null : (ShareSettingsComputeBeta.fromMap((map['shareSettings'] as Map).cast<String, dynamic>())).input(),
-      specificReservation: map['specificReservation'] == null ? null : (AllocationSpecificSKUReservationComputeBeta.fromMap((map['specificReservation'] as Map).cast<String, dynamic>())).input(),
-      specificReservationRequired: map['specificReservationRequired'] == null ? null : (map['specificReservationRequired'] as bool).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      aggregateReservation: map['aggregateReservation'] == null ? null : (AllocationAggregateReservationComputeBeta.fromMap((map['aggregateReservation']! as Map).cast<String, dynamic>())).input(),
+      deleteAfterDuration: map['deleteAfterDuration'] == null ? null : (DurationComputeBeta.fromMap((map['deleteAfterDuration']! as Map).cast<String, dynamic>())).input(),
+      deleteAtTime: map['deleteAtTime'] == null ? null : (map['deleteAtTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourcePolicies: map['resourcePolicies'] == null ? null : ((map['resourcePolicies']! as Map).cast<String, String>()).input(),
+      shareSettings: map['shareSettings'] == null ? null : (ShareSettingsComputeBeta.fromMap((map['shareSettings']! as Map).cast<String, dynamic>())).input(),
+      specificReservation: map['specificReservation'] == null ? null : (AllocationSpecificSKUReservationComputeBeta.fromMap((map['specificReservation']! as Map).cast<String, dynamic>())).input(),
+      specificReservationRequired: map['specificReservationRequired'] == null ? null : (map['specificReservationRequired']! as bool).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

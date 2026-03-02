@@ -21,7 +21,7 @@ class ConditionContext {
 
   factory ConditionContext.fromMap(Map<String, dynamic> map) {
     return ConditionContext(
-      accessTime: map['accessTime'] == null ? null : (map['accessTime'] as String).input(),
+      accessTime: map['accessTime'] == null ? null : (map['accessTime']! as String).input(),
     );
   }
 }

@@ -39,7 +39,7 @@ class ModelArgs {
 
   factory ModelArgs.fromMap(Map<String, dynamic> map) {
     return ModelArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       groupId: (map['groupId'] as String).input(),
       modelName: (map['modelName'] as String).input(),
       schema: (map['schema'] as String).input(),

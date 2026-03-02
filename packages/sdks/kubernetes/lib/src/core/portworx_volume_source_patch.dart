@@ -31,9 +31,9 @@ class PortworxVolumeSourcePatch {
 
   factory PortworxVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return PortworxVolumeSourcePatch(
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      volumeID: map['volumeID'] == null ? null : (map['volumeID'] as String).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      volumeID: map['volumeID'] == null ? null : (map['volumeID']! as String).input(),
     );
   }
 }

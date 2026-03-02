@@ -52,12 +52,12 @@ class TagTemplateArgs {
 
   factory TagTemplateArgs.fromMap(Map<String, dynamic> map) {
     return TagTemplateArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       fields: ((map['fields'] as Map).cast<String, String>()).input(),
-      isPubliclyReadable: map['isPubliclyReadable'] == null ? null : (map['isPubliclyReadable'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      isPubliclyReadable: map['isPubliclyReadable'] == null ? null : (map['isPubliclyReadable']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       tagTemplateId: (map['tagTemplateId'] as String).input(),
     );
   }

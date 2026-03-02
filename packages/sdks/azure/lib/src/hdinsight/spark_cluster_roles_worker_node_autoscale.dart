@@ -29,8 +29,8 @@ class SparkClusterRolesWorkerNodeAutoscale {
 
   factory SparkClusterRolesWorkerNodeAutoscale.fromMap(Map<String, dynamic> map) {
     return SparkClusterRolesWorkerNodeAutoscale(
-      capacity: map['capacity'] == null ? null : (SparkClusterRolesWorkerNodeAutoscaleCapacity.fromMap((map['capacity'] as Map).cast<String, dynamic>())).input(),
-      recurrence: map['recurrence'] == null ? null : (SparkClusterRolesWorkerNodeAutoscaleRecurrence.fromMap((map['recurrence'] as Map).cast<String, dynamic>())).input(),
+      capacity: map['capacity'] == null ? null : (SparkClusterRolesWorkerNodeAutoscaleCapacity.fromMap((map['capacity']! as Map).cast<String, dynamic>())).input(),
+      recurrence: map['recurrence'] == null ? null : (SparkClusterRolesWorkerNodeAutoscaleRecurrence.fromMap((map['recurrence']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

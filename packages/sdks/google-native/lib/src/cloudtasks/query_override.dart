@@ -21,7 +21,7 @@ class QueryOverride {
 
   factory QueryOverride.fromMap(Map<String, dynamic> map) {
     return QueryOverride(
-      queryParams: map['queryParams'] == null ? null : (map['queryParams'] as String).input(),
+      queryParams: map['queryParams'] == null ? null : (map['queryParams']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse {
 
   factory DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse(
-      initialDelayInMilliseconds: map['initialDelayInMilliseconds'] == null ? null : (map['initialDelayInMilliseconds'] as int).input(),
-      maxIntervalInMilliseconds: map['maxIntervalInMilliseconds'] == null ? null : (map['maxIntervalInMilliseconds'] as int).input(),
+      initialDelayInMilliseconds: map['initialDelayInMilliseconds'] == null ? null : (map['initialDelayInMilliseconds']! as int).input(),
+      maxIntervalInMilliseconds: map['maxIntervalInMilliseconds'] == null ? null : (map['maxIntervalInMilliseconds']! as int).input(),
     );
   }
 }

@@ -60,14 +60,14 @@ class ResourceSyncRuleArgs {
 
   factory ResourceSyncRuleArgs.fromMap(Map<String, dynamic> map) {
     return ResourceSyncRuleArgs(
-      childResourceName: map['childResourceName'] == null ? null : (map['childResourceName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      childResourceName: map['childResourceName'] == null ? null : (map['childResourceName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
-      selector: map['selector'] == null ? null : (ResourceSyncRulePropertiesSelector.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetResourceGroup: map['targetResourceGroup'] == null ? null : (map['targetResourceGroup'] as String).input(),
+      selector: map['selector'] == null ? null : (ResourceSyncRulePropertiesSelector.fromMap((map['selector']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetResourceGroup: map['targetResourceGroup'] == null ? null : (map['targetResourceGroup']! as String).input(),
     );
   }
 }

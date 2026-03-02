@@ -47,11 +47,11 @@ class FirewallRuleState {
 
   factory FirewallRuleState.fromMap(Map<String, dynamic> map) {
     return FirewallRuleState(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      sourceRange: map['sourceRange'] == null ? null : (map['sourceRange'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      sourceRange: map['sourceRange'] == null ? null : (map['sourceRange']! as String).input(),
     );
   }
 }

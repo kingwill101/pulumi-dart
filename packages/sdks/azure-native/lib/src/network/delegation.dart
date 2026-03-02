@@ -46,12 +46,12 @@ class Delegation {
 
   factory Delegation.fromMap(Map<String, dynamic> map) {
     return Delegation(
-      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      actions: map['actions'] == null ? null : ((map['actions']! as List).cast<String>()).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

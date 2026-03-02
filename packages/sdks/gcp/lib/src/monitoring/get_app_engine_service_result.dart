@@ -58,7 +58,7 @@ class GetAppEngineServiceResult {
       id: map['id'] as String,
       moduleId: map['moduleId'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       serviceId: map['serviceId'] as String,
       telemetries: pulumi.Input.decodeList<GetAppEngineServiceTelemetry>(map['telemetries'], (value) => GetAppEngineServiceTelemetry.fromMap((value as Map).cast<String, dynamic>())),
       userLabels: (map['userLabels'] as Map).cast<String, String>(),

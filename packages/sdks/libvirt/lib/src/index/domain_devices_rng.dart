@@ -55,13 +55,13 @@ class DomainDevicesRng {
 
   factory DomainDevicesRng.fromMap(Map<String, dynamic> map) {
     return DomainDevicesRng(
-      acpi: map['acpi'] == null ? null : (DomainDevicesRngAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
-      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
-      alias: map['alias'] == null ? null : (DomainDevicesRngAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
-      backend: map['backend'] == null ? null : (DomainDevicesRngBackend.fromMap((map['backend'] as Map).cast<String, dynamic>())).input(),
-      driver: map['driver'] == null ? null : (DomainDevicesRngDriver.fromMap((map['driver'] as Map).cast<String, dynamic>())).input(),
+      acpi: map['acpi'] == null ? null : (DomainDevicesRngAcpi.fromMap((map['acpi']! as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : ((map['address']! as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesRngAlias.fromMap((map['alias']! as Map).cast<String, dynamic>())).input(),
+      backend: map['backend'] == null ? null : (DomainDevicesRngBackend.fromMap((map['backend']! as Map).cast<String, dynamic>())).input(),
+      driver: map['driver'] == null ? null : (DomainDevicesRngDriver.fromMap((map['driver']! as Map).cast<String, dynamic>())).input(),
       model: (map['model'] as String).input(),
-      rate: map['rate'] == null ? null : (DomainDevicesRngRate.fromMap((map['rate'] as Map).cast<String, dynamic>())).input(),
+      rate: map['rate'] == null ? null : (DomainDevicesRngRate.fromMap((map['rate']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

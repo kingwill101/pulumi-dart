@@ -41,11 +41,11 @@ class GetNodeTypeFaultSimulationResult {
 
   factory GetNodeTypeFaultSimulationResult.fromMap(Map<String, dynamic> map) {
     return GetNodeTypeFaultSimulationResult(
-      details: map['details'] == null ? null : FaultSimulationDetailsResponse.fromMap((map['details'] as Map).cast<String, dynamic>()),
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      simulationId: map['simulationId'] == null ? null : map['simulationId'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      details: map['details'] == null ? null : FaultSimulationDetailsResponse.fromMap((map['details']! as Map).cast<String, dynamic>()),
+      endTime: map['endTime'] == null ? null : map['endTime']! as String,
+      simulationId: map['simulationId'] == null ? null : map['simulationId']! as String,
+      startTime: map['startTime'] == null ? null : map['startTime']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

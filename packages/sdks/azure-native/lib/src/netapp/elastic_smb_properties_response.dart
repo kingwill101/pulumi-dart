@@ -21,7 +21,7 @@ class ElasticSmbPropertiesResponse {
 
   factory ElasticSmbPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticSmbPropertiesResponse(
-      smbEncryption: map['smbEncryption'] == null ? null : (map['smbEncryption'] as String).input(),
+      smbEncryption: map['smbEncryption'] == null ? null : (map['smbEncryption']! as String).input(),
     );
   }
 }

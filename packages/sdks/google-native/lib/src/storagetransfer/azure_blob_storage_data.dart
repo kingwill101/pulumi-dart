@@ -44,8 +44,8 @@ class AzureBlobStorageData {
     return AzureBlobStorageData(
       azureCredentials: (AzureCredentials.fromMap((map['azureCredentials'] as Map).cast<String, dynamic>())).input(),
       container: (map['container'] as String).input(),
-      credentialsSecret: map['credentialsSecret'] == null ? null : (map['credentialsSecret'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      credentialsSecret: map['credentialsSecret'] == null ? null : (map['credentialsSecret']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
       storageAccount: (map['storageAccount'] as String).input(),
     );
   }

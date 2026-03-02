@@ -25,8 +25,8 @@ class DeploymentLoggingLog4jLogger {
 
   factory DeploymentLoggingLog4jLogger.fromMap(Map<String, dynamic> map) {
     return DeploymentLoggingLog4jLogger(
-      loggerLevel: map['loggerLevel'] == null ? null : (map['loggerLevel'] as String).input(),
-      loggerName: map['loggerName'] == null ? null : (map['loggerName'] as String).input(),
+      loggerLevel: map['loggerLevel'] == null ? null : (map['loggerLevel']! as String).input(),
+      loggerName: map['loggerName'] == null ? null : (map['loggerName']! as String).input(),
     );
   }
 }

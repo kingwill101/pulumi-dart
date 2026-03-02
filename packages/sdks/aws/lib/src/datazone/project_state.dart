@@ -79,18 +79,18 @@ class ProjectState {
 
   factory ProjectState.fromMap(Map<String, dynamic> map) {
     return ProjectState(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      domainIdentifier: map['domainIdentifier'] == null ? null : (map['domainIdentifier'] as String).input(),
-      failureReasons: map['failureReasons'] == null ? null : (pulumi.Input.decodeList<ProjectFailureReason>(map['failureReasons'], (value) => ProjectFailureReason.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      glossaryTerms: map['glossaryTerms'] == null ? null : ((map['glossaryTerms'] as List).cast<String>()).input(),
-      lastUpdatedAt: map['lastUpdatedAt'] == null ? null : (map['lastUpdatedAt'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      projectStatus: map['projectStatus'] == null ? null : (map['projectStatus'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      skipDeletionCheck: map['skipDeletionCheck'] == null ? null : (map['skipDeletionCheck'] as bool).input(),
-      timeouts: map['timeouts'] == null ? null : (ProjectTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
+      createdBy: map['createdBy'] == null ? null : ((map['createdBy'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      domainIdentifier: map['domainIdentifier'] == null ? null : ((map['domainIdentifier'] as String).input()).input(),
+      failureReasons: map['failureReasons'] == null ? null : ((pulumi.Input.decodeList<ProjectFailureReason>(map['failureReasons']!, (value) => ProjectFailureReason.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      glossaryTerms: map['glossaryTerms'] == null ? null : (((map['glossaryTerms'] as List).cast<String>()).input()).input(),
+      lastUpdatedAt: map['lastUpdatedAt'] == null ? null : ((map['lastUpdatedAt'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      projectStatus: map['projectStatus'] == null ? null : ((map['projectStatus'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      skipDeletionCheck: map['skipDeletionCheck'] == null ? null : ((map['skipDeletionCheck'] as bool).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ProjectTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

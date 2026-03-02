@@ -22,7 +22,7 @@ class RelationshipNote {
 
   factory RelationshipNote.fromMap(Map<String, dynamic> map) {
     return RelationshipNote(
-      type: map['type'] == null ? null : (RelationshipNoteType.fromValue(map['type'] as String)).input(),
+      type: map['type'] == null ? null : (RelationshipNoteType.fromValue(map['type']! as String)).input(),
     );
   }
 }

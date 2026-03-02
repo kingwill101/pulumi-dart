@@ -28,8 +28,8 @@ class AclConfigIdpConfig {
 
   factory AclConfigIdpConfig.fromMap(Map<String, dynamic> map) {
     return AclConfigIdpConfig(
-      externalIdpConfig: map['externalIdpConfig'] == null ? null : (AclConfigIdpConfigExternalIdpConfig.fromMap((map['externalIdpConfig'] as Map).cast<String, dynamic>())).input(),
-      idpType: map['idpType'] == null ? null : (map['idpType'] as String).input(),
+      externalIdpConfig: map['externalIdpConfig'] == null ? null : (AclConfigIdpConfigExternalIdpConfig.fromMap((map['externalIdpConfig']! as Map).cast<String, dynamic>())).input(),
+      idpType: map['idpType'] == null ? null : (map['idpType']! as String).input(),
     );
   }
 }

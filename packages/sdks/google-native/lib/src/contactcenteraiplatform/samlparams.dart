@@ -41,11 +41,11 @@ class SAMLParams {
 
   factory SAMLParams.fromMap(Map<String, dynamic> map) {
     return SAMLParams(
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
-      emailMapping: map['emailMapping'] == null ? null : (map['emailMapping'] as String).input(),
-      entityId: map['entityId'] == null ? null : (map['entityId'] as String).input(),
-      ssoUri: map['ssoUri'] == null ? null : (map['ssoUri'] as String).input(),
-      userEmail: map['userEmail'] == null ? null : (map['userEmail'] as String).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
+      emailMapping: map['emailMapping'] == null ? null : (map['emailMapping']! as String).input(),
+      entityId: map['entityId'] == null ? null : (map['entityId']! as String).input(),
+      ssoUri: map['ssoUri'] == null ? null : (map['ssoUri']! as String).input(),
+      userEmail: map['userEmail'] == null ? null : (map['userEmail']! as String).input(),
     );
   }
 }

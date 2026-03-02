@@ -43,11 +43,11 @@ class ApplicationScalingRuleScalingRuleMetric {
 
   factory ApplicationScalingRuleScalingRuleMetric.fromMap(Map<String, dynamic> map) {
     return ApplicationScalingRuleScalingRuleMetric(
-      maxReplicas: map['maxReplicas'] == null ? null : (map['maxReplicas'] as int).input(),
-      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<ApplicationScalingRuleScalingRuleMetricMetric>(map['metrics'], (value) => ApplicationScalingRuleScalingRuleMetricMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      minReplicas: map['minReplicas'] == null ? null : (map['minReplicas'] as int).input(),
-      scaleDownRules: map['scaleDownRules'] == null ? null : (ApplicationScalingRuleScalingRuleMetricScaleDownRules.fromMap((map['scaleDownRules'] as Map).cast<String, dynamic>())).input(),
-      scaleUpRules: map['scaleUpRules'] == null ? null : (ApplicationScalingRuleScalingRuleMetricScaleUpRules.fromMap((map['scaleUpRules'] as Map).cast<String, dynamic>())).input(),
+      maxReplicas: map['maxReplicas'] == null ? null : (map['maxReplicas']! as int).input(),
+      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<ApplicationScalingRuleScalingRuleMetricMetric>(map['metrics']!, (value) => ApplicationScalingRuleScalingRuleMetricMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      minReplicas: map['minReplicas'] == null ? null : (map['minReplicas']! as int).input(),
+      scaleDownRules: map['scaleDownRules'] == null ? null : (ApplicationScalingRuleScalingRuleMetricScaleDownRules.fromMap((map['scaleDownRules']! as Map).cast<String, dynamic>())).input(),
+      scaleUpRules: map['scaleUpRules'] == null ? null : (ApplicationScalingRuleScalingRuleMetricScaleUpRules.fromMap((map['scaleUpRules']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

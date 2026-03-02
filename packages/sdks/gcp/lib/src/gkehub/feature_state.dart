@@ -23,7 +23,7 @@ class FeatureState {
 
   factory FeatureState.fromMap(Map<String, dynamic> map) {
     return FeatureState(
-      states: map['states'] == null ? null : (pulumi.Input.decodeList<FeatureStateState>(map['states'], (value) => FeatureStateState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      states: map['states'] == null ? null : (pulumi.Input.decodeList<FeatureStateState>(map['states']!, (value) => FeatureStateState.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class GetScanConfigWebsecurityscannerV1betaArgs {
 
   factory GetScanConfigWebsecurityscannerV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetScanConfigWebsecurityscannerV1betaArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       scanConfigId: (map['scanConfigId'] as String).input(),
     );
   }

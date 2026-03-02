@@ -30,9 +30,9 @@ class GroupLaunchTemplate {
 
   factory GroupLaunchTemplate.fromMap(Map<String, dynamic> map) {
     return GroupLaunchTemplate(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

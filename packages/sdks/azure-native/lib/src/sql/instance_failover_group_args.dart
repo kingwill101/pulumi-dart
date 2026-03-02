@@ -63,14 +63,14 @@ class InstanceFailoverGroupArgs {
 
   factory InstanceFailoverGroupArgs.fromMap(Map<String, dynamic> map) {
     return InstanceFailoverGroupArgs(
-      failoverGroupName: map['failoverGroupName'] == null ? null : (map['failoverGroupName'] as String).input(),
+      failoverGroupName: map['failoverGroupName'] == null ? null : (map['failoverGroupName']! as String).input(),
       locationName: (map['locationName'] as String).input(),
       managedInstancePairs: (pulumi.Input.decodeList<ManagedInstancePairInfo>(map['managedInstancePairs'], (value) => ManagedInstancePairInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
       partnerRegions: (pulumi.Input.decodeList<PartnerRegionInfo>(map['partnerRegions'], (value) => PartnerRegionInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      readOnlyEndpoint: map['readOnlyEndpoint'] == null ? null : (InstanceFailoverGroupReadOnlyEndpoint.fromMap((map['readOnlyEndpoint'] as Map).cast<String, dynamic>())).input(),
+      readOnlyEndpoint: map['readOnlyEndpoint'] == null ? null : (InstanceFailoverGroupReadOnlyEndpoint.fromMap((map['readOnlyEndpoint']! as Map).cast<String, dynamic>())).input(),
       readWriteEndpoint: (InstanceFailoverGroupReadWriteEndpoint.fromMap((map['readWriteEndpoint'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      secondaryType: map['secondaryType'] == null ? null : (map['secondaryType'] as String).input(),
+      secondaryType: map['secondaryType'] == null ? null : (map['secondaryType']! as String).input(),
     );
   }
 }

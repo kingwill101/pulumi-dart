@@ -59,7 +59,7 @@ class AclArgs {
       actions: ((map['actions'] as List).cast<String>()).input(),
       decision: (map['decision'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      ipWhitelists: map['ipWhitelists'] == null ? null : ((map['ipWhitelists'] as List).cast<String>()).input(),
+      ipWhitelists: map['ipWhitelists'] == null ? null : ((map['ipWhitelists']! as List).cast<String>()).input(),
       resourceName: (map['resourceName'] as String).input(),
       resourceType: (map['resourceType'] as String).input(),
       username: (map['username'] as String).input(),

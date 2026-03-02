@@ -60,13 +60,13 @@ class ApiSourceArgs {
 
   factory ApiSourceArgs.fromMap(Map<String, dynamic> map) {
     return ApiSourceArgs(
-      apiSourceName: map['apiSourceName'] == null ? null : (map['apiSourceName'] as String).input(),
-      azureApiManagementSource: map['azureApiManagementSource'] == null ? null : (AzureApiManagementSource.fromMap((map['azureApiManagementSource'] as Map).cast<String, dynamic>())).input(),
-      importSpecification: map['importSpecification'] == null ? null : (map['importSpecification'] as String).input(),
+      apiSourceName: map['apiSourceName'] == null ? null : (map['apiSourceName']! as String).input(),
+      azureApiManagementSource: map['azureApiManagementSource'] == null ? null : (AzureApiManagementSource.fromMap((map['azureApiManagementSource']! as Map).cast<String, dynamic>())).input(),
+      importSpecification: map['importSpecification'] == null ? null : (map['importSpecification']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      targetEnvironmentId: map['targetEnvironmentId'] == null ? null : (map['targetEnvironmentId'] as String).input(),
-      targetLifecycleStage: map['targetLifecycleStage'] == null ? null : (map['targetLifecycleStage'] as String).input(),
+      targetEnvironmentId: map['targetEnvironmentId'] == null ? null : (map['targetEnvironmentId']! as String).input(),
+      targetLifecycleStage: map['targetLifecycleStage'] == null ? null : (map['targetLifecycleStage']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

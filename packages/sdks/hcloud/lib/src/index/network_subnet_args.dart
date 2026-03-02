@@ -48,7 +48,7 @@ class NetworkSubnetArgs {
       networkId: (map['networkId'] as int).input(),
       networkZone: (map['networkZone'] as String).input(),
       type: (map['type'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as int).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as int).input(),
     );
   }
 }

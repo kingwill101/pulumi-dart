@@ -31,7 +31,7 @@ class DistcpSettingsResponse {
 
   factory DistcpSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DistcpSettingsResponse(
-      distcpOptions: map['distcpOptions'] == null ? null : (map['distcpOptions']).input(),
+      distcpOptions: map['distcpOptions'] == null ? null : (map['distcpOptions']!).input(),
       resourceManagerEndpoint: (map['resourceManagerEndpoint']).input(),
       tempScriptPath: (map['tempScriptPath']).input(),
     );

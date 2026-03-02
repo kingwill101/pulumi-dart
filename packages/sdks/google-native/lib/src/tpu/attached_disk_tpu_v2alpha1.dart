@@ -27,8 +27,8 @@ class AttachedDiskTpuV2alpha1 {
 
   factory AttachedDiskTpuV2alpha1.fromMap(Map<String, dynamic> map) {
     return AttachedDiskTpuV2alpha1(
-      mode: map['mode'] == null ? null : (AttachedDiskModeTpuV2alpha1.fromValue(map['mode'] as String)).input(),
-      sourceDisk: map['sourceDisk'] == null ? null : (map['sourceDisk'] as String).input(),
+      mode: map['mode'] == null ? null : (AttachedDiskModeTpuV2alpha1.fromValue(map['mode']! as String)).input(),
+      sourceDisk: map['sourceDisk'] == null ? null : (map['sourceDisk']! as String).input(),
     );
   }
 }

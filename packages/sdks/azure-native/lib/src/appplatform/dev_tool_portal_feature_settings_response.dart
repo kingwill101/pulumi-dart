@@ -27,8 +27,8 @@ class DevToolPortalFeatureSettingsResponse {
 
   factory DevToolPortalFeatureSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DevToolPortalFeatureSettingsResponse(
-      applicationAccelerator: map['applicationAccelerator'] == null ? null : (DevToolPortalFeatureDetailResponse.fromMap((map['applicationAccelerator'] as Map).cast<String, dynamic>())).input(),
-      applicationLiveView: map['applicationLiveView'] == null ? null : (DevToolPortalFeatureDetailResponse.fromMap((map['applicationLiveView'] as Map).cast<String, dynamic>())).input(),
+      applicationAccelerator: map['applicationAccelerator'] == null ? null : (DevToolPortalFeatureDetailResponse.fromMap((map['applicationAccelerator']! as Map).cast<String, dynamic>())).input(),
+      applicationLiveView: map['applicationLiveView'] == null ? null : (DevToolPortalFeatureDetailResponse.fromMap((map['applicationLiveView']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

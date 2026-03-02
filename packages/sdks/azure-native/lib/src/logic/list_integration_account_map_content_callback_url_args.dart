@@ -45,9 +45,9 @@ class ListIntegrationAccountMapContentCallbackUrlArgs {
   factory ListIntegrationAccountMapContentCallbackUrlArgs.fromMap(Map<String, dynamic> map) {
     return ListIntegrationAccountMapContentCallbackUrlArgs(
       integrationAccountName: (map['integrationAccountName'] as String).input(),
-      keyType: map['keyType'] == null ? null : (map['keyType'] as String).input(),
+      keyType: map['keyType'] == null ? null : (map['keyType']! as String).input(),
       mapName: (map['mapName'] as String).input(),
-      notAfter: map['notAfter'] == null ? null : (map['notAfter'] as String).input(),
+      notAfter: map['notAfter'] == null ? null : (map['notAfter']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

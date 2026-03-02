@@ -169,13 +169,13 @@ class GetInstanceGroupManagerResult {
       instanceGroupManagerId: map['instanceGroupManagerId'] as int,
       instanceLifecyclePolicies: pulumi.Input.decodeList<GetInstanceGroupManagerInstanceLifecyclePolicy>(map['instanceLifecyclePolicies'], (value) => GetInstanceGroupManagerInstanceLifecyclePolicy.fromMap((value as Map).cast<String, dynamic>())),
       listManagedInstancesResults: map['listManagedInstancesResults'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
       namedPorts: pulumi.Input.decodeList<GetInstanceGroupManagerNamedPort>(map['namedPorts'], (value) => GetInstanceGroupManagerNamedPort.fromMap((value as Map).cast<String, dynamic>())),
       operation: map['operation'] as String,
       params: pulumi.Input.decodeList<GetInstanceGroupManagerParam>(map['params'], (value) => GetInstanceGroupManagerParam.fromMap((value as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       resourcePolicies: pulumi.Input.decodeList<GetInstanceGroupManagerResourcePolicy>(map['resourcePolicies'], (value) => GetInstanceGroupManagerResourcePolicy.fromMap((value as Map).cast<String, dynamic>())),
-      selfLink: map['selfLink'] == null ? null : map['selfLink'] as String,
+      selfLink: map['selfLink'] == null ? null : map['selfLink']! as String,
       standbyPolicies: pulumi.Input.decodeList<GetInstanceGroupManagerStandbyPolicy>(map['standbyPolicies'], (value) => GetInstanceGroupManagerStandbyPolicy.fromMap((value as Map).cast<String, dynamic>())),
       statefulDisks: pulumi.Input.decodeList<GetInstanceGroupManagerStatefulDisk>(map['statefulDisks'], (value) => GetInstanceGroupManagerStatefulDisk.fromMap((value as Map).cast<String, dynamic>())),
       statefulExternalIps: pulumi.Input.decodeList<GetInstanceGroupManagerStatefulExternalIp>(map['statefulExternalIps'], (value) => GetInstanceGroupManagerStatefulExternalIp.fromMap((value as Map).cast<String, dynamic>())),
@@ -189,7 +189,7 @@ class GetInstanceGroupManagerResult {
       versions: pulumi.Input.decodeList<GetInstanceGroupManagerVersion>(map['versions'], (value) => GetInstanceGroupManagerVersion.fromMap((value as Map).cast<String, dynamic>())),
       waitForInstances: map['waitForInstances'] as bool,
       waitForInstancesStatus: map['waitForInstancesStatus'] as String,
-      zone: map['zone'] == null ? null : map['zone'] as String,
+      zone: map['zone'] == null ? null : map['zone']! as String,
     );
   }
 }

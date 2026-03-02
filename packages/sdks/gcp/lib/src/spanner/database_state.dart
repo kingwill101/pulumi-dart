@@ -81,17 +81,17 @@ class DatabaseState {
 
   factory DatabaseState.fromMap(Map<String, dynamic> map) {
     return DatabaseState(
-      databaseDialect: map['databaseDialect'] == null ? null : (map['databaseDialect'] as String).input(),
-      ddls: map['ddls'] == null ? null : ((map['ddls'] as List).cast<String>()).input(),
-      defaultTimeZone: map['defaultTimeZone'] == null ? null : (map['defaultTimeZone'] as String).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      enableDropProtection: map['enableDropProtection'] == null ? null : (map['enableDropProtection'] as bool).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (DatabaseEncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      versionRetentionPeriod: map['versionRetentionPeriod'] == null ? null : (map['versionRetentionPeriod'] as String).input(),
+      databaseDialect: map['databaseDialect'] == null ? null : (map['databaseDialect']! as String).input(),
+      ddls: map['ddls'] == null ? null : ((map['ddls']! as List).cast<String>()).input(),
+      defaultTimeZone: map['defaultTimeZone'] == null ? null : (map['defaultTimeZone']! as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
+      enableDropProtection: map['enableDropProtection'] == null ? null : (map['enableDropProtection']! as bool).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (DatabaseEncryptionConfig.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      versionRetentionPeriod: map['versionRetentionPeriod'] == null ? null : (map['versionRetentionPeriod']! as String).input(),
     );
   }
 }

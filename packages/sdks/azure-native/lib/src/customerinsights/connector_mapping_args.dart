@@ -72,13 +72,13 @@ class ConnectorMappingArgs {
   factory ConnectorMappingArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorMappingArgs(
       connectorName: (map['connectorName'] as String).input(),
-      connectorType: map['connectorType'] == null ? null : (map['connectorType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      connectorType: map['connectorType'] == null ? null : (map['connectorType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       entityType: (EntityTypes.fromValue(map['entityType'] as String)).input(),
       entityTypeName: (map['entityTypeName'] as String).input(),
       hubName: (map['hubName'] as String).input(),
-      mappingName: map['mappingName'] == null ? null : (map['mappingName'] as String).input(),
+      mappingName: map['mappingName'] == null ? null : (map['mappingName']! as String).input(),
       mappingProperties: (ConnectorMappingProperties.fromMap((map['mappingProperties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

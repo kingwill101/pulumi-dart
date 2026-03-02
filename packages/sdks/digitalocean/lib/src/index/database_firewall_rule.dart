@@ -35,9 +35,9 @@ class DatabaseFirewallRule {
 
   factory DatabaseFirewallRule.fromMap(Map<String, dynamic> map) {
     return DatabaseFirewallRule(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
       type: (map['type'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
       value: (map['value'] as String).input(),
     );
   }

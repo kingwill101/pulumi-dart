@@ -27,7 +27,7 @@ class UptimeCheckConfigContentMatcherJsonPathMatcher {
 
   factory UptimeCheckConfigContentMatcherJsonPathMatcher.fromMap(Map<String, dynamic> map) {
     return UptimeCheckConfigContentMatcherJsonPathMatcher(
-      jsonMatcher: map['jsonMatcher'] == null ? null : (map['jsonMatcher'] as String).input(),
+      jsonMatcher: map['jsonMatcher'] == null ? null : (map['jsonMatcher']! as String).input(),
       jsonPath: (map['jsonPath'] as String).input(),
     );
   }

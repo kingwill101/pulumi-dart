@@ -34,9 +34,9 @@ class ManagementPolicyActionResponse {
 
   factory ManagementPolicyActionResponse.fromMap(Map<String, dynamic> map) {
     return ManagementPolicyActionResponse(
-      baseBlob: map['baseBlob'] == null ? null : (ManagementPolicyBaseBlobResponse.fromMap((map['baseBlob'] as Map).cast<String, dynamic>())).input(),
-      snapshot: map['snapshot'] == null ? null : (ManagementPolicySnapShotResponse.fromMap((map['snapshot'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (ManagementPolicyVersionResponse.fromMap((map['version'] as Map).cast<String, dynamic>())).input(),
+      baseBlob: map['baseBlob'] == null ? null : (ManagementPolicyBaseBlobResponse.fromMap((map['baseBlob']! as Map).cast<String, dynamic>())).input(),
+      snapshot: map['snapshot'] == null ? null : (ManagementPolicySnapShotResponse.fromMap((map['snapshot']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (ManagementPolicyVersionResponse.fromMap((map['version']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

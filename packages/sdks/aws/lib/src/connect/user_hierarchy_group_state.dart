@@ -68,16 +68,16 @@ class UserHierarchyGroupState {
 
   factory UserHierarchyGroupState.fromMap(Map<String, dynamic> map) {
     return UserHierarchyGroupState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      hierarchyGroupId: map['hierarchyGroupId'] == null ? null : (map['hierarchyGroupId'] as String).input(),
-      hierarchyPaths: map['hierarchyPaths'] == null ? null : (pulumi.Input.decodeList<UserHierarchyGroupHierarchyPath>(map['hierarchyPaths'], (value) => UserHierarchyGroupHierarchyPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      levelId: map['levelId'] == null ? null : (map['levelId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentGroupId: map['parentGroupId'] == null ? null : (map['parentGroupId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      hierarchyGroupId: map['hierarchyGroupId'] == null ? null : ((map['hierarchyGroupId'] as String).input()).input(),
+      hierarchyPaths: map['hierarchyPaths'] == null ? null : ((pulumi.Input.decodeList<UserHierarchyGroupHierarchyPath>(map['hierarchyPaths']!, (value) => UserHierarchyGroupHierarchyPath.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      instanceId: map['instanceId'] == null ? null : ((map['instanceId'] as String).input()).input(),
+      levelId: map['levelId'] == null ? null : ((map['levelId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      parentGroupId: map['parentGroupId'] == null ? null : ((map['parentGroupId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

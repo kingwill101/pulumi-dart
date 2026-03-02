@@ -37,7 +37,7 @@ class GetClusterShardNode {
     return GetClusterShardNode(
       availabilityZone: (map['availabilityZone'] as String).input(),
       createTime: (map['createTime'] as String).input(),
-      endpoints: (pulumi.Input.decodeList<GetClusterShardNodeEndpoint>(map['endpoints'], (value) => GetClusterShardNodeEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endpoints: (pulumi.Input.decodeList<GetClusterShardNodeEndpoint>(map['endpoints']!, (value) => GetClusterShardNodeEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
     );
   }

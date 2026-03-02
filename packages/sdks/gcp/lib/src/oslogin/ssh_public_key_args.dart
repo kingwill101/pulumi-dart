@@ -39,9 +39,9 @@ class SshPublicKeyArgs {
 
   factory SshPublicKeyArgs.fromMap(Map<String, dynamic> map) {
     return SshPublicKeyArgs(
-      expirationTimeUsec: map['expirationTimeUsec'] == null ? null : (map['expirationTimeUsec'] as String).input(),
+      expirationTimeUsec: map['expirationTimeUsec'] == null ? null : (map['expirationTimeUsec']! as String).input(),
       key: (map['key'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       user: (map['user'] as String).input(),
     );
   }

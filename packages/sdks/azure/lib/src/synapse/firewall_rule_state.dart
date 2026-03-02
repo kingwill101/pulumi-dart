@@ -40,10 +40,10 @@ class FirewallRuleState {
 
   factory FirewallRuleState.fromMap(Map<String, dynamic> map) {
     return FirewallRuleState(
-      endIpAddress: map['endIpAddress'] == null ? null : (map['endIpAddress'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      startIpAddress: map['startIpAddress'] == null ? null : (map['startIpAddress'] as String).input(),
-      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : (map['synapseWorkspaceId'] as String).input(),
+      endIpAddress: map['endIpAddress'] == null ? null : (map['endIpAddress']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      startIpAddress: map['startIpAddress'] == null ? null : (map['startIpAddress']! as String).input(),
+      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : (map['synapseWorkspaceId']! as String).input(),
     );
   }
 }

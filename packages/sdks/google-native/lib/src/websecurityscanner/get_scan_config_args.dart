@@ -27,7 +27,7 @@ class GetScanConfigArgs {
 
   factory GetScanConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetScanConfigArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       scanConfigId: (map['scanConfigId'] as String).input(),
     );
   }

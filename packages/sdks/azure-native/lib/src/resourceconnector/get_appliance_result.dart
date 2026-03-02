@@ -89,19 +89,19 @@ class GetApplianceResult {
   factory GetApplianceResult.fromMap(Map<String, dynamic> map) {
     return GetApplianceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      distro: map['distro'] == null ? null : map['distro'] as String,
+      distro: map['distro'] == null ? null : map['distro']! as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : IdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      infrastructureConfig: map['infrastructureConfig'] == null ? null : AppliancePropertiesInfrastructureConfigResponse.fromMap((map['infrastructureConfig'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : IdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      infrastructureConfig: map['infrastructureConfig'] == null ? null : AppliancePropertiesInfrastructureConfigResponse.fromMap((map['infrastructureConfig']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      publicKey: map['publicKey'] == null ? null : map['publicKey'] as String,
+      publicKey: map['publicKey'] == null ? null : map['publicKey']! as String,
       status: map['status'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      version: map['version'] == null ? null : map['version']! as String,
     );
   }
 }

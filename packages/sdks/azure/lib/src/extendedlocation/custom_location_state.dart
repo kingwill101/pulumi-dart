@@ -62,15 +62,15 @@ class CustomLocationState {
 
   factory CustomLocationState.fromMap(Map<String, dynamic> map) {
     return CustomLocationState(
-      authentication: map['authentication'] == null ? null : (CustomLocationAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      clusterExtensionIds: map['clusterExtensionIds'] == null ? null : ((map['clusterExtensionIds'] as List).cast<String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      hostResourceId: map['hostResourceId'] == null ? null : (map['hostResourceId'] as String).input(),
-      hostType: map['hostType'] == null ? null : (map['hostType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      authentication: map['authentication'] == null ? null : (CustomLocationAuthentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
+      clusterExtensionIds: map['clusterExtensionIds'] == null ? null : ((map['clusterExtensionIds']! as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      hostResourceId: map['hostResourceId'] == null ? null : (map['hostResourceId']! as String).input(),
+      hostType: map['hostType'] == null ? null : (map['hostType']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

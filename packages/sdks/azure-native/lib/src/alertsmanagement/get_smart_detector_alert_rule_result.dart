@@ -90,17 +90,17 @@ class GetSmartDetectorAlertRuleResult {
     return GetSmartDetectorAlertRuleResult(
       actionGroups: ActionGroupsInformationResponse.fromMap((map['actionGroups'] as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       detector: DetectorResponse.fromMap((map['detector'] as Map).cast<String, dynamic>()),
       frequency: map['frequency'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       scope: (map['scope'] as List).cast<String>(),
       severity: map['severity'] as String,
       state: map['state'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      throttling: map['throttling'] == null ? null : ThrottlingInformationResponse.fromMap((map['throttling'] as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      throttling: map['throttling'] == null ? null : ThrottlingInformationResponse.fromMap((map['throttling']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }

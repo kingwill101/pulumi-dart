@@ -85,19 +85,19 @@ class PoolState {
 
   factory PoolState.fromMap(Map<String, dynamic> map) {
     return PoolState(
-      allocation: map['allocation'] == null ? null : (map['allocation'] as double).input(),
-      allocationUnit: map['allocationUnit'] == null ? null : (map['allocationUnit'] as String).input(),
-      available: map['available'] == null ? null : (map['available'] as double).input(),
-      availableUnit: map['availableUnit'] == null ? null : (map['availableUnit'] as String).input(),
-      capacity: map['capacity'] == null ? null : (map['capacity'] as double).input(),
-      capacityUnit: map['capacityUnit'] == null ? null : (map['capacityUnit'] as String).input(),
-      features: map['features'] == null ? null : (PoolFeatures.fromMap((map['features'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      refresh: map['refresh'] == null ? null : (PoolRefresh.fromMap((map['refresh'] as Map).cast<String, dynamic>())).input(),
-      source: map['source'] == null ? null : (PoolSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      target: map['target'] == null ? null : (PoolTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      allocation: map['allocation'] == null ? null : (map['allocation']! as double).input(),
+      allocationUnit: map['allocationUnit'] == null ? null : (map['allocationUnit']! as String).input(),
+      available: map['available'] == null ? null : (map['available']! as double).input(),
+      availableUnit: map['availableUnit'] == null ? null : (map['availableUnit']! as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as double).input(),
+      capacityUnit: map['capacityUnit'] == null ? null : (map['capacityUnit']! as String).input(),
+      features: map['features'] == null ? null : (PoolFeatures.fromMap((map['features']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      refresh: map['refresh'] == null ? null : (PoolRefresh.fromMap((map['refresh']! as Map).cast<String, dynamic>())).input(),
+      source: map['source'] == null ? null : (PoolSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (PoolTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

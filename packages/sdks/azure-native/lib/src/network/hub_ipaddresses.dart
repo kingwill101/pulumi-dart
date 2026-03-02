@@ -27,8 +27,8 @@ class HubIPAddresses {
 
   factory HubIPAddresses.fromMap(Map<String, dynamic> map) {
     return HubIPAddresses(
-      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
-      publicIPs: map['publicIPs'] == null ? null : (HubPublicIPAddresses.fromMap((map['publicIPs'] as Map).cast<String, dynamic>())).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress']! as String).input(),
+      publicIPs: map['publicIPs'] == null ? null : (HubPublicIPAddresses.fromMap((map['publicIPs']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -81,17 +81,17 @@ class NetworkState {
 
   factory NetworkState.fromMap(Map<String, dynamic> map) {
     return NetworkState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      vpcNetworks: map['vpcNetworks'] == null ? null : (pulumi.Input.decodeList<NetworkVpcNetwork>(map['vpcNetworks'], (value) => NetworkVpcNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      vpcNetworks: map['vpcNetworks'] == null ? null : (pulumi.Input.decodeList<NetworkVpcNetwork>(map['vpcNetworks']!, (value) => NetworkVpcNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class DailyRetentionFormatResponse {
 
   factory DailyRetentionFormatResponse.fromMap(Map<String, dynamic> map) {
     return DailyRetentionFormatResponse(
-      daysOfTheMonth: map['daysOfTheMonth'] == null ? null : (pulumi.Input.decodeList<DayResponse>(map['daysOfTheMonth'], (value) => DayResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      daysOfTheMonth: map['daysOfTheMonth'] == null ? null : (pulumi.Input.decodeList<DayResponse>(map['daysOfTheMonth']!, (value) => DayResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -55,13 +55,13 @@ class StartTask {
 
   factory StartTask.fromMap(Map<String, dynamic> map) {
     return StartTask(
-      commandLine: map['commandLine'] == null ? null : (map['commandLine'] as String).input(),
-      containerSettings: map['containerSettings'] == null ? null : (TaskContainerSettings.fromMap((map['containerSettings'] as Map).cast<String, dynamic>())).input(),
-      environmentSettings: map['environmentSettings'] == null ? null : (pulumi.Input.decodeList<EnvironmentSetting>(map['environmentSettings'], (value) => EnvironmentSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maxTaskRetryCount: map['maxTaskRetryCount'] == null ? null : (map['maxTaskRetryCount'] as int).input(),
-      resourceFiles: map['resourceFiles'] == null ? null : (pulumi.Input.decodeList<ResourceFile>(map['resourceFiles'], (value) => ResourceFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      userIdentity: map['userIdentity'] == null ? null : (UserIdentity.fromMap((map['userIdentity'] as Map).cast<String, dynamic>())).input(),
-      waitForSuccess: map['waitForSuccess'] == null ? null : (map['waitForSuccess'] as bool).input(),
+      commandLine: map['commandLine'] == null ? null : (map['commandLine']! as String).input(),
+      containerSettings: map['containerSettings'] == null ? null : (TaskContainerSettings.fromMap((map['containerSettings']! as Map).cast<String, dynamic>())).input(),
+      environmentSettings: map['environmentSettings'] == null ? null : (pulumi.Input.decodeList<EnvironmentSetting>(map['environmentSettings']!, (value) => EnvironmentSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxTaskRetryCount: map['maxTaskRetryCount'] == null ? null : (map['maxTaskRetryCount']! as int).input(),
+      resourceFiles: map['resourceFiles'] == null ? null : (pulumi.Input.decodeList<ResourceFile>(map['resourceFiles']!, (value) => ResourceFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userIdentity: map['userIdentity'] == null ? null : (UserIdentity.fromMap((map['userIdentity']! as Map).cast<String, dynamic>())).input(),
+      waitForSuccess: map['waitForSuccess'] == null ? null : (map['waitForSuccess']! as bool).input(),
     );
   }
 }

@@ -47,12 +47,12 @@ class ExceptionEntryResponse {
 
   factory ExceptionEntryResponse.fromMap(Map<String, dynamic> map) {
     return ExceptionEntryResponse(
-      exceptionManagedRuleSets: map['exceptionManagedRuleSets'] == null ? null : (pulumi.Input.decodeList<ExclusionManagedRuleSetResponse>(map['exceptionManagedRuleSets'], (value) => ExclusionManagedRuleSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      exceptionManagedRuleSets: map['exceptionManagedRuleSets'] == null ? null : (pulumi.Input.decodeList<ExclusionManagedRuleSetResponse>(map['exceptionManagedRuleSets']!, (value) => ExclusionManagedRuleSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       matchVariable: (map['matchVariable'] as String).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
-      selectorMatchOperator: map['selectorMatchOperator'] == null ? null : (map['selectorMatchOperator'] as String).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
+      selectorMatchOperator: map['selectorMatchOperator'] == null ? null : (map['selectorMatchOperator']! as String).input(),
       valueMatchOperator: (map['valueMatchOperator'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

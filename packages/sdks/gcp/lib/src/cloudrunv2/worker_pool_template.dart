@@ -91,18 +91,18 @@ class WorkerPoolTemplate {
 
   factory WorkerPoolTemplate.fromMap(Map<String, dynamic> map) {
     return WorkerPoolTemplate(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<WorkerPoolTemplateContainer>(map['containers'], (value) => WorkerPoolTemplateContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      encryptionKey: map['encryptionKey'] == null ? null : (map['encryptionKey'] as String).input(),
-      encryptionKeyRevocationAction: map['encryptionKeyRevocationAction'] == null ? null : (map['encryptionKeyRevocationAction'] as String).input(),
-      encryptionKeyShutdownDuration: map['encryptionKeyShutdownDuration'] == null ? null : (map['encryptionKeyShutdownDuration'] as String).input(),
-      gpuZonalRedundancyDisabled: map['gpuZonalRedundancyDisabled'] == null ? null : (map['gpuZonalRedundancyDisabled'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      nodeSelector: map['nodeSelector'] == null ? null : (WorkerPoolTemplateNodeSelector.fromMap((map['nodeSelector'] as Map).cast<String, dynamic>())).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<WorkerPoolTemplateVolume>(map['volumes'], (value) => WorkerPoolTemplateVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpcAccess: map['vpcAccess'] == null ? null : (WorkerPoolTemplateVpcAccess.fromMap((map['vpcAccess'] as Map).cast<String, dynamic>())).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<WorkerPoolTemplateContainer>(map['containers']!, (value) => WorkerPoolTemplateContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encryptionKey: map['encryptionKey'] == null ? null : (map['encryptionKey']! as String).input(),
+      encryptionKeyRevocationAction: map['encryptionKeyRevocationAction'] == null ? null : (map['encryptionKeyRevocationAction']! as String).input(),
+      encryptionKeyShutdownDuration: map['encryptionKeyShutdownDuration'] == null ? null : (map['encryptionKeyShutdownDuration']! as String).input(),
+      gpuZonalRedundancyDisabled: map['gpuZonalRedundancyDisabled'] == null ? null : (map['gpuZonalRedundancyDisabled']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      nodeSelector: map['nodeSelector'] == null ? null : (WorkerPoolTemplateNodeSelector.fromMap((map['nodeSelector']! as Map).cast<String, dynamic>())).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<WorkerPoolTemplateVolume>(map['volumes']!, (value) => WorkerPoolTemplateVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcAccess: map['vpcAccess'] == null ? null : (WorkerPoolTemplateVpcAccess.fromMap((map['vpcAccess']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

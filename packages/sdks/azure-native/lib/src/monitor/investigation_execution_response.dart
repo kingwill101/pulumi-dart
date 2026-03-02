@@ -26,7 +26,7 @@ class InvestigationExecutionResponse {
 
   factory InvestigationExecutionResponse.fromMap(Map<String, dynamic> map) {
     return InvestigationExecutionResponse(
-      completedAt: map['completedAt'] == null ? null : (map['completedAt'] as String).input(),
+      completedAt: map['completedAt'] == null ? null : (map['completedAt']! as String).input(),
       runState: (map['runState'] as String).input(),
     );
   }

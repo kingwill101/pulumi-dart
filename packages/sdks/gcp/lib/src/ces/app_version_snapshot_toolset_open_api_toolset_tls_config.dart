@@ -24,7 +24,7 @@ class AppVersionSnapshotToolsetOpenApiToolsetTlsConfig {
 
   factory AppVersionSnapshotToolsetOpenApiToolsetTlsConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolsetOpenApiToolsetTlsConfig(
-      caCerts: map['caCerts'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCert>(map['caCerts'], (value) => AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCert.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      caCerts: map['caCerts'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCert>(map['caCerts']!, (value) => AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCert.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

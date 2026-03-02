@@ -31,9 +31,9 @@ class SkippedDetail {
 
   factory SkippedDetail.fromMap(Map<String, dynamic> map) {
     return SkippedDetail(
-      incompatibleAppVersion: map['incompatibleAppVersion'] == null ? null : (map['incompatibleAppVersion'] as bool).input(),
-      incompatibleArchitecture: map['incompatibleArchitecture'] == null ? null : (map['incompatibleArchitecture'] as bool).input(),
-      incompatibleDevice: map['incompatibleDevice'] == null ? null : (map['incompatibleDevice'] as bool).input(),
+      incompatibleAppVersion: map['incompatibleAppVersion'] == null ? null : (map['incompatibleAppVersion']! as bool).input(),
+      incompatibleArchitecture: map['incompatibleArchitecture'] == null ? null : (map['incompatibleArchitecture']! as bool).input(),
+      incompatibleDevice: map['incompatibleDevice'] == null ? null : (map['incompatibleDevice']! as bool).input(),
     );
   }
 }

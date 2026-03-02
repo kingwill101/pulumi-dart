@@ -46,12 +46,12 @@ class AzureLinkAccountState {
 
   factory AzureLinkAccountState.fromMap(Map<String, dynamic> map) {
     return AzureLinkAccountState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

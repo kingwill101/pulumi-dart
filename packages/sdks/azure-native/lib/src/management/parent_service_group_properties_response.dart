@@ -21,7 +21,7 @@ class ParentServiceGroupPropertiesResponse {
 
   factory ParentServiceGroupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ParentServiceGroupPropertiesResponse(
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

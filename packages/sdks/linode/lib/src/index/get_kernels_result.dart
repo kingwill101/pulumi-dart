@@ -39,11 +39,11 @@ class GetKernelsResult {
 
   factory GetKernelsResult.fromMap(Map<String, dynamic> map) {
     return GetKernelsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetKernelsFilter>(map['filters'], (value) => GetKernelsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetKernelsFilter>(map['filters']!, (value) => GetKernelsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       kernels: pulumi.Input.decodeList<GetKernelsKernel>(map['kernels'], (value) => GetKernelsKernel.fromMap((value as Map).cast<String, dynamic>())),
-      order: map['order'] == null ? null : map['order'] as String,
-      orderBy: map['orderBy'] == null ? null : map['orderBy'] as String,
+      order: map['order'] == null ? null : map['order']! as String,
+      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
     );
   }
 }

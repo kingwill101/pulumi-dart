@@ -50,12 +50,12 @@ class FutureReservationStatusLastKnownGoodState {
 
   factory FutureReservationStatusLastKnownGoodState.fromMap(Map<String, dynamic> map) {
     return FutureReservationStatusLastKnownGoodState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      existingMatchingUsageInfo: map['existingMatchingUsageInfo'] == null ? null : (FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo.fromMap((map['existingMatchingUsageInfo'] as Map).cast<String, dynamic>())).input(),
-      futureReservationSpecs: map['futureReservationSpecs'] == null ? null : (FutureReservationStatusLastKnownGoodStateFutureReservationSpecs.fromMap((map['futureReservationSpecs'] as Map).cast<String, dynamic>())).input(),
-      lockTime: map['lockTime'] == null ? null : (map['lockTime'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      procurementStatus: map['procurementStatus'] == null ? null : (map['procurementStatus'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      existingMatchingUsageInfo: map['existingMatchingUsageInfo'] == null ? null : (FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo.fromMap((map['existingMatchingUsageInfo']! as Map).cast<String, dynamic>())).input(),
+      futureReservationSpecs: map['futureReservationSpecs'] == null ? null : (FutureReservationStatusLastKnownGoodStateFutureReservationSpecs.fromMap((map['futureReservationSpecs']! as Map).cast<String, dynamic>())).input(),
+      lockTime: map['lockTime'] == null ? null : (map['lockTime']! as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix']! as String).input(),
+      procurementStatus: map['procurementStatus'] == null ? null : (map['procurementStatus']! as String).input(),
     );
   }
 }

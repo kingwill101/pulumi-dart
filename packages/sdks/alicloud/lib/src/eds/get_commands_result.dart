@@ -50,14 +50,14 @@ class GetCommandsResult {
 
   factory GetCommandsResult.fromMap(Map<String, dynamic> map) {
     return GetCommandsResult(
-      commandType: map['commandType'] == null ? null : map['commandType'] as String,
+      commandType: map['commandType'] == null ? null : map['commandType']! as String,
       commands: pulumi.Input.decodeList<GetCommandsCommand>(map['commands'], (value) => GetCommandsCommand.fromMap((value as Map).cast<String, dynamic>())),
-      contentEncoding: map['contentEncoding'] == null ? null : map['contentEncoding'] as String,
-      desktopId: map['desktopId'] == null ? null : map['desktopId'] as String,
+      contentEncoding: map['contentEncoding'] == null ? null : map['contentEncoding']! as String,
+      desktopId: map['desktopId'] == null ? null : map['desktopId']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

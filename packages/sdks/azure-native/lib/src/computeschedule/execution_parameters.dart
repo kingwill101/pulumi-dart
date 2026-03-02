@@ -27,8 +27,8 @@ class ExecutionParameters {
 
   factory ExecutionParameters.fromMap(Map<String, dynamic> map) {
     return ExecutionParameters(
-      optimizationPreference: map['optimizationPreference'] == null ? null : (map['optimizationPreference'] as String).input(),
-      retryPolicy: map['retryPolicy'] == null ? null : (RetryPolicy.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())).input(),
+      optimizationPreference: map['optimizationPreference'] == null ? null : (map['optimizationPreference']! as String).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (RetryPolicy.fromMap((map['retryPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -64,13 +64,13 @@ class StreamRuleSetObjectFilterSourceObjectIdentifier {
 
   factory StreamRuleSetObjectFilterSourceObjectIdentifier.fromMap(Map<String, dynamic> map) {
     return StreamRuleSetObjectFilterSourceObjectIdentifier(
-      mongodbIdentifier: map['mongodbIdentifier'] == null ? null : (StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier.fromMap((map['mongodbIdentifier'] as Map).cast<String, dynamic>())).input(),
-      mysqlIdentifier: map['mysqlIdentifier'] == null ? null : (StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier.fromMap((map['mysqlIdentifier'] as Map).cast<String, dynamic>())).input(),
-      oracleIdentifier: map['oracleIdentifier'] == null ? null : (StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier.fromMap((map['oracleIdentifier'] as Map).cast<String, dynamic>())).input(),
-      postgresqlIdentifier: map['postgresqlIdentifier'] == null ? null : (StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier.fromMap((map['postgresqlIdentifier'] as Map).cast<String, dynamic>())).input(),
-      salesforceIdentifier: map['salesforceIdentifier'] == null ? null : (StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier.fromMap((map['salesforceIdentifier'] as Map).cast<String, dynamic>())).input(),
-      spannerIdentifier: map['spannerIdentifier'] == null ? null : (StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier.fromMap((map['spannerIdentifier'] as Map).cast<String, dynamic>())).input(),
-      sqlServerIdentifier: map['sqlServerIdentifier'] == null ? null : (StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier.fromMap((map['sqlServerIdentifier'] as Map).cast<String, dynamic>())).input(),
+      mongodbIdentifier: map['mongodbIdentifier'] == null ? null : (StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier.fromMap((map['mongodbIdentifier']! as Map).cast<String, dynamic>())).input(),
+      mysqlIdentifier: map['mysqlIdentifier'] == null ? null : (StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier.fromMap((map['mysqlIdentifier']! as Map).cast<String, dynamic>())).input(),
+      oracleIdentifier: map['oracleIdentifier'] == null ? null : (StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier.fromMap((map['oracleIdentifier']! as Map).cast<String, dynamic>())).input(),
+      postgresqlIdentifier: map['postgresqlIdentifier'] == null ? null : (StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier.fromMap((map['postgresqlIdentifier']! as Map).cast<String, dynamic>())).input(),
+      salesforceIdentifier: map['salesforceIdentifier'] == null ? null : (StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier.fromMap((map['salesforceIdentifier']! as Map).cast<String, dynamic>())).input(),
+      spannerIdentifier: map['spannerIdentifier'] == null ? null : (StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier.fromMap((map['spannerIdentifier']! as Map).cast<String, dynamic>())).input(),
+      sqlServerIdentifier: map['sqlServerIdentifier'] == null ? null : (StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier.fromMap((map['sqlServerIdentifier']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

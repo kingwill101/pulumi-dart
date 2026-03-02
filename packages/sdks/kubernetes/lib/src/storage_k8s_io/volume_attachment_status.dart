@@ -37,10 +37,10 @@ class VolumeAttachmentStatus {
 
   factory VolumeAttachmentStatus.fromMap(Map<String, dynamic> map) {
     return VolumeAttachmentStatus(
-      attachError: map['attachError'] == null ? null : (VolumeError.fromMap((map['attachError'] as Map).cast<String, dynamic>())).input(),
+      attachError: map['attachError'] == null ? null : (VolumeError.fromMap((map['attachError']! as Map).cast<String, dynamic>())).input(),
       attached: (map['attached'] as bool).input(),
-      attachmentMetadata: map['attachmentMetadata'] == null ? null : ((map['attachmentMetadata'] as Map).cast<String, String>()).input(),
-      detachError: map['detachError'] == null ? null : (VolumeError.fromMap((map['detachError'] as Map).cast<String, dynamic>())).input(),
+      attachmentMetadata: map['attachmentMetadata'] == null ? null : ((map['attachmentMetadata']! as Map).cast<String, String>()).input(),
+      detachError: map['detachError'] == null ? null : (VolumeError.fromMap((map['detachError']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class MysqlRdbms {
 
   factory MysqlRdbms.fromMap(Map<String, dynamic> map) {
     return MysqlRdbms(
-      mysqlDatabases: map['mysqlDatabases'] == null ? null : (pulumi.Input.decodeList<MysqlDatabase>(map['mysqlDatabases'], (value) => MysqlDatabase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mysqlDatabases: map['mysqlDatabases'] == null ? null : (pulumi.Input.decodeList<MysqlDatabase>(map['mysqlDatabases']!, (value) => MysqlDatabase.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

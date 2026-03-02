@@ -28,7 +28,7 @@ class GetOccurrenceContaineranalysisV1beta1Args {
   factory GetOccurrenceContaineranalysisV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetOccurrenceContaineranalysisV1beta1Args(
       occurrenceId: (map['occurrenceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -61,15 +61,15 @@ class ClusterSnapshotState {
 
   factory ClusterSnapshotState.fromMap(Map<String, dynamic> map) {
     return ClusterSnapshotState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : (map['clusterIdentifier'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      manualSnapshotRetentionPeriod: map['manualSnapshotRetentionPeriod'] == null ? null : (map['manualSnapshotRetentionPeriod'] as int).input(),
-      ownerAccount: map['ownerAccount'] == null ? null : (map['ownerAccount'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      snapshotIdentifier: map['snapshotIdentifier'] == null ? null : (map['snapshotIdentifier'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      clusterIdentifier: map['clusterIdentifier'] == null ? null : ((map['clusterIdentifier'] as String).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      manualSnapshotRetentionPeriod: map['manualSnapshotRetentionPeriod'] == null ? null : ((map['manualSnapshotRetentionPeriod'] as int).input()).input(),
+      ownerAccount: map['ownerAccount'] == null ? null : ((map['ownerAccount'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      snapshotIdentifier: map['snapshotIdentifier'] == null ? null : ((map['snapshotIdentifier'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

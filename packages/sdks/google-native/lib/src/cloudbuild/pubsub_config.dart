@@ -32,9 +32,9 @@ class PubsubConfig {
 
   factory PubsubConfig.fromMap(Map<String, dynamic> map) {
     return PubsubConfig(
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
-      state: map['state'] == null ? null : (PubsubConfigState.fromValue(map['state'] as String)).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
+      state: map['state'] == null ? null : (PubsubConfigState.fromValue(map['state']! as String)).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

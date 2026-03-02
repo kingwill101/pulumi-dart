@@ -104,22 +104,22 @@ class ExtensionArgs {
 
   factory ExtensionArgs.fromMap(Map<String, dynamic> map) {
     return ExtensionArgs(
-      aksAssignedIdentity: map['aksAssignedIdentity'] == null ? null : (ExtensionAksAssignedIdentity.fromMap((map['aksAssignedIdentity'] as Map).cast<String, dynamic>())).input(),
-      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : (map['autoUpgradeMinorVersion'] as bool).input(),
+      aksAssignedIdentity: map['aksAssignedIdentity'] == null ? null : (ExtensionAksAssignedIdentity.fromMap((map['aksAssignedIdentity']! as Map).cast<String, dynamic>())).input(),
+      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : (map['autoUpgradeMinorVersion']! as bool).input(),
       clusterName: (map['clusterName'] as String).input(),
       clusterResourceName: (map['clusterResourceName'] as String).input(),
       clusterRp: (map['clusterRp'] as String).input(),
-      configurationProtectedSettings: map['configurationProtectedSettings'] == null ? null : ((map['configurationProtectedSettings'] as Map).cast<String, String>()).input(),
-      configurationSettings: map['configurationSettings'] == null ? null : ((map['configurationSettings'] as Map).cast<String, String>()).input(),
-      extensionName: map['extensionName'] == null ? null : (map['extensionName'] as String).input(),
-      extensionType: map['extensionType'] == null ? null : (map['extensionType'] as String).input(),
-      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      plan: map['plan'] == null ? null : (Plan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
-      releaseTrain: map['releaseTrain'] == null ? null : (map['releaseTrain'] as String).input(),
+      configurationProtectedSettings: map['configurationProtectedSettings'] == null ? null : ((map['configurationProtectedSettings']! as Map).cast<String, String>()).input(),
+      configurationSettings: map['configurationSettings'] == null ? null : ((map['configurationSettings']! as Map).cast<String, String>()).input(),
+      extensionName: map['extensionName'] == null ? null : (map['extensionName']! as String).input(),
+      extensionType: map['extensionType'] == null ? null : (map['extensionType']! as String).input(),
+      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      plan: map['plan'] == null ? null : (Plan.fromMap((map['plan']! as Map).cast<String, dynamic>())).input(),
+      releaseTrain: map['releaseTrain'] == null ? null : (map['releaseTrain']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scope: map['scope'] == null ? null : (Scope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<ExtensionStatus>(map['statuses'], (value) => ExtensionStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      scope: map['scope'] == null ? null : (Scope.fromMap((map['scope']! as Map).cast<String, dynamic>())).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<ExtensionStatus>(map['statuses']!, (value) => ExtensionStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

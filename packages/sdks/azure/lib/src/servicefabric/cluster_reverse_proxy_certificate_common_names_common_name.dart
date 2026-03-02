@@ -28,7 +28,7 @@ class ClusterReverseProxyCertificateCommonNamesCommonName {
   factory ClusterReverseProxyCertificateCommonNamesCommonName.fromMap(Map<String, dynamic> map) {
     return ClusterReverseProxyCertificateCommonNamesCommonName(
       certificateCommonName: (map['certificateCommonName'] as String).input(),
-      certificateIssuerThumbprint: map['certificateIssuerThumbprint'] == null ? null : (map['certificateIssuerThumbprint'] as String).input(),
+      certificateIssuerThumbprint: map['certificateIssuerThumbprint'] == null ? null : (map['certificateIssuerThumbprint']! as String).input(),
     );
   }
 }

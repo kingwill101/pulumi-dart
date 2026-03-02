@@ -66,15 +66,15 @@ class ExportTaskArgs {
 
   factory ExportTaskArgs.fromMap(Map<String, dynamic> map) {
     return ExportTaskArgs(
-      exportOnlies: map['exportOnlies'] == null ? null : ((map['exportOnlies'] as List).cast<String>()).input(),
+      exportOnlies: map['exportOnlies'] == null ? null : (((map['exportOnlies'] as List).cast<String>()).input()).input(),
       exportTaskIdentifier: (map['exportTaskIdentifier'] as String).input(),
       iamRoleArn: (map['iamRoleArn'] as String).input(),
       kmsKeyId: (map['kmsKeyId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       s3BucketName: (map['s3BucketName'] as String).input(),
-      s3Prefix: map['s3Prefix'] == null ? null : (map['s3Prefix'] as String).input(),
+      s3Prefix: map['s3Prefix'] == null ? null : ((map['s3Prefix'] as String).input()).input(),
       sourceArn: (map['sourceArn'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (ExportTaskTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      timeouts: map['timeouts'] == null ? null : ((ExportTaskTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

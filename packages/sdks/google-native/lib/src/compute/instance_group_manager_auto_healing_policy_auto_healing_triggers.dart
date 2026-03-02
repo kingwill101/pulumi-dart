@@ -21,7 +21,7 @@ class InstanceGroupManagerAutoHealingPolicyAutoHealingTriggers {
 
   factory InstanceGroupManagerAutoHealingPolicyAutoHealingTriggers.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerAutoHealingPolicyAutoHealingTriggers(
-      onHealthCheck: map['onHealthCheck'] == null ? null : (InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck.fromValue(map['onHealthCheck'] as String)).input(),
+      onHealthCheck: map['onHealthCheck'] == null ? null : (InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck.fromValue(map['onHealthCheck']! as String)).input(),
     );
   }
 }

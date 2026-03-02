@@ -52,11 +52,11 @@ class AiLogicConfigState {
 
   factory AiLogicConfigState.fromMap(Map<String, dynamic> map) {
     return AiLogicConfigState(
-      generativeLanguageConfig: map['generativeLanguageConfig'] == null ? null : (AiLogicConfigGenerativeLanguageConfig.fromMap((map['generativeLanguageConfig'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      telemetryConfig: map['telemetryConfig'] == null ? null : (AiLogicConfigTelemetryConfig.fromMap((map['telemetryConfig'] as Map).cast<String, dynamic>())).input(),
+      generativeLanguageConfig: map['generativeLanguageConfig'] == null ? null : (AiLogicConfigGenerativeLanguageConfig.fromMap((map['generativeLanguageConfig']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      telemetryConfig: map['telemetryConfig'] == null ? null : (AiLogicConfigTelemetryConfig.fromMap((map['telemetryConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

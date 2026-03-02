@@ -33,9 +33,9 @@ class PeeringPropertiesDirect {
 
   factory PeeringPropertiesDirect.fromMap(Map<String, dynamic> map) {
     return PeeringPropertiesDirect(
-      connections: map['connections'] == null ? null : (pulumi.Input.decodeList<DirectConnection>(map['connections'], (value) => DirectConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      directPeeringType: map['directPeeringType'] == null ? null : (map['directPeeringType'] as String).input(),
-      peerAsn: map['peerAsn'] == null ? null : (SubResource.fromMap((map['peerAsn'] as Map).cast<String, dynamic>())).input(),
+      connections: map['connections'] == null ? null : (pulumi.Input.decodeList<DirectConnection>(map['connections']!, (value) => DirectConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      directPeeringType: map['directPeeringType'] == null ? null : (map['directPeeringType']! as String).input(),
+      peerAsn: map['peerAsn'] == null ? null : (SubResource.fromMap((map['peerAsn']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

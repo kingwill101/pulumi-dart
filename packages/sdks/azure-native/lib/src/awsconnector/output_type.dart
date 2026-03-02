@@ -36,10 +36,10 @@ class OutputType {
 
   factory OutputType.fromMap(Map<String, dynamic> map) {
     return OutputType(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      exportName: map['exportName'] == null ? null : (map['exportName'] as String).input(),
-      outputKey: map['outputKey'] == null ? null : (map['outputKey'] as String).input(),
-      outputValue: map['outputValue'] == null ? null : (map['outputValue'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      exportName: map['exportName'] == null ? null : (map['exportName']! as String).input(),
+      outputKey: map['outputKey'] == null ? null : (map['outputKey']! as String).input(),
+      outputValue: map['outputValue'] == null ? null : (map['outputValue']! as String).input(),
     );
   }
 }

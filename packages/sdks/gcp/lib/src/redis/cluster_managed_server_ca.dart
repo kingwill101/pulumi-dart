@@ -23,7 +23,7 @@ class ClusterManagedServerCa {
 
   factory ClusterManagedServerCa.fromMap(Map<String, dynamic> map) {
     return ClusterManagedServerCa(
-      caCerts: map['caCerts'] == null ? null : (pulumi.Input.decodeList<ClusterManagedServerCaCaCert>(map['caCerts'], (value) => ClusterManagedServerCaCaCert.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      caCerts: map['caCerts'] == null ? null : (pulumi.Input.decodeList<ClusterManagedServerCaCaCert>(map['caCerts']!, (value) => ClusterManagedServerCaCaCert.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

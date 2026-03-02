@@ -26,8 +26,8 @@ class EntityReference {
 
   factory EntityReference.fromMap(Map<String, dynamic> map) {
     return EntityReference(
-      referenceName: map['referenceName'] == null ? null : (map['referenceName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      referenceName: map['referenceName'] == null ? null : (map['referenceName']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

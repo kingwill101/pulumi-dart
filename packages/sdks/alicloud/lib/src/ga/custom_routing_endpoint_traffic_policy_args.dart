@@ -37,7 +37,7 @@ class CustomRoutingEndpointTrafficPolicyArgs {
     return CustomRoutingEndpointTrafficPolicyArgs(
       address: (map['address'] as String).input(),
       endpointId: (map['endpointId'] as String).input(),
-      portRanges: map['portRanges'] == null ? null : (pulumi.Input.decodeList<CustomRoutingEndpointTrafficPolicyPortRange>(map['portRanges'], (value) => CustomRoutingEndpointTrafficPolicyPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      portRanges: map['portRanges'] == null ? null : (pulumi.Input.decodeList<CustomRoutingEndpointTrafficPolicyPortRange>(map['portRanges']!, (value) => CustomRoutingEndpointTrafficPolicyPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

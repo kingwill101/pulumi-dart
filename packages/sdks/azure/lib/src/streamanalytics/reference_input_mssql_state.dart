@@ -76,18 +76,18 @@ class ReferenceInputMssqlState {
 
   factory ReferenceInputMssqlState.fromMap(Map<String, dynamic> map) {
     return ReferenceInputMssqlState(
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      deltaSnapshotQuery: map['deltaSnapshotQuery'] == null ? null : (map['deltaSnapshotQuery'] as String).input(),
-      fullSnapshotQuery: map['fullSnapshotQuery'] == null ? null : (map['fullSnapshotQuery'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      refreshIntervalDuration: map['refreshIntervalDuration'] == null ? null : (map['refreshIntervalDuration'] as String).input(),
-      refreshType: map['refreshType'] == null ? null : (map['refreshType'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      server: map['server'] == null ? null : (map['server'] as String).input(),
-      streamAnalyticsJobName: map['streamAnalyticsJobName'] == null ? null : (map['streamAnalyticsJobName'] as String).input(),
-      table: map['table'] == null ? null : (map['table'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      deltaSnapshotQuery: map['deltaSnapshotQuery'] == null ? null : (map['deltaSnapshotQuery']! as String).input(),
+      fullSnapshotQuery: map['fullSnapshotQuery'] == null ? null : (map['fullSnapshotQuery']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      refreshIntervalDuration: map['refreshIntervalDuration'] == null ? null : (map['refreshIntervalDuration']! as String).input(),
+      refreshType: map['refreshType'] == null ? null : (map['refreshType']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      server: map['server'] == null ? null : (map['server']! as String).input(),
+      streamAnalyticsJobName: map['streamAnalyticsJobName'] == null ? null : (map['streamAnalyticsJobName']! as String).input(),
+      table: map['table'] == null ? null : (map['table']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

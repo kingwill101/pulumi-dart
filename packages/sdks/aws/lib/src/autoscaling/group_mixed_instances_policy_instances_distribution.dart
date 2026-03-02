@@ -45,12 +45,12 @@ class GroupMixedInstancesPolicyInstancesDistribution {
 
   factory GroupMixedInstancesPolicyInstancesDistribution.fromMap(Map<String, dynamic> map) {
     return GroupMixedInstancesPolicyInstancesDistribution(
-      onDemandAllocationStrategy: map['onDemandAllocationStrategy'] == null ? null : (map['onDemandAllocationStrategy'] as String).input(),
-      onDemandBaseCapacity: map['onDemandBaseCapacity'] == null ? null : (map['onDemandBaseCapacity'] as int).input(),
-      onDemandPercentageAboveBaseCapacity: map['onDemandPercentageAboveBaseCapacity'] == null ? null : (map['onDemandPercentageAboveBaseCapacity'] as int).input(),
-      spotAllocationStrategy: map['spotAllocationStrategy'] == null ? null : (map['spotAllocationStrategy'] as String).input(),
-      spotInstancePools: map['spotInstancePools'] == null ? null : (map['spotInstancePools'] as int).input(),
-      spotMaxPrice: map['spotMaxPrice'] == null ? null : (map['spotMaxPrice'] as String).input(),
+      onDemandAllocationStrategy: map['onDemandAllocationStrategy'] == null ? null : ((map['onDemandAllocationStrategy'] as String).input()).input(),
+      onDemandBaseCapacity: map['onDemandBaseCapacity'] == null ? null : ((map['onDemandBaseCapacity'] as int).input()).input(),
+      onDemandPercentageAboveBaseCapacity: map['onDemandPercentageAboveBaseCapacity'] == null ? null : ((map['onDemandPercentageAboveBaseCapacity'] as int).input()).input(),
+      spotAllocationStrategy: map['spotAllocationStrategy'] == null ? null : ((map['spotAllocationStrategy'] as String).input()).input(),
+      spotInstancePools: map['spotInstancePools'] == null ? null : ((map['spotInstancePools'] as int).input()).input(),
+      spotMaxPrice: map['spotMaxPrice'] == null ? null : ((map['spotMaxPrice'] as String).input()).input(),
     );
   }
 }

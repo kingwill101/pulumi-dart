@@ -30,9 +30,9 @@ class LoadBalancerStickySessions {
 
   factory LoadBalancerStickySessions.fromMap(Map<String, dynamic> map) {
     return LoadBalancerStickySessions(
-      cookieName: map['cookieName'] == null ? null : (map['cookieName'] as String).input(),
-      cookieTtlSeconds: map['cookieTtlSeconds'] == null ? null : (map['cookieTtlSeconds'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      cookieName: map['cookieName'] == null ? null : (map['cookieName']! as String).input(),
+      cookieTtlSeconds: map['cookieTtlSeconds'] == null ? null : (map['cookieTtlSeconds']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

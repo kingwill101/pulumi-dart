@@ -33,7 +33,7 @@ class VaultModelPropertiesResponse {
     return VaultModelPropertiesResponse(
       provisioningState: (map['provisioningState'] as String).input(),
       serviceResourceId: (map['serviceResourceId'] as String).input(),
-      vaultType: map['vaultType'] == null ? null : (map['vaultType'] as String).input(),
+      vaultType: map['vaultType'] == null ? null : (map['vaultType']! as String).input(),
     );
   }
 }

@@ -41,8 +41,8 @@ class WebhookArgs {
     return WebhookArgs(
       appId: (map['appId'] as String).input(),
       branchName: (map['branchName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

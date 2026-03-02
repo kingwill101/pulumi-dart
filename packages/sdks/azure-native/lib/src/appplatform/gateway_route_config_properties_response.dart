@@ -58,14 +58,14 @@ class GatewayRouteConfigPropertiesResponse {
 
   factory GatewayRouteConfigPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return GatewayRouteConfigPropertiesResponse(
-      appResourceId: map['appResourceId'] == null ? null : (map['appResourceId'] as String).input(),
-      filters: map['filters'] == null ? null : ((map['filters'] as List).cast<String>()).input(),
-      openApi: map['openApi'] == null ? null : (GatewayRouteConfigOpenApiPropertiesResponse.fromMap((map['openApi'] as Map).cast<String, dynamic>())).input(),
-      predicates: map['predicates'] == null ? null : ((map['predicates'] as List).cast<String>()).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      appResourceId: map['appResourceId'] == null ? null : (map['appResourceId']! as String).input(),
+      filters: map['filters'] == null ? null : ((map['filters']! as List).cast<String>()).input(),
+      openApi: map['openApi'] == null ? null : (GatewayRouteConfigOpenApiPropertiesResponse.fromMap((map['openApi']! as Map).cast<String, dynamic>())).input(),
+      predicates: map['predicates'] == null ? null : ((map['predicates']! as List).cast<String>()).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<GatewayApiRouteResponse>(map['routes'], (value) => GatewayApiRouteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ssoEnabled: map['ssoEnabled'] == null ? null : (map['ssoEnabled'] as bool).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<GatewayApiRouteResponse>(map['routes']!, (value) => GatewayApiRouteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ssoEnabled: map['ssoEnabled'] == null ? null : (map['ssoEnabled']! as bool).input(),
     );
   }
 }

@@ -51,13 +51,13 @@ class AzureVmWorkloadProtectedItemExtendedInfoResponse {
 
   factory AzureVmWorkloadProtectedItemExtendedInfoResponse.fromMap(Map<String, dynamic> map) {
     return AzureVmWorkloadProtectedItemExtendedInfoResponse(
-      newestRecoveryPointInArchive: map['newestRecoveryPointInArchive'] == null ? null : (map['newestRecoveryPointInArchive'] as String).input(),
-      oldestRecoveryPoint: map['oldestRecoveryPoint'] == null ? null : (map['oldestRecoveryPoint'] as String).input(),
-      oldestRecoveryPointInArchive: map['oldestRecoveryPointInArchive'] == null ? null : (map['oldestRecoveryPointInArchive'] as String).input(),
-      oldestRecoveryPointInVault: map['oldestRecoveryPointInVault'] == null ? null : (map['oldestRecoveryPointInVault'] as String).input(),
-      policyState: map['policyState'] == null ? null : (map['policyState'] as String).input(),
-      recoveryModel: map['recoveryModel'] == null ? null : (map['recoveryModel'] as String).input(),
-      recoveryPointCount: map['recoveryPointCount'] == null ? null : (map['recoveryPointCount'] as int).input(),
+      newestRecoveryPointInArchive: map['newestRecoveryPointInArchive'] == null ? null : (map['newestRecoveryPointInArchive']! as String).input(),
+      oldestRecoveryPoint: map['oldestRecoveryPoint'] == null ? null : (map['oldestRecoveryPoint']! as String).input(),
+      oldestRecoveryPointInArchive: map['oldestRecoveryPointInArchive'] == null ? null : (map['oldestRecoveryPointInArchive']! as String).input(),
+      oldestRecoveryPointInVault: map['oldestRecoveryPointInVault'] == null ? null : (map['oldestRecoveryPointInVault']! as String).input(),
+      policyState: map['policyState'] == null ? null : (map['policyState']! as String).input(),
+      recoveryModel: map['recoveryModel'] == null ? null : (map['recoveryModel']! as String).input(),
+      recoveryPointCount: map['recoveryPointCount'] == null ? null : (map['recoveryPointCount']! as int).input(),
     );
   }
 }

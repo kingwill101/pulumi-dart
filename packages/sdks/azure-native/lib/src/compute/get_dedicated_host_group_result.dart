@@ -85,7 +85,7 @@ class GetDedicatedHostGroupResult {
 
   factory GetDedicatedHostGroupResult.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostGroupResult(
-      additionalCapabilities: map['additionalCapabilities'] == null ? null : DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse.fromMap((map['additionalCapabilities'] as Map).cast<String, dynamic>()),
+      additionalCapabilities: map['additionalCapabilities'] == null ? null : DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse.fromMap((map['additionalCapabilities']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
       hosts: pulumi.Input.decodeList<SubResourceReadOnlyResponse>(map['hosts'], (value) => SubResourceReadOnlyResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
@@ -93,11 +93,11 @@ class GetDedicatedHostGroupResult {
       location: map['location'] as String,
       name: map['name'] as String,
       platformFaultDomainCount: map['platformFaultDomainCount'] as int,
-      supportAutomaticPlacement: map['supportAutomaticPlacement'] == null ? null : map['supportAutomaticPlacement'] as bool,
+      supportAutomaticPlacement: map['supportAutomaticPlacement'] == null ? null : map['supportAutomaticPlacement']! as bool,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      zones: map['zones'] == null ? null : (map['zones'] as List).cast<String>(),
+      zones: map['zones'] == null ? null : (map['zones']! as List).cast<String>(),
     );
   }
 }

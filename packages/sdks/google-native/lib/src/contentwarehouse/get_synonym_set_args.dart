@@ -32,7 +32,7 @@ class GetSynonymSetArgs {
   factory GetSynonymSetArgs.fromMap(Map<String, dynamic> map) {
     return GetSynonymSetArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       synonymSetId: (map['synonymSetId'] as String).input(),
     );
   }

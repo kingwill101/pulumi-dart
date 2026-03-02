@@ -35,7 +35,7 @@ class AdvancedQueryTemplateArgs {
   factory AdvancedQueryTemplateArgs.fromMap(Map<String, dynamic> map) {
     return AdvancedQueryTemplateArgs(
       simpleQuery: (map['simpleQuery'] as bool).input(),
-      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName']! as String).input(),
       templateSql: (map['templateSql'] as String).input(),
     );
   }

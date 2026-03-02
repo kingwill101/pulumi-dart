@@ -44,11 +44,11 @@ class GetCheckStructuresArgs {
 
   factory GetCheckStructuresArgs.fromMap(Map<String, dynamic> map) {
     return GetCheckStructuresArgs(
-      currentPage: map['currentPage'] == null ? null : (map['currentPage'] as int).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      taskSources: map['taskSources'] == null ? null : ((map['taskSources'] as List).cast<String>()).input(),
+      currentPage: map['currentPage'] == null ? null : (map['currentPage']! as int).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      taskSources: map['taskSources'] == null ? null : ((map['taskSources']! as List).cast<String>()).input(),
     );
   }
 }

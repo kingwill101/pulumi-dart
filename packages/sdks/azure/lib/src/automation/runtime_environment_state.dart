@@ -56,14 +56,14 @@ class RuntimeEnvironmentState {
 
   factory RuntimeEnvironmentState.fromMap(Map<String, dynamic> map) {
     return RuntimeEnvironmentState(
-      automationAccountId: map['automationAccountId'] == null ? null : (map['automationAccountId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      runtimeDefaultPackages: map['runtimeDefaultPackages'] == null ? null : ((map['runtimeDefaultPackages'] as Map).cast<String, String>()).input(),
-      runtimeLanguage: map['runtimeLanguage'] == null ? null : (map['runtimeLanguage'] as String).input(),
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      automationAccountId: map['automationAccountId'] == null ? null : (map['automationAccountId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      runtimeDefaultPackages: map['runtimeDefaultPackages'] == null ? null : ((map['runtimeDefaultPackages']! as Map).cast<String, String>()).input(),
+      runtimeLanguage: map['runtimeLanguage'] == null ? null : (map['runtimeLanguage']! as String).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

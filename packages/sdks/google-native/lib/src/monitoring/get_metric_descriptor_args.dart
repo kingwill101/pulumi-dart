@@ -28,7 +28,7 @@ class GetMetricDescriptorArgs {
   factory GetMetricDescriptorArgs.fromMap(Map<String, dynamic> map) {
     return GetMetricDescriptorArgs(
       metricDescriptorId: (map['metricDescriptorId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

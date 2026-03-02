@@ -51,8 +51,8 @@ class MDATPDataConnectorArgs {
 
   factory MDATPDataConnectorArgs.fromMap(Map<String, dynamic> map) {
     return MDATPDataConnectorArgs(
-      dataConnectorId: map['dataConnectorId'] == null ? null : (map['dataConnectorId'] as String).input(),
-      dataTypes: map['dataTypes'] == null ? null : (AlertsDataTypeOfDataConnector.fromMap((map['dataTypes'] as Map).cast<String, dynamic>())).input(),
+      dataConnectorId: map['dataConnectorId'] == null ? null : (map['dataConnectorId']! as String).input(),
+      dataTypes: map['dataTypes'] == null ? null : (AlertsDataTypeOfDataConnector.fromMap((map['dataTypes']! as Map).cast<String, dynamic>())).input(),
       kind: (map['kind'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       tenantId: (map['tenantId'] as String).input(),

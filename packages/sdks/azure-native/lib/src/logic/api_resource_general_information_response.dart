@@ -46,12 +46,12 @@ class ApiResourceGeneralInformationResponse {
 
   factory ApiResourceGeneralInformationResponse.fromMap(Map<String, dynamic> map) {
     return ApiResourceGeneralInformationResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      iconUrl: map['iconUrl'] == null ? null : (map['iconUrl'] as String).input(),
-      releaseTag: map['releaseTag'] == null ? null : (map['releaseTag'] as String).input(),
-      termsOfUseUrl: map['termsOfUseUrl'] == null ? null : (map['termsOfUseUrl'] as String).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      iconUrl: map['iconUrl'] == null ? null : (map['iconUrl']! as String).input(),
+      releaseTag: map['releaseTag'] == null ? null : (map['releaseTag']! as String).input(),
+      termsOfUseUrl: map['termsOfUseUrl'] == null ? null : (map['termsOfUseUrl']! as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

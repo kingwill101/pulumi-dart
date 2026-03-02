@@ -34,9 +34,9 @@ class PartitionArgs {
 
   factory PartitionArgs.fromMap(Map<String, dynamic> map) {
     return PartitionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       name: (map['name'] as String).input(),
-      routeDomainId: map['routeDomainId'] == null ? null : (map['routeDomainId'] as int).input(),
+      routeDomainId: map['routeDomainId'] == null ? null : (map['routeDomainId']! as int).input(),
     );
   }
 }

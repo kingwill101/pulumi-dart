@@ -73,16 +73,16 @@ class WorkflowArgs {
 
   factory WorkflowArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowArgs(
-      callLogLevel: map['callLogLevel'] == null ? null : (WorkflowCallLogLevel.fromValue(map['callLogLevel'] as String)).input(),
-      cryptoKeyName: map['cryptoKeyName'] == null ? null : (map['cryptoKeyName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      sourceContents: map['sourceContents'] == null ? null : (map['sourceContents'] as String).input(),
-      userEnvVars: map['userEnvVars'] == null ? null : ((map['userEnvVars'] as Map).cast<String, String>()).input(),
+      callLogLevel: map['callLogLevel'] == null ? null : (WorkflowCallLogLevel.fromValue(map['callLogLevel']! as String)).input(),
+      cryptoKeyName: map['cryptoKeyName'] == null ? null : (map['cryptoKeyName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      sourceContents: map['sourceContents'] == null ? null : (map['sourceContents']! as String).input(),
+      userEnvVars: map['userEnvVars'] == null ? null : ((map['userEnvVars']! as Map).cast<String, String>()).input(),
       workflowId: (map['workflowId'] as String).input(),
     );
   }

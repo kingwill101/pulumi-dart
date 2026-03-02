@@ -29,8 +29,8 @@ class GetBandwidthLimitsArgs {
 
   factory GetBandwidthLimitsArgs.fromMap(Map<String, dynamic> map) {
     return GetBandwidthLimitsArgs(
-      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

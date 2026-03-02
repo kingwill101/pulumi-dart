@@ -32,9 +32,9 @@ class PartitionConfig {
 
   factory PartitionConfig.fromMap(Map<String, dynamic> map) {
     return PartitionConfig(
-      capacity: map['capacity'] == null ? null : (Capacity.fromMap((map['capacity'] as Map).cast<String, dynamic>())).input(),
-      count: map['count'] == null ? null : (map['count'] as String).input(),
-      scale: map['scale'] == null ? null : (map['scale'] as int).input(),
+      capacity: map['capacity'] == null ? null : (Capacity.fromMap((map['capacity']! as Map).cast<String, dynamic>())).input(),
+      count: map['count'] == null ? null : (map['count']! as String).input(),
+      scale: map['scale'] == null ? null : (map['scale']! as int).input(),
     );
   }
 }

@@ -40,9 +40,9 @@ class CertifiateCertificatePolicyKeyProperties {
 
   factory CertifiateCertificatePolicyKeyProperties.fromMap(Map<String, dynamic> map) {
     return CertifiateCertificatePolicyKeyProperties(
-      curve: map['curve'] == null ? null : (map['curve'] as String).input(),
+      curve: map['curve'] == null ? null : (map['curve']! as String).input(),
       exportable: (map['exportable'] as bool).input(),
-      keySize: map['keySize'] == null ? null : (map['keySize'] as int).input(),
+      keySize: map['keySize'] == null ? null : (map['keySize']! as int).input(),
       keyType: (map['keyType'] as String).input(),
       reuseKey: (map['reuseKey'] as bool).input(),
     );

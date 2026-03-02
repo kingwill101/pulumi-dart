@@ -31,8 +31,8 @@ class CertificateContactsContact {
   factory CertificateContactsContact.fromMap(Map<String, dynamic> map) {
     return CertificateContactsContact(
       email: (map['email'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      phone: map['phone'] == null ? null : (map['phone'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      phone: map['phone'] == null ? null : (map['phone']! as String).input(),
     );
   }
 }

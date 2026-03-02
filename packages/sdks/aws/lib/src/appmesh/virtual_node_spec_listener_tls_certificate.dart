@@ -33,9 +33,9 @@ class VirtualNodeSpecListenerTlsCertificate {
 
   factory VirtualNodeSpecListenerTlsCertificate.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerTlsCertificate(
-      acm: map['acm'] == null ? null : (VirtualNodeSpecListenerTlsCertificateAcm.fromMap((map['acm'] as Map).cast<String, dynamic>())).input(),
-      file: map['file'] == null ? null : (VirtualNodeSpecListenerTlsCertificateFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
-      sds: map['sds'] == null ? null : (VirtualNodeSpecListenerTlsCertificateSds.fromMap((map['sds'] as Map).cast<String, dynamic>())).input(),
+      acm: map['acm'] == null ? null : ((VirtualNodeSpecListenerTlsCertificateAcm.fromMap((map['acm']! as Map).cast<String, dynamic>())).input()).input(),
+      file: map['file'] == null ? null : ((VirtualNodeSpecListenerTlsCertificateFile.fromMap((map['file']! as Map).cast<String, dynamic>())).input()).input(),
+      sds: map['sds'] == null ? null : ((VirtualNodeSpecListenerTlsCertificateSds.fromMap((map['sds']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

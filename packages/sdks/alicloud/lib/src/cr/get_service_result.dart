@@ -33,7 +33,7 @@ class GetServiceResult {
 
   factory GetServiceResult.fromMap(Map<String, dynamic> map) {
     return GetServiceResult(
-      enable: map['enable'] == null ? null : map['enable'] as String,
+      enable: map['enable'] == null ? null : map['enable']! as String,
       id: map['id'] as String,
       password: map['password'] as String,
       status: map['status'] as String,

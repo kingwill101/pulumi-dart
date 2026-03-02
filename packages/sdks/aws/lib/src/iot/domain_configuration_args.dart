@@ -81,18 +81,18 @@ class DomainConfigurationArgs {
 
   factory DomainConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return DomainConfigurationArgs(
-      applicationProtocol: map['applicationProtocol'] == null ? null : (map['applicationProtocol'] as String).input(),
-      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
-      authorizerConfig: map['authorizerConfig'] == null ? null : (DomainConfigurationAuthorizerConfig.fromMap((map['authorizerConfig'] as Map).cast<String, dynamic>())).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serverCertificateArns: map['serverCertificateArns'] == null ? null : ((map['serverCertificateArns'] as List).cast<String>()).input(),
-      serviceType: map['serviceType'] == null ? null : (map['serviceType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tlsConfig: map['tlsConfig'] == null ? null : (DomainConfigurationTlsConfig.fromMap((map['tlsConfig'] as Map).cast<String, dynamic>())).input(),
-      validationCertificateArn: map['validationCertificateArn'] == null ? null : (map['validationCertificateArn'] as String).input(),
+      applicationProtocol: map['applicationProtocol'] == null ? null : ((map['applicationProtocol'] as String).input()).input(),
+      authenticationType: map['authenticationType'] == null ? null : ((map['authenticationType'] as String).input()).input(),
+      authorizerConfig: map['authorizerConfig'] == null ? null : ((DomainConfigurationAuthorizerConfig.fromMap((map['authorizerConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serverCertificateArns: map['serverCertificateArns'] == null ? null : (((map['serverCertificateArns'] as List).cast<String>()).input()).input(),
+      serviceType: map['serviceType'] == null ? null : ((map['serviceType'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tlsConfig: map['tlsConfig'] == null ? null : ((DomainConfigurationTlsConfig.fromMap((map['tlsConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      validationCertificateArn: map['validationCertificateArn'] == null ? null : ((map['validationCertificateArn'] as String).input()).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class SearchEngineSearchEngineConfig {
 
   factory SearchEngineSearchEngineConfig.fromMap(Map<String, dynamic> map) {
     return SearchEngineSearchEngineConfig(
-      searchAddOns: map['searchAddOns'] == null ? null : ((map['searchAddOns'] as List).cast<String>()).input(),
-      searchTier: map['searchTier'] == null ? null : (map['searchTier'] as String).input(),
+      searchAddOns: map['searchAddOns'] == null ? null : ((map['searchAddOns']! as List).cast<String>()).input(),
+      searchTier: map['searchTier'] == null ? null : (map['searchTier']! as String).input(),
     );
   }
 }

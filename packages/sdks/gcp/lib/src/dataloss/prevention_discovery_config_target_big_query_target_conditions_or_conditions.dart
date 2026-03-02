@@ -25,8 +25,8 @@ class PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions {
 
   factory PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions(
-      minAge: map['minAge'] == null ? null : (map['minAge'] as String).input(),
-      minRowCount: map['minRowCount'] == null ? null : (map['minRowCount'] as int).input(),
+      minAge: map['minAge'] == null ? null : (map['minAge']! as String).input(),
+      minRowCount: map['minRowCount'] == null ? null : (map['minRowCount']! as int).input(),
     );
   }
 }

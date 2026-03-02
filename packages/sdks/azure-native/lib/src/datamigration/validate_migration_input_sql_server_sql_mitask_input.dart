@@ -56,10 +56,10 @@ class ValidateMigrationInputSqlServerSqlMITaskInput {
   factory ValidateMigrationInputSqlServerSqlMITaskInput.fromMap(Map<String, dynamic> map) {
     return ValidateMigrationInputSqlServerSqlMITaskInput(
       backupBlobShare: (BlobShare.fromMap((map['backupBlobShare'] as Map).cast<String, dynamic>())).input(),
-      backupFileShare: map['backupFileShare'] == null ? null : (FileShare.fromMap((map['backupFileShare'] as Map).cast<String, dynamic>())).input(),
-      backupMode: map['backupMode'] == null ? null : (map['backupMode'] as String).input(),
+      backupFileShare: map['backupFileShare'] == null ? null : (FileShare.fromMap((map['backupFileShare']! as Map).cast<String, dynamic>())).input(),
+      backupMode: map['backupMode'] == null ? null : (map['backupMode']! as String).input(),
       selectedDatabases: (pulumi.Input.decodeList<MigrateSqlServerSqlMIDatabaseInput>(map['selectedDatabases'], (value) => MigrateSqlServerSqlMIDatabaseInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      selectedLogins: map['selectedLogins'] == null ? null : ((map['selectedLogins'] as List).cast<String>()).input(),
+      selectedLogins: map['selectedLogins'] == null ? null : ((map['selectedLogins']! as List).cast<String>()).input(),
       sourceConnectionInfo: (SqlConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
       targetConnectionInfo: (SqlConnectionInfo.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
     );

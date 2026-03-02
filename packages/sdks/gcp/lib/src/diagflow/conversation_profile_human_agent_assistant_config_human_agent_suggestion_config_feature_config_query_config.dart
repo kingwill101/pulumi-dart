@@ -48,11 +48,11 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
 
   factory ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig(
-      confidenceThreshold: map['confidenceThreshold'] == null ? null : (map['confidenceThreshold'] as double).input(),
-      contextFilterSettings: map['contextFilterSettings'] == null ? null : (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings.fromMap((map['contextFilterSettings'] as Map).cast<String, dynamic>())).input(),
-      dialogflowQuerySource: map['dialogflowQuerySource'] == null ? null : (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource.fromMap((map['dialogflowQuerySource'] as Map).cast<String, dynamic>())).input(),
-      maxResults: map['maxResults'] == null ? null : (map['maxResults'] as int).input(),
-      sections: map['sections'] == null ? null : (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections.fromMap((map['sections'] as Map).cast<String, dynamic>())).input(),
+      confidenceThreshold: map['confidenceThreshold'] == null ? null : (map['confidenceThreshold']! as double).input(),
+      contextFilterSettings: map['contextFilterSettings'] == null ? null : (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings.fromMap((map['contextFilterSettings']! as Map).cast<String, dynamic>())).input(),
+      dialogflowQuerySource: map['dialogflowQuerySource'] == null ? null : (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource.fromMap((map['dialogflowQuerySource']! as Map).cast<String, dynamic>())).input(),
+      maxResults: map['maxResults'] == null ? null : (map['maxResults']! as int).input(),
+      sections: map['sections'] == null ? null : (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections.fromMap((map['sections']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

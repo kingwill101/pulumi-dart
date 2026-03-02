@@ -21,7 +21,7 @@ class QuarantinePolicyResponse {
 
   factory QuarantinePolicyResponse.fromMap(Map<String, dynamic> map) {
     return QuarantinePolicyResponse(
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -37,10 +37,10 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings {
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings(
-      bufferMsec: map['bufferMsec'] == null ? null : (map['bufferMsec'] as int).input(),
-      containerSettings: (ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettings.fromMap((map['containerSettings'] as Map).cast<String, dynamic>())).input(),
-      destination: (ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      fecOutputSettings: map['fecOutputSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecOutputSettings.fromMap((map['fecOutputSettings'] as Map).cast<String, dynamic>())).input(),
+      bufferMsec: map['bufferMsec'] == null ? null : ((map['bufferMsec'] as int).input()).input(),
+      containerSettings: (ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettings.fromMap((map['containerSettings']! as Map).cast<String, dynamic>())).input(),
+      destination: (ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
+      fecOutputSettings: map['fecOutputSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecOutputSettings.fromMap((map['fecOutputSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class GoogleCloudMlV1IntegratedGradientsAttribution {
 
   factory GoogleCloudMlV1IntegratedGradientsAttribution.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1IntegratedGradientsAttribution(
-      numIntegralSteps: map['numIntegralSteps'] == null ? null : (map['numIntegralSteps'] as int).input(),
+      numIntegralSteps: map['numIntegralSteps'] == null ? null : (map['numIntegralSteps']! as int).input(),
     );
   }
 }

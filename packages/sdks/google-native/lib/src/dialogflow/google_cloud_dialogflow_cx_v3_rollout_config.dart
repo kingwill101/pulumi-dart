@@ -32,9 +32,9 @@ class GoogleCloudDialogflowCxV3RolloutConfig {
 
   factory GoogleCloudDialogflowCxV3RolloutConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3RolloutConfig(
-      failureCondition: map['failureCondition'] == null ? null : (map['failureCondition'] as String).input(),
-      rolloutCondition: map['rolloutCondition'] == null ? null : (map['rolloutCondition'] as String).input(),
-      rolloutSteps: map['rolloutSteps'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3RolloutConfigRolloutStep>(map['rolloutSteps'], (value) => GoogleCloudDialogflowCxV3RolloutConfigRolloutStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      failureCondition: map['failureCondition'] == null ? null : (map['failureCondition']! as String).input(),
+      rolloutCondition: map['rolloutCondition'] == null ? null : (map['rolloutCondition']! as String).input(),
+      rolloutSteps: map['rolloutSteps'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3RolloutConfigRolloutStep>(map['rolloutSteps']!, (value) => GoogleCloudDialogflowCxV3RolloutConfigRolloutStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -50,14 +50,14 @@ class GetOssBackupPlansResult {
 
   factory GetOssBackupPlansResult.fromMap(Map<String, dynamic> map) {
     return GetOssBackupPlansResult(
-      bucket: map['bucket'] == null ? null : map['bucket'] as String,
+      bucket: map['bucket'] == null ? null : map['bucket']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       plans: pulumi.Input.decodeList<GetOssBackupPlansPlan>(map['plans'], (value) => GetOssBackupPlansPlan.fromMap((value as Map).cast<String, dynamic>())),
-      vaultId: map['vaultId'] == null ? null : map['vaultId'] as String,
+      vaultId: map['vaultId'] == null ? null : map['vaultId']! as String,
     );
   }
 }

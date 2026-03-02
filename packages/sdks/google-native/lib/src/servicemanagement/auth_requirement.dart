@@ -26,8 +26,8 @@ class AuthRequirement {
 
   factory AuthRequirement.fromMap(Map<String, dynamic> map) {
     return AuthRequirement(
-      audiences: map['audiences'] == null ? null : (map['audiences'] as String).input(),
-      providerId: map['providerId'] == null ? null : (map['providerId'] as String).input(),
+      audiences: map['audiences'] == null ? null : (map['audiences']! as String).input(),
+      providerId: map['providerId'] == null ? null : (map['providerId']! as String).input(),
     );
   }
 }

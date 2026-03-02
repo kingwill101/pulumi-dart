@@ -50,13 +50,13 @@ class DomainDevicesMemorydevSource {
 
   factory DomainDevicesMemorydevSource.fromMap(Map<String, dynamic> map) {
     return DomainDevicesMemorydevSource(
-      alignSize: map['alignSize'] == null ? null : (map['alignSize'] as double).input(),
-      alignSizeUnit: map['alignSizeUnit'] == null ? null : (map['alignSizeUnit'] as String).input(),
-      nodeMask: map['nodeMask'] == null ? null : (map['nodeMask'] as String).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as double).input(),
-      pageSizeUnit: map['pageSizeUnit'] == null ? null : (map['pageSizeUnit'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      pmem: map['pmem'] == null ? null : (map['pmem'] as bool).input(),
+      alignSize: map['alignSize'] == null ? null : (map['alignSize']! as double).input(),
+      alignSizeUnit: map['alignSizeUnit'] == null ? null : (map['alignSizeUnit']! as String).input(),
+      nodeMask: map['nodeMask'] == null ? null : (map['nodeMask']! as String).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as double).input(),
+      pageSizeUnit: map['pageSizeUnit'] == null ? null : (map['pageSizeUnit']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      pmem: map['pmem'] == null ? null : (map['pmem']! as bool).input(),
     );
   }
 }

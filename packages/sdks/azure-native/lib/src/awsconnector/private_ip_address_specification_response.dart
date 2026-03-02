@@ -26,8 +26,8 @@ class PrivateIpAddressSpecificationResponse {
 
   factory PrivateIpAddressSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return PrivateIpAddressSpecificationResponse(
-      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
+      primary: map['primary'] == null ? null : (map['primary']! as bool).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
     );
   }
 }

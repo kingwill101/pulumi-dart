@@ -22,7 +22,7 @@ class DeviceClassConfigurationResourceK8sIoV1beta2 {
 
   factory DeviceClassConfigurationResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return DeviceClassConfigurationResourceK8sIoV1beta2(
-      opaque: map['opaque'] == null ? null : (OpaqueDeviceConfigurationResourceK8sIoV1beta2.fromMap((map['opaque'] as Map).cast<String, dynamic>())).input(),
+      opaque: map['opaque'] == null ? null : (OpaqueDeviceConfigurationResourceK8sIoV1beta2.fromMap((map['opaque']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

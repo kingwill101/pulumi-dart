@@ -32,9 +32,9 @@ class ElasticSanResponse {
 
   factory ElasticSanResponse.fromMap(Map<String, dynamic> map) {
     return ElasticSanResponse(
-      encryption: map['encryption'] == null ? null : (EncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      encryption: map['encryption'] == null ? null : (EncryptionResponse.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
       resourceGroup: (map['resourceGroup'] as String).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
     );
   }
 }

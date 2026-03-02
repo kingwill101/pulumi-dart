@@ -50,7 +50,7 @@ class FederatedIdentityCredentialArgs {
   factory FederatedIdentityCredentialArgs.fromMap(Map<String, dynamic> map) {
     return FederatedIdentityCredentialArgs(
       audiences: ((map['audiences'] as List).cast<String>()).input(),
-      federatedIdentityCredentialResourceName: map['federatedIdentityCredentialResourceName'] == null ? null : (map['federatedIdentityCredentialResourceName'] as String).input(),
+      federatedIdentityCredentialResourceName: map['federatedIdentityCredentialResourceName'] == null ? null : (map['federatedIdentityCredentialResourceName']! as String).input(),
       issuer: (map['issuer'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),

@@ -28,8 +28,8 @@ class RecordingModeResponse {
 
   factory RecordingModeResponse.fromMap(Map<String, dynamic> map) {
     return RecordingModeResponse(
-      recordingFrequency: map['recordingFrequency'] == null ? null : (RecordingFrequencyEnumValueResponse.fromMap((map['recordingFrequency'] as Map).cast<String, dynamic>())).input(),
-      recordingModeOverrides: map['recordingModeOverrides'] == null ? null : (pulumi.Input.decodeList<RecordingModeOverrideResponse>(map['recordingModeOverrides'], (value) => RecordingModeOverrideResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      recordingFrequency: map['recordingFrequency'] == null ? null : (RecordingFrequencyEnumValueResponse.fromMap((map['recordingFrequency']! as Map).cast<String, dynamic>())).input(),
+      recordingModeOverrides: map['recordingModeOverrides'] == null ? null : (pulumi.Input.decodeList<RecordingModeOverrideResponse>(map['recordingModeOverrides']!, (value) => RecordingModeOverrideResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

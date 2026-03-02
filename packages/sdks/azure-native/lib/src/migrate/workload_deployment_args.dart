@@ -51,11 +51,11 @@ class WorkloadDeploymentArgs {
   factory WorkloadDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadDeploymentArgs(
       modernizeProjectName: (map['modernizeProjectName'] as String).input(),
-      properties: map['properties'] == null ? null : (WorkloadDeploymentModelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (WorkloadDeploymentModelProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workloadDeploymentName: map['workloadDeploymentName'] == null ? null : (map['workloadDeploymentName'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      workloadDeploymentName: map['workloadDeploymentName'] == null ? null : (map['workloadDeploymentName']! as String).input(),
     );
   }
 }

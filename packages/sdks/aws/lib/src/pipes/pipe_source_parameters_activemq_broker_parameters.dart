@@ -36,9 +36,9 @@ class PipeSourceParametersActivemqBrokerParameters {
 
   factory PipeSourceParametersActivemqBrokerParameters.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersActivemqBrokerParameters(
-      batchSize: map['batchSize'] == null ? null : (map['batchSize'] as int).input(),
-      credentials: (PipeSourceParametersActivemqBrokerParametersCredentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
-      maximumBatchingWindowInSeconds: map['maximumBatchingWindowInSeconds'] == null ? null : (map['maximumBatchingWindowInSeconds'] as int).input(),
+      batchSize: map['batchSize'] == null ? null : ((map['batchSize'] as int).input()).input(),
+      credentials: (PipeSourceParametersActivemqBrokerParametersCredentials.fromMap((map['credentials']! as Map).cast<String, dynamic>())).input(),
+      maximumBatchingWindowInSeconds: map['maximumBatchingWindowInSeconds'] == null ? null : ((map['maximumBatchingWindowInSeconds'] as int).input()).input(),
       queueName: (map['queueName'] as String).input(),
     );
   }

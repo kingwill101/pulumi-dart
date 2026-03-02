@@ -35,8 +35,8 @@ class GetDiskIamPolicyComputeV1Args {
 
   factory GetDiskIamPolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetDiskIamPolicyComputeV1Args(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       resource: (map['resource'] as String).input(),
       zone: (map['zone'] as String).input(),
     );

@@ -21,7 +21,7 @@ class ClassificationJobS3JobDefinitionScopingExcludes {
 
   factory ClassificationJobS3JobDefinitionScopingExcludes.fromMap(Map<String, dynamic> map) {
     return ClassificationJobS3JobDefinitionScopingExcludes(
-      ands: map['ands'] == null ? null : (pulumi.Input.decodeList<ClassificationJobS3JobDefinitionScopingExcludesAnd>(map['ands'], (value) => ClassificationJobS3JobDefinitionScopingExcludesAnd.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ands: map['ands'] == null ? null : ((pulumi.Input.decodeList<ClassificationJobS3JobDefinitionScopingExcludesAnd>(map['ands']!, (value) => ClassificationJobS3JobDefinitionScopingExcludesAnd.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -124,7 +124,7 @@ class GetBmcKeySetResult {
       privilegeLevel: map['privilegeLevel'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
       userList: pulumi.Input.decodeList<KeySetUserResponse>(map['userList'], (value) => KeySetUserResponse.fromMap((value as Map).cast<String, dynamic>())),
       userListStatus: pulumi.Input.decodeList<KeySetUserStatusResponse>(map['userListStatus'], (value) => KeySetUserStatusResponse.fromMap((value as Map).cast<String, dynamic>())),

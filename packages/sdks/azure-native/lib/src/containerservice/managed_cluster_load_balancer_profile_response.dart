@@ -60,14 +60,14 @@ class ManagedClusterLoadBalancerProfileResponse {
 
   factory ManagedClusterLoadBalancerProfileResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterLoadBalancerProfileResponse(
-      allocatedOutboundPorts: map['allocatedOutboundPorts'] == null ? null : (map['allocatedOutboundPorts'] as int).input(),
-      backendPoolType: map['backendPoolType'] == null ? null : (map['backendPoolType'] as String).input(),
+      allocatedOutboundPorts: map['allocatedOutboundPorts'] == null ? null : (map['allocatedOutboundPorts']! as int).input(),
+      backendPoolType: map['backendPoolType'] == null ? null : (map['backendPoolType']! as String).input(),
       effectiveOutboundIPs: (pulumi.Input.decodeList<ResourceReferenceResponse>(map['effectiveOutboundIPs'], (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableMultipleStandardLoadBalancers: map['enableMultipleStandardLoadBalancers'] == null ? null : (map['enableMultipleStandardLoadBalancers'] as bool).input(),
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
-      managedOutboundIPs: map['managedOutboundIPs'] == null ? null : (ManagedClusterLoadBalancerProfileResponseManagedOutboundIPs.fromMap((map['managedOutboundIPs'] as Map).cast<String, dynamic>())).input(),
-      outboundIPPrefixes: map['outboundIPPrefixes'] == null ? null : (ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixes.fromMap((map['outboundIPPrefixes'] as Map).cast<String, dynamic>())).input(),
-      outboundIPs: map['outboundIPs'] == null ? null : (ManagedClusterLoadBalancerProfileResponseOutboundIPs.fromMap((map['outboundIPs'] as Map).cast<String, dynamic>())).input(),
+      enableMultipleStandardLoadBalancers: map['enableMultipleStandardLoadBalancers'] == null ? null : (map['enableMultipleStandardLoadBalancers']! as bool).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes']! as int).input(),
+      managedOutboundIPs: map['managedOutboundIPs'] == null ? null : (ManagedClusterLoadBalancerProfileResponseManagedOutboundIPs.fromMap((map['managedOutboundIPs']! as Map).cast<String, dynamic>())).input(),
+      outboundIPPrefixes: map['outboundIPPrefixes'] == null ? null : (ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixes.fromMap((map['outboundIPPrefixes']! as Map).cast<String, dynamic>())).input(),
+      outboundIPs: map['outboundIPs'] == null ? null : (ManagedClusterLoadBalancerProfileResponseOutboundIPs.fromMap((map['outboundIPs']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

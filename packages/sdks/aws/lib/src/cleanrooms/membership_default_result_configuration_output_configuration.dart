@@ -20,7 +20,7 @@ class MembershipDefaultResultConfigurationOutputConfiguration {
 
   factory MembershipDefaultResultConfigurationOutputConfiguration.fromMap(Map<String, dynamic> map) {
     return MembershipDefaultResultConfigurationOutputConfiguration(
-      s3: (MembershipDefaultResultConfigurationOutputConfigurationS3.fromMap((map['s3'] as Map).cast<String, dynamic>())).input(),
+      s3: (MembershipDefaultResultConfigurationOutputConfigurationS3.fromMap((map['s3']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

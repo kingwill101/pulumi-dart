@@ -31,9 +31,9 @@ class MetricValueStatusPatch {
 
   factory MetricValueStatusPatch.fromMap(Map<String, dynamic> map) {
     return MetricValueStatusPatch(
-      averageUtilization: map['averageUtilization'] == null ? null : (map['averageUtilization'] as int).input(),
-      averageValue: map['averageValue'] == null ? null : (map['averageValue'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      averageUtilization: map['averageUtilization'] == null ? null : (map['averageUtilization']! as int).input(),
+      averageValue: map['averageValue'] == null ? null : (map['averageValue']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

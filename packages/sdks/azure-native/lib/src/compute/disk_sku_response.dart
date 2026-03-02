@@ -26,7 +26,7 @@ class DiskSkuResponse {
 
   factory DiskSkuResponse.fromMap(Map<String, dynamic> map) {
     return DiskSkuResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       tier: (map['tier'] as String).input(),
     );
   }

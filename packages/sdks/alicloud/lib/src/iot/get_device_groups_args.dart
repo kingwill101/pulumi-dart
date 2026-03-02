@@ -54,13 +54,13 @@ class GetDeviceGroupsArgs {
 
   factory GetDeviceGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetDeviceGroupsArgs(
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      iotInstanceId: map['iotInstanceId'] == null ? null : (map['iotInstanceId'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      superGroupId: map['superGroupId'] == null ? null : (map['superGroupId'] as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      iotInstanceId: map['iotInstanceId'] == null ? null : (map['iotInstanceId']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      superGroupId: map['superGroupId'] == null ? null : (map['superGroupId']! as String).input(),
     );
   }
 }

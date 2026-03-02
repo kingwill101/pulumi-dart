@@ -39,8 +39,8 @@ class GetAccountAccessTokenArgs {
 
   factory GetAccountAccessTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountAccessTokenArgs(
-      delegates: map['delegates'] == null ? null : ((map['delegates'] as List).cast<String>()).input(),
-      lifetime: map['lifetime'] == null ? null : (map['lifetime'] as String).input(),
+      delegates: map['delegates'] == null ? null : ((map['delegates']! as List).cast<String>()).input(),
+      lifetime: map['lifetime'] == null ? null : (map['lifetime']! as String).input(),
       scopes: ((map['scopes'] as List).cast<String>()).input(),
       targetServiceAccount: (map['targetServiceAccount'] as String).input(),
     );

@@ -82,18 +82,18 @@ class FileTaskRunRequest {
 
   factory FileTaskRunRequest.fromMap(Map<String, dynamic> map) {
     return FileTaskRunRequest(
-      agentConfiguration: map['agentConfiguration'] == null ? null : (AgentProperties.fromMap((map['agentConfiguration'] as Map).cast<String, dynamic>())).input(),
-      agentPoolName: map['agentPoolName'] == null ? null : (map['agentPoolName'] as String).input(),
-      credentials: map['credentials'] == null ? null : (Credentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
-      isArchiveEnabled: map['isArchiveEnabled'] == null ? null : (map['isArchiveEnabled'] as bool).input(),
-      logTemplate: map['logTemplate'] == null ? null : (map['logTemplate'] as String).input(),
+      agentConfiguration: map['agentConfiguration'] == null ? null : (AgentProperties.fromMap((map['agentConfiguration']! as Map).cast<String, dynamic>())).input(),
+      agentPoolName: map['agentPoolName'] == null ? null : (map['agentPoolName']! as String).input(),
+      credentials: map['credentials'] == null ? null : (Credentials.fromMap((map['credentials']! as Map).cast<String, dynamic>())).input(),
+      isArchiveEnabled: map['isArchiveEnabled'] == null ? null : (map['isArchiveEnabled']! as bool).input(),
+      logTemplate: map['logTemplate'] == null ? null : (map['logTemplate']! as String).input(),
       platform: (PlatformProperties.fromMap((map['platform'] as Map).cast<String, dynamic>())).input(),
-      sourceLocation: map['sourceLocation'] == null ? null : (map['sourceLocation'] as String).input(),
+      sourceLocation: map['sourceLocation'] == null ? null : (map['sourceLocation']! as String).input(),
       taskFilePath: (map['taskFilePath'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
       type: (map['type'] as String).input(),
-      values: map['values'] == null ? null : (pulumi.Input.decodeList<SetValue>(map['values'], (value) => SetValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      valuesFilePath: map['valuesFilePath'] == null ? null : (map['valuesFilePath'] as String).input(),
+      values: map['values'] == null ? null : (pulumi.Input.decodeList<SetValue>(map['values']!, (value) => SetValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      valuesFilePath: map['valuesFilePath'] == null ? null : (map['valuesFilePath']! as String).input(),
     );
   }
 }

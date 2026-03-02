@@ -66,11 +66,11 @@ class SpacecraftArgs {
   factory SpacecraftArgs.fromMap(Map<String, dynamic> map) {
     return SpacecraftArgs(
       links: (pulumi.Input.decodeList<SpacecraftLink>(map['links'], (value) => SpacecraftLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      noradId: map['noradId'] == null ? null : (map['noradId'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      noradId: map['noradId'] == null ? null : (map['noradId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      spacecraftName: map['spacecraftName'] == null ? null : (map['spacecraftName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      spacecraftName: map['spacecraftName'] == null ? null : (map['spacecraftName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       titleLine: (map['titleLine'] as String).input(),
       tleLine1: (map['tleLine1'] as String).input(),
       tleLine2: (map['tleLine2'] as String).input(),

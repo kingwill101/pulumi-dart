@@ -25,7 +25,7 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier {
 
   factory StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier.fromMap(Map<String, dynamic> map) {
     return StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier(
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
+      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
       table: (map['table'] as String).input(),
     );
   }

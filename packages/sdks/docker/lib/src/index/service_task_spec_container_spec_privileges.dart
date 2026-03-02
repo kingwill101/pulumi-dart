@@ -27,8 +27,8 @@ class ServiceTaskSpecContainerSpecPrivileges {
 
   factory ServiceTaskSpecContainerSpecPrivileges.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecContainerSpecPrivileges(
-      credentialSpec: map['credentialSpec'] == null ? null : (ServiceTaskSpecContainerSpecPrivilegesCredentialSpec.fromMap((map['credentialSpec'] as Map).cast<String, dynamic>())).input(),
-      seLinuxContext: map['seLinuxContext'] == null ? null : (ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext.fromMap((map['seLinuxContext'] as Map).cast<String, dynamic>())).input(),
+      credentialSpec: map['credentialSpec'] == null ? null : (ServiceTaskSpecContainerSpecPrivilegesCredentialSpec.fromMap((map['credentialSpec']! as Map).cast<String, dynamic>())).input(),
+      seLinuxContext: map['seLinuxContext'] == null ? null : (ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext.fromMap((map['seLinuxContext']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -70,13 +70,13 @@ class SourceControlArgs {
 
   factory SourceControlArgs.fromMap(Map<String, dynamic> map) {
     return SourceControlArgs(
-      automaticSync: map['automaticSync'] == null ? null : (map['automaticSync'] as bool).input(),
+      automaticSync: map['automaticSync'] == null ? null : (map['automaticSync']! as bool).input(),
       automationAccountId: (map['automationAccountId'] as String).input(),
-      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       folderPath: (map['folderPath'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publishRunbookEnabled: map['publishRunbookEnabled'] == null ? null : (map['publishRunbookEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publishRunbookEnabled: map['publishRunbookEnabled'] == null ? null : (map['publishRunbookEnabled']! as bool).input(),
       repositoryUrl: (map['repositoryUrl'] as String).input(),
       security: (SourceControlSecurity.fromMap((map['security'] as Map).cast<String, dynamic>())).input(),
       sourceControlType: (map['sourceControlType'] as String).input(),

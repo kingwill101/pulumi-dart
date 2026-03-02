@@ -33,9 +33,9 @@ class TypeHealthcareV1beta1 {
 
   factory TypeHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return TypeHealthcareV1beta1(
-      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<FieldHealthcareV1beta1>(map['fields'], (value) => FieldHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      primitive: map['primitive'] == null ? null : (TypePrimitiveHealthcareV1beta1.fromValue(map['primitive'] as String)).input(),
+      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<FieldHealthcareV1beta1>(map['fields']!, (value) => FieldHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      primitive: map['primitive'] == null ? null : (TypePrimitiveHealthcareV1beta1.fromValue(map['primitive']! as String)).input(),
     );
   }
 }

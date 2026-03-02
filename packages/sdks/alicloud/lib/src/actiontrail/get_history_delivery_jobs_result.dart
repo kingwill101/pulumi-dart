@@ -42,12 +42,12 @@ class GetHistoryDeliveryJobsResult {
 
   factory GetHistoryDeliveryJobsResult.fromMap(Map<String, dynamic> map) {
     return GetHistoryDeliveryJobsResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       jobs: pulumi.Input.decodeList<GetHistoryDeliveryJobsJob>(map['jobs'], (value) => GetHistoryDeliveryJobsJob.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as int,
     );
   }
 }

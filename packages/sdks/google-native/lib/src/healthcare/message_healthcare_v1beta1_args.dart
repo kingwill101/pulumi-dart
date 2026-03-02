@@ -77,18 +77,18 @@ class MessageHealthcareV1beta1Args {
 
   factory MessageHealthcareV1beta1Args.fromMap(Map<String, dynamic> map) {
     return MessageHealthcareV1beta1Args(
-      data: map['data'] == null ? null : (map['data'] as String).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
       datasetId: (map['datasetId'] as String).input(),
       hl7V2StoreId: (map['hl7V2StoreId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      messageType: map['messageType'] == null ? null : (map['messageType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      patientIds: map['patientIds'] == null ? null : (pulumi.Input.decodeList<PatientIdHealthcareV1beta1>(map['patientIds'], (value) => PatientIdHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      schematizedData: map['schematizedData'] == null ? null : (SchematizedDataHealthcareV1beta1.fromMap((map['schematizedData'] as Map).cast<String, dynamic>())).input(),
-      sendFacility: map['sendFacility'] == null ? null : (map['sendFacility'] as String).input(),
-      sendTime: map['sendTime'] == null ? null : (map['sendTime'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      messageType: map['messageType'] == null ? null : (map['messageType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      patientIds: map['patientIds'] == null ? null : (pulumi.Input.decodeList<PatientIdHealthcareV1beta1>(map['patientIds']!, (value) => PatientIdHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      schematizedData: map['schematizedData'] == null ? null : (SchematizedDataHealthcareV1beta1.fromMap((map['schematizedData']! as Map).cast<String, dynamic>())).input(),
+      sendFacility: map['sendFacility'] == null ? null : (map['sendFacility']! as String).input(),
+      sendTime: map['sendTime'] == null ? null : (map['sendTime']! as String).input(),
     );
   }
 }

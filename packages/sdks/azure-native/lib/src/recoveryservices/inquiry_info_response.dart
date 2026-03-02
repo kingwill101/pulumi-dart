@@ -35,9 +35,9 @@ class InquiryInfoResponse {
 
   factory InquiryInfoResponse.fromMap(Map<String, dynamic> map) {
     return InquiryInfoResponse(
-      errorDetail: map['errorDetail'] == null ? null : (ErrorDetailResponse.fromMap((map['errorDetail'] as Map).cast<String, dynamic>())).input(),
-      inquiryDetails: map['inquiryDetails'] == null ? null : (pulumi.Input.decodeList<WorkloadInquiryDetailsResponse>(map['inquiryDetails'], (value) => WorkloadInquiryDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      errorDetail: map['errorDetail'] == null ? null : (ErrorDetailResponse.fromMap((map['errorDetail']! as Map).cast<String, dynamic>())).input(),
+      inquiryDetails: map['inquiryDetails'] == null ? null : (pulumi.Input.decodeList<WorkloadInquiryDetailsResponse>(map['inquiryDetails']!, (value) => WorkloadInquiryDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

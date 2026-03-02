@@ -38,7 +38,7 @@ class TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location {
       bucket: (map['bucket'] as String).input(),
       key: (map['key'] as String).input(),
       region: (map['region'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

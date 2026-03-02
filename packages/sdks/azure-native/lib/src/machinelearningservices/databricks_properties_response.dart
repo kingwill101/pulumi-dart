@@ -26,8 +26,8 @@ class DatabricksPropertiesResponse {
 
   factory DatabricksPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DatabricksPropertiesResponse(
-      databricksAccessToken: map['databricksAccessToken'] == null ? null : (map['databricksAccessToken'] as String).input(),
-      workspaceUrl: map['workspaceUrl'] == null ? null : (map['workspaceUrl'] as String).input(),
+      databricksAccessToken: map['databricksAccessToken'] == null ? null : (map['databricksAccessToken']! as String).input(),
+      workspaceUrl: map['workspaceUrl'] == null ? null : (map['workspaceUrl']! as String).input(),
     );
   }
 }

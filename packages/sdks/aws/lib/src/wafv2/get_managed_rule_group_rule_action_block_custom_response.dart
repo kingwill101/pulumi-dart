@@ -30,7 +30,7 @@ class GetManagedRuleGroupRuleActionBlockCustomResponse {
     return GetManagedRuleGroupRuleActionBlockCustomResponse(
       customResponseBodyKey: (map['customResponseBodyKey'] as String).input(),
       responseCode: (map['responseCode'] as int).input(),
-      responseHeaders: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader>(map['responseHeaders'], (value) => GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responseHeaders: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader>(map['responseHeaders']!, (value) => GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

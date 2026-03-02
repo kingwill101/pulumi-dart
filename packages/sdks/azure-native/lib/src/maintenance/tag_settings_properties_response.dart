@@ -26,8 +26,8 @@ class TagSettingsPropertiesResponse {
 
   factory TagSettingsPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return TagSettingsPropertiesResponse(
-      filterOperator: map['filterOperator'] == null ? null : (map['filterOperator'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, List<String>>()).input(),
+      filterOperator: map['filterOperator'] == null ? null : (map['filterOperator']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, List<String>>()).input(),
     );
   }
 }

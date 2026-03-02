@@ -80,8 +80,8 @@ class GetBuildResult {
     return GetBuildResult(
       azureApiVersion: map['azureApiVersion'] as String,
       buildStatus: map['buildStatus'] as String,
-      configuration: map['configuration'] == null ? null : BuildConfigurationResponse.fromMap((map['configuration'] as Map).cast<String, dynamic>()),
-      destinationContainerRegistry: map['destinationContainerRegistry'] == null ? null : ContainerRegistryWithCustomImageResponse.fromMap((map['destinationContainerRegistry'] as Map).cast<String, dynamic>()),
+      configuration: map['configuration'] == null ? null : BuildConfigurationResponse.fromMap((map['configuration']! as Map).cast<String, dynamic>()),
+      destinationContainerRegistry: map['destinationContainerRegistry'] == null ? null : ContainerRegistryWithCustomImageResponse.fromMap((map['destinationContainerRegistry']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       logStreamEndpoint: map['logStreamEndpoint'] as String,
       name: map['name'] as String,

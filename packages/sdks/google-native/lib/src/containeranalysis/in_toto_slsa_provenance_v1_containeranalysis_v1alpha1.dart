@@ -34,10 +34,10 @@ class InTotoSlsaProvenanceV1ContaineranalysisV1alpha1 {
 
   factory InTotoSlsaProvenanceV1ContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return InTotoSlsaProvenanceV1ContaineranalysisV1alpha1(
-      predicate: map['predicate'] == null ? null : (SlsaProvenanceV1ContaineranalysisV1alpha1.fromMap((map['predicate'] as Map).cast<String, dynamic>())).input(),
-      predicateType: map['predicateType'] == null ? null : (map['predicateType'] as String).input(),
-      subject: map['subject'] == null ? null : (pulumi.Input.decodeList<SubjectContaineranalysisV1alpha1>(map['subject'], (value) => SubjectContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      predicate: map['predicate'] == null ? null : (SlsaProvenanceV1ContaineranalysisV1alpha1.fromMap((map['predicate']! as Map).cast<String, dynamic>())).input(),
+      predicateType: map['predicateType'] == null ? null : (map['predicateType']! as String).input(),
+      subject: map['subject'] == null ? null : (pulumi.Input.decodeList<SubjectContaineranalysisV1alpha1>(map['subject']!, (value) => SubjectContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

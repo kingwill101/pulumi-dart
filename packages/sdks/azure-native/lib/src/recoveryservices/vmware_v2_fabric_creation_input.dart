@@ -39,8 +39,8 @@ class VMwareV2FabricCreationInput {
     return VMwareV2FabricCreationInput(
       instanceType: (map['instanceType'] as String).input(),
       migrationSolutionId: (map['migrationSolutionId'] as String).input(),
-      physicalSiteId: map['physicalSiteId'] == null ? null : (map['physicalSiteId'] as String).input(),
-      vmwareSiteId: map['vmwareSiteId'] == null ? null : (map['vmwareSiteId'] as String).input(),
+      physicalSiteId: map['physicalSiteId'] == null ? null : (map['physicalSiteId']! as String).input(),
+      vmwareSiteId: map['vmwareSiteId'] == null ? null : (map['vmwareSiteId']! as String).input(),
     );
   }
 }

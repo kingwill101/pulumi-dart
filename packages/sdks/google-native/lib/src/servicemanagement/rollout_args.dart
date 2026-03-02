@@ -50,12 +50,12 @@ class RolloutArgs {
 
   factory RolloutArgs.fromMap(Map<String, dynamic> map) {
     return RolloutArgs(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
-      deleteServiceStrategy: map['deleteServiceStrategy'] == null ? null : ((map['deleteServiceStrategy'] as Map).cast<String, dynamic>()).input(),
-      rolloutId: map['rolloutId'] == null ? null : (map['rolloutId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      createdBy: map['createdBy'] == null ? null : (map['createdBy']! as String).input(),
+      deleteServiceStrategy: map['deleteServiceStrategy'] == null ? null : ((map['deleteServiceStrategy']! as Map).cast<String, dynamic>()).input(),
+      rolloutId: map['rolloutId'] == null ? null : (map['rolloutId']! as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      trafficPercentStrategy: map['trafficPercentStrategy'] == null ? null : (TrafficPercentStrategy.fromMap((map['trafficPercentStrategy'] as Map).cast<String, dynamic>())).input(),
+      trafficPercentStrategy: map['trafficPercentStrategy'] == null ? null : (TrafficPercentStrategy.fromMap((map['trafficPercentStrategy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

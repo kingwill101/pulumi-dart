@@ -33,9 +33,9 @@ class SourceControlTokenState {
 
   factory SourceControlTokenState.fromMap(Map<String, dynamic> map) {
     return SourceControlTokenState(
-      token: map['token'] == null ? null : (map['token'] as String).input(),
-      tokenSecret: map['tokenSecret'] == null ? null : (map['tokenSecret'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
+      tokenSecret: map['tokenSecret'] == null ? null : (map['tokenSecret']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

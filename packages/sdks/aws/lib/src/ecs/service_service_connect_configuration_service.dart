@@ -48,12 +48,12 @@ class ServiceServiceConnectConfigurationService {
 
   factory ServiceServiceConnectConfigurationService.fromMap(Map<String, dynamic> map) {
     return ServiceServiceConnectConfigurationService(
-      clientAlias: map['clientAlias'] == null ? null : (pulumi.Input.decodeList<ServiceServiceConnectConfigurationServiceClientAlias>(map['clientAlias'], (value) => ServiceServiceConnectConfigurationServiceClientAlias.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      discoveryName: map['discoveryName'] == null ? null : (map['discoveryName'] as String).input(),
-      ingressPortOverride: map['ingressPortOverride'] == null ? null : (map['ingressPortOverride'] as int).input(),
+      clientAlias: map['clientAlias'] == null ? null : ((pulumi.Input.decodeList<ServiceServiceConnectConfigurationServiceClientAlias>(map['clientAlias']!, (value) => ServiceServiceConnectConfigurationServiceClientAlias.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      discoveryName: map['discoveryName'] == null ? null : ((map['discoveryName'] as String).input()).input(),
+      ingressPortOverride: map['ingressPortOverride'] == null ? null : ((map['ingressPortOverride'] as int).input()).input(),
       portName: (map['portName'] as String).input(),
-      timeout: map['timeout'] == null ? null : (ServiceServiceConnectConfigurationServiceTimeout.fromMap((map['timeout'] as Map).cast<String, dynamic>())).input(),
-      tls: map['tls'] == null ? null : (ServiceServiceConnectConfigurationServiceTls.fromMap((map['tls'] as Map).cast<String, dynamic>())).input(),
+      timeout: map['timeout'] == null ? null : ((ServiceServiceConnectConfigurationServiceTimeout.fromMap((map['timeout']! as Map).cast<String, dynamic>())).input()).input(),
+      tls: map['tls'] == null ? null : ((ServiceServiceConnectConfigurationServiceTls.fromMap((map['tls']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

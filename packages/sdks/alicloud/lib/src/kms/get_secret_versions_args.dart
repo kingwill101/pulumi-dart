@@ -49,12 +49,12 @@ class GetSecretVersionsArgs {
 
   factory GetSecretVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretVersionsArgs(
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      includeDeprecated: map['includeDeprecated'] == null ? null : (map['includeDeprecated'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      includeDeprecated: map['includeDeprecated'] == null ? null : (map['includeDeprecated']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
       secretName: (map['secretName'] as String).input(),
-      versionStage: map['versionStage'] == null ? null : (map['versionStage'] as String).input(),
+      versionStage: map['versionStage'] == null ? null : (map['versionStage']! as String).input(),
     );
   }
 }

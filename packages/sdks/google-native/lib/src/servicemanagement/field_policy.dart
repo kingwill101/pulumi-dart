@@ -31,9 +31,9 @@ class FieldPolicy {
 
   factory FieldPolicy.fromMap(Map<String, dynamic> map) {
     return FieldPolicy(
-      resourcePermission: map['resourcePermission'] == null ? null : (map['resourcePermission'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
+      resourcePermission: map['resourcePermission'] == null ? null : (map['resourcePermission']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
     );
   }
 }

@@ -42,8 +42,8 @@ class GetBucketObjectsResult {
       bucket: map['bucket'] as String,
       bucketObjects: pulumi.Input.decodeList<GetBucketObjectsBucketObject>(map['bucketObjects'], (value) => GetBucketObjectsBucketObject.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      matchGlob: map['matchGlob'] == null ? null : map['matchGlob'] as String,
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
+      matchGlob: map['matchGlob'] == null ? null : map['matchGlob']! as String,
+      prefix: map['prefix'] == null ? null : map['prefix']! as String,
     );
   }
 }

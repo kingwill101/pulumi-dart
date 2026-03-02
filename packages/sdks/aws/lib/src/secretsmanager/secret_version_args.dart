@@ -57,13 +57,13 @@ class SecretVersionArgs {
 
   factory SecretVersionArgs.fromMap(Map<String, dynamic> map) {
     return SecretVersionArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      secretBinary: map['secretBinary'] == null ? null : (map['secretBinary'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      secretBinary: map['secretBinary'] == null ? null : ((map['secretBinary'] as String).input()).input(),
       secretId: (map['secretId'] as String).input(),
-      secretString: map['secretString'] == null ? null : (map['secretString'] as String).input(),
-      secretStringWo: map['secretStringWo'] == null ? null : (map['secretStringWo'] as String).input(),
-      secretStringWoVersion: map['secretStringWoVersion'] == null ? null : (map['secretStringWoVersion'] as int).input(),
-      versionStages: map['versionStages'] == null ? null : ((map['versionStages'] as List).cast<String>()).input(),
+      secretString: map['secretString'] == null ? null : ((map['secretString'] as String).input()).input(),
+      secretStringWo: map['secretStringWo'] == null ? null : ((map['secretStringWo'] as String).input()).input(),
+      secretStringWoVersion: map['secretStringWoVersion'] == null ? null : ((map['secretStringWoVersion'] as int).input()).input(),
+      versionStages: map['versionStages'] == null ? null : (((map['versionStages'] as List).cast<String>()).input()).input(),
     );
   }
 }

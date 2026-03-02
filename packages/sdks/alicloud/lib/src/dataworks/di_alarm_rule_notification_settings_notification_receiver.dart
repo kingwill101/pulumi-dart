@@ -25,8 +25,8 @@ class DiAlarmRuleNotificationSettingsNotificationReceiver {
 
   factory DiAlarmRuleNotificationSettingsNotificationReceiver.fromMap(Map<String, dynamic> map) {
     return DiAlarmRuleNotificationSettingsNotificationReceiver(
-      receiverType: map['receiverType'] == null ? null : (map['receiverType'] as String).input(),
-      receiverValues: map['receiverValues'] == null ? null : ((map['receiverValues'] as List).cast<String>()).input(),
+      receiverType: map['receiverType'] == null ? null : (map['receiverType']! as String).input(),
+      receiverValues: map['receiverValues'] == null ? null : ((map['receiverValues']! as List).cast<String>()).input(),
     );
   }
 }

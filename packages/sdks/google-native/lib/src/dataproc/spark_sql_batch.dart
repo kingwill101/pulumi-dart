@@ -31,9 +31,9 @@ class SparkSqlBatch {
 
   factory SparkSqlBatch.fromMap(Map<String, dynamic> map) {
     return SparkSqlBatch(
-      jarFileUris: map['jarFileUris'] == null ? null : ((map['jarFileUris'] as List).cast<String>()).input(),
+      jarFileUris: map['jarFileUris'] == null ? null : ((map['jarFileUris']! as List).cast<String>()).input(),
       queryFileUri: (map['queryFileUri'] as String).input(),
-      queryVariables: map['queryVariables'] == null ? null : ((map['queryVariables'] as Map).cast<String, String>()).input(),
+      queryVariables: map['queryVariables'] == null ? null : ((map['queryVariables']! as Map).cast<String, String>()).input(),
     );
   }
 }

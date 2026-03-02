@@ -24,7 +24,7 @@ class SecretReplicationAuto {
 
   factory SecretReplicationAuto.fromMap(Map<String, dynamic> map) {
     return SecretReplicationAuto(
-      customerManagedEncryption: map['customerManagedEncryption'] == null ? null : (SecretReplicationAutoCustomerManagedEncryption.fromMap((map['customerManagedEncryption'] as Map).cast<String, dynamic>())).input(),
+      customerManagedEncryption: map['customerManagedEncryption'] == null ? null : (SecretReplicationAutoCustomerManagedEncryption.fromMap((map['customerManagedEncryption']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

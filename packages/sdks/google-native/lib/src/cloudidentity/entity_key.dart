@@ -26,8 +26,8 @@ class EntityKey {
 
   factory EntityKey.fromMap(Map<String, dynamic> map) {
     return EntityKey(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class ChannelInputAttachmentInputSettingsCaptionSelector {
 
   factory ChannelInputAttachmentInputSettingsCaptionSelector.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsCaptionSelector(
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : ((map['languageCode'] as String).input()).input(),
       name: (map['name'] as String).input(),
-      selectorSettings: map['selectorSettings'] == null ? null : (ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings.fromMap((map['selectorSettings'] as Map).cast<String, dynamic>())).input(),
+      selectorSettings: map['selectorSettings'] == null ? null : ((ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings.fromMap((map['selectorSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

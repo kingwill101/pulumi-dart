@@ -25,8 +25,8 @@ class DirectoryConfigCertificateBasedAuthProperties {
 
   factory DirectoryConfigCertificateBasedAuthProperties.fromMap(Map<String, dynamic> map) {
     return DirectoryConfigCertificateBasedAuthProperties(
-      certificateAuthorityArn: map['certificateAuthorityArn'] == null ? null : (map['certificateAuthorityArn'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      certificateAuthorityArn: map['certificateAuthorityArn'] == null ? null : ((map['certificateAuthorityArn'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class JobStatusFailure {
 
   factory JobStatusFailure.fromMap(Map<String, dynamic> map) {
     return JobStatusFailure(
-      failedAt: map['failedAt'] == null ? null : (map['failedAt'] as int).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      failedAt: map['failedAt'] == null ? null : (map['failedAt']! as int).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
     );
   }
 }

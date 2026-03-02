@@ -57,10 +57,10 @@ class JobScheduleArgs {
   factory JobScheduleArgs.fromMap(Map<String, dynamic> map) {
     return JobScheduleArgs(
       automationAccountName: (map['automationAccountName'] as String).input(),
-      jobScheduleId: map['jobScheduleId'] == null ? null : (map['jobScheduleId'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      jobScheduleId: map['jobScheduleId'] == null ? null : (map['jobScheduleId']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      runOn: map['runOn'] == null ? null : (map['runOn'] as String).input(),
+      runOn: map['runOn'] == null ? null : (map['runOn']! as String).input(),
       runbook: (RunbookAssociationProperty.fromMap((map['runbook'] as Map).cast<String, dynamic>())).input(),
       schedule: (ScheduleAssociationProperty.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
     );

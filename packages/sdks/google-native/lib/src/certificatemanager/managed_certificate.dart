@@ -31,9 +31,9 @@ class ManagedCertificate {
 
   factory ManagedCertificate.fromMap(Map<String, dynamic> map) {
     return ManagedCertificate(
-      dnsAuthorizations: map['dnsAuthorizations'] == null ? null : ((map['dnsAuthorizations'] as List).cast<String>()).input(),
-      domains: map['domains'] == null ? null : ((map['domains'] as List).cast<String>()).input(),
-      issuanceConfig: map['issuanceConfig'] == null ? null : (map['issuanceConfig'] as String).input(),
+      dnsAuthorizations: map['dnsAuthorizations'] == null ? null : ((map['dnsAuthorizations']! as List).cast<String>()).input(),
+      domains: map['domains'] == null ? null : ((map['domains']! as List).cast<String>()).input(),
+      issuanceConfig: map['issuanceConfig'] == null ? null : (map['issuanceConfig']! as String).input(),
     );
   }
 }

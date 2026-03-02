@@ -21,7 +21,7 @@ class PipeSourceParametersFilterCriteria {
 
   factory PipeSourceParametersFilterCriteria.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersFilterCriteria(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<PipeSourceParametersFilterCriteriaFilter>(map['filters'], (value) => PipeSourceParametersFilterCriteriaFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<PipeSourceParametersFilterCriteriaFilter>(map['filters']!, (value) => PipeSourceParametersFilterCriteriaFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

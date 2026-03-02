@@ -67,16 +67,16 @@ class ChannelSettingsResponse {
 
   factory ChannelSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ChannelSettingsResponse(
-      botIconUrl: map['botIconUrl'] == null ? null : (map['botIconUrl'] as String).input(),
-      botId: map['botId'] == null ? null : (map['botId'] as String).input(),
-      channelDisplayName: map['channelDisplayName'] == null ? null : (map['channelDisplayName'] as String).input(),
-      channelId: map['channelId'] == null ? null : (map['channelId'] as String).input(),
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth'] as bool).input(),
-      extensionKey1: map['extensionKey1'] == null ? null : (map['extensionKey1'] as String).input(),
-      extensionKey2: map['extensionKey2'] == null ? null : (map['extensionKey2'] as String).input(),
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
-      requireTermsAgreement: map['requireTermsAgreement'] == null ? null : (map['requireTermsAgreement'] as bool).input(),
-      sites: map['sites'] == null ? null : (pulumi.Input.decodeList<SiteResponse>(map['sites'], (value) => SiteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      botIconUrl: map['botIconUrl'] == null ? null : (map['botIconUrl']! as String).input(),
+      botId: map['botId'] == null ? null : (map['botId']! as String).input(),
+      channelDisplayName: map['channelDisplayName'] == null ? null : (map['channelDisplayName']! as String).input(),
+      channelId: map['channelId'] == null ? null : (map['channelId']! as String).input(),
+      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth']! as bool).input(),
+      extensionKey1: map['extensionKey1'] == null ? null : (map['extensionKey1']! as String).input(),
+      extensionKey2: map['extensionKey2'] == null ? null : (map['extensionKey2']! as String).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as bool).input(),
+      requireTermsAgreement: map['requireTermsAgreement'] == null ? null : (map['requireTermsAgreement']! as bool).input(),
+      sites: map['sites'] == null ? null : (pulumi.Input.decodeList<SiteResponse>(map['sites']!, (value) => SiteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

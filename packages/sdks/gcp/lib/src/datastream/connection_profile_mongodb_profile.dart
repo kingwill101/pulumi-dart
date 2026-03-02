@@ -67,12 +67,12 @@ class ConnectionProfileMongodbProfile {
   factory ConnectionProfileMongodbProfile.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileMongodbProfile(
       hostAddresses: (pulumi.Input.decodeList<ConnectionProfileMongodbProfileHostAddress>(map['hostAddresses'], (value) => ConnectionProfileMongodbProfileHostAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      replicaSet: map['replicaSet'] == null ? null : (map['replicaSet'] as String).input(),
-      secretManagerStoredPassword: map['secretManagerStoredPassword'] == null ? null : (map['secretManagerStoredPassword'] as String).input(),
-      srvConnectionFormat: map['srvConnectionFormat'] == null ? null : ((map['srvConnectionFormat'] as Map).cast<String, dynamic>()).input(),
-      sslConfig: map['sslConfig'] == null ? null : (ConnectionProfileMongodbProfileSslConfig.fromMap((map['sslConfig'] as Map).cast<String, dynamic>())).input(),
-      standardConnectionFormat: map['standardConnectionFormat'] == null ? null : (ConnectionProfileMongodbProfileStandardConnectionFormat.fromMap((map['standardConnectionFormat'] as Map).cast<String, dynamic>())).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      replicaSet: map['replicaSet'] == null ? null : (map['replicaSet']! as String).input(),
+      secretManagerStoredPassword: map['secretManagerStoredPassword'] == null ? null : (map['secretManagerStoredPassword']! as String).input(),
+      srvConnectionFormat: map['srvConnectionFormat'] == null ? null : ((map['srvConnectionFormat']! as Map).cast<String, dynamic>()).input(),
+      sslConfig: map['sslConfig'] == null ? null : (ConnectionProfileMongodbProfileSslConfig.fromMap((map['sslConfig']! as Map).cast<String, dynamic>())).input(),
+      standardConnectionFormat: map['standardConnectionFormat'] == null ? null : (ConnectionProfileMongodbProfileStandardConnectionFormat.fromMap((map['standardConnectionFormat']! as Map).cast<String, dynamic>())).input(),
       username: (map['username'] as String).input(),
     );
   }

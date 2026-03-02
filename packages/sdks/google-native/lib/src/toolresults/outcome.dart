@@ -46,11 +46,11 @@ class Outcome {
 
   factory Outcome.fromMap(Map<String, dynamic> map) {
     return Outcome(
-      failureDetail: map['failureDetail'] == null ? null : (FailureDetail.fromMap((map['failureDetail'] as Map).cast<String, dynamic>())).input(),
-      inconclusiveDetail: map['inconclusiveDetail'] == null ? null : (InconclusiveDetail.fromMap((map['inconclusiveDetail'] as Map).cast<String, dynamic>())).input(),
-      skippedDetail: map['skippedDetail'] == null ? null : (SkippedDetail.fromMap((map['skippedDetail'] as Map).cast<String, dynamic>())).input(),
-      successDetail: map['successDetail'] == null ? null : (SuccessDetail.fromMap((map['successDetail'] as Map).cast<String, dynamic>())).input(),
-      summary: map['summary'] == null ? null : (OutcomeSummary.fromValue(map['summary'] as String)).input(),
+      failureDetail: map['failureDetail'] == null ? null : (FailureDetail.fromMap((map['failureDetail']! as Map).cast<String, dynamic>())).input(),
+      inconclusiveDetail: map['inconclusiveDetail'] == null ? null : (InconclusiveDetail.fromMap((map['inconclusiveDetail']! as Map).cast<String, dynamic>())).input(),
+      skippedDetail: map['skippedDetail'] == null ? null : (SkippedDetail.fromMap((map['skippedDetail']! as Map).cast<String, dynamic>())).input(),
+      successDetail: map['successDetail'] == null ? null : (SuccessDetail.fromMap((map['successDetail']! as Map).cast<String, dynamic>())).input(),
+      summary: map['summary'] == null ? null : (OutcomeSummary.fromValue(map['summary']! as String)).input(),
     );
   }
 }

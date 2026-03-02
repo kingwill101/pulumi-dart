@@ -33,9 +33,9 @@ class AccountShareProperties {
 
   factory AccountShareProperties.fromMap(Map<String, dynamic> map) {
     return AccountShareProperties(
-      corsRules: map['corsRules'] == null ? null : (pulumi.Input.decodeList<AccountSharePropertiesCorsRule>(map['corsRules'], (value) => AccountSharePropertiesCorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      retentionPolicy: map['retentionPolicy'] == null ? null : (AccountSharePropertiesRetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
-      smb: map['smb'] == null ? null : (AccountSharePropertiesSmb.fromMap((map['smb'] as Map).cast<String, dynamic>())).input(),
+      corsRules: map['corsRules'] == null ? null : (pulumi.Input.decodeList<AccountSharePropertiesCorsRule>(map['corsRules']!, (value) => AccountSharePropertiesCorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (AccountSharePropertiesRetentionPolicy.fromMap((map['retentionPolicy']! as Map).cast<String, dynamic>())).input(),
+      smb: map['smb'] == null ? null : (AccountSharePropertiesSmb.fromMap((map['smb']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

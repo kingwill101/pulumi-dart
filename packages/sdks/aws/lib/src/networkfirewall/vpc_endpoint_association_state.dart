@@ -73,17 +73,17 @@ class VpcEndpointAssociationState {
 
   factory VpcEndpointAssociationState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointAssociationState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      firewallArn: map['firewallArn'] == null ? null : (map['firewallArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      subnetMapping: map['subnetMapping'] == null ? null : (VpcEndpointAssociationSubnetMapping.fromMap((map['subnetMapping'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (VpcEndpointAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      vpcEndpointAssociationArn: map['vpcEndpointAssociationArn'] == null ? null : (map['vpcEndpointAssociationArn'] as String).input(),
-      vpcEndpointAssociationId: map['vpcEndpointAssociationId'] == null ? null : (map['vpcEndpointAssociationId'] as String).input(),
-      vpcEndpointAssociationStatuses: map['vpcEndpointAssociationStatuses'] == null ? null : (pulumi.Input.decodeList<VpcEndpointAssociationVpcEndpointAssociationStatus>(map['vpcEndpointAssociationStatuses'], (value) => VpcEndpointAssociationVpcEndpointAssociationStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      firewallArn: map['firewallArn'] == null ? null : ((map['firewallArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      subnetMapping: map['subnetMapping'] == null ? null : ((VpcEndpointAssociationSubnetMapping.fromMap((map['subnetMapping']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((VpcEndpointAssociationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      vpcEndpointAssociationArn: map['vpcEndpointAssociationArn'] == null ? null : ((map['vpcEndpointAssociationArn'] as String).input()).input(),
+      vpcEndpointAssociationId: map['vpcEndpointAssociationId'] == null ? null : ((map['vpcEndpointAssociationId'] as String).input()).input(),
+      vpcEndpointAssociationStatuses: map['vpcEndpointAssociationStatuses'] == null ? null : ((pulumi.Input.decodeList<VpcEndpointAssociationVpcEndpointAssociationStatus>(map['vpcEndpointAssociationStatuses']!, (value) => VpcEndpointAssociationVpcEndpointAssociationStatus.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

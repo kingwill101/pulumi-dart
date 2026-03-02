@@ -27,8 +27,8 @@ class VmwareAdminClusterPlatformConfigBundle {
 
   factory VmwareAdminClusterPlatformConfigBundle.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterPlatformConfigBundle(
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<VmwareAdminClusterPlatformConfigBundleStatus>(map['statuses'], (value) => VmwareAdminClusterPlatformConfigBundleStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<VmwareAdminClusterPlatformConfigBundleStatus>(map['statuses']!, (value) => VmwareAdminClusterPlatformConfigBundleStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

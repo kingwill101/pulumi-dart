@@ -37,7 +37,7 @@ class EnterpriseCrmEventbusProtoCloudSchedulerConfig {
   factory EnterpriseCrmEventbusProtoCloudSchedulerConfig.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoCloudSchedulerConfig(
       cronTab: (map['cronTab'] as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
       location: (map['location'] as String).input(),
       serviceAccountEmail: (map['serviceAccountEmail'] as String).input(),
     );

@@ -32,7 +32,7 @@ class PipelinePipelineDefinitionS3Location {
     return PipelinePipelineDefinitionS3Location(
       bucket: (map['bucket'] as String).input(),
       objectKey: (map['objectKey'] as String).input(),
-      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
+      versionId: map['versionId'] == null ? null : ((map['versionId'] as String).input()).input(),
     );
   }
 }

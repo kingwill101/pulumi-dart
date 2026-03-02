@@ -85,17 +85,17 @@ class GetIotDpsResourceResult {
   factory GetIotDpsResourceResult.fromMap(Map<String, dynamic> map) {
     return GetIotDpsResourceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
       name: map['name'] as String,
       properties: IotDpsPropertiesDescriptionResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      resourcegroup: map['resourcegroup'] == null ? null : map['resourcegroup'] as String,
+      resourcegroup: map['resourcegroup'] == null ? null : map['resourcegroup']! as String,
       sku: IotDpsSkuInfoResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      subscriptionid: map['subscriptionid'] == null ? null : map['subscriptionid'] as String,
+      subscriptionid: map['subscriptionid'] == null ? null : map['subscriptionid']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

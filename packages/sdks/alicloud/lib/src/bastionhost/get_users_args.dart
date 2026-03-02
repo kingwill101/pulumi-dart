@@ -69,16 +69,16 @@ class GetUsersArgs {
 
   factory GetUsersArgs.fromMap(Map<String, dynamic> map) {
     return GetUsersArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
       instanceId: (map['instanceId'] as String).input(),
-      mobile: map['mobile'] == null ? null : (map['mobile'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      sourceUserId: map['sourceUserId'] == null ? null : (map['sourceUserId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      mobile: map['mobile'] == null ? null : (map['mobile']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      sourceUserId: map['sourceUserId'] == null ? null : (map['sourceUserId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

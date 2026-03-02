@@ -32,9 +32,9 @@ class LabelCategoryResponse {
 
   factory LabelCategoryResponse.fromMap(Map<String, dynamic> map) {
     return LabelCategoryResponse(
-      classes: map['classes'] == null ? null : (pulumi.Input.decodeMapValues<LabelClassResponse>(map['classes'], (value) => LabelClassResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      multiSelect: map['multiSelect'] == null ? null : (map['multiSelect'] as String).input(),
+      classes: map['classes'] == null ? null : (pulumi.Input.decodeMapValues<LabelClassResponse>(map['classes']!, (value) => LabelClassResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      multiSelect: map['multiSelect'] == null ? null : (map['multiSelect']! as String).input(),
     );
   }
 }

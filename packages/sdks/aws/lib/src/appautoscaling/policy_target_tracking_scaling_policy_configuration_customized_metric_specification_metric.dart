@@ -41,11 +41,11 @@ class PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificatio
 
   factory PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetric.fromMap(Map<String, dynamic> map) {
     return PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetric(
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
+      expression: map['expression'] == null ? null : ((map['expression'] as String).input()).input(),
       id: (map['id'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      metricStat: map['metricStat'] == null ? null : (PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStat.fromMap((map['metricStat'] as Map).cast<String, dynamic>())).input(),
-      returnData: map['returnData'] == null ? null : (map['returnData'] as bool).input(),
+      label: map['label'] == null ? null : ((map['label'] as String).input()).input(),
+      metricStat: map['metricStat'] == null ? null : ((PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStat.fromMap((map['metricStat']! as Map).cast<String, dynamic>())).input()).input(),
+      returnData: map['returnData'] == null ? null : ((map['returnData'] as bool).input()).input(),
     );
   }
 }

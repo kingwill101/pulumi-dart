@@ -76,17 +76,17 @@ class CapacityProviderState {
 
   factory CapacityProviderState.fromMap(Map<String, dynamic> map) {
     return CapacityProviderState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      capacityProviderScalingConfigs: map['capacityProviderScalingConfigs'] == null ? null : (pulumi.Input.decodeList<CapacityProviderCapacityProviderScalingConfig>(map['capacityProviderScalingConfigs'], (value) => CapacityProviderCapacityProviderScalingConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instanceRequirements: map['instanceRequirements'] == null ? null : (pulumi.Input.decodeList<CapacityProviderInstanceRequirement>(map['instanceRequirements'], (value) => CapacityProviderInstanceRequirement.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      permissionsConfig: map['permissionsConfig'] == null ? null : (CapacityProviderPermissionsConfig.fromMap((map['permissionsConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (CapacityProviderTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      vpcConfig: map['vpcConfig'] == null ? null : (CapacityProviderVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      capacityProviderScalingConfigs: map['capacityProviderScalingConfigs'] == null ? null : ((pulumi.Input.decodeList<CapacityProviderCapacityProviderScalingConfig>(map['capacityProviderScalingConfigs']!, (value) => CapacityProviderCapacityProviderScalingConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      instanceRequirements: map['instanceRequirements'] == null ? null : ((pulumi.Input.decodeList<CapacityProviderInstanceRequirement>(map['instanceRequirements']!, (value) => CapacityProviderInstanceRequirement.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      permissionsConfig: map['permissionsConfig'] == null ? null : ((CapacityProviderPermissionsConfig.fromMap((map['permissionsConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((CapacityProviderTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      vpcConfig: map['vpcConfig'] == null ? null : ((CapacityProviderVpcConfig.fromMap((map['vpcConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

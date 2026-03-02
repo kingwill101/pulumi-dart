@@ -27,7 +27,7 @@ class IngressEnvironmentStatusResponse {
 
   factory IngressEnvironmentStatusResponse.fromMap(Map<String, dynamic> map) {
     return IngressEnvironmentStatusResponse(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
       stateDetails: (EnvironmentStateDetailsResponse.fromMap((map['stateDetails'] as Map).cast<String, dynamic>())).input(),
     );
   }

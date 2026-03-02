@@ -52,11 +52,11 @@ class GetTrafficPolicyDocumentResult {
 
   factory GetTrafficPolicyDocumentResult.fromMap(Map<String, dynamic> map) {
     return GetTrafficPolicyDocumentResult(
-      endpoints: map['endpoints'] == null ? null : pulumi.Input.decodeList<GetTrafficPolicyDocumentEndpoint>(map['endpoints'], (value) => GetTrafficPolicyDocumentEndpoint.fromMap((value as Map).cast<String, dynamic>())),
+      endpoints: map['endpoints'] == null ? null : pulumi.Input.decodeList<GetTrafficPolicyDocumentEndpoint>(map['endpoints']!, (value) => GetTrafficPolicyDocumentEndpoint.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       json: map['json'] as String,
       recordType: map['recordType'] == null ? null : map['recordType'] as String,
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<GetTrafficPolicyDocumentRule>(map['rules'], (value) => GetTrafficPolicyDocumentRule.fromMap((value as Map).cast<String, dynamic>())),
+      rules: map['rules'] == null ? null : pulumi.Input.decodeList<GetTrafficPolicyDocumentRule>(map['rules']!, (value) => GetTrafficPolicyDocumentRule.fromMap((value as Map).cast<String, dynamic>())),
       startEndpoint: map['startEndpoint'] == null ? null : map['startEndpoint'] as String,
       startRule: map['startRule'] == null ? null : map['startRule'] as String,
       version: map['version'] == null ? null : map['version'] as String,

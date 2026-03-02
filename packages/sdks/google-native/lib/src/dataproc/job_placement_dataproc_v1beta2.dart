@@ -26,7 +26,7 @@ class JobPlacementDataprocV1beta2 {
 
   factory JobPlacementDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return JobPlacementDataprocV1beta2(
-      clusterLabels: map['clusterLabels'] == null ? null : ((map['clusterLabels'] as Map).cast<String, String>()).input(),
+      clusterLabels: map['clusterLabels'] == null ? null : ((map['clusterLabels']! as Map).cast<String, String>()).input(),
       clusterName: (map['clusterName'] as String).input(),
     );
   }

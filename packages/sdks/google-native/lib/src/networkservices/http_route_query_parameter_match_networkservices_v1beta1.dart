@@ -36,10 +36,10 @@ class HttpRouteQueryParameterMatchNetworkservicesV1beta1 {
 
   factory HttpRouteQueryParameterMatchNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpRouteQueryParameterMatchNetworkservicesV1beta1(
-      exactMatch: map['exactMatch'] == null ? null : (map['exactMatch'] as String).input(),
-      presentMatch: map['presentMatch'] == null ? null : (map['presentMatch'] as bool).input(),
-      queryParameter: map['queryParameter'] == null ? null : (map['queryParameter'] as String).input(),
-      regexMatch: map['regexMatch'] == null ? null : (map['regexMatch'] as String).input(),
+      exactMatch: map['exactMatch'] == null ? null : (map['exactMatch']! as String).input(),
+      presentMatch: map['presentMatch'] == null ? null : (map['presentMatch']! as bool).input(),
+      queryParameter: map['queryParameter'] == null ? null : (map['queryParameter']! as String).input(),
+      regexMatch: map['regexMatch'] == null ? null : (map['regexMatch']! as String).input(),
     );
   }
 }

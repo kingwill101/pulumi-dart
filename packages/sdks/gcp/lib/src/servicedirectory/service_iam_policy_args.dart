@@ -30,7 +30,7 @@ class ServiceIamPolicyArgs {
 
   factory ServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ServiceIamPolicyArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       policyData: (map['policyData'] as String).input(),
     );
   }

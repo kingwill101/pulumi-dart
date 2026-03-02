@@ -45,12 +45,12 @@ class TargetExecutionConfig {
 
   factory TargetExecutionConfig.fromMap(Map<String, dynamic> map) {
     return TargetExecutionConfig(
-      artifactStorage: map['artifactStorage'] == null ? null : (map['artifactStorage'] as String).input(),
-      executionTimeout: map['executionTimeout'] == null ? null : (map['executionTimeout'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      artifactStorage: map['artifactStorage'] == null ? null : (map['artifactStorage']! as String).input(),
+      executionTimeout: map['executionTimeout'] == null ? null : (map['executionTimeout']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
       usages: ((map['usages'] as List).cast<String>()).input(),
-      verbose: map['verbose'] == null ? null : (map['verbose'] as bool).input(),
-      workerPool: map['workerPool'] == null ? null : (map['workerPool'] as String).input(),
+      verbose: map['verbose'] == null ? null : (map['verbose']! as bool).input(),
+      workerPool: map['workerPool'] == null ? null : (map['workerPool']! as String).input(),
     );
   }
 }

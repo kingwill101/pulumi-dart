@@ -37,9 +37,9 @@ class InstanceGceSetupReservationAffinity {
 
   factory InstanceGceSetupReservationAffinity.fromMap(Map<String, dynamic> map) {
     return InstanceGceSetupReservationAffinity(
-      consumeReservationType: map['consumeReservationType'] == null ? null : (map['consumeReservationType'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      consumeReservationType: map['consumeReservationType'] == null ? null : (map['consumeReservationType']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

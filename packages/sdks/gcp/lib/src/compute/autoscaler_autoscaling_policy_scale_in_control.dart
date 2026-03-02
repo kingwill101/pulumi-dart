@@ -28,8 +28,8 @@ class AutoscalerAutoscalingPolicyScaleInControl {
 
   factory AutoscalerAutoscalingPolicyScaleInControl.fromMap(Map<String, dynamic> map) {
     return AutoscalerAutoscalingPolicyScaleInControl(
-      maxScaledInReplicas: map['maxScaledInReplicas'] == null ? null : (AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas.fromMap((map['maxScaledInReplicas'] as Map).cast<String, dynamic>())).input(),
-      timeWindowSec: map['timeWindowSec'] == null ? null : (map['timeWindowSec'] as int).input(),
+      maxScaledInReplicas: map['maxScaledInReplicas'] == null ? null : (AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas.fromMap((map['maxScaledInReplicas']! as Map).cast<String, dynamic>())).input(),
+      timeWindowSec: map['timeWindowSec'] == null ? null : (map['timeWindowSec']! as int).input(),
     );
   }
 }

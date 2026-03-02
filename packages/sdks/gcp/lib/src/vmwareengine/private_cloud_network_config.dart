@@ -51,11 +51,11 @@ class PrivateCloudNetworkConfig {
 
   factory PrivateCloudNetworkConfig.fromMap(Map<String, dynamic> map) {
     return PrivateCloudNetworkConfig(
-      dnsServerIp: map['dnsServerIp'] == null ? null : (map['dnsServerIp'] as String).input(),
+      dnsServerIp: map['dnsServerIp'] == null ? null : (map['dnsServerIp']! as String).input(),
       managementCidr: (map['managementCidr'] as String).input(),
-      managementIpAddressLayoutVersion: map['managementIpAddressLayoutVersion'] == null ? null : (map['managementIpAddressLayoutVersion'] as int).input(),
-      vmwareEngineNetwork: map['vmwareEngineNetwork'] == null ? null : (map['vmwareEngineNetwork'] as String).input(),
-      vmwareEngineNetworkCanonical: map['vmwareEngineNetworkCanonical'] == null ? null : (map['vmwareEngineNetworkCanonical'] as String).input(),
+      managementIpAddressLayoutVersion: map['managementIpAddressLayoutVersion'] == null ? null : (map['managementIpAddressLayoutVersion']! as int).input(),
+      vmwareEngineNetwork: map['vmwareEngineNetwork'] == null ? null : (map['vmwareEngineNetwork']! as String).input(),
+      vmwareEngineNetworkCanonical: map['vmwareEngineNetworkCanonical'] == null ? null : (map['vmwareEngineNetworkCanonical']! as String).input(),
     );
   }
 }

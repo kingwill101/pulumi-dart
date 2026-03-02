@@ -39,9 +39,9 @@ class SentinelOnboardingStateArgs {
 
   factory SentinelOnboardingStateArgs.fromMap(Map<String, dynamic> map) {
     return SentinelOnboardingStateArgs(
-      customerManagedKey: map['customerManagedKey'] == null ? null : (map['customerManagedKey'] as bool).input(),
+      customerManagedKey: map['customerManagedKey'] == null ? null : (map['customerManagedKey']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sentinelOnboardingStateName: map['sentinelOnboardingStateName'] == null ? null : (map['sentinelOnboardingStateName'] as String).input(),
+      sentinelOnboardingStateName: map['sentinelOnboardingStateName'] == null ? null : (map['sentinelOnboardingStateName']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

@@ -26,7 +26,7 @@ class CapacityReservationGroup {
 
   factory CapacityReservationGroup.fromMap(Map<String, dynamic> map) {
     return CapacityReservationGroup(
-      offer: map['offer'] == null ? null : (ServerlessOffer.fromMap((map['offer'] as Map).cast<String, dynamic>())).input(),
+      offer: map['offer'] == null ? null : (ServerlessOffer.fromMap((map['offer']! as Map).cast<String, dynamic>())).input(),
       reservedCapacity: (map['reservedCapacity'] as int).input(),
     );
   }

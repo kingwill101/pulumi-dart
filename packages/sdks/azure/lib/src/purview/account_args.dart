@@ -65,13 +65,13 @@ class AccountArgs {
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
       identity: (AccountIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedEventHubEnabled: map['managedEventHubEnabled'] == null ? null : (map['managedEventHubEnabled'] as bool).input(),
-      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : (map['managedResourceGroupName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicNetworkEnabled: map['publicNetworkEnabled'] == null ? null : (map['publicNetworkEnabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedEventHubEnabled: map['managedEventHubEnabled'] == null ? null : (map['managedEventHubEnabled']! as bool).input(),
+      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : (map['managedResourceGroupName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicNetworkEnabled: map['publicNetworkEnabled'] == null ? null : (map['publicNetworkEnabled']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

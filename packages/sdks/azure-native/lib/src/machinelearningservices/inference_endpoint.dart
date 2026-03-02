@@ -44,10 +44,10 @@ class InferenceEndpoint {
   factory InferenceEndpoint.fromMap(Map<String, dynamic> map) {
     return InferenceEndpoint(
       authMode: (map['authMode'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       groupName: (map['groupName'] as String).input(),
-      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<StringStringKeyValuePair>(map['properties'], (value) => StringStringKeyValuePair.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requestConfiguration: map['requestConfiguration'] == null ? null : (RequestConfiguration.fromMap((map['requestConfiguration'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<StringStringKeyValuePair>(map['properties']!, (value) => StringStringKeyValuePair.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestConfiguration: map['requestConfiguration'] == null ? null : (RequestConfiguration.fromMap((map['requestConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

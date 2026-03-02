@@ -56,7 +56,7 @@ class GetRouterStatusResult {
       id: map['id'] as String,
       name: map['name'] as String,
       network: map['network'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       region: map['region'] as String,
     );
   }

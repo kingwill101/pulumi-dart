@@ -59,11 +59,11 @@ class GetOpenApiPricingModulesResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       modules: pulumi.Input.decodeList<GetOpenApiPricingModulesModule>(map['modules'], (value) => GetOpenApiPricingModulesModule.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       productCode: map['productCode'] as String,
-      productType: map['productType'] == null ? null : map['productType'] as String,
+      productType: map['productType'] == null ? null : map['productType']! as String,
       subscriptionType: map['subscriptionType'] as String,
     );
   }

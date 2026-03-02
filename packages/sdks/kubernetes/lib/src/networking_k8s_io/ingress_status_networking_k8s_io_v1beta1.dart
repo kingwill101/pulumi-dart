@@ -22,7 +22,7 @@ class IngressStatusNetworkingK8sIoV1beta1 {
 
   factory IngressStatusNetworkingK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return IngressStatusNetworkingK8sIoV1beta1(
-      loadBalancer: map['loadBalancer'] == null ? null : (LoadBalancerStatus.fromMap((map['loadBalancer'] as Map).cast<String, dynamic>())).input(),
+      loadBalancer: map['loadBalancer'] == null ? null : (LoadBalancerStatus.fromMap((map['loadBalancer']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

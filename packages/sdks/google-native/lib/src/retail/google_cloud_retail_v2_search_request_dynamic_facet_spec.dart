@@ -22,7 +22,7 @@ class GoogleCloudRetailV2SearchRequestDynamicFacetSpec {
 
   factory GoogleCloudRetailV2SearchRequestDynamicFacetSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2SearchRequestDynamicFacetSpec(
-      mode: map['mode'] == null ? null : (GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode.fromValue(map['mode'] as String)).input(),
+      mode: map['mode'] == null ? null : (GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode.fromValue(map['mode']! as String)).input(),
     );
   }
 }

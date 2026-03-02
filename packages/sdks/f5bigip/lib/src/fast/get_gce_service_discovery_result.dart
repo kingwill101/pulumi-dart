@@ -73,20 +73,20 @@ class GetGceServiceDiscoveryResult {
 
   factory GetGceServiceDiscoveryResult.fromMap(Map<String, dynamic> map) {
     return GetGceServiceDiscoveryResult(
-      addressRealm: map['addressRealm'] == null ? null : map['addressRealm'] as String,
-      credentialUpdate: map['credentialUpdate'] == null ? null : map['credentialUpdate'] as bool,
-      encodedCredentials: map['encodedCredentials'] == null ? null : map['encodedCredentials'] as String,
+      addressRealm: map['addressRealm'] == null ? null : map['addressRealm']! as String,
+      credentialUpdate: map['credentialUpdate'] == null ? null : map['credentialUpdate']! as bool,
+      encodedCredentials: map['encodedCredentials'] == null ? null : map['encodedCredentials']! as String,
       gceSdJson: map['gceSdJson'] as String,
       id: map['id'] as String,
-      minimumMonitors: map['minimumMonitors'] == null ? null : map['minimumMonitors'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      projectId: map['projectId'] == null ? null : map['projectId'] as String,
+      minimumMonitors: map['minimumMonitors'] == null ? null : map['minimumMonitors']! as String,
+      port: map['port'] == null ? null : map['port']! as int,
+      projectId: map['projectId'] == null ? null : map['projectId']! as String,
       region: map['region'] as String,
       tagKey: map['tagKey'] as String,
       tagValue: map['tagValue'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      undetectableAction: map['undetectableAction'] == null ? null : map['undetectableAction'] as String,
-      updateInterval: map['updateInterval'] == null ? null : map['updateInterval'] as String,
+      type: map['type'] == null ? null : map['type']! as String,
+      undetectableAction: map['undetectableAction'] == null ? null : map['undetectableAction']! as String,
+      updateInterval: map['updateInterval'] == null ? null : map['updateInterval']! as String,
     );
   }
 }

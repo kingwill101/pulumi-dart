@@ -31,9 +31,9 @@ class SqlFunctionState {
 
   factory SqlFunctionState.fromMap(Map<String, dynamic> map) {
     return SqlFunctionState(
-      body: map['body'] == null ? null : (map['body'] as String).input(),
-      containerId: map['containerId'] == null ? null : (map['containerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
+      containerId: map['containerId'] == null ? null : (map['containerId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

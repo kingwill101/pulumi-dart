@@ -29,8 +29,8 @@ class GetLogGroupsArgs {
 
   factory GetLogGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetLogGroupsArgs(
-      logGroupNamePrefix: map['logGroupNamePrefix'] == null ? null : (map['logGroupNamePrefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      logGroupNamePrefix: map['logGroupNamePrefix'] == null ? null : ((map['logGroupNamePrefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

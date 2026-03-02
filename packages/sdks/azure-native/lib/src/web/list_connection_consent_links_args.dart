@@ -41,9 +41,9 @@ class ListConnectionConsentLinksArgs {
   factory ListConnectionConsentLinksArgs.fromMap(Map<String, dynamic> map) {
     return ListConnectionConsentLinksArgs(
       connectionName: (map['connectionName'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ConsentLinkParameterDefinition>(map['parameters'], (value) => ConsentLinkParameterDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ConsentLinkParameterDefinition>(map['parameters']!, (value) => ConsentLinkParameterDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

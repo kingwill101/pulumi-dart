@@ -20,7 +20,7 @@ class AutomaticClusterUpdateDefinitionResponse {
 
   factory AutomaticClusterUpdateDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return AutomaticClusterUpdateDefinitionResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

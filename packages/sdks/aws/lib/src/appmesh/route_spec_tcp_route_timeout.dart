@@ -21,7 +21,7 @@ class RouteSpecTcpRouteTimeout {
 
   factory RouteSpecTcpRouteTimeout.fromMap(Map<String, dynamic> map) {
     return RouteSpecTcpRouteTimeout(
-      idle: map['idle'] == null ? null : (RouteSpecTcpRouteTimeoutIdle.fromMap((map['idle'] as Map).cast<String, dynamic>())).input(),
+      idle: map['idle'] == null ? null : ((RouteSpecTcpRouteTimeoutIdle.fromMap((map['idle']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

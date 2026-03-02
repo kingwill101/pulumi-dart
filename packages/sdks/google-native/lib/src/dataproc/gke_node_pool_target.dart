@@ -34,7 +34,7 @@ class GkeNodePoolTarget {
   factory GkeNodePoolTarget.fromMap(Map<String, dynamic> map) {
     return GkeNodePoolTarget(
       nodePool: (map['nodePool'] as String).input(),
-      nodePoolConfig: map['nodePoolConfig'] == null ? null : (GkeNodePoolConfig.fromMap((map['nodePoolConfig'] as Map).cast<String, dynamic>())).input(),
+      nodePoolConfig: map['nodePoolConfig'] == null ? null : (GkeNodePoolConfig.fromMap((map['nodePoolConfig']! as Map).cast<String, dynamic>())).input(),
       roles: (pulumi.Input.decodeList<GkeNodePoolTargetRolesItem>(map['roles'], (value) => GkeNodePoolTargetRolesItem.fromValue(value as String))).input(),
     );
   }

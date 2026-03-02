@@ -56,14 +56,14 @@ class SqlPoolWorkloadGroupState {
 
   factory SqlPoolWorkloadGroupState.fromMap(Map<String, dynamic> map) {
     return SqlPoolWorkloadGroupState(
-      importance: map['importance'] == null ? null : (map['importance'] as String).input(),
-      maxResourcePercent: map['maxResourcePercent'] == null ? null : (map['maxResourcePercent'] as int).input(),
-      maxResourcePercentPerRequest: map['maxResourcePercentPerRequest'] == null ? null : (map['maxResourcePercentPerRequest'] as double).input(),
-      minResourcePercent: map['minResourcePercent'] == null ? null : (map['minResourcePercent'] as int).input(),
-      minResourcePercentPerRequest: map['minResourcePercentPerRequest'] == null ? null : (map['minResourcePercentPerRequest'] as double).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      queryExecutionTimeoutInSeconds: map['queryExecutionTimeoutInSeconds'] == null ? null : (map['queryExecutionTimeoutInSeconds'] as int).input(),
-      sqlPoolId: map['sqlPoolId'] == null ? null : (map['sqlPoolId'] as String).input(),
+      importance: map['importance'] == null ? null : (map['importance']! as String).input(),
+      maxResourcePercent: map['maxResourcePercent'] == null ? null : (map['maxResourcePercent']! as int).input(),
+      maxResourcePercentPerRequest: map['maxResourcePercentPerRequest'] == null ? null : (map['maxResourcePercentPerRequest']! as double).input(),
+      minResourcePercent: map['minResourcePercent'] == null ? null : (map['minResourcePercent']! as int).input(),
+      minResourcePercentPerRequest: map['minResourcePercentPerRequest'] == null ? null : (map['minResourcePercentPerRequest']! as double).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      queryExecutionTimeoutInSeconds: map['queryExecutionTimeoutInSeconds'] == null ? null : (map['queryExecutionTimeoutInSeconds']! as int).input(),
+      sqlPoolId: map['sqlPoolId'] == null ? null : (map['sqlPoolId']! as String).input(),
     );
   }
 }

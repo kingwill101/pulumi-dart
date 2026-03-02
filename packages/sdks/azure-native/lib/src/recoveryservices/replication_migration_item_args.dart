@@ -51,7 +51,7 @@ class ReplicationMigrationItemArgs {
   factory ReplicationMigrationItemArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationMigrationItemArgs(
       fabricName: (map['fabricName'] as String).input(),
-      migrationItemName: map['migrationItemName'] == null ? null : (map['migrationItemName'] as String).input(),
+      migrationItemName: map['migrationItemName'] == null ? null : (map['migrationItemName']! as String).input(),
       properties: (EnableMigrationInputProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       protectionContainerName: (map['protectionContainerName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

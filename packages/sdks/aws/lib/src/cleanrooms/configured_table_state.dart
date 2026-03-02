@@ -73,17 +73,17 @@ class ConfiguredTableState {
 
   factory ConfiguredTableState.fromMap(Map<String, dynamic> map) {
     return ConfiguredTableState(
-      allowedColumns: map['allowedColumns'] == null ? null : ((map['allowedColumns'] as List).cast<String>()).input(),
-      analysisMethod: map['analysisMethod'] == null ? null : (map['analysisMethod'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tableReference: map['tableReference'] == null ? null : (ConfiguredTableTableReference.fromMap((map['tableReference'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      allowedColumns: map['allowedColumns'] == null ? null : (((map['allowedColumns'] as List).cast<String>()).input()).input(),
+      analysisMethod: map['analysisMethod'] == null ? null : ((map['analysisMethod'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      createTime: map['createTime'] == null ? null : ((map['createTime'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tableReference: map['tableReference'] == null ? null : ((ConfiguredTableTableReference.fromMap((map['tableReference']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      updateTime: map['updateTime'] == null ? null : ((map['updateTime'] as String).input()).input(),
     );
   }
 }

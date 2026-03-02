@@ -25,8 +25,8 @@ class ScalingConfigurationCustomPriority {
 
   factory ScalingConfigurationCustomPriority.fromMap(Map<String, dynamic> map) {
     return ScalingConfigurationCustomPriority(
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

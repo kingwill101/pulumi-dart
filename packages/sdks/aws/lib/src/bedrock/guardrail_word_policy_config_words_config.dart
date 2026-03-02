@@ -40,10 +40,10 @@ class GuardrailWordPolicyConfigWordsConfig {
 
   factory GuardrailWordPolicyConfigWordsConfig.fromMap(Map<String, dynamic> map) {
     return GuardrailWordPolicyConfigWordsConfig(
-      inputAction: map['inputAction'] == null ? null : (map['inputAction'] as String).input(),
-      inputEnabled: map['inputEnabled'] == null ? null : (map['inputEnabled'] as bool).input(),
-      outputAction: map['outputAction'] == null ? null : (map['outputAction'] as String).input(),
-      outputEnabled: map['outputEnabled'] == null ? null : (map['outputEnabled'] as bool).input(),
+      inputAction: map['inputAction'] == null ? null : ((map['inputAction'] as String).input()).input(),
+      inputEnabled: map['inputEnabled'] == null ? null : ((map['inputEnabled'] as bool).input()).input(),
+      outputAction: map['outputAction'] == null ? null : ((map['outputAction'] as String).input()).input(),
+      outputEnabled: map['outputEnabled'] == null ? null : ((map['outputEnabled'] as bool).input()).input(),
       text: (map['text'] as String).input(),
     );
   }

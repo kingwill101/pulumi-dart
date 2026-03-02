@@ -36,10 +36,10 @@ class BlobStorageTokenStoreResponse {
 
   factory BlobStorageTokenStoreResponse.fromMap(Map<String, dynamic> map) {
     return BlobStorageTokenStoreResponse(
-      blobContainerUri: map['blobContainerUri'] == null ? null : (map['blobContainerUri'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      managedIdentityResourceId: map['managedIdentityResourceId'] == null ? null : (map['managedIdentityResourceId'] as String).input(),
-      sasUrlSettingName: map['sasUrlSettingName'] == null ? null : (map['sasUrlSettingName'] as String).input(),
+      blobContainerUri: map['blobContainerUri'] == null ? null : (map['blobContainerUri']! as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      managedIdentityResourceId: map['managedIdentityResourceId'] == null ? null : (map['managedIdentityResourceId']! as String).input(),
+      sasUrlSettingName: map['sasUrlSettingName'] == null ? null : (map['sasUrlSettingName']! as String).input(),
     );
   }
 }

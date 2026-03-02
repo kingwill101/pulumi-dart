@@ -27,8 +27,8 @@ class DistributionPolicy {
 
   factory DistributionPolicy.fromMap(Map<String, dynamic> map) {
     return DistributionPolicy(
-      targetShape: map['targetShape'] == null ? null : (DistributionPolicyTargetShape.fromValue(map['targetShape'] as String)).input(),
-      zones: map['zones'] == null ? null : (pulumi.Input.decodeList<DistributionPolicyZoneConfiguration>(map['zones'], (value) => DistributionPolicyZoneConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetShape: map['targetShape'] == null ? null : (DistributionPolicyTargetShape.fromValue(map['targetShape']! as String)).input(),
+      zones: map['zones'] == null ? null : (pulumi.Input.decodeList<DistributionPolicyZoneConfiguration>(map['zones']!, (value) => DistributionPolicyZoneConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

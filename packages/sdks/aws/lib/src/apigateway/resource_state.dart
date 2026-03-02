@@ -41,11 +41,11 @@ class ResourceState {
 
   factory ResourceState.fromMap(Map<String, dynamic> map) {
     return ResourceState(
-      parentId: map['parentId'] == null ? null : (map['parentId'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      pathPart: map['pathPart'] == null ? null : (map['pathPart'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      restApi: map['restApi'] == null ? null : (map['restApi'] as String).input(),
+      parentId: map['parentId'] == null ? null : ((map['parentId'] as String).input()).input(),
+      path: map['path'] == null ? null : ((map['path'] as String).input()).input(),
+      pathPart: map['pathPart'] == null ? null : ((map['pathPart'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      restApi: map['restApi'] == null ? null : ((map['restApi'] as String).input()).input(),
     );
   }
 }

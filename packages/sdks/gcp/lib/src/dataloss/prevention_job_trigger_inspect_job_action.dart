@@ -64,14 +64,14 @@ class PreventionJobTriggerInspectJobAction {
 
   factory PreventionJobTriggerInspectJobAction.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobAction(
-      deidentify: map['deidentify'] == null ? null : (PreventionJobTriggerInspectJobActionDeidentify.fromMap((map['deidentify'] as Map).cast<String, dynamic>())).input(),
-      jobNotificationEmails: map['jobNotificationEmails'] == null ? null : ((map['jobNotificationEmails'] as Map).cast<String, dynamic>()).input(),
-      pubSub: map['pubSub'] == null ? null : (PreventionJobTriggerInspectJobActionPubSub.fromMap((map['pubSub'] as Map).cast<String, dynamic>())).input(),
-      publishFindingsToCloudDataCatalog: map['publishFindingsToCloudDataCatalog'] == null ? null : ((map['publishFindingsToCloudDataCatalog'] as Map).cast<String, dynamic>()).input(),
-      publishFindingsToDataplexCatalog: map['publishFindingsToDataplexCatalog'] == null ? null : ((map['publishFindingsToDataplexCatalog'] as Map).cast<String, dynamic>()).input(),
-      publishSummaryToCscc: map['publishSummaryToCscc'] == null ? null : ((map['publishSummaryToCscc'] as Map).cast<String, dynamic>()).input(),
-      publishToStackdriver: map['publishToStackdriver'] == null ? null : ((map['publishToStackdriver'] as Map).cast<String, dynamic>()).input(),
-      saveFindings: map['saveFindings'] == null ? null : (PreventionJobTriggerInspectJobActionSaveFindings.fromMap((map['saveFindings'] as Map).cast<String, dynamic>())).input(),
+      deidentify: map['deidentify'] == null ? null : (PreventionJobTriggerInspectJobActionDeidentify.fromMap((map['deidentify']! as Map).cast<String, dynamic>())).input(),
+      jobNotificationEmails: map['jobNotificationEmails'] == null ? null : ((map['jobNotificationEmails']! as Map).cast<String, dynamic>()).input(),
+      pubSub: map['pubSub'] == null ? null : (PreventionJobTriggerInspectJobActionPubSub.fromMap((map['pubSub']! as Map).cast<String, dynamic>())).input(),
+      publishFindingsToCloudDataCatalog: map['publishFindingsToCloudDataCatalog'] == null ? null : ((map['publishFindingsToCloudDataCatalog']! as Map).cast<String, dynamic>()).input(),
+      publishFindingsToDataplexCatalog: map['publishFindingsToDataplexCatalog'] == null ? null : ((map['publishFindingsToDataplexCatalog']! as Map).cast<String, dynamic>()).input(),
+      publishSummaryToCscc: map['publishSummaryToCscc'] == null ? null : ((map['publishSummaryToCscc']! as Map).cast<String, dynamic>()).input(),
+      publishToStackdriver: map['publishToStackdriver'] == null ? null : ((map['publishToStackdriver']! as Map).cast<String, dynamic>()).input(),
+      saveFindings: map['saveFindings'] == null ? null : (PreventionJobTriggerInspectJobActionSaveFindings.fromMap((map['saveFindings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsDvbSubSo
 
   factory ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsDvbSubSourceSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsDvbSubSourceSettings(
-      ocrLanguage: map['ocrLanguage'] == null ? null : (map['ocrLanguage'] as String).input(),
-      pid: map['pid'] == null ? null : (map['pid'] as int).input(),
+      ocrLanguage: map['ocrLanguage'] == null ? null : ((map['ocrLanguage'] as String).input()).input(),
+      pid: map['pid'] == null ? null : ((map['pid'] as int).input()).input(),
     );
   }
 }

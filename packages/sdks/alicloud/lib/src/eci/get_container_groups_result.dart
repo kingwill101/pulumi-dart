@@ -78,21 +78,21 @@ class GetContainerGroupsResult {
 
   factory GetContainerGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetContainerGroupsResult(
-      containerGroupName: map['containerGroupName'] == null ? null : map['containerGroupName'] as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      containerGroupName: map['containerGroupName'] == null ? null : map['containerGroupName']! as String,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       groups: pulumi.Input.decodeList<GetContainerGroupsGroup>(map['groups'], (value) => GetContainerGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      limit: map['limit'] == null ? null : map['limit'] as int,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      limit: map['limit'] == null ? null : map['limit']! as int,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      vswitchId: map['vswitchId'] == null ? null : map['vswitchId'] as String,
-      withEvent: map['withEvent'] == null ? null : map['withEvent'] as bool,
-      zoneId: map['zoneId'] == null ? null : map['zoneId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      vswitchId: map['vswitchId'] == null ? null : map['vswitchId']! as String,
+      withEvent: map['withEvent'] == null ? null : map['withEvent']! as bool,
+      zoneId: map['zoneId'] == null ? null : map['zoneId']! as String,
     );
   }
 }

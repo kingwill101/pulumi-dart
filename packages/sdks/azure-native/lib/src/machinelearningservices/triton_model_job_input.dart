@@ -36,9 +36,9 @@ class TritonModelJobInput {
 
   factory TritonModelJobInput.fromMap(Map<String, dynamic> map) {
     return TritonModelJobInput(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       jobInputType: (map['jobInputType'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
       uri: (map['uri'] as String).input(),
     );
   }

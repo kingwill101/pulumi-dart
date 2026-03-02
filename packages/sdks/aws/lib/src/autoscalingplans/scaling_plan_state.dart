@@ -43,11 +43,11 @@ class ScalingPlanState {
 
   factory ScalingPlanState.fromMap(Map<String, dynamic> map) {
     return ScalingPlanState(
-      applicationSource: map['applicationSource'] == null ? null : (ScalingPlanApplicationSource.fromMap((map['applicationSource'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scalingInstructions: map['scalingInstructions'] == null ? null : (pulumi.Input.decodeList<ScalingPlanScalingInstruction>(map['scalingInstructions'], (value) => ScalingPlanScalingInstruction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      scalingPlanVersion: map['scalingPlanVersion'] == null ? null : (map['scalingPlanVersion'] as int).input(),
+      applicationSource: map['applicationSource'] == null ? null : ((ScalingPlanApplicationSource.fromMap((map['applicationSource']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scalingInstructions: map['scalingInstructions'] == null ? null : ((pulumi.Input.decodeList<ScalingPlanScalingInstruction>(map['scalingInstructions']!, (value) => ScalingPlanScalingInstruction.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      scalingPlanVersion: map['scalingPlanVersion'] == null ? null : ((map['scalingPlanVersion'] as int).input()).input(),
     );
   }
 }

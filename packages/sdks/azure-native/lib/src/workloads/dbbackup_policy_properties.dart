@@ -60,13 +60,13 @@ class DBBackupPolicyProperties {
   factory DBBackupPolicyProperties.fromMap(Map<String, dynamic> map) {
     return DBBackupPolicyProperties(
       backupManagementType: (map['backupManagementType'] as String).input(),
-      makePolicyConsistent: map['makePolicyConsistent'] == null ? null : (map['makePolicyConsistent'] as bool).input(),
+      makePolicyConsistent: map['makePolicyConsistent'] == null ? null : (map['makePolicyConsistent']! as bool).input(),
       name: (map['name'] as String).input(),
-      protectedItemsCount: map['protectedItemsCount'] == null ? null : (map['protectedItemsCount'] as int).input(),
-      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : ((map['resourceGuardOperationRequests'] as List).cast<String>()).input(),
-      settings: map['settings'] == null ? null : (Settings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
-      subProtectionPolicy: map['subProtectionPolicy'] == null ? null : (pulumi.Input.decodeList<SubProtectionPolicy>(map['subProtectionPolicy'], (value) => SubProtectionPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      workLoadType: map['workLoadType'] == null ? null : (map['workLoadType'] as String).input(),
+      protectedItemsCount: map['protectedItemsCount'] == null ? null : (map['protectedItemsCount']! as int).input(),
+      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : ((map['resourceGuardOperationRequests']! as List).cast<String>()).input(),
+      settings: map['settings'] == null ? null : (Settings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
+      subProtectionPolicy: map['subProtectionPolicy'] == null ? null : (pulumi.Input.decodeList<SubProtectionPolicy>(map['subProtectionPolicy']!, (value) => SubProtectionPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      workLoadType: map['workLoadType'] == null ? null : (map['workLoadType']! as String).input(),
     );
   }
 }

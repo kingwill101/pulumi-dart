@@ -26,7 +26,7 @@ class DeploymentExternalInputDefinition {
 
   factory DeploymentExternalInputDefinition.fromMap(Map<String, dynamic> map) {
     return DeploymentExternalInputDefinition(
-      config: map['config'] == null ? null : (map['config']).input(),
+      config: map['config'] == null ? null : (map['config']!).input(),
       kind: (map['kind'] as String).input(),
     );
   }

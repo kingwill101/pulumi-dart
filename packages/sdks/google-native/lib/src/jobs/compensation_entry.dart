@@ -50,12 +50,12 @@ class CompensationEntry {
 
   factory CompensationEntry.fromMap(Map<String, dynamic> map) {
     return CompensationEntry(
-      amount: map['amount'] == null ? null : (Money.fromMap((map['amount'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expectedUnitsPerYear: map['expectedUnitsPerYear'] == null ? null : (map['expectedUnitsPerYear'] as double).input(),
-      range: map['range'] == null ? null : (CompensationRange.fromMap((map['range'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (CompensationEntryType.fromValue(map['type'] as String)).input(),
-      unit: map['unit'] == null ? null : (CompensationEntryUnit.fromValue(map['unit'] as String)).input(),
+      amount: map['amount'] == null ? null : (Money.fromMap((map['amount']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      expectedUnitsPerYear: map['expectedUnitsPerYear'] == null ? null : (map['expectedUnitsPerYear']! as double).input(),
+      range: map['range'] == null ? null : (CompensationRange.fromMap((map['range']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (CompensationEntryType.fromValue(map['type']! as String)).input(),
+      unit: map['unit'] == null ? null : (CompensationEntryUnit.fromValue(map['unit']! as String)).input(),
     );
   }
 }

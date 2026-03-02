@@ -44,9 +44,9 @@ class InventoryItemArgs {
 
   factory InventoryItemArgs.fromMap(Map<String, dynamic> map) {
     return InventoryItemArgs(
-      inventoryItemName: map['inventoryItemName'] == null ? null : (map['inventoryItemName'] as String).input(),
+      inventoryItemName: map['inventoryItemName'] == null ? null : (map['inventoryItemName']! as String).input(),
       inventoryType: (map['inventoryType'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       vmmServerName: (map['vmmServerName'] as String).input(),
     );

@@ -44,9 +44,9 @@ class DomainCpuNumaCellCach {
     return DomainCpuNumaCellCach(
       associativity: (map['associativity'] as String).input(),
       level: (map['level'] as double).input(),
-      line: map['line'] == null ? null : (DomainCpuNumaCellCachLine.fromMap((map['line'] as Map).cast<String, dynamic>())).input(),
+      line: map['line'] == null ? null : (DomainCpuNumaCellCachLine.fromMap((map['line']! as Map).cast<String, dynamic>())).input(),
       policy: (map['policy'] as String).input(),
-      size: map['size'] == null ? null : (DomainCpuNumaCellCachSize.fromMap((map['size'] as Map).cast<String, dynamic>())).input(),
+      size: map['size'] == null ? null : (DomainCpuNumaCellCachSize.fromMap((map['size']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

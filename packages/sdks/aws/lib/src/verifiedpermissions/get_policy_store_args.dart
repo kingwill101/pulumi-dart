@@ -30,7 +30,7 @@ class GetPolicyStoreArgs {
   factory GetPolicyStoreArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyStoreArgs(
       id: (map['id'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -25,7 +25,7 @@ class AccountNetworkProfileNodeManagementAccessIpRule {
 
   factory AccountNetworkProfileNodeManagementAccessIpRule.fromMap(Map<String, dynamic> map) {
     return AccountNetworkProfileNodeManagementAccessIpRule(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
       ipRange: (map['ipRange'] as String).input(),
     );
   }

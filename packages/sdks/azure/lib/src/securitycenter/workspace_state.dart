@@ -26,8 +26,8 @@ class WorkspaceState {
 
   factory WorkspaceState.fromMap(Map<String, dynamic> map) {
     return WorkspaceState(
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

@@ -54,13 +54,13 @@ class TimeSeriesQuery {
 
   factory TimeSeriesQuery.fromMap(Map<String, dynamic> map) {
     return TimeSeriesQuery(
-      opsAnalyticsQuery: map['opsAnalyticsQuery'] == null ? null : (OpsAnalyticsQuery.fromMap((map['opsAnalyticsQuery'] as Map).cast<String, dynamic>())).input(),
-      outputFullDuration: map['outputFullDuration'] == null ? null : (map['outputFullDuration'] as bool).input(),
-      prometheusQuery: map['prometheusQuery'] == null ? null : (map['prometheusQuery'] as String).input(),
-      timeSeriesFilter: map['timeSeriesFilter'] == null ? null : (TimeSeriesFilter.fromMap((map['timeSeriesFilter'] as Map).cast<String, dynamic>())).input(),
-      timeSeriesFilterRatio: map['timeSeriesFilterRatio'] == null ? null : (TimeSeriesFilterRatio.fromMap((map['timeSeriesFilterRatio'] as Map).cast<String, dynamic>())).input(),
-      timeSeriesQueryLanguage: map['timeSeriesQueryLanguage'] == null ? null : (map['timeSeriesQueryLanguage'] as String).input(),
-      unitOverride: map['unitOverride'] == null ? null : (map['unitOverride'] as String).input(),
+      opsAnalyticsQuery: map['opsAnalyticsQuery'] == null ? null : (OpsAnalyticsQuery.fromMap((map['opsAnalyticsQuery']! as Map).cast<String, dynamic>())).input(),
+      outputFullDuration: map['outputFullDuration'] == null ? null : (map['outputFullDuration']! as bool).input(),
+      prometheusQuery: map['prometheusQuery'] == null ? null : (map['prometheusQuery']! as String).input(),
+      timeSeriesFilter: map['timeSeriesFilter'] == null ? null : (TimeSeriesFilter.fromMap((map['timeSeriesFilter']! as Map).cast<String, dynamic>())).input(),
+      timeSeriesFilterRatio: map['timeSeriesFilterRatio'] == null ? null : (TimeSeriesFilterRatio.fromMap((map['timeSeriesFilterRatio']! as Map).cast<String, dynamic>())).input(),
+      timeSeriesQueryLanguage: map['timeSeriesQueryLanguage'] == null ? null : (map['timeSeriesQueryLanguage']! as String).input(),
+      unitOverride: map['unitOverride'] == null ? null : (map['unitOverride']! as String).input(),
     );
   }
 }

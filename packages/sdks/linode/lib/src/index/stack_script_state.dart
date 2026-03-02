@@ -84,19 +84,19 @@ class StackScriptState {
 
   factory StackScriptState.fromMap(Map<String, dynamic> map) {
     return StackScriptState(
-      created: map['created'] == null ? null : (map['created'] as String).input(),
-      deploymentsActive: map['deploymentsActive'] == null ? null : (map['deploymentsActive'] as int).input(),
-      deploymentsTotal: map['deploymentsTotal'] == null ? null : (map['deploymentsTotal'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      images: map['images'] == null ? null : ((map['images'] as List).cast<String>()).input(),
-      isPublic: map['isPublic'] == null ? null : (map['isPublic'] as bool).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      revNote: map['revNote'] == null ? null : (map['revNote'] as String).input(),
-      script: map['script'] == null ? null : (map['script'] as String).input(),
-      updated: map['updated'] == null ? null : (map['updated'] as String).input(),
-      userDefinedFields: map['userDefinedFields'] == null ? null : (pulumi.Input.decodeList<StackScriptUserDefinedField>(map['userDefinedFields'], (value) => StackScriptUserDefinedField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      userGravatarId: map['userGravatarId'] == null ? null : (map['userGravatarId'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      created: map['created'] == null ? null : (map['created']! as String).input(),
+      deploymentsActive: map['deploymentsActive'] == null ? null : (map['deploymentsActive']! as int).input(),
+      deploymentsTotal: map['deploymentsTotal'] == null ? null : (map['deploymentsTotal']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      images: map['images'] == null ? null : ((map['images']! as List).cast<String>()).input(),
+      isPublic: map['isPublic'] == null ? null : (map['isPublic']! as bool).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      revNote: map['revNote'] == null ? null : (map['revNote']! as String).input(),
+      script: map['script'] == null ? null : (map['script']! as String).input(),
+      updated: map['updated'] == null ? null : (map['updated']! as String).input(),
+      userDefinedFields: map['userDefinedFields'] == null ? null : (pulumi.Input.decodeList<StackScriptUserDefinedField>(map['userDefinedFields']!, (value) => StackScriptUserDefinedField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userGravatarId: map['userGravatarId'] == null ? null : (map['userGravatarId']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

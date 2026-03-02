@@ -55,11 +55,11 @@ class EndpointDiscoveryK8sIoV1beta1 {
   factory EndpointDiscoveryK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return EndpointDiscoveryK8sIoV1beta1(
       addresses: ((map['addresses'] as List).cast<String>()).input(),
-      conditions: map['conditions'] == null ? null : (EndpointConditionsDiscoveryK8sIoV1beta1.fromMap((map['conditions'] as Map).cast<String, dynamic>())).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
-      targetRef: map['targetRef'] == null ? null : (ObjectReference.fromMap((map['targetRef'] as Map).cast<String, dynamic>())).input(),
-      topology: map['topology'] == null ? null : ((map['topology'] as Map).cast<String, String>()).input(),
+      conditions: map['conditions'] == null ? null : (EndpointConditionsDiscoveryK8sIoV1beta1.fromMap((map['conditions']! as Map).cast<String, dynamic>())).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
+      targetRef: map['targetRef'] == null ? null : (ObjectReference.fromMap((map['targetRef']! as Map).cast<String, dynamic>())).input(),
+      topology: map['topology'] == null ? null : ((map['topology']! as Map).cast<String, String>()).input(),
     );
   }
 }

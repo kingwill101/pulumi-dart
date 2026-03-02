@@ -40,11 +40,11 @@ class DataSetPhysicalTableMapS3SourceUploadSettings {
 
   factory DataSetPhysicalTableMapS3SourceUploadSettings.fromMap(Map<String, dynamic> map) {
     return DataSetPhysicalTableMapS3SourceUploadSettings(
-      containsHeader: map['containsHeader'] == null ? null : (map['containsHeader'] as bool).input(),
-      delimiter: map['delimiter'] == null ? null : (map['delimiter'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      startFromRow: map['startFromRow'] == null ? null : (map['startFromRow'] as int).input(),
-      textQualifier: map['textQualifier'] == null ? null : (map['textQualifier'] as String).input(),
+      containsHeader: map['containsHeader'] == null ? null : ((map['containsHeader'] as bool).input()).input(),
+      delimiter: map['delimiter'] == null ? null : ((map['delimiter'] as String).input()).input(),
+      format: map['format'] == null ? null : ((map['format'] as String).input()).input(),
+      startFromRow: map['startFromRow'] == null ? null : ((map['startFromRow'] as int).input()).input(),
+      textQualifier: map['textQualifier'] == null ? null : ((map['textQualifier'] as String).input()).input(),
     );
   }
 }

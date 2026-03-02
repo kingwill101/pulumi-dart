@@ -49,9 +49,9 @@ class TriggerHttpRequestArgs {
   factory TriggerHttpRequestArgs.fromMap(Map<String, dynamic> map) {
     return TriggerHttpRequestArgs(
       logicAppId: (map['logicAppId'] as String).input(),
-      method: map['method'] == null ? null : (map['method'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      relativePath: map['relativePath'] == null ? null : (map['relativePath'] as String).input(),
+      method: map['method'] == null ? null : (map['method']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      relativePath: map['relativePath'] == null ? null : (map['relativePath']! as String).input(),
       schema: (map['schema'] as String).input(),
     );
   }

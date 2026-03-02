@@ -43,11 +43,11 @@ class BackupScheduleArgs {
 
   factory BackupScheduleArgs.fromMap(Map<String, dynamic> map) {
     return BackupScheduleArgs(
-      dailyRecurrence: map['dailyRecurrence'] == null ? null : ((map['dailyRecurrence'] as Map).cast<String, dynamic>()).input(),
+      dailyRecurrence: map['dailyRecurrence'] == null ? null : ((map['dailyRecurrence']! as Map).cast<String, dynamic>()).input(),
       databaseId: (map['databaseId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      retention: map['retention'] == null ? null : (map['retention'] as String).input(),
-      weeklyRecurrence: map['weeklyRecurrence'] == null ? null : (GoogleFirestoreAdminV1WeeklyRecurrence.fromMap((map['weeklyRecurrence'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      retention: map['retention'] == null ? null : (map['retention']! as String).input(),
+      weeklyRecurrence: map['weeklyRecurrence'] == null ? null : (GoogleFirestoreAdminV1WeeklyRecurrence.fromMap((map['weeklyRecurrence']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

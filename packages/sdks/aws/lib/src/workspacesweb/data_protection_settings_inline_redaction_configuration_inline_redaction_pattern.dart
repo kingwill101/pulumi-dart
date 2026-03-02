@@ -47,12 +47,12 @@ class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern {
 
   factory DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern.fromMap(Map<String, dynamic> map) {
     return DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern(
-      builtInPatternId: map['builtInPatternId'] == null ? null : (map['builtInPatternId'] as String).input(),
-      confidenceLevel: map['confidenceLevel'] == null ? null : (map['confidenceLevel'] as int).input(),
-      customPattern: map['customPattern'] == null ? null : (DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern.fromMap((map['customPattern'] as Map).cast<String, dynamic>())).input(),
-      enforcedUrls: map['enforcedUrls'] == null ? null : ((map['enforcedUrls'] as List).cast<String>()).input(),
-      exemptUrls: map['exemptUrls'] == null ? null : ((map['exemptUrls'] as List).cast<String>()).input(),
-      redactionPlaceHolders: map['redactionPlaceHolders'] == null ? null : (pulumi.Input.decodeList<DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolder>(map['redactionPlaceHolders'], (value) => DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolder.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      builtInPatternId: map['builtInPatternId'] == null ? null : ((map['builtInPatternId'] as String).input()).input(),
+      confidenceLevel: map['confidenceLevel'] == null ? null : ((map['confidenceLevel'] as int).input()).input(),
+      customPattern: map['customPattern'] == null ? null : ((DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern.fromMap((map['customPattern']! as Map).cast<String, dynamic>())).input()).input(),
+      enforcedUrls: map['enforcedUrls'] == null ? null : (((map['enforcedUrls'] as List).cast<String>()).input()).input(),
+      exemptUrls: map['exemptUrls'] == null ? null : (((map['exemptUrls'] as List).cast<String>()).input()).input(),
+      redactionPlaceHolders: map['redactionPlaceHolders'] == null ? null : ((pulumi.Input.decodeList<DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolder>(map['redactionPlaceHolders']!, (value) => DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolder.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

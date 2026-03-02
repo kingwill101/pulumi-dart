@@ -36,7 +36,7 @@ class GetAgentAgentVersionsResult {
   factory GetAgentAgentVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetAgentAgentVersionsResult(
       agentId: map['agentId'] as String,
-      agentVersionSummaries: map['agentVersionSummaries'] == null ? null : pulumi.Input.decodeList<GetAgentAgentVersionsAgentVersionSummary>(map['agentVersionSummaries'], (value) => GetAgentAgentVersionsAgentVersionSummary.fromMap((value as Map).cast<String, dynamic>())),
+      agentVersionSummaries: map['agentVersionSummaries'] == null ? null : pulumi.Input.decodeList<GetAgentAgentVersionsAgentVersionSummary>(map['agentVersionSummaries']!, (value) => GetAgentAgentVersionsAgentVersionSummary.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
     );

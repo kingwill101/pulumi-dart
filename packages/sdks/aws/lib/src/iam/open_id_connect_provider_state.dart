@@ -46,12 +46,12 @@ class OpenIdConnectProviderState {
 
   factory OpenIdConnectProviderState.fromMap(Map<String, dynamic> map) {
     return OpenIdConnectProviderState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      clientIdLists: map['clientIdLists'] == null ? null : ((map['clientIdLists'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      thumbprintLists: map['thumbprintLists'] == null ? null : ((map['thumbprintLists'] as List).cast<String>()).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      clientIdLists: map['clientIdLists'] == null ? null : (((map['clientIdLists'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      thumbprintLists: map['thumbprintLists'] == null ? null : (((map['thumbprintLists'] as List).cast<String>()).input()).input(),
+      url: map['url'] == null ? null : ((map['url'] as String).input()).input(),
     );
   }
 }

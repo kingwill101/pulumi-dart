@@ -28,8 +28,8 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion {
 
   factory GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion(
-      action: map['action'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      reply: map['reply'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply.fromMap((map['reply'] as Map).cast<String, dynamic>())).input(),
+      action: map['action'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      reply: map['reply'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply.fromMap((map['reply']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

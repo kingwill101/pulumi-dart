@@ -68,15 +68,15 @@ class ImageDiskDeviceMapping {
 
   factory ImageDiskDeviceMapping.fromMap(Map<String, dynamic> map) {
     return ImageDiskDeviceMapping(
-      device: map['device'] == null ? null : (map['device'] as String).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      importOssBucket: map['importOssBucket'] == null ? null : (map['importOssBucket'] as String).input(),
-      importOssObject: map['importOssObject'] == null ? null : (map['importOssObject'] as String).input(),
-      progress: map['progress'] == null ? null : (map['progress'] as String).input(),
-      remainTime: map['remainTime'] == null ? null : (map['remainTime'] as int).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
-      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
+      device: map['device'] == null ? null : (map['device']! as String).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      importOssBucket: map['importOssBucket'] == null ? null : (map['importOssBucket']! as String).input(),
+      importOssObject: map['importOssObject'] == null ? null : (map['importOssObject']! as String).input(),
+      progress: map['progress'] == null ? null : (map['progress']! as String).input(),
+      remainTime: map['remainTime'] == null ? null : (map['remainTime']! as int).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId']! as String).input(),
     );
   }
 }

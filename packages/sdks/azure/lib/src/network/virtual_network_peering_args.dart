@@ -86,18 +86,18 @@ class VirtualNetworkPeeringArgs {
 
   factory VirtualNetworkPeeringArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkPeeringArgs(
-      allowForwardedTraffic: map['allowForwardedTraffic'] == null ? null : (map['allowForwardedTraffic'] as bool).input(),
-      allowGatewayTransit: map['allowGatewayTransit'] == null ? null : (map['allowGatewayTransit'] as bool).input(),
-      allowVirtualNetworkAccess: map['allowVirtualNetworkAccess'] == null ? null : (map['allowVirtualNetworkAccess'] as bool).input(),
-      localSubnetNames: map['localSubnetNames'] == null ? null : ((map['localSubnetNames'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      onlyIpv6PeeringEnabled: map['onlyIpv6PeeringEnabled'] == null ? null : (map['onlyIpv6PeeringEnabled'] as bool).input(),
-      peerCompleteVirtualNetworksEnabled: map['peerCompleteVirtualNetworksEnabled'] == null ? null : (map['peerCompleteVirtualNetworksEnabled'] as bool).input(),
-      remoteSubnetNames: map['remoteSubnetNames'] == null ? null : ((map['remoteSubnetNames'] as List).cast<String>()).input(),
+      allowForwardedTraffic: map['allowForwardedTraffic'] == null ? null : (map['allowForwardedTraffic']! as bool).input(),
+      allowGatewayTransit: map['allowGatewayTransit'] == null ? null : (map['allowGatewayTransit']! as bool).input(),
+      allowVirtualNetworkAccess: map['allowVirtualNetworkAccess'] == null ? null : (map['allowVirtualNetworkAccess']! as bool).input(),
+      localSubnetNames: map['localSubnetNames'] == null ? null : ((map['localSubnetNames']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      onlyIpv6PeeringEnabled: map['onlyIpv6PeeringEnabled'] == null ? null : (map['onlyIpv6PeeringEnabled']! as bool).input(),
+      peerCompleteVirtualNetworksEnabled: map['peerCompleteVirtualNetworksEnabled'] == null ? null : (map['peerCompleteVirtualNetworksEnabled']! as bool).input(),
+      remoteSubnetNames: map['remoteSubnetNames'] == null ? null : ((map['remoteSubnetNames']! as List).cast<String>()).input(),
       remoteVirtualNetworkId: (map['remoteVirtualNetworkId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
-      useRemoteGateways: map['useRemoteGateways'] == null ? null : (map['useRemoteGateways'] as bool).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers']! as Map).cast<String, String>()).input(),
+      useRemoteGateways: map['useRemoteGateways'] == null ? null : (map['useRemoteGateways']! as bool).input(),
       virtualNetworkName: (map['virtualNetworkName'] as String).input(),
     );
   }

@@ -28,8 +28,8 @@ class DeploymentConfigMinimumHealthyHosts {
 
   factory DeploymentConfigMinimumHealthyHosts.fromMap(Map<String, dynamic> map) {
     return DeploymentConfigMinimumHealthyHosts(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as int).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      value: map['value'] == null ? null : ((map['value'] as int).input()).input(),
     );
   }
 }

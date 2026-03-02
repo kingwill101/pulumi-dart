@@ -56,12 +56,12 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy {
 
   factory EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy(
-      allowCredentials: map['allowCredentials'] == null ? null : (map['allowCredentials'] as bool).input(),
-      allowHeaders: map['allowHeaders'] == null ? null : ((map['allowHeaders'] as List).cast<String>()).input(),
-      allowMethods: map['allowMethods'] == null ? null : ((map['allowMethods'] as List).cast<String>()).input(),
-      allowOrigins: map['allowOrigins'] == null ? null : ((map['allowOrigins'] as List).cast<String>()).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      exposeHeaders: map['exposeHeaders'] == null ? null : ((map['exposeHeaders'] as List).cast<String>()).input(),
+      allowCredentials: map['allowCredentials'] == null ? null : (map['allowCredentials']! as bool).input(),
+      allowHeaders: map['allowHeaders'] == null ? null : ((map['allowHeaders']! as List).cast<String>()).input(),
+      allowMethods: map['allowMethods'] == null ? null : ((map['allowMethods']! as List).cast<String>()).input(),
+      allowOrigins: map['allowOrigins'] == null ? null : ((map['allowOrigins']! as List).cast<String>()).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      exposeHeaders: map['exposeHeaders'] == null ? null : ((map['exposeHeaders']! as List).cast<String>()).input(),
       maxAge: (map['maxAge'] as String).input(),
     );
   }

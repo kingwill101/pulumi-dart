@@ -71,15 +71,15 @@ class WebhookArgs {
   factory WebhookArgs.fromMap(Map<String, dynamic> map) {
     return WebhookArgs(
       automationAccountName: (map['automationAccountName'] as String).input(),
-      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime'] as String).input(),
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
+      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime']! as String).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as bool).input(),
       name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      runOn: map['runOn'] == null ? null : (map['runOn'] as String).input(),
-      runbook: map['runbook'] == null ? null : (RunbookAssociationProperty.fromMap((map['runbook'] as Map).cast<String, dynamic>())).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
-      webhookName: map['webhookName'] == null ? null : (map['webhookName'] as String).input(),
+      runOn: map['runOn'] == null ? null : (map['runOn']! as String).input(),
+      runbook: map['runbook'] == null ? null : (RunbookAssociationProperty.fromMap((map['runbook']! as Map).cast<String, dynamic>())).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      webhookName: map['webhookName'] == null ? null : (map['webhookName']! as String).input(),
     );
   }
 }

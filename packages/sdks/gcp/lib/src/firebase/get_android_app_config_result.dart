@@ -39,7 +39,7 @@ class GetAndroidAppConfigResult {
       configFileContents: map['configFileContents'] as String,
       configFilename: map['configFilename'] as String,
       id: map['id'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
     );
   }
 }

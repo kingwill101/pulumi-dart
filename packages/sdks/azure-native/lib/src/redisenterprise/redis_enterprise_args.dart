@@ -72,16 +72,16 @@ class RedisEnterpriseArgs {
 
   factory RedisEnterpriseArgs.fromMap(Map<String, dynamic> map) {
     return RedisEnterpriseArgs(
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      encryption: map['encryption'] == null ? null : (ClusterPropertiesEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      highAvailability: map['highAvailability'] == null ? null : (map['highAvailability'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : (map['minimumTlsVersion'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      encryption: map['encryption'] == null ? null : (ClusterPropertiesEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      highAvailability: map['highAvailability'] == null ? null : (map['highAvailability']! as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : (map['minimumTlsVersion']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

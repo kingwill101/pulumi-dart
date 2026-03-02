@@ -22,7 +22,7 @@ class ProvisionedClustersCommonPropertiesResponseFeatures {
 
   factory ProvisionedClustersCommonPropertiesResponseFeatures.fromMap(Map<String, dynamic> map) {
     return ProvisionedClustersCommonPropertiesResponseFeatures(
-      arcAgentProfile: map['arcAgentProfile'] == null ? null : (ArcAgentProfileResponse.fromMap((map['arcAgentProfile'] as Map).cast<String, dynamic>())).input(),
+      arcAgentProfile: map['arcAgentProfile'] == null ? null : (ArcAgentProfileResponse.fromMap((map['arcAgentProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

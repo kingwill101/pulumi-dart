@@ -49,9 +49,9 @@ class MetastoreDatabaseIamPolicyArgs {
   factory MetastoreDatabaseIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return MetastoreDatabaseIamPolicyArgs(
       database: (map['database'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       policyData: (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serviceId: (map['serviceId'] as String).input(),
     );
   }

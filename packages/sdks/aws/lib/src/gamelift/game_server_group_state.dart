@@ -100,21 +100,21 @@ class GameServerGroupState {
 
   factory GameServerGroupState.fromMap(Map<String, dynamic> map) {
     return GameServerGroupState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      autoScalingGroupArn: map['autoScalingGroupArn'] == null ? null : (map['autoScalingGroupArn'] as String).input(),
-      autoScalingPolicy: map['autoScalingPolicy'] == null ? null : (GameServerGroupAutoScalingPolicy.fromMap((map['autoScalingPolicy'] as Map).cast<String, dynamic>())).input(),
-      balancingStrategy: map['balancingStrategy'] == null ? null : (map['balancingStrategy'] as String).input(),
-      gameServerGroupName: map['gameServerGroupName'] == null ? null : (map['gameServerGroupName'] as String).input(),
-      gameServerProtectionPolicy: map['gameServerProtectionPolicy'] == null ? null : (map['gameServerProtectionPolicy'] as String).input(),
-      instanceDefinitions: map['instanceDefinitions'] == null ? null : (pulumi.Input.decodeList<GameServerGroupInstanceDefinition>(map['instanceDefinitions'], (value) => GameServerGroupInstanceDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      launchTemplate: map['launchTemplate'] == null ? null : (GameServerGroupLaunchTemplate.fromMap((map['launchTemplate'] as Map).cast<String, dynamic>())).input(),
-      maxSize: map['maxSize'] == null ? null : (map['maxSize'] as int).input(),
-      minSize: map['minSize'] == null ? null : (map['minSize'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      vpcSubnets: map['vpcSubnets'] == null ? null : ((map['vpcSubnets'] as List).cast<String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      autoScalingGroupArn: map['autoScalingGroupArn'] == null ? null : ((map['autoScalingGroupArn'] as String).input()).input(),
+      autoScalingPolicy: map['autoScalingPolicy'] == null ? null : ((GameServerGroupAutoScalingPolicy.fromMap((map['autoScalingPolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      balancingStrategy: map['balancingStrategy'] == null ? null : ((map['balancingStrategy'] as String).input()).input(),
+      gameServerGroupName: map['gameServerGroupName'] == null ? null : ((map['gameServerGroupName'] as String).input()).input(),
+      gameServerProtectionPolicy: map['gameServerProtectionPolicy'] == null ? null : ((map['gameServerProtectionPolicy'] as String).input()).input(),
+      instanceDefinitions: map['instanceDefinitions'] == null ? null : ((pulumi.Input.decodeList<GameServerGroupInstanceDefinition>(map['instanceDefinitions']!, (value) => GameServerGroupInstanceDefinition.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      launchTemplate: map['launchTemplate'] == null ? null : ((GameServerGroupLaunchTemplate.fromMap((map['launchTemplate']! as Map).cast<String, dynamic>())).input()).input(),
+      maxSize: map['maxSize'] == null ? null : ((map['maxSize'] as int).input()).input(),
+      minSize: map['minSize'] == null ? null : ((map['minSize'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      vpcSubnets: map['vpcSubnets'] == null ? null : (((map['vpcSubnets'] as List).cast<String>()).input()).input(),
     );
   }
 }

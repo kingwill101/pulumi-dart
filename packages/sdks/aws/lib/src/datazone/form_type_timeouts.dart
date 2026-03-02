@@ -20,7 +20,7 @@ class FormTypeTimeouts {
 
   factory FormTypeTimeouts.fromMap(Map<String, dynamic> map) {
     return FormTypeTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
+      create: map['create'] == null ? null : ((map['create'] as String).input()).input(),
     );
   }
 }

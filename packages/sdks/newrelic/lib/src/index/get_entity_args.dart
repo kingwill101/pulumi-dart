@@ -63,14 +63,14 @@ class GetEntityArgs {
 
   factory GetEntityArgs.fromMap(Map<String, dynamic> map) {
     return GetEntityArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      entityTags: map['entityTags'] == null ? null : (map['entityTags'] as String).input(),
-      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase'] as bool).input(),
-      ignoreNotFound: map['ignoreNotFound'] == null ? null : (map['ignoreNotFound'] as bool).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      entityTags: map['entityTags'] == null ? null : (map['entityTags']! as String).input(),
+      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase']! as bool).input(),
+      ignoreNotFound: map['ignoreNotFound'] == null ? null : (map['ignoreNotFound']! as bool).input(),
       name: (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<GetEntityTag>(map['tags'], (value) => GetEntityTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<GetEntityTag>(map['tags']!, (value) => GetEntityTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -39,8 +39,8 @@ class BrokerListenerPropertiesResponse {
     return BrokerListenerPropertiesResponse(
       ports: (pulumi.Input.decodeList<ListenerPortResponse>(map['ports'], (value) => ListenerPortResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      serviceType: map['serviceType'] == null ? null : (map['serviceType'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
+      serviceType: map['serviceType'] == null ? null : (map['serviceType']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class EventhubNamespaceDisasterRecoveryConfigState {
 
   factory EventhubNamespaceDisasterRecoveryConfigState.fromMap(Map<String, dynamic> map) {
     return EventhubNamespaceDisasterRecoveryConfigState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
-      partnerNamespaceId: map['partnerNamespaceId'] == null ? null : (map['partnerNamespaceId'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
+      partnerNamespaceId: map['partnerNamespaceId'] == null ? null : (map['partnerNamespaceId']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

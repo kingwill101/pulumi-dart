@@ -37,10 +37,10 @@ class ConnectToSourceMySqlTaskInput {
 
   factory ConnectToSourceMySqlTaskInput.fromMap(Map<String, dynamic> map) {
     return ConnectToSourceMySqlTaskInput(
-      checkPermissionsGroup: map['checkPermissionsGroup'] == null ? null : (map['checkPermissionsGroup'] as String).input(),
-      isOfflineMigration: map['isOfflineMigration'] == null ? null : (map['isOfflineMigration'] as bool).input(),
+      checkPermissionsGroup: map['checkPermissionsGroup'] == null ? null : (map['checkPermissionsGroup']! as String).input(),
+      isOfflineMigration: map['isOfflineMigration'] == null ? null : (map['isOfflineMigration']! as bool).input(),
       sourceConnectionInfo: (MySqlConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
-      targetPlatform: map['targetPlatform'] == null ? null : (map['targetPlatform'] as String).input(),
+      targetPlatform: map['targetPlatform'] == null ? null : (map['targetPlatform']! as String).input(),
     );
   }
 }

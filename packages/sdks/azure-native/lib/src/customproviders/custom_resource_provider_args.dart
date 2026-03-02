@@ -57,13 +57,13 @@ class CustomResourceProviderArgs {
 
   factory CustomResourceProviderArgs.fromMap(Map<String, dynamic> map) {
     return CustomResourceProviderArgs(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<CustomRPActionRouteDefinition>(map['actions'], (value) => CustomRPActionRouteDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<CustomRPActionRouteDefinition>(map['actions']!, (value) => CustomRPActionRouteDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceProviderName: map['resourceProviderName'] == null ? null : (map['resourceProviderName'] as String).input(),
-      resourceTypes: map['resourceTypes'] == null ? null : (pulumi.Input.decodeList<CustomRPResourceTypeRouteDefinition>(map['resourceTypes'], (value) => CustomRPResourceTypeRouteDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      validations: map['validations'] == null ? null : (pulumi.Input.decodeList<CustomRPValidations>(map['validations'], (value) => CustomRPValidations.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceProviderName: map['resourceProviderName'] == null ? null : (map['resourceProviderName']! as String).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : (pulumi.Input.decodeList<CustomRPResourceTypeRouteDefinition>(map['resourceTypes']!, (value) => CustomRPResourceTypeRouteDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      validations: map['validations'] == null ? null : (pulumi.Input.decodeList<CustomRPValidations>(map['validations']!, (value) => CustomRPValidations.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

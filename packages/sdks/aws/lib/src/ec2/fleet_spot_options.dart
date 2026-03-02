@@ -56,14 +56,14 @@ class FleetSpotOptions {
 
   factory FleetSpotOptions.fromMap(Map<String, dynamic> map) {
     return FleetSpotOptions(
-      allocationStrategy: map['allocationStrategy'] == null ? null : (map['allocationStrategy'] as String).input(),
-      instanceInterruptionBehavior: map['instanceInterruptionBehavior'] == null ? null : (map['instanceInterruptionBehavior'] as String).input(),
-      instancePoolsToUseCount: map['instancePoolsToUseCount'] == null ? null : (map['instancePoolsToUseCount'] as int).input(),
-      maintenanceStrategies: map['maintenanceStrategies'] == null ? null : (FleetSpotOptionsMaintenanceStrategies.fromMap((map['maintenanceStrategies'] as Map).cast<String, dynamic>())).input(),
-      maxTotalPrice: map['maxTotalPrice'] == null ? null : (map['maxTotalPrice'] as String).input(),
-      minTargetCapacity: map['minTargetCapacity'] == null ? null : (map['minTargetCapacity'] as int).input(),
-      singleAvailabilityZone: map['singleAvailabilityZone'] == null ? null : (map['singleAvailabilityZone'] as bool).input(),
-      singleInstanceType: map['singleInstanceType'] == null ? null : (map['singleInstanceType'] as bool).input(),
+      allocationStrategy: map['allocationStrategy'] == null ? null : ((map['allocationStrategy'] as String).input()).input(),
+      instanceInterruptionBehavior: map['instanceInterruptionBehavior'] == null ? null : ((map['instanceInterruptionBehavior'] as String).input()).input(),
+      instancePoolsToUseCount: map['instancePoolsToUseCount'] == null ? null : ((map['instancePoolsToUseCount'] as int).input()).input(),
+      maintenanceStrategies: map['maintenanceStrategies'] == null ? null : ((FleetSpotOptionsMaintenanceStrategies.fromMap((map['maintenanceStrategies']! as Map).cast<String, dynamic>())).input()).input(),
+      maxTotalPrice: map['maxTotalPrice'] == null ? null : ((map['maxTotalPrice'] as String).input()).input(),
+      minTargetCapacity: map['minTargetCapacity'] == null ? null : ((map['minTargetCapacity'] as int).input()).input(),
+      singleAvailabilityZone: map['singleAvailabilityZone'] == null ? null : ((map['singleAvailabilityZone'] as bool).input()).input(),
+      singleInstanceType: map['singleInstanceType'] == null ? null : ((map['singleInstanceType'] as bool).input()).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class GalleryOSDiskImageResponse {
 
   factory GalleryOSDiskImageResponse.fromMap(Map<String, dynamic> map) {
     return GalleryOSDiskImageResponse(
-      hostCaching: map['hostCaching'] == null ? null : (map['hostCaching'] as String).input(),
+      hostCaching: map['hostCaching'] == null ? null : (map['hostCaching']! as String).input(),
       sizeInGB: (map['sizeInGB'] as int).input(),
-      source: map['source'] == null ? null : (GalleryDiskImageSourceResponse.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      source: map['source'] == null ? null : (GalleryDiskImageSourceResponse.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

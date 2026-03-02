@@ -25,8 +25,8 @@ class TlsRouteRuleActionDestination {
 
   factory TlsRouteRuleActionDestination.fromMap(Map<String, dynamic> map) {
     return TlsRouteRuleActionDestination(
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

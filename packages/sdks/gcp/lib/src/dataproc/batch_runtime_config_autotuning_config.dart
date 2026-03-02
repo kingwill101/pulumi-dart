@@ -21,7 +21,7 @@ class BatchRuntimeConfigAutotuningConfig {
 
   factory BatchRuntimeConfigAutotuningConfig.fromMap(Map<String, dynamic> map) {
     return BatchRuntimeConfigAutotuningConfig(
-      scenarios: map['scenarios'] == null ? null : ((map['scenarios'] as List).cast<String>()).input(),
+      scenarios: map['scenarios'] == null ? null : ((map['scenarios']! as List).cast<String>()).input(),
     );
   }
 }

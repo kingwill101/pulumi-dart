@@ -32,9 +32,9 @@ class GooglePrivacyDlpV2InfoType {
 
   factory GooglePrivacyDlpV2InfoType.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2InfoType(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sensitivityScore: map['sensitivityScore'] == null ? null : (GooglePrivacyDlpV2SensitivityScore.fromMap((map['sensitivityScore'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sensitivityScore: map['sensitivityScore'] == null ? null : (GooglePrivacyDlpV2SensitivityScore.fromMap((map['sensitivityScore']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

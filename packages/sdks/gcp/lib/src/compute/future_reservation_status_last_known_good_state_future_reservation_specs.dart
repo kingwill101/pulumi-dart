@@ -36,9 +36,9 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecs {
 
   factory FutureReservationStatusLastKnownGoodStateFutureReservationSpecs.fromMap(Map<String, dynamic> map) {
     return FutureReservationStatusLastKnownGoodStateFutureReservationSpecs(
-      shareSettings: map['shareSettings'] == null ? null : (FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettings.fromMap((map['shareSettings'] as Map).cast<String, dynamic>())).input(),
-      specificSkuProperties: map['specificSkuProperties'] == null ? null : (FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuProperties.fromMap((map['specificSkuProperties'] as Map).cast<String, dynamic>())).input(),
-      timeWindow: map['timeWindow'] == null ? null : (FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindow.fromMap((map['timeWindow'] as Map).cast<String, dynamic>())).input(),
+      shareSettings: map['shareSettings'] == null ? null : (FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettings.fromMap((map['shareSettings']! as Map).cast<String, dynamic>())).input(),
+      specificSkuProperties: map['specificSkuProperties'] == null ? null : (FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuProperties.fromMap((map['specificSkuProperties']! as Map).cast<String, dynamic>())).input(),
+      timeWindow: map['timeWindow'] == null ? null : (FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindow.fromMap((map['timeWindow']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

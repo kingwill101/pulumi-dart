@@ -36,10 +36,10 @@ class CertResponse {
 
   factory CertResponse.fromMap(Map<String, dynamic> map) {
     return CertResponse(
-      certData: map['certData'] == null ? null : (map['certData'] as String).input(),
-      certNeeded: map['certNeeded'] == null ? null : (map['certNeeded'] as bool).input(),
-      certProvided: map['certProvided'] == null ? null : (map['certProvided'] as bool).input(),
-      secretStore: map['secretStore'] == null ? null : (map['secretStore'] as String).input(),
+      certData: map['certData'] == null ? null : (map['certData']! as String).input(),
+      certNeeded: map['certNeeded'] == null ? null : (map['certNeeded']! as bool).input(),
+      certProvided: map['certProvided'] == null ? null : (map['certProvided']! as bool).input(),
+      secretStore: map['secretStore'] == null ? null : (map['secretStore']! as String).input(),
     );
   }
 }

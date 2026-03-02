@@ -42,11 +42,11 @@ class BucketVersioningState {
 
   factory BucketVersioningState.fromMap(Map<String, dynamic> map) {
     return BucketVersioningState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
-      mfa: map['mfa'] == null ? null : (map['mfa'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      versioningConfiguration: map['versioningConfiguration'] == null ? null : (BucketVersioningVersioningConfiguration.fromMap((map['versioningConfiguration'] as Map).cast<String, dynamic>())).input(),
+      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : ((map['expectedBucketOwner'] as String).input()).input(),
+      mfa: map['mfa'] == null ? null : ((map['mfa'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      versioningConfiguration: map['versioningConfiguration'] == null ? null : ((BucketVersioningVersioningConfiguration.fromMap((map['versioningConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

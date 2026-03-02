@@ -88,20 +88,20 @@ class Smsvoicev2PhoneNumberArgs {
 
   factory Smsvoicev2PhoneNumberArgs.fromMap(Map<String, dynamic> map) {
     return Smsvoicev2PhoneNumberArgs(
-      deletionProtectionEnabled: map['deletionProtectionEnabled'] == null ? null : (map['deletionProtectionEnabled'] as bool).input(),
+      deletionProtectionEnabled: map['deletionProtectionEnabled'] == null ? null : ((map['deletionProtectionEnabled'] as bool).input()).input(),
       isoCountryCode: (map['isoCountryCode'] as String).input(),
       messageType: (map['messageType'] as String).input(),
       numberCapabilities: ((map['numberCapabilities'] as List).cast<String>()).input(),
       numberType: (map['numberType'] as String).input(),
-      optOutListName: map['optOutListName'] == null ? null : (map['optOutListName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      registrationId: map['registrationId'] == null ? null : (map['registrationId'] as String).input(),
-      selfManagedOptOutsEnabled: map['selfManagedOptOutsEnabled'] == null ? null : (map['selfManagedOptOutsEnabled'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (Smsvoicev2PhoneNumberTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      twoWayChannelArn: map['twoWayChannelArn'] == null ? null : (map['twoWayChannelArn'] as String).input(),
-      twoWayChannelEnabled: map['twoWayChannelEnabled'] == null ? null : (map['twoWayChannelEnabled'] as bool).input(),
-      twoWayChannelRole: map['twoWayChannelRole'] == null ? null : (map['twoWayChannelRole'] as String).input(),
+      optOutListName: map['optOutListName'] == null ? null : ((map['optOutListName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      registrationId: map['registrationId'] == null ? null : ((map['registrationId'] as String).input()).input(),
+      selfManagedOptOutsEnabled: map['selfManagedOptOutsEnabled'] == null ? null : ((map['selfManagedOptOutsEnabled'] as bool).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((Smsvoicev2PhoneNumberTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      twoWayChannelArn: map['twoWayChannelArn'] == null ? null : ((map['twoWayChannelArn'] as String).input()).input(),
+      twoWayChannelEnabled: map['twoWayChannelEnabled'] == null ? null : ((map['twoWayChannelEnabled'] as bool).input()).input(),
+      twoWayChannelRole: map['twoWayChannelRole'] == null ? null : ((map['twoWayChannelRole'] as String).input()).input(),
     );
   }
 }

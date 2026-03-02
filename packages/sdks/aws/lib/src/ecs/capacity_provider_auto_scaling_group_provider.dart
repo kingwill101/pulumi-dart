@@ -37,9 +37,9 @@ class CapacityProviderAutoScalingGroupProvider {
   factory CapacityProviderAutoScalingGroupProvider.fromMap(Map<String, dynamic> map) {
     return CapacityProviderAutoScalingGroupProvider(
       autoScalingGroupArn: (map['autoScalingGroupArn'] as String).input(),
-      managedDraining: map['managedDraining'] == null ? null : (map['managedDraining'] as String).input(),
-      managedScaling: map['managedScaling'] == null ? null : (CapacityProviderAutoScalingGroupProviderManagedScaling.fromMap((map['managedScaling'] as Map).cast<String, dynamic>())).input(),
-      managedTerminationProtection: map['managedTerminationProtection'] == null ? null : (map['managedTerminationProtection'] as String).input(),
+      managedDraining: map['managedDraining'] == null ? null : ((map['managedDraining'] as String).input()).input(),
+      managedScaling: map['managedScaling'] == null ? null : ((CapacityProviderAutoScalingGroupProviderManagedScaling.fromMap((map['managedScaling']! as Map).cast<String, dynamic>())).input()).input(),
+      managedTerminationProtection: map['managedTerminationProtection'] == null ? null : ((map['managedTerminationProtection'] as String).input()).input(),
     );
   }
 }

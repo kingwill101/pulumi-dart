@@ -28,8 +28,8 @@ class FolderCustomModuleCustomConfigCustomOutputProperty {
 
   factory FolderCustomModuleCustomConfigCustomOutputProperty.fromMap(Map<String, dynamic> map) {
     return FolderCustomModuleCustomConfigCustomOutputProperty(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      valueExpression: map['valueExpression'] == null ? null : (FolderCustomModuleCustomConfigCustomOutputPropertyValueExpression.fromMap((map['valueExpression'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      valueExpression: map['valueExpression'] == null ? null : (FolderCustomModuleCustomConfigCustomOutputPropertyValueExpression.fromMap((map['valueExpression']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class AttestationAuthority {
 
   factory AttestationAuthority.fromMap(Map<String, dynamic> map) {
     return AttestationAuthority(
-      hint: map['hint'] == null ? null : (AttestationAuthorityHint.fromMap((map['hint'] as Map).cast<String, dynamic>())).input(),
+      hint: map['hint'] == null ? null : (AttestationAuthorityHint.fromMap((map['hint']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext {
   factory GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext(
       revisionId: (map['revisionId'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

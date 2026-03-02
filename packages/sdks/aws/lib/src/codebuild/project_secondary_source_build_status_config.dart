@@ -27,8 +27,8 @@ class ProjectSecondarySourceBuildStatusConfig {
 
   factory ProjectSecondarySourceBuildStatusConfig.fromMap(Map<String, dynamic> map) {
     return ProjectSecondarySourceBuildStatusConfig(
-      context: map['context'] == null ? null : (map['context'] as String).input(),
-      targetUrl: map['targetUrl'] == null ? null : (map['targetUrl'] as String).input(),
+      context: map['context'] == null ? null : ((map['context'] as String).input()).input(),
+      targetUrl: map['targetUrl'] == null ? null : ((map['targetUrl'] as String).input()).input(),
     );
   }
 }

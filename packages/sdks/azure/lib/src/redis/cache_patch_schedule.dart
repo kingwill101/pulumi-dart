@@ -33,8 +33,8 @@ class CachePatchSchedule {
   factory CachePatchSchedule.fromMap(Map<String, dynamic> map) {
     return CachePatchSchedule(
       dayOfWeek: (map['dayOfWeek'] as String).input(),
-      maintenanceWindow: map['maintenanceWindow'] == null ? null : (map['maintenanceWindow'] as String).input(),
-      startHourUtc: map['startHourUtc'] == null ? null : (map['startHourUtc'] as int).input(),
+      maintenanceWindow: map['maintenanceWindow'] == null ? null : (map['maintenanceWindow']! as String).input(),
+      startHourUtc: map['startHourUtc'] == null ? null : (map['startHourUtc']! as int).input(),
     );
   }
 }

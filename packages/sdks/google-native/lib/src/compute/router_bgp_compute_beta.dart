@@ -48,12 +48,12 @@ class RouterBgpComputeBeta {
 
   factory RouterBgpComputeBeta.fromMap(Map<String, dynamic> map) {
     return RouterBgpComputeBeta(
-      advertiseMode: map['advertiseMode'] == null ? null : (RouterBgpAdvertiseModeComputeBeta.fromValue(map['advertiseMode'] as String)).input(),
-      advertisedGroups: map['advertisedGroups'] == null ? null : (pulumi.Input.decodeList<RouterBgpAdvertisedGroupsItemComputeBeta>(map['advertisedGroups'], (value) => RouterBgpAdvertisedGroupsItemComputeBeta.fromValue(value as String))).input(),
-      advertisedIpRanges: map['advertisedIpRanges'] == null ? null : (pulumi.Input.decodeList<RouterAdvertisedIpRangeComputeBeta>(map['advertisedIpRanges'], (value) => RouterAdvertisedIpRangeComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      asn: map['asn'] == null ? null : (map['asn'] as int).input(),
-      identifierRange: map['identifierRange'] == null ? null : (map['identifierRange'] as String).input(),
-      keepaliveInterval: map['keepaliveInterval'] == null ? null : (map['keepaliveInterval'] as int).input(),
+      advertiseMode: map['advertiseMode'] == null ? null : (RouterBgpAdvertiseModeComputeBeta.fromValue(map['advertiseMode']! as String)).input(),
+      advertisedGroups: map['advertisedGroups'] == null ? null : (pulumi.Input.decodeList<RouterBgpAdvertisedGroupsItemComputeBeta>(map['advertisedGroups']!, (value) => RouterBgpAdvertisedGroupsItemComputeBeta.fromValue(value as String))).input(),
+      advertisedIpRanges: map['advertisedIpRanges'] == null ? null : (pulumi.Input.decodeList<RouterAdvertisedIpRangeComputeBeta>(map['advertisedIpRanges']!, (value) => RouterAdvertisedIpRangeComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      asn: map['asn'] == null ? null : (map['asn']! as int).input(),
+      identifierRange: map['identifierRange'] == null ? null : (map['identifierRange']! as String).input(),
+      keepaliveInterval: map['keepaliveInterval'] == null ? null : (map['keepaliveInterval']! as int).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class RepairMode {
 
   factory RepairMode.fromMap(Map<String, dynamic> map) {
     return RepairMode(
-      retry: map['retry'] == null ? null : (Retry.fromMap((map['retry'] as Map).cast<String, dynamic>())).input(),
-      rollback: map['rollback'] == null ? null : (Rollback.fromMap((map['rollback'] as Map).cast<String, dynamic>())).input(),
+      retry: map['retry'] == null ? null : (Retry.fromMap((map['retry']! as Map).cast<String, dynamic>())).input(),
+      rollback: map['rollback'] == null ? null : (Rollback.fromMap((map['rollback']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

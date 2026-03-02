@@ -65,15 +65,15 @@ class Assessment {
 
   factory Assessment.fromMap(Map<String, dynamic> map) {
     return Assessment(
-      cve: map['cve'] == null ? null : (map['cve'] as String).input(),
-      impacts: map['impacts'] == null ? null : ((map['impacts'] as List).cast<String>()).input(),
-      justification: map['justification'] == null ? null : (Justification.fromMap((map['justification'] as Map).cast<String, dynamic>())).input(),
-      longDescription: map['longDescription'] == null ? null : (map['longDescription'] as String).input(),
-      relatedUris: map['relatedUris'] == null ? null : (pulumi.Input.decodeList<RelatedUrl>(map['relatedUris'], (value) => RelatedUrl.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      remediations: map['remediations'] == null ? null : (pulumi.Input.decodeList<Remediation>(map['remediations'], (value) => Remediation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      shortDescription: map['shortDescription'] == null ? null : (map['shortDescription'] as String).input(),
-      state: map['state'] == null ? null : (AssessmentState.fromValue(map['state'] as String)).input(),
-      vulnerabilityId: map['vulnerabilityId'] == null ? null : (map['vulnerabilityId'] as String).input(),
+      cve: map['cve'] == null ? null : (map['cve']! as String).input(),
+      impacts: map['impacts'] == null ? null : ((map['impacts']! as List).cast<String>()).input(),
+      justification: map['justification'] == null ? null : (Justification.fromMap((map['justification']! as Map).cast<String, dynamic>())).input(),
+      longDescription: map['longDescription'] == null ? null : (map['longDescription']! as String).input(),
+      relatedUris: map['relatedUris'] == null ? null : (pulumi.Input.decodeList<RelatedUrl>(map['relatedUris']!, (value) => RelatedUrl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      remediations: map['remediations'] == null ? null : (pulumi.Input.decodeList<Remediation>(map['remediations']!, (value) => Remediation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shortDescription: map['shortDescription'] == null ? null : (map['shortDescription']! as String).input(),
+      state: map['state'] == null ? null : (AssessmentState.fromValue(map['state']! as String)).input(),
+      vulnerabilityId: map['vulnerabilityId'] == null ? null : (map['vulnerabilityId']! as String).input(),
     );
   }
 }

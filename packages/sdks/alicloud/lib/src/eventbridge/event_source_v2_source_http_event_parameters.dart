@@ -65,13 +65,13 @@ class EventSourceV2SourceHttpEventParameters {
 
   factory EventSourceV2SourceHttpEventParameters.fromMap(Map<String, dynamic> map) {
     return EventSourceV2SourceHttpEventParameters(
-      ips: map['ips'] == null ? null : ((map['ips'] as List).cast<String>()).input(),
-      methods: map['methods'] == null ? null : ((map['methods'] as List).cast<String>()).input(),
-      publicWebHookUrls: map['publicWebHookUrls'] == null ? null : ((map['publicWebHookUrls'] as List).cast<String>()).input(),
-      referers: map['referers'] == null ? null : ((map['referers'] as List).cast<String>()).input(),
-      securityConfig: map['securityConfig'] == null ? null : (map['securityConfig'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      vpcWebHookUrls: map['vpcWebHookUrls'] == null ? null : ((map['vpcWebHookUrls'] as List).cast<String>()).input(),
+      ips: map['ips'] == null ? null : ((map['ips']! as List).cast<String>()).input(),
+      methods: map['methods'] == null ? null : ((map['methods']! as List).cast<String>()).input(),
+      publicWebHookUrls: map['publicWebHookUrls'] == null ? null : ((map['publicWebHookUrls']! as List).cast<String>()).input(),
+      referers: map['referers'] == null ? null : ((map['referers']! as List).cast<String>()).input(),
+      securityConfig: map['securityConfig'] == null ? null : (map['securityConfig']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      vpcWebHookUrls: map['vpcWebHookUrls'] == null ? null : ((map['vpcWebHookUrls']! as List).cast<String>()).input(),
     );
   }
 }

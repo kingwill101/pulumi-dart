@@ -40,8 +40,8 @@ class GetVmwareClusterVmwareNodePoolIamPolicyArgs {
   factory GetVmwareClusterVmwareNodePoolIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetVmwareClusterVmwareNodePoolIamPolicyArgs(
       location: (map['location'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       vmwareClusterId: (map['vmwareClusterId'] as String).input(),
       vmwareNodePoolId: (map['vmwareNodePoolId'] as String).input(),
     );

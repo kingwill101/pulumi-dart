@@ -26,8 +26,8 @@ class PreferencesState {
 
   factory PreferencesState.fromMap(Map<String, dynamic> map) {
     return PreferencesState(
-      memberAccountDiscountVisibility: map['memberAccountDiscountVisibility'] == null ? null : (map['memberAccountDiscountVisibility'] as String).input(),
-      savingsEstimationMode: map['savingsEstimationMode'] == null ? null : (map['savingsEstimationMode'] as String).input(),
+      memberAccountDiscountVisibility: map['memberAccountDiscountVisibility'] == null ? null : ((map['memberAccountDiscountVisibility'] as String).input()).input(),
+      savingsEstimationMode: map['savingsEstimationMode'] == null ? null : ((map['savingsEstimationMode'] as String).input()).input(),
     );
   }
 }

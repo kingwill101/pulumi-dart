@@ -70,16 +70,16 @@ class LicenseProfileArgs {
 
   factory LicenseProfileArgs.fromMap(Map<String, dynamic> map) {
     return LicenseProfileArgs(
-      assignedLicense: map['assignedLicense'] == null ? null : (map['assignedLicense'] as String).input(),
-      licenseProfileName: map['licenseProfileName'] == null ? null : (map['licenseProfileName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      assignedLicense: map['assignedLicense'] == null ? null : (map['assignedLicense']! as String).input(),
+      licenseProfileName: map['licenseProfileName'] == null ? null : (map['licenseProfileName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       machineName: (map['machineName'] as String).input(),
-      productFeatures: map['productFeatures'] == null ? null : (pulumi.Input.decodeList<ProductFeature>(map['productFeatures'], (value) => ProductFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      productType: map['productType'] == null ? null : (map['productType'] as String).input(),
+      productFeatures: map['productFeatures'] == null ? null : (pulumi.Input.decodeList<ProductFeature>(map['productFeatures']!, (value) => ProductFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      productType: map['productType'] == null ? null : (map['productType']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      softwareAssuranceCustomer: map['softwareAssuranceCustomer'] == null ? null : (map['softwareAssuranceCustomer'] as bool).input(),
-      subscriptionStatus: map['subscriptionStatus'] == null ? null : (map['subscriptionStatus'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      softwareAssuranceCustomer: map['softwareAssuranceCustomer'] == null ? null : (map['softwareAssuranceCustomer']! as bool).input(),
+      subscriptionStatus: map['subscriptionStatus'] == null ? null : (map['subscriptionStatus']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

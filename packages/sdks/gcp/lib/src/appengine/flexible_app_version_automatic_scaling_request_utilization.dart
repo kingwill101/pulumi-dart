@@ -25,8 +25,8 @@ class FlexibleAppVersionAutomaticScalingRequestUtilization {
 
   factory FlexibleAppVersionAutomaticScalingRequestUtilization.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionAutomaticScalingRequestUtilization(
-      targetConcurrentRequests: map['targetConcurrentRequests'] == null ? null : (map['targetConcurrentRequests'] as double).input(),
-      targetRequestCountPerSecond: map['targetRequestCountPerSecond'] == null ? null : (map['targetRequestCountPerSecond'] as String).input(),
+      targetConcurrentRequests: map['targetConcurrentRequests'] == null ? null : (map['targetConcurrentRequests']! as double).input(),
+      targetRequestCountPerSecond: map['targetRequestCountPerSecond'] == null ? null : (map['targetRequestCountPerSecond']! as String).input(),
     );
   }
 }

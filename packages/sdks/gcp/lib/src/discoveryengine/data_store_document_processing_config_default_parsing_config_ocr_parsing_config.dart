@@ -20,7 +20,7 @@ class DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig {
 
   factory DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig.fromMap(Map<String, dynamic> map) {
     return DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig(
-      useNativeText: map['useNativeText'] == null ? null : (map['useNativeText'] as bool).input(),
+      useNativeText: map['useNativeText'] == null ? null : (map['useNativeText']! as bool).input(),
     );
   }
 }

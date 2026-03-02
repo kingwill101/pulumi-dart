@@ -39,10 +39,10 @@ class GetSecretVersionArgs {
 
   factory GetSecretVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretVersionArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       secretId: (map['secretId'] as String).input(),
-      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
-      versionStage: map['versionStage'] == null ? null : (map['versionStage'] as String).input(),
+      versionId: map['versionId'] == null ? null : ((map['versionId'] as String).input()).input(),
+      versionStage: map['versionStage'] == null ? null : ((map['versionStage'] as String).input()).input(),
     );
   }
 }

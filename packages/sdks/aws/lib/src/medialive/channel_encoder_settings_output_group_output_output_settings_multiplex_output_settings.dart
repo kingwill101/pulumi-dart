@@ -21,7 +21,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettin
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettings(
-      destination: (ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettingsDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      destination: (ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettingsDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

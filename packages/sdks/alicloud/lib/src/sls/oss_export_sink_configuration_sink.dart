@@ -121,13 +121,13 @@ class OssExportSinkConfigurationSink {
       compressionType: (map['compressionType'] as String).input(),
       contentDetail: (map['contentDetail'] as String).input(),
       contentType: (map['contentType'] as String).input(),
-      delaySeconds: map['delaySeconds'] == null ? null : (map['delaySeconds'] as int).input(),
+      delaySeconds: map['delaySeconds'] == null ? null : (map['delaySeconds']! as int).input(),
       endpoint: (map['endpoint'] as String).input(),
-      pathFormat: map['pathFormat'] == null ? null : (map['pathFormat'] as String).input(),
-      pathFormatType: map['pathFormatType'] == null ? null : (map['pathFormatType'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      pathFormat: map['pathFormat'] == null ? null : (map['pathFormat']! as String).input(),
+      pathFormatType: map['pathFormatType'] == null ? null : (map['pathFormatType']! as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
       roleArn: (map['roleArn'] as String).input(),
-      suffix: map['suffix'] == null ? null : (map['suffix'] as String).input(),
+      suffix: map['suffix'] == null ? null : (map['suffix']! as String).input(),
       timeZone: (map['timeZone'] as String).input(),
     );
   }

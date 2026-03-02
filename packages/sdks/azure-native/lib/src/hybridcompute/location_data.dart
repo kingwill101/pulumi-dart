@@ -36,9 +36,9 @@ class LocationData {
 
   factory LocationData.fromMap(Map<String, dynamic> map) {
     return LocationData(
-      city: map['city'] == null ? null : (map['city'] as String).input(),
-      countryOrRegion: map['countryOrRegion'] == null ? null : (map['countryOrRegion'] as String).input(),
-      district: map['district'] == null ? null : (map['district'] as String).input(),
+      city: map['city'] == null ? null : (map['city']! as String).input(),
+      countryOrRegion: map['countryOrRegion'] == null ? null : (map['countryOrRegion']! as String).input(),
+      district: map['district'] == null ? null : (map['district']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

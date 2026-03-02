@@ -49,12 +49,12 @@ class BackendAddressPoolAddressState {
 
   factory BackendAddressPoolAddressState.fromMap(Map<String, dynamic> map) {
     return BackendAddressPoolAddressState(
-      backendAddressIpConfigurationId: map['backendAddressIpConfigurationId'] == null ? null : (map['backendAddressIpConfigurationId'] as String).input(),
-      backendAddressPoolId: map['backendAddressPoolId'] == null ? null : (map['backendAddressPoolId'] as String).input(),
-      inboundNatRulePortMappings: map['inboundNatRulePortMappings'] == null ? null : (pulumi.Input.decodeList<BackendAddressPoolAddressInboundNatRulePortMapping>(map['inboundNatRulePortMappings'], (value) => BackendAddressPoolAddressInboundNatRulePortMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId'] as String).input(),
+      backendAddressIpConfigurationId: map['backendAddressIpConfigurationId'] == null ? null : (map['backendAddressIpConfigurationId']! as String).input(),
+      backendAddressPoolId: map['backendAddressPoolId'] == null ? null : (map['backendAddressPoolId']! as String).input(),
+      inboundNatRulePortMappings: map['inboundNatRulePortMappings'] == null ? null : (pulumi.Input.decodeList<BackendAddressPoolAddressInboundNatRulePortMapping>(map['inboundNatRulePortMappings']!, (value) => BackendAddressPoolAddressInboundNatRulePortMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId']! as String).input(),
     );
   }
 }

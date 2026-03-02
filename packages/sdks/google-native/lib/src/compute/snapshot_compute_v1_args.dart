@@ -85,19 +85,19 @@ class SnapshotComputeV1Args {
 
   factory SnapshotComputeV1Args.fromMap(Map<String, dynamic> map) {
     return SnapshotComputeV1Args(
-      chainName: map['chainName'] == null ? null : (map['chainName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      locationHint: map['locationHint'] == null ? null : (map['locationHint'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      snapshotEncryptionKey: map['snapshotEncryptionKey'] == null ? null : (CustomerEncryptionKeyComputeV1.fromMap((map['snapshotEncryptionKey'] as Map).cast<String, dynamic>())).input(),
-      snapshotType: map['snapshotType'] == null ? null : (SnapshotSnapshotTypeComputeV1.fromValue(map['snapshotType'] as String)).input(),
-      sourceDisk: map['sourceDisk'] == null ? null : (map['sourceDisk'] as String).input(),
-      sourceDiskEncryptionKey: map['sourceDiskEncryptionKey'] == null ? null : (CustomerEncryptionKeyComputeV1.fromMap((map['sourceDiskEncryptionKey'] as Map).cast<String, dynamic>())).input(),
-      sourceDiskForRecoveryCheckpoint: map['sourceDiskForRecoveryCheckpoint'] == null ? null : (map['sourceDiskForRecoveryCheckpoint'] as String).input(),
-      storageLocations: map['storageLocations'] == null ? null : ((map['storageLocations'] as List).cast<String>()).input(),
+      chainName: map['chainName'] == null ? null : (map['chainName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      locationHint: map['locationHint'] == null ? null : (map['locationHint']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      snapshotEncryptionKey: map['snapshotEncryptionKey'] == null ? null : (CustomerEncryptionKeyComputeV1.fromMap((map['snapshotEncryptionKey']! as Map).cast<String, dynamic>())).input(),
+      snapshotType: map['snapshotType'] == null ? null : (SnapshotSnapshotTypeComputeV1.fromValue(map['snapshotType']! as String)).input(),
+      sourceDisk: map['sourceDisk'] == null ? null : (map['sourceDisk']! as String).input(),
+      sourceDiskEncryptionKey: map['sourceDiskEncryptionKey'] == null ? null : (CustomerEncryptionKeyComputeV1.fromMap((map['sourceDiskEncryptionKey']! as Map).cast<String, dynamic>())).input(),
+      sourceDiskForRecoveryCheckpoint: map['sourceDiskForRecoveryCheckpoint'] == null ? null : (map['sourceDiskForRecoveryCheckpoint']! as String).input(),
+      storageLocations: map['storageLocations'] == null ? null : ((map['storageLocations']! as List).cast<String>()).input(),
     );
   }
 }

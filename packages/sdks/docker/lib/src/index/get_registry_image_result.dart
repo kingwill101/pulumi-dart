@@ -36,7 +36,7 @@ class GetRegistryImageResult {
   factory GetRegistryImageResult.fromMap(Map<String, dynamic> map) {
     return GetRegistryImageResult(
       id: map['id'] as String,
-      insecureSkipVerify: map['insecureSkipVerify'] == null ? null : map['insecureSkipVerify'] as bool,
+      insecureSkipVerify: map['insecureSkipVerify'] == null ? null : map['insecureSkipVerify']! as bool,
       name: map['name'] as String,
       sha256Digest: map['sha256Digest'] as String,
     );

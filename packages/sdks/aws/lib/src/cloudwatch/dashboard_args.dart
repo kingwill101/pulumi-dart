@@ -36,7 +36,7 @@ class DashboardArgs {
     return DashboardArgs(
       dashboardBody: (map['dashboardBody'] as String).input(),
       dashboardName: (map['dashboardName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

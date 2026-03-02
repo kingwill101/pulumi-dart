@@ -36,10 +36,10 @@ class StorageProfile {
 
   factory StorageProfile.fromMap(Map<String, dynamic> map) {
     return StorageProfile(
-      backupRetentionDays: map['backupRetentionDays'] == null ? null : (map['backupRetentionDays'] as int).input(),
-      geoRedundantBackup: map['geoRedundantBackup'] == null ? null : (map['geoRedundantBackup'] as String).input(),
-      storageAutogrow: map['storageAutogrow'] == null ? null : (map['storageAutogrow'] as String).input(),
-      storageMB: map['storageMB'] == null ? null : (map['storageMB'] as int).input(),
+      backupRetentionDays: map['backupRetentionDays'] == null ? null : (map['backupRetentionDays']! as int).input(),
+      geoRedundantBackup: map['geoRedundantBackup'] == null ? null : (map['geoRedundantBackup']! as String).input(),
+      storageAutogrow: map['storageAutogrow'] == null ? null : (map['storageAutogrow']! as String).input(),
+      storageMB: map['storageMB'] == null ? null : (map['storageMB']! as int).input(),
     );
   }
 }

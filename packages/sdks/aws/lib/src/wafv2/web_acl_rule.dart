@@ -67,15 +67,15 @@ class WebAclRule {
 
   factory WebAclRule.fromMap(Map<String, dynamic> map) {
     return WebAclRule(
-      action: map['action'] == null ? null : (WebAclRuleAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      captchaConfig: map['captchaConfig'] == null ? null : (WebAclRuleCaptchaConfig.fromMap((map['captchaConfig'] as Map).cast<String, dynamic>())).input(),
-      challengeConfig: map['challengeConfig'] == null ? null : (WebAclRuleChallengeConfig.fromMap((map['challengeConfig'] as Map).cast<String, dynamic>())).input(),
+      action: map['action'] == null ? null : ((WebAclRuleAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input()).input(),
+      captchaConfig: map['captchaConfig'] == null ? null : ((WebAclRuleCaptchaConfig.fromMap((map['captchaConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      challengeConfig: map['challengeConfig'] == null ? null : ((WebAclRuleChallengeConfig.fromMap((map['challengeConfig']! as Map).cast<String, dynamic>())).input()).input(),
       name: (map['name'] as String).input(),
-      overrideAction: map['overrideAction'] == null ? null : (WebAclRuleOverrideAction.fromMap((map['overrideAction'] as Map).cast<String, dynamic>())).input(),
+      overrideAction: map['overrideAction'] == null ? null : ((WebAclRuleOverrideAction.fromMap((map['overrideAction']! as Map).cast<String, dynamic>())).input()).input(),
       priority: (map['priority'] as int).input(),
-      ruleLabels: map['ruleLabels'] == null ? null : (pulumi.Input.decodeList<WebAclRuleRuleLabel>(map['ruleLabels'], (value) => WebAclRuleRuleLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      statement: (WebAclRuleStatement.fromMap((map['statement'] as Map).cast<String, dynamic>())).input(),
-      visibilityConfig: (WebAclRuleVisibilityConfig.fromMap((map['visibilityConfig'] as Map).cast<String, dynamic>())).input(),
+      ruleLabels: map['ruleLabels'] == null ? null : ((pulumi.Input.decodeList<WebAclRuleRuleLabel>(map['ruleLabels']!, (value) => WebAclRuleRuleLabel.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      statement: (WebAclRuleStatement.fromMap((map['statement']! as Map).cast<String, dynamic>())).input(),
+      visibilityConfig: (WebAclRuleVisibilityConfig.fromMap((map['visibilityConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

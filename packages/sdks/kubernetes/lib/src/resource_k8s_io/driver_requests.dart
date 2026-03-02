@@ -32,9 +32,9 @@ class DriverRequests {
 
   factory DriverRequests.fromMap(Map<String, dynamic> map) {
     return DriverRequests(
-      driverName: map['driverName'] == null ? null : (map['driverName'] as String).input(),
-      requests: map['requests'] == null ? null : (pulumi.Input.decodeList<ResourceRequest>(map['requests'], (value) => ResourceRequest.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vendorParameters: map['vendorParameters'] == null ? null : (map['vendorParameters']).input(),
+      driverName: map['driverName'] == null ? null : (map['driverName']! as String).input(),
+      requests: map['requests'] == null ? null : (pulumi.Input.decodeList<ResourceRequest>(map['requests']!, (value) => ResourceRequest.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vendorParameters: map['vendorParameters'] == null ? null : (map['vendorParameters']!).input(),
     );
   }
 }

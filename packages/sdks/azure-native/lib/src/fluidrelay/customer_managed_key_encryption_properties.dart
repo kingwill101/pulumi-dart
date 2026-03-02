@@ -27,8 +27,8 @@ class CustomerManagedKeyEncryptionProperties {
 
   factory CustomerManagedKeyEncryptionProperties.fromMap(Map<String, dynamic> map) {
     return CustomerManagedKeyEncryptionProperties(
-      keyEncryptionKeyIdentity: map['keyEncryptionKeyIdentity'] == null ? null : (CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity.fromMap((map['keyEncryptionKeyIdentity'] as Map).cast<String, dynamic>())).input(),
-      keyEncryptionKeyUrl: map['keyEncryptionKeyUrl'] == null ? null : (map['keyEncryptionKeyUrl'] as String).input(),
+      keyEncryptionKeyIdentity: map['keyEncryptionKeyIdentity'] == null ? null : (CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity.fromMap((map['keyEncryptionKeyIdentity']! as Map).cast<String, dynamic>())).input(),
+      keyEncryptionKeyUrl: map['keyEncryptionKeyUrl'] == null ? null : (map['keyEncryptionKeyUrl']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class GatewayAPIConfig {
 
   factory GatewayAPIConfig.fromMap(Map<String, dynamic> map) {
     return GatewayAPIConfig(
-      channel: map['channel'] == null ? null : (GatewayAPIConfigChannel.fromValue(map['channel'] as String)).input(),
+      channel: map['channel'] == null ? null : (GatewayAPIConfigChannel.fromValue(map['channel']! as String)).input(),
     );
   }
 }

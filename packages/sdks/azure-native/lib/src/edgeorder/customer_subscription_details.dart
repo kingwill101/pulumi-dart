@@ -32,9 +32,9 @@ class CustomerSubscriptionDetails {
 
   factory CustomerSubscriptionDetails.fromMap(Map<String, dynamic> map) {
     return CustomerSubscriptionDetails(
-      locationPlacementId: map['locationPlacementId'] == null ? null : (map['locationPlacementId'] as String).input(),
+      locationPlacementId: map['locationPlacementId'] == null ? null : (map['locationPlacementId']! as String).input(),
       quotaId: (map['quotaId'] as String).input(),
-      registeredFeatures: map['registeredFeatures'] == null ? null : (pulumi.Input.decodeList<CustomerSubscriptionRegisteredFeatures>(map['registeredFeatures'], (value) => CustomerSubscriptionRegisteredFeatures.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      registeredFeatures: map['registeredFeatures'] == null ? null : (pulumi.Input.decodeList<CustomerSubscriptionRegisteredFeatures>(map['registeredFeatures']!, (value) => CustomerSubscriptionRegisteredFeatures.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

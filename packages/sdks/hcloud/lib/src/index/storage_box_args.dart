@@ -66,14 +66,14 @@ class StorageBoxArgs {
 
   factory StorageBoxArgs.fromMap(Map<String, dynamic> map) {
     return StorageBoxArgs(
-      accessSettings: map['accessSettings'] == null ? null : (StorageBoxAccessSettings.fromMap((map['accessSettings'] as Map).cast<String, dynamic>())).input(),
-      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      accessSettings: map['accessSettings'] == null ? null : (StorageBoxAccessSettings.fromMap((map['accessSettings']! as Map).cast<String, dynamic>())).input(),
+      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       password: (map['password'] as String).input(),
-      snapshotPlan: map['snapshotPlan'] == null ? null : (StorageBoxSnapshotPlan.fromMap((map['snapshotPlan'] as Map).cast<String, dynamic>())).input(),
-      sshKeys: map['sshKeys'] == null ? null : ((map['sshKeys'] as List).cast<String>()).input(),
+      snapshotPlan: map['snapshotPlan'] == null ? null : (StorageBoxSnapshotPlan.fromMap((map['snapshotPlan']! as Map).cast<String, dynamic>())).input(),
+      sshKeys: map['sshKeys'] == null ? null : ((map['sshKeys']! as List).cast<String>()).input(),
       storageBoxType: (map['storageBoxType'] as String).input(),
     );
   }

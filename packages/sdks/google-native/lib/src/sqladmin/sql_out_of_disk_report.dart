@@ -27,8 +27,8 @@ class SqlOutOfDiskReport {
 
   factory SqlOutOfDiskReport.fromMap(Map<String, dynamic> map) {
     return SqlOutOfDiskReport(
-      sqlMinRecommendedIncreaseSizeGb: map['sqlMinRecommendedIncreaseSizeGb'] == null ? null : (map['sqlMinRecommendedIncreaseSizeGb'] as int).input(),
-      sqlOutOfDiskState: map['sqlOutOfDiskState'] == null ? null : (SqlOutOfDiskReportSqlOutOfDiskState.fromValue(map['sqlOutOfDiskState'] as String)).input(),
+      sqlMinRecommendedIncreaseSizeGb: map['sqlMinRecommendedIncreaseSizeGb'] == null ? null : (map['sqlMinRecommendedIncreaseSizeGb']! as int).input(),
+      sqlOutOfDiskState: map['sqlOutOfDiskState'] == null ? null : (SqlOutOfDiskReportSqlOutOfDiskState.fromValue(map['sqlOutOfDiskState']! as String)).input(),
     );
   }
 }

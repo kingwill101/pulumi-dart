@@ -26,8 +26,8 @@ class SourceDiskEncryptionKeyComputeV1 {
 
   factory SourceDiskEncryptionKeyComputeV1.fromMap(Map<String, dynamic> map) {
     return SourceDiskEncryptionKeyComputeV1(
-      diskEncryptionKey: map['diskEncryptionKey'] == null ? null : (CustomerEncryptionKeyComputeV1.fromMap((map['diskEncryptionKey'] as Map).cast<String, dynamic>())).input(),
-      sourceDisk: map['sourceDisk'] == null ? null : (map['sourceDisk'] as String).input(),
+      diskEncryptionKey: map['diskEncryptionKey'] == null ? null : (CustomerEncryptionKeyComputeV1.fromMap((map['diskEncryptionKey']! as Map).cast<String, dynamic>())).input(),
+      sourceDisk: map['sourceDisk'] == null ? null : (map['sourceDisk']! as String).input(),
     );
   }
 }

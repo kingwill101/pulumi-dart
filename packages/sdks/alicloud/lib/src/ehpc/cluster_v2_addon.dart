@@ -36,8 +36,8 @@ class ClusterV2Addon {
   factory ClusterV2Addon.fromMap(Map<String, dynamic> map) {
     return ClusterV2Addon(
       name: (map['name'] as String).input(),
-      resourcesSpec: map['resourcesSpec'] == null ? null : (map['resourcesSpec'] as String).input(),
-      servicesSpec: map['servicesSpec'] == null ? null : (map['servicesSpec'] as String).input(),
+      resourcesSpec: map['resourcesSpec'] == null ? null : (map['resourcesSpec']! as String).input(),
+      servicesSpec: map['servicesSpec'] == null ? null : (map['servicesSpec']! as String).input(),
       version: (map['version'] as String).input(),
     );
   }

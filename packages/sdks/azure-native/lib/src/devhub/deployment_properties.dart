@@ -39,11 +39,11 @@ class DeploymentProperties {
 
   factory DeploymentProperties.fromMap(Map<String, dynamic> map) {
     return DeploymentProperties(
-      helmChartPath: map['helmChartPath'] == null ? null : (map['helmChartPath'] as String).input(),
-      helmValues: map['helmValues'] == null ? null : (map['helmValues'] as String).input(),
-      kubeManifestLocations: map['kubeManifestLocations'] == null ? null : ((map['kubeManifestLocations'] as List).cast<String>()).input(),
-      manifestType: map['manifestType'] == null ? null : (map['manifestType'] as String).input(),
-      overrides: map['overrides'] == null ? null : ((map['overrides'] as Map).cast<String, String>()).input(),
+      helmChartPath: map['helmChartPath'] == null ? null : (map['helmChartPath']! as String).input(),
+      helmValues: map['helmValues'] == null ? null : (map['helmValues']! as String).input(),
+      kubeManifestLocations: map['kubeManifestLocations'] == null ? null : ((map['kubeManifestLocations']! as List).cast<String>()).input(),
+      manifestType: map['manifestType'] == null ? null : (map['manifestType']! as String).input(),
+      overrides: map['overrides'] == null ? null : ((map['overrides']! as Map).cast<String, String>()).input(),
     );
   }
 }

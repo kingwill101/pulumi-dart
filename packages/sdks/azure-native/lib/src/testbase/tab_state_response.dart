@@ -26,8 +26,8 @@ class TabStateResponse {
 
   factory TabStateResponse.fromMap(Map<String, dynamic> map) {
     return TabStateResponse(
-      currentTab: map['currentTab'] == null ? null : (map['currentTab'] as String).input(),
-      visitedTabs: map['visitedTabs'] == null ? null : ((map['visitedTabs'] as List).cast<String>()).input(),
+      currentTab: map['currentTab'] == null ? null : (map['currentTab']! as String).input(),
+      visitedTabs: map['visitedTabs'] == null ? null : ((map['visitedTabs']! as List).cast<String>()).input(),
     );
   }
 }

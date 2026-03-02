@@ -21,7 +21,7 @@ class ScaleSpecPatch {
 
   factory ScaleSpecPatch.fromMap(Map<String, dynamic> map) {
     return ScaleSpecPatch(
-      replicas: map['replicas'] == null ? null : (map['replicas'] as int).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas']! as int).input(),
     );
   }
 }

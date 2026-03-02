@@ -52,10 +52,10 @@ class GlobalReachConnectionArgs {
 
   factory GlobalReachConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GlobalReachConnectionArgs(
-      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey'] as String).input(),
-      expressRouteId: map['expressRouteId'] == null ? null : (map['expressRouteId'] as String).input(),
-      globalReachConnectionName: map['globalReachConnectionName'] == null ? null : (map['globalReachConnectionName'] as String).input(),
-      peerExpressRouteCircuit: map['peerExpressRouteCircuit'] == null ? null : (map['peerExpressRouteCircuit'] as String).input(),
+      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey']! as String).input(),
+      expressRouteId: map['expressRouteId'] == null ? null : (map['expressRouteId']! as String).input(),
+      globalReachConnectionName: map['globalReachConnectionName'] == null ? null : (map['globalReachConnectionName']! as String).input(),
+      peerExpressRouteCircuit: map['peerExpressRouteCircuit'] == null ? null : (map['peerExpressRouteCircuit']! as String).input(),
       privateCloudName: (map['privateCloudName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

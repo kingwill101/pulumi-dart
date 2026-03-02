@@ -26,8 +26,8 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams {
 
   factory SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams(
-      op: map['op'] == null ? null : (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp.fromValue(map['op'] as String)).input(),
-      val: map['val'] == null ? null : (map['val'] as String).input(),
+      op: map['op'] == null ? null : (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp.fromValue(map['op']! as String)).input(),
+      val: map['val'] == null ? null : (map['val']! as String).input(),
     );
   }
 }

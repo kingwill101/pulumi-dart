@@ -30,8 +30,8 @@ class PluginConfigTemplate {
 
   factory PluginConfigTemplate.fromMap(Map<String, dynamic> map) {
     return PluginConfigTemplate(
-      additionalConfigTemplates: map['additionalConfigTemplates'] == null ? null : (pulumi.Input.decodeList<PluginConfigTemplateAdditionalConfigTemplate>(map['additionalConfigTemplates'], (value) => PluginConfigTemplateAdditionalConfigTemplate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      authConfigTemplate: map['authConfigTemplate'] == null ? null : (PluginConfigTemplateAuthConfigTemplate.fromMap((map['authConfigTemplate'] as Map).cast<String, dynamic>())).input(),
+      additionalConfigTemplates: map['additionalConfigTemplates'] == null ? null : (pulumi.Input.decodeList<PluginConfigTemplateAdditionalConfigTemplate>(map['additionalConfigTemplates']!, (value) => PluginConfigTemplateAdditionalConfigTemplate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authConfigTemplate: map['authConfigTemplate'] == null ? null : (PluginConfigTemplateAuthConfigTemplate.fromMap((map['authConfigTemplate']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

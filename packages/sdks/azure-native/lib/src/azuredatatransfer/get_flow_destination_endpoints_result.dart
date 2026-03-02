@@ -20,7 +20,7 @@ class GetFlowDestinationEndpointsResult {
 
   factory GetFlowDestinationEndpointsResult.fromMap(Map<String, dynamic> map) {
     return GetFlowDestinationEndpointsResult(
-      endpoints: map['endpoints'] == null ? null : (map['endpoints'] as List).cast<String>(),
+      endpoints: map['endpoints'] == null ? null : (map['endpoints']! as List).cast<String>(),
     );
   }
 }

@@ -20,7 +20,7 @@ class ServiceMeshExtraConfiguration {
 
   factory ServiceMeshExtraConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceMeshExtraConfiguration(
-      crAggregationEnabled: map['crAggregationEnabled'] == null ? null : (map['crAggregationEnabled'] as bool).input(),
+      crAggregationEnabled: map['crAggregationEnabled'] == null ? null : (map['crAggregationEnabled']! as bool).input(),
     );
   }
 }

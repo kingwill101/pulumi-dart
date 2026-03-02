@@ -27,8 +27,8 @@ class GooglePrivacyDlpV2QuasiIdentifierField {
 
   factory GooglePrivacyDlpV2QuasiIdentifierField.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2QuasiIdentifierField(
-      customTag: map['customTag'] == null ? null : (map['customTag'] as String).input(),
-      field: map['field'] == null ? null : (GooglePrivacyDlpV2FieldId.fromMap((map['field'] as Map).cast<String, dynamic>())).input(),
+      customTag: map['customTag'] == null ? null : (map['customTag']! as String).input(),
+      field: map['field'] == null ? null : (GooglePrivacyDlpV2FieldId.fromMap((map['field']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

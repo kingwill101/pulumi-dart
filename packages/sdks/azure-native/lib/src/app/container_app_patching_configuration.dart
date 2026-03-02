@@ -21,7 +21,7 @@ class ContainerAppPatchingConfiguration {
 
   factory ContainerAppPatchingConfiguration.fromMap(Map<String, dynamic> map) {
     return ContainerAppPatchingConfiguration(
-      patchingMode: map['patchingMode'] == null ? null : (map['patchingMode'] as String).input(),
+      patchingMode: map['patchingMode'] == null ? null : (map['patchingMode']! as String).input(),
     );
   }
 }

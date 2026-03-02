@@ -26,8 +26,8 @@ class Projection {
 
   factory Projection.fromMap(Map<String, dynamic> map) {
     return Projection(
-      nonKeyAttributes: map['nonKeyAttributes'] == null ? null : ((map['nonKeyAttributes'] as List).cast<String>()).input(),
-      projectionType: map['projectionType'] == null ? null : (map['projectionType'] as String).input(),
+      nonKeyAttributes: map['nonKeyAttributes'] == null ? null : ((map['nonKeyAttributes']! as List).cast<String>()).input(),
+      projectionType: map['projectionType'] == null ? null : (map['projectionType']! as String).input(),
     );
   }
 }

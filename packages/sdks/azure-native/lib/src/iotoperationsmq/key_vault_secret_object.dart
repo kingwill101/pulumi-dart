@@ -27,7 +27,7 @@ class KeyVaultSecretObject {
   factory KeyVaultSecretObject.fromMap(Map<String, dynamic> map) {
     return KeyVaultSecretObject(
       name: (map['name'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

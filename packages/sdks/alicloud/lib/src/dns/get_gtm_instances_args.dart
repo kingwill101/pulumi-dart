@@ -34,9 +34,9 @@ class GetGtmInstancesArgs {
 
   factory GetGtmInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetGtmInstancesArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
     );
   }
 }

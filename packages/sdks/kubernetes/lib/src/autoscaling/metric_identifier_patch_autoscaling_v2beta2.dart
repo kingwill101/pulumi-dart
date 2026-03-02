@@ -27,8 +27,8 @@ class MetricIdentifierPatchAutoscalingV2beta2 {
 
   factory MetricIdentifierPatchAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
     return MetricIdentifierPatchAutoscalingV2beta2(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      selector: map['selector'] == null ? null : (LabelSelectorPatch.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      selector: map['selector'] == null ? null : (LabelSelectorPatch.fromMap((map['selector']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

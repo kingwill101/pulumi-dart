@@ -27,8 +27,8 @@ class UserIdentityResponse {
 
   factory UserIdentityResponse.fromMap(Map<String, dynamic> map) {
     return UserIdentityResponse(
-      autoUser: map['autoUser'] == null ? null : (AutoUserSpecificationResponse.fromMap((map['autoUser'] as Map).cast<String, dynamic>())).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      autoUser: map['autoUser'] == null ? null : (AutoUserSpecificationResponse.fromMap((map['autoUser']! as Map).cast<String, dynamic>())).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

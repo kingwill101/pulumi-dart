@@ -38,10 +38,10 @@ class WorkloadDeploymentModelProperties {
 
   factory WorkloadDeploymentModelProperties.fromMap(Map<String, dynamic> map) {
     return WorkloadDeploymentModelProperties(
-      customProperties: map['customProperties'] == null ? null : (ApacheTomcatAKSWorkloadDeploymentModelCustomProperties.fromMap((map['customProperties'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      targetPlatform: map['targetPlatform'] == null ? null : (map['targetPlatform'] as String).input(),
-      workloadInstanceProperties: map['workloadInstanceProperties'] == null ? null : (WorkloadInstanceModelProperties.fromMap((map['workloadInstanceProperties'] as Map).cast<String, dynamic>())).input(),
+      customProperties: map['customProperties'] == null ? null : (ApacheTomcatAKSWorkloadDeploymentModelCustomProperties.fromMap((map['customProperties']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      targetPlatform: map['targetPlatform'] == null ? null : (map['targetPlatform']! as String).input(),
+      workloadInstanceProperties: map['workloadInstanceProperties'] == null ? null : (WorkloadInstanceModelProperties.fromMap((map['workloadInstanceProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

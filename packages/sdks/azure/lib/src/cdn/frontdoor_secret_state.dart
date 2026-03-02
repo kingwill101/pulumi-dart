@@ -37,10 +37,10 @@ class FrontdoorSecretState {
 
   factory FrontdoorSecretState.fromMap(Map<String, dynamic> map) {
     return FrontdoorSecretState(
-      cdnFrontdoorProfileId: map['cdnFrontdoorProfileId'] == null ? null : (map['cdnFrontdoorProfileId'] as String).input(),
-      cdnFrontdoorProfileName: map['cdnFrontdoorProfileName'] == null ? null : (map['cdnFrontdoorProfileName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      secret: map['secret'] == null ? null : (FrontdoorSecretSecret.fromMap((map['secret'] as Map).cast<String, dynamic>())).input(),
+      cdnFrontdoorProfileId: map['cdnFrontdoorProfileId'] == null ? null : (map['cdnFrontdoorProfileId']! as String).input(),
+      cdnFrontdoorProfileName: map['cdnFrontdoorProfileName'] == null ? null : (map['cdnFrontdoorProfileName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      secret: map['secret'] == null ? null : (FrontdoorSecretSecret.fromMap((map['secret']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

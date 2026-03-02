@@ -37,8 +37,8 @@ class GetAlertPolicyArgs {
 
   factory GetAlertPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAlertPolicyArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      incidentPreference: map['incidentPreference'] == null ? null : (map['incidentPreference'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      incidentPreference: map['incidentPreference'] == null ? null : (map['incidentPreference']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

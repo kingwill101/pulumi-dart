@@ -42,11 +42,11 @@ class PolicyDefinitionReference {
 
   factory PolicyDefinitionReference.fromMap(Map<String, dynamic> map) {
     return PolicyDefinitionReference(
-      definitionVersion: map['definitionVersion'] == null ? null : (map['definitionVersion'] as String).input(),
-      groupNames: map['groupNames'] == null ? null : ((map['groupNames'] as List).cast<String>()).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterValuesValue>(map['parameters'], (value) => ParameterValuesValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      definitionVersion: map['definitionVersion'] == null ? null : (map['definitionVersion']! as String).input(),
+      groupNames: map['groupNames'] == null ? null : ((map['groupNames']! as List).cast<String>()).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterValuesValue>(map['parameters']!, (value) => ParameterValuesValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
       policyDefinitionId: (map['policyDefinitionId'] as String).input(),
-      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : (map['policyDefinitionReferenceId'] as String).input(),
+      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : (map['policyDefinitionReferenceId']! as String).input(),
     );
   }
 }

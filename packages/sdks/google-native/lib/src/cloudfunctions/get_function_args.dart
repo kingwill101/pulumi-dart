@@ -37,8 +37,8 @@ class GetFunctionArgs {
     return GetFunctionArgs(
       functionId: (map['functionId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId']! as String).input(),
     );
   }
 }

@@ -31,8 +31,8 @@ class PersistentDiskResponse {
 
   factory PersistentDiskResponse.fromMap(Map<String, dynamic> map) {
     return PersistentDiskResponse(
-      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
-      sizeInGB: map['sizeInGB'] == null ? null : (map['sizeInGB'] as int).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
+      sizeInGB: map['sizeInGB'] == null ? null : (map['sizeInGB']! as int).input(),
       usedInGB: (map['usedInGB'] as int).input(),
     );
   }

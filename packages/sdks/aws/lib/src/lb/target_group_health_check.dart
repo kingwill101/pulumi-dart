@@ -76,15 +76,15 @@ class TargetGroupHealthCheck {
 
   factory TargetGroupHealthCheck.fromMap(Map<String, dynamic> map) {
     return TargetGroupHealthCheck(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      healthyThreshold: map['healthyThreshold'] == null ? null : (map['healthyThreshold'] as int).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      matcher: map['matcher'] == null ? null : (map['matcher'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
-      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : (map['unhealthyThreshold'] as int).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      healthyThreshold: map['healthyThreshold'] == null ? null : ((map['healthyThreshold'] as int).input()).input(),
+      interval: map['interval'] == null ? null : ((map['interval'] as int).input()).input(),
+      matcher: map['matcher'] == null ? null : ((map['matcher'] as String).input()).input(),
+      path: map['path'] == null ? null : ((map['path'] as String).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as String).input()).input(),
+      protocol: map['protocol'] == null ? null : ((map['protocol'] as String).input()).input(),
+      timeout: map['timeout'] == null ? null : ((map['timeout'] as int).input()).input(),
+      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : ((map['unhealthyThreshold'] as int).input()).input(),
     );
   }
 }

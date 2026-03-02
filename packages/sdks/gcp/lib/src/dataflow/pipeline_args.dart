@@ -84,16 +84,16 @@ class PipelineArgs {
 
   factory PipelineArgs.fromMap(Map<String, dynamic> map) {
     return PipelineArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pipelineSources: map['pipelineSources'] == null ? null : ((map['pipelineSources'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scheduleInfo: map['scheduleInfo'] == null ? null : (PipelineScheduleInfo.fromMap((map['scheduleInfo'] as Map).cast<String, dynamic>())).input(),
-      schedulerServiceAccountEmail: map['schedulerServiceAccountEmail'] == null ? null : (map['schedulerServiceAccountEmail'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pipelineSources: map['pipelineSources'] == null ? null : ((map['pipelineSources']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      scheduleInfo: map['scheduleInfo'] == null ? null : (PipelineScheduleInfo.fromMap((map['scheduleInfo']! as Map).cast<String, dynamic>())).input(),
+      schedulerServiceAccountEmail: map['schedulerServiceAccountEmail'] == null ? null : (map['schedulerServiceAccountEmail']! as String).input(),
       state: (map['state'] as String).input(),
       type: (map['type'] as String).input(),
-      workload: map['workload'] == null ? null : (PipelineWorkload.fromMap((map['workload'] as Map).cast<String, dynamic>())).input(),
+      workload: map['workload'] == null ? null : (PipelineWorkload.fromMap((map['workload']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

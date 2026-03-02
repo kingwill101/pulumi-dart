@@ -26,8 +26,8 @@ class AutomanageConfigurationAssignmentState {
 
   factory AutomanageConfigurationAssignmentState.fromMap(Map<String, dynamic> map) {
     return AutomanageConfigurationAssignmentState(
-      configurationId: map['configurationId'] == null ? null : (map['configurationId'] as String).input(),
-      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId'] as String).input(),
+      configurationId: map['configurationId'] == null ? null : (map['configurationId']! as String).input(),
+      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId']! as String).input(),
     );
   }
 }

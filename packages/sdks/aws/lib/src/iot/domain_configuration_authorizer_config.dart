@@ -25,8 +25,8 @@ class DomainConfigurationAuthorizerConfig {
 
   factory DomainConfigurationAuthorizerConfig.fromMap(Map<String, dynamic> map) {
     return DomainConfigurationAuthorizerConfig(
-      allowAuthorizerOverride: map['allowAuthorizerOverride'] == null ? null : (map['allowAuthorizerOverride'] as bool).input(),
-      defaultAuthorizerName: map['defaultAuthorizerName'] == null ? null : (map['defaultAuthorizerName'] as String).input(),
+      allowAuthorizerOverride: map['allowAuthorizerOverride'] == null ? null : ((map['allowAuthorizerOverride'] as bool).input()).input(),
+      defaultAuthorizerName: map['defaultAuthorizerName'] == null ? null : ((map['defaultAuthorizerName'] as String).input()).input(),
     );
   }
 }

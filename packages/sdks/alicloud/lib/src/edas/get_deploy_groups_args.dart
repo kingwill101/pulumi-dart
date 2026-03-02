@@ -35,8 +35,8 @@ class GetDeployGroupsArgs {
   factory GetDeployGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetDeployGroupsArgs(
       appId: (map['appId'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

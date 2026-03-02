@@ -70,14 +70,14 @@ class HookArgs {
 
   factory HookArgs.fromMap(Map<String, dynamic> map) {
     return HookArgs(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      events: map['events'] == null ? null : ((map['events'] as List).cast<String>()).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      events: map['events'] == null ? null : ((map['events']! as List).cast<String>()).input(),
       hookId: (map['hookId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pushOption: map['pushOption'] == null ? null : (HookPushOption.fromMap((map['pushOption'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pushOption: map['pushOption'] == null ? null : (HookPushOption.fromMap((map['pushOption']! as Map).cast<String, dynamic>())).input(),
       repositoryId: (map['repositoryId'] as String).input(),
-      sensitiveQueryString: map['sensitiveQueryString'] == null ? null : (map['sensitiveQueryString'] as String).input(),
+      sensitiveQueryString: map['sensitiveQueryString'] == null ? null : (map['sensitiveQueryString']! as String).input(),
       targetUri: (map['targetUri'] as String).input(),
     );
   }

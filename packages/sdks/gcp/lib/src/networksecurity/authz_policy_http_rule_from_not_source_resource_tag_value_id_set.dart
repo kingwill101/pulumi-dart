@@ -21,7 +21,7 @@ class AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSet {
 
   factory AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSet.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSet(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration {
 
   factory MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration(
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      destination: map['destination'] == null ? null : ((map['destination'] as String).input()).input(),
     );
   }
 }

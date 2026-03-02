@@ -33,9 +33,9 @@ class PerformanceThreshold {
 
   factory PerformanceThreshold.fromMap(Map<String, dynamic> map) {
     return PerformanceThreshold(
-      basicSliPerformance: map['basicSliPerformance'] == null ? null : (BasicSli.fromMap((map['basicSliPerformance'] as Map).cast<String, dynamic>())).input(),
-      performance: map['performance'] == null ? null : (RequestBasedSli.fromMap((map['performance'] as Map).cast<String, dynamic>())).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold'] as double).input(),
+      basicSliPerformance: map['basicSliPerformance'] == null ? null : (BasicSli.fromMap((map['basicSliPerformance']! as Map).cast<String, dynamic>())).input(),
+      performance: map['performance'] == null ? null : (RequestBasedSli.fromMap((map['performance']! as Map).cast<String, dynamic>())).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold']! as double).input(),
     );
   }
 }

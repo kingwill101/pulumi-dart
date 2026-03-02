@@ -26,8 +26,8 @@ class Trigger {
 
   factory Trigger.fromMap(Map<String, dynamic> map) {
     return Trigger(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      percent: map['percent'] == null ? null : (map['percent'] as double).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      percent: map['percent'] == null ? null : (map['percent']! as double).input(),
     );
   }
 }

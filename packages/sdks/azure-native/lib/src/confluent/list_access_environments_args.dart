@@ -36,7 +36,7 @@ class ListAccessEnvironmentsArgs {
     return ListAccessEnvironmentsArgs(
       organizationName: (map['organizationName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      searchFilters: map['searchFilters'] == null ? null : ((map['searchFilters'] as Map).cast<String, String>()).input(),
+      searchFilters: map['searchFilters'] == null ? null : ((map['searchFilters']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class BrokerAuthenticatorMethodsResponse {
 
   factory BrokerAuthenticatorMethodsResponse.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticatorMethodsResponse(
-      customSettings: map['customSettings'] == null ? null : (BrokerAuthenticatorMethodCustomResponse.fromMap((map['customSettings'] as Map).cast<String, dynamic>())).input(),
+      customSettings: map['customSettings'] == null ? null : (BrokerAuthenticatorMethodCustomResponse.fromMap((map['customSettings']! as Map).cast<String, dynamic>())).input(),
       method: (map['method'] as String).input(),
-      serviceAccountTokenSettings: map['serviceAccountTokenSettings'] == null ? null : (BrokerAuthenticatorMethodSatResponse.fromMap((map['serviceAccountTokenSettings'] as Map).cast<String, dynamic>())).input(),
-      x509Settings: map['x509Settings'] == null ? null : (BrokerAuthenticatorMethodX509Response.fromMap((map['x509Settings'] as Map).cast<String, dynamic>())).input(),
+      serviceAccountTokenSettings: map['serviceAccountTokenSettings'] == null ? null : (BrokerAuthenticatorMethodSatResponse.fromMap((map['serviceAccountTokenSettings']! as Map).cast<String, dynamic>())).input(),
+      x509Settings: map['x509Settings'] == null ? null : (BrokerAuthenticatorMethodX509Response.fromMap((map['x509Settings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

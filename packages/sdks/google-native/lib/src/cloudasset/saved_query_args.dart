@@ -53,10 +53,10 @@ class SavedQueryArgs {
 
   factory SavedQueryArgs.fromMap(Map<String, dynamic> map) {
     return SavedQueryArgs(
-      content: map['content'] == null ? null : (QueryContent.fromMap((map['content'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      content: map['content'] == null ? null : (QueryContent.fromMap((map['content']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       savedQueryId: (map['savedQueryId'] as String).input(),
       v1Id: (map['v1Id'] as String).input(),
       v1Id1: (map['v1Id1'] as String).input(),

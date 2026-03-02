@@ -47,10 +47,10 @@ class ServiceEventRuleArgs {
 
   factory ServiceEventRuleArgs.fromMap(Map<String, dynamic> map) {
     return ServiceEventRuleArgs(
-      deliveryMode: map['deliveryMode'] == null ? null : (map['deliveryMode'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (ServiceEventRuleEndpoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>())).input(),
+      deliveryMode: map['deliveryMode'] == null ? null : (map['deliveryMode']! as String).input(),
+      endpoint: map['endpoint'] == null ? null : (ServiceEventRuleEndpoint.fromMap((map['endpoint']! as Map).cast<String, dynamic>())).input(),
       eventTypes: ((map['eventTypes'] as List).cast<String>()).input(),
-      matchRules: map['matchRules'] == null ? null : (pulumi.Input.decodeList<List<ServiceEventRuleMatchRule>>(map['matchRules'], (value) => pulumi.Input.decodeList<ServiceEventRuleMatchRule>(value, (value) => ServiceEventRuleMatchRule.fromMap((value as Map).cast<String, dynamic>())))).input(),
+      matchRules: map['matchRules'] == null ? null : (pulumi.Input.decodeList<List<ServiceEventRuleMatchRule>>(map['matchRules']!, (value) => pulumi.Input.decodeList<ServiceEventRuleMatchRule>(value, (value) => ServiceEventRuleMatchRule.fromMap((value as Map).cast<String, dynamic>())))).input(),
       ruleName: (map['ruleName'] as String).input(),
     );
   }

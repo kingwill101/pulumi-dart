@@ -32,7 +32,7 @@ class FileShareSnapshotPropertiesResponse {
   factory FileShareSnapshotPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FileShareSnapshotPropertiesResponse(
       initiatorId: (map['initiatorId'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
       snapshotTime: (map['snapshotTime'] as String).input(),
     );
   }

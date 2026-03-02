@@ -60,12 +60,12 @@ class VirtualHubBgpConnectionArgs {
 
   factory VirtualHubBgpConnectionArgs.fromMap(Map<String, dynamic> map) {
     return VirtualHubBgpConnectionArgs(
-      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
-      hubVirtualNetworkConnection: map['hubVirtualNetworkConnection'] == null ? null : (SubResource.fromMap((map['hubVirtualNetworkConnection'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn'] as double).input(),
-      peerIp: map['peerIp'] == null ? null : (map['peerIp'] as String).input(),
+      connectionName: map['connectionName'] == null ? null : (map['connectionName']! as String).input(),
+      hubVirtualNetworkConnection: map['hubVirtualNetworkConnection'] == null ? null : (SubResource.fromMap((map['hubVirtualNetworkConnection']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn']! as double).input(),
+      peerIp: map['peerIp'] == null ? null : (map['peerIp']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       virtualHubName: (map['virtualHubName'] as String).input(),
     );

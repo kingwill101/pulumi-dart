@@ -27,8 +27,8 @@ class RoomMessageReviewHandler {
 
   factory RoomMessageReviewHandler.fromMap(Map<String, dynamic> map) {
     return RoomMessageReviewHandler(
-      fallbackResult: map['fallbackResult'] == null ? null : (map['fallbackResult'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      fallbackResult: map['fallbackResult'] == null ? null : ((map['fallbackResult'] as String).input()).input(),
+      uri: map['uri'] == null ? null : ((map['uri'] as String).input()).input(),
     );
   }
 }

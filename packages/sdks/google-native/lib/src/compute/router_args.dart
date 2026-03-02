@@ -82,18 +82,18 @@ class RouterArgs {
 
   factory RouterArgs.fromMap(Map<String, dynamic> map) {
     return RouterArgs(
-      bgp: map['bgp'] == null ? null : (RouterBgp.fromMap((map['bgp'] as Map).cast<String, dynamic>())).input(),
-      bgpPeers: map['bgpPeers'] == null ? null : (pulumi.Input.decodeList<RouterBgpPeer>(map['bgpPeers'], (value) => RouterBgpPeer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptedInterconnectRouter: map['encryptedInterconnectRouter'] == null ? null : (map['encryptedInterconnectRouter'] as bool).input(),
-      interfaces: map['interfaces'] == null ? null : (pulumi.Input.decodeList<RouterInterface>(map['interfaces'], (value) => RouterInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      md5AuthenticationKeys: map['md5AuthenticationKeys'] == null ? null : (pulumi.Input.decodeList<RouterMd5AuthenticationKey>(map['md5AuthenticationKeys'], (value) => RouterMd5AuthenticationKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nats: map['nats'] == null ? null : (pulumi.Input.decodeList<RouterNat>(map['nats'], (value) => RouterNat.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      bgp: map['bgp'] == null ? null : (RouterBgp.fromMap((map['bgp']! as Map).cast<String, dynamic>())).input(),
+      bgpPeers: map['bgpPeers'] == null ? null : (pulumi.Input.decodeList<RouterBgpPeer>(map['bgpPeers']!, (value) => RouterBgpPeer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encryptedInterconnectRouter: map['encryptedInterconnectRouter'] == null ? null : (map['encryptedInterconnectRouter']! as bool).input(),
+      interfaces: map['interfaces'] == null ? null : (pulumi.Input.decodeList<RouterInterface>(map['interfaces']!, (value) => RouterInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      md5AuthenticationKeys: map['md5AuthenticationKeys'] == null ? null : (pulumi.Input.decodeList<RouterMd5AuthenticationKey>(map['md5AuthenticationKeys']!, (value) => RouterMd5AuthenticationKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nats: map['nats'] == null ? null : (pulumi.Input.decodeList<RouterNat>(map['nats']!, (value) => RouterNat.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

@@ -51,13 +51,13 @@ class WatchlistState {
 
   factory WatchlistState.fromMap(Map<String, dynamic> map) {
     return WatchlistState(
-      defaultDuration: map['defaultDuration'] == null ? null : (map['defaultDuration'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      itemSearchKey: map['itemSearchKey'] == null ? null : (map['itemSearchKey'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      defaultDuration: map['defaultDuration'] == null ? null : (map['defaultDuration']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      itemSearchKey: map['itemSearchKey'] == null ? null : (map['itemSearchKey']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as List).cast<String>()).input(),
+      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

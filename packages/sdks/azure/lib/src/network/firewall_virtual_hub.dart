@@ -35,9 +35,9 @@ class FirewallVirtualHub {
 
   factory FirewallVirtualHub.fromMap(Map<String, dynamic> map) {
     return FirewallVirtualHub(
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
-      publicIpAddresses: map['publicIpAddresses'] == null ? null : ((map['publicIpAddresses'] as List).cast<String>()).input(),
-      publicIpCount: map['publicIpCount'] == null ? null : (map['publicIpCount'] as int).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
+      publicIpAddresses: map['publicIpAddresses'] == null ? null : ((map['publicIpAddresses']! as List).cast<String>()).input(),
+      publicIpCount: map['publicIpCount'] == null ? null : (map['publicIpCount']! as int).input(),
       virtualHubId: (map['virtualHubId'] as String).input(),
     );
   }

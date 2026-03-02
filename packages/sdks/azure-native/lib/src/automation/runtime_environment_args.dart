@@ -65,14 +65,14 @@ class RuntimeEnvironmentArgs {
   factory RuntimeEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return RuntimeEnvironmentArgs(
       automationAccountName: (map['automationAccountName'] as String).input(),
-      defaultPackages: map['defaultPackages'] == null ? null : ((map['defaultPackages'] as Map).cast<String, String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      language: map['language'] == null ? null : (map['language'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      defaultPackages: map['defaultPackages'] == null ? null : ((map['defaultPackages']! as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      language: map['language'] == null ? null : (map['language']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      runtimeEnvironmentName: map['runtimeEnvironmentName'] == null ? null : (map['runtimeEnvironmentName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      runtimeEnvironmentName: map['runtimeEnvironmentName'] == null ? null : (map['runtimeEnvironmentName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class GetImageUploadUrlForDataResult {
 
   factory GetImageUploadUrlForDataResult.fromMap(Map<String, dynamic> map) {
     return GetImageUploadUrlForDataResult(
-      contentUrl: map['contentUrl'] == null ? null : map['contentUrl'] as String,
-      imageExists: map['imageExists'] == null ? null : map['imageExists'] as bool,
-      relativePath: map['relativePath'] == null ? null : map['relativePath'] as String,
+      contentUrl: map['contentUrl'] == null ? null : map['contentUrl']! as String,
+      imageExists: map['imageExists'] == null ? null : map['imageExists']! as bool,
+      relativePath: map['relativePath'] == null ? null : map['relativePath']! as String,
     );
   }
 }

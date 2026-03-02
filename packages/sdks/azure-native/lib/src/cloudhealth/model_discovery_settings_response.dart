@@ -32,7 +32,7 @@ class ModelDiscoverySettingsResponse {
   factory ModelDiscoverySettingsResponse.fromMap(Map<String, dynamic> map) {
     return ModelDiscoverySettingsResponse(
       addRecommendedSignals: (map['addRecommendedSignals'] as String).input(),
-      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
+      identity: map['identity'] == null ? null : (map['identity']! as String).input(),
       scope: (map['scope'] as String).input(),
     );
   }

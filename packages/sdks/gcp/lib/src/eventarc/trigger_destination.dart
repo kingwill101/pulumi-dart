@@ -54,12 +54,12 @@ class TriggerDestination {
 
   factory TriggerDestination.fromMap(Map<String, dynamic> map) {
     return TriggerDestination(
-      cloudFunction: map['cloudFunction'] == null ? null : (map['cloudFunction'] as String).input(),
-      cloudRunService: map['cloudRunService'] == null ? null : (TriggerDestinationCloudRunService.fromMap((map['cloudRunService'] as Map).cast<String, dynamic>())).input(),
-      gke: map['gke'] == null ? null : (TriggerDestinationGke.fromMap((map['gke'] as Map).cast<String, dynamic>())).input(),
-      httpEndpoint: map['httpEndpoint'] == null ? null : (TriggerDestinationHttpEndpoint.fromMap((map['httpEndpoint'] as Map).cast<String, dynamic>())).input(),
-      networkConfig: map['networkConfig'] == null ? null : (TriggerDestinationNetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
-      workflow: map['workflow'] == null ? null : (map['workflow'] as String).input(),
+      cloudFunction: map['cloudFunction'] == null ? null : (map['cloudFunction']! as String).input(),
+      cloudRunService: map['cloudRunService'] == null ? null : (TriggerDestinationCloudRunService.fromMap((map['cloudRunService']! as Map).cast<String, dynamic>())).input(),
+      gke: map['gke'] == null ? null : (TriggerDestinationGke.fromMap((map['gke']! as Map).cast<String, dynamic>())).input(),
+      httpEndpoint: map['httpEndpoint'] == null ? null : (TriggerDestinationHttpEndpoint.fromMap((map['httpEndpoint']! as Map).cast<String, dynamic>())).input(),
+      networkConfig: map['networkConfig'] == null ? null : (TriggerDestinationNetworkConfig.fromMap((map['networkConfig']! as Map).cast<String, dynamic>())).input(),
+      workflow: map['workflow'] == null ? null : (map['workflow']! as String).input(),
     );
   }
 }

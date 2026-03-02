@@ -22,7 +22,7 @@ class PreviewFeatureRolloutOperation {
 
   factory PreviewFeatureRolloutOperation.fromMap(Map<String, dynamic> map) {
     return PreviewFeatureRolloutOperation(
-      rolloutInput: map['rolloutInput'] == null ? null : (PreviewFeatureRolloutOperationRolloutInput.fromMap((map['rolloutInput'] as Map).cast<String, dynamic>())).input(),
+      rolloutInput: map['rolloutInput'] == null ? null : (PreviewFeatureRolloutOperationRolloutInput.fromMap((map['rolloutInput']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

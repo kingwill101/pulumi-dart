@@ -66,16 +66,16 @@ class TargetGroupConfigHealthCheck {
 
   factory TargetGroupConfigHealthCheck.fromMap(Map<String, dynamic> map) {
     return TargetGroupConfigHealthCheck(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      healthCheckIntervalSeconds: map['healthCheckIntervalSeconds'] == null ? null : (map['healthCheckIntervalSeconds'] as int).input(),
-      healthCheckTimeoutSeconds: map['healthCheckTimeoutSeconds'] == null ? null : (map['healthCheckTimeoutSeconds'] as int).input(),
-      healthyThresholdCount: map['healthyThresholdCount'] == null ? null : (map['healthyThresholdCount'] as int).input(),
-      matcher: map['matcher'] == null ? null : (TargetGroupConfigHealthCheckMatcher.fromMap((map['matcher'] as Map).cast<String, dynamic>())).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      protocolVersion: map['protocolVersion'] == null ? null : (map['protocolVersion'] as String).input(),
-      unhealthyThresholdCount: map['unhealthyThresholdCount'] == null ? null : (map['unhealthyThresholdCount'] as int).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      healthCheckIntervalSeconds: map['healthCheckIntervalSeconds'] == null ? null : ((map['healthCheckIntervalSeconds'] as int).input()).input(),
+      healthCheckTimeoutSeconds: map['healthCheckTimeoutSeconds'] == null ? null : ((map['healthCheckTimeoutSeconds'] as int).input()).input(),
+      healthyThresholdCount: map['healthyThresholdCount'] == null ? null : ((map['healthyThresholdCount'] as int).input()).input(),
+      matcher: map['matcher'] == null ? null : ((TargetGroupConfigHealthCheckMatcher.fromMap((map['matcher']! as Map).cast<String, dynamic>())).input()).input(),
+      path: map['path'] == null ? null : ((map['path'] as String).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
+      protocol: map['protocol'] == null ? null : ((map['protocol'] as String).input()).input(),
+      protocolVersion: map['protocolVersion'] == null ? null : ((map['protocolVersion'] as String).input()).input(),
+      unhealthyThresholdCount: map['unhealthyThresholdCount'] == null ? null : ((map['unhealthyThresholdCount'] as int).input()).input(),
     );
   }
 }

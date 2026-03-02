@@ -31,9 +31,9 @@ class GetPeeringIamPolicyManagedidentitiesV1alpha1Args {
 
   factory GetPeeringIamPolicyManagedidentitiesV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetPeeringIamPolicyManagedidentitiesV1alpha1Args(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
       peeringId: (map['peeringId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -55,10 +55,10 @@ class MetricMetricDescriptor {
 
   factory MetricMetricDescriptor.fromMap(Map<String, dynamic> map) {
     return MetricMetricDescriptor(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<MetricMetricDescriptorLabel>(map['labels'], (value) => MetricMetricDescriptorLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<MetricMetricDescriptorLabel>(map['labels']!, (value) => MetricMetricDescriptorLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
       metricKind: (map['metricKind'] as String).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      unit: map['unit'] == null ? null : (map['unit']! as String).input(),
       valueType: (map['valueType'] as String).input(),
     );
   }

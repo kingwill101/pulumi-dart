@@ -27,7 +27,7 @@ class GetBrokerEngineTypesBrokerEngineType {
   factory GetBrokerEngineTypesBrokerEngineType.fromMap(Map<String, dynamic> map) {
     return GetBrokerEngineTypesBrokerEngineType(
       engineType: (map['engineType'] as String).input(),
-      engineVersions: (pulumi.Input.decodeList<GetBrokerEngineTypesBrokerEngineTypeEngineVersion>(map['engineVersions'], (value) => GetBrokerEngineTypesBrokerEngineTypeEngineVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      engineVersions: (pulumi.Input.decodeList<GetBrokerEngineTypesBrokerEngineTypeEngineVersion>(map['engineVersions']!, (value) => GetBrokerEngineTypesBrokerEngineTypeEngineVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -78,21 +78,21 @@ class GetInstancesResult {
 
   factory GetInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetInstancesResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      imageId: map['imageId'] == null ? null : map['imageId'] as String,
-      instanceName: map['instanceName'] == null ? null : map['instanceName'] as String,
-      instanceType: map['instanceType'] == null ? null : map['instanceType'] as String,
+      imageId: map['imageId'] == null ? null : map['imageId']! as String,
+      instanceName: map['instanceName'] == null ? null : map['instanceName']! as String,
+      instanceType: map['instanceType'] == null ? null : map['instanceType']! as String,
       instances: pulumi.Input.decodeList<GetInstancesInstance>(map['instances'], (value) => GetInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      keyPairName: map['keyPairName'] == null ? null : map['keyPairName'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      keyPairName: map['keyPairName'] == null ? null : map['keyPairName']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      paymentType: map['paymentType'] == null ? null : map['paymentType'] as String,
-      resolution: map['resolution'] == null ? null : map['resolution'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      zoneId: map['zoneId'] == null ? null : map['zoneId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      paymentType: map['paymentType'] == null ? null : map['paymentType']! as String,
+      resolution: map['resolution'] == null ? null : map['resolution']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      zoneId: map['zoneId'] == null ? null : map['zoneId']! as String,
     );
   }
 }

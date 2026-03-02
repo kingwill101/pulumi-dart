@@ -22,7 +22,7 @@ class IPAddressSpecPatch {
 
   factory IPAddressSpecPatch.fromMap(Map<String, dynamic> map) {
     return IPAddressSpecPatch(
-      parentRef: map['parentRef'] == null ? null : (ParentReferencePatch.fromMap((map['parentRef'] as Map).cast<String, dynamic>())).input(),
+      parentRef: map['parentRef'] == null ? null : (ParentReferencePatch.fromMap((map['parentRef']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

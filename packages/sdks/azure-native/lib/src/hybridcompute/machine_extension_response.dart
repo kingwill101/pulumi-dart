@@ -56,9 +56,9 @@ class MachineExtensionResponse {
       id: (map['id'] as String).input(),
       location: (map['location'] as String).input(),
       name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (MachineExtensionPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (MachineExtensionPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       type: (map['type'] as String).input(),
     );
   }

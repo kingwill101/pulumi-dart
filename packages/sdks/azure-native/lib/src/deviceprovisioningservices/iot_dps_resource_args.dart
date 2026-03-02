@@ -67,15 +67,15 @@ class IotDpsResourceArgs {
 
   factory IotDpsResourceArgs.fromMap(Map<String, dynamic> map) {
     return IotDpsResourceArgs(
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       properties: (IotDpsPropertiesDescription.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      provisioningServiceName: map['provisioningServiceName'] == null ? null : (map['provisioningServiceName'] as String).input(),
+      provisioningServiceName: map['provisioningServiceName'] == null ? null : (map['provisioningServiceName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourcegroup: map['resourcegroup'] == null ? null : (map['resourcegroup'] as String).input(),
+      resourcegroup: map['resourcegroup'] == null ? null : (map['resourcegroup']! as String).input(),
       sku: (IotDpsSkuInfo.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      subscriptionid: map['subscriptionid'] == null ? null : (map['subscriptionid'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      subscriptionid: map['subscriptionid'] == null ? null : (map['subscriptionid']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class GrpcServiceConfig {
 
   factory GrpcServiceConfig.fromMap(Map<String, dynamic> map) {
     return GrpcServiceConfig(
-      callCredentials: map['callCredentials'] == null ? null : (CallCredentials.fromMap((map['callCredentials'] as Map).cast<String, dynamic>())).input(),
-      channelCredentials: map['channelCredentials'] == null ? null : (ChannelCredentials.fromMap((map['channelCredentials'] as Map).cast<String, dynamic>())).input(),
-      targetUri: map['targetUri'] == null ? null : (map['targetUri'] as String).input(),
+      callCredentials: map['callCredentials'] == null ? null : (CallCredentials.fromMap((map['callCredentials']! as Map).cast<String, dynamic>())).input(),
+      channelCredentials: map['channelCredentials'] == null ? null : (ChannelCredentials.fromMap((map['channelCredentials']! as Map).cast<String, dynamic>())).input(),
+      targetUri: map['targetUri'] == null ? null : (map['targetUri']! as String).input(),
     );
   }
 }

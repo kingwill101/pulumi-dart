@@ -26,8 +26,8 @@ class DatabaseIdentity {
 
   factory DatabaseIdentity.fromMap(Map<String, dynamic> map) {
     return DatabaseIdentity(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities'] as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities']! as List).cast<String>()).input(),
     );
   }
 }

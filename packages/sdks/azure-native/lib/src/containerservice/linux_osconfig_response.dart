@@ -37,10 +37,10 @@ class LinuxOSConfigResponse {
 
   factory LinuxOSConfigResponse.fromMap(Map<String, dynamic> map) {
     return LinuxOSConfigResponse(
-      swapFileSizeMB: map['swapFileSizeMB'] == null ? null : (map['swapFileSizeMB'] as int).input(),
-      sysctls: map['sysctls'] == null ? null : (SysctlConfigResponse.fromMap((map['sysctls'] as Map).cast<String, dynamic>())).input(),
-      transparentHugePageDefrag: map['transparentHugePageDefrag'] == null ? null : (map['transparentHugePageDefrag'] as String).input(),
-      transparentHugePageEnabled: map['transparentHugePageEnabled'] == null ? null : (map['transparentHugePageEnabled'] as String).input(),
+      swapFileSizeMB: map['swapFileSizeMB'] == null ? null : (map['swapFileSizeMB']! as int).input(),
+      sysctls: map['sysctls'] == null ? null : (SysctlConfigResponse.fromMap((map['sysctls']! as Map).cast<String, dynamic>())).input(),
+      transparentHugePageDefrag: map['transparentHugePageDefrag'] == null ? null : (map['transparentHugePageDefrag']! as String).input(),
+      transparentHugePageEnabled: map['transparentHugePageEnabled'] == null ? null : (map['transparentHugePageEnabled']! as String).input(),
     );
   }
 }

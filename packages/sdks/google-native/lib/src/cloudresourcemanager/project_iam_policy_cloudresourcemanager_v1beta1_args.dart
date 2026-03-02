@@ -50,12 +50,12 @@ class ProjectIamPolicyCloudresourcemanagerV1beta1Args {
 
   factory ProjectIamPolicyCloudresourcemanagerV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ProjectIamPolicyCloudresourcemanagerV1beta1Args(
-      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfigCloudresourcemanagerV1beta1>(map['auditConfigs'], (value) => AuditConfigCloudresourcemanagerV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingCloudresourcemanagerV1beta1>(map['bindings'], (value) => BindingCloudresourcemanagerV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfigCloudresourcemanagerV1beta1>(map['auditConfigs']!, (value) => AuditConfigCloudresourcemanagerV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingCloudresourcemanagerV1beta1>(map['bindings']!, (value) => BindingCloudresourcemanagerV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       resource: (map['resource'] as String).input(),
-      updateMask: map['updateMask'] == null ? null : (map['updateMask'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      updateMask: map['updateMask'] == null ? null : (map['updateMask']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

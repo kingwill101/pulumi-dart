@@ -46,9 +46,9 @@ class MethodSettingsArgs {
   factory MethodSettingsArgs.fromMap(Map<String, dynamic> map) {
     return MethodSettingsArgs(
       methodPath: (map['methodPath'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       restApi: (map['restApi'] as String).input(),
-      settings: (MethodSettingsSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      settings: (MethodSettingsSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
       stageName: (map['stageName'] as String).input(),
     );
   }

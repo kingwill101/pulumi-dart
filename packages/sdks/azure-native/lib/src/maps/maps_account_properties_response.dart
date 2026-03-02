@@ -55,11 +55,11 @@ class MapsAccountPropertiesResponse {
 
   factory MapsAccountPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MapsAccountPropertiesResponse(
-      cors: map['cors'] == null ? null : (CorsRulesResponse.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth'] as bool).input(),
-      encryption: map['encryption'] == null ? null : (EncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      linkedResources: map['linkedResources'] == null ? null : (pulumi.Input.decodeList<LinkedResourceResponse>(map['linkedResources'], (value) => LinkedResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      locations: map['locations'] == null ? null : (pulumi.Input.decodeList<MapsAccountPropertiesResponseLocations>(map['locations'], (value) => MapsAccountPropertiesResponseLocations.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cors: map['cors'] == null ? null : (CorsRulesResponse.fromMap((map['cors']! as Map).cast<String, dynamic>())).input(),
+      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth']! as bool).input(),
+      encryption: map['encryption'] == null ? null : (EncryptionResponse.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      linkedResources: map['linkedResources'] == null ? null : (pulumi.Input.decodeList<LinkedResourceResponse>(map['linkedResources']!, (value) => LinkedResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      locations: map['locations'] == null ? null : (pulumi.Input.decodeList<MapsAccountPropertiesResponseLocations>(map['locations']!, (value) => MapsAccountPropertiesResponseLocations.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       uniqueId: (map['uniqueId'] as String).input(),
     );

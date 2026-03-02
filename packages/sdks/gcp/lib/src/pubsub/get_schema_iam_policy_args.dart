@@ -30,7 +30,7 @@ class GetSchemaIamPolicyArgs {
 
   factory GetSchemaIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetSchemaIamPolicyArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       schema: (map['schema'] as String).input(),
     );
   }

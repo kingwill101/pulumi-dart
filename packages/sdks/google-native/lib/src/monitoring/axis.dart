@@ -27,8 +27,8 @@ class Axis {
 
   factory Axis.fromMap(Map<String, dynamic> map) {
     return Axis(
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      scale: map['scale'] == null ? null : (AxisScale.fromValue(map['scale'] as String)).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      scale: map['scale'] == null ? null : (AxisScale.fromValue(map['scale']! as String)).input(),
     );
   }
 }

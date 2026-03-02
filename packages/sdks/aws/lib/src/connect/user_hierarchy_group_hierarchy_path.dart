@@ -45,11 +45,11 @@ class UserHierarchyGroupHierarchyPath {
 
   factory UserHierarchyGroupHierarchyPath.fromMap(Map<String, dynamic> map) {
     return UserHierarchyGroupHierarchyPath(
-      levelFives: map['levelFives'] == null ? null : (pulumi.Input.decodeList<UserHierarchyGroupHierarchyPathLevelFife>(map['levelFives'], (value) => UserHierarchyGroupHierarchyPathLevelFife.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      levelFours: map['levelFours'] == null ? null : (pulumi.Input.decodeList<UserHierarchyGroupHierarchyPathLevelFour>(map['levelFours'], (value) => UserHierarchyGroupHierarchyPathLevelFour.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      levelOnes: map['levelOnes'] == null ? null : (pulumi.Input.decodeList<UserHierarchyGroupHierarchyPathLevelOne>(map['levelOnes'], (value) => UserHierarchyGroupHierarchyPathLevelOne.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      levelThrees: map['levelThrees'] == null ? null : (pulumi.Input.decodeList<UserHierarchyGroupHierarchyPathLevelThree>(map['levelThrees'], (value) => UserHierarchyGroupHierarchyPathLevelThree.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      levelTwos: map['levelTwos'] == null ? null : (pulumi.Input.decodeList<UserHierarchyGroupHierarchyPathLevelTwo>(map['levelTwos'], (value) => UserHierarchyGroupHierarchyPathLevelTwo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      levelFives: map['levelFives'] == null ? null : ((pulumi.Input.decodeList<UserHierarchyGroupHierarchyPathLevelFife>(map['levelFives']!, (value) => UserHierarchyGroupHierarchyPathLevelFife.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      levelFours: map['levelFours'] == null ? null : ((pulumi.Input.decodeList<UserHierarchyGroupHierarchyPathLevelFour>(map['levelFours']!, (value) => UserHierarchyGroupHierarchyPathLevelFour.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      levelOnes: map['levelOnes'] == null ? null : ((pulumi.Input.decodeList<UserHierarchyGroupHierarchyPathLevelOne>(map['levelOnes']!, (value) => UserHierarchyGroupHierarchyPathLevelOne.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      levelThrees: map['levelThrees'] == null ? null : ((pulumi.Input.decodeList<UserHierarchyGroupHierarchyPathLevelThree>(map['levelThrees']!, (value) => UserHierarchyGroupHierarchyPathLevelThree.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      levelTwos: map['levelTwos'] == null ? null : ((pulumi.Input.decodeList<UserHierarchyGroupHierarchyPathLevelTwo>(map['levelTwos']!, (value) => UserHierarchyGroupHierarchyPathLevelTwo.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

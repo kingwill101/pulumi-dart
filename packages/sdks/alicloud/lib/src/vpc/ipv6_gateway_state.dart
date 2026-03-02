@@ -76,18 +76,18 @@ class Ipv6GatewayState {
 
   factory Ipv6GatewayState.fromMap(Map<String, dynamic> map) {
     return Ipv6GatewayState(
-      businessStatus: map['businessStatus'] == null ? null : (map['businessStatus'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expiredTime: map['expiredTime'] == null ? null : (map['expiredTime'] as String).input(),
-      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType'] as String).input(),
-      ipv6GatewayId: map['ipv6GatewayId'] == null ? null : (map['ipv6GatewayId'] as String).input(),
-      ipv6GatewayName: map['ipv6GatewayName'] == null ? null : (map['ipv6GatewayName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      spec: map['spec'] == null ? null : (map['spec'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      businessStatus: map['businessStatus'] == null ? null : (map['businessStatus']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      expiredTime: map['expiredTime'] == null ? null : (map['expiredTime']! as String).input(),
+      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType']! as String).input(),
+      ipv6GatewayId: map['ipv6GatewayId'] == null ? null : (map['ipv6GatewayId']! as String).input(),
+      ipv6GatewayName: map['ipv6GatewayName'] == null ? null : (map['ipv6GatewayName']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      spec: map['spec'] == null ? null : (map['spec']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

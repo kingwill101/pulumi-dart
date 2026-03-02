@@ -40,8 +40,8 @@ class BackupPolicyArgs {
 
   factory BackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BackupPolicyArgs(
-      backupPolicyName: map['backupPolicyName'] == null ? null : (map['backupPolicyName'] as String).input(),
-      properties: map['properties'] == null ? null : (map['properties'] as BackupPolicyDataprotection).input(),
+      backupPolicyName: map['backupPolicyName'] == null ? null : (map['backupPolicyName']! as String).input(),
+      properties: map['properties'] == null ? null : (map['properties']! as BackupPolicyDataprotection).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       vaultName: (map['vaultName'] as String).input(),
     );

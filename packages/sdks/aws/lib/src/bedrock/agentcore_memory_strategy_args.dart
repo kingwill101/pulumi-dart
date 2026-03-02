@@ -66,14 +66,14 @@ class AgentcoreMemoryStrategyArgs {
 
   factory AgentcoreMemoryStrategyArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreMemoryStrategyArgs(
-      configuration: map['configuration'] == null ? null : (AgentcoreMemoryStrategyConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      memoryExecutionRoleArn: map['memoryExecutionRoleArn'] == null ? null : (map['memoryExecutionRoleArn'] as String).input(),
+      configuration: map['configuration'] == null ? null : ((AgentcoreMemoryStrategyConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      memoryExecutionRoleArn: map['memoryExecutionRoleArn'] == null ? null : ((map['memoryExecutionRoleArn'] as String).input()).input(),
       memoryId: (map['memoryId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       namespaces: ((map['namespaces'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (AgentcoreMemoryStrategyTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((AgentcoreMemoryStrategyTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

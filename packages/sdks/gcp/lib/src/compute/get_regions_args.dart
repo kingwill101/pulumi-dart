@@ -30,8 +30,8 @@ class GetRegionsArgs {
 
   factory GetRegionsArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionsArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

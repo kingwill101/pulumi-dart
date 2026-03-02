@@ -26,8 +26,8 @@ class AdministratorProperties {
 
   factory AdministratorProperties.fromMap(Map<String, dynamic> map) {
     return AdministratorProperties(
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

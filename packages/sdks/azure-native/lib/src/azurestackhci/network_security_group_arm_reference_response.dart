@@ -21,7 +21,7 @@ class NetworkSecurityGroupArmReferenceResponse {
 
   factory NetworkSecurityGroupArmReferenceResponse.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityGroupArmReferenceResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

@@ -35,7 +35,7 @@ class ApplicationAccessPointArgs {
   factory ApplicationAccessPointArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationAccessPointArgs(
       applicationAccessPointName: (map['applicationAccessPointName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       policies: ((map['policies'] as List).cast<String>()).input(),
     );
   }

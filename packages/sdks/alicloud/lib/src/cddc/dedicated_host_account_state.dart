@@ -36,10 +36,10 @@ class DedicatedHostAccountState {
 
   factory DedicatedHostAccountState.fromMap(Map<String, dynamic> map) {
     return DedicatedHostAccountState(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword'] as String).input(),
-      accountType: map['accountType'] == null ? null : (map['accountType'] as String).input(),
-      dedicatedHostId: map['dedicatedHostId'] == null ? null : (map['dedicatedHostId'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword']! as String).input(),
+      accountType: map['accountType'] == null ? null : (map['accountType']! as String).input(),
+      dedicatedHostId: map['dedicatedHostId'] == null ? null : (map['dedicatedHostId']! as String).input(),
     );
   }
 }

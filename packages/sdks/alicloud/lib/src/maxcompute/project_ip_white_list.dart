@@ -29,8 +29,8 @@ class ProjectIpWhiteList {
 
   factory ProjectIpWhiteList.fromMap(Map<String, dynamic> map) {
     return ProjectIpWhiteList(
-      ipList: map['ipList'] == null ? null : (map['ipList'] as String).input(),
-      vpcIpList: map['vpcIpList'] == null ? null : (map['vpcIpList'] as String).input(),
+      ipList: map['ipList'] == null ? null : (map['ipList']! as String).input(),
+      vpcIpList: map['vpcIpList'] == null ? null : (map['vpcIpList']! as String).input(),
     );
   }
 }

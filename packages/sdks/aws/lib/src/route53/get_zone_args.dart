@@ -54,12 +54,12 @@ class GetZoneArgs {
 
   factory GetZoneArgs.fromMap(Map<String, dynamic> map) {
     return GetZoneArgs(
-      enableAcceleratedRecovery: map['enableAcceleratedRecovery'] == null ? null : (map['enableAcceleratedRecovery'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateZone: map['privateZone'] == null ? null : (map['privateZone'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      enableAcceleratedRecovery: map['enableAcceleratedRecovery'] == null ? null : ((map['enableAcceleratedRecovery'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      privateZone: map['privateZone'] == null ? null : ((map['privateZone'] as bool).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
+      zoneId: map['zoneId'] == null ? null : ((map['zoneId'] as String).input()).input(),
     );
   }
 }

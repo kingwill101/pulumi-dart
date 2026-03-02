@@ -46,9 +46,9 @@ class AutoscaleProfileResponse {
   factory AutoscaleProfileResponse.fromMap(Map<String, dynamic> map) {
     return AutoscaleProfileResponse(
       capacity: (ScaleCapacityResponse.fromMap((map['capacity'] as Map).cast<String, dynamic>())).input(),
-      fixedDate: map['fixedDate'] == null ? null : (TimeWindowResponse.fromMap((map['fixedDate'] as Map).cast<String, dynamic>())).input(),
+      fixedDate: map['fixedDate'] == null ? null : (TimeWindowResponse.fromMap((map['fixedDate']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      recurrence: map['recurrence'] == null ? null : (RecurrenceResponse.fromMap((map['recurrence'] as Map).cast<String, dynamic>())).input(),
+      recurrence: map['recurrence'] == null ? null : (RecurrenceResponse.fromMap((map['recurrence']! as Map).cast<String, dynamic>())).input(),
       rules: (pulumi.Input.decodeList<ScaleRuleResponse>(map['rules'], (value) => ScaleRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

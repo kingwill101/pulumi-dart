@@ -50,13 +50,13 @@ class ServiceSecurity {
 
   factory ServiceSecurity.fromMap(Map<String, dynamic> map) {
     return ServiceSecurity(
-      kerberosArmoringEnabled: map['kerberosArmoringEnabled'] == null ? null : (map['kerberosArmoringEnabled'] as bool).input(),
-      kerberosRc4EncryptionEnabled: map['kerberosRc4EncryptionEnabled'] == null ? null : (map['kerberosRc4EncryptionEnabled'] as bool).input(),
-      ntlmV1Enabled: map['ntlmV1Enabled'] == null ? null : (map['ntlmV1Enabled'] as bool).input(),
-      syncKerberosPasswords: map['syncKerberosPasswords'] == null ? null : (map['syncKerberosPasswords'] as bool).input(),
-      syncNtlmPasswords: map['syncNtlmPasswords'] == null ? null : (map['syncNtlmPasswords'] as bool).input(),
-      syncOnPremPasswords: map['syncOnPremPasswords'] == null ? null : (map['syncOnPremPasswords'] as bool).input(),
-      tlsV1Enabled: map['tlsV1Enabled'] == null ? null : (map['tlsV1Enabled'] as bool).input(),
+      kerberosArmoringEnabled: map['kerberosArmoringEnabled'] == null ? null : (map['kerberosArmoringEnabled']! as bool).input(),
+      kerberosRc4EncryptionEnabled: map['kerberosRc4EncryptionEnabled'] == null ? null : (map['kerberosRc4EncryptionEnabled']! as bool).input(),
+      ntlmV1Enabled: map['ntlmV1Enabled'] == null ? null : (map['ntlmV1Enabled']! as bool).input(),
+      syncKerberosPasswords: map['syncKerberosPasswords'] == null ? null : (map['syncKerberosPasswords']! as bool).input(),
+      syncNtlmPasswords: map['syncNtlmPasswords'] == null ? null : (map['syncNtlmPasswords']! as bool).input(),
+      syncOnPremPasswords: map['syncOnPremPasswords'] == null ? null : (map['syncOnPremPasswords']! as bool).input(),
+      tlsV1Enabled: map['tlsV1Enabled'] == null ? null : (map['tlsV1Enabled']! as bool).input(),
     );
   }
 }

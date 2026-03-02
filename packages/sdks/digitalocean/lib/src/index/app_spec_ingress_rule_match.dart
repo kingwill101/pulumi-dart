@@ -27,8 +27,8 @@ class AppSpecIngressRuleMatch {
 
   factory AppSpecIngressRuleMatch.fromMap(Map<String, dynamic> map) {
     return AppSpecIngressRuleMatch(
-      authority: map['authority'] == null ? null : (AppSpecIngressRuleMatchAuthority.fromMap((map['authority'] as Map).cast<String, dynamic>())).input(),
-      path: map['path'] == null ? null : (AppSpecIngressRuleMatchPath.fromMap((map['path'] as Map).cast<String, dynamic>())).input(),
+      authority: map['authority'] == null ? null : (AppSpecIngressRuleMatchAuthority.fromMap((map['authority']! as Map).cast<String, dynamic>())).input(),
+      path: map['path'] == null ? null : (AppSpecIngressRuleMatchPath.fromMap((map['path']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

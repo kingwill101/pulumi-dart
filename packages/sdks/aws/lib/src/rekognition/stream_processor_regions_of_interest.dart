@@ -27,8 +27,8 @@ class StreamProcessorRegionsOfInterest {
 
   factory StreamProcessorRegionsOfInterest.fromMap(Map<String, dynamic> map) {
     return StreamProcessorRegionsOfInterest(
-      boundingBox: map['boundingBox'] == null ? null : (StreamProcessorRegionsOfInterestBoundingBox.fromMap((map['boundingBox'] as Map).cast<String, dynamic>())).input(),
-      polygons: map['polygons'] == null ? null : (pulumi.Input.decodeList<StreamProcessorRegionsOfInterestPolygon>(map['polygons'], (value) => StreamProcessorRegionsOfInterestPolygon.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      boundingBox: map['boundingBox'] == null ? null : ((StreamProcessorRegionsOfInterestBoundingBox.fromMap((map['boundingBox']! as Map).cast<String, dynamic>())).input()).input(),
+      polygons: map['polygons'] == null ? null : ((pulumi.Input.decodeList<StreamProcessorRegionsOfInterestPolygon>(map['polygons']!, (value) => StreamProcessorRegionsOfInterestPolygon.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -42,10 +42,10 @@ class ImageTemplateFileValidator {
 
   factory ImageTemplateFileValidator.fromMap(Map<String, dynamic> map) {
     return ImageTemplateFileValidator(
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sha256Checksum: map['sha256Checksum'] == null ? null : (map['sha256Checksum'] as String).input(),
-      sourceUri: map['sourceUri'] == null ? null : (map['sourceUri'] as String).input(),
+      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sha256Checksum: map['sha256Checksum'] == null ? null : (map['sha256Checksum']! as String).input(),
+      sourceUri: map['sourceUri'] == null ? null : (map['sourceUri']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

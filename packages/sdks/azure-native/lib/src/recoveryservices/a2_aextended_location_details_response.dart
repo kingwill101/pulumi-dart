@@ -27,8 +27,8 @@ class A2AExtendedLocationDetailsResponse {
 
   factory A2AExtendedLocationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return A2AExtendedLocationDetailsResponse(
-      primaryExtendedLocation: map['primaryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['primaryExtendedLocation'] as Map).cast<String, dynamic>())).input(),
-      recoveryExtendedLocation: map['recoveryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['recoveryExtendedLocation'] as Map).cast<String, dynamic>())).input(),
+      primaryExtendedLocation: map['primaryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['primaryExtendedLocation']! as Map).cast<String, dynamic>())).input(),
+      recoveryExtendedLocation: map['recoveryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['recoveryExtendedLocation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

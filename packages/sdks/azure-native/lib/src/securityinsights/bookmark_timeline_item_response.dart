@@ -64,14 +64,14 @@ class BookmarkTimelineItemResponse {
   factory BookmarkTimelineItemResponse.fromMap(Map<String, dynamic> map) {
     return BookmarkTimelineItemResponse(
       azureResourceId: (map['azureResourceId'] as String).input(),
-      createdBy: map['createdBy'] == null ? null : (UserInfoResponse.fromMap((map['createdBy'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      endTimeUtc: map['endTimeUtc'] == null ? null : (map['endTimeUtc'] as String).input(),
-      eventTime: map['eventTime'] == null ? null : (map['eventTime'] as String).input(),
+      createdBy: map['createdBy'] == null ? null : (UserInfoResponse.fromMap((map['createdBy']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      endTimeUtc: map['endTimeUtc'] == null ? null : (map['endTimeUtc']! as String).input(),
+      eventTime: map['eventTime'] == null ? null : (map['eventTime']! as String).input(),
       kind: (map['kind'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
-      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
-      startTimeUtc: map['startTimeUtc'] == null ? null : (map['startTimeUtc'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as List).cast<String>()).input(),
+      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
+      startTimeUtc: map['startTimeUtc'] == null ? null : (map['startTimeUtc']! as String).input(),
     );
   }
 }

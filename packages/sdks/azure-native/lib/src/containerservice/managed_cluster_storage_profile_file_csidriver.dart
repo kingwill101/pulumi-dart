@@ -21,7 +21,7 @@ class ManagedClusterStorageProfileFileCSIDriver {
 
   factory ManagedClusterStorageProfileFileCSIDriver.fromMap(Map<String, dynamic> map) {
     return ManagedClusterStorageProfileFileCSIDriver(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class CustomRoutingListenerState {
 
   factory CustomRoutingListenerState.fromMap(Map<String, dynamic> map) {
     return CustomRoutingListenerState(
-      acceleratorArn: map['acceleratorArn'] == null ? null : (map['acceleratorArn'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      portRanges: map['portRanges'] == null ? null : (pulumi.Input.decodeList<CustomRoutingListenerPortRange>(map['portRanges'], (value) => CustomRoutingListenerPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      acceleratorArn: map['acceleratorArn'] == null ? null : ((map['acceleratorArn'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      portRanges: map['portRanges'] == null ? null : ((pulumi.Input.decodeList<CustomRoutingListenerPortRange>(map['portRanges']!, (value) => CustomRoutingListenerPortRange.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -49,12 +49,12 @@ class AwsAccessAnalyzerAnalyzerProperties {
 
   factory AwsAccessAnalyzerAnalyzerProperties.fromMap(Map<String, dynamic> map) {
     return AwsAccessAnalyzerAnalyzerProperties(
-      analyzerConfiguration: map['analyzerConfiguration'] == null ? null : (UnusedAccessConfiguration.fromMap((map['analyzerConfiguration'] as Map).cast<String, dynamic>())).input(),
-      analyzerName: map['analyzerName'] == null ? null : (map['analyzerName'] as String).input(),
-      archiveRules: map['archiveRules'] == null ? null : (pulumi.Input.decodeList<ArchiveRule>(map['archiveRules'], (value) => ArchiveRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      analyzerConfiguration: map['analyzerConfiguration'] == null ? null : (UnusedAccessConfiguration.fromMap((map['analyzerConfiguration']! as Map).cast<String, dynamic>())).input(),
+      analyzerName: map['analyzerName'] == null ? null : (map['analyzerName']! as String).input(),
+      archiveRules: map['archiveRules'] == null ? null : (pulumi.Input.decodeList<ArchiveRule>(map['archiveRules']!, (value) => ArchiveRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags']!, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

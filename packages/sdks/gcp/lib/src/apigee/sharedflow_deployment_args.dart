@@ -50,7 +50,7 @@ class SharedflowDeploymentArgs {
       environment: (map['environment'] as String).input(),
       orgId: (map['orgId'] as String).input(),
       revision: (map['revision'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
       sharedflowId: (map['sharedflowId'] as String).input(),
     );
   }

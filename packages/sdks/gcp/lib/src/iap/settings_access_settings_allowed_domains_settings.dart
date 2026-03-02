@@ -25,8 +25,8 @@ class SettingsAccessSettingsAllowedDomainsSettings {
 
   factory SettingsAccessSettingsAllowedDomainsSettings.fromMap(Map<String, dynamic> map) {
     return SettingsAccessSettingsAllowedDomainsSettings(
-      domains: map['domains'] == null ? null : ((map['domains'] as List).cast<String>()).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      domains: map['domains'] == null ? null : ((map['domains']! as List).cast<String>()).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
     );
   }
 }

@@ -38,11 +38,11 @@ class AutomationRuleCriteriaCriticality {
 
   factory AutomationRuleCriteriaCriticality.fromMap(Map<String, dynamic> map) {
     return AutomationRuleCriteriaCriticality(
-      eq: map['eq'] == null ? null : (map['eq'] as double).input(),
-      gt: map['gt'] == null ? null : (map['gt'] as double).input(),
-      gte: map['gte'] == null ? null : (map['gte'] as double).input(),
-      lt: map['lt'] == null ? null : (map['lt'] as double).input(),
-      lte: map['lte'] == null ? null : (map['lte'] as double).input(),
+      eq: map['eq'] == null ? null : ((map['eq'] as double).input()).input(),
+      gt: map['gt'] == null ? null : ((map['gt'] as double).input()).input(),
+      gte: map['gte'] == null ? null : ((map['gte'] as double).input()).input(),
+      lt: map['lt'] == null ? null : ((map['lt'] as double).input()).input(),
+      lte: map['lte'] == null ? null : ((map['lte'] as double).input()).input(),
     );
   }
 }

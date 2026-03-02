@@ -56,8 +56,8 @@ class GetEntitiesGetTimelineArgs {
     return GetEntitiesGetTimelineArgs(
       endTime: (map['endTime'] as String).input(),
       entityId: (map['entityId'] as String).input(),
-      kinds: map['kinds'] == null ? null : ((map['kinds'] as List).cast<String>()).input(),
-      numberOfBucket: map['numberOfBucket'] == null ? null : (map['numberOfBucket'] as int).input(),
+      kinds: map['kinds'] == null ? null : ((map['kinds']! as List).cast<String>()).input(),
+      numberOfBucket: map['numberOfBucket'] == null ? null : (map['numberOfBucket']! as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       startTime: (map['startTime'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),

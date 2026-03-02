@@ -26,8 +26,8 @@ class FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration {
 
   factory FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration(
-      commonAttributes: map['commonAttributes'] == null ? null : (pulumi.Input.decodeList<FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttribute>(map['commonAttributes'], (value) => FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding'] as String).input(),
+      commonAttributes: map['commonAttributes'] == null ? null : ((pulumi.Input.decodeList<FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttribute>(map['commonAttributes']!, (value) => FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttribute.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      contentEncoding: map['contentEncoding'] == null ? null : ((map['contentEncoding'] as String).input()).input(),
     );
   }
 }

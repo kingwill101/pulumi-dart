@@ -27,7 +27,7 @@ class GetTargetHttpProxyComputeBetaArgs {
 
   factory GetTargetHttpProxyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetHttpProxyComputeBetaArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       targetHttpProxy: (map['targetHttpProxy'] as String).input(),
     );
   }

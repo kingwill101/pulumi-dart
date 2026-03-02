@@ -20,7 +20,7 @@ class ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig {
 
   factory ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig.fromMap(Map<String, dynamic> map) {
     return ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig(
-      token: map['token'] == null ? null : (map['token'] as String).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
     );
   }
 }

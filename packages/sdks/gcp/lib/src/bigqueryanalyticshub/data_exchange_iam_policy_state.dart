@@ -46,11 +46,11 @@ class DataExchangeIamPolicyState {
 
   factory DataExchangeIamPolicyState.fromMap(Map<String, dynamic> map) {
     return DataExchangeIamPolicyState(
-      dataExchangeId: map['dataExchangeId'] == null ? null : (map['dataExchangeId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      dataExchangeId: map['dataExchangeId'] == null ? null : (map['dataExchangeId']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

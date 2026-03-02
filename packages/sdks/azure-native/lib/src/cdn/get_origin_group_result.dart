@@ -76,15 +76,15 @@ class GetOriginGroupResult {
   factory GetOriginGroupResult.fromMap(Map<String, dynamic> map) {
     return GetOriginGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      healthProbeSettings: map['healthProbeSettings'] == null ? null : HealthProbeParametersResponse.fromMap((map['healthProbeSettings'] as Map).cast<String, dynamic>()),
+      healthProbeSettings: map['healthProbeSettings'] == null ? null : HealthProbeParametersResponse.fromMap((map['healthProbeSettings']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
-      origins: map['origins'] == null ? null : pulumi.Input.decodeList<ResourceReferenceResponse>(map['origins'], (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      origins: map['origins'] == null ? null : pulumi.Input.decodeList<ResourceReferenceResponse>(map['origins']!, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
       resourceState: map['resourceState'] as String,
-      responseBasedOriginErrorDetectionSettings: map['responseBasedOriginErrorDetectionSettings'] == null ? null : ResponseBasedOriginErrorDetectionParametersResponse.fromMap((map['responseBasedOriginErrorDetectionSettings'] as Map).cast<String, dynamic>()),
+      responseBasedOriginErrorDetectionSettings: map['responseBasedOriginErrorDetectionSettings'] == null ? null : ResponseBasedOriginErrorDetectionParametersResponse.fromMap((map['responseBasedOriginErrorDetectionSettings']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      trafficRestorationTimeToHealedOrNewEndpointsInMinutes: map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes'] == null ? null : map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes'] as int,
+      trafficRestorationTimeToHealedOrNewEndpointsInMinutes: map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes'] == null ? null : map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes']! as int,
       type: map['type'] as String,
     );
   }

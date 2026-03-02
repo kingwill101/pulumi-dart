@@ -46,12 +46,12 @@ class CorsPolicyResponse {
 
   factory CorsPolicyResponse.fromMap(Map<String, dynamic> map) {
     return CorsPolicyResponse(
-      allowCredentials: map['allowCredentials'] == null ? null : (map['allowCredentials'] as bool).input(),
-      allowedHeaders: map['allowedHeaders'] == null ? null : ((map['allowedHeaders'] as List).cast<String>()).input(),
-      allowedMethods: map['allowedMethods'] == null ? null : ((map['allowedMethods'] as List).cast<String>()).input(),
+      allowCredentials: map['allowCredentials'] == null ? null : (map['allowCredentials']! as bool).input(),
+      allowedHeaders: map['allowedHeaders'] == null ? null : ((map['allowedHeaders']! as List).cast<String>()).input(),
+      allowedMethods: map['allowedMethods'] == null ? null : ((map['allowedMethods']! as List).cast<String>()).input(),
       allowedOrigins: ((map['allowedOrigins'] as List).cast<String>()).input(),
-      exposeHeaders: map['exposeHeaders'] == null ? null : ((map['exposeHeaders'] as List).cast<String>()).input(),
-      maxAge: map['maxAge'] == null ? null : (map['maxAge'] as int).input(),
+      exposeHeaders: map['exposeHeaders'] == null ? null : ((map['exposeHeaders']! as List).cast<String>()).input(),
+      maxAge: map['maxAge'] == null ? null : (map['maxAge']! as int).input(),
     );
   }
 }

@@ -53,12 +53,12 @@ class WorkforceArgs {
 
   factory WorkforceArgs.fromMap(Map<String, dynamic> map) {
     return WorkforceArgs(
-      cognitoConfig: map['cognitoConfig'] == null ? null : (WorkforceCognitoConfig.fromMap((map['cognitoConfig'] as Map).cast<String, dynamic>())).input(),
-      oidcConfig: map['oidcConfig'] == null ? null : (WorkforceOidcConfig.fromMap((map['oidcConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sourceIpConfig: map['sourceIpConfig'] == null ? null : (WorkforceSourceIpConfig.fromMap((map['sourceIpConfig'] as Map).cast<String, dynamic>())).input(),
+      cognitoConfig: map['cognitoConfig'] == null ? null : ((WorkforceCognitoConfig.fromMap((map['cognitoConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      oidcConfig: map['oidcConfig'] == null ? null : ((WorkforceOidcConfig.fromMap((map['oidcConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sourceIpConfig: map['sourceIpConfig'] == null ? null : ((WorkforceSourceIpConfig.fromMap((map['sourceIpConfig']! as Map).cast<String, dynamic>())).input()).input(),
       workforceName: (map['workforceName'] as String).input(),
-      workforceVpcConfig: map['workforceVpcConfig'] == null ? null : (WorkforceWorkforceVpcConfig.fromMap((map['workforceVpcConfig'] as Map).cast<String, dynamic>())).input(),
+      workforceVpcConfig: map['workforceVpcConfig'] == null ? null : ((WorkforceWorkforceVpcConfig.fromMap((map['workforceVpcConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

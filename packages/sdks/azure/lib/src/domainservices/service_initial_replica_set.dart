@@ -45,11 +45,11 @@ class ServiceInitialReplicaSet {
 
   factory ServiceInitialReplicaSet.fromMap(Map<String, dynamic> map) {
     return ServiceInitialReplicaSet(
-      domainControllerIpAddresses: map['domainControllerIpAddresses'] == null ? null : ((map['domainControllerIpAddresses'] as List).cast<String>()).input(),
-      externalAccessIpAddress: map['externalAccessIpAddress'] == null ? null : (map['externalAccessIpAddress'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      serviceStatus: map['serviceStatus'] == null ? null : (map['serviceStatus'] as String).input(),
+      domainControllerIpAddresses: map['domainControllerIpAddresses'] == null ? null : ((map['domainControllerIpAddresses']! as List).cast<String>()).input(),
+      externalAccessIpAddress: map['externalAccessIpAddress'] == null ? null : (map['externalAccessIpAddress']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      serviceStatus: map['serviceStatus'] == null ? null : (map['serviceStatus']! as String).input(),
       subnetId: (map['subnetId'] as String).input(),
     );
   }

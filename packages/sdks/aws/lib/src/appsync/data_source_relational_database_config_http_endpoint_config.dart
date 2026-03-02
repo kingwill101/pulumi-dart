@@ -41,10 +41,10 @@ class DataSourceRelationalDatabaseConfigHttpEndpointConfig {
   factory DataSourceRelationalDatabaseConfigHttpEndpointConfig.fromMap(Map<String, dynamic> map) {
     return DataSourceRelationalDatabaseConfigHttpEndpointConfig(
       awsSecretStoreArn: (map['awsSecretStoreArn'] as String).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : ((map['databaseName'] as String).input()).input(),
       dbClusterIdentifier: (map['dbClusterIdentifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      schema: map['schema'] == null ? null : ((map['schema'] as String).input()).input(),
     );
   }
 }

@@ -84,18 +84,18 @@ class OrchestratedVirtualMachineScaleSetOsProfileWindowsConfiguration {
 
   factory OrchestratedVirtualMachineScaleSetOsProfileWindowsConfiguration.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetOsProfileWindowsConfiguration(
-      additionalUnattendContents: map['additionalUnattendContents'] == null ? null : (pulumi.Input.decodeList<OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationAdditionalUnattendContent>(map['additionalUnattendContents'], (value) => OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationAdditionalUnattendContent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      additionalUnattendContents: map['additionalUnattendContents'] == null ? null : (pulumi.Input.decodeList<OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationAdditionalUnattendContent>(map['additionalUnattendContents']!, (value) => OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationAdditionalUnattendContent.fromMap((value as Map).cast<String, dynamic>()))).input(),
       adminPassword: (map['adminPassword'] as String).input(),
       adminUsername: (map['adminUsername'] as String).input(),
-      computerNamePrefix: map['computerNamePrefix'] == null ? null : (map['computerNamePrefix'] as String).input(),
-      enableAutomaticUpdates: map['enableAutomaticUpdates'] == null ? null : (map['enableAutomaticUpdates'] as bool).input(),
-      hotpatchingEnabled: map['hotpatchingEnabled'] == null ? null : (map['hotpatchingEnabled'] as bool).input(),
-      patchAssessmentMode: map['patchAssessmentMode'] == null ? null : (map['patchAssessmentMode'] as String).input(),
-      patchMode: map['patchMode'] == null ? null : (map['patchMode'] as String).input(),
-      provisionVmAgent: map['provisionVmAgent'] == null ? null : (map['provisionVmAgent'] as bool).input(),
-      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecret>(map['secrets'], (value) => OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
-      winrmListeners: map['winrmListeners'] == null ? null : (pulumi.Input.decodeList<OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationWinrmListener>(map['winrmListeners'], (value) => OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationWinrmListener.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      computerNamePrefix: map['computerNamePrefix'] == null ? null : (map['computerNamePrefix']! as String).input(),
+      enableAutomaticUpdates: map['enableAutomaticUpdates'] == null ? null : (map['enableAutomaticUpdates']! as bool).input(),
+      hotpatchingEnabled: map['hotpatchingEnabled'] == null ? null : (map['hotpatchingEnabled']! as bool).input(),
+      patchAssessmentMode: map['patchAssessmentMode'] == null ? null : (map['patchAssessmentMode']! as String).input(),
+      patchMode: map['patchMode'] == null ? null : (map['patchMode']! as String).input(),
+      provisionVmAgent: map['provisionVmAgent'] == null ? null : (map['provisionVmAgent']! as bool).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecret>(map['secrets']!, (value) => OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timezone: map['timezone'] == null ? null : (map['timezone']! as String).input(),
+      winrmListeners: map['winrmListeners'] == null ? null : (pulumi.Input.decodeList<OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationWinrmListener>(map['winrmListeners']!, (value) => OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationWinrmListener.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

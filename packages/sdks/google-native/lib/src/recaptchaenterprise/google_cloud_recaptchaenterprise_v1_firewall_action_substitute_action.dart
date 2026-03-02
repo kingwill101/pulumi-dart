@@ -21,7 +21,7 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction {
 
   factory GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

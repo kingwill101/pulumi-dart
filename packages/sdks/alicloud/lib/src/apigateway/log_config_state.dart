@@ -31,9 +31,9 @@ class LogConfigState {
 
   factory LogConfigState.fromMap(Map<String, dynamic> map) {
     return LogConfigState(
-      logType: map['logType'] == null ? null : (map['logType'] as String).input(),
-      slsLogStore: map['slsLogStore'] == null ? null : (map['slsLogStore'] as String).input(),
-      slsProject: map['slsProject'] == null ? null : (map['slsProject'] as String).input(),
+      logType: map['logType'] == null ? null : (map['logType']! as String).input(),
+      slsLogStore: map['slsLogStore'] == null ? null : (map['slsLogStore']! as String).input(),
+      slsProject: map['slsProject'] == null ? null : (map['slsProject']! as String).input(),
     );
   }
 }

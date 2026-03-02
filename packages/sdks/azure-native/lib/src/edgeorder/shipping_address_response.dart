@@ -66,16 +66,16 @@ class ShippingAddressResponse {
 
   factory ShippingAddressResponse.fromMap(Map<String, dynamic> map) {
     return ShippingAddressResponse(
-      addressType: map['addressType'] == null ? null : (map['addressType'] as String).input(),
-      city: map['city'] == null ? null : (map['city'] as String).input(),
-      companyName: map['companyName'] == null ? null : (map['companyName'] as String).input(),
+      addressType: map['addressType'] == null ? null : (map['addressType']! as String).input(),
+      city: map['city'] == null ? null : (map['city']! as String).input(),
+      companyName: map['companyName'] == null ? null : (map['companyName']! as String).input(),
       country: (map['country'] as String).input(),
-      postalCode: map['postalCode'] == null ? null : (map['postalCode'] as String).input(),
-      stateOrProvince: map['stateOrProvince'] == null ? null : (map['stateOrProvince'] as String).input(),
-      streetAddress1: map['streetAddress1'] == null ? null : (map['streetAddress1'] as String).input(),
-      streetAddress2: map['streetAddress2'] == null ? null : (map['streetAddress2'] as String).input(),
-      streetAddress3: map['streetAddress3'] == null ? null : (map['streetAddress3'] as String).input(),
-      zipExtendedCode: map['zipExtendedCode'] == null ? null : (map['zipExtendedCode'] as String).input(),
+      postalCode: map['postalCode'] == null ? null : (map['postalCode']! as String).input(),
+      stateOrProvince: map['stateOrProvince'] == null ? null : (map['stateOrProvince']! as String).input(),
+      streetAddress1: map['streetAddress1'] == null ? null : (map['streetAddress1']! as String).input(),
+      streetAddress2: map['streetAddress2'] == null ? null : (map['streetAddress2']! as String).input(),
+      streetAddress3: map['streetAddress3'] == null ? null : (map['streetAddress3']! as String).input(),
+      zipExtendedCode: map['zipExtendedCode'] == null ? null : (map['zipExtendedCode']! as String).input(),
     );
   }
 }

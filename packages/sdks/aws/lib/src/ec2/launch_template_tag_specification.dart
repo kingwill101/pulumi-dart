@@ -25,8 +25,8 @@ class LaunchTemplateTagSpecification {
 
   factory LaunchTemplateTagSpecification.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateTagSpecification(
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      resourceType: map['resourceType'] == null ? null : ((map['resourceType'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

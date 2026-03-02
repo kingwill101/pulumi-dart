@@ -33,9 +33,9 @@ class EventResponse {
 
   factory EventResponse.fromMap(Map<String, dynamic> map) {
     return EventResponse(
-      eventRequestMessage: map['eventRequestMessage'] == null ? null : (EventRequestMessageResponse.fromMap((map['eventRequestMessage'] as Map).cast<String, dynamic>())).input(),
-      eventResponseMessage: map['eventResponseMessage'] == null ? null : (EventResponseMessageResponse.fromMap((map['eventResponseMessage'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      eventRequestMessage: map['eventRequestMessage'] == null ? null : (EventRequestMessageResponse.fromMap((map['eventRequestMessage']! as Map).cast<String, dynamic>())).input(),
+      eventResponseMessage: map['eventResponseMessage'] == null ? null : (EventResponseMessageResponse.fromMap((map['eventResponseMessage']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

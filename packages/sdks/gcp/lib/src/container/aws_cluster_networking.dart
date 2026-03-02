@@ -37,7 +37,7 @@ class AwsClusterNetworking {
 
   factory AwsClusterNetworking.fromMap(Map<String, dynamic> map) {
     return AwsClusterNetworking(
-      perNodePoolSgRulesDisabled: map['perNodePoolSgRulesDisabled'] == null ? null : (map['perNodePoolSgRulesDisabled'] as bool).input(),
+      perNodePoolSgRulesDisabled: map['perNodePoolSgRulesDisabled'] == null ? null : (map['perNodePoolSgRulesDisabled']! as bool).input(),
       podAddressCidrBlocks: ((map['podAddressCidrBlocks'] as List).cast<String>()).input(),
       serviceAddressCidrBlocks: ((map['serviceAddressCidrBlocks'] as List).cast<String>()).input(),
       vpcId: (map['vpcId'] as String).input(),

@@ -55,7 +55,7 @@ class CustomScenePolicyArgs {
       customScenePolicyName: (map['customScenePolicyName'] as String).input(),
       endTime: (map['endTime'] as String).input(),
       siteIds: (map['siteIds'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       template: (map['template'] as String).input(),
     );
   }

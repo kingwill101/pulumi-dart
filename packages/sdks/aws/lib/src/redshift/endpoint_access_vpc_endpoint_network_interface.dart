@@ -35,10 +35,10 @@ class EndpointAccessVpcEndpointNetworkInterface {
 
   factory EndpointAccessVpcEndpointNetworkInterface.fromMap(Map<String, dynamic> map) {
     return EndpointAccessVpcEndpointNetworkInterface(
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : ((map['networkInterfaceId'] as String).input()).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : ((map['privateIpAddress'] as String).input()).input(),
+      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
     );
   }
 }

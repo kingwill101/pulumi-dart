@@ -46,10 +46,10 @@ class GetBackupShortTermRetentionPolicyResult {
   factory GetBackupShortTermRetentionPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetBackupShortTermRetentionPolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      diffBackupIntervalInHours: map['diffBackupIntervalInHours'] == null ? null : map['diffBackupIntervalInHours'] as int,
+      diffBackupIntervalInHours: map['diffBackupIntervalInHours'] == null ? null : map['diffBackupIntervalInHours']! as int,
       id: map['id'] as String,
       name: map['name'] as String,
-      retentionDays: map['retentionDays'] == null ? null : map['retentionDays'] as int,
+      retentionDays: map['retentionDays'] == null ? null : map['retentionDays']! as int,
       type: map['type'] as String,
     );
   }

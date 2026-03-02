@@ -42,7 +42,7 @@ class ApplicationScaleArgs {
       appId: (map['appId'] as String).input(),
       deployGroup: (map['deployGroup'] as String).input(),
       ecuInfos: ((map['ecuInfos'] as List).cast<String>()).input(),
-      forceStatus: map['forceStatus'] == null ? null : (map['forceStatus'] as bool).input(),
+      forceStatus: map['forceStatus'] == null ? null : (map['forceStatus']! as bool).input(),
     );
   }
 }

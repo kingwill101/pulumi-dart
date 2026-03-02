@@ -38,8 +38,8 @@ class FunctionResponse {
   factory FunctionResponse.fromMap(Map<String, dynamic> map) {
     return FunctionResponse(
       id: (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (AggregateFunctionPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      properties: map['properties'] == null ? null : (AggregateFunctionPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

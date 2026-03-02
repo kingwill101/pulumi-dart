@@ -5,7 +5,7 @@ class MyStack extends Stack {
   MyStack() {
     final customA = pkg.index.Echo(
       'a',
-      args: pkg.index.EchoArgs(echo: 42.input()),
+      args: pkg.index.EchoArgs(echo: 42),
     );
     final deployment = DeploymentImpl.instance as DeploymentImpl;
 
@@ -19,7 +19,7 @@ class MyStack extends Stack {
     });
 
     final echoInvoke = customA.urn.apply((_) async {
-      final result = await pkg.index.doEcho(pkg.index.DoEchoArgs(echo: 'hello'.input()));
+      final result = await pkg.index.doEcho(pkg.index.DoEchoArgs(echo: 'hello'));
       return result.echo;
     });
 

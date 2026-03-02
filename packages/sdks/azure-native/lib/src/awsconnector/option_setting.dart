@@ -36,10 +36,10 @@ class OptionSetting {
 
   factory OptionSetting.fromMap(Map<String, dynamic> map) {
     return OptionSetting(
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      optionName: map['optionName'] == null ? null : (map['optionName'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      optionName: map['optionName'] == null ? null : (map['optionName']! as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

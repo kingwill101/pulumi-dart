@@ -26,8 +26,8 @@ class NamespacedName {
 
   factory NamespacedName.fromMap(Map<String, dynamic> map) {
     return NamespacedName(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
     );
   }
 }

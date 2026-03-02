@@ -26,8 +26,8 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect {
 
   factory GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect(
-      confidence: map['confidence'] == null ? null : (map['confidence'] as double).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      confidence: map['confidence'] == null ? null : (map['confidence']! as double).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

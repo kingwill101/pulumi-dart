@@ -69,13 +69,13 @@ class GetEmailTemplateResult {
     return GetEmailTemplateResult(
       azureApiVersion: map['azureApiVersion'] as String,
       body: map['body'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       isDefault: map['isDefault'] as bool,
       name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<EmailTemplateParametersContractPropertiesResponse>(map['parameters'], (value) => EmailTemplateParametersContractPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<EmailTemplateParametersContractPropertiesResponse>(map['parameters']!, (value) => EmailTemplateParametersContractPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
       subject: map['subject'] as String,
-      title: map['title'] == null ? null : map['title'] as String,
+      title: map['title'] == null ? null : map['title']! as String,
       type: map['type'] as String,
     );
   }

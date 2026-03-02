@@ -48,7 +48,7 @@ class GetLocalGatewayResult {
 
   factory GetLocalGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetLocalGatewayResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetLocalGatewayFilter>(map['filters'], (value) => GetLocalGatewayFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetLocalGatewayFilter>(map['filters']!, (value) => GetLocalGatewayFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       outpostArn: map['outpostArn'] as String,
       ownerId: map['ownerId'] as String,

@@ -88,19 +88,19 @@ class WebAppHostNameBindingSlotArgs {
 
   factory WebAppHostNameBindingSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppHostNameBindingSlotArgs(
-      azureResourceName: map['azureResourceName'] == null ? null : (map['azureResourceName'] as String).input(),
-      azureResourceType: map['azureResourceType'] == null ? null : (AzureResourceType.fromValue(map['azureResourceType'] as String)).input(),
-      customHostNameDnsRecordType: map['customHostNameDnsRecordType'] == null ? null : (CustomHostNameDnsRecordType.fromValue(map['customHostNameDnsRecordType'] as String)).input(),
-      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      hostNameType: map['hostNameType'] == null ? null : (HostNameType.fromValue(map['hostNameType'] as String)).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      azureResourceName: map['azureResourceName'] == null ? null : (map['azureResourceName']! as String).input(),
+      azureResourceType: map['azureResourceType'] == null ? null : (AzureResourceType.fromValue(map['azureResourceType']! as String)).input(),
+      customHostNameDnsRecordType: map['customHostNameDnsRecordType'] == null ? null : (CustomHostNameDnsRecordType.fromValue(map['customHostNameDnsRecordType']! as String)).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId']! as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      hostNameType: map['hostNameType'] == null ? null : (HostNameType.fromValue(map['hostNameType']! as String)).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      siteName: map['siteName'] == null ? null : (map['siteName'] as String).input(),
+      siteName: map['siteName'] == null ? null : (map['siteName']! as String).input(),
       slot: (map['slot'] as String).input(),
-      sslState: map['sslState'] == null ? null : (SslState.fromValue(map['sslState'] as String)).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      sslState: map['sslState'] == null ? null : (SslState.fromValue(map['sslState']! as String)).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

@@ -37,9 +37,9 @@ class ApiOperationResponse {
 
   factory ApiOperationResponse.fromMap(Map<String, dynamic> map) {
     return ApiOperationResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<ApiOperationResponseHeader>(map['headers'], (value) => ApiOperationResponseHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      representations: map['representations'] == null ? null : (pulumi.Input.decodeList<ApiOperationResponseRepresentation>(map['representations'], (value) => ApiOperationResponseRepresentation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<ApiOperationResponseHeader>(map['headers']!, (value) => ApiOperationResponseHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      representations: map['representations'] == null ? null : (pulumi.Input.decodeList<ApiOperationResponseRepresentation>(map['representations']!, (value) => ApiOperationResponseRepresentation.fromMap((value as Map).cast<String, dynamic>()))).input(),
       statusCode: (map['statusCode'] as int).input(),
     );
   }

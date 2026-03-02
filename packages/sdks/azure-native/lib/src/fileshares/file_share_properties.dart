@@ -68,16 +68,16 @@ class FileShareProperties {
 
   factory FileShareProperties.fromMap(Map<String, dynamic> map) {
     return FileShareProperties(
-      mediaTier: map['mediaTier'] == null ? null : (map['mediaTier'] as String).input(),
-      mountName: map['mountName'] == null ? null : (map['mountName'] as String).input(),
-      nfsProtocolProperties: map['nfsProtocolProperties'] == null ? null : (NfsProtocolProperties.fromMap((map['nfsProtocolProperties'] as Map).cast<String, dynamic>())).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      provisionedIOPerSec: map['provisionedIOPerSec'] == null ? null : (map['provisionedIOPerSec'] as int).input(),
-      provisionedStorageGiB: map['provisionedStorageGiB'] == null ? null : (map['provisionedStorageGiB'] as int).input(),
-      provisionedThroughputMiBPerSec: map['provisionedThroughputMiBPerSec'] == null ? null : (map['provisionedThroughputMiBPerSec'] as int).input(),
-      publicAccessProperties: map['publicAccessProperties'] == null ? null : (PublicAccessProperties.fromMap((map['publicAccessProperties'] as Map).cast<String, dynamic>())).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
-      redundancy: map['redundancy'] == null ? null : (map['redundancy'] as String).input(),
+      mediaTier: map['mediaTier'] == null ? null : (map['mediaTier']! as String).input(),
+      mountName: map['mountName'] == null ? null : (map['mountName']! as String).input(),
+      nfsProtocolProperties: map['nfsProtocolProperties'] == null ? null : (NfsProtocolProperties.fromMap((map['nfsProtocolProperties']! as Map).cast<String, dynamic>())).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      provisionedIOPerSec: map['provisionedIOPerSec'] == null ? null : (map['provisionedIOPerSec']! as int).input(),
+      provisionedStorageGiB: map['provisionedStorageGiB'] == null ? null : (map['provisionedStorageGiB']! as int).input(),
+      provisionedThroughputMiBPerSec: map['provisionedThroughputMiBPerSec'] == null ? null : (map['provisionedThroughputMiBPerSec']! as int).input(),
+      publicAccessProperties: map['publicAccessProperties'] == null ? null : (PublicAccessProperties.fromMap((map['publicAccessProperties']! as Map).cast<String, dynamic>())).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
+      redundancy: map['redundancy'] == null ? null : (map['redundancy']! as String).input(),
     );
   }
 }

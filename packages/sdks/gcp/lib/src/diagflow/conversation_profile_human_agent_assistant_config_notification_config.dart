@@ -26,8 +26,8 @@ class ConversationProfileHumanAgentAssistantConfigNotificationConfig {
 
   factory ConversationProfileHumanAgentAssistantConfigNotificationConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileHumanAgentAssistantConfigNotificationConfig(
-      messageFormat: map['messageFormat'] == null ? null : (map['messageFormat'] as String).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      messageFormat: map['messageFormat'] == null ? null : (map['messageFormat']! as String).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

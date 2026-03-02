@@ -21,7 +21,7 @@ class FileSystemTypeEnumValueResponse {
 
   factory FileSystemTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return FileSystemTypeEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -83,18 +83,18 @@ class PrincipalAccessBoundaryPolicyState {
 
   factory PrincipalAccessBoundaryPolicyState.fromMap(Map<String, dynamic> map) {
     return PrincipalAccessBoundaryPolicyState(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      details: map['details'] == null ? null : (PrincipalAccessBoundaryPolicyDetails.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : ((map['effectiveAnnotations'] as Map).cast<String, String>()).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
-      principalAccessBoundaryPolicyId: map['principalAccessBoundaryPolicyId'] == null ? null : (map['principalAccessBoundaryPolicyId'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      details: map['details'] == null ? null : (PrincipalAccessBoundaryPolicyDetails.fromMap((map['details']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : ((map['effectiveAnnotations']! as Map).cast<String, String>()).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      organization: map['organization'] == null ? null : (map['organization']! as String).input(),
+      principalAccessBoundaryPolicyId: map['principalAccessBoundaryPolicyId'] == null ? null : (map['principalAccessBoundaryPolicyId']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

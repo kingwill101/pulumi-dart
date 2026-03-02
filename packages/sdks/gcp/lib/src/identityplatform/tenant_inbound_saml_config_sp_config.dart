@@ -37,7 +37,7 @@ class TenantInboundSamlConfigSpConfig {
   factory TenantInboundSamlConfigSpConfig.fromMap(Map<String, dynamic> map) {
     return TenantInboundSamlConfigSpConfig(
       callbackUri: (map['callbackUri'] as String).input(),
-      spCertificates: map['spCertificates'] == null ? null : (pulumi.Input.decodeList<TenantInboundSamlConfigSpConfigSpCertificate>(map['spCertificates'], (value) => TenantInboundSamlConfigSpConfigSpCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      spCertificates: map['spCertificates'] == null ? null : (pulumi.Input.decodeList<TenantInboundSamlConfigSpConfigSpCertificate>(map['spCertificates']!, (value) => TenantInboundSamlConfigSpConfigSpCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
       spEntityId: (map['spEntityId'] as String).input(),
     );
   }

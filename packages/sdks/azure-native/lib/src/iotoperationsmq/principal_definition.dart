@@ -31,9 +31,9 @@ class PrincipalDefinition {
 
   factory PrincipalDefinition.fromMap(Map<String, dynamic> map) {
     return PrincipalDefinition(
-      attributes: map['attributes'] == null ? null : ((map['attributes'] as List).cast<Map<String, String>>()).input(),
-      clientids: map['clientids'] == null ? null : ((map['clientids'] as List).cast<String>()).input(),
-      usernames: map['usernames'] == null ? null : ((map['usernames'] as List).cast<String>()).input(),
+      attributes: map['attributes'] == null ? null : ((map['attributes']! as List).cast<Map<String, String>>()).input(),
+      clientids: map['clientids'] == null ? null : ((map['clientids']! as List).cast<String>()).input(),
+      usernames: map['usernames'] == null ? null : ((map['usernames']! as List).cast<String>()).input(),
     );
   }
 }

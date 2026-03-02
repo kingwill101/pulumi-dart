@@ -28,7 +28,7 @@ class PatchSettingsResponseStatus {
   factory PatchSettingsResponseStatus.fromMap(Map<String, dynamic> map) {
     return PatchSettingsResponseStatus(
       error: (ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
-      hotpatchEnablementStatus: map['hotpatchEnablementStatus'] == null ? null : (map['hotpatchEnablementStatus'] as String).input(),
+      hotpatchEnablementStatus: map['hotpatchEnablementStatus'] == null ? null : (map['hotpatchEnablementStatus']! as String).input(),
     );
   }
 }

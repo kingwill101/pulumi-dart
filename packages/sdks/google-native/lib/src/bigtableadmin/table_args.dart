@@ -65,14 +65,14 @@ class TableArgs {
 
   factory TableArgs.fromMap(Map<String, dynamic> map) {
     return TableArgs(
-      changeStreamConfig: map['changeStreamConfig'] == null ? null : (ChangeStreamConfig.fromMap((map['changeStreamConfig'] as Map).cast<String, dynamic>())).input(),
-      columnFamilies: map['columnFamilies'] == null ? null : ((map['columnFamilies'] as Map).cast<String, String>()).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      granularity: map['granularity'] == null ? null : (TableGranularity.fromValue(map['granularity'] as String)).input(),
-      initialSplits: map['initialSplits'] == null ? null : (pulumi.Input.decodeList<Split>(map['initialSplits'], (value) => Split.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      changeStreamConfig: map['changeStreamConfig'] == null ? null : (ChangeStreamConfig.fromMap((map['changeStreamConfig']! as Map).cast<String, dynamic>())).input(),
+      columnFamilies: map['columnFamilies'] == null ? null : ((map['columnFamilies']! as Map).cast<String, String>()).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
+      granularity: map['granularity'] == null ? null : (TableGranularity.fromValue(map['granularity']! as String)).input(),
+      initialSplits: map['initialSplits'] == null ? null : (pulumi.Input.decodeList<Split>(map['initialSplits']!, (value) => Split.fromMap((value as Map).cast<String, dynamic>()))).input(),
       instanceId: (map['instanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       tableId: (map['tableId'] as String).input(),
     );
   }

@@ -22,7 +22,7 @@ class VirtualMachinePropertiesSsh {
 
   factory VirtualMachinePropertiesSsh.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePropertiesSsh(
-      publicKeys: map['publicKeys'] == null ? null : (pulumi.Input.decodeList<VirtualMachinePropertiesPublicKeys>(map['publicKeys'], (value) => VirtualMachinePropertiesPublicKeys.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicKeys: map['publicKeys'] == null ? null : (pulumi.Input.decodeList<VirtualMachinePropertiesPublicKeys>(map['publicKeys']!, (value) => VirtualMachinePropertiesPublicKeys.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

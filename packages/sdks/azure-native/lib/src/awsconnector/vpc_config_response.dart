@@ -61,15 +61,15 @@ class VpcConfigResponse {
 
   factory VpcConfigResponse.fromMap(Map<String, dynamic> map) {
     return VpcConfigResponse(
-      clusterSecurityGroupId: map['clusterSecurityGroupId'] == null ? null : (map['clusterSecurityGroupId'] as String).input(),
-      endpointPrivateAccess: map['endpointPrivateAccess'] == null ? null : (map['endpointPrivateAccess'] as bool).input(),
-      endpointPublicAccess: map['endpointPublicAccess'] == null ? null : (map['endpointPublicAccess'] as bool).input(),
-      ipv6AllowedForDualStack: map['ipv6AllowedForDualStack'] == null ? null : (map['ipv6AllowedForDualStack'] as bool).input(),
-      publicAccessCidrs: map['publicAccessCidrs'] == null ? null : ((map['publicAccessCidrs'] as List).cast<String>()).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
-      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
-      subnets: map['subnets'] == null ? null : ((map['subnets'] as List).cast<String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      clusterSecurityGroupId: map['clusterSecurityGroupId'] == null ? null : (map['clusterSecurityGroupId']! as String).input(),
+      endpointPrivateAccess: map['endpointPrivateAccess'] == null ? null : (map['endpointPrivateAccess']! as bool).input(),
+      endpointPublicAccess: map['endpointPublicAccess'] == null ? null : (map['endpointPublicAccess']! as bool).input(),
+      ipv6AllowedForDualStack: map['ipv6AllowedForDualStack'] == null ? null : (map['ipv6AllowedForDualStack']! as bool).input(),
+      publicAccessCidrs: map['publicAccessCidrs'] == null ? null : ((map['publicAccessCidrs']! as List).cast<String>()).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds']! as List).cast<String>()).input(),
+      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds']! as List).cast<String>()).input(),
+      subnets: map['subnets'] == null ? null : ((map['subnets']! as List).cast<String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

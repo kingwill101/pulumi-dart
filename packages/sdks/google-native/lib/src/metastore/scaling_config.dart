@@ -27,8 +27,8 @@ class ScalingConfig {
 
   factory ScalingConfig.fromMap(Map<String, dynamic> map) {
     return ScalingConfig(
-      instanceSize: map['instanceSize'] == null ? null : (ScalingConfigInstanceSize.fromValue(map['instanceSize'] as String)).input(),
-      scalingFactor: map['scalingFactor'] == null ? null : (map['scalingFactor'] as double).input(),
+      instanceSize: map['instanceSize'] == null ? null : (ScalingConfigInstanceSize.fromValue(map['instanceSize']! as String)).input(),
+      scalingFactor: map['scalingFactor'] == null ? null : (map['scalingFactor']! as double).input(),
     );
   }
 }

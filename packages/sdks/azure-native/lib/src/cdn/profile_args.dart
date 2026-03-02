@@ -62,14 +62,14 @@ class ProfileArgs {
 
   factory ProfileArgs.fromMap(Map<String, dynamic> map) {
     return ProfileArgs(
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      logScrubbing: map['logScrubbing'] == null ? null : (ProfileLogScrubbing.fromMap((map['logScrubbing'] as Map).cast<String, dynamic>())).input(),
-      originResponseTimeoutSeconds: map['originResponseTimeoutSeconds'] == null ? null : (map['originResponseTimeoutSeconds'] as int).input(),
-      profileName: map['profileName'] == null ? null : (map['profileName'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      logScrubbing: map['logScrubbing'] == null ? null : (ProfileLogScrubbing.fromMap((map['logScrubbing']! as Map).cast<String, dynamic>())).input(),
+      originResponseTimeoutSeconds: map['originResponseTimeoutSeconds'] == null ? null : (map['originResponseTimeoutSeconds']! as int).input(),
+      profileName: map['profileName'] == null ? null : (map['profileName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

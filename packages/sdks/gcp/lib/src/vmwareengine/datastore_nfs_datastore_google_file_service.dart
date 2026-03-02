@@ -27,8 +27,8 @@ class DatastoreNfsDatastoreGoogleFileService {
 
   factory DatastoreNfsDatastoreGoogleFileService.fromMap(Map<String, dynamic> map) {
     return DatastoreNfsDatastoreGoogleFileService(
-      filestoreInstance: map['filestoreInstance'] == null ? null : (map['filestoreInstance'] as String).input(),
-      netappVolume: map['netappVolume'] == null ? null : (map['netappVolume'] as String).input(),
+      filestoreInstance: map['filestoreInstance'] == null ? null : (map['filestoreInstance']! as String).input(),
+      netappVolume: map['netappVolume'] == null ? null : (map['netappVolume']! as String).input(),
     );
   }
 }

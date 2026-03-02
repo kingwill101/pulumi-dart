@@ -29,8 +29,8 @@ class ListAzureDataTransferApprovedSchemasArgs {
 
   factory ListAzureDataTransferApprovedSchemasArgs.fromMap(Map<String, dynamic> map) {
     return ListAzureDataTransferApprovedSchemasArgs(
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
-      pipeline: map['pipeline'] == null ? null : (map['pipeline'] as String).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
+      pipeline: map['pipeline'] == null ? null : (map['pipeline']! as String).input(),
     );
   }
 }

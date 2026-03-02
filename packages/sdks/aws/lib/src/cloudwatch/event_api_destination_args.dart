@@ -55,12 +55,12 @@ class EventApiDestinationArgs {
   factory EventApiDestinationArgs.fromMap(Map<String, dynamic> map) {
     return EventApiDestinationArgs(
       connectionArn: (map['connectionArn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       httpMethod: (map['httpMethod'] as String).input(),
       invocationEndpoint: (map['invocationEndpoint'] as String).input(),
-      invocationRateLimitPerSecond: map['invocationRateLimitPerSecond'] == null ? null : (map['invocationRateLimitPerSecond'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      invocationRateLimitPerSecond: map['invocationRateLimitPerSecond'] == null ? null : ((map['invocationRateLimitPerSecond'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -52,13 +52,13 @@ class CompilationResultArgs {
 
   factory CompilationResultArgs.fromMap(Map<String, dynamic> map) {
     return CompilationResultArgs(
-      codeCompilationConfig: map['codeCompilationConfig'] == null ? null : (CodeCompilationConfig.fromMap((map['codeCompilationConfig'] as Map).cast<String, dynamic>())).input(),
-      gitCommitish: map['gitCommitish'] == null ? null : (map['gitCommitish'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      releaseConfig: map['releaseConfig'] == null ? null : (map['releaseConfig'] as String).input(),
+      codeCompilationConfig: map['codeCompilationConfig'] == null ? null : (CodeCompilationConfig.fromMap((map['codeCompilationConfig']! as Map).cast<String, dynamic>())).input(),
+      gitCommitish: map['gitCommitish'] == null ? null : (map['gitCommitish']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      releaseConfig: map['releaseConfig'] == null ? null : (map['releaseConfig']! as String).input(),
       repositoryId: (map['repositoryId'] as String).input(),
-      workspace: map['workspace'] == null ? null : (map['workspace'] as String).input(),
+      workspace: map['workspace'] == null ? null : (map['workspace']! as String).input(),
     );
   }
 }

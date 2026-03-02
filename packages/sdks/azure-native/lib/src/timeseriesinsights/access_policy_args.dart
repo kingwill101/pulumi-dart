@@ -49,12 +49,12 @@ class AccessPolicyArgs {
 
   factory AccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AccessPolicyArgs(
-      accessPolicyName: map['accessPolicyName'] == null ? null : (map['accessPolicyName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      accessPolicyName: map['accessPolicyName'] == null ? null : (map['accessPolicyName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       environmentName: (map['environmentName'] as String).input(),
-      principalObjectId: map['principalObjectId'] == null ? null : (map['principalObjectId'] as String).input(),
+      principalObjectId: map['principalObjectId'] == null ? null : (map['principalObjectId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      roles: map['roles'] == null ? null : ((map['roles'] as List).cast<String>()).input(),
+      roles: map['roles'] == null ? null : ((map['roles']! as List).cast<String>()).input(),
     );
   }
 }

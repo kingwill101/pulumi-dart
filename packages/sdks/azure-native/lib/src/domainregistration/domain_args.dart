@@ -101,22 +101,22 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      authCode: map['authCode'] == null ? null : (map['authCode'] as String).input(),
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
+      authCode: map['authCode'] == null ? null : (map['authCode']! as String).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
       consent: (DomainPurchaseConsent.fromMap((map['consent'] as Map).cast<String, dynamic>())).input(),
       contactAdmin: (Contact.fromMap((map['contactAdmin'] as Map).cast<String, dynamic>())).input(),
       contactBilling: (Contact.fromMap((map['contactBilling'] as Map).cast<String, dynamic>())).input(),
       contactRegistrant: (Contact.fromMap((map['contactRegistrant'] as Map).cast<String, dynamic>())).input(),
       contactTech: (Contact.fromMap((map['contactTech'] as Map).cast<String, dynamic>())).input(),
-      dnsType: map['dnsType'] == null ? null : (DnsType.fromValue(map['dnsType'] as String)).input(),
-      dnsZoneId: map['dnsZoneId'] == null ? null : (map['dnsZoneId'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      privacy: map['privacy'] == null ? null : (map['privacy'] as bool).input(),
+      dnsType: map['dnsType'] == null ? null : (DnsType.fromValue(map['dnsType']! as String)).input(),
+      dnsZoneId: map['dnsZoneId'] == null ? null : (map['dnsZoneId']! as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      privacy: map['privacy'] == null ? null : (map['privacy']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetDnsType: map['targetDnsType'] == null ? null : (DnsType.fromValue(map['targetDnsType'] as String)).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetDnsType: map['targetDnsType'] == null ? null : (DnsType.fromValue(map['targetDnsType']! as String)).input(),
     );
   }
 }

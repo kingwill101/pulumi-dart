@@ -19,7 +19,7 @@ class WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria {
 
   factory WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria(
-      matchType: map['matchType'] == null ? null : (map['matchType'] as String).input(),
+      matchType: map['matchType'] == null ? null : (map['matchType']! as String).input(),
     );
   }
 }

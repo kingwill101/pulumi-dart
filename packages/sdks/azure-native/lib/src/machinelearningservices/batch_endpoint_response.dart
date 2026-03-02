@@ -53,9 +53,9 @@ class BatchEndpointResponse {
   factory BatchEndpointResponse.fromMap(Map<String, dynamic> map) {
     return BatchEndpointResponse(
       authMode: (map['authMode'] as String).input(),
-      defaults: map['defaults'] == null ? null : (BatchEndpointDefaultsResponse.fromMap((map['defaults'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      defaults: map['defaults'] == null ? null : (BatchEndpointDefaultsResponse.fromMap((map['defaults']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       scoringUri: (map['scoringUri'] as String).input(),
       swaggerUri: (map['swaggerUri'] as String).input(),

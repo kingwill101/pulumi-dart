@@ -39,7 +39,7 @@ class GetUsersResult {
       id: map['id'] as String,
       identityStoreId: map['identityStoreId'] as String,
       region: map['region'] as String,
-      users: pulumi.Input.decodeList<GetUsersUser>(map['users'], (value) => GetUsersUser.fromMap((value as Map).cast<String, dynamic>())),
+      users: pulumi.Input.decodeList<GetUsersUser>(map['users']!, (value) => GetUsersUser.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

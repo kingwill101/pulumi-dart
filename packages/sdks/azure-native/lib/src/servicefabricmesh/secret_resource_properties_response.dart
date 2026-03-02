@@ -47,8 +47,8 @@ class SecretResourcePropertiesResponse {
 
   factory SecretResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SecretResourcePropertiesResponse(
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       kind: (map['kind'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       status: (map['status'] as String).input(),

@@ -27,8 +27,8 @@ class ResourceSelector {
 
   factory ResourceSelector.fromMap(Map<String, dynamic> map) {
     return ResourceSelector(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<Selector>(map['selectors'], (value) => Selector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<Selector>(map['selectors']!, (value) => Selector.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class VolumeAttachVendorOptions {
 
   factory VolumeAttachVendorOptions.fromMap(Map<String, dynamic> map) {
     return VolumeAttachVendorOptions(
-      ignoreVolumeConfirmation: map['ignoreVolumeConfirmation'] == null ? null : (map['ignoreVolumeConfirmation'] as bool).input(),
+      ignoreVolumeConfirmation: map['ignoreVolumeConfirmation'] == null ? null : (map['ignoreVolumeConfirmation']! as bool).input(),
     );
   }
 }

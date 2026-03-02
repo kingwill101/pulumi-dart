@@ -69,16 +69,16 @@ class BillingAccountBucketArgs {
 
   factory BillingAccountBucketArgs.fromMap(Map<String, dynamic> map) {
     return BillingAccountBucketArgs(
-      analyticsEnabled: map['analyticsEnabled'] == null ? null : (map['analyticsEnabled'] as bool).input(),
+      analyticsEnabled: map['analyticsEnabled'] == null ? null : (map['analyticsEnabled']! as bool).input(),
       billingAccountId: (map['billingAccountId'] as String).input(),
       bucketId: (map['bucketId'] as String).input(),
-      cmekSettings: map['cmekSettings'] == null ? null : (CmekSettings.fromMap((map['cmekSettings'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      indexConfigs: map['indexConfigs'] == null ? null : (pulumi.Input.decodeList<IndexConfig>(map['indexConfigs'], (value) => IndexConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      locked: map['locked'] == null ? null : (map['locked'] as bool).input(),
-      restrictedFields: map['restrictedFields'] == null ? null : ((map['restrictedFields'] as List).cast<String>()).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      cmekSettings: map['cmekSettings'] == null ? null : (CmekSettings.fromMap((map['cmekSettings']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      indexConfigs: map['indexConfigs'] == null ? null : (pulumi.Input.decodeList<IndexConfig>(map['indexConfigs']!, (value) => IndexConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      locked: map['locked'] == null ? null : (map['locked']! as bool).input(),
+      restrictedFields: map['restrictedFields'] == null ? null : ((map['restrictedFields']! as List).cast<String>()).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
     );
   }
 }

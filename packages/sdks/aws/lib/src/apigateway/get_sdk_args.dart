@@ -44,8 +44,8 @@ class GetSdkArgs {
 
   factory GetSdkArgs.fromMap(Map<String, dynamic> map) {
     return GetSdkArgs(
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      parameters: map['parameters'] == null ? null : (((map['parameters'] as Map).cast<String, String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       restApiId: (map['restApiId'] as String).input(),
       sdkType: (map['sdkType'] as String).input(),
       stageName: (map['stageName'] as String).input(),

@@ -28,7 +28,7 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase {
   factory StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase(
       database: (map['database'] as String).input(),
-      mysqlTables: map['mysqlTables'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable>(map['mysqlTables'], (value) => StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mysqlTables: map['mysqlTables'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable>(map['mysqlTables']!, (value) => StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

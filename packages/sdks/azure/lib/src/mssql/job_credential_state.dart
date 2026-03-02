@@ -41,11 +41,11 @@ class JobCredentialState {
 
   factory JobCredentialState.fromMap(Map<String, dynamic> map) {
     return JobCredentialState(
-      jobAgentId: map['jobAgentId'] == null ? null : (map['jobAgentId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      passwordWoVersion: map['passwordWoVersion'] == null ? null : (map['passwordWoVersion'] as int).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      jobAgentId: map['jobAgentId'] == null ? null : (map['jobAgentId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      passwordWoVersion: map['passwordWoVersion'] == null ? null : (map['passwordWoVersion']! as int).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

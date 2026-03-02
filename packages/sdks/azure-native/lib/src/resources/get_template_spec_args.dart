@@ -34,7 +34,7 @@ class GetTemplateSpecArgs {
 
   factory GetTemplateSpecArgs.fromMap(Map<String, dynamic> map) {
     return GetTemplateSpecArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       templateSpecName: (map['templateSpecName'] as String).input(),
     );

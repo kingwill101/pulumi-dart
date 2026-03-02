@@ -43,10 +43,10 @@ class InstanceNetworkConfig {
 
   factory InstanceNetworkConfig.fromMap(Map<String, dynamic> map) {
     return InstanceNetworkConfig(
-      allocatedIpRangeOverride: map['allocatedIpRangeOverride'] == null ? null : (map['allocatedIpRangeOverride'] as String).input(),
-      authorizedExternalNetworks: map['authorizedExternalNetworks'] == null ? null : (pulumi.Input.decodeList<InstanceNetworkConfigAuthorizedExternalNetwork>(map['authorizedExternalNetworks'], (value) => InstanceNetworkConfigAuthorizedExternalNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableOutboundPublicIp: map['enableOutboundPublicIp'] == null ? null : (map['enableOutboundPublicIp'] as bool).input(),
-      enablePublicIp: map['enablePublicIp'] == null ? null : (map['enablePublicIp'] as bool).input(),
+      allocatedIpRangeOverride: map['allocatedIpRangeOverride'] == null ? null : (map['allocatedIpRangeOverride']! as String).input(),
+      authorizedExternalNetworks: map['authorizedExternalNetworks'] == null ? null : (pulumi.Input.decodeList<InstanceNetworkConfigAuthorizedExternalNetwork>(map['authorizedExternalNetworks']!, (value) => InstanceNetworkConfigAuthorizedExternalNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableOutboundPublicIp: map['enableOutboundPublicIp'] == null ? null : (map['enableOutboundPublicIp']! as bool).input(),
+      enablePublicIp: map['enablePublicIp'] == null ? null : (map['enablePublicIp']! as bool).input(),
     );
   }
 }

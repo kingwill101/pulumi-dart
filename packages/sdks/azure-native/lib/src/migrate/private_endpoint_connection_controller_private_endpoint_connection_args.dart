@@ -45,10 +45,10 @@ class PrivateEndpointConnectionControllerPrivateEndpointConnectionArgs {
 
   factory PrivateEndpointConnectionControllerPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionControllerPrivateEndpointConnectionArgs(
-      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
+      eTag: map['eTag'] == null ? null : (map['eTag']! as String).input(),
       migrateProjectName: (map['migrateProjectName'] as String).input(),
-      peConnectionName: map['peConnectionName'] == null ? null : (map['peConnectionName'] as String).input(),
-      properties: map['properties'] == null ? null : (ConnectionStateRequestBodyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      peConnectionName: map['peConnectionName'] == null ? null : (map['peConnectionName']! as String).input(),
+      properties: map['properties'] == null ? null : (ConnectionStateRequestBodyProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

@@ -33,8 +33,8 @@ class DatabaseIdentityResponse {
   factory DatabaseIdentityResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseIdentityResponse(
       tenantId: (map['tenantId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<DatabaseUserIdentityResponse>(map['userAssignedIdentities'], (value) => DatabaseUserIdentityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<DatabaseUserIdentityResponse>(map['userAssignedIdentities']!, (value) => DatabaseUserIdentityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

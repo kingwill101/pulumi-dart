@@ -65,16 +65,16 @@ class EndpointMysqlSettings {
 
   factory EndpointMysqlSettings.fromMap(Map<String, dynamic> map) {
     return EndpointMysqlSettings(
-      afterConnectScript: map['afterConnectScript'] == null ? null : (map['afterConnectScript'] as String).input(),
-      authenticationMethod: map['authenticationMethod'] == null ? null : (map['authenticationMethod'] as String).input(),
-      cleanSourceMetadataOnMismatch: map['cleanSourceMetadataOnMismatch'] == null ? null : (map['cleanSourceMetadataOnMismatch'] as bool).input(),
-      eventsPollInterval: map['eventsPollInterval'] == null ? null : (map['eventsPollInterval'] as int).input(),
-      executeTimeout: map['executeTimeout'] == null ? null : (map['executeTimeout'] as int).input(),
-      maxFileSize: map['maxFileSize'] == null ? null : (map['maxFileSize'] as int).input(),
-      parallelLoadThreads: map['parallelLoadThreads'] == null ? null : (map['parallelLoadThreads'] as int).input(),
-      serverTimezone: map['serverTimezone'] == null ? null : (map['serverTimezone'] as String).input(),
-      serviceAccessRoleArn: map['serviceAccessRoleArn'] == null ? null : (map['serviceAccessRoleArn'] as String).input(),
-      targetDbType: map['targetDbType'] == null ? null : (map['targetDbType'] as String).input(),
+      afterConnectScript: map['afterConnectScript'] == null ? null : ((map['afterConnectScript'] as String).input()).input(),
+      authenticationMethod: map['authenticationMethod'] == null ? null : ((map['authenticationMethod'] as String).input()).input(),
+      cleanSourceMetadataOnMismatch: map['cleanSourceMetadataOnMismatch'] == null ? null : ((map['cleanSourceMetadataOnMismatch'] as bool).input()).input(),
+      eventsPollInterval: map['eventsPollInterval'] == null ? null : ((map['eventsPollInterval'] as int).input()).input(),
+      executeTimeout: map['executeTimeout'] == null ? null : ((map['executeTimeout'] as int).input()).input(),
+      maxFileSize: map['maxFileSize'] == null ? null : ((map['maxFileSize'] as int).input()).input(),
+      parallelLoadThreads: map['parallelLoadThreads'] == null ? null : ((map['parallelLoadThreads'] as int).input()).input(),
+      serverTimezone: map['serverTimezone'] == null ? null : ((map['serverTimezone'] as String).input()).input(),
+      serviceAccessRoleArn: map['serviceAccessRoleArn'] == null ? null : ((map['serviceAccessRoleArn'] as String).input()).input(),
+      targetDbType: map['targetDbType'] == null ? null : ((map['targetDbType'] as String).input()).input(),
     );
   }
 }

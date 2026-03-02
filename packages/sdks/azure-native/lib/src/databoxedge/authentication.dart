@@ -22,7 +22,7 @@ class Authentication {
 
   factory Authentication.fromMap(Map<String, dynamic> map) {
     return Authentication(
-      symmetricKey: map['symmetricKey'] == null ? null : (SymmetricKey.fromMap((map['symmetricKey'] as Map).cast<String, dynamic>())).input(),
+      symmetricKey: map['symmetricKey'] == null ? null : (SymmetricKey.fromMap((map['symmetricKey']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

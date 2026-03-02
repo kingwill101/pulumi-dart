@@ -21,7 +21,7 @@ class WebPubSubTlsSettings {
 
   factory WebPubSubTlsSettings.fromMap(Map<String, dynamic> map) {
     return WebPubSubTlsSettings(
-      clientCertEnabled: map['clientCertEnabled'] == null ? null : (map['clientCertEnabled'] as bool).input(),
+      clientCertEnabled: map['clientCertEnabled'] == null ? null : (map['clientCertEnabled']! as bool).input(),
     );
   }
 }

@@ -37,10 +37,10 @@ class EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfig 
 
   factory EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfig.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfig(
-      accessConfigs: map['accessConfigs'] == null ? null : (pulumi.Input.decodeList<EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig>(map['accessConfigs'], (value) => EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      eventRecordFormat: map['eventRecordFormat'] == null ? null : (map['eventRecordFormat'] as String).input(),
-      schemaRegistryUri: map['schemaRegistryUri'] == null ? null : (map['schemaRegistryUri'] as String).input(),
-      schemaValidationConfigs: map['schemaValidationConfigs'] == null ? null : (pulumi.Input.decodeList<EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig>(map['schemaValidationConfigs'], (value) => EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accessConfigs: map['accessConfigs'] == null ? null : ((pulumi.Input.decodeList<EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig>(map['accessConfigs']!, (value) => EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      eventRecordFormat: map['eventRecordFormat'] == null ? null : ((map['eventRecordFormat'] as String).input()).input(),
+      schemaRegistryUri: map['schemaRegistryUri'] == null ? null : ((map['schemaRegistryUri'] as String).input()).input(),
+      schemaValidationConfigs: map['schemaValidationConfigs'] == null ? null : ((pulumi.Input.decodeList<EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig>(map['schemaValidationConfigs']!, (value) => EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

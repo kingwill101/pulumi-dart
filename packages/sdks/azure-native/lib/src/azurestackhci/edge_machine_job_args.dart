@@ -41,8 +41,8 @@ class EdgeMachineJobArgs {
   factory EdgeMachineJobArgs.fromMap(Map<String, dynamic> map) {
     return EdgeMachineJobArgs(
       edgeMachineName: (map['edgeMachineName'] as String).input(),
-      jobsName: map['jobsName'] == null ? null : (map['jobsName'] as String).input(),
-      properties: map['properties'] == null ? null : (DownloadOsJobProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      jobsName: map['jobsName'] == null ? null : (map['jobsName']! as String).input(),
+      properties: map['properties'] == null ? null : (DownloadOsJobProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

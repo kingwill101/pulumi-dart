@@ -44,11 +44,11 @@ class VpcEndpointZoneArgs {
 
   factory VpcEndpointZoneArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointZoneArgs(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
       endpointId: (map['endpointId'] as String).input(),
-      eniIp: map['eniIp'] == null ? null : (map['eniIp'] as String).input(),
+      eniIp: map['eniIp'] == null ? null : (map['eniIp']! as String).input(),
       vswitchId: (map['vswitchId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

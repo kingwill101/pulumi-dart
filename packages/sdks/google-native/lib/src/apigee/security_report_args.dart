@@ -83,18 +83,18 @@ class SecurityReportArgs {
 
   factory SecurityReportArgs.fromMap(Map<String, dynamic> map) {
     return SecurityReportArgs(
-      csvDelimiter: map['csvDelimiter'] == null ? null : (map['csvDelimiter'] as String).input(),
-      dimensions: map['dimensions'] == null ? null : ((map['dimensions'] as List).cast<String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      envgroupHostname: map['envgroupHostname'] == null ? null : (map['envgroupHostname'] as String).input(),
+      csvDelimiter: map['csvDelimiter'] == null ? null : (map['csvDelimiter']! as String).input(),
+      dimensions: map['dimensions'] == null ? null : ((map['dimensions']! as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      envgroupHostname: map['envgroupHostname'] == null ? null : (map['envgroupHostname']! as String).input(),
       environmentId: (map['environmentId'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      groupByTimeUnit: map['groupByTimeUnit'] == null ? null : (map['groupByTimeUnit'] as String).input(),
-      limit: map['limit'] == null ? null : (map['limit'] as int).input(),
-      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1SecurityReportQueryMetric>(map['metrics'], (value) => GoogleCloudApigeeV1SecurityReportQueryMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mimeType: map['mimeType'] == null ? null : (map['mimeType'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      groupByTimeUnit: map['groupByTimeUnit'] == null ? null : (map['groupByTimeUnit']! as String).input(),
+      limit: map['limit'] == null ? null : (map['limit']! as int).input(),
+      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1SecurityReportQueryMetric>(map['metrics']!, (value) => GoogleCloudApigeeV1SecurityReportQueryMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mimeType: map['mimeType'] == null ? null : (map['mimeType']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
-      reportDefinitionId: map['reportDefinitionId'] == null ? null : (map['reportDefinitionId'] as String).input(),
+      reportDefinitionId: map['reportDefinitionId'] == null ? null : (map['reportDefinitionId']! as String).input(),
       timeRange: (map['timeRange']).input(),
     );
   }

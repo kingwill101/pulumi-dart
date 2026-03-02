@@ -21,7 +21,7 @@ class UserSubjectPatchFlowcontrolApiserverK8sIoV1beta3 {
 
   factory UserSubjectPatchFlowcontrolApiserverK8sIoV1beta3.fromMap(Map<String, dynamic> map) {
     return UserSubjectPatchFlowcontrolApiserverK8sIoV1beta3(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -58,11 +58,11 @@ class InterconnectGroupArgs {
 
   factory InterconnectGroupArgs.fromMap(Map<String, dynamic> map) {
     return InterconnectGroupArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       intent: (InterconnectGroupIntent.fromMap((map['intent'] as Map).cast<String, dynamic>())).input(),
-      interconnects: map['interconnects'] == null ? null : (pulumi.Input.decodeList<InterconnectGroupInterconnect>(map['interconnects'], (value) => InterconnectGroupInterconnect.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      interconnects: map['interconnects'] == null ? null : (pulumi.Input.decodeList<InterconnectGroupInterconnect>(map['interconnects']!, (value) => InterconnectGroupInterconnect.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

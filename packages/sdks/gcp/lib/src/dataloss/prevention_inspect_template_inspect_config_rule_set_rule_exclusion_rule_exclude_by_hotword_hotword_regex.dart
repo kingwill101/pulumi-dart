@@ -27,7 +27,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHot
 
   factory PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex(
-      groupIndexes: map['groupIndexes'] == null ? null : ((map['groupIndexes'] as List).cast<int>()).input(),
+      groupIndexes: map['groupIndexes'] == null ? null : ((map['groupIndexes']! as List).cast<int>()).input(),
       pattern: (map['pattern'] as String).input(),
     );
   }

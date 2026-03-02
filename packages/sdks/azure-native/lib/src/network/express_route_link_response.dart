@@ -77,14 +77,14 @@ class ExpressRouteLinkResponse {
 
   factory ExpressRouteLinkResponse.fromMap(Map<String, dynamic> map) {
     return ExpressRouteLinkResponse(
-      adminState: map['adminState'] == null ? null : (map['adminState'] as String).input(),
+      adminState: map['adminState'] == null ? null : (map['adminState']! as String).input(),
       coloLocation: (map['coloLocation'] as String).input(),
       connectorType: (map['connectorType'] as String).input(),
       etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       interfaceName: (map['interfaceName'] as String).input(),
-      macSecConfig: map['macSecConfig'] == null ? null : (ExpressRouteLinkMacSecConfigResponse.fromMap((map['macSecConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      macSecConfig: map['macSecConfig'] == null ? null : (ExpressRouteLinkMacSecConfigResponse.fromMap((map['macSecConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       patchPanelId: (map['patchPanelId'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       rackId: (map['rackId'] as String).input(),

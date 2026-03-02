@@ -21,7 +21,7 @@ class DataDisksGroups {
 
   factory DataDisksGroups.fromMap(Map<String, dynamic> map) {
     return DataDisksGroups(
-      disksPerNode: map['disksPerNode'] == null ? null : (map['disksPerNode'] as int).input(),
+      disksPerNode: map['disksPerNode'] == null ? null : (map['disksPerNode']! as int).input(),
     );
   }
 }

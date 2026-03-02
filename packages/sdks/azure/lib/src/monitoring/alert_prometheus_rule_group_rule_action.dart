@@ -28,7 +28,7 @@ class AlertPrometheusRuleGroupRuleAction {
   factory AlertPrometheusRuleGroupRuleAction.fromMap(Map<String, dynamic> map) {
     return AlertPrometheusRuleGroupRuleAction(
       actionGroupId: (map['actionGroupId'] as String).input(),
-      actionProperties: map['actionProperties'] == null ? null : ((map['actionProperties'] as Map).cast<String, String>()).input(),
+      actionProperties: map['actionProperties'] == null ? null : ((map['actionProperties']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -38,9 +38,9 @@ class MoveResourceProperties {
 
   factory MoveResourceProperties.fromMap(Map<String, dynamic> map) {
     return MoveResourceProperties(
-      dependsOnOverrides: map['dependsOnOverrides'] == null ? null : (pulumi.Input.decodeList<MoveResourceDependencyOverride>(map['dependsOnOverrides'], (value) => MoveResourceDependencyOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      existingTargetId: map['existingTargetId'] == null ? null : (map['existingTargetId'] as String).input(),
-      resourceSettings: map['resourceSettings'] == null ? null : (AvailabilitySetResourceSettings.fromMap((map['resourceSettings'] as Map).cast<String, dynamic>())).input(),
+      dependsOnOverrides: map['dependsOnOverrides'] == null ? null : (pulumi.Input.decodeList<MoveResourceDependencyOverride>(map['dependsOnOverrides']!, (value) => MoveResourceDependencyOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      existingTargetId: map['existingTargetId'] == null ? null : (map['existingTargetId']! as String).input(),
+      resourceSettings: map['resourceSettings'] == null ? null : (AvailabilitySetResourceSettings.fromMap((map['resourceSettings']! as Map).cast<String, dynamic>())).input(),
       sourceId: (map['sourceId'] as String).input(),
     );
   }

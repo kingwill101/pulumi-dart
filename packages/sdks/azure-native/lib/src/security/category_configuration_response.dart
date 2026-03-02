@@ -32,8 +32,8 @@ class CategoryConfigurationResponse {
 
   factory CategoryConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return CategoryConfigurationResponse(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      minimumSeverityLevel: map['minimumSeverityLevel'] == null ? null : (map['minimumSeverityLevel'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      minimumSeverityLevel: map['minimumSeverityLevel'] == null ? null : (map['minimumSeverityLevel']! as String).input(),
     );
   }
 }

@@ -46,9 +46,9 @@ class ContactChannelArgs {
   factory ContactChannelArgs.fromMap(Map<String, dynamic> map) {
     return ContactChannelArgs(
       contactId: (map['contactId'] as String).input(),
-      deliveryAddress: (ContactChannelDeliveryAddress.fromMap((map['deliveryAddress'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      deliveryAddress: (ContactChannelDeliveryAddress.fromMap((map['deliveryAddress']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

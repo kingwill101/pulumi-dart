@@ -39,8 +39,8 @@ class KinesisStreamingDestinationArgs {
 
   factory KinesisStreamingDestinationArgs.fromMap(Map<String, dynamic> map) {
     return KinesisStreamingDestinationArgs(
-      approximateCreationDateTimePrecision: map['approximateCreationDateTimePrecision'] == null ? null : (map['approximateCreationDateTimePrecision'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      approximateCreationDateTimePrecision: map['approximateCreationDateTimePrecision'] == null ? null : ((map['approximateCreationDateTimePrecision'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       streamArn: (map['streamArn'] as String).input(),
       tableName: (map['tableName'] as String).input(),
     );

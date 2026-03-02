@@ -32,9 +32,9 @@ class DefaultRoleWithPolicy {
 
   factory DefaultRoleWithPolicy.fromMap(Map<String, dynamic> map) {
     return DefaultRoleWithPolicy(
-      args: map['args'] == null ? null : (RoleWithPolicy.fromMap((map['args'] as Map).cast<String, dynamic>())).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      skip: map['skip'] == null ? null : (map['skip'] as bool).input(),
+      args: map['args'] == null ? null : (RoleWithPolicy.fromMap((map['args']! as Map).cast<String, dynamic>())).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
+      skip: map['skip'] == null ? null : (map['skip']! as bool).input(),
     );
   }
 }

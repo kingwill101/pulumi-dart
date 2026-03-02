@@ -30,7 +30,7 @@ class ManagementPolicyArgs {
 
   factory ManagementPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ManagementPolicyArgs(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ManagementPolicyRule>(map['rules'], (value) => ManagementPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ManagementPolicyRule>(map['rules']!, (value) => ManagementPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }

@@ -59,14 +59,14 @@ class VectorsVectorBucketState {
 
   factory VectorsVectorBucketState.fromMap(Map<String, dynamic> map) {
     return VectorsVectorBucketState(
-      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
-      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : (pulumi.Input.decodeList<VectorsVectorBucketEncryptionConfiguration>(map['encryptionConfigurations'], (value) => VectorsVectorBucketEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      vectorBucketArn: map['vectorBucketArn'] == null ? null : (map['vectorBucketArn'] as String).input(),
-      vectorBucketName: map['vectorBucketName'] == null ? null : (map['vectorBucketName'] as String).input(),
+      creationTime: map['creationTime'] == null ? null : ((map['creationTime'] as String).input()).input(),
+      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : ((pulumi.Input.decodeList<VectorsVectorBucketEncryptionConfiguration>(map['encryptionConfigurations']!, (value) => VectorsVectorBucketEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : ((map['forceDestroy'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      vectorBucketArn: map['vectorBucketArn'] == null ? null : ((map['vectorBucketArn'] as String).input()).input(),
+      vectorBucketName: map['vectorBucketName'] == null ? null : ((map['vectorBucketName'] as String).input()).input(),
     );
   }
 }

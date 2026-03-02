@@ -22,7 +22,7 @@ class RouteSpecHttpRouteAction {
 
   factory RouteSpecHttpRouteAction.fromMap(Map<String, dynamic> map) {
     return RouteSpecHttpRouteAction(
-      weightedTargets: (pulumi.Input.decodeList<RouteSpecHttpRouteActionWeightedTarget>(map['weightedTargets'], (value) => RouteSpecHttpRouteActionWeightedTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      weightedTargets: (pulumi.Input.decodeList<RouteSpecHttpRouteActionWeightedTarget>(map['weightedTargets']!, (value) => RouteSpecHttpRouteActionWeightedTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

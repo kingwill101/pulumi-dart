@@ -21,7 +21,7 @@ class RoutingRuleAction {
 
   factory RoutingRuleAction.fromMap(Map<String, dynamic> map) {
     return RoutingRuleAction(
-      invokeApi: (RoutingRuleActionInvokeApi.fromMap((map['invokeApi'] as Map).cast<String, dynamic>())).input(),
+      invokeApi: (RoutingRuleActionInvokeApi.fromMap((map['invokeApi']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

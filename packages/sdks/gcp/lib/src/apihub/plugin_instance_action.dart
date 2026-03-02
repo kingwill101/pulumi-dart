@@ -65,11 +65,11 @@ class PluginInstanceAction {
   factory PluginInstanceAction.fromMap(Map<String, dynamic> map) {
     return PluginInstanceAction(
       actionId: (map['actionId'] as String).input(),
-      curationConfig: map['curationConfig'] == null ? null : (PluginInstanceActionCurationConfig.fromMap((map['curationConfig'] as Map).cast<String, dynamic>())).input(),
-      hubInstanceActions: map['hubInstanceActions'] == null ? null : (pulumi.Input.decodeList<PluginInstanceActionHubInstanceAction>(map['hubInstanceActions'], (value) => PluginInstanceActionHubInstanceAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      scheduleCronExpression: map['scheduleCronExpression'] == null ? null : (map['scheduleCronExpression'] as String).input(),
-      scheduleTimeZone: map['scheduleTimeZone'] == null ? null : (map['scheduleTimeZone'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      curationConfig: map['curationConfig'] == null ? null : (PluginInstanceActionCurationConfig.fromMap((map['curationConfig']! as Map).cast<String, dynamic>())).input(),
+      hubInstanceActions: map['hubInstanceActions'] == null ? null : (pulumi.Input.decodeList<PluginInstanceActionHubInstanceAction>(map['hubInstanceActions']!, (value) => PluginInstanceActionHubInstanceAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scheduleCronExpression: map['scheduleCronExpression'] == null ? null : (map['scheduleCronExpression']! as String).input(),
+      scheduleTimeZone: map['scheduleTimeZone'] == null ? null : (map['scheduleTimeZone']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

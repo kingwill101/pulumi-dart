@@ -44,7 +44,7 @@ class ManagedPrivateEndpointArgs {
 
   factory ManagedPrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ManagedPrivateEndpointArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       streamAnalyticsClusterName: (map['streamAnalyticsClusterName'] as String).input(),
       subresourceName: (map['subresourceName'] as String).input(),

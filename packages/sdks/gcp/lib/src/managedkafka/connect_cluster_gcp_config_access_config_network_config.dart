@@ -33,8 +33,8 @@ class ConnectClusterGcpConfigAccessConfigNetworkConfig {
 
   factory ConnectClusterGcpConfigAccessConfigNetworkConfig.fromMap(Map<String, dynamic> map) {
     return ConnectClusterGcpConfigAccessConfigNetworkConfig(
-      additionalSubnets: map['additionalSubnets'] == null ? null : ((map['additionalSubnets'] as List).cast<String>()).input(),
-      dnsDomainNames: map['dnsDomainNames'] == null ? null : ((map['dnsDomainNames'] as List).cast<String>()).input(),
+      additionalSubnets: map['additionalSubnets'] == null ? null : ((map['additionalSubnets']! as List).cast<String>()).input(),
+      dnsDomainNames: map['dnsDomainNames'] == null ? null : ((map['dnsDomainNames']! as List).cast<String>()).input(),
       primarySubnet: (map['primarySubnet'] as String).input(),
     );
   }

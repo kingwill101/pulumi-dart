@@ -49,10 +49,10 @@ class DatasetDataLakeGen2Args {
 
   factory DatasetDataLakeGen2Args.fromMap(Map<String, dynamic> map) {
     return DatasetDataLakeGen2Args(
-      filePath: map['filePath'] == null ? null : (map['filePath'] as String).input(),
+      filePath: map['filePath'] == null ? null : (map['filePath']! as String).input(),
       fileSystemName: (map['fileSystemName'] as String).input(),
-      folderPath: map['folderPath'] == null ? null : (map['folderPath'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       shareId: (map['shareId'] as String).input(),
       storageAccountId: (map['storageAccountId'] as String).input(),
     );

@@ -38,9 +38,9 @@ class ContainerizedNetworkFunctionDefinitionVersion {
 
   factory ContainerizedNetworkFunctionDefinitionVersion.fromMap(Map<String, dynamic> map) {
     return ContainerizedNetworkFunctionDefinitionVersion(
-      deployParameters: map['deployParameters'] == null ? null : (map['deployParameters'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      networkFunctionTemplate: map['networkFunctionTemplate'] == null ? null : (AzureArcKubernetesNetworkFunctionTemplate.fromMap((map['networkFunctionTemplate'] as Map).cast<String, dynamic>())).input(),
+      deployParameters: map['deployParameters'] == null ? null : (map['deployParameters']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      networkFunctionTemplate: map['networkFunctionTemplate'] == null ? null : (AzureArcKubernetesNetworkFunctionTemplate.fromMap((map['networkFunctionTemplate']! as Map).cast<String, dynamic>())).input(),
       networkFunctionType: (map['networkFunctionType'] as String).input(),
     );
   }

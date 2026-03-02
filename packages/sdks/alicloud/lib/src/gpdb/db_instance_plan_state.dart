@@ -67,16 +67,16 @@ class DbInstancePlanState {
 
   factory DbInstancePlanState.fromMap(Map<String, dynamic> map) {
     return DbInstancePlanState(
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      dbInstancePlanName: map['dbInstancePlanName'] == null ? null : (map['dbInstancePlanName'] as String).input(),
-      planConfigs: map['planConfigs'] == null ? null : (pulumi.Input.decodeList<DbInstancePlanPlanConfig>(map['planConfigs'], (value) => DbInstancePlanPlanConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      planDesc: map['planDesc'] == null ? null : (map['planDesc'] as String).input(),
-      planEndDate: map['planEndDate'] == null ? null : (map['planEndDate'] as String).input(),
-      planId: map['planId'] == null ? null : (map['planId'] as String).input(),
-      planScheduleType: map['planScheduleType'] == null ? null : (map['planScheduleType'] as String).input(),
-      planStartDate: map['planStartDate'] == null ? null : (map['planStartDate'] as String).input(),
-      planType: map['planType'] == null ? null : (map['planType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      dbInstancePlanName: map['dbInstancePlanName'] == null ? null : (map['dbInstancePlanName']! as String).input(),
+      planConfigs: map['planConfigs'] == null ? null : (pulumi.Input.decodeList<DbInstancePlanPlanConfig>(map['planConfigs']!, (value) => DbInstancePlanPlanConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      planDesc: map['planDesc'] == null ? null : (map['planDesc']! as String).input(),
+      planEndDate: map['planEndDate'] == null ? null : (map['planEndDate']! as String).input(),
+      planId: map['planId'] == null ? null : (map['planId']! as String).input(),
+      planScheduleType: map['planScheduleType'] == null ? null : (map['planScheduleType']! as String).input(),
+      planStartDate: map['planStartDate'] == null ? null : (map['planStartDate']! as String).input(),
+      planType: map['planType'] == null ? null : (map['planType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

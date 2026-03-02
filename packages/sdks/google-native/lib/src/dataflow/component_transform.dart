@@ -31,9 +31,9 @@ class ComponentTransform {
 
   factory ComponentTransform.fromMap(Map<String, dynamic> map) {
     return ComponentTransform(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      originalTransform: map['originalTransform'] == null ? null : (map['originalTransform'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      originalTransform: map['originalTransform'] == null ? null : (map['originalTransform']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

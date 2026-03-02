@@ -28,7 +28,7 @@ class AppHostingDomainServeRedirect {
 
   factory AppHostingDomainServeRedirect.fromMap(Map<String, dynamic> map) {
     return AppHostingDomainServeRedirect(
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       uri: (map['uri'] as String).input(),
     );
   }

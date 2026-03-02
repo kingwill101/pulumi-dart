@@ -26,8 +26,8 @@ class CFNFeatureAdditionalConfigurationResponse {
 
   factory CFNFeatureAdditionalConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return CFNFeatureAdditionalConfigurationResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

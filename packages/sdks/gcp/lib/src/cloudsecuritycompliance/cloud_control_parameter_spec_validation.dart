@@ -36,9 +36,9 @@ class CloudControlParameterSpecValidation {
 
   factory CloudControlParameterSpecValidation.fromMap(Map<String, dynamic> map) {
     return CloudControlParameterSpecValidation(
-      allowedValues: map['allowedValues'] == null ? null : (CloudControlParameterSpecValidationAllowedValues.fromMap((map['allowedValues'] as Map).cast<String, dynamic>())).input(),
-      intRange: map['intRange'] == null ? null : (CloudControlParameterSpecValidationIntRange.fromMap((map['intRange'] as Map).cast<String, dynamic>())).input(),
-      regexpPattern: map['regexpPattern'] == null ? null : (CloudControlParameterSpecValidationRegexpPattern.fromMap((map['regexpPattern'] as Map).cast<String, dynamic>())).input(),
+      allowedValues: map['allowedValues'] == null ? null : (CloudControlParameterSpecValidationAllowedValues.fromMap((map['allowedValues']! as Map).cast<String, dynamic>())).input(),
+      intRange: map['intRange'] == null ? null : (CloudControlParameterSpecValidationIntRange.fromMap((map['intRange']! as Map).cast<String, dynamic>())).input(),
+      regexpPattern: map['regexpPattern'] == null ? null : (CloudControlParameterSpecValidationRegexpPattern.fromMap((map['regexpPattern']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -36,8 +36,8 @@ class GetRegistrationIamPolicyDomainsV1alpha2Args {
   factory GetRegistrationIamPolicyDomainsV1alpha2Args.fromMap(Map<String, dynamic> map) {
     return GetRegistrationIamPolicyDomainsV1alpha2Args(
       location: (map['location'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       registrationId: (map['registrationId'] as String).input(),
     );
   }

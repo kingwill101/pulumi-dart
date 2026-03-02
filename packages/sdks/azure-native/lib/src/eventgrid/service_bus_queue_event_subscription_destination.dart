@@ -33,9 +33,9 @@ class ServiceBusQueueEventSubscriptionDestination {
 
   factory ServiceBusQueueEventSubscriptionDestination.fromMap(Map<String, dynamic> map) {
     return ServiceBusQueueEventSubscriptionDestination(
-      deliveryAttributeMappings: map['deliveryAttributeMappings'] == null ? null : (pulumi.Input.decodeList<DynamicDeliveryAttributeMapping>(map['deliveryAttributeMappings'], (value) => DynamicDeliveryAttributeMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deliveryAttributeMappings: map['deliveryAttributeMappings'] == null ? null : (pulumi.Input.decodeList<DynamicDeliveryAttributeMapping>(map['deliveryAttributeMappings']!, (value) => DynamicDeliveryAttributeMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
       endpointType: (map['endpointType'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

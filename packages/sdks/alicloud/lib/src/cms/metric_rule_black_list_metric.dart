@@ -26,7 +26,7 @@ class MetricRuleBlackListMetric {
   factory MetricRuleBlackListMetric.fromMap(Map<String, dynamic> map) {
     return MetricRuleBlackListMetric(
       metricName: (map['metricName'] as String).input(),
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
+      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
     );
   }
 }

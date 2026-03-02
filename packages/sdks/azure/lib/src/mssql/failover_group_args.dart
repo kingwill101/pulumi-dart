@@ -56,13 +56,13 @@ class FailoverGroupArgs {
 
   factory FailoverGroupArgs.fromMap(Map<String, dynamic> map) {
     return FailoverGroupArgs(
-      databases: map['databases'] == null ? null : ((map['databases'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      databases: map['databases'] == null ? null : ((map['databases']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       partnerServers: (pulumi.Input.decodeList<FailoverGroupPartnerServer>(map['partnerServers'], (value) => FailoverGroupPartnerServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
       readWriteEndpointFailoverPolicy: (FailoverGroupReadWriteEndpointFailoverPolicy.fromMap((map['readWriteEndpointFailoverPolicy'] as Map).cast<String, dynamic>())).input(),
-      readonlyEndpointFailoverPolicyEnabled: map['readonlyEndpointFailoverPolicyEnabled'] == null ? null : (map['readonlyEndpointFailoverPolicyEnabled'] as bool).input(),
+      readonlyEndpointFailoverPolicyEnabled: map['readonlyEndpointFailoverPolicyEnabled'] == null ? null : (map['readonlyEndpointFailoverPolicyEnabled']! as bool).input(),
       serverId: (map['serverId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

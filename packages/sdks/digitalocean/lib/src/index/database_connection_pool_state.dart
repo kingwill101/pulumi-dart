@@ -76,18 +76,18 @@ class DatabaseConnectionPoolState {
 
   factory DatabaseConnectionPoolState.fromMap(Map<String, dynamic> map) {
     return DatabaseConnectionPoolState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      dbName: map['dbName'] == null ? null : (map['dbName'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      privateHost: map['privateHost'] == null ? null : (map['privateHost'] as String).input(),
-      privateUri: map['privateUri'] == null ? null : (map['privateUri'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      dbName: map['dbName'] == null ? null : (map['dbName']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      privateHost: map['privateHost'] == null ? null : (map['privateHost']! as String).input(),
+      privateUri: map['privateUri'] == null ? null : (map['privateUri']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

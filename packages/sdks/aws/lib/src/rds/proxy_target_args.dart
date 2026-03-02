@@ -46,10 +46,10 @@ class ProxyTargetArgs {
 
   factory ProxyTargetArgs.fromMap(Map<String, dynamic> map) {
     return ProxyTargetArgs(
-      dbClusterIdentifier: map['dbClusterIdentifier'] == null ? null : (map['dbClusterIdentifier'] as String).input(),
-      dbInstanceIdentifier: map['dbInstanceIdentifier'] == null ? null : (map['dbInstanceIdentifier'] as String).input(),
+      dbClusterIdentifier: map['dbClusterIdentifier'] == null ? null : ((map['dbClusterIdentifier'] as String).input()).input(),
+      dbInstanceIdentifier: map['dbInstanceIdentifier'] == null ? null : ((map['dbInstanceIdentifier'] as String).input()).input(),
       dbProxyName: (map['dbProxyName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       targetGroupName: (map['targetGroupName'] as String).input(),
     );
   }

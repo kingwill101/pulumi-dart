@@ -22,7 +22,7 @@ class ManagedClusterIngressProfile {
 
   factory ManagedClusterIngressProfile.fromMap(Map<String, dynamic> map) {
     return ManagedClusterIngressProfile(
-      webAppRouting: map['webAppRouting'] == null ? null : (ManagedClusterIngressProfileWebAppRouting.fromMap((map['webAppRouting'] as Map).cast<String, dynamic>())).input(),
+      webAppRouting: map['webAppRouting'] == null ? null : (ManagedClusterIngressProfileWebAppRouting.fromMap((map['webAppRouting']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

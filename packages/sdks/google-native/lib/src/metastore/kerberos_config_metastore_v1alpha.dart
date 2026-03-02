@@ -32,9 +32,9 @@ class KerberosConfigMetastoreV1alpha {
 
   factory KerberosConfigMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
     return KerberosConfigMetastoreV1alpha(
-      keytab: map['keytab'] == null ? null : (SecretMetastoreV1alpha.fromMap((map['keytab'] as Map).cast<String, dynamic>())).input(),
-      krb5ConfigGcsUri: map['krb5ConfigGcsUri'] == null ? null : (map['krb5ConfigGcsUri'] as String).input(),
-      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
+      keytab: map['keytab'] == null ? null : (SecretMetastoreV1alpha.fromMap((map['keytab']! as Map).cast<String, dynamic>())).input(),
+      krb5ConfigGcsUri: map['krb5ConfigGcsUri'] == null ? null : (map['krb5ConfigGcsUri']! as String).input(),
+      principal: map['principal'] == null ? null : (map['principal']! as String).input(),
     );
   }
 }

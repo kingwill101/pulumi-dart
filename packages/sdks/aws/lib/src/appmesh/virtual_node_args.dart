@@ -51,11 +51,11 @@ class VirtualNodeArgs {
   factory VirtualNodeArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNodeArgs(
       meshName: (map['meshName'] as String).input(),
-      meshOwner: map['meshOwner'] == null ? null : (map['meshOwner'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      spec: (VirtualNodeSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      meshOwner: map['meshOwner'] == null ? null : ((map['meshOwner'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      spec: (VirtualNodeSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

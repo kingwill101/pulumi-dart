@@ -60,15 +60,15 @@ class HostState {
 
   factory HostState.fromMap(Map<String, dynamic> map) {
     return HostState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      providerEndpoint: map['providerEndpoint'] == null ? null : (map['providerEndpoint'] as String).input(),
-      providerType: map['providerType'] == null ? null : (map['providerType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (HostTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      vpcConfiguration: map['vpcConfiguration'] == null ? null : (HostVpcConfiguration.fromMap((map['vpcConfiguration'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      providerEndpoint: map['providerEndpoint'] == null ? null : ((map['providerEndpoint'] as String).input()).input(),
+      providerType: map['providerType'] == null ? null : ((map['providerType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((HostTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      vpcConfiguration: map['vpcConfiguration'] == null ? null : ((HostVpcConfiguration.fromMap((map['vpcConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

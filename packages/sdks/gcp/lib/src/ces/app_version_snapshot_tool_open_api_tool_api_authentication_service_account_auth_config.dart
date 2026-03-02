@@ -27,7 +27,7 @@ class AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfig
 
   factory AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfig(
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
     );
   }
 }

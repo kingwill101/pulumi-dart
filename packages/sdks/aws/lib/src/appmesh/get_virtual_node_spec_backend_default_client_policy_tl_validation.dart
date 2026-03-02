@@ -25,8 +25,8 @@ class GetVirtualNodeSpecBackendDefaultClientPolicyTlValidation {
 
   factory GetVirtualNodeSpecBackendDefaultClientPolicyTlValidation.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecBackendDefaultClientPolicyTlValidation(
-      subjectAlternativeNames: (pulumi.Input.decodeList<GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationSubjectAlternativeName>(map['subjectAlternativeNames'], (value) => GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationSubjectAlternativeName.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      trusts: (pulumi.Input.decodeList<GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrust>(map['trusts'], (value) => GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrust.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subjectAlternativeNames: (pulumi.Input.decodeList<GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationSubjectAlternativeName>(map['subjectAlternativeNames']!, (value) => GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationSubjectAlternativeName.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      trusts: (pulumi.Input.decodeList<GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrust>(map['trusts']!, (value) => GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrust.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

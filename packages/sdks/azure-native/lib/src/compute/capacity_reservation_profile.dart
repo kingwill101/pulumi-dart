@@ -22,7 +22,7 @@ class CapacityReservationProfile {
 
   factory CapacityReservationProfile.fromMap(Map<String, dynamic> map) {
     return CapacityReservationProfile(
-      capacityReservationGroup: map['capacityReservationGroup'] == null ? null : (SubResource.fromMap((map['capacityReservationGroup'] as Map).cast<String, dynamic>())).input(),
+      capacityReservationGroup: map['capacityReservationGroup'] == null ? null : (SubResource.fromMap((map['capacityReservationGroup']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

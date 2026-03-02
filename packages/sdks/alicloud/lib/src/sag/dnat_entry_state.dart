@@ -51,13 +51,13 @@ class DnatEntryState {
 
   factory DnatEntryState.fromMap(Map<String, dynamic> map) {
     return DnatEntryState(
-      externalIp: map['externalIp'] == null ? null : (map['externalIp'] as String).input(),
-      externalPort: map['externalPort'] == null ? null : (map['externalPort'] as String).input(),
-      internalIp: map['internalIp'] == null ? null : (map['internalIp'] as String).input(),
-      internalPort: map['internalPort'] == null ? null : (map['internalPort'] as String).input(),
-      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as String).input(),
-      sagId: map['sagId'] == null ? null : (map['sagId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      externalIp: map['externalIp'] == null ? null : (map['externalIp']! as String).input(),
+      externalPort: map['externalPort'] == null ? null : (map['externalPort']! as String).input(),
+      internalIp: map['internalIp'] == null ? null : (map['internalIp']! as String).input(),
+      internalPort: map['internalPort'] == null ? null : (map['internalPort']! as String).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol']! as String).input(),
+      sagId: map['sagId'] == null ? null : (map['sagId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

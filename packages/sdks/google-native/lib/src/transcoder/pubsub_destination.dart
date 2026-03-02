@@ -21,7 +21,7 @@ class PubsubDestination {
 
   factory PubsubDestination.fromMap(Map<String, dynamic> map) {
     return PubsubDestination(
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

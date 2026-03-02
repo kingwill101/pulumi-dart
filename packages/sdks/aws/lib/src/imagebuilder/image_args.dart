@@ -85,18 +85,18 @@ class ImageArgs {
 
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
-      containerRecipeArn: map['containerRecipeArn'] == null ? null : (map['containerRecipeArn'] as String).input(),
-      distributionConfigurationArn: map['distributionConfigurationArn'] == null ? null : (map['distributionConfigurationArn'] as String).input(),
-      enhancedImageMetadataEnabled: map['enhancedImageMetadataEnabled'] == null ? null : (map['enhancedImageMetadataEnabled'] as bool).input(),
-      executionRole: map['executionRole'] == null ? null : (map['executionRole'] as String).input(),
-      imageRecipeArn: map['imageRecipeArn'] == null ? null : (map['imageRecipeArn'] as String).input(),
-      imageScanningConfiguration: map['imageScanningConfiguration'] == null ? null : (ImageImageScanningConfiguration.fromMap((map['imageScanningConfiguration'] as Map).cast<String, dynamic>())).input(),
-      imageTestsConfiguration: map['imageTestsConfiguration'] == null ? null : (ImageImageTestsConfiguration.fromMap((map['imageTestsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      containerRecipeArn: map['containerRecipeArn'] == null ? null : ((map['containerRecipeArn'] as String).input()).input(),
+      distributionConfigurationArn: map['distributionConfigurationArn'] == null ? null : ((map['distributionConfigurationArn'] as String).input()).input(),
+      enhancedImageMetadataEnabled: map['enhancedImageMetadataEnabled'] == null ? null : ((map['enhancedImageMetadataEnabled'] as bool).input()).input(),
+      executionRole: map['executionRole'] == null ? null : ((map['executionRole'] as String).input()).input(),
+      imageRecipeArn: map['imageRecipeArn'] == null ? null : ((map['imageRecipeArn'] as String).input()).input(),
+      imageScanningConfiguration: map['imageScanningConfiguration'] == null ? null : ((ImageImageScanningConfiguration.fromMap((map['imageScanningConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      imageTestsConfiguration: map['imageTestsConfiguration'] == null ? null : ((ImageImageTestsConfiguration.fromMap((map['imageTestsConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       infrastructureConfigurationArn: (map['infrastructureConfigurationArn'] as String).input(),
-      loggingConfiguration: map['loggingConfiguration'] == null ? null : (ImageLoggingConfiguration.fromMap((map['loggingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workflows: map['workflows'] == null ? null : (pulumi.Input.decodeList<ImageWorkflow>(map['workflows'], (value) => ImageWorkflow.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loggingConfiguration: map['loggingConfiguration'] == null ? null : ((ImageLoggingConfiguration.fromMap((map['loggingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      workflows: map['workflows'] == null ? null : ((pulumi.Input.decodeList<ImageWorkflow>(map['workflows']!, (value) => ImageWorkflow.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

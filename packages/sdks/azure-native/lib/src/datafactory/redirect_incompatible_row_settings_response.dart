@@ -27,7 +27,7 @@ class RedirectIncompatibleRowSettingsResponse {
   factory RedirectIncompatibleRowSettingsResponse.fromMap(Map<String, dynamic> map) {
     return RedirectIncompatibleRowSettingsResponse(
       linkedServiceName: (map['linkedServiceName']).input(),
-      path: map['path'] == null ? null : (map['path']).input(),
+      path: map['path'] == null ? null : (map['path']!).input(),
     );
   }
 }

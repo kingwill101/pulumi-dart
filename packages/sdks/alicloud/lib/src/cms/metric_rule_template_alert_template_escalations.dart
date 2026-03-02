@@ -33,9 +33,9 @@ class MetricRuleTemplateAlertTemplateEscalations {
 
   factory MetricRuleTemplateAlertTemplateEscalations.fromMap(Map<String, dynamic> map) {
     return MetricRuleTemplateAlertTemplateEscalations(
-      critical: map['critical'] == null ? null : (MetricRuleTemplateAlertTemplateEscalationsCritical.fromMap((map['critical'] as Map).cast<String, dynamic>())).input(),
-      info: map['info'] == null ? null : (MetricRuleTemplateAlertTemplateEscalationsInfo.fromMap((map['info'] as Map).cast<String, dynamic>())).input(),
-      warn: map['warn'] == null ? null : (MetricRuleTemplateAlertTemplateEscalationsWarn.fromMap((map['warn'] as Map).cast<String, dynamic>())).input(),
+      critical: map['critical'] == null ? null : (MetricRuleTemplateAlertTemplateEscalationsCritical.fromMap((map['critical']! as Map).cast<String, dynamic>())).input(),
+      info: map['info'] == null ? null : (MetricRuleTemplateAlertTemplateEscalationsInfo.fromMap((map['info']! as Map).cast<String, dynamic>())).input(),
+      warn: map['warn'] == null ? null : (MetricRuleTemplateAlertTemplateEscalationsWarn.fromMap((map['warn']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -33,8 +33,8 @@ class LogSettings {
 
   factory LogSettings.fromMap(Map<String, dynamic> map) {
     return LogSettings(
-      copyActivityLogSettings: map['copyActivityLogSettings'] == null ? null : (CopyActivityLogSettings.fromMap((map['copyActivityLogSettings'] as Map).cast<String, dynamic>())).input(),
-      enableCopyActivityLog: map['enableCopyActivityLog'] == null ? null : (map['enableCopyActivityLog']).input(),
+      copyActivityLogSettings: map['copyActivityLogSettings'] == null ? null : (CopyActivityLogSettings.fromMap((map['copyActivityLogSettings']! as Map).cast<String, dynamic>())).input(),
+      enableCopyActivityLog: map['enableCopyActivityLog'] == null ? null : (map['enableCopyActivityLog']!).input(),
       logLocationSettings: (LogLocationSettings.fromMap((map['logLocationSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }

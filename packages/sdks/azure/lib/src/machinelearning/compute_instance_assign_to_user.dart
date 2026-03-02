@@ -25,8 +25,8 @@ class ComputeInstanceAssignToUser {
 
   factory ComputeInstanceAssignToUser.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceAssignToUser(
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

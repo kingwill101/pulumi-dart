@@ -37,8 +37,8 @@ class BudgetFilterPropertiesResponse {
 
   factory BudgetFilterPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BudgetFilterPropertiesResponse(
-      dimensions: map['dimensions'] == null ? null : (BudgetComparisonExpressionResponse.fromMap((map['dimensions'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : (BudgetComparisonExpressionResponse.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
+      dimensions: map['dimensions'] == null ? null : (BudgetComparisonExpressionResponse.fromMap((map['dimensions']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (BudgetComparisonExpressionResponse.fromMap((map['tags']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

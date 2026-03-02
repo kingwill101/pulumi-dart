@@ -62,15 +62,15 @@ class SecurityGroup {
 
   factory SecurityGroup.fromMap(Map<String, dynamic> map) {
     return SecurityGroup(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      egress: map['egress'] == null ? null : (pulumi.Input.decodeList<pulumi_aws_ec2.SecurityGroupEgress>(map['egress'], (value) => pulumi_aws_ec2.SecurityGroupEgress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ingress: map['ingress'] == null ? null : (pulumi.Input.decodeList<pulumi_aws_ec2.SecurityGroupIngress>(map['ingress'], (value) => pulumi_aws_ec2.SecurityGroupIngress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      revokeRulesOnDelete: map['revokeRulesOnDelete'] == null ? null : (map['revokeRulesOnDelete'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      egress: map['egress'] == null ? null : (pulumi.Input.decodeList<pulumi_aws_ec2.SecurityGroupEgress>(map['egress']!, (value) => pulumi_aws_ec2.SecurityGroupEgress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ingress: map['ingress'] == null ? null : (pulumi.Input.decodeList<pulumi_aws_ec2.SecurityGroupIngress>(map['ingress']!, (value) => pulumi_aws_ec2.SecurityGroupIngress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      revokeRulesOnDelete: map['revokeRulesOnDelete'] == null ? null : (map['revokeRulesOnDelete']! as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

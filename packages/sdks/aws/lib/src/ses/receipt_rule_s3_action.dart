@@ -46,11 +46,11 @@ class ReceiptRuleS3Action {
   factory ReceiptRuleS3Action.fromMap(Map<String, dynamic> map) {
     return ReceiptRuleS3Action(
       bucketName: (map['bucketName'] as String).input(),
-      iamRoleArn: map['iamRoleArn'] == null ? null : (map['iamRoleArn'] as String).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
-      objectKeyPrefix: map['objectKeyPrefix'] == null ? null : (map['objectKeyPrefix'] as String).input(),
+      iamRoleArn: map['iamRoleArn'] == null ? null : ((map['iamRoleArn'] as String).input()).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
+      objectKeyPrefix: map['objectKeyPrefix'] == null ? null : ((map['objectKeyPrefix'] as String).input()).input(),
       position: (map['position'] as int).input(),
-      topicArn: map['topicArn'] == null ? null : (map['topicArn'] as String).input(),
+      topicArn: map['topicArn'] == null ? null : ((map['topicArn'] as String).input()).input(),
     );
   }
 }

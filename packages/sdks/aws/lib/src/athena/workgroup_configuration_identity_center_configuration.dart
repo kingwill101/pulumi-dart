@@ -25,8 +25,8 @@ class WorkgroupConfigurationIdentityCenterConfiguration {
 
   factory WorkgroupConfigurationIdentityCenterConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkgroupConfigurationIdentityCenterConfiguration(
-      enableIdentityCenter: map['enableIdentityCenter'] == null ? null : (map['enableIdentityCenter'] as bool).input(),
-      identityCenterInstanceArn: map['identityCenterInstanceArn'] == null ? null : (map['identityCenterInstanceArn'] as String).input(),
+      enableIdentityCenter: map['enableIdentityCenter'] == null ? null : ((map['enableIdentityCenter'] as bool).input()).input(),
+      identityCenterInstanceArn: map['identityCenterInstanceArn'] == null ? null : ((map['identityCenterInstanceArn'] as String).input()).input(),
     );
   }
 }

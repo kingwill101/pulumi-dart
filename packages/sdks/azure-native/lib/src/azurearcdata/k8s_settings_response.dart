@@ -22,7 +22,7 @@ class K8sSettingsResponse {
 
   factory K8sSettingsResponse.fromMap(Map<String, dynamic> map) {
     return K8sSettingsResponse(
-      network: map['network'] == null ? null : (K8sNetworkSettingsResponse.fromMap((map['network'] as Map).cast<String, dynamic>())).input(),
+      network: map['network'] == null ? null : (K8sNetworkSettingsResponse.fromMap((map['network']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

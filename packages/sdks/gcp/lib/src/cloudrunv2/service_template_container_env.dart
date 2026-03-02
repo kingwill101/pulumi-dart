@@ -33,8 +33,8 @@ class ServiceTemplateContainerEnv {
   factory ServiceTemplateContainerEnv.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateContainerEnv(
       name: (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
-      valueSource: map['valueSource'] == null ? null : (ServiceTemplateContainerEnvValueSource.fromMap((map['valueSource'] as Map).cast<String, dynamic>())).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
+      valueSource: map['valueSource'] == null ? null : (ServiceTemplateContainerEnvValueSource.fromMap((map['valueSource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

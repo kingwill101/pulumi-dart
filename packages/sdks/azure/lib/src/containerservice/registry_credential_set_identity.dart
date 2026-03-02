@@ -30,8 +30,8 @@ class RegistryCredentialSetIdentity {
 
   factory RegistryCredentialSetIdentity.fromMap(Map<String, dynamic> map) {
     return RegistryCredentialSetIdentity(
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

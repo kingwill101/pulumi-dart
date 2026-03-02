@@ -28,8 +28,8 @@ class GooglePrivacyDlpV2Expressions {
 
   factory GooglePrivacyDlpV2Expressions.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Expressions(
-      conditions: map['conditions'] == null ? null : (GooglePrivacyDlpV2Conditions.fromMap((map['conditions'] as Map).cast<String, dynamic>())).input(),
-      logicalOperator: map['logicalOperator'] == null ? null : (GooglePrivacyDlpV2ExpressionsLogicalOperator.fromValue(map['logicalOperator'] as String)).input(),
+      conditions: map['conditions'] == null ? null : (GooglePrivacyDlpV2Conditions.fromMap((map['conditions']! as Map).cast<String, dynamic>())).input(),
+      logicalOperator: map['logicalOperator'] == null ? null : (GooglePrivacyDlpV2ExpressionsLogicalOperator.fromValue(map['logicalOperator']! as String)).input(),
     );
   }
 }

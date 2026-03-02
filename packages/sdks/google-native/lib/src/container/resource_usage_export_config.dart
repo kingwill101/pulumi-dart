@@ -33,9 +33,9 @@ class ResourceUsageExportConfig {
 
   factory ResourceUsageExportConfig.fromMap(Map<String, dynamic> map) {
     return ResourceUsageExportConfig(
-      bigqueryDestination: map['bigqueryDestination'] == null ? null : (BigQueryDestination.fromMap((map['bigqueryDestination'] as Map).cast<String, dynamic>())).input(),
-      consumptionMeteringConfig: map['consumptionMeteringConfig'] == null ? null : (ConsumptionMeteringConfig.fromMap((map['consumptionMeteringConfig'] as Map).cast<String, dynamic>())).input(),
-      enableNetworkEgressMetering: map['enableNetworkEgressMetering'] == null ? null : (map['enableNetworkEgressMetering'] as bool).input(),
+      bigqueryDestination: map['bigqueryDestination'] == null ? null : (BigQueryDestination.fromMap((map['bigqueryDestination']! as Map).cast<String, dynamic>())).input(),
+      consumptionMeteringConfig: map['consumptionMeteringConfig'] == null ? null : (ConsumptionMeteringConfig.fromMap((map['consumptionMeteringConfig']! as Map).cast<String, dynamic>())).input(),
+      enableNetworkEgressMetering: map['enableNetworkEgressMetering'] == null ? null : (map['enableNetworkEgressMetering']! as bool).input(),
     );
   }
 }

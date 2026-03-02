@@ -53,14 +53,14 @@ class GetPrefixListsResult {
 
   factory GetPrefixListsResult.fromMap(Map<String, dynamic> map) {
     return GetPrefixListsResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       lists: pulumi.Input.decodeList<GetPrefixListsList>(map['lists'], (value) => GetPrefixListsList.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      prefixListName: map['prefixListName'] == null ? null : map['prefixListName'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      prefixListName: map['prefixListName'] == null ? null : map['prefixListName']! as String,
     );
   }
 }

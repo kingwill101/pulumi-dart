@@ -48,12 +48,12 @@ class VirtualMachineStorageConfiguration {
 
   factory VirtualMachineStorageConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualMachineStorageConfiguration(
-      dataSettings: map['dataSettings'] == null ? null : (VirtualMachineStorageConfigurationDataSettings.fromMap((map['dataSettings'] as Map).cast<String, dynamic>())).input(),
+      dataSettings: map['dataSettings'] == null ? null : (VirtualMachineStorageConfigurationDataSettings.fromMap((map['dataSettings']! as Map).cast<String, dynamic>())).input(),
       diskType: (map['diskType'] as String).input(),
-      logSettings: map['logSettings'] == null ? null : (VirtualMachineStorageConfigurationLogSettings.fromMap((map['logSettings'] as Map).cast<String, dynamic>())).input(),
+      logSettings: map['logSettings'] == null ? null : (VirtualMachineStorageConfigurationLogSettings.fromMap((map['logSettings']! as Map).cast<String, dynamic>())).input(),
       storageWorkloadType: (map['storageWorkloadType'] as String).input(),
-      systemDbOnDataDiskEnabled: map['systemDbOnDataDiskEnabled'] == null ? null : (map['systemDbOnDataDiskEnabled'] as bool).input(),
-      tempDbSettings: map['tempDbSettings'] == null ? null : (VirtualMachineStorageConfigurationTempDbSettings.fromMap((map['tempDbSettings'] as Map).cast<String, dynamic>())).input(),
+      systemDbOnDataDiskEnabled: map['systemDbOnDataDiskEnabled'] == null ? null : (map['systemDbOnDataDiskEnabled']! as bool).input(),
+      tempDbSettings: map['tempDbSettings'] == null ? null : (VirtualMachineStorageConfigurationTempDbSettings.fromMap((map['tempDbSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

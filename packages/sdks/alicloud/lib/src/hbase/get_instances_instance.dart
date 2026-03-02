@@ -143,7 +143,7 @@ class GetInstancesInstance {
       payType: (map['payType'] as String).input(),
       regionId: (map['regionId'] as String).input(),
       status: (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vpcId: (map['vpcId'] as String).input(),
       vswitchId: (map['vswitchId'] as String).input(),
       zoneId: (map['zoneId'] as String).input(),

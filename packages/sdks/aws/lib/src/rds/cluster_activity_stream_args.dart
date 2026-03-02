@@ -47,10 +47,10 @@ class ClusterActivityStreamArgs {
 
   factory ClusterActivityStreamArgs.fromMap(Map<String, dynamic> map) {
     return ClusterActivityStreamArgs(
-      engineNativeAuditFieldsIncluded: map['engineNativeAuditFieldsIncluded'] == null ? null : (map['engineNativeAuditFieldsIncluded'] as bool).input(),
+      engineNativeAuditFieldsIncluded: map['engineNativeAuditFieldsIncluded'] == null ? null : ((map['engineNativeAuditFieldsIncluded'] as bool).input()).input(),
       kmsKeyId: (map['kmsKeyId'] as String).input(),
       mode: (map['mode'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceArn: (map['resourceArn'] as String).input(),
     );
   }

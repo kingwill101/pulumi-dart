@@ -20,7 +20,7 @@ class TemplateSourceDestination {
 
   factory TemplateSourceDestination.fromMap(Map<String, dynamic> map) {
     return TemplateSourceDestination(
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

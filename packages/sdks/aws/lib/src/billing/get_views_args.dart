@@ -24,7 +24,7 @@ class GetViewsArgs {
 
   factory GetViewsArgs.fromMap(Map<String, dynamic> map) {
     return GetViewsArgs(
-      billingViewTypes: map['billingViewTypes'] == null ? null : ((map['billingViewTypes'] as List).cast<String>()).input(),
+      billingViewTypes: map['billingViewTypes'] == null ? null : (((map['billingViewTypes'] as List).cast<String>()).input()).input(),
     );
   }
 }

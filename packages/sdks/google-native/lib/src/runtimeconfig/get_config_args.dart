@@ -28,7 +28,7 @@ class GetConfigArgs {
   factory GetConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigArgs(
       configId: (map['configId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

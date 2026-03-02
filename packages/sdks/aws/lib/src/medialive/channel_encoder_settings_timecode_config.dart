@@ -26,7 +26,7 @@ class ChannelEncoderSettingsTimecodeConfig {
   factory ChannelEncoderSettingsTimecodeConfig.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsTimecodeConfig(
       source: (map['source'] as String).input(),
-      syncThreshold: map['syncThreshold'] == null ? null : (map['syncThreshold'] as int).input(),
+      syncThreshold: map['syncThreshold'] == null ? null : ((map['syncThreshold'] as int).input()).input(),
     );
   }
 }

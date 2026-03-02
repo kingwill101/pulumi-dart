@@ -47,11 +47,11 @@ class MySqlConnectionProfileDatamigrationV1beta1 {
 
   factory MySqlConnectionProfileDatamigrationV1beta1.fromMap(Map<String, dynamic> map) {
     return MySqlConnectionProfileDatamigrationV1beta1(
-      cloudSqlId: map['cloudSqlId'] == null ? null : (map['cloudSqlId'] as String).input(),
+      cloudSqlId: map['cloudSqlId'] == null ? null : (map['cloudSqlId']! as String).input(),
       host: (map['host'] as String).input(),
       password: (map['password'] as String).input(),
       port: (map['port'] as int).input(),
-      ssl: map['ssl'] == null ? null : (SslConfigDatamigrationV1beta1.fromMap((map['ssl'] as Map).cast<String, dynamic>())).input(),
+      ssl: map['ssl'] == null ? null : (SslConfigDatamigrationV1beta1.fromMap((map['ssl']! as Map).cast<String, dynamic>())).input(),
       username: (map['username'] as String).input(),
     );
   }

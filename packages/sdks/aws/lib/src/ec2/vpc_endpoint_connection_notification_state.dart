@@ -53,13 +53,13 @@ class VpcEndpointConnectionNotificationState {
 
   factory VpcEndpointConnectionNotificationState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointConnectionNotificationState(
-      connectionEvents: map['connectionEvents'] == null ? null : ((map['connectionEvents'] as List).cast<String>()).input(),
-      connectionNotificationArn: map['connectionNotificationArn'] == null ? null : (map['connectionNotificationArn'] as String).input(),
-      notificationType: map['notificationType'] == null ? null : (map['notificationType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : (map['vpcEndpointId'] as String).input(),
-      vpcEndpointServiceId: map['vpcEndpointServiceId'] == null ? null : (map['vpcEndpointServiceId'] as String).input(),
+      connectionEvents: map['connectionEvents'] == null ? null : (((map['connectionEvents'] as List).cast<String>()).input()).input(),
+      connectionNotificationArn: map['connectionNotificationArn'] == null ? null : ((map['connectionNotificationArn'] as String).input()).input(),
+      notificationType: map['notificationType'] == null ? null : ((map['notificationType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      vpcEndpointId: map['vpcEndpointId'] == null ? null : ((map['vpcEndpointId'] as String).input()).input(),
+      vpcEndpointServiceId: map['vpcEndpointServiceId'] == null ? null : ((map['vpcEndpointServiceId'] as String).input()).input(),
     );
   }
 }

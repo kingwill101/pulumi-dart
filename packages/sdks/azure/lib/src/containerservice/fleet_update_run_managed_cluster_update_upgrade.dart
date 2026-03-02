@@ -25,7 +25,7 @@ class FleetUpdateRunManagedClusterUpdateUpgrade {
 
   factory FleetUpdateRunManagedClusterUpdateUpgrade.fromMap(Map<String, dynamic> map) {
     return FleetUpdateRunManagedClusterUpdateUpgrade(
-      kubernetesVersion: map['kubernetesVersion'] == null ? null : (map['kubernetesVersion'] as String).input(),
+      kubernetesVersion: map['kubernetesVersion'] == null ? null : (map['kubernetesVersion']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

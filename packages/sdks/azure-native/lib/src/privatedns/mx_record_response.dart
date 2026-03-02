@@ -26,8 +26,8 @@ class MxRecordResponse {
 
   factory MxRecordResponse.fromMap(Map<String, dynamic> map) {
     return MxRecordResponse(
-      exchange: map['exchange'] == null ? null : (map['exchange'] as String).input(),
-      preference: map['preference'] == null ? null : (map['preference'] as int).input(),
+      exchange: map['exchange'] == null ? null : (map['exchange']! as String).input(),
+      preference: map['preference'] == null ? null : (map['preference']! as int).input(),
     );
   }
 }

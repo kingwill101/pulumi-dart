@@ -31,9 +31,9 @@ class EventSourceV2SourceOssEventParameters {
 
   factory EventSourceV2SourceOssEventParameters.fromMap(Map<String, dynamic> map) {
     return EventSourceV2SourceOssEventParameters(
-      eventTypes: map['eventTypes'] == null ? null : ((map['eventTypes'] as List).cast<String>()).input(),
-      matchRules: map['matchRules'] == null ? null : (pulumi.Input.decodeList<List<EventSourceV2SourceOssEventParametersMatchRule>>(map['matchRules'], (value) => pulumi.Input.decodeList<EventSourceV2SourceOssEventParametersMatchRule>(value, (value) => EventSourceV2SourceOssEventParametersMatchRule.fromMap((value as Map).cast<String, dynamic>())))).input(),
-      stsRoleArn: map['stsRoleArn'] == null ? null : (map['stsRoleArn'] as String).input(),
+      eventTypes: map['eventTypes'] == null ? null : ((map['eventTypes']! as List).cast<String>()).input(),
+      matchRules: map['matchRules'] == null ? null : (pulumi.Input.decodeList<List<EventSourceV2SourceOssEventParametersMatchRule>>(map['matchRules']!, (value) => pulumi.Input.decodeList<EventSourceV2SourceOssEventParametersMatchRule>(value, (value) => EventSourceV2SourceOssEventParametersMatchRule.fromMap((value as Map).cast<String, dynamic>())))).input(),
+      stsRoleArn: map['stsRoleArn'] == null ? null : (map['stsRoleArn']! as String).input(),
     );
   }
 }

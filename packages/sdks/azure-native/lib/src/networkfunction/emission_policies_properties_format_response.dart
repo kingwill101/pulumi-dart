@@ -27,8 +27,8 @@ class EmissionPoliciesPropertiesFormatResponse {
 
   factory EmissionPoliciesPropertiesFormatResponse.fromMap(Map<String, dynamic> map) {
     return EmissionPoliciesPropertiesFormatResponse(
-      emissionDestinations: map['emissionDestinations'] == null ? null : (pulumi.Input.decodeList<EmissionPolicyDestinationResponse>(map['emissionDestinations'], (value) => EmissionPolicyDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      emissionType: map['emissionType'] == null ? null : (map['emissionType'] as String).input(),
+      emissionDestinations: map['emissionDestinations'] == null ? null : (pulumi.Input.decodeList<EmissionPolicyDestinationResponse>(map['emissionDestinations']!, (value) => EmissionPolicyDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      emissionType: map['emissionType'] == null ? null : (map['emissionType']! as String).input(),
     );
   }
 }

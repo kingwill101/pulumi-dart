@@ -53,13 +53,13 @@ class AppAuthorizationConnectionState {
 
   factory AppAuthorizationConnectionState.fromMap(Map<String, dynamic> map) {
     return AppAuthorizationConnectionState(
-      app: map['app'] == null ? null : (map['app'] as String).input(),
-      appAuthorizationArn: map['appAuthorizationArn'] == null ? null : (map['appAuthorizationArn'] as String).input(),
-      appBundleArn: map['appBundleArn'] == null ? null : (map['appBundleArn'] as String).input(),
-      authRequest: map['authRequest'] == null ? null : (AppAuthorizationConnectionAuthRequest.fromMap((map['authRequest'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tenants: map['tenants'] == null ? null : (pulumi.Input.decodeList<AppAuthorizationConnectionTenant>(map['tenants'], (value) => AppAuthorizationConnectionTenant.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeouts: map['timeouts'] == null ? null : (AppAuthorizationConnectionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      app: map['app'] == null ? null : ((map['app'] as String).input()).input(),
+      appAuthorizationArn: map['appAuthorizationArn'] == null ? null : ((map['appAuthorizationArn'] as String).input()).input(),
+      appBundleArn: map['appBundleArn'] == null ? null : ((map['appBundleArn'] as String).input()).input(),
+      authRequest: map['authRequest'] == null ? null : ((AppAuthorizationConnectionAuthRequest.fromMap((map['authRequest']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tenants: map['tenants'] == null ? null : ((pulumi.Input.decodeList<AppAuthorizationConnectionTenant>(map['tenants']!, (value) => AppAuthorizationConnectionTenant.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((AppAuthorizationConnectionTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

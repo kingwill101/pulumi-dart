@@ -53,11 +53,11 @@ class ApplicableScheduleResponse {
   factory ApplicableScheduleResponse.fromMap(Map<String, dynamic> map) {
     return ApplicableScheduleResponse(
       id: (map['id'] as String).input(),
-      labVmsShutdown: map['labVmsShutdown'] == null ? null : (ScheduleResponse.fromMap((map['labVmsShutdown'] as Map).cast<String, dynamic>())).input(),
-      labVmsStartup: map['labVmsStartup'] == null ? null : (ScheduleResponse.fromMap((map['labVmsStartup'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      labVmsShutdown: map['labVmsShutdown'] == null ? null : (ScheduleResponse.fromMap((map['labVmsShutdown']! as Map).cast<String, dynamic>())).input(),
+      labVmsStartup: map['labVmsStartup'] == null ? null : (ScheduleResponse.fromMap((map['labVmsStartup']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       name: (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       type: (map['type'] as String).input(),
     );
   }

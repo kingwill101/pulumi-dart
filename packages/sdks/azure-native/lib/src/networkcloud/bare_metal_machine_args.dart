@@ -101,14 +101,14 @@ class BareMetalMachineArgs {
 
   factory BareMetalMachineArgs.fromMap(Map<String, dynamic> map) {
     return BareMetalMachineArgs(
-      bareMetalMachineName: map['bareMetalMachineName'] == null ? null : (map['bareMetalMachineName'] as String).input(),
+      bareMetalMachineName: map['bareMetalMachineName'] == null ? null : (map['bareMetalMachineName']! as String).input(),
       bmcConnectionString: (map['bmcConnectionString'] as String).input(),
       bmcCredentials: (AdministrativeCredentials.fromMap((map['bmcCredentials'] as Map).cast<String, dynamic>())).input(),
       bmcMacAddress: (map['bmcMacAddress'] as String).input(),
       bootMacAddress: (map['bootMacAddress'] as String).input(),
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      machineClusterVersion: map['machineClusterVersion'] == null ? null : (map['machineClusterVersion'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      machineClusterVersion: map['machineClusterVersion'] == null ? null : (map['machineClusterVersion']! as String).input(),
       machineDetails: (map['machineDetails'] as String).input(),
       machineName: (map['machineName'] as String).input(),
       machineSkuId: (map['machineSkuId'] as String).input(),
@@ -116,7 +116,7 @@ class BareMetalMachineArgs {
       rackSlot: (map['rackSlot'] as double).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serialNumber: (map['serialNumber'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

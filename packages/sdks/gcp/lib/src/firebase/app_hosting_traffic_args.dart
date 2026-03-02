@@ -53,9 +53,9 @@ class AppHostingTrafficArgs {
     return AppHostingTrafficArgs(
       backend: (map['backend'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rolloutPolicy: map['rolloutPolicy'] == null ? null : (AppHostingTrafficRolloutPolicy.fromMap((map['rolloutPolicy'] as Map).cast<String, dynamic>())).input(),
-      target: map['target'] == null ? null : (AppHostingTrafficTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rolloutPolicy: map['rolloutPolicy'] == null ? null : (AppHostingTrafficRolloutPolicy.fromMap((map['rolloutPolicy']! as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (AppHostingTrafficTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

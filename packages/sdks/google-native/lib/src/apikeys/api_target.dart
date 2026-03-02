@@ -26,8 +26,8 @@ class ApiTarget {
 
   factory ApiTarget.fromMap(Map<String, dynamic> map) {
     return ApiTarget(
-      methods: map['methods'] == null ? null : ((map['methods'] as List).cast<String>()).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      methods: map['methods'] == null ? null : ((map['methods']! as List).cast<String>()).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

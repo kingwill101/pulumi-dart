@@ -64,9 +64,9 @@ class GetAppConnectorResult {
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       principalInfos: pulumi.Input.decodeList<GetAppConnectorPrincipalInfo>(map['principalInfos'], (value) => GetAppConnectorPrincipalInfo.fromMap((value as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      region: map['region'] == null ? null : map['region'] as String,
+      region: map['region'] == null ? null : map['region']! as String,
       state: map['state'] as String,
     );
   }

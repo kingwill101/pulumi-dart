@@ -35,7 +35,7 @@ class ClientCaCertificateArgs {
   factory ClientCaCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ClientCaCertificateArgs(
       certificate: (map['certificate'] as String).input(),
-      clientCaCertName: map['clientCaCertName'] == null ? null : (map['clientCaCertName'] as String).input(),
+      clientCaCertName: map['clientCaCertName'] == null ? null : (map['clientCaCertName']! as String).input(),
       siteId: (map['siteId'] as String).input(),
     );
   }

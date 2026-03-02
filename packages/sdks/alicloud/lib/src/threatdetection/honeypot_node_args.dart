@@ -39,10 +39,10 @@ class HoneypotNodeArgs {
 
   factory HoneypotNodeArgs.fromMap(Map<String, dynamic> map) {
     return HoneypotNodeArgs(
-      allowHoneypotAccessInternet: map['allowHoneypotAccessInternet'] == null ? null : (map['allowHoneypotAccessInternet'] as bool).input(),
+      allowHoneypotAccessInternet: map['allowHoneypotAccessInternet'] == null ? null : (map['allowHoneypotAccessInternet']! as bool).input(),
       availableProbeNum: (map['availableProbeNum'] as int).input(),
       nodeName: (map['nodeName'] as String).input(),
-      securityGroupProbeIpLists: map['securityGroupProbeIpLists'] == null ? null : ((map['securityGroupProbeIpLists'] as List).cast<String>()).input(),
+      securityGroupProbeIpLists: map['securityGroupProbeIpLists'] == null ? null : ((map['securityGroupProbeIpLists']! as List).cast<String>()).input(),
     );
   }
 }

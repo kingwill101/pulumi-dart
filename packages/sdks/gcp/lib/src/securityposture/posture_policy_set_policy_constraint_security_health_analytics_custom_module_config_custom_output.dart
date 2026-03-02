@@ -22,7 +22,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigC
 
   factory PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutput.fromMap(Map<String, dynamic> map) {
     return PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutput(
-      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputProperty>(map['properties'], (value) => PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputProperty>(map['properties']!, (value) => PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

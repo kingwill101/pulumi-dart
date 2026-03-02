@@ -22,7 +22,7 @@ class PipelinePolicy {
 
   factory PipelinePolicy.fromMap(Map<String, dynamic> map) {
     return PipelinePolicy(
-      elapsedTimeMetric: map['elapsedTimeMetric'] == null ? null : (PipelineElapsedTimeMetricPolicy.fromMap((map['elapsedTimeMetric'] as Map).cast<String, dynamic>())).input(),
+      elapsedTimeMetric: map['elapsedTimeMetric'] == null ? null : (PipelineElapsedTimeMetricPolicy.fromMap((map['elapsedTimeMetric']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -39,7 +39,7 @@ class MigrationAssessmentResponse {
   factory MigrationAssessmentResponse.fromMap(Map<String, dynamic> map) {
     return MigrationAssessmentResponse(
       assessmentUploadTime: (map['assessmentUploadTime'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       serverAssessments: (pulumi.Input.decodeList<MigrationAssessmentResponseServerAssessments>(map['serverAssessments'], (value) => MigrationAssessmentResponseServerAssessments.fromMap((value as Map).cast<String, dynamic>()))).input(),
       skuRecommendationResults: (SkuRecommendationResultsResponse.fromMap((map['skuRecommendationResults'] as Map).cast<String, dynamic>())).input(),
     );

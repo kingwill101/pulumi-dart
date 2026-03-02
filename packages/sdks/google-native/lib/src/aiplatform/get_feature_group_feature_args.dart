@@ -38,7 +38,7 @@ class GetFeatureGroupFeatureArgs {
       featureGroupId: (map['featureGroupId'] as String).input(),
       featureId: (map['featureId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

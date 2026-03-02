@@ -53,12 +53,12 @@ class SubscriptionArgs {
 
   factory SubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionArgs(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      billingScopeId: map['billingScopeId'] == null ? null : (map['billingScopeId'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
+      billingScopeId: map['billingScopeId'] == null ? null : (map['billingScopeId']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
       subscriptionName: (map['subscriptionName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workload: map['workload'] == null ? null : (map['workload'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      workload: map['workload'] == null ? null : (map['workload']! as String).input(),
     );
   }
 }

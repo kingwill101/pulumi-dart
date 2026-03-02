@@ -30,9 +30,9 @@ class ReportPlanReportDeliveryChannel {
 
   factory ReportPlanReportDeliveryChannel.fromMap(Map<String, dynamic> map) {
     return ReportPlanReportDeliveryChannel(
-      formats: map['formats'] == null ? null : ((map['formats'] as List).cast<String>()).input(),
+      formats: map['formats'] == null ? null : (((map['formats'] as List).cast<String>()).input()).input(),
       s3BucketName: (map['s3BucketName'] as String).input(),
-      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : (map['s3KeyPrefix'] as String).input(),
+      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : ((map['s3KeyPrefix'] as String).input()).input(),
     );
   }
 }

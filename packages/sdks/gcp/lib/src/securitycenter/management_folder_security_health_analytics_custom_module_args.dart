@@ -51,11 +51,11 @@ class ManagementFolderSecurityHealthAnalyticsCustomModuleArgs {
 
   factory ManagementFolderSecurityHealthAnalyticsCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return ManagementFolderSecurityHealthAnalyticsCustomModuleArgs(
-      customConfig: map['customConfig'] == null ? null : (ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enablementState: map['enablementState'] == null ? null : (map['enablementState'] as String).input(),
+      customConfig: map['customConfig'] == null ? null : (ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((map['customConfig']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enablementState: map['enablementState'] == null ? null : (map['enablementState']! as String).input(),
       folder: (map['folder'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
     );
   }
 }

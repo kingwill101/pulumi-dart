@@ -42,11 +42,11 @@ class VirtualMachineInstancePropertiesOsProfileWindowsConfigurationResponse {
 
   factory VirtualMachineInstancePropertiesOsProfileWindowsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstancePropertiesOsProfileWindowsConfigurationResponse(
-      enableAutomaticUpdates: map['enableAutomaticUpdates'] == null ? null : (map['enableAutomaticUpdates'] as bool).input(),
-      provisionVMAgent: map['provisionVMAgent'] == null ? null : (map['provisionVMAgent'] as bool).input(),
-      provisionVMConfigAgent: map['provisionVMConfigAgent'] == null ? null : (map['provisionVMConfigAgent'] as bool).input(),
-      ssh: map['ssh'] == null ? null : (SshConfigurationResponse.fromMap((map['ssh'] as Map).cast<String, dynamic>())).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      enableAutomaticUpdates: map['enableAutomaticUpdates'] == null ? null : (map['enableAutomaticUpdates']! as bool).input(),
+      provisionVMAgent: map['provisionVMAgent'] == null ? null : (map['provisionVMAgent']! as bool).input(),
+      provisionVMConfigAgent: map['provisionVMConfigAgent'] == null ? null : (map['provisionVMConfigAgent']! as bool).input(),
+      ssh: map['ssh'] == null ? null : (SshConfigurationResponse.fromMap((map['ssh']! as Map).cast<String, dynamic>())).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

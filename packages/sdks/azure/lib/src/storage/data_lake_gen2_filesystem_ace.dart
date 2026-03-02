@@ -37,9 +37,9 @@ class DataLakeGen2FilesystemAce {
 
   factory DataLakeGen2FilesystemAce.fromMap(Map<String, dynamic> map) {
     return DataLakeGen2FilesystemAce(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       permissions: (map['permissions'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

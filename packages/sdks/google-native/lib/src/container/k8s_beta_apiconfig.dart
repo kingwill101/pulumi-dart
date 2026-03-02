@@ -21,7 +21,7 @@ class K8sBetaAPIConfig {
 
   factory K8sBetaAPIConfig.fromMap(Map<String, dynamic> map) {
     return K8sBetaAPIConfig(
-      enabledApis: map['enabledApis'] == null ? null : ((map['enabledApis'] as List).cast<String>()).input(),
+      enabledApis: map['enabledApis'] == null ? null : ((map['enabledApis']! as List).cast<String>()).input(),
     );
   }
 }

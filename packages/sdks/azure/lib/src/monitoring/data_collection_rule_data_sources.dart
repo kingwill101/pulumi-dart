@@ -75,16 +75,16 @@ class DataCollectionRuleDataSources {
 
   factory DataCollectionRuleDataSources.fromMap(Map<String, dynamic> map) {
     return DataCollectionRuleDataSources(
-      dataImport: map['dataImport'] == null ? null : (DataCollectionRuleDataSourcesDataImport.fromMap((map['dataImport'] as Map).cast<String, dynamic>())).input(),
-      extensions: map['extensions'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDataSourcesExtension>(map['extensions'], (value) => DataCollectionRuleDataSourcesExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      iisLogs: map['iisLogs'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDataSourcesIisLog>(map['iisLogs'], (value) => DataCollectionRuleDataSourcesIisLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      logFiles: map['logFiles'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDataSourcesLogFile>(map['logFiles'], (value) => DataCollectionRuleDataSourcesLogFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      performanceCounters: map['performanceCounters'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDataSourcesPerformanceCounter>(map['performanceCounters'], (value) => DataCollectionRuleDataSourcesPerformanceCounter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      platformTelemetries: map['platformTelemetries'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDataSourcesPlatformTelemetry>(map['platformTelemetries'], (value) => DataCollectionRuleDataSourcesPlatformTelemetry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      prometheusForwarders: map['prometheusForwarders'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDataSourcesPrometheusForwarder>(map['prometheusForwarders'], (value) => DataCollectionRuleDataSourcesPrometheusForwarder.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      syslogs: map['syslogs'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDataSourcesSyslog>(map['syslogs'], (value) => DataCollectionRuleDataSourcesSyslog.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      windowsEventLogs: map['windowsEventLogs'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDataSourcesWindowsEventLog>(map['windowsEventLogs'], (value) => DataCollectionRuleDataSourcesWindowsEventLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      windowsFirewallLogs: map['windowsFirewallLogs'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDataSourcesWindowsFirewallLog>(map['windowsFirewallLogs'], (value) => DataCollectionRuleDataSourcesWindowsFirewallLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataImport: map['dataImport'] == null ? null : (DataCollectionRuleDataSourcesDataImport.fromMap((map['dataImport']! as Map).cast<String, dynamic>())).input(),
+      extensions: map['extensions'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDataSourcesExtension>(map['extensions']!, (value) => DataCollectionRuleDataSourcesExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      iisLogs: map['iisLogs'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDataSourcesIisLog>(map['iisLogs']!, (value) => DataCollectionRuleDataSourcesIisLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logFiles: map['logFiles'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDataSourcesLogFile>(map['logFiles']!, (value) => DataCollectionRuleDataSourcesLogFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      performanceCounters: map['performanceCounters'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDataSourcesPerformanceCounter>(map['performanceCounters']!, (value) => DataCollectionRuleDataSourcesPerformanceCounter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      platformTelemetries: map['platformTelemetries'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDataSourcesPlatformTelemetry>(map['platformTelemetries']!, (value) => DataCollectionRuleDataSourcesPlatformTelemetry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      prometheusForwarders: map['prometheusForwarders'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDataSourcesPrometheusForwarder>(map['prometheusForwarders']!, (value) => DataCollectionRuleDataSourcesPrometheusForwarder.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      syslogs: map['syslogs'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDataSourcesSyslog>(map['syslogs']!, (value) => DataCollectionRuleDataSourcesSyslog.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      windowsEventLogs: map['windowsEventLogs'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDataSourcesWindowsEventLog>(map['windowsEventLogs']!, (value) => DataCollectionRuleDataSourcesWindowsEventLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      windowsFirewallLogs: map['windowsFirewallLogs'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDataSourcesWindowsFirewallLog>(map['windowsFirewallLogs']!, (value) => DataCollectionRuleDataSourcesWindowsFirewallLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class ResourceMetricStatusPatchAutoscalingV2beta2 {
 
   factory ResourceMetricStatusPatchAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
     return ResourceMetricStatusPatchAutoscalingV2beta2(
-      current: map['current'] == null ? null : (MetricValueStatusPatchAutoscalingV2beta2.fromMap((map['current'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      current: map['current'] == null ? null : (MetricValueStatusPatchAutoscalingV2beta2.fromMap((map['current']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

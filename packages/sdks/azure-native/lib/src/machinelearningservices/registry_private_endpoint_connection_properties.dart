@@ -38,10 +38,10 @@ class RegistryPrivateEndpointConnectionProperties {
 
   factory RegistryPrivateEndpointConnectionProperties.fromMap(Map<String, dynamic> map) {
     return RegistryPrivateEndpointConnectionProperties(
-      groupIds: map['groupIds'] == null ? null : ((map['groupIds'] as List).cast<String>()).input(),
-      privateEndpoint: map['privateEndpoint'] == null ? null : (PrivateEndpointResource.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>())).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
-      registryPrivateLinkServiceConnectionState: map['registryPrivateLinkServiceConnectionState'] == null ? null : (RegistryPrivateLinkServiceConnectionState.fromMap((map['registryPrivateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
+      groupIds: map['groupIds'] == null ? null : ((map['groupIds']! as List).cast<String>()).input(),
+      privateEndpoint: map['privateEndpoint'] == null ? null : (PrivateEndpointResource.fromMap((map['privateEndpoint']! as Map).cast<String, dynamic>())).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      registryPrivateLinkServiceConnectionState: map['registryPrivateLinkServiceConnectionState'] == null ? null : (RegistryPrivateLinkServiceConnectionState.fromMap((map['registryPrivateLinkServiceConnectionState']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

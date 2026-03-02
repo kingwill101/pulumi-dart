@@ -35,8 +35,8 @@ class RegistrationAssignmentArgs {
 
   factory RegistrationAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return RegistrationAssignmentArgs(
-      properties: map['properties'] == null ? null : (RegistrationAssignmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      registrationAssignmentId: map['registrationAssignmentId'] == null ? null : (map['registrationAssignmentId'] as String).input(),
+      properties: map['properties'] == null ? null : (RegistrationAssignmentProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      registrationAssignmentId: map['registrationAssignmentId'] == null ? null : (map['registrationAssignmentId']! as String).input(),
       scope: (map['scope'] as String).input(),
     );
   }

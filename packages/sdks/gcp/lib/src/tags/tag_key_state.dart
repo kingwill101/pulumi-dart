@@ -72,16 +72,16 @@ class TagKeyState {
 
   factory TagKeyState.fromMap(Map<String, dynamic> map) {
     return TagKeyState(
-      allowedValuesRegex: map['allowedValuesRegex'] == null ? null : (map['allowedValuesRegex'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespacedName: map['namespacedName'] == null ? null : (map['namespacedName'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      purpose: map['purpose'] == null ? null : (map['purpose'] as String).input(),
-      purposeData: map['purposeData'] == null ? null : ((map['purposeData'] as Map).cast<String, String>()).input(),
-      shortName: map['shortName'] == null ? null : (map['shortName'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      allowedValuesRegex: map['allowedValuesRegex'] == null ? null : (map['allowedValuesRegex']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespacedName: map['namespacedName'] == null ? null : (map['namespacedName']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      purpose: map['purpose'] == null ? null : (map['purpose']! as String).input(),
+      purposeData: map['purposeData'] == null ? null : ((map['purposeData']! as Map).cast<String, String>()).input(),
+      shortName: map['shortName'] == null ? null : (map['shortName']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

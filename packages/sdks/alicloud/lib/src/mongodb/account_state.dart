@@ -49,12 +49,12 @@ class AccountState {
 
   factory AccountState.fromMap(Map<String, dynamic> map) {
     return AccountState(
-      accountDescription: map['accountDescription'] == null ? null : (map['accountDescription'] as String).input(),
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword'] as String).input(),
-      characterType: map['characterType'] == null ? null : (map['characterType'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      accountDescription: map['accountDescription'] == null ? null : (map['accountDescription']! as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword']! as String).input(),
+      characterType: map['characterType'] == null ? null : (map['characterType']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

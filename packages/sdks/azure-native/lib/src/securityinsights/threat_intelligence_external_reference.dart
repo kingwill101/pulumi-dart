@@ -41,11 +41,11 @@ class ThreatIntelligenceExternalReference {
 
   factory ThreatIntelligenceExternalReference.fromMap(Map<String, dynamic> map) {
     return ThreatIntelligenceExternalReference(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
-      hashes: map['hashes'] == null ? null : ((map['hashes'] as Map).cast<String, String>()).input(),
-      sourceName: map['sourceName'] == null ? null : (map['sourceName'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      externalId: map['externalId'] == null ? null : (map['externalId']! as String).input(),
+      hashes: map['hashes'] == null ? null : ((map['hashes']! as Map).cast<String, String>()).input(),
+      sourceName: map['sourceName'] == null ? null : (map['sourceName']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

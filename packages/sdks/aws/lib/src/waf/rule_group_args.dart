@@ -40,10 +40,10 @@ class RuleGroupArgs {
 
   factory RuleGroupArgs.fromMap(Map<String, dynamic> map) {
     return RuleGroupArgs(
-      activatedRules: map['activatedRules'] == null ? null : (pulumi.Input.decodeList<RuleGroupActivatedRule>(map['activatedRules'], (value) => RuleGroupActivatedRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      activatedRules: map['activatedRules'] == null ? null : ((pulumi.Input.decodeList<RuleGroupActivatedRule>(map['activatedRules']!, (value) => RuleGroupActivatedRule.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       metricName: (map['metricName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

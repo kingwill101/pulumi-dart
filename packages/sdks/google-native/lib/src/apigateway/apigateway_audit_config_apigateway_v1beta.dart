@@ -27,8 +27,8 @@ class ApigatewayAuditConfigApigatewayV1beta {
 
   factory ApigatewayAuditConfigApigatewayV1beta.fromMap(Map<String, dynamic> map) {
     return ApigatewayAuditConfigApigatewayV1beta(
-      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<ApigatewayAuditLogConfigApigatewayV1beta>(map['auditLogConfigs'], (value) => ApigatewayAuditLogConfigApigatewayV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<ApigatewayAuditLogConfigApigatewayV1beta>(map['auditLogConfigs']!, (value) => ApigatewayAuditLogConfigApigatewayV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

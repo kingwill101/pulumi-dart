@@ -43,10 +43,10 @@ class HadoopClusterRolesEdgeNode {
 
   factory HadoopClusterRolesEdgeNode.fromMap(Map<String, dynamic> map) {
     return HadoopClusterRolesEdgeNode(
-      httpsEndpoints: map['httpsEndpoints'] == null ? null : (pulumi.Input.decodeList<HadoopClusterRolesEdgeNodeHttpsEndpoint>(map['httpsEndpoints'], (value) => HadoopClusterRolesEdgeNodeHttpsEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      httpsEndpoints: map['httpsEndpoints'] == null ? null : (pulumi.Input.decodeList<HadoopClusterRolesEdgeNodeHttpsEndpoint>(map['httpsEndpoints']!, (value) => HadoopClusterRolesEdgeNodeHttpsEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
       installScriptActions: (pulumi.Input.decodeList<HadoopClusterRolesEdgeNodeInstallScriptAction>(map['installScriptActions'], (value) => HadoopClusterRolesEdgeNodeInstallScriptAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
       targetInstanceCount: (map['targetInstanceCount'] as int).input(),
-      uninstallScriptActions: map['uninstallScriptActions'] == null ? null : (pulumi.Input.decodeList<HadoopClusterRolesEdgeNodeUninstallScriptAction>(map['uninstallScriptActions'], (value) => HadoopClusterRolesEdgeNodeUninstallScriptAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uninstallScriptActions: map['uninstallScriptActions'] == null ? null : (pulumi.Input.decodeList<HadoopClusterRolesEdgeNodeUninstallScriptAction>(map['uninstallScriptActions']!, (value) => HadoopClusterRolesEdgeNodeUninstallScriptAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
       vmSize: (map['vmSize'] as String).input(),
     );
   }

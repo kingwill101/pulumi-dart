@@ -27,8 +27,8 @@ class LimitResponsePatchFlowcontrolApiserverK8sIoV1beta2 {
 
   factory LimitResponsePatchFlowcontrolApiserverK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return LimitResponsePatchFlowcontrolApiserverK8sIoV1beta2(
-      queuing: map['queuing'] == null ? null : (QueuingConfigurationPatchFlowcontrolApiserverK8sIoV1beta2.fromMap((map['queuing'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      queuing: map['queuing'] == null ? null : (QueuingConfigurationPatchFlowcontrolApiserverK8sIoV1beta2.fromMap((map['queuing']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

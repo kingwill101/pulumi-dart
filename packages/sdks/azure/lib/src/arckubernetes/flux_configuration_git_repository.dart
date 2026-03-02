@@ -70,16 +70,16 @@ class FluxConfigurationGitRepository {
 
   factory FluxConfigurationGitRepository.fromMap(Map<String, dynamic> map) {
     return FluxConfigurationGitRepository(
-      httpsCaCertBase64: map['httpsCaCertBase64'] == null ? null : (map['httpsCaCertBase64'] as String).input(),
-      httpsKeyBase64: map['httpsKeyBase64'] == null ? null : (map['httpsKeyBase64'] as String).input(),
-      httpsUser: map['httpsUser'] == null ? null : (map['httpsUser'] as String).input(),
-      localAuthReference: map['localAuthReference'] == null ? null : (map['localAuthReference'] as String).input(),
+      httpsCaCertBase64: map['httpsCaCertBase64'] == null ? null : (map['httpsCaCertBase64']! as String).input(),
+      httpsKeyBase64: map['httpsKeyBase64'] == null ? null : (map['httpsKeyBase64']! as String).input(),
+      httpsUser: map['httpsUser'] == null ? null : (map['httpsUser']! as String).input(),
+      localAuthReference: map['localAuthReference'] == null ? null : (map['localAuthReference']! as String).input(),
       referenceType: (map['referenceType'] as String).input(),
       referenceValue: (map['referenceValue'] as String).input(),
-      sshKnownHostsBase64: map['sshKnownHostsBase64'] == null ? null : (map['sshKnownHostsBase64'] as String).input(),
-      sshPrivateKeyBase64: map['sshPrivateKeyBase64'] == null ? null : (map['sshPrivateKeyBase64'] as String).input(),
-      syncIntervalInSeconds: map['syncIntervalInSeconds'] == null ? null : (map['syncIntervalInSeconds'] as int).input(),
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as int).input(),
+      sshKnownHostsBase64: map['sshKnownHostsBase64'] == null ? null : (map['sshKnownHostsBase64']! as String).input(),
+      sshPrivateKeyBase64: map['sshPrivateKeyBase64'] == null ? null : (map['sshPrivateKeyBase64']! as String).input(),
+      syncIntervalInSeconds: map['syncIntervalInSeconds'] == null ? null : (map['syncIntervalInSeconds']! as int).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds']! as int).input(),
       url: (map['url'] as String).input(),
     );
   }

@@ -28,7 +28,7 @@ class BasicLevelAccesscontextmanagerV1beta {
 
   factory BasicLevelAccesscontextmanagerV1beta.fromMap(Map<String, dynamic> map) {
     return BasicLevelAccesscontextmanagerV1beta(
-      combiningFunction: map['combiningFunction'] == null ? null : (BasicLevelCombiningFunctionAccesscontextmanagerV1beta.fromValue(map['combiningFunction'] as String)).input(),
+      combiningFunction: map['combiningFunction'] == null ? null : (BasicLevelCombiningFunctionAccesscontextmanagerV1beta.fromValue(map['combiningFunction']! as String)).input(),
       conditions: (pulumi.Input.decodeList<ConditionAccesscontextmanagerV1beta>(map['conditions'], (value) => ConditionAccesscontextmanagerV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

@@ -31,9 +31,9 @@ class EventSeries {
 
   factory EventSeries.fromMap(Map<String, dynamic> map) {
     return EventSeries(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      lastObservedTime: map['lastObservedTime'] == null ? null : (map['lastObservedTime'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      lastObservedTime: map['lastObservedTime'] == null ? null : (map['lastObservedTime']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

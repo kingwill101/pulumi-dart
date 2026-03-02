@@ -26,8 +26,8 @@ class Category {
 
   factory Category.fromMap(Map<String, dynamic> map) {
     return Category(
-      categoryId: map['categoryId'] == null ? null : (map['categoryId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      categoryId: map['categoryId'] == null ? null : (map['categoryId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

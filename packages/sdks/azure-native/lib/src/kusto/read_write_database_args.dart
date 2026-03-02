@@ -66,15 +66,15 @@ class ReadWriteDatabaseArgs {
 
   factory ReadWriteDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return ReadWriteDatabaseArgs(
-      callerRole: map['callerRole'] == null ? null : (map['callerRole'] as String).input(),
+      callerRole: map['callerRole'] == null ? null : (map['callerRole']! as String).input(),
       clusterName: (map['clusterName'] as String).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      hotCachePeriod: map['hotCachePeriod'] == null ? null : (map['hotCachePeriod'] as String).input(),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : (KeyVaultProperties.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
+      hotCachePeriod: map['hotCachePeriod'] == null ? null : (map['hotCachePeriod']! as String).input(),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (KeyVaultProperties.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())).input(),
       kind: (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      softDeletePeriod: map['softDeletePeriod'] == null ? null : (map['softDeletePeriod'] as String).input(),
+      softDeletePeriod: map['softDeletePeriod'] == null ? null : (map['softDeletePeriod']! as String).input(),
     );
   }
 }

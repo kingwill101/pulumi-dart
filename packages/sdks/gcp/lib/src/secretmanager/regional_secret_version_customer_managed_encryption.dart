@@ -21,7 +21,7 @@ class RegionalSecretVersionCustomerManagedEncryption {
 
   factory RegionalSecretVersionCustomerManagedEncryption.fromMap(Map<String, dynamic> map) {
     return RegionalSecretVersionCustomerManagedEncryption(
-      kmsKeyVersionName: map['kmsKeyVersionName'] == null ? null : (map['kmsKeyVersionName'] as String).input(),
+      kmsKeyVersionName: map['kmsKeyVersionName'] == null ? null : (map['kmsKeyVersionName']! as String).input(),
     );
   }
 }

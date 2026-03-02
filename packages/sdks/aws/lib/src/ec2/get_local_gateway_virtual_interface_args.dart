@@ -40,10 +40,10 @@ class GetLocalGatewayVirtualInterfaceArgs {
 
   factory GetLocalGatewayVirtualInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return GetLocalGatewayVirtualInterfaceArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetLocalGatewayVirtualInterfaceFilter>(map['filters'], (value) => GetLocalGatewayVirtualInterfaceFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetLocalGatewayVirtualInterfaceFilter>(map['filters']!, (value) => GetLocalGatewayVirtualInterfaceFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

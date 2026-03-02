@@ -26,7 +26,7 @@ class GetNodeGroupResource {
 
   factory GetNodeGroupResource.fromMap(Map<String, dynamic> map) {
     return GetNodeGroupResource(
-      autoscalingGroups: (pulumi.Input.decodeList<GetNodeGroupResourceAutoscalingGroup>(map['autoscalingGroups'], (value) => GetNodeGroupResourceAutoscalingGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoscalingGroups: (pulumi.Input.decodeList<GetNodeGroupResourceAutoscalingGroup>(map['autoscalingGroups']!, (value) => GetNodeGroupResourceAutoscalingGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
       remoteAccessSecurityGroupId: (map['remoteAccessSecurityGroupId'] as String).input(),
     );
   }

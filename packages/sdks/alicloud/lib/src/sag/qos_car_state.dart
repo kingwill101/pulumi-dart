@@ -66,16 +66,16 @@ class QosCarState {
 
   factory QosCarState.fromMap(Map<String, dynamic> map) {
     return QosCarState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      limitType: map['limitType'] == null ? null : (map['limitType'] as String).input(),
-      maxBandwidthAbs: map['maxBandwidthAbs'] == null ? null : (map['maxBandwidthAbs'] as int).input(),
-      maxBandwidthPercent: map['maxBandwidthPercent'] == null ? null : (map['maxBandwidthPercent'] as int).input(),
-      minBandwidthAbs: map['minBandwidthAbs'] == null ? null : (map['minBandwidthAbs'] as int).input(),
-      minBandwidthPercent: map['minBandwidthPercent'] == null ? null : (map['minBandwidthPercent'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      percentSourceType: map['percentSourceType'] == null ? null : (map['percentSourceType'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      qosId: map['qosId'] == null ? null : (map['qosId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      limitType: map['limitType'] == null ? null : (map['limitType']! as String).input(),
+      maxBandwidthAbs: map['maxBandwidthAbs'] == null ? null : (map['maxBandwidthAbs']! as int).input(),
+      maxBandwidthPercent: map['maxBandwidthPercent'] == null ? null : (map['maxBandwidthPercent']! as int).input(),
+      minBandwidthAbs: map['minBandwidthAbs'] == null ? null : (map['minBandwidthAbs']! as int).input(),
+      minBandwidthPercent: map['minBandwidthPercent'] == null ? null : (map['minBandwidthPercent']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      percentSourceType: map['percentSourceType'] == null ? null : (map['percentSourceType']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      qosId: map['qosId'] == null ? null : (map['qosId']! as String).input(),
     );
   }
 }

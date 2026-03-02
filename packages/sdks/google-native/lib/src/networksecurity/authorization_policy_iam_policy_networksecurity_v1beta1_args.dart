@@ -58,14 +58,14 @@ class AuthorizationPolicyIamPolicyNetworksecurityV1beta1Args {
 
   factory AuthorizationPolicyIamPolicyNetworksecurityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return AuthorizationPolicyIamPolicyNetworksecurityV1beta1Args(
-      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1AuditConfigNetworksecurityV1beta1>(map['auditConfigs'], (value) => GoogleIamV1AuditConfigNetworksecurityV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1AuditConfigNetworksecurityV1beta1>(map['auditConfigs']!, (value) => GoogleIamV1AuditConfigNetworksecurityV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
       authorizationPolicyId: (map['authorizationPolicyId'] as String).input(),
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1BindingNetworksecurityV1beta1>(map['bindings'], (value) => GoogleIamV1BindingNetworksecurityV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      updateMask: map['updateMask'] == null ? null : (map['updateMask'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1BindingNetworksecurityV1beta1>(map['bindings']!, (value) => GoogleIamV1BindingNetworksecurityV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      updateMask: map['updateMask'] == null ? null : (map['updateMask']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

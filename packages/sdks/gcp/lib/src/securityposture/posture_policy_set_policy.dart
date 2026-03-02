@@ -39,9 +39,9 @@ class PosturePolicySetPolicy {
 
   factory PosturePolicySetPolicy.fromMap(Map<String, dynamic> map) {
     return PosturePolicySetPolicy(
-      complianceStandards: map['complianceStandards'] == null ? null : (pulumi.Input.decodeList<PosturePolicySetPolicyComplianceStandard>(map['complianceStandards'], (value) => PosturePolicySetPolicyComplianceStandard.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      complianceStandards: map['complianceStandards'] == null ? null : (pulumi.Input.decodeList<PosturePolicySetPolicyComplianceStandard>(map['complianceStandards']!, (value) => PosturePolicySetPolicyComplianceStandard.fromMap((value as Map).cast<String, dynamic>()))).input(),
       constraint: (PosturePolicySetPolicyConstraint.fromMap((map['constraint'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       policyId: (map['policyId'] as String).input(),
     );
   }

@@ -60,12 +60,12 @@ class AnycastEipAddressAttachmentArgs {
   factory AnycastEipAddressAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return AnycastEipAddressAttachmentArgs(
       anycastId: (map['anycastId'] as String).input(),
-      associationMode: map['associationMode'] == null ? null : (map['associationMode'] as String).input(),
+      associationMode: map['associationMode'] == null ? null : (map['associationMode']! as String).input(),
       bindInstanceId: (map['bindInstanceId'] as String).input(),
       bindInstanceRegionId: (map['bindInstanceRegionId'] as String).input(),
       bindInstanceType: (map['bindInstanceType'] as String).input(),
-      popLocations: map['popLocations'] == null ? null : (pulumi.Input.decodeList<AnycastEipAddressAttachmentPopLocation>(map['popLocations'], (value) => AnycastEipAddressAttachmentPopLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
+      popLocations: map['popLocations'] == null ? null : (pulumi.Input.decodeList<AnycastEipAddressAttachmentPopLocation>(map['popLocations']!, (value) => AnycastEipAddressAttachmentPopLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
     );
   }
 }

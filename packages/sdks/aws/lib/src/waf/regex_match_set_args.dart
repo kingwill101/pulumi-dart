@@ -30,8 +30,8 @@ class RegexMatchSetArgs {
 
   factory RegexMatchSetArgs.fromMap(Map<String, dynamic> map) {
     return RegexMatchSetArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      regexMatchTuples: map['regexMatchTuples'] == null ? null : (pulumi.Input.decodeList<RegexMatchSetRegexMatchTuple>(map['regexMatchTuples'], (value) => RegexMatchSetRegexMatchTuple.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      regexMatchTuples: map['regexMatchTuples'] == null ? null : ((pulumi.Input.decodeList<RegexMatchSetRegexMatchTuple>(map['regexMatchTuples']!, (value) => RegexMatchSetRegexMatchTuple.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

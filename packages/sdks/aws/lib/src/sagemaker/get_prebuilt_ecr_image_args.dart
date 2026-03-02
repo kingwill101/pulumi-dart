@@ -39,9 +39,9 @@ class GetPrebuiltEcrImageArgs {
 
   factory GetPrebuiltEcrImageArgs.fromMap(Map<String, dynamic> map) {
     return GetPrebuiltEcrImageArgs(
-      dnsSuffix: map['dnsSuffix'] == null ? null : (map['dnsSuffix'] as String).input(),
-      imageTag: map['imageTag'] == null ? null : (map['imageTag'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      dnsSuffix: map['dnsSuffix'] == null ? null : ((map['dnsSuffix'] as String).input()).input(),
+      imageTag: map['imageTag'] == null ? null : ((map['imageTag'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       repositoryName: (map['repositoryName'] as String).input(),
     );
   }

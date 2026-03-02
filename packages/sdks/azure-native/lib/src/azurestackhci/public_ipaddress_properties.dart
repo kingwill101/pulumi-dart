@@ -31,9 +31,9 @@ class PublicIPAddressProperties {
 
   factory PublicIPAddressProperties.fromMap(Map<String, dynamic> map) {
     return PublicIPAddressProperties(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      ipAllocationScope: map['ipAllocationScope'] == null ? null : (map['ipAllocationScope'] as String).input(),
-      publicIPAddressVersion: map['publicIPAddressVersion'] == null ? null : (map['publicIPAddressVersion'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      ipAllocationScope: map['ipAllocationScope'] == null ? null : (map['ipAllocationScope']! as String).input(),
+      publicIPAddressVersion: map['publicIPAddressVersion'] == null ? null : (map['publicIPAddressVersion']! as String).input(),
     );
   }
 }

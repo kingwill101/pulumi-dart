@@ -20,7 +20,7 @@ class ReservedInstanceOperationLock {
 
   factory ReservedInstanceOperationLock.fromMap(Map<String, dynamic> map) {
     return ReservedInstanceOperationLock(
-      lockReason: map['lockReason'] == null ? null : (map['lockReason'] as String).input(),
+      lockReason: map['lockReason'] == null ? null : (map['lockReason']! as String).input(),
     );
   }
 }

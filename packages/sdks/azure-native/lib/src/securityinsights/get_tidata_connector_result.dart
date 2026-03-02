@@ -70,13 +70,13 @@ class GetTIDataConnectorResult {
     return GetTIDataConnectorResult(
       azureApiVersion: map['azureApiVersion'] as String,
       dataTypes: TIDataConnectorDataTypesResponse.fromMap((map['dataTypes'] as Map).cast<String, dynamic>()),
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       tenantId: map['tenantId'] as String,
-      tipLookbackPeriod: map['tipLookbackPeriod'] == null ? null : map['tipLookbackPeriod'] as String,
+      tipLookbackPeriod: map['tipLookbackPeriod'] == null ? null : map['tipLookbackPeriod']! as String,
       type: map['type'] as String,
     );
   }

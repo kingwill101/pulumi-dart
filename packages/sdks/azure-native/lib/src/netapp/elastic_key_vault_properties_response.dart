@@ -36,9 +36,9 @@ class ElasticKeyVaultPropertiesResponse {
 
   factory ElasticKeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticKeyVaultPropertiesResponse(
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      keyVaultResourceId: map['keyVaultResourceId'] == null ? null : (map['keyVaultResourceId'] as String).input(),
-      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
+      keyVaultResourceId: map['keyVaultResourceId'] == null ? null : (map['keyVaultResourceId']! as String).input(),
+      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri']! as String).input(),
       status: (map['status'] as String).input(),
     );
   }

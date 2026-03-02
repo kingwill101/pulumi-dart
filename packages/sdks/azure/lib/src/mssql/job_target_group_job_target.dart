@@ -51,12 +51,12 @@ class JobTargetGroupJobTarget {
 
   factory JobTargetGroupJobTarget.fromMap(Map<String, dynamic> map) {
     return JobTargetGroupJobTarget(
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      elasticPoolName: map['elasticPoolName'] == null ? null : (map['elasticPoolName'] as String).input(),
-      jobCredentialId: map['jobCredentialId'] == null ? null : (map['jobCredentialId'] as String).input(),
-      membershipType: map['membershipType'] == null ? null : (map['membershipType'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
+      elasticPoolName: map['elasticPoolName'] == null ? null : (map['elasticPoolName']! as String).input(),
+      jobCredentialId: map['jobCredentialId'] == null ? null : (map['jobCredentialId']! as String).input(),
+      membershipType: map['membershipType'] == null ? null : (map['membershipType']! as String).input(),
       serverName: (map['serverName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

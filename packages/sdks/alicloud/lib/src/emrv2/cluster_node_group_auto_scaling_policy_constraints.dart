@@ -25,8 +25,8 @@ class ClusterNodeGroupAutoScalingPolicyConstraints {
 
   factory ClusterNodeGroupAutoScalingPolicyConstraints.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroupAutoScalingPolicyConstraints(
-      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity'] as int).input(),
-      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity'] as int).input(),
+      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity']! as int).input(),
+      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity']! as int).input(),
     );
   }
 }

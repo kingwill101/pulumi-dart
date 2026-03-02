@@ -20,7 +20,7 @@ class ListFirewallPolicyIdpsSignaturesFilterValueResult {
 
   factory ListFirewallPolicyIdpsSignaturesFilterValueResult.fromMap(Map<String, dynamic> map) {
     return ListFirewallPolicyIdpsSignaturesFilterValueResult(
-      filterValues: map['filterValues'] == null ? null : (map['filterValues'] as List).cast<String>(),
+      filterValues: map['filterValues'] == null ? null : (map['filterValues']! as List).cast<String>(),
     );
   }
 }

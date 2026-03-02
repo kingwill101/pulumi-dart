@@ -33,9 +33,9 @@ class AttachedNetworkConfiguration {
 
   factory AttachedNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return AttachedNetworkConfiguration(
-      l2Networks: map['l2Networks'] == null ? null : (pulumi.Input.decodeList<L2NetworkAttachmentConfiguration>(map['l2Networks'], (value) => L2NetworkAttachmentConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      l3Networks: map['l3Networks'] == null ? null : (pulumi.Input.decodeList<L3NetworkAttachmentConfiguration>(map['l3Networks'], (value) => L3NetworkAttachmentConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      trunkedNetworks: map['trunkedNetworks'] == null ? null : (pulumi.Input.decodeList<TrunkedNetworkAttachmentConfiguration>(map['trunkedNetworks'], (value) => TrunkedNetworkAttachmentConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      l2Networks: map['l2Networks'] == null ? null : (pulumi.Input.decodeList<L2NetworkAttachmentConfiguration>(map['l2Networks']!, (value) => L2NetworkAttachmentConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      l3Networks: map['l3Networks'] == null ? null : (pulumi.Input.decodeList<L3NetworkAttachmentConfiguration>(map['l3Networks']!, (value) => L3NetworkAttachmentConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      trunkedNetworks: map['trunkedNetworks'] == null ? null : (pulumi.Input.decodeList<TrunkedNetworkAttachmentConfiguration>(map['trunkedNetworks']!, (value) => TrunkedNetworkAttachmentConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

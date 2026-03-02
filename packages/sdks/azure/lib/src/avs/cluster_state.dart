@@ -46,12 +46,12 @@ class ClusterState {
 
   factory ClusterState.fromMap(Map<String, dynamic> map) {
     return ClusterState(
-      clusterNodeCount: map['clusterNodeCount'] == null ? null : (map['clusterNodeCount'] as int).input(),
-      clusterNumber: map['clusterNumber'] == null ? null : (map['clusterNumber'] as int).input(),
-      hosts: map['hosts'] == null ? null : ((map['hosts'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
-      vmwareCloudId: map['vmwareCloudId'] == null ? null : (map['vmwareCloudId'] as String).input(),
+      clusterNodeCount: map['clusterNodeCount'] == null ? null : (map['clusterNodeCount']! as int).input(),
+      clusterNumber: map['clusterNumber'] == null ? null : (map['clusterNumber']! as int).input(),
+      hosts: map['hosts'] == null ? null : ((map['hosts']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
+      vmwareCloudId: map['vmwareCloudId'] == null ? null : (map['vmwareCloudId']! as String).input(),
     );
   }
 }

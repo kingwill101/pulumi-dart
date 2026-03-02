@@ -42,11 +42,11 @@ class GetProductAsEndUsersArgs {
 
   factory GetProductAsEndUsersArgs.fromMap(Map<String, dynamic> map) {
     return GetProductAsEndUsersArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      sortBy: map['sortBy'] == null ? null : (map['sortBy'] as String).input(),
-      sortOrder: map['sortOrder'] == null ? null : (map['sortOrder'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      sortBy: map['sortBy'] == null ? null : (map['sortBy']! as String).input(),
+      sortOrder: map['sortOrder'] == null ? null : (map['sortOrder']! as String).input(),
     );
   }
 }

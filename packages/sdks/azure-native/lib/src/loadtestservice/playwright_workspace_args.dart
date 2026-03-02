@@ -49,12 +49,12 @@ class PlaywrightWorkspaceArgs {
 
   factory PlaywrightWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return PlaywrightWorkspaceArgs(
-      localAuth: map['localAuth'] == null ? null : (map['localAuth'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      playwrightWorkspaceName: map['playwrightWorkspaceName'] == null ? null : (map['playwrightWorkspaceName'] as String).input(),
-      regionalAffinity: map['regionalAffinity'] == null ? null : (map['regionalAffinity'] as String).input(),
+      localAuth: map['localAuth'] == null ? null : (map['localAuth']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      playwrightWorkspaceName: map['playwrightWorkspaceName'] == null ? null : (map['playwrightWorkspaceName']! as String).input(),
+      regionalAffinity: map['regionalAffinity'] == null ? null : (map['regionalAffinity']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

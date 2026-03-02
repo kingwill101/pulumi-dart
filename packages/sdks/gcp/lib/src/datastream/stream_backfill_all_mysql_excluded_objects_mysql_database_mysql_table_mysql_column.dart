@@ -52,13 +52,13 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn {
 
   factory StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn(
-      collation: map['collation'] == null ? null : (map['collation'] as String).input(),
-      column: map['column'] == null ? null : (map['column'] as String).input(),
-      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
-      length: map['length'] == null ? null : (map['length'] as int).input(),
-      nullable: map['nullable'] == null ? null : (map['nullable'] as bool).input(),
-      ordinalPosition: map['ordinalPosition'] == null ? null : (map['ordinalPosition'] as int).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as bool).input(),
+      collation: map['collation'] == null ? null : (map['collation']! as String).input(),
+      column: map['column'] == null ? null : (map['column']! as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
+      length: map['length'] == null ? null : (map['length']! as int).input(),
+      nullable: map['nullable'] == null ? null : (map['nullable']! as bool).input(),
+      ordinalPosition: map['ordinalPosition'] == null ? null : (map['ordinalPosition']! as int).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as bool).input(),
     );
   }
 }

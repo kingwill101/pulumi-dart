@@ -36,9 +36,9 @@ class ListProductsAndConfigurationsArgs {
 
   factory ListProductsAndConfigurationsArgs.fromMap(Map<String, dynamic> map) {
     return ListProductsAndConfigurationsArgs(
-      configurationFilter: map['configurationFilter'] == null ? null : (ConfigurationFilter.fromMap((map['configurationFilter'] as Map).cast<String, dynamic>())).input(),
-      customerSubscriptionDetails: map['customerSubscriptionDetails'] == null ? null : (CustomerSubscriptionDetails.fromMap((map['customerSubscriptionDetails'] as Map).cast<String, dynamic>())).input(),
-      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
+      configurationFilter: map['configurationFilter'] == null ? null : (ConfigurationFilter.fromMap((map['configurationFilter']! as Map).cast<String, dynamic>())).input(),
+      customerSubscriptionDetails: map['customerSubscriptionDetails'] == null ? null : (CustomerSubscriptionDetails.fromMap((map['customerSubscriptionDetails']! as Map).cast<String, dynamic>())).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken']! as String).input(),
     );
   }
 }

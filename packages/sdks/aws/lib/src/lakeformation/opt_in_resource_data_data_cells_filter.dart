@@ -35,10 +35,10 @@ class OptInResourceDataDataCellsFilter {
 
   factory OptInResourceDataDataCellsFilter.fromMap(Map<String, dynamic> map) {
     return OptInResourceDataDataCellsFilter(
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tableCatalogId: map['tableCatalogId'] == null ? null : (map['tableCatalogId'] as String).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : ((map['databaseName'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      tableCatalogId: map['tableCatalogId'] == null ? null : ((map['tableCatalogId'] as String).input()).input(),
+      tableName: map['tableName'] == null ? null : ((map['tableName'] as String).input()).input(),
     );
   }
 }

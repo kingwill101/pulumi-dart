@@ -41,7 +41,7 @@ class GetAccessRulesResult {
       accessGroupId: map['accessGroupId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       rules: pulumi.Input.decodeList<GetAccessRulesRule>(map['rules'], (value) => GetAccessRulesRule.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

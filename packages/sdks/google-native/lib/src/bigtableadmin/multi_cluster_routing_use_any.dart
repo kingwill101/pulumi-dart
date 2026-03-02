@@ -21,7 +21,7 @@ class MultiClusterRoutingUseAny {
 
   factory MultiClusterRoutingUseAny.fromMap(Map<String, dynamic> map) {
     return MultiClusterRoutingUseAny(
-      clusterIds: map['clusterIds'] == null ? null : ((map['clusterIds'] as List).cast<String>()).input(),
+      clusterIds: map['clusterIds'] == null ? null : ((map['clusterIds']! as List).cast<String>()).input(),
     );
   }
 }

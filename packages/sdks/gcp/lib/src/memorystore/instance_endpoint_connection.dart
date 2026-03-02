@@ -22,7 +22,7 @@ class InstanceEndpointConnection {
 
   factory InstanceEndpointConnection.fromMap(Map<String, dynamic> map) {
     return InstanceEndpointConnection(
-      pscAutoConnection: map['pscAutoConnection'] == null ? null : (InstanceEndpointConnectionPscAutoConnection.fromMap((map['pscAutoConnection'] as Map).cast<String, dynamic>())).input(),
+      pscAutoConnection: map['pscAutoConnection'] == null ? null : (InstanceEndpointConnectionPscAutoConnection.fromMap((map['pscAutoConnection']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

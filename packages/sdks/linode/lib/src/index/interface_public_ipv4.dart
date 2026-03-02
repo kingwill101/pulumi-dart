@@ -33,9 +33,9 @@ class InterfacePublicIpv4 {
 
   factory InterfacePublicIpv4.fromMap(Map<String, dynamic> map) {
     return InterfacePublicIpv4(
-      addresses: map['addresses'] == null ? null : (pulumi.Input.decodeList<InterfacePublicIpv4Address>(map['addresses'], (value) => InterfacePublicIpv4Address.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      assignedAddresses: map['assignedAddresses'] == null ? null : (pulumi.Input.decodeList<InterfacePublicIpv4AssignedAddress>(map['assignedAddresses'], (value) => InterfacePublicIpv4AssignedAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      shareds: map['shareds'] == null ? null : (pulumi.Input.decodeList<InterfacePublicIpv4Shared>(map['shareds'], (value) => InterfacePublicIpv4Shared.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      addresses: map['addresses'] == null ? null : (pulumi.Input.decodeList<InterfacePublicIpv4Address>(map['addresses']!, (value) => InterfacePublicIpv4Address.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      assignedAddresses: map['assignedAddresses'] == null ? null : (pulumi.Input.decodeList<InterfacePublicIpv4AssignedAddress>(map['assignedAddresses']!, (value) => InterfacePublicIpv4AssignedAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shareds: map['shareds'] == null ? null : (pulumi.Input.decodeList<InterfacePublicIpv4Shared>(map['shareds']!, (value) => InterfacePublicIpv4Shared.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -46,8 +46,8 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy {
   factory RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy(
       numRetries: (map['numRetries'] as int).input(),
-      perTryTimeout: map['perTryTimeout'] == null ? null : (RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout.fromMap((map['perTryTimeout'] as Map).cast<String, dynamic>())).input(),
-      retryConditions: map['retryConditions'] == null ? null : ((map['retryConditions'] as List).cast<String>()).input(),
+      perTryTimeout: map['perTryTimeout'] == null ? null : (RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout.fromMap((map['perTryTimeout']! as Map).cast<String, dynamic>())).input(),
+      retryConditions: map['retryConditions'] == null ? null : ((map['retryConditions']! as List).cast<String>()).input(),
     );
   }
 }

@@ -51,13 +51,13 @@ class ClientInstanceAttachmentState {
 
   factory ClientInstanceAttachmentState.fromMap(Map<String, dynamic> map) {
     return ClientInstanceAttachmentState(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      clientInstanceId: map['clientInstanceId'] == null ? null : (map['clientInstanceId'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      eiInstanceType: map['eiInstanceType'] == null ? null : (map['eiInstanceType'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      clientInstanceId: map['clientInstanceId'] == null ? null : (map['clientInstanceId']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      eiInstanceType: map['eiInstanceType'] == null ? null : (map['eiInstanceType']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2ReplaceDictionaryConfig {
 
   factory GooglePrivacyDlpV2ReplaceDictionaryConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ReplaceDictionaryConfig(
-      wordList: map['wordList'] == null ? null : (GooglePrivacyDlpV2WordList.fromMap((map['wordList'] as Map).cast<String, dynamic>())).input(),
+      wordList: map['wordList'] == null ? null : (GooglePrivacyDlpV2WordList.fromMap((map['wordList']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

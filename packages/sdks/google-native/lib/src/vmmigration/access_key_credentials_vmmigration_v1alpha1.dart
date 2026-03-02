@@ -31,9 +31,9 @@ class AccessKeyCredentialsVmmigrationV1alpha1 {
 
   factory AccessKeyCredentialsVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return AccessKeyCredentialsVmmigrationV1alpha1(
-      accessKeyId: map['accessKeyId'] == null ? null : (map['accessKeyId'] as String).input(),
-      secretAccessKey: map['secretAccessKey'] == null ? null : (map['secretAccessKey'] as String).input(),
-      sessionToken: map['sessionToken'] == null ? null : (map['sessionToken'] as String).input(),
+      accessKeyId: map['accessKeyId'] == null ? null : (map['accessKeyId']! as String).input(),
+      secretAccessKey: map['secretAccessKey'] == null ? null : (map['secretAccessKey']! as String).input(),
+      sessionToken: map['sessionToken'] == null ? null : (map['sessionToken']! as String).input(),
     );
   }
 }

@@ -59,9 +59,9 @@ class ApiIamMemberArgs {
   factory ApiIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return ApiIamMemberArgs(
       api: (map['api'] as String).input(),
-      condition: map['condition'] == null ? null : (ApiIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (ApiIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       member: (map['member'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

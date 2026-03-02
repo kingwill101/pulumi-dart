@@ -57,11 +57,11 @@ class GetSubscriptionNetworkManagerConnectionResult {
   factory GetSubscriptionNetworkManagerConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionNetworkManagerConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      networkManagerId: map['networkManagerId'] == null ? null : map['networkManagerId'] as String,
+      networkManagerId: map['networkManagerId'] == null ? null : map['networkManagerId']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

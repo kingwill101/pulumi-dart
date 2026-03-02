@@ -38,7 +38,7 @@ class ClusterTrustBundleSpecCertificatesK8sIoV1beta1 {
 
   factory ClusterTrustBundleSpecCertificatesK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return ClusterTrustBundleSpecCertificatesK8sIoV1beta1(
-      signerName: map['signerName'] == null ? null : (map['signerName'] as String).input(),
+      signerName: map['signerName'] == null ? null : (map['signerName']! as String).input(),
       trustBundle: (map['trustBundle'] as String).input(),
     );
   }

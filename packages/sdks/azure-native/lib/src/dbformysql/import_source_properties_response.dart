@@ -31,9 +31,9 @@ class ImportSourcePropertiesResponse {
 
   factory ImportSourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ImportSourcePropertiesResponse(
-      dataDirPath: map['dataDirPath'] == null ? null : (map['dataDirPath'] as String).input(),
-      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
-      storageUrl: map['storageUrl'] == null ? null : (map['storageUrl'] as String).input(),
+      dataDirPath: map['dataDirPath'] == null ? null : (map['dataDirPath']! as String).input(),
+      storageType: map['storageType'] == null ? null : (map['storageType']! as String).input(),
+      storageUrl: map['storageUrl'] == null ? null : (map['storageUrl']! as String).input(),
     );
   }
 }

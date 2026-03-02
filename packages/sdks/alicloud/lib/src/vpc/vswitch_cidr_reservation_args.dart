@@ -54,12 +54,12 @@ class VswitchCidrReservationArgs {
 
   factory VswitchCidrReservationArgs.fromMap(Map<String, dynamic> map) {
     return VswitchCidrReservationArgs(
-      cidrReservationCidr: map['cidrReservationCidr'] == null ? null : (map['cidrReservationCidr'] as String).input(),
-      cidrReservationDescription: map['cidrReservationDescription'] == null ? null : (map['cidrReservationDescription'] as String).input(),
-      cidrReservationMask: map['cidrReservationMask'] == null ? null : (map['cidrReservationMask'] as String).input(),
-      cidrReservationType: map['cidrReservationType'] == null ? null : (map['cidrReservationType'] as String).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
-      vswitchCidrReservationName: map['vswitchCidrReservationName'] == null ? null : (map['vswitchCidrReservationName'] as String).input(),
+      cidrReservationCidr: map['cidrReservationCidr'] == null ? null : (map['cidrReservationCidr']! as String).input(),
+      cidrReservationDescription: map['cidrReservationDescription'] == null ? null : (map['cidrReservationDescription']! as String).input(),
+      cidrReservationMask: map['cidrReservationMask'] == null ? null : (map['cidrReservationMask']! as String).input(),
+      cidrReservationType: map['cidrReservationType'] == null ? null : (map['cidrReservationType']! as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as String).input(),
+      vswitchCidrReservationName: map['vswitchCidrReservationName'] == null ? null : (map['vswitchCidrReservationName']! as String).input(),
       vswitchId: (map['vswitchId'] as String).input(),
     );
   }

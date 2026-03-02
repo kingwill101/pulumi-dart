@@ -20,7 +20,7 @@ class VpnConnectionVpcProject {
 
   factory VpnConnectionVpcProject.fromMap(Map<String, dynamic> map) {
     return VpnConnectionVpcProject(
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
     );
   }
 }

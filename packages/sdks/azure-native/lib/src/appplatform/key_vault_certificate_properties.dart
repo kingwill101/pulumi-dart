@@ -47,9 +47,9 @@ class KeyVaultCertificateProperties {
 
   factory KeyVaultCertificateProperties.fromMap(Map<String, dynamic> map) {
     return KeyVaultCertificateProperties(
-      autoSync: map['autoSync'] == null ? null : (map['autoSync'] as String).input(),
-      certVersion: map['certVersion'] == null ? null : (map['certVersion'] as String).input(),
-      excludePrivateKey: map['excludePrivateKey'] == null ? null : (map['excludePrivateKey'] as bool).input(),
+      autoSync: map['autoSync'] == null ? null : (map['autoSync']! as String).input(),
+      certVersion: map['certVersion'] == null ? null : (map['certVersion']! as String).input(),
+      excludePrivateKey: map['excludePrivateKey'] == null ? null : (map['excludePrivateKey']! as bool).input(),
       keyVaultCertName: (map['keyVaultCertName'] as String).input(),
       type: (map['type'] as String).input(),
       vaultUri: (map['vaultUri'] as String).input(),

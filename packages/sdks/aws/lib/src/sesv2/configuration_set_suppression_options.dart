@@ -20,7 +20,7 @@ class ConfigurationSetSuppressionOptions {
 
   factory ConfigurationSetSuppressionOptions.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetSuppressionOptions(
-      suppressedReasons: map['suppressedReasons'] == null ? null : ((map['suppressedReasons'] as List).cast<String>()).input(),
+      suppressedReasons: map['suppressedReasons'] == null ? null : (((map['suppressedReasons'] as List).cast<String>()).input()).input(),
     );
   }
 }

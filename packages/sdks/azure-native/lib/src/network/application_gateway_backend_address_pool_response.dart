@@ -53,11 +53,11 @@ class ApplicationGatewayBackendAddressPoolResponse {
 
   factory ApplicationGatewayBackendAddressPoolResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayBackendAddressPoolResponse(
-      backendAddresses: map['backendAddresses'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayBackendAddressResponse>(map['backendAddresses'], (value) => ApplicationGatewayBackendAddressResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backendAddresses: map['backendAddresses'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayBackendAddressResponse>(map['backendAddresses']!, (value) => ApplicationGatewayBackendAddressResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       backendIPConfigurations: (pulumi.Input.decodeList<NetworkInterfaceIPConfigurationResponse>(map['backendIPConfigurations'], (value) => NetworkInterfaceIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       type: (map['type'] as String).input(),
     );

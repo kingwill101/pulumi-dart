@@ -37,8 +37,8 @@ class ManagedRuleSet {
 
   factory ManagedRuleSet.fromMap(Map<String, dynamic> map) {
     return ManagedRuleSet(
-      anomalyScore: map['anomalyScore'] == null ? null : (map['anomalyScore'] as int).input(),
-      ruleGroupOverrides: map['ruleGroupOverrides'] == null ? null : (pulumi.Input.decodeList<ManagedRuleGroupOverride>(map['ruleGroupOverrides'], (value) => ManagedRuleGroupOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      anomalyScore: map['anomalyScore'] == null ? null : (map['anomalyScore']! as int).input(),
+      ruleGroupOverrides: map['ruleGroupOverrides'] == null ? null : (pulumi.Input.decodeList<ManagedRuleGroupOverride>(map['ruleGroupOverrides']!, (value) => ManagedRuleGroupOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
       ruleSetType: (map['ruleSetType'] as String).input(),
       ruleSetVersion: (map['ruleSetVersion'] as String).input(),
     );

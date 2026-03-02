@@ -64,15 +64,15 @@ class GoogleCloudMlV1HyperparameterSpec {
 
   factory GoogleCloudMlV1HyperparameterSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1HyperparameterSpec(
-      algorithm: map['algorithm'] == null ? null : (GoogleCloudMlV1HyperparameterSpecAlgorithm.fromValue(map['algorithm'] as String)).input(),
-      enableTrialEarlyStopping: map['enableTrialEarlyStopping'] == null ? null : (map['enableTrialEarlyStopping'] as bool).input(),
+      algorithm: map['algorithm'] == null ? null : (GoogleCloudMlV1HyperparameterSpecAlgorithm.fromValue(map['algorithm']! as String)).input(),
+      enableTrialEarlyStopping: map['enableTrialEarlyStopping'] == null ? null : (map['enableTrialEarlyStopping']! as bool).input(),
       goal: (GoogleCloudMlV1HyperparameterSpecGoal.fromValue(map['goal'] as String)).input(),
-      hyperparameterMetricTag: map['hyperparameterMetricTag'] == null ? null : (map['hyperparameterMetricTag'] as String).input(),
-      maxFailedTrials: map['maxFailedTrials'] == null ? null : (map['maxFailedTrials'] as int).input(),
-      maxParallelTrials: map['maxParallelTrials'] == null ? null : (map['maxParallelTrials'] as int).input(),
-      maxTrials: map['maxTrials'] == null ? null : (map['maxTrials'] as int).input(),
+      hyperparameterMetricTag: map['hyperparameterMetricTag'] == null ? null : (map['hyperparameterMetricTag']! as String).input(),
+      maxFailedTrials: map['maxFailedTrials'] == null ? null : (map['maxFailedTrials']! as int).input(),
+      maxParallelTrials: map['maxParallelTrials'] == null ? null : (map['maxParallelTrials']! as int).input(),
+      maxTrials: map['maxTrials'] == null ? null : (map['maxTrials']! as int).input(),
       params: (pulumi.Input.decodeList<GoogleCloudMlV1ParameterSpec>(map['params'], (value) => GoogleCloudMlV1ParameterSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resumePreviousJobId: map['resumePreviousJobId'] == null ? null : (map['resumePreviousJobId'] as String).input(),
+      resumePreviousJobId: map['resumePreviousJobId'] == null ? null : (map['resumePreviousJobId']! as String).input(),
     );
   }
 }

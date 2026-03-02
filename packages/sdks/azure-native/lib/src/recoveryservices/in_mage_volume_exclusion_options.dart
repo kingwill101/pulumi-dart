@@ -26,8 +26,8 @@ class InMageVolumeExclusionOptions {
 
   factory InMageVolumeExclusionOptions.fromMap(Map<String, dynamic> map) {
     return InMageVolumeExclusionOptions(
-      onlyExcludeIfSingleVolume: map['onlyExcludeIfSingleVolume'] == null ? null : (map['onlyExcludeIfSingleVolume'] as String).input(),
-      volumeLabel: map['volumeLabel'] == null ? null : (map['volumeLabel'] as String).input(),
+      onlyExcludeIfSingleVolume: map['onlyExcludeIfSingleVolume'] == null ? null : (map['onlyExcludeIfSingleVolume']! as String).input(),
+      volumeLabel: map['volumeLabel'] == null ? null : (map['volumeLabel']! as String).input(),
     );
   }
 }

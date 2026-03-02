@@ -21,7 +21,7 @@ class SigningJobDestination {
 
   factory SigningJobDestination.fromMap(Map<String, dynamic> map) {
     return SigningJobDestination(
-      s3: (SigningJobDestinationS3.fromMap((map['s3'] as Map).cast<String, dynamic>())).input(),
+      s3: (SigningJobDestinationS3.fromMap((map['s3']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

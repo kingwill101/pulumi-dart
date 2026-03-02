@@ -36,7 +36,7 @@ class SecurityProfileUrlFilteringProfileUrlFilter {
     return SecurityProfileUrlFilteringProfileUrlFilter(
       filteringAction: (map['filteringAction'] as String).input(),
       priority: (map['priority'] as int).input(),
-      urls: map['urls'] == null ? null : ((map['urls'] as List).cast<String>()).input(),
+      urls: map['urls'] == null ? null : ((map['urls']! as List).cast<String>()).input(),
     );
   }
 }

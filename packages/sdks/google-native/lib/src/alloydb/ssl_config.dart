@@ -28,8 +28,8 @@ class SslConfig {
 
   factory SslConfig.fromMap(Map<String, dynamic> map) {
     return SslConfig(
-      caSource: map['caSource'] == null ? null : (SslConfigCaSource.fromValue(map['caSource'] as String)).input(),
-      sslMode: map['sslMode'] == null ? null : (SslConfigSslMode.fromValue(map['sslMode'] as String)).input(),
+      caSource: map['caSource'] == null ? null : (SslConfigCaSource.fromValue(map['caSource']! as String)).input(),
+      sslMode: map['sslMode'] == null ? null : (SslConfigSslMode.fromValue(map['sslMode']! as String)).input(),
     );
   }
 }

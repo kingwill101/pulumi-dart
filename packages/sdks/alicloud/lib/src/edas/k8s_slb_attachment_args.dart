@@ -31,7 +31,7 @@ class K8sSlbAttachmentArgs {
   factory K8sSlbAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return K8sSlbAttachmentArgs(
       appId: (map['appId'] as String).input(),
-      slbConfigs: map['slbConfigs'] == null ? null : (pulumi.Input.decodeList<K8sSlbAttachmentSlbConfig>(map['slbConfigs'], (value) => K8sSlbAttachmentSlbConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      slbConfigs: map['slbConfigs'] == null ? null : (pulumi.Input.decodeList<K8sSlbAttachmentSlbConfig>(map['slbConfigs']!, (value) => K8sSlbAttachmentSlbConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

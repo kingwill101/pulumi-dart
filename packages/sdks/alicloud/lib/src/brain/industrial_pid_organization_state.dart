@@ -26,8 +26,8 @@ class IndustrialPidOrganizationState {
 
   factory IndustrialPidOrganizationState.fromMap(Map<String, dynamic> map) {
     return IndustrialPidOrganizationState(
-      parentPidOrganizationId: map['parentPidOrganizationId'] == null ? null : (map['parentPidOrganizationId'] as String).input(),
-      pidOrganizationName: map['pidOrganizationName'] == null ? null : (map['pidOrganizationName'] as String).input(),
+      parentPidOrganizationId: map['parentPidOrganizationId'] == null ? null : (map['parentPidOrganizationId']! as String).input(),
+      pidOrganizationName: map['pidOrganizationName'] == null ? null : (map['pidOrganizationName']! as String).input(),
     );
   }
 }

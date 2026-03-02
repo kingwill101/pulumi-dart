@@ -20,7 +20,7 @@ class InstanceEcsList {
 
   factory InstanceEcsList.fromMap(Map<String, dynamic> map) {
     return InstanceEcsList(
-      ecsId: map['ecsId'] == null ? null : (map['ecsId'] as String).input(),
+      ecsId: map['ecsId'] == null ? null : (map['ecsId']! as String).input(),
     );
   }
 }

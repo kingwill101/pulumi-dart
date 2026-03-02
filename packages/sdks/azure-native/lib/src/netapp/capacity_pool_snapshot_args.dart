@@ -50,10 +50,10 @@ class CapacityPoolSnapshotArgs {
   factory CapacityPoolSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return CapacityPoolSnapshotArgs(
       accountName: (map['accountName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       poolName: (map['poolName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
+      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName']! as String).input(),
       volumeName: (map['volumeName'] as String).input(),
     );
   }

@@ -49,12 +49,12 @@ class IntegrationServiceEnvironmentProperties {
 
   factory IntegrationServiceEnvironmentProperties.fromMap(Map<String, dynamic> map) {
     return IntegrationServiceEnvironmentProperties(
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (IntegrationServiceEnvironmenEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      endpointsConfiguration: map['endpointsConfiguration'] == null ? null : (FlowEndpointsConfiguration.fromMap((map['endpointsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      integrationServiceEnvironmentId: map['integrationServiceEnvironmentId'] == null ? null : (map['integrationServiceEnvironmentId'] as String).input(),
-      networkConfiguration: map['networkConfiguration'] == null ? null : (NetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (IntegrationServiceEnvironmenEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input(),
+      endpointsConfiguration: map['endpointsConfiguration'] == null ? null : (FlowEndpointsConfiguration.fromMap((map['endpointsConfiguration']! as Map).cast<String, dynamic>())).input(),
+      integrationServiceEnvironmentId: map['integrationServiceEnvironmentId'] == null ? null : (map['integrationServiceEnvironmentId']! as String).input(),
+      networkConfiguration: map['networkConfiguration'] == null ? null : (NetworkConfiguration.fromMap((map['networkConfiguration']! as Map).cast<String, dynamic>())).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

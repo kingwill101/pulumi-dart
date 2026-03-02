@@ -51,13 +51,13 @@ class NetworkMappingState {
 
   factory NetworkMappingState.fromMap(Map<String, dynamic> map) {
     return NetworkMappingState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recoveryVaultName: map['recoveryVaultName'] == null ? null : (map['recoveryVaultName'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      sourceNetworkId: map['sourceNetworkId'] == null ? null : (map['sourceNetworkId'] as String).input(),
-      sourceRecoveryFabricName: map['sourceRecoveryFabricName'] == null ? null : (map['sourceRecoveryFabricName'] as String).input(),
-      targetNetworkId: map['targetNetworkId'] == null ? null : (map['targetNetworkId'] as String).input(),
-      targetRecoveryFabricName: map['targetRecoveryFabricName'] == null ? null : (map['targetRecoveryFabricName'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      recoveryVaultName: map['recoveryVaultName'] == null ? null : (map['recoveryVaultName']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      sourceNetworkId: map['sourceNetworkId'] == null ? null : (map['sourceNetworkId']! as String).input(),
+      sourceRecoveryFabricName: map['sourceRecoveryFabricName'] == null ? null : (map['sourceRecoveryFabricName']! as String).input(),
+      targetNetworkId: map['targetNetworkId'] == null ? null : (map['targetNetworkId']! as String).input(),
+      targetRecoveryFabricName: map['targetRecoveryFabricName'] == null ? null : (map['targetRecoveryFabricName']! as String).input(),
     );
   }
 }

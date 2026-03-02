@@ -39,10 +39,10 @@ class ThingArgs {
 
   factory ThingArgs.fromMap(Map<String, dynamic> map) {
     return ThingArgs(
-      attributes: map['attributes'] == null ? null : ((map['attributes'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      thingTypeName: map['thingTypeName'] == null ? null : (map['thingTypeName'] as String).input(),
+      attributes: map['attributes'] == null ? null : (((map['attributes'] as Map).cast<String, String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      thingTypeName: map['thingTypeName'] == null ? null : ((map['thingTypeName'] as String).input()).input(),
     );
   }
 }

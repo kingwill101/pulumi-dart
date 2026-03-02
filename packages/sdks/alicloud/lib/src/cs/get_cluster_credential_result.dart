@@ -60,8 +60,8 @@ class GetClusterCredentialResult {
       expiration: map['expiration'] as String,
       id: map['id'] as String,
       kubeConfig: map['kubeConfig'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      temporaryDurationMinutes: map['temporaryDurationMinutes'] == null ? null : map['temporaryDurationMinutes'] as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      temporaryDurationMinutes: map['temporaryDurationMinutes'] == null ? null : map['temporaryDurationMinutes']! as int,
     );
   }
 }

@@ -23,7 +23,7 @@ class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMos
 
   factory RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig.fromMap(Map<String, dynamic> map) {
     return RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig(
-      timeWindowDays: map['timeWindowDays'] == null ? null : (map['timeWindowDays'] as int).input(),
+      timeWindowDays: map['timeWindowDays'] == null ? null : (map['timeWindowDays']! as int).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessor 
 
   factory FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessor.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessor(
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessorParameter>(map['parameters'], (value) => FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessorParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : ((pulumi.Input.decodeList<FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessorParameter>(map['parameters']!, (value) => FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessorParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

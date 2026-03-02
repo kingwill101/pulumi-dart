@@ -39,10 +39,10 @@ class VirtualNodeSpecListenerTimeout {
 
   factory VirtualNodeSpecListenerTimeout.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerTimeout(
-      grpc: map['grpc'] == null ? null : (VirtualNodeSpecListenerTimeoutGrpc.fromMap((map['grpc'] as Map).cast<String, dynamic>())).input(),
-      http: map['http'] == null ? null : (VirtualNodeSpecListenerTimeoutHttp.fromMap((map['http'] as Map).cast<String, dynamic>())).input(),
-      http2: map['http2'] == null ? null : (VirtualNodeSpecListenerTimeoutHttp2.fromMap((map['http2'] as Map).cast<String, dynamic>())).input(),
-      tcp: map['tcp'] == null ? null : (VirtualNodeSpecListenerTimeoutTcp.fromMap((map['tcp'] as Map).cast<String, dynamic>())).input(),
+      grpc: map['grpc'] == null ? null : ((VirtualNodeSpecListenerTimeoutGrpc.fromMap((map['grpc']! as Map).cast<String, dynamic>())).input()).input(),
+      http: map['http'] == null ? null : ((VirtualNodeSpecListenerTimeoutHttp.fromMap((map['http']! as Map).cast<String, dynamic>())).input()).input(),
+      http2: map['http2'] == null ? null : ((VirtualNodeSpecListenerTimeoutHttp2.fromMap((map['http2']! as Map).cast<String, dynamic>())).input()).input(),
+      tcp: map['tcp'] == null ? null : ((VirtualNodeSpecListenerTimeoutTcp.fromMap((map['tcp']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

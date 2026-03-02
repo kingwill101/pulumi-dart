@@ -21,7 +21,7 @@ class ImageStateEnumValueResponse {
 
   factory ImageStateEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return ImageStateEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -25,7 +25,7 @@ class InterconnectGroupConfigured {
 
   factory InterconnectGroupConfigured.fromMap(Map<String, dynamic> map) {
     return InterconnectGroupConfigured(
-      topologyCapabilities: map['topologyCapabilities'] == null ? null : (pulumi.Input.decodeList<InterconnectGroupConfiguredTopologyCapability>(map['topologyCapabilities'], (value) => InterconnectGroupConfiguredTopologyCapability.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      topologyCapabilities: map['topologyCapabilities'] == null ? null : (pulumi.Input.decodeList<InterconnectGroupConfiguredTopologyCapability>(map['topologyCapabilities']!, (value) => InterconnectGroupConfiguredTopologyCapability.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

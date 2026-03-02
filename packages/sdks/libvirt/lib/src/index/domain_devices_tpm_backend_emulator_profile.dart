@@ -30,9 +30,9 @@ class DomainDevicesTpmBackendEmulatorProfile {
 
   factory DomainDevicesTpmBackendEmulatorProfile.fromMap(Map<String, dynamic> map) {
     return DomainDevicesTpmBackendEmulatorProfile(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      removeDisabled: map['removeDisabled'] == null ? null : (map['removeDisabled'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      removeDisabled: map['removeDisabled'] == null ? null : (map['removeDisabled']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

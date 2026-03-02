@@ -30,9 +30,9 @@ class EventSourceMappingDocumentDbEventSourceConfig {
 
   factory EventSourceMappingDocumentDbEventSourceConfig.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingDocumentDbEventSourceConfig(
-      collectionName: map['collectionName'] == null ? null : (map['collectionName'] as String).input(),
+      collectionName: map['collectionName'] == null ? null : ((map['collectionName'] as String).input()).input(),
       databaseName: (map['databaseName'] as String).input(),
-      fullDocument: map['fullDocument'] == null ? null : (map['fullDocument'] as String).input(),
+      fullDocument: map['fullDocument'] == null ? null : ((map['fullDocument'] as String).input()).input(),
     );
   }
 }

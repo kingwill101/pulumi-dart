@@ -30,7 +30,7 @@ class AlertPolicyConditionConditionSqlDaily {
 
   factory AlertPolicyConditionConditionSqlDaily.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionSqlDaily(
-      executionTime: map['executionTime'] == null ? null : (AlertPolicyConditionConditionSqlDailyExecutionTime.fromMap((map['executionTime'] as Map).cast<String, dynamic>())).input(),
+      executionTime: map['executionTime'] == null ? null : (AlertPolicyConditionConditionSqlDailyExecutionTime.fromMap((map['executionTime']! as Map).cast<String, dynamic>())).input(),
       periodicity: (map['periodicity'] as int).input(),
     );
   }

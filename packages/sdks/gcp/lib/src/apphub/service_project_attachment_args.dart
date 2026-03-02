@@ -37,8 +37,8 @@ class ServiceProjectAttachmentArgs {
 
   factory ServiceProjectAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ServiceProjectAttachmentArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serviceProject: map['serviceProject'] == null ? null : (map['serviceProject'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serviceProject: map['serviceProject'] == null ? null : (map['serviceProject']! as String).input(),
       serviceProjectAttachmentId: (map['serviceProjectAttachmentId'] as String).input(),
     );
   }

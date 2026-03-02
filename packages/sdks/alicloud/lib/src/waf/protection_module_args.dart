@@ -53,7 +53,7 @@ class ProtectionModuleArgs {
       domain: (map['domain'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
       mode: (map['mode'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as int).input(),
+      status: map['status'] == null ? null : (map['status']! as int).input(),
     );
   }
 }

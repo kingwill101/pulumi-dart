@@ -35,7 +35,7 @@ class PolicyAttachmentArgs {
   factory PolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return PolicyAttachmentArgs(
       policy: (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       target: (map['target'] as String).input(),
     );
   }

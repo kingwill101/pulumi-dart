@@ -21,7 +21,7 @@ class ServiceEndpointResourceProperties {
 
   factory ServiceEndpointResourceProperties.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointResourceProperties(
-      preAllocatedCapacity: map['preAllocatedCapacity'] == null ? null : (map['preAllocatedCapacity'] as int).input(),
+      preAllocatedCapacity: map['preAllocatedCapacity'] == null ? null : (map['preAllocatedCapacity']! as int).input(),
     );
   }
 }

@@ -37,10 +37,10 @@ class ExternalMetricSourcePatchAutoscalingV2beta1 {
 
   factory ExternalMetricSourcePatchAutoscalingV2beta1.fromMap(Map<String, dynamic> map) {
     return ExternalMetricSourcePatchAutoscalingV2beta1(
-      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
-      metricSelector: map['metricSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['metricSelector'] as Map).cast<String, dynamic>())).input(),
-      targetAverageValue: map['targetAverageValue'] == null ? null : (map['targetAverageValue'] as String).input(),
-      targetValue: map['targetValue'] == null ? null : (map['targetValue'] as String).input(),
+      metricName: map['metricName'] == null ? null : (map['metricName']! as String).input(),
+      metricSelector: map['metricSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['metricSelector']! as Map).cast<String, dynamic>())).input(),
+      targetAverageValue: map['targetAverageValue'] == null ? null : (map['targetAverageValue']! as String).input(),
+      targetValue: map['targetValue'] == null ? null : (map['targetValue']! as String).input(),
     );
   }
 }

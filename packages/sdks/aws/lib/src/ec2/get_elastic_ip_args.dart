@@ -49,11 +49,11 @@ class GetElasticIpArgs {
 
   factory GetElasticIpArgs.fromMap(Map<String, dynamic> map) {
     return GetElasticIpArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetElasticIpFilter>(map['filters'], (value) => GetElasticIpFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      publicIp: map['publicIp'] == null ? null : (map['publicIp'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetElasticIpFilter>(map['filters']!, (value) => GetElasticIpFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      publicIp: map['publicIp'] == null ? null : ((map['publicIp'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

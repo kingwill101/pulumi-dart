@@ -27,8 +27,8 @@ class FleetLaunchTemplateConfig {
 
   factory FleetLaunchTemplateConfig.fromMap(Map<String, dynamic> map) {
     return FleetLaunchTemplateConfig(
-      launchTemplateSpecification: map['launchTemplateSpecification'] == null ? null : (FleetLaunchTemplateConfigLaunchTemplateSpecification.fromMap((map['launchTemplateSpecification'] as Map).cast<String, dynamic>())).input(),
-      overrides: map['overrides'] == null ? null : (pulumi.Input.decodeList<FleetLaunchTemplateConfigOverride>(map['overrides'], (value) => FleetLaunchTemplateConfigOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      launchTemplateSpecification: map['launchTemplateSpecification'] == null ? null : ((FleetLaunchTemplateConfigLaunchTemplateSpecification.fromMap((map['launchTemplateSpecification']! as Map).cast<String, dynamic>())).input()).input(),
+      overrides: map['overrides'] == null ? null : ((pulumi.Input.decodeList<FleetLaunchTemplateConfigOverride>(map['overrides']!, (value) => FleetLaunchTemplateConfigOverride.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

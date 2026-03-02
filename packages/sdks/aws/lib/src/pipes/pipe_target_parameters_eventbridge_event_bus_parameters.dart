@@ -40,11 +40,11 @@ class PipeTargetParametersEventbridgeEventBusParameters {
 
   factory PipeTargetParametersEventbridgeEventBusParameters.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersEventbridgeEventBusParameters(
-      detailType: map['detailType'] == null ? null : (map['detailType'] as String).input(),
-      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
-      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      time: map['time'] == null ? null : (map['time'] as String).input(),
+      detailType: map['detailType'] == null ? null : ((map['detailType'] as String).input()).input(),
+      endpointId: map['endpointId'] == null ? null : ((map['endpointId'] as String).input()).input(),
+      resources: map['resources'] == null ? null : (((map['resources'] as List).cast<String>()).input()).input(),
+      source: map['source'] == null ? null : ((map['source'] as String).input()).input(),
+      time: map['time'] == null ? null : ((map['time'] as String).input()).input(),
     );
   }
 }

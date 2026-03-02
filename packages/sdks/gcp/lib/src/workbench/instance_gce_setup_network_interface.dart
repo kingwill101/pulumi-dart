@@ -42,10 +42,10 @@ class InstanceGceSetupNetworkInterface {
 
   factory InstanceGceSetupNetworkInterface.fromMap(Map<String, dynamic> map) {
     return InstanceGceSetupNetworkInterface(
-      accessConfigs: map['accessConfigs'] == null ? null : (pulumi.Input.decodeList<InstanceGceSetupNetworkInterfaceAccessConfig>(map['accessConfigs'], (value) => InstanceGceSetupNetworkInterfaceAccessConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      nicType: map['nicType'] == null ? null : (map['nicType'] as String).input(),
-      subnet: map['subnet'] == null ? null : (map['subnet'] as String).input(),
+      accessConfigs: map['accessConfigs'] == null ? null : (pulumi.Input.decodeList<InstanceGceSetupNetworkInterfaceAccessConfig>(map['accessConfigs']!, (value) => InstanceGceSetupNetworkInterfaceAccessConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      nicType: map['nicType'] == null ? null : (map['nicType']! as String).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet']! as String).input(),
     );
   }
 }

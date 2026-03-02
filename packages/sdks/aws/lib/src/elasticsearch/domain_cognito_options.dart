@@ -35,7 +35,7 @@ class DomainCognitoOptions {
 
   factory DomainCognitoOptions.fromMap(Map<String, dynamic> map) {
     return DomainCognitoOptions(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
       identityPoolId: (map['identityPoolId'] as String).input(),
       roleArn: (map['roleArn'] as String).input(),
       userPoolId: (map['userPoolId'] as String).input(),

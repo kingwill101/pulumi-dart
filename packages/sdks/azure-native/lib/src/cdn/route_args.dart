@@ -97,21 +97,21 @@ class RouteArgs {
 
   factory RouteArgs.fromMap(Map<String, dynamic> map) {
     return RouteArgs(
-      cacheConfiguration: map['cacheConfiguration'] == null ? null : (AfdRouteCacheConfiguration.fromMap((map['cacheConfiguration'] as Map).cast<String, dynamic>())).input(),
-      customDomains: map['customDomains'] == null ? null : (pulumi.Input.decodeList<ActivatedResourceReference>(map['customDomains'], (value) => ActivatedResourceReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enabledState: map['enabledState'] == null ? null : (map['enabledState'] as String).input(),
+      cacheConfiguration: map['cacheConfiguration'] == null ? null : (AfdRouteCacheConfiguration.fromMap((map['cacheConfiguration']! as Map).cast<String, dynamic>())).input(),
+      customDomains: map['customDomains'] == null ? null : (pulumi.Input.decodeList<ActivatedResourceReference>(map['customDomains']!, (value) => ActivatedResourceReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabledState: map['enabledState'] == null ? null : (map['enabledState']! as String).input(),
       endpointName: (map['endpointName'] as String).input(),
-      forwardingProtocol: map['forwardingProtocol'] == null ? null : (map['forwardingProtocol'] as String).input(),
-      httpsRedirect: map['httpsRedirect'] == null ? null : (map['httpsRedirect'] as String).input(),
-      linkToDefaultDomain: map['linkToDefaultDomain'] == null ? null : (map['linkToDefaultDomain'] as String).input(),
-      originGroup: map['originGroup'] == null ? null : (ResourceReference.fromMap((map['originGroup'] as Map).cast<String, dynamic>())).input(),
-      originPath: map['originPath'] == null ? null : (map['originPath'] as String).input(),
-      patternsToMatch: map['patternsToMatch'] == null ? null : ((map['patternsToMatch'] as List).cast<String>()).input(),
+      forwardingProtocol: map['forwardingProtocol'] == null ? null : (map['forwardingProtocol']! as String).input(),
+      httpsRedirect: map['httpsRedirect'] == null ? null : (map['httpsRedirect']! as String).input(),
+      linkToDefaultDomain: map['linkToDefaultDomain'] == null ? null : (map['linkToDefaultDomain']! as String).input(),
+      originGroup: map['originGroup'] == null ? null : (ResourceReference.fromMap((map['originGroup']! as Map).cast<String, dynamic>())).input(),
+      originPath: map['originPath'] == null ? null : (map['originPath']! as String).input(),
+      patternsToMatch: map['patternsToMatch'] == null ? null : ((map['patternsToMatch']! as List).cast<String>()).input(),
       profileName: (map['profileName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      routeName: map['routeName'] == null ? null : (map['routeName'] as String).input(),
-      ruleSets: map['ruleSets'] == null ? null : (pulumi.Input.decodeList<ResourceReference>(map['ruleSets'], (value) => ResourceReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      supportedProtocols: map['supportedProtocols'] == null ? null : ((map['supportedProtocols'] as List).cast<String>()).input(),
+      routeName: map['routeName'] == null ? null : (map['routeName']! as String).input(),
+      ruleSets: map['ruleSets'] == null ? null : (pulumi.Input.decodeList<ResourceReference>(map['ruleSets']!, (value) => ResourceReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      supportedProtocols: map['supportedProtocols'] == null ? null : ((map['supportedProtocols']! as List).cast<String>()).input(),
     );
   }
 }

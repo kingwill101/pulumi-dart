@@ -46,12 +46,12 @@ class DeploymentState {
 
   factory DeploymentState.fromMap(Map<String, dynamic> map) {
     return DeploymentState(
-      createdDate: map['createdDate'] == null ? null : (map['createdDate'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      restApi: map['restApi'] == null ? null : (map['restApi'] as String).input(),
-      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
-      variables: map['variables'] == null ? null : ((map['variables'] as Map).cast<String, String>()).input(),
+      createdDate: map['createdDate'] == null ? null : ((map['createdDate'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      restApi: map['restApi'] == null ? null : ((map['restApi'] as String).input()).input(),
+      triggers: map['triggers'] == null ? null : (((map['triggers'] as Map).cast<String, String>()).input()).input(),
+      variables: map['variables'] == null ? null : (((map['variables'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

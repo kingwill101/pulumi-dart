@@ -30,7 +30,7 @@ class ConsoleArgs {
 
   factory ConsoleArgs.fromMap(Map<String, dynamic> map) {
     return ConsoleArgs(
-      consoleName: map['consoleName'] == null ? null : (map['consoleName'] as String).input(),
+      consoleName: map['consoleName'] == null ? null : (map['consoleName']! as String).input(),
       properties: (ConsoleCreateProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }

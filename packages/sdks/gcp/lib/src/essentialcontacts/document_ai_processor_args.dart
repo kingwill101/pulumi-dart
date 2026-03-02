@@ -46,9 +46,9 @@ class DocumentAiProcessorArgs {
   factory DocumentAiProcessorArgs.fromMap(Map<String, dynamic> map) {
     return DocumentAiProcessorArgs(
       displayName: (map['displayName'] as String).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

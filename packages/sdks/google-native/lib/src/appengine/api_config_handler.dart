@@ -44,11 +44,11 @@ class ApiConfigHandler {
 
   factory ApiConfigHandler.fromMap(Map<String, dynamic> map) {
     return ApiConfigHandler(
-      authFailAction: map['authFailAction'] == null ? null : (ApiConfigHandlerAuthFailAction.fromValue(map['authFailAction'] as String)).input(),
-      login: map['login'] == null ? null : (ApiConfigHandlerLogin.fromValue(map['login'] as String)).input(),
-      script: map['script'] == null ? null : (map['script'] as String).input(),
-      securityLevel: map['securityLevel'] == null ? null : (ApiConfigHandlerSecurityLevel.fromValue(map['securityLevel'] as String)).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      authFailAction: map['authFailAction'] == null ? null : (ApiConfigHandlerAuthFailAction.fromValue(map['authFailAction']! as String)).input(),
+      login: map['login'] == null ? null : (ApiConfigHandlerLogin.fromValue(map['login']! as String)).input(),
+      script: map['script'] == null ? null : (map['script']! as String).input(),
+      securityLevel: map['securityLevel'] == null ? null : (ApiConfigHandlerSecurityLevel.fromValue(map['securityLevel']! as String)).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

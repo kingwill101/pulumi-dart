@@ -52,10 +52,10 @@ class GetCustomEntityStoreAssignmentResult {
   factory GetCustomEntityStoreAssignmentResult.fromMap(Map<String, dynamic> map) {
     return GetCustomEntityStoreAssignmentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      entityStoreDatabaseLink: map['entityStoreDatabaseLink'] == null ? null : map['entityStoreDatabaseLink'] as String,
+      entityStoreDatabaseLink: map['entityStoreDatabaseLink'] == null ? null : map['entityStoreDatabaseLink']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      principal: map['principal'] == null ? null : map['principal'] as String,
+      principal: map['principal'] == null ? null : map['principal']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

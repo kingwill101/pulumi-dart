@@ -63,14 +63,14 @@ class SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifi
 
   factory SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications.fromMap(Map<String, dynamic> map) {
     return SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications(
-      entitlementAssigned: map['entitlementAssigned'] == null ? null : (map['entitlementAssigned'] as String).input(),
-      grantActivated: map['grantActivated'] == null ? null : (map['grantActivated'] as String).input(),
-      grantActivationFailed: map['grantActivationFailed'] == null ? null : (map['grantActivationFailed'] as String).input(),
-      grantDenied: map['grantDenied'] == null ? null : (map['grantDenied'] as String).input(),
-      grantEnded: map['grantEnded'] == null ? null : (map['grantEnded'] as String).input(),
-      grantExpired: map['grantExpired'] == null ? null : (map['grantExpired'] as String).input(),
-      grantExternallyModified: map['grantExternallyModified'] == null ? null : (map['grantExternallyModified'] as String).input(),
-      grantRevoked: map['grantRevoked'] == null ? null : (map['grantRevoked'] as String).input(),
+      entitlementAssigned: map['entitlementAssigned'] == null ? null : (map['entitlementAssigned']! as String).input(),
+      grantActivated: map['grantActivated'] == null ? null : (map['grantActivated']! as String).input(),
+      grantActivationFailed: map['grantActivationFailed'] == null ? null : (map['grantActivationFailed']! as String).input(),
+      grantDenied: map['grantDenied'] == null ? null : (map['grantDenied']! as String).input(),
+      grantEnded: map['grantEnded'] == null ? null : (map['grantEnded']! as String).input(),
+      grantExpired: map['grantExpired'] == null ? null : (map['grantExpired']! as String).input(),
+      grantExternallyModified: map['grantExternallyModified'] == null ? null : (map['grantExternallyModified']! as String).input(),
+      grantRevoked: map['grantRevoked'] == null ? null : (map['grantRevoked']! as String).input(),
     );
   }
 }

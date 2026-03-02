@@ -30,9 +30,9 @@ class SiteLocation {
 
   factory SiteLocation.fromMap(Map<String, dynamic> map) {
     return SiteLocation(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      latitude: map['latitude'] == null ? null : (map['latitude'] as String).input(),
-      longitude: map['longitude'] == null ? null : (map['longitude'] as String).input(),
+      address: map['address'] == null ? null : ((map['address'] as String).input()).input(),
+      latitude: map['latitude'] == null ? null : ((map['latitude'] as String).input()).input(),
+      longitude: map['longitude'] == null ? null : ((map['longitude'] as String).input()).input(),
     );
   }
 }

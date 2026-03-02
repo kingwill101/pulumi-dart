@@ -21,7 +21,7 @@ class SubnetDetailsResponse {
 
   factory SubnetDetailsResponse.fromMap(Map<String, dynamic> map) {
     return SubnetDetailsResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

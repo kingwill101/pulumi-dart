@@ -47,10 +47,10 @@ class PodResourceClaimPatch {
 
   factory PodResourceClaimPatch.fromMap(Map<String, dynamic> map) {
     return PodResourceClaimPatch(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceClaimName: map['resourceClaimName'] == null ? null : (map['resourceClaimName'] as String).input(),
-      resourceClaimTemplateName: map['resourceClaimTemplateName'] == null ? null : (map['resourceClaimTemplateName'] as String).input(),
-      source: map['source'] == null ? null : (ClaimSourcePatch.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceClaimName: map['resourceClaimName'] == null ? null : (map['resourceClaimName']! as String).input(),
+      resourceClaimTemplateName: map['resourceClaimTemplateName'] == null ? null : (map['resourceClaimTemplateName']! as String).input(),
+      source: map['source'] == null ? null : (ClaimSourcePatch.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

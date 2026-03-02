@@ -26,7 +26,7 @@ class ImageBuilderAccessEndpoint {
   factory ImageBuilderAccessEndpoint.fromMap(Map<String, dynamic> map) {
     return ImageBuilderAccessEndpoint(
       endpointType: (map['endpointType'] as String).input(),
-      vpceId: map['vpceId'] == null ? null : (map['vpceId'] as String).input(),
+      vpceId: map['vpceId'] == null ? null : ((map['vpceId'] as String).input()).input(),
     );
   }
 }

@@ -43,10 +43,10 @@ class GetVolumeArgs {
 
   factory GetVolumeArgs.fromMap(Map<String, dynamic> map) {
     return GetVolumeArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVolumeFilter>(map['filters'], (value) => GetVolumeFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetVolumeFilter>(map['filters']!, (value) => GetVolumeFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      mostRecent: map['mostRecent'] == null ? null : ((map['mostRecent'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

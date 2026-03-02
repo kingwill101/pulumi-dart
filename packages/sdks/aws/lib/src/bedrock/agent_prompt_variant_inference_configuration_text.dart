@@ -35,10 +35,10 @@ class AgentPromptVariantInferenceConfigurationText {
 
   factory AgentPromptVariantInferenceConfigurationText.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantInferenceConfigurationText(
-      maxTokens: map['maxTokens'] == null ? null : (map['maxTokens'] as int).input(),
-      stopSequences: map['stopSequences'] == null ? null : ((map['stopSequences'] as List).cast<String>()).input(),
-      temperature: map['temperature'] == null ? null : (map['temperature'] as double).input(),
-      topP: map['topP'] == null ? null : (map['topP'] as double).input(),
+      maxTokens: map['maxTokens'] == null ? null : ((map['maxTokens'] as int).input()).input(),
+      stopSequences: map['stopSequences'] == null ? null : (((map['stopSequences'] as List).cast<String>()).input()).input(),
+      temperature: map['temperature'] == null ? null : ((map['temperature'] as double).input()).input(),
+      topP: map['topP'] == null ? null : ((map['topP'] as double).input()).input(),
     );
   }
 }

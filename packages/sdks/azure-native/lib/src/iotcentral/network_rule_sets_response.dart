@@ -37,10 +37,10 @@ class NetworkRuleSetsResponse {
 
   factory NetworkRuleSetsResponse.fromMap(Map<String, dynamic> map) {
     return NetworkRuleSetsResponse(
-      applyToDevices: map['applyToDevices'] == null ? null : (map['applyToDevices'] as bool).input(),
-      applyToIoTCentral: map['applyToIoTCentral'] == null ? null : (map['applyToIoTCentral'] as bool).input(),
-      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction'] as String).input(),
-      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<NetworkRuleSetIpRuleResponse>(map['ipRules'], (value) => NetworkRuleSetIpRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applyToDevices: map['applyToDevices'] == null ? null : (map['applyToDevices']! as bool).input(),
+      applyToIoTCentral: map['applyToIoTCentral'] == null ? null : (map['applyToIoTCentral']! as bool).input(),
+      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction']! as String).input(),
+      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<NetworkRuleSetIpRuleResponse>(map['ipRules']!, (value) => NetworkRuleSetIpRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class ScheduledActionScalableTargetAction {
 
   factory ScheduledActionScalableTargetAction.fromMap(Map<String, dynamic> map) {
     return ScheduledActionScalableTargetAction(
-      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity'] as int).input(),
-      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity'] as int).input(),
+      maxCapacity: map['maxCapacity'] == null ? null : ((map['maxCapacity'] as int).input()).input(),
+      minCapacity: map['minCapacity'] == null ? null : ((map['minCapacity'] as int).input()).input(),
     );
   }
 }

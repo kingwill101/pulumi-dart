@@ -21,7 +21,7 @@ class ProductState {
 
   factory ProductState.fromMap(Map<String, dynamic> map) {
     return ProductState(
-      productName: map['productName'] == null ? null : (map['productName'] as String).input(),
+      productName: map['productName'] == null ? null : (map['productName']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class FunctionOnDeployUpdatePolicy {
 
   factory FunctionOnDeployUpdatePolicy.fromMap(Map<String, dynamic> map) {
     return FunctionOnDeployUpdatePolicy(
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']! as String).input(),
     );
   }
 }

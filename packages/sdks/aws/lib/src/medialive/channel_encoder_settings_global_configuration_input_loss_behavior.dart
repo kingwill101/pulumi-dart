@@ -36,11 +36,11 @@ class ChannelEncoderSettingsGlobalConfigurationInputLossBehavior {
 
   factory ChannelEncoderSettingsGlobalConfigurationInputLossBehavior.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsGlobalConfigurationInputLossBehavior(
-      blackFrameMsec: map['blackFrameMsec'] == null ? null : (map['blackFrameMsec'] as int).input(),
-      inputLossImageColor: map['inputLossImageColor'] == null ? null : (map['inputLossImageColor'] as String).input(),
-      inputLossImageSlate: map['inputLossImageSlate'] == null ? null : (ChannelEncoderSettingsGlobalConfigurationInputLossBehaviorInputLossImageSlate.fromMap((map['inputLossImageSlate'] as Map).cast<String, dynamic>())).input(),
-      inputLossImageType: map['inputLossImageType'] == null ? null : (map['inputLossImageType'] as String).input(),
-      repeatFrameMsec: map['repeatFrameMsec'] == null ? null : (map['repeatFrameMsec'] as int).input(),
+      blackFrameMsec: map['blackFrameMsec'] == null ? null : ((map['blackFrameMsec'] as int).input()).input(),
+      inputLossImageColor: map['inputLossImageColor'] == null ? null : ((map['inputLossImageColor'] as String).input()).input(),
+      inputLossImageSlate: map['inputLossImageSlate'] == null ? null : ((ChannelEncoderSettingsGlobalConfigurationInputLossBehaviorInputLossImageSlate.fromMap((map['inputLossImageSlate']! as Map).cast<String, dynamic>())).input()).input(),
+      inputLossImageType: map['inputLossImageType'] == null ? null : ((map['inputLossImageType'] as String).input()).input(),
+      repeatFrameMsec: map['repeatFrameMsec'] == null ? null : ((map['repeatFrameMsec'] as int).input()).input(),
     );
   }
 }

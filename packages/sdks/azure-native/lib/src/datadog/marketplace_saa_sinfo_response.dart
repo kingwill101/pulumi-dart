@@ -41,11 +41,11 @@ class MarketplaceSaaSInfoResponse {
 
   factory MarketplaceSaaSInfoResponse.fromMap(Map<String, dynamic> map) {
     return MarketplaceSaaSInfoResponse(
-      billedAzureSubscriptionId: map['billedAzureSubscriptionId'] == null ? null : (map['billedAzureSubscriptionId'] as String).input(),
-      marketplaceName: map['marketplaceName'] == null ? null : (map['marketplaceName'] as String).input(),
-      marketplaceStatus: map['marketplaceStatus'] == null ? null : (map['marketplaceStatus'] as String).input(),
-      marketplaceSubscriptionId: map['marketplaceSubscriptionId'] == null ? null : (map['marketplaceSubscriptionId'] as String).input(),
-      subscribed: map['subscribed'] == null ? null : (map['subscribed'] as bool).input(),
+      billedAzureSubscriptionId: map['billedAzureSubscriptionId'] == null ? null : (map['billedAzureSubscriptionId']! as String).input(),
+      marketplaceName: map['marketplaceName'] == null ? null : (map['marketplaceName']! as String).input(),
+      marketplaceStatus: map['marketplaceStatus'] == null ? null : (map['marketplaceStatus']! as String).input(),
+      marketplaceSubscriptionId: map['marketplaceSubscriptionId'] == null ? null : (map['marketplaceSubscriptionId']! as String).input(),
+      subscribed: map['subscribed'] == null ? null : (map['subscribed']! as bool).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class PrivateCloudManagementClusterStretchedClusterConfig {
 
   factory PrivateCloudManagementClusterStretchedClusterConfig.fromMap(Map<String, dynamic> map) {
     return PrivateCloudManagementClusterStretchedClusterConfig(
-      preferredLocation: map['preferredLocation'] == null ? null : (map['preferredLocation'] as String).input(),
-      secondaryLocation: map['secondaryLocation'] == null ? null : (map['secondaryLocation'] as String).input(),
+      preferredLocation: map['preferredLocation'] == null ? null : (map['preferredLocation']! as String).input(),
+      secondaryLocation: map['secondaryLocation'] == null ? null : (map['secondaryLocation']! as String).input(),
     );
   }
 }

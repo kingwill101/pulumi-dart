@@ -48,7 +48,7 @@ class EnvironmentVersionArgs {
       environmentVersionProperties: (map['environmentVersionProperties'] as EnvironmentVersionMachinelearningservices).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

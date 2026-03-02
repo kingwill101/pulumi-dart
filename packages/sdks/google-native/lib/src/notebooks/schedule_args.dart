@@ -58,14 +58,14 @@ class ScheduleArgs {
 
   factory ScheduleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleArgs(
-      cronSchedule: map['cronSchedule'] == null ? null : (map['cronSchedule'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      executionTemplate: map['executionTemplate'] == null ? null : (ExecutionTemplate.fromMap((map['executionTemplate'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      cronSchedule: map['cronSchedule'] == null ? null : (map['cronSchedule']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      executionTemplate: map['executionTemplate'] == null ? null : (ExecutionTemplate.fromMap((map['executionTemplate']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       scheduleId: (map['scheduleId'] as String).input(),
-      state: map['state'] == null ? null : (ScheduleState.fromValue(map['state'] as String)).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      state: map['state'] == null ? null : (ScheduleState.fromValue(map['state']! as String)).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

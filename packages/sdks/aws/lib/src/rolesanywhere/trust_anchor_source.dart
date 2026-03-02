@@ -26,7 +26,7 @@ class TrustAnchorSource {
 
   factory TrustAnchorSource.fromMap(Map<String, dynamic> map) {
     return TrustAnchorSource(
-      sourceData: (TrustAnchorSourceSourceData.fromMap((map['sourceData'] as Map).cast<String, dynamic>())).input(),
+      sourceData: (TrustAnchorSourceSourceData.fromMap((map['sourceData']! as Map).cast<String, dynamic>())).input(),
       sourceType: (map['sourceType'] as String).input(),
     );
   }

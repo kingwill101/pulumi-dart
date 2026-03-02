@@ -21,7 +21,7 @@ class HostIPPatch {
 
   factory HostIPPatch.fromMap(Map<String, dynamic> map) {
     return HostIPPatch(
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
     );
   }
 }

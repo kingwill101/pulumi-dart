@@ -25,8 +25,8 @@ class DomainDevicesControllerVirtIoSerial {
 
   factory DomainDevicesControllerVirtIoSerial.fromMap(Map<String, dynamic> map) {
     return DomainDevicesControllerVirtIoSerial(
-      ports: map['ports'] == null ? null : (map['ports'] as double).input(),
-      vectors: map['vectors'] == null ? null : (map['vectors'] as double).input(),
+      ports: map['ports'] == null ? null : (map['ports']! as double).input(),
+      vectors: map['vectors'] == null ? null : (map['vectors']! as double).input(),
     );
   }
 }

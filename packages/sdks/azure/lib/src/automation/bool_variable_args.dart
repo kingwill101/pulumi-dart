@@ -50,11 +50,11 @@ class BoolVariableArgs {
   factory BoolVariableArgs.fromMap(Map<String, dynamic> map) {
     return BoolVariableArgs(
       automationAccountName: (map['automationAccountName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as bool).input(),
+      value: map['value'] == null ? null : (map['value']! as bool).input(),
     );
   }
 }

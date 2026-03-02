@@ -25,7 +25,7 @@ class WorkspaceNamedValueValueFromKeyVault {
 
   factory WorkspaceNamedValueValueFromKeyVault.fromMap(Map<String, dynamic> map) {
     return WorkspaceNamedValueValueFromKeyVault(
-      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId']! as String).input(),
       secretId: (map['secretId'] as String).input(),
     );
   }

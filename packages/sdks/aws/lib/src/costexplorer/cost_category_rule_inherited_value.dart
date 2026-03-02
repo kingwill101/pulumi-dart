@@ -25,8 +25,8 @@ class CostCategoryRuleInheritedValue {
 
   factory CostCategoryRuleInheritedValue.fromMap(Map<String, dynamic> map) {
     return CostCategoryRuleInheritedValue(
-      dimensionKey: map['dimensionKey'] == null ? null : (map['dimensionKey'] as String).input(),
-      dimensionName: map['dimensionName'] == null ? null : (map['dimensionName'] as String).input(),
+      dimensionKey: map['dimensionKey'] == null ? null : ((map['dimensionKey'] as String).input()).input(),
+      dimensionName: map['dimensionName'] == null ? null : ((map['dimensionName'] as String).input()).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class VersionDialogflowV2beta1Args {
 
   factory VersionDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
     return VersionDialogflowV2beta1Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -19,7 +19,7 @@ class IAppTableRow {
 
   factory IAppTableRow.fromMap(Map<String, dynamic> map) {
     return IAppTableRow(
-      rows: map['rows'] == null ? null : ((map['rows'] as List).cast<String>()).input(),
+      rows: map['rows'] == null ? null : ((map['rows']! as List).cast<String>()).input(),
     );
   }
 }

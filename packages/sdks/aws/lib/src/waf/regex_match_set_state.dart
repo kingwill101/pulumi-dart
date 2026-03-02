@@ -32,9 +32,9 @@ class RegexMatchSetState {
 
   factory RegexMatchSetState.fromMap(Map<String, dynamic> map) {
     return RegexMatchSetState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      regexMatchTuples: map['regexMatchTuples'] == null ? null : (pulumi.Input.decodeList<RegexMatchSetRegexMatchTuple>(map['regexMatchTuples'], (value) => RegexMatchSetRegexMatchTuple.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      regexMatchTuples: map['regexMatchTuples'] == null ? null : ((pulumi.Input.decodeList<RegexMatchSetRegexMatchTuple>(map['regexMatchTuples']!, (value) => RegexMatchSetRegexMatchTuple.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

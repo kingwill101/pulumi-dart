@@ -36,10 +36,10 @@ class PartnerRegistrationState {
 
   factory PartnerRegistrationState.fromMap(Map<String, dynamic> map) {
     return PartnerRegistrationState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      partnerRegistrationId: map['partnerRegistrationId'] == null ? null : (map['partnerRegistrationId'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      partnerRegistrationId: map['partnerRegistrationId'] == null ? null : (map['partnerRegistrationId']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -46,12 +46,12 @@ class AccessReviewHistoryInstance {
 
   factory AccessReviewHistoryInstance.fromMap(Map<String, dynamic> map) {
     return AccessReviewHistoryInstance(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      expiration: map['expiration'] == null ? null : (map['expiration'] as String).input(),
-      fulfilledDateTime: map['fulfilledDateTime'] == null ? null : (map['fulfilledDateTime'] as String).input(),
-      reviewHistoryPeriodEndDateTime: map['reviewHistoryPeriodEndDateTime'] == null ? null : (map['reviewHistoryPeriodEndDateTime'] as String).input(),
-      reviewHistoryPeriodStartDateTime: map['reviewHistoryPeriodStartDateTime'] == null ? null : (map['reviewHistoryPeriodStartDateTime'] as String).input(),
-      runDateTime: map['runDateTime'] == null ? null : (map['runDateTime'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      expiration: map['expiration'] == null ? null : (map['expiration']! as String).input(),
+      fulfilledDateTime: map['fulfilledDateTime'] == null ? null : (map['fulfilledDateTime']! as String).input(),
+      reviewHistoryPeriodEndDateTime: map['reviewHistoryPeriodEndDateTime'] == null ? null : (map['reviewHistoryPeriodEndDateTime']! as String).input(),
+      reviewHistoryPeriodStartDateTime: map['reviewHistoryPeriodStartDateTime'] == null ? null : (map['reviewHistoryPeriodStartDateTime']! as String).input(),
+      runDateTime: map['runDateTime'] == null ? null : (map['runDateTime']! as String).input(),
     );
   }
 }

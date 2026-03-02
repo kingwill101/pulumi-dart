@@ -45,12 +45,12 @@ class V3CustomDomainCorsConfig {
 
   factory V3CustomDomainCorsConfig.fromMap(Map<String, dynamic> map) {
     return V3CustomDomainCorsConfig(
-      allowCredentials: map['allowCredentials'] == null ? null : (map['allowCredentials'] as bool).input(),
-      allowHeaders: map['allowHeaders'] == null ? null : ((map['allowHeaders'] as List).cast<String>()).input(),
-      allowMethods: map['allowMethods'] == null ? null : ((map['allowMethods'] as List).cast<String>()).input(),
-      allowOrigins: map['allowOrigins'] == null ? null : ((map['allowOrigins'] as List).cast<String>()).input(),
-      exposeHeaders: map['exposeHeaders'] == null ? null : ((map['exposeHeaders'] as List).cast<String>()).input(),
-      maxAge: map['maxAge'] == null ? null : (map['maxAge'] as int).input(),
+      allowCredentials: map['allowCredentials'] == null ? null : (map['allowCredentials']! as bool).input(),
+      allowHeaders: map['allowHeaders'] == null ? null : ((map['allowHeaders']! as List).cast<String>()).input(),
+      allowMethods: map['allowMethods'] == null ? null : ((map['allowMethods']! as List).cast<String>()).input(),
+      allowOrigins: map['allowOrigins'] == null ? null : ((map['allowOrigins']! as List).cast<String>()).input(),
+      exposeHeaders: map['exposeHeaders'] == null ? null : ((map['exposeHeaders']! as List).cast<String>()).input(),
+      maxAge: map['maxAge'] == null ? null : (map['maxAge']! as int).input(),
     );
   }
 }

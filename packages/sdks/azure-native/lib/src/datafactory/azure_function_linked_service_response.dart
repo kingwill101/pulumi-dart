@@ -81,18 +81,18 @@ class AzureFunctionLinkedServiceResponse {
 
   factory AzureFunctionLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return AzureFunctionLinkedServiceResponse(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      authentication: map['authentication'] == null ? null : (map['authentication']).input(),
-      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
-      credential: map['credential'] == null ? null : (CredentialReferenceResponse.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      authentication: map['authentication'] == null ? null : (map['authentication']!).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia']! as Map).cast<String, dynamic>())).input(),
+      credential: map['credential'] == null ? null : (CredentialReferenceResponse.fromMap((map['credential']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential']! as String).input(),
       functionAppUrl: (map['functionAppUrl']).input(),
-      functionKey: map['functionKey'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['functionKey'] as Map).cast<String, dynamic>())).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']).input(),
+      functionKey: map['functionKey'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['functionKey']! as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters']!, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']!).input(),
       type: (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

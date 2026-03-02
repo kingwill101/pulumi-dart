@@ -26,8 +26,8 @@ class KubernetesSoftwareConfig {
 
   factory KubernetesSoftwareConfig.fromMap(Map<String, dynamic> map) {
     return KubernetesSoftwareConfig(
-      componentVersion: map['componentVersion'] == null ? null : ((map['componentVersion'] as Map).cast<String, String>()).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      componentVersion: map['componentVersion'] == null ? null : ((map['componentVersion']! as Map).cast<String, String>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
     );
   }
 }

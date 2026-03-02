@@ -52,10 +52,10 @@ class ConsumerGroupArgs {
     return ConsumerGroupArgs(
       consumeRetryPolicy: (ConsumerGroupConsumeRetryPolicy.fromMap((map['consumeRetryPolicy'] as Map).cast<String, dynamic>())).input(),
       consumerGroupId: (map['consumerGroupId'] as String).input(),
-      deliveryOrderType: map['deliveryOrderType'] == null ? null : (map['deliveryOrderType'] as String).input(),
+      deliveryOrderType: map['deliveryOrderType'] == null ? null : (map['deliveryOrderType']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      maxReceiveTps: map['maxReceiveTps'] == null ? null : (map['maxReceiveTps'] as int).input(),
-      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
+      maxReceiveTps: map['maxReceiveTps'] == null ? null : (map['maxReceiveTps']! as int).input(),
+      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
     );
   }
 }

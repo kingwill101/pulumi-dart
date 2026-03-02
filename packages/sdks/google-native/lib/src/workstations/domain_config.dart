@@ -21,7 +21,7 @@ class DomainConfig {
 
   factory DomainConfig.fromMap(Map<String, dynamic> map) {
     return DomainConfig(
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
     );
   }
 }

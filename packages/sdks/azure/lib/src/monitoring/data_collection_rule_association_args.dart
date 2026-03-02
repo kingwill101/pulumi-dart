@@ -48,10 +48,10 @@ class DataCollectionRuleAssociationArgs {
 
   factory DataCollectionRuleAssociationArgs.fromMap(Map<String, dynamic> map) {
     return DataCollectionRuleAssociationArgs(
-      dataCollectionEndpointId: map['dataCollectionEndpointId'] == null ? null : (map['dataCollectionEndpointId'] as String).input(),
-      dataCollectionRuleId: map['dataCollectionRuleId'] == null ? null : (map['dataCollectionRuleId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      dataCollectionEndpointId: map['dataCollectionEndpointId'] == null ? null : (map['dataCollectionEndpointId']! as String).input(),
+      dataCollectionRuleId: map['dataCollectionRuleId'] == null ? null : (map['dataCollectionRuleId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       targetResourceId: (map['targetResourceId'] as String).input(),
     );
   }

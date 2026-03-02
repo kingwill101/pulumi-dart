@@ -54,13 +54,13 @@ class GetEcsLaunchTemplatesArgs {
 
   factory GetEcsLaunchTemplatesArgs.fromMap(Map<String, dynamic> map) {
     return GetEcsLaunchTemplatesArgs(
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      launchTemplateName: map['launchTemplateName'] == null ? null : (map['launchTemplateName'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      templateResourceGroupId: map['templateResourceGroupId'] == null ? null : (map['templateResourceGroupId'] as String).input(),
-      templateTags: map['templateTags'] == null ? null : ((map['templateTags'] as Map).cast<String, String>()).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      launchTemplateName: map['launchTemplateName'] == null ? null : (map['launchTemplateName']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      templateResourceGroupId: map['templateResourceGroupId'] == null ? null : (map['templateResourceGroupId']! as String).input(),
+      templateTags: map['templateTags'] == null ? null : ((map['templateTags']! as Map).cast<String, String>()).input(),
     );
   }
 }

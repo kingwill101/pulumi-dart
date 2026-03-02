@@ -31,7 +31,7 @@ class BudgetFilterExpressionOrDimensions {
   factory BudgetFilterExpressionOrDimensions.fromMap(Map<String, dynamic> map) {
     return BudgetFilterExpressionOrDimensions(
       key: (map['key'] as String).input(),
-      matchOptions: map['matchOptions'] == null ? null : ((map['matchOptions'] as List).cast<String>()).input(),
+      matchOptions: map['matchOptions'] == null ? null : (((map['matchOptions'] as List).cast<String>()).input()).input(),
       values: ((map['values'] as List).cast<String>()).input(),
     );
   }

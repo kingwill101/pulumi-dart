@@ -43,11 +43,11 @@ class PreferencesResponse {
 
   factory PreferencesResponse.fromMap(Map<String, dynamic> map) {
     return PreferencesResponse(
-      encryptionPreferences: map['encryptionPreferences'] == null ? null : (EncryptionPreferencesResponse.fromMap((map['encryptionPreferences'] as Map).cast<String, dynamic>())).input(),
-      preferredDataCenterRegion: map['preferredDataCenterRegion'] == null ? null : ((map['preferredDataCenterRegion'] as List).cast<String>()).input(),
-      reverseTransportPreferences: map['reverseTransportPreferences'] == null ? null : (TransportPreferencesResponse.fromMap((map['reverseTransportPreferences'] as Map).cast<String, dynamic>())).input(),
-      storageAccountAccessTierPreferences: map['storageAccountAccessTierPreferences'] == null ? null : ((map['storageAccountAccessTierPreferences'] as List).cast<String>()).input(),
-      transportPreferences: map['transportPreferences'] == null ? null : (TransportPreferencesResponse.fromMap((map['transportPreferences'] as Map).cast<String, dynamic>())).input(),
+      encryptionPreferences: map['encryptionPreferences'] == null ? null : (EncryptionPreferencesResponse.fromMap((map['encryptionPreferences']! as Map).cast<String, dynamic>())).input(),
+      preferredDataCenterRegion: map['preferredDataCenterRegion'] == null ? null : ((map['preferredDataCenterRegion']! as List).cast<String>()).input(),
+      reverseTransportPreferences: map['reverseTransportPreferences'] == null ? null : (TransportPreferencesResponse.fromMap((map['reverseTransportPreferences']! as Map).cast<String, dynamic>())).input(),
+      storageAccountAccessTierPreferences: map['storageAccountAccessTierPreferences'] == null ? null : ((map['storageAccountAccessTierPreferences']! as List).cast<String>()).input(),
+      transportPreferences: map['transportPreferences'] == null ? null : (TransportPreferencesResponse.fromMap((map['transportPreferences']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

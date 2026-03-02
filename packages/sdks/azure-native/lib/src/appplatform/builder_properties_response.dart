@@ -33,9 +33,9 @@ class BuilderPropertiesResponse {
 
   factory BuilderPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BuilderPropertiesResponse(
-      buildpackGroups: map['buildpackGroups'] == null ? null : (pulumi.Input.decodeList<BuildpacksGroupPropertiesResponse>(map['buildpackGroups'], (value) => BuildpacksGroupPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      buildpackGroups: map['buildpackGroups'] == null ? null : (pulumi.Input.decodeList<BuildpacksGroupPropertiesResponse>(map['buildpackGroups']!, (value) => BuildpacksGroupPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      stack: map['stack'] == null ? null : (StackPropertiesResponse.fromMap((map['stack'] as Map).cast<String, dynamic>())).input(),
+      stack: map['stack'] == null ? null : (StackPropertiesResponse.fromMap((map['stack']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

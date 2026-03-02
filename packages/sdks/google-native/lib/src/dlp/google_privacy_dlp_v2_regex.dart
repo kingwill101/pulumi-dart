@@ -26,8 +26,8 @@ class GooglePrivacyDlpV2Regex {
 
   factory GooglePrivacyDlpV2Regex.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Regex(
-      groupIndexes: map['groupIndexes'] == null ? null : ((map['groupIndexes'] as List).cast<int>()).input(),
-      pattern: map['pattern'] == null ? null : (map['pattern'] as String).input(),
+      groupIndexes: map['groupIndexes'] == null ? null : ((map['groupIndexes']! as List).cast<int>()).input(),
+      pattern: map['pattern'] == null ? null : (map['pattern']! as String).input(),
     );
   }
 }

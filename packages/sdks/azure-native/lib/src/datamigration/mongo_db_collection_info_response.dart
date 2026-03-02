@@ -86,9 +86,9 @@ class MongoDbCollectionInfoResponse {
       isView: (map['isView'] as bool).input(),
       name: (map['name'] as String).input(),
       qualifiedName: (map['qualifiedName'] as String).input(),
-      shardKey: map['shardKey'] == null ? null : (MongoDbShardKeyInfoResponse.fromMap((map['shardKey'] as Map).cast<String, dynamic>())).input(),
+      shardKey: map['shardKey'] == null ? null : (MongoDbShardKeyInfoResponse.fromMap((map['shardKey']! as Map).cast<String, dynamic>())).input(),
       supportsSharding: (map['supportsSharding'] as bool).input(),
-      viewOf: map['viewOf'] == null ? null : (map['viewOf'] as String).input(),
+      viewOf: map['viewOf'] == null ? null : (map['viewOf']! as String).input(),
     );
   }
 }

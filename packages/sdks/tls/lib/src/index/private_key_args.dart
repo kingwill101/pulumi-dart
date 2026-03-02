@@ -35,8 +35,8 @@ class PrivateKeyArgs {
   factory PrivateKeyArgs.fromMap(Map<String, dynamic> map) {
     return PrivateKeyArgs(
       algorithm: (map['algorithm'] as String).input(),
-      ecdsaCurve: map['ecdsaCurve'] == null ? null : (map['ecdsaCurve'] as String).input(),
-      rsaBits: map['rsaBits'] == null ? null : (map['rsaBits'] as int).input(),
+      ecdsaCurve: map['ecdsaCurve'] == null ? null : (map['ecdsaCurve']! as String).input(),
+      rsaBits: map['rsaBits'] == null ? null : (map['rsaBits']! as int).input(),
     );
   }
 }

@@ -65,15 +65,15 @@ class DevEnvironmentState {
 
   factory DevEnvironmentState.fromMap(Map<String, dynamic> map) {
     return DevEnvironmentState(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      ides: map['ides'] == null ? null : (DevEnvironmentIdes.fromMap((map['ides'] as Map).cast<String, dynamic>())).input(),
-      inactivityTimeoutMinutes: map['inactivityTimeoutMinutes'] == null ? null : (map['inactivityTimeoutMinutes'] as int).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      persistentStorage: map['persistentStorage'] == null ? null : (DevEnvironmentPersistentStorage.fromMap((map['persistentStorage'] as Map).cast<String, dynamic>())).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      repositories: map['repositories'] == null ? null : (pulumi.Input.decodeList<DevEnvironmentRepository>(map['repositories'], (value) => DevEnvironmentRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      spaceName: map['spaceName'] == null ? null : (map['spaceName'] as String).input(),
+      alias: map['alias'] == null ? null : ((map['alias'] as String).input()).input(),
+      ides: map['ides'] == null ? null : ((DevEnvironmentIdes.fromMap((map['ides']! as Map).cast<String, dynamic>())).input()).input(),
+      inactivityTimeoutMinutes: map['inactivityTimeoutMinutes'] == null ? null : ((map['inactivityTimeoutMinutes'] as int).input()).input(),
+      instanceType: map['instanceType'] == null ? null : ((map['instanceType'] as String).input()).input(),
+      persistentStorage: map['persistentStorage'] == null ? null : ((DevEnvironmentPersistentStorage.fromMap((map['persistentStorage']! as Map).cast<String, dynamic>())).input()).input(),
+      projectName: map['projectName'] == null ? null : ((map['projectName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      repositories: map['repositories'] == null ? null : ((pulumi.Input.decodeList<DevEnvironmentRepository>(map['repositories']!, (value) => DevEnvironmentRepository.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      spaceName: map['spaceName'] == null ? null : ((map['spaceName'] as String).input()).input(),
     );
   }
 }

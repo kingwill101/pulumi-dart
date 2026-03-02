@@ -65,16 +65,16 @@ class AppAutoBranchCreationConfig {
 
   factory AppAutoBranchCreationConfig.fromMap(Map<String, dynamic> map) {
     return AppAutoBranchCreationConfig(
-      basicAuthCredentials: map['basicAuthCredentials'] == null ? null : (map['basicAuthCredentials'] as String).input(),
-      buildSpec: map['buildSpec'] == null ? null : (map['buildSpec'] as String).input(),
-      enableAutoBuild: map['enableAutoBuild'] == null ? null : (map['enableAutoBuild'] as bool).input(),
-      enableBasicAuth: map['enableBasicAuth'] == null ? null : (map['enableBasicAuth'] as bool).input(),
-      enablePerformanceMode: map['enablePerformanceMode'] == null ? null : (map['enablePerformanceMode'] as bool).input(),
-      enablePullRequestPreview: map['enablePullRequestPreview'] == null ? null : (map['enablePullRequestPreview'] as bool).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables'] as Map).cast<String, String>()).input(),
-      framework: map['framework'] == null ? null : (map['framework'] as String).input(),
-      pullRequestEnvironmentName: map['pullRequestEnvironmentName'] == null ? null : (map['pullRequestEnvironmentName'] as String).input(),
-      stage: map['stage'] == null ? null : (map['stage'] as String).input(),
+      basicAuthCredentials: map['basicAuthCredentials'] == null ? null : ((map['basicAuthCredentials'] as String).input()).input(),
+      buildSpec: map['buildSpec'] == null ? null : ((map['buildSpec'] as String).input()).input(),
+      enableAutoBuild: map['enableAutoBuild'] == null ? null : ((map['enableAutoBuild'] as bool).input()).input(),
+      enableBasicAuth: map['enableBasicAuth'] == null ? null : ((map['enableBasicAuth'] as bool).input()).input(),
+      enablePerformanceMode: map['enablePerformanceMode'] == null ? null : ((map['enablePerformanceMode'] as bool).input()).input(),
+      enablePullRequestPreview: map['enablePullRequestPreview'] == null ? null : ((map['enablePullRequestPreview'] as bool).input()).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : (((map['environmentVariables'] as Map).cast<String, String>()).input()).input(),
+      framework: map['framework'] == null ? null : ((map['framework'] as String).input()).input(),
+      pullRequestEnvironmentName: map['pullRequestEnvironmentName'] == null ? null : ((map['pullRequestEnvironmentName'] as String).input()).input(),
+      stage: map['stage'] == null ? null : ((map['stage'] as String).input()).input(),
     );
   }
 }

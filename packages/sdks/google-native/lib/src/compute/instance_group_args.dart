@@ -48,12 +48,12 @@ class InstanceGroupArgs {
 
   factory InstanceGroupArgs.fromMap(Map<String, dynamic> map) {
     return InstanceGroupArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namedPorts: map['namedPorts'] == null ? null : (pulumi.Input.decodeList<NamedPort>(map['namedPorts'], (value) => NamedPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namedPorts: map['namedPorts'] == null ? null : (pulumi.Input.decodeList<NamedPort>(map['namedPorts']!, (value) => NamedPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

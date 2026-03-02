@@ -69,14 +69,14 @@ class DiskArgs {
   factory DiskArgs.fromMap(Map<String, dynamic> map) {
     return DiskArgs(
       category: (map['category'] as String).input(),
-      diskName: map['diskName'] == null ? null : (map['diskName'] as String).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
+      diskName: map['diskName'] == null ? null : (map['diskName']! as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
       ensRegionId: (map['ensRegionId'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
       paymentType: (map['paymentType'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
-      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

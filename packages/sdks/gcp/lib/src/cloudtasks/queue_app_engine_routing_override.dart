@@ -39,10 +39,10 @@ class QueueAppEngineRoutingOverride {
 
   factory QueueAppEngineRoutingOverride.fromMap(Map<String, dynamic> map) {
     return QueueAppEngineRoutingOverride(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

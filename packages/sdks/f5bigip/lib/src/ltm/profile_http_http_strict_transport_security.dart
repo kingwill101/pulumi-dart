@@ -35,10 +35,10 @@ class ProfileHttpHttpStrictTransportSecurity {
 
   factory ProfileHttpHttpStrictTransportSecurity.fromMap(Map<String, dynamic> map) {
     return ProfileHttpHttpStrictTransportSecurity(
-      includeSubdomains: map['includeSubdomains'] == null ? null : (map['includeSubdomains'] as String).input(),
-      maximumAge: map['maximumAge'] == null ? null : (map['maximumAge'] as int).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      preload: map['preload'] == null ? null : (map['preload'] as String).input(),
+      includeSubdomains: map['includeSubdomains'] == null ? null : (map['includeSubdomains']! as String).input(),
+      maximumAge: map['maximumAge'] == null ? null : (map['maximumAge']! as int).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      preload: map['preload'] == null ? null : (map['preload']! as String).input(),
     );
   }
 }

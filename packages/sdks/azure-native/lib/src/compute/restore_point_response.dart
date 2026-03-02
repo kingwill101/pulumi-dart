@@ -75,16 +75,16 @@ class RestorePointResponse {
 
   factory RestorePointResponse.fromMap(Map<String, dynamic> map) {
     return RestorePointResponse(
-      consistencyMode: map['consistencyMode'] == null ? null : (map['consistencyMode'] as String).input(),
-      excludeDisks: map['excludeDisks'] == null ? null : (pulumi.Input.decodeList<ApiEntityReferenceResponse>(map['excludeDisks'], (value) => ApiEntityReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      consistencyMode: map['consistencyMode'] == null ? null : (map['consistencyMode']! as String).input(),
+      excludeDisks: map['excludeDisks'] == null ? null : (pulumi.Input.decodeList<ApiEntityReferenceResponse>(map['excludeDisks']!, (value) => ApiEntityReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       id: (map['id'] as String).input(),
       instanceView: (RestorePointInstanceViewResponse.fromMap((map['instanceView'] as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      sourceMetadata: map['sourceMetadata'] == null ? null : (RestorePointSourceMetadataResponse.fromMap((map['sourceMetadata'] as Map).cast<String, dynamic>())).input(),
-      sourceRestorePoint: map['sourceRestorePoint'] == null ? null : (ApiEntityReferenceResponse.fromMap((map['sourceRestorePoint'] as Map).cast<String, dynamic>())).input(),
+      sourceMetadata: map['sourceMetadata'] == null ? null : (RestorePointSourceMetadataResponse.fromMap((map['sourceMetadata']! as Map).cast<String, dynamic>())).input(),
+      sourceRestorePoint: map['sourceRestorePoint'] == null ? null : (ApiEntityReferenceResponse.fromMap((map['sourceRestorePoint']! as Map).cast<String, dynamic>())).input(),
       systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
-      timeCreated: map['timeCreated'] == null ? null : (map['timeCreated'] as String).input(),
+      timeCreated: map['timeCreated'] == null ? null : (map['timeCreated']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

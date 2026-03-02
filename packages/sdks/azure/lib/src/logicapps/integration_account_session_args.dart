@@ -41,7 +41,7 @@ class IntegrationAccountSessionArgs {
     return IntegrationAccountSessionArgs(
       content: (map['content'] as String).input(),
       integrationAccountName: (map['integrationAccountName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

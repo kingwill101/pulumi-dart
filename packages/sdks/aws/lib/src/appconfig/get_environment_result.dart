@@ -70,7 +70,7 @@ class GetEnvironmentResult {
       description: map['description'] as String,
       environmentId: map['environmentId'] as String,
       id: map['id'] as String,
-      monitors: pulumi.Input.decodeList<GetEnvironmentMonitor>(map['monitors'], (value) => GetEnvironmentMonitor.fromMap((value as Map).cast<String, dynamic>())),
+      monitors: pulumi.Input.decodeList<GetEnvironmentMonitor>(map['monitors']!, (value) => GetEnvironmentMonitor.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       region: map['region'] as String,
       state: map['state'] as String,

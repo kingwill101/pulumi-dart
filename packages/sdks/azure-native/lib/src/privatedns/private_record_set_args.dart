@@ -97,20 +97,20 @@ class PrivateRecordSetArgs {
 
   factory PrivateRecordSetArgs.fromMap(Map<String, dynamic> map) {
     return PrivateRecordSetArgs(
-      aRecords: map['aRecords'] == null ? null : (pulumi.Input.decodeList<ARecord>(map['aRecords'], (value) => ARecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      aaaaRecords: map['aaaaRecords'] == null ? null : (pulumi.Input.decodeList<AaaaRecord>(map['aaaaRecords'], (value) => AaaaRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cnameRecord: map['cnameRecord'] == null ? null : (CnameRecord.fromMap((map['cnameRecord'] as Map).cast<String, dynamic>())).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      mxRecords: map['mxRecords'] == null ? null : (pulumi.Input.decodeList<MxRecord>(map['mxRecords'], (value) => MxRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aRecords: map['aRecords'] == null ? null : (pulumi.Input.decodeList<ARecord>(map['aRecords']!, (value) => ARecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aaaaRecords: map['aaaaRecords'] == null ? null : (pulumi.Input.decodeList<AaaaRecord>(map['aaaaRecords']!, (value) => AaaaRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cnameRecord: map['cnameRecord'] == null ? null : (CnameRecord.fromMap((map['cnameRecord']! as Map).cast<String, dynamic>())).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      mxRecords: map['mxRecords'] == null ? null : (pulumi.Input.decodeList<MxRecord>(map['mxRecords']!, (value) => MxRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
       privateZoneName: (map['privateZoneName'] as String).input(),
-      ptrRecords: map['ptrRecords'] == null ? null : (pulumi.Input.decodeList<PtrRecord>(map['ptrRecords'], (value) => PtrRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ptrRecords: map['ptrRecords'] == null ? null : (pulumi.Input.decodeList<PtrRecord>(map['ptrRecords']!, (value) => PtrRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
       recordType: (map['recordType'] as String).input(),
-      relativeRecordSetName: map['relativeRecordSetName'] == null ? null : (map['relativeRecordSetName'] as String).input(),
+      relativeRecordSetName: map['relativeRecordSetName'] == null ? null : (map['relativeRecordSetName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      soaRecord: map['soaRecord'] == null ? null : (SoaRecord.fromMap((map['soaRecord'] as Map).cast<String, dynamic>())).input(),
-      srvRecords: map['srvRecords'] == null ? null : (pulumi.Input.decodeList<SrvRecord>(map['srvRecords'], (value) => SrvRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as double).input(),
-      txtRecords: map['txtRecords'] == null ? null : (pulumi.Input.decodeList<TxtRecord>(map['txtRecords'], (value) => TxtRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      soaRecord: map['soaRecord'] == null ? null : (SoaRecord.fromMap((map['soaRecord']! as Map).cast<String, dynamic>())).input(),
+      srvRecords: map['srvRecords'] == null ? null : (pulumi.Input.decodeList<SrvRecord>(map['srvRecords']!, (value) => SrvRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as double).input(),
+      txtRecords: map['txtRecords'] == null ? null : (pulumi.Input.decodeList<TxtRecord>(map['txtRecords']!, (value) => TxtRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -65,14 +65,14 @@ class FirewallEndpointAssociationArgs {
 
   factory FirewallEndpointAssociationArgs.fromMap(Map<String, dynamic> map) {
     return FirewallEndpointAssociationArgs(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
       firewallEndpoint: (map['firewallEndpoint'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       network: (map['network'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      tlsInspectionPolicy: map['tlsInspectionPolicy'] == null ? null : (map['tlsInspectionPolicy'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      tlsInspectionPolicy: map['tlsInspectionPolicy'] == null ? null : (map['tlsInspectionPolicy']! as String).input(),
     );
   }
 }

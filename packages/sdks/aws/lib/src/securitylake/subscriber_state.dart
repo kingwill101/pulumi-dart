@@ -98,22 +98,22 @@ class SubscriberState {
 
   factory SubscriberState.fromMap(Map<String, dynamic> map) {
     return SubscriberState(
-      accessType: map['accessType'] == null ? null : (map['accessType'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceShareArn: map['resourceShareArn'] == null ? null : (map['resourceShareArn'] as String).input(),
-      resourceShareName: map['resourceShareName'] == null ? null : (map['resourceShareName'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      s3BucketArn: map['s3BucketArn'] == null ? null : (map['s3BucketArn'] as String).input(),
-      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<SubscriberSource>(map['sources'], (value) => SubscriberSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subscriberDescription: map['subscriberDescription'] == null ? null : (map['subscriberDescription'] as String).input(),
-      subscriberEndpoint: map['subscriberEndpoint'] == null ? null : (map['subscriberEndpoint'] as String).input(),
-      subscriberIdentity: map['subscriberIdentity'] == null ? null : (SubscriberSubscriberIdentity.fromMap((map['subscriberIdentity'] as Map).cast<String, dynamic>())).input(),
-      subscriberName: map['subscriberName'] == null ? null : (map['subscriberName'] as String).input(),
-      subscriberStatus: map['subscriberStatus'] == null ? null : (map['subscriberStatus'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (SubscriberTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      accessType: map['accessType'] == null ? null : ((map['accessType'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceShareArn: map['resourceShareArn'] == null ? null : ((map['resourceShareArn'] as String).input()).input(),
+      resourceShareName: map['resourceShareName'] == null ? null : ((map['resourceShareName'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      s3BucketArn: map['s3BucketArn'] == null ? null : ((map['s3BucketArn'] as String).input()).input(),
+      sources: map['sources'] == null ? null : ((pulumi.Input.decodeList<SubscriberSource>(map['sources']!, (value) => SubscriberSource.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      subscriberDescription: map['subscriberDescription'] == null ? null : ((map['subscriberDescription'] as String).input()).input(),
+      subscriberEndpoint: map['subscriberEndpoint'] == null ? null : ((map['subscriberEndpoint'] as String).input()).input(),
+      subscriberIdentity: map['subscriberIdentity'] == null ? null : ((SubscriberSubscriberIdentity.fromMap((map['subscriberIdentity']! as Map).cast<String, dynamic>())).input()).input(),
+      subscriberName: map['subscriberName'] == null ? null : ((map['subscriberName'] as String).input()).input(),
+      subscriberStatus: map['subscriberStatus'] == null ? null : ((map['subscriberStatus'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((SubscriberTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

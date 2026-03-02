@@ -36,10 +36,10 @@ class ComputeInstanceDataDiskResponse {
 
   factory ComputeInstanceDataDiskResponse.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceDataDiskResponse(
-      caching: map['caching'] == null ? null : (map['caching'] as String).input(),
-      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as int).input(),
-      lun: map['lun'] == null ? null : (map['lun'] as int).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
+      caching: map['caching'] == null ? null : (map['caching']! as String).input(),
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB']! as int).input(),
+      lun: map['lun'] == null ? null : (map['lun']! as int).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType']! as String).input(),
     );
   }
 }

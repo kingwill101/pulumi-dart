@@ -22,7 +22,7 @@ class NodePoolDefaultsContainerV1beta1 {
 
   factory NodePoolDefaultsContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NodePoolDefaultsContainerV1beta1(
-      nodeConfigDefaults: map['nodeConfigDefaults'] == null ? null : (NodeConfigDefaultsContainerV1beta1.fromMap((map['nodeConfigDefaults'] as Map).cast<String, dynamic>())).input(),
+      nodeConfigDefaults: map['nodeConfigDefaults'] == null ? null : (NodeConfigDefaultsContainerV1beta1.fromMap((map['nodeConfigDefaults']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

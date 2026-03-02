@@ -27,8 +27,8 @@ class AuditConfigGkehubV1alpha {
 
   factory AuditConfigGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return AuditConfigGkehubV1alpha(
-      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<AuditLogConfigGkehubV1alpha>(map['auditLogConfigs'], (value) => AuditLogConfigGkehubV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<AuditLogConfigGkehubV1alpha>(map['auditLogConfigs']!, (value) => AuditLogConfigGkehubV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

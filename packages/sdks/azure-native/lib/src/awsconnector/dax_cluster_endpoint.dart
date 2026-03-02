@@ -31,9 +31,9 @@ class DaxClusterEndpoint {
 
   factory DaxClusterEndpoint.fromMap(Map<String, dynamic> map) {
     return DaxClusterEndpoint(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

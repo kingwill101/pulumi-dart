@@ -36,9 +36,9 @@ class ResourceLocationDataContract {
 
   factory ResourceLocationDataContract.fromMap(Map<String, dynamic> map) {
     return ResourceLocationDataContract(
-      city: map['city'] == null ? null : (map['city'] as String).input(),
-      countryOrRegion: map['countryOrRegion'] == null ? null : (map['countryOrRegion'] as String).input(),
-      district: map['district'] == null ? null : (map['district'] as String).input(),
+      city: map['city'] == null ? null : (map['city']! as String).input(),
+      countryOrRegion: map['countryOrRegion'] == null ? null : (map['countryOrRegion']! as String).input(),
+      district: map['district'] == null ? null : (map['district']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

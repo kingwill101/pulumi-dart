@@ -32,9 +32,9 @@ class Settings {
 
   factory Settings.fromMap(Map<String, dynamic> map) {
     return Settings(
-      isCompression: map['isCompression'] == null ? null : (map['isCompression'] as bool).input(),
-      issqlcompression: map['issqlcompression'] == null ? null : (map['issqlcompression'] as bool).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      isCompression: map['isCompression'] == null ? null : (map['isCompression']! as bool).input(),
+      issqlcompression: map['issqlcompression'] == null ? null : (map['issqlcompression']! as bool).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

@@ -61,15 +61,15 @@ class AwsSsmParameterPropertiesResponse {
 
   factory AwsSsmParameterPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsSsmParameterPropertiesResponse(
-      allowedPattern: map['allowedPattern'] == null ? null : (map['allowedPattern'] as String).input(),
-      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policies: map['policies'] == null ? null : (map['policies'] as String).input(),
-      tags: map['tags'] == null ? null : (map['tags']).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      allowedPattern: map['allowedPattern'] == null ? null : (map['allowedPattern']! as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policies: map['policies'] == null ? null : (map['policies']! as String).input(),
+      tags: map['tags'] == null ? null : (map['tags']!).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

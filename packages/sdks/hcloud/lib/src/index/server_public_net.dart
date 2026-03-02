@@ -31,10 +31,10 @@ class ServerPublicNet {
 
   factory ServerPublicNet.fromMap(Map<String, dynamic> map) {
     return ServerPublicNet(
-      ipv4: map['ipv4'] == null ? null : (map['ipv4'] as int).input(),
-      ipv4Enabled: map['ipv4Enabled'] == null ? null : (map['ipv4Enabled'] as bool).input(),
-      ipv6: map['ipv6'] == null ? null : (map['ipv6'] as int).input(),
-      ipv6Enabled: map['ipv6Enabled'] == null ? null : (map['ipv6Enabled'] as bool).input(),
+      ipv4: map['ipv4'] == null ? null : (map['ipv4']! as int).input(),
+      ipv4Enabled: map['ipv4Enabled'] == null ? null : (map['ipv4Enabled']! as bool).input(),
+      ipv6: map['ipv6'] == null ? null : (map['ipv6']! as int).input(),
+      ipv6Enabled: map['ipv6Enabled'] == null ? null : (map['ipv6Enabled']! as bool).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class ApplicationServerFullResourceNamesResponse {
 
   factory ApplicationServerFullResourceNamesResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationServerFullResourceNamesResponse(
-      availabilitySetName: map['availabilitySetName'] == null ? null : (map['availabilitySetName'] as String).input(),
-      virtualMachines: map['virtualMachines'] == null ? null : (pulumi.Input.decodeList<VirtualMachineResourceNamesResponse>(map['virtualMachines'], (value) => VirtualMachineResourceNamesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      availabilitySetName: map['availabilitySetName'] == null ? null : (map['availabilitySetName']! as String).input(),
+      virtualMachines: map['virtualMachines'] == null ? null : (pulumi.Input.decodeList<VirtualMachineResourceNamesResponse>(map['virtualMachines']!, (value) => VirtualMachineResourceNamesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

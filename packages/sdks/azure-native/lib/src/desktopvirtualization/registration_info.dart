@@ -31,9 +31,9 @@ class RegistrationInfo {
 
   factory RegistrationInfo.fromMap(Map<String, dynamic> map) {
     return RegistrationInfo(
-      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime'] as String).input(),
-      registrationTokenOperation: map['registrationTokenOperation'] == null ? null : (map['registrationTokenOperation'] as String).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
+      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime']! as String).input(),
+      registrationTokenOperation: map['registrationTokenOperation'] == null ? null : (map['registrationTokenOperation']! as String).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
     );
   }
 }

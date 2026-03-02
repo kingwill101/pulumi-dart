@@ -78,17 +78,17 @@ class ScanConfigWebsecurityscannerV1alphaArgs {
 
   factory ScanConfigWebsecurityscannerV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return ScanConfigWebsecurityscannerV1alphaArgs(
-      authentication: map['authentication'] == null ? null : (AuthenticationWebsecurityscannerV1alpha.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      blacklistPatterns: map['blacklistPatterns'] == null ? null : ((map['blacklistPatterns'] as List).cast<String>()).input(),
+      authentication: map['authentication'] == null ? null : (AuthenticationWebsecurityscannerV1alpha.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
+      blacklistPatterns: map['blacklistPatterns'] == null ? null : ((map['blacklistPatterns']! as List).cast<String>()).input(),
       displayName: (map['displayName'] as String).input(),
-      latestRun: map['latestRun'] == null ? null : (ScanRun.fromMap((map['latestRun'] as Map).cast<String, dynamic>())).input(),
-      maxQps: map['maxQps'] == null ? null : (map['maxQps'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      schedule: map['schedule'] == null ? null : (ScheduleWebsecurityscannerV1alpha.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      latestRun: map['latestRun'] == null ? null : (ScanRun.fromMap((map['latestRun']! as Map).cast<String, dynamic>())).input(),
+      maxQps: map['maxQps'] == null ? null : (map['maxQps']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      schedule: map['schedule'] == null ? null : (ScheduleWebsecurityscannerV1alpha.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
       startingUrls: ((map['startingUrls'] as List).cast<String>()).input(),
-      targetPlatforms: map['targetPlatforms'] == null ? null : (pulumi.Input.decodeList<ScanConfigTargetPlatformsItem>(map['targetPlatforms'], (value) => ScanConfigTargetPlatformsItem.fromValue(value as String))).input(),
-      userAgent: map['userAgent'] == null ? null : (ScanConfigUserAgentWebsecurityscannerV1alpha.fromValue(map['userAgent'] as String)).input(),
+      targetPlatforms: map['targetPlatforms'] == null ? null : (pulumi.Input.decodeList<ScanConfigTargetPlatformsItem>(map['targetPlatforms']!, (value) => ScanConfigTargetPlatformsItem.fromValue(value as String))).input(),
+      userAgent: map['userAgent'] == null ? null : (ScanConfigUserAgentWebsecurityscannerV1alpha.fromValue(map['userAgent']! as String)).input(),
     );
   }
 }

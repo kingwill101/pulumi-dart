@@ -52,13 +52,13 @@ class AnalyticsSolutionState {
 
   factory AnalyticsSolutionState.fromMap(Map<String, dynamic> map) {
     return AnalyticsSolutionState(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      plan: map['plan'] == null ? null : (AnalyticsSolutionPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      solutionName: map['solutionName'] == null ? null : (map['solutionName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName'] as String).input(),
-      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      plan: map['plan'] == null ? null : (AnalyticsSolutionPlan.fromMap((map['plan']! as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      solutionName: map['solutionName'] == null ? null : (map['solutionName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName']! as String).input(),
+      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId']! as String).input(),
     );
   }
 }

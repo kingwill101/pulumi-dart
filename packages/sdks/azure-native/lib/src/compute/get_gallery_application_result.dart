@@ -89,18 +89,18 @@ class GetGalleryApplicationResult {
   factory GetGalleryApplicationResult.fromMap(Map<String, dynamic> map) {
     return GetGalleryApplicationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      customActions: map['customActions'] == null ? null : pulumi.Input.decodeList<GalleryApplicationCustomActionResponse>(map['customActions'], (value) => GalleryApplicationCustomActionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      endOfLifeDate: map['endOfLifeDate'] == null ? null : map['endOfLifeDate'] as String,
-      eula: map['eula'] == null ? null : map['eula'] as String,
+      customActions: map['customActions'] == null ? null : pulumi.Input.decodeList<GalleryApplicationCustomActionResponse>(map['customActions']!, (value) => GalleryApplicationCustomActionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : map['description']! as String,
+      endOfLifeDate: map['endOfLifeDate'] == null ? null : map['endOfLifeDate']! as String,
+      eula: map['eula'] == null ? null : map['eula']! as String,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      privacyStatementUri: map['privacyStatementUri'] == null ? null : map['privacyStatementUri'] as String,
-      releaseNoteUri: map['releaseNoteUri'] == null ? null : map['releaseNoteUri'] as String,
+      privacyStatementUri: map['privacyStatementUri'] == null ? null : map['privacyStatementUri']! as String,
+      releaseNoteUri: map['releaseNoteUri'] == null ? null : map['releaseNoteUri']! as String,
       supportedOSType: map['supportedOSType'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

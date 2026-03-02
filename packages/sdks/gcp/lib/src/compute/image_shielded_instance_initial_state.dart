@@ -43,10 +43,10 @@ class ImageShieldedInstanceInitialState {
 
   factory ImageShieldedInstanceInitialState.fromMap(Map<String, dynamic> map) {
     return ImageShieldedInstanceInitialState(
-      dbs: map['dbs'] == null ? null : (pulumi.Input.decodeList<ImageShieldedInstanceInitialStateDb>(map['dbs'], (value) => ImageShieldedInstanceInitialStateDb.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dbxs: map['dbxs'] == null ? null : (pulumi.Input.decodeList<ImageShieldedInstanceInitialStateDbx>(map['dbxs'], (value) => ImageShieldedInstanceInitialStateDbx.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      keks: map['keks'] == null ? null : (pulumi.Input.decodeList<ImageShieldedInstanceInitialStateKek>(map['keks'], (value) => ImageShieldedInstanceInitialStateKek.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pk: map['pk'] == null ? null : (ImageShieldedInstanceInitialStatePk.fromMap((map['pk'] as Map).cast<String, dynamic>())).input(),
+      dbs: map['dbs'] == null ? null : (pulumi.Input.decodeList<ImageShieldedInstanceInitialStateDb>(map['dbs']!, (value) => ImageShieldedInstanceInitialStateDb.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dbxs: map['dbxs'] == null ? null : (pulumi.Input.decodeList<ImageShieldedInstanceInitialStateDbx>(map['dbxs']!, (value) => ImageShieldedInstanceInitialStateDbx.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      keks: map['keks'] == null ? null : (pulumi.Input.decodeList<ImageShieldedInstanceInitialStateKek>(map['keks']!, (value) => ImageShieldedInstanceInitialStateKek.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pk: map['pk'] == null ? null : (ImageShieldedInstanceInitialStatePk.fromMap((map['pk']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

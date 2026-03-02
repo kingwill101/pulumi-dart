@@ -33,8 +33,8 @@ class AttachedClusterAuthorization {
 
   factory AttachedClusterAuthorization.fromMap(Map<String, dynamic> map) {
     return AttachedClusterAuthorization(
-      adminGroups: map['adminGroups'] == null ? null : ((map['adminGroups'] as List).cast<String>()).input(),
-      adminUsers: map['adminUsers'] == null ? null : ((map['adminUsers'] as List).cast<String>()).input(),
+      adminGroups: map['adminGroups'] == null ? null : ((map['adminGroups']! as List).cast<String>()).input(),
+      adminUsers: map['adminUsers'] == null ? null : ((map['adminUsers']! as List).cast<String>()).input(),
     );
   }
 }

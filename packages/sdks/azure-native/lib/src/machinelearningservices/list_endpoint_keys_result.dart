@@ -21,7 +21,7 @@ class ListEndpointKeysResult {
 
   factory ListEndpointKeysResult.fromMap(Map<String, dynamic> map) {
     return ListEndpointKeysResult(
-      keys: map['keys'] == null ? null : AccountApiKeysResponse.fromMap((map['keys'] as Map).cast<String, dynamic>()),
+      keys: map['keys'] == null ? null : AccountApiKeysResponse.fromMap((map['keys']! as Map).cast<String, dynamic>()),
     );
   }
 }

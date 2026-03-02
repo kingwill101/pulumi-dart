@@ -53,12 +53,12 @@ class GetAvailabilityZonesArgs {
 
   factory GetAvailabilityZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetAvailabilityZonesArgs(
-      allAvailabilityZones: map['allAvailabilityZones'] == null ? null : (map['allAvailabilityZones'] as bool).input(),
-      excludeNames: map['excludeNames'] == null ? null : ((map['excludeNames'] as List).cast<String>()).input(),
-      excludeZoneIds: map['excludeZoneIds'] == null ? null : ((map['excludeZoneIds'] as List).cast<String>()).input(),
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetAvailabilityZonesFilter>(map['filters'], (value) => GetAvailabilityZonesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      allAvailabilityZones: map['allAvailabilityZones'] == null ? null : ((map['allAvailabilityZones'] as bool).input()).input(),
+      excludeNames: map['excludeNames'] == null ? null : (((map['excludeNames'] as List).cast<String>()).input()).input(),
+      excludeZoneIds: map['excludeZoneIds'] == null ? null : (((map['excludeZoneIds'] as List).cast<String>()).input()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetAvailabilityZonesFilter>(map['filters']!, (value) => GetAvailabilityZonesFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
     );
   }
 }

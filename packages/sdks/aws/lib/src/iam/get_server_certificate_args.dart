@@ -39,10 +39,10 @@ class GetServerCertificateArgs {
 
   factory GetServerCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetServerCertificateArgs(
-      latest: map['latest'] == null ? null : (map['latest'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      pathPrefix: map['pathPrefix'] == null ? null : (map['pathPrefix'] as String).input(),
+      latest: map['latest'] == null ? null : ((map['latest'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      pathPrefix: map['pathPrefix'] == null ? null : ((map['pathPrefix'] as String).input()).input(),
     );
   }
 }

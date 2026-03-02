@@ -41,11 +41,11 @@ class ServiceCorsConfigurationInfoResponse {
 
   factory ServiceCorsConfigurationInfoResponse.fromMap(Map<String, dynamic> map) {
     return ServiceCorsConfigurationInfoResponse(
-      allowCredentials: map['allowCredentials'] == null ? null : (map['allowCredentials'] as bool).input(),
-      headers: map['headers'] == null ? null : ((map['headers'] as List).cast<String>()).input(),
-      maxAge: map['maxAge'] == null ? null : (map['maxAge'] as double).input(),
-      methods: map['methods'] == null ? null : ((map['methods'] as List).cast<String>()).input(),
-      origins: map['origins'] == null ? null : ((map['origins'] as List).cast<String>()).input(),
+      allowCredentials: map['allowCredentials'] == null ? null : (map['allowCredentials']! as bool).input(),
+      headers: map['headers'] == null ? null : ((map['headers']! as List).cast<String>()).input(),
+      maxAge: map['maxAge'] == null ? null : (map['maxAge']! as double).input(),
+      methods: map['methods'] == null ? null : ((map['methods']! as List).cast<String>()).input(),
+      origins: map['origins'] == null ? null : ((map['origins']! as List).cast<String>()).input(),
     );
   }
 }

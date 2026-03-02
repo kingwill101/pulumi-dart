@@ -92,21 +92,21 @@ class PropertyDefinition {
 
   factory PropertyDefinition.fromMap(Map<String, dynamic> map) {
     return PropertyDefinition(
-      arrayValueSeparator: map['arrayValueSeparator'] == null ? null : (map['arrayValueSeparator'] as String).input(),
-      enumValidValues: map['enumValidValues'] == null ? null : (pulumi.Input.decodeList<ProfileEnumValidValuesFormat>(map['enumValidValues'], (value) => ProfileEnumValidValuesFormat.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arrayValueSeparator: map['arrayValueSeparator'] == null ? null : (map['arrayValueSeparator']! as String).input(),
+      enumValidValues: map['enumValidValues'] == null ? null : (pulumi.Input.decodeList<ProfileEnumValidValuesFormat>(map['enumValidValues']!, (value) => ProfileEnumValidValuesFormat.fromMap((value as Map).cast<String, dynamic>()))).input(),
       fieldName: (map['fieldName'] as String).input(),
       fieldType: (map['fieldType'] as String).input(),
-      isArray: map['isArray'] == null ? null : (map['isArray'] as bool).input(),
-      isAvailableInGraph: map['isAvailableInGraph'] == null ? null : (map['isAvailableInGraph'] as bool).input(),
-      isEnum: map['isEnum'] == null ? null : (map['isEnum'] as bool).input(),
-      isFlagEnum: map['isFlagEnum'] == null ? null : (map['isFlagEnum'] as bool).input(),
-      isImage: map['isImage'] == null ? null : (map['isImage'] as bool).input(),
-      isLocalizedString: map['isLocalizedString'] == null ? null : (map['isLocalizedString'] as bool).input(),
-      isName: map['isName'] == null ? null : (map['isName'] as bool).input(),
-      isRequired: map['isRequired'] == null ? null : (map['isRequired'] as bool).input(),
-      maxLength: map['maxLength'] == null ? null : (map['maxLength'] as int).input(),
-      propertyId: map['propertyId'] == null ? null : (map['propertyId'] as String).input(),
-      schemaItemPropLink: map['schemaItemPropLink'] == null ? null : (map['schemaItemPropLink'] as String).input(),
+      isArray: map['isArray'] == null ? null : (map['isArray']! as bool).input(),
+      isAvailableInGraph: map['isAvailableInGraph'] == null ? null : (map['isAvailableInGraph']! as bool).input(),
+      isEnum: map['isEnum'] == null ? null : (map['isEnum']! as bool).input(),
+      isFlagEnum: map['isFlagEnum'] == null ? null : (map['isFlagEnum']! as bool).input(),
+      isImage: map['isImage'] == null ? null : (map['isImage']! as bool).input(),
+      isLocalizedString: map['isLocalizedString'] == null ? null : (map['isLocalizedString']! as bool).input(),
+      isName: map['isName'] == null ? null : (map['isName']! as bool).input(),
+      isRequired: map['isRequired'] == null ? null : (map['isRequired']! as bool).input(),
+      maxLength: map['maxLength'] == null ? null : (map['maxLength']! as int).input(),
+      propertyId: map['propertyId'] == null ? null : (map['propertyId']! as String).input(),
+      schemaItemPropLink: map['schemaItemPropLink'] == null ? null : (map['schemaItemPropLink']! as String).input(),
     );
   }
 }

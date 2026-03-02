@@ -36,7 +36,7 @@ class GetBotAliasArgs {
     return GetBotAliasArgs(
       botName: (map['botName'] as String).input(),
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

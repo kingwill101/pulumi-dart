@@ -39,9 +39,9 @@ class AppSpecDomainName {
   factory AppSpecDomainName.fromMap(Map<String, dynamic> map) {
     return AppSpecDomainName(
       name: (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      wildcard: map['wildcard'] == null ? null : (map['wildcard'] as bool).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      wildcard: map['wildcard'] == null ? null : (map['wildcard']! as bool).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

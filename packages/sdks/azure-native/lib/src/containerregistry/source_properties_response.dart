@@ -38,9 +38,9 @@ class SourcePropertiesResponse {
 
   factory SourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SourcePropertiesResponse(
-      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
+      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
       repositoryUrl: (map['repositoryUrl'] as String).input(),
-      sourceControlAuthProperties: map['sourceControlAuthProperties'] == null ? null : (AuthInfoResponse.fromMap((map['sourceControlAuthProperties'] as Map).cast<String, dynamic>())).input(),
+      sourceControlAuthProperties: map['sourceControlAuthProperties'] == null ? null : (AuthInfoResponse.fromMap((map['sourceControlAuthProperties']! as Map).cast<String, dynamic>())).input(),
       sourceControlType: (map['sourceControlType'] as String).input(),
     );
   }

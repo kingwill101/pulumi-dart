@@ -26,7 +26,7 @@ class TriggerTumblingWindowPipeline {
   factory TriggerTumblingWindowPipeline.fromMap(Map<String, dynamic> map) {
     return TriggerTumblingWindowPipeline(
       name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class ActionCustomState {
 
   factory ActionCustomState.fromMap(Map<String, dynamic> map) {
     return ActionCustomState(
-      body: map['body'] == null ? null : (map['body'] as String).input(),
-      logicAppId: map['logicAppId'] == null ? null : (map['logicAppId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
+      logicAppId: map['logicAppId'] == null ? null : (map['logicAppId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

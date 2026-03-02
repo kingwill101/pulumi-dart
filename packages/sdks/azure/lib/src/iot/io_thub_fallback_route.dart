@@ -35,10 +35,10 @@ class IoTHubFallbackRoute {
 
   factory IoTHubFallbackRoute.fromMap(Map<String, dynamic> map) {
     return IoTHubFallbackRoute(
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      endpointNames: map['endpointNames'] == null ? null : ((map['endpointNames'] as List).cast<String>()).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      endpointNames: map['endpointNames'] == null ? null : ((map['endpointNames']! as List).cast<String>()).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

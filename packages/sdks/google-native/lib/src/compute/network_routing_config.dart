@@ -39,10 +39,10 @@ class NetworkRoutingConfig {
 
   factory NetworkRoutingConfig.fromMap(Map<String, dynamic> map) {
     return NetworkRoutingConfig(
-      bgpAlwaysCompareMed: map['bgpAlwaysCompareMed'] == null ? null : (map['bgpAlwaysCompareMed'] as bool).input(),
-      bgpBestPathSelectionMode: map['bgpBestPathSelectionMode'] == null ? null : (NetworkRoutingConfigBgpBestPathSelectionMode.fromValue(map['bgpBestPathSelectionMode'] as String)).input(),
-      bgpInterRegionCost: map['bgpInterRegionCost'] == null ? null : (NetworkRoutingConfigBgpInterRegionCost.fromValue(map['bgpInterRegionCost'] as String)).input(),
-      routingMode: map['routingMode'] == null ? null : (NetworkRoutingConfigRoutingMode.fromValue(map['routingMode'] as String)).input(),
+      bgpAlwaysCompareMed: map['bgpAlwaysCompareMed'] == null ? null : (map['bgpAlwaysCompareMed']! as bool).input(),
+      bgpBestPathSelectionMode: map['bgpBestPathSelectionMode'] == null ? null : (NetworkRoutingConfigBgpBestPathSelectionMode.fromValue(map['bgpBestPathSelectionMode']! as String)).input(),
+      bgpInterRegionCost: map['bgpInterRegionCost'] == null ? null : (NetworkRoutingConfigBgpInterRegionCost.fromValue(map['bgpInterRegionCost']! as String)).input(),
+      routingMode: map['routingMode'] == null ? null : (NetworkRoutingConfigRoutingMode.fromValue(map['routingMode']! as String)).input(),
     );
   }
 }

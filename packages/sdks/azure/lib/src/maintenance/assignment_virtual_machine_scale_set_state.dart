@@ -31,9 +31,9 @@ class AssignmentVirtualMachineScaleSetState {
 
   factory AssignmentVirtualMachineScaleSetState.fromMap(Map<String, dynamic> map) {
     return AssignmentVirtualMachineScaleSetState(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : (map['maintenanceConfigurationId'] as String).input(),
-      virtualMachineScaleSetId: map['virtualMachineScaleSetId'] == null ? null : (map['virtualMachineScaleSetId'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : (map['maintenanceConfigurationId']! as String).input(),
+      virtualMachineScaleSetId: map['virtualMachineScaleSetId'] == null ? null : (map['virtualMachineScaleSetId']! as String).input(),
     );
   }
 }

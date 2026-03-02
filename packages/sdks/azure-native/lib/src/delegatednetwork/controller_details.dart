@@ -21,7 +21,7 @@ class ControllerDetails {
 
   factory ControllerDetails.fromMap(Map<String, dynamic> map) {
     return ControllerDetails(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

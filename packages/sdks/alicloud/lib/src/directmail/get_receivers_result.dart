@@ -52,12 +52,12 @@ class GetReceiversResult {
     return GetReceiversResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keyWord: map['keyWord'] == null ? null : map['keyWord'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      keyWord: map['keyWord'] == null ? null : map['keyWord']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       receiverses: pulumi.Input.decodeList<GetReceiversReceiverse>(map['receiverses'], (value) => GetReceiversReceiverse.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as int,
+      status: map['status'] == null ? null : map['status']! as int,
     );
   }
 }

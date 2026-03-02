@@ -86,20 +86,20 @@ class VMwareCbtNicDetailsResponse {
 
   factory VMwareCbtNicDetailsResponse.fromMap(Map<String, dynamic> map) {
     return VMwareCbtNicDetailsResponse(
-      isPrimaryNic: map['isPrimaryNic'] == null ? null : (map['isPrimaryNic'] as String).input(),
-      isSelectedForMigration: map['isSelectedForMigration'] == null ? null : (map['isSelectedForMigration'] as String).input(),
+      isPrimaryNic: map['isPrimaryNic'] == null ? null : (map['isPrimaryNic']! as String).input(),
+      isSelectedForMigration: map['isSelectedForMigration'] == null ? null : (map['isSelectedForMigration']! as String).input(),
       nicId: (map['nicId'] as String).input(),
       sourceIPAddress: (map['sourceIPAddress'] as String).input(),
       sourceIPAddressType: (map['sourceIPAddressType'] as String).input(),
       sourceNetworkId: (map['sourceNetworkId'] as String).input(),
-      targetIPAddress: map['targetIPAddress'] == null ? null : (map['targetIPAddress'] as String).input(),
-      targetIPAddressType: map['targetIPAddressType'] == null ? null : (map['targetIPAddressType'] as String).input(),
-      targetNicName: map['targetNicName'] == null ? null : (map['targetNicName'] as String).input(),
-      targetSubnetName: map['targetSubnetName'] == null ? null : (map['targetSubnetName'] as String).input(),
-      testIPAddress: map['testIPAddress'] == null ? null : (map['testIPAddress'] as String).input(),
-      testIPAddressType: map['testIPAddressType'] == null ? null : (map['testIPAddressType'] as String).input(),
-      testNetworkId: map['testNetworkId'] == null ? null : (map['testNetworkId'] as String).input(),
-      testSubnetName: map['testSubnetName'] == null ? null : (map['testSubnetName'] as String).input(),
+      targetIPAddress: map['targetIPAddress'] == null ? null : (map['targetIPAddress']! as String).input(),
+      targetIPAddressType: map['targetIPAddressType'] == null ? null : (map['targetIPAddressType']! as String).input(),
+      targetNicName: map['targetNicName'] == null ? null : (map['targetNicName']! as String).input(),
+      targetSubnetName: map['targetSubnetName'] == null ? null : (map['targetSubnetName']! as String).input(),
+      testIPAddress: map['testIPAddress'] == null ? null : (map['testIPAddress']! as String).input(),
+      testIPAddressType: map['testIPAddressType'] == null ? null : (map['testIPAddressType']! as String).input(),
+      testNetworkId: map['testNetworkId'] == null ? null : (map['testNetworkId']! as String).input(),
+      testSubnetName: map['testSubnetName'] == null ? null : (map['testSubnetName']! as String).input(),
     );
   }
 }

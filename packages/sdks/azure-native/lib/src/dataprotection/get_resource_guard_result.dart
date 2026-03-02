@@ -63,13 +63,13 @@ class GetResourceGuardResult {
   factory GetResourceGuardResult.fromMap(Map<String, dynamic> map) {
     return GetResourceGuardResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      eTag: map['eTag'] == null ? null : map['eTag'] as String,
+      eTag: map['eTag'] == null ? null : map['eTag']! as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       properties: ResourceGuardResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

@@ -53,12 +53,12 @@ class DocumentAiWarehouseLocationState {
 
   factory DocumentAiWarehouseLocationState.fromMap(Map<String, dynamic> map) {
     return DocumentAiWarehouseLocationState(
-      accessControlMode: map['accessControlMode'] == null ? null : (map['accessControlMode'] as String).input(),
-      databaseType: map['databaseType'] == null ? null : (map['databaseType'] as String).input(),
-      documentCreatorDefaultRole: map['documentCreatorDefaultRole'] == null ? null : (map['documentCreatorDefaultRole'] as String).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber'] as String).input(),
+      accessControlMode: map['accessControlMode'] == null ? null : (map['accessControlMode']! as String).input(),
+      databaseType: map['databaseType'] == null ? null : (map['databaseType']! as String).input(),
+      documentCreatorDefaultRole: map['documentCreatorDefaultRole'] == null ? null : (map['documentCreatorDefaultRole']! as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber']! as String).input(),
     );
   }
 }

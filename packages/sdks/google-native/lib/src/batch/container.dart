@@ -56,14 +56,14 @@ class Container {
 
   factory Container.fromMap(Map<String, dynamic> map) {
     return Container(
-      blockExternalNetwork: map['blockExternalNetwork'] == null ? null : (map['blockExternalNetwork'] as bool).input(),
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      entrypoint: map['entrypoint'] == null ? null : (map['entrypoint'] as String).input(),
-      imageUri: map['imageUri'] == null ? null : (map['imageUri'] as String).input(),
-      options: map['options'] == null ? null : (map['options'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
-      volumes: map['volumes'] == null ? null : ((map['volumes'] as List).cast<String>()).input(),
+      blockExternalNetwork: map['blockExternalNetwork'] == null ? null : (map['blockExternalNetwork']! as bool).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
+      entrypoint: map['entrypoint'] == null ? null : (map['entrypoint']! as String).input(),
+      imageUri: map['imageUri'] == null ? null : (map['imageUri']! as String).input(),
+      options: map['options'] == null ? null : (map['options']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
+      volumes: map['volumes'] == null ? null : ((map['volumes']! as List).cast<String>()).input(),
     );
   }
 }

@@ -66,16 +66,16 @@ class ApiProperties {
 
   factory ApiProperties.fromMap(Map<String, dynamic> map) {
     return ApiProperties(
-      aadClientId: map['aadClientId'] == null ? null : (map['aadClientId'] as String).input(),
-      aadTenantId: map['aadTenantId'] == null ? null : (map['aadTenantId'] as String).input(),
-      eventHubConnectionString: map['eventHubConnectionString'] == null ? null : (map['eventHubConnectionString'] as String).input(),
-      qnaAzureSearchEndpointId: map['qnaAzureSearchEndpointId'] == null ? null : (map['qnaAzureSearchEndpointId'] as String).input(),
-      qnaAzureSearchEndpointKey: map['qnaAzureSearchEndpointKey'] == null ? null : (map['qnaAzureSearchEndpointKey'] as String).input(),
-      qnaRuntimeEndpoint: map['qnaRuntimeEndpoint'] == null ? null : (map['qnaRuntimeEndpoint'] as String).input(),
-      statisticsEnabled: map['statisticsEnabled'] == null ? null : (map['statisticsEnabled'] as bool).input(),
-      storageAccountConnectionString: map['storageAccountConnectionString'] == null ? null : (map['storageAccountConnectionString'] as String).input(),
-      superUser: map['superUser'] == null ? null : (map['superUser'] as String).input(),
-      websiteName: map['websiteName'] == null ? null : (map['websiteName'] as String).input(),
+      aadClientId: map['aadClientId'] == null ? null : (map['aadClientId']! as String).input(),
+      aadTenantId: map['aadTenantId'] == null ? null : (map['aadTenantId']! as String).input(),
+      eventHubConnectionString: map['eventHubConnectionString'] == null ? null : (map['eventHubConnectionString']! as String).input(),
+      qnaAzureSearchEndpointId: map['qnaAzureSearchEndpointId'] == null ? null : (map['qnaAzureSearchEndpointId']! as String).input(),
+      qnaAzureSearchEndpointKey: map['qnaAzureSearchEndpointKey'] == null ? null : (map['qnaAzureSearchEndpointKey']! as String).input(),
+      qnaRuntimeEndpoint: map['qnaRuntimeEndpoint'] == null ? null : (map['qnaRuntimeEndpoint']! as String).input(),
+      statisticsEnabled: map['statisticsEnabled'] == null ? null : (map['statisticsEnabled']! as bool).input(),
+      storageAccountConnectionString: map['storageAccountConnectionString'] == null ? null : (map['storageAccountConnectionString']! as String).input(),
+      superUser: map['superUser'] == null ? null : (map['superUser']! as String).input(),
+      websiteName: map['websiteName'] == null ? null : (map['websiteName']! as String).input(),
     );
   }
 }

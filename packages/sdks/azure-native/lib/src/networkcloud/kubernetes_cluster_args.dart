@@ -86,18 +86,18 @@ class KubernetesClusterArgs {
 
   factory KubernetesClusterArgs.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterArgs(
-      aadConfiguration: map['aadConfiguration'] == null ? null : (AadConfiguration.fromMap((map['aadConfiguration'] as Map).cast<String, dynamic>())).input(),
-      administratorConfiguration: map['administratorConfiguration'] == null ? null : (AdministratorConfiguration.fromMap((map['administratorConfiguration'] as Map).cast<String, dynamic>())).input(),
+      aadConfiguration: map['aadConfiguration'] == null ? null : (AadConfiguration.fromMap((map['aadConfiguration']! as Map).cast<String, dynamic>())).input(),
+      administratorConfiguration: map['administratorConfiguration'] == null ? null : (AdministratorConfiguration.fromMap((map['administratorConfiguration']! as Map).cast<String, dynamic>())).input(),
       controlPlaneNodeConfiguration: (ControlPlaneNodeConfiguration.fromMap((map['controlPlaneNodeConfiguration'] as Map).cast<String, dynamic>())).input(),
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
       initialAgentPoolConfigurations: (pulumi.Input.decodeList<InitialAgentPoolConfiguration>(map['initialAgentPoolConfigurations'], (value) => InitialAgentPoolConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kubernetesClusterName: map['kubernetesClusterName'] == null ? null : (map['kubernetesClusterName'] as String).input(),
+      kubernetesClusterName: map['kubernetesClusterName'] == null ? null : (map['kubernetesClusterName']! as String).input(),
       kubernetesVersion: (map['kubernetesVersion'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : (ManagedResourceGroupConfiguration.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : (ManagedResourceGroupConfiguration.fromMap((map['managedResourceGroupConfiguration']! as Map).cast<String, dynamic>())).input(),
       networkConfiguration: (NetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

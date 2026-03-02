@@ -40,8 +40,8 @@ class QueueArgs {
   factory QueueArgs.fromMap(Map<String, dynamic> map) {
     return QueueArgs(
       accountName: (map['accountName'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      queueName: map['queueName'] == null ? null : (map['queueName'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      queueName: map['queueName'] == null ? null : (map['queueName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

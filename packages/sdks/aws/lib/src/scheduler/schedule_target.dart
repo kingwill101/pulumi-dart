@@ -75,15 +75,15 @@ class ScheduleTarget {
   factory ScheduleTarget.fromMap(Map<String, dynamic> map) {
     return ScheduleTarget(
       arn: (map['arn'] as String).input(),
-      deadLetterConfig: map['deadLetterConfig'] == null ? null : (ScheduleTargetDeadLetterConfig.fromMap((map['deadLetterConfig'] as Map).cast<String, dynamic>())).input(),
-      ecsParameters: map['ecsParameters'] == null ? null : (ScheduleTargetEcsParameters.fromMap((map['ecsParameters'] as Map).cast<String, dynamic>())).input(),
-      eventbridgeParameters: map['eventbridgeParameters'] == null ? null : (ScheduleTargetEventbridgeParameters.fromMap((map['eventbridgeParameters'] as Map).cast<String, dynamic>())).input(),
-      input: map['input'] == null ? null : (map['input'] as String).input(),
-      kinesisParameters: map['kinesisParameters'] == null ? null : (ScheduleTargetKinesisParameters.fromMap((map['kinesisParameters'] as Map).cast<String, dynamic>())).input(),
-      retryPolicy: map['retryPolicy'] == null ? null : (ScheduleTargetRetryPolicy.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())).input(),
+      deadLetterConfig: map['deadLetterConfig'] == null ? null : ((ScheduleTargetDeadLetterConfig.fromMap((map['deadLetterConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      ecsParameters: map['ecsParameters'] == null ? null : ((ScheduleTargetEcsParameters.fromMap((map['ecsParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      eventbridgeParameters: map['eventbridgeParameters'] == null ? null : ((ScheduleTargetEventbridgeParameters.fromMap((map['eventbridgeParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      input: map['input'] == null ? null : ((map['input'] as String).input()).input(),
+      kinesisParameters: map['kinesisParameters'] == null ? null : ((ScheduleTargetKinesisParameters.fromMap((map['kinesisParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : ((ScheduleTargetRetryPolicy.fromMap((map['retryPolicy']! as Map).cast<String, dynamic>())).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      sagemakerPipelineParameters: map['sagemakerPipelineParameters'] == null ? null : (ScheduleTargetSagemakerPipelineParameters.fromMap((map['sagemakerPipelineParameters'] as Map).cast<String, dynamic>())).input(),
-      sqsParameters: map['sqsParameters'] == null ? null : (ScheduleTargetSqsParameters.fromMap((map['sqsParameters'] as Map).cast<String, dynamic>())).input(),
+      sagemakerPipelineParameters: map['sagemakerPipelineParameters'] == null ? null : ((ScheduleTargetSagemakerPipelineParameters.fromMap((map['sagemakerPipelineParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      sqsParameters: map['sqsParameters'] == null ? null : ((ScheduleTargetSqsParameters.fromMap((map['sqsParameters']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

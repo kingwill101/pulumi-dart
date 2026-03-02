@@ -56,7 +56,7 @@ class GetFirewallPolicyResult {
     return GetFirewallPolicyResult(
       arn: map['arn'] == null ? null : map['arn'] as String,
       description: map['description'] as String,
-      firewallPolicies: pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicy>(map['firewallPolicies'], (value) => GetFirewallPolicyFirewallPolicy.fromMap((value as Map).cast<String, dynamic>())),
+      firewallPolicies: pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicy>(map['firewallPolicies']!, (value) => GetFirewallPolicyFirewallPolicy.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] as String,

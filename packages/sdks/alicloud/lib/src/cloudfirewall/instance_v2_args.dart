@@ -79,16 +79,16 @@ class InstanceV2Args {
 
   factory InstanceV2Args.fromMap(Map<String, dynamic> map) {
     return InstanceV2Args(
-      cfwLog: map['cfwLog'] == null ? null : (map['cfwLog'] as bool).input(),
-      modifyType: map['modifyType'] == null ? null : (map['modifyType'] as String).input(),
+      cfwLog: map['cfwLog'] == null ? null : (map['cfwLog']! as bool).input(),
+      modifyType: map['modifyType'] == null ? null : (map['modifyType']! as String).input(),
       paymentType: (map['paymentType'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
       productCode: (map['productCode'] as String).input(),
       productType: (map['productType'] as String).input(),
-      renewalDuration: map['renewalDuration'] == null ? null : (map['renewalDuration'] as int).input(),
-      renewalDurationUnit: map['renewalDurationUnit'] == null ? null : (map['renewalDurationUnit'] as String).input(),
-      renewalStatus: map['renewalStatus'] == null ? null : (map['renewalStatus'] as String).input(),
-      sdl: map['sdl'] == null ? null : (map['sdl'] as bool).input(),
+      renewalDuration: map['renewalDuration'] == null ? null : (map['renewalDuration']! as int).input(),
+      renewalDurationUnit: map['renewalDurationUnit'] == null ? null : (map['renewalDurationUnit']! as String).input(),
+      renewalStatus: map['renewalStatus'] == null ? null : (map['renewalStatus']! as String).input(),
+      sdl: map['sdl'] == null ? null : (map['sdl']! as bool).input(),
       spec: (map['spec'] as String).input(),
     );
   }

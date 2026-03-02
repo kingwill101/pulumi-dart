@@ -26,8 +26,8 @@ class AwsWafWebACLSummaryPropertiesResponse {
 
   factory AwsWafWebACLSummaryPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsWafWebACLSummaryPropertiesResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      webACLId: map['webACLId'] == null ? null : (map['webACLId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      webACLId: map['webACLId'] == null ? null : (map['webACLId']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationState {
 
   factory NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationState.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationState(
-      backendAddressPoolId: map['backendAddressPoolId'] == null ? null : (map['backendAddressPoolId'] as String).input(),
-      ipConfigurationName: map['ipConfigurationName'] == null ? null : (map['ipConfigurationName'] as String).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
+      backendAddressPoolId: map['backendAddressPoolId'] == null ? null : (map['backendAddressPoolId']! as String).input(),
+      ipConfigurationName: map['ipConfigurationName'] == null ? null : (map['ipConfigurationName']! as String).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId']! as String).input(),
     );
   }
 }

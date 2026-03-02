@@ -34,9 +34,9 @@ class JobConfigElementaryStream {
 
   factory JobConfigElementaryStream.fromMap(Map<String, dynamic> map) {
     return JobConfigElementaryStream(
-      audioStream: map['audioStream'] == null ? null : (JobConfigElementaryStreamAudioStream.fromMap((map['audioStream'] as Map).cast<String, dynamic>())).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      videoStream: map['videoStream'] == null ? null : (JobConfigElementaryStreamVideoStream.fromMap((map['videoStream'] as Map).cast<String, dynamic>())).input(),
+      audioStream: map['audioStream'] == null ? null : (JobConfigElementaryStreamAudioStream.fromMap((map['audioStream']! as Map).cast<String, dynamic>())).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      videoStream: map['videoStream'] == null ? null : (JobConfigElementaryStreamVideoStream.fromMap((map['videoStream']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

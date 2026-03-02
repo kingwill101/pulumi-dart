@@ -36,10 +36,10 @@ class SapTablePartitionSettingsResponse {
 
   factory SapTablePartitionSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SapTablePartitionSettingsResponse(
-      maxPartitionsNumber: map['maxPartitionsNumber'] == null ? null : (map['maxPartitionsNumber']).input(),
-      partitionColumnName: map['partitionColumnName'] == null ? null : (map['partitionColumnName']).input(),
-      partitionLowerBound: map['partitionLowerBound'] == null ? null : (map['partitionLowerBound']).input(),
-      partitionUpperBound: map['partitionUpperBound'] == null ? null : (map['partitionUpperBound']).input(),
+      maxPartitionsNumber: map['maxPartitionsNumber'] == null ? null : (map['maxPartitionsNumber']!).input(),
+      partitionColumnName: map['partitionColumnName'] == null ? null : (map['partitionColumnName']!).input(),
+      partitionLowerBound: map['partitionLowerBound'] == null ? null : (map['partitionLowerBound']!).input(),
+      partitionUpperBound: map['partitionUpperBound'] == null ? null : (map['partitionUpperBound']!).input(),
     );
   }
 }

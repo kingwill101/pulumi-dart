@@ -43,7 +43,7 @@ class GetAccountResult {
   factory GetAccountResult.fromMap(Map<String, dynamic> map) {
     return GetAccountResult(
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : GetAccountIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : GetAccountIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,

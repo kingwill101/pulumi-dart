@@ -65,15 +65,15 @@ class VirtualRouterArgs {
 
   factory VirtualRouterArgs.fromMap(Map<String, dynamic> map) {
     return VirtualRouterArgs(
-      hostedGateway: map['hostedGateway'] == null ? null : (SubResource.fromMap((map['hostedGateway'] as Map).cast<String, dynamic>())).input(),
-      hostedSubnet: map['hostedSubnet'] == null ? null : (SubResource.fromMap((map['hostedSubnet'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      hostedGateway: map['hostedGateway'] == null ? null : (SubResource.fromMap((map['hostedGateway']! as Map).cast<String, dynamic>())).input(),
+      hostedSubnet: map['hostedSubnet'] == null ? null : (SubResource.fromMap((map['hostedSubnet']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      virtualRouterAsn: map['virtualRouterAsn'] == null ? null : (map['virtualRouterAsn'] as double).input(),
-      virtualRouterIps: map['virtualRouterIps'] == null ? null : ((map['virtualRouterIps'] as List).cast<String>()).input(),
-      virtualRouterName: map['virtualRouterName'] == null ? null : (map['virtualRouterName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      virtualRouterAsn: map['virtualRouterAsn'] == null ? null : (map['virtualRouterAsn']! as double).input(),
+      virtualRouterIps: map['virtualRouterIps'] == null ? null : ((map['virtualRouterIps']! as List).cast<String>()).input(),
+      virtualRouterName: map['virtualRouterName'] == null ? null : (map['virtualRouterName']! as String).input(),
     );
   }
 }

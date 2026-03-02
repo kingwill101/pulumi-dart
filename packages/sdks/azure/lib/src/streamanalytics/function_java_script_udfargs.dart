@@ -52,7 +52,7 @@ class FunctionJavaScriptUDFArgs {
   factory FunctionJavaScriptUDFArgs.fromMap(Map<String, dynamic> map) {
     return FunctionJavaScriptUDFArgs(
       inputs: (pulumi.Input.decodeList<FunctionJavaScriptUDFInput>(map['inputs'], (value) => FunctionJavaScriptUDFInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       output: (FunctionJavaScriptUDFOutput.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       script: (map['script'] as String).input(),

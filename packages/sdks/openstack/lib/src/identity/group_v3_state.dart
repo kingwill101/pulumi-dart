@@ -38,10 +38,10 @@ class GroupV3State {
 
   factory GroupV3State.fromMap(Map<String, dynamic> map) {
     return GroupV3State(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

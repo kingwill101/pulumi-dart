@@ -21,7 +21,7 @@ class LocalTimestampTimeZoneOffset {
 
   factory LocalTimestampTimeZoneOffset.fromMap(Map<String, dynamic> map) {
     return LocalTimestampTimeZoneOffset(
-      propertyName: map['propertyName'] == null ? null : (map['propertyName'] as String).input(),
+      propertyName: map['propertyName'] == null ? null : (map['propertyName']! as String).input(),
     );
   }
 }

@@ -36,7 +36,7 @@ class GetAssetArgs {
     return GetAssetArgs(
       arn: (map['arn'] as String).input(),
       assetId: (map['assetId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -43,7 +43,7 @@ class DomainConfigArgs {
       domainName: (map['domainName'] as String).input(),
       functionArgs: (pulumi.Input.decodeList<DomainConfigFunctionArg>(map['functionArgs'], (value) => DomainConfigFunctionArg.fromMap((value as Map).cast<String, dynamic>()))).input(),
       functionName: (map['functionName'] as String).input(),
-      parentId: map['parentId'] == null ? null : (map['parentId'] as String).input(),
+      parentId: map['parentId'] == null ? null : (map['parentId']! as String).input(),
     );
   }
 }

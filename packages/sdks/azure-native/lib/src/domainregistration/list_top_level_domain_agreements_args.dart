@@ -34,8 +34,8 @@ class ListTopLevelDomainAgreementsArgs {
 
   factory ListTopLevelDomainAgreementsArgs.fromMap(Map<String, dynamic> map) {
     return ListTopLevelDomainAgreementsArgs(
-      forTransfer: map['forTransfer'] == null ? null : (map['forTransfer'] as bool).input(),
-      includePrivacy: map['includePrivacy'] == null ? null : (map['includePrivacy'] as bool).input(),
+      forTransfer: map['forTransfer'] == null ? null : (map['forTransfer']! as bool).input(),
+      includePrivacy: map['includePrivacy'] == null ? null : (map['includePrivacy']! as bool).input(),
       name: (map['name'] as String).input(),
     );
   }

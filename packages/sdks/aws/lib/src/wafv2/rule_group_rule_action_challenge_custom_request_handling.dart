@@ -21,7 +21,7 @@ class RuleGroupRuleActionChallengeCustomRequestHandling {
 
   factory RuleGroupRuleActionChallengeCustomRequestHandling.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleActionChallengeCustomRequestHandling(
-      insertHeaders: (pulumi.Input.decodeList<RuleGroupRuleActionChallengeCustomRequestHandlingInsertHeader>(map['insertHeaders'], (value) => RuleGroupRuleActionChallengeCustomRequestHandlingInsertHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      insertHeaders: (pulumi.Input.decodeList<RuleGroupRuleActionChallengeCustomRequestHandlingInsertHeader>(map['insertHeaders']!, (value) => RuleGroupRuleActionChallengeCustomRequestHandlingInsertHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

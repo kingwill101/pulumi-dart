@@ -32,7 +32,7 @@ class AzureResourceErrorInfoResponse {
   factory AzureResourceErrorInfoResponse.fromMap(Map<String, dynamic> map) {
     return AzureResourceErrorInfoResponse(
       code: (map['code'] as String).input(),
-      details: map['details'] == null ? null : (pulumi.Input.decodeList<AzureResourceErrorInfoResponse>(map['details'], (value) => AzureResourceErrorInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      details: map['details'] == null ? null : (pulumi.Input.decodeList<AzureResourceErrorInfoResponse>(map['details']!, (value) => AzureResourceErrorInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       message: (map['message'] as String).input(),
     );
   }

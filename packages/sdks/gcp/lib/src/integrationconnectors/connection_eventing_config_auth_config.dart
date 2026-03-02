@@ -40,8 +40,8 @@ class ConnectionEventingConfigAuthConfig {
 
   factory ConnectionEventingConfigAuthConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionEventingConfigAuthConfig(
-      additionalVariables: map['additionalVariables'] == null ? null : (pulumi.Input.decodeList<ConnectionEventingConfigAuthConfigAdditionalVariable>(map['additionalVariables'], (value) => ConnectionEventingConfigAuthConfigAdditionalVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      authKey: map['authKey'] == null ? null : (map['authKey'] as String).input(),
+      additionalVariables: map['additionalVariables'] == null ? null : (pulumi.Input.decodeList<ConnectionEventingConfigAuthConfigAdditionalVariable>(map['additionalVariables']!, (value) => ConnectionEventingConfigAuthConfigAdditionalVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authKey: map['authKey'] == null ? null : (map['authKey']! as String).input(),
       authType: (map['authType'] as String).input(),
       userPassword: (ConnectionEventingConfigAuthConfigUserPassword.fromMap((map['userPassword'] as Map).cast<String, dynamic>())).input(),
     );

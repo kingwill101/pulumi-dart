@@ -31,9 +31,9 @@ class UsageRule {
 
   factory UsageRule.fromMap(Map<String, dynamic> map) {
     return UsageRule(
-      allowUnregisteredCalls: map['allowUnregisteredCalls'] == null ? null : (map['allowUnregisteredCalls'] as bool).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
-      skipServiceControl: map['skipServiceControl'] == null ? null : (map['skipServiceControl'] as bool).input(),
+      allowUnregisteredCalls: map['allowUnregisteredCalls'] == null ? null : (map['allowUnregisteredCalls']! as bool).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
+      skipServiceControl: map['skipServiceControl'] == null ? null : (map['skipServiceControl']! as bool).input(),
     );
   }
 }

@@ -84,18 +84,18 @@ class GetApprovalResult {
 
   factory GetApprovalResult.fromMap(Map<String, dynamic> map) {
     return GetApprovalResult(
-      approvers: map['approvers'] == null ? null : pulumi.Input.decodeList<ApproverResponse>(map['approvers'], (value) => ApproverResponse.fromMap((value as Map).cast<String, dynamic>())),
+      approvers: map['approvers'] == null ? null : pulumi.Input.decodeList<ApproverResponse>(map['approvers']!, (value) => ApproverResponse.fromMap((value as Map).cast<String, dynamic>())),
       azureApiVersion: map['azureApiVersion'] as String,
-      createdAt: map['createdAt'] == null ? null : map['createdAt'] as String,
-      grandparentResourceId: map['grandparentResourceId'] == null ? null : map['grandparentResourceId'] as String,
+      createdAt: map['createdAt'] == null ? null : map['createdAt']! as String,
+      grandparentResourceId: map['grandparentResourceId'] == null ? null : map['grandparentResourceId']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      parentResourceId: map['parentResourceId'] == null ? null : map['parentResourceId'] as String,
+      parentResourceId: map['parentResourceId'] == null ? null : map['parentResourceId']! as String,
       provisioningState: map['provisioningState'] as String,
       requestMetadata: RequestMetadataResponse.fromMap((map['requestMetadata'] as Map).cast<String, dynamic>()),
-      stateChangedAt: map['stateChangedAt'] == null ? null : map['stateChangedAt'] as String,
+      stateChangedAt: map['stateChangedAt'] == null ? null : map['stateChangedAt']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      ticketId: map['ticketId'] == null ? null : map['ticketId'] as String,
+      ticketId: map['ticketId'] == null ? null : map['ticketId']! as String,
       type: map['type'] as String,
     );
   }

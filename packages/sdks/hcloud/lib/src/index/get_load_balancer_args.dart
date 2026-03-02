@@ -34,9 +34,9 @@ class GetLoadBalancerArgs {
 
   factory GetLoadBalancerArgs.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerArgs(
-      id: map['id'] == null ? null : (map['id'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
     );
   }
 }

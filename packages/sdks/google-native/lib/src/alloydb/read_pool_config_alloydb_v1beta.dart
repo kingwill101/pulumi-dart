@@ -21,7 +21,7 @@ class ReadPoolConfigAlloydbV1beta {
 
   factory ReadPoolConfigAlloydbV1beta.fromMap(Map<String, dynamic> map) {
     return ReadPoolConfigAlloydbV1beta(
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
     );
   }
 }

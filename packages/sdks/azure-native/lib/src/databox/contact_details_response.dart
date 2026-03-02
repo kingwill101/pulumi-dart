@@ -49,10 +49,10 @@ class ContactDetailsResponse {
     return ContactDetailsResponse(
       contactName: (map['contactName'] as String).input(),
       emailList: ((map['emailList'] as List).cast<String>()).input(),
-      mobile: map['mobile'] == null ? null : (map['mobile'] as String).input(),
-      notificationPreference: map['notificationPreference'] == null ? null : (pulumi.Input.decodeList<NotificationPreferenceResponse>(map['notificationPreference'], (value) => NotificationPreferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mobile: map['mobile'] == null ? null : (map['mobile']! as String).input(),
+      notificationPreference: map['notificationPreference'] == null ? null : (pulumi.Input.decodeList<NotificationPreferenceResponse>(map['notificationPreference']!, (value) => NotificationPreferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       phone: (map['phone'] as String).input(),
-      phoneExtension: map['phoneExtension'] == null ? null : (map['phoneExtension'] as String).input(),
+      phoneExtension: map['phoneExtension'] == null ? null : (map['phoneExtension']! as String).input(),
     );
   }
 }

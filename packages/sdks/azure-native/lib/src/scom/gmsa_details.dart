@@ -36,10 +36,10 @@ class GmsaDetails {
 
   factory GmsaDetails.fromMap(Map<String, dynamic> map) {
     return GmsaDetails(
-      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
-      gmsaAccount: map['gmsaAccount'] == null ? null : (map['gmsaAccount'] as String).input(),
-      loadBalancerIP: map['loadBalancerIP'] == null ? null : (map['loadBalancerIP'] as String).input(),
-      managementServerGroupName: map['managementServerGroupName'] == null ? null : (map['managementServerGroupName'] as String).input(),
+      dnsName: map['dnsName'] == null ? null : (map['dnsName']! as String).input(),
+      gmsaAccount: map['gmsaAccount'] == null ? null : (map['gmsaAccount']! as String).input(),
+      loadBalancerIP: map['loadBalancerIP'] == null ? null : (map['loadBalancerIP']! as String).input(),
+      managementServerGroupName: map['managementServerGroupName'] == null ? null : (map['managementServerGroupName']! as String).input(),
     );
   }
 }

@@ -77,17 +77,17 @@ class ProjectEnvironmentTypeArgs {
 
   factory ProjectEnvironmentTypeArgs.fromMap(Map<String, dynamic> map) {
     return ProjectEnvironmentTypeArgs(
-      creatorRoleAssignment: map['creatorRoleAssignment'] == null ? null : (ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment.fromMap((map['creatorRoleAssignment'] as Map).cast<String, dynamic>())).input(),
-      deploymentTargetId: map['deploymentTargetId'] == null ? null : (map['deploymentTargetId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      environmentTypeName: map['environmentTypeName'] == null ? null : (map['environmentTypeName'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      creatorRoleAssignment: map['creatorRoleAssignment'] == null ? null : (ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment.fromMap((map['creatorRoleAssignment']! as Map).cast<String, dynamic>())).input(),
+      deploymentTargetId: map['deploymentTargetId'] == null ? null : (map['deploymentTargetId']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      environmentTypeName: map['environmentTypeName'] == null ? null : (map['environmentTypeName']! as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       projectName: (map['projectName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      userRoleAssignments: map['userRoleAssignments'] == null ? null : (pulumi.Input.decodeMapValues<UserRoleAssignment>(map['userRoleAssignments'], (value) => UserRoleAssignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      userRoleAssignments: map['userRoleAssignments'] == null ? null : (pulumi.Input.decodeMapValues<UserRoleAssignment>(map['userRoleAssignments']!, (value) => UserRoleAssignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

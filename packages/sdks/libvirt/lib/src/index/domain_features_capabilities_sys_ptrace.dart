@@ -20,7 +20,7 @@ class DomainFeaturesCapabilitiesSysPTrace {
 
   factory DomainFeaturesCapabilitiesSysPTrace.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesSysPTrace(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

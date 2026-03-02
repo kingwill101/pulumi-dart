@@ -27,8 +27,8 @@ class InvocationLoggingConfigurationState {
 
   factory InvocationLoggingConfigurationState.fromMap(Map<String, dynamic> map) {
     return InvocationLoggingConfigurationState(
-      loggingConfig: map['loggingConfig'] == null ? null : (InvocationLoggingConfigurationLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : ((InvocationLoggingConfigurationLoggingConfig.fromMap((map['loggingConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

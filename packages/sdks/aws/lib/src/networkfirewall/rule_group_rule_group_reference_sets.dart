@@ -20,7 +20,7 @@ class RuleGroupRuleGroupReferenceSets {
 
   factory RuleGroupRuleGroupReferenceSets.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupReferenceSets(
-      ipSetReferences: map['ipSetReferences'] == null ? null : (pulumi.Input.decodeList<RuleGroupRuleGroupReferenceSetsIpSetReference>(map['ipSetReferences'], (value) => RuleGroupRuleGroupReferenceSetsIpSetReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipSetReferences: map['ipSetReferences'] == null ? null : ((pulumi.Input.decodeList<RuleGroupRuleGroupReferenceSetsIpSetReference>(map['ipSetReferences']!, (value) => RuleGroupRuleGroupReferenceSetsIpSetReference.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

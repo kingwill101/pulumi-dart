@@ -75,17 +75,17 @@ class NotificationChannelArgs {
 
   factory NotificationChannelArgs.fromMap(Map<String, dynamic> map) {
     return NotificationChannelArgs(
-      creationRecord: map['creationRecord'] == null ? null : (MutationRecord.fromMap((map['creationRecord'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      mutationRecords: map['mutationRecords'] == null ? null : (pulumi.Input.decodeList<MutationRecord>(map['mutationRecords'], (value) => MutationRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      userLabels: map['userLabels'] == null ? null : ((map['userLabels'] as Map).cast<String, String>()).input(),
-      verificationStatus: map['verificationStatus'] == null ? null : (NotificationChannelVerificationStatus.fromValue(map['verificationStatus'] as String)).input(),
+      creationRecord: map['creationRecord'] == null ? null : (MutationRecord.fromMap((map['creationRecord']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      mutationRecords: map['mutationRecords'] == null ? null : (pulumi.Input.decodeList<MutationRecord>(map['mutationRecords']!, (value) => MutationRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      userLabels: map['userLabels'] == null ? null : ((map['userLabels']! as Map).cast<String, String>()).input(),
+      verificationStatus: map['verificationStatus'] == null ? null : (NotificationChannelVerificationStatus.fromValue(map['verificationStatus']! as String)).input(),
     );
   }
 }

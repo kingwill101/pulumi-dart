@@ -24,8 +24,8 @@ class SyntheticTaskMonitorConfApiHttpRequestBody {
 
   factory SyntheticTaskMonitorConfApiHttpRequestBody.fromMap(Map<String, dynamic> map) {
     return SyntheticTaskMonitorConfApiHttpRequestBody(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

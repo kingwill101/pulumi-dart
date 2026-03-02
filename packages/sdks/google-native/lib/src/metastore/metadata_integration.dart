@@ -22,7 +22,7 @@ class MetadataIntegration {
 
   factory MetadataIntegration.fromMap(Map<String, dynamic> map) {
     return MetadataIntegration(
-      dataCatalogConfig: map['dataCatalogConfig'] == null ? null : (DataCatalogConfig.fromMap((map['dataCatalogConfig'] as Map).cast<String, dynamic>())).input(),
+      dataCatalogConfig: map['dataCatalogConfig'] == null ? null : (DataCatalogConfig.fromMap((map['dataCatalogConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpec {
 
   factory GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpec(
-      useElapsedDuration: map['useElapsedDuration'] == null ? null : (map['useElapsedDuration'] as bool).input(),
+      useElapsedDuration: map['useElapsedDuration'] == null ? null : (map['useElapsedDuration']! as bool).input(),
     );
   }
 }

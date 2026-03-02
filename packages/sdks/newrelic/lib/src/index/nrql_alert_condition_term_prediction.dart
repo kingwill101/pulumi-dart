@@ -25,8 +25,8 @@ class NrqlAlertConditionTermPrediction {
 
   factory NrqlAlertConditionTermPrediction.fromMap(Map<String, dynamic> map) {
     return NrqlAlertConditionTermPrediction(
-      predictBy: map['predictBy'] == null ? null : (map['predictBy'] as int).input(),
-      preferPredictionViolation: map['preferPredictionViolation'] == null ? null : (map['preferPredictionViolation'] as bool).input(),
+      predictBy: map['predictBy'] == null ? null : (map['predictBy']! as int).input(),
+      preferPredictionViolation: map['preferPredictionViolation'] == null ? null : (map['preferPredictionViolation']! as bool).input(),
     );
   }
 }

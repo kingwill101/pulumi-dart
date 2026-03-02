@@ -81,9 +81,9 @@ class GetAzureTrafficCollectorResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: TrackedResourceResponseSystemData.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      virtualHub: map['virtualHub'] == null ? null : ResourceReferenceResponse.fromMap((map['virtualHub'] as Map).cast<String, dynamic>()),
+      virtualHub: map['virtualHub'] == null ? null : ResourceReferenceResponse.fromMap((map['virtualHub']! as Map).cast<String, dynamic>()),
     );
   }
 }

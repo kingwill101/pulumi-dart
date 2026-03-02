@@ -21,7 +21,7 @@ class OpenSearchPartitionInstanceTypeEnumValue {
 
   factory OpenSearchPartitionInstanceTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return OpenSearchPartitionInstanceTypeEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

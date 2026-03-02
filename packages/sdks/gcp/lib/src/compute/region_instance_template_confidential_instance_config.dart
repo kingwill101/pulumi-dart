@@ -25,8 +25,8 @@ class RegionInstanceTemplateConfidentialInstanceConfig {
 
   factory RegionInstanceTemplateConfidentialInstanceConfig.fromMap(Map<String, dynamic> map) {
     return RegionInstanceTemplateConfidentialInstanceConfig(
-      confidentialInstanceType: map['confidentialInstanceType'] == null ? null : (map['confidentialInstanceType'] as String).input(),
-      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : (map['enableConfidentialCompute'] as bool).input(),
+      confidentialInstanceType: map['confidentialInstanceType'] == null ? null : (map['confidentialInstanceType']! as String).input(),
+      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : (map['enableConfidentialCompute']! as bool).input(),
     );
   }
 }

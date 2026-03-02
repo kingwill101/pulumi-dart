@@ -52,13 +52,13 @@ class GetVirtualNetworkGatewayResiliencyInformationResult {
 
   factory GetVirtualNetworkGatewayResiliencyInformationResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkGatewayResiliencyInformationResult(
-      components: map['components'] == null ? null : pulumi.Input.decodeList<ResiliencyRecommendationComponentsResponse>(map['components'], (value) => ResiliencyRecommendationComponentsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      lastComputedTime: map['lastComputedTime'] == null ? null : map['lastComputedTime'] as String,
-      maxScoreFromRecommendations: map['maxScoreFromRecommendations'] == null ? null : map['maxScoreFromRecommendations'] as String,
-      minScoreFromRecommendations: map['minScoreFromRecommendations'] == null ? null : map['minScoreFromRecommendations'] as String,
-      nextEligibleComputeTime: map['nextEligibleComputeTime'] == null ? null : map['nextEligibleComputeTime'] as String,
-      overallScore: map['overallScore'] == null ? null : map['overallScore'] as String,
-      scoreChange: map['scoreChange'] == null ? null : map['scoreChange'] as String,
+      components: map['components'] == null ? null : pulumi.Input.decodeList<ResiliencyRecommendationComponentsResponse>(map['components']!, (value) => ResiliencyRecommendationComponentsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      lastComputedTime: map['lastComputedTime'] == null ? null : map['lastComputedTime']! as String,
+      maxScoreFromRecommendations: map['maxScoreFromRecommendations'] == null ? null : map['maxScoreFromRecommendations']! as String,
+      minScoreFromRecommendations: map['minScoreFromRecommendations'] == null ? null : map['minScoreFromRecommendations']! as String,
+      nextEligibleComputeTime: map['nextEligibleComputeTime'] == null ? null : map['nextEligibleComputeTime']! as String,
+      overallScore: map['overallScore'] == null ? null : map['overallScore']! as String,
+      scoreChange: map['scoreChange'] == null ? null : map['scoreChange']! as String,
     );
   }
 }

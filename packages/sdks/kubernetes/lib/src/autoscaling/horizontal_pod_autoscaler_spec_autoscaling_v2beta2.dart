@@ -44,10 +44,10 @@ class HorizontalPodAutoscalerSpecAutoscalingV2beta2 {
 
   factory HorizontalPodAutoscalerSpecAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
     return HorizontalPodAutoscalerSpecAutoscalingV2beta2(
-      behavior: map['behavior'] == null ? null : (HorizontalPodAutoscalerBehaviorAutoscalingV2beta2.fromMap((map['behavior'] as Map).cast<String, dynamic>())).input(),
+      behavior: map['behavior'] == null ? null : (HorizontalPodAutoscalerBehaviorAutoscalingV2beta2.fromMap((map['behavior']! as Map).cast<String, dynamic>())).input(),
       maxReplicas: (map['maxReplicas'] as int).input(),
-      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<MetricSpecAutoscalingV2beta2>(map['metrics'], (value) => MetricSpecAutoscalingV2beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      minReplicas: map['minReplicas'] == null ? null : (map['minReplicas'] as int).input(),
+      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<MetricSpecAutoscalingV2beta2>(map['metrics']!, (value) => MetricSpecAutoscalingV2beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      minReplicas: map['minReplicas'] == null ? null : (map['minReplicas']! as int).input(),
       scaleTargetRef: (CrossVersionObjectReferenceAutoscalingV2beta2.fromMap((map['scaleTargetRef'] as Map).cast<String, dynamic>())).input(),
     );
   }

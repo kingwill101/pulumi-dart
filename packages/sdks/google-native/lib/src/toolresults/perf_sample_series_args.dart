@@ -41,10 +41,10 @@ class PerfSampleSeriesArgs {
 
   factory PerfSampleSeriesArgs.fromMap(Map<String, dynamic> map) {
     return PerfSampleSeriesArgs(
-      basicPerfSampleSeries: map['basicPerfSampleSeries'] == null ? null : (BasicPerfSampleSeries.fromMap((map['basicPerfSampleSeries'] as Map).cast<String, dynamic>())).input(),
+      basicPerfSampleSeries: map['basicPerfSampleSeries'] == null ? null : (BasicPerfSampleSeries.fromMap((map['basicPerfSampleSeries']! as Map).cast<String, dynamic>())).input(),
       executionId: (map['executionId'] as String).input(),
       historyId: (map['historyId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       stepId: (map['stepId'] as String).input(),
     );
   }

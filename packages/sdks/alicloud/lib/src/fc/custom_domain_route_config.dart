@@ -41,9 +41,9 @@ class CustomDomainRouteConfig {
   factory CustomDomainRouteConfig.fromMap(Map<String, dynamic> map) {
     return CustomDomainRouteConfig(
       functionName: (map['functionName'] as String).input(),
-      methods: map['methods'] == null ? null : ((map['methods'] as List).cast<String>()).input(),
+      methods: map['methods'] == null ? null : ((map['methods']! as List).cast<String>()).input(),
       path: (map['path'] as String).input(),
-      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
+      qualifier: map['qualifier'] == null ? null : (map['qualifier']! as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );
   }

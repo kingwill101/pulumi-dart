@@ -32,9 +32,9 @@ class EncryptionScopeProperties {
 
   factory EncryptionScopeProperties.fromMap(Map<String, dynamic> map) {
     return EncryptionScopeProperties(
-      keySource: map['keySource'] == null ? null : (map['keySource'] as String).input(),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : (KeyVaultProperties.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      keySource: map['keySource'] == null ? null : (map['keySource']! as String).input(),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (KeyVaultProperties.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

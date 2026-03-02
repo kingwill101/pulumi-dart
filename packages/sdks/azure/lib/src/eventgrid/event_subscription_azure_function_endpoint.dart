@@ -31,8 +31,8 @@ class EventSubscriptionAzureFunctionEndpoint {
   factory EventSubscriptionAzureFunctionEndpoint.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionAzureFunctionEndpoint(
       functionId: (map['functionId'] as String).input(),
-      maxEventsPerBatch: map['maxEventsPerBatch'] == null ? null : (map['maxEventsPerBatch'] as int).input(),
-      preferredBatchSizeInKilobytes: map['preferredBatchSizeInKilobytes'] == null ? null : (map['preferredBatchSizeInKilobytes'] as int).input(),
+      maxEventsPerBatch: map['maxEventsPerBatch'] == null ? null : (map['maxEventsPerBatch']! as int).input(),
+      preferredBatchSizeInKilobytes: map['preferredBatchSizeInKilobytes'] == null ? null : (map['preferredBatchSizeInKilobytes']! as int).input(),
     );
   }
 }

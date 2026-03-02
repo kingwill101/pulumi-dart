@@ -48,12 +48,12 @@ class NamespaceProperties {
 
   factory NamespaceProperties.fromMap(Map<String, dynamic> map) {
     return NamespaceProperties(
-      adoptionPolicy: map['adoptionPolicy'] == null ? null : (map['adoptionPolicy'] as String).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      defaultNetworkPolicy: map['defaultNetworkPolicy'] == null ? null : (NetworkPolicies.fromMap((map['defaultNetworkPolicy'] as Map).cast<String, dynamic>())).input(),
-      defaultResourceQuota: map['defaultResourceQuota'] == null ? null : (ResourceQuota.fromMap((map['defaultResourceQuota'] as Map).cast<String, dynamic>())).input(),
-      deletePolicy: map['deletePolicy'] == null ? null : (map['deletePolicy'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      adoptionPolicy: map['adoptionPolicy'] == null ? null : (map['adoptionPolicy']! as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      defaultNetworkPolicy: map['defaultNetworkPolicy'] == null ? null : (NetworkPolicies.fromMap((map['defaultNetworkPolicy']! as Map).cast<String, dynamic>())).input(),
+      defaultResourceQuota: map['defaultResourceQuota'] == null ? null : (ResourceQuota.fromMap((map['defaultResourceQuota']! as Map).cast<String, dynamic>())).input(),
+      deletePolicy: map['deletePolicy'] == null ? null : (map['deletePolicy']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
     );
   }
 }

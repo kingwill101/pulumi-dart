@@ -31,7 +31,7 @@ class DataSetLogicalTableMapDataTransformCastColumnTypeOperation {
   factory DataSetLogicalTableMapDataTransformCastColumnTypeOperation.fromMap(Map<String, dynamic> map) {
     return DataSetLogicalTableMapDataTransformCastColumnTypeOperation(
       columnName: (map['columnName'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
+      format: map['format'] == null ? null : ((map['format'] as String).input()).input(),
       newColumnType: (map['newColumnType'] as String).input(),
     );
   }

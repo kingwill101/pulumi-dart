@@ -37,7 +37,7 @@ class GetKMSSecretResult {
 
   factory GetKMSSecretResult.fromMap(Map<String, dynamic> map) {
     return GetKMSSecretResult(
-      additionalAuthenticatedData: map['additionalAuthenticatedData'] == null ? null : map['additionalAuthenticatedData'] as String,
+      additionalAuthenticatedData: map['additionalAuthenticatedData'] == null ? null : map['additionalAuthenticatedData']! as String,
       ciphertext: map['ciphertext'] as String,
       cryptoKey: map['cryptoKey'] as String,
       id: map['id'] as String,

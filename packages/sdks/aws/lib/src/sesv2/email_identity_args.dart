@@ -47,11 +47,11 @@ class EmailIdentityArgs {
 
   factory EmailIdentityArgs.fromMap(Map<String, dynamic> map) {
     return EmailIdentityArgs(
-      configurationSetName: map['configurationSetName'] == null ? null : (map['configurationSetName'] as String).input(),
-      dkimSigningAttributes: map['dkimSigningAttributes'] == null ? null : (EmailIdentityDkimSigningAttributes.fromMap((map['dkimSigningAttributes'] as Map).cast<String, dynamic>())).input(),
+      configurationSetName: map['configurationSetName'] == null ? null : ((map['configurationSetName'] as String).input()).input(),
+      dkimSigningAttributes: map['dkimSigningAttributes'] == null ? null : ((EmailIdentityDkimSigningAttributes.fromMap((map['dkimSigningAttributes']! as Map).cast<String, dynamic>())).input()).input(),
       emailIdentity: (map['emailIdentity'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

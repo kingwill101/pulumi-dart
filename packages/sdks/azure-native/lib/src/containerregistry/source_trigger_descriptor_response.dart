@@ -51,13 +51,13 @@ class SourceTriggerDescriptorResponse {
 
   factory SourceTriggerDescriptorResponse.fromMap(Map<String, dynamic> map) {
     return SourceTriggerDescriptorResponse(
-      branchName: map['branchName'] == null ? null : (map['branchName'] as String).input(),
-      commitId: map['commitId'] == null ? null : (map['commitId'] as String).input(),
-      eventType: map['eventType'] == null ? null : (map['eventType'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      providerType: map['providerType'] == null ? null : (map['providerType'] as String).input(),
-      pullRequestId: map['pullRequestId'] == null ? null : (map['pullRequestId'] as String).input(),
-      repositoryUrl: map['repositoryUrl'] == null ? null : (map['repositoryUrl'] as String).input(),
+      branchName: map['branchName'] == null ? null : (map['branchName']! as String).input(),
+      commitId: map['commitId'] == null ? null : (map['commitId']! as String).input(),
+      eventType: map['eventType'] == null ? null : (map['eventType']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      providerType: map['providerType'] == null ? null : (map['providerType']! as String).input(),
+      pullRequestId: map['pullRequestId'] == null ? null : (map['pullRequestId']! as String).input(),
+      repositoryUrl: map['repositoryUrl'] == null ? null : (map['repositoryUrl']! as String).input(),
     );
   }
 }

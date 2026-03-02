@@ -24,7 +24,7 @@ class AppHostingBackendManagedResource {
 
   factory AppHostingBackendManagedResource.fromMap(Map<String, dynamic> map) {
     return AppHostingBackendManagedResource(
-      runServices: map['runServices'] == null ? null : (pulumi.Input.decodeList<AppHostingBackendManagedResourceRunService>(map['runServices'], (value) => AppHostingBackendManagedResourceRunService.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      runServices: map['runServices'] == null ? null : (pulumi.Input.decodeList<AppHostingBackendManagedResourceRunService>(map['runServices']!, (value) => AppHostingBackendManagedResourceRunService.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

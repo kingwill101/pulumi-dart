@@ -27,7 +27,7 @@ class JobHttpTargetOidcToken {
 
   factory JobHttpTargetOidcToken.fromMap(Map<String, dynamic> map) {
     return JobHttpTargetOidcToken(
-      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
+      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
       serviceAccountEmail: (map['serviceAccountEmail'] as String).input(),
     );
   }

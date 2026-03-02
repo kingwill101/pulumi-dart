@@ -26,7 +26,7 @@ class BucketReplicationConfigRuleDestinationMetrics {
 
   factory BucketReplicationConfigRuleDestinationMetrics.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigRuleDestinationMetrics(
-      eventThreshold: map['eventThreshold'] == null ? null : (BucketReplicationConfigRuleDestinationMetricsEventThreshold.fromMap((map['eventThreshold'] as Map).cast<String, dynamic>())).input(),
+      eventThreshold: map['eventThreshold'] == null ? null : ((BucketReplicationConfigRuleDestinationMetricsEventThreshold.fromMap((map['eventThreshold']! as Map).cast<String, dynamic>())).input()).input(),
       status: (map['status'] as String).input(),
     );
   }

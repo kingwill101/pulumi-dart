@@ -46,12 +46,12 @@ class RouteState {
 
   factory RouteState.fromMap(Map<String, dynamic> map) {
     return RouteState(
-      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nextHopInIpAddress: map['nextHopInIpAddress'] == null ? null : (map['nextHopInIpAddress'] as String).input(),
-      nextHopType: map['nextHopType'] == null ? null : (map['nextHopType'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      routeTableName: map['routeTableName'] == null ? null : (map['routeTableName'] as String).input(),
+      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nextHopInIpAddress: map['nextHopInIpAddress'] == null ? null : (map['nextHopInIpAddress']! as String).input(),
+      nextHopType: map['nextHopType'] == null ? null : (map['nextHopType']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      routeTableName: map['routeTableName'] == null ? null : (map['routeTableName']! as String).input(),
     );
   }
 }

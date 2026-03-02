@@ -32,9 +32,9 @@ class GoogleCloudApigeeV1RateRange {
 
   factory GoogleCloudApigeeV1RateRange.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1RateRange(
-      end: map['end'] == null ? null : (map['end'] as String).input(),
-      fee: map['fee'] == null ? null : (GoogleTypeMoney.fromMap((map['fee'] as Map).cast<String, dynamic>())).input(),
-      start: map['start'] == null ? null : (map['start'] as String).input(),
+      end: map['end'] == null ? null : (map['end']! as String).input(),
+      fee: map['fee'] == null ? null : (GoogleTypeMoney.fromMap((map['fee']! as Map).cast<String, dynamic>())).input(),
+      start: map['start'] == null ? null : (map['start']! as String).input(),
     );
   }
 }

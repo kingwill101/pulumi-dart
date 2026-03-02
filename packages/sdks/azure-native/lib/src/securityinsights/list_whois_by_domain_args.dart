@@ -39,7 +39,7 @@ class ListWhoisByDomainArgs {
 
   factory ListWhoisByDomainArgs.fromMap(Map<String, dynamic> map) {
     return ListWhoisByDomainArgs(
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
       enrichmentType: (map['enrichmentType'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),

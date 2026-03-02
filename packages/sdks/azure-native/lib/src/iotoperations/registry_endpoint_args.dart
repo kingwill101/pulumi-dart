@@ -46,10 +46,10 @@ class RegistryEndpointArgs {
 
   factory RegistryEndpointArgs.fromMap(Map<String, dynamic> map) {
     return RegistryEndpointArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
       instanceName: (map['instanceName'] as String).input(),
-      properties: map['properties'] == null ? null : (RegistryEndpointProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      registryEndpointName: map['registryEndpointName'] == null ? null : (map['registryEndpointName'] as String).input(),
+      properties: map['properties'] == null ? null : (RegistryEndpointProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      registryEndpointName: map['registryEndpointName'] == null ? null : (map['registryEndpointName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

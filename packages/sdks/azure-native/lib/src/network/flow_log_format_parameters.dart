@@ -26,8 +26,8 @@ class FlowLogFormatParameters {
 
   factory FlowLogFormatParameters.fromMap(Map<String, dynamic> map) {
     return FlowLogFormatParameters(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

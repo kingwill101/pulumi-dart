@@ -22,7 +22,7 @@ class VmwareAdminClusterNetworkConfigHaControlPlaneConfig {
 
   factory VmwareAdminClusterNetworkConfigHaControlPlaneConfig.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterNetworkConfigHaControlPlaneConfig(
-      controlPlaneIpBlock: map['controlPlaneIpBlock'] == null ? null : (VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock.fromMap((map['controlPlaneIpBlock'] as Map).cast<String, dynamic>())).input(),
+      controlPlaneIpBlock: map['controlPlaneIpBlock'] == null ? null : (VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock.fromMap((map['controlPlaneIpBlock']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

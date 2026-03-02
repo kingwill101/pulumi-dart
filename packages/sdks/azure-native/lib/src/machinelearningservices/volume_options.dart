@@ -21,7 +21,7 @@ class VolumeOptions {
 
   factory VolumeOptions.fromMap(Map<String, dynamic> map) {
     return VolumeOptions(
-      nocopy: map['nocopy'] == null ? null : (map['nocopy'] as bool).input(),
+      nocopy: map['nocopy'] == null ? null : (map['nocopy']! as bool).input(),
     );
   }
 }

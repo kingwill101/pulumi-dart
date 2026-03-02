@@ -86,18 +86,18 @@ class GooglePrivacyDlpV2PrimitiveTransformation {
 
   factory GooglePrivacyDlpV2PrimitiveTransformation.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2PrimitiveTransformation(
-      bucketingConfig: map['bucketingConfig'] == null ? null : (GooglePrivacyDlpV2BucketingConfig.fromMap((map['bucketingConfig'] as Map).cast<String, dynamic>())).input(),
-      characterMaskConfig: map['characterMaskConfig'] == null ? null : (GooglePrivacyDlpV2CharacterMaskConfig.fromMap((map['characterMaskConfig'] as Map).cast<String, dynamic>())).input(),
-      cryptoDeterministicConfig: map['cryptoDeterministicConfig'] == null ? null : (GooglePrivacyDlpV2CryptoDeterministicConfig.fromMap((map['cryptoDeterministicConfig'] as Map).cast<String, dynamic>())).input(),
-      cryptoHashConfig: map['cryptoHashConfig'] == null ? null : (GooglePrivacyDlpV2CryptoHashConfig.fromMap((map['cryptoHashConfig'] as Map).cast<String, dynamic>())).input(),
-      cryptoReplaceFfxFpeConfig: map['cryptoReplaceFfxFpeConfig'] == null ? null : (GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig.fromMap((map['cryptoReplaceFfxFpeConfig'] as Map).cast<String, dynamic>())).input(),
-      dateShiftConfig: map['dateShiftConfig'] == null ? null : (GooglePrivacyDlpV2DateShiftConfig.fromMap((map['dateShiftConfig'] as Map).cast<String, dynamic>())).input(),
-      fixedSizeBucketingConfig: map['fixedSizeBucketingConfig'] == null ? null : (GooglePrivacyDlpV2FixedSizeBucketingConfig.fromMap((map['fixedSizeBucketingConfig'] as Map).cast<String, dynamic>())).input(),
-      redactConfig: map['redactConfig'] == null ? null : ((map['redactConfig'] as Map).cast<String, dynamic>()).input(),
-      replaceConfig: map['replaceConfig'] == null ? null : (GooglePrivacyDlpV2ReplaceValueConfig.fromMap((map['replaceConfig'] as Map).cast<String, dynamic>())).input(),
-      replaceDictionaryConfig: map['replaceDictionaryConfig'] == null ? null : (GooglePrivacyDlpV2ReplaceDictionaryConfig.fromMap((map['replaceDictionaryConfig'] as Map).cast<String, dynamic>())).input(),
-      replaceWithInfoTypeConfig: map['replaceWithInfoTypeConfig'] == null ? null : ((map['replaceWithInfoTypeConfig'] as Map).cast<String, dynamic>()).input(),
-      timePartConfig: map['timePartConfig'] == null ? null : (GooglePrivacyDlpV2TimePartConfig.fromMap((map['timePartConfig'] as Map).cast<String, dynamic>())).input(),
+      bucketingConfig: map['bucketingConfig'] == null ? null : (GooglePrivacyDlpV2BucketingConfig.fromMap((map['bucketingConfig']! as Map).cast<String, dynamic>())).input(),
+      characterMaskConfig: map['characterMaskConfig'] == null ? null : (GooglePrivacyDlpV2CharacterMaskConfig.fromMap((map['characterMaskConfig']! as Map).cast<String, dynamic>())).input(),
+      cryptoDeterministicConfig: map['cryptoDeterministicConfig'] == null ? null : (GooglePrivacyDlpV2CryptoDeterministicConfig.fromMap((map['cryptoDeterministicConfig']! as Map).cast<String, dynamic>())).input(),
+      cryptoHashConfig: map['cryptoHashConfig'] == null ? null : (GooglePrivacyDlpV2CryptoHashConfig.fromMap((map['cryptoHashConfig']! as Map).cast<String, dynamic>())).input(),
+      cryptoReplaceFfxFpeConfig: map['cryptoReplaceFfxFpeConfig'] == null ? null : (GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig.fromMap((map['cryptoReplaceFfxFpeConfig']! as Map).cast<String, dynamic>())).input(),
+      dateShiftConfig: map['dateShiftConfig'] == null ? null : (GooglePrivacyDlpV2DateShiftConfig.fromMap((map['dateShiftConfig']! as Map).cast<String, dynamic>())).input(),
+      fixedSizeBucketingConfig: map['fixedSizeBucketingConfig'] == null ? null : (GooglePrivacyDlpV2FixedSizeBucketingConfig.fromMap((map['fixedSizeBucketingConfig']! as Map).cast<String, dynamic>())).input(),
+      redactConfig: map['redactConfig'] == null ? null : ((map['redactConfig']! as Map).cast<String, dynamic>()).input(),
+      replaceConfig: map['replaceConfig'] == null ? null : (GooglePrivacyDlpV2ReplaceValueConfig.fromMap((map['replaceConfig']! as Map).cast<String, dynamic>())).input(),
+      replaceDictionaryConfig: map['replaceDictionaryConfig'] == null ? null : (GooglePrivacyDlpV2ReplaceDictionaryConfig.fromMap((map['replaceDictionaryConfig']! as Map).cast<String, dynamic>())).input(),
+      replaceWithInfoTypeConfig: map['replaceWithInfoTypeConfig'] == null ? null : ((map['replaceWithInfoTypeConfig']! as Map).cast<String, dynamic>()).input(),
+      timePartConfig: map['timePartConfig'] == null ? null : (GooglePrivacyDlpV2TimePartConfig.fromMap((map['timePartConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class WafRuleConfigTimer {
 
   factory WafRuleConfigTimer.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigTimer(
-      periods: map['periods'] == null ? null : (pulumi.Input.decodeList<WafRuleConfigTimerPeriod>(map['periods'], (value) => WafRuleConfigTimerPeriod.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      scopes: map['scopes'] == null ? null : (map['scopes'] as String).input(),
-      weeklyPeriods: map['weeklyPeriods'] == null ? null : (pulumi.Input.decodeList<WafRuleConfigTimerWeeklyPeriod>(map['weeklyPeriods'], (value) => WafRuleConfigTimerWeeklyPeriod.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as int).input(),
+      periods: map['periods'] == null ? null : (pulumi.Input.decodeList<WafRuleConfigTimerPeriod>(map['periods']!, (value) => WafRuleConfigTimerPeriod.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scopes: map['scopes'] == null ? null : (map['scopes']! as String).input(),
+      weeklyPeriods: map['weeklyPeriods'] == null ? null : (pulumi.Input.decodeList<WafRuleConfigTimerWeeklyPeriod>(map['weeklyPeriods']!, (value) => WafRuleConfigTimerWeeklyPeriod.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as int).input(),
     );
   }
 }

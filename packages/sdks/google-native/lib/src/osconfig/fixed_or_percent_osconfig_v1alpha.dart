@@ -26,8 +26,8 @@ class FixedOrPercentOsconfigV1alpha {
 
   factory FixedOrPercentOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return FixedOrPercentOsconfigV1alpha(
-      fixed: map['fixed'] == null ? null : (map['fixed'] as int).input(),
-      percent: map['percent'] == null ? null : (map['percent'] as int).input(),
+      fixed: map['fixed'] == null ? null : (map['fixed']! as int).input(),
+      percent: map['percent'] == null ? null : (map['percent']! as int).input(),
     );
   }
 }

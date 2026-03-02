@@ -30,9 +30,9 @@ class LifecyclePolicyPolicyDetailsExclusions {
 
   factory LifecyclePolicyPolicyDetailsExclusions.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsExclusions(
-      excludeBootVolumes: map['excludeBootVolumes'] == null ? null : (map['excludeBootVolumes'] as bool).input(),
-      excludeTags: map['excludeTags'] == null ? null : ((map['excludeTags'] as Map).cast<String, String>()).input(),
-      excludeVolumeTypes: map['excludeVolumeTypes'] == null ? null : ((map['excludeVolumeTypes'] as List).cast<String>()).input(),
+      excludeBootVolumes: map['excludeBootVolumes'] == null ? null : ((map['excludeBootVolumes'] as bool).input()).input(),
+      excludeTags: map['excludeTags'] == null ? null : (((map['excludeTags'] as Map).cast<String, String>()).input()).input(),
+      excludeVolumeTypes: map['excludeVolumeTypes'] == null ? null : (((map['excludeVolumeTypes'] as List).cast<String>()).input()).input(),
     );
   }
 }

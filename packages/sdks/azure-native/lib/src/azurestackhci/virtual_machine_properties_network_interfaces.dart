@@ -20,7 +20,7 @@ class VirtualMachinePropertiesNetworkInterfaces {
 
   factory VirtualMachinePropertiesNetworkInterfaces.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePropertiesNetworkInterfaces(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

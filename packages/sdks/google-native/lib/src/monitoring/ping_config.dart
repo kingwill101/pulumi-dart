@@ -21,7 +21,7 @@ class PingConfig {
 
   factory PingConfig.fromMap(Map<String, dynamic> map) {
     return PingConfig(
-      pingsCount: map['pingsCount'] == null ? null : (map['pingsCount'] as int).input(),
+      pingsCount: map['pingsCount'] == null ? null : (map['pingsCount']! as int).input(),
     );
   }
 }

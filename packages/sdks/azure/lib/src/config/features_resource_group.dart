@@ -19,7 +19,7 @@ class FeaturesResourceGroup {
 
   factory FeaturesResourceGroup.fromMap(Map<String, dynamic> map) {
     return FeaturesResourceGroup(
-      preventDeletionIfContainsResources: map['preventDeletionIfContainsResources'] == null ? null : (map['preventDeletionIfContainsResources'] as bool).input(),
+      preventDeletionIfContainsResources: map['preventDeletionIfContainsResources'] == null ? null : (map['preventDeletionIfContainsResources']! as bool).input(),
     );
   }
 }

@@ -106,22 +106,22 @@ class CatalogTableArgs {
 
   factory CatalogTableArgs.fromMap(Map<String, dynamic> map) {
     return CatalogTableArgs(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
       databaseName: (map['databaseName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      openTableFormatInput: map['openTableFormatInput'] == null ? null : (CatalogTableOpenTableFormatInput.fromMap((map['openTableFormatInput'] as Map).cast<String, dynamic>())).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      partitionIndices: map['partitionIndices'] == null ? null : (pulumi.Input.decodeList<CatalogTablePartitionIndex>(map['partitionIndices'], (value) => CatalogTablePartitionIndex.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      partitionKeys: map['partitionKeys'] == null ? null : (pulumi.Input.decodeList<CatalogTablePartitionKey>(map['partitionKeys'], (value) => CatalogTablePartitionKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      retention: map['retention'] == null ? null : (map['retention'] as int).input(),
-      storageDescriptor: map['storageDescriptor'] == null ? null : (CatalogTableStorageDescriptor.fromMap((map['storageDescriptor'] as Map).cast<String, dynamic>())).input(),
-      tableType: map['tableType'] == null ? null : (map['tableType'] as String).input(),
-      targetTable: map['targetTable'] == null ? null : (CatalogTableTargetTable.fromMap((map['targetTable'] as Map).cast<String, dynamic>())).input(),
-      viewExpandedText: map['viewExpandedText'] == null ? null : (map['viewExpandedText'] as String).input(),
-      viewOriginalText: map['viewOriginalText'] == null ? null : (map['viewOriginalText'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      openTableFormatInput: map['openTableFormatInput'] == null ? null : ((CatalogTableOpenTableFormatInput.fromMap((map['openTableFormatInput']! as Map).cast<String, dynamic>())).input()).input(),
+      owner: map['owner'] == null ? null : ((map['owner'] as String).input()).input(),
+      parameters: map['parameters'] == null ? null : (((map['parameters'] as Map).cast<String, String>()).input()).input(),
+      partitionIndices: map['partitionIndices'] == null ? null : ((pulumi.Input.decodeList<CatalogTablePartitionIndex>(map['partitionIndices']!, (value) => CatalogTablePartitionIndex.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      partitionKeys: map['partitionKeys'] == null ? null : ((pulumi.Input.decodeList<CatalogTablePartitionKey>(map['partitionKeys']!, (value) => CatalogTablePartitionKey.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      retention: map['retention'] == null ? null : ((map['retention'] as int).input()).input(),
+      storageDescriptor: map['storageDescriptor'] == null ? null : ((CatalogTableStorageDescriptor.fromMap((map['storageDescriptor']! as Map).cast<String, dynamic>())).input()).input(),
+      tableType: map['tableType'] == null ? null : ((map['tableType'] as String).input()).input(),
+      targetTable: map['targetTable'] == null ? null : ((CatalogTableTargetTable.fromMap((map['targetTable']! as Map).cast<String, dynamic>())).input()).input(),
+      viewExpandedText: map['viewExpandedText'] == null ? null : ((map['viewExpandedText'] as String).input()).input(),
+      viewOriginalText: map['viewOriginalText'] == null ? null : ((map['viewOriginalText'] as String).input()).input(),
     );
   }
 }

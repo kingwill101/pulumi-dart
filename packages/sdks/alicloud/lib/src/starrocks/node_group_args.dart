@@ -123,22 +123,22 @@ class NodeGroupArgs {
 
   factory NodeGroupArgs.fromMap(Map<String, dynamic> map) {
     return NodeGroupArgs(
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      cu: map['cu'] == null ? null : (map['cu'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      diskNumber: map['diskNumber'] == null ? null : (map['diskNumber'] as int).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as int).input(),
-      fastMode: map['fastMode'] == null ? null : (map['fastMode'] as bool).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      localStorageInstanceType: map['localStorageInstanceType'] == null ? null : (map['localStorageInstanceType'] as String).input(),
-      nodeGroupName: map['nodeGroupName'] == null ? null : (map['nodeGroupName'] as String).input(),
-      payType: map['payType'] == null ? null : (map['payType'] as String).input(),
-      pricingCycle: map['pricingCycle'] == null ? null : (map['pricingCycle'] as String).input(),
-      promotionOptionNo: map['promotionOptionNo'] == null ? null : (map['promotionOptionNo'] as String).input(),
-      residentNodeNumber: map['residentNodeNumber'] == null ? null : (map['residentNodeNumber'] as int).input(),
-      specType: map['specType'] == null ? null : (map['specType'] as String).input(),
-      storagePerformanceLevel: map['storagePerformanceLevel'] == null ? null : (map['storagePerformanceLevel'] as String).input(),
-      storageSize: map['storageSize'] == null ? null : (map['storageSize'] as int).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      cu: map['cu'] == null ? null : (map['cu']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      diskNumber: map['diskNumber'] == null ? null : (map['diskNumber']! as int).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as int).input(),
+      fastMode: map['fastMode'] == null ? null : (map['fastMode']! as bool).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      localStorageInstanceType: map['localStorageInstanceType'] == null ? null : (map['localStorageInstanceType']! as String).input(),
+      nodeGroupName: map['nodeGroupName'] == null ? null : (map['nodeGroupName']! as String).input(),
+      payType: map['payType'] == null ? null : (map['payType']! as String).input(),
+      pricingCycle: map['pricingCycle'] == null ? null : (map['pricingCycle']! as String).input(),
+      promotionOptionNo: map['promotionOptionNo'] == null ? null : (map['promotionOptionNo']! as String).input(),
+      residentNodeNumber: map['residentNodeNumber'] == null ? null : (map['residentNodeNumber']! as int).input(),
+      specType: map['specType'] == null ? null : (map['specType']! as String).input(),
+      storagePerformanceLevel: map['storagePerformanceLevel'] == null ? null : (map['storagePerformanceLevel']! as String).input(),
+      storageSize: map['storageSize'] == null ? null : (map['storageSize']! as int).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class AppVNetAddonsResponse {
 
   factory AppVNetAddonsResponse.fromMap(Map<String, dynamic> map) {
     return AppVNetAddonsResponse(
-      publicEndpoint: map['publicEndpoint'] == null ? null : (map['publicEndpoint'] as bool).input(),
+      publicEndpoint: map['publicEndpoint'] == null ? null : (map['publicEndpoint']! as bool).input(),
       publicEndpointUrl: (map['publicEndpointUrl'] as String).input(),
     );
   }

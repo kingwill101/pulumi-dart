@@ -63,14 +63,14 @@ class GetCustomRoutingEndpointGroupsArgs {
   factory GetCustomRoutingEndpointGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomRoutingEndpointGroupsArgs(
       acceleratorId: (map['acceleratorId'] as String).input(),
-      endpointGroupId: map['endpointGroupId'] == null ? null : (map['endpointGroupId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      endpointGroupId: map['endpointGroupId'] == null ? null : (map['endpointGroupId']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber']! as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

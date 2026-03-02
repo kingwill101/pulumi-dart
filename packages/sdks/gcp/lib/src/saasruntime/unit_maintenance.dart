@@ -22,7 +22,7 @@ class UnitMaintenance {
 
   factory UnitMaintenance.fromMap(Map<String, dynamic> map) {
     return UnitMaintenance(
-      pinnedUntilTime: map['pinnedUntilTime'] == null ? null : (map['pinnedUntilTime'] as String).input(),
+      pinnedUntilTime: map['pinnedUntilTime'] == null ? null : (map['pinnedUntilTime']! as String).input(),
     );
   }
 }

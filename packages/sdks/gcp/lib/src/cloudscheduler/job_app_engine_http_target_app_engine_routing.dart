@@ -33,9 +33,9 @@ class JobAppEngineHttpTargetAppEngineRouting {
 
   factory JobAppEngineHttpTargetAppEngineRouting.fromMap(Map<String, dynamic> map) {
     return JobAppEngineHttpTargetAppEngineRouting(
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

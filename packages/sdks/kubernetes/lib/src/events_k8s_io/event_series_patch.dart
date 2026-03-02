@@ -26,8 +26,8 @@ class EventSeriesPatch {
 
   factory EventSeriesPatch.fromMap(Map<String, dynamic> map) {
     return EventSeriesPatch(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      lastObservedTime: map['lastObservedTime'] == null ? null : (map['lastObservedTime'] as String).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      lastObservedTime: map['lastObservedTime'] == null ? null : (map['lastObservedTime']! as String).input(),
     );
   }
 }

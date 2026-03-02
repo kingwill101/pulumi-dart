@@ -59,14 +59,14 @@ class AccessConfigurationState {
 
   factory AccessConfigurationState.fromMap(Map<String, dynamic> map) {
     return AccessConfigurationState(
-      accessConfigurationId: map['accessConfigurationId'] == null ? null : (map['accessConfigurationId'] as String).input(),
-      accessConfigurationName: map['accessConfigurationName'] == null ? null : (map['accessConfigurationName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
-      forceRemovePermissionPolicies: map['forceRemovePermissionPolicies'] == null ? null : (map['forceRemovePermissionPolicies'] as bool).input(),
-      permissionPolicies: map['permissionPolicies'] == null ? null : (pulumi.Input.decodeList<AccessConfigurationPermissionPolicy>(map['permissionPolicies'], (value) => AccessConfigurationPermissionPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      relayState: map['relayState'] == null ? null : (map['relayState'] as String).input(),
-      sessionDuration: map['sessionDuration'] == null ? null : (map['sessionDuration'] as int).input(),
+      accessConfigurationId: map['accessConfigurationId'] == null ? null : (map['accessConfigurationId']! as String).input(),
+      accessConfigurationName: map['accessConfigurationName'] == null ? null : (map['accessConfigurationName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      directoryId: map['directoryId'] == null ? null : (map['directoryId']! as String).input(),
+      forceRemovePermissionPolicies: map['forceRemovePermissionPolicies'] == null ? null : (map['forceRemovePermissionPolicies']! as bool).input(),
+      permissionPolicies: map['permissionPolicies'] == null ? null : (pulumi.Input.decodeList<AccessConfigurationPermissionPolicy>(map['permissionPolicies']!, (value) => AccessConfigurationPermissionPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      relayState: map['relayState'] == null ? null : (map['relayState']! as String).input(),
+      sessionDuration: map['sessionDuration'] == null ? null : (map['sessionDuration']! as int).input(),
     );
   }
 }

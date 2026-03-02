@@ -28,7 +28,7 @@ class SimpleRetentionPolicy {
 
   factory SimpleRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return SimpleRetentionPolicy(
-      retentionDuration: map['retentionDuration'] == null ? null : (RetentionDuration.fromMap((map['retentionDuration'] as Map).cast<String, dynamic>())).input(),
+      retentionDuration: map['retentionDuration'] == null ? null : (RetentionDuration.fromMap((map['retentionDuration']! as Map).cast<String, dynamic>())).input(),
       retentionPolicyType: (map['retentionPolicyType'] as String).input(),
     );
   }

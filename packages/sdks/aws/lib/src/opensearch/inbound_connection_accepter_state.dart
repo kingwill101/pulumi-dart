@@ -31,9 +31,9 @@ class InboundConnectionAccepterState {
 
   factory InboundConnectionAccepterState.fromMap(Map<String, dynamic> map) {
     return InboundConnectionAccepterState(
-      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
-      connectionStatus: map['connectionStatus'] == null ? null : (map['connectionStatus'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      connectionId: map['connectionId'] == null ? null : ((map['connectionId'] as String).input()).input(),
+      connectionStatus: map['connectionStatus'] == null ? null : ((map['connectionStatus'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

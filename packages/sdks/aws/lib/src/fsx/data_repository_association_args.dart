@@ -66,15 +66,15 @@ class DataRepositoryAssociationArgs {
 
   factory DataRepositoryAssociationArgs.fromMap(Map<String, dynamic> map) {
     return DataRepositoryAssociationArgs(
-      batchImportMetaDataOnCreate: map['batchImportMetaDataOnCreate'] == null ? null : (map['batchImportMetaDataOnCreate'] as bool).input(),
+      batchImportMetaDataOnCreate: map['batchImportMetaDataOnCreate'] == null ? null : ((map['batchImportMetaDataOnCreate'] as bool).input()).input(),
       dataRepositoryPath: (map['dataRepositoryPath'] as String).input(),
-      deleteDataInFilesystem: map['deleteDataInFilesystem'] == null ? null : (map['deleteDataInFilesystem'] as bool).input(),
+      deleteDataInFilesystem: map['deleteDataInFilesystem'] == null ? null : ((map['deleteDataInFilesystem'] as bool).input()).input(),
       fileSystemId: (map['fileSystemId'] as String).input(),
       fileSystemPath: (map['fileSystemPath'] as String).input(),
-      importedFileChunkSize: map['importedFileChunkSize'] == null ? null : (map['importedFileChunkSize'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      s3: map['s3'] == null ? null : (DataRepositoryAssociationS3.fromMap((map['s3'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      importedFileChunkSize: map['importedFileChunkSize'] == null ? null : ((map['importedFileChunkSize'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      s3: map['s3'] == null ? null : ((DataRepositoryAssociationS3.fromMap((map['s3']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

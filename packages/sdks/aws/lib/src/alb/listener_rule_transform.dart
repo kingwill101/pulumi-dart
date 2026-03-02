@@ -32,9 +32,9 @@ class ListenerRuleTransform {
 
   factory ListenerRuleTransform.fromMap(Map<String, dynamic> map) {
     return ListenerRuleTransform(
-      hostHeaderRewriteConfig: map['hostHeaderRewriteConfig'] == null ? null : (ListenerRuleTransformHostHeaderRewriteConfig.fromMap((map['hostHeaderRewriteConfig'] as Map).cast<String, dynamic>())).input(),
+      hostHeaderRewriteConfig: map['hostHeaderRewriteConfig'] == null ? null : ((ListenerRuleTransformHostHeaderRewriteConfig.fromMap((map['hostHeaderRewriteConfig']! as Map).cast<String, dynamic>())).input()).input(),
       type: (map['type'] as String).input(),
-      urlRewriteConfig: map['urlRewriteConfig'] == null ? null : (ListenerRuleTransformUrlRewriteConfig.fromMap((map['urlRewriteConfig'] as Map).cast<String, dynamic>())).input(),
+      urlRewriteConfig: map['urlRewriteConfig'] == null ? null : ((ListenerRuleTransformUrlRewriteConfig.fromMap((map['urlRewriteConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

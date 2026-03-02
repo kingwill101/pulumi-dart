@@ -26,8 +26,8 @@ class AccessRules {
 
   factory AccessRules.fromMap(Map<String, dynamic> map) {
     return AccessRules(
-      allowPublicOverrides: map['allowPublicOverrides'] == null ? null : (map['allowPublicOverrides'] as bool).input(),
-      getObject: map['getObject'] == null ? null : (map['getObject'] as String).input(),
+      allowPublicOverrides: map['allowPublicOverrides'] == null ? null : (map['allowPublicOverrides']! as bool).input(),
+      getObject: map['getObject'] == null ? null : (map['getObject']! as String).input(),
     );
   }
 }

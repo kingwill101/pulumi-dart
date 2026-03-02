@@ -59,13 +59,13 @@ class DatastoreFileshareArgs {
 
   factory DatastoreFileshareArgs.fromMap(Map<String, dynamic> map) {
     return DatastoreFileshareArgs(
-      accountKey: map['accountKey'] == null ? null : (map['accountKey'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      serviceDataIdentity: map['serviceDataIdentity'] == null ? null : (map['serviceDataIdentity'] as String).input(),
-      sharedAccessSignature: map['sharedAccessSignature'] == null ? null : (map['sharedAccessSignature'] as String).input(),
+      accountKey: map['accountKey'] == null ? null : (map['accountKey']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      serviceDataIdentity: map['serviceDataIdentity'] == null ? null : (map['serviceDataIdentity']! as String).input(),
+      sharedAccessSignature: map['sharedAccessSignature'] == null ? null : (map['sharedAccessSignature']! as String).input(),
       storageFileshareId: (map['storageFileshareId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );
   }

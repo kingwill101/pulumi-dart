@@ -43,11 +43,11 @@ class ProviderNoteIamPolicyArgs {
 
   factory ProviderNoteIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ProviderNoteIamPolicyArgs(
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingContaineranalysisV1alpha1>(map['bindings'], (value) => BindingContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingContaineranalysisV1alpha1>(map['bindings']!, (value) => BindingContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       noteId: (map['noteId'] as String).input(),
       providerId: (map['providerId'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

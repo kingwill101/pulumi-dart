@@ -51,11 +51,11 @@ class DataflowArgs {
 
   factory DataflowArgs.fromMap(Map<String, dynamic> map) {
     return DataflowArgs(
-      dataflowName: map['dataflowName'] == null ? null : (map['dataflowName'] as String).input(),
+      dataflowName: map['dataflowName'] == null ? null : (map['dataflowName']! as String).input(),
       dataflowProfileName: (map['dataflowProfileName'] as String).input(),
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
       instanceName: (map['instanceName'] as String).input(),
-      properties: map['properties'] == null ? null : (DataflowProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (DataflowProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

@@ -41,11 +41,11 @@ class CorsPolicy {
 
   factory CorsPolicy.fromMap(Map<String, dynamic> map) {
     return CorsPolicy(
-      allowedHeaders: map['allowedHeaders'] == null ? null : (map['allowedHeaders'] as String).input(),
-      allowedMethods: map['allowedMethods'] == null ? null : (map['allowedMethods'] as String).input(),
+      allowedHeaders: map['allowedHeaders'] == null ? null : (map['allowedHeaders']! as String).input(),
+      allowedMethods: map['allowedMethods'] == null ? null : (map['allowedMethods']! as String).input(),
       allowedOrigins: (map['allowedOrigins'] as String).input(),
-      exposedHeaders: map['exposedHeaders'] == null ? null : (map['exposedHeaders'] as String).input(),
-      maxAgeInSeconds: map['maxAgeInSeconds'] == null ? null : (map['maxAgeInSeconds'] as double).input(),
+      exposedHeaders: map['exposedHeaders'] == null ? null : (map['exposedHeaders']! as String).input(),
+      maxAgeInSeconds: map['maxAgeInSeconds'] == null ? null : (map['maxAgeInSeconds']! as double).input(),
     );
   }
 }

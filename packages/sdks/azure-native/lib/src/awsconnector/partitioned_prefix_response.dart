@@ -21,7 +21,7 @@ class PartitionedPrefixResponse {
 
   factory PartitionedPrefixResponse.fromMap(Map<String, dynamic> map) {
     return PartitionedPrefixResponse(
-      partitionDateSource: map['partitionDateSource'] == null ? null : (map['partitionDateSource'] as String).input(),
+      partitionDateSource: map['partitionDateSource'] == null ? null : (map['partitionDateSource']! as String).input(),
     );
   }
 }

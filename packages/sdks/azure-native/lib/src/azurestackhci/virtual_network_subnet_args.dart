@@ -46,10 +46,10 @@ class VirtualNetworkSubnetArgs {
 
   factory VirtualNetworkSubnetArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkSubnetArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      properties: map['properties'] == null ? null : (VirtualNetworkSubnetProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (VirtualNetworkSubnetProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subnetName: map['subnetName'] == null ? null : (map['subnetName'] as String).input(),
+      subnetName: map['subnetName'] == null ? null : (map['subnetName']! as String).input(),
       virtualNetworkName: (map['virtualNetworkName'] as String).input(),
     );
   }

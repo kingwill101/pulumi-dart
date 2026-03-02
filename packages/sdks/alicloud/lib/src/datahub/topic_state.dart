@@ -68,15 +68,15 @@ class TopicState {
 
   factory TopicState.fromMap(Map<String, dynamic> map) {
     return TopicState(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      lastModifyTime: map['lastModifyTime'] == null ? null : (map['lastModifyTime'] as String).input(),
-      lifeCycle: map['lifeCycle'] == null ? null : (map['lifeCycle'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
-      recordSchema: map['recordSchema'] == null ? null : ((map['recordSchema'] as Map).cast<String, String>()).input(),
-      recordType: map['recordType'] == null ? null : (map['recordType'] as String).input(),
-      shardCount: map['shardCount'] == null ? null : (map['shardCount'] as int).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      lastModifyTime: map['lastModifyTime'] == null ? null : (map['lastModifyTime']! as String).input(),
+      lifeCycle: map['lifeCycle'] == null ? null : (map['lifeCycle']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName']! as String).input(),
+      recordSchema: map['recordSchema'] == null ? null : ((map['recordSchema']! as Map).cast<String, String>()).input(),
+      recordType: map['recordType'] == null ? null : (map['recordType']! as String).input(),
+      shardCount: map['shardCount'] == null ? null : (map['shardCount']! as int).input(),
     );
   }
 }

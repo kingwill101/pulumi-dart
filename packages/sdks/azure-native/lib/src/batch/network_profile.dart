@@ -27,8 +27,8 @@ class NetworkProfile {
 
   factory NetworkProfile.fromMap(Map<String, dynamic> map) {
     return NetworkProfile(
-      accountAccess: map['accountAccess'] == null ? null : (EndpointAccessProfile.fromMap((map['accountAccess'] as Map).cast<String, dynamic>())).input(),
-      nodeManagementAccess: map['nodeManagementAccess'] == null ? null : (EndpointAccessProfile.fromMap((map['nodeManagementAccess'] as Map).cast<String, dynamic>())).input(),
+      accountAccess: map['accountAccess'] == null ? null : (EndpointAccessProfile.fromMap((map['accountAccess']! as Map).cast<String, dynamic>())).input(),
+      nodeManagementAccess: map['nodeManagementAccess'] == null ? null : (EndpointAccessProfile.fromMap((map['nodeManagementAccess']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

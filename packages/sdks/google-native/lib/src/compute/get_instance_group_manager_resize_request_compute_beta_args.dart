@@ -36,7 +36,7 @@ class GetInstanceGroupManagerResizeRequestComputeBetaArgs {
   factory GetInstanceGroupManagerResizeRequestComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceGroupManagerResizeRequestComputeBetaArgs(
       instanceGroupManager: (map['instanceGroupManager'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       resizeRequest: (map['resizeRequest'] as String).input(),
       zone: (map['zone'] as String).input(),
     );

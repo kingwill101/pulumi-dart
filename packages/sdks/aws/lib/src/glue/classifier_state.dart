@@ -50,12 +50,12 @@ class ClassifierState {
 
   factory ClassifierState.fromMap(Map<String, dynamic> map) {
     return ClassifierState(
-      csvClassifier: map['csvClassifier'] == null ? null : (ClassifierCsvClassifier.fromMap((map['csvClassifier'] as Map).cast<String, dynamic>())).input(),
-      grokClassifier: map['grokClassifier'] == null ? null : (ClassifierGrokClassifier.fromMap((map['grokClassifier'] as Map).cast<String, dynamic>())).input(),
-      jsonClassifier: map['jsonClassifier'] == null ? null : (ClassifierJsonClassifier.fromMap((map['jsonClassifier'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      xmlClassifier: map['xmlClassifier'] == null ? null : (ClassifierXmlClassifier.fromMap((map['xmlClassifier'] as Map).cast<String, dynamic>())).input(),
+      csvClassifier: map['csvClassifier'] == null ? null : ((ClassifierCsvClassifier.fromMap((map['csvClassifier']! as Map).cast<String, dynamic>())).input()).input(),
+      grokClassifier: map['grokClassifier'] == null ? null : ((ClassifierGrokClassifier.fromMap((map['grokClassifier']! as Map).cast<String, dynamic>())).input()).input(),
+      jsonClassifier: map['jsonClassifier'] == null ? null : ((ClassifierJsonClassifier.fromMap((map['jsonClassifier']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      xmlClassifier: map['xmlClassifier'] == null ? null : ((ClassifierXmlClassifier.fromMap((map['xmlClassifier']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

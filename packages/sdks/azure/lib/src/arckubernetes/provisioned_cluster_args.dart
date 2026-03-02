@@ -61,14 +61,14 @@ class ProvisionedClusterArgs {
 
   factory ProvisionedClusterArgs.fromMap(Map<String, dynamic> map) {
     return ProvisionedClusterArgs(
-      arcAgentAutoUpgradeEnabled: map['arcAgentAutoUpgradeEnabled'] == null ? null : (map['arcAgentAutoUpgradeEnabled'] as bool).input(),
-      arcAgentDesiredVersion: map['arcAgentDesiredVersion'] == null ? null : (map['arcAgentDesiredVersion'] as String).input(),
-      azureActiveDirectory: map['azureActiveDirectory'] == null ? null : (ProvisionedClusterAzureActiveDirectory.fromMap((map['azureActiveDirectory'] as Map).cast<String, dynamic>())).input(),
+      arcAgentAutoUpgradeEnabled: map['arcAgentAutoUpgradeEnabled'] == null ? null : (map['arcAgentAutoUpgradeEnabled']! as bool).input(),
+      arcAgentDesiredVersion: map['arcAgentDesiredVersion'] == null ? null : (map['arcAgentDesiredVersion']! as String).input(),
+      azureActiveDirectory: map['azureActiveDirectory'] == null ? null : (ProvisionedClusterAzureActiveDirectory.fromMap((map['azureActiveDirectory']! as Map).cast<String, dynamic>())).input(),
       identity: (ProvisionedClusterIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

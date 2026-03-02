@@ -35,10 +35,10 @@ class NestServiceInstanceOperationMetadata {
 
   factory NestServiceInstanceOperationMetadata.fromMap(Map<String, dynamic> map) {
     return NestServiceInstanceOperationMetadata(
-      operatedServiceInstanceId: map['operatedServiceInstanceId'] == null ? null : (map['operatedServiceInstanceId'] as String).input(),
-      operationEndTime: map['operationEndTime'] == null ? null : (map['operationEndTime'] as String).input(),
-      operationStartTime: map['operationStartTime'] == null ? null : (map['operationStartTime'] as String).input(),
-      resources: map['resources'] == null ? null : (map['resources'] as String).input(),
+      operatedServiceInstanceId: map['operatedServiceInstanceId'] == null ? null : (map['operatedServiceInstanceId']! as String).input(),
+      operationEndTime: map['operationEndTime'] == null ? null : (map['operationEndTime']! as String).input(),
+      operationStartTime: map['operationStartTime'] == null ? null : (map['operationStartTime']! as String).input(),
+      resources: map['resources'] == null ? null : (map['resources']! as String).input(),
     );
   }
 }

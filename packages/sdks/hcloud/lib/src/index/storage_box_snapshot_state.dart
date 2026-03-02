@@ -41,11 +41,11 @@ class StorageBoxSnapshotState {
 
   factory StorageBoxSnapshotState.fromMap(Map<String, dynamic> map) {
     return StorageBoxSnapshotState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      isAutomatic: map['isAutomatic'] == null ? null : (map['isAutomatic'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      storageBoxId: map['storageBoxId'] == null ? null : (map['storageBoxId'] as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      isAutomatic: map['isAutomatic'] == null ? null : (map['isAutomatic']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      storageBoxId: map['storageBoxId'] == null ? null : (map['storageBoxId']! as int).input(),
     );
   }
 }

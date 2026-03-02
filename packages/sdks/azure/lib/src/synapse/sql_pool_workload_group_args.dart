@@ -59,13 +59,13 @@ class SqlPoolWorkloadGroupArgs {
 
   factory SqlPoolWorkloadGroupArgs.fromMap(Map<String, dynamic> map) {
     return SqlPoolWorkloadGroupArgs(
-      importance: map['importance'] == null ? null : (map['importance'] as String).input(),
+      importance: map['importance'] == null ? null : (map['importance']! as String).input(),
       maxResourcePercent: (map['maxResourcePercent'] as int).input(),
-      maxResourcePercentPerRequest: map['maxResourcePercentPerRequest'] == null ? null : (map['maxResourcePercentPerRequest'] as double).input(),
+      maxResourcePercentPerRequest: map['maxResourcePercentPerRequest'] == null ? null : (map['maxResourcePercentPerRequest']! as double).input(),
       minResourcePercent: (map['minResourcePercent'] as int).input(),
-      minResourcePercentPerRequest: map['minResourcePercentPerRequest'] == null ? null : (map['minResourcePercentPerRequest'] as double).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      queryExecutionTimeoutInSeconds: map['queryExecutionTimeoutInSeconds'] == null ? null : (map['queryExecutionTimeoutInSeconds'] as int).input(),
+      minResourcePercentPerRequest: map['minResourcePercentPerRequest'] == null ? null : (map['minResourcePercentPerRequest']! as double).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      queryExecutionTimeoutInSeconds: map['queryExecutionTimeoutInSeconds'] == null ? null : (map['queryExecutionTimeoutInSeconds']! as int).input(),
       sqlPoolId: (map['sqlPoolId'] as String).input(),
     );
   }

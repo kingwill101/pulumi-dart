@@ -40,7 +40,7 @@ class RoleUserAttachmentArgs {
     return RoleUserAttachmentArgs(
       projectName: (map['projectName'] as String).input(),
       roleName: (map['roleName'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

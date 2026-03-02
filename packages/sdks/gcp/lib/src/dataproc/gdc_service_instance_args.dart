@@ -64,14 +64,14 @@ class GdcServiceInstanceArgs {
 
   factory GdcServiceInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GdcServiceInstanceArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      gdceCluster: map['gdceCluster'] == null ? null : (GdcServiceInstanceGdceCluster.fromMap((map['gdceCluster'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      gdceCluster: map['gdceCluster'] == null ? null : (GdcServiceInstanceGdceCluster.fromMap((map['gdceCluster']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
       serviceInstanceId: (map['serviceInstanceId'] as String).input(),
-      sparkServiceInstanceConfig: map['sparkServiceInstanceConfig'] == null ? null : ((map['sparkServiceInstanceConfig'] as Map).cast<String, dynamic>()).input(),
+      sparkServiceInstanceConfig: map['sparkServiceInstanceConfig'] == null ? null : ((map['sparkServiceInstanceConfig']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

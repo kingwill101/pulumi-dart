@@ -21,7 +21,7 @@ class ResourceProviderManifestPropertiesNotificationSettingsResponse {
 
   factory ResourceProviderManifestPropertiesNotificationSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceProviderManifestPropertiesNotificationSettingsResponse(
-      subscriberSettings: map['subscriberSettings'] == null ? null : (pulumi.Input.decodeList<SubscriberSettingResponse>(map['subscriberSettings'], (value) => SubscriberSettingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subscriberSettings: map['subscriberSettings'] == null ? null : (pulumi.Input.decodeList<SubscriberSettingResponse>(map['subscriberSettings']!, (value) => SubscriberSettingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

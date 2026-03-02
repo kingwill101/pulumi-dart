@@ -48,11 +48,11 @@ class NetworkInterfaceTapConfigurationResponse {
   factory NetworkInterfaceTapConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceTapConfigurationResponse(
       etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       type: (map['type'] as String).input(),
-      virtualNetworkTap: map['virtualNetworkTap'] == null ? null : (VirtualNetworkTapResponse.fromMap((map['virtualNetworkTap'] as Map).cast<String, dynamic>())).input(),
+      virtualNetworkTap: map['virtualNetworkTap'] == null ? null : (VirtualNetworkTapResponse.fromMap((map['virtualNetworkTap']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -38,9 +38,9 @@ class GetQueueArgs {
   factory GetQueueArgs.fromMap(Map<String, dynamic> map) {
     return GetQueueArgs(
       name: (map['name'] as String).input(),
-      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId']! as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

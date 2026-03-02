@@ -46,11 +46,11 @@ class CustomResourceColumnDefinition {
 
   factory CustomResourceColumnDefinition.fromMap(Map<String, dynamic> map) {
     return CustomResourceColumnDefinition(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
       jsonPath: (map['jsonPath'] as String).input(),
       name: (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
       type: (map['type'] as String).input(),
     );
   }

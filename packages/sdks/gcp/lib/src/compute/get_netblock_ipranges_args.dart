@@ -46,7 +46,7 @@ class GetNetblockIPRangesArgs {
 
   factory GetNetblockIPRangesArgs.fromMap(Map<String, dynamic> map) {
     return GetNetblockIPRangesArgs(
-      rangeType: map['rangeType'] == null ? null : (map['rangeType'] as String).input(),
+      rangeType: map['rangeType'] == null ? null : (map['rangeType']! as String).input(),
     );
   }
 }

@@ -40,8 +40,8 @@ class GetVmwareNodePoolArgs {
   factory GetVmwareNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return GetVmwareNodePoolArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      view: map['view'] == null ? null : (map['view'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      view: map['view'] == null ? null : (map['view']! as String).input(),
       vmwareClusterId: (map['vmwareClusterId'] as String).input(),
       vmwareNodePoolId: (map['vmwareNodePoolId'] as String).input(),
     );

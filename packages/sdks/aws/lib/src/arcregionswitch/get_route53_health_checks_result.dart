@@ -36,7 +36,7 @@ class GetRoute53HealthChecksResult {
 
   factory GetRoute53HealthChecksResult.fromMap(Map<String, dynamic> map) {
     return GetRoute53HealthChecksResult(
-      healthChecks: pulumi.Input.decodeList<GetRoute53HealthChecksHealthCheck>(map['healthChecks'], (value) => GetRoute53HealthChecksHealthCheck.fromMap((value as Map).cast<String, dynamic>())),
+      healthChecks: pulumi.Input.decodeList<GetRoute53HealthChecksHealthCheck>(map['healthChecks']!, (value) => GetRoute53HealthChecksHealthCheck.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       planArn: map['planArn'] as String,
       region: map['region'] as String,

@@ -21,7 +21,7 @@ class BareMetalAdminWorkloadNodeConfig {
 
   factory BareMetalAdminWorkloadNodeConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminWorkloadNodeConfig(
-      maxPodsPerNode: map['maxPodsPerNode'] == null ? null : (map['maxPodsPerNode'] as String).input(),
+      maxPodsPerNode: map['maxPodsPerNode'] == null ? null : (map['maxPodsPerNode']! as String).input(),
     );
   }
 }

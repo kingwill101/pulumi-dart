@@ -96,20 +96,20 @@ class UptimeCheckConfigHttpCheck {
 
   factory UptimeCheckConfigHttpCheck.fromMap(Map<String, dynamic> map) {
     return UptimeCheckConfigHttpCheck(
-      acceptedResponseStatusCodes: map['acceptedResponseStatusCodes'] == null ? null : (pulumi.Input.decodeList<UptimeCheckConfigHttpCheckAcceptedResponseStatusCode>(map['acceptedResponseStatusCodes'], (value) => UptimeCheckConfigHttpCheckAcceptedResponseStatusCode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      authInfo: map['authInfo'] == null ? null : (UptimeCheckConfigHttpCheckAuthInfo.fromMap((map['authInfo'] as Map).cast<String, dynamic>())).input(),
-      body: map['body'] == null ? null : (map['body'] as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      customContentType: map['customContentType'] == null ? null : (map['customContentType'] as String).input(),
-      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, String>()).input(),
-      maskHeaders: map['maskHeaders'] == null ? null : (map['maskHeaders'] as bool).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      pingConfig: map['pingConfig'] == null ? null : (UptimeCheckConfigHttpCheckPingConfig.fromMap((map['pingConfig'] as Map).cast<String, dynamic>())).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      requestMethod: map['requestMethod'] == null ? null : (map['requestMethod'] as String).input(),
-      serviceAgentAuthentication: map['serviceAgentAuthentication'] == null ? null : (UptimeCheckConfigHttpCheckServiceAgentAuthentication.fromMap((map['serviceAgentAuthentication'] as Map).cast<String, dynamic>())).input(),
-      useSsl: map['useSsl'] == null ? null : (map['useSsl'] as bool).input(),
-      validateSsl: map['validateSsl'] == null ? null : (map['validateSsl'] as bool).input(),
+      acceptedResponseStatusCodes: map['acceptedResponseStatusCodes'] == null ? null : (pulumi.Input.decodeList<UptimeCheckConfigHttpCheckAcceptedResponseStatusCode>(map['acceptedResponseStatusCodes']!, (value) => UptimeCheckConfigHttpCheckAcceptedResponseStatusCode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authInfo: map['authInfo'] == null ? null : (UptimeCheckConfigHttpCheckAuthInfo.fromMap((map['authInfo']! as Map).cast<String, dynamic>())).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      customContentType: map['customContentType'] == null ? null : (map['customContentType']! as String).input(),
+      headers: map['headers'] == null ? null : ((map['headers']! as Map).cast<String, String>()).input(),
+      maskHeaders: map['maskHeaders'] == null ? null : (map['maskHeaders']! as bool).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      pingConfig: map['pingConfig'] == null ? null : (UptimeCheckConfigHttpCheckPingConfig.fromMap((map['pingConfig']! as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      requestMethod: map['requestMethod'] == null ? null : (map['requestMethod']! as String).input(),
+      serviceAgentAuthentication: map['serviceAgentAuthentication'] == null ? null : (UptimeCheckConfigHttpCheckServiceAgentAuthentication.fromMap((map['serviceAgentAuthentication']! as Map).cast<String, dynamic>())).input(),
+      useSsl: map['useSsl'] == null ? null : (map['useSsl']! as bool).input(),
+      validateSsl: map['validateSsl'] == null ? null : (map['validateSsl']! as bool).input(),
     );
   }
 }

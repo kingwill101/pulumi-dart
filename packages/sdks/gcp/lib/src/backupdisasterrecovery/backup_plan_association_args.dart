@@ -57,7 +57,7 @@ class BackupPlanAssociationArgs {
       backupPlan: (map['backupPlan'] as String).input(),
       backupPlanAssociationId: (map['backupPlanAssociationId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       resource: (map['resource'] as String).input(),
       resourceType: (map['resourceType'] as String).input(),
     );

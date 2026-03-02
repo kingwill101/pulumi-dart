@@ -20,7 +20,7 @@ class DomainDevicesInterfaceSourceUser {
 
   factory DomainDevicesInterfaceSourceUser.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceUser(
-      dev: map['dev'] == null ? null : (map['dev'] as String).input(),
+      dev: map['dev'] == null ? null : (map['dev']! as String).input(),
     );
   }
 }

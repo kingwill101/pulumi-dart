@@ -57,7 +57,7 @@ class CertificateArgs {
       accountName: (map['accountName'] as String).input(),
       certificate: (map['certificate'] as String).input(),
       format: (map['format'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       thumbprint: (map['thumbprint'] as String).input(),
       thumbprintAlgorithm: (map['thumbprintAlgorithm'] as String).input(),

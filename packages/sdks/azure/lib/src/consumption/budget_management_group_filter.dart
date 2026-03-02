@@ -27,8 +27,8 @@ class BudgetManagementGroupFilter {
 
   factory BudgetManagementGroupFilter.fromMap(Map<String, dynamic> map) {
     return BudgetManagementGroupFilter(
-      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<BudgetManagementGroupFilterDimension>(map['dimensions'], (value) => BudgetManagementGroupFilterDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<BudgetManagementGroupFilterTag>(map['tags'], (value) => BudgetManagementGroupFilterTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<BudgetManagementGroupFilterDimension>(map['dimensions']!, (value) => BudgetManagementGroupFilterDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<BudgetManagementGroupFilterTag>(map['tags']!, (value) => BudgetManagementGroupFilterTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

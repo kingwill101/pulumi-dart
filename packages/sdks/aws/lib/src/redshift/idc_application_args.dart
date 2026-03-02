@@ -70,16 +70,16 @@ class IdcApplicationArgs {
 
   factory IdcApplicationArgs.fromMap(Map<String, dynamic> map) {
     return IdcApplicationArgs(
-      applicationType: map['applicationType'] == null ? null : (map['applicationType'] as String).input(),
-      authorizedTokenIssuer: map['authorizedTokenIssuer'] == null ? null : (IdcApplicationAuthorizedTokenIssuer.fromMap((map['authorizedTokenIssuer'] as Map).cast<String, dynamic>())).input(),
+      applicationType: map['applicationType'] == null ? null : ((map['applicationType'] as String).input()).input(),
+      authorizedTokenIssuer: map['authorizedTokenIssuer'] == null ? null : ((IdcApplicationAuthorizedTokenIssuer.fromMap((map['authorizedTokenIssuer']! as Map).cast<String, dynamic>())).input()).input(),
       iamRoleArn: (map['iamRoleArn'] as String).input(),
       idcDisplayName: (map['idcDisplayName'] as String).input(),
       idcInstanceArn: (map['idcInstanceArn'] as String).input(),
-      identityNamespace: map['identityNamespace'] == null ? null : (map['identityNamespace'] as String).input(),
+      identityNamespace: map['identityNamespace'] == null ? null : ((map['identityNamespace'] as String).input()).input(),
       redshiftIdcApplicationName: (map['redshiftIdcApplicationName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceIntegration: map['serviceIntegration'] == null ? null : (IdcApplicationServiceIntegration.fromMap((map['serviceIntegration'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serviceIntegration: map['serviceIntegration'] == null ? null : ((IdcApplicationServiceIntegration.fromMap((map['serviceIntegration']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

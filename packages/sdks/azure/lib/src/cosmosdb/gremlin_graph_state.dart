@@ -89,19 +89,19 @@ class GremlinGraphState {
 
   factory GremlinGraphState.fromMap(Map<String, dynamic> map) {
     return GremlinGraphState(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl'] as int).input(),
-      autoscaleSettings: map['autoscaleSettings'] == null ? null : (GremlinGraphAutoscaleSettings.fromMap((map['autoscaleSettings'] as Map).cast<String, dynamic>())).input(),
-      conflictResolutionPolicy: map['conflictResolutionPolicy'] == null ? null : (GremlinGraphConflictResolutionPolicy.fromMap((map['conflictResolutionPolicy'] as Map).cast<String, dynamic>())).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl'] as int).input(),
-      indexPolicy: map['indexPolicy'] == null ? null : (GremlinGraphIndexPolicy.fromMap((map['indexPolicy'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      partitionKeyPath: map['partitionKeyPath'] == null ? null : (map['partitionKeyPath'] as String).input(),
-      partitionKeyVersion: map['partitionKeyVersion'] == null ? null : (map['partitionKeyVersion'] as int).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
-      uniqueKeys: map['uniqueKeys'] == null ? null : (pulumi.Input.decodeList<GremlinGraphUniqueKey>(map['uniqueKeys'], (value) => GremlinGraphUniqueKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl']! as int).input(),
+      autoscaleSettings: map['autoscaleSettings'] == null ? null : (GremlinGraphAutoscaleSettings.fromMap((map['autoscaleSettings']! as Map).cast<String, dynamic>())).input(),
+      conflictResolutionPolicy: map['conflictResolutionPolicy'] == null ? null : (GremlinGraphConflictResolutionPolicy.fromMap((map['conflictResolutionPolicy']! as Map).cast<String, dynamic>())).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
+      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl']! as int).input(),
+      indexPolicy: map['indexPolicy'] == null ? null : (GremlinGraphIndexPolicy.fromMap((map['indexPolicy']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      partitionKeyPath: map['partitionKeyPath'] == null ? null : (map['partitionKeyPath']! as String).input(),
+      partitionKeyVersion: map['partitionKeyVersion'] == null ? null : (map['partitionKeyVersion']! as int).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput']! as int).input(),
+      uniqueKeys: map['uniqueKeys'] == null ? null : (pulumi.Input.decodeList<GremlinGraphUniqueKey>(map['uniqueKeys']!, (value) => GremlinGraphUniqueKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class GetRegionClusterIamPolicyArgs {
   factory GetRegionClusterIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionClusterIamPolicyArgs(
       clusterId: (map['clusterId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       regionId: (map['regionId'] as String).input(),
     );
   }

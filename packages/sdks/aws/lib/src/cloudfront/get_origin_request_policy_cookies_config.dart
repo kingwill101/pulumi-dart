@@ -25,7 +25,7 @@ class GetOriginRequestPolicyCookiesConfig {
   factory GetOriginRequestPolicyCookiesConfig.fromMap(Map<String, dynamic> map) {
     return GetOriginRequestPolicyCookiesConfig(
       cookieBehavior: (map['cookieBehavior'] as String).input(),
-      cookies: (pulumi.Input.decodeList<GetOriginRequestPolicyCookiesConfigCookie>(map['cookies'], (value) => GetOriginRequestPolicyCookiesConfigCookie.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cookies: (pulumi.Input.decodeList<GetOriginRequestPolicyCookiesConfigCookie>(map['cookies']!, (value) => GetOriginRequestPolicyCookiesConfigCookie.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

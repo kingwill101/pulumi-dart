@@ -46,10 +46,10 @@ class RaiToolLabelArgs {
   factory RaiToolLabelArgs.fromMap(Map<String, dynamic> map) {
     return RaiToolLabelArgs(
       accountName: (map['accountName'] as String).input(),
-      properties: map['properties'] == null ? null : (RaiToolLabelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      raiToolConnectionName: map['raiToolConnectionName'] == null ? null : (map['raiToolConnectionName'] as String).input(),
+      properties: map['properties'] == null ? null : (RaiToolLabelProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      raiToolConnectionName: map['raiToolConnectionName'] == null ? null : (map['raiToolConnectionName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

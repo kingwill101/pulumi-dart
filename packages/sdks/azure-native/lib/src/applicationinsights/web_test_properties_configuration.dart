@@ -21,7 +21,7 @@ class WebTestPropertiesConfiguration {
 
   factory WebTestPropertiesConfiguration.fromMap(Map<String, dynamic> map) {
     return WebTestPropertiesConfiguration(
-      webTest: map['webTest'] == null ? null : (map['webTest'] as String).input(),
+      webTest: map['webTest'] == null ? null : (map['webTest']! as String).input(),
     );
   }
 }

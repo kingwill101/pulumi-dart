@@ -36,10 +36,10 @@ class ExpressRouteCircuitAuthorization {
 
   factory ExpressRouteCircuitAuthorization.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitAuthorization(
-      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey'] as String).input(),
-      authorizationUseStatus: map['authorizationUseStatus'] == null ? null : (map['authorizationUseStatus'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey']! as String).input(),
+      authorizationUseStatus: map['authorizationUseStatus'] == null ? null : (map['authorizationUseStatus']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class DataQualityJobDefinitionNetworkConfig {
 
   factory DataQualityJobDefinitionNetworkConfig.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionNetworkConfig(
-      enableInterContainerTrafficEncryption: map['enableInterContainerTrafficEncryption'] == null ? null : (map['enableInterContainerTrafficEncryption'] as bool).input(),
-      enableNetworkIsolation: map['enableNetworkIsolation'] == null ? null : (map['enableNetworkIsolation'] as bool).input(),
-      vpcConfig: map['vpcConfig'] == null ? null : (DataQualityJobDefinitionNetworkConfigVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())).input(),
+      enableInterContainerTrafficEncryption: map['enableInterContainerTrafficEncryption'] == null ? null : ((map['enableInterContainerTrafficEncryption'] as bool).input()).input(),
+      enableNetworkIsolation: map['enableNetworkIsolation'] == null ? null : ((map['enableNetworkIsolation'] as bool).input()).input(),
+      vpcConfig: map['vpcConfig'] == null ? null : ((DataQualityJobDefinitionNetworkConfigVpcConfig.fromMap((map['vpcConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

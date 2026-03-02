@@ -35,7 +35,7 @@ class SamlProviderArgs {
 
   factory SamlProviderArgs.fromMap(Map<String, dynamic> map) {
     return SamlProviderArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       encodedsamlMetadataDocument: (map['encodedsamlMetadataDocument'] as String).input(),
       samlProviderName: (map['samlProviderName'] as String).input(),
     );

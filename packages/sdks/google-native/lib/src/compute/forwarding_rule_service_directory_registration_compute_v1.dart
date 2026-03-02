@@ -31,9 +31,9 @@ class ForwardingRuleServiceDirectoryRegistrationComputeV1 {
 
   factory ForwardingRuleServiceDirectoryRegistrationComputeV1.fromMap(Map<String, dynamic> map) {
     return ForwardingRuleServiceDirectoryRegistrationComputeV1(
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      serviceDirectoryRegion: map['serviceDirectoryRegion'] == null ? null : (map['serviceDirectoryRegion'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      serviceDirectoryRegion: map['serviceDirectoryRegion'] == null ? null : (map['serviceDirectoryRegion']! as String).input(),
     );
   }
 }

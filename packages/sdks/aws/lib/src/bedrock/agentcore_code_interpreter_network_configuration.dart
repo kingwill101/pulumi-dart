@@ -27,7 +27,7 @@ class AgentcoreCodeInterpreterNetworkConfiguration {
   factory AgentcoreCodeInterpreterNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreCodeInterpreterNetworkConfiguration(
       networkMode: (map['networkMode'] as String).input(),
-      vpcConfig: map['vpcConfig'] == null ? null : (AgentcoreCodeInterpreterNetworkConfigurationVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())).input(),
+      vpcConfig: map['vpcConfig'] == null ? null : ((AgentcoreCodeInterpreterNetworkConfigurationVpcConfig.fromMap((map['vpcConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

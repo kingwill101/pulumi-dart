@@ -46,7 +46,7 @@ class GetEndpointAclPoliciesResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       policies: pulumi.Input.decodeList<GetEndpointAclPoliciesPolicy>(map['policies'], (value) => GetEndpointAclPoliciesPolicy.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

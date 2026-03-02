@@ -30,9 +30,9 @@ class AccountManagedResource {
 
   factory AccountManagedResource.fromMap(Map<String, dynamic> map) {
     return AccountManagedResource(
-      eventHubNamespaceId: map['eventHubNamespaceId'] == null ? null : (map['eventHubNamespaceId'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      eventHubNamespaceId: map['eventHubNamespaceId'] == null ? null : (map['eventHubNamespaceId']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
     );
   }
 }

@@ -41,11 +41,11 @@ class FlexibleServerActiveDirectoryAdministratoryState {
 
   factory FlexibleServerActiveDirectoryAdministratoryState.fromMap(Map<String, dynamic> map) {
     return FlexibleServerActiveDirectoryAdministratoryState(
-      identityId: map['identityId'] == null ? null : (map['identityId'] as String).input(),
-      login: map['login'] == null ? null : (map['login'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      identityId: map['identityId'] == null ? null : (map['identityId']! as String).input(),
+      login: map['login'] == null ? null : (map['login']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

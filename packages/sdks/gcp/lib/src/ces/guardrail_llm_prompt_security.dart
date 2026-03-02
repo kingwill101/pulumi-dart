@@ -30,8 +30,8 @@ class GuardrailLlmPromptSecurity {
 
   factory GuardrailLlmPromptSecurity.fromMap(Map<String, dynamic> map) {
     return GuardrailLlmPromptSecurity(
-      customPolicy: map['customPolicy'] == null ? null : (GuardrailLlmPromptSecurityCustomPolicy.fromMap((map['customPolicy'] as Map).cast<String, dynamic>())).input(),
-      defaultSettings: map['defaultSettings'] == null ? null : (GuardrailLlmPromptSecurityDefaultSettings.fromMap((map['defaultSettings'] as Map).cast<String, dynamic>())).input(),
+      customPolicy: map['customPolicy'] == null ? null : (GuardrailLlmPromptSecurityCustomPolicy.fromMap((map['customPolicy']! as Map).cast<String, dynamic>())).input(),
+      defaultSettings: map['defaultSettings'] == null ? null : (GuardrailLlmPromptSecurityDefaultSettings.fromMap((map['defaultSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

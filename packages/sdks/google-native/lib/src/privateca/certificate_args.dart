@@ -79,17 +79,17 @@ class CertificateArgs {
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
       caPoolId: (map['caPoolId'] as String).input(),
-      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
-      certificateTemplate: map['certificateTemplate'] == null ? null : (map['certificateTemplate'] as String).input(),
-      config: map['config'] == null ? null : (CertificateConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      issuingCertificateAuthorityId: map['issuingCertificateAuthorityId'] == null ? null : (map['issuingCertificateAuthorityId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as String).input(),
+      certificateTemplate: map['certificateTemplate'] == null ? null : (map['certificateTemplate']! as String).input(),
+      config: map['config'] == null ? null : (CertificateConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      issuingCertificateAuthorityId: map['issuingCertificateAuthorityId'] == null ? null : (map['issuingCertificateAuthorityId']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       lifetime: (map['lifetime'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      pemCsr: map['pemCsr'] == null ? null : (map['pemCsr'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      subjectMode: map['subjectMode'] == null ? null : (CertificateSubjectMode.fromValue(map['subjectMode'] as String)).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      pemCsr: map['pemCsr'] == null ? null : (map['pemCsr']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      subjectMode: map['subjectMode'] == null ? null : (CertificateSubjectMode.fromValue(map['subjectMode']! as String)).input(),
     );
   }
 }

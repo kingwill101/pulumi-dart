@@ -35,10 +35,10 @@ class DeploymentArtifactJarArtifact {
 
   factory DeploymentArtifactJarArtifact.fromMap(Map<String, dynamic> map) {
     return DeploymentArtifactJarArtifact(
-      additionalDependencies: map['additionalDependencies'] == null ? null : ((map['additionalDependencies'] as List).cast<String>()).input(),
-      entryClass: map['entryClass'] == null ? null : (map['entryClass'] as String).input(),
-      jarUri: map['jarUri'] == null ? null : (map['jarUri'] as String).input(),
-      mainArgs: map['mainArgs'] == null ? null : (map['mainArgs'] as String).input(),
+      additionalDependencies: map['additionalDependencies'] == null ? null : ((map['additionalDependencies']! as List).cast<String>()).input(),
+      entryClass: map['entryClass'] == null ? null : (map['entryClass']! as String).input(),
+      jarUri: map['jarUri'] == null ? null : (map['jarUri']! as String).input(),
+      mainArgs: map['mainArgs'] == null ? null : (map['mainArgs']! as String).input(),
     );
   }
 }

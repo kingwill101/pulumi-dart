@@ -70,16 +70,16 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      authorizationMode: map['authorizationMode'] == null ? null : (ClusterAuthorizationMode.fromValue(map['authorizationMode'] as String)).input(),
+      authorizationMode: map['authorizationMode'] == null ? null : (ClusterAuthorizationMode.fromValue(map['authorizationMode']! as String)).input(),
       clusterId: (map['clusterId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       pscConfigs: (pulumi.Input.decodeList<PscConfig>(map['pscConfigs'], (value) => PscConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount'] as int).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount']! as int).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       shardCount: (map['shardCount'] as int).input(),
-      transitEncryptionMode: map['transitEncryptionMode'] == null ? null : (ClusterTransitEncryptionMode.fromValue(map['transitEncryptionMode'] as String)).input(),
+      transitEncryptionMode: map['transitEncryptionMode'] == null ? null : (ClusterTransitEncryptionMode.fromValue(map['transitEncryptionMode']! as String)).input(),
     );
   }
 }

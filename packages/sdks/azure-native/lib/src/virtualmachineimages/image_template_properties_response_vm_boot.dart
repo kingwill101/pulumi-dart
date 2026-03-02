@@ -21,7 +21,7 @@ class ImageTemplatePropertiesResponseVmBoot {
 
   factory ImageTemplatePropertiesResponseVmBoot.fromMap(Map<String, dynamic> map) {
     return ImageTemplatePropertiesResponseVmBoot(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

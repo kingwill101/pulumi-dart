@@ -48,8 +48,8 @@ class GetAuthorizationAccessPolicyResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      objectId: map['objectId'] == null ? null : map['objectId'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      objectId: map['objectId'] == null ? null : map['objectId']! as String,
+      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
       type: map['type'] as String,
     );
   }

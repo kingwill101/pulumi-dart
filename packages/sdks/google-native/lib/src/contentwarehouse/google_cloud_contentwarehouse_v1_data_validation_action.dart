@@ -21,7 +21,7 @@ class GoogleCloudContentwarehouseV1DataValidationAction {
 
   factory GoogleCloudContentwarehouseV1DataValidationAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1DataValidationAction(
-      conditions: map['conditions'] == null ? null : ((map['conditions'] as Map).cast<String, String>()).input(),
+      conditions: map['conditions'] == null ? null : ((map['conditions']! as Map).cast<String, String>()).input(),
     );
   }
 }

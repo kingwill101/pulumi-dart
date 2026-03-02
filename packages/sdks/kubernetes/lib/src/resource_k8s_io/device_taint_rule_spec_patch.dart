@@ -28,8 +28,8 @@ class DeviceTaintRuleSpecPatch {
 
   factory DeviceTaintRuleSpecPatch.fromMap(Map<String, dynamic> map) {
     return DeviceTaintRuleSpecPatch(
-      deviceSelector: map['deviceSelector'] == null ? null : (DeviceTaintSelectorPatch.fromMap((map['deviceSelector'] as Map).cast<String, dynamic>())).input(),
-      taint: map['taint'] == null ? null : (DeviceTaintPatchResourceK8sIoV1alpha3.fromMap((map['taint'] as Map).cast<String, dynamic>())).input(),
+      deviceSelector: map['deviceSelector'] == null ? null : (DeviceTaintSelectorPatch.fromMap((map['deviceSelector']! as Map).cast<String, dynamic>())).input(),
+      taint: map['taint'] == null ? null : (DeviceTaintPatchResourceK8sIoV1alpha3.fromMap((map['taint']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

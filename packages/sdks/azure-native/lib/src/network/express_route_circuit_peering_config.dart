@@ -41,11 +41,11 @@ class ExpressRouteCircuitPeeringConfig {
 
   factory ExpressRouteCircuitPeeringConfig.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitPeeringConfig(
-      advertisedCommunities: map['advertisedCommunities'] == null ? null : ((map['advertisedCommunities'] as List).cast<String>()).input(),
-      advertisedPublicPrefixes: map['advertisedPublicPrefixes'] == null ? null : ((map['advertisedPublicPrefixes'] as List).cast<String>()).input(),
-      customerASN: map['customerASN'] == null ? null : (map['customerASN'] as int).input(),
-      legacyMode: map['legacyMode'] == null ? null : (map['legacyMode'] as int).input(),
-      routingRegistryName: map['routingRegistryName'] == null ? null : (map['routingRegistryName'] as String).input(),
+      advertisedCommunities: map['advertisedCommunities'] == null ? null : ((map['advertisedCommunities']! as List).cast<String>()).input(),
+      advertisedPublicPrefixes: map['advertisedPublicPrefixes'] == null ? null : ((map['advertisedPublicPrefixes']! as List).cast<String>()).input(),
+      customerASN: map['customerASN'] == null ? null : (map['customerASN']! as int).input(),
+      legacyMode: map['legacyMode'] == null ? null : (map['legacyMode']! as int).input(),
+      routingRegistryName: map['routingRegistryName'] == null ? null : (map['routingRegistryName']! as String).input(),
     );
   }
 }

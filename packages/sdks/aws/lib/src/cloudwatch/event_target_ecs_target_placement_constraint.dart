@@ -25,7 +25,7 @@ class EventTargetEcsTargetPlacementConstraint {
 
   factory EventTargetEcsTargetPlacementConstraint.fromMap(Map<String, dynamic> map) {
     return EventTargetEcsTargetPlacementConstraint(
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
+      expression: map['expression'] == null ? null : ((map['expression'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

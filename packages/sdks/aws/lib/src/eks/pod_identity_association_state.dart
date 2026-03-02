@@ -78,18 +78,18 @@ class PodIdentityAssociationState {
 
   factory PodIdentityAssociationState.fromMap(Map<String, dynamic> map) {
     return PodIdentityAssociationState(
-      associationArn: map['associationArn'] == null ? null : (map['associationArn'] as String).input(),
-      associationId: map['associationId'] == null ? null : (map['associationId'] as String).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      disableSessionTags: map['disableSessionTags'] == null ? null : (map['disableSessionTags'] as bool).input(),
-      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      targetRoleArn: map['targetRoleArn'] == null ? null : (map['targetRoleArn'] as String).input(),
+      associationArn: map['associationArn'] == null ? null : ((map['associationArn'] as String).input()).input(),
+      associationId: map['associationId'] == null ? null : ((map['associationId'] as String).input()).input(),
+      clusterName: map['clusterName'] == null ? null : ((map['clusterName'] as String).input()).input(),
+      disableSessionTags: map['disableSessionTags'] == null ? null : ((map['disableSessionTags'] as bool).input()).input(),
+      externalId: map['externalId'] == null ? null : ((map['externalId'] as String).input()).input(),
+      namespace: map['namespace'] == null ? null : ((map['namespace'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : ((map['serviceAccount'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      targetRoleArn: map['targetRoleArn'] == null ? null : ((map['targetRoleArn'] as String).input()).input(),
     );
   }
 }

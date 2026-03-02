@@ -96,21 +96,21 @@ class SecuritySolutionArgs {
 
   factory SecuritySolutionArgs.fromMap(Map<String, dynamic> map) {
     return SecuritySolutionArgs(
-      additionalWorkspaces: map['additionalWorkspaces'] == null ? null : (pulumi.Input.decodeList<SecuritySolutionAdditionalWorkspace>(map['additionalWorkspaces'], (value) => SecuritySolutionAdditionalWorkspace.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      disabledDataSources: map['disabledDataSources'] == null ? null : ((map['disabledDataSources'] as List).cast<String>()).input(),
+      additionalWorkspaces: map['additionalWorkspaces'] == null ? null : (pulumi.Input.decodeList<SecuritySolutionAdditionalWorkspace>(map['additionalWorkspaces']!, (value) => SecuritySolutionAdditionalWorkspace.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disabledDataSources: map['disabledDataSources'] == null ? null : ((map['disabledDataSources']! as List).cast<String>()).input(),
       displayName: (map['displayName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      eventsToExports: map['eventsToExports'] == null ? null : ((map['eventsToExports'] as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      eventsToExports: map['eventsToExports'] == null ? null : ((map['eventsToExports']! as List).cast<String>()).input(),
       iothubIds: ((map['iothubIds'] as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId'] as String).input(),
-      logUnmaskedIpsEnabled: map['logUnmaskedIpsEnabled'] == null ? null : (map['logUnmaskedIpsEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      queryForResources: map['queryForResources'] == null ? null : (map['queryForResources'] as String).input(),
-      querySubscriptionIds: map['querySubscriptionIds'] == null ? null : ((map['querySubscriptionIds'] as List).cast<String>()).input(),
-      recommendationsEnabled: map['recommendationsEnabled'] == null ? null : (SecuritySolutionRecommendationsEnabled.fromMap((map['recommendationsEnabled'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId']! as String).input(),
+      logUnmaskedIpsEnabled: map['logUnmaskedIpsEnabled'] == null ? null : (map['logUnmaskedIpsEnabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      queryForResources: map['queryForResources'] == null ? null : (map['queryForResources']! as String).input(),
+      querySubscriptionIds: map['querySubscriptionIds'] == null ? null : ((map['querySubscriptionIds']! as List).cast<String>()).input(),
+      recommendationsEnabled: map['recommendationsEnabled'] == null ? null : (SecuritySolutionRecommendationsEnabled.fromMap((map['recommendationsEnabled']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

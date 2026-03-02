@@ -33,9 +33,9 @@ class DevToolPortalProperties {
 
   factory DevToolPortalProperties.fromMap(Map<String, dynamic> map) {
     return DevToolPortalProperties(
-      features: map['features'] == null ? null : (DevToolPortalFeatureSettings.fromMap((map['features'] as Map).cast<String, dynamic>())).input(),
-      public: map['public'] == null ? null : (map['public'] as bool).input(),
-      ssoProperties: map['ssoProperties'] == null ? null : (DevToolPortalSsoProperties.fromMap((map['ssoProperties'] as Map).cast<String, dynamic>())).input(),
+      features: map['features'] == null ? null : (DevToolPortalFeatureSettings.fromMap((map['features']! as Map).cast<String, dynamic>())).input(),
+      public: map['public'] == null ? null : (map['public']! as bool).input(),
+      ssoProperties: map['ssoProperties'] == null ? null : (DevToolPortalSsoProperties.fromMap((map['ssoProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -30,8 +30,8 @@ class PluginInstanceActionCurationConfig {
 
   factory PluginInstanceActionCurationConfig.fromMap(Map<String, dynamic> map) {
     return PluginInstanceActionCurationConfig(
-      curationType: map['curationType'] == null ? null : (map['curationType'] as String).input(),
-      customCuration: map['customCuration'] == null ? null : (PluginInstanceActionCurationConfigCustomCuration.fromMap((map['customCuration'] as Map).cast<String, dynamic>())).input(),
+      curationType: map['curationType'] == null ? null : (map['curationType']! as String).input(),
+      customCuration: map['customCuration'] == null ? null : (PluginInstanceActionCurationConfigCustomCuration.fromMap((map['customCuration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

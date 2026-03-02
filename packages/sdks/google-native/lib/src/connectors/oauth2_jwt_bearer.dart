@@ -28,8 +28,8 @@ class Oauth2JwtBearer {
 
   factory Oauth2JwtBearer.fromMap(Map<String, dynamic> map) {
     return Oauth2JwtBearer(
-      clientKey: map['clientKey'] == null ? null : (Secret.fromMap((map['clientKey'] as Map).cast<String, dynamic>())).input(),
-      jwtClaims: map['jwtClaims'] == null ? null : (JwtClaims.fromMap((map['jwtClaims'] as Map).cast<String, dynamic>())).input(),
+      clientKey: map['clientKey'] == null ? null : (Secret.fromMap((map['clientKey']! as Map).cast<String, dynamic>())).input(),
+      jwtClaims: map['jwtClaims'] == null ? null : (JwtClaims.fromMap((map['jwtClaims']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

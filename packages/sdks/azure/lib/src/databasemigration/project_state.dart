@@ -51,13 +51,13 @@ class ProjectState {
 
   factory ProjectState.fromMap(Map<String, dynamic> map) {
     return ProjectState(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      sourcePlatform: map['sourcePlatform'] == null ? null : (map['sourcePlatform'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetPlatform: map['targetPlatform'] == null ? null : (map['targetPlatform'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
+      sourcePlatform: map['sourcePlatform'] == null ? null : (map['sourcePlatform']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetPlatform: map['targetPlatform'] == null ? null : (map['targetPlatform']! as String).input(),
     );
   }
 }

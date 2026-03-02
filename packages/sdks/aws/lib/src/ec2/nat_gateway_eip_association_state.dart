@@ -42,11 +42,11 @@ class NatGatewayEipAssociationState {
 
   factory NatGatewayEipAssociationState.fromMap(Map<String, dynamic> map) {
     return NatGatewayEipAssociationState(
-      allocationId: map['allocationId'] == null ? null : (map['allocationId'] as String).input(),
-      associationId: map['associationId'] == null ? null : (map['associationId'] as String).input(),
-      natGatewayId: map['natGatewayId'] == null ? null : (map['natGatewayId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (NatGatewayEipAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      allocationId: map['allocationId'] == null ? null : ((map['allocationId'] as String).input()).input(),
+      associationId: map['associationId'] == null ? null : ((map['associationId'] as String).input()).input(),
+      natGatewayId: map['natGatewayId'] == null ? null : ((map['natGatewayId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((NatGatewayEipAssociationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

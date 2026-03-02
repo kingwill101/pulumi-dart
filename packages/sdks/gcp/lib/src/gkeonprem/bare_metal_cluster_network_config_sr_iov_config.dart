@@ -20,7 +20,7 @@ class BareMetalClusterNetworkConfigSrIovConfig {
 
   factory BareMetalClusterNetworkConfigSrIovConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterNetworkConfigSrIovConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

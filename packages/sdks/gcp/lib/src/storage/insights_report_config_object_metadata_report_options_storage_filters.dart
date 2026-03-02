@@ -20,7 +20,7 @@ class InsightsReportConfigObjectMetadataReportOptionsStorageFilters {
 
   factory InsightsReportConfigObjectMetadataReportOptionsStorageFilters.fromMap(Map<String, dynamic> map) {
     return InsightsReportConfigObjectMetadataReportOptionsStorageFilters(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
     );
   }
 }

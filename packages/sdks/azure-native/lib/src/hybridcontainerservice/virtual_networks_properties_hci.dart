@@ -31,9 +31,9 @@ class VirtualNetworksPropertiesHci {
 
   factory VirtualNetworksPropertiesHci.fromMap(Map<String, dynamic> map) {
     return VirtualNetworksPropertiesHci(
-      mocGroup: map['mocGroup'] == null ? null : (map['mocGroup'] as String).input(),
-      mocLocation: map['mocLocation'] == null ? null : (map['mocLocation'] as String).input(),
-      mocVnetName: map['mocVnetName'] == null ? null : (map['mocVnetName'] as String).input(),
+      mocGroup: map['mocGroup'] == null ? null : (map['mocGroup']! as String).input(),
+      mocLocation: map['mocLocation'] == null ? null : (map['mocLocation']! as String).input(),
+      mocVnetName: map['mocVnetName'] == null ? null : (map['mocVnetName']! as String).input(),
     );
   }
 }

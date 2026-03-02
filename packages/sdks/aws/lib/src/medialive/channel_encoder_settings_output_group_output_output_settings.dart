@@ -59,14 +59,14 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettings {
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettings(
-      archiveOutputSettings: map['archiveOutputSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings.fromMap((map['archiveOutputSettings'] as Map).cast<String, dynamic>())).input(),
-      frameCaptureOutputSettings: map['frameCaptureOutputSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputOutputSettingsFrameCaptureOutputSettings.fromMap((map['frameCaptureOutputSettings'] as Map).cast<String, dynamic>())).input(),
-      hlsOutputSettings: map['hlsOutputSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettings.fromMap((map['hlsOutputSettings'] as Map).cast<String, dynamic>())).input(),
-      mediaPackageOutputSettings: map['mediaPackageOutputSettings'] == null ? null : ((map['mediaPackageOutputSettings'] as Map).cast<String, dynamic>()).input(),
-      msSmoothOutputSettings: map['msSmoothOutputSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSettings.fromMap((map['msSmoothOutputSettings'] as Map).cast<String, dynamic>())).input(),
-      multiplexOutputSettings: map['multiplexOutputSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettings.fromMap((map['multiplexOutputSettings'] as Map).cast<String, dynamic>())).input(),
-      rtmpOutputSettings: map['rtmpOutputSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettings.fromMap((map['rtmpOutputSettings'] as Map).cast<String, dynamic>())).input(),
-      udpOutputSettings: map['udpOutputSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings.fromMap((map['udpOutputSettings'] as Map).cast<String, dynamic>())).input(),
+      archiveOutputSettings: map['archiveOutputSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings.fromMap((map['archiveOutputSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      frameCaptureOutputSettings: map['frameCaptureOutputSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputOutputSettingsFrameCaptureOutputSettings.fromMap((map['frameCaptureOutputSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      hlsOutputSettings: map['hlsOutputSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettings.fromMap((map['hlsOutputSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      mediaPackageOutputSettings: map['mediaPackageOutputSettings'] == null ? null : (((map['mediaPackageOutputSettings'] as Map).cast<String, dynamic>()).input()).input(),
+      msSmoothOutputSettings: map['msSmoothOutputSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSettings.fromMap((map['msSmoothOutputSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      multiplexOutputSettings: map['multiplexOutputSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettings.fromMap((map['multiplexOutputSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      rtmpOutputSettings: map['rtmpOutputSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettings.fromMap((map['rtmpOutputSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      udpOutputSettings: map['udpOutputSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings.fromMap((map['udpOutputSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

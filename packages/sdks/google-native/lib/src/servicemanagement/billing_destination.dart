@@ -26,8 +26,8 @@ class BillingDestination {
 
   factory BillingDestination.fromMap(Map<String, dynamic> map) {
     return BillingDestination(
-      metrics: map['metrics'] == null ? null : ((map['metrics'] as List).cast<String>()).input(),
-      monitoredResource: map['monitoredResource'] == null ? null : (map['monitoredResource'] as String).input(),
+      metrics: map['metrics'] == null ? null : ((map['metrics']! as List).cast<String>()).input(),
+      monitoredResource: map['monitoredResource'] == null ? null : (map['monitoredResource']! as String).input(),
     );
   }
 }

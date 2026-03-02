@@ -21,7 +21,7 @@ class GetResponsePlanAction {
 
   factory GetResponsePlanAction.fromMap(Map<String, dynamic> map) {
     return GetResponsePlanAction(
-      ssmAutomations: (pulumi.Input.decodeList<GetResponsePlanActionSsmAutomation>(map['ssmAutomations'], (value) => GetResponsePlanActionSsmAutomation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ssmAutomations: (pulumi.Input.decodeList<GetResponsePlanActionSsmAutomation>(map['ssmAutomations']!, (value) => GetResponsePlanActionSsmAutomation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

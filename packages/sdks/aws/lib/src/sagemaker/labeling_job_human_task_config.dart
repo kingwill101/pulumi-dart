@@ -78,17 +78,17 @@ class LabelingJobHumanTaskConfig {
 
   factory LabelingJobHumanTaskConfig.fromMap(Map<String, dynamic> map) {
     return LabelingJobHumanTaskConfig(
-      annotationConsolidationConfig: map['annotationConsolidationConfig'] == null ? null : (LabelingJobHumanTaskConfigAnnotationConsolidationConfig.fromMap((map['annotationConsolidationConfig'] as Map).cast<String, dynamic>())).input(),
-      maxConcurrentTaskCount: map['maxConcurrentTaskCount'] == null ? null : (map['maxConcurrentTaskCount'] as int).input(),
+      annotationConsolidationConfig: map['annotationConsolidationConfig'] == null ? null : ((LabelingJobHumanTaskConfigAnnotationConsolidationConfig.fromMap((map['annotationConsolidationConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      maxConcurrentTaskCount: map['maxConcurrentTaskCount'] == null ? null : ((map['maxConcurrentTaskCount'] as int).input()).input(),
       numberOfHumanWorkersPerDataObject: (map['numberOfHumanWorkersPerDataObject'] as int).input(),
-      preHumanTaskLambdaArn: map['preHumanTaskLambdaArn'] == null ? null : (map['preHumanTaskLambdaArn'] as String).input(),
-      publicWorkforceTaskPrice: map['publicWorkforceTaskPrice'] == null ? null : (LabelingJobHumanTaskConfigPublicWorkforceTaskPrice.fromMap((map['publicWorkforceTaskPrice'] as Map).cast<String, dynamic>())).input(),
-      taskAvailabilityLifetimeInSeconds: map['taskAvailabilityLifetimeInSeconds'] == null ? null : (map['taskAvailabilityLifetimeInSeconds'] as int).input(),
+      preHumanTaskLambdaArn: map['preHumanTaskLambdaArn'] == null ? null : ((map['preHumanTaskLambdaArn'] as String).input()).input(),
+      publicWorkforceTaskPrice: map['publicWorkforceTaskPrice'] == null ? null : ((LabelingJobHumanTaskConfigPublicWorkforceTaskPrice.fromMap((map['publicWorkforceTaskPrice']! as Map).cast<String, dynamic>())).input()).input(),
+      taskAvailabilityLifetimeInSeconds: map['taskAvailabilityLifetimeInSeconds'] == null ? null : ((map['taskAvailabilityLifetimeInSeconds'] as int).input()).input(),
       taskDescription: (map['taskDescription'] as String).input(),
-      taskKeywords: map['taskKeywords'] == null ? null : ((map['taskKeywords'] as List).cast<String>()).input(),
+      taskKeywords: map['taskKeywords'] == null ? null : (((map['taskKeywords'] as List).cast<String>()).input()).input(),
       taskTimeLimitInSeconds: (map['taskTimeLimitInSeconds'] as int).input(),
       taskTitle: (map['taskTitle'] as String).input(),
-      uiConfig: (LabelingJobHumanTaskConfigUiConfig.fromMap((map['uiConfig'] as Map).cast<String, dynamic>())).input(),
+      uiConfig: (LabelingJobHumanTaskConfigUiConfig.fromMap((map['uiConfig']! as Map).cast<String, dynamic>())).input(),
       workteamArn: (map['workteamArn'] as String).input(),
     );
   }

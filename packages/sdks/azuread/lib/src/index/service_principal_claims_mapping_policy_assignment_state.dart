@@ -26,8 +26,8 @@ class ServicePrincipalClaimsMappingPolicyAssignmentState {
 
   factory ServicePrincipalClaimsMappingPolicyAssignmentState.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalClaimsMappingPolicyAssignmentState(
-      claimsMappingPolicyId: map['claimsMappingPolicyId'] == null ? null : (map['claimsMappingPolicyId'] as String).input(),
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId'] as String).input(),
+      claimsMappingPolicyId: map['claimsMappingPolicyId'] == null ? null : (map['claimsMappingPolicyId']! as String).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId']! as String).input(),
     );
   }
 }

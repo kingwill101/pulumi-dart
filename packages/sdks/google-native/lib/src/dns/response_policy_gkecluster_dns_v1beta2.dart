@@ -24,8 +24,8 @@ class ResponsePolicyGKEClusterDnsV1beta2 {
 
   factory ResponsePolicyGKEClusterDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return ResponsePolicyGKEClusterDnsV1beta2(
-      gkeClusterName: map['gkeClusterName'] == null ? null : (map['gkeClusterName'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      gkeClusterName: map['gkeClusterName'] == null ? null : (map['gkeClusterName']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
     );
   }
 }

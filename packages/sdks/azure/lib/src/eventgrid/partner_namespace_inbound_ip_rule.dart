@@ -25,7 +25,7 @@ class PartnerNamespaceInboundIpRule {
 
   factory PartnerNamespaceInboundIpRule.fromMap(Map<String, dynamic> map) {
     return PartnerNamespaceInboundIpRule(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
       ipMask: (map['ipMask'] as String).input(),
     );
   }

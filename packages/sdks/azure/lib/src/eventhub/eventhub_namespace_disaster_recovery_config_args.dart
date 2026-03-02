@@ -39,7 +39,7 @@ class EventhubNamespaceDisasterRecoveryConfigArgs {
 
   factory EventhubNamespaceDisasterRecoveryConfigArgs.fromMap(Map<String, dynamic> map) {
     return EventhubNamespaceDisasterRecoveryConfigArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
       partnerNamespaceId: (map['partnerNamespaceId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

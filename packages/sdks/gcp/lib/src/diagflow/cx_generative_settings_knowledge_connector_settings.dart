@@ -45,12 +45,12 @@ class CxGenerativeSettingsKnowledgeConnectorSettings {
 
   factory CxGenerativeSettingsKnowledgeConnectorSettings.fromMap(Map<String, dynamic> map) {
     return CxGenerativeSettingsKnowledgeConnectorSettings(
-      agent: map['agent'] == null ? null : (map['agent'] as String).input(),
-      agentIdentity: map['agentIdentity'] == null ? null : (map['agentIdentity'] as String).input(),
-      agentScope: map['agentScope'] == null ? null : (map['agentScope'] as String).input(),
-      business: map['business'] == null ? null : (map['business'] as String).input(),
-      businessDescription: map['businessDescription'] == null ? null : (map['businessDescription'] as String).input(),
-      disableDataStoreFallback: map['disableDataStoreFallback'] == null ? null : (map['disableDataStoreFallback'] as bool).input(),
+      agent: map['agent'] == null ? null : (map['agent']! as String).input(),
+      agentIdentity: map['agentIdentity'] == null ? null : (map['agentIdentity']! as String).input(),
+      agentScope: map['agentScope'] == null ? null : (map['agentScope']! as String).input(),
+      business: map['business'] == null ? null : (map['business']! as String).input(),
+      businessDescription: map['businessDescription'] == null ? null : (map['businessDescription']! as String).input(),
+      disableDataStoreFallback: map['disableDataStoreFallback'] == null ? null : (map['disableDataStoreFallback']! as bool).input(),
     );
   }
 }

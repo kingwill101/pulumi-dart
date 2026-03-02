@@ -33,7 +33,7 @@ class SelfDependencyTumblingWindowTriggerReference {
   factory SelfDependencyTumblingWindowTriggerReference.fromMap(Map<String, dynamic> map) {
     return SelfDependencyTumblingWindowTriggerReference(
       offset: (map['offset'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as String).input(),
+      size: map['size'] == null ? null : (map['size']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

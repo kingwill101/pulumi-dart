@@ -27,8 +27,8 @@ class BackupRetentionSettings {
 
   factory BackupRetentionSettings.fromMap(Map<String, dynamic> map) {
     return BackupRetentionSettings(
-      retainedBackups: map['retainedBackups'] == null ? null : (map['retainedBackups'] as int).input(),
-      retentionUnit: map['retentionUnit'] == null ? null : (BackupRetentionSettingsRetentionUnit.fromValue(map['retentionUnit'] as String)).input(),
+      retainedBackups: map['retainedBackups'] == null ? null : (map['retainedBackups']! as int).input(),
+      retentionUnit: map['retentionUnit'] == null ? null : (BackupRetentionSettingsRetentionUnit.fromValue(map['retentionUnit']! as String)).input(),
     );
   }
 }

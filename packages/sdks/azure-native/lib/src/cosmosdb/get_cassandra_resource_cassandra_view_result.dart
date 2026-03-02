@@ -63,12 +63,12 @@ class GetCassandraResourceCassandraViewResult {
     return GetCassandraResourceCassandraViewResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location'] as String,
+      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      options: map['options'] == null ? null : CassandraViewGetPropertiesResponseOptions.fromMap((map['options'] as Map).cast<String, dynamic>()),
-      resource: map['resource'] == null ? null : CassandraViewGetPropertiesResponseResource.fromMap((map['resource'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      options: map['options'] == null ? null : CassandraViewGetPropertiesResponseOptions.fromMap((map['options']! as Map).cast<String, dynamic>()),
+      resource: map['resource'] == null ? null : CassandraViewGetPropertiesResponseResource.fromMap((map['resource']! as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

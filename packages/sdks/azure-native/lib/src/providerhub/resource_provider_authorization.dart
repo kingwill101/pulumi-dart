@@ -47,12 +47,12 @@ class ResourceProviderAuthorization {
 
   factory ResourceProviderAuthorization.fromMap(Map<String, dynamic> map) {
     return ResourceProviderAuthorization(
-      allowedThirdPartyExtensions: map['allowedThirdPartyExtensions'] == null ? null : (pulumi.Input.decodeList<ThirdPartyExtension>(map['allowedThirdPartyExtensions'], (value) => ThirdPartyExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      groupingTag: map['groupingTag'] == null ? null : (map['groupingTag'] as String).input(),
-      managedByAuthorization: map['managedByAuthorization'] == null ? null : (ResourceProviderAuthorizationManagedByAuthorization.fromMap((map['managedByAuthorization'] as Map).cast<String, dynamic>())).input(),
-      managedByRoleDefinitionId: map['managedByRoleDefinitionId'] == null ? null : (map['managedByRoleDefinitionId'] as String).input(),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
+      allowedThirdPartyExtensions: map['allowedThirdPartyExtensions'] == null ? null : (pulumi.Input.decodeList<ThirdPartyExtension>(map['allowedThirdPartyExtensions']!, (value) => ThirdPartyExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      groupingTag: map['groupingTag'] == null ? null : (map['groupingTag']! as String).input(),
+      managedByAuthorization: map['managedByAuthorization'] == null ? null : (ResourceProviderAuthorizationManagedByAuthorization.fromMap((map['managedByAuthorization']! as Map).cast<String, dynamic>())).input(),
+      managedByRoleDefinitionId: map['managedByRoleDefinitionId'] == null ? null : (map['managedByRoleDefinitionId']! as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId']! as String).input(),
     );
   }
 }

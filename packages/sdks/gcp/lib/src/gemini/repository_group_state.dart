@@ -77,17 +77,17 @@ class RepositoryGroupState {
 
   factory RepositoryGroupState.fromMap(Map<String, dynamic> map) {
     return RepositoryGroupState(
-      codeRepositoryIndex: map['codeRepositoryIndex'] == null ? null : (map['codeRepositoryIndex'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      repositories: map['repositories'] == null ? null : (pulumi.Input.decodeList<RepositoryGroupRepository>(map['repositories'], (value) => RepositoryGroupRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      repositoryGroupId: map['repositoryGroupId'] == null ? null : (map['repositoryGroupId'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      codeRepositoryIndex: map['codeRepositoryIndex'] == null ? null : (map['codeRepositoryIndex']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      repositories: map['repositories'] == null ? null : (pulumi.Input.decodeList<RepositoryGroupRepository>(map['repositories']!, (value) => RepositoryGroupRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      repositoryGroupId: map['repositoryGroupId'] == null ? null : (map['repositoryGroupId']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

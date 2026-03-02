@@ -36,10 +36,10 @@ class ProtectionContainerState {
 
   factory ProtectionContainerState.fromMap(Map<String, dynamic> map) {
     return ProtectionContainerState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recoveryFabricName: map['recoveryFabricName'] == null ? null : (map['recoveryFabricName'] as String).input(),
-      recoveryVaultName: map['recoveryVaultName'] == null ? null : (map['recoveryVaultName'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      recoveryFabricName: map['recoveryFabricName'] == null ? null : (map['recoveryFabricName']! as String).input(),
+      recoveryVaultName: map['recoveryVaultName'] == null ? null : (map['recoveryVaultName']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

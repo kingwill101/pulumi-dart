@@ -26,8 +26,8 @@ class DWCopyCommandDefaultValueResponse {
 
   factory DWCopyCommandDefaultValueResponse.fromMap(Map<String, dynamic> map) {
     return DWCopyCommandDefaultValueResponse(
-      columnName: map['columnName'] == null ? null : (map['columnName']).input(),
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']).input(),
+      columnName: map['columnName'] == null ? null : (map['columnName']!).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']!).input(),
     );
   }
 }

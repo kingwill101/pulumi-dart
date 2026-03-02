@@ -30,9 +30,9 @@ class GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride {
 
   factory GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride(
-      edgeSets: map['edgeSets'] == null ? null : ((map['edgeSets'] as List).cast<List<String>>()).input(),
-      useEdge: map['useEdge'] == null ? null : (map['useEdge'] as String).input(),
-      useEdgeLocation: map['useEdgeLocation'] == null ? null : (map['useEdgeLocation'] as String).input(),
+      edgeSets: map['edgeSets'] == null ? null : (((map['edgeSets'] as List).cast<List<String>>()).input()).input(),
+      useEdge: map['useEdge'] == null ? null : ((map['useEdge'] as String).input()).input(),
+      useEdgeLocation: map['useEdgeLocation'] == null ? null : ((map['useEdgeLocation'] as String).input()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class DefaultRolloutSpecificationCanaryResponse {
 
   factory DefaultRolloutSpecificationCanaryResponse.fromMap(Map<String, dynamic> map) {
     return DefaultRolloutSpecificationCanaryResponse(
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
-      skipRegions: map['skipRegions'] == null ? null : ((map['skipRegions'] as List).cast<String>()).input(),
+      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
+      skipRegions: map['skipRegions'] == null ? null : ((map['skipRegions']! as List).cast<String>()).input(),
     );
   }
 }

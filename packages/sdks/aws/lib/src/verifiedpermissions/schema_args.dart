@@ -35,9 +35,9 @@ class SchemaArgs {
 
   factory SchemaArgs.fromMap(Map<String, dynamic> map) {
     return SchemaArgs(
-      definition: (SchemaDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())).input(),
+      definition: (SchemaDefinition.fromMap((map['definition']! as Map).cast<String, dynamic>())).input(),
       policyStoreId: (map['policyStoreId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

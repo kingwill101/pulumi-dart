@@ -41,7 +41,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfi
 
   factory GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration(
-      authorizationConfigs: (pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfigurationAuthorizationConfig>(map['authorizationConfigs'], (value) => GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfigurationAuthorizationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authorizationConfigs: (pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfigurationAuthorizationConfig>(map['authorizationConfigs']!, (value) => GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfigurationAuthorizationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       fileSystemId: (map['fileSystemId'] as String).input(),
       rootDirectory: (map['rootDirectory'] as String).input(),
       transitEncryption: (map['transitEncryption'] as String).input(),

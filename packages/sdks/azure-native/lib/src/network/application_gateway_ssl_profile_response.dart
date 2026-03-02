@@ -59,13 +59,13 @@ class ApplicationGatewaySslProfileResponse {
 
   factory ApplicationGatewaySslProfileResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewaySslProfileResponse(
-      clientAuthConfiguration: map['clientAuthConfiguration'] == null ? null : (ApplicationGatewayClientAuthConfigurationResponse.fromMap((map['clientAuthConfiguration'] as Map).cast<String, dynamic>())).input(),
+      clientAuthConfiguration: map['clientAuthConfiguration'] == null ? null : (ApplicationGatewayClientAuthConfigurationResponse.fromMap((map['clientAuthConfiguration']! as Map).cast<String, dynamic>())).input(),
       etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      sslPolicy: map['sslPolicy'] == null ? null : (ApplicationGatewaySslPolicyResponse.fromMap((map['sslPolicy'] as Map).cast<String, dynamic>())).input(),
-      trustedClientCertificates: map['trustedClientCertificates'] == null ? null : (pulumi.Input.decodeList<SubResourceResponse>(map['trustedClientCertificates'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sslPolicy: map['sslPolicy'] == null ? null : (ApplicationGatewaySslPolicyResponse.fromMap((map['sslPolicy']! as Map).cast<String, dynamic>())).input(),
+      trustedClientCertificates: map['trustedClientCertificates'] == null ? null : (pulumi.Input.decodeList<SubResourceResponse>(map['trustedClientCertificates']!, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
     );
   }

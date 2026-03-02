@@ -36,10 +36,10 @@ class IdentityProviderTwitterState {
 
   factory IdentityProviderTwitterState.fromMap(Map<String, dynamic> map) {
     return IdentityProviderTwitterState(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
-      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
-      apiSecretKey: map['apiSecretKey'] == null ? null : (map['apiSecretKey'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey']! as String).input(),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName']! as String).input(),
+      apiSecretKey: map['apiSecretKey'] == null ? null : (map['apiSecretKey']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

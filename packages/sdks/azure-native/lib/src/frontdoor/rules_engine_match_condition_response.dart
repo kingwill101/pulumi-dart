@@ -46,12 +46,12 @@ class RulesEngineMatchConditionResponse {
 
   factory RulesEngineMatchConditionResponse.fromMap(Map<String, dynamic> map) {
     return RulesEngineMatchConditionResponse(
-      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition'] as bool).input(),
+      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition']! as bool).input(),
       rulesEngineMatchValue: ((map['rulesEngineMatchValue'] as List).cast<String>()).input(),
       rulesEngineMatchVariable: (map['rulesEngineMatchVariable'] as String).input(),
       rulesEngineOperator: (map['rulesEngineOperator'] as String).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
-      transforms: map['transforms'] == null ? null : ((map['transforms'] as List).cast<String>()).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
+      transforms: map['transforms'] == null ? null : ((map['transforms']! as List).cast<String>()).input(),
     );
   }
 }

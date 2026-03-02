@@ -62,14 +62,14 @@ class DoArgs {
 
   factory DoArgs.fromMap(Map<String, dynamic> map) {
     return DoArgs(
-      bigipAddress: map['bigipAddress'] == null ? null : (map['bigipAddress'] as String).input(),
-      bigipPassword: map['bigipPassword'] == null ? null : (map['bigipPassword'] as String).input(),
-      bigipPort: map['bigipPort'] == null ? null : (map['bigipPort'] as String).input(),
-      bigipTokenAuth: map['bigipTokenAuth'] == null ? null : (map['bigipTokenAuth'] as bool).input(),
-      bigipUser: map['bigipUser'] == null ? null : (map['bigipUser'] as String).input(),
+      bigipAddress: map['bigipAddress'] == null ? null : (map['bigipAddress']! as String).input(),
+      bigipPassword: map['bigipPassword'] == null ? null : (map['bigipPassword']! as String).input(),
+      bigipPort: map['bigipPort'] == null ? null : (map['bigipPort']! as String).input(),
+      bigipTokenAuth: map['bigipTokenAuth'] == null ? null : (map['bigipTokenAuth']! as bool).input(),
+      bigipUser: map['bigipUser'] == null ? null : (map['bigipUser']! as String).input(),
       doJson: (map['doJson'] as String).input(),
-      tenantName: map['tenantName'] == null ? null : (map['tenantName'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      tenantName: map['tenantName'] == null ? null : (map['tenantName']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
     );
   }
 }

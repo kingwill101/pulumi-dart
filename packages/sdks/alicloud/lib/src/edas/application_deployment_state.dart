@@ -41,11 +41,11 @@ class ApplicationDeploymentState {
 
   factory ApplicationDeploymentState.fromMap(Map<String, dynamic> map) {
     return ApplicationDeploymentState(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      lastPackageVersion: map['lastPackageVersion'] == null ? null : (map['lastPackageVersion'] as String).input(),
-      packageVersion: map['packageVersion'] == null ? null : (map['packageVersion'] as String).input(),
-      warUrl: map['warUrl'] == null ? null : (map['warUrl'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      lastPackageVersion: map['lastPackageVersion'] == null ? null : (map['lastPackageVersion']! as String).input(),
+      packageVersion: map['packageVersion'] == null ? null : (map['packageVersion']! as String).input(),
+      warUrl: map['warUrl'] == null ? null : (map['warUrl']! as String).input(),
     );
   }
 }

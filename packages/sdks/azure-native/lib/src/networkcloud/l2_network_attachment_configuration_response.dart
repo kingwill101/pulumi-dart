@@ -26,7 +26,7 @@ class L2NetworkAttachmentConfigurationResponse {
   factory L2NetworkAttachmentConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return L2NetworkAttachmentConfigurationResponse(
       networkId: (map['networkId'] as String).input(),
-      pluginType: map['pluginType'] == null ? null : (map['pluginType'] as String).input(),
+      pluginType: map['pluginType'] == null ? null : (map['pluginType']! as String).input(),
     );
   }
 }

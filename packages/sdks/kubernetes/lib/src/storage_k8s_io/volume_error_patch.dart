@@ -33,9 +33,9 @@ class VolumeErrorPatch {
 
   factory VolumeErrorPatch.fromMap(Map<String, dynamic> map) {
     return VolumeErrorPatch(
-      errorCode: map['errorCode'] == null ? null : (map['errorCode'] as int).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      time: map['time'] == null ? null : (map['time'] as String).input(),
+      errorCode: map['errorCode'] == null ? null : (map['errorCode']! as int).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      time: map['time'] == null ? null : (map['time']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class CustomSipHeadersProperties {
 
   factory CustomSipHeadersProperties.fromMap(Map<String, dynamic> map) {
     return CustomSipHeadersProperties(
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<CustomSipHeader>(map['headers'], (value) => CustomSipHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<CustomSipHeader>(map['headers']!, (value) => CustomSipHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration {
 
   factory ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration(
-      allowNonRestoredState: map['allowNonRestoredState'] == null ? null : (map['allowNonRestoredState'] as bool).input(),
+      allowNonRestoredState: map['allowNonRestoredState'] == null ? null : ((map['allowNonRestoredState'] as bool).input()).input(),
     );
   }
 }

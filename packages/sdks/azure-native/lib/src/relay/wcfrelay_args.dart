@@ -56,12 +56,12 @@ class WCFRelayArgs {
   factory WCFRelayArgs.fromMap(Map<String, dynamic> map) {
     return WCFRelayArgs(
       namespaceName: (map['namespaceName'] as String).input(),
-      relayName: map['relayName'] == null ? null : (map['relayName'] as String).input(),
-      relayType: map['relayType'] == null ? null : (Relaytype.fromValue(map['relayType'] as String)).input(),
-      requiresClientAuthorization: map['requiresClientAuthorization'] == null ? null : (map['requiresClientAuthorization'] as bool).input(),
-      requiresTransportSecurity: map['requiresTransportSecurity'] == null ? null : (map['requiresTransportSecurity'] as bool).input(),
+      relayName: map['relayName'] == null ? null : (map['relayName']! as String).input(),
+      relayType: map['relayType'] == null ? null : (Relaytype.fromValue(map['relayType']! as String)).input(),
+      requiresClientAuthorization: map['requiresClientAuthorization'] == null ? null : (map['requiresClientAuthorization']! as bool).input(),
+      requiresTransportSecurity: map['requiresTransportSecurity'] == null ? null : (map['requiresTransportSecurity']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      userMetadata: map['userMetadata'] == null ? null : (map['userMetadata'] as String).input(),
+      userMetadata: map['userMetadata'] == null ? null : (map['userMetadata']! as String).input(),
     );
   }
 }

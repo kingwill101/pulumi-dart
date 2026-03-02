@@ -76,17 +76,17 @@ class VolumeConfig {
 
   factory VolumeConfig.fromMap(Map<String, dynamic> map) {
     return VolumeConfig(
-      gcpService: map['gcpService'] == null ? null : (map['gcpService'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      lunRanges: map['lunRanges'] == null ? null : (pulumi.Input.decodeList<LunRange>(map['lunRanges'], (value) => LunRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      machineIds: map['machineIds'] == null ? null : ((map['machineIds'] as List).cast<String>()).input(),
-      nfsExports: map['nfsExports'] == null ? null : (pulumi.Input.decodeList<NfsExport>(map['nfsExports'], (value) => NfsExport.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      performanceTier: map['performanceTier'] == null ? null : (VolumeConfigPerformanceTier.fromValue(map['performanceTier'] as String)).input(),
-      protocol: map['protocol'] == null ? null : (VolumeConfigProtocol.fromValue(map['protocol'] as String)).input(),
-      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb'] as int).input(),
-      snapshotsEnabled: map['snapshotsEnabled'] == null ? null : (map['snapshotsEnabled'] as bool).input(),
-      type: map['type'] == null ? null : (VolumeConfigType.fromValue(map['type'] as String)).input(),
-      userNote: map['userNote'] == null ? null : (map['userNote'] as String).input(),
+      gcpService: map['gcpService'] == null ? null : (map['gcpService']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      lunRanges: map['lunRanges'] == null ? null : (pulumi.Input.decodeList<LunRange>(map['lunRanges']!, (value) => LunRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      machineIds: map['machineIds'] == null ? null : ((map['machineIds']! as List).cast<String>()).input(),
+      nfsExports: map['nfsExports'] == null ? null : (pulumi.Input.decodeList<NfsExport>(map['nfsExports']!, (value) => NfsExport.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      performanceTier: map['performanceTier'] == null ? null : (VolumeConfigPerformanceTier.fromValue(map['performanceTier']! as String)).input(),
+      protocol: map['protocol'] == null ? null : (VolumeConfigProtocol.fromValue(map['protocol']! as String)).input(),
+      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb']! as int).input(),
+      snapshotsEnabled: map['snapshotsEnabled'] == null ? null : (map['snapshotsEnabled']! as bool).input(),
+      type: map['type'] == null ? null : (VolumeConfigType.fromValue(map['type']! as String)).input(),
+      userNote: map['userNote'] == null ? null : (map['userNote']! as String).input(),
     );
   }
 }

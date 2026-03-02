@@ -56,12 +56,12 @@ class AiReasoningEngineArgs {
 
   factory AiReasoningEngineArgs.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (AiReasoningEngineEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      spec: map['spec'] == null ? null : (AiReasoningEngineSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (AiReasoningEngineEncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      spec: map['spec'] == null ? null : (AiReasoningEngineSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

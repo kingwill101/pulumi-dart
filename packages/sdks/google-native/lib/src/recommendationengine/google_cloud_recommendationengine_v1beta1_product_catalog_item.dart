@@ -60,14 +60,14 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
 
   factory GoogleCloudRecommendationengineV1beta1ProductCatalogItem.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecommendationengineV1beta1ProductCatalogItem(
-      availableQuantity: map['availableQuantity'] == null ? null : (map['availableQuantity'] as String).input(),
-      canonicalProductUri: map['canonicalProductUri'] == null ? null : (map['canonicalProductUri'] as String).input(),
-      costs: map['costs'] == null ? null : ((map['costs'] as Map).cast<String, String>()).input(),
-      currencyCode: map['currencyCode'] == null ? null : (map['currencyCode'] as String).input(),
-      exactPrice: map['exactPrice'] == null ? null : (GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice.fromMap((map['exactPrice'] as Map).cast<String, dynamic>())).input(),
-      images: map['images'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRecommendationengineV1beta1Image>(map['images'], (value) => GoogleCloudRecommendationengineV1beta1Image.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      priceRange: map['priceRange'] == null ? null : (GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange.fromMap((map['priceRange'] as Map).cast<String, dynamic>())).input(),
-      stockState: map['stockState'] == null ? null : (GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState.fromValue(map['stockState'] as String)).input(),
+      availableQuantity: map['availableQuantity'] == null ? null : (map['availableQuantity']! as String).input(),
+      canonicalProductUri: map['canonicalProductUri'] == null ? null : (map['canonicalProductUri']! as String).input(),
+      costs: map['costs'] == null ? null : ((map['costs']! as Map).cast<String, String>()).input(),
+      currencyCode: map['currencyCode'] == null ? null : (map['currencyCode']! as String).input(),
+      exactPrice: map['exactPrice'] == null ? null : (GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice.fromMap((map['exactPrice']! as Map).cast<String, dynamic>())).input(),
+      images: map['images'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRecommendationengineV1beta1Image>(map['images']!, (value) => GoogleCloudRecommendationengineV1beta1Image.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      priceRange: map['priceRange'] == null ? null : (GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange.fromMap((map['priceRange']! as Map).cast<String, dynamic>())).input(),
+      stockState: map['stockState'] == null ? null : (GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState.fromValue(map['stockState']! as String)).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTran
 
   factory ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation.fromMap(Map<String, dynamic> map) {
     return ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation(
-      awsLambda: (ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda.fromMap((map['awsLambda'] as Map).cast<String, dynamic>())).input(),
+      awsLambda: (ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda.fromMap((map['awsLambda']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

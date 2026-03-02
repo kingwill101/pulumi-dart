@@ -78,18 +78,18 @@ class NetworkFunctionValueWithSecretsResponse {
 
   factory NetworkFunctionValueWithSecretsResponse.fromMap(Map<String, dynamic> map) {
     return NetworkFunctionValueWithSecretsResponse(
-      allowSoftwareUpdate: map['allowSoftwareUpdate'] == null ? null : (map['allowSoftwareUpdate'] as bool).input(),
+      allowSoftwareUpdate: map['allowSoftwareUpdate'] == null ? null : (map['allowSoftwareUpdate']! as bool).input(),
       configurationType: (map['configurationType'] as String).input(),
-      networkFunctionDefinitionGroupName: map['networkFunctionDefinitionGroupName'] == null ? null : (map['networkFunctionDefinitionGroupName'] as String).input(),
-      networkFunctionDefinitionOfferingLocation: map['networkFunctionDefinitionOfferingLocation'] == null ? null : (map['networkFunctionDefinitionOfferingLocation'] as String).input(),
-      networkFunctionDefinitionVersion: map['networkFunctionDefinitionVersion'] == null ? null : (map['networkFunctionDefinitionVersion'] as String).input(),
-      networkFunctionDefinitionVersionResourceReference: map['networkFunctionDefinitionVersionResourceReference'] == null ? null : (OpenDeploymentResourceReferenceResponse.fromMap((map['networkFunctionDefinitionVersionResourceReference'] as Map).cast<String, dynamic>())).input(),
-      nfviId: map['nfviId'] == null ? null : (map['nfviId'] as String).input(),
-      nfviType: map['nfviType'] == null ? null : (map['nfviType'] as String).input(),
+      networkFunctionDefinitionGroupName: map['networkFunctionDefinitionGroupName'] == null ? null : (map['networkFunctionDefinitionGroupName']! as String).input(),
+      networkFunctionDefinitionOfferingLocation: map['networkFunctionDefinitionOfferingLocation'] == null ? null : (map['networkFunctionDefinitionOfferingLocation']! as String).input(),
+      networkFunctionDefinitionVersion: map['networkFunctionDefinitionVersion'] == null ? null : (map['networkFunctionDefinitionVersion']! as String).input(),
+      networkFunctionDefinitionVersionResourceReference: map['networkFunctionDefinitionVersionResourceReference'] == null ? null : (OpenDeploymentResourceReferenceResponse.fromMap((map['networkFunctionDefinitionVersionResourceReference']! as Map).cast<String, dynamic>())).input(),
+      nfviId: map['nfviId'] == null ? null : (map['nfviId']! as String).input(),
+      nfviType: map['nfviType'] == null ? null : (map['nfviType']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      publisherName: map['publisherName'] == null ? null : (map['publisherName'] as String).input(),
-      publisherScope: map['publisherScope'] == null ? null : (map['publisherScope'] as String).input(),
-      roleOverrideValues: map['roleOverrideValues'] == null ? null : ((map['roleOverrideValues'] as List).cast<String>()).input(),
+      publisherName: map['publisherName'] == null ? null : (map['publisherName']! as String).input(),
+      publisherScope: map['publisherScope'] == null ? null : (map['publisherScope']! as String).input(),
+      roleOverrideValues: map['roleOverrideValues'] == null ? null : ((map['roleOverrideValues']! as List).cast<String>()).input(),
     );
   }
 }

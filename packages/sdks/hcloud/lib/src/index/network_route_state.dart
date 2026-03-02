@@ -31,9 +31,9 @@ class NetworkRouteState {
 
   factory NetworkRouteState.fromMap(Map<String, dynamic> map) {
     return NetworkRouteState(
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
-      gateway: map['gateway'] == null ? null : (map['gateway'] as String).input(),
-      networkId: map['networkId'] == null ? null : (map['networkId'] as int).input(),
+      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
+      gateway: map['gateway'] == null ? null : (map['gateway']! as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId']! as int).input(),
     );
   }
 }

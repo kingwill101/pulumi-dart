@@ -27,8 +27,8 @@ class AppFlexConsumptionSiteConfigAppServiceLogs {
 
   factory AppFlexConsumptionSiteConfigAppServiceLogs.fromMap(Map<String, dynamic> map) {
     return AppFlexConsumptionSiteConfigAppServiceLogs(
-      diskQuotaMb: map['diskQuotaMb'] == null ? null : (map['diskQuotaMb'] as int).input(),
-      retentionPeriodDays: map['retentionPeriodDays'] == null ? null : (map['retentionPeriodDays'] as int).input(),
+      diskQuotaMb: map['diskQuotaMb'] == null ? null : (map['diskQuotaMb']! as int).input(),
+      retentionPeriodDays: map['retentionPeriodDays'] == null ? null : (map['retentionPeriodDays']! as int).input(),
     );
   }
 }

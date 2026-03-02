@@ -32,8 +32,8 @@ class CxToolVersionToolConnectorSpecEndUserAuthConfig {
 
   factory CxToolVersionToolConnectorSpecEndUserAuthConfig.fromMap(Map<String, dynamic> map) {
     return CxToolVersionToolConnectorSpecEndUserAuthConfig(
-      oauth2AuthCodeConfig: map['oauth2AuthCodeConfig'] == null ? null : (CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig.fromMap((map['oauth2AuthCodeConfig'] as Map).cast<String, dynamic>())).input(),
-      oauth2JwtBearerConfig: map['oauth2JwtBearerConfig'] == null ? null : (CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig.fromMap((map['oauth2JwtBearerConfig'] as Map).cast<String, dynamic>())).input(),
+      oauth2AuthCodeConfig: map['oauth2AuthCodeConfig'] == null ? null : (CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig.fromMap((map['oauth2AuthCodeConfig']! as Map).cast<String, dynamic>())).input(),
+      oauth2JwtBearerConfig: map['oauth2JwtBearerConfig'] == null ? null : (CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig.fromMap((map['oauth2JwtBearerConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

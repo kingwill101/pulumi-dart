@@ -40,10 +40,10 @@ class NamedLocationState {
 
   factory NamedLocationState.fromMap(Map<String, dynamic> map) {
     return NamedLocationState(
-      country: map['country'] == null ? null : (NamedLocationCountry.fromMap((map['country'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      ip: map['ip'] == null ? null : (NamedLocationIp.fromMap((map['ip'] as Map).cast<String, dynamic>())).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      country: map['country'] == null ? null : (NamedLocationCountry.fromMap((map['country']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      ip: map['ip'] == null ? null : (NamedLocationIp.fromMap((map['ip']! as Map).cast<String, dynamic>())).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
     );
   }
 }

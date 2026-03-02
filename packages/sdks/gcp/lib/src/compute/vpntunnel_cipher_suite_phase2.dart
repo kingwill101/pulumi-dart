@@ -30,9 +30,9 @@ class VPNTunnelCipherSuitePhase2 {
 
   factory VPNTunnelCipherSuitePhase2.fromMap(Map<String, dynamic> map) {
     return VPNTunnelCipherSuitePhase2(
-      encryptions: map['encryptions'] == null ? null : ((map['encryptions'] as List).cast<String>()).input(),
-      integrities: map['integrities'] == null ? null : ((map['integrities'] as List).cast<String>()).input(),
-      pfs: map['pfs'] == null ? null : ((map['pfs'] as List).cast<String>()).input(),
+      encryptions: map['encryptions'] == null ? null : ((map['encryptions']! as List).cast<String>()).input(),
+      integrities: map['integrities'] == null ? null : ((map['integrities']! as List).cast<String>()).input(),
+      pfs: map['pfs'] == null ? null : ((map['pfs']! as List).cast<String>()).input(),
     );
   }
 }

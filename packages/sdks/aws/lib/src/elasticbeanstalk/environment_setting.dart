@@ -35,7 +35,7 @@ class EnvironmentSetting {
     return EnvironmentSetting(
       name: (map['name'] as String).input(),
       namespace: (map['namespace'] as String).input(),
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
+      resource: map['resource'] == null ? null : ((map['resource'] as String).input()).input(),
       value: (map['value'] as String).input(),
     );
   }

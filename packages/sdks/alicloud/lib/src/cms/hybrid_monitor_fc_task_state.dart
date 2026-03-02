@@ -36,10 +36,10 @@ class HybridMonitorFcTaskState {
 
   factory HybridMonitorFcTaskState.fromMap(Map<String, dynamic> map) {
     return HybridMonitorFcTaskState(
-      hybridMonitorFcTaskId: map['hybridMonitorFcTaskId'] == null ? null : (map['hybridMonitorFcTaskId'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      targetUserId: map['targetUserId'] == null ? null : (map['targetUserId'] as String).input(),
-      yarmConfig: map['yarmConfig'] == null ? null : (map['yarmConfig'] as String).input(),
+      hybridMonitorFcTaskId: map['hybridMonitorFcTaskId'] == null ? null : (map['hybridMonitorFcTaskId']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      targetUserId: map['targetUserId'] == null ? null : (map['targetUserId']! as String).input(),
+      yarmConfig: map['yarmConfig'] == null ? null : (map['yarmConfig']! as String).input(),
     );
   }
 }

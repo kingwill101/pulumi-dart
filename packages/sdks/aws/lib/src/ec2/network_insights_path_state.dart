@@ -90,20 +90,20 @@ class NetworkInsightsPathState {
 
   factory NetworkInsightsPathState.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsPathState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
-      destinationArn: map['destinationArn'] == null ? null : (map['destinationArn'] as String).input(),
-      destinationIp: map['destinationIp'] == null ? null : (map['destinationIp'] as String).input(),
-      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as int).input(),
-      filterAtDestination: map['filterAtDestination'] == null ? null : (NetworkInsightsPathFilterAtDestination.fromMap((map['filterAtDestination'] as Map).cast<String, dynamic>())).input(),
-      filterAtSource: map['filterAtSource'] == null ? null : (NetworkInsightsPathFilterAtSource.fromMap((map['filterAtSource'] as Map).cast<String, dynamic>())).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn'] as String).input(),
-      sourceIp: map['sourceIp'] == null ? null : (map['sourceIp'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      destination: map['destination'] == null ? null : ((map['destination'] as String).input()).input(),
+      destinationArn: map['destinationArn'] == null ? null : ((map['destinationArn'] as String).input()).input(),
+      destinationIp: map['destinationIp'] == null ? null : ((map['destinationIp'] as String).input()).input(),
+      destinationPort: map['destinationPort'] == null ? null : ((map['destinationPort'] as int).input()).input(),
+      filterAtDestination: map['filterAtDestination'] == null ? null : ((NetworkInsightsPathFilterAtDestination.fromMap((map['filterAtDestination']! as Map).cast<String, dynamic>())).input()).input(),
+      filterAtSource: map['filterAtSource'] == null ? null : ((NetworkInsightsPathFilterAtSource.fromMap((map['filterAtSource']! as Map).cast<String, dynamic>())).input()).input(),
+      protocol: map['protocol'] == null ? null : ((map['protocol'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      source: map['source'] == null ? null : ((map['source'] as String).input()).input(),
+      sourceArn: map['sourceArn'] == null ? null : ((map['sourceArn'] as String).input()).input(),
+      sourceIp: map['sourceIp'] == null ? null : ((map['sourceIp'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

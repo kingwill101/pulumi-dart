@@ -51,7 +51,7 @@ class GetDedicatedIpPoolResult {
   factory GetDedicatedIpPoolResult.fromMap(Map<String, dynamic> map) {
     return GetDedicatedIpPoolResult(
       arn: map['arn'] as String,
-      dedicatedIps: pulumi.Input.decodeList<GetDedicatedIpPoolDedicatedIp>(map['dedicatedIps'], (value) => GetDedicatedIpPoolDedicatedIp.fromMap((value as Map).cast<String, dynamic>())),
+      dedicatedIps: pulumi.Input.decodeList<GetDedicatedIpPoolDedicatedIp>(map['dedicatedIps']!, (value) => GetDedicatedIpPoolDedicatedIp.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       poolName: map['poolName'] as String,
       region: map['region'] as String,

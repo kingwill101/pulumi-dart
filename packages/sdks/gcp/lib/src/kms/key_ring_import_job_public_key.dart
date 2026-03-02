@@ -22,7 +22,7 @@ class KeyRingImportJobPublicKey {
 
   factory KeyRingImportJobPublicKey.fromMap(Map<String, dynamic> map) {
     return KeyRingImportJobPublicKey(
-      pem: map['pem'] == null ? null : (map['pem'] as String).input(),
+      pem: map['pem'] == null ? null : (map['pem']! as String).input(),
     );
   }
 }

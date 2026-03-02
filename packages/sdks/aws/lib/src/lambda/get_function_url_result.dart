@@ -75,7 +75,7 @@ class GetFunctionUrlResult {
   factory GetFunctionUrlResult.fromMap(Map<String, dynamic> map) {
     return GetFunctionUrlResult(
       authorizationType: map['authorizationType'] as String,
-      cors: pulumi.Input.decodeList<GetFunctionUrlCor>(map['cors'], (value) => GetFunctionUrlCor.fromMap((value as Map).cast<String, dynamic>())),
+      cors: pulumi.Input.decodeList<GetFunctionUrlCor>(map['cors']!, (value) => GetFunctionUrlCor.fromMap((value as Map).cast<String, dynamic>())),
       creationTime: map['creationTime'] as String,
       functionArn: map['functionArn'] as String,
       functionName: map['functionName'] as String,

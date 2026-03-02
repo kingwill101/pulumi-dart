@@ -44,11 +44,11 @@ class GetOrderableClusterArgs {
 
   factory GetOrderableClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetOrderableClusterArgs(
-      clusterType: map['clusterType'] == null ? null : (map['clusterType'] as String).input(),
-      clusterVersion: map['clusterVersion'] == null ? null : (map['clusterVersion'] as String).input(),
-      nodeType: map['nodeType'] == null ? null : (map['nodeType'] as String).input(),
-      preferredNodeTypes: map['preferredNodeTypes'] == null ? null : ((map['preferredNodeTypes'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      clusterType: map['clusterType'] == null ? null : ((map['clusterType'] as String).input()).input(),
+      clusterVersion: map['clusterVersion'] == null ? null : ((map['clusterVersion'] as String).input()).input(),
+      nodeType: map['nodeType'] == null ? null : ((map['nodeType'] as String).input()).input(),
+      preferredNodeTypes: map['preferredNodeTypes'] == null ? null : (((map['preferredNodeTypes'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

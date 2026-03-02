@@ -38,7 +38,7 @@ class DistributionConfigurationDistributionS3ExportConfiguration {
       diskImageFormat: (map['diskImageFormat'] as String).input(),
       roleName: (map['roleName'] as String).input(),
       s3Bucket: (map['s3Bucket'] as String).input(),
-      s3Prefix: map['s3Prefix'] == null ? null : (map['s3Prefix'] as String).input(),
+      s3Prefix: map['s3Prefix'] == null ? null : ((map['s3Prefix'] as String).input()).input(),
     );
   }
 }

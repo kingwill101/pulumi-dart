@@ -38,9 +38,9 @@ class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig {
 
   factory GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig(
-      optimizationObjective: map['optimizationObjective'] == null ? null : (map['optimizationObjective'] as String).input(),
-      optimizationObjectiveConfig: map['optimizationObjectiveConfig'] == null ? null : (GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig.fromMap((map['optimizationObjectiveConfig'] as Map).cast<String, dynamic>())).input(),
-      trainingState: map['trainingState'] == null ? null : (GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingState.fromValue(map['trainingState'] as String)).input(),
+      optimizationObjective: map['optimizationObjective'] == null ? null : (map['optimizationObjective']! as String).input(),
+      optimizationObjectiveConfig: map['optimizationObjectiveConfig'] == null ? null : (GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig.fromMap((map['optimizationObjectiveConfig']! as Map).cast<String, dynamic>())).input(),
+      trainingState: map['trainingState'] == null ? null : (GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingState.fromValue(map['trainingState']! as String)).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -20,7 +20,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice {
 
   factory RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice(
-      enableDisplay: map['enableDisplay'] == null ? null : (map['enableDisplay'] as bool).input(),
+      enableDisplay: map['enableDisplay'] == null ? null : (map['enableDisplay']! as bool).input(),
     );
   }
 }

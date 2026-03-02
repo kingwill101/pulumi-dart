@@ -53,13 +53,13 @@ class NamespaceDiscoveredEventResponse {
 
   factory NamespaceDiscoveredEventResponse.fromMap(Map<String, dynamic> map) {
     return NamespaceDiscoveredEventResponse(
-      dataPoints: map['dataPoints'] == null ? null : (pulumi.Input.decodeList<NamespaceDiscoveredEventDataPointResponse>(map['dataPoints'], (value) => NamespaceDiscoveredEventDataPointResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<EventMqttDestinationResponse>(map['destinations'], (value) => EventMqttDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      eventConfiguration: map['eventConfiguration'] == null ? null : (map['eventConfiguration'] as String).input(),
+      dataPoints: map['dataPoints'] == null ? null : (pulumi.Input.decodeList<NamespaceDiscoveredEventDataPointResponse>(map['dataPoints']!, (value) => NamespaceDiscoveredEventDataPointResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<EventMqttDestinationResponse>(map['destinations']!, (value) => EventMqttDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eventConfiguration: map['eventConfiguration'] == null ? null : (map['eventConfiguration']! as String).input(),
       eventNotifier: (map['eventNotifier'] as String).input(),
-      lastUpdatedOn: map['lastUpdatedOn'] == null ? null : (map['lastUpdatedOn'] as String).input(),
+      lastUpdatedOn: map['lastUpdatedOn'] == null ? null : (map['lastUpdatedOn']! as String).input(),
       name: (map['name'] as String).input(),
-      typeRef: map['typeRef'] == null ? null : (map['typeRef'] as String).input(),
+      typeRef: map['typeRef'] == null ? null : (map['typeRef']! as String).input(),
     );
   }
 }

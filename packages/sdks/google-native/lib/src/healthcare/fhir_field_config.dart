@@ -34,9 +34,9 @@ class FhirFieldConfig {
 
   factory FhirFieldConfig.fromMap(Map<String, dynamic> map) {
     return FhirFieldConfig(
-      fieldMetadataList: map['fieldMetadataList'] == null ? null : (pulumi.Input.decodeList<GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata>(map['fieldMetadataList'], (value) => GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      options: map['options'] == null ? null : (GoogleCloudHealthcareV1beta1DeidentifyOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
-      profileType: map['profileType'] == null ? null : (FhirFieldConfigProfileType.fromValue(map['profileType'] as String)).input(),
+      fieldMetadataList: map['fieldMetadataList'] == null ? null : (pulumi.Input.decodeList<GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata>(map['fieldMetadataList']!, (value) => GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      options: map['options'] == null ? null : (GoogleCloudHealthcareV1beta1DeidentifyOptions.fromMap((map['options']! as Map).cast<String, dynamic>())).input(),
+      profileType: map['profileType'] == null ? null : (FhirFieldConfigProfileType.fromValue(map['profileType']! as String)).input(),
     );
   }
 }

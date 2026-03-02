@@ -35,9 +35,9 @@ class TopicRuleErrorActionIotEvents {
 
   factory TopicRuleErrorActionIotEvents.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorActionIotEvents(
-      batchMode: map['batchMode'] == null ? null : (map['batchMode'] as bool).input(),
+      batchMode: map['batchMode'] == null ? null : ((map['batchMode'] as bool).input()).input(),
       inputName: (map['inputName'] as String).input(),
-      messageId: map['messageId'] == null ? null : (map['messageId'] as String).input(),
+      messageId: map['messageId'] == null ? null : ((map['messageId'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
     );
   }

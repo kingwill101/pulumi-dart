@@ -33,8 +33,8 @@ class MigrationSubstateDetailsResponse {
   factory MigrationSubstateDetailsResponse.fromMap(Map<String, dynamic> map) {
     return MigrationSubstateDetailsResponse(
       currentSubState: (map['currentSubState'] as String).input(),
-      dbDetails: map['dbDetails'] == null ? null : (pulumi.Input.decodeMapValues<DatabaseMigrationStateResponse>(map['dbDetails'], (value) => DatabaseMigrationStateResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      validationDetails: map['validationDetails'] == null ? null : (ValidationDetailsResponse.fromMap((map['validationDetails'] as Map).cast<String, dynamic>())).input(),
+      dbDetails: map['dbDetails'] == null ? null : (pulumi.Input.decodeMapValues<DatabaseMigrationStateResponse>(map['dbDetails']!, (value) => DatabaseMigrationStateResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      validationDetails: map['validationDetails'] == null ? null : (ValidationDetailsResponse.fromMap((map['validationDetails']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

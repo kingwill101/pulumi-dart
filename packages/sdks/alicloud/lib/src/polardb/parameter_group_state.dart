@@ -64,13 +64,13 @@ class ParameterGroupState {
 
   factory ParameterGroupState.fromMap(Map<String, dynamic> map) {
     return ParameterGroupState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dbType: map['dbType'] == null ? null : (map['dbType'] as String).input(),
-      dbVersion: map['dbVersion'] == null ? null : (map['dbVersion'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameterGroupName: map['parameterGroupName'] == null ? null : (map['parameterGroupName'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ParameterGroupParameter>(map['parameters'], (value) => ParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dbType: map['dbType'] == null ? null : (map['dbType']! as String).input(),
+      dbVersion: map['dbVersion'] == null ? null : (map['dbVersion']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameterGroupName: map['parameterGroupName'] == null ? null : (map['parameterGroupName']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ParameterGroupParameter>(map['parameters']!, (value) => ParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

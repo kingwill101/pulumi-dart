@@ -26,7 +26,7 @@ class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverride {
 
   factory WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverride.fromMap(Map<String, dynamic> map) {
     return WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverride(
-      actionToUse: map['actionToUse'] == null ? null : (WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUse.fromMap((map['actionToUse'] as Map).cast<String, dynamic>())).input(),
+      actionToUse: map['actionToUse'] == null ? null : ((WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUse.fromMap((map['actionToUse']! as Map).cast<String, dynamic>())).input()).input(),
       name: (map['name'] as String).input(),
     );
   }

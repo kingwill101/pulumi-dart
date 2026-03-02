@@ -37,8 +37,8 @@ class ConnectorMappingStructureResponse {
   factory ConnectorMappingStructureResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorMappingStructureResponse(
       columnName: (map['columnName'] as String).input(),
-      customFormatSpecifier: map['customFormatSpecifier'] == null ? null : (map['customFormatSpecifier'] as String).input(),
-      isEncrypted: map['isEncrypted'] == null ? null : (map['isEncrypted'] as bool).input(),
+      customFormatSpecifier: map['customFormatSpecifier'] == null ? null : (map['customFormatSpecifier']! as String).input(),
+      isEncrypted: map['isEncrypted'] == null ? null : (map['isEncrypted']! as bool).input(),
       propertyName: (map['propertyName'] as String).input(),
     );
   }

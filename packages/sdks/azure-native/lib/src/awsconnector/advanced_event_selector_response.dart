@@ -27,8 +27,8 @@ class AdvancedEventSelectorResponse {
 
   factory AdvancedEventSelectorResponse.fromMap(Map<String, dynamic> map) {
     return AdvancedEventSelectorResponse(
-      fieldSelectors: map['fieldSelectors'] == null ? null : (pulumi.Input.decodeList<AdvancedFieldSelectorResponse>(map['fieldSelectors'], (value) => AdvancedFieldSelectorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      fieldSelectors: map['fieldSelectors'] == null ? null : (pulumi.Input.decodeList<AdvancedFieldSelectorResponse>(map['fieldSelectors']!, (value) => AdvancedFieldSelectorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

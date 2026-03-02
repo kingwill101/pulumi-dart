@@ -172,7 +172,7 @@ class InMageRcmFailbackReplicationDetailsResponse {
   factory InMageRcmFailbackReplicationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageRcmFailbackReplicationDetailsResponse(
       azureVirtualMachineId: (map['azureVirtualMachineId'] as String).input(),
-      discoveredVmDetails: map['discoveredVmDetails'] == null ? null : (InMageRcmFailbackDiscoveredProtectedVmDetailsResponse.fromMap((map['discoveredVmDetails'] as Map).cast<String, dynamic>())).input(),
+      discoveredVmDetails: map['discoveredVmDetails'] == null ? null : (InMageRcmFailbackDiscoveredProtectedVmDetailsResponse.fromMap((map['discoveredVmDetails']! as Map).cast<String, dynamic>())).input(),
       initialReplicationProcessedBytes: (map['initialReplicationProcessedBytes'] as double).input(),
       initialReplicationProgressHealth: (map['initialReplicationProgressHealth'] as String).input(),
       initialReplicationProgressPercentage: (map['initialReplicationProgressPercentage'] as int).input(),
@@ -185,10 +185,10 @@ class InMageRcmFailbackReplicationDetailsResponse {
       lastUsedPolicyFriendlyName: (map['lastUsedPolicyFriendlyName'] as String).input(),
       lastUsedPolicyId: (map['lastUsedPolicyId'] as String).input(),
       logStorageAccountId: (map['logStorageAccountId'] as String).input(),
-      mobilityAgentDetails: map['mobilityAgentDetails'] == null ? null : (InMageRcmFailbackMobilityAgentDetailsResponse.fromMap((map['mobilityAgentDetails'] as Map).cast<String, dynamic>())).input(),
+      mobilityAgentDetails: map['mobilityAgentDetails'] == null ? null : (InMageRcmFailbackMobilityAgentDetailsResponse.fromMap((map['mobilityAgentDetails']! as Map).cast<String, dynamic>())).input(),
       multiVmGroupName: (map['multiVmGroupName'] as String).input(),
       osType: (map['osType'] as String).input(),
-      protectedDisks: map['protectedDisks'] == null ? null : (pulumi.Input.decodeList<InMageRcmFailbackProtectedDiskDetailsResponse>(map['protectedDisks'], (value) => InMageRcmFailbackProtectedDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      protectedDisks: map['protectedDisks'] == null ? null : (pulumi.Input.decodeList<InMageRcmFailbackProtectedDiskDetailsResponse>(map['protectedDisks']!, (value) => InMageRcmFailbackProtectedDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       reprotectAgentId: (map['reprotectAgentId'] as String).input(),
       reprotectAgentName: (map['reprotectAgentName'] as String).input(),
       resyncProcessedBytes: (map['resyncProcessedBytes'] as double).input(),
@@ -200,7 +200,7 @@ class InMageRcmFailbackReplicationDetailsResponse {
       targetDataStoreName: (map['targetDataStoreName'] as String).input(),
       targetVmName: (map['targetVmName'] as String).input(),
       targetvCenterId: (map['targetvCenterId'] as String).input(),
-      vmNics: map['vmNics'] == null ? null : (pulumi.Input.decodeList<InMageRcmFailbackNicDetailsResponse>(map['vmNics'], (value) => InMageRcmFailbackNicDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmNics: map['vmNics'] == null ? null : (pulumi.Input.decodeList<InMageRcmFailbackNicDetailsResponse>(map['vmNics']!, (value) => InMageRcmFailbackNicDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

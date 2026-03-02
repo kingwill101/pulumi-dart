@@ -27,7 +27,7 @@ class CountryResponse {
   factory CountryResponse.fromMap(Map<String, dynamic> map) {
     return CountryResponse(
       code: (map['code'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
     );
   }
 }

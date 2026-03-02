@@ -56,14 +56,14 @@ class BrowserApplicationState {
 
   factory BrowserApplicationState.fromMap(Map<String, dynamic> map) {
     return BrowserApplicationState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      cookiesEnabled: map['cookiesEnabled'] == null ? null : (map['cookiesEnabled'] as bool).input(),
-      distributedTracingEnabled: map['distributedTracingEnabled'] == null ? null : (map['distributedTracingEnabled'] as bool).input(),
-      guid: map['guid'] == null ? null : (map['guid'] as String).input(),
-      jsConfig: map['jsConfig'] == null ? null : (map['jsConfig'] as String).input(),
-      loaderType: map['loaderType'] == null ? null : (map['loaderType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      cookiesEnabled: map['cookiesEnabled'] == null ? null : (map['cookiesEnabled']! as bool).input(),
+      distributedTracingEnabled: map['distributedTracingEnabled'] == null ? null : (map['distributedTracingEnabled']! as bool).input(),
+      guid: map['guid'] == null ? null : (map['guid']! as String).input(),
+      jsConfig: map['jsConfig'] == null ? null : (map['jsConfig']! as String).input(),
+      loaderType: map['loaderType'] == null ? null : (map['loaderType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

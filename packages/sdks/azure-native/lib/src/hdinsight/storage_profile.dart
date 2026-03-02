@@ -22,7 +22,7 @@ class StorageProfile {
 
   factory StorageProfile.fromMap(Map<String, dynamic> map) {
     return StorageProfile(
-      storageaccounts: map['storageaccounts'] == null ? null : (pulumi.Input.decodeList<StorageAccount>(map['storageaccounts'], (value) => StorageAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageaccounts: map['storageaccounts'] == null ? null : (pulumi.Input.decodeList<StorageAccount>(map['storageaccounts']!, (value) => StorageAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

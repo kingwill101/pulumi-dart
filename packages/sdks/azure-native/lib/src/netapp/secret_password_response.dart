@@ -28,8 +28,8 @@ class SecretPasswordResponse {
 
   factory SecretPasswordResponse.fromMap(Map<String, dynamic> map) {
     return SecretPasswordResponse(
-      identity: map['identity'] == null ? null : (SecretPasswordIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : (SecretPasswordKeyVaultPropertiesResponse.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (SecretPasswordIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (SecretPasswordKeyVaultPropertiesResponse.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

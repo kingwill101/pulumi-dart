@@ -27,8 +27,8 @@ class AnalyticsApplicationReferenceDataSourcesSchemaRecordFormat {
 
   factory AnalyticsApplicationReferenceDataSourcesSchemaRecordFormat.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationReferenceDataSourcesSchemaRecordFormat(
-      mappingParameters: map['mappingParameters'] == null ? null : (AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParameters.fromMap((map['mappingParameters'] as Map).cast<String, dynamic>())).input(),
-      recordFormatType: map['recordFormatType'] == null ? null : (map['recordFormatType'] as String).input(),
+      mappingParameters: map['mappingParameters'] == null ? null : ((AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParameters.fromMap((map['mappingParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      recordFormatType: map['recordFormatType'] == null ? null : ((map['recordFormatType'] as String).input()).input(),
     );
   }
 }

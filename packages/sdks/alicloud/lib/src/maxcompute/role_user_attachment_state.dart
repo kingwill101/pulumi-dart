@@ -35,9 +35,9 @@ class RoleUserAttachmentState {
 
   factory RoleUserAttachmentState.fromMap(Map<String, dynamic> map) {
     return RoleUserAttachmentState(
-      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName']! as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName']! as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class ShardingNetworkPublicAddressState {
 
   factory ShardingNetworkPublicAddressState.fromMap(Map<String, dynamic> map) {
     return ShardingNetworkPublicAddressState(
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      networkAddresses: map['networkAddresses'] == null ? null : (pulumi.Input.decodeList<ShardingNetworkPublicAddressNetworkAddress>(map['networkAddresses'], (value) => ShardingNetworkPublicAddressNetworkAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      networkAddresses: map['networkAddresses'] == null ? null : (pulumi.Input.decodeList<ShardingNetworkPublicAddressNetworkAddress>(map['networkAddresses']!, (value) => ShardingNetworkPublicAddressNetworkAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
     );
   }
 }

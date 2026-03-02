@@ -27,8 +27,8 @@ class NetworkingIpAssignmentState {
 
   factory NetworkingIpAssignmentState.fromMap(Map<String, dynamic> map) {
     return NetworkingIpAssignmentState(
-      assignments: map['assignments'] == null ? null : (pulumi.Input.decodeList<NetworkingIpAssignmentAssignment>(map['assignments'], (value) => NetworkingIpAssignmentAssignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      assignments: map['assignments'] == null ? null : (pulumi.Input.decodeList<NetworkingIpAssignmentAssignment>(map['assignments']!, (value) => NetworkingIpAssignmentAssignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

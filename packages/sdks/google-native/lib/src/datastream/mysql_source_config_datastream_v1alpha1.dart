@@ -27,8 +27,8 @@ class MysqlSourceConfigDatastreamV1alpha1 {
 
   factory MysqlSourceConfigDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return MysqlSourceConfigDatastreamV1alpha1(
-      allowlist: map['allowlist'] == null ? null : (MysqlRdbmsDatastreamV1alpha1.fromMap((map['allowlist'] as Map).cast<String, dynamic>())).input(),
-      rejectlist: map['rejectlist'] == null ? null : (MysqlRdbmsDatastreamV1alpha1.fromMap((map['rejectlist'] as Map).cast<String, dynamic>())).input(),
+      allowlist: map['allowlist'] == null ? null : (MysqlRdbmsDatastreamV1alpha1.fromMap((map['allowlist']! as Map).cast<String, dynamic>())).input(),
+      rejectlist: map['rejectlist'] == null ? null : (MysqlRdbmsDatastreamV1alpha1.fromMap((map['rejectlist']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

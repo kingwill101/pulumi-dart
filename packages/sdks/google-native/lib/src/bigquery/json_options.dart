@@ -20,7 +20,7 @@ class JsonOptions {
 
   factory JsonOptions.fromMap(Map<String, dynamic> map) {
     return JsonOptions(
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
     );
   }
 }

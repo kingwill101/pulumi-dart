@@ -30,9 +30,9 @@ class ServiceTreeInfo {
 
   factory ServiceTreeInfo.fromMap(Map<String, dynamic> map) {
     return ServiceTreeInfo(
-      componentId: map['componentId'] == null ? null : (map['componentId'] as String).input(),
-      readiness: map['readiness'] == null ? null : (map['readiness'] as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
+      componentId: map['componentId'] == null ? null : (map['componentId']! as String).input(),
+      readiness: map['readiness'] == null ? null : (map['readiness']! as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
     );
   }
 }

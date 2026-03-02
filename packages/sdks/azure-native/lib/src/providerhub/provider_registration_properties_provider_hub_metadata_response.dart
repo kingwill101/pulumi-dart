@@ -49,12 +49,12 @@ class ProviderRegistrationPropertiesProviderHubMetadataResponse {
 
   factory ProviderRegistrationPropertiesProviderHubMetadataResponse.fromMap(Map<String, dynamic> map) {
     return ProviderRegistrationPropertiesProviderHubMetadataResponse(
-      directRpRoleDefinitionId: map['directRpRoleDefinitionId'] == null ? null : (map['directRpRoleDefinitionId'] as String).input(),
-      globalAsyncOperationResourceTypeName: map['globalAsyncOperationResourceTypeName'] == null ? null : (map['globalAsyncOperationResourceTypeName'] as String).input(),
-      providerAuthentication: map['providerAuthentication'] == null ? null : (ProviderHubMetadataProviderAuthenticationResponse.fromMap((map['providerAuthentication'] as Map).cast<String, dynamic>())).input(),
-      providerAuthorizations: map['providerAuthorizations'] == null ? null : (pulumi.Input.decodeList<ResourceProviderAuthorizationResponse>(map['providerAuthorizations'], (value) => ResourceProviderAuthorizationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      regionalAsyncOperationResourceTypeName: map['regionalAsyncOperationResourceTypeName'] == null ? null : (map['regionalAsyncOperationResourceTypeName'] as String).input(),
-      thirdPartyProviderAuthorization: map['thirdPartyProviderAuthorization'] == null ? null : (ProviderHubMetadataThirdPartyProviderAuthorizationResponse.fromMap((map['thirdPartyProviderAuthorization'] as Map).cast<String, dynamic>())).input(),
+      directRpRoleDefinitionId: map['directRpRoleDefinitionId'] == null ? null : (map['directRpRoleDefinitionId']! as String).input(),
+      globalAsyncOperationResourceTypeName: map['globalAsyncOperationResourceTypeName'] == null ? null : (map['globalAsyncOperationResourceTypeName']! as String).input(),
+      providerAuthentication: map['providerAuthentication'] == null ? null : (ProviderHubMetadataProviderAuthenticationResponse.fromMap((map['providerAuthentication']! as Map).cast<String, dynamic>())).input(),
+      providerAuthorizations: map['providerAuthorizations'] == null ? null : (pulumi.Input.decodeList<ResourceProviderAuthorizationResponse>(map['providerAuthorizations']!, (value) => ResourceProviderAuthorizationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      regionalAsyncOperationResourceTypeName: map['regionalAsyncOperationResourceTypeName'] == null ? null : (map['regionalAsyncOperationResourceTypeName']! as String).input(),
+      thirdPartyProviderAuthorization: map['thirdPartyProviderAuthorization'] == null ? null : (ProviderHubMetadataThirdPartyProviderAuthorizationResponse.fromMap((map['thirdPartyProviderAuthorization']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

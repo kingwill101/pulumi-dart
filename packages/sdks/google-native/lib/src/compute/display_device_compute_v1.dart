@@ -21,7 +21,7 @@ class DisplayDeviceComputeV1 {
 
   factory DisplayDeviceComputeV1.fromMap(Map<String, dynamic> map) {
     return DisplayDeviceComputeV1(
-      enableDisplay: map['enableDisplay'] == null ? null : (map['enableDisplay'] as bool).input(),
+      enableDisplay: map['enableDisplay'] == null ? null : (map['enableDisplay']! as bool).input(),
     );
   }
 }

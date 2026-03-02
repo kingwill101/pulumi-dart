@@ -30,9 +30,9 @@ class StorageSpacesPropertiesHciStorageProfile {
 
   factory StorageSpacesPropertiesHciStorageProfile.fromMap(Map<String, dynamic> map) {
     return StorageSpacesPropertiesHciStorageProfile(
-      mocGroup: map['mocGroup'] == null ? null : (map['mocGroup'] as String).input(),
-      mocLocation: map['mocLocation'] == null ? null : (map['mocLocation'] as String).input(),
-      mocStorageContainer: map['mocStorageContainer'] == null ? null : (map['mocStorageContainer'] as String).input(),
+      mocGroup: map['mocGroup'] == null ? null : (map['mocGroup']! as String).input(),
+      mocLocation: map['mocLocation'] == null ? null : (map['mocLocation']! as String).input(),
+      mocStorageContainer: map['mocStorageContainer'] == null ? null : (map['mocStorageContainer']! as String).input(),
     );
   }
 }

@@ -84,18 +84,18 @@ class LabPlanArgs {
 
   factory LabPlanArgs.fromMap(Map<String, dynamic> map) {
     return LabPlanArgs(
-      allowedRegions: map['allowedRegions'] == null ? null : ((map['allowedRegions'] as List).cast<String>()).input(),
-      defaultAutoShutdownProfile: map['defaultAutoShutdownProfile'] == null ? null : (AutoShutdownProfile.fromMap((map['defaultAutoShutdownProfile'] as Map).cast<String, dynamic>())).input(),
-      defaultConnectionProfile: map['defaultConnectionProfile'] == null ? null : (ConnectionProfile.fromMap((map['defaultConnectionProfile'] as Map).cast<String, dynamic>())).input(),
-      defaultNetworkProfile: map['defaultNetworkProfile'] == null ? null : (LabPlanNetworkProfile.fromMap((map['defaultNetworkProfile'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      labPlanName: map['labPlanName'] == null ? null : (map['labPlanName'] as String).input(),
-      linkedLmsInstance: map['linkedLmsInstance'] == null ? null : (map['linkedLmsInstance'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      allowedRegions: map['allowedRegions'] == null ? null : ((map['allowedRegions']! as List).cast<String>()).input(),
+      defaultAutoShutdownProfile: map['defaultAutoShutdownProfile'] == null ? null : (AutoShutdownProfile.fromMap((map['defaultAutoShutdownProfile']! as Map).cast<String, dynamic>())).input(),
+      defaultConnectionProfile: map['defaultConnectionProfile'] == null ? null : (ConnectionProfile.fromMap((map['defaultConnectionProfile']! as Map).cast<String, dynamic>())).input(),
+      defaultNetworkProfile: map['defaultNetworkProfile'] == null ? null : (LabPlanNetworkProfile.fromMap((map['defaultNetworkProfile']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      labPlanName: map['labPlanName'] == null ? null : (map['labPlanName']! as String).input(),
+      linkedLmsInstance: map['linkedLmsInstance'] == null ? null : (map['linkedLmsInstance']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sharedGalleryId: map['sharedGalleryId'] == null ? null : (map['sharedGalleryId'] as String).input(),
-      supportInfo: map['supportInfo'] == null ? null : (SupportInfo.fromMap((map['supportInfo'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sharedGalleryId: map['sharedGalleryId'] == null ? null : (map['sharedGalleryId']! as String).input(),
+      supportInfo: map['supportInfo'] == null ? null : (SupportInfo.fromMap((map['supportInfo']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

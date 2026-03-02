@@ -61,15 +61,15 @@ class ResolverFirewallRuleGroupAssociationState {
 
   factory ResolverFirewallRuleGroupAssociationState.fromMap(Map<String, dynamic> map) {
     return ResolverFirewallRuleGroupAssociationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      firewallRuleGroupId: map['firewallRuleGroupId'] == null ? null : (map['firewallRuleGroupId'] as String).input(),
-      mutationProtection: map['mutationProtection'] == null ? null : (map['mutationProtection'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      firewallRuleGroupId: map['firewallRuleGroupId'] == null ? null : ((map['firewallRuleGroupId'] as String).input()).input(),
+      mutationProtection: map['mutationProtection'] == null ? null : ((map['mutationProtection'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      priority: map['priority'] == null ? null : ((map['priority'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

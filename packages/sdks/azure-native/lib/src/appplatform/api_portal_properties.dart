@@ -47,12 +47,12 @@ class ApiPortalProperties {
 
   factory ApiPortalProperties.fromMap(Map<String, dynamic> map) {
     return ApiPortalProperties(
-      apiTryOutEnabledState: map['apiTryOutEnabledState'] == null ? null : (map['apiTryOutEnabledState'] as String).input(),
-      gatewayIds: map['gatewayIds'] == null ? null : ((map['gatewayIds'] as List).cast<String>()).input(),
-      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly'] as bool).input(),
-      public: map['public'] == null ? null : (map['public'] as bool).input(),
-      sourceUrls: map['sourceUrls'] == null ? null : ((map['sourceUrls'] as List).cast<String>()).input(),
-      ssoProperties: map['ssoProperties'] == null ? null : (SsoProperties.fromMap((map['ssoProperties'] as Map).cast<String, dynamic>())).input(),
+      apiTryOutEnabledState: map['apiTryOutEnabledState'] == null ? null : (map['apiTryOutEnabledState']! as String).input(),
+      gatewayIds: map['gatewayIds'] == null ? null : ((map['gatewayIds']! as List).cast<String>()).input(),
+      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly']! as bool).input(),
+      public: map['public'] == null ? null : (map['public']! as bool).input(),
+      sourceUrls: map['sourceUrls'] == null ? null : ((map['sourceUrls']! as List).cast<String>()).input(),
+      ssoProperties: map['ssoProperties'] == null ? null : (SsoProperties.fromMap((map['ssoProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

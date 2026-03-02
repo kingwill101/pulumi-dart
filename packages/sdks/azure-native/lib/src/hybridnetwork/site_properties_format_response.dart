@@ -33,7 +33,7 @@ class SitePropertiesFormatResponse {
 
   factory SitePropertiesFormatResponse.fromMap(Map<String, dynamic> map) {
     return SitePropertiesFormatResponse(
-      nfvis: map['nfvis'] == null ? null : (pulumi.Input.decodeList<AzureArcK8sClusterNFVIDetailsResponse>(map['nfvis'], (value) => AzureArcK8sClusterNFVIDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nfvis: map['nfvis'] == null ? null : (pulumi.Input.decodeList<AzureArcK8sClusterNFVIDetailsResponse>(map['nfvis']!, (value) => AzureArcK8sClusterNFVIDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       siteNetworkServiceReferences: (pulumi.Input.decodeList<ReferencedResourceResponse>(map['siteNetworkServiceReferences'], (value) => ReferencedResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );

@@ -19,7 +19,7 @@ class GetCustomDomainVerificationIdResult {
 
   factory GetCustomDomainVerificationIdResult.fromMap(Map<String, dynamic> map) {
     return GetCustomDomainVerificationIdResult(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : map['value']! as String,
     );
   }
 }

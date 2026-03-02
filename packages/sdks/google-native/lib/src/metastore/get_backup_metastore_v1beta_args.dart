@@ -37,7 +37,7 @@ class GetBackupMetastoreV1betaArgs {
     return GetBackupMetastoreV1betaArgs(
       backupId: (map['backupId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serviceId: (map['serviceId'] as String).input(),
     );
   }

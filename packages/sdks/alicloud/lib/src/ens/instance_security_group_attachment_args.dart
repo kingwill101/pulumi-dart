@@ -29,7 +29,7 @@ class InstanceSecurityGroupAttachmentArgs {
 
   factory InstanceSecurityGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return InstanceSecurityGroupAttachmentArgs(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
       securityGroupId: (map['securityGroupId'] as String).input(),
     );
   }

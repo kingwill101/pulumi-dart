@@ -56,14 +56,14 @@ class ManagementDnsZoneBindingArgs {
 
   factory ManagementDnsZoneBindingArgs.fromMap(Map<String, dynamic> map) {
     return ManagementDnsZoneBindingArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       managementDnsZoneBindingId: (map['managementDnsZoneBindingId'] as String).input(),
       privateCloudId: (map['privateCloudId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      vmwareEngineNetwork: map['vmwareEngineNetwork'] == null ? null : (map['vmwareEngineNetwork'] as String).input(),
-      vpcNetwork: map['vpcNetwork'] == null ? null : (map['vpcNetwork'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      vmwareEngineNetwork: map['vmwareEngineNetwork'] == null ? null : (map['vmwareEngineNetwork']! as String).input(),
+      vpcNetwork: map['vpcNetwork'] == null ? null : (map['vpcNetwork']! as String).input(),
     );
   }
 }

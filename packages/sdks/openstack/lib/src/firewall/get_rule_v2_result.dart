@@ -100,22 +100,22 @@ class GetRuleV2Result {
 
   factory GetRuleV2Result.fromMap(Map<String, dynamic> map) {
     return GetRuleV2Result(
-      action: map['action'] == null ? null : map['action'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      destinationIpAddress: map['destinationIpAddress'] == null ? null : map['destinationIpAddress'] as String,
-      destinationPort: map['destinationPort'] == null ? null : map['destinationPort'] as String,
+      action: map['action'] == null ? null : map['action']! as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      destinationIpAddress: map['destinationIpAddress'] == null ? null : map['destinationIpAddress']! as String,
+      destinationPort: map['destinationPort'] == null ? null : map['destinationPort']! as String,
       enabled: map['enabled'] as bool,
       firewallPolicyIds: (map['firewallPolicyIds'] as List).cast<String>(),
       id: map['id'] as String,
-      ipVersion: map['ipVersion'] == null ? null : map['ipVersion'] as int,
-      name: map['name'] == null ? null : map['name'] as String,
+      ipVersion: map['ipVersion'] == null ? null : map['ipVersion']! as int,
+      name: map['name'] == null ? null : map['name']! as String,
       projectId: map['projectId'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
+      protocol: map['protocol'] == null ? null : map['protocol']! as String,
       region: map['region'] as String,
-      ruleId: map['ruleId'] == null ? null : map['ruleId'] as String,
+      ruleId: map['ruleId'] == null ? null : map['ruleId']! as String,
       shared: map['shared'] as bool,
-      sourceIpAddress: map['sourceIpAddress'] == null ? null : map['sourceIpAddress'] as String,
-      sourcePort: map['sourcePort'] == null ? null : map['sourcePort'] as String,
+      sourceIpAddress: map['sourceIpAddress'] == null ? null : map['sourceIpAddress']! as String,
+      sourcePort: map['sourcePort'] == null ? null : map['sourcePort']! as String,
       tenantId: map['tenantId'] as String,
     );
   }

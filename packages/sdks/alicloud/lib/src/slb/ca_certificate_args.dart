@@ -45,10 +45,10 @@ class CaCertificateArgs {
   factory CaCertificateArgs.fromMap(Map<String, dynamic> map) {
     return CaCertificateArgs(
       caCertificate: (map['caCertificate'] as String).input(),
-      caCertificateName: map['caCertificateName'] == null ? null : (map['caCertificateName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      caCertificateName: map['caCertificateName'] == null ? null : (map['caCertificateName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

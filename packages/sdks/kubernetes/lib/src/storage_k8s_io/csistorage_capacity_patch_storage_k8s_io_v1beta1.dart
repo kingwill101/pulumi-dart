@@ -69,13 +69,13 @@ class CSIStorageCapacityPatchStorageK8sIoV1beta1 {
 
   factory CSIStorageCapacityPatchStorageK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CSIStorageCapacityPatchStorageK8sIoV1beta1(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      capacity: map['capacity'] == null ? null : (map['capacity'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      maximumVolumeSize: map['maximumVolumeSize'] == null ? null : (map['maximumVolumeSize'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      nodeTopology: map['nodeTopology'] == null ? null : (LabelSelectorPatch.fromMap((map['nodeTopology'] as Map).cast<String, dynamic>())).input(),
-      storageClassName: map['storageClassName'] == null ? null : (map['storageClassName'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      maximumVolumeSize: map['maximumVolumeSize'] == null ? null : (map['maximumVolumeSize']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      nodeTopology: map['nodeTopology'] == null ? null : (LabelSelectorPatch.fromMap((map['nodeTopology']! as Map).cast<String, dynamic>())).input(),
+      storageClassName: map['storageClassName'] == null ? null : (map['storageClassName']! as String).input(),
     );
   }
 }

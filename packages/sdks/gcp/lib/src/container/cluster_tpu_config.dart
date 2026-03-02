@@ -31,8 +31,8 @@ class ClusterTpuConfig {
   factory ClusterTpuConfig.fromMap(Map<String, dynamic> map) {
     return ClusterTpuConfig(
       enabled: (map['enabled'] as bool).input(),
-      ipv4CidrBlock: map['ipv4CidrBlock'] == null ? null : (map['ipv4CidrBlock'] as String).input(),
-      useServiceNetworking: map['useServiceNetworking'] == null ? null : (map['useServiceNetworking'] as bool).input(),
+      ipv4CidrBlock: map['ipv4CidrBlock'] == null ? null : (map['ipv4CidrBlock']! as String).input(),
+      useServiceNetworking: map['useServiceNetworking'] == null ? null : (map['useServiceNetworking']! as bool).input(),
     );
   }
 }

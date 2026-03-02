@@ -37,7 +37,7 @@ class WorkflowRunResponse {
     return WorkflowRunResponse(
       lastRunAt: (map['lastRunAt'] as String).input(),
       succeeded: (map['succeeded'] as bool).input(),
-      workflowRunStatus: map['workflowRunStatus'] == null ? null : (map['workflowRunStatus'] as String).input(),
+      workflowRunStatus: map['workflowRunStatus'] == null ? null : (map['workflowRunStatus']! as String).input(),
       workflowRunURL: (map['workflowRunURL'] as String).input(),
     );
   }

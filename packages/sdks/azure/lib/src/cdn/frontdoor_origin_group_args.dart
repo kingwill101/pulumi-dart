@@ -54,11 +54,11 @@ class FrontdoorOriginGroupArgs {
   factory FrontdoorOriginGroupArgs.fromMap(Map<String, dynamic> map) {
     return FrontdoorOriginGroupArgs(
       cdnFrontdoorProfileId: (map['cdnFrontdoorProfileId'] as String).input(),
-      healthProbe: map['healthProbe'] == null ? null : (FrontdoorOriginGroupHealthProbe.fromMap((map['healthProbe'] as Map).cast<String, dynamic>())).input(),
+      healthProbe: map['healthProbe'] == null ? null : (FrontdoorOriginGroupHealthProbe.fromMap((map['healthProbe']! as Map).cast<String, dynamic>())).input(),
       loadBalancing: (FrontdoorOriginGroupLoadBalancing.fromMap((map['loadBalancing'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      restoreTrafficTimeToHealedOrNewEndpointInMinutes: map['restoreTrafficTimeToHealedOrNewEndpointInMinutes'] == null ? null : (map['restoreTrafficTimeToHealedOrNewEndpointInMinutes'] as int).input(),
-      sessionAffinityEnabled: map['sessionAffinityEnabled'] == null ? null : (map['sessionAffinityEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      restoreTrafficTimeToHealedOrNewEndpointInMinutes: map['restoreTrafficTimeToHealedOrNewEndpointInMinutes'] == null ? null : (map['restoreTrafficTimeToHealedOrNewEndpointInMinutes']! as int).input(),
+      sessionAffinityEnabled: map['sessionAffinityEnabled'] == null ? null : (map['sessionAffinityEnabled']! as bool).input(),
     );
   }
 }

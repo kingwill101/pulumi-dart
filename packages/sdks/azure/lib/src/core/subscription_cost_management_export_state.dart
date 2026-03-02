@@ -63,15 +63,15 @@ class SubscriptionCostManagementExportState {
 
   factory SubscriptionCostManagementExportState.fromMap(Map<String, dynamic> map) {
     return SubscriptionCostManagementExportState(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
-      exportDataOptions: map['exportDataOptions'] == null ? null : (SubscriptionCostManagementExportExportDataOptions.fromMap((map['exportDataOptions'] as Map).cast<String, dynamic>())).input(),
-      exportDataStorageLocation: map['exportDataStorageLocation'] == null ? null : (SubscriptionCostManagementExportExportDataStorageLocation.fromMap((map['exportDataStorageLocation'] as Map).cast<String, dynamic>())).input(),
-      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recurrencePeriodEndDate: map['recurrencePeriodEndDate'] == null ? null : (map['recurrencePeriodEndDate'] as String).input(),
-      recurrencePeriodStartDate: map['recurrencePeriodStartDate'] == null ? null : (map['recurrencePeriodStartDate'] as String).input(),
-      recurrenceType: map['recurrenceType'] == null ? null : (map['recurrenceType'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      active: map['active'] == null ? null : (map['active']! as bool).input(),
+      exportDataOptions: map['exportDataOptions'] == null ? null : (SubscriptionCostManagementExportExportDataOptions.fromMap((map['exportDataOptions']! as Map).cast<String, dynamic>())).input(),
+      exportDataStorageLocation: map['exportDataStorageLocation'] == null ? null : (SubscriptionCostManagementExportExportDataStorageLocation.fromMap((map['exportDataStorageLocation']! as Map).cast<String, dynamic>())).input(),
+      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      recurrencePeriodEndDate: map['recurrencePeriodEndDate'] == null ? null : (map['recurrencePeriodEndDate']! as String).input(),
+      recurrencePeriodStartDate: map['recurrencePeriodStartDate'] == null ? null : (map['recurrencePeriodStartDate']! as String).input(),
+      recurrenceType: map['recurrenceType'] == null ? null : (map['recurrenceType']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

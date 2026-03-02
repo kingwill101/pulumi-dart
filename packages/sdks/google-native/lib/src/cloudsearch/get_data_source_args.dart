@@ -28,7 +28,7 @@ class GetDataSourceArgs {
   factory GetDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return GetDataSourceArgs(
       datasourceId: (map['datasourceId'] as String).input(),
-      debugOptionsEnableDebugging: map['debugOptionsEnableDebugging'] == null ? null : (map['debugOptionsEnableDebugging'] as bool).input(),
+      debugOptionsEnableDebugging: map['debugOptionsEnableDebugging'] == null ? null : (map['debugOptionsEnableDebugging']! as bool).input(),
     );
   }
 }

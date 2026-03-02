@@ -33,9 +33,9 @@ class DefaultBucket {
 
   factory DefaultBucket.fromMap(Map<String, dynamic> map) {
     return DefaultBucket(
-      args: map['args'] == null ? null : (Bucket.fromMap((map['args'] as Map).cast<String, dynamic>())).input(),
-      existing: map['existing'] == null ? null : (ExistingBucket.fromMap((map['existing'] as Map).cast<String, dynamic>())).input(),
-      skip: map['skip'] == null ? null : (map['skip'] as bool).input(),
+      args: map['args'] == null ? null : (Bucket.fromMap((map['args']! as Map).cast<String, dynamic>())).input(),
+      existing: map['existing'] == null ? null : (ExistingBucket.fromMap((map['existing']! as Map).cast<String, dynamic>())).input(),
+      skip: map['skip'] == null ? null : (map['skip']! as bool).input(),
     );
   }
 }

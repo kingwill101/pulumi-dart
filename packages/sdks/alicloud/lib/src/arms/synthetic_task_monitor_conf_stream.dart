@@ -54,13 +54,13 @@ class SyntheticTaskMonitorConfStream {
 
   factory SyntheticTaskMonitorConfStream.fromMap(Map<String, dynamic> map) {
     return SyntheticTaskMonitorConfStream(
-      customHeaderContent: map['customHeaderContent'] == null ? null : ((map['customHeaderContent'] as Map).cast<String, String>()).input(),
-      playerType: map['playerType'] == null ? null : (map['playerType'] as int).input(),
-      streamAddressType: map['streamAddressType'] == null ? null : (map['streamAddressType'] as int).input(),
-      streamMonitorTimeout: map['streamMonitorTimeout'] == null ? null : (map['streamMonitorTimeout'] as int).input(),
-      streamType: map['streamType'] == null ? null : (map['streamType'] as int).input(),
-      targetUrl: map['targetUrl'] == null ? null : (map['targetUrl'] as String).input(),
-      whiteList: map['whiteList'] == null ? null : (map['whiteList'] as String).input(),
+      customHeaderContent: map['customHeaderContent'] == null ? null : ((map['customHeaderContent']! as Map).cast<String, String>()).input(),
+      playerType: map['playerType'] == null ? null : (map['playerType']! as int).input(),
+      streamAddressType: map['streamAddressType'] == null ? null : (map['streamAddressType']! as int).input(),
+      streamMonitorTimeout: map['streamMonitorTimeout'] == null ? null : (map['streamMonitorTimeout']! as int).input(),
+      streamType: map['streamType'] == null ? null : (map['streamType']! as int).input(),
+      targetUrl: map['targetUrl'] == null ? null : (map['targetUrl']! as String).input(),
+      whiteList: map['whiteList'] == null ? null : (map['whiteList']! as String).input(),
     );
   }
 }

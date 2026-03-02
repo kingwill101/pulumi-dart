@@ -110,21 +110,21 @@ class RecordsExclusiveResourceRecordSet {
 
   factory RecordsExclusiveResourceRecordSet.fromMap(Map<String, dynamic> map) {
     return RecordsExclusiveResourceRecordSet(
-      aliasTarget: map['aliasTarget'] == null ? null : (RecordsExclusiveResourceRecordSetAliasTarget.fromMap((map['aliasTarget'] as Map).cast<String, dynamic>())).input(),
-      cidrRoutingConfig: map['cidrRoutingConfig'] == null ? null : (RecordsExclusiveResourceRecordSetCidrRoutingConfig.fromMap((map['cidrRoutingConfig'] as Map).cast<String, dynamic>())).input(),
-      failover: map['failover'] == null ? null : (map['failover'] as String).input(),
-      geolocation: map['geolocation'] == null ? null : (RecordsExclusiveResourceRecordSetGeolocation.fromMap((map['geolocation'] as Map).cast<String, dynamic>())).input(),
-      geoproximityLocation: map['geoproximityLocation'] == null ? null : (RecordsExclusiveResourceRecordSetGeoproximityLocation.fromMap((map['geoproximityLocation'] as Map).cast<String, dynamic>())).input(),
-      healthCheckId: map['healthCheckId'] == null ? null : (map['healthCheckId'] as String).input(),
-      multiValueAnswer: map['multiValueAnswer'] == null ? null : (map['multiValueAnswer'] as bool).input(),
+      aliasTarget: map['aliasTarget'] == null ? null : ((RecordsExclusiveResourceRecordSetAliasTarget.fromMap((map['aliasTarget']! as Map).cast<String, dynamic>())).input()).input(),
+      cidrRoutingConfig: map['cidrRoutingConfig'] == null ? null : ((RecordsExclusiveResourceRecordSetCidrRoutingConfig.fromMap((map['cidrRoutingConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      failover: map['failover'] == null ? null : ((map['failover'] as String).input()).input(),
+      geolocation: map['geolocation'] == null ? null : ((RecordsExclusiveResourceRecordSetGeolocation.fromMap((map['geolocation']! as Map).cast<String, dynamic>())).input()).input(),
+      geoproximityLocation: map['geoproximityLocation'] == null ? null : ((RecordsExclusiveResourceRecordSetGeoproximityLocation.fromMap((map['geoproximityLocation']! as Map).cast<String, dynamic>())).input()).input(),
+      healthCheckId: map['healthCheckId'] == null ? null : ((map['healthCheckId'] as String).input()).input(),
+      multiValueAnswer: map['multiValueAnswer'] == null ? null : ((map['multiValueAnswer'] as bool).input()).input(),
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceRecords: map['resourceRecords'] == null ? null : (pulumi.Input.decodeList<RecordsExclusiveResourceRecordSetResourceRecord>(map['resourceRecords'], (value) => RecordsExclusiveResourceRecordSetResourceRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      setIdentifier: map['setIdentifier'] == null ? null : (map['setIdentifier'] as String).input(),
-      trafficPolicyInstanceId: map['trafficPolicyInstanceId'] == null ? null : (map['trafficPolicyInstanceId'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceRecords: map['resourceRecords'] == null ? null : ((pulumi.Input.decodeList<RecordsExclusiveResourceRecordSetResourceRecord>(map['resourceRecords']!, (value) => RecordsExclusiveResourceRecordSetResourceRecord.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      setIdentifier: map['setIdentifier'] == null ? null : ((map['setIdentifier'] as String).input()).input(),
+      trafficPolicyInstanceId: map['trafficPolicyInstanceId'] == null ? null : ((map['trafficPolicyInstanceId'] as String).input()).input(),
+      ttl: map['ttl'] == null ? null : ((map['ttl'] as int).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      weight: map['weight'] == null ? null : ((map['weight'] as int).input()).input(),
     );
   }
 }

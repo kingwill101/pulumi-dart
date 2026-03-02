@@ -26,8 +26,8 @@ class SshKeyPair {
 
   factory SshKeyPair.fromMap(Map<String, dynamic> map) {
     return SshKeyPair(
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey']! as String).input(),
     );
   }
 }

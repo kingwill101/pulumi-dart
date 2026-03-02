@@ -36,7 +36,7 @@ class LogDataProtectionPolicyArgs {
     return LogDataProtectionPolicyArgs(
       logGroupName: (map['logGroupName'] as String).input(),
       policyDocument: (map['policyDocument'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

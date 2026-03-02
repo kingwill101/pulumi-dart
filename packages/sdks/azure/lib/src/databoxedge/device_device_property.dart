@@ -70,17 +70,17 @@ class DeviceDeviceProperty {
 
   factory DeviceDeviceProperty.fromMap(Map<String, dynamic> map) {
     return DeviceDeviceProperty(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
-      configuredRoleTypes: map['configuredRoleTypes'] == null ? null : ((map['configuredRoleTypes'] as List).cast<String>()).input(),
-      culture: map['culture'] == null ? null : (map['culture'] as String).input(),
-      hcsVersion: map['hcsVersion'] == null ? null : (map['hcsVersion'] as String).input(),
-      model: map['model'] == null ? null : (map['model'] as String).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
-      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
-      softwareVersion: map['softwareVersion'] == null ? null : (map['softwareVersion'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
+      configuredRoleTypes: map['configuredRoleTypes'] == null ? null : ((map['configuredRoleTypes']! as List).cast<String>()).input(),
+      culture: map['culture'] == null ? null : (map['culture']! as String).input(),
+      hcsVersion: map['hcsVersion'] == null ? null : (map['hcsVersion']! as String).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber']! as String).input(),
+      softwareVersion: map['softwareVersion'] == null ? null : (map['softwareVersion']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

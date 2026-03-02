@@ -29,8 +29,8 @@ class ListQnAMakerEndpointKeyArgs {
 
   factory ListQnAMakerEndpointKeyArgs.fromMap(Map<String, dynamic> map) {
     return ListQnAMakerEndpointKeyArgs(
-      authkey: map['authkey'] == null ? null : (map['authkey'] as String).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      authkey: map['authkey'] == null ? null : (map['authkey']! as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
     );
   }
 }

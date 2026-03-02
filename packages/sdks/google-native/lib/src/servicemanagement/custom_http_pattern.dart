@@ -26,8 +26,8 @@ class CustomHttpPattern {
 
   factory CustomHttpPattern.fromMap(Map<String, dynamic> map) {
     return CustomHttpPattern(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

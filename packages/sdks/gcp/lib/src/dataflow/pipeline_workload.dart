@@ -31,8 +31,8 @@ class PipelineWorkload {
 
   factory PipelineWorkload.fromMap(Map<String, dynamic> map) {
     return PipelineWorkload(
-      dataflowFlexTemplateRequest: map['dataflowFlexTemplateRequest'] == null ? null : (PipelineWorkloadDataflowFlexTemplateRequest.fromMap((map['dataflowFlexTemplateRequest'] as Map).cast<String, dynamic>())).input(),
-      dataflowLaunchTemplateRequest: map['dataflowLaunchTemplateRequest'] == null ? null : (PipelineWorkloadDataflowLaunchTemplateRequest.fromMap((map['dataflowLaunchTemplateRequest'] as Map).cast<String, dynamic>())).input(),
+      dataflowFlexTemplateRequest: map['dataflowFlexTemplateRequest'] == null ? null : (PipelineWorkloadDataflowFlexTemplateRequest.fromMap((map['dataflowFlexTemplateRequest']! as Map).cast<String, dynamic>())).input(),
+      dataflowLaunchTemplateRequest: map['dataflowLaunchTemplateRequest'] == null ? null : (PipelineWorkloadDataflowLaunchTemplateRequest.fromMap((map['dataflowLaunchTemplateRequest']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

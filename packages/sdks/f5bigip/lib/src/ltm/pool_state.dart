@@ -66,16 +66,16 @@ class PoolState {
 
   factory PoolState.fromMap(Map<String, dynamic> map) {
     return PoolState(
-      allowNat: map['allowNat'] == null ? null : (map['allowNat'] as String).input(),
-      allowSnat: map['allowSnat'] == null ? null : (map['allowSnat'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      loadBalancingMode: map['loadBalancingMode'] == null ? null : (map['loadBalancingMode'] as String).input(),
-      minimumActiveMembers: map['minimumActiveMembers'] == null ? null : (map['minimumActiveMembers'] as int).input(),
-      monitors: map['monitors'] == null ? null : ((map['monitors'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      reselectTries: map['reselectTries'] == null ? null : (map['reselectTries'] as int).input(),
-      serviceDownAction: map['serviceDownAction'] == null ? null : (map['serviceDownAction'] as String).input(),
-      slowRampTime: map['slowRampTime'] == null ? null : (map['slowRampTime'] as int).input(),
+      allowNat: map['allowNat'] == null ? null : (map['allowNat']! as String).input(),
+      allowSnat: map['allowSnat'] == null ? null : (map['allowSnat']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      loadBalancingMode: map['loadBalancingMode'] == null ? null : (map['loadBalancingMode']! as String).input(),
+      minimumActiveMembers: map['minimumActiveMembers'] == null ? null : (map['minimumActiveMembers']! as int).input(),
+      monitors: map['monitors'] == null ? null : ((map['monitors']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      reselectTries: map['reselectTries'] == null ? null : (map['reselectTries']! as int).input(),
+      serviceDownAction: map['serviceDownAction'] == null ? null : (map['serviceDownAction']! as String).input(),
+      slowRampTime: map['slowRampTime'] == null ? null : (map['slowRampTime']! as int).input(),
     );
   }
 }

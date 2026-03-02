@@ -49,11 +49,11 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift {
   factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift(
       bucketName: (map['bucketName'] as String).input(),
-      bucketPrefix: map['bucketPrefix'] == null ? null : (map['bucketPrefix'] as String).input(),
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : (map['clusterIdentifier'] as String).input(),
-      dataApiRoleArn: map['dataApiRoleArn'] == null ? null : (map['dataApiRoleArn'] as String).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      databaseUrl: map['databaseUrl'] == null ? null : (map['databaseUrl'] as String).input(),
+      bucketPrefix: map['bucketPrefix'] == null ? null : ((map['bucketPrefix'] as String).input()).input(),
+      clusterIdentifier: map['clusterIdentifier'] == null ? null : ((map['clusterIdentifier'] as String).input()).input(),
+      dataApiRoleArn: map['dataApiRoleArn'] == null ? null : ((map['dataApiRoleArn'] as String).input()).input(),
+      databaseName: map['databaseName'] == null ? null : ((map['databaseName'] as String).input()).input(),
+      databaseUrl: map['databaseUrl'] == null ? null : ((map['databaseUrl'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
     );
   }

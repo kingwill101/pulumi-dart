@@ -66,12 +66,12 @@ class CustomerCertificateParametersResponse {
       certificateAuthority: (map['certificateAuthority'] as String).input(),
       expirationDate: (map['expirationDate'] as String).input(),
       secretSource: (ResourceReferenceResponse.fromMap((map['secretSource'] as Map).cast<String, dynamic>())).input(),
-      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion'] as String).input(),
+      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion']! as String).input(),
       subject: (map['subject'] as String).input(),
       subjectAlternativeNames: ((map['subjectAlternativeNames'] as List).cast<String>()).input(),
       thumbprint: (map['thumbprint'] as String).input(),
       type: (map['type'] as String).input(),
-      useLatestVersion: map['useLatestVersion'] == null ? null : (map['useLatestVersion'] as bool).input(),
+      useLatestVersion: map['useLatestVersion'] == null ? null : (map['useLatestVersion']! as bool).input(),
     );
   }
 }

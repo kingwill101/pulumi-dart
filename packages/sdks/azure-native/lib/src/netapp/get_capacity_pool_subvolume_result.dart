@@ -64,10 +64,10 @@ class GetCapacityPoolSubvolumeResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      parentPath: map['parentPath'] == null ? null : map['parentPath'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
+      parentPath: map['parentPath'] == null ? null : map['parentPath']! as String,
+      path: map['path'] == null ? null : map['path']! as String,
       provisioningState: map['provisioningState'] as String,
-      size: map['size'] == null ? null : map['size'] as double,
+      size: map['size'] == null ? null : map['size']! as double,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

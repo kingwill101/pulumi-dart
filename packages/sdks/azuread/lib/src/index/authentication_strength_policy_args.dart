@@ -35,7 +35,7 @@ class AuthenticationStrengthPolicyArgs {
   factory AuthenticationStrengthPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AuthenticationStrengthPolicyArgs(
       allowedCombinations: ((map['allowedCombinations'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
     );
   }

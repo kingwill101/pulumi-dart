@@ -112,22 +112,22 @@ class GdcSparkApplicationArgs {
 
   factory GdcSparkApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GdcSparkApplicationArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      applicationEnvironment: map['applicationEnvironment'] == null ? null : (map['applicationEnvironment'] as String).input(),
-      dependencyImages: map['dependencyImages'] == null ? null : ((map['dependencyImages'] as List).cast<String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      applicationEnvironment: map['applicationEnvironment'] == null ? null : (map['applicationEnvironment']! as String).input(),
+      dependencyImages: map['dependencyImages'] == null ? null : ((map['dependencyImages']! as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      pysparkApplicationConfig: map['pysparkApplicationConfig'] == null ? null : (GdcSparkApplicationPysparkApplicationConfig.fromMap((map['pysparkApplicationConfig'] as Map).cast<String, dynamic>())).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      pysparkApplicationConfig: map['pysparkApplicationConfig'] == null ? null : (GdcSparkApplicationPysparkApplicationConfig.fromMap((map['pysparkApplicationConfig']! as Map).cast<String, dynamic>())).input(),
       serviceinstance: (map['serviceinstance'] as String).input(),
-      sparkApplicationConfig: map['sparkApplicationConfig'] == null ? null : (GdcSparkApplicationSparkApplicationConfig.fromMap((map['sparkApplicationConfig'] as Map).cast<String, dynamic>())).input(),
+      sparkApplicationConfig: map['sparkApplicationConfig'] == null ? null : (GdcSparkApplicationSparkApplicationConfig.fromMap((map['sparkApplicationConfig']! as Map).cast<String, dynamic>())).input(),
       sparkApplicationId: (map['sparkApplicationId'] as String).input(),
-      sparkRApplicationConfig: map['sparkRApplicationConfig'] == null ? null : (GdcSparkApplicationSparkRApplicationConfig.fromMap((map['sparkRApplicationConfig'] as Map).cast<String, dynamic>())).input(),
-      sparkSqlApplicationConfig: map['sparkSqlApplicationConfig'] == null ? null : (GdcSparkApplicationSparkSqlApplicationConfig.fromMap((map['sparkSqlApplicationConfig'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      sparkRApplicationConfig: map['sparkRApplicationConfig'] == null ? null : (GdcSparkApplicationSparkRApplicationConfig.fromMap((map['sparkRApplicationConfig']! as Map).cast<String, dynamic>())).input(),
+      sparkSqlApplicationConfig: map['sparkSqlApplicationConfig'] == null ? null : (GdcSparkApplicationSparkSqlApplicationConfig.fromMap((map['sparkSqlApplicationConfig']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

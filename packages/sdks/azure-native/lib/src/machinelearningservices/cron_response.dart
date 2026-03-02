@@ -33,9 +33,9 @@ class CronResponse {
 
   factory CronResponse.fromMap(Map<String, dynamic> map) {
     return CronResponse(
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      expression: map['expression'] == null ? null : (map['expression']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

@@ -40,11 +40,11 @@ class ApiOperationResponseRepresentationFormParameterExample {
 
   factory ApiOperationResponseRepresentationFormParameterExample.fromMap(Map<String, dynamic> map) {
     return ApiOperationResponseRepresentationFormParameterExample(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      externalValue: map['externalValue'] == null ? null : (map['externalValue'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      externalValue: map['externalValue'] == null ? null : (map['externalValue']! as String).input(),
       name: (map['name'] as String).input(),
-      summary: map['summary'] == null ? null : (map['summary'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      summary: map['summary'] == null ? null : (map['summary']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

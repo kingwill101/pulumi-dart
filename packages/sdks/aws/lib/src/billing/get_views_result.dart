@@ -32,7 +32,7 @@ class GetViewsResult {
   factory GetViewsResult.fromMap(Map<String, dynamic> map) {
     return GetViewsResult(
       billingViewTypes: map['billingViewTypes'] == null ? null : (map['billingViewTypes'] as List).cast<String>(),
-      billingViews: pulumi.Input.decodeList<GetViewsBillingView>(map['billingViews'], (value) => GetViewsBillingView.fromMap((value as Map).cast<String, dynamic>())),
+      billingViews: pulumi.Input.decodeList<GetViewsBillingView>(map['billingViews']!, (value) => GetViewsBillingView.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
     );
   }

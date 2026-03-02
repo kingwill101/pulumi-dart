@@ -26,7 +26,7 @@ class DistributionOriginOriginShield {
   factory DistributionOriginOriginShield.fromMap(Map<String, dynamic> map) {
     return DistributionOriginOriginShield(
       enabled: (map['enabled'] as bool).input(),
-      originShieldRegion: map['originShieldRegion'] == null ? null : (map['originShieldRegion'] as String).input(),
+      originShieldRegion: map['originShieldRegion'] == null ? null : ((map['originShieldRegion'] as String).input()).input(),
     );
   }
 }

@@ -54,13 +54,13 @@ class TriggerRecurrenceState {
 
   factory TriggerRecurrenceState.fromMap(Map<String, dynamic> map) {
     return TriggerRecurrenceState(
-      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      logicAppId: map['logicAppId'] == null ? null : (map['logicAppId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      schedule: map['schedule'] == null ? null : (TriggerRecurrenceSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency']! as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      logicAppId: map['logicAppId'] == null ? null : (map['logicAppId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      schedule: map['schedule'] == null ? null : (TriggerRecurrenceSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

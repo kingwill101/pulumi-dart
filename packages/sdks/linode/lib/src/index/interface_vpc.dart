@@ -32,8 +32,8 @@ class InterfaceVpc {
 
   factory InterfaceVpc.fromMap(Map<String, dynamic> map) {
     return InterfaceVpc(
-      ipv4: map['ipv4'] == null ? null : (InterfaceVpcIpv4.fromMap((map['ipv4'] as Map).cast<String, dynamic>())).input(),
-      ipv6: map['ipv6'] == null ? null : (InterfaceVpcIpv6.fromMap((map['ipv6'] as Map).cast<String, dynamic>())).input(),
+      ipv4: map['ipv4'] == null ? null : (InterfaceVpcIpv4.fromMap((map['ipv4']! as Map).cast<String, dynamic>())).input(),
+      ipv6: map['ipv6'] == null ? null : (InterfaceVpcIpv6.fromMap((map['ipv6']! as Map).cast<String, dynamic>())).input(),
       subnetId: (map['subnetId'] as int).input(),
     );
   }

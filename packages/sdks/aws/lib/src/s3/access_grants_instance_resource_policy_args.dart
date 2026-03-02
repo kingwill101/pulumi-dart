@@ -34,9 +34,9 @@ class AccessGrantsInstanceResourcePolicyArgs {
 
   factory AccessGrantsInstanceResourcePolicyArgs.fromMap(Map<String, dynamic> map) {
     return AccessGrantsInstanceResourcePolicyArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
       policy: (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

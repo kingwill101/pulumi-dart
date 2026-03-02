@@ -26,7 +26,7 @@ class DatasetCompressionResponse {
 
   factory DatasetCompressionResponse.fromMap(Map<String, dynamic> map) {
     return DatasetCompressionResponse(
-      level: map['level'] == null ? null : (map['level']).input(),
+      level: map['level'] == null ? null : (map['level']!).input(),
       type: (map['type']).input(),
     );
   }

@@ -36,10 +36,10 @@ class LoggingOptionsState {
 
   factory LoggingOptionsState.fromMap(Map<String, dynamic> map) {
     return LoggingOptionsState(
-      defaultLogLevel: map['defaultLogLevel'] == null ? null : (map['defaultLogLevel'] as String).input(),
-      disableAllLogs: map['disableAllLogs'] == null ? null : (map['disableAllLogs'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      defaultLogLevel: map['defaultLogLevel'] == null ? null : ((map['defaultLogLevel'] as String).input()).input(),
+      disableAllLogs: map['disableAllLogs'] == null ? null : ((map['disableAllLogs'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
     );
   }
 }

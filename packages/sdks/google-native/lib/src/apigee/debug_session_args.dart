@@ -66,15 +66,15 @@ class DebugSessionArgs {
   factory DebugSessionArgs.fromMap(Map<String, dynamic> map) {
     return DebugSessionArgs(
       apiId: (map['apiId'] as String).input(),
-      count: map['count'] == null ? null : (map['count'] as int).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
       environmentId: (map['environmentId'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
       revisionId: (map['revisionId'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
-      tracesize: map['tracesize'] == null ? null : (map['tracesize'] as int).input(),
-      validity: map['validity'] == null ? null : (map['validity'] as int).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
+      tracesize: map['tracesize'] == null ? null : (map['tracesize']! as int).input(),
+      validity: map['validity'] == null ? null : (map['validity']! as int).input(),
     );
   }
 }

@@ -31,8 +31,8 @@ class GetContainerArgs {
 
   factory GetContainerArgs.fromMap(Map<String, dynamic> map) {
     return GetContainerArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

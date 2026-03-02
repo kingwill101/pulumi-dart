@@ -96,22 +96,22 @@ class ReplicationTaskState {
 
   factory ReplicationTaskState.fromMap(Map<String, dynamic> map) {
     return ReplicationTaskState(
-      cdcStartPosition: map['cdcStartPosition'] == null ? null : (map['cdcStartPosition'] as String).input(),
-      cdcStartTime: map['cdcStartTime'] == null ? null : (map['cdcStartTime'] as String).input(),
-      migrationType: map['migrationType'] == null ? null : (map['migrationType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      replicationInstanceArn: map['replicationInstanceArn'] == null ? null : (map['replicationInstanceArn'] as String).input(),
-      replicationTaskArn: map['replicationTaskArn'] == null ? null : (map['replicationTaskArn'] as String).input(),
-      replicationTaskId: map['replicationTaskId'] == null ? null : (map['replicationTaskId'] as String).input(),
-      replicationTaskSettings: map['replicationTaskSettings'] == null ? null : (map['replicationTaskSettings'] as String).input(),
-      resourceIdentifier: map['resourceIdentifier'] == null ? null : (map['resourceIdentifier'] as String).input(),
-      sourceEndpointArn: map['sourceEndpointArn'] == null ? null : (map['sourceEndpointArn'] as String).input(),
-      startReplicationTask: map['startReplicationTask'] == null ? null : (map['startReplicationTask'] as bool).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tableMappings: map['tableMappings'] == null ? null : (map['tableMappings'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      targetEndpointArn: map['targetEndpointArn'] == null ? null : (map['targetEndpointArn'] as String).input(),
+      cdcStartPosition: map['cdcStartPosition'] == null ? null : ((map['cdcStartPosition'] as String).input()).input(),
+      cdcStartTime: map['cdcStartTime'] == null ? null : ((map['cdcStartTime'] as String).input()).input(),
+      migrationType: map['migrationType'] == null ? null : ((map['migrationType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      replicationInstanceArn: map['replicationInstanceArn'] == null ? null : ((map['replicationInstanceArn'] as String).input()).input(),
+      replicationTaskArn: map['replicationTaskArn'] == null ? null : ((map['replicationTaskArn'] as String).input()).input(),
+      replicationTaskId: map['replicationTaskId'] == null ? null : ((map['replicationTaskId'] as String).input()).input(),
+      replicationTaskSettings: map['replicationTaskSettings'] == null ? null : ((map['replicationTaskSettings'] as String).input()).input(),
+      resourceIdentifier: map['resourceIdentifier'] == null ? null : ((map['resourceIdentifier'] as String).input()).input(),
+      sourceEndpointArn: map['sourceEndpointArn'] == null ? null : ((map['sourceEndpointArn'] as String).input()).input(),
+      startReplicationTask: map['startReplicationTask'] == null ? null : ((map['startReplicationTask'] as bool).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tableMappings: map['tableMappings'] == null ? null : ((map['tableMappings'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      targetEndpointArn: map['targetEndpointArn'] == null ? null : ((map['targetEndpointArn'] as String).input()).input(),
     );
   }
 }

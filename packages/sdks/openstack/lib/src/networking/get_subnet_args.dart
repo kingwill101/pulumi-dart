@@ -104,22 +104,22 @@ class GetSubnetArgs {
 
   factory GetSubnetArgs.fromMap(Map<String, dynamic> map) {
     return GetSubnetArgs(
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dhcpEnabled: map['dhcpEnabled'] == null ? null : (map['dhcpEnabled'] as bool).input(),
-      dnsPublishFixedIp: map['dnsPublishFixedIp'] == null ? null : (map['dnsPublishFixedIp'] as bool).input(),
-      gatewayIp: map['gatewayIp'] == null ? null : (map['gatewayIp'] as String).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as int).input(),
-      ipv6AddressMode: map['ipv6AddressMode'] == null ? null : (map['ipv6AddressMode'] as String).input(),
-      ipv6RaMode: map['ipv6RaMode'] == null ? null : (map['ipv6RaMode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkId: map['networkId'] == null ? null : (map['networkId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      segmentId: map['segmentId'] == null ? null : (map['segmentId'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      subnetpoolId: map['subnetpoolId'] == null ? null : (map['subnetpoolId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dhcpEnabled: map['dhcpEnabled'] == null ? null : (map['dhcpEnabled']! as bool).input(),
+      dnsPublishFixedIp: map['dnsPublishFixedIp'] == null ? null : (map['dnsPublishFixedIp']! as bool).input(),
+      gatewayIp: map['gatewayIp'] == null ? null : (map['gatewayIp']! as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as int).input(),
+      ipv6AddressMode: map['ipv6AddressMode'] == null ? null : (map['ipv6AddressMode']! as String).input(),
+      ipv6RaMode: map['ipv6RaMode'] == null ? null : (map['ipv6RaMode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      segmentId: map['segmentId'] == null ? null : (map['segmentId']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      subnetpoolId: map['subnetpoolId'] == null ? null : (map['subnetpoolId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

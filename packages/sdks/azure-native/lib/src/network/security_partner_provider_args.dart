@@ -55,13 +55,13 @@ class SecurityPartnerProviderArgs {
 
   factory SecurityPartnerProviderArgs.fromMap(Map<String, dynamic> map) {
     return SecurityPartnerProviderArgs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      securityPartnerProviderName: map['securityPartnerProviderName'] == null ? null : (map['securityPartnerProviderName'] as String).input(),
-      securityProviderName: map['securityProviderName'] == null ? null : (map['securityProviderName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      virtualHub: map['virtualHub'] == null ? null : (SubResource.fromMap((map['virtualHub'] as Map).cast<String, dynamic>())).input(),
+      securityPartnerProviderName: map['securityPartnerProviderName'] == null ? null : (map['securityPartnerProviderName']! as String).input(),
+      securityProviderName: map['securityProviderName'] == null ? null : (map['securityProviderName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      virtualHub: map['virtualHub'] == null ? null : (SubResource.fromMap((map['virtualHub']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ModelState {
 
   factory ModelState.fromMap(Map<String, dynamic> map) {
     return ModelState(
-      published: map['published'] == null ? null : (map['published'] as bool).input(),
+      published: map['published'] == null ? null : (map['published']! as bool).input(),
     );
   }
 }

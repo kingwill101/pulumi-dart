@@ -27,8 +27,8 @@ class FiltersConfiguration {
 
   factory FiltersConfiguration.fromMap(Map<String, dynamic> map) {
     return FiltersConfiguration(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<BoolEqualsFilter>(map['filters'], (value) => BoolEqualsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      includedEventTypes: map['includedEventTypes'] == null ? null : ((map['includedEventTypes'] as List).cast<String>()).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<BoolEqualsFilter>(map['filters']!, (value) => BoolEqualsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      includedEventTypes: map['includedEventTypes'] == null ? null : ((map['includedEventTypes']! as List).cast<String>()).input(),
     );
   }
 }

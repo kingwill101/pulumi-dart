@@ -43,11 +43,11 @@ class OccurrenceIamPolicyContaineranalysisV1beta1Args {
 
   factory OccurrenceIamPolicyContaineranalysisV1beta1Args.fromMap(Map<String, dynamic> map) {
     return OccurrenceIamPolicyContaineranalysisV1beta1Args(
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingContaineranalysisV1beta1>(map['bindings'], (value) => BindingContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingContaineranalysisV1beta1>(map['bindings']!, (value) => BindingContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       occurrenceId: (map['occurrenceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

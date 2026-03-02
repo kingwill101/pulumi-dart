@@ -86,15 +86,15 @@ class SaslAclState {
 
   factory SaslAclState.fromMap(Map<String, dynamic> map) {
     return SaslAclState(
-      aclOperationType: map['aclOperationType'] == null ? null : (map['aclOperationType'] as String).input(),
-      aclOperationTypes: map['aclOperationTypes'] == null ? null : (map['aclOperationTypes'] as String).input(),
-      aclPermissionType: map['aclPermissionType'] == null ? null : (map['aclPermissionType'] as String).input(),
-      aclResourceName: map['aclResourceName'] == null ? null : (map['aclResourceName'] as String).input(),
-      aclResourcePatternType: map['aclResourcePatternType'] == null ? null : (map['aclResourcePatternType'] as String).input(),
-      aclResourceType: map['aclResourceType'] == null ? null : (map['aclResourceType'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      aclOperationType: map['aclOperationType'] == null ? null : (map['aclOperationType']! as String).input(),
+      aclOperationTypes: map['aclOperationTypes'] == null ? null : (map['aclOperationTypes']! as String).input(),
+      aclPermissionType: map['aclPermissionType'] == null ? null : (map['aclPermissionType']! as String).input(),
+      aclResourceName: map['aclResourceName'] == null ? null : (map['aclResourceName']! as String).input(),
+      aclResourcePatternType: map['aclResourcePatternType'] == null ? null : (map['aclResourcePatternType']! as String).input(),
+      aclResourceType: map['aclResourceType'] == null ? null : (map['aclResourceType']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

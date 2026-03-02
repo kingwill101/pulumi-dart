@@ -64,15 +64,15 @@ class ElasticVolumeProperties {
 
   factory ElasticVolumeProperties.fromMap(Map<String, dynamic> map) {
     return ElasticVolumeProperties(
-      backupResourceId: map['backupResourceId'] == null ? null : (map['backupResourceId'] as String).input(),
-      dataProtection: map['dataProtection'] == null ? null : (ElasticVolumeDataProtectionProperties.fromMap((map['dataProtection'] as Map).cast<String, dynamic>())).input(),
-      exportPolicy: map['exportPolicy'] == null ? null : (ElasticExportPolicy.fromMap((map['exportPolicy'] as Map).cast<String, dynamic>())).input(),
+      backupResourceId: map['backupResourceId'] == null ? null : (map['backupResourceId']! as String).input(),
+      dataProtection: map['dataProtection'] == null ? null : (ElasticVolumeDataProtectionProperties.fromMap((map['dataProtection']! as Map).cast<String, dynamic>())).input(),
+      exportPolicy: map['exportPolicy'] == null ? null : (ElasticExportPolicy.fromMap((map['exportPolicy']! as Map).cast<String, dynamic>())).input(),
       filePath: (map['filePath'] as String).input(),
       protocolTypes: ((map['protocolTypes'] as List).cast<String>()).input(),
       size: (map['size'] as double).input(),
-      smbProperties: map['smbProperties'] == null ? null : (ElasticSmbProperties.fromMap((map['smbProperties'] as Map).cast<String, dynamic>())).input(),
-      snapshotDirectoryVisibility: map['snapshotDirectoryVisibility'] == null ? null : (map['snapshotDirectoryVisibility'] as String).input(),
-      snapshotResourceId: map['snapshotResourceId'] == null ? null : (map['snapshotResourceId'] as String).input(),
+      smbProperties: map['smbProperties'] == null ? null : (ElasticSmbProperties.fromMap((map['smbProperties']! as Map).cast<String, dynamic>())).input(),
+      snapshotDirectoryVisibility: map['snapshotDirectoryVisibility'] == null ? null : (map['snapshotDirectoryVisibility']! as String).input(),
+      snapshotResourceId: map['snapshotResourceId'] == null ? null : (map['snapshotResourceId']! as String).input(),
     );
   }
 }

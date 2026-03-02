@@ -44,9 +44,9 @@ class MatchConditionResponse {
     return MatchConditionResponse(
       matchValues: ((map['matchValues'] as List).cast<String>()).input(),
       matchVariables: (pulumi.Input.decodeList<MatchVariableResponse>(map['matchVariables'], (value) => MatchVariableResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      negationConditon: map['negationConditon'] == null ? null : (map['negationConditon'] as bool).input(),
+      negationConditon: map['negationConditon'] == null ? null : (map['negationConditon']! as bool).input(),
       operator: (map['operator'] as String).input(),
-      transforms: map['transforms'] == null ? null : ((map['transforms'] as List).cast<String>()).input(),
+      transforms: map['transforms'] == null ? null : ((map['transforms']! as List).cast<String>()).input(),
     );
   }
 }

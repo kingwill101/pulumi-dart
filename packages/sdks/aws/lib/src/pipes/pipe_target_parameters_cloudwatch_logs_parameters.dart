@@ -25,8 +25,8 @@ class PipeTargetParametersCloudwatchLogsParameters {
 
   factory PipeTargetParametersCloudwatchLogsParameters.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersCloudwatchLogsParameters(
-      logStreamName: map['logStreamName'] == null ? null : (map['logStreamName'] as String).input(),
-      timestamp: map['timestamp'] == null ? null : (map['timestamp'] as String).input(),
+      logStreamName: map['logStreamName'] == null ? null : ((map['logStreamName'] as String).input()).input(),
+      timestamp: map['timestamp'] == null ? null : ((map['timestamp'] as String).input()).input(),
     );
   }
 }

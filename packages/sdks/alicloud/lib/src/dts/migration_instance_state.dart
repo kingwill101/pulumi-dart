@@ -76,18 +76,18 @@ class MigrationInstanceState {
 
   factory MigrationInstanceState.fromMap(Map<String, dynamic> map) {
     return MigrationInstanceState(
-      computeUnit: map['computeUnit'] == null ? null : (map['computeUnit'] as int).input(),
-      databaseCount: map['databaseCount'] == null ? null : (map['databaseCount'] as int).input(),
-      destinationEndpointEngineName: map['destinationEndpointEngineName'] == null ? null : (map['destinationEndpointEngineName'] as String).input(),
-      destinationEndpointRegion: map['destinationEndpointRegion'] == null ? null : (map['destinationEndpointRegion'] as String).input(),
-      dtsInstanceId: map['dtsInstanceId'] == null ? null : (map['dtsInstanceId'] as String).input(),
-      instanceClass: map['instanceClass'] == null ? null : (map['instanceClass'] as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      sourceEndpointEngineName: map['sourceEndpointEngineName'] == null ? null : (map['sourceEndpointEngineName'] as String).input(),
-      sourceEndpointRegion: map['sourceEndpointRegion'] == null ? null : (map['sourceEndpointRegion'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      syncArchitecture: map['syncArchitecture'] == null ? null : (map['syncArchitecture'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      computeUnit: map['computeUnit'] == null ? null : (map['computeUnit']! as int).input(),
+      databaseCount: map['databaseCount'] == null ? null : (map['databaseCount']! as int).input(),
+      destinationEndpointEngineName: map['destinationEndpointEngineName'] == null ? null : (map['destinationEndpointEngineName']! as String).input(),
+      destinationEndpointRegion: map['destinationEndpointRegion'] == null ? null : (map['destinationEndpointRegion']! as String).input(),
+      dtsInstanceId: map['dtsInstanceId'] == null ? null : (map['dtsInstanceId']! as String).input(),
+      instanceClass: map['instanceClass'] == null ? null : (map['instanceClass']! as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      sourceEndpointEngineName: map['sourceEndpointEngineName'] == null ? null : (map['sourceEndpointEngineName']! as String).input(),
+      sourceEndpointRegion: map['sourceEndpointRegion'] == null ? null : (map['sourceEndpointRegion']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      syncArchitecture: map['syncArchitecture'] == null ? null : (map['syncArchitecture']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

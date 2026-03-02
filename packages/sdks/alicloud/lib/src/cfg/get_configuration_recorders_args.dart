@@ -24,7 +24,7 @@ class GetConfigurationRecordersArgs {
 
   factory GetConfigurationRecordersArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationRecordersArgs(
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

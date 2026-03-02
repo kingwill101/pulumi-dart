@@ -21,7 +21,7 @@ class EntryBigqueryTableSpecViewSpec {
 
   factory EntryBigqueryTableSpecViewSpec.fromMap(Map<String, dynamic> map) {
     return EntryBigqueryTableSpecViewSpec(
-      viewQuery: map['viewQuery'] == null ? null : (map['viewQuery'] as String).input(),
+      viewQuery: map['viewQuery'] == null ? null : (map['viewQuery']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class AuthPlatform {
 
   factory AuthPlatform.fromMap(Map<String, dynamic> map) {
     return AuthPlatform(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']! as String).input(),
     );
   }
 }

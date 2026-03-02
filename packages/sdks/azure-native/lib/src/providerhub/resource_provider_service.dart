@@ -26,8 +26,8 @@ class ResourceProviderService {
 
   factory ResourceProviderService.fromMap(Map<String, dynamic> map) {
     return ResourceProviderService(
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

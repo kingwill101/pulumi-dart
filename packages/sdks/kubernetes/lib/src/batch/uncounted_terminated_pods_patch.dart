@@ -26,8 +26,8 @@ class UncountedTerminatedPodsPatch {
 
   factory UncountedTerminatedPodsPatch.fromMap(Map<String, dynamic> map) {
     return UncountedTerminatedPodsPatch(
-      failed: map['failed'] == null ? null : ((map['failed'] as List).cast<String>()).input(),
-      succeeded: map['succeeded'] == null ? null : ((map['succeeded'] as List).cast<String>()).input(),
+      failed: map['failed'] == null ? null : ((map['failed']! as List).cast<String>()).input(),
+      succeeded: map['succeeded'] == null ? null : ((map['succeeded']! as List).cast<String>()).input(),
     );
   }
 }

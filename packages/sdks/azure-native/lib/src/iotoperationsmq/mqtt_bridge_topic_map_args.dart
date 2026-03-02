@@ -67,14 +67,14 @@ class MqttBridgeTopicMapArgs {
   factory MqttBridgeTopicMapArgs.fromMap(Map<String, dynamic> map) {
     return MqttBridgeTopicMapArgs(
       extendedLocation: (ExtendedLocationProperty.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       mqName: (map['mqName'] as String).input(),
       mqttBridgeConnectorName: (map['mqttBridgeConnectorName'] as String).input(),
       mqttBridgeConnectorRef: (map['mqttBridgeConnectorRef'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<MqttBridgeRoutes>(map['routes'], (value) => MqttBridgeRoutes.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      topicMapName: map['topicMapName'] == null ? null : (map['topicMapName'] as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<MqttBridgeRoutes>(map['routes']!, (value) => MqttBridgeRoutes.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      topicMapName: map['topicMapName'] == null ? null : (map['topicMapName']! as String).input(),
     );
   }
 }

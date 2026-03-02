@@ -26,8 +26,8 @@ class SkuResponse {
 
   factory SkuResponse.fromMap(Map<String, dynamic> map) {
     return SkuResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

@@ -28,7 +28,7 @@ class GetBackendBucketArgs {
   factory GetBackendBucketArgs.fromMap(Map<String, dynamic> map) {
     return GetBackendBucketArgs(
       backendBucket: (map['backendBucket'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

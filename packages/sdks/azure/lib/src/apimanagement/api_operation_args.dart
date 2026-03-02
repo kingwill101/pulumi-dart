@@ -79,14 +79,14 @@ class ApiOperationArgs {
     return ApiOperationArgs(
       apiManagementName: (map['apiManagementName'] as String).input(),
       apiName: (map['apiName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       method: (map['method'] as String).input(),
       operationId: (map['operationId'] as String).input(),
-      request: map['request'] == null ? null : (ApiOperationRequest.fromMap((map['request'] as Map).cast<String, dynamic>())).input(),
+      request: map['request'] == null ? null : (ApiOperationRequest.fromMap((map['request']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      responses: map['responses'] == null ? null : (pulumi.Input.decodeList<ApiOperationResponse>(map['responses'], (value) => ApiOperationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      templateParameters: map['templateParameters'] == null ? null : (pulumi.Input.decodeList<ApiOperationTemplateParameter>(map['templateParameters'], (value) => ApiOperationTemplateParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responses: map['responses'] == null ? null : (pulumi.Input.decodeList<ApiOperationResponse>(map['responses']!, (value) => ApiOperationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      templateParameters: map['templateParameters'] == null ? null : (pulumi.Input.decodeList<ApiOperationTemplateParameter>(map['templateParameters']!, (value) => ApiOperationTemplateParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       urlTemplate: (map['urlTemplate'] as String).input(),
     );
   }

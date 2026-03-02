@@ -26,8 +26,8 @@ class PatientId {
 
   factory PatientId.fromMap(Map<String, dynamic> map) {
     return PatientId(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

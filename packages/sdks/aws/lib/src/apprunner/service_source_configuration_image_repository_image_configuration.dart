@@ -35,10 +35,10 @@ class ServiceSourceConfigurationImageRepositoryImageConfiguration {
 
   factory ServiceSourceConfigurationImageRepositoryImageConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceSourceConfigurationImageRepositoryImageConfiguration(
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      runtimeEnvironmentSecrets: map['runtimeEnvironmentSecrets'] == null ? null : ((map['runtimeEnvironmentSecrets'] as Map).cast<String, String>()).input(),
-      runtimeEnvironmentVariables: map['runtimeEnvironmentVariables'] == null ? null : ((map['runtimeEnvironmentVariables'] as Map).cast<String, String>()).input(),
-      startCommand: map['startCommand'] == null ? null : (map['startCommand'] as String).input(),
+      port: map['port'] == null ? null : ((map['port'] as String).input()).input(),
+      runtimeEnvironmentSecrets: map['runtimeEnvironmentSecrets'] == null ? null : (((map['runtimeEnvironmentSecrets'] as Map).cast<String, String>()).input()).input(),
+      runtimeEnvironmentVariables: map['runtimeEnvironmentVariables'] == null ? null : (((map['runtimeEnvironmentVariables'] as Map).cast<String, String>()).input()).input(),
+      startCommand: map['startCommand'] == null ? null : ((map['startCommand'] as String).input()).input(),
     );
   }
 }

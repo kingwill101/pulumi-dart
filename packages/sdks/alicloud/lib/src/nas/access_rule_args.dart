@@ -55,12 +55,12 @@ class AccessRuleArgs {
   factory AccessRuleArgs.fromMap(Map<String, dynamic> map) {
     return AccessRuleArgs(
       accessGroupName: (map['accessGroupName'] as String).input(),
-      fileSystemType: map['fileSystemType'] == null ? null : (map['fileSystemType'] as String).input(),
-      ipv6SourceCidrIp: map['ipv6SourceCidrIp'] == null ? null : (map['ipv6SourceCidrIp'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      rwAccessType: map['rwAccessType'] == null ? null : (map['rwAccessType'] as String).input(),
-      sourceCidrIp: map['sourceCidrIp'] == null ? null : (map['sourceCidrIp'] as String).input(),
-      userAccessType: map['userAccessType'] == null ? null : (map['userAccessType'] as String).input(),
+      fileSystemType: map['fileSystemType'] == null ? null : (map['fileSystemType']! as String).input(),
+      ipv6SourceCidrIp: map['ipv6SourceCidrIp'] == null ? null : (map['ipv6SourceCidrIp']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      rwAccessType: map['rwAccessType'] == null ? null : (map['rwAccessType']! as String).input(),
+      sourceCidrIp: map['sourceCidrIp'] == null ? null : (map['sourceCidrIp']! as String).input(),
+      userAccessType: map['userAccessType'] == null ? null : (map['userAccessType']! as String).input(),
     );
   }
 }

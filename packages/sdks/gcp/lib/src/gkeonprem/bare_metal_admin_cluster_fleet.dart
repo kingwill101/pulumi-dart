@@ -23,7 +23,7 @@ class BareMetalAdminClusterFleet {
 
   factory BareMetalAdminClusterFleet.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterFleet(
-      membership: map['membership'] == null ? null : (map['membership'] as String).input(),
+      membership: map['membership'] == null ? null : (map['membership']! as String).input(),
     );
   }
 }

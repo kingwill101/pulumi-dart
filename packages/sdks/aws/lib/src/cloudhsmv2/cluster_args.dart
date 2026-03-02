@@ -50,11 +50,11 @@ class ClusterArgs {
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
       hsmType: (map['hsmType'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sourceBackupIdentifier: map['sourceBackupIdentifier'] == null ? null : (map['sourceBackupIdentifier'] as String).input(),
+      mode: map['mode'] == null ? null : ((map['mode'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sourceBackupIdentifier: map['sourceBackupIdentifier'] == null ? null : ((map['sourceBackupIdentifier'] as String).input()).input(),
       subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

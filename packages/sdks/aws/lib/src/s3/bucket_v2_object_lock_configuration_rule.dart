@@ -21,7 +21,7 @@ class BucketV2ObjectLockConfigurationRule {
 
   factory BucketV2ObjectLockConfigurationRule.fromMap(Map<String, dynamic> map) {
     return BucketV2ObjectLockConfigurationRule(
-      defaultRetentions: (pulumi.Input.decodeList<BucketV2ObjectLockConfigurationRuleDefaultRetention>(map['defaultRetentions'], (value) => BucketV2ObjectLockConfigurationRuleDefaultRetention.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultRetentions: (pulumi.Input.decodeList<BucketV2ObjectLockConfigurationRuleDefaultRetention>(map['defaultRetentions']!, (value) => BucketV2ObjectLockConfigurationRuleDefaultRetention.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

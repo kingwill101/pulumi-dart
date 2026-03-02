@@ -46,12 +46,12 @@ class SslConfiguration {
 
   factory SslConfiguration.fromMap(Map<String, dynamic> map) {
     return SslConfiguration(
-      cert: map['cert'] == null ? null : (map['cert'] as String).input(),
-      cname: map['cname'] == null ? null : (map['cname'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      leafDomainLabel: map['leafDomainLabel'] == null ? null : (map['leafDomainLabel'] as String).input(),
-      overwriteExistingDomain: map['overwriteExistingDomain'] == null ? null : (map['overwriteExistingDomain'] as bool).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      cert: map['cert'] == null ? null : (map['cert']! as String).input(),
+      cname: map['cname'] == null ? null : (map['cname']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      leafDomainLabel: map['leafDomainLabel'] == null ? null : (map['leafDomainLabel']! as String).input(),
+      overwriteExistingDomain: map['overwriteExistingDomain'] == null ? null : (map['overwriteExistingDomain']! as bool).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

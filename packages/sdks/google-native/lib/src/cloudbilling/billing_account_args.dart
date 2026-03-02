@@ -34,9 +34,9 @@ class BillingAccountArgs {
 
   factory BillingAccountArgs.fromMap(Map<String, dynamic> map) {
     return BillingAccountArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      masterBillingAccount: map['masterBillingAccount'] == null ? null : (map['masterBillingAccount'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      masterBillingAccount: map['masterBillingAccount'] == null ? null : (map['masterBillingAccount']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
     );
   }
 }

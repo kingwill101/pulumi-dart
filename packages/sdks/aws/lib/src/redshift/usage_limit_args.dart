@@ -60,13 +60,13 @@ class UsageLimitArgs {
   factory UsageLimitArgs.fromMap(Map<String, dynamic> map) {
     return UsageLimitArgs(
       amount: (map['amount'] as int).input(),
-      breachAction: map['breachAction'] == null ? null : (map['breachAction'] as String).input(),
+      breachAction: map['breachAction'] == null ? null : ((map['breachAction'] as String).input()).input(),
       clusterIdentifier: (map['clusterIdentifier'] as String).input(),
       featureType: (map['featureType'] as String).input(),
       limitType: (map['limitType'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      period: map['period'] == null ? null : ((map['period'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

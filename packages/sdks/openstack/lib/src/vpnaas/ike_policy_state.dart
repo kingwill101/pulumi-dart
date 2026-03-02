@@ -85,17 +85,17 @@ class IkePolicyState {
 
   factory IkePolicyState.fromMap(Map<String, dynamic> map) {
     return IkePolicyState(
-      authAlgorithm: map['authAlgorithm'] == null ? null : (map['authAlgorithm'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptionAlgorithm: map['encryptionAlgorithm'] == null ? null : (map['encryptionAlgorithm'] as String).input(),
-      ikeVersion: map['ikeVersion'] == null ? null : (map['ikeVersion'] as String).input(),
-      lifetimes: map['lifetimes'] == null ? null : (pulumi.Input.decodeList<IkePolicyLifetime>(map['lifetimes'], (value) => IkePolicyLifetime.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pfs: map['pfs'] == null ? null : (map['pfs'] as String).input(),
-      phase1NegotiationMode: map['phase1NegotiationMode'] == null ? null : (map['phase1NegotiationMode'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
+      authAlgorithm: map['authAlgorithm'] == null ? null : (map['authAlgorithm']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encryptionAlgorithm: map['encryptionAlgorithm'] == null ? null : (map['encryptionAlgorithm']! as String).input(),
+      ikeVersion: map['ikeVersion'] == null ? null : (map['ikeVersion']! as String).input(),
+      lifetimes: map['lifetimes'] == null ? null : (pulumi.Input.decodeList<IkePolicyLifetime>(map['lifetimes']!, (value) => IkePolicyLifetime.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pfs: map['pfs'] == null ? null : (map['pfs']! as String).input(),
+      phase1NegotiationMode: map['phase1NegotiationMode'] == null ? null : (map['phase1NegotiationMode']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs']! as Map).cast<String, String>()).input(),
     );
   }
 }

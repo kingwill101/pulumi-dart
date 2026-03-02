@@ -54,13 +54,13 @@ class SandboxCustomImageArgs {
 
   factory SandboxCustomImageArgs.fromMap(Map<String, dynamic> map) {
     return SandboxCustomImageArgs(
-      baseImageName: map['baseImageName'] == null ? null : (map['baseImageName'] as String).input(),
+      baseImageName: map['baseImageName'] == null ? null : (map['baseImageName']! as String).input(),
       clusterName: (map['clusterName'] as String).input(),
       language: (map['language'] as String).input(),
-      languageVersion: map['languageVersion'] == null ? null : (map['languageVersion'] as String).input(),
-      requirementsFileContent: map['requirementsFileContent'] == null ? null : (map['requirementsFileContent'] as String).input(),
+      languageVersion: map['languageVersion'] == null ? null : (map['languageVersion']! as String).input(),
+      requirementsFileContent: map['requirementsFileContent'] == null ? null : (map['requirementsFileContent']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sandboxCustomImageName: map['sandboxCustomImageName'] == null ? null : (map['sandboxCustomImageName'] as String).input(),
+      sandboxCustomImageName: map['sandboxCustomImageName'] == null ? null : (map['sandboxCustomImageName']! as String).input(),
     );
   }
 }

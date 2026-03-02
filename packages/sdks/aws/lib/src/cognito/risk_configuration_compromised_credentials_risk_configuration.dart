@@ -26,8 +26,8 @@ class RiskConfigurationCompromisedCredentialsRiskConfiguration {
 
   factory RiskConfigurationCompromisedCredentialsRiskConfiguration.fromMap(Map<String, dynamic> map) {
     return RiskConfigurationCompromisedCredentialsRiskConfiguration(
-      actions: (RiskConfigurationCompromisedCredentialsRiskConfigurationActions.fromMap((map['actions'] as Map).cast<String, dynamic>())).input(),
-      eventFilters: map['eventFilters'] == null ? null : ((map['eventFilters'] as List).cast<String>()).input(),
+      actions: (RiskConfigurationCompromisedCredentialsRiskConfigurationActions.fromMap((map['actions']! as Map).cast<String, dynamic>())).input(),
+      eventFilters: map['eventFilters'] == null ? null : (((map['eventFilters'] as List).cast<String>()).input()).input(),
     );
   }
 }

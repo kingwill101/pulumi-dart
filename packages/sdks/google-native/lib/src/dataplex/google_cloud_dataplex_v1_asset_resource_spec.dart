@@ -33,8 +33,8 @@ class GoogleCloudDataplexV1AssetResourceSpec {
 
   factory GoogleCloudDataplexV1AssetResourceSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1AssetResourceSpec(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      readAccessMode: map['readAccessMode'] == null ? null : (GoogleCloudDataplexV1AssetResourceSpecReadAccessMode.fromValue(map['readAccessMode'] as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      readAccessMode: map['readAccessMode'] == null ? null : (GoogleCloudDataplexV1AssetResourceSpecReadAccessMode.fromValue(map['readAccessMode']! as String)).input(),
       type: (GoogleCloudDataplexV1AssetResourceSpecType.fromValue(map['type'] as String)).input(),
     );
   }

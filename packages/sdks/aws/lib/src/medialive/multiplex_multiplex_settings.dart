@@ -35,10 +35,10 @@ class MultiplexMultiplexSettings {
 
   factory MultiplexMultiplexSettings.fromMap(Map<String, dynamic> map) {
     return MultiplexMultiplexSettings(
-      maximumVideoBufferDelayMilliseconds: map['maximumVideoBufferDelayMilliseconds'] == null ? null : (map['maximumVideoBufferDelayMilliseconds'] as int).input(),
+      maximumVideoBufferDelayMilliseconds: map['maximumVideoBufferDelayMilliseconds'] == null ? null : ((map['maximumVideoBufferDelayMilliseconds'] as int).input()).input(),
       transportStreamBitrate: (map['transportStreamBitrate'] as int).input(),
       transportStreamId: (map['transportStreamId'] as int).input(),
-      transportStreamReservedBitrate: map['transportStreamReservedBitrate'] == null ? null : (map['transportStreamReservedBitrate'] as int).input(),
+      transportStreamReservedBitrate: map['transportStreamReservedBitrate'] == null ? null : ((map['transportStreamReservedBitrate'] as int).input()).input(),
     );
   }
 }

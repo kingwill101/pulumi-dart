@@ -25,7 +25,7 @@ class ScaleSetOsProfileWindowsConfigWinrm {
 
   factory ScaleSetOsProfileWindowsConfigWinrm.fromMap(Map<String, dynamic> map) {
     return ScaleSetOsProfileWindowsConfigWinrm(
-      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl'] as String).input(),
+      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl']! as String).input(),
       protocol: (map['protocol'] as String).input(),
     );
   }

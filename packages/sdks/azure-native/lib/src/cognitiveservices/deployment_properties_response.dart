@@ -82,16 +82,16 @@ class DeploymentPropertiesResponse {
     return DeploymentPropertiesResponse(
       callRateLimit: (CallRateLimitResponse.fromMap((map['callRateLimit'] as Map).cast<String, dynamic>())).input(),
       capabilities: ((map['capabilities'] as Map).cast<String, String>()).input(),
-      capacitySettings: map['capacitySettings'] == null ? null : (DeploymentCapacitySettingsResponse.fromMap((map['capacitySettings'] as Map).cast<String, dynamic>())).input(),
-      currentCapacity: map['currentCapacity'] == null ? null : (map['currentCapacity'] as int).input(),
+      capacitySettings: map['capacitySettings'] == null ? null : (DeploymentCapacitySettingsResponse.fromMap((map['capacitySettings']! as Map).cast<String, dynamic>())).input(),
+      currentCapacity: map['currentCapacity'] == null ? null : (map['currentCapacity']! as int).input(),
       dynamicThrottlingEnabled: (map['dynamicThrottlingEnabled'] as bool).input(),
-      model: map['model'] == null ? null : (DeploymentModelResponse.fromMap((map['model'] as Map).cast<String, dynamic>())).input(),
-      parentDeploymentName: map['parentDeploymentName'] == null ? null : (map['parentDeploymentName'] as String).input(),
+      model: map['model'] == null ? null : (DeploymentModelResponse.fromMap((map['model']! as Map).cast<String, dynamic>())).input(),
+      parentDeploymentName: map['parentDeploymentName'] == null ? null : (map['parentDeploymentName']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      raiPolicyName: map['raiPolicyName'] == null ? null : (map['raiPolicyName'] as String).input(),
+      raiPolicyName: map['raiPolicyName'] == null ? null : (map['raiPolicyName']! as String).input(),
       rateLimits: (pulumi.Input.decodeList<ThrottlingRuleResponse>(map['rateLimits'], (value) => ThrottlingRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      scaleSettings: map['scaleSettings'] == null ? null : (DeploymentScaleSettingsResponse.fromMap((map['scaleSettings'] as Map).cast<String, dynamic>())).input(),
-      versionUpgradeOption: map['versionUpgradeOption'] == null ? null : (map['versionUpgradeOption'] as String).input(),
+      scaleSettings: map['scaleSettings'] == null ? null : (DeploymentScaleSettingsResponse.fromMap((map['scaleSettings']! as Map).cast<String, dynamic>())).input(),
+      versionUpgradeOption: map['versionUpgradeOption'] == null ? null : (map['versionUpgradeOption']! as String).input(),
     );
   }
 }

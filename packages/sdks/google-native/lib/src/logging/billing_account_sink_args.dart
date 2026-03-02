@@ -81,18 +81,18 @@ class BillingAccountSinkArgs {
 
   factory BillingAccountSinkArgs.fromMap(Map<String, dynamic> map) {
     return BillingAccountSinkArgs(
-      bigqueryOptions: map['bigqueryOptions'] == null ? null : (BigQueryOptions.fromMap((map['bigqueryOptions'] as Map).cast<String, dynamic>())).input(),
+      bigqueryOptions: map['bigqueryOptions'] == null ? null : (BigQueryOptions.fromMap((map['bigqueryOptions']! as Map).cast<String, dynamic>())).input(),
       billingAccountId: (map['billingAccountId'] as String).input(),
-      customWriterIdentity: map['customWriterIdentity'] == null ? null : (map['customWriterIdentity'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      customWriterIdentity: map['customWriterIdentity'] == null ? null : (map['customWriterIdentity']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       destination: (map['destination'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<LogExclusion>(map['exclusions'], (value) => LogExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      includeChildren: map['includeChildren'] == null ? null : (map['includeChildren'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      outputVersionFormat: map['outputVersionFormat'] == null ? null : (BillingAccountSinkOutputVersionFormat.fromValue(map['outputVersionFormat'] as String)).input(),
-      uniqueWriterIdentity: map['uniqueWriterIdentity'] == null ? null : (map['uniqueWriterIdentity'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<LogExclusion>(map['exclusions']!, (value) => LogExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      includeChildren: map['includeChildren'] == null ? null : (map['includeChildren']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      outputVersionFormat: map['outputVersionFormat'] == null ? null : (BillingAccountSinkOutputVersionFormat.fromValue(map['outputVersionFormat']! as String)).input(),
+      uniqueWriterIdentity: map['uniqueWriterIdentity'] == null ? null : (map['uniqueWriterIdentity']! as bool).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class AwsClusterControlPlaneInstancePlacement {
 
   factory AwsClusterControlPlaneInstancePlacement.fromMap(Map<String, dynamic> map) {
     return AwsClusterControlPlaneInstancePlacement(
-      tenancy: map['tenancy'] == null ? null : (map['tenancy'] as String).input(),
+      tenancy: map['tenancy'] == null ? null : (map['tenancy']! as String).input(),
     );
   }
 }

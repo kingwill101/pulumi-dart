@@ -31,9 +31,9 @@ class ConnectionMonitorTcpConfiguration {
 
   factory ConnectionMonitorTcpConfiguration.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorTcpConfiguration(
-      destinationPortBehavior: map['destinationPortBehavior'] == null ? null : (map['destinationPortBehavior'] as String).input(),
-      disableTraceRoute: map['disableTraceRoute'] == null ? null : (map['disableTraceRoute'] as bool).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      destinationPortBehavior: map['destinationPortBehavior'] == null ? null : (map['destinationPortBehavior']! as String).input(),
+      disableTraceRoute: map['disableTraceRoute'] == null ? null : (map['disableTraceRoute']! as bool).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

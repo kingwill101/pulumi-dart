@@ -72,19 +72,19 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      adminApiKey: map['adminApiKey'] == null ? null : (map['adminApiKey'] as String).input(),
-      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
-      apiUrl: map['apiUrl'] == null ? null : (map['apiUrl'] as String).input(),
-      cacertFile: map['cacertFile'] == null ? null : (map['cacertFile'] as String).input(),
-      infrastructureApiUrl: map['infrastructureApiUrl'] == null ? null : (map['infrastructureApiUrl'] as String).input(),
-      insecureSkipVerify: map['insecureSkipVerify'] == null ? null : (map['insecureSkipVerify'] as bool).input(),
-      insightsInsertKey: map['insightsInsertKey'] == null ? null : (map['insightsInsertKey'] as String).input(),
-      insightsInsertUrl: map['insightsInsertUrl'] == null ? null : (map['insightsInsertUrl'] as String).input(),
-      insightsQueryUrl: map['insightsQueryUrl'] == null ? null : (map['insightsQueryUrl'] as String).input(),
-      nerdgraphApiUrl: map['nerdgraphApiUrl'] == null ? null : (map['nerdgraphApiUrl'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      syntheticsApiUrl: map['syntheticsApiUrl'] == null ? null : (map['syntheticsApiUrl'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      adminApiKey: map['adminApiKey'] == null ? null : (map['adminApiKey']! as String).input(),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey']! as String).input(),
+      apiUrl: map['apiUrl'] == null ? null : (map['apiUrl']! as String).input(),
+      cacertFile: map['cacertFile'] == null ? null : (map['cacertFile']! as String).input(),
+      infrastructureApiUrl: map['infrastructureApiUrl'] == null ? null : (map['infrastructureApiUrl']! as String).input(),
+      insecureSkipVerify: map['insecureSkipVerify'] == null ? null : (map['insecureSkipVerify']! as bool).input(),
+      insightsInsertKey: map['insightsInsertKey'] == null ? null : (map['insightsInsertKey']! as String).input(),
+      insightsInsertUrl: map['insightsInsertUrl'] == null ? null : (map['insightsInsertUrl']! as String).input(),
+      insightsQueryUrl: map['insightsQueryUrl'] == null ? null : (map['insightsQueryUrl']! as String).input(),
+      nerdgraphApiUrl: map['nerdgraphApiUrl'] == null ? null : (map['nerdgraphApiUrl']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      syntheticsApiUrl: map['syntheticsApiUrl'] == null ? null : (map['syntheticsApiUrl']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class PermissionSetInlinePolicyState {
 
   factory PermissionSetInlinePolicyState.fromMap(Map<String, dynamic> map) {
     return PermissionSetInlinePolicyState(
-      inlinePolicy: map['inlinePolicy'] == null ? null : (map['inlinePolicy'] as String).input(),
-      instanceArn: map['instanceArn'] == null ? null : (map['instanceArn'] as String).input(),
-      permissionSetArn: map['permissionSetArn'] == null ? null : (map['permissionSetArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      inlinePolicy: map['inlinePolicy'] == null ? null : ((map['inlinePolicy'] as String).input()).input(),
+      instanceArn: map['instanceArn'] == null ? null : ((map['instanceArn'] as String).input()).input(),
+      permissionSetArn: map['permissionSetArn'] == null ? null : ((map['permissionSetArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

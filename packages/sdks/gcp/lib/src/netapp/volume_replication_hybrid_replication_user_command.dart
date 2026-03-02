@@ -21,7 +21,7 @@ class VolumeReplicationHybridReplicationUserCommand {
 
   factory VolumeReplicationHybridReplicationUserCommand.fromMap(Map<String, dynamic> map) {
     return VolumeReplicationHybridReplicationUserCommand(
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
     );
   }
 }

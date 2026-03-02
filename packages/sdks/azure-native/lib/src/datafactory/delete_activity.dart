@@ -100,20 +100,20 @@ class DeleteActivity {
   factory DeleteActivity.fromMap(Map<String, dynamic> map) {
     return DeleteActivity(
       dataset: (DatasetReference.fromMap((map['dataset'] as Map).cast<String, dynamic>())).input(),
-      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn'], (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging']).input(),
-      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
-      logStorageSettings: map['logStorageSettings'] == null ? null : (LogStorageSettings.fromMap((map['logStorageSettings'] as Map).cast<String, dynamic>())).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections'] as int).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn']!, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging']!).input(),
+      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReference.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())).input(),
+      logStorageSettings: map['logStorageSettings'] == null ? null : (LogStorageSettings.fromMap((map['logStorageSettings']! as Map).cast<String, dynamic>())).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']! as int).input(),
       name: (map['name'] as String).input(),
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
-      policy: map['policy'] == null ? null : (ActivityPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
-      recursive: map['recursive'] == null ? null : (map['recursive']).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      storeSettings: map['storeSettings'] == null ? null : (AmazonS3CompatibleReadSettings.fromMap((map['storeSettings'] as Map).cast<String, dynamic>())).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs']! as String).input(),
+      policy: map['policy'] == null ? null : (ActivityPolicy.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
+      recursive: map['recursive'] == null ? null : (map['recursive']!).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      storeSettings: map['storeSettings'] == null ? null : (AmazonS3CompatibleReadSettings.fromMap((map['storeSettings']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
-      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties'], (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties']!, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

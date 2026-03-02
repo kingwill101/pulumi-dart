@@ -40,9 +40,9 @@ class ResourceClaimStatus {
 
   factory ResourceClaimStatus.fromMap(Map<String, dynamic> map) {
     return ResourceClaimStatus(
-      allocation: map['allocation'] == null ? null : (AllocationResult.fromMap((map['allocation'] as Map).cast<String, dynamic>())).input(),
-      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<AllocatedDeviceStatus>(map['devices'], (value) => AllocatedDeviceStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      reservedFor: map['reservedFor'] == null ? null : (pulumi.Input.decodeList<ResourceClaimConsumerReference>(map['reservedFor'], (value) => ResourceClaimConsumerReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allocation: map['allocation'] == null ? null : (AllocationResult.fromMap((map['allocation']! as Map).cast<String, dynamic>())).input(),
+      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<AllocatedDeviceStatus>(map['devices']!, (value) => AllocatedDeviceStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      reservedFor: map['reservedFor'] == null ? null : (pulumi.Input.decodeList<ResourceClaimConsumerReference>(map['reservedFor']!, (value) => ResourceClaimConsumerReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class VirtualGatewaySpecListenerTlsCertificate {
 
   factory VirtualGatewaySpecListenerTlsCertificate.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecListenerTlsCertificate(
-      acm: map['acm'] == null ? null : (VirtualGatewaySpecListenerTlsCertificateAcm.fromMap((map['acm'] as Map).cast<String, dynamic>())).input(),
-      file: map['file'] == null ? null : (VirtualGatewaySpecListenerTlsCertificateFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
-      sds: map['sds'] == null ? null : (VirtualGatewaySpecListenerTlsCertificateSds.fromMap((map['sds'] as Map).cast<String, dynamic>())).input(),
+      acm: map['acm'] == null ? null : ((VirtualGatewaySpecListenerTlsCertificateAcm.fromMap((map['acm']! as Map).cast<String, dynamic>())).input()).input(),
+      file: map['file'] == null ? null : ((VirtualGatewaySpecListenerTlsCertificateFile.fromMap((map['file']! as Map).cast<String, dynamic>())).input()).input(),
+      sds: map['sds'] == null ? null : ((VirtualGatewaySpecListenerTlsCertificateSds.fromMap((map['sds']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

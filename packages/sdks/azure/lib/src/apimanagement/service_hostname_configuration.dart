@@ -45,11 +45,11 @@ class ServiceHostnameConfiguration {
 
   factory ServiceHostnameConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceHostnameConfiguration(
-      developerPortals: map['developerPortals'] == null ? null : (pulumi.Input.decodeList<ServiceHostnameConfigurationDeveloperPortal>(map['developerPortals'], (value) => ServiceHostnameConfigurationDeveloperPortal.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      managements: map['managements'] == null ? null : (pulumi.Input.decodeList<ServiceHostnameConfigurationManagement>(map['managements'], (value) => ServiceHostnameConfigurationManagement.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      portals: map['portals'] == null ? null : (pulumi.Input.decodeList<ServiceHostnameConfigurationPortal>(map['portals'], (value) => ServiceHostnameConfigurationPortal.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      proxies: map['proxies'] == null ? null : (pulumi.Input.decodeList<ServiceHostnameConfigurationProxy>(map['proxies'], (value) => ServiceHostnameConfigurationProxy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      scms: map['scms'] == null ? null : (pulumi.Input.decodeList<ServiceHostnameConfigurationScm>(map['scms'], (value) => ServiceHostnameConfigurationScm.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      developerPortals: map['developerPortals'] == null ? null : (pulumi.Input.decodeList<ServiceHostnameConfigurationDeveloperPortal>(map['developerPortals']!, (value) => ServiceHostnameConfigurationDeveloperPortal.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managements: map['managements'] == null ? null : (pulumi.Input.decodeList<ServiceHostnameConfigurationManagement>(map['managements']!, (value) => ServiceHostnameConfigurationManagement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      portals: map['portals'] == null ? null : (pulumi.Input.decodeList<ServiceHostnameConfigurationPortal>(map['portals']!, (value) => ServiceHostnameConfigurationPortal.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      proxies: map['proxies'] == null ? null : (pulumi.Input.decodeList<ServiceHostnameConfigurationProxy>(map['proxies']!, (value) => ServiceHostnameConfigurationProxy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scms: map['scms'] == null ? null : (pulumi.Input.decodeList<ServiceHostnameConfigurationScm>(map['scms']!, (value) => ServiceHostnameConfigurationScm.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

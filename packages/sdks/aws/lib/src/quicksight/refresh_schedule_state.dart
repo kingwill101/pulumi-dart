@@ -49,12 +49,12 @@ class RefreshScheduleState {
 
   factory RefreshScheduleState.fromMap(Map<String, dynamic> map) {
     return RefreshScheduleState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      dataSetId: map['dataSetId'] == null ? null : (map['dataSetId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      schedule: map['schedule'] == null ? null : (RefreshScheduleSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      scheduleId: map['scheduleId'] == null ? null : (map['scheduleId'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      dataSetId: map['dataSetId'] == null ? null : ((map['dataSetId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      schedule: map['schedule'] == null ? null : ((RefreshScheduleSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input()).input(),
+      scheduleId: map['scheduleId'] == null ? null : ((map['scheduleId'] as String).input()).input(),
     );
   }
 }

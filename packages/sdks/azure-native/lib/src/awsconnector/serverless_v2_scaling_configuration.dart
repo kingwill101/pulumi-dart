@@ -26,8 +26,8 @@ class ServerlessV2ScalingConfiguration {
 
   factory ServerlessV2ScalingConfiguration.fromMap(Map<String, dynamic> map) {
     return ServerlessV2ScalingConfiguration(
-      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity'] as double).input(),
-      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity'] as double).input(),
+      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity']! as double).input(),
+      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity']! as double).input(),
     );
   }
 }

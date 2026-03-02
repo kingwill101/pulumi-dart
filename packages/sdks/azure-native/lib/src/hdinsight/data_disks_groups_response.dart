@@ -32,7 +32,7 @@ class DataDisksGroupsResponse {
   factory DataDisksGroupsResponse.fromMap(Map<String, dynamic> map) {
     return DataDisksGroupsResponse(
       diskSizeGB: (map['diskSizeGB'] as int).input(),
-      disksPerNode: map['disksPerNode'] == null ? null : (map['disksPerNode'] as int).input(),
+      disksPerNode: map['disksPerNode'] == null ? null : (map['disksPerNode']! as int).input(),
       storageAccountType: (map['storageAccountType'] as String).input(),
     );
   }

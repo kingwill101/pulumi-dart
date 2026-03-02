@@ -52,11 +52,11 @@ class IngressRule {
     return IngressRule(
       appId: (map['appId'] as String).input(),
       appName: (map['appName'] as String).input(),
-      backendProtocol: map['backendProtocol'] == null ? null : (map['backendProtocol'] as String).input(),
+      backendProtocol: map['backendProtocol'] == null ? null : (map['backendProtocol']! as String).input(),
       containerPort: (map['containerPort'] as int).input(),
       domain: (map['domain'] as String).input(),
       path: (map['path'] as String).input(),
-      rewritePath: map['rewritePath'] == null ? null : (map['rewritePath'] as String).input(),
+      rewritePath: map['rewritePath'] == null ? null : (map['rewritePath']! as String).input(),
     );
   }
 }

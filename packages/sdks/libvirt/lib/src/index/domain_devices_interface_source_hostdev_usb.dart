@@ -43,11 +43,11 @@ class DomainDevicesInterfaceSourceHostdevUsb {
 
   factory DomainDevicesInterfaceSourceHostdevUsb.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceHostdevUsb(
-      address: map['address'] == null ? null : (DomainDevicesInterfaceSourceHostdevUsbAddress.fromMap((map['address'] as Map).cast<String, dynamic>())).input(),
-      guestReset: map['guestReset'] == null ? null : (map['guestReset'] as String).input(),
-      product: map['product'] == null ? null : (DomainDevicesInterfaceSourceHostdevUsbProduct.fromMap((map['product'] as Map).cast<String, dynamic>())).input(),
-      startUpPolicy: map['startUpPolicy'] == null ? null : (map['startUpPolicy'] as String).input(),
-      vendor: map['vendor'] == null ? null : (DomainDevicesInterfaceSourceHostdevUsbVendor.fromMap((map['vendor'] as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : (DomainDevicesInterfaceSourceHostdevUsbAddress.fromMap((map['address']! as Map).cast<String, dynamic>())).input(),
+      guestReset: map['guestReset'] == null ? null : (map['guestReset']! as String).input(),
+      product: map['product'] == null ? null : (DomainDevicesInterfaceSourceHostdevUsbProduct.fromMap((map['product']! as Map).cast<String, dynamic>())).input(),
+      startUpPolicy: map['startUpPolicy'] == null ? null : (map['startUpPolicy']! as String).input(),
+      vendor: map['vendor'] == null ? null : (DomainDevicesInterfaceSourceHostdevUsbVendor.fromMap((map['vendor']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

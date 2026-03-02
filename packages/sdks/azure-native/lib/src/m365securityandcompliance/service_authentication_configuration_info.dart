@@ -31,9 +31,9 @@ class ServiceAuthenticationConfigurationInfo {
 
   factory ServiceAuthenticationConfigurationInfo.fromMap(Map<String, dynamic> map) {
     return ServiceAuthenticationConfigurationInfo(
-      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
-      authority: map['authority'] == null ? null : (map['authority'] as String).input(),
-      smartProxyEnabled: map['smartProxyEnabled'] == null ? null : (map['smartProxyEnabled'] as bool).input(),
+      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
+      authority: map['authority'] == null ? null : (map['authority']! as String).input(),
+      smartProxyEnabled: map['smartProxyEnabled'] == null ? null : (map['smartProxyEnabled']! as bool).input(),
     );
   }
 }

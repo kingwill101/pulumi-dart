@@ -66,14 +66,14 @@ class ConsoleArgs {
 
   factory ConsoleArgs.fromMap(Map<String, dynamic> map) {
     return ConsoleArgs(
-      consoleName: map['consoleName'] == null ? null : (map['consoleName'] as String).input(),
+      consoleName: map['consoleName'] == null ? null : (map['consoleName']! as String).input(),
       enabled: (map['enabled'] as String).input(),
-      expiration: map['expiration'] == null ? null : (map['expiration'] as String).input(),
+      expiration: map['expiration'] == null ? null : (map['expiration']! as String).input(),
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sshPublicKey: (SshPublicKey.fromMap((map['sshPublicKey'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       virtualMachineName: (map['virtualMachineName'] as String).input(),
     );
   }

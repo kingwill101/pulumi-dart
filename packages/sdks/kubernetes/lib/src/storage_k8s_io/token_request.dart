@@ -27,7 +27,7 @@ class TokenRequest {
   factory TokenRequest.fromMap(Map<String, dynamic> map) {
     return TokenRequest(
       audience: (map['audience'] as String).input(),
-      expirationSeconds: map['expirationSeconds'] == null ? null : (map['expirationSeconds'] as int).input(),
+      expirationSeconds: map['expirationSeconds'] == null ? null : (map['expirationSeconds']! as int).input(),
     );
   }
 }

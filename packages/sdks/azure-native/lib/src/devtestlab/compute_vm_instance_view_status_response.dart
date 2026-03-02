@@ -31,9 +31,9 @@ class ComputeVmInstanceViewStatusResponse {
 
   factory ComputeVmInstanceViewStatusResponse.fromMap(Map<String, dynamic> map) {
     return ComputeVmInstanceViewStatusResponse(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      displayStatus: map['displayStatus'] == null ? null : (map['displayStatus'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      displayStatus: map['displayStatus'] == null ? null : (map['displayStatus']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

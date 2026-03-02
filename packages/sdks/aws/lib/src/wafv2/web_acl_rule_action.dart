@@ -45,11 +45,11 @@ class WebAclRuleAction {
 
   factory WebAclRuleAction.fromMap(Map<String, dynamic> map) {
     return WebAclRuleAction(
-      allow: map['allow'] == null ? null : (WebAclRuleActionAllow.fromMap((map['allow'] as Map).cast<String, dynamic>())).input(),
-      block: map['block'] == null ? null : (WebAclRuleActionBlock.fromMap((map['block'] as Map).cast<String, dynamic>())).input(),
-      captcha: map['captcha'] == null ? null : (WebAclRuleActionCaptcha.fromMap((map['captcha'] as Map).cast<String, dynamic>())).input(),
-      challenge: map['challenge'] == null ? null : (WebAclRuleActionChallenge.fromMap((map['challenge'] as Map).cast<String, dynamic>())).input(),
-      count: map['count'] == null ? null : (WebAclRuleActionCount.fromMap((map['count'] as Map).cast<String, dynamic>())).input(),
+      allow: map['allow'] == null ? null : ((WebAclRuleActionAllow.fromMap((map['allow']! as Map).cast<String, dynamic>())).input()).input(),
+      block: map['block'] == null ? null : ((WebAclRuleActionBlock.fromMap((map['block']! as Map).cast<String, dynamic>())).input()).input(),
+      captcha: map['captcha'] == null ? null : ((WebAclRuleActionCaptcha.fromMap((map['captcha']! as Map).cast<String, dynamic>())).input()).input(),
+      challenge: map['challenge'] == null ? null : ((WebAclRuleActionChallenge.fromMap((map['challenge']! as Map).cast<String, dynamic>())).input()).input(),
+      count: map['count'] == null ? null : ((WebAclRuleActionCount.fromMap((map['count']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

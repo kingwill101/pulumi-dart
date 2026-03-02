@@ -73,15 +73,15 @@ class CertificateTemplateArgs {
 
   factory CertificateTemplateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateTemplateArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      identityConstraints: map['identityConstraints'] == null ? null : (CertificateTemplateIdentityConstraints.fromMap((map['identityConstraints'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      identityConstraints: map['identityConstraints'] == null ? null : (CertificateTemplateIdentityConstraints.fromMap((map['identityConstraints']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      maximumLifetime: map['maximumLifetime'] == null ? null : (map['maximumLifetime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      passthroughExtensions: map['passthroughExtensions'] == null ? null : (CertificateTemplatePassthroughExtensions.fromMap((map['passthroughExtensions'] as Map).cast<String, dynamic>())).input(),
-      predefinedValues: map['predefinedValues'] == null ? null : (CertificateTemplatePredefinedValues.fromMap((map['predefinedValues'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      maximumLifetime: map['maximumLifetime'] == null ? null : (map['maximumLifetime']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      passthroughExtensions: map['passthroughExtensions'] == null ? null : (CertificateTemplatePassthroughExtensions.fromMap((map['passthroughExtensions']! as Map).cast<String, dynamic>())).input(),
+      predefinedValues: map['predefinedValues'] == null ? null : (CertificateTemplatePredefinedValues.fromMap((map['predefinedValues']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

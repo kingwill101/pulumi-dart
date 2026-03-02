@@ -31,9 +31,9 @@ class NetworkPolicyPortPatch {
 
   factory NetworkPolicyPortPatch.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyPortPatch(
-      endPort: map['endPort'] == null ? null : (map['endPort'] as int).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      endPort: map['endPort'] == null ? null : (map['endPort']! as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
     );
   }
 }

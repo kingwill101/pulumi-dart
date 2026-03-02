@@ -43,10 +43,10 @@ class WorkspaceEnhancedSecurityCompliance {
 
   factory WorkspaceEnhancedSecurityCompliance.fromMap(Map<String, dynamic> map) {
     return WorkspaceEnhancedSecurityCompliance(
-      automaticClusterUpdateEnabled: map['automaticClusterUpdateEnabled'] == null ? null : (map['automaticClusterUpdateEnabled'] as bool).input(),
-      complianceSecurityProfileEnabled: map['complianceSecurityProfileEnabled'] == null ? null : (map['complianceSecurityProfileEnabled'] as bool).input(),
-      complianceSecurityProfileStandards: map['complianceSecurityProfileStandards'] == null ? null : ((map['complianceSecurityProfileStandards'] as List).cast<String>()).input(),
-      enhancedSecurityMonitoringEnabled: map['enhancedSecurityMonitoringEnabled'] == null ? null : (map['enhancedSecurityMonitoringEnabled'] as bool).input(),
+      automaticClusterUpdateEnabled: map['automaticClusterUpdateEnabled'] == null ? null : (map['automaticClusterUpdateEnabled']! as bool).input(),
+      complianceSecurityProfileEnabled: map['complianceSecurityProfileEnabled'] == null ? null : (map['complianceSecurityProfileEnabled']! as bool).input(),
+      complianceSecurityProfileStandards: map['complianceSecurityProfileStandards'] == null ? null : ((map['complianceSecurityProfileStandards']! as List).cast<String>()).input(),
+      enhancedSecurityMonitoringEnabled: map['enhancedSecurityMonitoringEnabled'] == null ? null : (map['enhancedSecurityMonitoringEnabled']! as bool).input(),
     );
   }
 }

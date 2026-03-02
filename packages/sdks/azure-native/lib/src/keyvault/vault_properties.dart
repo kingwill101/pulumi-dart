@@ -86,18 +86,18 @@ class VaultProperties {
 
   factory VaultProperties.fromMap(Map<String, dynamic> map) {
     return VaultProperties(
-      accessPolicies: map['accessPolicies'] == null ? null : (pulumi.Input.decodeList<AccessPolicyEntry>(map['accessPolicies'], (value) => AccessPolicyEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createMode: map['createMode'] == null ? null : (CreateMode.fromValue(map['createMode'] as String)).input(),
-      enablePurgeProtection: map['enablePurgeProtection'] == null ? null : (map['enablePurgeProtection'] as bool).input(),
-      enableRbacAuthorization: map['enableRbacAuthorization'] == null ? null : (map['enableRbacAuthorization'] as bool).input(),
-      enableSoftDelete: map['enableSoftDelete'] == null ? null : (map['enableSoftDelete'] as bool).input(),
-      enabledForDeployment: map['enabledForDeployment'] == null ? null : (map['enabledForDeployment'] as bool).input(),
-      enabledForDiskEncryption: map['enabledForDiskEncryption'] == null ? null : (map['enabledForDiskEncryption'] as bool).input(),
-      enabledForTemplateDeployment: map['enabledForTemplateDeployment'] == null ? null : (map['enabledForTemplateDeployment'] as bool).input(),
-      networkAcls: map['networkAcls'] == null ? null : (NetworkRuleSet.fromMap((map['networkAcls'] as Map).cast<String, dynamic>())).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      accessPolicies: map['accessPolicies'] == null ? null : (pulumi.Input.decodeList<AccessPolicyEntry>(map['accessPolicies']!, (value) => AccessPolicyEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createMode: map['createMode'] == null ? null : (CreateMode.fromValue(map['createMode']! as String)).input(),
+      enablePurgeProtection: map['enablePurgeProtection'] == null ? null : (map['enablePurgeProtection']! as bool).input(),
+      enableRbacAuthorization: map['enableRbacAuthorization'] == null ? null : (map['enableRbacAuthorization']! as bool).input(),
+      enableSoftDelete: map['enableSoftDelete'] == null ? null : (map['enableSoftDelete']! as bool).input(),
+      enabledForDeployment: map['enabledForDeployment'] == null ? null : (map['enabledForDeployment']! as bool).input(),
+      enabledForDiskEncryption: map['enabledForDiskEncryption'] == null ? null : (map['enabledForDiskEncryption']! as bool).input(),
+      enabledForTemplateDeployment: map['enabledForTemplateDeployment'] == null ? null : (map['enabledForTemplateDeployment']! as bool).input(),
+      networkAcls: map['networkAcls'] == null ? null : (NetworkRuleSet.fromMap((map['networkAcls']! as Map).cast<String, dynamic>())).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      softDeleteRetentionInDays: map['softDeleteRetentionInDays'] == null ? null : (map['softDeleteRetentionInDays'] as int).input(),
+      softDeleteRetentionInDays: map['softDeleteRetentionInDays'] == null ? null : (map['softDeleteRetentionInDays']! as int).input(),
       tenantId: (map['tenantId'] as String).input(),
     );
   }

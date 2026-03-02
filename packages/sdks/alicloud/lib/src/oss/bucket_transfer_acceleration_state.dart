@@ -26,8 +26,8 @@ class BucketTransferAccelerationState {
 
   factory BucketTransferAccelerationState.fromMap(Map<String, dynamic> map) {
     return BucketTransferAccelerationState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

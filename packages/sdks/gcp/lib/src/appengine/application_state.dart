@@ -102,21 +102,21 @@ class ApplicationState {
 
   factory ApplicationState.fromMap(Map<String, dynamic> map) {
     return ApplicationState(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      authDomain: map['authDomain'] == null ? null : (map['authDomain'] as String).input(),
-      codeBucket: map['codeBucket'] == null ? null : (map['codeBucket'] as String).input(),
-      databaseType: map['databaseType'] == null ? null : (map['databaseType'] as String).input(),
-      defaultBucket: map['defaultBucket'] == null ? null : (map['defaultBucket'] as String).input(),
-      defaultHostname: map['defaultHostname'] == null ? null : (map['defaultHostname'] as String).input(),
-      featureSettings: map['featureSettings'] == null ? null : (ApplicationFeatureSettings.fromMap((map['featureSettings'] as Map).cast<String, dynamic>())).input(),
-      gcrDomain: map['gcrDomain'] == null ? null : (map['gcrDomain'] as String).input(),
-      iap: map['iap'] == null ? null : (ApplicationIap.fromMap((map['iap'] as Map).cast<String, dynamic>())).input(),
-      locationId: map['locationId'] == null ? null : (map['locationId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      servingStatus: map['servingStatus'] == null ? null : (map['servingStatus'] as String).input(),
-      sslPolicy: map['sslPolicy'] == null ? null : (map['sslPolicy'] as String).input(),
-      urlDispatchRules: map['urlDispatchRules'] == null ? null : (pulumi.Input.decodeList<ApplicationUrlDispatchRule>(map['urlDispatchRules'], (value) => ApplicationUrlDispatchRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      authDomain: map['authDomain'] == null ? null : (map['authDomain']! as String).input(),
+      codeBucket: map['codeBucket'] == null ? null : (map['codeBucket']! as String).input(),
+      databaseType: map['databaseType'] == null ? null : (map['databaseType']! as String).input(),
+      defaultBucket: map['defaultBucket'] == null ? null : (map['defaultBucket']! as String).input(),
+      defaultHostname: map['defaultHostname'] == null ? null : (map['defaultHostname']! as String).input(),
+      featureSettings: map['featureSettings'] == null ? null : (ApplicationFeatureSettings.fromMap((map['featureSettings']! as Map).cast<String, dynamic>())).input(),
+      gcrDomain: map['gcrDomain'] == null ? null : (map['gcrDomain']! as String).input(),
+      iap: map['iap'] == null ? null : (ApplicationIap.fromMap((map['iap']! as Map).cast<String, dynamic>())).input(),
+      locationId: map['locationId'] == null ? null : (map['locationId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      servingStatus: map['servingStatus'] == null ? null : (map['servingStatus']! as String).input(),
+      sslPolicy: map['sslPolicy'] == null ? null : (map['sslPolicy']! as String).input(),
+      urlDispatchRules: map['urlDispatchRules'] == null ? null : (pulumi.Input.decodeList<ApplicationUrlDispatchRule>(map['urlDispatchRules']!, (value) => ApplicationUrlDispatchRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

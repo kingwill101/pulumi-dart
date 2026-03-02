@@ -26,8 +26,8 @@ class GoogleCloudIdentitytoolkitAdminV2SpConfig {
 
   factory GoogleCloudIdentitytoolkitAdminV2SpConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2SpConfig(
-      callbackUri: map['callbackUri'] == null ? null : (map['callbackUri'] as String).input(),
-      spEntityId: map['spEntityId'] == null ? null : (map['spEntityId'] as String).input(),
+      callbackUri: map['callbackUri'] == null ? null : (map['callbackUri']! as String).input(),
+      spEntityId: map['spEntityId'] == null ? null : (map['spEntityId']! as String).input(),
     );
   }
 }

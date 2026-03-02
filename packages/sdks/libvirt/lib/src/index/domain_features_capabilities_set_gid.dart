@@ -20,7 +20,7 @@ class DomainFeaturesCapabilitiesSetGid {
 
   factory DomainFeaturesCapabilitiesSetGid.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesSetGid(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

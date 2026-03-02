@@ -25,8 +25,8 @@ class DomainFeaturesTcg {
 
   factory DomainFeaturesTcg.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesTcg(
-      tbCache: map['tbCache'] == null ? null : (map['tbCache'] as double).input(),
-      tbCacheUnit: map['tbCacheUnit'] == null ? null : (map['tbCacheUnit'] as String).input(),
+      tbCache: map['tbCache'] == null ? null : (map['tbCache']! as double).input(),
+      tbCacheUnit: map['tbCacheUnit'] == null ? null : (map['tbCacheUnit']! as String).input(),
     );
   }
 }

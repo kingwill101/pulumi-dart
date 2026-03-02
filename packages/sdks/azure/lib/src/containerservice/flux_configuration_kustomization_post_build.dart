@@ -26,8 +26,8 @@ class FluxConfigurationKustomizationPostBuild {
 
   factory FluxConfigurationKustomizationPostBuild.fromMap(Map<String, dynamic> map) {
     return FluxConfigurationKustomizationPostBuild(
-      substitute: map['substitute'] == null ? null : ((map['substitute'] as Map).cast<String, String>()).input(),
-      substituteFroms: map['substituteFroms'] == null ? null : (pulumi.Input.decodeList<FluxConfigurationKustomizationPostBuildSubstituteFrom>(map['substituteFroms'], (value) => FluxConfigurationKustomizationPostBuildSubstituteFrom.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      substitute: map['substitute'] == null ? null : ((map['substitute']! as Map).cast<String, String>()).input(),
+      substituteFroms: map['substituteFroms'] == null ? null : (pulumi.Input.decodeList<FluxConfigurationKustomizationPostBuildSubstituteFrom>(map['substituteFroms']!, (value) => FluxConfigurationKustomizationPostBuildSubstituteFrom.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

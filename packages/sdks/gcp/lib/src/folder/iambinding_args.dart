@@ -47,7 +47,7 @@ class IAMBindingArgs {
 
   factory IAMBindingArgs.fromMap(Map<String, dynamic> map) {
     return IAMBindingArgs(
-      condition: map['condition'] == null ? null : (IAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (IAMBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       folder: (map['folder'] as String).input(),
       members: ((map['members'] as List).cast<String>()).input(),
       role: (map['role'] as String).input(),

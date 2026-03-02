@@ -27,8 +27,8 @@ class GooglePrivacyDlpV2InfoTypeLimit {
 
   factory GooglePrivacyDlpV2InfoTypeLimit.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2InfoTypeLimit(
-      infoType: map['infoType'] == null ? null : (GooglePrivacyDlpV2InfoType.fromMap((map['infoType'] as Map).cast<String, dynamic>())).input(),
-      maxFindings: map['maxFindings'] == null ? null : (map['maxFindings'] as int).input(),
+      infoType: map['infoType'] == null ? null : (GooglePrivacyDlpV2InfoType.fromMap((map['infoType']! as Map).cast<String, dynamic>())).input(),
+      maxFindings: map['maxFindings'] == null ? null : (map['maxFindings']! as int).input(),
     );
   }
 }

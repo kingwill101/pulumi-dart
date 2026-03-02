@@ -27,7 +27,7 @@ class RatioPart {
 
   factory RatioPart.fromMap(Map<String, dynamic> map) {
     return RatioPart(
-      aggregation: map['aggregation'] == null ? null : (Aggregation.fromMap((map['aggregation'] as Map).cast<String, dynamic>())).input(),
+      aggregation: map['aggregation'] == null ? null : (Aggregation.fromMap((map['aggregation']! as Map).cast<String, dynamic>())).input(),
       filter: (map['filter'] as String).input(),
     );
   }

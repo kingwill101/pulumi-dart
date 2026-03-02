@@ -22,7 +22,7 @@ class AttachedClusterLoggingConfig {
 
   factory AttachedClusterLoggingConfig.fromMap(Map<String, dynamic> map) {
     return AttachedClusterLoggingConfig(
-      componentConfig: map['componentConfig'] == null ? null : (AttachedClusterLoggingConfigComponentConfig.fromMap((map['componentConfig'] as Map).cast<String, dynamic>())).input(),
+      componentConfig: map['componentConfig'] == null ? null : (AttachedClusterLoggingConfigComponentConfig.fromMap((map['componentConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

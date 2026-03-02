@@ -90,21 +90,21 @@ class AzureStorageSectionResponse {
 
   factory AzureStorageSectionResponse.fromMap(Map<String, dynamic> map) {
     return AzureStorageSectionResponse(
-      accountKey: map['accountKey'] == null ? null : (map['accountKey'] as String).input(),
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      areWorkspaceManagedIdentitiesAllowed: map['areWorkspaceManagedIdentitiesAllowed'] == null ? null : (map['areWorkspaceManagedIdentitiesAllowed'] as bool).input(),
-      blobCacheTimeout: map['blobCacheTimeout'] == null ? null : (map['blobCacheTimeout'] as int).input(),
-      clientCredentials: map['clientCredentials'] == null ? null : (ClientCredentialsResponse.fromMap((map['clientCredentials'] as Map).cast<String, dynamic>())).input(),
-      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
-      credential: map['credential'] == null ? null : (map['credential'] as String).input(),
-      credentialType: map['credentialType'] == null ? null : (map['credentialType'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      isSas: map['isSas'] == null ? null : (map['isSas'] as bool).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
-      sasToken: map['sasToken'] == null ? null : (map['sasToken'] as String).input(),
-      serviceDataAccessAuthIdentity: map['serviceDataAccessAuthIdentity'] == null ? null : (map['serviceDataAccessAuthIdentity'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      accountKey: map['accountKey'] == null ? null : (map['accountKey']! as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      areWorkspaceManagedIdentitiesAllowed: map['areWorkspaceManagedIdentitiesAllowed'] == null ? null : (map['areWorkspaceManagedIdentitiesAllowed']! as bool).input(),
+      blobCacheTimeout: map['blobCacheTimeout'] == null ? null : (map['blobCacheTimeout']! as int).input(),
+      clientCredentials: map['clientCredentials'] == null ? null : (ClientCredentialsResponse.fromMap((map['clientCredentials']! as Map).cast<String, dynamic>())).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
+      credential: map['credential'] == null ? null : (map['credential']! as String).input(),
+      credentialType: map['credentialType'] == null ? null : (map['credentialType']! as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      isSas: map['isSas'] == null ? null : (map['isSas']! as bool).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
+      sasToken: map['sasToken'] == null ? null : (map['sasToken']! as String).input(),
+      serviceDataAccessAuthIdentity: map['serviceDataAccessAuthIdentity'] == null ? null : (map['serviceDataAccessAuthIdentity']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

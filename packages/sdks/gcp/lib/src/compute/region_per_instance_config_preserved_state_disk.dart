@@ -44,9 +44,9 @@ class RegionPerInstanceConfigPreservedStateDisk {
 
   factory RegionPerInstanceConfigPreservedStateDisk.fromMap(Map<String, dynamic> map) {
     return RegionPerInstanceConfigPreservedStateDisk(
-      deleteRule: map['deleteRule'] == null ? null : (map['deleteRule'] as String).input(),
+      deleteRule: map['deleteRule'] == null ? null : (map['deleteRule']! as String).input(),
       deviceName: (map['deviceName'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
       source: (map['source'] as String).input(),
     );
   }

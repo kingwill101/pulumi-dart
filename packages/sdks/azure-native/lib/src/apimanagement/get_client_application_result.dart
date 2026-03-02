@@ -66,7 +66,7 @@ class GetClientApplicationResult {
   factory GetClientApplicationResult.fromMap(Map<String, dynamic> map) {
     return GetClientApplicationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       displayName: map['displayName'] as String,
       entraApplicationId: map['entraApplicationId'] as String,
       entraTenantId: map['entraTenantId'] as String,

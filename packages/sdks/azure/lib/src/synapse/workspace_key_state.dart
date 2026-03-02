@@ -38,10 +38,10 @@ class WorkspaceKeyState {
 
   factory WorkspaceKeyState.fromMap(Map<String, dynamic> map) {
     return WorkspaceKeyState(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
-      customerManagedKeyName: map['customerManagedKeyName'] == null ? null : (map['customerManagedKeyName'] as String).input(),
-      customerManagedKeyVersionlessId: map['customerManagedKeyVersionlessId'] == null ? null : (map['customerManagedKeyVersionlessId'] as String).input(),
-      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : (map['synapseWorkspaceId'] as String).input(),
+      active: map['active'] == null ? null : (map['active']! as bool).input(),
+      customerManagedKeyName: map['customerManagedKeyName'] == null ? null : (map['customerManagedKeyName']! as String).input(),
+      customerManagedKeyVersionlessId: map['customerManagedKeyVersionlessId'] == null ? null : (map['customerManagedKeyVersionlessId']! as String).input(),
+      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : (map['synapseWorkspaceId']! as String).input(),
     );
   }
 }

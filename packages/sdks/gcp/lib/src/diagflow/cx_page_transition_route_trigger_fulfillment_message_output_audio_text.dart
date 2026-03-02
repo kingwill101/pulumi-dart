@@ -33,9 +33,9 @@ class CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText {
 
   factory CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText.fromMap(Map<String, dynamic> map) {
     return CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText(
-      allowPlaybackInterruption: map['allowPlaybackInterruption'] == null ? null : (map['allowPlaybackInterruption'] as bool).input(),
-      ssml: map['ssml'] == null ? null : (map['ssml'] as String).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      allowPlaybackInterruption: map['allowPlaybackInterruption'] == null ? null : (map['allowPlaybackInterruption']! as bool).input(),
+      ssml: map['ssml'] == null ? null : (map['ssml']! as String).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class AuditPolicyState {
 
   factory AuditPolicyState.fromMap(Map<String, dynamic> map) {
     return AuditPolicyState(
-      auditStatus: map['auditStatus'] == null ? null : (map['auditStatus'] as String).input(),
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      storagePeriod: map['storagePeriod'] == null ? null : (map['storagePeriod'] as int).input(),
+      auditStatus: map['auditStatus'] == null ? null : (map['auditStatus']! as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      storagePeriod: map['storagePeriod'] == null ? null : (map['storagePeriod']! as int).input(),
     );
   }
 }

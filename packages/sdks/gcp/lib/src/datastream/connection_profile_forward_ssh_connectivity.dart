@@ -43,9 +43,9 @@ class ConnectionProfileForwardSshConnectivity {
   factory ConnectionProfileForwardSshConnectivity.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileForwardSshConnectivity(
       hostname: (map['hostname'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
       username: (map['username'] as String).input(),
     );
   }

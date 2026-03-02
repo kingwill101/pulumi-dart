@@ -37,10 +37,10 @@ class V2modelsIntentFulfillmentCodeHook {
 
   factory V2modelsIntentFulfillmentCodeHook.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentFulfillmentCodeHook(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      active: map['active'] == null ? null : ((map['active'] as bool).input()).input(),
       enabled: (map['enabled'] as bool).input(),
-      fulfillmentUpdatesSpecification: map['fulfillmentUpdatesSpecification'] == null ? null : (V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification.fromMap((map['fulfillmentUpdatesSpecification'] as Map).cast<String, dynamic>())).input(),
-      postFulfillmentStatusSpecification: map['postFulfillmentStatusSpecification'] == null ? null : (V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecification.fromMap((map['postFulfillmentStatusSpecification'] as Map).cast<String, dynamic>())).input(),
+      fulfillmentUpdatesSpecification: map['fulfillmentUpdatesSpecification'] == null ? null : ((V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification.fromMap((map['fulfillmentUpdatesSpecification']! as Map).cast<String, dynamic>())).input()).input(),
+      postFulfillmentStatusSpecification: map['postFulfillmentStatusSpecification'] == null ? null : ((V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecification.fromMap((map['postFulfillmentStatusSpecification']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

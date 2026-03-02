@@ -21,7 +21,7 @@ class Predeploy {
 
   factory Predeploy.fromMap(Map<String, dynamic> map) {
     return Predeploy(
-      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
+      actions: map['actions'] == null ? null : ((map['actions']! as List).cast<String>()).input(),
     );
   }
 }

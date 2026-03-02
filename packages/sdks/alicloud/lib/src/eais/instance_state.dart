@@ -82,19 +82,19 @@ class InstanceState {
 
   factory InstanceState.fromMap(Map<String, dynamic> map) {
     return InstanceState(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      environmentVars: map['environmentVars'] == null ? null : (pulumi.Input.decodeList<InstanceEnvironmentVar>(map['environmentVars'], (value) => InstanceEnvironmentVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      environmentVars: map['environmentVars'] == null ? null : (pulumi.Input.decodeList<InstanceEnvironmentVar>(map['environmentVars']!, (value) => InstanceEnvironmentVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

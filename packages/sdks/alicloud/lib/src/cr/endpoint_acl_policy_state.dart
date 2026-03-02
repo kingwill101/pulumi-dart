@@ -41,11 +41,11 @@ class EndpointAclPolicyState {
 
   factory EndpointAclPolicyState.fromMap(Map<String, dynamic> map) {
     return EndpointAclPolicyState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
-      entry: map['entry'] == null ? null : (map['entry'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      moduleName: map['moduleName'] == null ? null : (map['moduleName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
+      entry: map['entry'] == null ? null : (map['entry']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      moduleName: map['moduleName'] == null ? null : (map['moduleName']! as String).input(),
     );
   }
 }

@@ -92,20 +92,20 @@ class GroupPolicyAssignmentState {
 
   factory GroupPolicyAssignmentState.fromMap(Map<String, dynamic> map) {
     return GroupPolicyAssignmentState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enforce: map['enforce'] == null ? null : (map['enforce'] as bool).input(),
-      identity: map['identity'] == null ? null : (GroupPolicyAssignmentIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nonComplianceMessages: map['nonComplianceMessages'] == null ? null : (pulumi.Input.decodeList<GroupPolicyAssignmentNonComplianceMessage>(map['nonComplianceMessages'], (value) => GroupPolicyAssignmentNonComplianceMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      notScopes: map['notScopes'] == null ? null : ((map['notScopes'] as List).cast<String>()).input(),
-      overrides: map['overrides'] == null ? null : (pulumi.Input.decodeList<GroupPolicyAssignmentOverride>(map['overrides'], (value) => GroupPolicyAssignmentOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
-      policyDefinitionId: map['policyDefinitionId'] == null ? null : (map['policyDefinitionId'] as String).input(),
-      resourceSelectors: map['resourceSelectors'] == null ? null : (pulumi.Input.decodeList<GroupPolicyAssignmentResourceSelector>(map['resourceSelectors'], (value) => GroupPolicyAssignmentResourceSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enforce: map['enforce'] == null ? null : (map['enforce']! as bool).input(),
+      identity: map['identity'] == null ? null : (GroupPolicyAssignmentIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId']! as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nonComplianceMessages: map['nonComplianceMessages'] == null ? null : (pulumi.Input.decodeList<GroupPolicyAssignmentNonComplianceMessage>(map['nonComplianceMessages']!, (value) => GroupPolicyAssignmentNonComplianceMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notScopes: map['notScopes'] == null ? null : ((map['notScopes']! as List).cast<String>()).input(),
+      overrides: map['overrides'] == null ? null : (pulumi.Input.decodeList<GroupPolicyAssignmentOverride>(map['overrides']!, (value) => GroupPolicyAssignmentOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']! as String).input(),
+      policyDefinitionId: map['policyDefinitionId'] == null ? null : (map['policyDefinitionId']! as String).input(),
+      resourceSelectors: map['resourceSelectors'] == null ? null : (pulumi.Input.decodeList<GroupPolicyAssignmentResourceSelector>(map['resourceSelectors']!, (value) => GroupPolicyAssignmentResourceSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

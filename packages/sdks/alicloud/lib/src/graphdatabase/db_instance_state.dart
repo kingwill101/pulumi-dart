@@ -92,21 +92,21 @@ class DbInstanceState {
 
   factory DbInstanceState.fromMap(Map<String, dynamic> map) {
     return DbInstanceState(
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      dbInstanceCategory: map['dbInstanceCategory'] == null ? null : (map['dbInstanceCategory'] as String).input(),
-      dbInstanceDescription: map['dbInstanceDescription'] == null ? null : (map['dbInstanceDescription'] as String).input(),
-      dbInstanceIpArrays: map['dbInstanceIpArrays'] == null ? null : (pulumi.Input.decodeList<DbInstanceDbInstanceIpArray>(map['dbInstanceIpArrays'], (value) => DbInstanceDbInstanceIpArray.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dbInstanceNetworkType: map['dbInstanceNetworkType'] == null ? null : (map['dbInstanceNetworkType'] as String).input(),
-      dbInstanceStorageType: map['dbInstanceStorageType'] == null ? null : (map['dbInstanceStorageType'] as String).input(),
-      dbNodeClass: map['dbNodeClass'] == null ? null : (map['dbNodeClass'] as String).input(),
-      dbNodeStorage: map['dbNodeStorage'] == null ? null : (map['dbNodeStorage'] as int).input(),
-      dbVersion: map['dbVersion'] == null ? null : (map['dbVersion'] as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      dbInstanceCategory: map['dbInstanceCategory'] == null ? null : (map['dbInstanceCategory']! as String).input(),
+      dbInstanceDescription: map['dbInstanceDescription'] == null ? null : (map['dbInstanceDescription']! as String).input(),
+      dbInstanceIpArrays: map['dbInstanceIpArrays'] == null ? null : (pulumi.Input.decodeList<DbInstanceDbInstanceIpArray>(map['dbInstanceIpArrays']!, (value) => DbInstanceDbInstanceIpArray.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dbInstanceNetworkType: map['dbInstanceNetworkType'] == null ? null : (map['dbInstanceNetworkType']! as String).input(),
+      dbInstanceStorageType: map['dbInstanceStorageType'] == null ? null : (map['dbInstanceStorageType']! as String).input(),
+      dbNodeClass: map['dbNodeClass'] == null ? null : (map['dbNodeClass']! as String).input(),
+      dbNodeStorage: map['dbNodeStorage'] == null ? null : (map['dbNodeStorage']! as int).input(),
+      dbVersion: map['dbVersion'] == null ? null : (map['dbVersion']! as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

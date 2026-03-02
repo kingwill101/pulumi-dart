@@ -26,7 +26,7 @@ class NetworkIpDhcpRangeLease {
   factory NetworkIpDhcpRangeLease.fromMap(Map<String, dynamic> map) {
     return NetworkIpDhcpRangeLease(
       expiry: (map['expiry'] as double).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      unit: map['unit'] == null ? null : (map['unit']! as String).input(),
     );
   }
 }

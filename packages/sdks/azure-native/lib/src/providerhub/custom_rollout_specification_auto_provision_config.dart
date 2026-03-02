@@ -24,8 +24,8 @@ class CustomRolloutSpecificationAutoProvisionConfig {
 
   factory CustomRolloutSpecificationAutoProvisionConfig.fromMap(Map<String, dynamic> map) {
     return CustomRolloutSpecificationAutoProvisionConfig(
-      resourceGraph: map['resourceGraph'] == null ? null : (map['resourceGraph'] as bool).input(),
-      storage: map['storage'] == null ? null : (map['storage'] as bool).input(),
+      resourceGraph: map['resourceGraph'] == null ? null : (map['resourceGraph']! as bool).input(),
+      storage: map['storage'] == null ? null : (map['storage']! as bool).input(),
     );
   }
 }

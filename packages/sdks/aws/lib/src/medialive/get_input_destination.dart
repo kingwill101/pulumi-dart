@@ -35,7 +35,7 @@ class GetInputDestination {
       ip: (map['ip'] as String).input(),
       port: (map['port'] as String).input(),
       url: (map['url'] as String).input(),
-      vpcs: (pulumi.Input.decodeList<GetInputDestinationVpc>(map['vpcs'], (value) => GetInputDestinationVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcs: (pulumi.Input.decodeList<GetInputDestinationVpc>(map['vpcs']!, (value) => GetInputDestinationVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

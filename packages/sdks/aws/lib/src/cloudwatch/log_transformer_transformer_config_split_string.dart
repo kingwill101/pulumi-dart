@@ -21,7 +21,7 @@ class LogTransformerTransformerConfigSplitString {
 
   factory LogTransformerTransformerConfigSplitString.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigSplitString(
-      entries: (pulumi.Input.decodeList<LogTransformerTransformerConfigSplitStringEntry>(map['entries'], (value) => LogTransformerTransformerConfigSplitStringEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entries: (pulumi.Input.decodeList<LogTransformerTransformerConfigSplitStringEntry>(map['entries']!, (value) => LogTransformerTransformerConfigSplitStringEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

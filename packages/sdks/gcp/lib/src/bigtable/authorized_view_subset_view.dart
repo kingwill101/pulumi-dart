@@ -28,8 +28,8 @@ class AuthorizedViewSubsetView {
 
   factory AuthorizedViewSubsetView.fromMap(Map<String, dynamic> map) {
     return AuthorizedViewSubsetView(
-      familySubsets: map['familySubsets'] == null ? null : (pulumi.Input.decodeList<AuthorizedViewSubsetViewFamilySubset>(map['familySubsets'], (value) => AuthorizedViewSubsetViewFamilySubset.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      rowPrefixes: map['rowPrefixes'] == null ? null : ((map['rowPrefixes'] as List).cast<String>()).input(),
+      familySubsets: map['familySubsets'] == null ? null : (pulumi.Input.decodeList<AuthorizedViewSubsetViewFamilySubset>(map['familySubsets']!, (value) => AuthorizedViewSubsetViewFamilySubset.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rowPrefixes: map['rowPrefixes'] == null ? null : ((map['rowPrefixes']! as List).cast<String>()).input(),
     );
   }
 }

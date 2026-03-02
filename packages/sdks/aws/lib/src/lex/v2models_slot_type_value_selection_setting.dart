@@ -36,8 +36,8 @@ class V2modelsSlotTypeValueSelectionSetting {
 
   factory V2modelsSlotTypeValueSelectionSetting.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotTypeValueSelectionSetting(
-      advancedRecognitionSettings: map['advancedRecognitionSettings'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting>(map['advancedRecognitionSettings'], (value) => V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      regexFilters: map['regexFilters'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotTypeValueSelectionSettingRegexFilter>(map['regexFilters'], (value) => V2modelsSlotTypeValueSelectionSettingRegexFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      advancedRecognitionSettings: map['advancedRecognitionSettings'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting>(map['advancedRecognitionSettings']!, (value) => V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      regexFilters: map['regexFilters'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotTypeValueSelectionSettingRegexFilter>(map['regexFilters']!, (value) => V2modelsSlotTypeValueSelectionSettingRegexFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       resolutionStrategy: (map['resolutionStrategy'] as String).input(),
     );
   }

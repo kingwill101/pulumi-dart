@@ -51,13 +51,13 @@ class DatabaseState {
 
   factory DatabaseState.fromMap(Map<String, dynamic> map) {
     return DatabaseState(
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      hotCachePeriod: map['hotCachePeriod'] == null ? null : (map['hotCachePeriod'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as double).input(),
-      softDeletePeriod: map['softDeletePeriod'] == null ? null : (map['softDeletePeriod'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      hotCachePeriod: map['hotCachePeriod'] == null ? null : (map['hotCachePeriod']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as double).input(),
+      softDeletePeriod: map['softDeletePeriod'] == null ? null : (map['softDeletePeriod']! as String).input(),
     );
   }
 }

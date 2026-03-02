@@ -35,10 +35,10 @@ class StatusCodesRangeBasedTrigger {
 
   factory StatusCodesRangeBasedTrigger.fromMap(Map<String, dynamic> map) {
     return StatusCodesRangeBasedTrigger(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      statusCodes: map['statusCodes'] == null ? null : (map['statusCodes'] as String).input(),
-      timeInterval: map['timeInterval'] == null ? null : (map['timeInterval'] as String).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      statusCodes: map['statusCodes'] == null ? null : (map['statusCodes']! as String).input(),
+      timeInterval: map['timeInterval'] == null ? null : (map['timeInterval']! as String).input(),
     );
   }
 }

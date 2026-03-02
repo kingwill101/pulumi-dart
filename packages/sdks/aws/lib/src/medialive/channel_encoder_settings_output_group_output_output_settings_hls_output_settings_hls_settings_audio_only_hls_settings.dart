@@ -32,10 +32,10 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsS
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettings(
-      audioGroupId: map['audioGroupId'] == null ? null : (map['audioGroupId'] as String).input(),
-      audioOnlyImage: map['audioOnlyImage'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettingsAudioOnlyImage.fromMap((map['audioOnlyImage'] as Map).cast<String, dynamic>())).input(),
-      audioTrackType: map['audioTrackType'] == null ? null : (map['audioTrackType'] as String).input(),
-      segmentType: map['segmentType'] == null ? null : (map['segmentType'] as String).input(),
+      audioGroupId: map['audioGroupId'] == null ? null : ((map['audioGroupId'] as String).input()).input(),
+      audioOnlyImage: map['audioOnlyImage'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettingsAudioOnlyImage.fromMap((map['audioOnlyImage']! as Map).cast<String, dynamic>())).input()).input(),
+      audioTrackType: map['audioTrackType'] == null ? null : ((map['audioTrackType'] as String).input()).input(),
+      segmentType: map['segmentType'] == null ? null : ((map['segmentType'] as String).input()).input(),
     );
   }
 }

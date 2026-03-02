@@ -46,12 +46,12 @@ class VPCRouteEntryNextHop {
 
   factory VPCRouteEntryNextHop.fromMap(Map<String, dynamic> map) {
     return VPCRouteEntryNextHop(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as int).input(),
-      nextHopRegionId: map['nextHopRegionId'] == null ? null : (map['nextHopRegionId'] as String).input(),
-      nextHopRelatedInfo: map['nextHopRelatedInfo'] == null ? null : (VPCRouteEntryNextHopNextHopRelatedInfo.fromMap((map['nextHopRelatedInfo'] as Map).cast<String, dynamic>())).input(),
-      nexthopId: map['nexthopId'] == null ? null : (map['nexthopId'] as String).input(),
-      nexthopType: map['nexthopType'] == null ? null : (map['nexthopType'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as int).input(),
+      nextHopRegionId: map['nextHopRegionId'] == null ? null : (map['nextHopRegionId']! as String).input(),
+      nextHopRelatedInfo: map['nextHopRelatedInfo'] == null ? null : (VPCRouteEntryNextHopNextHopRelatedInfo.fromMap((map['nextHopRelatedInfo']! as Map).cast<String, dynamic>())).input(),
+      nexthopId: map['nexthopId'] == null ? null : (map['nexthopId']! as String).input(),
+      nexthopType: map['nexthopType'] == null ? null : (map['nexthopType']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

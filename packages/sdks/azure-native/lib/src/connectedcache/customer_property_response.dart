@@ -59,8 +59,8 @@ class CustomerPropertyResponse {
 
   factory CustomerPropertyResponse.fromMap(Map<String, dynamic> map) {
     return CustomerPropertyResponse(
-      additionalCustomerProperties: map['additionalCustomerProperties'] == null ? null : (AdditionalCustomerPropertiesResponse.fromMap((map['additionalCustomerProperties'] as Map).cast<String, dynamic>())).input(),
-      customer: map['customer'] == null ? null : (CustomerEntityResponse.fromMap((map['customer'] as Map).cast<String, dynamic>())).input(),
+      additionalCustomerProperties: map['additionalCustomerProperties'] == null ? null : (AdditionalCustomerPropertiesResponse.fromMap((map['additionalCustomerProperties']! as Map).cast<String, dynamic>())).input(),
+      customer: map['customer'] == null ? null : (CustomerEntityResponse.fromMap((map['customer']! as Map).cast<String, dynamic>())).input(),
       error: (ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       status: (map['status'] as String).input(),

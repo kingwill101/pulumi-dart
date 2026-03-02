@@ -36,9 +36,9 @@ class AppVersionSnapshotAppVariableDeclaration {
 
   factory AppVersionSnapshotAppVariableDeclaration.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppVariableDeclaration(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      schemas: map['schemas'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAppVariableDeclarationSchema>(map['schemas'], (value) => AppVersionSnapshotAppVariableDeclarationSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      schemas: map['schemas'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAppVariableDeclarationSchema>(map['schemas']!, (value) => AppVersionSnapshotAppVariableDeclarationSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

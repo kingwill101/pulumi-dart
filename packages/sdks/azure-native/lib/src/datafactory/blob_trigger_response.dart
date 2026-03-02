@@ -59,12 +59,12 @@ class BlobTriggerResponse {
 
   factory BlobTriggerResponse.fromMap(Map<String, dynamic> map) {
     return BlobTriggerResponse(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       folderPath: (map['folderPath'] as String).input(),
       linkedService: (LinkedServiceReferenceResponse.fromMap((map['linkedService'] as Map).cast<String, dynamic>())).input(),
       maxConcurrency: (map['maxConcurrency'] as int).input(),
-      pipelines: map['pipelines'] == null ? null : (pulumi.Input.decodeList<TriggerPipelineReferenceResponse>(map['pipelines'], (value) => TriggerPipelineReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pipelines: map['pipelines'] == null ? null : (pulumi.Input.decodeList<TriggerPipelineReferenceResponse>(map['pipelines']!, (value) => TriggerPipelineReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       runtimeState: (map['runtimeState'] as String).input(),
       type: (map['type'] as String).input(),
     );

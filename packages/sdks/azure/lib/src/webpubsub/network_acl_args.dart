@@ -41,8 +41,8 @@ class NetworkAclArgs {
 
   factory NetworkAclArgs.fromMap(Map<String, dynamic> map) {
     return NetworkAclArgs(
-      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction'] as String).input(),
-      privateEndpoints: map['privateEndpoints'] == null ? null : (pulumi.Input.decodeList<NetworkAclPrivateEndpoint>(map['privateEndpoints'], (value) => NetworkAclPrivateEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction']! as String).input(),
+      privateEndpoints: map['privateEndpoints'] == null ? null : (pulumi.Input.decodeList<NetworkAclPrivateEndpoint>(map['privateEndpoints']!, (value) => NetworkAclPrivateEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
       publicNetwork: (NetworkAclPublicNetwork.fromMap((map['publicNetwork'] as Map).cast<String, dynamic>())).input(),
       webPubsubId: (map['webPubsubId'] as String).input(),
     );

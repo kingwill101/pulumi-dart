@@ -21,7 +21,7 @@ class AssignmentItemResponse {
 
   factory AssignmentItemResponse.fromMap(Map<String, dynamic> map) {
     return AssignmentItemResponse(
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

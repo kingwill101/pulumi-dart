@@ -27,8 +27,8 @@ class InstanceMachineConfig {
 
   factory InstanceMachineConfig.fromMap(Map<String, dynamic> map) {
     return InstanceMachineConfig(
-      cpuCount: map['cpuCount'] == null ? null : (map['cpuCount'] as int).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
+      cpuCount: map['cpuCount'] == null ? null : (map['cpuCount']! as int).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
     );
   }
 }

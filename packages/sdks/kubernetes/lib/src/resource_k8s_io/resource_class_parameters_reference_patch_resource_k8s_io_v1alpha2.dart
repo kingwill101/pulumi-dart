@@ -36,10 +36,10 @@ class ResourceClassParametersReferencePatchResourceK8sIoV1alpha2 {
 
   factory ResourceClassParametersReferencePatchResourceK8sIoV1alpha2.fromMap(Map<String, dynamic> map) {
     return ResourceClassParametersReferencePatchResourceK8sIoV1alpha2(
-      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
     );
   }
 }

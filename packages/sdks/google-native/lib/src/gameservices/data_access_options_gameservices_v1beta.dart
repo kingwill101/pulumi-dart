@@ -21,7 +21,7 @@ class DataAccessOptionsGameservicesV1beta {
 
   factory DataAccessOptionsGameservicesV1beta.fromMap(Map<String, dynamic> map) {
     return DataAccessOptionsGameservicesV1beta(
-      logMode: map['logMode'] == null ? null : (DataAccessOptionsLogModeGameservicesV1beta.fromValue(map['logMode'] as String)).input(),
+      logMode: map['logMode'] == null ? null : (DataAccessOptionsLogModeGameservicesV1beta.fromValue(map['logMode']! as String)).input(),
     );
   }
 }

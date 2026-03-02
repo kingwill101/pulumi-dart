@@ -26,8 +26,8 @@ class PolicyPolicySettingsLogScrubbing {
 
   factory PolicyPolicySettingsLogScrubbing.fromMap(Map<String, dynamic> map) {
     return PolicyPolicySettingsLogScrubbing(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PolicyPolicySettingsLogScrubbingRule>(map['rules'], (value) => PolicyPolicySettingsLogScrubbingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PolicyPolicySettingsLogScrubbingRule>(map['rules']!, (value) => PolicyPolicySettingsLogScrubbingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

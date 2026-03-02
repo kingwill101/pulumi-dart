@@ -31,9 +31,9 @@ class UpdatePrerequisiteResponse {
 
   factory UpdatePrerequisiteResponse.fromMap(Map<String, dynamic> map) {
     return UpdatePrerequisiteResponse(
-      packageName: map['packageName'] == null ? null : (map['packageName'] as String).input(),
-      updateType: map['updateType'] == null ? null : (map['updateType'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      packageName: map['packageName'] == null ? null : (map['packageName']! as String).input(),
+      updateType: map['updateType'] == null ? null : (map['updateType']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

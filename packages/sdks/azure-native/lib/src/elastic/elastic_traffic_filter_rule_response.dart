@@ -41,11 +41,11 @@ class ElasticTrafficFilterRuleResponse {
 
   factory ElasticTrafficFilterRuleResponse.fromMap(Map<String, dynamic> map) {
     return ElasticTrafficFilterRuleResponse(
-      azureEndpointGuid: map['azureEndpointGuid'] == null ? null : (map['azureEndpointGuid'] as String).input(),
-      azureEndpointName: map['azureEndpointName'] == null ? null : (map['azureEndpointName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      azureEndpointGuid: map['azureEndpointGuid'] == null ? null : (map['azureEndpointGuid']! as String).input(),
+      azureEndpointName: map['azureEndpointName'] == null ? null : (map['azureEndpointName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

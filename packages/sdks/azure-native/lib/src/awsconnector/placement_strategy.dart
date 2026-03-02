@@ -26,8 +26,8 @@ class PlacementStrategy {
 
   factory PlacementStrategy.fromMap(Map<String, dynamic> map) {
     return PlacementStrategy(
-      field: map['field'] == null ? null : (map['field'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      field: map['field'] == null ? null : (map['field']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

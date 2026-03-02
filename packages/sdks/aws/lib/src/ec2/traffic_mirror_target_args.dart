@@ -51,12 +51,12 @@ class TrafficMirrorTargetArgs {
 
   factory TrafficMirrorTargetArgs.fromMap(Map<String, dynamic> map) {
     return TrafficMirrorTargetArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      gatewayLoadBalancerEndpointId: map['gatewayLoadBalancerEndpointId'] == null ? null : (map['gatewayLoadBalancerEndpointId'] as String).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
-      networkLoadBalancerArn: map['networkLoadBalancerArn'] == null ? null : (map['networkLoadBalancerArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      gatewayLoadBalancerEndpointId: map['gatewayLoadBalancerEndpointId'] == null ? null : ((map['gatewayLoadBalancerEndpointId'] as String).input()).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : ((map['networkInterfaceId'] as String).input()).input(),
+      networkLoadBalancerArn: map['networkLoadBalancerArn'] == null ? null : ((map['networkLoadBalancerArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

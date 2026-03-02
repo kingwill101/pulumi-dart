@@ -60,14 +60,14 @@ class SessionTemplateArgs {
 
   factory SessionTemplateArgs.fromMap(Map<String, dynamic> map) {
     return SessionTemplateArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      environmentConfig: map['environmentConfig'] == null ? null : (EnvironmentConfig.fromMap((map['environmentConfig'] as Map).cast<String, dynamic>())).input(),
-      jupyterSession: map['jupyterSession'] == null ? null : (JupyterConfig.fromMap((map['jupyterSession'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      runtimeConfig: map['runtimeConfig'] == null ? null : (RuntimeConfig.fromMap((map['runtimeConfig'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      environmentConfig: map['environmentConfig'] == null ? null : (EnvironmentConfig.fromMap((map['environmentConfig']! as Map).cast<String, dynamic>())).input(),
+      jupyterSession: map['jupyterSession'] == null ? null : (JupyterConfig.fromMap((map['jupyterSession']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      runtimeConfig: map['runtimeConfig'] == null ? null : (RuntimeConfig.fromMap((map['runtimeConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

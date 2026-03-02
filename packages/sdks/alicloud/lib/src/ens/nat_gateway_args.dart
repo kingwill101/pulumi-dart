@@ -45,8 +45,8 @@ class NatGatewayArgs {
   factory NatGatewayArgs.fromMap(Map<String, dynamic> map) {
     return NatGatewayArgs(
       ensRegionId: (map['ensRegionId'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      natName: map['natName'] == null ? null : (map['natName'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      natName: map['natName'] == null ? null : (map['natName']! as String).input(),
       networkId: (map['networkId'] as String).input(),
       vswitchId: (map['vswitchId'] as String).input(),
     );

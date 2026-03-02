@@ -94,21 +94,21 @@ class GetLoadBalancersArgs {
 
   factory GetLoadBalancersArgs.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersArgs(
-      addressType: map['addressType'] == null ? null : (map['addressType'] as String).input(),
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      loadBalancerBusinessStatus: map['loadBalancerBusinessStatus'] == null ? null : (map['loadBalancerBusinessStatus'] as String).input(),
-      loadBalancerBussinessStatus: map['loadBalancerBussinessStatus'] == null ? null : (map['loadBalancerBussinessStatus'] as String).input(),
-      loadBalancerIds: map['loadBalancerIds'] == null ? null : ((map['loadBalancerIds'] as List).cast<String>()).input(),
-      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vpcIds: map['vpcIds'] == null ? null : ((map['vpcIds'] as List).cast<String>()).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      addressType: map['addressType'] == null ? null : (map['addressType']! as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      loadBalancerBusinessStatus: map['loadBalancerBusinessStatus'] == null ? null : (map['loadBalancerBusinessStatus']! as String).input(),
+      loadBalancerBussinessStatus: map['loadBalancerBussinessStatus'] == null ? null : (map['loadBalancerBussinessStatus']! as String).input(),
+      loadBalancerIds: map['loadBalancerIds'] == null ? null : ((map['loadBalancerIds']! as List).cast<String>()).input(),
+      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vpcIds: map['vpcIds'] == null ? null : ((map['vpcIds']! as List).cast<String>()).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

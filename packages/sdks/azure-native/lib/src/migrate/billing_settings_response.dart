@@ -26,8 +26,8 @@ class BillingSettingsResponse {
 
   factory BillingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return BillingSettingsResponse(
-      licensingProgram: map['licensingProgram'] == null ? null : (map['licensingProgram'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      licensingProgram: map['licensingProgram'] == null ? null : (map['licensingProgram']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

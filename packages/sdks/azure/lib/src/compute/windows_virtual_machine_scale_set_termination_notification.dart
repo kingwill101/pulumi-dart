@@ -28,7 +28,7 @@ class WindowsVirtualMachineScaleSetTerminationNotification {
   factory WindowsVirtualMachineScaleSetTerminationNotification.fromMap(Map<String, dynamic> map) {
     return WindowsVirtualMachineScaleSetTerminationNotification(
       enabled: (map['enabled'] as bool).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

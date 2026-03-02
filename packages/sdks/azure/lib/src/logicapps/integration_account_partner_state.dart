@@ -42,11 +42,11 @@ class IntegrationAccountPartnerState {
 
   factory IntegrationAccountPartnerState.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountPartnerState(
-      businessIdentities: map['businessIdentities'] == null ? null : (pulumi.Input.decodeList<IntegrationAccountPartnerBusinessIdentity>(map['businessIdentities'], (value) => IntegrationAccountPartnerBusinessIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      integrationAccountName: map['integrationAccountName'] == null ? null : (map['integrationAccountName'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      businessIdentities: map['businessIdentities'] == null ? null : (pulumi.Input.decodeList<IntegrationAccountPartnerBusinessIdentity>(map['businessIdentities']!, (value) => IntegrationAccountPartnerBusinessIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      integrationAccountName: map['integrationAccountName'] == null ? null : (map['integrationAccountName']! as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

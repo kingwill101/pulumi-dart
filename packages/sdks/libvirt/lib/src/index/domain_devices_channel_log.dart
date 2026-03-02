@@ -25,7 +25,7 @@ class DomainDevicesChannelLog {
 
   factory DomainDevicesChannelLog.fromMap(Map<String, dynamic> map) {
     return DomainDevicesChannelLog(
-      append: map['append'] == null ? null : (map['append'] as String).input(),
+      append: map['append'] == null ? null : (map['append']! as String).input(),
       file: (map['file'] as String).input(),
     );
   }

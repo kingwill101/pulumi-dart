@@ -26,8 +26,8 @@ class GitHubWorkflowProfileResponseOidcCredentials {
 
   factory GitHubWorkflowProfileResponseOidcCredentials.fromMap(Map<String, dynamic> map) {
     return GitHubWorkflowProfileResponseOidcCredentials(
-      azureClientId: map['azureClientId'] == null ? null : (map['azureClientId'] as String).input(),
-      azureTenantId: map['azureTenantId'] == null ? null : (map['azureTenantId'] as String).input(),
+      azureClientId: map['azureClientId'] == null ? null : (map['azureClientId']! as String).input(),
+      azureTenantId: map['azureTenantId'] == null ? null : (map['azureTenantId']! as String).input(),
     );
   }
 }

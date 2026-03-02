@@ -81,13 +81,13 @@ class AttachedDiskState {
 
   factory AttachedDiskState.fromMap(Map<String, dynamic> map) {
     return AttachedDiskState(
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
-      disk: map['disk'] == null ? null : (map['disk'] as String).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      interface: map['interface'] == null ? null : (map['interface'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName']! as String).input(),
+      disk: map['disk'] == null ? null : (map['disk']! as String).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      interface: map['interface'] == null ? null : (map['interface']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

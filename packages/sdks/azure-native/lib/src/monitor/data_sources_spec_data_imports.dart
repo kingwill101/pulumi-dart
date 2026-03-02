@@ -22,7 +22,7 @@ class DataSourcesSpecDataImports {
 
   factory DataSourcesSpecDataImports.fromMap(Map<String, dynamic> map) {
     return DataSourcesSpecDataImports(
-      eventHub: map['eventHub'] == null ? null : (DataImportSourcesEventHub.fromMap((map['eventHub'] as Map).cast<String, dynamic>())).input(),
+      eventHub: map['eventHub'] == null ? null : (DataImportSourcesEventHub.fromMap((map['eventHub']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -37,8 +37,8 @@ class GetFirewallsResult {
     return GetFirewallsResult(
       firewalls: pulumi.Input.decodeList<GetFirewallsFirewall>(map['firewalls'], (value) => GetFirewallsFirewall.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      mostRecent: map['mostRecent'] == null ? null : map['mostRecent'] as bool,
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
+      mostRecent: map['mostRecent'] == null ? null : map['mostRecent']! as bool,
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
     );
   }
 }

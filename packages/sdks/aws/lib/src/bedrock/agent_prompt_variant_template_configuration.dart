@@ -27,8 +27,8 @@ class AgentPromptVariantTemplateConfiguration {
 
   factory AgentPromptVariantTemplateConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantTemplateConfiguration(
-      chat: map['chat'] == null ? null : (AgentPromptVariantTemplateConfigurationChat.fromMap((map['chat'] as Map).cast<String, dynamic>())).input(),
-      text: map['text'] == null ? null : (AgentPromptVariantTemplateConfigurationText.fromMap((map['text'] as Map).cast<String, dynamic>())).input(),
+      chat: map['chat'] == null ? null : ((AgentPromptVariantTemplateConfigurationChat.fromMap((map['chat']! as Map).cast<String, dynamic>())).input()).input(),
+      text: map['text'] == null ? null : ((AgentPromptVariantTemplateConfigurationText.fromMap((map['text']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

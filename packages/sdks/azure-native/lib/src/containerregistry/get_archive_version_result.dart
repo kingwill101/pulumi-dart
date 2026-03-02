@@ -51,7 +51,7 @@ class GetArchiveVersionResult {
 
   factory GetArchiveVersionResult.fromMap(Map<String, dynamic> map) {
     return GetArchiveVersionResult(
-      archiveVersionErrorMessage: map['archiveVersionErrorMessage'] == null ? null : map['archiveVersionErrorMessage'] as String,
+      archiveVersionErrorMessage: map['archiveVersionErrorMessage'] == null ? null : map['archiveVersionErrorMessage']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,

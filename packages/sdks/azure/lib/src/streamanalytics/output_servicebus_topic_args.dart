@@ -77,16 +77,16 @@ class OutputServicebusTopicArgs {
 
   factory OutputServicebusTopicArgs.fromMap(Map<String, dynamic> map) {
     return OutputServicebusTopicArgs(
-      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      propertyColumns: map['propertyColumns'] == null ? null : ((map['propertyColumns'] as List).cast<String>()).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      propertyColumns: map['propertyColumns'] == null ? null : ((map['propertyColumns']! as List).cast<String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serialization: (OutputServicebusTopicSerialization.fromMap((map['serialization'] as Map).cast<String, dynamic>())).input(),
       servicebusNamespace: (map['servicebusNamespace'] as String).input(),
-      sharedAccessPolicyKey: map['sharedAccessPolicyKey'] == null ? null : (map['sharedAccessPolicyKey'] as String).input(),
-      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : (map['sharedAccessPolicyName'] as String).input(),
+      sharedAccessPolicyKey: map['sharedAccessPolicyKey'] == null ? null : (map['sharedAccessPolicyKey']! as String).input(),
+      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : (map['sharedAccessPolicyName']! as String).input(),
       streamAnalyticsJobName: (map['streamAnalyticsJobName'] as String).input(),
-      systemPropertyColumns: map['systemPropertyColumns'] == null ? null : ((map['systemPropertyColumns'] as Map).cast<String, String>()).input(),
+      systemPropertyColumns: map['systemPropertyColumns'] == null ? null : ((map['systemPropertyColumns']! as Map).cast<String, String>()).input(),
       topicName: (map['topicName'] as String).input(),
     );
   }

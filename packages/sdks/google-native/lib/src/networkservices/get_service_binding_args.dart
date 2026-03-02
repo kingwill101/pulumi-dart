@@ -32,7 +32,7 @@ class GetServiceBindingArgs {
   factory GetServiceBindingArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceBindingArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serviceBindingId: (map['serviceBindingId'] as String).input(),
     );
   }

@@ -48,11 +48,11 @@ class ReleaseArgs {
   factory ReleaseArgs.fromMap(Map<String, dynamic> map) {
     return ReleaseArgs(
       channelId: (map['channelId'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       siteId: (map['siteId'] as String).input(),
-      type: map['type'] == null ? null : (ReleaseType.fromValue(map['type'] as String)).input(),
-      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
+      type: map['type'] == null ? null : (ReleaseType.fromValue(map['type']! as String)).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class ClusterNodePoolNodeConfigWindowsNodeConfig {
 
   factory ClusterNodePoolNodeConfigWindowsNodeConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeConfigWindowsNodeConfig(
-      osversion: map['osversion'] == null ? null : (map['osversion'] as String).input(),
+      osversion: map['osversion'] == null ? null : (map['osversion']! as String).input(),
     );
   }
 }

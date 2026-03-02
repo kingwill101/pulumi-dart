@@ -71,13 +71,13 @@ class GetSecurityAdminConfigurationResult {
 
   factory GetSecurityAdminConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetSecurityAdminConfigurationResult(
-      applyOnNetworkIntentPolicyBasedServices: map['applyOnNetworkIntentPolicyBasedServices'] == null ? null : (map['applyOnNetworkIntentPolicyBasedServices'] as List).cast<String>(),
+      applyOnNetworkIntentPolicyBasedServices: map['applyOnNetworkIntentPolicyBasedServices'] == null ? null : (map['applyOnNetworkIntentPolicyBasedServices']! as List).cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      networkGroupAddressSpaceAggregationOption: map['networkGroupAddressSpaceAggregationOption'] == null ? null : map['networkGroupAddressSpaceAggregationOption'] as String,
+      networkGroupAddressSpaceAggregationOption: map['networkGroupAddressSpaceAggregationOption'] == null ? null : map['networkGroupAddressSpaceAggregationOption']! as String,
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),

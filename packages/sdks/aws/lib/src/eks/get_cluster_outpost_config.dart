@@ -32,7 +32,7 @@ class GetClusterOutpostConfig {
   factory GetClusterOutpostConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterOutpostConfig(
       controlPlaneInstanceType: (map['controlPlaneInstanceType'] as String).input(),
-      controlPlanePlacements: (pulumi.Input.decodeList<GetClusterOutpostConfigControlPlanePlacement>(map['controlPlanePlacements'], (value) => GetClusterOutpostConfigControlPlanePlacement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      controlPlanePlacements: (pulumi.Input.decodeList<GetClusterOutpostConfigControlPlanePlacement>(map['controlPlanePlacements']!, (value) => GetClusterOutpostConfigControlPlanePlacement.fromMap((value as Map).cast<String, dynamic>()))).input(),
       outpostArns: ((map['outpostArns'] as List).cast<String>()).input(),
     );
   }

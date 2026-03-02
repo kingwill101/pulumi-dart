@@ -25,8 +25,8 @@ class TerminateNotificationProfileResponse {
 
   factory TerminateNotificationProfileResponse.fromMap(Map<String, dynamic> map) {
     return TerminateNotificationProfileResponse(
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      notBeforeTimeout: map['notBeforeTimeout'] == null ? null : (map['notBeforeTimeout'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      notBeforeTimeout: map['notBeforeTimeout'] == null ? null : (map['notBeforeTimeout']! as String).input(),
     );
   }
 }

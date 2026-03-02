@@ -43,10 +43,10 @@ class HyperVCollectorArgs {
 
   factory HyperVCollectorArgs.fromMap(Map<String, dynamic> map) {
     return HyperVCollectorArgs(
-      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
-      hyperVCollectorName: map['hyperVCollectorName'] == null ? null : (map['hyperVCollectorName'] as String).input(),
+      eTag: map['eTag'] == null ? null : (map['eTag']! as String).input(),
+      hyperVCollectorName: map['hyperVCollectorName'] == null ? null : (map['hyperVCollectorName']! as String).input(),
       projectName: (map['projectName'] as String).input(),
-      properties: map['properties'] == null ? null : (CollectorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (CollectorProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

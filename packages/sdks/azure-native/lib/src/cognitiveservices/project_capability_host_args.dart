@@ -46,7 +46,7 @@ class ProjectCapabilityHostArgs {
   factory ProjectCapabilityHostArgs.fromMap(Map<String, dynamic> map) {
     return ProjectCapabilityHostArgs(
       accountName: (map['accountName'] as String).input(),
-      capabilityHostName: map['capabilityHostName'] == null ? null : (map['capabilityHostName'] as String).input(),
+      capabilityHostName: map['capabilityHostName'] == null ? null : (map['capabilityHostName']! as String).input(),
       projectCapabilityHostProperties: (map['projectCapabilityHostProperties'] as ProjectCapabilityHostCognitiveservices).input(),
       projectName: (map['projectName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

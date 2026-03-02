@@ -50,10 +50,10 @@ class ScheduleArgs {
   factory ScheduleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleArgs(
       cronExpression: (map['cronExpression'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
       flowName: (map['flowName'] as String).input(),
-      payload: map['payload'] == null ? null : (map['payload'] as String).input(),
+      payload: map['payload'] == null ? null : (map['payload']! as String).input(),
       scheduleName: (map['scheduleName'] as String).input(),
     );
   }

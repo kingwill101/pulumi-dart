@@ -38,10 +38,10 @@ class GetJobDefinitionEksPropertyPodPropertyVolume {
 
   factory GetJobDefinitionEksPropertyPodPropertyVolume.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionEksPropertyPodPropertyVolume(
-      emptyDirs: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyVolumeEmptyDir>(map['emptyDirs'], (value) => GetJobDefinitionEksPropertyPodPropertyVolumeEmptyDir.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      hostPaths: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyVolumeHostPath>(map['hostPaths'], (value) => GetJobDefinitionEksPropertyPodPropertyVolumeHostPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      emptyDirs: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyVolumeEmptyDir>(map['emptyDirs']!, (value) => GetJobDefinitionEksPropertyPodPropertyVolumeEmptyDir.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hostPaths: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyVolumeHostPath>(map['hostPaths']!, (value) => GetJobDefinitionEksPropertyPodPropertyVolumeHostPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
-      secrets: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyVolumeSecret>(map['secrets'], (value) => GetJobDefinitionEksPropertyPodPropertyVolumeSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secrets: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyVolumeSecret>(map['secrets']!, (value) => GetJobDefinitionEksPropertyPodPropertyVolumeSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

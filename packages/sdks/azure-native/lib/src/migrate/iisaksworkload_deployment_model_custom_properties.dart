@@ -28,7 +28,7 @@ class IISAKSWorkloadDeploymentModelCustomProperties {
 
   factory IISAKSWorkloadDeploymentModelCustomProperties.fromMap(Map<String, dynamic> map) {
     return IISAKSWorkloadDeploymentModelCustomProperties(
-      iisAksWorkloadDeploymentProperties: map['iisAksWorkloadDeploymentProperties'] == null ? null : (IISAKSWorkloadDeployment.fromMap((map['iisAksWorkloadDeploymentProperties'] as Map).cast<String, dynamic>())).input(),
+      iisAksWorkloadDeploymentProperties: map['iisAksWorkloadDeploymentProperties'] == null ? null : (IISAKSWorkloadDeployment.fromMap((map['iisAksWorkloadDeploymentProperties']! as Map).cast<String, dynamic>())).input(),
       instanceType: (map['instanceType'] as String).input(),
     );
   }

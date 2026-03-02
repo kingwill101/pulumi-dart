@@ -28,8 +28,8 @@ class ConnectionEventingRuntimeData {
 
   factory ConnectionEventingRuntimeData.fromMap(Map<String, dynamic> map) {
     return ConnectionEventingRuntimeData(
-      eventsListenerEndpoint: map['eventsListenerEndpoint'] == null ? null : (map['eventsListenerEndpoint'] as String).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<ConnectionEventingRuntimeDataStatus>(map['statuses'], (value) => ConnectionEventingRuntimeDataStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eventsListenerEndpoint: map['eventsListenerEndpoint'] == null ? null : (map['eventsListenerEndpoint']! as String).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<ConnectionEventingRuntimeDataStatus>(map['statuses']!, (value) => ConnectionEventingRuntimeDataStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

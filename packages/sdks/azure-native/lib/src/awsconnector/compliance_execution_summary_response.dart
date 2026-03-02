@@ -31,9 +31,9 @@ class ComplianceExecutionSummaryResponse {
 
   factory ComplianceExecutionSummaryResponse.fromMap(Map<String, dynamic> map) {
     return ComplianceExecutionSummaryResponse(
-      executionId: map['executionId'] == null ? null : (map['executionId'] as String).input(),
-      executionTime: map['executionTime'] == null ? null : (map['executionTime'] as String).input(),
-      executionType: map['executionType'] == null ? null : (map['executionType'] as String).input(),
+      executionId: map['executionId'] == null ? null : (map['executionId']! as String).input(),
+      executionTime: map['executionTime'] == null ? null : (map['executionTime']! as String).input(),
+      executionType: map['executionType'] == null ? null : (map['executionType']! as String).input(),
     );
   }
 }

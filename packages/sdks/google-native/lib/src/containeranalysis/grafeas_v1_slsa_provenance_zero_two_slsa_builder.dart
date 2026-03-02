@@ -20,7 +20,7 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder {
 
   factory GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder.fromMap(Map<String, dynamic> map) {
     return GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

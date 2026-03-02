@@ -22,7 +22,7 @@ class AiIndexEndpointDeployedIndexDeployedIndexAuthConfig {
 
   factory AiIndexEndpointDeployedIndexDeployedIndexAuthConfig.fromMap(Map<String, dynamic> map) {
     return AiIndexEndpointDeployedIndexDeployedIndexAuthConfig(
-      authProvider: map['authProvider'] == null ? null : (AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider.fromMap((map['authProvider'] as Map).cast<String, dynamic>())).input(),
+      authProvider: map['authProvider'] == null ? null : (AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider.fromMap((map['authProvider']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

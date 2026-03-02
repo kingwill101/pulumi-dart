@@ -52,13 +52,13 @@ class TopicIngestionDataSourceSettingsAzureEventHubs {
 
   factory TopicIngestionDataSourceSettingsAzureEventHubs.fromMap(Map<String, dynamic> map) {
     return TopicIngestionDataSourceSettingsAzureEventHubs(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      eventHub: map['eventHub'] == null ? null : (map['eventHub'] as String).input(),
-      gcpServiceAccount: map['gcpServiceAccount'] == null ? null : (map['gcpServiceAccount'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      eventHub: map['eventHub'] == null ? null : (map['eventHub']! as String).input(),
+      gcpServiceAccount: map['gcpServiceAccount'] == null ? null : (map['gcpServiceAccount']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

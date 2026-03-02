@@ -20,7 +20,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff {
 
   factory CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff.fromMap(Map<String, dynamic> map) {
     return CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff(
-      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']! as String).input(),
     );
   }
 }

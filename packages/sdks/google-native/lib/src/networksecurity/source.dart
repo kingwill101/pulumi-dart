@@ -26,8 +26,8 @@ class Source {
 
   factory Source.fromMap(Map<String, dynamic> map) {
     return Source(
-      ipBlocks: map['ipBlocks'] == null ? null : ((map['ipBlocks'] as List).cast<String>()).input(),
-      principals: map['principals'] == null ? null : ((map['principals'] as List).cast<String>()).input(),
+      ipBlocks: map['ipBlocks'] == null ? null : ((map['ipBlocks']! as List).cast<String>()).input(),
+      principals: map['principals'] == null ? null : ((map['principals']! as List).cast<String>()).input(),
     );
   }
 }

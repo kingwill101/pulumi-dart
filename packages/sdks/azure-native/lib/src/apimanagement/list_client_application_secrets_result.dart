@@ -21,7 +21,7 @@ class ListClientApplicationSecretsResult {
 
   factory ListClientApplicationSecretsResult.fromMap(Map<String, dynamic> map) {
     return ListClientApplicationSecretsResult(
-      entra: map['entra'] == null ? null : ClientApplicationSecretsContractResponseEntra.fromMap((map['entra'] as Map).cast<String, dynamic>()),
+      entra: map['entra'] == null ? null : ClientApplicationSecretsContractResponseEntra.fromMap((map['entra']! as Map).cast<String, dynamic>()),
     );
   }
 }

@@ -38,7 +38,7 @@ class AzureStorageBlobContainerEndpointProperties {
   factory AzureStorageBlobContainerEndpointProperties.fromMap(Map<String, dynamic> map) {
     return AzureStorageBlobContainerEndpointProperties(
       blobContainerName: (map['blobContainerName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       endpointType: (map['endpointType'] as String).input(),
       storageAccountResourceId: (map['storageAccountResourceId'] as String).input(),
     );

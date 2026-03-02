@@ -36,8 +36,8 @@ class GetServiceLbPolicyIamPolicyArgs {
   factory GetServiceLbPolicyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceLbPolicyIamPolicyArgs(
       location: (map['location'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serviceLbPolicyId: (map['serviceLbPolicyId'] as String).input(),
     );
   }

@@ -97,20 +97,20 @@ class ObjectStorageBucketState {
 
   factory ObjectStorageBucketState.fromMap(Map<String, dynamic> map) {
     return ObjectStorageBucketState(
-      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
-      acl: map['acl'] == null ? null : (map['acl'] as String).input(),
-      cert: map['cert'] == null ? null : (ObjectStorageBucketCert.fromMap((map['cert'] as Map).cast<String, dynamic>())).input(),
-      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
-      corsEnabled: map['corsEnabled'] == null ? null : (map['corsEnabled'] as bool).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      lifecycleRules: map['lifecycleRules'] == null ? null : (pulumi.Input.decodeList<ObjectStorageBucketLifecycleRule>(map['lifecycleRules'], (value) => ObjectStorageBucketLifecycleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      s3Endpoint: map['s3Endpoint'] == null ? null : (map['s3Endpoint'] as String).input(),
-      secretKey: map['secretKey'] == null ? null : (map['secretKey'] as String).input(),
-      versioning: map['versioning'] == null ? null : (map['versioning'] as bool).input(),
+      accessKey: map['accessKey'] == null ? null : (map['accessKey']! as String).input(),
+      acl: map['acl'] == null ? null : (map['acl']! as String).input(),
+      cert: map['cert'] == null ? null : (ObjectStorageBucketCert.fromMap((map['cert']! as Map).cast<String, dynamic>())).input(),
+      cluster: map['cluster'] == null ? null : (map['cluster']! as String).input(),
+      corsEnabled: map['corsEnabled'] == null ? null : (map['corsEnabled']! as bool).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      lifecycleRules: map['lifecycleRules'] == null ? null : (pulumi.Input.decodeList<ObjectStorageBucketLifecycleRule>(map['lifecycleRules']!, (value) => ObjectStorageBucketLifecycleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      s3Endpoint: map['s3Endpoint'] == null ? null : (map['s3Endpoint']! as String).input(),
+      secretKey: map['secretKey'] == null ? null : (map['secretKey']! as String).input(),
+      versioning: map['versioning'] == null ? null : (map['versioning']! as bool).input(),
     );
   }
 }

@@ -47,11 +47,11 @@ class ClusterUpgradePolicyResponse {
 
   factory ClusterUpgradePolicyResponse.fromMap(Map<String, dynamic> map) {
     return ClusterUpgradePolicyResponse(
-      deltaHealthPolicy: map['deltaHealthPolicy'] == null ? null : (ClusterUpgradeDeltaHealthPolicyResponse.fromMap((map['deltaHealthPolicy'] as Map).cast<String, dynamic>())).input(),
-      forceRestart: map['forceRestart'] == null ? null : (map['forceRestart'] as bool).input(),
-      healthPolicy: map['healthPolicy'] == null ? null : (ClusterHealthPolicyResponse.fromMap((map['healthPolicy'] as Map).cast<String, dynamic>())).input(),
-      monitoringPolicy: map['monitoringPolicy'] == null ? null : (ClusterMonitoringPolicyResponse.fromMap((map['monitoringPolicy'] as Map).cast<String, dynamic>())).input(),
-      upgradeReplicaSetCheckTimeout: map['upgradeReplicaSetCheckTimeout'] == null ? null : (map['upgradeReplicaSetCheckTimeout'] as String).input(),
+      deltaHealthPolicy: map['deltaHealthPolicy'] == null ? null : (ClusterUpgradeDeltaHealthPolicyResponse.fromMap((map['deltaHealthPolicy']! as Map).cast<String, dynamic>())).input(),
+      forceRestart: map['forceRestart'] == null ? null : (map['forceRestart']! as bool).input(),
+      healthPolicy: map['healthPolicy'] == null ? null : (ClusterHealthPolicyResponse.fromMap((map['healthPolicy']! as Map).cast<String, dynamic>())).input(),
+      monitoringPolicy: map['monitoringPolicy'] == null ? null : (ClusterMonitoringPolicyResponse.fromMap((map['monitoringPolicy']! as Map).cast<String, dynamic>())).input(),
+      upgradeReplicaSetCheckTimeout: map['upgradeReplicaSetCheckTimeout'] == null ? null : (map['upgradeReplicaSetCheckTimeout']! as String).input(),
     );
   }
 }

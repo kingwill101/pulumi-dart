@@ -36,10 +36,10 @@ class ApiDeploymentState {
 
   factory ApiDeploymentState.fromMap(Map<String, dynamic> map) {
     return ApiDeploymentState(
-      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
-      proxyId: map['proxyId'] == null ? null : (map['proxyId'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as String).input(),
+      environment: map['environment'] == null ? null : (map['environment']! as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
+      proxyId: map['proxyId'] == null ? null : (map['proxyId']! as String).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as String).input(),
     );
   }
 }

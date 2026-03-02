@@ -47,10 +47,10 @@ class DatabaseKafkaTopicArgs {
   factory DatabaseKafkaTopicArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseKafkaTopicArgs(
       clusterId: (map['clusterId'] as String).input(),
-      configs: map['configs'] == null ? null : (pulumi.Input.decodeList<DatabaseKafkaTopicConfig>(map['configs'], (value) => DatabaseKafkaTopicConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount'] as int).input(),
-      replicationFactor: map['replicationFactor'] == null ? null : (map['replicationFactor'] as int).input(),
+      configs: map['configs'] == null ? null : (pulumi.Input.decodeList<DatabaseKafkaTopicConfig>(map['configs']!, (value) => DatabaseKafkaTopicConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount']! as int).input(),
+      replicationFactor: map['replicationFactor'] == null ? null : (map['replicationFactor']! as int).input(),
     );
   }
 }

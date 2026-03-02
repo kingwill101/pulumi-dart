@@ -25,8 +25,8 @@ class GetAppServicePlanServerFarmRdpPasswordResult {
 
   factory GetAppServicePlanServerFarmRdpPasswordResult.fromMap(Map<String, dynamic> map) {
     return GetAppServicePlanServerFarmRdpPasswordResult(
-      rdpPassword: map['rdpPassword'] == null ? null : map['rdpPassword'] as String,
-      rdpPasswordExpiry: map['rdpPasswordExpiry'] == null ? null : map['rdpPasswordExpiry'] as String,
+      rdpPassword: map['rdpPassword'] == null ? null : map['rdpPassword']! as String,
+      rdpPasswordExpiry: map['rdpPasswordExpiry'] == null ? null : map['rdpPasswordExpiry']! as String,
     );
   }
 }

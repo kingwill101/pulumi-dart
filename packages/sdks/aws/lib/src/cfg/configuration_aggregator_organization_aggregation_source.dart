@@ -32,8 +32,8 @@ class ConfigurationAggregatorOrganizationAggregationSource {
 
   factory ConfigurationAggregatorOrganizationAggregationSource.fromMap(Map<String, dynamic> map) {
     return ConfigurationAggregatorOrganizationAggregationSource(
-      allRegions: map['allRegions'] == null ? null : (map['allRegions'] as bool).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      allRegions: map['allRegions'] == null ? null : ((map['allRegions'] as bool).input()).input(),
+      regions: map['regions'] == null ? null : (((map['regions'] as List).cast<String>()).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
     );
   }

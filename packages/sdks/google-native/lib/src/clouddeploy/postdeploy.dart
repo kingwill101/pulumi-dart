@@ -21,7 +21,7 @@ class Postdeploy {
 
   factory Postdeploy.fromMap(Map<String, dynamic> map) {
     return Postdeploy(
-      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
+      actions: map['actions'] == null ? null : ((map['actions']! as List).cast<String>()).input(),
     );
   }
 }

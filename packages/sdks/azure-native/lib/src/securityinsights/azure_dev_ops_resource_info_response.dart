@@ -26,8 +26,8 @@ class AzureDevOpsResourceInfoResponse {
 
   factory AzureDevOpsResourceInfoResponse.fromMap(Map<String, dynamic> map) {
     return AzureDevOpsResourceInfoResponse(
-      pipelineId: map['pipelineId'] == null ? null : (map['pipelineId'] as String).input(),
-      serviceConnectionId: map['serviceConnectionId'] == null ? null : (map['serviceConnectionId'] as String).input(),
+      pipelineId: map['pipelineId'] == null ? null : (map['pipelineId']! as String).input(),
+      serviceConnectionId: map['serviceConnectionId'] == null ? null : (map['serviceConnectionId']! as String).input(),
     );
   }
 }

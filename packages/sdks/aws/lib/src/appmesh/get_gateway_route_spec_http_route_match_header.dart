@@ -30,7 +30,7 @@ class GetGatewayRouteSpecHttpRouteMatchHeader {
   factory GetGatewayRouteSpecHttpRouteMatchHeader.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecHttpRouteMatchHeader(
       invert: (map['invert'] as bool).input(),
-      matches: (pulumi.Input.decodeList<GetGatewayRouteSpecHttpRouteMatchHeaderMatch>(map['matches'], (value) => GetGatewayRouteSpecHttpRouteMatchHeaderMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matches: (pulumi.Input.decodeList<GetGatewayRouteSpecHttpRouteMatchHeaderMatch>(map['matches']!, (value) => GetGatewayRouteSpecHttpRouteMatchHeaderMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
     );
   }

@@ -36,10 +36,10 @@ class ElasticSnapshotPolicyMonthlyScheduleResponse {
 
   factory ElasticSnapshotPolicyMonthlyScheduleResponse.fromMap(Map<String, dynamic> map) {
     return ElasticSnapshotPolicyMonthlyScheduleResponse(
-      daysOfMonth: map['daysOfMonth'] == null ? null : ((map['daysOfMonth'] as List).cast<int>()).input(),
-      hour: map['hour'] == null ? null : (map['hour'] as int).input(),
-      minute: map['minute'] == null ? null : (map['minute'] as int).input(),
-      snapshotsToKeep: map['snapshotsToKeep'] == null ? null : (map['snapshotsToKeep'] as int).input(),
+      daysOfMonth: map['daysOfMonth'] == null ? null : ((map['daysOfMonth']! as List).cast<int>()).input(),
+      hour: map['hour'] == null ? null : (map['hour']! as int).input(),
+      minute: map['minute'] == null ? null : (map['minute']! as int).input(),
+      snapshotsToKeep: map['snapshotsToKeep'] == null ? null : (map['snapshotsToKeep']! as int).input(),
     );
   }
 }

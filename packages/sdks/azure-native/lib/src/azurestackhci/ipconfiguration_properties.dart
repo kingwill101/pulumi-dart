@@ -27,8 +27,8 @@ class IPConfigurationProperties {
 
   factory IPConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return IPConfigurationProperties(
-      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
-      subnet: map['subnet'] == null ? null : (LogicalNetworkArmReference.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress']! as String).input(),
+      subnet: map['subnet'] == null ? null : (LogicalNetworkArmReference.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

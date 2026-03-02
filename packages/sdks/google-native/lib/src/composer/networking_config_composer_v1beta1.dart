@@ -22,7 +22,7 @@ class NetworkingConfigComposerV1beta1 {
 
   factory NetworkingConfigComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return NetworkingConfigComposerV1beta1(
-      connectionType: map['connectionType'] == null ? null : (NetworkingConfigConnectionTypeComposerV1beta1.fromValue(map['connectionType'] as String)).input(),
+      connectionType: map['connectionType'] == null ? null : (NetworkingConfigConnectionTypeComposerV1beta1.fromValue(map['connectionType']! as String)).input(),
     );
   }
 }

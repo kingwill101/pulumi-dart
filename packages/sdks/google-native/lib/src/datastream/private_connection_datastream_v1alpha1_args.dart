@@ -54,12 +54,12 @@ class PrivateConnectionDatastreamV1alpha1Args {
   factory PrivateConnectionDatastreamV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return PrivateConnectionDatastreamV1alpha1Args(
       displayName: (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       privateConnectionId: (map['privateConnectionId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      vpcPeeringConfig: map['vpcPeeringConfig'] == null ? null : (VpcPeeringConfigDatastreamV1alpha1.fromMap((map['vpcPeeringConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      vpcPeeringConfig: map['vpcPeeringConfig'] == null ? null : (VpcPeeringConfigDatastreamV1alpha1.fromMap((map['vpcPeeringConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

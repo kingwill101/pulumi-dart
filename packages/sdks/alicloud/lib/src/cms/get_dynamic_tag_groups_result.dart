@@ -45,9 +45,9 @@ class GetDynamicTagGroupsResult {
       groups: pulumi.Input.decodeList<GetDynamicTagGroupsGroup>(map['groups'], (value) => GetDynamicTagGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tagKey: map['tagKey'] == null ? null : map['tagKey'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      tagKey: map['tagKey'] == null ? null : map['tagKey']! as String,
     );
   }
 }

@@ -26,7 +26,7 @@ class BackupPlanBackupRuleStandardScheduleBackupWindow {
 
   factory BackupPlanBackupRuleStandardScheduleBackupWindow.fromMap(Map<String, dynamic> map) {
     return BackupPlanBackupRuleStandardScheduleBackupWindow(
-      endHourOfDay: map['endHourOfDay'] == null ? null : (map['endHourOfDay'] as int).input(),
+      endHourOfDay: map['endHourOfDay'] == null ? null : (map['endHourOfDay']! as int).input(),
       startHourOfDay: (map['startHourOfDay'] as int).input(),
     );
   }

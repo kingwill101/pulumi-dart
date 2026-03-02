@@ -46,7 +46,7 @@ class VpcEndpointLinkedVpcArgs {
 
   factory VpcEndpointLinkedVpcArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointLinkedVpcArgs(
-      enableCreateDnsRecordInPvzt: map['enableCreateDnsRecordInPvzt'] == null ? null : (map['enableCreateDnsRecordInPvzt'] as bool).input(),
+      enableCreateDnsRecordInPvzt: map['enableCreateDnsRecordInPvzt'] == null ? null : (map['enableCreateDnsRecordInPvzt']! as bool).input(),
       instanceId: (map['instanceId'] as String).input(),
       moduleName: (map['moduleName'] as String).input(),
       vpcId: (map['vpcId'] as String).input(),

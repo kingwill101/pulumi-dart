@@ -26,8 +26,8 @@ class IndexColumnResponse {
 
   factory IndexColumnResponse.fromMap(Map<String, dynamic> map) {
     return IndexColumnResponse(
-      columnName: map['columnName'] == null ? null : (map['columnName'] as String).input(),
-      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
+      columnName: map['columnName'] == null ? null : (map['columnName']! as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ClfsTargetResponse {
 
   factory ClfsTargetResponse.fromMap(Map<String, dynamic> map) {
     return ClfsTargetResponse(
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
     );
   }
 }

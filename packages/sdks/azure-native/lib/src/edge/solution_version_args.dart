@@ -51,11 +51,11 @@ class SolutionVersionArgs {
 
   factory SolutionVersionArgs.fromMap(Map<String, dynamic> map) {
     return SolutionVersionArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : (AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      properties: map['properties'] == null ? null : (SolutionVersionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (SolutionVersionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       solutionName: (map['solutionName'] as String).input(),
-      solutionVersionName: map['solutionVersionName'] == null ? null : (map['solutionVersionName'] as String).input(),
+      solutionVersionName: map['solutionVersionName'] == null ? null : (map['solutionVersionName']! as String).input(),
       targetName: (map['targetName'] as String).input(),
     );
   }

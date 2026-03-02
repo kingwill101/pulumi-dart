@@ -26,7 +26,7 @@ class ClusterClusterConfigAuxiliaryNodeGroup {
 
   factory ClusterClusterConfigAuxiliaryNodeGroup.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigAuxiliaryNodeGroup(
-      nodeGroupId: map['nodeGroupId'] == null ? null : (map['nodeGroupId'] as String).input(),
+      nodeGroupId: map['nodeGroupId'] == null ? null : (map['nodeGroupId']! as String).input(),
       nodeGroups: (pulumi.Input.decodeList<ClusterClusterConfigAuxiliaryNodeGroupNodeGroup>(map['nodeGroups'], (value) => ClusterClusterConfigAuxiliaryNodeGroupNodeGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

@@ -27,8 +27,8 @@ class EnvironmentDeploymentPropertiesResponse {
 
   factory EnvironmentDeploymentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentDeploymentPropertiesResponse(
-      armTemplateId: map['armTemplateId'] == null ? null : (map['armTemplateId'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ArmTemplateParameterPropertiesResponse>(map['parameters'], (value) => ArmTemplateParameterPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      armTemplateId: map['armTemplateId'] == null ? null : (map['armTemplateId']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ArmTemplateParameterPropertiesResponse>(map['parameters']!, (value) => ArmTemplateParameterPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

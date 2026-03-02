@@ -21,7 +21,7 @@ class KubernetesDashboard {
 
   factory KubernetesDashboard.fromMap(Map<String, dynamic> map) {
     return KubernetesDashboard(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
     );
   }
 }

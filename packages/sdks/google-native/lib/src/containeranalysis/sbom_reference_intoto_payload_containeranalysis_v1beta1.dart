@@ -38,10 +38,10 @@ class SbomReferenceIntotoPayloadContaineranalysisV1beta1 {
 
   factory SbomReferenceIntotoPayloadContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return SbomReferenceIntotoPayloadContaineranalysisV1beta1(
-      predicate: map['predicate'] == null ? null : (SbomReferenceIntotoPredicateContaineranalysisV1beta1.fromMap((map['predicate'] as Map).cast<String, dynamic>())).input(),
-      predicateType: map['predicateType'] == null ? null : (map['predicateType'] as String).input(),
-      subject: map['subject'] == null ? null : (pulumi.Input.decodeList<SubjectContaineranalysisV1beta1>(map['subject'], (value) => SubjectContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      predicate: map['predicate'] == null ? null : (SbomReferenceIntotoPredicateContaineranalysisV1beta1.fromMap((map['predicate']! as Map).cast<String, dynamic>())).input(),
+      predicateType: map['predicateType'] == null ? null : (map['predicateType']! as String).input(),
+      subject: map['subject'] == null ? null : (pulumi.Input.decodeList<SubjectContaineranalysisV1beta1>(map['subject']!, (value) => SubjectContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

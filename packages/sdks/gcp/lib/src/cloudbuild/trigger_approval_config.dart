@@ -21,7 +21,7 @@ class TriggerApprovalConfig {
 
   factory TriggerApprovalConfig.fromMap(Map<String, dynamic> map) {
     return TriggerApprovalConfig(
-      approvalRequired: map['approvalRequired'] == null ? null : (map['approvalRequired'] as bool).input(),
+      approvalRequired: map['approvalRequired'] == null ? null : (map['approvalRequired']! as bool).input(),
     );
   }
 }

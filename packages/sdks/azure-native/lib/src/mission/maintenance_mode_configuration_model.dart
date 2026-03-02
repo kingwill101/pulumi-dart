@@ -32,9 +32,9 @@ class MaintenanceModeConfigurationModel {
 
   factory MaintenanceModeConfigurationModel.fromMap(Map<String, dynamic> map) {
     return MaintenanceModeConfigurationModel(
-      justification: map['justification'] == null ? null : (map['justification'] as String).input(),
+      justification: map['justification'] == null ? null : (map['justification']! as String).input(),
       mode: (map['mode'] as String).input(),
-      principals: map['principals'] == null ? null : (pulumi.Input.decodeList<Principal>(map['principals'], (value) => Principal.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      principals: map['principals'] == null ? null : (pulumi.Input.decodeList<Principal>(map['principals']!, (value) => Principal.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

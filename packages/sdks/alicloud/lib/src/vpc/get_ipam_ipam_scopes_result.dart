@@ -77,16 +77,16 @@ class GetIpamIpamScopesResult {
     return GetIpamIpamScopesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      ipamId: map['ipamId'] == null ? null : map['ipamId'] as String,
-      ipamScopeId: map['ipamScopeId'] == null ? null : map['ipamScopeId'] as String,
-      ipamScopeName: map['ipamScopeName'] == null ? null : map['ipamScopeName'] as String,
-      ipamScopeType: map['ipamScopeType'] == null ? null : map['ipamScopeType'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      ipamId: map['ipamId'] == null ? null : map['ipamId']! as String,
+      ipamScopeId: map['ipamScopeId'] == null ? null : map['ipamScopeId']! as String,
+      ipamScopeName: map['ipamScopeName'] == null ? null : map['ipamScopeName']! as String,
+      ipamScopeType: map['ipamScopeType'] == null ? null : map['ipamScopeType']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
       scopes: pulumi.Input.decodeList<GetIpamIpamScopesScope>(map['scopes'], (value) => GetIpamIpamScopesScope.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

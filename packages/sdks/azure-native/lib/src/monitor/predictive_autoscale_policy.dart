@@ -27,7 +27,7 @@ class PredictiveAutoscalePolicy {
 
   factory PredictiveAutoscalePolicy.fromMap(Map<String, dynamic> map) {
     return PredictiveAutoscalePolicy(
-      scaleLookAheadTime: map['scaleLookAheadTime'] == null ? null : (map['scaleLookAheadTime'] as String).input(),
+      scaleLookAheadTime: map['scaleLookAheadTime'] == null ? null : (map['scaleLookAheadTime']! as String).input(),
       scaleMode: (PredictiveAutoscalePolicyScaleMode.fromValue(map['scaleMode'] as String)).input(),
     );
   }

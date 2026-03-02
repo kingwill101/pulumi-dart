@@ -26,7 +26,7 @@ class NetworkSecurityGroupStatusProvisioningStatusResponse {
 
   factory NetworkSecurityGroupStatusProvisioningStatusResponse.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityGroupStatusProvisioningStatusResponse(
-      operationId: map['operationId'] == null ? null : (map['operationId'] as String).input(),
+      operationId: map['operationId'] == null ? null : (map['operationId']! as String).input(),
       status: (map['status'] as String).input(),
     );
   }

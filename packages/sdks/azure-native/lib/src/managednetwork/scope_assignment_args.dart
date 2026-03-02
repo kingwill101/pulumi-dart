@@ -39,10 +39,10 @@ class ScopeAssignmentArgs {
 
   factory ScopeAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return ScopeAssignmentArgs(
-      assignedManagedNetwork: map['assignedManagedNetwork'] == null ? null : (map['assignedManagedNetwork'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      assignedManagedNetwork: map['assignedManagedNetwork'] == null ? null : (map['assignedManagedNetwork']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       scope: (map['scope'] as String).input(),
-      scopeAssignmentName: map['scopeAssignmentName'] == null ? null : (map['scopeAssignmentName'] as String).input(),
+      scopeAssignmentName: map['scopeAssignmentName'] == null ? null : (map['scopeAssignmentName']! as String).input(),
     );
   }
 }

@@ -34,8 +34,8 @@ class StreamInputBlobSerialization {
 
   factory StreamInputBlobSerialization.fromMap(Map<String, dynamic> map) {
     return StreamInputBlobSerialization(
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
-      fieldDelimiter: map['fieldDelimiter'] == null ? null : (map['fieldDelimiter'] as String).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
+      fieldDelimiter: map['fieldDelimiter'] == null ? null : (map['fieldDelimiter']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

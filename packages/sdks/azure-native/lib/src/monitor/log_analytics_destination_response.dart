@@ -32,9 +32,9 @@ class LogAnalyticsDestinationResponse {
 
   factory LogAnalyticsDestinationResponse.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsDestinationResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       workspaceId: (map['workspaceId'] as String).input(),
-      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId'] as String).input(),
+      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId']! as String).input(),
     );
   }
 }

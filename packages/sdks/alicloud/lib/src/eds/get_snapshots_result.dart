@@ -50,13 +50,13 @@ class GetSnapshotsResult {
 
   factory GetSnapshotsResult.fromMap(Map<String, dynamic> map) {
     return GetSnapshotsResult(
-      desktopId: map['desktopId'] == null ? null : map['desktopId'] as String,
+      desktopId: map['desktopId'] == null ? null : map['desktopId']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      snapshotId: map['snapshotId'] == null ? null : map['snapshotId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      snapshotId: map['snapshotId'] == null ? null : map['snapshotId']! as String,
       snapshots: pulumi.Input.decodeList<GetSnapshotsSnapshot>(map['snapshots'], (value) => GetSnapshotsSnapshot.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

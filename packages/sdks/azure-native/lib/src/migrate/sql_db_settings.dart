@@ -36,10 +36,10 @@ class SqlDbSettings {
 
   factory SqlDbSettings.fromMap(Map<String, dynamic> map) {
     return SqlDbSettings(
-      azureSqlComputeTier: map['azureSqlComputeTier'] == null ? null : (map['azureSqlComputeTier'] as String).input(),
-      azureSqlDataBaseType: map['azureSqlDataBaseType'] == null ? null : (map['azureSqlDataBaseType'] as String).input(),
-      azureSqlPurchaseModel: map['azureSqlPurchaseModel'] == null ? null : (map['azureSqlPurchaseModel'] as String).input(),
-      azureSqlServiceTier: map['azureSqlServiceTier'] == null ? null : (map['azureSqlServiceTier'] as String).input(),
+      azureSqlComputeTier: map['azureSqlComputeTier'] == null ? null : (map['azureSqlComputeTier']! as String).input(),
+      azureSqlDataBaseType: map['azureSqlDataBaseType'] == null ? null : (map['azureSqlDataBaseType']! as String).input(),
+      azureSqlPurchaseModel: map['azureSqlPurchaseModel'] == null ? null : (map['azureSqlPurchaseModel']! as String).input(),
+      azureSqlServiceTier: map['azureSqlServiceTier'] == null ? null : (map['azureSqlServiceTier']! as String).input(),
     );
   }
 }

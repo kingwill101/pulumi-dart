@@ -36,10 +36,10 @@ class AksNetworkingConfigurationResponse {
 
   factory AksNetworkingConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AksNetworkingConfigurationResponse(
-      dnsServiceIP: map['dnsServiceIP'] == null ? null : (map['dnsServiceIP'] as String).input(),
-      dockerBridgeCidr: map['dockerBridgeCidr'] == null ? null : (map['dockerBridgeCidr'] as String).input(),
-      serviceCidr: map['serviceCidr'] == null ? null : (map['serviceCidr'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      dnsServiceIP: map['dnsServiceIP'] == null ? null : (map['dnsServiceIP']! as String).input(),
+      dockerBridgeCidr: map['dockerBridgeCidr'] == null ? null : (map['dockerBridgeCidr']! as String).input(),
+      serviceCidr: map['serviceCidr'] == null ? null : (map['serviceCidr']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

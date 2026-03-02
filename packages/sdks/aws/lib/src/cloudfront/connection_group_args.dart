@@ -53,13 +53,13 @@ class ConnectionGroupArgs {
 
   factory ConnectionGroupArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionGroupArgs(
-      anycastIpListId: map['anycastIpListId'] == null ? null : (map['anycastIpListId'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      ipv6Enabled: map['ipv6Enabled'] == null ? null : (map['ipv6Enabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ConnectionGroupTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      waitForDeployment: map['waitForDeployment'] == null ? null : (map['waitForDeployment'] as bool).input(),
+      anycastIpListId: map['anycastIpListId'] == null ? null : ((map['anycastIpListId'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      ipv6Enabled: map['ipv6Enabled'] == null ? null : ((map['ipv6Enabled'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ConnectionGroupTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      waitForDeployment: map['waitForDeployment'] == null ? null : ((map['waitForDeployment'] as bool).input()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class StaticRoutesConfig {
 
   factory StaticRoutesConfig.fromMap(Map<String, dynamic> map) {
     return StaticRoutesConfig(
-      vnetLocalRouteOverrideCriteria: map['vnetLocalRouteOverrideCriteria'] == null ? null : (map['vnetLocalRouteOverrideCriteria'] as String).input(),
+      vnetLocalRouteOverrideCriteria: map['vnetLocalRouteOverrideCriteria'] == null ? null : (map['vnetLocalRouteOverrideCriteria']! as String).input(),
     );
   }
 }

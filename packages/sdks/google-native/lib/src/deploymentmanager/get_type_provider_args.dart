@@ -27,7 +27,7 @@ class GetTypeProviderArgs {
 
   factory GetTypeProviderArgs.fromMap(Map<String, dynamic> map) {
     return GetTypeProviderArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       typeProvider: (map['typeProvider'] as String).input(),
     );
   }

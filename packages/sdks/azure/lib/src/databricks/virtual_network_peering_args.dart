@@ -68,14 +68,14 @@ class VirtualNetworkPeeringArgs {
 
   factory VirtualNetworkPeeringArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkPeeringArgs(
-      allowForwardedTraffic: map['allowForwardedTraffic'] == null ? null : (map['allowForwardedTraffic'] as bool).input(),
-      allowGatewayTransit: map['allowGatewayTransit'] == null ? null : (map['allowGatewayTransit'] as bool).input(),
-      allowVirtualNetworkAccess: map['allowVirtualNetworkAccess'] == null ? null : (map['allowVirtualNetworkAccess'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      allowForwardedTraffic: map['allowForwardedTraffic'] == null ? null : (map['allowForwardedTraffic']! as bool).input(),
+      allowGatewayTransit: map['allowGatewayTransit'] == null ? null : (map['allowGatewayTransit']! as bool).input(),
+      allowVirtualNetworkAccess: map['allowVirtualNetworkAccess'] == null ? null : (map['allowVirtualNetworkAccess']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       remoteAddressSpacePrefixes: ((map['remoteAddressSpacePrefixes'] as List).cast<String>()).input(),
       remoteVirtualNetworkId: (map['remoteVirtualNetworkId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      useRemoteGateways: map['useRemoteGateways'] == null ? null : (map['useRemoteGateways'] as bool).input(),
+      useRemoteGateways: map['useRemoteGateways'] == null ? null : (map['useRemoteGateways']! as bool).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );
   }

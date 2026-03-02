@@ -67,16 +67,16 @@ class ServiceManagedEBSVolumeConfiguration {
 
   factory ServiceManagedEBSVolumeConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceManagedEBSVolumeConfiguration(
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
-      filesystemType: map['filesystemType'] == null ? null : (map['filesystemType'] as String).input(),
-      iops: map['iops'] == null ? null : (map['iops'] as int).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      sizeInGiB: map['sizeInGiB'] == null ? null : (map['sizeInGiB'] as int).input(),
-      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
-      tagSpecifications: map['tagSpecifications'] == null ? null : (pulumi.Input.decodeList<EBSTagSpecification>(map['tagSpecifications'], (value) => EBSTagSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
-      volumeType: map['volumeType'] == null ? null : (map['volumeType'] as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
+      filesystemType: map['filesystemType'] == null ? null : (map['filesystemType']! as String).input(),
+      iops: map['iops'] == null ? null : (map['iops']! as int).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
+      sizeInGiB: map['sizeInGiB'] == null ? null : (map['sizeInGiB']! as int).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId']! as String).input(),
+      tagSpecifications: map['tagSpecifications'] == null ? null : (pulumi.Input.decodeList<EBSTagSpecification>(map['tagSpecifications']!, (value) => EBSTagSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput']! as int).input(),
+      volumeType: map['volumeType'] == null ? null : (map['volumeType']! as String).input(),
     );
   }
 }

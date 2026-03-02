@@ -27,8 +27,8 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageCon
 
   factory PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions(
-      includedBucketAttributes: map['includedBucketAttributes'] == null ? null : ((map['includedBucketAttributes'] as List).cast<String>()).input(),
-      includedObjectAttributes: map['includedObjectAttributes'] == null ? null : ((map['includedObjectAttributes'] as List).cast<String>()).input(),
+      includedBucketAttributes: map['includedBucketAttributes'] == null ? null : ((map['includedBucketAttributes']! as List).cast<String>()).input(),
+      includedObjectAttributes: map['includedObjectAttributes'] == null ? null : ((map['includedObjectAttributes']! as List).cast<String>()).input(),
     );
   }
 }

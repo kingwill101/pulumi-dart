@@ -66,16 +66,16 @@ class AclRuleState {
 
   factory AclRuleState.fromMap(Map<String, dynamic> map) {
     return AclRuleState(
-      aclId: map['aclId'] == null ? null : (map['aclId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destCidr: map['destCidr'] == null ? null : (map['destCidr'] as String).input(),
-      destPortRange: map['destPortRange'] == null ? null : (map['destPortRange'] as String).input(),
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
-      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      sourceCidr: map['sourceCidr'] == null ? null : (map['sourceCidr'] as String).input(),
-      sourcePortRange: map['sourcePortRange'] == null ? null : (map['sourcePortRange'] as String).input(),
+      aclId: map['aclId'] == null ? null : (map['aclId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destCidr: map['destCidr'] == null ? null : (map['destCidr']! as String).input(),
+      destPortRange: map['destPortRange'] == null ? null : (map['destPortRange']! as String).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol']! as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      sourceCidr: map['sourceCidr'] == null ? null : (map['sourceCidr']! as String).input(),
+      sourcePortRange: map['sourcePortRange'] == null ? null : (map['sourcePortRange']! as String).input(),
     );
   }
 }

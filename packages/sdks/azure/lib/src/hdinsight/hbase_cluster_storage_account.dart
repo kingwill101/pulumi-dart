@@ -42,7 +42,7 @@ class HBaseClusterStorageAccount {
       isDefault: (map['isDefault'] as bool).input(),
       storageAccountKey: (map['storageAccountKey'] as String).input(),
       storageContainerId: (map['storageContainerId'] as String).input(),
-      storageResourceId: map['storageResourceId'] == null ? null : (map['storageResourceId'] as String).input(),
+      storageResourceId: map['storageResourceId'] == null ? null : (map['storageResourceId']! as String).input(),
     );
   }
 }

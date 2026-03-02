@@ -100,18 +100,18 @@ class ClusterV2Args {
 
   factory ClusterV2Args.fromMap(Map<String, dynamic> map) {
     return ClusterV2Args(
-      addons: map['addons'] == null ? null : (pulumi.Input.decodeList<ClusterV2Addon>(map['addons'], (value) => ClusterV2Addon.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      clientVersion: map['clientVersion'] == null ? null : (map['clientVersion'] as String).input(),
-      clusterCategory: map['clusterCategory'] == null ? null : (map['clusterCategory'] as String).input(),
+      addons: map['addons'] == null ? null : (pulumi.Input.decodeList<ClusterV2Addon>(map['addons']!, (value) => ClusterV2Addon.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientVersion: map['clientVersion'] == null ? null : (map['clientVersion']! as String).input(),
+      clusterCategory: map['clusterCategory'] == null ? null : (map['clusterCategory']! as String).input(),
       clusterCredentials: (ClusterV2ClusterCredentials.fromMap((map['clusterCredentials'] as Map).cast<String, dynamic>())).input(),
-      clusterMode: map['clusterMode'] == null ? null : (map['clusterMode'] as String).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      clusterVpcId: map['clusterVpcId'] == null ? null : (map['clusterVpcId'] as String).input(),
-      clusterVswitchId: map['clusterVswitchId'] == null ? null : (map['clusterVswitchId'] as String).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      manager: map['manager'] == null ? null : (ClusterV2Manager.fromMap((map['manager'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
+      clusterMode: map['clusterMode'] == null ? null : (map['clusterMode']! as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      clusterVpcId: map['clusterVpcId'] == null ? null : (map['clusterVpcId']! as String).input(),
+      clusterVswitchId: map['clusterVswitchId'] == null ? null : (map['clusterVswitchId']! as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
+      manager: map['manager'] == null ? null : (ClusterV2Manager.fromMap((map['manager']! as Map).cast<String, dynamic>())).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId']! as String).input(),
       sharedStorages: (pulumi.Input.decodeList<ClusterV2SharedStorage>(map['sharedStorages'], (value) => ClusterV2SharedStorage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

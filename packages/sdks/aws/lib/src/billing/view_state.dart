@@ -99,22 +99,22 @@ class ViewState {
 
   factory ViewState.fromMap(Map<String, dynamic> map) {
     return ViewState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      billingViewType: map['billingViewType'] == null ? null : (map['billingViewType'] as String).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      dataFilterExpression: map['dataFilterExpression'] == null ? null : (ViewDataFilterExpression.fromMap((map['dataFilterExpression'] as Map).cast<String, dynamic>())).input(),
-      derivedViewCount: map['derivedViewCount'] == null ? null : (map['derivedViewCount'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ownerAccountId: map['ownerAccountId'] == null ? null : (map['ownerAccountId'] as String).input(),
-      sourceAccountId: map['sourceAccountId'] == null ? null : (map['sourceAccountId'] as String).input(),
-      sourceViewCount: map['sourceViewCount'] == null ? null : (map['sourceViewCount'] as int).input(),
-      sourceViews: map['sourceViews'] == null ? null : ((map['sourceViews'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ViewTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
-      viewDefinitionLastUpdatedAt: map['viewDefinitionLastUpdatedAt'] == null ? null : (map['viewDefinitionLastUpdatedAt'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      billingViewType: map['billingViewType'] == null ? null : ((map['billingViewType'] as String).input()).input(),
+      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
+      dataFilterExpression: map['dataFilterExpression'] == null ? null : ((ViewDataFilterExpression.fromMap((map['dataFilterExpression']! as Map).cast<String, dynamic>())).input()).input(),
+      derivedViewCount: map['derivedViewCount'] == null ? null : ((map['derivedViewCount'] as int).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      ownerAccountId: map['ownerAccountId'] == null ? null : ((map['ownerAccountId'] as String).input()).input(),
+      sourceAccountId: map['sourceAccountId'] == null ? null : ((map['sourceAccountId'] as String).input()).input(),
+      sourceViewCount: map['sourceViewCount'] == null ? null : ((map['sourceViewCount'] as int).input()).input(),
+      sourceViews: map['sourceViews'] == null ? null : (((map['sourceViews'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ViewTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      updatedAt: map['updatedAt'] == null ? null : ((map['updatedAt'] as String).input()).input(),
+      viewDefinitionLastUpdatedAt: map['viewDefinitionLastUpdatedAt'] == null ? null : ((map['viewDefinitionLastUpdatedAt'] as String).input()).input(),
     );
   }
 }

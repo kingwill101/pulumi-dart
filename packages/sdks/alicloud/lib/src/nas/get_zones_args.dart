@@ -29,8 +29,8 @@ class GetZonesArgs {
 
   factory GetZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetZonesArgs(
-      fileSystemType: map['fileSystemType'] == null ? null : (map['fileSystemType'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      fileSystemType: map['fileSystemType'] == null ? null : (map['fileSystemType']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

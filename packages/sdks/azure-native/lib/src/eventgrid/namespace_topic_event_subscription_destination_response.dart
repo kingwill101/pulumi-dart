@@ -30,7 +30,7 @@ class NamespaceTopicEventSubscriptionDestinationResponse {
   factory NamespaceTopicEventSubscriptionDestinationResponse.fromMap(Map<String, dynamic> map) {
     return NamespaceTopicEventSubscriptionDestinationResponse(
       endpointType: (map['endpointType'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

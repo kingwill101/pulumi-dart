@@ -62,15 +62,15 @@ class AvailabilityGroupInfo {
 
   factory AvailabilityGroupInfo.fromMap(Map<String, dynamic> map) {
     return AvailabilityGroupInfo(
-      basicFeatures: map['basicFeatures'] == null ? null : (map['basicFeatures'] as bool).input(),
-      dbFailover: map['dbFailover'] == null ? null : (map['dbFailover'] as bool).input(),
-      dtcSupport: map['dtcSupport'] == null ? null : (map['dtcSupport'] as bool).input(),
-      failureConditionLevel: map['failureConditionLevel'] == null ? null : (map['failureConditionLevel'] as int).input(),
-      healthCheckTimeout: map['healthCheckTimeout'] == null ? null : (map['healthCheckTimeout'] as int).input(),
-      isContained: map['isContained'] == null ? null : (map['isContained'] as bool).input(),
-      isDistributed: map['isDistributed'] == null ? null : (map['isDistributed'] as bool).input(),
-      listener: map['listener'] == null ? null : (SqlAvailabilityGroupStaticIPListenerProperties.fromMap((map['listener'] as Map).cast<String, dynamic>())).input(),
-      requiredSynchronizedSecondariesToCommit: map['requiredSynchronizedSecondariesToCommit'] == null ? null : (map['requiredSynchronizedSecondariesToCommit'] as int).input(),
+      basicFeatures: map['basicFeatures'] == null ? null : (map['basicFeatures']! as bool).input(),
+      dbFailover: map['dbFailover'] == null ? null : (map['dbFailover']! as bool).input(),
+      dtcSupport: map['dtcSupport'] == null ? null : (map['dtcSupport']! as bool).input(),
+      failureConditionLevel: map['failureConditionLevel'] == null ? null : (map['failureConditionLevel']! as int).input(),
+      healthCheckTimeout: map['healthCheckTimeout'] == null ? null : (map['healthCheckTimeout']! as int).input(),
+      isContained: map['isContained'] == null ? null : (map['isContained']! as bool).input(),
+      isDistributed: map['isDistributed'] == null ? null : (map['isDistributed']! as bool).input(),
+      listener: map['listener'] == null ? null : (SqlAvailabilityGroupStaticIPListenerProperties.fromMap((map['listener']! as Map).cast<String, dynamic>())).input(),
+      requiredSynchronizedSecondariesToCommit: map['requiredSynchronizedSecondariesToCommit'] == null ? null : (map['requiredSynchronizedSecondariesToCommit']! as int).input(),
     );
   }
 }

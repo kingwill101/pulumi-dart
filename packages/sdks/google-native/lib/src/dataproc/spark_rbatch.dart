@@ -36,9 +36,9 @@ class SparkRBatch {
 
   factory SparkRBatch.fromMap(Map<String, dynamic> map) {
     return SparkRBatch(
-      archiveUris: map['archiveUris'] == null ? null : ((map['archiveUris'] as List).cast<String>()).input(),
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      fileUris: map['fileUris'] == null ? null : ((map['fileUris'] as List).cast<String>()).input(),
+      archiveUris: map['archiveUris'] == null ? null : ((map['archiveUris']! as List).cast<String>()).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      fileUris: map['fileUris'] == null ? null : ((map['fileUris']! as List).cast<String>()).input(),
       mainRFileUri: (map['mainRFileUri'] as String).input(),
     );
   }

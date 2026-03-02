@@ -115,21 +115,21 @@ class WorkspaceModelVersionState {
 
   factory WorkspaceModelVersionState.fromMap(Map<String, dynamic> map) {
     return WorkspaceModelVersionState(
-      approvalStatus: map['approvalStatus'] == null ? null : (map['approvalStatus'] as String).input(),
-      extraInfo: map['extraInfo'] == null ? null : ((map['extraInfo'] as Map).cast<String, String>()).input(),
-      formatType: map['formatType'] == null ? null : (map['formatType'] as String).input(),
-      frameworkType: map['frameworkType'] == null ? null : (map['frameworkType'] as String).input(),
-      inferenceSpec: map['inferenceSpec'] == null ? null : ((map['inferenceSpec'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<WorkspaceModelVersionLabel>(map['labels'], (value) => WorkspaceModelVersionLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metrics: map['metrics'] == null ? null : ((map['metrics'] as Map).cast<String, String>()).input(),
-      modelId: map['modelId'] == null ? null : (map['modelId'] as String).input(),
-      options: map['options'] == null ? null : (map['options'] as String).input(),
-      sourceId: map['sourceId'] == null ? null : (map['sourceId'] as String).input(),
-      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
-      trainingSpec: map['trainingSpec'] == null ? null : ((map['trainingSpec'] as Map).cast<String, String>()).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
-      versionDescription: map['versionDescription'] == null ? null : (map['versionDescription'] as String).input(),
-      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
+      approvalStatus: map['approvalStatus'] == null ? null : (map['approvalStatus']! as String).input(),
+      extraInfo: map['extraInfo'] == null ? null : ((map['extraInfo']! as Map).cast<String, String>()).input(),
+      formatType: map['formatType'] == null ? null : (map['formatType']! as String).input(),
+      frameworkType: map['frameworkType'] == null ? null : (map['frameworkType']! as String).input(),
+      inferenceSpec: map['inferenceSpec'] == null ? null : ((map['inferenceSpec']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<WorkspaceModelVersionLabel>(map['labels']!, (value) => WorkspaceModelVersionLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metrics: map['metrics'] == null ? null : ((map['metrics']! as Map).cast<String, String>()).input(),
+      modelId: map['modelId'] == null ? null : (map['modelId']! as String).input(),
+      options: map['options'] == null ? null : (map['options']! as String).input(),
+      sourceId: map['sourceId'] == null ? null : (map['sourceId']! as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType']! as String).input(),
+      trainingSpec: map['trainingSpec'] == null ? null : ((map['trainingSpec']! as Map).cast<String, String>()).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      versionDescription: map['versionDescription'] == null ? null : (map['versionDescription']! as String).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName']! as String).input(),
     );
   }
 }

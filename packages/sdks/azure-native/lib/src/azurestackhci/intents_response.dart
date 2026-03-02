@@ -119,7 +119,7 @@ class IntentsResponse {
 
   factory IntentsResponse.fromMap(Map<String, dynamic> map) {
     return IntentsResponse(
-      adapter: map['adapter'] == null ? null : ((map['adapter'] as List).cast<String>()).input(),
+      adapter: map['adapter'] == null ? null : ((map['adapter']! as List).cast<String>()).input(),
       adapterPropertyOverrides: (AdapterPropertyOverridesResponse.fromMap((map['adapterPropertyOverrides'] as Map).cast<String, dynamic>())).input(),
       intentAdapters: ((map['intentAdapters'] as List).cast<String>()).input(),
       intentName: (map['intentName'] as String).input(),
@@ -131,13 +131,13 @@ class IntentsResponse {
       isOnlyStretch: (map['isOnlyStretch'] as bool).input(),
       isStorageIntentSet: (map['isStorageIntentSet'] as bool).input(),
       isStretchIntentSet: (map['isStretchIntentSet'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       overrideAdapterProperty: (map['overrideAdapterProperty'] as bool).input(),
       overrideQosPolicy: (map['overrideQosPolicy'] as bool).input(),
       overrideVirtualSwitchConfiguration: (map['overrideVirtualSwitchConfiguration'] as bool).input(),
       qosPolicyOverrides: (QosPolicyOverridesResponse.fromMap((map['qosPolicyOverrides'] as Map).cast<String, dynamic>())).input(),
       scope: (map['scope'] as double).input(),
-      trafficType: map['trafficType'] == null ? null : ((map['trafficType'] as List).cast<String>()).input(),
+      trafficType: map['trafficType'] == null ? null : ((map['trafficType']! as List).cast<String>()).input(),
       virtualSwitchConfigurationOverrides: (VirtualSwitchConfigurationOverridesResponse.fromMap((map['virtualSwitchConfigurationOverrides'] as Map).cast<String, dynamic>())).input(),
     );
   }

@@ -68,14 +68,14 @@ class ApplicationArgs {
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
       applicationProviderArn: (map['applicationProviderArn'] as String).input(),
-      clientToken: map['clientToken'] == null ? null : (map['clientToken'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      clientToken: map['clientToken'] == null ? null : ((map['clientToken'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       instanceArn: (map['instanceArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      portalOptions: map['portalOptions'] == null ? null : (ApplicationPortalOptions.fromMap((map['portalOptions'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      portalOptions: map['portalOptions'] == null ? null : ((ApplicationPortalOptions.fromMap((map['portalOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -82,17 +82,17 @@ class VirtualMachineInstanceArgs {
 
   factory VirtualMachineInstanceArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstanceArgs(
-      createFromLocal: map['createFromLocal'] == null ? null : (map['createFromLocal'] as bool).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      hardwareProfile: map['hardwareProfile'] == null ? null : (VirtualMachineInstancePropertiesHardwareProfile.fromMap((map['hardwareProfile'] as Map).cast<String, dynamic>())).input(),
-      httpProxyConfig: map['httpProxyConfig'] == null ? null : (HttpProxyConfiguration.fromMap((map['httpProxyConfig'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      networkProfile: map['networkProfile'] == null ? null : (VirtualMachineInstancePropertiesNetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
-      osProfile: map['osProfile'] == null ? null : (VirtualMachineInstancePropertiesOsProfile.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
-      resourceUid: map['resourceUid'] == null ? null : (map['resourceUid'] as String).input(),
+      createFromLocal: map['createFromLocal'] == null ? null : (map['createFromLocal']! as bool).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      hardwareProfile: map['hardwareProfile'] == null ? null : (VirtualMachineInstancePropertiesHardwareProfile.fromMap((map['hardwareProfile']! as Map).cast<String, dynamic>())).input(),
+      httpProxyConfig: map['httpProxyConfig'] == null ? null : (HttpProxyConfiguration.fromMap((map['httpProxyConfig']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      networkProfile: map['networkProfile'] == null ? null : (VirtualMachineInstancePropertiesNetworkProfile.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())).input(),
+      osProfile: map['osProfile'] == null ? null : (VirtualMachineInstancePropertiesOsProfile.fromMap((map['osProfile']! as Map).cast<String, dynamic>())).input(),
+      resourceUid: map['resourceUid'] == null ? null : (map['resourceUid']! as String).input(),
       resourceUri: (map['resourceUri'] as String).input(),
-      securityProfile: map['securityProfile'] == null ? null : (VirtualMachineInstancePropertiesSecurityProfile.fromMap((map['securityProfile'] as Map).cast<String, dynamic>())).input(),
-      storageProfile: map['storageProfile'] == null ? null : (VirtualMachineInstancePropertiesStorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
+      securityProfile: map['securityProfile'] == null ? null : (VirtualMachineInstancePropertiesSecurityProfile.fromMap((map['securityProfile']! as Map).cast<String, dynamic>())).input(),
+      storageProfile: map['storageProfile'] == null ? null : (VirtualMachineInstancePropertiesStorageProfile.fromMap((map['storageProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

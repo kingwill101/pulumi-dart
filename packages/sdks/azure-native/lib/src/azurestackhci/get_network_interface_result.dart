@@ -98,19 +98,19 @@ class GetNetworkInterfaceResult {
   factory GetNetworkInterfaceResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfaceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      createFromLocal: map['createFromLocal'] == null ? null : map['createFromLocal'] as bool,
-      dnsSettings: map['dnsSettings'] == null ? null : InterfaceDNSSettingsResponse.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>()),
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
+      createFromLocal: map['createFromLocal'] == null ? null : map['createFromLocal']! as bool,
+      dnsSettings: map['dnsSettings'] == null ? null : InterfaceDNSSettingsResponse.fromMap((map['dnsSettings']! as Map).cast<String, dynamic>()),
+      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      ipConfigurations: map['ipConfigurations'] == null ? null : pulumi.Input.decodeList<IPConfigurationResponse>(map['ipConfigurations'], (value) => IPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      ipConfigurations: map['ipConfigurations'] == null ? null : pulumi.Input.decodeList<IPConfigurationResponse>(map['ipConfigurations']!, (value) => IPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
-      macAddress: map['macAddress'] == null ? null : map['macAddress'] as String,
+      macAddress: map['macAddress'] == null ? null : map['macAddress']! as String,
       name: map['name'] as String,
-      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : NetworkSecurityGroupArmReferenceResponse.fromMap((map['networkSecurityGroup'] as Map).cast<String, dynamic>()),
+      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : NetworkSecurityGroupArmReferenceResponse.fromMap((map['networkSecurityGroup']! as Map).cast<String, dynamic>()),
       provisioningState: map['provisioningState'] as String,
       status: NetworkInterfaceStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

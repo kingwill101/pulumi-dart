@@ -41,11 +41,11 @@ class PolicyAttachmentState {
 
   factory PolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return PolicyAttachmentState(
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
-      principalName: map['principalName'] == null ? null : (map['principalName'] as String).input(),
-      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType']! as String).input(),
+      principalName: map['principalName'] == null ? null : (map['principalName']! as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
     );
   }
 }

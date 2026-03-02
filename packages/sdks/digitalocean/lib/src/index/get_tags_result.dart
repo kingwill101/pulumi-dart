@@ -36,9 +36,9 @@ class GetTagsResult {
 
   factory GetTagsResult.fromMap(Map<String, dynamic> map) {
     return GetTagsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetTagsFilter>(map['filters'], (value) => GetTagsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetTagsFilter>(map['filters']!, (value) => GetTagsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      sorts: map['sorts'] == null ? null : pulumi.Input.decodeList<GetTagsSort>(map['sorts'], (value) => GetTagsSort.fromMap((value as Map).cast<String, dynamic>())),
+      sorts: map['sorts'] == null ? null : pulumi.Input.decodeList<GetTagsSort>(map['sorts']!, (value) => GetTagsSort.fromMap((value as Map).cast<String, dynamic>())),
       tags: pulumi.Input.decodeList<GetTagsTag>(map['tags'], (value) => GetTagsTag.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

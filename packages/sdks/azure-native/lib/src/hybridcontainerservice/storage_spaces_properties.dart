@@ -32,9 +32,9 @@ class StorageSpacesProperties {
 
   factory StorageSpacesProperties.fromMap(Map<String, dynamic> map) {
     return StorageSpacesProperties(
-      hciStorageProfile: map['hciStorageProfile'] == null ? null : (StorageSpacesPropertiesHciStorageProfile.fromMap((map['hciStorageProfile'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (StorageSpacesPropertiesStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
-      vmwareStorageProfile: map['vmwareStorageProfile'] == null ? null : (StorageSpacesPropertiesVmwareStorageProfile.fromMap((map['vmwareStorageProfile'] as Map).cast<String, dynamic>())).input(),
+      hciStorageProfile: map['hciStorageProfile'] == null ? null : (StorageSpacesPropertiesHciStorageProfile.fromMap((map['hciStorageProfile']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (StorageSpacesPropertiesStatus.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
+      vmwareStorageProfile: map['vmwareStorageProfile'] == null ? null : (StorageSpacesPropertiesVmwareStorageProfile.fromMap((map['vmwareStorageProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

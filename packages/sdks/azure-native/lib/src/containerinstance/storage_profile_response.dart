@@ -21,7 +21,7 @@ class StorageProfileResponse {
 
   factory StorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return StorageProfileResponse(
-      fileShares: map['fileShares'] == null ? null : (pulumi.Input.decodeList<FileShareResponse>(map['fileShares'], (value) => FileShareResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fileShares: map['fileShares'] == null ? null : (pulumi.Input.decodeList<FileShareResponse>(map['fileShares']!, (value) => FileShareResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

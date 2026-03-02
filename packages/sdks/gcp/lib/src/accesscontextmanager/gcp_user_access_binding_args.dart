@@ -48,11 +48,11 @@ class GcpUserAccessBindingArgs {
 
   factory GcpUserAccessBindingArgs.fromMap(Map<String, dynamic> map) {
     return GcpUserAccessBindingArgs(
-      accessLevels: map['accessLevels'] == null ? null : (map['accessLevels'] as String).input(),
+      accessLevels: map['accessLevels'] == null ? null : (map['accessLevels']! as String).input(),
       groupKey: (map['groupKey'] as String).input(),
       organizationId: (map['organizationId'] as String).input(),
-      scopedAccessSettings: map['scopedAccessSettings'] == null ? null : (pulumi.Input.decodeList<GcpUserAccessBindingScopedAccessSetting>(map['scopedAccessSettings'], (value) => GcpUserAccessBindingScopedAccessSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sessionSettings: map['sessionSettings'] == null ? null : (GcpUserAccessBindingSessionSettings.fromMap((map['sessionSettings'] as Map).cast<String, dynamic>())).input(),
+      scopedAccessSettings: map['scopedAccessSettings'] == null ? null : (pulumi.Input.decodeList<GcpUserAccessBindingScopedAccessSetting>(map['scopedAccessSettings']!, (value) => GcpUserAccessBindingScopedAccessSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sessionSettings: map['sessionSettings'] == null ? null : (GcpUserAccessBindingSessionSettings.fromMap((map['sessionSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

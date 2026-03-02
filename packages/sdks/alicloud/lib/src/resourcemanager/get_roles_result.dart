@@ -49,12 +49,12 @@ class GetRolesResult {
 
   factory GetRolesResult.fromMap(Map<String, dynamic> map) {
     return GetRolesResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       roles: pulumi.Input.decodeList<GetRolesRole>(map['roles'], (value) => GetRolesRole.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

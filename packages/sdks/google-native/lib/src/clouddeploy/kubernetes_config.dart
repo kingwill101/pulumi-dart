@@ -28,8 +28,8 @@ class KubernetesConfig {
 
   factory KubernetesConfig.fromMap(Map<String, dynamic> map) {
     return KubernetesConfig(
-      gatewayServiceMesh: map['gatewayServiceMesh'] == null ? null : (GatewayServiceMesh.fromMap((map['gatewayServiceMesh'] as Map).cast<String, dynamic>())).input(),
-      serviceNetworking: map['serviceNetworking'] == null ? null : (ServiceNetworking.fromMap((map['serviceNetworking'] as Map).cast<String, dynamic>())).input(),
+      gatewayServiceMesh: map['gatewayServiceMesh'] == null ? null : (GatewayServiceMesh.fromMap((map['gatewayServiceMesh']! as Map).cast<String, dynamic>())).input(),
+      serviceNetworking: map['serviceNetworking'] == null ? null : (ServiceNetworking.fromMap((map['serviceNetworking']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

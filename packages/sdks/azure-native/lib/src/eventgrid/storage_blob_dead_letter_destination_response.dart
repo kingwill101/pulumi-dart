@@ -32,9 +32,9 @@ class StorageBlobDeadLetterDestinationResponse {
 
   factory StorageBlobDeadLetterDestinationResponse.fromMap(Map<String, dynamic> map) {
     return StorageBlobDeadLetterDestinationResponse(
-      blobContainerName: map['blobContainerName'] == null ? null : (map['blobContainerName'] as String).input(),
+      blobContainerName: map['blobContainerName'] == null ? null : (map['blobContainerName']! as String).input(),
       endpointType: (map['endpointType'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

@@ -32,8 +32,8 @@ class IndexingConfigurationThingGroupIndexingConfiguration {
 
   factory IndexingConfigurationThingGroupIndexingConfiguration.fromMap(Map<String, dynamic> map) {
     return IndexingConfigurationThingGroupIndexingConfiguration(
-      customFields: map['customFields'] == null ? null : (pulumi.Input.decodeList<IndexingConfigurationThingGroupIndexingConfigurationCustomField>(map['customFields'], (value) => IndexingConfigurationThingGroupIndexingConfigurationCustomField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      managedFields: map['managedFields'] == null ? null : (pulumi.Input.decodeList<IndexingConfigurationThingGroupIndexingConfigurationManagedField>(map['managedFields'], (value) => IndexingConfigurationThingGroupIndexingConfigurationManagedField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customFields: map['customFields'] == null ? null : ((pulumi.Input.decodeList<IndexingConfigurationThingGroupIndexingConfigurationCustomField>(map['customFields']!, (value) => IndexingConfigurationThingGroupIndexingConfigurationCustomField.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      managedFields: map['managedFields'] == null ? null : ((pulumi.Input.decodeList<IndexingConfigurationThingGroupIndexingConfigurationManagedField>(map['managedFields']!, (value) => IndexingConfigurationThingGroupIndexingConfigurationManagedField.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       thingGroupIndexingMode: (map['thingGroupIndexingMode'] as String).input(),
     );
   }

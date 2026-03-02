@@ -55,12 +55,12 @@ class EncodedTaskStepResponse {
   factory EncodedTaskStepResponse.fromMap(Map<String, dynamic> map) {
     return EncodedTaskStepResponse(
       baseImageDependencies: (pulumi.Input.decodeList<BaseImageDependencyResponse>(map['baseImageDependencies'], (value) => BaseImageDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      contextAccessToken: map['contextAccessToken'] == null ? null : (map['contextAccessToken'] as String).input(),
-      contextPath: map['contextPath'] == null ? null : (map['contextPath'] as String).input(),
+      contextAccessToken: map['contextAccessToken'] == null ? null : (map['contextAccessToken']! as String).input(),
+      contextPath: map['contextPath'] == null ? null : (map['contextPath']! as String).input(),
       encodedTaskContent: (map['encodedTaskContent'] as String).input(),
-      encodedValuesContent: map['encodedValuesContent'] == null ? null : (map['encodedValuesContent'] as String).input(),
+      encodedValuesContent: map['encodedValuesContent'] == null ? null : (map['encodedValuesContent']! as String).input(),
       type: (map['type'] as String).input(),
-      values: map['values'] == null ? null : (pulumi.Input.decodeList<SetValueResponse>(map['values'], (value) => SetValueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      values: map['values'] == null ? null : (pulumi.Input.decodeList<SetValueResponse>(map['values']!, (value) => SetValueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

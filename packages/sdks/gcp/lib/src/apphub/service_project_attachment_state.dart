@@ -54,13 +54,13 @@ class ServiceProjectAttachmentState {
 
   factory ServiceProjectAttachmentState.fromMap(Map<String, dynamic> map) {
     return ServiceProjectAttachmentState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serviceProject: map['serviceProject'] == null ? null : (map['serviceProject'] as String).input(),
-      serviceProjectAttachmentId: map['serviceProjectAttachmentId'] == null ? null : (map['serviceProjectAttachmentId'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serviceProject: map['serviceProject'] == null ? null : (map['serviceProject']! as String).input(),
+      serviceProjectAttachmentId: map['serviceProjectAttachmentId'] == null ? null : (map['serviceProjectAttachmentId']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
     );
   }
 }

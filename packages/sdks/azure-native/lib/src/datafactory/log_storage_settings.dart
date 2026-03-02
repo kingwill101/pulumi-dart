@@ -37,10 +37,10 @@ class LogStorageSettings {
 
   factory LogStorageSettings.fromMap(Map<String, dynamic> map) {
     return LogStorageSettings(
-      enableReliableLogging: map['enableReliableLogging'] == null ? null : (map['enableReliableLogging']).input(),
+      enableReliableLogging: map['enableReliableLogging'] == null ? null : (map['enableReliableLogging']!).input(),
       linkedServiceName: (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
-      logLevel: map['logLevel'] == null ? null : (map['logLevel']).input(),
-      path: map['path'] == null ? null : (map['path']).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel']!).input(),
+      path: map['path'] == null ? null : (map['path']!).input(),
     );
   }
 }

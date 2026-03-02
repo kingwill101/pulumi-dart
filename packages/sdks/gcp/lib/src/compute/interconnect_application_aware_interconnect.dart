@@ -41,10 +41,10 @@ class InterconnectApplicationAwareInterconnect {
 
   factory InterconnectApplicationAwareInterconnect.fromMap(Map<String, dynamic> map) {
     return InterconnectApplicationAwareInterconnect(
-      bandwidthPercentagePolicy: map['bandwidthPercentagePolicy'] == null ? null : (InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy.fromMap((map['bandwidthPercentagePolicy'] as Map).cast<String, dynamic>())).input(),
-      profileDescription: map['profileDescription'] == null ? null : (map['profileDescription'] as String).input(),
-      shapeAveragePercentages: map['shapeAveragePercentages'] == null ? null : (pulumi.Input.decodeList<InterconnectApplicationAwareInterconnectShapeAveragePercentage>(map['shapeAveragePercentages'], (value) => InterconnectApplicationAwareInterconnectShapeAveragePercentage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      strictPriorityPolicy: map['strictPriorityPolicy'] == null ? null : ((map['strictPriorityPolicy'] as Map).cast<String, dynamic>()).input(),
+      bandwidthPercentagePolicy: map['bandwidthPercentagePolicy'] == null ? null : (InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy.fromMap((map['bandwidthPercentagePolicy']! as Map).cast<String, dynamic>())).input(),
+      profileDescription: map['profileDescription'] == null ? null : (map['profileDescription']! as String).input(),
+      shapeAveragePercentages: map['shapeAveragePercentages'] == null ? null : (pulumi.Input.decodeList<InterconnectApplicationAwareInterconnectShapeAveragePercentage>(map['shapeAveragePercentages']!, (value) => InterconnectApplicationAwareInterconnectShapeAveragePercentage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      strictPriorityPolicy: map['strictPriorityPolicy'] == null ? null : ((map['strictPriorityPolicy']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

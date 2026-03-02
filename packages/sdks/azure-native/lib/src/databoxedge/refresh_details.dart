@@ -36,10 +36,10 @@ class RefreshDetails {
 
   factory RefreshDetails.fromMap(Map<String, dynamic> map) {
     return RefreshDetails(
-      errorManifestFile: map['errorManifestFile'] == null ? null : (map['errorManifestFile'] as String).input(),
-      inProgressRefreshJobId: map['inProgressRefreshJobId'] == null ? null : (map['inProgressRefreshJobId'] as String).input(),
-      lastCompletedRefreshJobTimeInUTC: map['lastCompletedRefreshJobTimeInUTC'] == null ? null : (map['lastCompletedRefreshJobTimeInUTC'] as String).input(),
-      lastJob: map['lastJob'] == null ? null : (map['lastJob'] as String).input(),
+      errorManifestFile: map['errorManifestFile'] == null ? null : (map['errorManifestFile']! as String).input(),
+      inProgressRefreshJobId: map['inProgressRefreshJobId'] == null ? null : (map['inProgressRefreshJobId']! as String).input(),
+      lastCompletedRefreshJobTimeInUTC: map['lastCompletedRefreshJobTimeInUTC'] == null ? null : (map['lastCompletedRefreshJobTimeInUTC']! as String).input(),
+      lastJob: map['lastJob'] == null ? null : (map['lastJob']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class PowerQuerySinkMappingResponse {
 
   factory PowerQuerySinkMappingResponse.fromMap(Map<String, dynamic> map) {
     return PowerQuerySinkMappingResponse(
-      dataflowSinks: map['dataflowSinks'] == null ? null : (pulumi.Input.decodeList<PowerQuerySinkResponse>(map['dataflowSinks'], (value) => PowerQuerySinkResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      queryName: map['queryName'] == null ? null : (map['queryName'] as String).input(),
+      dataflowSinks: map['dataflowSinks'] == null ? null : (pulumi.Input.decodeList<PowerQuerySinkResponse>(map['dataflowSinks']!, (value) => PowerQuerySinkResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      queryName: map['queryName'] == null ? null : (map['queryName']! as String).input(),
     );
   }
 }

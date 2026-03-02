@@ -61,15 +61,15 @@ class AnalyticsItemState {
 
   factory AnalyticsItemState.fromMap(Map<String, dynamic> map) {
     return AnalyticsItemState(
-      applicationInsightsId: map['applicationInsightsId'] == null ? null : (map['applicationInsightsId'] as String).input(),
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      functionAlias: map['functionAlias'] == null ? null : (map['functionAlias'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      timeCreated: map['timeCreated'] == null ? null : (map['timeCreated'] as String).input(),
-      timeModified: map['timeModified'] == null ? null : (map['timeModified'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      applicationInsightsId: map['applicationInsightsId'] == null ? null : (map['applicationInsightsId']! as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      functionAlias: map['functionAlias'] == null ? null : (map['functionAlias']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      timeCreated: map['timeCreated'] == null ? null : (map['timeCreated']! as String).input(),
+      timeModified: map['timeModified'] == null ? null : (map['timeModified']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

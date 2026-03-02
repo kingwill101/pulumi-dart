@@ -23,7 +23,7 @@ class HookPushOption {
 
   factory HookPushOption.fromMap(Map<String, dynamic> map) {
     return HookPushOption(
-      branchFilter: map['branchFilter'] == null ? null : (map['branchFilter'] as String).input(),
+      branchFilter: map['branchFilter'] == null ? null : (map['branchFilter']! as String).input(),
     );
   }
 }

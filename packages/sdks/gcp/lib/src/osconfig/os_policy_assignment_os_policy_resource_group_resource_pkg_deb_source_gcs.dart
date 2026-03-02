@@ -31,7 +31,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs {
   factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs(
       bucket: (map['bucket'] as String).input(),
-      generation: map['generation'] == null ? null : (map['generation'] as int).input(),
+      generation: map['generation'] == null ? null : (map['generation']! as int).input(),
       object: (map['object'] as String).input(),
     );
   }

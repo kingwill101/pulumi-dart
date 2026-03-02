@@ -29,7 +29,7 @@ class CryptoKeyVersionTemplate {
   factory CryptoKeyVersionTemplate.fromMap(Map<String, dynamic> map) {
     return CryptoKeyVersionTemplate(
       algorithm: (CryptoKeyVersionTemplateAlgorithm.fromValue(map['algorithm'] as String)).input(),
-      protectionLevel: map['protectionLevel'] == null ? null : (CryptoKeyVersionTemplateProtectionLevel.fromValue(map['protectionLevel'] as String)).input(),
+      protectionLevel: map['protectionLevel'] == null ? null : (CryptoKeyVersionTemplateProtectionLevel.fromValue(map['protectionLevel']! as String)).input(),
     );
   }
 }

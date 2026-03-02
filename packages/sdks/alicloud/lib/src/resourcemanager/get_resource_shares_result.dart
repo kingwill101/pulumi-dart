@@ -56,13 +56,13 @@ class GetResourceSharesResult {
     return GetResourceSharesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      resourceShareName: map['resourceShareName'] == null ? null : map['resourceShareName'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      resourceShareName: map['resourceShareName'] == null ? null : map['resourceShareName']! as String,
       resourceShareOwner: map['resourceShareOwner'] as String,
       shares: pulumi.Input.decodeList<GetResourceSharesShare>(map['shares'], (value) => GetResourceSharesShare.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

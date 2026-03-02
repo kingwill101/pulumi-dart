@@ -22,7 +22,7 @@ class InstanceEndpoint {
 
   factory InstanceEndpoint.fromMap(Map<String, dynamic> map) {
     return InstanceEndpoint(
-      connections: map['connections'] == null ? null : (pulumi.Input.decodeList<InstanceEndpointConnection>(map['connections'], (value) => InstanceEndpointConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connections: map['connections'] == null ? null : (pulumi.Input.decodeList<InstanceEndpointConnection>(map['connections']!, (value) => InstanceEndpointConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

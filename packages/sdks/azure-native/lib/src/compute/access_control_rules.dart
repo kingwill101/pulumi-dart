@@ -40,10 +40,10 @@ class AccessControlRules {
 
   factory AccessControlRules.fromMap(Map<String, dynamic> map) {
     return AccessControlRules(
-      identities: map['identities'] == null ? null : (pulumi.Input.decodeList<AccessControlRulesIdentity>(map['identities'], (value) => AccessControlRulesIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      privileges: map['privileges'] == null ? null : (pulumi.Input.decodeList<AccessControlRulesPrivilege>(map['privileges'], (value) => AccessControlRulesPrivilege.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      roleAssignments: map['roleAssignments'] == null ? null : (pulumi.Input.decodeList<AccessControlRulesRoleAssignment>(map['roleAssignments'], (value) => AccessControlRulesRoleAssignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<AccessControlRulesRole>(map['roles'], (value) => AccessControlRulesRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identities: map['identities'] == null ? null : (pulumi.Input.decodeList<AccessControlRulesIdentity>(map['identities']!, (value) => AccessControlRulesIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privileges: map['privileges'] == null ? null : (pulumi.Input.decodeList<AccessControlRulesPrivilege>(map['privileges']!, (value) => AccessControlRulesPrivilege.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      roleAssignments: map['roleAssignments'] == null ? null : (pulumi.Input.decodeList<AccessControlRulesRoleAssignment>(map['roleAssignments']!, (value) => AccessControlRulesRoleAssignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<AccessControlRulesRole>(map['roles']!, (value) => AccessControlRulesRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

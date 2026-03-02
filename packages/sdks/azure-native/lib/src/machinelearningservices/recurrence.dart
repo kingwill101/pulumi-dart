@@ -43,11 +43,11 @@ class Recurrence {
 
   factory Recurrence.fromMap(Map<String, dynamic> map) {
     return Recurrence(
-      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      schedule: map['schedule'] == null ? null : (ComputeRecurrenceSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency']! as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      schedule: map['schedule'] == null ? null : (ComputeRecurrenceSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

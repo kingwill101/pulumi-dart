@@ -19,7 +19,7 @@ class RuleGroupRuleStatementSqliMatchStatementFieldToMatchBody {
 
   factory RuleGroupRuleStatementSqliMatchStatementFieldToMatchBody.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementSqliMatchStatementFieldToMatchBody(
-      oversizeHandling: map['oversizeHandling'] == null ? null : (map['oversizeHandling'] as String).input(),
+      oversizeHandling: map['oversizeHandling'] == null ? null : ((map['oversizeHandling'] as String).input()).input(),
     );
   }
 }

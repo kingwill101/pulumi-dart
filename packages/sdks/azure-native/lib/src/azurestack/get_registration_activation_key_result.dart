@@ -20,7 +20,7 @@ class GetRegistrationActivationKeyResult {
 
   factory GetRegistrationActivationKeyResult.fromMap(Map<String, dynamic> map) {
     return GetRegistrationActivationKeyResult(
-      activationKey: map['activationKey'] == null ? null : map['activationKey'] as String,
+      activationKey: map['activationKey'] == null ? null : map['activationKey']! as String,
     );
   }
 }

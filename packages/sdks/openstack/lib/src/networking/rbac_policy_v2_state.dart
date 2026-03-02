@@ -54,12 +54,12 @@ class RbacPolicyV2State {
 
   factory RbacPolicyV2State.fromMap(Map<String, dynamic> map) {
     return RbacPolicyV2State(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      objectType: map['objectType'] == null ? null : (map['objectType'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      targetTenant: map['targetTenant'] == null ? null : (map['targetTenant'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      objectType: map['objectType'] == null ? null : (map['objectType']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      targetTenant: map['targetTenant'] == null ? null : (map['targetTenant']! as String).input(),
     );
   }
 }

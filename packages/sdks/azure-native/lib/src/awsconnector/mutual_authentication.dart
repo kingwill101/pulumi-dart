@@ -31,9 +31,9 @@ class MutualAuthentication {
 
   factory MutualAuthentication.fromMap(Map<String, dynamic> map) {
     return MutualAuthentication(
-      ignoreClientCertificateExpiry: map['ignoreClientCertificateExpiry'] == null ? null : (map['ignoreClientCertificateExpiry'] as bool).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      trustStoreArn: map['trustStoreArn'] == null ? null : (map['trustStoreArn'] as String).input(),
+      ignoreClientCertificateExpiry: map['ignoreClientCertificateExpiry'] == null ? null : (map['ignoreClientCertificateExpiry']! as bool).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      trustStoreArn: map['trustStoreArn'] == null ? null : (map['trustStoreArn']! as String).input(),
     );
   }
 }

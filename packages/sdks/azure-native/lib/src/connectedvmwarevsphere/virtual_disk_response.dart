@@ -66,16 +66,16 @@ class VirtualDiskResponse {
 
   factory VirtualDiskResponse.fromMap(Map<String, dynamic> map) {
     return VirtualDiskResponse(
-      controllerKey: map['controllerKey'] == null ? null : (map['controllerKey'] as int).input(),
-      deviceKey: map['deviceKey'] == null ? null : (map['deviceKey'] as int).input(),
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
-      diskMode: map['diskMode'] == null ? null : (map['diskMode'] as String).input(),
+      controllerKey: map['controllerKey'] == null ? null : (map['controllerKey']! as int).input(),
+      deviceKey: map['deviceKey'] == null ? null : (map['deviceKey']! as int).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName']! as String).input(),
+      diskMode: map['diskMode'] == null ? null : (map['diskMode']! as String).input(),
       diskObjectId: (map['diskObjectId'] as String).input(),
-      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as int).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB']! as int).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
       label: (map['label'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      unitNumber: map['unitNumber'] == null ? null : (map['unitNumber'] as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      unitNumber: map['unitNumber'] == null ? null : (map['unitNumber']! as int).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class SecurityPolicyDdosProtectionConfigComputeBeta {
 
   factory SecurityPolicyDdosProtectionConfigComputeBeta.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyDdosProtectionConfigComputeBeta(
-      ddosProtection: map['ddosProtection'] == null ? null : (SecurityPolicyDdosProtectionConfigDdosProtectionComputeBeta.fromValue(map['ddosProtection'] as String)).input(),
+      ddosProtection: map['ddosProtection'] == null ? null : (SecurityPolicyDdosProtectionConfigDdosProtectionComputeBeta.fromValue(map['ddosProtection']! as String)).input(),
     );
   }
 }

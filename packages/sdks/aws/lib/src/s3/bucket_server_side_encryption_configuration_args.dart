@@ -41,9 +41,9 @@ class BucketServerSideEncryptionConfigurationArgs {
   factory BucketServerSideEncryptionConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return BucketServerSideEncryptionConfigurationArgs(
       bucket: (map['bucket'] as String).input(),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rules: (pulumi.Input.decodeList<BucketServerSideEncryptionConfigurationRule>(map['rules'], (value) => BucketServerSideEncryptionConfigurationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : ((map['expectedBucketOwner'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      rules: (pulumi.Input.decodeList<BucketServerSideEncryptionConfigurationRule>(map['rules']!, (value) => BucketServerSideEncryptionConfigurationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

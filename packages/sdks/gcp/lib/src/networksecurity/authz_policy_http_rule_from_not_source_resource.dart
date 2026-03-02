@@ -29,8 +29,8 @@ class AuthzPolicyHttpRuleFromNotSourceResource {
 
   factory AuthzPolicyHttpRuleFromNotSourceResource.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyHttpRuleFromNotSourceResource(
-      iamServiceAccount: map['iamServiceAccount'] == null ? null : (AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccount.fromMap((map['iamServiceAccount'] as Map).cast<String, dynamic>())).input(),
-      tagValueIdSet: map['tagValueIdSet'] == null ? null : (AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSet.fromMap((map['tagValueIdSet'] as Map).cast<String, dynamic>())).input(),
+      iamServiceAccount: map['iamServiceAccount'] == null ? null : (AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccount.fromMap((map['iamServiceAccount']! as Map).cast<String, dynamic>())).input(),
+      tagValueIdSet: map['tagValueIdSet'] == null ? null : (AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSet.fromMap((map['tagValueIdSet']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

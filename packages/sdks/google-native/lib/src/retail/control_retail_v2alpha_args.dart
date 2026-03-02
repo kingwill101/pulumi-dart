@@ -73,12 +73,12 @@ class ControlRetailV2alphaArgs {
       catalogId: (map['catalogId'] as String).input(),
       controlId: (map['controlId'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      facetSpec: map['facetSpec'] == null ? null : (GoogleCloudRetailV2alphaSearchRequestFacetSpec.fromMap((map['facetSpec'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rule: map['rule'] == null ? null : (GoogleCloudRetailV2alphaRule.fromMap((map['rule'] as Map).cast<String, dynamic>())).input(),
-      searchSolutionUseCase: map['searchSolutionUseCase'] == null ? null : (pulumi.Input.decodeList<ControlSearchSolutionUseCaseItemRetailV2alpha>(map['searchSolutionUseCase'], (value) => ControlSearchSolutionUseCaseItemRetailV2alpha.fromValue(value as String))).input(),
+      facetSpec: map['facetSpec'] == null ? null : (GoogleCloudRetailV2alphaSearchRequestFacetSpec.fromMap((map['facetSpec']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rule: map['rule'] == null ? null : (GoogleCloudRetailV2alphaRule.fromMap((map['rule']! as Map).cast<String, dynamic>())).input(),
+      searchSolutionUseCase: map['searchSolutionUseCase'] == null ? null : (pulumi.Input.decodeList<ControlSearchSolutionUseCaseItemRetailV2alpha>(map['searchSolutionUseCase']!, (value) => ControlSearchSolutionUseCaseItemRetailV2alpha.fromValue(value as String))).input(),
       solutionTypes: (pulumi.Input.decodeList<ControlSolutionTypesItemRetailV2alpha>(map['solutionTypes'], (value) => ControlSolutionTypesItemRetailV2alpha.fromValue(value as String))).input(),
     );
   }

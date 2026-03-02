@@ -22,7 +22,7 @@ class GoogleCloudDialogflowV2FulfillmentFeature {
 
   factory GoogleCloudDialogflowV2FulfillmentFeature.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2FulfillmentFeature(
-      type: map['type'] == null ? null : (GoogleCloudDialogflowV2FulfillmentFeatureType.fromValue(map['type'] as String)).input(),
+      type: map['type'] == null ? null : (GoogleCloudDialogflowV2FulfillmentFeatureType.fromValue(map['type']! as String)).input(),
     );
   }
 }

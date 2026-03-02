@@ -26,8 +26,8 @@ class AmlFilesystemResponseMaintenanceWindow {
 
   factory AmlFilesystemResponseMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return AmlFilesystemResponseMaintenanceWindow(
-      dayOfWeek: map['dayOfWeek'] == null ? null : (map['dayOfWeek'] as String).input(),
-      timeOfDayUTC: map['timeOfDayUTC'] == null ? null : (map['timeOfDayUTC'] as String).input(),
+      dayOfWeek: map['dayOfWeek'] == null ? null : (map['dayOfWeek']! as String).input(),
+      timeOfDayUTC: map['timeOfDayUTC'] == null ? null : (map['timeOfDayUTC']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class RegionInstanceTemplateSchedulingOnInstanceStopAction {
 
   factory RegionInstanceTemplateSchedulingOnInstanceStopAction.fromMap(Map<String, dynamic> map) {
     return RegionInstanceTemplateSchedulingOnInstanceStopAction(
-      discardLocalSsd: map['discardLocalSsd'] == null ? null : (map['discardLocalSsd'] as bool).input(),
+      discardLocalSsd: map['discardLocalSsd'] == null ? null : (map['discardLocalSsd']! as bool).input(),
     );
   }
 }

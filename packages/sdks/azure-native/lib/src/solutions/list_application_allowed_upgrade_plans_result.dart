@@ -22,7 +22,7 @@ class ListApplicationAllowedUpgradePlansResult {
 
   factory ListApplicationAllowedUpgradePlansResult.fromMap(Map<String, dynamic> map) {
     return ListApplicationAllowedUpgradePlansResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<PlanResponse>(map['value'], (value) => PlanResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<PlanResponse>(map['value']!, (value) => PlanResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

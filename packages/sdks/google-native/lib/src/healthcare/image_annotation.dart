@@ -27,8 +27,8 @@ class ImageAnnotation {
 
   factory ImageAnnotation.fromMap(Map<String, dynamic> map) {
     return ImageAnnotation(
-      boundingPolys: map['boundingPolys'] == null ? null : (pulumi.Input.decodeList<BoundingPoly>(map['boundingPolys'], (value) => BoundingPoly.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      frameIndex: map['frameIndex'] == null ? null : (map['frameIndex'] as int).input(),
+      boundingPolys: map['boundingPolys'] == null ? null : (pulumi.Input.decodeList<BoundingPoly>(map['boundingPolys']!, (value) => BoundingPoly.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      frameIndex: map['frameIndex'] == null ? null : (map['frameIndex']! as int).input(),
     );
   }
 }

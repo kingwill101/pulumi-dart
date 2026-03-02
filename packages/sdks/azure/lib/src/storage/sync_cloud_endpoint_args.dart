@@ -45,9 +45,9 @@ class SyncCloudEndpointArgs {
   factory SyncCloudEndpointArgs.fromMap(Map<String, dynamic> map) {
     return SyncCloudEndpointArgs(
       fileShareName: (map['fileShareName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       storageAccountId: (map['storageAccountId'] as String).input(),
-      storageAccountTenantId: map['storageAccountTenantId'] == null ? null : (map['storageAccountTenantId'] as String).input(),
+      storageAccountTenantId: map['storageAccountTenantId'] == null ? null : (map['storageAccountTenantId']! as String).input(),
       storageSyncGroupId: (map['storageSyncGroupId'] as String).input(),
     );
   }

@@ -41,9 +41,9 @@ class ChannelWebChatArgs {
   factory ChannelWebChatArgs.fromMap(Map<String, dynamic> map) {
     return ChannelWebChatArgs(
       botName: (map['botName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sites: map['sites'] == null ? null : (pulumi.Input.decodeList<ChannelWebChatSite>(map['sites'], (value) => ChannelWebChatSite.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sites: map['sites'] == null ? null : (pulumi.Input.decodeList<ChannelWebChatSite>(map['sites']!, (value) => ChannelWebChatSite.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

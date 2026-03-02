@@ -26,7 +26,7 @@ class GoogleCloudApigeeV1Operation {
 
   factory GoogleCloudApigeeV1Operation.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1Operation(
-      methods: map['methods'] == null ? null : ((map['methods'] as List).cast<String>()).input(),
+      methods: map['methods'] == null ? null : ((map['methods']! as List).cast<String>()).input(),
       resource: (map['resource'] as String).input(),
     );
   }

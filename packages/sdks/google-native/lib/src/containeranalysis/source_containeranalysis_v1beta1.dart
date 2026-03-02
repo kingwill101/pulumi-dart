@@ -37,10 +37,10 @@ class SourceContaineranalysisV1beta1 {
 
   factory SourceContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return SourceContaineranalysisV1beta1(
-      additionalContexts: map['additionalContexts'] == null ? null : (pulumi.Input.decodeList<SourceContextContaineranalysisV1beta1>(map['additionalContexts'], (value) => SourceContextContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      artifactStorageSourceUri: map['artifactStorageSourceUri'] == null ? null : (map['artifactStorageSourceUri'] as String).input(),
-      context: map['context'] == null ? null : (SourceContextContaineranalysisV1beta1.fromMap((map['context'] as Map).cast<String, dynamic>())).input(),
-      fileHashes: map['fileHashes'] == null ? null : ((map['fileHashes'] as Map).cast<String, String>()).input(),
+      additionalContexts: map['additionalContexts'] == null ? null : (pulumi.Input.decodeList<SourceContextContaineranalysisV1beta1>(map['additionalContexts']!, (value) => SourceContextContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      artifactStorageSourceUri: map['artifactStorageSourceUri'] == null ? null : (map['artifactStorageSourceUri']! as String).input(),
+      context: map['context'] == null ? null : (SourceContextContaineranalysisV1beta1.fromMap((map['context']! as Map).cast<String, dynamic>())).input(),
+      fileHashes: map['fileHashes'] == null ? null : ((map['fileHashes']! as Map).cast<String, String>()).input(),
     );
   }
 }

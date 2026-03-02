@@ -45,10 +45,10 @@ class VpnServerConfigurationPolicyGroupArgs {
 
   factory VpnServerConfigurationPolicyGroupArgs.fromMap(Map<String, dynamic> map) {
     return VpnServerConfigurationPolicyGroupArgs(
-      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       policies: (pulumi.Input.decodeList<VpnServerConfigurationPolicyGroupPolicy>(map['policies'], (value) => VpnServerConfigurationPolicyGroupPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
       vpnServerConfigurationId: (map['vpnServerConfigurationId'] as String).input(),
     );
   }

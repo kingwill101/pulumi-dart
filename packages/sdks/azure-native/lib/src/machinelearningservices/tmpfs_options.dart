@@ -21,7 +21,7 @@ class TmpfsOptions {
 
   factory TmpfsOptions.fromMap(Map<String, dynamic> map) {
     return TmpfsOptions(
-      size: map['size'] == null ? null : (map['size'] as int).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
     );
   }
 }

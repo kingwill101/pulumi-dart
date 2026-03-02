@@ -30,9 +30,9 @@ class DefenseRuleConfigGrayConfig {
 
   factory DefenseRuleConfigGrayConfig.fromMap(Map<String, dynamic> map) {
     return DefenseRuleConfigGrayConfig(
-      grayRate: map['grayRate'] == null ? null : (map['grayRate'] as int).input(),
-      graySubKey: map['graySubKey'] == null ? null : (map['graySubKey'] as String).input(),
-      grayTarget: map['grayTarget'] == null ? null : (map['grayTarget'] as String).input(),
+      grayRate: map['grayRate'] == null ? null : (map['grayRate']! as int).input(),
+      graySubKey: map['graySubKey'] == null ? null : (map['graySubKey']! as String).input(),
+      grayTarget: map['grayTarget'] == null ? null : (map['grayTarget']! as String).input(),
     );
   }
 }

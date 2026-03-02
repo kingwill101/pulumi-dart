@@ -27,8 +27,8 @@ class ReplicationTimeResponse {
 
   factory ReplicationTimeResponse.fromMap(Map<String, dynamic> map) {
     return ReplicationTimeResponse(
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      time: map['time'] == null ? null : (ReplicationTimeValueResponse.fromMap((map['time'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      time: map['time'] == null ? null : (ReplicationTimeValueResponse.fromMap((map['time']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

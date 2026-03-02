@@ -92,20 +92,20 @@ class BillingProfilePropertiesResponseBillTo {
   factory BillingProfilePropertiesResponseBillTo.fromMap(Map<String, dynamic> map) {
     return BillingProfilePropertiesResponseBillTo(
       addressLine1: (map['addressLine1'] as String).input(),
-      addressLine2: map['addressLine2'] == null ? null : (map['addressLine2'] as String).input(),
-      addressLine3: map['addressLine3'] == null ? null : (map['addressLine3'] as String).input(),
-      city: map['city'] == null ? null : (map['city'] as String).input(),
-      companyName: map['companyName'] == null ? null : (map['companyName'] as String).input(),
+      addressLine2: map['addressLine2'] == null ? null : (map['addressLine2']! as String).input(),
+      addressLine3: map['addressLine3'] == null ? null : (map['addressLine3']! as String).input(),
+      city: map['city'] == null ? null : (map['city']! as String).input(),
+      companyName: map['companyName'] == null ? null : (map['companyName']! as String).input(),
       country: (map['country'] as String).input(),
-      district: map['district'] == null ? null : (map['district'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      firstName: map['firstName'] == null ? null : (map['firstName'] as String).input(),
-      isValidAddress: map['isValidAddress'] == null ? null : (map['isValidAddress'] as bool).input(),
-      lastName: map['lastName'] == null ? null : (map['lastName'] as String).input(),
-      middleName: map['middleName'] == null ? null : (map['middleName'] as String).input(),
-      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
-      postalCode: map['postalCode'] == null ? null : (map['postalCode'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      district: map['district'] == null ? null : (map['district']! as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      firstName: map['firstName'] == null ? null : (map['firstName']! as String).input(),
+      isValidAddress: map['isValidAddress'] == null ? null : (map['isValidAddress']! as bool).input(),
+      lastName: map['lastName'] == null ? null : (map['lastName']! as String).input(),
+      middleName: map['middleName'] == null ? null : (map['middleName']! as String).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber']! as String).input(),
+      postalCode: map['postalCode'] == null ? null : (map['postalCode']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

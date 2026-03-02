@@ -31,9 +31,9 @@ class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse {
 
   factory GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse(
-      displayText: map['displayText'] == null ? null : (map['displayText'] as String).input(),
-      ssml: map['ssml'] == null ? null : (map['ssml'] as String).input(),
-      textToSpeech: map['textToSpeech'] == null ? null : (map['textToSpeech'] as String).input(),
+      displayText: map['displayText'] == null ? null : (map['displayText']! as String).input(),
+      ssml: map['ssml'] == null ? null : (map['ssml']! as String).input(),
+      textToSpeech: map['textToSpeech'] == null ? null : (map['textToSpeech']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class ConnectorMappingCompleteOperationResponse {
 
   factory ConnectorMappingCompleteOperationResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorMappingCompleteOperationResponse(
-      completionOperationType: map['completionOperationType'] == null ? null : (map['completionOperationType'] as String).input(),
-      destinationFolder: map['destinationFolder'] == null ? null : (map['destinationFolder'] as String).input(),
+      completionOperationType: map['completionOperationType'] == null ? null : (map['completionOperationType']! as String).input(),
+      destinationFolder: map['destinationFolder'] == null ? null : (map['destinationFolder']! as String).input(),
     );
   }
 }

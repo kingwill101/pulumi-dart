@@ -47,12 +47,12 @@ class EndpointConfigurationDataCaptureConfig {
 
   factory EndpointConfigurationDataCaptureConfig.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationDataCaptureConfig(
-      captureContentTypeHeader: map['captureContentTypeHeader'] == null ? null : (EndpointConfigurationDataCaptureConfigCaptureContentTypeHeader.fromMap((map['captureContentTypeHeader'] as Map).cast<String, dynamic>())).input(),
-      captureOptions: (pulumi.Input.decodeList<EndpointConfigurationDataCaptureConfigCaptureOption>(map['captureOptions'], (value) => EndpointConfigurationDataCaptureConfigCaptureOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      captureContentTypeHeader: map['captureContentTypeHeader'] == null ? null : ((EndpointConfigurationDataCaptureConfigCaptureContentTypeHeader.fromMap((map['captureContentTypeHeader']! as Map).cast<String, dynamic>())).input()).input(),
+      captureOptions: (pulumi.Input.decodeList<EndpointConfigurationDataCaptureConfigCaptureOption>(map['captureOptions']!, (value) => EndpointConfigurationDataCaptureConfigCaptureOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
       destinationS3Uri: (map['destinationS3Uri'] as String).input(),
-      enableCapture: map['enableCapture'] == null ? null : (map['enableCapture'] as bool).input(),
+      enableCapture: map['enableCapture'] == null ? null : ((map['enableCapture'] as bool).input()).input(),
       initialSamplingPercentage: (map['initialSamplingPercentage'] as int).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
     );
   }
 }

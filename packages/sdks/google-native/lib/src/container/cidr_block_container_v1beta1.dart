@@ -26,8 +26,8 @@ class CidrBlockContainerV1beta1 {
 
   factory CidrBlockContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return CidrBlockContainerV1beta1(
-      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
     );
   }
 }

@@ -63,14 +63,14 @@ class DefenderForServersAwsOfferingResponse {
 
   factory DefenderForServersAwsOfferingResponse.fromMap(Map<String, dynamic> map) {
     return DefenderForServersAwsOfferingResponse(
-      arcAutoProvisioning: map['arcAutoProvisioning'] == null ? null : (DefenderForServersAwsOfferingResponseArcAutoProvisioning.fromMap((map['arcAutoProvisioning'] as Map).cast<String, dynamic>())).input(),
-      defenderForServers: map['defenderForServers'] == null ? null : (DefenderForServersAwsOfferingResponseDefenderForServers.fromMap((map['defenderForServers'] as Map).cast<String, dynamic>())).input(),
+      arcAutoProvisioning: map['arcAutoProvisioning'] == null ? null : (DefenderForServersAwsOfferingResponseArcAutoProvisioning.fromMap((map['arcAutoProvisioning']! as Map).cast<String, dynamic>())).input(),
+      defenderForServers: map['defenderForServers'] == null ? null : (DefenderForServersAwsOfferingResponseDefenderForServers.fromMap((map['defenderForServers']! as Map).cast<String, dynamic>())).input(),
       description: (map['description'] as String).input(),
-      mdeAutoProvisioning: map['mdeAutoProvisioning'] == null ? null : (DefenderForServersAwsOfferingResponseMdeAutoProvisioning.fromMap((map['mdeAutoProvisioning'] as Map).cast<String, dynamic>())).input(),
+      mdeAutoProvisioning: map['mdeAutoProvisioning'] == null ? null : (DefenderForServersAwsOfferingResponseMdeAutoProvisioning.fromMap((map['mdeAutoProvisioning']! as Map).cast<String, dynamic>())).input(),
       offeringType: (map['offeringType'] as String).input(),
-      subPlan: map['subPlan'] == null ? null : (DefenderForServersAwsOfferingResponseSubPlan.fromMap((map['subPlan'] as Map).cast<String, dynamic>())).input(),
-      vaAutoProvisioning: map['vaAutoProvisioning'] == null ? null : (DefenderForServersAwsOfferingResponseVaAutoProvisioning.fromMap((map['vaAutoProvisioning'] as Map).cast<String, dynamic>())).input(),
-      vmScanners: map['vmScanners'] == null ? null : (DefenderForServersAwsOfferingResponseVmScanners.fromMap((map['vmScanners'] as Map).cast<String, dynamic>())).input(),
+      subPlan: map['subPlan'] == null ? null : (DefenderForServersAwsOfferingResponseSubPlan.fromMap((map['subPlan']! as Map).cast<String, dynamic>())).input(),
+      vaAutoProvisioning: map['vaAutoProvisioning'] == null ? null : (DefenderForServersAwsOfferingResponseVaAutoProvisioning.fromMap((map['vaAutoProvisioning']! as Map).cast<String, dynamic>())).input(),
+      vmScanners: map['vmScanners'] == null ? null : (DefenderForServersAwsOfferingResponseVmScanners.fromMap((map['vmScanners']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class MongoDbCursorMethodsProperties {
 
   factory MongoDbCursorMethodsProperties.fromMap(Map<String, dynamic> map) {
     return MongoDbCursorMethodsProperties(
-      limit: map['limit'] == null ? null : (map['limit']).input(),
-      project: map['project'] == null ? null : (map['project']).input(),
-      skip: map['skip'] == null ? null : (map['skip']).input(),
-      sort: map['sort'] == null ? null : (map['sort']).input(),
+      limit: map['limit'] == null ? null : (map['limit']!).input(),
+      project: map['project'] == null ? null : (map['project']!).input(),
+      skip: map['skip'] == null ? null : (map['skip']!).input(),
+      sort: map['sort'] == null ? null : (map['sort']!).input(),
     );
   }
 }

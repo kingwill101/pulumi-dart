@@ -39,8 +39,8 @@ class DefenderForDatabasesGcpOfferingResponse {
 
   factory DefenderForDatabasesGcpOfferingResponse.fromMap(Map<String, dynamic> map) {
     return DefenderForDatabasesGcpOfferingResponse(
-      arcAutoProvisioning: map['arcAutoProvisioning'] == null ? null : (DefenderForDatabasesGcpOfferingResponseArcAutoProvisioning.fromMap((map['arcAutoProvisioning'] as Map).cast<String, dynamic>())).input(),
-      defenderForDatabasesArcAutoProvisioning: map['defenderForDatabasesArcAutoProvisioning'] == null ? null : (DefenderForDatabasesGcpOfferingResponseDefenderForDatabasesArcAutoProvisioning.fromMap((map['defenderForDatabasesArcAutoProvisioning'] as Map).cast<String, dynamic>())).input(),
+      arcAutoProvisioning: map['arcAutoProvisioning'] == null ? null : (DefenderForDatabasesGcpOfferingResponseArcAutoProvisioning.fromMap((map['arcAutoProvisioning']! as Map).cast<String, dynamic>())).input(),
+      defenderForDatabasesArcAutoProvisioning: map['defenderForDatabasesArcAutoProvisioning'] == null ? null : (DefenderForDatabasesGcpOfferingResponseDefenderForDatabasesArcAutoProvisioning.fromMap((map['defenderForDatabasesArcAutoProvisioning']! as Map).cast<String, dynamic>())).input(),
       description: (map['description'] as String).input(),
       offeringType: (map['offeringType'] as String).input(),
     );

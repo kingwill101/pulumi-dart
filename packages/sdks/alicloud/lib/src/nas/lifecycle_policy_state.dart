@@ -41,11 +41,11 @@ class LifecyclePolicyState {
 
   factory LifecyclePolicyState.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyState(
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      lifecyclePolicyName: map['lifecyclePolicyName'] == null ? null : (map['lifecyclePolicyName'] as String).input(),
-      lifecycleRuleName: map['lifecycleRuleName'] == null ? null : (map['lifecycleRuleName'] as String).input(),
-      paths: map['paths'] == null ? null : ((map['paths'] as List).cast<String>()).input(),
-      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId']! as String).input(),
+      lifecyclePolicyName: map['lifecyclePolicyName'] == null ? null : (map['lifecyclePolicyName']! as String).input(),
+      lifecycleRuleName: map['lifecycleRuleName'] == null ? null : (map['lifecycleRuleName']! as String).input(),
+      paths: map['paths'] == null ? null : ((map['paths']! as List).cast<String>()).input(),
+      storageType: map['storageType'] == null ? null : (map['storageType']! as String).input(),
     );
   }
 }

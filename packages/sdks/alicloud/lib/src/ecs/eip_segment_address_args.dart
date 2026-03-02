@@ -75,13 +75,13 @@ class EipSegmentAddressArgs {
 
   factory EipSegmentAddressArgs.fromMap(Map<String, dynamic> map) {
     return EipSegmentAddressArgs(
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as String).input(),
       eipMask: (map['eipMask'] as String).input(),
-      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType'] as String).input(),
-      isp: map['isp'] == null ? null : (map['isp'] as String).input(),
-      netmode: map['netmode'] == null ? null : (map['netmode'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType']! as String).input(),
+      isp: map['isp'] == null ? null : (map['isp']! as String).input(),
+      netmode: map['netmode'] == null ? null : (map['netmode']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

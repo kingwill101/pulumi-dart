@@ -26,8 +26,8 @@ class FilterItems {
 
   factory FilterItems.fromMap(Map<String, dynamic> map) {
     return FilterItems(
-      field: map['field'] == null ? null : (map['field'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      field: map['field'] == null ? null : (map['field']! as String).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

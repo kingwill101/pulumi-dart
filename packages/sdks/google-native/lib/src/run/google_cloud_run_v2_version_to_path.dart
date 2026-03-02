@@ -31,9 +31,9 @@ class GoogleCloudRunV2VersionToPath {
 
   factory GoogleCloudRunV2VersionToPath.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2VersionToPath(
-      mode: map['mode'] == null ? null : (map['mode'] as int).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as int).input(),
       path: (map['path'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

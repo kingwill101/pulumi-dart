@@ -31,9 +31,9 @@ class RamRoleAttachmentState {
 
   factory RamRoleAttachmentState.fromMap(Map<String, dynamic> map) {
     return RamRoleAttachmentState(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      ramRoleName: map['ramRoleName'] == null ? null : (map['ramRoleName'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
+      ramRoleName: map['ramRoleName'] == null ? null : (map['ramRoleName']! as String).input(),
     );
   }
 }

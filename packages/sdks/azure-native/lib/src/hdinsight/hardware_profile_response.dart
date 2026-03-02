@@ -21,7 +21,7 @@ class HardwareProfileResponse {
 
   factory HardwareProfileResponse.fromMap(Map<String, dynamic> map) {
     return HardwareProfileResponse(
-      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize']! as String).input(),
     );
   }
 }

@@ -32,8 +32,8 @@ class WorkerPoolTemplateVolumeSecret {
 
   factory WorkerPoolTemplateVolumeSecret.fromMap(Map<String, dynamic> map) {
     return WorkerPoolTemplateVolumeSecret(
-      defaultMode: map['defaultMode'] == null ? null : (map['defaultMode'] as int).input(),
-      items: map['items'] == null ? null : (pulumi.Input.decodeList<WorkerPoolTemplateVolumeSecretItem>(map['items'], (value) => WorkerPoolTemplateVolumeSecretItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultMode: map['defaultMode'] == null ? null : (map['defaultMode']! as int).input(),
+      items: map['items'] == null ? null : (pulumi.Input.decodeList<WorkerPoolTemplateVolumeSecretItem>(map['items']!, (value) => WorkerPoolTemplateVolumeSecretItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
       secret: (map['secret'] as String).input(),
     );
   }

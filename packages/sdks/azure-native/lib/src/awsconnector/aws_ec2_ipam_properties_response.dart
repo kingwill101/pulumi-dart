@@ -100,22 +100,22 @@ class AwsEc2IpamPropertiesResponse {
 
   factory AwsEc2IpamPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsEc2IpamPropertiesResponse(
-      defaultResourceDiscoveryAssociationId: map['defaultResourceDiscoveryAssociationId'] == null ? null : (map['defaultResourceDiscoveryAssociationId'] as String).input(),
-      defaultResourceDiscoveryId: map['defaultResourceDiscoveryId'] == null ? null : (map['defaultResourceDiscoveryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipamArn: map['ipamArn'] == null ? null : (map['ipamArn'] as String).input(),
-      ipamId: map['ipamId'] == null ? null : (map['ipamId'] as String).input(),
-      ipamRegion: map['ipamRegion'] == null ? null : (map['ipamRegion'] as String).input(),
-      operatingRegions: map['operatingRegions'] == null ? null : (pulumi.Input.decodeList<IpamOperatingRegionResponse>(map['operatingRegions'], (value) => IpamOperatingRegionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
-      privateDefaultScopeId: map['privateDefaultScopeId'] == null ? null : (map['privateDefaultScopeId'] as String).input(),
-      publicDefaultScopeId: map['publicDefaultScopeId'] == null ? null : (map['publicDefaultScopeId'] as String).input(),
-      resourceDiscoveryAssociationCount: map['resourceDiscoveryAssociationCount'] == null ? null : (map['resourceDiscoveryAssociationCount'] as int).input(),
-      scopeCount: map['scopeCount'] == null ? null : (map['scopeCount'] as int).input(),
-      state: map['state'] == null ? null : (IpamStateEnumValueResponse.fromMap((map['state'] as Map).cast<String, dynamic>())).input(),
-      stateMessage: map['stateMessage'] == null ? null : (map['stateMessage'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tier: map['tier'] == null ? null : (IpamTierEnumValueResponse.fromMap((map['tier'] as Map).cast<String, dynamic>())).input(),
+      defaultResourceDiscoveryAssociationId: map['defaultResourceDiscoveryAssociationId'] == null ? null : (map['defaultResourceDiscoveryAssociationId']! as String).input(),
+      defaultResourceDiscoveryId: map['defaultResourceDiscoveryId'] == null ? null : (map['defaultResourceDiscoveryId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ipamArn: map['ipamArn'] == null ? null : (map['ipamArn']! as String).input(),
+      ipamId: map['ipamId'] == null ? null : (map['ipamId']! as String).input(),
+      ipamRegion: map['ipamRegion'] == null ? null : (map['ipamRegion']! as String).input(),
+      operatingRegions: map['operatingRegions'] == null ? null : (pulumi.Input.decodeList<IpamOperatingRegionResponse>(map['operatingRegions']!, (value) => IpamOperatingRegionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId']! as String).input(),
+      privateDefaultScopeId: map['privateDefaultScopeId'] == null ? null : (map['privateDefaultScopeId']! as String).input(),
+      publicDefaultScopeId: map['publicDefaultScopeId'] == null ? null : (map['publicDefaultScopeId']! as String).input(),
+      resourceDiscoveryAssociationCount: map['resourceDiscoveryAssociationCount'] == null ? null : (map['resourceDiscoveryAssociationCount']! as int).input(),
+      scopeCount: map['scopeCount'] == null ? null : (map['scopeCount']! as int).input(),
+      state: map['state'] == null ? null : (IpamStateEnumValueResponse.fromMap((map['state']! as Map).cast<String, dynamic>())).input(),
+      stateMessage: map['stateMessage'] == null ? null : (map['stateMessage']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tier: map['tier'] == null ? null : (IpamTierEnumValueResponse.fromMap((map['tier']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

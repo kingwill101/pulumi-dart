@@ -50,13 +50,13 @@ class LogTransformerTransformerConfigParseKeyValue {
 
   factory LogTransformerTransformerConfigParseKeyValue.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigParseKeyValue(
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
-      fieldDelimiter: map['fieldDelimiter'] == null ? null : (map['fieldDelimiter'] as String).input(),
-      keyPrefix: map['keyPrefix'] == null ? null : (map['keyPrefix'] as String).input(),
-      keyValueDelimiter: map['keyValueDelimiter'] == null ? null : (map['keyValueDelimiter'] as String).input(),
-      nonMatchValue: map['nonMatchValue'] == null ? null : (map['nonMatchValue'] as String).input(),
-      overwriteIfExists: map['overwriteIfExists'] == null ? null : (map['overwriteIfExists'] as bool).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      destination: map['destination'] == null ? null : ((map['destination'] as String).input()).input(),
+      fieldDelimiter: map['fieldDelimiter'] == null ? null : ((map['fieldDelimiter'] as String).input()).input(),
+      keyPrefix: map['keyPrefix'] == null ? null : ((map['keyPrefix'] as String).input()).input(),
+      keyValueDelimiter: map['keyValueDelimiter'] == null ? null : ((map['keyValueDelimiter'] as String).input()).input(),
+      nonMatchValue: map['nonMatchValue'] == null ? null : ((map['nonMatchValue'] as String).input()).input(),
+      overwriteIfExists: map['overwriteIfExists'] == null ? null : ((map['overwriteIfExists'] as bool).input()).input(),
+      source: map['source'] == null ? null : ((map['source'] as String).input()).input(),
     );
   }
 }

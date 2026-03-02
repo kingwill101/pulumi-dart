@@ -38,10 +38,10 @@ class MonitoringQueryLanguageCondition {
 
   factory MonitoringQueryLanguageCondition.fromMap(Map<String, dynamic> map) {
     return MonitoringQueryLanguageCondition(
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
-      evaluationMissingData: map['evaluationMissingData'] == null ? null : (MonitoringQueryLanguageConditionEvaluationMissingData.fromValue(map['evaluationMissingData'] as String)).input(),
-      query: map['query'] == null ? null : (map['query'] as String).input(),
-      trigger: map['trigger'] == null ? null : (Trigger.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
+      evaluationMissingData: map['evaluationMissingData'] == null ? null : (MonitoringQueryLanguageConditionEvaluationMissingData.fromValue(map['evaluationMissingData']! as String)).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
+      trigger: map['trigger'] == null ? null : (Trigger.fromMap((map['trigger']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

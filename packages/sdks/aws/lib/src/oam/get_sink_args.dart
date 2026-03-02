@@ -34,9 +34,9 @@ class GetSinkArgs {
 
   factory GetSinkArgs.fromMap(Map<String, dynamic> map) {
     return GetSinkArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       sinkIdentifier: (map['sinkIdentifier'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

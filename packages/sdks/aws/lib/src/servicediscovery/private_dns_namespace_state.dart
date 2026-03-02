@@ -56,14 +56,14 @@ class PrivateDnsNamespaceState {
 
   factory PrivateDnsNamespaceState.fromMap(Map<String, dynamic> map) {
     return PrivateDnsNamespaceState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      hostedZone: map['hostedZone'] == null ? null : (map['hostedZone'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      vpc: map['vpc'] == null ? null : (map['vpc'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      hostedZone: map['hostedZone'] == null ? null : ((map['hostedZone'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      vpc: map['vpc'] == null ? null : ((map['vpc'] as String).input()).input(),
     );
   }
 }

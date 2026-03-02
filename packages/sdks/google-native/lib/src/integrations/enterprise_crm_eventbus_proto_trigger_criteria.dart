@@ -32,8 +32,8 @@ class EnterpriseCrmEventbusProtoTriggerCriteria {
   factory EnterpriseCrmEventbusProtoTriggerCriteria.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoTriggerCriteria(
       condition: (map['condition'] as String).input(),
-      parameters: map['parameters'] == null ? null : (EnterpriseCrmEventbusProtoEventParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
-      triggerCriteriaTaskImplementationClassName: map['triggerCriteriaTaskImplementationClassName'] == null ? null : (map['triggerCriteriaTaskImplementationClassName'] as String).input(),
+      parameters: map['parameters'] == null ? null : (EnterpriseCrmEventbusProtoEventParameters.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input(),
+      triggerCriteriaTaskImplementationClassName: map['triggerCriteriaTaskImplementationClassName'] == null ? null : (map['triggerCriteriaTaskImplementationClassName']! as String).input(),
     );
   }
 }

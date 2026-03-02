@@ -33,9 +33,9 @@ class AlertProcessingRuleSuppressionScheduleRecurrence {
 
   factory AlertProcessingRuleSuppressionScheduleRecurrence.fromMap(Map<String, dynamic> map) {
     return AlertProcessingRuleSuppressionScheduleRecurrence(
-      dailies: map['dailies'] == null ? null : (pulumi.Input.decodeList<AlertProcessingRuleSuppressionScheduleRecurrenceDaily>(map['dailies'], (value) => AlertProcessingRuleSuppressionScheduleRecurrenceDaily.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      monthlies: map['monthlies'] == null ? null : (pulumi.Input.decodeList<AlertProcessingRuleSuppressionScheduleRecurrenceMonthly>(map['monthlies'], (value) => AlertProcessingRuleSuppressionScheduleRecurrenceMonthly.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      weeklies: map['weeklies'] == null ? null : (pulumi.Input.decodeList<AlertProcessingRuleSuppressionScheduleRecurrenceWeekly>(map['weeklies'], (value) => AlertProcessingRuleSuppressionScheduleRecurrenceWeekly.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dailies: map['dailies'] == null ? null : (pulumi.Input.decodeList<AlertProcessingRuleSuppressionScheduleRecurrenceDaily>(map['dailies']!, (value) => AlertProcessingRuleSuppressionScheduleRecurrenceDaily.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      monthlies: map['monthlies'] == null ? null : (pulumi.Input.decodeList<AlertProcessingRuleSuppressionScheduleRecurrenceMonthly>(map['monthlies']!, (value) => AlertProcessingRuleSuppressionScheduleRecurrenceMonthly.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      weeklies: map['weeklies'] == null ? null : (pulumi.Input.decodeList<AlertProcessingRuleSuppressionScheduleRecurrenceWeekly>(map['weeklies']!, (value) => AlertProcessingRuleSuppressionScheduleRecurrenceWeekly.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

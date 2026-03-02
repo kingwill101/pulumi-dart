@@ -21,7 +21,7 @@ class ServiceManagedResourcesSettingsResponse {
 
   factory ServiceManagedResourcesSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ServiceManagedResourcesSettingsResponse(
-      cosmosDb: map['cosmosDb'] == null ? null : (CosmosDbSettingsResponse.fromMap((map['cosmosDb'] as Map).cast<String, dynamic>())).input(),
+      cosmosDb: map['cosmosDb'] == null ? null : (CosmosDbSettingsResponse.fromMap((map['cosmosDb']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

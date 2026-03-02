@@ -21,7 +21,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec 
 
   factory GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec(
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

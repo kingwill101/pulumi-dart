@@ -28,7 +28,7 @@ class GetModelArgs {
   factory GetModelArgs.fromMap(Map<String, dynamic> map) {
     return GetModelArgs(
       modelId: (map['modelId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -60,13 +60,13 @@ class EmailChannelArgs {
   factory EmailChannelArgs.fromMap(Map<String, dynamic> map) {
     return EmailChannelArgs(
       applicationId: (map['applicationId'] as String).input(),
-      configurationSet: map['configurationSet'] == null ? null : (map['configurationSet'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      configurationSet: map['configurationSet'] == null ? null : ((map['configurationSet'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
       fromAddress: (map['fromAddress'] as String).input(),
       identity: (map['identity'] as String).input(),
-      orchestrationSendingRoleArn: map['orchestrationSendingRoleArn'] == null ? null : (map['orchestrationSendingRoleArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      orchestrationSendingRoleArn: map['orchestrationSendingRoleArn'] == null ? null : ((map['orchestrationSendingRoleArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class GetDomainAutoTuneOption {
   factory GetDomainAutoTuneOption.fromMap(Map<String, dynamic> map) {
     return GetDomainAutoTuneOption(
       desiredState: (map['desiredState'] as String).input(),
-      maintenanceSchedules: (pulumi.Input.decodeList<GetDomainAutoTuneOptionMaintenanceSchedule>(map['maintenanceSchedules'], (value) => GetDomainAutoTuneOptionMaintenanceSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maintenanceSchedules: (pulumi.Input.decodeList<GetDomainAutoTuneOptionMaintenanceSchedule>(map['maintenanceSchedules']!, (value) => GetDomainAutoTuneOptionMaintenanceSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       rollbackOnDisable: (map['rollbackOnDisable'] as String).input(),
     );
   }

@@ -112,20 +112,20 @@ class InternalRangeArgs {
 
   factory InternalRangeArgs.fromMap(Map<String, dynamic> map) {
     return InternalRangeArgs(
-      allocationOptions: map['allocationOptions'] == null ? null : (InternalRangeAllocationOptions.fromMap((map['allocationOptions'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      excludeCidrRanges: map['excludeCidrRanges'] == null ? null : ((map['excludeCidrRanges'] as List).cast<String>()).input(),
-      immutable: map['immutable'] == null ? null : (map['immutable'] as bool).input(),
-      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      migration: map['migration'] == null ? null : (InternalRangeMigration.fromMap((map['migration'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      allocationOptions: map['allocationOptions'] == null ? null : (InternalRangeAllocationOptions.fromMap((map['allocationOptions']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      excludeCidrRanges: map['excludeCidrRanges'] == null ? null : ((map['excludeCidrRanges']! as List).cast<String>()).input(),
+      immutable: map['immutable'] == null ? null : (map['immutable']! as bool).input(),
+      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      migration: map['migration'] == null ? null : (InternalRangeMigration.fromMap((map['migration']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       network: (map['network'] as String).input(),
-      overlaps: map['overlaps'] == null ? null : ((map['overlaps'] as List).cast<String>()).input(),
+      overlaps: map['overlaps'] == null ? null : ((map['overlaps']! as List).cast<String>()).input(),
       peering: (map['peering'] as String).input(),
-      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      targetCidrRanges: map['targetCidrRanges'] == null ? null : ((map['targetCidrRanges'] as List).cast<String>()).input(),
+      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      targetCidrRanges: map['targetCidrRanges'] == null ? null : ((map['targetCidrRanges']! as List).cast<String>()).input(),
       usage: (map['usage'] as String).input(),
     );
   }

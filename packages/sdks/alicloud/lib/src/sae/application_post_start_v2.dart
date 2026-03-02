@@ -21,7 +21,7 @@ class ApplicationPostStartV2 {
 
   factory ApplicationPostStartV2.fromMap(Map<String, dynamic> map) {
     return ApplicationPostStartV2(
-      exec: map['exec'] == null ? null : (ApplicationPostStartV2Exec.fromMap((map['exec'] as Map).cast<String, dynamic>())).input(),
+      exec: map['exec'] == null ? null : (ApplicationPostStartV2Exec.fromMap((map['exec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

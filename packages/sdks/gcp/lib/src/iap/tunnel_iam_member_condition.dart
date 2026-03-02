@@ -30,7 +30,7 @@ class TunnelIamMemberCondition {
 
   factory TunnelIamMemberCondition.fromMap(Map<String, dynamic> map) {
     return TunnelIamMemberCondition(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       expression: (map['expression'] as String).input(),
       title: (map['title'] as String).input(),
     );

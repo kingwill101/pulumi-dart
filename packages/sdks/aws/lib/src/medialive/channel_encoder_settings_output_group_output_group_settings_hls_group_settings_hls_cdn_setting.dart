@@ -40,11 +40,11 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdn
 
   factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting(
-      hlsAkamaiSettings: map['hlsAkamaiSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsAkamaiSettings.fromMap((map['hlsAkamaiSettings'] as Map).cast<String, dynamic>())).input(),
-      hlsBasicPutSettings: map['hlsBasicPutSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsBasicPutSettings.fromMap((map['hlsBasicPutSettings'] as Map).cast<String, dynamic>())).input(),
-      hlsMediaStoreSettings: map['hlsMediaStoreSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsMediaStoreSettings.fromMap((map['hlsMediaStoreSettings'] as Map).cast<String, dynamic>())).input(),
-      hlsS3Settings: map['hlsS3Settings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsS3Settings.fromMap((map['hlsS3Settings'] as Map).cast<String, dynamic>())).input(),
-      hlsWebdavSettings: map['hlsWebdavSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsWebdavSettings.fromMap((map['hlsWebdavSettings'] as Map).cast<String, dynamic>())).input(),
+      hlsAkamaiSettings: map['hlsAkamaiSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsAkamaiSettings.fromMap((map['hlsAkamaiSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      hlsBasicPutSettings: map['hlsBasicPutSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsBasicPutSettings.fromMap((map['hlsBasicPutSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      hlsMediaStoreSettings: map['hlsMediaStoreSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsMediaStoreSettings.fromMap((map['hlsMediaStoreSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      hlsS3Settings: map['hlsS3Settings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsS3Settings.fromMap((map['hlsS3Settings']! as Map).cast<String, dynamic>())).input()).input(),
+      hlsWebdavSettings: map['hlsWebdavSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsWebdavSettings.fromMap((map['hlsWebdavSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

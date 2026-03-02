@@ -66,14 +66,14 @@ class EntitlementArgs {
   factory EntitlementArgs.fromMap(Map<String, dynamic> map) {
     return EntitlementArgs(
       accountId: (map['accountId'] as String).input(),
-      associationInfo: map['associationInfo'] == null ? null : (GoogleCloudChannelV1AssociationInfo.fromMap((map['associationInfo'] as Map).cast<String, dynamic>())).input(),
-      billingAccount: map['billingAccount'] == null ? null : (map['billingAccount'] as String).input(),
-      commitmentSettings: map['commitmentSettings'] == null ? null : (GoogleCloudChannelV1CommitmentSettings.fromMap((map['commitmentSettings'] as Map).cast<String, dynamic>())).input(),
+      associationInfo: map['associationInfo'] == null ? null : (GoogleCloudChannelV1AssociationInfo.fromMap((map['associationInfo']! as Map).cast<String, dynamic>())).input(),
+      billingAccount: map['billingAccount'] == null ? null : (map['billingAccount']! as String).input(),
+      commitmentSettings: map['commitmentSettings'] == null ? null : (GoogleCloudChannelV1CommitmentSettings.fromMap((map['commitmentSettings']! as Map).cast<String, dynamic>())).input(),
       customerId: (map['customerId'] as String).input(),
       offer: (map['offer'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<GoogleCloudChannelV1Parameter>(map['parameters'], (value) => GoogleCloudChannelV1Parameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      purchaseOrderId: map['purchaseOrderId'] == null ? null : (map['purchaseOrderId'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<GoogleCloudChannelV1Parameter>(map['parameters']!, (value) => GoogleCloudChannelV1Parameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      purchaseOrderId: map['purchaseOrderId'] == null ? null : (map['purchaseOrderId']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

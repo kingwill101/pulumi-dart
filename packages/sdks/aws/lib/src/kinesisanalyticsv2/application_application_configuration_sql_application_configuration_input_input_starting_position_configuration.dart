@@ -20,7 +20,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSt
 
   factory ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputStartingPositionConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputStartingPositionConfiguration(
-      inputStartingPosition: map['inputStartingPosition'] == null ? null : (map['inputStartingPosition'] as String).input(),
+      inputStartingPosition: map['inputStartingPosition'] == null ? null : ((map['inputStartingPosition'] as String).input()).input(),
     );
   }
 }

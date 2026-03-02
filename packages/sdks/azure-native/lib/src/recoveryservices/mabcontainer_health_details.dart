@@ -36,10 +36,10 @@ class MABContainerHealthDetails {
 
   factory MABContainerHealthDetails.fromMap(Map<String, dynamic> map) {
     return MABContainerHealthDetails(
-      code: map['code'] == null ? null : (map['code'] as int).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      recommendations: map['recommendations'] == null ? null : ((map['recommendations'] as List).cast<String>()).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as int).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      recommendations: map['recommendations'] == null ? null : ((map['recommendations']! as List).cast<String>()).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

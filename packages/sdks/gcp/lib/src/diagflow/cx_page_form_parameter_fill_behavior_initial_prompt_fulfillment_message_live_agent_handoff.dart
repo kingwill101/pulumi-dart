@@ -20,7 +20,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHan
 
   factory CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff.fromMap(Map<String, dynamic> map) {
     return CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff(
-      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']! as String).input(),
     );
   }
 }

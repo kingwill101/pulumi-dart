@@ -21,7 +21,7 @@ class ExpressionEvaluationOptions {
 
   factory ExpressionEvaluationOptions.fromMap(Map<String, dynamic> map) {
     return ExpressionEvaluationOptions(
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
     );
   }
 }

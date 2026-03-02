@@ -53,13 +53,13 @@ class AzureNodePoolConfig {
 
   factory AzureNodePoolConfig.fromMap(Map<String, dynamic> map) {
     return AzureNodePoolConfig(
-      imageType: map['imageType'] == null ? null : (map['imageType'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      proxyConfig: map['proxyConfig'] == null ? null : (AzureNodePoolConfigProxyConfig.fromMap((map['proxyConfig'] as Map).cast<String, dynamic>())).input(),
-      rootVolume: map['rootVolume'] == null ? null : (AzureNodePoolConfigRootVolume.fromMap((map['rootVolume'] as Map).cast<String, dynamic>())).input(),
+      imageType: map['imageType'] == null ? null : (map['imageType']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      proxyConfig: map['proxyConfig'] == null ? null : (AzureNodePoolConfigProxyConfig.fromMap((map['proxyConfig']! as Map).cast<String, dynamic>())).input(),
+      rootVolume: map['rootVolume'] == null ? null : (AzureNodePoolConfigRootVolume.fromMap((map['rootVolume']! as Map).cast<String, dynamic>())).input(),
       sshConfig: (AzureNodePoolConfigSshConfig.fromMap((map['sshConfig'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize']! as String).input(),
     );
   }
 }

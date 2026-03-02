@@ -52,8 +52,8 @@ class AppHostingDomainArgs {
       backend: (map['backend'] as String).input(),
       domainId: (map['domainId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serve: map['serve'] == null ? null : (AppHostingDomainServe.fromMap((map['serve'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serve: map['serve'] == null ? null : (AppHostingDomainServe.fromMap((map['serve']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

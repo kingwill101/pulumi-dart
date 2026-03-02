@@ -21,7 +21,7 @@ class NodeSwapStatus {
 
   factory NodeSwapStatus.fromMap(Map<String, dynamic> map) {
     return NodeSwapStatus(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
     );
   }
 }

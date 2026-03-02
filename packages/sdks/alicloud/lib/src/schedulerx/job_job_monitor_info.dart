@@ -27,8 +27,8 @@ class JobJobMonitorInfo {
 
   factory JobJobMonitorInfo.fromMap(Map<String, dynamic> map) {
     return JobJobMonitorInfo(
-      contactInfos: map['contactInfos'] == null ? null : (pulumi.Input.decodeList<JobJobMonitorInfoContactInfo>(map['contactInfos'], (value) => JobJobMonitorInfoContactInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      monitorConfig: map['monitorConfig'] == null ? null : (JobJobMonitorInfoMonitorConfig.fromMap((map['monitorConfig'] as Map).cast<String, dynamic>())).input(),
+      contactInfos: map['contactInfos'] == null ? null : (pulumi.Input.decodeList<JobJobMonitorInfoContactInfo>(map['contactInfos']!, (value) => JobJobMonitorInfoContactInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      monitorConfig: map['monitorConfig'] == null ? null : (JobJobMonitorInfoMonitorConfig.fromMap((map['monitorConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

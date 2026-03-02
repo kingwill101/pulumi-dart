@@ -54,7 +54,7 @@ class GetConnectResult {
 
   factory GetConnectResult.fromMap(Map<String, dynamic> map) {
     return GetConnectResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetConnectFilter>(map['filters'], (value) => GetConnectFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetConnectFilter>(map['filters']!, (value) => GetConnectFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       protocol: map['protocol'] as String,
       region: map['region'] as String,

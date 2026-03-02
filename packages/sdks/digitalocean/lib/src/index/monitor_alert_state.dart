@@ -84,16 +84,16 @@ class MonitorAlertState {
 
   factory MonitorAlertState.fromMap(Map<String, dynamic> map) {
     return MonitorAlertState(
-      alerts: map['alerts'] == null ? null : (MonitorAlertAlerts.fromMap((map['alerts'] as Map).cast<String, dynamic>())).input(),
-      compare: map['compare'] == null ? null : (map['compare'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      entities: map['entities'] == null ? null : ((map['entities'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as double).input(),
-      window: map['window'] == null ? null : (map['window'] as String).input(),
+      alerts: map['alerts'] == null ? null : (MonitorAlertAlerts.fromMap((map['alerts']! as Map).cast<String, dynamic>())).input(),
+      compare: map['compare'] == null ? null : (map['compare']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      entities: map['entities'] == null ? null : ((map['entities']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as double).input(),
+      window: map['window'] == null ? null : (map['window']! as String).input(),
     );
   }
 }

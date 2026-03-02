@@ -39,9 +39,9 @@ class AppDefaultChannelProfileWebWidgetConfig {
 
   factory AppDefaultChannelProfileWebWidgetConfig.fromMap(Map<String, dynamic> map) {
     return AppDefaultChannelProfileWebWidgetConfig(
-      modality: map['modality'] == null ? null : (map['modality'] as String).input(),
-      theme: map['theme'] == null ? null : (map['theme'] as String).input(),
-      webWidgetTitle: map['webWidgetTitle'] == null ? null : (map['webWidgetTitle'] as String).input(),
+      modality: map['modality'] == null ? null : (map['modality']! as String).input(),
+      theme: map['theme'] == null ? null : (map['theme']! as String).input(),
+      webWidgetTitle: map['webWidgetTitle'] == null ? null : (map['webWidgetTitle']! as String).input(),
     );
   }
 }

@@ -46,11 +46,11 @@ class ProductPortfolioAssociationArgs {
 
   factory ProductPortfolioAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ProductPortfolioAssociationArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
+      acceptLanguage: map['acceptLanguage'] == null ? null : ((map['acceptLanguage'] as String).input()).input(),
       portfolioId: (map['portfolioId'] as String).input(),
       productId: (map['productId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sourcePortfolioId: map['sourcePortfolioId'] == null ? null : (map['sourcePortfolioId'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sourcePortfolioId: map['sourcePortfolioId'] == null ? null : ((map['sourcePortfolioId'] as String).input()).input(),
     );
   }
 }

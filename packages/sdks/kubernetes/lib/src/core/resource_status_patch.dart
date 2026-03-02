@@ -27,8 +27,8 @@ class ResourceStatusPatch {
 
   factory ResourceStatusPatch.fromMap(Map<String, dynamic> map) {
     return ResourceStatusPatch(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<ResourceHealthPatch>(map['resources'], (value) => ResourceHealthPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<ResourceHealthPatch>(map['resources']!, (value) => ResourceHealthPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

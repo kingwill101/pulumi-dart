@@ -73,15 +73,15 @@ class GetShareArgs {
 
   factory GetShareArgs.fromMap(Map<String, dynamic> map) {
     return GetShareArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      exportLocationPath: map['exportLocationPath'] == null ? null : (map['exportLocationPath'] as String).input(),
-      isPublic: map['isPublic'] == null ? null : (map['isPublic'] as bool).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      shareNetworkId: map['shareNetworkId'] == null ? null : (map['shareNetworkId'] as String).input(),
-      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      exportLocationPath: map['exportLocationPath'] == null ? null : (map['exportLocationPath']! as String).input(),
+      isPublic: map['isPublic'] == null ? null : (map['isPublic']! as bool).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      shareNetworkId: map['shareNetworkId'] == null ? null : (map['shareNetworkId']! as String).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

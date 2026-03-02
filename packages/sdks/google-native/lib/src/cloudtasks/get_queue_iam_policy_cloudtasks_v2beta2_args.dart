@@ -32,7 +32,7 @@ class GetQueueIamPolicyCloudtasksV2beta2Args {
   factory GetQueueIamPolicyCloudtasksV2beta2Args.fromMap(Map<String, dynamic> map) {
     return GetQueueIamPolicyCloudtasksV2beta2Args(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       queueId: (map['queueId'] as String).input(),
     );
   }

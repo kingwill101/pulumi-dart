@@ -33,9 +33,9 @@ class ConnectionInstallationState {
 
   factory ConnectionInstallationState.fromMap(Map<String, dynamic> map) {
     return ConnectionInstallationState(
-      actionUri: map['actionUri'] == null ? null : (map['actionUri'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      stage: map['stage'] == null ? null : (map['stage'] as String).input(),
+      actionUri: map['actionUri'] == null ? null : (map['actionUri']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      stage: map['stage'] == null ? null : (map['stage']! as String).input(),
     );
   }
 }

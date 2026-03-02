@@ -21,7 +21,7 @@ class CaPoolEncryptionSpec {
 
   factory CaPoolEncryptionSpec.fromMap(Map<String, dynamic> map) {
     return CaPoolEncryptionSpec(
-      cloudKmsKey: map['cloudKmsKey'] == null ? null : (map['cloudKmsKey'] as String).input(),
+      cloudKmsKey: map['cloudKmsKey'] == null ? null : (map['cloudKmsKey']! as String).input(),
     );
   }
 }

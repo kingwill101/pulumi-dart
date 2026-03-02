@@ -38,10 +38,10 @@ class VerificationRule {
 
   factory VerificationRule.fromMap(Map<String, dynamic> map) {
     return VerificationRule(
-      attestationSource: map['attestationSource'] == null ? null : (AttestationSource.fromMap((map['attestationSource'] as Map).cast<String, dynamic>())).input(),
-      configBasedBuildRequired: map['configBasedBuildRequired'] == null ? null : (map['configBasedBuildRequired'] as bool).input(),
-      trustedBuilder: map['trustedBuilder'] == null ? null : (VerificationRuleTrustedBuilder.fromValue(map['trustedBuilder'] as String)).input(),
-      trustedSourceRepoPatterns: map['trustedSourceRepoPatterns'] == null ? null : ((map['trustedSourceRepoPatterns'] as List).cast<String>()).input(),
+      attestationSource: map['attestationSource'] == null ? null : (AttestationSource.fromMap((map['attestationSource']! as Map).cast<String, dynamic>())).input(),
+      configBasedBuildRequired: map['configBasedBuildRequired'] == null ? null : (map['configBasedBuildRequired']! as bool).input(),
+      trustedBuilder: map['trustedBuilder'] == null ? null : (VerificationRuleTrustedBuilder.fromValue(map['trustedBuilder']! as String)).input(),
+      trustedSourceRepoPatterns: map['trustedSourceRepoPatterns'] == null ? null : ((map['trustedSourceRepoPatterns']! as List).cast<String>()).input(),
     );
   }
 }

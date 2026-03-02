@@ -20,7 +20,7 @@ class RuleRuleConditionMethodConfig {
 
   factory RuleRuleConditionMethodConfig.fromMap(Map<String, dynamic> map) {
     return RuleRuleConditionMethodConfig(
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

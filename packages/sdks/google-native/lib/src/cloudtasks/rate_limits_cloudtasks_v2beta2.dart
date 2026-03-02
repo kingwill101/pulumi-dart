@@ -31,9 +31,9 @@ class RateLimitsCloudtasksV2beta2 {
 
   factory RateLimitsCloudtasksV2beta2.fromMap(Map<String, dynamic> map) {
     return RateLimitsCloudtasksV2beta2(
-      maxBurstSize: map['maxBurstSize'] == null ? null : (map['maxBurstSize'] as int).input(),
-      maxConcurrentTasks: map['maxConcurrentTasks'] == null ? null : (map['maxConcurrentTasks'] as int).input(),
-      maxTasksDispatchedPerSecond: map['maxTasksDispatchedPerSecond'] == null ? null : (map['maxTasksDispatchedPerSecond'] as double).input(),
+      maxBurstSize: map['maxBurstSize'] == null ? null : (map['maxBurstSize']! as int).input(),
+      maxConcurrentTasks: map['maxConcurrentTasks'] == null ? null : (map['maxConcurrentTasks']! as int).input(),
+      maxTasksDispatchedPerSecond: map['maxTasksDispatchedPerSecond'] == null ? null : (map['maxTasksDispatchedPerSecond']! as double).input(),
     );
   }
 }

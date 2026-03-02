@@ -27,8 +27,8 @@ class ConfigDiagnosticsResponse {
 
   factory ConfigDiagnosticsResponse.fromMap(Map<String, dynamic> map) {
     return ConfigDiagnosticsResponse(
-      lastExecuted: map['lastExecuted'] == null ? null : (map['lastExecuted'] as String).input(),
-      validatorResults: map['validatorResults'] == null ? null : (pulumi.Input.decodeList<ConfigDiagnosticsValidatorResultResponse>(map['validatorResults'], (value) => ConfigDiagnosticsValidatorResultResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastExecuted: map['lastExecuted'] == null ? null : (map['lastExecuted']! as String).input(),
+      validatorResults: map['validatorResults'] == null ? null : (pulumi.Input.decodeList<ConfigDiagnosticsValidatorResultResponse>(map['validatorResults']!, (value) => ConfigDiagnosticsValidatorResultResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

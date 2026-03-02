@@ -32,9 +32,9 @@ class LogConfigCounterOptionsComputeV1 {
 
   factory LogConfigCounterOptionsComputeV1.fromMap(Map<String, dynamic> map) {
     return LogConfigCounterOptionsComputeV1(
-      customFields: map['customFields'] == null ? null : (pulumi.Input.decodeList<LogConfigCounterOptionsCustomFieldComputeV1>(map['customFields'], (value) => LogConfigCounterOptionsCustomFieldComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      field: map['field'] == null ? null : (map['field'] as String).input(),
-      metric: map['metric'] == null ? null : (map['metric'] as String).input(),
+      customFields: map['customFields'] == null ? null : (pulumi.Input.decodeList<LogConfigCounterOptionsCustomFieldComputeV1>(map['customFields']!, (value) => LogConfigCounterOptionsCustomFieldComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      field: map['field'] == null ? null : (map['field']! as String).input(),
+      metric: map['metric'] == null ? null : (map['metric']! as String).input(),
     );
   }
 }

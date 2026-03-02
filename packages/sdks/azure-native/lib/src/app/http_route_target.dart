@@ -37,9 +37,9 @@ class HttpRouteTarget {
   factory HttpRouteTarget.fromMap(Map<String, dynamic> map) {
     return HttpRouteTarget(
       containerApp: (map['containerApp'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class BackendTls {
 
   factory BackendTls.fromMap(Map<String, dynamic> map) {
     return BackendTls(
-      validateCertificateChain: map['validateCertificateChain'] == null ? null : (map['validateCertificateChain'] as bool).input(),
-      validateCertificateName: map['validateCertificateName'] == null ? null : (map['validateCertificateName'] as bool).input(),
+      validateCertificateChain: map['validateCertificateChain'] == null ? null : (map['validateCertificateChain']! as bool).input(),
+      validateCertificateName: map['validateCertificateName'] == null ? null : (map['validateCertificateName']! as bool).input(),
     );
   }
 }

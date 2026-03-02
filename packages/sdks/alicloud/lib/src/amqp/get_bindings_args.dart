@@ -35,7 +35,7 @@ class GetBindingsArgs {
   factory GetBindingsArgs.fromMap(Map<String, dynamic> map) {
     return GetBindingsArgs(
       instanceId: (map['instanceId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
       virtualHostName: (map['virtualHostName'] as String).input(),
     );
   }

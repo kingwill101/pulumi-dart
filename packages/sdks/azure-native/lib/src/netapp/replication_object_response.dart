@@ -47,12 +47,12 @@ class ReplicationObjectResponse {
 
   factory ReplicationObjectResponse.fromMap(Map<String, dynamic> map) {
     return ReplicationObjectResponse(
-      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
-      remotePath: map['remotePath'] == null ? null : (RemotePathResponse.fromMap((map['remotePath'] as Map).cast<String, dynamic>())).input(),
-      remoteVolumeRegion: map['remoteVolumeRegion'] == null ? null : (map['remoteVolumeRegion'] as String).input(),
-      remoteVolumeResourceId: map['remoteVolumeResourceId'] == null ? null : (map['remoteVolumeResourceId'] as String).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
+      remotePath: map['remotePath'] == null ? null : (RemotePathResponse.fromMap((map['remotePath']! as Map).cast<String, dynamic>())).input(),
+      remoteVolumeRegion: map['remoteVolumeRegion'] == null ? null : (map['remoteVolumeRegion']! as String).input(),
+      remoteVolumeResourceId: map['remoteVolumeResourceId'] == null ? null : (map['remoteVolumeResourceId']! as String).input(),
       replicationId: (map['replicationId'] as String).input(),
-      replicationSchedule: map['replicationSchedule'] == null ? null : (map['replicationSchedule'] as String).input(),
+      replicationSchedule: map['replicationSchedule'] == null ? null : (map['replicationSchedule']! as String).input(),
     );
   }
 }

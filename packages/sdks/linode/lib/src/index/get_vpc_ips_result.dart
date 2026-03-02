@@ -39,10 +39,10 @@ class GetVpcIpsResult {
 
   factory GetVpcIpsResult.fromMap(Map<String, dynamic> map) {
     return GetVpcIpsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVpcIpsFilter>(map['filters'], (value) => GetVpcIpsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVpcIpsFilter>(map['filters']!, (value) => GetVpcIpsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      ipv6: map['ipv6'] == null ? null : map['ipv6'] as bool,
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as int,
+      ipv6: map['ipv6'] == null ? null : map['ipv6']! as bool,
+      vpcId: map['vpcId'] == null ? null : map['vpcId']! as int,
       vpcIps: pulumi.Input.decodeList<GetVpcIpsVpcIp>(map['vpcIps'], (value) => GetVpcIpsVpcIp.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

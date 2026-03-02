@@ -60,7 +60,7 @@ class UserProvisioningArgs {
   factory UserProvisioningArgs.fromMap(Map<String, dynamic> map) {
     return UserProvisioningArgs(
       deletionStrategy: (map['deletionStrategy'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       directoryId: (map['directoryId'] as String).input(),
       duplicationStrategy: (map['duplicationStrategy'] as String).input(),
       principalId: (map['principalId'] as String).input(),

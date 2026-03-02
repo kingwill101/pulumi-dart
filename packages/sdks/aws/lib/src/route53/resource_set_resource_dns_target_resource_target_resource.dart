@@ -27,8 +27,8 @@ class ResourceSetResourceDnsTargetResourceTargetResource {
 
   factory ResourceSetResourceDnsTargetResourceTargetResource.fromMap(Map<String, dynamic> map) {
     return ResourceSetResourceDnsTargetResourceTargetResource(
-      nlbResource: map['nlbResource'] == null ? null : (ResourceSetResourceDnsTargetResourceTargetResourceNlbResource.fromMap((map['nlbResource'] as Map).cast<String, dynamic>())).input(),
-      r53Resource: map['r53Resource'] == null ? null : (ResourceSetResourceDnsTargetResourceTargetResourceR53Resource.fromMap((map['r53Resource'] as Map).cast<String, dynamic>())).input(),
+      nlbResource: map['nlbResource'] == null ? null : ((ResourceSetResourceDnsTargetResourceTargetResourceNlbResource.fromMap((map['nlbResource']! as Map).cast<String, dynamic>())).input()).input(),
+      r53Resource: map['r53Resource'] == null ? null : ((ResourceSetResourceDnsTargetResourceTargetResourceR53Resource.fromMap((map['r53Resource']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -37,10 +37,10 @@ class PermissionsTable {
 
   factory PermissionsTable.fromMap(Map<String, dynamic> map) {
     return PermissionsTable(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
       databaseName: (map['databaseName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      wildcard: map['wildcard'] == null ? null : (map['wildcard'] as bool).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      wildcard: map['wildcard'] == null ? null : ((map['wildcard'] as bool).input()).input(),
     );
   }
 }

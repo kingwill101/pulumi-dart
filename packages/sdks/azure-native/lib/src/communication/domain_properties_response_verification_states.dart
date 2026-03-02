@@ -42,11 +42,11 @@ class DomainPropertiesResponseVerificationStates {
 
   factory DomainPropertiesResponseVerificationStates.fromMap(Map<String, dynamic> map) {
     return DomainPropertiesResponseVerificationStates(
-      dKIM: map['dKIM'] == null ? null : (VerificationStatusRecordResponse.fromMap((map['dKIM'] as Map).cast<String, dynamic>())).input(),
-      dKIM2: map['dKIM2'] == null ? null : (VerificationStatusRecordResponse.fromMap((map['dKIM2'] as Map).cast<String, dynamic>())).input(),
-      dMARC: map['dMARC'] == null ? null : (VerificationStatusRecordResponse.fromMap((map['dMARC'] as Map).cast<String, dynamic>())).input(),
-      domain: map['domain'] == null ? null : (VerificationStatusRecordResponse.fromMap((map['domain'] as Map).cast<String, dynamic>())).input(),
-      sPF: map['sPF'] == null ? null : (VerificationStatusRecordResponse.fromMap((map['sPF'] as Map).cast<String, dynamic>())).input(),
+      dKIM: map['dKIM'] == null ? null : (VerificationStatusRecordResponse.fromMap((map['dKIM']! as Map).cast<String, dynamic>())).input(),
+      dKIM2: map['dKIM2'] == null ? null : (VerificationStatusRecordResponse.fromMap((map['dKIM2']! as Map).cast<String, dynamic>())).input(),
+      dMARC: map['dMARC'] == null ? null : (VerificationStatusRecordResponse.fromMap((map['dMARC']! as Map).cast<String, dynamic>())).input(),
+      domain: map['domain'] == null ? null : (VerificationStatusRecordResponse.fromMap((map['domain']! as Map).cast<String, dynamic>())).input(),
+      sPF: map['sPF'] == null ? null : (VerificationStatusRecordResponse.fromMap((map['sPF']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

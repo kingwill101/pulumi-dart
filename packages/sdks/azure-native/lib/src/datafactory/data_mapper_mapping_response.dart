@@ -43,11 +43,11 @@ class DataMapperMappingResponse {
 
   factory DataMapperMappingResponse.fromMap(Map<String, dynamic> map) {
     return DataMapperMappingResponse(
-      attributeMappingInfo: map['attributeMappingInfo'] == null ? null : (MapperAttributeMappingsResponse.fromMap((map['attributeMappingInfo'] as Map).cast<String, dynamic>())).input(),
-      sourceConnectionReference: map['sourceConnectionReference'] == null ? null : (MapperConnectionReferenceResponse.fromMap((map['sourceConnectionReference'] as Map).cast<String, dynamic>())).input(),
-      sourceDenormalizeInfo: map['sourceDenormalizeInfo'] == null ? null : (map['sourceDenormalizeInfo']).input(),
-      sourceEntityName: map['sourceEntityName'] == null ? null : (map['sourceEntityName'] as String).input(),
-      targetEntityName: map['targetEntityName'] == null ? null : (map['targetEntityName'] as String).input(),
+      attributeMappingInfo: map['attributeMappingInfo'] == null ? null : (MapperAttributeMappingsResponse.fromMap((map['attributeMappingInfo']! as Map).cast<String, dynamic>())).input(),
+      sourceConnectionReference: map['sourceConnectionReference'] == null ? null : (MapperConnectionReferenceResponse.fromMap((map['sourceConnectionReference']! as Map).cast<String, dynamic>())).input(),
+      sourceDenormalizeInfo: map['sourceDenormalizeInfo'] == null ? null : (map['sourceDenormalizeInfo']!).input(),
+      sourceEntityName: map['sourceEntityName'] == null ? null : (map['sourceEntityName']! as String).input(),
+      targetEntityName: map['targetEntityName'] == null ? null : (map['targetEntityName']! as String).input(),
     );
   }
 }

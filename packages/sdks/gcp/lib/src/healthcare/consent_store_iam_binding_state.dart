@@ -61,12 +61,12 @@ class ConsentStoreIamBindingState {
 
   factory ConsentStoreIamBindingState.fromMap(Map<String, dynamic> map) {
     return ConsentStoreIamBindingState(
-      condition: map['condition'] == null ? null : (ConsentStoreIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      consentStoreId: map['consentStoreId'] == null ? null : (map['consentStoreId'] as String).input(),
-      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      condition: map['condition'] == null ? null : (ConsentStoreIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      consentStoreId: map['consentStoreId'] == null ? null : (map['consentStoreId']! as String).input(),
+      dataset: map['dataset'] == null ? null : (map['dataset']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

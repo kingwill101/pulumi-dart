@@ -49,11 +49,11 @@ class AlloyDbSettings {
 
   factory AlloyDbSettings.fromMap(Map<String, dynamic> map) {
     return AlloyDbSettings(
-      databaseVersion: map['databaseVersion'] == null ? null : (AlloyDbSettingsDatabaseVersion.fromValue(map['databaseVersion'] as String)).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
+      databaseVersion: map['databaseVersion'] == null ? null : (AlloyDbSettingsDatabaseVersion.fromValue(map['databaseVersion']! as String)).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfig.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
       initialUser: (UserPassword.fromMap((map['initialUser'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      primaryInstanceSettings: map['primaryInstanceSettings'] == null ? null : (PrimaryInstanceSettings.fromMap((map['primaryInstanceSettings'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      primaryInstanceSettings: map['primaryInstanceSettings'] == null ? null : (PrimaryInstanceSettings.fromMap((map['primaryInstanceSettings']! as Map).cast<String, dynamic>())).input(),
       vpcNetwork: (map['vpcNetwork'] as String).input(),
     );
   }

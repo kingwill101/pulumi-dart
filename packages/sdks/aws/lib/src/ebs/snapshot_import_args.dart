@@ -76,17 +76,17 @@ class SnapshotImportArgs {
 
   factory SnapshotImportArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotImportArgs(
-      clientData: map['clientData'] == null ? null : (SnapshotImportClientData.fromMap((map['clientData'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      diskContainer: (SnapshotImportDiskContainer.fromMap((map['diskContainer'] as Map).cast<String, dynamic>())).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      permanentRestore: map['permanentRestore'] == null ? null : (map['permanentRestore'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
-      storageTier: map['storageTier'] == null ? null : (map['storageTier'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      temporaryRestoreDays: map['temporaryRestoreDays'] == null ? null : (map['temporaryRestoreDays'] as int).input(),
+      clientData: map['clientData'] == null ? null : ((SnapshotImportClientData.fromMap((map['clientData']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      diskContainer: (SnapshotImportDiskContainer.fromMap((map['diskContainer']! as Map).cast<String, dynamic>())).input(),
+      encrypted: map['encrypted'] == null ? null : ((map['encrypted'] as bool).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      permanentRestore: map['permanentRestore'] == null ? null : ((map['permanentRestore'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleName: map['roleName'] == null ? null : ((map['roleName'] as String).input()).input(),
+      storageTier: map['storageTier'] == null ? null : ((map['storageTier'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      temporaryRestoreDays: map['temporaryRestoreDays'] == null ? null : ((map['temporaryRestoreDays'] as int).input()).input(),
     );
   }
 }

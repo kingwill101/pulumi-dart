@@ -26,8 +26,8 @@ class LunRange {
 
   factory LunRange.fromMap(Map<String, dynamic> map) {
     return LunRange(
-      quantity: map['quantity'] == null ? null : (map['quantity'] as int).input(),
-      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb'] as int).input(),
+      quantity: map['quantity'] == null ? null : (map['quantity']! as int).input(),
+      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb']! as int).input(),
     );
   }
 }

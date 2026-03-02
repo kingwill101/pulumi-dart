@@ -44,11 +44,11 @@ class MonitorGroupArgs {
 
   factory MonitorGroupArgs.fromMap(Map<String, dynamic> map) {
     return MonitorGroupArgs(
-      contactGroups: map['contactGroups'] == null ? null : ((map['contactGroups'] as List).cast<String>()).input(),
-      monitorGroupName: map['monitorGroupName'] == null ? null : (map['monitorGroupName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      contactGroups: map['contactGroups'] == null ? null : ((map['contactGroups']! as List).cast<String>()).input(),
+      monitorGroupName: map['monitorGroupName'] == null ? null : (map['monitorGroupName']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

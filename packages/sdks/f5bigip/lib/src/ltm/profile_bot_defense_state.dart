@@ -41,11 +41,11 @@ class ProfileBotDefenseState {
 
   factory ProfileBotDefenseState.fromMap(Map<String, dynamic> map) {
     return ProfileBotDefenseState(
-      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enforcementMode: map['enforcementMode'] == null ? null : (map['enforcementMode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      template: map['template'] == null ? null : (map['template'] as String).input(),
+      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enforcementMode: map['enforcementMode'] == null ? null : (map['enforcementMode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      template: map['template'] == null ? null : (map['template']! as String).input(),
     );
   }
 }

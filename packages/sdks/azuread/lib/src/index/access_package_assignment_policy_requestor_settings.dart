@@ -31,9 +31,9 @@ class AccessPackageAssignmentPolicyRequestorSettings {
 
   factory AccessPackageAssignmentPolicyRequestorSettings.fromMap(Map<String, dynamic> map) {
     return AccessPackageAssignmentPolicyRequestorSettings(
-      requestors: map['requestors'] == null ? null : (pulumi.Input.decodeList<AccessPackageAssignmentPolicyRequestorSettingsRequestor>(map['requestors'], (value) => AccessPackageAssignmentPolicyRequestorSettingsRequestor.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requestsAccepted: map['requestsAccepted'] == null ? null : (map['requestsAccepted'] as bool).input(),
-      scopeType: map['scopeType'] == null ? null : (map['scopeType'] as String).input(),
+      requestors: map['requestors'] == null ? null : (pulumi.Input.decodeList<AccessPackageAssignmentPolicyRequestorSettingsRequestor>(map['requestors']!, (value) => AccessPackageAssignmentPolicyRequestorSettingsRequestor.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestsAccepted: map['requestsAccepted'] == null ? null : (map['requestsAccepted']! as bool).input(),
+      scopeType: map['scopeType'] == null ? null : (map['scopeType']! as String).input(),
     );
   }
 }

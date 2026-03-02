@@ -41,7 +41,7 @@ class ResourceArgs {
     return ResourceArgs(
       parentId: (map['parentId'] as String).input(),
       pathPart: (map['pathPart'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       restApi: (map['restApi'] as String).input(),
     );
   }

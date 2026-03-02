@@ -26,8 +26,8 @@ class StatusMessageResponse {
 
   factory StatusMessageResponse.fromMap(Map<String, dynamic> map) {
     return StatusMessageResponse(
-      errorCode: map['errorCode'] == null ? null : (map['errorCode'] as double).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      errorCode: map['errorCode'] == null ? null : (map['errorCode']! as double).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

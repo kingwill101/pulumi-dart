@@ -34,9 +34,9 @@ class SettingsResponse {
 
   factory SettingsResponse.fromMap(Map<String, dynamic> map) {
     return SettingsResponse(
-      azureArcSettings: map['azureArcSettings'] == null ? null : (AzureArcSettingsResponse.fromMap((map['azureArcSettings'] as Map).cast<String, dynamic>())).input(),
+      azureArcSettings: map['azureArcSettings'] == null ? null : (AzureArcSettingsResponse.fromMap((map['azureArcSettings']! as Map).cast<String, dynamic>())).input(),
       azureSettings: (AzureSettingsResponse.fromMap((map['azureSettings'] as Map).cast<String, dynamic>())).input(),
-      onPremiseSettings: map['onPremiseSettings'] == null ? null : (OnPremiseSettingsResponse.fromMap((map['onPremiseSettings'] as Map).cast<String, dynamic>())).input(),
+      onPremiseSettings: map['onPremiseSettings'] == null ? null : (OnPremiseSettingsResponse.fromMap((map['onPremiseSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

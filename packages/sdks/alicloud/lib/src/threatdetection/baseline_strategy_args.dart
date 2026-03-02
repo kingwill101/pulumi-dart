@@ -70,7 +70,7 @@ class BaselineStrategyArgs {
       baselineStrategyName: (map['baselineStrategyName'] as String).input(),
       customType: (map['customType'] as String).input(),
       cycleDays: (map['cycleDays'] as int).input(),
-      cycleStartTime: map['cycleStartTime'] == null ? null : (map['cycleStartTime'] as int).input(),
+      cycleStartTime: map['cycleStartTime'] == null ? null : (map['cycleStartTime']! as int).input(),
       endTime: (map['endTime'] as String).input(),
       riskSubTypeName: (map['riskSubTypeName'] as String).input(),
       startTime: (map['startTime'] as String).input(),

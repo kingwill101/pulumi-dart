@@ -29,7 +29,7 @@ class GetRegistryImageArgs {
 
   factory GetRegistryImageArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistryImageArgs(
-      insecureSkipVerify: map['insecureSkipVerify'] == null ? null : (map['insecureSkipVerify'] as bool).input(),
+      insecureSkipVerify: map['insecureSkipVerify'] == null ? null : (map['insecureSkipVerify']! as bool).input(),
       name: (map['name'] as String).input(),
     );
   }

@@ -20,7 +20,7 @@ class JobExecutionProperty {
 
   factory JobExecutionProperty.fromMap(Map<String, dynamic> map) {
     return JobExecutionProperty(
-      maxConcurrentRuns: map['maxConcurrentRuns'] == null ? null : (map['maxConcurrentRuns'] as int).input(),
+      maxConcurrentRuns: map['maxConcurrentRuns'] == null ? null : ((map['maxConcurrentRuns'] as int).input()).input(),
     );
   }
 }

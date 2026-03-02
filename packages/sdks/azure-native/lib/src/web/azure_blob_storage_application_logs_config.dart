@@ -34,9 +34,9 @@ class AzureBlobStorageApplicationLogsConfig {
 
   factory AzureBlobStorageApplicationLogsConfig.fromMap(Map<String, dynamic> map) {
     return AzureBlobStorageApplicationLogsConfig(
-      level: map['level'] == null ? null : (LogLevel.fromValue(map['level'] as String)).input(),
-      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays'] as int).input(),
-      sasUrl: map['sasUrl'] == null ? null : (map['sasUrl'] as String).input(),
+      level: map['level'] == null ? null : (LogLevel.fromValue(map['level']! as String)).input(),
+      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays']! as int).input(),
+      sasUrl: map['sasUrl'] == null ? null : (map['sasUrl']! as String).input(),
     );
   }
 }

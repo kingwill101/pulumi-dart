@@ -41,11 +41,11 @@ class CacheToAzureBlob {
 
   factory CacheToAzureBlob.fromMap(Map<String, dynamic> map) {
     return CacheToAzureBlob(
-      accountUrl: map['accountUrl'] == null ? null : (map['accountUrl'] as String).input(),
-      ignoreError: map['ignoreError'] == null ? null : (map['ignoreError'] as bool).input(),
-      mode: map['mode'] == null ? null : (CacheMode.fromValue(map['mode'] as String)).input(),
+      accountUrl: map['accountUrl'] == null ? null : (map['accountUrl']! as String).input(),
+      ignoreError: map['ignoreError'] == null ? null : (map['ignoreError']! as bool).input(),
+      mode: map['mode'] == null ? null : (CacheMode.fromValue(map['mode']! as String)).input(),
       name: (map['name'] as String).input(),
-      secretAccessKey: map['secretAccessKey'] == null ? null : (map['secretAccessKey'] as String).input(),
+      secretAccessKey: map['secretAccessKey'] == null ? null : (map['secretAccessKey']! as String).input(),
     );
   }
 }

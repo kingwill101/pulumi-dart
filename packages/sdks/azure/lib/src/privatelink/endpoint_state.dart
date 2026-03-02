@@ -82,18 +82,18 @@ class EndpointState {
 
   factory EndpointState.fromMap(Map<String, dynamic> map) {
     return EndpointState(
-      customDnsConfigs: map['customDnsConfigs'] == null ? null : (pulumi.Input.decodeList<EndpointCustomDnsConfig>(map['customDnsConfigs'], (value) => EndpointCustomDnsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      customNetworkInterfaceName: map['customNetworkInterfaceName'] == null ? null : (map['customNetworkInterfaceName'] as String).input(),
-      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<EndpointIpConfiguration>(map['ipConfigurations'], (value) => EndpointIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<EndpointNetworkInterface>(map['networkInterfaces'], (value) => EndpointNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      privateDnsZoneConfigs: map['privateDnsZoneConfigs'] == null ? null : (pulumi.Input.decodeList<EndpointPrivateDnsZoneConfig>(map['privateDnsZoneConfigs'], (value) => EndpointPrivateDnsZoneConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      privateDnsZoneGroup: map['privateDnsZoneGroup'] == null ? null : (EndpointPrivateDnsZoneGroup.fromMap((map['privateDnsZoneGroup'] as Map).cast<String, dynamic>())).input(),
-      privateServiceConnection: map['privateServiceConnection'] == null ? null : (EndpointPrivateServiceConnection.fromMap((map['privateServiceConnection'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      customDnsConfigs: map['customDnsConfigs'] == null ? null : (pulumi.Input.decodeList<EndpointCustomDnsConfig>(map['customDnsConfigs']!, (value) => EndpointCustomDnsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customNetworkInterfaceName: map['customNetworkInterfaceName'] == null ? null : (map['customNetworkInterfaceName']! as String).input(),
+      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<EndpointIpConfiguration>(map['ipConfigurations']!, (value) => EndpointIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<EndpointNetworkInterface>(map['networkInterfaces']!, (value) => EndpointNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateDnsZoneConfigs: map['privateDnsZoneConfigs'] == null ? null : (pulumi.Input.decodeList<EndpointPrivateDnsZoneConfig>(map['privateDnsZoneConfigs']!, (value) => EndpointPrivateDnsZoneConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateDnsZoneGroup: map['privateDnsZoneGroup'] == null ? null : (EndpointPrivateDnsZoneGroup.fromMap((map['privateDnsZoneGroup']! as Map).cast<String, dynamic>())).input(),
+      privateServiceConnection: map['privateServiceConnection'] == null ? null : (EndpointPrivateServiceConnection.fromMap((map['privateServiceConnection']! as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

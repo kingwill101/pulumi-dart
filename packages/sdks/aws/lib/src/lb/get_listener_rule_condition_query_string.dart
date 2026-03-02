@@ -21,7 +21,7 @@ class GetListenerRuleConditionQueryString {
 
   factory GetListenerRuleConditionQueryString.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleConditionQueryString(
-      values: map['values'] == null ? null : (pulumi.Input.decodeList<GetListenerRuleConditionQueryStringValue>(map['values'], (value) => GetListenerRuleConditionQueryStringValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      values: map['values'] == null ? null : ((pulumi.Input.decodeList<GetListenerRuleConditionQueryStringValue>(map['values']!, (value) => GetListenerRuleConditionQueryStringValue.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

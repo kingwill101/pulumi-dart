@@ -64,15 +64,15 @@ class RouteArgs {
 
   factory RouteArgs.fromMap(Map<String, dynamic> map) {
     return RouteArgs(
-      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nextHopIpAddress: map['nextHopIpAddress'] == null ? null : (map['nextHopIpAddress'] as String).input(),
+      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nextHopIpAddress: map['nextHopIpAddress'] == null ? null : (map['nextHopIpAddress']! as String).input(),
       nextHopType: (map['nextHopType'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      routeName: map['routeName'] == null ? null : (map['routeName'] as String).input(),
+      routeName: map['routeName'] == null ? null : (map['routeName']! as String).input(),
       routeTableName: (map['routeTableName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

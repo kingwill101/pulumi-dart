@@ -32,7 +32,7 @@ class EndpointConfigurationProductionVariantServerlessConfig {
     return EndpointConfigurationProductionVariantServerlessConfig(
       maxConcurrency: (map['maxConcurrency'] as int).input(),
       memorySizeInMb: (map['memorySizeInMb'] as int).input(),
-      provisionedConcurrency: map['provisionedConcurrency'] == null ? null : (map['provisionedConcurrency'] as int).input(),
+      provisionedConcurrency: map['provisionedConcurrency'] == null ? null : ((map['provisionedConcurrency'] as int).input()).input(),
     );
   }
 }

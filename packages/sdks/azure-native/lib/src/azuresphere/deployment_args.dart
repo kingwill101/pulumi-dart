@@ -56,9 +56,9 @@ class DeploymentArgs {
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
       catalogName: (map['catalogName'] as String).input(),
-      deployedImages: map['deployedImages'] == null ? null : ((map['deployedImages'] as List).cast<ImageAzuresphere>()).input(),
-      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId'] as String).input(),
-      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName'] as String).input(),
+      deployedImages: map['deployedImages'] == null ? null : ((map['deployedImages']! as List).cast<ImageAzuresphere>()).input(),
+      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId']! as String).input(),
+      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName']! as String).input(),
       deviceGroupName: (map['deviceGroupName'] as String).input(),
       productName: (map['productName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

@@ -27,8 +27,8 @@ class GoogleCloudIntegrationsV1alphaCloudLoggingDetails {
 
   factory GoogleCloudIntegrationsV1alphaCloudLoggingDetails.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaCloudLoggingDetails(
-      cloudLoggingSeverity: map['cloudLoggingSeverity'] == null ? null : (GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity.fromValue(map['cloudLoggingSeverity'] as String)).input(),
-      enableCloudLogging: map['enableCloudLogging'] == null ? null : (map['enableCloudLogging'] as bool).input(),
+      cloudLoggingSeverity: map['cloudLoggingSeverity'] == null ? null : (GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity.fromValue(map['cloudLoggingSeverity']! as String)).input(),
+      enableCloudLogging: map['enableCloudLogging'] == null ? null : (map['enableCloudLogging']! as bool).input(),
     );
   }
 }

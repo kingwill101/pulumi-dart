@@ -51,10 +51,10 @@ class SkusNestedResourceTypeSecondArgs {
     return SkusNestedResourceTypeSecondArgs(
       nestedResourceTypeFirst: (map['nestedResourceTypeFirst'] as String).input(),
       nestedResourceTypeSecond: (map['nestedResourceTypeSecond'] as String).input(),
-      properties: map['properties'] == null ? null : (SkuResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (SkuResourceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       providerNamespace: (map['providerNamespace'] as String).input(),
       resourceType: (map['resourceType'] as String).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
     );
   }
 }

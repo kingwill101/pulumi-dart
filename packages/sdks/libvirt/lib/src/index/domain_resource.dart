@@ -26,8 +26,8 @@ class DomainResource {
 
   factory DomainResource.fromMap(Map<String, dynamic> map) {
     return DomainResource(
-      fibreChannel: map['fibreChannel'] == null ? null : (DomainResourceFibreChannel.fromMap((map['fibreChannel'] as Map).cast<String, dynamic>())).input(),
-      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
+      fibreChannel: map['fibreChannel'] == null ? null : (DomainResourceFibreChannel.fromMap((map['fibreChannel']! as Map).cast<String, dynamic>())).input(),
+      partition: map['partition'] == null ? null : (map['partition']! as String).input(),
     );
   }
 }

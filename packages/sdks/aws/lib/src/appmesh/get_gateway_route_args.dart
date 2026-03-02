@@ -50,10 +50,10 @@ class GetGatewayRouteArgs {
   factory GetGatewayRouteArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteArgs(
       meshName: (map['meshName'] as String).input(),
-      meshOwner: map['meshOwner'] == null ? null : (map['meshOwner'] as String).input(),
+      meshOwner: map['meshOwner'] == null ? null : ((map['meshOwner'] as String).input()).input(),
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       virtualGatewayName: (map['virtualGatewayName'] as String).input(),
     );
   }

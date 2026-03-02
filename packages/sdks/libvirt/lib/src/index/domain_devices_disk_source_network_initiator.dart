@@ -21,7 +21,7 @@ class DomainDevicesDiskSourceNetworkInitiator {
 
   factory DomainDevicesDiskSourceNetworkInitiator.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskSourceNetworkInitiator(
-      iqn: map['iqn'] == null ? null : (DomainDevicesDiskSourceNetworkInitiatorIqn.fromMap((map['iqn'] as Map).cast<String, dynamic>())).input(),
+      iqn: map['iqn'] == null ? null : (DomainDevicesDiskSourceNetworkInitiatorIqn.fromMap((map['iqn']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

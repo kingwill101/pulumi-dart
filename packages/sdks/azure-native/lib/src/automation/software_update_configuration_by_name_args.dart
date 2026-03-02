@@ -59,11 +59,11 @@ class SoftwareUpdateConfigurationByNameArgs {
   factory SoftwareUpdateConfigurationByNameArgs.fromMap(Map<String, dynamic> map) {
     return SoftwareUpdateConfigurationByNameArgs(
       automationAccountName: (map['automationAccountName'] as String).input(),
-      error: map['error'] == null ? null : (ErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      error: map['error'] == null ? null : (ErrorResponse.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       scheduleInfo: (SUCScheduleProperties.fromMap((map['scheduleInfo'] as Map).cast<String, dynamic>())).input(),
-      softwareUpdateConfigurationName: map['softwareUpdateConfigurationName'] == null ? null : (map['softwareUpdateConfigurationName'] as String).input(),
-      tasks: map['tasks'] == null ? null : (SoftwareUpdateConfigurationTasks.fromMap((map['tasks'] as Map).cast<String, dynamic>())).input(),
+      softwareUpdateConfigurationName: map['softwareUpdateConfigurationName'] == null ? null : (map['softwareUpdateConfigurationName']! as String).input(),
+      tasks: map['tasks'] == null ? null : (SoftwareUpdateConfigurationTasks.fromMap((map['tasks']! as Map).cast<String, dynamic>())).input(),
       updateConfiguration: (UpdateConfiguration.fromMap((map['updateConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }

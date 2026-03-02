@@ -30,8 +30,8 @@ class AwsLogSourceArgs {
 
   factory AwsLogSourceArgs.fromMap(Map<String, dynamic> map) {
     return AwsLogSourceArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      source: (AwsLogSourceSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      source: (AwsLogSourceSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

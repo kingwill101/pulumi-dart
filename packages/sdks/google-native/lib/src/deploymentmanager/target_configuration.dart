@@ -27,8 +27,8 @@ class TargetConfiguration {
 
   factory TargetConfiguration.fromMap(Map<String, dynamic> map) {
     return TargetConfiguration(
-      config: map['config'] == null ? null : (ConfigFile.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      imports: map['imports'] == null ? null : (pulumi.Input.decodeList<ImportFile>(map['imports'], (value) => ImportFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      config: map['config'] == null ? null : (ConfigFile.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      imports: map['imports'] == null ? null : (pulumi.Input.decodeList<ImportFile>(map['imports']!, (value) => ImportFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

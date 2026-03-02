@@ -57,13 +57,13 @@ class BlobSource {
 
   factory BlobSource.fromMap(Map<String, dynamic> map) {
     return BlobSource(
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      recursive: map['recursive'] == null ? null : (map['recursive']).input(),
-      skipHeaderLineCount: map['skipHeaderLineCount'] == null ? null : (map['skipHeaderLineCount']).input(),
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
-      treatEmptyAsNull: map['treatEmptyAsNull'] == null ? null : (map['treatEmptyAsNull']).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      recursive: map['recursive'] == null ? null : (map['recursive']!).input(),
+      skipHeaderLineCount: map['skipHeaderLineCount'] == null ? null : (map['skipHeaderLineCount']!).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']!).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']!).input(),
+      treatEmptyAsNull: map['treatEmptyAsNull'] == null ? null : (map['treatEmptyAsNull']!).input(),
       type: (map['type'] as String).input(),
     );
   }

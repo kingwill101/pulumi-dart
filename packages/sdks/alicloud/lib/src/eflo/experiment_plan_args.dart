@@ -49,11 +49,11 @@ class ExperimentPlanArgs {
 
   factory ExperimentPlanArgs.fromMap(Map<String, dynamic> map) {
     return ExperimentPlanArgs(
-      externalParams: map['externalParams'] == null ? null : ((map['externalParams'] as Map).cast<String, String>()).input(),
-      planName: map['planName'] == null ? null : (map['planName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      externalParams: map['externalParams'] == null ? null : ((map['externalParams']! as Map).cast<String, String>()).input(),
+      planName: map['planName'] == null ? null : (map['planName']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
       resourceId: (map['resourceId'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       templateId: (map['templateId'] as int).input(),
     );
   }

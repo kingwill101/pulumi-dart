@@ -74,14 +74,14 @@ class ListenerRuleAction {
 
   factory ListenerRuleAction.fromMap(Map<String, dynamic> map) {
     return ListenerRuleAction(
-      authenticateCognito: map['authenticateCognito'] == null ? null : (ListenerRuleActionAuthenticateCognito.fromMap((map['authenticateCognito'] as Map).cast<String, dynamic>())).input(),
-      authenticateOidc: map['authenticateOidc'] == null ? null : (ListenerRuleActionAuthenticateOidc.fromMap((map['authenticateOidc'] as Map).cast<String, dynamic>())).input(),
-      fixedResponse: map['fixedResponse'] == null ? null : (ListenerRuleActionFixedResponse.fromMap((map['fixedResponse'] as Map).cast<String, dynamic>())).input(),
-      forward: map['forward'] == null ? null : (ListenerRuleActionForward.fromMap((map['forward'] as Map).cast<String, dynamic>())).input(),
-      jwtValidation: map['jwtValidation'] == null ? null : (ListenerRuleActionJwtValidation.fromMap((map['jwtValidation'] as Map).cast<String, dynamic>())).input(),
-      order: map['order'] == null ? null : (map['order'] as int).input(),
-      redirect: map['redirect'] == null ? null : (ListenerRuleActionRedirect.fromMap((map['redirect'] as Map).cast<String, dynamic>())).input(),
-      targetGroupArn: map['targetGroupArn'] == null ? null : (map['targetGroupArn'] as String).input(),
+      authenticateCognito: map['authenticateCognito'] == null ? null : ((ListenerRuleActionAuthenticateCognito.fromMap((map['authenticateCognito']! as Map).cast<String, dynamic>())).input()).input(),
+      authenticateOidc: map['authenticateOidc'] == null ? null : ((ListenerRuleActionAuthenticateOidc.fromMap((map['authenticateOidc']! as Map).cast<String, dynamic>())).input()).input(),
+      fixedResponse: map['fixedResponse'] == null ? null : ((ListenerRuleActionFixedResponse.fromMap((map['fixedResponse']! as Map).cast<String, dynamic>())).input()).input(),
+      forward: map['forward'] == null ? null : ((ListenerRuleActionForward.fromMap((map['forward']! as Map).cast<String, dynamic>())).input()).input(),
+      jwtValidation: map['jwtValidation'] == null ? null : ((ListenerRuleActionJwtValidation.fromMap((map['jwtValidation']! as Map).cast<String, dynamic>())).input()).input(),
+      order: map['order'] == null ? null : ((map['order'] as int).input()).input(),
+      redirect: map['redirect'] == null ? null : ((ListenerRuleActionRedirect.fromMap((map['redirect']! as Map).cast<String, dynamic>())).input()).input(),
+      targetGroupArn: map['targetGroupArn'] == null ? null : ((map['targetGroupArn'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

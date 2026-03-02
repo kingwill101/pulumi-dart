@@ -46,12 +46,12 @@ class ModelPackageGroupState {
 
   factory ModelPackageGroupState.fromMap(Map<String, dynamic> map) {
     return ModelPackageGroupState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      modelPackageGroupDescription: map['modelPackageGroupDescription'] == null ? null : (map['modelPackageGroupDescription'] as String).input(),
-      modelPackageGroupName: map['modelPackageGroupName'] == null ? null : (map['modelPackageGroupName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      modelPackageGroupDescription: map['modelPackageGroupDescription'] == null ? null : ((map['modelPackageGroupDescription'] as String).input()).input(),
+      modelPackageGroupName: map['modelPackageGroupName'] == null ? null : ((map['modelPackageGroupName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

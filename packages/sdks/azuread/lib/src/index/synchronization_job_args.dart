@@ -34,7 +34,7 @@ class SynchronizationJobArgs {
 
   factory SynchronizationJobArgs.fromMap(Map<String, dynamic> map) {
     return SynchronizationJobArgs(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       servicePrincipalId: (map['servicePrincipalId'] as String).input(),
       templateId: (map['templateId'] as String).input(),
     );

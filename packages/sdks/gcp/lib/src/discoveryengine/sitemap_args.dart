@@ -43,8 +43,8 @@ class SitemapArgs {
     return SitemapArgs(
       dataStoreId: (map['dataStoreId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class HostingCustomDomainRequiredDnsUpdateDesired {
 
   factory HostingCustomDomainRequiredDnsUpdateDesired.fromMap(Map<String, dynamic> map) {
     return HostingCustomDomainRequiredDnsUpdateDesired(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      records: map['records'] == null ? null : (pulumi.Input.decodeList<HostingCustomDomainRequiredDnsUpdateDesiredRecord>(map['records'], (value) => HostingCustomDomainRequiredDnsUpdateDesiredRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      records: map['records'] == null ? null : (pulumi.Input.decodeList<HostingCustomDomainRequiredDnsUpdateDesiredRecord>(map['records']!, (value) => HostingCustomDomainRequiredDnsUpdateDesiredRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

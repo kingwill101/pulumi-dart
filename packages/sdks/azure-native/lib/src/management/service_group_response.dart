@@ -54,11 +54,11 @@ class ServiceGroupResponse {
   factory ServiceGroupResponse.fromMap(Map<String, dynamic> map) {
     return ServiceGroupResponse(
       id: (map['id'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (ServiceGroupPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (ServiceGroupPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       type: (map['type'] as String).input(),
     );
   }

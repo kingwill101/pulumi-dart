@@ -21,7 +21,7 @@ class TracingConfigResponse {
 
   factory TracingConfigResponse.fromMap(Map<String, dynamic> map) {
     return TracingConfigResponse(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class GetServerTlsPolicyArgs {
   factory GetServerTlsPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetServerTlsPolicyArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serverTlsPolicyId: (map['serverTlsPolicyId'] as String).input(),
     );
   }

@@ -28,8 +28,8 @@ class GrpcRouteRouteMatch {
 
   factory GrpcRouteRouteMatch.fromMap(Map<String, dynamic> map) {
     return GrpcRouteRouteMatch(
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<GrpcRouteHeaderMatch>(map['headers'], (value) => GrpcRouteHeaderMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      method: map['method'] == null ? null : (GrpcRouteMethodMatch.fromMap((map['method'] as Map).cast<String, dynamic>())).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<GrpcRouteHeaderMatch>(map['headers']!, (value) => GrpcRouteHeaderMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      method: map['method'] == null ? null : (GrpcRouteMethodMatch.fromMap((map['method']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

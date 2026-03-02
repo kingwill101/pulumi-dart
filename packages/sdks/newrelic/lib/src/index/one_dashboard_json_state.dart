@@ -41,11 +41,11 @@ class OneDashboardJsonState {
 
   factory OneDashboardJsonState.fromMap(Map<String, dynamic> map) {
     return OneDashboardJsonState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      guid: map['guid'] == null ? null : (map['guid'] as String).input(),
-      json: map['json'] == null ? null : (map['json'] as String).input(),
-      permalink: map['permalink'] == null ? null : (map['permalink'] as String).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      guid: map['guid'] == null ? null : (map['guid']! as String).input(),
+      json: map['json'] == null ? null : (map['json']! as String).input(),
+      permalink: map['permalink'] == null ? null : (map['permalink']! as String).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt']! as String).input(),
     );
   }
 }

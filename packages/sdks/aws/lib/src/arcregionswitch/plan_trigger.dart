@@ -42,8 +42,8 @@ class PlanTrigger {
   factory PlanTrigger.fromMap(Map<String, dynamic> map) {
     return PlanTrigger(
       action: (map['action'] as String).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<PlanTriggerCondition>(map['conditions'], (value) => PlanTriggerCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      conditions: map['conditions'] == null ? null : ((pulumi.Input.decodeList<PlanTriggerCondition>(map['conditions']!, (value) => PlanTriggerCondition.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       minDelayMinutesBetweenExecutions: (map['minDelayMinutesBetweenExecutions'] as int).input(),
       targetRegion: (map['targetRegion'] as String).input(),
     );

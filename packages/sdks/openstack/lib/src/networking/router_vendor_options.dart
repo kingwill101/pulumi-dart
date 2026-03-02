@@ -21,7 +21,7 @@ class RouterVendorOptions {
 
   factory RouterVendorOptions.fromMap(Map<String, dynamic> map) {
     return RouterVendorOptions(
-      setRouterGatewayAfterCreate: map['setRouterGatewayAfterCreate'] == null ? null : (map['setRouterGatewayAfterCreate'] as bool).input(),
+      setRouterGatewayAfterCreate: map['setRouterGatewayAfterCreate'] == null ? null : (map['setRouterGatewayAfterCreate']! as bool).input(),
     );
   }
 }

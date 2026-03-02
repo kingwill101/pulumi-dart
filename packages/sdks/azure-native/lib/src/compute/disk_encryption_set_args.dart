@@ -66,15 +66,15 @@ class DiskEncryptionSetArgs {
 
   factory DiskEncryptionSetArgs.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionSetArgs(
-      activeKey: map['activeKey'] == null ? null : (KeyForDiskEncryptionSet.fromMap((map['activeKey'] as Map).cast<String, dynamic>())).input(),
-      diskEncryptionSetName: map['diskEncryptionSetName'] == null ? null : (map['diskEncryptionSetName'] as String).input(),
-      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType'] as String).input(),
-      federatedClientId: map['federatedClientId'] == null ? null : (map['federatedClientId'] as String).input(),
-      identity: map['identity'] == null ? null : (EncryptionSetIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      activeKey: map['activeKey'] == null ? null : (KeyForDiskEncryptionSet.fromMap((map['activeKey']! as Map).cast<String, dynamic>())).input(),
+      diskEncryptionSetName: map['diskEncryptionSetName'] == null ? null : (map['diskEncryptionSetName']! as String).input(),
+      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType']! as String).input(),
+      federatedClientId: map['federatedClientId'] == null ? null : (map['federatedClientId']! as String).input(),
+      identity: map['identity'] == null ? null : (EncryptionSetIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      rotationToLatestKeyVersionEnabled: map['rotationToLatestKeyVersionEnabled'] == null ? null : (map['rotationToLatestKeyVersionEnabled'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      rotationToLatestKeyVersionEnabled: map['rotationToLatestKeyVersionEnabled'] == null ? null : (map['rotationToLatestKeyVersionEnabled']! as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

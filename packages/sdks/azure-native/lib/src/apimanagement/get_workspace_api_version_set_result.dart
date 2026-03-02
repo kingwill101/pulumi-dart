@@ -61,13 +61,13 @@ class GetWorkspaceApiVersionSetResult {
   factory GetWorkspaceApiVersionSetResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceApiVersionSetResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
       type: map['type'] as String,
-      versionHeaderName: map['versionHeaderName'] == null ? null : map['versionHeaderName'] as String,
-      versionQueryName: map['versionQueryName'] == null ? null : map['versionQueryName'] as String,
+      versionHeaderName: map['versionHeaderName'] == null ? null : map['versionHeaderName']! as String,
+      versionQueryName: map['versionQueryName'] == null ? null : map['versionQueryName']! as String,
       versioningScheme: map['versioningScheme'] as String,
     );
   }

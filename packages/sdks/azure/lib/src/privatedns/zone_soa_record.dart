@@ -66,15 +66,15 @@ class ZoneSoaRecord {
   factory ZoneSoaRecord.fromMap(Map<String, dynamic> map) {
     return ZoneSoaRecord(
       email: (map['email'] as String).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as int).input(),
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      minimumTtl: map['minimumTtl'] == null ? null : (map['minimumTtl'] as int).input(),
-      refreshTime: map['refreshTime'] == null ? null : (map['refreshTime'] as int).input(),
-      retryTime: map['retryTime'] == null ? null : (map['retryTime'] as int).input(),
-      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as int).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      minimumTtl: map['minimumTtl'] == null ? null : (map['minimumTtl']! as int).input(),
+      refreshTime: map['refreshTime'] == null ? null : (map['refreshTime']! as int).input(),
+      retryTime: map['retryTime'] == null ? null : (map['retryTime']! as int).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber']! as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
     );
   }
 }

@@ -89,12 +89,12 @@ class GetSecurityPolicyResult {
       id: map['id'] as String,
       labelFingerprint: map['labelFingerprint'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] == null ? null : map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       recaptchaOptionsConfigs: pulumi.Input.decodeList<GetSecurityPolicyRecaptchaOptionsConfig>(map['recaptchaOptionsConfigs'], (value) => GetSecurityPolicyRecaptchaOptionsConfig.fromMap((value as Map).cast<String, dynamic>())),
       rules: pulumi.Input.decodeList<GetSecurityPolicyRule>(map['rules'], (value) => GetSecurityPolicyRule.fromMap((value as Map).cast<String, dynamic>())),
-      selfLink: map['selfLink'] == null ? null : map['selfLink'] as String,
+      selfLink: map['selfLink'] == null ? null : map['selfLink']! as String,
       type: map['type'] as String,
     );
   }

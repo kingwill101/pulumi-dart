@@ -80,11 +80,11 @@ class GetInstanceFailoverGroupResult {
       managedInstancePairs: pulumi.Input.decodeList<ManagedInstancePairInfoResponse>(map['managedInstancePairs'], (value) => ManagedInstancePairInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       partnerRegions: pulumi.Input.decodeList<PartnerRegionInfoResponse>(map['partnerRegions'], (value) => PartnerRegionInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      readOnlyEndpoint: map['readOnlyEndpoint'] == null ? null : InstanceFailoverGroupReadOnlyEndpointResponse.fromMap((map['readOnlyEndpoint'] as Map).cast<String, dynamic>()),
+      readOnlyEndpoint: map['readOnlyEndpoint'] == null ? null : InstanceFailoverGroupReadOnlyEndpointResponse.fromMap((map['readOnlyEndpoint']! as Map).cast<String, dynamic>()),
       readWriteEndpoint: InstanceFailoverGroupReadWriteEndpointResponse.fromMap((map['readWriteEndpoint'] as Map).cast<String, dynamic>()),
       replicationRole: map['replicationRole'] as String,
       replicationState: map['replicationState'] as String,
-      secondaryType: map['secondaryType'] == null ? null : map['secondaryType'] as String,
+      secondaryType: map['secondaryType'] == null ? null : map['secondaryType']! as String,
       type: map['type'] as String,
     );
   }

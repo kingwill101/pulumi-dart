@@ -44,8 +44,8 @@ class NetworkManagerScopeConnectionArgs {
 
   factory NetworkManagerScopeConnectionArgs.fromMap(Map<String, dynamic> map) {
     return NetworkManagerScopeConnectionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networkManagerId: (map['networkManagerId'] as String).input(),
       targetScopeId: (map['targetScopeId'] as String).input(),
       tenantId: (map['tenantId'] as String).input(),

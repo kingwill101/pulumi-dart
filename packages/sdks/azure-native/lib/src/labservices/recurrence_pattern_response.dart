@@ -38,8 +38,8 @@ class RecurrencePatternResponse {
     return RecurrencePatternResponse(
       expirationDate: (map['expirationDate'] as String).input(),
       frequency: (map['frequency'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      weekDays: map['weekDays'] == null ? null : ((map['weekDays'] as List).cast<String>()).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      weekDays: map['weekDays'] == null ? null : ((map['weekDays']! as List).cast<String>()).input(),
     );
   }
 }

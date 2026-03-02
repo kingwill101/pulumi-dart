@@ -20,7 +20,7 @@ class CassandraKeyspaceAutoscaleSettings {
 
   factory CassandraKeyspaceAutoscaleSettings.fromMap(Map<String, dynamic> map) {
     return CassandraKeyspaceAutoscaleSettings(
-      maxThroughput: map['maxThroughput'] == null ? null : (map['maxThroughput'] as int).input(),
+      maxThroughput: map['maxThroughput'] == null ? null : (map['maxThroughput']! as int).input(),
     );
   }
 }

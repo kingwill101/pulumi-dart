@@ -26,8 +26,8 @@ class CidrRoutingConfigResponse {
 
   factory CidrRoutingConfigResponse.fromMap(Map<String, dynamic> map) {
     return CidrRoutingConfigResponse(
-      collectionId: map['collectionId'] == null ? null : (map['collectionId'] as String).input(),
-      locationName: map['locationName'] == null ? null : (map['locationName'] as String).input(),
+      collectionId: map['collectionId'] == null ? null : (map['collectionId']! as String).input(),
+      locationName: map['locationName'] == null ? null : (map['locationName']! as String).input(),
     );
   }
 }

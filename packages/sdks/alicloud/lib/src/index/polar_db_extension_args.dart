@@ -48,7 +48,7 @@ class PolarDbExtensionArgs {
       dbClusterId: (map['dbClusterId'] as String).input(),
       dbName: (map['dbName'] as String).input(),
       extensionName: (map['extensionName'] as String).input(),
-      installedVersion: map['installedVersion'] == null ? null : (map['installedVersion'] as String).input(),
+      installedVersion: map['installedVersion'] == null ? null : (map['installedVersion']! as String).input(),
     );
   }
 }

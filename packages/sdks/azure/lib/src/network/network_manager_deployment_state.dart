@@ -41,11 +41,11 @@ class NetworkManagerDeploymentState {
 
   factory NetworkManagerDeploymentState.fromMap(Map<String, dynamic> map) {
     return NetworkManagerDeploymentState(
-      configurationIds: map['configurationIds'] == null ? null : ((map['configurationIds'] as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      networkManagerId: map['networkManagerId'] == null ? null : (map['networkManagerId'] as String).input(),
-      scopeAccess: map['scopeAccess'] == null ? null : (map['scopeAccess'] as String).input(),
-      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
+      configurationIds: map['configurationIds'] == null ? null : ((map['configurationIds']! as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      networkManagerId: map['networkManagerId'] == null ? null : (map['networkManagerId']! as String).input(),
+      scopeAccess: map['scopeAccess'] == null ? null : (map['scopeAccess']! as String).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers']! as Map).cast<String, String>()).input(),
     );
   }
 }

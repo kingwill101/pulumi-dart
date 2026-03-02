@@ -56,12 +56,12 @@ class DirectoryBucketArgs {
   factory DirectoryBucketArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryBucketArgs(
       bucket: (map['bucket'] as String).input(),
-      dataRedundancy: map['dataRedundancy'] == null ? null : (map['dataRedundancy'] as String).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      location: (DirectoryBucketLocation.fromMap((map['location'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      dataRedundancy: map['dataRedundancy'] == null ? null : ((map['dataRedundancy'] as String).input()).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : ((map['forceDestroy'] as bool).input()).input(),
+      location: (DirectoryBucketLocation.fromMap((map['location']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class GetContainerRecipeComponent {
   factory GetContainerRecipeComponent.fromMap(Map<String, dynamic> map) {
     return GetContainerRecipeComponent(
       componentArn: (map['componentArn'] as String).input(),
-      parameters: (pulumi.Input.decodeList<GetContainerRecipeComponentParameter>(map['parameters'], (value) => GetContainerRecipeComponentParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: (pulumi.Input.decodeList<GetContainerRecipeComponentParameter>(map['parameters']!, (value) => GetContainerRecipeComponentParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

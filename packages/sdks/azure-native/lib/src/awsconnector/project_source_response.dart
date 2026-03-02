@@ -70,16 +70,16 @@ class ProjectSourceResponse {
 
   factory ProjectSourceResponse.fromMap(Map<String, dynamic> map) {
     return ProjectSourceResponse(
-      auth: map['auth'] == null ? null : (SourceAuthResponse.fromMap((map['auth'] as Map).cast<String, dynamic>())).input(),
-      buildStatusConfig: map['buildStatusConfig'] == null ? null : (BuildStatusConfigResponse.fromMap((map['buildStatusConfig'] as Map).cast<String, dynamic>())).input(),
-      buildspec: map['buildspec'] == null ? null : (map['buildspec'] as String).input(),
-      gitCloneDepth: map['gitCloneDepth'] == null ? null : (map['gitCloneDepth'] as int).input(),
-      gitSubmodulesConfig: map['gitSubmodulesConfig'] == null ? null : (GitSubmodulesConfigResponse.fromMap((map['gitSubmodulesConfig'] as Map).cast<String, dynamic>())).input(),
-      insecureSsl: map['insecureSsl'] == null ? null : (map['insecureSsl'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      reportBuildStatus: map['reportBuildStatus'] == null ? null : (map['reportBuildStatus'] as bool).input(),
-      sourceIdentifier: map['sourceIdentifier'] == null ? null : (map['sourceIdentifier'] as String).input(),
-      type: map['type'] == null ? null : (SourceTypeEnumValueResponse.fromMap((map['type'] as Map).cast<String, dynamic>())).input(),
+      auth: map['auth'] == null ? null : (SourceAuthResponse.fromMap((map['auth']! as Map).cast<String, dynamic>())).input(),
+      buildStatusConfig: map['buildStatusConfig'] == null ? null : (BuildStatusConfigResponse.fromMap((map['buildStatusConfig']! as Map).cast<String, dynamic>())).input(),
+      buildspec: map['buildspec'] == null ? null : (map['buildspec']! as String).input(),
+      gitCloneDepth: map['gitCloneDepth'] == null ? null : (map['gitCloneDepth']! as int).input(),
+      gitSubmodulesConfig: map['gitSubmodulesConfig'] == null ? null : (GitSubmodulesConfigResponse.fromMap((map['gitSubmodulesConfig']! as Map).cast<String, dynamic>())).input(),
+      insecureSsl: map['insecureSsl'] == null ? null : (map['insecureSsl']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      reportBuildStatus: map['reportBuildStatus'] == null ? null : (map['reportBuildStatus']! as bool).input(),
+      sourceIdentifier: map['sourceIdentifier'] == null ? null : (map['sourceIdentifier']! as String).input(),
+      type: map['type'] == null ? null : (SourceTypeEnumValueResponse.fromMap((map['type']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

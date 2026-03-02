@@ -95,14 +95,14 @@ class OrganizationsPolicyBindingArgs {
 
   factory OrganizationsPolicyBindingArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationsPolicyBindingArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      condition: map['condition'] == null ? null : (OrganizationsPolicyBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      condition: map['condition'] == null ? null : (OrganizationsPolicyBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       location: (map['location'] as String).input(),
       organization: (map['organization'] as String).input(),
       policy: (map['policy'] as String).input(),
       policyBindingId: (map['policyBindingId'] as String).input(),
-      policyKind: map['policyKind'] == null ? null : (map['policyKind'] as String).input(),
+      policyKind: map['policyKind'] == null ? null : (map['policyKind']! as String).input(),
       target: (OrganizationsPolicyBindingTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
     );
   }

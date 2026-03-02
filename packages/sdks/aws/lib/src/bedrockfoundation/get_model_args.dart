@@ -30,7 +30,7 @@ class GetModelArgs {
   factory GetModelArgs.fromMap(Map<String, dynamic> map) {
     return GetModelArgs(
       modelId: (map['modelId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

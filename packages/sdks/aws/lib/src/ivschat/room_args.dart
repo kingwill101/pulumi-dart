@@ -60,13 +60,13 @@ class RoomArgs {
 
   factory RoomArgs.fromMap(Map<String, dynamic> map) {
     return RoomArgs(
-      loggingConfigurationIdentifiers: map['loggingConfigurationIdentifiers'] == null ? null : ((map['loggingConfigurationIdentifiers'] as List).cast<String>()).input(),
-      maximumMessageLength: map['maximumMessageLength'] == null ? null : (map['maximumMessageLength'] as int).input(),
-      maximumMessageRatePerSecond: map['maximumMessageRatePerSecond'] == null ? null : (map['maximumMessageRatePerSecond'] as int).input(),
-      messageReviewHandler: map['messageReviewHandler'] == null ? null : (RoomMessageReviewHandler.fromMap((map['messageReviewHandler'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      loggingConfigurationIdentifiers: map['loggingConfigurationIdentifiers'] == null ? null : (((map['loggingConfigurationIdentifiers'] as List).cast<String>()).input()).input(),
+      maximumMessageLength: map['maximumMessageLength'] == null ? null : ((map['maximumMessageLength'] as int).input()).input(),
+      maximumMessageRatePerSecond: map['maximumMessageRatePerSecond'] == null ? null : ((map['maximumMessageRatePerSecond'] as int).input()).input(),
+      messageReviewHandler: map['messageReviewHandler'] == null ? null : ((RoomMessageReviewHandler.fromMap((map['messageReviewHandler']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

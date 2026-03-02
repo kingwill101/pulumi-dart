@@ -28,8 +28,8 @@ class RequiredLogGroup {
 
   factory RequiredLogGroup.fromMap(Map<String, dynamic> map) {
     return RequiredLogGroup(
-      args: map['args'] == null ? null : (LogGroup.fromMap((map['args'] as Map).cast<String, dynamic>())).input(),
-      existing: map['existing'] == null ? null : (ExistingLogGroup.fromMap((map['existing'] as Map).cast<String, dynamic>())).input(),
+      args: map['args'] == null ? null : (LogGroup.fromMap((map['args']! as Map).cast<String, dynamic>())).input(),
+      existing: map['existing'] == null ? null : (ExistingLogGroup.fromMap((map['existing']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

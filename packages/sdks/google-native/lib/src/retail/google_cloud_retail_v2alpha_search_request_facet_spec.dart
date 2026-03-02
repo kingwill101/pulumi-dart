@@ -37,10 +37,10 @@ class GoogleCloudRetailV2alphaSearchRequestFacetSpec {
 
   factory GoogleCloudRetailV2alphaSearchRequestFacetSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaSearchRequestFacetSpec(
-      enableDynamicPosition: map['enableDynamicPosition'] == null ? null : (map['enableDynamicPosition'] as bool).input(),
-      excludedFilterKeys: map['excludedFilterKeys'] == null ? null : ((map['excludedFilterKeys'] as List).cast<String>()).input(),
+      enableDynamicPosition: map['enableDynamicPosition'] == null ? null : (map['enableDynamicPosition']! as bool).input(),
+      excludedFilterKeys: map['excludedFilterKeys'] == null ? null : ((map['excludedFilterKeys']! as List).cast<String>()).input(),
       facetKey: (GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKey.fromMap((map['facetKey'] as Map).cast<String, dynamic>())).input(),
-      limit: map['limit'] == null ? null : (map['limit'] as int).input(),
+      limit: map['limit'] == null ? null : (map['limit']! as int).input(),
     );
   }
 }

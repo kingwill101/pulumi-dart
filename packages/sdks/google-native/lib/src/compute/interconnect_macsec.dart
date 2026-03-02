@@ -27,7 +27,7 @@ class InterconnectMacsec {
 
   factory InterconnectMacsec.fromMap(Map<String, dynamic> map) {
     return InterconnectMacsec(
-      failOpen: map['failOpen'] == null ? null : (map['failOpen'] as bool).input(),
+      failOpen: map['failOpen'] == null ? null : (map['failOpen']! as bool).input(),
       preSharedKeys: (pulumi.Input.decodeList<InterconnectMacsecPreSharedKey>(map['preSharedKeys'], (value) => InterconnectMacsecPreSharedKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

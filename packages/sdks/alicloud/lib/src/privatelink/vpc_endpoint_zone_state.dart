@@ -51,13 +51,13 @@ class VpcEndpointZoneState {
 
   factory VpcEndpointZoneState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointZoneState(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
-      eniIp: map['eniIp'] == null ? null : (map['eniIp'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      endpointId: map['endpointId'] == null ? null : (map['endpointId']! as String).input(),
+      eniIp: map['eniIp'] == null ? null : (map['eniIp']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

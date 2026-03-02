@@ -43,11 +43,11 @@ class ProfileRewriteUriRulesState {
 
   factory ProfileRewriteUriRulesState.fromMap(Map<String, dynamic> map) {
     return ProfileRewriteUriRulesState(
-      clients: map['clients'] == null ? null : (pulumi.Input.decodeList<ProfileRewriteUriRulesClient>(map['clients'], (value) => ProfileRewriteUriRulesClient.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      profileName: map['profileName'] == null ? null : (map['profileName'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      ruleType: map['ruleType'] == null ? null : (map['ruleType'] as String).input(),
-      servers: map['servers'] == null ? null : (pulumi.Input.decodeList<ProfileRewriteUriRulesServer>(map['servers'], (value) => ProfileRewriteUriRulesServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clients: map['clients'] == null ? null : (pulumi.Input.decodeList<ProfileRewriteUriRulesClient>(map['clients']!, (value) => ProfileRewriteUriRulesClient.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      profileName: map['profileName'] == null ? null : (map['profileName']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      ruleType: map['ruleType'] == null ? null : (map['ruleType']! as String).input(),
+      servers: map['servers'] == null ? null : (pulumi.Input.decodeList<ProfileRewriteUriRulesServer>(map['servers']!, (value) => ProfileRewriteUriRulesServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -41,7 +41,7 @@ class GetRecordSetArgs {
     return GetRecordSetArgs(
       managedZone: (map['managedZone'] as String).input(),
       name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

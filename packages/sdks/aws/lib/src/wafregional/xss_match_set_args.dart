@@ -35,9 +35,9 @@ class XssMatchSetArgs {
 
   factory XssMatchSetArgs.fromMap(Map<String, dynamic> map) {
     return XssMatchSetArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      xssMatchTuples: map['xssMatchTuples'] == null ? null : (pulumi.Input.decodeList<XssMatchSetXssMatchTuple>(map['xssMatchTuples'], (value) => XssMatchSetXssMatchTuple.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      xssMatchTuples: map['xssMatchTuples'] == null ? null : ((pulumi.Input.decodeList<XssMatchSetXssMatchTuple>(map['xssMatchTuples']!, (value) => XssMatchSetXssMatchTuple.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

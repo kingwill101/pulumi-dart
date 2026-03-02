@@ -27,8 +27,8 @@ class AiIndexIndexStat {
 
   factory AiIndexIndexStat.fromMap(Map<String, dynamic> map) {
     return AiIndexIndexStat(
-      shardsCount: map['shardsCount'] == null ? null : (map['shardsCount'] as int).input(),
-      vectorsCount: map['vectorsCount'] == null ? null : (map['vectorsCount'] as String).input(),
+      shardsCount: map['shardsCount'] == null ? null : (map['shardsCount']! as int).input(),
+      vectorsCount: map['vectorsCount'] == null ? null : (map['vectorsCount']! as String).input(),
     );
   }
 }

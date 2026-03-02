@@ -87,18 +87,18 @@ class QueueArgs {
 
   factory QueueArgs.fromMap(Map<String, dynamic> map) {
     return QueueArgs(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      computeNodes: map['computeNodes'] == null ? null : (pulumi.Input.decodeList<QueueComputeNode>(map['computeNodes'], (value) => QueueComputeNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableScaleIn: map['enableScaleIn'] == null ? null : (map['enableScaleIn'] as bool).input(),
-      enableScaleOut: map['enableScaleOut'] == null ? null : (map['enableScaleOut'] as bool).input(),
-      hostnamePrefix: map['hostnamePrefix'] == null ? null : (map['hostnamePrefix'] as String).input(),
-      hostnameSuffix: map['hostnameSuffix'] == null ? null : (map['hostnameSuffix'] as String).input(),
-      initialCount: map['initialCount'] == null ? null : (map['initialCount'] as int).input(),
-      interConnect: map['interConnect'] == null ? null : (map['interConnect'] as String).input(),
-      maxCount: map['maxCount'] == null ? null : (map['maxCount'] as int).input(),
-      minCount: map['minCount'] == null ? null : (map['minCount'] as int).input(),
-      queueName: map['queueName'] == null ? null : (map['queueName'] as String).input(),
-      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds'] as List).cast<String>()).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      computeNodes: map['computeNodes'] == null ? null : (pulumi.Input.decodeList<QueueComputeNode>(map['computeNodes']!, (value) => QueueComputeNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableScaleIn: map['enableScaleIn'] == null ? null : (map['enableScaleIn']! as bool).input(),
+      enableScaleOut: map['enableScaleOut'] == null ? null : (map['enableScaleOut']! as bool).input(),
+      hostnamePrefix: map['hostnamePrefix'] == null ? null : (map['hostnamePrefix']! as String).input(),
+      hostnameSuffix: map['hostnameSuffix'] == null ? null : (map['hostnameSuffix']! as String).input(),
+      initialCount: map['initialCount'] == null ? null : (map['initialCount']! as int).input(),
+      interConnect: map['interConnect'] == null ? null : (map['interConnect']! as String).input(),
+      maxCount: map['maxCount'] == null ? null : (map['maxCount']! as int).input(),
+      minCount: map['minCount'] == null ? null : (map['minCount']! as int).input(),
+      queueName: map['queueName'] == null ? null : (map['queueName']! as String).input(),
+      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds']! as List).cast<String>()).input(),
     );
   }
 }

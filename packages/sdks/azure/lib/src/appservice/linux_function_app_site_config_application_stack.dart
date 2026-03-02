@@ -58,14 +58,14 @@ class LinuxFunctionAppSiteConfigApplicationStack {
 
   factory LinuxFunctionAppSiteConfigApplicationStack.fromMap(Map<String, dynamic> map) {
     return LinuxFunctionAppSiteConfigApplicationStack(
-      dockers: map['dockers'] == null ? null : (pulumi.Input.decodeList<LinuxFunctionAppSiteConfigApplicationStackDocker>(map['dockers'], (value) => LinuxFunctionAppSiteConfigApplicationStackDocker.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dotnetVersion: map['dotnetVersion'] == null ? null : (map['dotnetVersion'] as String).input(),
-      javaVersion: map['javaVersion'] == null ? null : (map['javaVersion'] as String).input(),
-      nodeVersion: map['nodeVersion'] == null ? null : (map['nodeVersion'] as String).input(),
-      powershellCoreVersion: map['powershellCoreVersion'] == null ? null : (map['powershellCoreVersion'] as String).input(),
-      pythonVersion: map['pythonVersion'] == null ? null : (map['pythonVersion'] as String).input(),
-      useCustomRuntime: map['useCustomRuntime'] == null ? null : (map['useCustomRuntime'] as bool).input(),
-      useDotnetIsolatedRuntime: map['useDotnetIsolatedRuntime'] == null ? null : (map['useDotnetIsolatedRuntime'] as bool).input(),
+      dockers: map['dockers'] == null ? null : (pulumi.Input.decodeList<LinuxFunctionAppSiteConfigApplicationStackDocker>(map['dockers']!, (value) => LinuxFunctionAppSiteConfigApplicationStackDocker.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dotnetVersion: map['dotnetVersion'] == null ? null : (map['dotnetVersion']! as String).input(),
+      javaVersion: map['javaVersion'] == null ? null : (map['javaVersion']! as String).input(),
+      nodeVersion: map['nodeVersion'] == null ? null : (map['nodeVersion']! as String).input(),
+      powershellCoreVersion: map['powershellCoreVersion'] == null ? null : (map['powershellCoreVersion']! as String).input(),
+      pythonVersion: map['pythonVersion'] == null ? null : (map['pythonVersion']! as String).input(),
+      useCustomRuntime: map['useCustomRuntime'] == null ? null : (map['useCustomRuntime']! as bool).input(),
+      useDotnetIsolatedRuntime: map['useDotnetIsolatedRuntime'] == null ? null : (map['useDotnetIsolatedRuntime']! as bool).input(),
     );
   }
 }

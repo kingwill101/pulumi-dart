@@ -38,10 +38,10 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
 
   factory TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfiguration.fromMap(Map<String, dynamic> map) {
     return TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfiguration(
-      certificateAuthorityArn: map['certificateAuthorityArn'] == null ? null : (map['certificateAuthorityArn'] as String).input(),
-      checkCertificateRevocationStatus: map['checkCertificateRevocationStatus'] == null ? null : (TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatus.fromMap((map['checkCertificateRevocationStatus'] as Map).cast<String, dynamic>())).input(),
-      scopes: (pulumi.Input.decodeList<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScope>(map['scopes'], (value) => TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScope.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serverCertificates: map['serverCertificates'] == null ? null : (pulumi.Input.decodeList<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate>(map['serverCertificates'], (value) => TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      certificateAuthorityArn: map['certificateAuthorityArn'] == null ? null : ((map['certificateAuthorityArn'] as String).input()).input(),
+      checkCertificateRevocationStatus: map['checkCertificateRevocationStatus'] == null ? null : ((TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatus.fromMap((map['checkCertificateRevocationStatus']! as Map).cast<String, dynamic>())).input()).input(),
+      scopes: (pulumi.Input.decodeList<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScope>(map['scopes']!, (value) => TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScope.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serverCertificates: map['serverCertificates'] == null ? null : ((pulumi.Input.decodeList<TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate>(map['serverCertificates']!, (value) => TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

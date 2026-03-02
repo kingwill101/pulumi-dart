@@ -42,11 +42,11 @@ class A2APolicyCreationInput {
 
   factory A2APolicyCreationInput.fromMap(Map<String, dynamic> map) {
     return A2APolicyCreationInput(
-      appConsistentFrequencyInMinutes: map['appConsistentFrequencyInMinutes'] == null ? null : (map['appConsistentFrequencyInMinutes'] as int).input(),
-      crashConsistentFrequencyInMinutes: map['crashConsistentFrequencyInMinutes'] == null ? null : (map['crashConsistentFrequencyInMinutes'] as int).input(),
+      appConsistentFrequencyInMinutes: map['appConsistentFrequencyInMinutes'] == null ? null : (map['appConsistentFrequencyInMinutes']! as int).input(),
+      crashConsistentFrequencyInMinutes: map['crashConsistentFrequencyInMinutes'] == null ? null : (map['crashConsistentFrequencyInMinutes']! as int).input(),
       instanceType: (map['instanceType'] as String).input(),
       multiVmSyncStatus: (map['multiVmSyncStatus'] as String).input(),
-      recoveryPointHistory: map['recoveryPointHistory'] == null ? null : (map['recoveryPointHistory'] as int).input(),
+      recoveryPointHistory: map['recoveryPointHistory'] == null ? null : (map['recoveryPointHistory']! as int).input(),
     );
   }
 }

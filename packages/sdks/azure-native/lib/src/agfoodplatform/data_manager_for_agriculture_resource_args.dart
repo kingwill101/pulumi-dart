@@ -56,13 +56,13 @@ class DataManagerForAgricultureResourceArgs {
 
   factory DataManagerForAgricultureResourceArgs.fromMap(Map<String, dynamic> map) {
     return DataManagerForAgricultureResourceArgs(
-      dataManagerForAgricultureResourceName: map['dataManagerForAgricultureResourceName'] == null ? null : (map['dataManagerForAgricultureResourceName'] as String).input(),
-      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      dataManagerForAgricultureResourceName: map['dataManagerForAgricultureResourceName'] == null ? null : (map['dataManagerForAgricultureResourceName']! as String).input(),
+      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sensorIntegration: map['sensorIntegration'] == null ? null : (SensorIntegration.fromMap((map['sensorIntegration'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sensorIntegration: map['sensorIntegration'] == null ? null : (SensorIntegration.fromMap((map['sensorIntegration']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

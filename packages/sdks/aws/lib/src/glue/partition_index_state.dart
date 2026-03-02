@@ -42,11 +42,11 @@ class PartitionIndexState {
 
   factory PartitionIndexState.fromMap(Map<String, dynamic> map) {
     return PartitionIndexState(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      partitionIndex: map['partitionIndex'] == null ? null : (PartitionIndexPartitionIndex.fromMap((map['partitionIndex'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
+      databaseName: map['databaseName'] == null ? null : ((map['databaseName'] as String).input()).input(),
+      partitionIndex: map['partitionIndex'] == null ? null : ((PartitionIndexPartitionIndex.fromMap((map['partitionIndex']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tableName: map['tableName'] == null ? null : ((map['tableName'] as String).input()).input(),
     );
   }
 }

@@ -42,11 +42,11 @@ class ProfileResponse {
 
   factory ProfileResponse.fromMap(Map<String, dynamic> map) {
     return ProfileResponse(
-      accessRules: map['accessRules'] == null ? null : (pulumi.Input.decodeList<NspAccessRuleResponse>(map['accessRules'], (value) => NspAccessRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      accessRulesVersion: map['accessRulesVersion'] == null ? null : (map['accessRulesVersion'] as double).input(),
-      diagnosticSettingsVersion: map['diagnosticSettingsVersion'] == null ? null : (map['diagnosticSettingsVersion'] as double).input(),
+      accessRules: map['accessRules'] == null ? null : (pulumi.Input.decodeList<NspAccessRuleResponse>(map['accessRules']!, (value) => NspAccessRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accessRulesVersion: map['accessRulesVersion'] == null ? null : (map['accessRulesVersion']! as double).input(),
+      diagnosticSettingsVersion: map['diagnosticSettingsVersion'] == null ? null : (map['diagnosticSettingsVersion']! as double).input(),
       enabledLogCategories: ((map['enabledLogCategories'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

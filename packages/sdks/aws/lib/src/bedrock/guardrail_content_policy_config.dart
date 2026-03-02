@@ -28,8 +28,8 @@ class GuardrailContentPolicyConfig {
 
   factory GuardrailContentPolicyConfig.fromMap(Map<String, dynamic> map) {
     return GuardrailContentPolicyConfig(
-      filtersConfigs: map['filtersConfigs'] == null ? null : (pulumi.Input.decodeList<GuardrailContentPolicyConfigFiltersConfig>(map['filtersConfigs'], (value) => GuardrailContentPolicyConfigFiltersConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tierConfigs: map['tierConfigs'] == null ? null : (pulumi.Input.decodeList<GuardrailContentPolicyConfigTierConfig>(map['tierConfigs'], (value) => GuardrailContentPolicyConfigTierConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filtersConfigs: map['filtersConfigs'] == null ? null : ((pulumi.Input.decodeList<GuardrailContentPolicyConfigFiltersConfig>(map['filtersConfigs']!, (value) => GuardrailContentPolicyConfigFiltersConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tierConfigs: map['tierConfigs'] == null ? null : ((pulumi.Input.decodeList<GuardrailContentPolicyConfigTierConfig>(map['tierConfigs']!, (value) => GuardrailContentPolicyConfigTierConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

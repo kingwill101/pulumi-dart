@@ -57,14 +57,14 @@ class DomainCpuNumaCell {
 
   factory DomainCpuNumaCell.fromMap(Map<String, dynamic> map) {
     return DomainCpuNumaCell(
-      caches: map['caches'] == null ? null : (pulumi.Input.decodeList<DomainCpuNumaCellCach>(map['caches'], (value) => DomainCpuNumaCellCach.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cpus: map['cpus'] == null ? null : (map['cpus'] as String).input(),
-      discard: map['discard'] == null ? null : (map['discard'] as String).input(),
-      distances: map['distances'] == null ? null : (DomainCpuNumaCellDistances.fromMap((map['distances'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as double).input(),
-      memAccess: map['memAccess'] == null ? null : (map['memAccess'] as String).input(),
+      caches: map['caches'] == null ? null : (pulumi.Input.decodeList<DomainCpuNumaCellCach>(map['caches']!, (value) => DomainCpuNumaCellCach.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cpus: map['cpus'] == null ? null : (map['cpus']! as String).input(),
+      discard: map['discard'] == null ? null : (map['discard']! as String).input(),
+      distances: map['distances'] == null ? null : (DomainCpuNumaCellDistances.fromMap((map['distances']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as double).input(),
+      memAccess: map['memAccess'] == null ? null : (map['memAccess']! as String).input(),
       memory: (map['memory'] as double).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      unit: map['unit'] == null ? null : (map['unit']! as String).input(),
     );
   }
 }

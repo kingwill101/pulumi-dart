@@ -30,9 +30,9 @@ class ZoneAssetStatus {
 
   factory ZoneAssetStatus.fromMap(Map<String, dynamic> map) {
     return ZoneAssetStatus(
-      activeAssets: map['activeAssets'] == null ? null : (map['activeAssets'] as int).input(),
-      securityPolicyApplyingAssets: map['securityPolicyApplyingAssets'] == null ? null : (map['securityPolicyApplyingAssets'] as int).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      activeAssets: map['activeAssets'] == null ? null : (map['activeAssets']! as int).input(),
+      securityPolicyApplyingAssets: map['securityPolicyApplyingAssets'] == null ? null : (map['securityPolicyApplyingAssets']! as int).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

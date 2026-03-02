@@ -26,8 +26,8 @@ class GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment {
 
   factory GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment(
-      endIndex: map['endIndex'] == null ? null : (map['endIndex'] as String).input(),
-      startIndex: map['startIndex'] == null ? null : (map['startIndex'] as String).input(),
+      endIndex: map['endIndex'] == null ? null : (map['endIndex']! as String).input(),
+      startIndex: map['startIndex'] == null ? null : (map['startIndex']! as String).input(),
     );
   }
 }

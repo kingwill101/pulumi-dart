@@ -95,20 +95,20 @@ class VpnSiteArgs {
 
   factory VpnSiteArgs.fromMap(Map<String, dynamic> map) {
     return VpnSiteArgs(
-      addressSpace: map['addressSpace'] == null ? null : (AddressSpace.fromMap((map['addressSpace'] as Map).cast<String, dynamic>())).input(),
-      bgpProperties: map['bgpProperties'] == null ? null : (BgpSettings.fromMap((map['bgpProperties'] as Map).cast<String, dynamic>())).input(),
-      deviceProperties: map['deviceProperties'] == null ? null : (DeviceProperties.fromMap((map['deviceProperties'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      isSecuritySite: map['isSecuritySite'] == null ? null : (map['isSecuritySite'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      o365Policy: map['o365Policy'] == null ? null : (O365PolicyProperties.fromMap((map['o365Policy'] as Map).cast<String, dynamic>())).input(),
+      addressSpace: map['addressSpace'] == null ? null : (AddressSpace.fromMap((map['addressSpace']! as Map).cast<String, dynamic>())).input(),
+      bgpProperties: map['bgpProperties'] == null ? null : (BgpSettings.fromMap((map['bgpProperties']! as Map).cast<String, dynamic>())).input(),
+      deviceProperties: map['deviceProperties'] == null ? null : (DeviceProperties.fromMap((map['deviceProperties']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      isSecuritySite: map['isSecuritySite'] == null ? null : (map['isSecuritySite']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      o365Policy: map['o365Policy'] == null ? null : (O365PolicyProperties.fromMap((map['o365Policy']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      siteKey: map['siteKey'] == null ? null : (map['siteKey'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      virtualWan: map['virtualWan'] == null ? null : (SubResource.fromMap((map['virtualWan'] as Map).cast<String, dynamic>())).input(),
-      vpnSiteLinks: map['vpnSiteLinks'] == null ? null : (pulumi.Input.decodeList<VpnSiteLink>(map['vpnSiteLinks'], (value) => VpnSiteLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpnSiteName: map['vpnSiteName'] == null ? null : (map['vpnSiteName'] as String).input(),
+      siteKey: map['siteKey'] == null ? null : (map['siteKey']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      virtualWan: map['virtualWan'] == null ? null : (SubResource.fromMap((map['virtualWan']! as Map).cast<String, dynamic>())).input(),
+      vpnSiteLinks: map['vpnSiteLinks'] == null ? null : (pulumi.Input.decodeList<VpnSiteLink>(map['vpnSiteLinks']!, (value) => VpnSiteLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpnSiteName: map['vpnSiteName'] == null ? null : (map['vpnSiteName']! as String).input(),
     );
   }
 }

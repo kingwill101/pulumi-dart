@@ -56,13 +56,13 @@ class EtlState {
 
   factory EtlState.fromMap(Map<String, dynamic> map) {
     return EtlState(
-      configuration: map['configuration'] == null ? null : (EtlConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      jobName: map['jobName'] == null ? null : (map['jobName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      configuration: map['configuration'] == null ? null : (EtlConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      jobName: map['jobName'] == null ? null : (map['jobName']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

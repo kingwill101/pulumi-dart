@@ -27,8 +27,8 @@ class DatabaseEncryptionConfig {
 
   factory DatabaseEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return DatabaseEncryptionConfig(
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      kmsKeyNames: map['kmsKeyNames'] == null ? null : ((map['kmsKeyNames'] as List).cast<String>()).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      kmsKeyNames: map['kmsKeyNames'] == null ? null : ((map['kmsKeyNames']! as List).cast<String>()).input(),
     );
   }
 }

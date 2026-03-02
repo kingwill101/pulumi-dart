@@ -66,14 +66,14 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
       email: (map['email'] as String).input(),
-      iamArn: map['iamArn'] == null ? null : (map['iamArn'] as String).input(),
+      iamArn: map['iamArn'] == null ? null : ((map['iamArn'] as String).input()).input(),
       identityType: (map['identityType'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sessionName: map['sessionName'] == null ? null : (map['sessionName'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      namespace: map['namespace'] == null ? null : ((map['namespace'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sessionName: map['sessionName'] == null ? null : ((map['sessionName'] as String).input()).input(),
+      userName: map['userName'] == null ? null : ((map['userName'] as String).input()).input(),
       userRole: (map['userRole'] as String).input(),
     );
   }

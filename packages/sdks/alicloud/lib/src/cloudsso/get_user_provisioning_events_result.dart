@@ -50,8 +50,8 @@ class GetUserProvisioningEventsResult {
       events: pulumi.Input.decodeList<GetUserProvisioningEventsEvent>(map['events'], (value) => GetUserProvisioningEventsEvent.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      userProvisioningId: map['userProvisioningId'] == null ? null : map['userProvisioningId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      userProvisioningId: map['userProvisioningId'] == null ? null : map['userProvisioningId']! as String,
     );
   }
 }

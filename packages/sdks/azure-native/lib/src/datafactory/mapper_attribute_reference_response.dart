@@ -32,9 +32,9 @@ class MapperAttributeReferenceResponse {
 
   factory MapperAttributeReferenceResponse.fromMap(Map<String, dynamic> map) {
     return MapperAttributeReferenceResponse(
-      entity: map['entity'] == null ? null : (map['entity'] as String).input(),
-      entityConnectionReference: map['entityConnectionReference'] == null ? null : (MapperConnectionReferenceResponse.fromMap((map['entityConnectionReference'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      entity: map['entity'] == null ? null : (map['entity']! as String).input(),
+      entityConnectionReference: map['entityConnectionReference'] == null ? null : (MapperConnectionReferenceResponse.fromMap((map['entityConnectionReference']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

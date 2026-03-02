@@ -20,7 +20,7 @@ class ZoneAuthoritativeNameservers {
 
   factory ZoneAuthoritativeNameservers.fromMap(Map<String, dynamic> map) {
     return ZoneAuthoritativeNameservers(
-      assigneds: map['assigneds'] == null ? null : ((map['assigneds'] as List).cast<String>()).input(),
+      assigneds: map['assigneds'] == null ? null : ((map['assigneds']! as List).cast<String>()).input(),
     );
   }
 }

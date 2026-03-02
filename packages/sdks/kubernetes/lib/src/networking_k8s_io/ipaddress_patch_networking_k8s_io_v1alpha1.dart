@@ -38,10 +38,10 @@ class IPAddressPatchNetworkingK8sIoV1alpha1 {
 
   factory IPAddressPatchNetworkingK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return IPAddressPatchNetworkingK8sIoV1alpha1(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      spec: map['spec'] == null ? null : (IPAddressSpecPatchNetworkingK8sIoV1alpha1.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (IPAddressSpecPatchNetworkingK8sIoV1alpha1.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

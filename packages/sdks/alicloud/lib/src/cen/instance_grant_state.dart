@@ -31,9 +31,9 @@ class InstanceGrantState {
 
   factory InstanceGrantState.fromMap(Map<String, dynamic> map) {
     return InstanceGrantState(
-      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
-      cenOwnerId: map['cenOwnerId'] == null ? null : (map['cenOwnerId'] as String).input(),
-      childInstanceId: map['childInstanceId'] == null ? null : (map['childInstanceId'] as String).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
+      cenOwnerId: map['cenOwnerId'] == null ? null : (map['cenOwnerId']! as String).input(),
+      childInstanceId: map['childInstanceId'] == null ? null : (map['childInstanceId']! as String).input(),
     );
   }
 }

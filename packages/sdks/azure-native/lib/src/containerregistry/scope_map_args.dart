@@ -47,10 +47,10 @@ class ScopeMapArgs {
   factory ScopeMapArgs.fromMap(Map<String, dynamic> map) {
     return ScopeMapArgs(
       actions: ((map['actions'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       registryName: (map['registryName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scopeMapName: map['scopeMapName'] == null ? null : (map['scopeMapName'] as String).input(),
+      scopeMapName: map['scopeMapName'] == null ? null : (map['scopeMapName']! as String).input(),
     );
   }
 }

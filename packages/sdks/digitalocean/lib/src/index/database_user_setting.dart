@@ -28,8 +28,8 @@ class DatabaseUserSetting {
 
   factory DatabaseUserSetting.fromMap(Map<String, dynamic> map) {
     return DatabaseUserSetting(
-      acls: map['acls'] == null ? null : (pulumi.Input.decodeList<DatabaseUserSettingAcl>(map['acls'], (value) => DatabaseUserSettingAcl.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      opensearchAcls: map['opensearchAcls'] == null ? null : (pulumi.Input.decodeList<DatabaseUserSettingOpensearchAcl>(map['opensearchAcls'], (value) => DatabaseUserSettingOpensearchAcl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      acls: map['acls'] == null ? null : (pulumi.Input.decodeList<DatabaseUserSettingAcl>(map['acls']!, (value) => DatabaseUserSettingAcl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      opensearchAcls: map['opensearchAcls'] == null ? null : (pulumi.Input.decodeList<DatabaseUserSettingOpensearchAcl>(map['opensearchAcls']!, (value) => DatabaseUserSettingOpensearchAcl.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

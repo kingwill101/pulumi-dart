@@ -33,7 +33,7 @@ class GetMigrationJobDatamigrationV1beta1Args {
     return GetMigrationJobDatamigrationV1beta1Args(
       location: (map['location'] as String).input(),
       migrationJobId: (map['migrationJobId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

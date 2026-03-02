@@ -60,14 +60,14 @@ class DiscoveryOccurrence {
 
   factory DiscoveryOccurrence.fromMap(Map<String, dynamic> map) {
     return DiscoveryOccurrence(
-      analysisCompleted: map['analysisCompleted'] == null ? null : (AnalysisCompleted.fromMap((map['analysisCompleted'] as Map).cast<String, dynamic>())).input(),
-      analysisError: map['analysisError'] == null ? null : (pulumi.Input.decodeList<Status>(map['analysisError'], (value) => Status.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      analysisStatus: map['analysisStatus'] == null ? null : (DiscoveryOccurrenceAnalysisStatus.fromValue(map['analysisStatus'] as String)).input(),
-      analysisStatusError: map['analysisStatusError'] == null ? null : (Status.fromMap((map['analysisStatusError'] as Map).cast<String, dynamic>())).input(),
-      continuousAnalysis: map['continuousAnalysis'] == null ? null : (DiscoveryOccurrenceContinuousAnalysis.fromValue(map['continuousAnalysis'] as String)).input(),
-      cpe: map['cpe'] == null ? null : (map['cpe'] as String).input(),
-      lastScanTime: map['lastScanTime'] == null ? null : (map['lastScanTime'] as String).input(),
-      sbomStatus: map['sbomStatus'] == null ? null : (SBOMStatus.fromMap((map['sbomStatus'] as Map).cast<String, dynamic>())).input(),
+      analysisCompleted: map['analysisCompleted'] == null ? null : (AnalysisCompleted.fromMap((map['analysisCompleted']! as Map).cast<String, dynamic>())).input(),
+      analysisError: map['analysisError'] == null ? null : (pulumi.Input.decodeList<Status>(map['analysisError']!, (value) => Status.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      analysisStatus: map['analysisStatus'] == null ? null : (DiscoveryOccurrenceAnalysisStatus.fromValue(map['analysisStatus']! as String)).input(),
+      analysisStatusError: map['analysisStatusError'] == null ? null : (Status.fromMap((map['analysisStatusError']! as Map).cast<String, dynamic>())).input(),
+      continuousAnalysis: map['continuousAnalysis'] == null ? null : (DiscoveryOccurrenceContinuousAnalysis.fromValue(map['continuousAnalysis']! as String)).input(),
+      cpe: map['cpe'] == null ? null : (map['cpe']! as String).input(),
+      lastScanTime: map['lastScanTime'] == null ? null : (map['lastScanTime']! as String).input(),
+      sbomStatus: map['sbomStatus'] == null ? null : (SBOMStatus.fromMap((map['sbomStatus']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

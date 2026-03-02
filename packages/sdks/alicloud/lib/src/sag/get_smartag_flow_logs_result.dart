@@ -58,16 +58,16 @@ class GetSmartagFlowLogsResult {
 
   factory GetSmartagFlowLogsResult.fromMap(Map<String, dynamic> map) {
     return GetSmartagFlowLogsResult(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       logs: pulumi.Input.decodeList<GetSmartagFlowLogsLog>(map['logs'], (value) => GetSmartagFlowLogsLog.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

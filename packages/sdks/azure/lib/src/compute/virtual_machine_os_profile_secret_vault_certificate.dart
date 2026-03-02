@@ -35,7 +35,7 @@ class VirtualMachineOsProfileSecretVaultCertificate {
 
   factory VirtualMachineOsProfileSecretVaultCertificate.fromMap(Map<String, dynamic> map) {
     return VirtualMachineOsProfileSecretVaultCertificate(
-      certificateStore: map['certificateStore'] == null ? null : (map['certificateStore'] as String).input(),
+      certificateStore: map['certificateStore'] == null ? null : (map['certificateStore']! as String).input(),
       certificateUrl: (map['certificateUrl'] as String).input(),
     );
   }

@@ -60,14 +60,14 @@ class RdsBackupState {
 
   factory RdsBackupState.fromMap(Map<String, dynamic> map) {
     return RdsBackupState(
-      backupId: map['backupId'] == null ? null : (map['backupId'] as String).input(),
-      backupMethod: map['backupMethod'] == null ? null : (map['backupMethod'] as String).input(),
-      backupStrategy: map['backupStrategy'] == null ? null : (map['backupStrategy'] as String).input(),
-      backupType: map['backupType'] == null ? null : (map['backupType'] as String).input(),
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      dbName: map['dbName'] == null ? null : (map['dbName'] as String).input(),
-      removeFromState: map['removeFromState'] == null ? null : (map['removeFromState'] as bool).input(),
-      storeStatus: map['storeStatus'] == null ? null : (map['storeStatus'] as String).input(),
+      backupId: map['backupId'] == null ? null : (map['backupId']! as String).input(),
+      backupMethod: map['backupMethod'] == null ? null : (map['backupMethod']! as String).input(),
+      backupStrategy: map['backupStrategy'] == null ? null : (map['backupStrategy']! as String).input(),
+      backupType: map['backupType'] == null ? null : (map['backupType']! as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      dbName: map['dbName'] == null ? null : (map['dbName']! as String).input(),
+      removeFromState: map['removeFromState'] == null ? null : (map['removeFromState']! as bool).input(),
+      storeStatus: map['storeStatus'] == null ? null : (map['storeStatus']! as String).input(),
     );
   }
 }

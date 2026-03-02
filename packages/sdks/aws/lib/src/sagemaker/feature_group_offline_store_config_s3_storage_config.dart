@@ -30,8 +30,8 @@ class FeatureGroupOfflineStoreConfigS3StorageConfig {
 
   factory FeatureGroupOfflineStoreConfigS3StorageConfig.fromMap(Map<String, dynamic> map) {
     return FeatureGroupOfflineStoreConfigS3StorageConfig(
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      resolvedOutputS3Uri: map['resolvedOutputS3Uri'] == null ? null : (map['resolvedOutputS3Uri'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      resolvedOutputS3Uri: map['resolvedOutputS3Uri'] == null ? null : ((map['resolvedOutputS3Uri'] as String).input()).input(),
       s3Uri: (map['s3Uri'] as String).input(),
     );
   }

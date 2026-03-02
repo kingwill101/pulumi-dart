@@ -21,7 +21,7 @@ class ConfigurationProfileAssignmentProperties {
 
   factory ConfigurationProfileAssignmentProperties.fromMap(Map<String, dynamic> map) {
     return ConfigurationProfileAssignmentProperties(
-      configurationProfile: map['configurationProfile'] == null ? null : (map['configurationProfile'] as String).input(),
+      configurationProfile: map['configurationProfile'] == null ? null : (map['configurationProfile']! as String).input(),
     );
   }
 }

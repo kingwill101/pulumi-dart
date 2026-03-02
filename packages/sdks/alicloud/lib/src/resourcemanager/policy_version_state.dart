@@ -31,9 +31,9 @@ class PolicyVersionState {
 
   factory PolicyVersionState.fromMap(Map<String, dynamic> map) {
     return PolicyVersionState(
-      isDefaultVersion: map['isDefaultVersion'] == null ? null : (map['isDefaultVersion'] as bool).input(),
-      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      isDefaultVersion: map['isDefaultVersion'] == null ? null : (map['isDefaultVersion']! as bool).input(),
+      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument']! as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
     );
   }
 }

@@ -70,17 +70,17 @@ class CVSSv3 {
 
   factory CVSSv3.fromMap(Map<String, dynamic> map) {
     return CVSSv3(
-      attackComplexity: map['attackComplexity'] == null ? null : (CVSSv3AttackComplexity.fromValue(map['attackComplexity'] as String)).input(),
-      attackVector: map['attackVector'] == null ? null : (CVSSv3AttackVector.fromValue(map['attackVector'] as String)).input(),
-      availabilityImpact: map['availabilityImpact'] == null ? null : (CVSSv3AvailabilityImpact.fromValue(map['availabilityImpact'] as String)).input(),
-      baseScore: map['baseScore'] == null ? null : (map['baseScore'] as double).input(),
-      confidentialityImpact: map['confidentialityImpact'] == null ? null : (CVSSv3ConfidentialityImpact.fromValue(map['confidentialityImpact'] as String)).input(),
-      exploitabilityScore: map['exploitabilityScore'] == null ? null : (map['exploitabilityScore'] as double).input(),
-      impactScore: map['impactScore'] == null ? null : (map['impactScore'] as double).input(),
-      integrityImpact: map['integrityImpact'] == null ? null : (CVSSv3IntegrityImpact.fromValue(map['integrityImpact'] as String)).input(),
-      privilegesRequired: map['privilegesRequired'] == null ? null : (CVSSv3PrivilegesRequired.fromValue(map['privilegesRequired'] as String)).input(),
-      scope: map['scope'] == null ? null : (CVSSv3Scope.fromValue(map['scope'] as String)).input(),
-      userInteraction: map['userInteraction'] == null ? null : (CVSSv3UserInteraction.fromValue(map['userInteraction'] as String)).input(),
+      attackComplexity: map['attackComplexity'] == null ? null : (CVSSv3AttackComplexity.fromValue(map['attackComplexity']! as String)).input(),
+      attackVector: map['attackVector'] == null ? null : (CVSSv3AttackVector.fromValue(map['attackVector']! as String)).input(),
+      availabilityImpact: map['availabilityImpact'] == null ? null : (CVSSv3AvailabilityImpact.fromValue(map['availabilityImpact']! as String)).input(),
+      baseScore: map['baseScore'] == null ? null : (map['baseScore']! as double).input(),
+      confidentialityImpact: map['confidentialityImpact'] == null ? null : (CVSSv3ConfidentialityImpact.fromValue(map['confidentialityImpact']! as String)).input(),
+      exploitabilityScore: map['exploitabilityScore'] == null ? null : (map['exploitabilityScore']! as double).input(),
+      impactScore: map['impactScore'] == null ? null : (map['impactScore']! as double).input(),
+      integrityImpact: map['integrityImpact'] == null ? null : (CVSSv3IntegrityImpact.fromValue(map['integrityImpact']! as String)).input(),
+      privilegesRequired: map['privilegesRequired'] == null ? null : (CVSSv3PrivilegesRequired.fromValue(map['privilegesRequired']! as String)).input(),
+      scope: map['scope'] == null ? null : (CVSSv3Scope.fromValue(map['scope']! as String)).input(),
+      userInteraction: map['userInteraction'] == null ? null : (CVSSv3UserInteraction.fromValue(map['userInteraction']! as String)).input(),
     );
   }
 }

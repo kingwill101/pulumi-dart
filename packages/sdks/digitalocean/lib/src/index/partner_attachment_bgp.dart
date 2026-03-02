@@ -31,10 +31,10 @@ class PartnerAttachmentBgp {
 
   factory PartnerAttachmentBgp.fromMap(Map<String, dynamic> map) {
     return PartnerAttachmentBgp(
-      authKey: map['authKey'] == null ? null : (map['authKey'] as String).input(),
-      localRouterIp: map['localRouterIp'] == null ? null : (map['localRouterIp'] as String).input(),
-      peerRouterAsn: map['peerRouterAsn'] == null ? null : (map['peerRouterAsn'] as int).input(),
-      peerRouterIp: map['peerRouterIp'] == null ? null : (map['peerRouterIp'] as String).input(),
+      authKey: map['authKey'] == null ? null : (map['authKey']! as String).input(),
+      localRouterIp: map['localRouterIp'] == null ? null : (map['localRouterIp']! as String).input(),
+      peerRouterAsn: map['peerRouterAsn'] == null ? null : (map['peerRouterAsn']! as int).input(),
+      peerRouterIp: map['peerRouterIp'] == null ? null : (map['peerRouterIp']! as String).input(),
     );
   }
 }

@@ -69,19 +69,19 @@ class GetAzureServiceDiscoveryResult {
 
   factory GetAzureServiceDiscoveryResult.fromMap(Map<String, dynamic> map) {
     return GetAzureServiceDiscoveryResult(
-      addressRealm: map['addressRealm'] == null ? null : map['addressRealm'] as String,
+      addressRealm: map['addressRealm'] == null ? null : map['addressRealm']! as String,
       azureSdJson: map['azureSdJson'] as String,
-      credentialUpdate: map['credentialUpdate'] == null ? null : map['credentialUpdate'] as bool,
+      credentialUpdate: map['credentialUpdate'] == null ? null : map['credentialUpdate']! as bool,
       id: map['id'] as String,
-      minimumMonitors: map['minimumMonitors'] == null ? null : map['minimumMonitors'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
+      minimumMonitors: map['minimumMonitors'] == null ? null : map['minimumMonitors']! as String,
+      port: map['port'] == null ? null : map['port']! as int,
       resourceGroup: map['resourceGroup'] as String,
       subscriptionId: map['subscriptionId'] as String,
-      tagKey: map['tagKey'] == null ? null : map['tagKey'] as String,
-      tagValue: map['tagValue'] == null ? null : map['tagValue'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      undetectableAction: map['undetectableAction'] == null ? null : map['undetectableAction'] as String,
-      updateInterval: map['updateInterval'] == null ? null : map['updateInterval'] as String,
+      tagKey: map['tagKey'] == null ? null : map['tagKey']! as String,
+      tagValue: map['tagValue'] == null ? null : map['tagValue']! as String,
+      type: map['type'] == null ? null : map['type']! as String,
+      undetectableAction: map['undetectableAction'] == null ? null : map['undetectableAction']! as String,
+      updateInterval: map['updateInterval'] == null ? null : map['updateInterval']! as String,
     );
   }
 }

@@ -91,19 +91,19 @@ class CertificateTemplateState {
 
   factory CertificateTemplateState.fromMap(Map<String, dynamic> map) {
     return CertificateTemplateState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      identityConstraints: map['identityConstraints'] == null ? null : (CertificateTemplateIdentityConstraints.fromMap((map['identityConstraints'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maximumLifetime: map['maximumLifetime'] == null ? null : (map['maximumLifetime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      passthroughExtensions: map['passthroughExtensions'] == null ? null : (CertificateTemplatePassthroughExtensions.fromMap((map['passthroughExtensions'] as Map).cast<String, dynamic>())).input(),
-      predefinedValues: map['predefinedValues'] == null ? null : (CertificateTemplatePredefinedValues.fromMap((map['predefinedValues'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      identityConstraints: map['identityConstraints'] == null ? null : (CertificateTemplateIdentityConstraints.fromMap((map['identityConstraints']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maximumLifetime: map['maximumLifetime'] == null ? null : (map['maximumLifetime']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      passthroughExtensions: map['passthroughExtensions'] == null ? null : (CertificateTemplatePassthroughExtensions.fromMap((map['passthroughExtensions']! as Map).cast<String, dynamic>())).input(),
+      predefinedValues: map['predefinedValues'] == null ? null : (CertificateTemplatePredefinedValues.fromMap((map['predefinedValues']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

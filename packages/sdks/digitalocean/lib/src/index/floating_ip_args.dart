@@ -34,8 +34,8 @@ class FloatingIpArgs {
 
   factory FloatingIpArgs.fromMap(Map<String, dynamic> map) {
     return FloatingIpArgs(
-      dropletId: map['dropletId'] == null ? null : (map['dropletId'] as int).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      dropletId: map['dropletId'] == null ? null : (map['dropletId']! as int).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
       region: (map['region'] as String).input(),
     );
   }

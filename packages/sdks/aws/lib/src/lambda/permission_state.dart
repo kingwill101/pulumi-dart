@@ -83,19 +83,19 @@ class PermissionState {
 
   factory PermissionState.fromMap(Map<String, dynamic> map) {
     return PermissionState(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      eventSourceToken: map['eventSourceToken'] == null ? null : (map['eventSourceToken'] as String).input(),
-      function: map['function'] == null ? null : (map['function'] as String).input(),
-      functionUrlAuthType: map['functionUrlAuthType'] == null ? null : (map['functionUrlAuthType'] as String).input(),
-      invokedViaFunctionUrl: map['invokedViaFunctionUrl'] == null ? null : (map['invokedViaFunctionUrl'] as bool).input(),
-      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
-      principalOrgId: map['principalOrgId'] == null ? null : (map['principalOrgId'] as String).input(),
-      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sourceAccount: map['sourceAccount'] == null ? null : (map['sourceAccount'] as String).input(),
-      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn'] as String).input(),
-      statementId: map['statementId'] == null ? null : (map['statementId'] as String).input(),
-      statementIdPrefix: map['statementIdPrefix'] == null ? null : (map['statementIdPrefix'] as String).input(),
+      action: map['action'] == null ? null : ((map['action'] as String).input()).input(),
+      eventSourceToken: map['eventSourceToken'] == null ? null : ((map['eventSourceToken'] as String).input()).input(),
+      function: map['function'] == null ? null : ((map['function'] as String).input()).input(),
+      functionUrlAuthType: map['functionUrlAuthType'] == null ? null : ((map['functionUrlAuthType'] as String).input()).input(),
+      invokedViaFunctionUrl: map['invokedViaFunctionUrl'] == null ? null : ((map['invokedViaFunctionUrl'] as bool).input()).input(),
+      principal: map['principal'] == null ? null : ((map['principal'] as String).input()).input(),
+      principalOrgId: map['principalOrgId'] == null ? null : ((map['principalOrgId'] as String).input()).input(),
+      qualifier: map['qualifier'] == null ? null : ((map['qualifier'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sourceAccount: map['sourceAccount'] == null ? null : ((map['sourceAccount'] as String).input()).input(),
+      sourceArn: map['sourceArn'] == null ? null : ((map['sourceArn'] as String).input()).input(),
+      statementId: map['statementId'] == null ? null : ((map['statementId'] as String).input()).input(),
+      statementIdPrefix: map['statementIdPrefix'] == null ? null : ((map['statementIdPrefix'] as String).input()).input(),
     );
   }
 }

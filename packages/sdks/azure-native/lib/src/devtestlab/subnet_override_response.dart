@@ -47,12 +47,12 @@ class SubnetOverrideResponse {
 
   factory SubnetOverrideResponse.fromMap(Map<String, dynamic> map) {
     return SubnetOverrideResponse(
-      labSubnetName: map['labSubnetName'] == null ? null : (map['labSubnetName'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      sharedPublicIpAddressConfiguration: map['sharedPublicIpAddressConfiguration'] == null ? null : (SubnetSharedPublicIpAddressConfigurationResponse.fromMap((map['sharedPublicIpAddressConfiguration'] as Map).cast<String, dynamic>())).input(),
-      useInVmCreationPermission: map['useInVmCreationPermission'] == null ? null : (map['useInVmCreationPermission'] as String).input(),
-      usePublicIpAddressPermission: map['usePublicIpAddressPermission'] == null ? null : (map['usePublicIpAddressPermission'] as String).input(),
-      virtualNetworkPoolName: map['virtualNetworkPoolName'] == null ? null : (map['virtualNetworkPoolName'] as String).input(),
+      labSubnetName: map['labSubnetName'] == null ? null : (map['labSubnetName']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      sharedPublicIpAddressConfiguration: map['sharedPublicIpAddressConfiguration'] == null ? null : (SubnetSharedPublicIpAddressConfigurationResponse.fromMap((map['sharedPublicIpAddressConfiguration']! as Map).cast<String, dynamic>())).input(),
+      useInVmCreationPermission: map['useInVmCreationPermission'] == null ? null : (map['useInVmCreationPermission']! as String).input(),
+      usePublicIpAddressPermission: map['usePublicIpAddressPermission'] == null ? null : (map['usePublicIpAddressPermission']! as String).input(),
+      virtualNetworkPoolName: map['virtualNetworkPoolName'] == null ? null : (map['virtualNetworkPoolName']! as String).input(),
     );
   }
 }

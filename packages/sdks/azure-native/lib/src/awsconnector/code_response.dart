@@ -41,11 +41,11 @@ class CodeResponse {
 
   factory CodeResponse.fromMap(Map<String, dynamic> map) {
     return CodeResponse(
-      imageUri: map['imageUri'] == null ? null : (map['imageUri'] as String).input(),
-      s3Bucket: map['s3Bucket'] == null ? null : (map['s3Bucket'] as String).input(),
-      s3Key: map['s3Key'] == null ? null : (map['s3Key'] as String).input(),
-      s3ObjectVersion: map['s3ObjectVersion'] == null ? null : (map['s3ObjectVersion'] as String).input(),
-      zipFile: map['zipFile'] == null ? null : (map['zipFile'] as String).input(),
+      imageUri: map['imageUri'] == null ? null : (map['imageUri']! as String).input(),
+      s3Bucket: map['s3Bucket'] == null ? null : (map['s3Bucket']! as String).input(),
+      s3Key: map['s3Key'] == null ? null : (map['s3Key']! as String).input(),
+      s3ObjectVersion: map['s3ObjectVersion'] == null ? null : (map['s3ObjectVersion']! as String).input(),
+      zipFile: map['zipFile'] == null ? null : (map['zipFile']! as String).input(),
     );
   }
 }

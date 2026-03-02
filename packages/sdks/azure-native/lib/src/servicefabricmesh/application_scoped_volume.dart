@@ -40,7 +40,7 @@ class ApplicationScopedVolume {
       creationParameters: (ApplicationScopedVolumeCreationParametersServiceFabricVolumeDisk.fromMap((map['creationParameters'] as Map).cast<String, dynamic>())).input(),
       destinationPath: (map['destinationPath'] as String).input(),
       name: (map['name'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
     );
   }
 }

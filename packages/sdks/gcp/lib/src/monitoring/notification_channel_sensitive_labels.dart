@@ -33,9 +33,9 @@ class NotificationChannelSensitiveLabels {
 
   factory NotificationChannelSensitiveLabels.fromMap(Map<String, dynamic> map) {
     return NotificationChannelSensitiveLabels(
-      authToken: map['authToken'] == null ? null : (map['authToken'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      serviceKey: map['serviceKey'] == null ? null : (map['serviceKey'] as String).input(),
+      authToken: map['authToken'] == null ? null : (map['authToken']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      serviceKey: map['serviceKey'] == null ? null : (map['serviceKey']! as String).input(),
     );
   }
 }

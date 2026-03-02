@@ -20,7 +20,7 @@ class RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository {
 
   factory RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository.fromMap(Map<String, dynamic> map) {
     return RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository(
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

@@ -60,14 +60,14 @@ class VolumeClaimSpec {
 
   factory VolumeClaimSpec.fromMap(Map<String, dynamic> map) {
     return VolumeClaimSpec(
-      accessModes: map['accessModes'] == null ? null : ((map['accessModes'] as List).cast<String>()).input(),
-      dataSource: map['dataSource'] == null ? null : (VolumeClaimDataSource.fromMap((map['dataSource'] as Map).cast<String, dynamic>())).input(),
-      dataSourceRef: map['dataSourceRef'] == null ? null : (VolumeClaimDataSourceRef.fromMap((map['dataSourceRef'] as Map).cast<String, dynamic>())).input(),
-      resources: map['resources'] == null ? null : (VolumeClaimResourceRequirements.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
-      selector: map['selector'] == null ? null : (VolumeClaimSpecSelector.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
-      storageClassName: map['storageClassName'] == null ? null : (map['storageClassName'] as String).input(),
-      volumeMode: map['volumeMode'] == null ? null : (map['volumeMode'] as String).input(),
-      volumeName: map['volumeName'] == null ? null : (map['volumeName'] as String).input(),
+      accessModes: map['accessModes'] == null ? null : ((map['accessModes']! as List).cast<String>()).input(),
+      dataSource: map['dataSource'] == null ? null : (VolumeClaimDataSource.fromMap((map['dataSource']! as Map).cast<String, dynamic>())).input(),
+      dataSourceRef: map['dataSourceRef'] == null ? null : (VolumeClaimDataSourceRef.fromMap((map['dataSourceRef']! as Map).cast<String, dynamic>())).input(),
+      resources: map['resources'] == null ? null : (VolumeClaimResourceRequirements.fromMap((map['resources']! as Map).cast<String, dynamic>())).input(),
+      selector: map['selector'] == null ? null : (VolumeClaimSpecSelector.fromMap((map['selector']! as Map).cast<String, dynamic>())).input(),
+      storageClassName: map['storageClassName'] == null ? null : (map['storageClassName']! as String).input(),
+      volumeMode: map['volumeMode'] == null ? null : (map['volumeMode']! as String).input(),
+      volumeName: map['volumeName'] == null ? null : (map['volumeName']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class TcpCheck {
 
   factory TcpCheck.fromMap(Map<String, dynamic> map) {
     return TcpCheck(
-      pingConfig: map['pingConfig'] == null ? null : (PingConfig.fromMap((map['pingConfig'] as Map).cast<String, dynamic>())).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      pingConfig: map['pingConfig'] == null ? null : (PingConfig.fromMap((map['pingConfig']! as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

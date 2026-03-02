@@ -93,19 +93,19 @@ class GetNGroupResult {
   factory GetNGroupResult.fromMap(Map<String, dynamic> map) {
     return GetNGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      containerGroupProfiles: map['containerGroupProfiles'] == null ? null : pulumi.Input.decodeList<ContainerGroupProfileStubResponse>(map['containerGroupProfiles'], (value) => ContainerGroupProfileStubResponse.fromMap((value as Map).cast<String, dynamic>())),
-      elasticProfile: map['elasticProfile'] == null ? null : ElasticProfileResponse.fromMap((map['elasticProfile'] as Map).cast<String, dynamic>()),
+      containerGroupProfiles: map['containerGroupProfiles'] == null ? null : pulumi.Input.decodeList<ContainerGroupProfileStubResponse>(map['containerGroupProfiles']!, (value) => ContainerGroupProfileStubResponse.fromMap((value as Map).cast<String, dynamic>())),
+      elasticProfile: map['elasticProfile'] == null ? null : ElasticProfileResponse.fromMap((map['elasticProfile']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : NGroupIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location'] as String,
+      identity: map['identity'] == null ? null : NGroupIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      placementProfile: map['placementProfile'] == null ? null : PlacementProfileResponse.fromMap((map['placementProfile'] as Map).cast<String, dynamic>()),
+      placementProfile: map['placementProfile'] == null ? null : PlacementProfileResponse.fromMap((map['placementProfile']! as Map).cast<String, dynamic>()),
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      updateProfile: map['updateProfile'] == null ? null : UpdateProfileResponse.fromMap((map['updateProfile'] as Map).cast<String, dynamic>()),
-      zones: map['zones'] == null ? null : (map['zones'] as List).cast<String>(),
+      updateProfile: map['updateProfile'] == null ? null : UpdateProfileResponse.fromMap((map['updateProfile']! as Map).cast<String, dynamic>()),
+      zones: map['zones'] == null ? null : (map['zones']! as List).cast<String>(),
     );
   }
 }

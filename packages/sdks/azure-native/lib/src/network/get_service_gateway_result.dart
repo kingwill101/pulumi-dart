@@ -103,14 +103,14 @@ class GetServiceGatewayResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
-      routeTargetAddress: map['routeTargetAddress'] == null ? null : RouteTargetAddressPropertiesFormatResponse.fromMap((map['routeTargetAddress'] as Map).cast<String, dynamic>()),
-      routeTargetAddressV6: map['routeTargetAddressV6'] == null ? null : RouteTargetAddressPropertiesFormatResponse.fromMap((map['routeTargetAddressV6'] as Map).cast<String, dynamic>()),
-      sku: map['sku'] == null ? null : ServiceGatewaySkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
+      routeTargetAddress: map['routeTargetAddress'] == null ? null : RouteTargetAddressPropertiesFormatResponse.fromMap((map['routeTargetAddress']! as Map).cast<String, dynamic>()),
+      routeTargetAddressV6: map['routeTargetAddressV6'] == null ? null : RouteTargetAddressPropertiesFormatResponse.fromMap((map['routeTargetAddressV6']! as Map).cast<String, dynamic>()),
+      sku: map['sku'] == null ? null : ServiceGatewaySkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      virtualNetwork: map['virtualNetwork'] == null ? null : VirtualNetworkResponse.fromMap((map['virtualNetwork'] as Map).cast<String, dynamic>()),
-      zones: map['zones'] == null ? null : (map['zones'] as List).cast<String>(),
+      virtualNetwork: map['virtualNetwork'] == null ? null : VirtualNetworkResponse.fromMap((map['virtualNetwork']! as Map).cast<String, dynamic>()),
+      zones: map['zones'] == null ? null : (map['zones']! as List).cast<String>(),
     );
   }
 }

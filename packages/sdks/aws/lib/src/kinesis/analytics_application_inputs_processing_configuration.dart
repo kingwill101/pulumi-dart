@@ -21,7 +21,7 @@ class AnalyticsApplicationInputsProcessingConfiguration {
 
   factory AnalyticsApplicationInputsProcessingConfiguration.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationInputsProcessingConfiguration(
-      lambda: (AnalyticsApplicationInputsProcessingConfigurationLambda.fromMap((map['lambda'] as Map).cast<String, dynamic>())).input(),
+      lambda: (AnalyticsApplicationInputsProcessingConfigurationLambda.fromMap((map['lambda']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

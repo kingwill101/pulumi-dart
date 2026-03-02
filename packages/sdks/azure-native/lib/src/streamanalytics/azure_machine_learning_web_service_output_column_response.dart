@@ -26,8 +26,8 @@ class AzureMachineLearningWebServiceOutputColumnResponse {
 
   factory AzureMachineLearningWebServiceOutputColumnResponse.fromMap(Map<String, dynamic> map) {
     return AzureMachineLearningWebServiceOutputColumnResponse(
-      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

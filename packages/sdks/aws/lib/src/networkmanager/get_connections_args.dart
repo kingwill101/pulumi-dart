@@ -34,9 +34,9 @@ class GetConnectionsArgs {
 
   factory GetConnectionsArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectionsArgs(
-      deviceId: map['deviceId'] == null ? null : (map['deviceId'] as String).input(),
+      deviceId: map['deviceId'] == null ? null : ((map['deviceId'] as String).input()).input(),
       globalNetworkId: (map['globalNetworkId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

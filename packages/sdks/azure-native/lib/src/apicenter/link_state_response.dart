@@ -32,8 +32,8 @@ class LinkStateResponse {
   factory LinkStateResponse.fromMap(Map<String, dynamic> map) {
     return LinkStateResponse(
       lastUpdatedOn: (map['lastUpdatedOn'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

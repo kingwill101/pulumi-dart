@@ -20,7 +20,7 @@ class CollectionTimeouts {
 
   factory CollectionTimeouts.fromMap(Map<String, dynamic> map) {
     return CollectionTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
+      create: map['create'] == null ? null : ((map['create'] as String).input()).input(),
     );
   }
 }

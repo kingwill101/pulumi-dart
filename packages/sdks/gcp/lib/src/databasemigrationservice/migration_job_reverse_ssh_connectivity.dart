@@ -38,10 +38,10 @@ class MigrationJobReverseSshConnectivity {
 
   factory MigrationJobReverseSshConnectivity.fromMap(Map<String, dynamic> map) {
     return MigrationJobReverseSshConnectivity(
-      vm: map['vm'] == null ? null : (map['vm'] as String).input(),
-      vmIp: map['vmIp'] == null ? null : (map['vmIp'] as String).input(),
-      vmPort: map['vmPort'] == null ? null : (map['vmPort'] as int).input(),
-      vpc: map['vpc'] == null ? null : (map['vpc'] as String).input(),
+      vm: map['vm'] == null ? null : (map['vm']! as String).input(),
+      vmIp: map['vmIp'] == null ? null : (map['vmIp']! as String).input(),
+      vmPort: map['vmPort'] == null ? null : (map['vmPort']! as int).input(),
+      vpc: map['vpc'] == null ? null : (map['vpc']! as String).input(),
     );
   }
 }

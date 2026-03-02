@@ -21,7 +21,7 @@ class UserAssignedIdentity {
 
   factory UserAssignedIdentity.fromMap(Map<String, dynamic> map) {
     return UserAssignedIdentity(
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

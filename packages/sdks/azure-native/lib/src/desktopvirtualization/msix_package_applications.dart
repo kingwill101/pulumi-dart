@@ -51,13 +51,13 @@ class MsixPackageApplications {
 
   factory MsixPackageApplications.fromMap(Map<String, dynamic> map) {
     return MsixPackageApplications(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      appUserModelID: map['appUserModelID'] == null ? null : (map['appUserModelID'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      iconImageName: map['iconImageName'] == null ? null : (map['iconImageName'] as String).input(),
-      rawIcon: map['rawIcon'] == null ? null : (map['rawIcon'] as String).input(),
-      rawPng: map['rawPng'] == null ? null : (map['rawPng'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      appUserModelID: map['appUserModelID'] == null ? null : (map['appUserModelID']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      iconImageName: map['iconImageName'] == null ? null : (map['iconImageName']! as String).input(),
+      rawIcon: map['rawIcon'] == null ? null : (map['rawIcon']! as String).input(),
+      rawPng: map['rawPng'] == null ? null : (map['rawPng']! as String).input(),
     );
   }
 }

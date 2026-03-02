@@ -29,8 +29,8 @@ class GetGradientaiKnowledgeBasesArgs {
 
   factory GetGradientaiKnowledgeBasesArgs.fromMap(Map<String, dynamic> map) {
     return GetGradientaiKnowledgeBasesArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetGradientaiKnowledgeBasesFilter>(map['filters'], (value) => GetGradientaiKnowledgeBasesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetGradientaiKnowledgeBasesSort>(map['sorts'], (value) => GetGradientaiKnowledgeBasesSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetGradientaiKnowledgeBasesFilter>(map['filters']!, (value) => GetGradientaiKnowledgeBasesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetGradientaiKnowledgeBasesSort>(map['sorts']!, (value) => GetGradientaiKnowledgeBasesSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

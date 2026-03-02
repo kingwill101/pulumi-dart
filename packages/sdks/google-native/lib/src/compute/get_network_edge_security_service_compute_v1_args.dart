@@ -32,7 +32,7 @@ class GetNetworkEdgeSecurityServiceComputeV1Args {
   factory GetNetworkEdgeSecurityServiceComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetNetworkEdgeSecurityServiceComputeV1Args(
       networkEdgeSecurityService: (map['networkEdgeSecurityService'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
     );
   }

@@ -58,11 +58,11 @@ class BastionHostIPConfigurationResponse {
   factory BastionHostIPConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return BastionHostIPConfigurationResponse(
       etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      publicIPAddress: map['publicIPAddress'] == null ? null : (SubResourceResponse.fromMap((map['publicIPAddress'] as Map).cast<String, dynamic>())).input(),
+      publicIPAddress: map['publicIPAddress'] == null ? null : (SubResourceResponse.fromMap((map['publicIPAddress']! as Map).cast<String, dynamic>())).input(),
       subnet: (SubResourceResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );

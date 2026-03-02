@@ -65,15 +65,15 @@ class MonitorState {
 
   factory MonitorState.fromMap(Map<String, dynamic> map) {
     return MonitorState(
-      localResources: map['localResources'] == null ? null : (pulumi.Input.decodeList<MonitorLocalResource>(map['localResources'], (value) => MonitorLocalResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      monitorArn: map['monitorArn'] == null ? null : (map['monitorArn'] as String).input(),
-      monitorName: map['monitorName'] == null ? null : (map['monitorName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      remoteResources: map['remoteResources'] == null ? null : (pulumi.Input.decodeList<MonitorRemoteResource>(map['remoteResources'], (value) => MonitorRemoteResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      scopeArn: map['scopeArn'] == null ? null : (map['scopeArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (MonitorTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      localResources: map['localResources'] == null ? null : ((pulumi.Input.decodeList<MonitorLocalResource>(map['localResources']!, (value) => MonitorLocalResource.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      monitorArn: map['monitorArn'] == null ? null : ((map['monitorArn'] as String).input()).input(),
+      monitorName: map['monitorName'] == null ? null : ((map['monitorName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      remoteResources: map['remoteResources'] == null ? null : ((pulumi.Input.decodeList<MonitorRemoteResource>(map['remoteResources']!, (value) => MonitorRemoteResource.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      scopeArn: map['scopeArn'] == null ? null : ((map['scopeArn'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((MonitorTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

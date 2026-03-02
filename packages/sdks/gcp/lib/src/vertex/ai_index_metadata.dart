@@ -39,8 +39,8 @@ class AiIndexMetadata {
   factory AiIndexMetadata.fromMap(Map<String, dynamic> map) {
     return AiIndexMetadata(
       config: (AiIndexMetadataConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      contentsDeltaUri: map['contentsDeltaUri'] == null ? null : (map['contentsDeltaUri'] as String).input(),
-      isCompleteOverwrite: map['isCompleteOverwrite'] == null ? null : (map['isCompleteOverwrite'] as bool).input(),
+      contentsDeltaUri: map['contentsDeltaUri'] == null ? null : (map['contentsDeltaUri']! as String).input(),
+      isCompleteOverwrite: map['isCompleteOverwrite'] == null ? null : (map['isCompleteOverwrite']! as bool).input(),
     );
   }
 }

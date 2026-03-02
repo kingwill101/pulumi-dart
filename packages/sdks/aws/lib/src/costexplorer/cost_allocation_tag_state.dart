@@ -31,9 +31,9 @@ class CostAllocationTagState {
 
   factory CostAllocationTagState.fromMap(Map<String, dynamic> map) {
     return CostAllocationTagState(
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tagKey: map['tagKey'] == null ? null : (map['tagKey'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tagKey: map['tagKey'] == null ? null : ((map['tagKey'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

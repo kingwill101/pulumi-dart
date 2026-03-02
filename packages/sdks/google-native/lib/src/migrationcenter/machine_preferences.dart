@@ -22,7 +22,7 @@ class MachinePreferences {
 
   factory MachinePreferences.fromMap(Map<String, dynamic> map) {
     return MachinePreferences(
-      allowedMachineSeries: map['allowedMachineSeries'] == null ? null : (pulumi.Input.decodeList<MachineSeries>(map['allowedMachineSeries'], (value) => MachineSeries.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowedMachineSeries: map['allowedMachineSeries'] == null ? null : (pulumi.Input.decodeList<MachineSeries>(map['allowedMachineSeries']!, (value) => MachineSeries.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

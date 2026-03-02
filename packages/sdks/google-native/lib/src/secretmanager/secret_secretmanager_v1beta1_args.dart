@@ -39,8 +39,8 @@ class SecretSecretmanagerV1beta1Args {
 
   factory SecretSecretmanagerV1beta1Args.fromMap(Map<String, dynamic> map) {
     return SecretSecretmanagerV1beta1Args(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       replication: (ReplicationSecretmanagerV1beta1.fromMap((map['replication'] as Map).cast<String, dynamic>())).input(),
       secretId: (map['secretId'] as String).input(),
     );

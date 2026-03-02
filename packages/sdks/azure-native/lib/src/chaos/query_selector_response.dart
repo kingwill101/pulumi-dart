@@ -43,7 +43,7 @@ class QuerySelectorResponse {
 
   factory QuerySelectorResponse.fromMap(Map<String, dynamic> map) {
     return QuerySelectorResponse(
-      filter: map['filter'] == null ? null : (SimpleFilterResponse.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      filter: map['filter'] == null ? null : (SimpleFilterResponse.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
       id: (map['id'] as String).input(),
       queryString: (map['queryString'] as String).input(),
       subscriptionIds: ((map['subscriptionIds'] as List).cast<String>()).input(),

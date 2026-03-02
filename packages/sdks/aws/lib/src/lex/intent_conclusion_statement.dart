@@ -24,8 +24,8 @@ class IntentConclusionStatement {
 
   factory IntentConclusionStatement.fromMap(Map<String, dynamic> map) {
     return IntentConclusionStatement(
-      messages: (pulumi.Input.decodeList<IntentConclusionStatementMessage>(map['messages'], (value) => IntentConclusionStatementMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      responseCard: map['responseCard'] == null ? null : (map['responseCard'] as String).input(),
+      messages: (pulumi.Input.decodeList<IntentConclusionStatementMessage>(map['messages']!, (value) => IntentConclusionStatementMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responseCard: map['responseCard'] == null ? null : ((map['responseCard'] as String).input()).input(),
     );
   }
 }

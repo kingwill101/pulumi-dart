@@ -44,11 +44,11 @@ class ControllerDetailsArgs {
 
   factory ControllerDetailsArgs.fromMap(Map<String, dynamic> map) {
     return ControllerDetailsArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      purpose: map['purpose'] == null ? null : (map['purpose'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      purpose: map['purpose'] == null ? null : (map['purpose']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

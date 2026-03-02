@@ -65,15 +65,15 @@ class SubnetResponse {
 
   factory SubnetResponse.fromMap(Map<String, dynamic> map) {
     return SubnetResponse(
-      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix'] as String).input(),
-      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes'] as List).cast<String>()).input(),
-      ipAllocationMethod: map['ipAllocationMethod'] == null ? null : (map['ipAllocationMethod'] as String).input(),
-      ipConfigurationReferences: map['ipConfigurationReferences'] == null ? null : (pulumi.Input.decodeList<SubnetIpConfigurationReferenceResponse>(map['ipConfigurationReferences'], (value) => SubnetIpConfigurationReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipPools: map['ipPools'] == null ? null : (pulumi.Input.decodeList<IPPoolResponse>(map['ipPools'], (value) => IPPoolResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : (NetworkSecurityGroupArmReferenceResponse.fromMap((map['networkSecurityGroup'] as Map).cast<String, dynamic>())).input(),
-      routeTable: map['routeTable'] == null ? null : (RouteTableResponse.fromMap((map['routeTable'] as Map).cast<String, dynamic>())).input(),
-      vlan: map['vlan'] == null ? null : (map['vlan'] as int).input(),
+      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix']! as String).input(),
+      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes']! as List).cast<String>()).input(),
+      ipAllocationMethod: map['ipAllocationMethod'] == null ? null : (map['ipAllocationMethod']! as String).input(),
+      ipConfigurationReferences: map['ipConfigurationReferences'] == null ? null : (pulumi.Input.decodeList<SubnetIpConfigurationReferenceResponse>(map['ipConfigurationReferences']!, (value) => SubnetIpConfigurationReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipPools: map['ipPools'] == null ? null : (pulumi.Input.decodeList<IPPoolResponse>(map['ipPools']!, (value) => IPPoolResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : (NetworkSecurityGroupArmReferenceResponse.fromMap((map['networkSecurityGroup']! as Map).cast<String, dynamic>())).input(),
+      routeTable: map['routeTable'] == null ? null : (RouteTableResponse.fromMap((map['routeTable']! as Map).cast<String, dynamic>())).input(),
+      vlan: map['vlan'] == null ? null : (map['vlan']! as int).input(),
     );
   }
 }

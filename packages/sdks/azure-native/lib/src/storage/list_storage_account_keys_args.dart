@@ -35,7 +35,7 @@ class ListStorageAccountKeysArgs {
   factory ListStorageAccountKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListStorageAccountKeysArgs(
       accountName: (map['accountName'] as String).input(),
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

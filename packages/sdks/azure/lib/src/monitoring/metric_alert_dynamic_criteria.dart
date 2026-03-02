@@ -68,14 +68,14 @@ class MetricAlertDynamicCriteria {
     return MetricAlertDynamicCriteria(
       aggregation: (map['aggregation'] as String).input(),
       alertSensitivity: (map['alertSensitivity'] as String).input(),
-      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<MetricAlertDynamicCriteriaDimension>(map['dimensions'], (value) => MetricAlertDynamicCriteriaDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      evaluationFailureCount: map['evaluationFailureCount'] == null ? null : (map['evaluationFailureCount'] as int).input(),
-      evaluationTotalCount: map['evaluationTotalCount'] == null ? null : (map['evaluationTotalCount'] as int).input(),
-      ignoreDataBefore: map['ignoreDataBefore'] == null ? null : (map['ignoreDataBefore'] as String).input(),
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<MetricAlertDynamicCriteriaDimension>(map['dimensions']!, (value) => MetricAlertDynamicCriteriaDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      evaluationFailureCount: map['evaluationFailureCount'] == null ? null : (map['evaluationFailureCount']! as int).input(),
+      evaluationTotalCount: map['evaluationTotalCount'] == null ? null : (map['evaluationTotalCount']! as int).input(),
+      ignoreDataBefore: map['ignoreDataBefore'] == null ? null : (map['ignoreDataBefore']! as String).input(),
       metricName: (map['metricName'] as String).input(),
       metricNamespace: (map['metricNamespace'] as String).input(),
       operator: (map['operator'] as String).input(),
-      skipMetricValidation: map['skipMetricValidation'] == null ? null : (map['skipMetricValidation'] as bool).input(),
+      skipMetricValidation: map['skipMetricValidation'] == null ? null : (map['skipMetricValidation']! as bool).input(),
     );
   }
 }

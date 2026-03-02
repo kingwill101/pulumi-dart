@@ -27,8 +27,8 @@ class SaslRemoteBrokerBasicAuthenticationToken {
 
   factory SaslRemoteBrokerBasicAuthenticationToken.fromMap(Map<String, dynamic> map) {
     return SaslRemoteBrokerBasicAuthenticationToken(
-      keyVault: map['keyVault'] == null ? null : (KafkaTokenKeyVaultProperties.fromMap((map['keyVault'] as Map).cast<String, dynamic>())).input(),
-      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
+      keyVault: map['keyVault'] == null ? null : (KafkaTokenKeyVaultProperties.fromMap((map['keyVault']! as Map).cast<String, dynamic>())).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName']! as String).input(),
     );
   }
 }

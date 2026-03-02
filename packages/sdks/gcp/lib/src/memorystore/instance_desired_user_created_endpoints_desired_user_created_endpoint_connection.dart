@@ -23,7 +23,7 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection {
 
   factory InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection.fromMap(Map<String, dynamic> map) {
     return InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection(
-      pscConnection: map['pscConnection'] == null ? null : (InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection.fromMap((map['pscConnection'] as Map).cast<String, dynamic>())).input(),
+      pscConnection: map['pscConnection'] == null ? null : (InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection.fromMap((map['pscConnection']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

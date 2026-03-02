@@ -51,12 +51,12 @@ class SchemaState {
 
   factory SchemaState.fromMap(Map<String, dynamic> map) {
     return SchemaState(
-      dataStoreId: map['dataStoreId'] == null ? null : (map['dataStoreId'] as String).input(),
-      jsonSchema: map['jsonSchema'] == null ? null : (map['jsonSchema'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      schemaId: map['schemaId'] == null ? null : (map['schemaId'] as String).input(),
+      dataStoreId: map['dataStoreId'] == null ? null : (map['dataStoreId']! as String).input(),
+      jsonSchema: map['jsonSchema'] == null ? null : (map['jsonSchema']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      schemaId: map['schemaId'] == null ? null : (map['schemaId']! as String).input(),
     );
   }
 }

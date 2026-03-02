@@ -47,12 +47,12 @@ class ServersSolutionSummaryResponse {
 
   factory ServersSolutionSummaryResponse.fromMap(Map<String, dynamic> map) {
     return ServersSolutionSummaryResponse(
-      assessedCount: map['assessedCount'] == null ? null : (map['assessedCount'] as int).input(),
-      discoveredCount: map['discoveredCount'] == null ? null : (map['discoveredCount'] as int).input(),
+      assessedCount: map['assessedCount'] == null ? null : (map['assessedCount']! as int).input(),
+      discoveredCount: map['discoveredCount'] == null ? null : (map['discoveredCount']! as int).input(),
       instanceType: (map['instanceType'] as String).input(),
-      migratedCount: map['migratedCount'] == null ? null : (map['migratedCount'] as int).input(),
-      replicatingCount: map['replicatingCount'] == null ? null : (map['replicatingCount'] as int).input(),
-      testMigratedCount: map['testMigratedCount'] == null ? null : (map['testMigratedCount'] as int).input(),
+      migratedCount: map['migratedCount'] == null ? null : (map['migratedCount']! as int).input(),
+      replicatingCount: map['replicatingCount'] == null ? null : (map['replicatingCount']! as int).input(),
+      testMigratedCount: map['testMigratedCount'] == null ? null : (map['testMigratedCount']! as int).input(),
     );
   }
 }

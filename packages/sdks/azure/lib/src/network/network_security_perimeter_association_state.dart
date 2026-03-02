@@ -39,10 +39,10 @@ class NetworkSecurityPerimeterAssociationState {
 
   factory NetworkSecurityPerimeterAssociationState.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityPerimeterAssociationState(
-      accessMode: map['accessMode'] == null ? null : (map['accessMode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkSecurityPerimeterProfileId: map['networkSecurityPerimeterProfileId'] == null ? null : (map['networkSecurityPerimeterProfileId'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      accessMode: map['accessMode'] == null ? null : (map['accessMode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkSecurityPerimeterProfileId: map['networkSecurityPerimeterProfileId'] == null ? null : (map['networkSecurityPerimeterProfileId']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

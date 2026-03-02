@@ -56,14 +56,14 @@ class OutputFunctionState {
 
   factory OutputFunctionState.fromMap(Map<String, dynamic> map) {
     return OutputFunctionState(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
-      batchMaxCount: map['batchMaxCount'] == null ? null : (map['batchMaxCount'] as int).input(),
-      batchMaxInBytes: map['batchMaxInBytes'] == null ? null : (map['batchMaxInBytes'] as int).input(),
-      functionApp: map['functionApp'] == null ? null : (map['functionApp'] as String).input(),
-      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      streamAnalyticsJobName: map['streamAnalyticsJobName'] == null ? null : (map['streamAnalyticsJobName'] as String).input(),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey']! as String).input(),
+      batchMaxCount: map['batchMaxCount'] == null ? null : (map['batchMaxCount']! as int).input(),
+      batchMaxInBytes: map['batchMaxInBytes'] == null ? null : (map['batchMaxInBytes']! as int).input(),
+      functionApp: map['functionApp'] == null ? null : (map['functionApp']! as String).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      streamAnalyticsJobName: map['streamAnalyticsJobName'] == null ? null : (map['streamAnalyticsJobName']! as String).input(),
     );
   }
 }

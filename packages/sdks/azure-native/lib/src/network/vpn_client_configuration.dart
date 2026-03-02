@@ -87,19 +87,19 @@ class VpnClientConfiguration {
 
   factory VpnClientConfiguration.fromMap(Map<String, dynamic> map) {
     return VpnClientConfiguration(
-      aadAudience: map['aadAudience'] == null ? null : (map['aadAudience'] as String).input(),
-      aadIssuer: map['aadIssuer'] == null ? null : (map['aadIssuer'] as String).input(),
-      aadTenant: map['aadTenant'] == null ? null : (map['aadTenant'] as String).input(),
-      radiusServerAddress: map['radiusServerAddress'] == null ? null : (map['radiusServerAddress'] as String).input(),
-      radiusServerSecret: map['radiusServerSecret'] == null ? null : (map['radiusServerSecret'] as String).input(),
-      radiusServers: map['radiusServers'] == null ? null : (pulumi.Input.decodeList<RadiusServer>(map['radiusServers'], (value) => RadiusServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vngClientConnectionConfigurations: map['vngClientConnectionConfigurations'] == null ? null : (pulumi.Input.decodeList<VngClientConnectionConfiguration>(map['vngClientConnectionConfigurations'], (value) => VngClientConnectionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpnAuthenticationTypes: map['vpnAuthenticationTypes'] == null ? null : ((map['vpnAuthenticationTypes'] as List).cast<String>()).input(),
-      vpnClientAddressPool: map['vpnClientAddressPool'] == null ? null : (AddressSpace.fromMap((map['vpnClientAddressPool'] as Map).cast<String, dynamic>())).input(),
-      vpnClientIpsecPolicies: map['vpnClientIpsecPolicies'] == null ? null : (pulumi.Input.decodeList<IpsecPolicy>(map['vpnClientIpsecPolicies'], (value) => IpsecPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpnClientProtocols: map['vpnClientProtocols'] == null ? null : ((map['vpnClientProtocols'] as List).cast<String>()).input(),
-      vpnClientRevokedCertificates: map['vpnClientRevokedCertificates'] == null ? null : (pulumi.Input.decodeList<VpnClientRevokedCertificate>(map['vpnClientRevokedCertificates'], (value) => VpnClientRevokedCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpnClientRootCertificates: map['vpnClientRootCertificates'] == null ? null : (pulumi.Input.decodeList<VpnClientRootCertificate>(map['vpnClientRootCertificates'], (value) => VpnClientRootCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aadAudience: map['aadAudience'] == null ? null : (map['aadAudience']! as String).input(),
+      aadIssuer: map['aadIssuer'] == null ? null : (map['aadIssuer']! as String).input(),
+      aadTenant: map['aadTenant'] == null ? null : (map['aadTenant']! as String).input(),
+      radiusServerAddress: map['radiusServerAddress'] == null ? null : (map['radiusServerAddress']! as String).input(),
+      radiusServerSecret: map['radiusServerSecret'] == null ? null : (map['radiusServerSecret']! as String).input(),
+      radiusServers: map['radiusServers'] == null ? null : (pulumi.Input.decodeList<RadiusServer>(map['radiusServers']!, (value) => RadiusServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vngClientConnectionConfigurations: map['vngClientConnectionConfigurations'] == null ? null : (pulumi.Input.decodeList<VngClientConnectionConfiguration>(map['vngClientConnectionConfigurations']!, (value) => VngClientConnectionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpnAuthenticationTypes: map['vpnAuthenticationTypes'] == null ? null : ((map['vpnAuthenticationTypes']! as List).cast<String>()).input(),
+      vpnClientAddressPool: map['vpnClientAddressPool'] == null ? null : (AddressSpace.fromMap((map['vpnClientAddressPool']! as Map).cast<String, dynamic>())).input(),
+      vpnClientIpsecPolicies: map['vpnClientIpsecPolicies'] == null ? null : (pulumi.Input.decodeList<IpsecPolicy>(map['vpnClientIpsecPolicies']!, (value) => IpsecPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpnClientProtocols: map['vpnClientProtocols'] == null ? null : ((map['vpnClientProtocols']! as List).cast<String>()).input(),
+      vpnClientRevokedCertificates: map['vpnClientRevokedCertificates'] == null ? null : (pulumi.Input.decodeList<VpnClientRevokedCertificate>(map['vpnClientRevokedCertificates']!, (value) => VpnClientRevokedCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpnClientRootCertificates: map['vpnClientRootCertificates'] == null ? null : (pulumi.Input.decodeList<VpnClientRootCertificate>(map['vpnClientRootCertificates']!, (value) => VpnClientRootCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

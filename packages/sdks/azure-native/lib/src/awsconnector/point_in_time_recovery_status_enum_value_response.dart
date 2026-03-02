@@ -21,7 +21,7 @@ class PointInTimeRecoveryStatusEnumValueResponse {
 
   factory PointInTimeRecoveryStatusEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return PointInTimeRecoveryStatusEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

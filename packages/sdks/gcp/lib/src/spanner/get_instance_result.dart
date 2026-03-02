@@ -83,9 +83,9 @@ class GetInstanceResult {
   factory GetInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceResult(
       autoscalingConfigs: pulumi.Input.decodeList<GetInstanceAutoscalingConfig>(map['autoscalingConfigs'], (value) => GetInstanceAutoscalingConfig.fromMap((value as Map).cast<String, dynamic>())),
-      config: map['config'] == null ? null : map['config'] as String,
+      config: map['config'] == null ? null : map['config']! as String,
       defaultBackupScheduleType: map['defaultBackupScheduleType'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       edition: map['edition'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       forceDestroy: map['forceDestroy'] as bool,
@@ -95,7 +95,7 @@ class GetInstanceResult {
       name: map['name'] as String,
       numNodes: map['numNodes'] as int,
       processingUnits: map['processingUnits'] as int,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       state: map['state'] as String,
     );

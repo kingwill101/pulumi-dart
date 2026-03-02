@@ -40,10 +40,10 @@ class GetMulticastDomainArgs {
 
   factory GetMulticastDomainArgs.fromMap(Map<String, dynamic> map) {
     return GetMulticastDomainArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetMulticastDomainFilter>(map['filters'], (value) => GetMulticastDomainFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      transitGatewayMulticastDomainId: map['transitGatewayMulticastDomainId'] == null ? null : (map['transitGatewayMulticastDomainId'] as String).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetMulticastDomainFilter>(map['filters']!, (value) => GetMulticastDomainFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      transitGatewayMulticastDomainId: map['transitGatewayMulticastDomainId'] == null ? null : ((map['transitGatewayMulticastDomainId'] as String).input()).input(),
     );
   }
 }

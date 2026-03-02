@@ -21,7 +21,7 @@ class Account {
 
   factory Account.fromMap(Map<String, dynamic> map) {
     return Account(
-      googleAuto: map['googleAuto'] == null ? null : ((map['googleAuto'] as Map).cast<String, dynamic>()).input(),
+      googleAuto: map['googleAuto'] == null ? null : ((map['googleAuto']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

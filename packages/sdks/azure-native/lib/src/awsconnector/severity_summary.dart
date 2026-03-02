@@ -46,12 +46,12 @@ class SeveritySummary {
 
   factory SeveritySummary.fromMap(Map<String, dynamic> map) {
     return SeveritySummary(
-      criticalCount: map['criticalCount'] == null ? null : (map['criticalCount'] as int).input(),
-      highCount: map['highCount'] == null ? null : (map['highCount'] as int).input(),
-      informationalCount: map['informationalCount'] == null ? null : (map['informationalCount'] as int).input(),
-      lowCount: map['lowCount'] == null ? null : (map['lowCount'] as int).input(),
-      mediumCount: map['mediumCount'] == null ? null : (map['mediumCount'] as int).input(),
-      unspecifiedCount: map['unspecifiedCount'] == null ? null : (map['unspecifiedCount'] as int).input(),
+      criticalCount: map['criticalCount'] == null ? null : (map['criticalCount']! as int).input(),
+      highCount: map['highCount'] == null ? null : (map['highCount']! as int).input(),
+      informationalCount: map['informationalCount'] == null ? null : (map['informationalCount']! as int).input(),
+      lowCount: map['lowCount'] == null ? null : (map['lowCount']! as int).input(),
+      mediumCount: map['mediumCount'] == null ? null : (map['mediumCount']! as int).input(),
+      unspecifiedCount: map['unspecifiedCount'] == null ? null : (map['unspecifiedCount']! as int).input(),
     );
   }
 }

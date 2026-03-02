@@ -26,7 +26,7 @@ class WsdlServiceResponse {
 
   factory WsdlServiceResponse.fromMap(Map<String, dynamic> map) {
     return WsdlServiceResponse(
-      endpointQualifiedNames: map['endpointQualifiedNames'] == null ? null : ((map['endpointQualifiedNames'] as List).cast<String>()).input(),
+      endpointQualifiedNames: map['endpointQualifiedNames'] == null ? null : ((map['endpointQualifiedNames']! as List).cast<String>()).input(),
       qualifiedName: (map['qualifiedName'] as String).input(),
     );
   }

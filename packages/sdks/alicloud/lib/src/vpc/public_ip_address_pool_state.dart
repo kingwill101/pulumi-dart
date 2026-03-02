@@ -82,19 +82,19 @@ class PublicIpAddressPoolState {
 
   factory PublicIpAddressPoolState.fromMap(Map<String, dynamic> map) {
     return PublicIpAddressPoolState(
-      bizType: map['bizType'] == null ? null : (map['bizType'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipAddressRemaining: map['ipAddressRemaining'] == null ? null : (map['ipAddressRemaining'] as bool).input(),
-      isp: map['isp'] == null ? null : (map['isp'] as String).input(),
-      publicIpAddressPoolId: map['publicIpAddressPoolId'] == null ? null : (map['publicIpAddressPoolId'] as String).input(),
-      publicIpAddressPoolName: map['publicIpAddressPoolName'] == null ? null : (map['publicIpAddressPoolName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      securityProtectionTypes: map['securityProtectionTypes'] == null ? null : ((map['securityProtectionTypes'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      totalIpNum: map['totalIpNum'] == null ? null : (map['totalIpNum'] as int).input(),
-      usedIpNum: map['usedIpNum'] == null ? null : (map['usedIpNum'] as int).input(),
+      bizType: map['bizType'] == null ? null : (map['bizType']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ipAddressRemaining: map['ipAddressRemaining'] == null ? null : (map['ipAddressRemaining']! as bool).input(),
+      isp: map['isp'] == null ? null : (map['isp']! as String).input(),
+      publicIpAddressPoolId: map['publicIpAddressPoolId'] == null ? null : (map['publicIpAddressPoolId']! as String).input(),
+      publicIpAddressPoolName: map['publicIpAddressPoolName'] == null ? null : (map['publicIpAddressPoolName']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      securityProtectionTypes: map['securityProtectionTypes'] == null ? null : ((map['securityProtectionTypes']! as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      totalIpNum: map['totalIpNum'] == null ? null : (map['totalIpNum']! as int).input(),
+      usedIpNum: map['usedIpNum'] == null ? null : (map['usedIpNum']! as int).input(),
     );
   }
 }

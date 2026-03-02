@@ -30,9 +30,9 @@ class HciDeploymentSettingScaleUnitHostNetworkIntentAdapterPropertyOverride {
 
   factory HciDeploymentSettingScaleUnitHostNetworkIntentAdapterPropertyOverride.fromMap(Map<String, dynamic> map) {
     return HciDeploymentSettingScaleUnitHostNetworkIntentAdapterPropertyOverride(
-      jumboPacket: map['jumboPacket'] == null ? null : (map['jumboPacket'] as String).input(),
-      networkDirect: map['networkDirect'] == null ? null : (map['networkDirect'] as String).input(),
-      networkDirectTechnology: map['networkDirectTechnology'] == null ? null : (map['networkDirectTechnology'] as String).input(),
+      jumboPacket: map['jumboPacket'] == null ? null : (map['jumboPacket']! as String).input(),
+      networkDirect: map['networkDirect'] == null ? null : (map['networkDirect']! as String).input(),
+      networkDirectTechnology: map['networkDirectTechnology'] == null ? null : (map['networkDirectTechnology']! as String).input(),
     );
   }
 }

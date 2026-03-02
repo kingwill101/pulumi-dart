@@ -77,17 +77,17 @@ class EnvironmentArgs {
 
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
-      apiProxyType: map['apiProxyType'] == null ? null : (EnvironmentApiProxyType.fromValue(map['apiProxyType'] as String)).input(),
-      deploymentType: map['deploymentType'] == null ? null : (EnvironmentDeploymentType.fromValue(map['deploymentType'] as String)).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      forwardProxyUri: map['forwardProxyUri'] == null ? null : (map['forwardProxyUri'] as String).input(),
-      hasAttachedFlowHooks: map['hasAttachedFlowHooks'] == null ? null : (map['hasAttachedFlowHooks'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodeConfig: map['nodeConfig'] == null ? null : (GoogleCloudApigeeV1NodeConfig.fromMap((map['nodeConfig'] as Map).cast<String, dynamic>())).input(),
+      apiProxyType: map['apiProxyType'] == null ? null : (EnvironmentApiProxyType.fromValue(map['apiProxyType']! as String)).input(),
+      deploymentType: map['deploymentType'] == null ? null : (EnvironmentDeploymentType.fromValue(map['deploymentType']! as String)).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      forwardProxyUri: map['forwardProxyUri'] == null ? null : (map['forwardProxyUri']! as String).input(),
+      hasAttachedFlowHooks: map['hasAttachedFlowHooks'] == null ? null : (map['hasAttachedFlowHooks']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodeConfig: map['nodeConfig'] == null ? null : (GoogleCloudApigeeV1NodeConfig.fromMap((map['nodeConfig']! as Map).cast<String, dynamic>())).input(),
       organizationId: (map['organizationId'] as String).input(),
-      properties: map['properties'] == null ? null : (GoogleCloudApigeeV1Properties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (EnvironmentType.fromValue(map['type'] as String)).input(),
+      properties: map['properties'] == null ? null : (GoogleCloudApigeeV1Properties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (EnvironmentType.fromValue(map['type']! as String)).input(),
     );
   }
 }

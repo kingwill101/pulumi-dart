@@ -41,11 +41,11 @@ class EcsNetworkInterfacePermissionState {
 
   factory EcsNetworkInterfacePermissionState.fromMap(Map<String, dynamic> map) {
     return EcsNetworkInterfacePermissionState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
-      permission: map['permission'] == null ? null : (map['permission'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId']! as String).input(),
+      permission: map['permission'] == null ? null : (map['permission']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

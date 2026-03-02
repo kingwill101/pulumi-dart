@@ -63,14 +63,14 @@ class AmazonRedshiftSourceResponse {
 
   factory AmazonRedshiftSourceResponse.fromMap(Map<String, dynamic> map) {
     return AmazonRedshiftSourceResponse(
-      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      query: map['query'] == null ? null : (map['query']).input(),
-      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']).input(),
-      redshiftUnloadSettings: map['redshiftUnloadSettings'] == null ? null : (RedshiftUnloadSettingsResponse.fromMap((map['redshiftUnloadSettings'] as Map).cast<String, dynamic>())).input(),
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']!).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      query: map['query'] == null ? null : (map['query']!).input(),
+      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']!).input(),
+      redshiftUnloadSettings: map['redshiftUnloadSettings'] == null ? null : (RedshiftUnloadSettingsResponse.fromMap((map['redshiftUnloadSettings']! as Map).cast<String, dynamic>())).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']!).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']!).input(),
       type: (map['type'] as String).input(),
     );
   }

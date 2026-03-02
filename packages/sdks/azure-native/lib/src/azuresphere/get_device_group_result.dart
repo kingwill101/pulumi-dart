@@ -76,18 +76,18 @@ class GetDeviceGroupResult {
 
   factory GetDeviceGroupResult.fromMap(Map<String, dynamic> map) {
     return GetDeviceGroupResult(
-      allowCrashDumpsCollection: map['allowCrashDumpsCollection'] == null ? null : map['allowCrashDumpsCollection'] as String,
+      allowCrashDumpsCollection: map['allowCrashDumpsCollection'] == null ? null : map['allowCrashDumpsCollection']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       hasDeployment: map['hasDeployment'] as bool,
       id: map['id'] as String,
       name: map['name'] as String,
-      osFeedType: map['osFeedType'] == null ? null : map['osFeedType'] as String,
+      osFeedType: map['osFeedType'] == null ? null : map['osFeedType']! as String,
       provisioningState: map['provisioningState'] as String,
-      regionalDataBoundary: map['regionalDataBoundary'] == null ? null : map['regionalDataBoundary'] as String,
+      regionalDataBoundary: map['regionalDataBoundary'] == null ? null : map['regionalDataBoundary']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      updatePolicy: map['updatePolicy'] == null ? null : map['updatePolicy'] as String,
+      updatePolicy: map['updatePolicy'] == null ? null : map['updatePolicy']! as String,
     );
   }
 }

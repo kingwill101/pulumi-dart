@@ -24,8 +24,8 @@ class ExternalDocumentationApiextensionsK8sIoV1beta1 {
 
   factory ExternalDocumentationApiextensionsK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return ExternalDocumentationApiextensionsK8sIoV1beta1(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

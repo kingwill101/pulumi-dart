@@ -30,9 +30,9 @@ class ContainerDevice {
 
   factory ContainerDevice.fromMap(Map<String, dynamic> map) {
     return ContainerDevice(
-      containerPath: map['containerPath'] == null ? null : (map['containerPath'] as String).input(),
+      containerPath: map['containerPath'] == null ? null : (map['containerPath']! as String).input(),
       hostPath: (map['hostPath'] as String).input(),
-      permissions: map['permissions'] == null ? null : (map['permissions'] as String).input(),
+      permissions: map['permissions'] == null ? null : (map['permissions']! as String).input(),
     );
   }
 }

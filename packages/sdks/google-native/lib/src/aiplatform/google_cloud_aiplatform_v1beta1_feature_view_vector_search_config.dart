@@ -53,13 +53,13 @@ class GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfig {
 
   factory GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfig(
-      bruteForceConfig: map['bruteForceConfig'] == null ? null : ((map['bruteForceConfig'] as Map).cast<String, dynamic>()).input(),
-      crowdingColumn: map['crowdingColumn'] == null ? null : (map['crowdingColumn'] as String).input(),
-      distanceMeasureType: map['distanceMeasureType'] == null ? null : (GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureType.fromValue(map['distanceMeasureType'] as String)).input(),
-      embeddingColumn: map['embeddingColumn'] == null ? null : (map['embeddingColumn'] as String).input(),
-      embeddingDimension: map['embeddingDimension'] == null ? null : (map['embeddingDimension'] as int).input(),
-      filterColumns: map['filterColumns'] == null ? null : ((map['filterColumns'] as List).cast<String>()).input(),
-      treeAhConfig: map['treeAhConfig'] == null ? null : (GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig.fromMap((map['treeAhConfig'] as Map).cast<String, dynamic>())).input(),
+      bruteForceConfig: map['bruteForceConfig'] == null ? null : ((map['bruteForceConfig']! as Map).cast<String, dynamic>()).input(),
+      crowdingColumn: map['crowdingColumn'] == null ? null : (map['crowdingColumn']! as String).input(),
+      distanceMeasureType: map['distanceMeasureType'] == null ? null : (GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureType.fromValue(map['distanceMeasureType']! as String)).input(),
+      embeddingColumn: map['embeddingColumn'] == null ? null : (map['embeddingColumn']! as String).input(),
+      embeddingDimension: map['embeddingDimension'] == null ? null : (map['embeddingDimension']! as int).input(),
+      filterColumns: map['filterColumns'] == null ? null : ((map['filterColumns']! as List).cast<String>()).input(),
+      treeAhConfig: map['treeAhConfig'] == null ? null : (GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig.fromMap((map['treeAhConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

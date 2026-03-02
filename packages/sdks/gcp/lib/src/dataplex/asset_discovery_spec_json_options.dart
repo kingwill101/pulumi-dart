@@ -25,8 +25,8 @@ class AssetDiscoverySpecJsonOptions {
 
   factory AssetDiscoverySpecJsonOptions.fromMap(Map<String, dynamic> map) {
     return AssetDiscoverySpecJsonOptions(
-      disableTypeInference: map['disableTypeInference'] == null ? null : (map['disableTypeInference'] as bool).input(),
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
+      disableTypeInference: map['disableTypeInference'] == null ? null : (map['disableTypeInference']! as bool).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
     );
   }
 }

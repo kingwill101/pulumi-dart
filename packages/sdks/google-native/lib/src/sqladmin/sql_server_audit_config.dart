@@ -36,10 +36,10 @@ class SqlServerAuditConfig {
 
   factory SqlServerAuditConfig.fromMap(Map<String, dynamic> map) {
     return SqlServerAuditConfig(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      retentionInterval: map['retentionInterval'] == null ? null : (map['retentionInterval'] as String).input(),
-      uploadInterval: map['uploadInterval'] == null ? null : (map['uploadInterval'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      retentionInterval: map['retentionInterval'] == null ? null : (map['retentionInterval']! as String).input(),
+      uploadInterval: map['uploadInterval'] == null ? null : (map['uploadInterval']! as String).input(),
     );
   }
 }

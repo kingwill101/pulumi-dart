@@ -51,11 +51,11 @@ class AccessLevelAccesscontextmanagerV1betaArgs {
   factory AccessLevelAccesscontextmanagerV1betaArgs.fromMap(Map<String, dynamic> map) {
     return AccessLevelAccesscontextmanagerV1betaArgs(
       accessPolicyId: (map['accessPolicyId'] as String).input(),
-      basic: map['basic'] == null ? null : (BasicLevelAccesscontextmanagerV1beta.fromMap((map['basic'] as Map).cast<String, dynamic>())).input(),
-      custom: map['custom'] == null ? null : (CustomLevelAccesscontextmanagerV1beta.fromMap((map['custom'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      basic: map['basic'] == null ? null : (BasicLevelAccesscontextmanagerV1beta.fromMap((map['basic']! as Map).cast<String, dynamic>())).input(),
+      custom: map['custom'] == null ? null : (CustomLevelAccesscontextmanagerV1beta.fromMap((map['custom']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

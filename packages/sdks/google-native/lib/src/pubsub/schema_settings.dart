@@ -37,9 +37,9 @@ class SchemaSettings {
 
   factory SchemaSettings.fromMap(Map<String, dynamic> map) {
     return SchemaSettings(
-      encoding: map['encoding'] == null ? null : (SchemaSettingsEncoding.fromValue(map['encoding'] as String)).input(),
-      firstRevisionId: map['firstRevisionId'] == null ? null : (map['firstRevisionId'] as String).input(),
-      lastRevisionId: map['lastRevisionId'] == null ? null : (map['lastRevisionId'] as String).input(),
+      encoding: map['encoding'] == null ? null : (SchemaSettingsEncoding.fromValue(map['encoding']! as String)).input(),
+      firstRevisionId: map['firstRevisionId'] == null ? null : (map['firstRevisionId']! as String).input(),
+      lastRevisionId: map['lastRevisionId'] == null ? null : (map['lastRevisionId']! as String).input(),
       schema: (map['schema'] as String).input(),
     );
   }

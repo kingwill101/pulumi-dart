@@ -69,16 +69,16 @@ class GetVpcFirewallsArgs {
 
   factory GetVpcFirewallsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcFirewallsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      memberUid: map['memberUid'] == null ? null : (map['memberUid'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      regionNo: map['regionNo'] == null ? null : (map['regionNo'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vpcFirewallId: map['vpcFirewallId'] == null ? null : (map['vpcFirewallId'] as String).input(),
-      vpcFirewallName: map['vpcFirewallName'] == null ? null : (map['vpcFirewallName'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      memberUid: map['memberUid'] == null ? null : (map['memberUid']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      regionNo: map['regionNo'] == null ? null : (map['regionNo']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vpcFirewallId: map['vpcFirewallId'] == null ? null : (map['vpcFirewallId']! as String).input(),
+      vpcFirewallName: map['vpcFirewallName'] == null ? null : (map['vpcFirewallName']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

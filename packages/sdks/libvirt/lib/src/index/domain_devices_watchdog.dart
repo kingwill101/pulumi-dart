@@ -42,10 +42,10 @@ class DomainDevicesWatchdog {
 
   factory DomainDevicesWatchdog.fromMap(Map<String, dynamic> map) {
     return DomainDevicesWatchdog(
-      acpi: map['acpi'] == null ? null : (DomainDevicesWatchdogAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
-      alias: map['alias'] == null ? null : (DomainDevicesWatchdogAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
+      acpi: map['acpi'] == null ? null : (DomainDevicesWatchdogAcpi.fromMap((map['acpi']! as Map).cast<String, dynamic>())).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      address: map['address'] == null ? null : ((map['address']! as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesWatchdogAlias.fromMap((map['alias']! as Map).cast<String, dynamic>())).input(),
       model: (map['model'] as String).input(),
     );
   }

@@ -39,10 +39,10 @@ class RuleCompilationDiagnosticPosition {
 
   factory RuleCompilationDiagnosticPosition.fromMap(Map<String, dynamic> map) {
     return RuleCompilationDiagnosticPosition(
-      endColumn: map['endColumn'] == null ? null : (map['endColumn'] as int).input(),
-      endLine: map['endLine'] == null ? null : (map['endLine'] as int).input(),
-      startColumn: map['startColumn'] == null ? null : (map['startColumn'] as int).input(),
-      startLine: map['startLine'] == null ? null : (map['startLine'] as int).input(),
+      endColumn: map['endColumn'] == null ? null : (map['endColumn']! as int).input(),
+      endLine: map['endLine'] == null ? null : (map['endLine']! as int).input(),
+      startColumn: map['startColumn'] == null ? null : (map['startColumn']! as int).input(),
+      startLine: map['startLine'] == null ? null : (map['startLine']! as int).input(),
     );
   }
 }

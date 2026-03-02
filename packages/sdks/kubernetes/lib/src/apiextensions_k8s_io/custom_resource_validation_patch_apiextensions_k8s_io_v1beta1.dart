@@ -22,7 +22,7 @@ class CustomResourceValidationPatchApiextensionsK8sIoV1beta1 {
 
   factory CustomResourceValidationPatchApiextensionsK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CustomResourceValidationPatchApiextensionsK8sIoV1beta1(
-      openAPIV3Schema: map['openAPIV3Schema'] == null ? null : (JSONSchemaPropsPatchApiextensionsK8sIoV1beta1.fromMap((map['openAPIV3Schema'] as Map).cast<String, dynamic>())).input(),
+      openAPIV3Schema: map['openAPIV3Schema'] == null ? null : (JSONSchemaPropsPatchApiextensionsK8sIoV1beta1.fromMap((map['openAPIV3Schema']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

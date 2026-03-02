@@ -37,10 +37,10 @@ class ResourceFilter {
 
   factory ResourceFilter.fromMap(Map<String, dynamic> map) {
     return ResourceFilter(
-      gceInstanceFilter: map['gceInstanceFilter'] == null ? null : (GceInstanceFilter.fromMap((map['gceInstanceFilter'] as Map).cast<String, dynamic>())).input(),
-      inclusionLabels: map['inclusionLabels'] == null ? null : ((map['inclusionLabels'] as Map).cast<String, String>()).input(),
-      resourceIdPatterns: map['resourceIdPatterns'] == null ? null : ((map['resourceIdPatterns'] as List).cast<String>()).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
+      gceInstanceFilter: map['gceInstanceFilter'] == null ? null : (GceInstanceFilter.fromMap((map['gceInstanceFilter']! as Map).cast<String, dynamic>())).input(),
+      inclusionLabels: map['inclusionLabels'] == null ? null : ((map['inclusionLabels']! as Map).cast<String, String>()).input(),
+      resourceIdPatterns: map['resourceIdPatterns'] == null ? null : ((map['resourceIdPatterns']! as List).cast<String>()).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
     );
   }
 }

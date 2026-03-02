@@ -42,11 +42,11 @@ class ServicePerimeterConfigAccesscontextmanagerV1beta {
 
   factory ServicePerimeterConfigAccesscontextmanagerV1beta.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterConfigAccesscontextmanagerV1beta(
-      accessLevels: map['accessLevels'] == null ? null : ((map['accessLevels'] as List).cast<String>()).input(),
-      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
-      restrictedServices: map['restrictedServices'] == null ? null : ((map['restrictedServices'] as List).cast<String>()).input(),
-      unrestrictedServices: map['unrestrictedServices'] == null ? null : ((map['unrestrictedServices'] as List).cast<String>()).input(),
-      vpcAccessibleServices: map['vpcAccessibleServices'] == null ? null : (VpcAccessibleServicesAccesscontextmanagerV1beta.fromMap((map['vpcAccessibleServices'] as Map).cast<String, dynamic>())).input(),
+      accessLevels: map['accessLevels'] == null ? null : ((map['accessLevels']! as List).cast<String>()).input(),
+      resources: map['resources'] == null ? null : ((map['resources']! as List).cast<String>()).input(),
+      restrictedServices: map['restrictedServices'] == null ? null : ((map['restrictedServices']! as List).cast<String>()).input(),
+      unrestrictedServices: map['unrestrictedServices'] == null ? null : ((map['unrestrictedServices']! as List).cast<String>()).input(),
+      vpcAccessibleServices: map['vpcAccessibleServices'] == null ? null : (VpcAccessibleServicesAccesscontextmanagerV1beta.fromMap((map['vpcAccessibleServices']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

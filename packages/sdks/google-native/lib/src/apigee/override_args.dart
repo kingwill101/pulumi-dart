@@ -43,11 +43,11 @@ class OverrideArgs {
 
   factory OverrideArgs.fromMap(Map<String, dynamic> map) {
     return OverrideArgs(
-      apiProxy: map['apiProxy'] == null ? null : (map['apiProxy'] as String).input(),
+      apiProxy: map['apiProxy'] == null ? null : (map['apiProxy']! as String).input(),
       environmentId: (map['environmentId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
-      samplingConfig: map['samplingConfig'] == null ? null : (GoogleCloudApigeeV1TraceSamplingConfig.fromMap((map['samplingConfig'] as Map).cast<String, dynamic>())).input(),
+      samplingConfig: map['samplingConfig'] == null ? null : (GoogleCloudApigeeV1TraceSamplingConfig.fromMap((map['samplingConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

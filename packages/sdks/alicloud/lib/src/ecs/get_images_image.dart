@@ -159,7 +159,7 @@ class GetImagesImage {
       size: (map['size'] as int).input(),
       state: (map['state'] as String).input(),
       status: (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       usage: (map['usage'] as String).input(),
     );
   }

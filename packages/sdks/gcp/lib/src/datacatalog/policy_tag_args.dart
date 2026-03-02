@@ -46,9 +46,9 @@ class PolicyTagArgs {
 
   factory PolicyTagArgs.fromMap(Map<String, dynamic> map) {
     return PolicyTagArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      parentPolicyTag: map['parentPolicyTag'] == null ? null : (map['parentPolicyTag'] as String).input(),
+      parentPolicyTag: map['parentPolicyTag'] == null ? null : (map['parentPolicyTag']! as String).input(),
       taxonomy: (map['taxonomy'] as String).input(),
     );
   }

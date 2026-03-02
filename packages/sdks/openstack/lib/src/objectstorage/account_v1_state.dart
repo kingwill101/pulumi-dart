@@ -61,14 +61,14 @@ class AccountV1State {
 
   factory AccountV1State.fromMap(Map<String, dynamic> map) {
     return AccountV1State(
-      bytesUsed: map['bytesUsed'] == null ? null : (map['bytesUsed'] as int).input(),
-      containerCount: map['containerCount'] == null ? null : (map['containerCount'] as int).input(),
-      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, String>()).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      objectCount: map['objectCount'] == null ? null : (map['objectCount'] as int).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      quotaBytes: map['quotaBytes'] == null ? null : (map['quotaBytes'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      bytesUsed: map['bytesUsed'] == null ? null : (map['bytesUsed']! as int).input(),
+      containerCount: map['containerCount'] == null ? null : (map['containerCount']! as int).input(),
+      headers: map['headers'] == null ? null : ((map['headers']! as Map).cast<String, String>()).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      objectCount: map['objectCount'] == null ? null : (map['objectCount']! as int).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      quotaBytes: map['quotaBytes'] == null ? null : (map['quotaBytes']! as int).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

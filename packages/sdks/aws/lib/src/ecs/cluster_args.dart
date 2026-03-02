@@ -54,12 +54,12 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      configuration: map['configuration'] == null ? null : (ClusterConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceConnectDefaults: map['serviceConnectDefaults'] == null ? null : (ClusterServiceConnectDefaults.fromMap((map['serviceConnectDefaults'] as Map).cast<String, dynamic>())).input(),
-      settings: map['settings'] == null ? null : (pulumi.Input.decodeList<ClusterSetting>(map['settings'], (value) => ClusterSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      configuration: map['configuration'] == null ? null : ((ClusterConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serviceConnectDefaults: map['serviceConnectDefaults'] == null ? null : ((ClusterServiceConnectDefaults.fromMap((map['serviceConnectDefaults']! as Map).cast<String, dynamic>())).input()).input(),
+      settings: map['settings'] == null ? null : ((pulumi.Input.decodeList<ClusterSetting>(map['settings']!, (value) => ClusterSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

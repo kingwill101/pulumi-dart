@@ -37,10 +37,10 @@ class Schedule {
 
   factory Schedule.fromMap(Map<String, dynamic> map) {
     return Schedule(
-      effectiveFrom: map['effectiveFrom'] == null ? null : (map['effectiveFrom'] as String).input(),
-      effectiveUntil: map['effectiveUntil'] == null ? null : (map['effectiveUntil'] as String).input(),
-      recurrences: map['recurrences'] == null ? null : (pulumi.Input.decodeList<DailyRecurrence>(map['recurrences'], (value) => DailyRecurrence.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      effectiveFrom: map['effectiveFrom'] == null ? null : (map['effectiveFrom']! as String).input(),
+      effectiveUntil: map['effectiveUntil'] == null ? null : (map['effectiveUntil']! as String).input(),
+      recurrences: map['recurrences'] == null ? null : (pulumi.Input.decodeList<DailyRecurrence>(map['recurrences']!, (value) => DailyRecurrence.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

@@ -79,15 +79,15 @@ class GetSystemTopicResult {
     return GetSystemTopicResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : IdentityInfoResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : IdentityInfoResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
       metricResourceId: map['metricResourceId'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      source: map['source'] == null ? null : map['source'] as String,
+      source: map['source'] == null ? null : map['source']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      topicType: map['topicType'] == null ? null : map['topicType'] as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      topicType: map['topicType'] == null ? null : map['topicType']! as String,
       type: map['type'] as String,
     );
   }

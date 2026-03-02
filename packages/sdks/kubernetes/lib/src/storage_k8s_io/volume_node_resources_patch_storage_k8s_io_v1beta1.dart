@@ -21,7 +21,7 @@ class VolumeNodeResourcesPatchStorageK8sIoV1beta1 {
 
   factory VolumeNodeResourcesPatchStorageK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return VolumeNodeResourcesPatchStorageK8sIoV1beta1(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
     );
   }
 }

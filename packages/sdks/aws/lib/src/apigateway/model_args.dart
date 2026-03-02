@@ -50,11 +50,11 @@ class ModelArgs {
   factory ModelArgs.fromMap(Map<String, dynamic> map) {
     return ModelArgs(
       contentType: (map['contentType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       restApi: (map['restApi'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
+      schema: map['schema'] == null ? null : ((map['schema'] as String).input()).input(),
     );
   }
 }

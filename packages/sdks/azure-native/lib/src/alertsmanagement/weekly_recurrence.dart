@@ -38,9 +38,9 @@ class WeeklyRecurrence {
   factory WeeklyRecurrence.fromMap(Map<String, dynamic> map) {
     return WeeklyRecurrence(
       daysOfWeek: ((map['daysOfWeek'] as List).cast<String>()).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
       recurrenceType: (map['recurrenceType'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

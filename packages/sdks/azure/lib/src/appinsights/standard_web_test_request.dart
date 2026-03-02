@@ -46,11 +46,11 @@ class StandardWebTestRequest {
 
   factory StandardWebTestRequest.fromMap(Map<String, dynamic> map) {
     return StandardWebTestRequest(
-      body: map['body'] == null ? null : (map['body'] as String).input(),
-      followRedirectsEnabled: map['followRedirectsEnabled'] == null ? null : (map['followRedirectsEnabled'] as bool).input(),
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<StandardWebTestRequestHeader>(map['headers'], (value) => StandardWebTestRequestHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      httpVerb: map['httpVerb'] == null ? null : (map['httpVerb'] as String).input(),
-      parseDependentRequestsEnabled: map['parseDependentRequestsEnabled'] == null ? null : (map['parseDependentRequestsEnabled'] as bool).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
+      followRedirectsEnabled: map['followRedirectsEnabled'] == null ? null : (map['followRedirectsEnabled']! as bool).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<StandardWebTestRequestHeader>(map['headers']!, (value) => StandardWebTestRequestHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      httpVerb: map['httpVerb'] == null ? null : (map['httpVerb']! as String).input(),
+      parseDependentRequestsEnabled: map['parseDependentRequestsEnabled'] == null ? null : (map['parseDependentRequestsEnabled']! as bool).input(),
       url: (map['url'] as String).input(),
     );
   }

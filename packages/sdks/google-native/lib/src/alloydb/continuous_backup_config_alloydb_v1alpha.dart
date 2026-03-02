@@ -32,9 +32,9 @@ class ContinuousBackupConfigAlloydbV1alpha {
 
   factory ContinuousBackupConfigAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
     return ContinuousBackupConfigAlloydbV1alpha(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfigAlloydbV1alpha.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
-      recoveryWindowDays: map['recoveryWindowDays'] == null ? null : (map['recoveryWindowDays'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfigAlloydbV1alpha.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
+      recoveryWindowDays: map['recoveryWindowDays'] == null ? null : (map['recoveryWindowDays']! as int).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class VirtualNetworkApplianceState {
 
   factory VirtualNetworkApplianceState.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkApplianceState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      virtualHubId: map['virtualHubId'] == null ? null : (map['virtualHubId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      virtualHubId: map['virtualHubId'] == null ? null : (map['virtualHubId']! as String).input(),
     );
   }
 }

@@ -31,8 +31,8 @@ class MultiRegionAccessPointDetails {
   factory MultiRegionAccessPointDetails.fromMap(Map<String, dynamic> map) {
     return MultiRegionAccessPointDetails(
       name: (map['name'] as String).input(),
-      publicAccessBlock: map['publicAccessBlock'] == null ? null : (MultiRegionAccessPointDetailsPublicAccessBlock.fromMap((map['publicAccessBlock'] as Map).cast<String, dynamic>())).input(),
-      regions: (pulumi.Input.decodeList<MultiRegionAccessPointDetailsRegion>(map['regions'], (value) => MultiRegionAccessPointDetailsRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicAccessBlock: map['publicAccessBlock'] == null ? null : ((MultiRegionAccessPointDetailsPublicAccessBlock.fromMap((map['publicAccessBlock']! as Map).cast<String, dynamic>())).input()).input(),
+      regions: (pulumi.Input.decodeList<MultiRegionAccessPointDetailsRegion>(map['regions']!, (value) => MultiRegionAccessPointDetailsRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

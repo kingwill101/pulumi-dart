@@ -58,14 +58,14 @@ class AlertProcessingRuleSuppressionState {
 
   factory AlertProcessingRuleSuppressionState.fromMap(Map<String, dynamic> map) {
     return AlertProcessingRuleSuppressionState(
-      condition: map['condition'] == null ? null : (AlertProcessingRuleSuppressionCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      schedule: map['schedule'] == null ? null : (AlertProcessingRuleSuppressionSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      condition: map['condition'] == null ? null : (AlertProcessingRuleSuppressionCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      schedule: map['schedule'] == null ? null : (AlertProcessingRuleSuppressionSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

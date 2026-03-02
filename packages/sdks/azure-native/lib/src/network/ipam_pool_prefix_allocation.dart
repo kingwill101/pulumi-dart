@@ -26,8 +26,8 @@ class IpamPoolPrefixAllocation {
 
   factory IpamPoolPrefixAllocation.fromMap(Map<String, dynamic> map) {
     return IpamPoolPrefixAllocation(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      numberOfIpAddresses: map['numberOfIpAddresses'] == null ? null : (map['numberOfIpAddresses'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      numberOfIpAddresses: map['numberOfIpAddresses'] == null ? null : (map['numberOfIpAddresses']! as String).input(),
     );
   }
 }

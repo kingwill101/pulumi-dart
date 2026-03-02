@@ -34,7 +34,7 @@ class HcxEnterpriseSiteArgs {
 
   factory HcxEnterpriseSiteArgs.fromMap(Map<String, dynamic> map) {
     return HcxEnterpriseSiteArgs(
-      hcxEnterpriseSiteName: map['hcxEnterpriseSiteName'] == null ? null : (map['hcxEnterpriseSiteName'] as String).input(),
+      hcxEnterpriseSiteName: map['hcxEnterpriseSiteName'] == null ? null : (map['hcxEnterpriseSiteName']! as String).input(),
       privateCloudName: (map['privateCloudName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

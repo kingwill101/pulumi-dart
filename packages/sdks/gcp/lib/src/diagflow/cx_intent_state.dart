@@ -110,20 +110,20 @@ class CxIntentState {
 
   factory CxIntentState.fromMap(Map<String, dynamic> map) {
     return CxIntentState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      isDefaultNegativeIntent: map['isDefaultNegativeIntent'] == null ? null : (map['isDefaultNegativeIntent'] as bool).input(),
-      isDefaultWelcomeIntent: map['isDefaultWelcomeIntent'] == null ? null : (map['isDefaultWelcomeIntent'] as bool).input(),
-      isFallback: map['isFallback'] == null ? null : (map['isFallback'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<CxIntentParameter>(map['parameters'], (value) => CxIntentParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      trainingPhrases: map['trainingPhrases'] == null ? null : (pulumi.Input.decodeList<CxIntentTrainingPhrase>(map['trainingPhrases'], (value) => CxIntentTrainingPhrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      isDefaultNegativeIntent: map['isDefaultNegativeIntent'] == null ? null : (map['isDefaultNegativeIntent']! as bool).input(),
+      isDefaultWelcomeIntent: map['isDefaultWelcomeIntent'] == null ? null : (map['isDefaultWelcomeIntent']! as bool).input(),
+      isFallback: map['isFallback'] == null ? null : (map['isFallback']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<CxIntentParameter>(map['parameters']!, (value) => CxIntentParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      trainingPhrases: map['trainingPhrases'] == null ? null : (pulumi.Input.decodeList<CxIntentTrainingPhrase>(map['trainingPhrases']!, (value) => CxIntentTrainingPhrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class ResourcePolicyGroupPlacementPolicyComputeV1 {
 
   factory ResourcePolicyGroupPlacementPolicyComputeV1.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyGroupPlacementPolicyComputeV1(
-      availabilityDomainCount: map['availabilityDomainCount'] == null ? null : (map['availabilityDomainCount'] as int).input(),
-      collocation: map['collocation'] == null ? null : (ResourcePolicyGroupPlacementPolicyCollocationComputeV1.fromValue(map['collocation'] as String)).input(),
-      vmCount: map['vmCount'] == null ? null : (map['vmCount'] as int).input(),
+      availabilityDomainCount: map['availabilityDomainCount'] == null ? null : (map['availabilityDomainCount']! as int).input(),
+      collocation: map['collocation'] == null ? null : (ResourcePolicyGroupPlacementPolicyCollocationComputeV1.fromValue(map['collocation']! as String)).input(),
+      vmCount: map['vmCount'] == null ? null : (map['vmCount']! as int).input(),
     );
   }
 }

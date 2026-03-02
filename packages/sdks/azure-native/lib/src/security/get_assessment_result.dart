@@ -75,14 +75,14 @@ class GetAssessmentResult {
 
   factory GetAssessmentResult.fromMap(Map<String, dynamic> map) {
     return GetAssessmentResult(
-      additionalData: map['additionalData'] == null ? null : (map['additionalData'] as Map).cast<String, String>(),
+      additionalData: map['additionalData'] == null ? null : (map['additionalData']! as Map).cast<String, String>(),
       azureApiVersion: map['azureApiVersion'] as String,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
       links: AssessmentLinksResponse.fromMap((map['links'] as Map).cast<String, dynamic>()),
-      metadata: map['metadata'] == null ? null : SecurityAssessmentMetadataPropertiesResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      metadata: map['metadata'] == null ? null : SecurityAssessmentMetadataPropertiesResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      partnersData: map['partnersData'] == null ? null : SecurityAssessmentPartnerDataResponse.fromMap((map['partnersData'] as Map).cast<String, dynamic>()),
+      partnersData: map['partnersData'] == null ? null : SecurityAssessmentPartnerDataResponse.fromMap((map['partnersData']! as Map).cast<String, dynamic>()),
       resourceDetails: AzureResourceDetailsResponse.fromMap((map['resourceDetails'] as Map).cast<String, dynamic>()),
       status: AssessmentStatusResponseResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,

@@ -34,7 +34,7 @@ class RegexMatchSetRegexMatchTuple {
 
   factory RegexMatchSetRegexMatchTuple.fromMap(Map<String, dynamic> map) {
     return RegexMatchSetRegexMatchTuple(
-      fieldToMatch: (RegexMatchSetRegexMatchTupleFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>())).input(),
+      fieldToMatch: (RegexMatchSetRegexMatchTupleFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input(),
       regexPatternSetId: (map['regexPatternSetId'] as String).input(),
       textTransformation: (map['textTransformation'] as String).input(),
     );

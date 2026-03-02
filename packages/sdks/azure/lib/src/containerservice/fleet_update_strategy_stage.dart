@@ -31,7 +31,7 @@ class FleetUpdateStrategyStage {
 
   factory FleetUpdateStrategyStage.fromMap(Map<String, dynamic> map) {
     return FleetUpdateStrategyStage(
-      afterStageWaitInSeconds: map['afterStageWaitInSeconds'] == null ? null : (map['afterStageWaitInSeconds'] as int).input(),
+      afterStageWaitInSeconds: map['afterStageWaitInSeconds'] == null ? null : (map['afterStageWaitInSeconds']! as int).input(),
       groups: (pulumi.Input.decodeList<FleetUpdateStrategyStageGroup>(map['groups'], (value) => FleetUpdateStrategyStageGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
     );

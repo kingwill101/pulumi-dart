@@ -46,10 +46,10 @@ class DataflowEndpointMqttAuthentication {
   factory DataflowEndpointMqttAuthentication.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointMqttAuthentication(
       method: (map['method'] as String).input(),
-      serviceAccountTokenSettings: map['serviceAccountTokenSettings'] == null ? null : (DataflowEndpointAuthenticationServiceAccountToken.fromMap((map['serviceAccountTokenSettings'] as Map).cast<String, dynamic>())).input(),
-      systemAssignedManagedIdentitySettings: map['systemAssignedManagedIdentitySettings'] == null ? null : (DataflowEndpointAuthenticationSystemAssignedManagedIdentity.fromMap((map['systemAssignedManagedIdentitySettings'] as Map).cast<String, dynamic>())).input(),
-      userAssignedManagedIdentitySettings: map['userAssignedManagedIdentitySettings'] == null ? null : (DataflowEndpointAuthenticationUserAssignedManagedIdentity.fromMap((map['userAssignedManagedIdentitySettings'] as Map).cast<String, dynamic>())).input(),
-      x509CertificateSettings: map['x509CertificateSettings'] == null ? null : (DataflowEndpointAuthenticationX509.fromMap((map['x509CertificateSettings'] as Map).cast<String, dynamic>())).input(),
+      serviceAccountTokenSettings: map['serviceAccountTokenSettings'] == null ? null : (DataflowEndpointAuthenticationServiceAccountToken.fromMap((map['serviceAccountTokenSettings']! as Map).cast<String, dynamic>())).input(),
+      systemAssignedManagedIdentitySettings: map['systemAssignedManagedIdentitySettings'] == null ? null : (DataflowEndpointAuthenticationSystemAssignedManagedIdentity.fromMap((map['systemAssignedManagedIdentitySettings']! as Map).cast<String, dynamic>())).input(),
+      userAssignedManagedIdentitySettings: map['userAssignedManagedIdentitySettings'] == null ? null : (DataflowEndpointAuthenticationUserAssignedManagedIdentity.fromMap((map['userAssignedManagedIdentitySettings']! as Map).cast<String, dynamic>())).input(),
+      x509CertificateSettings: map['x509CertificateSettings'] == null ? null : (DataflowEndpointAuthenticationX509.fromMap((map['x509CertificateSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

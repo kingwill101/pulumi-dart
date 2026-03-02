@@ -29,8 +29,8 @@ class HpcClusterArgs {
 
   factory HpcClusterArgs.fromMap(Map<String, dynamic> map) {
     return HpcClusterArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

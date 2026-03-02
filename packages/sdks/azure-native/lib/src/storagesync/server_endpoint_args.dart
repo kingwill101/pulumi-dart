@@ -94,21 +94,21 @@ class ServerEndpointArgs {
 
   factory ServerEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ServerEndpointArgs(
-      cloudTiering: map['cloudTiering'] == null ? null : (map['cloudTiering'] as String).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      initialDownloadPolicy: map['initialDownloadPolicy'] == null ? null : (map['initialDownloadPolicy'] as String).input(),
-      initialUploadPolicy: map['initialUploadPolicy'] == null ? null : (map['initialUploadPolicy'] as String).input(),
-      localCacheMode: map['localCacheMode'] == null ? null : (map['localCacheMode'] as String).input(),
-      offlineDataTransfer: map['offlineDataTransfer'] == null ? null : (map['offlineDataTransfer'] as String).input(),
-      offlineDataTransferShareName: map['offlineDataTransferShareName'] == null ? null : (map['offlineDataTransferShareName'] as String).input(),
+      cloudTiering: map['cloudTiering'] == null ? null : (map['cloudTiering']! as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      initialDownloadPolicy: map['initialDownloadPolicy'] == null ? null : (map['initialDownloadPolicy']! as String).input(),
+      initialUploadPolicy: map['initialUploadPolicy'] == null ? null : (map['initialUploadPolicy']! as String).input(),
+      localCacheMode: map['localCacheMode'] == null ? null : (map['localCacheMode']! as String).input(),
+      offlineDataTransfer: map['offlineDataTransfer'] == null ? null : (map['offlineDataTransfer']! as String).input(),
+      offlineDataTransferShareName: map['offlineDataTransferShareName'] == null ? null : (map['offlineDataTransferShareName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverEndpointName: map['serverEndpointName'] == null ? null : (map['serverEndpointName'] as String).input(),
-      serverLocalPath: map['serverLocalPath'] == null ? null : (map['serverLocalPath'] as String).input(),
-      serverResourceId: map['serverResourceId'] == null ? null : (map['serverResourceId'] as String).input(),
+      serverEndpointName: map['serverEndpointName'] == null ? null : (map['serverEndpointName']! as String).input(),
+      serverLocalPath: map['serverLocalPath'] == null ? null : (map['serverLocalPath']! as String).input(),
+      serverResourceId: map['serverResourceId'] == null ? null : (map['serverResourceId']! as String).input(),
       storageSyncServiceName: (map['storageSyncServiceName'] as String).input(),
       syncGroupName: (map['syncGroupName'] as String).input(),
-      tierFilesOlderThanDays: map['tierFilesOlderThanDays'] == null ? null : (map['tierFilesOlderThanDays'] as int).input(),
-      volumeFreeSpacePercent: map['volumeFreeSpacePercent'] == null ? null : (map['volumeFreeSpacePercent'] as int).input(),
+      tierFilesOlderThanDays: map['tierFilesOlderThanDays'] == null ? null : (map['tierFilesOlderThanDays']! as int).input(),
+      volumeFreeSpacePercent: map['volumeFreeSpacePercent'] == null ? null : (map['volumeFreeSpacePercent']! as int).input(),
     );
   }
 }

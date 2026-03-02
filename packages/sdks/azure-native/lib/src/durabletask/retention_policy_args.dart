@@ -35,7 +35,7 @@ class RetentionPolicyArgs {
 
   factory RetentionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RetentionPolicyArgs(
-      properties: map['properties'] == null ? null : (RetentionPolicyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (RetentionPolicyProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       schedulerName: (map['schedulerName'] as String).input(),
     );

@@ -75,14 +75,14 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      privateConfig: map['privateConfig'] == null ? null : (InstancePrivateConfig.fromMap((map['privateConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      workforceIdentityFederationConfig: map['workforceIdentityFederationConfig'] == null ? null : (InstanceWorkforceIdentityFederationConfig.fromMap((map['workforceIdentityFederationConfig'] as Map).cast<String, dynamic>())).input(),
+      privateConfig: map['privateConfig'] == null ? null : (InstancePrivateConfig.fromMap((map['privateConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      workforceIdentityFederationConfig: map['workforceIdentityFederationConfig'] == null ? null : (InstanceWorkforceIdentityFederationConfig.fromMap((map['workforceIdentityFederationConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class ListOpenShiftClusterCredentialsResult {
 
   factory ListOpenShiftClusterCredentialsResult.fromMap(Map<String, dynamic> map) {
     return ListOpenShiftClusterCredentialsResult(
-      kubeadminPassword: map['kubeadminPassword'] == null ? null : map['kubeadminPassword'] as String,
-      kubeadminUsername: map['kubeadminUsername'] == null ? null : map['kubeadminUsername'] as String,
+      kubeadminPassword: map['kubeadminPassword'] == null ? null : map['kubeadminPassword']! as String,
+      kubeadminUsername: map['kubeadminUsername'] == null ? null : map['kubeadminUsername']! as String,
     );
   }
 }

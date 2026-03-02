@@ -50,10 +50,10 @@ class PrivateDnsZoneGroupArgs {
 
   factory PrivateDnsZoneGroupArgs.fromMap(Map<String, dynamic> map) {
     return PrivateDnsZoneGroupArgs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateDnsZoneConfigs: map['privateDnsZoneConfigs'] == null ? null : (pulumi.Input.decodeList<PrivateDnsZoneConfig>(map['privateDnsZoneConfigs'], (value) => PrivateDnsZoneConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      privateDnsZoneGroupName: map['privateDnsZoneGroupName'] == null ? null : (map['privateDnsZoneGroupName'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateDnsZoneConfigs: map['privateDnsZoneConfigs'] == null ? null : (pulumi.Input.decodeList<PrivateDnsZoneConfig>(map['privateDnsZoneConfigs']!, (value) => PrivateDnsZoneConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateDnsZoneGroupName: map['privateDnsZoneGroupName'] == null ? null : (map['privateDnsZoneGroupName']! as String).input(),
       privateEndpointName: (map['privateEndpointName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

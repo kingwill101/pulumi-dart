@@ -98,21 +98,21 @@ class LoadBalancerArgs {
 
   factory LoadBalancerArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerArgs(
-      adaptiveRouting: map['adaptiveRouting'] == null ? null : (LoadBalancerAdaptiveRouting.fromMap((map['adaptiveRouting'] as Map).cast<String, dynamic>())).input(),
+      adaptiveRouting: map['adaptiveRouting'] == null ? null : (LoadBalancerAdaptiveRouting.fromMap((map['adaptiveRouting']! as Map).cast<String, dynamic>())).input(),
       defaultPools: ((map['defaultPools'] as List).cast<int>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       fallbackPool: (map['fallbackPool'] as int).input(),
       loadBalancerName: (map['loadBalancerName'] as String).input(),
       monitor: (LoadBalancerMonitor.fromMap((map['monitor'] as Map).cast<String, dynamic>())).input(),
-      randomSteering: map['randomSteering'] == null ? null : (LoadBalancerRandomSteering.fromMap((map['randomSteering'] as Map).cast<String, dynamic>())).input(),
-      regionPools: map['regionPools'] == null ? null : (map['regionPools'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<LoadBalancerRule>(map['rules'], (value) => LoadBalancerRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sessionAffinity: map['sessionAffinity'] == null ? null : (map['sessionAffinity'] as String).input(),
+      randomSteering: map['randomSteering'] == null ? null : (LoadBalancerRandomSteering.fromMap((map['randomSteering']! as Map).cast<String, dynamic>())).input(),
+      regionPools: map['regionPools'] == null ? null : (map['regionPools']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<LoadBalancerRule>(map['rules']!, (value) => LoadBalancerRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sessionAffinity: map['sessionAffinity'] == null ? null : (map['sessionAffinity']! as String).input(),
       siteId: (map['siteId'] as String).input(),
       steeringPolicy: (map['steeringPolicy'] as String).input(),
-      subRegionPools: map['subRegionPools'] == null ? null : (map['subRegionPools'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      subRegionPools: map['subRegionPools'] == null ? null : (map['subRegionPools']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
     );
   }
 }

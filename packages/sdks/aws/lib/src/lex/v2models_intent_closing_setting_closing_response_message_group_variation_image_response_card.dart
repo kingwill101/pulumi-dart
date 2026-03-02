@@ -36,9 +36,9 @@ class V2modelsIntentClosingSettingClosingResponseMessageGroupVariationImageRespo
 
   factory V2modelsIntentClosingSettingClosingResponseMessageGroupVariationImageResponseCard.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentClosingSettingClosingResponseMessageGroupVariationImageResponseCard(
-      buttons: map['buttons'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentClosingSettingClosingResponseMessageGroupVariationImageResponseCardButton>(map['buttons'], (value) => V2modelsIntentClosingSettingClosingResponseMessageGroupVariationImageResponseCardButton.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      imageUrl: map['imageUrl'] == null ? null : (map['imageUrl'] as String).input(),
-      subtitle: map['subtitle'] == null ? null : (map['subtitle'] as String).input(),
+      buttons: map['buttons'] == null ? null : ((pulumi.Input.decodeList<V2modelsIntentClosingSettingClosingResponseMessageGroupVariationImageResponseCardButton>(map['buttons']!, (value) => V2modelsIntentClosingSettingClosingResponseMessageGroupVariationImageResponseCardButton.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      imageUrl: map['imageUrl'] == null ? null : ((map['imageUrl'] as String).input()).input(),
+      subtitle: map['subtitle'] == null ? null : ((map['subtitle'] as String).input()).input(),
       title: (map['title'] as String).input(),
     );
   }

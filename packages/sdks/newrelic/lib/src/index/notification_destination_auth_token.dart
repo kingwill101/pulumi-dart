@@ -25,7 +25,7 @@ class NotificationDestinationAuthToken {
 
   factory NotificationDestinationAuthToken.fromMap(Map<String, dynamic> map) {
     return NotificationDestinationAuthToken(
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
       token: (map['token'] as String).input(),
     );
   }

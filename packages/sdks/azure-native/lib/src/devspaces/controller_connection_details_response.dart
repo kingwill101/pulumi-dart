@@ -21,7 +21,7 @@ class ControllerConnectionDetailsResponse {
 
   factory ControllerConnectionDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ControllerConnectionDetailsResponse(
-      orchestratorSpecificConnectionDetails: map['orchestratorSpecificConnectionDetails'] == null ? null : (KubernetesConnectionDetailsResponse.fromMap((map['orchestratorSpecificConnectionDetails'] as Map).cast<String, dynamic>())).input(),
+      orchestratorSpecificConnectionDetails: map['orchestratorSpecificConnectionDetails'] == null ? null : (KubernetesConnectionDetailsResponse.fromMap((map['orchestratorSpecificConnectionDetails']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

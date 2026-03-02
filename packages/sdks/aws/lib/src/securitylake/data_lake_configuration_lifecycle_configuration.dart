@@ -27,8 +27,8 @@ class DataLakeConfigurationLifecycleConfiguration {
 
   factory DataLakeConfigurationLifecycleConfiguration.fromMap(Map<String, dynamic> map) {
     return DataLakeConfigurationLifecycleConfiguration(
-      expiration: map['expiration'] == null ? null : (DataLakeConfigurationLifecycleConfigurationExpiration.fromMap((map['expiration'] as Map).cast<String, dynamic>())).input(),
-      transitions: map['transitions'] == null ? null : (pulumi.Input.decodeList<DataLakeConfigurationLifecycleConfigurationTransition>(map['transitions'], (value) => DataLakeConfigurationLifecycleConfigurationTransition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expiration: map['expiration'] == null ? null : ((DataLakeConfigurationLifecycleConfigurationExpiration.fromMap((map['expiration']! as Map).cast<String, dynamic>())).input()).input(),
+      transitions: map['transitions'] == null ? null : ((pulumi.Input.decodeList<DataLakeConfigurationLifecycleConfigurationTransition>(map['transitions']!, (value) => DataLakeConfigurationLifecycleConfigurationTransition.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class PersistentDirectory {
 
   factory PersistentDirectory.fromMap(Map<String, dynamic> map) {
     return PersistentDirectory(
-      gcePd: map['gcePd'] == null ? null : (GceRegionalPersistentDisk.fromMap((map['gcePd'] as Map).cast<String, dynamic>())).input(),
-      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
+      gcePd: map['gcePd'] == null ? null : (GceRegionalPersistentDisk.fromMap((map['gcePd']! as Map).cast<String, dynamic>())).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
     );
   }
 }

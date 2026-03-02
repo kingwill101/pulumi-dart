@@ -25,8 +25,8 @@ class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorage {
 
   factory ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorage.fromMap(Map<String, dynamic> map) {
     return ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorage(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      privateEndpointName: map['privateEndpointName'] == null ? null : (map['privateEndpointName'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      privateEndpointName: map['privateEndpointName'] == null ? null : (map['privateEndpointName']! as String).input(),
     );
   }
 }

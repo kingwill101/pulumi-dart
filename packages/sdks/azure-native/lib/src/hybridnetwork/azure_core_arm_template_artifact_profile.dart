@@ -28,8 +28,8 @@ class AzureCoreArmTemplateArtifactProfile {
 
   factory AzureCoreArmTemplateArtifactProfile.fromMap(Map<String, dynamic> map) {
     return AzureCoreArmTemplateArtifactProfile(
-      artifactStore: map['artifactStore'] == null ? null : (ReferencedResource.fromMap((map['artifactStore'] as Map).cast<String, dynamic>())).input(),
-      templateArtifactProfile: map['templateArtifactProfile'] == null ? null : (ArmTemplateArtifactProfile.fromMap((map['templateArtifactProfile'] as Map).cast<String, dynamic>())).input(),
+      artifactStore: map['artifactStore'] == null ? null : (ReferencedResource.fromMap((map['artifactStore']! as Map).cast<String, dynamic>())).input(),
+      templateArtifactProfile: map['templateArtifactProfile'] == null ? null : (ArmTemplateArtifactProfile.fromMap((map['templateArtifactProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

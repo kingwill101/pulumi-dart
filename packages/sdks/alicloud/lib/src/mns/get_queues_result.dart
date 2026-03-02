@@ -41,9 +41,9 @@ class GetQueuesResult {
   factory GetQueuesResult.fromMap(Map<String, dynamic> map) {
     return GetQueuesResult(
       id: map['id'] as String,
-      namePrefix: map['namePrefix'] == null ? null : map['namePrefix'] as String,
+      namePrefix: map['namePrefix'] == null ? null : map['namePrefix']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       queues: pulumi.Input.decodeList<GetQueuesQueue>(map['queues'], (value) => GetQueuesQueue.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

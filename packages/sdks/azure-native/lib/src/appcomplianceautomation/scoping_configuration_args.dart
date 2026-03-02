@@ -35,9 +35,9 @@ class ScopingConfigurationArgs {
 
   factory ScopingConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ScopingConfigurationArgs(
-      answers: map['answers'] == null ? null : (pulumi.Input.decodeList<ScopingAnswer>(map['answers'], (value) => ScopingAnswer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      answers: map['answers'] == null ? null : (pulumi.Input.decodeList<ScopingAnswer>(map['answers']!, (value) => ScopingAnswer.fromMap((value as Map).cast<String, dynamic>()))).input(),
       reportName: (map['reportName'] as String).input(),
-      scopingConfigurationName: map['scopingConfigurationName'] == null ? null : (map['scopingConfigurationName'] as String).input(),
+      scopingConfigurationName: map['scopingConfigurationName'] == null ? null : (map['scopingConfigurationName']! as String).input(),
     );
   }
 }

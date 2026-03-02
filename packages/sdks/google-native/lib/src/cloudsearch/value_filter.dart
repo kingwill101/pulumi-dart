@@ -26,8 +26,8 @@ class ValueFilter {
 
   factory ValueFilter.fromMap(Map<String, dynamic> map) {
     return ValueFilter(
-      operatorName: map['operatorName'] == null ? null : (map['operatorName'] as String).input(),
-      value: map['value'] == null ? null : (Value.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
+      operatorName: map['operatorName'] == null ? null : (map['operatorName']! as String).input(),
+      value: map['value'] == null ? null : (Value.fromMap((map['value']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

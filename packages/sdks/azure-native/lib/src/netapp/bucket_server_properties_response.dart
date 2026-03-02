@@ -38,7 +38,7 @@ class BucketServerPropertiesResponse {
     return BucketServerPropertiesResponse(
       certificateCommonName: (map['certificateCommonName'] as String).input(),
       certificateExpiryDate: (map['certificateExpiryDate'] as String).input(),
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
       ipAddress: (map['ipAddress'] as String).input(),
     );
   }

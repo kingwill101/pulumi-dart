@@ -56,13 +56,13 @@ class FrontdoorRuleActionsRouteConfigurationOverrideAction {
 
   factory FrontdoorRuleActionsRouteConfigurationOverrideAction.fromMap(Map<String, dynamic> map) {
     return FrontdoorRuleActionsRouteConfigurationOverrideAction(
-      cacheBehavior: map['cacheBehavior'] == null ? null : (map['cacheBehavior'] as String).input(),
-      cacheDuration: map['cacheDuration'] == null ? null : (map['cacheDuration'] as String).input(),
-      cdnFrontdoorOriginGroupId: map['cdnFrontdoorOriginGroupId'] == null ? null : (map['cdnFrontdoorOriginGroupId'] as String).input(),
-      compressionEnabled: map['compressionEnabled'] == null ? null : (map['compressionEnabled'] as bool).input(),
-      forwardingProtocol: map['forwardingProtocol'] == null ? null : (map['forwardingProtocol'] as String).input(),
-      queryStringCachingBehavior: map['queryStringCachingBehavior'] == null ? null : (map['queryStringCachingBehavior'] as String).input(),
-      queryStringParameters: map['queryStringParameters'] == null ? null : ((map['queryStringParameters'] as List).cast<String>()).input(),
+      cacheBehavior: map['cacheBehavior'] == null ? null : (map['cacheBehavior']! as String).input(),
+      cacheDuration: map['cacheDuration'] == null ? null : (map['cacheDuration']! as String).input(),
+      cdnFrontdoorOriginGroupId: map['cdnFrontdoorOriginGroupId'] == null ? null : (map['cdnFrontdoorOriginGroupId']! as String).input(),
+      compressionEnabled: map['compressionEnabled'] == null ? null : (map['compressionEnabled']! as bool).input(),
+      forwardingProtocol: map['forwardingProtocol'] == null ? null : (map['forwardingProtocol']! as String).input(),
+      queryStringCachingBehavior: map['queryStringCachingBehavior'] == null ? null : (map['queryStringCachingBehavior']! as String).input(),
+      queryStringParameters: map['queryStringParameters'] == null ? null : ((map['queryStringParameters']! as List).cast<String>()).input(),
     );
   }
 }

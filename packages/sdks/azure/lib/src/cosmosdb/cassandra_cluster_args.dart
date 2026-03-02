@@ -92,20 +92,20 @@ class CassandraClusterArgs {
 
   factory CassandraClusterArgs.fromMap(Map<String, dynamic> map) {
     return CassandraClusterArgs(
-      authenticationMethod: map['authenticationMethod'] == null ? null : (map['authenticationMethod'] as String).input(),
-      clientCertificatePems: map['clientCertificatePems'] == null ? null : ((map['clientCertificatePems'] as List).cast<String>()).input(),
+      authenticationMethod: map['authenticationMethod'] == null ? null : (map['authenticationMethod']! as String).input(),
+      clientCertificatePems: map['clientCertificatePems'] == null ? null : ((map['clientCertificatePems']! as List).cast<String>()).input(),
       defaultAdminPassword: (map['defaultAdminPassword'] as String).input(),
       delegatedManagementSubnetId: (map['delegatedManagementSubnetId'] as String).input(),
-      externalGossipCertificatePems: map['externalGossipCertificatePems'] == null ? null : ((map['externalGossipCertificatePems'] as List).cast<String>()).input(),
-      externalSeedNodeIpAddresses: map['externalSeedNodeIpAddresses'] == null ? null : ((map['externalSeedNodeIpAddresses'] as List).cast<String>()).input(),
-      hoursBetweenBackups: map['hoursBetweenBackups'] == null ? null : (map['hoursBetweenBackups'] as int).input(),
-      identity: map['identity'] == null ? null : (CassandraClusterIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      repairEnabled: map['repairEnabled'] == null ? null : (map['repairEnabled'] as bool).input(),
+      externalGossipCertificatePems: map['externalGossipCertificatePems'] == null ? null : ((map['externalGossipCertificatePems']! as List).cast<String>()).input(),
+      externalSeedNodeIpAddresses: map['externalSeedNodeIpAddresses'] == null ? null : ((map['externalSeedNodeIpAddresses']! as List).cast<String>()).input(),
+      hoursBetweenBackups: map['hoursBetweenBackups'] == null ? null : (map['hoursBetweenBackups']! as int).input(),
+      identity: map['identity'] == null ? null : (CassandraClusterIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      repairEnabled: map['repairEnabled'] == null ? null : (map['repairEnabled']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

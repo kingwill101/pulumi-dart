@@ -41,8 +41,8 @@ class DeviceRequestResourceK8sIoV1beta2 {
 
   factory DeviceRequestResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return DeviceRequestResourceK8sIoV1beta2(
-      exactly: map['exactly'] == null ? null : (ExactDeviceRequestResourceK8sIoV1beta2.fromMap((map['exactly'] as Map).cast<String, dynamic>())).input(),
-      firstAvailable: map['firstAvailable'] == null ? null : (pulumi.Input.decodeList<DeviceSubRequestResourceK8sIoV1beta2>(map['firstAvailable'], (value) => DeviceSubRequestResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      exactly: map['exactly'] == null ? null : (ExactDeviceRequestResourceK8sIoV1beta2.fromMap((map['exactly']! as Map).cast<String, dynamic>())).input(),
+      firstAvailable: map['firstAvailable'] == null ? null : (pulumi.Input.decodeList<DeviceSubRequestResourceK8sIoV1beta2>(map['firstAvailable']!, (value) => DeviceSubRequestResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
     );
   }

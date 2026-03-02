@@ -31,9 +31,9 @@ class PolicyAttachmentState {
 
   factory PolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return PolicyAttachmentState(
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
-      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
-      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
+      policyId: map['policyId'] == null ? null : ((map['policyId'] as String).input()).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : ((map['skipDestroy'] as bool).input()).input(),
+      targetId: map['targetId'] == null ? null : ((map['targetId'] as String).input()).input(),
     );
   }
 }

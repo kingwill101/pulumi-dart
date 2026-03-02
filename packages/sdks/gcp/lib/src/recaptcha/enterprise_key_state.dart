@@ -88,18 +88,18 @@ class EnterpriseKeyState {
 
   factory EnterpriseKeyState.fromMap(Map<String, dynamic> map) {
     return EnterpriseKeyState(
-      androidSettings: map['androidSettings'] == null ? null : (EnterpriseKeyAndroidSettings.fromMap((map['androidSettings'] as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      iosSettings: map['iosSettings'] == null ? null : (EnterpriseKeyIosSettings.fromMap((map['iosSettings'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      testingOptions: map['testingOptions'] == null ? null : (EnterpriseKeyTestingOptions.fromMap((map['testingOptions'] as Map).cast<String, dynamic>())).input(),
-      wafSettings: map['wafSettings'] == null ? null : (EnterpriseKeyWafSettings.fromMap((map['wafSettings'] as Map).cast<String, dynamic>())).input(),
-      webSettings: map['webSettings'] == null ? null : (EnterpriseKeyWebSettings.fromMap((map['webSettings'] as Map).cast<String, dynamic>())).input(),
+      androidSettings: map['androidSettings'] == null ? null : (EnterpriseKeyAndroidSettings.fromMap((map['androidSettings']! as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      iosSettings: map['iosSettings'] == null ? null : (EnterpriseKeyIosSettings.fromMap((map['iosSettings']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      testingOptions: map['testingOptions'] == null ? null : (EnterpriseKeyTestingOptions.fromMap((map['testingOptions']! as Map).cast<String, dynamic>())).input(),
+      wafSettings: map['wafSettings'] == null ? null : (EnterpriseKeyWafSettings.fromMap((map['wafSettings']! as Map).cast<String, dynamic>())).input(),
+      webSettings: map['webSettings'] == null ? null : (EnterpriseKeyWebSettings.fromMap((map['webSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

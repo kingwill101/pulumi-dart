@@ -39,10 +39,10 @@ class DatascanDataDiscoverySpecStorageConfig {
 
   factory DatascanDataDiscoverySpecStorageConfig.fromMap(Map<String, dynamic> map) {
     return DatascanDataDiscoverySpecStorageConfig(
-      csvOptions: map['csvOptions'] == null ? null : (DatascanDataDiscoverySpecStorageConfigCsvOptions.fromMap((map['csvOptions'] as Map).cast<String, dynamic>())).input(),
-      excludePatterns: map['excludePatterns'] == null ? null : ((map['excludePatterns'] as List).cast<String>()).input(),
-      includePatterns: map['includePatterns'] == null ? null : ((map['includePatterns'] as List).cast<String>()).input(),
-      jsonOptions: map['jsonOptions'] == null ? null : (DatascanDataDiscoverySpecStorageConfigJsonOptions.fromMap((map['jsonOptions'] as Map).cast<String, dynamic>())).input(),
+      csvOptions: map['csvOptions'] == null ? null : (DatascanDataDiscoverySpecStorageConfigCsvOptions.fromMap((map['csvOptions']! as Map).cast<String, dynamic>())).input(),
+      excludePatterns: map['excludePatterns'] == null ? null : ((map['excludePatterns']! as List).cast<String>()).input(),
+      includePatterns: map['includePatterns'] == null ? null : ((map['includePatterns']! as List).cast<String>()).input(),
+      jsonOptions: map['jsonOptions'] == null ? null : (DatascanDataDiscoverySpecStorageConfigJsonOptions.fromMap((map['jsonOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

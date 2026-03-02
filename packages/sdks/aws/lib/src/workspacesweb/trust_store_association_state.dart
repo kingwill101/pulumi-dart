@@ -33,9 +33,9 @@ class TrustStoreAssociationState {
 
   factory TrustStoreAssociationState.fromMap(Map<String, dynamic> map) {
     return TrustStoreAssociationState(
-      portalArn: map['portalArn'] == null ? null : (map['portalArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      trustStoreArn: map['trustStoreArn'] == null ? null : (map['trustStoreArn'] as String).input(),
+      portalArn: map['portalArn'] == null ? null : ((map['portalArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      trustStoreArn: map['trustStoreArn'] == null ? null : ((map['trustStoreArn'] as String).input()).input(),
     );
   }
 }

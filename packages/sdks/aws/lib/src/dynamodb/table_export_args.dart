@@ -77,16 +77,16 @@ class TableExportArgs {
 
   factory TableExportArgs.fromMap(Map<String, dynamic> map) {
     return TableExportArgs(
-      exportFormat: map['exportFormat'] == null ? null : (map['exportFormat'] as String).input(),
-      exportTime: map['exportTime'] == null ? null : (map['exportTime'] as String).input(),
-      exportType: map['exportType'] == null ? null : (map['exportType'] as String).input(),
-      incrementalExportSpecification: map['incrementalExportSpecification'] == null ? null : (TableExportIncrementalExportSpecification.fromMap((map['incrementalExportSpecification'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      exportFormat: map['exportFormat'] == null ? null : ((map['exportFormat'] as String).input()).input(),
+      exportTime: map['exportTime'] == null ? null : ((map['exportTime'] as String).input()).input(),
+      exportType: map['exportType'] == null ? null : ((map['exportType'] as String).input()).input(),
+      incrementalExportSpecification: map['incrementalExportSpecification'] == null ? null : ((TableExportIncrementalExportSpecification.fromMap((map['incrementalExportSpecification']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       s3Bucket: (map['s3Bucket'] as String).input(),
-      s3BucketOwner: map['s3BucketOwner'] == null ? null : (map['s3BucketOwner'] as String).input(),
-      s3Prefix: map['s3Prefix'] == null ? null : (map['s3Prefix'] as String).input(),
-      s3SseAlgorithm: map['s3SseAlgorithm'] == null ? null : (map['s3SseAlgorithm'] as String).input(),
-      s3SseKmsKeyId: map['s3SseKmsKeyId'] == null ? null : (map['s3SseKmsKeyId'] as String).input(),
+      s3BucketOwner: map['s3BucketOwner'] == null ? null : ((map['s3BucketOwner'] as String).input()).input(),
+      s3Prefix: map['s3Prefix'] == null ? null : ((map['s3Prefix'] as String).input()).input(),
+      s3SseAlgorithm: map['s3SseAlgorithm'] == null ? null : ((map['s3SseAlgorithm'] as String).input()).input(),
+      s3SseKmsKeyId: map['s3SseKmsKeyId'] == null ? null : ((map['s3SseKmsKeyId'] as String).input()).input(),
       tableArn: (map['tableArn'] as String).input(),
     );
   }

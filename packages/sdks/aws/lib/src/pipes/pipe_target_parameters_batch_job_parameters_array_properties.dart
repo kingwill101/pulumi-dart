@@ -20,7 +20,7 @@ class PipeTargetParametersBatchJobParametersArrayProperties {
 
   factory PipeTargetParametersBatchJobParametersArrayProperties.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersBatchJobParametersArrayProperties(
-      size: map['size'] == null ? null : (map['size'] as int).input(),
+      size: map['size'] == null ? null : ((map['size'] as int).input()).input(),
     );
   }
 }

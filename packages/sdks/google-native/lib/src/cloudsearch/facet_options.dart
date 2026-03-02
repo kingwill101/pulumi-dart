@@ -42,11 +42,11 @@ class FacetOptions {
 
   factory FacetOptions.fromMap(Map<String, dynamic> map) {
     return FacetOptions(
-      integerFacetingOptions: map['integerFacetingOptions'] == null ? null : (IntegerFacetingOptions.fromMap((map['integerFacetingOptions'] as Map).cast<String, dynamic>())).input(),
-      numFacetBuckets: map['numFacetBuckets'] == null ? null : (map['numFacetBuckets'] as int).input(),
-      objectType: map['objectType'] == null ? null : (map['objectType'] as String).input(),
-      operatorName: map['operatorName'] == null ? null : (map['operatorName'] as String).input(),
-      sourceName: map['sourceName'] == null ? null : (map['sourceName'] as String).input(),
+      integerFacetingOptions: map['integerFacetingOptions'] == null ? null : (IntegerFacetingOptions.fromMap((map['integerFacetingOptions']! as Map).cast<String, dynamic>())).input(),
+      numFacetBuckets: map['numFacetBuckets'] == null ? null : (map['numFacetBuckets']! as int).input(),
+      objectType: map['objectType'] == null ? null : (map['objectType']! as String).input(),
+      operatorName: map['operatorName'] == null ? null : (map['operatorName']! as String).input(),
+      sourceName: map['sourceName'] == null ? null : (map['sourceName']! as String).input(),
     );
   }
 }

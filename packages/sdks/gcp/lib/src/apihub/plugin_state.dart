@@ -128,21 +128,21 @@ class PluginState {
 
   factory PluginState.fromMap(Map<String, dynamic> map) {
     return PluginState(
-      actionsConfigs: map['actionsConfigs'] == null ? null : (pulumi.Input.decodeList<PluginActionsConfig>(map['actionsConfigs'], (value) => PluginActionsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      configTemplate: map['configTemplate'] == null ? null : (PluginConfigTemplate.fromMap((map['configTemplate'] as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      documentation: map['documentation'] == null ? null : (PluginDocumentation.fromMap((map['documentation'] as Map).cast<String, dynamic>())).input(),
-      hostingService: map['hostingService'] == null ? null : (PluginHostingService.fromMap((map['hostingService'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ownershipType: map['ownershipType'] == null ? null : (map['ownershipType'] as String).input(),
-      pluginCategory: map['pluginCategory'] == null ? null : (map['pluginCategory'] as String).input(),
-      pluginId: map['pluginId'] == null ? null : (map['pluginId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      actionsConfigs: map['actionsConfigs'] == null ? null : (pulumi.Input.decodeList<PluginActionsConfig>(map['actionsConfigs']!, (value) => PluginActionsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configTemplate: map['configTemplate'] == null ? null : (PluginConfigTemplate.fromMap((map['configTemplate']! as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      documentation: map['documentation'] == null ? null : (PluginDocumentation.fromMap((map['documentation']! as Map).cast<String, dynamic>())).input(),
+      hostingService: map['hostingService'] == null ? null : (PluginHostingService.fromMap((map['hostingService']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ownershipType: map['ownershipType'] == null ? null : (map['ownershipType']! as String).input(),
+      pluginCategory: map['pluginCategory'] == null ? null : (map['pluginCategory']! as String).input(),
+      pluginId: map['pluginId'] == null ? null : (map['pluginId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

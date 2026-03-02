@@ -79,18 +79,18 @@ class StoragePoolArgs {
 
   factory StoragePoolArgs.fromMap(Map<String, dynamic> map) {
     return StoragePoolArgs(
-      capacityProvisioningType: map['capacityProvisioningType'] == null ? null : (StoragePoolCapacityProvisioningType.fromValue(map['capacityProvisioningType'] as String)).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      performanceProvisioningType: map['performanceProvisioningType'] == null ? null : (StoragePoolPerformanceProvisioningType.fromValue(map['performanceProvisioningType'] as String)).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      provisionedIops: map['provisionedIops'] == null ? null : (map['provisionedIops'] as String).input(),
-      provisionedThroughput: map['provisionedThroughput'] == null ? null : (map['provisionedThroughput'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb'] as String).input(),
-      storagePoolType: map['storagePoolType'] == null ? null : (map['storagePoolType'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      capacityProvisioningType: map['capacityProvisioningType'] == null ? null : (StoragePoolCapacityProvisioningType.fromValue(map['capacityProvisioningType']! as String)).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      performanceProvisioningType: map['performanceProvisioningType'] == null ? null : (StoragePoolPerformanceProvisioningType.fromValue(map['performanceProvisioningType']! as String)).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      provisionedIops: map['provisionedIops'] == null ? null : (map['provisionedIops']! as String).input(),
+      provisionedThroughput: map['provisionedThroughput'] == null ? null : (map['provisionedThroughput']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb']! as String).input(),
+      storagePoolType: map['storagePoolType'] == null ? null : (map['storagePoolType']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

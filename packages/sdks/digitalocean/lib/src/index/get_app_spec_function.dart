@@ -78,17 +78,17 @@ class GetAppSpecFunction {
 
   factory GetAppSpecFunction.fromMap(Map<String, dynamic> map) {
     return GetAppSpecFunction(
-      alerts: map['alerts'] == null ? null : (pulumi.Input.decodeList<GetAppSpecFunctionAlert>(map['alerts'], (value) => GetAppSpecFunctionAlert.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bitbucket: map['bitbucket'] == null ? null : (GetAppSpecFunctionBitbucket.fromMap((map['bitbucket'] as Map).cast<String, dynamic>())).input(),
-      cors: map['cors'] == null ? null : (GetAppSpecFunctionCors.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
-      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<GetAppSpecFunctionEnv>(map['envs'], (value) => GetAppSpecFunctionEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      git: map['git'] == null ? null : (GetAppSpecFunctionGit.fromMap((map['git'] as Map).cast<String, dynamic>())).input(),
-      github: map['github'] == null ? null : (GetAppSpecFunctionGithub.fromMap((map['github'] as Map).cast<String, dynamic>())).input(),
-      gitlab: map['gitlab'] == null ? null : (GetAppSpecFunctionGitlab.fromMap((map['gitlab'] as Map).cast<String, dynamic>())).input(),
-      logDestinations: map['logDestinations'] == null ? null : (pulumi.Input.decodeList<GetAppSpecFunctionLogDestination>(map['logDestinations'], (value) => GetAppSpecFunctionLogDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      alerts: map['alerts'] == null ? null : (pulumi.Input.decodeList<GetAppSpecFunctionAlert>(map['alerts']!, (value) => GetAppSpecFunctionAlert.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bitbucket: map['bitbucket'] == null ? null : (GetAppSpecFunctionBitbucket.fromMap((map['bitbucket']! as Map).cast<String, dynamic>())).input(),
+      cors: map['cors'] == null ? null : (GetAppSpecFunctionCors.fromMap((map['cors']! as Map).cast<String, dynamic>())).input(),
+      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<GetAppSpecFunctionEnv>(map['envs']!, (value) => GetAppSpecFunctionEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      git: map['git'] == null ? null : (GetAppSpecFunctionGit.fromMap((map['git']! as Map).cast<String, dynamic>())).input(),
+      github: map['github'] == null ? null : (GetAppSpecFunctionGithub.fromMap((map['github']! as Map).cast<String, dynamic>())).input(),
+      gitlab: map['gitlab'] == null ? null : (GetAppSpecFunctionGitlab.fromMap((map['gitlab']! as Map).cast<String, dynamic>())).input(),
+      logDestinations: map['logDestinations'] == null ? null : (pulumi.Input.decodeList<GetAppSpecFunctionLogDestination>(map['logDestinations']!, (value) => GetAppSpecFunctionLogDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
       routes: (pulumi.Input.decodeList<GetAppSpecFunctionRoute>(map['routes'], (value) => GetAppSpecFunctionRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceDir: map['sourceDir'] == null ? null : (map['sourceDir'] as String).input(),
+      sourceDir: map['sourceDir'] == null ? null : (map['sourceDir']! as String).input(),
     );
   }
 }

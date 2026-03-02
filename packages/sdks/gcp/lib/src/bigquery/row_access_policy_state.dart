@@ -89,14 +89,14 @@ class RowAccessPolicyState {
 
   factory RowAccessPolicyState.fromMap(Map<String, dynamic> map) {
     return RowAccessPolicyState(
-      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
-      datasetId: map['datasetId'] == null ? null : (map['datasetId'] as String).input(),
-      filterPredicate: map['filterPredicate'] == null ? null : (map['filterPredicate'] as String).input(),
-      grantees: map['grantees'] == null ? null : ((map['grantees'] as List).cast<String>()).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      tableId: map['tableId'] == null ? null : (map['tableId'] as String).input(),
+      creationTime: map['creationTime'] == null ? null : (map['creationTime']! as String).input(),
+      datasetId: map['datasetId'] == null ? null : (map['datasetId']! as String).input(),
+      filterPredicate: map['filterPredicate'] == null ? null : (map['filterPredicate']! as String).input(),
+      grantees: map['grantees'] == null ? null : ((map['grantees']! as List).cast<String>()).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime']! as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      tableId: map['tableId'] == null ? null : (map['tableId']! as String).input(),
     );
   }
 }

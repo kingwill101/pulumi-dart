@@ -46,11 +46,11 @@ class WorkspaceFeaturesResponse {
 
   factory WorkspaceFeaturesResponse.fromMap(Map<String, dynamic> map) {
     return WorkspaceFeaturesResponse(
-      clusterResourceId: map['clusterResourceId'] == null ? null : (map['clusterResourceId'] as String).input(),
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth'] as bool).input(),
-      enableDataExport: map['enableDataExport'] == null ? null : (map['enableDataExport'] as bool).input(),
-      enableLogAccessUsingOnlyResourcePermissions: map['enableLogAccessUsingOnlyResourcePermissions'] == null ? null : (map['enableLogAccessUsingOnlyResourcePermissions'] as bool).input(),
-      immediatePurgeDataOn30Days: map['immediatePurgeDataOn30Days'] == null ? null : (map['immediatePurgeDataOn30Days'] as bool).input(),
+      clusterResourceId: map['clusterResourceId'] == null ? null : (map['clusterResourceId']! as String).input(),
+      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth']! as bool).input(),
+      enableDataExport: map['enableDataExport'] == null ? null : (map['enableDataExport']! as bool).input(),
+      enableLogAccessUsingOnlyResourcePermissions: map['enableLogAccessUsingOnlyResourcePermissions'] == null ? null : (map['enableLogAccessUsingOnlyResourcePermissions']! as bool).input(),
+      immediatePurgeDataOn30Days: map['immediatePurgeDataOn30Days'] == null ? null : (map['immediatePurgeDataOn30Days']! as bool).input(),
       unifiedSentinelBillingOnly: (map['unifiedSentinelBillingOnly'] as bool).input(),
     );
   }

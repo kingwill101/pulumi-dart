@@ -69,15 +69,15 @@ class AgentDataSourceArgs {
 
   factory AgentDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceArgs(
-      dataDeletionPolicy: map['dataDeletionPolicy'] == null ? null : (map['dataDeletionPolicy'] as String).input(),
-      dataSourceConfiguration: (AgentDataSourceDataSourceConfiguration.fromMap((map['dataSourceConfiguration'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dataDeletionPolicy: map['dataDeletionPolicy'] == null ? null : ((map['dataDeletionPolicy'] as String).input()).input(),
+      dataSourceConfiguration: (AgentDataSourceDataSourceConfiguration.fromMap((map['dataSourceConfiguration']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       knowledgeBaseId: (map['knowledgeBaseId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serverSideEncryptionConfiguration: map['serverSideEncryptionConfiguration'] == null ? null : (AgentDataSourceServerSideEncryptionConfiguration.fromMap((map['serverSideEncryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      timeouts: map['timeouts'] == null ? null : (AgentDataSourceTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      vectorIngestionConfiguration: map['vectorIngestionConfiguration'] == null ? null : (AgentDataSourceVectorIngestionConfiguration.fromMap((map['vectorIngestionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serverSideEncryptionConfiguration: map['serverSideEncryptionConfiguration'] == null ? null : ((AgentDataSourceServerSideEncryptionConfiguration.fromMap((map['serverSideEncryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((AgentDataSourceTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      vectorIngestionConfiguration: map['vectorIngestionConfiguration'] == null ? null : ((AgentDataSourceVectorIngestionConfiguration.fromMap((map['vectorIngestionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

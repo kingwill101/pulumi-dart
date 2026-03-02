@@ -26,8 +26,8 @@ class NWRuleSetIpRulesResponse {
 
   factory NWRuleSetIpRulesResponse.fromMap(Map<String, dynamic> map) {
     return NWRuleSetIpRulesResponse(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      ipMask: map['ipMask'] == null ? null : (map['ipMask'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      ipMask: map['ipMask'] == null ? null : (map['ipMask']! as String).input(),
     );
   }
 }

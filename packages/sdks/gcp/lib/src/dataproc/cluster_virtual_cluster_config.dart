@@ -41,9 +41,9 @@ class ClusterVirtualClusterConfig {
 
   factory ClusterVirtualClusterConfig.fromMap(Map<String, dynamic> map) {
     return ClusterVirtualClusterConfig(
-      auxiliaryServicesConfig: map['auxiliaryServicesConfig'] == null ? null : (ClusterVirtualClusterConfigAuxiliaryServicesConfig.fromMap((map['auxiliaryServicesConfig'] as Map).cast<String, dynamic>())).input(),
-      kubernetesClusterConfig: map['kubernetesClusterConfig'] == null ? null : (ClusterVirtualClusterConfigKubernetesClusterConfig.fromMap((map['kubernetesClusterConfig'] as Map).cast<String, dynamic>())).input(),
-      stagingBucket: map['stagingBucket'] == null ? null : (map['stagingBucket'] as String).input(),
+      auxiliaryServicesConfig: map['auxiliaryServicesConfig'] == null ? null : (ClusterVirtualClusterConfigAuxiliaryServicesConfig.fromMap((map['auxiliaryServicesConfig']! as Map).cast<String, dynamic>())).input(),
+      kubernetesClusterConfig: map['kubernetesClusterConfig'] == null ? null : (ClusterVirtualClusterConfigKubernetesClusterConfig.fromMap((map['kubernetesClusterConfig']! as Map).cast<String, dynamic>())).input(),
+      stagingBucket: map['stagingBucket'] == null ? null : (map['stagingBucket']! as String).input(),
     );
   }
 }

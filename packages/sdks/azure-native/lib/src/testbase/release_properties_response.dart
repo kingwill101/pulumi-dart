@@ -36,10 +36,10 @@ class ReleasePropertiesResponse {
 
   factory ReleasePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ReleasePropertiesResponse(
-      buildNumber: map['buildNumber'] == null ? null : (map['buildNumber'] as String).input(),
-      buildRevision: map['buildRevision'] == null ? null : (map['buildRevision'] as String).input(),
-      releaseName: map['releaseName'] == null ? null : (map['releaseName'] as String).input(),
-      releaseVersionDate: map['releaseVersionDate'] == null ? null : (map['releaseVersionDate'] as String).input(),
+      buildNumber: map['buildNumber'] == null ? null : (map['buildNumber']! as String).input(),
+      buildRevision: map['buildRevision'] == null ? null : (map['buildRevision']! as String).input(),
+      releaseName: map['releaseName'] == null ? null : (map['releaseName']! as String).input(),
+      releaseVersionDate: map['releaseVersionDate'] == null ? null : (map['releaseVersionDate']! as String).input(),
     );
   }
 }

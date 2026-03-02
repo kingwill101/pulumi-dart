@@ -29,8 +29,8 @@ class GetCertificatesArgs {
 
   factory GetCertificatesArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificatesArgs(
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

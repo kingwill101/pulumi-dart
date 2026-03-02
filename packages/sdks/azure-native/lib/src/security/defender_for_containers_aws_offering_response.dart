@@ -94,20 +94,20 @@ class DefenderForContainersAwsOfferingResponse {
 
   factory DefenderForContainersAwsOfferingResponse.fromMap(Map<String, dynamic> map) {
     return DefenderForContainersAwsOfferingResponse(
-      cloudWatchToKinesis: map['cloudWatchToKinesis'] == null ? null : (DefenderForContainersAwsOfferingResponseCloudWatchToKinesis.fromMap((map['cloudWatchToKinesis'] as Map).cast<String, dynamic>())).input(),
-      dataCollectionExternalId: map['dataCollectionExternalId'] == null ? null : (map['dataCollectionExternalId'] as String).input(),
+      cloudWatchToKinesis: map['cloudWatchToKinesis'] == null ? null : (DefenderForContainersAwsOfferingResponseCloudWatchToKinesis.fromMap((map['cloudWatchToKinesis']! as Map).cast<String, dynamic>())).input(),
+      dataCollectionExternalId: map['dataCollectionExternalId'] == null ? null : (map['dataCollectionExternalId']! as String).input(),
       description: (map['description'] as String).input(),
-      enableAuditLogsAutoProvisioning: map['enableAuditLogsAutoProvisioning'] == null ? null : (map['enableAuditLogsAutoProvisioning'] as bool).input(),
-      enableDefenderAgentAutoProvisioning: map['enableDefenderAgentAutoProvisioning'] == null ? null : (map['enableDefenderAgentAutoProvisioning'] as bool).input(),
-      enablePolicyAgentAutoProvisioning: map['enablePolicyAgentAutoProvisioning'] == null ? null : (map['enablePolicyAgentAutoProvisioning'] as bool).input(),
-      kinesisToS3: map['kinesisToS3'] == null ? null : (DefenderForContainersAwsOfferingResponseKinesisToS3.fromMap((map['kinesisToS3'] as Map).cast<String, dynamic>())).input(),
-      kubeAuditRetentionTime: map['kubeAuditRetentionTime'] == null ? null : (map['kubeAuditRetentionTime'] as double).input(),
-      kubernetesDataCollection: map['kubernetesDataCollection'] == null ? null : (DefenderForContainersAwsOfferingResponseKubernetesDataCollection.fromMap((map['kubernetesDataCollection'] as Map).cast<String, dynamic>())).input(),
-      kubernetesService: map['kubernetesService'] == null ? null : (DefenderForContainersAwsOfferingResponseKubernetesService.fromMap((map['kubernetesService'] as Map).cast<String, dynamic>())).input(),
-      mdcContainersAgentlessDiscoveryK8s: map['mdcContainersAgentlessDiscoveryK8s'] == null ? null : (DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s.fromMap((map['mdcContainersAgentlessDiscoveryK8s'] as Map).cast<String, dynamic>())).input(),
-      mdcContainersImageAssessment: map['mdcContainersImageAssessment'] == null ? null : (DefenderForContainersAwsOfferingResponseMdcContainersImageAssessment.fromMap((map['mdcContainersImageAssessment'] as Map).cast<String, dynamic>())).input(),
+      enableAuditLogsAutoProvisioning: map['enableAuditLogsAutoProvisioning'] == null ? null : (map['enableAuditLogsAutoProvisioning']! as bool).input(),
+      enableDefenderAgentAutoProvisioning: map['enableDefenderAgentAutoProvisioning'] == null ? null : (map['enableDefenderAgentAutoProvisioning']! as bool).input(),
+      enablePolicyAgentAutoProvisioning: map['enablePolicyAgentAutoProvisioning'] == null ? null : (map['enablePolicyAgentAutoProvisioning']! as bool).input(),
+      kinesisToS3: map['kinesisToS3'] == null ? null : (DefenderForContainersAwsOfferingResponseKinesisToS3.fromMap((map['kinesisToS3']! as Map).cast<String, dynamic>())).input(),
+      kubeAuditRetentionTime: map['kubeAuditRetentionTime'] == null ? null : (map['kubeAuditRetentionTime']! as double).input(),
+      kubernetesDataCollection: map['kubernetesDataCollection'] == null ? null : (DefenderForContainersAwsOfferingResponseKubernetesDataCollection.fromMap((map['kubernetesDataCollection']! as Map).cast<String, dynamic>())).input(),
+      kubernetesService: map['kubernetesService'] == null ? null : (DefenderForContainersAwsOfferingResponseKubernetesService.fromMap((map['kubernetesService']! as Map).cast<String, dynamic>())).input(),
+      mdcContainersAgentlessDiscoveryK8s: map['mdcContainersAgentlessDiscoveryK8s'] == null ? null : (DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s.fromMap((map['mdcContainersAgentlessDiscoveryK8s']! as Map).cast<String, dynamic>())).input(),
+      mdcContainersImageAssessment: map['mdcContainersImageAssessment'] == null ? null : (DefenderForContainersAwsOfferingResponseMdcContainersImageAssessment.fromMap((map['mdcContainersImageAssessment']! as Map).cast<String, dynamic>())).input(),
       offeringType: (map['offeringType'] as String).input(),
-      vmScanners: map['vmScanners'] == null ? null : (DefenderForContainersAwsOfferingResponseVmScanners.fromMap((map['vmScanners'] as Map).cast<String, dynamic>())).input(),
+      vmScanners: map['vmScanners'] == null ? null : (DefenderForContainersAwsOfferingResponseVmScanners.fromMap((map['vmScanners']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

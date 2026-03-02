@@ -33,9 +33,9 @@ class AccountEncryption {
 
   factory AccountEncryption.fromMap(Map<String, dynamic> map) {
     return AccountEncryption(
-      identity: map['identity'] == null ? null : (EncryptionIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      keySource: map['keySource'] == null ? null : (map['keySource'] as String).input(),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : (KeyVaultProperties.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (EncryptionIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      keySource: map['keySource'] == null ? null : (map['keySource']! as String).input(),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (KeyVaultProperties.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

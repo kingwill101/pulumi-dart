@@ -48,12 +48,12 @@ class VpcEndpointLinkedVpcState {
 
   factory VpcEndpointLinkedVpcState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointLinkedVpcState(
-      enableCreateDnsRecordInPvzt: map['enableCreateDnsRecordInPvzt'] == null ? null : (map['enableCreateDnsRecordInPvzt'] as bool).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      moduleName: map['moduleName'] == null ? null : (map['moduleName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      enableCreateDnsRecordInPvzt: map['enableCreateDnsRecordInPvzt'] == null ? null : (map['enableCreateDnsRecordInPvzt']! as bool).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      moduleName: map['moduleName'] == null ? null : (map['moduleName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

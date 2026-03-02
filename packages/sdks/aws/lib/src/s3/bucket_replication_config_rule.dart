@@ -65,14 +65,14 @@ class BucketReplicationConfigRule {
 
   factory BucketReplicationConfigRule.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigRule(
-      deleteMarkerReplication: map['deleteMarkerReplication'] == null ? null : (BucketReplicationConfigRuleDeleteMarkerReplication.fromMap((map['deleteMarkerReplication'] as Map).cast<String, dynamic>())).input(),
-      destination: (BucketReplicationConfigRuleDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      existingObjectReplication: map['existingObjectReplication'] == null ? null : (BucketReplicationConfigRuleExistingObjectReplication.fromMap((map['existingObjectReplication'] as Map).cast<String, dynamic>())).input(),
-      filter: map['filter'] == null ? null : (BucketReplicationConfigRuleFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      sourceSelectionCriteria: map['sourceSelectionCriteria'] == null ? null : (BucketReplicationConfigRuleSourceSelectionCriteria.fromMap((map['sourceSelectionCriteria'] as Map).cast<String, dynamic>())).input(),
+      deleteMarkerReplication: map['deleteMarkerReplication'] == null ? null : ((BucketReplicationConfigRuleDeleteMarkerReplication.fromMap((map['deleteMarkerReplication']! as Map).cast<String, dynamic>())).input()).input(),
+      destination: (BucketReplicationConfigRuleDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
+      existingObjectReplication: map['existingObjectReplication'] == null ? null : ((BucketReplicationConfigRuleExistingObjectReplication.fromMap((map['existingObjectReplication']! as Map).cast<String, dynamic>())).input()).input(),
+      filter: map['filter'] == null ? null : ((BucketReplicationConfigRuleFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
+      priority: map['priority'] == null ? null : ((map['priority'] as int).input()).input(),
+      sourceSelectionCriteria: map['sourceSelectionCriteria'] == null ? null : ((BucketReplicationConfigRuleSourceSelectionCriteria.fromMap((map['sourceSelectionCriteria']! as Map).cast<String, dynamic>())).input()).input(),
       status: (map['status'] as String).input(),
     );
   }

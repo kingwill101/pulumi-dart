@@ -22,7 +22,7 @@ class ServerlessUpstreamSettings {
 
   factory ServerlessUpstreamSettings.fromMap(Map<String, dynamic> map) {
     return ServerlessUpstreamSettings(
-      templates: map['templates'] == null ? null : (pulumi.Input.decodeList<UpstreamTemplate>(map['templates'], (value) => UpstreamTemplate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      templates: map['templates'] == null ? null : (pulumi.Input.decodeList<UpstreamTemplate>(map['templates']!, (value) => UpstreamTemplate.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

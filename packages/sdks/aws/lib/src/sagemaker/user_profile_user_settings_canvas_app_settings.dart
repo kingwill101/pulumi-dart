@@ -62,14 +62,14 @@ class UserProfileUserSettingsCanvasAppSettings {
 
   factory UserProfileUserSettingsCanvasAppSettings.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsCanvasAppSettings(
-      directDeploySettings: map['directDeploySettings'] == null ? null : (UserProfileUserSettingsCanvasAppSettingsDirectDeploySettings.fromMap((map['directDeploySettings'] as Map).cast<String, dynamic>())).input(),
-      emrServerlessSettings: map['emrServerlessSettings'] == null ? null : (UserProfileUserSettingsCanvasAppSettingsEmrServerlessSettings.fromMap((map['emrServerlessSettings'] as Map).cast<String, dynamic>())).input(),
-      generativeAiSettings: map['generativeAiSettings'] == null ? null : (UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings.fromMap((map['generativeAiSettings'] as Map).cast<String, dynamic>())).input(),
-      identityProviderOauthSettings: map['identityProviderOauthSettings'] == null ? null : (pulumi.Input.decodeList<UserProfileUserSettingsCanvasAppSettingsIdentityProviderOauthSetting>(map['identityProviderOauthSettings'], (value) => UserProfileUserSettingsCanvasAppSettingsIdentityProviderOauthSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kendraSettings: map['kendraSettings'] == null ? null : (UserProfileUserSettingsCanvasAppSettingsKendraSettings.fromMap((map['kendraSettings'] as Map).cast<String, dynamic>())).input(),
-      modelRegisterSettings: map['modelRegisterSettings'] == null ? null : (UserProfileUserSettingsCanvasAppSettingsModelRegisterSettings.fromMap((map['modelRegisterSettings'] as Map).cast<String, dynamic>())).input(),
-      timeSeriesForecastingSettings: map['timeSeriesForecastingSettings'] == null ? null : (UserProfileUserSettingsCanvasAppSettingsTimeSeriesForecastingSettings.fromMap((map['timeSeriesForecastingSettings'] as Map).cast<String, dynamic>())).input(),
-      workspaceSettings: map['workspaceSettings'] == null ? null : (UserProfileUserSettingsCanvasAppSettingsWorkspaceSettings.fromMap((map['workspaceSettings'] as Map).cast<String, dynamic>())).input(),
+      directDeploySettings: map['directDeploySettings'] == null ? null : ((UserProfileUserSettingsCanvasAppSettingsDirectDeploySettings.fromMap((map['directDeploySettings']! as Map).cast<String, dynamic>())).input()).input(),
+      emrServerlessSettings: map['emrServerlessSettings'] == null ? null : ((UserProfileUserSettingsCanvasAppSettingsEmrServerlessSettings.fromMap((map['emrServerlessSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      generativeAiSettings: map['generativeAiSettings'] == null ? null : ((UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings.fromMap((map['generativeAiSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      identityProviderOauthSettings: map['identityProviderOauthSettings'] == null ? null : ((pulumi.Input.decodeList<UserProfileUserSettingsCanvasAppSettingsIdentityProviderOauthSetting>(map['identityProviderOauthSettings']!, (value) => UserProfileUserSettingsCanvasAppSettingsIdentityProviderOauthSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      kendraSettings: map['kendraSettings'] == null ? null : ((UserProfileUserSettingsCanvasAppSettingsKendraSettings.fromMap((map['kendraSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      modelRegisterSettings: map['modelRegisterSettings'] == null ? null : ((UserProfileUserSettingsCanvasAppSettingsModelRegisterSettings.fromMap((map['modelRegisterSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      timeSeriesForecastingSettings: map['timeSeriesForecastingSettings'] == null ? null : ((UserProfileUserSettingsCanvasAppSettingsTimeSeriesForecastingSettings.fromMap((map['timeSeriesForecastingSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      workspaceSettings: map['workspaceSettings'] == null ? null : ((UserProfileUserSettingsCanvasAppSettingsWorkspaceSettings.fromMap((map['workspaceSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

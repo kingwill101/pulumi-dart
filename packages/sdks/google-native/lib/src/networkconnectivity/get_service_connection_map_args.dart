@@ -32,7 +32,7 @@ class GetServiceConnectionMapArgs {
   factory GetServiceConnectionMapArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceConnectionMapArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serviceConnectionMapId: (map['serviceConnectionMapId'] as String).input(),
     );
   }

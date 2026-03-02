@@ -91,21 +91,21 @@ class ZonalEndpointState {
 
   factory ZonalEndpointState.fromMap(Map<String, dynamic> map) {
     return ZonalEndpointState(
-      autoAddNewNodes: map['autoAddNewNodes'] == null ? null : (map['autoAddNewNodes'] as String).input(),
-      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix'] as String).input(),
-      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId'] as String).input(),
-      dbClusterNodesIds: map['dbClusterNodesIds'] == null ? null : ((map['dbClusterNodesIds'] as Map).cast<String, String>()).input(),
-      dbEndpointDescription: map['dbEndpointDescription'] == null ? null : (map['dbEndpointDescription'] as String).input(),
-      dbEndpointId: map['dbEndpointId'] == null ? null : (map['dbEndpointId'] as String).input(),
-      endpointConfig: map['endpointConfig'] == null ? null : ((map['endpointConfig'] as Map).cast<String, String>()).input(),
-      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
-      netType: map['netType'] == null ? null : (map['netType'] as String).input(),
-      nodes: map['nodes'] == null ? null : ((map['nodes'] as List).cast<String>()).input(),
-      nodesKeys: map['nodesKeys'] == null ? null : ((map['nodesKeys'] as List).cast<String>()).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      readWriteMode: map['readWriteMode'] == null ? null : (map['readWriteMode'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      autoAddNewNodes: map['autoAddNewNodes'] == null ? null : (map['autoAddNewNodes']! as String).input(),
+      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix']! as String).input(),
+      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId']! as String).input(),
+      dbClusterNodesIds: map['dbClusterNodesIds'] == null ? null : ((map['dbClusterNodesIds']! as Map).cast<String, String>()).input(),
+      dbEndpointDescription: map['dbEndpointDescription'] == null ? null : (map['dbEndpointDescription']! as String).input(),
+      dbEndpointId: map['dbEndpointId'] == null ? null : (map['dbEndpointId']! as String).input(),
+      endpointConfig: map['endpointConfig'] == null ? null : ((map['endpointConfig']! as Map).cast<String, String>()).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
+      netType: map['netType'] == null ? null : (map['netType']! as String).input(),
+      nodes: map['nodes'] == null ? null : ((map['nodes']! as List).cast<String>()).input(),
+      nodesKeys: map['nodesKeys'] == null ? null : ((map['nodesKeys']! as List).cast<String>()).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      readWriteMode: map['readWriteMode'] == null ? null : (map['readWriteMode']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

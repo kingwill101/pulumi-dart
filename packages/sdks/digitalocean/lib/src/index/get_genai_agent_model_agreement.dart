@@ -35,10 +35,10 @@ class GetGenaiAgentModelAgreement {
 
   factory GetGenaiAgentModelAgreement.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentModelAgreement(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

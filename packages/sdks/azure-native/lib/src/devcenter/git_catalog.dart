@@ -36,10 +36,10 @@ class GitCatalog {
 
   factory GitCatalog.fromMap(Map<String, dynamic> map) {
     return GitCatalog(
-      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      secretIdentifier: map['secretIdentifier'] == null ? null : (map['secretIdentifier'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      secretIdentifier: map['secretIdentifier'] == null ? null : (map['secretIdentifier']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

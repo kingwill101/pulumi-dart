@@ -26,8 +26,8 @@ class NodeIpAllocationPolicyBondPolicy {
 
   factory NodeIpAllocationPolicyBondPolicy.fromMap(Map<String, dynamic> map) {
     return NodeIpAllocationPolicyBondPolicy(
-      bondDefaultSubnet: map['bondDefaultSubnet'] == null ? null : (map['bondDefaultSubnet'] as String).input(),
-      bonds: map['bonds'] == null ? null : (pulumi.Input.decodeList<NodeIpAllocationPolicyBondPolicyBond>(map['bonds'], (value) => NodeIpAllocationPolicyBondPolicyBond.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bondDefaultSubnet: map['bondDefaultSubnet'] == null ? null : (map['bondDefaultSubnet']! as String).input(),
+      bonds: map['bonds'] == null ? null : (pulumi.Input.decodeList<NodeIpAllocationPolicyBondPolicyBond>(map['bonds']!, (value) => NodeIpAllocationPolicyBondPolicyBond.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

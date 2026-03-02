@@ -40,11 +40,11 @@ class GetVirtualNodeSpec {
 
   factory GetVirtualNodeSpec.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpec(
-      backendDefaults: (pulumi.Input.decodeList<GetVirtualNodeSpecBackendDefault>(map['backendDefaults'], (value) => GetVirtualNodeSpecBackendDefault.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      backends: (pulumi.Input.decodeList<GetVirtualNodeSpecBackend>(map['backends'], (value) => GetVirtualNodeSpecBackend.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      listeners: (pulumi.Input.decodeList<GetVirtualNodeSpecListener>(map['listeners'], (value) => GetVirtualNodeSpecListener.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      loggings: (pulumi.Input.decodeList<GetVirtualNodeSpecLogging>(map['loggings'], (value) => GetVirtualNodeSpecLogging.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceDiscoveries: (pulumi.Input.decodeList<GetVirtualNodeSpecServiceDiscovery>(map['serviceDiscoveries'], (value) => GetVirtualNodeSpecServiceDiscovery.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backendDefaults: (pulumi.Input.decodeList<GetVirtualNodeSpecBackendDefault>(map['backendDefaults']!, (value) => GetVirtualNodeSpecBackendDefault.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backends: (pulumi.Input.decodeList<GetVirtualNodeSpecBackend>(map['backends']!, (value) => GetVirtualNodeSpecBackend.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      listeners: (pulumi.Input.decodeList<GetVirtualNodeSpecListener>(map['listeners']!, (value) => GetVirtualNodeSpecListener.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loggings: (pulumi.Input.decodeList<GetVirtualNodeSpecLogging>(map['loggings']!, (value) => GetVirtualNodeSpecLogging.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceDiscoveries: (pulumi.Input.decodeList<GetVirtualNodeSpecServiceDiscovery>(map['serviceDiscoveries']!, (value) => GetVirtualNodeSpecServiceDiscovery.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

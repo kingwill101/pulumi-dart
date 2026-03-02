@@ -39,10 +39,10 @@ class GetAuthPolicyArgs {
 
   factory GetAuthPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthPolicyArgs(
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceIdentifier: (map['resourceIdentifier'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
     );
   }
 }

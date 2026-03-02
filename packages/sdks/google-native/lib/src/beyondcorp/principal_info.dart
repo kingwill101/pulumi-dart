@@ -22,7 +22,7 @@ class PrincipalInfo {
 
   factory PrincipalInfo.fromMap(Map<String, dynamic> map) {
     return PrincipalInfo(
-      serviceAccount: map['serviceAccount'] == null ? null : (ServiceAccount.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>())).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (ServiceAccount.fromMap((map['serviceAccount']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

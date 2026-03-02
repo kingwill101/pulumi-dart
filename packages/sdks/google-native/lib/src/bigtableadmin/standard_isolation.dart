@@ -22,7 +22,7 @@ class StandardIsolation {
 
   factory StandardIsolation.fromMap(Map<String, dynamic> map) {
     return StandardIsolation(
-      priority: map['priority'] == null ? null : (StandardIsolationPriority.fromValue(map['priority'] as String)).input(),
+      priority: map['priority'] == null ? null : (StandardIsolationPriority.fromValue(map['priority']! as String)).input(),
     );
   }
 }

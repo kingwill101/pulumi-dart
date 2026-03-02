@@ -21,7 +21,7 @@ class DefenderCspmAwsOfferingCiemDiscovery {
 
   factory DefenderCspmAwsOfferingCiemDiscovery.fromMap(Map<String, dynamic> map) {
     return DefenderCspmAwsOfferingCiemDiscovery(
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn'] as String).input(),
+      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn']! as String).input(),
     );
   }
 }

@@ -39,8 +39,8 @@ class RegistrationArgs {
 
   factory RegistrationArgs.fromMap(Map<String, dynamic> map) {
     return RegistrationArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      registrationName: map['registrationName'] == null ? null : (map['registrationName'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      registrationName: map['registrationName'] == null ? null : (map['registrationName']! as String).input(),
       registrationToken: (map['registrationToken'] as String).input(),
       resourceGroup: (map['resourceGroup'] as String).input(),
     );

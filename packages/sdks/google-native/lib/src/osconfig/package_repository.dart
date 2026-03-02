@@ -40,10 +40,10 @@ class PackageRepository {
 
   factory PackageRepository.fromMap(Map<String, dynamic> map) {
     return PackageRepository(
-      apt: map['apt'] == null ? null : (AptRepository.fromMap((map['apt'] as Map).cast<String, dynamic>())).input(),
-      goo: map['goo'] == null ? null : (GooRepository.fromMap((map['goo'] as Map).cast<String, dynamic>())).input(),
-      yum: map['yum'] == null ? null : (YumRepository.fromMap((map['yum'] as Map).cast<String, dynamic>())).input(),
-      zypper: map['zypper'] == null ? null : (ZypperRepository.fromMap((map['zypper'] as Map).cast<String, dynamic>())).input(),
+      apt: map['apt'] == null ? null : (AptRepository.fromMap((map['apt']! as Map).cast<String, dynamic>())).input(),
+      goo: map['goo'] == null ? null : (GooRepository.fromMap((map['goo']! as Map).cast<String, dynamic>())).input(),
+      yum: map['yum'] == null ? null : (YumRepository.fromMap((map['yum']! as Map).cast<String, dynamic>())).input(),
+      zypper: map['zypper'] == null ? null : (ZypperRepository.fromMap((map['zypper']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

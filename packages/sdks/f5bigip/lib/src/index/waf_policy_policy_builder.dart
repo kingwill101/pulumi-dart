@@ -20,7 +20,7 @@ class WafPolicyPolicyBuilder {
 
   factory WafPolicyPolicyBuilder.fromMap(Map<String, dynamic> map) {
     return WafPolicyPolicyBuilder(
-      learningMode: map['learningMode'] == null ? null : (map['learningMode'] as String).input(),
+      learningMode: map['learningMode'] == null ? null : (map['learningMode']! as String).input(),
     );
   }
 }

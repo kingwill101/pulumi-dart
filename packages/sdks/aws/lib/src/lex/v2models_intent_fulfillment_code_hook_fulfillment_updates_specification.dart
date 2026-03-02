@@ -38,9 +38,9 @@ class V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification {
   factory V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification(
       active: (map['active'] as bool).input(),
-      startResponse: map['startResponse'] == null ? null : (V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartResponse.fromMap((map['startResponse'] as Map).cast<String, dynamic>())).input(),
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as int).input(),
-      updateResponse: map['updateResponse'] == null ? null : (V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationUpdateResponse.fromMap((map['updateResponse'] as Map).cast<String, dynamic>())).input(),
+      startResponse: map['startResponse'] == null ? null : ((V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartResponse.fromMap((map['startResponse']! as Map).cast<String, dynamic>())).input()).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : ((map['timeoutInSeconds'] as int).input()).input(),
+      updateResponse: map['updateResponse'] == null ? null : ((V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationUpdateResponse.fromMap((map['updateResponse']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

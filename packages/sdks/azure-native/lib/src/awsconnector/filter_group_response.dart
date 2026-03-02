@@ -22,7 +22,7 @@ class FilterGroupResponse {
 
   factory FilterGroupResponse.fromMap(Map<String, dynamic> map) {
     return FilterGroupResponse(
-      webhookFilter: map['webhookFilter'] == null ? null : (WebhookFilterResponse.fromMap((map['webhookFilter'] as Map).cast<String, dynamic>())).input(),
+      webhookFilter: map['webhookFilter'] == null ? null : (WebhookFilterResponse.fromMap((map['webhookFilter']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

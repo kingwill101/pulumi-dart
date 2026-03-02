@@ -27,8 +27,8 @@ class ResourceForestSettingsResponse {
 
   factory ResourceForestSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceForestSettingsResponse(
-      resourceForest: map['resourceForest'] == null ? null : (map['resourceForest'] as String).input(),
-      settings: map['settings'] == null ? null : (pulumi.Input.decodeList<ForestTrustResponse>(map['settings'], (value) => ForestTrustResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceForest: map['resourceForest'] == null ? null : (map['resourceForest']! as String).input(),
+      settings: map['settings'] == null ? null : (pulumi.Input.decodeList<ForestTrustResponse>(map['settings']!, (value) => ForestTrustResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

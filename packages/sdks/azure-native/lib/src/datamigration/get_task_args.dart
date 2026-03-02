@@ -44,7 +44,7 @@ class GetTaskArgs {
 
   factory GetTaskArgs.fromMap(Map<String, dynamic> map) {
     return GetTaskArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       groupName: (map['groupName'] as String).input(),
       projectName: (map['projectName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),

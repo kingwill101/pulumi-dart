@@ -44,11 +44,11 @@ class GetCloudFormationTypeArgs {
 
   factory GetCloudFormationTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetCloudFormationTypeArgs(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      typeName: map['typeName'] == null ? null : (map['typeName'] as String).input(),
-      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      typeName: map['typeName'] == null ? null : ((map['typeName'] as String).input()).input(),
+      versionId: map['versionId'] == null ? null : ((map['versionId'] as String).input()).input(),
     );
   }
 }

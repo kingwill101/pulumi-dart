@@ -45,11 +45,11 @@ class AndroidTest {
 
   factory AndroidTest.fromMap(Map<String, dynamic> map) {
     return AndroidTest(
-      androidAppInfo: map['androidAppInfo'] == null ? null : (AndroidAppInfo.fromMap((map['androidAppInfo'] as Map).cast<String, dynamic>())).input(),
-      androidInstrumentationTest: map['androidInstrumentationTest'] == null ? null : (AndroidInstrumentationTest.fromMap((map['androidInstrumentationTest'] as Map).cast<String, dynamic>())).input(),
-      androidRoboTest: map['androidRoboTest'] == null ? null : (AndroidRoboTest.fromMap((map['androidRoboTest'] as Map).cast<String, dynamic>())).input(),
-      androidTestLoop: map['androidTestLoop'] == null ? null : ((map['androidTestLoop'] as Map).cast<String, dynamic>()).input(),
-      testTimeout: map['testTimeout'] == null ? null : (Duration.fromMap((map['testTimeout'] as Map).cast<String, dynamic>())).input(),
+      androidAppInfo: map['androidAppInfo'] == null ? null : (AndroidAppInfo.fromMap((map['androidAppInfo']! as Map).cast<String, dynamic>())).input(),
+      androidInstrumentationTest: map['androidInstrumentationTest'] == null ? null : (AndroidInstrumentationTest.fromMap((map['androidInstrumentationTest']! as Map).cast<String, dynamic>())).input(),
+      androidRoboTest: map['androidRoboTest'] == null ? null : (AndroidRoboTest.fromMap((map['androidRoboTest']! as Map).cast<String, dynamic>())).input(),
+      androidTestLoop: map['androidTestLoop'] == null ? null : ((map['androidTestLoop']! as Map).cast<String, dynamic>()).input(),
+      testTimeout: map['testTimeout'] == null ? null : (Duration.fromMap((map['testTimeout']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

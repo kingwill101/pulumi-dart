@@ -27,8 +27,8 @@ class K8sSlbAttachmentState {
 
   factory K8sSlbAttachmentState.fromMap(Map<String, dynamic> map) {
     return K8sSlbAttachmentState(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      slbConfigs: map['slbConfigs'] == null ? null : (pulumi.Input.decodeList<K8sSlbAttachmentSlbConfig>(map['slbConfigs'], (value) => K8sSlbAttachmentSlbConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      slbConfigs: map['slbConfigs'] == null ? null : (pulumi.Input.decodeList<K8sSlbAttachmentSlbConfig>(map['slbConfigs']!, (value) => K8sSlbAttachmentSlbConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class ServiceMeshMeshConfigKialiRamOauthConfig {
 
   factory ServiceMeshMeshConfigKialiRamOauthConfig.fromMap(Map<String, dynamic> map) {
     return ServiceMeshMeshConfigKialiRamOauthConfig(
-      redirectUris: map['redirectUris'] == null ? null : (map['redirectUris'] as String).input(),
+      redirectUris: map['redirectUris'] == null ? null : (map['redirectUris']! as String).input(),
     );
   }
 }

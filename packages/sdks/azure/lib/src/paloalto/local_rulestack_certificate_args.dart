@@ -51,12 +51,12 @@ class LocalRulestackCertificateArgs {
 
   factory LocalRulestackCertificateArgs.fromMap(Map<String, dynamic> map) {
     return LocalRulestackCertificateArgs(
-      auditComment: map['auditComment'] == null ? null : (map['auditComment'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      keyVaultCertificateId: map['keyVaultCertificateId'] == null ? null : (map['keyVaultCertificateId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      auditComment: map['auditComment'] == null ? null : (map['auditComment']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      keyVaultCertificateId: map['keyVaultCertificateId'] == null ? null : (map['keyVaultCertificateId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       rulestackId: (map['rulestackId'] as String).input(),
-      selfSigned: map['selfSigned'] == null ? null : (map['selfSigned'] as bool).input(),
+      selfSigned: map['selfSigned'] == null ? null : (map['selfSigned']! as bool).input(),
     );
   }
 }

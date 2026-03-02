@@ -134,22 +134,22 @@ class DataTransferConfigState {
 
   factory DataTransferConfigState.fromMap(Map<String, dynamic> map) {
     return DataTransferConfigState(
-      dataRefreshWindowDays: map['dataRefreshWindowDays'] == null ? null : (map['dataRefreshWindowDays'] as int).input(),
-      dataSourceId: map['dataSourceId'] == null ? null : (map['dataSourceId'] as String).input(),
-      destinationDatasetId: map['destinationDatasetId'] == null ? null : (map['destinationDatasetId'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      emailPreferences: map['emailPreferences'] == null ? null : (DataTransferConfigEmailPreferences.fromMap((map['emailPreferences'] as Map).cast<String, dynamic>())).input(),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (DataTransferConfigEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationPubsubTopic: map['notificationPubsubTopic'] == null ? null : (map['notificationPubsubTopic'] as String).input(),
-      params: map['params'] == null ? null : ((map['params'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
-      scheduleOptions: map['scheduleOptions'] == null ? null : (DataTransferConfigScheduleOptions.fromMap((map['scheduleOptions'] as Map).cast<String, dynamic>())).input(),
-      sensitiveParams: map['sensitiveParams'] == null ? null : (DataTransferConfigSensitiveParams.fromMap((map['sensitiveParams'] as Map).cast<String, dynamic>())).input(),
-      serviceAccountName: map['serviceAccountName'] == null ? null : (map['serviceAccountName'] as String).input(),
+      dataRefreshWindowDays: map['dataRefreshWindowDays'] == null ? null : (map['dataRefreshWindowDays']! as int).input(),
+      dataSourceId: map['dataSourceId'] == null ? null : (map['dataSourceId']! as String).input(),
+      destinationDatasetId: map['destinationDatasetId'] == null ? null : (map['destinationDatasetId']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      emailPreferences: map['emailPreferences'] == null ? null : (DataTransferConfigEmailPreferences.fromMap((map['emailPreferences']! as Map).cast<String, dynamic>())).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (DataTransferConfigEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notificationPubsubTopic: map['notificationPubsubTopic'] == null ? null : (map['notificationPubsubTopic']! as String).input(),
+      params: map['params'] == null ? null : ((map['params']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule']! as String).input(),
+      scheduleOptions: map['scheduleOptions'] == null ? null : (DataTransferConfigScheduleOptions.fromMap((map['scheduleOptions']! as Map).cast<String, dynamic>())).input(),
+      sensitiveParams: map['sensitiveParams'] == null ? null : (DataTransferConfigSensitiveParams.fromMap((map['sensitiveParams']! as Map).cast<String, dynamic>())).input(),
+      serviceAccountName: map['serviceAccountName'] == null ? null : (map['serviceAccountName']! as String).input(),
     );
   }
 }

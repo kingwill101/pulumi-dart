@@ -34,9 +34,9 @@ class RepositoryResourceInfoResponse {
 
   factory RepositoryResourceInfoResponse.fromMap(Map<String, dynamic> map) {
     return RepositoryResourceInfoResponse(
-      azureDevOpsResourceInfo: map['azureDevOpsResourceInfo'] == null ? null : (AzureDevOpsResourceInfoResponse.fromMap((map['azureDevOpsResourceInfo'] as Map).cast<String, dynamic>())).input(),
-      gitHubResourceInfo: map['gitHubResourceInfo'] == null ? null : (GitHubResourceInfoResponse.fromMap((map['gitHubResourceInfo'] as Map).cast<String, dynamic>())).input(),
-      webhook: map['webhook'] == null ? null : (WebhookResponse.fromMap((map['webhook'] as Map).cast<String, dynamic>())).input(),
+      azureDevOpsResourceInfo: map['azureDevOpsResourceInfo'] == null ? null : (AzureDevOpsResourceInfoResponse.fromMap((map['azureDevOpsResourceInfo']! as Map).cast<String, dynamic>())).input(),
+      gitHubResourceInfo: map['gitHubResourceInfo'] == null ? null : (GitHubResourceInfoResponse.fromMap((map['gitHubResourceInfo']! as Map).cast<String, dynamic>())).input(),
+      webhook: map['webhook'] == null ? null : (WebhookResponse.fromMap((map['webhook']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

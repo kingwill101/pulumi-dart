@@ -42,7 +42,7 @@ class IndexArgs {
     return IndexArgs(
       ancestor: (IndexAncestor.fromValue(map['ancestor'] as String)).input(),
       kind: (map['kind'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       properties: (pulumi.Input.decodeList<GoogleDatastoreAdminV1IndexedProperty>(map['properties'], (value) => GoogleDatastoreAdminV1IndexedProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

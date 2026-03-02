@@ -58,14 +58,14 @@ class ApplicationScalingRuleState {
 
   factory ApplicationScalingRuleState.fromMap(Map<String, dynamic> map) {
     return ApplicationScalingRuleState(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      minReadyInstanceRatio: map['minReadyInstanceRatio'] == null ? null : (map['minReadyInstanceRatio'] as int).input(),
-      minReadyInstances: map['minReadyInstances'] == null ? null : (map['minReadyInstances'] as int).input(),
-      scalingRuleEnable: map['scalingRuleEnable'] == null ? null : (map['scalingRuleEnable'] as bool).input(),
-      scalingRuleMetric: map['scalingRuleMetric'] == null ? null : (ApplicationScalingRuleScalingRuleMetric.fromMap((map['scalingRuleMetric'] as Map).cast<String, dynamic>())).input(),
-      scalingRuleName: map['scalingRuleName'] == null ? null : (map['scalingRuleName'] as String).input(),
-      scalingRuleTimer: map['scalingRuleTimer'] == null ? null : (ApplicationScalingRuleScalingRuleTimer.fromMap((map['scalingRuleTimer'] as Map).cast<String, dynamic>())).input(),
-      scalingRuleType: map['scalingRuleType'] == null ? null : (map['scalingRuleType'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      minReadyInstanceRatio: map['minReadyInstanceRatio'] == null ? null : (map['minReadyInstanceRatio']! as int).input(),
+      minReadyInstances: map['minReadyInstances'] == null ? null : (map['minReadyInstances']! as int).input(),
+      scalingRuleEnable: map['scalingRuleEnable'] == null ? null : (map['scalingRuleEnable']! as bool).input(),
+      scalingRuleMetric: map['scalingRuleMetric'] == null ? null : (ApplicationScalingRuleScalingRuleMetric.fromMap((map['scalingRuleMetric']! as Map).cast<String, dynamic>())).input(),
+      scalingRuleName: map['scalingRuleName'] == null ? null : (map['scalingRuleName']! as String).input(),
+      scalingRuleTimer: map['scalingRuleTimer'] == null ? null : (ApplicationScalingRuleScalingRuleTimer.fromMap((map['scalingRuleTimer']! as Map).cast<String, dynamic>())).input(),
+      scalingRuleType: map['scalingRuleType'] == null ? null : (map['scalingRuleType']! as String).input(),
     );
   }
 }

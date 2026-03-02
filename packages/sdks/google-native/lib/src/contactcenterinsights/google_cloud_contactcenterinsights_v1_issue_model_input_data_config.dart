@@ -27,8 +27,8 @@ class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
 
   factory GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig(
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      medium: map['medium'] == null ? null : (GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium.fromValue(map['medium'] as String)).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      medium: map['medium'] == null ? null : (GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium.fromValue(map['medium']! as String)).input(),
     );
   }
 }

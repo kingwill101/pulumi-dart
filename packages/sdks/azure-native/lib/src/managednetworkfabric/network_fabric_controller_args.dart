@@ -81,18 +81,18 @@ class NetworkFabricControllerArgs {
 
   factory NetworkFabricControllerArgs.fromMap(Map<String, dynamic> map) {
     return NetworkFabricControllerArgs(
-      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
-      infrastructureExpressRouteConnections: map['infrastructureExpressRouteConnections'] == null ? null : (pulumi.Input.decodeList<ExpressRouteConnectionInformation>(map['infrastructureExpressRouteConnections'], (value) => ExpressRouteConnectionInformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipv4AddressSpace: map['ipv4AddressSpace'] == null ? null : (map['ipv4AddressSpace'] as String).input(),
-      ipv6AddressSpace: map['ipv6AddressSpace'] == null ? null : (map['ipv6AddressSpace'] as String).input(),
-      isWorkloadManagementNetworkEnabled: map['isWorkloadManagementNetworkEnabled'] == null ? null : (map['isWorkloadManagementNetworkEnabled'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : (ManagedResourceGroupConfiguration.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>())).input(),
-      networkFabricControllerName: map['networkFabricControllerName'] == null ? null : (map['networkFabricControllerName'] as String).input(),
-      nfcSku: map['nfcSku'] == null ? null : (map['nfcSku'] as String).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
+      infrastructureExpressRouteConnections: map['infrastructureExpressRouteConnections'] == null ? null : (pulumi.Input.decodeList<ExpressRouteConnectionInformation>(map['infrastructureExpressRouteConnections']!, (value) => ExpressRouteConnectionInformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipv4AddressSpace: map['ipv4AddressSpace'] == null ? null : (map['ipv4AddressSpace']! as String).input(),
+      ipv6AddressSpace: map['ipv6AddressSpace'] == null ? null : (map['ipv6AddressSpace']! as String).input(),
+      isWorkloadManagementNetworkEnabled: map['isWorkloadManagementNetworkEnabled'] == null ? null : (map['isWorkloadManagementNetworkEnabled']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : (ManagedResourceGroupConfiguration.fromMap((map['managedResourceGroupConfiguration']! as Map).cast<String, dynamic>())).input(),
+      networkFabricControllerName: map['networkFabricControllerName'] == null ? null : (map['networkFabricControllerName']! as String).input(),
+      nfcSku: map['nfcSku'] == null ? null : (map['nfcSku']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workloadExpressRouteConnections: map['workloadExpressRouteConnections'] == null ? null : (pulumi.Input.decodeList<ExpressRouteConnectionInformation>(map['workloadExpressRouteConnections'], (value) => ExpressRouteConnectionInformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      workloadExpressRouteConnections: map['workloadExpressRouteConnections'] == null ? null : (pulumi.Input.decodeList<ExpressRouteConnectionInformation>(map['workloadExpressRouteConnections']!, (value) => ExpressRouteConnectionInformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

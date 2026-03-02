@@ -42,7 +42,7 @@ class GetClustersResult {
     return GetClustersResult(
       clusterArns: (map['clusterArns'] as List).cast<String>(),
       clusterIdentifiers: (map['clusterIdentifiers'] as List).cast<String>(),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetClustersFilter>(map['filters'], (value) => GetClustersFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetClustersFilter>(map['filters']!, (value) => GetClustersFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
     );

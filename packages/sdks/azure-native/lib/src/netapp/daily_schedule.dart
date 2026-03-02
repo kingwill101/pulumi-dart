@@ -36,10 +36,10 @@ class DailySchedule {
 
   factory DailySchedule.fromMap(Map<String, dynamic> map) {
     return DailySchedule(
-      hour: map['hour'] == null ? null : (map['hour'] as int).input(),
-      minute: map['minute'] == null ? null : (map['minute'] as int).input(),
-      snapshotsToKeep: map['snapshotsToKeep'] == null ? null : (map['snapshotsToKeep'] as int).input(),
-      usedBytes: map['usedBytes'] == null ? null : (map['usedBytes'] as double).input(),
+      hour: map['hour'] == null ? null : (map['hour']! as int).input(),
+      minute: map['minute'] == null ? null : (map['minute']! as int).input(),
+      snapshotsToKeep: map['snapshotsToKeep'] == null ? null : (map['snapshotsToKeep']! as int).input(),
+      usedBytes: map['usedBytes'] == null ? null : (map['usedBytes']! as double).input(),
     );
   }
 }

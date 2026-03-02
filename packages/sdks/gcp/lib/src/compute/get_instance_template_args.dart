@@ -48,11 +48,11 @@ class GetInstanceTemplateArgs {
 
   factory GetInstanceTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceTemplateArgs(
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      selfLinkUnique: map['selfLinkUnique'] == null ? null : (map['selfLinkUnique'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      selfLinkUnique: map['selfLinkUnique'] == null ? null : (map['selfLinkUnique']! as String).input(),
     );
   }
 }

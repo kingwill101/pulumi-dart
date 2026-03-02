@@ -48,7 +48,7 @@ class GetScheduleArgs {
       projectName: (map['projectName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       scheduleName: (map['scheduleName'] as String).input(),
-      top: map['top'] == null ? null : (map['top'] as int).input(),
+      top: map['top'] == null ? null : (map['top']! as int).input(),
     );
   }
 }

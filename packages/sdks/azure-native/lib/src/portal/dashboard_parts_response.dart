@@ -28,7 +28,7 @@ class DashboardPartsResponse {
 
   factory DashboardPartsResponse.fromMap(Map<String, dynamic> map) {
     return DashboardPartsResponse(
-      metadata: map['metadata'] == null ? null : (DashboardPartMetadataResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      metadata: map['metadata'] == null ? null : (DashboardPartMetadataResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
       position: (DashboardPartsPositionResponse.fromMap((map['position'] as Map).cast<String, dynamic>())).input(),
     );
   }

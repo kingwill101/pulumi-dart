@@ -38,8 +38,8 @@ class FloorsettingFilterConfigSdpSettingsAdvancedConfig {
 
   factory FloorsettingFilterConfigSdpSettingsAdvancedConfig.fromMap(Map<String, dynamic> map) {
     return FloorsettingFilterConfigSdpSettingsAdvancedConfig(
-      deidentifyTemplate: map['deidentifyTemplate'] == null ? null : (map['deidentifyTemplate'] as String).input(),
-      inspectTemplate: map['inspectTemplate'] == null ? null : (map['inspectTemplate'] as String).input(),
+      deidentifyTemplate: map['deidentifyTemplate'] == null ? null : (map['deidentifyTemplate']! as String).input(),
+      inspectTemplate: map['inspectTemplate'] == null ? null : (map['inspectTemplate']! as String).input(),
     );
   }
 }

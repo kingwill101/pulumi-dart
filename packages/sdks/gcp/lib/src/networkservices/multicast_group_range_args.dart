@@ -101,16 +101,16 @@ class MulticastGroupRangeArgs {
 
   factory MulticastGroupRangeArgs.fromMap(Map<String, dynamic> map) {
     return MulticastGroupRangeArgs(
-      consumerAcceptLists: map['consumerAcceptLists'] == null ? null : ((map['consumerAcceptLists'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      distributionScope: map['distributionScope'] == null ? null : (map['distributionScope'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      consumerAcceptLists: map['consumerAcceptLists'] == null ? null : ((map['consumerAcceptLists']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      distributionScope: map['distributionScope'] == null ? null : (map['distributionScope']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      logConfig: map['logConfig'] == null ? null : (MulticastGroupRangeLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())).input(),
+      logConfig: map['logConfig'] == null ? null : (MulticastGroupRangeLogConfig.fromMap((map['logConfig']! as Map).cast<String, dynamic>())).input(),
       multicastDomain: (map['multicastDomain'] as String).input(),
       multicastGroupRangeId: (map['multicastGroupRangeId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requireExplicitAccept: map['requireExplicitAccept'] == null ? null : (map['requireExplicitAccept'] as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requireExplicitAccept: map['requireExplicitAccept'] == null ? null : (map['requireExplicitAccept']! as bool).input(),
       reservedInternalRange: (map['reservedInternalRange'] as String).input(),
     );
   }

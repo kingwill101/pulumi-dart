@@ -77,16 +77,16 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      autoScalingConfigurationArn: map['autoScalingConfigurationArn'] == null ? null : (map['autoScalingConfigurationArn'] as String).input(),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (ServiceEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      healthCheckConfiguration: map['healthCheckConfiguration'] == null ? null : (ServiceHealthCheckConfiguration.fromMap((map['healthCheckConfiguration'] as Map).cast<String, dynamic>())).input(),
-      instanceConfiguration: map['instanceConfiguration'] == null ? null : (ServiceInstanceConfiguration.fromMap((map['instanceConfiguration'] as Map).cast<String, dynamic>())).input(),
-      networkConfiguration: map['networkConfiguration'] == null ? null : (ServiceNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      observabilityConfiguration: map['observabilityConfiguration'] == null ? null : (ServiceObservabilityConfiguration.fromMap((map['observabilityConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      autoScalingConfigurationArn: map['autoScalingConfigurationArn'] == null ? null : ((map['autoScalingConfigurationArn'] as String).input()).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : ((ServiceEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      healthCheckConfiguration: map['healthCheckConfiguration'] == null ? null : ((ServiceHealthCheckConfiguration.fromMap((map['healthCheckConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      instanceConfiguration: map['instanceConfiguration'] == null ? null : ((ServiceInstanceConfiguration.fromMap((map['instanceConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      networkConfiguration: map['networkConfiguration'] == null ? null : ((ServiceNetworkConfiguration.fromMap((map['networkConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      observabilityConfiguration: map['observabilityConfiguration'] == null ? null : ((ServiceObservabilityConfiguration.fromMap((map['observabilityConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       serviceName: (map['serviceName'] as String).input(),
-      sourceConfiguration: (ServiceSourceConfiguration.fromMap((map['sourceConfiguration'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sourceConfiguration: (ServiceSourceConfiguration.fromMap((map['sourceConfiguration']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

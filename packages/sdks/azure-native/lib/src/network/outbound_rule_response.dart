@@ -72,14 +72,14 @@ class OutboundRuleResponse {
 
   factory OutboundRuleResponse.fromMap(Map<String, dynamic> map) {
     return OutboundRuleResponse(
-      allocatedOutboundPorts: map['allocatedOutboundPorts'] == null ? null : (map['allocatedOutboundPorts'] as int).input(),
+      allocatedOutboundPorts: map['allocatedOutboundPorts'] == null ? null : (map['allocatedOutboundPorts']! as int).input(),
       backendAddressPool: (SubResourceResponse.fromMap((map['backendAddressPool'] as Map).cast<String, dynamic>())).input(),
-      enableTcpReset: map['enableTcpReset'] == null ? null : (map['enableTcpReset'] as bool).input(),
+      enableTcpReset: map['enableTcpReset'] == null ? null : (map['enableTcpReset']! as bool).input(),
       etag: (map['etag'] as String).input(),
       frontendIPConfigurations: (pulumi.Input.decodeList<SubResourceResponse>(map['frontendIPConfigurations'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       protocol: (map['protocol'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       type: (map['type'] as String).input(),

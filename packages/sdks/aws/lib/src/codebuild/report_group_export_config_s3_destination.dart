@@ -42,10 +42,10 @@ class ReportGroupExportConfigS3Destination {
   factory ReportGroupExportConfigS3Destination.fromMap(Map<String, dynamic> map) {
     return ReportGroupExportConfigS3Destination(
       bucket: (map['bucket'] as String).input(),
-      encryptionDisabled: map['encryptionDisabled'] == null ? null : (map['encryptionDisabled'] as bool).input(),
+      encryptionDisabled: map['encryptionDisabled'] == null ? null : ((map['encryptionDisabled'] as bool).input()).input(),
       encryptionKey: (map['encryptionKey'] as String).input(),
-      packaging: map['packaging'] == null ? null : (map['packaging'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      packaging: map['packaging'] == null ? null : ((map['packaging'] as String).input()).input(),
+      path: map['path'] == null ? null : ((map['path'] as String).input()).input(),
     );
   }
 }

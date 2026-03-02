@@ -20,7 +20,7 @@ class AppSpecIngressRuleMatchAuthority {
 
   factory AppSpecIngressRuleMatchAuthority.fromMap(Map<String, dynamic> map) {
     return AppSpecIngressRuleMatchAuthority(
-      exact: map['exact'] == null ? null : (map['exact'] as String).input(),
+      exact: map['exact'] == null ? null : (map['exact']! as String).input(),
     );
   }
 }

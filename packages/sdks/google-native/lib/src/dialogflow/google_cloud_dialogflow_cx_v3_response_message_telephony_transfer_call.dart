@@ -21,7 +21,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall {
 
   factory GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall(
-      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber']! as String).input(),
     );
   }
 }

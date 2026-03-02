@@ -83,17 +83,17 @@ class JobTemplateTemplateContainer {
 
   factory JobTemplateTemplateContainer.fromMap(Map<String, dynamic> map) {
     return JobTemplateTemplateContainer(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      dependsOns: map['dependsOns'] == null ? null : ((map['dependsOns'] as List).cast<String>()).input(),
-      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<JobTemplateTemplateContainerEnv>(map['envs'], (value) => JobTemplateTemplateContainerEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
+      dependsOns: map['dependsOns'] == null ? null : ((map['dependsOns']! as List).cast<String>()).input(),
+      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<JobTemplateTemplateContainerEnv>(map['envs']!, (value) => JobTemplateTemplateContainerEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
       image: (map['image'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<JobTemplateTemplateContainerPort>(map['ports'], (value) => JobTemplateTemplateContainerPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resources: map['resources'] == null ? null : (JobTemplateTemplateContainerResources.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
-      startupProbe: map['startupProbe'] == null ? null : (JobTemplateTemplateContainerStartupProbe.fromMap((map['startupProbe'] as Map).cast<String, dynamic>())).input(),
-      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<JobTemplateTemplateContainerVolumeMount>(map['volumeMounts'], (value) => JobTemplateTemplateContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      workingDir: map['workingDir'] == null ? null : (map['workingDir'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<JobTemplateTemplateContainerPort>(map['ports']!, (value) => JobTemplateTemplateContainerPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resources: map['resources'] == null ? null : (JobTemplateTemplateContainerResources.fromMap((map['resources']! as Map).cast<String, dynamic>())).input(),
+      startupProbe: map['startupProbe'] == null ? null : (JobTemplateTemplateContainerStartupProbe.fromMap((map['startupProbe']! as Map).cast<String, dynamic>())).input(),
+      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<JobTemplateTemplateContainerVolumeMount>(map['volumeMounts']!, (value) => JobTemplateTemplateContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      workingDir: map['workingDir'] == null ? null : (map['workingDir']! as String).input(),
     );
   }
 }

@@ -44,8 +44,8 @@ class MoverTargetEndpointArgs {
 
   factory MoverTargetEndpointArgs.fromMap(Map<String, dynamic> map) {
     return MoverTargetEndpointArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       storageAccountId: (map['storageAccountId'] as String).input(),
       storageContainerName: (map['storageContainerName'] as String).input(),
       storageMoverId: (map['storageMoverId'] as String).input(),

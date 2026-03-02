@@ -36,8 +36,8 @@ class ProfileRewriteUriRulesServer {
   factory ProfileRewriteUriRulesServer.fromMap(Map<String, dynamic> map) {
     return ProfileRewriteUriRulesServer(
       host: (map['host'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
       scheme: (map['scheme'] as String).input(),
     );
   }

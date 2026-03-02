@@ -38,8 +38,8 @@ class KubernetesClusterWindowsProfile {
     return KubernetesClusterWindowsProfile(
       adminPassword: (map['adminPassword'] as String).input(),
       adminUsername: (map['adminUsername'] as String).input(),
-      gmsa: map['gmsa'] == null ? null : (KubernetesClusterWindowsProfileGmsa.fromMap((map['gmsa'] as Map).cast<String, dynamic>())).input(),
-      license: map['license'] == null ? null : (map['license'] as String).input(),
+      gmsa: map['gmsa'] == null ? null : (KubernetesClusterWindowsProfileGmsa.fromMap((map['gmsa']! as Map).cast<String, dynamic>())).input(),
+      license: map['license'] == null ? null : (map['license']! as String).input(),
     );
   }
 }

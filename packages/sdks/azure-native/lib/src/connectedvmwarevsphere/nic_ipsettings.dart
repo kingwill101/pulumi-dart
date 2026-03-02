@@ -41,11 +41,11 @@ class NicIPSettings {
 
   factory NicIPSettings.fromMap(Map<String, dynamic> map) {
     return NicIPSettings(
-      allocationMethod: map['allocationMethod'] == null ? null : (map['allocationMethod'] as String).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      gateway: map['gateway'] == null ? null : ((map['gateway'] as List).cast<String>()).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      subnetMask: map['subnetMask'] == null ? null : (map['subnetMask'] as String).input(),
+      allocationMethod: map['allocationMethod'] == null ? null : (map['allocationMethod']! as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      gateway: map['gateway'] == null ? null : ((map['gateway']! as List).cast<String>()).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      subnetMask: map['subnetMask'] == null ? null : (map['subnetMask']! as String).input(),
     );
   }
 }

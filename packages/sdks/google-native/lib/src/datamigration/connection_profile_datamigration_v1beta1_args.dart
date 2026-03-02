@@ -76,17 +76,17 @@ class ConnectionProfileDatamigrationV1beta1Args {
 
   factory ConnectionProfileDatamigrationV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileDatamigrationV1beta1Args(
-      cloudsql: map['cloudsql'] == null ? null : (CloudSqlConnectionProfileDatamigrationV1beta1.fromMap((map['cloudsql'] as Map).cast<String, dynamic>())).input(),
+      cloudsql: map['cloudsql'] == null ? null : (CloudSqlConnectionProfileDatamigrationV1beta1.fromMap((map['cloudsql']! as Map).cast<String, dynamic>())).input(),
       connectionProfileId: (map['connectionProfileId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mysql: map['mysql'] == null ? null : (MySqlConnectionProfileDatamigrationV1beta1.fromMap((map['mysql'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      provider: map['provider'] == null ? null : (ConnectionProfileProviderDatamigrationV1beta1.fromValue(map['provider'] as String)).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      state: map['state'] == null ? null : (ConnectionProfileStateDatamigrationV1beta1.fromValue(map['state'] as String)).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mysql: map['mysql'] == null ? null : (MySqlConnectionProfileDatamigrationV1beta1.fromMap((map['mysql']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      provider: map['provider'] == null ? null : (ConnectionProfileProviderDatamigrationV1beta1.fromValue(map['provider']! as String)).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      state: map['state'] == null ? null : (ConnectionProfileStateDatamigrationV1beta1.fromValue(map['state']! as String)).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class LbHttpsRedirectionPolicyState {
 
   factory LbHttpsRedirectionPolicyState.fromMap(Map<String, dynamic> map) {
     return LbHttpsRedirectionPolicyState(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      lbName: map['lbName'] == null ? null : (map['lbName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      lbName: map['lbName'] == null ? null : ((map['lbName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

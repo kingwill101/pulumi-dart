@@ -26,8 +26,8 @@ class ExistingBucket {
 
   factory ExistingBucket.fromMap(Map<String, dynamic> map) {
     return ExistingBucket(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

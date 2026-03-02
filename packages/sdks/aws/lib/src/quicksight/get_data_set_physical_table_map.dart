@@ -34,10 +34,10 @@ class GetDataSetPhysicalTableMap {
 
   factory GetDataSetPhysicalTableMap.fromMap(Map<String, dynamic> map) {
     return GetDataSetPhysicalTableMap(
-      customSqls: (pulumi.Input.decodeList<GetDataSetPhysicalTableMapCustomSql>(map['customSqls'], (value) => GetDataSetPhysicalTableMapCustomSql.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customSqls: (pulumi.Input.decodeList<GetDataSetPhysicalTableMapCustomSql>(map['customSqls']!, (value) => GetDataSetPhysicalTableMapCustomSql.fromMap((value as Map).cast<String, dynamic>()))).input(),
       physicalTableMapId: (map['physicalTableMapId'] as String).input(),
-      relationalTables: (pulumi.Input.decodeList<GetDataSetPhysicalTableMapRelationalTable>(map['relationalTables'], (value) => GetDataSetPhysicalTableMapRelationalTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      s3Sources: (pulumi.Input.decodeList<GetDataSetPhysicalTableMapS3Source>(map['s3Sources'], (value) => GetDataSetPhysicalTableMapS3Source.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      relationalTables: (pulumi.Input.decodeList<GetDataSetPhysicalTableMapRelationalTable>(map['relationalTables']!, (value) => GetDataSetPhysicalTableMapRelationalTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      s3Sources: (pulumi.Input.decodeList<GetDataSetPhysicalTableMapS3Source>(map['s3Sources']!, (value) => GetDataSetPhysicalTableMapS3Source.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

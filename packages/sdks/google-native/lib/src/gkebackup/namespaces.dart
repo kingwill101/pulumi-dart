@@ -21,7 +21,7 @@ class Namespaces {
 
   factory Namespaces.fromMap(Map<String, dynamic> map) {
     return Namespaces(
-      namespaces: map['namespaces'] == null ? null : ((map['namespaces'] as List).cast<String>()).input(),
+      namespaces: map['namespaces'] == null ? null : ((map['namespaces']! as List).cast<String>()).input(),
     );
   }
 }

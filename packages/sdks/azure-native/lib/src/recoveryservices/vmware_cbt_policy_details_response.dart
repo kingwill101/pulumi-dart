@@ -37,10 +37,10 @@ class VmwareCbtPolicyDetailsResponse {
 
   factory VmwareCbtPolicyDetailsResponse.fromMap(Map<String, dynamic> map) {
     return VmwareCbtPolicyDetailsResponse(
-      appConsistentFrequencyInMinutes: map['appConsistentFrequencyInMinutes'] == null ? null : (map['appConsistentFrequencyInMinutes'] as int).input(),
-      crashConsistentFrequencyInMinutes: map['crashConsistentFrequencyInMinutes'] == null ? null : (map['crashConsistentFrequencyInMinutes'] as int).input(),
+      appConsistentFrequencyInMinutes: map['appConsistentFrequencyInMinutes'] == null ? null : (map['appConsistentFrequencyInMinutes']! as int).input(),
+      crashConsistentFrequencyInMinutes: map['crashConsistentFrequencyInMinutes'] == null ? null : (map['crashConsistentFrequencyInMinutes']! as int).input(),
       instanceType: (map['instanceType'] as String).input(),
-      recoveryPointHistoryInMinutes: map['recoveryPointHistoryInMinutes'] == null ? null : (map['recoveryPointHistoryInMinutes'] as int).input(),
+      recoveryPointHistoryInMinutes: map['recoveryPointHistoryInMinutes'] == null ? null : (map['recoveryPointHistoryInMinutes']! as int).input(),
     );
   }
 }

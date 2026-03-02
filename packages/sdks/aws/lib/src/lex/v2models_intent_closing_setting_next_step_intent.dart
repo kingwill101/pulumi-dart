@@ -26,8 +26,8 @@ class V2modelsIntentClosingSettingNextStepIntent {
 
   factory V2modelsIntentClosingSettingNextStepIntent.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentClosingSettingNextStepIntent(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      slots: map['slots'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentClosingSettingNextStepIntentSlot>(map['slots'], (value) => V2modelsIntentClosingSettingNextStepIntentSlot.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      slots: map['slots'] == null ? null : ((pulumi.Input.decodeList<V2modelsIntentClosingSettingNextStepIntentSlot>(map['slots']!, (value) => V2modelsIntentClosingSettingNextStepIntentSlot.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

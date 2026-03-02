@@ -41,9 +41,9 @@ class SiteReferenceArgs {
   factory SiteReferenceArgs.fromMap(Map<String, dynamic> map) {
     return SiteReferenceArgs(
       contextName: (map['contextName'] as String).input(),
-      properties: map['properties'] == null ? null : (SiteReferenceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (SiteReferenceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      siteReferenceName: map['siteReferenceName'] == null ? null : (map['siteReferenceName'] as String).input(),
+      siteReferenceName: map['siteReferenceName'] == null ? null : (map['siteReferenceName']! as String).input(),
     );
   }
 }

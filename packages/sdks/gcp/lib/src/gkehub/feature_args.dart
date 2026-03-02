@@ -56,12 +56,12 @@ class FeatureArgs {
 
   factory FeatureArgs.fromMap(Map<String, dynamic> map) {
     return FeatureArgs(
-      fleetDefaultMemberConfig: map['fleetDefaultMemberConfig'] == null ? null : (FeatureFleetDefaultMemberConfig.fromMap((map['fleetDefaultMemberConfig'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      fleetDefaultMemberConfig: map['fleetDefaultMemberConfig'] == null ? null : (FeatureFleetDefaultMemberConfig.fromMap((map['fleetDefaultMemberConfig']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      spec: map['spec'] == null ? null : (FeatureSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      spec: map['spec'] == null ? null : (FeatureSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

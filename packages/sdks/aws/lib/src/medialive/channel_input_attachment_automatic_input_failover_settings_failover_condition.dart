@@ -21,7 +21,7 @@ class ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition {
 
   factory ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition(
-      failoverConditionSettings: map['failoverConditionSettings'] == null ? null : (ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettings.fromMap((map['failoverConditionSettings'] as Map).cast<String, dynamic>())).input(),
+      failoverConditionSettings: map['failoverConditionSettings'] == null ? null : ((ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettings.fromMap((map['failoverConditionSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

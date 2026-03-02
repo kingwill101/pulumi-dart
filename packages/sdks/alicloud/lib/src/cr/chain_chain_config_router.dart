@@ -27,8 +27,8 @@ class ChainChainConfigRouter {
 
   factory ChainChainConfigRouter.fromMap(Map<String, dynamic> map) {
     return ChainChainConfigRouter(
-      froms: map['froms'] == null ? null : (pulumi.Input.decodeList<ChainChainConfigRouterFrom>(map['froms'], (value) => ChainChainConfigRouterFrom.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tos: map['tos'] == null ? null : (pulumi.Input.decodeList<ChainChainConfigRouterTo>(map['tos'], (value) => ChainChainConfigRouterTo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      froms: map['froms'] == null ? null : (pulumi.Input.decodeList<ChainChainConfigRouterFrom>(map['froms']!, (value) => ChainChainConfigRouterFrom.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tos: map['tos'] == null ? null : (pulumi.Input.decodeList<ChainChainConfigRouterTo>(map['tos']!, (value) => ChainChainConfigRouterTo.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

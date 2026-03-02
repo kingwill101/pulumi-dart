@@ -38,10 +38,10 @@ class InferencePoolResponse {
 
   factory InferencePoolResponse.fromMap(Map<String, dynamic> map) {
     return InferencePoolResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<StringStringKeyValuePairResponse>(map['properties'], (value) => StringStringKeyValuePairResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<StringStringKeyValuePairResponse>(map['properties']!, (value) => StringStringKeyValuePairResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      scaleUnitConfiguration: map['scaleUnitConfiguration'] == null ? null : (ScaleUnitConfigurationResponse.fromMap((map['scaleUnitConfiguration'] as Map).cast<String, dynamic>())).input(),
+      scaleUnitConfiguration: map['scaleUnitConfiguration'] == null ? null : (ScaleUnitConfigurationResponse.fromMap((map['scaleUnitConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

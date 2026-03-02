@@ -27,8 +27,8 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage {
 
   factory ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage.fromMap(Map<String, dynamic> map) {
     return ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage(
-      locale: map['locale'] == null ? null : (map['locale'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      locale: map['locale'] == null ? null : (map['locale']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

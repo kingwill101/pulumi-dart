@@ -40,9 +40,9 @@ class DomainMappingArgs {
   factory DomainMappingArgs.fromMap(Map<String, dynamic> map) {
     return DomainMappingArgs(
       appId: (map['appId'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      overrideStrategy: map['overrideStrategy'] == null ? null : (map['overrideStrategy'] as String).input(),
-      sslSettings: map['sslSettings'] == null ? null : (SslSettings.fromMap((map['sslSettings'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      overrideStrategy: map['overrideStrategy'] == null ? null : (map['overrideStrategy']! as String).input(),
+      sslSettings: map['sslSettings'] == null ? null : (SslSettings.fromMap((map['sslSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

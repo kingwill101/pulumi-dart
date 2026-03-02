@@ -26,8 +26,8 @@ class PubSubIODetails {
 
   factory PubSubIODetails.fromMap(Map<String, dynamic> map) {
     return PubSubIODetails(
-      subscription: map['subscription'] == null ? null : (map['subscription'] as String).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      subscription: map['subscription'] == null ? null : (map['subscription']! as String).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

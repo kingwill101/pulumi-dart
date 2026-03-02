@@ -68,16 +68,16 @@ class FunctionState {
 
   factory FunctionState.fromMap(Map<String, dynamic> map) {
     return FunctionState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      keyValueStoreAssociations: map['keyValueStoreAssociations'] == null ? null : ((map['keyValueStoreAssociations'] as List).cast<String>()).input(),
-      liveStageEtag: map['liveStageEtag'] == null ? null : (map['liveStageEtag'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publish: map['publish'] == null ? null : (map['publish'] as bool).input(),
-      runtime: map['runtime'] == null ? null : (map['runtime'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      code: map['code'] == null ? null : ((map['code'] as String).input()).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
+      etag: map['etag'] == null ? null : ((map['etag'] as String).input()).input(),
+      keyValueStoreAssociations: map['keyValueStoreAssociations'] == null ? null : (((map['keyValueStoreAssociations'] as List).cast<String>()).input()).input(),
+      liveStageEtag: map['liveStageEtag'] == null ? null : ((map['liveStageEtag'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      publish: map['publish'] == null ? null : ((map['publish'] as bool).input()).input(),
+      runtime: map['runtime'] == null ? null : ((map['runtime'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

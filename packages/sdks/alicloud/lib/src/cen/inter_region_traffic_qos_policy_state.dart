@@ -46,12 +46,12 @@ class InterRegionTrafficQosPolicyState {
 
   factory InterRegionTrafficQosPolicyState.fromMap(Map<String, dynamic> map) {
     return InterRegionTrafficQosPolicyState(
-      bandwidthGuaranteeMode: map['bandwidthGuaranteeMode'] == null ? null : (map['bandwidthGuaranteeMode'] as String).input(),
-      interRegionTrafficQosPolicyDescription: map['interRegionTrafficQosPolicyDescription'] == null ? null : (map['interRegionTrafficQosPolicyDescription'] as String).input(),
-      interRegionTrafficQosPolicyName: map['interRegionTrafficQosPolicyName'] == null ? null : (map['interRegionTrafficQosPolicyName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : (map['transitRouterAttachmentId'] as String).input(),
-      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
+      bandwidthGuaranteeMode: map['bandwidthGuaranteeMode'] == null ? null : (map['bandwidthGuaranteeMode']! as String).input(),
+      interRegionTrafficQosPolicyDescription: map['interRegionTrafficQosPolicyDescription'] == null ? null : (map['interRegionTrafficQosPolicyDescription']! as String).input(),
+      interRegionTrafficQosPolicyName: map['interRegionTrafficQosPolicyName'] == null ? null : (map['interRegionTrafficQosPolicyName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : (map['transitRouterAttachmentId']! as String).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId']! as String).input(),
     );
   }
 }

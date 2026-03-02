@@ -26,7 +26,7 @@ class ClusterAddonsConfigIstioConfig {
 
   factory ClusterAddonsConfigIstioConfig.fromMap(Map<String, dynamic> map) {
     return ClusterAddonsConfigIstioConfig(
-      auth: map['auth'] == null ? null : (map['auth'] as String).input(),
+      auth: map['auth'] == null ? null : (map['auth']! as String).input(),
       disabled: (map['disabled'] as bool).input(),
     );
   }

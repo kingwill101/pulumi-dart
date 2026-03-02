@@ -22,7 +22,7 @@ class StandardSqlTableType {
 
   factory StandardSqlTableType.fromMap(Map<String, dynamic> map) {
     return StandardSqlTableType(
-      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<StandardSqlField>(map['columns'], (value) => StandardSqlField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<StandardSqlField>(map['columns']!, (value) => StandardSqlField.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class GetMscSubSubscriptionsResult {
   factory GetMscSubSubscriptionsResult.fromMap(Map<String, dynamic> map) {
     return GetMscSubSubscriptionsResult(
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       subscriptions: pulumi.Input.decodeList<GetMscSubSubscriptionsSubscription>(map['subscriptions'], (value) => GetMscSubSubscriptionsSubscription.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

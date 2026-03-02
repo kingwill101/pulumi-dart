@@ -63,12 +63,12 @@ class BackupPolicyArgs {
 
   factory BackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BackupPolicyArgs(
-      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : (map['backupRetentionPeriod'] as int).input(),
+      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : (map['backupRetentionPeriod']! as int).input(),
       dbInstanceId: (map['dbInstanceId'] as String).input(),
-      enableRecoveryPoint: map['enableRecoveryPoint'] == null ? null : (map['enableRecoveryPoint'] as bool).input(),
+      enableRecoveryPoint: map['enableRecoveryPoint'] == null ? null : (map['enableRecoveryPoint']! as bool).input(),
       preferredBackupPeriod: (map['preferredBackupPeriod'] as String).input(),
       preferredBackupTime: (map['preferredBackupTime'] as String).input(),
-      recoveryPointPeriod: map['recoveryPointPeriod'] == null ? null : (map['recoveryPointPeriod'] as String).input(),
+      recoveryPointPeriod: map['recoveryPointPeriod'] == null ? null : (map['recoveryPointPeriod']! as String).input(),
     );
   }
 }

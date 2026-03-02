@@ -31,9 +31,9 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
 
   factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolChoice.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolChoice(
-      any: map['any'] == null ? null : ((map['any'] as Map).cast<String, dynamic>()).input(),
-      auto: map['auto'] == null ? null : ((map['auto'] as Map).cast<String, dynamic>()).input(),
-      tool: map['tool'] == null ? null : (AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolChoiceTool.fromMap((map['tool'] as Map).cast<String, dynamic>())).input(),
+      any: map['any'] == null ? null : (((map['any'] as Map).cast<String, dynamic>()).input()).input(),
+      auto: map['auto'] == null ? null : (((map['auto'] as Map).cast<String, dynamic>()).input()).input(),
+      tool: map['tool'] == null ? null : ((AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolChoiceTool.fromMap((map['tool']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

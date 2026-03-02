@@ -74,7 +74,7 @@ class GetKeyPairResult {
     return GetKeyPairResult(
       arn: map['arn'] as String,
       createTime: map['createTime'] as String,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetKeyPairFilter>(map['filters'], (value) => GetKeyPairFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetKeyPairFilter>(map['filters']!, (value) => GetKeyPairFilter.fromMap((value as Map).cast<String, dynamic>())),
       fingerprint: map['fingerprint'] as String,
       id: map['id'] as String,
       includePublicKey: map['includePublicKey'] == null ? null : map['includePublicKey'] as bool,

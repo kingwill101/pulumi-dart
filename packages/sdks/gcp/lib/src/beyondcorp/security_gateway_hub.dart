@@ -27,7 +27,7 @@ class SecurityGatewayHub {
 
   factory SecurityGatewayHub.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayHub(
-      internetGateway: map['internetGateway'] == null ? null : (SecurityGatewayHubInternetGateway.fromMap((map['internetGateway'] as Map).cast<String, dynamic>())).input(),
+      internetGateway: map['internetGateway'] == null ? null : (SecurityGatewayHubInternetGateway.fromMap((map['internetGateway']! as Map).cast<String, dynamic>())).input(),
       region: (map['region'] as String).input(),
     );
   }

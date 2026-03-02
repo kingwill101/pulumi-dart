@@ -39,10 +39,10 @@ class ClusterV2Manager {
 
   factory ClusterV2Manager.fromMap(Map<String, dynamic> map) {
     return ClusterV2Manager(
-      directoryService: map['directoryService'] == null ? null : (ClusterV2ManagerDirectoryService.fromMap((map['directoryService'] as Map).cast<String, dynamic>())).input(),
-      dns: map['dns'] == null ? null : (ClusterV2ManagerDns.fromMap((map['dns'] as Map).cast<String, dynamic>())).input(),
-      managerNode: map['managerNode'] == null ? null : (ClusterV2ManagerManagerNode.fromMap((map['managerNode'] as Map).cast<String, dynamic>())).input(),
-      scheduler: map['scheduler'] == null ? null : (ClusterV2ManagerScheduler.fromMap((map['scheduler'] as Map).cast<String, dynamic>())).input(),
+      directoryService: map['directoryService'] == null ? null : (ClusterV2ManagerDirectoryService.fromMap((map['directoryService']! as Map).cast<String, dynamic>())).input(),
+      dns: map['dns'] == null ? null : (ClusterV2ManagerDns.fromMap((map['dns']! as Map).cast<String, dynamic>())).input(),
+      managerNode: map['managerNode'] == null ? null : (ClusterV2ManagerManagerNode.fromMap((map['managerNode']! as Map).cast<String, dynamic>())).input(),
+      scheduler: map['scheduler'] == null ? null : (ClusterV2ManagerScheduler.fromMap((map['scheduler']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

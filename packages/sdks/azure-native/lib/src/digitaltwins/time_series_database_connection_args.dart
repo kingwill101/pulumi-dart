@@ -40,10 +40,10 @@ class TimeSeriesDatabaseConnectionArgs {
 
   factory TimeSeriesDatabaseConnectionArgs.fromMap(Map<String, dynamic> map) {
     return TimeSeriesDatabaseConnectionArgs(
-      properties: map['properties'] == null ? null : (AzureDataExplorerConnectionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (AzureDataExplorerConnectionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
-      timeSeriesDatabaseConnectionName: map['timeSeriesDatabaseConnectionName'] == null ? null : (map['timeSeriesDatabaseConnectionName'] as String).input(),
+      timeSeriesDatabaseConnectionName: map['timeSeriesDatabaseConnectionName'] == null ? null : (map['timeSeriesDatabaseConnectionName']! as String).input(),
     );
   }
 }

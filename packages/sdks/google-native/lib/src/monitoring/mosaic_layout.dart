@@ -27,8 +27,8 @@ class MosaicLayout {
 
   factory MosaicLayout.fromMap(Map<String, dynamic> map) {
     return MosaicLayout(
-      columns: map['columns'] == null ? null : (map['columns'] as int).input(),
-      tiles: map['tiles'] == null ? null : (pulumi.Input.decodeList<Tile>(map['tiles'], (value) => Tile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      columns: map['columns'] == null ? null : (map['columns']! as int).input(),
+      tiles: map['tiles'] == null ? null : (pulumi.Input.decodeList<Tile>(map['tiles']!, (value) => Tile.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

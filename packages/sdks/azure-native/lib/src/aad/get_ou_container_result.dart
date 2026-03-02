@@ -98,20 +98,20 @@ class GetOuContainerResult {
 
   factory GetOuContainerResult.fromMap(Map<String, dynamic> map) {
     return GetOuContainerResult(
-      accounts: map['accounts'] == null ? null : pulumi.Input.decodeList<ContainerAccountResponse>(map['accounts'], (value) => ContainerAccountResponse.fromMap((value as Map).cast<String, dynamic>())),
+      accounts: map['accounts'] == null ? null : pulumi.Input.decodeList<ContainerAccountResponse>(map['accounts']!, (value) => ContainerAccountResponse.fromMap((value as Map).cast<String, dynamic>())),
       azureApiVersion: map['azureApiVersion'] as String,
       containerId: map['containerId'] as String,
       deploymentId: map['deploymentId'] as String,
       distinguishedName: map['distinguishedName'] as String,
       domainName: map['domainName'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       serviceStatus: map['serviceStatus'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       tenantId: map['tenantId'] as String,
       type: map['type'] as String,
     );

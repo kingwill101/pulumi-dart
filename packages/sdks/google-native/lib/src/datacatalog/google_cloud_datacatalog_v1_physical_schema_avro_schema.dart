@@ -21,7 +21,7 @@ class GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema {
 
   factory GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema(
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
     );
   }
 }

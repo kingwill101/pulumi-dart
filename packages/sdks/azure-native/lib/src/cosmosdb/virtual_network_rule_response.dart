@@ -26,8 +26,8 @@ class VirtualNetworkRuleResponse {
 
   factory VirtualNetworkRuleResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkRuleResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      ignoreMissingVNetServiceEndpoint: map['ignoreMissingVNetServiceEndpoint'] == null ? null : (map['ignoreMissingVNetServiceEndpoint'] as bool).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      ignoreMissingVNetServiceEndpoint: map['ignoreMissingVNetServiceEndpoint'] == null ? null : (map['ignoreMissingVNetServiceEndpoint']! as bool).input(),
     );
   }
 }

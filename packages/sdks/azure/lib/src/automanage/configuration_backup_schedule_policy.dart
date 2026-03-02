@@ -35,10 +35,10 @@ class ConfigurationBackupSchedulePolicy {
 
   factory ConfigurationBackupSchedulePolicy.fromMap(Map<String, dynamic> map) {
     return ConfigurationBackupSchedulePolicy(
-      schedulePolicyType: map['schedulePolicyType'] == null ? null : (map['schedulePolicyType'] as String).input(),
-      scheduleRunDays: map['scheduleRunDays'] == null ? null : ((map['scheduleRunDays'] as List).cast<String>()).input(),
-      scheduleRunFrequency: map['scheduleRunFrequency'] == null ? null : (map['scheduleRunFrequency'] as String).input(),
-      scheduleRunTimes: map['scheduleRunTimes'] == null ? null : ((map['scheduleRunTimes'] as List).cast<String>()).input(),
+      schedulePolicyType: map['schedulePolicyType'] == null ? null : (map['schedulePolicyType']! as String).input(),
+      scheduleRunDays: map['scheduleRunDays'] == null ? null : ((map['scheduleRunDays']! as List).cast<String>()).input(),
+      scheduleRunFrequency: map['scheduleRunFrequency'] == null ? null : (map['scheduleRunFrequency']! as String).input(),
+      scheduleRunTimes: map['scheduleRunTimes'] == null ? null : ((map['scheduleRunTimes']! as List).cast<String>()).input(),
     );
   }
 }

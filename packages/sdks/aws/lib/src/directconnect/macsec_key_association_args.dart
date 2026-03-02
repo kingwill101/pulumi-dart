@@ -46,11 +46,11 @@ class MacsecKeyAssociationArgs {
 
   factory MacsecKeyAssociationArgs.fromMap(Map<String, dynamic> map) {
     return MacsecKeyAssociationArgs(
-      cak: map['cak'] == null ? null : (map['cak'] as String).input(),
-      ckn: map['ckn'] == null ? null : (map['ckn'] as String).input(),
+      cak: map['cak'] == null ? null : ((map['cak'] as String).input()).input(),
+      ckn: map['ckn'] == null ? null : ((map['ckn'] as String).input()).input(),
       connectionId: (map['connectionId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      secretArn: map['secretArn'] == null ? null : (map['secretArn'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      secretArn: map['secretArn'] == null ? null : ((map['secretArn'] as String).input()).input(),
     );
   }
 }

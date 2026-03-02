@@ -27,7 +27,7 @@ class WebChatChannelPropertiesResponse {
 
   factory WebChatChannelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return WebChatChannelPropertiesResponse(
-      sites: map['sites'] == null ? null : (pulumi.Input.decodeList<WebChatSiteResponse>(map['sites'], (value) => WebChatSiteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sites: map['sites'] == null ? null : (pulumi.Input.decodeList<WebChatSiteResponse>(map['sites']!, (value) => WebChatSiteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       webChatEmbedCode: (map['webChatEmbedCode'] as String).input(),
     );
   }

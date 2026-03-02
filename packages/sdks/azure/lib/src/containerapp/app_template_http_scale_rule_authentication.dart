@@ -26,7 +26,7 @@ class AppTemplateHttpScaleRuleAuthentication {
   factory AppTemplateHttpScaleRuleAuthentication.fromMap(Map<String, dynamic> map) {
     return AppTemplateHttpScaleRuleAuthentication(
       secretName: (map['secretName'] as String).input(),
-      triggerParameter: map['triggerParameter'] == null ? null : (map['triggerParameter'] as String).input(),
+      triggerParameter: map['triggerParameter'] == null ? null : (map['triggerParameter']! as String).input(),
     );
   }
 }

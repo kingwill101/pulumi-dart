@@ -46,10 +46,10 @@ class DevOpsConfigurationProperties {
 
   factory DevOpsConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return DevOpsConfigurationProperties(
-      authorization: map['authorization'] == null ? null : (Authorization.fromMap((map['authorization'] as Map).cast<String, dynamic>())).input(),
-      autoDiscovery: map['autoDiscovery'] == null ? null : (map['autoDiscovery'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
-      topLevelInventoryList: map['topLevelInventoryList'] == null ? null : ((map['topLevelInventoryList'] as List).cast<String>()).input(),
+      authorization: map['authorization'] == null ? null : (Authorization.fromMap((map['authorization']! as Map).cast<String, dynamic>())).input(),
+      autoDiscovery: map['autoDiscovery'] == null ? null : (map['autoDiscovery']! as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      topLevelInventoryList: map['topLevelInventoryList'] == null ? null : ((map['topLevelInventoryList']! as List).cast<String>()).input(),
     );
   }
 }

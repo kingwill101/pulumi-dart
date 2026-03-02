@@ -76,14 +76,14 @@ class TrainingPipelineArgs {
   factory TrainingPipelineArgs.fromMap(Map<String, dynamic> map) {
     return TrainingPipelineArgs(
       displayName: (map['displayName'] as String).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      inputDataConfig: map['inputDataConfig'] == null ? null : (GoogleCloudAiplatformV1InputDataConfig.fromMap((map['inputDataConfig'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      modelId: map['modelId'] == null ? null : (map['modelId'] as String).input(),
-      modelToUpload: map['modelToUpload'] == null ? null : (GoogleCloudAiplatformV1Model.fromMap((map['modelToUpload'] as Map).cast<String, dynamic>())).input(),
-      parentModel: map['parentModel'] == null ? null : (map['parentModel'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
+      inputDataConfig: map['inputDataConfig'] == null ? null : (GoogleCloudAiplatformV1InputDataConfig.fromMap((map['inputDataConfig']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      modelId: map['modelId'] == null ? null : (map['modelId']! as String).input(),
+      modelToUpload: map['modelToUpload'] == null ? null : (GoogleCloudAiplatformV1Model.fromMap((map['modelToUpload']! as Map).cast<String, dynamic>())).input(),
+      parentModel: map['parentModel'] == null ? null : (map['parentModel']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       trainingTaskDefinition: (map['trainingTaskDefinition'] as String).input(),
       trainingTaskInputs: (map['trainingTaskInputs']).input(),
     );

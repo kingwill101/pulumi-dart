@@ -33,8 +33,8 @@ class GetImagesArgs {
 
   factory GetImagesArgs.fromMap(Map<String, dynamic> map) {
     return GetImagesArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetImagesFilter>(map['filters'], (value) => GetImagesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetImagesSort>(map['sorts'], (value) => GetImagesSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetImagesFilter>(map['filters']!, (value) => GetImagesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetImagesSort>(map['sorts']!, (value) => GetImagesSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

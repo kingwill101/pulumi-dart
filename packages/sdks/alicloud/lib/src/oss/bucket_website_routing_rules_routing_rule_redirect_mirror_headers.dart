@@ -36,10 +36,10 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders {
 
   factory BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders(
-      passAll: map['passAll'] == null ? null : (map['passAll'] as bool).input(),
-      passes: map['passes'] == null ? null : ((map['passes'] as List).cast<String>()).input(),
-      removes: map['removes'] == null ? null : ((map['removes'] as List).cast<String>()).input(),
-      sets: map['sets'] == null ? null : (pulumi.Input.decodeList<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSet>(map['sets'], (value) => BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      passAll: map['passAll'] == null ? null : (map['passAll']! as bool).input(),
+      passes: map['passes'] == null ? null : ((map['passes']! as List).cast<String>()).input(),
+      removes: map['removes'] == null ? null : ((map['removes']! as List).cast<String>()).input(),
+      sets: map['sets'] == null ? null : (pulumi.Input.decodeList<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSet>(map['sets']!, (value) => BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

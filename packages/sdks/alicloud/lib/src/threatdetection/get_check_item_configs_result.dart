@@ -55,11 +55,11 @@ class GetCheckItemConfigsResult {
       configs: pulumi.Input.decodeList<GetCheckItemConfigsConfig>(map['configs'], (value) => GetCheckItemConfigsConfig.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      lang: map['lang'] == null ? null : map['lang'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      taskSources: map['taskSources'] == null ? null : (map['taskSources'] as List).cast<String>(),
+      lang: map['lang'] == null ? null : map['lang']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      taskSources: map['taskSources'] == null ? null : (map['taskSources']! as List).cast<String>(),
     );
   }
 }

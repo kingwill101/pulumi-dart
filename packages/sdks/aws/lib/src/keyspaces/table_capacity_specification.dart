@@ -30,9 +30,9 @@ class TableCapacitySpecification {
 
   factory TableCapacitySpecification.fromMap(Map<String, dynamic> map) {
     return TableCapacitySpecification(
-      readCapacityUnits: map['readCapacityUnits'] == null ? null : (map['readCapacityUnits'] as int).input(),
-      throughputMode: map['throughputMode'] == null ? null : (map['throughputMode'] as String).input(),
-      writeCapacityUnits: map['writeCapacityUnits'] == null ? null : (map['writeCapacityUnits'] as int).input(),
+      readCapacityUnits: map['readCapacityUnits'] == null ? null : ((map['readCapacityUnits'] as int).input()).input(),
+      throughputMode: map['throughputMode'] == null ? null : ((map['throughputMode'] as String).input()).input(),
+      writeCapacityUnits: map['writeCapacityUnits'] == null ? null : ((map['writeCapacityUnits'] as int).input()).input(),
     );
   }
 }

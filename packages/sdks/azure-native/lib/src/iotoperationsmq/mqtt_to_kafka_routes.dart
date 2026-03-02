@@ -51,8 +51,8 @@ class MqttToKafkaRoutes {
       kafkaTopic: (map['kafkaTopic'] as String).input(),
       mqttTopic: (map['mqttTopic'] as String).input(),
       name: (map['name'] as String).input(),
-      qos: map['qos'] == null ? null : (map['qos'] as int).input(),
-      sharedSubscription: map['sharedSubscription'] == null ? null : (KafkaSharedSubscriptionProperties.fromMap((map['sharedSubscription'] as Map).cast<String, dynamic>())).input(),
+      qos: map['qos'] == null ? null : (map['qos']! as int).input(),
+      sharedSubscription: map['sharedSubscription'] == null ? null : (KafkaSharedSubscriptionProperties.fromMap((map['sharedSubscription']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

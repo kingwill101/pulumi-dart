@@ -111,18 +111,18 @@ class DatasetAccessArgs {
 
   factory DatasetAccessArgs.fromMap(Map<String, dynamic> map) {
     return DatasetAccessArgs(
-      authorizedDataset: map['authorizedDataset'] == null ? null : (DatasetAccessAuthorizedDataset.fromMap((map['authorizedDataset'] as Map).cast<String, dynamic>())).input(),
-      condition: map['condition'] == null ? null : (DatasetAccessCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      authorizedDataset: map['authorizedDataset'] == null ? null : (DatasetAccessAuthorizedDataset.fromMap((map['authorizedDataset']! as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (DatasetAccessCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       datasetId: (map['datasetId'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      groupByEmail: map['groupByEmail'] == null ? null : (map['groupByEmail'] as String).input(),
-      iamMember: map['iamMember'] == null ? null : (map['iamMember'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      routine: map['routine'] == null ? null : (DatasetAccessRoutine.fromMap((map['routine'] as Map).cast<String, dynamic>())).input(),
-      specialGroup: map['specialGroup'] == null ? null : (map['specialGroup'] as String).input(),
-      userByEmail: map['userByEmail'] == null ? null : (map['userByEmail'] as String).input(),
-      view: map['view'] == null ? null : (DatasetAccessView.fromMap((map['view'] as Map).cast<String, dynamic>())).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      groupByEmail: map['groupByEmail'] == null ? null : (map['groupByEmail']! as String).input(),
+      iamMember: map['iamMember'] == null ? null : (map['iamMember']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      routine: map['routine'] == null ? null : (DatasetAccessRoutine.fromMap((map['routine']! as Map).cast<String, dynamic>())).input(),
+      specialGroup: map['specialGroup'] == null ? null : (map['specialGroup']! as String).input(),
+      userByEmail: map['userByEmail'] == null ? null : (map['userByEmail']! as String).input(),
+      view: map['view'] == null ? null : (DatasetAccessView.fromMap((map['view']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

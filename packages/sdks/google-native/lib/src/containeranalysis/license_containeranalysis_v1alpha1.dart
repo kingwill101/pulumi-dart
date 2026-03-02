@@ -26,8 +26,8 @@ class LicenseContaineranalysisV1alpha1 {
 
   factory LicenseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return LicenseContaineranalysisV1alpha1(
-      comments: map['comments'] == null ? null : (map['comments'] as String).input(),
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
+      comments: map['comments'] == null ? null : (map['comments']! as String).input(),
+      expression: map['expression'] == null ? null : (map['expression']! as String).input(),
     );
   }
 }

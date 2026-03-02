@@ -88,20 +88,20 @@ class NestServiceInstanceState {
 
   factory NestServiceInstanceState.fromMap(Map<String, dynamic> map) {
     return NestServiceInstanceState(
-      commodity: map['commodity'] == null ? null : (NestServiceInstanceCommodity.fromMap((map['commodity'] as Map).cast<String, dynamic>())).input(),
-      enableInstanceOps: map['enableInstanceOps'] == null ? null : (map['enableInstanceOps'] as bool).input(),
-      enableUserPrometheus: map['enableUserPrometheus'] == null ? null : (map['enableUserPrometheus'] as bool).input(),
-      operationMetadata: map['operationMetadata'] == null ? null : (NestServiceInstanceOperationMetadata.fromMap((map['operationMetadata'] as Map).cast<String, dynamic>())).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
-      serviceInstanceName: map['serviceInstanceName'] == null ? null : (map['serviceInstanceName'] as String).input(),
-      serviceVersion: map['serviceVersion'] == null ? null : (map['serviceVersion'] as String).input(),
-      specificationName: map['specificationName'] == null ? null : (map['specificationName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
+      commodity: map['commodity'] == null ? null : (NestServiceInstanceCommodity.fromMap((map['commodity']! as Map).cast<String, dynamic>())).input(),
+      enableInstanceOps: map['enableInstanceOps'] == null ? null : (map['enableInstanceOps']! as bool).input(),
+      enableUserPrometheus: map['enableUserPrometheus'] == null ? null : (map['enableUserPrometheus']! as bool).input(),
+      operationMetadata: map['operationMetadata'] == null ? null : (NestServiceInstanceOperationMetadata.fromMap((map['operationMetadata']! as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']! as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
+      serviceInstanceName: map['serviceInstanceName'] == null ? null : (map['serviceInstanceName']! as String).input(),
+      serviceVersion: map['serviceVersion'] == null ? null : (map['serviceVersion']! as String).input(),
+      specificationName: map['specificationName'] == null ? null : (map['specificationName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName']! as String).input(),
     );
   }
 }

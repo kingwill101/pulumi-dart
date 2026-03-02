@@ -22,7 +22,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig {
 
   factory BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig(
-      nodePoolConfig: map['nodePoolConfig'] == null ? null : (BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig.fromMap((map['nodePoolConfig'] as Map).cast<String, dynamic>())).input(),
+      nodePoolConfig: map['nodePoolConfig'] == null ? null : (BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig.fromMap((map['nodePoolConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

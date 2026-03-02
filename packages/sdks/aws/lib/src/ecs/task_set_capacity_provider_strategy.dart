@@ -30,7 +30,7 @@ class TaskSetCapacityProviderStrategy {
 
   factory TaskSetCapacityProviderStrategy.fromMap(Map<String, dynamic> map) {
     return TaskSetCapacityProviderStrategy(
-      base: map['base'] == null ? null : (map['base'] as int).input(),
+      base: map['base'] == null ? null : ((map['base'] as int).input()).input(),
       capacityProvider: (map['capacityProvider'] as String).input(),
       weight: (map['weight'] as int).input(),
     );

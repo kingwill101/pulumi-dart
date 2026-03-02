@@ -27,8 +27,8 @@ class InstanceClientConnectionConfig {
 
   factory InstanceClientConnectionConfig.fromMap(Map<String, dynamic> map) {
     return InstanceClientConnectionConfig(
-      requireConnectors: map['requireConnectors'] == null ? null : (map['requireConnectors'] as bool).input(),
-      sslConfig: map['sslConfig'] == null ? null : (InstanceClientConnectionConfigSslConfig.fromMap((map['sslConfig'] as Map).cast<String, dynamic>())).input(),
+      requireConnectors: map['requireConnectors'] == null ? null : (map['requireConnectors']! as bool).input(),
+      sslConfig: map['sslConfig'] == null ? null : (InstanceClientConnectionConfigSslConfig.fromMap((map['sslConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

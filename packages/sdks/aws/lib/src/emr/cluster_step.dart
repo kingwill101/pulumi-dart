@@ -32,7 +32,7 @@ class ClusterStep {
   factory ClusterStep.fromMap(Map<String, dynamic> map) {
     return ClusterStep(
       actionOnFailure: (map['actionOnFailure'] as String).input(),
-      hadoopJarStep: (ClusterStepHadoopJarStep.fromMap((map['hadoopJarStep'] as Map).cast<String, dynamic>())).input(),
+      hadoopJarStep: (ClusterStepHadoopJarStep.fromMap((map['hadoopJarStep']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
     );
   }

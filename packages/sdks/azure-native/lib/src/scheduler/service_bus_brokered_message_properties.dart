@@ -80,19 +80,19 @@ class ServiceBusBrokeredMessageProperties {
 
   factory ServiceBusBrokeredMessageProperties.fromMap(Map<String, dynamic> map) {
     return ServiceBusBrokeredMessageProperties(
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      correlationId: map['correlationId'] == null ? null : (map['correlationId'] as String).input(),
-      forcePersistence: map['forcePersistence'] == null ? null : (map['forcePersistence'] as bool).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      messageId: map['messageId'] == null ? null : (map['messageId'] as String).input(),
-      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey'] as String).input(),
-      replyTo: map['replyTo'] == null ? null : (map['replyTo'] as String).input(),
-      replyToSessionId: map['replyToSessionId'] == null ? null : (map['replyToSessionId'] as String).input(),
-      scheduledEnqueueTimeUtc: map['scheduledEnqueueTimeUtc'] == null ? null : (map['scheduledEnqueueTimeUtc'] as String).input(),
-      sessionId: map['sessionId'] == null ? null : (map['sessionId'] as String).input(),
-      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive'] as String).input(),
-      to: map['to'] == null ? null : (map['to'] as String).input(),
-      viaPartitionKey: map['viaPartitionKey'] == null ? null : (map['viaPartitionKey'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      correlationId: map['correlationId'] == null ? null : (map['correlationId']! as String).input(),
+      forcePersistence: map['forcePersistence'] == null ? null : (map['forcePersistence']! as bool).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      messageId: map['messageId'] == null ? null : (map['messageId']! as String).input(),
+      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey']! as String).input(),
+      replyTo: map['replyTo'] == null ? null : (map['replyTo']! as String).input(),
+      replyToSessionId: map['replyToSessionId'] == null ? null : (map['replyToSessionId']! as String).input(),
+      scheduledEnqueueTimeUtc: map['scheduledEnqueueTimeUtc'] == null ? null : (map['scheduledEnqueueTimeUtc']! as String).input(),
+      sessionId: map['sessionId'] == null ? null : (map['sessionId']! as String).input(),
+      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive']! as String).input(),
+      to: map['to'] == null ? null : (map['to']! as String).input(),
+      viaPartitionKey: map['viaPartitionKey'] == null ? null : (map['viaPartitionKey']! as String).input(),
     );
   }
 }

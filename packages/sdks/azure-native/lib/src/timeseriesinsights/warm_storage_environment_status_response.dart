@@ -31,9 +31,9 @@ class WarmStorageEnvironmentStatusResponse {
 
   factory WarmStorageEnvironmentStatusResponse.fromMap(Map<String, dynamic> map) {
     return WarmStorageEnvironmentStatusResponse(
-      currentCount: map['currentCount'] == null ? null : (map['currentCount'] as int).input(),
-      maxCount: map['maxCount'] == null ? null : (map['maxCount'] as int).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      currentCount: map['currentCount'] == null ? null : (map['currentCount']! as int).input(),
+      maxCount: map['maxCount'] == null ? null : (map['maxCount']! as int).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

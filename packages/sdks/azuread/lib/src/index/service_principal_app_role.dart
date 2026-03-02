@@ -45,12 +45,12 @@ class ServicePrincipalAppRole {
 
   factory ServicePrincipalAppRole.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalAppRole(
-      allowedMemberTypes: map['allowedMemberTypes'] == null ? null : ((map['allowedMemberTypes'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      allowedMemberTypes: map['allowedMemberTypes'] == null ? null : ((map['allowedMemberTypes']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

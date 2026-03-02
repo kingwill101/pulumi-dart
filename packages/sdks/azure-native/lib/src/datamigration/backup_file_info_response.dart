@@ -31,9 +31,9 @@ class BackupFileInfoResponse {
 
   factory BackupFileInfoResponse.fromMap(Map<String, dynamic> map) {
     return BackupFileInfoResponse(
-      familySequenceNumber: map['familySequenceNumber'] == null ? null : (map['familySequenceNumber'] as int).input(),
-      fileLocation: map['fileLocation'] == null ? null : (map['fileLocation'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      familySequenceNumber: map['familySequenceNumber'] == null ? null : (map['familySequenceNumber']! as int).input(),
+      fileLocation: map['fileLocation'] == null ? null : (map['fileLocation']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

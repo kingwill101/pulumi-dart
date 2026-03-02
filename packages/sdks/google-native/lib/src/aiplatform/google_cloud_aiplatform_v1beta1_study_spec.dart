@@ -82,17 +82,17 @@ class GoogleCloudAiplatformV1beta1StudySpec {
 
   factory GoogleCloudAiplatformV1beta1StudySpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1StudySpec(
-      algorithm: map['algorithm'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecAlgorithm.fromValue(map['algorithm'] as String)).input(),
-      convexAutomatedStoppingSpec: map['convexAutomatedStoppingSpec'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpec.fromMap((map['convexAutomatedStoppingSpec'] as Map).cast<String, dynamic>())).input(),
-      convexStopConfig: map['convexStopConfig'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecConvexStopConfig.fromMap((map['convexStopConfig'] as Map).cast<String, dynamic>())).input(),
-      decayCurveStoppingSpec: map['decayCurveStoppingSpec'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpec.fromMap((map['decayCurveStoppingSpec'] as Map).cast<String, dynamic>())).input(),
-      measurementSelectionType: map['measurementSelectionType'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionType.fromValue(map['measurementSelectionType'] as String)).input(),
-      medianAutomatedStoppingSpec: map['medianAutomatedStoppingSpec'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpec.fromMap((map['medianAutomatedStoppingSpec'] as Map).cast<String, dynamic>())).input(),
+      algorithm: map['algorithm'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecAlgorithm.fromValue(map['algorithm']! as String)).input(),
+      convexAutomatedStoppingSpec: map['convexAutomatedStoppingSpec'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpec.fromMap((map['convexAutomatedStoppingSpec']! as Map).cast<String, dynamic>())).input(),
+      convexStopConfig: map['convexStopConfig'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecConvexStopConfig.fromMap((map['convexStopConfig']! as Map).cast<String, dynamic>())).input(),
+      decayCurveStoppingSpec: map['decayCurveStoppingSpec'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpec.fromMap((map['decayCurveStoppingSpec']! as Map).cast<String, dynamic>())).input(),
+      measurementSelectionType: map['measurementSelectionType'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionType.fromValue(map['measurementSelectionType']! as String)).input(),
+      medianAutomatedStoppingSpec: map['medianAutomatedStoppingSpec'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpec.fromMap((map['medianAutomatedStoppingSpec']! as Map).cast<String, dynamic>())).input(),
       metrics: (pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1StudySpecMetricSpec>(map['metrics'], (value) => GoogleCloudAiplatformV1beta1StudySpecMetricSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      observationNoise: map['observationNoise'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecObservationNoise.fromValue(map['observationNoise'] as String)).input(),
+      observationNoise: map['observationNoise'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecObservationNoise.fromValue(map['observationNoise']! as String)).input(),
       parameters: (pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1StudySpecParameterSpec>(map['parameters'], (value) => GoogleCloudAiplatformV1beta1StudySpecParameterSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      studyStoppingConfig: map['studyStoppingConfig'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfig.fromMap((map['studyStoppingConfig'] as Map).cast<String, dynamic>())).input(),
-      transferLearningConfig: map['transferLearningConfig'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig.fromMap((map['transferLearningConfig'] as Map).cast<String, dynamic>())).input(),
+      studyStoppingConfig: map['studyStoppingConfig'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfig.fromMap((map['studyStoppingConfig']! as Map).cast<String, dynamic>())).input(),
+      transferLearningConfig: map['transferLearningConfig'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig.fromMap((map['transferLearningConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

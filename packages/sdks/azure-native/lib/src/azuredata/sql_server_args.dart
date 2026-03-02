@@ -59,14 +59,14 @@ class SqlServerArgs {
 
   factory SqlServerArgs.fromMap(Map<String, dynamic> map) {
     return SqlServerArgs(
-      cores: map['cores'] == null ? null : (map['cores'] as int).input(),
-      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
-      propertyBag: map['propertyBag'] == null ? null : (map['propertyBag'] as String).input(),
-      registrationID: map['registrationID'] == null ? null : (map['registrationID'] as String).input(),
+      cores: map['cores'] == null ? null : (map['cores']! as int).input(),
+      edition: map['edition'] == null ? null : (map['edition']! as String).input(),
+      propertyBag: map['propertyBag'] == null ? null : (map['propertyBag']! as String).input(),
+      registrationID: map['registrationID'] == null ? null : (map['registrationID']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sqlServerName: map['sqlServerName'] == null ? null : (map['sqlServerName'] as String).input(),
+      sqlServerName: map['sqlServerName'] == null ? null : (map['sqlServerName']! as String).input(),
       sqlServerRegistrationName: (map['sqlServerRegistrationName'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

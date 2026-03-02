@@ -42,11 +42,11 @@ class ScheduledQueryRecentlyFailedRunQueryInsightsResponse {
 
   factory ScheduledQueryRecentlyFailedRunQueryInsightsResponse.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryRecentlyFailedRunQueryInsightsResponse(
-      outputBytes: map['outputBytes'] == null ? null : (map['outputBytes'] as int).input(),
-      outputRows: map['outputRows'] == null ? null : (map['outputRows'] as int).input(),
-      querySpatialCoverages: map['querySpatialCoverages'] == null ? null : (pulumi.Input.decodeList<ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverage>(map['querySpatialCoverages'], (value) => ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      queryTableCount: map['queryTableCount'] == null ? null : (map['queryTableCount'] as int).input(),
-      queryTemporalRanges: map['queryTemporalRanges'] == null ? null : (pulumi.Input.decodeList<ScheduledQueryRecentlyFailedRunQueryInsightsResponseQueryTemporalRange>(map['queryTemporalRanges'], (value) => ScheduledQueryRecentlyFailedRunQueryInsightsResponseQueryTemporalRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      outputBytes: map['outputBytes'] == null ? null : ((map['outputBytes'] as int).input()).input(),
+      outputRows: map['outputRows'] == null ? null : ((map['outputRows'] as int).input()).input(),
+      querySpatialCoverages: map['querySpatialCoverages'] == null ? null : ((pulumi.Input.decodeList<ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverage>(map['querySpatialCoverages']!, (value) => ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverage.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      queryTableCount: map['queryTableCount'] == null ? null : ((map['queryTableCount'] as int).input()).input(),
+      queryTemporalRanges: map['queryTemporalRanges'] == null ? null : ((pulumi.Input.decodeList<ScheduledQueryRecentlyFailedRunQueryInsightsResponseQueryTemporalRange>(map['queryTemporalRanges']!, (value) => ScheduledQueryRecentlyFailedRunQueryInsightsResponseQueryTemporalRange.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

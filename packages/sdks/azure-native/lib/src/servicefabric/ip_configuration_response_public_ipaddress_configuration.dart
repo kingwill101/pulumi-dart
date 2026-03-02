@@ -32,9 +32,9 @@ class IpConfigurationResponsePublicIPAddressConfiguration {
 
   factory IpConfigurationResponsePublicIPAddressConfiguration.fromMap(Map<String, dynamic> map) {
     return IpConfigurationResponsePublicIPAddressConfiguration(
-      ipTags: map['ipTags'] == null ? null : (pulumi.Input.decodeList<IpTagResponse>(map['ipTags'], (value) => IpTagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipTags: map['ipTags'] == null ? null : (pulumi.Input.decodeList<IpTagResponse>(map['ipTags']!, (value) => IpTagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
-      publicIPAddressVersion: map['publicIPAddressVersion'] == null ? null : (map['publicIPAddressVersion'] as String).input(),
+      publicIPAddressVersion: map['publicIPAddressVersion'] == null ? null : (map['publicIPAddressVersion']! as String).input(),
     );
   }
 }

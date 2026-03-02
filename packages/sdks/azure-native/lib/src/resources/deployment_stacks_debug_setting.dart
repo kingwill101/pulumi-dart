@@ -21,7 +21,7 @@ class DeploymentStacksDebugSetting {
 
   factory DeploymentStacksDebugSetting.fromMap(Map<String, dynamic> map) {
     return DeploymentStacksDebugSetting(
-      detailLevel: map['detailLevel'] == null ? null : (map['detailLevel'] as String).input(),
+      detailLevel: map['detailLevel'] == null ? null : (map['detailLevel']! as String).input(),
     );
   }
 }

@@ -65,15 +65,15 @@ class MembershipArgs {
 
   factory MembershipArgs.fromMap(Map<String, dynamic> map) {
     return MembershipArgs(
-      authority: map['authority'] == null ? null : (Authority.fromMap((map['authority'] as Map).cast<String, dynamic>())).input(),
-      endpoint: map['endpoint'] == null ? null : (MembershipEndpoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>())).input(),
-      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      authority: map['authority'] == null ? null : (Authority.fromMap((map['authority']! as Map).cast<String, dynamic>())).input(),
+      endpoint: map['endpoint'] == null ? null : (MembershipEndpoint.fromMap((map['endpoint']! as Map).cast<String, dynamic>())).input(),
+      externalId: map['externalId'] == null ? null : (map['externalId']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       membershipId: (map['membershipId'] as String).input(),
-      monitoringConfig: map['monitoringConfig'] == null ? null : (MonitoringConfig.fromMap((map['monitoringConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      monitoringConfig: map['monitoringConfig'] == null ? null : (MonitoringConfig.fromMap((map['monitoringConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

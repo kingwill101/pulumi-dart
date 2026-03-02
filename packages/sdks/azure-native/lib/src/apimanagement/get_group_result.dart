@@ -57,9 +57,9 @@ class GetGroupResult {
     return GetGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
       builtIn: map['builtIn'] as bool,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       displayName: map['displayName'] as String,
-      externalId: map['externalId'] == null ? null : map['externalId'] as String,
+      externalId: map['externalId'] == null ? null : map['externalId']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       type: map['type'] as String,

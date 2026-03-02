@@ -71,17 +71,17 @@ class AvsEstimatedNodeResponse {
 
   factory AvsEstimatedNodeResponse.fromMap(Map<String, dynamic> map) {
     return AvsEstimatedNodeResponse(
-      cpuUtilization: map['cpuUtilization'] == null ? null : (map['cpuUtilization'] as double).input(),
-      fttRaidLevel: map['fttRaidLevel'] == null ? null : (map['fttRaidLevel'] as String).input(),
-      monthlyPrice: map['monthlyPrice'] == null ? null : (map['monthlyPrice'] as double).input(),
-      nodeNumber: map['nodeNumber'] == null ? null : (map['nodeNumber'] as int).input(),
-      nodeType: map['nodeType'] == null ? null : (map['nodeType'] as String).input(),
-      pricingModel: map['pricingModel'] == null ? null : (map['pricingModel'] as String).input(),
-      ramUtilization: map['ramUtilization'] == null ? null : (map['ramUtilization'] as double).input(),
-      storageUtilization: map['storageUtilization'] == null ? null : (map['storageUtilization'] as double).input(),
-      totalCpu: map['totalCpu'] == null ? null : (map['totalCpu'] as double).input(),
-      totalRam: map['totalRam'] == null ? null : (map['totalRam'] as double).input(),
-      totalStorage: map['totalStorage'] == null ? null : (map['totalStorage'] as double).input(),
+      cpuUtilization: map['cpuUtilization'] == null ? null : (map['cpuUtilization']! as double).input(),
+      fttRaidLevel: map['fttRaidLevel'] == null ? null : (map['fttRaidLevel']! as String).input(),
+      monthlyPrice: map['monthlyPrice'] == null ? null : (map['monthlyPrice']! as double).input(),
+      nodeNumber: map['nodeNumber'] == null ? null : (map['nodeNumber']! as int).input(),
+      nodeType: map['nodeType'] == null ? null : (map['nodeType']! as String).input(),
+      pricingModel: map['pricingModel'] == null ? null : (map['pricingModel']! as String).input(),
+      ramUtilization: map['ramUtilization'] == null ? null : (map['ramUtilization']! as double).input(),
+      storageUtilization: map['storageUtilization'] == null ? null : (map['storageUtilization']! as double).input(),
+      totalCpu: map['totalCpu'] == null ? null : (map['totalCpu']! as double).input(),
+      totalRam: map['totalRam'] == null ? null : (map['totalRam']! as double).input(),
+      totalStorage: map['totalStorage'] == null ? null : (map['totalStorage']! as double).input(),
     );
   }
 }

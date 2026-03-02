@@ -29,8 +29,8 @@ class SecurityScanConfigAuthentication {
 
   factory SecurityScanConfigAuthentication.fromMap(Map<String, dynamic> map) {
     return SecurityScanConfigAuthentication(
-      customAccount: map['customAccount'] == null ? null : (SecurityScanConfigAuthenticationCustomAccount.fromMap((map['customAccount'] as Map).cast<String, dynamic>())).input(),
-      googleAccount: map['googleAccount'] == null ? null : (SecurityScanConfigAuthenticationGoogleAccount.fromMap((map['googleAccount'] as Map).cast<String, dynamic>())).input(),
+      customAccount: map['customAccount'] == null ? null : (SecurityScanConfigAuthenticationCustomAccount.fromMap((map['customAccount']! as Map).cast<String, dynamic>())).input(),
+      googleAccount: map['googleAccount'] == null ? null : (SecurityScanConfigAuthenticationGoogleAccount.fromMap((map['googleAccount']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

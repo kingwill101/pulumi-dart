@@ -55,12 +55,12 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions {
 
   factory PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions(
-      bytesLimitPerFile: map['bytesLimitPerFile'] == null ? null : (map['bytesLimitPerFile'] as int).input(),
-      bytesLimitPerFilePercent: map['bytesLimitPerFilePercent'] == null ? null : (map['bytesLimitPerFilePercent'] as int).input(),
+      bytesLimitPerFile: map['bytesLimitPerFile'] == null ? null : (map['bytesLimitPerFile']! as int).input(),
+      bytesLimitPerFilePercent: map['bytesLimitPerFilePercent'] == null ? null : (map['bytesLimitPerFilePercent']! as int).input(),
       fileSet: (PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet.fromMap((map['fileSet'] as Map).cast<String, dynamic>())).input(),
-      fileTypes: map['fileTypes'] == null ? null : ((map['fileTypes'] as List).cast<String>()).input(),
-      filesLimitPercent: map['filesLimitPercent'] == null ? null : (map['filesLimitPercent'] as int).input(),
-      sampleMethod: map['sampleMethod'] == null ? null : (map['sampleMethod'] as String).input(),
+      fileTypes: map['fileTypes'] == null ? null : ((map['fileTypes']! as List).cast<String>()).input(),
+      filesLimitPercent: map['filesLimitPercent'] == null ? null : (map['filesLimitPercent']! as int).input(),
+      sampleMethod: map['sampleMethod'] == null ? null : (map['sampleMethod']! as String).input(),
     );
   }
 }

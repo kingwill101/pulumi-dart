@@ -20,7 +20,7 @@ class CompliancePackConfigRuleId {
 
   factory CompliancePackConfigRuleId.fromMap(Map<String, dynamic> map) {
     return CompliancePackConfigRuleId(
-      configRuleId: map['configRuleId'] == null ? null : (map['configRuleId'] as String).input(),
+      configRuleId: map['configRuleId'] == null ? null : (map['configRuleId']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class BlobShareResponse {
 
   factory BlobShareResponse.fromMap(Map<String, dynamic> map) {
     return BlobShareResponse(
-      sasUri: map['sasUri'] == null ? null : (map['sasUri'] as String).input(),
+      sasUri: map['sasUri'] == null ? null : (map['sasUri']! as String).input(),
     );
   }
 }

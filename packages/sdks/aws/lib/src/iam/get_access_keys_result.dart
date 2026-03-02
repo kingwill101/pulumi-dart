@@ -31,7 +31,7 @@ class GetAccessKeysResult {
 
   factory GetAccessKeysResult.fromMap(Map<String, dynamic> map) {
     return GetAccessKeysResult(
-      accessKeys: pulumi.Input.decodeList<GetAccessKeysAccessKey>(map['accessKeys'], (value) => GetAccessKeysAccessKey.fromMap((value as Map).cast<String, dynamic>())),
+      accessKeys: pulumi.Input.decodeList<GetAccessKeysAccessKey>(map['accessKeys']!, (value) => GetAccessKeysAccessKey.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       user: map['user'] as String,
     );

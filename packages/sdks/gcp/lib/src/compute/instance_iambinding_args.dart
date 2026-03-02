@@ -67,12 +67,12 @@ class InstanceIAMBindingArgs {
 
   factory InstanceIAMBindingArgs.fromMap(Map<String, dynamic> map) {
     return InstanceIAMBindingArgs(
-      condition: map['condition'] == null ? null : (InstanceIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (InstanceIAMBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       instanceName: (map['instanceName'] as String).input(),
       members: ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

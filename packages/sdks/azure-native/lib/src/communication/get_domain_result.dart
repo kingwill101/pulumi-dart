@@ -103,9 +103,9 @@ class GetDomainResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      userEngagementTracking: map['userEngagementTracking'] == null ? null : map['userEngagementTracking'] as String,
+      userEngagementTracking: map['userEngagementTracking'] == null ? null : map['userEngagementTracking']! as String,
       verificationRecords: DomainPropertiesResponseVerificationRecords.fromMap((map['verificationRecords'] as Map).cast<String, dynamic>()),
       verificationStates: DomainPropertiesResponseVerificationStates.fromMap((map['verificationStates'] as Map).cast<String, dynamic>()),
     );

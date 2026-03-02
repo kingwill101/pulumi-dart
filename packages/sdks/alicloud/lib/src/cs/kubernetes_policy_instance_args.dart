@@ -44,10 +44,10 @@ class KubernetesPolicyInstanceArgs {
 
   factory KubernetesPolicyInstanceArgs.fromMap(Map<String, dynamic> map) {
     return KubernetesPolicyInstanceArgs(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
       clusterId: (map['clusterId'] as String).input(),
-      namespaces: map['namespaces'] == null ? null : ((map['namespaces'] as List).cast<String>()).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      namespaces: map['namespaces'] == null ? null : ((map['namespaces']! as List).cast<String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
       policyName: (map['policyName'] as String).input(),
     );
   }

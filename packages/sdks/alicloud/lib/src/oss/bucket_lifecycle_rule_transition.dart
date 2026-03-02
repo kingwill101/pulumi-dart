@@ -40,10 +40,10 @@ class BucketLifecycleRuleTransition {
 
   factory BucketLifecycleRuleTransition.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleRuleTransition(
-      createdBeforeDate: map['createdBeforeDate'] == null ? null : (map['createdBeforeDate'] as String).input(),
-      days: map['days'] == null ? null : (map['days'] as int).input(),
-      isAccessTime: map['isAccessTime'] == null ? null : (map['isAccessTime'] as bool).input(),
-      returnToStdWhenVisit: map['returnToStdWhenVisit'] == null ? null : (map['returnToStdWhenVisit'] as bool).input(),
+      createdBeforeDate: map['createdBeforeDate'] == null ? null : (map['createdBeforeDate']! as String).input(),
+      days: map['days'] == null ? null : (map['days']! as int).input(),
+      isAccessTime: map['isAccessTime'] == null ? null : (map['isAccessTime']! as bool).input(),
+      returnToStdWhenVisit: map['returnToStdWhenVisit'] == null ? null : (map['returnToStdWhenVisit']! as bool).input(),
       storageClass: (map['storageClass'] as String).input(),
     );
   }

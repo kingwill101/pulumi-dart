@@ -60,15 +60,15 @@ class KeyKeyAttributeKeyModesOfUse {
 
   factory KeyKeyAttributeKeyModesOfUse.fromMap(Map<String, dynamic> map) {
     return KeyKeyAttributeKeyModesOfUse(
-      decrypt: map['decrypt'] == null ? null : (map['decrypt'] as bool).input(),
-      deriveKey: map['deriveKey'] == null ? null : (map['deriveKey'] as bool).input(),
-      encrypt: map['encrypt'] == null ? null : (map['encrypt'] as bool).input(),
-      generate: map['generate'] == null ? null : (map['generate'] as bool).input(),
-      noRestrictions: map['noRestrictions'] == null ? null : (map['noRestrictions'] as bool).input(),
-      sign: map['sign'] == null ? null : (map['sign'] as bool).input(),
-      unwrap: map['unwrap'] == null ? null : (map['unwrap'] as bool).input(),
-      verify: map['verify'] == null ? null : (map['verify'] as bool).input(),
-      wrap: map['wrap'] == null ? null : (map['wrap'] as bool).input(),
+      decrypt: map['decrypt'] == null ? null : ((map['decrypt'] as bool).input()).input(),
+      deriveKey: map['deriveKey'] == null ? null : ((map['deriveKey'] as bool).input()).input(),
+      encrypt: map['encrypt'] == null ? null : ((map['encrypt'] as bool).input()).input(),
+      generate: map['generate'] == null ? null : ((map['generate'] as bool).input()).input(),
+      noRestrictions: map['noRestrictions'] == null ? null : ((map['noRestrictions'] as bool).input()).input(),
+      sign: map['sign'] == null ? null : ((map['sign'] as bool).input()).input(),
+      unwrap: map['unwrap'] == null ? null : ((map['unwrap'] as bool).input()).input(),
+      verify: map['verify'] == null ? null : ((map['verify'] as bool).input()).input(),
+      wrap: map['wrap'] == null ? null : ((map['wrap'] as bool).input()).input(),
     );
   }
 }

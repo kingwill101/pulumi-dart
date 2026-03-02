@@ -34,8 +34,8 @@ class GetPbrRouteEntriesArgs {
 
   factory GetPbrRouteEntriesArgs.fromMap(Map<String, dynamic> map) {
     return GetPbrRouteEntriesArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
       vpnGatewayId: (map['vpnGatewayId'] as String).input(),
     );
   }

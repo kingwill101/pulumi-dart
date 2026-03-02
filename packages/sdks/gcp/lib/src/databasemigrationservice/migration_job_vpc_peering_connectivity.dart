@@ -20,7 +20,7 @@ class MigrationJobVpcPeeringConnectivity {
 
   factory MigrationJobVpcPeeringConnectivity.fromMap(Map<String, dynamic> map) {
     return MigrationJobVpcPeeringConnectivity(
-      vpc: map['vpc'] == null ? null : (map['vpc'] as String).input(),
+      vpc: map['vpc'] == null ? null : (map['vpc']! as String).input(),
     );
   }
 }

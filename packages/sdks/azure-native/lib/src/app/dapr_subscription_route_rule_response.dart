@@ -26,8 +26,8 @@ class DaprSubscriptionRouteRuleResponse {
 
   factory DaprSubscriptionRouteRuleResponse.fromMap(Map<String, dynamic> map) {
     return DaprSubscriptionRouteRuleResponse(
-      match: map['match'] == null ? null : (map['match'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      match: map['match'] == null ? null : (map['match']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

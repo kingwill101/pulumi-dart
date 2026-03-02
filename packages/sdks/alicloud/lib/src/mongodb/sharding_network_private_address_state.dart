@@ -52,12 +52,12 @@ class ShardingNetworkPrivateAddressState {
 
   factory ShardingNetworkPrivateAddressState.fromMap(Map<String, dynamic> map) {
     return ShardingNetworkPrivateAddressState(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword'] as String).input(),
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      networkAddresses: map['networkAddresses'] == null ? null : (pulumi.Input.decodeList<ShardingNetworkPrivateAddressNetworkAddress>(map['networkAddresses'], (value) => ShardingNetworkPrivateAddressNetworkAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword']! as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      networkAddresses: map['networkAddresses'] == null ? null : (pulumi.Input.decodeList<ShardingNetworkPrivateAddressNetworkAddress>(map['networkAddresses']!, (value) => ShardingNetworkPrivateAddressNetworkAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

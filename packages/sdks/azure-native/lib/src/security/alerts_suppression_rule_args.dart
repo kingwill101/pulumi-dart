@@ -56,12 +56,12 @@ class AlertsSuppressionRuleArgs {
   factory AlertsSuppressionRuleArgs.fromMap(Map<String, dynamic> map) {
     return AlertsSuppressionRuleArgs(
       alertType: (map['alertType'] as String).input(),
-      alertsSuppressionRuleName: map['alertsSuppressionRuleName'] == null ? null : (map['alertsSuppressionRuleName'] as String).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      expirationDateUtc: map['expirationDateUtc'] == null ? null : (map['expirationDateUtc'] as String).input(),
+      alertsSuppressionRuleName: map['alertsSuppressionRuleName'] == null ? null : (map['alertsSuppressionRuleName']! as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      expirationDateUtc: map['expirationDateUtc'] == null ? null : (map['expirationDateUtc']! as String).input(),
       reason: (map['reason'] as String).input(),
       state: (map['state'] as String).input(),
-      suppressionAlertsScope: map['suppressionAlertsScope'] == null ? null : (SuppressionAlertsScope.fromMap((map['suppressionAlertsScope'] as Map).cast<String, dynamic>())).input(),
+      suppressionAlertsScope: map['suppressionAlertsScope'] == null ? null : (SuppressionAlertsScope.fromMap((map['suppressionAlertsScope']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

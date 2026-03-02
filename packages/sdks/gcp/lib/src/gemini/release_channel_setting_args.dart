@@ -50,10 +50,10 @@ class ReleaseChannelSettingArgs {
 
   factory ReleaseChannelSettingArgs.fromMap(Map<String, dynamic> map) {
     return ReleaseChannelSettingArgs(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      releaseChannel: map['releaseChannel'] == null ? null : (map['releaseChannel'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      releaseChannel: map['releaseChannel'] == null ? null : (map['releaseChannel']! as String).input(),
       releaseChannelSettingId: (map['releaseChannelSettingId'] as String).input(),
     );
   }

@@ -38,10 +38,10 @@ class GoogleCloudChannelV1RenewalSettings {
 
   factory GoogleCloudChannelV1RenewalSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1RenewalSettings(
-      enableRenewal: map['enableRenewal'] == null ? null : (map['enableRenewal'] as bool).input(),
-      paymentCycle: map['paymentCycle'] == null ? null : (GoogleCloudChannelV1Period.fromMap((map['paymentCycle'] as Map).cast<String, dynamic>())).input(),
-      paymentPlan: map['paymentPlan'] == null ? null : (GoogleCloudChannelV1RenewalSettingsPaymentPlan.fromValue(map['paymentPlan'] as String)).input(),
-      resizeUnitCount: map['resizeUnitCount'] == null ? null : (map['resizeUnitCount'] as bool).input(),
+      enableRenewal: map['enableRenewal'] == null ? null : (map['enableRenewal']! as bool).input(),
+      paymentCycle: map['paymentCycle'] == null ? null : (GoogleCloudChannelV1Period.fromMap((map['paymentCycle']! as Map).cast<String, dynamic>())).input(),
+      paymentPlan: map['paymentPlan'] == null ? null : (GoogleCloudChannelV1RenewalSettingsPaymentPlan.fromValue(map['paymentPlan']! as String)).input(),
+      resizeUnitCount: map['resizeUnitCount'] == null ? null : (map['resizeUnitCount']! as bool).input(),
     );
   }
 }

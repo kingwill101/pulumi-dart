@@ -26,8 +26,8 @@ class IsolationDomainPropertiesResponse {
 
   factory IsolationDomainPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return IsolationDomainPropertiesResponse(
-      encapsulation: map['encapsulation'] == null ? null : (map['encapsulation'] as String).input(),
-      neighborGroupIds: map['neighborGroupIds'] == null ? null : ((map['neighborGroupIds'] as List).cast<String>()).input(),
+      encapsulation: map['encapsulation'] == null ? null : (map['encapsulation']! as String).input(),
+      neighborGroupIds: map['neighborGroupIds'] == null ? null : ((map['neighborGroupIds']! as List).cast<String>()).input(),
     );
   }
 }

@@ -29,7 +29,7 @@ class GetCharacterSetNamesArgs {
   factory GetCharacterSetNamesArgs.fromMap(Map<String, dynamic> map) {
     return GetCharacterSetNamesArgs(
       engine: (map['engine'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

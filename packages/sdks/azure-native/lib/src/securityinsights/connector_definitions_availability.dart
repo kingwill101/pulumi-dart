@@ -26,8 +26,8 @@ class ConnectorDefinitionsAvailability {
 
   factory ConnectorDefinitionsAvailability.fromMap(Map<String, dynamic> map) {
     return ConnectorDefinitionsAvailability(
-      isPreview: map['isPreview'] == null ? null : (map['isPreview'] as bool).input(),
-      status: map['status'] == null ? null : (map['status'] as int).input(),
+      isPreview: map['isPreview'] == null ? null : (map['isPreview']! as bool).input(),
+      status: map['status'] == null ? null : (map['status']! as int).input(),
     );
   }
 }

@@ -43,8 +43,8 @@ class ApplicationApiAccessArgs {
     return ApplicationApiAccessArgs(
       apiClientId: (map['apiClientId'] as String).input(),
       applicationId: (map['applicationId'] as String).input(),
-      roleIds: map['roleIds'] == null ? null : ((map['roleIds'] as List).cast<String>()).input(),
-      scopeIds: map['scopeIds'] == null ? null : ((map['scopeIds'] as List).cast<String>()).input(),
+      roleIds: map['roleIds'] == null ? null : ((map['roleIds']! as List).cast<String>()).input(),
+      scopeIds: map['scopeIds'] == null ? null : ((map['scopeIds']! as List).cast<String>()).input(),
     );
   }
 }

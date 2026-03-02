@@ -44,11 +44,11 @@ class Encryption {
 
   factory Encryption.fromMap(Map<String, dynamic> map) {
     return Encryption(
-      encryptionIdentity: map['encryptionIdentity'] == null ? null : (EncryptionIdentity.fromMap((map['encryptionIdentity'] as Map).cast<String, dynamic>())).input(),
-      keySource: map['keySource'] == null ? null : (map['keySource'] as String).input(),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : (KeyVaultProperties.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
-      requireInfrastructureEncryption: map['requireInfrastructureEncryption'] == null ? null : (map['requireInfrastructureEncryption'] as bool).input(),
-      services: map['services'] == null ? null : (EncryptionServices.fromMap((map['services'] as Map).cast<String, dynamic>())).input(),
+      encryptionIdentity: map['encryptionIdentity'] == null ? null : (EncryptionIdentity.fromMap((map['encryptionIdentity']! as Map).cast<String, dynamic>())).input(),
+      keySource: map['keySource'] == null ? null : (map['keySource']! as String).input(),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (KeyVaultProperties.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())).input(),
+      requireInfrastructureEncryption: map['requireInfrastructureEncryption'] == null ? null : (map['requireInfrastructureEncryption']! as bool).input(),
+      services: map['services'] == null ? null : (EncryptionServices.fromMap((map['services']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

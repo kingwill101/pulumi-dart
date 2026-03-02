@@ -55,12 +55,12 @@ class OauthClientCredentialArgs {
 
   factory OauthClientCredentialArgs.fromMap(Map<String, dynamic> map) {
     return OauthClientCredentialArgs(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       location: (map['location'] as String).input(),
       oauthClientCredentialId: (map['oauthClientCredentialId'] as String).input(),
       oauthclient: (map['oauthclient'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -28,7 +28,7 @@ class GetAppArgs {
   factory GetAppArgs.fromMap(Map<String, dynamic> map) {
     return GetAppArgs(
       appId: (map['appId'] as String).input(),
-      includeExtraData: map['includeExtraData'] == null ? null : (map['includeExtraData'] as String).input(),
+      includeExtraData: map['includeExtraData'] == null ? null : (map['includeExtraData']! as String).input(),
     );
   }
 }

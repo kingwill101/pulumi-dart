@@ -41,8 +41,8 @@ class ConnectionProfileAlloydbSettings {
   factory ConnectionProfileAlloydbSettings.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileAlloydbSettings(
       initialUser: (ConnectionProfileAlloydbSettingsInitialUser.fromMap((map['initialUser'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      primaryInstanceSettings: map['primaryInstanceSettings'] == null ? null : (ConnectionProfileAlloydbSettingsPrimaryInstanceSettings.fromMap((map['primaryInstanceSettings'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      primaryInstanceSettings: map['primaryInstanceSettings'] == null ? null : (ConnectionProfileAlloydbSettingsPrimaryInstanceSettings.fromMap((map['primaryInstanceSettings']! as Map).cast<String, dynamic>())).input(),
       vpcNetwork: (map['vpcNetwork'] as String).input(),
     );
   }

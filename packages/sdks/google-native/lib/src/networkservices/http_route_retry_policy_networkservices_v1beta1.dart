@@ -31,9 +31,9 @@ class HttpRouteRetryPolicyNetworkservicesV1beta1 {
 
   factory HttpRouteRetryPolicyNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpRouteRetryPolicyNetworkservicesV1beta1(
-      numRetries: map['numRetries'] == null ? null : (map['numRetries'] as int).input(),
-      perTryTimeout: map['perTryTimeout'] == null ? null : (map['perTryTimeout'] as String).input(),
-      retryConditions: map['retryConditions'] == null ? null : ((map['retryConditions'] as List).cast<String>()).input(),
+      numRetries: map['numRetries'] == null ? null : (map['numRetries']! as int).input(),
+      perTryTimeout: map['perTryTimeout'] == null ? null : (map['perTryTimeout']! as String).input(),
+      retryConditions: map['retryConditions'] == null ? null : ((map['retryConditions']! as List).cast<String>()).input(),
     );
   }
 }

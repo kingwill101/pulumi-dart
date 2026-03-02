@@ -31,9 +31,9 @@ class DomainNameApiAssociationState {
 
   factory DomainNameApiAssociationState.fromMap(Map<String, dynamic> map) {
     return DomainNameApiAssociationState(
-      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      apiId: map['apiId'] == null ? null : ((map['apiId'] as String).input()).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class RulesEngineRuleAction {
 
   factory RulesEngineRuleAction.fromMap(Map<String, dynamic> map) {
     return RulesEngineRuleAction(
-      requestHeaders: map['requestHeaders'] == null ? null : (pulumi.Input.decodeList<RulesEngineRuleActionRequestHeader>(map['requestHeaders'], (value) => RulesEngineRuleActionRequestHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      responseHeaders: map['responseHeaders'] == null ? null : (pulumi.Input.decodeList<RulesEngineRuleActionResponseHeader>(map['responseHeaders'], (value) => RulesEngineRuleActionResponseHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestHeaders: map['requestHeaders'] == null ? null : (pulumi.Input.decodeList<RulesEngineRuleActionRequestHeader>(map['requestHeaders']!, (value) => RulesEngineRuleActionRequestHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responseHeaders: map['responseHeaders'] == null ? null : (pulumi.Input.decodeList<RulesEngineRuleActionResponseHeader>(map['responseHeaders']!, (value) => RulesEngineRuleActionResponseHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

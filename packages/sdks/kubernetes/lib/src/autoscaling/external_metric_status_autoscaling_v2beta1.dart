@@ -37,10 +37,10 @@ class ExternalMetricStatusAutoscalingV2beta1 {
 
   factory ExternalMetricStatusAutoscalingV2beta1.fromMap(Map<String, dynamic> map) {
     return ExternalMetricStatusAutoscalingV2beta1(
-      currentAverageValue: map['currentAverageValue'] == null ? null : (map['currentAverageValue'] as String).input(),
+      currentAverageValue: map['currentAverageValue'] == null ? null : (map['currentAverageValue']! as String).input(),
       currentValue: (map['currentValue'] as String).input(),
       metricName: (map['metricName'] as String).input(),
-      metricSelector: map['metricSelector'] == null ? null : (LabelSelector.fromMap((map['metricSelector'] as Map).cast<String, dynamic>())).input(),
+      metricSelector: map['metricSelector'] == null ? null : (LabelSelector.fromMap((map['metricSelector']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

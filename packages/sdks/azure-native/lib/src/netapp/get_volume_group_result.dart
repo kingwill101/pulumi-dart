@@ -59,13 +59,13 @@ class GetVolumeGroupResult {
   factory GetVolumeGroupResult.fromMap(Map<String, dynamic> map) {
     return GetVolumeGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      groupMetaData: map['groupMetaData'] == null ? null : VolumeGroupMetaDataResponse.fromMap((map['groupMetaData'] as Map).cast<String, dynamic>()),
+      groupMetaData: map['groupMetaData'] == null ? null : VolumeGroupMetaDataResponse.fromMap((map['groupMetaData']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       type: map['type'] as String,
-      volumes: map['volumes'] == null ? null : pulumi.Input.decodeList<VolumeGroupVolumePropertiesResponse>(map['volumes'], (value) => VolumeGroupVolumePropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      volumes: map['volumes'] == null ? null : pulumi.Input.decodeList<VolumeGroupVolumePropertiesResponse>(map['volumes']!, (value) => VolumeGroupVolumePropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

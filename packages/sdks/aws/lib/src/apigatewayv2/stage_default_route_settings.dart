@@ -42,11 +42,11 @@ class StageDefaultRouteSettings {
 
   factory StageDefaultRouteSettings.fromMap(Map<String, dynamic> map) {
     return StageDefaultRouteSettings(
-      dataTraceEnabled: map['dataTraceEnabled'] == null ? null : (map['dataTraceEnabled'] as bool).input(),
-      detailedMetricsEnabled: map['detailedMetricsEnabled'] == null ? null : (map['detailedMetricsEnabled'] as bool).input(),
-      loggingLevel: map['loggingLevel'] == null ? null : (map['loggingLevel'] as String).input(),
-      throttlingBurstLimit: map['throttlingBurstLimit'] == null ? null : (map['throttlingBurstLimit'] as int).input(),
-      throttlingRateLimit: map['throttlingRateLimit'] == null ? null : (map['throttlingRateLimit'] as double).input(),
+      dataTraceEnabled: map['dataTraceEnabled'] == null ? null : ((map['dataTraceEnabled'] as bool).input()).input(),
+      detailedMetricsEnabled: map['detailedMetricsEnabled'] == null ? null : ((map['detailedMetricsEnabled'] as bool).input()).input(),
+      loggingLevel: map['loggingLevel'] == null ? null : ((map['loggingLevel'] as String).input()).input(),
+      throttlingBurstLimit: map['throttlingBurstLimit'] == null ? null : ((map['throttlingBurstLimit'] as int).input()).input(),
+      throttlingRateLimit: map['throttlingRateLimit'] == null ? null : ((map['throttlingRateLimit'] as double).input()).input(),
     );
   }
 }

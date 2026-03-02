@@ -22,7 +22,7 @@ class VolumeNodeAffinity {
 
   factory VolumeNodeAffinity.fromMap(Map<String, dynamic> map) {
     return VolumeNodeAffinity(
-      required: map['required'] == null ? null : (NodeSelector.fromMap((map['required'] as Map).cast<String, dynamic>())).input(),
+      required: map['required'] == null ? null : (NodeSelector.fromMap((map['required']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

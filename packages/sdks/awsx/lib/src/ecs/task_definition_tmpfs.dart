@@ -27,8 +27,8 @@ class TaskDefinitionTmpfs {
 
   factory TaskDefinitionTmpfs.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionTmpfs(
-      containerPath: map['containerPath'] == null ? null : (map['containerPath'] as String).input(),
-      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions'] as List).cast<String>()).input(),
+      containerPath: map['containerPath'] == null ? null : (map['containerPath']! as String).input(),
+      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions']! as List).cast<String>()).input(),
       size: (map['size'] as int).input(),
     );
   }

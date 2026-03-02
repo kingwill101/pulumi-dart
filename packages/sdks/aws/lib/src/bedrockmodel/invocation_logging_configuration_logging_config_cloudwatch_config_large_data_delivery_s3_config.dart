@@ -26,7 +26,7 @@ class InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDelive
   factory InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config.fromMap(Map<String, dynamic> map) {
     return InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config(
       bucketName: (map['bucketName'] as String).input(),
-      keyPrefix: map['keyPrefix'] == null ? null : (map['keyPrefix'] as String).input(),
+      keyPrefix: map['keyPrefix'] == null ? null : ((map['keyPrefix'] as String).input()).input(),
     );
   }
 }

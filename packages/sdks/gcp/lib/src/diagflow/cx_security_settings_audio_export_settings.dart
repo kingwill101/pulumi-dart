@@ -39,10 +39,10 @@ class CxSecuritySettingsAudioExportSettings {
 
   factory CxSecuritySettingsAudioExportSettings.fromMap(Map<String, dynamic> map) {
     return CxSecuritySettingsAudioExportSettings(
-      audioExportPattern: map['audioExportPattern'] == null ? null : (map['audioExportPattern'] as String).input(),
-      audioFormat: map['audioFormat'] == null ? null : (map['audioFormat'] as String).input(),
-      enableAudioRedaction: map['enableAudioRedaction'] == null ? null : (map['enableAudioRedaction'] as bool).input(),
-      gcsBucket: map['gcsBucket'] == null ? null : (map['gcsBucket'] as String).input(),
+      audioExportPattern: map['audioExportPattern'] == null ? null : (map['audioExportPattern']! as String).input(),
+      audioFormat: map['audioFormat'] == null ? null : (map['audioFormat']! as String).input(),
+      enableAudioRedaction: map['enableAudioRedaction'] == null ? null : (map['enableAudioRedaction']! as bool).input(),
+      gcsBucket: map['gcsBucket'] == null ? null : (map['gcsBucket']! as String).input(),
     );
   }
 }

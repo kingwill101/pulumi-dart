@@ -60,12 +60,12 @@ class ManagedFolderIamBindingState {
 
   factory ManagedFolderIamBindingState.fromMap(Map<String, dynamic> map) {
     return ManagedFolderIamBindingState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      condition: map['condition'] == null ? null : (ManagedFolderIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      managedFolder: map['managedFolder'] == null ? null : (map['managedFolder'] as String).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      condition: map['condition'] == null ? null : (ManagedFolderIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      managedFolder: map['managedFolder'] == null ? null : (map['managedFolder']! as String).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

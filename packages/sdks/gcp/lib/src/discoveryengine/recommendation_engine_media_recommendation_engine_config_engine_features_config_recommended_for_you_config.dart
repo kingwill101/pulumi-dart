@@ -26,7 +26,7 @@ class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRec
 
   factory RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig.fromMap(Map<String, dynamic> map) {
     return RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig(
-      contextEventType: map['contextEventType'] == null ? null : (map['contextEventType'] as String).input(),
+      contextEventType: map['contextEventType'] == null ? null : (map['contextEventType']! as String).input(),
     );
   }
 }

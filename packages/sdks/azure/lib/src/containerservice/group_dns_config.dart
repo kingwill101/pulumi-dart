@@ -31,8 +31,8 @@ class GroupDnsConfig {
   factory GroupDnsConfig.fromMap(Map<String, dynamic> map) {
     return GroupDnsConfig(
       nameservers: ((map['nameservers'] as List).cast<String>()).input(),
-      options: map['options'] == null ? null : ((map['options'] as List).cast<String>()).input(),
-      searchDomains: map['searchDomains'] == null ? null : ((map['searchDomains'] as List).cast<String>()).input(),
+      options: map['options'] == null ? null : ((map['options']! as List).cast<String>()).input(),
+      searchDomains: map['searchDomains'] == null ? null : ((map['searchDomains']! as List).cast<String>()).input(),
     );
   }
 }

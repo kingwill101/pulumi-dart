@@ -20,7 +20,7 @@ class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple {
 
   factory RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple.fromMap(Map<String, dynamic> map) {
     return RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple(
-      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId'] as String).input(),
+      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId']! as String).input(),
     );
   }
 }

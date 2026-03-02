@@ -39,7 +39,7 @@ class RouteTableResponse {
     return RouteTableResponse(
       etag: (map['etag'] as String).input(),
       name: (map['name'] as String).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<RouteResponse>(map['routes'], (value) => RouteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<RouteResponse>(map['routes']!, (value) => RouteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
     );
   }

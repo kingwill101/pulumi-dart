@@ -40,10 +40,10 @@ class ServiceActionDefinition {
 
   factory ServiceActionDefinition.fromMap(Map<String, dynamic> map) {
     return ServiceActionDefinition(
-      assumeRole: map['assumeRole'] == null ? null : (map['assumeRole'] as String).input(),
+      assumeRole: map['assumeRole'] == null ? null : ((map['assumeRole'] as String).input()).input(),
       name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
       version: (map['version'] as String).input(),
     );
   }

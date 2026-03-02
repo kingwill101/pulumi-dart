@@ -21,7 +21,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceSlices {
 
   factory DomainDevicesDiskMirrorBackingStoreSourceSlices.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorBackingStoreSourceSlices(
-      slices: map['slices'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice>(map['slices'], (value) => DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      slices: map['slices'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice>(map['slices']!, (value) => DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

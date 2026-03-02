@@ -20,7 +20,7 @@ class DomainDevicesInterfacePortOptions {
 
   factory DomainDevicesInterfacePortOptions.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfacePortOptions(
-      isolated: map['isolated'] == null ? null : (map['isolated'] as String).input(),
+      isolated: map['isolated'] == null ? null : (map['isolated']! as String).input(),
     );
   }
 }

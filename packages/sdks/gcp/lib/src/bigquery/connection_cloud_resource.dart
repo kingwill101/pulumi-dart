@@ -21,7 +21,7 @@ class ConnectionCloudResource {
 
   factory ConnectionCloudResource.fromMap(Map<String, dynamic> map) {
     return ConnectionCloudResource(
-      serviceAccountId: map['serviceAccountId'] == null ? null : (map['serviceAccountId'] as String).input(),
+      serviceAccountId: map['serviceAccountId'] == null ? null : (map['serviceAccountId']! as String).input(),
     );
   }
 }

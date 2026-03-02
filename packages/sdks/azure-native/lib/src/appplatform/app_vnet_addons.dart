@@ -21,7 +21,7 @@ class AppVNetAddons {
 
   factory AppVNetAddons.fromMap(Map<String, dynamic> map) {
     return AppVNetAddons(
-      publicEndpoint: map['publicEndpoint'] == null ? null : (map['publicEndpoint'] as bool).input(),
+      publicEndpoint: map['publicEndpoint'] == null ? null : (map['publicEndpoint']! as bool).input(),
     );
   }
 }

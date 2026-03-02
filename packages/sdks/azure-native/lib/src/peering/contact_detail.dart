@@ -31,9 +31,9 @@ class ContactDetail {
 
   factory ContactDetail.fromMap(Map<String, dynamic> map) {
     return ContactDetail(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      phone: map['phone'] == null ? null : (map['phone'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      phone: map['phone'] == null ? null : (map['phone']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

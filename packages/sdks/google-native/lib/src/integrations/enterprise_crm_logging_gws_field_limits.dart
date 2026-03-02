@@ -42,11 +42,11 @@ class EnterpriseCrmLoggingGwsFieldLimits {
 
   factory EnterpriseCrmLoggingGwsFieldLimits.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmLoggingGwsFieldLimits(
-      logAction: map['logAction'] == null ? null : (EnterpriseCrmLoggingGwsFieldLimitsLogAction.fromValue(map['logAction'] as String)).input(),
-      logType: map['logType'] == null ? null : (pulumi.Input.decodeList<EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem>(map['logType'], (value) => EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem.fromValue(value as String))).input(),
-      maxArraySize: map['maxArraySize'] == null ? null : (map['maxArraySize'] as int).input(),
-      maxStringLength: map['maxStringLength'] == null ? null : (map['maxStringLength'] as int).input(),
-      shortenerType: map['shortenerType'] == null ? null : (EnterpriseCrmLoggingGwsFieldLimitsShortenerType.fromValue(map['shortenerType'] as String)).input(),
+      logAction: map['logAction'] == null ? null : (EnterpriseCrmLoggingGwsFieldLimitsLogAction.fromValue(map['logAction']! as String)).input(),
+      logType: map['logType'] == null ? null : (pulumi.Input.decodeList<EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem>(map['logType']!, (value) => EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem.fromValue(value as String))).input(),
+      maxArraySize: map['maxArraySize'] == null ? null : (map['maxArraySize']! as int).input(),
+      maxStringLength: map['maxStringLength'] == null ? null : (map['maxStringLength']! as int).input(),
+      shortenerType: map['shortenerType'] == null ? null : (EnterpriseCrmLoggingGwsFieldLimitsShortenerType.fromValue(map['shortenerType']! as String)).input(),
     );
   }
 }

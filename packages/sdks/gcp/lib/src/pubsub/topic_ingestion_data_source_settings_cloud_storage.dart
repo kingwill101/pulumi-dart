@@ -59,12 +59,12 @@ class TopicIngestionDataSourceSettingsCloudStorage {
 
   factory TopicIngestionDataSourceSettingsCloudStorage.fromMap(Map<String, dynamic> map) {
     return TopicIngestionDataSourceSettingsCloudStorage(
-      avroFormat: map['avroFormat'] == null ? null : ((map['avroFormat'] as Map).cast<String, dynamic>()).input(),
+      avroFormat: map['avroFormat'] == null ? null : ((map['avroFormat']! as Map).cast<String, dynamic>()).input(),
       bucket: (map['bucket'] as String).input(),
-      matchGlob: map['matchGlob'] == null ? null : (map['matchGlob'] as String).input(),
-      minimumObjectCreateTime: map['minimumObjectCreateTime'] == null ? null : (map['minimumObjectCreateTime'] as String).input(),
-      pubsubAvroFormat: map['pubsubAvroFormat'] == null ? null : ((map['pubsubAvroFormat'] as Map).cast<String, dynamic>()).input(),
-      textFormat: map['textFormat'] == null ? null : (TopicIngestionDataSourceSettingsCloudStorageTextFormat.fromMap((map['textFormat'] as Map).cast<String, dynamic>())).input(),
+      matchGlob: map['matchGlob'] == null ? null : (map['matchGlob']! as String).input(),
+      minimumObjectCreateTime: map['minimumObjectCreateTime'] == null ? null : (map['minimumObjectCreateTime']! as String).input(),
+      pubsubAvroFormat: map['pubsubAvroFormat'] == null ? null : ((map['pubsubAvroFormat']! as Map).cast<String, dynamic>()).input(),
+      textFormat: map['textFormat'] == null ? null : (TopicIngestionDataSourceSettingsCloudStorageTextFormat.fromMap((map['textFormat']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

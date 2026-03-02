@@ -46,11 +46,11 @@ class GatewayArgs {
 
   factory GatewayArgs.fromMap(Map<String, dynamic> map) {
     return GatewayArgs(
-      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName'] as String).input(),
-      properties: map['properties'] == null ? null : (GatewayProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName']! as String).input(),
+      properties: map['properties'] == null ? null : (GatewayProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

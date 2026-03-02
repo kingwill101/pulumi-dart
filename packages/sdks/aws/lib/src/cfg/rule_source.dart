@@ -37,10 +37,10 @@ class RuleSource {
 
   factory RuleSource.fromMap(Map<String, dynamic> map) {
     return RuleSource(
-      customPolicyDetails: map['customPolicyDetails'] == null ? null : (RuleSourceCustomPolicyDetails.fromMap((map['customPolicyDetails'] as Map).cast<String, dynamic>())).input(),
+      customPolicyDetails: map['customPolicyDetails'] == null ? null : ((RuleSourceCustomPolicyDetails.fromMap((map['customPolicyDetails']! as Map).cast<String, dynamic>())).input()).input(),
       owner: (map['owner'] as String).input(),
-      sourceDetails: map['sourceDetails'] == null ? null : (pulumi.Input.decodeList<RuleSourceSourceDetail>(map['sourceDetails'], (value) => RuleSourceSourceDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceIdentifier: map['sourceIdentifier'] == null ? null : (map['sourceIdentifier'] as String).input(),
+      sourceDetails: map['sourceDetails'] == null ? null : ((pulumi.Input.decodeList<RuleSourceSourceDetail>(map['sourceDetails']!, (value) => RuleSourceSourceDetail.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      sourceIdentifier: map['sourceIdentifier'] == null ? null : ((map['sourceIdentifier'] as String).input()).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class ClassificationJobS3JobDefinitionBucketCriteriaExcludesAnd {
 
   factory ClassificationJobS3JobDefinitionBucketCriteriaExcludesAnd.fromMap(Map<String, dynamic> map) {
     return ClassificationJobS3JobDefinitionBucketCriteriaExcludesAnd(
-      simpleCriterion: map['simpleCriterion'] == null ? null : (ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndSimpleCriterion.fromMap((map['simpleCriterion'] as Map).cast<String, dynamic>())).input(),
-      tagCriterion: map['tagCriterion'] == null ? null : (ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndTagCriterion.fromMap((map['tagCriterion'] as Map).cast<String, dynamic>())).input(),
+      simpleCriterion: map['simpleCriterion'] == null ? null : ((ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndSimpleCriterion.fromMap((map['simpleCriterion']! as Map).cast<String, dynamic>())).input()).input(),
+      tagCriterion: map['tagCriterion'] == null ? null : ((ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndTagCriterion.fromMap((map['tagCriterion']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

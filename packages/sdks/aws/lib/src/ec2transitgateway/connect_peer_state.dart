@@ -71,17 +71,17 @@ class ConnectPeerState {
 
   factory ConnectPeerState.fromMap(Map<String, dynamic> map) {
     return ConnectPeerState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      bgpAsn: map['bgpAsn'] == null ? null : (map['bgpAsn'] as String).input(),
-      bgpPeerAddress: map['bgpPeerAddress'] == null ? null : (map['bgpPeerAddress'] as String).input(),
-      bgpTransitGatewayAddresses: map['bgpTransitGatewayAddresses'] == null ? null : ((map['bgpTransitGatewayAddresses'] as List).cast<String>()).input(),
-      insideCidrBlocks: map['insideCidrBlocks'] == null ? null : ((map['insideCidrBlocks'] as List).cast<String>()).input(),
-      peerAddress: map['peerAddress'] == null ? null : (map['peerAddress'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      transitGatewayAddress: map['transitGatewayAddress'] == null ? null : (map['transitGatewayAddress'] as String).input(),
-      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : (map['transitGatewayAttachmentId'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      bgpAsn: map['bgpAsn'] == null ? null : ((map['bgpAsn'] as String).input()).input(),
+      bgpPeerAddress: map['bgpPeerAddress'] == null ? null : ((map['bgpPeerAddress'] as String).input()).input(),
+      bgpTransitGatewayAddresses: map['bgpTransitGatewayAddresses'] == null ? null : (((map['bgpTransitGatewayAddresses'] as List).cast<String>()).input()).input(),
+      insideCidrBlocks: map['insideCidrBlocks'] == null ? null : (((map['insideCidrBlocks'] as List).cast<String>()).input()).input(),
+      peerAddress: map['peerAddress'] == null ? null : ((map['peerAddress'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      transitGatewayAddress: map['transitGatewayAddress'] == null ? null : ((map['transitGatewayAddress'] as String).input()).input(),
+      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : ((map['transitGatewayAttachmentId'] as String).input()).input(),
     );
   }
 }

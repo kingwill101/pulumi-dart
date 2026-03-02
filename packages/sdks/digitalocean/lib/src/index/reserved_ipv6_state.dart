@@ -34,10 +34,10 @@ class ReservedIpv6State {
 
   factory ReservedIpv6State.fromMap(Map<String, dynamic> map) {
     return ReservedIpv6State(
-      dropletId: map['dropletId'] == null ? null : (map['dropletId'] as int).input(),
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
-      regionSlug: map['regionSlug'] == null ? null : (map['regionSlug'] as String).input(),
-      reservedIpv6Urn: map['reservedIpv6Urn'] == null ? null : (map['reservedIpv6Urn'] as String).input(),
+      dropletId: map['dropletId'] == null ? null : (map['dropletId']! as int).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
+      regionSlug: map['regionSlug'] == null ? null : (map['regionSlug']! as String).input(),
+      reservedIpv6Urn: map['reservedIpv6Urn'] == null ? null : (map['reservedIpv6Urn']! as String).input(),
     );
   }
 }

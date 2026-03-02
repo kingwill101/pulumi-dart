@@ -46,11 +46,11 @@ class PreferencesResponse {
 
   factory PreferencesResponse.fromMap(Map<String, dynamic> map) {
     return PreferencesResponse(
-      encryptionPreferences: map['encryptionPreferences'] == null ? null : (EncryptionPreferencesResponse.fromMap((map['encryptionPreferences'] as Map).cast<String, dynamic>())).input(),
-      managementResourcePreferences: map['managementResourcePreferences'] == null ? null : (ManagementResourcePreferencesResponse.fromMap((map['managementResourcePreferences'] as Map).cast<String, dynamic>())).input(),
-      notificationPreferences: map['notificationPreferences'] == null ? null : (pulumi.Input.decodeList<NotificationPreferenceResponse>(map['notificationPreferences'], (value) => NotificationPreferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      termCommitmentPreferences: map['termCommitmentPreferences'] == null ? null : (TermCommitmentPreferencesResponse.fromMap((map['termCommitmentPreferences'] as Map).cast<String, dynamic>())).input(),
-      transportPreferences: map['transportPreferences'] == null ? null : (TransportPreferencesResponse.fromMap((map['transportPreferences'] as Map).cast<String, dynamic>())).input(),
+      encryptionPreferences: map['encryptionPreferences'] == null ? null : (EncryptionPreferencesResponse.fromMap((map['encryptionPreferences']! as Map).cast<String, dynamic>())).input(),
+      managementResourcePreferences: map['managementResourcePreferences'] == null ? null : (ManagementResourcePreferencesResponse.fromMap((map['managementResourcePreferences']! as Map).cast<String, dynamic>())).input(),
+      notificationPreferences: map['notificationPreferences'] == null ? null : (pulumi.Input.decodeList<NotificationPreferenceResponse>(map['notificationPreferences']!, (value) => NotificationPreferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      termCommitmentPreferences: map['termCommitmentPreferences'] == null ? null : (TermCommitmentPreferencesResponse.fromMap((map['termCommitmentPreferences']! as Map).cast<String, dynamic>())).input(),
+      transportPreferences: map['transportPreferences'] == null ? null : (TransportPreferencesResponse.fromMap((map['transportPreferences']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

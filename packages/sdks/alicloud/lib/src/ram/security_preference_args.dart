@@ -119,20 +119,20 @@ class SecurityPreferenceArgs {
 
   factory SecurityPreferenceArgs.fromMap(Map<String, dynamic> map) {
     return SecurityPreferenceArgs(
-      allowUserToChangePassword: map['allowUserToChangePassword'] == null ? null : (map['allowUserToChangePassword'] as bool).input(),
-      allowUserToLoginWithPasskey: map['allowUserToLoginWithPasskey'] == null ? null : (map['allowUserToLoginWithPasskey'] as bool).input(),
-      allowUserToManageAccessKeys: map['allowUserToManageAccessKeys'] == null ? null : (map['allowUserToManageAccessKeys'] as bool).input(),
-      allowUserToManageMfaDevices: map['allowUserToManageMfaDevices'] == null ? null : (map['allowUserToManageMfaDevices'] as bool).input(),
-      allowUserToManagePersonalDingTalk: map['allowUserToManagePersonalDingTalk'] == null ? null : (map['allowUserToManagePersonalDingTalk'] as bool).input(),
-      enableSaveMfaTicket: map['enableSaveMfaTicket'] == null ? null : (map['enableSaveMfaTicket'] as bool).input(),
-      enforceMfaForLogin: map['enforceMfaForLogin'] == null ? null : (map['enforceMfaForLogin'] as bool).input(),
-      loginNetworkMasks: map['loginNetworkMasks'] == null ? null : (map['loginNetworkMasks'] as String).input(),
-      loginSessionDuration: map['loginSessionDuration'] == null ? null : (map['loginSessionDuration'] as int).input(),
-      maxIdleDaysForAccessKeys: map['maxIdleDaysForAccessKeys'] == null ? null : (map['maxIdleDaysForAccessKeys'] as int).input(),
-      maxIdleDaysForUsers: map['maxIdleDaysForUsers'] == null ? null : (map['maxIdleDaysForUsers'] as int).input(),
-      mfaOperationForLogin: map['mfaOperationForLogin'] == null ? null : (map['mfaOperationForLogin'] as String).input(),
-      operationForRiskLogin: map['operationForRiskLogin'] == null ? null : (map['operationForRiskLogin'] as String).input(),
-      verificationTypes: map['verificationTypes'] == null ? null : ((map['verificationTypes'] as List).cast<String>()).input(),
+      allowUserToChangePassword: map['allowUserToChangePassword'] == null ? null : (map['allowUserToChangePassword']! as bool).input(),
+      allowUserToLoginWithPasskey: map['allowUserToLoginWithPasskey'] == null ? null : (map['allowUserToLoginWithPasskey']! as bool).input(),
+      allowUserToManageAccessKeys: map['allowUserToManageAccessKeys'] == null ? null : (map['allowUserToManageAccessKeys']! as bool).input(),
+      allowUserToManageMfaDevices: map['allowUserToManageMfaDevices'] == null ? null : (map['allowUserToManageMfaDevices']! as bool).input(),
+      allowUserToManagePersonalDingTalk: map['allowUserToManagePersonalDingTalk'] == null ? null : (map['allowUserToManagePersonalDingTalk']! as bool).input(),
+      enableSaveMfaTicket: map['enableSaveMfaTicket'] == null ? null : (map['enableSaveMfaTicket']! as bool).input(),
+      enforceMfaForLogin: map['enforceMfaForLogin'] == null ? null : (map['enforceMfaForLogin']! as bool).input(),
+      loginNetworkMasks: map['loginNetworkMasks'] == null ? null : (map['loginNetworkMasks']! as String).input(),
+      loginSessionDuration: map['loginSessionDuration'] == null ? null : (map['loginSessionDuration']! as int).input(),
+      maxIdleDaysForAccessKeys: map['maxIdleDaysForAccessKeys'] == null ? null : (map['maxIdleDaysForAccessKeys']! as int).input(),
+      maxIdleDaysForUsers: map['maxIdleDaysForUsers'] == null ? null : (map['maxIdleDaysForUsers']! as int).input(),
+      mfaOperationForLogin: map['mfaOperationForLogin'] == null ? null : (map['mfaOperationForLogin']! as String).input(),
+      operationForRiskLogin: map['operationForRiskLogin'] == null ? null : (map['operationForRiskLogin']! as String).input(),
+      verificationTypes: map['verificationTypes'] == null ? null : ((map['verificationTypes']! as List).cast<String>()).input(),
     );
   }
 }

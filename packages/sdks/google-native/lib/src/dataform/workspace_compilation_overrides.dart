@@ -31,9 +31,9 @@ class WorkspaceCompilationOverrides {
 
   factory WorkspaceCompilationOverrides.fromMap(Map<String, dynamic> map) {
     return WorkspaceCompilationOverrides(
-      defaultDatabase: map['defaultDatabase'] == null ? null : (map['defaultDatabase'] as String).input(),
-      schemaSuffix: map['schemaSuffix'] == null ? null : (map['schemaSuffix'] as String).input(),
-      tablePrefix: map['tablePrefix'] == null ? null : (map['tablePrefix'] as String).input(),
+      defaultDatabase: map['defaultDatabase'] == null ? null : (map['defaultDatabase']! as String).input(),
+      schemaSuffix: map['schemaSuffix'] == null ? null : (map['schemaSuffix']! as String).input(),
+      tablePrefix: map['tablePrefix'] == null ? null : (map['tablePrefix']! as String).input(),
     );
   }
 }

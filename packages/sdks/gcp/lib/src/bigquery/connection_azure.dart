@@ -55,13 +55,13 @@ class ConnectionAzure {
 
   factory ConnectionAzure.fromMap(Map<String, dynamic> map) {
     return ConnectionAzure(
-      application: map['application'] == null ? null : (map['application'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      application: map['application'] == null ? null : (map['application']! as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
       customerTenantId: (map['customerTenantId'] as String).input(),
-      federatedApplicationClientId: map['federatedApplicationClientId'] == null ? null : (map['federatedApplicationClientId'] as String).input(),
-      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      redirectUri: map['redirectUri'] == null ? null : (map['redirectUri'] as String).input(),
+      federatedApplicationClientId: map['federatedApplicationClientId'] == null ? null : (map['federatedApplicationClientId']! as String).input(),
+      identity: map['identity'] == null ? null : (map['identity']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      redirectUri: map['redirectUri'] == null ? null : (map['redirectUri']! as String).input(),
     );
   }
 }

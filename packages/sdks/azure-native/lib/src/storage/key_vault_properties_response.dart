@@ -48,9 +48,9 @@ class KeyVaultPropertiesResponse {
     return KeyVaultPropertiesResponse(
       currentVersionedKeyExpirationTimestamp: (map['currentVersionedKeyExpirationTimestamp'] as String).input(),
       currentVersionedKeyIdentifier: (map['currentVersionedKeyIdentifier'] as String).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri'] as String).input(),
-      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
+      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri']! as String).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion']! as String).input(),
       lastKeyRotationTimestamp: (map['lastKeyRotationTimestamp'] as String).input(),
     );
   }

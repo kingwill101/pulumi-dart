@@ -74,7 +74,7 @@ class HciRemoteSupportJobPropertiesResponse {
   factory HciRemoteSupportJobPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return HciRemoteSupportJobPropertiesResponse(
       accessLevel: (map['accessLevel'] as String).input(),
-      deploymentMode: map['deploymentMode'] == null ? null : (map['deploymentMode'] as String).input(),
+      deploymentMode: map['deploymentMode'] == null ? null : (map['deploymentMode']! as String).input(),
       endTimeUtc: (map['endTimeUtc'] as String).input(),
       expirationTimestamp: (map['expirationTimestamp'] as String).input(),
       jobId: (map['jobId'] as String).input(),

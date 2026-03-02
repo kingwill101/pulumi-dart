@@ -51,10 +51,10 @@ class JobAppEngineHttpTarget {
 
   factory JobAppEngineHttpTarget.fromMap(Map<String, dynamic> map) {
     return JobAppEngineHttpTarget(
-      appEngineRouting: map['appEngineRouting'] == null ? null : (JobAppEngineHttpTargetAppEngineRouting.fromMap((map['appEngineRouting'] as Map).cast<String, dynamic>())).input(),
-      body: map['body'] == null ? null : (map['body'] as String).input(),
-      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, String>()).input(),
-      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod'] as String).input(),
+      appEngineRouting: map['appEngineRouting'] == null ? null : (JobAppEngineHttpTargetAppEngineRouting.fromMap((map['appEngineRouting']! as Map).cast<String, dynamic>())).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
+      headers: map['headers'] == null ? null : ((map['headers']! as Map).cast<String, String>()).input(),
+      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod']! as String).input(),
       relativeUri: (map['relativeUri'] as String).input(),
     );
   }

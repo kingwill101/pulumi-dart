@@ -31,7 +31,7 @@ class RuleGroupRuleStatementByteMatchStatementFieldToMatchCookies {
 
   factory RuleGroupRuleStatementByteMatchStatementFieldToMatchCookies.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementByteMatchStatementFieldToMatchCookies(
-      matchPatterns: (pulumi.Input.decodeList<RuleGroupRuleStatementByteMatchStatementFieldToMatchCookiesMatchPattern>(map['matchPatterns'], (value) => RuleGroupRuleStatementByteMatchStatementFieldToMatchCookiesMatchPattern.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchPatterns: (pulumi.Input.decodeList<RuleGroupRuleStatementByteMatchStatementFieldToMatchCookiesMatchPattern>(map['matchPatterns']!, (value) => RuleGroupRuleStatementByteMatchStatementFieldToMatchCookiesMatchPattern.fromMap((value as Map).cast<String, dynamic>()))).input(),
       matchScope: (map['matchScope'] as String).input(),
       oversizeHandling: (map['oversizeHandling'] as String).input(),
     );

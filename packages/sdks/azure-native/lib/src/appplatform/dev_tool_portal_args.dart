@@ -40,8 +40,8 @@ class DevToolPortalArgs {
 
   factory DevToolPortalArgs.fromMap(Map<String, dynamic> map) {
     return DevToolPortalArgs(
-      devToolPortalName: map['devToolPortalName'] == null ? null : (map['devToolPortalName'] as String).input(),
-      properties: map['properties'] == null ? null : (DevToolPortalProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      devToolPortalName: map['devToolPortalName'] == null ? null : (map['devToolPortalName']! as String).input(),
+      properties: map['properties'] == null ? null : (DevToolPortalProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

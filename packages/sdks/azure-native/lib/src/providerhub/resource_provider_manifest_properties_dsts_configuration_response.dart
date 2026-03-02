@@ -26,7 +26,7 @@ class ResourceProviderManifestPropertiesDstsConfigurationResponse {
 
   factory ResourceProviderManifestPropertiesDstsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ResourceProviderManifestPropertiesDstsConfigurationResponse(
-      serviceDnsName: map['serviceDnsName'] == null ? null : (map['serviceDnsName'] as String).input(),
+      serviceDnsName: map['serviceDnsName'] == null ? null : (map['serviceDnsName']! as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );
   }

@@ -55,8 +55,8 @@ class ApiRequestParameter {
 
   factory ApiRequestParameter.fromMap(Map<String, dynamic> map) {
     return ApiRequestParameter(
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       in_: (map['in'] as String).input(),
       inService: (map['inService'] as String).input(),
       name: (map['name'] as String).input(),

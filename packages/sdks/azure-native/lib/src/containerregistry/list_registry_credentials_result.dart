@@ -27,8 +27,8 @@ class ListRegistryCredentialsResult {
 
   factory ListRegistryCredentialsResult.fromMap(Map<String, dynamic> map) {
     return ListRegistryCredentialsResult(
-      passwords: map['passwords'] == null ? null : pulumi.Input.decodeList<RegistryPasswordResponse>(map['passwords'], (value) => RegistryPasswordResponse.fromMap((value as Map).cast<String, dynamic>())),
-      username: map['username'] == null ? null : map['username'] as String,
+      passwords: map['passwords'] == null ? null : pulumi.Input.decodeList<RegistryPasswordResponse>(map['passwords']!, (value) => RegistryPasswordResponse.fromMap((value as Map).cast<String, dynamic>())),
+      username: map['username'] == null ? null : map['username']! as String,
     );
   }
 }

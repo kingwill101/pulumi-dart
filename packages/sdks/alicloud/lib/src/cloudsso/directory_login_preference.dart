@@ -25,8 +25,8 @@ class DirectoryLoginPreference {
 
   factory DirectoryLoginPreference.fromMap(Map<String, dynamic> map) {
     return DirectoryLoginPreference(
-      allowUserToGetCredentials: map['allowUserToGetCredentials'] == null ? null : (map['allowUserToGetCredentials'] as bool).input(),
-      loginNetworkMasks: map['loginNetworkMasks'] == null ? null : (map['loginNetworkMasks'] as String).input(),
+      allowUserToGetCredentials: map['allowUserToGetCredentials'] == null ? null : (map['allowUserToGetCredentials']! as bool).input(),
+      loginNetworkMasks: map['loginNetworkMasks'] == null ? null : (map['loginNetworkMasks']! as String).input(),
     );
   }
 }

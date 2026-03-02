@@ -20,7 +20,7 @@ class AliasRoutingConfig {
 
   factory AliasRoutingConfig.fromMap(Map<String, dynamic> map) {
     return AliasRoutingConfig(
-      additionalVersionWeights: map['additionalVersionWeights'] == null ? null : ((map['additionalVersionWeights'] as Map).cast<String, double>()).input(),
+      additionalVersionWeights: map['additionalVersionWeights'] == null ? null : (((map['additionalVersionWeights'] as Map).cast<String, double>()).input()).input(),
     );
   }
 }

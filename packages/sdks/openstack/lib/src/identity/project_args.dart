@@ -66,14 +66,14 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      isDomain: map['isDomain'] == null ? null : (map['isDomain'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentId: map['parentId'] == null ? null : (map['parentId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      isDomain: map['isDomain'] == null ? null : (map['isDomain']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parentId: map['parentId'] == null ? null : (map['parentId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
     );
   }
 }

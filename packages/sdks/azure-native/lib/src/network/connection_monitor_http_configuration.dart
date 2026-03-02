@@ -47,12 +47,12 @@ class ConnectionMonitorHttpConfiguration {
 
   factory ConnectionMonitorHttpConfiguration.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorHttpConfiguration(
-      method: map['method'] == null ? null : (map['method'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      preferHTTPS: map['preferHTTPS'] == null ? null : (map['preferHTTPS'] as bool).input(),
-      requestHeaders: map['requestHeaders'] == null ? null : (pulumi.Input.decodeList<HTTPHeader>(map['requestHeaders'], (value) => HTTPHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      validStatusCodeRanges: map['validStatusCodeRanges'] == null ? null : ((map['validStatusCodeRanges'] as List).cast<String>()).input(),
+      method: map['method'] == null ? null : (map['method']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      preferHTTPS: map['preferHTTPS'] == null ? null : (map['preferHTTPS']! as bool).input(),
+      requestHeaders: map['requestHeaders'] == null ? null : (pulumi.Input.decodeList<HTTPHeader>(map['requestHeaders']!, (value) => HTTPHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      validStatusCodeRanges: map['validStatusCodeRanges'] == null ? null : ((map['validStatusCodeRanges']! as List).cast<String>()).input(),
     );
   }
 }

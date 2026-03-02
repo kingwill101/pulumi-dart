@@ -31,9 +31,9 @@ class VpnGatewayRoutePropagationState {
 
   factory VpnGatewayRoutePropagationState.fromMap(Map<String, dynamic> map) {
     return VpnGatewayRoutePropagationState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
-      vpnGatewayId: map['vpnGatewayId'] == null ? null : (map['vpnGatewayId'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      routeTableId: map['routeTableId'] == null ? null : ((map['routeTableId'] as String).input()).input(),
+      vpnGatewayId: map['vpnGatewayId'] == null ? null : ((map['vpnGatewayId'] as String).input()).input(),
     );
   }
 }

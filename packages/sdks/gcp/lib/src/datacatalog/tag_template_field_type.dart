@@ -30,8 +30,8 @@ class TagTemplateFieldType {
 
   factory TagTemplateFieldType.fromMap(Map<String, dynamic> map) {
     return TagTemplateFieldType(
-      enumType: map['enumType'] == null ? null : (TagTemplateFieldTypeEnumType.fromMap((map['enumType'] as Map).cast<String, dynamic>())).input(),
-      primitiveType: map['primitiveType'] == null ? null : (map['primitiveType'] as String).input(),
+      enumType: map['enumType'] == null ? null : (TagTemplateFieldTypeEnumType.fromMap((map['enumType']! as Map).cast<String, dynamic>())).input(),
+      primitiveType: map['primitiveType'] == null ? null : (map['primitiveType']! as String).input(),
     );
   }
 }

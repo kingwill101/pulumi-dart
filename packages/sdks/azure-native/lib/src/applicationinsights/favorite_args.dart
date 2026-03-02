@@ -75,17 +75,17 @@ class FavoriteArgs {
 
   factory FavoriteArgs.fromMap(Map<String, dynamic> map) {
     return FavoriteArgs(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      config: map['config'] == null ? null : (map['config'] as String).input(),
-      favoriteId: map['favoriteId'] == null ? null : (map['favoriteId'] as String).input(),
-      favoriteType: map['favoriteType'] == null ? null : (FavoriteType.fromValue(map['favoriteType'] as String)).input(),
-      isGeneratedFromTemplate: map['isGeneratedFromTemplate'] == null ? null : (map['isGeneratedFromTemplate'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      config: map['config'] == null ? null : (map['config']! as String).input(),
+      favoriteId: map['favoriteId'] == null ? null : (map['favoriteId']! as String).input(),
+      favoriteType: map['favoriteType'] == null ? null : (FavoriteType.fromValue(map['favoriteType']! as String)).input(),
+      isGeneratedFromTemplate: map['isGeneratedFromTemplate'] == null ? null : (map['isGeneratedFromTemplate']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
-      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

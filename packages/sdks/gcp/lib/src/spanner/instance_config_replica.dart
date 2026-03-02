@@ -34,9 +34,9 @@ class InstanceConfigReplica {
 
   factory InstanceConfigReplica.fromMap(Map<String, dynamic> map) {
     return InstanceConfigReplica(
-      defaultLeaderLocation: map['defaultLeaderLocation'] == null ? null : (map['defaultLeaderLocation'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      defaultLeaderLocation: map['defaultLeaderLocation'] == null ? null : (map['defaultLeaderLocation']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

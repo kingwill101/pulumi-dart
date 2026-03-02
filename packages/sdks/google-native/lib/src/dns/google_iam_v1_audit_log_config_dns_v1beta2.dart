@@ -27,8 +27,8 @@ class GoogleIamV1AuditLogConfigDnsV1beta2 {
 
   factory GoogleIamV1AuditLogConfigDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return GoogleIamV1AuditLogConfigDnsV1beta2(
-      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers'] as List).cast<String>()).input(),
-      logType: map['logType'] == null ? null : (GoogleIamV1AuditLogConfigLogTypeDnsV1beta2.fromValue(map['logType'] as String)).input(),
+      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers']! as List).cast<String>()).input(),
+      logType: map['logType'] == null ? null : (GoogleIamV1AuditLogConfigLogTypeDnsV1beta2.fromValue(map['logType']! as String)).input(),
     );
   }
 }

@@ -34,9 +34,9 @@ class PolicyAssignmentPropertiesResponse {
 
   factory PolicyAssignmentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PolicyAssignmentPropertiesResponse(
-      policy: map['policy'] == null ? null : (PolicyAssignmentPropertiesResponsePolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
-      roleDefinition: map['roleDefinition'] == null ? null : (PolicyAssignmentPropertiesResponseRoleDefinition.fromMap((map['roleDefinition'] as Map).cast<String, dynamic>())).input(),
-      scope: map['scope'] == null ? null : (PolicyAssignmentPropertiesResponseScope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
+      policy: map['policy'] == null ? null : (PolicyAssignmentPropertiesResponsePolicy.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
+      roleDefinition: map['roleDefinition'] == null ? null : (PolicyAssignmentPropertiesResponseRoleDefinition.fromMap((map['roleDefinition']! as Map).cast<String, dynamic>())).input(),
+      scope: map['scope'] == null ? null : (PolicyAssignmentPropertiesResponseScope.fromMap((map['scope']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

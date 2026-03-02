@@ -27,7 +27,7 @@ class ImageShieldedInstanceInitialStatePk {
   factory ImageShieldedInstanceInitialStatePk.fromMap(Map<String, dynamic> map) {
     return ImageShieldedInstanceInitialStatePk(
       content: (map['content'] as String).input(),
-      fileType: map['fileType'] == null ? null : (map['fileType'] as String).input(),
+      fileType: map['fileType'] == null ? null : (map['fileType']! as String).input(),
     );
   }
 }

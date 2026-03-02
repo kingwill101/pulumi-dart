@@ -41,11 +41,11 @@ class MigrateProjectProperties {
 
   factory MigrateProjectProperties.fromMap(Map<String, dynamic> map) {
     return MigrateProjectProperties(
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
-      registeredTools: map['registeredTools'] == null ? null : ((map['registeredTools'] as List).cast<String>()).input(),
-      serviceEndpoint: map['serviceEndpoint'] == null ? null : (map['serviceEndpoint'] as String).input(),
-      utilityStorageAccountId: map['utilityStorageAccountId'] == null ? null : (map['utilityStorageAccountId'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
+      registeredTools: map['registeredTools'] == null ? null : ((map['registeredTools']! as List).cast<String>()).input(),
+      serviceEndpoint: map['serviceEndpoint'] == null ? null : (map['serviceEndpoint']! as String).input(),
+      utilityStorageAccountId: map['utilityStorageAccountId'] == null ? null : (map['utilityStorageAccountId']! as String).input(),
     );
   }
 }

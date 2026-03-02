@@ -98,21 +98,21 @@ class ExpressRouteCircuitState {
 
   factory ExpressRouteCircuitState.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitState(
-      allowClassicOperations: map['allowClassicOperations'] == null ? null : (map['allowClassicOperations'] as bool).input(),
-      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey'] as String).input(),
-      bandwidthInGbps: map['bandwidthInGbps'] == null ? null : (map['bandwidthInGbps'] as double).input(),
-      bandwidthInMbps: map['bandwidthInMbps'] == null ? null : (map['bandwidthInMbps'] as int).input(),
-      expressRoutePortId: map['expressRoutePortId'] == null ? null : (map['expressRoutePortId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      peeringLocation: map['peeringLocation'] == null ? null : (map['peeringLocation'] as String).input(),
-      rateLimitingEnabled: map['rateLimitingEnabled'] == null ? null : (map['rateLimitingEnabled'] as bool).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      serviceKey: map['serviceKey'] == null ? null : (map['serviceKey'] as String).input(),
-      serviceProviderName: map['serviceProviderName'] == null ? null : (map['serviceProviderName'] as String).input(),
-      serviceProviderProvisioningState: map['serviceProviderProvisioningState'] == null ? null : (map['serviceProviderProvisioningState'] as String).input(),
-      sku: map['sku'] == null ? null : (ExpressRouteCircuitSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      allowClassicOperations: map['allowClassicOperations'] == null ? null : (map['allowClassicOperations']! as bool).input(),
+      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey']! as String).input(),
+      bandwidthInGbps: map['bandwidthInGbps'] == null ? null : (map['bandwidthInGbps']! as double).input(),
+      bandwidthInMbps: map['bandwidthInMbps'] == null ? null : (map['bandwidthInMbps']! as int).input(),
+      expressRoutePortId: map['expressRoutePortId'] == null ? null : (map['expressRoutePortId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      peeringLocation: map['peeringLocation'] == null ? null : (map['peeringLocation']! as String).input(),
+      rateLimitingEnabled: map['rateLimitingEnabled'] == null ? null : (map['rateLimitingEnabled']! as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      serviceKey: map['serviceKey'] == null ? null : (map['serviceKey']! as String).input(),
+      serviceProviderName: map['serviceProviderName'] == null ? null : (map['serviceProviderName']! as String).input(),
+      serviceProviderProvisioningState: map['serviceProviderProvisioningState'] == null ? null : (map['serviceProviderProvisioningState']! as String).input(),
+      sku: map['sku'] == null ? null : (ExpressRouteCircuitSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ServerKeyRestrictions {
 
   factory ServerKeyRestrictions.fromMap(Map<String, dynamic> map) {
     return ServerKeyRestrictions(
-      allowedIps: map['allowedIps'] == null ? null : ((map['allowedIps'] as List).cast<String>()).input(),
+      allowedIps: map['allowedIps'] == null ? null : ((map['allowedIps']! as List).cast<String>()).input(),
     );
   }
 }

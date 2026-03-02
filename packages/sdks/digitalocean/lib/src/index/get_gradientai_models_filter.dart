@@ -31,9 +31,9 @@ class GetGradientaiModelsFilter {
 
   factory GetGradientaiModelsFilter.fromMap(Map<String, dynamic> map) {
     return GetGradientaiModelsFilter(
-      all: map['all'] == null ? null : (map['all'] as bool).input(),
+      all: map['all'] == null ? null : (map['all']! as bool).input(),
       key: (map['key'] as String).input(),
-      matchBy: map['matchBy'] == null ? null : (map['matchBy'] as String).input(),
+      matchBy: map['matchBy'] == null ? null : (map['matchBy']! as String).input(),
       values: ((map['values'] as List).cast<String>()).input(),
     );
   }

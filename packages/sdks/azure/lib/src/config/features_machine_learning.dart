@@ -19,7 +19,7 @@ class FeaturesMachineLearning {
 
   factory FeaturesMachineLearning.fromMap(Map<String, dynamic> map) {
     return FeaturesMachineLearning(
-      purgeSoftDeletedWorkspaceOnDestroy: map['purgeSoftDeletedWorkspaceOnDestroy'] == null ? null : (map['purgeSoftDeletedWorkspaceOnDestroy'] as bool).input(),
+      purgeSoftDeletedWorkspaceOnDestroy: map['purgeSoftDeletedWorkspaceOnDestroy'] == null ? null : (map['purgeSoftDeletedWorkspaceOnDestroy']! as bool).input(),
     );
   }
 }

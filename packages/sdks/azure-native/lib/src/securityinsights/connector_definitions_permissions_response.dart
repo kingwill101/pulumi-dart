@@ -38,10 +38,10 @@ class ConnectorDefinitionsPermissionsResponse {
 
   factory ConnectorDefinitionsPermissionsResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorDefinitionsPermissionsResponse(
-      customs: map['customs'] == null ? null : (pulumi.Input.decodeList<CustomPermissionDetailsResponse>(map['customs'], (value) => CustomPermissionDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      licenses: map['licenses'] == null ? null : ((map['licenses'] as List).cast<String>()).input(),
-      resourceProvider: map['resourceProvider'] == null ? null : (pulumi.Input.decodeList<ConnectorDefinitionsResourceProviderResponse>(map['resourceProvider'], (value) => ConnectorDefinitionsResourceProviderResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tenant: map['tenant'] == null ? null : ((map['tenant'] as List).cast<String>()).input(),
+      customs: map['customs'] == null ? null : (pulumi.Input.decodeList<CustomPermissionDetailsResponse>(map['customs']!, (value) => CustomPermissionDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      licenses: map['licenses'] == null ? null : ((map['licenses']! as List).cast<String>()).input(),
+      resourceProvider: map['resourceProvider'] == null ? null : (pulumi.Input.decodeList<ConnectorDefinitionsResourceProviderResponse>(map['resourceProvider']!, (value) => ConnectorDefinitionsResourceProviderResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tenant: map['tenant'] == null ? null : ((map['tenant']! as List).cast<String>()).input(),
     );
   }
 }

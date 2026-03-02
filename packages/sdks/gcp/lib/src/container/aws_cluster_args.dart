@@ -88,18 +88,18 @@ class AwsClusterArgs {
 
   factory AwsClusterArgs.fromMap(Map<String, dynamic> map) {
     return AwsClusterArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
       authorization: (AwsClusterAuthorization.fromMap((map['authorization'] as Map).cast<String, dynamic>())).input(),
       awsRegion: (map['awsRegion'] as String).input(),
-      binaryAuthorization: map['binaryAuthorization'] == null ? null : (AwsClusterBinaryAuthorization.fromMap((map['binaryAuthorization'] as Map).cast<String, dynamic>())).input(),
+      binaryAuthorization: map['binaryAuthorization'] == null ? null : (AwsClusterBinaryAuthorization.fromMap((map['binaryAuthorization']! as Map).cast<String, dynamic>())).input(),
       controlPlane: (AwsClusterControlPlane.fromMap((map['controlPlane'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       fleet: (AwsClusterFleet.fromMap((map['fleet'] as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
-      loggingConfig: map['loggingConfig'] == null ? null : (AwsClusterLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : (AwsClusterLoggingConfig.fromMap((map['loggingConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networking: (AwsClusterNetworking.fromMap((map['networking'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -76,13 +76,13 @@ class GetGlobalReachConnectionResult {
   factory GetGlobalReachConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetGlobalReachConnectionResult(
       addressPrefix: map['addressPrefix'] as String,
-      authorizationKey: map['authorizationKey'] == null ? null : map['authorizationKey'] as String,
+      authorizationKey: map['authorizationKey'] == null ? null : map['authorizationKey']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       circuitConnectionStatus: map['circuitConnectionStatus'] as String,
-      expressRouteId: map['expressRouteId'] == null ? null : map['expressRouteId'] as String,
+      expressRouteId: map['expressRouteId'] == null ? null : map['expressRouteId']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      peerExpressRouteCircuit: map['peerExpressRouteCircuit'] == null ? null : map['peerExpressRouteCircuit'] as String,
+      peerExpressRouteCircuit: map['peerExpressRouteCircuit'] == null ? null : map['peerExpressRouteCircuit']! as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,

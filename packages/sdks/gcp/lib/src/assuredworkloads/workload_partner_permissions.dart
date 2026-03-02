@@ -30,9 +30,9 @@ class WorkloadPartnerPermissions {
 
   factory WorkloadPartnerPermissions.fromMap(Map<String, dynamic> map) {
     return WorkloadPartnerPermissions(
-      assuredWorkloadsMonitoring: map['assuredWorkloadsMonitoring'] == null ? null : (map['assuredWorkloadsMonitoring'] as bool).input(),
-      dataLogsViewer: map['dataLogsViewer'] == null ? null : (map['dataLogsViewer'] as bool).input(),
-      serviceAccessApprover: map['serviceAccessApprover'] == null ? null : (map['serviceAccessApprover'] as bool).input(),
+      assuredWorkloadsMonitoring: map['assuredWorkloadsMonitoring'] == null ? null : (map['assuredWorkloadsMonitoring']! as bool).input(),
+      dataLogsViewer: map['dataLogsViewer'] == null ? null : (map['dataLogsViewer']! as bool).input(),
+      serviceAccessApprover: map['serviceAccessApprover'] == null ? null : (map['serviceAccessApprover']! as bool).input(),
     );
   }
 }

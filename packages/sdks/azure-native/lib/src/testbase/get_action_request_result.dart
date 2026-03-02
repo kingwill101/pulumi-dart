@@ -67,7 +67,7 @@ class GetActionRequestResult {
       creationDate: map['creationDate'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      preReleaseAccessRequestSpec: map['preReleaseAccessRequestSpec'] == null ? null : PreReleaseAccessRequestSpecResponse.fromMap((map['preReleaseAccessRequestSpec'] as Map).cast<String, dynamic>()),
+      preReleaseAccessRequestSpec: map['preReleaseAccessRequestSpec'] == null ? null : PreReleaseAccessRequestSpecResponse.fromMap((map['preReleaseAccessRequestSpec']! as Map).cast<String, dynamic>()),
       provisioningState: map['provisioningState'] as String,
       requestType: map['requestType'] as String,
       status: map['status'] as String,

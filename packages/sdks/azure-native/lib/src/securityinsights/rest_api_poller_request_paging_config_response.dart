@@ -31,8 +31,8 @@ class RestApiPollerRequestPagingConfigResponse {
 
   factory RestApiPollerRequestPagingConfigResponse.fromMap(Map<String, dynamic> map) {
     return RestApiPollerRequestPagingConfigResponse(
-      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
-      pageSizeParameterName: map['pageSizeParameterName'] == null ? null : (map['pageSizeParameterName'] as String).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
+      pageSizeParameterName: map['pageSizeParameterName'] == null ? null : (map['pageSizeParameterName']! as String).input(),
       pagingType: (map['pagingType'] as String).input(),
     );
   }

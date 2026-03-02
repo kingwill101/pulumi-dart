@@ -47,13 +47,13 @@ class GetEngineNamespacesResult {
 
   factory GetEngineNamespacesResult.fromMap(Map<String, dynamic> map) {
     return GetEngineNamespacesResult(
-      acceptLanguage: map['acceptLanguage'] == null ? null : map['acceptLanguage'] as String,
-      clusterId: map['clusterId'] == null ? null : map['clusterId'] as String,
+      acceptLanguage: map['acceptLanguage'] == null ? null : map['acceptLanguage']! as String,
+      clusterId: map['clusterId'] == null ? null : map['clusterId']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
+      instanceId: map['instanceId'] == null ? null : map['instanceId']! as String,
       namespaces: pulumi.Input.decodeList<GetEngineNamespacesNamespace>(map['namespaces'], (value) => GetEngineNamespacesNamespace.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

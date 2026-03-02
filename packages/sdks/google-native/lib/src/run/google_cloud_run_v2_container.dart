@@ -81,18 +81,18 @@ class GoogleCloudRunV2Container {
 
   factory GoogleCloudRunV2Container.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2Container(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      command: map['command'] == null ? null : ((map['command'] as List).cast<String>()).input(),
-      dependsOn: map['dependsOn'] == null ? null : ((map['dependsOn'] as List).cast<String>()).input(),
-      env: map['env'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV2EnvVar>(map['env'], (value) => GoogleCloudRunV2EnvVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      command: map['command'] == null ? null : ((map['command']! as List).cast<String>()).input(),
+      dependsOn: map['dependsOn'] == null ? null : ((map['dependsOn']! as List).cast<String>()).input(),
+      env: map['env'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV2EnvVar>(map['env']!, (value) => GoogleCloudRunV2EnvVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
       image: (map['image'] as String).input(),
-      livenessProbe: map['livenessProbe'] == null ? null : (GoogleCloudRunV2Probe.fromMap((map['livenessProbe'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV2ContainerPort>(map['ports'], (value) => GoogleCloudRunV2ContainerPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resources: map['resources'] == null ? null : (GoogleCloudRunV2ResourceRequirements.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
-      startupProbe: map['startupProbe'] == null ? null : (GoogleCloudRunV2Probe.fromMap((map['startupProbe'] as Map).cast<String, dynamic>())).input(),
-      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV2VolumeMount>(map['volumeMounts'], (value) => GoogleCloudRunV2VolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      workingDir: map['workingDir'] == null ? null : (map['workingDir'] as String).input(),
+      livenessProbe: map['livenessProbe'] == null ? null : (GoogleCloudRunV2Probe.fromMap((map['livenessProbe']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV2ContainerPort>(map['ports']!, (value) => GoogleCloudRunV2ContainerPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resources: map['resources'] == null ? null : (GoogleCloudRunV2ResourceRequirements.fromMap((map['resources']! as Map).cast<String, dynamic>())).input(),
+      startupProbe: map['startupProbe'] == null ? null : (GoogleCloudRunV2Probe.fromMap((map['startupProbe']! as Map).cast<String, dynamic>())).input(),
+      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV2VolumeMount>(map['volumeMounts']!, (value) => GoogleCloudRunV2VolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      workingDir: map['workingDir'] == null ? null : (map['workingDir']! as String).input(),
     );
   }
 }

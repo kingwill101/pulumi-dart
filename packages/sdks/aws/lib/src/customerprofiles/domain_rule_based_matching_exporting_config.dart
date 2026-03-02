@@ -20,7 +20,7 @@ class DomainRuleBasedMatchingExportingConfig {
 
   factory DomainRuleBasedMatchingExportingConfig.fromMap(Map<String, dynamic> map) {
     return DomainRuleBasedMatchingExportingConfig(
-      s3Exporting: map['s3Exporting'] == null ? null : (DomainRuleBasedMatchingExportingConfigS3Exporting.fromMap((map['s3Exporting'] as Map).cast<String, dynamic>())).input(),
+      s3Exporting: map['s3Exporting'] == null ? null : ((DomainRuleBasedMatchingExportingConfigS3Exporting.fromMap((map['s3Exporting']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

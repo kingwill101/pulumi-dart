@@ -30,9 +30,9 @@ class IdentityPoolCognitoIdentityProvider {
 
   factory IdentityPoolCognitoIdentityProvider.fromMap(Map<String, dynamic> map) {
     return IdentityPoolCognitoIdentityProvider(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
-      serverSideTokenCheck: map['serverSideTokenCheck'] == null ? null : (map['serverSideTokenCheck'] as bool).input(),
+      clientId: map['clientId'] == null ? null : ((map['clientId'] as String).input()).input(),
+      providerName: map['providerName'] == null ? null : ((map['providerName'] as String).input()).input(),
+      serverSideTokenCheck: map['serverSideTokenCheck'] == null ? null : ((map['serverSideTokenCheck'] as bool).input()).input(),
     );
   }
 }

@@ -40,8 +40,8 @@ class GetDomainTxtGuidArgs {
   factory GetDomainTxtGuidArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainTxtGuidArgs(
       domainName: (map['domainName'] as String).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -41,11 +41,11 @@ class DomainExtensionState {
 
   factory DomainExtensionState.fromMap(Map<String, dynamic> map) {
     return DomainExtensionState(
-      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : (map['deleteProtectionValidation'] as bool).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort'] as int).input(),
-      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId'] as String).input(),
-      serverCertificateId: map['serverCertificateId'] == null ? null : (map['serverCertificateId'] as String).input(),
+      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : (map['deleteProtectionValidation']! as bool).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort']! as int).input(),
+      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId']! as String).input(),
+      serverCertificateId: map['serverCertificateId'] == null ? null : (map['serverCertificateId']! as String).input(),
     );
   }
 }

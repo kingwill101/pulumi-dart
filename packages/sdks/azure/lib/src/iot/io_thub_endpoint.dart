@@ -91,19 +91,19 @@ class IoTHubEndpoint {
 
   factory IoTHubEndpoint.fromMap(Map<String, dynamic> map) {
     return IoTHubEndpoint(
-      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
-      batchFrequencyInSeconds: map['batchFrequencyInSeconds'] == null ? null : (map['batchFrequencyInSeconds'] as int).input(),
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
-      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri'] as String).input(),
-      entityPath: map['entityPath'] == null ? null : (map['entityPath'] as String).input(),
-      fileNameFormat: map['fileNameFormat'] == null ? null : (map['fileNameFormat'] as String).input(),
-      identityId: map['identityId'] == null ? null : (map['identityId'] as String).input(),
-      maxChunkSizeInBytes: map['maxChunkSizeInBytes'] == null ? null : (map['maxChunkSizeInBytes'] as int).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType']! as String).input(),
+      batchFrequencyInSeconds: map['batchFrequencyInSeconds'] == null ? null : (map['batchFrequencyInSeconds']! as int).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
+      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri']! as String).input(),
+      entityPath: map['entityPath'] == null ? null : (map['entityPath']! as String).input(),
+      fileNameFormat: map['fileNameFormat'] == null ? null : (map['fileNameFormat']! as String).input(),
+      identityId: map['identityId'] == null ? null : (map['identityId']! as String).input(),
+      maxChunkSizeInBytes: map['maxChunkSizeInBytes'] == null ? null : (map['maxChunkSizeInBytes']! as int).input(),
       name: (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

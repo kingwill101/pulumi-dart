@@ -27,8 +27,8 @@ class V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranch {
 
   factory V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranch.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranch(
-      nextStep: map['nextStep'] == null ? null : (V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStep.fromMap((map['nextStep'] as Map).cast<String, dynamic>())).input(),
-      response: map['response'] == null ? null : (V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchResponse.fromMap((map['response'] as Map).cast<String, dynamic>())).input(),
+      nextStep: map['nextStep'] == null ? null : ((V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStep.fromMap((map['nextStep']! as Map).cast<String, dynamic>())).input()).input(),
+      response: map['response'] == null ? null : ((V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchResponse.fromMap((map['response']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

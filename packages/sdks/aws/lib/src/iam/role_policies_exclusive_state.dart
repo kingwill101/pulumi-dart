@@ -26,8 +26,8 @@ class RolePoliciesExclusiveState {
 
   factory RolePoliciesExclusiveState.fromMap(Map<String, dynamic> map) {
     return RolePoliciesExclusiveState(
-      policyNames: map['policyNames'] == null ? null : ((map['policyNames'] as List).cast<String>()).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
+      policyNames: map['policyNames'] == null ? null : (((map['policyNames'] as List).cast<String>()).input()).input(),
+      roleName: map['roleName'] == null ? null : ((map['roleName'] as String).input()).input(),
     );
   }
 }

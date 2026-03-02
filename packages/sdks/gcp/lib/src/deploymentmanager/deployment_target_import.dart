@@ -26,8 +26,8 @@ class DeploymentTargetImport {
 
   factory DeploymentTargetImport.fromMap(Map<String, dynamic> map) {
     return DeploymentTargetImport(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

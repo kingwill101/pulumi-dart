@@ -30,9 +30,9 @@ class BackendServiceIAPOAuth2ClientInfo {
 
   factory BackendServiceIAPOAuth2ClientInfo.fromMap(Map<String, dynamic> map) {
     return BackendServiceIAPOAuth2ClientInfo(
-      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
-      clientName: map['clientName'] == null ? null : (map['clientName'] as String).input(),
-      developerEmailAddress: map['developerEmailAddress'] == null ? null : (map['developerEmailAddress'] as String).input(),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName']! as String).input(),
+      clientName: map['clientName'] == null ? null : (map['clientName']! as String).input(),
+      developerEmailAddress: map['developerEmailAddress'] == null ? null : (map['developerEmailAddress']! as String).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class DomainDevicesAudioSdl {
 
   factory DomainDevicesAudioSdl.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioSdl(
-      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
-      input: map['input'] == null ? null : (DomainDevicesAudioSdlInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
-      output: map['output'] == null ? null : (DomainDevicesAudioSdlOutput.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
+      driver: map['driver'] == null ? null : (map['driver']! as String).input(),
+      input: map['input'] == null ? null : (DomainDevicesAudioSdlInput.fromMap((map['input']! as Map).cast<String, dynamic>())).input(),
+      output: map['output'] == null ? null : (DomainDevicesAudioSdlOutput.fromMap((map['output']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

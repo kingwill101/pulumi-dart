@@ -34,9 +34,9 @@ class EnvironmentMatrix {
 
   factory EnvironmentMatrix.fromMap(Map<String, dynamic> map) {
     return EnvironmentMatrix(
-      androidDeviceList: map['androidDeviceList'] == null ? null : (AndroidDeviceList.fromMap((map['androidDeviceList'] as Map).cast<String, dynamic>())).input(),
-      androidMatrix: map['androidMatrix'] == null ? null : (AndroidMatrix.fromMap((map['androidMatrix'] as Map).cast<String, dynamic>())).input(),
-      iosDeviceList: map['iosDeviceList'] == null ? null : (IosDeviceList.fromMap((map['iosDeviceList'] as Map).cast<String, dynamic>())).input(),
+      androidDeviceList: map['androidDeviceList'] == null ? null : (AndroidDeviceList.fromMap((map['androidDeviceList']! as Map).cast<String, dynamic>())).input(),
+      androidMatrix: map['androidMatrix'] == null ? null : (AndroidMatrix.fromMap((map['androidMatrix']! as Map).cast<String, dynamic>())).input(),
+      iosDeviceList: map['iosDeviceList'] == null ? null : (IosDeviceList.fromMap((map['iosDeviceList']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

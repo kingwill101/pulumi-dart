@@ -25,8 +25,8 @@ class EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition {
 
   factory EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition(
-      fullName: map['fullName'] == null ? null : (map['fullName'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      fullName: map['fullName'] == null ? null : (map['fullName']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

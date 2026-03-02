@@ -37,9 +37,9 @@ class AppVersionSnapshotAppClientCertificateSetting {
 
   factory AppVersionSnapshotAppClientCertificateSetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppClientCertificateSetting(
-      passphrase: map['passphrase'] == null ? null : (map['passphrase'] as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      tlsCertificate: map['tlsCertificate'] == null ? null : (map['tlsCertificate'] as String).input(),
+      passphrase: map['passphrase'] == null ? null : (map['passphrase']! as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
+      tlsCertificate: map['tlsCertificate'] == null ? null : (map['tlsCertificate']! as String).input(),
     );
   }
 }

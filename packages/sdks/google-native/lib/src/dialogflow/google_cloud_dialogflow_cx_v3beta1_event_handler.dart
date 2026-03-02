@@ -38,9 +38,9 @@ class GoogleCloudDialogflowCxV3beta1EventHandler {
   factory GoogleCloudDialogflowCxV3beta1EventHandler.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1EventHandler(
       event: (map['event'] as String).input(),
-      targetFlow: map['targetFlow'] == null ? null : (map['targetFlow'] as String).input(),
-      targetPage: map['targetPage'] == null ? null : (map['targetPage'] as String).input(),
-      triggerFulfillment: map['triggerFulfillment'] == null ? null : (GoogleCloudDialogflowCxV3beta1Fulfillment.fromMap((map['triggerFulfillment'] as Map).cast<String, dynamic>())).input(),
+      targetFlow: map['targetFlow'] == null ? null : (map['targetFlow']! as String).input(),
+      targetPage: map['targetPage'] == null ? null : (map['targetPage']! as String).input(),
+      triggerFulfillment: map['triggerFulfillment'] == null ? null : (GoogleCloudDialogflowCxV3beta1Fulfillment.fromMap((map['triggerFulfillment']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

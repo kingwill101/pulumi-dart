@@ -22,7 +22,7 @@ class BackendServiceLocalityLoadBalancingPolicyConfigPolicyComputeBeta {
 
   factory BackendServiceLocalityLoadBalancingPolicyConfigPolicyComputeBeta.fromMap(Map<String, dynamic> map) {
     return BackendServiceLocalityLoadBalancingPolicyConfigPolicyComputeBeta(
-      name: map['name'] == null ? null : (BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameComputeBeta.fromValue(map['name'] as String)).input(),
+      name: map['name'] == null ? null : (BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameComputeBeta.fromValue(map['name']! as String)).input(),
     );
   }
 }

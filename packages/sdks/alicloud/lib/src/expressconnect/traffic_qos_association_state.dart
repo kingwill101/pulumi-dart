@@ -36,10 +36,10 @@ class TrafficQosAssociationState {
 
   factory TrafficQosAssociationState.fromMap(Map<String, dynamic> map) {
     return TrafficQosAssociationState(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      qosId: map['qosId'] == null ? null : (map['qosId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      qosId: map['qosId'] == null ? null : (map['qosId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

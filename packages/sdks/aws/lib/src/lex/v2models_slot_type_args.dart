@@ -95,16 +95,16 @@ class V2modelsSlotTypeArgs {
     return V2modelsSlotTypeArgs(
       botId: (map['botId'] as String).input(),
       botVersion: (map['botVersion'] as String).input(),
-      compositeSlotTypeSettings: map['compositeSlotTypeSettings'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotTypeCompositeSlotTypeSetting>(map['compositeSlotTypeSettings'], (value) => V2modelsSlotTypeCompositeSlotTypeSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      externalSourceSettings: map['externalSourceSettings'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotTypeExternalSourceSetting>(map['externalSourceSettings'], (value) => V2modelsSlotTypeExternalSourceSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      compositeSlotTypeSettings: map['compositeSlotTypeSettings'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotTypeCompositeSlotTypeSetting>(map['compositeSlotTypeSettings']!, (value) => V2modelsSlotTypeCompositeSlotTypeSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      externalSourceSettings: map['externalSourceSettings'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotTypeExternalSourceSetting>(map['externalSourceSettings']!, (value) => V2modelsSlotTypeExternalSourceSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       localeId: (map['localeId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentSlotTypeSignature: map['parentSlotTypeSignature'] == null ? null : (map['parentSlotTypeSignature'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      slotTypeValues: map['slotTypeValues'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotTypeSlotTypeValue>(map['slotTypeValues'], (value) => V2modelsSlotTypeSlotTypeValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeouts: map['timeouts'] == null ? null : (V2modelsSlotTypeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      valueSelectionSetting: map['valueSelectionSetting'] == null ? null : (V2modelsSlotTypeValueSelectionSetting.fromMap((map['valueSelectionSetting'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      parentSlotTypeSignature: map['parentSlotTypeSignature'] == null ? null : ((map['parentSlotTypeSignature'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      slotTypeValues: map['slotTypeValues'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotTypeSlotTypeValue>(map['slotTypeValues']!, (value) => V2modelsSlotTypeSlotTypeValue.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((V2modelsSlotTypeTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      valueSelectionSetting: map['valueSelectionSetting'] == null ? null : ((V2modelsSlotTypeValueSelectionSetting.fromMap((map['valueSelectionSetting']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

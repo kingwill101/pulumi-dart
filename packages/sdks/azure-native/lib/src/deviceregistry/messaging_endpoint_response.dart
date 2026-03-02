@@ -32,8 +32,8 @@ class MessagingEndpointResponse {
   factory MessagingEndpointResponse.fromMap(Map<String, dynamic> map) {
     return MessagingEndpointResponse(
       address: (map['address'] as String).input(),
-      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

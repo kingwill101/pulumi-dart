@@ -71,15 +71,15 @@ class KubernetesClusterExtensionArgs {
   factory KubernetesClusterExtensionArgs.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterExtensionArgs(
       clusterId: (map['clusterId'] as String).input(),
-      configurationProtectedSettings: map['configurationProtectedSettings'] == null ? null : ((map['configurationProtectedSettings'] as Map).cast<String, String>()).input(),
-      configurationSettings: map['configurationSettings'] == null ? null : ((map['configurationSettings'] as Map).cast<String, String>()).input(),
+      configurationProtectedSettings: map['configurationProtectedSettings'] == null ? null : ((map['configurationProtectedSettings']! as Map).cast<String, String>()).input(),
+      configurationSettings: map['configurationSettings'] == null ? null : ((map['configurationSettings']! as Map).cast<String, String>()).input(),
       extensionType: (map['extensionType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      plan: map['plan'] == null ? null : (KubernetesClusterExtensionPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
-      releaseNamespace: map['releaseNamespace'] == null ? null : (map['releaseNamespace'] as String).input(),
-      releaseTrain: map['releaseTrain'] == null ? null : (map['releaseTrain'] as String).input(),
-      targetNamespace: map['targetNamespace'] == null ? null : (map['targetNamespace'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      plan: map['plan'] == null ? null : (KubernetesClusterExtensionPlan.fromMap((map['plan']! as Map).cast<String, dynamic>())).input(),
+      releaseNamespace: map['releaseNamespace'] == null ? null : (map['releaseNamespace']! as String).input(),
+      releaseTrain: map['releaseTrain'] == null ? null : (map['releaseTrain']! as String).input(),
+      targetNamespace: map['targetNamespace'] == null ? null : (map['targetNamespace']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class TagFilterList {
 
   factory TagFilterList.fromMap(Map<String, dynamic> map) {
     return TagFilterList(
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
     );
   }
 }

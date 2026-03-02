@@ -45,8 +45,8 @@ class GetAppSpecServiceAlert {
 
   factory GetAppSpecServiceAlert.fromMap(Map<String, dynamic> map) {
     return GetAppSpecServiceAlert(
-      destinations: map['destinations'] == null ? null : (GetAppSpecServiceAlertDestinations.fromMap((map['destinations'] as Map).cast<String, dynamic>())).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      destinations: map['destinations'] == null ? null : (GetAppSpecServiceAlertDestinations.fromMap((map['destinations']! as Map).cast<String, dynamic>())).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
       operator: (map['operator'] as String).input(),
       rule: (map['rule'] as String).input(),
       value: (map['value'] as double).input(),

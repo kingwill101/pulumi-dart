@@ -34,7 +34,7 @@ class AssignmentVirtualMachineScaleSetArgs {
 
   factory AssignmentVirtualMachineScaleSetArgs.fromMap(Map<String, dynamic> map) {
     return AssignmentVirtualMachineScaleSetArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       maintenanceConfigurationId: (map['maintenanceConfigurationId'] as String).input(),
       virtualMachineScaleSetId: (map['virtualMachineScaleSetId'] as String).input(),
     );

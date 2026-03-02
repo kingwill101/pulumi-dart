@@ -30,8 +30,8 @@ class GetOntapStorageVirtualMachinesArgs {
 
   factory GetOntapStorageVirtualMachinesArgs.fromMap(Map<String, dynamic> map) {
     return GetOntapStorageVirtualMachinesArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetOntapStorageVirtualMachinesFilter>(map['filters'], (value) => GetOntapStorageVirtualMachinesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetOntapStorageVirtualMachinesFilter>(map['filters']!, (value) => GetOntapStorageVirtualMachinesFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

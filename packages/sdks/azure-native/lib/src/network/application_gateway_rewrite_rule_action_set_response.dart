@@ -33,9 +33,9 @@ class ApplicationGatewayRewriteRuleActionSetResponse {
 
   factory ApplicationGatewayRewriteRuleActionSetResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayRewriteRuleActionSetResponse(
-      requestHeaderConfigurations: map['requestHeaderConfigurations'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayHeaderConfigurationResponse>(map['requestHeaderConfigurations'], (value) => ApplicationGatewayHeaderConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      responseHeaderConfigurations: map['responseHeaderConfigurations'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayHeaderConfigurationResponse>(map['responseHeaderConfigurations'], (value) => ApplicationGatewayHeaderConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      urlConfiguration: map['urlConfiguration'] == null ? null : (ApplicationGatewayUrlConfigurationResponse.fromMap((map['urlConfiguration'] as Map).cast<String, dynamic>())).input(),
+      requestHeaderConfigurations: map['requestHeaderConfigurations'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayHeaderConfigurationResponse>(map['requestHeaderConfigurations']!, (value) => ApplicationGatewayHeaderConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responseHeaderConfigurations: map['responseHeaderConfigurations'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayHeaderConfigurationResponse>(map['responseHeaderConfigurations']!, (value) => ApplicationGatewayHeaderConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      urlConfiguration: map['urlConfiguration'] == null ? null : (ApplicationGatewayUrlConfigurationResponse.fromMap((map['urlConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

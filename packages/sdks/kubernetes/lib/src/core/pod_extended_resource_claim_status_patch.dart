@@ -27,8 +27,8 @@ class PodExtendedResourceClaimStatusPatch {
 
   factory PodExtendedResourceClaimStatusPatch.fromMap(Map<String, dynamic> map) {
     return PodExtendedResourceClaimStatusPatch(
-      requestMappings: map['requestMappings'] == null ? null : (pulumi.Input.decodeList<ContainerExtendedResourceRequestPatch>(map['requestMappings'], (value) => ContainerExtendedResourceRequestPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceClaimName: map['resourceClaimName'] == null ? null : (map['resourceClaimName'] as String).input(),
+      requestMappings: map['requestMappings'] == null ? null : (pulumi.Input.decodeList<ContainerExtendedResourceRequestPatch>(map['requestMappings']!, (value) => ContainerExtendedResourceRequestPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceClaimName: map['resourceClaimName'] == null ? null : (map['resourceClaimName']! as String).input(),
     );
   }
 }

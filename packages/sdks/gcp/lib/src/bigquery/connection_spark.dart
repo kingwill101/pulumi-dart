@@ -35,9 +35,9 @@ class ConnectionSpark {
 
   factory ConnectionSpark.fromMap(Map<String, dynamic> map) {
     return ConnectionSpark(
-      metastoreServiceConfig: map['metastoreServiceConfig'] == null ? null : (ConnectionSparkMetastoreServiceConfig.fromMap((map['metastoreServiceConfig'] as Map).cast<String, dynamic>())).input(),
-      serviceAccountId: map['serviceAccountId'] == null ? null : (map['serviceAccountId'] as String).input(),
-      sparkHistoryServerConfig: map['sparkHistoryServerConfig'] == null ? null : (ConnectionSparkSparkHistoryServerConfig.fromMap((map['sparkHistoryServerConfig'] as Map).cast<String, dynamic>())).input(),
+      metastoreServiceConfig: map['metastoreServiceConfig'] == null ? null : (ConnectionSparkMetastoreServiceConfig.fromMap((map['metastoreServiceConfig']! as Map).cast<String, dynamic>())).input(),
+      serviceAccountId: map['serviceAccountId'] == null ? null : (map['serviceAccountId']! as String).input(),
+      sparkHistoryServerConfig: map['sparkHistoryServerConfig'] == null ? null : (ConnectionSparkSparkHistoryServerConfig.fromMap((map['sparkHistoryServerConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

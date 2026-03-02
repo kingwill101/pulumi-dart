@@ -27,8 +27,8 @@ class MavenRepositoryConfigArtifactregistryV1beta2 {
 
   factory MavenRepositoryConfigArtifactregistryV1beta2.fromMap(Map<String, dynamic> map) {
     return MavenRepositoryConfigArtifactregistryV1beta2(
-      allowSnapshotOverwrites: map['allowSnapshotOverwrites'] == null ? null : (map['allowSnapshotOverwrites'] as bool).input(),
-      versionPolicy: map['versionPolicy'] == null ? null : (MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2.fromValue(map['versionPolicy'] as String)).input(),
+      allowSnapshotOverwrites: map['allowSnapshotOverwrites'] == null ? null : (map['allowSnapshotOverwrites']! as bool).input(),
+      versionPolicy: map['versionPolicy'] == null ? null : (MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2.fromValue(map['versionPolicy']! as String)).input(),
     );
   }
 }

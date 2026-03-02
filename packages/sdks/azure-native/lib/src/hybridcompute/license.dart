@@ -42,11 +42,11 @@ class License {
 
   factory License.fromMap(Map<String, dynamic> map) {
     return License(
-      licenseDetails: map['licenseDetails'] == null ? null : (LicenseDetails.fromMap((map['licenseDetails'] as Map).cast<String, dynamic>())).input(),
-      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
+      licenseDetails: map['licenseDetails'] == null ? null : (LicenseDetails.fromMap((map['licenseDetails']! as Map).cast<String, dynamic>())).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType']! as String).input(),
       location: (map['location'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

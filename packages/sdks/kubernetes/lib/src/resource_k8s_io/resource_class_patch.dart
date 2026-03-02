@@ -55,12 +55,12 @@ class ResourceClassPatch {
 
   factory ResourceClassPatch.fromMap(Map<String, dynamic> map) {
     return ResourceClassPatch(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      driverName: map['driverName'] == null ? null : (map['driverName'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      parametersRef: map['parametersRef'] == null ? null : (ResourceClassParametersReferencePatch.fromMap((map['parametersRef'] as Map).cast<String, dynamic>())).input(),
-      suitableNodes: map['suitableNodes'] == null ? null : (NodeSelectorPatch.fromMap((map['suitableNodes'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      driverName: map['driverName'] == null ? null : (map['driverName']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      parametersRef: map['parametersRef'] == null ? null : (ResourceClassParametersReferencePatch.fromMap((map['parametersRef']! as Map).cast<String, dynamic>())).input(),
+      suitableNodes: map['suitableNodes'] == null ? null : (NodeSelectorPatch.fromMap((map['suitableNodes']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -90,21 +90,21 @@ class HostedTransitVirtualInterfaceState {
 
   factory HostedTransitVirtualInterfaceState.fromMap(Map<String, dynamic> map) {
     return HostedTransitVirtualInterfaceState(
-      addressFamily: map['addressFamily'] == null ? null : (map['addressFamily'] as String).input(),
-      amazonAddress: map['amazonAddress'] == null ? null : (map['amazonAddress'] as String).input(),
-      amazonSideAsn: map['amazonSideAsn'] == null ? null : (map['amazonSideAsn'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      awsDevice: map['awsDevice'] == null ? null : (map['awsDevice'] as String).input(),
-      bgpAsn: map['bgpAsn'] == null ? null : (map['bgpAsn'] as int).input(),
-      bgpAuthKey: map['bgpAuthKey'] == null ? null : (map['bgpAuthKey'] as String).input(),
-      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
-      customerAddress: map['customerAddress'] == null ? null : (map['customerAddress'] as String).input(),
-      jumboFrameCapable: map['jumboFrameCapable'] == null ? null : (map['jumboFrameCapable'] as bool).input(),
-      mtu: map['mtu'] == null ? null : (map['mtu'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ownerAccountId: map['ownerAccountId'] == null ? null : (map['ownerAccountId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      vlan: map['vlan'] == null ? null : (map['vlan'] as int).input(),
+      addressFamily: map['addressFamily'] == null ? null : ((map['addressFamily'] as String).input()).input(),
+      amazonAddress: map['amazonAddress'] == null ? null : ((map['amazonAddress'] as String).input()).input(),
+      amazonSideAsn: map['amazonSideAsn'] == null ? null : ((map['amazonSideAsn'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      awsDevice: map['awsDevice'] == null ? null : ((map['awsDevice'] as String).input()).input(),
+      bgpAsn: map['bgpAsn'] == null ? null : ((map['bgpAsn'] as int).input()).input(),
+      bgpAuthKey: map['bgpAuthKey'] == null ? null : ((map['bgpAuthKey'] as String).input()).input(),
+      connectionId: map['connectionId'] == null ? null : ((map['connectionId'] as String).input()).input(),
+      customerAddress: map['customerAddress'] == null ? null : ((map['customerAddress'] as String).input()).input(),
+      jumboFrameCapable: map['jumboFrameCapable'] == null ? null : ((map['jumboFrameCapable'] as bool).input()).input(),
+      mtu: map['mtu'] == null ? null : ((map['mtu'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      ownerAccountId: map['ownerAccountId'] == null ? null : ((map['ownerAccountId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      vlan: map['vlan'] == null ? null : ((map['vlan'] as int).input()).input(),
     );
   }
 }

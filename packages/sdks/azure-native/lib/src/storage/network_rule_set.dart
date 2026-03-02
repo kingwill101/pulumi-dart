@@ -45,11 +45,11 @@ class NetworkRuleSet {
 
   factory NetworkRuleSet.fromMap(Map<String, dynamic> map) {
     return NetworkRuleSet(
-      bypass: map['bypass'] == null ? null : (map['bypass'] as String).input(),
+      bypass: map['bypass'] == null ? null : (map['bypass']! as String).input(),
       defaultAction: (DefaultAction.fromValue(map['defaultAction'] as String)).input(),
-      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<IPRule>(map['ipRules'], (value) => IPRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceAccessRules: map['resourceAccessRules'] == null ? null : (pulumi.Input.decodeList<ResourceAccessRule>(map['resourceAccessRules'], (value) => ResourceAccessRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      virtualNetworkRules: map['virtualNetworkRules'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkRule>(map['virtualNetworkRules'], (value) => VirtualNetworkRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<IPRule>(map['ipRules']!, (value) => IPRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceAccessRules: map['resourceAccessRules'] == null ? null : (pulumi.Input.decodeList<ResourceAccessRule>(map['resourceAccessRules']!, (value) => ResourceAccessRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualNetworkRules: map['virtualNetworkRules'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkRule>(map['virtualNetworkRules']!, (value) => VirtualNetworkRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

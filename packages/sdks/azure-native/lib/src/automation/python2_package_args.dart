@@ -47,9 +47,9 @@ class Python2PackageArgs {
     return Python2PackageArgs(
       automationAccountName: (map['automationAccountName'] as String).input(),
       contentLink: (ContentLink.fromMap((map['contentLink'] as Map).cast<String, dynamic>())).input(),
-      packageName: map['packageName'] == null ? null : (map['packageName'] as String).input(),
+      packageName: map['packageName'] == null ? null : (map['packageName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

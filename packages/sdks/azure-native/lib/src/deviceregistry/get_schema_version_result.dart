@@ -67,7 +67,7 @@ class GetSchemaVersionResult {
   factory GetSchemaVersionResult.fromMap(Map<String, dynamic> map) {
     return GetSchemaVersionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       hash: map['hash'] as String,
       id: map['id'] as String,
       name: map['name'] as String,

@@ -27,8 +27,8 @@ class SubnetDhcpAddressRange {
 
   factory SubnetDhcpAddressRange.fromMap(Map<String, dynamic> map) {
     return SubnetDhcpAddressRange(
-      firstAddress: map['firstAddress'] == null ? null : (map['firstAddress'] as String).input(),
-      lastAddress: map['lastAddress'] == null ? null : (map['lastAddress'] as String).input(),
+      firstAddress: map['firstAddress'] == null ? null : (map['firstAddress']! as String).input(),
+      lastAddress: map['lastAddress'] == null ? null : (map['lastAddress']! as String).input(),
     );
   }
 }

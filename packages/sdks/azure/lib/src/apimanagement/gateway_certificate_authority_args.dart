@@ -42,7 +42,7 @@ class GatewayCertificateAuthorityArgs {
       apiManagementId: (map['apiManagementId'] as String).input(),
       certificateName: (map['certificateName'] as String).input(),
       gatewayName: (map['gatewayName'] as String).input(),
-      isTrusted: map['isTrusted'] == null ? null : (map['isTrusted'] as bool).input(),
+      isTrusted: map['isTrusted'] == null ? null : (map['isTrusted']! as bool).input(),
     );
   }
 }

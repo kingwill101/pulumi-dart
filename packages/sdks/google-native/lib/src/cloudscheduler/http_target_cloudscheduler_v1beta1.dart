@@ -49,11 +49,11 @@ class HttpTargetCloudschedulerV1beta1 {
 
   factory HttpTargetCloudschedulerV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpTargetCloudschedulerV1beta1(
-      body: map['body'] == null ? null : (map['body'] as String).input(),
-      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, String>()).input(),
-      httpMethod: map['httpMethod'] == null ? null : (HttpTargetHttpMethodCloudschedulerV1beta1.fromValue(map['httpMethod'] as String)).input(),
-      oauthToken: map['oauthToken'] == null ? null : (OAuthTokenCloudschedulerV1beta1.fromMap((map['oauthToken'] as Map).cast<String, dynamic>())).input(),
-      oidcToken: map['oidcToken'] == null ? null : (OidcTokenCloudschedulerV1beta1.fromMap((map['oidcToken'] as Map).cast<String, dynamic>())).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
+      headers: map['headers'] == null ? null : ((map['headers']! as Map).cast<String, String>()).input(),
+      httpMethod: map['httpMethod'] == null ? null : (HttpTargetHttpMethodCloudschedulerV1beta1.fromValue(map['httpMethod']! as String)).input(),
+      oauthToken: map['oauthToken'] == null ? null : (OAuthTokenCloudschedulerV1beta1.fromMap((map['oauthToken']! as Map).cast<String, dynamic>())).input(),
+      oidcToken: map['oidcToken'] == null ? null : (OidcTokenCloudschedulerV1beta1.fromMap((map['oidcToken']! as Map).cast<String, dynamic>())).input(),
       uri: (map['uri'] as String).input(),
     );
   }

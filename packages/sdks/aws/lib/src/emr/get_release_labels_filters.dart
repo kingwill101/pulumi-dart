@@ -25,8 +25,8 @@ class GetReleaseLabelsFilters {
 
   factory GetReleaseLabelsFilters.fromMap(Map<String, dynamic> map) {
     return GetReleaseLabelsFilters(
-      application: map['application'] == null ? null : (map['application'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      application: map['application'] == null ? null : ((map['application'] as String).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
     );
   }
 }

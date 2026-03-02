@@ -45,11 +45,11 @@ class ElasticSnapshotPolicyProperties {
 
   factory ElasticSnapshotPolicyProperties.fromMap(Map<String, dynamic> map) {
     return ElasticSnapshotPolicyProperties(
-      dailySchedule: map['dailySchedule'] == null ? null : (ElasticSnapshotPolicyDailySchedule.fromMap((map['dailySchedule'] as Map).cast<String, dynamic>())).input(),
-      hourlySchedule: map['hourlySchedule'] == null ? null : (ElasticSnapshotPolicyHourlySchedule.fromMap((map['hourlySchedule'] as Map).cast<String, dynamic>())).input(),
-      monthlySchedule: map['monthlySchedule'] == null ? null : (ElasticSnapshotPolicyMonthlySchedule.fromMap((map['monthlySchedule'] as Map).cast<String, dynamic>())).input(),
-      policyStatus: map['policyStatus'] == null ? null : (map['policyStatus'] as String).input(),
-      weeklySchedule: map['weeklySchedule'] == null ? null : (ElasticSnapshotPolicyWeeklySchedule.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>())).input(),
+      dailySchedule: map['dailySchedule'] == null ? null : (ElasticSnapshotPolicyDailySchedule.fromMap((map['dailySchedule']! as Map).cast<String, dynamic>())).input(),
+      hourlySchedule: map['hourlySchedule'] == null ? null : (ElasticSnapshotPolicyHourlySchedule.fromMap((map['hourlySchedule']! as Map).cast<String, dynamic>())).input(),
+      monthlySchedule: map['monthlySchedule'] == null ? null : (ElasticSnapshotPolicyMonthlySchedule.fromMap((map['monthlySchedule']! as Map).cast<String, dynamic>())).input(),
+      policyStatus: map['policyStatus'] == null ? null : (map['policyStatus']! as String).input(),
+      weeklySchedule: map['weeklySchedule'] == null ? null : (ElasticSnapshotPolicyWeeklySchedule.fromMap((map['weeklySchedule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

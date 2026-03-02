@@ -25,8 +25,8 @@ class ManagedZoneCloudLoggingConfigDnsV1beta2 {
 
   factory ManagedZoneCloudLoggingConfigDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return ManagedZoneCloudLoggingConfigDnsV1beta2(
-      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging'] as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging']! as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
     );
   }
 }

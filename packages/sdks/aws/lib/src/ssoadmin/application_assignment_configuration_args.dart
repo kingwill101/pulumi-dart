@@ -36,7 +36,7 @@ class ApplicationAssignmentConfigurationArgs {
     return ApplicationAssignmentConfigurationArgs(
       applicationArn: (map['applicationArn'] as String).input(),
       assignmentRequired: (map['assignmentRequired'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

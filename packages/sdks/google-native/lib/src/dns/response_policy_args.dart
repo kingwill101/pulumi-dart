@@ -59,14 +59,14 @@ class ResponsePolicyArgs {
 
   factory ResponsePolicyArgs.fromMap(Map<String, dynamic> map) {
     return ResponsePolicyArgs(
-      clientOperationId: map['clientOperationId'] == null ? null : (map['clientOperationId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      gkeClusters: map['gkeClusters'] == null ? null : (pulumi.Input.decodeList<ResponsePolicyGKEClusterDnsV1beta2>(map['gkeClusters'], (value) => ResponsePolicyGKEClusterDnsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<ResponsePolicyNetworkDnsV1beta2>(map['networks'], (value) => ResponsePolicyNetworkDnsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      responsePolicyName: map['responsePolicyName'] == null ? null : (map['responsePolicyName'] as String).input(),
+      clientOperationId: map['clientOperationId'] == null ? null : (map['clientOperationId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      gkeClusters: map['gkeClusters'] == null ? null : (pulumi.Input.decodeList<ResponsePolicyGKEClusterDnsV1beta2>(map['gkeClusters']!, (value) => ResponsePolicyGKEClusterDnsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<ResponsePolicyNetworkDnsV1beta2>(map['networks']!, (value) => ResponsePolicyNetworkDnsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      responsePolicyName: map['responsePolicyName'] == null ? null : (map['responsePolicyName']! as String).input(),
     );
   }
 }

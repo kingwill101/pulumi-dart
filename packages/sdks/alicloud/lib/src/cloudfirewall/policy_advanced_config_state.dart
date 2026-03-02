@@ -21,7 +21,7 @@ class PolicyAdvancedConfigState {
 
   factory PolicyAdvancedConfigState.fromMap(Map<String, dynamic> map) {
     return PolicyAdvancedConfigState(
-      internetSwitch: map['internetSwitch'] == null ? null : (map['internetSwitch'] as String).input(),
+      internetSwitch: map['internetSwitch'] == null ? null : (map['internetSwitch']! as String).input(),
     );
   }
 }

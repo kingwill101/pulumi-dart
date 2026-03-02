@@ -31,9 +31,9 @@ class TableAccessPolicyResponse {
 
   factory TableAccessPolicyResponse.fromMap(Map<String, dynamic> map) {
     return TableAccessPolicyResponse(
-      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime'] as String).input(),
+      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime']! as String).input(),
       permission: (map['permission'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

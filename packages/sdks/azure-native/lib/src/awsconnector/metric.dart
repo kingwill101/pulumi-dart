@@ -32,9 +32,9 @@ class Metric {
 
   factory Metric.fromMap(Map<String, dynamic> map) {
     return Metric(
-      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<Dimension>(map['dimensions'], (value) => Dimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<Dimension>(map['dimensions']!, (value) => Dimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metricName: map['metricName'] == null ? null : (map['metricName']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
     );
   }
 }

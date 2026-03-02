@@ -49,12 +49,12 @@ class GetFoldersArgs {
 
   factory GetFoldersArgs.fromMap(Map<String, dynamic> map) {
     return GetFoldersArgs(
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      parentFolderId: map['parentFolderId'] == null ? null : (map['parentFolderId'] as String).input(),
-      queryKeyword: map['queryKeyword'] == null ? null : (map['queryKeyword'] as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      parentFolderId: map['parentFolderId'] == null ? null : (map['parentFolderId']! as String).input(),
+      queryKeyword: map['queryKeyword'] == null ? null : (map['queryKeyword']! as String).input(),
     );
   }
 }

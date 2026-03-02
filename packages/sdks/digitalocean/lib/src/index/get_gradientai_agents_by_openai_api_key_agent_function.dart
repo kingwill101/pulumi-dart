@@ -65,16 +65,16 @@ class GetGradientaiAgentsByOpenaiApiKeyAgentFunction {
 
   factory GetGradientaiAgentsByOpenaiApiKeyAgentFunction.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentsByOpenaiApiKeyAgentFunction(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey']! as String).input(),
       createdAt: (map['createdAt'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      faasname: map['faasname'] == null ? null : (map['faasname'] as String).input(),
-      faasnamespace: map['faasnamespace'] == null ? null : (map['faasnamespace'] as String).input(),
-      guardrailUuid: map['guardrailUuid'] == null ? null : (map['guardrailUuid'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      faasname: map['faasname'] == null ? null : (map['faasname']! as String).input(),
+      faasnamespace: map['faasnamespace'] == null ? null : (map['faasnamespace']! as String).input(),
+      guardrailUuid: map['guardrailUuid'] == null ? null : (map['guardrailUuid']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       updatedAt: (map['updatedAt'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

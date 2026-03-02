@@ -88,19 +88,19 @@ class FactoryArgs {
 
   factory FactoryArgs.fromMap(Map<String, dynamic> map) {
     return FactoryArgs(
-      customerManagedKeyId: map['customerManagedKeyId'] == null ? null : (map['customerManagedKeyId'] as String).input(),
-      customerManagedKeyIdentityId: map['customerManagedKeyIdentityId'] == null ? null : (map['customerManagedKeyIdentityId'] as String).input(),
-      githubConfiguration: map['githubConfiguration'] == null ? null : (FactoryGithubConfiguration.fromMap((map['githubConfiguration'] as Map).cast<String, dynamic>())).input(),
-      globalParameters: map['globalParameters'] == null ? null : (pulumi.Input.decodeList<FactoryGlobalParameter>(map['globalParameters'], (value) => FactoryGlobalParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      identity: map['identity'] == null ? null : (FactoryIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedVirtualNetworkEnabled: map['managedVirtualNetworkEnabled'] == null ? null : (map['managedVirtualNetworkEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicNetworkEnabled: map['publicNetworkEnabled'] == null ? null : (map['publicNetworkEnabled'] as bool).input(),
-      purviewId: map['purviewId'] == null ? null : (map['purviewId'] as String).input(),
+      customerManagedKeyId: map['customerManagedKeyId'] == null ? null : (map['customerManagedKeyId']! as String).input(),
+      customerManagedKeyIdentityId: map['customerManagedKeyIdentityId'] == null ? null : (map['customerManagedKeyIdentityId']! as String).input(),
+      githubConfiguration: map['githubConfiguration'] == null ? null : (FactoryGithubConfiguration.fromMap((map['githubConfiguration']! as Map).cast<String, dynamic>())).input(),
+      globalParameters: map['globalParameters'] == null ? null : (pulumi.Input.decodeList<FactoryGlobalParameter>(map['globalParameters']!, (value) => FactoryGlobalParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identity: map['identity'] == null ? null : (FactoryIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedVirtualNetworkEnabled: map['managedVirtualNetworkEnabled'] == null ? null : (map['managedVirtualNetworkEnabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicNetworkEnabled: map['publicNetworkEnabled'] == null ? null : (map['publicNetworkEnabled']! as bool).input(),
+      purviewId: map['purviewId'] == null ? null : (map['purviewId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vstsConfiguration: map['vstsConfiguration'] == null ? null : (FactoryVstsConfiguration.fromMap((map['vstsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vstsConfiguration: map['vstsConfiguration'] == null ? null : (FactoryVstsConfiguration.fromMap((map['vstsConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

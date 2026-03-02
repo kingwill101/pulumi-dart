@@ -47,7 +47,7 @@ class FunctionJavascriptUdaArgs {
   factory FunctionJavascriptUdaArgs.fromMap(Map<String, dynamic> map) {
     return FunctionJavascriptUdaArgs(
       inputs: (pulumi.Input.decodeList<FunctionJavascriptUdaInput>(map['inputs'], (value) => FunctionJavascriptUdaInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       output: (FunctionJavascriptUdaOutput.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
       script: (map['script'] as String).input(),
       streamAnalyticsJobId: (map['streamAnalyticsJobId'] as String).input(),

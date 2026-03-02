@@ -79,17 +79,17 @@ class GetCoreNetworkPolicyDocumentSegmentAction {
   factory GetCoreNetworkPolicyDocumentSegmentAction.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentSegmentAction(
       action: (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationCidrBlocks: map['destinationCidrBlocks'] == null ? null : ((map['destinationCidrBlocks'] as List).cast<String>()).input(),
-      destinations: map['destinations'] == null ? null : ((map['destinations'] as List).cast<String>()).input(),
-      edgeLocationAssociation: map['edgeLocationAssociation'] == null ? null : (GetCoreNetworkPolicyDocumentSegmentActionEdgeLocationAssociation.fromMap((map['edgeLocationAssociation'] as Map).cast<String, dynamic>())).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      routingPolicyNames: map['routingPolicyNames'] == null ? null : ((map['routingPolicyNames'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      destinationCidrBlocks: map['destinationCidrBlocks'] == null ? null : (((map['destinationCidrBlocks'] as List).cast<String>()).input()).input(),
+      destinations: map['destinations'] == null ? null : (((map['destinations'] as List).cast<String>()).input()).input(),
+      edgeLocationAssociation: map['edgeLocationAssociation'] == null ? null : ((GetCoreNetworkPolicyDocumentSegmentActionEdgeLocationAssociation.fromMap((map['edgeLocationAssociation']! as Map).cast<String, dynamic>())).input()).input(),
+      mode: map['mode'] == null ? null : ((map['mode'] as String).input()).input(),
+      routingPolicyNames: map['routingPolicyNames'] == null ? null : (((map['routingPolicyNames'] as List).cast<String>()).input()).input(),
       segment: (map['segment'] as String).input(),
-      shareWithExcepts: map['shareWithExcepts'] == null ? null : ((map['shareWithExcepts'] as List).cast<String>()).input(),
-      shareWiths: map['shareWiths'] == null ? null : ((map['shareWiths'] as List).cast<String>()).input(),
-      via: map['via'] == null ? null : (GetCoreNetworkPolicyDocumentSegmentActionVia.fromMap((map['via'] as Map).cast<String, dynamic>())).input(),
-      whenSentTo: map['whenSentTo'] == null ? null : (GetCoreNetworkPolicyDocumentSegmentActionWhenSentTo.fromMap((map['whenSentTo'] as Map).cast<String, dynamic>())).input(),
+      shareWithExcepts: map['shareWithExcepts'] == null ? null : (((map['shareWithExcepts'] as List).cast<String>()).input()).input(),
+      shareWiths: map['shareWiths'] == null ? null : (((map['shareWiths'] as List).cast<String>()).input()).input(),
+      via: map['via'] == null ? null : ((GetCoreNetworkPolicyDocumentSegmentActionVia.fromMap((map['via']! as Map).cast<String, dynamic>())).input()).input(),
+      whenSentTo: map['whenSentTo'] == null ? null : ((GetCoreNetworkPolicyDocumentSegmentActionWhenSentTo.fromMap((map['whenSentTo']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

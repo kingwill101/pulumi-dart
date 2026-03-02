@@ -26,7 +26,7 @@ class VariableSpecification {
 
   factory VariableSpecification.fromMap(Map<String, dynamic> map) {
     return VariableSpecification(
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']!).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -35,9 +35,9 @@ class GroupRoleManagementPolicyNotificationRules {
 
   factory GroupRoleManagementPolicyNotificationRules.fromMap(Map<String, dynamic> map) {
     return GroupRoleManagementPolicyNotificationRules(
-      activeAssignments: map['activeAssignments'] == null ? null : (GroupRoleManagementPolicyNotificationRulesActiveAssignments.fromMap((map['activeAssignments'] as Map).cast<String, dynamic>())).input(),
-      eligibleActivations: map['eligibleActivations'] == null ? null : (GroupRoleManagementPolicyNotificationRulesEligibleActivations.fromMap((map['eligibleActivations'] as Map).cast<String, dynamic>())).input(),
-      eligibleAssignments: map['eligibleAssignments'] == null ? null : (GroupRoleManagementPolicyNotificationRulesEligibleAssignments.fromMap((map['eligibleAssignments'] as Map).cast<String, dynamic>())).input(),
+      activeAssignments: map['activeAssignments'] == null ? null : (GroupRoleManagementPolicyNotificationRulesActiveAssignments.fromMap((map['activeAssignments']! as Map).cast<String, dynamic>())).input(),
+      eligibleActivations: map['eligibleActivations'] == null ? null : (GroupRoleManagementPolicyNotificationRulesEligibleActivations.fromMap((map['eligibleActivations']! as Map).cast<String, dynamic>())).input(),
+      eligibleAssignments: map['eligibleAssignments'] == null ? null : (GroupRoleManagementPolicyNotificationRulesEligibleAssignments.fromMap((map['eligibleAssignments']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

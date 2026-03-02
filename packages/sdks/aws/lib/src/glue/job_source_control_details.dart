@@ -55,14 +55,14 @@ class JobSourceControlDetails {
 
   factory JobSourceControlDetails.fromMap(Map<String, dynamic> map) {
     return JobSourceControlDetails(
-      authStrategy: map['authStrategy'] == null ? null : (map['authStrategy'] as String).input(),
-      authToken: map['authToken'] == null ? null : (map['authToken'] as String).input(),
-      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
-      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
-      lastCommitId: map['lastCommitId'] == null ? null : (map['lastCommitId'] as String).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
-      provider: map['provider'] == null ? null : (map['provider'] as String).input(),
-      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
+      authStrategy: map['authStrategy'] == null ? null : ((map['authStrategy'] as String).input()).input(),
+      authToken: map['authToken'] == null ? null : ((map['authToken'] as String).input()).input(),
+      branch: map['branch'] == null ? null : ((map['branch'] as String).input()).input(),
+      folder: map['folder'] == null ? null : ((map['folder'] as String).input()).input(),
+      lastCommitId: map['lastCommitId'] == null ? null : ((map['lastCommitId'] as String).input()).input(),
+      owner: map['owner'] == null ? null : ((map['owner'] as String).input()).input(),
+      provider: map['provider'] == null ? null : ((map['provider'] as String).input()).input(),
+      repository: map['repository'] == null ? null : ((map['repository'] as String).input()).input(),
     );
   }
 }

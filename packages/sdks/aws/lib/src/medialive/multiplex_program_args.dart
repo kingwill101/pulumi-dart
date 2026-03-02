@@ -48,10 +48,10 @@ class MultiplexProgramArgs {
   factory MultiplexProgramArgs.fromMap(Map<String, dynamic> map) {
     return MultiplexProgramArgs(
       multiplexId: (map['multiplexId'] as String).input(),
-      multiplexProgramSettings: map['multiplexProgramSettings'] == null ? null : (MultiplexProgramMultiplexProgramSettings.fromMap((map['multiplexProgramSettings'] as Map).cast<String, dynamic>())).input(),
+      multiplexProgramSettings: map['multiplexProgramSettings'] == null ? null : ((MultiplexProgramMultiplexProgramSettings.fromMap((map['multiplexProgramSettings']! as Map).cast<String, dynamic>())).input()).input(),
       programName: (map['programName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (MultiplexProgramTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((MultiplexProgramTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

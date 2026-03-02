@@ -49,11 +49,11 @@ class SqlDbSingleDatabaseTargetProperties {
   factory SqlDbSingleDatabaseTargetProperties.fromMap(Map<String, dynamic> map) {
     return SqlDbSingleDatabaseTargetProperties(
       connectionServerName: (map['connectionServerName'] as String).input(),
-      readIntent: map['readIntent'] == null ? null : (map['readIntent'] as bool).input(),
+      readIntent: map['readIntent'] == null ? null : (map['readIntent']! as bool).input(),
       sqlDbResourceId: (map['sqlDbResourceId'] as String).input(),
       targetAuthenticationType: (map['targetAuthenticationType'] as String).input(),
       targetType: (map['targetType'] as String).input(),
-      targetVault: map['targetVault'] == null ? null : (VaultSecret.fromMap((map['targetVault'] as Map).cast<String, dynamic>())).input(),
+      targetVault: map['targetVault'] == null ? null : (VaultSecret.fromMap((map['targetVault']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig {
 
   factory WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig(
-      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : (map['bootDiskSizeGb'] as int).input(),
-      bootDiskType: map['bootDiskType'] == null ? null : (map['bootDiskType'] as String).input(),
-      numLocalSsds: map['numLocalSsds'] == null ? null : (map['numLocalSsds'] as int).input(),
+      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : (map['bootDiskSizeGb']! as int).input(),
+      bootDiskType: map['bootDiskType'] == null ? null : (map['bootDiskType']! as String).input(),
+      numLocalSsds: map['numLocalSsds'] == null ? null : (map['numLocalSsds']! as int).input(),
     );
   }
 }

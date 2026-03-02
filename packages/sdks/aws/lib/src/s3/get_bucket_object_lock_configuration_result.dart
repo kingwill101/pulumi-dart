@@ -49,7 +49,7 @@ class GetBucketObjectLockConfigurationResult {
       id: map['id'] as String,
       objectLockEnabled: map['objectLockEnabled'] as String,
       region: map['region'] as String,
-      rules: pulumi.Input.decodeList<GetBucketObjectLockConfigurationRule>(map['rules'], (value) => GetBucketObjectLockConfigurationRule.fromMap((value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<GetBucketObjectLockConfigurationRule>(map['rules']!, (value) => GetBucketObjectLockConfigurationRule.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

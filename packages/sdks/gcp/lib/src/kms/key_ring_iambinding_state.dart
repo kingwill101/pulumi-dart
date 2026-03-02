@@ -55,11 +55,11 @@ class KeyRingIAMBindingState {
 
   factory KeyRingIAMBindingState.fromMap(Map<String, dynamic> map) {
     return KeyRingIAMBindingState(
-      condition: map['condition'] == null ? null : (KeyRingIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      keyRingId: map['keyRingId'] == null ? null : (map['keyRingId'] as String).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      condition: map['condition'] == null ? null : (KeyRingIAMBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      keyRingId: map['keyRingId'] == null ? null : (map['keyRingId']! as String).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

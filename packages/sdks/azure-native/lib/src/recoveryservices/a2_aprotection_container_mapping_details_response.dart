@@ -47,12 +47,12 @@ class A2AProtectionContainerMappingDetailsResponse {
 
   factory A2AProtectionContainerMappingDetailsResponse.fromMap(Map<String, dynamic> map) {
     return A2AProtectionContainerMappingDetailsResponse(
-      agentAutoUpdateStatus: map['agentAutoUpdateStatus'] == null ? null : (map['agentAutoUpdateStatus'] as String).input(),
-      automationAccountArmId: map['automationAccountArmId'] == null ? null : (map['automationAccountArmId'] as String).input(),
-      automationAccountAuthenticationType: map['automationAccountAuthenticationType'] == null ? null : (map['automationAccountAuthenticationType'] as String).input(),
+      agentAutoUpdateStatus: map['agentAutoUpdateStatus'] == null ? null : (map['agentAutoUpdateStatus']! as String).input(),
+      automationAccountArmId: map['automationAccountArmId'] == null ? null : (map['automationAccountArmId']! as String).input(),
+      automationAccountAuthenticationType: map['automationAccountAuthenticationType'] == null ? null : (map['automationAccountAuthenticationType']! as String).input(),
       instanceType: (map['instanceType'] as String).input(),
-      jobScheduleName: map['jobScheduleName'] == null ? null : (map['jobScheduleName'] as String).input(),
-      scheduleName: map['scheduleName'] == null ? null : (map['scheduleName'] as String).input(),
+      jobScheduleName: map['jobScheduleName'] == null ? null : (map['jobScheduleName']! as String).input(),
+      scheduleName: map['scheduleName'] == null ? null : (map['scheduleName']! as String).input(),
     );
   }
 }

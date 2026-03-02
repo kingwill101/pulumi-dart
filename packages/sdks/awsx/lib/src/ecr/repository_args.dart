@@ -67,15 +67,15 @@ class RepositoryArgs {
 
   factory RepositoryArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryArgs(
-      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : (pulumi.Input.decodeList<pulumi_aws_ecr.RepositoryEncryptionConfiguration>(map['encryptionConfigurations'], (value) => pulumi_aws_ecr.RepositoryEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
-      imageScanningConfiguration: map['imageScanningConfiguration'] == null ? null : (pulumi_aws_ecr.RepositoryImageScanningConfiguration.fromMap((map['imageScanningConfiguration'] as Map).cast<String, dynamic>())).input(),
-      imageTagMutability: map['imageTagMutability'] == null ? null : (map['imageTagMutability'] as String).input(),
-      imageTagMutabilityExclusionFilters: map['imageTagMutabilityExclusionFilters'] == null ? null : (pulumi.Input.decodeList<pulumi_aws_ecr.RepositoryImageTagMutabilityExclusionFilter>(map['imageTagMutabilityExclusionFilters'], (value) => pulumi_aws_ecr.RepositoryImageTagMutabilityExclusionFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lifecyclePolicy: map['lifecyclePolicy'] == null ? null : (LifecyclePolicy.fromMap((map['lifecyclePolicy'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : (pulumi.Input.decodeList<pulumi_aws_ecr.RepositoryEncryptionConfiguration>(map['encryptionConfigurations']!, (value) => pulumi_aws_ecr.RepositoryEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete']! as bool).input(),
+      imageScanningConfiguration: map['imageScanningConfiguration'] == null ? null : (pulumi_aws_ecr.RepositoryImageScanningConfiguration.fromMap((map['imageScanningConfiguration']! as Map).cast<String, dynamic>())).input(),
+      imageTagMutability: map['imageTagMutability'] == null ? null : (map['imageTagMutability']! as String).input(),
+      imageTagMutabilityExclusionFilters: map['imageTagMutabilityExclusionFilters'] == null ? null : (pulumi.Input.decodeList<pulumi_aws_ecr.RepositoryImageTagMutabilityExclusionFilter>(map['imageTagMutabilityExclusionFilters']!, (value) => pulumi_aws_ecr.RepositoryImageTagMutabilityExclusionFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lifecyclePolicy: map['lifecyclePolicy'] == null ? null : (LifecyclePolicy.fromMap((map['lifecyclePolicy']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

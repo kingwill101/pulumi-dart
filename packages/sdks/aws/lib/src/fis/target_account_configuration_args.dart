@@ -47,10 +47,10 @@ class TargetAccountConfigurationArgs {
   factory TargetAccountConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return TargetAccountConfigurationArgs(
       accountId: (map['accountId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       experimentTemplateId: (map['experimentTemplateId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
     );
   }
 }

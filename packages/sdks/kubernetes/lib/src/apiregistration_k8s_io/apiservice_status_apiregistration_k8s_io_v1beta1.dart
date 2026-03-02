@@ -22,7 +22,7 @@ class APIServiceStatusApiregistrationK8sIoV1beta1 {
 
   factory APIServiceStatusApiregistrationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return APIServiceStatusApiregistrationK8sIoV1beta1(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<APIServiceConditionApiregistrationK8sIoV1beta1>(map['conditions'], (value) => APIServiceConditionApiregistrationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<APIServiceConditionApiregistrationK8sIoV1beta1>(map['conditions']!, (value) => APIServiceConditionApiregistrationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

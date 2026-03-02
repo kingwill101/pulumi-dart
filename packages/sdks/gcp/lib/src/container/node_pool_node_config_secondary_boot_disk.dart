@@ -26,7 +26,7 @@ class NodePoolNodeConfigSecondaryBootDisk {
   factory NodePoolNodeConfigSecondaryBootDisk.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigSecondaryBootDisk(
       diskImage: (map['diskImage'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
     );
   }
 }

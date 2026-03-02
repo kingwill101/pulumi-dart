@@ -33,9 +33,9 @@ class OneDashboardPageWidgetBillboardBillboardSettings {
 
   factory OneDashboardPageWidgetBillboardBillboardSettings.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetBillboardBillboardSettings(
-      gridOptions: map['gridOptions'] == null ? null : (OneDashboardPageWidgetBillboardBillboardSettingsGridOptions.fromMap((map['gridOptions'] as Map).cast<String, dynamic>())).input(),
-      link: map['link'] == null ? null : (OneDashboardPageWidgetBillboardBillboardSettingsLink.fromMap((map['link'] as Map).cast<String, dynamic>())).input(),
-      visual: map['visual'] == null ? null : (OneDashboardPageWidgetBillboardBillboardSettingsVisual.fromMap((map['visual'] as Map).cast<String, dynamic>())).input(),
+      gridOptions: map['gridOptions'] == null ? null : (OneDashboardPageWidgetBillboardBillboardSettingsGridOptions.fromMap((map['gridOptions']! as Map).cast<String, dynamic>())).input(),
+      link: map['link'] == null ? null : (OneDashboardPageWidgetBillboardBillboardSettingsLink.fromMap((map['link']! as Map).cast<String, dynamic>())).input(),
+      visual: map['visual'] == null ? null : (OneDashboardPageWidgetBillboardBillboardSettingsVisual.fromMap((map['visual']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ServiceLbPolicyFailoverConfig {
 
   factory ServiceLbPolicyFailoverConfig.fromMap(Map<String, dynamic> map) {
     return ServiceLbPolicyFailoverConfig(
-      failoverHealthThreshold: map['failoverHealthThreshold'] == null ? null : (map['failoverHealthThreshold'] as int).input(),
+      failoverHealthThreshold: map['failoverHealthThreshold'] == null ? null : (map['failoverHealthThreshold']! as int).input(),
     );
   }
 }

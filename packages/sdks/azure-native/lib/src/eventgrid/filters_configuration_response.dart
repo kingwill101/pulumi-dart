@@ -27,8 +27,8 @@ class FiltersConfigurationResponse {
 
   factory FiltersConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return FiltersConfigurationResponse(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<BoolEqualsFilterResponse>(map['filters'], (value) => BoolEqualsFilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      includedEventTypes: map['includedEventTypes'] == null ? null : ((map['includedEventTypes'] as List).cast<String>()).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<BoolEqualsFilterResponse>(map['filters']!, (value) => BoolEqualsFilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      includedEventTypes: map['includedEventTypes'] == null ? null : ((map['includedEventTypes']! as List).cast<String>()).input(),
     );
   }
 }

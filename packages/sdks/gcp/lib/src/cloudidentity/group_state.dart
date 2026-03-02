@@ -84,16 +84,16 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      additionalGroupKeys: map['additionalGroupKeys'] == null ? null : (pulumi.Input.decodeList<GroupAdditionalGroupKey>(map['additionalGroupKeys'], (value) => GroupAdditionalGroupKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      groupKey: map['groupKey'] == null ? null : (GroupGroupKey.fromMap((map['groupKey'] as Map).cast<String, dynamic>())).input(),
-      initialGroupConfig: map['initialGroupConfig'] == null ? null : (map['initialGroupConfig'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      additionalGroupKeys: map['additionalGroupKeys'] == null ? null : (pulumi.Input.decodeList<GroupAdditionalGroupKey>(map['additionalGroupKeys']!, (value) => GroupAdditionalGroupKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      groupKey: map['groupKey'] == null ? null : (GroupGroupKey.fromMap((map['groupKey']! as Map).cast<String, dynamic>())).input(),
+      initialGroupConfig: map['initialGroupConfig'] == null ? null : (map['initialGroupConfig']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ComputePropertiesResponse {
 
   factory ComputePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ComputePropertiesResponse(
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

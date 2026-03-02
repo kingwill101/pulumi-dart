@@ -77,16 +77,16 @@ class ScriptExecutionArgs {
 
   factory ScriptExecutionArgs.fromMap(Map<String, dynamic> map) {
     return ScriptExecutionArgs(
-      failureReason: map['failureReason'] == null ? null : (map['failureReason'] as String).input(),
-      hiddenParameters: map['hiddenParameters'] == null ? null : (pulumi.Input.decodeList<PSCredentialExecutionParameter>(map['hiddenParameters'], (value) => PSCredentialExecutionParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      namedOutputs: map['namedOutputs'] == null ? null : ((map['namedOutputs'] as Map).cast<String, dynamic>()).input(),
-      output: map['output'] == null ? null : ((map['output'] as List).cast<String>()).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<PSCredentialExecutionParameter>(map['parameters'], (value) => PSCredentialExecutionParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      failureReason: map['failureReason'] == null ? null : (map['failureReason']! as String).input(),
+      hiddenParameters: map['hiddenParameters'] == null ? null : (pulumi.Input.decodeList<PSCredentialExecutionParameter>(map['hiddenParameters']!, (value) => PSCredentialExecutionParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      namedOutputs: map['namedOutputs'] == null ? null : ((map['namedOutputs']! as Map).cast<String, dynamic>()).input(),
+      output: map['output'] == null ? null : ((map['output']! as List).cast<String>()).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<PSCredentialExecutionParameter>(map['parameters']!, (value) => PSCredentialExecutionParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       privateCloudName: (map['privateCloudName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      retention: map['retention'] == null ? null : (map['retention'] as String).input(),
-      scriptCmdletId: map['scriptCmdletId'] == null ? null : (map['scriptCmdletId'] as String).input(),
-      scriptExecutionName: map['scriptExecutionName'] == null ? null : (map['scriptExecutionName'] as String).input(),
+      retention: map['retention'] == null ? null : (map['retention']! as String).input(),
+      scriptCmdletId: map['scriptCmdletId'] == null ? null : (map['scriptCmdletId']! as String).input(),
+      scriptExecutionName: map['scriptExecutionName'] == null ? null : (map['scriptExecutionName']! as String).input(),
       timeout: (map['timeout'] as String).input(),
     );
   }

@@ -82,17 +82,17 @@ class ProductArgs {
 
   factory ProductArgs.fromMap(Map<String, dynamic> map) {
     return ProductArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      distributor: map['distributor'] == null ? null : (map['distributor'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      acceptLanguage: map['acceptLanguage'] == null ? null : ((map['acceptLanguage'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      distributor: map['distributor'] == null ? null : ((map['distributor'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       owner: (map['owner'] as String).input(),
-      provisioningArtifactParameters: (ProductProvisioningArtifactParameters.fromMap((map['provisioningArtifactParameters'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      supportDescription: map['supportDescription'] == null ? null : (map['supportDescription'] as String).input(),
-      supportEmail: map['supportEmail'] == null ? null : (map['supportEmail'] as String).input(),
-      supportUrl: map['supportUrl'] == null ? null : (map['supportUrl'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      provisioningArtifactParameters: (ProductProvisioningArtifactParameters.fromMap((map['provisioningArtifactParameters']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      supportDescription: map['supportDescription'] == null ? null : ((map['supportDescription'] as String).input()).input(),
+      supportEmail: map['supportEmail'] == null ? null : ((map['supportEmail'] as String).input()).input(),
+      supportUrl: map['supportUrl'] == null ? null : ((map['supportUrl'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

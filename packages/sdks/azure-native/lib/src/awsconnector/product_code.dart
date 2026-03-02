@@ -27,8 +27,8 @@ class ProductCode {
 
   factory ProductCode.fromMap(Map<String, dynamic> map) {
     return ProductCode(
-      productCodeId: map['productCodeId'] == null ? null : (map['productCodeId'] as String).input(),
-      productCodeType: map['productCodeType'] == null ? null : (ProductCodeValuesEnumValue.fromMap((map['productCodeType'] as Map).cast<String, dynamic>())).input(),
+      productCodeId: map['productCodeId'] == null ? null : (map['productCodeId']! as String).input(),
+      productCodeType: map['productCodeType'] == null ? null : (ProductCodeValuesEnumValue.fromMap((map['productCodeType']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

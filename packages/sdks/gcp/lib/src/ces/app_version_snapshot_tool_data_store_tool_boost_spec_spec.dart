@@ -23,7 +23,7 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpec {
 
   factory AppVersionSnapshotToolDataStoreToolBoostSpecSpec.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolDataStoreToolBoostSpecSpec(
-      conditionBoostSpecs: map['conditionBoostSpecs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec>(map['conditionBoostSpecs'], (value) => AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditionBoostSpecs: map['conditionBoostSpecs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec>(map['conditionBoostSpecs']!, (value) => AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

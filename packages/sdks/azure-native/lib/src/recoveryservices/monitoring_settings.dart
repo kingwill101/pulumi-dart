@@ -28,8 +28,8 @@ class MonitoringSettings {
 
   factory MonitoringSettings.fromMap(Map<String, dynamic> map) {
     return MonitoringSettings(
-      azureMonitorAlertSettings: map['azureMonitorAlertSettings'] == null ? null : (AzureMonitorAlertSettings.fromMap((map['azureMonitorAlertSettings'] as Map).cast<String, dynamic>())).input(),
-      classicAlertSettings: map['classicAlertSettings'] == null ? null : (ClassicAlertSettings.fromMap((map['classicAlertSettings'] as Map).cast<String, dynamic>())).input(),
+      azureMonitorAlertSettings: map['azureMonitorAlertSettings'] == null ? null : (AzureMonitorAlertSettings.fromMap((map['azureMonitorAlertSettings']! as Map).cast<String, dynamic>())).input(),
+      classicAlertSettings: map['classicAlertSettings'] == null ? null : (ClassicAlertSettings.fromMap((map['classicAlertSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

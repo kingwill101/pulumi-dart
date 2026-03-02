@@ -40,7 +40,7 @@ class WebPubSubHubArgs {
 
   factory WebPubSubHubArgs.fromMap(Map<String, dynamic> map) {
     return WebPubSubHubArgs(
-      hubName: map['hubName'] == null ? null : (map['hubName'] as String).input(),
+      hubName: map['hubName'] == null ? null : (map['hubName']! as String).input(),
       properties: (WebPubSubHubProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),

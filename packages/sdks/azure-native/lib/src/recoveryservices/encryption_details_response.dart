@@ -31,9 +31,9 @@ class EncryptionDetailsResponse {
 
   factory EncryptionDetailsResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionDetailsResponse(
-      kekCertExpiryDate: map['kekCertExpiryDate'] == null ? null : (map['kekCertExpiryDate'] as String).input(),
-      kekCertThumbprint: map['kekCertThumbprint'] == null ? null : (map['kekCertThumbprint'] as String).input(),
-      kekState: map['kekState'] == null ? null : (map['kekState'] as String).input(),
+      kekCertExpiryDate: map['kekCertExpiryDate'] == null ? null : (map['kekCertExpiryDate']! as String).input(),
+      kekCertThumbprint: map['kekCertThumbprint'] == null ? null : (map['kekCertThumbprint']! as String).input(),
+      kekState: map['kekState'] == null ? null : (map['kekState']! as String).input(),
     );
   }
 }

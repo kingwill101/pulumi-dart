@@ -69,7 +69,7 @@ class GetNpmPackageResult {
       location: map['location'] as String,
       name: map['name'] as String,
       packageName: map['packageName'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       repositoryId: map['repositoryId'] as String,
       tags: (map['tags'] as List).cast<String>(),
       updateTime: map['updateTime'] as String,

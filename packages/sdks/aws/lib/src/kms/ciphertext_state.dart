@@ -52,13 +52,13 @@ class CiphertextState {
 
   factory CiphertextState.fromMap(Map<String, dynamic> map) {
     return CiphertextState(
-      ciphertextBlob: map['ciphertextBlob'] == null ? null : (map['ciphertextBlob'] as String).input(),
-      context: map['context'] == null ? null : ((map['context'] as Map).cast<String, String>()).input(),
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      plaintext: map['plaintext'] == null ? null : (map['plaintext'] as String).input(),
-      plaintextWo: map['plaintextWo'] == null ? null : (map['plaintextWo'] as String).input(),
-      plaintextWoVersion: map['plaintextWoVersion'] == null ? null : (map['plaintextWoVersion'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      ciphertextBlob: map['ciphertextBlob'] == null ? null : ((map['ciphertextBlob'] as String).input()).input(),
+      context: map['context'] == null ? null : (((map['context'] as Map).cast<String, String>()).input()).input(),
+      keyId: map['keyId'] == null ? null : ((map['keyId'] as String).input()).input(),
+      plaintext: map['plaintext'] == null ? null : ((map['plaintext'] as String).input()).input(),
+      plaintextWo: map['plaintextWo'] == null ? null : ((map['plaintextWo'] as String).input()).input(),
+      plaintextWoVersion: map['plaintextWoVersion'] == null ? null : ((map['plaintextWoVersion'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class ScriptActivityScriptBlockResponse {
 
   factory ScriptActivityScriptBlockResponse.fromMap(Map<String, dynamic> map) {
     return ScriptActivityScriptBlockResponse(
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ScriptActivityParameterResponse>(map['parameters'], (value) => ScriptActivityParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ScriptActivityParameterResponse>(map['parameters']!, (value) => ScriptActivityParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       text: (map['text']).input(),
       type: (map['type']).input(),
     );

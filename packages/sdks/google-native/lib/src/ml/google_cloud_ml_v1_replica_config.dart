@@ -48,12 +48,12 @@ class GoogleCloudMlV1ReplicaConfig {
 
   factory GoogleCloudMlV1ReplicaConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1ReplicaConfig(
-      acceleratorConfig: map['acceleratorConfig'] == null ? null : (GoogleCloudMlV1AcceleratorConfig.fromMap((map['acceleratorConfig'] as Map).cast<String, dynamic>())).input(),
-      containerArgs: map['containerArgs'] == null ? null : ((map['containerArgs'] as List).cast<String>()).input(),
-      containerCommand: map['containerCommand'] == null ? null : ((map['containerCommand'] as List).cast<String>()).input(),
-      diskConfig: map['diskConfig'] == null ? null : (GoogleCloudMlV1DiskConfig.fromMap((map['diskConfig'] as Map).cast<String, dynamic>())).input(),
-      imageUri: map['imageUri'] == null ? null : (map['imageUri'] as String).input(),
-      tpuTfVersion: map['tpuTfVersion'] == null ? null : (map['tpuTfVersion'] as String).input(),
+      acceleratorConfig: map['acceleratorConfig'] == null ? null : (GoogleCloudMlV1AcceleratorConfig.fromMap((map['acceleratorConfig']! as Map).cast<String, dynamic>())).input(),
+      containerArgs: map['containerArgs'] == null ? null : ((map['containerArgs']! as List).cast<String>()).input(),
+      containerCommand: map['containerCommand'] == null ? null : ((map['containerCommand']! as List).cast<String>()).input(),
+      diskConfig: map['diskConfig'] == null ? null : (GoogleCloudMlV1DiskConfig.fromMap((map['diskConfig']! as Map).cast<String, dynamic>())).input(),
+      imageUri: map['imageUri'] == null ? null : (map['imageUri']! as String).input(),
+      tpuTfVersion: map['tpuTfVersion'] == null ? null : (map['tpuTfVersion']! as String).input(),
     );
   }
 }

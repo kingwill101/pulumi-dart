@@ -59,12 +59,12 @@ class ShareNetworkArgs {
 
   factory ShareNetworkArgs.fromMap(Map<String, dynamic> map) {
     return ShareNetworkArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       neutronNetId: (map['neutronNetId'] as String).input(),
       neutronSubnetId: (map['neutronSubnetId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityServiceIds: map['securityServiceIds'] == null ? null : ((map['securityServiceIds'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      securityServiceIds: map['securityServiceIds'] == null ? null : ((map['securityServiceIds']! as List).cast<String>()).input(),
     );
   }
 }

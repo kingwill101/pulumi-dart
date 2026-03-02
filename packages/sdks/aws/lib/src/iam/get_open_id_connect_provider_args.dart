@@ -34,9 +34,9 @@ class GetOpenIdConnectProviderArgs {
 
   factory GetOpenIdConnectProviderArgs.fromMap(Map<String, dynamic> map) {
     return GetOpenIdConnectProviderArgs(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      url: map['url'] == null ? null : ((map['url'] as String).input()).input(),
     );
   }
 }

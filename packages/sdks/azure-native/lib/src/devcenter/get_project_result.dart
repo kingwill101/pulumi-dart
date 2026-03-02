@@ -94,19 +94,19 @@ class GetProjectResult {
   factory GetProjectResult.fromMap(Map<String, dynamic> map) {
     return GetProjectResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      catalogSettings: map['catalogSettings'] == null ? null : ProjectCatalogSettingsResponse.fromMap((map['catalogSettings'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      devCenterId: map['devCenterId'] == null ? null : map['devCenterId'] as String,
+      catalogSettings: map['catalogSettings'] == null ? null : ProjectCatalogSettingsResponse.fromMap((map['catalogSettings']! as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description']! as String,
+      devCenterId: map['devCenterId'] == null ? null : map['devCenterId']! as String,
       devCenterUri: map['devCenterUri'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
-      maxDevBoxesPerUser: map['maxDevBoxesPerUser'] == null ? null : map['maxDevBoxesPerUser'] as int,
+      maxDevBoxesPerUser: map['maxDevBoxesPerUser'] == null ? null : map['maxDevBoxesPerUser']! as int,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

@@ -27,8 +27,8 @@ class GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig {
 
   factory GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig(
-      agentCreationConfig: map['agentCreationConfig'] == null ? null : (GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig.fromMap((map['agentCreationConfig'] as Map).cast<String, dynamic>())).input(),
-      dialogflowAgentToLink: map['dialogflowAgentToLink'] == null ? null : (map['dialogflowAgentToLink'] as String).input(),
+      agentCreationConfig: map['agentCreationConfig'] == null ? null : (GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig.fromMap((map['agentCreationConfig']! as Map).cast<String, dynamic>())).input(),
+      dialogflowAgentToLink: map['dialogflowAgentToLink'] == null ? null : (map['dialogflowAgentToLink']! as String).input(),
     );
   }
 }

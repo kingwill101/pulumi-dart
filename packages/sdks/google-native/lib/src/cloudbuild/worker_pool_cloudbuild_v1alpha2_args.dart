@@ -45,10 +45,10 @@ class WorkerPoolCloudbuildV1alpha2Args {
 
   factory WorkerPoolCloudbuildV1alpha2Args.fromMap(Map<String, dynamic> map) {
     return WorkerPoolCloudbuildV1alpha2Args(
-      networkConfig: map['networkConfig'] == null ? null : (NetworkConfigCloudbuildV1alpha2.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      networkConfig: map['networkConfig'] == null ? null : (NetworkConfigCloudbuildV1alpha2.fromMap((map['networkConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
-      workerConfig: map['workerConfig'] == null ? null : (WorkerConfigCloudbuildV1alpha2.fromMap((map['workerConfig'] as Map).cast<String, dynamic>())).input(),
+      workerConfig: map['workerConfig'] == null ? null : (WorkerConfigCloudbuildV1alpha2.fromMap((map['workerConfig']! as Map).cast<String, dynamic>())).input(),
       workerPoolId: (map['workerPoolId'] as String).input(),
     );
   }

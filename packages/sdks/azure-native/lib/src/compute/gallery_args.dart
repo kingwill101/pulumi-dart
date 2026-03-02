@@ -62,14 +62,14 @@ class GalleryArgs {
 
   factory GalleryArgs.fromMap(Map<String, dynamic> map) {
     return GalleryArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      galleryName: map['galleryName'] == null ? null : (map['galleryName'] as String).input(),
-      identity: map['identity'] == null ? null : (GalleryIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      galleryName: map['galleryName'] == null ? null : (map['galleryName']! as String).input(),
+      identity: map['identity'] == null ? null : (GalleryIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sharingProfile: map['sharingProfile'] == null ? null : (SharingProfile.fromMap((map['sharingProfile'] as Map).cast<String, dynamic>())).input(),
-      softDeletePolicy: map['softDeletePolicy'] == null ? null : (SoftDeletePolicy.fromMap((map['softDeletePolicy'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sharingProfile: map['sharingProfile'] == null ? null : (SharingProfile.fromMap((map['sharingProfile']! as Map).cast<String, dynamic>())).input(),
+      softDeletePolicy: map['softDeletePolicy'] == null ? null : (SoftDeletePolicy.fromMap((map['softDeletePolicy']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -46,12 +46,12 @@ class PublishTaskState {
 
   factory PublishTaskState.fromMap(Map<String, dynamic> map) {
     return PublishTaskState(
-      agentKey: map['agentKey'] == null ? null : (map['agentKey'] as String).input(),
-      bizType: map['bizType'] == null ? null : (map['bizType'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dataIdLists: map['dataIdLists'] == null ? null : ((map['dataIdLists'] as List).cast<String>()).input(),
-      modifyTime: map['modifyTime'] == null ? null : (map['modifyTime'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      agentKey: map['agentKey'] == null ? null : (map['agentKey']! as String).input(),
+      bizType: map['bizType'] == null ? null : (map['bizType']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dataIdLists: map['dataIdLists'] == null ? null : ((map['dataIdLists']! as List).cast<String>()).input(),
+      modifyTime: map['modifyTime'] == null ? null : (map['modifyTime']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class FrontdoorFirewallPolicyLogScrubbingScrubbingRule {
 
   factory FrontdoorFirewallPolicyLogScrubbingScrubbingRule.fromMap(Map<String, dynamic> map) {
     return FrontdoorFirewallPolicyLogScrubbingScrubbingRule(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       matchVariable: (map['matchVariable'] as String).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class CertificateMapGclbTargetIpConfig {
 
   factory CertificateMapGclbTargetIpConfig.fromMap(Map<String, dynamic> map) {
     return CertificateMapGclbTargetIpConfig(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      ports: map['ports'] == null ? null : ((map['ports'] as List).cast<int>()).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      ports: map['ports'] == null ? null : ((map['ports']! as List).cast<int>()).input(),
     );
   }
 }

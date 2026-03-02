@@ -27,7 +27,7 @@ class ManagedIdentityPropertiesResponse {
   factory ManagedIdentityPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ManagedIdentityPropertiesResponse(
       type: (map['type'] as String).input(),
-      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : (map['userAssignedIdentityResourceId'] as String).input(),
+      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : (map['userAssignedIdentityResourceId']! as String).input(),
     );
   }
 }

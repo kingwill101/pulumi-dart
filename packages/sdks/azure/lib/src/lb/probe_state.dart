@@ -60,15 +60,15 @@ class ProbeState {
 
   factory ProbeState.fromMap(Map<String, dynamic> map) {
     return ProbeState(
-      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds'] as int).input(),
-      loadBalancerRules: map['loadBalancerRules'] == null ? null : ((map['loadBalancerRules'] as List).cast<String>()).input(),
-      loadbalancerId: map['loadbalancerId'] == null ? null : (map['loadbalancerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      numberOfProbes: map['numberOfProbes'] == null ? null : (map['numberOfProbes'] as int).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      probeThreshold: map['probeThreshold'] == null ? null : (map['probeThreshold'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      requestPath: map['requestPath'] == null ? null : (map['requestPath'] as String).input(),
+      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds']! as int).input(),
+      loadBalancerRules: map['loadBalancerRules'] == null ? null : ((map['loadBalancerRules']! as List).cast<String>()).input(),
+      loadbalancerId: map['loadbalancerId'] == null ? null : (map['loadbalancerId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      numberOfProbes: map['numberOfProbes'] == null ? null : (map['numberOfProbes']! as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      probeThreshold: map['probeThreshold'] == null ? null : (map['probeThreshold']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      requestPath: map['requestPath'] == null ? null : (map['requestPath']! as String).input(),
     );
   }
 }

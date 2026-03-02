@@ -34,7 +34,7 @@ class GetIpGroupArgs {
 
   factory GetIpGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetIpGroupArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       ipGroupsName: (map['ipGroupsName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

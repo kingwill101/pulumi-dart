@@ -84,18 +84,18 @@ class MembershipRbacRoleBindingGkehubState {
 
   factory MembershipRbacRoleBindingGkehubState.fromMap(Map<String, dynamic> map) {
     return MembershipRbacRoleBindingGkehubState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      membershipId: map['membershipId'] == null ? null : (map['membershipId'] as String).input(),
-      membershipRbacRoleBindingId: map['membershipRbacRoleBindingId'] == null ? null : (map['membershipRbacRoleBindingId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      role: map['role'] == null ? null : (MembershipRbacRoleBindingRole.fromMap((map['role'] as Map).cast<String, dynamic>())).input(),
-      states: map['states'] == null ? null : (pulumi.Input.decodeList<MembershipRbacRoleBindingState>(map['states'], (value) => MembershipRbacRoleBindingState.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      membershipId: map['membershipId'] == null ? null : (map['membershipId']! as String).input(),
+      membershipRbacRoleBindingId: map['membershipRbacRoleBindingId'] == null ? null : (map['membershipRbacRoleBindingId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      role: map['role'] == null ? null : (MembershipRbacRoleBindingRole.fromMap((map['role']! as Map).cast<String, dynamic>())).input(),
+      states: map['states'] == null ? null : (pulumi.Input.decodeList<MembershipRbacRoleBindingState>(map['states']!, (value) => MembershipRbacRoleBindingState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

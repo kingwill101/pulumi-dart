@@ -88,20 +88,20 @@ class VvpInstanceState {
 
   factory VvpInstanceState.fromMap(Map<String, dynamic> map) {
     return VvpInstanceState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as int).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      pricingCycle: map['pricingCycle'] == null ? null : (map['pricingCycle'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      resourceSpec: map['resourceSpec'] == null ? null : (VvpInstanceResourceSpec.fromMap((map['resourceSpec'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      storage: map['storage'] == null ? null : (VvpInstanceStorage.fromMap((map['storage'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds'] as List).cast<String>()).input(),
-      vvpInstanceName: map['vvpInstanceName'] == null ? null : (map['vvpInstanceName'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as int).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      pricingCycle: map['pricingCycle'] == null ? null : (map['pricingCycle']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      resourceSpec: map['resourceSpec'] == null ? null : (VvpInstanceResourceSpec.fromMap((map['resourceSpec']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      storage: map['storage'] == null ? null : (VvpInstanceStorage.fromMap((map['storage']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds']! as List).cast<String>()).input(),
+      vvpInstanceName: map['vvpInstanceName'] == null ? null : (map['vvpInstanceName']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

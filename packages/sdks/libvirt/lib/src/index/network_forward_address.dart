@@ -21,7 +21,7 @@ class NetworkForwardAddress {
 
   factory NetworkForwardAddress.fromMap(Map<String, dynamic> map) {
     return NetworkForwardAddress(
-      pci: map['pci'] == null ? null : (NetworkForwardAddressPci.fromMap((map['pci'] as Map).cast<String, dynamic>())).input(),
+      pci: map['pci'] == null ? null : (NetworkForwardAddressPci.fromMap((map['pci']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

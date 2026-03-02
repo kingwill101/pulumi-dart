@@ -72,9 +72,9 @@ class ManagementLockAtResourceLevelArgs {
     return ManagementLockAtResourceLevelArgs(
       apiVersion: (map['apiVersion'] as String).input(),
       level: (map['level'] as String).input(),
-      lockName: map['lockName'] == null ? null : (map['lockName'] as String).input(),
-      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
-      owners: map['owners'] == null ? null : (pulumi.Input.decodeList<ManagementLockOwner>(map['owners'], (value) => ManagementLockOwner.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lockName: map['lockName'] == null ? null : (map['lockName']! as String).input(),
+      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
+      owners: map['owners'] == null ? null : (pulumi.Input.decodeList<ManagementLockOwner>(map['owners']!, (value) => ManagementLockOwner.fromMap((value as Map).cast<String, dynamic>()))).input(),
       parentResourcePath: (map['parentResourcePath'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),

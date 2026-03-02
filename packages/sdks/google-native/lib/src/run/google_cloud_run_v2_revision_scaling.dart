@@ -26,8 +26,8 @@ class GoogleCloudRunV2RevisionScaling {
 
   factory GoogleCloudRunV2RevisionScaling.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2RevisionScaling(
-      maxInstanceCount: map['maxInstanceCount'] == null ? null : (map['maxInstanceCount'] as int).input(),
-      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount'] as int).input(),
+      maxInstanceCount: map['maxInstanceCount'] == null ? null : (map['maxInstanceCount']! as int).input(),
+      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount']! as int).input(),
     );
   }
 }

@@ -68,15 +68,15 @@ class NetezzaSource {
 
   factory NetezzaSource.fromMap(Map<String, dynamic> map) {
     return NetezzaSource(
-      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      partitionOption: map['partitionOption'] == null ? null : (map['partitionOption']).input(),
-      partitionSettings: map['partitionSettings'] == null ? null : (NetezzaPartitionSettings.fromMap((map['partitionSettings'] as Map).cast<String, dynamic>())).input(),
-      query: map['query'] == null ? null : (map['query']).input(),
-      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']).input(),
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']!).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      partitionOption: map['partitionOption'] == null ? null : (map['partitionOption']!).input(),
+      partitionSettings: map['partitionSettings'] == null ? null : (NetezzaPartitionSettings.fromMap((map['partitionSettings']! as Map).cast<String, dynamic>())).input(),
+      query: map['query'] == null ? null : (map['query']!).input(),
+      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']!).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']!).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']!).input(),
       type: (map['type'] as String).input(),
     );
   }

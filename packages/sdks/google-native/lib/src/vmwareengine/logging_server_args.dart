@@ -64,13 +64,13 @@ class LoggingServerArgs {
   factory LoggingServerArgs.fromMap(Map<String, dynamic> map) {
     return LoggingServerArgs(
       hostname: (map['hostname'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       loggingServerId: (map['loggingServerId'] as String).input(),
       port: (map['port'] as int).input(),
       privateCloudId: (map['privateCloudId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       protocol: (LoggingServerProtocol.fromValue(map['protocol'] as String)).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       sourceType: (LoggingServerSourceType.fromValue(map['sourceType'] as String)).input(),
     );
   }

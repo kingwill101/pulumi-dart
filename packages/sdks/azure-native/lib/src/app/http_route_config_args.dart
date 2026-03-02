@@ -41,8 +41,8 @@ class HttpRouteConfigArgs {
   factory HttpRouteConfigArgs.fromMap(Map<String, dynamic> map) {
     return HttpRouteConfigArgs(
       environmentName: (map['environmentName'] as String).input(),
-      httpRouteName: map['httpRouteName'] == null ? null : (map['httpRouteName'] as String).input(),
-      properties: map['properties'] == null ? null : (HttpRouteConfigProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      httpRouteName: map['httpRouteName'] == null ? null : (map['httpRouteName']! as String).input(),
+      properties: map['properties'] == null ? null : (HttpRouteConfigProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

@@ -47,11 +47,11 @@ class MapArgs {
 
   factory MapArgs.fromMap(Map<String, dynamic> map) {
     return MapArgs(
-      configuration: (MapConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      configuration: (MapConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       mapName: (map['mapName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

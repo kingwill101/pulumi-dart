@@ -56,14 +56,14 @@ class VirtualWanState {
 
   factory VirtualWanState.fromMap(Map<String, dynamic> map) {
     return VirtualWanState(
-      allowBranchToBranchTraffic: map['allowBranchToBranchTraffic'] == null ? null : (map['allowBranchToBranchTraffic'] as bool).input(),
-      disableVpnEncryption: map['disableVpnEncryption'] == null ? null : (map['disableVpnEncryption'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      office365LocalBreakoutCategory: map['office365LocalBreakoutCategory'] == null ? null : (map['office365LocalBreakoutCategory'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      allowBranchToBranchTraffic: map['allowBranchToBranchTraffic'] == null ? null : (map['allowBranchToBranchTraffic']! as bool).input(),
+      disableVpnEncryption: map['disableVpnEncryption'] == null ? null : (map['disableVpnEncryption']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      office365LocalBreakoutCategory: map['office365LocalBreakoutCategory'] == null ? null : (map['office365LocalBreakoutCategory']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

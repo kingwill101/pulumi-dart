@@ -21,7 +21,7 @@ class CloudProviderProfileInfraNetworkProfile {
 
   factory CloudProviderProfileInfraNetworkProfile.fromMap(Map<String, dynamic> map) {
     return CloudProviderProfileInfraNetworkProfile(
-      vnetSubnetIds: map['vnetSubnetIds'] == null ? null : ((map['vnetSubnetIds'] as List).cast<String>()).input(),
+      vnetSubnetIds: map['vnetSubnetIds'] == null ? null : ((map['vnetSubnetIds']! as List).cast<String>()).input(),
     );
   }
 }

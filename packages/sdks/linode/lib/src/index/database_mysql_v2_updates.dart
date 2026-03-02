@@ -35,10 +35,10 @@ class DatabaseMysqlV2Updates {
 
   factory DatabaseMysqlV2Updates.fromMap(Map<String, dynamic> map) {
     return DatabaseMysqlV2Updates(
-      dayOfWeek: map['dayOfWeek'] == null ? null : (map['dayOfWeek'] as int).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as int).input(),
-      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
-      hourOfDay: map['hourOfDay'] == null ? null : (map['hourOfDay'] as int).input(),
+      dayOfWeek: map['dayOfWeek'] == null ? null : (map['dayOfWeek']! as int).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as int).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency']! as String).input(),
+      hourOfDay: map['hourOfDay'] == null ? null : (map['hourOfDay']! as int).input(),
     );
   }
 }

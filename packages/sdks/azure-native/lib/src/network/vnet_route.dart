@@ -28,8 +28,8 @@ class VnetRoute {
 
   factory VnetRoute.fromMap(Map<String, dynamic> map) {
     return VnetRoute(
-      staticRoutes: map['staticRoutes'] == null ? null : (pulumi.Input.decodeList<StaticRoute>(map['staticRoutes'], (value) => StaticRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      staticRoutesConfig: map['staticRoutesConfig'] == null ? null : (StaticRoutesConfig.fromMap((map['staticRoutesConfig'] as Map).cast<String, dynamic>())).input(),
+      staticRoutes: map['staticRoutes'] == null ? null : (pulumi.Input.decodeList<StaticRoute>(map['staticRoutes']!, (value) => StaticRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      staticRoutesConfig: map['staticRoutesConfig'] == null ? null : (StaticRoutesConfig.fromMap((map['staticRoutesConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

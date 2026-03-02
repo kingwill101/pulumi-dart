@@ -73,16 +73,16 @@ class ReplicaExternalKeyArgs {
 
   factory ReplicaExternalKeyArgs.fromMap(Map<String, dynamic> map) {
     return ReplicaExternalKeyArgs(
-      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : (map['bypassPolicyLockoutSafetyCheck'] as bool).input(),
-      deletionWindowInDays: map['deletionWindowInDays'] == null ? null : (map['deletionWindowInDays'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      keyMaterialBase64: map['keyMaterialBase64'] == null ? null : (map['keyMaterialBase64'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : ((map['bypassPolicyLockoutSafetyCheck'] as bool).input()).input(),
+      deletionWindowInDays: map['deletionWindowInDays'] == null ? null : ((map['deletionWindowInDays'] as int).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      keyMaterialBase64: map['keyMaterialBase64'] == null ? null : ((map['keyMaterialBase64'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
       primaryKeyArn: (map['primaryKeyArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      validTo: map['validTo'] == null ? null : (map['validTo'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      validTo: map['validTo'] == null ? null : ((map['validTo'] as String).input()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class SnapStartResponse {
 
   factory SnapStartResponse.fromMap(Map<String, dynamic> map) {
     return SnapStartResponse(
-      applyOn: map['applyOn'] == null ? null : (map['applyOn'] as String).input(),
+      applyOn: map['applyOn'] == null ? null : (map['applyOn']! as String).input(),
     );
   }
 }

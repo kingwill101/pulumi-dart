@@ -25,7 +25,7 @@ class PolicyManagedRulesExclusionExcludedRuleSetRuleGroup {
 
   factory PolicyManagedRulesExclusionExcludedRuleSetRuleGroup.fromMap(Map<String, dynamic> map) {
     return PolicyManagedRulesExclusionExcludedRuleSetRuleGroup(
-      excludedRules: map['excludedRules'] == null ? null : ((map['excludedRules'] as List).cast<String>()).input(),
+      excludedRules: map['excludedRules'] == null ? null : ((map['excludedRules']! as List).cast<String>()).input(),
       ruleGroupName: (map['ruleGroupName'] as String).input(),
     );
   }

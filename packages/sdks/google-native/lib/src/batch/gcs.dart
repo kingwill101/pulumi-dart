@@ -21,7 +21,7 @@ class GCS {
 
   factory GCS.fromMap(Map<String, dynamic> map) {
     return GCS(
-      remotePath: map['remotePath'] == null ? null : (map['remotePath'] as String).input(),
+      remotePath: map['remotePath'] == null ? null : (map['remotePath']! as String).input(),
     );
   }
 }

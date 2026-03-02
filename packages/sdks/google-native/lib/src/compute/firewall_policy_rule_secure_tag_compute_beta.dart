@@ -20,7 +20,7 @@ class FirewallPolicyRuleSecureTagComputeBeta {
 
   factory FirewallPolicyRuleSecureTagComputeBeta.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyRuleSecureTagComputeBeta(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

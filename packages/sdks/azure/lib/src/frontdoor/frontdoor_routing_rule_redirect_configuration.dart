@@ -45,10 +45,10 @@ class FrontdoorRoutingRuleRedirectConfiguration {
 
   factory FrontdoorRoutingRuleRedirectConfiguration.fromMap(Map<String, dynamic> map) {
     return FrontdoorRoutingRuleRedirectConfiguration(
-      customFragment: map['customFragment'] == null ? null : (map['customFragment'] as String).input(),
-      customHost: map['customHost'] == null ? null : (map['customHost'] as String).input(),
-      customPath: map['customPath'] == null ? null : (map['customPath'] as String).input(),
-      customQueryString: map['customQueryString'] == null ? null : (map['customQueryString'] as String).input(),
+      customFragment: map['customFragment'] == null ? null : (map['customFragment']! as String).input(),
+      customHost: map['customHost'] == null ? null : (map['customHost']! as String).input(),
+      customPath: map['customPath'] == null ? null : (map['customPath']! as String).input(),
+      customQueryString: map['customQueryString'] == null ? null : (map['customQueryString']! as String).input(),
       redirectProtocol: (map['redirectProtocol'] as String).input(),
       redirectType: (map['redirectType'] as String).input(),
     );

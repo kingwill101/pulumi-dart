@@ -21,7 +21,7 @@ class VirtualRouterAutoScaleConfigurationResponse {
 
   factory VirtualRouterAutoScaleConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return VirtualRouterAutoScaleConfigurationResponse(
-      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity'] as int).input(),
+      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity']! as int).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class FirewallFirewallStatusTransitGatewayAttachmentSyncState {
 
   factory FirewallFirewallStatusTransitGatewayAttachmentSyncState.fromMap(Map<String, dynamic> map) {
     return FirewallFirewallStatusTransitGatewayAttachmentSyncState(
-      attachmentId: map['attachmentId'] == null ? null : (map['attachmentId'] as String).input(),
+      attachmentId: map['attachmentId'] == null ? null : ((map['attachmentId'] as String).input()).input(),
     );
   }
 }

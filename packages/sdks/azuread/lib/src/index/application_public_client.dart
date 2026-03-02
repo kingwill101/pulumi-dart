@@ -20,7 +20,7 @@ class ApplicationPublicClient {
 
   factory ApplicationPublicClient.fromMap(Map<String, dynamic> map) {
     return ApplicationPublicClient(
-      redirectUris: map['redirectUris'] == null ? null : ((map['redirectUris'] as List).cast<String>()).input(),
+      redirectUris: map['redirectUris'] == null ? null : ((map['redirectUris']! as List).cast<String>()).input(),
     );
   }
 }

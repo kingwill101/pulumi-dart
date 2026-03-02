@@ -29,7 +29,7 @@ class GetReplicationGroupArgs {
 
   factory GetReplicationGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationGroupArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       replicationGroupId: (map['replicationGroupId'] as String).input(),
     );
   }

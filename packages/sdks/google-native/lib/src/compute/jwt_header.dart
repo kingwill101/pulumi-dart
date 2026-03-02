@@ -26,8 +26,8 @@ class JwtHeader {
 
   factory JwtHeader.fromMap(Map<String, dynamic> map) {
     return JwtHeader(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      valuePrefix: map['valuePrefix'] == null ? null : (map['valuePrefix'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      valuePrefix: map['valuePrefix'] == null ? null : (map['valuePrefix']! as String).input(),
     );
   }
 }

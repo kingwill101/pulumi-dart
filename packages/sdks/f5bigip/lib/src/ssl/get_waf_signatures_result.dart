@@ -72,12 +72,12 @@ class GetWafSignaturesResult {
   factory GetWafSignaturesResult.fromMap(Map<String, dynamic> map) {
     return GetWafSignaturesResult(
       accuracy: map['accuracy'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      description: map['description'] == null ? null : map['description']! as String,
+      enabled: map['enabled'] == null ? null : map['enabled']! as bool,
       id: map['id'] as String,
       json: map['json'] as String,
       name: map['name'] as String,
-      performStaging: map['performStaging'] == null ? null : map['performStaging'] as bool,
+      performStaging: map['performStaging'] == null ? null : map['performStaging']! as bool,
       risk: map['risk'] as String,
       signatureId: map['signatureId'] as int,
       systemSignatureId: map['systemSignatureId'] as String,

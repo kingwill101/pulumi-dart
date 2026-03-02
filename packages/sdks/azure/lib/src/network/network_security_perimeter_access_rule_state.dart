@@ -51,13 +51,13 @@ class NetworkSecurityPerimeterAccessRuleState {
 
   factory NetworkSecurityPerimeterAccessRuleState.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityPerimeterAccessRuleState(
-      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes'] as List).cast<String>()).input(),
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
-      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkSecurityPerimeterProfileId: map['networkSecurityPerimeterProfileId'] == null ? null : (map['networkSecurityPerimeterProfileId'] as String).input(),
-      serviceTags: map['serviceTags'] == null ? null : ((map['serviceTags'] as List).cast<String>()).input(),
-      subscriptionIds: map['subscriptionIds'] == null ? null : ((map['subscriptionIds'] as List).cast<String>()).input(),
+      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes']! as List).cast<String>()).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkSecurityPerimeterProfileId: map['networkSecurityPerimeterProfileId'] == null ? null : (map['networkSecurityPerimeterProfileId']! as String).input(),
+      serviceTags: map['serviceTags'] == null ? null : ((map['serviceTags']! as List).cast<String>()).input(),
+      subscriptionIds: map['subscriptionIds'] == null ? null : ((map['subscriptionIds']! as List).cast<String>()).input(),
     );
   }
 }

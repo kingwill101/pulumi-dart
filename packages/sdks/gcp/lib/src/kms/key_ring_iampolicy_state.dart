@@ -35,9 +35,9 @@ class KeyRingIAMPolicyState {
 
   factory KeyRingIAMPolicyState.fromMap(Map<String, dynamic> map) {
     return KeyRingIAMPolicyState(
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      keyRingId: map['keyRingId'] == null ? null : (map['keyRingId'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      keyRingId: map['keyRingId'] == null ? null : (map['keyRingId']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
     );
   }
 }

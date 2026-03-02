@@ -31,9 +31,9 @@ class EncryptionKeyDetailsResponse {
 
   factory EncryptionKeyDetailsResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionKeyDetailsResponse(
-      kekType: map['kekType'] == null ? null : (map['kekType'] as String).input(),
-      kekUrl: map['kekUrl'] == null ? null : (map['kekUrl'] as String).input(),
-      kekVaultResourceID: map['kekVaultResourceID'] == null ? null : (map['kekVaultResourceID'] as String).input(),
+      kekType: map['kekType'] == null ? null : (map['kekType']! as String).input(),
+      kekUrl: map['kekUrl'] == null ? null : (map['kekUrl']! as String).input(),
+      kekVaultResourceID: map['kekVaultResourceID'] == null ? null : (map['kekVaultResourceID']! as String).input(),
     );
   }
 }

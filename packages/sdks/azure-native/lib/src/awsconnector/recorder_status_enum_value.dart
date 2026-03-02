@@ -21,7 +21,7 @@ class RecorderStatusEnumValue {
 
   factory RecorderStatusEnumValue.fromMap(Map<String, dynamic> map) {
     return RecorderStatusEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

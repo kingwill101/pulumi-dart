@@ -50,13 +50,13 @@ class NextGenerationFirewallVirtualNetworkPanoramaPanorama {
 
   factory NextGenerationFirewallVirtualNetworkPanoramaPanorama.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualNetworkPanoramaPanorama(
-      deviceGroupName: map['deviceGroupName'] == null ? null : (map['deviceGroupName'] as String).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      panoramaServer1: map['panoramaServer1'] == null ? null : (map['panoramaServer1'] as String).input(),
-      panoramaServer2: map['panoramaServer2'] == null ? null : (map['panoramaServer2'] as String).input(),
-      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
-      virtualMachineSshKey: map['virtualMachineSshKey'] == null ? null : (map['virtualMachineSshKey'] as String).input(),
+      deviceGroupName: map['deviceGroupName'] == null ? null : (map['deviceGroupName']! as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      panoramaServer1: map['panoramaServer1'] == null ? null : (map['panoramaServer1']! as String).input(),
+      panoramaServer2: map['panoramaServer2'] == null ? null : (map['panoramaServer2']! as String).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName']! as String).input(),
+      virtualMachineSshKey: map['virtualMachineSshKey'] == null ? null : (map['virtualMachineSshKey']! as String).input(),
     );
   }
 }

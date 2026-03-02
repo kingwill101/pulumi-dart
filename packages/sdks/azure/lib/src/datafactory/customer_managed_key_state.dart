@@ -31,9 +31,9 @@ class CustomerManagedKeyState {
 
   factory CustomerManagedKeyState.fromMap(Map<String, dynamic> map) {
     return CustomerManagedKeyState(
-      customerManagedKeyId: map['customerManagedKeyId'] == null ? null : (map['customerManagedKeyId'] as String).input(),
-      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
+      customerManagedKeyId: map['customerManagedKeyId'] == null ? null : (map['customerManagedKeyId']! as String).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId']! as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId']! as String).input(),
     );
   }
 }

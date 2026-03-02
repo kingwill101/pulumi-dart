@@ -27,8 +27,8 @@ class NetworkAclAttachmentState {
 
   factory NetworkAclAttachmentState.fromMap(Map<String, dynamic> map) {
     return NetworkAclAttachmentState(
-      networkAclId: map['networkAclId'] == null ? null : (map['networkAclId'] as String).input(),
-      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<NetworkAclAttachmentResource>(map['resources'], (value) => NetworkAclAttachmentResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkAclId: map['networkAclId'] == null ? null : (map['networkAclId']! as String).input(),
+      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<NetworkAclAttachmentResource>(map['resources']!, (value) => NetworkAclAttachmentResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

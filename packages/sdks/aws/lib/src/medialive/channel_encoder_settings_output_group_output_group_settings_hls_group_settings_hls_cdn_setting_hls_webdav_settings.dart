@@ -38,11 +38,11 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdn
 
   factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsWebdavSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsWebdavSettings(
-      connectionRetryInterval: map['connectionRetryInterval'] == null ? null : (map['connectionRetryInterval'] as int).input(),
-      filecacheDuration: map['filecacheDuration'] == null ? null : (map['filecacheDuration'] as int).input(),
-      httpTransferMode: map['httpTransferMode'] == null ? null : (map['httpTransferMode'] as String).input(),
-      numRetries: map['numRetries'] == null ? null : (map['numRetries'] as int).input(),
-      restartDelay: map['restartDelay'] == null ? null : (map['restartDelay'] as int).input(),
+      connectionRetryInterval: map['connectionRetryInterval'] == null ? null : ((map['connectionRetryInterval'] as int).input()).input(),
+      filecacheDuration: map['filecacheDuration'] == null ? null : ((map['filecacheDuration'] as int).input()).input(),
+      httpTransferMode: map['httpTransferMode'] == null ? null : ((map['httpTransferMode'] as String).input()).input(),
+      numRetries: map['numRetries'] == null ? null : ((map['numRetries'] as int).input()).input(),
+      restartDelay: map['restartDelay'] == null ? null : ((map['restartDelay'] as int).input()).input(),
     );
   }
 }

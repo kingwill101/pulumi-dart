@@ -98,17 +98,17 @@ class DeploymentState {
 
   factory DeploymentState.fromMap(Map<String, dynamic> map) {
     return DeploymentState(
-      createPolicy: map['createPolicy'] == null ? null : (map['createPolicy'] as String).input(),
-      deletePolicy: map['deletePolicy'] == null ? null : (map['deletePolicy'] as String).input(),
-      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<DeploymentLabel>(map['labels'], (value) => DeploymentLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      manifest: map['manifest'] == null ? null : (map['manifest'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      preview: map['preview'] == null ? null : (map['preview'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      target: map['target'] == null ? null : (DeploymentTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      createPolicy: map['createPolicy'] == null ? null : (map['createPolicy']! as String).input(),
+      deletePolicy: map['deletePolicy'] == null ? null : (map['deletePolicy']! as String).input(),
+      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<DeploymentLabel>(map['labels']!, (value) => DeploymentLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      manifest: map['manifest'] == null ? null : (map['manifest']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      preview: map['preview'] == null ? null : (map['preview']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      target: map['target'] == null ? null : (DeploymentTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

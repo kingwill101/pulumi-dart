@@ -66,9 +66,9 @@ class ConnectionGitlabEnterpriseConfig {
       authorizerCredential: (ConnectionGitlabEnterpriseConfigAuthorizerCredential.fromMap((map['authorizerCredential'] as Map).cast<String, dynamic>())).input(),
       hostUri: (map['hostUri'] as String).input(),
       readAuthorizerCredential: (ConnectionGitlabEnterpriseConfigReadAuthorizerCredential.fromMap((map['readAuthorizerCredential'] as Map).cast<String, dynamic>())).input(),
-      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion'] as String).input(),
-      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : (ConnectionGitlabEnterpriseConfigServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig'] as Map).cast<String, dynamic>())).input(),
-      sslCaCertificate: map['sslCaCertificate'] == null ? null : (map['sslCaCertificate'] as String).input(),
+      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion']! as String).input(),
+      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : (ConnectionGitlabEnterpriseConfigServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig']! as Map).cast<String, dynamic>())).input(),
+      sslCaCertificate: map['sslCaCertificate'] == null ? null : (map['sslCaCertificate']! as String).input(),
       webhookSecretSecretVersion: (map['webhookSecretSecretVersion'] as String).input(),
     );
   }

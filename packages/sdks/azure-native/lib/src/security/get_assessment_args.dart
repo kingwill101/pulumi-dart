@@ -35,7 +35,7 @@ class GetAssessmentArgs {
   factory GetAssessmentArgs.fromMap(Map<String, dynamic> map) {
     return GetAssessmentArgs(
       assessmentName: (map['assessmentName'] as String).input(),
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       resourceId: (map['resourceId'] as String).input(),
     );
   }

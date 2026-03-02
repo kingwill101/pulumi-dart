@@ -60,15 +60,15 @@ class InstanceObservabilityConfig {
 
   factory InstanceObservabilityConfig.fromMap(Map<String, dynamic> map) {
     return InstanceObservabilityConfig(
-      assistiveExperiencesEnabled: map['assistiveExperiencesEnabled'] == null ? null : (map['assistiveExperiencesEnabled'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      maxQueryStringLength: map['maxQueryStringLength'] == null ? null : (map['maxQueryStringLength'] as int).input(),
-      preserveComments: map['preserveComments'] == null ? null : (map['preserveComments'] as bool).input(),
-      queryPlansPerMinute: map['queryPlansPerMinute'] == null ? null : (map['queryPlansPerMinute'] as int).input(),
-      recordApplicationTags: map['recordApplicationTags'] == null ? null : (map['recordApplicationTags'] as bool).input(),
-      trackActiveQueries: map['trackActiveQueries'] == null ? null : (map['trackActiveQueries'] as bool).input(),
-      trackWaitEventTypes: map['trackWaitEventTypes'] == null ? null : (map['trackWaitEventTypes'] as bool).input(),
-      trackWaitEvents: map['trackWaitEvents'] == null ? null : (map['trackWaitEvents'] as bool).input(),
+      assistiveExperiencesEnabled: map['assistiveExperiencesEnabled'] == null ? null : (map['assistiveExperiencesEnabled']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      maxQueryStringLength: map['maxQueryStringLength'] == null ? null : (map['maxQueryStringLength']! as int).input(),
+      preserveComments: map['preserveComments'] == null ? null : (map['preserveComments']! as bool).input(),
+      queryPlansPerMinute: map['queryPlansPerMinute'] == null ? null : (map['queryPlansPerMinute']! as int).input(),
+      recordApplicationTags: map['recordApplicationTags'] == null ? null : (map['recordApplicationTags']! as bool).input(),
+      trackActiveQueries: map['trackActiveQueries'] == null ? null : (map['trackActiveQueries']! as bool).input(),
+      trackWaitEventTypes: map['trackWaitEventTypes'] == null ? null : (map['trackWaitEventTypes']! as bool).input(),
+      trackWaitEvents: map['trackWaitEvents'] == null ? null : (map['trackWaitEvents']! as bool).input(),
     );
   }
 }

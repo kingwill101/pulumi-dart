@@ -85,19 +85,19 @@ class GoogleBigQueryV2LinkedService {
 
   factory GoogleBigQueryV2LinkedService.fromMap(Map<String, dynamic> map) {
     return GoogleBigQueryV2LinkedService(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
       authenticationType: (map['authenticationType'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId']).input(),
-      clientSecret: map['clientSecret'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['clientSecret'] as Map).cast<String, dynamic>())).input(),
-      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
-      keyFileContent: map['keyFileContent'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['keyFileContent'] as Map).cast<String, dynamic>())).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']!).input(),
+      clientSecret: map['clientSecret'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['clientSecret']! as Map).cast<String, dynamic>())).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential']! as String).input(),
+      keyFileContent: map['keyFileContent'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['keyFileContent']! as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters']!, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
       projectId: (map['projectId']).input(),
-      refreshToken: map['refreshToken'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['refreshToken'] as Map).cast<String, dynamic>())).input(),
+      refreshToken: map['refreshToken'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['refreshToken']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

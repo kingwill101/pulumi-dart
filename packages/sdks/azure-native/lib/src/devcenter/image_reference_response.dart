@@ -27,7 +27,7 @@ class ImageReferenceResponse {
   factory ImageReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ImageReferenceResponse(
       exactVersion: (map['exactVersion'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

@@ -40,10 +40,10 @@ class PolicyListPolicy {
 
   factory PolicyListPolicy.fromMap(Map<String, dynamic> map) {
     return PolicyListPolicy(
-      allow: map['allow'] == null ? null : (PolicyListPolicyAllow.fromMap((map['allow'] as Map).cast<String, dynamic>())).input(),
-      deny: map['deny'] == null ? null : (PolicyListPolicyDeny.fromMap((map['deny'] as Map).cast<String, dynamic>())).input(),
-      inheritFromParent: map['inheritFromParent'] == null ? null : (map['inheritFromParent'] as bool).input(),
-      suggestedValue: map['suggestedValue'] == null ? null : (map['suggestedValue'] as String).input(),
+      allow: map['allow'] == null ? null : (PolicyListPolicyAllow.fromMap((map['allow']! as Map).cast<String, dynamic>())).input(),
+      deny: map['deny'] == null ? null : (PolicyListPolicyDeny.fromMap((map['deny']! as Map).cast<String, dynamic>())).input(),
+      inheritFromParent: map['inheritFromParent'] == null ? null : (map['inheritFromParent']! as bool).input(),
+      suggestedValue: map['suggestedValue'] == null ? null : (map['suggestedValue']! as String).input(),
     );
   }
 }

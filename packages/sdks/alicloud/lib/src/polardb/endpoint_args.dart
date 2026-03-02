@@ -79,18 +79,18 @@ class EndpointArgs {
 
   factory EndpointArgs.fromMap(Map<String, dynamic> map) {
     return EndpointArgs(
-      autoAddNewNodes: map['autoAddNewNodes'] == null ? null : (map['autoAddNewNodes'] as String).input(),
-      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix'] as String).input(),
+      autoAddNewNodes: map['autoAddNewNodes'] == null ? null : (map['autoAddNewNodes']! as String).input(),
+      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix']! as String).input(),
       dbClusterId: (map['dbClusterId'] as String).input(),
-      dbEndpointDescription: map['dbEndpointDescription'] == null ? null : (map['dbEndpointDescription'] as String).input(),
-      endpointConfig: map['endpointConfig'] == null ? null : ((map['endpointConfig'] as Map).cast<String, String>()).input(),
-      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
-      netType: map['netType'] == null ? null : (map['netType'] as String).input(),
-      nodes: map['nodes'] == null ? null : ((map['nodes'] as List).cast<String>()).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      readWriteMode: map['readWriteMode'] == null ? null : (map['readWriteMode'] as String).input(),
-      sslAutoRotate: map['sslAutoRotate'] == null ? null : (map['sslAutoRotate'] as String).input(),
-      sslEnabled: map['sslEnabled'] == null ? null : (map['sslEnabled'] as String).input(),
+      dbEndpointDescription: map['dbEndpointDescription'] == null ? null : (map['dbEndpointDescription']! as String).input(),
+      endpointConfig: map['endpointConfig'] == null ? null : ((map['endpointConfig']! as Map).cast<String, String>()).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
+      netType: map['netType'] == null ? null : (map['netType']! as String).input(),
+      nodes: map['nodes'] == null ? null : ((map['nodes']! as List).cast<String>()).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      readWriteMode: map['readWriteMode'] == null ? null : (map['readWriteMode']! as String).input(),
+      sslAutoRotate: map['sslAutoRotate'] == null ? null : (map['sslAutoRotate']! as String).input(),
+      sslEnabled: map['sslEnabled'] == null ? null : (map['sslEnabled']! as String).input(),
     );
   }
 }

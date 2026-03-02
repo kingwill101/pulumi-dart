@@ -38,10 +38,10 @@ class GoogleCloudDataplexV1DataQualitySpec {
 
   factory GoogleCloudDataplexV1DataQualitySpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataQualitySpec(
-      postScanActions: map['postScanActions'] == null ? null : (GoogleCloudDataplexV1DataQualitySpecPostScanActions.fromMap((map['postScanActions'] as Map).cast<String, dynamic>())).input(),
-      rowFilter: map['rowFilter'] == null ? null : (map['rowFilter'] as String).input(),
+      postScanActions: map['postScanActions'] == null ? null : (GoogleCloudDataplexV1DataQualitySpecPostScanActions.fromMap((map['postScanActions']! as Map).cast<String, dynamic>())).input(),
+      rowFilter: map['rowFilter'] == null ? null : (map['rowFilter']! as String).input(),
       rules: (pulumi.Input.decodeList<GoogleCloudDataplexV1DataQualityRule>(map['rules'], (value) => GoogleCloudDataplexV1DataQualityRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      samplingPercent: map['samplingPercent'] == null ? null : (map['samplingPercent'] as double).input(),
+      samplingPercent: map['samplingPercent'] == null ? null : (map['samplingPercent']! as double).input(),
     );
   }
 }

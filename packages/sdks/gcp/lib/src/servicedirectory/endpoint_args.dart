@@ -54,11 +54,11 @@ class EndpointArgs {
 
   factory EndpointArgs.fromMap(Map<String, dynamic> map) {
     return EndpointArgs(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
       endpointId: (map['endpointId'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
       service: (map['service'] as String).input(),
     );
   }

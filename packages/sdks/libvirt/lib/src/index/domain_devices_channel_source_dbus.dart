@@ -20,7 +20,7 @@ class DomainDevicesChannelSourceDbus {
 
   factory DomainDevicesChannelSourceDbus.fromMap(Map<String, dynamic> map) {
     return DomainDevicesChannelSourceDbus(
-      channel: map['channel'] == null ? null : (map['channel'] as String).input(),
+      channel: map['channel'] == null ? null : (map['channel']! as String).input(),
     );
   }
 }

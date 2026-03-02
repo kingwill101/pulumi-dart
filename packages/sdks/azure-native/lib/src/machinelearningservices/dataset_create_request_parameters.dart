@@ -50,13 +50,13 @@ class DatasetCreateRequestParameters {
 
   factory DatasetCreateRequestParameters.fromMap(Map<String, dynamic> map) {
     return DatasetCreateRequestParameters(
-      header: map['header'] == null ? null : (map['header'] as String).input(),
-      includePath: map['includePath'] == null ? null : (map['includePath'] as bool).input(),
-      partitionFormat: map['partitionFormat'] == null ? null : (map['partitionFormat'] as String).input(),
-      path: map['path'] == null ? null : (DatasetCreateRequestPath.fromMap((map['path'] as Map).cast<String, dynamic>())).input(),
-      query: map['query'] == null ? null : (DatasetCreateRequestQuery.fromMap((map['query'] as Map).cast<String, dynamic>())).input(),
-      separator: map['separator'] == null ? null : (map['separator'] as String).input(),
-      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
+      header: map['header'] == null ? null : (map['header']! as String).input(),
+      includePath: map['includePath'] == null ? null : (map['includePath']! as bool).input(),
+      partitionFormat: map['partitionFormat'] == null ? null : (map['partitionFormat']! as String).input(),
+      path: map['path'] == null ? null : (DatasetCreateRequestPath.fromMap((map['path']! as Map).cast<String, dynamic>())).input(),
+      query: map['query'] == null ? null : (DatasetCreateRequestQuery.fromMap((map['query']! as Map).cast<String, dynamic>())).input(),
+      separator: map['separator'] == null ? null : (map['separator']! as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType']! as String).input(),
     );
   }
 }

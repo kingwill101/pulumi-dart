@@ -51,7 +51,7 @@ class GetApiIssueCommentResult {
   factory GetApiIssueCommentResult.fromMap(Map<String, dynamic> map) {
     return GetApiIssueCommentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      createdDate: map['createdDate'] == null ? null : map['createdDate'] as String,
+      createdDate: map['createdDate'] == null ? null : map['createdDate']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       text: map['text'] as String,

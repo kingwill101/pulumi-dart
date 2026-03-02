@@ -74,14 +74,14 @@ class ClusterPrivateClusterConfig {
 
   factory ClusterPrivateClusterConfig.fromMap(Map<String, dynamic> map) {
     return ClusterPrivateClusterConfig(
-      enablePrivateEndpoint: map['enablePrivateEndpoint'] == null ? null : (map['enablePrivateEndpoint'] as bool).input(),
-      enablePrivateNodes: map['enablePrivateNodes'] == null ? null : (map['enablePrivateNodes'] as bool).input(),
-      masterGlobalAccessConfig: map['masterGlobalAccessConfig'] == null ? null : (ClusterPrivateClusterConfigMasterGlobalAccessConfig.fromMap((map['masterGlobalAccessConfig'] as Map).cast<String, dynamic>())).input(),
-      masterIpv4CidrBlock: map['masterIpv4CidrBlock'] == null ? null : (map['masterIpv4CidrBlock'] as String).input(),
-      peeringName: map['peeringName'] == null ? null : (map['peeringName'] as String).input(),
-      privateEndpoint: map['privateEndpoint'] == null ? null : (map['privateEndpoint'] as String).input(),
-      privateEndpointSubnetwork: map['privateEndpointSubnetwork'] == null ? null : (map['privateEndpointSubnetwork'] as String).input(),
-      publicEndpoint: map['publicEndpoint'] == null ? null : (map['publicEndpoint'] as String).input(),
+      enablePrivateEndpoint: map['enablePrivateEndpoint'] == null ? null : (map['enablePrivateEndpoint']! as bool).input(),
+      enablePrivateNodes: map['enablePrivateNodes'] == null ? null : (map['enablePrivateNodes']! as bool).input(),
+      masterGlobalAccessConfig: map['masterGlobalAccessConfig'] == null ? null : (ClusterPrivateClusterConfigMasterGlobalAccessConfig.fromMap((map['masterGlobalAccessConfig']! as Map).cast<String, dynamic>())).input(),
+      masterIpv4CidrBlock: map['masterIpv4CidrBlock'] == null ? null : (map['masterIpv4CidrBlock']! as String).input(),
+      peeringName: map['peeringName'] == null ? null : (map['peeringName']! as String).input(),
+      privateEndpoint: map['privateEndpoint'] == null ? null : (map['privateEndpoint']! as String).input(),
+      privateEndpointSubnetwork: map['privateEndpointSubnetwork'] == null ? null : (map['privateEndpointSubnetwork']! as String).input(),
+      publicEndpoint: map['publicEndpoint'] == null ? null : (map['publicEndpoint']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig {
 
   factory GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig(
-      useElapsedTime: map['useElapsedTime'] == null ? null : (map['useElapsedTime'] as bool).input(),
+      useElapsedTime: map['useElapsedTime'] == null ? null : (map['useElapsedTime']! as bool).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class VolumeClaimSpecSelector {
 
   factory VolumeClaimSpecSelector.fromMap(Map<String, dynamic> map) {
     return VolumeClaimSpecSelector(
-      matchExpressions: map['matchExpressions'] == null ? null : (pulumi.Input.decodeList<VolumeClaimSpecSelectorMatchExpressions>(map['matchExpressions'], (value) => VolumeClaimSpecSelectorMatchExpressions.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matchLabels: map['matchLabels'] == null ? null : ((map['matchLabels'] as Map).cast<String, String>()).input(),
+      matchExpressions: map['matchExpressions'] == null ? null : (pulumi.Input.decodeList<VolumeClaimSpecSelectorMatchExpressions>(map['matchExpressions']!, (value) => VolumeClaimSpecSelectorMatchExpressions.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchLabels: map['matchLabels'] == null ? null : ((map['matchLabels']! as Map).cast<String, String>()).input(),
     );
   }
 }

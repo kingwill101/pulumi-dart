@@ -30,9 +30,9 @@ class GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrust {
 
   factory GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrust.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrust(
-      acms: (pulumi.Input.decodeList<GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustAcm>(map['acms'], (value) => GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustAcm.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      files: (pulumi.Input.decodeList<GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustFile>(map['files'], (value) => GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sds: (pulumi.Input.decodeList<GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustSd>(map['sds'], (value) => GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustSd.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      acms: (pulumi.Input.decodeList<GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustAcm>(map['acms']!, (value) => GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustAcm.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      files: (pulumi.Input.decodeList<GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustFile>(map['files']!, (value) => GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sds: (pulumi.Input.decodeList<GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustSd>(map['sds']!, (value) => GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustSd.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

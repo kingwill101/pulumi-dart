@@ -26,8 +26,8 @@ class UserGroupAttachmentState {
 
   factory UserGroupAttachmentState.fromMap(Map<String, dynamic> map) {
     return UserGroupAttachmentState(
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

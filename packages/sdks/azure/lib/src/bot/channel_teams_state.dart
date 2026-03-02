@@ -50,13 +50,13 @@ class ChannelTeamsState {
 
   factory ChannelTeamsState.fromMap(Map<String, dynamic> map) {
     return ChannelTeamsState(
-      botName: map['botName'] == null ? null : (map['botName'] as String).input(),
-      callingEnabled: map['callingEnabled'] == null ? null : (map['callingEnabled'] as bool).input(),
-      callingWebHook: map['callingWebHook'] == null ? null : (map['callingWebHook'] as String).input(),
-      deploymentEnvironment: map['deploymentEnvironment'] == null ? null : (map['deploymentEnvironment'] as String).input(),
-      enableCalling: map['enableCalling'] == null ? null : (map['enableCalling'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      botName: map['botName'] == null ? null : (map['botName']! as String).input(),
+      callingEnabled: map['callingEnabled'] == null ? null : (map['callingEnabled']! as bool).input(),
+      callingWebHook: map['callingWebHook'] == null ? null : (map['callingWebHook']! as String).input(),
+      deploymentEnvironment: map['deploymentEnvironment'] == null ? null : (map['deploymentEnvironment']! as String).input(),
+      enableCalling: map['enableCalling'] == null ? null : (map['enableCalling']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

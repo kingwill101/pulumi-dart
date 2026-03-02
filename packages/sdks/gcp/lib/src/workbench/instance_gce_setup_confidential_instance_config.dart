@@ -21,7 +21,7 @@ class InstanceGceSetupConfidentialInstanceConfig {
 
   factory InstanceGceSetupConfidentialInstanceConfig.fromMap(Map<String, dynamic> map) {
     return InstanceGceSetupConfidentialInstanceConfig(
-      confidentialInstanceType: map['confidentialInstanceType'] == null ? null : (map['confidentialInstanceType'] as String).input(),
+      confidentialInstanceType: map['confidentialInstanceType'] == null ? null : (map['confidentialInstanceType']! as String).input(),
     );
   }
 }

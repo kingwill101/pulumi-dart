@@ -57,14 +57,14 @@ class ApplicationGatewayListener {
 
   factory ApplicationGatewayListener.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayListener(
-      frontendIPConfiguration: map['frontendIPConfiguration'] == null ? null : (SubResource.fromMap((map['frontendIPConfiguration'] as Map).cast<String, dynamic>())).input(),
-      frontendPort: map['frontendPort'] == null ? null : (SubResource.fromMap((map['frontendPort'] as Map).cast<String, dynamic>())).input(),
-      hostNames: map['hostNames'] == null ? null : ((map['hostNames'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      sslCertificate: map['sslCertificate'] == null ? null : (SubResource.fromMap((map['sslCertificate'] as Map).cast<String, dynamic>())).input(),
-      sslProfile: map['sslProfile'] == null ? null : (SubResource.fromMap((map['sslProfile'] as Map).cast<String, dynamic>())).input(),
+      frontendIPConfiguration: map['frontendIPConfiguration'] == null ? null : (SubResource.fromMap((map['frontendIPConfiguration']! as Map).cast<String, dynamic>())).input(),
+      frontendPort: map['frontendPort'] == null ? null : (SubResource.fromMap((map['frontendPort']! as Map).cast<String, dynamic>())).input(),
+      hostNames: map['hostNames'] == null ? null : ((map['hostNames']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      sslCertificate: map['sslCertificate'] == null ? null : (SubResource.fromMap((map['sslCertificate']! as Map).cast<String, dynamic>())).input(),
+      sslProfile: map['sslProfile'] == null ? null : (SubResource.fromMap((map['sslProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

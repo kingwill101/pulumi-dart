@@ -39,10 +39,10 @@ class RandomPetArgs {
 
   factory RandomPetArgs.fromMap(Map<String, dynamic> map) {
     return RandomPetArgs(
-      keepers: map['keepers'] == null ? null : ((map['keepers'] as Map).cast<String, String>()).input(),
-      length: map['length'] == null ? null : (map['length'] as int).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      separator: map['separator'] == null ? null : (map['separator'] as String).input(),
+      keepers: map['keepers'] == null ? null : ((map['keepers']! as Map).cast<String, String>()).input(),
+      length: map['length'] == null ? null : (map['length']! as int).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      separator: map['separator'] == null ? null : (map['separator']! as String).input(),
     );
   }
 }

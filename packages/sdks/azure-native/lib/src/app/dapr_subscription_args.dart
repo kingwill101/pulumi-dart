@@ -71,16 +71,16 @@ class DaprSubscriptionArgs {
 
   factory DaprSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return DaprSubscriptionArgs(
-      bulkSubscribe: map['bulkSubscribe'] == null ? null : (DaprSubscriptionBulkSubscribeOptions.fromMap((map['bulkSubscribe'] as Map).cast<String, dynamic>())).input(),
-      deadLetterTopic: map['deadLetterTopic'] == null ? null : (map['deadLetterTopic'] as String).input(),
+      bulkSubscribe: map['bulkSubscribe'] == null ? null : (DaprSubscriptionBulkSubscribeOptions.fromMap((map['bulkSubscribe']! as Map).cast<String, dynamic>())).input(),
+      deadLetterTopic: map['deadLetterTopic'] == null ? null : (map['deadLetterTopic']! as String).input(),
       environmentName: (map['environmentName'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pubsubName: map['pubsubName'] == null ? null : (map['pubsubName'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pubsubName: map['pubsubName'] == null ? null : (map['pubsubName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      routes: map['routes'] == null ? null : (DaprSubscriptionRoutes.fromMap((map['routes'] as Map).cast<String, dynamic>())).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      routes: map['routes'] == null ? null : (DaprSubscriptionRoutes.fromMap((map['routes']! as Map).cast<String, dynamic>())).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

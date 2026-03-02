@@ -25,8 +25,8 @@ class VvpInstanceResourceSpec {
 
   factory VvpInstanceResourceSpec.fromMap(Map<String, dynamic> map) {
     return VvpInstanceResourceSpec(
-      cpu: map['cpu'] == null ? null : (map['cpu'] as int).input(),
-      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb'] as int).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as int).input(),
+      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb']! as int).input(),
     );
   }
 }

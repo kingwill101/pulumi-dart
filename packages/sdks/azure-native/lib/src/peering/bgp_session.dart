@@ -61,15 +61,15 @@ class BgpSession {
 
   factory BgpSession.fromMap(Map<String, dynamic> map) {
     return BgpSession(
-      maxPrefixesAdvertisedV4: map['maxPrefixesAdvertisedV4'] == null ? null : (map['maxPrefixesAdvertisedV4'] as int).input(),
-      maxPrefixesAdvertisedV6: map['maxPrefixesAdvertisedV6'] == null ? null : (map['maxPrefixesAdvertisedV6'] as int).input(),
-      md5AuthenticationKey: map['md5AuthenticationKey'] == null ? null : (map['md5AuthenticationKey'] as String).input(),
-      microsoftSessionIPv4Address: map['microsoftSessionIPv4Address'] == null ? null : (map['microsoftSessionIPv4Address'] as String).input(),
-      microsoftSessionIPv6Address: map['microsoftSessionIPv6Address'] == null ? null : (map['microsoftSessionIPv6Address'] as String).input(),
-      peerSessionIPv4Address: map['peerSessionIPv4Address'] == null ? null : (map['peerSessionIPv4Address'] as String).input(),
-      peerSessionIPv6Address: map['peerSessionIPv6Address'] == null ? null : (map['peerSessionIPv6Address'] as String).input(),
-      sessionPrefixV4: map['sessionPrefixV4'] == null ? null : (map['sessionPrefixV4'] as String).input(),
-      sessionPrefixV6: map['sessionPrefixV6'] == null ? null : (map['sessionPrefixV6'] as String).input(),
+      maxPrefixesAdvertisedV4: map['maxPrefixesAdvertisedV4'] == null ? null : (map['maxPrefixesAdvertisedV4']! as int).input(),
+      maxPrefixesAdvertisedV6: map['maxPrefixesAdvertisedV6'] == null ? null : (map['maxPrefixesAdvertisedV6']! as int).input(),
+      md5AuthenticationKey: map['md5AuthenticationKey'] == null ? null : (map['md5AuthenticationKey']! as String).input(),
+      microsoftSessionIPv4Address: map['microsoftSessionIPv4Address'] == null ? null : (map['microsoftSessionIPv4Address']! as String).input(),
+      microsoftSessionIPv6Address: map['microsoftSessionIPv6Address'] == null ? null : (map['microsoftSessionIPv6Address']! as String).input(),
+      peerSessionIPv4Address: map['peerSessionIPv4Address'] == null ? null : (map['peerSessionIPv4Address']! as String).input(),
+      peerSessionIPv6Address: map['peerSessionIPv6Address'] == null ? null : (map['peerSessionIPv6Address']! as String).input(),
+      sessionPrefixV4: map['sessionPrefixV4'] == null ? null : (map['sessionPrefixV4']! as String).input(),
+      sessionPrefixV6: map['sessionPrefixV6'] == null ? null : (map['sessionPrefixV6']! as String).input(),
     );
   }
 }

@@ -49,11 +49,11 @@ class GetRegionalSecretVersionArgs {
 
   factory GetRegionalSecretVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionalSecretVersionArgs(
-      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : (map['isSecretDataBase64'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : (map['isSecretDataBase64']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       secret: (map['secret'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

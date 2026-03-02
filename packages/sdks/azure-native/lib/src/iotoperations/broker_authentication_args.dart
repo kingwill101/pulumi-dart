@@ -51,11 +51,11 @@ class BrokerAuthenticationArgs {
 
   factory BrokerAuthenticationArgs.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticationArgs(
-      authenticationName: map['authenticationName'] == null ? null : (map['authenticationName'] as String).input(),
+      authenticationName: map['authenticationName'] == null ? null : (map['authenticationName']! as String).input(),
       brokerName: (map['brokerName'] as String).input(),
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
       instanceName: (map['instanceName'] as String).input(),
-      properties: map['properties'] == null ? null : (BrokerAuthenticationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (BrokerAuthenticationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

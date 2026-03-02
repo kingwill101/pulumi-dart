@@ -64,7 +64,7 @@ class GetNfsResult {
       mountPath: map['mountPath'] as String,
       name: map['name'] as String,
       performanceTier: map['performanceTier'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
+      region: map['region'] == null ? null : map['region']! as String,
       size: map['size'] as int,
       status: map['status'] as String,
       tags: (map['tags'] as List).cast<String>(),

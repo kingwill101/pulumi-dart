@@ -50,13 +50,13 @@ class IndexUserTokenConfigurationsJwtTokenTypeConfiguration {
 
   factory IndexUserTokenConfigurationsJwtTokenTypeConfiguration.fromMap(Map<String, dynamic> map) {
     return IndexUserTokenConfigurationsJwtTokenTypeConfiguration(
-      claimRegex: map['claimRegex'] == null ? null : (map['claimRegex'] as String).input(),
-      groupAttributeField: map['groupAttributeField'] == null ? null : (map['groupAttributeField'] as String).input(),
-      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
+      claimRegex: map['claimRegex'] == null ? null : ((map['claimRegex'] as String).input()).input(),
+      groupAttributeField: map['groupAttributeField'] == null ? null : ((map['groupAttributeField'] as String).input()).input(),
+      issuer: map['issuer'] == null ? null : ((map['issuer'] as String).input()).input(),
       keyLocation: (map['keyLocation'] as String).input(),
-      secretsManagerArn: map['secretsManagerArn'] == null ? null : (map['secretsManagerArn'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
-      userNameAttributeField: map['userNameAttributeField'] == null ? null : (map['userNameAttributeField'] as String).input(),
+      secretsManagerArn: map['secretsManagerArn'] == null ? null : ((map['secretsManagerArn'] as String).input()).input(),
+      url: map['url'] == null ? null : ((map['url'] as String).input()).input(),
+      userNameAttributeField: map['userNameAttributeField'] == null ? null : ((map['userNameAttributeField'] as String).input()).input(),
     );
   }
 }

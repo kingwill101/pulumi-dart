@@ -38,9 +38,9 @@ class ResponseContract {
 
   factory ResponseContract.fromMap(Map<String, dynamic> map) {
     return ResponseContract(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<ParameterContract>(map['headers'], (value) => ParameterContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      representations: map['representations'] == null ? null : (pulumi.Input.decodeList<RepresentationContract>(map['representations'], (value) => RepresentationContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<ParameterContract>(map['headers']!, (value) => ParameterContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      representations: map['representations'] == null ? null : (pulumi.Input.decodeList<RepresentationContract>(map['representations']!, (value) => RepresentationContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
       statusCode: (map['statusCode'] as int).input(),
     );
   }

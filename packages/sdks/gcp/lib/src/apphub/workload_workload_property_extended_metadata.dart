@@ -29,8 +29,8 @@ class WorkloadWorkloadPropertyExtendedMetadata {
 
   factory WorkloadWorkloadPropertyExtendedMetadata.fromMap(Map<String, dynamic> map) {
     return WorkloadWorkloadPropertyExtendedMetadata(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      values: map['values'] == null ? null : (pulumi.Input.decodeList<WorkloadWorkloadPropertyExtendedMetadataValue>(map['values'], (value) => WorkloadWorkloadPropertyExtendedMetadataValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      values: map['values'] == null ? null : (pulumi.Input.decodeList<WorkloadWorkloadPropertyExtendedMetadataValue>(map['values']!, (value) => WorkloadWorkloadPropertyExtendedMetadataValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

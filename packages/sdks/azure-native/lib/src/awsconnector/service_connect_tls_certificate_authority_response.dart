@@ -21,7 +21,7 @@ class ServiceConnectTlsCertificateAuthorityResponse {
 
   factory ServiceConnectTlsCertificateAuthorityResponse.fromMap(Map<String, dynamic> map) {
     return ServiceConnectTlsCertificateAuthorityResponse(
-      awsPcaAuthorityArn: map['awsPcaAuthorityArn'] == null ? null : (map['awsPcaAuthorityArn'] as String).input(),
+      awsPcaAuthorityArn: map['awsPcaAuthorityArn'] == null ? null : (map['awsPcaAuthorityArn']! as String).input(),
     );
   }
 }

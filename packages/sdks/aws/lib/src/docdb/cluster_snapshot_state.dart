@@ -84,20 +84,20 @@ class ClusterSnapshotState {
 
   factory ClusterSnapshotState.fromMap(Map<String, dynamic> map) {
     return ClusterSnapshotState(
-      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones'] as List).cast<String>()).input(),
-      dbClusterIdentifier: map['dbClusterIdentifier'] == null ? null : (map['dbClusterIdentifier'] as String).input(),
-      dbClusterSnapshotArn: map['dbClusterSnapshotArn'] == null ? null : (map['dbClusterSnapshotArn'] as String).input(),
-      dbClusterSnapshotIdentifier: map['dbClusterSnapshotIdentifier'] == null ? null : (map['dbClusterSnapshotIdentifier'] as String).input(),
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      snapshotType: map['snapshotType'] == null ? null : (map['snapshotType'] as String).input(),
-      sourceDbClusterSnapshotArn: map['sourceDbClusterSnapshotArn'] == null ? null : (map['sourceDbClusterSnapshotArn'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      storageEncrypted: map['storageEncrypted'] == null ? null : (map['storageEncrypted'] as bool).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      availabilityZones: map['availabilityZones'] == null ? null : (((map['availabilityZones'] as List).cast<String>()).input()).input(),
+      dbClusterIdentifier: map['dbClusterIdentifier'] == null ? null : ((map['dbClusterIdentifier'] as String).input()).input(),
+      dbClusterSnapshotArn: map['dbClusterSnapshotArn'] == null ? null : ((map['dbClusterSnapshotArn'] as String).input()).input(),
+      dbClusterSnapshotIdentifier: map['dbClusterSnapshotIdentifier'] == null ? null : ((map['dbClusterSnapshotIdentifier'] as String).input()).input(),
+      engine: map['engine'] == null ? null : ((map['engine'] as String).input()).input(),
+      engineVersion: map['engineVersion'] == null ? null : ((map['engineVersion'] as String).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      snapshotType: map['snapshotType'] == null ? null : ((map['snapshotType'] as String).input()).input(),
+      sourceDbClusterSnapshotArn: map['sourceDbClusterSnapshotArn'] == null ? null : ((map['sourceDbClusterSnapshotArn'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      storageEncrypted: map['storageEncrypted'] == null ? null : ((map['storageEncrypted'] as bool).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

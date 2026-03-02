@@ -21,7 +21,7 @@ class Overhead {
 
   factory Overhead.fromMap(Map<String, dynamic> map) {
     return Overhead(
-      podFixed: map['podFixed'] == null ? null : ((map['podFixed'] as Map).cast<String, String>()).input(),
+      podFixed: map['podFixed'] == null ? null : ((map['podFixed']! as Map).cast<String, String>()).input(),
     );
   }
 }

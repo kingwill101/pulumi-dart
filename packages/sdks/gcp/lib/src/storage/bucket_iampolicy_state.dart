@@ -32,9 +32,9 @@ class BucketIAMPolicyState {
 
   factory BucketIAMPolicyState.fromMap(Map<String, dynamic> map) {
     return BucketIAMPolicyState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
     );
   }
 }

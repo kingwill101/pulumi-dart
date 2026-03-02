@@ -31,9 +31,9 @@ class GoogleCloudDialogflowCxV3TestConfig {
 
   factory GoogleCloudDialogflowCxV3TestConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3TestConfig(
-      flow: map['flow'] == null ? null : (map['flow'] as String).input(),
-      page: map['page'] == null ? null : (map['page'] as String).input(),
-      trackingParameters: map['trackingParameters'] == null ? null : ((map['trackingParameters'] as List).cast<String>()).input(),
+      flow: map['flow'] == null ? null : (map['flow']! as String).input(),
+      page: map['page'] == null ? null : (map['page']! as String).input(),
+      trackingParameters: map['trackingParameters'] == null ? null : ((map['trackingParameters']! as List).cast<String>()).input(),
     );
   }
 }

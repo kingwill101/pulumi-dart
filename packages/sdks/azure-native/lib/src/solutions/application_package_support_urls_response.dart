@@ -26,8 +26,8 @@ class ApplicationPackageSupportUrlsResponse {
 
   factory ApplicationPackageSupportUrlsResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationPackageSupportUrlsResponse(
-      governmentCloud: map['governmentCloud'] == null ? null : (map['governmentCloud'] as String).input(),
-      publicAzure: map['publicAzure'] == null ? null : (map['publicAzure'] as String).input(),
+      governmentCloud: map['governmentCloud'] == null ? null : (map['governmentCloud']! as String).input(),
+      publicAzure: map['publicAzure'] == null ? null : (map['publicAzure']! as String).input(),
     );
   }
 }

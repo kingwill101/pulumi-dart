@@ -115,20 +115,20 @@ class MulticastProducerAssociationNetworkservicesState {
 
   factory MulticastProducerAssociationNetworkservicesState.fromMap(Map<String, dynamic> map) {
     return MulticastProducerAssociationNetworkservicesState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      multicastDomainActivation: map['multicastDomainActivation'] == null ? null : (map['multicastDomainActivation'] as String).input(),
-      multicastProducerAssociationId: map['multicastProducerAssociationId'] == null ? null : (map['multicastProducerAssociationId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      states: map['states'] == null ? null : (pulumi.Input.decodeList<MulticastProducerAssociationState>(map['states'], (value) => MulticastProducerAssociationState.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      uniqueId: map['uniqueId'] == null ? null : (map['uniqueId'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      multicastDomainActivation: map['multicastDomainActivation'] == null ? null : (map['multicastDomainActivation']! as String).input(),
+      multicastProducerAssociationId: map['multicastProducerAssociationId'] == null ? null : (map['multicastProducerAssociationId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      states: map['states'] == null ? null : (pulumi.Input.decodeList<MulticastProducerAssociationState>(map['states']!, (value) => MulticastProducerAssociationState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uniqueId: map['uniqueId'] == null ? null : (map['uniqueId']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

@@ -41,9 +41,9 @@ class GetQuicksightUserArgs {
 
   factory GetQuicksightUserArgs.fromMap(Map<String, dynamic> map) {
     return GetQuicksightUserArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      namespace: map['namespace'] == null ? null : ((map['namespace'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       userName: (map['userName'] as String).input(),
     );
   }

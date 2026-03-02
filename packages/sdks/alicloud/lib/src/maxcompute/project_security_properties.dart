@@ -51,13 +51,13 @@ class ProjectSecurityProperties {
 
   factory ProjectSecurityProperties.fromMap(Map<String, dynamic> map) {
     return ProjectSecurityProperties(
-      enableDownloadPrivilege: map['enableDownloadPrivilege'] == null ? null : (map['enableDownloadPrivilege'] as bool).input(),
-      labelSecurity: map['labelSecurity'] == null ? null : (map['labelSecurity'] as bool).input(),
-      objectCreatorHasAccessPermission: map['objectCreatorHasAccessPermission'] == null ? null : (map['objectCreatorHasAccessPermission'] as bool).input(),
-      objectCreatorHasGrantPermission: map['objectCreatorHasGrantPermission'] == null ? null : (map['objectCreatorHasGrantPermission'] as bool).input(),
-      projectProtection: map['projectProtection'] == null ? null : (ProjectSecurityPropertiesProjectProtection.fromMap((map['projectProtection'] as Map).cast<String, dynamic>())).input(),
-      usingAcl: map['usingAcl'] == null ? null : (map['usingAcl'] as bool).input(),
-      usingPolicy: map['usingPolicy'] == null ? null : (map['usingPolicy'] as bool).input(),
+      enableDownloadPrivilege: map['enableDownloadPrivilege'] == null ? null : (map['enableDownloadPrivilege']! as bool).input(),
+      labelSecurity: map['labelSecurity'] == null ? null : (map['labelSecurity']! as bool).input(),
+      objectCreatorHasAccessPermission: map['objectCreatorHasAccessPermission'] == null ? null : (map['objectCreatorHasAccessPermission']! as bool).input(),
+      objectCreatorHasGrantPermission: map['objectCreatorHasGrantPermission'] == null ? null : (map['objectCreatorHasGrantPermission']! as bool).input(),
+      projectProtection: map['projectProtection'] == null ? null : (ProjectSecurityPropertiesProjectProtection.fromMap((map['projectProtection']! as Map).cast<String, dynamic>())).input(),
+      usingAcl: map['usingAcl'] == null ? null : (map['usingAcl']! as bool).input(),
+      usingPolicy: map['usingPolicy'] == null ? null : (map['usingPolicy']! as bool).input(),
     );
   }
 }

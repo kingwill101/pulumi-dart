@@ -78,10 +78,10 @@ class WorkstationIamBindingArgs {
 
   factory WorkstationIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return WorkstationIamBindingArgs(
-      condition: map['condition'] == null ? null : (WorkstationIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      condition: map['condition'] == null ? null : (WorkstationIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       members: ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
       workstationClusterId: (map['workstationClusterId'] as String).input(),
       workstationConfigId: (map['workstationConfigId'] as String).input(),

@@ -77,11 +77,11 @@ class FolderFeedArgs {
 
   factory FolderFeedArgs.fromMap(Map<String, dynamic> map) {
     return FolderFeedArgs(
-      assetNames: map['assetNames'] == null ? null : ((map['assetNames'] as List).cast<String>()).input(),
-      assetTypes: map['assetTypes'] == null ? null : ((map['assetTypes'] as List).cast<String>()).input(),
+      assetNames: map['assetNames'] == null ? null : ((map['assetNames']! as List).cast<String>()).input(),
+      assetTypes: map['assetTypes'] == null ? null : ((map['assetTypes']! as List).cast<String>()).input(),
       billingProject: (map['billingProject'] as String).input(),
-      condition: map['condition'] == null ? null : (FolderFeedCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      condition: map['condition'] == null ? null : (FolderFeedCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
       feedId: (map['feedId'] as String).input(),
       feedOutputConfig: (FolderFeedFeedOutputConfig.fromMap((map['feedOutputConfig'] as Map).cast<String, dynamic>())).input(),
       folder: (map['folder'] as String).input(),

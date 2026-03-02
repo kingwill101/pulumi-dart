@@ -80,18 +80,18 @@ class CustomApiPropertiesDefinitionResponse {
 
   factory CustomApiPropertiesDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return CustomApiPropertiesDefinitionResponse(
-      apiDefinitions: map['apiDefinitions'] == null ? null : (ApiResourceDefinitionsResponse.fromMap((map['apiDefinitions'] as Map).cast<String, dynamic>())).input(),
-      apiType: map['apiType'] == null ? null : (map['apiType'] as String).input(),
-      backendService: map['backendService'] == null ? null : (ApiResourceBackendServiceResponse.fromMap((map['backendService'] as Map).cast<String, dynamic>())).input(),
-      brandColor: map['brandColor'] == null ? null : (map['brandColor'] as String).input(),
-      capabilities: map['capabilities'] == null ? null : ((map['capabilities'] as List).cast<String>()).input(),
-      connectionParameters: map['connectionParameters'] == null ? null : (pulumi.Input.decodeMapValues<ConnectionParameterResponse>(map['connectionParameters'], (value) => ConnectionParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      iconUri: map['iconUri'] == null ? null : (map['iconUri'] as String).input(),
-      runtimeUrls: map['runtimeUrls'] == null ? null : ((map['runtimeUrls'] as List).cast<String>()).input(),
-      swagger: map['swagger'] == null ? null : (map['swagger']).input(),
-      wsdlDefinition: map['wsdlDefinition'] == null ? null : (WsdlDefinitionResponse.fromMap((map['wsdlDefinition'] as Map).cast<String, dynamic>())).input(),
+      apiDefinitions: map['apiDefinitions'] == null ? null : (ApiResourceDefinitionsResponse.fromMap((map['apiDefinitions']! as Map).cast<String, dynamic>())).input(),
+      apiType: map['apiType'] == null ? null : (map['apiType']! as String).input(),
+      backendService: map['backendService'] == null ? null : (ApiResourceBackendServiceResponse.fromMap((map['backendService']! as Map).cast<String, dynamic>())).input(),
+      brandColor: map['brandColor'] == null ? null : (map['brandColor']! as String).input(),
+      capabilities: map['capabilities'] == null ? null : ((map['capabilities']! as List).cast<String>()).input(),
+      connectionParameters: map['connectionParameters'] == null ? null : (pulumi.Input.decodeMapValues<ConnectionParameterResponse>(map['connectionParameters']!, (value) => ConnectionParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      iconUri: map['iconUri'] == null ? null : (map['iconUri']! as String).input(),
+      runtimeUrls: map['runtimeUrls'] == null ? null : ((map['runtimeUrls']! as List).cast<String>()).input(),
+      swagger: map['swagger'] == null ? null : (map['swagger']!).input(),
+      wsdlDefinition: map['wsdlDefinition'] == null ? null : (WsdlDefinitionResponse.fromMap((map['wsdlDefinition']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

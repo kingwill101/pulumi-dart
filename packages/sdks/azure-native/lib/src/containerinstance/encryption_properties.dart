@@ -36,7 +36,7 @@ class EncryptionProperties {
 
   factory EncryptionProperties.fromMap(Map<String, dynamic> map) {
     return EncryptionProperties(
-      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
+      identity: map['identity'] == null ? null : (map['identity']! as String).input(),
       keyName: (map['keyName'] as String).input(),
       keyVersion: (map['keyVersion'] as String).input(),
       vaultBaseUrl: (map['vaultBaseUrl'] as String).input(),

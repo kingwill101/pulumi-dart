@@ -32,8 +32,8 @@ class ClusterPersistenceConfigRdbConfig {
 
   factory ClusterPersistenceConfigRdbConfig.fromMap(Map<String, dynamic> map) {
     return ClusterPersistenceConfigRdbConfig(
-      rdbSnapshotPeriod: map['rdbSnapshotPeriod'] == null ? null : (map['rdbSnapshotPeriod'] as String).input(),
-      rdbSnapshotStartTime: map['rdbSnapshotStartTime'] == null ? null : (map['rdbSnapshotStartTime'] as String).input(),
+      rdbSnapshotPeriod: map['rdbSnapshotPeriod'] == null ? null : (map['rdbSnapshotPeriod']! as String).input(),
+      rdbSnapshotStartTime: map['rdbSnapshotStartTime'] == null ? null : (map['rdbSnapshotStartTime']! as String).input(),
     );
   }
 }

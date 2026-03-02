@@ -45,12 +45,12 @@ class SiteDnsConfigResponse {
 
   factory SiteDnsConfigResponse.fromMap(Map<String, dynamic> map) {
     return SiteDnsConfigResponse(
-      dnsAltServer: map['dnsAltServer'] == null ? null : (map['dnsAltServer'] as String).input(),
+      dnsAltServer: map['dnsAltServer'] == null ? null : (map['dnsAltServer']! as String).input(),
       dnsLegacySortOrder: (map['dnsLegacySortOrder'] as bool).input(),
-      dnsMaxCacheTimeout: map['dnsMaxCacheTimeout'] == null ? null : (map['dnsMaxCacheTimeout'] as int).input(),
-      dnsRetryAttemptCount: map['dnsRetryAttemptCount'] == null ? null : (map['dnsRetryAttemptCount'] as int).input(),
-      dnsRetryAttemptTimeout: map['dnsRetryAttemptTimeout'] == null ? null : (map['dnsRetryAttemptTimeout'] as int).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      dnsMaxCacheTimeout: map['dnsMaxCacheTimeout'] == null ? null : (map['dnsMaxCacheTimeout']! as int).input(),
+      dnsRetryAttemptCount: map['dnsRetryAttemptCount'] == null ? null : (map['dnsRetryAttemptCount']! as int).input(),
+      dnsRetryAttemptTimeout: map['dnsRetryAttemptTimeout'] == null ? null : (map['dnsRetryAttemptTimeout']! as int).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
     );
   }
 }

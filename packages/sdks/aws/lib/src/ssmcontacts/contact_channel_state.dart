@@ -52,13 +52,13 @@ class ContactChannelState {
 
   factory ContactChannelState.fromMap(Map<String, dynamic> map) {
     return ContactChannelState(
-      activationStatus: map['activationStatus'] == null ? null : (map['activationStatus'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      contactId: map['contactId'] == null ? null : (map['contactId'] as String).input(),
-      deliveryAddress: map['deliveryAddress'] == null ? null : (ContactChannelDeliveryAddress.fromMap((map['deliveryAddress'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      activationStatus: map['activationStatus'] == null ? null : ((map['activationStatus'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      contactId: map['contactId'] == null ? null : ((map['contactId'] as String).input()).input(),
+      deliveryAddress: map['deliveryAddress'] == null ? null : ((ContactChannelDeliveryAddress.fromMap((map['deliveryAddress']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

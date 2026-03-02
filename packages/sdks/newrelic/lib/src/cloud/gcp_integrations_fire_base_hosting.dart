@@ -20,7 +20,7 @@ class GcpIntegrationsFireBaseHosting {
 
   factory GcpIntegrationsFireBaseHosting.fromMap(Map<String, dynamic> map) {
     return GcpIntegrationsFireBaseHosting(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
     );
   }
 }

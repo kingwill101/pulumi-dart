@@ -46,12 +46,12 @@ class BackupPlanState {
 
   factory BackupPlanState.fromMap(Map<String, dynamic> map) {
     return BackupPlanState(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
-      backupPeriod: map['backupPeriod'] == null ? null : (map['backupPeriod'] as String).input(),
-      backupTime: map['backupTime'] == null ? null : (map['backupTime'] as String).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      dataCenterId: map['dataCenterId'] == null ? null : (map['dataCenterId'] as String).input(),
-      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as int).input(),
+      active: map['active'] == null ? null : (map['active']! as bool).input(),
+      backupPeriod: map['backupPeriod'] == null ? null : (map['backupPeriod']! as String).input(),
+      backupTime: map['backupTime'] == null ? null : (map['backupTime']! as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      dataCenterId: map['dataCenterId'] == null ? null : (map['dataCenterId']! as String).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod']! as int).input(),
     );
   }
 }

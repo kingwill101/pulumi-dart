@@ -58,14 +58,14 @@ class UtilizationReportArgs {
 
   factory UtilizationReportArgs.fromMap(Map<String, dynamic> map) {
     return UtilizationReportArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       sourceId: (map['sourceId'] as String).input(),
-      timeFrame: map['timeFrame'] == null ? null : (UtilizationReportTimeFrame.fromValue(map['timeFrame'] as String)).input(),
+      timeFrame: map['timeFrame'] == null ? null : (UtilizationReportTimeFrame.fromValue(map['timeFrame']! as String)).input(),
       utilizationReportId: (map['utilizationReportId'] as String).input(),
-      vms: map['vms'] == null ? null : (pulumi.Input.decodeList<VmUtilizationInfo>(map['vms'], (value) => VmUtilizationInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vms: map['vms'] == null ? null : (pulumi.Input.decodeList<VmUtilizationInfo>(map['vms']!, (value) => VmUtilizationInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

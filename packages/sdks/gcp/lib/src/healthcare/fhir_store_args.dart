@@ -154,22 +154,22 @@ class FhirStoreArgs {
 
   factory FhirStoreArgs.fromMap(Map<String, dynamic> map) {
     return FhirStoreArgs(
-      complexDataTypeReferenceParsing: map['complexDataTypeReferenceParsing'] == null ? null : (map['complexDataTypeReferenceParsing'] as String).input(),
-      consentConfig: map['consentConfig'] == null ? null : (FhirStoreConsentConfig.fromMap((map['consentConfig'] as Map).cast<String, dynamic>())).input(),
+      complexDataTypeReferenceParsing: map['complexDataTypeReferenceParsing'] == null ? null : (map['complexDataTypeReferenceParsing']! as String).input(),
+      consentConfig: map['consentConfig'] == null ? null : (FhirStoreConsentConfig.fromMap((map['consentConfig']! as Map).cast<String, dynamic>())).input(),
       dataset: (map['dataset'] as String).input(),
-      defaultSearchHandlingStrict: map['defaultSearchHandlingStrict'] == null ? null : (map['defaultSearchHandlingStrict'] as bool).input(),
-      disableReferentialIntegrity: map['disableReferentialIntegrity'] == null ? null : (map['disableReferentialIntegrity'] as bool).input(),
-      disableResourceVersioning: map['disableResourceVersioning'] == null ? null : (map['disableResourceVersioning'] as bool).input(),
-      enableHistoryImport: map['enableHistoryImport'] == null ? null : (map['enableHistoryImport'] as bool).input(),
-      enableHistoryModifications: map['enableHistoryModifications'] == null ? null : (map['enableHistoryModifications'] as bool).input(),
-      enableUpdateCreate: map['enableUpdateCreate'] == null ? null : (map['enableUpdateCreate'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationConfig: map['notificationConfig'] == null ? null : (FhirStoreNotificationConfig.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>())).input(),
-      notificationConfigs: map['notificationConfigs'] == null ? null : (pulumi.Input.decodeList<FhirStoreNotificationConfig>(map['notificationConfigs'], (value) => FhirStoreNotificationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      streamConfigs: map['streamConfigs'] == null ? null : (pulumi.Input.decodeList<FhirStoreStreamConfig>(map['streamConfigs'], (value) => FhirStoreStreamConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      validationConfig: map['validationConfig'] == null ? null : (FhirStoreValidationConfig.fromMap((map['validationConfig'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      defaultSearchHandlingStrict: map['defaultSearchHandlingStrict'] == null ? null : (map['defaultSearchHandlingStrict']! as bool).input(),
+      disableReferentialIntegrity: map['disableReferentialIntegrity'] == null ? null : (map['disableReferentialIntegrity']! as bool).input(),
+      disableResourceVersioning: map['disableResourceVersioning'] == null ? null : (map['disableResourceVersioning']! as bool).input(),
+      enableHistoryImport: map['enableHistoryImport'] == null ? null : (map['enableHistoryImport']! as bool).input(),
+      enableHistoryModifications: map['enableHistoryModifications'] == null ? null : (map['enableHistoryModifications']! as bool).input(),
+      enableUpdateCreate: map['enableUpdateCreate'] == null ? null : (map['enableUpdateCreate']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notificationConfig: map['notificationConfig'] == null ? null : (FhirStoreNotificationConfig.fromMap((map['notificationConfig']! as Map).cast<String, dynamic>())).input(),
+      notificationConfigs: map['notificationConfigs'] == null ? null : (pulumi.Input.decodeList<FhirStoreNotificationConfig>(map['notificationConfigs']!, (value) => FhirStoreNotificationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      streamConfigs: map['streamConfigs'] == null ? null : (pulumi.Input.decodeList<FhirStoreStreamConfig>(map['streamConfigs']!, (value) => FhirStoreStreamConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      validationConfig: map['validationConfig'] == null ? null : (FhirStoreValidationConfig.fromMap((map['validationConfig']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

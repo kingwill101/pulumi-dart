@@ -55,13 +55,13 @@ class WebAppState {
 
   factory WebAppState.fromMap(Map<String, dynamic> map) {
     return WebAppState(
-      apiKeyId: map['apiKeyId'] == null ? null : (map['apiKeyId'] as String).input(),
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      appUrls: map['appUrls'] == null ? null : ((map['appUrls'] as List).cast<String>()).input(),
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      apiKeyId: map['apiKeyId'] == null ? null : (map['apiKeyId']! as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      appUrls: map['appUrls'] == null ? null : ((map['appUrls']! as List).cast<String>()).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

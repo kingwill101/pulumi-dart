@@ -33,9 +33,9 @@ class NetworkAclEntriesState {
 
   factory NetworkAclEntriesState.fromMap(Map<String, dynamic> map) {
     return NetworkAclEntriesState(
-      egresses: map['egresses'] == null ? null : (pulumi.Input.decodeList<NetworkAclEntriesEgress>(map['egresses'], (value) => NetworkAclEntriesEgress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ingresses: map['ingresses'] == null ? null : (pulumi.Input.decodeList<NetworkAclEntriesIngress>(map['ingresses'], (value) => NetworkAclEntriesIngress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      networkAclId: map['networkAclId'] == null ? null : (map['networkAclId'] as String).input(),
+      egresses: map['egresses'] == null ? null : (pulumi.Input.decodeList<NetworkAclEntriesEgress>(map['egresses']!, (value) => NetworkAclEntriesEgress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ingresses: map['ingresses'] == null ? null : (pulumi.Input.decodeList<NetworkAclEntriesIngress>(map['ingresses']!, (value) => NetworkAclEntriesIngress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkAclId: map['networkAclId'] == null ? null : (map['networkAclId']! as String).input(),
     );
   }
 }

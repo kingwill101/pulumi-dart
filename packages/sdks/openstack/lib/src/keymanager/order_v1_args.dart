@@ -39,7 +39,7 @@ class OrderV1Args {
   factory OrderV1Args.fromMap(Map<String, dynamic> map) {
     return OrderV1Args(
       meta: (OrderV1Meta.fromMap((map['meta'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

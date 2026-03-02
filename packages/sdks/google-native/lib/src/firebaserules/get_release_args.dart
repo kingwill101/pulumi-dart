@@ -27,7 +27,7 @@ class GetReleaseArgs {
 
   factory GetReleaseArgs.fromMap(Map<String, dynamic> map) {
     return GetReleaseArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       releaseId: (map['releaseId'] as String).input(),
     );
   }

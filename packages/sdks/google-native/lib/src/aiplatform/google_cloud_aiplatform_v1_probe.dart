@@ -32,9 +32,9 @@ class GoogleCloudAiplatformV1Probe {
 
   factory GoogleCloudAiplatformV1Probe.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1Probe(
-      exec: map['exec'] == null ? null : (GoogleCloudAiplatformV1ProbeExecAction.fromMap((map['exec'] as Map).cast<String, dynamic>())).input(),
-      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds'] as int).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      exec: map['exec'] == null ? null : (GoogleCloudAiplatformV1ProbeExecAction.fromMap((map['exec']! as Map).cast<String, dynamic>())).input(),
+      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds']! as int).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
     );
   }
 }

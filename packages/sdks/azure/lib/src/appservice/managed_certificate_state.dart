@@ -66,16 +66,16 @@ class ManagedCertificateState {
 
   factory ManagedCertificateState.fromMap(Map<String, dynamic> map) {
     return ManagedCertificateState(
-      canonicalName: map['canonicalName'] == null ? null : (map['canonicalName'] as String).input(),
-      customHostnameBindingId: map['customHostnameBindingId'] == null ? null : (map['customHostnameBindingId'] as String).input(),
-      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      hostNames: map['hostNames'] == null ? null : ((map['hostNames'] as List).cast<String>()).input(),
-      issueDate: map['issueDate'] == null ? null : (map['issueDate'] as String).input(),
-      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
-      subjectName: map['subjectName'] == null ? null : (map['subjectName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      canonicalName: map['canonicalName'] == null ? null : (map['canonicalName']! as String).input(),
+      customHostnameBindingId: map['customHostnameBindingId'] == null ? null : (map['customHostnameBindingId']! as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate']! as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      hostNames: map['hostNames'] == null ? null : ((map['hostNames']! as List).cast<String>()).input(),
+      issueDate: map['issueDate'] == null ? null : (map['issueDate']! as String).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer']! as String).input(),
+      subjectName: map['subjectName'] == null ? null : (map['subjectName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

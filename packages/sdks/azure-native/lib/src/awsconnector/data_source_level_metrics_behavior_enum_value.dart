@@ -21,7 +21,7 @@ class DataSourceLevelMetricsBehaviorEnumValue {
 
   factory DataSourceLevelMetricsBehaviorEnumValue.fromMap(Map<String, dynamic> map) {
     return DataSourceLevelMetricsBehaviorEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

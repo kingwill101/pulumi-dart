@@ -26,7 +26,7 @@ class DomainMatchingExportingConfigS3Exporting {
   factory DomainMatchingExportingConfigS3Exporting.fromMap(Map<String, dynamic> map) {
     return DomainMatchingExportingConfigS3Exporting(
       s3BucketName: (map['s3BucketName'] as String).input(),
-      s3KeyName: map['s3KeyName'] == null ? null : (map['s3KeyName'] as String).input(),
+      s3KeyName: map['s3KeyName'] == null ? null : ((map['s3KeyName'] as String).input()).input(),
     );
   }
 }

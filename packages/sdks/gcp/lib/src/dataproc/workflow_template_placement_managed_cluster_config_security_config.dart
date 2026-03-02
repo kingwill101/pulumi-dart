@@ -21,7 +21,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfig {
 
   factory WorkflowTemplatePlacementManagedClusterConfigSecurityConfig.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementManagedClusterConfigSecurityConfig(
-      kerberosConfig: map['kerberosConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig.fromMap((map['kerberosConfig'] as Map).cast<String, dynamic>())).input(),
+      kerberosConfig: map['kerberosConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig.fromMap((map['kerberosConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

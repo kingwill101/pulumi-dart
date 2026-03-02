@@ -31,7 +31,7 @@ class GetTargetInstanceComputeBetaArgs {
 
   factory GetTargetInstanceComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetInstanceComputeBetaArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       targetInstance: (map['targetInstance'] as String).input(),
       zone: (map['zone'] as String).input(),
     );

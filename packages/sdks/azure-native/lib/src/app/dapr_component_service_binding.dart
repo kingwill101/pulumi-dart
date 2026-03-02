@@ -32,9 +32,9 @@ class DaprComponentServiceBinding {
 
   factory DaprComponentServiceBinding.fromMap(Map<String, dynamic> map) {
     return DaprComponentServiceBinding(
-      metadata: map['metadata'] == null ? null : (DaprServiceBindMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
+      metadata: map['metadata'] == null ? null : (DaprServiceBindMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
     );
   }
 }

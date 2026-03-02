@@ -26,8 +26,8 @@ class SignatureContaineranalysisV1beta1 {
 
   factory SignatureContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return SignatureContaineranalysisV1beta1(
-      publicKeyId: map['publicKeyId'] == null ? null : (map['publicKeyId'] as String).input(),
-      signature: map['signature'] == null ? null : (map['signature'] as String).input(),
+      publicKeyId: map['publicKeyId'] == null ? null : (map['publicKeyId']! as String).input(),
+      signature: map['signature'] == null ? null : (map['signature']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class ResolverFirewallConfigState {
 
   factory ResolverFirewallConfigState.fromMap(Map<String, dynamic> map) {
     return ResolverFirewallConfigState(
-      firewallFailOpen: map['firewallFailOpen'] == null ? null : (map['firewallFailOpen'] as String).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      firewallFailOpen: map['firewallFailOpen'] == null ? null : ((map['firewallFailOpen'] as String).input()).input(),
+      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceId: map['resourceId'] == null ? null : ((map['resourceId'] as String).input()).input(),
     );
   }
 }

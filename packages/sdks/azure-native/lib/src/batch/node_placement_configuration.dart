@@ -22,7 +22,7 @@ class NodePlacementConfiguration {
 
   factory NodePlacementConfiguration.fromMap(Map<String, dynamic> map) {
     return NodePlacementConfiguration(
-      policy: map['policy'] == null ? null : (NodePlacementPolicyType.fromValue(map['policy'] as String)).input(),
+      policy: map['policy'] == null ? null : (NodePlacementPolicyType.fromValue(map['policy']! as String)).input(),
     );
   }
 }

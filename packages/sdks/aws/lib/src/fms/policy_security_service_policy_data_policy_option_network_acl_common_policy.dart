@@ -21,7 +21,7 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy {
 
   factory PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy.fromMap(Map<String, dynamic> map) {
     return PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy(
-      networkAclEntrySet: map['networkAclEntrySet'] == null ? null : (PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySet.fromMap((map['networkAclEntrySet'] as Map).cast<String, dynamic>())).input(),
+      networkAclEntrySet: map['networkAclEntrySet'] == null ? null : ((PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySet.fromMap((map['networkAclEntrySet']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

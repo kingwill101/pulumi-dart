@@ -25,8 +25,8 @@ class EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion {
 
   factory EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion.fromMap(Map<String, dynamic> map) {
     return EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion(
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      retainDays: map['retainDays'] == null ? null : (map['retainDays'] as int).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      retainDays: map['retainDays'] == null ? null : (map['retainDays']! as int).input(),
     );
   }
 }

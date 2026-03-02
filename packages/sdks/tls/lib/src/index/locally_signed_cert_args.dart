@@ -67,10 +67,10 @@ class LocallySignedCertArgs {
       caCertPem: (map['caCertPem'] as String).input(),
       caPrivateKeyPem: (map['caPrivateKeyPem'] as String).input(),
       certRequestPem: (map['certRequestPem'] as String).input(),
-      earlyRenewalHours: map['earlyRenewalHours'] == null ? null : (map['earlyRenewalHours'] as int).input(),
-      isCaCertificate: map['isCaCertificate'] == null ? null : (map['isCaCertificate'] as bool).input(),
-      maxPathLength: map['maxPathLength'] == null ? null : (map['maxPathLength'] as int).input(),
-      setSubjectKeyId: map['setSubjectKeyId'] == null ? null : (map['setSubjectKeyId'] as bool).input(),
+      earlyRenewalHours: map['earlyRenewalHours'] == null ? null : (map['earlyRenewalHours']! as int).input(),
+      isCaCertificate: map['isCaCertificate'] == null ? null : (map['isCaCertificate']! as bool).input(),
+      maxPathLength: map['maxPathLength'] == null ? null : (map['maxPathLength']! as int).input(),
+      setSubjectKeyId: map['setSubjectKeyId'] == null ? null : (map['setSubjectKeyId']! as bool).input(),
       validityPeriodHours: (map['validityPeriodHours'] as int).input(),
     );
   }

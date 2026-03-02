@@ -21,7 +21,7 @@ class NamespaceState {
 
   factory NamespaceState.fromMap(Map<String, dynamic> map) {
     return NamespaceState(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
     );
   }
 }

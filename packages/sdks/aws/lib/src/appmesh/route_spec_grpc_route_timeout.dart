@@ -27,8 +27,8 @@ class RouteSpecGrpcRouteTimeout {
 
   factory RouteSpecGrpcRouteTimeout.fromMap(Map<String, dynamic> map) {
     return RouteSpecGrpcRouteTimeout(
-      idle: map['idle'] == null ? null : (RouteSpecGrpcRouteTimeoutIdle.fromMap((map['idle'] as Map).cast<String, dynamic>())).input(),
-      perRequest: map['perRequest'] == null ? null : (RouteSpecGrpcRouteTimeoutPerRequest.fromMap((map['perRequest'] as Map).cast<String, dynamic>())).input(),
+      idle: map['idle'] == null ? null : ((RouteSpecGrpcRouteTimeoutIdle.fromMap((map['idle']! as Map).cast<String, dynamic>())).input()).input(),
+      perRequest: map['perRequest'] == null ? null : ((RouteSpecGrpcRouteTimeoutPerRequest.fromMap((map['perRequest']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

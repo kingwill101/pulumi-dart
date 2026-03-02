@@ -44,10 +44,10 @@ class HybridComputeSettingsProperties {
   factory HybridComputeSettingsProperties.fromMap(Map<String, dynamic> map) {
     return HybridComputeSettingsProperties(
       autoProvision: (map['autoProvision'] as String).input(),
-      proxyServer: map['proxyServer'] == null ? null : (ProxyServerProperties.fromMap((map['proxyServer'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      servicePrincipal: map['servicePrincipal'] == null ? null : (ServicePrincipalProperties.fromMap((map['servicePrincipal'] as Map).cast<String, dynamic>())).input(),
+      proxyServer: map['proxyServer'] == null ? null : (ProxyServerProperties.fromMap((map['proxyServer']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      servicePrincipal: map['servicePrincipal'] == null ? null : (ServicePrincipalProperties.fromMap((map['servicePrincipal']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

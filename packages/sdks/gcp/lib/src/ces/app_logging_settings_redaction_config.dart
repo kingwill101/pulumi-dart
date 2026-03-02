@@ -37,9 +37,9 @@ class AppLoggingSettingsRedactionConfig {
 
   factory AppLoggingSettingsRedactionConfig.fromMap(Map<String, dynamic> map) {
     return AppLoggingSettingsRedactionConfig(
-      deidentifyTemplate: map['deidentifyTemplate'] == null ? null : (map['deidentifyTemplate'] as String).input(),
-      enableRedaction: map['enableRedaction'] == null ? null : (map['enableRedaction'] as bool).input(),
-      inspectTemplate: map['inspectTemplate'] == null ? null : (map['inspectTemplate'] as String).input(),
+      deidentifyTemplate: map['deidentifyTemplate'] == null ? null : (map['deidentifyTemplate']! as String).input(),
+      enableRedaction: map['enableRedaction'] == null ? null : (map['enableRedaction']! as bool).input(),
+      inspectTemplate: map['inspectTemplate'] == null ? null : (map['inspectTemplate']! as String).input(),
     );
   }
 }

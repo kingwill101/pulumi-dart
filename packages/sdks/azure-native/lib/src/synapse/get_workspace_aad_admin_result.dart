@@ -55,13 +55,13 @@ class GetWorkspaceAadAdminResult {
 
   factory GetWorkspaceAadAdminResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceAadAdminResult(
-      administratorType: map['administratorType'] == null ? null : map['administratorType'] as String,
+      administratorType: map['administratorType'] == null ? null : map['administratorType']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      login: map['login'] == null ? null : map['login'] as String,
+      login: map['login'] == null ? null : map['login']! as String,
       name: map['name'] as String,
-      sid: map['sid'] == null ? null : map['sid'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      sid: map['sid'] == null ? null : map['sid']! as String,
+      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
       type: map['type'] as String,
     );
   }

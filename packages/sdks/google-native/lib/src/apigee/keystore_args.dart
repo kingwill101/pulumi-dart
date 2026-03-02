@@ -33,7 +33,7 @@ class KeystoreArgs {
   factory KeystoreArgs.fromMap(Map<String, dynamic> map) {
     return KeystoreArgs(
       environmentId: (map['environmentId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
     );
   }

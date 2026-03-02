@@ -21,7 +21,7 @@ class GoogleCloudDataplexV1StorageFormatIcebergOptions {
 
   factory GoogleCloudDataplexV1StorageFormatIcebergOptions.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1StorageFormatIcebergOptions(
-      metadataLocation: map['metadataLocation'] == null ? null : (map['metadataLocation'] as String).input(),
+      metadataLocation: map['metadataLocation'] == null ? null : (map['metadataLocation']! as String).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class LocalRulestackRuleCategory {
   factory LocalRulestackRuleCategory.fromMap(Map<String, dynamic> map) {
     return LocalRulestackRuleCategory(
       customUrls: ((map['customUrls'] as List).cast<String>()).input(),
-      feeds: map['feeds'] == null ? null : ((map['feeds'] as List).cast<String>()).input(),
+      feeds: map['feeds'] == null ? null : ((map['feeds']! as List).cast<String>()).input(),
     );
   }
 }

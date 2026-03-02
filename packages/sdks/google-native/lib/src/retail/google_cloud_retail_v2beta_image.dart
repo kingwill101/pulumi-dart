@@ -31,9 +31,9 @@ class GoogleCloudRetailV2betaImage {
 
   factory GoogleCloudRetailV2betaImage.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2betaImage(
-      height: map['height'] == null ? null : (map['height'] as int).input(),
+      height: map['height'] == null ? null : (map['height']! as int).input(),
       uri: (map['uri'] as String).input(),
-      width: map['width'] == null ? null : (map['width'] as int).input(),
+      width: map['width'] == null ? null : (map['width']! as int).input(),
     );
   }
 }

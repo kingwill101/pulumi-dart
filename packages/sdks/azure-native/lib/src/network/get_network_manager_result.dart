@@ -83,17 +83,17 @@ class GetNetworkManagerResult {
   factory GetNetworkManagerResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkManagerResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      networkManagerScopeAccesses: map['networkManagerScopeAccesses'] == null ? null : (map['networkManagerScopeAccesses'] as List).cast<String>(),
+      networkManagerScopeAccesses: map['networkManagerScopeAccesses'] == null ? null : (map['networkManagerScopeAccesses']! as List).cast<String>(),
       networkManagerScopes: NetworkManagerPropertiesResponseNetworkManagerScopes.fromMap((map['networkManagerScopes'] as Map).cast<String, dynamic>()),
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

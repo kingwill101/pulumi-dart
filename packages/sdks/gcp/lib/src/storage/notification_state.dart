@@ -61,14 +61,14 @@ class NotificationState {
 
   factory NotificationState.fromMap(Map<String, dynamic> map) {
     return NotificationState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      customAttributes: map['customAttributes'] == null ? null : ((map['customAttributes'] as Map).cast<String, String>()).input(),
-      eventTypes: map['eventTypes'] == null ? null : ((map['eventTypes'] as List).cast<String>()).input(),
-      notificationId: map['notificationId'] == null ? null : (map['notificationId'] as String).input(),
-      objectNamePrefix: map['objectNamePrefix'] == null ? null : (map['objectNamePrefix'] as String).input(),
-      payloadFormat: map['payloadFormat'] == null ? null : (map['payloadFormat'] as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      customAttributes: map['customAttributes'] == null ? null : ((map['customAttributes']! as Map).cast<String, String>()).input(),
+      eventTypes: map['eventTypes'] == null ? null : ((map['eventTypes']! as List).cast<String>()).input(),
+      notificationId: map['notificationId'] == null ? null : (map['notificationId']! as String).input(),
+      objectNamePrefix: map['objectNamePrefix'] == null ? null : (map['objectNamePrefix']! as String).input(),
+      payloadFormat: map['payloadFormat'] == null ? null : (map['payloadFormat']! as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class SpacesBucketCorsConfigurationState {
 
   factory SpacesBucketCorsConfigurationState.fromMap(Map<String, dynamic> map) {
     return SpacesBucketCorsConfigurationState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      corsRules: map['corsRules'] == null ? null : (pulumi.Input.decodeList<SpacesBucketCorsConfigurationCorsRule>(map['corsRules'], (value) => SpacesBucketCorsConfigurationCorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      corsRules: map['corsRules'] == null ? null : (pulumi.Input.decodeList<SpacesBucketCorsConfigurationCorsRule>(map['corsRules']!, (value) => SpacesBucketCorsConfigurationCorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

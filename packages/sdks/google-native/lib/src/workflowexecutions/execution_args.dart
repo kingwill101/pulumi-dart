@@ -47,11 +47,11 @@ class ExecutionArgs {
 
   factory ExecutionArgs.fromMap(Map<String, dynamic> map) {
     return ExecutionArgs(
-      argument: map['argument'] == null ? null : (map['argument'] as String).input(),
-      callLogLevel: map['callLogLevel'] == null ? null : (ExecutionCallLogLevel.fromValue(map['callLogLevel'] as String)).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      argument: map['argument'] == null ? null : (map['argument']! as String).input(),
+      callLogLevel: map['callLogLevel'] == null ? null : (ExecutionCallLogLevel.fromValue(map['callLogLevel']! as String)).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       workflowId: (map['workflowId'] as String).input(),
     );
   }

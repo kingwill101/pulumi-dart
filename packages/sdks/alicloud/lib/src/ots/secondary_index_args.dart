@@ -54,7 +54,7 @@ class SecondaryIndexArgs {
 
   factory SecondaryIndexArgs.fromMap(Map<String, dynamic> map) {
     return SecondaryIndexArgs(
-      definedColumns: map['definedColumns'] == null ? null : ((map['definedColumns'] as List).cast<String>()).input(),
+      definedColumns: map['definedColumns'] == null ? null : ((map['definedColumns']! as List).cast<String>()).input(),
       includeBaseData: (map['includeBaseData'] as bool).input(),
       indexName: (map['indexName'] as String).input(),
       indexType: (map['indexType'] as String).input(),

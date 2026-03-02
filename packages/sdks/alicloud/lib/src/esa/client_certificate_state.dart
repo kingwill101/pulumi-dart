@@ -57,13 +57,13 @@ class ClientCertificateState {
 
   factory ClientCertificateState.fromMap(Map<String, dynamic> map) {
     return ClientCertificateState(
-      clientCertId: map['clientCertId'] == null ? null : (map['clientCertId'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      csr: map['csr'] == null ? null : (map['csr'] as String).input(),
-      pkeyType: map['pkeyType'] == null ? null : (map['pkeyType'] as String).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      validityDays: map['validityDays'] == null ? null : (map['validityDays'] as String).input(),
+      clientCertId: map['clientCertId'] == null ? null : (map['clientCertId']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      csr: map['csr'] == null ? null : (map['csr']! as String).input(),
+      pkeyType: map['pkeyType'] == null ? null : (map['pkeyType']! as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      validityDays: map['validityDays'] == null ? null : (map['validityDays']! as String).input(),
     );
   }
 }

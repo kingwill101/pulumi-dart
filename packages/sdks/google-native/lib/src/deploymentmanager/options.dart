@@ -39,10 +39,10 @@ class Options {
 
   factory Options.fromMap(Map<String, dynamic> map) {
     return Options(
-      asyncOptions: map['asyncOptions'] == null ? null : (pulumi.Input.decodeList<AsyncOptions>(map['asyncOptions'], (value) => AsyncOptions.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inputMappings: map['inputMappings'] == null ? null : (pulumi.Input.decodeList<InputMapping>(map['inputMappings'], (value) => InputMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nameProperty: map['nameProperty'] == null ? null : (map['nameProperty'] as String).input(),
-      validationOptions: map['validationOptions'] == null ? null : (ValidationOptions.fromMap((map['validationOptions'] as Map).cast<String, dynamic>())).input(),
+      asyncOptions: map['asyncOptions'] == null ? null : (pulumi.Input.decodeList<AsyncOptions>(map['asyncOptions']!, (value) => AsyncOptions.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputMappings: map['inputMappings'] == null ? null : (pulumi.Input.decodeList<InputMapping>(map['inputMappings']!, (value) => InputMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nameProperty: map['nameProperty'] == null ? null : (map['nameProperty']! as String).input(),
+      validationOptions: map['validationOptions'] == null ? null : (ValidationOptions.fromMap((map['validationOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

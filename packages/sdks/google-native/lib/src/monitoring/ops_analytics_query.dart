@@ -21,7 +21,7 @@ class OpsAnalyticsQuery {
 
   factory OpsAnalyticsQuery.fromMap(Map<String, dynamic> map) {
     return OpsAnalyticsQuery(
-      sql: map['sql'] == null ? null : (map['sql'] as String).input(),
+      sql: map['sql'] == null ? null : (map['sql']! as String).input(),
     );
   }
 }

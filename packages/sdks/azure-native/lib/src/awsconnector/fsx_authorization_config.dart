@@ -26,8 +26,8 @@ class FSxAuthorizationConfig {
 
   factory FSxAuthorizationConfig.fromMap(Map<String, dynamic> map) {
     return FSxAuthorizationConfig(
-      credentialsParameter: map['credentialsParameter'] == null ? null : (map['credentialsParameter'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      credentialsParameter: map['credentialsParameter'] == null ? null : (map['credentialsParameter']! as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
     );
   }
 }

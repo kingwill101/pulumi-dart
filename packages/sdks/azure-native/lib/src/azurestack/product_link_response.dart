@@ -26,8 +26,8 @@ class ProductLinkResponse {
 
   factory ProductLinkResponse.fromMap(Map<String, dynamic> map) {
     return ProductLinkResponse(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

@@ -41,11 +41,11 @@ class QueryDefinitionState {
 
   factory QueryDefinitionState.fromMap(Map<String, dynamic> map) {
     return QueryDefinitionState(
-      logGroupNames: map['logGroupNames'] == null ? null : ((map['logGroupNames'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      queryDefinitionId: map['queryDefinitionId'] == null ? null : (map['queryDefinitionId'] as String).input(),
-      queryString: map['queryString'] == null ? null : (map['queryString'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      logGroupNames: map['logGroupNames'] == null ? null : (((map['logGroupNames'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      queryDefinitionId: map['queryDefinitionId'] == null ? null : ((map['queryDefinitionId'] as String).input()).input(),
+      queryString: map['queryString'] == null ? null : ((map['queryString'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

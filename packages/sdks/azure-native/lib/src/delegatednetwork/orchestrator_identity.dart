@@ -21,7 +21,7 @@ class OrchestratorIdentity {
 
   factory OrchestratorIdentity.fromMap(Map<String, dynamic> map) {
     return OrchestratorIdentity(
-      type: map['type'] == null ? null : (ResourceIdentityType.fromValue(map['type'] as String)).input(),
+      type: map['type'] == null ? null : (ResourceIdentityType.fromValue(map['type']! as String)).input(),
     );
   }
 }

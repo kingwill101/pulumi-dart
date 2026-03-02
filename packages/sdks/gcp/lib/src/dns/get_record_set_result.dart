@@ -49,7 +49,7 @@ class GetRecordSetResult {
       id: map['id'] as String,
       managedZone: map['managedZone'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       rrdatas: (map['rrdatas'] as List).cast<String>(),
       ttl: map['ttl'] as int,
       type: map['type'] as String,

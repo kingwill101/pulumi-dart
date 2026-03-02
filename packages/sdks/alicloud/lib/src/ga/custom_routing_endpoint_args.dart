@@ -44,7 +44,7 @@ class CustomRoutingEndpointArgs {
     return CustomRoutingEndpointArgs(
       endpoint: (map['endpoint'] as String).input(),
       endpointGroupId: (map['endpointGroupId'] as String).input(),
-      trafficToEndpointPolicy: map['trafficToEndpointPolicy'] == null ? null : (map['trafficToEndpointPolicy'] as String).input(),
+      trafficToEndpointPolicy: map['trafficToEndpointPolicy'] == null ? null : (map['trafficToEndpointPolicy']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

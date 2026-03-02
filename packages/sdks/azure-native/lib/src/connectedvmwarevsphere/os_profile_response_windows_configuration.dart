@@ -26,8 +26,8 @@ class OsProfileResponseWindowsConfiguration {
 
   factory OsProfileResponseWindowsConfiguration.fromMap(Map<String, dynamic> map) {
     return OsProfileResponseWindowsConfiguration(
-      assessmentMode: map['assessmentMode'] == null ? null : (map['assessmentMode'] as String).input(),
-      patchMode: map['patchMode'] == null ? null : (map['patchMode'] as String).input(),
+      assessmentMode: map['assessmentMode'] == null ? null : (map['assessmentMode']! as String).input(),
+      patchMode: map['patchMode'] == null ? null : (map['patchMode']! as String).input(),
     );
   }
 }

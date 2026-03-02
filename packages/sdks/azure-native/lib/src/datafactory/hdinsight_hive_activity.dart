@@ -106,23 +106,23 @@ class HDInsightHiveActivity {
 
   factory HDInsightHiveActivity.fromMap(Map<String, dynamic> map) {
     return HDInsightHiveActivity(
-      arguments: map['arguments'] == null ? null : ((map['arguments'] as List).cast<dynamic>()).input(),
-      defines: map['defines'] == null ? null : ((map['defines'] as Map).cast<String, dynamic>()).input(),
-      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn'], (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      getDebugInfo: map['getDebugInfo'] == null ? null : (map['getDebugInfo'] as String).input(),
-      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      arguments: map['arguments'] == null ? null : ((map['arguments']! as List).cast<dynamic>()).input(),
+      defines: map['defines'] == null ? null : ((map['defines']! as Map).cast<String, dynamic>()).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn']!, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      getDebugInfo: map['getDebugInfo'] == null ? null : (map['getDebugInfo']! as String).input(),
+      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReference.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
-      policy: map['policy'] == null ? null : (ActivityPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
-      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout'] as int).input(),
-      scriptLinkedService: map['scriptLinkedService'] == null ? null : (LinkedServiceReference.fromMap((map['scriptLinkedService'] as Map).cast<String, dynamic>())).input(),
-      scriptPath: map['scriptPath'] == null ? null : (map['scriptPath']).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      storageLinkedServices: map['storageLinkedServices'] == null ? null : (pulumi.Input.decodeList<LinkedServiceReference>(map['storageLinkedServices'], (value) => LinkedServiceReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs']! as String).input(),
+      policy: map['policy'] == null ? null : (ActivityPolicy.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
+      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']! as int).input(),
+      scriptLinkedService: map['scriptLinkedService'] == null ? null : (LinkedServiceReference.fromMap((map['scriptLinkedService']! as Map).cast<String, dynamic>())).input(),
+      scriptPath: map['scriptPath'] == null ? null : (map['scriptPath']!).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      storageLinkedServices: map['storageLinkedServices'] == null ? null : (pulumi.Input.decodeList<LinkedServiceReference>(map['storageLinkedServices']!, (value) => LinkedServiceReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
-      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties'], (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      variables: map['variables'] == null ? null : ((map['variables'] as Map).cast<String, dynamic>()).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties']!, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      variables: map['variables'] == null ? null : ((map['variables']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

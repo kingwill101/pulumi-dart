@@ -21,7 +21,7 @@ class AzureClusterLoggingConfig {
 
   factory AzureClusterLoggingConfig.fromMap(Map<String, dynamic> map) {
     return AzureClusterLoggingConfig(
-      componentConfig: map['componentConfig'] == null ? null : (AzureClusterLoggingConfigComponentConfig.fromMap((map['componentConfig'] as Map).cast<String, dynamic>())).input(),
+      componentConfig: map['componentConfig'] == null ? null : (AzureClusterLoggingConfigComponentConfig.fromMap((map['componentConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

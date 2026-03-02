@@ -25,8 +25,8 @@ class DatasetReference {
 
   factory DatasetReference.fromMap(Map<String, dynamic> map) {
     return DatasetReference(
-      datasetId: map['datasetId'] == null ? null : (map['datasetId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      datasetId: map['datasetId'] == null ? null : (map['datasetId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

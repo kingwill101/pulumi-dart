@@ -32,9 +32,9 @@ class FargateProfile {
 
   factory FargateProfile.fromMap(Map<String, dynamic> map) {
     return FargateProfile(
-      podExecutionRoleArn: map['podExecutionRoleArn'] == null ? null : (map['podExecutionRoleArn'] as String).input(),
-      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<pulumi_aws_eks.FargateProfileSelector>(map['selectors'], (value) => pulumi_aws_eks.FargateProfileSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
+      podExecutionRoleArn: map['podExecutionRoleArn'] == null ? null : (map['podExecutionRoleArn']! as String).input(),
+      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<pulumi_aws_eks.FargateProfileSelector>(map['selectors']!, (value) => pulumi_aws_eks.FargateProfileSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds']! as List).cast<String>()).input(),
     );
   }
 }

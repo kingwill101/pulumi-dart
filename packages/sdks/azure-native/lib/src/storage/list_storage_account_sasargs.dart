@@ -71,15 +71,15 @@ class ListStorageAccountSASArgs {
   factory ListStorageAccountSASArgs.fromMap(Map<String, dynamic> map) {
     return ListStorageAccountSASArgs(
       accountName: (map['accountName'] as String).input(),
-      iPAddressOrRange: map['iPAddressOrRange'] == null ? null : (map['iPAddressOrRange'] as String).input(),
-      keyToSign: map['keyToSign'] == null ? null : (map['keyToSign'] as String).input(),
+      iPAddressOrRange: map['iPAddressOrRange'] == null ? null : (map['iPAddressOrRange']! as String).input(),
+      keyToSign: map['keyToSign'] == null ? null : (map['keyToSign']! as String).input(),
       permissions: (map['permissions'] as String).input(),
-      protocols: map['protocols'] == null ? null : (HttpProtocol.fromValue(map['protocols'] as String)).input(),
+      protocols: map['protocols'] == null ? null : (HttpProtocol.fromValue(map['protocols']! as String)).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceTypes: (map['resourceTypes'] as String).input(),
       services: (map['services'] as String).input(),
       sharedAccessExpiryTime: (map['sharedAccessExpiryTime'] as String).input(),
-      sharedAccessStartTime: map['sharedAccessStartTime'] == null ? null : (map['sharedAccessStartTime'] as String).input(),
+      sharedAccessStartTime: map['sharedAccessStartTime'] == null ? null : (map['sharedAccessStartTime']! as String).input(),
     );
   }
 }

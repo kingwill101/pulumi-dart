@@ -41,11 +41,11 @@ class SyncCloudEndpointState {
 
   factory SyncCloudEndpointState.fromMap(Map<String, dynamic> map) {
     return SyncCloudEndpointState(
-      fileShareName: map['fileShareName'] == null ? null : (map['fileShareName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
-      storageAccountTenantId: map['storageAccountTenantId'] == null ? null : (map['storageAccountTenantId'] as String).input(),
-      storageSyncGroupId: map['storageSyncGroupId'] == null ? null : (map['storageSyncGroupId'] as String).input(),
+      fileShareName: map['fileShareName'] == null ? null : (map['fileShareName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
+      storageAccountTenantId: map['storageAccountTenantId'] == null ? null : (map['storageAccountTenantId']! as String).input(),
+      storageSyncGroupId: map['storageSyncGroupId'] == null ? null : (map['storageSyncGroupId']! as String).input(),
     );
   }
 }

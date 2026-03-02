@@ -38,7 +38,7 @@ class GetDomainInterfaceAddressesResult {
       domain: map['domain'] as String,
       id: map['id'] as String,
       interfaces: pulumi.Input.decodeList<GetDomainInterfaceAddressesInterface>(map['interfaces'], (value) => GetDomainInterfaceAddressesInterface.fromMap((value as Map).cast<String, dynamic>())),
-      source: map['source'] == null ? null : map['source'] as String,
+      source: map['source'] == null ? null : map['source']! as String,
     );
   }
 }

@@ -70,14 +70,14 @@ class InstanceState {
 
   factory InstanceState.fromMap(Map<String, dynamic> map) {
     return InstanceState(
-      accessedBy: map['accessedBy'] == null ? null : (map['accessedBy'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkSourceAcls: map['networkSourceAcls'] == null ? null : ((map['networkSourceAcls'] as List).cast<String>()).input(),
-      networkTypeAcls: map['networkTypeAcls'] == null ? null : ((map['networkTypeAcls'] as List).cast<String>()).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      accessedBy: map['accessedBy'] == null ? null : (map['accessedBy']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkSourceAcls: map['networkSourceAcls'] == null ? null : ((map['networkSourceAcls']! as List).cast<String>()).input(),
+      networkTypeAcls: map['networkTypeAcls'] == null ? null : ((map['networkTypeAcls']! as List).cast<String>()).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

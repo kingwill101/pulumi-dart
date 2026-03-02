@@ -51,13 +51,13 @@ class ScimServerCredentialState {
 
   factory ScimServerCredentialState.fromMap(Map<String, dynamic> map) {
     return ScimServerCredentialState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      credentialId: map['credentialId'] == null ? null : (map['credentialId'] as String).input(),
-      credentialSecretFile: map['credentialSecretFile'] == null ? null : (map['credentialSecretFile'] as String).input(),
-      credentialType: map['credentialType'] == null ? null : (map['credentialType'] as String).input(),
-      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      credentialId: map['credentialId'] == null ? null : (map['credentialId']! as String).input(),
+      credentialSecretFile: map['credentialSecretFile'] == null ? null : (map['credentialSecretFile']! as String).input(),
+      credentialType: map['credentialType'] == null ? null : (map['credentialType']! as String).input(),
+      directoryId: map['directoryId'] == null ? null : (map['directoryId']! as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

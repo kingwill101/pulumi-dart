@@ -27,7 +27,7 @@ class DatasetStateResponseDeprecatedBy {
   factory DatasetStateResponseDeprecatedBy.fromMap(Map<String, dynamic> map) {
     return DatasetStateResponseDeprecatedBy(
       datasetId: (map['datasetId'] as String).input(),
-      definitionVersion: map['definitionVersion'] == null ? null : (map['definitionVersion'] as String).input(),
+      definitionVersion: map['definitionVersion'] == null ? null : (map['definitionVersion']! as String).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class MetadataIntegrationMetastoreV1beta {
 
   factory MetadataIntegrationMetastoreV1beta.fromMap(Map<String, dynamic> map) {
     return MetadataIntegrationMetastoreV1beta(
-      dataCatalogConfig: map['dataCatalogConfig'] == null ? null : (DataCatalogConfigMetastoreV1beta.fromMap((map['dataCatalogConfig'] as Map).cast<String, dynamic>())).input(),
-      dataplexConfig: map['dataplexConfig'] == null ? null : (DataplexConfigMetastoreV1beta.fromMap((map['dataplexConfig'] as Map).cast<String, dynamic>())).input(),
+      dataCatalogConfig: map['dataCatalogConfig'] == null ? null : (DataCatalogConfigMetastoreV1beta.fromMap((map['dataCatalogConfig']! as Map).cast<String, dynamic>())).input(),
+      dataplexConfig: map['dataplexConfig'] == null ? null : (DataplexConfigMetastoreV1beta.fromMap((map['dataplexConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

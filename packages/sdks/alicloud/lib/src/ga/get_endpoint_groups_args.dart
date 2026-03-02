@@ -55,12 +55,12 @@ class GetEndpointGroupsArgs {
   factory GetEndpointGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointGroupsArgs(
       acceleratorId: (map['acceleratorId'] as String).input(),
-      endpointGroupType: map['endpointGroupType'] == null ? null : (map['endpointGroupType'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      endpointGroupType: map['endpointGroupType'] == null ? null : (map['endpointGroupType']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

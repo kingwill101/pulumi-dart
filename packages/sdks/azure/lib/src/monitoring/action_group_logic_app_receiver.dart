@@ -38,7 +38,7 @@ class ActionGroupLogicAppReceiver {
       callbackUrl: (map['callbackUrl'] as String).input(),
       name: (map['name'] as String).input(),
       resourceId: (map['resourceId'] as String).input(),
-      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema'] as bool).input(),
+      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema']! as bool).input(),
     );
   }
 }

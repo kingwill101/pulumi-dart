@@ -26,8 +26,8 @@ class IntakeVlanAttachment {
 
   factory IntakeVlanAttachment.fromMap(Map<String, dynamic> map) {
     return IntakeVlanAttachment(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      pairingKey: map['pairingKey'] == null ? null : (map['pairingKey'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      pairingKey: map['pairingKey'] == null ? null : (map['pairingKey']! as String).input(),
     );
   }
 }

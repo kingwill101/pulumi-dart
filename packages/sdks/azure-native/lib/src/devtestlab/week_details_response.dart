@@ -26,8 +26,8 @@ class WeekDetailsResponse {
 
   factory WeekDetailsResponse.fromMap(Map<String, dynamic> map) {
     return WeekDetailsResponse(
-      time: map['time'] == null ? null : (map['time'] as String).input(),
-      weekdays: map['weekdays'] == null ? null : ((map['weekdays'] as List).cast<String>()).input(),
+      time: map['time'] == null ? null : (map['time']! as String).input(),
+      weekdays: map['weekdays'] == null ? null : ((map['weekdays']! as List).cast<String>()).input(),
     );
   }
 }

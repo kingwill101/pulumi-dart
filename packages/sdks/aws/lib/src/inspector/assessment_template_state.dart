@@ -62,15 +62,15 @@ class AssessmentTemplateState {
 
   factory AssessmentTemplateState.fromMap(Map<String, dynamic> map) {
     return AssessmentTemplateState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as int).input(),
-      eventSubscriptions: map['eventSubscriptions'] == null ? null : (pulumi.Input.decodeList<AssessmentTemplateEventSubscription>(map['eventSubscriptions'], (value) => AssessmentTemplateEventSubscription.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rulesPackageArns: map['rulesPackageArns'] == null ? null : ((map['rulesPackageArns'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      targetArn: map['targetArn'] == null ? null : (map['targetArn'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      duration: map['duration'] == null ? null : ((map['duration'] as int).input()).input(),
+      eventSubscriptions: map['eventSubscriptions'] == null ? null : ((pulumi.Input.decodeList<AssessmentTemplateEventSubscription>(map['eventSubscriptions']!, (value) => AssessmentTemplateEventSubscription.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      rulesPackageArns: map['rulesPackageArns'] == null ? null : (((map['rulesPackageArns'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      targetArn: map['targetArn'] == null ? null : ((map['targetArn'] as String).input()).input(),
     );
   }
 }

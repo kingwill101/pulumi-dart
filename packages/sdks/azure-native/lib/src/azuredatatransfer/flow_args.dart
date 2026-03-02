@@ -63,13 +63,13 @@ class FlowArgs {
   factory FlowArgs.fromMap(Map<String, dynamic> map) {
     return FlowArgs(
       connectionName: (map['connectionName'] as String).input(),
-      flowName: map['flowName'] == null ? null : (map['flowName'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      plan: map['plan'] == null ? null : (Plan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
-      properties: map['properties'] == null ? null : (FlowProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      flowName: map['flowName'] == null ? null : (map['flowName']! as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      plan: map['plan'] == null ? null : (Plan.fromMap((map['plan']! as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (FlowProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

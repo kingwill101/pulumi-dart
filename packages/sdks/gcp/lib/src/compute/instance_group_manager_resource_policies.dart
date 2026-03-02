@@ -20,7 +20,7 @@ class InstanceGroupManagerResourcePolicies {
 
   factory InstanceGroupManagerResourcePolicies.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerResourcePolicies(
-      workloadPolicy: map['workloadPolicy'] == null ? null : (map['workloadPolicy'] as String).input(),
+      workloadPolicy: map['workloadPolicy'] == null ? null : (map['workloadPolicy']! as String).input(),
     );
   }
 }

@@ -49,12 +49,12 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      appendUserAgent: map['appendUserAgent'] == null ? null : (map['appendUserAgent'] as String).input(),
-      disablePartnerName: map['disablePartnerName'] == null ? null : (map['disablePartnerName'] as bool).input(),
-      partnerName: map['partnerName'] == null ? null : (map['partnerName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      appendUserAgent: map['appendUserAgent'] == null ? null : (map['appendUserAgent']! as String).input(),
+      disablePartnerName: map['disablePartnerName'] == null ? null : (map['disablePartnerName']! as bool).input(),
+      partnerName: map['partnerName'] == null ? null : (map['partnerName']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

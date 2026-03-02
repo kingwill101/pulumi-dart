@@ -27,8 +27,8 @@ class GcpUserAccessBindingScopedAccessSettingActiveSettings {
 
   factory GcpUserAccessBindingScopedAccessSettingActiveSettings.fromMap(Map<String, dynamic> map) {
     return GcpUserAccessBindingScopedAccessSettingActiveSettings(
-      accessLevels: map['accessLevels'] == null ? null : ((map['accessLevels'] as List).cast<String>()).input(),
-      sessionSettings: map['sessionSettings'] == null ? null : (GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings.fromMap((map['sessionSettings'] as Map).cast<String, dynamic>())).input(),
+      accessLevels: map['accessLevels'] == null ? null : ((map['accessLevels']! as List).cast<String>()).input(),
+      sessionSettings: map['sessionSettings'] == null ? null : (GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings.fromMap((map['sessionSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

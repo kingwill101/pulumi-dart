@@ -33,7 +33,7 @@ class GlusterfsVolumeSource {
     return GlusterfsVolumeSource(
       endpoints: (map['endpoints'] as String).input(),
       path: (map['path'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
     );
   }
 }

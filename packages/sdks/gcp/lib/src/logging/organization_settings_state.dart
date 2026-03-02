@@ -51,13 +51,13 @@ class OrganizationSettingsState {
 
   factory OrganizationSettingsState.fromMap(Map<String, dynamic> map) {
     return OrganizationSettingsState(
-      disableDefaultSink: map['disableDefaultSink'] == null ? null : (map['disableDefaultSink'] as bool).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      kmsServiceAccountId: map['kmsServiceAccountId'] == null ? null : (map['kmsServiceAccountId'] as String).input(),
-      loggingServiceAccountId: map['loggingServiceAccountId'] == null ? null : (map['loggingServiceAccountId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
-      storageLocation: map['storageLocation'] == null ? null : (map['storageLocation'] as String).input(),
+      disableDefaultSink: map['disableDefaultSink'] == null ? null : (map['disableDefaultSink']! as bool).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      kmsServiceAccountId: map['kmsServiceAccountId'] == null ? null : (map['kmsServiceAccountId']! as String).input(),
+      loggingServiceAccountId: map['loggingServiceAccountId'] == null ? null : (map['loggingServiceAccountId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      organization: map['organization'] == null ? null : (map['organization']! as String).input(),
+      storageLocation: map['storageLocation'] == null ? null : (map['storageLocation']! as String).input(),
     );
   }
 }

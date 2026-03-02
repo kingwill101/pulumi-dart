@@ -88,19 +88,19 @@ class DomainDevicesDiskSourceNetwork {
 
   factory DomainDevicesDiskSourceNetwork.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskSourceNetwork(
-      auth: map['auth'] == null ? null : (DomainDevicesDiskSourceNetworkAuth.fromMap((map['auth'] as Map).cast<String, dynamic>())).input(),
-      config: map['config'] == null ? null : (DomainDevicesDiskSourceNetworkConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskSourceNetworkHost>(map['hosts'], (value) => DomainDevicesDiskSourceNetworkHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      identity: map['identity'] == null ? null : (DomainDevicesDiskSourceNetworkIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      initiator: map['initiator'] == null ? null : (DomainDevicesDiskSourceNetworkInitiator.fromMap((map['initiator'] as Map).cast<String, dynamic>())).input(),
-      knownHosts: map['knownHosts'] == null ? null : (DomainDevicesDiskSourceNetworkKnownHosts.fromMap((map['knownHosts'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      query: map['query'] == null ? null : (map['query'] as String).input(),
-      reconnect: map['reconnect'] == null ? null : (DomainDevicesDiskSourceNetworkReconnect.fromMap((map['reconnect'] as Map).cast<String, dynamic>())).input(),
-      snapshot: map['snapshot'] == null ? null : (DomainDevicesDiskSourceNetworkSnapshot.fromMap((map['snapshot'] as Map).cast<String, dynamic>())).input(),
-      tls: map['tls'] == null ? null : (map['tls'] as String).input(),
-      tlsHostname: map['tlsHostname'] == null ? null : (map['tlsHostname'] as String).input(),
+      auth: map['auth'] == null ? null : (DomainDevicesDiskSourceNetworkAuth.fromMap((map['auth']! as Map).cast<String, dynamic>())).input(),
+      config: map['config'] == null ? null : (DomainDevicesDiskSourceNetworkConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskSourceNetworkHost>(map['hosts']!, (value) => DomainDevicesDiskSourceNetworkHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identity: map['identity'] == null ? null : (DomainDevicesDiskSourceNetworkIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      initiator: map['initiator'] == null ? null : (DomainDevicesDiskSourceNetworkInitiator.fromMap((map['initiator']! as Map).cast<String, dynamic>())).input(),
+      knownHosts: map['knownHosts'] == null ? null : (DomainDevicesDiskSourceNetworkKnownHosts.fromMap((map['knownHosts']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
+      reconnect: map['reconnect'] == null ? null : (DomainDevicesDiskSourceNetworkReconnect.fromMap((map['reconnect']! as Map).cast<String, dynamic>())).input(),
+      snapshot: map['snapshot'] == null ? null : (DomainDevicesDiskSourceNetworkSnapshot.fromMap((map['snapshot']! as Map).cast<String, dynamic>())).input(),
+      tls: map['tls'] == null ? null : (map['tls']! as String).input(),
+      tlsHostname: map['tlsHostname'] == null ? null : (map['tlsHostname']! as String).input(),
     );
   }
 }

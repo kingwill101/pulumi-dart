@@ -37,10 +37,10 @@ class DiskInstantiationConfig {
 
   factory DiskInstantiationConfig.fromMap(Map<String, dynamic> map) {
     return DiskInstantiationConfig(
-      autoDelete: map['autoDelete'] == null ? null : (map['autoDelete'] as bool).input(),
-      customImage: map['customImage'] == null ? null : (map['customImage'] as String).input(),
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
-      instantiateFrom: map['instantiateFrom'] == null ? null : (DiskInstantiationConfigInstantiateFrom.fromValue(map['instantiateFrom'] as String)).input(),
+      autoDelete: map['autoDelete'] == null ? null : (map['autoDelete']! as bool).input(),
+      customImage: map['customImage'] == null ? null : (map['customImage']! as String).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName']! as String).input(),
+      instantiateFrom: map['instantiateFrom'] == null ? null : (DiskInstantiationConfigInstantiateFrom.fromValue(map['instantiateFrom']! as String)).input(),
     );
   }
 }

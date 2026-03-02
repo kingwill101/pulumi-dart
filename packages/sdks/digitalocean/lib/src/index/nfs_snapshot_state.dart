@@ -45,12 +45,12 @@ class NfsSnapshotState {
 
   factory NfsSnapshotState.fromMap(Map<String, dynamic> map) {
     return NfsSnapshotState(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      shareId: map['shareId'] == null ? null : (map['shareId'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      shareId: map['shareId'] == null ? null : (map['shareId']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

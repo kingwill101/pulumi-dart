@@ -31,9 +31,9 @@ class NamespaceState {
 
   factory NamespaceState.fromMap(Map<String, dynamic> map) {
     return NamespaceState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
-      namespaceUid: map['namespaceUid'] == null ? null : (map['namespaceUid'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
+      namespaceUid: map['namespaceUid'] == null ? null : (map['namespaceUid']! as String).input(),
     );
   }
 }

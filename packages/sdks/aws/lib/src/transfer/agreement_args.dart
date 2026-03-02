@@ -61,12 +61,12 @@ class AgreementArgs {
     return AgreementArgs(
       accessRole: (map['accessRole'] as String).input(),
       baseDirectory: (map['baseDirectory'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       localProfileId: (map['localProfileId'] as String).input(),
       partnerProfileId: (map['partnerProfileId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       serverId: (map['serverId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

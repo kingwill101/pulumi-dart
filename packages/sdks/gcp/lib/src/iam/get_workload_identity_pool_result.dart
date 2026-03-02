@@ -71,7 +71,7 @@ class GetWorkloadIdentityPoolResult {
       inlineTrustConfigs: pulumi.Input.decodeList<GetWorkloadIdentityPoolInlineTrustConfig>(map['inlineTrustConfigs'], (value) => GetWorkloadIdentityPoolInlineTrustConfig.fromMap((value as Map).cast<String, dynamic>())),
       mode: map['mode'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       state: map['state'] as String,
       workloadIdentityPoolId: map['workloadIdentityPoolId'] as String,
     );

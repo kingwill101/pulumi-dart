@@ -21,7 +21,7 @@ class PipelineElapsedTimeMetricPolicy {
 
   factory PipelineElapsedTimeMetricPolicy.fromMap(Map<String, dynamic> map) {
     return PipelineElapsedTimeMetricPolicy(
-      duration: map['duration'] == null ? null : (map['duration']).input(),
+      duration: map['duration'] == null ? null : (map['duration']!).input(),
     );
   }
 }

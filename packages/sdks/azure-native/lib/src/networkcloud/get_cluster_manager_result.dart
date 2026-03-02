@@ -116,8 +116,8 @@ class GetClusterManagerResult {
 
   factory GetClusterManagerResult.fromMap(Map<String, dynamic> map) {
     return GetClusterManagerResult(
-      analyticsWorkspaceId: map['analyticsWorkspaceId'] == null ? null : map['analyticsWorkspaceId'] as String,
-      availabilityZones: map['availabilityZones'] == null ? null : (map['availabilityZones'] as List).cast<String>(),
+      analyticsWorkspaceId: map['analyticsWorkspaceId'] == null ? null : map['analyticsWorkspaceId']! as String,
+      availabilityZones: map['availabilityZones'] == null ? null : (map['availabilityZones']! as List).cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
       clusterVersions: pulumi.Input.decodeList<ClusterAvailableVersionResponse>(map['clusterVersions'], (value) => ClusterAvailableVersionResponse.fromMap((value as Map).cast<String, dynamic>())),
       detailedStatus: map['detailedStatus'] as String,
@@ -125,16 +125,16 @@ class GetClusterManagerResult {
       etag: map['etag'] as String,
       fabricControllerId: map['fabricControllerId'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
-      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : ManagedResourceGroupConfigurationResponse.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>()),
+      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : ManagedResourceGroupConfigurationResponse.fromMap((map['managedResourceGroupConfiguration']! as Map).cast<String, dynamic>()),
       managerExtendedLocation: ExtendedLocationResponse.fromMap((map['managerExtendedLocation'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      vmSize: map['vmSize'] == null ? null : map['vmSize'] as String,
+      vmSize: map['vmSize'] == null ? null : map['vmSize']! as String,
     );
   }
 }

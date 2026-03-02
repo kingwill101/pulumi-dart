@@ -50,12 +50,12 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
 
   factory GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput(
-      currentPage: map['currentPage'] == null ? null : (GoogleCloudDialogflowCxV3Page.fromMap((map['currentPage'] as Map).cast<String, dynamic>())).input(),
+      currentPage: map['currentPage'] == null ? null : (GoogleCloudDialogflowCxV3Page.fromMap((map['currentPage']! as Map).cast<String, dynamic>())).input(),
       diagnosticInfo: ((map['diagnosticInfo'] as Map).cast<String, String>()).input(),
-      sessionParameters: map['sessionParameters'] == null ? null : ((map['sessionParameters'] as Map).cast<String, String>()).input(),
-      status: map['status'] == null ? null : (GoogleRpcStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
-      textResponses: map['textResponses'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3ResponseMessageText>(map['textResponses'], (value) => GoogleCloudDialogflowCxV3ResponseMessageText.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      triggeredIntent: map['triggeredIntent'] == null ? null : (GoogleCloudDialogflowCxV3Intent.fromMap((map['triggeredIntent'] as Map).cast<String, dynamic>())).input(),
+      sessionParameters: map['sessionParameters'] == null ? null : ((map['sessionParameters']! as Map).cast<String, String>()).input(),
+      status: map['status'] == null ? null : (GoogleRpcStatus.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
+      textResponses: map['textResponses'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3ResponseMessageText>(map['textResponses']!, (value) => GoogleCloudDialogflowCxV3ResponseMessageText.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      triggeredIntent: map['triggeredIntent'] == null ? null : (GoogleCloudDialogflowCxV3Intent.fromMap((map['triggeredIntent']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

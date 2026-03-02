@@ -49,9 +49,9 @@ class GetControlPolicyAttachmentsResult {
       attachments: pulumi.Input.decodeList<GetControlPolicyAttachmentsAttachment>(map['attachments'], (value) => GetControlPolicyAttachmentsAttachment.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      language: map['language'] == null ? null : map['language'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      policyType: map['policyType'] == null ? null : map['policyType'] as String,
+      language: map['language'] == null ? null : map['language']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      policyType: map['policyType'] == null ? null : map['policyType']! as String,
       targetId: map['targetId'] as String,
     );
   }

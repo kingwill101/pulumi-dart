@@ -48,9 +48,9 @@ class TraceScopeArgs {
 
   factory TraceScopeArgs.fromMap(Map<String, dynamic> map) {
     return TraceScopeArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       resourceNames: ((map['resourceNames'] as List).cast<String>()).input(),
       traceScopeId: (map['traceScopeId'] as String).input(),
     );

@@ -33,9 +33,9 @@ class LoggingConfigurationDestinationConfiguration {
 
   factory LoggingConfigurationDestinationConfiguration.fromMap(Map<String, dynamic> map) {
     return LoggingConfigurationDestinationConfiguration(
-      cloudwatchLogs: map['cloudwatchLogs'] == null ? null : (LoggingConfigurationDestinationConfigurationCloudwatchLogs.fromMap((map['cloudwatchLogs'] as Map).cast<String, dynamic>())).input(),
-      firehose: map['firehose'] == null ? null : (LoggingConfigurationDestinationConfigurationFirehose.fromMap((map['firehose'] as Map).cast<String, dynamic>())).input(),
-      s3: map['s3'] == null ? null : (LoggingConfigurationDestinationConfigurationS3.fromMap((map['s3'] as Map).cast<String, dynamic>())).input(),
+      cloudwatchLogs: map['cloudwatchLogs'] == null ? null : ((LoggingConfigurationDestinationConfigurationCloudwatchLogs.fromMap((map['cloudwatchLogs']! as Map).cast<String, dynamic>())).input()).input(),
+      firehose: map['firehose'] == null ? null : ((LoggingConfigurationDestinationConfigurationFirehose.fromMap((map['firehose']! as Map).cast<String, dynamic>())).input()).input(),
+      s3: map['s3'] == null ? null : ((LoggingConfigurationDestinationConfigurationS3.fromMap((map['s3']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

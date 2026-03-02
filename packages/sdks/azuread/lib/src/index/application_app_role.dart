@@ -52,9 +52,9 @@ class ApplicationAppRole {
       allowedMemberTypes: ((map['allowedMemberTypes'] as List).cast<String>()).input(),
       description: (map['description'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       id: (map['id'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

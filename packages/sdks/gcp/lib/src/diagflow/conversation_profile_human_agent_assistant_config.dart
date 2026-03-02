@@ -44,10 +44,10 @@ class ConversationProfileHumanAgentAssistantConfig {
 
   factory ConversationProfileHumanAgentAssistantConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileHumanAgentAssistantConfig(
-      endUserSuggestionConfig: map['endUserSuggestionConfig'] == null ? null : (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig.fromMap((map['endUserSuggestionConfig'] as Map).cast<String, dynamic>())).input(),
-      humanAgentSuggestionConfig: map['humanAgentSuggestionConfig'] == null ? null : (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig.fromMap((map['humanAgentSuggestionConfig'] as Map).cast<String, dynamic>())).input(),
-      messageAnalysisConfig: map['messageAnalysisConfig'] == null ? null : (ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig.fromMap((map['messageAnalysisConfig'] as Map).cast<String, dynamic>())).input(),
-      notificationConfig: map['notificationConfig'] == null ? null : (ConversationProfileHumanAgentAssistantConfigNotificationConfig.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>())).input(),
+      endUserSuggestionConfig: map['endUserSuggestionConfig'] == null ? null : (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig.fromMap((map['endUserSuggestionConfig']! as Map).cast<String, dynamic>())).input(),
+      humanAgentSuggestionConfig: map['humanAgentSuggestionConfig'] == null ? null : (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig.fromMap((map['humanAgentSuggestionConfig']! as Map).cast<String, dynamic>())).input(),
+      messageAnalysisConfig: map['messageAnalysisConfig'] == null ? null : (ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig.fromMap((map['messageAnalysisConfig']! as Map).cast<String, dynamic>())).input(),
+      notificationConfig: map['notificationConfig'] == null ? null : (ConversationProfileHumanAgentAssistantConfigNotificationConfig.fromMap((map['notificationConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

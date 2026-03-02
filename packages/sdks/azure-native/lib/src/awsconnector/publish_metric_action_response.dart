@@ -22,7 +22,7 @@ class PublishMetricActionResponse {
 
   factory PublishMetricActionResponse.fromMap(Map<String, dynamic> map) {
     return PublishMetricActionResponse(
-      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<DimensionResponse>(map['dimensions'], (value) => DimensionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<DimensionResponse>(map['dimensions']!, (value) => DimensionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

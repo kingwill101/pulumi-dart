@@ -27,8 +27,8 @@ class BackupPlanAssociationRulesConfigInfoLastBackupError {
 
   factory BackupPlanAssociationRulesConfigInfoLastBackupError.fromMap(Map<String, dynamic> map) {
     return BackupPlanAssociationRulesConfigInfoLastBackupError(
-      code: map['code'] == null ? null : (map['code'] as double).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as double).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

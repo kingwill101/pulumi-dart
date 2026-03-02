@@ -34,8 +34,8 @@ class TokenArgs {
 
   factory TokenArgs.fromMap(Map<String, dynamic> map) {
     return TokenArgs(
-      expiry: map['expiry'] == null ? null : (map['expiry'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
+      expiry: map['expiry'] == null ? null : (map['expiry']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
       scopes: (map['scopes'] as String).input(),
     );
   }

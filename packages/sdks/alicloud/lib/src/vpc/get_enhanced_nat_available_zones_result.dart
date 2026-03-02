@@ -38,7 +38,7 @@ class GetEnhancedNatAvailableZonesResult {
     return GetEnhancedNatAvailableZonesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       zones: pulumi.Input.decodeList<GetEnhancedNatAvailableZonesZone>(map['zones'], (value) => GetEnhancedNatAvailableZonesZone.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

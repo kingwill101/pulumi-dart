@@ -65,14 +65,14 @@ class GetEntityArgs {
 
   factory GetEntityArgs.fromMap(Map<String, dynamic> map) {
     return GetEntityArgs(
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      search: map['search'] == null ? null : (map['search'] as String).input(),
-      select: map['select'] == null ? null : (map['select'] as String).input(),
-      skip: map['skip'] == null ? null : (map['skip'] as int).input(),
-      skiptoken: map['skiptoken'] == null ? null : (map['skiptoken'] as String).input(),
-      top: map['top'] == null ? null : (map['top'] as int).input(),
-      view: map['view'] == null ? null : (map['view'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      search: map['search'] == null ? null : (map['search']! as String).input(),
+      select: map['select'] == null ? null : (map['select']! as String).input(),
+      skip: map['skip'] == null ? null : (map['skip']! as int).input(),
+      skiptoken: map['skiptoken'] == null ? null : (map['skiptoken']! as String).input(),
+      top: map['top'] == null ? null : (map['top']! as int).input(),
+      view: map['view'] == null ? null : (map['view']! as String).input(),
     );
   }
 }

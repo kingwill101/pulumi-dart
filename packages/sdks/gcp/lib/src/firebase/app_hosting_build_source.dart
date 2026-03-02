@@ -33,8 +33,8 @@ class AppHostingBuildSource {
 
   factory AppHostingBuildSource.fromMap(Map<String, dynamic> map) {
     return AppHostingBuildSource(
-      codebase: map['codebase'] == null ? null : (AppHostingBuildSourceCodebase.fromMap((map['codebase'] as Map).cast<String, dynamic>())).input(),
-      container: map['container'] == null ? null : (AppHostingBuildSourceContainer.fromMap((map['container'] as Map).cast<String, dynamic>())).input(),
+      codebase: map['codebase'] == null ? null : (AppHostingBuildSourceCodebase.fromMap((map['codebase']! as Map).cast<String, dynamic>())).input(),
+      container: map['container'] == null ? null : (AppHostingBuildSourceContainer.fromMap((map['container']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class VmScannersBaseResponseConfiguration {
 
   factory VmScannersBaseResponseConfiguration.fromMap(Map<String, dynamic> map) {
     return VmScannersBaseResponseConfiguration(
-      exclusionTags: map['exclusionTags'] == null ? null : ((map['exclusionTags'] as Map).cast<String, String>()).input(),
-      scanningMode: map['scanningMode'] == null ? null : (map['scanningMode'] as String).input(),
+      exclusionTags: map['exclusionTags'] == null ? null : ((map['exclusionTags']! as Map).cast<String, String>()).input(),
+      scanningMode: map['scanningMode'] == null ? null : (map['scanningMode']! as String).input(),
     );
   }
 }

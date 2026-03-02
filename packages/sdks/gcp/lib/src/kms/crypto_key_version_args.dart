@@ -40,8 +40,8 @@ class CryptoKeyVersionArgs {
   factory CryptoKeyVersionArgs.fromMap(Map<String, dynamic> map) {
     return CryptoKeyVersionArgs(
       cryptoKey: (map['cryptoKey'] as String).input(),
-      externalProtectionLevelOptions: map['externalProtectionLevelOptions'] == null ? null : (CryptoKeyVersionExternalProtectionLevelOptions.fromMap((map['externalProtectionLevelOptions'] as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      externalProtectionLevelOptions: map['externalProtectionLevelOptions'] == null ? null : (CryptoKeyVersionExternalProtectionLevelOptions.fromMap((map['externalProtectionLevelOptions']! as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

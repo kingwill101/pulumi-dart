@@ -43,7 +43,7 @@ class GetNetworkAclsResult {
 
   factory GetNetworkAclsResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkAclsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetNetworkAclsFilter>(map['filters'], (value) => GetNetworkAclsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetNetworkAclsFilter>(map['filters']!, (value) => GetNetworkAclsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       region: map['region'] as String,

@@ -40,8 +40,8 @@ class SolutionConfigurationArgs {
   factory SolutionConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return SolutionConfigurationArgs(
       resourceUri: (map['resourceUri'] as String).input(),
-      solutionConfiguration: map['solutionConfiguration'] == null ? null : (map['solutionConfiguration'] as String).input(),
-      solutionSettings: map['solutionSettings'] == null ? null : ((map['solutionSettings'] as Map).cast<String, String>()).input(),
+      solutionConfiguration: map['solutionConfiguration'] == null ? null : (map['solutionConfiguration']! as String).input(),
+      solutionSettings: map['solutionSettings'] == null ? null : ((map['solutionSettings']! as Map).cast<String, String>()).input(),
       solutionType: (map['solutionType'] as String).input(),
     );
   }

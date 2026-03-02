@@ -25,8 +25,8 @@ class SecurityPolicyAssociationComputeBeta {
 
   factory SecurityPolicyAssociationComputeBeta.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAssociationComputeBeta(
-      attachmentId: map['attachmentId'] == null ? null : (map['attachmentId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      attachmentId: map['attachmentId'] == null ? null : (map['attachmentId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

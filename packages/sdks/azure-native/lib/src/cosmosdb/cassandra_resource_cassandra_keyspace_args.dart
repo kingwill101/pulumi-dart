@@ -57,12 +57,12 @@ class CassandraResourceCassandraKeyspaceArgs {
   factory CassandraResourceCassandraKeyspaceArgs.fromMap(Map<String, dynamic> map) {
     return CassandraResourceCassandraKeyspaceArgs(
       accountName: (map['accountName'] as String).input(),
-      keyspaceName: map['keyspaceName'] == null ? null : (map['keyspaceName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      options: map['options'] == null ? null : (CreateUpdateOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
+      keyspaceName: map['keyspaceName'] == null ? null : (map['keyspaceName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      options: map['options'] == null ? null : (CreateUpdateOptions.fromMap((map['options']! as Map).cast<String, dynamic>())).input(),
       resource: (CassandraKeyspaceResource.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

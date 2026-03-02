@@ -28,8 +28,8 @@ class EncryptionImagesResponse {
 
   factory EncryptionImagesResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionImagesResponse(
-      dataDiskImages: map['dataDiskImages'] == null ? null : (pulumi.Input.decodeList<DataDiskImageEncryptionResponse>(map['dataDiskImages'], (value) => DataDiskImageEncryptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      osDiskImage: map['osDiskImage'] == null ? null : (OSDiskImageEncryptionResponse.fromMap((map['osDiskImage'] as Map).cast<String, dynamic>())).input(),
+      dataDiskImages: map['dataDiskImages'] == null ? null : (pulumi.Input.decodeList<DataDiskImageEncryptionResponse>(map['dataDiskImages']!, (value) => DataDiskImageEncryptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      osDiskImage: map['osDiskImage'] == null ? null : (OSDiskImageEncryptionResponse.fromMap((map['osDiskImage']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -44,8 +44,8 @@ class LinkServiceNatIpConfiguration {
     return LinkServiceNatIpConfiguration(
       name: (map['name'] as String).input(),
       primary: (map['primary'] as bool).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
-      privateIpAddressVersion: map['privateIpAddressVersion'] == null ? null : (map['privateIpAddressVersion'] as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
+      privateIpAddressVersion: map['privateIpAddressVersion'] == null ? null : (map['privateIpAddressVersion']! as String).input(),
       subnetId: (map['subnetId'] as String).input(),
     );
   }

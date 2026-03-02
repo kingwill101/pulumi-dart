@@ -27,8 +27,8 @@ class UpstreamAuthSettingsResponse {
 
   factory UpstreamAuthSettingsResponse.fromMap(Map<String, dynamic> map) {
     return UpstreamAuthSettingsResponse(
-      managedIdentity: map['managedIdentity'] == null ? null : (ManagedIdentitySettingsResponse.fromMap((map['managedIdentity'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      managedIdentity: map['managedIdentity'] == null ? null : (ManagedIdentitySettingsResponse.fromMap((map['managedIdentity']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

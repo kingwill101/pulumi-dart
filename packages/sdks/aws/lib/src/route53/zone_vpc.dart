@@ -26,7 +26,7 @@ class ZoneVpc {
   factory ZoneVpc.fromMap(Map<String, dynamic> map) {
     return ZoneVpc(
       vpcId: (map['vpcId'] as String).input(),
-      vpcRegion: map['vpcRegion'] == null ? null : (map['vpcRegion'] as String).input(),
+      vpcRegion: map['vpcRegion'] == null ? null : ((map['vpcRegion'] as String).input()).input(),
     );
   }
 }

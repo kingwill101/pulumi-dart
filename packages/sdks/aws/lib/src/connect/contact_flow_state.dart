@@ -76,18 +76,18 @@ class ContactFlowState {
 
   factory ContactFlowState.fromMap(Map<String, dynamic> map) {
     return ContactFlowState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      contactFlowId: map['contactFlowId'] == null ? null : (map['contactFlowId'] as String).input(),
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      contentHash: map['contentHash'] == null ? null : (map['contentHash'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      filename: map['filename'] == null ? null : (map['filename'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      contactFlowId: map['contactFlowId'] == null ? null : ((map['contactFlowId'] as String).input()).input(),
+      content: map['content'] == null ? null : ((map['content'] as String).input()).input(),
+      contentHash: map['contentHash'] == null ? null : ((map['contentHash'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      filename: map['filename'] == null ? null : ((map['filename'] as String).input()).input(),
+      instanceId: map['instanceId'] == null ? null : ((map['instanceId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

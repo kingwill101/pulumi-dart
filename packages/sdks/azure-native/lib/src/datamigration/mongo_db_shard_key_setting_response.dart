@@ -28,7 +28,7 @@ class MongoDbShardKeySettingResponse {
   factory MongoDbShardKeySettingResponse.fromMap(Map<String, dynamic> map) {
     return MongoDbShardKeySettingResponse(
       fields: (pulumi.Input.decodeList<MongoDbShardKeyFieldResponse>(map['fields'], (value) => MongoDbShardKeyFieldResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      isUnique: map['isUnique'] == null ? null : (map['isUnique'] as bool).input(),
+      isUnique: map['isUnique'] == null ? null : (map['isUnique']! as bool).input(),
     );
   }
 }

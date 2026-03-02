@@ -83,19 +83,19 @@ class CryptoKeyArgs {
 
   factory CryptoKeyArgs.fromMap(Map<String, dynamic> map) {
     return CryptoKeyArgs(
-      cryptoKeyBackend: map['cryptoKeyBackend'] == null ? null : (map['cryptoKeyBackend'] as String).input(),
-      cryptoKeyId: map['cryptoKeyId'] == null ? null : (map['cryptoKeyId'] as String).input(),
-      destroyScheduledDuration: map['destroyScheduledDuration'] == null ? null : (map['destroyScheduledDuration'] as String).input(),
-      importOnly: map['importOnly'] == null ? null : (map['importOnly'] as bool).input(),
+      cryptoKeyBackend: map['cryptoKeyBackend'] == null ? null : (map['cryptoKeyBackend']! as String).input(),
+      cryptoKeyId: map['cryptoKeyId'] == null ? null : (map['cryptoKeyId']! as String).input(),
+      destroyScheduledDuration: map['destroyScheduledDuration'] == null ? null : (map['destroyScheduledDuration']! as String).input(),
+      importOnly: map['importOnly'] == null ? null : (map['importOnly']! as bool).input(),
       keyRingId: (map['keyRingId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      nextRotationTime: map['nextRotationTime'] == null ? null : (map['nextRotationTime'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      purpose: map['purpose'] == null ? null : (CryptoKeyPurpose.fromValue(map['purpose'] as String)).input(),
-      rotationPeriod: map['rotationPeriod'] == null ? null : (map['rotationPeriod'] as String).input(),
-      skipInitialVersionCreation: map['skipInitialVersionCreation'] == null ? null : (map['skipInitialVersionCreation'] as bool).input(),
-      versionTemplate: map['versionTemplate'] == null ? null : (CryptoKeyVersionTemplate.fromMap((map['versionTemplate'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      nextRotationTime: map['nextRotationTime'] == null ? null : (map['nextRotationTime']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      purpose: map['purpose'] == null ? null : (CryptoKeyPurpose.fromValue(map['purpose']! as String)).input(),
+      rotationPeriod: map['rotationPeriod'] == null ? null : (map['rotationPeriod']! as String).input(),
+      skipInitialVersionCreation: map['skipInitialVersionCreation'] == null ? null : (map['skipInitialVersionCreation']! as bool).input(),
+      versionTemplate: map['versionTemplate'] == null ? null : (CryptoKeyVersionTemplate.fromMap((map['versionTemplate']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

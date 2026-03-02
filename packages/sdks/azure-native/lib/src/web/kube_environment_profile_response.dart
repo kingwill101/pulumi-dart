@@ -31,7 +31,7 @@ class KubeEnvironmentProfileResponse {
 
   factory KubeEnvironmentProfileResponse.fromMap(Map<String, dynamic> map) {
     return KubeEnvironmentProfileResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       name: (map['name'] as String).input(),
       type: (map['type'] as String).input(),
     );

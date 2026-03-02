@@ -36,10 +36,10 @@ class AccessReviewRecurrenceRange {
 
   factory AccessReviewRecurrenceRange.fromMap(Map<String, dynamic> map) {
     return AccessReviewRecurrenceRange(
-      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
-      numberOfOccurrences: map['numberOfOccurrences'] == null ? null : (map['numberOfOccurrences'] as int).input(),
-      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      endDate: map['endDate'] == null ? null : (map['endDate']! as String).input(),
+      numberOfOccurrences: map['numberOfOccurrences'] == null ? null : (map['numberOfOccurrences']! as int).input(),
+      startDate: map['startDate'] == null ? null : (map['startDate']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

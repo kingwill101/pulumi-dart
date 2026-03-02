@@ -39,9 +39,9 @@ class ApiEventConfigAuthProvider {
   factory ApiEventConfigAuthProvider.fromMap(Map<String, dynamic> map) {
     return ApiEventConfigAuthProvider(
       authType: (map['authType'] as String).input(),
-      cognitoConfig: map['cognitoConfig'] == null ? null : (ApiEventConfigAuthProviderCognitoConfig.fromMap((map['cognitoConfig'] as Map).cast<String, dynamic>())).input(),
-      lambdaAuthorizerConfig: map['lambdaAuthorizerConfig'] == null ? null : (ApiEventConfigAuthProviderLambdaAuthorizerConfig.fromMap((map['lambdaAuthorizerConfig'] as Map).cast<String, dynamic>())).input(),
-      openidConnectConfig: map['openidConnectConfig'] == null ? null : (ApiEventConfigAuthProviderOpenidConnectConfig.fromMap((map['openidConnectConfig'] as Map).cast<String, dynamic>())).input(),
+      cognitoConfig: map['cognitoConfig'] == null ? null : ((ApiEventConfigAuthProviderCognitoConfig.fromMap((map['cognitoConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      lambdaAuthorizerConfig: map['lambdaAuthorizerConfig'] == null ? null : ((ApiEventConfigAuthProviderLambdaAuthorizerConfig.fromMap((map['lambdaAuthorizerConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      openidConnectConfig: map['openidConnectConfig'] == null ? null : ((ApiEventConfigAuthProviderOpenidConnectConfig.fromMap((map['openidConnectConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

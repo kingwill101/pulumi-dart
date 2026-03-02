@@ -88,20 +88,20 @@ class LoadBalancerProfileResponse {
 
   factory LoadBalancerProfileResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerProfileResponse(
-      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones'] as List).cast<String>()).input(),
-      cloudProviderProfile: map['cloudProviderProfile'] == null ? null : (CloudProviderProfileResponse.fromMap((map['cloudProviderProfile'] as Map).cast<String, dynamic>())).input(),
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      linuxProfile: map['linuxProfile'] == null ? null : (LinuxProfilePropertiesResponse.fromMap((map['linuxProfile'] as Map).cast<String, dynamic>())).input(),
-      maxCount: map['maxCount'] == null ? null : (map['maxCount'] as int).input(),
-      maxPods: map['maxPods'] == null ? null : (map['maxPods'] as int).input(),
-      minCount: map['minCount'] == null ? null : (map['minCount'] as int).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodeImageVersion: map['nodeImageVersion'] == null ? null : (map['nodeImageVersion'] as String).input(),
-      nodeLabels: map['nodeLabels'] == null ? null : ((map['nodeLabels'] as Map).cast<String, String>()).input(),
-      nodeTaints: map['nodeTaints'] == null ? null : ((map['nodeTaints'] as List).cast<String>()).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
+      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones']! as List).cast<String>()).input(),
+      cloudProviderProfile: map['cloudProviderProfile'] == null ? null : (CloudProviderProfileResponse.fromMap((map['cloudProviderProfile']! as Map).cast<String, dynamic>())).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      linuxProfile: map['linuxProfile'] == null ? null : (LinuxProfilePropertiesResponse.fromMap((map['linuxProfile']! as Map).cast<String, dynamic>())).input(),
+      maxCount: map['maxCount'] == null ? null : (map['maxCount']! as int).input(),
+      maxPods: map['maxPods'] == null ? null : (map['maxPods']! as int).input(),
+      minCount: map['minCount'] == null ? null : (map['minCount']! as int).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodeImageVersion: map['nodeImageVersion'] == null ? null : (map['nodeImageVersion']! as String).input(),
+      nodeLabels: map['nodeLabels'] == null ? null : ((map['nodeLabels']! as Map).cast<String, String>()).input(),
+      nodeTaints: map['nodeTaints'] == null ? null : ((map['nodeTaints']! as List).cast<String>()).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize']! as String).input(),
     );
   }
 }

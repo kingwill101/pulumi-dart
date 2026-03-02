@@ -59,13 +59,13 @@ class LogParsingRuleArgs {
 
   factory LogParsingRuleArgs.fromMap(Map<String, dynamic> map) {
     return LogParsingRuleArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      attribute: map['attribute'] == null ? null : (map['attribute'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      attribute: map['attribute'] == null ? null : (map['attribute']! as String).input(),
       enabled: (map['enabled'] as bool).input(),
       grok: (map['grok'] as String).input(),
       lucene: (map['lucene'] as String).input(),
-      matched: map['matched'] == null ? null : (map['matched'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      matched: map['matched'] == null ? null : (map['matched']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       nrql: (map['nrql'] as String).input(),
     );
   }

@@ -21,7 +21,7 @@ class GoogleCloudMlV1XraiAttribution {
 
   factory GoogleCloudMlV1XraiAttribution.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1XraiAttribution(
-      numIntegralSteps: map['numIntegralSteps'] == null ? null : (map['numIntegralSteps'] as int).input(),
+      numIntegralSteps: map['numIntegralSteps'] == null ? null : (map['numIntegralSteps']! as int).input(),
     );
   }
 }

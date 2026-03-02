@@ -74,14 +74,14 @@ class GetLicenseResult {
     return GetLicenseResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      licenseDetails: map['licenseDetails'] == null ? null : LicenseDetailsResponse.fromMap((map['licenseDetails'] as Map).cast<String, dynamic>()),
-      licenseType: map['licenseType'] == null ? null : map['licenseType'] as String,
+      licenseDetails: map['licenseDetails'] == null ? null : LicenseDetailsResponse.fromMap((map['licenseDetails']! as Map).cast<String, dynamic>()),
+      licenseType: map['licenseType'] == null ? null : map['licenseType']! as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
       type: map['type'] as String,
     );
   }

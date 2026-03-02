@@ -66,13 +66,13 @@ class LocationSmbArgs {
   factory LocationSmbArgs.fromMap(Map<String, dynamic> map) {
     return LocationSmbArgs(
       agentArns: ((map['agentArns'] as List).cast<String>()).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      mountOptions: map['mountOptions'] == null ? null : (LocationSmbMountOptions.fromMap((map['mountOptions'] as Map).cast<String, dynamic>())).input(),
+      domain: map['domain'] == null ? null : ((map['domain'] as String).input()).input(),
+      mountOptions: map['mountOptions'] == null ? null : ((LocationSmbMountOptions.fromMap((map['mountOptions']! as Map).cast<String, dynamic>())).input()).input(),
       password: (map['password'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       serverHostname: (map['serverHostname'] as String).input(),
       subdirectory: (map['subdirectory'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       user: (map['user'] as String).input(),
     );
   }

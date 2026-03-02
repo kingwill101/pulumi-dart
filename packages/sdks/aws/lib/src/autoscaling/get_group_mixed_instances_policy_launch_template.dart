@@ -27,8 +27,8 @@ class GetGroupMixedInstancesPolicyLaunchTemplate {
 
   factory GetGroupMixedInstancesPolicyLaunchTemplate.fromMap(Map<String, dynamic> map) {
     return GetGroupMixedInstancesPolicyLaunchTemplate(
-      launchTemplateSpecifications: (pulumi.Input.decodeList<GetGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification>(map['launchTemplateSpecifications'], (value) => GetGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      overrides: (pulumi.Input.decodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverride>(map['overrides'], (value) => GetGroupMixedInstancesPolicyLaunchTemplateOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      launchTemplateSpecifications: (pulumi.Input.decodeList<GetGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification>(map['launchTemplateSpecifications']!, (value) => GetGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      overrides: (pulumi.Input.decodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverride>(map['overrides']!, (value) => GetGroupMixedInstancesPolicyLaunchTemplateOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

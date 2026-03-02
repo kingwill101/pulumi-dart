@@ -72,17 +72,17 @@ class ScheduledActionState {
 
   factory ScheduledActionState.fromMap(Map<String, dynamic> map) {
     return ScheduledActionState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      scalableDimension: map['scalableDimension'] == null ? null : (map['scalableDimension'] as String).input(),
-      scalableTargetAction: map['scalableTargetAction'] == null ? null : (ScheduledActionScalableTargetAction.fromMap((map['scalableTargetAction'] as Map).cast<String, dynamic>())).input(),
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
-      serviceNamespace: map['serviceNamespace'] == null ? null : (map['serviceNamespace'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      endTime: map['endTime'] == null ? null : ((map['endTime'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceId: map['resourceId'] == null ? null : ((map['resourceId'] as String).input()).input(),
+      scalableDimension: map['scalableDimension'] == null ? null : ((map['scalableDimension'] as String).input()).input(),
+      scalableTargetAction: map['scalableTargetAction'] == null ? null : ((ScheduledActionScalableTargetAction.fromMap((map['scalableTargetAction']! as Map).cast<String, dynamic>())).input()).input(),
+      schedule: map['schedule'] == null ? null : ((map['schedule'] as String).input()).input(),
+      serviceNamespace: map['serviceNamespace'] == null ? null : ((map['serviceNamespace'] as String).input()).input(),
+      startTime: map['startTime'] == null ? null : ((map['startTime'] as String).input()).input(),
+      timezone: map['timezone'] == null ? null : ((map['timezone'] as String).input()).input(),
     );
   }
 }

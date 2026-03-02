@@ -47,8 +47,8 @@ class IntegrationAccountPartnerArgs {
     return IntegrationAccountPartnerArgs(
       businessIdentities: (pulumi.Input.decodeList<IntegrationAccountPartnerBusinessIdentity>(map['businessIdentities'], (value) => IntegrationAccountPartnerBusinessIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
       integrationAccountName: (map['integrationAccountName'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

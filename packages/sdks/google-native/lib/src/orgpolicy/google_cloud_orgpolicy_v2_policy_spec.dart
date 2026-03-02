@@ -37,10 +37,10 @@ class GoogleCloudOrgpolicyV2PolicySpec {
 
   factory GoogleCloudOrgpolicyV2PolicySpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudOrgpolicyV2PolicySpec(
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      inheritFromParent: map['inheritFromParent'] == null ? null : (map['inheritFromParent'] as bool).input(),
-      reset: map['reset'] == null ? null : (map['reset'] as bool).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>(map['rules'], (value) => GoogleCloudOrgpolicyV2PolicySpecPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      inheritFromParent: map['inheritFromParent'] == null ? null : (map['inheritFromParent']! as bool).input(),
+      reset: map['reset'] == null ? null : (map['reset']! as bool).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>(map['rules']!, (value) => GoogleCloudOrgpolicyV2PolicySpecPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

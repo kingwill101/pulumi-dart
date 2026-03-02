@@ -27,8 +27,8 @@ class DomainDevicesFilesystemIdMap {
 
   factory DomainDevicesFilesystemIdMap.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemIdMap(
-      gids: map['gids'] == null ? null : (pulumi.Input.decodeList<DomainDevicesFilesystemIdMapGid>(map['gids'], (value) => DomainDevicesFilesystemIdMapGid.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      uids: map['uids'] == null ? null : (pulumi.Input.decodeList<DomainDevicesFilesystemIdMapUid>(map['uids'], (value) => DomainDevicesFilesystemIdMapUid.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gids: map['gids'] == null ? null : (pulumi.Input.decodeList<DomainDevicesFilesystemIdMapGid>(map['gids']!, (value) => DomainDevicesFilesystemIdMapGid.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uids: map['uids'] == null ? null : (pulumi.Input.decodeList<DomainDevicesFilesystemIdMapUid>(map['uids']!, (value) => DomainDevicesFilesystemIdMapUid.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

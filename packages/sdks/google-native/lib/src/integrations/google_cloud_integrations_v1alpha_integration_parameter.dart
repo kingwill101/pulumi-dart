@@ -64,15 +64,15 @@ class GoogleCloudIntegrationsV1alphaIntegrationParameter {
 
   factory GoogleCloudIntegrationsV1alphaIntegrationParameter.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaIntegrationParameter(
-      dataType: map['dataType'] == null ? null : (GoogleCloudIntegrationsV1alphaIntegrationParameterDataType.fromValue(map['dataType'] as String)).input(),
-      defaultValue: map['defaultValue'] == null ? null : (GoogleCloudIntegrationsV1alphaValueType.fromMap((map['defaultValue'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      inputOutputType: map['inputOutputType'] == null ? null : (GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType.fromValue(map['inputOutputType'] as String)).input(),
-      isTransient: map['isTransient'] == null ? null : (map['isTransient'] as bool).input(),
-      jsonSchema: map['jsonSchema'] == null ? null : (map['jsonSchema'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      producer: map['producer'] == null ? null : (map['producer'] as String).input(),
-      searchable: map['searchable'] == null ? null : (map['searchable'] as bool).input(),
+      dataType: map['dataType'] == null ? null : (GoogleCloudIntegrationsV1alphaIntegrationParameterDataType.fromValue(map['dataType']! as String)).input(),
+      defaultValue: map['defaultValue'] == null ? null : (GoogleCloudIntegrationsV1alphaValueType.fromMap((map['defaultValue']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      inputOutputType: map['inputOutputType'] == null ? null : (GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType.fromValue(map['inputOutputType']! as String)).input(),
+      isTransient: map['isTransient'] == null ? null : (map['isTransient']! as bool).input(),
+      jsonSchema: map['jsonSchema'] == null ? null : (map['jsonSchema']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      producer: map['producer'] == null ? null : (map['producer']! as String).input(),
+      searchable: map['searchable'] == null ? null : (map['searchable']! as bool).input(),
     );
   }
 }

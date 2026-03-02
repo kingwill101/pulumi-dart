@@ -49,11 +49,11 @@ class AppVersionSnapshotGuardrailContentFilter {
 
   factory AppVersionSnapshotGuardrailContentFilter.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrailContentFilter(
-      bannedContents: map['bannedContents'] == null ? null : ((map['bannedContents'] as List).cast<String>()).input(),
-      bannedContentsInAgentResponses: map['bannedContentsInAgentResponses'] == null ? null : ((map['bannedContentsInAgentResponses'] as List).cast<String>()).input(),
-      bannedContentsInUserInputs: map['bannedContentsInUserInputs'] == null ? null : ((map['bannedContentsInUserInputs'] as List).cast<String>()).input(),
-      disregardDiacritics: map['disregardDiacritics'] == null ? null : (map['disregardDiacritics'] as bool).input(),
-      matchType: map['matchType'] == null ? null : (map['matchType'] as String).input(),
+      bannedContents: map['bannedContents'] == null ? null : ((map['bannedContents']! as List).cast<String>()).input(),
+      bannedContentsInAgentResponses: map['bannedContentsInAgentResponses'] == null ? null : ((map['bannedContentsInAgentResponses']! as List).cast<String>()).input(),
+      bannedContentsInUserInputs: map['bannedContentsInUserInputs'] == null ? null : ((map['bannedContentsInUserInputs']! as List).cast<String>()).input(),
+      disregardDiacritics: map['disregardDiacritics'] == null ? null : (map['disregardDiacritics']! as bool).input(),
+      matchType: map['matchType'] == null ? null : (map['matchType']! as String).input(),
     );
   }
 }

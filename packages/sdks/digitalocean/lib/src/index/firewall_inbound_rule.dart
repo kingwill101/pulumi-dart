@@ -61,13 +61,13 @@ class FirewallInboundRule {
 
   factory FirewallInboundRule.fromMap(Map<String, dynamic> map) {
     return FirewallInboundRule(
-      portRange: map['portRange'] == null ? null : (map['portRange'] as String).input(),
+      portRange: map['portRange'] == null ? null : (map['portRange']! as String).input(),
       protocol: (map['protocol'] as String).input(),
-      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses'] as List).cast<String>()).input(),
-      sourceDropletIds: map['sourceDropletIds'] == null ? null : ((map['sourceDropletIds'] as List).cast<int>()).input(),
-      sourceKubernetesIds: map['sourceKubernetesIds'] == null ? null : ((map['sourceKubernetesIds'] as List).cast<String>()).input(),
-      sourceLoadBalancerUids: map['sourceLoadBalancerUids'] == null ? null : ((map['sourceLoadBalancerUids'] as List).cast<String>()).input(),
-      sourceTags: map['sourceTags'] == null ? null : ((map['sourceTags'] as List).cast<String>()).input(),
+      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses']! as List).cast<String>()).input(),
+      sourceDropletIds: map['sourceDropletIds'] == null ? null : ((map['sourceDropletIds']! as List).cast<int>()).input(),
+      sourceKubernetesIds: map['sourceKubernetesIds'] == null ? null : ((map['sourceKubernetesIds']! as List).cast<String>()).input(),
+      sourceLoadBalancerUids: map['sourceLoadBalancerUids'] == null ? null : ((map['sourceLoadBalancerUids']! as List).cast<String>()).input(),
+      sourceTags: map['sourceTags'] == null ? null : ((map['sourceTags']! as List).cast<String>()).input(),
     );
   }
 }

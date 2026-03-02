@@ -53,8 +53,8 @@ class KubernetesAutoscalerArgs {
       clusterId: (map['clusterId'] as String).input(),
       coolDownDuration: (map['coolDownDuration'] as String).input(),
       deferScaleInDuration: (map['deferScaleInDuration'] as String).input(),
-      nodepools: map['nodepools'] == null ? null : (pulumi.Input.decodeList<KubernetesAutoscalerNodepool>(map['nodepools'], (value) => KubernetesAutoscalerNodepool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      useEcsRamRoleToken: map['useEcsRamRoleToken'] == null ? null : (map['useEcsRamRoleToken'] as bool).input(),
+      nodepools: map['nodepools'] == null ? null : (pulumi.Input.decodeList<KubernetesAutoscalerNodepool>(map['nodepools']!, (value) => KubernetesAutoscalerNodepool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      useEcsRamRoleToken: map['useEcsRamRoleToken'] == null ? null : (map['useEcsRamRoleToken']! as bool).input(),
       utilization: (map['utilization'] as String).input(),
     );
   }

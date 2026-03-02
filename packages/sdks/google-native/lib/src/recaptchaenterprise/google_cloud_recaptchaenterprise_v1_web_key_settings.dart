@@ -43,10 +43,10 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettings {
 
   factory GoogleCloudRecaptchaenterpriseV1WebKeySettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecaptchaenterpriseV1WebKeySettings(
-      allowAllDomains: map['allowAllDomains'] == null ? null : (map['allowAllDomains'] as bool).input(),
-      allowAmpTraffic: map['allowAmpTraffic'] == null ? null : (map['allowAmpTraffic'] as bool).input(),
-      allowedDomains: map['allowedDomains'] == null ? null : ((map['allowedDomains'] as List).cast<String>()).input(),
-      challengeSecurityPreference: map['challengeSecurityPreference'] == null ? null : (GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference.fromValue(map['challengeSecurityPreference'] as String)).input(),
+      allowAllDomains: map['allowAllDomains'] == null ? null : (map['allowAllDomains']! as bool).input(),
+      allowAmpTraffic: map['allowAmpTraffic'] == null ? null : (map['allowAmpTraffic']! as bool).input(),
+      allowedDomains: map['allowedDomains'] == null ? null : ((map['allowedDomains']! as List).cast<String>()).input(),
+      challengeSecurityPreference: map['challengeSecurityPreference'] == null ? null : (GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference.fromValue(map['challengeSecurityPreference']! as String)).input(),
       integrationType: (GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType.fromValue(map['integrationType'] as String)).input(),
     );
   }

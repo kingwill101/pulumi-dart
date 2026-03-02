@@ -42,7 +42,7 @@ class ServerInstanceArgs {
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sapDiscoverySiteName: (map['sapDiscoverySiteName'] as String).input(),
       sapInstanceName: (map['sapInstanceName'] as String).input(),
-      serverInstanceName: map['serverInstanceName'] == null ? null : (map['serverInstanceName'] as String).input(),
+      serverInstanceName: map['serverInstanceName'] == null ? null : (map['serverInstanceName']! as String).input(),
     );
   }
 }

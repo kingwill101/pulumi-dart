@@ -19,7 +19,7 @@ class GetVirtualNetworkGatewayConnectionIkeSasResult {
 
   factory GetVirtualNetworkGatewayConnectionIkeSasResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkGatewayConnectionIkeSasResult(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : map['value']! as String,
     );
   }
 }

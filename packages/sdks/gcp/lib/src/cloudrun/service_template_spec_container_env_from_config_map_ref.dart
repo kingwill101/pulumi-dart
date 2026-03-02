@@ -27,8 +27,8 @@ class ServiceTemplateSpecContainerEnvFromConfigMapRef {
 
   factory ServiceTemplateSpecContainerEnvFromConfigMapRef.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateSpecContainerEnvFromConfigMapRef(
-      localObjectReference: map['localObjectReference'] == null ? null : (ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference.fromMap((map['localObjectReference'] as Map).cast<String, dynamic>())).input(),
-      optional: map['optional'] == null ? null : (map['optional'] as bool).input(),
+      localObjectReference: map['localObjectReference'] == null ? null : (ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference.fromMap((map['localObjectReference']! as Map).cast<String, dynamic>())).input(),
+      optional: map['optional'] == null ? null : (map['optional']! as bool).input(),
     );
   }
 }

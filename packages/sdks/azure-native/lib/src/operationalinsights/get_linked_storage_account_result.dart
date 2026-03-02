@@ -49,7 +49,7 @@ class GetLinkedStorageAccountResult {
       dataSourceType: map['dataSourceType'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      storageAccountIds: map['storageAccountIds'] == null ? null : (map['storageAccountIds'] as List).cast<String>(),
+      storageAccountIds: map['storageAccountIds'] == null ? null : (map['storageAccountIds']! as List).cast<String>(),
       type: map['type'] as String,
     );
   }

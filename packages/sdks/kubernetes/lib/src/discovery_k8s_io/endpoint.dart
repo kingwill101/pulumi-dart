@@ -60,13 +60,13 @@ class Endpoint {
   factory Endpoint.fromMap(Map<String, dynamic> map) {
     return Endpoint(
       addresses: ((map['addresses'] as List).cast<String>()).input(),
-      conditions: map['conditions'] == null ? null : (EndpointConditions.fromMap((map['conditions'] as Map).cast<String, dynamic>())).input(),
-      deprecatedTopology: map['deprecatedTopology'] == null ? null : ((map['deprecatedTopology'] as Map).cast<String, String>()).input(),
-      hints: map['hints'] == null ? null : (EndpointHints.fromMap((map['hints'] as Map).cast<String, dynamic>())).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
-      targetRef: map['targetRef'] == null ? null : (ObjectReference.fromMap((map['targetRef'] as Map).cast<String, dynamic>())).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      conditions: map['conditions'] == null ? null : (EndpointConditions.fromMap((map['conditions']! as Map).cast<String, dynamic>())).input(),
+      deprecatedTopology: map['deprecatedTopology'] == null ? null : ((map['deprecatedTopology']! as Map).cast<String, String>()).input(),
+      hints: map['hints'] == null ? null : (EndpointHints.fromMap((map['hints']! as Map).cast<String, dynamic>())).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
+      targetRef: map['targetRef'] == null ? null : (ObjectReference.fromMap((map['targetRef']! as Map).cast<String, dynamic>())).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

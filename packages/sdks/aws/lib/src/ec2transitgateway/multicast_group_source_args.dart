@@ -41,7 +41,7 @@ class MulticastGroupSourceArgs {
     return MulticastGroupSourceArgs(
       groupIpAddress: (map['groupIpAddress'] as String).input(),
       networkInterfaceId: (map['networkInterfaceId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       transitGatewayMulticastDomainId: (map['transitGatewayMulticastDomainId'] as String).input(),
     );
   }

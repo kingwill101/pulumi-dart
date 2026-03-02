@@ -76,14 +76,14 @@ class GetImportPipelineResult {
     return GetImportPipelineResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : IdentityPropertiesResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location'] as String,
+      identity: map['identity'] == null ? null : IdentityPropertiesResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      options: map['options'] == null ? null : (map['options'] as List).cast<String>(),
+      options: map['options'] == null ? null : (map['options']! as List).cast<String>(),
       provisioningState: map['provisioningState'] as String,
       source: ImportPipelineSourcePropertiesResponse.fromMap((map['source'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      trigger: map['trigger'] == null ? null : PipelineTriggerPropertiesResponse.fromMap((map['trigger'] as Map).cast<String, dynamic>()),
+      trigger: map['trigger'] == null ? null : PipelineTriggerPropertiesResponse.fromMap((map['trigger']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }

@@ -27,8 +27,8 @@ class AdvancedDatapathObservabilityConfigContainerV1beta1 {
 
   factory AdvancedDatapathObservabilityConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return AdvancedDatapathObservabilityConfigContainerV1beta1(
-      enableMetrics: map['enableMetrics'] == null ? null : (map['enableMetrics'] as bool).input(),
-      relayMode: map['relayMode'] == null ? null : (AdvancedDatapathObservabilityConfigRelayModeContainerV1beta1.fromValue(map['relayMode'] as String)).input(),
+      enableMetrics: map['enableMetrics'] == null ? null : (map['enableMetrics']! as bool).input(),
+      relayMode: map['relayMode'] == null ? null : (AdvancedDatapathObservabilityConfigRelayModeContainerV1beta1.fromValue(map['relayMode']! as String)).input(),
     );
   }
 }

@@ -40,7 +40,7 @@ class IoTHubRoute {
 
   factory IoTHubRoute.fromMap(Map<String, dynamic> map) {
     return IoTHubRoute(
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
       enabled: (map['enabled'] as bool).input(),
       endpointNames: ((map['endpointNames'] as List).cast<String>()).input(),
       name: (map['name'] as String).input(),

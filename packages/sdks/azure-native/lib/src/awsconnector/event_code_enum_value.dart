@@ -21,7 +21,7 @@ class EventCodeEnumValue {
 
   factory EventCodeEnumValue.fromMap(Map<String, dynamic> map) {
     return EventCodeEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

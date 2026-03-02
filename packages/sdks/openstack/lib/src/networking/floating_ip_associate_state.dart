@@ -40,10 +40,10 @@ class FloatingIpAssociateState {
 
   factory FloatingIpAssociateState.fromMap(Map<String, dynamic> map) {
     return FloatingIpAssociateState(
-      fixedIp: map['fixedIp'] == null ? null : (map['fixedIp'] as String).input(),
-      floatingIp: map['floatingIp'] == null ? null : (map['floatingIp'] as String).input(),
-      portId: map['portId'] == null ? null : (map['portId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      fixedIp: map['fixedIp'] == null ? null : (map['fixedIp']! as String).input(),
+      floatingIp: map['floatingIp'] == null ? null : (map['floatingIp']! as String).input(),
+      portId: map['portId'] == null ? null : (map['portId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

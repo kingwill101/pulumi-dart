@@ -57,13 +57,13 @@ class WebAclArgs {
 
   factory WebAclArgs.fromMap(Map<String, dynamic> map) {
     return WebAclArgs(
-      defaultAction: (WebAclDefaultAction.fromMap((map['defaultAction'] as Map).cast<String, dynamic>())).input(),
-      loggingConfiguration: map['loggingConfiguration'] == null ? null : (WebAclLoggingConfiguration.fromMap((map['loggingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      defaultAction: (WebAclDefaultAction.fromMap((map['defaultAction']! as Map).cast<String, dynamic>())).input(),
+      loggingConfiguration: map['loggingConfiguration'] == null ? null : ((WebAclLoggingConfiguration.fromMap((map['loggingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       metricName: (map['metricName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<WebAclRule>(map['rules'], (value) => WebAclRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      rules: map['rules'] == null ? null : ((pulumi.Input.decodeList<WebAclRule>(map['rules']!, (value) => WebAclRule.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -95,21 +95,21 @@ class AppGroupState {
 
   factory AppGroupState.fromMap(Map<String, dynamic> map) {
     return AppGroupState(
-      appName: map['appName'] == null ? null : (map['appName'] as String).input(),
-      appType: map['appType'] == null ? null : (map['appType'] as int).input(),
-      appVersion: map['appVersion'] == null ? null : (map['appVersion'] as String).input(),
-      deleteJobs: map['deleteJobs'] == null ? null : (map['deleteJobs'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enableLog: map['enableLog'] == null ? null : (map['enableLog'] as bool).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      maxConcurrency: map['maxConcurrency'] == null ? null : (map['maxConcurrency'] as int).input(),
-      maxJobs: map['maxJobs'] == null ? null : (map['maxJobs'] as int).input(),
-      monitorConfigJson: map['monitorConfigJson'] == null ? null : (map['monitorConfigJson'] as String).input(),
-      monitorContactsJson: map['monitorContactsJson'] == null ? null : (map['monitorContactsJson'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
-      namespaceSource: map['namespaceSource'] == null ? null : (map['namespaceSource'] as String).input(),
-      scheduleBusyWorkers: map['scheduleBusyWorkers'] == null ? null : (map['scheduleBusyWorkers'] as bool).input(),
+      appName: map['appName'] == null ? null : (map['appName']! as String).input(),
+      appType: map['appType'] == null ? null : (map['appType']! as int).input(),
+      appVersion: map['appVersion'] == null ? null : (map['appVersion']! as String).input(),
+      deleteJobs: map['deleteJobs'] == null ? null : (map['deleteJobs']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enableLog: map['enableLog'] == null ? null : (map['enableLog']! as bool).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      maxConcurrency: map['maxConcurrency'] == null ? null : (map['maxConcurrency']! as int).input(),
+      maxJobs: map['maxJobs'] == null ? null : (map['maxJobs']! as int).input(),
+      monitorConfigJson: map['monitorConfigJson'] == null ? null : (map['monitorConfigJson']! as String).input(),
+      monitorContactsJson: map['monitorContactsJson'] == null ? null : (map['monitorContactsJson']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
+      namespaceSource: map['namespaceSource'] == null ? null : (map['namespaceSource']! as String).input(),
+      scheduleBusyWorkers: map['scheduleBusyWorkers'] == null ? null : (map['scheduleBusyWorkers']! as bool).input(),
     );
   }
 }

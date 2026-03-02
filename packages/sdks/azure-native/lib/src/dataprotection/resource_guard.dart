@@ -20,7 +20,7 @@ class ResourceGuard {
 
   factory ResourceGuard.fromMap(Map<String, dynamic> map) {
     return ResourceGuard(
-      vaultCriticalOperationExclusionList: map['vaultCriticalOperationExclusionList'] == null ? null : ((map['vaultCriticalOperationExclusionList'] as List).cast<String>()).input(),
+      vaultCriticalOperationExclusionList: map['vaultCriticalOperationExclusionList'] == null ? null : ((map['vaultCriticalOperationExclusionList']! as List).cast<String>()).input(),
     );
   }
 }

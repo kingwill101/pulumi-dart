@@ -40,8 +40,8 @@ class IdentityBindingArgs {
 
   factory IdentityBindingArgs.fromMap(Map<String, dynamic> map) {
     return IdentityBindingArgs(
-      identityBindingName: map['identityBindingName'] == null ? null : (map['identityBindingName'] as String).input(),
-      properties: map['properties'] == null ? null : (IdentityBindingProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      identityBindingName: map['identityBindingName'] == null ? null : (map['identityBindingName']! as String).input(),
+      properties: map['properties'] == null ? null : (IdentityBindingProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
     );

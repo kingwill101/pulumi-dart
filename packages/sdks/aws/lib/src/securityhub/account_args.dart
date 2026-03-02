@@ -39,10 +39,10 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      autoEnableControls: map['autoEnableControls'] == null ? null : (map['autoEnableControls'] as bool).input(),
-      controlFindingGenerator: map['controlFindingGenerator'] == null ? null : (map['controlFindingGenerator'] as String).input(),
-      enableDefaultStandards: map['enableDefaultStandards'] == null ? null : (map['enableDefaultStandards'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      autoEnableControls: map['autoEnableControls'] == null ? null : ((map['autoEnableControls'] as bool).input()).input(),
+      controlFindingGenerator: map['controlFindingGenerator'] == null ? null : ((map['controlFindingGenerator'] as String).input()).input(),
+      enableDefaultStandards: map['enableDefaultStandards'] == null ? null : ((map['enableDefaultStandards'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

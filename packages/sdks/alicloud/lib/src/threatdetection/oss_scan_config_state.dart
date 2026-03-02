@@ -81,19 +81,19 @@ class OssScanConfigState {
 
   factory OssScanConfigState.fromMap(Map<String, dynamic> map) {
     return OssScanConfigState(
-      allKeyPrefix: map['allKeyPrefix'] == null ? null : (map['allKeyPrefix'] as bool).input(),
-      bucketNameLists: map['bucketNameLists'] == null ? null : ((map['bucketNameLists'] as List).cast<String>()).input(),
-      decompressMaxFileCount: map['decompressMaxFileCount'] == null ? null : (map['decompressMaxFileCount'] as int).input(),
-      decompressMaxLayer: map['decompressMaxLayer'] == null ? null : (map['decompressMaxLayer'] as int).input(),
-      decryptionLists: map['decryptionLists'] == null ? null : ((map['decryptionLists'] as List).cast<String>()).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as int).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      keyPrefixLists: map['keyPrefixLists'] == null ? null : ((map['keyPrefixLists'] as List).cast<String>()).input(),
-      keySuffixLists: map['keySuffixLists'] == null ? null : ((map['keySuffixLists'] as List).cast<String>()).input(),
-      lastModifiedStartTime: map['lastModifiedStartTime'] == null ? null : (map['lastModifiedStartTime'] as int).input(),
-      ossScanConfigName: map['ossScanConfigName'] == null ? null : (map['ossScanConfigName'] as String).input(),
-      scanDayLists: map['scanDayLists'] == null ? null : ((map['scanDayLists'] as List).cast<int>()).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      allKeyPrefix: map['allKeyPrefix'] == null ? null : (map['allKeyPrefix']! as bool).input(),
+      bucketNameLists: map['bucketNameLists'] == null ? null : ((map['bucketNameLists']! as List).cast<String>()).input(),
+      decompressMaxFileCount: map['decompressMaxFileCount'] == null ? null : (map['decompressMaxFileCount']! as int).input(),
+      decompressMaxLayer: map['decompressMaxLayer'] == null ? null : (map['decompressMaxLayer']! as int).input(),
+      decryptionLists: map['decryptionLists'] == null ? null : ((map['decryptionLists']! as List).cast<String>()).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as int).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      keyPrefixLists: map['keyPrefixLists'] == null ? null : ((map['keyPrefixLists']! as List).cast<String>()).input(),
+      keySuffixLists: map['keySuffixLists'] == null ? null : ((map['keySuffixLists']! as List).cast<String>()).input(),
+      lastModifiedStartTime: map['lastModifiedStartTime'] == null ? null : (map['lastModifiedStartTime']! as int).input(),
+      ossScanConfigName: map['ossScanConfigName'] == null ? null : (map['ossScanConfigName']! as String).input(),
+      scanDayLists: map['scanDayLists'] == null ? null : ((map['scanDayLists']! as List).cast<int>()).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

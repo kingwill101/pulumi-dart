@@ -45,11 +45,11 @@ class StorageLensConfigurationArgs {
 
   factory StorageLensConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
       configId: (map['configId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      storageLensConfiguration: (StorageLensConfigurationStorageLensConfiguration.fromMap((map['storageLensConfiguration'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      storageLensConfiguration: (StorageLensConfigurationStorageLensConfiguration.fromMap((map['storageLensConfiguration']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

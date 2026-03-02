@@ -46,12 +46,12 @@ class DomainDevicesInterfaceSourceHostdevPciAddress {
 
   factory DomainDevicesInterfaceSourceHostdevPciAddress.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceHostdevPciAddress(
-      bus: map['bus'] == null ? null : (map['bus'] as double).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as double).input(),
-      function: map['function'] == null ? null : (map['function'] as double).input(),
-      multiFunction: map['multiFunction'] == null ? null : (map['multiFunction'] as String).input(),
-      slot: map['slot'] == null ? null : (map['slot'] as double).input(),
-      zpci: map['zpci'] == null ? null : (DomainDevicesInterfaceSourceHostdevPciAddressZpci.fromMap((map['zpci'] as Map).cast<String, dynamic>())).input(),
+      bus: map['bus'] == null ? null : (map['bus']! as double).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as double).input(),
+      function: map['function'] == null ? null : (map['function']! as double).input(),
+      multiFunction: map['multiFunction'] == null ? null : (map['multiFunction']! as String).input(),
+      slot: map['slot'] == null ? null : (map['slot']! as double).input(),
+      zpci: map['zpci'] == null ? null : (DomainDevicesInterfaceSourceHostdevPciAddressZpci.fromMap((map['zpci']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

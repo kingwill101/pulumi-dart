@@ -98,21 +98,21 @@ class GetWatchlistItemResult {
   factory GetWatchlistItemResult.fromMap(Map<String, dynamic> map) {
     return GetWatchlistItemResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      created: map['created'] == null ? null : map['created'] as String,
-      createdBy: map['createdBy'] == null ? null : WatchlistUserInfoResponse.fromMap((map['createdBy'] as Map).cast<String, dynamic>()),
-      entityMapping: map['entityMapping'] == null ? null : map['entityMapping'],
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      created: map['created'] == null ? null : map['created']! as String,
+      createdBy: map['createdBy'] == null ? null : WatchlistUserInfoResponse.fromMap((map['createdBy']! as Map).cast<String, dynamic>()),
+      entityMapping: map['entityMapping'] == null ? null : map['entityMapping']!,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
-      isDeleted: map['isDeleted'] == null ? null : map['isDeleted'] as bool,
+      isDeleted: map['isDeleted'] == null ? null : map['isDeleted']! as bool,
       itemsKeyValue: map['itemsKeyValue'],
       name: map['name'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
       type: map['type'] as String,
-      updated: map['updated'] == null ? null : map['updated'] as String,
-      updatedBy: map['updatedBy'] == null ? null : WatchlistUserInfoResponse.fromMap((map['updatedBy'] as Map).cast<String, dynamic>()),
-      watchlistItemId: map['watchlistItemId'] == null ? null : map['watchlistItemId'] as String,
-      watchlistItemType: map['watchlistItemType'] == null ? null : map['watchlistItemType'] as String,
+      updated: map['updated'] == null ? null : map['updated']! as String,
+      updatedBy: map['updatedBy'] == null ? null : WatchlistUserInfoResponse.fromMap((map['updatedBy']! as Map).cast<String, dynamic>()),
+      watchlistItemId: map['watchlistItemId'] == null ? null : map['watchlistItemId']! as String,
+      watchlistItemType: map['watchlistItemType'] == null ? null : map['watchlistItemType']! as String,
     );
   }
 }

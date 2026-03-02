@@ -26,8 +26,8 @@ class LogAnalyticsWorkspaceConfig {
 
   factory LogAnalyticsWorkspaceConfig.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsWorkspaceConfig(
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

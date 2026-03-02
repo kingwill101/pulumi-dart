@@ -23,7 +23,7 @@ class AppVersionSnapshotGuardrailModelSafety {
 
   factory AppVersionSnapshotGuardrailModelSafety.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrailModelSafety(
-      safetySettings: map['safetySettings'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailModelSafetySafetySetting>(map['safetySettings'], (value) => AppVersionSnapshotGuardrailModelSafetySafetySetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      safetySettings: map['safetySettings'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailModelSafetySafetySetting>(map['safetySettings']!, (value) => AppVersionSnapshotGuardrailModelSafetySafetySetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

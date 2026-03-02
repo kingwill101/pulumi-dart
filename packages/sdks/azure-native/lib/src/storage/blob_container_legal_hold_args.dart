@@ -45,7 +45,7 @@ class BlobContainerLegalHoldArgs {
   factory BlobContainerLegalHoldArgs.fromMap(Map<String, dynamic> map) {
     return BlobContainerLegalHoldArgs(
       accountName: (map['accountName'] as String).input(),
-      allowProtectedAppendWritesAll: map['allowProtectedAppendWritesAll'] == null ? null : (map['allowProtectedAppendWritesAll'] as bool).input(),
+      allowProtectedAppendWritesAll: map['allowProtectedAppendWritesAll'] == null ? null : (map['allowProtectedAppendWritesAll']! as bool).input(),
       containerName: (map['containerName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       tags: ((map['tags'] as List).cast<String>()).input(),

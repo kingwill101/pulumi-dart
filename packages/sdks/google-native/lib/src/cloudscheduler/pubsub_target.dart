@@ -31,8 +31,8 @@ class PubsubTarget {
 
   factory PubsubTarget.fromMap(Map<String, dynamic> map) {
     return PubsubTarget(
-      attributes: map['attributes'] == null ? null : ((map['attributes'] as Map).cast<String, String>()).input(),
-      data: map['data'] == null ? null : (map['data'] as String).input(),
+      attributes: map['attributes'] == null ? null : ((map['attributes']! as Map).cast<String, String>()).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
       topicName: (map['topicName'] as String).input(),
     );
   }

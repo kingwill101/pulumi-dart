@@ -30,9 +30,9 @@ class ApplicationConfigMapMountDescV2 {
 
   factory ApplicationConfigMapMountDescV2.fromMap(Map<String, dynamic> map) {
     return ApplicationConfigMapMountDescV2(
-      configMapId: map['configMapId'] == null ? null : (map['configMapId'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
+      configMapId: map['configMapId'] == null ? null : (map['configMapId']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
     );
   }
 }

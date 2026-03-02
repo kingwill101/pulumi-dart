@@ -22,7 +22,7 @@ class LogConfigDataAccessOptionsComputeV1 {
 
   factory LogConfigDataAccessOptionsComputeV1.fromMap(Map<String, dynamic> map) {
     return LogConfigDataAccessOptionsComputeV1(
-      logMode: map['logMode'] == null ? null : (LogConfigDataAccessOptionsLogModeComputeV1.fromValue(map['logMode'] as String)).input(),
+      logMode: map['logMode'] == null ? null : (LogConfigDataAccessOptionsLogModeComputeV1.fromValue(map['logMode']! as String)).input(),
     );
   }
 }

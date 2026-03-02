@@ -62,14 +62,14 @@ class VirtualMachineProfile {
 
   factory VirtualMachineProfile.fromMap(Map<String, dynamic> map) {
     return VirtualMachineProfile(
-      additionalCapabilities: map['additionalCapabilities'] == null ? null : (VirtualMachineAdditionalCapabilities.fromMap((map['additionalCapabilities'] as Map).cast<String, dynamic>())).input(),
+      additionalCapabilities: map['additionalCapabilities'] == null ? null : (VirtualMachineAdditionalCapabilities.fromMap((map['additionalCapabilities']! as Map).cast<String, dynamic>())).input(),
       adminUser: (Credentials.fromMap((map['adminUser'] as Map).cast<String, dynamic>())).input(),
       createOption: (CreateOption.fromValue(map['createOption'] as String)).input(),
       imageReference: (ImageReference.fromMap((map['imageReference'] as Map).cast<String, dynamic>())).input(),
-      nonAdminUser: map['nonAdminUser'] == null ? null : (Credentials.fromMap((map['nonAdminUser'] as Map).cast<String, dynamic>())).input(),
+      nonAdminUser: map['nonAdminUser'] == null ? null : (Credentials.fromMap((map['nonAdminUser']! as Map).cast<String, dynamic>())).input(),
       sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
       usageQuota: (map['usageQuota'] as String).input(),
-      useSharedPassword: map['useSharedPassword'] == null ? null : (EnableState.fromValue(map['useSharedPassword'] as String)).input(),
+      useSharedPassword: map['useSharedPassword'] == null ? null : (EnableState.fromValue(map['useSharedPassword']! as String)).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class AlertRuleLeafCondition {
 
   factory AlertRuleLeafCondition.fromMap(Map<String, dynamic> map) {
     return AlertRuleLeafCondition(
-      containsAny: map['containsAny'] == null ? null : ((map['containsAny'] as List).cast<String>()).input(),
-      equals: map['equals'] == null ? null : (map['equals'] as String).input(),
-      field: map['field'] == null ? null : (map['field'] as String).input(),
+      containsAny: map['containsAny'] == null ? null : ((map['containsAny']! as List).cast<String>()).input(),
+      equals: map['equals'] == null ? null : (map['equals']! as String).input(),
+      field: map['field'] == null ? null : (map['field']! as String).input(),
     );
   }
 }

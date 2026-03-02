@@ -58,11 +58,11 @@ class BillingAccountBucketConfigArgs {
     return BillingAccountBucketConfigArgs(
       billingAccount: (map['billingAccount'] as String).input(),
       bucketId: (map['bucketId'] as String).input(),
-      cmekSettings: map['cmekSettings'] == null ? null : (BillingAccountBucketConfigCmekSettings.fromMap((map['cmekSettings'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      indexConfigs: map['indexConfigs'] == null ? null : (pulumi.Input.decodeList<BillingAccountBucketConfigIndexConfig>(map['indexConfigs'], (value) => BillingAccountBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cmekSettings: map['cmekSettings'] == null ? null : (BillingAccountBucketConfigCmekSettings.fromMap((map['cmekSettings']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      indexConfigs: map['indexConfigs'] == null ? null : (pulumi.Input.decodeList<BillingAccountBucketConfigIndexConfig>(map['indexConfigs']!, (value) => BillingAccountBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       location: (map['location'] as String).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
     );
   }
 }

@@ -72,15 +72,15 @@ class GetLoadBalancerResult {
 
   factory GetLoadBalancerResult.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerResult(
-      allowServicePlacement: map['allowServicePlacement'] == null ? null : map['allowServicePlacement'] as bool,
+      allowServicePlacement: map['allowServicePlacement'] == null ? null : map['allowServicePlacement']! as bool,
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      nodeSelector: map['nodeSelector'] == null ? null : LabelSelectorResponse.fromMap((map['nodeSelector'] as Map).cast<String, dynamic>()),
+      nodeSelector: map['nodeSelector'] == null ? null : LabelSelectorResponse.fromMap((map['nodeSelector']! as Map).cast<String, dynamic>()),
       primaryAgentPoolName: map['primaryAgentPoolName'] as String,
       provisioningState: map['provisioningState'] as String,
-      serviceLabelSelector: map['serviceLabelSelector'] == null ? null : LabelSelectorResponse.fromMap((map['serviceLabelSelector'] as Map).cast<String, dynamic>()),
-      serviceNamespaceSelector: map['serviceNamespaceSelector'] == null ? null : LabelSelectorResponse.fromMap((map['serviceNamespaceSelector'] as Map).cast<String, dynamic>()),
+      serviceLabelSelector: map['serviceLabelSelector'] == null ? null : LabelSelectorResponse.fromMap((map['serviceLabelSelector']! as Map).cast<String, dynamic>()),
+      serviceNamespaceSelector: map['serviceNamespaceSelector'] == null ? null : LabelSelectorResponse.fromMap((map['serviceNamespaceSelector']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

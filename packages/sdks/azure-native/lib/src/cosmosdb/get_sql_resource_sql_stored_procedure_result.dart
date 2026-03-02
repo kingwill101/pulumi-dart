@@ -52,10 +52,10 @@ class GetSqlResourceSqlStoredProcedureResult {
     return GetSqlResourceSqlStoredProcedureResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      resource: map['resource'] == null ? null : SqlStoredProcedureGetPropertiesResponseResource.fromMap((map['resource'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      resource: map['resource'] == null ? null : SqlStoredProcedureGetPropertiesResponseResource.fromMap((map['resource']! as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

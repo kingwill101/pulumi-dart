@@ -52,10 +52,10 @@ class VocabularyArgs {
   factory VocabularyArgs.fromMap(Map<String, dynamic> map) {
     return VocabularyArgs(
       languageCode: (map['languageCode'] as String).input(),
-      phrases: map['phrases'] == null ? null : ((map['phrases'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vocabularyFileUri: map['vocabularyFileUri'] == null ? null : (map['vocabularyFileUri'] as String).input(),
+      phrases: map['phrases'] == null ? null : (((map['phrases'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      vocabularyFileUri: map['vocabularyFileUri'] == null ? null : ((map['vocabularyFileUri'] as String).input()).input(),
       vocabularyName: (map['vocabularyName'] as String).input(),
     );
   }

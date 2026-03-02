@@ -29,7 +29,7 @@ class OutboundFirewallRuleArgs {
 
   factory OutboundFirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return OutboundFirewallRuleArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       serverId: (map['serverId'] as String).input(),
     );
   }

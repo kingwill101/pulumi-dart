@@ -31,10 +31,10 @@ class InputEndpointResponse {
 
   factory InputEndpointResponse.fromMap(Map<String, dynamic> map) {
     return InputEndpointResponse(
-      endpointName: map['endpointName'] == null ? null : (map['endpointName'] as String).input(),
-      privatePort: map['privatePort'] == null ? null : (map['privatePort'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      publicPort: map['publicPort'] == null ? null : (map['publicPort'] as int).input(),
+      endpointName: map['endpointName'] == null ? null : (map['endpointName']! as String).input(),
+      privatePort: map['privatePort'] == null ? null : (map['privatePort']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      publicPort: map['publicPort'] == null ? null : (map['publicPort']! as int).input(),
     );
   }
 }

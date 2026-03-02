@@ -58,14 +58,14 @@ class GetImageArgs {
 
   factory GetImageArgs.fromMap(Map<String, dynamic> map) {
     return GetImageArgs(
-      id: map['id'] == null ? null : (map['id'] as int).input(),
-      includeDeprecated: map['includeDeprecated'] == null ? null : (map['includeDeprecated'] as bool).input(),
-      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
-      withArchitecture: map['withArchitecture'] == null ? null : (map['withArchitecture'] as String).input(),
-      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
-      withStatuses: map['withStatuses'] == null ? null : ((map['withStatuses'] as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
+      includeDeprecated: map['includeDeprecated'] == null ? null : (map['includeDeprecated']! as bool).input(),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
+      withArchitecture: map['withArchitecture'] == null ? null : (map['withArchitecture']! as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
+      withStatuses: map['withStatuses'] == null ? null : ((map['withStatuses']! as List).cast<String>()).input(),
     );
   }
 }

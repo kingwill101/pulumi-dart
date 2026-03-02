@@ -96,20 +96,20 @@ class DeploymentData {
 
   factory DeploymentData.fromMap(Map<String, dynamic> map) {
     return DeploymentData(
-      adouPath: map['adouPath'] == null ? null : (map['adouPath'] as String).input(),
-      cluster: map['cluster'] == null ? null : (DeploymentCluster.fromMap((map['cluster'] as Map).cast<String, dynamic>())).input(),
-      domainFqdn: map['domainFqdn'] == null ? null : (map['domainFqdn'] as String).input(),
-      hostNetwork: map['hostNetwork'] == null ? null : (HostNetwork.fromMap((map['hostNetwork'] as Map).cast<String, dynamic>())).input(),
-      infrastructureNetwork: map['infrastructureNetwork'] == null ? null : (pulumi.Input.decodeList<InfrastructureNetwork>(map['infrastructureNetwork'], (value) => InfrastructureNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      namingPrefix: map['namingPrefix'] == null ? null : (map['namingPrefix'] as String).input(),
-      observability: map['observability'] == null ? null : (Observability.fromMap((map['observability'] as Map).cast<String, dynamic>())).input(),
-      optionalServices: map['optionalServices'] == null ? null : (OptionalServices.fromMap((map['optionalServices'] as Map).cast<String, dynamic>())).input(),
-      physicalNodes: map['physicalNodes'] == null ? null : (pulumi.Input.decodeList<PhysicalNodes>(map['physicalNodes'], (value) => PhysicalNodes.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sdnIntegration: map['sdnIntegration'] == null ? null : (SdnIntegration.fromMap((map['sdnIntegration'] as Map).cast<String, dynamic>())).input(),
-      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<EceDeploymentSecrets>(map['secrets'], (value) => EceDeploymentSecrets.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      secretsLocation: map['secretsLocation'] == null ? null : (map['secretsLocation'] as String).input(),
-      securitySettings: map['securitySettings'] == null ? null : (DeploymentSecuritySettings.fromMap((map['securitySettings'] as Map).cast<String, dynamic>())).input(),
-      storage: map['storage'] == null ? null : (Storage.fromMap((map['storage'] as Map).cast<String, dynamic>())).input(),
+      adouPath: map['adouPath'] == null ? null : (map['adouPath']! as String).input(),
+      cluster: map['cluster'] == null ? null : (DeploymentCluster.fromMap((map['cluster']! as Map).cast<String, dynamic>())).input(),
+      domainFqdn: map['domainFqdn'] == null ? null : (map['domainFqdn']! as String).input(),
+      hostNetwork: map['hostNetwork'] == null ? null : (HostNetwork.fromMap((map['hostNetwork']! as Map).cast<String, dynamic>())).input(),
+      infrastructureNetwork: map['infrastructureNetwork'] == null ? null : (pulumi.Input.decodeList<InfrastructureNetwork>(map['infrastructureNetwork']!, (value) => InfrastructureNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      namingPrefix: map['namingPrefix'] == null ? null : (map['namingPrefix']! as String).input(),
+      observability: map['observability'] == null ? null : (Observability.fromMap((map['observability']! as Map).cast<String, dynamic>())).input(),
+      optionalServices: map['optionalServices'] == null ? null : (OptionalServices.fromMap((map['optionalServices']! as Map).cast<String, dynamic>())).input(),
+      physicalNodes: map['physicalNodes'] == null ? null : (pulumi.Input.decodeList<PhysicalNodes>(map['physicalNodes']!, (value) => PhysicalNodes.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sdnIntegration: map['sdnIntegration'] == null ? null : (SdnIntegration.fromMap((map['sdnIntegration']! as Map).cast<String, dynamic>())).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<EceDeploymentSecrets>(map['secrets']!, (value) => EceDeploymentSecrets.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secretsLocation: map['secretsLocation'] == null ? null : (map['secretsLocation']! as String).input(),
+      securitySettings: map['securitySettings'] == null ? null : (DeploymentSecuritySettings.fromMap((map['securitySettings']! as Map).cast<String, dynamic>())).input(),
+      storage: map['storage'] == null ? null : (Storage.fromMap((map['storage']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

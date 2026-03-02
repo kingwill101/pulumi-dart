@@ -35,10 +35,10 @@ class InstanceFromTemplateNetworkInterfaceAccessConfig {
 
   factory InstanceFromTemplateNetworkInterfaceAccessConfig.fromMap(Map<String, dynamic> map) {
     return InstanceFromTemplateNetworkInterfaceAccessConfig(
-      natIp: map['natIp'] == null ? null : (map['natIp'] as String).input(),
-      networkTier: map['networkTier'] == null ? null : (map['networkTier'] as String).input(),
-      publicPtrDomainName: map['publicPtrDomainName'] == null ? null : (map['publicPtrDomainName'] as String).input(),
-      securityPolicy: map['securityPolicy'] == null ? null : (map['securityPolicy'] as String).input(),
+      natIp: map['natIp'] == null ? null : (map['natIp']! as String).input(),
+      networkTier: map['networkTier'] == null ? null : (map['networkTier']! as String).input(),
+      publicPtrDomainName: map['publicPtrDomainName'] == null ? null : (map['publicPtrDomainName']! as String).input(),
+      securityPolicy: map['securityPolicy'] == null ? null : (map['securityPolicy']! as String).input(),
     );
   }
 }

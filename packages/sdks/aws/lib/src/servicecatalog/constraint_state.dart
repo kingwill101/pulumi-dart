@@ -62,15 +62,15 @@ class ConstraintState {
 
   factory ConstraintState.fromMap(Map<String, dynamic> map) {
     return ConstraintState(
-      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
-      portfolioId: map['portfolioId'] == null ? null : (map['portfolioId'] as String).input(),
-      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      acceptLanguage: map['acceptLanguage'] == null ? null : ((map['acceptLanguage'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      owner: map['owner'] == null ? null : ((map['owner'] as String).input()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as String).input()).input(),
+      portfolioId: map['portfolioId'] == null ? null : ((map['portfolioId'] as String).input()).input(),
+      productId: map['productId'] == null ? null : ((map['productId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

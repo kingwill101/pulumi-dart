@@ -55,12 +55,12 @@ class ApplicationScalingRuleScalingRuleMetricMetric {
 
   factory ApplicationScalingRuleScalingRuleMetricMetric.fromMap(Map<String, dynamic> map) {
     return ApplicationScalingRuleScalingRuleMetricMetric(
-      metricTargetAverageUtilization: map['metricTargetAverageUtilization'] == null ? null : (map['metricTargetAverageUtilization'] as int).input(),
-      metricType: map['metricType'] == null ? null : (map['metricType'] as String).input(),
-      slbId: map['slbId'] == null ? null : (map['slbId'] as String).input(),
-      slbLogStore: map['slbLogStore'] == null ? null : (map['slbLogStore'] as String).input(),
-      slbProject: map['slbProject'] == null ? null : (map['slbProject'] as String).input(),
-      vport: map['vport'] == null ? null : (map['vport'] as String).input(),
+      metricTargetAverageUtilization: map['metricTargetAverageUtilization'] == null ? null : (map['metricTargetAverageUtilization']! as int).input(),
+      metricType: map['metricType'] == null ? null : (map['metricType']! as String).input(),
+      slbId: map['slbId'] == null ? null : (map['slbId']! as String).input(),
+      slbLogStore: map['slbLogStore'] == null ? null : (map['slbLogStore']! as String).input(),
+      slbProject: map['slbProject'] == null ? null : (map['slbProject']! as String).input(),
+      vport: map['vport'] == null ? null : (map['vport']! as String).input(),
     );
   }
 }

@@ -38,8 +38,8 @@ class V2modelsIntentConfirmationSettingCodeHook {
     return V2modelsIntentConfirmationSettingCodeHook(
       active: (map['active'] as bool).input(),
       enableCodeHookInvocation: (map['enableCodeHookInvocation'] as bool).input(),
-      invocationLabel: map['invocationLabel'] == null ? null : (map['invocationLabel'] as String).input(),
-      postCodeHookSpecification: map['postCodeHookSpecification'] == null ? null : (V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecification.fromMap((map['postCodeHookSpecification'] as Map).cast<String, dynamic>())).input(),
+      invocationLabel: map['invocationLabel'] == null ? null : ((map['invocationLabel'] as String).input()).input(),
+      postCodeHookSpecification: map['postCodeHookSpecification'] == null ? null : ((V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecification.fromMap((map['postCodeHookSpecification']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

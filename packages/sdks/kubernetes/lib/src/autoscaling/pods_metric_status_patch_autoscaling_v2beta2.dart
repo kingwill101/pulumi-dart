@@ -28,8 +28,8 @@ class PodsMetricStatusPatchAutoscalingV2beta2 {
 
   factory PodsMetricStatusPatchAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
     return PodsMetricStatusPatchAutoscalingV2beta2(
-      current: map['current'] == null ? null : (MetricValueStatusPatchAutoscalingV2beta2.fromMap((map['current'] as Map).cast<String, dynamic>())).input(),
-      metric: map['metric'] == null ? null : (MetricIdentifierPatchAutoscalingV2beta2.fromMap((map['metric'] as Map).cast<String, dynamic>())).input(),
+      current: map['current'] == null ? null : (MetricValueStatusPatchAutoscalingV2beta2.fromMap((map['current']! as Map).cast<String, dynamic>())).input(),
+      metric: map['metric'] == null ? null : (MetricIdentifierPatchAutoscalingV2beta2.fromMap((map['metric']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

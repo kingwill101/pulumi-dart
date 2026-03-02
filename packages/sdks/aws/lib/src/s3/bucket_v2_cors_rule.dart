@@ -40,11 +40,11 @@ class BucketV2CorsRule {
 
   factory BucketV2CorsRule.fromMap(Map<String, dynamic> map) {
     return BucketV2CorsRule(
-      allowedHeaders: map['allowedHeaders'] == null ? null : ((map['allowedHeaders'] as List).cast<String>()).input(),
+      allowedHeaders: map['allowedHeaders'] == null ? null : (((map['allowedHeaders'] as List).cast<String>()).input()).input(),
       allowedMethods: ((map['allowedMethods'] as List).cast<String>()).input(),
       allowedOrigins: ((map['allowedOrigins'] as List).cast<String>()).input(),
-      exposeHeaders: map['exposeHeaders'] == null ? null : ((map['exposeHeaders'] as List).cast<String>()).input(),
-      maxAgeSeconds: map['maxAgeSeconds'] == null ? null : (map['maxAgeSeconds'] as int).input(),
+      exposeHeaders: map['exposeHeaders'] == null ? null : (((map['exposeHeaders'] as List).cast<String>()).input()).input(),
+      maxAgeSeconds: map['maxAgeSeconds'] == null ? null : ((map['maxAgeSeconds'] as int).input()).input(),
     );
   }
 }

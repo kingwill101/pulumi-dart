@@ -39,10 +39,10 @@ class DefaultServiceAccountsState {
 
   factory DefaultServiceAccountsState.fromMap(Map<String, dynamic> map) {
     return DefaultServiceAccountsState(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      restorePolicy: map['restorePolicy'] == null ? null : (map['restorePolicy'] as String).input(),
-      serviceAccounts: map['serviceAccounts'] == null ? null : ((map['serviceAccounts'] as Map).cast<String, String>()).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      restorePolicy: map['restorePolicy'] == null ? null : (map['restorePolicy']! as String).input(),
+      serviceAccounts: map['serviceAccounts'] == null ? null : ((map['serviceAccounts']! as Map).cast<String, String>()).input(),
     );
   }
 }

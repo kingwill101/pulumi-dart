@@ -81,19 +81,19 @@ class InstanceFromMachineImageBootDisk {
 
   factory InstanceFromMachineImageBootDisk.fromMap(Map<String, dynamic> map) {
     return InstanceFromMachineImageBootDisk(
-      autoDelete: map['autoDelete'] == null ? null : (map['autoDelete'] as bool).input(),
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
-      diskEncryptionKeyRaw: map['diskEncryptionKeyRaw'] == null ? null : (map['diskEncryptionKeyRaw'] as String).input(),
-      diskEncryptionKeyRsa: map['diskEncryptionKeyRsa'] == null ? null : (map['diskEncryptionKeyRsa'] as String).input(),
-      diskEncryptionKeySha256: map['diskEncryptionKeySha256'] == null ? null : (map['diskEncryptionKeySha256'] as String).input(),
-      diskEncryptionServiceAccount: map['diskEncryptionServiceAccount'] == null ? null : (map['diskEncryptionServiceAccount'] as String).input(),
-      forceAttach: map['forceAttach'] == null ? null : (map['forceAttach'] as bool).input(),
-      guestOsFeatures: map['guestOsFeatures'] == null ? null : ((map['guestOsFeatures'] as List).cast<String>()).input(),
-      initializeParams: map['initializeParams'] == null ? null : (InstanceFromMachineImageBootDiskInitializeParams.fromMap((map['initializeParams'] as Map).cast<String, dynamic>())).input(),
-      interface: map['interface'] == null ? null : (map['interface'] as String).input(),
-      kmsKeySelfLink: map['kmsKeySelfLink'] == null ? null : (map['kmsKeySelfLink'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      autoDelete: map['autoDelete'] == null ? null : (map['autoDelete']! as bool).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName']! as String).input(),
+      diskEncryptionKeyRaw: map['diskEncryptionKeyRaw'] == null ? null : (map['diskEncryptionKeyRaw']! as String).input(),
+      diskEncryptionKeyRsa: map['diskEncryptionKeyRsa'] == null ? null : (map['diskEncryptionKeyRsa']! as String).input(),
+      diskEncryptionKeySha256: map['diskEncryptionKeySha256'] == null ? null : (map['diskEncryptionKeySha256']! as String).input(),
+      diskEncryptionServiceAccount: map['diskEncryptionServiceAccount'] == null ? null : (map['diskEncryptionServiceAccount']! as String).input(),
+      forceAttach: map['forceAttach'] == null ? null : (map['forceAttach']! as bool).input(),
+      guestOsFeatures: map['guestOsFeatures'] == null ? null : ((map['guestOsFeatures']! as List).cast<String>()).input(),
+      initializeParams: map['initializeParams'] == null ? null : (InstanceFromMachineImageBootDiskInitializeParams.fromMap((map['initializeParams']! as Map).cast<String, dynamic>())).input(),
+      interface: map['interface'] == null ? null : (map['interface']! as String).input(),
+      kmsKeySelfLink: map['kmsKeySelfLink'] == null ? null : (map['kmsKeySelfLink']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

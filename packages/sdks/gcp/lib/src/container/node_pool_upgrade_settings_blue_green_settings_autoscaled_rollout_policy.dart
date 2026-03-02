@@ -20,7 +20,7 @@ class NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy {
 
   factory NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy.fromMap(Map<String, dynamic> map) {
     return NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy(
-      waitForDrainDuration: map['waitForDrainDuration'] == null ? null : (map['waitForDrainDuration'] as String).input(),
+      waitForDrainDuration: map['waitForDrainDuration'] == null ? null : (map['waitForDrainDuration']! as String).input(),
     );
   }
 }

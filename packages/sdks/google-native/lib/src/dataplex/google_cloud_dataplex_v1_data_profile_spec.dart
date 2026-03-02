@@ -43,11 +43,11 @@ class GoogleCloudDataplexV1DataProfileSpec {
 
   factory GoogleCloudDataplexV1DataProfileSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataProfileSpec(
-      excludeFields: map['excludeFields'] == null ? null : (GoogleCloudDataplexV1DataProfileSpecSelectedFields.fromMap((map['excludeFields'] as Map).cast<String, dynamic>())).input(),
-      includeFields: map['includeFields'] == null ? null : (GoogleCloudDataplexV1DataProfileSpecSelectedFields.fromMap((map['includeFields'] as Map).cast<String, dynamic>())).input(),
-      postScanActions: map['postScanActions'] == null ? null : (GoogleCloudDataplexV1DataProfileSpecPostScanActions.fromMap((map['postScanActions'] as Map).cast<String, dynamic>())).input(),
-      rowFilter: map['rowFilter'] == null ? null : (map['rowFilter'] as String).input(),
-      samplingPercent: map['samplingPercent'] == null ? null : (map['samplingPercent'] as double).input(),
+      excludeFields: map['excludeFields'] == null ? null : (GoogleCloudDataplexV1DataProfileSpecSelectedFields.fromMap((map['excludeFields']! as Map).cast<String, dynamic>())).input(),
+      includeFields: map['includeFields'] == null ? null : (GoogleCloudDataplexV1DataProfileSpecSelectedFields.fromMap((map['includeFields']! as Map).cast<String, dynamic>())).input(),
+      postScanActions: map['postScanActions'] == null ? null : (GoogleCloudDataplexV1DataProfileSpecPostScanActions.fromMap((map['postScanActions']! as Map).cast<String, dynamic>())).input(),
+      rowFilter: map['rowFilter'] == null ? null : (map['rowFilter']! as String).input(),
+      samplingPercent: map['samplingPercent'] == null ? null : (map['samplingPercent']! as double).input(),
     );
   }
 }

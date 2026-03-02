@@ -68,16 +68,16 @@ class AzurePostgreSqlSinkResponse {
 
   factory AzurePostgreSqlSinkResponse.fromMap(Map<String, dynamic> map) {
     return AzurePostgreSqlSinkResponse(
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      preCopyScript: map['preCopyScript'] == null ? null : (map['preCopyScript']).input(),
-      sinkRetryCount: map['sinkRetryCount'] == null ? null : (map['sinkRetryCount']).input(),
-      sinkRetryWait: map['sinkRetryWait'] == null ? null : (map['sinkRetryWait']).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      preCopyScript: map['preCopyScript'] == null ? null : (map['preCopyScript']!).input(),
+      sinkRetryCount: map['sinkRetryCount'] == null ? null : (map['sinkRetryCount']!).input(),
+      sinkRetryWait: map['sinkRetryWait'] == null ? null : (map['sinkRetryWait']!).input(),
       type: (map['type'] as String).input(),
-      upsertSettings: map['upsertSettings'] == null ? null : (AzurePostgreSqlSinkResponseUpsertSettings.fromMap((map['upsertSettings'] as Map).cast<String, dynamic>())).input(),
-      writeBatchSize: map['writeBatchSize'] == null ? null : (map['writeBatchSize']).input(),
-      writeBatchTimeout: map['writeBatchTimeout'] == null ? null : (map['writeBatchTimeout']).input(),
-      writeMethod: map['writeMethod'] == null ? null : (map['writeMethod'] as String).input(),
+      upsertSettings: map['upsertSettings'] == null ? null : (AzurePostgreSqlSinkResponseUpsertSettings.fromMap((map['upsertSettings']! as Map).cast<String, dynamic>())).input(),
+      writeBatchSize: map['writeBatchSize'] == null ? null : (map['writeBatchSize']!).input(),
+      writeBatchTimeout: map['writeBatchTimeout'] == null ? null : (map['writeBatchTimeout']!).input(),
+      writeMethod: map['writeMethod'] == null ? null : (map['writeMethod']! as String).input(),
     );
   }
 }

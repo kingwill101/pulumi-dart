@@ -61,15 +61,15 @@ class UserFacingErrorResponse {
 
   factory UserFacingErrorResponse.fromMap(Map<String, dynamic> map) {
     return UserFacingErrorResponse(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      details: map['details'] == null ? null : (pulumi.Input.decodeList<UserFacingErrorResponse>(map['details'], (value) => UserFacingErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      innerError: map['innerError'] == null ? null : (InnerErrorResponse.fromMap((map['innerError'] as Map).cast<String, dynamic>())).input(),
-      isRetryable: map['isRetryable'] == null ? null : (map['isRetryable'] as bool).input(),
-      isUserError: map['isUserError'] == null ? null : (map['isUserError'] as bool).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      recommendedAction: map['recommendedAction'] == null ? null : ((map['recommendedAction'] as List).cast<String>()).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      details: map['details'] == null ? null : (pulumi.Input.decodeList<UserFacingErrorResponse>(map['details']!, (value) => UserFacingErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      innerError: map['innerError'] == null ? null : (InnerErrorResponse.fromMap((map['innerError']! as Map).cast<String, dynamic>())).input(),
+      isRetryable: map['isRetryable'] == null ? null : (map['isRetryable']! as bool).input(),
+      isUserError: map['isUserError'] == null ? null : (map['isUserError']! as bool).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      recommendedAction: map['recommendedAction'] == null ? null : ((map['recommendedAction']! as List).cast<String>()).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
     );
   }
 }

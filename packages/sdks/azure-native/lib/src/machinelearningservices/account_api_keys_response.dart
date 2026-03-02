@@ -23,8 +23,8 @@ class AccountApiKeysResponse {
 
   factory AccountApiKeysResponse.fromMap(Map<String, dynamic> map) {
     return AccountApiKeysResponse(
-      key1: map['key1'] == null ? null : (map['key1'] as String).input(),
-      key2: map['key2'] == null ? null : (map['key2'] as String).input(),
+      key1: map['key1'] == null ? null : (map['key1']! as String).input(),
+      key2: map['key2'] == null ? null : (map['key2']! as String).input(),
     );
   }
 }

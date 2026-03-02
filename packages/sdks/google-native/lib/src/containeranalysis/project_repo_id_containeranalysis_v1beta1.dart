@@ -26,8 +26,8 @@ class ProjectRepoIdContaineranalysisV1beta1 {
 
   factory ProjectRepoIdContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return ProjectRepoIdContaineranalysisV1beta1(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      repoName: map['repoName'] == null ? null : (map['repoName'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      repoName: map['repoName'] == null ? null : (map['repoName']! as String).input(),
     );
   }
 }

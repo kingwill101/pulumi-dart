@@ -20,7 +20,7 @@ class DataCellsFilterTableDataColumnWildcard {
 
   factory DataCellsFilterTableDataColumnWildcard.fromMap(Map<String, dynamic> map) {
     return DataCellsFilterTableDataColumnWildcard(
-      excludedColumnNames: map['excludedColumnNames'] == null ? null : ((map['excludedColumnNames'] as List).cast<String>()).input(),
+      excludedColumnNames: map['excludedColumnNames'] == null ? null : (((map['excludedColumnNames'] as List).cast<String>()).input()).input(),
     );
   }
 }

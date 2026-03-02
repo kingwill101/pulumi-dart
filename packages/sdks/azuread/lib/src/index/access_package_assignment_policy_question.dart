@@ -37,9 +37,9 @@ class AccessPackageAssignmentPolicyQuestion {
 
   factory AccessPackageAssignmentPolicyQuestion.fromMap(Map<String, dynamic> map) {
     return AccessPackageAssignmentPolicyQuestion(
-      choices: map['choices'] == null ? null : (pulumi.Input.decodeList<AccessPackageAssignmentPolicyQuestionChoice>(map['choices'], (value) => AccessPackageAssignmentPolicyQuestionChoice.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      required: map['required'] == null ? null : (map['required'] as bool).input(),
-      sequence: map['sequence'] == null ? null : (map['sequence'] as int).input(),
+      choices: map['choices'] == null ? null : (pulumi.Input.decodeList<AccessPackageAssignmentPolicyQuestionChoice>(map['choices']!, (value) => AccessPackageAssignmentPolicyQuestionChoice.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      required: map['required'] == null ? null : (map['required']! as bool).input(),
+      sequence: map['sequence'] == null ? null : (map['sequence']! as int).input(),
       text: (AccessPackageAssignmentPolicyQuestionText.fromMap((map['text'] as Map).cast<String, dynamic>())).input(),
     );
   }

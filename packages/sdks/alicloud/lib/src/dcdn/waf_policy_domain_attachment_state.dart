@@ -26,8 +26,8 @@ class WafPolicyDomainAttachmentState {
 
   factory WafPolicyDomainAttachmentState.fromMap(Map<String, dynamic> map) {
     return WafPolicyDomainAttachmentState(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
     );
   }
 }

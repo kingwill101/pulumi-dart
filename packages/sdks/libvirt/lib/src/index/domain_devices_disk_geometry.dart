@@ -38,7 +38,7 @@ class DomainDevicesDiskGeometry {
       cylinders: (map['cylinders'] as double).input(),
       headers: (map['headers'] as double).input(),
       sectors: (map['sectors'] as double).input(),
-      trans: map['trans'] == null ? null : (map['trans'] as String).input(),
+      trans: map['trans'] == null ? null : (map['trans']! as String).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class CatalogTableStorageDescriptorSchemaReferenceSchemaId {
 
   factory CatalogTableStorageDescriptorSchemaReferenceSchemaId.fromMap(Map<String, dynamic> map) {
     return CatalogTableStorageDescriptorSchemaReferenceSchemaId(
-      registryName: map['registryName'] == null ? null : (map['registryName'] as String).input(),
-      schemaArn: map['schemaArn'] == null ? null : (map['schemaArn'] as String).input(),
-      schemaName: map['schemaName'] == null ? null : (map['schemaName'] as String).input(),
+      registryName: map['registryName'] == null ? null : ((map['registryName'] as String).input()).input(),
+      schemaArn: map['schemaArn'] == null ? null : ((map['schemaArn'] as String).input()).input(),
+      schemaName: map['schemaName'] == null ? null : ((map['schemaName'] as String).input()).input(),
     );
   }
 }

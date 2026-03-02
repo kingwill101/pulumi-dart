@@ -44,7 +44,7 @@ class GetFeaturesetVersionFeatureArgs {
 
   factory GetFeaturesetVersionFeatureArgs.fromMap(Map<String, dynamic> map) {
     return GetFeaturesetVersionFeatureArgs(
-      featureName: map['featureName'] == null ? null : (map['featureName'] as String).input(),
+      featureName: map['featureName'] == null ? null : (map['featureName']! as String).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       version: (map['version'] as String).input(),

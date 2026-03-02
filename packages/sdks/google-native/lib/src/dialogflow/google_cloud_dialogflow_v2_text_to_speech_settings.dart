@@ -37,10 +37,10 @@ class GoogleCloudDialogflowV2TextToSpeechSettings {
 
   factory GoogleCloudDialogflowV2TextToSpeechSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2TextToSpeechSettings(
-      enableTextToSpeech: map['enableTextToSpeech'] == null ? null : (map['enableTextToSpeech'] as bool).input(),
+      enableTextToSpeech: map['enableTextToSpeech'] == null ? null : (map['enableTextToSpeech']! as bool).input(),
       outputAudioEncoding: (GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding.fromValue(map['outputAudioEncoding'] as String)).input(),
-      sampleRateHertz: map['sampleRateHertz'] == null ? null : (map['sampleRateHertz'] as int).input(),
-      synthesizeSpeechConfigs: map['synthesizeSpeechConfigs'] == null ? null : ((map['synthesizeSpeechConfigs'] as Map).cast<String, String>()).input(),
+      sampleRateHertz: map['sampleRateHertz'] == null ? null : (map['sampleRateHertz']! as int).input(),
+      synthesizeSpeechConfigs: map['synthesizeSpeechConfigs'] == null ? null : ((map['synthesizeSpeechConfigs']! as Map).cast<String, String>()).input(),
     );
   }
 }

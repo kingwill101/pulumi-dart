@@ -32,7 +32,7 @@ class X509Extension {
 
   factory X509Extension.fromMap(Map<String, dynamic> map) {
     return X509Extension(
-      critical: map['critical'] == null ? null : (map['critical'] as bool).input(),
+      critical: map['critical'] == null ? null : (map['critical']! as bool).input(),
       objectId: (ObjectId.fromMap((map['objectId'] as Map).cast<String, dynamic>())).input(),
       value: (map['value'] as String).input(),
     );

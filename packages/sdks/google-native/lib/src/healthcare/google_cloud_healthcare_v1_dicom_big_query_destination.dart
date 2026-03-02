@@ -32,9 +32,9 @@ class GoogleCloudHealthcareV1DicomBigQueryDestination {
 
   factory GoogleCloudHealthcareV1DicomBigQueryDestination.fromMap(Map<String, dynamic> map) {
     return GoogleCloudHealthcareV1DicomBigQueryDestination(
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      tableUri: map['tableUri'] == null ? null : (map['tableUri'] as String).input(),
-      writeDisposition: map['writeDisposition'] == null ? null : (GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition.fromValue(map['writeDisposition'] as String)).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
+      tableUri: map['tableUri'] == null ? null : (map['tableUri']! as String).input(),
+      writeDisposition: map['writeDisposition'] == null ? null : (GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition.fromValue(map['writeDisposition']! as String)).input(),
     );
   }
 }

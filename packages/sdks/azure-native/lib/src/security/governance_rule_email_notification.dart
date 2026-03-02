@@ -26,8 +26,8 @@ class GovernanceRuleEmailNotification {
 
   factory GovernanceRuleEmailNotification.fromMap(Map<String, dynamic> map) {
     return GovernanceRuleEmailNotification(
-      disableManagerEmailNotification: map['disableManagerEmailNotification'] == null ? null : (map['disableManagerEmailNotification'] as bool).input(),
-      disableOwnerEmailNotification: map['disableOwnerEmailNotification'] == null ? null : (map['disableOwnerEmailNotification'] as bool).input(),
+      disableManagerEmailNotification: map['disableManagerEmailNotification'] == null ? null : (map['disableManagerEmailNotification']! as bool).input(),
+      disableOwnerEmailNotification: map['disableOwnerEmailNotification'] == null ? null : (map['disableOwnerEmailNotification']! as bool).input(),
     );
   }
 }

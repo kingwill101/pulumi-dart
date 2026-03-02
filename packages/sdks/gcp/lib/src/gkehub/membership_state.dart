@@ -73,15 +73,15 @@ class MembershipState {
 
   factory MembershipState.fromMap(Map<String, dynamic> map) {
     return MembershipState(
-      authority: map['authority'] == null ? null : (MembershipAuthority.fromMap((map['authority'] as Map).cast<String, dynamic>())).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      endpoint: map['endpoint'] == null ? null : (MembershipEndpoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      membershipId: map['membershipId'] == null ? null : (map['membershipId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      authority: map['authority'] == null ? null : (MembershipAuthority.fromMap((map['authority']! as Map).cast<String, dynamic>())).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      endpoint: map['endpoint'] == null ? null : (MembershipEndpoint.fromMap((map['endpoint']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      membershipId: map['membershipId'] == null ? null : (map['membershipId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
     );
   }
 }

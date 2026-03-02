@@ -22,7 +22,7 @@ class PlacementV1ClusterResourcePlacementSpec {
 
   factory PlacementV1ClusterResourcePlacementSpec.fromMap(Map<String, dynamic> map) {
     return PlacementV1ClusterResourcePlacementSpec(
-      policy: map['policy'] == null ? null : (PlacementV1PlacementPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
+      policy: map['policy'] == null ? null : (PlacementV1PlacementPolicy.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

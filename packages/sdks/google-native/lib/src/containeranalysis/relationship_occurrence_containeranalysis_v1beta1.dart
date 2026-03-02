@@ -31,9 +31,9 @@ class RelationshipOccurrenceContaineranalysisV1beta1 {
 
   factory RelationshipOccurrenceContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return RelationshipOccurrenceContaineranalysisV1beta1(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
     );
   }
 }

@@ -38,10 +38,10 @@ class DataConnectorThreatIntelligenceState {
 
   factory DataConnectorThreatIntelligenceState.fromMap(Map<String, dynamic> map) {
     return DataConnectorThreatIntelligenceState(
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId'] as String).input(),
-      lookbackDate: map['lookbackDate'] == null ? null : (map['lookbackDate'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId']! as String).input(),
+      lookbackDate: map['lookbackDate'] == null ? null : (map['lookbackDate']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

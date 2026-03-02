@@ -36,7 +36,7 @@ class GetDeviceArgs {
     return GetDeviceArgs(
       deviceId: (map['deviceId'] as String).input(),
       globalNetworkId: (map['globalNetworkId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

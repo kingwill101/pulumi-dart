@@ -30,8 +30,8 @@ class SitesBySubscriptionArgs {
 
   factory SitesBySubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SitesBySubscriptionArgs(
-      properties: map['properties'] == null ? null : (SiteProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      siteName: map['siteName'] == null ? null : (map['siteName'] as String).input(),
+      properties: map['properties'] == null ? null : (SiteProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      siteName: map['siteName'] == null ? null : (map['siteName']! as String).input(),
     );
   }
 }

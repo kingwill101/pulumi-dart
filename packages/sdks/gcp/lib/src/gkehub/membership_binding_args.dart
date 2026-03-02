@@ -54,11 +54,11 @@ class MembershipBindingArgs {
 
   factory MembershipBindingArgs.fromMap(Map<String, dynamic> map) {
     return MembershipBindingArgs(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
       membershipBindingId: (map['membershipBindingId'] as String).input(),
       membershipId: (map['membershipId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       scope: (map['scope'] as String).input(),
     );
   }

@@ -32,7 +32,7 @@ class CentralizationRuleForOrganizationRuleDestination {
   factory CentralizationRuleForOrganizationRuleDestination.fromMap(Map<String, dynamic> map) {
     return CentralizationRuleForOrganizationRuleDestination(
       account: (map['account'] as String).input(),
-      destinationLogsConfiguration: map['destinationLogsConfiguration'] == null ? null : (CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfiguration.fromMap((map['destinationLogsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      destinationLogsConfiguration: map['destinationLogsConfiguration'] == null ? null : ((CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfiguration.fromMap((map['destinationLogsConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       region: (map['region'] as String).input(),
     );
   }

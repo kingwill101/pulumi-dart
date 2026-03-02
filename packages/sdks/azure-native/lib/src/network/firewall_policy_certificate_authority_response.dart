@@ -26,8 +26,8 @@ class FirewallPolicyCertificateAuthorityResponse {
 
   factory FirewallPolicyCertificateAuthorityResponse.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyCertificateAuthorityResponse(
-      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

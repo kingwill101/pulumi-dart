@@ -28,8 +28,8 @@ class ParameterValidationDataprocV1beta2 {
 
   factory ParameterValidationDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return ParameterValidationDataprocV1beta2(
-      regex: map['regex'] == null ? null : (RegexValidationDataprocV1beta2.fromMap((map['regex'] as Map).cast<String, dynamic>())).input(),
-      values: map['values'] == null ? null : (ValueValidationDataprocV1beta2.fromMap((map['values'] as Map).cast<String, dynamic>())).input(),
+      regex: map['regex'] == null ? null : (RegexValidationDataprocV1beta2.fromMap((map['regex']! as Map).cast<String, dynamic>())).input(),
+      values: map['values'] == null ? null : (ValueValidationDataprocV1beta2.fromMap((map['values']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class NetworkRuleSetResponse {
 
   factory NetworkRuleSetResponse.fromMap(Map<String, dynamic> map) {
     return NetworkRuleSetResponse(
-      virtualNetworkRules: map['virtualNetworkRules'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkRuleResponse>(map['virtualNetworkRules'], (value) => VirtualNetworkRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualNetworkRules: map['virtualNetworkRules'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkRuleResponse>(map['virtualNetworkRules']!, (value) => VirtualNetworkRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

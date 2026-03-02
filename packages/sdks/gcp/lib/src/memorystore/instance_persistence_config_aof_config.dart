@@ -24,7 +24,7 @@ class InstancePersistenceConfigAofConfig {
 
   factory InstancePersistenceConfigAofConfig.fromMap(Map<String, dynamic> map) {
     return InstancePersistenceConfigAofConfig(
-      appendFsync: map['appendFsync'] == null ? null : (map['appendFsync'] as String).input(),
+      appendFsync: map['appendFsync'] == null ? null : (map['appendFsync']! as String).input(),
     );
   }
 }

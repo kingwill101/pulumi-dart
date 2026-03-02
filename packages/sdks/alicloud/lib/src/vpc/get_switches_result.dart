@@ -98,23 +98,23 @@ class GetSwitchesResult {
 
   factory GetSwitchesResult.fromMap(Map<String, dynamic> map) {
     return GetSwitchesResult(
-      cidrBlock: map['cidrBlock'] == null ? null : map['cidrBlock'] as String,
-      dryRun: map['dryRun'] == null ? null : map['dryRun'] as bool,
+      cidrBlock: map['cidrBlock'] == null ? null : map['cidrBlock']! as String,
+      dryRun: map['dryRun'] == null ? null : map['dryRun']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      isDefault: map['isDefault'] == null ? null : map['isDefault'] as bool,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      isDefault: map['isDefault'] == null ? null : map['isDefault']! as bool,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      routeTableId: map['routeTableId'] == null ? null : map['routeTableId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
-      vswitchName: map['vswitchName'] == null ? null : map['vswitchName'] as String,
-      vswitchOwnerId: map['vswitchOwnerId'] == null ? null : map['vswitchOwnerId'] as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      routeTableId: map['routeTableId'] == null ? null : map['routeTableId']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      vpcId: map['vpcId'] == null ? null : map['vpcId']! as String,
+      vswitchName: map['vswitchName'] == null ? null : map['vswitchName']! as String,
+      vswitchOwnerId: map['vswitchOwnerId'] == null ? null : map['vswitchOwnerId']! as int,
       vswitches: pulumi.Input.decodeList<GetSwitchesVswitch>(map['vswitches'], (value) => GetSwitchesVswitch.fromMap((value as Map).cast<String, dynamic>())),
-      zoneId: map['zoneId'] == null ? null : map['zoneId'] as String,
+      zoneId: map['zoneId'] == null ? null : map['zoneId']! as String,
     );
   }
 }

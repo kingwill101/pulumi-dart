@@ -33,9 +33,9 @@ class CustomContainerUserSourceInfo {
 
   factory CustomContainerUserSourceInfo.fromMap(Map<String, dynamic> map) {
     return CustomContainerUserSourceInfo(
-      customContainer: map['customContainer'] == null ? null : (CustomContainer.fromMap((map['customContainer'] as Map).cast<String, dynamic>())).input(),
+      customContainer: map['customContainer'] == null ? null : (CustomContainer.fromMap((map['customContainer']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

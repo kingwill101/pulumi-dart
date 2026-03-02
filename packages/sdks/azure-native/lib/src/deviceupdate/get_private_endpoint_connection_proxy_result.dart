@@ -67,8 +67,8 @@ class GetPrivateEndpointConnectionProxyResult {
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      remotePrivateEndpoint: map['remotePrivateEndpoint'] == null ? null : RemotePrivateEndpointResponse.fromMap((map['remotePrivateEndpoint'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : map['status'] as String,
+      remotePrivateEndpoint: map['remotePrivateEndpoint'] == null ? null : RemotePrivateEndpointResponse.fromMap((map['remotePrivateEndpoint']! as Map).cast<String, dynamic>()),
+      status: map['status'] == null ? null : map['status']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

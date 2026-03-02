@@ -21,7 +21,7 @@ class KeyVaultKeyReferenceResponseSourceVault {
 
   factory KeyVaultKeyReferenceResponseSourceVault.fromMap(Map<String, dynamic> map) {
     return KeyVaultKeyReferenceResponseSourceVault(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

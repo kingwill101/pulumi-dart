@@ -34,9 +34,9 @@ class FlavorAccessState {
 
   factory FlavorAccessState.fromMap(Map<String, dynamic> map) {
     return FlavorAccessState(
-      flavorId: map['flavorId'] == null ? null : (map['flavorId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      flavorId: map['flavorId'] == null ? null : (map['flavorId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

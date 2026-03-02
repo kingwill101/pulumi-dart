@@ -34,9 +34,9 @@ class FirewallAttachmentState {
 
   factory FirewallAttachmentState.fromMap(Map<String, dynamic> map) {
     return FirewallAttachmentState(
-      firewallId: map['firewallId'] == null ? null : (map['firewallId'] as int).input(),
-      labelSelectors: map['labelSelectors'] == null ? null : ((map['labelSelectors'] as List).cast<String>()).input(),
-      serverIds: map['serverIds'] == null ? null : ((map['serverIds'] as List).cast<int>()).input(),
+      firewallId: map['firewallId'] == null ? null : (map['firewallId']! as int).input(),
+      labelSelectors: map['labelSelectors'] == null ? null : ((map['labelSelectors']! as List).cast<String>()).input(),
+      serverIds: map['serverIds'] == null ? null : ((map['serverIds']! as List).cast<int>()).input(),
     );
   }
 }

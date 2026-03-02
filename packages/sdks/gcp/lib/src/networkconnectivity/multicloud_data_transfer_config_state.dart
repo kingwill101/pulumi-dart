@@ -101,20 +101,20 @@ class MulticloudDataTransferConfigState {
 
   factory MulticloudDataTransferConfigState.fromMap(Map<String, dynamic> map) {
     return MulticloudDataTransferConfigState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationsActiveCount: map['destinationsActiveCount'] == null ? null : (map['destinationsActiveCount'] as int).input(),
-      destinationsCount: map['destinationsCount'] == null ? null : (map['destinationsCount'] as int).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      services: map['services'] == null ? null : (pulumi.Input.decodeList<MulticloudDataTransferConfigService>(map['services'], (value) => MulticloudDataTransferConfigService.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationsActiveCount: map['destinationsActiveCount'] == null ? null : (map['destinationsActiveCount']! as int).input(),
+      destinationsCount: map['destinationsCount'] == null ? null : (map['destinationsCount']! as int).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      services: map['services'] == null ? null : (pulumi.Input.decodeList<MulticloudDataTransferConfigService>(map['services']!, (value) => MulticloudDataTransferConfigService.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

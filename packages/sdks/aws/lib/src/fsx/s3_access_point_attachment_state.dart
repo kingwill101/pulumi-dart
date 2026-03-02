@@ -60,14 +60,14 @@ class S3AccessPointAttachmentState {
 
   factory S3AccessPointAttachmentState.fromMap(Map<String, dynamic> map) {
     return S3AccessPointAttachmentState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      openzfsConfiguration: map['openzfsConfiguration'] == null ? null : (S3AccessPointAttachmentOpenzfsConfiguration.fromMap((map['openzfsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      s3AccessPoint: map['s3AccessPoint'] == null ? null : (S3AccessPointAttachmentS3AccessPoint.fromMap((map['s3AccessPoint'] as Map).cast<String, dynamic>())).input(),
-      s3AccessPointAlias: map['s3AccessPointAlias'] == null ? null : (map['s3AccessPointAlias'] as String).input(),
-      s3AccessPointArn: map['s3AccessPointArn'] == null ? null : (map['s3AccessPointArn'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (S3AccessPointAttachmentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      openzfsConfiguration: map['openzfsConfiguration'] == null ? null : ((S3AccessPointAttachmentOpenzfsConfiguration.fromMap((map['openzfsConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      s3AccessPoint: map['s3AccessPoint'] == null ? null : ((S3AccessPointAttachmentS3AccessPoint.fromMap((map['s3AccessPoint']! as Map).cast<String, dynamic>())).input()).input(),
+      s3AccessPointAlias: map['s3AccessPointAlias'] == null ? null : ((map['s3AccessPointAlias'] as String).input()).input(),
+      s3AccessPointArn: map['s3AccessPointArn'] == null ? null : ((map['s3AccessPointArn'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((S3AccessPointAttachmentTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

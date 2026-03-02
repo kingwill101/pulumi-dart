@@ -49,12 +49,12 @@ class SubAccountState {
 
   factory SubAccountState.fromMap(Map<String, dynamic> map) {
     return SubAccountState(
-      billingAccountId: map['billingAccountId'] == null ? null : (map['billingAccountId'] as String).input(),
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      masterBillingAccount: map['masterBillingAccount'] == null ? null : (map['masterBillingAccount'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      open: map['open'] == null ? null : (map['open'] as bool).input(),
+      billingAccountId: map['billingAccountId'] == null ? null : (map['billingAccountId']! as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      masterBillingAccount: map['masterBillingAccount'] == null ? null : (map['masterBillingAccount']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      open: map['open'] == null ? null : (map['open']! as bool).input(),
     );
   }
 }

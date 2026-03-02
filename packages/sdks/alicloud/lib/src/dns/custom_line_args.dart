@@ -43,7 +43,7 @@ class CustomLineArgs {
       customLineName: (map['customLineName'] as String).input(),
       domainName: (map['domainName'] as String).input(),
       ipSegmentLists: (pulumi.Input.decodeList<CustomLineIpSegmentList>(map['ipSegmentLists'], (value) => CustomLineIpSegmentList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
     );
   }
 }

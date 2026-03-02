@@ -100,21 +100,21 @@ class StreamProcessorState {
 
   factory StreamProcessorState.fromMap(Map<String, dynamic> map) {
     return StreamProcessorState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      dataSharingPreference: map['dataSharingPreference'] == null ? null : (StreamProcessorDataSharingPreference.fromMap((map['dataSharingPreference'] as Map).cast<String, dynamic>())).input(),
-      input: map['input'] == null ? null : (StreamProcessorInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationChannel: map['notificationChannel'] == null ? null : (StreamProcessorNotificationChannel.fromMap((map['notificationChannel'] as Map).cast<String, dynamic>())).input(),
-      output: map['output'] == null ? null : (StreamProcessorOutput.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      regionsOfInterests: map['regionsOfInterests'] == null ? null : (pulumi.Input.decodeList<StreamProcessorRegionsOfInterest>(map['regionsOfInterests'], (value) => StreamProcessorRegionsOfInterest.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      settings: map['settings'] == null ? null : (StreamProcessorSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
-      streamProcessorArn: map['streamProcessorArn'] == null ? null : (map['streamProcessorArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (StreamProcessorTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      dataSharingPreference: map['dataSharingPreference'] == null ? null : ((StreamProcessorDataSharingPreference.fromMap((map['dataSharingPreference']! as Map).cast<String, dynamic>())).input()).input(),
+      input: map['input'] == null ? null : ((StreamProcessorInput.fromMap((map['input']! as Map).cast<String, dynamic>())).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      notificationChannel: map['notificationChannel'] == null ? null : ((StreamProcessorNotificationChannel.fromMap((map['notificationChannel']! as Map).cast<String, dynamic>())).input()).input(),
+      output: map['output'] == null ? null : ((StreamProcessorOutput.fromMap((map['output']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      regionsOfInterests: map['regionsOfInterests'] == null ? null : ((pulumi.Input.decodeList<StreamProcessorRegionsOfInterest>(map['regionsOfInterests']!, (value) => StreamProcessorRegionsOfInterest.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      settings: map['settings'] == null ? null : ((StreamProcessorSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input()).input(),
+      streamProcessorArn: map['streamProcessorArn'] == null ? null : ((map['streamProcessorArn'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((StreamProcessorTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

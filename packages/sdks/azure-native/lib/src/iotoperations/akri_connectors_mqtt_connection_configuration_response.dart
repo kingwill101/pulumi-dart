@@ -53,13 +53,13 @@ class AkriConnectorsMqttConnectionConfigurationResponse {
 
   factory AkriConnectorsMqttConnectionConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AkriConnectorsMqttConnectionConfigurationResponse(
-      authentication: map['authentication'] == null ? null : (AkriConnectorsServiceAccountAuthenticationResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      keepAliveSeconds: map['keepAliveSeconds'] == null ? null : (map['keepAliveSeconds'] as int).input(),
-      maxInflightMessages: map['maxInflightMessages'] == null ? null : (map['maxInflightMessages'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      sessionExpirySeconds: map['sessionExpirySeconds'] == null ? null : (map['sessionExpirySeconds'] as int).input(),
-      tls: map['tls'] == null ? null : (TlsPropertiesResponse.fromMap((map['tls'] as Map).cast<String, dynamic>())).input(),
+      authentication: map['authentication'] == null ? null : (AkriConnectorsServiceAccountAuthenticationResponse.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      keepAliveSeconds: map['keepAliveSeconds'] == null ? null : (map['keepAliveSeconds']! as int).input(),
+      maxInflightMessages: map['maxInflightMessages'] == null ? null : (map['maxInflightMessages']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      sessionExpirySeconds: map['sessionExpirySeconds'] == null ? null : (map['sessionExpirySeconds']! as int).input(),
+      tls: map['tls'] == null ? null : (TlsPropertiesResponse.fromMap((map['tls']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

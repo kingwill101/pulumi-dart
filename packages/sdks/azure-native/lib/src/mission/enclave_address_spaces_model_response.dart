@@ -26,8 +26,8 @@ class EnclaveAddressSpacesModelResponse {
 
   factory EnclaveAddressSpacesModelResponse.fromMap(Map<String, dynamic> map) {
     return EnclaveAddressSpacesModelResponse(
-      enclaveAddressSpace: map['enclaveAddressSpace'] == null ? null : (map['enclaveAddressSpace'] as String).input(),
-      managedAddressSpace: map['managedAddressSpace'] == null ? null : (map['managedAddressSpace'] as String).input(),
+      enclaveAddressSpace: map['enclaveAddressSpace'] == null ? null : (map['enclaveAddressSpace']! as String).input(),
+      managedAddressSpace: map['managedAddressSpace'] == null ? null : (map['managedAddressSpace']! as String).input(),
     );
   }
 }

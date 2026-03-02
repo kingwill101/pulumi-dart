@@ -25,7 +25,7 @@ class RuleGroupEncryptionConfiguration {
 
   factory RuleGroupEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return RuleGroupEncryptionConfiguration(
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
+      keyId: map['keyId'] == null ? null : ((map['keyId'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

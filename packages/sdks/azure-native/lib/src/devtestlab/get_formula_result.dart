@@ -90,17 +90,17 @@ class GetFormulaResult {
       author: map['author'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
       creationDate: map['creationDate'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      formulaContent: map['formulaContent'] == null ? null : LabVirtualMachineCreationParameterResponse.fromMap((map['formulaContent'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description']! as String,
+      formulaContent: map['formulaContent'] == null ? null : LabVirtualMachineCreationParameterResponse.fromMap((map['formulaContent']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      osType: map['osType'] == null ? null : map['osType'] as String,
+      osType: map['osType'] == null ? null : map['osType']! as String,
       provisioningState: map['provisioningState'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
       uniqueIdentifier: map['uniqueIdentifier'] as String,
-      vm: map['vm'] == null ? null : FormulaPropertiesFromVmResponse.fromMap((map['vm'] as Map).cast<String, dynamic>()),
+      vm: map['vm'] == null ? null : FormulaPropertiesFromVmResponse.fromMap((map['vm']! as Map).cast<String, dynamic>()),
     );
   }
 }

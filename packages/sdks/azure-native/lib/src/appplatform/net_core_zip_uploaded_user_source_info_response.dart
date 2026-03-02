@@ -42,11 +42,11 @@ class NetCoreZipUploadedUserSourceInfoResponse {
 
   factory NetCoreZipUploadedUserSourceInfoResponse.fromMap(Map<String, dynamic> map) {
     return NetCoreZipUploadedUserSourceInfoResponse(
-      netCoreMainEntryPath: map['netCoreMainEntryPath'] == null ? null : (map['netCoreMainEntryPath'] as String).input(),
-      relativePath: map['relativePath'] == null ? null : (map['relativePath'] as String).input(),
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
+      netCoreMainEntryPath: map['netCoreMainEntryPath'] == null ? null : (map['netCoreMainEntryPath']! as String).input(),
+      relativePath: map['relativePath'] == null ? null : (map['relativePath']! as String).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']! as String).input(),
       type: (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

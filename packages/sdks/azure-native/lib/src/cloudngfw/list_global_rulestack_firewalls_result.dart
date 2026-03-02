@@ -25,7 +25,7 @@ class ListGlobalRulestackFirewallsResult {
 
   factory ListGlobalRulestackFirewallsResult.fromMap(Map<String, dynamic> map) {
     return ListGlobalRulestackFirewallsResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
       value: (map['value'] as List).cast<String>(),
     );
   }

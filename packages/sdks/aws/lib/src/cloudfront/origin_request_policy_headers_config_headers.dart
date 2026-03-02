@@ -19,7 +19,7 @@ class OriginRequestPolicyHeadersConfigHeaders {
 
   factory OriginRequestPolicyHeadersConfigHeaders.fromMap(Map<String, dynamic> map) {
     return OriginRequestPolicyHeadersConfigHeaders(
-      items: map['items'] == null ? null : ((map['items'] as List).cast<String>()).input(),
+      items: map['items'] == null ? null : (((map['items'] as List).cast<String>()).input()).input(),
     );
   }
 }

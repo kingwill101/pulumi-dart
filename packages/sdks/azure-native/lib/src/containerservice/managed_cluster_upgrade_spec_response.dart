@@ -26,7 +26,7 @@ class ManagedClusterUpgradeSpecResponse {
 
   factory ManagedClusterUpgradeSpecResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterUpgradeSpecResponse(
-      kubernetesVersion: map['kubernetesVersion'] == null ? null : (map['kubernetesVersion'] as String).input(),
+      kubernetesVersion: map['kubernetesVersion'] == null ? null : (map['kubernetesVersion']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -91,19 +91,19 @@ class GetVpcFirewallControlPoliciesArgs {
 
   factory GetVpcFirewallControlPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcFirewallControlPoliciesArgs(
-      aclAction: map['aclAction'] == null ? null : (map['aclAction'] as String).input(),
-      aclUuid: map['aclUuid'] == null ? null : (map['aclUuid'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      memberUid: map['memberUid'] == null ? null : (map['memberUid'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
-      proto: map['proto'] == null ? null : (map['proto'] as String).input(),
-      release: map['release'] == null ? null : (map['release'] as bool).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      aclAction: map['aclAction'] == null ? null : (map['aclAction']! as String).input(),
+      aclUuid: map['aclUuid'] == null ? null : (map['aclUuid']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      memberUid: map['memberUid'] == null ? null : (map['memberUid']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber']! as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
+      proto: map['proto'] == null ? null : (map['proto']! as String).input(),
+      release: map['release'] == null ? null : (map['release']! as bool).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
       vpcFirewallId: (map['vpcFirewallId'] as String).input(),
     );
   }

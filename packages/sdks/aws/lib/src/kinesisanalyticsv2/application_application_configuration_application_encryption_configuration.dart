@@ -25,7 +25,7 @@ class ApplicationApplicationConfigurationApplicationEncryptionConfiguration {
 
   factory ApplicationApplicationConfigurationApplicationEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationApplicationEncryptionConfiguration(
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
+      keyId: map['keyId'] == null ? null : ((map['keyId'] as String).input()).input(),
       keyType: (map['keyType'] as String).input(),
     );
   }

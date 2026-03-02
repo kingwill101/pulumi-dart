@@ -21,7 +21,7 @@ class GroupProperties {
 
   factory GroupProperties.fromMap(Map<String, dynamic> map) {
     return GroupProperties(
-      groupType: map['groupType'] == null ? null : (map['groupType'] as String).input(),
+      groupType: map['groupType'] == null ? null : (map['groupType']! as String).input(),
     );
   }
 }

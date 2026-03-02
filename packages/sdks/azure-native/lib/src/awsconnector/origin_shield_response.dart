@@ -26,8 +26,8 @@ class OriginShieldResponse {
 
   factory OriginShieldResponse.fromMap(Map<String, dynamic> map) {
     return OriginShieldResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      originShieldRegion: map['originShieldRegion'] == null ? null : (map['originShieldRegion'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      originShieldRegion: map['originShieldRegion'] == null ? null : (map['originShieldRegion']! as String).input(),
     );
   }
 }

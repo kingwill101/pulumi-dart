@@ -20,7 +20,7 @@ class ConnectorKafkaClusterEncryptionInTransit {
 
   factory ConnectorKafkaClusterEncryptionInTransit.fromMap(Map<String, dynamic> map) {
     return ConnectorKafkaClusterEncryptionInTransit(
-      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType'] as String).input(),
+      encryptionType: map['encryptionType'] == null ? null : ((map['encryptionType'] as String).input()).input(),
     );
   }
 }

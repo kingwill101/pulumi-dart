@@ -26,8 +26,8 @@ class SoftDeleteSettingsResponse {
 
   factory SoftDeleteSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SoftDeleteSettingsResponse(
-      retentionDurationInDays: map['retentionDurationInDays'] == null ? null : (map['retentionDurationInDays'] as double).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      retentionDurationInDays: map['retentionDurationInDays'] == null ? null : (map['retentionDurationInDays']! as double).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

@@ -27,9 +27,9 @@ class ContainerGroupContainerVolumeMount {
 
   factory ContainerGroupContainerVolumeMount.fromMap(Map<String, dynamic> map) {
     return ContainerGroupContainerVolumeMount(
-      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
     );
   }
 }

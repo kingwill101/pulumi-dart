@@ -29,9 +29,9 @@ class Envelope {
 
   factory Envelope.fromMap(Map<String, dynamic> map) {
     return Envelope(
-      payload: map['payload'] == null ? null : (map['payload'] as String).input(),
-      payloadType: map['payloadType'] == null ? null : (map['payloadType'] as String).input(),
-      signatures: map['signatures'] == null ? null : (pulumi.Input.decodeList<EnvelopeSignature>(map['signatures'], (value) => EnvelopeSignature.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      payload: map['payload'] == null ? null : (map['payload']! as String).input(),
+      payloadType: map['payloadType'] == null ? null : (map['payloadType']! as String).input(),
+      signatures: map['signatures'] == null ? null : (pulumi.Input.decodeList<EnvelopeSignature>(map['signatures']!, (value) => EnvelopeSignature.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

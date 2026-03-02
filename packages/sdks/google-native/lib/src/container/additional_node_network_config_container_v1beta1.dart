@@ -26,8 +26,8 @@ class AdditionalNodeNetworkConfigContainerV1beta1 {
 
   factory AdditionalNodeNetworkConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return AdditionalNodeNetworkConfigContainerV1beta1(
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
     );
   }
 }

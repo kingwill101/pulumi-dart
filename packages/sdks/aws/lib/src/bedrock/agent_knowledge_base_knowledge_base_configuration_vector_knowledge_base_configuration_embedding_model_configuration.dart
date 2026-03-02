@@ -21,7 +21,7 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurati
 
   factory AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfiguration(
-      bedrockEmbeddingModelConfiguration: map['bedrockEmbeddingModelConfiguration'] == null ? null : (AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfiguration.fromMap((map['bedrockEmbeddingModelConfiguration'] as Map).cast<String, dynamic>())).input(),
+      bedrockEmbeddingModelConfiguration: map['bedrockEmbeddingModelConfiguration'] == null ? null : ((AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfiguration.fromMap((map['bedrockEmbeddingModelConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

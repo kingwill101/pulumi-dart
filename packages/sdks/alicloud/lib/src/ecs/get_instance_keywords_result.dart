@@ -42,7 +42,7 @@ class GetInstanceKeywordsResult {
       ids: (map['ids'] as List).cast<String>(),
       key: map['key'] as String,
       keywords: (map['keywords'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

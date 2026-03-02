@@ -44,9 +44,9 @@ class AutonomousDatabasePropertiesScheduledOperationDetail {
 
   factory AutonomousDatabasePropertiesScheduledOperationDetail.fromMap(Map<String, dynamic> map) {
     return AutonomousDatabasePropertiesScheduledOperationDetail(
-      dayOfWeek: map['dayOfWeek'] == null ? null : (map['dayOfWeek'] as String).input(),
-      startTimes: map['startTimes'] == null ? null : (pulumi.Input.decodeList<AutonomousDatabasePropertiesScheduledOperationDetailStartTime>(map['startTimes'], (value) => AutonomousDatabasePropertiesScheduledOperationDetailStartTime.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      stopTimes: map['stopTimes'] == null ? null : (pulumi.Input.decodeList<AutonomousDatabasePropertiesScheduledOperationDetailStopTime>(map['stopTimes'], (value) => AutonomousDatabasePropertiesScheduledOperationDetailStopTime.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dayOfWeek: map['dayOfWeek'] == null ? null : (map['dayOfWeek']! as String).input(),
+      startTimes: map['startTimes'] == null ? null : (pulumi.Input.decodeList<AutonomousDatabasePropertiesScheduledOperationDetailStartTime>(map['startTimes']!, (value) => AutonomousDatabasePropertiesScheduledOperationDetailStartTime.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stopTimes: map['stopTimes'] == null ? null : (pulumi.Input.decodeList<AutonomousDatabasePropertiesScheduledOperationDetailStopTime>(map['stopTimes']!, (value) => AutonomousDatabasePropertiesScheduledOperationDetailStopTime.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

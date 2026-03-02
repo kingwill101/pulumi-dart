@@ -21,7 +21,7 @@ class DomainPerf {
 
   factory DomainPerf.fromMap(Map<String, dynamic> map) {
     return DomainPerf(
-      events: map['events'] == null ? null : (pulumi.Input.decodeList<DomainPerfEvent>(map['events'], (value) => DomainPerfEvent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      events: map['events'] == null ? null : (pulumi.Input.decodeList<DomainPerfEvent>(map['events']!, (value) => DomainPerfEvent.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

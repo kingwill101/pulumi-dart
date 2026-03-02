@@ -70,15 +70,15 @@ class AnalyticsApplicationInputs {
 
   factory AnalyticsApplicationInputs.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationInputs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      kinesisFirehose: map['kinesisFirehose'] == null ? null : (AnalyticsApplicationInputsKinesisFirehose.fromMap((map['kinesisFirehose'] as Map).cast<String, dynamic>())).input(),
-      kinesisStream: map['kinesisStream'] == null ? null : (AnalyticsApplicationInputsKinesisStream.fromMap((map['kinesisStream'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      kinesisFirehose: map['kinesisFirehose'] == null ? null : ((AnalyticsApplicationInputsKinesisFirehose.fromMap((map['kinesisFirehose']! as Map).cast<String, dynamic>())).input()).input(),
+      kinesisStream: map['kinesisStream'] == null ? null : ((AnalyticsApplicationInputsKinesisStream.fromMap((map['kinesisStream']! as Map).cast<String, dynamic>())).input()).input(),
       namePrefix: (map['namePrefix'] as String).input(),
-      parallelism: map['parallelism'] == null ? null : (AnalyticsApplicationInputsParallelism.fromMap((map['parallelism'] as Map).cast<String, dynamic>())).input(),
-      processingConfiguration: map['processingConfiguration'] == null ? null : (AnalyticsApplicationInputsProcessingConfiguration.fromMap((map['processingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      schema: (AnalyticsApplicationInputsSchema.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
-      startingPositionConfigurations: map['startingPositionConfigurations'] == null ? null : (pulumi.Input.decodeList<AnalyticsApplicationInputsStartingPositionConfiguration>(map['startingPositionConfigurations'], (value) => AnalyticsApplicationInputsStartingPositionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      streamNames: map['streamNames'] == null ? null : ((map['streamNames'] as List).cast<String>()).input(),
+      parallelism: map['parallelism'] == null ? null : ((AnalyticsApplicationInputsParallelism.fromMap((map['parallelism']! as Map).cast<String, dynamic>())).input()).input(),
+      processingConfiguration: map['processingConfiguration'] == null ? null : ((AnalyticsApplicationInputsProcessingConfiguration.fromMap((map['processingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      schema: (AnalyticsApplicationInputsSchema.fromMap((map['schema']! as Map).cast<String, dynamic>())).input(),
+      startingPositionConfigurations: map['startingPositionConfigurations'] == null ? null : ((pulumi.Input.decodeList<AnalyticsApplicationInputsStartingPositionConfiguration>(map['startingPositionConfigurations']!, (value) => AnalyticsApplicationInputsStartingPositionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      streamNames: map['streamNames'] == null ? null : (((map['streamNames'] as List).cast<String>()).input()).input(),
     );
   }
 }

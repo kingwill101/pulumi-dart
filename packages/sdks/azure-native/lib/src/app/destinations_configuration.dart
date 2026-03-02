@@ -28,8 +28,8 @@ class DestinationsConfiguration {
 
   factory DestinationsConfiguration.fromMap(Map<String, dynamic> map) {
     return DestinationsConfiguration(
-      dataDogConfiguration: map['dataDogConfiguration'] == null ? null : (DataDogConfiguration.fromMap((map['dataDogConfiguration'] as Map).cast<String, dynamic>())).input(),
-      otlpConfigurations: map['otlpConfigurations'] == null ? null : (pulumi.Input.decodeList<OtlpConfiguration>(map['otlpConfigurations'], (value) => OtlpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataDogConfiguration: map['dataDogConfiguration'] == null ? null : (DataDogConfiguration.fromMap((map['dataDogConfiguration']! as Map).cast<String, dynamic>())).input(),
+      otlpConfigurations: map['otlpConfigurations'] == null ? null : (pulumi.Input.decodeList<OtlpConfiguration>(map['otlpConfigurations']!, (value) => OtlpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

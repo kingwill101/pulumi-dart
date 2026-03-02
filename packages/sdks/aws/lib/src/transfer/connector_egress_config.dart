@@ -21,7 +21,7 @@ class ConnectorEgressConfig {
 
   factory ConnectorEgressConfig.fromMap(Map<String, dynamic> map) {
     return ConnectorEgressConfig(
-      vpcLattice: map['vpcLattice'] == null ? null : (ConnectorEgressConfigVpcLattice.fromMap((map['vpcLattice'] as Map).cast<String, dynamic>())).input(),
+      vpcLattice: map['vpcLattice'] == null ? null : ((ConnectorEgressConfigVpcLattice.fromMap((map['vpcLattice']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

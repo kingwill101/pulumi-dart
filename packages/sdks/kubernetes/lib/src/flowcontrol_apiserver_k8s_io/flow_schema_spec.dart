@@ -39,10 +39,10 @@ class FlowSchemaSpec {
 
   factory FlowSchemaSpec.fromMap(Map<String, dynamic> map) {
     return FlowSchemaSpec(
-      distinguisherMethod: map['distinguisherMethod'] == null ? null : (FlowDistinguisherMethod.fromMap((map['distinguisherMethod'] as Map).cast<String, dynamic>())).input(),
-      matchingPrecedence: map['matchingPrecedence'] == null ? null : (map['matchingPrecedence'] as int).input(),
+      distinguisherMethod: map['distinguisherMethod'] == null ? null : (FlowDistinguisherMethod.fromMap((map['distinguisherMethod']! as Map).cast<String, dynamic>())).input(),
+      matchingPrecedence: map['matchingPrecedence'] == null ? null : (map['matchingPrecedence']! as int).input(),
       priorityLevelConfiguration: (PriorityLevelConfigurationReference.fromMap((map['priorityLevelConfiguration'] as Map).cast<String, dynamic>())).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PolicyRulesWithSubjects>(map['rules'], (value) => PolicyRulesWithSubjects.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PolicyRulesWithSubjects>(map['rules']!, (value) => PolicyRulesWithSubjects.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

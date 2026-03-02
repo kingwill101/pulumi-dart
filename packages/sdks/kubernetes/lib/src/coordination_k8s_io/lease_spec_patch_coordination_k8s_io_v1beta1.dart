@@ -41,11 +41,11 @@ class LeaseSpecPatchCoordinationK8sIoV1beta1 {
 
   factory LeaseSpecPatchCoordinationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return LeaseSpecPatchCoordinationK8sIoV1beta1(
-      acquireTime: map['acquireTime'] == null ? null : (map['acquireTime'] as String).input(),
-      holderIdentity: map['holderIdentity'] == null ? null : (map['holderIdentity'] as String).input(),
-      leaseDurationSeconds: map['leaseDurationSeconds'] == null ? null : (map['leaseDurationSeconds'] as int).input(),
-      leaseTransitions: map['leaseTransitions'] == null ? null : (map['leaseTransitions'] as int).input(),
-      renewTime: map['renewTime'] == null ? null : (map['renewTime'] as String).input(),
+      acquireTime: map['acquireTime'] == null ? null : (map['acquireTime']! as String).input(),
+      holderIdentity: map['holderIdentity'] == null ? null : (map['holderIdentity']! as String).input(),
+      leaseDurationSeconds: map['leaseDurationSeconds'] == null ? null : (map['leaseDurationSeconds']! as int).input(),
+      leaseTransitions: map['leaseTransitions'] == null ? null : (map['leaseTransitions']! as int).input(),
+      renewTime: map['renewTime'] == null ? null : (map['renewTime']! as String).input(),
     );
   }
 }

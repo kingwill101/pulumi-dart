@@ -31,8 +31,8 @@ class AlertConfiguration {
 
   factory AlertConfiguration.fromMap(Map<String, dynamic> map) {
     return AlertConfiguration(
-      actionGroupIds: map['actionGroupIds'] == null ? null : ((map['actionGroupIds'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      actionGroupIds: map['actionGroupIds'] == null ? null : ((map['actionGroupIds']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       severity: (map['severity'] as String).input(),
     );
   }

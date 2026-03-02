@@ -27,7 +27,7 @@ class ScriptSource {
 
   factory ScriptSource.fromMap(Map<String, dynamic> map) {
     return ScriptSource(
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<GalleryScriptParameter>(map['parameters'], (value) => GalleryScriptParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<GalleryScriptParameter>(map['parameters']!, (value) => GalleryScriptParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       scriptLink: (map['scriptLink'] as String).input(),
     );
   }

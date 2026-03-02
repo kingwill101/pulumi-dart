@@ -21,7 +21,7 @@ class ClusterAutomatedBackupPolicyTimeBasedRetention {
 
   factory ClusterAutomatedBackupPolicyTimeBasedRetention.fromMap(Map<String, dynamic> map) {
     return ClusterAutomatedBackupPolicyTimeBasedRetention(
-      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as String).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod']! as String).input(),
     );
   }
 }

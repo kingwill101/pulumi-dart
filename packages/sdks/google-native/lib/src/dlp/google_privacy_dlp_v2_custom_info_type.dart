@@ -69,15 +69,15 @@ class GooglePrivacyDlpV2CustomInfoType {
 
   factory GooglePrivacyDlpV2CustomInfoType.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CustomInfoType(
-      detectionRules: map['detectionRules'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2DetectionRule>(map['detectionRules'], (value) => GooglePrivacyDlpV2DetectionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dictionary: map['dictionary'] == null ? null : (GooglePrivacyDlpV2Dictionary.fromMap((map['dictionary'] as Map).cast<String, dynamic>())).input(),
-      exclusionType: map['exclusionType'] == null ? null : (GooglePrivacyDlpV2CustomInfoTypeExclusionType.fromValue(map['exclusionType'] as String)).input(),
-      infoType: map['infoType'] == null ? null : (GooglePrivacyDlpV2InfoType.fromMap((map['infoType'] as Map).cast<String, dynamic>())).input(),
-      likelihood: map['likelihood'] == null ? null : (GooglePrivacyDlpV2CustomInfoTypeLikelihood.fromValue(map['likelihood'] as String)).input(),
-      regex: map['regex'] == null ? null : (GooglePrivacyDlpV2Regex.fromMap((map['regex'] as Map).cast<String, dynamic>())).input(),
-      sensitivityScore: map['sensitivityScore'] == null ? null : (GooglePrivacyDlpV2SensitivityScore.fromMap((map['sensitivityScore'] as Map).cast<String, dynamic>())).input(),
-      storedType: map['storedType'] == null ? null : (GooglePrivacyDlpV2StoredType.fromMap((map['storedType'] as Map).cast<String, dynamic>())).input(),
-      surrogateType: map['surrogateType'] == null ? null : ((map['surrogateType'] as Map).cast<String, dynamic>()).input(),
+      detectionRules: map['detectionRules'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2DetectionRule>(map['detectionRules']!, (value) => GooglePrivacyDlpV2DetectionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dictionary: map['dictionary'] == null ? null : (GooglePrivacyDlpV2Dictionary.fromMap((map['dictionary']! as Map).cast<String, dynamic>())).input(),
+      exclusionType: map['exclusionType'] == null ? null : (GooglePrivacyDlpV2CustomInfoTypeExclusionType.fromValue(map['exclusionType']! as String)).input(),
+      infoType: map['infoType'] == null ? null : (GooglePrivacyDlpV2InfoType.fromMap((map['infoType']! as Map).cast<String, dynamic>())).input(),
+      likelihood: map['likelihood'] == null ? null : (GooglePrivacyDlpV2CustomInfoTypeLikelihood.fromValue(map['likelihood']! as String)).input(),
+      regex: map['regex'] == null ? null : (GooglePrivacyDlpV2Regex.fromMap((map['regex']! as Map).cast<String, dynamic>())).input(),
+      sensitivityScore: map['sensitivityScore'] == null ? null : (GooglePrivacyDlpV2SensitivityScore.fromMap((map['sensitivityScore']! as Map).cast<String, dynamic>())).input(),
+      storedType: map['storedType'] == null ? null : (GooglePrivacyDlpV2StoredType.fromMap((map['storedType']! as Map).cast<String, dynamic>())).input(),
+      surrogateType: map['surrogateType'] == null ? null : ((map['surrogateType']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

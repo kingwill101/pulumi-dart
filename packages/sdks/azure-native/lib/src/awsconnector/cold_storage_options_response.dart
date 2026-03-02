@@ -21,7 +21,7 @@ class ColdStorageOptionsResponse {
 
   factory ColdStorageOptionsResponse.fromMap(Map<String, dynamic> map) {
     return ColdStorageOptionsResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

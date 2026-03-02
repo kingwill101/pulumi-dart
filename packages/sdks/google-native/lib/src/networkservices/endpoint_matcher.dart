@@ -22,7 +22,7 @@ class EndpointMatcher {
 
   factory EndpointMatcher.fromMap(Map<String, dynamic> map) {
     return EndpointMatcher(
-      metadataLabelMatcher: map['metadataLabelMatcher'] == null ? null : (EndpointMatcherMetadataLabelMatcher.fromMap((map['metadataLabelMatcher'] as Map).cast<String, dynamic>())).input(),
+      metadataLabelMatcher: map['metadataLabelMatcher'] == null ? null : (EndpointMatcherMetadataLabelMatcher.fromMap((map['metadataLabelMatcher']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class VirtualHardDiskArmReference {
 
   factory VirtualHardDiskArmReference.fromMap(Map<String, dynamic> map) {
     return VirtualHardDiskArmReference(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

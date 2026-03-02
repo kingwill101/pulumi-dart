@@ -39,10 +39,10 @@ class GetResolverFirewallRulesArgs {
 
   factory GetResolverFirewallRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverFirewallRulesArgs(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
+      action: map['action'] == null ? null : ((map['action'] as String).input()).input(),
       firewallRuleGroupId: (map['firewallRuleGroupId'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      priority: map['priority'] == null ? null : ((map['priority'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

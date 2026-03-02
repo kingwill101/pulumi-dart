@@ -29,7 +29,7 @@ class GetTrafficMirrorServiceResult {
 
   factory GetTrafficMirrorServiceResult.fromMap(Map<String, dynamic> map) {
     return GetTrafficMirrorServiceResult(
-      enable: map['enable'] == null ? null : map['enable'] as String,
+      enable: map['enable'] == null ? null : map['enable']! as String,
       id: map['id'] as String,
       status: map['status'] as String,
     );

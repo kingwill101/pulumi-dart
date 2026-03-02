@@ -20,7 +20,7 @@ class Jwt {
 
   factory Jwt.fromMap(Map<String, dynamic> map) {
     return Jwt(
-      compactJwt: map['compactJwt'] == null ? null : (map['compactJwt'] as String).input(),
+      compactJwt: map['compactJwt'] == null ? null : (map['compactJwt']! as String).input(),
     );
   }
 }

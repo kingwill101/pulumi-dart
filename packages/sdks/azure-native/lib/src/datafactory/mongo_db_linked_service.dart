@@ -100,22 +100,22 @@ class MongoDbLinkedService {
 
   factory MongoDbLinkedService.fromMap(Map<String, dynamic> map) {
     return MongoDbLinkedService(
-      allowSelfSignedServerCert: map['allowSelfSignedServerCert'] == null ? null : (map['allowSelfSignedServerCert']).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      authSource: map['authSource'] == null ? null : (map['authSource']).input(),
-      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
-      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      allowSelfSignedServerCert: map['allowSelfSignedServerCert'] == null ? null : (map['allowSelfSignedServerCert']!).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      authSource: map['authSource'] == null ? null : (map['authSource']!).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType']! as String).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia']! as Map).cast<String, dynamic>())).input(),
       databaseName: (map['databaseName']).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enableSsl: map['enableSsl'] == null ? null : (map['enableSsl']).input(),
-      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      password: map['password'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
-      port: map['port'] == null ? null : (map['port']).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enableSsl: map['enableSsl'] == null ? null : (map['enableSsl']!).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters']!, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      password: map['password'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['password']! as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port']!).input(),
       server: (map['server']).input(),
       type: (map['type'] as String).input(),
-      username: map['username'] == null ? null : (map['username']).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      username: map['username'] == null ? null : (map['username']!).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

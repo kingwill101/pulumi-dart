@@ -30,9 +30,9 @@ class CrossAccountAttachmentResource {
 
   factory CrossAccountAttachmentResource.fromMap(Map<String, dynamic> map) {
     return CrossAccountAttachmentResource(
-      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
-      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : ((map['cidrBlock'] as String).input()).input(),
+      endpointId: map['endpointId'] == null ? null : ((map['endpointId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

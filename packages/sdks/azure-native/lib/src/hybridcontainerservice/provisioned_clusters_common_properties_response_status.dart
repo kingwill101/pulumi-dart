@@ -39,10 +39,10 @@ class ProvisionedClustersCommonPropertiesResponseStatus {
 
   factory ProvisionedClustersCommonPropertiesResponseStatus.fromMap(Map<String, dynamic> map) {
     return ProvisionedClustersCommonPropertiesResponseStatus(
-      addonStatus: map['addonStatus'] == null ? null : (pulumi.Input.decodeMapValues<AddonStatusResponse>(map['addonStatus'], (value) => AddonStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
-      featuresStatus: map['featuresStatus'] == null ? null : (ProvisionedClustersCommonPropertiesResponseFeaturesStatus.fromMap((map['featuresStatus'] as Map).cast<String, dynamic>())).input(),
-      provisioningStatus: map['provisioningStatus'] == null ? null : (ProvisionedClustersCommonPropertiesResponseProvisioningStatus.fromMap((map['provisioningStatus'] as Map).cast<String, dynamic>())).input(),
+      addonStatus: map['addonStatus'] == null ? null : (pulumi.Input.decodeMapValues<AddonStatusResponse>(map['addonStatus']!, (value) => AddonStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      featuresStatus: map['featuresStatus'] == null ? null : (ProvisionedClustersCommonPropertiesResponseFeaturesStatus.fromMap((map['featuresStatus']! as Map).cast<String, dynamic>())).input(),
+      provisioningStatus: map['provisioningStatus'] == null ? null : (ProvisionedClustersCommonPropertiesResponseProvisioningStatus.fromMap((map['provisioningStatus']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

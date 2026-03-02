@@ -20,7 +20,7 @@ class LinuxProfilePropertiesPublicKeys {
 
   factory LinuxProfilePropertiesPublicKeys.fromMap(Map<String, dynamic> map) {
     return LinuxProfilePropertiesPublicKeys(
-      keyData: map['keyData'] == null ? null : (map['keyData'] as String).input(),
+      keyData: map['keyData'] == null ? null : (map['keyData']! as String).input(),
     );
   }
 }

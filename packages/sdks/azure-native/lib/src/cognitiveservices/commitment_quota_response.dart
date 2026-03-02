@@ -26,8 +26,8 @@ class CommitmentQuotaResponse {
 
   factory CommitmentQuotaResponse.fromMap(Map<String, dynamic> map) {
     return CommitmentQuotaResponse(
-      quantity: map['quantity'] == null ? null : (map['quantity'] as double).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      quantity: map['quantity'] == null ? null : (map['quantity']! as double).input(),
+      unit: map['unit'] == null ? null : (map['unit']! as String).input(),
     );
   }
 }

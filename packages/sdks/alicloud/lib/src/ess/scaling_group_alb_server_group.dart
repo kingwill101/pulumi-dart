@@ -30,9 +30,9 @@ class ScalingGroupAlbServerGroup {
 
   factory ScalingGroupAlbServerGroup.fromMap(Map<String, dynamic> map) {
     return ScalingGroupAlbServerGroup(
-      albServerGroupId: map['albServerGroupId'] == null ? null : (map['albServerGroupId'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      albServerGroupId: map['albServerGroupId'] == null ? null : (map['albServerGroupId']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class CxFlowTransitionRouteTriggerFulfillmentConditionalCase {
 
   factory CxFlowTransitionRouteTriggerFulfillmentConditionalCase.fromMap(Map<String, dynamic> map) {
     return CxFlowTransitionRouteTriggerFulfillmentConditionalCase(
-      cases: map['cases'] == null ? null : (map['cases'] as String).input(),
+      cases: map['cases'] == null ? null : (map['cases']! as String).input(),
     );
   }
 }

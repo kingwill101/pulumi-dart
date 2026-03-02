@@ -59,14 +59,14 @@ class FeaturestoreArgs {
 
   factory FeaturestoreArgs.fromMap(Map<String, dynamic> map) {
     return FeaturestoreArgs(
-      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       featurestoreId: (map['featurestoreId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      onlineServingConfig: map['onlineServingConfig'] == null ? null : (GoogleCloudAiplatformV1FeaturestoreOnlineServingConfig.fromMap((map['onlineServingConfig'] as Map).cast<String, dynamic>())).input(),
-      onlineStorageTtlDays: map['onlineStorageTtlDays'] == null ? null : (map['onlineStorageTtlDays'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      onlineServingConfig: map['onlineServingConfig'] == null ? null : (GoogleCloudAiplatformV1FeaturestoreOnlineServingConfig.fromMap((map['onlineServingConfig']! as Map).cast<String, dynamic>())).input(),
+      onlineStorageTtlDays: map['onlineStorageTtlDays'] == null ? null : (map['onlineStorageTtlDays']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

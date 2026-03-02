@@ -29,8 +29,8 @@ class DeviceCounterConsumptionPatch {
 
   factory DeviceCounterConsumptionPatch.fromMap(Map<String, dynamic> map) {
     return DeviceCounterConsumptionPatch(
-      counterSet: map['counterSet'] == null ? null : (map['counterSet'] as String).input(),
-      counters: map['counters'] == null ? null : (pulumi.Input.decodeMapValues<Counter>(map['counters'], (value) => Counter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      counterSet: map['counterSet'] == null ? null : (map['counterSet']! as String).input(),
+      counters: map['counters'] == null ? null : (pulumi.Input.decodeMapValues<Counter>(map['counters']!, (value) => Counter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

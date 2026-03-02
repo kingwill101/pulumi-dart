@@ -36,10 +36,10 @@ class CanarySettingResponse {
 
   factory CanarySettingResponse.fromMap(Map<String, dynamic> map) {
     return CanarySettingResponse(
-      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId'] as String).input(),
-      percentTraffic: map['percentTraffic'] == null ? null : (map['percentTraffic'] as int).input(),
-      stageVariableOverrides: map['stageVariableOverrides'] == null ? null : ((map['stageVariableOverrides'] as Map).cast<String, String>()).input(),
-      useStageCache: map['useStageCache'] == null ? null : (map['useStageCache'] as bool).input(),
+      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId']! as String).input(),
+      percentTraffic: map['percentTraffic'] == null ? null : (map['percentTraffic']! as int).input(),
+      stageVariableOverrides: map['stageVariableOverrides'] == null ? null : ((map['stageVariableOverrides']! as Map).cast<String, String>()).input(),
+      useStageCache: map['useStageCache'] == null ? null : (map['useStageCache']! as bool).input(),
     );
   }
 }

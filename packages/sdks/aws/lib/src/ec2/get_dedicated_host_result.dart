@@ -103,7 +103,7 @@ class GetDedicatedHostResult {
       autoPlacement: map['autoPlacement'] as String,
       availabilityZone: map['availabilityZone'] as String,
       cores: map['cores'] as int,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetDedicatedHostFilter>(map['filters'], (value) => GetDedicatedHostFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetDedicatedHostFilter>(map['filters']!, (value) => GetDedicatedHostFilter.fromMap((value as Map).cast<String, dynamic>())),
       hostId: map['hostId'] as String,
       hostRecovery: map['hostRecovery'] as String,
       id: map['id'] as String,

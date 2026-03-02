@@ -58,12 +58,12 @@ class CxGenerativeSettingsArgs {
 
   factory CxGenerativeSettingsArgs.fromMap(Map<String, dynamic> map) {
     return CxGenerativeSettingsArgs(
-      fallbackSettings: map['fallbackSettings'] == null ? null : (CxGenerativeSettingsFallbackSettings.fromMap((map['fallbackSettings'] as Map).cast<String, dynamic>())).input(),
-      generativeSafetySettings: map['generativeSafetySettings'] == null ? null : (CxGenerativeSettingsGenerativeSafetySettings.fromMap((map['generativeSafetySettings'] as Map).cast<String, dynamic>())).input(),
-      knowledgeConnectorSettings: map['knowledgeConnectorSettings'] == null ? null : (CxGenerativeSettingsKnowledgeConnectorSettings.fromMap((map['knowledgeConnectorSettings'] as Map).cast<String, dynamic>())).input(),
+      fallbackSettings: map['fallbackSettings'] == null ? null : (CxGenerativeSettingsFallbackSettings.fromMap((map['fallbackSettings']! as Map).cast<String, dynamic>())).input(),
+      generativeSafetySettings: map['generativeSafetySettings'] == null ? null : (CxGenerativeSettingsGenerativeSafetySettings.fromMap((map['generativeSafetySettings']! as Map).cast<String, dynamic>())).input(),
+      knowledgeConnectorSettings: map['knowledgeConnectorSettings'] == null ? null : (CxGenerativeSettingsKnowledgeConnectorSettings.fromMap((map['knowledgeConnectorSettings']! as Map).cast<String, dynamic>())).input(),
       languageCode: (map['languageCode'] as String).input(),
-      llmModelSettings: map['llmModelSettings'] == null ? null : (CxGenerativeSettingsLlmModelSettings.fromMap((map['llmModelSettings'] as Map).cast<String, dynamic>())).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      llmModelSettings: map['llmModelSettings'] == null ? null : (CxGenerativeSettingsLlmModelSettings.fromMap((map['llmModelSettings']! as Map).cast<String, dynamic>())).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
     );
   }
 }

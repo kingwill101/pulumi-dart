@@ -47,7 +47,7 @@ class ReachabilityAnalysisRunArgs {
     return ReachabilityAnalysisRunArgs(
       networkManagerName: (map['networkManagerName'] as String).input(),
       properties: (ReachabilityAnalysisRunProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      reachabilityAnalysisRunName: map['reachabilityAnalysisRunName'] == null ? null : (map['reachabilityAnalysisRunName'] as String).input(),
+      reachabilityAnalysisRunName: map['reachabilityAnalysisRunName'] == null ? null : (map['reachabilityAnalysisRunName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );

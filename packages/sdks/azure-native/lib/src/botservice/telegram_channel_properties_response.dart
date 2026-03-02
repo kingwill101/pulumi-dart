@@ -31,9 +31,9 @@ class TelegramChannelPropertiesResponse {
 
   factory TelegramChannelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return TelegramChannelPropertiesResponse(
-      accessToken: map['accessToken'] == null ? null : (map['accessToken'] as String).input(),
+      accessToken: map['accessToken'] == null ? null : (map['accessToken']! as String).input(),
       isEnabled: (map['isEnabled'] as bool).input(),
-      isValidated: map['isValidated'] == null ? null : (map['isValidated'] as bool).input(),
+      isValidated: map['isValidated'] == null ? null : (map['isValidated']! as bool).input(),
     );
   }
 }

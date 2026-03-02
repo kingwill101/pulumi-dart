@@ -40,10 +40,10 @@ class OpenTelemetryConfiguration {
 
   factory OpenTelemetryConfiguration.fromMap(Map<String, dynamic> map) {
     return OpenTelemetryConfiguration(
-      destinationsConfiguration: map['destinationsConfiguration'] == null ? null : (DestinationsConfiguration.fromMap((map['destinationsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      logsConfiguration: map['logsConfiguration'] == null ? null : (LogsConfiguration.fromMap((map['logsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      metricsConfiguration: map['metricsConfiguration'] == null ? null : (MetricsConfiguration.fromMap((map['metricsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      tracesConfiguration: map['tracesConfiguration'] == null ? null : (TracesConfiguration.fromMap((map['tracesConfiguration'] as Map).cast<String, dynamic>())).input(),
+      destinationsConfiguration: map['destinationsConfiguration'] == null ? null : (DestinationsConfiguration.fromMap((map['destinationsConfiguration']! as Map).cast<String, dynamic>())).input(),
+      logsConfiguration: map['logsConfiguration'] == null ? null : (LogsConfiguration.fromMap((map['logsConfiguration']! as Map).cast<String, dynamic>())).input(),
+      metricsConfiguration: map['metricsConfiguration'] == null ? null : (MetricsConfiguration.fromMap((map['metricsConfiguration']! as Map).cast<String, dynamic>())).input(),
+      tracesConfiguration: map['tracesConfiguration'] == null ? null : (TracesConfiguration.fromMap((map['tracesConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

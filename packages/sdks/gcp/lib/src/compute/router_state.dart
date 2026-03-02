@@ -89,18 +89,18 @@ class RouterState {
 
   factory RouterState.fromMap(Map<String, dynamic> map) {
     return RouterState(
-      bgp: map['bgp'] == null ? null : (RouterBgp.fromMap((map['bgp'] as Map).cast<String, dynamic>())).input(),
-      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptedInterconnectRouter: map['encryptedInterconnectRouter'] == null ? null : (map['encryptedInterconnectRouter'] as bool).input(),
-      md5AuthenticationKeys: map['md5AuthenticationKeys'] == null ? null : (RouterMd5AuthenticationKeys.fromMap((map['md5AuthenticationKeys'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nccGateway: map['nccGateway'] == null ? null : (map['nccGateway'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      params: map['params'] == null ? null : (RouterParams.fromMap((map['params'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      bgp: map['bgp'] == null ? null : (RouterBgp.fromMap((map['bgp']! as Map).cast<String, dynamic>())).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encryptedInterconnectRouter: map['encryptedInterconnectRouter'] == null ? null : (map['encryptedInterconnectRouter']! as bool).input(),
+      md5AuthenticationKeys: map['md5AuthenticationKeys'] == null ? null : (RouterMd5AuthenticationKeys.fromMap((map['md5AuthenticationKeys']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nccGateway: map['nccGateway'] == null ? null : (map['nccGateway']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      params: map['params'] == null ? null : (RouterParams.fromMap((map['params']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
     );
   }
 }

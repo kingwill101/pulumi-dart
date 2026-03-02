@@ -43,11 +43,11 @@ class InstanceLoggingConfigurationAccessLogs {
 
   factory InstanceLoggingConfigurationAccessLogs.fromMap(Map<String, dynamic> map) {
     return InstanceLoggingConfigurationAccessLogs(
-      cloudwatchLogs: map['cloudwatchLogs'] == null ? null : (InstanceLoggingConfigurationAccessLogsCloudwatchLogs.fromMap((map['cloudwatchLogs'] as Map).cast<String, dynamic>())).input(),
-      includeTrustContext: map['includeTrustContext'] == null ? null : (map['includeTrustContext'] as bool).input(),
-      kinesisDataFirehose: map['kinesisDataFirehose'] == null ? null : (InstanceLoggingConfigurationAccessLogsKinesisDataFirehose.fromMap((map['kinesisDataFirehose'] as Map).cast<String, dynamic>())).input(),
-      logVersion: map['logVersion'] == null ? null : (map['logVersion'] as String).input(),
-      s3: map['s3'] == null ? null : (InstanceLoggingConfigurationAccessLogsS3.fromMap((map['s3'] as Map).cast<String, dynamic>())).input(),
+      cloudwatchLogs: map['cloudwatchLogs'] == null ? null : ((InstanceLoggingConfigurationAccessLogsCloudwatchLogs.fromMap((map['cloudwatchLogs']! as Map).cast<String, dynamic>())).input()).input(),
+      includeTrustContext: map['includeTrustContext'] == null ? null : ((map['includeTrustContext'] as bool).input()).input(),
+      kinesisDataFirehose: map['kinesisDataFirehose'] == null ? null : ((InstanceLoggingConfigurationAccessLogsKinesisDataFirehose.fromMap((map['kinesisDataFirehose']! as Map).cast<String, dynamic>())).input()).input(),
+      logVersion: map['logVersion'] == null ? null : ((map['logVersion'] as String).input()).input(),
+      s3: map['s3'] == null ? null : ((InstanceLoggingConfigurationAccessLogsS3.fromMap((map['s3']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

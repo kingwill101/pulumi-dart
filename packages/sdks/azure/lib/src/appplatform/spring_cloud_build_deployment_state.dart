@@ -57,14 +57,14 @@ class SpringCloudBuildDeploymentState {
 
   factory SpringCloudBuildDeploymentState.fromMap(Map<String, dynamic> map) {
     return SpringCloudBuildDeploymentState(
-      addonJson: map['addonJson'] == null ? null : (map['addonJson'] as String).input(),
-      applicationPerformanceMonitoringIds: map['applicationPerformanceMonitoringIds'] == null ? null : ((map['applicationPerformanceMonitoringIds'] as List).cast<String>()).input(),
-      buildResultId: map['buildResultId'] == null ? null : (map['buildResultId'] as String).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables'] as Map).cast<String, String>()).input(),
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      quota: map['quota'] == null ? null : (SpringCloudBuildDeploymentQuota.fromMap((map['quota'] as Map).cast<String, dynamic>())).input(),
-      springCloudAppId: map['springCloudAppId'] == null ? null : (map['springCloudAppId'] as String).input(),
+      addonJson: map['addonJson'] == null ? null : (map['addonJson']! as String).input(),
+      applicationPerformanceMonitoringIds: map['applicationPerformanceMonitoringIds'] == null ? null : ((map['applicationPerformanceMonitoringIds']! as List).cast<String>()).input(),
+      buildResultId: map['buildResultId'] == null ? null : (map['buildResultId']! as String).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables']! as Map).cast<String, String>()).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      quota: map['quota'] == null ? null : (SpringCloudBuildDeploymentQuota.fromMap((map['quota']! as Map).cast<String, dynamic>())).input(),
+      springCloudAppId: map['springCloudAppId'] == null ? null : (map['springCloudAppId']! as String).input(),
     );
   }
 }

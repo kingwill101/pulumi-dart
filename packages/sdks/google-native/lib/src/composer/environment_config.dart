@@ -99,20 +99,20 @@ class EnvironmentConfig {
 
   factory EnvironmentConfig.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfig(
-      databaseConfig: map['databaseConfig'] == null ? null : (DatabaseConfig.fromMap((map['databaseConfig'] as Map).cast<String, dynamic>())).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
-      environmentSize: map['environmentSize'] == null ? null : (EnvironmentConfigEnvironmentSize.fromValue(map['environmentSize'] as String)).input(),
-      maintenanceWindow: map['maintenanceWindow'] == null ? null : (MaintenanceWindow.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>())).input(),
-      masterAuthorizedNetworksConfig: map['masterAuthorizedNetworksConfig'] == null ? null : (MasterAuthorizedNetworksConfig.fromMap((map['masterAuthorizedNetworksConfig'] as Map).cast<String, dynamic>())).input(),
-      nodeConfig: map['nodeConfig'] == null ? null : (NodeConfig.fromMap((map['nodeConfig'] as Map).cast<String, dynamic>())).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
-      privateEnvironmentConfig: map['privateEnvironmentConfig'] == null ? null : (PrivateEnvironmentConfig.fromMap((map['privateEnvironmentConfig'] as Map).cast<String, dynamic>())).input(),
-      recoveryConfig: map['recoveryConfig'] == null ? null : (RecoveryConfig.fromMap((map['recoveryConfig'] as Map).cast<String, dynamic>())).input(),
-      resilienceMode: map['resilienceMode'] == null ? null : (EnvironmentConfigResilienceMode.fromValue(map['resilienceMode'] as String)).input(),
-      softwareConfig: map['softwareConfig'] == null ? null : (SoftwareConfig.fromMap((map['softwareConfig'] as Map).cast<String, dynamic>())).input(),
-      webServerConfig: map['webServerConfig'] == null ? null : (WebServerConfig.fromMap((map['webServerConfig'] as Map).cast<String, dynamic>())).input(),
-      webServerNetworkAccessControl: map['webServerNetworkAccessControl'] == null ? null : (WebServerNetworkAccessControl.fromMap((map['webServerNetworkAccessControl'] as Map).cast<String, dynamic>())).input(),
-      workloadsConfig: map['workloadsConfig'] == null ? null : (WorkloadsConfig.fromMap((map['workloadsConfig'] as Map).cast<String, dynamic>())).input(),
+      databaseConfig: map['databaseConfig'] == null ? null : (DatabaseConfig.fromMap((map['databaseConfig']! as Map).cast<String, dynamic>())).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfig.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
+      environmentSize: map['environmentSize'] == null ? null : (EnvironmentConfigEnvironmentSize.fromValue(map['environmentSize']! as String)).input(),
+      maintenanceWindow: map['maintenanceWindow'] == null ? null : (MaintenanceWindow.fromMap((map['maintenanceWindow']! as Map).cast<String, dynamic>())).input(),
+      masterAuthorizedNetworksConfig: map['masterAuthorizedNetworksConfig'] == null ? null : (MasterAuthorizedNetworksConfig.fromMap((map['masterAuthorizedNetworksConfig']! as Map).cast<String, dynamic>())).input(),
+      nodeConfig: map['nodeConfig'] == null ? null : (NodeConfig.fromMap((map['nodeConfig']! as Map).cast<String, dynamic>())).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
+      privateEnvironmentConfig: map['privateEnvironmentConfig'] == null ? null : (PrivateEnvironmentConfig.fromMap((map['privateEnvironmentConfig']! as Map).cast<String, dynamic>())).input(),
+      recoveryConfig: map['recoveryConfig'] == null ? null : (RecoveryConfig.fromMap((map['recoveryConfig']! as Map).cast<String, dynamic>())).input(),
+      resilienceMode: map['resilienceMode'] == null ? null : (EnvironmentConfigResilienceMode.fromValue(map['resilienceMode']! as String)).input(),
+      softwareConfig: map['softwareConfig'] == null ? null : (SoftwareConfig.fromMap((map['softwareConfig']! as Map).cast<String, dynamic>())).input(),
+      webServerConfig: map['webServerConfig'] == null ? null : (WebServerConfig.fromMap((map['webServerConfig']! as Map).cast<String, dynamic>())).input(),
+      webServerNetworkAccessControl: map['webServerNetworkAccessControl'] == null ? null : (WebServerNetworkAccessControl.fromMap((map['webServerNetworkAccessControl']! as Map).cast<String, dynamic>())).input(),
+      workloadsConfig: map['workloadsConfig'] == null ? null : (WorkloadsConfig.fromMap((map['workloadsConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

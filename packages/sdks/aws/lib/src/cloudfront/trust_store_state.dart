@@ -59,14 +59,14 @@ class TrustStoreState {
 
   factory TrustStoreState.fromMap(Map<String, dynamic> map) {
     return TrustStoreState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      caCertificatesBundleSource: map['caCertificatesBundleSource'] == null ? null : (TrustStoreCaCertificatesBundleSource.fromMap((map['caCertificatesBundleSource'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      numberOfCaCertificates: map['numberOfCaCertificates'] == null ? null : (map['numberOfCaCertificates'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (TrustStoreTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      caCertificatesBundleSource: map['caCertificatesBundleSource'] == null ? null : ((TrustStoreCaCertificatesBundleSource.fromMap((map['caCertificatesBundleSource']! as Map).cast<String, dynamic>())).input()).input(),
+      etag: map['etag'] == null ? null : ((map['etag'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      numberOfCaCertificates: map['numberOfCaCertificates'] == null ? null : ((map['numberOfCaCertificates'] as int).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((TrustStoreTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

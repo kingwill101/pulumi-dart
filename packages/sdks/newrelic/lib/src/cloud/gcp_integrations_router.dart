@@ -20,7 +20,7 @@ class GcpIntegrationsRouter {
 
   factory GcpIntegrationsRouter.fromMap(Map<String, dynamic> map) {
     return GcpIntegrationsRouter(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
     );
   }
 }

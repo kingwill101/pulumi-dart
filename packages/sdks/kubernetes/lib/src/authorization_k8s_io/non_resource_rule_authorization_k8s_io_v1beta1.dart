@@ -26,7 +26,7 @@ class NonResourceRuleAuthorizationK8sIoV1beta1 {
 
   factory NonResourceRuleAuthorizationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return NonResourceRuleAuthorizationK8sIoV1beta1(
-      nonResourceURLs: map['nonResourceURLs'] == null ? null : ((map['nonResourceURLs'] as List).cast<String>()).input(),
+      nonResourceURLs: map['nonResourceURLs'] == null ? null : ((map['nonResourceURLs']! as List).cast<String>()).input(),
       verbs: ((map['verbs'] as List).cast<String>()).input(),
     );
   }

@@ -39,10 +39,10 @@ class SubjectPatchFlowcontrolApiserverK8sIoV1beta3 {
 
   factory SubjectPatchFlowcontrolApiserverK8sIoV1beta3.fromMap(Map<String, dynamic> map) {
     return SubjectPatchFlowcontrolApiserverK8sIoV1beta3(
-      group: map['group'] == null ? null : (GroupSubjectPatchFlowcontrolApiserverK8sIoV1beta3.fromMap((map['group'] as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (ServiceAccountSubjectPatchFlowcontrolApiserverK8sIoV1beta3.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>())).input(),
-      user: map['user'] == null ? null : (UserSubjectPatchFlowcontrolApiserverK8sIoV1beta3.fromMap((map['user'] as Map).cast<String, dynamic>())).input(),
+      group: map['group'] == null ? null : (GroupSubjectPatchFlowcontrolApiserverK8sIoV1beta3.fromMap((map['group']! as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (ServiceAccountSubjectPatchFlowcontrolApiserverK8sIoV1beta3.fromMap((map['serviceAccount']! as Map).cast<String, dynamic>())).input(),
+      user: map['user'] == null ? null : (UserSubjectPatchFlowcontrolApiserverK8sIoV1beta3.fromMap((map['user']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

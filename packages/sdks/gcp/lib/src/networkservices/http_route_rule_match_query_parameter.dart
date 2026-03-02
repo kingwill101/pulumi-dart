@@ -35,10 +35,10 @@ class HttpRouteRuleMatchQueryParameter {
 
   factory HttpRouteRuleMatchQueryParameter.fromMap(Map<String, dynamic> map) {
     return HttpRouteRuleMatchQueryParameter(
-      exactMatch: map['exactMatch'] == null ? null : (map['exactMatch'] as String).input(),
-      presentMatch: map['presentMatch'] == null ? null : (map['presentMatch'] as bool).input(),
-      queryParameter: map['queryParameter'] == null ? null : (map['queryParameter'] as String).input(),
-      regexMatch: map['regexMatch'] == null ? null : (map['regexMatch'] as String).input(),
+      exactMatch: map['exactMatch'] == null ? null : (map['exactMatch']! as String).input(),
+      presentMatch: map['presentMatch'] == null ? null : (map['presentMatch']! as bool).input(),
+      queryParameter: map['queryParameter'] == null ? null : (map['queryParameter']! as String).input(),
+      regexMatch: map['regexMatch'] == null ? null : (map['regexMatch']! as String).input(),
     );
   }
 }

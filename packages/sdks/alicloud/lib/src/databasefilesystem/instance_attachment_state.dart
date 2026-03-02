@@ -31,9 +31,9 @@ class InstanceAttachmentState {
 
   factory InstanceAttachmentState.fromMap(Map<String, dynamic> map) {
     return InstanceAttachmentState(
-      ecsId: map['ecsId'] == null ? null : (map['ecsId'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      ecsId: map['ecsId'] == null ? null : (map['ecsId']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

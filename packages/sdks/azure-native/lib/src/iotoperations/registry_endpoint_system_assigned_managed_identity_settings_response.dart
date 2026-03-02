@@ -21,7 +21,7 @@ class RegistryEndpointSystemAssignedManagedIdentitySettingsResponse {
 
   factory RegistryEndpointSystemAssignedManagedIdentitySettingsResponse.fromMap(Map<String, dynamic> map) {
     return RegistryEndpointSystemAssignedManagedIdentitySettingsResponse(
-      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
+      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
     );
   }
 }

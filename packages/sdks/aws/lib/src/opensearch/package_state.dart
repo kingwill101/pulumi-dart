@@ -56,14 +56,14 @@ class PackageState {
 
   factory PackageState.fromMap(Map<String, dynamic> map) {
     return PackageState(
-      availablePackageVersion: map['availablePackageVersion'] == null ? null : (map['availablePackageVersion'] as String).input(),
-      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
-      packageDescription: map['packageDescription'] == null ? null : (map['packageDescription'] as String).input(),
-      packageId: map['packageId'] == null ? null : (map['packageId'] as String).input(),
-      packageName: map['packageName'] == null ? null : (map['packageName'] as String).input(),
-      packageSource: map['packageSource'] == null ? null : (PackagePackageSource.fromMap((map['packageSource'] as Map).cast<String, dynamic>())).input(),
-      packageType: map['packageType'] == null ? null : (map['packageType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      availablePackageVersion: map['availablePackageVersion'] == null ? null : ((map['availablePackageVersion'] as String).input()).input(),
+      engineVersion: map['engineVersion'] == null ? null : ((map['engineVersion'] as String).input()).input(),
+      packageDescription: map['packageDescription'] == null ? null : ((map['packageDescription'] as String).input()).input(),
+      packageId: map['packageId'] == null ? null : ((map['packageId'] as String).input()).input(),
+      packageName: map['packageName'] == null ? null : ((map['packageName'] as String).input()).input(),
+      packageSource: map['packageSource'] == null ? null : ((PackagePackageSource.fromMap((map['packageSource']! as Map).cast<String, dynamic>())).input()).input(),
+      packageType: map['packageType'] == null ? null : ((map['packageType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

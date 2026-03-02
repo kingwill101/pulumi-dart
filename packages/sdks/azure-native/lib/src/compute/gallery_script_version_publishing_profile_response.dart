@@ -69,16 +69,16 @@ class GalleryScriptVersionPublishingProfileResponse {
 
   factory GalleryScriptVersionPublishingProfileResponse.fromMap(Map<String, dynamic> map) {
     return GalleryScriptVersionPublishingProfileResponse(
-      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate'] as String).input(),
-      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest'] as bool).input(),
+      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate']! as String).input(),
+      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest']! as bool).input(),
       publishedDate: (map['publishedDate'] as String).input(),
-      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount'] as int).input(),
-      replicationMode: map['replicationMode'] == null ? null : (map['replicationMode'] as String).input(),
+      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount']! as int).input(),
+      replicationMode: map['replicationMode'] == null ? null : (map['replicationMode']! as String).input(),
       source: (ScriptSourceResponse.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      storageAccountStrategy: map['storageAccountStrategy'] == null ? null : (map['storageAccountStrategy'] as String).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
-      targetExtendedLocations: map['targetExtendedLocations'] == null ? null : (pulumi.Input.decodeList<GalleryTargetExtendedLocationResponse>(map['targetExtendedLocations'], (value) => GalleryTargetExtendedLocationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetRegions: map['targetRegions'] == null ? null : (pulumi.Input.decodeList<TargetRegionResponse>(map['targetRegions'], (value) => TargetRegionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageAccountStrategy: map['storageAccountStrategy'] == null ? null : (map['storageAccountStrategy']! as String).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType']! as String).input(),
+      targetExtendedLocations: map['targetExtendedLocations'] == null ? null : (pulumi.Input.decodeList<GalleryTargetExtendedLocationResponse>(map['targetExtendedLocations']!, (value) => GalleryTargetExtendedLocationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetRegions: map['targetRegions'] == null ? null : (pulumi.Input.decodeList<TargetRegionResponse>(map['targetRegions']!, (value) => TargetRegionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

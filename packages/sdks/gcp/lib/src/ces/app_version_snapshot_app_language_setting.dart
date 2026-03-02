@@ -48,10 +48,10 @@ class AppVersionSnapshotAppLanguageSetting {
 
   factory AppVersionSnapshotAppLanguageSetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppLanguageSetting(
-      defaultLanguageCode: map['defaultLanguageCode'] == null ? null : (map['defaultLanguageCode'] as String).input(),
-      enableMultilingualSupport: map['enableMultilingualSupport'] == null ? null : (map['enableMultilingualSupport'] as bool).input(),
-      fallbackAction: map['fallbackAction'] == null ? null : (map['fallbackAction'] as String).input(),
-      supportedLanguageCodes: map['supportedLanguageCodes'] == null ? null : ((map['supportedLanguageCodes'] as List).cast<String>()).input(),
+      defaultLanguageCode: map['defaultLanguageCode'] == null ? null : (map['defaultLanguageCode']! as String).input(),
+      enableMultilingualSupport: map['enableMultilingualSupport'] == null ? null : (map['enableMultilingualSupport']! as bool).input(),
+      fallbackAction: map['fallbackAction'] == null ? null : (map['fallbackAction']! as String).input(),
+      supportedLanguageCodes: map['supportedLanguageCodes'] == null ? null : ((map['supportedLanguageCodes']! as List).cast<String>()).input(),
     );
   }
 }

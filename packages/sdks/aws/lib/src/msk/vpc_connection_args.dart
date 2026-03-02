@@ -56,9 +56,9 @@ class VpcConnectionArgs {
     return VpcConnectionArgs(
       authentication: (map['authentication'] as String).input(),
       clientSubnets: ((map['clientSubnets'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       securityGroups: ((map['securityGroups'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       targetClusterArn: (map['targetClusterArn'] as String).input(),
       vpcId: (map['vpcId'] as String).input(),
     );

@@ -63,14 +63,14 @@ class Contact {
 
   factory Contact.fromMap(Map<String, dynamic> map) {
     return Contact(
-      addressMailing: map['addressMailing'] == null ? null : (Address.fromMap((map['addressMailing'] as Map).cast<String, dynamic>())).input(),
+      addressMailing: map['addressMailing'] == null ? null : (Address.fromMap((map['addressMailing']! as Map).cast<String, dynamic>())).input(),
       email: (map['email'] as String).input(),
-      fax: map['fax'] == null ? null : (map['fax'] as String).input(),
-      jobTitle: map['jobTitle'] == null ? null : (map['jobTitle'] as String).input(),
+      fax: map['fax'] == null ? null : (map['fax']! as String).input(),
+      jobTitle: map['jobTitle'] == null ? null : (map['jobTitle']! as String).input(),
       nameFirst: (map['nameFirst'] as String).input(),
       nameLast: (map['nameLast'] as String).input(),
-      nameMiddle: map['nameMiddle'] == null ? null : (map['nameMiddle'] as String).input(),
-      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
+      nameMiddle: map['nameMiddle'] == null ? null : (map['nameMiddle']! as String).input(),
+      organization: map['organization'] == null ? null : (map['organization']! as String).input(),
       phone: (map['phone'] as String).input(),
     );
   }

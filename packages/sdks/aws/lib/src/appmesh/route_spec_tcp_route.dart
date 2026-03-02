@@ -32,9 +32,9 @@ class RouteSpecTcpRoute {
 
   factory RouteSpecTcpRoute.fromMap(Map<String, dynamic> map) {
     return RouteSpecTcpRoute(
-      action: (RouteSpecTcpRouteAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      match: map['match'] == null ? null : (RouteSpecTcpRouteMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
-      timeout: map['timeout'] == null ? null : (RouteSpecTcpRouteTimeout.fromMap((map['timeout'] as Map).cast<String, dynamic>())).input(),
+      action: (RouteSpecTcpRouteAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      match: map['match'] == null ? null : ((RouteSpecTcpRouteMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input()).input(),
+      timeout: map['timeout'] == null ? null : ((RouteSpecTcpRouteTimeout.fromMap((map['timeout']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

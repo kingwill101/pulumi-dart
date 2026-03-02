@@ -32,9 +32,9 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureC
 
   factory V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchNextStep.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchNextStep(
-      dialogAction: map['dialogAction'] == null ? null : (V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchNextStepDialogAction.fromMap((map['dialogAction'] as Map).cast<String, dynamic>())).input(),
-      intent: map['intent'] == null ? null : (V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchNextStepIntent.fromMap((map['intent'] as Map).cast<String, dynamic>())).input(),
-      sessionAttributes: map['sessionAttributes'] == null ? null : ((map['sessionAttributes'] as Map).cast<String, String>()).input(),
+      dialogAction: map['dialogAction'] == null ? null : ((V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchNextStepDialogAction.fromMap((map['dialogAction']! as Map).cast<String, dynamic>())).input()).input(),
+      intent: map['intent'] == null ? null : ((V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchNextStepIntent.fromMap((map['intent']! as Map).cast<String, dynamic>())).input()).input(),
+      sessionAttributes: map['sessionAttributes'] == null ? null : (((map['sessionAttributes'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

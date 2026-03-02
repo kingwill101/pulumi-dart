@@ -27,7 +27,7 @@ class ClientInfo {
 
   factory ClientInfo.fromMap(Map<String, dynamic> map) {
     return ClientInfo(
-      clientInfoDetails: map['clientInfoDetails'] == null ? null : (pulumi.Input.decodeList<ClientInfoDetail>(map['clientInfoDetails'], (value) => ClientInfoDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientInfoDetails: map['clientInfoDetails'] == null ? null : (pulumi.Input.decodeList<ClientInfoDetail>(map['clientInfoDetails']!, (value) => ClientInfoDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
     );
   }

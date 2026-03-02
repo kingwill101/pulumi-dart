@@ -61,7 +61,7 @@ class GetCertificatesCertificate {
       fingerprint: (map['fingerprint'] as String).input(),
       id: (map['id'] as int).input(),
       labels: ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       notValidAfter: (map['notValidAfter'] as String).input(),
       notValidBefore: (map['notValidBefore'] as String).input(),
       type: (map['type'] as String).input(),

@@ -35,7 +35,7 @@ class RegionInstanceTemplateServiceAccount {
 
   factory RegionInstanceTemplateServiceAccount.fromMap(Map<String, dynamic> map) {
     return RegionInstanceTemplateServiceAccount(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
       scopes: ((map['scopes'] as List).cast<String>()).input(),
     );
   }

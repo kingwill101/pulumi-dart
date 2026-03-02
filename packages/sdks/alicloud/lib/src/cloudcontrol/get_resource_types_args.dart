@@ -34,8 +34,8 @@ class GetResourceTypesArgs {
 
   factory GetResourceTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceTypesArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
       product: (map['product'] as String).input(),
     );
   }

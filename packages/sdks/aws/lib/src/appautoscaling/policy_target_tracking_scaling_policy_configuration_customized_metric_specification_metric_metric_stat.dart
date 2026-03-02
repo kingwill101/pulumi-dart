@@ -31,9 +31,9 @@ class PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificatio
 
   factory PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStat.fromMap(Map<String, dynamic> map) {
     return PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStat(
-      metric: (PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStatMetric.fromMap((map['metric'] as Map).cast<String, dynamic>())).input(),
+      metric: (PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStatMetric.fromMap((map['metric']! as Map).cast<String, dynamic>())).input(),
       stat: (map['stat'] as String).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      unit: map['unit'] == null ? null : ((map['unit'] as String).input()).input(),
     );
   }
 }

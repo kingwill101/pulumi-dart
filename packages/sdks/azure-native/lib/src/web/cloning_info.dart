@@ -76,17 +76,17 @@ class CloningInfo {
 
   factory CloningInfo.fromMap(Map<String, dynamic> map) {
     return CloningInfo(
-      appSettingsOverrides: map['appSettingsOverrides'] == null ? null : ((map['appSettingsOverrides'] as Map).cast<String, String>()).input(),
-      cloneCustomHostNames: map['cloneCustomHostNames'] == null ? null : (map['cloneCustomHostNames'] as bool).input(),
-      cloneSourceControl: map['cloneSourceControl'] == null ? null : (map['cloneSourceControl'] as bool).input(),
-      configureLoadBalancing: map['configureLoadBalancing'] == null ? null : (map['configureLoadBalancing'] as bool).input(),
-      correlationId: map['correlationId'] == null ? null : (map['correlationId'] as String).input(),
-      hostingEnvironment: map['hostingEnvironment'] == null ? null : (map['hostingEnvironment'] as String).input(),
-      overwrite: map['overwrite'] == null ? null : (map['overwrite'] as bool).input(),
+      appSettingsOverrides: map['appSettingsOverrides'] == null ? null : ((map['appSettingsOverrides']! as Map).cast<String, String>()).input(),
+      cloneCustomHostNames: map['cloneCustomHostNames'] == null ? null : (map['cloneCustomHostNames']! as bool).input(),
+      cloneSourceControl: map['cloneSourceControl'] == null ? null : (map['cloneSourceControl']! as bool).input(),
+      configureLoadBalancing: map['configureLoadBalancing'] == null ? null : (map['configureLoadBalancing']! as bool).input(),
+      correlationId: map['correlationId'] == null ? null : (map['correlationId']! as String).input(),
+      hostingEnvironment: map['hostingEnvironment'] == null ? null : (map['hostingEnvironment']! as String).input(),
+      overwrite: map['overwrite'] == null ? null : (map['overwrite']! as bool).input(),
       sourceWebAppId: (map['sourceWebAppId'] as String).input(),
-      sourceWebAppLocation: map['sourceWebAppLocation'] == null ? null : (map['sourceWebAppLocation'] as String).input(),
-      trafficManagerProfileId: map['trafficManagerProfileId'] == null ? null : (map['trafficManagerProfileId'] as String).input(),
-      trafficManagerProfileName: map['trafficManagerProfileName'] == null ? null : (map['trafficManagerProfileName'] as String).input(),
+      sourceWebAppLocation: map['sourceWebAppLocation'] == null ? null : (map['sourceWebAppLocation']! as String).input(),
+      trafficManagerProfileId: map['trafficManagerProfileId'] == null ? null : (map['trafficManagerProfileId']! as String).input(),
+      trafficManagerProfileName: map['trafficManagerProfileName'] == null ? null : (map['trafficManagerProfileName']! as String).input(),
     );
   }
 }

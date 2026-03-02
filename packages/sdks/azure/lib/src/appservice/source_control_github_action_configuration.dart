@@ -37,10 +37,10 @@ class SourceControlGithubActionConfiguration {
 
   factory SourceControlGithubActionConfiguration.fromMap(Map<String, dynamic> map) {
     return SourceControlGithubActionConfiguration(
-      codeConfiguration: map['codeConfiguration'] == null ? null : (SourceControlGithubActionConfigurationCodeConfiguration.fromMap((map['codeConfiguration'] as Map).cast<String, dynamic>())).input(),
-      containerConfiguration: map['containerConfiguration'] == null ? null : (SourceControlGithubActionConfigurationContainerConfiguration.fromMap((map['containerConfiguration'] as Map).cast<String, dynamic>())).input(),
-      generateWorkflowFile: map['generateWorkflowFile'] == null ? null : (map['generateWorkflowFile'] as bool).input(),
-      linuxAction: map['linuxAction'] == null ? null : (map['linuxAction'] as bool).input(),
+      codeConfiguration: map['codeConfiguration'] == null ? null : (SourceControlGithubActionConfigurationCodeConfiguration.fromMap((map['codeConfiguration']! as Map).cast<String, dynamic>())).input(),
+      containerConfiguration: map['containerConfiguration'] == null ? null : (SourceControlGithubActionConfigurationContainerConfiguration.fromMap((map['containerConfiguration']! as Map).cast<String, dynamic>())).input(),
+      generateWorkflowFile: map['generateWorkflowFile'] == null ? null : (map['generateWorkflowFile']! as bool).input(),
+      linuxAction: map['linuxAction'] == null ? null : (map['linuxAction']! as bool).input(),
     );
   }
 }

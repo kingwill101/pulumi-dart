@@ -22,7 +22,7 @@ class WorkloadConfig {
 
   factory WorkloadConfig.fromMap(Map<String, dynamic> map) {
     return WorkloadConfig(
-      auditMode: map['auditMode'] == null ? null : (WorkloadConfigAuditMode.fromValue(map['auditMode'] as String)).input(),
+      auditMode: map['auditMode'] == null ? null : (WorkloadConfigAuditMode.fromValue(map['auditMode']! as String)).input(),
     );
   }
 }

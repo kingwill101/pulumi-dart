@@ -26,7 +26,7 @@ class ConnectionMonitorSource {
 
   factory ConnectionMonitorSource.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorSource(
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
       resourceId: (map['resourceId'] as String).input(),
     );
   }

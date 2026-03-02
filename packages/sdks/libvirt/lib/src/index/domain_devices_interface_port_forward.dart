@@ -36,10 +36,10 @@ class DomainDevicesInterfacePortForward {
 
   factory DomainDevicesInterfacePortForward.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfacePortForward(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      dev: map['dev'] == null ? null : (map['dev'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      dev: map['dev'] == null ? null : (map['dev']! as String).input(),
       proto: (map['proto'] as String).input(),
-      ranges: map['ranges'] == null ? null : (pulumi.Input.decodeList<DomainDevicesInterfacePortForwardRange>(map['ranges'], (value) => DomainDevicesInterfacePortForwardRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ranges: map['ranges'] == null ? null : (pulumi.Input.decodeList<DomainDevicesInterfacePortForwardRange>(map['ranges']!, (value) => DomainDevicesInterfacePortForwardRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -43,11 +43,11 @@ class EnterpriseCrmEventbusProtoLogSettings {
 
   factory EnterpriseCrmEventbusProtoLogSettings.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoLogSettings(
-      logFieldName: map['logFieldName'] == null ? null : (map['logFieldName'] as String).input(),
-      sanitizeOptions: map['sanitizeOptions'] == null ? null : (EnterpriseCrmLoggingGwsSanitizeOptions.fromMap((map['sanitizeOptions'] as Map).cast<String, dynamic>())).input(),
-      seedPeriod: map['seedPeriod'] == null ? null : (EnterpriseCrmEventbusProtoLogSettingsSeedPeriod.fromValue(map['seedPeriod'] as String)).input(),
-      seedScope: map['seedScope'] == null ? null : (EnterpriseCrmEventbusProtoLogSettingsSeedScope.fromValue(map['seedScope'] as String)).input(),
-      shorteningLimits: map['shorteningLimits'] == null ? null : (EnterpriseCrmLoggingGwsFieldLimits.fromMap((map['shorteningLimits'] as Map).cast<String, dynamic>())).input(),
+      logFieldName: map['logFieldName'] == null ? null : (map['logFieldName']! as String).input(),
+      sanitizeOptions: map['sanitizeOptions'] == null ? null : (EnterpriseCrmLoggingGwsSanitizeOptions.fromMap((map['sanitizeOptions']! as Map).cast<String, dynamic>())).input(),
+      seedPeriod: map['seedPeriod'] == null ? null : (EnterpriseCrmEventbusProtoLogSettingsSeedPeriod.fromValue(map['seedPeriod']! as String)).input(),
+      seedScope: map['seedScope'] == null ? null : (EnterpriseCrmEventbusProtoLogSettingsSeedScope.fromValue(map['seedScope']! as String)).input(),
+      shorteningLimits: map['shorteningLimits'] == null ? null : (EnterpriseCrmLoggingGwsFieldLimits.fromMap((map['shorteningLimits']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

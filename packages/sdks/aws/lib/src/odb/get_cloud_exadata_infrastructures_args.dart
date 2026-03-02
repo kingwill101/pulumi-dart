@@ -24,7 +24,7 @@ class GetCloudExadataInfrastructuresArgs {
 
   factory GetCloudExadataInfrastructuresArgs.fromMap(Map<String, dynamic> map) {
     return GetCloudExadataInfrastructuresArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

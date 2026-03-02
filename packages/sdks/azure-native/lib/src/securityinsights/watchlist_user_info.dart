@@ -21,7 +21,7 @@ class WatchlistUserInfo {
 
   factory WatchlistUserInfo.fromMap(Map<String, dynamic> map) {
     return WatchlistUserInfo(
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
     );
   }
 }

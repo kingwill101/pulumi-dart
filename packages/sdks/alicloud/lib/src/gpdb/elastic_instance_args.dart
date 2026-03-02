@@ -113,24 +113,24 @@ class ElasticInstanceArgs {
 
   factory ElasticInstanceArgs.fromMap(Map<String, dynamic> map) {
     return ElasticInstanceArgs(
-      dbInstanceCategory: map['dbInstanceCategory'] == null ? null : (map['dbInstanceCategory'] as String).input(),
-      dbInstanceDescription: map['dbInstanceDescription'] == null ? null : (map['dbInstanceDescription'] as String).input(),
-      encryptionKey: map['encryptionKey'] == null ? null : (map['encryptionKey'] as String).input(),
-      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType'] as String).input(),
+      dbInstanceCategory: map['dbInstanceCategory'] == null ? null : (map['dbInstanceCategory']! as String).input(),
+      dbInstanceDescription: map['dbInstanceDescription'] == null ? null : (map['dbInstanceDescription']! as String).input(),
+      encryptionKey: map['encryptionKey'] == null ? null : (map['encryptionKey']! as String).input(),
+      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType']! as String).input(),
       engine: (map['engine'] as String).input(),
       engineVersion: (map['engineVersion'] as String).input(),
-      instanceNetworkType: map['instanceNetworkType'] == null ? null : (map['instanceNetworkType'] as String).input(),
+      instanceNetworkType: map['instanceNetworkType'] == null ? null : (map['instanceNetworkType']! as String).input(),
       instanceSpec: (map['instanceSpec'] as String).input(),
-      paymentDuration: map['paymentDuration'] == null ? null : (map['paymentDuration'] as int).input(),
-      paymentDurationUnit: map['paymentDurationUnit'] == null ? null : (map['paymentDurationUnit'] as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      securityIpLists: map['securityIpLists'] == null ? null : ((map['securityIpLists'] as List).cast<String>()).input(),
+      paymentDuration: map['paymentDuration'] == null ? null : (map['paymentDuration']! as int).input(),
+      paymentDurationUnit: map['paymentDurationUnit'] == null ? null : (map['paymentDurationUnit']! as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      securityIpLists: map['securityIpLists'] == null ? null : ((map['securityIpLists']! as List).cast<String>()).input(),
       segNodeNum: (map['segNodeNum'] as int).input(),
       segStorageType: (map['segStorageType'] as String).input(),
       storageSize: (map['storageSize'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vswitchId: (map['vswitchId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

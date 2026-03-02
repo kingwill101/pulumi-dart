@@ -80,16 +80,16 @@ class ManagedSslCertificateState {
 
   factory ManagedSslCertificateState.fromMap(Map<String, dynamic> map) {
     return ManagedSslCertificateState(
-      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as int).input(),
-      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
-      managed: map['managed'] == null ? null : (ManagedSslCertificateManaged.fromMap((map['managed'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : ((map['subjectAlternativeNames'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as int).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
+      managed: map['managed'] == null ? null : (ManagedSslCertificateManaged.fromMap((map['managed']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : ((map['subjectAlternativeNames']! as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

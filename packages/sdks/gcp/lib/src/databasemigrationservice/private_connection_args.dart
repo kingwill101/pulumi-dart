@@ -60,12 +60,12 @@ class PrivateConnectionArgs {
 
   factory PrivateConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateConnectionArgs(
-      createWithoutValidation: map['createWithoutValidation'] == null ? null : (map['createWithoutValidation'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      createWithoutValidation: map['createWithoutValidation'] == null ? null : (map['createWithoutValidation']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
       privateConnectionId: (map['privateConnectionId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       vpcPeeringConfig: (PrivateConnectionVpcPeeringConfig.fromMap((map['vpcPeeringConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }

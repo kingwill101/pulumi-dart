@@ -40,10 +40,10 @@ class EnterpriseKeyWebSettings {
 
   factory EnterpriseKeyWebSettings.fromMap(Map<String, dynamic> map) {
     return EnterpriseKeyWebSettings(
-      allowAllDomains: map['allowAllDomains'] == null ? null : (map['allowAllDomains'] as bool).input(),
-      allowAmpTraffic: map['allowAmpTraffic'] == null ? null : (map['allowAmpTraffic'] as bool).input(),
-      allowedDomains: map['allowedDomains'] == null ? null : ((map['allowedDomains'] as List).cast<String>()).input(),
-      challengeSecurityPreference: map['challengeSecurityPreference'] == null ? null : (map['challengeSecurityPreference'] as String).input(),
+      allowAllDomains: map['allowAllDomains'] == null ? null : (map['allowAllDomains']! as bool).input(),
+      allowAmpTraffic: map['allowAmpTraffic'] == null ? null : (map['allowAmpTraffic']! as bool).input(),
+      allowedDomains: map['allowedDomains'] == null ? null : ((map['allowedDomains']! as List).cast<String>()).input(),
+      challengeSecurityPreference: map['challengeSecurityPreference'] == null ? null : (map['challengeSecurityPreference']! as String).input(),
       integrationType: (map['integrationType'] as String).input(),
     );
   }

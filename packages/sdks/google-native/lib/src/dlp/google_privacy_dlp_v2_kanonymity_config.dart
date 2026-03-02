@@ -28,8 +28,8 @@ class GooglePrivacyDlpV2KAnonymityConfig {
 
   factory GooglePrivacyDlpV2KAnonymityConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2KAnonymityConfig(
-      entityId: map['entityId'] == null ? null : (GooglePrivacyDlpV2EntityId.fromMap((map['entityId'] as Map).cast<String, dynamic>())).input(),
-      quasiIds: map['quasiIds'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2FieldId>(map['quasiIds'], (value) => GooglePrivacyDlpV2FieldId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entityId: map['entityId'] == null ? null : (GooglePrivacyDlpV2EntityId.fromMap((map['entityId']! as Map).cast<String, dynamic>())).input(),
+      quasiIds: map['quasiIds'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2FieldId>(map['quasiIds']!, (value) => GooglePrivacyDlpV2FieldId.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

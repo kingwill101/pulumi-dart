@@ -32,9 +32,9 @@ class DiscoveryConfiguration {
 
   factory DiscoveryConfiguration.fromMap(Map<String, dynamic> map) {
     return DiscoveryConfiguration(
-      centralServerVmId: map['centralServerVmId'] == null ? null : (map['centralServerVmId'] as String).input(),
+      centralServerVmId: map['centralServerVmId'] == null ? null : (map['centralServerVmId']! as String).input(),
       configurationType: (map['configurationType'] as String).input(),
-      managedRgStorageAccountName: map['managedRgStorageAccountName'] == null ? null : (map['managedRgStorageAccountName'] as String).input(),
+      managedRgStorageAccountName: map['managedRgStorageAccountName'] == null ? null : (map['managedRgStorageAccountName']! as String).input(),
     );
   }
 }

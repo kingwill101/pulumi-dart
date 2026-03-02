@@ -30,9 +30,9 @@ class ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMa
 
   factory ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMaxis.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMaxis(
-      partitionKeys: map['partitionKeys'] == null ? null : ((map['partitionKeys'] as List).cast<String>()).input(),
-      tableArn: map['tableArn'] == null ? null : (map['tableArn'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as double).input(),
+      partitionKeys: map['partitionKeys'] == null ? null : (((map['partitionKeys'] as List).cast<String>()).input()).input(),
+      tableArn: map['tableArn'] == null ? null : ((map['tableArn'] as String).input()).input(),
+      value: map['value'] == null ? null : ((map['value'] as double).input()).input(),
     );
   }
 }

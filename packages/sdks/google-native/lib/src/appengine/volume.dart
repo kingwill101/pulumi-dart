@@ -31,9 +31,9 @@ class Volume {
 
   factory Volume.fromMap(Map<String, dynamic> map) {
     return Volume(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb'] as double).input(),
-      volumeType: map['volumeType'] == null ? null : (map['volumeType'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb']! as double).input(),
+      volumeType: map['volumeType'] == null ? null : (map['volumeType']! as String).input(),
     );
   }
 }

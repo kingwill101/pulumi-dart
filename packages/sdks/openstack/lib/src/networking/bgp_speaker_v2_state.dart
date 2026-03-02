@@ -79,16 +79,16 @@ class BgpSpeakerV2State {
 
   factory BgpSpeakerV2State.fromMap(Map<String, dynamic> map) {
     return BgpSpeakerV2State(
-      advertiseFloatingIpHostRoutes: map['advertiseFloatingIpHostRoutes'] == null ? null : (map['advertiseFloatingIpHostRoutes'] as bool).input(),
-      advertiseTenantNetworks: map['advertiseTenantNetworks'] == null ? null : (map['advertiseTenantNetworks'] as bool).input(),
-      advertisedRoutes: map['advertisedRoutes'] == null ? null : (pulumi.Input.decodeList<BgpSpeakerV2AdvertisedRoute>(map['advertisedRoutes'], (value) => BgpSpeakerV2AdvertisedRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as int).input(),
-      localAs: map['localAs'] == null ? null : (map['localAs'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networks: map['networks'] == null ? null : ((map['networks'] as List).cast<String>()).input(),
-      peers: map['peers'] == null ? null : ((map['peers'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      advertiseFloatingIpHostRoutes: map['advertiseFloatingIpHostRoutes'] == null ? null : (map['advertiseFloatingIpHostRoutes']! as bool).input(),
+      advertiseTenantNetworks: map['advertiseTenantNetworks'] == null ? null : (map['advertiseTenantNetworks']! as bool).input(),
+      advertisedRoutes: map['advertisedRoutes'] == null ? null : (pulumi.Input.decodeList<BgpSpeakerV2AdvertisedRoute>(map['advertisedRoutes']!, (value) => BgpSpeakerV2AdvertisedRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as int).input(),
+      localAs: map['localAs'] == null ? null : (map['localAs']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networks: map['networks'] == null ? null : ((map['networks']! as List).cast<String>()).input(),
+      peers: map['peers'] == null ? null : ((map['peers']! as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

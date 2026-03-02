@@ -61,12 +61,12 @@ class CertificateArgs {
     return CertificateArgs(
       automationAccountName: (map['automationAccountName'] as String).input(),
       base64Value: (map['base64Value'] as String).input(),
-      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      isExportable: map['isExportable'] == null ? null : (map['isExportable'] as bool).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      isExportable: map['isExportable'] == null ? null : (map['isExportable']! as bool).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

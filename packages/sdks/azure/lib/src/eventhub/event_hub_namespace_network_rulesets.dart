@@ -45,10 +45,10 @@ class EventHubNamespaceNetworkRulesets {
   factory EventHubNamespaceNetworkRulesets.fromMap(Map<String, dynamic> map) {
     return EventHubNamespaceNetworkRulesets(
       defaultAction: (map['defaultAction'] as String).input(),
-      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<EventHubNamespaceNetworkRulesetsIpRule>(map['ipRules'], (value) => EventHubNamespaceNetworkRulesetsIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
-      trustedServiceAccessEnabled: map['trustedServiceAccessEnabled'] == null ? null : (map['trustedServiceAccessEnabled'] as bool).input(),
-      virtualNetworkRules: map['virtualNetworkRules'] == null ? null : (pulumi.Input.decodeList<EventHubNamespaceNetworkRulesetsVirtualNetworkRule>(map['virtualNetworkRules'], (value) => EventHubNamespaceNetworkRulesetsVirtualNetworkRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<EventHubNamespaceNetworkRulesetsIpRule>(map['ipRules']!, (value) => EventHubNamespaceNetworkRulesetsIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
+      trustedServiceAccessEnabled: map['trustedServiceAccessEnabled'] == null ? null : (map['trustedServiceAccessEnabled']! as bool).input(),
+      virtualNetworkRules: map['virtualNetworkRules'] == null ? null : (pulumi.Input.decodeList<EventHubNamespaceNetworkRulesetsVirtualNetworkRule>(map['virtualNetworkRules']!, (value) => EventHubNamespaceNetworkRulesetsVirtualNetworkRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -75,12 +75,12 @@ class GetIntegrationAccountCertificateResult {
       changedTime: map['changedTime'] as String,
       createdTime: map['createdTime'] as String,
       id: map['id'] as String,
-      key: map['key'] == null ? null : KeyVaultKeyReferenceResponse.fromMap((map['key'] as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location'] as String,
-      metadata: map['metadata'] == null ? null : map['metadata'],
+      key: map['key'] == null ? null : KeyVaultKeyReferenceResponse.fromMap((map['key']! as Map).cast<String, dynamic>()),
+      location: map['location'] == null ? null : map['location']! as String,
+      metadata: map['metadata'] == null ? null : map['metadata']!,
       name: map['name'] as String,
-      publicCertificate: map['publicCertificate'] == null ? null : map['publicCertificate'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      publicCertificate: map['publicCertificate'] == null ? null : map['publicCertificate']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

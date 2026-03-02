@@ -62,13 +62,13 @@ class GremlinResourceGremlinRoleDefinitionArgs {
   factory GremlinResourceGremlinRoleDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GremlinResourceGremlinRoleDefinitionArgs(
       accountName: (map['accountName'] as String).input(),
-      assignableScopes: map['assignableScopes'] == null ? null : ((map['assignableScopes'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<Permission>(map['permissions'], (value) => Permission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      assignableScopes: map['assignableScopes'] == null ? null : ((map['assignableScopes']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<Permission>(map['permissions']!, (value) => Permission.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
-      type: map['type'] == null ? null : (RoleDefinitionType.fromValue(map['type'] as String)).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId']! as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName']! as String).input(),
+      type: map['type'] == null ? null : (RoleDefinitionType.fromValue(map['type']! as String)).input(),
     );
   }
 }

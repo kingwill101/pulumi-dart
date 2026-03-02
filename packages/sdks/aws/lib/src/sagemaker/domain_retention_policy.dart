@@ -20,7 +20,7 @@ class DomainRetentionPolicy {
 
   factory DomainRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return DomainRetentionPolicy(
-      homeEfsFileSystem: map['homeEfsFileSystem'] == null ? null : (map['homeEfsFileSystem'] as String).input(),
+      homeEfsFileSystem: map['homeEfsFileSystem'] == null ? null : ((map['homeEfsFileSystem'] as String).input()).input(),
     );
   }
 }

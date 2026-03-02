@@ -52,7 +52,7 @@ class CryptoKeyIAMMemberArgs {
 
   factory CryptoKeyIAMMemberArgs.fromMap(Map<String, dynamic> map) {
     return CryptoKeyIAMMemberArgs(
-      condition: map['condition'] == null ? null : (CryptoKeyIAMMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (CryptoKeyIAMMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       cryptoKeyId: (map['cryptoKeyId'] as String).input(),
       member: (map['member'] as String).input(),
       role: (map['role'] as String).input(),

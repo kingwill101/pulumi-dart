@@ -28,8 +28,8 @@ class GatewayConfig {
 
   factory GatewayConfig.fromMap(Map<String, dynamic> map) {
     return GatewayConfig(
-      gatewayAuthMethod: map['gatewayAuthMethod'] == null ? null : (GatewayConfigGatewayAuthMethod.fromValue(map['gatewayAuthMethod'] as String)).input(),
-      gatewayType: map['gatewayType'] == null ? null : (GatewayConfigGatewayType.fromValue(map['gatewayType'] as String)).input(),
+      gatewayAuthMethod: map['gatewayAuthMethod'] == null ? null : (GatewayConfigGatewayAuthMethod.fromValue(map['gatewayAuthMethod']! as String)).input(),
+      gatewayType: map['gatewayType'] == null ? null : (GatewayConfigGatewayType.fromValue(map['gatewayType']! as String)).input(),
     );
   }
 }

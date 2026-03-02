@@ -53,8 +53,8 @@ class PortArgs {
 
   factory PortArgs.fromMap(Map<String, dynamic> map) {
     return PortArgs(
-      backendPort: map['backendPort'] == null ? null : (map['backendPort'] as String).input(),
-      config: map['config'] == null ? null : (PortConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      backendPort: map['backendPort'] == null ? null : (map['backendPort']! as String).input(),
+      config: map['config'] == null ? null : (PortConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
       frontendPort: (map['frontendPort'] as String).input(),
       frontendProtocol: (map['frontendProtocol'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),

@@ -87,18 +87,18 @@ class GetLogicalNetworkResult {
   factory GetLogicalNetworkResult.fromMap(Map<String, dynamic> map) {
     return GetLogicalNetworkResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      dhcpOptions: map['dhcpOptions'] == null ? null : LogicalNetworkPropertiesDhcpOptionsResponse.fromMap((map['dhcpOptions'] as Map).cast<String, dynamic>()),
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
+      dhcpOptions: map['dhcpOptions'] == null ? null : LogicalNetworkPropertiesDhcpOptionsResponse.fromMap((map['dhcpOptions']! as Map).cast<String, dynamic>()),
+      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       status: LogicalNetworkStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
-      subnets: map['subnets'] == null ? null : pulumi.Input.decodeList<SubnetResponse>(map['subnets'], (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())),
+      subnets: map['subnets'] == null ? null : pulumi.Input.decodeList<SubnetResponse>(map['subnets']!, (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      vmSwitchName: map['vmSwitchName'] == null ? null : map['vmSwitchName'] as String,
+      vmSwitchName: map['vmSwitchName'] == null ? null : map['vmSwitchName']! as String,
     );
   }
 }

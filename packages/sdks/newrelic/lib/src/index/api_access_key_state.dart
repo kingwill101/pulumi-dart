@@ -55,13 +55,13 @@ class ApiAccessKeyState {
 
   factory ApiAccessKeyState.fromMap(Map<String, dynamic> map) {
     return ApiAccessKeyState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      ingestType: map['ingestType'] == null ? null : (map['ingestType'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      keyType: map['keyType'] == null ? null : (map['keyType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      ingestType: map['ingestType'] == null ? null : (map['ingestType']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      keyType: map['keyType'] == null ? null : (map['keyType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
     );
   }
 }

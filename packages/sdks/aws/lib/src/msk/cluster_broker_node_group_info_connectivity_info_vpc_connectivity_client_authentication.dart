@@ -26,8 +26,8 @@ class ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticat
 
   factory ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication.fromMap(Map<String, dynamic> map) {
     return ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication(
-      sasl: map['sasl'] == null ? null : (ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl.fromMap((map['sasl'] as Map).cast<String, dynamic>())).input(),
-      tls: map['tls'] == null ? null : (map['tls'] as bool).input(),
+      sasl: map['sasl'] == null ? null : ((ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl.fromMap((map['sasl']! as Map).cast<String, dynamic>())).input()).input(),
+      tls: map['tls'] == null ? null : ((map['tls'] as bool).input()).input(),
     );
   }
 }

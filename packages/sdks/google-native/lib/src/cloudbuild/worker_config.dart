@@ -26,8 +26,8 @@ class WorkerConfig {
 
   factory WorkerConfig.fromMap(Map<String, dynamic> map) {
     return WorkerConfig(
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as String).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as String).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
     );
   }
 }

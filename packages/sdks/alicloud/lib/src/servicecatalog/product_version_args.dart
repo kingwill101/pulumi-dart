@@ -54,9 +54,9 @@ class ProductVersionArgs {
 
   factory ProductVersionArgs.fromMap(Map<String, dynamic> map) {
     return ProductVersionArgs(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      guidance: map['guidance'] == null ? null : (map['guidance'] as String).input(),
+      active: map['active'] == null ? null : (map['active']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      guidance: map['guidance'] == null ? null : (map['guidance']! as String).input(),
       productId: (map['productId'] as String).input(),
       productVersionName: (map['productVersionName'] as String).input(),
       templateType: (map['templateType'] as String).input(),

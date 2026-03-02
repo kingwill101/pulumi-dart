@@ -96,18 +96,18 @@ class StoragePoolArgs {
 
   factory StoragePoolArgs.fromMap(Map<String, dynamic> map) {
     return StoragePoolArgs(
-      capacityProvisioningType: map['capacityProvisioningType'] == null ? null : (map['capacityProvisioningType'] as String).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      performanceProvisioningType: map['performanceProvisioningType'] == null ? null : (map['performanceProvisioningType'] as String).input(),
+      capacityProvisioningType: map['capacityProvisioningType'] == null ? null : (map['capacityProvisioningType']! as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      performanceProvisioningType: map['performanceProvisioningType'] == null ? null : (map['performanceProvisioningType']! as String).input(),
       poolProvisionedCapacityGb: (map['poolProvisionedCapacityGb'] as String).input(),
-      poolProvisionedIops: map['poolProvisionedIops'] == null ? null : (map['poolProvisionedIops'] as String).input(),
+      poolProvisionedIops: map['poolProvisionedIops'] == null ? null : (map['poolProvisionedIops']! as String).input(),
       poolProvisionedThroughput: (map['poolProvisionedThroughput'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       storagePoolType: (map['storagePoolType'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

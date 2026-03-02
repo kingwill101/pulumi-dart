@@ -37,10 +37,10 @@ class DomainDevicesConsoleSourceUnix {
 
   factory DomainDevicesConsoleSourceUnix.fromMap(Map<String, dynamic> map) {
     return DomainDevicesConsoleSourceUnix(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      reconnect: map['reconnect'] == null ? null : (DomainDevicesConsoleSourceUnixReconnect.fromMap((map['reconnect'] as Map).cast<String, dynamic>())).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesConsoleSourceUnixSecLabel>(map['secLabels'], (value) => DomainDevicesConsoleSourceUnixSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      reconnect: map['reconnect'] == null ? null : (DomainDevicesConsoleSourceUnixReconnect.fromMap((map['reconnect']! as Map).cast<String, dynamic>())).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesConsoleSourceUnixSecLabel>(map['secLabels']!, (value) => DomainDevicesConsoleSourceUnixSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -45,11 +45,11 @@ class EdgeSiteArgs {
 
   factory EdgeSiteArgs.fromMap(Map<String, dynamic> map) {
     return EdgeSiteArgs(
-      edgeSiteName: map['edgeSiteName'] == null ? null : (map['edgeSiteName'] as String).input(),
+      edgeSiteName: map['edgeSiteName'] == null ? null : (map['edgeSiteName']! as String).input(),
       globalCommunicationsSite: (EdgeSitesPropertiesGlobalCommunicationsSite.fromMap((map['globalCommunicationsSite'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class ScheduledQueryRuleCriteria {
 
   factory ScheduledQueryRuleCriteria.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryRuleCriteria(
-      allOf: map['allOf'] == null ? null : (pulumi.Input.decodeList<Condition>(map['allOf'], (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allOf: map['allOf'] == null ? null : (pulumi.Input.decodeList<Condition>(map['allOf']!, (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

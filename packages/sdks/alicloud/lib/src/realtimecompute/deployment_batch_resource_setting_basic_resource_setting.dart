@@ -29,9 +29,9 @@ class DeploymentBatchResourceSettingBasicResourceSetting {
 
   factory DeploymentBatchResourceSettingBasicResourceSetting.fromMap(Map<String, dynamic> map) {
     return DeploymentBatchResourceSettingBasicResourceSetting(
-      jobmanagerResourceSettingSpec: map['jobmanagerResourceSettingSpec'] == null ? null : (DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec.fromMap((map['jobmanagerResourceSettingSpec'] as Map).cast<String, dynamic>())).input(),
-      parallelism: map['parallelism'] == null ? null : (map['parallelism'] as int).input(),
-      taskmanagerResourceSettingSpec: map['taskmanagerResourceSettingSpec'] == null ? null : (DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec.fromMap((map['taskmanagerResourceSettingSpec'] as Map).cast<String, dynamic>())).input(),
+      jobmanagerResourceSettingSpec: map['jobmanagerResourceSettingSpec'] == null ? null : (DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec.fromMap((map['jobmanagerResourceSettingSpec']! as Map).cast<String, dynamic>())).input(),
+      parallelism: map['parallelism'] == null ? null : (map['parallelism']! as int).input(),
+      taskmanagerResourceSettingSpec: map['taskmanagerResourceSettingSpec'] == null ? null : (DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec.fromMap((map['taskmanagerResourceSettingSpec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

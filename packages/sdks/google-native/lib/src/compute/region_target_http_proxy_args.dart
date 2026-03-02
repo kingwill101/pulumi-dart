@@ -62,15 +62,15 @@ class RegionTargetHttpProxyArgs {
 
   factory RegionTargetHttpProxyArgs.fromMap(Map<String, dynamic> map) {
     return RegionTargetHttpProxyArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      httpFilters: map['httpFilters'] == null ? null : ((map['httpFilters'] as List).cast<String>()).input(),
-      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : (map['httpKeepAliveTimeoutSec'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      proxyBind: map['proxyBind'] == null ? null : (map['proxyBind'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      httpFilters: map['httpFilters'] == null ? null : ((map['httpFilters']! as List).cast<String>()).input(),
+      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : (map['httpKeepAliveTimeoutSec']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      proxyBind: map['proxyBind'] == null ? null : (map['proxyBind']! as bool).input(),
       region: (map['region'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      urlMap: map['urlMap'] == null ? null : (map['urlMap'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      urlMap: map['urlMap'] == null ? null : (map['urlMap']! as String).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class GroupMetricRuleEscalations {
 
   factory GroupMetricRuleEscalations.fromMap(Map<String, dynamic> map) {
     return GroupMetricRuleEscalations(
-      critical: map['critical'] == null ? null : (GroupMetricRuleEscalationsCritical.fromMap((map['critical'] as Map).cast<String, dynamic>())).input(),
-      info: map['info'] == null ? null : (GroupMetricRuleEscalationsInfo.fromMap((map['info'] as Map).cast<String, dynamic>())).input(),
-      warn: map['warn'] == null ? null : (GroupMetricRuleEscalationsWarn.fromMap((map['warn'] as Map).cast<String, dynamic>())).input(),
+      critical: map['critical'] == null ? null : (GroupMetricRuleEscalationsCritical.fromMap((map['critical']! as Map).cast<String, dynamic>())).input(),
+      info: map['info'] == null ? null : (GroupMetricRuleEscalationsInfo.fromMap((map['info']! as Map).cast<String, dynamic>())).input(),
+      warn: map['warn'] == null ? null : (GroupMetricRuleEscalationsWarn.fromMap((map['warn']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

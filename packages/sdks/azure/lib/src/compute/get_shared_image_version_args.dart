@@ -57,8 +57,8 @@ class GetSharedImageVersionArgs {
       imageName: (map['imageName'] as String).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sortVersionsBySemver: map['sortVersionsBySemver'] == null ? null : (map['sortVersionsBySemver'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sortVersionsBySemver: map['sortVersionsBySemver'] == null ? null : (map['sortVersionsBySemver']! as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

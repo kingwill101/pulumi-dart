@@ -30,7 +30,7 @@ class WebhookScopeConfiguration {
 
   factory WebhookScopeConfiguration.fromMap(Map<String, dynamic> map) {
     return WebhookScopeConfiguration(
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      domain: map['domain'] == null ? null : ((map['domain'] as String).input()).input(),
       name: (map['name'] as String).input(),
       scope: (map['scope'] as String).input(),
     );

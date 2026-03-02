@@ -46,12 +46,12 @@ class LeaseCandidateSpecPatchCoordinationK8sIoV1alpha2 {
 
   factory LeaseCandidateSpecPatchCoordinationK8sIoV1alpha2.fromMap(Map<String, dynamic> map) {
     return LeaseCandidateSpecPatchCoordinationK8sIoV1alpha2(
-      binaryVersion: map['binaryVersion'] == null ? null : (map['binaryVersion'] as String).input(),
-      emulationVersion: map['emulationVersion'] == null ? null : (map['emulationVersion'] as String).input(),
-      leaseName: map['leaseName'] == null ? null : (map['leaseName'] as String).input(),
-      pingTime: map['pingTime'] == null ? null : (map['pingTime'] as String).input(),
-      renewTime: map['renewTime'] == null ? null : (map['renewTime'] as String).input(),
-      strategy: map['strategy'] == null ? null : (map['strategy'] as String).input(),
+      binaryVersion: map['binaryVersion'] == null ? null : (map['binaryVersion']! as String).input(),
+      emulationVersion: map['emulationVersion'] == null ? null : (map['emulationVersion']! as String).input(),
+      leaseName: map['leaseName'] == null ? null : (map['leaseName']! as String).input(),
+      pingTime: map['pingTime'] == null ? null : (map['pingTime']! as String).input(),
+      renewTime: map['renewTime'] == null ? null : (map['renewTime']! as String).input(),
+      strategy: map['strategy'] == null ? null : (map['strategy']! as String).input(),
     );
   }
 }

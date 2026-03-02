@@ -74,16 +74,16 @@ class RatePlanInstanceState {
 
   factory RatePlanInstanceState.fromMap(Map<String, dynamic> map) {
     return RatePlanInstanceState(
-      autoPay: map['autoPay'] == null ? null : (map['autoPay'] as bool).input(),
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      coverage: map['coverage'] == null ? null : (map['coverage'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      instanceStatus: map['instanceStatus'] == null ? null : (map['instanceStatus'] as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      planName: map['planName'] == null ? null : (map['planName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      autoPay: map['autoPay'] == null ? null : (map['autoPay']! as bool).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      coverage: map['coverage'] == null ? null : (map['coverage']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      instanceStatus: map['instanceStatus'] == null ? null : (map['instanceStatus']! as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      planName: map['planName'] == null ? null : (map['planName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

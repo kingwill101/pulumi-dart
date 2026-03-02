@@ -72,7 +72,7 @@ class GetConfigurationKeyResult {
       etag: map['etag'] as String,
       id: map['id'] as String,
       key: map['key'] as String,
-      label: map['label'] == null ? null : map['label'] as String,
+      label: map['label'] == null ? null : map['label']! as String,
       locked: map['locked'] as bool,
       tags: (map['tags'] as Map).cast<String, String>(),
       type: map['type'] as String,

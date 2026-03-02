@@ -33,8 +33,8 @@ class MoveResourcePropertiesResponseMoveStatus {
 
   factory MoveResourcePropertiesResponseMoveStatus.fromMap(Map<String, dynamic> map) {
     return MoveResourcePropertiesResponseMoveStatus(
-      errors: map['errors'] == null ? null : (MoveResourceErrorResponse.fromMap((map['errors'] as Map).cast<String, dynamic>())).input(),
-      jobStatus: map['jobStatus'] == null ? null : (JobStatusResponse.fromMap((map['jobStatus'] as Map).cast<String, dynamic>())).input(),
+      errors: map['errors'] == null ? null : (MoveResourceErrorResponse.fromMap((map['errors']! as Map).cast<String, dynamic>())).input(),
+      jobStatus: map['jobStatus'] == null ? null : (JobStatusResponse.fromMap((map['jobStatus']! as Map).cast<String, dynamic>())).input(),
       moveState: (map['moveState'] as String).input(),
     );
   }

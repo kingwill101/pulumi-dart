@@ -49,12 +49,12 @@ class IndexFirestoreV1beta1Args {
 
   factory IndexFirestoreV1beta1Args.fromMap(Map<String, dynamic> map) {
     return IndexFirestoreV1beta1Args(
-      collectionId: map['collectionId'] == null ? null : (map['collectionId'] as String).input(),
+      collectionId: map['collectionId'] == null ? null : (map['collectionId']! as String).input(),
       databaseId: (map['databaseId'] as String).input(),
-      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<GoogleFirestoreAdminV1beta1IndexField>(map['fields'], (value) => GoogleFirestoreAdminV1beta1IndexField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      state: map['state'] == null ? null : (IndexState.fromValue(map['state'] as String)).input(),
+      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<GoogleFirestoreAdminV1beta1IndexField>(map['fields']!, (value) => GoogleFirestoreAdminV1beta1IndexField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      state: map['state'] == null ? null : (IndexState.fromValue(map['state']! as String)).input(),
     );
   }
 }

@@ -56,12 +56,12 @@ class ExpressRouteCircuitAuthorizationResponse {
 
   factory ExpressRouteCircuitAuthorizationResponse.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitAuthorizationResponse(
-      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey'] as String).input(),
-      authorizationUseStatus: map['authorizationUseStatus'] == null ? null : (map['authorizationUseStatus'] as String).input(),
+      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey']! as String).input(),
+      authorizationUseStatus: map['authorizationUseStatus'] == null ? null : (map['authorizationUseStatus']! as String).input(),
       connectionResourceUri: (map['connectionResourceUri'] as String).input(),
       etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       type: (map['type'] as String).input(),
     );

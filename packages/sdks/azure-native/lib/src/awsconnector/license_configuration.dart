@@ -21,7 +21,7 @@ class LicenseConfiguration {
 
   factory LicenseConfiguration.fromMap(Map<String, dynamic> map) {
     return LicenseConfiguration(
-      licenseConfigurationArn: map['licenseConfigurationArn'] == null ? null : (map['licenseConfigurationArn'] as String).input(),
+      licenseConfigurationArn: map['licenseConfigurationArn'] == null ? null : (map['licenseConfigurationArn']! as String).input(),
     );
   }
 }

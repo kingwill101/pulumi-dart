@@ -26,8 +26,8 @@ class DelegatedAdministratorState {
 
   factory DelegatedAdministratorState.fromMap(Map<String, dynamic> map) {
     return DelegatedAdministratorState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      servicePrincipal: map['servicePrincipal'] == null ? null : (map['servicePrincipal'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      servicePrincipal: map['servicePrincipal'] == null ? null : (map['servicePrincipal']! as String).input(),
     );
   }
 }

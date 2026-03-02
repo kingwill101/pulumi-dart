@@ -41,11 +41,11 @@ class EnvironmentMembershipState {
 
   factory EnvironmentMembershipState.fromMap(Map<String, dynamic> map) {
     return EnvironmentMembershipState(
-      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
-      permissions: map['permissions'] == null ? null : (map['permissions'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      userArn: map['userArn'] == null ? null : (map['userArn'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      environmentId: map['environmentId'] == null ? null : ((map['environmentId'] as String).input()).input(),
+      permissions: map['permissions'] == null ? null : ((map['permissions'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      userArn: map['userArn'] == null ? null : ((map['userArn'] as String).input()).input(),
+      userId: map['userId'] == null ? null : ((map['userId'] as String).input()).input(),
     );
   }
 }

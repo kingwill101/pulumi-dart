@@ -41,10 +41,10 @@ class ResourceClaimPatchResourceK8sIoV1alpha2Args {
 
   factory ResourceClaimPatchResourceK8sIoV1alpha2Args.fromMap(Map<String, dynamic> map) {
     return ResourceClaimPatchResourceK8sIoV1alpha2Args(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      spec: map['spec'] == null ? null : (ResourceClaimSpecPatchResourceK8sIoV1alpha2.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (ResourceClaimSpecPatchResourceK8sIoV1alpha2.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

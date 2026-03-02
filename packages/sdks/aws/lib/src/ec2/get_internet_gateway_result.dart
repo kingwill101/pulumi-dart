@@ -54,8 +54,8 @@ class GetInternetGatewayResult {
   factory GetInternetGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetInternetGatewayResult(
       arn: map['arn'] as String,
-      attachments: pulumi.Input.decodeList<GetInternetGatewayAttachment>(map['attachments'], (value) => GetInternetGatewayAttachment.fromMap((value as Map).cast<String, dynamic>())),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetInternetGatewayFilter>(map['filters'], (value) => GetInternetGatewayFilter.fromMap((value as Map).cast<String, dynamic>())),
+      attachments: pulumi.Input.decodeList<GetInternetGatewayAttachment>(map['attachments']!, (value) => GetInternetGatewayAttachment.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetInternetGatewayFilter>(map['filters']!, (value) => GetInternetGatewayFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       internetGatewayId: map['internetGatewayId'] as String,
       ownerId: map['ownerId'] as String,

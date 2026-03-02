@@ -62,15 +62,15 @@ class ConnectorProfileState {
 
   factory ConnectorProfileState.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      connectionMode: map['connectionMode'] == null ? null : (map['connectionMode'] as String).input(),
-      connectorLabel: map['connectorLabel'] == null ? null : (map['connectorLabel'] as String).input(),
-      connectorProfileConfig: map['connectorProfileConfig'] == null ? null : (ConnectorProfileConnectorProfileConfig.fromMap((map['connectorProfileConfig'] as Map).cast<String, dynamic>())).input(),
-      connectorType: map['connectorType'] == null ? null : (map['connectorType'] as String).input(),
-      credentialsArn: map['credentialsArn'] == null ? null : (map['credentialsArn'] as String).input(),
-      kmsArn: map['kmsArn'] == null ? null : (map['kmsArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      connectionMode: map['connectionMode'] == null ? null : ((map['connectionMode'] as String).input()).input(),
+      connectorLabel: map['connectorLabel'] == null ? null : ((map['connectorLabel'] as String).input()).input(),
+      connectorProfileConfig: map['connectorProfileConfig'] == null ? null : ((ConnectorProfileConnectorProfileConfig.fromMap((map['connectorProfileConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      connectorType: map['connectorType'] == null ? null : ((map['connectorType'] as String).input()).input(),
+      credentialsArn: map['credentialsArn'] == null ? null : ((map['credentialsArn'] as String).input()).input(),
+      kmsArn: map['kmsArn'] == null ? null : ((map['kmsArn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

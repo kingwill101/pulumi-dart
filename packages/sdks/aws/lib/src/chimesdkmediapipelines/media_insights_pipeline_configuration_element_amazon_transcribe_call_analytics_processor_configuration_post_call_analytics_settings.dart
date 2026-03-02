@@ -35,9 +35,9 @@ class MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProc
 
   factory MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationPostCallAnalyticsSettings.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationPostCallAnalyticsSettings(
-      contentRedactionOutput: map['contentRedactionOutput'] == null ? null : (map['contentRedactionOutput'] as String).input(),
+      contentRedactionOutput: map['contentRedactionOutput'] == null ? null : ((map['contentRedactionOutput'] as String).input()).input(),
       dataAccessRoleArn: (map['dataAccessRoleArn'] as String).input(),
-      outputEncryptionKmsKeyId: map['outputEncryptionKmsKeyId'] == null ? null : (map['outputEncryptionKmsKeyId'] as String).input(),
+      outputEncryptionKmsKeyId: map['outputEncryptionKmsKeyId'] == null ? null : ((map['outputEncryptionKmsKeyId'] as String).input()).input(),
       outputLocation: (map['outputLocation'] as String).input(),
     );
   }

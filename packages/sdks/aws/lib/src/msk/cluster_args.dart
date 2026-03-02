@@ -96,20 +96,20 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      brokerNodeGroupInfo: (ClusterBrokerNodeGroupInfo.fromMap((map['brokerNodeGroupInfo'] as Map).cast<String, dynamic>())).input(),
-      clientAuthentication: map['clientAuthentication'] == null ? null : (ClusterClientAuthentication.fromMap((map['clientAuthentication'] as Map).cast<String, dynamic>())).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      configurationInfo: map['configurationInfo'] == null ? null : (ClusterConfigurationInfo.fromMap((map['configurationInfo'] as Map).cast<String, dynamic>())).input(),
-      encryptionInfo: map['encryptionInfo'] == null ? null : (ClusterEncryptionInfo.fromMap((map['encryptionInfo'] as Map).cast<String, dynamic>())).input(),
-      enhancedMonitoring: map['enhancedMonitoring'] == null ? null : (map['enhancedMonitoring'] as String).input(),
+      brokerNodeGroupInfo: (ClusterBrokerNodeGroupInfo.fromMap((map['brokerNodeGroupInfo']! as Map).cast<String, dynamic>())).input(),
+      clientAuthentication: map['clientAuthentication'] == null ? null : ((ClusterClientAuthentication.fromMap((map['clientAuthentication']! as Map).cast<String, dynamic>())).input()).input(),
+      clusterName: map['clusterName'] == null ? null : ((map['clusterName'] as String).input()).input(),
+      configurationInfo: map['configurationInfo'] == null ? null : ((ClusterConfigurationInfo.fromMap((map['configurationInfo']! as Map).cast<String, dynamic>())).input()).input(),
+      encryptionInfo: map['encryptionInfo'] == null ? null : ((ClusterEncryptionInfo.fromMap((map['encryptionInfo']! as Map).cast<String, dynamic>())).input()).input(),
+      enhancedMonitoring: map['enhancedMonitoring'] == null ? null : ((map['enhancedMonitoring'] as String).input()).input(),
       kafkaVersion: (map['kafkaVersion'] as String).input(),
-      loggingInfo: map['loggingInfo'] == null ? null : (ClusterLoggingInfo.fromMap((map['loggingInfo'] as Map).cast<String, dynamic>())).input(),
+      loggingInfo: map['loggingInfo'] == null ? null : ((ClusterLoggingInfo.fromMap((map['loggingInfo']! as Map).cast<String, dynamic>())).input()).input(),
       numberOfBrokerNodes: (map['numberOfBrokerNodes'] as int).input(),
-      openMonitoring: map['openMonitoring'] == null ? null : (ClusterOpenMonitoring.fromMap((map['openMonitoring'] as Map).cast<String, dynamic>())).input(),
-      rebalancing: map['rebalancing'] == null ? null : (ClusterRebalancing.fromMap((map['rebalancing'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      storageMode: map['storageMode'] == null ? null : (map['storageMode'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      openMonitoring: map['openMonitoring'] == null ? null : ((ClusterOpenMonitoring.fromMap((map['openMonitoring']! as Map).cast<String, dynamic>())).input()).input(),
+      rebalancing: map['rebalancing'] == null ? null : ((ClusterRebalancing.fromMap((map['rebalancing']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      storageMode: map['storageMode'] == null ? null : ((map['storageMode'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class AggregateRouteConfigurationResponse {
 
   factory AggregateRouteConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AggregateRouteConfigurationResponse(
-      ipv4Routes: map['ipv4Routes'] == null ? null : (pulumi.Input.decodeList<AggregateRouteResponse>(map['ipv4Routes'], (value) => AggregateRouteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipv6Routes: map['ipv6Routes'] == null ? null : (pulumi.Input.decodeList<AggregateRouteResponse>(map['ipv6Routes'], (value) => AggregateRouteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipv4Routes: map['ipv4Routes'] == null ? null : (pulumi.Input.decodeList<AggregateRouteResponse>(map['ipv4Routes']!, (value) => AggregateRouteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipv6Routes: map['ipv6Routes'] == null ? null : (pulumi.Input.decodeList<AggregateRouteResponse>(map['ipv6Routes']!, (value) => AggregateRouteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

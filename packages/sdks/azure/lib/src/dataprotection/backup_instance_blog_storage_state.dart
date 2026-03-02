@@ -53,13 +53,13 @@ class BackupInstanceBlogStorageState {
 
   factory BackupInstanceBlogStorageState.fromMap(Map<String, dynamic> map) {
     return BackupInstanceBlogStorageState(
-      backupPolicyId: map['backupPolicyId'] == null ? null : (map['backupPolicyId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protectionState: map['protectionState'] == null ? null : (map['protectionState'] as String).input(),
-      storageAccountContainerNames: map['storageAccountContainerNames'] == null ? null : ((map['storageAccountContainerNames'] as List).cast<String>()).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
-      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
+      backupPolicyId: map['backupPolicyId'] == null ? null : (map['backupPolicyId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protectionState: map['protectionState'] == null ? null : (map['protectionState']! as String).input(),
+      storageAccountContainerNames: map['storageAccountContainerNames'] == null ? null : ((map['storageAccountContainerNames']! as List).cast<String>()).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId']! as String).input(),
     );
   }
 }

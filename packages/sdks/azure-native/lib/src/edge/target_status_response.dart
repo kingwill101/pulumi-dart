@@ -32,9 +32,9 @@ class TargetStatusResponse {
 
   factory TargetStatusResponse.fromMap(Map<String, dynamic> map) {
     return TargetStatusResponse(
-      componentStatuses: map['componentStatuses'] == null ? null : (pulumi.Input.decodeList<ComponentStatusResponse>(map['componentStatuses'], (value) => ComponentStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      componentStatuses: map['componentStatuses'] == null ? null : (pulumi.Input.decodeList<ComponentStatusResponse>(map['componentStatuses']!, (value) => ComponentStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

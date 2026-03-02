@@ -41,8 +41,8 @@ class LogDestinationPolicyArgs {
     return LogDestinationPolicyArgs(
       accessPolicy: (map['accessPolicy'] as String).input(),
       destinationName: (map['destinationName'] as String).input(),
-      forceUpdate: map['forceUpdate'] == null ? null : (map['forceUpdate'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      forceUpdate: map['forceUpdate'] == null ? null : ((map['forceUpdate'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

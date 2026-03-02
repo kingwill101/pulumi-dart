@@ -32,7 +32,7 @@ class AutoscaleSettingProfileFixedDate {
     return AutoscaleSettingProfileFixedDate(
       end: (map['end'] as String).input(),
       start: (map['start'] as String).input(),
-      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
+      timezone: map['timezone'] == null ? null : (map['timezone']! as String).input(),
     );
   }
 }

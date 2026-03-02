@@ -59,12 +59,12 @@ class GetGatewayVcoRoutesResult {
     return GetGatewayVcoRoutesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      routeEntryType: map['routeEntryType'] == null ? null : map['routeEntryType'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      routeEntryType: map['routeEntryType'] == null ? null : map['routeEntryType']! as String,
       routes: pulumi.Input.decodeList<GetGatewayVcoRoutesRoute>(map['routes'], (value) => GetGatewayVcoRoutesRoute.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
       vpnConnectionId: map['vpnConnectionId'] as String,
     );
   }

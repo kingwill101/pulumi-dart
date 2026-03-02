@@ -80,17 +80,17 @@ class LicenseConfigState {
 
   factory LicenseConfigState.fromMap(Map<String, dynamic> map) {
     return LicenseConfigState(
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      endDate: map['endDate'] == null ? null : (LicenseConfigEndDate.fromMap((map['endDate'] as Map).cast<String, dynamic>())).input(),
-      freeTrial: map['freeTrial'] == null ? null : (map['freeTrial'] as bool).input(),
-      licenseConfigId: map['licenseConfigId'] == null ? null : (map['licenseConfigId'] as String).input(),
-      licenseCount: map['licenseCount'] == null ? null : (map['licenseCount'] as int).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      startDate: map['startDate'] == null ? null : (LicenseConfigStartDate.fromMap((map['startDate'] as Map).cast<String, dynamic>())).input(),
-      subscriptionTerm: map['subscriptionTerm'] == null ? null : (map['subscriptionTerm'] as String).input(),
-      subscriptionTier: map['subscriptionTier'] == null ? null : (map['subscriptionTier'] as String).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      endDate: map['endDate'] == null ? null : (LicenseConfigEndDate.fromMap((map['endDate']! as Map).cast<String, dynamic>())).input(),
+      freeTrial: map['freeTrial'] == null ? null : (map['freeTrial']! as bool).input(),
+      licenseConfigId: map['licenseConfigId'] == null ? null : (map['licenseConfigId']! as String).input(),
+      licenseCount: map['licenseCount'] == null ? null : (map['licenseCount']! as int).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      startDate: map['startDate'] == null ? null : (LicenseConfigStartDate.fromMap((map['startDate']! as Map).cast<String, dynamic>())).input(),
+      subscriptionTerm: map['subscriptionTerm'] == null ? null : (map['subscriptionTerm']! as String).input(),
+      subscriptionTier: map['subscriptionTier'] == null ? null : (map['subscriptionTier']! as String).input(),
     );
   }
 }

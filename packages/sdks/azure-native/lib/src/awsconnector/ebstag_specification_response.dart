@@ -32,9 +32,9 @@ class EBSTagSpecificationResponse {
 
   factory EBSTagSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return EBSTagSpecificationResponse(
-      propagateTags: map['propagateTags'] == null ? null : (map['propagateTags'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      propagateTags: map['propagateTags'] == null ? null : (map['propagateTags']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

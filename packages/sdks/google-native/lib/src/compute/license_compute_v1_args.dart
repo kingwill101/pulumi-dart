@@ -48,12 +48,12 @@ class LicenseComputeV1Args {
 
   factory LicenseComputeV1Args.fromMap(Map<String, dynamic> map) {
     return LicenseComputeV1Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      resourceRequirements: map['resourceRequirements'] == null ? null : (LicenseResourceRequirementsComputeV1.fromMap((map['resourceRequirements'] as Map).cast<String, dynamic>())).input(),
-      transferable: map['transferable'] == null ? null : (map['transferable'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      resourceRequirements: map['resourceRequirements'] == null ? null : (LicenseResourceRequirementsComputeV1.fromMap((map['resourceRequirements']! as Map).cast<String, dynamic>())).input(),
+      transferable: map['transferable'] == null ? null : (map['transferable']! as bool).input(),
     );
   }
 }

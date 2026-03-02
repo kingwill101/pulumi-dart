@@ -32,8 +32,8 @@ class ScaleStatus {
   factory ScaleStatus.fromMap(Map<String, dynamic> map) {
     return ScaleStatus(
       replicas: (map['replicas'] as int).input(),
-      selector: map['selector'] == null ? null : ((map['selector'] as Map).cast<String, String>()).input(),
-      targetSelector: map['targetSelector'] == null ? null : (map['targetSelector'] as String).input(),
+      selector: map['selector'] == null ? null : ((map['selector']! as Map).cast<String, String>()).input(),
+      targetSelector: map['targetSelector'] == null ? null : (map['targetSelector']! as String).input(),
     );
   }
 }

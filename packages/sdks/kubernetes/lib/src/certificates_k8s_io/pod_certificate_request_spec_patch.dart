@@ -95,17 +95,17 @@ class PodCertificateRequestSpecPatch {
 
   factory PodCertificateRequestSpecPatch.fromMap(Map<String, dynamic> map) {
     return PodCertificateRequestSpecPatch(
-      maxExpirationSeconds: map['maxExpirationSeconds'] == null ? null : (map['maxExpirationSeconds'] as int).input(),
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
-      nodeUID: map['nodeUID'] == null ? null : (map['nodeUID'] as String).input(),
-      pkixPublicKey: map['pkixPublicKey'] == null ? null : (map['pkixPublicKey'] as String).input(),
-      podName: map['podName'] == null ? null : (map['podName'] as String).input(),
-      podUID: map['podUID'] == null ? null : (map['podUID'] as String).input(),
-      proofOfPossession: map['proofOfPossession'] == null ? null : (map['proofOfPossession'] as String).input(),
-      serviceAccountName: map['serviceAccountName'] == null ? null : (map['serviceAccountName'] as String).input(),
-      serviceAccountUID: map['serviceAccountUID'] == null ? null : (map['serviceAccountUID'] as String).input(),
-      signerName: map['signerName'] == null ? null : (map['signerName'] as String).input(),
-      unverifiedUserAnnotations: map['unverifiedUserAnnotations'] == null ? null : ((map['unverifiedUserAnnotations'] as Map).cast<String, String>()).input(),
+      maxExpirationSeconds: map['maxExpirationSeconds'] == null ? null : (map['maxExpirationSeconds']! as int).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
+      nodeUID: map['nodeUID'] == null ? null : (map['nodeUID']! as String).input(),
+      pkixPublicKey: map['pkixPublicKey'] == null ? null : (map['pkixPublicKey']! as String).input(),
+      podName: map['podName'] == null ? null : (map['podName']! as String).input(),
+      podUID: map['podUID'] == null ? null : (map['podUID']! as String).input(),
+      proofOfPossession: map['proofOfPossession'] == null ? null : (map['proofOfPossession']! as String).input(),
+      serviceAccountName: map['serviceAccountName'] == null ? null : (map['serviceAccountName']! as String).input(),
+      serviceAccountUID: map['serviceAccountUID'] == null ? null : (map['serviceAccountUID']! as String).input(),
+      signerName: map['signerName'] == null ? null : (map['signerName']! as String).input(),
+      unverifiedUserAnnotations: map['unverifiedUserAnnotations'] == null ? null : ((map['unverifiedUserAnnotations']! as Map).cast<String, String>()).input(),
     );
   }
 }

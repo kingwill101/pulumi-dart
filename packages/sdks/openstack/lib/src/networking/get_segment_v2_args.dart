@@ -67,15 +67,15 @@ class GetSegmentV2Args {
 
   factory GetSegmentV2Args.fromMap(Map<String, dynamic> map) {
     return GetSegmentV2Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkId: map['networkId'] == null ? null : (map['networkId'] as String).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
-      physicalNetwork: map['physicalNetwork'] == null ? null : (map['physicalNetwork'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      revisionNumber: map['revisionNumber'] == null ? null : (map['revisionNumber'] as int).input(),
-      segmentId: map['segmentId'] == null ? null : (map['segmentId'] as String).input(),
-      segmentationId: map['segmentationId'] == null ? null : (map['segmentationId'] as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId']! as String).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType']! as String).input(),
+      physicalNetwork: map['physicalNetwork'] == null ? null : (map['physicalNetwork']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      revisionNumber: map['revisionNumber'] == null ? null : (map['revisionNumber']! as int).input(),
+      segmentId: map['segmentId'] == null ? null : (map['segmentId']! as String).input(),
+      segmentationId: map['segmentationId'] == null ? null : (map['segmentationId']! as int).input(),
     );
   }
 }

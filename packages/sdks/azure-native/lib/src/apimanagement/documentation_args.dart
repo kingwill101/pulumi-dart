@@ -44,11 +44,11 @@ class DocumentationArgs {
 
   factory DocumentationArgs.fromMap(Map<String, dynamic> map) {
     return DocumentationArgs(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      documentationId: map['documentationId'] == null ? null : (map['documentationId'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      documentationId: map['documentationId'] == null ? null : (map['documentationId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

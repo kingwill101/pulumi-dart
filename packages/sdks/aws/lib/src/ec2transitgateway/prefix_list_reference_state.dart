@@ -47,12 +47,12 @@ class PrefixListReferenceState {
 
   factory PrefixListReferenceState.fromMap(Map<String, dynamic> map) {
     return PrefixListReferenceState(
-      blackhole: map['blackhole'] == null ? null : (map['blackhole'] as bool).input(),
-      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId'] as String).input(),
-      prefixListOwnerId: map['prefixListOwnerId'] == null ? null : (map['prefixListOwnerId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : (map['transitGatewayAttachmentId'] as String).input(),
-      transitGatewayRouteTableId: map['transitGatewayRouteTableId'] == null ? null : (map['transitGatewayRouteTableId'] as String).input(),
+      blackhole: map['blackhole'] == null ? null : ((map['blackhole'] as bool).input()).input(),
+      prefixListId: map['prefixListId'] == null ? null : ((map['prefixListId'] as String).input()).input(),
+      prefixListOwnerId: map['prefixListOwnerId'] == null ? null : ((map['prefixListOwnerId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : ((map['transitGatewayAttachmentId'] as String).input()).input(),
+      transitGatewayRouteTableId: map['transitGatewayRouteTableId'] == null ? null : ((map['transitGatewayRouteTableId'] as String).input()).input(),
     );
   }
 }

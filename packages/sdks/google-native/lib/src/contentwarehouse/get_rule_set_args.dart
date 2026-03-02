@@ -32,7 +32,7 @@ class GetRuleSetArgs {
   factory GetRuleSetArgs.fromMap(Map<String, dynamic> map) {
     return GetRuleSetArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       ruleSetId: (map['ruleSetId'] as String).input(),
     );
   }

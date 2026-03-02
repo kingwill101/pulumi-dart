@@ -22,7 +22,7 @@ class AnnotationSource {
 
   factory AnnotationSource.fromMap(Map<String, dynamic> map) {
     return AnnotationSource(
-      cloudHealthcareSource: map['cloudHealthcareSource'] == null ? null : (CloudHealthcareSource.fromMap((map['cloudHealthcareSource'] as Map).cast<String, dynamic>())).input(),
+      cloudHealthcareSource: map['cloudHealthcareSource'] == null ? null : (CloudHealthcareSource.fromMap((map['cloudHealthcareSource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class GlobalSecondaryIndexProvisionedThroughput {
 
   factory GlobalSecondaryIndexProvisionedThroughput.fromMap(Map<String, dynamic> map) {
     return GlobalSecondaryIndexProvisionedThroughput(
-      readCapacityUnits: map['readCapacityUnits'] == null ? null : (map['readCapacityUnits'] as int).input(),
-      writeCapacityUnits: map['writeCapacityUnits'] == null ? null : (map['writeCapacityUnits'] as int).input(),
+      readCapacityUnits: map['readCapacityUnits'] == null ? null : ((map['readCapacityUnits'] as int).input()).input(),
+      writeCapacityUnits: map['writeCapacityUnits'] == null ? null : ((map['writeCapacityUnits'] as int).input()).input(),
     );
   }
 }

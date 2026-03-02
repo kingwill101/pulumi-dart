@@ -38,10 +38,10 @@ class ZoneFaultSimulationContentResponse {
 
   factory ZoneFaultSimulationContentResponse.fromMap(Map<String, dynamic> map) {
     return ZoneFaultSimulationContentResponse(
-      constraints: map['constraints'] == null ? null : (FaultSimulationConstraintsResponse.fromMap((map['constraints'] as Map).cast<String, dynamic>())).input(),
+      constraints: map['constraints'] == null ? null : (FaultSimulationConstraintsResponse.fromMap((map['constraints']! as Map).cast<String, dynamic>())).input(),
       faultKind: (map['faultKind'] as String).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

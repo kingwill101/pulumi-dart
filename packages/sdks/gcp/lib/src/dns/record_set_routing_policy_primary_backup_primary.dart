@@ -26,8 +26,8 @@ class RecordSetRoutingPolicyPrimaryBackupPrimary {
 
   factory RecordSetRoutingPolicyPrimaryBackupPrimary.fromMap(Map<String, dynamic> map) {
     return RecordSetRoutingPolicyPrimaryBackupPrimary(
-      externalEndpoints: map['externalEndpoints'] == null ? null : ((map['externalEndpoints'] as List).cast<String>()).input(),
-      internalLoadBalancers: map['internalLoadBalancers'] == null ? null : (pulumi.Input.decodeList<RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer>(map['internalLoadBalancers'], (value) => RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      externalEndpoints: map['externalEndpoints'] == null ? null : ((map['externalEndpoints']! as List).cast<String>()).input(),
+      internalLoadBalancers: map['internalLoadBalancers'] == null ? null : (pulumi.Input.decodeList<RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer>(map['internalLoadBalancers']!, (value) => RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -41,7 +41,7 @@ class ConsumerGroupArgs {
     return ConsumerGroupArgs(
       eventhubEndpointName: (map['eventhubEndpointName'] as String).input(),
       iothubName: (map['iothubName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

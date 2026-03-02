@@ -70,17 +70,17 @@ class GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob {
 
   factory GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob(
-      completedDatasources: map['completedDatasources'] == null ? null : (map['completedDatasources'] as int).input(),
+      completedDatasources: map['completedDatasources'] == null ? null : (map['completedDatasources']! as int).input(),
       createdAt: (map['createdAt'] as String).input(),
-      dataSourceUuids: map['dataSourceUuids'] == null ? null : ((map['dataSourceUuids'] as List).cast<String>()).input(),
+      dataSourceUuids: map['dataSourceUuids'] == null ? null : ((map['dataSourceUuids']! as List).cast<String>()).input(),
       finishedAt: (map['finishedAt'] as String).input(),
       knowledgeBaseUuid: (map['knowledgeBaseUuid'] as String).input(),
-      phase: map['phase'] == null ? null : (map['phase'] as String).input(),
+      phase: map['phase'] == null ? null : (map['phase']! as String).input(),
       startedAt: (map['startedAt'] as String).input(),
-      tokens: map['tokens'] == null ? null : (map['tokens'] as int).input(),
-      totalDatasources: map['totalDatasources'] == null ? null : (map['totalDatasources'] as int).input(),
+      tokens: map['tokens'] == null ? null : (map['tokens']! as int).input(),
+      totalDatasources: map['totalDatasources'] == null ? null : (map['totalDatasources']! as int).input(),
       updatedAt: (map['updatedAt'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

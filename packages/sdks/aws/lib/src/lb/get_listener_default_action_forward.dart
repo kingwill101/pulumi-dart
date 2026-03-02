@@ -25,8 +25,8 @@ class GetListenerDefaultActionForward {
 
   factory GetListenerDefaultActionForward.fromMap(Map<String, dynamic> map) {
     return GetListenerDefaultActionForward(
-      stickinesses: (pulumi.Input.decodeList<GetListenerDefaultActionForwardStickiness>(map['stickinesses'], (value) => GetListenerDefaultActionForwardStickiness.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetGroups: (pulumi.Input.decodeList<GetListenerDefaultActionForwardTargetGroup>(map['targetGroups'], (value) => GetListenerDefaultActionForwardTargetGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stickinesses: (pulumi.Input.decodeList<GetListenerDefaultActionForwardStickiness>(map['stickinesses']!, (value) => GetListenerDefaultActionForwardStickiness.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetGroups: (pulumi.Input.decodeList<GetListenerDefaultActionForwardTargetGroup>(map['targetGroups']!, (value) => GetListenerDefaultActionForwardTargetGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

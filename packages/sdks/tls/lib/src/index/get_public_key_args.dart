@@ -29,8 +29,8 @@ class GetPublicKeyArgs {
 
   factory GetPublicKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicKeyArgs(
-      privateKeyOpenssh: map['privateKeyOpenssh'] == null ? null : (map['privateKeyOpenssh'] as String).input(),
-      privateKeyPem: map['privateKeyPem'] == null ? null : (map['privateKeyPem'] as String).input(),
+      privateKeyOpenssh: map['privateKeyOpenssh'] == null ? null : (map['privateKeyOpenssh']! as String).input(),
+      privateKeyPem: map['privateKeyPem'] == null ? null : (map['privateKeyPem']! as String).input(),
     );
   }
 }

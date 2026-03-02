@@ -64,12 +64,12 @@ class GetNamedValueResult {
       azureApiVersion: map['azureApiVersion'] as String,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
-      keyVault: map['keyVault'] == null ? null : KeyVaultContractPropertiesResponse.fromMap((map['keyVault'] as Map).cast<String, dynamic>()),
+      keyVault: map['keyVault'] == null ? null : KeyVaultContractPropertiesResponse.fromMap((map['keyVault']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      secret: map['secret'] == null ? null : map['secret'] as bool,
-      tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>(),
+      secret: map['secret'] == null ? null : map['secret']! as bool,
+      tags: map['tags'] == null ? null : (map['tags']! as List).cast<String>(),
       type: map['type'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : map['value']! as String,
     );
   }
 }

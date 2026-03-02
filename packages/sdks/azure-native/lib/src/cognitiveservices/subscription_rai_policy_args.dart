@@ -35,9 +35,9 @@ class SubscriptionRaiPolicyArgs {
 
   factory SubscriptionRaiPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionRaiPolicyArgs(
-      properties: map['properties'] == null ? null : (RaiPolicyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      raiPolicyName: map['raiPolicyName'] == null ? null : (map['raiPolicyName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      properties: map['properties'] == null ? null : (RaiPolicyProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      raiPolicyName: map['raiPolicyName'] == null ? null : (map['raiPolicyName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

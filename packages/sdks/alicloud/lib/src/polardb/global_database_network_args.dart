@@ -30,7 +30,7 @@ class GlobalDatabaseNetworkArgs {
   factory GlobalDatabaseNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GlobalDatabaseNetworkArgs(
       dbClusterId: (map['dbClusterId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
     );
   }
 }

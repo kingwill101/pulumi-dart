@@ -67,16 +67,16 @@ class BotAliasState {
 
   factory BotAliasState.fromMap(Map<String, dynamic> map) {
     return BotAliasState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      botName: map['botName'] == null ? null : (map['botName'] as String).input(),
-      botVersion: map['botVersion'] == null ? null : (map['botVersion'] as String).input(),
-      checksum: map['checksum'] == null ? null : (map['checksum'] as String).input(),
-      conversationLogs: map['conversationLogs'] == null ? null : (BotAliasConversationLogs.fromMap((map['conversationLogs'] as Map).cast<String, dynamic>())).input(),
-      createdDate: map['createdDate'] == null ? null : (map['createdDate'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      lastUpdatedDate: map['lastUpdatedDate'] == null ? null : (map['lastUpdatedDate'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      botName: map['botName'] == null ? null : ((map['botName'] as String).input()).input(),
+      botVersion: map['botVersion'] == null ? null : ((map['botVersion'] as String).input()).input(),
+      checksum: map['checksum'] == null ? null : ((map['checksum'] as String).input()).input(),
+      conversationLogs: map['conversationLogs'] == null ? null : ((BotAliasConversationLogs.fromMap((map['conversationLogs']! as Map).cast<String, dynamic>())).input()).input(),
+      createdDate: map['createdDate'] == null ? null : ((map['createdDate'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      lastUpdatedDate: map['lastUpdatedDate'] == null ? null : ((map['lastUpdatedDate'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

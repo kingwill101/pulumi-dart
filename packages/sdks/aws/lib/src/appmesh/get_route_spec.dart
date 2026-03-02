@@ -39,11 +39,11 @@ class GetRouteSpec {
 
   factory GetRouteSpec.fromMap(Map<String, dynamic> map) {
     return GetRouteSpec(
-      grpcRoutes: (pulumi.Input.decodeList<GetRouteSpecGrpcRoute>(map['grpcRoutes'], (value) => GetRouteSpecGrpcRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      http2Routes: (pulumi.Input.decodeList<GetRouteSpecHttp2Route>(map['http2Routes'], (value) => GetRouteSpecHttp2Route.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      httpRoutes: (pulumi.Input.decodeList<GetRouteSpecHttpRoute>(map['httpRoutes'], (value) => GetRouteSpecHttpRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      grpcRoutes: (pulumi.Input.decodeList<GetRouteSpecGrpcRoute>(map['grpcRoutes']!, (value) => GetRouteSpecGrpcRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      http2Routes: (pulumi.Input.decodeList<GetRouteSpecHttp2Route>(map['http2Routes']!, (value) => GetRouteSpecHttp2Route.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      httpRoutes: (pulumi.Input.decodeList<GetRouteSpecHttpRoute>(map['httpRoutes']!, (value) => GetRouteSpecHttpRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
       priority: (map['priority'] as int).input(),
-      tcpRoutes: (pulumi.Input.decodeList<GetRouteSpecTcpRoute>(map['tcpRoutes'], (value) => GetRouteSpecTcpRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tcpRoutes: (pulumi.Input.decodeList<GetRouteSpecTcpRoute>(map['tcpRoutes']!, (value) => GetRouteSpecTcpRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -74,9 +74,9 @@ class GetNetworkResult {
       internalIpv6Range: map['internalIpv6Range'] as String,
       name: map['name'] as String,
       networkId: map['networkId'] as int,
-      networkProfile: map['networkProfile'] == null ? null : map['networkProfile'] as String,
+      networkProfile: map['networkProfile'] == null ? null : map['networkProfile']! as String,
       numericId: map['numericId'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       selfLink: map['selfLink'] as String,
       subnetworksSelfLinks: (map['subnetworksSelfLinks'] as List).cast<String>(),
     );

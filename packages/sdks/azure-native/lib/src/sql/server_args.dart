@@ -101,22 +101,22 @@ class ServerArgs {
 
   factory ServerArgs.fromMap(Map<String, dynamic> map) {
     return ServerArgs(
-      administratorLogin: map['administratorLogin'] == null ? null : (map['administratorLogin'] as String).input(),
-      administratorLoginPassword: map['administratorLoginPassword'] == null ? null : (map['administratorLoginPassword'] as String).input(),
-      administrators: map['administrators'] == null ? null : (ServerExternalAdministrator.fromMap((map['administrators'] as Map).cast<String, dynamic>())).input(),
-      federatedClientId: map['federatedClientId'] == null ? null : (map['federatedClientId'] as String).input(),
-      identity: map['identity'] == null ? null : (ResourceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      isIPv6Enabled: map['isIPv6Enabled'] == null ? null : (map['isIPv6Enabled'] as String).input(),
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      minimalTlsVersion: map['minimalTlsVersion'] == null ? null : (map['minimalTlsVersion'] as String).input(),
-      primaryUserAssignedIdentityId: map['primaryUserAssignedIdentityId'] == null ? null : (map['primaryUserAssignedIdentityId'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      administratorLogin: map['administratorLogin'] == null ? null : (map['administratorLogin']! as String).input(),
+      administratorLoginPassword: map['administratorLoginPassword'] == null ? null : (map['administratorLoginPassword']! as String).input(),
+      administrators: map['administrators'] == null ? null : (ServerExternalAdministrator.fromMap((map['administrators']! as Map).cast<String, dynamic>())).input(),
+      federatedClientId: map['federatedClientId'] == null ? null : (map['federatedClientId']! as String).input(),
+      identity: map['identity'] == null ? null : (ResourceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      isIPv6Enabled: map['isIPv6Enabled'] == null ? null : (map['isIPv6Enabled']! as String).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      minimalTlsVersion: map['minimalTlsVersion'] == null ? null : (map['minimalTlsVersion']! as String).input(),
+      primaryUserAssignedIdentityId: map['primaryUserAssignedIdentityId'] == null ? null : (map['primaryUserAssignedIdentityId']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      restrictOutboundNetworkAccess: map['restrictOutboundNetworkAccess'] == null ? null : (map['restrictOutboundNetworkAccess'] as String).input(),
-      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      restrictOutboundNetworkAccess: map['restrictOutboundNetworkAccess'] == null ? null : (map['restrictOutboundNetworkAccess']! as String).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

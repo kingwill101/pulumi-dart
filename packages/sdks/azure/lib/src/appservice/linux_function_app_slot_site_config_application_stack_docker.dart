@@ -46,9 +46,9 @@ class LinuxFunctionAppSlotSiteConfigApplicationStackDocker {
     return LinuxFunctionAppSlotSiteConfigApplicationStackDocker(
       imageName: (map['imageName'] as String).input(),
       imageTag: (map['imageTag'] as String).input(),
-      registryPassword: map['registryPassword'] == null ? null : (map['registryPassword'] as String).input(),
+      registryPassword: map['registryPassword'] == null ? null : (map['registryPassword']! as String).input(),
       registryUrl: (map['registryUrl'] as String).input(),
-      registryUsername: map['registryUsername'] == null ? null : (map['registryUsername'] as String).input(),
+      registryUsername: map['registryUsername'] == null ? null : (map['registryUsername']! as String).input(),
     );
   }
 }

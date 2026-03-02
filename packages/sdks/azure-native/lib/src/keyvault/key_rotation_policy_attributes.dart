@@ -20,7 +20,7 @@ class KeyRotationPolicyAttributes {
 
   factory KeyRotationPolicyAttributes.fromMap(Map<String, dynamic> map) {
     return KeyRotationPolicyAttributes(
-      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime'] as String).input(),
+      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime']! as String).input(),
     );
   }
 }

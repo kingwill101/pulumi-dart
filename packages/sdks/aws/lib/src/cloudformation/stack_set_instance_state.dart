@@ -79,18 +79,18 @@ class StackSetInstanceState {
 
   factory StackSetInstanceState.fromMap(Map<String, dynamic> map) {
     return StackSetInstanceState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      callAs: map['callAs'] == null ? null : (map['callAs'] as String).input(),
-      deploymentTargets: map['deploymentTargets'] == null ? null : (StackSetInstanceDeploymentTargets.fromMap((map['deploymentTargets'] as Map).cast<String, dynamic>())).input(),
-      operationPreferences: map['operationPreferences'] == null ? null : (StackSetInstanceOperationPreferences.fromMap((map['operationPreferences'] as Map).cast<String, dynamic>())).input(),
-      organizationalUnitId: map['organizationalUnitId'] == null ? null : (map['organizationalUnitId'] as String).input(),
-      parameterOverrides: map['parameterOverrides'] == null ? null : ((map['parameterOverrides'] as Map).cast<String, String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      retainStack: map['retainStack'] == null ? null : (map['retainStack'] as bool).input(),
-      stackId: map['stackId'] == null ? null : (map['stackId'] as String).input(),
-      stackInstanceSummaries: map['stackInstanceSummaries'] == null ? null : (pulumi.Input.decodeList<StackSetInstanceStackInstanceSummary>(map['stackInstanceSummaries'], (value) => StackSetInstanceStackInstanceSummary.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      stackSetInstanceRegion: map['stackSetInstanceRegion'] == null ? null : (map['stackSetInstanceRegion'] as String).input(),
-      stackSetName: map['stackSetName'] == null ? null : (map['stackSetName'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      callAs: map['callAs'] == null ? null : ((map['callAs'] as String).input()).input(),
+      deploymentTargets: map['deploymentTargets'] == null ? null : ((StackSetInstanceDeploymentTargets.fromMap((map['deploymentTargets']! as Map).cast<String, dynamic>())).input()).input(),
+      operationPreferences: map['operationPreferences'] == null ? null : ((StackSetInstanceOperationPreferences.fromMap((map['operationPreferences']! as Map).cast<String, dynamic>())).input()).input(),
+      organizationalUnitId: map['organizationalUnitId'] == null ? null : ((map['organizationalUnitId'] as String).input()).input(),
+      parameterOverrides: map['parameterOverrides'] == null ? null : (((map['parameterOverrides'] as Map).cast<String, String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      retainStack: map['retainStack'] == null ? null : ((map['retainStack'] as bool).input()).input(),
+      stackId: map['stackId'] == null ? null : ((map['stackId'] as String).input()).input(),
+      stackInstanceSummaries: map['stackInstanceSummaries'] == null ? null : ((pulumi.Input.decodeList<StackSetInstanceStackInstanceSummary>(map['stackInstanceSummaries']!, (value) => StackSetInstanceStackInstanceSummary.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      stackSetInstanceRegion: map['stackSetInstanceRegion'] == null ? null : ((map['stackSetInstanceRegion'] as String).input()).input(),
+      stackSetName: map['stackSetName'] == null ? null : ((map['stackSetName'] as String).input()).input(),
     );
   }
 }

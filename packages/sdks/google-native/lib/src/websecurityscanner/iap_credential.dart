@@ -22,7 +22,7 @@ class IapCredential {
 
   factory IapCredential.fromMap(Map<String, dynamic> map) {
     return IapCredential(
-      iapTestServiceAccountInfo: map['iapTestServiceAccountInfo'] == null ? null : (IapTestServiceAccountInfo.fromMap((map['iapTestServiceAccountInfo'] as Map).cast<String, dynamic>())).input(),
+      iapTestServiceAccountInfo: map['iapTestServiceAccountInfo'] == null ? null : (IapTestServiceAccountInfo.fromMap((map['iapTestServiceAccountInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

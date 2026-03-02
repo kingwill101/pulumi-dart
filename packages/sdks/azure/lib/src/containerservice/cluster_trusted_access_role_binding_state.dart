@@ -36,10 +36,10 @@ class ClusterTrustedAccessRoleBindingState {
 
   factory ClusterTrustedAccessRoleBindingState.fromMap(Map<String, dynamic> map) {
     return ClusterTrustedAccessRoleBindingState(
-      kubernetesClusterId: map['kubernetesClusterId'] == null ? null : (map['kubernetesClusterId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      roles: map['roles'] == null ? null : ((map['roles'] as List).cast<String>()).input(),
-      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
+      kubernetesClusterId: map['kubernetesClusterId'] == null ? null : (map['kubernetesClusterId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      roles: map['roles'] == null ? null : ((map['roles']! as List).cast<String>()).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId']! as String).input(),
     );
   }
 }

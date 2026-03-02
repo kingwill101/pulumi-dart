@@ -23,8 +23,8 @@ class LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfiguration {
 
   factory LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfiguration(
-      cmkArn: map['cmkArn'] == null ? null : (map['cmkArn'] as String).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
+      cmkArn: map['cmkArn'] == null ? null : ((map['cmkArn'] as String).input()).input(),
+      encrypted: map['encrypted'] == null ? null : ((map['encrypted'] as bool).input()).input(),
     );
   }
 }

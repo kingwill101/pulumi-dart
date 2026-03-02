@@ -54,13 +54,13 @@ class TemplateSpecArgs {
 
   factory TemplateSpecArgs.fromMap(Map<String, dynamic> map) {
     return TemplateSpecArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      templateSpecName: map['templateSpecName'] == null ? null : (map['templateSpecName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      templateSpecName: map['templateSpecName'] == null ? null : (map['templateSpecName']! as String).input(),
     );
   }
 }

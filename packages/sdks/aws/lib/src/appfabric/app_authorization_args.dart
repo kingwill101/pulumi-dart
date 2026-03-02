@@ -64,11 +64,11 @@ class AppAuthorizationArgs {
       app: (map['app'] as String).input(),
       appBundleArn: (map['appBundleArn'] as String).input(),
       authType: (map['authType'] as String).input(),
-      credential: (AppAuthorizationCredential.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tenants: (pulumi.Input.decodeList<AppAuthorizationTenant>(map['tenants'], (value) => AppAuthorizationTenant.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeouts: map['timeouts'] == null ? null : (AppAuthorizationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      credential: (AppAuthorizationCredential.fromMap((map['credential']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tenants: (pulumi.Input.decodeList<AppAuthorizationTenant>(map['tenants']!, (value) => AppAuthorizationTenant.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeouts: map['timeouts'] == null ? null : ((AppAuthorizationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

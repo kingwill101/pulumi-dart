@@ -50,11 +50,11 @@ class OrganizationNotificationConfigArgs {
   factory OrganizationNotificationConfigArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationNotificationConfigArgs(
       configId: (map['configId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
-      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic'] as String).input(),
-      streamingConfig: map['streamingConfig'] == null ? null : (StreamingConfig.fromMap((map['streamingConfig'] as Map).cast<String, dynamic>())).input(),
+      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic']! as String).input(),
+      streamingConfig: map['streamingConfig'] == null ? null : (StreamingConfig.fromMap((map['streamingConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

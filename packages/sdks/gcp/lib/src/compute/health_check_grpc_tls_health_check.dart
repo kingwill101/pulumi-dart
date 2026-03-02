@@ -44,9 +44,9 @@ class HealthCheckGrpcTlsHealthCheck {
 
   factory HealthCheckGrpcTlsHealthCheck.fromMap(Map<String, dynamic> map) {
     return HealthCheckGrpcTlsHealthCheck(
-      grpcServiceName: map['grpcServiceName'] == null ? null : (map['grpcServiceName'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      portSpecification: map['portSpecification'] == null ? null : (map['portSpecification'] as String).input(),
+      grpcServiceName: map['grpcServiceName'] == null ? null : (map['grpcServiceName']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      portSpecification: map['portSpecification'] == null ? null : (map['portSpecification']! as String).input(),
     );
   }
 }

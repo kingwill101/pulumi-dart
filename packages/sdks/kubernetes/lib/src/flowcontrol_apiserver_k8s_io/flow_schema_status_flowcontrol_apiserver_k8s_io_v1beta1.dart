@@ -22,7 +22,7 @@ class FlowSchemaStatusFlowcontrolApiserverK8sIoV1beta1 {
 
   factory FlowSchemaStatusFlowcontrolApiserverK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return FlowSchemaStatusFlowcontrolApiserverK8sIoV1beta1(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<FlowSchemaConditionFlowcontrolApiserverK8sIoV1beta1>(map['conditions'], (value) => FlowSchemaConditionFlowcontrolApiserverK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<FlowSchemaConditionFlowcontrolApiserverK8sIoV1beta1>(map['conditions']!, (value) => FlowSchemaConditionFlowcontrolApiserverK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

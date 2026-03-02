@@ -49,12 +49,12 @@ class GoogleCloudDatacatalogV1PhysicalSchema {
 
   factory GoogleCloudDatacatalogV1PhysicalSchema.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1PhysicalSchema(
-      avro: map['avro'] == null ? null : (GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema.fromMap((map['avro'] as Map).cast<String, dynamic>())).input(),
-      csv: map['csv'] == null ? null : ((map['csv'] as Map).cast<String, dynamic>()).input(),
-      orc: map['orc'] == null ? null : ((map['orc'] as Map).cast<String, dynamic>()).input(),
-      parquet: map['parquet'] == null ? null : ((map['parquet'] as Map).cast<String, dynamic>()).input(),
-      protobuf: map['protobuf'] == null ? null : (GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema.fromMap((map['protobuf'] as Map).cast<String, dynamic>())).input(),
-      thrift: map['thrift'] == null ? null : (GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema.fromMap((map['thrift'] as Map).cast<String, dynamic>())).input(),
+      avro: map['avro'] == null ? null : (GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema.fromMap((map['avro']! as Map).cast<String, dynamic>())).input(),
+      csv: map['csv'] == null ? null : ((map['csv']! as Map).cast<String, dynamic>()).input(),
+      orc: map['orc'] == null ? null : ((map['orc']! as Map).cast<String, dynamic>()).input(),
+      parquet: map['parquet'] == null ? null : ((map['parquet']! as Map).cast<String, dynamic>()).input(),
+      protobuf: map['protobuf'] == null ? null : (GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema.fromMap((map['protobuf']! as Map).cast<String, dynamic>())).input(),
+      thrift: map['thrift'] == null ? null : (GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema.fromMap((map['thrift']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

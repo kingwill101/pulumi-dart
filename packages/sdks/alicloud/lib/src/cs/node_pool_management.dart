@@ -68,16 +68,16 @@ class NodePoolManagement {
 
   factory NodePoolManagement.fromMap(Map<String, dynamic> map) {
     return NodePoolManagement(
-      autoRepair: map['autoRepair'] == null ? null : (map['autoRepair'] as bool).input(),
-      autoRepairPolicy: map['autoRepairPolicy'] == null ? null : (NodePoolManagementAutoRepairPolicy.fromMap((map['autoRepairPolicy'] as Map).cast<String, dynamic>())).input(),
-      autoUpgrade: map['autoUpgrade'] == null ? null : (map['autoUpgrade'] as bool).input(),
-      autoUpgradePolicy: map['autoUpgradePolicy'] == null ? null : (NodePoolManagementAutoUpgradePolicy.fromMap((map['autoUpgradePolicy'] as Map).cast<String, dynamic>())).input(),
-      autoVulFix: map['autoVulFix'] == null ? null : (map['autoVulFix'] as bool).input(),
-      autoVulFixPolicy: map['autoVulFixPolicy'] == null ? null : (NodePoolManagementAutoVulFixPolicy.fromMap((map['autoVulFixPolicy'] as Map).cast<String, dynamic>())).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable'] as int).input(),
-      surge: map['surge'] == null ? null : (map['surge'] as int).input(),
-      surgePercentage: map['surgePercentage'] == null ? null : (map['surgePercentage'] as int).input(),
+      autoRepair: map['autoRepair'] == null ? null : (map['autoRepair']! as bool).input(),
+      autoRepairPolicy: map['autoRepairPolicy'] == null ? null : (NodePoolManagementAutoRepairPolicy.fromMap((map['autoRepairPolicy']! as Map).cast<String, dynamic>())).input(),
+      autoUpgrade: map['autoUpgrade'] == null ? null : (map['autoUpgrade']! as bool).input(),
+      autoUpgradePolicy: map['autoUpgradePolicy'] == null ? null : (NodePoolManagementAutoUpgradePolicy.fromMap((map['autoUpgradePolicy']! as Map).cast<String, dynamic>())).input(),
+      autoVulFix: map['autoVulFix'] == null ? null : (map['autoVulFix']! as bool).input(),
+      autoVulFixPolicy: map['autoVulFixPolicy'] == null ? null : (NodePoolManagementAutoVulFixPolicy.fromMap((map['autoVulFixPolicy']! as Map).cast<String, dynamic>())).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable']! as int).input(),
+      surge: map['surge'] == null ? null : (map['surge']! as int).input(),
+      surgePercentage: map['surgePercentage'] == null ? null : (map['surgePercentage']! as int).input(),
     );
   }
 }

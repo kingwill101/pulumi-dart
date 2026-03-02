@@ -26,8 +26,8 @@ class SecurityGroupMembershipResponse {
 
   factory SecurityGroupMembershipResponse.fromMap(Map<String, dynamic> map) {
     return SecurityGroupMembershipResponse(
-      securityGroupIdentifier: map['securityGroupIdentifier'] == null ? null : (map['securityGroupIdentifier'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      securityGroupIdentifier: map['securityGroupIdentifier'] == null ? null : (map['securityGroupIdentifier']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -37,10 +37,10 @@ class LogRulesResponse {
 
   factory LogRulesResponse.fromMap(Map<String, dynamic> map) {
     return LogRulesResponse(
-      filteringTags: map['filteringTags'] == null ? null : (pulumi.Input.decodeList<FilteringTagResponse>(map['filteringTags'], (value) => FilteringTagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sendAadLogs: map['sendAadLogs'] == null ? null : (map['sendAadLogs'] as bool).input(),
-      sendResourceLogs: map['sendResourceLogs'] == null ? null : (map['sendResourceLogs'] as bool).input(),
-      sendSubscriptionLogs: map['sendSubscriptionLogs'] == null ? null : (map['sendSubscriptionLogs'] as bool).input(),
+      filteringTags: map['filteringTags'] == null ? null : (pulumi.Input.decodeList<FilteringTagResponse>(map['filteringTags']!, (value) => FilteringTagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sendAadLogs: map['sendAadLogs'] == null ? null : (map['sendAadLogs']! as bool).input(),
+      sendResourceLogs: map['sendResourceLogs'] == null ? null : (map['sendResourceLogs']! as bool).input(),
+      sendSubscriptionLogs: map['sendSubscriptionLogs'] == null ? null : (map['sendSubscriptionLogs']! as bool).input(),
     );
   }
 }

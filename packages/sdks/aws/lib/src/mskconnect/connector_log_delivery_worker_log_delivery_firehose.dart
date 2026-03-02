@@ -25,7 +25,7 @@ class ConnectorLogDeliveryWorkerLogDeliveryFirehose {
 
   factory ConnectorLogDeliveryWorkerLogDeliveryFirehose.fromMap(Map<String, dynamic> map) {
     return ConnectorLogDeliveryWorkerLogDeliveryFirehose(
-      deliveryStream: map['deliveryStream'] == null ? null : (map['deliveryStream'] as String).input(),
+      deliveryStream: map['deliveryStream'] == null ? null : ((map['deliveryStream'] as String).input()).input(),
       enabled: (map['enabled'] as bool).input(),
     );
   }

@@ -50,11 +50,11 @@ class CloudFormationTypeArgs {
 
   factory CloudFormationTypeArgs.fromMap(Map<String, dynamic> map) {
     return CloudFormationTypeArgs(
-      executionRoleArn: map['executionRoleArn'] == null ? null : (map['executionRoleArn'] as String).input(),
-      loggingConfig: map['loggingConfig'] == null ? null : (CloudFormationTypeLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      executionRoleArn: map['executionRoleArn'] == null ? null : ((map['executionRoleArn'] as String).input()).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : ((CloudFormationTypeLoggingConfig.fromMap((map['loggingConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       schemaHandlerPackage: (map['schemaHandlerPackage'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
       typeName: (map['typeName'] as String).input(),
     );
   }

@@ -43,11 +43,11 @@ class GetFloatingIpArgs {
 
   factory GetFloatingIpArgs.fromMap(Map<String, dynamic> map) {
     return GetFloatingIpArgs(
-      id: map['id'] == null ? null : (map['id'] as int).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
-      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
     );
   }
 }

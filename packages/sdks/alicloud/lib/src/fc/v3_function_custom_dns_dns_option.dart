@@ -25,8 +25,8 @@ class V3FunctionCustomDnsDnsOption {
 
   factory V3FunctionCustomDnsDnsOption.fromMap(Map<String, dynamic> map) {
     return V3FunctionCustomDnsDnsOption(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

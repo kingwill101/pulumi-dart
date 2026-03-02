@@ -40,10 +40,10 @@ class MountConfiguration {
 
   factory MountConfiguration.fromMap(Map<String, dynamic> map) {
     return MountConfiguration(
-      azureBlobFileSystemConfiguration: map['azureBlobFileSystemConfiguration'] == null ? null : (AzureBlobFileSystemConfiguration.fromMap((map['azureBlobFileSystemConfiguration'] as Map).cast<String, dynamic>())).input(),
-      azureFileShareConfiguration: map['azureFileShareConfiguration'] == null ? null : (AzureFileShareConfiguration.fromMap((map['azureFileShareConfiguration'] as Map).cast<String, dynamic>())).input(),
-      cifsMountConfiguration: map['cifsMountConfiguration'] == null ? null : (CIFSMountConfiguration.fromMap((map['cifsMountConfiguration'] as Map).cast<String, dynamic>())).input(),
-      nfsMountConfiguration: map['nfsMountConfiguration'] == null ? null : (NFSMountConfiguration.fromMap((map['nfsMountConfiguration'] as Map).cast<String, dynamic>())).input(),
+      azureBlobFileSystemConfiguration: map['azureBlobFileSystemConfiguration'] == null ? null : (AzureBlobFileSystemConfiguration.fromMap((map['azureBlobFileSystemConfiguration']! as Map).cast<String, dynamic>())).input(),
+      azureFileShareConfiguration: map['azureFileShareConfiguration'] == null ? null : (AzureFileShareConfiguration.fromMap((map['azureFileShareConfiguration']! as Map).cast<String, dynamic>())).input(),
+      cifsMountConfiguration: map['cifsMountConfiguration'] == null ? null : (CIFSMountConfiguration.fromMap((map['cifsMountConfiguration']! as Map).cast<String, dynamic>())).input(),
+      nfsMountConfiguration: map['nfsMountConfiguration'] == null ? null : (NFSMountConfiguration.fromMap((map['nfsMountConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

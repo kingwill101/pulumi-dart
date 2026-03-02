@@ -21,7 +21,7 @@ class ProjectVisibilityTypeEnumValue {
 
   factory ProjectVisibilityTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return ProjectVisibilityTypeEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

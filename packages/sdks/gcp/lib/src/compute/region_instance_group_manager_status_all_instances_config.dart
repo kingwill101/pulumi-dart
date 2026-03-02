@@ -25,8 +25,8 @@ class RegionInstanceGroupManagerStatusAllInstancesConfig {
 
   factory RegionInstanceGroupManagerStatusAllInstancesConfig.fromMap(Map<String, dynamic> map) {
     return RegionInstanceGroupManagerStatusAllInstancesConfig(
-      currentRevision: map['currentRevision'] == null ? null : (map['currentRevision'] as String).input(),
-      effective: map['effective'] == null ? null : (map['effective'] as bool).input(),
+      currentRevision: map['currentRevision'] == null ? null : (map['currentRevision']! as String).input(),
+      effective: map['effective'] == null ? null : (map['effective']! as bool).input(),
     );
   }
 }

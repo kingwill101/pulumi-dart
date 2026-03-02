@@ -84,19 +84,19 @@ class RuleState {
 
   factory RuleState.fromMap(Map<String, dynamic> map) {
     return RuleState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      excludeResourceTags: map['excludeResourceTags'] == null ? null : (pulumi.Input.decodeList<RuleExcludeResourceTag>(map['excludeResourceTags'], (value) => RuleExcludeResourceTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lockConfiguration: map['lockConfiguration'] == null ? null : (RuleLockConfiguration.fromMap((map['lockConfiguration'] as Map).cast<String, dynamic>())).input(),
-      lockEndTime: map['lockEndTime'] == null ? null : (map['lockEndTime'] as String).input(),
-      lockState: map['lockState'] == null ? null : (map['lockState'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceTags: map['resourceTags'] == null ? null : (pulumi.Input.decodeList<RuleResourceTag>(map['resourceTags'], (value) => RuleResourceTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      retentionPeriod: map['retentionPeriod'] == null ? null : (RuleRetentionPeriod.fromMap((map['retentionPeriod'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      excludeResourceTags: map['excludeResourceTags'] == null ? null : ((pulumi.Input.decodeList<RuleExcludeResourceTag>(map['excludeResourceTags']!, (value) => RuleExcludeResourceTag.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      lockConfiguration: map['lockConfiguration'] == null ? null : ((RuleLockConfiguration.fromMap((map['lockConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      lockEndTime: map['lockEndTime'] == null ? null : ((map['lockEndTime'] as String).input()).input(),
+      lockState: map['lockState'] == null ? null : ((map['lockState'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceTags: map['resourceTags'] == null ? null : ((pulumi.Input.decodeList<RuleResourceTag>(map['resourceTags']!, (value) => RuleResourceTag.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      resourceType: map['resourceType'] == null ? null : ((map['resourceType'] as String).input()).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : ((RuleRetentionPeriod.fromMap((map['retentionPeriod']! as Map).cast<String, dynamic>())).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class JobCollectionPropertiesResponse {
 
   factory JobCollectionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return JobCollectionPropertiesResponse(
-      quota: map['quota'] == null ? null : (JobCollectionQuotaResponse.fromMap((map['quota'] as Map).cast<String, dynamic>())).input(),
-      sku: map['sku'] == null ? null : (SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      quota: map['quota'] == null ? null : (JobCollectionQuotaResponse.fromMap((map['quota']! as Map).cast<String, dynamic>())).input(),
+      sku: map['sku'] == null ? null : (SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

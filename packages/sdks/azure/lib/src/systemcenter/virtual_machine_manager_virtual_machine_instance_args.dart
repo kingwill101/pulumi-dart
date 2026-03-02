@@ -71,13 +71,13 @@ class VirtualMachineManagerVirtualMachineInstanceArgs {
   factory VirtualMachineManagerVirtualMachineInstanceArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineManagerVirtualMachineInstanceArgs(
       customLocationId: (map['customLocationId'] as String).input(),
-      hardware: map['hardware'] == null ? null : (VirtualMachineManagerVirtualMachineInstanceHardware.fromMap((map['hardware'] as Map).cast<String, dynamic>())).input(),
+      hardware: map['hardware'] == null ? null : (VirtualMachineManagerVirtualMachineInstanceHardware.fromMap((map['hardware']! as Map).cast<String, dynamic>())).input(),
       infrastructure: (VirtualMachineManagerVirtualMachineInstanceInfrastructure.fromMap((map['infrastructure'] as Map).cast<String, dynamic>())).input(),
-      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<VirtualMachineManagerVirtualMachineInstanceNetworkInterface>(map['networkInterfaces'], (value) => VirtualMachineManagerVirtualMachineInstanceNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      operatingSystem: map['operatingSystem'] == null ? null : (VirtualMachineManagerVirtualMachineInstanceOperatingSystem.fromMap((map['operatingSystem'] as Map).cast<String, dynamic>())).input(),
+      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<VirtualMachineManagerVirtualMachineInstanceNetworkInterface>(map['networkInterfaces']!, (value) => VirtualMachineManagerVirtualMachineInstanceNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      operatingSystem: map['operatingSystem'] == null ? null : (VirtualMachineManagerVirtualMachineInstanceOperatingSystem.fromMap((map['operatingSystem']! as Map).cast<String, dynamic>())).input(),
       scopedResourceId: (map['scopedResourceId'] as String).input(),
-      storageDisks: map['storageDisks'] == null ? null : (pulumi.Input.decodeList<VirtualMachineManagerVirtualMachineInstanceStorageDisk>(map['storageDisks'], (value) => VirtualMachineManagerVirtualMachineInstanceStorageDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      systemCenterVirtualMachineManagerAvailabilitySetIds: map['systemCenterVirtualMachineManagerAvailabilitySetIds'] == null ? null : ((map['systemCenterVirtualMachineManagerAvailabilitySetIds'] as List).cast<String>()).input(),
+      storageDisks: map['storageDisks'] == null ? null : (pulumi.Input.decodeList<VirtualMachineManagerVirtualMachineInstanceStorageDisk>(map['storageDisks']!, (value) => VirtualMachineManagerVirtualMachineInstanceStorageDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      systemCenterVirtualMachineManagerAvailabilitySetIds: map['systemCenterVirtualMachineManagerAvailabilitySetIds'] == null ? null : ((map['systemCenterVirtualMachineManagerAvailabilitySetIds']! as List).cast<String>()).input(),
     );
   }
 }

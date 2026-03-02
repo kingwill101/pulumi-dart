@@ -79,16 +79,16 @@ class GetSecretArgs {
 
   factory GetSecretArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretArgs(
-      aclOnly: map['aclOnly'] == null ? null : (map['aclOnly'] as bool).input(),
-      algorithm: map['algorithm'] == null ? null : (map['algorithm'] as String).input(),
-      bitLength: map['bitLength'] == null ? null : (map['bitLength'] as int).input(),
-      createdAtFilter: map['createdAtFilter'] == null ? null : (map['createdAtFilter'] as String).input(),
-      expirationFilter: map['expirationFilter'] == null ? null : (map['expirationFilter'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      secretType: map['secretType'] == null ? null : (map['secretType'] as String).input(),
-      updatedAtFilter: map['updatedAtFilter'] == null ? null : (map['updatedAtFilter'] as String).input(),
+      aclOnly: map['aclOnly'] == null ? null : (map['aclOnly']! as bool).input(),
+      algorithm: map['algorithm'] == null ? null : (map['algorithm']! as String).input(),
+      bitLength: map['bitLength'] == null ? null : (map['bitLength']! as int).input(),
+      createdAtFilter: map['createdAtFilter'] == null ? null : (map['createdAtFilter']! as String).input(),
+      expirationFilter: map['expirationFilter'] == null ? null : (map['expirationFilter']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      secretType: map['secretType'] == null ? null : (map['secretType']! as String).input(),
+      updatedAtFilter: map['updatedAtFilter'] == null ? null : (map['updatedAtFilter']! as String).input(),
     );
   }
 }

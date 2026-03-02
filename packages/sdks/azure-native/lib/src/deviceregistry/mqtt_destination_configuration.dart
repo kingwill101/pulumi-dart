@@ -36,10 +36,10 @@ class MqttDestinationConfiguration {
 
   factory MqttDestinationConfiguration.fromMap(Map<String, dynamic> map) {
     return MqttDestinationConfiguration(
-      qos: map['qos'] == null ? null : (map['qos'] as String).input(),
-      retain: map['retain'] == null ? null : (map['retain'] as String).input(),
+      qos: map['qos'] == null ? null : (map['qos']! as String).input(),
+      retain: map['retain'] == null ? null : (map['retain']! as String).input(),
       topic: (map['topic'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as double).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as double).input(),
     );
   }
 }

@@ -60,14 +60,14 @@ class LoadBalancerResourceSettings {
 
   factory LoadBalancerResourceSettings.fromMap(Map<String, dynamic> map) {
     return LoadBalancerResourceSettings(
-      backendAddressPools: map['backendAddressPools'] == null ? null : (pulumi.Input.decodeList<LBBackendAddressPoolResourceSettings>(map['backendAddressPools'], (value) => LBBackendAddressPoolResourceSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      frontendIPConfigurations: map['frontendIPConfigurations'] == null ? null : (pulumi.Input.decodeList<LBFrontendIPConfigurationResourceSettings>(map['frontendIPConfigurations'], (value) => LBFrontendIPConfigurationResourceSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backendAddressPools: map['backendAddressPools'] == null ? null : (pulumi.Input.decodeList<LBBackendAddressPoolResourceSettings>(map['backendAddressPools']!, (value) => LBBackendAddressPoolResourceSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      frontendIPConfigurations: map['frontendIPConfigurations'] == null ? null : (pulumi.Input.decodeList<LBFrontendIPConfigurationResourceSettings>(map['frontendIPConfigurations']!, (value) => LBFrontendIPConfigurationResourceSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceType: (map['resourceType'] as String).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : (map['targetResourceGroupName'] as String).input(),
-      targetResourceName: map['targetResourceName'] == null ? null : (map['targetResourceName'] as String).input(),
-      zones: map['zones'] == null ? null : (map['zones'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : (map['targetResourceGroupName']! as String).input(),
+      targetResourceName: map['targetResourceName'] == null ? null : (map['targetResourceName']! as String).input(),
+      zones: map['zones'] == null ? null : (map['zones']! as String).input(),
     );
   }
 }

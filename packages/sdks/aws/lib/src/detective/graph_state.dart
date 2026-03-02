@@ -40,11 +40,11 @@ class GraphState {
 
   factory GraphState.fromMap(Map<String, dynamic> map) {
     return GraphState(
-      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
-      graphArn: map['graphArn'] == null ? null : (map['graphArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      createdTime: map['createdTime'] == null ? null : ((map['createdTime'] as String).input()).input(),
+      graphArn: map['graphArn'] == null ? null : ((map['graphArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

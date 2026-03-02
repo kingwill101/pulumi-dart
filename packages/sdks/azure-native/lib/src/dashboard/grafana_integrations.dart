@@ -21,7 +21,7 @@ class GrafanaIntegrations {
 
   factory GrafanaIntegrations.fromMap(Map<String, dynamic> map) {
     return GrafanaIntegrations(
-      azureMonitorWorkspaceIntegrations: map['azureMonitorWorkspaceIntegrations'] == null ? null : (pulumi.Input.decodeList<AzureMonitorWorkspaceIntegration>(map['azureMonitorWorkspaceIntegrations'], (value) => AzureMonitorWorkspaceIntegration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      azureMonitorWorkspaceIntegrations: map['azureMonitorWorkspaceIntegrations'] == null ? null : (pulumi.Input.decodeList<AzureMonitorWorkspaceIntegration>(map['azureMonitorWorkspaceIntegrations']!, (value) => AzureMonitorWorkspaceIntegration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -66,11 +66,11 @@ class DataPolicyIamBindingArgs {
 
   factory DataPolicyIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return DataPolicyIamBindingArgs(
-      condition: map['condition'] == null ? null : (DataPolicyIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (DataPolicyIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       dataPolicyId: (map['dataPolicyId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       members: ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

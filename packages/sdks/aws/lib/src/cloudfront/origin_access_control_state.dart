@@ -51,13 +51,13 @@ class OriginAccessControlState {
 
   factory OriginAccessControlState.fromMap(Map<String, dynamic> map) {
     return OriginAccessControlState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      originAccessControlOriginType: map['originAccessControlOriginType'] == null ? null : (map['originAccessControlOriginType'] as String).input(),
-      signingBehavior: map['signingBehavior'] == null ? null : (map['signingBehavior'] as String).input(),
-      signingProtocol: map['signingProtocol'] == null ? null : (map['signingProtocol'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      etag: map['etag'] == null ? null : ((map['etag'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      originAccessControlOriginType: map['originAccessControlOriginType'] == null ? null : ((map['originAccessControlOriginType'] as String).input()).input(),
+      signingBehavior: map['signingBehavior'] == null ? null : ((map['signingBehavior'] as String).input()).input(),
+      signingProtocol: map['signingProtocol'] == null ? null : ((map['signingProtocol'] as String).input()).input(),
     );
   }
 }

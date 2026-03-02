@@ -30,9 +30,9 @@ class ConnectionPhysicalConnectionRequirements {
 
   factory ConnectionPhysicalConnectionRequirements.fromMap(Map<String, dynamic> map) {
     return ConnectionPhysicalConnectionRequirements(
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      securityGroupIdLists: map['securityGroupIdLists'] == null ? null : ((map['securityGroupIdLists'] as List).cast<String>()).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
+      securityGroupIdLists: map['securityGroupIdLists'] == null ? null : (((map['securityGroupIdLists'] as List).cast<String>()).input()).input(),
+      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
     );
   }
 }

@@ -24,7 +24,7 @@ class GetFirewallPolicyFirewallPolicyStatelessCustomAction {
 
   factory GetFirewallPolicyFirewallPolicyStatelessCustomAction.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyFirewallPolicyStatelessCustomAction(
-      actionDefinitions: (pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition>(map['actionDefinitions'], (value) => GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      actionDefinitions: (pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition>(map['actionDefinitions']!, (value) => GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
       actionName: (map['actionName'] as String).input(),
     );
   }

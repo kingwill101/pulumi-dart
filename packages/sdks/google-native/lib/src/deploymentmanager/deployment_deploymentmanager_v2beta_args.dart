@@ -59,14 +59,14 @@ class DeploymentDeploymentmanagerV2betaArgs {
 
   factory DeploymentDeploymentmanagerV2betaArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentDeploymentmanagerV2betaArgs(
-      createPolicy: map['createPolicy'] == null ? null : (map['createPolicy'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<DeploymentLabelEntryDeploymentmanagerV2beta>(map['labels'], (value) => DeploymentLabelEntryDeploymentmanagerV2beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      preview: map['preview'] == null ? null : (map['preview'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      target: map['target'] == null ? null : (TargetConfigurationDeploymentmanagerV2beta.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      createPolicy: map['createPolicy'] == null ? null : (map['createPolicy']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<DeploymentLabelEntryDeploymentmanagerV2beta>(map['labels']!, (value) => DeploymentLabelEntryDeploymentmanagerV2beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      preview: map['preview'] == null ? null : (map['preview']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      target: map['target'] == null ? null : (TargetConfigurationDeploymentmanagerV2beta.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

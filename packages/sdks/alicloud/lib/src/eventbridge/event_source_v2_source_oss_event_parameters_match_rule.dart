@@ -31,10 +31,10 @@ class EventSourceV2SourceOssEventParametersMatchRule {
 
   factory EventSourceV2SourceOssEventParametersMatchRule.fromMap(Map<String, dynamic> map) {
     return EventSourceV2SourceOssEventParametersMatchRule(
-      matchState: map['matchState'] == null ? null : (map['matchState'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      suffix: map['suffix'] == null ? null : (map['suffix'] as String).input(),
+      matchState: map['matchState'] == null ? null : (map['matchState']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      suffix: map['suffix'] == null ? null : (map['suffix']! as String).input(),
     );
   }
 }

@@ -68,16 +68,16 @@ class MonitorProperties {
 
   factory MonitorProperties.fromMap(Map<String, dynamic> map) {
     return MonitorProperties(
-      generateApiKey: map['generateApiKey'] == null ? null : (map['generateApiKey'] as bool).input(),
-      monitoringStatus: map['monitoringStatus'] == null ? null : (map['monitoringStatus'] as String).input(),
-      planDetails: map['planDetails'] == null ? null : (PlanDetails.fromMap((map['planDetails'] as Map).cast<String, dynamic>())).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
-      saaSAzureSubscriptionStatus: map['saaSAzureSubscriptionStatus'] == null ? null : (map['saaSAzureSubscriptionStatus'] as String).input(),
-      sourceCampaignId: map['sourceCampaignId'] == null ? null : (map['sourceCampaignId'] as String).input(),
-      sourceCampaignName: map['sourceCampaignName'] == null ? null : (map['sourceCampaignName'] as String).input(),
-      subscriptionState: map['subscriptionState'] == null ? null : (map['subscriptionState'] as String).input(),
-      userInfo: map['userInfo'] == null ? null : (UserInfo.fromMap((map['userInfo'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      generateApiKey: map['generateApiKey'] == null ? null : (map['generateApiKey']! as bool).input(),
+      monitoringStatus: map['monitoringStatus'] == null ? null : (map['monitoringStatus']! as String).input(),
+      planDetails: map['planDetails'] == null ? null : (PlanDetails.fromMap((map['planDetails']! as Map).cast<String, dynamic>())).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      saaSAzureSubscriptionStatus: map['saaSAzureSubscriptionStatus'] == null ? null : (map['saaSAzureSubscriptionStatus']! as String).input(),
+      sourceCampaignId: map['sourceCampaignId'] == null ? null : (map['sourceCampaignId']! as String).input(),
+      sourceCampaignName: map['sourceCampaignName'] == null ? null : (map['sourceCampaignName']! as String).input(),
+      subscriptionState: map['subscriptionState'] == null ? null : (map['subscriptionState']! as String).input(),
+      userInfo: map['userInfo'] == null ? null : (UserInfo.fromMap((map['userInfo']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

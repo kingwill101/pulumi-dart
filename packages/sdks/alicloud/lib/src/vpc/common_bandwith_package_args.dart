@@ -114,18 +114,18 @@ class CommonBandwithPackageArgs {
   factory CommonBandwithPackageArgs.fromMap(Map<String, dynamic> map) {
     return CommonBandwithPackageArgs(
       bandwidth: (map['bandwidth'] as String).input(),
-      bandwidthPackageName: map['bandwidthPackageName'] == null ? null : (map['bandwidthPackageName'] as String).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      force: map['force'] == null ? null : (map['force'] as String).input(),
-      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType'] as String).input(),
-      isp: map['isp'] == null ? null : (map['isp'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ratio: map['ratio'] == null ? null : (map['ratio'] as int).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      securityProtectionTypes: map['securityProtectionTypes'] == null ? null : ((map['securityProtectionTypes'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      bandwidthPackageName: map['bandwidthPackageName'] == null ? null : (map['bandwidthPackageName']! as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      force: map['force'] == null ? null : (map['force']! as String).input(),
+      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType']! as String).input(),
+      isp: map['isp'] == null ? null : (map['isp']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ratio: map['ratio'] == null ? null : (map['ratio']! as int).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      securityProtectionTypes: map['securityProtectionTypes'] == null ? null : ((map['securityProtectionTypes']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

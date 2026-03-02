@@ -28,8 +28,8 @@ class GameServerGroupAutoScalingPolicy {
 
   factory GameServerGroupAutoScalingPolicy.fromMap(Map<String, dynamic> map) {
     return GameServerGroupAutoScalingPolicy(
-      estimatedInstanceWarmup: map['estimatedInstanceWarmup'] == null ? null : (map['estimatedInstanceWarmup'] as int).input(),
-      targetTrackingConfiguration: (GameServerGroupAutoScalingPolicyTargetTrackingConfiguration.fromMap((map['targetTrackingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      estimatedInstanceWarmup: map['estimatedInstanceWarmup'] == null ? null : ((map['estimatedInstanceWarmup'] as int).input()).input(),
+      targetTrackingConfiguration: (GameServerGroupAutoScalingPolicyTargetTrackingConfiguration.fromMap((map['targetTrackingConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

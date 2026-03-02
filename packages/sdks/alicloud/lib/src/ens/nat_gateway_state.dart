@@ -46,12 +46,12 @@ class NatGatewayState {
 
   factory NatGatewayState.fromMap(Map<String, dynamic> map) {
     return NatGatewayState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      ensRegionId: map['ensRegionId'] == null ? null : (map['ensRegionId'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      natName: map['natName'] == null ? null : (map['natName'] as String).input(),
-      networkId: map['networkId'] == null ? null : (map['networkId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      ensRegionId: map['ensRegionId'] == null ? null : (map['ensRegionId']! as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      natName: map['natName'] == null ? null : (map['natName']! as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

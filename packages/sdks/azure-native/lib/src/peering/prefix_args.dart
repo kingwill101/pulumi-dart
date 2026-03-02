@@ -45,9 +45,9 @@ class PrefixArgs {
   factory PrefixArgs.fromMap(Map<String, dynamic> map) {
     return PrefixArgs(
       peeringServiceName: (map['peeringServiceName'] as String).input(),
-      peeringServicePrefixKey: map['peeringServicePrefixKey'] == null ? null : (map['peeringServicePrefixKey'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      prefixName: map['prefixName'] == null ? null : (map['prefixName'] as String).input(),
+      peeringServicePrefixKey: map['peeringServicePrefixKey'] == null ? null : (map['peeringServicePrefixKey']! as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      prefixName: map['prefixName'] == null ? null : (map['prefixName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

@@ -31,7 +31,7 @@ class CooWebCcRuleRuleDetailStatistics {
   factory CooWebCcRuleRuleDetailStatistics.fromMap(Map<String, dynamic> map) {
     return CooWebCcRuleRuleDetailStatistics(
       field: (map['field'] as String).input(),
-      headerName: map['headerName'] == null ? null : (map['headerName'] as String).input(),
+      headerName: map['headerName'] == null ? null : (map['headerName']! as String).input(),
       mode: (map['mode'] as String).input(),
     );
   }

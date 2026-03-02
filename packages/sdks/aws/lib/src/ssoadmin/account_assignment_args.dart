@@ -58,7 +58,7 @@ class AccountAssignmentArgs {
       permissionSetArn: (map['permissionSetArn'] as String).input(),
       principalId: (map['principalId'] as String).input(),
       principalType: (map['principalType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       targetId: (map['targetId'] as String).input(),
       targetType: (map['targetType'] as String).input(),
     );

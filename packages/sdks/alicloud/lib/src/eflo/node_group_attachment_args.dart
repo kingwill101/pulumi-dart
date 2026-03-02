@@ -65,13 +65,13 @@ class NodeGroupAttachmentArgs {
 
   factory NodeGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return NodeGroupAttachmentArgs(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<NodeGroupAttachmentDataDisk>(map['dataDisks'], (value) => NodeGroupAttachmentDataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<NodeGroupAttachmentDataDisk>(map['dataDisks']!, (value) => NodeGroupAttachmentDataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
       hostname: (map['hostname'] as String).input(),
-      loginPassword: map['loginPassword'] == null ? null : (map['loginPassword'] as String).input(),
-      nodeGroupId: map['nodeGroupId'] == null ? null : (map['nodeGroupId'] as String).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
-      userData: map['userData'] == null ? null : (map['userData'] as String).input(),
+      loginPassword: map['loginPassword'] == null ? null : (map['loginPassword']! as String).input(),
+      nodeGroupId: map['nodeGroupId'] == null ? null : (map['nodeGroupId']! as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
+      userData: map['userData'] == null ? null : (map['userData']! as String).input(),
       vpcId: (map['vpcId'] as String).input(),
       vswitchId: (map['vswitchId'] as String).input(),
     );

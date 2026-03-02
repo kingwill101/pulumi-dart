@@ -51,13 +51,13 @@ class DataExportRuleState {
 
   factory DataExportRuleState.fromMap(Map<String, dynamic> map) {
     return DataExportRuleState(
-      destinationResourceId: map['destinationResourceId'] == null ? null : (map['destinationResourceId'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      exportRuleId: map['exportRuleId'] == null ? null : (map['exportRuleId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tableNames: map['tableNames'] == null ? null : ((map['tableNames'] as List).cast<String>()).input(),
-      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId'] as String).input(),
+      destinationResourceId: map['destinationResourceId'] == null ? null : (map['destinationResourceId']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      exportRuleId: map['exportRuleId'] == null ? null : (map['exportRuleId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tableNames: map['tableNames'] == null ? null : ((map['tableNames']! as List).cast<String>()).input(),
+      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId']! as String).input(),
     );
   }
 }

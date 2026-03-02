@@ -41,11 +41,11 @@ class GoogleCloudIntegrationsV1alphaNextTask {
 
   factory GoogleCloudIntegrationsV1alphaNextTask.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaNextTask(
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      taskConfigId: map['taskConfigId'] == null ? null : (map['taskConfigId'] as String).input(),
-      taskId: map['taskId'] == null ? null : (map['taskId'] as String).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      taskConfigId: map['taskConfigId'] == null ? null : (map['taskConfigId']! as String).input(),
+      taskId: map['taskId'] == null ? null : (map['taskId']! as String).input(),
     );
   }
 }

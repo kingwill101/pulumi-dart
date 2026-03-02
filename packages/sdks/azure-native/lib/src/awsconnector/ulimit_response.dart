@@ -31,9 +31,9 @@ class UlimitResponse {
 
   factory UlimitResponse.fromMap(Map<String, dynamic> map) {
     return UlimitResponse(
-      hardLimit: map['hardLimit'] == null ? null : (map['hardLimit'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      softLimit: map['softLimit'] == null ? null : (map['softLimit'] as int).input(),
+      hardLimit: map['hardLimit'] == null ? null : (map['hardLimit']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      softLimit: map['softLimit'] == null ? null : (map['softLimit']! as int).input(),
     );
   }
 }

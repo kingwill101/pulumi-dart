@@ -37,8 +37,8 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
 
   factory SloWindowsBasedSliGoodTotalRatioThresholdPerformance.fromMap(Map<String, dynamic> map) {
     return SloWindowsBasedSliGoodTotalRatioThresholdPerformance(
-      distributionCut: map['distributionCut'] == null ? null : (SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut.fromMap((map['distributionCut'] as Map).cast<String, dynamic>())).input(),
-      goodTotalRatio: map['goodTotalRatio'] == null ? null : (SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio.fromMap((map['goodTotalRatio'] as Map).cast<String, dynamic>())).input(),
+      distributionCut: map['distributionCut'] == null ? null : (SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut.fromMap((map['distributionCut']! as Map).cast<String, dynamic>())).input(),
+      goodTotalRatio: map['goodTotalRatio'] == null ? null : (SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio.fromMap((map['goodTotalRatio']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

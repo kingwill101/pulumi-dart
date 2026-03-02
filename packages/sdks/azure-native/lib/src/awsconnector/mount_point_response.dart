@@ -31,9 +31,9 @@ class MountPointResponse {
 
   factory MountPointResponse.fromMap(Map<String, dynamic> map) {
     return MountPointResponse(
-      containerPath: map['containerPath'] == null ? null : (map['containerPath'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      sourceVolume: map['sourceVolume'] == null ? null : (map['sourceVolume'] as String).input(),
+      containerPath: map['containerPath'] == null ? null : (map['containerPath']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      sourceVolume: map['sourceVolume'] == null ? null : (map['sourceVolume']! as String).input(),
     );
   }
 }

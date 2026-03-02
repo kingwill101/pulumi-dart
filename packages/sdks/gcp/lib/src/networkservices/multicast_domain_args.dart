@@ -73,12 +73,12 @@ class MulticastDomainArgs {
     return MulticastDomainArgs(
       adminNetwork: (map['adminNetwork'] as String).input(),
       connectionConfig: (MulticastDomainConnectionConfig.fromMap((map['connectionConfig'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      multicastDomainGroup: map['multicastDomainGroup'] == null ? null : (map['multicastDomainGroup'] as String).input(),
+      multicastDomainGroup: map['multicastDomainGroup'] == null ? null : (map['multicastDomainGroup']! as String).input(),
       multicastDomainId: (map['multicastDomainId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

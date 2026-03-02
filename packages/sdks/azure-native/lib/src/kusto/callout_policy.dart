@@ -31,9 +31,9 @@ class CalloutPolicy {
 
   factory CalloutPolicy.fromMap(Map<String, dynamic> map) {
     return CalloutPolicy(
-      calloutType: map['calloutType'] == null ? null : (map['calloutType'] as String).input(),
-      calloutUriRegex: map['calloutUriRegex'] == null ? null : (map['calloutUriRegex'] as String).input(),
-      outboundAccess: map['outboundAccess'] == null ? null : (map['outboundAccess'] as String).input(),
+      calloutType: map['calloutType'] == null ? null : (map['calloutType']! as String).input(),
+      calloutUriRegex: map['calloutUriRegex'] == null ? null : (map['calloutUriRegex']! as String).input(),
+      outboundAccess: map['outboundAccess'] == null ? null : (map['outboundAccess']! as String).input(),
     );
   }
 }

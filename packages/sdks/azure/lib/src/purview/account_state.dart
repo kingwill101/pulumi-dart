@@ -97,21 +97,21 @@ class AccountState {
 
   factory AccountState.fromMap(Map<String, dynamic> map) {
     return AccountState(
-      atlasKafkaEndpointPrimaryConnectionString: map['atlasKafkaEndpointPrimaryConnectionString'] == null ? null : (map['atlasKafkaEndpointPrimaryConnectionString'] as String).input(),
-      atlasKafkaEndpointSecondaryConnectionString: map['atlasKafkaEndpointSecondaryConnectionString'] == null ? null : (map['atlasKafkaEndpointSecondaryConnectionString'] as String).input(),
-      awsExternalId: map['awsExternalId'] == null ? null : (map['awsExternalId'] as String).input(),
-      catalogEndpoint: map['catalogEndpoint'] == null ? null : (map['catalogEndpoint'] as String).input(),
-      guardianEndpoint: map['guardianEndpoint'] == null ? null : (map['guardianEndpoint'] as String).input(),
-      identity: map['identity'] == null ? null : (AccountIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedEventHubEnabled: map['managedEventHubEnabled'] == null ? null : (map['managedEventHubEnabled'] as bool).input(),
-      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : (map['managedResourceGroupName'] as String).input(),
-      managedResources: map['managedResources'] == null ? null : (pulumi.Input.decodeList<AccountManagedResource>(map['managedResources'], (value) => AccountManagedResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicNetworkEnabled: map['publicNetworkEnabled'] == null ? null : (map['publicNetworkEnabled'] as bool).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      scanEndpoint: map['scanEndpoint'] == null ? null : (map['scanEndpoint'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      atlasKafkaEndpointPrimaryConnectionString: map['atlasKafkaEndpointPrimaryConnectionString'] == null ? null : (map['atlasKafkaEndpointPrimaryConnectionString']! as String).input(),
+      atlasKafkaEndpointSecondaryConnectionString: map['atlasKafkaEndpointSecondaryConnectionString'] == null ? null : (map['atlasKafkaEndpointSecondaryConnectionString']! as String).input(),
+      awsExternalId: map['awsExternalId'] == null ? null : (map['awsExternalId']! as String).input(),
+      catalogEndpoint: map['catalogEndpoint'] == null ? null : (map['catalogEndpoint']! as String).input(),
+      guardianEndpoint: map['guardianEndpoint'] == null ? null : (map['guardianEndpoint']! as String).input(),
+      identity: map['identity'] == null ? null : (AccountIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedEventHubEnabled: map['managedEventHubEnabled'] == null ? null : (map['managedEventHubEnabled']! as bool).input(),
+      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : (map['managedResourceGroupName']! as String).input(),
+      managedResources: map['managedResources'] == null ? null : (pulumi.Input.decodeList<AccountManagedResource>(map['managedResources']!, (value) => AccountManagedResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicNetworkEnabled: map['publicNetworkEnabled'] == null ? null : (map['publicNetworkEnabled']! as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      scanEndpoint: map['scanEndpoint'] == null ? null : (map['scanEndpoint']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

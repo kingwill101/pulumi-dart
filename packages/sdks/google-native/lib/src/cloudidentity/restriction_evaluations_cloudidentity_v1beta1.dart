@@ -21,7 +21,7 @@ class RestrictionEvaluationsCloudidentityV1beta1 {
 
   factory RestrictionEvaluationsCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
     return RestrictionEvaluationsCloudidentityV1beta1(
-      memberRestrictionEvaluation: map['memberRestrictionEvaluation'] == null ? null : ((map['memberRestrictionEvaluation'] as Map).cast<String, dynamic>()).input(),
+      memberRestrictionEvaluation: map['memberRestrictionEvaluation'] == null ? null : ((map['memberRestrictionEvaluation']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

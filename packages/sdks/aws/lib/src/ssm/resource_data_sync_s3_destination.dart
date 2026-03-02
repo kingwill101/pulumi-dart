@@ -41,10 +41,10 @@ class ResourceDataSyncS3Destination {
   factory ResourceDataSyncS3Destination.fromMap(Map<String, dynamic> map) {
     return ResourceDataSyncS3Destination(
       bucketName: (map['bucketName'] as String).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
       region: (map['region'] as String).input(),
-      syncFormat: map['syncFormat'] == null ? null : (map['syncFormat'] as String).input(),
+      syncFormat: map['syncFormat'] == null ? null : ((map['syncFormat'] as String).input()).input(),
     );
   }
 }

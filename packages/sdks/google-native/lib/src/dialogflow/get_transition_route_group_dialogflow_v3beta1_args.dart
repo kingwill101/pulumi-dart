@@ -45,9 +45,9 @@ class GetTransitionRouteGroupDialogflowV3beta1Args {
     return GetTransitionRouteGroupDialogflowV3beta1Args(
       agentId: (map['agentId'] as String).input(),
       flowId: (map['flowId'] as String).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       transitionRouteGroupId: (map['transitionRouteGroupId'] as String).input(),
     );
   }

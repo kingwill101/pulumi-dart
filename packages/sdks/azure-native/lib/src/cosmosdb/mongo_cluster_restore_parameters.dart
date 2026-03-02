@@ -26,8 +26,8 @@ class MongoClusterRestoreParameters {
 
   factory MongoClusterRestoreParameters.fromMap(Map<String, dynamic> map) {
     return MongoClusterRestoreParameters(
-      pointInTimeUTC: map['pointInTimeUTC'] == null ? null : (map['pointInTimeUTC'] as String).input(),
-      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
+      pointInTimeUTC: map['pointInTimeUTC'] == null ? null : (map['pointInTimeUTC']! as String).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId']! as String).input(),
     );
   }
 }

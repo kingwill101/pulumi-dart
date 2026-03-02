@@ -50,11 +50,11 @@ class RdnsArgs {
   factory RdnsArgs.fromMap(Map<String, dynamic> map) {
     return RdnsArgs(
       dnsPtr: (map['dnsPtr'] as String).input(),
-      floatingIpId: map['floatingIpId'] == null ? null : (map['floatingIpId'] as int).input(),
+      floatingIpId: map['floatingIpId'] == null ? null : (map['floatingIpId']! as int).input(),
       ipAddress: (map['ipAddress'] as String).input(),
-      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId'] as int).input(),
-      primaryIpId: map['primaryIpId'] == null ? null : (map['primaryIpId'] as int).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as int).input(),
+      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId']! as int).input(),
+      primaryIpId: map['primaryIpId'] == null ? null : (map['primaryIpId']! as int).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId']! as int).input(),
     );
   }
 }

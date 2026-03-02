@@ -36,10 +36,10 @@ class ServiceBindResponse {
 
   factory ServiceBindResponse.fromMap(Map<String, dynamic> map) {
     return ServiceBindResponse(
-      clientType: map['clientType'] == null ? null : (map['clientType'] as String).input(),
-      customizedKeys: map['customizedKeys'] == null ? null : ((map['customizedKeys'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
+      clientType: map['clientType'] == null ? null : (map['clientType']! as String).input(),
+      customizedKeys: map['customizedKeys'] == null ? null : ((map['customizedKeys']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
     );
   }
 }

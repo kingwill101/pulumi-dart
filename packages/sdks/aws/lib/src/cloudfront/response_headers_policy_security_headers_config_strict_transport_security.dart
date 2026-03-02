@@ -36,9 +36,9 @@ class ResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity {
   factory ResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity.fromMap(Map<String, dynamic> map) {
     return ResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity(
       accessControlMaxAgeSec: (map['accessControlMaxAgeSec'] as int).input(),
-      includeSubdomains: map['includeSubdomains'] == null ? null : (map['includeSubdomains'] as bool).input(),
+      includeSubdomains: map['includeSubdomains'] == null ? null : ((map['includeSubdomains'] as bool).input()).input(),
       override: (map['override'] as bool).input(),
-      preload: map['preload'] == null ? null : (map['preload'] as bool).input(),
+      preload: map['preload'] == null ? null : ((map['preload'] as bool).input()).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class PrivateEndpointConnectionProperties {
 
   factory PrivateEndpointConnectionProperties.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionProperties(
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (PrivateLinkServiceConnectionState.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
+      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (PrivateLinkServiceConnectionState.fromMap((map['privateLinkServiceConnectionState']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

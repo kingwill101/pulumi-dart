@@ -20,7 +20,7 @@ class AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfiguration {
 
   factory AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfiguration(
-      text: map['text'] == null ? null : (AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfigurationText.fromMap((map['text'] as Map).cast<String, dynamic>())).input(),
+      text: map['text'] == null ? null : ((AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfigurationText.fromMap((map['text']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

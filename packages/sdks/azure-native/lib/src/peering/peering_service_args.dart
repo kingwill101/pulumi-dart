@@ -65,15 +65,15 @@ class PeeringServiceArgs {
 
   factory PeeringServiceArgs.fromMap(Map<String, dynamic> map) {
     return PeeringServiceArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      peeringServiceLocation: map['peeringServiceLocation'] == null ? null : (map['peeringServiceLocation'] as String).input(),
-      peeringServiceName: map['peeringServiceName'] == null ? null : (map['peeringServiceName'] as String).input(),
-      peeringServiceProvider: map['peeringServiceProvider'] == null ? null : (map['peeringServiceProvider'] as String).input(),
-      providerBackupPeeringLocation: map['providerBackupPeeringLocation'] == null ? null : (map['providerBackupPeeringLocation'] as String).input(),
-      providerPrimaryPeeringLocation: map['providerPrimaryPeeringLocation'] == null ? null : (map['providerPrimaryPeeringLocation'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      peeringServiceLocation: map['peeringServiceLocation'] == null ? null : (map['peeringServiceLocation']! as String).input(),
+      peeringServiceName: map['peeringServiceName'] == null ? null : (map['peeringServiceName']! as String).input(),
+      peeringServiceProvider: map['peeringServiceProvider'] == null ? null : (map['peeringServiceProvider']! as String).input(),
+      providerBackupPeeringLocation: map['providerBackupPeeringLocation'] == null ? null : (map['providerBackupPeeringLocation']! as String).input(),
+      providerPrimaryPeeringLocation: map['providerPrimaryPeeringLocation'] == null ? null : (map['providerPrimaryPeeringLocation']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (PeeringServiceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sku: map['sku'] == null ? null : (PeeringServiceSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

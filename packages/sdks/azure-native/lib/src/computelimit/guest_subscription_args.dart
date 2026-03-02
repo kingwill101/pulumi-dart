@@ -29,7 +29,7 @@ class GuestSubscriptionArgs {
 
   factory GuestSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GuestSubscriptionArgs(
-      guestSubscriptionId: map['guestSubscriptionId'] == null ? null : (map['guestSubscriptionId'] as String).input(),
+      guestSubscriptionId: map['guestSubscriptionId'] == null ? null : (map['guestSubscriptionId']! as String).input(),
       location: (map['location'] as String).input(),
     );
   }

@@ -77,15 +77,15 @@ class DiscoveryVirtualInstanceArgs {
     return DiscoveryVirtualInstanceArgs(
       centralServerVirtualMachineId: (map['centralServerVirtualMachineId'] as String).input(),
       environment: (map['environment'] as String).input(),
-      identity: map['identity'] == null ? null : (DiscoveryVirtualInstanceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : (map['managedResourceGroupName'] as String).input(),
-      managedResourcesNetworkAccessType: map['managedResourcesNetworkAccessType'] == null ? null : (map['managedResourcesNetworkAccessType'] as String).input(),
-      managedStorageAccountName: map['managedStorageAccountName'] == null ? null : (map['managedStorageAccountName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      identity: map['identity'] == null ? null : (DiscoveryVirtualInstanceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : (map['managedResourceGroupName']! as String).input(),
+      managedResourcesNetworkAccessType: map['managedResourcesNetworkAccessType'] == null ? null : (map['managedResourcesNetworkAccessType']! as String).input(),
+      managedStorageAccountName: map['managedStorageAccountName'] == null ? null : (map['managedStorageAccountName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sapProduct: (map['sapProduct'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -41,9 +41,9 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      authParameters: map['authParameters'] == null ? null : (ConnectionAuthParameters.fromMap((map['authParameters'] as Map).cast<String, dynamic>())).input(),
+      authParameters: map['authParameters'] == null ? null : (ConnectionAuthParameters.fromMap((map['authParameters']! as Map).cast<String, dynamic>())).input(),
       connectionName: (map['connectionName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       networkParameters: (ConnectionNetworkParameters.fromMap((map['networkParameters'] as Map).cast<String, dynamic>())).input(),
     );
   }

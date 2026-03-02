@@ -26,8 +26,8 @@ class BucketVersioningState {
 
   factory BucketVersioningState.fromMap(Map<String, dynamic> map) {
     return BucketVersioningState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

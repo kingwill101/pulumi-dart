@@ -63,15 +63,15 @@ class NetworkManagedService {
 
   factory NetworkManagedService.fromMap(Map<String, dynamic> map) {
     return NetworkManagedService(
-      kmsAccesses: (pulumi.Input.decodeList<NetworkManagedServiceKmsAccess>(map['kmsAccesses'], (value) => NetworkManagedServiceKmsAccess.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      managedS3BackupAccesses: (pulumi.Input.decodeList<NetworkManagedServiceManagedS3BackupAccess>(map['managedS3BackupAccesses'], (value) => NetworkManagedServiceManagedS3BackupAccess.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kmsAccesses: (pulumi.Input.decodeList<NetworkManagedServiceKmsAccess>(map['kmsAccesses']!, (value) => NetworkManagedServiceKmsAccess.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managedS3BackupAccesses: (pulumi.Input.decodeList<NetworkManagedServiceManagedS3BackupAccess>(map['managedS3BackupAccesses']!, (value) => NetworkManagedServiceManagedS3BackupAccess.fromMap((value as Map).cast<String, dynamic>()))).input(),
       managedServiceIpv4Cidrs: ((map['managedServiceIpv4Cidrs'] as List).cast<String>()).input(),
       resourceGatewayArn: (map['resourceGatewayArn'] as String).input(),
-      s3Accesses: (pulumi.Input.decodeList<NetworkManagedServiceS3Access>(map['s3Accesses'], (value) => NetworkManagedServiceS3Access.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      s3Accesses: (pulumi.Input.decodeList<NetworkManagedServiceS3Access>(map['s3Accesses']!, (value) => NetworkManagedServiceS3Access.fromMap((value as Map).cast<String, dynamic>()))).input(),
       serviceNetworkArn: (map['serviceNetworkArn'] as String).input(),
-      serviceNetworkEndpoints: (pulumi.Input.decodeList<NetworkManagedServiceServiceNetworkEndpoint>(map['serviceNetworkEndpoints'], (value) => NetworkManagedServiceServiceNetworkEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      stsAccesses: (pulumi.Input.decodeList<NetworkManagedServiceStsAccess>(map['stsAccesses'], (value) => NetworkManagedServiceStsAccess.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      zeroEtlAccesses: (pulumi.Input.decodeList<NetworkManagedServiceZeroEtlAccess>(map['zeroEtlAccesses'], (value) => NetworkManagedServiceZeroEtlAccess.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceNetworkEndpoints: (pulumi.Input.decodeList<NetworkManagedServiceServiceNetworkEndpoint>(map['serviceNetworkEndpoints']!, (value) => NetworkManagedServiceServiceNetworkEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stsAccesses: (pulumi.Input.decodeList<NetworkManagedServiceStsAccess>(map['stsAccesses']!, (value) => NetworkManagedServiceStsAccess.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      zeroEtlAccesses: (pulumi.Input.decodeList<NetworkManagedServiceZeroEtlAccess>(map['zeroEtlAccesses']!, (value) => NetworkManagedServiceZeroEtlAccess.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

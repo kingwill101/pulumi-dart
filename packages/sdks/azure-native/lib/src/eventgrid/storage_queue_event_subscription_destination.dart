@@ -38,9 +38,9 @@ class StorageQueueEventSubscriptionDestination {
   factory StorageQueueEventSubscriptionDestination.fromMap(Map<String, dynamic> map) {
     return StorageQueueEventSubscriptionDestination(
       endpointType: (map['endpointType'] as String).input(),
-      queueMessageTimeToLiveInSeconds: map['queueMessageTimeToLiveInSeconds'] == null ? null : (map['queueMessageTimeToLiveInSeconds'] as double).input(),
-      queueName: map['queueName'] == null ? null : (map['queueName'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      queueMessageTimeToLiveInSeconds: map['queueMessageTimeToLiveInSeconds'] == null ? null : (map['queueMessageTimeToLiveInSeconds']! as double).input(),
+      queueName: map['queueName'] == null ? null : (map['queueName']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

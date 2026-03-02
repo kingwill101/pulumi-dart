@@ -60,7 +60,7 @@ class GetMeshMembershipResult {
       azureApiVersion: map['azureApiVersion'] as String,
       eTag: map['eTag'] as String,
       id: map['id'] as String,
-      managedBy: map['managedBy'] == null ? null : map['managedBy'] as String,
+      managedBy: map['managedBy'] == null ? null : map['managedBy']! as String,
       name: map['name'] as String,
       properties: MeshMembershipPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),

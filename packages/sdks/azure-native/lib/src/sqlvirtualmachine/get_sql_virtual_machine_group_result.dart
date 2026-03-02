@@ -95,12 +95,12 @@ class GetSqlVirtualMachineGroupResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       scaleType: map['scaleType'] as String,
-      sqlImageOffer: map['sqlImageOffer'] == null ? null : map['sqlImageOffer'] as String,
-      sqlImageSku: map['sqlImageSku'] == null ? null : map['sqlImageSku'] as String,
+      sqlImageOffer: map['sqlImageOffer'] == null ? null : map['sqlImageOffer']! as String,
+      sqlImageSku: map['sqlImageSku'] == null ? null : map['sqlImageSku']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      wsfcDomainProfile: map['wsfcDomainProfile'] == null ? null : WsfcDomainProfileResponse.fromMap((map['wsfcDomainProfile'] as Map).cast<String, dynamic>()),
+      wsfcDomainProfile: map['wsfcDomainProfile'] == null ? null : WsfcDomainProfileResponse.fromMap((map['wsfcDomainProfile']! as Map).cast<String, dynamic>()),
     );
   }
 }

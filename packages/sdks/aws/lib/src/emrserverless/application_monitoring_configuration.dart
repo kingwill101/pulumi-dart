@@ -39,10 +39,10 @@ class ApplicationMonitoringConfiguration {
 
   factory ApplicationMonitoringConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationMonitoringConfiguration(
-      cloudwatchLoggingConfiguration: map['cloudwatchLoggingConfiguration'] == null ? null : (ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration.fromMap((map['cloudwatchLoggingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      managedPersistenceMonitoringConfiguration: map['managedPersistenceMonitoringConfiguration'] == null ? null : (ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration.fromMap((map['managedPersistenceMonitoringConfiguration'] as Map).cast<String, dynamic>())).input(),
-      prometheusMonitoringConfiguration: map['prometheusMonitoringConfiguration'] == null ? null : (ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration.fromMap((map['prometheusMonitoringConfiguration'] as Map).cast<String, dynamic>())).input(),
-      s3MonitoringConfiguration: map['s3MonitoringConfiguration'] == null ? null : (ApplicationMonitoringConfigurationS3MonitoringConfiguration.fromMap((map['s3MonitoringConfiguration'] as Map).cast<String, dynamic>())).input(),
+      cloudwatchLoggingConfiguration: map['cloudwatchLoggingConfiguration'] == null ? null : ((ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration.fromMap((map['cloudwatchLoggingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      managedPersistenceMonitoringConfiguration: map['managedPersistenceMonitoringConfiguration'] == null ? null : ((ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration.fromMap((map['managedPersistenceMonitoringConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      prometheusMonitoringConfiguration: map['prometheusMonitoringConfiguration'] == null ? null : ((ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration.fromMap((map['prometheusMonitoringConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      s3MonitoringConfiguration: map['s3MonitoringConfiguration'] == null ? null : ((ApplicationMonitoringConfigurationS3MonitoringConfiguration.fromMap((map['s3MonitoringConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

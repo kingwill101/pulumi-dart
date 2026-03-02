@@ -21,7 +21,7 @@ class SharedVPCHostProjectState {
 
   factory SharedVPCHostProjectState.fromMap(Map<String, dynamic> map) {
     return SharedVPCHostProjectState(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

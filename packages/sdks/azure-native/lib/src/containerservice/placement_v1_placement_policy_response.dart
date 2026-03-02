@@ -38,10 +38,10 @@ class PlacementV1PlacementPolicyResponse {
 
   factory PlacementV1PlacementPolicyResponse.fromMap(Map<String, dynamic> map) {
     return PlacementV1PlacementPolicyResponse(
-      affinity: map['affinity'] == null ? null : (PlacementV1AffinityResponse.fromMap((map['affinity'] as Map).cast<String, dynamic>())).input(),
-      clusterNames: map['clusterNames'] == null ? null : ((map['clusterNames'] as List).cast<String>()).input(),
-      placementType: map['placementType'] == null ? null : (map['placementType'] as String).input(),
-      tolerations: map['tolerations'] == null ? null : (pulumi.Input.decodeList<PlacementV1TolerationResponse>(map['tolerations'], (value) => PlacementV1TolerationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      affinity: map['affinity'] == null ? null : (PlacementV1AffinityResponse.fromMap((map['affinity']! as Map).cast<String, dynamic>())).input(),
+      clusterNames: map['clusterNames'] == null ? null : ((map['clusterNames']! as List).cast<String>()).input(),
+      placementType: map['placementType'] == null ? null : (map['placementType']! as String).input(),
+      tolerations: map['tolerations'] == null ? null : (pulumi.Input.decodeList<PlacementV1TolerationResponse>(map['tolerations']!, (value) => PlacementV1TolerationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

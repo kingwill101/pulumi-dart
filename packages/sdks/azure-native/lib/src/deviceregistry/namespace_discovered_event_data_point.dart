@@ -36,9 +36,9 @@ class NamespaceDiscoveredEventDataPoint {
 
   factory NamespaceDiscoveredEventDataPoint.fromMap(Map<String, dynamic> map) {
     return NamespaceDiscoveredEventDataPoint(
-      dataPointConfiguration: map['dataPointConfiguration'] == null ? null : (map['dataPointConfiguration'] as String).input(),
+      dataPointConfiguration: map['dataPointConfiguration'] == null ? null : (map['dataPointConfiguration']! as String).input(),
       dataSource: (map['dataSource'] as String).input(),
-      lastUpdatedOn: map['lastUpdatedOn'] == null ? null : (map['lastUpdatedOn'] as String).input(),
+      lastUpdatedOn: map['lastUpdatedOn'] == null ? null : (map['lastUpdatedOn']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

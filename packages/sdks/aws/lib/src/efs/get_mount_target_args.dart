@@ -39,10 +39,10 @@ class GetMountTargetArgs {
 
   factory GetMountTargetArgs.fromMap(Map<String, dynamic> map) {
     return GetMountTargetArgs(
-      accessPointId: map['accessPointId'] == null ? null : (map['accessPointId'] as String).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      mountTargetId: map['mountTargetId'] == null ? null : (map['mountTargetId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      accessPointId: map['accessPointId'] == null ? null : ((map['accessPointId'] as String).input()).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : ((map['fileSystemId'] as String).input()).input(),
+      mountTargetId: map['mountTargetId'] == null ? null : ((map['mountTargetId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

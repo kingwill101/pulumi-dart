@@ -65,13 +65,13 @@ class MigrateProjectPropertiesResponse {
     return MigrateProjectPropertiesResponse(
       lastSummaryRefreshedTime: (map['lastSummaryRefreshedTime'] as String).input(),
       privateEndpointConnections: (pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       refreshSummaryState: (map['refreshSummaryState'] as String).input(),
       registeredTools: ((map['registeredTools'] as List).cast<String>()).input(),
-      serviceEndpoint: map['serviceEndpoint'] == null ? null : (map['serviceEndpoint'] as String).input(),
+      serviceEndpoint: map['serviceEndpoint'] == null ? null : (map['serviceEndpoint']! as String).input(),
       summary: (pulumi.Input.decodeMapValues<DatabaseProjectSummaryResponse>(map['summary'], (value) => DatabaseProjectSummaryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      utilityStorageAccountId: map['utilityStorageAccountId'] == null ? null : (map['utilityStorageAccountId'] as String).input(),
+      utilityStorageAccountId: map['utilityStorageAccountId'] == null ? null : (map['utilityStorageAccountId']! as String).input(),
     );
   }
 }

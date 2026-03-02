@@ -31,9 +31,9 @@ class ContainerAccountResponse {
 
   factory ContainerAccountResponse.fromMap(Map<String, dynamic> map) {
     return ContainerAccountResponse(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      spn: map['spn'] == null ? null : (map['spn'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      spn: map['spn'] == null ? null : (map['spn']! as String).input(),
     );
   }
 }

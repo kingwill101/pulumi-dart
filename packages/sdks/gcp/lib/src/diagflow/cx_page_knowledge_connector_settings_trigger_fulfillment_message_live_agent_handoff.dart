@@ -20,7 +20,7 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff 
 
   factory CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff.fromMap(Map<String, dynamic> map) {
     return CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff(
-      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']! as String).input(),
     );
   }
 }

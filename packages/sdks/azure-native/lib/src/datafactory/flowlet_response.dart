@@ -66,14 +66,14 @@ class FlowletResponse {
 
   factory FlowletResponse.fromMap(Map<String, dynamic> map) {
     return FlowletResponse(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      folder: map['folder'] == null ? null : (DataFlowResponseFolder.fromMap((map['folder'] as Map).cast<String, dynamic>())).input(),
-      script: map['script'] == null ? null : (map['script'] as String).input(),
-      scriptLines: map['scriptLines'] == null ? null : ((map['scriptLines'] as List).cast<String>()).input(),
-      sinks: map['sinks'] == null ? null : (pulumi.Input.decodeList<DataFlowSinkResponse>(map['sinks'], (value) => DataFlowSinkResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<DataFlowSourceResponse>(map['sources'], (value) => DataFlowSourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      transformations: map['transformations'] == null ? null : (pulumi.Input.decodeList<TransformationResponse>(map['transformations'], (value) => TransformationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      folder: map['folder'] == null ? null : (DataFlowResponseFolder.fromMap((map['folder']! as Map).cast<String, dynamic>())).input(),
+      script: map['script'] == null ? null : (map['script']! as String).input(),
+      scriptLines: map['scriptLines'] == null ? null : ((map['scriptLines']! as List).cast<String>()).input(),
+      sinks: map['sinks'] == null ? null : (pulumi.Input.decodeList<DataFlowSinkResponse>(map['sinks']!, (value) => DataFlowSinkResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<DataFlowSourceResponse>(map['sources']!, (value) => DataFlowSourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      transformations: map['transformations'] == null ? null : (pulumi.Input.decodeList<TransformationResponse>(map['transformations']!, (value) => TransformationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
     );
   }

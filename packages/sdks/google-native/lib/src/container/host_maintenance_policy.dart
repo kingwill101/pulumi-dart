@@ -28,8 +28,8 @@ class HostMaintenancePolicy {
 
   factory HostMaintenancePolicy.fromMap(Map<String, dynamic> map) {
     return HostMaintenancePolicy(
-      maintenanceInterval: map['maintenanceInterval'] == null ? null : (HostMaintenancePolicyMaintenanceInterval.fromValue(map['maintenanceInterval'] as String)).input(),
-      opportunisticMaintenanceStrategy: map['opportunisticMaintenanceStrategy'] == null ? null : (OpportunisticMaintenanceStrategy.fromMap((map['opportunisticMaintenanceStrategy'] as Map).cast<String, dynamic>())).input(),
+      maintenanceInterval: map['maintenanceInterval'] == null ? null : (HostMaintenancePolicyMaintenanceInterval.fromValue(map['maintenanceInterval']! as String)).input(),
+      opportunisticMaintenanceStrategy: map['opportunisticMaintenanceStrategy'] == null ? null : (OpportunisticMaintenanceStrategy.fromMap((map['opportunisticMaintenanceStrategy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

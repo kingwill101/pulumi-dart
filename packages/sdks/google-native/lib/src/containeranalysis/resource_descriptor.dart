@@ -43,13 +43,13 @@ class ResourceDescriptor {
 
   factory ResourceDescriptor.fromMap(Map<String, dynamic> map) {
     return ResourceDescriptor(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      digest: map['digest'] == null ? null : ((map['digest'] as Map).cast<String, String>()).input(),
-      downloadLocation: map['downloadLocation'] == null ? null : (map['downloadLocation'] as String).input(),
-      mediaType: map['mediaType'] == null ? null : (map['mediaType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      digest: map['digest'] == null ? null : ((map['digest']! as Map).cast<String, String>()).input(),
+      downloadLocation: map['downloadLocation'] == null ? null : (map['downloadLocation']! as String).input(),
+      mediaType: map['mediaType'] == null ? null : (map['mediaType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

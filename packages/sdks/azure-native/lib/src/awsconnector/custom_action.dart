@@ -27,8 +27,8 @@ class CustomAction {
 
   factory CustomAction.fromMap(Map<String, dynamic> map) {
     return CustomAction(
-      actionDefinition: map['actionDefinition'] == null ? null : (ActionDefinition.fromMap((map['actionDefinition'] as Map).cast<String, dynamic>())).input(),
-      actionName: map['actionName'] == null ? null : (map['actionName'] as String).input(),
+      actionDefinition: map['actionDefinition'] == null ? null : (ActionDefinition.fromMap((map['actionDefinition']! as Map).cast<String, dynamic>())).input(),
+      actionName: map['actionName'] == null ? null : (map['actionName']! as String).input(),
     );
   }
 }

@@ -52,12 +52,12 @@ class PlacementGroupArgs {
 
   factory PlacementGroupArgs.fromMap(Map<String, dynamic> map) {
     return PlacementGroupArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      spreadLevel: map['spreadLevel'] == null ? null : (map['spreadLevel'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      partitionCount: map['partitionCount'] == null ? null : ((map['partitionCount'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      spreadLevel: map['spreadLevel'] == null ? null : ((map['spreadLevel'] as String).input()).input(),
       strategy: (map['strategy'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

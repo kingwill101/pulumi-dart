@@ -40,10 +40,10 @@ class InsightArgs {
 
   factory InsightArgs.fromMap(Map<String, dynamic> map) {
     return InsightArgs(
-      filters: (InsightFilters.fromMap((map['filters'] as Map).cast<String, dynamic>())).input(),
+      filters: (InsightFilters.fromMap((map['filters']! as Map).cast<String, dynamic>())).input(),
       groupByAttribute: (map['groupByAttribute'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

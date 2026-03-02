@@ -79,18 +79,18 @@ class MethodState {
 
   factory MethodState.fromMap(Map<String, dynamic> map) {
     return MethodState(
-      apiKeyRequired: map['apiKeyRequired'] == null ? null : (map['apiKeyRequired'] as bool).input(),
-      authorization: map['authorization'] == null ? null : (map['authorization'] as String).input(),
-      authorizationScopes: map['authorizationScopes'] == null ? null : ((map['authorizationScopes'] as List).cast<String>()).input(),
-      authorizerId: map['authorizerId'] == null ? null : (map['authorizerId'] as String).input(),
-      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod'] as String).input(),
-      operationName: map['operationName'] == null ? null : (map['operationName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      requestModels: map['requestModels'] == null ? null : ((map['requestModels'] as Map).cast<String, String>()).input(),
-      requestParameters: map['requestParameters'] == null ? null : ((map['requestParameters'] as Map).cast<String, bool>()).input(),
-      requestValidatorId: map['requestValidatorId'] == null ? null : (map['requestValidatorId'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      restApi: map['restApi'] == null ? null : (map['restApi'] as String).input(),
+      apiKeyRequired: map['apiKeyRequired'] == null ? null : ((map['apiKeyRequired'] as bool).input()).input(),
+      authorization: map['authorization'] == null ? null : ((map['authorization'] as String).input()).input(),
+      authorizationScopes: map['authorizationScopes'] == null ? null : (((map['authorizationScopes'] as List).cast<String>()).input()).input(),
+      authorizerId: map['authorizerId'] == null ? null : ((map['authorizerId'] as String).input()).input(),
+      httpMethod: map['httpMethod'] == null ? null : ((map['httpMethod'] as String).input()).input(),
+      operationName: map['operationName'] == null ? null : ((map['operationName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      requestModels: map['requestModels'] == null ? null : (((map['requestModels'] as Map).cast<String, String>()).input()).input(),
+      requestParameters: map['requestParameters'] == null ? null : (((map['requestParameters'] as Map).cast<String, bool>()).input()).input(),
+      requestValidatorId: map['requestValidatorId'] == null ? null : ((map['requestValidatorId'] as String).input()).input(),
+      resourceId: map['resourceId'] == null ? null : ((map['resourceId'] as String).input()).input(),
+      restApi: map['restApi'] == null ? null : ((map['restApi'] as String).input()).input(),
     );
   }
 }

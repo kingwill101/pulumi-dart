@@ -41,11 +41,11 @@ class NetworkManagerRoutingRuleCollectionState {
 
   factory NetworkManagerRoutingRuleCollectionState.fromMap(Map<String, dynamic> map) {
     return NetworkManagerRoutingRuleCollectionState(
-      bgpRoutePropagationEnabled: map['bgpRoutePropagationEnabled'] == null ? null : (map['bgpRoutePropagationEnabled'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkGroupIds: map['networkGroupIds'] == null ? null : ((map['networkGroupIds'] as List).cast<String>()).input(),
-      routingConfigurationId: map['routingConfigurationId'] == null ? null : (map['routingConfigurationId'] as String).input(),
+      bgpRoutePropagationEnabled: map['bgpRoutePropagationEnabled'] == null ? null : (map['bgpRoutePropagationEnabled']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkGroupIds: map['networkGroupIds'] == null ? null : ((map['networkGroupIds']! as List).cast<String>()).input(),
+      routingConfigurationId: map['routingConfigurationId'] == null ? null : (map['routingConfigurationId']! as String).input(),
     );
   }
 }

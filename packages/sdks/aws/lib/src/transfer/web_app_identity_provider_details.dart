@@ -21,7 +21,7 @@ class WebAppIdentityProviderDetails {
 
   factory WebAppIdentityProviderDetails.fromMap(Map<String, dynamic> map) {
     return WebAppIdentityProviderDetails(
-      identityCenterConfig: map['identityCenterConfig'] == null ? null : (WebAppIdentityProviderDetailsIdentityCenterConfig.fromMap((map['identityCenterConfig'] as Map).cast<String, dynamic>())).input(),
+      identityCenterConfig: map['identityCenterConfig'] == null ? null : ((WebAppIdentityProviderDetailsIdentityCenterConfig.fromMap((map['identityCenterConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

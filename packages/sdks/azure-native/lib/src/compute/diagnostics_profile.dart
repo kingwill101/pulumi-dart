@@ -22,7 +22,7 @@ class DiagnosticsProfile {
 
   factory DiagnosticsProfile.fromMap(Map<String, dynamic> map) {
     return DiagnosticsProfile(
-      bootDiagnostics: map['bootDiagnostics'] == null ? null : (BootDiagnostics.fromMap((map['bootDiagnostics'] as Map).cast<String, dynamic>())).input(),
+      bootDiagnostics: map['bootDiagnostics'] == null ? null : (BootDiagnostics.fromMap((map['bootDiagnostics']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

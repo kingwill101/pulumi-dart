@@ -36,9 +36,9 @@ class TokenPasswordResponse {
 
   factory TokenPasswordResponse.fromMap(Map<String, dynamic> map) {
     return TokenPasswordResponse(
-      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
-      expiry: map['expiry'] == null ? null : (map['expiry'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      creationTime: map['creationTime'] == null ? null : (map['creationTime']! as String).input(),
+      expiry: map['expiry'] == null ? null : (map['expiry']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       value: (map['value'] as String).input(),
     );
   }

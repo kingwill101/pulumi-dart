@@ -41,11 +41,11 @@ class ManagedPrivateEndpointState {
 
   factory ManagedPrivateEndpointState.fromMap(Map<String, dynamic> map) {
     return ManagedPrivateEndpointState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      streamAnalyticsClusterName: map['streamAnalyticsClusterName'] == null ? null : (map['streamAnalyticsClusterName'] as String).input(),
-      subresourceName: map['subresourceName'] == null ? null : (map['subresourceName'] as String).input(),
-      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      streamAnalyticsClusterName: map['streamAnalyticsClusterName'] == null ? null : (map['streamAnalyticsClusterName']! as String).input(),
+      subresourceName: map['subresourceName'] == null ? null : (map['subresourceName']! as String).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId']! as String).input(),
     );
   }
 }

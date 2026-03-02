@@ -35,9 +35,9 @@ class GetImageRecipesArgs {
 
   factory GetImageRecipesArgs.fromMap(Map<String, dynamic> map) {
     return GetImageRecipesArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetImageRecipesFilter>(map['filters'], (value) => GetImageRecipesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetImageRecipesFilter>(map['filters']!, (value) => GetImageRecipesFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      owner: map['owner'] == null ? null : ((map['owner'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class AzureIntegrationsVpnGateway {
 
   factory AzureIntegrationsVpnGateway.fromMap(Map<String, dynamic> map) {
     return AzureIntegrationsVpnGateway(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
-      resourceGroups: map['resourceGroups'] == null ? null : ((map['resourceGroups'] as List).cast<String>()).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
+      resourceGroups: map['resourceGroups'] == null ? null : ((map['resourceGroups']! as List).cast<String>()).input(),
     );
   }
 }

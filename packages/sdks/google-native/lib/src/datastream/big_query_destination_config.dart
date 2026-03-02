@@ -33,9 +33,9 @@ class BigQueryDestinationConfig {
 
   factory BigQueryDestinationConfig.fromMap(Map<String, dynamic> map) {
     return BigQueryDestinationConfig(
-      dataFreshness: map['dataFreshness'] == null ? null : (map['dataFreshness'] as String).input(),
-      singleTargetDataset: map['singleTargetDataset'] == null ? null : (SingleTargetDataset.fromMap((map['singleTargetDataset'] as Map).cast<String, dynamic>())).input(),
-      sourceHierarchyDatasets: map['sourceHierarchyDatasets'] == null ? null : (SourceHierarchyDatasets.fromMap((map['sourceHierarchyDatasets'] as Map).cast<String, dynamic>())).input(),
+      dataFreshness: map['dataFreshness'] == null ? null : (map['dataFreshness']! as String).input(),
+      singleTargetDataset: map['singleTargetDataset'] == null ? null : (SingleTargetDataset.fromMap((map['singleTargetDataset']! as Map).cast<String, dynamic>())).input(),
+      sourceHierarchyDatasets: map['sourceHierarchyDatasets'] == null ? null : (SourceHierarchyDatasets.fromMap((map['sourceHierarchyDatasets']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

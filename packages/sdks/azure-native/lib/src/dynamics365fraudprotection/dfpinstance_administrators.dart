@@ -21,7 +21,7 @@ class DFPInstanceAdministrators {
 
   factory DFPInstanceAdministrators.fromMap(Map<String, dynamic> map) {
     return DFPInstanceAdministrators(
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
     );
   }
 }

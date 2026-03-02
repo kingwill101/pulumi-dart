@@ -20,7 +20,7 @@ class DataProductAccessGroupPrincipal {
 
   factory DataProductAccessGroupPrincipal.fromMap(Map<String, dynamic> map) {
     return DataProductAccessGroupPrincipal(
-      googleGroup: map['googleGroup'] == null ? null : (map['googleGroup'] as String).input(),
+      googleGroup: map['googleGroup'] == null ? null : (map['googleGroup']! as String).input(),
     );
   }
 }

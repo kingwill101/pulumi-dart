@@ -26,8 +26,8 @@ class Digest {
 
   factory Digest.fromMap(Map<String, dynamic> map) {
     return Digest(
-      algorithmType: map['algorithmType'] == null ? null : (map['algorithmType'] as int).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      algorithmType: map['algorithmType'] == null ? null : (map['algorithmType']! as int).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

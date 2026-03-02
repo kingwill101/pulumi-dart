@@ -95,17 +95,17 @@ class L7PolicyV2Args {
   factory L7PolicyV2Args.fromMap(Map<String, dynamic> map) {
     return L7PolicyV2Args(
       action: (map['action'] as String).input(),
-      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       listenerId: (map['listenerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      position: map['position'] == null ? null : (map['position'] as int).input(),
-      redirectHttpCode: map['redirectHttpCode'] == null ? null : (map['redirectHttpCode'] as int).input(),
-      redirectPoolId: map['redirectPoolId'] == null ? null : (map['redirectPoolId'] as String).input(),
-      redirectPrefix: map['redirectPrefix'] == null ? null : (map['redirectPrefix'] as String).input(),
-      redirectUrl: map['redirectUrl'] == null ? null : (map['redirectUrl'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      position: map['position'] == null ? null : (map['position']! as int).input(),
+      redirectHttpCode: map['redirectHttpCode'] == null ? null : (map['redirectHttpCode']! as int).input(),
+      redirectPoolId: map['redirectPoolId'] == null ? null : (map['redirectPoolId']! as String).input(),
+      redirectPrefix: map['redirectPrefix'] == null ? null : (map['redirectPrefix']! as String).input(),
+      redirectUrl: map['redirectUrl'] == null ? null : (map['redirectUrl']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

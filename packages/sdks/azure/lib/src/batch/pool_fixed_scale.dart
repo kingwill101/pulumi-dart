@@ -35,10 +35,10 @@ class PoolFixedScale {
 
   factory PoolFixedScale.fromMap(Map<String, dynamic> map) {
     return PoolFixedScale(
-      nodeDeallocationMethod: map['nodeDeallocationMethod'] == null ? null : (map['nodeDeallocationMethod'] as String).input(),
-      resizeTimeout: map['resizeTimeout'] == null ? null : (map['resizeTimeout'] as String).input(),
-      targetDedicatedNodes: map['targetDedicatedNodes'] == null ? null : (map['targetDedicatedNodes'] as int).input(),
-      targetLowPriorityNodes: map['targetLowPriorityNodes'] == null ? null : (map['targetLowPriorityNodes'] as int).input(),
+      nodeDeallocationMethod: map['nodeDeallocationMethod'] == null ? null : (map['nodeDeallocationMethod']! as String).input(),
+      resizeTimeout: map['resizeTimeout'] == null ? null : (map['resizeTimeout']! as String).input(),
+      targetDedicatedNodes: map['targetDedicatedNodes'] == null ? null : (map['targetDedicatedNodes']! as int).input(),
+      targetLowPriorityNodes: map['targetLowPriorityNodes'] == null ? null : (map['targetLowPriorityNodes']! as int).input(),
     );
   }
 }

@@ -91,19 +91,19 @@ class RestorePlanState {
 
   factory RestorePlanState.fromMap(Map<String, dynamic> map) {
     return RestorePlanState(
-      backupPlan: map['backupPlan'] == null ? null : (map['backupPlan'] as String).input(),
-      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      restoreConfig: map['restoreConfig'] == null ? null : (RestorePlanRestoreConfig.fromMap((map['restoreConfig'] as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      stateReason: map['stateReason'] == null ? null : (map['stateReason'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      backupPlan: map['backupPlan'] == null ? null : (map['backupPlan']! as String).input(),
+      cluster: map['cluster'] == null ? null : (map['cluster']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      restoreConfig: map['restoreConfig'] == null ? null : (RestorePlanRestoreConfig.fromMap((map['restoreConfig']! as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      stateReason: map['stateReason'] == null ? null : (map['stateReason']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
     );
   }
 }

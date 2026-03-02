@@ -29,9 +29,9 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation {
 
   factory GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation.fromMap(Map<String, dynamic> map) {
     return GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation(
-      configSource: map['configSource'] == null ? null : (GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource.fromMap((map['configSource'] as Map).cast<String, dynamic>())).input(),
-      environment: map['environment'] == null ? null : ((map['environment'] as Map).cast<String, String>()).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      configSource: map['configSource'] == null ? null : (GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource.fromMap((map['configSource']! as Map).cast<String, dynamic>())).input(),
+      environment: map['environment'] == null ? null : ((map['environment']! as Map).cast<String, String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
     );
   }
 }

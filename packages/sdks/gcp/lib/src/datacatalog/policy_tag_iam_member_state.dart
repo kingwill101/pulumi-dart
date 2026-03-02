@@ -54,11 +54,11 @@ class PolicyTagIamMemberState {
 
   factory PolicyTagIamMemberState.fromMap(Map<String, dynamic> map) {
     return PolicyTagIamMemberState(
-      condition: map['condition'] == null ? null : (PolicyTagIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      member: map['member'] == null ? null : (map['member'] as String).input(),
-      policyTag: map['policyTag'] == null ? null : (map['policyTag'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      condition: map['condition'] == null ? null : (PolicyTagIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      member: map['member'] == null ? null : (map['member']! as String).input(),
+      policyTag: map['policyTag'] == null ? null : (map['policyTag']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

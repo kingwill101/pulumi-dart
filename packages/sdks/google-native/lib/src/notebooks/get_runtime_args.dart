@@ -32,7 +32,7 @@ class GetRuntimeArgs {
   factory GetRuntimeArgs.fromMap(Map<String, dynamic> map) {
     return GetRuntimeArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       runtimeId: (map['runtimeId'] as String).input(),
     );
   }

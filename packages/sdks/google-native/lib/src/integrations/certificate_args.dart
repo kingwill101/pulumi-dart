@@ -63,15 +63,15 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      certificateStatus: map['certificateStatus'] == null ? null : (CertificateCertificateStatus.fromValue(map['certificateStatus'] as String)).input(),
-      credentialId: map['credentialId'] == null ? null : (map['credentialId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      certificateStatus: map['certificateStatus'] == null ? null : (CertificateCertificateStatus.fromValue(map['certificateStatus']! as String)).input(),
+      credentialId: map['credentialId'] == null ? null : (map['credentialId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       productId: (map['productId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rawCertificate: map['rawCertificate'] == null ? null : (GoogleCloudIntegrationsV1alphaClientCertificate.fromMap((map['rawCertificate'] as Map).cast<String, dynamic>())).input(),
-      requestorId: map['requestorId'] == null ? null : (map['requestorId'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rawCertificate: map['rawCertificate'] == null ? null : (GoogleCloudIntegrationsV1alphaClientCertificate.fromMap((map['rawCertificate']! as Map).cast<String, dynamic>())).input(),
+      requestorId: map['requestorId'] == null ? null : (map['requestorId']! as String).input(),
     );
   }
 }

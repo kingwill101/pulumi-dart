@@ -22,7 +22,7 @@ class ConfigManagementPolicyControllerMonitoring {
 
   factory ConfigManagementPolicyControllerMonitoring.fromMap(Map<String, dynamic> map) {
     return ConfigManagementPolicyControllerMonitoring(
-      backends: map['backends'] == null ? null : (pulumi.Input.decodeList<ConfigManagementPolicyControllerMonitoringBackendsItem>(map['backends'], (value) => ConfigManagementPolicyControllerMonitoringBackendsItem.fromValue(value as String))).input(),
+      backends: map['backends'] == null ? null : (pulumi.Input.decodeList<ConfigManagementPolicyControllerMonitoringBackendsItem>(map['backends']!, (value) => ConfigManagementPolicyControllerMonitoringBackendsItem.fromValue(value as String))).input(),
     );
   }
 }

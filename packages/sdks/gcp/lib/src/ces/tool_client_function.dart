@@ -39,10 +39,10 @@ class ToolClientFunction {
 
   factory ToolClientFunction.fromMap(Map<String, dynamic> map) {
     return ToolClientFunction(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (ToolClientFunctionParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
-      response: map['response'] == null ? null : (ToolClientFunctionResponse.fromMap((map['response'] as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : (ToolClientFunctionParameters.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input(),
+      response: map['response'] == null ? null : (ToolClientFunctionResponse.fromMap((map['response']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -67,15 +67,15 @@ class EventHubArgs {
 
   factory EventHubArgs.fromMap(Map<String, dynamic> map) {
     return EventHubArgs(
-      captureDescription: map['captureDescription'] == null ? null : (CaptureDescription.fromMap((map['captureDescription'] as Map).cast<String, dynamic>())).input(),
-      eventHubName: map['eventHubName'] == null ? null : (map['eventHubName'] as String).input(),
-      messageRetentionInDays: map['messageRetentionInDays'] == null ? null : (map['messageRetentionInDays'] as double).input(),
+      captureDescription: map['captureDescription'] == null ? null : (CaptureDescription.fromMap((map['captureDescription']! as Map).cast<String, dynamic>())).input(),
+      eventHubName: map['eventHubName'] == null ? null : (map['eventHubName']! as String).input(),
+      messageRetentionInDays: map['messageRetentionInDays'] == null ? null : (map['messageRetentionInDays']! as double).input(),
       namespaceName: (map['namespaceName'] as String).input(),
-      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount'] as double).input(),
+      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount']! as double).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      retentionDescription: map['retentionDescription'] == null ? null : (RetentionDescription.fromMap((map['retentionDescription'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (EntityStatus.fromValue(map['status'] as String)).input(),
-      userMetadata: map['userMetadata'] == null ? null : (map['userMetadata'] as String).input(),
+      retentionDescription: map['retentionDescription'] == null ? null : (RetentionDescription.fromMap((map['retentionDescription']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (EntityStatus.fromValue(map['status']! as String)).input(),
+      userMetadata: map['userMetadata'] == null ? null : (map['userMetadata']! as String).input(),
     );
   }
 }

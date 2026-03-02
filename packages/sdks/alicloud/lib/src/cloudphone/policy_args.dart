@@ -55,13 +55,13 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      cameraRedirect: map['cameraRedirect'] == null ? null : (map['cameraRedirect'] as String).input(),
-      clipboard: map['clipboard'] == null ? null : (map['clipboard'] as String).input(),
-      lockResolution: map['lockResolution'] == null ? null : (map['lockResolution'] as String).input(),
-      netRedirectPolicy: map['netRedirectPolicy'] == null ? null : (PolicyNetRedirectPolicy.fromMap((map['netRedirectPolicy'] as Map).cast<String, dynamic>())).input(),
-      policyGroupName: map['policyGroupName'] == null ? null : (map['policyGroupName'] as String).input(),
-      resolutionHeight: map['resolutionHeight'] == null ? null : (map['resolutionHeight'] as int).input(),
-      resolutionWidth: map['resolutionWidth'] == null ? null : (map['resolutionWidth'] as int).input(),
+      cameraRedirect: map['cameraRedirect'] == null ? null : (map['cameraRedirect']! as String).input(),
+      clipboard: map['clipboard'] == null ? null : (map['clipboard']! as String).input(),
+      lockResolution: map['lockResolution'] == null ? null : (map['lockResolution']! as String).input(),
+      netRedirectPolicy: map['netRedirectPolicy'] == null ? null : (PolicyNetRedirectPolicy.fromMap((map['netRedirectPolicy']! as Map).cast<String, dynamic>())).input(),
+      policyGroupName: map['policyGroupName'] == null ? null : (map['policyGroupName']! as String).input(),
+      resolutionHeight: map['resolutionHeight'] == null ? null : (map['resolutionHeight']! as int).input(),
+      resolutionWidth: map['resolutionWidth'] == null ? null : (map['resolutionWidth']! as int).input(),
     );
   }
 }

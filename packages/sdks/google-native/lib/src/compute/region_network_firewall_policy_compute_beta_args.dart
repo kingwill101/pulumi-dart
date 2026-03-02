@@ -64,15 +64,15 @@ class RegionNetworkFirewallPolicyComputeBetaArgs {
 
   factory RegionNetworkFirewallPolicyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return RegionNetworkFirewallPolicyComputeBetaArgs(
-      associations: map['associations'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyAssociationComputeBeta>(map['associations'], (value) => FirewallPolicyAssociationComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      associations: map['associations'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyAssociationComputeBeta>(map['associations']!, (value) => FirewallPolicyAssociationComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyRuleComputeBeta>(map['rules'], (value) => FirewallPolicyRuleComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      shortName: map['shortName'] == null ? null : (map['shortName'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyRuleComputeBeta>(map['rules']!, (value) => FirewallPolicyRuleComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shortName: map['shortName'] == null ? null : (map['shortName']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class ServiceAcrConfigurationInfo {
 
   factory ServiceAcrConfigurationInfo.fromMap(Map<String, dynamic> map) {
     return ServiceAcrConfigurationInfo(
-      loginServers: map['loginServers'] == null ? null : ((map['loginServers'] as List).cast<String>()).input(),
-      ociArtifacts: map['ociArtifacts'] == null ? null : (pulumi.Input.decodeList<ServiceOciArtifactEntry>(map['ociArtifacts'], (value) => ServiceOciArtifactEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loginServers: map['loginServers'] == null ? null : ((map['loginServers']! as List).cast<String>()).input(),
+      ociArtifacts: map['ociArtifacts'] == null ? null : (pulumi.Input.decodeList<ServiceOciArtifactEntry>(map['ociArtifacts']!, (value) => ServiceOciArtifactEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

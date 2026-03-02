@@ -43,10 +43,10 @@ class AwsEuSovereignLinkAccountArgs {
 
   factory AwsEuSovereignLinkAccountArgs.fromMap(Map<String, dynamic> map) {
     return AwsEuSovereignLinkAccountArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
       arn: (map['arn'] as String).input(),
-      metricCollectionMode: map['metricCollectionMode'] == null ? null : (map['metricCollectionMode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      metricCollectionMode: map['metricCollectionMode'] == null ? null : (map['metricCollectionMode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

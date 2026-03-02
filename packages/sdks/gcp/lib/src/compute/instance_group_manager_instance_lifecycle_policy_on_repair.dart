@@ -22,7 +22,7 @@ class InstanceGroupManagerInstanceLifecyclePolicyOnRepair {
 
   factory InstanceGroupManagerInstanceLifecyclePolicyOnRepair.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerInstanceLifecyclePolicyOnRepair(
-      allowChangingZone: map['allowChangingZone'] == null ? null : (map['allowChangingZone'] as String).input(),
+      allowChangingZone: map['allowChangingZone'] == null ? null : (map['allowChangingZone']! as String).input(),
     );
   }
 }

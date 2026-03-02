@@ -48,10 +48,10 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      grpcConfig: map['grpcConfig'] == null ? null : (map['grpcConfig'] as String).input(),
-      openapiConfig: map['openapiConfig'] == null ? null : (map['openapiConfig'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      protocOutputBase64: map['protocOutputBase64'] == null ? null : (map['protocOutputBase64'] as String).input(),
+      grpcConfig: map['grpcConfig'] == null ? null : (map['grpcConfig']! as String).input(),
+      openapiConfig: map['openapiConfig'] == null ? null : (map['openapiConfig']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      protocOutputBase64: map['protocOutputBase64'] == null ? null : (map['protocOutputBase64']! as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );
   }

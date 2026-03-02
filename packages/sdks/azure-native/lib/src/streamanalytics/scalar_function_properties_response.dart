@@ -44,10 +44,10 @@ class ScalarFunctionPropertiesResponse {
 
   factory ScalarFunctionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ScalarFunctionPropertiesResponse(
-      binding: map['binding'] == null ? null : (AzureMachineLearningWebServiceFunctionBindingResponse.fromMap((map['binding'] as Map).cast<String, dynamic>())).input(),
+      binding: map['binding'] == null ? null : (AzureMachineLearningWebServiceFunctionBindingResponse.fromMap((map['binding']! as Map).cast<String, dynamic>())).input(),
       etag: (map['etag'] as String).input(),
-      inputs: map['inputs'] == null ? null : (pulumi.Input.decodeList<FunctionInputResponse>(map['inputs'], (value) => FunctionInputResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      output: map['output'] == null ? null : (FunctionOutputResponse.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
+      inputs: map['inputs'] == null ? null : (pulumi.Input.decodeList<FunctionInputResponse>(map['inputs']!, (value) => FunctionInputResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      output: map['output'] == null ? null : (FunctionOutputResponse.fromMap((map['output']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -44,10 +44,10 @@ class AlertPolicyDocumentation {
 
   factory AlertPolicyDocumentation.fromMap(Map<String, dynamic> map) {
     return AlertPolicyDocumentation(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      links: map['links'] == null ? null : (pulumi.Input.decodeList<AlertPolicyDocumentationLink>(map['links'], (value) => AlertPolicyDocumentationLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mimeType: map['mimeType'] == null ? null : (map['mimeType'] as String).input(),
-      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      links: map['links'] == null ? null : (pulumi.Input.decodeList<AlertPolicyDocumentationLink>(map['links']!, (value) => AlertPolicyDocumentationLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mimeType: map['mimeType'] == null ? null : (map['mimeType']! as String).input(),
+      subject: map['subject'] == null ? null : (map['subject']! as String).input(),
     );
   }
 }

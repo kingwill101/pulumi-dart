@@ -38,8 +38,8 @@ class ServiceReferenceApiextensionsK8sIoV1beta1 {
     return ServiceReferenceApiextensionsK8sIoV1beta1(
       name: (map['name'] as String).input(),
       namespace: (map['namespace'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

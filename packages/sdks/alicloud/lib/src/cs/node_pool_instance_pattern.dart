@@ -86,17 +86,17 @@ class NodePoolInstancePattern {
 
   factory NodePoolInstancePattern.fromMap(Map<String, dynamic> map) {
     return NodePoolInstancePattern(
-      cores: map['cores'] == null ? null : (map['cores'] as int).input(),
-      cpuArchitectures: map['cpuArchitectures'] == null ? null : ((map['cpuArchitectures'] as List).cast<String>()).input(),
-      excludedInstanceTypes: map['excludedInstanceTypes'] == null ? null : ((map['excludedInstanceTypes'] as List).cast<String>()).input(),
-      instanceCategories: map['instanceCategories'] == null ? null : ((map['instanceCategories'] as List).cast<String>()).input(),
+      cores: map['cores'] == null ? null : (map['cores']! as int).input(),
+      cpuArchitectures: map['cpuArchitectures'] == null ? null : ((map['cpuArchitectures']! as List).cast<String>()).input(),
+      excludedInstanceTypes: map['excludedInstanceTypes'] == null ? null : ((map['excludedInstanceTypes']! as List).cast<String>()).input(),
+      instanceCategories: map['instanceCategories'] == null ? null : ((map['instanceCategories']! as List).cast<String>()).input(),
       instanceFamilyLevel: (map['instanceFamilyLevel'] as String).input(),
-      instanceTypeFamilies: map['instanceTypeFamilies'] == null ? null : ((map['instanceTypeFamilies'] as List).cast<String>()).input(),
-      maxCpuCores: map['maxCpuCores'] == null ? null : (map['maxCpuCores'] as int).input(),
-      maxMemorySize: map['maxMemorySize'] == null ? null : (map['maxMemorySize'] as double).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as double).input(),
-      minCpuCores: map['minCpuCores'] == null ? null : (map['minCpuCores'] as int).input(),
-      minMemorySize: map['minMemorySize'] == null ? null : (map['minMemorySize'] as double).input(),
+      instanceTypeFamilies: map['instanceTypeFamilies'] == null ? null : ((map['instanceTypeFamilies']! as List).cast<String>()).input(),
+      maxCpuCores: map['maxCpuCores'] == null ? null : (map['maxCpuCores']! as int).input(),
+      maxMemorySize: map['maxMemorySize'] == null ? null : (map['maxMemorySize']! as double).input(),
+      memory: map['memory'] == null ? null : (map['memory']! as double).input(),
+      minCpuCores: map['minCpuCores'] == null ? null : (map['minCpuCores']! as int).input(),
+      minMemorySize: map['minMemorySize'] == null ? null : (map['minMemorySize']! as double).input(),
     );
   }
 }

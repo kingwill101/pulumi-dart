@@ -36,7 +36,7 @@ class SpokeGateway {
     return SpokeGateway(
       capacity: (map['capacity'] as String).input(),
       ipRangeReservations: (pulumi.Input.decodeList<SpokeGatewayIpRangeReservation>(map['ipRangeReservations'], (value) => SpokeGatewayIpRangeReservation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      routers: map['routers'] == null ? null : ((map['routers'] as List).cast<String>()).input(),
+      routers: map['routers'] == null ? null : ((map['routers']! as List).cast<String>()).input(),
     );
   }
 }

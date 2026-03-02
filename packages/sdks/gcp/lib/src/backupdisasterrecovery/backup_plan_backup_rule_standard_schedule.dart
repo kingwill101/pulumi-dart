@@ -64,14 +64,14 @@ class BackupPlanBackupRuleStandardSchedule {
 
   factory BackupPlanBackupRuleStandardSchedule.fromMap(Map<String, dynamic> map) {
     return BackupPlanBackupRuleStandardSchedule(
-      backupWindow: map['backupWindow'] == null ? null : (BackupPlanBackupRuleStandardScheduleBackupWindow.fromMap((map['backupWindow'] as Map).cast<String, dynamic>())).input(),
-      daysOfMonths: map['daysOfMonths'] == null ? null : ((map['daysOfMonths'] as List).cast<int>()).input(),
-      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((map['daysOfWeeks'] as List).cast<String>()).input(),
-      hourlyFrequency: map['hourlyFrequency'] == null ? null : (map['hourlyFrequency'] as int).input(),
-      months: map['months'] == null ? null : ((map['months'] as List).cast<String>()).input(),
+      backupWindow: map['backupWindow'] == null ? null : (BackupPlanBackupRuleStandardScheduleBackupWindow.fromMap((map['backupWindow']! as Map).cast<String, dynamic>())).input(),
+      daysOfMonths: map['daysOfMonths'] == null ? null : ((map['daysOfMonths']! as List).cast<int>()).input(),
+      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((map['daysOfWeeks']! as List).cast<String>()).input(),
+      hourlyFrequency: map['hourlyFrequency'] == null ? null : (map['hourlyFrequency']! as int).input(),
+      months: map['months'] == null ? null : ((map['months']! as List).cast<String>()).input(),
       recurrenceType: (map['recurrenceType'] as String).input(),
       timeZone: (map['timeZone'] as String).input(),
-      weekDayOfMonth: map['weekDayOfMonth'] == null ? null : (BackupPlanBackupRuleStandardScheduleWeekDayOfMonth.fromMap((map['weekDayOfMonth'] as Map).cast<String, dynamic>())).input(),
+      weekDayOfMonth: map['weekDayOfMonth'] == null ? null : (BackupPlanBackupRuleStandardScheduleWeekDayOfMonth.fromMap((map['weekDayOfMonth']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

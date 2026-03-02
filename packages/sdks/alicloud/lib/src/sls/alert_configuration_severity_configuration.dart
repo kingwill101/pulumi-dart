@@ -26,8 +26,8 @@ class AlertConfigurationSeverityConfiguration {
 
   factory AlertConfigurationSeverityConfiguration.fromMap(Map<String, dynamic> map) {
     return AlertConfigurationSeverityConfiguration(
-      evalCondition: map['evalCondition'] == null ? null : (AlertConfigurationSeverityConfigurationEvalCondition.fromMap((map['evalCondition'] as Map).cast<String, dynamic>())).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as int).input(),
+      evalCondition: map['evalCondition'] == null ? null : (AlertConfigurationSeverityConfigurationEvalCondition.fromMap((map['evalCondition']! as Map).cast<String, dynamic>())).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as int).input(),
     );
   }
 }

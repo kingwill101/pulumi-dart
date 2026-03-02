@@ -22,7 +22,7 @@ class WindowsUserConfiguration {
 
   factory WindowsUserConfiguration.fromMap(Map<String, dynamic> map) {
     return WindowsUserConfiguration(
-      loginMode: map['loginMode'] == null ? null : (LoginMode.fromValue(map['loginMode'] as String)).input(),
+      loginMode: map['loginMode'] == null ? null : (LoginMode.fromValue(map['loginMode']! as String)).input(),
     );
   }
 }

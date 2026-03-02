@@ -65,15 +65,15 @@ class WorkflowTemplateDataprocV1beta2Args {
 
   factory WorkflowTemplateDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplateDataprocV1beta2Args(
-      dagTimeout: map['dagTimeout'] == null ? null : (map['dagTimeout'] as String).input(),
+      dagTimeout: map['dagTimeout'] == null ? null : (map['dagTimeout']! as String).input(),
       id: (map['id'] as String).input(),
       jobs: (pulumi.Input.decodeList<OrderedJobDataprocV1beta2>(map['jobs'], (value) => OrderedJobDataprocV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<TemplateParameterDataprocV1beta2>(map['parameters'], (value) => TemplateParameterDataprocV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<TemplateParameterDataprocV1beta2>(map['parameters']!, (value) => TemplateParameterDataprocV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
       placement: (WorkflowTemplatePlacementDataprocV1beta2.fromMap((map['placement'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

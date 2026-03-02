@@ -30,9 +30,9 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter 
 
   factory ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter(
-      isValueSecret: map['isValueSecret'] == null ? null : (map['isValueSecret'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      isValueSecret: map['isValueSecret'] == null ? null : (map['isValueSecret']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

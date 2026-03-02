@@ -24,7 +24,7 @@ class GetOrganizationArgs {
 
   factory GetOrganizationArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationArgs(
-      returnOrganizationOnly: map['returnOrganizationOnly'] == null ? null : (map['returnOrganizationOnly'] as bool).input(),
+      returnOrganizationOnly: map['returnOrganizationOnly'] == null ? null : ((map['returnOrganizationOnly'] as bool).input()).input(),
     );
   }
 }

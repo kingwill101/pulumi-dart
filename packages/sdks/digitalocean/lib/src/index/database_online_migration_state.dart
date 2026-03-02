@@ -47,12 +47,12 @@ class DatabaseOnlineMigrationState {
 
   factory DatabaseOnlineMigrationState.fromMap(Map<String, dynamic> map) {
     return DatabaseOnlineMigrationState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      disableSsl: map['disableSsl'] == null ? null : (map['disableSsl'] as bool).input(),
-      ignoreDbs: map['ignoreDbs'] == null ? null : ((map['ignoreDbs'] as List).cast<String>()).input(),
-      source: map['source'] == null ? null : (DatabaseOnlineMigrationSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      disableSsl: map['disableSsl'] == null ? null : (map['disableSsl']! as bool).input(),
+      ignoreDbs: map['ignoreDbs'] == null ? null : ((map['ignoreDbs']! as List).cast<String>()).input(),
+      source: map['source'] == null ? null : (DatabaseOnlineMigrationSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

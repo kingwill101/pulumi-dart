@@ -44,11 +44,11 @@ class ApplicationTypeArgs {
 
   factory ApplicationTypeArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationTypeArgs(
-      applicationTypeName: map['applicationTypeName'] == null ? null : (map['applicationTypeName'] as String).input(),
+      applicationTypeName: map['applicationTypeName'] == null ? null : (map['applicationTypeName']! as String).input(),
       clusterName: (map['clusterName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

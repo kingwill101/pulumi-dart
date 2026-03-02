@@ -60,12 +60,12 @@ class AiIndexMetadataConfig {
 
   factory AiIndexMetadataConfig.fromMap(Map<String, dynamic> map) {
     return AiIndexMetadataConfig(
-      algorithmConfig: map['algorithmConfig'] == null ? null : (AiIndexMetadataConfigAlgorithmConfig.fromMap((map['algorithmConfig'] as Map).cast<String, dynamic>())).input(),
-      approximateNeighborsCount: map['approximateNeighborsCount'] == null ? null : (map['approximateNeighborsCount'] as int).input(),
+      algorithmConfig: map['algorithmConfig'] == null ? null : (AiIndexMetadataConfigAlgorithmConfig.fromMap((map['algorithmConfig']! as Map).cast<String, dynamic>())).input(),
+      approximateNeighborsCount: map['approximateNeighborsCount'] == null ? null : (map['approximateNeighborsCount']! as int).input(),
       dimensions: (map['dimensions'] as int).input(),
-      distanceMeasureType: map['distanceMeasureType'] == null ? null : (map['distanceMeasureType'] as String).input(),
-      featureNormType: map['featureNormType'] == null ? null : (map['featureNormType'] as String).input(),
-      shardSize: map['shardSize'] == null ? null : (map['shardSize'] as String).input(),
+      distanceMeasureType: map['distanceMeasureType'] == null ? null : (map['distanceMeasureType']! as String).input(),
+      featureNormType: map['featureNormType'] == null ? null : (map['featureNormType']! as String).input(),
+      shardSize: map['shardSize'] == null ? null : (map['shardSize']! as String).input(),
     );
   }
 }

@@ -71,17 +71,17 @@ class DataCollectionEndpointState {
 
   factory DataCollectionEndpointState.fromMap(Map<String, dynamic> map) {
     return DataCollectionEndpointState(
-      configurationAccessEndpoint: map['configurationAccessEndpoint'] == null ? null : (map['configurationAccessEndpoint'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      immutableId: map['immutableId'] == null ? null : (map['immutableId'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      logsIngestionEndpoint: map['logsIngestionEndpoint'] == null ? null : (map['logsIngestionEndpoint'] as String).input(),
-      metricsIngestionEndpoint: map['metricsIngestionEndpoint'] == null ? null : (map['metricsIngestionEndpoint'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      configurationAccessEndpoint: map['configurationAccessEndpoint'] == null ? null : (map['configurationAccessEndpoint']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      immutableId: map['immutableId'] == null ? null : (map['immutableId']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      logsIngestionEndpoint: map['logsIngestionEndpoint'] == null ? null : (map['logsIngestionEndpoint']! as String).input(),
+      metricsIngestionEndpoint: map['metricsIngestionEndpoint'] == null ? null : (map['metricsIngestionEndpoint']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

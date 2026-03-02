@@ -66,16 +66,16 @@ class DeploymentSecuritySettings {
 
   factory DeploymentSecuritySettings.fromMap(Map<String, dynamic> map) {
     return DeploymentSecuritySettings(
-      bitlockerBootVolume: map['bitlockerBootVolume'] == null ? null : (map['bitlockerBootVolume'] as bool).input(),
-      bitlockerDataVolumes: map['bitlockerDataVolumes'] == null ? null : (map['bitlockerDataVolumes'] as bool).input(),
-      credentialGuardEnforced: map['credentialGuardEnforced'] == null ? null : (map['credentialGuardEnforced'] as bool).input(),
-      driftControlEnforced: map['driftControlEnforced'] == null ? null : (map['driftControlEnforced'] as bool).input(),
-      drtmProtection: map['drtmProtection'] == null ? null : (map['drtmProtection'] as bool).input(),
-      hvciProtection: map['hvciProtection'] == null ? null : (map['hvciProtection'] as bool).input(),
-      sideChannelMitigationEnforced: map['sideChannelMitigationEnforced'] == null ? null : (map['sideChannelMitigationEnforced'] as bool).input(),
-      smbClusterEncryption: map['smbClusterEncryption'] == null ? null : (map['smbClusterEncryption'] as bool).input(),
-      smbSigningEnforced: map['smbSigningEnforced'] == null ? null : (map['smbSigningEnforced'] as bool).input(),
-      wdacEnforced: map['wdacEnforced'] == null ? null : (map['wdacEnforced'] as bool).input(),
+      bitlockerBootVolume: map['bitlockerBootVolume'] == null ? null : (map['bitlockerBootVolume']! as bool).input(),
+      bitlockerDataVolumes: map['bitlockerDataVolumes'] == null ? null : (map['bitlockerDataVolumes']! as bool).input(),
+      credentialGuardEnforced: map['credentialGuardEnforced'] == null ? null : (map['credentialGuardEnforced']! as bool).input(),
+      driftControlEnforced: map['driftControlEnforced'] == null ? null : (map['driftControlEnforced']! as bool).input(),
+      drtmProtection: map['drtmProtection'] == null ? null : (map['drtmProtection']! as bool).input(),
+      hvciProtection: map['hvciProtection'] == null ? null : (map['hvciProtection']! as bool).input(),
+      sideChannelMitigationEnforced: map['sideChannelMitigationEnforced'] == null ? null : (map['sideChannelMitigationEnforced']! as bool).input(),
+      smbClusterEncryption: map['smbClusterEncryption'] == null ? null : (map['smbClusterEncryption']! as bool).input(),
+      smbSigningEnforced: map['smbSigningEnforced'] == null ? null : (map['smbSigningEnforced']! as bool).input(),
+      wdacEnforced: map['wdacEnforced'] == null ? null : (map['wdacEnforced']! as bool).input(),
     );
   }
 }

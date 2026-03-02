@@ -28,7 +28,7 @@ class ExclusionManagedRuleGroup {
   factory ExclusionManagedRuleGroup.fromMap(Map<String, dynamic> map) {
     return ExclusionManagedRuleGroup(
       ruleGroupName: (map['ruleGroupName'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ExclusionManagedRule>(map['rules'], (value) => ExclusionManagedRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ExclusionManagedRule>(map['rules']!, (value) => ExclusionManagedRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

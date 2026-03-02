@@ -33,7 +33,7 @@ class InstanceStorageConfigStorageConfigS3Config {
     return InstanceStorageConfigStorageConfigS3Config(
       bucketName: (map['bucketName'] as String).input(),
       bucketPrefix: (map['bucketPrefix'] as String).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (InstanceStorageConfigStorageConfigS3ConfigEncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : ((InstanceStorageConfigStorageConfigS3ConfigEncryptionConfig.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

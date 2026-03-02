@@ -47,10 +47,10 @@ class WorkspaceConfigurationArgs {
 
   factory WorkspaceConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceConfigurationArgs(
-      limitsPerLabelSets: map['limitsPerLabelSets'] == null ? null : (pulumi.Input.decodeList<WorkspaceConfigurationLimitsPerLabelSet>(map['limitsPerLabelSets'], (value) => WorkspaceConfigurationLimitsPerLabelSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      retentionPeriodInDays: map['retentionPeriodInDays'] == null ? null : (map['retentionPeriodInDays'] as int).input(),
-      timeouts: map['timeouts'] == null ? null : (WorkspaceConfigurationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      limitsPerLabelSets: map['limitsPerLabelSets'] == null ? null : ((pulumi.Input.decodeList<WorkspaceConfigurationLimitsPerLabelSet>(map['limitsPerLabelSets']!, (value) => WorkspaceConfigurationLimitsPerLabelSet.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      retentionPeriodInDays: map['retentionPeriodInDays'] == null ? null : ((map['retentionPeriodInDays'] as int).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((WorkspaceConfigurationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );
   }

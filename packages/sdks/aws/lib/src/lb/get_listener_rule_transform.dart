@@ -32,9 +32,9 @@ class GetListenerRuleTransform {
 
   factory GetListenerRuleTransform.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleTransform(
-      hostHeaderRewriteConfigs: map['hostHeaderRewriteConfigs'] == null ? null : (pulumi.Input.decodeList<GetListenerRuleTransformHostHeaderRewriteConfig>(map['hostHeaderRewriteConfigs'], (value) => GetListenerRuleTransformHostHeaderRewriteConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hostHeaderRewriteConfigs: map['hostHeaderRewriteConfigs'] == null ? null : ((pulumi.Input.decodeList<GetListenerRuleTransformHostHeaderRewriteConfig>(map['hostHeaderRewriteConfigs']!, (value) => GetListenerRuleTransformHostHeaderRewriteConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       type: (map['type'] as String).input(),
-      urlRewriteConfigs: map['urlRewriteConfigs'] == null ? null : (pulumi.Input.decodeList<GetListenerRuleTransformUrlRewriteConfig>(map['urlRewriteConfigs'], (value) => GetListenerRuleTransformUrlRewriteConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      urlRewriteConfigs: map['urlRewriteConfigs'] == null ? null : ((pulumi.Input.decodeList<GetListenerRuleTransformUrlRewriteConfig>(map['urlRewriteConfigs']!, (value) => GetListenerRuleTransformUrlRewriteConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

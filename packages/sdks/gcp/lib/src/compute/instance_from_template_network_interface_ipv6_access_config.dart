@@ -46,12 +46,12 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfig {
 
   factory InstanceFromTemplateNetworkInterfaceIpv6AccessConfig.fromMap(Map<String, dynamic> map) {
     return InstanceFromTemplateNetworkInterfaceIpv6AccessConfig(
-      externalIpv6: map['externalIpv6'] == null ? null : (map['externalIpv6'] as String).input(),
-      externalIpv6PrefixLength: map['externalIpv6PrefixLength'] == null ? null : (map['externalIpv6PrefixLength'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      externalIpv6: map['externalIpv6'] == null ? null : (map['externalIpv6']! as String).input(),
+      externalIpv6PrefixLength: map['externalIpv6PrefixLength'] == null ? null : (map['externalIpv6PrefixLength']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networkTier: (map['networkTier'] as String).input(),
-      publicPtrDomainName: map['publicPtrDomainName'] == null ? null : (map['publicPtrDomainName'] as String).input(),
-      securityPolicy: map['securityPolicy'] == null ? null : (map['securityPolicy'] as String).input(),
+      publicPtrDomainName: map['publicPtrDomainName'] == null ? null : (map['publicPtrDomainName']! as String).input(),
+      securityPolicy: map['securityPolicy'] == null ? null : (map['securityPolicy']! as String).input(),
     );
   }
 }

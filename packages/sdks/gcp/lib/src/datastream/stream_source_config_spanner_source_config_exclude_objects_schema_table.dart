@@ -27,7 +27,7 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable {
 
   factory StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable(
-      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn>(map['columns'], (value) => StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn>(map['columns']!, (value) => StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
       table: (map['table'] as String).input(),
     );
   }

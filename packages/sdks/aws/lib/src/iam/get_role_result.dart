@@ -85,7 +85,7 @@ class GetRoleResult {
       name: map['name'] as String,
       path: map['path'] as String,
       permissionsBoundary: map['permissionsBoundary'] as String,
-      roleLastUseds: pulumi.Input.decodeList<GetRoleRoleLastUsed>(map['roleLastUseds'], (value) => GetRoleRoleLastUsed.fromMap((value as Map).cast<String, dynamic>())),
+      roleLastUseds: pulumi.Input.decodeList<GetRoleRoleLastUsed>(map['roleLastUseds']!, (value) => GetRoleRoleLastUsed.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as Map).cast<String, String>(),
       uniqueId: map['uniqueId'] as String,
     );

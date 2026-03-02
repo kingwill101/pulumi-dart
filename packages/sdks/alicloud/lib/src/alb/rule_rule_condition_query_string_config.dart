@@ -21,7 +21,7 @@ class RuleRuleConditionQueryStringConfig {
 
   factory RuleRuleConditionQueryStringConfig.fromMap(Map<String, dynamic> map) {
     return RuleRuleConditionQueryStringConfig(
-      values: map['values'] == null ? null : (pulumi.Input.decodeList<RuleRuleConditionQueryStringConfigValue>(map['values'], (value) => RuleRuleConditionQueryStringConfigValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      values: map['values'] == null ? null : (pulumi.Input.decodeList<RuleRuleConditionQueryStringConfigValue>(map['values']!, (value) => RuleRuleConditionQueryStringConfigValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

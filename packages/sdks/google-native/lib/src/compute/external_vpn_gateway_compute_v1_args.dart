@@ -55,13 +55,13 @@ class ExternalVpnGatewayComputeV1Args {
 
   factory ExternalVpnGatewayComputeV1Args.fromMap(Map<String, dynamic> map) {
     return ExternalVpnGatewayComputeV1Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      interfaces: map['interfaces'] == null ? null : (pulumi.Input.decodeList<ExternalVpnGatewayInterfaceComputeV1>(map['interfaces'], (value) => ExternalVpnGatewayInterfaceComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      redundancyType: map['redundancyType'] == null ? null : (ExternalVpnGatewayRedundancyTypeComputeV1.fromValue(map['redundancyType'] as String)).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      interfaces: map['interfaces'] == null ? null : (pulumi.Input.decodeList<ExternalVpnGatewayInterfaceComputeV1>(map['interfaces']!, (value) => ExternalVpnGatewayInterfaceComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      redundancyType: map['redundancyType'] == null ? null : (ExternalVpnGatewayRedundancyTypeComputeV1.fromValue(map['redundancyType']! as String)).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

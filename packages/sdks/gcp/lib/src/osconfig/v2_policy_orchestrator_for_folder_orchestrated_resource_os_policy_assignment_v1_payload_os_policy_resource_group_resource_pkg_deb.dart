@@ -30,7 +30,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
   factory V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb(
-      pullDeps: map['pullDeps'] == null ? null : (map['pullDeps'] as bool).input(),
+      pullDeps: map['pullDeps'] == null ? null : (map['pullDeps']! as bool).input(),
       source: (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }

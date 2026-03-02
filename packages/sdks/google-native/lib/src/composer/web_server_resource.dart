@@ -31,9 +31,9 @@ class WebServerResource {
 
   factory WebServerResource.fromMap(Map<String, dynamic> map) {
     return WebServerResource(
-      cpu: map['cpu'] == null ? null : (map['cpu'] as double).input(),
-      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb'] as double).input(),
-      storageGb: map['storageGb'] == null ? null : (map['storageGb'] as double).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as double).input(),
+      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb']! as double).input(),
+      storageGb: map['storageGb'] == null ? null : (map['storageGb']! as double).input(),
     );
   }
 }

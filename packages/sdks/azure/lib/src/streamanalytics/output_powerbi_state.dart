@@ -56,14 +56,14 @@ class OutputPowerbiState {
 
   factory OutputPowerbiState.fromMap(Map<String, dynamic> map) {
     return OutputPowerbiState(
-      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      streamAnalyticsJobId: map['streamAnalyticsJobId'] == null ? null : (map['streamAnalyticsJobId'] as String).input(),
-      table: map['table'] == null ? null : (map['table'] as String).input(),
-      tokenUserDisplayName: map['tokenUserDisplayName'] == null ? null : (map['tokenUserDisplayName'] as String).input(),
-      tokenUserPrincipalName: map['tokenUserPrincipalName'] == null ? null : (map['tokenUserPrincipalName'] as String).input(),
+      dataset: map['dataset'] == null ? null : (map['dataset']! as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      streamAnalyticsJobId: map['streamAnalyticsJobId'] == null ? null : (map['streamAnalyticsJobId']! as String).input(),
+      table: map['table'] == null ? null : (map['table']! as String).input(),
+      tokenUserDisplayName: map['tokenUserDisplayName'] == null ? null : (map['tokenUserDisplayName']! as String).input(),
+      tokenUserPrincipalName: map['tokenUserPrincipalName'] == null ? null : (map['tokenUserPrincipalName']! as String).input(),
     );
   }
 }

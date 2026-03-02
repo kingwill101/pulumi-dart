@@ -21,7 +21,7 @@ class ShieldedInstanceConfig {
 
   factory ShieldedInstanceConfig.fromMap(Map<String, dynamic> map) {
     return ShieldedInstanceConfig(
-      enableSecureBoot: map['enableSecureBoot'] == null ? null : (map['enableSecureBoot'] as bool).input(),
+      enableSecureBoot: map['enableSecureBoot'] == null ? null : (map['enableSecureBoot']! as bool).input(),
     );
   }
 }

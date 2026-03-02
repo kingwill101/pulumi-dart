@@ -26,8 +26,8 @@ class PermissionsBoundaryAttachmentPermissionsBoundary {
 
   factory PermissionsBoundaryAttachmentPermissionsBoundary.fromMap(Map<String, dynamic> map) {
     return PermissionsBoundaryAttachmentPermissionsBoundary(
-      customerManagedPolicyReference: map['customerManagedPolicyReference'] == null ? null : (PermissionsBoundaryAttachmentPermissionsBoundaryCustomerManagedPolicyReference.fromMap((map['customerManagedPolicyReference'] as Map).cast<String, dynamic>())).input(),
-      managedPolicyArn: map['managedPolicyArn'] == null ? null : (map['managedPolicyArn'] as String).input(),
+      customerManagedPolicyReference: map['customerManagedPolicyReference'] == null ? null : ((PermissionsBoundaryAttachmentPermissionsBoundaryCustomerManagedPolicyReference.fromMap((map['customerManagedPolicyReference']! as Map).cast<String, dynamic>())).input()).input(),
+      managedPolicyArn: map['managedPolicyArn'] == null ? null : ((map['managedPolicyArn'] as String).input()).input(),
     );
   }
 }

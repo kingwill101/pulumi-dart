@@ -60,11 +60,11 @@ class EndpointPrivateServiceConnection {
     return EndpointPrivateServiceConnection(
       isManualConnection: (map['isManualConnection'] as bool).input(),
       name: (map['name'] as String).input(),
-      privateConnectionResourceAlias: map['privateConnectionResourceAlias'] == null ? null : (map['privateConnectionResourceAlias'] as String).input(),
-      privateConnectionResourceId: map['privateConnectionResourceId'] == null ? null : (map['privateConnectionResourceId'] as String).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
-      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
-      subresourceNames: map['subresourceNames'] == null ? null : ((map['subresourceNames'] as List).cast<String>()).input(),
+      privateConnectionResourceAlias: map['privateConnectionResourceAlias'] == null ? null : (map['privateConnectionResourceAlias']! as String).input(),
+      privateConnectionResourceId: map['privateConnectionResourceId'] == null ? null : (map['privateConnectionResourceId']! as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage']! as String).input(),
+      subresourceNames: map['subresourceNames'] == null ? null : ((map['subresourceNames']! as List).cast<String>()).input(),
     );
   }
 }

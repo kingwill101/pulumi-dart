@@ -54,13 +54,13 @@ class TargetArgs {
 
   factory TargetArgs.fromMap(Map<String, dynamic> map) {
     return TargetArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       parentProviderNamespace: (map['parentProviderNamespace'] as String).input(),
       parentResourceName: (map['parentResourceName'] as String).input(),
       parentResourceType: (map['parentResourceType'] as String).input(),
       properties: (map['properties']).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      targetName: map['targetName'] == null ? null : (map['targetName'] as String).input(),
+      targetName: map['targetName'] == null ? null : (map['targetName']! as String).input(),
     );
   }
 }

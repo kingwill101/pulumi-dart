@@ -46,12 +46,12 @@ class GetRouteSpecHttpRouteMatch {
 
   factory GetRouteSpecHttpRouteMatch.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecHttpRouteMatch(
-      headers: (pulumi.Input.decodeList<GetRouteSpecHttpRouteMatchHeader>(map['headers'], (value) => GetRouteSpecHttpRouteMatchHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      headers: (pulumi.Input.decodeList<GetRouteSpecHttpRouteMatchHeader>(map['headers']!, (value) => GetRouteSpecHttpRouteMatchHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
       method: (map['method'] as String).input(),
-      paths: (pulumi.Input.decodeList<GetRouteSpecHttpRouteMatchPath>(map['paths'], (value) => GetRouteSpecHttpRouteMatchPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      paths: (pulumi.Input.decodeList<GetRouteSpecHttpRouteMatchPath>(map['paths']!, (value) => GetRouteSpecHttpRouteMatchPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
       port: (map['port'] as int).input(),
       prefix: (map['prefix'] as String).input(),
-      queryParameters: (pulumi.Input.decodeList<GetRouteSpecHttpRouteMatchQueryParameter>(map['queryParameters'], (value) => GetRouteSpecHttpRouteMatchQueryParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      queryParameters: (pulumi.Input.decodeList<GetRouteSpecHttpRouteMatchQueryParameter>(map['queryParameters']!, (value) => GetRouteSpecHttpRouteMatchQueryParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       scheme: (map['scheme'] as String).input(),
     );
   }

@@ -41,9 +41,9 @@ class WorkloadProfile {
 
   factory WorkloadProfile.fromMap(Map<String, dynamic> map) {
     return WorkloadProfile(
-      enableFips: map['enableFips'] == null ? null : (map['enableFips'] as bool).input(),
-      maximumCount: map['maximumCount'] == null ? null : (map['maximumCount'] as int).input(),
-      minimumCount: map['minimumCount'] == null ? null : (map['minimumCount'] as int).input(),
+      enableFips: map['enableFips'] == null ? null : (map['enableFips']! as bool).input(),
+      maximumCount: map['maximumCount'] == null ? null : (map['maximumCount']! as int).input(),
+      minimumCount: map['minimumCount'] == null ? null : (map['minimumCount']! as int).input(),
       name: (map['name'] as String).input(),
       workloadProfileType: (map['workloadProfileType'] as String).input(),
     );

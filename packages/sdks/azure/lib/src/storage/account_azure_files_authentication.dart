@@ -31,8 +31,8 @@ class AccountAzureFilesAuthentication {
 
   factory AccountAzureFilesAuthentication.fromMap(Map<String, dynamic> map) {
     return AccountAzureFilesAuthentication(
-      activeDirectory: map['activeDirectory'] == null ? null : (AccountAzureFilesAuthenticationActiveDirectory.fromMap((map['activeDirectory'] as Map).cast<String, dynamic>())).input(),
-      defaultShareLevelPermission: map['defaultShareLevelPermission'] == null ? null : (map['defaultShareLevelPermission'] as String).input(),
+      activeDirectory: map['activeDirectory'] == null ? null : (AccountAzureFilesAuthenticationActiveDirectory.fromMap((map['activeDirectory']! as Map).cast<String, dynamic>())).input(),
+      defaultShareLevelPermission: map['defaultShareLevelPermission'] == null ? null : (map['defaultShareLevelPermission']! as String).input(),
       directoryType: (map['directoryType'] as String).input(),
     );
   }

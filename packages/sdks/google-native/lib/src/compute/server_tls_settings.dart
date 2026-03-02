@@ -33,9 +33,9 @@ class ServerTlsSettings {
 
   factory ServerTlsSettings.fromMap(Map<String, dynamic> map) {
     return ServerTlsSettings(
-      proxyTlsContext: map['proxyTlsContext'] == null ? null : (TlsContext.fromMap((map['proxyTlsContext'] as Map).cast<String, dynamic>())).input(),
-      subjectAltNames: map['subjectAltNames'] == null ? null : ((map['subjectAltNames'] as List).cast<String>()).input(),
-      tlsMode: map['tlsMode'] == null ? null : (ServerTlsSettingsTlsMode.fromValue(map['tlsMode'] as String)).input(),
+      proxyTlsContext: map['proxyTlsContext'] == null ? null : (TlsContext.fromMap((map['proxyTlsContext']! as Map).cast<String, dynamic>())).input(),
+      subjectAltNames: map['subjectAltNames'] == null ? null : ((map['subjectAltNames']! as List).cast<String>()).input(),
+      tlsMode: map['tlsMode'] == null ? null : (ServerTlsSettingsTlsMode.fromValue(map['tlsMode']! as String)).input(),
     );
   }
 }

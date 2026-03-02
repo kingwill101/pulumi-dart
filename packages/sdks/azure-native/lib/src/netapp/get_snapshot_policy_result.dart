@@ -91,19 +91,19 @@ class GetSnapshotPolicyResult {
   factory GetSnapshotPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetSnapshotPolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      dailySchedule: map['dailySchedule'] == null ? null : DailyScheduleResponse.fromMap((map['dailySchedule'] as Map).cast<String, dynamic>()),
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      dailySchedule: map['dailySchedule'] == null ? null : DailyScheduleResponse.fromMap((map['dailySchedule']! as Map).cast<String, dynamic>()),
+      enabled: map['enabled'] == null ? null : map['enabled']! as bool,
       etag: map['etag'] as String,
-      hourlySchedule: map['hourlySchedule'] == null ? null : HourlyScheduleResponse.fromMap((map['hourlySchedule'] as Map).cast<String, dynamic>()),
+      hourlySchedule: map['hourlySchedule'] == null ? null : HourlyScheduleResponse.fromMap((map['hourlySchedule']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       location: map['location'] as String,
-      monthlySchedule: map['monthlySchedule'] == null ? null : MonthlyScheduleResponse.fromMap((map['monthlySchedule'] as Map).cast<String, dynamic>()),
+      monthlySchedule: map['monthlySchedule'] == null ? null : MonthlyScheduleResponse.fromMap((map['monthlySchedule']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      weeklySchedule: map['weeklySchedule'] == null ? null : WeeklyScheduleResponse.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>()),
+      weeklySchedule: map['weeklySchedule'] == null ? null : WeeklyScheduleResponse.fromMap((map['weeklySchedule']! as Map).cast<String, dynamic>()),
     );
   }
 }

@@ -46,12 +46,12 @@ class IfileState {
 
   factory IfileState.fromMap(Map<String, dynamic> map) {
     return IfileState(
-      checksum: map['checksum'] == null ? null : (map['checksum'] as String).input(),
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
-      subPath: map['subPath'] == null ? null : (map['subPath'] as String).input(),
+      checksum: map['checksum'] == null ? null : (map['checksum']! as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      partition: map['partition'] == null ? null : (map['partition']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
+      subPath: map['subPath'] == null ? null : (map['subPath']! as String).input(),
     );
   }
 }

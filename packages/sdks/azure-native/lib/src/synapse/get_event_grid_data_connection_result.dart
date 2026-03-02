@@ -98,20 +98,20 @@ class GetEventGridDataConnectionResult {
   factory GetEventGridDataConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetEventGridDataConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      blobStorageEventType: map['blobStorageEventType'] == null ? null : map['blobStorageEventType'] as String,
+      blobStorageEventType: map['blobStorageEventType'] == null ? null : map['blobStorageEventType']! as String,
       consumerGroup: map['consumerGroup'] as String,
-      dataFormat: map['dataFormat'] == null ? null : map['dataFormat'] as String,
+      dataFormat: map['dataFormat'] == null ? null : map['dataFormat']! as String,
       eventHubResourceId: map['eventHubResourceId'] as String,
       id: map['id'] as String,
-      ignoreFirstRecord: map['ignoreFirstRecord'] == null ? null : map['ignoreFirstRecord'] as bool,
+      ignoreFirstRecord: map['ignoreFirstRecord'] == null ? null : map['ignoreFirstRecord']! as bool,
       kind: map['kind'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      mappingRuleName: map['mappingRuleName'] == null ? null : map['mappingRuleName'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
+      mappingRuleName: map['mappingRuleName'] == null ? null : map['mappingRuleName']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       storageAccountResourceId: map['storageAccountResourceId'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tableName: map['tableName'] == null ? null : map['tableName'] as String,
+      tableName: map['tableName'] == null ? null : map['tableName']! as String,
       type: map['type'] as String,
     );
   }

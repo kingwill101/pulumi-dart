@@ -38,10 +38,10 @@ class EntityInsightItemResponse {
 
   factory EntityInsightItemResponse.fromMap(Map<String, dynamic> map) {
     return EntityInsightItemResponse(
-      chartQueryResults: map['chartQueryResults'] == null ? null : (pulumi.Input.decodeList<InsightsTableResultResponse>(map['chartQueryResults'], (value) => InsightsTableResultResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      queryId: map['queryId'] == null ? null : (map['queryId'] as String).input(),
-      queryTimeInterval: map['queryTimeInterval'] == null ? null : (EntityInsightItemResponseQueryTimeInterval.fromMap((map['queryTimeInterval'] as Map).cast<String, dynamic>())).input(),
-      tableQueryResults: map['tableQueryResults'] == null ? null : (InsightsTableResultResponse.fromMap((map['tableQueryResults'] as Map).cast<String, dynamic>())).input(),
+      chartQueryResults: map['chartQueryResults'] == null ? null : (pulumi.Input.decodeList<InsightsTableResultResponse>(map['chartQueryResults']!, (value) => InsightsTableResultResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      queryId: map['queryId'] == null ? null : (map['queryId']! as String).input(),
+      queryTimeInterval: map['queryTimeInterval'] == null ? null : (EntityInsightItemResponseQueryTimeInterval.fromMap((map['queryTimeInterval']! as Map).cast<String, dynamic>())).input(),
+      tableQueryResults: map['tableQueryResults'] == null ? null : (InsightsTableResultResponse.fromMap((map['tableQueryResults']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

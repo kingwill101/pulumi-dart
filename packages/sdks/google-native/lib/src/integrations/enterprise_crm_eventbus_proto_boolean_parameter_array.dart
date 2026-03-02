@@ -19,7 +19,7 @@ class EnterpriseCrmEventbusProtoBooleanParameterArray {
 
   factory EnterpriseCrmEventbusProtoBooleanParameterArray.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoBooleanParameterArray(
-      booleanValues: map['booleanValues'] == null ? null : ((map['booleanValues'] as List).cast<bool>()).input(),
+      booleanValues: map['booleanValues'] == null ? null : ((map['booleanValues']! as List).cast<bool>()).input(),
     );
   }
 }

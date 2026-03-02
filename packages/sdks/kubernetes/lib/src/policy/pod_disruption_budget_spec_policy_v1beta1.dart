@@ -32,9 +32,9 @@ class PodDisruptionBudgetSpecPolicyV1beta1 {
 
   factory PodDisruptionBudgetSpecPolicyV1beta1.fromMap(Map<String, dynamic> map) {
     return PodDisruptionBudgetSpecPolicyV1beta1(
-      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable'] as int).input(),
-      minAvailable: map['minAvailable'] == null ? null : (map['minAvailable'] as int).input(),
-      selector: map['selector'] == null ? null : (LabelSelector.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
+      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable']! as int).input(),
+      minAvailable: map['minAvailable'] == null ? null : (map['minAvailable']! as int).input(),
+      selector: map['selector'] == null ? null : (LabelSelector.fromMap((map['selector']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

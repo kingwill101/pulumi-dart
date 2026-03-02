@@ -27,8 +27,8 @@ class VirtualNodeSpecListenerTimeoutGrpc {
 
   factory VirtualNodeSpecListenerTimeoutGrpc.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerTimeoutGrpc(
-      idle: map['idle'] == null ? null : (VirtualNodeSpecListenerTimeoutGrpcIdle.fromMap((map['idle'] as Map).cast<String, dynamic>())).input(),
-      perRequest: map['perRequest'] == null ? null : (VirtualNodeSpecListenerTimeoutGrpcPerRequest.fromMap((map['perRequest'] as Map).cast<String, dynamic>())).input(),
+      idle: map['idle'] == null ? null : ((VirtualNodeSpecListenerTimeoutGrpcIdle.fromMap((map['idle']! as Map).cast<String, dynamic>())).input()).input(),
+      perRequest: map['perRequest'] == null ? null : ((VirtualNodeSpecListenerTimeoutGrpcPerRequest.fromMap((map['perRequest']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

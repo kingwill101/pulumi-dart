@@ -102,19 +102,19 @@ class CustomDiskArgs {
 
   factory CustomDiskArgs.fromMap(Map<String, dynamic> map) {
     return CustomDiskArgs(
-      autoPay: map['autoPay'] == null ? null : (map['autoPay'] as bool).input(),
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      autoPay: map['autoPay'] == null ? null : (map['autoPay']! as bool).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       diskCategory: (map['diskCategory'] as String).input(),
-      diskName: map['diskName'] == null ? null : (map['diskName'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType'] as String).input(),
-      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit'] as String).input(),
+      diskName: map['diskName'] == null ? null : (map['diskName']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType']! as String).input(),
+      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit']! as String).input(),
       size: (map['size'] as int).input(),
-      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
       zoneId: (map['zoneId'] as String).input(),
     );
   }

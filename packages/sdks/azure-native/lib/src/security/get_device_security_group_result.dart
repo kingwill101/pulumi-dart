@@ -60,13 +60,13 @@ class GetDeviceSecurityGroupResult {
 
   factory GetDeviceSecurityGroupResult.fromMap(Map<String, dynamic> map) {
     return GetDeviceSecurityGroupResult(
-      allowlistRules: map['allowlistRules'] == null ? null : pulumi.Input.decodeList<AllowlistCustomAlertRuleResponse>(map['allowlistRules'], (value) => AllowlistCustomAlertRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      allowlistRules: map['allowlistRules'] == null ? null : pulumi.Input.decodeList<AllowlistCustomAlertRuleResponse>(map['allowlistRules']!, (value) => AllowlistCustomAlertRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
       azureApiVersion: map['azureApiVersion'] as String,
-      denylistRules: map['denylistRules'] == null ? null : pulumi.Input.decodeList<DenylistCustomAlertRuleResponse>(map['denylistRules'], (value) => DenylistCustomAlertRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      denylistRules: map['denylistRules'] == null ? null : pulumi.Input.decodeList<DenylistCustomAlertRuleResponse>(map['denylistRules']!, (value) => DenylistCustomAlertRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
-      thresholdRules: map['thresholdRules'] == null ? null : pulumi.Input.decodeList<ThresholdCustomAlertRuleResponse>(map['thresholdRules'], (value) => ThresholdCustomAlertRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      timeWindowRules: map['timeWindowRules'] == null ? null : pulumi.Input.decodeList<TimeWindowCustomAlertRuleResponse>(map['timeWindowRules'], (value) => TimeWindowCustomAlertRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      thresholdRules: map['thresholdRules'] == null ? null : pulumi.Input.decodeList<ThresholdCustomAlertRuleResponse>(map['thresholdRules']!, (value) => ThresholdCustomAlertRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      timeWindowRules: map['timeWindowRules'] == null ? null : pulumi.Input.decodeList<TimeWindowCustomAlertRuleResponse>(map['timeWindowRules']!, (value) => TimeWindowCustomAlertRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }

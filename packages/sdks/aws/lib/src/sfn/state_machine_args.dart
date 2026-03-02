@@ -78,16 +78,16 @@ class StateMachineArgs {
   factory StateMachineArgs.fromMap(Map<String, dynamic> map) {
     return StateMachineArgs(
       definition: (map['definition'] as String).input(),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (StateMachineEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      loggingConfiguration: map['loggingConfiguration'] == null ? null : (StateMachineLoggingConfiguration.fromMap((map['loggingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      publish: map['publish'] == null ? null : (map['publish'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : ((StateMachineEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      loggingConfiguration: map['loggingConfiguration'] == null ? null : ((StateMachineLoggingConfiguration.fromMap((map['loggingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      publish: map['publish'] == null ? null : ((map['publish'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tracingConfiguration: map['tracingConfiguration'] == null ? null : (StateMachineTracingConfiguration.fromMap((map['tracingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tracingConfiguration: map['tracingConfiguration'] == null ? null : ((StateMachineTracingConfiguration.fromMap((map['tracingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

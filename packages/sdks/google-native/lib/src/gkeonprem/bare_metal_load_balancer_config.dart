@@ -46,11 +46,11 @@ class BareMetalLoadBalancerConfig {
 
   factory BareMetalLoadBalancerConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalLoadBalancerConfig(
-      bgpLbConfig: map['bgpLbConfig'] == null ? null : (BareMetalBgpLbConfig.fromMap((map['bgpLbConfig'] as Map).cast<String, dynamic>())).input(),
-      manualLbConfig: map['manualLbConfig'] == null ? null : (BareMetalManualLbConfig.fromMap((map['manualLbConfig'] as Map).cast<String, dynamic>())).input(),
-      metalLbConfig: map['metalLbConfig'] == null ? null : (BareMetalMetalLbConfig.fromMap((map['metalLbConfig'] as Map).cast<String, dynamic>())).input(),
-      portConfig: map['portConfig'] == null ? null : (BareMetalPortConfig.fromMap((map['portConfig'] as Map).cast<String, dynamic>())).input(),
-      vipConfig: map['vipConfig'] == null ? null : (BareMetalVipConfig.fromMap((map['vipConfig'] as Map).cast<String, dynamic>())).input(),
+      bgpLbConfig: map['bgpLbConfig'] == null ? null : (BareMetalBgpLbConfig.fromMap((map['bgpLbConfig']! as Map).cast<String, dynamic>())).input(),
+      manualLbConfig: map['manualLbConfig'] == null ? null : (BareMetalManualLbConfig.fromMap((map['manualLbConfig']! as Map).cast<String, dynamic>())).input(),
+      metalLbConfig: map['metalLbConfig'] == null ? null : (BareMetalMetalLbConfig.fromMap((map['metalLbConfig']! as Map).cast<String, dynamic>())).input(),
+      portConfig: map['portConfig'] == null ? null : (BareMetalPortConfig.fromMap((map['portConfig']! as Map).cast<String, dynamic>())).input(),
+      vipConfig: map['vipConfig'] == null ? null : (BareMetalVipConfig.fromMap((map['vipConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

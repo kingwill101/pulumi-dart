@@ -75,15 +75,15 @@ class ReplicationSetState {
 
   factory ReplicationSetState.fromMap(Map<String, dynamic> map) {
     return ReplicationSetState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
-      deletionProtected: map['deletionProtected'] == null ? null : (map['deletionProtected'] as bool).input(),
-      lastModifiedBy: map['lastModifiedBy'] == null ? null : (map['lastModifiedBy'] as String).input(),
-      region: map['region'] == null ? null : (pulumi.Input.decodeList<ReplicationSetRegion>(map['region'], (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      regions: map['regions'] == null ? null : (pulumi.Input.decodeList<ReplicationSetRegion>(map['regions'], (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      createdBy: map['createdBy'] == null ? null : ((map['createdBy'] as String).input()).input(),
+      deletionProtected: map['deletionProtected'] == null ? null : ((map['deletionProtected'] as bool).input()).input(),
+      lastModifiedBy: map['lastModifiedBy'] == null ? null : ((map['lastModifiedBy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((pulumi.Input.decodeList<ReplicationSetRegion>(map['region']!, (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      regions: map['regions'] == null ? null : ((pulumi.Input.decodeList<ReplicationSetRegion>(map['regions']!, (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

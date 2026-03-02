@@ -27,8 +27,8 @@ class ProjectDataDelivery {
 
   factory ProjectDataDelivery.fromMap(Map<String, dynamic> map) {
     return ProjectDataDelivery(
-      cloudwatchLogs: map['cloudwatchLogs'] == null ? null : (ProjectDataDeliveryCloudwatchLogs.fromMap((map['cloudwatchLogs'] as Map).cast<String, dynamic>())).input(),
-      s3Destination: map['s3Destination'] == null ? null : (ProjectDataDeliveryS3Destination.fromMap((map['s3Destination'] as Map).cast<String, dynamic>())).input(),
+      cloudwatchLogs: map['cloudwatchLogs'] == null ? null : ((ProjectDataDeliveryCloudwatchLogs.fromMap((map['cloudwatchLogs']! as Map).cast<String, dynamic>())).input()).input(),
+      s3Destination: map['s3Destination'] == null ? null : ((ProjectDataDeliveryS3Destination.fromMap((map['s3Destination']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

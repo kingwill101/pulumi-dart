@@ -35,10 +35,10 @@ class AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDes
 
   factory AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination.fromMap(Map<String, dynamic> map) {
     return AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination(
-      bucketAccountId: map['bucketAccountId'] == null ? null : (map['bucketAccountId'] as String).input(),
+      bucketAccountId: map['bucketAccountId'] == null ? null : ((map['bucketAccountId'] as String).input()).input(),
       bucketArn: (map['bucketArn'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      format: map['format'] == null ? null : ((map['format'] as String).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
     );
   }
 }

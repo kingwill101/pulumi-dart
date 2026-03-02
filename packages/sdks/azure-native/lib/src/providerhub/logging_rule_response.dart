@@ -39,7 +39,7 @@ class LoggingRuleResponse {
       action: (map['action'] as String).input(),
       detailLevel: (map['detailLevel'] as String).input(),
       direction: (map['direction'] as String).input(),
-      hiddenPropertyPaths: map['hiddenPropertyPaths'] == null ? null : (LoggingRuleHiddenPropertyPathsResponse.fromMap((map['hiddenPropertyPaths'] as Map).cast<String, dynamic>())).input(),
+      hiddenPropertyPaths: map['hiddenPropertyPaths'] == null ? null : (LoggingRuleHiddenPropertyPathsResponse.fromMap((map['hiddenPropertyPaths']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

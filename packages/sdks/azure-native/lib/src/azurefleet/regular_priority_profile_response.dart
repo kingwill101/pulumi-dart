@@ -31,9 +31,9 @@ class RegularPriorityProfileResponse {
 
   factory RegularPriorityProfileResponse.fromMap(Map<String, dynamic> map) {
     return RegularPriorityProfileResponse(
-      allocationStrategy: map['allocationStrategy'] == null ? null : (map['allocationStrategy'] as String).input(),
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
-      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity'] as int).input(),
+      allocationStrategy: map['allocationStrategy'] == null ? null : (map['allocationStrategy']! as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
+      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity']! as int).input(),
     );
   }
 }

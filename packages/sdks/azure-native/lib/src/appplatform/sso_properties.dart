@@ -36,10 +36,10 @@ class SsoProperties {
 
   factory SsoProperties.fromMap(Map<String, dynamic> map) {
     return SsoProperties(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      issuerUri: map['issuerUri'] == null ? null : (map['issuerUri'] as String).input(),
-      scope: map['scope'] == null ? null : ((map['scope'] as List).cast<String>()).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      issuerUri: map['issuerUri'] == null ? null : (map['issuerUri']! as String).input(),
+      scope: map['scope'] == null ? null : ((map['scope']! as List).cast<String>()).input(),
     );
   }
 }

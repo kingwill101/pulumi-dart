@@ -46,10 +46,10 @@ class ReplicationvCenterArgs {
   factory ReplicationvCenterArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationvCenterArgs(
       fabricName: (map['fabricName'] as String).input(),
-      properties: map['properties'] == null ? null : (AddVCenterRequestProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (AddVCenterRequestProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
-      vcenterName: map['vcenterName'] == null ? null : (map['vcenterName'] as String).input(),
+      vcenterName: map['vcenterName'] == null ? null : (map['vcenterName']! as String).input(),
     );
   }
 }

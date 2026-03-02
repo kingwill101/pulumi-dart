@@ -27,8 +27,8 @@ class RotationPolicyResponse {
 
   factory RotationPolicyResponse.fromMap(Map<String, dynamic> map) {
     return RotationPolicyResponse(
-      attributes: map['attributes'] == null ? null : (KeyRotationPolicyAttributesResponse.fromMap((map['attributes'] as Map).cast<String, dynamic>())).input(),
-      lifetimeActions: map['lifetimeActions'] == null ? null : (pulumi.Input.decodeList<LifetimeActionResponse>(map['lifetimeActions'], (value) => LifetimeActionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      attributes: map['attributes'] == null ? null : (KeyRotationPolicyAttributesResponse.fromMap((map['attributes']! as Map).cast<String, dynamic>())).input(),
+      lifetimeActions: map['lifetimeActions'] == null ? null : (pulumi.Input.decodeList<LifetimeActionResponse>(map['lifetimeActions']!, (value) => LifetimeActionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class AssignmentState {
 
   factory AssignmentState.fromMap(Map<String, dynamic> map) {
     return AssignmentState(
-      lighthouseDefinitionId: map['lighthouseDefinitionId'] == null ? null : (map['lighthouseDefinitionId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      lighthouseDefinitionId: map['lighthouseDefinitionId'] == null ? null : (map['lighthouseDefinitionId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
     );
   }
 }

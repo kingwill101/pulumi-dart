@@ -50,12 +50,12 @@ class ResourceGuardArgs {
 
   factory ResourceGuardArgs.fromMap(Map<String, dynamic> map) {
     return ResourceGuardArgs(
-      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (map['properties'] as ResourceGuardDataprotection).input(),
+      eTag: map['eTag'] == null ? null : (map['eTag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (map['properties']! as ResourceGuardDataprotection).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceGuardsName: map['resourceGuardsName'] == null ? null : (map['resourceGuardsName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      resourceGuardsName: map['resourceGuardsName'] == null ? null : (map['resourceGuardsName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

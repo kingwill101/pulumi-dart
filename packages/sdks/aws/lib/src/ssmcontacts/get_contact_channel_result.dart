@@ -58,7 +58,7 @@ class GetContactChannelResult {
       activationStatus: map['activationStatus'] as String,
       arn: map['arn'] as String,
       contactId: map['contactId'] as String,
-      deliveryAddresses: pulumi.Input.decodeList<GetContactChannelDeliveryAddress>(map['deliveryAddresses'], (value) => GetContactChannelDeliveryAddress.fromMap((value as Map).cast<String, dynamic>())),
+      deliveryAddresses: pulumi.Input.decodeList<GetContactChannelDeliveryAddress>(map['deliveryAddresses']!, (value) => GetContactChannelDeliveryAddress.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
       region: map['region'] as String,

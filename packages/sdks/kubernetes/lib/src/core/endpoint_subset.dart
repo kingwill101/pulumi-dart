@@ -45,9 +45,9 @@ class EndpointSubset {
 
   factory EndpointSubset.fromMap(Map<String, dynamic> map) {
     return EndpointSubset(
-      addresses: map['addresses'] == null ? null : (pulumi.Input.decodeList<EndpointAddress>(map['addresses'], (value) => EndpointAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      notReadyAddresses: map['notReadyAddresses'] == null ? null : (pulumi.Input.decodeList<EndpointAddress>(map['notReadyAddresses'], (value) => EndpointAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<EndpointPort>(map['ports'], (value) => EndpointPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      addresses: map['addresses'] == null ? null : (pulumi.Input.decodeList<EndpointAddress>(map['addresses']!, (value) => EndpointAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notReadyAddresses: map['notReadyAddresses'] == null ? null : (pulumi.Input.decodeList<EndpointAddress>(map['notReadyAddresses']!, (value) => EndpointAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<EndpointPort>(map['ports']!, (value) => EndpointPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

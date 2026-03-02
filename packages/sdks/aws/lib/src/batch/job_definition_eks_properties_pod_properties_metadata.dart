@@ -20,7 +20,7 @@ class JobDefinitionEksPropertiesPodPropertiesMetadata {
 
   factory JobDefinitionEksPropertiesPodPropertiesMetadata.fromMap(Map<String, dynamic> map) {
     return JobDefinitionEksPropertiesPodPropertiesMetadata(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : (((map['labels'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

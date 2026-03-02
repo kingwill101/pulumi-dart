@@ -30,9 +30,9 @@ class DefenseRuleConfigWafBaseConfigRuleDetail {
 
   factory DefenseRuleConfigWafBaseConfigRuleDetail.fromMap(Map<String, dynamic> map) {
     return DefenseRuleConfigWafBaseConfigRuleDetail(
-      ruleAction: map['ruleAction'] == null ? null : (map['ruleAction'] as String).input(),
-      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
-      ruleStatus: map['ruleStatus'] == null ? null : (map['ruleStatus'] as int).input(),
+      ruleAction: map['ruleAction'] == null ? null : (map['ruleAction']! as String).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId']! as String).input(),
+      ruleStatus: map['ruleStatus'] == null ? null : (map['ruleStatus']! as int).input(),
     );
   }
 }

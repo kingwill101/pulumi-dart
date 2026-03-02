@@ -35,7 +35,7 @@ class ResolverConfigArgs {
   factory ResolverConfigArgs.fromMap(Map<String, dynamic> map) {
     return ResolverConfigArgs(
       autodefinedReverseFlag: (map['autodefinedReverseFlag'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceId: (map['resourceId'] as String).input(),
     );
   }

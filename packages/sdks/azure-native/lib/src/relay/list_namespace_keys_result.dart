@@ -40,11 +40,11 @@ class ListNamespaceKeysResult {
 
   factory ListNamespaceKeysResult.fromMap(Map<String, dynamic> map) {
     return ListNamespaceKeysResult(
-      keyName: map['keyName'] == null ? null : map['keyName'] as String,
-      primaryConnectionString: map['primaryConnectionString'] == null ? null : map['primaryConnectionString'] as String,
-      primaryKey: map['primaryKey'] == null ? null : map['primaryKey'] as String,
-      secondaryConnectionString: map['secondaryConnectionString'] == null ? null : map['secondaryConnectionString'] as String,
-      secondaryKey: map['secondaryKey'] == null ? null : map['secondaryKey'] as String,
+      keyName: map['keyName'] == null ? null : map['keyName']! as String,
+      primaryConnectionString: map['primaryConnectionString'] == null ? null : map['primaryConnectionString']! as String,
+      primaryKey: map['primaryKey'] == null ? null : map['primaryKey']! as String,
+      secondaryConnectionString: map['secondaryConnectionString'] == null ? null : map['secondaryConnectionString']! as String,
+      secondaryKey: map['secondaryKey'] == null ? null : map['secondaryKey']! as String,
     );
   }
 }

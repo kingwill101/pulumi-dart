@@ -31,9 +31,9 @@ class SpotDatafeedSubscriptionState {
 
   factory SpotDatafeedSubscriptionState.fromMap(Map<String, dynamic> map) {
     return SpotDatafeedSubscriptionState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

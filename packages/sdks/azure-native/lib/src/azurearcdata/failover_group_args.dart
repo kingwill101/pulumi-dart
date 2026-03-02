@@ -40,7 +40,7 @@ class FailoverGroupArgs {
 
   factory FailoverGroupArgs.fromMap(Map<String, dynamic> map) {
     return FailoverGroupArgs(
-      failoverGroupName: map['failoverGroupName'] == null ? null : (map['failoverGroupName'] as String).input(),
+      failoverGroupName: map['failoverGroupName'] == null ? null : (map['failoverGroupName']! as String).input(),
       properties: (FailoverGroupProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sqlManagedInstanceName: (map['sqlManagedInstanceName'] as String).input(),

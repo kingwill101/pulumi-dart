@@ -83,18 +83,18 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      attributes: map['attributes'] == null ? null : ((map['attributes'] as Map).cast<String, String>()).input(),
-      clientMetadata: map['clientMetadata'] == null ? null : ((map['clientMetadata'] as Map).cast<String, String>()).input(),
-      desiredDeliveryMediums: map['desiredDeliveryMediums'] == null ? null : ((map['desiredDeliveryMediums'] as List).cast<String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      forceAliasCreation: map['forceAliasCreation'] == null ? null : (map['forceAliasCreation'] as bool).input(),
-      messageAction: map['messageAction'] == null ? null : (map['messageAction'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      temporaryPassword: map['temporaryPassword'] == null ? null : (map['temporaryPassword'] as String).input(),
+      attributes: map['attributes'] == null ? null : (((map['attributes'] as Map).cast<String, String>()).input()).input(),
+      clientMetadata: map['clientMetadata'] == null ? null : (((map['clientMetadata'] as Map).cast<String, String>()).input()).input(),
+      desiredDeliveryMediums: map['desiredDeliveryMediums'] == null ? null : (((map['desiredDeliveryMediums'] as List).cast<String>()).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      forceAliasCreation: map['forceAliasCreation'] == null ? null : ((map['forceAliasCreation'] as bool).input()).input(),
+      messageAction: map['messageAction'] == null ? null : ((map['messageAction'] as String).input()).input(),
+      password: map['password'] == null ? null : ((map['password'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      temporaryPassword: map['temporaryPassword'] == null ? null : ((map['temporaryPassword'] as String).input()).input(),
       userPoolId: (map['userPoolId'] as String).input(),
       username: (map['username'] as String).input(),
-      validationData: map['validationData'] == null ? null : ((map['validationData'] as Map).cast<String, String>()).input(),
+      validationData: map['validationData'] == null ? null : (((map['validationData'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

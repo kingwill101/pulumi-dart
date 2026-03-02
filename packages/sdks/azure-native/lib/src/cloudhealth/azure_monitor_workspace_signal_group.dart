@@ -34,7 +34,7 @@ class AzureMonitorWorkspaceSignalGroup {
     return AzureMonitorWorkspaceSignalGroup(
       authenticationSetting: (map['authenticationSetting'] as String).input(),
       azureMonitorWorkspaceResourceId: (map['azureMonitorWorkspaceResourceId'] as String).input(),
-      signalAssignments: map['signalAssignments'] == null ? null : (pulumi.Input.decodeList<SignalAssignment>(map['signalAssignments'], (value) => SignalAssignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      signalAssignments: map['signalAssignments'] == null ? null : (pulumi.Input.decodeList<SignalAssignment>(map['signalAssignments']!, (value) => SignalAssignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

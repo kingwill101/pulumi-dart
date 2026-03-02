@@ -41,8 +41,8 @@ class CertificateAuthorityCertificateArgs {
     return CertificateAuthorityCertificateArgs(
       certificate: (map['certificate'] as String).input(),
       certificateAuthorityArn: (map['certificateAuthorityArn'] as String).input(),
-      certificateChain: map['certificateChain'] == null ? null : (map['certificateChain'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      certificateChain: map['certificateChain'] == null ? null : ((map['certificateChain'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

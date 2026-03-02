@@ -44,7 +44,7 @@ class ServicePrincipalDelegatedPermissionGrantArgs {
       claimValues: ((map['claimValues'] as List).cast<String>()).input(),
       resourceServicePrincipalObjectId: (map['resourceServicePrincipalObjectId'] as String).input(),
       servicePrincipalObjectId: (map['servicePrincipalObjectId'] as String).input(),
-      userObjectId: map['userObjectId'] == null ? null : (map['userObjectId'] as String).input(),
+      userObjectId: map['userObjectId'] == null ? null : (map['userObjectId']! as String).input(),
     );
   }
 }

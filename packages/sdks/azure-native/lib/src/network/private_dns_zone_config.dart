@@ -26,8 +26,8 @@ class PrivateDnsZoneConfig {
 
   factory PrivateDnsZoneConfig.fromMap(Map<String, dynamic> map) {
     return PrivateDnsZoneConfig(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateDnsZoneId: map['privateDnsZoneId'] == null ? null : (map['privateDnsZoneId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateDnsZoneId: map['privateDnsZoneId'] == null ? null : (map['privateDnsZoneId']! as String).input(),
     );
   }
 }

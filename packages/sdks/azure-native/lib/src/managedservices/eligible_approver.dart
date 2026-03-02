@@ -27,7 +27,7 @@ class EligibleApprover {
   factory EligibleApprover.fromMap(Map<String, dynamic> map) {
     return EligibleApprover(
       principalId: (map['principalId'] as String).input(),
-      principalIdDisplayName: map['principalIdDisplayName'] == null ? null : (map['principalIdDisplayName'] as String).input(),
+      principalIdDisplayName: map['principalIdDisplayName'] == null ? null : (map['principalIdDisplayName']! as String).input(),
     );
   }
 }

@@ -77,17 +77,17 @@ class AppArgs {
 
   factory AppArgs.fromMap(Map<String, dynamic> map) {
     return AppArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      identity: map['identity'] == null ? null : (SystemAssignedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      networkRuleSets: map['networkRuleSets'] == null ? null : (NetworkRuleSets.fromMap((map['networkRuleSets'] as Map).cast<String, dynamic>())).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      identity: map['identity'] == null ? null : (SystemAssignedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      networkRuleSets: map['networkRuleSets'] == null ? null : (NetworkRuleSets.fromMap((map['networkRuleSets']! as Map).cast<String, dynamic>())).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
       sku: (AppSkuInfo.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      subdomain: map['subdomain'] == null ? null : (map['subdomain'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      template: map['template'] == null ? null : (map['template'] as String).input(),
+      subdomain: map['subdomain'] == null ? null : (map['subdomain']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      template: map['template'] == null ? null : (map['template']! as String).input(),
     );
   }
 }

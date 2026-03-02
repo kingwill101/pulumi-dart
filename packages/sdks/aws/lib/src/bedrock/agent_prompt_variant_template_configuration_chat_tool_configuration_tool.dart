@@ -27,8 +27,8 @@ class AgentPromptVariantTemplateConfigurationChatToolConfigurationTool {
 
   factory AgentPromptVariantTemplateConfigurationChatToolConfigurationTool.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantTemplateConfigurationChatToolConfigurationTool(
-      cachePoint: map['cachePoint'] == null ? null : (AgentPromptVariantTemplateConfigurationChatToolConfigurationToolCachePoint.fromMap((map['cachePoint'] as Map).cast<String, dynamic>())).input(),
-      toolSpec: map['toolSpec'] == null ? null : (AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpec.fromMap((map['toolSpec'] as Map).cast<String, dynamic>())).input(),
+      cachePoint: map['cachePoint'] == null ? null : ((AgentPromptVariantTemplateConfigurationChatToolConfigurationToolCachePoint.fromMap((map['cachePoint']! as Map).cast<String, dynamic>())).input()).input(),
+      toolSpec: map['toolSpec'] == null ? null : ((AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpec.fromMap((map['toolSpec']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

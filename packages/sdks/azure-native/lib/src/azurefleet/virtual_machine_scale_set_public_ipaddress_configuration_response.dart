@@ -37,8 +37,8 @@ class VirtualMachineScaleSetPublicIPAddressConfigurationResponse {
   factory VirtualMachineScaleSetPublicIPAddressConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetPublicIPAddressConfigurationResponse(
       name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      sku: map['sku'] == null ? null : (PublicIPAddressSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      sku: map['sku'] == null ? null : (PublicIPAddressSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

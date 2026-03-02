@@ -24,7 +24,7 @@ class EnrollmentStatusArgs {
 
   factory EnrollmentStatusArgs.fromMap(Map<String, dynamic> map) {
     return EnrollmentStatusArgs(
-      includeMemberAccounts: map['includeMemberAccounts'] == null ? null : (map['includeMemberAccounts'] as bool).input(),
+      includeMemberAccounts: map['includeMemberAccounts'] == null ? null : ((map['includeMemberAccounts'] as bool).input()).input(),
     );
   }
 }

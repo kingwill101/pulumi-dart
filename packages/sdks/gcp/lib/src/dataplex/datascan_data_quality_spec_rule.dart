@@ -114,22 +114,22 @@ class DatascanDataQualitySpecRule {
 
   factory DatascanDataQualitySpecRule.fromMap(Map<String, dynamic> map) {
     return DatascanDataQualitySpecRule(
-      column: map['column'] == null ? null : (map['column'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      column: map['column'] == null ? null : (map['column']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       dimension: (map['dimension'] as String).input(),
-      ignoreNull: map['ignoreNull'] == null ? null : (map['ignoreNull'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nonNullExpectation: map['nonNullExpectation'] == null ? null : ((map['nonNullExpectation'] as Map).cast<String, dynamic>()).input(),
-      rangeExpectation: map['rangeExpectation'] == null ? null : (DatascanDataQualitySpecRuleRangeExpectation.fromMap((map['rangeExpectation'] as Map).cast<String, dynamic>())).input(),
-      regexExpectation: map['regexExpectation'] == null ? null : (DatascanDataQualitySpecRuleRegexExpectation.fromMap((map['regexExpectation'] as Map).cast<String, dynamic>())).input(),
-      rowConditionExpectation: map['rowConditionExpectation'] == null ? null : (DatascanDataQualitySpecRuleRowConditionExpectation.fromMap((map['rowConditionExpectation'] as Map).cast<String, dynamic>())).input(),
-      setExpectation: map['setExpectation'] == null ? null : (DatascanDataQualitySpecRuleSetExpectation.fromMap((map['setExpectation'] as Map).cast<String, dynamic>())).input(),
-      sqlAssertion: map['sqlAssertion'] == null ? null : (DatascanDataQualitySpecRuleSqlAssertion.fromMap((map['sqlAssertion'] as Map).cast<String, dynamic>())).input(),
-      statisticRangeExpectation: map['statisticRangeExpectation'] == null ? null : (DatascanDataQualitySpecRuleStatisticRangeExpectation.fromMap((map['statisticRangeExpectation'] as Map).cast<String, dynamic>())).input(),
-      suspended: map['suspended'] == null ? null : (map['suspended'] as bool).input(),
-      tableConditionExpectation: map['tableConditionExpectation'] == null ? null : (DatascanDataQualitySpecRuleTableConditionExpectation.fromMap((map['tableConditionExpectation'] as Map).cast<String, dynamic>())).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold'] as double).input(),
-      uniquenessExpectation: map['uniquenessExpectation'] == null ? null : ((map['uniquenessExpectation'] as Map).cast<String, dynamic>()).input(),
+      ignoreNull: map['ignoreNull'] == null ? null : (map['ignoreNull']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nonNullExpectation: map['nonNullExpectation'] == null ? null : ((map['nonNullExpectation']! as Map).cast<String, dynamic>()).input(),
+      rangeExpectation: map['rangeExpectation'] == null ? null : (DatascanDataQualitySpecRuleRangeExpectation.fromMap((map['rangeExpectation']! as Map).cast<String, dynamic>())).input(),
+      regexExpectation: map['regexExpectation'] == null ? null : (DatascanDataQualitySpecRuleRegexExpectation.fromMap((map['regexExpectation']! as Map).cast<String, dynamic>())).input(),
+      rowConditionExpectation: map['rowConditionExpectation'] == null ? null : (DatascanDataQualitySpecRuleRowConditionExpectation.fromMap((map['rowConditionExpectation']! as Map).cast<String, dynamic>())).input(),
+      setExpectation: map['setExpectation'] == null ? null : (DatascanDataQualitySpecRuleSetExpectation.fromMap((map['setExpectation']! as Map).cast<String, dynamic>())).input(),
+      sqlAssertion: map['sqlAssertion'] == null ? null : (DatascanDataQualitySpecRuleSqlAssertion.fromMap((map['sqlAssertion']! as Map).cast<String, dynamic>())).input(),
+      statisticRangeExpectation: map['statisticRangeExpectation'] == null ? null : (DatascanDataQualitySpecRuleStatisticRangeExpectation.fromMap((map['statisticRangeExpectation']! as Map).cast<String, dynamic>())).input(),
+      suspended: map['suspended'] == null ? null : (map['suspended']! as bool).input(),
+      tableConditionExpectation: map['tableConditionExpectation'] == null ? null : (DatascanDataQualitySpecRuleTableConditionExpectation.fromMap((map['tableConditionExpectation']! as Map).cast<String, dynamic>())).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold']! as double).input(),
+      uniquenessExpectation: map['uniquenessExpectation'] == null ? null : ((map['uniquenessExpectation']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

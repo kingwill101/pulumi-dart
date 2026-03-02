@@ -44,7 +44,7 @@ class DomainExtensionArgs {
 
   factory DomainExtensionArgs.fromMap(Map<String, dynamic> map) {
     return DomainExtensionArgs(
-      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : (map['deleteProtectionValidation'] as bool).input(),
+      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : (map['deleteProtectionValidation']! as bool).input(),
       domain: (map['domain'] as String).input(),
       frontendPort: (map['frontendPort'] as int).input(),
       loadBalancerId: (map['loadBalancerId'] as String).input(),

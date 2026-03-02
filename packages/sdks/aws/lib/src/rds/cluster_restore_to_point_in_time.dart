@@ -41,11 +41,11 @@ class ClusterRestoreToPointInTime {
 
   factory ClusterRestoreToPointInTime.fromMap(Map<String, dynamic> map) {
     return ClusterRestoreToPointInTime(
-      restoreToTime: map['restoreToTime'] == null ? null : (map['restoreToTime'] as String).input(),
-      restoreType: map['restoreType'] == null ? null : (map['restoreType'] as String).input(),
-      sourceClusterIdentifier: map['sourceClusterIdentifier'] == null ? null : (map['sourceClusterIdentifier'] as String).input(),
-      sourceClusterResourceId: map['sourceClusterResourceId'] == null ? null : (map['sourceClusterResourceId'] as String).input(),
-      useLatestRestorableTime: map['useLatestRestorableTime'] == null ? null : (map['useLatestRestorableTime'] as bool).input(),
+      restoreToTime: map['restoreToTime'] == null ? null : ((map['restoreToTime'] as String).input()).input(),
+      restoreType: map['restoreType'] == null ? null : ((map['restoreType'] as String).input()).input(),
+      sourceClusterIdentifier: map['sourceClusterIdentifier'] == null ? null : ((map['sourceClusterIdentifier'] as String).input()).input(),
+      sourceClusterResourceId: map['sourceClusterResourceId'] == null ? null : ((map['sourceClusterResourceId'] as String).input()).input(),
+      useLatestRestorableTime: map['useLatestRestorableTime'] == null ? null : ((map['useLatestRestorableTime'] as bool).input()).input(),
     );
   }
 }

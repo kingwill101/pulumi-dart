@@ -75,16 +75,16 @@ class GoogleCloudDocumentaiV1DocumentEntity {
 
   factory GoogleCloudDocumentaiV1DocumentEntity.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentEntity(
-      confidence: map['confidence'] == null ? null : (map['confidence'] as double).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      mentionId: map['mentionId'] == null ? null : (map['mentionId'] as String).input(),
-      mentionText: map['mentionText'] == null ? null : (map['mentionText'] as String).input(),
-      normalizedValue: map['normalizedValue'] == null ? null : (GoogleCloudDocumentaiV1DocumentEntityNormalizedValue.fromMap((map['normalizedValue'] as Map).cast<String, dynamic>())).input(),
-      pageAnchor: map['pageAnchor'] == null ? null : (GoogleCloudDocumentaiV1DocumentPageAnchor.fromMap((map['pageAnchor'] as Map).cast<String, dynamic>())).input(),
-      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentEntity>(map['properties'], (value) => GoogleCloudDocumentaiV1DocumentEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      provenance: map['provenance'] == null ? null : (GoogleCloudDocumentaiV1DocumentProvenance.fromMap((map['provenance'] as Map).cast<String, dynamic>())).input(),
-      redacted: map['redacted'] == null ? null : (map['redacted'] as bool).input(),
-      textAnchor: map['textAnchor'] == null ? null : (GoogleCloudDocumentaiV1DocumentTextAnchor.fromMap((map['textAnchor'] as Map).cast<String, dynamic>())).input(),
+      confidence: map['confidence'] == null ? null : (map['confidence']! as double).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      mentionId: map['mentionId'] == null ? null : (map['mentionId']! as String).input(),
+      mentionText: map['mentionText'] == null ? null : (map['mentionText']! as String).input(),
+      normalizedValue: map['normalizedValue'] == null ? null : (GoogleCloudDocumentaiV1DocumentEntityNormalizedValue.fromMap((map['normalizedValue']! as Map).cast<String, dynamic>())).input(),
+      pageAnchor: map['pageAnchor'] == null ? null : (GoogleCloudDocumentaiV1DocumentPageAnchor.fromMap((map['pageAnchor']! as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentEntity>(map['properties']!, (value) => GoogleCloudDocumentaiV1DocumentEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provenance: map['provenance'] == null ? null : (GoogleCloudDocumentaiV1DocumentProvenance.fromMap((map['provenance']! as Map).cast<String, dynamic>())).input(),
+      redacted: map['redacted'] == null ? null : (map['redacted']! as bool).input(),
+      textAnchor: map['textAnchor'] == null ? null : (GoogleCloudDocumentaiV1DocumentTextAnchor.fromMap((map['textAnchor']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

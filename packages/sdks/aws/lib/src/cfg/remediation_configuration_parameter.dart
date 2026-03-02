@@ -36,9 +36,9 @@ class RemediationConfigurationParameter {
   factory RemediationConfigurationParameter.fromMap(Map<String, dynamic> map) {
     return RemediationConfigurationParameter(
       name: (map['name'] as String).input(),
-      resourceValue: map['resourceValue'] == null ? null : (map['resourceValue'] as String).input(),
-      staticValue: map['staticValue'] == null ? null : (map['staticValue'] as String).input(),
-      staticValues: map['staticValues'] == null ? null : ((map['staticValues'] as List).cast<String>()).input(),
+      resourceValue: map['resourceValue'] == null ? null : ((map['resourceValue'] as String).input()).input(),
+      staticValue: map['staticValue'] == null ? null : ((map['staticValue'] as String).input()).input(),
+      staticValues: map['staticValues'] == null ? null : (((map['staticValues'] as List).cast<String>()).input()).input(),
     );
   }
 }

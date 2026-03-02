@@ -62,14 +62,14 @@ class ControlArgs {
 
   factory ControlArgs.fromMap(Map<String, dynamic> map) {
     return ControlArgs(
-      actionPlanInstructions: map['actionPlanInstructions'] == null ? null : (map['actionPlanInstructions'] as String).input(),
-      actionPlanTitle: map['actionPlanTitle'] == null ? null : (map['actionPlanTitle'] as String).input(),
-      controlMappingSources: map['controlMappingSources'] == null ? null : (pulumi.Input.decodeList<ControlControlMappingSource>(map['controlMappingSources'], (value) => ControlControlMappingSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      testingInformation: map['testingInformation'] == null ? null : (map['testingInformation'] as String).input(),
+      actionPlanInstructions: map['actionPlanInstructions'] == null ? null : ((map['actionPlanInstructions'] as String).input()).input(),
+      actionPlanTitle: map['actionPlanTitle'] == null ? null : ((map['actionPlanTitle'] as String).input()).input(),
+      controlMappingSources: map['controlMappingSources'] == null ? null : ((pulumi.Input.decodeList<ControlControlMappingSource>(map['controlMappingSources']!, (value) => ControlControlMappingSource.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      testingInformation: map['testingInformation'] == null ? null : ((map['testingInformation'] as String).input()).input(),
     );
   }
 }

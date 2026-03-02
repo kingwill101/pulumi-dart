@@ -37,10 +37,10 @@ class ResiliencyRecommendationComponentsResponse {
 
   factory ResiliencyRecommendationComponentsResponse.fromMap(Map<String, dynamic> map) {
     return ResiliencyRecommendationComponentsResponse(
-      currentScore: map['currentScore'] == null ? null : (map['currentScore'] as String).input(),
-      maxScore: map['maxScore'] == null ? null : (map['maxScore'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recommendations: map['recommendations'] == null ? null : (pulumi.Input.decodeList<GatewayResiliencyRecommendationResponse>(map['recommendations'], (value) => GatewayResiliencyRecommendationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      currentScore: map['currentScore'] == null ? null : (map['currentScore']! as String).input(),
+      maxScore: map['maxScore'] == null ? null : (map['maxScore']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      recommendations: map['recommendations'] == null ? null : (pulumi.Input.decodeList<GatewayResiliencyRecommendationResponse>(map['recommendations']!, (value) => GatewayResiliencyRecommendationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

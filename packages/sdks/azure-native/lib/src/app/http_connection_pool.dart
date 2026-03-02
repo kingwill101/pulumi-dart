@@ -26,8 +26,8 @@ class HttpConnectionPool {
 
   factory HttpConnectionPool.fromMap(Map<String, dynamic> map) {
     return HttpConnectionPool(
-      http1MaxPendingRequests: map['http1MaxPendingRequests'] == null ? null : (map['http1MaxPendingRequests'] as int).input(),
-      http2MaxRequests: map['http2MaxRequests'] == null ? null : (map['http2MaxRequests'] as int).input(),
+      http1MaxPendingRequests: map['http1MaxPendingRequests'] == null ? null : (map['http1MaxPendingRequests']! as int).input(),
+      http2MaxRequests: map['http2MaxRequests'] == null ? null : (map['http2MaxRequests']! as int).input(),
     );
   }
 }

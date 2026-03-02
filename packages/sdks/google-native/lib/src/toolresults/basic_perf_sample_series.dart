@@ -31,9 +31,9 @@ class BasicPerfSampleSeries {
 
   factory BasicPerfSampleSeries.fromMap(Map<String, dynamic> map) {
     return BasicPerfSampleSeries(
-      perfMetricType: map['perfMetricType'] == null ? null : (BasicPerfSampleSeriesPerfMetricType.fromValue(map['perfMetricType'] as String)).input(),
-      perfUnit: map['perfUnit'] == null ? null : (BasicPerfSampleSeriesPerfUnit.fromValue(map['perfUnit'] as String)).input(),
-      sampleSeriesLabel: map['sampleSeriesLabel'] == null ? null : (BasicPerfSampleSeriesSampleSeriesLabel.fromValue(map['sampleSeriesLabel'] as String)).input(),
+      perfMetricType: map['perfMetricType'] == null ? null : (BasicPerfSampleSeriesPerfMetricType.fromValue(map['perfMetricType']! as String)).input(),
+      perfUnit: map['perfUnit'] == null ? null : (BasicPerfSampleSeriesPerfUnit.fromValue(map['perfUnit']! as String)).input(),
+      sampleSeriesLabel: map['sampleSeriesLabel'] == null ? null : (BasicPerfSampleSeriesSampleSeriesLabel.fromValue(map['sampleSeriesLabel']! as String)).input(),
     );
   }
 }

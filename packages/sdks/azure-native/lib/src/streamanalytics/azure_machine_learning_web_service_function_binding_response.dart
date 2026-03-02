@@ -49,11 +49,11 @@ class AzureMachineLearningWebServiceFunctionBindingResponse {
 
   factory AzureMachineLearningWebServiceFunctionBindingResponse.fromMap(Map<String, dynamic> map) {
     return AzureMachineLearningWebServiceFunctionBindingResponse(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
-      batchSize: map['batchSize'] == null ? null : (map['batchSize'] as int).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      inputs: map['inputs'] == null ? null : (AzureMachineLearningWebServiceInputsResponse.fromMap((map['inputs'] as Map).cast<String, dynamic>())).input(),
-      outputs: map['outputs'] == null ? null : (pulumi.Input.decodeList<AzureMachineLearningWebServiceOutputColumnResponse>(map['outputs'], (value) => AzureMachineLearningWebServiceOutputColumnResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey']! as String).input(),
+      batchSize: map['batchSize'] == null ? null : (map['batchSize']! as int).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      inputs: map['inputs'] == null ? null : (AzureMachineLearningWebServiceInputsResponse.fromMap((map['inputs']! as Map).cast<String, dynamic>())).input(),
+      outputs: map['outputs'] == null ? null : (pulumi.Input.decodeList<AzureMachineLearningWebServiceOutputColumnResponse>(map['outputs']!, (value) => AzureMachineLearningWebServiceOutputColumnResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
     );
   }

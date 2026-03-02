@@ -24,7 +24,7 @@ class GetAccountPublicAccessBlockArgs {
 
   factory GetAccountPublicAccessBlockArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountPublicAccessBlockArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
     );
   }
 }

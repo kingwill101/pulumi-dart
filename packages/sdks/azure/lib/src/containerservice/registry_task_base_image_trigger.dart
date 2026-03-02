@@ -40,11 +40,11 @@ class RegistryTaskBaseImageTrigger {
 
   factory RegistryTaskBaseImageTrigger.fromMap(Map<String, dynamic> map) {
     return RegistryTaskBaseImageTrigger(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       name: (map['name'] as String).input(),
       type: (map['type'] as String).input(),
-      updateTriggerEndpoint: map['updateTriggerEndpoint'] == null ? null : (map['updateTriggerEndpoint'] as String).input(),
-      updateTriggerPayloadType: map['updateTriggerPayloadType'] == null ? null : (map['updateTriggerPayloadType'] as String).input(),
+      updateTriggerEndpoint: map['updateTriggerEndpoint'] == null ? null : (map['updateTriggerEndpoint']! as String).input(),
+      updateTriggerPayloadType: map['updateTriggerPayloadType'] == null ? null : (map['updateTriggerPayloadType']! as String).input(),
     );
   }
 }

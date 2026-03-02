@@ -21,7 +21,7 @@ class IngestionDestinationDestinationConfiguration {
 
   factory IngestionDestinationDestinationConfiguration.fromMap(Map<String, dynamic> map) {
     return IngestionDestinationDestinationConfiguration(
-      auditLog: (IngestionDestinationDestinationConfigurationAuditLog.fromMap((map['auditLog'] as Map).cast<String, dynamic>())).input(),
+      auditLog: (IngestionDestinationDestinationConfigurationAuditLog.fromMap((map['auditLog']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -40,9 +40,9 @@ class NetworkArgs {
   factory NetworkArgs.fromMap(Map<String, dynamic> map) {
     return NetworkArgs(
       cidrBlock: (map['cidrBlock'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       ensRegionId: (map['ensRegionId'] as String).input(),
-      networkName: map['networkName'] == null ? null : (map['networkName'] as String).input(),
+      networkName: map['networkName'] == null ? null : (map['networkName']! as String).input(),
     );
   }
 }

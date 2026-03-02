@@ -37,10 +37,10 @@ class VirtualMachineInstancePropertiesOsProfileLinuxConfiguration {
 
   factory VirtualMachineInstancePropertiesOsProfileLinuxConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstancePropertiesOsProfileLinuxConfiguration(
-      disablePasswordAuthentication: map['disablePasswordAuthentication'] == null ? null : (map['disablePasswordAuthentication'] as bool).input(),
-      provisionVMAgent: map['provisionVMAgent'] == null ? null : (map['provisionVMAgent'] as bool).input(),
-      provisionVMConfigAgent: map['provisionVMConfigAgent'] == null ? null : (map['provisionVMConfigAgent'] as bool).input(),
-      ssh: map['ssh'] == null ? null : (SshConfiguration.fromMap((map['ssh'] as Map).cast<String, dynamic>())).input(),
+      disablePasswordAuthentication: map['disablePasswordAuthentication'] == null ? null : (map['disablePasswordAuthentication']! as bool).input(),
+      provisionVMAgent: map['provisionVMAgent'] == null ? null : (map['provisionVMAgent']! as bool).input(),
+      provisionVMConfigAgent: map['provisionVMConfigAgent'] == null ? null : (map['provisionVMConfigAgent']! as bool).input(),
+      ssh: map['ssh'] == null ? null : (SshConfiguration.fromMap((map['ssh']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

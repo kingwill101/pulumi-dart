@@ -31,9 +31,9 @@ class AutoScaleProperties {
 
   factory AutoScaleProperties.fromMap(Map<String, dynamic> map) {
     return AutoScaleProperties(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount'] as int).input(),
-      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount']! as int).input(),
+      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount']! as int).input(),
     );
   }
 }

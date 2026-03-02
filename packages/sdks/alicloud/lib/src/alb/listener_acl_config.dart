@@ -26,8 +26,8 @@ class ListenerAclConfig {
 
   factory ListenerAclConfig.fromMap(Map<String, dynamic> map) {
     return ListenerAclConfig(
-      aclRelations: map['aclRelations'] == null ? null : (pulumi.Input.decodeList<ListenerAclConfigAclRelation>(map['aclRelations'], (value) => ListenerAclConfigAclRelation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      aclType: map['aclType'] == null ? null : (map['aclType'] as String).input(),
+      aclRelations: map['aclRelations'] == null ? null : (pulumi.Input.decodeList<ListenerAclConfigAclRelation>(map['aclRelations']!, (value) => ListenerAclConfigAclRelation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aclType: map['aclType'] == null ? null : (map['aclType']! as String).input(),
     );
   }
 }

@@ -44,11 +44,11 @@ class WebAppSwiftVirtualNetworkConnectionArgs {
 
   factory WebAppSwiftVirtualNetworkConnectionArgs.fromMap(Map<String, dynamic> map) {
     return WebAppSwiftVirtualNetworkConnectionArgs(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subnetResourceId: map['subnetResourceId'] == null ? null : (map['subnetResourceId'] as String).input(),
-      swiftSupported: map['swiftSupported'] == null ? null : (map['swiftSupported'] as bool).input(),
+      subnetResourceId: map['subnetResourceId'] == null ? null : (map['subnetResourceId']! as String).input(),
+      swiftSupported: map['swiftSupported'] == null ? null : (map['swiftSupported']! as bool).input(),
     );
   }
 }

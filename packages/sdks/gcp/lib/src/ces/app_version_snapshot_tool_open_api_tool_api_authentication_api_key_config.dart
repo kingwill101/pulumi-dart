@@ -41,9 +41,9 @@ class AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfig {
 
   factory AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfig(
-      apiKeySecretVersion: map['apiKeySecretVersion'] == null ? null : (map['apiKeySecretVersion'] as String).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      requestLocation: map['requestLocation'] == null ? null : (map['requestLocation'] as String).input(),
+      apiKeySecretVersion: map['apiKeySecretVersion'] == null ? null : (map['apiKeySecretVersion']! as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
+      requestLocation: map['requestLocation'] == null ? null : (map['requestLocation']! as String).input(),
     );
   }
 }

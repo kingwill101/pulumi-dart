@@ -36,9 +36,9 @@ class V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchRespon
 
   factory V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchResponseMessageGroupVariationImageResponseCard.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchResponseMessageGroupVariationImageResponseCard(
-      buttons: map['buttons'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchResponseMessageGroupVariationImageResponseCardButton>(map['buttons'], (value) => V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchResponseMessageGroupVariationImageResponseCardButton.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      imageUrl: map['imageUrl'] == null ? null : (map['imageUrl'] as String).input(),
-      subtitle: map['subtitle'] == null ? null : (map['subtitle'] as String).input(),
+      buttons: map['buttons'] == null ? null : ((pulumi.Input.decodeList<V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchResponseMessageGroupVariationImageResponseCardButton>(map['buttons']!, (value) => V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchResponseMessageGroupVariationImageResponseCardButton.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      imageUrl: map['imageUrl'] == null ? null : ((map['imageUrl'] as String).input()).input(),
+      subtitle: map['subtitle'] == null ? null : ((map['subtitle'] as String).input()).input(),
       title: (map['title'] as String).input(),
     );
   }

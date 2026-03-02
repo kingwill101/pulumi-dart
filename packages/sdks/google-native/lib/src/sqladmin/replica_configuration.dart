@@ -37,10 +37,10 @@ class ReplicaConfiguration {
 
   factory ReplicaConfiguration.fromMap(Map<String, dynamic> map) {
     return ReplicaConfiguration(
-      cascadableReplica: map['cascadableReplica'] == null ? null : (map['cascadableReplica'] as bool).input(),
-      failoverTarget: map['failoverTarget'] == null ? null : (map['failoverTarget'] as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      mysqlReplicaConfiguration: map['mysqlReplicaConfiguration'] == null ? null : (MySqlReplicaConfiguration.fromMap((map['mysqlReplicaConfiguration'] as Map).cast<String, dynamic>())).input(),
+      cascadableReplica: map['cascadableReplica'] == null ? null : (map['cascadableReplica']! as bool).input(),
+      failoverTarget: map['failoverTarget'] == null ? null : (map['failoverTarget']! as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      mysqlReplicaConfiguration: map['mysqlReplicaConfiguration'] == null ? null : (MySqlReplicaConfiguration.fromMap((map['mysqlReplicaConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

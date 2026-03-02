@@ -68,10 +68,10 @@ class SharedAccessAuthorizationRulePropertiesResponse {
       createdTime: (map['createdTime'] as String).input(),
       keyName: (map['keyName'] as String).input(),
       modifiedTime: (map['modifiedTime'] as String).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as String).input(),
       revision: (map['revision'] as int).input(),
       rights: ((map['rights'] as List).cast<String>()).input(),
-      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey']! as String).input(),
     );
   }
 }

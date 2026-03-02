@@ -51,10 +51,10 @@ class ReplicationStorageClassificationMappingArgs {
   factory ReplicationStorageClassificationMappingArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationStorageClassificationMappingArgs(
       fabricName: (map['fabricName'] as String).input(),
-      properties: map['properties'] == null ? null : (StorageMappingInputProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (StorageMappingInputProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
-      storageClassificationMappingName: map['storageClassificationMappingName'] == null ? null : (map['storageClassificationMappingName'] as String).input(),
+      storageClassificationMappingName: map['storageClassificationMappingName'] == null ? null : (map['storageClassificationMappingName']! as String).input(),
       storageClassificationName: (map['storageClassificationName'] as String).input(),
     );
   }

@@ -50,7 +50,7 @@ class EtlArgs {
   factory EtlArgs.fromMap(Map<String, dynamic> map) {
     return EtlArgs(
       configuration: (EtlConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       jobName: (map['jobName'] as String).input(),
       project: (map['project'] as String).input(),

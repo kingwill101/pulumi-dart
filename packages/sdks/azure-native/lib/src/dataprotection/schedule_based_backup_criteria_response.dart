@@ -54,13 +54,13 @@ class ScheduleBasedBackupCriteriaResponse {
 
   factory ScheduleBasedBackupCriteriaResponse.fromMap(Map<String, dynamic> map) {
     return ScheduleBasedBackupCriteriaResponse(
-      absoluteCriteria: map['absoluteCriteria'] == null ? null : ((map['absoluteCriteria'] as List).cast<String>()).input(),
-      daysOfMonth: map['daysOfMonth'] == null ? null : (pulumi.Input.decodeList<DayResponse>(map['daysOfMonth'], (value) => DayResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      daysOfTheWeek: map['daysOfTheWeek'] == null ? null : ((map['daysOfTheWeek'] as List).cast<String>()).input(),
-      monthsOfYear: map['monthsOfYear'] == null ? null : ((map['monthsOfYear'] as List).cast<String>()).input(),
+      absoluteCriteria: map['absoluteCriteria'] == null ? null : ((map['absoluteCriteria']! as List).cast<String>()).input(),
+      daysOfMonth: map['daysOfMonth'] == null ? null : (pulumi.Input.decodeList<DayResponse>(map['daysOfMonth']!, (value) => DayResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      daysOfTheWeek: map['daysOfTheWeek'] == null ? null : ((map['daysOfTheWeek']! as List).cast<String>()).input(),
+      monthsOfYear: map['monthsOfYear'] == null ? null : ((map['monthsOfYear']! as List).cast<String>()).input(),
       objectType: (map['objectType'] as String).input(),
-      scheduleTimes: map['scheduleTimes'] == null ? null : ((map['scheduleTimes'] as List).cast<String>()).input(),
-      weeksOfTheMonth: map['weeksOfTheMonth'] == null ? null : ((map['weeksOfTheMonth'] as List).cast<String>()).input(),
+      scheduleTimes: map['scheduleTimes'] == null ? null : ((map['scheduleTimes']! as List).cast<String>()).input(),
+      weeksOfTheMonth: map['weeksOfTheMonth'] == null ? null : ((map['weeksOfTheMonth']! as List).cast<String>()).input(),
     );
   }
 }

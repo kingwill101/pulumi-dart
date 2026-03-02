@@ -38,10 +38,10 @@ class DicomConfig {
 
   factory DicomConfig.fromMap(Map<String, dynamic> map) {
     return DicomConfig(
-      filterProfile: map['filterProfile'] == null ? null : (DicomConfigFilterProfile.fromValue(map['filterProfile'] as String)).input(),
-      keepList: map['keepList'] == null ? null : (TagFilterList.fromMap((map['keepList'] as Map).cast<String, dynamic>())).input(),
-      removeList: map['removeList'] == null ? null : (TagFilterList.fromMap((map['removeList'] as Map).cast<String, dynamic>())).input(),
-      skipIdRedaction: map['skipIdRedaction'] == null ? null : (map['skipIdRedaction'] as bool).input(),
+      filterProfile: map['filterProfile'] == null ? null : (DicomConfigFilterProfile.fromValue(map['filterProfile']! as String)).input(),
+      keepList: map['keepList'] == null ? null : (TagFilterList.fromMap((map['keepList']! as Map).cast<String, dynamic>())).input(),
+      removeList: map['removeList'] == null ? null : (TagFilterList.fromMap((map['removeList']! as Map).cast<String, dynamic>())).input(),
+      skipIdRedaction: map['skipIdRedaction'] == null ? null : (map['skipIdRedaction']! as bool).input(),
     );
   }
 }

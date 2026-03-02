@@ -26,8 +26,8 @@ class ControlPlaneEndpointProfileControlPlaneEndpoint {
 
   factory ControlPlaneEndpointProfileControlPlaneEndpoint.fromMap(Map<String, dynamic> map) {
     return ControlPlaneEndpointProfileControlPlaneEndpoint(
-      hostIP: map['hostIP'] == null ? null : (map['hostIP'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
+      hostIP: map['hostIP'] == null ? null : (map['hostIP']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
     );
   }
 }

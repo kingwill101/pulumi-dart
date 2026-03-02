@@ -44,7 +44,7 @@ class LbStickinessPolicyArgs {
       cookieDuration: (map['cookieDuration'] as int).input(),
       enabled: (map['enabled'] as bool).input(),
       lbName: (map['lbName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

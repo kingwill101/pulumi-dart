@@ -20,7 +20,7 @@ class DomainDevicesMemBalloonAcpi {
 
   factory DomainDevicesMemBalloonAcpi.fromMap(Map<String, dynamic> map) {
     return DomainDevicesMemBalloonAcpi(
-      index: map['index'] == null ? null : (map['index'] as double).input(),
+      index: map['index'] == null ? null : (map['index']! as double).input(),
     );
   }
 }

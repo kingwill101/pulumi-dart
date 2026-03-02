@@ -32,9 +32,9 @@ class ConnectionAuthConfigOauth2JwtBearerJwtClaims {
 
   factory ConnectionAuthConfigOauth2JwtBearerJwtClaims.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthConfigOauth2JwtBearerJwtClaims(
-      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
-      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
-      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
+      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer']! as String).input(),
+      subject: map['subject'] == null ? null : (map['subject']! as String).input(),
     );
   }
 }

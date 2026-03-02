@@ -29,8 +29,8 @@ class TaasTapMirrorV2Directions {
 
   factory TaasTapMirrorV2Directions.fromMap(Map<String, dynamic> map) {
     return TaasTapMirrorV2Directions(
-      in_: map['in'] == null ? null : (map['in'] as int).input(),
-      out: map['out'] == null ? null : (map['out'] as int).input(),
+      in_: map['in'] == null ? null : (map['in']! as int).input(),
+      out: map['out'] == null ? null : (map['out']! as int).input(),
     );
   }
 }

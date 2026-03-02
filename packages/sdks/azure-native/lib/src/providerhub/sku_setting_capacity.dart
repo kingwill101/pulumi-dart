@@ -36,10 +36,10 @@ class SkuSettingCapacity {
 
   factory SkuSettingCapacity.fromMap(Map<String, dynamic> map) {
     return SkuSettingCapacity(
-      default_: map['default'] == null ? null : (map['default'] as int).input(),
-      maximum: map['maximum'] == null ? null : (map['maximum'] as int).input(),
+      default_: map['default'] == null ? null : (map['default']! as int).input(),
+      maximum: map['maximum'] == null ? null : (map['maximum']! as int).input(),
       minimum: (map['minimum'] as int).input(),
-      scaleType: map['scaleType'] == null ? null : (map['scaleType'] as String).input(),
+      scaleType: map['scaleType'] == null ? null : (map['scaleType']! as String).input(),
     );
   }
 }

@@ -42,11 +42,11 @@ class GalleryApplicationCustomActionParameter {
 
   factory GalleryApplicationCustomActionParameter.fromMap(Map<String, dynamic> map) {
     return GalleryApplicationCustomActionParameter(
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       name: (map['name'] as String).input(),
-      required: map['required'] == null ? null : (map['required'] as bool).input(),
-      type: map['type'] == null ? null : (GalleryApplicationCustomActionParameterType.fromValue(map['type'] as String)).input(),
+      required: map['required'] == null ? null : (map['required']! as bool).input(),
+      type: map['type'] == null ? null : (GalleryApplicationCustomActionParameterType.fromValue(map['type']! as String)).input(),
     );
   }
 }

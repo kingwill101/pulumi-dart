@@ -39,9 +39,9 @@ class GetLaunchOptionsArgs {
 
   factory GetLaunchOptionsArgs.fromMap(Map<String, dynamic> map) {
     return GetLaunchOptionsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
       productId: (map['productId'] as String).input(),
     );
   }

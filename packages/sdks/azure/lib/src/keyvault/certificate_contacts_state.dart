@@ -27,8 +27,8 @@ class CertificateContactsState {
 
   factory CertificateContactsState.fromMap(Map<String, dynamic> map) {
     return CertificateContactsState(
-      contacts: map['contacts'] == null ? null : (pulumi.Input.decodeList<CertificateContactsContact>(map['contacts'], (value) => CertificateContactsContact.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
+      contacts: map['contacts'] == null ? null : (pulumi.Input.decodeList<CertificateContactsContact>(map['contacts']!, (value) => CertificateContactsContact.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
     );
   }
 }

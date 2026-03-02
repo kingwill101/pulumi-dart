@@ -41,10 +41,10 @@ class DomainDevicesRedirFilterUsb {
   factory DomainDevicesRedirFilterUsb.fromMap(Map<String, dynamic> map) {
     return DomainDevicesRedirFilterUsb(
       allow: (map['allow'] as String).input(),
-      class_: map['class'] == null ? null : (map['class'] as double).input(),
-      product: map['product'] == null ? null : (map['product'] as double).input(),
-      vendor: map['vendor'] == null ? null : (map['vendor'] as double).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      class_: map['class'] == null ? null : (map['class']! as double).input(),
+      product: map['product'] == null ? null : (map['product']! as double).input(),
+      vendor: map['vendor'] == null ? null : (map['vendor']! as double).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

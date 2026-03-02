@@ -35,7 +35,7 @@ class ListContainerAppCustomHostNameAnalysisArgs {
   factory ListContainerAppCustomHostNameAnalysisArgs.fromMap(Map<String, dynamic> map) {
     return ListContainerAppCustomHostNameAnalysisArgs(
       containerAppName: (map['containerAppName'] as String).input(),
-      customHostname: map['customHostname'] == null ? null : (map['customHostname'] as String).input(),
+      customHostname: map['customHostname'] == null ? null : (map['customHostname']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

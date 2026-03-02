@@ -44,11 +44,11 @@ class ThroughputPoolArgs {
 
   factory ThroughputPoolArgs.fromMap(Map<String, dynamic> map) {
     return ThroughputPoolArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maxThroughput: map['maxThroughput'] == null ? null : (map['maxThroughput'] as int).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maxThroughput: map['maxThroughput'] == null ? null : (map['maxThroughput']! as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      throughputPoolName: map['throughputPoolName'] == null ? null : (map['throughputPoolName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      throughputPoolName: map['throughputPoolName'] == null ? null : (map['throughputPoolName']! as String).input(),
     );
   }
 }

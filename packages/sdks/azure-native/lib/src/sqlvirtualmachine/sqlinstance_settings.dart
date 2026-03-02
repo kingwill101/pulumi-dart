@@ -51,13 +51,13 @@ class SQLInstanceSettings {
 
   factory SQLInstanceSettings.fromMap(Map<String, dynamic> map) {
     return SQLInstanceSettings(
-      collation: map['collation'] == null ? null : (map['collation'] as String).input(),
-      isIfiEnabled: map['isIfiEnabled'] == null ? null : (map['isIfiEnabled'] as bool).input(),
-      isLpimEnabled: map['isLpimEnabled'] == null ? null : (map['isLpimEnabled'] as bool).input(),
-      isOptimizeForAdHocWorkloadsEnabled: map['isOptimizeForAdHocWorkloadsEnabled'] == null ? null : (map['isOptimizeForAdHocWorkloadsEnabled'] as bool).input(),
-      maxDop: map['maxDop'] == null ? null : (map['maxDop'] as int).input(),
-      maxServerMemoryMB: map['maxServerMemoryMB'] == null ? null : (map['maxServerMemoryMB'] as int).input(),
-      minServerMemoryMB: map['minServerMemoryMB'] == null ? null : (map['minServerMemoryMB'] as int).input(),
+      collation: map['collation'] == null ? null : (map['collation']! as String).input(),
+      isIfiEnabled: map['isIfiEnabled'] == null ? null : (map['isIfiEnabled']! as bool).input(),
+      isLpimEnabled: map['isLpimEnabled'] == null ? null : (map['isLpimEnabled']! as bool).input(),
+      isOptimizeForAdHocWorkloadsEnabled: map['isOptimizeForAdHocWorkloadsEnabled'] == null ? null : (map['isOptimizeForAdHocWorkloadsEnabled']! as bool).input(),
+      maxDop: map['maxDop'] == null ? null : (map['maxDop']! as int).input(),
+      maxServerMemoryMB: map['maxServerMemoryMB'] == null ? null : (map['maxServerMemoryMB']! as int).input(),
+      minServerMemoryMB: map['minServerMemoryMB'] == null ? null : (map['minServerMemoryMB']! as int).input(),
     );
   }
 }

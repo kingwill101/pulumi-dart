@@ -26,8 +26,8 @@ class TemporaryDiskResponse {
 
   factory TemporaryDiskResponse.fromMap(Map<String, dynamic> map) {
     return TemporaryDiskResponse(
-      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
-      sizeInGB: map['sizeInGB'] == null ? null : (map['sizeInGB'] as int).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
+      sizeInGB: map['sizeInGB'] == null ? null : (map['sizeInGB']! as int).input(),
     );
   }
 }

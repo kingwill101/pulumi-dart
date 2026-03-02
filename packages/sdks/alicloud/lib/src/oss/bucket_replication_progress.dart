@@ -25,8 +25,8 @@ class BucketReplicationProgress {
 
   factory BucketReplicationProgress.fromMap(Map<String, dynamic> map) {
     return BucketReplicationProgress(
-      historicalObject: map['historicalObject'] == null ? null : (map['historicalObject'] as String).input(),
-      newObject: map['newObject'] == null ? null : (map['newObject'] as String).input(),
+      historicalObject: map['historicalObject'] == null ? null : (map['historicalObject']! as String).input(),
+      newObject: map['newObject'] == null ? null : (map['newObject']! as String).input(),
     );
   }
 }

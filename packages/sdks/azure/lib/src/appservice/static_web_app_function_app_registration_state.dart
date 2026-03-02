@@ -30,8 +30,8 @@ class StaticWebAppFunctionAppRegistrationState {
 
   factory StaticWebAppFunctionAppRegistrationState.fromMap(Map<String, dynamic> map) {
     return StaticWebAppFunctionAppRegistrationState(
-      functionAppId: map['functionAppId'] == null ? null : (map['functionAppId'] as String).input(),
-      staticWebAppId: map['staticWebAppId'] == null ? null : (map['staticWebAppId'] as String).input(),
+      functionAppId: map['functionAppId'] == null ? null : (map['functionAppId']! as String).input(),
+      staticWebAppId: map['staticWebAppId'] == null ? null : (map['staticWebAppId']! as String).input(),
     );
   }
 }

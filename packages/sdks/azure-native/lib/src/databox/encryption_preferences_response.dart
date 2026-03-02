@@ -26,8 +26,8 @@ class EncryptionPreferencesResponse {
 
   factory EncryptionPreferencesResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionPreferencesResponse(
-      doubleEncryption: map['doubleEncryption'] == null ? null : (map['doubleEncryption'] as String).input(),
-      hardwareEncryption: map['hardwareEncryption'] == null ? null : (map['hardwareEncryption'] as String).input(),
+      doubleEncryption: map['doubleEncryption'] == null ? null : (map['doubleEncryption']! as String).input(),
+      hardwareEncryption: map['hardwareEncryption'] == null ? null : (map['hardwareEncryption']! as String).input(),
     );
   }
 }

@@ -93,20 +93,20 @@ class NodeBalancerState {
 
   factory NodeBalancerState.fromMap(Map<String, dynamic> map) {
     return NodeBalancerState(
-      clientConnThrottle: map['clientConnThrottle'] == null ? null : (map['clientConnThrottle'] as int).input(),
-      clientUdpSessThrottle: map['clientUdpSessThrottle'] == null ? null : (map['clientUdpSessThrottle'] as int).input(),
-      created: map['created'] == null ? null : (map['created'] as String).input(),
-      firewallId: map['firewallId'] == null ? null : (map['firewallId'] as int).input(),
-      firewalls: map['firewalls'] == null ? null : (pulumi.Input.decodeList<NodeBalancerFirewall>(map['firewalls'], (value) => NodeBalancerFirewall.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      ipv4: map['ipv4'] == null ? null : (map['ipv4'] as String).input(),
-      ipv6: map['ipv6'] == null ? null : (map['ipv6'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      transfers: map['transfers'] == null ? null : (pulumi.Input.decodeList<NodeBalancerTransfer>(map['transfers'], (value) => NodeBalancerTransfer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      updated: map['updated'] == null ? null : (map['updated'] as String).input(),
-      vpcs: map['vpcs'] == null ? null : (pulumi.Input.decodeList<NodeBalancerVpc>(map['vpcs'], (value) => NodeBalancerVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientConnThrottle: map['clientConnThrottle'] == null ? null : (map['clientConnThrottle']! as int).input(),
+      clientUdpSessThrottle: map['clientUdpSessThrottle'] == null ? null : (map['clientUdpSessThrottle']! as int).input(),
+      created: map['created'] == null ? null : (map['created']! as String).input(),
+      firewallId: map['firewallId'] == null ? null : (map['firewallId']! as int).input(),
+      firewalls: map['firewalls'] == null ? null : (pulumi.Input.decodeList<NodeBalancerFirewall>(map['firewalls']!, (value) => NodeBalancerFirewall.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      ipv4: map['ipv4'] == null ? null : (map['ipv4']! as String).input(),
+      ipv6: map['ipv6'] == null ? null : (map['ipv6']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      transfers: map['transfers'] == null ? null : (pulumi.Input.decodeList<NodeBalancerTransfer>(map['transfers']!, (value) => NodeBalancerTransfer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updated: map['updated'] == null ? null : (map['updated']! as String).input(),
+      vpcs: map['vpcs'] == null ? null : (pulumi.Input.decodeList<NodeBalancerVpc>(map['vpcs']!, (value) => NodeBalancerVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -41,11 +41,11 @@ class WnsCredentialResponse {
 
   factory WnsCredentialResponse.fromMap(Map<String, dynamic> map) {
     return WnsCredentialResponse(
-      certificateKey: map['certificateKey'] == null ? null : (map['certificateKey'] as String).input(),
-      packageSid: map['packageSid'] == null ? null : (map['packageSid'] as String).input(),
-      secretKey: map['secretKey'] == null ? null : (map['secretKey'] as String).input(),
-      windowsLiveEndpoint: map['windowsLiveEndpoint'] == null ? null : (map['windowsLiveEndpoint'] as String).input(),
-      wnsCertificate: map['wnsCertificate'] == null ? null : (map['wnsCertificate'] as String).input(),
+      certificateKey: map['certificateKey'] == null ? null : (map['certificateKey']! as String).input(),
+      packageSid: map['packageSid'] == null ? null : (map['packageSid']! as String).input(),
+      secretKey: map['secretKey'] == null ? null : (map['secretKey']! as String).input(),
+      windowsLiveEndpoint: map['windowsLiveEndpoint'] == null ? null : (map['windowsLiveEndpoint']! as String).input(),
+      wnsCertificate: map['wnsCertificate'] == null ? null : (map['wnsCertificate']! as String).input(),
     );
   }
 }

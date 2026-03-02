@@ -26,8 +26,8 @@ class MetricRule {
 
   factory MetricRule.fromMap(Map<String, dynamic> map) {
     return MetricRule(
-      metricCosts: map['metricCosts'] == null ? null : ((map['metricCosts'] as Map).cast<String, String>()).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
+      metricCosts: map['metricCosts'] == null ? null : ((map['metricCosts']! as Map).cast<String, String>()).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
     );
   }
 }

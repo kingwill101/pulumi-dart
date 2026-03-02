@@ -66,9 +66,9 @@ class CustomResourceOptions extends ResourceOptions {
 /// {@endtemplate}
 ///
 class CustomResource extends Resource {
-  late Output<String?> id;
-  final Completer<OutputData<String?>> _idCompleter =
-      Completer<OutputData<String?>>();
+  late Output<String> id;
+  final Completer<OutputData<String>> _idCompleter =
+      Completer<OutputData<String>>();
 
   CustomResource(
     String type,
@@ -87,8 +87,8 @@ class CustomResource extends Resource {
          remote: remote,
          dependency: dependency,
          registerPackageRequest: registerPackageRequest,
-       ) {
-    id = Output<String?>(_idCompleter.future);
+      ) {
+    id = Output<String>(_idCompleter.future);
   }
 
   /// Resolves the provider-assigned ID for this resource.
@@ -97,7 +97,7 @@ class CustomResource extends Resource {
       return;
     }
     _idCompleter.complete(
-      OutputData<String?>(
+      OutputData<String>(
         value: value,
         isKnown: isKnown,
         isSecret: false,

@@ -36,10 +36,10 @@ class MLTableJobOutput {
 
   factory MLTableJobOutput.fromMap(Map<String, dynamic> map) {
     return MLTableJobOutput(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       jobOutputType: (map['jobOutputType'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

@@ -25,7 +25,7 @@ class GetTaskExecutionPlacementConstraint {
 
   factory GetTaskExecutionPlacementConstraint.fromMap(Map<String, dynamic> map) {
     return GetTaskExecutionPlacementConstraint(
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
+      expression: map['expression'] == null ? null : ((map['expression'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

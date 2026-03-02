@@ -21,7 +21,7 @@ class ResilientVMCreationPolicy {
 
   factory ResilientVMCreationPolicy.fromMap(Map<String, dynamic> map) {
     return ResilientVMCreationPolicy(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

@@ -85,19 +85,19 @@ class DataDisk {
 
   factory DataDisk.fromMap(Map<String, dynamic> map) {
     return DataDisk(
-      caching: map['caching'] == null ? null : (CachingTypes.fromValue(map['caching'] as String)).input(),
+      caching: map['caching'] == null ? null : (CachingTypes.fromValue(map['caching']! as String)).input(),
       createOption: (map['createOption'] as String).input(),
-      deleteOption: map['deleteOption'] == null ? null : (map['deleteOption'] as String).input(),
-      detachOption: map['detachOption'] == null ? null : (map['detachOption'] as String).input(),
-      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as int).input(),
-      image: map['image'] == null ? null : (VirtualHardDisk.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
+      deleteOption: map['deleteOption'] == null ? null : (map['deleteOption']! as String).input(),
+      detachOption: map['detachOption'] == null ? null : (map['detachOption']! as String).input(),
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB']! as int).input(),
+      image: map['image'] == null ? null : (VirtualHardDisk.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
       lun: (map['lun'] as int).input(),
-      managedDisk: map['managedDisk'] == null ? null : (ManagedDiskParameters.fromMap((map['managedDisk'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sourceResource: map['sourceResource'] == null ? null : (ApiEntityReference.fromMap((map['sourceResource'] as Map).cast<String, dynamic>())).input(),
-      toBeDetached: map['toBeDetached'] == null ? null : (map['toBeDetached'] as bool).input(),
-      vhd: map['vhd'] == null ? null : (VirtualHardDisk.fromMap((map['vhd'] as Map).cast<String, dynamic>())).input(),
-      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled'] as bool).input(),
+      managedDisk: map['managedDisk'] == null ? null : (ManagedDiskParameters.fromMap((map['managedDisk']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sourceResource: map['sourceResource'] == null ? null : (ApiEntityReference.fromMap((map['sourceResource']! as Map).cast<String, dynamic>())).input(),
+      toBeDetached: map['toBeDetached'] == null ? null : (map['toBeDetached']! as bool).input(),
+      vhd: map['vhd'] == null ? null : (VirtualHardDisk.fromMap((map['vhd']! as Map).cast<String, dynamic>())).input(),
+      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled']! as bool).input(),
     );
   }
 }

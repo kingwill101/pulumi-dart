@@ -42,11 +42,11 @@ class LocalDisk {
 
   factory LocalDisk.fromMap(Map<String, dynamic> map) {
     return LocalDisk(
-      initializeParams: map['initializeParams'] == null ? null : (LocalDiskInitializeParams.fromMap((map['initializeParams'] as Map).cast<String, dynamic>())).input(),
-      interface: map['interface'] == null ? null : (map['interface'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      initializeParams: map['initializeParams'] == null ? null : (LocalDiskInitializeParams.fromMap((map['initializeParams']! as Map).cast<String, dynamic>())).input(),
+      interface: map['interface'] == null ? null : (map['interface']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -34,7 +34,7 @@ class NfsSnapshotArgs {
 
   factory NfsSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return NfsSnapshotArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       region: (map['region'] as String).input(),
       shareId: (map['shareId'] as String).input(),
     );

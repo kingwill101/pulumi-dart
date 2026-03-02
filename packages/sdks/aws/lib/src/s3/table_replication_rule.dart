@@ -21,7 +21,7 @@ class TableReplicationRule {
 
   factory TableReplicationRule.fromMap(Map<String, dynamic> map) {
     return TableReplicationRule(
-      destinations: (pulumi.Input.decodeList<TableReplicationRuleDestination>(map['destinations'], (value) => TableReplicationRuleDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinations: (pulumi.Input.decodeList<TableReplicationRuleDestination>(map['destinations']!, (value) => TableReplicationRuleDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

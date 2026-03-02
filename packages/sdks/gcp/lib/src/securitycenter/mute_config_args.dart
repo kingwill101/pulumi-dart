@@ -60,12 +60,12 @@ class MuteConfigArgs {
 
   factory MuteConfigArgs.fromMap(Map<String, dynamic> map) {
     return MuteConfigArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime']! as String).input(),
       filter: (map['filter'] as String).input(),
       muteConfigId: (map['muteConfigId'] as String).input(),
       parent: (map['parent'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

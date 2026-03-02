@@ -63,12 +63,12 @@ class TestMatrixArgs {
 
   factory TestMatrixArgs.fromMap(Map<String, dynamic> map) {
     return TestMatrixArgs(
-      clientInfo: map['clientInfo'] == null ? null : (ClientInfo.fromMap((map['clientInfo'] as Map).cast<String, dynamic>())).input(),
+      clientInfo: map['clientInfo'] == null ? null : (ClientInfo.fromMap((map['clientInfo']! as Map).cast<String, dynamic>())).input(),
       environmentMatrix: (EnvironmentMatrix.fromMap((map['environmentMatrix'] as Map).cast<String, dynamic>())).input(),
-      failFast: map['failFast'] == null ? null : (map['failFast'] as bool).input(),
-      flakyTestAttempts: map['flakyTestAttempts'] == null ? null : (map['flakyTestAttempts'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      failFast: map['failFast'] == null ? null : (map['failFast']! as bool).input(),
+      flakyTestAttempts: map['flakyTestAttempts'] == null ? null : (map['flakyTestAttempts']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       resultStorage: (ResultStorage.fromMap((map['resultStorage'] as Map).cast<String, dynamic>())).input(),
       testSpecification: (TestSpecification.fromMap((map['testSpecification'] as Map).cast<String, dynamic>())).input(),
     );

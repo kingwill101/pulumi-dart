@@ -58,13 +58,13 @@ class CostCategoryArgs {
 
   factory CostCategoryArgs.fromMap(Map<String, dynamic> map) {
     return CostCategoryArgs(
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
-      effectiveStart: map['effectiveStart'] == null ? null : (map['effectiveStart'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      defaultValue: map['defaultValue'] == null ? null : ((map['defaultValue'] as String).input()).input(),
+      effectiveStart: map['effectiveStart'] == null ? null : ((map['effectiveStart'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       ruleVersion: (map['ruleVersion'] as String).input(),
-      rules: (pulumi.Input.decodeList<CostCategoryRule>(map['rules'], (value) => CostCategoryRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      splitChargeRules: map['splitChargeRules'] == null ? null : (pulumi.Input.decodeList<CostCategorySplitChargeRule>(map['splitChargeRules'], (value) => CostCategorySplitChargeRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      rules: (pulumi.Input.decodeList<CostCategoryRule>(map['rules']!, (value) => CostCategoryRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      splitChargeRules: map['splitChargeRules'] == null ? null : ((pulumi.Input.decodeList<CostCategorySplitChargeRule>(map['splitChargeRules']!, (value) => CostCategorySplitChargeRule.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

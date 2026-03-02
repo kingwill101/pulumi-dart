@@ -21,7 +21,7 @@ class BareMetalSrIovConfig {
 
   factory BareMetalSrIovConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalSrIovConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

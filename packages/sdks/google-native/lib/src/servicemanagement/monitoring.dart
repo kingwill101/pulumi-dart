@@ -27,8 +27,8 @@ class Monitoring {
 
   factory Monitoring.fromMap(Map<String, dynamic> map) {
     return Monitoring(
-      consumerDestinations: map['consumerDestinations'] == null ? null : (pulumi.Input.decodeList<MonitoringDestination>(map['consumerDestinations'], (value) => MonitoringDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      producerDestinations: map['producerDestinations'] == null ? null : (pulumi.Input.decodeList<MonitoringDestination>(map['producerDestinations'], (value) => MonitoringDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      consumerDestinations: map['consumerDestinations'] == null ? null : (pulumi.Input.decodeList<MonitoringDestination>(map['consumerDestinations']!, (value) => MonitoringDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      producerDestinations: map['producerDestinations'] == null ? null : (pulumi.Input.decodeList<MonitoringDestination>(map['producerDestinations']!, (value) => MonitoringDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

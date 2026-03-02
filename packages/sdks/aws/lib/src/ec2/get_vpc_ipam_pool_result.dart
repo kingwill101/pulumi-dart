@@ -131,7 +131,7 @@ class GetVpcIpamPoolResult {
       autoImport: map['autoImport'] as bool,
       awsService: map['awsService'] as String,
       description: map['description'] as String,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVpcIpamPoolFilter>(map['filters'], (value) => GetVpcIpamPoolFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVpcIpamPoolFilter>(map['filters']!, (value) => GetVpcIpamPoolFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] == null ? null : map['id'] as String,
       ipamPoolId: map['ipamPoolId'] == null ? null : map['ipamPoolId'] as String,
       ipamScopeId: map['ipamScopeId'] as String,
@@ -141,7 +141,7 @@ class GetVpcIpamPoolResult {
       publiclyAdvertisable: map['publiclyAdvertisable'] as bool,
       region: map['region'] as String,
       sourceIpamPoolId: map['sourceIpamPoolId'] as String,
-      sourceResources: pulumi.Input.decodeList<GetVpcIpamPoolSourceResource>(map['sourceResources'], (value) => GetVpcIpamPoolSourceResource.fromMap((value as Map).cast<String, dynamic>())),
+      sourceResources: pulumi.Input.decodeList<GetVpcIpamPoolSourceResource>(map['sourceResources']!, (value) => GetVpcIpamPoolSourceResource.fromMap((value as Map).cast<String, dynamic>())),
       state: map['state'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );

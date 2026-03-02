@@ -26,8 +26,8 @@ class ConnectionConfirmationState {
 
   factory ConnectionConfirmationState.fromMap(Map<String, dynamic> map) {
     return ConnectionConfirmationState(
-      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      connectionId: map['connectionId'] == null ? null : ((map['connectionId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -39,8 +39,8 @@ class DeliveryRuleResponse {
   factory DeliveryRuleResponse.fromMap(Map<String, dynamic> map) {
     return DeliveryRuleResponse(
       actions: (pulumi.Input.decodeList<DeliveryRuleCacheExpirationActionResponse>(map['actions'], (value) => DeliveryRuleCacheExpirationActionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<DeliveryRuleClientPortConditionResponse>(map['conditions'], (value) => DeliveryRuleClientPortConditionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<DeliveryRuleClientPortConditionResponse>(map['conditions']!, (value) => DeliveryRuleClientPortConditionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       order: (map['order'] as int).input(),
     );
   }

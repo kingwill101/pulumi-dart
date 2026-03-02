@@ -23,8 +23,8 @@ class StorageSpacesPropertiesResponseError {
 
   factory StorageSpacesPropertiesResponseError.fromMap(Map<String, dynamic> map) {
     return StorageSpacesPropertiesResponseError(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

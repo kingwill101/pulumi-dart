@@ -28,8 +28,8 @@ class CloudServiceVaultSecretGroup {
 
   factory CloudServiceVaultSecretGroup.fromMap(Map<String, dynamic> map) {
     return CloudServiceVaultSecretGroup(
-      sourceVault: map['sourceVault'] == null ? null : (SubResource.fromMap((map['sourceVault'] as Map).cast<String, dynamic>())).input(),
-      vaultCertificates: map['vaultCertificates'] == null ? null : (pulumi.Input.decodeList<CloudServiceVaultCertificate>(map['vaultCertificates'], (value) => CloudServiceVaultCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceVault: map['sourceVault'] == null ? null : (SubResource.fromMap((map['sourceVault']! as Map).cast<String, dynamic>())).input(),
+      vaultCertificates: map['vaultCertificates'] == null ? null : (pulumi.Input.decodeList<CloudServiceVaultCertificate>(map['vaultCertificates']!, (value) => CloudServiceVaultCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

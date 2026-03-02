@@ -82,18 +82,18 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      ingestionStorage: map['ingestionStorage'] == null ? null : (IngestionStorage.fromMap((map['ingestionStorage'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedEventHubState: map['managedEventHubState'] == null ? null : (map['managedEventHubState'] as String).input(),
-      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : (map['managedResourceGroupName'] as String).input(),
-      managedResourcesPublicNetworkAccess: map['managedResourcesPublicNetworkAccess'] == null ? null : (map['managedResourcesPublicNetworkAccess'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      ingestionStorage: map['ingestionStorage'] == null ? null : (IngestionStorage.fromMap((map['ingestionStorage']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedEventHubState: map['managedEventHubState'] == null ? null : (map['managedEventHubState']! as String).input(),
+      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : (map['managedResourceGroupName']! as String).input(),
+      managedResourcesPublicNetworkAccess: map['managedResourcesPublicNetworkAccess'] == null ? null : (map['managedResourcesPublicNetworkAccess']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (AccountSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tenantEndpointState: map['tenantEndpointState'] == null ? null : (map['tenantEndpointState'] as String).input(),
+      sku: map['sku'] == null ? null : (AccountSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tenantEndpointState: map['tenantEndpointState'] == null ? null : (map['tenantEndpointState']! as String).input(),
     );
   }
 }

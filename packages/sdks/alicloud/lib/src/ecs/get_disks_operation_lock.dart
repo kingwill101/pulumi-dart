@@ -19,7 +19,7 @@ class GetDisksOperationLock {
 
   factory GetDisksOperationLock.fromMap(Map<String, dynamic> map) {
     return GetDisksOperationLock(
-      lockReason: map['lockReason'] == null ? null : (map['lockReason'] as String).input(),
+      lockReason: map['lockReason'] == null ? null : (map['lockReason']! as String).input(),
     );
   }
 }

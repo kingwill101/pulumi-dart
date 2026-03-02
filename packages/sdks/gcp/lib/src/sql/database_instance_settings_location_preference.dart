@@ -32,9 +32,9 @@ class DatabaseInstanceSettingsLocationPreference {
 
   factory DatabaseInstanceSettingsLocationPreference.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsLocationPreference(
-      followGaeApplication: map['followGaeApplication'] == null ? null : (map['followGaeApplication'] as String).input(),
-      secondaryZone: map['secondaryZone'] == null ? null : (map['secondaryZone'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      followGaeApplication: map['followGaeApplication'] == null ? null : (map['followGaeApplication']! as String).input(),
+      secondaryZone: map['secondaryZone'] == null ? null : (map['secondaryZone']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

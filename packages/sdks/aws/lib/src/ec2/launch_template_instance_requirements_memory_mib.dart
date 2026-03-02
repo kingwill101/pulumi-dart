@@ -25,7 +25,7 @@ class LaunchTemplateInstanceRequirementsMemoryMib {
 
   factory LaunchTemplateInstanceRequirementsMemoryMib.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateInstanceRequirementsMemoryMib(
-      max: map['max'] == null ? null : (map['max'] as int).input(),
+      max: map['max'] == null ? null : ((map['max'] as int).input()).input(),
       min: (map['min'] as int).input(),
     );
   }

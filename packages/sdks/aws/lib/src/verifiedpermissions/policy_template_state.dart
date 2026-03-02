@@ -48,12 +48,12 @@ class PolicyTemplateState {
 
   factory PolicyTemplateState.fromMap(Map<String, dynamic> map) {
     return PolicyTemplateState(
-      createdDate: map['createdDate'] == null ? null : (map['createdDate'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      policyStoreId: map['policyStoreId'] == null ? null : (map['policyStoreId'] as String).input(),
-      policyTemplateId: map['policyTemplateId'] == null ? null : (map['policyTemplateId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      statement: map['statement'] == null ? null : (map['statement'] as String).input(),
+      createdDate: map['createdDate'] == null ? null : ((map['createdDate'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      policyStoreId: map['policyStoreId'] == null ? null : ((map['policyStoreId'] as String).input()).input(),
+      policyTemplateId: map['policyTemplateId'] == null ? null : ((map['policyTemplateId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      statement: map['statement'] == null ? null : ((map['statement'] as String).input()).input(),
     );
   }
 }

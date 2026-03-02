@@ -40,11 +40,11 @@ class WafRuleConfigActionsBypass {
 
   factory WafRuleConfigActionsBypass.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigActionsBypass(
-      customRules: map['customRules'] == null ? null : ((map['customRules'] as List).cast<int>()).input(),
-      regularRules: map['regularRules'] == null ? null : ((map['regularRules'] as List).cast<int>()).input(),
-      regularTypes: map['regularTypes'] == null ? null : ((map['regularTypes'] as List).cast<String>()).input(),
-      skip: map['skip'] == null ? null : (map['skip'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      customRules: map['customRules'] == null ? null : ((map['customRules']! as List).cast<int>()).input(),
+      regularRules: map['regularRules'] == null ? null : ((map['regularRules']! as List).cast<int>()).input(),
+      regularTypes: map['regularTypes'] == null ? null : ((map['regularTypes']! as List).cast<String>()).input(),
+      skip: map['skip'] == null ? null : (map['skip']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
     );
   }
 }

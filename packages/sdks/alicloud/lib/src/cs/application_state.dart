@@ -61,17 +61,17 @@ class ApplicationState {
 
   factory ApplicationState.fromMap(Map<String, dynamic> map) {
     return ApplicationState(
-      blueGreen: map['blueGreen'] == null ? null : (map['blueGreen'] as bool).input(),
-      blueGreenConfirm: map['blueGreenConfirm'] == null ? null : (map['blueGreenConfirm'] as bool).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      defaultDomain: map['defaultDomain'] == null ? null : (map['defaultDomain'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      environment: map['environment'] == null ? null : ((map['environment'] as Map).cast<String, String>()).input(),
-      latestImage: map['latestImage'] == null ? null : (map['latestImage'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      services: map['services'] == null ? null : (pulumi.Input.decodeList<ApplicationService>(map['services'], (value) => ApplicationService.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      template: map['template'] == null ? null : (map['template'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      blueGreen: map['blueGreen'] == null ? null : (map['blueGreen']! as bool).input(),
+      blueGreenConfirm: map['blueGreenConfirm'] == null ? null : (map['blueGreenConfirm']! as bool).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      defaultDomain: map['defaultDomain'] == null ? null : (map['defaultDomain']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      environment: map['environment'] == null ? null : ((map['environment']! as Map).cast<String, String>()).input(),
+      latestImage: map['latestImage'] == null ? null : (map['latestImage']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      services: map['services'] == null ? null : (pulumi.Input.decodeList<ApplicationService>(map['services']!, (value) => ApplicationService.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      template: map['template'] == null ? null : (map['template']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

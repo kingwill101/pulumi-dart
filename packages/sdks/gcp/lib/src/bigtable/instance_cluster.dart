@@ -69,14 +69,14 @@ class InstanceCluster {
 
   factory InstanceCluster.fromMap(Map<String, dynamic> map) {
     return InstanceCluster(
-      autoscalingConfig: map['autoscalingConfig'] == null ? null : (InstanceClusterAutoscalingConfig.fromMap((map['autoscalingConfig'] as Map).cast<String, dynamic>())).input(),
+      autoscalingConfig: map['autoscalingConfig'] == null ? null : (InstanceClusterAutoscalingConfig.fromMap((map['autoscalingConfig']! as Map).cast<String, dynamic>())).input(),
       clusterId: (map['clusterId'] as String).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      nodeScalingFactor: map['nodeScalingFactor'] == null ? null : (map['nodeScalingFactor'] as String).input(),
-      numNodes: map['numNodes'] == null ? null : (map['numNodes'] as int).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      nodeScalingFactor: map['nodeScalingFactor'] == null ? null : (map['nodeScalingFactor']! as String).input(),
+      numNodes: map['numNodes'] == null ? null : (map['numNodes']! as int).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      storageType: map['storageType'] == null ? null : (map['storageType']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

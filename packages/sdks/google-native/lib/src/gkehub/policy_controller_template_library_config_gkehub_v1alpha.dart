@@ -22,7 +22,7 @@ class PolicyControllerTemplateLibraryConfigGkehubV1alpha {
 
   factory PolicyControllerTemplateLibraryConfigGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return PolicyControllerTemplateLibraryConfigGkehubV1alpha(
-      installation: map['installation'] == null ? null : (PolicyControllerTemplateLibraryConfigInstallationGkehubV1alpha.fromValue(map['installation'] as String)).input(),
+      installation: map['installation'] == null ? null : (PolicyControllerTemplateLibraryConfigInstallationGkehubV1alpha.fromValue(map['installation']! as String)).input(),
     );
   }
 }

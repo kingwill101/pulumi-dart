@@ -55,13 +55,13 @@ class Type {
 
   factory Type.fromMap(Map<String, dynamic> map) {
     return Type(
-      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
-      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<Field>(map['fields'], (value) => Field.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      oneofs: map['oneofs'] == null ? null : ((map['oneofs'] as List).cast<String>()).input(),
-      options: map['options'] == null ? null : (pulumi.Input.decodeList<Option>(map['options'], (value) => Option.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceContext: map['sourceContext'] == null ? null : (SourceContext.fromMap((map['sourceContext'] as Map).cast<String, dynamic>())).input(),
-      syntax: map['syntax'] == null ? null : (TypeSyntax.fromValue(map['syntax'] as String)).input(),
+      edition: map['edition'] == null ? null : (map['edition']! as String).input(),
+      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<Field>(map['fields']!, (value) => Field.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      oneofs: map['oneofs'] == null ? null : ((map['oneofs']! as List).cast<String>()).input(),
+      options: map['options'] == null ? null : (pulumi.Input.decodeList<Option>(map['options']!, (value) => Option.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceContext: map['sourceContext'] == null ? null : (SourceContext.fromMap((map['sourceContext']! as Map).cast<String, dynamic>())).input(),
+      syntax: map['syntax'] == null ? null : (TypeSyntax.fromValue(map['syntax']! as String)).input(),
     );
   }
 }

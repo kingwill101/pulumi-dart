@@ -44,8 +44,8 @@ class OriginAccessControlArgs {
 
   factory OriginAccessControlArgs.fromMap(Map<String, dynamic> map) {
     return OriginAccessControlArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       originAccessControlOriginType: (map['originAccessControlOriginType'] as String).input(),
       signingBehavior: (map['signingBehavior'] as String).input(),
       signingProtocol: (map['signingProtocol'] as String).input(),

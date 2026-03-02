@@ -45,11 +45,11 @@ class BuildOccurrence {
 
   factory BuildOccurrence.fromMap(Map<String, dynamic> map) {
     return BuildOccurrence(
-      inTotoSlsaProvenanceV1: map['inTotoSlsaProvenanceV1'] == null ? null : (InTotoSlsaProvenanceV1.fromMap((map['inTotoSlsaProvenanceV1'] as Map).cast<String, dynamic>())).input(),
-      intotoProvenance: map['intotoProvenance'] == null ? null : (InTotoProvenance.fromMap((map['intotoProvenance'] as Map).cast<String, dynamic>())).input(),
-      intotoStatement: map['intotoStatement'] == null ? null : (InTotoStatement.fromMap((map['intotoStatement'] as Map).cast<String, dynamic>())).input(),
-      provenance: map['provenance'] == null ? null : (BuildProvenance.fromMap((map['provenance'] as Map).cast<String, dynamic>())).input(),
-      provenanceBytes: map['provenanceBytes'] == null ? null : (map['provenanceBytes'] as String).input(),
+      inTotoSlsaProvenanceV1: map['inTotoSlsaProvenanceV1'] == null ? null : (InTotoSlsaProvenanceV1.fromMap((map['inTotoSlsaProvenanceV1']! as Map).cast<String, dynamic>())).input(),
+      intotoProvenance: map['intotoProvenance'] == null ? null : (InTotoProvenance.fromMap((map['intotoProvenance']! as Map).cast<String, dynamic>())).input(),
+      intotoStatement: map['intotoStatement'] == null ? null : (InTotoStatement.fromMap((map['intotoStatement']! as Map).cast<String, dynamic>())).input(),
+      provenance: map['provenance'] == null ? null : (BuildProvenance.fromMap((map['provenance']! as Map).cast<String, dynamic>())).input(),
+      provenanceBytes: map['provenanceBytes'] == null ? null : (map['provenanceBytes']! as String).input(),
     );
   }
 }

@@ -63,15 +63,15 @@ class EventHub {
 
   factory EventHub.fromMap(Map<String, dynamic> map) {
     return EventHub(
-      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
-      connectionStringPrimaryKey: map['connectionStringPrimaryKey'] == null ? null : (map['connectionStringPrimaryKey'] as String).input(),
-      connectionStringSecondaryKey: map['connectionStringSecondaryKey'] == null ? null : (map['connectionStringSecondaryKey'] as String).input(),
-      deadLetterSecret: map['deadLetterSecret'] == null ? null : (map['deadLetterSecret'] as String).input(),
-      deadLetterUri: map['deadLetterUri'] == null ? null : (map['deadLetterUri'] as String).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType']! as String).input(),
+      connectionStringPrimaryKey: map['connectionStringPrimaryKey'] == null ? null : (map['connectionStringPrimaryKey']! as String).input(),
+      connectionStringSecondaryKey: map['connectionStringSecondaryKey'] == null ? null : (map['connectionStringSecondaryKey']! as String).input(),
+      deadLetterSecret: map['deadLetterSecret'] == null ? null : (map['deadLetterSecret']! as String).input(),
+      deadLetterUri: map['deadLetterUri'] == null ? null : (map['deadLetterUri']! as String).input(),
       endpointType: (map['endpointType'] as String).input(),
-      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri'] as String).input(),
-      entityPath: map['entityPath'] == null ? null : (map['entityPath'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedIdentityReference.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri']! as String).input(),
+      entityPath: map['entityPath'] == null ? null : (map['entityPath']! as String).input(),
+      identity: map['identity'] == null ? null : (ManagedIdentityReference.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -65,11 +65,11 @@ class LakeIamBindingArgs {
 
   factory LakeIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return LakeIamBindingArgs(
-      condition: map['condition'] == null ? null : (LakeIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (LakeIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       lake: (map['lake'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       members: ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

@@ -89,7 +89,7 @@ class GetDockerImageResult {
       location: map['location'] as String,
       mediaType: map['mediaType'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       repositoryId: map['repositoryId'] as String,
       selfLink: map['selfLink'] as String,
       tags: (map['tags'] as List).cast<String>(),

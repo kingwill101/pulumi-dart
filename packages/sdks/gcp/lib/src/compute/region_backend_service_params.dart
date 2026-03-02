@@ -22,7 +22,7 @@ class RegionBackendServiceParams {
 
   factory RegionBackendServiceParams.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceParams(
-      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags'] as Map).cast<String, String>()).input(),
+      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class AdvancedSettingsResponse {
 
   factory AdvancedSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AdvancedSettingsResponse(
-      clients: map['clients'] == null ? null : (ClientConfigResponse.fromMap((map['clients'] as Map).cast<String, dynamic>())).input(),
-      encryptInternalTraffic: map['encryptInternalTraffic'] == null ? null : (map['encryptInternalTraffic'] as String).input(),
-      internalCerts: map['internalCerts'] == null ? null : (CertManagerCertOptionsResponse.fromMap((map['internalCerts'] as Map).cast<String, dynamic>())).input(),
+      clients: map['clients'] == null ? null : (ClientConfigResponse.fromMap((map['clients']! as Map).cast<String, dynamic>())).input(),
+      encryptInternalTraffic: map['encryptInternalTraffic'] == null ? null : (map['encryptInternalTraffic']! as String).input(),
+      internalCerts: map['internalCerts'] == null ? null : (CertManagerCertOptionsResponse.fromMap((map['internalCerts']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -43,9 +43,9 @@ class BaseImageTrigger {
     return BaseImageTrigger(
       baseImageTriggerType: (map['baseImageTriggerType'] as String).input(),
       name: (map['name'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      updateTriggerEndpoint: map['updateTriggerEndpoint'] == null ? null : (map['updateTriggerEndpoint'] as String).input(),
-      updateTriggerPayloadType: map['updateTriggerPayloadType'] == null ? null : (map['updateTriggerPayloadType'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      updateTriggerEndpoint: map['updateTriggerEndpoint'] == null ? null : (map['updateTriggerEndpoint']! as String).input(),
+      updateTriggerPayloadType: map['updateTriggerPayloadType'] == null ? null : (map['updateTriggerPayloadType']! as String).input(),
     );
   }
 }

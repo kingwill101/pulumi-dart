@@ -44,9 +44,9 @@ class NetworkManagerRoutingRuleCollectionArgs {
 
   factory NetworkManagerRoutingRuleCollectionArgs.fromMap(Map<String, dynamic> map) {
     return NetworkManagerRoutingRuleCollectionArgs(
-      bgpRoutePropagationEnabled: map['bgpRoutePropagationEnabled'] == null ? null : (map['bgpRoutePropagationEnabled'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      bgpRoutePropagationEnabled: map['bgpRoutePropagationEnabled'] == null ? null : (map['bgpRoutePropagationEnabled']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networkGroupIds: ((map['networkGroupIds'] as List).cast<String>()).input(),
       routingConfigurationId: (map['routingConfigurationId'] as String).input(),
     );

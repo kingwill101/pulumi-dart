@@ -35,10 +35,10 @@ class AlarmPrometheus {
 
   factory AlarmPrometheus.fromMap(Map<String, dynamic> map) {
     return AlarmPrometheus(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      level: map['level'] == null ? null : (map['level'] as String).input(),
-      promQl: map['promQl'] == null ? null : (map['promQl'] as String).input(),
-      times: map['times'] == null ? null : (map['times'] as int).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      level: map['level'] == null ? null : (map['level']! as String).input(),
+      promQl: map['promQl'] == null ? null : (map['promQl']! as String).input(),
+      times: map['times'] == null ? null : (map['times']! as int).input(),
     );
   }
 }

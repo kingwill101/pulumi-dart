@@ -32,9 +32,9 @@ class AuditLogConfigComputeV1 {
 
   factory AuditLogConfigComputeV1.fromMap(Map<String, dynamic> map) {
     return AuditLogConfigComputeV1(
-      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers'] as List).cast<String>()).input(),
-      ignoreChildExemptions: map['ignoreChildExemptions'] == null ? null : (map['ignoreChildExemptions'] as bool).input(),
-      logType: map['logType'] == null ? null : (AuditLogConfigLogTypeComputeV1.fromValue(map['logType'] as String)).input(),
+      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers']! as List).cast<String>()).input(),
+      ignoreChildExemptions: map['ignoreChildExemptions'] == null ? null : (map['ignoreChildExemptions']! as bool).input(),
+      logType: map['logType'] == null ? null : (AuditLogConfigLogTypeComputeV1.fromValue(map['logType']! as String)).input(),
     );
   }
 }

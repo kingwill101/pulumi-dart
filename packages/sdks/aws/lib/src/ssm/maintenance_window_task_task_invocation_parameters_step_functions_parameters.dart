@@ -25,8 +25,8 @@ class MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters {
 
   factory MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters(
-      input: map['input'] == null ? null : (map['input'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      input: map['input'] == null ? null : ((map['input'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class InstanceAttachmentEnaSrdSpecificationResponse {
 
   factory InstanceAttachmentEnaSrdSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return InstanceAttachmentEnaSrdSpecificationResponse(
-      enaSrdEnabled: map['enaSrdEnabled'] == null ? null : (map['enaSrdEnabled'] as bool).input(),
-      enaSrdUdpSpecification: map['enaSrdUdpSpecification'] == null ? null : (InstanceAttachmentEnaSrdUdpSpecificationResponse.fromMap((map['enaSrdUdpSpecification'] as Map).cast<String, dynamic>())).input(),
+      enaSrdEnabled: map['enaSrdEnabled'] == null ? null : (map['enaSrdEnabled']! as bool).input(),
+      enaSrdUdpSpecification: map['enaSrdUdpSpecification'] == null ? null : (InstanceAttachmentEnaSrdUdpSpecificationResponse.fromMap((map['enaSrdUdpSpecification']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -29,7 +29,7 @@ class ResourceGroupArgs {
 
   factory ResourceGroupArgs.fromMap(Map<String, dynamic> map) {
     return ResourceGroupArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       tags: ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }

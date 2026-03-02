@@ -60,12 +60,12 @@ class NetworkPeeringRoutesConfigArgs {
   factory NetworkPeeringRoutesConfigArgs.fromMap(Map<String, dynamic> map) {
     return NetworkPeeringRoutesConfigArgs(
       exportCustomRoutes: (map['exportCustomRoutes'] as bool).input(),
-      exportSubnetRoutesWithPublicIp: map['exportSubnetRoutesWithPublicIp'] == null ? null : (map['exportSubnetRoutesWithPublicIp'] as bool).input(),
+      exportSubnetRoutesWithPublicIp: map['exportSubnetRoutesWithPublicIp'] == null ? null : (map['exportSubnetRoutesWithPublicIp']! as bool).input(),
       importCustomRoutes: (map['importCustomRoutes'] as bool).input(),
-      importSubnetRoutesWithPublicIp: map['importSubnetRoutesWithPublicIp'] == null ? null : (map['importSubnetRoutesWithPublicIp'] as bool).input(),
+      importSubnetRoutesWithPublicIp: map['importSubnetRoutesWithPublicIp'] == null ? null : (map['importSubnetRoutesWithPublicIp']! as bool).input(),
       network: (map['network'] as String).input(),
       peering: (map['peering'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class SqlAvailabilityGroupDatabaseReplicaResourceProperties {
 
   factory SqlAvailabilityGroupDatabaseReplicaResourceProperties.fromMap(Map<String, dynamic> map) {
     return SqlAvailabilityGroupDatabaseReplicaResourceProperties(
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
     );
   }
 }

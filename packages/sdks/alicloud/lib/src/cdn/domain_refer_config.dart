@@ -27,9 +27,9 @@ class DomainReferConfig {
 
   factory DomainReferConfig.fromMap(Map<String, dynamic> map) {
     return DomainReferConfig(
-      allowEmpty: map['allowEmpty'] == null ? null : (map['allowEmpty'] as String).input(),
+      allowEmpty: map['allowEmpty'] == null ? null : (map['allowEmpty']! as String).input(),
       referLists: ((map['referLists'] as List).cast<String>()).input(),
-      referType: map['referType'] == null ? null : (map['referType'] as String).input(),
+      referType: map['referType'] == null ? null : (map['referType']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class NodeGroupRemoteAccess {
 
   factory NodeGroupRemoteAccess.fromMap(Map<String, dynamic> map) {
     return NodeGroupRemoteAccess(
-      ec2SshKey: map['ec2SshKey'] == null ? null : (map['ec2SshKey'] as String).input(),
-      sourceSecurityGroupIds: map['sourceSecurityGroupIds'] == null ? null : ((map['sourceSecurityGroupIds'] as List).cast<String>()).input(),
+      ec2SshKey: map['ec2SshKey'] == null ? null : ((map['ec2SshKey'] as String).input()).input(),
+      sourceSecurityGroupIds: map['sourceSecurityGroupIds'] == null ? null : (((map['sourceSecurityGroupIds'] as List).cast<String>()).input()).input(),
     );
   }
 }

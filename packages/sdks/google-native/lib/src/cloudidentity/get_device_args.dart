@@ -27,7 +27,7 @@ class GetDeviceArgs {
 
   factory GetDeviceArgs.fromMap(Map<String, dynamic> map) {
     return GetDeviceArgs(
-      customer: map['customer'] == null ? null : (map['customer'] as String).input(),
+      customer: map['customer'] == null ? null : (map['customer']! as String).input(),
       deviceId: (map['deviceId'] as String).input(),
     );
   }

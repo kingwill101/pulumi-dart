@@ -63,14 +63,14 @@ class DedicatedPropreHostEcsClassList {
 
   factory DedicatedPropreHostEcsClassList.fromMap(Map<String, dynamic> map) {
     return DedicatedPropreHostEcsClassList(
-      dataDiskPerformanceLevel: map['dataDiskPerformanceLevel'] == null ? null : (map['dataDiskPerformanceLevel'] as String).input(),
-      diskCapacity: map['diskCapacity'] == null ? null : (map['diskCapacity'] as int).input(),
-      diskCount: map['diskCount'] == null ? null : (map['diskCount'] as int).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
+      dataDiskPerformanceLevel: map['dataDiskPerformanceLevel'] == null ? null : (map['dataDiskPerformanceLevel']! as String).input(),
+      diskCapacity: map['diskCapacity'] == null ? null : (map['diskCapacity']! as int).input(),
+      diskCount: map['diskCount'] == null ? null : (map['diskCount']! as int).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
       instanceType: (map['instanceType'] as String).input(),
       sysDiskCapacity: (map['sysDiskCapacity'] as int).input(),
       sysDiskType: (map['sysDiskType'] as String).input(),
-      systemDiskPerformanceLevel: map['systemDiskPerformanceLevel'] == null ? null : (map['systemDiskPerformanceLevel'] as String).input(),
+      systemDiskPerformanceLevel: map['systemDiskPerformanceLevel'] == null ? null : (map['systemDiskPerformanceLevel']! as String).input(),
     );
   }
 }

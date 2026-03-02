@@ -33,7 +33,7 @@ class GetIdentityAwareProxyClientArgs {
     return GetIdentityAwareProxyClientArgs(
       brandId: (map['brandId'] as String).input(),
       identityAwareProxyClientId: (map['identityAwareProxyClientId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

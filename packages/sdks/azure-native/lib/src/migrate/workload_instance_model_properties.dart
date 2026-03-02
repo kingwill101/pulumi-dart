@@ -52,13 +52,13 @@ class WorkloadInstanceModelProperties {
 
   factory WorkloadInstanceModelProperties.fromMap(Map<String, dynamic> map) {
     return WorkloadInstanceModelProperties(
-      customProperties: map['customProperties'] == null ? null : (ApacheTomcatWorkloadInstanceModelCustomProperties.fromMap((map['customProperties'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      masterSiteName: map['masterSiteName'] == null ? null : (map['masterSiteName'] as String).input(),
-      migrateAgentId: map['migrateAgentId'] == null ? null : (map['migrateAgentId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sourceName: map['sourceName'] == null ? null : (map['sourceName'] as String).input(),
-      sourcePlatform: map['sourcePlatform'] == null ? null : (map['sourcePlatform'] as String).input(),
+      customProperties: map['customProperties'] == null ? null : (ApacheTomcatWorkloadInstanceModelCustomProperties.fromMap((map['customProperties']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      masterSiteName: map['masterSiteName'] == null ? null : (map['masterSiteName']! as String).input(),
+      migrateAgentId: map['migrateAgentId'] == null ? null : (map['migrateAgentId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sourceName: map['sourceName'] == null ? null : (map['sourceName']! as String).input(),
+      sourcePlatform: map['sourcePlatform'] == null ? null : (map['sourcePlatform']! as String).input(),
     );
   }
 }

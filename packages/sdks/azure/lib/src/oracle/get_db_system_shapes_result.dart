@@ -38,7 +38,7 @@ class GetDbSystemShapesResult {
       dbSystemShapes: pulumi.Input.decodeList<GetDbSystemShapesDbSystemShape>(map['dbSystemShapes'], (value) => GetDbSystemShapesDbSystemShape.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       location: map['location'] as String,
-      zone: map['zone'] == null ? null : map['zone'] as String,
+      zone: map['zone'] == null ? null : map['zone']! as String,
     );
   }
 }

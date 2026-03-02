@@ -26,8 +26,8 @@ class ApigatewayApiConfigFileApigatewayV1beta {
 
   factory ApigatewayApiConfigFileApigatewayV1beta.fromMap(Map<String, dynamic> map) {
     return ApigatewayApiConfigFileApigatewayV1beta(
-      contents: map['contents'] == null ? null : (map['contents'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      contents: map['contents'] == null ? null : (map['contents']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

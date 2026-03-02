@@ -31,9 +31,9 @@ class BigTableIODetails {
 
   factory BigTableIODetails.fromMap(Map<String, dynamic> map) {
     return BigTableIODetails(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      tableId: map['tableId'] == null ? null : (map['tableId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      tableId: map['tableId'] == null ? null : (map['tableId']! as String).input(),
     );
   }
 }

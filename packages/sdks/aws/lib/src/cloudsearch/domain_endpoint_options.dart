@@ -25,8 +25,8 @@ class DomainEndpointOptions {
 
   factory DomainEndpointOptions.fromMap(Map<String, dynamic> map) {
     return DomainEndpointOptions(
-      enforceHttps: map['enforceHttps'] == null ? null : (map['enforceHttps'] as bool).input(),
-      tlsSecurityPolicy: map['tlsSecurityPolicy'] == null ? null : (map['tlsSecurityPolicy'] as String).input(),
+      enforceHttps: map['enforceHttps'] == null ? null : ((map['enforceHttps'] as bool).input()).input(),
+      tlsSecurityPolicy: map['tlsSecurityPolicy'] == null ? null : ((map['tlsSecurityPolicy'] as String).input()).input(),
     );
   }
 }

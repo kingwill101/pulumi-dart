@@ -32,10 +32,10 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack {
 
   factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack(
-      accessToken: map['accessToken'] == null ? null : (map['accessToken'] as String).input(),
+      accessToken: map['accessToken'] == null ? null : ((map['accessToken'] as String).input()).input(),
       clientId: (map['clientId'] as String).input(),
       clientSecret: (map['clientSecret'] as String).input(),
-      oauthRequest: map['oauthRequest'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlackOauthRequest.fromMap((map['oauthRequest'] as Map).cast<String, dynamic>())).input(),
+      oauthRequest: map['oauthRequest'] == null ? null : ((ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlackOauthRequest.fromMap((map['oauthRequest']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

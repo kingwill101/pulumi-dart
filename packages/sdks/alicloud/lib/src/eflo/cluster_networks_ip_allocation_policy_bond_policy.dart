@@ -26,8 +26,8 @@ class ClusterNetworksIpAllocationPolicyBondPolicy {
 
   factory ClusterNetworksIpAllocationPolicyBondPolicy.fromMap(Map<String, dynamic> map) {
     return ClusterNetworksIpAllocationPolicyBondPolicy(
-      bondDefaultSubnet: map['bondDefaultSubnet'] == null ? null : (map['bondDefaultSubnet'] as String).input(),
-      bonds: map['bonds'] == null ? null : (pulumi.Input.decodeList<ClusterNetworksIpAllocationPolicyBondPolicyBond>(map['bonds'], (value) => ClusterNetworksIpAllocationPolicyBondPolicyBond.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bondDefaultSubnet: map['bondDefaultSubnet'] == null ? null : (map['bondDefaultSubnet']! as String).input(),
+      bonds: map['bonds'] == null ? null : (pulumi.Input.decodeList<ClusterNetworksIpAllocationPolicyBondPolicyBond>(map['bonds']!, (value) => ClusterNetworksIpAllocationPolicyBondPolicyBond.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

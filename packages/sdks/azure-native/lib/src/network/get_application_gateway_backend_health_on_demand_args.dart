@@ -77,16 +77,16 @@ class GetApplicationGatewayBackendHealthOnDemandArgs {
   factory GetApplicationGatewayBackendHealthOnDemandArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayBackendHealthOnDemandArgs(
       applicationGatewayName: (map['applicationGatewayName'] as String).input(),
-      backendAddressPool: map['backendAddressPool'] == null ? null : (SubResource.fromMap((map['backendAddressPool'] as Map).cast<String, dynamic>())).input(),
-      backendHttpSettings: map['backendHttpSettings'] == null ? null : (SubResource.fromMap((map['backendHttpSettings'] as Map).cast<String, dynamic>())).input(),
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      match: map['match'] == null ? null : (ApplicationGatewayProbeHealthResponseMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      pickHostNameFromBackendHttpSettings: map['pickHostNameFromBackendHttpSettings'] == null ? null : (map['pickHostNameFromBackendHttpSettings'] as bool).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      backendAddressPool: map['backendAddressPool'] == null ? null : (SubResource.fromMap((map['backendAddressPool']! as Map).cast<String, dynamic>())).input(),
+      backendHttpSettings: map['backendHttpSettings'] == null ? null : (SubResource.fromMap((map['backendHttpSettings']! as Map).cast<String, dynamic>())).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      match: map['match'] == null ? null : (ApplicationGatewayProbeHealthResponseMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      pickHostNameFromBackendHttpSettings: map['pickHostNameFromBackendHttpSettings'] == null ? null : (map['pickHostNameFromBackendHttpSettings']! as bool).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
     );
   }
 }

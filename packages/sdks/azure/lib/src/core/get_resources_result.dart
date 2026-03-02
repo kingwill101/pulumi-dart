@@ -48,7 +48,7 @@ class GetResourcesResult {
     return GetResourcesResult(
       id: map['id'] as String,
       name: map['name'] as String,
-      requiredTags: map['requiredTags'] == null ? null : (map['requiredTags'] as Map).cast<String, String>(),
+      requiredTags: map['requiredTags'] == null ? null : (map['requiredTags']! as Map).cast<String, String>(),
       resourceGroupName: map['resourceGroupName'] as String,
       resources: pulumi.Input.decodeList<GetResourcesResource>(map['resources'], (value) => GetResourcesResource.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,

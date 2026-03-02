@@ -50,7 +50,7 @@ class GetIstioCanonicalServiceArgs {
       canonicalService: (map['canonicalService'] as String).input(),
       canonicalServiceNamespace: (map['canonicalServiceNamespace'] as String).input(),
       meshUid: (map['meshUid'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

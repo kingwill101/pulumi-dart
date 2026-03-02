@@ -83,19 +83,19 @@ class ServerState {
 
   factory ServerState.fromMap(Map<String, dynamic> map) {
     return ServerState(
-      customerManagedKey: map['customerManagedKey'] == null ? null : (ServerCustomerManagedKey.fromMap((map['customerManagedKey'] as Map).cast<String, dynamic>())).input(),
-      frsTenantId: map['frsTenantId'] == null ? null : (map['frsTenantId'] as String).input(),
-      identity: map['identity'] == null ? null : (ServerIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ordererEndpoints: map['ordererEndpoints'] == null ? null : ((map['ordererEndpoints'] as List).cast<String>()).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
-      serviceEndpoints: map['serviceEndpoints'] == null ? null : ((map['serviceEndpoints'] as List).cast<String>()).input(),
-      storageEndpoints: map['storageEndpoints'] == null ? null : ((map['storageEndpoints'] as List).cast<String>()).input(),
-      storageSku: map['storageSku'] == null ? null : (map['storageSku'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      customerManagedKey: map['customerManagedKey'] == null ? null : (ServerCustomerManagedKey.fromMap((map['customerManagedKey']! as Map).cast<String, dynamic>())).input(),
+      frsTenantId: map['frsTenantId'] == null ? null : (map['frsTenantId']! as String).input(),
+      identity: map['identity'] == null ? null : (ServerIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ordererEndpoints: map['ordererEndpoints'] == null ? null : ((map['ordererEndpoints']! as List).cast<String>()).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey']! as String).input(),
+      serviceEndpoints: map['serviceEndpoints'] == null ? null : ((map['serviceEndpoints']! as List).cast<String>()).input(),
+      storageEndpoints: map['storageEndpoints'] == null ? null : ((map['storageEndpoints']! as List).cast<String>()).input(),
+      storageSku: map['storageSku'] == null ? null : (map['storageSku']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

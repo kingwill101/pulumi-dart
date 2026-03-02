@@ -32,9 +32,9 @@ class EncryptionResponse {
 
   factory EncryptionResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionResponse(
-      keySource: map['keySource'] == null ? null : (map['keySource'] as String).input(),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : (pulumi.Input.decodeList<KeyVaultPropertiesResponse>(map['keyVaultProperties'], (value) => KeyVaultPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requireInfrastructureEncryption: map['requireInfrastructureEncryption'] == null ? null : (map['requireInfrastructureEncryption'] as bool).input(),
+      keySource: map['keySource'] == null ? null : (map['keySource']! as String).input(),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (pulumi.Input.decodeList<KeyVaultPropertiesResponse>(map['keyVaultProperties']!, (value) => KeyVaultPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requireInfrastructureEncryption: map['requireInfrastructureEncryption'] == null ? null : (map['requireInfrastructureEncryption']! as bool).input(),
     );
   }
 }

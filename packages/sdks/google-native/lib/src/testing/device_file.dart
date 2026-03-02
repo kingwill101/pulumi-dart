@@ -28,8 +28,8 @@ class DeviceFile {
 
   factory DeviceFile.fromMap(Map<String, dynamic> map) {
     return DeviceFile(
-      obbFile: map['obbFile'] == null ? null : (ObbFile.fromMap((map['obbFile'] as Map).cast<String, dynamic>())).input(),
-      regularFile: map['regularFile'] == null ? null : (RegularFile.fromMap((map['regularFile'] as Map).cast<String, dynamic>())).input(),
+      obbFile: map['obbFile'] == null ? null : (ObbFile.fromMap((map['obbFile']! as Map).cast<String, dynamic>())).input(),
+      regularFile: map['regularFile'] == null ? null : (RegularFile.fromMap((map['regularFile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

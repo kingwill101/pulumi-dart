@@ -60,14 +60,14 @@ class WebAclRuleGroupAssociationState {
 
   factory WebAclRuleGroupAssociationState.fromMap(Map<String, dynamic> map) {
     return WebAclRuleGroupAssociationState(
-      managedRuleGroup: map['managedRuleGroup'] == null ? null : (WebAclRuleGroupAssociationManagedRuleGroup.fromMap((map['managedRuleGroup'] as Map).cast<String, dynamic>())).input(),
-      overrideAction: map['overrideAction'] == null ? null : (map['overrideAction'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      ruleGroupReference: map['ruleGroupReference'] == null ? null : (WebAclRuleGroupAssociationRuleGroupReference.fromMap((map['ruleGroupReference'] as Map).cast<String, dynamic>())).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (WebAclRuleGroupAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      webAclArn: map['webAclArn'] == null ? null : (map['webAclArn'] as String).input(),
+      managedRuleGroup: map['managedRuleGroup'] == null ? null : ((WebAclRuleGroupAssociationManagedRuleGroup.fromMap((map['managedRuleGroup']! as Map).cast<String, dynamic>())).input()).input(),
+      overrideAction: map['overrideAction'] == null ? null : ((map['overrideAction'] as String).input()).input(),
+      priority: map['priority'] == null ? null : ((map['priority'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      ruleGroupReference: map['ruleGroupReference'] == null ? null : ((WebAclRuleGroupAssociationRuleGroupReference.fromMap((map['ruleGroupReference']! as Map).cast<String, dynamic>())).input()).input(),
+      ruleName: map['ruleName'] == null ? null : ((map['ruleName'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((WebAclRuleGroupAssociationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      webAclArn: map['webAclArn'] == null ? null : ((map['webAclArn'] as String).input()).input(),
     );
   }
 }

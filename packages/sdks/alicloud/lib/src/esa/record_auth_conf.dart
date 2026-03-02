@@ -40,11 +40,11 @@ class RecordAuthConf {
 
   factory RecordAuthConf.fromMap(Map<String, dynamic> map) {
     return RecordAuthConf(
-      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
-      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      secretKey: map['secretKey'] == null ? null : (map['secretKey'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      accessKey: map['accessKey'] == null ? null : (map['accessKey']! as String).input(),
+      authType: map['authType'] == null ? null : (map['authType']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      secretKey: map['secretKey'] == null ? null : (map['secretKey']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

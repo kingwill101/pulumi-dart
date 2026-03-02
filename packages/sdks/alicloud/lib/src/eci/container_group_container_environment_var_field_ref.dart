@@ -19,7 +19,7 @@ class ContainerGroupContainerEnvironmentVarFieldRef {
 
   factory ContainerGroupContainerEnvironmentVarFieldRef.fromMap(Map<String, dynamic> map) {
     return ContainerGroupContainerEnvironmentVarFieldRef(
-      fieldPath: map['fieldPath'] == null ? null : (map['fieldPath'] as String).input(),
+      fieldPath: map['fieldPath'] == null ? null : (map['fieldPath']! as String).input(),
     );
   }
 }

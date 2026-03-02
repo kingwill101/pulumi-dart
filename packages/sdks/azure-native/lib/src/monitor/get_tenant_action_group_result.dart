@@ -87,18 +87,18 @@ class GetTenantActionGroupResult {
   factory GetTenantActionGroupResult.fromMap(Map<String, dynamic> map) {
     return GetTenantActionGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      azureAppPushReceivers: map['azureAppPushReceivers'] == null ? null : pulumi.Input.decodeList<AzureAppPushReceiverResponse>(map['azureAppPushReceivers'], (value) => AzureAppPushReceiverResponse.fromMap((value as Map).cast<String, dynamic>())),
-      emailReceivers: map['emailReceivers'] == null ? null : pulumi.Input.decodeList<EmailReceiverResponse>(map['emailReceivers'], (value) => EmailReceiverResponse.fromMap((value as Map).cast<String, dynamic>())),
+      azureAppPushReceivers: map['azureAppPushReceivers'] == null ? null : pulumi.Input.decodeList<AzureAppPushReceiverResponse>(map['azureAppPushReceivers']!, (value) => AzureAppPushReceiverResponse.fromMap((value as Map).cast<String, dynamic>())),
+      emailReceivers: map['emailReceivers'] == null ? null : pulumi.Input.decodeList<EmailReceiverResponse>(map['emailReceivers']!, (value) => EmailReceiverResponse.fromMap((value as Map).cast<String, dynamic>())),
       enabled: map['enabled'] as bool,
       groupShortName: map['groupShortName'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      smsReceivers: map['smsReceivers'] == null ? null : pulumi.Input.decodeList<SmsReceiverResponse>(map['smsReceivers'], (value) => SmsReceiverResponse.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      smsReceivers: map['smsReceivers'] == null ? null : pulumi.Input.decodeList<SmsReceiverResponse>(map['smsReceivers']!, (value) => SmsReceiverResponse.fromMap((value as Map).cast<String, dynamic>())),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      voiceReceivers: map['voiceReceivers'] == null ? null : pulumi.Input.decodeList<VoiceReceiverResponse>(map['voiceReceivers'], (value) => VoiceReceiverResponse.fromMap((value as Map).cast<String, dynamic>())),
-      webhookReceivers: map['webhookReceivers'] == null ? null : pulumi.Input.decodeList<WebhookReceiverResponse>(map['webhookReceivers'], (value) => WebhookReceiverResponse.fromMap((value as Map).cast<String, dynamic>())),
+      voiceReceivers: map['voiceReceivers'] == null ? null : pulumi.Input.decodeList<VoiceReceiverResponse>(map['voiceReceivers']!, (value) => VoiceReceiverResponse.fromMap((value as Map).cast<String, dynamic>())),
+      webhookReceivers: map['webhookReceivers'] == null ? null : pulumi.Input.decodeList<WebhookReceiverResponse>(map['webhookReceivers']!, (value) => WebhookReceiverResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

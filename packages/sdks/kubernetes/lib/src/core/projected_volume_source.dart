@@ -27,7 +27,7 @@ class ProjectedVolumeSource {
 
   factory ProjectedVolumeSource.fromMap(Map<String, dynamic> map) {
     return ProjectedVolumeSource(
-      defaultMode: map['defaultMode'] == null ? null : (map['defaultMode'] as int).input(),
+      defaultMode: map['defaultMode'] == null ? null : (map['defaultMode']! as int).input(),
       sources: (pulumi.Input.decodeList<VolumeProjection>(map['sources'], (value) => VolumeProjection.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

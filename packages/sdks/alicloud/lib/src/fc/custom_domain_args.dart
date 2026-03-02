@@ -41,10 +41,10 @@ class CustomDomainArgs {
 
   factory CustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return CustomDomainArgs(
-      certConfig: map['certConfig'] == null ? null : (CustomDomainCertConfig.fromMap((map['certConfig'] as Map).cast<String, dynamic>())).input(),
+      certConfig: map['certConfig'] == null ? null : (CustomDomainCertConfig.fromMap((map['certConfig']! as Map).cast<String, dynamic>())).input(),
       domainName: (map['domainName'] as String).input(),
       protocol: (map['protocol'] as String).input(),
-      routeConfigs: map['routeConfigs'] == null ? null : (pulumi.Input.decodeList<CustomDomainRouteConfig>(map['routeConfigs'], (value) => CustomDomainRouteConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routeConfigs: map['routeConfigs'] == null ? null : (pulumi.Input.decodeList<CustomDomainRouteConfig>(map['routeConfigs']!, (value) => CustomDomainRouteConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

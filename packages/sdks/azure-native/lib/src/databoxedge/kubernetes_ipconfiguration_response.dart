@@ -26,7 +26,7 @@ class KubernetesIPConfigurationResponse {
 
   factory KubernetesIPConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesIPConfigurationResponse(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
       port: (map['port'] as String).input(),
     );
   }

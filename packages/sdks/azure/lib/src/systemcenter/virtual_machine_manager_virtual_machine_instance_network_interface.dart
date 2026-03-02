@@ -40,11 +40,11 @@ class VirtualMachineManagerVirtualMachineInstanceNetworkInterface {
 
   factory VirtualMachineManagerVirtualMachineInstanceNetworkInterface.fromMap(Map<String, dynamic> map) {
     return VirtualMachineManagerVirtualMachineInstanceNetworkInterface(
-      ipv4AddressType: map['ipv4AddressType'] == null ? null : (map['ipv4AddressType'] as String).input(),
-      ipv6AddressType: map['ipv6AddressType'] == null ? null : (map['ipv6AddressType'] as String).input(),
-      macAddressType: map['macAddressType'] == null ? null : (map['macAddressType'] as String).input(),
+      ipv4AddressType: map['ipv4AddressType'] == null ? null : (map['ipv4AddressType']! as String).input(),
+      ipv6AddressType: map['ipv6AddressType'] == null ? null : (map['ipv6AddressType']! as String).input(),
+      macAddressType: map['macAddressType'] == null ? null : (map['macAddressType']! as String).input(),
       name: (map['name'] as String).input(),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId'] as String).input(),
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class PipelineTriggerDescriptorResponse {
 
   factory PipelineTriggerDescriptorResponse.fromMap(Map<String, dynamic> map) {
     return PipelineTriggerDescriptorResponse(
-      sourceTrigger: map['sourceTrigger'] == null ? null : (PipelineSourceTriggerDescriptorResponse.fromMap((map['sourceTrigger'] as Map).cast<String, dynamic>())).input(),
+      sourceTrigger: map['sourceTrigger'] == null ? null : (PipelineSourceTriggerDescriptorResponse.fromMap((map['sourceTrigger']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

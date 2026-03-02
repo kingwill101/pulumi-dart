@@ -85,17 +85,17 @@ class TargetPoolState {
 
   factory TargetPoolState.fromMap(Map<String, dynamic> map) {
     return TargetPoolState(
-      backupPool: map['backupPool'] == null ? null : (map['backupPool'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      failoverRatio: map['failoverRatio'] == null ? null : (map['failoverRatio'] as double).input(),
-      healthChecks: map['healthChecks'] == null ? null : (map['healthChecks'] as String).input(),
-      instances: map['instances'] == null ? null : ((map['instances'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityPolicy: map['securityPolicy'] == null ? null : (map['securityPolicy'] as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      sessionAffinity: map['sessionAffinity'] == null ? null : (map['sessionAffinity'] as String).input(),
+      backupPool: map['backupPool'] == null ? null : (map['backupPool']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      failoverRatio: map['failoverRatio'] == null ? null : (map['failoverRatio']! as double).input(),
+      healthChecks: map['healthChecks'] == null ? null : (map['healthChecks']! as String).input(),
+      instances: map['instances'] == null ? null : ((map['instances']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      securityPolicy: map['securityPolicy'] == null ? null : (map['securityPolicy']! as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      sessionAffinity: map['sessionAffinity'] == null ? null : (map['sessionAffinity']! as String).input(),
     );
   }
 }

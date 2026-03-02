@@ -51,13 +51,13 @@ class GetDatabaseSystemVersionsResult {
 
   factory GetDatabaseSystemVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetDatabaseSystemVersionsResult(
-      databaseSoftwareImageSupported: map['databaseSoftwareImageSupported'] == null ? null : map['databaseSoftwareImageSupported'] as bool,
-      databaseSystemShape: map['databaseSystemShape'] == null ? null : map['databaseSystemShape'] as String,
+      databaseSoftwareImageSupported: map['databaseSoftwareImageSupported'] == null ? null : map['databaseSoftwareImageSupported']! as bool,
+      databaseSystemShape: map['databaseSystemShape'] == null ? null : map['databaseSystemShape']! as String,
       id: map['id'] as String,
       location: map['location'] as String,
-      shapeFamily: map['shapeFamily'] == null ? null : map['shapeFamily'] as String,
-      storageManagement: map['storageManagement'] == null ? null : map['storageManagement'] as String,
-      upgradeSupported: map['upgradeSupported'] == null ? null : map['upgradeSupported'] as bool,
+      shapeFamily: map['shapeFamily'] == null ? null : map['shapeFamily']! as String,
+      storageManagement: map['storageManagement'] == null ? null : map['storageManagement']! as String,
+      upgradeSupported: map['upgradeSupported'] == null ? null : map['upgradeSupported']! as bool,
       versions: pulumi.Input.decodeList<GetDatabaseSystemVersionsVersion>(map['versions'], (value) => GetDatabaseSystemVersionsVersion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

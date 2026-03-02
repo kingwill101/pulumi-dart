@@ -39,10 +39,10 @@ class PrivateLocationArgs {
 
   factory PrivateLocationArgs.fromMap(Map<String, dynamic> map) {
     return PrivateLocationArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
       description: (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      verifiedScriptExecution: map['verifiedScriptExecution'] == null ? null : (map['verifiedScriptExecution'] as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      verifiedScriptExecution: map['verifiedScriptExecution'] == null ? null : (map['verifiedScriptExecution']! as bool).input(),
     );
   }
 }

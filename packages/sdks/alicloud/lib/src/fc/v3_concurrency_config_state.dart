@@ -31,9 +31,9 @@ class V3ConcurrencyConfigState {
 
   factory V3ConcurrencyConfigState.fromMap(Map<String, dynamic> map) {
     return V3ConcurrencyConfigState(
-      functionArn: map['functionArn'] == null ? null : (map['functionArn'] as String).input(),
-      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
-      reservedConcurrency: map['reservedConcurrency'] == null ? null : (map['reservedConcurrency'] as int).input(),
+      functionArn: map['functionArn'] == null ? null : (map['functionArn']! as String).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName']! as String).input(),
+      reservedConcurrency: map['reservedConcurrency'] == null ? null : (map['reservedConcurrency']! as int).input(),
     );
   }
 }

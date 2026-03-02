@@ -45,11 +45,11 @@ class FolderSecurityHealthAnalyticsSettingCustomModuleArgs {
 
   factory FolderSecurityHealthAnalyticsSettingCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return FolderSecurityHealthAnalyticsSettingCustomModuleArgs(
-      customConfig: map['customConfig'] == null ? null : (GoogleCloudSecuritycenterV1CustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enablementState: map['enablementState'] == null ? null : (FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState.fromValue(map['enablementState'] as String)).input(),
+      customConfig: map['customConfig'] == null ? null : (GoogleCloudSecuritycenterV1CustomConfig.fromMap((map['customConfig']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enablementState: map['enablementState'] == null ? null : (FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState.fromValue(map['enablementState']! as String)).input(),
       folderId: (map['folderId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

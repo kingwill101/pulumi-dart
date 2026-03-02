@@ -105,22 +105,22 @@ class ScanConfigWebsecurityscannerV1betaArgs {
 
   factory ScanConfigWebsecurityscannerV1betaArgs.fromMap(Map<String, dynamic> map) {
     return ScanConfigWebsecurityscannerV1betaArgs(
-      authentication: map['authentication'] == null ? null : (AuthenticationWebsecurityscannerV1beta.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      blacklistPatterns: map['blacklistPatterns'] == null ? null : ((map['blacklistPatterns'] as List).cast<String>()).input(),
+      authentication: map['authentication'] == null ? null : (AuthenticationWebsecurityscannerV1beta.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
+      blacklistPatterns: map['blacklistPatterns'] == null ? null : ((map['blacklistPatterns']! as List).cast<String>()).input(),
       displayName: (map['displayName'] as String).input(),
-      exportToSecurityCommandCenter: map['exportToSecurityCommandCenter'] == null ? null : (ScanConfigExportToSecurityCommandCenterWebsecurityscannerV1beta.fromValue(map['exportToSecurityCommandCenter'] as String)).input(),
-      ignoreHttpStatusErrors: map['ignoreHttpStatusErrors'] == null ? null : (map['ignoreHttpStatusErrors'] as bool).input(),
-      latestRun: map['latestRun'] == null ? null : (ScanRunWebsecurityscannerV1beta.fromMap((map['latestRun'] as Map).cast<String, dynamic>())).input(),
-      managedScan: map['managedScan'] == null ? null : (map['managedScan'] as bool).input(),
-      maxQps: map['maxQps'] == null ? null : (map['maxQps'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      riskLevel: map['riskLevel'] == null ? null : (ScanConfigRiskLevelWebsecurityscannerV1beta.fromValue(map['riskLevel'] as String)).input(),
-      schedule: map['schedule'] == null ? null : (ScheduleWebsecurityscannerV1beta.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      exportToSecurityCommandCenter: map['exportToSecurityCommandCenter'] == null ? null : (ScanConfigExportToSecurityCommandCenterWebsecurityscannerV1beta.fromValue(map['exportToSecurityCommandCenter']! as String)).input(),
+      ignoreHttpStatusErrors: map['ignoreHttpStatusErrors'] == null ? null : (map['ignoreHttpStatusErrors']! as bool).input(),
+      latestRun: map['latestRun'] == null ? null : (ScanRunWebsecurityscannerV1beta.fromMap((map['latestRun']! as Map).cast<String, dynamic>())).input(),
+      managedScan: map['managedScan'] == null ? null : (map['managedScan']! as bool).input(),
+      maxQps: map['maxQps'] == null ? null : (map['maxQps']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      riskLevel: map['riskLevel'] == null ? null : (ScanConfigRiskLevelWebsecurityscannerV1beta.fromValue(map['riskLevel']! as String)).input(),
+      schedule: map['schedule'] == null ? null : (ScheduleWebsecurityscannerV1beta.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
       startingUrls: ((map['startingUrls'] as List).cast<String>()).input(),
-      staticIpScan: map['staticIpScan'] == null ? null : (map['staticIpScan'] as bool).input(),
-      targetPlatforms: map['targetPlatforms'] == null ? null : (pulumi.Input.decodeList<ScanConfigTargetPlatformsItemWebsecurityscannerV1beta>(map['targetPlatforms'], (value) => ScanConfigTargetPlatformsItemWebsecurityscannerV1beta.fromValue(value as String))).input(),
-      userAgent: map['userAgent'] == null ? null : (ScanConfigUserAgentWebsecurityscannerV1beta.fromValue(map['userAgent'] as String)).input(),
+      staticIpScan: map['staticIpScan'] == null ? null : (map['staticIpScan']! as bool).input(),
+      targetPlatforms: map['targetPlatforms'] == null ? null : (pulumi.Input.decodeList<ScanConfigTargetPlatformsItemWebsecurityscannerV1beta>(map['targetPlatforms']!, (value) => ScanConfigTargetPlatformsItemWebsecurityscannerV1beta.fromValue(value as String))).input(),
+      userAgent: map['userAgent'] == null ? null : (ScanConfigUserAgentWebsecurityscannerV1beta.fromValue(map['userAgent']! as String)).input(),
     );
   }
 }

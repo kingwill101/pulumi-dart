@@ -27,8 +27,8 @@ class DataQualityJobDefinitionDataQualityBaselineConfig {
 
   factory DataQualityJobDefinitionDataQualityBaselineConfig.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionDataQualityBaselineConfig(
-      constraintsResource: map['constraintsResource'] == null ? null : (DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource.fromMap((map['constraintsResource'] as Map).cast<String, dynamic>())).input(),
-      statisticsResource: map['statisticsResource'] == null ? null : (DataQualityJobDefinitionDataQualityBaselineConfigStatisticsResource.fromMap((map['statisticsResource'] as Map).cast<String, dynamic>())).input(),
+      constraintsResource: map['constraintsResource'] == null ? null : ((DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource.fromMap((map['constraintsResource']! as Map).cast<String, dynamic>())).input()).input(),
+      statisticsResource: map['statisticsResource'] == null ? null : ((DataQualityJobDefinitionDataQualityBaselineConfigStatisticsResource.fromMap((map['statisticsResource']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

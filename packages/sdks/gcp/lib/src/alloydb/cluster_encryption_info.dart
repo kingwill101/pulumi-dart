@@ -27,8 +27,8 @@ class ClusterEncryptionInfo {
 
   factory ClusterEncryptionInfo.fromMap(Map<String, dynamic> map) {
     return ClusterEncryptionInfo(
-      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType'] as String).input(),
-      kmsKeyVersions: map['kmsKeyVersions'] == null ? null : ((map['kmsKeyVersions'] as List).cast<String>()).input(),
+      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType']! as String).input(),
+      kmsKeyVersions: map['kmsKeyVersions'] == null ? null : ((map['kmsKeyVersions']! as List).cast<String>()).input(),
     );
   }
 }

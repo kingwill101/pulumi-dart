@@ -66,16 +66,16 @@ class AnycastEipAddressState {
 
   factory AnycastEipAddressState.fromMap(Map<String, dynamic> map) {
     return AnycastEipAddressState(
-      anycastEipAddressName: map['anycastEipAddressName'] == null ? null : (map['anycastEipAddressName'] as String).input(),
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType'] as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      serviceLocation: map['serviceLocation'] == null ? null : (map['serviceLocation'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      anycastEipAddressName: map['anycastEipAddressName'] == null ? null : (map['anycastEipAddressName']! as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType']! as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      serviceLocation: map['serviceLocation'] == null ? null : (map['serviceLocation']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

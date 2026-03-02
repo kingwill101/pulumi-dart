@@ -31,7 +31,7 @@ class GetWebForwardingRuleServiceIamPolicyArgs {
   factory GetWebForwardingRuleServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetWebForwardingRuleServiceIamPolicyArgs(
       forwardingRuleServiceName: (map['forwardingRuleServiceName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

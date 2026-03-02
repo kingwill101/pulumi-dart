@@ -20,7 +20,7 @@ class GetGenaiAgentsAgentChatbotIdentifier {
 
   factory GetGenaiAgentsAgentChatbotIdentifier.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentsAgentChatbotIdentifier(
-      chatbotId: map['chatbotId'] == null ? null : (map['chatbotId'] as String).input(),
+      chatbotId: map['chatbotId'] == null ? null : (map['chatbotId']! as String).input(),
     );
   }
 }

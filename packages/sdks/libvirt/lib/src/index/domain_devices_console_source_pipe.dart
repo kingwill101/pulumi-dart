@@ -27,7 +27,7 @@ class DomainDevicesConsoleSourcePipe {
   factory DomainDevicesConsoleSourcePipe.fromMap(Map<String, dynamic> map) {
     return DomainDevicesConsoleSourcePipe(
       path: (map['path'] as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesConsoleSourcePipeSecLabel>(map['secLabels'], (value) => DomainDevicesConsoleSourcePipeSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesConsoleSourcePipeSecLabel>(map['secLabels']!, (value) => DomainDevicesConsoleSourcePipeSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class LayerContaineranalysisV1beta1 {
 
   factory LayerContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return LayerContaineranalysisV1beta1(
-      arguments: map['arguments'] == null ? null : (map['arguments'] as String).input(),
+      arguments: map['arguments'] == null ? null : (map['arguments']! as String).input(),
       directive: (LayerDirectiveContaineranalysisV1beta1.fromValue(map['directive'] as String)).input(),
     );
   }

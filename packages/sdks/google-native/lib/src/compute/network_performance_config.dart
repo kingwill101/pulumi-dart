@@ -25,8 +25,8 @@ class NetworkPerformanceConfig {
 
   factory NetworkPerformanceConfig.fromMap(Map<String, dynamic> map) {
     return NetworkPerformanceConfig(
-      externalIpEgressBandwidthTier: map['externalIpEgressBandwidthTier'] == null ? null : (NetworkPerformanceConfigExternalIpEgressBandwidthTier.fromValue(map['externalIpEgressBandwidthTier'] as String)).input(),
-      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] == null ? null : (NetworkPerformanceConfigTotalEgressBandwidthTier.fromValue(map['totalEgressBandwidthTier'] as String)).input(),
+      externalIpEgressBandwidthTier: map['externalIpEgressBandwidthTier'] == null ? null : (NetworkPerformanceConfigExternalIpEgressBandwidthTier.fromValue(map['externalIpEgressBandwidthTier']! as String)).input(),
+      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] == null ? null : (NetworkPerformanceConfigTotalEgressBandwidthTier.fromValue(map['totalEgressBandwidthTier']! as String)).input(),
     );
   }
 }

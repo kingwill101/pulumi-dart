@@ -37,10 +37,10 @@ class SecretVolume {
 
   factory SecretVolume.fromMap(Map<String, dynamic> map) {
     return SecretVolume(
-      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
-      versions: map['versions'] == null ? null : (pulumi.Input.decodeList<SecretVersion>(map['versions'], (value) => SecretVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      secret: map['secret'] == null ? null : (map['secret']! as String).input(),
+      versions: map['versions'] == null ? null : (pulumi.Input.decodeList<SecretVersion>(map['versions']!, (value) => SecretVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

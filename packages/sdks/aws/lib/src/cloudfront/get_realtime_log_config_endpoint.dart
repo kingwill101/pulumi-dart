@@ -26,7 +26,7 @@ class GetRealtimeLogConfigEndpoint {
 
   factory GetRealtimeLogConfigEndpoint.fromMap(Map<String, dynamic> map) {
     return GetRealtimeLogConfigEndpoint(
-      kinesisStreamConfigs: (pulumi.Input.decodeList<GetRealtimeLogConfigEndpointKinesisStreamConfig>(map['kinesisStreamConfigs'], (value) => GetRealtimeLogConfigEndpointKinesisStreamConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kinesisStreamConfigs: (pulumi.Input.decodeList<GetRealtimeLogConfigEndpointKinesisStreamConfig>(map['kinesisStreamConfigs']!, (value) => GetRealtimeLogConfigEndpointKinesisStreamConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       streamType: (map['streamType'] as String).input(),
     );
   }

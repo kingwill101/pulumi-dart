@@ -20,7 +20,7 @@ class DomainMemoryBackingMemoryAccess {
 
   factory DomainMemoryBackingMemoryAccess.fromMap(Map<String, dynamic> map) {
     return DomainMemoryBackingMemoryAccess(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
     );
   }
 }

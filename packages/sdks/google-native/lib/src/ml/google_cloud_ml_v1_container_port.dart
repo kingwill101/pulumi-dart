@@ -21,7 +21,7 @@ class GoogleCloudMlV1ContainerPort {
 
   factory GoogleCloudMlV1ContainerPort.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1ContainerPort(
-      containerPort: map['containerPort'] == null ? null : (map['containerPort'] as int).input(),
+      containerPort: map['containerPort'] == null ? null : (map['containerPort']! as int).input(),
     );
   }
 }

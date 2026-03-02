@@ -26,8 +26,8 @@ class ResourceQuotaStatus {
 
   factory ResourceQuotaStatus.fromMap(Map<String, dynamic> map) {
     return ResourceQuotaStatus(
-      hard: map['hard'] == null ? null : ((map['hard'] as Map).cast<String, String>()).input(),
-      used: map['used'] == null ? null : ((map['used'] as Map).cast<String, String>()).input(),
+      hard: map['hard'] == null ? null : ((map['hard']! as Map).cast<String, String>()).input(),
+      used: map['used'] == null ? null : ((map['used']! as Map).cast<String, String>()).input(),
     );
   }
 }

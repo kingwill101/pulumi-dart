@@ -29,8 +29,8 @@ class GetTopicsArgs {
 
   factory GetTopicsArgs.fromMap(Map<String, dynamic> map) {
     return GetTopicsArgs(
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

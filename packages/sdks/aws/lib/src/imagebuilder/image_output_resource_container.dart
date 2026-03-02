@@ -25,8 +25,8 @@ class ImageOutputResourceContainer {
 
   factory ImageOutputResourceContainer.fromMap(Map<String, dynamic> map) {
     return ImageOutputResourceContainer(
-      imageUris: map['imageUris'] == null ? null : ((map['imageUris'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      imageUris: map['imageUris'] == null ? null : (((map['imageUris'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

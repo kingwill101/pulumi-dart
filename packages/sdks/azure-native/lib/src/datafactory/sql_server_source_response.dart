@@ -88,19 +88,19 @@ class SqlServerSourceResponse {
 
   factory SqlServerSourceResponse.fromMap(Map<String, dynamic> map) {
     return SqlServerSourceResponse(
-      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      isolationLevel: map['isolationLevel'] == null ? null : (map['isolationLevel']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      partitionOption: map['partitionOption'] == null ? null : (map['partitionOption']).input(),
-      partitionSettings: map['partitionSettings'] == null ? null : (SqlPartitionSettingsResponse.fromMap((map['partitionSettings'] as Map).cast<String, dynamic>())).input(),
-      produceAdditionalTypes: map['produceAdditionalTypes'] == null ? null : (map['produceAdditionalTypes']).input(),
-      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']).input(),
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
-      sqlReaderQuery: map['sqlReaderQuery'] == null ? null : (map['sqlReaderQuery']).input(),
-      sqlReaderStoredProcedureName: map['sqlReaderStoredProcedureName'] == null ? null : (map['sqlReaderStoredProcedureName']).input(),
-      storedProcedureParameters: map['storedProcedureParameters'] == null ? null : (map['storedProcedureParameters']).input(),
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']!).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      isolationLevel: map['isolationLevel'] == null ? null : (map['isolationLevel']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      partitionOption: map['partitionOption'] == null ? null : (map['partitionOption']!).input(),
+      partitionSettings: map['partitionSettings'] == null ? null : (SqlPartitionSettingsResponse.fromMap((map['partitionSettings']! as Map).cast<String, dynamic>())).input(),
+      produceAdditionalTypes: map['produceAdditionalTypes'] == null ? null : (map['produceAdditionalTypes']!).input(),
+      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']!).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']!).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']!).input(),
+      sqlReaderQuery: map['sqlReaderQuery'] == null ? null : (map['sqlReaderQuery']!).input(),
+      sqlReaderStoredProcedureName: map['sqlReaderStoredProcedureName'] == null ? null : (map['sqlReaderStoredProcedureName']!).input(),
+      storedProcedureParameters: map['storedProcedureParameters'] == null ? null : (map['storedProcedureParameters']!).input(),
       type: (map['type'] as String).input(),
     );
   }

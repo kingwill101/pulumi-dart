@@ -38,7 +38,7 @@ class IpAccessSettingsAssociationArgs {
     return IpAccessSettingsAssociationArgs(
       ipAccessSettingsArn: (map['ipAccessSettingsArn'] as String).input(),
       portalArn: (map['portalArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

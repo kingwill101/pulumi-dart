@@ -21,7 +21,7 @@ class AgentcoreGatewayInterceptorConfigurationInterceptor {
 
   factory AgentcoreGatewayInterceptorConfigurationInterceptor.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayInterceptorConfigurationInterceptor(
-      lambda: map['lambda'] == null ? null : (AgentcoreGatewayInterceptorConfigurationInterceptorLambda.fromMap((map['lambda'] as Map).cast<String, dynamic>())).input(),
+      lambda: map['lambda'] == null ? null : ((AgentcoreGatewayInterceptorConfigurationInterceptorLambda.fromMap((map['lambda']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

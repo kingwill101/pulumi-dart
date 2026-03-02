@@ -50,8 +50,8 @@ class V2PolicyOrchestratorForFolderOrchestratedResource {
 
   factory V2PolicyOrchestratorForFolderOrchestratedResource.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForFolderOrchestratedResource(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      osPolicyAssignmentV1Payload: map['osPolicyAssignmentV1Payload'] == null ? null : (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload.fromMap((map['osPolicyAssignmentV1Payload'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      osPolicyAssignmentV1Payload: map['osPolicyAssignmentV1Payload'] == null ? null : (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload.fromMap((map['osPolicyAssignmentV1Payload']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

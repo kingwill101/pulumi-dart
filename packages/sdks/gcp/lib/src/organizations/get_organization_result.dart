@@ -60,7 +60,7 @@ class GetOrganizationResult {
       lifecycleState: map['lifecycleState'] as String,
       name: map['name'] as String,
       orgId: map['orgId'] as String,
-      organization: map['organization'] == null ? null : map['organization'] as String,
+      organization: map['organization'] == null ? null : map['organization']! as String,
     );
   }
 }

@@ -82,18 +82,18 @@ class SupabaseProjectState {
 
   factory SupabaseProjectState.fromMap(Map<String, dynamic> map) {
     return SupabaseProjectState(
-      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      diskPerformanceLevel: map['diskPerformanceLevel'] == null ? null : (map['diskPerformanceLevel'] as String).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
-      projectSpec: map['projectSpec'] == null ? null : (map['projectSpec'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      securityIpLists: map['securityIpLists'] == null ? null : ((map['securityIpLists'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      storageSize: map['storageSize'] == null ? null : (map['storageSize'] as int).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      diskPerformanceLevel: map['diskPerformanceLevel'] == null ? null : (map['diskPerformanceLevel']! as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName']! as String).input(),
+      projectSpec: map['projectSpec'] == null ? null : (map['projectSpec']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      securityIpLists: map['securityIpLists'] == null ? null : ((map['securityIpLists']! as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      storageSize: map['storageSize'] == null ? null : (map['storageSize']! as int).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

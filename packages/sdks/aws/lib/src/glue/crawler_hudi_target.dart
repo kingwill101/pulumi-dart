@@ -35,8 +35,8 @@ class CrawlerHudiTarget {
 
   factory CrawlerHudiTarget.fromMap(Map<String, dynamic> map) {
     return CrawlerHudiTarget(
-      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
-      exclusions: map['exclusions'] == null ? null : ((map['exclusions'] as List).cast<String>()).input(),
+      connectionName: map['connectionName'] == null ? null : ((map['connectionName'] as String).input()).input(),
+      exclusions: map['exclusions'] == null ? null : (((map['exclusions'] as List).cast<String>()).input()).input(),
       maximumTraversalDepth: (map['maximumTraversalDepth'] as int).input(),
       paths: ((map['paths'] as List).cast<String>()).input(),
     );

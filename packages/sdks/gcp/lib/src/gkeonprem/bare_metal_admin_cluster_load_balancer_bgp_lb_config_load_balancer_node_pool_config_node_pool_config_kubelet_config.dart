@@ -30,9 +30,9 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
 
   factory BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig(
-      registryBurst: map['registryBurst'] == null ? null : (map['registryBurst'] as int).input(),
-      registryPullQps: map['registryPullQps'] == null ? null : (map['registryPullQps'] as int).input(),
-      serializeImagePullsDisabled: map['serializeImagePullsDisabled'] == null ? null : (map['serializeImagePullsDisabled'] as bool).input(),
+      registryBurst: map['registryBurst'] == null ? null : (map['registryBurst']! as int).input(),
+      registryPullQps: map['registryPullQps'] == null ? null : (map['registryPullQps']! as int).input(),
+      serializeImagePullsDisabled: map['serializeImagePullsDisabled'] == null ? null : (map['serializeImagePullsDisabled']! as bool).input(),
     );
   }
 }

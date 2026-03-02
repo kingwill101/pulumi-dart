@@ -60,15 +60,15 @@ class ClassifierCsvClassifier {
 
   factory ClassifierCsvClassifier.fromMap(Map<String, dynamic> map) {
     return ClassifierCsvClassifier(
-      allowSingleColumn: map['allowSingleColumn'] == null ? null : (map['allowSingleColumn'] as bool).input(),
-      containsHeader: map['containsHeader'] == null ? null : (map['containsHeader'] as String).input(),
-      customDatatypeConfigured: map['customDatatypeConfigured'] == null ? null : (map['customDatatypeConfigured'] as bool).input(),
-      customDatatypes: map['customDatatypes'] == null ? null : ((map['customDatatypes'] as List).cast<String>()).input(),
-      delimiter: map['delimiter'] == null ? null : (map['delimiter'] as String).input(),
-      disableValueTrimming: map['disableValueTrimming'] == null ? null : (map['disableValueTrimming'] as bool).input(),
-      headers: map['headers'] == null ? null : ((map['headers'] as List).cast<String>()).input(),
-      quoteSymbol: map['quoteSymbol'] == null ? null : (map['quoteSymbol'] as String).input(),
-      serde: map['serde'] == null ? null : (map['serde'] as String).input(),
+      allowSingleColumn: map['allowSingleColumn'] == null ? null : ((map['allowSingleColumn'] as bool).input()).input(),
+      containsHeader: map['containsHeader'] == null ? null : ((map['containsHeader'] as String).input()).input(),
+      customDatatypeConfigured: map['customDatatypeConfigured'] == null ? null : ((map['customDatatypeConfigured'] as bool).input()).input(),
+      customDatatypes: map['customDatatypes'] == null ? null : (((map['customDatatypes'] as List).cast<String>()).input()).input(),
+      delimiter: map['delimiter'] == null ? null : ((map['delimiter'] as String).input()).input(),
+      disableValueTrimming: map['disableValueTrimming'] == null ? null : ((map['disableValueTrimming'] as bool).input()).input(),
+      headers: map['headers'] == null ? null : (((map['headers'] as List).cast<String>()).input()).input(),
+      quoteSymbol: map['quoteSymbol'] == null ? null : ((map['quoteSymbol'] as String).input()).input(),
+      serde: map['serde'] == null ? null : ((map['serde'] as String).input()).input(),
     );
   }
 }

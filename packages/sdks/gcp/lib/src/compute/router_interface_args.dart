@@ -90,17 +90,17 @@ class RouterInterfaceArgs {
 
   factory RouterInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return RouterInterfaceArgs(
-      interconnectAttachment: map['interconnectAttachment'] == null ? null : (map['interconnectAttachment'] as String).input(),
-      ipRange: map['ipRange'] == null ? null : (map['ipRange'] as String).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      redundantInterface: map['redundantInterface'] == null ? null : (map['redundantInterface'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      interconnectAttachment: map['interconnectAttachment'] == null ? null : (map['interconnectAttachment']! as String).input(),
+      ipRange: map['ipRange'] == null ? null : (map['ipRange']! as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      redundantInterface: map['redundantInterface'] == null ? null : (map['redundantInterface']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       router: (map['router'] as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
-      vpnTunnel: map['vpnTunnel'] == null ? null : (map['vpnTunnel'] as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
+      vpnTunnel: map['vpnTunnel'] == null ? null : (map['vpnTunnel']! as String).input(),
     );
   }
 }

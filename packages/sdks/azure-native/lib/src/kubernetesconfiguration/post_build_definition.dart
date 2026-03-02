@@ -27,8 +27,8 @@ class PostBuildDefinition {
 
   factory PostBuildDefinition.fromMap(Map<String, dynamic> map) {
     return PostBuildDefinition(
-      substitute: map['substitute'] == null ? null : ((map['substitute'] as Map).cast<String, String>()).input(),
-      substituteFrom: map['substituteFrom'] == null ? null : (pulumi.Input.decodeList<SubstituteFromDefinition>(map['substituteFrom'], (value) => SubstituteFromDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      substitute: map['substitute'] == null ? null : ((map['substitute']! as Map).cast<String, String>()).input(),
+      substituteFrom: map['substituteFrom'] == null ? null : (pulumi.Input.decodeList<SubstituteFromDefinition>(map['substituteFrom']!, (value) => SubstituteFromDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

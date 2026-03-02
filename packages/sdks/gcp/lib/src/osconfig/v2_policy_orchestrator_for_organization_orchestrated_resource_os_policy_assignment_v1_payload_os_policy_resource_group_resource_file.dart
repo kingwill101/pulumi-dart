@@ -59,10 +59,10 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
   factory V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      file: map['file'] == null ? null : (V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      file: map['file'] == null ? null : (V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile.fromMap((map['file']! as Map).cast<String, dynamic>())).input(),
       path: (map['path'] as String).input(),
-      permissions: map['permissions'] == null ? null : (map['permissions'] as String).input(),
+      permissions: map['permissions'] == null ? null : (map['permissions']! as String).input(),
       state: (map['state'] as String).input(),
     );
   }

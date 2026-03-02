@@ -37,10 +37,10 @@ class InputMappingDeploymentmanagerV2beta {
 
   factory InputMappingDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return InputMappingDeploymentmanagerV2beta(
-      fieldName: map['fieldName'] == null ? null : (map['fieldName'] as String).input(),
-      location: map['location'] == null ? null : (InputMappingLocationDeploymentmanagerV2beta.fromValue(map['location'] as String)).input(),
-      methodMatch: map['methodMatch'] == null ? null : (map['methodMatch'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      fieldName: map['fieldName'] == null ? null : (map['fieldName']! as String).input(),
+      location: map['location'] == null ? null : (InputMappingLocationDeploymentmanagerV2beta.fromValue(map['location']! as String)).input(),
+      methodMatch: map['methodMatch'] == null ? null : (map['methodMatch']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

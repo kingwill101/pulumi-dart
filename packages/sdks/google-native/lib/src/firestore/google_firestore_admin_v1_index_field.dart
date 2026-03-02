@@ -39,10 +39,10 @@ class GoogleFirestoreAdminV1IndexField {
 
   factory GoogleFirestoreAdminV1IndexField.fromMap(Map<String, dynamic> map) {
     return GoogleFirestoreAdminV1IndexField(
-      arrayConfig: map['arrayConfig'] == null ? null : (GoogleFirestoreAdminV1IndexFieldArrayConfig.fromValue(map['arrayConfig'] as String)).input(),
-      fieldPath: map['fieldPath'] == null ? null : (map['fieldPath'] as String).input(),
-      order: map['order'] == null ? null : (GoogleFirestoreAdminV1IndexFieldOrder.fromValue(map['order'] as String)).input(),
-      vectorConfig: map['vectorConfig'] == null ? null : (GoogleFirestoreAdminV1VectorConfig.fromMap((map['vectorConfig'] as Map).cast<String, dynamic>())).input(),
+      arrayConfig: map['arrayConfig'] == null ? null : (GoogleFirestoreAdminV1IndexFieldArrayConfig.fromValue(map['arrayConfig']! as String)).input(),
+      fieldPath: map['fieldPath'] == null ? null : (map['fieldPath']! as String).input(),
+      order: map['order'] == null ? null : (GoogleFirestoreAdminV1IndexFieldOrder.fromValue(map['order']! as String)).input(),
+      vectorConfig: map['vectorConfig'] == null ? null : (GoogleFirestoreAdminV1VectorConfig.fromMap((map['vectorConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

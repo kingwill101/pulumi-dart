@@ -54,13 +54,13 @@ class MaccMilestoneResponse {
 
   factory MaccMilestoneResponse.fromMap(Map<String, dynamic> map) {
     return MaccMilestoneResponse(
-      automaticShortfall: map['automaticShortfall'] == null ? null : (map['automaticShortfall'] as String).input(),
-      automaticShortfallSuppressReason: map['automaticShortfallSuppressReason'] == null ? null : (AutomaticShortfallSuppressReasonResponse.fromMap((map['automaticShortfallSuppressReason'] as Map).cast<String, dynamic>())).input(),
-      commitment: map['commitment'] == null ? null : (PriceResponse.fromMap((map['commitment'] as Map).cast<String, dynamic>())).input(),
-      endAt: map['endAt'] == null ? null : (map['endAt'] as String).input(),
-      milestoneId: map['milestoneId'] == null ? null : (map['milestoneId'] as String).input(),
-      shortfall: map['shortfall'] == null ? null : (ShortfallResponse.fromMap((map['shortfall'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      automaticShortfall: map['automaticShortfall'] == null ? null : (map['automaticShortfall']! as String).input(),
+      automaticShortfallSuppressReason: map['automaticShortfallSuppressReason'] == null ? null : (AutomaticShortfallSuppressReasonResponse.fromMap((map['automaticShortfallSuppressReason']! as Map).cast<String, dynamic>())).input(),
+      commitment: map['commitment'] == null ? null : (PriceResponse.fromMap((map['commitment']! as Map).cast<String, dynamic>())).input(),
+      endAt: map['endAt'] == null ? null : (map['endAt']! as String).input(),
+      milestoneId: map['milestoneId'] == null ? null : (map['milestoneId']! as String).input(),
+      shortfall: map['shortfall'] == null ? null : (ShortfallResponse.fromMap((map['shortfall']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

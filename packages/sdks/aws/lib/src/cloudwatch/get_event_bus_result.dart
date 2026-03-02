@@ -57,11 +57,11 @@ class GetEventBusResult {
   factory GetEventBusResult.fromMap(Map<String, dynamic> map) {
     return GetEventBusResult(
       arn: map['arn'] as String,
-      deadLetterConfigs: pulumi.Input.decodeList<GetEventBusDeadLetterConfig>(map['deadLetterConfigs'], (value) => GetEventBusDeadLetterConfig.fromMap((value as Map).cast<String, dynamic>())),
+      deadLetterConfigs: pulumi.Input.decodeList<GetEventBusDeadLetterConfig>(map['deadLetterConfigs']!, (value) => GetEventBusDeadLetterConfig.fromMap((value as Map).cast<String, dynamic>())),
       description: map['description'] as String,
       id: map['id'] as String,
       kmsKeyIdentifier: map['kmsKeyIdentifier'] as String,
-      logConfigs: pulumi.Input.decodeList<GetEventBusLogConfig>(map['logConfigs'], (value) => GetEventBusLogConfig.fromMap((value as Map).cast<String, dynamic>())),
+      logConfigs: pulumi.Input.decodeList<GetEventBusLogConfig>(map['logConfigs']!, (value) => GetEventBusLogConfig.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       region: map['region'] as String,
     );

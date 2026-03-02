@@ -53,10 +53,10 @@ class VpcAttachmentArgs {
   factory VpcAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return VpcAttachmentArgs(
       coreNetworkId: (map['coreNetworkId'] as String).input(),
-      options: map['options'] == null ? null : (VpcAttachmentOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
-      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : (map['routingPolicyLabel'] as String).input(),
+      options: map['options'] == null ? null : ((VpcAttachmentOptions.fromMap((map['options']! as Map).cast<String, dynamic>())).input()).input(),
+      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : ((map['routingPolicyLabel'] as String).input()).input(),
       subnetArns: ((map['subnetArns'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       vpcArn: (map['vpcArn'] as String).input(),
     );
   }

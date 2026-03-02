@@ -45,12 +45,12 @@ class RepositoryCatalogData {
 
   factory RepositoryCatalogData.fromMap(Map<String, dynamic> map) {
     return RepositoryCatalogData(
-      aboutText: map['aboutText'] == null ? null : (map['aboutText'] as String).input(),
-      architectures: map['architectures'] == null ? null : ((map['architectures'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      logoImageBlob: map['logoImageBlob'] == null ? null : (map['logoImageBlob'] as String).input(),
-      operatingSystems: map['operatingSystems'] == null ? null : ((map['operatingSystems'] as List).cast<String>()).input(),
-      usageText: map['usageText'] == null ? null : (map['usageText'] as String).input(),
+      aboutText: map['aboutText'] == null ? null : ((map['aboutText'] as String).input()).input(),
+      architectures: map['architectures'] == null ? null : (((map['architectures'] as List).cast<String>()).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      logoImageBlob: map['logoImageBlob'] == null ? null : ((map['logoImageBlob'] as String).input()).input(),
+      operatingSystems: map['operatingSystems'] == null ? null : (((map['operatingSystems'] as List).cast<String>()).input()).input(),
+      usageText: map['usageText'] == null ? null : ((map['usageText'] as String).input()).input(),
     );
   }
 }

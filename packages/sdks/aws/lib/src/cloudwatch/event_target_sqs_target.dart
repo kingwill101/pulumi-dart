@@ -20,7 +20,7 @@ class EventTargetSqsTarget {
 
   factory EventTargetSqsTarget.fromMap(Map<String, dynamic> map) {
     return EventTargetSqsTarget(
-      messageGroupId: map['messageGroupId'] == null ? null : (map['messageGroupId'] as String).input(),
+      messageGroupId: map['messageGroupId'] == null ? null : ((map['messageGroupId'] as String).input()).input(),
     );
   }
 }

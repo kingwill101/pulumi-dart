@@ -46,10 +46,10 @@ class CutoverJobVmmigrationV1alpha1Args {
   factory CutoverJobVmmigrationV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return CutoverJobVmmigrationV1alpha1Args(
       cutoverJobId: (map['cutoverJobId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       migratingVmId: (map['migratingVmId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       sourceId: (map['sourceId'] as String).input(),
     );
   }

@@ -29,8 +29,8 @@ class GetAvailabilityZonesArgs {
 
   factory GetAvailabilityZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetAvailabilityZonesArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

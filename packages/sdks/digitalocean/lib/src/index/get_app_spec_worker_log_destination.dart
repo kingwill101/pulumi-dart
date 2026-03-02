@@ -44,11 +44,11 @@ class GetAppSpecWorkerLogDestination {
 
   factory GetAppSpecWorkerLogDestination.fromMap(Map<String, dynamic> map) {
     return GetAppSpecWorkerLogDestination(
-      datadog: map['datadog'] == null ? null : (GetAppSpecWorkerLogDestinationDatadog.fromMap((map['datadog'] as Map).cast<String, dynamic>())).input(),
-      logtail: map['logtail'] == null ? null : (GetAppSpecWorkerLogDestinationLogtail.fromMap((map['logtail'] as Map).cast<String, dynamic>())).input(),
+      datadog: map['datadog'] == null ? null : (GetAppSpecWorkerLogDestinationDatadog.fromMap((map['datadog']! as Map).cast<String, dynamic>())).input(),
+      logtail: map['logtail'] == null ? null : (GetAppSpecWorkerLogDestinationLogtail.fromMap((map['logtail']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      openSearch: map['openSearch'] == null ? null : (GetAppSpecWorkerLogDestinationOpenSearch.fromMap((map['openSearch'] as Map).cast<String, dynamic>())).input(),
-      papertrail: map['papertrail'] == null ? null : (GetAppSpecWorkerLogDestinationPapertrail.fromMap((map['papertrail'] as Map).cast<String, dynamic>())).input(),
+      openSearch: map['openSearch'] == null ? null : (GetAppSpecWorkerLogDestinationOpenSearch.fromMap((map['openSearch']! as Map).cast<String, dynamic>())).input(),
+      papertrail: map['papertrail'] == null ? null : (GetAppSpecWorkerLogDestinationPapertrail.fromMap((map['papertrail']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

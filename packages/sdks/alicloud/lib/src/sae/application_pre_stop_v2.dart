@@ -21,7 +21,7 @@ class ApplicationPreStopV2 {
 
   factory ApplicationPreStopV2.fromMap(Map<String, dynamic> map) {
     return ApplicationPreStopV2(
-      exec: map['exec'] == null ? null : (ApplicationPreStopV2Exec.fromMap((map['exec'] as Map).cast<String, dynamic>())).input(),
+      exec: map['exec'] == null ? null : (ApplicationPreStopV2Exec.fromMap((map['exec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

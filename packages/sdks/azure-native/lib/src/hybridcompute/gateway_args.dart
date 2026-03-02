@@ -49,12 +49,12 @@ class GatewayArgs {
 
   factory GatewayArgs.fromMap(Map<String, dynamic> map) {
     return GatewayArgs(
-      allowedFeatures: map['allowedFeatures'] == null ? null : ((map['allowedFeatures'] as List).cast<String>()).input(),
-      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName'] as String).input(),
-      gatewayType: map['gatewayType'] == null ? null : (map['gatewayType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      allowedFeatures: map['allowedFeatures'] == null ? null : ((map['allowedFeatures']! as List).cast<String>()).input(),
+      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName']! as String).input(),
+      gatewayType: map['gatewayType'] == null ? null : (map['gatewayType']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

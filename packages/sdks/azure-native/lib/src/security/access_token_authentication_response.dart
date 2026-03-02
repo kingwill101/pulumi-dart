@@ -32,9 +32,9 @@ class AccessTokenAuthenticationResponse {
 
   factory AccessTokenAuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return AccessTokenAuthenticationResponse(
-      accessToken: map['accessToken'] == null ? null : (map['accessToken'] as String).input(),
+      accessToken: map['accessToken'] == null ? null : (map['accessToken']! as String).input(),
       authenticationType: (map['authenticationType'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

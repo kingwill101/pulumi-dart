@@ -42,11 +42,11 @@ class NatAddressState {
 
   factory NatAddressState.fromMap(Map<String, dynamic> map) {
     return NatAddressState(
-      activate: map['activate'] == null ? null : (map['activate'] as bool).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      activate: map['activate'] == null ? null : (map['activate']! as bool).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

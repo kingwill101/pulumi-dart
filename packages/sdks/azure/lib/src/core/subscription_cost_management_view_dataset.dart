@@ -40,8 +40,8 @@ class SubscriptionCostManagementViewDataset {
     return SubscriptionCostManagementViewDataset(
       aggregations: (pulumi.Input.decodeList<SubscriptionCostManagementViewDatasetAggregation>(map['aggregations'], (value) => SubscriptionCostManagementViewDatasetAggregation.fromMap((value as Map).cast<String, dynamic>()))).input(),
       granularity: (map['granularity'] as String).input(),
-      groupings: map['groupings'] == null ? null : (pulumi.Input.decodeList<SubscriptionCostManagementViewDatasetGrouping>(map['groupings'], (value) => SubscriptionCostManagementViewDatasetGrouping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sortings: map['sortings'] == null ? null : (pulumi.Input.decodeList<SubscriptionCostManagementViewDatasetSorting>(map['sortings'], (value) => SubscriptionCostManagementViewDatasetSorting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      groupings: map['groupings'] == null ? null : (pulumi.Input.decodeList<SubscriptionCostManagementViewDatasetGrouping>(map['groupings']!, (value) => SubscriptionCostManagementViewDatasetGrouping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sortings: map['sortings'] == null ? null : (pulumi.Input.decodeList<SubscriptionCostManagementViewDatasetSorting>(map['sortings']!, (value) => SubscriptionCostManagementViewDatasetSorting.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

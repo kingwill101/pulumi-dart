@@ -60,14 +60,14 @@ class NicIpConfigurationResourceSettingsResponse {
 
   factory NicIpConfigurationResourceSettingsResponse.fromMap(Map<String, dynamic> map) {
     return NicIpConfigurationResourceSettingsResponse(
-      loadBalancerBackendAddressPools: map['loadBalancerBackendAddressPools'] == null ? null : (pulumi.Input.decodeList<LoadBalancerBackendAddressPoolReferenceResponse>(map['loadBalancerBackendAddressPools'], (value) => LoadBalancerBackendAddressPoolReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      loadBalancerNatRules: map['loadBalancerNatRules'] == null ? null : (pulumi.Input.decodeList<LoadBalancerNatRuleReferenceResponse>(map['loadBalancerNatRules'], (value) => LoadBalancerNatRuleReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
-      privateIpAllocationMethod: map['privateIpAllocationMethod'] == null ? null : (map['privateIpAllocationMethod'] as String).input(),
-      publicIp: map['publicIp'] == null ? null : (PublicIpReferenceResponse.fromMap((map['publicIp'] as Map).cast<String, dynamic>())).input(),
-      subnet: map['subnet'] == null ? null : (SubnetReferenceResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      loadBalancerBackendAddressPools: map['loadBalancerBackendAddressPools'] == null ? null : (pulumi.Input.decodeList<LoadBalancerBackendAddressPoolReferenceResponse>(map['loadBalancerBackendAddressPools']!, (value) => LoadBalancerBackendAddressPoolReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loadBalancerNatRules: map['loadBalancerNatRules'] == null ? null : (pulumi.Input.decodeList<LoadBalancerNatRuleReferenceResponse>(map['loadBalancerNatRules']!, (value) => LoadBalancerNatRuleReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      primary: map['primary'] == null ? null : (map['primary']! as bool).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
+      privateIpAllocationMethod: map['privateIpAllocationMethod'] == null ? null : (map['privateIpAllocationMethod']! as String).input(),
+      publicIp: map['publicIp'] == null ? null : (PublicIpReferenceResponse.fromMap((map['publicIp']! as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (SubnetReferenceResponse.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

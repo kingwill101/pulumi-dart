@@ -21,7 +21,7 @@ class TrustSettings {
 
   factory TrustSettings.fromMap(Map<String, dynamic> map) {
     return TrustSettings(
-      trustList: map['trustList'] == null ? null : (map['trustList'] as String).input(),
+      trustList: map['trustList'] == null ? null : (map['trustList']! as String).input(),
     );
   }
 }

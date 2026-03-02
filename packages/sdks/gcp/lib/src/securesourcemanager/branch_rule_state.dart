@@ -97,22 +97,22 @@ class BranchRuleState {
 
   factory BranchRuleState.fromMap(Map<String, dynamic> map) {
     return BranchRuleState(
-      allowStaleReviews: map['allowStaleReviews'] == null ? null : (map['allowStaleReviews'] as bool).input(),
-      branchRuleId: map['branchRuleId'] == null ? null : (map['branchRuleId'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      includePattern: map['includePattern'] == null ? null : (map['includePattern'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      minimumApprovalsCount: map['minimumApprovalsCount'] == null ? null : (map['minimumApprovalsCount'] as int).input(),
-      minimumReviewsCount: map['minimumReviewsCount'] == null ? null : (map['minimumReviewsCount'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      repositoryId: map['repositoryId'] == null ? null : (map['repositoryId'] as String).input(),
-      requireCommentsResolved: map['requireCommentsResolved'] == null ? null : (map['requireCommentsResolved'] as bool).input(),
-      requireLinearHistory: map['requireLinearHistory'] == null ? null : (map['requireLinearHistory'] as bool).input(),
-      requirePullRequest: map['requirePullRequest'] == null ? null : (map['requirePullRequest'] as bool).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      allowStaleReviews: map['allowStaleReviews'] == null ? null : (map['allowStaleReviews']! as bool).input(),
+      branchRuleId: map['branchRuleId'] == null ? null : (map['branchRuleId']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      includePattern: map['includePattern'] == null ? null : (map['includePattern']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      minimumApprovalsCount: map['minimumApprovalsCount'] == null ? null : (map['minimumApprovalsCount']! as int).input(),
+      minimumReviewsCount: map['minimumReviewsCount'] == null ? null : (map['minimumReviewsCount']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      repositoryId: map['repositoryId'] == null ? null : (map['repositoryId']! as String).input(),
+      requireCommentsResolved: map['requireCommentsResolved'] == null ? null : (map['requireCommentsResolved']! as bool).input(),
+      requireLinearHistory: map['requireLinearHistory'] == null ? null : (map['requireLinearHistory']! as bool).input(),
+      requirePullRequest: map['requirePullRequest'] == null ? null : (map['requirePullRequest']! as bool).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

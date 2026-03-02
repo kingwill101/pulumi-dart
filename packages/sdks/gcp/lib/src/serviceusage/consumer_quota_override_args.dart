@@ -58,12 +58,12 @@ class ConsumerQuotaOverrideArgs {
 
   factory ConsumerQuotaOverrideArgs.fromMap(Map<String, dynamic> map) {
     return ConsumerQuotaOverrideArgs(
-      dimensions: map['dimensions'] == null ? null : ((map['dimensions'] as Map).cast<String, String>()).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      dimensions: map['dimensions'] == null ? null : ((map['dimensions']! as Map).cast<String, String>()).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
       limit: (map['limit'] as String).input(),
       metric: (map['metric'] as String).input(),
       overrideValue: (map['overrideValue'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       service: (map['service'] as String).input(),
     );
   }

@@ -77,11 +77,11 @@ class MetricTriggerResponse {
 
   factory MetricTriggerResponse.fromMap(Map<String, dynamic> map) {
     return MetricTriggerResponse(
-      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<ScaleRuleMetricDimensionResponse>(map['dimensions'], (value) => ScaleRuleMetricDimensionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dividePerInstance: map['dividePerInstance'] == null ? null : (map['dividePerInstance'] as bool).input(),
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<ScaleRuleMetricDimensionResponse>(map['dimensions']!, (value) => ScaleRuleMetricDimensionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dividePerInstance: map['dividePerInstance'] == null ? null : (map['dividePerInstance']! as bool).input(),
       metricName: (map['metricName'] as String).input(),
-      metricNamespace: map['metricNamespace'] == null ? null : (map['metricNamespace'] as String).input(),
-      metricResourceLocation: map['metricResourceLocation'] == null ? null : (map['metricResourceLocation'] as String).input(),
+      metricNamespace: map['metricNamespace'] == null ? null : (map['metricNamespace']! as String).input(),
+      metricResourceLocation: map['metricResourceLocation'] == null ? null : (map['metricResourceLocation']! as String).input(),
       metricResourceUri: (map['metricResourceUri'] as String).input(),
       operator: (map['operator'] as String).input(),
       statistic: (map['statistic'] as String).input(),

@@ -92,21 +92,21 @@ class DomainDevicesInterfaceDriver {
 
   factory DomainDevicesInterfaceDriver.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceDriver(
-      ats: map['ats'] == null ? null : (map['ats'] as String).input(),
-      eventIdx: map['eventIdx'] == null ? null : (map['eventIdx'] as String).input(),
-      guest: map['guest'] == null ? null : (DomainDevicesInterfaceDriverGuest.fromMap((map['guest'] as Map).cast<String, dynamic>())).input(),
-      host: map['host'] == null ? null : (DomainDevicesInterfaceDriverHost.fromMap((map['host'] as Map).cast<String, dynamic>())).input(),
-      ioEventFd: map['ioEventFd'] == null ? null : (map['ioEventFd'] as String).input(),
-      iommu: map['iommu'] == null ? null : (map['iommu'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      packed: map['packed'] == null ? null : (map['packed'] as String).input(),
-      pagePerVq: map['pagePerVq'] == null ? null : (map['pagePerVq'] as String).input(),
-      queues: map['queues'] == null ? null : (map['queues'] as double).input(),
-      rss: map['rss'] == null ? null : (map['rss'] as String).input(),
-      rssHashReport: map['rssHashReport'] == null ? null : (map['rssHashReport'] as String).input(),
-      rxQueueSize: map['rxQueueSize'] == null ? null : (map['rxQueueSize'] as double).input(),
-      txMode: map['txMode'] == null ? null : (map['txMode'] as String).input(),
-      txQueueSize: map['txQueueSize'] == null ? null : (map['txQueueSize'] as double).input(),
+      ats: map['ats'] == null ? null : (map['ats']! as String).input(),
+      eventIdx: map['eventIdx'] == null ? null : (map['eventIdx']! as String).input(),
+      guest: map['guest'] == null ? null : (DomainDevicesInterfaceDriverGuest.fromMap((map['guest']! as Map).cast<String, dynamic>())).input(),
+      host: map['host'] == null ? null : (DomainDevicesInterfaceDriverHost.fromMap((map['host']! as Map).cast<String, dynamic>())).input(),
+      ioEventFd: map['ioEventFd'] == null ? null : (map['ioEventFd']! as String).input(),
+      iommu: map['iommu'] == null ? null : (map['iommu']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      packed: map['packed'] == null ? null : (map['packed']! as String).input(),
+      pagePerVq: map['pagePerVq'] == null ? null : (map['pagePerVq']! as String).input(),
+      queues: map['queues'] == null ? null : (map['queues']! as double).input(),
+      rss: map['rss'] == null ? null : (map['rss']! as String).input(),
+      rssHashReport: map['rssHashReport'] == null ? null : (map['rssHashReport']! as String).input(),
+      rxQueueSize: map['rxQueueSize'] == null ? null : (map['rxQueueSize']! as double).input(),
+      txMode: map['txMode'] == null ? null : (map['txMode']! as String).input(),
+      txQueueSize: map['txQueueSize'] == null ? null : (map['txQueueSize']! as double).input(),
     );
   }
 }

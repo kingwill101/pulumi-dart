@@ -25,8 +25,8 @@ class ClusterBinaryAuthorization {
 
   factory ClusterBinaryAuthorization.fromMap(Map<String, dynamic> map) {
     return ClusterBinaryAuthorization(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      evaluationMode: map['evaluationMode'] == null ? null : (map['evaluationMode'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      evaluationMode: map['evaluationMode'] == null ? null : (map['evaluationMode']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class ListEnergyServicePartitionsResult {
 
   factory ListEnergyServicePartitionsResult.fromMap(Map<String, dynamic> map) {
     return ListEnergyServicePartitionsResult(
-      dataPartitionInfo: map['dataPartitionInfo'] == null ? null : pulumi.Input.decodeList<DataPartitionPropertiesResponse>(map['dataPartitionInfo'], (value) => DataPartitionPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      dataPartitionInfo: map['dataPartitionInfo'] == null ? null : pulumi.Input.decodeList<DataPartitionPropertiesResponse>(map['dataPartitionInfo']!, (value) => DataPartitionPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

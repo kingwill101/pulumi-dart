@@ -43,10 +43,10 @@ class BackupManagedidentitiesV1beta1Args {
   factory BackupManagedidentitiesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return BackupManagedidentitiesV1beta1Args(
       backupId: (map['backupId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       domainId: (map['domainId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

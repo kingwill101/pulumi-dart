@@ -21,7 +21,7 @@ class WebAclDataProtectionConfig {
 
   factory WebAclDataProtectionConfig.fromMap(Map<String, dynamic> map) {
     return WebAclDataProtectionConfig(
-      dataProtections: map['dataProtections'] == null ? null : (pulumi.Input.decodeList<WebAclDataProtectionConfigDataProtection>(map['dataProtections'], (value) => WebAclDataProtectionConfigDataProtection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataProtections: map['dataProtections'] == null ? null : ((pulumi.Input.decodeList<WebAclDataProtectionConfigDataProtection>(map['dataProtections']!, (value) => WebAclDataProtectionConfigDataProtection.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

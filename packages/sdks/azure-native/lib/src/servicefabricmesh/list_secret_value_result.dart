@@ -20,7 +20,7 @@ class ListSecretValueResult {
 
   factory ListSecretValueResult.fromMap(Map<String, dynamic> map) {
     return ListSecretValueResult(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : map['value']! as String,
     );
   }
 }

@@ -27,7 +27,7 @@ class VolumeRelocationPropertiesResponse {
   factory VolumeRelocationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VolumeRelocationPropertiesResponse(
       readyToBeFinalized: (map['readyToBeFinalized'] as bool).input(),
-      relocationRequested: map['relocationRequested'] == null ? null : (map['relocationRequested'] as bool).input(),
+      relocationRequested: map['relocationRequested'] == null ? null : (map['relocationRequested']! as bool).input(),
     );
   }
 }

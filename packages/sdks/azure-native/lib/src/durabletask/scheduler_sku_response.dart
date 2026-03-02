@@ -31,7 +31,7 @@ class SchedulerSkuResponse {
 
   factory SchedulerSkuResponse.fromMap(Map<String, dynamic> map) {
     return SchedulerSkuResponse(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
       name: (map['name'] as String).input(),
       redundancyState: (map['redundancyState'] as String).input(),
     );

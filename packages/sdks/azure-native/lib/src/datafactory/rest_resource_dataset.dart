@@ -85,18 +85,18 @@ class RestResourceDataset {
 
   factory RestResourceDataset.fromMap(Map<String, dynamic> map) {
     return RestResourceDataset(
-      additionalHeaders: map['additionalHeaders'] == null ? null : ((map['additionalHeaders'] as Map).cast<String, dynamic>()).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      folder: map['folder'] == null ? null : (DatasetFolder.fromMap((map['folder'] as Map).cast<String, dynamic>())).input(),
+      additionalHeaders: map['additionalHeaders'] == null ? null : ((map['additionalHeaders']! as Map).cast<String, dynamic>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      folder: map['folder'] == null ? null : (DatasetFolder.fromMap((map['folder']! as Map).cast<String, dynamic>())).input(),
       linkedServiceName: (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
-      paginationRules: map['paginationRules'] == null ? null : ((map['paginationRules'] as Map).cast<String, dynamic>()).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      relativeUrl: map['relativeUrl'] == null ? null : (map['relativeUrl']).input(),
-      requestBody: map['requestBody'] == null ? null : (map['requestBody']).input(),
-      requestMethod: map['requestMethod'] == null ? null : (map['requestMethod']).input(),
-      schema: map['schema'] == null ? null : (map['schema']).input(),
-      structure: map['structure'] == null ? null : (map['structure']).input(),
+      paginationRules: map['paginationRules'] == null ? null : ((map['paginationRules']! as Map).cast<String, dynamic>()).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters']!, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      relativeUrl: map['relativeUrl'] == null ? null : (map['relativeUrl']!).input(),
+      requestBody: map['requestBody'] == null ? null : (map['requestBody']!).input(),
+      requestMethod: map['requestMethod'] == null ? null : (map['requestMethod']!).input(),
+      schema: map['schema'] == null ? null : (map['schema']!).input(),
+      structure: map['structure'] == null ? null : (map['structure']!).input(),
       type: (map['type'] as String).input(),
     );
   }

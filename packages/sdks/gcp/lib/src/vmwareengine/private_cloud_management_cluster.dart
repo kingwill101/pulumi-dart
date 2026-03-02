@@ -48,10 +48,10 @@ class PrivateCloudManagementCluster {
 
   factory PrivateCloudManagementCluster.fromMap(Map<String, dynamic> map) {
     return PrivateCloudManagementCluster(
-      autoscalingSettings: map['autoscalingSettings'] == null ? null : (PrivateCloudManagementClusterAutoscalingSettings.fromMap((map['autoscalingSettings'] as Map).cast<String, dynamic>())).input(),
+      autoscalingSettings: map['autoscalingSettings'] == null ? null : (PrivateCloudManagementClusterAutoscalingSettings.fromMap((map['autoscalingSettings']! as Map).cast<String, dynamic>())).input(),
       clusterId: (map['clusterId'] as String).input(),
-      nodeTypeConfigs: map['nodeTypeConfigs'] == null ? null : (pulumi.Input.decodeList<PrivateCloudManagementClusterNodeTypeConfig>(map['nodeTypeConfigs'], (value) => PrivateCloudManagementClusterNodeTypeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      stretchedClusterConfig: map['stretchedClusterConfig'] == null ? null : (PrivateCloudManagementClusterStretchedClusterConfig.fromMap((map['stretchedClusterConfig'] as Map).cast<String, dynamic>())).input(),
+      nodeTypeConfigs: map['nodeTypeConfigs'] == null ? null : (pulumi.Input.decodeList<PrivateCloudManagementClusterNodeTypeConfig>(map['nodeTypeConfigs']!, (value) => PrivateCloudManagementClusterNodeTypeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stretchedClusterConfig: map['stretchedClusterConfig'] == null ? null : (PrivateCloudManagementClusterStretchedClusterConfig.fromMap((map['stretchedClusterConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

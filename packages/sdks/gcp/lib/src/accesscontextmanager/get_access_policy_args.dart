@@ -30,7 +30,7 @@ class GetAccessPolicyArgs {
   factory GetAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPolicyArgs(
       parent: (map['parent'] as String).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class VirtualNodeSpecBackend {
 
   factory VirtualNodeSpecBackend.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecBackend(
-      virtualService: (VirtualNodeSpecBackendVirtualService.fromMap((map['virtualService'] as Map).cast<String, dynamic>())).input(),
+      virtualService: (VirtualNodeSpecBackendVirtualService.fromMap((map['virtualService']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

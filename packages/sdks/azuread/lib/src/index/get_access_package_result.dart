@@ -42,7 +42,7 @@ class GetAccessPackageResult {
 
   factory GetAccessPackageResult.fromMap(Map<String, dynamic> map) {
     return GetAccessPackageResult(
-      catalogId: map['catalogId'] == null ? null : map['catalogId'] as String,
+      catalogId: map['catalogId'] == null ? null : map['catalogId']! as String,
       description: map['description'] as String,
       displayName: map['displayName'] as String,
       hidden: map['hidden'] as bool,

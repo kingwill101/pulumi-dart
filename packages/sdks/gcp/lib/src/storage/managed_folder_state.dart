@@ -55,13 +55,13 @@ class ManagedFolderState {
 
   factory ManagedFolderState.fromMap(Map<String, dynamic> map) {
     return ManagedFolderState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      metageneration: map['metageneration'] == null ? null : (map['metageneration'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy']! as bool).input(),
+      metageneration: map['metageneration'] == null ? null : (map['metageneration']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

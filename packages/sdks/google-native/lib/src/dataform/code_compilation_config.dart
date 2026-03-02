@@ -56,14 +56,14 @@ class CodeCompilationConfig {
 
   factory CodeCompilationConfig.fromMap(Map<String, dynamic> map) {
     return CodeCompilationConfig(
-      assertionSchema: map['assertionSchema'] == null ? null : (map['assertionSchema'] as String).input(),
-      databaseSuffix: map['databaseSuffix'] == null ? null : (map['databaseSuffix'] as String).input(),
-      defaultDatabase: map['defaultDatabase'] == null ? null : (map['defaultDatabase'] as String).input(),
-      defaultLocation: map['defaultLocation'] == null ? null : (map['defaultLocation'] as String).input(),
-      defaultSchema: map['defaultSchema'] == null ? null : (map['defaultSchema'] as String).input(),
-      schemaSuffix: map['schemaSuffix'] == null ? null : (map['schemaSuffix'] as String).input(),
-      tablePrefix: map['tablePrefix'] == null ? null : (map['tablePrefix'] as String).input(),
-      vars: map['vars'] == null ? null : ((map['vars'] as Map).cast<String, String>()).input(),
+      assertionSchema: map['assertionSchema'] == null ? null : (map['assertionSchema']! as String).input(),
+      databaseSuffix: map['databaseSuffix'] == null ? null : (map['databaseSuffix']! as String).input(),
+      defaultDatabase: map['defaultDatabase'] == null ? null : (map['defaultDatabase']! as String).input(),
+      defaultLocation: map['defaultLocation'] == null ? null : (map['defaultLocation']! as String).input(),
+      defaultSchema: map['defaultSchema'] == null ? null : (map['defaultSchema']! as String).input(),
+      schemaSuffix: map['schemaSuffix'] == null ? null : (map['schemaSuffix']! as String).input(),
+      tablePrefix: map['tablePrefix'] == null ? null : (map['tablePrefix']! as String).input(),
+      vars: map['vars'] == null ? null : ((map['vars']! as Map).cast<String, String>()).input(),
     );
   }
 }

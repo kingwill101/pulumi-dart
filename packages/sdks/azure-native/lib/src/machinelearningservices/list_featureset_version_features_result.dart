@@ -27,8 +27,8 @@ class ListFeaturesetVersionFeaturesResult {
 
   factory ListFeaturesetVersionFeaturesResult.fromMap(Map<String, dynamic> map) {
     return ListFeaturesetVersionFeaturesResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<FeatureResponse>(map['value'], (value) => FeatureResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<FeatureResponse>(map['value']!, (value) => FeatureResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

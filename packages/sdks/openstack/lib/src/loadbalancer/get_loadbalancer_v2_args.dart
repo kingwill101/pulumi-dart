@@ -71,15 +71,15 @@ class GetLoadbalancerV2Args {
 
   factory GetLoadbalancerV2Args.fromMap(Map<String, dynamic> map) {
     return GetLoadbalancerV2Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      loadbalancerId: map['loadbalancerId'] == null ? null : (map['loadbalancerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      tagsAnies: map['tagsAnies'] == null ? null : ((map['tagsAnies'] as List).cast<String>()).input(),
-      tagsNotAnies: map['tagsNotAnies'] == null ? null : ((map['tagsNotAnies'] as List).cast<String>()).input(),
-      tagsNots: map['tagsNots'] == null ? null : ((map['tagsNots'] as List).cast<String>()).input(),
-      vipAddress: map['vipAddress'] == null ? null : (map['vipAddress'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      loadbalancerId: map['loadbalancerId'] == null ? null : (map['loadbalancerId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      tagsAnies: map['tagsAnies'] == null ? null : ((map['tagsAnies']! as List).cast<String>()).input(),
+      tagsNotAnies: map['tagsNotAnies'] == null ? null : ((map['tagsNotAnies']! as List).cast<String>()).input(),
+      tagsNots: map['tagsNots'] == null ? null : ((map['tagsNots']! as List).cast<String>()).input(),
+      vipAddress: map['vipAddress'] == null ? null : (map['vipAddress']! as String).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class ClusterAddonsConfigCloudrunConfig {
   factory ClusterAddonsConfigCloudrunConfig.fromMap(Map<String, dynamic> map) {
     return ClusterAddonsConfigCloudrunConfig(
       disabled: (map['disabled'] as bool).input(),
-      loadBalancerType: map['loadBalancerType'] == null ? null : (map['loadBalancerType'] as String).input(),
+      loadBalancerType: map['loadBalancerType'] == null ? null : (map['loadBalancerType']! as String).input(),
     );
   }
 }

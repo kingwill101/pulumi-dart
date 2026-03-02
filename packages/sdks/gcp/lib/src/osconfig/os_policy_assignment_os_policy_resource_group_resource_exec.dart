@@ -34,7 +34,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExec {
 
   factory OsPolicyAssignmentOsPolicyResourceGroupResourceExec.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourceExec(
-      enforce: map['enforce'] == null ? null : (OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce.fromMap((map['enforce'] as Map).cast<String, dynamic>())).input(),
+      enforce: map['enforce'] == null ? null : (OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce.fromMap((map['enforce']! as Map).cast<String, dynamic>())).input(),
       validate: (OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate.fromMap((map['validate'] as Map).cast<String, dynamic>())).input(),
     );
   }

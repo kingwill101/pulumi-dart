@@ -107,22 +107,22 @@ class WebAclArgs {
 
   factory WebAclArgs.fromMap(Map<String, dynamic> map) {
     return WebAclArgs(
-      associationConfig: map['associationConfig'] == null ? null : (WebAclAssociationConfig.fromMap((map['associationConfig'] as Map).cast<String, dynamic>())).input(),
-      captchaConfig: map['captchaConfig'] == null ? null : (WebAclCaptchaConfig.fromMap((map['captchaConfig'] as Map).cast<String, dynamic>())).input(),
-      challengeConfig: map['challengeConfig'] == null ? null : (WebAclChallengeConfig.fromMap((map['challengeConfig'] as Map).cast<String, dynamic>())).input(),
-      customResponseBodies: map['customResponseBodies'] == null ? null : (pulumi.Input.decodeList<WebAclCustomResponseBody>(map['customResponseBodies'], (value) => WebAclCustomResponseBody.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dataProtectionConfig: map['dataProtectionConfig'] == null ? null : (WebAclDataProtectionConfig.fromMap((map['dataProtectionConfig'] as Map).cast<String, dynamic>())).input(),
-      defaultAction: (WebAclDefaultAction.fromMap((map['defaultAction'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      ruleJson: map['ruleJson'] == null ? null : (map['ruleJson'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<WebAclRule>(map['rules'], (value) => WebAclRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      associationConfig: map['associationConfig'] == null ? null : ((WebAclAssociationConfig.fromMap((map['associationConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      captchaConfig: map['captchaConfig'] == null ? null : ((WebAclCaptchaConfig.fromMap((map['captchaConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      challengeConfig: map['challengeConfig'] == null ? null : ((WebAclChallengeConfig.fromMap((map['challengeConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      customResponseBodies: map['customResponseBodies'] == null ? null : ((pulumi.Input.decodeList<WebAclCustomResponseBody>(map['customResponseBodies']!, (value) => WebAclCustomResponseBody.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      dataProtectionConfig: map['dataProtectionConfig'] == null ? null : ((WebAclDataProtectionConfig.fromMap((map['dataProtectionConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      defaultAction: (WebAclDefaultAction.fromMap((map['defaultAction']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      ruleJson: map['ruleJson'] == null ? null : ((map['ruleJson'] as String).input()).input(),
+      rules: map['rules'] == null ? null : ((pulumi.Input.decodeList<WebAclRule>(map['rules']!, (value) => WebAclRule.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       scope: (map['scope'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tokenDomains: map['tokenDomains'] == null ? null : ((map['tokenDomains'] as List).cast<String>()).input(),
-      visibilityConfig: (WebAclVisibilityConfig.fromMap((map['visibilityConfig'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tokenDomains: map['tokenDomains'] == null ? null : (((map['tokenDomains'] as List).cast<String>()).input()).input(),
+      visibilityConfig: (WebAclVisibilityConfig.fromMap((map['visibilityConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

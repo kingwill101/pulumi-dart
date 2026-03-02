@@ -56,7 +56,7 @@ class FileImportArgs {
   factory FileImportArgs.fromMap(Map<String, dynamic> map) {
     return FileImportArgs(
       contentType: (map['contentType'] as String).input(),
-      fileImportId: map['fileImportId'] == null ? null : (map['fileImportId'] as String).input(),
+      fileImportId: map['fileImportId'] == null ? null : (map['fileImportId']! as String).input(),
       importFile: (FileMetadata.fromMap((map['importFile'] as Map).cast<String, dynamic>())).input(),
       ingestionMode: (map['ingestionMode'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

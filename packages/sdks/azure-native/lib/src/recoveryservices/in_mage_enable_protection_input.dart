@@ -73,17 +73,17 @@ class InMageEnableProtectionInput {
 
   factory InMageEnableProtectionInput.fromMap(Map<String, dynamic> map) {
     return InMageEnableProtectionInput(
-      datastoreName: map['datastoreName'] == null ? null : (map['datastoreName'] as String).input(),
-      diskExclusionInput: map['diskExclusionInput'] == null ? null : (InMageDiskExclusionInput.fromMap((map['diskExclusionInput'] as Map).cast<String, dynamic>())).input(),
-      disksToInclude: map['disksToInclude'] == null ? null : ((map['disksToInclude'] as List).cast<String>()).input(),
+      datastoreName: map['datastoreName'] == null ? null : (map['datastoreName']! as String).input(),
+      diskExclusionInput: map['diskExclusionInput'] == null ? null : (InMageDiskExclusionInput.fromMap((map['diskExclusionInput']! as Map).cast<String, dynamic>())).input(),
+      disksToInclude: map['disksToInclude'] == null ? null : ((map['disksToInclude']! as List).cast<String>()).input(),
       instanceType: (map['instanceType'] as String).input(),
       masterTargetId: (map['masterTargetId'] as String).input(),
       multiVmGroupId: (map['multiVmGroupId'] as String).input(),
       multiVmGroupName: (map['multiVmGroupName'] as String).input(),
       processServerId: (map['processServerId'] as String).input(),
       retentionDrive: (map['retentionDrive'] as String).input(),
-      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId'] as String).input(),
-      vmFriendlyName: map['vmFriendlyName'] == null ? null : (map['vmFriendlyName'] as String).input(),
+      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId']! as String).input(),
+      vmFriendlyName: map['vmFriendlyName'] == null ? null : (map['vmFriendlyName']! as String).input(),
     );
   }
 }

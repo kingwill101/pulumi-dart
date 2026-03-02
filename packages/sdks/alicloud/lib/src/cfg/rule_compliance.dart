@@ -25,8 +25,8 @@ class RuleCompliance {
 
   factory RuleCompliance.fromMap(Map<String, dynamic> map) {
     return RuleCompliance(
-      complianceType: map['complianceType'] == null ? null : (map['complianceType'] as String).input(),
-      count: map['count'] == null ? null : (map['count'] as int).input(),
+      complianceType: map['complianceType'] == null ? null : (map['complianceType']! as String).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
     );
   }
 }

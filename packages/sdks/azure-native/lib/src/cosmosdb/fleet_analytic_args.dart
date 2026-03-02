@@ -44,11 +44,11 @@ class FleetAnalyticArgs {
 
   factory FleetAnalyticArgs.fromMap(Map<String, dynamic> map) {
     return FleetAnalyticArgs(
-      fleetAnalyticsName: map['fleetAnalyticsName'] == null ? null : (map['fleetAnalyticsName'] as String).input(),
+      fleetAnalyticsName: map['fleetAnalyticsName'] == null ? null : (map['fleetAnalyticsName']! as String).input(),
       fleetName: (map['fleetName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageLocationType: map['storageLocationType'] == null ? null : (map['storageLocationType'] as String).input(),
-      storageLocationUri: map['storageLocationUri'] == null ? null : (map['storageLocationUri'] as String).input(),
+      storageLocationType: map['storageLocationType'] == null ? null : (map['storageLocationType']! as String).input(),
+      storageLocationUri: map['storageLocationUri'] == null ? null : (map['storageLocationUri']! as String).input(),
     );
   }
 }

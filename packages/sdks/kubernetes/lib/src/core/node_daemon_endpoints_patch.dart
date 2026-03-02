@@ -22,7 +22,7 @@ class NodeDaemonEndpointsPatch {
 
   factory NodeDaemonEndpointsPatch.fromMap(Map<String, dynamic> map) {
     return NodeDaemonEndpointsPatch(
-      kubeletEndpoint: map['kubeletEndpoint'] == null ? null : (DaemonEndpointPatch.fromMap((map['kubeletEndpoint'] as Map).cast<String, dynamic>())).input(),
+      kubeletEndpoint: map['kubeletEndpoint'] == null ? null : (DaemonEndpointPatch.fromMap((map['kubeletEndpoint']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

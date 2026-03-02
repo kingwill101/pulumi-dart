@@ -20,7 +20,7 @@ class DatabaseInstanceSettingsDataCacheConfig {
 
   factory DatabaseInstanceSettingsDataCacheConfig.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsDataCacheConfig(
-      dataCacheEnabled: map['dataCacheEnabled'] == null ? null : (map['dataCacheEnabled'] as bool).input(),
+      dataCacheEnabled: map['dataCacheEnabled'] == null ? null : (map['dataCacheEnabled']! as bool).input(),
     );
   }
 }

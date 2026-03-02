@@ -63,12 +63,12 @@ class DscNodeConfigurationArgs {
     return DscNodeConfigurationArgs(
       automationAccountName: (map['automationAccountName'] as String).input(),
       configuration: (DscConfigurationAssociationProperty.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      incrementNodeConfigurationBuild: map['incrementNodeConfigurationBuild'] == null ? null : (map['incrementNodeConfigurationBuild'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodeConfigurationName: map['nodeConfigurationName'] == null ? null : (map['nodeConfigurationName'] as String).input(),
+      incrementNodeConfigurationBuild: map['incrementNodeConfigurationBuild'] == null ? null : (map['incrementNodeConfigurationBuild']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodeConfigurationName: map['nodeConfigurationName'] == null ? null : (map['nodeConfigurationName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       source: (ContentSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

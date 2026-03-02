@@ -68,14 +68,14 @@ class ApplicationGatewayFrontendIPConfigurationResponse {
   factory ApplicationGatewayFrontendIPConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayFrontendIPConfigurationResponse(
       etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod'] as String).input(),
-      privateLinkConfiguration: map['privateLinkConfiguration'] == null ? null : (SubResourceResponse.fromMap((map['privateLinkConfiguration'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress']! as String).input(),
+      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod']! as String).input(),
+      privateLinkConfiguration: map['privateLinkConfiguration'] == null ? null : (SubResourceResponse.fromMap((map['privateLinkConfiguration']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      publicIPAddress: map['publicIPAddress'] == null ? null : (SubResourceResponse.fromMap((map['publicIPAddress'] as Map).cast<String, dynamic>())).input(),
-      subnet: map['subnet'] == null ? null : (SubResourceResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      publicIPAddress: map['publicIPAddress'] == null ? null : (SubResourceResponse.fromMap((map['publicIPAddress']! as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (SubResourceResponse.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

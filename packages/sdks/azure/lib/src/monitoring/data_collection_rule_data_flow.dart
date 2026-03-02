@@ -40,11 +40,11 @@ class DataCollectionRuleDataFlow {
 
   factory DataCollectionRuleDataFlow.fromMap(Map<String, dynamic> map) {
     return DataCollectionRuleDataFlow(
-      builtInTransform: map['builtInTransform'] == null ? null : (map['builtInTransform'] as String).input(),
+      builtInTransform: map['builtInTransform'] == null ? null : (map['builtInTransform']! as String).input(),
       destinations: ((map['destinations'] as List).cast<String>()).input(),
-      outputStream: map['outputStream'] == null ? null : (map['outputStream'] as String).input(),
+      outputStream: map['outputStream'] == null ? null : (map['outputStream']! as String).input(),
       streams: ((map['streams'] as List).cast<String>()).input(),
-      transformKql: map['transformKql'] == null ? null : (map['transformKql'] as String).input(),
+      transformKql: map['transformKql'] == null ? null : (map['transformKql']! as String).input(),
     );
   }
 }

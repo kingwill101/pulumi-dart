@@ -50,12 +50,12 @@ class TokenArgs {
 
   factory TokenArgs.fromMap(Map<String, dynamic> map) {
     return TokenArgs(
-      credentials: map['credentials'] == null ? null : (TokenCredentialsProperties.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
+      credentials: map['credentials'] == null ? null : (TokenCredentialsProperties.fromMap((map['credentials']! as Map).cast<String, dynamic>())).input(),
       registryName: (map['registryName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scopeMapId: map['scopeMapId'] == null ? null : (map['scopeMapId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tokenName: map['tokenName'] == null ? null : (map['tokenName'] as String).input(),
+      scopeMapId: map['scopeMapId'] == null ? null : (map['scopeMapId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tokenName: map['tokenName'] == null ? null : (map['tokenName']! as String).input(),
     );
   }
 }

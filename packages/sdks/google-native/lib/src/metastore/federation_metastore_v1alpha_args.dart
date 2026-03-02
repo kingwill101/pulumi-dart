@@ -57,14 +57,14 @@ class FederationMetastoreV1alphaArgs {
 
   factory FederationMetastoreV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return FederationMetastoreV1alphaArgs(
-      backendMetastores: map['backendMetastores'] == null ? null : ((map['backendMetastores'] as Map).cast<String, String>()).input(),
+      backendMetastores: map['backendMetastores'] == null ? null : ((map['backendMetastores']! as Map).cast<String, String>()).input(),
       federationId: (map['federationId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

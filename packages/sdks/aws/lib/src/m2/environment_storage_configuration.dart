@@ -25,8 +25,8 @@ class EnvironmentStorageConfiguration {
 
   factory EnvironmentStorageConfiguration.fromMap(Map<String, dynamic> map) {
     return EnvironmentStorageConfiguration(
-      efs: map['efs'] == null ? null : (EnvironmentStorageConfigurationEfs.fromMap((map['efs'] as Map).cast<String, dynamic>())).input(),
-      fsx: map['fsx'] == null ? null : (EnvironmentStorageConfigurationFsx.fromMap((map['fsx'] as Map).cast<String, dynamic>())).input(),
+      efs: map['efs'] == null ? null : ((EnvironmentStorageConfigurationEfs.fromMap((map['efs']! as Map).cast<String, dynamic>())).input()).input(),
+      fsx: map['fsx'] == null ? null : ((EnvironmentStorageConfigurationFsx.fromMap((map['fsx']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

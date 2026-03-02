@@ -35,10 +35,10 @@ class TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Config
 
   factory TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration.fromMap(Map<String, dynamic> map) {
     return TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      encryptionOption: map['encryptionOption'] == null ? null : (map['encryptionOption'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      objectKeyPrefix: map['objectKeyPrefix'] == null ? null : (map['objectKeyPrefix'] as String).input(),
+      bucketName: map['bucketName'] == null ? null : ((map['bucketName'] as String).input()).input(),
+      encryptionOption: map['encryptionOption'] == null ? null : ((map['encryptionOption'] as String).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      objectKeyPrefix: map['objectKeyPrefix'] == null ? null : ((map['objectKeyPrefix'] as String).input()).input(),
     );
   }
 }

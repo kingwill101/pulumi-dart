@@ -76,17 +76,17 @@ class GlobalRulestackArgs {
 
   factory GlobalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return GlobalRulestackArgs(
-      associatedSubscriptions: map['associatedSubscriptions'] == null ? null : ((map['associatedSubscriptions'] as List).cast<String>()).input(),
-      defaultMode: map['defaultMode'] == null ? null : (map['defaultMode'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      globalRulestackName: map['globalRulestackName'] == null ? null : (map['globalRulestackName'] as String).input(),
-      identity: map['identity'] == null ? null : (AzureResourceManagerManagedIdentityProperties.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      minAppIdVersion: map['minAppIdVersion'] == null ? null : (map['minAppIdVersion'] as String).input(),
-      panEtag: map['panEtag'] == null ? null : (map['panEtag'] as String).input(),
-      panLocation: map['panLocation'] == null ? null : (map['panLocation'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      securityServices: map['securityServices'] == null ? null : (SecurityServices.fromMap((map['securityServices'] as Map).cast<String, dynamic>())).input(),
+      associatedSubscriptions: map['associatedSubscriptions'] == null ? null : ((map['associatedSubscriptions']! as List).cast<String>()).input(),
+      defaultMode: map['defaultMode'] == null ? null : (map['defaultMode']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      globalRulestackName: map['globalRulestackName'] == null ? null : (map['globalRulestackName']! as String).input(),
+      identity: map['identity'] == null ? null : (AzureResourceManagerManagedIdentityProperties.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      minAppIdVersion: map['minAppIdVersion'] == null ? null : (map['minAppIdVersion']! as String).input(),
+      panEtag: map['panEtag'] == null ? null : (map['panEtag']! as String).input(),
+      panLocation: map['panLocation'] == null ? null : (map['panLocation']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      securityServices: map['securityServices'] == null ? null : (SecurityServices.fromMap((map['securityServices']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -33,7 +33,7 @@ class GetLaunchTemplateBlockDeviceMapping {
   factory GetLaunchTemplateBlockDeviceMapping.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateBlockDeviceMapping(
       deviceName: (map['deviceName'] as String).input(),
-      ebs: (pulumi.Input.decodeList<GetLaunchTemplateBlockDeviceMappingEb>(map['ebs'], (value) => GetLaunchTemplateBlockDeviceMappingEb.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ebs: (pulumi.Input.decodeList<GetLaunchTemplateBlockDeviceMappingEb>(map['ebs']!, (value) => GetLaunchTemplateBlockDeviceMappingEb.fromMap((value as Map).cast<String, dynamic>()))).input(),
       noDevice: (map['noDevice'] as String).input(),
       virtualName: (map['virtualName'] as String).input(),
     );

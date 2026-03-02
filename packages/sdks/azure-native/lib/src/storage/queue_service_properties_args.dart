@@ -41,8 +41,8 @@ class QueueServicePropertiesArgs {
   factory QueueServicePropertiesArgs.fromMap(Map<String, dynamic> map) {
     return QueueServicePropertiesArgs(
       accountName: (map['accountName'] as String).input(),
-      cors: map['cors'] == null ? null : (CorsRules.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
-      queueServiceName: map['queueServiceName'] == null ? null : (map['queueServiceName'] as String).input(),
+      cors: map['cors'] == null ? null : (CorsRules.fromMap((map['cors']! as Map).cast<String, dynamic>())).input(),
+      queueServiceName: map['queueServiceName'] == null ? null : (map['queueServiceName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

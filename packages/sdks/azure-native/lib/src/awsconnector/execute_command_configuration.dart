@@ -32,9 +32,9 @@ class ExecuteCommandConfiguration {
 
   factory ExecuteCommandConfiguration.fromMap(Map<String, dynamic> map) {
     return ExecuteCommandConfiguration(
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      logConfiguration: map['logConfiguration'] == null ? null : (ExecuteCommandLogConfiguration.fromMap((map['logConfiguration'] as Map).cast<String, dynamic>())).input(),
-      logging: map['logging'] == null ? null : (map['logging'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
+      logConfiguration: map['logConfiguration'] == null ? null : (ExecuteCommandLogConfiguration.fromMap((map['logConfiguration']! as Map).cast<String, dynamic>())).input(),
+      logging: map['logging'] == null ? null : (map['logging']! as String).input(),
     );
   }
 }

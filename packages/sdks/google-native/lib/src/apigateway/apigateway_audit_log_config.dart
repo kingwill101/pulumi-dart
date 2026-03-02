@@ -27,8 +27,8 @@ class ApigatewayAuditLogConfig {
 
   factory ApigatewayAuditLogConfig.fromMap(Map<String, dynamic> map) {
     return ApigatewayAuditLogConfig(
-      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers'] as List).cast<String>()).input(),
-      logType: map['logType'] == null ? null : (ApigatewayAuditLogConfigLogType.fromValue(map['logType'] as String)).input(),
+      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers']! as List).cast<String>()).input(),
+      logType: map['logType'] == null ? null : (ApigatewayAuditLogConfigLogType.fromValue(map['logType']! as String)).input(),
     );
   }
 }

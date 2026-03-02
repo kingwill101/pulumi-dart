@@ -39,10 +39,10 @@ class ToolExecution {
 
   factory ToolExecution.fromMap(Map<String, dynamic> map) {
     return ToolExecution(
-      commandLineArguments: map['commandLineArguments'] == null ? null : ((map['commandLineArguments'] as List).cast<String>()).input(),
-      exitCode: map['exitCode'] == null ? null : (ToolExitCode.fromMap((map['exitCode'] as Map).cast<String, dynamic>())).input(),
-      toolLogs: map['toolLogs'] == null ? null : (pulumi.Input.decodeList<FileReference>(map['toolLogs'], (value) => FileReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      toolOutputs: map['toolOutputs'] == null ? null : (pulumi.Input.decodeList<ToolOutputReference>(map['toolOutputs'], (value) => ToolOutputReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      commandLineArguments: map['commandLineArguments'] == null ? null : ((map['commandLineArguments']! as List).cast<String>()).input(),
+      exitCode: map['exitCode'] == null ? null : (ToolExitCode.fromMap((map['exitCode']! as Map).cast<String, dynamic>())).input(),
+      toolLogs: map['toolLogs'] == null ? null : (pulumi.Input.decodeList<FileReference>(map['toolLogs']!, (value) => FileReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      toolOutputs: map['toolOutputs'] == null ? null : (pulumi.Input.decodeList<ToolOutputReference>(map['toolOutputs']!, (value) => ToolOutputReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

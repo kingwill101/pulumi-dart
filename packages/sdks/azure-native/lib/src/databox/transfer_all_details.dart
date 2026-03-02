@@ -32,8 +32,8 @@ class TransferAllDetails {
   factory TransferAllDetails.fromMap(Map<String, dynamic> map) {
     return TransferAllDetails(
       dataAccountType: (map['dataAccountType'] as String).input(),
-      transferAllBlobs: map['transferAllBlobs'] == null ? null : (map['transferAllBlobs'] as bool).input(),
-      transferAllFiles: map['transferAllFiles'] == null ? null : (map['transferAllFiles'] as bool).input(),
+      transferAllBlobs: map['transferAllBlobs'] == null ? null : (map['transferAllBlobs']! as bool).input(),
+      transferAllFiles: map['transferAllFiles'] == null ? null : (map['transferAllFiles']! as bool).input(),
     );
   }
 }

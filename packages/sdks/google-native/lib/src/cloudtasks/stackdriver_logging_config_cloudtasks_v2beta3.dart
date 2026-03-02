@@ -21,7 +21,7 @@ class StackdriverLoggingConfigCloudtasksV2beta3 {
 
   factory StackdriverLoggingConfigCloudtasksV2beta3.fromMap(Map<String, dynamic> map) {
     return StackdriverLoggingConfigCloudtasksV2beta3(
-      samplingRatio: map['samplingRatio'] == null ? null : (map['samplingRatio'] as double).input(),
+      samplingRatio: map['samplingRatio'] == null ? null : (map['samplingRatio']! as double).input(),
     );
   }
 }

@@ -59,13 +59,13 @@ class SecurityFeedbackArgs {
 
   factory SecurityFeedbackArgs.fromMap(Map<String, dynamic> map) {
     return SecurityFeedbackArgs(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       feedbackContexts: (pulumi.Input.decodeList<SecurityFeedbackFeedbackContext>(map['feedbackContexts'], (value) => SecurityFeedbackFeedbackContext.fromMap((value as Map).cast<String, dynamic>()))).input(),
       feedbackId: (map['feedbackId'] as String).input(),
       feedbackType: (map['feedbackType'] as String).input(),
       orgId: (map['orgId'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
     );
   }
 }

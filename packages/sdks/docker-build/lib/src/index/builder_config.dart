@@ -25,7 +25,7 @@ class BuilderConfig {
 
   factory BuilderConfig.fromMap(Map<String, dynamic> map) {
     return BuilderConfig(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

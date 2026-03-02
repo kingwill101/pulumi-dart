@@ -21,7 +21,7 @@ class ClusterInfo {
 
   factory ClusterInfo.fromMap(Map<String, dynamic> map) {
     return ClusterInfo(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

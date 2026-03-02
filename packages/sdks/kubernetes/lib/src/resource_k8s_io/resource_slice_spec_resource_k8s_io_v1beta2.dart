@@ -84,14 +84,14 @@ class ResourceSliceSpecResourceK8sIoV1beta2 {
 
   factory ResourceSliceSpecResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return ResourceSliceSpecResourceK8sIoV1beta2(
-      allNodes: map['allNodes'] == null ? null : (map['allNodes'] as bool).input(),
-      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<DeviceResourceK8sIoV1beta2>(map['devices'], (value) => DeviceResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allNodes: map['allNodes'] == null ? null : (map['allNodes']! as bool).input(),
+      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<DeviceResourceK8sIoV1beta2>(map['devices']!, (value) => DeviceResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
       driver: (map['driver'] as String).input(),
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
-      nodeSelector: map['nodeSelector'] == null ? null : (NodeSelector.fromMap((map['nodeSelector'] as Map).cast<String, dynamic>())).input(),
-      perDeviceNodeSelection: map['perDeviceNodeSelection'] == null ? null : (map['perDeviceNodeSelection'] as bool).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
+      nodeSelector: map['nodeSelector'] == null ? null : (NodeSelector.fromMap((map['nodeSelector']! as Map).cast<String, dynamic>())).input(),
+      perDeviceNodeSelection: map['perDeviceNodeSelection'] == null ? null : (map['perDeviceNodeSelection']! as bool).input(),
       pool: (ResourcePoolResourceK8sIoV1beta2.fromMap((map['pool'] as Map).cast<String, dynamic>())).input(),
-      sharedCounters: map['sharedCounters'] == null ? null : (pulumi.Input.decodeList<CounterSetResourceK8sIoV1beta2>(map['sharedCounters'], (value) => CounterSetResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sharedCounters: map['sharedCounters'] == null ? null : (pulumi.Input.decodeList<CounterSetResourceK8sIoV1beta2>(map['sharedCounters']!, (value) => CounterSetResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

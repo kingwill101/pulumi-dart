@@ -27,7 +27,7 @@ class ContainerImageNotebooksV2 {
   factory ContainerImageNotebooksV2.fromMap(Map<String, dynamic> map) {
     return ContainerImageNotebooksV2(
       repository: (map['repository'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
     );
   }
 }

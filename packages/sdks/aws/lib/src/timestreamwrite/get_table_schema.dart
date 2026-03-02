@@ -20,7 +20,7 @@ class GetTableSchema {
 
   factory GetTableSchema.fromMap(Map<String, dynamic> map) {
     return GetTableSchema(
-      compositePartitionKeys: (pulumi.Input.decodeList<GetTableSchemaCompositePartitionKey>(map['compositePartitionKeys'], (value) => GetTableSchemaCompositePartitionKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      compositePartitionKeys: (pulumi.Input.decodeList<GetTableSchemaCompositePartitionKey>(map['compositePartitionKeys']!, (value) => GetTableSchemaCompositePartitionKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -93,19 +93,19 @@ class GetPrivateStoreCollectionResult {
 
   factory GetPrivateStoreCollectionResult.fromMap(Map<String, dynamic> map) {
     return GetPrivateStoreCollectionResult(
-      allSubscriptions: map['allSubscriptions'] == null ? null : map['allSubscriptions'] as bool,
+      allSubscriptions: map['allSubscriptions'] == null ? null : map['allSubscriptions']! as bool,
       appliedRules: pulumi.Input.decodeList<RuleResponse>(map['appliedRules'], (value) => RuleResponse.fromMap((value as Map).cast<String, dynamic>())),
       approveAllItems: map['approveAllItems'] as bool,
       approveAllItemsModifiedAt: map['approveAllItemsModifiedAt'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      claim: map['claim'] == null ? null : map['claim'] as String,
+      claim: map['claim'] == null ? null : map['claim']! as String,
       collectionId: map['collectionId'] as String,
-      collectionName: map['collectionName'] == null ? null : map['collectionName'] as String,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      collectionName: map['collectionName'] == null ? null : map['collectionName']! as String,
+      enabled: map['enabled'] == null ? null : map['enabled']! as bool,
       id: map['id'] as String,
       name: map['name'] as String,
       numberOfOffers: map['numberOfOffers'] as double,
-      subscriptionsList: map['subscriptionsList'] == null ? null : (map['subscriptionsList'] as List).cast<String>(),
+      subscriptionsList: map['subscriptionsList'] == null ? null : (map['subscriptionsList']! as List).cast<String>(),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

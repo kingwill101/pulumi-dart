@@ -37,10 +37,10 @@ class ServiceEndpointPropertiesFormat {
 
   factory ServiceEndpointPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointPropertiesFormat(
-      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
-      networkIdentifier: map['networkIdentifier'] == null ? null : (SubResource.fromMap((map['networkIdentifier'] as Map).cast<String, dynamic>())).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      locations: map['locations'] == null ? null : ((map['locations']! as List).cast<String>()).input(),
+      networkIdentifier: map['networkIdentifier'] == null ? null : (SubResource.fromMap((map['networkIdentifier']! as Map).cast<String, dynamic>())).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

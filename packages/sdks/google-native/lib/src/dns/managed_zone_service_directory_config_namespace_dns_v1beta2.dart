@@ -29,9 +29,9 @@ class ManagedZoneServiceDirectoryConfigNamespaceDnsV1beta2 {
 
   factory ManagedZoneServiceDirectoryConfigNamespaceDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return ManagedZoneServiceDirectoryConfigNamespaceDnsV1beta2(
-      deletionTime: map['deletionTime'] == null ? null : (map['deletionTime'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      namespaceUrl: map['namespaceUrl'] == null ? null : (map['namespaceUrl'] as String).input(),
+      deletionTime: map['deletionTime'] == null ? null : (map['deletionTime']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      namespaceUrl: map['namespaceUrl'] == null ? null : (map['namespaceUrl']! as String).input(),
     );
   }
 }

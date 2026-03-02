@@ -21,7 +21,7 @@ class AgentPromptVariantGenAiResource {
 
   factory AgentPromptVariantGenAiResource.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantGenAiResource(
-      agent: map['agent'] == null ? null : (AgentPromptVariantGenAiResourceAgent.fromMap((map['agent'] as Map).cast<String, dynamic>())).input(),
+      agent: map['agent'] == null ? null : ((AgentPromptVariantGenAiResourceAgent.fromMap((map['agent']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -42,7 +42,7 @@ class GetNetworkInsightsAnalysisForwardPathComponentAclRule {
     return GetNetworkInsightsAnalysisForwardPathComponentAclRule(
       cidr: (map['cidr'] as String).input(),
       egress: (map['egress'] as bool).input(),
-      portRanges: (pulumi.Input.decodeList<GetNetworkInsightsAnalysisForwardPathComponentAclRulePortRange>(map['portRanges'], (value) => GetNetworkInsightsAnalysisForwardPathComponentAclRulePortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      portRanges: (pulumi.Input.decodeList<GetNetworkInsightsAnalysisForwardPathComponentAclRulePortRange>(map['portRanges']!, (value) => GetNetworkInsightsAnalysisForwardPathComponentAclRulePortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
       protocol: (map['protocol'] as String).input(),
       ruleAction: (map['ruleAction'] as String).input(),
       ruleNumber: (map['ruleNumber'] as int).input(),

@@ -60,10 +60,10 @@ class GuardrailLlmPolicy {
 
   factory GuardrailLlmPolicy.fromMap(Map<String, dynamic> map) {
     return GuardrailLlmPolicy(
-      allowShortUtterance: map['allowShortUtterance'] == null ? null : (map['allowShortUtterance'] as bool).input(),
-      failOpen: map['failOpen'] == null ? null : (map['failOpen'] as bool).input(),
-      maxConversationMessages: map['maxConversationMessages'] == null ? null : (map['maxConversationMessages'] as int).input(),
-      modelSettings: map['modelSettings'] == null ? null : (GuardrailLlmPolicyModelSettings.fromMap((map['modelSettings'] as Map).cast<String, dynamic>())).input(),
+      allowShortUtterance: map['allowShortUtterance'] == null ? null : (map['allowShortUtterance']! as bool).input(),
+      failOpen: map['failOpen'] == null ? null : (map['failOpen']! as bool).input(),
+      maxConversationMessages: map['maxConversationMessages'] == null ? null : (map['maxConversationMessages']! as int).input(),
+      modelSettings: map['modelSettings'] == null ? null : (GuardrailLlmPolicyModelSettings.fromMap((map['modelSettings']! as Map).cast<String, dynamic>())).input(),
       policyScope: (map['policyScope'] as String).input(),
       prompt: (map['prompt'] as String).input(),
     );

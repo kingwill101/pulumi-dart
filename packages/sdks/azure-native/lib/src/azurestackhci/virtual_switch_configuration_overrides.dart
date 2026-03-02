@@ -26,8 +26,8 @@ class VirtualSwitchConfigurationOverrides {
 
   factory VirtualSwitchConfigurationOverrides.fromMap(Map<String, dynamic> map) {
     return VirtualSwitchConfigurationOverrides(
-      enableIov: map['enableIov'] == null ? null : (map['enableIov'] as String).input(),
-      loadBalancingAlgorithm: map['loadBalancingAlgorithm'] == null ? null : (map['loadBalancingAlgorithm'] as String).input(),
+      enableIov: map['enableIov'] == null ? null : (map['enableIov']! as String).input(),
+      loadBalancingAlgorithm: map['loadBalancingAlgorithm'] == null ? null : (map['loadBalancingAlgorithm']! as String).input(),
     );
   }
 }

@@ -41,11 +41,11 @@ class ParentReferenceNetworkingK8sIoV1alpha1 {
 
   factory ParentReferenceNetworkingK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return ParentReferenceNetworkingK8sIoV1alpha1(
-      group: map['group'] == null ? null : (map['group'] as String).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
       name: (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
       resource: (map['resource'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
     );
   }
 }

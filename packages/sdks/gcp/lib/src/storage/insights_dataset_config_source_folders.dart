@@ -20,7 +20,7 @@ class InsightsDatasetConfigSourceFolders {
 
   factory InsightsDatasetConfigSourceFolders.fromMap(Map<String, dynamic> map) {
     return InsightsDatasetConfigSourceFolders(
-      folderNumbers: map['folderNumbers'] == null ? null : ((map['folderNumbers'] as List).cast<String>()).input(),
+      folderNumbers: map['folderNumbers'] == null ? null : ((map['folderNumbers']! as List).cast<String>()).input(),
     );
   }
 }

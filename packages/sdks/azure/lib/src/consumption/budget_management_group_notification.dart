@@ -41,10 +41,10 @@ class BudgetManagementGroupNotification {
   factory BudgetManagementGroupNotification.fromMap(Map<String, dynamic> map) {
     return BudgetManagementGroupNotification(
       contactEmails: ((map['contactEmails'] as List).cast<String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       operator: (map['operator'] as String).input(),
       threshold: (map['threshold'] as int).input(),
-      thresholdType: map['thresholdType'] == null ? null : (map['thresholdType'] as String).input(),
+      thresholdType: map['thresholdType'] == null ? null : (map['thresholdType']! as String).input(),
     );
   }
 }

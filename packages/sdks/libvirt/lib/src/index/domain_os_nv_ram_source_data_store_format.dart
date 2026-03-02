@@ -26,7 +26,7 @@ class DomainOsNvRamSourceDataStoreFormat {
 
   factory DomainOsNvRamSourceDataStoreFormat.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceDataStoreFormat(
-      metadataCache: map['metadataCache'] == null ? null : (DomainOsNvRamSourceDataStoreFormatMetadataCache.fromMap((map['metadataCache'] as Map).cast<String, dynamic>())).input(),
+      metadataCache: map['metadataCache'] == null ? null : (DomainOsNvRamSourceDataStoreFormatMetadataCache.fromMap((map['metadataCache']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

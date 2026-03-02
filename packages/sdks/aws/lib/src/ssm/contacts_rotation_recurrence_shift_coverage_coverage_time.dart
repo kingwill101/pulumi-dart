@@ -27,8 +27,8 @@ class ContactsRotationRecurrenceShiftCoverageCoverageTime {
 
   factory ContactsRotationRecurrenceShiftCoverageCoverageTime.fromMap(Map<String, dynamic> map) {
     return ContactsRotationRecurrenceShiftCoverageCoverageTime(
-      end: map['end'] == null ? null : (ContactsRotationRecurrenceShiftCoverageCoverageTimeEnd.fromMap((map['end'] as Map).cast<String, dynamic>())).input(),
-      start: map['start'] == null ? null : (ContactsRotationRecurrenceShiftCoverageCoverageTimeStart.fromMap((map['start'] as Map).cast<String, dynamic>())).input(),
+      end: map['end'] == null ? null : ((ContactsRotationRecurrenceShiftCoverageCoverageTimeEnd.fromMap((map['end']! as Map).cast<String, dynamic>())).input()).input(),
+      start: map['start'] == null ? null : ((ContactsRotationRecurrenceShiftCoverageCoverageTimeStart.fromMap((map['start']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

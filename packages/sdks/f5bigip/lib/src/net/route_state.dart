@@ -41,11 +41,11 @@ class RouteState {
 
   factory RouteState.fromMap(Map<String, dynamic> map) {
     return RouteState(
-      gw: map['gw'] == null ? null : (map['gw'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      reject: map['reject'] == null ? null : (map['reject'] as bool).input(),
-      tunnelRef: map['tunnelRef'] == null ? null : (map['tunnelRef'] as String).input(),
+      gw: map['gw'] == null ? null : (map['gw']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      reject: map['reject'] == null ? null : (map['reject']! as bool).input(),
+      tunnelRef: map['tunnelRef'] == null ? null : (map['tunnelRef']! as String).input(),
     );
   }
 }

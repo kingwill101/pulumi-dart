@@ -20,7 +20,7 @@ class CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff {
 
   factory CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff.fromMap(Map<String, dynamic> map) {
     return CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff(
-      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']! as String).input(),
     );
   }
 }

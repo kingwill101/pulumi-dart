@@ -33,7 +33,7 @@ class GetIndexFirestoreV1beta1Args {
     return GetIndexFirestoreV1beta1Args(
       databaseId: (map['databaseId'] as String).input(),
       indexId: (map['indexId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

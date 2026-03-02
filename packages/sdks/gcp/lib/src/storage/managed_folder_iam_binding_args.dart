@@ -59,7 +59,7 @@ class ManagedFolderIamBindingArgs {
   factory ManagedFolderIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return ManagedFolderIamBindingArgs(
       bucket: (map['bucket'] as String).input(),
-      condition: map['condition'] == null ? null : (ManagedFolderIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (ManagedFolderIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       managedFolder: (map['managedFolder'] as String).input(),
       members: ((map['members'] as List).cast<String>()).input(),
       role: (map['role'] as String).input(),

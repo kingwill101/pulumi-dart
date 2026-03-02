@@ -57,14 +57,14 @@ class DeleteOptions {
 
   factory DeleteOptions.fromMap(Map<String, dynamic> map) {
     return DeleteOptions(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : ((map['dryRun'] as List).cast<String>()).input(),
-      gracePeriodSeconds: map['gracePeriodSeconds'] == null ? null : (map['gracePeriodSeconds'] as int).input(),
-      ignoreStoreReadErrorWithClusterBreakingPotential: map['ignoreStoreReadErrorWithClusterBreakingPotential'] == null ? null : (map['ignoreStoreReadErrorWithClusterBreakingPotential'] as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      orphanDependents: map['orphanDependents'] == null ? null : (map['orphanDependents'] as bool).input(),
-      preconditions: map['preconditions'] == null ? null : (Preconditions.fromMap((map['preconditions'] as Map).cast<String, dynamic>())).input(),
-      propagationPolicy: map['propagationPolicy'] == null ? null : (map['propagationPolicy'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : ((map['dryRun']! as List).cast<String>()).input(),
+      gracePeriodSeconds: map['gracePeriodSeconds'] == null ? null : (map['gracePeriodSeconds']! as int).input(),
+      ignoreStoreReadErrorWithClusterBreakingPotential: map['ignoreStoreReadErrorWithClusterBreakingPotential'] == null ? null : (map['ignoreStoreReadErrorWithClusterBreakingPotential']! as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      orphanDependents: map['orphanDependents'] == null ? null : (map['orphanDependents']! as bool).input(),
+      preconditions: map['preconditions'] == null ? null : (Preconditions.fromMap((map['preconditions']! as Map).cast<String, dynamic>())).input(),
+      propagationPolicy: map['propagationPolicy'] == null ? null : (map['propagationPolicy']! as String).input(),
     );
   }
 }

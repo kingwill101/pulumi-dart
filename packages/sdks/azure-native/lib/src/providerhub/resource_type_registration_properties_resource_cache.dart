@@ -26,8 +26,8 @@ class ResourceTypeRegistrationPropertiesResourceCache {
 
   factory ResourceTypeRegistrationPropertiesResourceCache.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesResourceCache(
-      enableResourceCache: map['enableResourceCache'] == null ? null : (map['enableResourceCache'] as bool).input(),
-      resourceCacheExpirationTimespan: map['resourceCacheExpirationTimespan'] == null ? null : (map['resourceCacheExpirationTimespan'] as String).input(),
+      enableResourceCache: map['enableResourceCache'] == null ? null : (map['enableResourceCache']! as bool).input(),
+      resourceCacheExpirationTimespan: map['resourceCacheExpirationTimespan'] == null ? null : (map['resourceCacheExpirationTimespan']! as String).input(),
     );
   }
 }

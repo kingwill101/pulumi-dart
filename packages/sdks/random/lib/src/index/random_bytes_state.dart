@@ -36,10 +36,10 @@ class RandomBytesState {
 
   factory RandomBytesState.fromMap(Map<String, dynamic> map) {
     return RandomBytesState(
-      base64: map['base64'] == null ? null : (map['base64'] as String).input(),
-      hex: map['hex'] == null ? null : (map['hex'] as String).input(),
-      keepers: map['keepers'] == null ? null : ((map['keepers'] as Map).cast<String, String>()).input(),
-      length: map['length'] == null ? null : (map['length'] as int).input(),
+      base64: map['base64'] == null ? null : (map['base64']! as String).input(),
+      hex: map['hex'] == null ? null : (map['hex']! as String).input(),
+      keepers: map['keepers'] == null ? null : ((map['keepers']! as Map).cast<String, String>()).input(),
+      length: map['length'] == null ? null : (map['length']! as int).input(),
     );
   }
 }

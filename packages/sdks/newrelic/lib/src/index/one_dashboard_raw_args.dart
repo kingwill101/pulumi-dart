@@ -45,11 +45,11 @@ class OneDashboardRawArgs {
 
   factory OneDashboardRawArgs.fromMap(Map<String, dynamic> map) {
     return OneDashboardRawArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       pages: (pulumi.Input.decodeList<OneDashboardRawPage>(map['pages'], (value) => OneDashboardRawPage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      permissions: map['permissions'] == null ? null : (map['permissions'] as String).input(),
+      permissions: map['permissions'] == null ? null : (map['permissions']! as String).input(),
     );
   }
 }

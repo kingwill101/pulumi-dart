@@ -41,11 +41,11 @@ class SecureCredentialState {
 
   factory SecureCredentialState.fromMap(Map<String, dynamic> map) {
     return SecureCredentialState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      lastUpdated: map['lastUpdated'] == null ? null : (map['lastUpdated'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      lastUpdated: map['lastUpdated'] == null ? null : (map['lastUpdated']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

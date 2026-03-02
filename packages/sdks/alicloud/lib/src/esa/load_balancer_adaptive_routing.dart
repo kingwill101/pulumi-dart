@@ -20,7 +20,7 @@ class LoadBalancerAdaptiveRouting {
 
   factory LoadBalancerAdaptiveRouting.fromMap(Map<String, dynamic> map) {
     return LoadBalancerAdaptiveRouting(
-      failoverAcrossPools: map['failoverAcrossPools'] == null ? null : (map['failoverAcrossPools'] as bool).input(),
+      failoverAcrossPools: map['failoverAcrossPools'] == null ? null : (map['failoverAcrossPools']! as bool).input(),
     );
   }
 }

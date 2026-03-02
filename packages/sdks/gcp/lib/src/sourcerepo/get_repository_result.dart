@@ -49,7 +49,7 @@ class GetRepositoryResult {
       createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] as bool,
       id: map['id'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pubsubConfigs: pulumi.Input.decodeList<GetRepositoryPubsubConfig>(map['pubsubConfigs'], (value) => GetRepositoryPubsubConfig.fromMap((value as Map).cast<String, dynamic>())),
       size: map['size'] as int,
       url: map['url'] as String,

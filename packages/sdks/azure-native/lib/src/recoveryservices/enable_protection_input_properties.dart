@@ -32,9 +32,9 @@ class EnableProtectionInputProperties {
 
   factory EnableProtectionInputProperties.fromMap(Map<String, dynamic> map) {
     return EnableProtectionInputProperties(
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
-      protectableItemId: map['protectableItemId'] == null ? null : (map['protectableItemId'] as String).input(),
-      providerSpecificDetails: map['providerSpecificDetails'] == null ? null : (A2ACrossClusterMigrationEnableProtectionInput.fromMap((map['providerSpecificDetails'] as Map).cast<String, dynamic>())).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
+      protectableItemId: map['protectableItemId'] == null ? null : (map['protectableItemId']! as String).input(),
+      providerSpecificDetails: map['providerSpecificDetails'] == null ? null : (A2ACrossClusterMigrationEnableProtectionInput.fromMap((map['providerSpecificDetails']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

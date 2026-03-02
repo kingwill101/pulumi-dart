@@ -50,12 +50,12 @@ class VirtualNetworkRetrieveArgs {
 
   factory VirtualNetworkRetrieveArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkRetrieveArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : (VirtualNetworksExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (VirtualNetworksProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (VirtualNetworksExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (VirtualNetworksProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      virtualNetworksName: map['virtualNetworksName'] == null ? null : (map['virtualNetworksName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      virtualNetworksName: map['virtualNetworksName'] == null ? null : (map['virtualNetworksName']! as String).input(),
     );
   }
 }

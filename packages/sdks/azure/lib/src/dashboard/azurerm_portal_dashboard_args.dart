@@ -39,9 +39,9 @@ class AzurermPortalDashboardArgs {
 
   factory AzurermPortalDashboardArgs.fromMap(Map<String, dynamic> map) {
     return AzurermPortalDashboardArgs(
-      dashboardProperties: map['dashboardProperties'] == null ? null : (map['dashboardProperties'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      dashboardProperties: map['dashboardProperties'] == null ? null : (map['dashboardProperties']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

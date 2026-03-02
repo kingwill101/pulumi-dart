@@ -58,14 +58,14 @@ class GetDesktopsArgs {
 
   factory GetDesktopsArgs.fromMap(Map<String, dynamic> map) {
     return GetDesktopsArgs(
-      desktopName: map['desktopName'] == null ? null : (map['desktopName'] as String).input(),
-      endUserIds: map['endUserIds'] == null ? null : ((map['endUserIds'] as List).cast<String>()).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      officeSiteId: map['officeSiteId'] == null ? null : (map['officeSiteId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      policyGroupId: map['policyGroupId'] == null ? null : (map['policyGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      desktopName: map['desktopName'] == null ? null : (map['desktopName']! as String).input(),
+      endUserIds: map['endUserIds'] == null ? null : ((map['endUserIds']! as List).cast<String>()).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      officeSiteId: map['officeSiteId'] == null ? null : (map['officeSiteId']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      policyGroupId: map['policyGroupId'] == null ? null : (map['policyGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class KubernetesFleetManagerHubProfile {
   factory KubernetesFleetManagerHubProfile.fromMap(Map<String, dynamic> map) {
     return KubernetesFleetManagerHubProfile(
       dnsPrefix: (map['dnsPrefix'] as String).input(),
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      kubernetesVersion: map['kubernetesVersion'] == null ? null : (map['kubernetesVersion'] as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      kubernetesVersion: map['kubernetesVersion'] == null ? null : (map['kubernetesVersion']! as String).input(),
     );
   }
 }

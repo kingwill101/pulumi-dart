@@ -22,7 +22,7 @@ class DatascanDataProfileSpecIncludeFields {
 
   factory DatascanDataProfileSpecIncludeFields.fromMap(Map<String, dynamic> map) {
     return DatascanDataProfileSpecIncludeFields(
-      fieldNames: map['fieldNames'] == null ? null : ((map['fieldNames'] as List).cast<String>()).input(),
+      fieldNames: map['fieldNames'] == null ? null : ((map['fieldNames']! as List).cast<String>()).input(),
     );
   }
 }

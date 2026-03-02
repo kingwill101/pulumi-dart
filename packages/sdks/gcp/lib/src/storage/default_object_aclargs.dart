@@ -32,7 +32,7 @@ class DefaultObjectACLArgs {
   factory DefaultObjectACLArgs.fromMap(Map<String, dynamic> map) {
     return DefaultObjectACLArgs(
       bucket: (map['bucket'] as String).input(),
-      roleEntities: map['roleEntities'] == null ? null : ((map['roleEntities'] as List).cast<String>()).input(),
+      roleEntities: map['roleEntities'] == null ? null : ((map['roleEntities']! as List).cast<String>()).input(),
     );
   }
 }

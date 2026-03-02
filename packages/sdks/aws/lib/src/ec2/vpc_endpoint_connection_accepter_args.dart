@@ -34,7 +34,7 @@ class VpcEndpointConnectionAccepterArgs {
 
   factory VpcEndpointConnectionAccepterArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointConnectionAccepterArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       vpcEndpointId: (map['vpcEndpointId'] as String).input(),
       vpcEndpointServiceId: (map['vpcEndpointServiceId'] as String).input(),
     );

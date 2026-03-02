@@ -58,9 +58,9 @@ class CmekConfigArgs {
       cmekConfigId: (map['cmekConfigId'] as String).input(),
       kmsKey: (map['kmsKey'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      setDefault: map['setDefault'] == null ? null : (map['setDefault'] as bool).input(),
-      singleRegionKeys: map['singleRegionKeys'] == null ? null : (pulumi.Input.decodeList<CmekConfigSingleRegionKey>(map['singleRegionKeys'], (value) => CmekConfigSingleRegionKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      setDefault: map['setDefault'] == null ? null : (map['setDefault']! as bool).input(),
+      singleRegionKeys: map['singleRegionKeys'] == null ? null : (pulumi.Input.decodeList<CmekConfigSingleRegionKey>(map['singleRegionKeys']!, (value) => CmekConfigSingleRegionKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

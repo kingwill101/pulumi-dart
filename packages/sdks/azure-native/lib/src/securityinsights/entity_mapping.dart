@@ -27,8 +27,8 @@ class EntityMapping {
 
   factory EntityMapping.fromMap(Map<String, dynamic> map) {
     return EntityMapping(
-      entityType: map['entityType'] == null ? null : (map['entityType'] as String).input(),
-      fieldMappings: map['fieldMappings'] == null ? null : (pulumi.Input.decodeList<FieldMapping>(map['fieldMappings'], (value) => FieldMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entityType: map['entityType'] == null ? null : (map['entityType']! as String).input(),
+      fieldMappings: map['fieldMappings'] == null ? null : (pulumi.Input.decodeList<FieldMapping>(map['fieldMappings']!, (value) => FieldMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

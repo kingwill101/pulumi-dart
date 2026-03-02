@@ -26,8 +26,8 @@ class JobQueryUserDefinedFunctionResource {
 
   factory JobQueryUserDefinedFunctionResource.fromMap(Map<String, dynamic> map) {
     return JobQueryUserDefinedFunctionResource(
-      inlineCode: map['inlineCode'] == null ? null : (map['inlineCode'] as String).input(),
-      resourceUri: map['resourceUri'] == null ? null : (map['resourceUri'] as String).input(),
+      inlineCode: map['inlineCode'] == null ? null : (map['inlineCode']! as String).input(),
+      resourceUri: map['resourceUri'] == null ? null : (map['resourceUri']! as String).input(),
     );
   }
 }

@@ -50,11 +50,11 @@ class OidcIssuerArgs {
 
   factory OidcIssuerArgs.fromMap(Map<String, dynamic> map) {
     return OidcIssuerArgs(
-      maxExpirationSeconds: map['maxExpirationSeconds'] == null ? null : (map['maxExpirationSeconds'] as int).input(),
+      maxExpirationSeconds: map['maxExpirationSeconds'] == null ? null : (map['maxExpirationSeconds']! as int).input(),
       name: (map['name'] as String).input(),
       organization: (map['organization'] as String).input(),
-      policies: map['policies'] == null ? null : (pulumi.Input.decodeList<AuthPolicyDefinition>(map['policies'], (value) => AuthPolicyDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      thumbprints: map['thumbprints'] == null ? null : ((map['thumbprints'] as List).cast<String>()).input(),
+      policies: map['policies'] == null ? null : (pulumi.Input.decodeList<AuthPolicyDefinition>(map['policies']!, (value) => AuthPolicyDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      thumbprints: map['thumbprints'] == null ? null : ((map['thumbprints']! as List).cast<String>()).input(),
       url: (map['url'] as String).input(),
     );
   }

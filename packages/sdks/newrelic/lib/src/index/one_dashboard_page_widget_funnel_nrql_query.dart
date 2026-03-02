@@ -25,7 +25,7 @@ class OneDashboardPageWidgetFunnelNrqlQuery {
 
   factory OneDashboardPageWidgetFunnelNrqlQuery.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetFunnelNrqlQuery(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
       query: (map['query'] as String).input(),
     );
   }

@@ -52,12 +52,12 @@ class ReplicatorReplicationInfoListTopicReplication {
 
   factory ReplicatorReplicationInfoListTopicReplication.fromMap(Map<String, dynamic> map) {
     return ReplicatorReplicationInfoListTopicReplication(
-      copyAccessControlListsForTopics: map['copyAccessControlListsForTopics'] == null ? null : (map['copyAccessControlListsForTopics'] as bool).input(),
-      copyTopicConfigurations: map['copyTopicConfigurations'] == null ? null : (map['copyTopicConfigurations'] as bool).input(),
-      detectAndCopyNewTopics: map['detectAndCopyNewTopics'] == null ? null : (map['detectAndCopyNewTopics'] as bool).input(),
-      startingPosition: map['startingPosition'] == null ? null : (ReplicatorReplicationInfoListTopicReplicationStartingPosition.fromMap((map['startingPosition'] as Map).cast<String, dynamic>())).input(),
-      topicNameConfiguration: map['topicNameConfiguration'] == null ? null : (ReplicatorReplicationInfoListTopicReplicationTopicNameConfiguration.fromMap((map['topicNameConfiguration'] as Map).cast<String, dynamic>())).input(),
-      topicsToExcludes: map['topicsToExcludes'] == null ? null : ((map['topicsToExcludes'] as List).cast<String>()).input(),
+      copyAccessControlListsForTopics: map['copyAccessControlListsForTopics'] == null ? null : ((map['copyAccessControlListsForTopics'] as bool).input()).input(),
+      copyTopicConfigurations: map['copyTopicConfigurations'] == null ? null : ((map['copyTopicConfigurations'] as bool).input()).input(),
+      detectAndCopyNewTopics: map['detectAndCopyNewTopics'] == null ? null : ((map['detectAndCopyNewTopics'] as bool).input()).input(),
+      startingPosition: map['startingPosition'] == null ? null : ((ReplicatorReplicationInfoListTopicReplicationStartingPosition.fromMap((map['startingPosition']! as Map).cast<String, dynamic>())).input()).input(),
+      topicNameConfiguration: map['topicNameConfiguration'] == null ? null : ((ReplicatorReplicationInfoListTopicReplicationTopicNameConfiguration.fromMap((map['topicNameConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      topicsToExcludes: map['topicsToExcludes'] == null ? null : (((map['topicsToExcludes'] as List).cast<String>()).input()).input(),
       topicsToReplicates: ((map['topicsToReplicates'] as List).cast<String>()).input(),
     );
   }

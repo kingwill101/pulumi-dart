@@ -22,7 +22,7 @@ class PlacementProfileResponse {
 
   factory PlacementProfileResponse.fromMap(Map<String, dynamic> map) {
     return PlacementProfileResponse(
-      defaultClusterResourcePlacement: map['defaultClusterResourcePlacement'] == null ? null : (PlacementV1ClusterResourcePlacementSpecResponse.fromMap((map['defaultClusterResourcePlacement'] as Map).cast<String, dynamic>())).input(),
+      defaultClusterResourcePlacement: map['defaultClusterResourcePlacement'] == null ? null : (PlacementV1ClusterResourcePlacementSpecResponse.fromMap((map['defaultClusterResourcePlacement']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

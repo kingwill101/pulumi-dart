@@ -26,8 +26,8 @@ class ClusterKeyResponse {
 
   factory ClusterKeyResponse.fromMap(Map<String, dynamic> map) {
     return ClusterKeyResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      orderBy: map['orderBy'] == null ? null : (map['orderBy'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      orderBy: map['orderBy'] == null ? null : (map['orderBy']! as String).input(),
     );
   }
 }

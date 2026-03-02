@@ -50,13 +50,13 @@ class GetSshKeyResult {
 
   factory GetSshKeyResult.fromMap(Map<String, dynamic> map) {
     return GetSshKeyResult(
-      fingerprint: map['fingerprint'] == null ? null : map['fingerprint'] as String,
-      id: map['id'] == null ? null : map['id'] as int,
+      fingerprint: map['fingerprint'] == null ? null : map['fingerprint']! as String,
+      id: map['id'] == null ? null : map['id']! as int,
       labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
       publicKey: map['publicKey'] as String,
-      selector: map['selector'] == null ? null : map['selector'] as String,
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
+      selector: map['selector'] == null ? null : map['selector']! as String,
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
     );
   }
 }

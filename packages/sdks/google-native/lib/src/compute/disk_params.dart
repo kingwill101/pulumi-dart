@@ -21,7 +21,7 @@ class DiskParams {
 
   factory DiskParams.fromMap(Map<String, dynamic> map) {
     return DiskParams(
-      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags'] as Map).cast<String, String>()).input(),
+      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags']! as Map).cast<String, String>()).input(),
     );
   }
 }

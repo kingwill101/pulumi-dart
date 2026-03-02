@@ -32,9 +32,9 @@ class StringNotEndsWithFilter {
 
   factory StringNotEndsWithFilter.fromMap(Map<String, dynamic> map) {
     return StringNotEndsWithFilter(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
       operatorType: (map['operatorType'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

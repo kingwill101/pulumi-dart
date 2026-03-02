@@ -31,9 +31,9 @@ class RulesSourceList {
 
   factory RulesSourceList.fromMap(Map<String, dynamic> map) {
     return RulesSourceList(
-      generatedRulesType: map['generatedRulesType'] == null ? null : (map['generatedRulesType'] as String).input(),
-      targetTypes: map['targetTypes'] == null ? null : ((map['targetTypes'] as List).cast<String>()).input(),
-      targets: map['targets'] == null ? null : ((map['targets'] as List).cast<String>()).input(),
+      generatedRulesType: map['generatedRulesType'] == null ? null : (map['generatedRulesType']! as String).input(),
+      targetTypes: map['targetTypes'] == null ? null : ((map['targetTypes']! as List).cast<String>()).input(),
+      targets: map['targets'] == null ? null : ((map['targets']! as List).cast<String>()).input(),
     );
   }
 }

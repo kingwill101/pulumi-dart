@@ -41,11 +41,11 @@ class PolicyGroupPolicyPackReference {
 
   factory PolicyGroupPolicyPackReference.fromMap(Map<String, dynamic> map) {
     return PolicyGroupPolicyPackReference(
-      config: map['config'] == null ? null : ((map['config'] as Map).cast<String, dynamic>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      config: map['config'] == null ? null : ((map['config']! as Map).cast<String, dynamic>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       name: (map['name'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as double).input(),
-      versionTag: map['versionTag'] == null ? null : (map['versionTag'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as double).input(),
+      versionTag: map['versionTag'] == null ? null : (map['versionTag']! as String).input(),
     );
   }
 }

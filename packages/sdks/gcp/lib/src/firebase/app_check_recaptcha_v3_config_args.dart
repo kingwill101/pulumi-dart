@@ -46,9 +46,9 @@ class AppCheckRecaptchaV3ConfigArgs {
   factory AppCheckRecaptchaV3ConfigArgs.fromMap(Map<String, dynamic> map) {
     return AppCheckRecaptchaV3ConfigArgs(
       appId: (map['appId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       siteSecret: (map['siteSecret'] as String).input(),
-      tokenTtl: map['tokenTtl'] == null ? null : (map['tokenTtl'] as String).input(),
+      tokenTtl: map['tokenTtl'] == null ? null : (map['tokenTtl']! as String).input(),
     );
   }
 }

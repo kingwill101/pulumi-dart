@@ -62,13 +62,13 @@ class DataflowEndpointPropertiesResponse {
 
   factory DataflowEndpointPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointPropertiesResponse(
-      dataExplorerSettings: map['dataExplorerSettings'] == null ? null : (DataflowEndpointDataExplorerResponse.fromMap((map['dataExplorerSettings'] as Map).cast<String, dynamic>())).input(),
-      dataLakeStorageSettings: map['dataLakeStorageSettings'] == null ? null : (DataflowEndpointDataLakeStorageResponse.fromMap((map['dataLakeStorageSettings'] as Map).cast<String, dynamic>())).input(),
+      dataExplorerSettings: map['dataExplorerSettings'] == null ? null : (DataflowEndpointDataExplorerResponse.fromMap((map['dataExplorerSettings']! as Map).cast<String, dynamic>())).input(),
+      dataLakeStorageSettings: map['dataLakeStorageSettings'] == null ? null : (DataflowEndpointDataLakeStorageResponse.fromMap((map['dataLakeStorageSettings']! as Map).cast<String, dynamic>())).input(),
       endpointType: (map['endpointType'] as String).input(),
-      fabricOneLakeSettings: map['fabricOneLakeSettings'] == null ? null : (DataflowEndpointFabricOneLakeResponse.fromMap((map['fabricOneLakeSettings'] as Map).cast<String, dynamic>())).input(),
-      kafkaSettings: map['kafkaSettings'] == null ? null : (DataflowEndpointKafkaResponse.fromMap((map['kafkaSettings'] as Map).cast<String, dynamic>())).input(),
-      localStorageSettings: map['localStorageSettings'] == null ? null : (DataflowEndpointLocalStorageResponse.fromMap((map['localStorageSettings'] as Map).cast<String, dynamic>())).input(),
-      mqttSettings: map['mqttSettings'] == null ? null : (DataflowEndpointMqttResponse.fromMap((map['mqttSettings'] as Map).cast<String, dynamic>())).input(),
+      fabricOneLakeSettings: map['fabricOneLakeSettings'] == null ? null : (DataflowEndpointFabricOneLakeResponse.fromMap((map['fabricOneLakeSettings']! as Map).cast<String, dynamic>())).input(),
+      kafkaSettings: map['kafkaSettings'] == null ? null : (DataflowEndpointKafkaResponse.fromMap((map['kafkaSettings']! as Map).cast<String, dynamic>())).input(),
+      localStorageSettings: map['localStorageSettings'] == null ? null : (DataflowEndpointLocalStorageResponse.fromMap((map['localStorageSettings']! as Map).cast<String, dynamic>())).input(),
+      mqttSettings: map['mqttSettings'] == null ? null : (DataflowEndpointMqttResponse.fromMap((map['mqttSettings']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

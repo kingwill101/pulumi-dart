@@ -36,9 +36,9 @@ class SoftwareUpdateConfigurationLinux {
   factory SoftwareUpdateConfigurationLinux.fromMap(Map<String, dynamic> map) {
     return SoftwareUpdateConfigurationLinux(
       classificationsIncludeds: ((map['classificationsIncludeds'] as List).cast<String>()).input(),
-      excludedPackages: map['excludedPackages'] == null ? null : ((map['excludedPackages'] as List).cast<String>()).input(),
-      includedPackages: map['includedPackages'] == null ? null : ((map['includedPackages'] as List).cast<String>()).input(),
-      reboot: map['reboot'] == null ? null : (map['reboot'] as String).input(),
+      excludedPackages: map['excludedPackages'] == null ? null : ((map['excludedPackages']! as List).cast<String>()).input(),
+      includedPackages: map['includedPackages'] == null ? null : ((map['includedPackages']! as List).cast<String>()).input(),
+      reboot: map['reboot'] == null ? null : (map['reboot']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class ReplicationSetRegion {
 
   factory ReplicationSetRegion.fromMap(Map<String, dynamic> map) {
     return ReplicationSetRegion(
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
       name: (map['name'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      statusMessage: map['statusMessage'] == null ? null : (map['statusMessage'] as String).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      statusMessage: map['statusMessage'] == null ? null : ((map['statusMessage'] as String).input()).input(),
     );
   }
 }

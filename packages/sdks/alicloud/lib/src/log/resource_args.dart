@@ -44,9 +44,9 @@ class ResourceArgs {
 
   factory ResourceArgs.fromMap(Map<String, dynamic> map) {
     return ResourceArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      extInfo: map['extInfo'] == null ? null : (map['extInfo'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      extInfo: map['extInfo'] == null ? null : (map['extInfo']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       schema: (map['schema'] as String).input(),
       type: (map['type'] as String).input(),
     );

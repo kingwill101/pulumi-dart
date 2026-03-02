@@ -27,8 +27,8 @@ class GoogleCloudDocumentaiV1DocumentTextAnchor {
 
   factory GoogleCloudDocumentaiV1DocumentTextAnchor.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentTextAnchor(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      textSegments: map['textSegments'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment>(map['textSegments'], (value) => GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      textSegments: map['textSegments'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment>(map['textSegments']!, (value) => GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

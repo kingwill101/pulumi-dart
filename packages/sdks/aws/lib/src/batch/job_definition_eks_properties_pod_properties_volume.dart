@@ -35,10 +35,10 @@ class JobDefinitionEksPropertiesPodPropertiesVolume {
 
   factory JobDefinitionEksPropertiesPodPropertiesVolume.fromMap(Map<String, dynamic> map) {
     return JobDefinitionEksPropertiesPodPropertiesVolume(
-      emptyDir: map['emptyDir'] == null ? null : (JobDefinitionEksPropertiesPodPropertiesVolumeEmptyDir.fromMap((map['emptyDir'] as Map).cast<String, dynamic>())).input(),
-      hostPath: map['hostPath'] == null ? null : (JobDefinitionEksPropertiesPodPropertiesVolumeHostPath.fromMap((map['hostPath'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      secret: map['secret'] == null ? null : (JobDefinitionEksPropertiesPodPropertiesVolumeSecret.fromMap((map['secret'] as Map).cast<String, dynamic>())).input(),
+      emptyDir: map['emptyDir'] == null ? null : ((JobDefinitionEksPropertiesPodPropertiesVolumeEmptyDir.fromMap((map['emptyDir']! as Map).cast<String, dynamic>())).input()).input(),
+      hostPath: map['hostPath'] == null ? null : ((JobDefinitionEksPropertiesPodPropertiesVolumeHostPath.fromMap((map['hostPath']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      secret: map['secret'] == null ? null : ((JobDefinitionEksPropertiesPodPropertiesVolumeSecret.fromMap((map['secret']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

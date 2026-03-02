@@ -62,13 +62,13 @@ class GetTransitRouterPrefixListAssociationsArgs {
 
   factory GetTransitRouterPrefixListAssociationsArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterPrefixListAssociationsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      ownerUid: map['ownerUid'] == null ? null : (map['ownerUid'] as int).input(),
-      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
-      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      ownerUid: map['ownerUid'] == null ? null : (map['ownerUid']! as int).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber']! as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
+      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       transitRouterId: (map['transitRouterId'] as String).input(),
       transitRouterTableId: (map['transitRouterTableId'] as String).input(),
     );

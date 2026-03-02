@@ -43,7 +43,7 @@ class ListIntegrationAccountKeyVaultKeysArgs {
       integrationAccountName: (map['integrationAccountName'] as String).input(),
       keyVault: (KeyVaultReference.fromMap((map['keyVault'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken']! as String).input(),
     );
   }
 }

@@ -32,8 +32,8 @@ class OrcWriteSettings {
 
   factory OrcWriteSettings.fromMap(Map<String, dynamic> map) {
     return OrcWriteSettings(
-      fileNamePrefix: map['fileNamePrefix'] == null ? null : (map['fileNamePrefix']).input(),
-      maxRowsPerFile: map['maxRowsPerFile'] == null ? null : (map['maxRowsPerFile']).input(),
+      fileNamePrefix: map['fileNamePrefix'] == null ? null : (map['fileNamePrefix']!).input(),
+      maxRowsPerFile: map['maxRowsPerFile'] == null ? null : (map['maxRowsPerFile']!).input(),
       type: (map['type'] as String).input(),
     );
   }

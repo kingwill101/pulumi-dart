@@ -40,8 +40,8 @@ class StandardsControlArgs {
   factory StandardsControlArgs.fromMap(Map<String, dynamic> map) {
     return StandardsControlArgs(
       controlStatus: (map['controlStatus'] as String).input(),
-      disabledReason: map['disabledReason'] == null ? null : (map['disabledReason'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      disabledReason: map['disabledReason'] == null ? null : ((map['disabledReason'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       standardsControlArn: (map['standardsControlArn'] as String).input(),
     );
   }

@@ -27,8 +27,8 @@ class ListGitHubOwnerAvailableResult {
 
   factory ListGitHubOwnerAvailableResult.fromMap(Map<String, dynamic> map) {
     return ListGitHubOwnerAvailableResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<GitHubOwnerResponse>(map['value'], (value) => GitHubOwnerResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<GitHubOwnerResponse>(map['value']!, (value) => GitHubOwnerResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

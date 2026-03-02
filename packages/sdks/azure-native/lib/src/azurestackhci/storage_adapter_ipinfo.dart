@@ -31,9 +31,9 @@ class StorageAdapterIPInfo {
 
   factory StorageAdapterIPInfo.fromMap(Map<String, dynamic> map) {
     return StorageAdapterIPInfo(
-      ipv4Address: map['ipv4Address'] == null ? null : (map['ipv4Address'] as String).input(),
-      physicalNode: map['physicalNode'] == null ? null : (map['physicalNode'] as String).input(),
-      subnetMask: map['subnetMask'] == null ? null : (map['subnetMask'] as String).input(),
+      ipv4Address: map['ipv4Address'] == null ? null : (map['ipv4Address']! as String).input(),
+      physicalNode: map['physicalNode'] == null ? null : (map['physicalNode']! as String).input(),
+      subnetMask: map['subnetMask'] == null ? null : (map['subnetMask']! as String).input(),
     );
   }
 }

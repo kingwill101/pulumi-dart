@@ -26,7 +26,7 @@ class AppServiceSiteConfigCors {
   factory AppServiceSiteConfigCors.fromMap(Map<String, dynamic> map) {
     return AppServiceSiteConfigCors(
       allowedOrigins: ((map['allowedOrigins'] as List).cast<String>()).input(),
-      supportCredentials: map['supportCredentials'] == null ? null : (map['supportCredentials'] as bool).input(),
+      supportCredentials: map['supportCredentials'] == null ? null : (map['supportCredentials']! as bool).input(),
     );
   }
 }

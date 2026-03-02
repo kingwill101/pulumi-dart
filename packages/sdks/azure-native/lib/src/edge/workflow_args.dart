@@ -41,9 +41,9 @@ class WorkflowArgs {
   factory WorkflowArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowArgs(
       contextName: (map['contextName'] as String).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workflowName: map['workflowName'] == null ? null : (map['workflowName'] as String).input(),
+      workflowName: map['workflowName'] == null ? null : (map['workflowName']! as String).input(),
     );
   }
 }

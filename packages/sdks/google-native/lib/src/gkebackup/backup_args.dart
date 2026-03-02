@@ -56,14 +56,14 @@ class BackupArgs {
 
   factory BackupArgs.fromMap(Map<String, dynamic> map) {
     return BackupArgs(
-      backupId: map['backupId'] == null ? null : (map['backupId'] as String).input(),
+      backupId: map['backupId'] == null ? null : (map['backupId']! as String).input(),
       backupPlanId: (map['backupPlanId'] as String).input(),
-      deleteLockDays: map['deleteLockDays'] == null ? null : (map['deleteLockDays'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      retainDays: map['retainDays'] == null ? null : (map['retainDays'] as int).input(),
+      deleteLockDays: map['deleteLockDays'] == null ? null : (map['deleteLockDays']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      retainDays: map['retainDays'] == null ? null : (map['retainDays']! as int).input(),
     );
   }
 }

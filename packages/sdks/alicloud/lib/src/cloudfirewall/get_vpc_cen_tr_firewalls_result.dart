@@ -83,20 +83,20 @@ class GetVpcCenTrFirewallsResult {
 
   factory GetVpcCenTrFirewallsResult.fromMap(Map<String, dynamic> map) {
     return GetVpcCenTrFirewallsResult(
-      cenId: map['cenId'] == null ? null : map['cenId'] as String,
-      currentPage: map['currentPage'] == null ? null : map['currentPage'] as int,
-      firewallId: map['firewallId'] == null ? null : map['firewallId'] as String,
-      firewallName: map['firewallName'] == null ? null : map['firewallName'] as String,
-      firewallSwitchStatus: map['firewallSwitchStatus'] == null ? null : map['firewallSwitchStatus'] as String,
+      cenId: map['cenId'] == null ? null : map['cenId']! as String,
+      currentPage: map['currentPage'] == null ? null : map['currentPage']! as int,
+      firewallId: map['firewallId'] == null ? null : map['firewallId']! as String,
+      firewallName: map['firewallName'] == null ? null : map['firewallName']! as String,
+      firewallSwitchStatus: map['firewallSwitchStatus'] == null ? null : map['firewallSwitchStatus']! as String,
       firewalls: pulumi.Input.decodeList<GetVpcCenTrFirewallsFirewall>(map['firewalls'], (value) => GetVpcCenTrFirewallsFirewall.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      regionNo: map['regionNo'] == null ? null : map['regionNo'] as String,
-      routeMode: map['routeMode'] == null ? null : map['routeMode'] as String,
-      transitRouterId: map['transitRouterId'] == null ? null : map['transitRouterId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      regionNo: map['regionNo'] == null ? null : map['regionNo']! as String,
+      routeMode: map['routeMode'] == null ? null : map['routeMode']! as String,
+      transitRouterId: map['transitRouterId'] == null ? null : map['transitRouterId']! as String,
     );
   }
 }

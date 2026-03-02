@@ -25,8 +25,8 @@ class TableEncryptionSpecification {
 
   factory TableEncryptionSpecification.fromMap(Map<String, dynamic> map) {
     return TableEncryptionSpecification(
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : (map['kmsKeyIdentifier'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : ((map['kmsKeyIdentifier'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

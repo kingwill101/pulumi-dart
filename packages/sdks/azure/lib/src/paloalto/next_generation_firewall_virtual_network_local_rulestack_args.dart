@@ -69,15 +69,15 @@ class NextGenerationFirewallVirtualNetworkLocalRulestackArgs {
 
   factory NextGenerationFirewallVirtualNetworkLocalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualNetworkLocalRulestackArgs(
-      destinationNats: map['destinationNats'] == null ? null : (pulumi.Input.decodeList<NextGenerationFirewallVirtualNetworkLocalRulestackDestinationNat>(map['destinationNats'], (value) => NextGenerationFirewallVirtualNetworkLocalRulestackDestinationNat.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dnsSettings: map['dnsSettings'] == null ? null : (NextGenerationFirewallVirtualNetworkLocalRulestackDnsSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())).input(),
-      marketplaceOfferId: map['marketplaceOfferId'] == null ? null : (map['marketplaceOfferId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      destinationNats: map['destinationNats'] == null ? null : (pulumi.Input.decodeList<NextGenerationFirewallVirtualNetworkLocalRulestackDestinationNat>(map['destinationNats']!, (value) => NextGenerationFirewallVirtualNetworkLocalRulestackDestinationNat.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsSettings: map['dnsSettings'] == null ? null : (NextGenerationFirewallVirtualNetworkLocalRulestackDnsSettings.fromMap((map['dnsSettings']! as Map).cast<String, dynamic>())).input(),
+      marketplaceOfferId: map['marketplaceOfferId'] == null ? null : (map['marketplaceOfferId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networkProfile: (NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
-      planId: map['planId'] == null ? null : (map['planId'] as String).input(),
+      planId: map['planId'] == null ? null : (map['planId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       rulestackId: (map['rulestackId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -63,15 +63,15 @@ class TrafficMirrorTargetState {
 
   factory TrafficMirrorTargetState.fromMap(Map<String, dynamic> map) {
     return TrafficMirrorTargetState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      gatewayLoadBalancerEndpointId: map['gatewayLoadBalancerEndpointId'] == null ? null : (map['gatewayLoadBalancerEndpointId'] as String).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
-      networkLoadBalancerArn: map['networkLoadBalancerArn'] == null ? null : (map['networkLoadBalancerArn'] as String).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      gatewayLoadBalancerEndpointId: map['gatewayLoadBalancerEndpointId'] == null ? null : ((map['gatewayLoadBalancerEndpointId'] as String).input()).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : ((map['networkInterfaceId'] as String).input()).input(),
+      networkLoadBalancerArn: map['networkLoadBalancerArn'] == null ? null : ((map['networkLoadBalancerArn'] as String).input()).input(),
+      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

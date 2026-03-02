@@ -52,9 +52,9 @@ class WorkloadIdentityPoolKeyArgs {
 
   factory WorkloadIdentityPoolKeyArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolKeyArgs(
-      keyData: map['keyData'] == null ? null : (KeyData.fromMap((map['keyData'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      keyData: map['keyData'] == null ? null : (KeyData.fromMap((map['keyData']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       providerId: (map['providerId'] as String).input(),
       use: (WorkloadIdentityPoolKeyUse.fromValue(map['use'] as String)).input(),
       workloadIdentityPoolId: (map['workloadIdentityPoolId'] as String).input(),

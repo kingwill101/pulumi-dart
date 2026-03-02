@@ -30,9 +30,9 @@ class GetCollationTimeZonesCollationTimeZone {
 
   factory GetCollationTimeZonesCollationTimeZone.fromMap(Map<String, dynamic> map) {
     return GetCollationTimeZonesCollationTimeZone(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      standardTimeOffset: map['standardTimeOffset'] == null ? null : (map['standardTimeOffset'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      standardTimeOffset: map['standardTimeOffset'] == null ? null : (map['standardTimeOffset']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

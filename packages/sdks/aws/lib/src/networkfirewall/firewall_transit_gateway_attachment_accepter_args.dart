@@ -34,8 +34,8 @@ class FirewallTransitGatewayAttachmentAccepterArgs {
 
   factory FirewallTransitGatewayAttachmentAccepterArgs.fromMap(Map<String, dynamic> map) {
     return FirewallTransitGatewayAttachmentAccepterArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (FirewallTransitGatewayAttachmentAccepterTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((FirewallTransitGatewayAttachmentAccepterTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
       transitGatewayAttachmentId: (map['transitGatewayAttachmentId'] as String).input(),
     );
   }

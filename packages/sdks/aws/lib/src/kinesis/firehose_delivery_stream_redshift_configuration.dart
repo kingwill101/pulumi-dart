@@ -90,20 +90,20 @@ class FirehoseDeliveryStreamRedshiftConfiguration {
 
   factory FirehoseDeliveryStreamRedshiftConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamRedshiftConfiguration(
-      cloudwatchLoggingOptions: map['cloudwatchLoggingOptions'] == null ? null : (FirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptions.fromMap((map['cloudwatchLoggingOptions'] as Map).cast<String, dynamic>())).input(),
+      cloudwatchLoggingOptions: map['cloudwatchLoggingOptions'] == null ? null : ((FirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptions.fromMap((map['cloudwatchLoggingOptions']! as Map).cast<String, dynamic>())).input()).input(),
       clusterJdbcurl: (map['clusterJdbcurl'] as String).input(),
-      copyOptions: map['copyOptions'] == null ? null : (map['copyOptions'] as String).input(),
-      dataTableColumns: map['dataTableColumns'] == null ? null : (map['dataTableColumns'] as String).input(),
+      copyOptions: map['copyOptions'] == null ? null : ((map['copyOptions'] as String).input()).input(),
+      dataTableColumns: map['dataTableColumns'] == null ? null : ((map['dataTableColumns'] as String).input()).input(),
       dataTableName: (map['dataTableName'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      processingConfiguration: map['processingConfiguration'] == null ? null : (FirehoseDeliveryStreamRedshiftConfigurationProcessingConfiguration.fromMap((map['processingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      retryDuration: map['retryDuration'] == null ? null : (map['retryDuration'] as int).input(),
+      password: map['password'] == null ? null : ((map['password'] as String).input()).input(),
+      processingConfiguration: map['processingConfiguration'] == null ? null : ((FirehoseDeliveryStreamRedshiftConfigurationProcessingConfiguration.fromMap((map['processingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      retryDuration: map['retryDuration'] == null ? null : ((map['retryDuration'] as int).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      s3BackupConfiguration: map['s3BackupConfiguration'] == null ? null : (FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfiguration.fromMap((map['s3BackupConfiguration'] as Map).cast<String, dynamic>())).input(),
-      s3BackupMode: map['s3BackupMode'] == null ? null : (map['s3BackupMode'] as String).input(),
-      s3Configuration: (FirehoseDeliveryStreamRedshiftConfigurationS3Configuration.fromMap((map['s3Configuration'] as Map).cast<String, dynamic>())).input(),
-      secretsManagerConfiguration: map['secretsManagerConfiguration'] == null ? null : (FirehoseDeliveryStreamRedshiftConfigurationSecretsManagerConfiguration.fromMap((map['secretsManagerConfiguration'] as Map).cast<String, dynamic>())).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      s3BackupConfiguration: map['s3BackupConfiguration'] == null ? null : ((FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfiguration.fromMap((map['s3BackupConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      s3BackupMode: map['s3BackupMode'] == null ? null : ((map['s3BackupMode'] as String).input()).input(),
+      s3Configuration: (FirehoseDeliveryStreamRedshiftConfigurationS3Configuration.fromMap((map['s3Configuration']! as Map).cast<String, dynamic>())).input(),
+      secretsManagerConfiguration: map['secretsManagerConfiguration'] == null ? null : ((FirehoseDeliveryStreamRedshiftConfigurationSecretsManagerConfiguration.fromMap((map['secretsManagerConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      username: map['username'] == null ? null : ((map['username'] as String).input()).input(),
     );
   }
 }

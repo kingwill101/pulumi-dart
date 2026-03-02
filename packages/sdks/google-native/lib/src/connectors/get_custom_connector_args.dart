@@ -28,7 +28,7 @@ class GetCustomConnectorArgs {
   factory GetCustomConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomConnectorArgs(
       customConnectorId: (map['customConnectorId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

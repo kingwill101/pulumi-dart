@@ -34,9 +34,9 @@ class AkriConnectorTemplateHelmAdvancedConfiguration {
 
   factory AkriConnectorTemplateHelmAdvancedConfiguration.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateHelmAdvancedConfiguration(
-      delete: map['delete'] == null ? null : (AkriConnectorTemplateHelmDeleteConfiguration.fromMap((map['delete'] as Map).cast<String, dynamic>())).input(),
-      install: map['install'] == null ? null : (AkriConnectorTemplateHelmInstallConfiguration.fromMap((map['install'] as Map).cast<String, dynamic>())).input(),
-      upgrade: map['upgrade'] == null ? null : (AkriConnectorTemplateHelmUpgradeConfiguration.fromMap((map['upgrade'] as Map).cast<String, dynamic>())).input(),
+      delete: map['delete'] == null ? null : (AkriConnectorTemplateHelmDeleteConfiguration.fromMap((map['delete']! as Map).cast<String, dynamic>())).input(),
+      install: map['install'] == null ? null : (AkriConnectorTemplateHelmInstallConfiguration.fromMap((map['install']! as Map).cast<String, dynamic>())).input(),
+      upgrade: map['upgrade'] == null ? null : (AkriConnectorTemplateHelmUpgradeConfiguration.fromMap((map['upgrade']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

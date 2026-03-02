@@ -45,10 +45,10 @@ class ConsumerGroupArgs {
   factory ConsumerGroupArgs.fromMap(Map<String, dynamic> map) {
     return ConsumerGroupArgs(
       consumerId: (map['consumerId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

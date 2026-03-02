@@ -31,9 +31,9 @@ class GroupVersionResource {
 
   factory GroupVersionResource.fromMap(Map<String, dynamic> map) {
     return GroupVersionResource(
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

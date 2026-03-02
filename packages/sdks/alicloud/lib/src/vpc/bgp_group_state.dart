@@ -80,18 +80,18 @@ class BgpGroupState {
 
   factory BgpGroupState.fromMap(Map<String, dynamic> map) {
     return BgpGroupState(
-      authKey: map['authKey'] == null ? null : (map['authKey'] as String).input(),
-      bgpGroupName: map['bgpGroupName'] == null ? null : (map['bgpGroupName'] as String).input(),
-      clearAuthKey: map['clearAuthKey'] == null ? null : (map['clearAuthKey'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
-      isFakeAsn: map['isFakeAsn'] == null ? null : (map['isFakeAsn'] as bool).input(),
-      localAsn: map['localAsn'] == null ? null : (map['localAsn'] as int).input(),
-      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn'] as int).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      routeLimit: map['routeLimit'] == null ? null : (map['routeLimit'] as int).input(),
-      routerId: map['routerId'] == null ? null : (map['routerId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      authKey: map['authKey'] == null ? null : (map['authKey']! as String).input(),
+      bgpGroupName: map['bgpGroupName'] == null ? null : (map['bgpGroupName']! as String).input(),
+      clearAuthKey: map['clearAuthKey'] == null ? null : (map['clearAuthKey']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as String).input(),
+      isFakeAsn: map['isFakeAsn'] == null ? null : (map['isFakeAsn']! as bool).input(),
+      localAsn: map['localAsn'] == null ? null : (map['localAsn']! as int).input(),
+      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn']! as int).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      routeLimit: map['routeLimit'] == null ? null : (map['routeLimit']! as int).input(),
+      routerId: map['routerId'] == null ? null : (map['routerId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

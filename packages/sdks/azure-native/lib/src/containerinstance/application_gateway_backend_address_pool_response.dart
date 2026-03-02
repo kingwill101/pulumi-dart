@@ -21,7 +21,7 @@ class ApplicationGatewayBackendAddressPoolResponse {
 
   factory ApplicationGatewayBackendAddressPoolResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayBackendAddressPoolResponse(
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
+      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
     );
   }
 }

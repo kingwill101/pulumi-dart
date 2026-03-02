@@ -75,16 +75,16 @@ class PatchBaselineArgs {
   factory PatchBaselineArgs.fromMap(Map<String, dynamic> map) {
     return PatchBaselineArgs(
       approvalRules: (map['approvalRules'] as String).input(),
-      approvedPatches: map['approvedPatches'] == null ? null : ((map['approvedPatches'] as List).cast<String>()).input(),
-      approvedPatchesEnableNonSecurity: map['approvedPatchesEnableNonSecurity'] == null ? null : (map['approvedPatchesEnableNonSecurity'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      approvedPatches: map['approvedPatches'] == null ? null : ((map['approvedPatches']! as List).cast<String>()).input(),
+      approvedPatchesEnableNonSecurity: map['approvedPatchesEnableNonSecurity'] == null ? null : (map['approvedPatchesEnableNonSecurity']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       operationSystem: (map['operationSystem'] as String).input(),
       patchBaselineName: (map['patchBaselineName'] as String).input(),
-      rejectedPatches: map['rejectedPatches'] == null ? null : ((map['rejectedPatches'] as List).cast<String>()).input(),
-      rejectedPatchesAction: map['rejectedPatchesAction'] == null ? null : (map['rejectedPatchesAction'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      sources: map['sources'] == null ? null : ((map['sources'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      rejectedPatches: map['rejectedPatches'] == null ? null : ((map['rejectedPatches']! as List).cast<String>()).input(),
+      rejectedPatchesAction: map['rejectedPatchesAction'] == null ? null : (map['rejectedPatchesAction']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      sources: map['sources'] == null ? null : ((map['sources']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

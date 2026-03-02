@@ -34,8 +34,8 @@ class ServiceLinkedRoleArgs {
 
   factory ServiceLinkedRoleArgs.fromMap(Map<String, dynamic> map) {
     return ServiceLinkedRoleArgs(
-      customSuffix: map['customSuffix'] == null ? null : (map['customSuffix'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      customSuffix: map['customSuffix'] == null ? null : (map['customSuffix']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );
   }

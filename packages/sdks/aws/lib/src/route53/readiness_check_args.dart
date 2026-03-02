@@ -38,7 +38,7 @@ class ReadinessCheckArgs {
     return ReadinessCheckArgs(
       readinessCheckName: (map['readinessCheckName'] as String).input(),
       resourceSetName: (map['resourceSetName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

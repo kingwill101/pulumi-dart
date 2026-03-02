@@ -35,10 +35,10 @@ class JobRestoreStrategy {
 
   factory JobRestoreStrategy.fromMap(Map<String, dynamic> map) {
     return JobRestoreStrategy(
-      allowNonRestoredState: map['allowNonRestoredState'] == null ? null : (map['allowNonRestoredState'] as bool).input(),
-      jobStartTimeInMs: map['jobStartTimeInMs'] == null ? null : (map['jobStartTimeInMs'] as int).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      savepointId: map['savepointId'] == null ? null : (map['savepointId'] as String).input(),
+      allowNonRestoredState: map['allowNonRestoredState'] == null ? null : (map['allowNonRestoredState']! as bool).input(),
+      jobStartTimeInMs: map['jobStartTimeInMs'] == null ? null : (map['jobStartTimeInMs']! as int).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      savepointId: map['savepointId'] == null ? null : (map['savepointId']! as String).input(),
     );
   }
 }

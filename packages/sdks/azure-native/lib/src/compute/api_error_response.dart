@@ -43,11 +43,11 @@ class ApiErrorResponse {
 
   factory ApiErrorResponse.fromMap(Map<String, dynamic> map) {
     return ApiErrorResponse(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      details: map['details'] == null ? null : (pulumi.Input.decodeList<ApiErrorBaseResponse>(map['details'], (value) => ApiErrorBaseResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      innererror: map['innererror'] == null ? null : (InnerErrorResponse.fromMap((map['innererror'] as Map).cast<String, dynamic>())).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      details: map['details'] == null ? null : (pulumi.Input.decodeList<ApiErrorBaseResponse>(map['details']!, (value) => ApiErrorBaseResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      innererror: map['innererror'] == null ? null : (InnerErrorResponse.fromMap((map['innererror']! as Map).cast<String, dynamic>())).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
     );
   }
 }

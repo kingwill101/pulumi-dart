@@ -26,8 +26,8 @@ class StatusItemResponse {
 
   factory StatusItemResponse.fromMap(Map<String, dynamic> map) {
     return StatusItemResponse(
-      statusName: map['statusName'] == null ? null : (map['statusName'] as String).input(),
-      statusValue: map['statusValue'] == null ? null : (map['statusValue'] as String).input(),
+      statusName: map['statusName'] == null ? null : (map['statusName']! as String).input(),
+      statusValue: map['statusValue'] == null ? null : (map['statusValue']! as String).input(),
     );
   }
 }

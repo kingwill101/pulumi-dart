@@ -72,16 +72,16 @@ class AseV3NetworkingConfigurationResponse {
 
   factory AseV3NetworkingConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AseV3NetworkingConfigurationResponse(
-      allowNewPrivateEndpointConnections: map['allowNewPrivateEndpointConnections'] == null ? null : (map['allowNewPrivateEndpointConnections'] as bool).input(),
+      allowNewPrivateEndpointConnections: map['allowNewPrivateEndpointConnections'] == null ? null : (map['allowNewPrivateEndpointConnections']! as bool).input(),
       externalInboundIpAddresses: ((map['externalInboundIpAddresses'] as List).cast<String>()).input(),
-      ftpEnabled: map['ftpEnabled'] == null ? null : (map['ftpEnabled'] as bool).input(),
+      ftpEnabled: map['ftpEnabled'] == null ? null : (map['ftpEnabled']! as bool).input(),
       id: (map['id'] as String).input(),
-      inboundIpAddressOverride: map['inboundIpAddressOverride'] == null ? null : (map['inboundIpAddressOverride'] as String).input(),
+      inboundIpAddressOverride: map['inboundIpAddressOverride'] == null ? null : (map['inboundIpAddressOverride']! as String).input(),
       internalInboundIpAddresses: ((map['internalInboundIpAddresses'] as List).cast<String>()).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       linuxOutboundIpAddresses: ((map['linuxOutboundIpAddresses'] as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
-      remoteDebugEnabled: map['remoteDebugEnabled'] == null ? null : (map['remoteDebugEnabled'] as bool).input(),
+      remoteDebugEnabled: map['remoteDebugEnabled'] == null ? null : (map['remoteDebugEnabled']! as bool).input(),
       type: (map['type'] as String).input(),
       windowsOutboundIpAddresses: ((map['windowsOutboundIpAddresses'] as List).cast<String>()).input(),
     );

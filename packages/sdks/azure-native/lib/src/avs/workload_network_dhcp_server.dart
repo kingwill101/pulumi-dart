@@ -43,10 +43,10 @@ class WorkloadNetworkDhcpServer {
   factory WorkloadNetworkDhcpServer.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkDhcpServer(
       dhcpType: (map['dhcpType'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      leaseTime: map['leaseTime'] == null ? null : (map['leaseTime'] as double).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as double).input(),
-      serverAddress: map['serverAddress'] == null ? null : (map['serverAddress'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      leaseTime: map['leaseTime'] == null ? null : (map['leaseTime']! as double).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as double).input(),
+      serverAddress: map['serverAddress'] == null ? null : (map['serverAddress']! as String).input(),
     );
   }
 }

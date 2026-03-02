@@ -23,7 +23,7 @@ class InstanceStateInfo {
 
   factory InstanceStateInfo.fromMap(Map<String, dynamic> map) {
     return InstanceStateInfo(
-      updateInfos: map['updateInfos'] == null ? null : (pulumi.Input.decodeList<InstanceStateInfoUpdateInfo>(map['updateInfos'], (value) => InstanceStateInfoUpdateInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updateInfos: map['updateInfos'] == null ? null : (pulumi.Input.decodeList<InstanceStateInfoUpdateInfo>(map['updateInfos']!, (value) => InstanceStateInfoUpdateInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class ResourceOperationErrorResponse {
 
   factory ResourceOperationErrorResponse.fromMap(Map<String, dynamic> map) {
     return ResourceOperationErrorResponse(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      timestamp: map['timestamp'] == null ? null : (map['timestamp'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      timestamp: map['timestamp'] == null ? null : (map['timestamp']! as String).input(),
     );
   }
 }

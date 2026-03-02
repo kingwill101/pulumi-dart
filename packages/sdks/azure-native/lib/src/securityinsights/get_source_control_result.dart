@@ -91,18 +91,18 @@ class GetSourceControlResult {
     return GetSourceControlResult(
       azureApiVersion: map['azureApiVersion'] as String,
       contentTypes: (map['contentTypes'] as List).cast<String>(),
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       displayName: map['displayName'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
-      lastDeploymentInfo: map['lastDeploymentInfo'] == null ? null : DeploymentInfoResponse.fromMap((map['lastDeploymentInfo'] as Map).cast<String, dynamic>()),
+      lastDeploymentInfo: map['lastDeploymentInfo'] == null ? null : DeploymentInfoResponse.fromMap((map['lastDeploymentInfo']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       repoType: map['repoType'] as String,
       repository: RepositoryResponse.fromMap((map['repository'] as Map).cast<String, dynamic>()),
-      repositoryResourceInfo: map['repositoryResourceInfo'] == null ? null : RepositoryResourceInfoResponse.fromMap((map['repositoryResourceInfo'] as Map).cast<String, dynamic>()),
+      repositoryResourceInfo: map['repositoryResourceInfo'] == null ? null : RepositoryResourceInfoResponse.fromMap((map['repositoryResourceInfo']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      version: map['version'] == null ? null : map['version']! as String,
     );
   }
 }

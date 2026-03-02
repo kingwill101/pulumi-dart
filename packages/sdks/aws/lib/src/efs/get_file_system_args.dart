@@ -39,10 +39,10 @@ class GetFileSystemArgs {
 
   factory GetFileSystemArgs.fromMap(Map<String, dynamic> map) {
     return GetFileSystemArgs(
-      creationToken: map['creationToken'] == null ? null : (map['creationToken'] as String).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      creationToken: map['creationToken'] == null ? null : ((map['creationToken'] as String).input()).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : ((map['fileSystemId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

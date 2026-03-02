@@ -41,10 +41,10 @@ class ResiliencyPolicyPolicy {
 
   factory ResiliencyPolicyPolicy.fromMap(Map<String, dynamic> map) {
     return ResiliencyPolicyPolicy(
-      az: map['az'] == null ? null : (ResiliencyPolicyPolicyAz.fromMap((map['az'] as Map).cast<String, dynamic>())).input(),
-      hardware: map['hardware'] == null ? null : (ResiliencyPolicyPolicyHardware.fromMap((map['hardware'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (ResiliencyPolicyPolicyRegion.fromMap((map['region'] as Map).cast<String, dynamic>())).input(),
-      software: map['software'] == null ? null : (ResiliencyPolicyPolicySoftware.fromMap((map['software'] as Map).cast<String, dynamic>())).input(),
+      az: map['az'] == null ? null : ((ResiliencyPolicyPolicyAz.fromMap((map['az']! as Map).cast<String, dynamic>())).input()).input(),
+      hardware: map['hardware'] == null ? null : ((ResiliencyPolicyPolicyHardware.fromMap((map['hardware']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((ResiliencyPolicyPolicyRegion.fromMap((map['region']! as Map).cast<String, dynamic>())).input()).input(),
+      software: map['software'] == null ? null : ((ResiliencyPolicyPolicySoftware.fromMap((map['software']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

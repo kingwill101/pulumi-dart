@@ -32,8 +32,8 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroup {
 
   factory ClusterClusterConfigAuxiliaryNodeGroupNodeGroup.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigAuxiliaryNodeGroupNodeGroup(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodeGroupConfig: map['nodeGroupConfig'] == null ? null : (ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig.fromMap((map['nodeGroupConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodeGroupConfig: map['nodeGroupConfig'] == null ? null : (ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig.fromMap((map['nodeGroupConfig']! as Map).cast<String, dynamic>())).input(),
       roles: ((map['roles'] as List).cast<String>()).input(),
     );
   }

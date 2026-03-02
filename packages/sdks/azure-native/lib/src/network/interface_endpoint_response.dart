@@ -79,17 +79,17 @@ class InterfaceEndpointResponse {
 
   factory InterfaceEndpointResponse.fromMap(Map<String, dynamic> map) {
     return InterfaceEndpointResponse(
-      endpointService: map['endpointService'] == null ? null : (EndpointServiceResponse.fromMap((map['endpointService'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      endpointService: map['endpointService'] == null ? null : (EndpointServiceResponse.fromMap((map['endpointService']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       name: (map['name'] as String).input(),
       networkInterfaces: (pulumi.Input.decodeList<NetworkInterfaceResponse>(map['networkInterfaces'], (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       owner: (map['owner'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      subnet: map['subnet'] == null ? null : (SubnetResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      subnet: map['subnet'] == null ? null : (SubnetResponse.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       type: (map['type'] as String).input(),
     );
   }

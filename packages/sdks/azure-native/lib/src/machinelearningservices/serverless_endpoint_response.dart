@@ -54,11 +54,11 @@ class ServerlessEndpointResponse {
   factory ServerlessEndpointResponse.fromMap(Map<String, dynamic> map) {
     return ServerlessEndpointResponse(
       authMode: (map['authMode'] as String).input(),
-      contentSafety: map['contentSafety'] == null ? null : (ContentSafetyResponse.fromMap((map['contentSafety'] as Map).cast<String, dynamic>())).input(),
+      contentSafety: map['contentSafety'] == null ? null : (ContentSafetyResponse.fromMap((map['contentSafety']! as Map).cast<String, dynamic>())).input(),
       endpointState: (map['endpointState'] as String).input(),
       inferenceEndpoint: (ServerlessInferenceEndpointResponse.fromMap((map['inferenceEndpoint'] as Map).cast<String, dynamic>())).input(),
       marketplaceSubscriptionId: (map['marketplaceSubscriptionId'] as String).input(),
-      modelSettings: map['modelSettings'] == null ? null : (ModelSettingsResponse.fromMap((map['modelSettings'] as Map).cast<String, dynamic>())).input(),
+      modelSettings: map['modelSettings'] == null ? null : (ModelSettingsResponse.fromMap((map['modelSettings']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

@@ -50,13 +50,13 @@ class GetCoreNetworkPolicyDocumentSegment {
 
   factory GetCoreNetworkPolicyDocumentSegment.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentSegment(
-      allowFilters: map['allowFilters'] == null ? null : ((map['allowFilters'] as List).cast<String>()).input(),
-      denyFilters: map['denyFilters'] == null ? null : ((map['denyFilters'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      edgeLocations: map['edgeLocations'] == null ? null : ((map['edgeLocations'] as List).cast<String>()).input(),
-      isolateAttachments: map['isolateAttachments'] == null ? null : (map['isolateAttachments'] as bool).input(),
+      allowFilters: map['allowFilters'] == null ? null : (((map['allowFilters'] as List).cast<String>()).input()).input(),
+      denyFilters: map['denyFilters'] == null ? null : (((map['denyFilters'] as List).cast<String>()).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      edgeLocations: map['edgeLocations'] == null ? null : (((map['edgeLocations'] as List).cast<String>()).input()).input(),
+      isolateAttachments: map['isolateAttachments'] == null ? null : ((map['isolateAttachments'] as bool).input()).input(),
       name: (map['name'] as String).input(),
-      requireAttachmentAcceptance: map['requireAttachmentAcceptance'] == null ? null : (map['requireAttachmentAcceptance'] as bool).input(),
+      requireAttachmentAcceptance: map['requireAttachmentAcceptance'] == null ? null : ((map['requireAttachmentAcceptance'] as bool).input()).input(),
     );
   }
 }

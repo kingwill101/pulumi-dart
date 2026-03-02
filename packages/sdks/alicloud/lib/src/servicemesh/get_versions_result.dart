@@ -38,10 +38,10 @@ class GetVersionsResult {
 
   factory GetVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetVersionsResult(
-      edition: map['edition'] == null ? null : map['edition'] as String,
+      edition: map['edition'] == null ? null : map['edition']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       versions: pulumi.Input.decodeList<GetVersionsVersion>(map['versions'], (value) => GetVersionsVersion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

@@ -27,8 +27,8 @@ class ImageScanStatusResponse {
 
   factory ImageScanStatusResponse.fromMap(Map<String, dynamic> map) {
     return ImageScanStatusResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      status: map['status'] == null ? null : (ScanStatusEnumValueResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      status: map['status'] == null ? null : (ScanStatusEnumValueResponse.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

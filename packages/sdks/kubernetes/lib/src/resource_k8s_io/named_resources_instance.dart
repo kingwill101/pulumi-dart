@@ -27,7 +27,7 @@ class NamedResourcesInstance {
 
   factory NamedResourcesInstance.fromMap(Map<String, dynamic> map) {
     return NamedResourcesInstance(
-      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<NamedResourcesAttribute>(map['attributes'], (value) => NamedResourcesAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<NamedResourcesAttribute>(map['attributes']!, (value) => NamedResourcesAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
     );
   }

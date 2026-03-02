@@ -20,7 +20,7 @@ class ProvisionedModelThroughputTimeouts {
 
   factory ProvisionedModelThroughputTimeouts.fromMap(Map<String, dynamic> map) {
     return ProvisionedModelThroughputTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
+      create: map['create'] == null ? null : ((map['create'] as String).input()).input(),
     );
   }
 }

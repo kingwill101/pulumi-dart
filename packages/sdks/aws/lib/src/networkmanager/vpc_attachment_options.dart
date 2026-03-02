@@ -35,10 +35,10 @@ class VpcAttachmentOptions {
 
   factory VpcAttachmentOptions.fromMap(Map<String, dynamic> map) {
     return VpcAttachmentOptions(
-      applianceModeSupport: map['applianceModeSupport'] == null ? null : (map['applianceModeSupport'] as bool).input(),
-      dnsSupport: map['dnsSupport'] == null ? null : (map['dnsSupport'] as bool).input(),
-      ipv6Support: map['ipv6Support'] == null ? null : (map['ipv6Support'] as bool).input(),
-      securityGroupReferencingSupport: map['securityGroupReferencingSupport'] == null ? null : (map['securityGroupReferencingSupport'] as bool).input(),
+      applianceModeSupport: map['applianceModeSupport'] == null ? null : ((map['applianceModeSupport'] as bool).input()).input(),
+      dnsSupport: map['dnsSupport'] == null ? null : ((map['dnsSupport'] as bool).input()).input(),
+      ipv6Support: map['ipv6Support'] == null ? null : ((map['ipv6Support'] as bool).input()).input(),
+      securityGroupReferencingSupport: map['securityGroupReferencingSupport'] == null ? null : ((map['securityGroupReferencingSupport'] as bool).input()).input(),
     );
   }
 }

@@ -82,17 +82,17 @@ class GetWebAppHybridConnectionResult {
   factory GetWebAppHybridConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppHybridConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      hostname: map['hostname'] == null ? null : map['hostname'] as String,
+      hostname: map['hostname'] == null ? null : map['hostname']! as String,
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      relayArmUri: map['relayArmUri'] == null ? null : map['relayArmUri'] as String,
-      relayName: map['relayName'] == null ? null : map['relayName'] as String,
-      sendKeyName: map['sendKeyName'] == null ? null : map['sendKeyName'] as String,
-      sendKeyValue: map['sendKeyValue'] == null ? null : map['sendKeyValue'] as String,
-      serviceBusNamespace: map['serviceBusNamespace'] == null ? null : map['serviceBusNamespace'] as String,
-      serviceBusSuffix: map['serviceBusSuffix'] == null ? null : map['serviceBusSuffix'] as String,
+      port: map['port'] == null ? null : map['port']! as int,
+      relayArmUri: map['relayArmUri'] == null ? null : map['relayArmUri']! as String,
+      relayName: map['relayName'] == null ? null : map['relayName']! as String,
+      sendKeyName: map['sendKeyName'] == null ? null : map['sendKeyName']! as String,
+      sendKeyValue: map['sendKeyValue'] == null ? null : map['sendKeyValue']! as String,
+      serviceBusNamespace: map['serviceBusNamespace'] == null ? null : map['serviceBusNamespace']! as String,
+      serviceBusSuffix: map['serviceBusSuffix'] == null ? null : map['serviceBusSuffix']! as String,
       type: map['type'] as String,
     );
   }

@@ -80,18 +80,18 @@ class AzureStorageContainer {
 
   factory AzureStorageContainer.fromMap(Map<String, dynamic> map) {
     return AzureStorageContainer(
-      acquireStorageAccountLock: map['acquireStorageAccountLock'] == null ? null : (map['acquireStorageAccountLock'] as String).input(),
-      backupManagementType: map['backupManagementType'] == null ? null : (map['backupManagementType'] as String).input(),
+      acquireStorageAccountLock: map['acquireStorageAccountLock'] == null ? null : (map['acquireStorageAccountLock']! as String).input(),
+      backupManagementType: map['backupManagementType'] == null ? null : (map['backupManagementType']! as String).input(),
       containerType: (map['containerType'] as String).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      healthStatus: map['healthStatus'] == null ? null : (map['healthStatus'] as String).input(),
-      operationType: map['operationType'] == null ? null : (map['operationType'] as String).input(),
-      protectableObjectType: map['protectableObjectType'] == null ? null : (map['protectableObjectType'] as String).input(),
-      protectedItemCount: map['protectedItemCount'] == null ? null : (map['protectedItemCount'] as double).input(),
-      registrationStatus: map['registrationStatus'] == null ? null : (map['registrationStatus'] as String).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
-      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
-      storageAccountVersion: map['storageAccountVersion'] == null ? null : (map['storageAccountVersion'] as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      healthStatus: map['healthStatus'] == null ? null : (map['healthStatus']! as String).input(),
+      operationType: map['operationType'] == null ? null : (map['operationType']! as String).input(),
+      protectableObjectType: map['protectableObjectType'] == null ? null : (map['protectableObjectType']! as String).input(),
+      protectedItemCount: map['protectedItemCount'] == null ? null : (map['protectedItemCount']! as double).input(),
+      registrationStatus: map['registrationStatus'] == null ? null : (map['registrationStatus']! as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId']! as String).input(),
+      storageAccountVersion: map['storageAccountVersion'] == null ? null : (map['storageAccountVersion']! as String).input(),
     );
   }
 }

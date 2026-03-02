@@ -47,12 +47,12 @@ class OracleSourceConfig {
 
   factory OracleSourceConfig.fromMap(Map<String, dynamic> map) {
     return OracleSourceConfig(
-      dropLargeObjects: map['dropLargeObjects'] == null ? null : ((map['dropLargeObjects'] as Map).cast<String, dynamic>()).input(),
-      excludeObjects: map['excludeObjects'] == null ? null : (OracleRdbms.fromMap((map['excludeObjects'] as Map).cast<String, dynamic>())).input(),
-      includeObjects: map['includeObjects'] == null ? null : (OracleRdbms.fromMap((map['includeObjects'] as Map).cast<String, dynamic>())).input(),
-      maxConcurrentBackfillTasks: map['maxConcurrentBackfillTasks'] == null ? null : (map['maxConcurrentBackfillTasks'] as int).input(),
-      maxConcurrentCdcTasks: map['maxConcurrentCdcTasks'] == null ? null : (map['maxConcurrentCdcTasks'] as int).input(),
-      streamLargeObjects: map['streamLargeObjects'] == null ? null : ((map['streamLargeObjects'] as Map).cast<String, dynamic>()).input(),
+      dropLargeObjects: map['dropLargeObjects'] == null ? null : ((map['dropLargeObjects']! as Map).cast<String, dynamic>()).input(),
+      excludeObjects: map['excludeObjects'] == null ? null : (OracleRdbms.fromMap((map['excludeObjects']! as Map).cast<String, dynamic>())).input(),
+      includeObjects: map['includeObjects'] == null ? null : (OracleRdbms.fromMap((map['includeObjects']! as Map).cast<String, dynamic>())).input(),
+      maxConcurrentBackfillTasks: map['maxConcurrentBackfillTasks'] == null ? null : (map['maxConcurrentBackfillTasks']! as int).input(),
+      maxConcurrentCdcTasks: map['maxConcurrentCdcTasks'] == null ? null : (map['maxConcurrentCdcTasks']! as int).input(),
+      streamLargeObjects: map['streamLargeObjects'] == null ? null : ((map['streamLargeObjects']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

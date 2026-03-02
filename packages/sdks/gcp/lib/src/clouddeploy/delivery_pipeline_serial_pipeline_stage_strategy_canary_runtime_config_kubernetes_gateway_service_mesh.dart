@@ -53,11 +53,11 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGa
     return DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh(
       deployment: (map['deployment'] as String).input(),
       httpRoute: (map['httpRoute'] as String).input(),
-      podSelectorLabel: map['podSelectorLabel'] == null ? null : (map['podSelectorLabel'] as String).input(),
-      routeDestinations: map['routeDestinations'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations.fromMap((map['routeDestinations'] as Map).cast<String, dynamic>())).input(),
-      routeUpdateWaitTime: map['routeUpdateWaitTime'] == null ? null : (map['routeUpdateWaitTime'] as String).input(),
+      podSelectorLabel: map['podSelectorLabel'] == null ? null : (map['podSelectorLabel']! as String).input(),
+      routeDestinations: map['routeDestinations'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations.fromMap((map['routeDestinations']! as Map).cast<String, dynamic>())).input(),
+      routeUpdateWaitTime: map['routeUpdateWaitTime'] == null ? null : (map['routeUpdateWaitTime']! as String).input(),
       service: (map['service'] as String).input(),
-      stableCutbackDuration: map['stableCutbackDuration'] == null ? null : (map['stableCutbackDuration'] as String).input(),
+      stableCutbackDuration: map['stableCutbackDuration'] == null ? null : (map['stableCutbackDuration']! as String).input(),
     );
   }
 }

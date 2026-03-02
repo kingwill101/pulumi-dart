@@ -31,9 +31,9 @@ class GoogleTypeMoney {
 
   factory GoogleTypeMoney.fromMap(Map<String, dynamic> map) {
     return GoogleTypeMoney(
-      currencyCode: map['currencyCode'] == null ? null : (map['currencyCode'] as String).input(),
-      nanos: map['nanos'] == null ? null : (map['nanos'] as int).input(),
-      units: map['units'] == null ? null : (map['units'] as String).input(),
+      currencyCode: map['currencyCode'] == null ? null : (map['currencyCode']! as String).input(),
+      nanos: map['nanos'] == null ? null : (map['nanos']! as int).input(),
+      units: map['units'] == null ? null : (map['units']! as String).input(),
     );
   }
 }

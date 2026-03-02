@@ -40,9 +40,9 @@ class RealtimeLogConfigArgs {
 
   factory RealtimeLogConfigArgs.fromMap(Map<String, dynamic> map) {
     return RealtimeLogConfigArgs(
-      endpoint: (RealtimeLogConfigEndpoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>())).input(),
+      endpoint: (RealtimeLogConfigEndpoint.fromMap((map['endpoint']! as Map).cast<String, dynamic>())).input(),
       fields: ((map['fields'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       samplingRate: (map['samplingRate'] as int).input(),
     );
   }

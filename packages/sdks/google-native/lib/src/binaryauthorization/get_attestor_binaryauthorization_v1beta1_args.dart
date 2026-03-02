@@ -28,7 +28,7 @@ class GetAttestorBinaryauthorizationV1beta1Args {
   factory GetAttestorBinaryauthorizationV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetAttestorBinaryauthorizationV1beta1Args(
       attestorId: (map['attestorId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

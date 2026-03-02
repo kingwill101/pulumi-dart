@@ -61,10 +61,10 @@ class ValidationPatchAdmissionregistrationK8sIoV1beta1 {
 
   factory ValidationPatchAdmissionregistrationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return ValidationPatchAdmissionregistrationK8sIoV1beta1(
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      messageExpression: map['messageExpression'] == null ? null : (map['messageExpression'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      expression: map['expression'] == null ? null : (map['expression']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      messageExpression: map['messageExpression'] == null ? null : (map['messageExpression']! as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
     );
   }
 }

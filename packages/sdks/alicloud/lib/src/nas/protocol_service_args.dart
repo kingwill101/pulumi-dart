@@ -68,14 +68,14 @@ class ProtocolServiceArgs {
 
   factory ProtocolServiceArgs.fromMap(Map<String, dynamic> map) {
     return ProtocolServiceArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
       fileSystemId: (map['fileSystemId'] as String).input(),
       protocolSpec: (map['protocolSpec'] as String).input(),
-      protocolThroughput: map['protocolThroughput'] == null ? null : (map['protocolThroughput'] as int).input(),
+      protocolThroughput: map['protocolThroughput'] == null ? null : (map['protocolThroughput']! as int).input(),
       protocolType: (map['protocolType'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

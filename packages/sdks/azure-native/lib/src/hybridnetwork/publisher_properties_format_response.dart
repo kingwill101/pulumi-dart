@@ -27,7 +27,7 @@ class PublisherPropertiesFormatResponse {
   factory PublisherPropertiesFormatResponse.fromMap(Map<String, dynamic> map) {
     return PublisherPropertiesFormatResponse(
       provisioningState: (map['provisioningState'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
     );
   }
 }

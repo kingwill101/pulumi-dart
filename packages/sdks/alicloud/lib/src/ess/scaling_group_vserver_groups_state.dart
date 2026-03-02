@@ -32,9 +32,9 @@ class ScalingGroupVServerGroupsState {
 
   factory ScalingGroupVServerGroupsState.fromMap(Map<String, dynamic> map) {
     return ScalingGroupVServerGroupsState(
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      scalingGroupId: map['scalingGroupId'] == null ? null : (map['scalingGroupId'] as String).input(),
-      vserverGroups: map['vserverGroups'] == null ? null : (pulumi.Input.decodeList<ScalingGroupVServerGroupsVserverGroup>(map['vserverGroups'], (value) => ScalingGroupVServerGroupsVserverGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
+      scalingGroupId: map['scalingGroupId'] == null ? null : (map['scalingGroupId']! as String).input(),
+      vserverGroups: map['vserverGroups'] == null ? null : (pulumi.Input.decodeList<ScalingGroupVServerGroupsVserverGroup>(map['vserverGroups']!, (value) => ScalingGroupVServerGroupsVserverGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

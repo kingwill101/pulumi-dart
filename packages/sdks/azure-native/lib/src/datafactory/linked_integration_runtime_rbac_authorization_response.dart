@@ -34,7 +34,7 @@ class LinkedIntegrationRuntimeRbacAuthorizationResponse {
   factory LinkedIntegrationRuntimeRbacAuthorizationResponse.fromMap(Map<String, dynamic> map) {
     return LinkedIntegrationRuntimeRbacAuthorizationResponse(
       authorizationType: (map['authorizationType'] as String).input(),
-      credential: map['credential'] == null ? null : (CredentialReferenceResponse.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
+      credential: map['credential'] == null ? null : (CredentialReferenceResponse.fromMap((map['credential']! as Map).cast<String, dynamic>())).input(),
       resourceId: (map['resourceId'] as String).input(),
     );
   }

@@ -51,13 +51,13 @@ class SslVpnClientCertState {
 
   factory SslVpnClientCertState.fromMap(Map<String, dynamic> map) {
     return SslVpnClientCertState(
-      caCert: map['caCert'] == null ? null : (map['caCert'] as String).input(),
-      clientCert: map['clientCert'] == null ? null : (map['clientCert'] as String).input(),
-      clientConfig: map['clientConfig'] == null ? null : (map['clientConfig'] as String).input(),
-      clientKey: map['clientKey'] == null ? null : (map['clientKey'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sslVpnServerId: map['sslVpnServerId'] == null ? null : (map['sslVpnServerId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      caCert: map['caCert'] == null ? null : (map['caCert']! as String).input(),
+      clientCert: map['clientCert'] == null ? null : (map['clientCert']! as String).input(),
+      clientConfig: map['clientConfig'] == null ? null : (map['clientConfig']! as String).input(),
+      clientKey: map['clientKey'] == null ? null : (map['clientKey']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sslVpnServerId: map['sslVpnServerId'] == null ? null : (map['sslVpnServerId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

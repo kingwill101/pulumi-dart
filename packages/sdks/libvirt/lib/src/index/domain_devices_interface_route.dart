@@ -46,11 +46,11 @@ class DomainDevicesInterfaceRoute {
   factory DomainDevicesInterfaceRoute.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceRoute(
       address: (map['address'] as String).input(),
-      family: map['family'] == null ? null : (map['family'] as String).input(),
+      family: map['family'] == null ? null : (map['family']! as String).input(),
       gateway: (map['gateway'] as String).input(),
-      metric: map['metric'] == null ? null : (map['metric'] as double).input(),
-      netmask: map['netmask'] == null ? null : (map['netmask'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as double).input(),
+      metric: map['metric'] == null ? null : (map['metric']! as double).input(),
+      netmask: map['netmask'] == null ? null : (map['netmask']! as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as double).input(),
     );
   }
 }

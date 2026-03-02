@@ -81,16 +81,16 @@ class QuoteSetV3Args {
 
   factory QuoteSetV3Args.fromMap(Map<String, dynamic> map) {
     return QuoteSetV3Args(
-      backupGigabytes: map['backupGigabytes'] == null ? null : (map['backupGigabytes'] as int).input(),
-      backups: map['backups'] == null ? null : (map['backups'] as int).input(),
-      gigabytes: map['gigabytes'] == null ? null : (map['gigabytes'] as int).input(),
-      groups: map['groups'] == null ? null : (map['groups'] as int).input(),
-      perVolumeGigabytes: map['perVolumeGigabytes'] == null ? null : (map['perVolumeGigabytes'] as int).input(),
+      backupGigabytes: map['backupGigabytes'] == null ? null : (map['backupGigabytes']! as int).input(),
+      backups: map['backups'] == null ? null : (map['backups']! as int).input(),
+      gigabytes: map['gigabytes'] == null ? null : (map['gigabytes']! as int).input(),
+      groups: map['groups'] == null ? null : (map['groups']! as int).input(),
+      perVolumeGigabytes: map['perVolumeGigabytes'] == null ? null : (map['perVolumeGigabytes']! as int).input(),
       projectId: (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      snapshots: map['snapshots'] == null ? null : (map['snapshots'] as int).input(),
-      volumeTypeQuota: map['volumeTypeQuota'] == null ? null : ((map['volumeTypeQuota'] as Map).cast<String, String>()).input(),
-      volumes: map['volumes'] == null ? null : (map['volumes'] as int).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      snapshots: map['snapshots'] == null ? null : (map['snapshots']! as int).input(),
+      volumeTypeQuota: map['volumeTypeQuota'] == null ? null : ((map['volumeTypeQuota']! as Map).cast<String, String>()).input(),
+      volumes: map['volumes'] == null ? null : (map['volumes']! as int).input(),
     );
   }
 }

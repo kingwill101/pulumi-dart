@@ -65,16 +65,16 @@ class ServiceLoadBalancerBgpPeer {
 
   factory ServiceLoadBalancerBgpPeer.fromMap(Map<String, dynamic> map) {
     return ServiceLoadBalancerBgpPeer(
-      bfdEnabled: map['bfdEnabled'] == null ? null : (map['bfdEnabled'] as String).input(),
-      bgpMultiHop: map['bgpMultiHop'] == null ? null : (map['bgpMultiHop'] as String).input(),
-      holdTime: map['holdTime'] == null ? null : (map['holdTime'] as String).input(),
-      keepAliveTime: map['keepAliveTime'] == null ? null : (map['keepAliveTime'] as String).input(),
-      myAsn: map['myAsn'] == null ? null : (map['myAsn'] as double).input(),
+      bfdEnabled: map['bfdEnabled'] == null ? null : (map['bfdEnabled']! as String).input(),
+      bgpMultiHop: map['bgpMultiHop'] == null ? null : (map['bgpMultiHop']! as String).input(),
+      holdTime: map['holdTime'] == null ? null : (map['holdTime']! as String).input(),
+      keepAliveTime: map['keepAliveTime'] == null ? null : (map['keepAliveTime']! as String).input(),
+      myAsn: map['myAsn'] == null ? null : (map['myAsn']! as double).input(),
       name: (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       peerAddress: (map['peerAddress'] as String).input(),
       peerAsn: (map['peerAsn'] as double).input(),
-      peerPort: map['peerPort'] == null ? null : (map['peerPort'] as double).input(),
+      peerPort: map['peerPort'] == null ? null : (map['peerPort']! as double).input(),
     );
   }
 }

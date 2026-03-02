@@ -22,7 +22,7 @@ class PersonalComputeInstanceSettingsResponse {
 
   factory PersonalComputeInstanceSettingsResponse.fromMap(Map<String, dynamic> map) {
     return PersonalComputeInstanceSettingsResponse(
-      assignedUser: map['assignedUser'] == null ? null : (AssignedUserResponse.fromMap((map['assignedUser'] as Map).cast<String, dynamic>())).input(),
+      assignedUser: map['assignedUser'] == null ? null : (AssignedUserResponse.fromMap((map['assignedUser']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

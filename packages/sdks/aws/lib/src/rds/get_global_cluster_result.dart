@@ -94,7 +94,7 @@ class GetGlobalClusterResult {
       engineVersion: map['engineVersion'] as String,
       id: map['id'] as String,
       identifier: map['identifier'] as String,
-      members: pulumi.Input.decodeList<GetGlobalClusterMember>(map['members'], (value) => GetGlobalClusterMember.fromMap((value as Map).cast<String, dynamic>())),
+      members: pulumi.Input.decodeList<GetGlobalClusterMember>(map['members']!, (value) => GetGlobalClusterMember.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       resourceId: map['resourceId'] as String,
       storageEncrypted: map['storageEncrypted'] as bool,

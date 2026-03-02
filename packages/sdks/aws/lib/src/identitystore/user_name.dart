@@ -48,11 +48,11 @@ class UserName {
   factory UserName.fromMap(Map<String, dynamic> map) {
     return UserName(
       familyName: (map['familyName'] as String).input(),
-      formatted: map['formatted'] == null ? null : (map['formatted'] as String).input(),
+      formatted: map['formatted'] == null ? null : ((map['formatted'] as String).input()).input(),
       givenName: (map['givenName'] as String).input(),
-      honorificPrefix: map['honorificPrefix'] == null ? null : (map['honorificPrefix'] as String).input(),
-      honorificSuffix: map['honorificSuffix'] == null ? null : (map['honorificSuffix'] as String).input(),
-      middleName: map['middleName'] == null ? null : (map['middleName'] as String).input(),
+      honorificPrefix: map['honorificPrefix'] == null ? null : ((map['honorificPrefix'] as String).input()).input(),
+      honorificSuffix: map['honorificSuffix'] == null ? null : ((map['honorificSuffix'] as String).input()).input(),
+      middleName: map['middleName'] == null ? null : ((map['middleName'] as String).input()).input(),
     );
   }
 }

@@ -93,22 +93,22 @@ class FaqState {
 
   factory FaqState.fromMap(Map<String, dynamic> map) {
     return FaqState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
-      faqId: map['faqId'] == null ? null : (map['faqId'] as String).input(),
-      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat'] as String).input(),
-      indexId: map['indexId'] == null ? null : (map['indexId'] as String).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      s3Path: map['s3Path'] == null ? null : (FaqS3Path.fromMap((map['s3Path'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      errorMessage: map['errorMessage'] == null ? null : ((map['errorMessage'] as String).input()).input(),
+      faqId: map['faqId'] == null ? null : ((map['faqId'] as String).input()).input(),
+      fileFormat: map['fileFormat'] == null ? null : ((map['fileFormat'] as String).input()).input(),
+      indexId: map['indexId'] == null ? null : ((map['indexId'] as String).input()).input(),
+      languageCode: map['languageCode'] == null ? null : ((map['languageCode'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      s3Path: map['s3Path'] == null ? null : ((FaqS3Path.fromMap((map['s3Path']! as Map).cast<String, dynamic>())).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      updatedAt: map['updatedAt'] == null ? null : ((map['updatedAt'] as String).input()).input(),
     );
   }
 }

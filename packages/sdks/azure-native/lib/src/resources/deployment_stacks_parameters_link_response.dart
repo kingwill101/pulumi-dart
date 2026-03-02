@@ -26,7 +26,7 @@ class DeploymentStacksParametersLinkResponse {
 
   factory DeploymentStacksParametersLinkResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentStacksParametersLinkResponse(
-      contentVersion: map['contentVersion'] == null ? null : (map['contentVersion'] as String).input(),
+      contentVersion: map['contentVersion'] == null ? null : (map['contentVersion']! as String).input(),
       uri: (map['uri'] as String).input(),
     );
   }

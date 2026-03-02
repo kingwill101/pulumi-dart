@@ -33,9 +33,9 @@ class EndpointDeploymentConfig {
 
   factory EndpointDeploymentConfig.fromMap(Map<String, dynamic> map) {
     return EndpointDeploymentConfig(
-      autoRollbackConfiguration: map['autoRollbackConfiguration'] == null ? null : (EndpointDeploymentConfigAutoRollbackConfiguration.fromMap((map['autoRollbackConfiguration'] as Map).cast<String, dynamic>())).input(),
-      blueGreenUpdatePolicy: map['blueGreenUpdatePolicy'] == null ? null : (EndpointDeploymentConfigBlueGreenUpdatePolicy.fromMap((map['blueGreenUpdatePolicy'] as Map).cast<String, dynamic>())).input(),
-      rollingUpdatePolicy: map['rollingUpdatePolicy'] == null ? null : (EndpointDeploymentConfigRollingUpdatePolicy.fromMap((map['rollingUpdatePolicy'] as Map).cast<String, dynamic>())).input(),
+      autoRollbackConfiguration: map['autoRollbackConfiguration'] == null ? null : ((EndpointDeploymentConfigAutoRollbackConfiguration.fromMap((map['autoRollbackConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      blueGreenUpdatePolicy: map['blueGreenUpdatePolicy'] == null ? null : ((EndpointDeploymentConfigBlueGreenUpdatePolicy.fromMap((map['blueGreenUpdatePolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      rollingUpdatePolicy: map['rollingUpdatePolicy'] == null ? null : ((EndpointDeploymentConfigRollingUpdatePolicy.fromMap((map['rollingUpdatePolicy']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

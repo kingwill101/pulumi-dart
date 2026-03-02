@@ -36,10 +36,10 @@ class EnclaveEndpointDestinationRuleResponse {
 
   factory EnclaveEndpointDestinationRuleResponse.fromMap(Map<String, dynamic> map) {
     return EnclaveEndpointDestinationRuleResponse(
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
-      endpointRuleName: map['endpointRuleName'] == null ? null : (map['endpointRuleName'] as String).input(),
-      ports: map['ports'] == null ? null : (map['ports'] as String).input(),
-      protocols: map['protocols'] == null ? null : ((map['protocols'] as List).cast<String>()).input(),
+      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
+      endpointRuleName: map['endpointRuleName'] == null ? null : (map['endpointRuleName']! as String).input(),
+      ports: map['ports'] == null ? null : (map['ports']! as String).input(),
+      protocols: map['protocols'] == null ? null : ((map['protocols']! as List).cast<String>()).input(),
     );
   }
 }

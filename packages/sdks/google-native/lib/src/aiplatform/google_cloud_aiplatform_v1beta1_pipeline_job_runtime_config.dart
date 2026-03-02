@@ -42,11 +42,11 @@ class GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfig {
 
   factory GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfig(
-      failurePolicy: map['failurePolicy'] == null ? null : (GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicy.fromValue(map['failurePolicy'] as String)).input(),
+      failurePolicy: map['failurePolicy'] == null ? null : (GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicy.fromValue(map['failurePolicy']! as String)).input(),
       gcsOutputDirectory: (map['gcsOutputDirectory'] as String).input(),
-      inputArtifacts: map['inputArtifacts'] == null ? null : ((map['inputArtifacts'] as Map).cast<String, String>()).input(),
-      parameterValues: map['parameterValues'] == null ? null : ((map['parameterValues'] as Map).cast<String, String>()).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      inputArtifacts: map['inputArtifacts'] == null ? null : ((map['inputArtifacts']! as Map).cast<String, String>()).input(),
+      parameterValues: map['parameterValues'] == null ? null : ((map['parameterValues']! as Map).cast<String, String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
     );
   }
 }

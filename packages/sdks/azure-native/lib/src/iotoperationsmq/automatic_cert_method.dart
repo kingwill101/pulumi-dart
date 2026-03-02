@@ -54,13 +54,13 @@ class AutomaticCertMethod {
 
   factory AutomaticCertMethod.fromMap(Map<String, dynamic> map) {
     return AutomaticCertMethod(
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
       issuerRef: (CertManagerIssuerRef.fromMap((map['issuerRef'] as Map).cast<String, dynamic>())).input(),
-      privateKey: map['privateKey'] == null ? null : (CertManagerPrivateKey.fromMap((map['privateKey'] as Map).cast<String, dynamic>())).input(),
-      renewBefore: map['renewBefore'] == null ? null : (map['renewBefore'] as String).input(),
-      san: map['san'] == null ? null : (SanForCert.fromMap((map['san'] as Map).cast<String, dynamic>())).input(),
-      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
-      secretNamespace: map['secretNamespace'] == null ? null : (map['secretNamespace'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (CertManagerPrivateKey.fromMap((map['privateKey']! as Map).cast<String, dynamic>())).input(),
+      renewBefore: map['renewBefore'] == null ? null : (map['renewBefore']! as String).input(),
+      san: map['san'] == null ? null : (SanForCert.fromMap((map['san']! as Map).cast<String, dynamic>())).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName']! as String).input(),
+      secretNamespace: map['secretNamespace'] == null ? null : (map['secretNamespace']! as String).input(),
     );
   }
 }

@@ -43,11 +43,11 @@ class DomainCertInfo {
 
   factory DomainCertInfo.fromMap(Map<String, dynamic> map) {
     return DomainCertInfo(
-      certName: map['certName'] == null ? null : (map['certName'] as String).input(),
-      certType: map['certType'] == null ? null : (map['certType'] as String).input(),
-      sslPri: map['sslPri'] == null ? null : (map['sslPri'] as String).input(),
-      sslProtocol: map['sslProtocol'] == null ? null : (map['sslProtocol'] as String).input(),
-      sslPub: map['sslPub'] == null ? null : (map['sslPub'] as String).input(),
+      certName: map['certName'] == null ? null : (map['certName']! as String).input(),
+      certType: map['certType'] == null ? null : (map['certType']! as String).input(),
+      sslPri: map['sslPri'] == null ? null : (map['sslPri']! as String).input(),
+      sslProtocol: map['sslProtocol'] == null ? null : (map['sslProtocol']! as String).input(),
+      sslPub: map['sslPub'] == null ? null : (map['sslPub']! as String).input(),
     );
   }
 }

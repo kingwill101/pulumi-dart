@@ -31,9 +31,9 @@ class SupportedCapabilitiesResponse {
 
   factory SupportedCapabilitiesResponse.fromMap(Map<String, dynamic> map) {
     return SupportedCapabilitiesResponse(
-      acceleratedNetwork: map['acceleratedNetwork'] == null ? null : (map['acceleratedNetwork'] as bool).input(),
-      architecture: map['architecture'] == null ? null : (map['architecture'] as String).input(),
-      diskControllerTypes: map['diskControllerTypes'] == null ? null : (map['diskControllerTypes'] as String).input(),
+      acceleratedNetwork: map['acceleratedNetwork'] == null ? null : (map['acceleratedNetwork']! as bool).input(),
+      architecture: map['architecture'] == null ? null : (map['architecture']! as String).input(),
+      diskControllerTypes: map['diskControllerTypes'] == null ? null : (map['diskControllerTypes']! as String).input(),
     );
   }
 }

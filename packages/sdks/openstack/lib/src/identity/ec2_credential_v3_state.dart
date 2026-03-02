@@ -53,12 +53,12 @@ class Ec2CredentialV3State {
 
   factory Ec2CredentialV3State.fromMap(Map<String, dynamic> map) {
     return Ec2CredentialV3State(
-      access: map['access'] == null ? null : (map['access'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
-      trustId: map['trustId'] == null ? null : (map['trustId'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      access: map['access'] == null ? null : (map['access']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      secret: map['secret'] == null ? null : (map['secret']! as String).input(),
+      trustId: map['trustId'] == null ? null : (map['trustId']! as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
     );
   }
 }

@@ -44,11 +44,11 @@ class GetEngineVersionArgs {
 
   factory GetEngineVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetEngineVersionArgs(
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      parameterGroupFamily: map['parameterGroupFamily'] == null ? null : (map['parameterGroupFamily'] as String).input(),
-      preferredVersions: map['preferredVersions'] == null ? null : ((map['preferredVersions'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      engine: map['engine'] == null ? null : ((map['engine'] as String).input()).input(),
+      parameterGroupFamily: map['parameterGroupFamily'] == null ? null : ((map['parameterGroupFamily'] as String).input()).input(),
+      preferredVersions: map['preferredVersions'] == null ? null : (((map['preferredVersions'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

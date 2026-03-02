@@ -26,8 +26,8 @@ class AuthorizationConfig {
 
   factory AuthorizationConfig.fromMap(Map<String, dynamic> map) {
     return AuthorizationConfig(
-      accessPointId: map['accessPointId'] == null ? null : (map['accessPointId'] as String).input(),
-      iam: map['iam'] == null ? null : (map['iam'] as String).input(),
+      accessPointId: map['accessPointId'] == null ? null : (map['accessPointId']! as String).input(),
+      iam: map['iam'] == null ? null : (map['iam']! as String).input(),
     );
   }
 }

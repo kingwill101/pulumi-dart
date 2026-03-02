@@ -63,14 +63,14 @@ class AgentcoreBrowserArgs {
 
   factory AgentcoreBrowserArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreBrowserArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      executionRoleArn: map['executionRoleArn'] == null ? null : (map['executionRoleArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkConfiguration: (AgentcoreBrowserNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      recording: map['recording'] == null ? null : (AgentcoreBrowserRecording.fromMap((map['recording'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (AgentcoreBrowserTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      executionRoleArn: map['executionRoleArn'] == null ? null : ((map['executionRoleArn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      networkConfiguration: (AgentcoreBrowserNetworkConfiguration.fromMap((map['networkConfiguration']! as Map).cast<String, dynamic>())).input(),
+      recording: map['recording'] == null ? null : ((AgentcoreBrowserRecording.fromMap((map['recording']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((AgentcoreBrowserTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

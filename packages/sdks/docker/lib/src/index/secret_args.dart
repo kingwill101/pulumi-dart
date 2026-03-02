@@ -36,8 +36,8 @@ class SecretArgs {
   factory SecretArgs.fromMap(Map<String, dynamic> map) {
     return SecretArgs(
       data: (map['data'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<SecretLabel>(map['labels'], (value) => SecretLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<SecretLabel>(map['labels']!, (value) => SecretLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

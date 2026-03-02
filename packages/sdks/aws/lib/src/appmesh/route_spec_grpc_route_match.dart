@@ -40,11 +40,11 @@ class RouteSpecGrpcRouteMatch {
 
   factory RouteSpecGrpcRouteMatch.fromMap(Map<String, dynamic> map) {
     return RouteSpecGrpcRouteMatch(
-      metadatas: map['metadatas'] == null ? null : (pulumi.Input.decodeList<RouteSpecGrpcRouteMatchMetadata>(map['metadatas'], (value) => RouteSpecGrpcRouteMatchMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      methodName: map['methodName'] == null ? null : (map['methodName'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      metadatas: map['metadatas'] == null ? null : ((pulumi.Input.decodeList<RouteSpecGrpcRouteMatchMetadata>(map['metadatas']!, (value) => RouteSpecGrpcRouteMatchMetadata.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      methodName: map['methodName'] == null ? null : ((map['methodName'] as String).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
+      serviceName: map['serviceName'] == null ? null : ((map['serviceName'] as String).input()).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class GetDbServersArgs {
   factory GetDbServersArgs.fromMap(Map<String, dynamic> map) {
     return GetDbServersArgs(
       cloudExadataInfrastructureId: (map['cloudExadataInfrastructureId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

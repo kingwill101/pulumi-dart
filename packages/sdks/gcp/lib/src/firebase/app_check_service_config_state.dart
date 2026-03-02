@@ -40,10 +40,10 @@ class AppCheckServiceConfigState {
 
   factory AppCheckServiceConfigState.fromMap(Map<String, dynamic> map) {
     return AppCheckServiceConfigState(
-      enforcementMode: map['enforcementMode'] == null ? null : (map['enforcementMode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
+      enforcementMode: map['enforcementMode'] == null ? null : (map['enforcementMode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
     );
   }
 }

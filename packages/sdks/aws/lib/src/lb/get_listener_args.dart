@@ -43,11 +43,11 @@ class GetListenerArgs {
 
   factory GetListenerArgs.fromMap(Map<String, dynamic> map) {
     return GetListenerArgs(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      loadBalancerArn: map['loadBalancerArn'] == null ? null : (map['loadBalancerArn'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      loadBalancerArn: map['loadBalancerArn'] == null ? null : ((map['loadBalancerArn'] as String).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

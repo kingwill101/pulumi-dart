@@ -45,11 +45,11 @@ class GetPrincipalApplicationAssignmentsArgs {
 
   factory GetPrincipalApplicationAssignmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetPrincipalApplicationAssignmentsArgs(
-      applicationAssignments: map['applicationAssignments'] == null ? null : (pulumi.Input.decodeList<GetPrincipalApplicationAssignmentsApplicationAssignment>(map['applicationAssignments'], (value) => GetPrincipalApplicationAssignmentsApplicationAssignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applicationAssignments: map['applicationAssignments'] == null ? null : ((pulumi.Input.decodeList<GetPrincipalApplicationAssignmentsApplicationAssignment>(map['applicationAssignments']!, (value) => GetPrincipalApplicationAssignmentsApplicationAssignment.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       instanceArn: (map['instanceArn'] as String).input(),
       principalId: (map['principalId'] as String).input(),
       principalType: (map['principalType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class GoogleCloudApigeeV1ApiSecurityConfig {
 
   factory GoogleCloudApigeeV1ApiSecurityConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1ApiSecurityConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

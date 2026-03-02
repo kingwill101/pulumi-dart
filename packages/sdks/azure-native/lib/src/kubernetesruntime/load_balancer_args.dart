@@ -51,10 +51,10 @@ class LoadBalancerArgs {
     return LoadBalancerArgs(
       addresses: ((map['addresses'] as List).cast<String>()).input(),
       advertiseMode: (map['advertiseMode'] as String).input(),
-      bgpPeers: map['bgpPeers'] == null ? null : ((map['bgpPeers'] as List).cast<String>()).input(),
-      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName'] as String).input(),
+      bgpPeers: map['bgpPeers'] == null ? null : ((map['bgpPeers']! as List).cast<String>()).input(),
+      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName']! as String).input(),
       resourceUri: (map['resourceUri'] as String).input(),
-      serviceSelector: map['serviceSelector'] == null ? null : ((map['serviceSelector'] as Map).cast<String, String>()).input(),
+      serviceSelector: map['serviceSelector'] == null ? null : ((map['serviceSelector']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -38,10 +38,10 @@ class DownwardAPIVolumeFile {
 
   factory DownwardAPIVolumeFile.fromMap(Map<String, dynamic> map) {
     return DownwardAPIVolumeFile(
-      fieldRef: map['fieldRef'] == null ? null : (ObjectFieldSelector.fromMap((map['fieldRef'] as Map).cast<String, dynamic>())).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as int).input(),
+      fieldRef: map['fieldRef'] == null ? null : (ObjectFieldSelector.fromMap((map['fieldRef']! as Map).cast<String, dynamic>())).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as int).input(),
       path: (map['path'] as String).input(),
-      resourceFieldRef: map['resourceFieldRef'] == null ? null : (ResourceFieldSelector.fromMap((map['resourceFieldRef'] as Map).cast<String, dynamic>())).input(),
+      resourceFieldRef: map['resourceFieldRef'] == null ? null : (ResourceFieldSelector.fromMap((map['resourceFieldRef']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

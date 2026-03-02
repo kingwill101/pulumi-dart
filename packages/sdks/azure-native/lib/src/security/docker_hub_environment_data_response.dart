@@ -33,9 +33,9 @@ class DockerHubEnvironmentDataResponse {
 
   factory DockerHubEnvironmentDataResponse.fromMap(Map<String, dynamic> map) {
     return DockerHubEnvironmentDataResponse(
-      authentication: map['authentication'] == null ? null : (AccessTokenAuthenticationResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      authentication: map['authentication'] == null ? null : (AccessTokenAuthenticationResponse.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
       environmentType: (map['environmentType'] as String).input(),
-      scanInterval: map['scanInterval'] == null ? null : (map['scanInterval'] as double).input(),
+      scanInterval: map['scanInterval'] == null ? null : (map['scanInterval']! as double).input(),
     );
   }
 }

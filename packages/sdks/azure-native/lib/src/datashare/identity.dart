@@ -21,7 +21,7 @@ class Identity {
 
   factory Identity.fromMap(Map<String, dynamic> map) {
     return Identity(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

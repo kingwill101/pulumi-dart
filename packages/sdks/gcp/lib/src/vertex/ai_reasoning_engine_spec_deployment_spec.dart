@@ -73,13 +73,13 @@ class AiReasoningEngineSpecDeploymentSpec {
 
   factory AiReasoningEngineSpecDeploymentSpec.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineSpecDeploymentSpec(
-      containerConcurrency: map['containerConcurrency'] == null ? null : (map['containerConcurrency'] as int).input(),
-      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<AiReasoningEngineSpecDeploymentSpecEnv>(map['envs'], (value) => AiReasoningEngineSpecDeploymentSpecEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maxInstances: map['maxInstances'] == null ? null : (map['maxInstances'] as int).input(),
-      minInstances: map['minInstances'] == null ? null : (map['minInstances'] as int).input(),
-      pscInterfaceConfig: map['pscInterfaceConfig'] == null ? null : (AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig.fromMap((map['pscInterfaceConfig'] as Map).cast<String, dynamic>())).input(),
-      resourceLimits: map['resourceLimits'] == null ? null : ((map['resourceLimits'] as Map).cast<String, String>()).input(),
-      secretEnvs: map['secretEnvs'] == null ? null : (pulumi.Input.decodeList<AiReasoningEngineSpecDeploymentSpecSecretEnv>(map['secretEnvs'], (value) => AiReasoningEngineSpecDeploymentSpecSecretEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containerConcurrency: map['containerConcurrency'] == null ? null : (map['containerConcurrency']! as int).input(),
+      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<AiReasoningEngineSpecDeploymentSpecEnv>(map['envs']!, (value) => AiReasoningEngineSpecDeploymentSpecEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxInstances: map['maxInstances'] == null ? null : (map['maxInstances']! as int).input(),
+      minInstances: map['minInstances'] == null ? null : (map['minInstances']! as int).input(),
+      pscInterfaceConfig: map['pscInterfaceConfig'] == null ? null : (AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig.fromMap((map['pscInterfaceConfig']! as Map).cast<String, dynamic>())).input(),
+      resourceLimits: map['resourceLimits'] == null ? null : ((map['resourceLimits']! as Map).cast<String, String>()).input(),
+      secretEnvs: map['secretEnvs'] == null ? null : (pulumi.Input.decodeList<AiReasoningEngineSpecDeploymentSpecSecretEnv>(map['secretEnvs']!, (value) => AiReasoningEngineSpecDeploymentSpecSecretEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

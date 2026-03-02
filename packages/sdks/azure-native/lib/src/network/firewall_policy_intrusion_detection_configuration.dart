@@ -33,9 +33,9 @@ class FirewallPolicyIntrusionDetectionConfiguration {
 
   factory FirewallPolicyIntrusionDetectionConfiguration.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyIntrusionDetectionConfiguration(
-      bypassTrafficSettings: map['bypassTrafficSettings'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyIntrusionDetectionBypassTrafficSpecifications>(map['bypassTrafficSettings'], (value) => FirewallPolicyIntrusionDetectionBypassTrafficSpecifications.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      privateRanges: map['privateRanges'] == null ? null : ((map['privateRanges'] as List).cast<String>()).input(),
-      signatureOverrides: map['signatureOverrides'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyIntrusionDetectionSignatureSpecification>(map['signatureOverrides'], (value) => FirewallPolicyIntrusionDetectionSignatureSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bypassTrafficSettings: map['bypassTrafficSettings'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyIntrusionDetectionBypassTrafficSpecifications>(map['bypassTrafficSettings']!, (value) => FirewallPolicyIntrusionDetectionBypassTrafficSpecifications.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateRanges: map['privateRanges'] == null ? null : ((map['privateRanges']! as List).cast<String>()).input(),
+      signatureOverrides: map['signatureOverrides'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyIntrusionDetectionSignatureSpecification>(map['signatureOverrides']!, (value) => FirewallPolicyIntrusionDetectionSignatureSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

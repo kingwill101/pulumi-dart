@@ -27,7 +27,7 @@ class EncryptionDetailsResponse {
 
   factory EncryptionDetailsResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionDetailsResponse(
-      cmk: map['cmk'] == null ? null : (CustomerManagedKeyDetailsResponse.fromMap((map['cmk'] as Map).cast<String, dynamic>())).input(),
+      cmk: map['cmk'] == null ? null : (CustomerManagedKeyDetailsResponse.fromMap((map['cmk']! as Map).cast<String, dynamic>())).input(),
       doubleEncryptionEnabled: (map['doubleEncryptionEnabled'] as bool).input(),
     );
   }

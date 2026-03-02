@@ -41,9 +41,9 @@ class GetTopicsResult {
   factory GetTopicsResult.fromMap(Map<String, dynamic> map) {
     return GetTopicsResult(
       id: map['id'] as String,
-      namePrefix: map['namePrefix'] == null ? null : map['namePrefix'] as String,
+      namePrefix: map['namePrefix'] == null ? null : map['namePrefix']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       topics: pulumi.Input.decodeList<GetTopicsTopic>(map['topics'], (value) => GetTopicsTopic.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

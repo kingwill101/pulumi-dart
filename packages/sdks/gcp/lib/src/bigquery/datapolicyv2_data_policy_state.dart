@@ -91,16 +91,16 @@ class Datapolicyv2DataPolicyState {
 
   factory Datapolicyv2DataPolicyState.fromMap(Map<String, dynamic> map) {
     return Datapolicyv2DataPolicyState(
-      dataMaskingPolicy: map['dataMaskingPolicy'] == null ? null : (Datapolicyv2DataPolicyDataMaskingPolicy.fromMap((map['dataMaskingPolicy'] as Map).cast<String, dynamic>())).input(),
-      dataPolicyId: map['dataPolicyId'] == null ? null : (map['dataPolicyId'] as String).input(),
-      dataPolicyType: map['dataPolicyType'] == null ? null : (map['dataPolicyType'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      grantees: map['grantees'] == null ? null : ((map['grantees'] as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyTag: map['policyTag'] == null ? null : (map['policyTag'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      dataMaskingPolicy: map['dataMaskingPolicy'] == null ? null : (Datapolicyv2DataPolicyDataMaskingPolicy.fromMap((map['dataMaskingPolicy']! as Map).cast<String, dynamic>())).input(),
+      dataPolicyId: map['dataPolicyId'] == null ? null : (map['dataPolicyId']! as String).input(),
+      dataPolicyType: map['dataPolicyType'] == null ? null : (map['dataPolicyType']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      grantees: map['grantees'] == null ? null : ((map['grantees']! as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policyTag: map['policyTag'] == null ? null : (map['policyTag']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

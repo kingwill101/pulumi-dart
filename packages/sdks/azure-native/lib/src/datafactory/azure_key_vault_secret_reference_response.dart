@@ -39,7 +39,7 @@ class AzureKeyVaultSecretReferenceResponse {
   factory AzureKeyVaultSecretReferenceResponse.fromMap(Map<String, dynamic> map) {
     return AzureKeyVaultSecretReferenceResponse(
       secretName: (map['secretName']).input(),
-      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion']).input(),
+      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion']!).input(),
       store: (LinkedServiceReferenceResponse.fromMap((map['store'] as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );

@@ -45,11 +45,11 @@ class CurationProfileArgs {
 
   factory CurationProfileArgs.fromMap(Map<String, dynamic> map) {
     return CurationProfileArgs(
-      curationProfileName: map['curationProfileName'] == null ? null : (map['curationProfileName'] as String).input(),
+      curationProfileName: map['curationProfileName'] == null ? null : (map['curationProfileName']! as String).input(),
       devCenterName: (map['devCenterName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourcePolicies: map['resourcePolicies'] == null ? null : (pulumi.Input.decodeList<ResourcePolicy>(map['resourcePolicies'], (value) => ResourcePolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
+      resourcePolicies: map['resourcePolicies'] == null ? null : (pulumi.Input.decodeList<ResourcePolicy>(map['resourcePolicies']!, (value) => ResourcePolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
     );
   }
 }

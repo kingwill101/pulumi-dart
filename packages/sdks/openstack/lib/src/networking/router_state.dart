@@ -128,22 +128,22 @@ class RouterState {
 
   factory RouterState.fromMap(Map<String, dynamic> map) {
     return RouterState(
-      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp'] as bool).input(),
-      allTags: map['allTags'] == null ? null : ((map['allTags'] as List).cast<String>()).input(),
-      availabilityZoneHints: map['availabilityZoneHints'] == null ? null : ((map['availabilityZoneHints'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      distributed: map['distributed'] == null ? null : (map['distributed'] as bool).input(),
-      enableSnat: map['enableSnat'] == null ? null : (map['enableSnat'] as bool).input(),
-      externalFixedIps: map['externalFixedIps'] == null ? null : (pulumi.Input.decodeList<RouterExternalFixedIp>(map['externalFixedIps'], (value) => RouterExternalFixedIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      externalNetworkId: map['externalNetworkId'] == null ? null : (map['externalNetworkId'] as String).input(),
-      externalQosPolicyId: map['externalQosPolicyId'] == null ? null : (map['externalQosPolicyId'] as String).input(),
-      externalSubnetIds: map['externalSubnetIds'] == null ? null : ((map['externalSubnetIds'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
-      vendorOptions: map['vendorOptions'] == null ? null : (RouterVendorOptions.fromMap((map['vendorOptions'] as Map).cast<String, dynamic>())).input(),
+      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp']! as bool).input(),
+      allTags: map['allTags'] == null ? null : ((map['allTags']! as List).cast<String>()).input(),
+      availabilityZoneHints: map['availabilityZoneHints'] == null ? null : ((map['availabilityZoneHints']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      distributed: map['distributed'] == null ? null : (map['distributed']! as bool).input(),
+      enableSnat: map['enableSnat'] == null ? null : (map['enableSnat']! as bool).input(),
+      externalFixedIps: map['externalFixedIps'] == null ? null : (pulumi.Input.decodeList<RouterExternalFixedIp>(map['externalFixedIps']!, (value) => RouterExternalFixedIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      externalNetworkId: map['externalNetworkId'] == null ? null : (map['externalNetworkId']! as String).input(),
+      externalQosPolicyId: map['externalQosPolicyId'] == null ? null : (map['externalQosPolicyId']! as String).input(),
+      externalSubnetIds: map['externalSubnetIds'] == null ? null : ((map['externalSubnetIds']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs']! as Map).cast<String, String>()).input(),
+      vendorOptions: map['vendorOptions'] == null ? null : (RouterVendorOptions.fromMap((map['vendorOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

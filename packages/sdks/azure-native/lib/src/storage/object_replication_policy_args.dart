@@ -58,10 +58,10 @@ class ObjectReplicationPolicyArgs {
     return ObjectReplicationPolicyArgs(
       accountName: (map['accountName'] as String).input(),
       destinationAccount: (map['destinationAccount'] as String).input(),
-      metrics: map['metrics'] == null ? null : (ObjectReplicationPolicyPropertiesMetrics.fromMap((map['metrics'] as Map).cast<String, dynamic>())).input(),
-      objectReplicationPolicyId: map['objectReplicationPolicyId'] == null ? null : (map['objectReplicationPolicyId'] as String).input(),
+      metrics: map['metrics'] == null ? null : (ObjectReplicationPolicyPropertiesMetrics.fromMap((map['metrics']! as Map).cast<String, dynamic>())).input(),
+      objectReplicationPolicyId: map['objectReplicationPolicyId'] == null ? null : (map['objectReplicationPolicyId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ObjectReplicationPolicyRule>(map['rules'], (value) => ObjectReplicationPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ObjectReplicationPolicyRule>(map['rules']!, (value) => ObjectReplicationPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       sourceAccount: (map['sourceAccount'] as String).input(),
     );
   }

@@ -33,9 +33,9 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigComputeBeta {
 
   factory SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigComputeBeta.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigComputeBeta(
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      ruleVisibility: map['ruleVisibility'] == null ? null : (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityComputeBeta.fromValue(map['ruleVisibility'] as String)).input(),
-      thresholdConfigs: map['thresholdConfigs'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigComputeBeta>(map['thresholdConfigs'], (value) => SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      ruleVisibility: map['ruleVisibility'] == null ? null : (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityComputeBeta.fromValue(map['ruleVisibility']! as String)).input(),
+      thresholdConfigs: map['thresholdConfigs'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigComputeBeta>(map['thresholdConfigs']!, (value) => SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -41,11 +41,11 @@ class ProbeSettings {
 
   factory ProbeSettings.fromMap(Map<String, dynamic> map) {
     return ProbeSettings(
-      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as int).input(),
-      initialDelay: map['initialDelay'] == null ? null : (map['initialDelay'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as String).input(),
-      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold'] as int).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold']! as int).input(),
+      initialDelay: map['initialDelay'] == null ? null : (map['initialDelay']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as String).input(),
+      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold']! as int).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

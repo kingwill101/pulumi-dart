@@ -37,10 +37,10 @@ class EnvironmentRecordResponse {
 
   factory EnvironmentRecordResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentRecordResponse(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (MetadataEntityResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (MetadataEntityResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

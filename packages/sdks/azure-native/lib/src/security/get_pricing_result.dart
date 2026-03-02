@@ -95,8 +95,8 @@ class GetPricingResult {
       azureApiVersion: map['azureApiVersion'] as String,
       deprecated: map['deprecated'] as bool,
       enablementTime: map['enablementTime'] as String,
-      enforce: map['enforce'] == null ? null : map['enforce'] as String,
-      extensions: map['extensions'] == null ? null : pulumi.Input.decodeList<ExtensionResponse>(map['extensions'], (value) => ExtensionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      enforce: map['enforce'] == null ? null : map['enforce']! as String,
+      extensions: map['extensions'] == null ? null : pulumi.Input.decodeList<ExtensionResponse>(map['extensions']!, (value) => ExtensionResponse.fromMap((value as Map).cast<String, dynamic>())),
       freeTrialRemainingTime: map['freeTrialRemainingTime'] as String,
       id: map['id'] as String,
       inherited: map['inherited'] as String,
@@ -105,7 +105,7 @@ class GetPricingResult {
       pricingTier: map['pricingTier'] as String,
       replacedBy: (map['replacedBy'] as List).cast<String>(),
       resourcesCoverageStatus: map['resourcesCoverageStatus'] as String,
-      subPlan: map['subPlan'] == null ? null : map['subPlan'] as String,
+      subPlan: map['subPlan'] == null ? null : map['subPlan']! as String,
       type: map['type'] as String,
     );
   }

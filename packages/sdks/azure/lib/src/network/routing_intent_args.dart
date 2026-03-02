@@ -35,7 +35,7 @@ class RoutingIntentArgs {
 
   factory RoutingIntentArgs.fromMap(Map<String, dynamic> map) {
     return RoutingIntentArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       routingPolicies: (pulumi.Input.decodeList<RoutingIntentRoutingPolicy>(map['routingPolicies'], (value) => RoutingIntentRoutingPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
       virtualHubId: (map['virtualHubId'] as String).input(),
     );

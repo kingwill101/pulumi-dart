@@ -87,18 +87,18 @@ class RosettaNetProcessConfigurationArgs {
   factory RosettaNetProcessConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return RosettaNetProcessConfigurationArgs(
       activitySettings: (RosettaNetPipActivitySettings.fromMap((map['activitySettings'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       initiatorRoleSettings: (RosettaNetPipRoleSettings.fromMap((map['initiatorRoleSettings'] as Map).cast<String, dynamic>())).input(),
       integrationAccountName: (map['integrationAccountName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
       processCode: (map['processCode'] as String).input(),
       processName: (map['processName'] as String).input(),
       processVersion: (map['processVersion'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       responderRoleSettings: (RosettaNetPipRoleSettings.fromMap((map['responderRoleSettings'] as Map).cast<String, dynamic>())).input(),
-      rosettaNetProcessConfigurationName: map['rosettaNetProcessConfigurationName'] == null ? null : (map['rosettaNetProcessConfigurationName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      rosettaNetProcessConfigurationName: map['rosettaNetProcessConfigurationName'] == null ? null : (map['rosettaNetProcessConfigurationName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

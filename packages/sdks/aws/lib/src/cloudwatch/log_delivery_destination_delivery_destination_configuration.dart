@@ -20,7 +20,7 @@ class LogDeliveryDestinationDeliveryDestinationConfiguration {
 
   factory LogDeliveryDestinationDeliveryDestinationConfiguration.fromMap(Map<String, dynamic> map) {
     return LogDeliveryDestinationDeliveryDestinationConfiguration(
-      destinationResourceArn: map['destinationResourceArn'] == null ? null : (map['destinationResourceArn'] as String).input(),
+      destinationResourceArn: map['destinationResourceArn'] == null ? null : ((map['destinationResourceArn'] as String).input()).input(),
     );
   }
 }

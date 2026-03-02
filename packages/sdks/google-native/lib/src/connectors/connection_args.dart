@@ -111,23 +111,23 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      authConfig: map['authConfig'] == null ? null : (AuthConfig.fromMap((map['authConfig'] as Map).cast<String, dynamic>())).input(),
-      configVariables: map['configVariables'] == null ? null : (pulumi.Input.decodeList<ConfigVariable>(map['configVariables'], (value) => ConfigVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authConfig: map['authConfig'] == null ? null : (AuthConfig.fromMap((map['authConfig']! as Map).cast<String, dynamic>())).input(),
+      configVariables: map['configVariables'] == null ? null : (pulumi.Input.decodeList<ConfigVariable>(map['configVariables']!, (value) => ConfigVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
       connectionId: (map['connectionId'] as String).input(),
       connectorVersion: (map['connectorVersion'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationConfigs: map['destinationConfigs'] == null ? null : (pulumi.Input.decodeList<DestinationConfig>(map['destinationConfigs'], (value) => DestinationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      eventingConfig: map['eventingConfig'] == null ? null : (EventingConfig.fromMap((map['eventingConfig'] as Map).cast<String, dynamic>())).input(),
-      eventingEnablementType: map['eventingEnablementType'] == null ? null : (ConnectionEventingEnablementType.fromValue(map['eventingEnablementType'] as String)).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      lockConfig: map['lockConfig'] == null ? null : (LockConfig.fromMap((map['lockConfig'] as Map).cast<String, dynamic>())).input(),
-      logConfig: map['logConfig'] == null ? null : (ConnectorsLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())).input(),
-      nodeConfig: map['nodeConfig'] == null ? null : (NodeConfig.fromMap((map['nodeConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      sslConfig: map['sslConfig'] == null ? null : (SslConfig.fromMap((map['sslConfig'] as Map).cast<String, dynamic>())).input(),
-      suspended: map['suspended'] == null ? null : (map['suspended'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationConfigs: map['destinationConfigs'] == null ? null : (pulumi.Input.decodeList<DestinationConfig>(map['destinationConfigs']!, (value) => DestinationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eventingConfig: map['eventingConfig'] == null ? null : (EventingConfig.fromMap((map['eventingConfig']! as Map).cast<String, dynamic>())).input(),
+      eventingEnablementType: map['eventingEnablementType'] == null ? null : (ConnectionEventingEnablementType.fromValue(map['eventingEnablementType']! as String)).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      lockConfig: map['lockConfig'] == null ? null : (LockConfig.fromMap((map['lockConfig']! as Map).cast<String, dynamic>())).input(),
+      logConfig: map['logConfig'] == null ? null : (ConnectorsLogConfig.fromMap((map['logConfig']! as Map).cast<String, dynamic>())).input(),
+      nodeConfig: map['nodeConfig'] == null ? null : (NodeConfig.fromMap((map['nodeConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      sslConfig: map['sslConfig'] == null ? null : (SslConfig.fromMap((map['sslConfig']! as Map).cast<String, dynamic>())).input(),
+      suspended: map['suspended'] == null ? null : (map['suspended']! as bool).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ConnectorLogDelivery {
 
   factory ConnectorLogDelivery.fromMap(Map<String, dynamic> map) {
     return ConnectorLogDelivery(
-      workerLogDelivery: (ConnectorLogDeliveryWorkerLogDelivery.fromMap((map['workerLogDelivery'] as Map).cast<String, dynamic>())).input(),
+      workerLogDelivery: (ConnectorLogDeliveryWorkerLogDelivery.fromMap((map['workerLogDelivery']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

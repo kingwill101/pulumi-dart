@@ -40,8 +40,8 @@ class LoggingOptionsArgs {
   factory LoggingOptionsArgs.fromMap(Map<String, dynamic> map) {
     return LoggingOptionsArgs(
       defaultLogLevel: (map['defaultLogLevel'] as String).input(),
-      disableAllLogs: map['disableAllLogs'] == null ? null : (map['disableAllLogs'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      disableAllLogs: map['disableAllLogs'] == null ? null : ((map['disableAllLogs'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
     );
   }

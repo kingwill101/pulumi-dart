@@ -46,11 +46,11 @@ class AspectTypeIamPolicyState {
 
   factory AspectTypeIamPolicyState.fromMap(Map<String, dynamic> map) {
     return AspectTypeIamPolicyState(
-      aspectTypeId: map['aspectTypeId'] == null ? null : (map['aspectTypeId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      aspectTypeId: map['aspectTypeId'] == null ? null : (map['aspectTypeId']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

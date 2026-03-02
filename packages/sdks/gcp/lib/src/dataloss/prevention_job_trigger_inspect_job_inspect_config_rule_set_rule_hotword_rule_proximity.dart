@@ -25,8 +25,8 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity
 
   factory PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity(
-      windowAfter: map['windowAfter'] == null ? null : (map['windowAfter'] as int).input(),
-      windowBefore: map['windowBefore'] == null ? null : (map['windowBefore'] as int).input(),
+      windowAfter: map['windowAfter'] == null ? null : (map['windowAfter']! as int).input(),
+      windowBefore: map['windowBefore'] == null ? null : (map['windowBefore']! as int).input(),
     );
   }
 }

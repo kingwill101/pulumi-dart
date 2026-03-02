@@ -32,9 +32,9 @@ class PipelineTriggerAllGitConfigurationPullRequest {
 
   factory PipelineTriggerAllGitConfigurationPullRequest.fromMap(Map<String, dynamic> map) {
     return PipelineTriggerAllGitConfigurationPullRequest(
-      branches: map['branches'] == null ? null : (pulumi.Input.decodeList<PipelineTriggerAllGitConfigurationPullRequestBranch>(map['branches'], (value) => PipelineTriggerAllGitConfigurationPullRequestBranch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      events: map['events'] == null ? null : ((map['events'] as List).cast<String>()).input(),
-      filePaths: map['filePaths'] == null ? null : (pulumi.Input.decodeList<PipelineTriggerAllGitConfigurationPullRequestFilePath>(map['filePaths'], (value) => PipelineTriggerAllGitConfigurationPullRequestFilePath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      branches: map['branches'] == null ? null : ((pulumi.Input.decodeList<PipelineTriggerAllGitConfigurationPullRequestBranch>(map['branches']!, (value) => PipelineTriggerAllGitConfigurationPullRequestBranch.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      events: map['events'] == null ? null : (((map['events'] as List).cast<String>()).input()).input(),
+      filePaths: map['filePaths'] == null ? null : ((pulumi.Input.decodeList<PipelineTriggerAllGitConfigurationPullRequestFilePath>(map['filePaths']!, (value) => PipelineTriggerAllGitConfigurationPullRequestFilePath.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

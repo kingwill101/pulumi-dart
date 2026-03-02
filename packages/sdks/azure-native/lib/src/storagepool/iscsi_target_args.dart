@@ -68,13 +68,13 @@ class IscsiTargetArgs {
     return IscsiTargetArgs(
       aclMode: (map['aclMode'] as String).input(),
       diskPoolName: (map['diskPoolName'] as String).input(),
-      iscsiTargetName: map['iscsiTargetName'] == null ? null : (map['iscsiTargetName'] as String).input(),
-      luns: map['luns'] == null ? null : (pulumi.Input.decodeList<IscsiLun>(map['luns'], (value) => IscsiLun.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      managedBy: map['managedBy'] == null ? null : (map['managedBy'] as String).input(),
-      managedByExtended: map['managedByExtended'] == null ? null : ((map['managedByExtended'] as List).cast<String>()).input(),
+      iscsiTargetName: map['iscsiTargetName'] == null ? null : (map['iscsiTargetName']! as String).input(),
+      luns: map['luns'] == null ? null : (pulumi.Input.decodeList<IscsiLun>(map['luns']!, (value) => IscsiLun.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managedBy: map['managedBy'] == null ? null : (map['managedBy']! as String).input(),
+      managedByExtended: map['managedByExtended'] == null ? null : ((map['managedByExtended']! as List).cast<String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      staticAcls: map['staticAcls'] == null ? null : (pulumi.Input.decodeList<Acl>(map['staticAcls'], (value) => Acl.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetIqn: map['targetIqn'] == null ? null : (map['targetIqn'] as String).input(),
+      staticAcls: map['staticAcls'] == null ? null : (pulumi.Input.decodeList<Acl>(map['staticAcls']!, (value) => Acl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetIqn: map['targetIqn'] == null ? null : (map['targetIqn']! as String).input(),
     );
   }
 }

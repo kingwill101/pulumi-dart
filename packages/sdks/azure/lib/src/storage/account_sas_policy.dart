@@ -25,7 +25,7 @@ class AccountSasPolicy {
 
   factory AccountSasPolicy.fromMap(Map<String, dynamic> map) {
     return AccountSasPolicy(
-      expirationAction: map['expirationAction'] == null ? null : (map['expirationAction'] as String).input(),
+      expirationAction: map['expirationAction'] == null ? null : (map['expirationAction']! as String).input(),
       expirationPeriod: (map['expirationPeriod'] as String).input(),
     );
   }

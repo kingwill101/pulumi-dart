@@ -21,7 +21,7 @@ class DeploymentServerResponse {
 
   factory DeploymentServerResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentServerResponse(
-      runtimeUri: map['runtimeUri'] == null ? null : ((map['runtimeUri'] as List).cast<String>()).input(),
+      runtimeUri: map['runtimeUri'] == null ? null : ((map['runtimeUri']! as List).cast<String>()).input(),
     );
   }
 }

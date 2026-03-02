@@ -19,7 +19,7 @@ class WorkspaceConnectionPersonalAccessToken {
 
   factory WorkspaceConnectionPersonalAccessToken.fromMap(Map<String, dynamic> map) {
     return WorkspaceConnectionPersonalAccessToken(
-      pat: map['pat'] == null ? null : (map['pat'] as String).input(),
+      pat: map['pat'] == null ? null : (map['pat']! as String).input(),
     );
   }
 }

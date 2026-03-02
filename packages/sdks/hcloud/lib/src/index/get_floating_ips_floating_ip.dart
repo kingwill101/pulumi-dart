@@ -62,7 +62,7 @@ class GetFloatingIpsFloatingIp {
       ipAddress: (map['ipAddress'] as String).input(),
       ipNetwork: (map['ipNetwork'] as String).input(),
       labels: ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       serverId: (map['serverId'] as int).input(),
       type: (map['type'] as String).input(),
     );

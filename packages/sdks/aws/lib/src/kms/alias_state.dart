@@ -47,12 +47,12 @@ class AliasState {
 
   factory AliasState.fromMap(Map<String, dynamic> map) {
     return AliasState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      targetKeyArn: map['targetKeyArn'] == null ? null : (map['targetKeyArn'] as String).input(),
-      targetKeyId: map['targetKeyId'] == null ? null : (map['targetKeyId'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      targetKeyArn: map['targetKeyArn'] == null ? null : ((map['targetKeyArn'] as String).input()).input(),
+      targetKeyId: map['targetKeyId'] == null ? null : ((map['targetKeyId'] as String).input()).input(),
     );
   }
 }

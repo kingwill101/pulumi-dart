@@ -25,8 +25,8 @@ class OauthIdpConfigResponseType {
 
   factory OauthIdpConfigResponseType.fromMap(Map<String, dynamic> map) {
     return OauthIdpConfigResponseType(
-      code: map['code'] == null ? null : (map['code'] as bool).input(),
-      idToken: map['idToken'] == null ? null : (map['idToken'] as bool).input(),
+      code: map['code'] == null ? null : (map['code']! as bool).input(),
+      idToken: map['idToken'] == null ? null : (map['idToken']! as bool).input(),
     );
   }
 }

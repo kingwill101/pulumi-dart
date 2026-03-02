@@ -26,8 +26,8 @@ class OneDashboardPageWidgetPyColor {
 
   factory OneDashboardPageWidgetPyColor.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetPyColor(
-      color: map['color'] == null ? null : (map['color'] as String).input(),
-      seriesOverrides: map['seriesOverrides'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetPyColorSeriesOverride>(map['seriesOverrides'], (value) => OneDashboardPageWidgetPyColorSeriesOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      color: map['color'] == null ? null : (map['color']! as String).input(),
+      seriesOverrides: map['seriesOverrides'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetPyColorSeriesOverride>(map['seriesOverrides']!, (value) => OneDashboardPageWidgetPyColorSeriesOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

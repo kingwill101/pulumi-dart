@@ -29,8 +29,8 @@ class GetInferenceProfilesArgs {
 
   factory GetInferenceProfilesArgs.fromMap(Map<String, dynamic> map) {
     return GetInferenceProfilesArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

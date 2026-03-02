@@ -20,7 +20,7 @@ class EventEndpointRoutingConfigFailoverConfigPrimary {
 
   factory EventEndpointRoutingConfigFailoverConfigPrimary.fromMap(Map<String, dynamic> map) {
     return EventEndpointRoutingConfigFailoverConfigPrimary(
-      healthCheck: map['healthCheck'] == null ? null : (map['healthCheck'] as String).input(),
+      healthCheck: map['healthCheck'] == null ? null : ((map['healthCheck'] as String).input()).input(),
     );
   }
 }

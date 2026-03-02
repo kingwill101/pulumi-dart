@@ -23,8 +23,8 @@ class ConnectionAccessKey {
 
   factory ConnectionAccessKey.fromMap(Map<String, dynamic> map) {
     return ConnectionAccessKey(
-      accessKeyId: map['accessKeyId'] == null ? null : (map['accessKeyId'] as String).input(),
-      secretAccessKey: map['secretAccessKey'] == null ? null : (map['secretAccessKey'] as String).input(),
+      accessKeyId: map['accessKeyId'] == null ? null : (map['accessKeyId']! as String).input(),
+      secretAccessKey: map['secretAccessKey'] == null ? null : (map['secretAccessKey']! as String).input(),
     );
   }
 }

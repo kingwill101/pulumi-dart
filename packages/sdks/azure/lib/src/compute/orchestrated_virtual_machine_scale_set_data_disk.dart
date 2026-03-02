@@ -61,14 +61,14 @@ class OrchestratedVirtualMachineScaleSetDataDisk {
   factory OrchestratedVirtualMachineScaleSetDataDisk.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetDataDisk(
       caching: (map['caching'] as String).input(),
-      createOption: map['createOption'] == null ? null : (map['createOption'] as String).input(),
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as int).input(),
-      lun: map['lun'] == null ? null : (map['lun'] as int).input(),
+      createOption: map['createOption'] == null ? null : (map['createOption']! as String).input(),
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId']! as String).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as int).input(),
+      lun: map['lun'] == null ? null : (map['lun']! as int).input(),
       storageAccountType: (map['storageAccountType'] as String).input(),
-      ultraSsdDiskIopsReadWrite: map['ultraSsdDiskIopsReadWrite'] == null ? null : (map['ultraSsdDiskIopsReadWrite'] as int).input(),
-      ultraSsdDiskMbpsReadWrite: map['ultraSsdDiskMbpsReadWrite'] == null ? null : (map['ultraSsdDiskMbpsReadWrite'] as int).input(),
-      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled'] as bool).input(),
+      ultraSsdDiskIopsReadWrite: map['ultraSsdDiskIopsReadWrite'] == null ? null : (map['ultraSsdDiskIopsReadWrite']! as int).input(),
+      ultraSsdDiskMbpsReadWrite: map['ultraSsdDiskMbpsReadWrite'] == null ? null : (map['ultraSsdDiskMbpsReadWrite']! as int).input(),
+      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled']! as bool).input(),
     );
   }
 }

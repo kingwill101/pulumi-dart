@@ -25,8 +25,8 @@ class VpcSubnetIpv6 {
 
   factory VpcSubnetIpv6.fromMap(Map<String, dynamic> map) {
     return VpcSubnetIpv6(
-      allocatedRange: map['allocatedRange'] == null ? null : (map['allocatedRange'] as String).input(),
-      range: map['range'] == null ? null : (map['range'] as String).input(),
+      allocatedRange: map['allocatedRange'] == null ? null : (map['allocatedRange']! as String).input(),
+      range: map['range'] == null ? null : (map['range']! as String).input(),
     );
   }
 }

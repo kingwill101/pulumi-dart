@@ -27,8 +27,8 @@ class ProjectSourceBuildStatusConfig {
 
   factory ProjectSourceBuildStatusConfig.fromMap(Map<String, dynamic> map) {
     return ProjectSourceBuildStatusConfig(
-      context: map['context'] == null ? null : (map['context'] as String).input(),
-      targetUrl: map['targetUrl'] == null ? null : (map['targetUrl'] as String).input(),
+      context: map['context'] == null ? null : ((map['context'] as String).input()).input(),
+      targetUrl: map['targetUrl'] == null ? null : ((map['targetUrl'] as String).input()).input(),
     );
   }
 }

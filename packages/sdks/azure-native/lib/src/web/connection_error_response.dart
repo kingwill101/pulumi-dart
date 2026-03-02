@@ -56,13 +56,13 @@ class ConnectionErrorResponse {
 
   factory ConnectionErrorResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionErrorResponse(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       id: (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
       name: (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       type: (map['type'] as String).input(),
     );
   }

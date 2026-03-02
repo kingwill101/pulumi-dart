@@ -25,8 +25,8 @@ class RegistrationYearlyPrice {
 
   factory RegistrationYearlyPrice.fromMap(Map<String, dynamic> map) {
     return RegistrationYearlyPrice(
-      currencyCode: map['currencyCode'] == null ? null : (map['currencyCode'] as String).input(),
-      units: map['units'] == null ? null : (map['units'] as String).input(),
+      currencyCode: map['currencyCode'] == null ? null : (map['currencyCode']! as String).input(),
+      units: map['units'] == null ? null : (map['units']! as String).input(),
     );
   }
 }

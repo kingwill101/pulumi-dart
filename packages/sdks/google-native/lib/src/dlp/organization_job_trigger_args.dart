@@ -66,15 +66,15 @@ class OrganizationJobTriggerArgs {
 
   factory OrganizationJobTriggerArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationJobTriggerArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      inspectJob: map['inspectJob'] == null ? null : (GooglePrivacyDlpV2InspectJobConfig.fromMap((map['inspectJob'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      inspectJob: map['inspectJob'] == null ? null : (GooglePrivacyDlpV2InspectJobConfig.fromMap((map['inspectJob']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
       status: (OrganizationJobTriggerStatus.fromValue(map['status'] as String)).input(),
-      triggerId: map['triggerId'] == null ? null : (map['triggerId'] as String).input(),
-      triggers: map['triggers'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2Trigger>(map['triggers'], (value) => GooglePrivacyDlpV2Trigger.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      triggerId: map['triggerId'] == null ? null : (map['triggerId']! as String).input(),
+      triggers: map['triggers'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2Trigger>(map['triggers']!, (value) => GooglePrivacyDlpV2Trigger.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

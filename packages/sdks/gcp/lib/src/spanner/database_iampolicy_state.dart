@@ -43,11 +43,11 @@ class DatabaseIAMPolicyState {
 
   factory DatabaseIAMPolicyState.fromMap(Map<String, dynamic> map) {
     return DatabaseIAMPolicyState(
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

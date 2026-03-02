@@ -43,11 +43,11 @@ class CatalogState {
 
   factory CatalogState.fromMap(Map<String, dynamic> map) {
     return CatalogState(
-      catalogAdogit: map['catalogAdogit'] == null ? null : (CatalogCatalogAdogit.fromMap((map['catalogAdogit'] as Map).cast<String, dynamic>())).input(),
-      catalogGithub: map['catalogGithub'] == null ? null : (CatalogCatalogGithub.fromMap((map['catalogGithub'] as Map).cast<String, dynamic>())).input(),
-      devCenterId: map['devCenterId'] == null ? null : (map['devCenterId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      catalogAdogit: map['catalogAdogit'] == null ? null : (CatalogCatalogAdogit.fromMap((map['catalogAdogit']! as Map).cast<String, dynamic>())).input(),
+      catalogGithub: map['catalogGithub'] == null ? null : (CatalogCatalogGithub.fromMap((map['catalogGithub']! as Map).cast<String, dynamic>())).input(),
+      devCenterId: map['devCenterId'] == null ? null : (map['devCenterId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

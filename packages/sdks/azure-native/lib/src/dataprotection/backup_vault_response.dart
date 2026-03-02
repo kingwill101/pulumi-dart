@@ -82,16 +82,16 @@ class BackupVaultResponse {
   factory BackupVaultResponse.fromMap(Map<String, dynamic> map) {
     return BackupVaultResponse(
       bcdrSecurityLevel: (map['bcdrSecurityLevel'] as String).input(),
-      featureSettings: map['featureSettings'] == null ? null : (FeatureSettingsResponse.fromMap((map['featureSettings'] as Map).cast<String, dynamic>())).input(),
+      featureSettings: map['featureSettings'] == null ? null : (FeatureSettingsResponse.fromMap((map['featureSettings']! as Map).cast<String, dynamic>())).input(),
       isVaultProtectedByResourceGuard: (map['isVaultProtectedByResourceGuard'] as bool).input(),
-      monitoringSettings: map['monitoringSettings'] == null ? null : (MonitoringSettingsResponse.fromMap((map['monitoringSettings'] as Map).cast<String, dynamic>())).input(),
+      monitoringSettings: map['monitoringSettings'] == null ? null : (MonitoringSettingsResponse.fromMap((map['monitoringSettings']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      replicatedRegions: map['replicatedRegions'] == null ? null : ((map['replicatedRegions'] as List).cast<String>()).input(),
-      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : ((map['resourceGuardOperationRequests'] as List).cast<String>()).input(),
+      replicatedRegions: map['replicatedRegions'] == null ? null : ((map['replicatedRegions']! as List).cast<String>()).input(),
+      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : ((map['resourceGuardOperationRequests']! as List).cast<String>()).input(),
       resourceMoveDetails: (ResourceMoveDetailsResponse.fromMap((map['resourceMoveDetails'] as Map).cast<String, dynamic>())).input(),
       resourceMoveState: (map['resourceMoveState'] as String).input(),
       secureScore: (map['secureScore'] as String).input(),
-      securitySettings: map['securitySettings'] == null ? null : (SecuritySettingsResponse.fromMap((map['securitySettings'] as Map).cast<String, dynamic>())).input(),
+      securitySettings: map['securitySettings'] == null ? null : (SecuritySettingsResponse.fromMap((map['securitySettings']! as Map).cast<String, dynamic>())).input(),
       storageSettings: (pulumi.Input.decodeList<StorageSettingResponse>(map['storageSettings'], (value) => StorageSettingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

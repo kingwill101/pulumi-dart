@@ -31,9 +31,9 @@ class UpstreamPolicy {
 
   factory UpstreamPolicy.fromMap(Map<String, dynamic> map) {
     return UpstreamPolicy(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      repository: map['repository'] == null ? null : (map['repository']! as String).input(),
     );
   }
 }

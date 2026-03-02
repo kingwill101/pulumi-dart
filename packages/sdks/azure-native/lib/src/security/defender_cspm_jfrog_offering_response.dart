@@ -34,7 +34,7 @@ class DefenderCspmJFrogOfferingResponse {
   factory DefenderCspmJFrogOfferingResponse.fromMap(Map<String, dynamic> map) {
     return DefenderCspmJFrogOfferingResponse(
       description: (map['description'] as String).input(),
-      mdcContainersImageAssessment: map['mdcContainersImageAssessment'] == null ? null : (DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment.fromMap((map['mdcContainersImageAssessment'] as Map).cast<String, dynamic>())).input(),
+      mdcContainersImageAssessment: map['mdcContainersImageAssessment'] == null ? null : (DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment.fromMap((map['mdcContainersImageAssessment']! as Map).cast<String, dynamic>())).input(),
       offeringType: (map['offeringType'] as String).input(),
     );
   }

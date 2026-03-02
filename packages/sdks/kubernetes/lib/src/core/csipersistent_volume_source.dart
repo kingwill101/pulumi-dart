@@ -67,15 +67,15 @@ class CSIPersistentVolumeSource {
 
   factory CSIPersistentVolumeSource.fromMap(Map<String, dynamic> map) {
     return CSIPersistentVolumeSource(
-      controllerExpandSecretRef: map['controllerExpandSecretRef'] == null ? null : (SecretReference.fromMap((map['controllerExpandSecretRef'] as Map).cast<String, dynamic>())).input(),
-      controllerPublishSecretRef: map['controllerPublishSecretRef'] == null ? null : (SecretReference.fromMap((map['controllerPublishSecretRef'] as Map).cast<String, dynamic>())).input(),
+      controllerExpandSecretRef: map['controllerExpandSecretRef'] == null ? null : (SecretReference.fromMap((map['controllerExpandSecretRef']! as Map).cast<String, dynamic>())).input(),
+      controllerPublishSecretRef: map['controllerPublishSecretRef'] == null ? null : (SecretReference.fromMap((map['controllerPublishSecretRef']! as Map).cast<String, dynamic>())).input(),
       driver: (map['driver'] as String).input(),
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
-      nodeExpandSecretRef: map['nodeExpandSecretRef'] == null ? null : (SecretReference.fromMap((map['nodeExpandSecretRef'] as Map).cast<String, dynamic>())).input(),
-      nodePublishSecretRef: map['nodePublishSecretRef'] == null ? null : (SecretReference.fromMap((map['nodePublishSecretRef'] as Map).cast<String, dynamic>())).input(),
-      nodeStageSecretRef: map['nodeStageSecretRef'] == null ? null : (SecretReference.fromMap((map['nodeStageSecretRef'] as Map).cast<String, dynamic>())).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      volumeAttributes: map['volumeAttributes'] == null ? null : ((map['volumeAttributes'] as Map).cast<String, String>()).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
+      nodeExpandSecretRef: map['nodeExpandSecretRef'] == null ? null : (SecretReference.fromMap((map['nodeExpandSecretRef']! as Map).cast<String, dynamic>())).input(),
+      nodePublishSecretRef: map['nodePublishSecretRef'] == null ? null : (SecretReference.fromMap((map['nodePublishSecretRef']! as Map).cast<String, dynamic>())).input(),
+      nodeStageSecretRef: map['nodeStageSecretRef'] == null ? null : (SecretReference.fromMap((map['nodeStageSecretRef']! as Map).cast<String, dynamic>())).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      volumeAttributes: map['volumeAttributes'] == null ? null : ((map['volumeAttributes']! as Map).cast<String, String>()).input(),
       volumeHandle: (map['volumeHandle'] as String).input(),
     );
   }

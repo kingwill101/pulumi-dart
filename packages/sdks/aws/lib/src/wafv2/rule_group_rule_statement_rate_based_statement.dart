@@ -50,12 +50,12 @@ class RuleGroupRuleStatementRateBasedStatement {
 
   factory RuleGroupRuleStatementRateBasedStatement.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatement(
-      aggregateKeyType: map['aggregateKeyType'] == null ? null : (map['aggregateKeyType'] as String).input(),
-      customKeys: map['customKeys'] == null ? null : (pulumi.Input.decodeList<RuleGroupRuleStatementRateBasedStatementCustomKey>(map['customKeys'], (value) => RuleGroupRuleStatementRateBasedStatementCustomKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      evaluationWindowSec: map['evaluationWindowSec'] == null ? null : (map['evaluationWindowSec'] as int).input(),
-      forwardedIpConfig: map['forwardedIpConfig'] == null ? null : (RuleGroupRuleStatementRateBasedStatementForwardedIpConfig.fromMap((map['forwardedIpConfig'] as Map).cast<String, dynamic>())).input(),
+      aggregateKeyType: map['aggregateKeyType'] == null ? null : ((map['aggregateKeyType'] as String).input()).input(),
+      customKeys: map['customKeys'] == null ? null : ((pulumi.Input.decodeList<RuleGroupRuleStatementRateBasedStatementCustomKey>(map['customKeys']!, (value) => RuleGroupRuleStatementRateBasedStatementCustomKey.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      evaluationWindowSec: map['evaluationWindowSec'] == null ? null : ((map['evaluationWindowSec'] as int).input()).input(),
+      forwardedIpConfig: map['forwardedIpConfig'] == null ? null : ((RuleGroupRuleStatementRateBasedStatementForwardedIpConfig.fromMap((map['forwardedIpConfig']! as Map).cast<String, dynamic>())).input()).input(),
       limit: (map['limit'] as int).input(),
-      scopeDownStatement: map['scopeDownStatement'] == null ? null : (RuleGroupRuleStatementRateBasedStatementScopeDownStatement.fromMap((map['scopeDownStatement'] as Map).cast<String, dynamic>())).input(),
+      scopeDownStatement: map['scopeDownStatement'] == null ? null : ((RuleGroupRuleStatementRateBasedStatementScopeDownStatement.fromMap((map['scopeDownStatement']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

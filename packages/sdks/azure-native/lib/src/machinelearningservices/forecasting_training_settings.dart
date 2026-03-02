@@ -63,15 +63,15 @@ class ForecastingTrainingSettings {
 
   factory ForecastingTrainingSettings.fromMap(Map<String, dynamic> map) {
     return ForecastingTrainingSettings(
-      allowedTrainingAlgorithms: map['allowedTrainingAlgorithms'] == null ? null : ((map['allowedTrainingAlgorithms'] as List).cast<String>()).input(),
-      blockedTrainingAlgorithms: map['blockedTrainingAlgorithms'] == null ? null : ((map['blockedTrainingAlgorithms'] as List).cast<String>()).input(),
-      enableDnnTraining: map['enableDnnTraining'] == null ? null : (map['enableDnnTraining'] as bool).input(),
-      enableModelExplainability: map['enableModelExplainability'] == null ? null : (map['enableModelExplainability'] as bool).input(),
-      enableOnnxCompatibleModels: map['enableOnnxCompatibleModels'] == null ? null : (map['enableOnnxCompatibleModels'] as bool).input(),
-      enableStackEnsemble: map['enableStackEnsemble'] == null ? null : (map['enableStackEnsemble'] as bool).input(),
-      enableVoteEnsemble: map['enableVoteEnsemble'] == null ? null : (map['enableVoteEnsemble'] as bool).input(),
-      ensembleModelDownloadTimeout: map['ensembleModelDownloadTimeout'] == null ? null : (map['ensembleModelDownloadTimeout'] as String).input(),
-      stackEnsembleSettings: map['stackEnsembleSettings'] == null ? null : (StackEnsembleSettings.fromMap((map['stackEnsembleSettings'] as Map).cast<String, dynamic>())).input(),
+      allowedTrainingAlgorithms: map['allowedTrainingAlgorithms'] == null ? null : ((map['allowedTrainingAlgorithms']! as List).cast<String>()).input(),
+      blockedTrainingAlgorithms: map['blockedTrainingAlgorithms'] == null ? null : ((map['blockedTrainingAlgorithms']! as List).cast<String>()).input(),
+      enableDnnTraining: map['enableDnnTraining'] == null ? null : (map['enableDnnTraining']! as bool).input(),
+      enableModelExplainability: map['enableModelExplainability'] == null ? null : (map['enableModelExplainability']! as bool).input(),
+      enableOnnxCompatibleModels: map['enableOnnxCompatibleModels'] == null ? null : (map['enableOnnxCompatibleModels']! as bool).input(),
+      enableStackEnsemble: map['enableStackEnsemble'] == null ? null : (map['enableStackEnsemble']! as bool).input(),
+      enableVoteEnsemble: map['enableVoteEnsemble'] == null ? null : (map['enableVoteEnsemble']! as bool).input(),
+      ensembleModelDownloadTimeout: map['ensembleModelDownloadTimeout'] == null ? null : (map['ensembleModelDownloadTimeout']! as String).input(),
+      stackEnsembleSettings: map['stackEnsembleSettings'] == null ? null : (StackEnsembleSettings.fromMap((map['stackEnsembleSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

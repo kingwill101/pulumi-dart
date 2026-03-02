@@ -85,17 +85,17 @@ class SecurityScanConfigState {
 
   factory SecurityScanConfigState.fromMap(Map<String, dynamic> map) {
     return SecurityScanConfigState(
-      authentication: map['authentication'] == null ? null : (SecurityScanConfigAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      blacklistPatterns: map['blacklistPatterns'] == null ? null : ((map['blacklistPatterns'] as List).cast<String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      exportToSecurityCommandCenter: map['exportToSecurityCommandCenter'] == null ? null : (map['exportToSecurityCommandCenter'] as String).input(),
-      maxQps: map['maxQps'] == null ? null : (map['maxQps'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      schedule: map['schedule'] == null ? null : (SecurityScanConfigSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      startingUrls: map['startingUrls'] == null ? null : ((map['startingUrls'] as List).cast<String>()).input(),
-      targetPlatforms: map['targetPlatforms'] == null ? null : ((map['targetPlatforms'] as List).cast<String>()).input(),
-      userAgent: map['userAgent'] == null ? null : (map['userAgent'] as String).input(),
+      authentication: map['authentication'] == null ? null : (SecurityScanConfigAuthentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
+      blacklistPatterns: map['blacklistPatterns'] == null ? null : ((map['blacklistPatterns']! as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      exportToSecurityCommandCenter: map['exportToSecurityCommandCenter'] == null ? null : (map['exportToSecurityCommandCenter']! as String).input(),
+      maxQps: map['maxQps'] == null ? null : (map['maxQps']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      schedule: map['schedule'] == null ? null : (SecurityScanConfigSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
+      startingUrls: map['startingUrls'] == null ? null : ((map['startingUrls']! as List).cast<String>()).input(),
+      targetPlatforms: map['targetPlatforms'] == null ? null : ((map['targetPlatforms']! as List).cast<String>()).input(),
+      userAgent: map['userAgent'] == null ? null : (map['userAgent']! as String).input(),
     );
   }
 }

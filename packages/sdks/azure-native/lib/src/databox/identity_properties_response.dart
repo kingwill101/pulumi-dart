@@ -27,8 +27,8 @@ class IdentityPropertiesResponse {
 
   factory IdentityPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return IdentityPropertiesResponse(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      userAssigned: map['userAssigned'] == null ? null : (UserAssignedPropertiesResponse.fromMap((map['userAssigned'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      userAssigned: map['userAssigned'] == null ? null : (UserAssignedPropertiesResponse.fromMap((map['userAssigned']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

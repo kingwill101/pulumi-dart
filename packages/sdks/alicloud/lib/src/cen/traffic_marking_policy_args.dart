@@ -61,13 +61,13 @@ class TrafficMarkingPolicyArgs {
 
   factory TrafficMarkingPolicyArgs.fromMap(Map<String, dynamic> map) {
     return TrafficMarkingPolicyArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
       markingDscp: (map['markingDscp'] as int).input(),
       priority: (map['priority'] as int).input(),
-      trafficMarkingPolicyName: map['trafficMarkingPolicyName'] == null ? null : (map['trafficMarkingPolicyName'] as String).input(),
-      trafficMatchRules: map['trafficMatchRules'] == null ? null : (pulumi.Input.decodeList<TrafficMarkingPolicyTrafficMatchRule>(map['trafficMatchRules'], (value) => TrafficMarkingPolicyTrafficMatchRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      trafficMarkingPolicyName: map['trafficMarkingPolicyName'] == null ? null : (map['trafficMarkingPolicyName']! as String).input(),
+      trafficMatchRules: map['trafficMatchRules'] == null ? null : (pulumi.Input.decodeList<TrafficMarkingPolicyTrafficMatchRule>(map['trafficMatchRules']!, (value) => TrafficMarkingPolicyTrafficMatchRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       transitRouterId: (map['transitRouterId'] as String).input(),
     );
   }

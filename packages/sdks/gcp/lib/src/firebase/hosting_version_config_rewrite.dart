@@ -42,11 +42,11 @@ class HostingVersionConfigRewrite {
 
   factory HostingVersionConfigRewrite.fromMap(Map<String, dynamic> map) {
     return HostingVersionConfigRewrite(
-      function: map['function'] == null ? null : (map['function'] as String).input(),
-      glob: map['glob'] == null ? null : (map['glob'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      regex: map['regex'] == null ? null : (map['regex'] as String).input(),
-      run: map['run'] == null ? null : (HostingVersionConfigRewriteRun.fromMap((map['run'] as Map).cast<String, dynamic>())).input(),
+      function: map['function'] == null ? null : (map['function']! as String).input(),
+      glob: map['glob'] == null ? null : (map['glob']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      regex: map['regex'] == null ? null : (map['regex']! as String).input(),
+      run: map['run'] == null ? null : (HostingVersionConfigRewriteRun.fromMap((map['run']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

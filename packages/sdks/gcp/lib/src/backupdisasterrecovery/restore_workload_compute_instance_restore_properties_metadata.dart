@@ -21,7 +21,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesMetadata {
 
   factory RestoreWorkloadComputeInstanceRestorePropertiesMetadata.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesMetadata(
-      items: map['items'] == null ? null : (pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesMetadataItem>(map['items'], (value) => RestoreWorkloadComputeInstanceRestorePropertiesMetadataItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      items: map['items'] == null ? null : (pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesMetadataItem>(map['items']!, (value) => RestoreWorkloadComputeInstanceRestorePropertiesMetadataItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

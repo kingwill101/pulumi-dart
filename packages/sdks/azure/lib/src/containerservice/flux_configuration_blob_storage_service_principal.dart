@@ -45,11 +45,11 @@ class FluxConfigurationBlobStorageServicePrincipal {
 
   factory FluxConfigurationBlobStorageServicePrincipal.fromMap(Map<String, dynamic> map) {
     return FluxConfigurationBlobStorageServicePrincipal(
-      clientCertificateBase64: map['clientCertificateBase64'] == null ? null : (map['clientCertificateBase64'] as String).input(),
-      clientCertificatePassword: map['clientCertificatePassword'] == null ? null : (map['clientCertificatePassword'] as String).input(),
-      clientCertificateSendChain: map['clientCertificateSendChain'] == null ? null : (map['clientCertificateSendChain'] as bool).input(),
+      clientCertificateBase64: map['clientCertificateBase64'] == null ? null : (map['clientCertificateBase64']! as String).input(),
+      clientCertificatePassword: map['clientCertificatePassword'] == null ? null : (map['clientCertificatePassword']! as String).input(),
+      clientCertificateSendChain: map['clientCertificateSendChain'] == null ? null : (map['clientCertificateSendChain']! as bool).input(),
       clientId: (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
       tenantId: (map['tenantId'] as String).input(),
     );
   }

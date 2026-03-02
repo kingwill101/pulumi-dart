@@ -63,12 +63,12 @@ class OneDashboardVariable {
 
   factory OneDashboardVariable.fromMap(Map<String, dynamic> map) {
     return OneDashboardVariable(
-      defaultValues: map['defaultValues'] == null ? null : ((map['defaultValues'] as List).cast<String>()).input(),
-      isMultiSelection: map['isMultiSelection'] == null ? null : (map['isMultiSelection'] as bool).input(),
-      items: map['items'] == null ? null : (pulumi.Input.decodeList<OneDashboardVariableItem>(map['items'], (value) => OneDashboardVariableItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultValues: map['defaultValues'] == null ? null : ((map['defaultValues']! as List).cast<String>()).input(),
+      isMultiSelection: map['isMultiSelection'] == null ? null : (map['isMultiSelection']! as bool).input(),
+      items: map['items'] == null ? null : (pulumi.Input.decodeList<OneDashboardVariableItem>(map['items']!, (value) => OneDashboardVariableItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
-      nrqlQuery: map['nrqlQuery'] == null ? null : (OneDashboardVariableNrqlQuery.fromMap((map['nrqlQuery'] as Map).cast<String, dynamic>())).input(),
-      options: map['options'] == null ? null : (pulumi.Input.decodeList<OneDashboardVariableOption>(map['options'], (value) => OneDashboardVariableOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nrqlQuery: map['nrqlQuery'] == null ? null : (OneDashboardVariableNrqlQuery.fromMap((map['nrqlQuery']! as Map).cast<String, dynamic>())).input(),
+      options: map['options'] == null ? null : (pulumi.Input.decodeList<OneDashboardVariableOption>(map['options']!, (value) => OneDashboardVariableOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
       replacementStrategy: (map['replacementStrategy'] as String).input(),
       title: (map['title'] as String).input(),
       type: (map['type'] as String).input(),

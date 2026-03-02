@@ -43,11 +43,11 @@ class RecoveryGroupState {
 
   factory RecoveryGroupState.fromMap(Map<String, dynamic> map) {
     return RecoveryGroupState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      cells: map['cells'] == null ? null : ((map['cells'] as List).cast<String>()).input(),
-      recoveryGroupName: map['recoveryGroupName'] == null ? null : (map['recoveryGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      cells: map['cells'] == null ? null : (((map['cells'] as List).cast<String>()).input()).input(),
+      recoveryGroupName: map['recoveryGroupName'] == null ? null : ((map['recoveryGroupName'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

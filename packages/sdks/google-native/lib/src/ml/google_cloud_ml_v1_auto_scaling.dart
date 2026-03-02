@@ -32,9 +32,9 @@ class GoogleCloudMlV1AutoScaling {
 
   factory GoogleCloudMlV1AutoScaling.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1AutoScaling(
-      maxNodes: map['maxNodes'] == null ? null : (map['maxNodes'] as int).input(),
-      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<GoogleCloudMlV1MetricSpec>(map['metrics'], (value) => GoogleCloudMlV1MetricSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      minNodes: map['minNodes'] == null ? null : (map['minNodes'] as int).input(),
+      maxNodes: map['maxNodes'] == null ? null : (map['maxNodes']! as int).input(),
+      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<GoogleCloudMlV1MetricSpec>(map['metrics']!, (value) => GoogleCloudMlV1MetricSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      minNodes: map['minNodes'] == null ? null : (map['minNodes']! as int).input(),
     );
   }
 }

@@ -37,10 +37,10 @@ class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences {
 
   factory PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences.fromMap(Map<String, dynamic> map) {
     return PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences(
-      commitmentPlan: map['commitmentPlan'] == null ? null : (map['commitmentPlan'] as String).input(),
-      cpuOvercommitRatio: map['cpuOvercommitRatio'] == null ? null : (map['cpuOvercommitRatio'] as double).input(),
-      hostMaintenancePolicy: map['hostMaintenancePolicy'] == null ? null : (map['hostMaintenancePolicy'] as String).input(),
-      nodeTypes: map['nodeTypes'] == null ? null : (pulumi.Input.decodeList<PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType>(map['nodeTypes'], (value) => PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      commitmentPlan: map['commitmentPlan'] == null ? null : (map['commitmentPlan']! as String).input(),
+      cpuOvercommitRatio: map['cpuOvercommitRatio'] == null ? null : (map['cpuOvercommitRatio']! as double).input(),
+      hostMaintenancePolicy: map['hostMaintenancePolicy'] == null ? null : (map['hostMaintenancePolicy']! as String).input(),
+      nodeTypes: map['nodeTypes'] == null ? null : (pulumi.Input.decodeList<PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType>(map['nodeTypes']!, (value) => PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

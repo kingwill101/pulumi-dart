@@ -30,9 +30,9 @@ class CoreNetworkEdge {
 
   factory CoreNetworkEdge.fromMap(Map<String, dynamic> map) {
     return CoreNetworkEdge(
-      asn: map['asn'] == null ? null : (map['asn'] as int).input(),
-      edgeLocation: map['edgeLocation'] == null ? null : (map['edgeLocation'] as String).input(),
-      insideCidrBlocks: map['insideCidrBlocks'] == null ? null : ((map['insideCidrBlocks'] as List).cast<String>()).input(),
+      asn: map['asn'] == null ? null : ((map['asn'] as int).input()).input(),
+      edgeLocation: map['edgeLocation'] == null ? null : ((map['edgeLocation'] as String).input()).input(),
+      insideCidrBlocks: map['insideCidrBlocks'] == null ? null : (((map['insideCidrBlocks'] as List).cast<String>()).input()).input(),
     );
   }
 }

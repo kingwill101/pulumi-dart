@@ -36,8 +36,8 @@ class TagArgs {
   factory TagArgs.fromMap(Map<String, dynamic> map) {
     return TagArgs(
       autoscalingGroupName: (map['autoscalingGroupName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tag: (TagTag.fromMap((map['tag'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tag: (TagTag.fromMap((map['tag']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

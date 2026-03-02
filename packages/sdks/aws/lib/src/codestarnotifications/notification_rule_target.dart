@@ -31,8 +31,8 @@ class NotificationRuleTarget {
   factory NotificationRuleTarget.fromMap(Map<String, dynamic> map) {
     return NotificationRuleTarget(
       address: (map['address'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

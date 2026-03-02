@@ -47,8 +47,8 @@ class ListWebAppWorkflowsConnectionsSlotResult {
   factory ListWebAppWorkflowsConnectionsSlotResult.fromMap(Map<String, dynamic> map) {
     return ListWebAppWorkflowsConnectionsSlotResult(
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       properties: WorkflowEnvelopeResponseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,

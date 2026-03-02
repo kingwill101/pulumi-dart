@@ -22,7 +22,7 @@ class ToolExecutionStep {
 
   factory ToolExecutionStep.fromMap(Map<String, dynamic> map) {
     return ToolExecutionStep(
-      toolExecution: map['toolExecution'] == null ? null : (ToolExecution.fromMap((map['toolExecution'] as Map).cast<String, dynamic>())).input(),
+      toolExecution: map['toolExecution'] == null ? null : (ToolExecution.fromMap((map['toolExecution']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

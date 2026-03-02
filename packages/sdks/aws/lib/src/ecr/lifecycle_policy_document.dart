@@ -22,7 +22,7 @@ class LifecyclePolicyDocument {
 
   factory LifecyclePolicyDocument.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyDocument(
-      rules: (pulumi.Input.decodeList<LifecyclePolicyRule>(map['rules'], (value) => LifecyclePolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: (pulumi.Input.decodeList<LifecyclePolicyRule>(map['rules']!, (value) => LifecyclePolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinition {
 
   factory GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinition.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinition(
-      action: (GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinitionAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      conditionLogic: map['conditionLogic'] == null ? null : (map['conditionLogic'] as String).input(),
-      matchConditions: map['matchConditions'] == null ? null : (pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinitionMatchCondition>(map['matchConditions'], (value) => GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinitionMatchCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      action: (GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinitionAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      conditionLogic: map['conditionLogic'] == null ? null : ((map['conditionLogic'] as String).input()).input(),
+      matchConditions: map['matchConditions'] == null ? null : ((pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinitionMatchCondition>(map['matchConditions']!, (value) => GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinitionMatchCondition.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -128,7 +128,7 @@ class GetReservationBlockResult {
       selfLinkWithId: map['selfLinkWithId'] as String,
       status: map['status'] as String,
       subBlockNames: (map['subBlockNames'] as List).cast<String>(),
-      zone: map['zone'] == null ? null : map['zone'] as String,
+      zone: map['zone'] == null ? null : map['zone']! as String,
     );
   }
 }

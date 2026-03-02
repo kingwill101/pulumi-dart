@@ -37,7 +37,7 @@ class DomainSource {
     return DomainSource(
       sourceContent: (map['sourceContent'] as String).input(),
       sourcePort: (map['sourcePort'] as String).input(),
-      sourcePriority: map['sourcePriority'] == null ? null : (map['sourcePriority'] as String).input(),
+      sourcePriority: map['sourcePriority'] == null ? null : (map['sourcePriority']! as String).input(),
       sourceType: (map['sourceType'] as String).input(),
     );
   }

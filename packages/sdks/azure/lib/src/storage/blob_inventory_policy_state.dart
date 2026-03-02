@@ -27,8 +27,8 @@ class BlobInventoryPolicyState {
 
   factory BlobInventoryPolicyState.fromMap(Map<String, dynamic> map) {
     return BlobInventoryPolicyState(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<BlobInventoryPolicyRule>(map['rules'], (value) => BlobInventoryPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<BlobInventoryPolicyRule>(map['rules']!, (value) => BlobInventoryPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
     );
   }
 }

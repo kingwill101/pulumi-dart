@@ -64,14 +64,14 @@ class ServiceTerminalCondition {
 
   factory ServiceTerminalCondition.fromMap(Map<String, dynamic> map) {
     return ServiceTerminalCondition(
-      executionReason: map['executionReason'] == null ? null : (map['executionReason'] as String).input(),
-      lastTransitionTime: map['lastTransitionTime'] == null ? null : (map['lastTransitionTime'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
-      revisionReason: map['revisionReason'] == null ? null : (map['revisionReason'] as String).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      executionReason: map['executionReason'] == null ? null : (map['executionReason']! as String).input(),
+      lastTransitionTime: map['lastTransitionTime'] == null ? null : (map['lastTransitionTime']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
+      revisionReason: map['revisionReason'] == null ? null : (map['revisionReason']! as String).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

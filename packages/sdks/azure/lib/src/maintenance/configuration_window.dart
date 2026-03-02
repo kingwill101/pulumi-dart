@@ -40,9 +40,9 @@ class ConfigurationWindow {
 
   factory ConfigurationWindow.fromMap(Map<String, dynamic> map) {
     return ConfigurationWindow(
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
-      expirationDateTime: map['expirationDateTime'] == null ? null : (map['expirationDateTime'] as String).input(),
-      recurEvery: map['recurEvery'] == null ? null : (map['recurEvery'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
+      expirationDateTime: map['expirationDateTime'] == null ? null : (map['expirationDateTime']! as String).input(),
+      recurEvery: map['recurEvery'] == null ? null : (map['recurEvery']! as String).input(),
       startDateTime: (map['startDateTime'] as String).input(),
       timeZone: (map['timeZone'] as String).input(),
     );

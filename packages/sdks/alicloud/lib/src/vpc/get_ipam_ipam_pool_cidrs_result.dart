@@ -41,11 +41,11 @@ class GetIpamIpamPoolCidrsResult {
 
   factory GetIpamIpamPoolCidrsResult.fromMap(Map<String, dynamic> map) {
     return GetIpamIpamPoolCidrsResult(
-      cidr: map['cidr'] == null ? null : map['cidr'] as String,
+      cidr: map['cidr'] == null ? null : map['cidr']! as String,
       cidrs: pulumi.Input.decodeList<GetIpamIpamPoolCidrsCidr>(map['cidrs'], (value) => GetIpamIpamPoolCidrsCidr.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ipamPoolId: map['ipamPoolId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

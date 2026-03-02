@@ -21,7 +21,7 @@ class DataSetRefreshProperties {
 
   factory DataSetRefreshProperties.fromMap(Map<String, dynamic> map) {
     return DataSetRefreshProperties(
-      refreshConfiguration: (DataSetRefreshPropertiesRefreshConfiguration.fromMap((map['refreshConfiguration'] as Map).cast<String, dynamic>())).input(),
+      refreshConfiguration: (DataSetRefreshPropertiesRefreshConfiguration.fromMap((map['refreshConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

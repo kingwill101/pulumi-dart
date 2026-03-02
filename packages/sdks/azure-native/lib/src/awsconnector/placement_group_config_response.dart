@@ -28,8 +28,8 @@ class PlacementGroupConfigResponse {
 
   factory PlacementGroupConfigResponse.fromMap(Map<String, dynamic> map) {
     return PlacementGroupConfigResponse(
-      instanceRole: map['instanceRole'] == null ? null : (InstanceRoleTypeEnumValueResponse.fromMap((map['instanceRole'] as Map).cast<String, dynamic>())).input(),
-      placementStrategy: map['placementStrategy'] == null ? null : (PlacementGroupStrategyEnumValueResponse.fromMap((map['placementStrategy'] as Map).cast<String, dynamic>())).input(),
+      instanceRole: map['instanceRole'] == null ? null : (InstanceRoleTypeEnumValueResponse.fromMap((map['instanceRole']! as Map).cast<String, dynamic>())).input(),
+      placementStrategy: map['placementStrategy'] == null ? null : (PlacementGroupStrategyEnumValueResponse.fromMap((map['placementStrategy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

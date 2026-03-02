@@ -97,7 +97,7 @@ class GetNetworkSecurityGroupSecurityRule {
       description: (map['description'] as String).input(),
       destinationAddressPrefix: (map['destinationAddressPrefix'] as String).input(),
       destinationAddressPrefixes: ((map['destinationAddressPrefixes'] as List).cast<String>()).input(),
-      destinationApplicationSecurityGroupIds: map['destinationApplicationSecurityGroupIds'] == null ? null : ((map['destinationApplicationSecurityGroupIds'] as List).cast<String>()).input(),
+      destinationApplicationSecurityGroupIds: map['destinationApplicationSecurityGroupIds'] == null ? null : ((map['destinationApplicationSecurityGroupIds']! as List).cast<String>()).input(),
       destinationPortRange: (map['destinationPortRange'] as String).input(),
       destinationPortRanges: ((map['destinationPortRanges'] as List).cast<String>()).input(),
       direction: (map['direction'] as String).input(),
@@ -106,7 +106,7 @@ class GetNetworkSecurityGroupSecurityRule {
       protocol: (map['protocol'] as String).input(),
       sourceAddressPrefix: (map['sourceAddressPrefix'] as String).input(),
       sourceAddressPrefixes: ((map['sourceAddressPrefixes'] as List).cast<String>()).input(),
-      sourceApplicationSecurityGroupIds: map['sourceApplicationSecurityGroupIds'] == null ? null : ((map['sourceApplicationSecurityGroupIds'] as List).cast<String>()).input(),
+      sourceApplicationSecurityGroupIds: map['sourceApplicationSecurityGroupIds'] == null ? null : ((map['sourceApplicationSecurityGroupIds']! as List).cast<String>()).input(),
       sourcePortRange: (map['sourcePortRange'] as String).input(),
       sourcePortRanges: ((map['sourcePortRanges'] as List).cast<String>()).input(),
     );

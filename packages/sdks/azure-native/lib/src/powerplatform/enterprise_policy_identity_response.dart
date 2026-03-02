@@ -33,7 +33,7 @@ class EnterprisePolicyIdentityResponse {
     return EnterprisePolicyIdentityResponse(
       systemAssignedIdentityPrincipalId: (map['systemAssignedIdentityPrincipalId'] as String).input(),
       tenantId: (map['tenantId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

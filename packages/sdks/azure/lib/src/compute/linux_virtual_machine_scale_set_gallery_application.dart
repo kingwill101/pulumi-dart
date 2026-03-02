@@ -35,9 +35,9 @@ class LinuxVirtualMachineScaleSetGalleryApplication {
 
   factory LinuxVirtualMachineScaleSetGalleryApplication.fromMap(Map<String, dynamic> map) {
     return LinuxVirtualMachineScaleSetGalleryApplication(
-      configurationBlobUri: map['configurationBlobUri'] == null ? null : (map['configurationBlobUri'] as String).input(),
-      order: map['order'] == null ? null : (map['order'] as int).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      configurationBlobUri: map['configurationBlobUri'] == null ? null : (map['configurationBlobUri']! as String).input(),
+      order: map['order'] == null ? null : (map['order']! as int).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
       versionId: (map['versionId'] as String).input(),
     );
   }

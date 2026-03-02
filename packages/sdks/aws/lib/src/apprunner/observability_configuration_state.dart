@@ -62,15 +62,15 @@ class ObservabilityConfigurationState {
 
   factory ObservabilityConfigurationState.fromMap(Map<String, dynamic> map) {
     return ObservabilityConfigurationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      latest: map['latest'] == null ? null : (map['latest'] as bool).input(),
-      observabilityConfigurationName: map['observabilityConfigurationName'] == null ? null : (map['observabilityConfigurationName'] as String).input(),
-      observabilityConfigurationRevision: map['observabilityConfigurationRevision'] == null ? null : (map['observabilityConfigurationRevision'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      traceConfiguration: map['traceConfiguration'] == null ? null : (ObservabilityConfigurationTraceConfiguration.fromMap((map['traceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      latest: map['latest'] == null ? null : ((map['latest'] as bool).input()).input(),
+      observabilityConfigurationName: map['observabilityConfigurationName'] == null ? null : ((map['observabilityConfigurationName'] as String).input()).input(),
+      observabilityConfigurationRevision: map['observabilityConfigurationRevision'] == null ? null : ((map['observabilityConfigurationRevision'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      traceConfiguration: map['traceConfiguration'] == null ? null : ((ObservabilityConfigurationTraceConfiguration.fromMap((map['traceConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

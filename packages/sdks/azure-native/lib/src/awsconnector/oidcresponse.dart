@@ -21,7 +21,7 @@ class OIDCResponse {
 
   factory OIDCResponse.fromMap(Map<String, dynamic> map) {
     return OIDCResponse(
-      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer']! as String).input(),
     );
   }
 }

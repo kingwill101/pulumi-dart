@@ -20,7 +20,7 @@ class ClusterIdentityOidc {
 
   factory ClusterIdentityOidc.fromMap(Map<String, dynamic> map) {
     return ClusterIdentityOidc(
-      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
+      issuer: map['issuer'] == null ? null : ((map['issuer'] as String).input()).input(),
     );
   }
 }

@@ -42,7 +42,7 @@ class PhoneNumberContactFlowAssociationArgs {
       contactFlowId: (map['contactFlowId'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
       phoneNumberId: (map['phoneNumberId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

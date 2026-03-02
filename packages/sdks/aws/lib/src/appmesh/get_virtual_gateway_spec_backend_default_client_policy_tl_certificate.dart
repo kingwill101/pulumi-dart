@@ -25,8 +25,8 @@ class GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificate {
 
   factory GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificate.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificate(
-      files: (pulumi.Input.decodeList<GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateFile>(map['files'], (value) => GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sds: (pulumi.Input.decodeList<GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateSd>(map['sds'], (value) => GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateSd.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      files: (pulumi.Input.decodeList<GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateFile>(map['files']!, (value) => GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sds: (pulumi.Input.decodeList<GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateSd>(map['sds']!, (value) => GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateSd.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

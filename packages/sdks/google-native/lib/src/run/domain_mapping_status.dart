@@ -43,11 +43,11 @@ class DomainMappingStatus {
 
   factory DomainMappingStatus.fromMap(Map<String, dynamic> map) {
     return DomainMappingStatus(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV1Condition>(map['conditions'], (value) => GoogleCloudRunV1Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mappedRouteName: map['mappedRouteName'] == null ? null : (map['mappedRouteName'] as String).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
-      resourceRecords: map['resourceRecords'] == null ? null : (pulumi.Input.decodeList<ResourceRecord>(map['resourceRecords'], (value) => ResourceRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV1Condition>(map['conditions']!, (value) => GoogleCloudRunV1Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mappedRouteName: map['mappedRouteName'] == null ? null : (map['mappedRouteName']! as String).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
+      resourceRecords: map['resourceRecords'] == null ? null : (pulumi.Input.decodeList<ResourceRecord>(map['resourceRecords']!, (value) => ResourceRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

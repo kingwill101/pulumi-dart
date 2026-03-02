@@ -25,8 +25,8 @@ class ManagedNetworkProvisionStatusResponse {
 
   factory ManagedNetworkProvisionStatusResponse.fromMap(Map<String, dynamic> map) {
     return ManagedNetworkProvisionStatusResponse(
-      sparkReady: map['sparkReady'] == null ? null : (map['sparkReady'] as bool).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      sparkReady: map['sparkReady'] == null ? null : (map['sparkReady']! as bool).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

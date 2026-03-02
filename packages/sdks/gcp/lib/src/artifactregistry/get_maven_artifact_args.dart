@@ -47,7 +47,7 @@ class GetMavenArtifactArgs {
       artifactId: (map['artifactId'] as String).input(),
       groupId: (map['groupId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       repositoryId: (map['repositoryId'] as String).input(),
     );
   }

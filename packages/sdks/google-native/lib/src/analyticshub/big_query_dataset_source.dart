@@ -21,7 +21,7 @@ class BigQueryDatasetSource {
 
   factory BigQueryDatasetSource.fromMap(Map<String, dynamic> map) {
     return BigQueryDatasetSource(
-      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
+      dataset: map['dataset'] == null ? null : (map['dataset']! as String).input(),
     );
   }
 }

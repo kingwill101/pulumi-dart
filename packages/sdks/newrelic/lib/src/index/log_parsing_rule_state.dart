@@ -61,15 +61,15 @@ class LogParsingRuleState {
 
   factory LogParsingRuleState.fromMap(Map<String, dynamic> map) {
     return LogParsingRuleState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      attribute: map['attribute'] == null ? null : (map['attribute'] as String).input(),
-      deleted: map['deleted'] == null ? null : (map['deleted'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      grok: map['grok'] == null ? null : (map['grok'] as String).input(),
-      lucene: map['lucene'] == null ? null : (map['lucene'] as String).input(),
-      matched: map['matched'] == null ? null : (map['matched'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nrql: map['nrql'] == null ? null : (map['nrql'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      attribute: map['attribute'] == null ? null : (map['attribute']! as String).input(),
+      deleted: map['deleted'] == null ? null : (map['deleted']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      grok: map['grok'] == null ? null : (map['grok']! as String).input(),
+      lucene: map['lucene'] == null ? null : (map['lucene']! as String).input(),
+      matched: map['matched'] == null ? null : (map['matched']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nrql: map['nrql'] == null ? null : (map['nrql']! as String).input(),
     );
   }
 }

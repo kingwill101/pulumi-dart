@@ -68,15 +68,15 @@ class KeyArgs {
 
   factory KeyArgs.fromMap(Map<String, dynamic> map) {
     return KeyArgs(
-      androidSettings: map['androidSettings'] == null ? null : (GoogleCloudRecaptchaenterpriseV1AndroidKeySettings.fromMap((map['androidSettings'] as Map).cast<String, dynamic>())).input(),
+      androidSettings: map['androidSettings'] == null ? null : (GoogleCloudRecaptchaenterpriseV1AndroidKeySettings.fromMap((map['androidSettings']! as Map).cast<String, dynamic>())).input(),
       displayName: (map['displayName'] as String).input(),
-      iosSettings: map['iosSettings'] == null ? null : (GoogleCloudRecaptchaenterpriseV1IOSKeySettings.fromMap((map['iosSettings'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      testingOptions: map['testingOptions'] == null ? null : (GoogleCloudRecaptchaenterpriseV1TestingOptions.fromMap((map['testingOptions'] as Map).cast<String, dynamic>())).input(),
-      wafSettings: map['wafSettings'] == null ? null : (GoogleCloudRecaptchaenterpriseV1WafSettings.fromMap((map['wafSettings'] as Map).cast<String, dynamic>())).input(),
-      webSettings: map['webSettings'] == null ? null : (GoogleCloudRecaptchaenterpriseV1WebKeySettings.fromMap((map['webSettings'] as Map).cast<String, dynamic>())).input(),
+      iosSettings: map['iosSettings'] == null ? null : (GoogleCloudRecaptchaenterpriseV1IOSKeySettings.fromMap((map['iosSettings']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      testingOptions: map['testingOptions'] == null ? null : (GoogleCloudRecaptchaenterpriseV1TestingOptions.fromMap((map['testingOptions']! as Map).cast<String, dynamic>())).input(),
+      wafSettings: map['wafSettings'] == null ? null : (GoogleCloudRecaptchaenterpriseV1WafSettings.fromMap((map['wafSettings']! as Map).cast<String, dynamic>())).input(),
+      webSettings: map['webSettings'] == null ? null : (GoogleCloudRecaptchaenterpriseV1WebKeySettings.fromMap((map['webSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

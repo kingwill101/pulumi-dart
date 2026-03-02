@@ -29,7 +29,7 @@ class EndpointPolicyEndpointMatcherMetadataLabelMatcher {
   factory EndpointPolicyEndpointMatcherMetadataLabelMatcher.fromMap(Map<String, dynamic> map) {
     return EndpointPolicyEndpointMatcherMetadataLabelMatcher(
       metadataLabelMatchCriteria: (map['metadataLabelMatchCriteria'] as String).input(),
-      metadataLabels: map['metadataLabels'] == null ? null : (pulumi.Input.decodeList<EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel>(map['metadataLabels'], (value) => EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadataLabels: map['metadataLabels'] == null ? null : (pulumi.Input.decodeList<EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel>(map['metadataLabels']!, (value) => EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -31,7 +31,7 @@ class Approver {
 
   factory Approver.fromMap(Map<String, dynamic> map) {
     return Approver(
-      actionPerformed: map['actionPerformed'] == null ? null : (map['actionPerformed'] as String).input(),
+      actionPerformed: map['actionPerformed'] == null ? null : (map['actionPerformed']! as String).input(),
       approverEntraId: (map['approverEntraId'] as String).input(),
       lastUpdatedAt: (map['lastUpdatedAt'] as String).input(),
     );

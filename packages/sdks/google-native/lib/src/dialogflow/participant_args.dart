@@ -58,13 +58,13 @@ class ParticipantArgs {
   factory ParticipantArgs.fromMap(Map<String, dynamic> map) {
     return ParticipantArgs(
       conversationId: (map['conversationId'] as String).input(),
-      documentsMetadataFilters: map['documentsMetadataFilters'] == null ? null : ((map['documentsMetadataFilters'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      obfuscatedExternalUserId: map['obfuscatedExternalUserId'] == null ? null : (map['obfuscatedExternalUserId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      role: map['role'] == null ? null : (ParticipantRole.fromValue(map['role'] as String)).input(),
-      sipRecordingMediaLabel: map['sipRecordingMediaLabel'] == null ? null : (map['sipRecordingMediaLabel'] as String).input(),
+      documentsMetadataFilters: map['documentsMetadataFilters'] == null ? null : ((map['documentsMetadataFilters']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      obfuscatedExternalUserId: map['obfuscatedExternalUserId'] == null ? null : (map['obfuscatedExternalUserId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      role: map['role'] == null ? null : (ParticipantRole.fromValue(map['role']! as String)).input(),
+      sipRecordingMediaLabel: map['sipRecordingMediaLabel'] == null ? null : (map['sipRecordingMediaLabel']! as String).input(),
     );
   }
 }

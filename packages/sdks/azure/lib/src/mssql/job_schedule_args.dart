@@ -51,11 +51,11 @@ class JobScheduleArgs {
 
   factory JobScheduleArgs.fromMap(Map<String, dynamic> map) {
     return JobScheduleArgs(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as String).input(),
       jobId: (map['jobId'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

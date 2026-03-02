@@ -86,20 +86,20 @@ class DeploymentArgs {
 
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
-      accessGuidance: map['accessGuidance'] == null ? null : (map['accessGuidance'] as String).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      accessGuidance: map['accessGuidance'] == null ? null : (map['accessGuidance']! as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
       apiDeploymentId: (map['apiDeploymentId'] as String).input(),
       apiId: (map['apiId'] as String).input(),
-      apiSpecRevision: map['apiSpecRevision'] == null ? null : (map['apiSpecRevision'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri'] as String).input(),
-      externalChannelUri: map['externalChannelUri'] == null ? null : (map['externalChannelUri'] as String).input(),
-      intendedAudience: map['intendedAudience'] == null ? null : (map['intendedAudience'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      apiSpecRevision: map['apiSpecRevision'] == null ? null : (map['apiSpecRevision']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri']! as String).input(),
+      externalChannelUri: map['externalChannelUri'] == null ? null : (map['externalChannelUri']! as String).input(),
+      intendedAudience: map['intendedAudience'] == null ? null : (map['intendedAudience']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

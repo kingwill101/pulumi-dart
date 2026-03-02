@@ -33,7 +33,7 @@ class RocketMQInstanceNetworkInfo {
 
   factory RocketMQInstanceNetworkInfo.fromMap(Map<String, dynamic> map) {
     return RocketMQInstanceNetworkInfo(
-      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<RocketMQInstanceNetworkInfoEndpoint>(map['endpoints'], (value) => RocketMQInstanceNetworkInfoEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<RocketMQInstanceNetworkInfoEndpoint>(map['endpoints']!, (value) => RocketMQInstanceNetworkInfoEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
       internetInfo: (RocketMQInstanceNetworkInfoInternetInfo.fromMap((map['internetInfo'] as Map).cast<String, dynamic>())).input(),
       vpcInfo: (RocketMQInstanceNetworkInfoVpcInfo.fromMap((map['vpcInfo'] as Map).cast<String, dynamic>())).input(),
     );

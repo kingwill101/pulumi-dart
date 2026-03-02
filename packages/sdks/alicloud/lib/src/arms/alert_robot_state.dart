@@ -41,11 +41,11 @@ class AlertRobotState {
 
   factory AlertRobotState.fromMap(Map<String, dynamic> map) {
     return AlertRobotState(
-      alertRobotName: map['alertRobotName'] == null ? null : (map['alertRobotName'] as String).input(),
-      dailyNoc: map['dailyNoc'] == null ? null : (map['dailyNoc'] as bool).input(),
-      dailyNocTime: map['dailyNocTime'] == null ? null : (map['dailyNocTime'] as String).input(),
-      robotAddr: map['robotAddr'] == null ? null : (map['robotAddr'] as String).input(),
-      robotType: map['robotType'] == null ? null : (map['robotType'] as String).input(),
+      alertRobotName: map['alertRobotName'] == null ? null : (map['alertRobotName']! as String).input(),
+      dailyNoc: map['dailyNoc'] == null ? null : (map['dailyNoc']! as bool).input(),
+      dailyNocTime: map['dailyNocTime'] == null ? null : (map['dailyNocTime']! as String).input(),
+      robotAddr: map['robotAddr'] == null ? null : (map['robotAddr']! as String).input(),
+      robotType: map['robotType'] == null ? null : (map['robotType']! as String).input(),
     );
   }
 }

@@ -59,12 +59,12 @@ class GetServiceTopicsResult {
     return GetServiceTopicsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      topicName: map['topicName'] == null ? null : map['topicName'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      topicName: map['topicName'] == null ? null : map['topicName']! as String,
       topics: pulumi.Input.decodeList<GetServiceTopicsTopic>(map['topics'], (value) => GetServiceTopicsTopic.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

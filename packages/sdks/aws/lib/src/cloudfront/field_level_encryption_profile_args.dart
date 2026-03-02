@@ -35,9 +35,9 @@ class FieldLevelEncryptionProfileArgs {
 
   factory FieldLevelEncryptionProfileArgs.fromMap(Map<String, dynamic> map) {
     return FieldLevelEncryptionProfileArgs(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      encryptionEntities: (FieldLevelEncryptionProfileEncryptionEntities.fromMap((map['encryptionEntities'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
+      encryptionEntities: (FieldLevelEncryptionProfileEncryptionEntities.fromMap((map['encryptionEntities']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
     );
   }
 }

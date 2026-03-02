@@ -37,10 +37,10 @@ class ChannelLineState {
 
   factory ChannelLineState.fromMap(Map<String, dynamic> map) {
     return ChannelLineState(
-      botName: map['botName'] == null ? null : (map['botName'] as String).input(),
-      lineChannels: map['lineChannels'] == null ? null : (pulumi.Input.decodeList<ChannelLineLineChannel>(map['lineChannels'], (value) => ChannelLineLineChannel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      botName: map['botName'] == null ? null : (map['botName']! as String).input(),
+      lineChannels: map['lineChannels'] == null ? null : (pulumi.Input.decodeList<ChannelLineLineChannel>(map['lineChannels']!, (value) => ChannelLineLineChannel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

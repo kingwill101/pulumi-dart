@@ -31,9 +31,9 @@ class CaaRecordResponse {
 
   factory CaaRecordResponse.fromMap(Map<String, dynamic> map) {
     return CaaRecordResponse(
-      flags: map['flags'] == null ? null : (map['flags'] as int).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      flags: map['flags'] == null ? null : (map['flags']! as int).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

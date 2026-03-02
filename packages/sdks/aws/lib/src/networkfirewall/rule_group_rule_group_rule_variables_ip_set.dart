@@ -26,7 +26,7 @@ class RuleGroupRuleGroupRuleVariablesIpSet {
 
   factory RuleGroupRuleGroupRuleVariablesIpSet.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupRuleVariablesIpSet(
-      ipSet: (RuleGroupRuleGroupRuleVariablesIpSetIpSet.fromMap((map['ipSet'] as Map).cast<String, dynamic>())).input(),
+      ipSet: (RuleGroupRuleGroupRuleVariablesIpSetIpSet.fromMap((map['ipSet']! as Map).cast<String, dynamic>())).input(),
       key: (map['key'] as String).input(),
     );
   }

@@ -36,10 +36,10 @@ class GatewayCertificateAuthorityState {
 
   factory GatewayCertificateAuthorityState.fromMap(Map<String, dynamic> map) {
     return GatewayCertificateAuthorityState(
-      apiManagementId: map['apiManagementId'] == null ? null : (map['apiManagementId'] as String).input(),
-      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
-      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName'] as String).input(),
-      isTrusted: map['isTrusted'] == null ? null : (map['isTrusted'] as bool).input(),
+      apiManagementId: map['apiManagementId'] == null ? null : (map['apiManagementId']! as String).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName']! as String).input(),
+      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName']! as String).input(),
+      isTrusted: map['isTrusted'] == null ? null : (map['isTrusted']! as bool).input(),
     );
   }
 }

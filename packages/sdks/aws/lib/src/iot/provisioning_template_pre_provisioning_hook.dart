@@ -25,7 +25,7 @@ class ProvisioningTemplatePreProvisioningHook {
 
   factory ProvisioningTemplatePreProvisioningHook.fromMap(Map<String, dynamic> map) {
     return ProvisioningTemplatePreProvisioningHook(
-      payloadVersion: map['payloadVersion'] == null ? null : (map['payloadVersion'] as String).input(),
+      payloadVersion: map['payloadVersion'] == null ? null : ((map['payloadVersion'] as String).input()).input(),
       targetArn: (map['targetArn'] as String).input(),
     );
   }

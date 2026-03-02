@@ -25,7 +25,7 @@ class DomainOsNvRamSourceDataStoreFormatMetadataCacheMaxSize {
 
   factory DomainOsNvRamSourceDataStoreFormatMetadataCacheMaxSize.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceDataStoreFormatMetadataCacheMaxSize(
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      unit: map['unit'] == null ? null : (map['unit']! as String).input(),
       value: (map['value'] as double).input(),
     );
   }

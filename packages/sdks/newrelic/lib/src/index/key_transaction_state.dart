@@ -53,13 +53,13 @@ class KeyTransactionState {
 
   factory KeyTransactionState.fromMap(Map<String, dynamic> map) {
     return KeyTransactionState(
-      apdexIndex: map['apdexIndex'] == null ? null : (map['apdexIndex'] as double).input(),
-      applicationGuid: map['applicationGuid'] == null ? null : (map['applicationGuid'] as String).input(),
-      browserApdexTarget: map['browserApdexTarget'] == null ? null : (map['browserApdexTarget'] as double).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      apdexIndex: map['apdexIndex'] == null ? null : (map['apdexIndex']! as double).input(),
+      applicationGuid: map['applicationGuid'] == null ? null : (map['applicationGuid']! as String).input(),
+      browserApdexTarget: map['browserApdexTarget'] == null ? null : (map['browserApdexTarget']! as double).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      metricName: map['metricName'] == null ? null : (map['metricName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

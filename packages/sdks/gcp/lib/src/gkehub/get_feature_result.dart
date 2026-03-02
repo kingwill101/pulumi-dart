@@ -85,7 +85,7 @@ class GetFeatureResult {
       labels: (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       resourceStates: pulumi.Input.decodeList<GetFeatureResourceState>(map['resourceStates'], (value) => GetFeatureResourceState.fromMap((value as Map).cast<String, dynamic>())),
       specs: pulumi.Input.decodeList<GetFeatureSpec>(map['specs'], (value) => GetFeatureSpec.fromMap((value as Map).cast<String, dynamic>())),

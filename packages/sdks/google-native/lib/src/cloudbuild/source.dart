@@ -46,11 +46,11 @@ class Source {
 
   factory Source.fromMap(Map<String, dynamic> map) {
     return Source(
-      connectedRepository: map['connectedRepository'] == null ? null : (ConnectedRepository.fromMap((map['connectedRepository'] as Map).cast<String, dynamic>())).input(),
-      gitSource: map['gitSource'] == null ? null : (GitSource.fromMap((map['gitSource'] as Map).cast<String, dynamic>())).input(),
-      repoSource: map['repoSource'] == null ? null : (RepoSource.fromMap((map['repoSource'] as Map).cast<String, dynamic>())).input(),
-      storageSource: map['storageSource'] == null ? null : (StorageSource.fromMap((map['storageSource'] as Map).cast<String, dynamic>())).input(),
-      storageSourceManifest: map['storageSourceManifest'] == null ? null : (StorageSourceManifest.fromMap((map['storageSourceManifest'] as Map).cast<String, dynamic>())).input(),
+      connectedRepository: map['connectedRepository'] == null ? null : (ConnectedRepository.fromMap((map['connectedRepository']! as Map).cast<String, dynamic>())).input(),
+      gitSource: map['gitSource'] == null ? null : (GitSource.fromMap((map['gitSource']! as Map).cast<String, dynamic>())).input(),
+      repoSource: map['repoSource'] == null ? null : (RepoSource.fromMap((map['repoSource']! as Map).cast<String, dynamic>())).input(),
+      storageSource: map['storageSource'] == null ? null : (StorageSource.fromMap((map['storageSource']! as Map).cast<String, dynamic>())).input(),
+      storageSourceManifest: map['storageSourceManifest'] == null ? null : (StorageSourceManifest.fromMap((map['storageSourceManifest']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

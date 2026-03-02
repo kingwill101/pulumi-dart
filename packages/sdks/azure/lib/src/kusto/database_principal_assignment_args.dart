@@ -61,7 +61,7 @@ class DatabasePrincipalAssignmentArgs {
     return DatabasePrincipalAssignmentArgs(
       clusterName: (map['clusterName'] as String).input(),
       databaseName: (map['databaseName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       principalId: (map['principalId'] as String).input(),
       principalType: (map['principalType'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

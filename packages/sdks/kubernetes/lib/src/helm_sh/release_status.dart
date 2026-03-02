@@ -50,13 +50,13 @@ class ReleaseStatus {
 
   factory ReleaseStatus.fromMap(Map<String, dynamic> map) {
     return ReleaseStatus(
-      appVersion: map['appVersion'] == null ? null : (map['appVersion'] as String).input(),
-      chart: map['chart'] == null ? null : (map['chart'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as int).input(),
+      appVersion: map['appVersion'] == null ? null : (map['appVersion']! as String).input(),
+      chart: map['chart'] == null ? null : (map['chart']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as int).input(),
       status: (map['status'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

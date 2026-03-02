@@ -27,8 +27,8 @@ class DriverAllocationResultPatch {
 
   factory DriverAllocationResultPatch.fromMap(Map<String, dynamic> map) {
     return DriverAllocationResultPatch(
-      namedResources: map['namedResources'] == null ? null : (NamedResourcesAllocationResultPatch.fromMap((map['namedResources'] as Map).cast<String, dynamic>())).input(),
-      vendorRequestParameters: map['vendorRequestParameters'] == null ? null : (map['vendorRequestParameters']).input(),
+      namedResources: map['namedResources'] == null ? null : (NamedResourcesAllocationResultPatch.fromMap((map['namedResources']! as Map).cast<String, dynamic>())).input(),
+      vendorRequestParameters: map['vendorRequestParameters'] == null ? null : (map['vendorRequestParameters']!).input(),
     );
   }
 }

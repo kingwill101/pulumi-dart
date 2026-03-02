@@ -29,7 +29,7 @@ class ContainerGroupPropertiesResponse {
   factory ContainerGroupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ContainerGroupPropertiesResponse(
       containerGroupProfile: (ContainerGroupProfileResponse.fromMap((map['containerGroupProfile'] as Map).cast<String, dynamic>())).input(),
-      subnetIds: map['subnetIds'] == null ? null : (pulumi.Input.decodeList<SubnetResponse>(map['subnetIds'], (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subnetIds: map['subnetIds'] == null ? null : (pulumi.Input.decodeList<SubnetResponse>(map['subnetIds']!, (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -96,22 +96,22 @@ class MembershipState {
 
   factory MembershipState.fromMap(Map<String, dynamic> map) {
     return MembershipState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      collaborationArn: map['collaborationArn'] == null ? null : (map['collaborationArn'] as String).input(),
-      collaborationCreatorAccountId: map['collaborationCreatorAccountId'] == null ? null : (map['collaborationCreatorAccountId'] as String).input(),
-      collaborationCreatorDisplayName: map['collaborationCreatorDisplayName'] == null ? null : (map['collaborationCreatorDisplayName'] as String).input(),
-      collaborationId: map['collaborationId'] == null ? null : (map['collaborationId'] as String).input(),
-      collaborationName: map['collaborationName'] == null ? null : (map['collaborationName'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      defaultResultConfiguration: map['defaultResultConfiguration'] == null ? null : (MembershipDefaultResultConfiguration.fromMap((map['defaultResultConfiguration'] as Map).cast<String, dynamic>())).input(),
-      memberAbilities: map['memberAbilities'] == null ? null : ((map['memberAbilities'] as List).cast<String>()).input(),
-      paymentConfiguration: map['paymentConfiguration'] == null ? null : (MembershipPaymentConfiguration.fromMap((map['paymentConfiguration'] as Map).cast<String, dynamic>())).input(),
-      queryLogStatus: map['queryLogStatus'] == null ? null : (map['queryLogStatus'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      collaborationArn: map['collaborationArn'] == null ? null : ((map['collaborationArn'] as String).input()).input(),
+      collaborationCreatorAccountId: map['collaborationCreatorAccountId'] == null ? null : ((map['collaborationCreatorAccountId'] as String).input()).input(),
+      collaborationCreatorDisplayName: map['collaborationCreatorDisplayName'] == null ? null : ((map['collaborationCreatorDisplayName'] as String).input()).input(),
+      collaborationId: map['collaborationId'] == null ? null : ((map['collaborationId'] as String).input()).input(),
+      collaborationName: map['collaborationName'] == null ? null : ((map['collaborationName'] as String).input()).input(),
+      createTime: map['createTime'] == null ? null : ((map['createTime'] as String).input()).input(),
+      defaultResultConfiguration: map['defaultResultConfiguration'] == null ? null : ((MembershipDefaultResultConfiguration.fromMap((map['defaultResultConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      memberAbilities: map['memberAbilities'] == null ? null : (((map['memberAbilities'] as List).cast<String>()).input()).input(),
+      paymentConfiguration: map['paymentConfiguration'] == null ? null : ((MembershipPaymentConfiguration.fromMap((map['paymentConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      queryLogStatus: map['queryLogStatus'] == null ? null : ((map['queryLogStatus'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      updateTime: map['updateTime'] == null ? null : ((map['updateTime'] as String).input()).input(),
     );
   }
 }

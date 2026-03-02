@@ -44,10 +44,10 @@ class GetPrefixListArgs {
 
   factory GetPrefixListArgs.fromMap(Map<String, dynamic> map) {
     return GetPrefixListArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetPrefixListFilter>(map['filters'], (value) => GetPrefixListFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetPrefixListFilter>(map['filters']!, (value) => GetPrefixListFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      prefixListId: map['prefixListId'] == null ? null : ((map['prefixListId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

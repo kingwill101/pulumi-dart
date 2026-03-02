@@ -31,9 +31,9 @@ class DataSetLogicalTableMapSource {
 
   factory DataSetLogicalTableMapSource.fromMap(Map<String, dynamic> map) {
     return DataSetLogicalTableMapSource(
-      dataSetArn: map['dataSetArn'] == null ? null : (map['dataSetArn'] as String).input(),
-      joinInstruction: map['joinInstruction'] == null ? null : (DataSetLogicalTableMapSourceJoinInstruction.fromMap((map['joinInstruction'] as Map).cast<String, dynamic>())).input(),
-      physicalTableId: map['physicalTableId'] == null ? null : (map['physicalTableId'] as String).input(),
+      dataSetArn: map['dataSetArn'] == null ? null : ((map['dataSetArn'] as String).input()).input(),
+      joinInstruction: map['joinInstruction'] == null ? null : ((DataSetLogicalTableMapSourceJoinInstruction.fromMap((map['joinInstruction']! as Map).cast<String, dynamic>())).input()).input(),
+      physicalTableId: map['physicalTableId'] == null ? null : ((map['physicalTableId'] as String).input()).input(),
     );
   }
 }

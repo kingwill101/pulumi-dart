@@ -44,7 +44,7 @@ class HypervNetworkMappingArgs {
 
   factory HypervNetworkMappingArgs.fromMap(Map<String, dynamic> map) {
     return HypervNetworkMappingArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       recoveryVaultId: (map['recoveryVaultId'] as String).input(),
       sourceNetworkName: (map['sourceNetworkName'] as String).input(),
       sourceSystemCenterVirtualMachineManagerName: (map['sourceSystemCenterVirtualMachineManagerName'] as String).input(),

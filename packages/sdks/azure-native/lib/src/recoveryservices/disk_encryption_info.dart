@@ -28,8 +28,8 @@ class DiskEncryptionInfo {
 
   factory DiskEncryptionInfo.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionInfo(
-      diskEncryptionKeyInfo: map['diskEncryptionKeyInfo'] == null ? null : (DiskEncryptionKeyInfo.fromMap((map['diskEncryptionKeyInfo'] as Map).cast<String, dynamic>())).input(),
-      keyEncryptionKeyInfo: map['keyEncryptionKeyInfo'] == null ? null : (KeyEncryptionKeyInfo.fromMap((map['keyEncryptionKeyInfo'] as Map).cast<String, dynamic>())).input(),
+      diskEncryptionKeyInfo: map['diskEncryptionKeyInfo'] == null ? null : (DiskEncryptionKeyInfo.fromMap((map['diskEncryptionKeyInfo']! as Map).cast<String, dynamic>())).input(),
+      keyEncryptionKeyInfo: map['keyEncryptionKeyInfo'] == null ? null : (KeyEncryptionKeyInfo.fromMap((map['keyEncryptionKeyInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class ServiceMeshMeshConfigKialiServerConfig {
 
   factory ServiceMeshMeshConfigKialiServerConfig.fromMap(Map<String, dynamic> map) {
     return ServiceMeshMeshConfigKialiServerConfig(
-      webFqdn: map['webFqdn'] == null ? null : (map['webFqdn'] as String).input(),
-      webPort: map['webPort'] == null ? null : (map['webPort'] as int).input(),
-      webRoot: map['webRoot'] == null ? null : (map['webRoot'] as String).input(),
-      webSchema: map['webSchema'] == null ? null : (map['webSchema'] as String).input(),
+      webFqdn: map['webFqdn'] == null ? null : (map['webFqdn']! as String).input(),
+      webPort: map['webPort'] == null ? null : (map['webPort']! as int).input(),
+      webRoot: map['webRoot'] == null ? null : (map['webRoot']! as String).input(),
+      webSchema: map['webSchema'] == null ? null : (map['webSchema']! as String).input(),
     );
   }
 }

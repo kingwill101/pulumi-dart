@@ -22,7 +22,7 @@ class GoogleCloudChannelV1RepricingAdjustment {
 
   factory GoogleCloudChannelV1RepricingAdjustment.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1RepricingAdjustment(
-      percentageAdjustment: map['percentageAdjustment'] == null ? null : (GoogleCloudChannelV1PercentageAdjustment.fromMap((map['percentageAdjustment'] as Map).cast<String, dynamic>())).input(),
+      percentageAdjustment: map['percentageAdjustment'] == null ? null : (GoogleCloudChannelV1PercentageAdjustment.fromMap((map['percentageAdjustment']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

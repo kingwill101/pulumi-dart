@@ -35,7 +35,7 @@ class JitNetworkAccessRequestResponse {
 
   factory JitNetworkAccessRequestResponse.fromMap(Map<String, dynamic> map) {
     return JitNetworkAccessRequestResponse(
-      justification: map['justification'] == null ? null : (map['justification'] as String).input(),
+      justification: map['justification'] == null ? null : (map['justification']! as String).input(),
       requestor: (map['requestor'] as String).input(),
       startTimeUtc: (map['startTimeUtc'] as String).input(),
       virtualMachines: (pulumi.Input.decodeList<JitNetworkAccessRequestVirtualMachineResponse>(map['virtualMachines'], (value) => JitNetworkAccessRequestVirtualMachineResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),

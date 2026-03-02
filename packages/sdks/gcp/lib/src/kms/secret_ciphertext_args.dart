@@ -37,7 +37,7 @@ class SecretCiphertextArgs {
 
   factory SecretCiphertextArgs.fromMap(Map<String, dynamic> map) {
     return SecretCiphertextArgs(
-      additionalAuthenticatedData: map['additionalAuthenticatedData'] == null ? null : (map['additionalAuthenticatedData'] as String).input(),
+      additionalAuthenticatedData: map['additionalAuthenticatedData'] == null ? null : (map['additionalAuthenticatedData']! as String).input(),
       cryptoKey: (map['cryptoKey'] as String).input(),
       plaintext: (map['plaintext'] as String).input(),
     );

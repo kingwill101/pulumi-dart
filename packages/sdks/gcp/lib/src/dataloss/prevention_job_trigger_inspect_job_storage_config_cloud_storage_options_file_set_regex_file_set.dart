@@ -35,8 +35,8 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegex
   factory PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet(
       bucketName: (map['bucketName'] as String).input(),
-      excludeRegexes: map['excludeRegexes'] == null ? null : ((map['excludeRegexes'] as List).cast<String>()).input(),
-      includeRegexes: map['includeRegexes'] == null ? null : ((map['includeRegexes'] as List).cast<String>()).input(),
+      excludeRegexes: map['excludeRegexes'] == null ? null : ((map['excludeRegexes']! as List).cast<String>()).input(),
+      includeRegexes: map['includeRegexes'] == null ? null : ((map['includeRegexes']! as List).cast<String>()).input(),
     );
   }
 }

@@ -45,12 +45,12 @@ class GradientaiAgentRouteState {
 
   factory GradientaiAgentRouteState.fromMap(Map<String, dynamic> map) {
     return GradientaiAgentRouteState(
-      childAgentUuid: map['childAgentUuid'] == null ? null : (map['childAgentUuid'] as String).input(),
-      ifCase: map['ifCase'] == null ? null : (map['ifCase'] as String).input(),
-      parentAgentUuid: map['parentAgentUuid'] == null ? null : (map['parentAgentUuid'] as String).input(),
-      rollback: map['rollback'] == null ? null : (map['rollback'] as bool).input(),
-      routeName: map['routeName'] == null ? null : (map['routeName'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      childAgentUuid: map['childAgentUuid'] == null ? null : (map['childAgentUuid']! as String).input(),
+      ifCase: map['ifCase'] == null ? null : (map['ifCase']! as String).input(),
+      parentAgentUuid: map['parentAgentUuid'] == null ? null : (map['parentAgentUuid']! as String).input(),
+      rollback: map['rollback'] == null ? null : (map['rollback']! as bool).input(),
+      routeName: map['routeName'] == null ? null : (map['routeName']! as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

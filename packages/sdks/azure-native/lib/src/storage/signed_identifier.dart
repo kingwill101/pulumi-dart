@@ -26,8 +26,8 @@ class SignedIdentifier {
 
   factory SignedIdentifier.fromMap(Map<String, dynamic> map) {
     return SignedIdentifier(
-      accessPolicy: map['accessPolicy'] == null ? null : (AccessPolicy.fromMap((map['accessPolicy'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      accessPolicy: map['accessPolicy'] == null ? null : (AccessPolicy.fromMap((map['accessPolicy']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

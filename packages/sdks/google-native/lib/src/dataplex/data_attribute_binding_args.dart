@@ -68,16 +68,16 @@ class DataAttributeBindingArgs {
 
   factory DataAttributeBindingArgs.fromMap(Map<String, dynamic> map) {
     return DataAttributeBindingArgs(
-      attributes: map['attributes'] == null ? null : ((map['attributes'] as List).cast<String>()).input(),
+      attributes: map['attributes'] == null ? null : ((map['attributes']! as List).cast<String>()).input(),
       dataAttributeBindingId: (map['dataAttributeBindingId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      paths: map['paths'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDataplexV1DataAttributeBindingPath>(map['paths'], (value) => GoogleCloudDataplexV1DataAttributeBindingPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      paths: map['paths'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDataplexV1DataAttributeBindingPath>(map['paths']!, (value) => GoogleCloudDataplexV1DataAttributeBindingPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
     );
   }
 }

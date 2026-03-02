@@ -40,8 +40,8 @@ class KeyGroupArgs {
 
   factory KeyGroupArgs.fromMap(Map<String, dynamic> map) {
     return KeyGroupArgs(
-      keyGroupName: map['keyGroupName'] == null ? null : (map['keyGroupName'] as String).input(),
-      keyReferences: map['keyReferences'] == null ? null : (pulumi.Input.decodeList<ResourceReference>(map['keyReferences'], (value) => ResourceReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      keyGroupName: map['keyGroupName'] == null ? null : (map['keyGroupName']! as String).input(),
+      keyReferences: map['keyReferences'] == null ? null : (pulumi.Input.decodeList<ResourceReference>(map['keyReferences']!, (value) => ResourceReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
       profileName: (map['profileName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

@@ -32,8 +32,8 @@ class FloorsettingFilterConfigPiAndJailbreakFilterSettings {
 
   factory FloorsettingFilterConfigPiAndJailbreakFilterSettings.fromMap(Map<String, dynamic> map) {
     return FloorsettingFilterConfigPiAndJailbreakFilterSettings(
-      confidenceLevel: map['confidenceLevel'] == null ? null : (map['confidenceLevel'] as String).input(),
-      filterEnforcement: map['filterEnforcement'] == null ? null : (map['filterEnforcement'] as String).input(),
+      confidenceLevel: map['confidenceLevel'] == null ? null : (map['confidenceLevel']! as String).input(),
+      filterEnforcement: map['filterEnforcement'] == null ? null : (map['filterEnforcement']! as String).input(),
     );
   }
 }

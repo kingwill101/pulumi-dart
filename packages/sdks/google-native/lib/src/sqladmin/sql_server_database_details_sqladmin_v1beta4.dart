@@ -26,8 +26,8 @@ class SqlServerDatabaseDetailsSqladminV1beta4 {
 
   factory SqlServerDatabaseDetailsSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return SqlServerDatabaseDetailsSqladminV1beta4(
-      compatibilityLevel: map['compatibilityLevel'] == null ? null : (map['compatibilityLevel'] as int).input(),
-      recoveryModel: map['recoveryModel'] == null ? null : (map['recoveryModel'] as String).input(),
+      compatibilityLevel: map['compatibilityLevel'] == null ? null : (map['compatibilityLevel']! as int).input(),
+      recoveryModel: map['recoveryModel'] == null ? null : (map['recoveryModel']! as String).input(),
     );
   }
 }

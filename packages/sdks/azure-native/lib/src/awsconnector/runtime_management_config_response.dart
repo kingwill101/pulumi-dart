@@ -26,8 +26,8 @@ class RuntimeManagementConfigResponse {
 
   factory RuntimeManagementConfigResponse.fromMap(Map<String, dynamic> map) {
     return RuntimeManagementConfigResponse(
-      runtimeVersionArn: map['runtimeVersionArn'] == null ? null : (map['runtimeVersionArn'] as String).input(),
-      updateRuntimeOn: map['updateRuntimeOn'] == null ? null : (map['updateRuntimeOn'] as String).input(),
+      runtimeVersionArn: map['runtimeVersionArn'] == null ? null : (map['runtimeVersionArn']! as String).input(),
+      updateRuntimeOn: map['updateRuntimeOn'] == null ? null : (map['updateRuntimeOn']! as String).input(),
     );
   }
 }

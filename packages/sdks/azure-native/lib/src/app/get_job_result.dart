@@ -106,22 +106,22 @@ class GetJobResult {
   factory GetJobResult.fromMap(Map<String, dynamic> map) {
     return GetJobResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      configuration: map['configuration'] == null ? null : JobConfigurationResponse.fromMap((map['configuration'] as Map).cast<String, dynamic>()),
-      environmentId: map['environmentId'] == null ? null : map['environmentId'] as String,
+      configuration: map['configuration'] == null ? null : JobConfigurationResponse.fromMap((map['configuration']! as Map).cast<String, dynamic>()),
+      environmentId: map['environmentId'] == null ? null : map['environmentId']! as String,
       eventStreamEndpoint: map['eventStreamEndpoint'] as String,
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
+      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
       name: map['name'] as String,
       outboundIpAddresses: (map['outboundIpAddresses'] as List).cast<String>(),
       provisioningState: map['provisioningState'] as String,
       runningState: map['runningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      template: map['template'] == null ? null : JobTemplateResponse.fromMap((map['template'] as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      template: map['template'] == null ? null : JobTemplateResponse.fromMap((map['template']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      workloadProfileName: map['workloadProfileName'] == null ? null : map['workloadProfileName'] as String,
+      workloadProfileName: map['workloadProfileName'] == null ? null : map['workloadProfileName']! as String,
     );
   }
 }

@@ -27,8 +27,8 @@ class ClusterPscConfig {
 
   factory ClusterPscConfig.fromMap(Map<String, dynamic> map) {
     return ClusterPscConfig(
-      pscEnabled: map['pscEnabled'] == null ? null : (map['pscEnabled'] as bool).input(),
-      serviceOwnedProjectNumber: map['serviceOwnedProjectNumber'] == null ? null : (map['serviceOwnedProjectNumber'] as int).input(),
+      pscEnabled: map['pscEnabled'] == null ? null : (map['pscEnabled']! as bool).input(),
+      serviceOwnedProjectNumber: map['serviceOwnedProjectNumber'] == null ? null : (map['serviceOwnedProjectNumber']! as int).input(),
     );
   }
 }

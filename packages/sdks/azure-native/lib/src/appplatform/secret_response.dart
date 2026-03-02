@@ -21,7 +21,7 @@ class SecretResponse {
 
   factory SecretResponse.fromMap(Map<String, dynamic> map) {
     return SecretResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

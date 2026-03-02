@@ -26,8 +26,8 @@ class DataflowGraphConnectionSchemaSettings {
 
   factory DataflowGraphConnectionSchemaSettings.fromMap(Map<String, dynamic> map) {
     return DataflowGraphConnectionSchemaSettings(
-      schemaRef: map['schemaRef'] == null ? null : (map['schemaRef'] as String).input(),
-      serializationFormat: map['serializationFormat'] == null ? null : (map['serializationFormat'] as String).input(),
+      schemaRef: map['schemaRef'] == null ? null : (map['schemaRef']! as String).input(),
+      serializationFormat: map['serializationFormat'] == null ? null : (map['serializationFormat']! as String).input(),
     );
   }
 }

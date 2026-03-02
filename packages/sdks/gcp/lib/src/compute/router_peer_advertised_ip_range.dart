@@ -26,7 +26,7 @@ class RouterPeerAdvertisedIpRange {
 
   factory RouterPeerAdvertisedIpRange.fromMap(Map<String, dynamic> map) {
     return RouterPeerAdvertisedIpRange(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       range: (map['range'] as String).input(),
     );
   }

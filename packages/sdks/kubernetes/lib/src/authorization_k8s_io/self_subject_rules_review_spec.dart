@@ -21,7 +21,7 @@ class SelfSubjectRulesReviewSpec {
 
   factory SelfSubjectRulesReviewSpec.fromMap(Map<String, dynamic> map) {
     return SelfSubjectRulesReviewSpec(
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
     );
   }
 }

@@ -47,11 +47,11 @@ class CommunityGalleryInfoResponse {
   factory CommunityGalleryInfoResponse.fromMap(Map<String, dynamic> map) {
     return CommunityGalleryInfoResponse(
       communityGalleryEnabled: (map['communityGalleryEnabled'] as bool).input(),
-      eula: map['eula'] == null ? null : (map['eula'] as String).input(),
-      publicNamePrefix: map['publicNamePrefix'] == null ? null : (map['publicNamePrefix'] as String).input(),
+      eula: map['eula'] == null ? null : (map['eula']! as String).input(),
+      publicNamePrefix: map['publicNamePrefix'] == null ? null : (map['publicNamePrefix']! as String).input(),
       publicNames: ((map['publicNames'] as List).cast<String>()).input(),
-      publisherContact: map['publisherContact'] == null ? null : (map['publisherContact'] as String).input(),
-      publisherUri: map['publisherUri'] == null ? null : (map['publisherUri'] as String).input(),
+      publisherContact: map['publisherContact'] == null ? null : (map['publisherContact']! as String).input(),
+      publisherUri: map['publisherUri'] == null ? null : (map['publisherUri']! as String).input(),
     );
   }
 }

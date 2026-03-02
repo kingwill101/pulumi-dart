@@ -19,7 +19,7 @@ class FeaturesSubscription {
 
   factory FeaturesSubscription.fromMap(Map<String, dynamic> map) {
     return FeaturesSubscription(
-      preventCancellationOnDestroy: map['preventCancellationOnDestroy'] == null ? null : (map['preventCancellationOnDestroy'] as bool).input(),
+      preventCancellationOnDestroy: map['preventCancellationOnDestroy'] == null ? null : (map['preventCancellationOnDestroy']! as bool).input(),
     );
   }
 }

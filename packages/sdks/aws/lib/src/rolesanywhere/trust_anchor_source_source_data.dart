@@ -24,8 +24,8 @@ class TrustAnchorSourceSourceData {
 
   factory TrustAnchorSourceSourceData.fromMap(Map<String, dynamic> map) {
     return TrustAnchorSourceSourceData(
-      acmPcaArn: map['acmPcaArn'] == null ? null : (map['acmPcaArn'] as String).input(),
-      x509CertificateData: map['x509CertificateData'] == null ? null : (map['x509CertificateData'] as String).input(),
+      acmPcaArn: map['acmPcaArn'] == null ? null : ((map['acmPcaArn'] as String).input()).input(),
+      x509CertificateData: map['x509CertificateData'] == null ? null : ((map['x509CertificateData'] as String).input()).input(),
     );
   }
 }

@@ -34,7 +34,7 @@ class LandingZoneRegistrationResourceProperties {
     return LandingZoneRegistrationResourceProperties(
       existingLandingZoneConfigurationId: (map['existingLandingZoneConfigurationId'] as String).input(),
       existingTopLevelMgId: (map['existingTopLevelMgId'] as String).input(),
-      managedIdentity: map['managedIdentity'] == null ? null : (ManagedIdentityProperties.fromMap((map['managedIdentity'] as Map).cast<String, dynamic>())).input(),
+      managedIdentity: map['managedIdentity'] == null ? null : (ManagedIdentityProperties.fromMap((map['managedIdentity']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

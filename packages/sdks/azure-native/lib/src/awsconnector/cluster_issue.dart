@@ -32,9 +32,9 @@ class ClusterIssue {
 
   factory ClusterIssue.fromMap(Map<String, dynamic> map) {
     return ClusterIssue(
-      code: map['code'] == null ? null : (ClusterIssueCodeEnumValue.fromMap((map['code'] as Map).cast<String, dynamic>())).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      resourceIds: map['resourceIds'] == null ? null : ((map['resourceIds'] as List).cast<String>()).input(),
+      code: map['code'] == null ? null : (ClusterIssueCodeEnumValue.fromMap((map['code']! as Map).cast<String, dynamic>())).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      resourceIds: map['resourceIds'] == null ? null : ((map['resourceIds']! as List).cast<String>()).input(),
     );
   }
 }

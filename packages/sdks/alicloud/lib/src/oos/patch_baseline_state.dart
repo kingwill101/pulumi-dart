@@ -76,18 +76,18 @@ class PatchBaselineState {
 
   factory PatchBaselineState.fromMap(Map<String, dynamic> map) {
     return PatchBaselineState(
-      approvalRules: map['approvalRules'] == null ? null : (map['approvalRules'] as String).input(),
-      approvedPatches: map['approvedPatches'] == null ? null : ((map['approvedPatches'] as List).cast<String>()).input(),
-      approvedPatchesEnableNonSecurity: map['approvedPatchesEnableNonSecurity'] == null ? null : (map['approvedPatchesEnableNonSecurity'] as bool).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      operationSystem: map['operationSystem'] == null ? null : (map['operationSystem'] as String).input(),
-      patchBaselineName: map['patchBaselineName'] == null ? null : (map['patchBaselineName'] as String).input(),
-      rejectedPatches: map['rejectedPatches'] == null ? null : ((map['rejectedPatches'] as List).cast<String>()).input(),
-      rejectedPatchesAction: map['rejectedPatchesAction'] == null ? null : (map['rejectedPatchesAction'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      sources: map['sources'] == null ? null : ((map['sources'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      approvalRules: map['approvalRules'] == null ? null : (map['approvalRules']! as String).input(),
+      approvedPatches: map['approvedPatches'] == null ? null : ((map['approvedPatches']! as List).cast<String>()).input(),
+      approvedPatchesEnableNonSecurity: map['approvedPatchesEnableNonSecurity'] == null ? null : (map['approvedPatchesEnableNonSecurity']! as bool).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      operationSystem: map['operationSystem'] == null ? null : (map['operationSystem']! as String).input(),
+      patchBaselineName: map['patchBaselineName'] == null ? null : (map['patchBaselineName']! as String).input(),
+      rejectedPatches: map['rejectedPatches'] == null ? null : ((map['rejectedPatches']! as List).cast<String>()).input(),
+      rejectedPatchesAction: map['rejectedPatchesAction'] == null ? null : (map['rejectedPatchesAction']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      sources: map['sources'] == null ? null : ((map['sources']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

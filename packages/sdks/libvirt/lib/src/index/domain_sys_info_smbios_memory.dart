@@ -21,7 +21,7 @@ class DomainSysInfoSmbiosMemory {
 
   factory DomainSysInfoSmbiosMemory.fromMap(Map<String, dynamic> map) {
     return DomainSysInfoSmbiosMemory(
-      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<DomainSysInfoSmbiosMemoryEntry>(map['entries'], (value) => DomainSysInfoSmbiosMemoryEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<DomainSysInfoSmbiosMemoryEntry>(map['entries']!, (value) => DomainSysInfoSmbiosMemoryEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

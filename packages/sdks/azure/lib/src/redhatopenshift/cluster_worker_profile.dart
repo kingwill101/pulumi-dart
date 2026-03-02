@@ -47,9 +47,9 @@ class ClusterWorkerProfile {
 
   factory ClusterWorkerProfile.fromMap(Map<String, dynamic> map) {
     return ClusterWorkerProfile(
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId']! as String).input(),
       diskSizeGb: (map['diskSizeGb'] as int).input(),
-      encryptionAtHostEnabled: map['encryptionAtHostEnabled'] == null ? null : (map['encryptionAtHostEnabled'] as bool).input(),
+      encryptionAtHostEnabled: map['encryptionAtHostEnabled'] == null ? null : (map['encryptionAtHostEnabled']! as bool).input(),
       nodeCount: (map['nodeCount'] as int).input(),
       subnetId: (map['subnetId'] as String).input(),
       vmSize: (map['vmSize'] as String).input(),

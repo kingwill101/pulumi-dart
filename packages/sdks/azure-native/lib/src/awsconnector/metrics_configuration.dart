@@ -37,10 +37,10 @@ class MetricsConfiguration {
 
   factory MetricsConfiguration.fromMap(Map<String, dynamic> map) {
     return MetricsConfiguration(
-      accessPointArn: map['accessPointArn'] == null ? null : (map['accessPointArn'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      tagFilters: map['tagFilters'] == null ? null : (pulumi.Input.decodeList<TagFilter>(map['tagFilters'], (value) => TagFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accessPointArn: map['accessPointArn'] == null ? null : (map['accessPointArn']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      tagFilters: map['tagFilters'] == null ? null : (pulumi.Input.decodeList<TagFilter>(map['tagFilters']!, (value) => TagFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

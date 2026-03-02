@@ -31,9 +31,9 @@ class AssignmentLockSettingsResponse {
 
   factory AssignmentLockSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AssignmentLockSettingsResponse(
-      excludedActions: map['excludedActions'] == null ? null : ((map['excludedActions'] as List).cast<String>()).input(),
-      excludedPrincipals: map['excludedPrincipals'] == null ? null : ((map['excludedPrincipals'] as List).cast<String>()).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      excludedActions: map['excludedActions'] == null ? null : ((map['excludedActions']! as List).cast<String>()).input(),
+      excludedPrincipals: map['excludedPrincipals'] == null ? null : ((map['excludedPrincipals']! as List).cast<String>()).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
     );
   }
 }

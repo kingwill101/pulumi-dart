@@ -25,8 +25,8 @@ class CertificateOptions {
 
   factory CertificateOptions.fromMap(Map<String, dynamic> map) {
     return CertificateOptions(
-      certificateTransparencyLoggingPreference: map['certificateTransparencyLoggingPreference'] == null ? null : (map['certificateTransparencyLoggingPreference'] as String).input(),
-      export: map['export'] == null ? null : (map['export'] as String).input(),
+      certificateTransparencyLoggingPreference: map['certificateTransparencyLoggingPreference'] == null ? null : ((map['certificateTransparencyLoggingPreference'] as String).input()).input(),
+      export: map['export'] == null ? null : ((map['export'] as String).input()).input(),
     );
   }
 }

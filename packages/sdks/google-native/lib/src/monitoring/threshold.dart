@@ -44,11 +44,11 @@ class Threshold {
 
   factory Threshold.fromMap(Map<String, dynamic> map) {
     return Threshold(
-      color: map['color'] == null ? null : (ThresholdColor.fromValue(map['color'] as String)).input(),
-      direction: map['direction'] == null ? null : (ThresholdDirection.fromValue(map['direction'] as String)).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      targetAxis: map['targetAxis'] == null ? null : (ThresholdTargetAxis.fromValue(map['targetAxis'] as String)).input(),
-      value: map['value'] == null ? null : (map['value'] as double).input(),
+      color: map['color'] == null ? null : (ThresholdColor.fromValue(map['color']! as String)).input(),
+      direction: map['direction'] == null ? null : (ThresholdDirection.fromValue(map['direction']! as String)).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      targetAxis: map['targetAxis'] == null ? null : (ThresholdTargetAxis.fromValue(map['targetAxis']! as String)).input(),
+      value: map['value'] == null ? null : (map['value']! as double).input(),
     );
   }
 }

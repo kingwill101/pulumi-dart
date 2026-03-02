@@ -30,8 +30,8 @@ class FunctionCustomContainerConfig {
 
   factory FunctionCustomContainerConfig.fromMap(Map<String, dynamic> map) {
     return FunctionCustomContainerConfig(
-      args: map['args'] == null ? null : (map['args'] as String).input(),
-      command: map['command'] == null ? null : (map['command'] as String).input(),
+      args: map['args'] == null ? null : (map['args']! as String).input(),
+      command: map['command'] == null ? null : (map['command']! as String).input(),
       image: (map['image'] as String).input(),
     );
   }

@@ -56,14 +56,14 @@ class RouterInterfaceComputeBeta {
 
   factory RouterInterfaceComputeBeta.fromMap(Map<String, dynamic> map) {
     return RouterInterfaceComputeBeta(
-      ipRange: map['ipRange'] == null ? null : (map['ipRange'] as String).input(),
-      ipVersion: map['ipVersion'] == null ? null : (RouterInterfaceIpVersionComputeBeta.fromValue(map['ipVersion'] as String)).input(),
-      linkedInterconnectAttachment: map['linkedInterconnectAttachment'] == null ? null : (map['linkedInterconnectAttachment'] as String).input(),
-      linkedVpnTunnel: map['linkedVpnTunnel'] == null ? null : (map['linkedVpnTunnel'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
-      redundantInterface: map['redundantInterface'] == null ? null : (map['redundantInterface'] as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      ipRange: map['ipRange'] == null ? null : (map['ipRange']! as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (RouterInterfaceIpVersionComputeBeta.fromValue(map['ipVersion']! as String)).input(),
+      linkedInterconnectAttachment: map['linkedInterconnectAttachment'] == null ? null : (map['linkedInterconnectAttachment']! as String).input(),
+      linkedVpnTunnel: map['linkedVpnTunnel'] == null ? null : (map['linkedVpnTunnel']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
+      redundantInterface: map['redundantInterface'] == null ? null : (map['redundantInterface']! as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
     );
   }
 }

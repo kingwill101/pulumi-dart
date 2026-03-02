@@ -20,7 +20,7 @@ class GetRouteSpecTcpRouteAction {
 
   factory GetRouteSpecTcpRouteAction.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecTcpRouteAction(
-      weightedTargets: (pulumi.Input.decodeList<GetRouteSpecTcpRouteActionWeightedTarget>(map['weightedTargets'], (value) => GetRouteSpecTcpRouteActionWeightedTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      weightedTargets: (pulumi.Input.decodeList<GetRouteSpecTcpRouteActionWeightedTarget>(map['weightedTargets']!, (value) => GetRouteSpecTcpRouteActionWeightedTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

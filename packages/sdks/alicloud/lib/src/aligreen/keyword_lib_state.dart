@@ -61,15 +61,15 @@ class KeywordLibState {
 
   factory KeywordLibState.fromMap(Map<String, dynamic> map) {
     return KeywordLibState(
-      bizTypes: map['bizTypes'] == null ? null : ((map['bizTypes'] as List).cast<String>()).input(),
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      keywordLibName: map['keywordLibName'] == null ? null : (map['keywordLibName'] as String).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      language: map['language'] == null ? null : (map['language'] as String).input(),
-      libType: map['libType'] == null ? null : (map['libType'] as String).input(),
-      matchMode: map['matchMode'] == null ? null : (map['matchMode'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      bizTypes: map['bizTypes'] == null ? null : ((map['bizTypes']! as List).cast<String>()).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      keywordLibName: map['keywordLibName'] == null ? null : (map['keywordLibName']! as String).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      language: map['language'] == null ? null : (map['language']! as String).input(),
+      libType: map['libType'] == null ? null : (map['libType']! as String).input(),
+      matchMode: map['matchMode'] == null ? null : (map['matchMode']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
     );
   }
 }

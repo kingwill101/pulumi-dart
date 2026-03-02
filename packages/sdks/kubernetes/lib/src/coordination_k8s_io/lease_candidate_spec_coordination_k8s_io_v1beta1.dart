@@ -47,10 +47,10 @@ class LeaseCandidateSpecCoordinationK8sIoV1beta1 {
   factory LeaseCandidateSpecCoordinationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return LeaseCandidateSpecCoordinationK8sIoV1beta1(
       binaryVersion: (map['binaryVersion'] as String).input(),
-      emulationVersion: map['emulationVersion'] == null ? null : (map['emulationVersion'] as String).input(),
+      emulationVersion: map['emulationVersion'] == null ? null : (map['emulationVersion']! as String).input(),
       leaseName: (map['leaseName'] as String).input(),
-      pingTime: map['pingTime'] == null ? null : (map['pingTime'] as String).input(),
-      renewTime: map['renewTime'] == null ? null : (map['renewTime'] as String).input(),
+      pingTime: map['pingTime'] == null ? null : (map['pingTime']! as String).input(),
+      renewTime: map['renewTime'] == null ? null : (map['renewTime']! as String).input(),
       strategy: (map['strategy'] as String).input(),
     );
   }

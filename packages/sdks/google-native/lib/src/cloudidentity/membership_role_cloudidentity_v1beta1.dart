@@ -33,9 +33,9 @@ class MembershipRoleCloudidentityV1beta1 {
 
   factory MembershipRoleCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
     return MembershipRoleCloudidentityV1beta1(
-      expiryDetail: map['expiryDetail'] == null ? null : (ExpiryDetailCloudidentityV1beta1.fromMap((map['expiryDetail'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      restrictionEvaluations: map['restrictionEvaluations'] == null ? null : (RestrictionEvaluationsCloudidentityV1beta1.fromMap((map['restrictionEvaluations'] as Map).cast<String, dynamic>())).input(),
+      expiryDetail: map['expiryDetail'] == null ? null : (ExpiryDetailCloudidentityV1beta1.fromMap((map['expiryDetail']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      restrictionEvaluations: map['restrictionEvaluations'] == null ? null : (RestrictionEvaluationsCloudidentityV1beta1.fromMap((map['restrictionEvaluations']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

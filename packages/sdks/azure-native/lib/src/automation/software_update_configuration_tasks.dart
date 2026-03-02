@@ -27,8 +27,8 @@ class SoftwareUpdateConfigurationTasks {
 
   factory SoftwareUpdateConfigurationTasks.fromMap(Map<String, dynamic> map) {
     return SoftwareUpdateConfigurationTasks(
-      postTask: map['postTask'] == null ? null : (TaskProperties.fromMap((map['postTask'] as Map).cast<String, dynamic>())).input(),
-      preTask: map['preTask'] == null ? null : (TaskProperties.fromMap((map['preTask'] as Map).cast<String, dynamic>())).input(),
+      postTask: map['postTask'] == null ? null : (TaskProperties.fromMap((map['postTask']! as Map).cast<String, dynamic>())).input(),
+      preTask: map['preTask'] == null ? null : (TaskProperties.fromMap((map['preTask']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

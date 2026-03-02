@@ -28,8 +28,8 @@ class RestorePointSourceVMOSDisk {
 
   factory RestorePointSourceVMOSDisk.fromMap(Map<String, dynamic> map) {
     return RestorePointSourceVMOSDisk(
-      diskRestorePoint: map['diskRestorePoint'] == null ? null : (DiskRestorePointAttributes.fromMap((map['diskRestorePoint'] as Map).cast<String, dynamic>())).input(),
-      managedDisk: map['managedDisk'] == null ? null : (ManagedDiskParameters.fromMap((map['managedDisk'] as Map).cast<String, dynamic>())).input(),
+      diskRestorePoint: map['diskRestorePoint'] == null ? null : (DiskRestorePointAttributes.fromMap((map['diskRestorePoint']! as Map).cast<String, dynamic>())).input(),
+      managedDisk: map['managedDisk'] == null ? null : (ManagedDiskParameters.fromMap((map['managedDisk']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

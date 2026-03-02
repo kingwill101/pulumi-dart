@@ -41,11 +41,11 @@ class KerberosAttributesResponse {
 
   factory KerberosAttributesResponse.fromMap(Map<String, dynamic> map) {
     return KerberosAttributesResponse(
-      adDomainJoinPassword: map['adDomainJoinPassword'] == null ? null : (map['adDomainJoinPassword'] as String).input(),
-      adDomainJoinUser: map['adDomainJoinUser'] == null ? null : (map['adDomainJoinUser'] as String).input(),
-      crossRealmTrustPrincipalPassword: map['crossRealmTrustPrincipalPassword'] == null ? null : (map['crossRealmTrustPrincipalPassword'] as String).input(),
-      kdcAdminPassword: map['kdcAdminPassword'] == null ? null : (map['kdcAdminPassword'] as String).input(),
-      realm: map['realm'] == null ? null : (map['realm'] as String).input(),
+      adDomainJoinPassword: map['adDomainJoinPassword'] == null ? null : (map['adDomainJoinPassword']! as String).input(),
+      adDomainJoinUser: map['adDomainJoinUser'] == null ? null : (map['adDomainJoinUser']! as String).input(),
+      crossRealmTrustPrincipalPassword: map['crossRealmTrustPrincipalPassword'] == null ? null : (map['crossRealmTrustPrincipalPassword']! as String).input(),
+      kdcAdminPassword: map['kdcAdminPassword'] == null ? null : (map['kdcAdminPassword']! as String).input(),
+      realm: map['realm'] == null ? null : (map['realm']! as String).input(),
     );
   }
 }

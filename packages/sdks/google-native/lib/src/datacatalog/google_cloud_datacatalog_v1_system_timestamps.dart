@@ -26,8 +26,8 @@ class GoogleCloudDatacatalogV1SystemTimestamps {
 
   factory GoogleCloudDatacatalogV1SystemTimestamps.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1SystemTimestamps(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

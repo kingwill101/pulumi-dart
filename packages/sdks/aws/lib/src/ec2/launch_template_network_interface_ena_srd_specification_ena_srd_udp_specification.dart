@@ -22,7 +22,7 @@ class LaunchTemplateNetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification {
 
   factory LaunchTemplateNetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateNetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification(
-      enaSrdUdpEnabled: map['enaSrdUdpEnabled'] == null ? null : (map['enaSrdUdpEnabled'] as bool).input(),
+      enaSrdUdpEnabled: map['enaSrdUdpEnabled'] == null ? null : ((map['enaSrdUdpEnabled'] as bool).input()).input(),
     );
   }
 }

@@ -56,12 +56,12 @@ class GetVirtualApplianceSiteResult {
 
   factory GetVirtualApplianceSiteResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualApplianceSiteResult(
-      addressPrefix: map['addressPrefix'] == null ? null : map['addressPrefix'] as String,
+      addressPrefix: map['addressPrefix'] == null ? null : map['addressPrefix']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      o365Policy: map['o365Policy'] == null ? null : Office365PolicyPropertiesResponse.fromMap((map['o365Policy'] as Map).cast<String, dynamic>()),
+      id: map['id'] == null ? null : map['id']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
+      o365Policy: map['o365Policy'] == null ? null : Office365PolicyPropertiesResponse.fromMap((map['o365Policy']! as Map).cast<String, dynamic>()),
       provisioningState: map['provisioningState'] as String,
       type: map['type'] as String,
     );

@@ -31,9 +31,9 @@ class DomainDevicesDiskSourceFile {
 
   factory DomainDevicesDiskSourceFile.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskSourceFile(
-      fdGroup: map['fdGroup'] == null ? null : (map['fdGroup'] as String).input(),
-      file: map['file'] == null ? null : (map['file'] as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskSourceFileSecLabel>(map['secLabels'], (value) => DomainDevicesDiskSourceFileSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fdGroup: map['fdGroup'] == null ? null : (map['fdGroup']! as String).input(),
+      file: map['file'] == null ? null : (map['file']! as String).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskSourceFileSecLabel>(map['secLabels']!, (value) => DomainDevicesDiskSourceFileSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class NetworkGrantState {
 
   factory NetworkGrantState.fromMap(Map<String, dynamic> map) {
     return NetworkGrantState(
-      ccnId: map['ccnId'] == null ? null : (map['ccnId'] as String).input(),
-      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
-      cenUid: map['cenUid'] == null ? null : (map['cenUid'] as String).input(),
+      ccnId: map['ccnId'] == null ? null : (map['ccnId']! as String).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
+      cenUid: map['cenUid'] == null ? null : (map['cenUid']! as String).input(),
     );
   }
 }

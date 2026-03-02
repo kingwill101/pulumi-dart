@@ -51,12 +51,12 @@ class CassandraTableGetPropertiesResponseResource {
 
   factory CassandraTableGetPropertiesResponseResource.fromMap(Map<String, dynamic> map) {
     return CassandraTableGetPropertiesResponseResource(
-      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl'] as int).input(),
-      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl'] as int).input(),
+      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl']! as int).input(),
+      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl']! as int).input(),
       etag: (map['etag'] as String).input(),
       id: (map['id'] as String).input(),
       rid: (map['rid'] as String).input(),
-      schema: map['schema'] == null ? null : (CassandraSchemaResponse.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
+      schema: map['schema'] == null ? null : (CassandraSchemaResponse.fromMap((map['schema']! as Map).cast<String, dynamic>())).input(),
       ts: (map['ts'] as double).input(),
     );
   }

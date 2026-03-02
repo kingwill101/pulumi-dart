@@ -34,9 +34,9 @@ class ThreatIntelligenceSwitchArgs {
 
   factory ThreatIntelligenceSwitchArgs.fromMap(Map<String, dynamic> map) {
     return ThreatIntelligenceSwitchArgs(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      categoryId: map['categoryId'] == null ? null : (map['categoryId'] as String).input(),
-      enableStatus: map['enableStatus'] == null ? null : (map['enableStatus'] as int).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      categoryId: map['categoryId'] == null ? null : (map['categoryId']! as String).input(),
+      enableStatus: map['enableStatus'] == null ? null : (map['enableStatus']! as int).input(),
     );
   }
 }

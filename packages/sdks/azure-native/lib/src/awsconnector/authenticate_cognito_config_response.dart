@@ -56,14 +56,14 @@ class AuthenticateCognitoConfigResponse {
 
   factory AuthenticateCognitoConfigResponse.fromMap(Map<String, dynamic> map) {
     return AuthenticateCognitoConfigResponse(
-      authenticationRequestExtraParams: map['authenticationRequestExtraParams'] == null ? null : ((map['authenticationRequestExtraParams'] as Map).cast<String, String>()).input(),
-      onUnauthenticatedRequest: map['onUnauthenticatedRequest'] == null ? null : (map['onUnauthenticatedRequest'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      sessionCookieName: map['sessionCookieName'] == null ? null : (map['sessionCookieName'] as String).input(),
-      sessionTimeout: map['sessionTimeout'] == null ? null : (map['sessionTimeout'] as String).input(),
-      userPoolArn: map['userPoolArn'] == null ? null : (map['userPoolArn'] as String).input(),
-      userPoolClientId: map['userPoolClientId'] == null ? null : (map['userPoolClientId'] as String).input(),
-      userPoolDomain: map['userPoolDomain'] == null ? null : (map['userPoolDomain'] as String).input(),
+      authenticationRequestExtraParams: map['authenticationRequestExtraParams'] == null ? null : ((map['authenticationRequestExtraParams']! as Map).cast<String, String>()).input(),
+      onUnauthenticatedRequest: map['onUnauthenticatedRequest'] == null ? null : (map['onUnauthenticatedRequest']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      sessionCookieName: map['sessionCookieName'] == null ? null : (map['sessionCookieName']! as String).input(),
+      sessionTimeout: map['sessionTimeout'] == null ? null : (map['sessionTimeout']! as String).input(),
+      userPoolArn: map['userPoolArn'] == null ? null : (map['userPoolArn']! as String).input(),
+      userPoolClientId: map['userPoolClientId'] == null ? null : (map['userPoolClientId']! as String).input(),
+      userPoolDomain: map['userPoolDomain'] == null ? null : (map['userPoolDomain']! as String).input(),
     );
   }
 }

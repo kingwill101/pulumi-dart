@@ -27,8 +27,8 @@ class AwsEc2AccountAttributePropertiesResponse {
 
   factory AwsEc2AccountAttributePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsEc2AccountAttributePropertiesResponse(
-      attributeName: map['attributeName'] == null ? null : (map['attributeName'] as String).input(),
-      attributeValues: map['attributeValues'] == null ? null : (pulumi.Input.decodeList<AccountAttributeValueResponse>(map['attributeValues'], (value) => AccountAttributeValueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      attributeName: map['attributeName'] == null ? null : (map['attributeName']! as String).input(),
+      attributeValues: map['attributeValues'] == null ? null : (pulumi.Input.decodeList<AccountAttributeValueResponse>(map['attributeValues']!, (value) => AccountAttributeValueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

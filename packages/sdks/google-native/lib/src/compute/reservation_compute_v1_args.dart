@@ -65,15 +65,15 @@ class ReservationComputeV1Args {
 
   factory ReservationComputeV1Args.fromMap(Map<String, dynamic> map) {
     return ReservationComputeV1Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      resourcePolicies: map['resourcePolicies'] == null ? null : ((map['resourcePolicies'] as Map).cast<String, String>()).input(),
-      shareSettings: map['shareSettings'] == null ? null : (ShareSettingsComputeV1.fromMap((map['shareSettings'] as Map).cast<String, dynamic>())).input(),
-      specificReservation: map['specificReservation'] == null ? null : (AllocationSpecificSKUReservationComputeV1.fromMap((map['specificReservation'] as Map).cast<String, dynamic>())).input(),
-      specificReservationRequired: map['specificReservationRequired'] == null ? null : (map['specificReservationRequired'] as bool).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      resourcePolicies: map['resourcePolicies'] == null ? null : ((map['resourcePolicies']! as Map).cast<String, String>()).input(),
+      shareSettings: map['shareSettings'] == null ? null : (ShareSettingsComputeV1.fromMap((map['shareSettings']! as Map).cast<String, dynamic>())).input(),
+      specificReservation: map['specificReservation'] == null ? null : (AllocationSpecificSKUReservationComputeV1.fromMap((map['specificReservation']! as Map).cast<String, dynamic>())).input(),
+      specificReservationRequired: map['specificReservationRequired'] == null ? null : (map['specificReservationRequired']! as bool).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

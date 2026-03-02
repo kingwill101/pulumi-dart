@@ -20,7 +20,7 @@ class GcpIntegrationsFireBaseDatabase {
 
   factory GcpIntegrationsFireBaseDatabase.fromMap(Map<String, dynamic> map) {
     return GcpIntegrationsFireBaseDatabase(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
     );
   }
 }

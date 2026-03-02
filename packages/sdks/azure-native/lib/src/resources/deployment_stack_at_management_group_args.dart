@@ -96,19 +96,19 @@ class DeploymentStackAtManagementGroupArgs {
   factory DeploymentStackAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentStackAtManagementGroupArgs(
       actionOnUnmanage: (ActionOnUnmanage.fromMap((map['actionOnUnmanage'] as Map).cast<String, dynamic>())).input(),
-      bypassStackOutOfSyncError: map['bypassStackOutOfSyncError'] == null ? null : (map['bypassStackOutOfSyncError'] as bool).input(),
-      debugSetting: map['debugSetting'] == null ? null : (DeploymentStacksDebugSetting.fromMap((map['debugSetting'] as Map).cast<String, dynamic>())).input(),
+      bypassStackOutOfSyncError: map['bypassStackOutOfSyncError'] == null ? null : (map['bypassStackOutOfSyncError']! as bool).input(),
+      debugSetting: map['debugSetting'] == null ? null : (DeploymentStacksDebugSetting.fromMap((map['debugSetting']! as Map).cast<String, dynamic>())).input(),
       denySettings: (DenySettings.fromMap((map['denySettings'] as Map).cast<String, dynamic>())).input(),
-      deploymentScope: map['deploymentScope'] == null ? null : (map['deploymentScope'] as String).input(),
-      deploymentStackName: map['deploymentStackName'] == null ? null : (map['deploymentStackName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      deploymentScope: map['deploymentScope'] == null ? null : (map['deploymentScope']! as String).input(),
+      deploymentStackName: map['deploymentStackName'] == null ? null : (map['deploymentStackName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       managementGroupId: (map['managementGroupId'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<DeploymentParameter>(map['parameters'], (value) => DeploymentParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parametersLink: map['parametersLink'] == null ? null : (DeploymentStacksParametersLink.fromMap((map['parametersLink'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      template: map['template'] == null ? null : (map['template']).input(),
-      templateLink: map['templateLink'] == null ? null : (DeploymentStacksTemplateLink.fromMap((map['templateLink'] as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<DeploymentParameter>(map['parameters']!, (value) => DeploymentParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parametersLink: map['parametersLink'] == null ? null : (DeploymentStacksParametersLink.fromMap((map['parametersLink']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      template: map['template'] == null ? null : (map['template']!).input(),
+      templateLink: map['templateLink'] == null ? null : (DeploymentStacksTemplateLink.fromMap((map['templateLink']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

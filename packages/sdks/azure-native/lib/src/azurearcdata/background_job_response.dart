@@ -46,12 +46,12 @@ class BackgroundJobResponse {
 
   factory BackgroundJobResponse.fromMap(Map<String, dynamic> map) {
     return BackgroundJobResponse(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      executionState: map['executionState'] == null ? null : (map['executionState'] as String).input(),
-      lastExecutionStatus: map['lastExecutionStatus'] == null ? null : (map['lastExecutionStatus'] as String).input(),
-      lastExecutionTime: map['lastExecutionTime'] == null ? null : (map['lastExecutionTime'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      executionState: map['executionState'] == null ? null : (map['executionState']! as String).input(),
+      lastExecutionStatus: map['lastExecutionStatus'] == null ? null : (map['lastExecutionStatus']! as String).input(),
+      lastExecutionTime: map['lastExecutionTime'] == null ? null : (map['lastExecutionTime']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

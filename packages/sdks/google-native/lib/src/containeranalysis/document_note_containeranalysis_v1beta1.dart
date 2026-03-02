@@ -26,8 +26,8 @@ class DocumentNoteContaineranalysisV1beta1 {
 
   factory DocumentNoteContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return DocumentNoteContaineranalysisV1beta1(
-      dataLicence: map['dataLicence'] == null ? null : (map['dataLicence'] as String).input(),
-      spdxVersion: map['spdxVersion'] == null ? null : (map['spdxVersion'] as String).input(),
+      dataLicence: map['dataLicence'] == null ? null : (map['dataLicence']! as String).input(),
+      spdxVersion: map['spdxVersion'] == null ? null : (map['spdxVersion']! as String).input(),
     );
   }
 }

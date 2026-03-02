@@ -56,14 +56,14 @@ class LoggingConfig {
 
   factory LoggingConfig.fromMap(Map<String, dynamic> map) {
     return LoggingConfig(
-      applicationLogLevel: map['applicationLogLevel'] == null ? null : (map['applicationLogLevel'] as String).input(),
-      failureFeedbackRoleArn: map['failureFeedbackRoleArn'] == null ? null : (map['failureFeedbackRoleArn'] as String).input(),
-      logFormat: map['logFormat'] == null ? null : (map['logFormat'] as String).input(),
-      logGroup: map['logGroup'] == null ? null : (map['logGroup'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      successFeedbackRoleArn: map['successFeedbackRoleArn'] == null ? null : (map['successFeedbackRoleArn'] as String).input(),
-      successFeedbackSampleRate: map['successFeedbackSampleRate'] == null ? null : (map['successFeedbackSampleRate'] as String).input(),
-      systemLogLevel: map['systemLogLevel'] == null ? null : (map['systemLogLevel'] as String).input(),
+      applicationLogLevel: map['applicationLogLevel'] == null ? null : (map['applicationLogLevel']! as String).input(),
+      failureFeedbackRoleArn: map['failureFeedbackRoleArn'] == null ? null : (map['failureFeedbackRoleArn']! as String).input(),
+      logFormat: map['logFormat'] == null ? null : (map['logFormat']! as String).input(),
+      logGroup: map['logGroup'] == null ? null : (map['logGroup']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      successFeedbackRoleArn: map['successFeedbackRoleArn'] == null ? null : (map['successFeedbackRoleArn']! as String).input(),
+      successFeedbackSampleRate: map['successFeedbackSampleRate'] == null ? null : (map['successFeedbackSampleRate']! as String).input(),
+      systemLogLevel: map['systemLogLevel'] == null ? null : (map['systemLogLevel']! as String).input(),
     );
   }
 }

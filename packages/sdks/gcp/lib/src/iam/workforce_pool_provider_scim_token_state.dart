@@ -64,15 +64,15 @@ class WorkforcePoolProviderScimTokenState {
 
   factory WorkforcePoolProviderScimTokenState.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderScimTokenState(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      providerId: map['providerId'] == null ? null : (map['providerId'] as String).input(),
-      scimTenantId: map['scimTenantId'] == null ? null : (map['scimTenantId'] as String).input(),
-      scimTokenId: map['scimTokenId'] == null ? null : (map['scimTokenId'] as String).input(),
-      securityToken: map['securityToken'] == null ? null : (map['securityToken'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      workforcePoolId: map['workforcePoolId'] == null ? null : (map['workforcePoolId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      providerId: map['providerId'] == null ? null : (map['providerId']! as String).input(),
+      scimTenantId: map['scimTenantId'] == null ? null : (map['scimTenantId']! as String).input(),
+      scimTokenId: map['scimTokenId'] == null ? null : (map['scimTokenId']! as String).input(),
+      securityToken: map['securityToken'] == null ? null : (map['securityToken']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      workforcePoolId: map['workforcePoolId'] == null ? null : (map['workforcePoolId']! as String).input(),
     );
   }
 }

@@ -42,11 +42,11 @@ class HTTPGetAction {
 
   factory HTTPGetAction.fromMap(Map<String, dynamic> map) {
     return HTTPGetAction(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      httpHeaders: map['httpHeaders'] == null ? null : (pulumi.Input.decodeList<HTTPHeader>(map['httpHeaders'], (value) => HTTPHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      scheme: map['scheme'] == null ? null : (map['scheme'] as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      httpHeaders: map['httpHeaders'] == null ? null : (pulumi.Input.decodeList<HTTPHeader>(map['httpHeaders']!, (value) => HTTPHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      scheme: map['scheme'] == null ? null : (map['scheme']! as String).input(),
     );
   }
 }

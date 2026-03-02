@@ -36,10 +36,10 @@ class DomainIoThreadIDsIoThread {
 
   factory DomainIoThreadIDsIoThread.fromMap(Map<String, dynamic> map) {
     return DomainIoThreadIDsIoThread(
-      id: map['id'] == null ? null : (map['id'] as double).input(),
-      poll: map['poll'] == null ? null : (DomainIoThreadIDsIoThreadPoll.fromMap((map['poll'] as Map).cast<String, dynamic>())).input(),
-      poolMax: map['poolMax'] == null ? null : (map['poolMax'] as double).input(),
-      poolMin: map['poolMin'] == null ? null : (map['poolMin'] as double).input(),
+      id: map['id'] == null ? null : (map['id']! as double).input(),
+      poll: map['poll'] == null ? null : (DomainIoThreadIDsIoThreadPoll.fromMap((map['poll']! as Map).cast<String, dynamic>())).input(),
+      poolMax: map['poolMax'] == null ? null : (map['poolMax']! as double).input(),
+      poolMin: map['poolMin'] == null ? null : (map['poolMin']! as double).input(),
     );
   }
 }

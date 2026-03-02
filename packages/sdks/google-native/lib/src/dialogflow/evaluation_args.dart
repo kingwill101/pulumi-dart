@@ -48,11 +48,11 @@ class EvaluationArgs {
   factory EvaluationArgs.fromMap(Map<String, dynamic> map) {
     return EvaluationArgs(
       conversationModelId: (map['conversationModelId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      evaluationConfig: map['evaluationConfig'] == null ? null : (GoogleCloudDialogflowV2EvaluationConfig.fromMap((map['evaluationConfig'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      evaluationConfig: map['evaluationConfig'] == null ? null : (GoogleCloudDialogflowV2EvaluationConfig.fromMap((map['evaluationConfig']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -42,11 +42,11 @@ class PostgresInstanceProperties {
 
   factory PostgresInstanceProperties.fromMap(Map<String, dynamic> map) {
     return PostgresInstanceProperties(
-      admin: map['admin'] == null ? null : (map['admin'] as String).input(),
-      basicLoginInformation: map['basicLoginInformation'] == null ? null : (BasicLoginInformation.fromMap((map['basicLoginInformation'] as Map).cast<String, dynamic>())).input(),
-      dataControllerId: map['dataControllerId'] == null ? null : (map['dataControllerId'] as String).input(),
-      k8sRaw: map['k8sRaw'] == null ? null : (map['k8sRaw']).input(),
-      lastUploadedDate: map['lastUploadedDate'] == null ? null : (map['lastUploadedDate'] as String).input(),
+      admin: map['admin'] == null ? null : (map['admin']! as String).input(),
+      basicLoginInformation: map['basicLoginInformation'] == null ? null : (BasicLoginInformation.fromMap((map['basicLoginInformation']! as Map).cast<String, dynamic>())).input(),
+      dataControllerId: map['dataControllerId'] == null ? null : (map['dataControllerId']! as String).input(),
+      k8sRaw: map['k8sRaw'] == null ? null : (map['k8sRaw']!).input(),
+      lastUploadedDate: map['lastUploadedDate'] == null ? null : (map['lastUploadedDate']! as String).input(),
     );
   }
 }

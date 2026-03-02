@@ -22,7 +22,7 @@ class DynamicPoolConfigurationResponse {
 
   factory DynamicPoolConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DynamicPoolConfigurationResponse(
-      lifecycleConfiguration: map['lifecycleConfiguration'] == null ? null : (LifecycleConfigurationResponse.fromMap((map['lifecycleConfiguration'] as Map).cast<String, dynamic>())).input(),
+      lifecycleConfiguration: map['lifecycleConfiguration'] == null ? null : (LifecycleConfigurationResponse.fromMap((map['lifecycleConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

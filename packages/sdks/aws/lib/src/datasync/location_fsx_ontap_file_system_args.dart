@@ -54,12 +54,12 @@ class LocationFsxOntapFileSystemArgs {
 
   factory LocationFsxOntapFileSystemArgs.fromMap(Map<String, dynamic> map) {
     return LocationFsxOntapFileSystemArgs(
-      protocol: (LocationFsxOntapFileSystemProtocol.fromMap((map['protocol'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      protocol: (LocationFsxOntapFileSystemProtocol.fromMap((map['protocol']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       securityGroupArns: ((map['securityGroupArns'] as List).cast<String>()).input(),
       storageVirtualMachineArn: (map['storageVirtualMachineArn'] as String).input(),
-      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      subdirectory: map['subdirectory'] == null ? null : ((map['subdirectory'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -54,13 +54,13 @@ class GetImageCachesArgs {
 
   factory GetImageCachesArgs.fromMap(Map<String, dynamic> map) {
     return GetImageCachesArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      imageCacheName: map['imageCacheName'] == null ? null : (map['imageCacheName'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      imageCacheName: map['imageCacheName'] == null ? null : (map['imageCacheName']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

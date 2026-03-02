@@ -66,12 +66,12 @@ class GetWebAppSitesControllerResult {
   factory GetWebAppSitesControllerResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppSitesControllerResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      discoveryScenario: map['discoveryScenario'] == null ? null : map['discoveryScenario'] as String,
+      discoveryScenario: map['discoveryScenario'] == null ? null : map['discoveryScenario']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       serviceEndpoint: map['serviceEndpoint'] as String,
-      siteAppliancePropertiesCollection: map['siteAppliancePropertiesCollection'] == null ? null : pulumi.Input.decodeList<SiteAppliancePropertiesResponse>(map['siteAppliancePropertiesCollection'], (value) => SiteAppliancePropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      siteAppliancePropertiesCollection: map['siteAppliancePropertiesCollection'] == null ? null : pulumi.Input.decodeList<SiteAppliancePropertiesResponse>(map['siteAppliancePropertiesCollection']!, (value) => SiteAppliancePropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

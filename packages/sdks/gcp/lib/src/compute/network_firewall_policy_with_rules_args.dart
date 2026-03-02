@@ -55,10 +55,10 @@ class NetworkFirewallPolicyWithRulesArgs {
 
   factory NetworkFirewallPolicyWithRulesArgs.fromMap(Map<String, dynamic> map) {
     return NetworkFirewallPolicyWithRulesArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       rules: (pulumi.Input.decodeList<NetworkFirewallPolicyWithRulesRule>(map['rules'], (value) => NetworkFirewallPolicyWithRulesRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

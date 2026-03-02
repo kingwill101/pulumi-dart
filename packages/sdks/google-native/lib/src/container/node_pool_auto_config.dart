@@ -28,8 +28,8 @@ class NodePoolAutoConfig {
 
   factory NodePoolAutoConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolAutoConfig(
-      networkTags: map['networkTags'] == null ? null : (NetworkTags.fromMap((map['networkTags'] as Map).cast<String, dynamic>())).input(),
-      resourceManagerTags: map['resourceManagerTags'] == null ? null : (ResourceManagerTags.fromMap((map['resourceManagerTags'] as Map).cast<String, dynamic>())).input(),
+      networkTags: map['networkTags'] == null ? null : (NetworkTags.fromMap((map['networkTags']! as Map).cast<String, dynamic>())).input(),
+      resourceManagerTags: map['resourceManagerTags'] == null ? null : (ResourceManagerTags.fromMap((map['resourceManagerTags']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

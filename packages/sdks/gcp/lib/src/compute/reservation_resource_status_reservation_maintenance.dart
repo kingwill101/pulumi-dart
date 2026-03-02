@@ -65,14 +65,14 @@ class ReservationResourceStatusReservationMaintenance {
 
   factory ReservationResourceStatusReservationMaintenance.fromMap(Map<String, dynamic> map) {
     return ReservationResourceStatusReservationMaintenance(
-      instanceMaintenanceOngoingCount: map['instanceMaintenanceOngoingCount'] == null ? null : (map['instanceMaintenanceOngoingCount'] as int).input(),
-      instanceMaintenancePendingCount: map['instanceMaintenancePendingCount'] == null ? null : (map['instanceMaintenancePendingCount'] as int).input(),
-      maintenanceOngoingCount: map['maintenanceOngoingCount'] == null ? null : (map['maintenanceOngoingCount'] as int).input(),
-      maintenancePendingCount: map['maintenancePendingCount'] == null ? null : (map['maintenancePendingCount'] as int).input(),
-      schedulingType: map['schedulingType'] == null ? null : (map['schedulingType'] as String).input(),
-      subblockInfraMaintenanceOngoingCount: map['subblockInfraMaintenanceOngoingCount'] == null ? null : (map['subblockInfraMaintenanceOngoingCount'] as int).input(),
-      subblockInfraMaintenancePendingCount: map['subblockInfraMaintenancePendingCount'] == null ? null : (map['subblockInfraMaintenancePendingCount'] as int).input(),
-      upcomingGroupMaintenances: map['upcomingGroupMaintenances'] == null ? null : (pulumi.Input.decodeList<ReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance>(map['upcomingGroupMaintenances'], (value) => ReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceMaintenanceOngoingCount: map['instanceMaintenanceOngoingCount'] == null ? null : (map['instanceMaintenanceOngoingCount']! as int).input(),
+      instanceMaintenancePendingCount: map['instanceMaintenancePendingCount'] == null ? null : (map['instanceMaintenancePendingCount']! as int).input(),
+      maintenanceOngoingCount: map['maintenanceOngoingCount'] == null ? null : (map['maintenanceOngoingCount']! as int).input(),
+      maintenancePendingCount: map['maintenancePendingCount'] == null ? null : (map['maintenancePendingCount']! as int).input(),
+      schedulingType: map['schedulingType'] == null ? null : (map['schedulingType']! as String).input(),
+      subblockInfraMaintenanceOngoingCount: map['subblockInfraMaintenanceOngoingCount'] == null ? null : (map['subblockInfraMaintenanceOngoingCount']! as int).input(),
+      subblockInfraMaintenancePendingCount: map['subblockInfraMaintenancePendingCount'] == null ? null : (map['subblockInfraMaintenancePendingCount']! as int).input(),
+      upcomingGroupMaintenances: map['upcomingGroupMaintenances'] == null ? null : (pulumi.Input.decodeList<ReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance>(map['upcomingGroupMaintenances']!, (value) => ReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

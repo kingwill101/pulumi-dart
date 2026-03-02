@@ -21,7 +21,7 @@ class SerDeInfo {
 
   factory SerDeInfo.fromMap(Map<String, dynamic> map) {
     return SerDeInfo(
-      serializationLib: map['serializationLib'] == null ? null : (map['serializationLib'] as String).input(),
+      serializationLib: map['serializationLib'] == null ? null : (map['serializationLib']! as String).input(),
     );
   }
 }

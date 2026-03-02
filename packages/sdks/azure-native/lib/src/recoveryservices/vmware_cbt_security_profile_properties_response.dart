@@ -41,11 +41,11 @@ class VMwareCbtSecurityProfilePropertiesResponse {
 
   factory VMwareCbtSecurityProfilePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VMwareCbtSecurityProfilePropertiesResponse(
-      isTargetVmConfidentialEncryptionEnabled: map['isTargetVmConfidentialEncryptionEnabled'] == null ? null : (map['isTargetVmConfidentialEncryptionEnabled'] as String).input(),
-      isTargetVmIntegrityMonitoringEnabled: map['isTargetVmIntegrityMonitoringEnabled'] == null ? null : (map['isTargetVmIntegrityMonitoringEnabled'] as String).input(),
-      isTargetVmSecureBootEnabled: map['isTargetVmSecureBootEnabled'] == null ? null : (map['isTargetVmSecureBootEnabled'] as String).input(),
-      isTargetVmTpmEnabled: map['isTargetVmTpmEnabled'] == null ? null : (map['isTargetVmTpmEnabled'] as String).input(),
-      targetVmSecurityType: map['targetVmSecurityType'] == null ? null : (map['targetVmSecurityType'] as String).input(),
+      isTargetVmConfidentialEncryptionEnabled: map['isTargetVmConfidentialEncryptionEnabled'] == null ? null : (map['isTargetVmConfidentialEncryptionEnabled']! as String).input(),
+      isTargetVmIntegrityMonitoringEnabled: map['isTargetVmIntegrityMonitoringEnabled'] == null ? null : (map['isTargetVmIntegrityMonitoringEnabled']! as String).input(),
+      isTargetVmSecureBootEnabled: map['isTargetVmSecureBootEnabled'] == null ? null : (map['isTargetVmSecureBootEnabled']! as String).input(),
+      isTargetVmTpmEnabled: map['isTargetVmTpmEnabled'] == null ? null : (map['isTargetVmTpmEnabled']! as String).input(),
+      targetVmSecurityType: map['targetVmSecurityType'] == null ? null : (map['targetVmSecurityType']! as String).input(),
     );
   }
 }

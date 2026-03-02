@@ -26,8 +26,8 @@ class RolePolicyAttachmentsExclusiveState {
 
   factory RolePolicyAttachmentsExclusiveState.fromMap(Map<String, dynamic> map) {
     return RolePolicyAttachmentsExclusiveState(
-      policyArns: map['policyArns'] == null ? null : ((map['policyArns'] as List).cast<String>()).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
+      policyArns: map['policyArns'] == null ? null : (((map['policyArns'] as List).cast<String>()).input()).input(),
+      roleName: map['roleName'] == null ? null : ((map['roleName'] as String).input()).input(),
     );
   }
 }

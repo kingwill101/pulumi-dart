@@ -99,20 +99,20 @@ class StatelessServicePropertiesResponse {
 
   factory StatelessServicePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return StatelessServicePropertiesResponse(
-      correlationScheme: map['correlationScheme'] == null ? null : (pulumi.Input.decodeList<ServiceCorrelationResponse>(map['correlationScheme'], (value) => ServiceCorrelationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultMoveCost: map['defaultMoveCost'] == null ? null : (map['defaultMoveCost'] as String).input(),
+      correlationScheme: map['correlationScheme'] == null ? null : (pulumi.Input.decodeList<ServiceCorrelationResponse>(map['correlationScheme']!, (value) => ServiceCorrelationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultMoveCost: map['defaultMoveCost'] == null ? null : (map['defaultMoveCost']! as String).input(),
       instanceCount: (map['instanceCount'] as int).input(),
-      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount'] as int).input(),
-      minInstancePercentage: map['minInstancePercentage'] == null ? null : (map['minInstancePercentage'] as int).input(),
+      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount']! as int).input(),
+      minInstancePercentage: map['minInstancePercentage'] == null ? null : (map['minInstancePercentage']! as int).input(),
       partitionDescription: (NamedPartitionSchemeResponse.fromMap((map['partitionDescription'] as Map).cast<String, dynamic>())).input(),
-      placementConstraints: map['placementConstraints'] == null ? null : (map['placementConstraints'] as String).input(),
+      placementConstraints: map['placementConstraints'] == null ? null : (map['placementConstraints']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      scalingPolicies: map['scalingPolicies'] == null ? null : (pulumi.Input.decodeList<ScalingPolicyResponse>(map['scalingPolicies'], (value) => ScalingPolicyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceDnsName: map['serviceDnsName'] == null ? null : (map['serviceDnsName'] as String).input(),
+      scalingPolicies: map['scalingPolicies'] == null ? null : (pulumi.Input.decodeList<ScalingPolicyResponse>(map['scalingPolicies']!, (value) => ScalingPolicyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceDnsName: map['serviceDnsName'] == null ? null : (map['serviceDnsName']! as String).input(),
       serviceKind: (map['serviceKind'] as String).input(),
-      serviceLoadMetrics: map['serviceLoadMetrics'] == null ? null : (pulumi.Input.decodeList<ServiceLoadMetricResponse>(map['serviceLoadMetrics'], (value) => ServiceLoadMetricResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      servicePackageActivationMode: map['servicePackageActivationMode'] == null ? null : (map['servicePackageActivationMode'] as String).input(),
-      servicePlacementPolicies: map['servicePlacementPolicies'] == null ? null : (pulumi.Input.decodeList<ServicePlacementInvalidDomainPolicyResponse>(map['servicePlacementPolicies'], (value) => ServicePlacementInvalidDomainPolicyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceLoadMetrics: map['serviceLoadMetrics'] == null ? null : (pulumi.Input.decodeList<ServiceLoadMetricResponse>(map['serviceLoadMetrics']!, (value) => ServiceLoadMetricResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      servicePackageActivationMode: map['servicePackageActivationMode'] == null ? null : (map['servicePackageActivationMode']! as String).input(),
+      servicePlacementPolicies: map['servicePlacementPolicies'] == null ? null : (pulumi.Input.decodeList<ServicePlacementInvalidDomainPolicyResponse>(map['servicePlacementPolicies']!, (value) => ServicePlacementInvalidDomainPolicyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       serviceTypeName: (map['serviceTypeName'] as String).input(),
     );
   }

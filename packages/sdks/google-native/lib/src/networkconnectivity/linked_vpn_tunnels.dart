@@ -26,8 +26,8 @@ class LinkedVpnTunnels {
 
   factory LinkedVpnTunnels.fromMap(Map<String, dynamic> map) {
     return LinkedVpnTunnels(
-      siteToSiteDataTransfer: map['siteToSiteDataTransfer'] == null ? null : (map['siteToSiteDataTransfer'] as bool).input(),
-      uris: map['uris'] == null ? null : ((map['uris'] as List).cast<String>()).input(),
+      siteToSiteDataTransfer: map['siteToSiteDataTransfer'] == null ? null : (map['siteToSiteDataTransfer']! as bool).input(),
+      uris: map['uris'] == null ? null : ((map['uris']! as List).cast<String>()).input(),
     );
   }
 }

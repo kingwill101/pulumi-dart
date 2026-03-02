@@ -53,11 +53,11 @@ class VpcPeeringConnectionAccepterArgs {
 
   factory VpcPeeringConnectionAccepterArgs.fromMap(Map<String, dynamic> map) {
     return VpcPeeringConnectionAccepterArgs(
-      accepter: map['accepter'] == null ? null : (VpcPeeringConnectionAccepterAccepter.fromMap((map['accepter'] as Map).cast<String, dynamic>())).input(),
-      autoAccept: map['autoAccept'] == null ? null : (map['autoAccept'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      requester: map['requester'] == null ? null : (VpcPeeringConnectionAccepterRequester.fromMap((map['requester'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      accepter: map['accepter'] == null ? null : ((VpcPeeringConnectionAccepterAccepter.fromMap((map['accepter']! as Map).cast<String, dynamic>())).input()).input(),
+      autoAccept: map['autoAccept'] == null ? null : ((map['autoAccept'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      requester: map['requester'] == null ? null : ((VpcPeeringConnectionAccepterRequester.fromMap((map['requester']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       vpcPeeringConnectionId: (map['vpcPeeringConnectionId'] as String).input(),
     );
   }

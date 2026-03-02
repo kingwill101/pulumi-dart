@@ -26,8 +26,8 @@ class DefaultPool {
 
   factory DefaultPool.fromMap(Map<String, dynamic> map) {
     return DefaultPool(
-      artifactStorage: map['artifactStorage'] == null ? null : (map['artifactStorage'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      artifactStorage: map['artifactStorage'] == null ? null : (map['artifactStorage']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
     );
   }
 }

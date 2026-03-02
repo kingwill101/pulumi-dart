@@ -20,7 +20,7 @@ class DomainFeaturesApic {
 
   factory DomainFeaturesApic.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesApic(
-      eoi: map['eoi'] == null ? null : (map['eoi'] as String).input(),
+      eoi: map['eoi'] == null ? null : (map['eoi']! as String).input(),
     );
   }
 }

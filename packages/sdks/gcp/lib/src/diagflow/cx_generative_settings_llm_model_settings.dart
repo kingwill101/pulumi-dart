@@ -25,8 +25,8 @@ class CxGenerativeSettingsLlmModelSettings {
 
   factory CxGenerativeSettingsLlmModelSettings.fromMap(Map<String, dynamic> map) {
     return CxGenerativeSettingsLlmModelSettings(
-      model: map['model'] == null ? null : (map['model'] as String).input(),
-      promptText: map['promptText'] == null ? null : (map['promptText'] as String).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
+      promptText: map['promptText'] == null ? null : (map['promptText']! as String).input(),
     );
   }
 }

@@ -62,16 +62,16 @@ class GetClustersResult {
 
   factory GetClustersResult.fromMap(Map<String, dynamic> map) {
     return GetClustersResult(
-      clusterAliasName: map['clusterAliasName'] == null ? null : map['clusterAliasName'] as String,
+      clusterAliasName: map['clusterAliasName'] == null ? null : map['clusterAliasName']! as String,
       clusters: pulumi.Input.decodeList<GetClustersCluster>(map['clusters'], (value) => GetClustersCluster.fromMap((value as Map).cast<String, dynamic>())),
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      requestPars: map['requestPars'] == null ? null : map['requestPars'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      requestPars: map['requestPars'] == null ? null : map['requestPars']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

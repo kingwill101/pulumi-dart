@@ -67,9 +67,9 @@ class ApplicationPermissionScopeArgs {
       adminConsentDisplayName: (map['adminConsentDisplayName'] as String).input(),
       applicationId: (map['applicationId'] as String).input(),
       scopeId: (map['scopeId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      userConsentDescription: map['userConsentDescription'] == null ? null : (map['userConsentDescription'] as String).input(),
-      userConsentDisplayName: map['userConsentDisplayName'] == null ? null : (map['userConsentDisplayName'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      userConsentDescription: map['userConsentDescription'] == null ? null : (map['userConsentDescription']! as String).input(),
+      userConsentDisplayName: map['userConsentDisplayName'] == null ? null : (map['userConsentDisplayName']! as String).input(),
       value: (map['value'] as String).input(),
     );
   }

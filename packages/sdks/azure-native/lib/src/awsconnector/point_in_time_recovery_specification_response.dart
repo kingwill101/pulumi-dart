@@ -21,7 +21,7 @@ class PointInTimeRecoverySpecificationResponse {
 
   factory PointInTimeRecoverySpecificationResponse.fromMap(Map<String, dynamic> map) {
     return PointInTimeRecoverySpecificationResponse(
-      pointInTimeRecoveryEnabled: map['pointInTimeRecoveryEnabled'] == null ? null : (map['pointInTimeRecoveryEnabled'] as bool).input(),
+      pointInTimeRecoveryEnabled: map['pointInTimeRecoveryEnabled'] == null ? null : (map['pointInTimeRecoveryEnabled']! as bool).input(),
     );
   }
 }

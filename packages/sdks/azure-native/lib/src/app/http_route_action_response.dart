@@ -21,7 +21,7 @@ class HttpRouteActionResponse {
 
   factory HttpRouteActionResponse.fromMap(Map<String, dynamic> map) {
     return HttpRouteActionResponse(
-      prefixRewrite: map['prefixRewrite'] == null ? null : (map['prefixRewrite'] as String).input(),
+      prefixRewrite: map['prefixRewrite'] == null ? null : (map['prefixRewrite']! as String).input(),
     );
   }
 }

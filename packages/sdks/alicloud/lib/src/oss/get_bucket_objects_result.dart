@@ -45,10 +45,10 @@ class GetBucketObjectsResult {
     return GetBucketObjectsResult(
       bucketName: map['bucketName'] as String,
       id: map['id'] as String,
-      keyPrefix: map['keyPrefix'] == null ? null : map['keyPrefix'] as String,
-      keyRegex: map['keyRegex'] == null ? null : map['keyRegex'] as String,
+      keyPrefix: map['keyPrefix'] == null ? null : map['keyPrefix']! as String,
+      keyRegex: map['keyRegex'] == null ? null : map['keyRegex']! as String,
       objects: pulumi.Input.decodeList<GetBucketObjectsObject>(map['objects'], (value) => GetBucketObjectsObject.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

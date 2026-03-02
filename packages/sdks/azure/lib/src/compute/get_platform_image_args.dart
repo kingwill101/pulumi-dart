@@ -48,7 +48,7 @@ class GetPlatformImageArgs {
       offer: (map['offer'] as String).input(),
       publisher: (map['publisher'] as String).input(),
       sku: (map['sku'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

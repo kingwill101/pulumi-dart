@@ -71,15 +71,15 @@ class GdcApplicationEnvironmentArgs {
 
   factory GdcApplicationEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return GdcApplicationEnvironmentArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      applicationEnvironmentId: map['applicationEnvironmentId'] == null ? null : (map['applicationEnvironmentId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      applicationEnvironmentId: map['applicationEnvironmentId'] == null ? null : (map['applicationEnvironmentId']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serviceinstance: (map['serviceinstance'] as String).input(),
-      sparkApplicationEnvironmentConfig: map['sparkApplicationEnvironmentConfig'] == null ? null : (GdcApplicationEnvironmentSparkApplicationEnvironmentConfig.fromMap((map['sparkApplicationEnvironmentConfig'] as Map).cast<String, dynamic>())).input(),
+      sparkApplicationEnvironmentConfig: map['sparkApplicationEnvironmentConfig'] == null ? null : (GdcApplicationEnvironmentSparkApplicationEnvironmentConfig.fromMap((map['sparkApplicationEnvironmentConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

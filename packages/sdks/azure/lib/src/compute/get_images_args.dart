@@ -30,7 +30,7 @@ class GetImagesArgs {
   factory GetImagesArgs.fromMap(Map<String, dynamic> map) {
     return GetImagesArgs(
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tagsFilter: map['tagsFilter'] == null ? null : ((map['tagsFilter'] as Map).cast<String, String>()).input(),
+      tagsFilter: map['tagsFilter'] == null ? null : ((map['tagsFilter']! as Map).cast<String, String>()).input(),
     );
   }
 }

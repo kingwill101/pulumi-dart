@@ -37,10 +37,10 @@ class ManagedFolderIamPolicyState {
 
   factory ManagedFolderIamPolicyState.fromMap(Map<String, dynamic> map) {
     return ManagedFolderIamPolicyState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      managedFolder: map['managedFolder'] == null ? null : (map['managedFolder'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      managedFolder: map['managedFolder'] == null ? null : (map['managedFolder']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
     );
   }
 }

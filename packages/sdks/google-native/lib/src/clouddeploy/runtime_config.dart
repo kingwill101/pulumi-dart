@@ -28,8 +28,8 @@ class RuntimeConfig {
 
   factory RuntimeConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeConfig(
-      cloudRun: map['cloudRun'] == null ? null : (CloudRunConfig.fromMap((map['cloudRun'] as Map).cast<String, dynamic>())).input(),
-      kubernetes: map['kubernetes'] == null ? null : (KubernetesConfig.fromMap((map['kubernetes'] as Map).cast<String, dynamic>())).input(),
+      cloudRun: map['cloudRun'] == null ? null : (CloudRunConfig.fromMap((map['cloudRun']! as Map).cast<String, dynamic>())).input(),
+      kubernetes: map['kubernetes'] == null ? null : (KubernetesConfig.fromMap((map['kubernetes']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

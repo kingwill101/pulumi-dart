@@ -41,9 +41,9 @@ class ManagedEnvironmentsStorageArgs {
   factory ManagedEnvironmentsStorageArgs.fromMap(Map<String, dynamic> map) {
     return ManagedEnvironmentsStorageArgs(
       environmentName: (map['environmentName'] as String).input(),
-      properties: map['properties'] == null ? null : (ManagedEnvironmentStorageProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (ManagedEnvironmentStorageProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageName: map['storageName'] == null ? null : (map['storageName'] as String).input(),
+      storageName: map['storageName'] == null ? null : (map['storageName']! as String).input(),
     );
   }
 }

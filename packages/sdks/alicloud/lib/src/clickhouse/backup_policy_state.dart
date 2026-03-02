@@ -41,11 +41,11 @@ class BackupPolicyState {
 
   factory BackupPolicyState.fromMap(Map<String, dynamic> map) {
     return BackupPolicyState(
-      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : (map['backupRetentionPeriod'] as int).input(),
-      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId'] as String).input(),
-      preferredBackupPeriods: map['preferredBackupPeriods'] == null ? null : ((map['preferredBackupPeriods'] as List).cast<String>()).input(),
-      preferredBackupTime: map['preferredBackupTime'] == null ? null : (map['preferredBackupTime'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : (map['backupRetentionPeriod']! as int).input(),
+      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId']! as String).input(),
+      preferredBackupPeriods: map['preferredBackupPeriods'] == null ? null : ((map['preferredBackupPeriods']! as List).cast<String>()).input(),
+      preferredBackupTime: map['preferredBackupTime'] == null ? null : (map['preferredBackupTime']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

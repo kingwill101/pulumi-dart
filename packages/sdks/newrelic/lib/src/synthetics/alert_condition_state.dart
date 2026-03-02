@@ -50,12 +50,12 @@ class AlertConditionState {
 
   factory AlertConditionState.fromMap(Map<String, dynamic> map) {
     return AlertConditionState(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      entityGuid: map['entityGuid'] == null ? null : (map['entityGuid'] as String).input(),
-      monitorId: map['monitorId'] == null ? null : (map['monitorId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
-      runbookUrl: map['runbookUrl'] == null ? null : (map['runbookUrl'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      entityGuid: map['entityGuid'] == null ? null : (map['entityGuid']! as String).input(),
+      monitorId: map['monitorId'] == null ? null : (map['monitorId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
+      runbookUrl: map['runbookUrl'] == null ? null : (map['runbookUrl']! as String).input(),
     );
   }
 }

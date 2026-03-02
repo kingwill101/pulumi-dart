@@ -127,24 +127,24 @@ class MilvusInstanceArgs {
 
   factory MilvusInstanceArgs.fromMap(Map<String, dynamic> map) {
     return MilvusInstanceArgs(
-      autoBackup: map['autoBackup'] == null ? null : (map['autoBackup'] as bool).input(),
-      components: map['components'] == null ? null : (pulumi.Input.decodeList<MilvusInstanceComponent>(map['components'], (value) => MilvusInstanceComponent.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      configuration: map['configuration'] == null ? null : (map['configuration'] as String).input(),
-      dbAdminPassword: map['dbAdminPassword'] == null ? null : (map['dbAdminPassword'] as String).input(),
+      autoBackup: map['autoBackup'] == null ? null : (map['autoBackup']! as bool).input(),
+      components: map['components'] == null ? null : (pulumi.Input.decodeList<MilvusInstanceComponent>(map['components']!, (value) => MilvusInstanceComponent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configuration: map['configuration'] == null ? null : (map['configuration']! as String).input(),
+      dbAdminPassword: map['dbAdminPassword'] == null ? null : (map['dbAdminPassword']! as String).input(),
       dbVersion: (map['dbVersion'] as String).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
-      ha: map['ha'] == null ? null : (map['ha'] as bool).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
+      ha: map['ha'] == null ? null : (map['ha']! as bool).input(),
       instanceName: (map['instanceName'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      multiZoneMode: map['multiZoneMode'] == null ? null : (map['multiZoneMode'] as String).input(),
-      paymentDuration: map['paymentDuration'] == null ? null : (map['paymentDuration'] as int).input(),
-      paymentDurationUnit: map['paymentDurationUnit'] == null ? null : (map['paymentDurationUnit'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
+      multiZoneMode: map['multiZoneMode'] == null ? null : (map['multiZoneMode']! as String).input(),
+      paymentDuration: map['paymentDuration'] == null ? null : (map['paymentDuration']! as int).input(),
+      paymentDurationUnit: map['paymentDurationUnit'] == null ? null : (map['paymentDurationUnit']! as String).input(),
       paymentType: (map['paymentType'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vpcId: (map['vpcId'] as String).input(),
-      vswitchIds: map['vswitchIds'] == null ? null : (pulumi.Input.decodeList<MilvusInstanceVswitchId>(map['vswitchIds'], (value) => MilvusInstanceVswitchId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      vswitchIds: map['vswitchIds'] == null ? null : (pulumi.Input.decodeList<MilvusInstanceVswitchId>(map['vswitchIds']!, (value) => MilvusInstanceVswitchId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

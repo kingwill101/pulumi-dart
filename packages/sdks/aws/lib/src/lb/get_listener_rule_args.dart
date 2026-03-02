@@ -62,13 +62,13 @@ class GetListenerRuleArgs {
 
   factory GetListenerRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleArgs(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<GetListenerRuleAction>(map['actions'], (value) => GetListenerRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<GetListenerRuleCondition>(map['conditions'], (value) => GetListenerRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      listenerArn: map['listenerArn'] == null ? null : (map['listenerArn'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      transforms: map['transforms'] == null ? null : (pulumi.Input.decodeList<GetListenerRuleTransform>(map['transforms'], (value) => GetListenerRuleTransform.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      actions: map['actions'] == null ? null : ((pulumi.Input.decodeList<GetListenerRuleAction>(map['actions']!, (value) => GetListenerRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      conditions: map['conditions'] == null ? null : ((pulumi.Input.decodeList<GetListenerRuleCondition>(map['conditions']!, (value) => GetListenerRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      listenerArn: map['listenerArn'] == null ? null : ((map['listenerArn'] as String).input()).input(),
+      priority: map['priority'] == null ? null : ((map['priority'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      transforms: map['transforms'] == null ? null : ((pulumi.Input.decodeList<GetListenerRuleTransform>(map['transforms']!, (value) => GetListenerRuleTransform.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

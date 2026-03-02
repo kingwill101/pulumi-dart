@@ -56,14 +56,14 @@ class AlidnsInstanceState {
 
   factory AlidnsInstanceState.fromMap(Map<String, dynamic> map) {
     return AlidnsInstanceState(
-      dnsSecurity: map['dnsSecurity'] == null ? null : (map['dnsSecurity'] as String).input(),
-      domainNumbers: map['domainNumbers'] == null ? null : (map['domainNumbers'] as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      renewPeriod: map['renewPeriod'] == null ? null : (map['renewPeriod'] as int).input(),
-      renewalStatus: map['renewalStatus'] == null ? null : (map['renewalStatus'] as String).input(),
-      versionCode: map['versionCode'] == null ? null : (map['versionCode'] as String).input(),
-      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
+      dnsSecurity: map['dnsSecurity'] == null ? null : (map['dnsSecurity']! as String).input(),
+      domainNumbers: map['domainNumbers'] == null ? null : (map['domainNumbers']! as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      renewPeriod: map['renewPeriod'] == null ? null : (map['renewPeriod']! as int).input(),
+      renewalStatus: map['renewalStatus'] == null ? null : (map['renewalStatus']! as String).input(),
+      versionCode: map['versionCode'] == null ? null : (map['versionCode']! as String).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName']! as String).input(),
     );
   }
 }

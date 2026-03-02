@@ -22,7 +22,7 @@ class GoogleCloudDialogflowV2SuggestionFeature {
 
   factory GoogleCloudDialogflowV2SuggestionFeature.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2SuggestionFeature(
-      type: map['type'] == null ? null : (GoogleCloudDialogflowV2SuggestionFeatureType.fromValue(map['type'] as String)).input(),
+      type: map['type'] == null ? null : (GoogleCloudDialogflowV2SuggestionFeatureType.fromValue(map['type']! as String)).input(),
     );
   }
 }

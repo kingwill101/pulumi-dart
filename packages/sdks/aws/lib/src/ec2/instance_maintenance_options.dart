@@ -20,7 +20,7 @@ class InstanceMaintenanceOptions {
 
   factory InstanceMaintenanceOptions.fromMap(Map<String, dynamic> map) {
     return InstanceMaintenanceOptions(
-      autoRecovery: map['autoRecovery'] == null ? null : (map['autoRecovery'] as String).input(),
+      autoRecovery: map['autoRecovery'] == null ? null : ((map['autoRecovery'] as String).input()).input(),
     );
   }
 }

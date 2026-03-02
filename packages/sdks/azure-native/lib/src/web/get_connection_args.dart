@@ -36,7 +36,7 @@ class GetConnectionArgs {
     return GetConnectionArgs(
       connectionName: (map['connectionName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

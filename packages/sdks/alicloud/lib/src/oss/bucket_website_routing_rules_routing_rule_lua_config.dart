@@ -20,7 +20,7 @@ class BucketWebsiteRoutingRulesRoutingRuleLuaConfig {
 
   factory BucketWebsiteRoutingRulesRoutingRuleLuaConfig.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteRoutingRulesRoutingRuleLuaConfig(
-      script: map['script'] == null ? null : (map['script'] as String).input(),
+      script: map['script'] == null ? null : (map['script']! as String).input(),
     );
   }
 }

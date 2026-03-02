@@ -33,7 +33,7 @@ class DeepCreatedCustomDomainResponse {
     return DeepCreatedCustomDomainResponse(
       hostName: (map['hostName'] as String).input(),
       name: (map['name'] as String).input(),
-      validationData: map['validationData'] == null ? null : (map['validationData'] as String).input(),
+      validationData: map['validationData'] == null ? null : (map['validationData']! as String).input(),
     );
   }
 }

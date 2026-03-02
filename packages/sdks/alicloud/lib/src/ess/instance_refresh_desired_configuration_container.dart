@@ -41,11 +41,11 @@ class InstanceRefreshDesiredConfigurationContainer {
 
   factory InstanceRefreshDesiredConfigurationContainer.fromMap(Map<String, dynamic> map) {
     return InstanceRefreshDesiredConfigurationContainer(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      environmentVars: map['environmentVars'] == null ? null : (pulumi.Input.decodeList<InstanceRefreshDesiredConfigurationContainerEnvironmentVar>(map['environmentVars'], (value) => InstanceRefreshDesiredConfigurationContainerEnvironmentVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
+      environmentVars: map['environmentVars'] == null ? null : (pulumi.Input.decodeList<InstanceRefreshDesiredConfigurationContainerEnvironmentVar>(map['environmentVars']!, (value) => InstanceRefreshDesiredConfigurationContainerEnvironmentVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

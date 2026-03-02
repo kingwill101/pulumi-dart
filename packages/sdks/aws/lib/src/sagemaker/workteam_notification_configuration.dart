@@ -20,7 +20,7 @@ class WorkteamNotificationConfiguration {
 
   factory WorkteamNotificationConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkteamNotificationConfiguration(
-      notificationTopicArn: map['notificationTopicArn'] == null ? null : (map['notificationTopicArn'] as String).input(),
+      notificationTopicArn: map['notificationTopicArn'] == null ? null : ((map['notificationTopicArn'] as String).input()).input(),
     );
   }
 }

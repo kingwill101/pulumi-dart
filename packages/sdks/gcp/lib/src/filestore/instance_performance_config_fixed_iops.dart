@@ -21,7 +21,7 @@ class InstancePerformanceConfigFixedIops {
 
   factory InstancePerformanceConfigFixedIops.fromMap(Map<String, dynamic> map) {
     return InstancePerformanceConfigFixedIops(
-      maxIops: map['maxIops'] == null ? null : (map['maxIops'] as int).input(),
+      maxIops: map['maxIops'] == null ? null : (map['maxIops']! as int).input(),
     );
   }
 }

@@ -52,13 +52,13 @@ class SpeechEndpointDeploymentResourcePropertiesResponse {
 
   factory SpeechEndpointDeploymentResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SpeechEndpointDeploymentResourcePropertiesResponse(
-      failureReason: map['failureReason'] == null ? null : (map['failureReason'] as String).input(),
+      failureReason: map['failureReason'] == null ? null : (map['failureReason']! as String).input(),
       model: (EndpointDeploymentModelResponse.fromMap((map['model'] as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      raiPolicyName: map['raiPolicyName'] == null ? null : (map['raiPolicyName'] as String).input(),
-      sku: map['sku'] == null ? null : (CognitiveServicesSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      raiPolicyName: map['raiPolicyName'] == null ? null : (map['raiPolicyName']! as String).input(),
+      sku: map['sku'] == null ? null : (CognitiveServicesSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
-      versionUpgradeOption: map['versionUpgradeOption'] == null ? null : (map['versionUpgradeOption'] as String).input(),
+      versionUpgradeOption: map['versionUpgradeOption'] == null ? null : (map['versionUpgradeOption']! as String).input(),
     );
   }
 }

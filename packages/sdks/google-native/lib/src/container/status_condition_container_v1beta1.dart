@@ -33,9 +33,9 @@ class StatusConditionContainerV1beta1 {
 
   factory StatusConditionContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return StatusConditionContainerV1beta1(
-      canonicalCode: map['canonicalCode'] == null ? null : (StatusConditionCanonicalCodeContainerV1beta1.fromValue(map['canonicalCode'] as String)).input(),
-      code: map['code'] == null ? null : (StatusConditionCodeContainerV1beta1.fromValue(map['code'] as String)).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      canonicalCode: map['canonicalCode'] == null ? null : (StatusConditionCanonicalCodeContainerV1beta1.fromValue(map['canonicalCode']! as String)).input(),
+      code: map['code'] == null ? null : (StatusConditionCodeContainerV1beta1.fromValue(map['code']! as String)).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class BucketOverwriteConfigRulePrincipals {
 
   factory BucketOverwriteConfigRulePrincipals.fromMap(Map<String, dynamic> map) {
     return BucketOverwriteConfigRulePrincipals(
-      principals: map['principals'] == null ? null : ((map['principals'] as List).cast<String>()).input(),
+      principals: map['principals'] == null ? null : ((map['principals']! as List).cast<String>()).input(),
     );
   }
 }

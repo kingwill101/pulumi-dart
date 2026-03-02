@@ -73,17 +73,17 @@ class ClusterResourceResponsePropertiesV1 {
 
   factory ClusterResourceResponsePropertiesV1.fromMap(Map<String, dynamic> map) {
     return ClusterResourceResponsePropertiesV1(
-      allocationState: map['allocationState'] == null ? null : (map['allocationState'] as String).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as bool).input(),
-      clusterType: map['clusterType'] == null ? null : (map['clusterType'] as String).input(),
+      allocationState: map['allocationState'] == null ? null : (map['allocationState']! as String).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone']! as bool).input(),
+      clusterType: map['clusterType'] == null ? null : (map['clusterType']! as String).input(),
       endPoints: (pulumi.Input.decodeList<ClusterResourceResponseEndPoints>(map['endPoints'], (value) => ClusterResourceResponseEndPoints.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      extensions: map['extensions'] == null ? null : ((map['extensions'] as List).cast<String>()).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
-      nodeSku: map['nodeSku'] == null ? null : (map['nodeSku'] as String).input(),
-      provisionError: map['provisionError'] == null ? null : (ErrorDetailResponse.fromMap((map['provisionError'] as Map).cast<String, dynamic>())).input(),
+      extensions: map['extensions'] == null ? null : ((map['extensions']! as List).cast<String>()).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
+      nodeSku: map['nodeSku'] == null ? null : (map['nodeSku']! as String).input(),
+      provisionError: map['provisionError'] == null ? null : (ErrorDetailResponse.fromMap((map['provisionError']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      replicationFactor: map['replicationFactor'] == null ? null : (map['replicationFactor'] as int).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      replicationFactor: map['replicationFactor'] == null ? null : (map['replicationFactor']! as int).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

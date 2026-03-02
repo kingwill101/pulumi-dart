@@ -36,7 +36,7 @@ class NtpArgs {
     return NtpArgs(
       description: (map['description'] as String).input(),
       servers: ((map['servers'] as List).cast<String>()).input(),
-      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
+      timezone: map['timezone'] == null ? null : (map['timezone']! as String).input(),
     );
   }
 }

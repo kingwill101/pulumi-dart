@@ -20,7 +20,7 @@ class PluginDocumentation {
 
   factory PluginDocumentation.fromMap(Map<String, dynamic> map) {
     return PluginDocumentation(
-      externalUri: map['externalUri'] == null ? null : (map['externalUri'] as String).input(),
+      externalUri: map['externalUri'] == null ? null : (map['externalUri']! as String).input(),
     );
   }
 }

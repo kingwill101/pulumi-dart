@@ -35,10 +35,10 @@ class ChannelDestinationSetting {
 
   factory ChannelDestinationSetting.fromMap(Map<String, dynamic> map) {
     return ChannelDestinationSetting(
-      passwordParam: map['passwordParam'] == null ? null : (map['passwordParam'] as String).input(),
-      streamName: map['streamName'] == null ? null : (map['streamName'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      passwordParam: map['passwordParam'] == null ? null : ((map['passwordParam'] as String).input()).input(),
+      streamName: map['streamName'] == null ? null : ((map['streamName'] as String).input()).input(),
+      url: map['url'] == null ? null : ((map['url'] as String).input()).input(),
+      username: map['username'] == null ? null : ((map['username'] as String).input()).input(),
     );
   }
 }

@@ -40,11 +40,11 @@ class InstanceConfigHelper {
 
   factory InstanceConfigHelper.fromMap(Map<String, dynamic> map) {
     return InstanceConfigHelper(
-      devtmpfsAutomount: map['devtmpfsAutomount'] == null ? null : (map['devtmpfsAutomount'] as bool).input(),
-      distro: map['distro'] == null ? null : (map['distro'] as bool).input(),
-      modulesDep: map['modulesDep'] == null ? null : (map['modulesDep'] as bool).input(),
-      network: map['network'] == null ? null : (map['network'] as bool).input(),
-      updatedbDisabled: map['updatedbDisabled'] == null ? null : (map['updatedbDisabled'] as bool).input(),
+      devtmpfsAutomount: map['devtmpfsAutomount'] == null ? null : (map['devtmpfsAutomount']! as bool).input(),
+      distro: map['distro'] == null ? null : (map['distro']! as bool).input(),
+      modulesDep: map['modulesDep'] == null ? null : (map['modulesDep']! as bool).input(),
+      network: map['network'] == null ? null : (map['network']! as bool).input(),
+      updatedbDisabled: map['updatedbDisabled'] == null ? null : (map['updatedbDisabled']! as bool).input(),
     );
   }
 }

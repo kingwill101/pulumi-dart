@@ -54,13 +54,13 @@ class DeviceArgs {
 
   factory DeviceArgs.fromMap(Map<String, dynamic> map) {
     return DeviceArgs(
-      assetTag: map['assetTag'] == null ? null : (map['assetTag'] as String).input(),
-      customer: map['customer'] == null ? null : (map['customer'] as String).input(),
-      deviceId: map['deviceId'] == null ? null : (map['deviceId'] as String).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      lastSyncTime: map['lastSyncTime'] == null ? null : (map['lastSyncTime'] as String).input(),
-      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
-      wifiMacAddresses: map['wifiMacAddresses'] == null ? null : ((map['wifiMacAddresses'] as List).cast<String>()).input(),
+      assetTag: map['assetTag'] == null ? null : (map['assetTag']! as String).input(),
+      customer: map['customer'] == null ? null : (map['customer']! as String).input(),
+      deviceId: map['deviceId'] == null ? null : (map['deviceId']! as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      lastSyncTime: map['lastSyncTime'] == null ? null : (map['lastSyncTime']! as String).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber']! as String).input(),
+      wifiMacAddresses: map['wifiMacAddresses'] == null ? null : ((map['wifiMacAddresses']! as List).cast<String>()).input(),
     );
   }
 }

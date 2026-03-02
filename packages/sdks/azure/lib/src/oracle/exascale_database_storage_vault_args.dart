@@ -71,14 +71,14 @@ class ExascaleDatabaseStorageVaultArgs {
   factory ExascaleDatabaseStorageVaultArgs.fromMap(Map<String, dynamic> map) {
     return ExascaleDatabaseStorageVaultArgs(
       additionalFlashCachePercentage: (map['additionalFlashCachePercentage'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       highCapacityDatabaseStorage: (ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap((map['highCapacityDatabaseStorage'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
       zones: ((map['zones'] as List).cast<String>()).input(),
     );
   }

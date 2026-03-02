@@ -57,14 +57,14 @@ class SpacecraftState {
 
   factory SpacecraftState.fromMap(Map<String, dynamic> map) {
     return SpacecraftState(
-      links: map['links'] == null ? null : (pulumi.Input.decodeList<SpacecraftLink>(map['links'], (value) => SpacecraftLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      noradId: map['noradId'] == null ? null : (map['noradId'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      titleLine: map['titleLine'] == null ? null : (map['titleLine'] as String).input(),
-      twoLineElements: map['twoLineElements'] == null ? null : ((map['twoLineElements'] as List).cast<String>()).input(),
+      links: map['links'] == null ? null : (pulumi.Input.decodeList<SpacecraftLink>(map['links']!, (value) => SpacecraftLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      noradId: map['noradId'] == null ? null : (map['noradId']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      titleLine: map['titleLine'] == null ? null : (map['titleLine']! as String).input(),
+      twoLineElements: map['twoLineElements'] == null ? null : ((map['twoLineElements']! as List).cast<String>()).input(),
     );
   }
 }

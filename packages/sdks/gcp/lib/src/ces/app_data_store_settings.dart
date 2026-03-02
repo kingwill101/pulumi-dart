@@ -26,7 +26,7 @@ class AppDataStoreSettings {
 
   factory AppDataStoreSettings.fromMap(Map<String, dynamic> map) {
     return AppDataStoreSettings(
-      engines: map['engines'] == null ? null : (pulumi.Input.decodeList<AppDataStoreSettingsEngine>(map['engines'], (value) => AppDataStoreSettingsEngine.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      engines: map['engines'] == null ? null : (pulumi.Input.decodeList<AppDataStoreSettingsEngine>(map['engines']!, (value) => AppDataStoreSettingsEngine.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

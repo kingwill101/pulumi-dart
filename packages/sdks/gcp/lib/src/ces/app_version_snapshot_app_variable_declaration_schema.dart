@@ -131,20 +131,20 @@ class AppVersionSnapshotAppVariableDeclarationSchema {
 
   factory AppVersionSnapshotAppVariableDeclarationSchema.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppVariableDeclarationSchema(
-      additionalProperties: map['additionalProperties'] == null ? null : (map['additionalProperties'] as String).input(),
-      anyOf: map['anyOf'] == null ? null : (map['anyOf'] as String).input(),
-      default_: map['default'] == null ? null : (map['default'] as String).input(),
-      defs: map['defs'] == null ? null : (map['defs'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enums: map['enums'] == null ? null : ((map['enums'] as List).cast<String>()).input(),
-      items: map['items'] == null ? null : (map['items'] as String).input(),
-      nullable: map['nullable'] == null ? null : (map['nullable'] as bool).input(),
-      prefixItems: map['prefixItems'] == null ? null : (map['prefixItems'] as String).input(),
-      properties: map['properties'] == null ? null : (map['properties'] as String).input(),
-      ref: map['ref'] == null ? null : (map['ref'] as String).input(),
-      requireds: map['requireds'] == null ? null : ((map['requireds'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      uniqueItems: map['uniqueItems'] == null ? null : (map['uniqueItems'] as bool).input(),
+      additionalProperties: map['additionalProperties'] == null ? null : (map['additionalProperties']! as String).input(),
+      anyOf: map['anyOf'] == null ? null : (map['anyOf']! as String).input(),
+      default_: map['default'] == null ? null : (map['default']! as String).input(),
+      defs: map['defs'] == null ? null : (map['defs']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enums: map['enums'] == null ? null : ((map['enums']! as List).cast<String>()).input(),
+      items: map['items'] == null ? null : (map['items']! as String).input(),
+      nullable: map['nullable'] == null ? null : (map['nullable']! as bool).input(),
+      prefixItems: map['prefixItems'] == null ? null : (map['prefixItems']! as String).input(),
+      properties: map['properties'] == null ? null : (map['properties']! as String).input(),
+      ref: map['ref'] == null ? null : (map['ref']! as String).input(),
+      requireds: map['requireds'] == null ? null : ((map['requireds']! as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      uniqueItems: map['uniqueItems'] == null ? null : (map['uniqueItems']! as bool).input(),
     );
   }
 }

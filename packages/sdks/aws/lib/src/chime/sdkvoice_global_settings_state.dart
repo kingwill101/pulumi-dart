@@ -22,7 +22,7 @@ class SdkvoiceGlobalSettingsState {
 
   factory SdkvoiceGlobalSettingsState.fromMap(Map<String, dynamic> map) {
     return SdkvoiceGlobalSettingsState(
-      voiceConnector: map['voiceConnector'] == null ? null : (SdkvoiceGlobalSettingsVoiceConnector.fromMap((map['voiceConnector'] as Map).cast<String, dynamic>())).input(),
+      voiceConnector: map['voiceConnector'] == null ? null : ((SdkvoiceGlobalSettingsVoiceConnector.fromMap((map['voiceConnector']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

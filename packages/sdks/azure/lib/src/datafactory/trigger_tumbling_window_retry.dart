@@ -26,7 +26,7 @@ class TriggerTumblingWindowRetry {
   factory TriggerTumblingWindowRetry.fromMap(Map<String, dynamic> map) {
     return TriggerTumblingWindowRetry(
       count: (map['count'] as int).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
     );
   }
 }

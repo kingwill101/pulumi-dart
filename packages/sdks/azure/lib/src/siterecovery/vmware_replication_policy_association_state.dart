@@ -32,9 +32,9 @@ class VmwareReplicationPolicyAssociationState {
 
   factory VmwareReplicationPolicyAssociationState.fromMap(Map<String, dynamic> map) {
     return VmwareReplicationPolicyAssociationState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
-      recoveryVaultId: map['recoveryVaultId'] == null ? null : (map['recoveryVaultId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
+      recoveryVaultId: map['recoveryVaultId'] == null ? null : (map['recoveryVaultId']! as String).input(),
     );
   }
 }

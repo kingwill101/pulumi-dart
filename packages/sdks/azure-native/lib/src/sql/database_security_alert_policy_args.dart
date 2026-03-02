@@ -76,16 +76,16 @@ class DatabaseSecurityAlertPolicyArgs {
   factory DatabaseSecurityAlertPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseSecurityAlertPolicyArgs(
       databaseName: (map['databaseName'] as String).input(),
-      disabledAlerts: map['disabledAlerts'] == null ? null : ((map['disabledAlerts'] as List).cast<String>()).input(),
-      emailAccountAdmins: map['emailAccountAdmins'] == null ? null : (map['emailAccountAdmins'] as bool).input(),
-      emailAddresses: map['emailAddresses'] == null ? null : ((map['emailAddresses'] as List).cast<String>()).input(),
+      disabledAlerts: map['disabledAlerts'] == null ? null : ((map['disabledAlerts']! as List).cast<String>()).input(),
+      emailAccountAdmins: map['emailAccountAdmins'] == null ? null : (map['emailAccountAdmins']! as bool).input(),
+      emailAddresses: map['emailAddresses'] == null ? null : ((map['emailAddresses']! as List).cast<String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
-      securityAlertPolicyName: map['securityAlertPolicyName'] == null ? null : (map['securityAlertPolicyName'] as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
+      securityAlertPolicyName: map['securityAlertPolicyName'] == null ? null : (map['securityAlertPolicyName']! as String).input(),
       serverName: (map['serverName'] as String).input(),
       state: (SecurityAlertsPolicyState.fromValue(map['state'] as String)).input(),
-      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey'] as String).input(),
-      storageEndpoint: map['storageEndpoint'] == null ? null : (map['storageEndpoint'] as String).input(),
+      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey']! as String).input(),
+      storageEndpoint: map['storageEndpoint'] == null ? null : (map['storageEndpoint']! as String).input(),
     );
   }
 }

@@ -60,17 +60,17 @@ class BillingHubUsageGroupResponse {
 
   factory BillingHubUsageGroupResponse.fromMap(Map<String, dynamic> map) {
     return BillingHubUsageGroupResponse(
-      executionUsageDetails: map['executionUsageDetails'] == null ? null : (pulumi.Input.decodeList<BillingHubExecutionUsageDetailResponse>(map['executionUsageDetails'], (value) => BillingHubExecutionUsageDetailResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      osBuild: map['osBuild'] == null ? null : (map['osBuild'] as String).input(),
-      productFamily: map['productFamily'] == null ? null : (map['productFamily'] as String).input(),
-      release: map['release'] == null ? null : (map['release'] as String).input(),
-      releaseBuildDate: map['releaseBuildDate'] == null ? null : (map['releaseBuildDate'] as String).input(),
-      releaseBuildNumber: map['releaseBuildNumber'] == null ? null : (map['releaseBuildNumber'] as double).input(),
-      releaseBuildRevision: map['releaseBuildRevision'] == null ? null : (map['releaseBuildRevision'] as double).input(),
-      testType: map['testType'] == null ? null : (map['testType'] as String).input(),
-      totalCharges: map['totalCharges'] == null ? null : (map['totalCharges'] as double).input(),
-      totalUsedBillableHours: map['totalUsedBillableHours'] == null ? null : (map['totalUsedBillableHours'] as double).input(),
-      totalUsedFreeHours: map['totalUsedFreeHours'] == null ? null : (map['totalUsedFreeHours'] as double).input(),
+      executionUsageDetails: map['executionUsageDetails'] == null ? null : (pulumi.Input.decodeList<BillingHubExecutionUsageDetailResponse>(map['executionUsageDetails']!, (value) => BillingHubExecutionUsageDetailResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      osBuild: map['osBuild'] == null ? null : (map['osBuild']! as String).input(),
+      productFamily: map['productFamily'] == null ? null : (map['productFamily']! as String).input(),
+      release: map['release'] == null ? null : (map['release']! as String).input(),
+      releaseBuildDate: map['releaseBuildDate'] == null ? null : (map['releaseBuildDate']! as String).input(),
+      releaseBuildNumber: map['releaseBuildNumber'] == null ? null : (map['releaseBuildNumber']! as double).input(),
+      releaseBuildRevision: map['releaseBuildRevision'] == null ? null : (map['releaseBuildRevision']! as double).input(),
+      testType: map['testType'] == null ? null : (map['testType']! as String).input(),
+      totalCharges: map['totalCharges'] == null ? null : (map['totalCharges']! as double).input(),
+      totalUsedBillableHours: map['totalUsedBillableHours'] == null ? null : (map['totalUsedBillableHours']! as double).input(),
+      totalUsedFreeHours: map['totalUsedFreeHours'] == null ? null : (map['totalUsedFreeHours']! as double).input(),
     );
   }
 }

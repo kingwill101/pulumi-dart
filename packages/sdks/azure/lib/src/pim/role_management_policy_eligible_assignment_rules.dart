@@ -27,8 +27,8 @@ class RoleManagementPolicyEligibleAssignmentRules {
 
   factory RoleManagementPolicyEligibleAssignmentRules.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyEligibleAssignmentRules(
-      expirationRequired: map['expirationRequired'] == null ? null : (map['expirationRequired'] as bool).input(),
-      expireAfter: map['expireAfter'] == null ? null : (map['expireAfter'] as String).input(),
+      expirationRequired: map['expirationRequired'] == null ? null : (map['expirationRequired']! as bool).input(),
+      expireAfter: map['expireAfter'] == null ? null : (map['expireAfter']! as String).input(),
     );
   }
 }

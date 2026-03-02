@@ -20,7 +20,7 @@ class WorkerPoolTemplateContainerResources {
 
   factory WorkerPoolTemplateContainerResources.fromMap(Map<String, dynamic> map) {
     return WorkerPoolTemplateContainerResources(
-      limits: map['limits'] == null ? null : ((map['limits'] as Map).cast<String, String>()).input(),
+      limits: map['limits'] == null ? null : ((map['limits']! as Map).cast<String, String>()).input(),
     );
   }
 }

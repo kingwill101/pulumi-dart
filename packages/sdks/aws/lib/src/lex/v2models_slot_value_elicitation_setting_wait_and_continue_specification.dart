@@ -43,10 +43,10 @@ class V2modelsSlotValueElicitationSettingWaitAndContinueSpecification {
 
   factory V2modelsSlotValueElicitationSettingWaitAndContinueSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotValueElicitationSettingWaitAndContinueSpecification(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
-      continueResponses: map['continueResponses'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueResponse>(map['continueResponses'], (value) => V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      stillWaitingResponses: map['stillWaitingResponses'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponse>(map['stillWaitingResponses'], (value) => V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      waitingResponses: map['waitingResponses'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponse>(map['waitingResponses'], (value) => V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      active: map['active'] == null ? null : ((map['active'] as bool).input()).input(),
+      continueResponses: map['continueResponses'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueResponse>(map['continueResponses']!, (value) => V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueResponse.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      stillWaitingResponses: map['stillWaitingResponses'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponse>(map['stillWaitingResponses']!, (value) => V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponse.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      waitingResponses: map['waitingResponses'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponse>(map['waitingResponses']!, (value) => V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponse.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class SpacesBucketLifecycleRuleNoncurrentVersionExpiration {
 
   factory SpacesBucketLifecycleRuleNoncurrentVersionExpiration.fromMap(Map<String, dynamic> map) {
     return SpacesBucketLifecycleRuleNoncurrentVersionExpiration(
-      days: map['days'] == null ? null : (map['days'] as int).input(),
+      days: map['days'] == null ? null : (map['days']! as int).input(),
     );
   }
 }

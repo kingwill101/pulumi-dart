@@ -42,11 +42,11 @@ class DocumentationPartState {
 
   factory DocumentationPartState.fromMap(Map<String, dynamic> map) {
     return DocumentationPartState(
-      documentationPartId: map['documentationPartId'] == null ? null : (map['documentationPartId'] as String).input(),
-      location: map['location'] == null ? null : (DocumentationPartLocation.fromMap((map['location'] as Map).cast<String, dynamic>())).input(),
-      properties: map['properties'] == null ? null : (map['properties'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      restApiId: map['restApiId'] == null ? null : (map['restApiId'] as String).input(),
+      documentationPartId: map['documentationPartId'] == null ? null : ((map['documentationPartId'] as String).input()).input(),
+      location: map['location'] == null ? null : ((DocumentationPartLocation.fromMap((map['location']! as Map).cast<String, dynamic>())).input()).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      restApiId: map['restApiId'] == null ? null : ((map['restApiId'] as String).input()).input(),
     );
   }
 }

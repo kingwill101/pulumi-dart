@@ -29,8 +29,8 @@ class PatchDeploymentRecurringScheduleMonthly {
 
   factory PatchDeploymentRecurringScheduleMonthly.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentRecurringScheduleMonthly(
-      monthDay: map['monthDay'] == null ? null : (map['monthDay'] as int).input(),
-      weekDayOfMonth: map['weekDayOfMonth'] == null ? null : (PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth.fromMap((map['weekDayOfMonth'] as Map).cast<String, dynamic>())).input(),
+      monthDay: map['monthDay'] == null ? null : (map['monthDay']! as int).input(),
+      weekDayOfMonth: map['weekDayOfMonth'] == null ? null : (PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth.fromMap((map['weekDayOfMonth']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

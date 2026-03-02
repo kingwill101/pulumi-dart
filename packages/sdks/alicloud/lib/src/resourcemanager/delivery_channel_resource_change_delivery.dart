@@ -43,10 +43,10 @@ class DeliveryChannelResourceChangeDelivery {
 
   factory DeliveryChannelResourceChangeDelivery.fromMap(Map<String, dynamic> map) {
     return DeliveryChannelResourceChangeDelivery(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      slsProperties: map['slsProperties'] == null ? null : (DeliveryChannelResourceChangeDeliverySlsProperties.fromMap((map['slsProperties'] as Map).cast<String, dynamic>())).input(),
-      targetArn: map['targetArn'] == null ? null : (map['targetArn'] as String).input(),
-      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      slsProperties: map['slsProperties'] == null ? null : (DeliveryChannelResourceChangeDeliverySlsProperties.fromMap((map['slsProperties']! as Map).cast<String, dynamic>())).input(),
+      targetArn: map['targetArn'] == null ? null : (map['targetArn']! as String).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType']! as String).input(),
     );
   }
 }

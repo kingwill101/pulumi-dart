@@ -26,8 +26,8 @@ class CFNFeatureAdditionalConfiguration {
 
   factory CFNFeatureAdditionalConfiguration.fromMap(Map<String, dynamic> map) {
     return CFNFeatureAdditionalConfiguration(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

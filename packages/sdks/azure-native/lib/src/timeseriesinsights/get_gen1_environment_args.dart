@@ -35,7 +35,7 @@ class GetGen1EnvironmentArgs {
   factory GetGen1EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return GetGen1EnvironmentArgs(
       environmentName: (map['environmentName'] as String).input(),
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

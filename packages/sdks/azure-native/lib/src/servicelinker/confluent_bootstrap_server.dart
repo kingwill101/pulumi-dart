@@ -27,7 +27,7 @@ class ConfluentBootstrapServer {
 
   factory ConfluentBootstrapServer.fromMap(Map<String, dynamic> map) {
     return ConfluentBootstrapServer(
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -29,8 +29,8 @@ class GetHostedZoneIdArgs {
 
   factory GetHostedZoneIdArgs.fromMap(Map<String, dynamic> map) {
     return GetHostedZoneIdArgs(
-      loadBalancerType: map['loadBalancerType'] == null ? null : (map['loadBalancerType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      loadBalancerType: map['loadBalancerType'] == null ? null : ((map['loadBalancerType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

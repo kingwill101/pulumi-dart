@@ -26,8 +26,8 @@ class ResourceRequirements {
 
   factory ResourceRequirements.fromMap(Map<String, dynamic> map) {
     return ResourceRequirements(
-      cpu: map['cpu'] == null ? null : (map['cpu'] as String).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as String).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as String).input(),
+      memory: map['memory'] == null ? null : (map['memory']! as String).input(),
     );
   }
 }

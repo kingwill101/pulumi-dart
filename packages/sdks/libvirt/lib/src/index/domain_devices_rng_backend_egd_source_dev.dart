@@ -27,7 +27,7 @@ class DomainDevicesRngBackendEgdSourceDev {
   factory DomainDevicesRngBackendEgdSourceDev.fromMap(Map<String, dynamic> map) {
     return DomainDevicesRngBackendEgdSourceDev(
       path: (map['path'] as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesRngBackendEgdSourceDevSecLabel>(map['secLabels'], (value) => DomainDevicesRngBackendEgdSourceDevSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesRngBackendEgdSourceDevSecLabel>(map['secLabels']!, (value) => DomainDevicesRngBackendEgdSourceDevSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

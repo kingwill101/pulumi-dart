@@ -51,7 +51,7 @@ class BlobInventoryPolicyRule {
 
   factory BlobInventoryPolicyRule.fromMap(Map<String, dynamic> map) {
     return BlobInventoryPolicyRule(
-      filter: map['filter'] == null ? null : (BlobInventoryPolicyRuleFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      filter: map['filter'] == null ? null : (BlobInventoryPolicyRuleFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
       format: (map['format'] as String).input(),
       name: (map['name'] as String).input(),
       schedule: (map['schedule'] as String).input(),

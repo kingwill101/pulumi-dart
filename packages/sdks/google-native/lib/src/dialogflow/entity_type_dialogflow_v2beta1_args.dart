@@ -65,15 +65,15 @@ class EntityTypeDialogflowV2beta1Args {
 
   factory EntityTypeDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
     return EntityTypeDialogflowV2beta1Args(
-      autoExpansionMode: map['autoExpansionMode'] == null ? null : (EntityTypeAutoExpansionModeDialogflowV2beta1.fromValue(map['autoExpansionMode'] as String)).input(),
+      autoExpansionMode: map['autoExpansionMode'] == null ? null : (EntityTypeAutoExpansionModeDialogflowV2beta1.fromValue(map['autoExpansionMode']! as String)).input(),
       displayName: (map['displayName'] as String).input(),
-      enableFuzzyExtraction: map['enableFuzzyExtraction'] == null ? null : (map['enableFuzzyExtraction'] as bool).input(),
-      entities: map['entities'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1EntityTypeEntity>(map['entities'], (value) => GoogleCloudDialogflowV2beta1EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableFuzzyExtraction: map['enableFuzzyExtraction'] == null ? null : (map['enableFuzzyExtraction']! as bool).input(),
+      entities: map['entities'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1EntityTypeEntity>(map['entities']!, (value) => GoogleCloudDialogflowV2beta1EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
       kind: (EntityTypeKindDialogflowV2beta1.fromValue(map['kind'] as String)).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

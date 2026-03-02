@@ -45,11 +45,11 @@ class WebAclAssociationConfigRequestBody {
 
   factory WebAclAssociationConfigRequestBody.fromMap(Map<String, dynamic> map) {
     return WebAclAssociationConfigRequestBody(
-      apiGateway: map['apiGateway'] == null ? null : (WebAclAssociationConfigRequestBodyApiGateway.fromMap((map['apiGateway'] as Map).cast<String, dynamic>())).input(),
-      appRunnerService: map['appRunnerService'] == null ? null : (WebAclAssociationConfigRequestBodyAppRunnerService.fromMap((map['appRunnerService'] as Map).cast<String, dynamic>())).input(),
-      cloudfront: map['cloudfront'] == null ? null : (WebAclAssociationConfigRequestBodyCloudfront.fromMap((map['cloudfront'] as Map).cast<String, dynamic>())).input(),
-      cognitoUserPool: map['cognitoUserPool'] == null ? null : (WebAclAssociationConfigRequestBodyCognitoUserPool.fromMap((map['cognitoUserPool'] as Map).cast<String, dynamic>())).input(),
-      verifiedAccessInstance: map['verifiedAccessInstance'] == null ? null : (WebAclAssociationConfigRequestBodyVerifiedAccessInstance.fromMap((map['verifiedAccessInstance'] as Map).cast<String, dynamic>())).input(),
+      apiGateway: map['apiGateway'] == null ? null : ((WebAclAssociationConfigRequestBodyApiGateway.fromMap((map['apiGateway']! as Map).cast<String, dynamic>())).input()).input(),
+      appRunnerService: map['appRunnerService'] == null ? null : ((WebAclAssociationConfigRequestBodyAppRunnerService.fromMap((map['appRunnerService']! as Map).cast<String, dynamic>())).input()).input(),
+      cloudfront: map['cloudfront'] == null ? null : ((WebAclAssociationConfigRequestBodyCloudfront.fromMap((map['cloudfront']! as Map).cast<String, dynamic>())).input()).input(),
+      cognitoUserPool: map['cognitoUserPool'] == null ? null : ((WebAclAssociationConfigRequestBodyCognitoUserPool.fromMap((map['cognitoUserPool']! as Map).cast<String, dynamic>())).input()).input(),
+      verifiedAccessInstance: map['verifiedAccessInstance'] == null ? null : ((WebAclAssociationConfigRequestBodyVerifiedAccessInstance.fromMap((map['verifiedAccessInstance']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

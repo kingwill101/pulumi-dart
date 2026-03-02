@@ -20,7 +20,7 @@ class IntegrationTlsConfig {
 
   factory IntegrationTlsConfig.fromMap(Map<String, dynamic> map) {
     return IntegrationTlsConfig(
-      serverNameToVerify: map['serverNameToVerify'] == null ? null : (map['serverNameToVerify'] as String).input(),
+      serverNameToVerify: map['serverNameToVerify'] == null ? null : ((map['serverNameToVerify'] as String).input()).input(),
     );
   }
 }

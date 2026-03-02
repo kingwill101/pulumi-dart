@@ -89,7 +89,7 @@ class GetScheduledTriggerResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       recurrenceInterval: map['recurrenceInterval'] as String,
-      synchronizationMode: map['synchronizationMode'] == null ? null : map['synchronizationMode'] as String,
+      synchronizationMode: map['synchronizationMode'] == null ? null : map['synchronizationMode']! as String,
       synchronizationTime: map['synchronizationTime'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       triggerStatus: map['triggerStatus'] as String,

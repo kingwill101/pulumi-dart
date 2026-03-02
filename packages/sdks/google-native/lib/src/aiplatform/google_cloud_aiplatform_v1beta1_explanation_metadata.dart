@@ -36,9 +36,9 @@ class GoogleCloudAiplatformV1beta1ExplanationMetadata {
 
   factory GoogleCloudAiplatformV1beta1ExplanationMetadata.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ExplanationMetadata(
-      featureAttributionsSchemaUri: map['featureAttributionsSchemaUri'] == null ? null : (map['featureAttributionsSchemaUri'] as String).input(),
+      featureAttributionsSchemaUri: map['featureAttributionsSchemaUri'] == null ? null : (map['featureAttributionsSchemaUri']! as String).input(),
       inputs: ((map['inputs'] as Map).cast<String, String>()).input(),
-      latentSpaceSource: map['latentSpaceSource'] == null ? null : (map['latentSpaceSource'] as String).input(),
+      latentSpaceSource: map['latentSpaceSource'] == null ? null : (map['latentSpaceSource']! as String).input(),
       outputs: ((map['outputs'] as Map).cast<String, String>()).input(),
     );
   }

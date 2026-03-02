@@ -55,10 +55,10 @@ class NotificationChannelArgs {
 
   factory NotificationChannelArgs.fromMap(Map<String, dynamic> map) {
     return NotificationChannelArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      active: map['active'] == null ? null : (map['active']! as bool).input(),
       destinationId: (map['destinationId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       product: (map['product'] as String).input(),
       properties: (pulumi.Input.decodeList<NotificationChannelProperty>(map['properties'], (value) => NotificationChannelProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),

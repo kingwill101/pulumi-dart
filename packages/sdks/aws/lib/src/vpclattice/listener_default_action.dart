@@ -28,8 +28,8 @@ class ListenerDefaultAction {
 
   factory ListenerDefaultAction.fromMap(Map<String, dynamic> map) {
     return ListenerDefaultAction(
-      fixedResponse: map['fixedResponse'] == null ? null : (ListenerDefaultActionFixedResponse.fromMap((map['fixedResponse'] as Map).cast<String, dynamic>())).input(),
-      forwards: map['forwards'] == null ? null : (pulumi.Input.decodeList<ListenerDefaultActionForward>(map['forwards'], (value) => ListenerDefaultActionForward.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fixedResponse: map['fixedResponse'] == null ? null : ((ListenerDefaultActionFixedResponse.fromMap((map['fixedResponse']! as Map).cast<String, dynamic>())).input()).input(),
+      forwards: map['forwards'] == null ? null : ((pulumi.Input.decodeList<ListenerDefaultActionForward>(map['forwards']!, (value) => ListenerDefaultActionForward.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

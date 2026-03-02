@@ -41,7 +41,7 @@ class ReplicationExtensionArgs {
   factory ReplicationExtensionArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationExtensionArgs(
       properties: (ReplicationExtensionModelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      replicationExtensionName: map['replicationExtensionName'] == null ? null : (map['replicationExtensionName'] as String).input(),
+      replicationExtensionName: map['replicationExtensionName'] == null ? null : (map['replicationExtensionName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       vaultName: (map['vaultName'] as String).input(),
     );

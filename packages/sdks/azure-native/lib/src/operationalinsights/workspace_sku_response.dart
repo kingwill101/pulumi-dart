@@ -31,7 +31,7 @@ class WorkspaceSkuResponse {
 
   factory WorkspaceSkuResponse.fromMap(Map<String, dynamic> map) {
     return WorkspaceSkuResponse(
-      capacityReservationLevel: map['capacityReservationLevel'] == null ? null : (map['capacityReservationLevel'] as int).input(),
+      capacityReservationLevel: map['capacityReservationLevel'] == null ? null : (map['capacityReservationLevel']! as int).input(),
       lastSkuUpdate: (map['lastSkuUpdate'] as String).input(),
       name: (map['name'] as String).input(),
     );

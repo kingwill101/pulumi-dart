@@ -34,7 +34,7 @@ class GatewayRouteTableAttachmentArgs {
 
   factory GatewayRouteTableAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GatewayRouteTableAttachmentArgs(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
       ipv4GatewayId: (map['ipv4GatewayId'] as String).input(),
       routeTableId: (map['routeTableId'] as String).input(),
     );

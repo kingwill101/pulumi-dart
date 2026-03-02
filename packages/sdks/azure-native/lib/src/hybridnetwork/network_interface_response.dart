@@ -37,10 +37,10 @@ class NetworkInterfaceResponse {
 
   factory NetworkInterfaceResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceResponse(
-      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<NetworkInterfaceIPConfigurationResponse>(map['ipConfigurations'], (value) => NetworkInterfaceIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      macAddress: map['macAddress'] == null ? null : (map['macAddress'] as String).input(),
-      networkInterfaceName: map['networkInterfaceName'] == null ? null : (map['networkInterfaceName'] as String).input(),
-      vmSwitchType: map['vmSwitchType'] == null ? null : (map['vmSwitchType'] as String).input(),
+      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<NetworkInterfaceIPConfigurationResponse>(map['ipConfigurations']!, (value) => NetworkInterfaceIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      macAddress: map['macAddress'] == null ? null : (map['macAddress']! as String).input(),
+      networkInterfaceName: map['networkInterfaceName'] == null ? null : (map['networkInterfaceName']! as String).input(),
+      vmSwitchType: map['vmSwitchType'] == null ? null : (map['vmSwitchType']! as String).input(),
     );
   }
 }

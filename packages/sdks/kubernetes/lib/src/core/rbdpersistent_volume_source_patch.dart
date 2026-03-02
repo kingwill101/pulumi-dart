@@ -57,14 +57,14 @@ class RBDPersistentVolumeSourcePatch {
 
   factory RBDPersistentVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return RBDPersistentVolumeSourcePatch(
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      keyring: map['keyring'] == null ? null : (map['keyring'] as String).input(),
-      monitors: map['monitors'] == null ? null : ((map['monitors'] as List).cast<String>()).input(),
-      pool: map['pool'] == null ? null : (map['pool'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      secretRef: map['secretRef'] == null ? null : (SecretReferencePatch.fromMap((map['secretRef'] as Map).cast<String, dynamic>())).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      keyring: map['keyring'] == null ? null : (map['keyring']! as String).input(),
+      monitors: map['monitors'] == null ? null : ((map['monitors']! as List).cast<String>()).input(),
+      pool: map['pool'] == null ? null : (map['pool']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      secretRef: map['secretRef'] == null ? null : (SecretReferencePatch.fromMap((map['secretRef']! as Map).cast<String, dynamic>())).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

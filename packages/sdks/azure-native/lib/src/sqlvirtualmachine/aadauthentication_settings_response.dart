@@ -21,7 +21,7 @@ class AADAuthenticationSettingsResponse {
 
   factory AADAuthenticationSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AADAuthenticationSettingsResponse(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
     );
   }
 }

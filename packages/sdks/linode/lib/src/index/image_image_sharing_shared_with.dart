@@ -25,8 +25,8 @@ class ImageImageSharingSharedWith {
 
   factory ImageImageSharingSharedWith.fromMap(Map<String, dynamic> map) {
     return ImageImageSharingSharedWith(
-      sharegroupCount: map['sharegroupCount'] == null ? null : (map['sharegroupCount'] as int).input(),
-      sharegroupListUrl: map['sharegroupListUrl'] == null ? null : (map['sharegroupListUrl'] as String).input(),
+      sharegroupCount: map['sharegroupCount'] == null ? null : (map['sharegroupCount']! as int).input(),
+      sharegroupListUrl: map['sharegroupListUrl'] == null ? null : (map['sharegroupListUrl']! as String).input(),
     );
   }
 }

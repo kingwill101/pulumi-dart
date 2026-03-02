@@ -36,7 +36,7 @@ class GetTrialArgs {
   factory GetTrialArgs.fromMap(Map<String, dynamic> map) {
     return GetTrialArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       studyId: (map['studyId'] as String).input(),
       trialId: (map['trialId'] as String).input(),
     );

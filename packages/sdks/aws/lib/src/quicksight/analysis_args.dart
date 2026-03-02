@@ -75,15 +75,15 @@ class AnalysisArgs {
   factory AnalysisArgs.fromMap(Map<String, dynamic> map) {
     return AnalysisArgs(
       analysisId: (map['analysisId'] as String).input(),
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (AnalysisParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
-      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<AnalysisPermission>(map['permissions'], (value) => AnalysisPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      recoveryWindowInDays: map['recoveryWindowInDays'] == null ? null : (map['recoveryWindowInDays'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sourceEntity: map['sourceEntity'] == null ? null : (AnalysisSourceEntity.fromMap((map['sourceEntity'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      themeArn: map['themeArn'] == null ? null : (map['themeArn'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      parameters: map['parameters'] == null ? null : ((AnalysisParameters.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input()).input(),
+      permissions: map['permissions'] == null ? null : ((pulumi.Input.decodeList<AnalysisPermission>(map['permissions']!, (value) => AnalysisPermission.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      recoveryWindowInDays: map['recoveryWindowInDays'] == null ? null : ((map['recoveryWindowInDays'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sourceEntity: map['sourceEntity'] == null ? null : ((AnalysisSourceEntity.fromMap((map['sourceEntity']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      themeArn: map['themeArn'] == null ? null : ((map['themeArn'] as String).input()).input(),
     );
   }
 }

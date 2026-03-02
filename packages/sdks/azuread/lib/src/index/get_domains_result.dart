@@ -52,14 +52,14 @@ class GetDomainsResult {
 
   factory GetDomainsResult.fromMap(Map<String, dynamic> map) {
     return GetDomainsResult(
-      adminManaged: map['adminManaged'] == null ? null : map['adminManaged'] as bool,
+      adminManaged: map['adminManaged'] == null ? null : map['adminManaged']! as bool,
       domains: pulumi.Input.decodeList<GetDomainsDomain>(map['domains'], (value) => GetDomainsDomain.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      includeUnverified: map['includeUnverified'] == null ? null : map['includeUnverified'] as bool,
-      onlyDefault: map['onlyDefault'] == null ? null : map['onlyDefault'] as bool,
-      onlyInitial: map['onlyInitial'] == null ? null : map['onlyInitial'] as bool,
-      onlyRoot: map['onlyRoot'] == null ? null : map['onlyRoot'] as bool,
-      supportsServices: map['supportsServices'] == null ? null : (map['supportsServices'] as List).cast<String>(),
+      includeUnverified: map['includeUnverified'] == null ? null : map['includeUnverified']! as bool,
+      onlyDefault: map['onlyDefault'] == null ? null : map['onlyDefault']! as bool,
+      onlyInitial: map['onlyInitial'] == null ? null : map['onlyInitial']! as bool,
+      onlyRoot: map['onlyRoot'] == null ? null : map['onlyRoot']! as bool,
+      supportsServices: map['supportsServices'] == null ? null : (map['supportsServices']! as List).cast<String>(),
     );
   }
 }

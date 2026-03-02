@@ -50,13 +50,13 @@ class GetAccessGroupsArgs {
 
   factory GetAccessGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessGroupsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      limit: map['limit'] == null ? null : (map['limit'] as int).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      orderBy: map['orderBy'] == null ? null : (map['orderBy'] as String).input(),
-      orderType: map['orderType'] == null ? null : (map['orderType'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      startOffset: map['startOffset'] == null ? null : (map['startOffset'] as int).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      limit: map['limit'] == null ? null : (map['limit']! as int).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      orderBy: map['orderBy'] == null ? null : (map['orderBy']! as String).input(),
+      orderType: map['orderType'] == null ? null : (map['orderType']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      startOffset: map['startOffset'] == null ? null : (map['startOffset']! as int).input(),
     );
   }
 }

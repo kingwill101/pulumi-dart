@@ -41,11 +41,11 @@ class PrometheusMonitoringState {
 
   factory PrometheusMonitoringState.fromMap(Map<String, dynamic> map) {
     return PrometheusMonitoringState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      configYaml: map['configYaml'] == null ? null : (map['configYaml'] as String).input(),
-      monitoringName: map['monitoringName'] == null ? null : (map['monitoringName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      configYaml: map['configYaml'] == null ? null : (map['configYaml']! as String).input(),
+      monitoringName: map['monitoringName'] == null ? null : (map['monitoringName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

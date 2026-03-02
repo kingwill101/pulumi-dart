@@ -32,9 +32,9 @@ class ExecutionStageState {
 
   factory ExecutionStageState.fromMap(Map<String, dynamic> map) {
     return ExecutionStageState(
-      currentStateTime: map['currentStateTime'] == null ? null : (map['currentStateTime'] as String).input(),
-      executionStageName: map['executionStageName'] == null ? null : (map['executionStageName'] as String).input(),
-      executionStageState: map['executionStageState'] == null ? null : (ExecutionStageStateExecutionStageState.fromValue(map['executionStageState'] as String)).input(),
+      currentStateTime: map['currentStateTime'] == null ? null : (map['currentStateTime']! as String).input(),
+      executionStageName: map['executionStageName'] == null ? null : (map['executionStageName']! as String).input(),
+      executionStageState: map['executionStageState'] == null ? null : (ExecutionStageStateExecutionStageState.fromValue(map['executionStageState']! as String)).input(),
     );
   }
 }

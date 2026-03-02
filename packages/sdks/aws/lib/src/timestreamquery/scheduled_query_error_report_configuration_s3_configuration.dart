@@ -31,8 +31,8 @@ class ScheduledQueryErrorReportConfigurationS3Configuration {
   factory ScheduledQueryErrorReportConfigurationS3Configuration.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryErrorReportConfigurationS3Configuration(
       bucketName: (map['bucketName'] as String).input(),
-      encryptionOption: map['encryptionOption'] == null ? null : (map['encryptionOption'] as String).input(),
-      objectKeyPrefix: map['objectKeyPrefix'] == null ? null : (map['objectKeyPrefix'] as String).input(),
+      encryptionOption: map['encryptionOption'] == null ? null : ((map['encryptionOption'] as String).input()).input(),
+      objectKeyPrefix: map['objectKeyPrefix'] == null ? null : ((map['objectKeyPrefix'] as String).input()).input(),
     );
   }
 }

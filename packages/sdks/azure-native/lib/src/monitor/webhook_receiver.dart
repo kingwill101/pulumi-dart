@@ -56,14 +56,14 @@ class WebhookReceiver {
 
   factory WebhookReceiver.fromMap(Map<String, dynamic> map) {
     return WebhookReceiver(
-      identifierUri: map['identifierUri'] == null ? null : (map['identifierUri'] as String).input(),
-      managedIdentity: map['managedIdentity'] == null ? null : (map['managedIdentity'] as String).input(),
+      identifierUri: map['identifierUri'] == null ? null : (map['identifierUri']! as String).input(),
+      managedIdentity: map['managedIdentity'] == null ? null : (map['managedIdentity']! as String).input(),
       name: (map['name'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
       serviceUri: (map['serviceUri'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      useAadAuth: map['useAadAuth'] == null ? null : (map['useAadAuth'] as bool).input(),
-      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema'] as bool).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      useAadAuth: map['useAadAuth'] == null ? null : (map['useAadAuth']! as bool).input(),
+      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema']! as bool).input(),
     );
   }
 }

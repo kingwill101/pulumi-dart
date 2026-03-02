@@ -30,9 +30,9 @@ class VpcEndpointSubnetConfiguration {
 
   factory VpcEndpointSubnetConfiguration.fromMap(Map<String, dynamic> map) {
     return VpcEndpointSubnetConfiguration(
-      ipv4: map['ipv4'] == null ? null : (map['ipv4'] as String).input(),
-      ipv6: map['ipv6'] == null ? null : (map['ipv6'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      ipv4: map['ipv4'] == null ? null : ((map['ipv4'] as String).input()).input(),
+      ipv6: map['ipv6'] == null ? null : ((map['ipv6'] as String).input()).input(),
+      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
     );
   }
 }

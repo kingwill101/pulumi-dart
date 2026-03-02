@@ -21,7 +21,7 @@ class WebAclRuleActionAllow {
 
   factory WebAclRuleActionAllow.fromMap(Map<String, dynamic> map) {
     return WebAclRuleActionAllow(
-      customRequestHandling: map['customRequestHandling'] == null ? null : (WebAclRuleActionAllowCustomRequestHandling.fromMap((map['customRequestHandling'] as Map).cast<String, dynamic>())).input(),
+      customRequestHandling: map['customRequestHandling'] == null ? null : ((WebAclRuleActionAllowCustomRequestHandling.fromMap((map['customRequestHandling']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

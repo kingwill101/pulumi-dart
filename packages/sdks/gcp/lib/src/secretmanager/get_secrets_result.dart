@@ -36,7 +36,7 @@ class GetSecretsResult {
 
   factory GetSecretsResult.fromMap(Map<String, dynamic> map) {
     return GetSecretsResult(
-      filter: map['filter'] == null ? null : map['filter'] as String,
+      filter: map['filter'] == null ? null : map['filter']! as String,
       id: map['id'] as String,
       project: map['project'] as String,
       secrets: pulumi.Input.decodeList<GetSecretsSecret>(map['secrets'], (value) => GetSecretsSecret.fromMap((value as Map).cast<String, dynamic>())),

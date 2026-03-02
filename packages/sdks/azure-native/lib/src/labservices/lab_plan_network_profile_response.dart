@@ -21,7 +21,7 @@ class LabPlanNetworkProfileResponse {
 
   factory LabPlanNetworkProfileResponse.fromMap(Map<String, dynamic> map) {
     return LabPlanNetworkProfileResponse(
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

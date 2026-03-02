@@ -46,10 +46,10 @@ class AkriConnectorTemplateProperties {
 
   factory AkriConnectorTemplateProperties.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateProperties(
-      aioMetadata: map['aioMetadata'] == null ? null : (AkriConnectorTemplateAioMetadata.fromMap((map['aioMetadata'] as Map).cast<String, dynamic>())).input(),
+      aioMetadata: map['aioMetadata'] == null ? null : (AkriConnectorTemplateAioMetadata.fromMap((map['aioMetadata']! as Map).cast<String, dynamic>())).input(),
       deviceInboundEndpointTypes: (pulumi.Input.decodeList<AkriConnectorTemplateDeviceInboundEndpointType>(map['deviceInboundEndpointTypes'], (value) => AkriConnectorTemplateDeviceInboundEndpointType.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      diagnostics: map['diagnostics'] == null ? null : (AkriConnectorTemplateDiagnostics.fromMap((map['diagnostics'] as Map).cast<String, dynamic>())).input(),
-      mqttConnectionConfiguration: map['mqttConnectionConfiguration'] == null ? null : (AkriConnectorsMqttConnectionConfiguration.fromMap((map['mqttConnectionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      diagnostics: map['diagnostics'] == null ? null : (AkriConnectorTemplateDiagnostics.fromMap((map['diagnostics']! as Map).cast<String, dynamic>())).input(),
+      mqttConnectionConfiguration: map['mqttConnectionConfiguration'] == null ? null : (AkriConnectorsMqttConnectionConfiguration.fromMap((map['mqttConnectionConfiguration']! as Map).cast<String, dynamic>())).input(),
       runtimeConfiguration: (AkriConnectorTemplateHelmConfiguration.fromMap((map['runtimeConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }

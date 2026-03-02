@@ -58,13 +58,13 @@ class KxEnvironmentArgs {
 
   factory KxEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return KxEnvironmentArgs(
-      customDnsConfigurations: map['customDnsConfigurations'] == null ? null : (pulumi.Input.decodeList<KxEnvironmentCustomDnsConfiguration>(map['customDnsConfigurations'], (value) => KxEnvironmentCustomDnsConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      customDnsConfigurations: map['customDnsConfigurations'] == null ? null : ((pulumi.Input.decodeList<KxEnvironmentCustomDnsConfiguration>(map['customDnsConfigurations']!, (value) => KxEnvironmentCustomDnsConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       kmsKeyId: (map['kmsKeyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      transitGatewayConfiguration: map['transitGatewayConfiguration'] == null ? null : (KxEnvironmentTransitGatewayConfiguration.fromMap((map['transitGatewayConfiguration'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      transitGatewayConfiguration: map['transitGatewayConfiguration'] == null ? null : ((KxEnvironmentTransitGatewayConfiguration.fromMap((map['transitGatewayConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -37,7 +37,7 @@ class JobScheduleArgs {
   factory JobScheduleArgs.fromMap(Map<String, dynamic> map) {
     return JobScheduleArgs(
       startMode: (map['startMode'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
       streamAnalyticsJobId: (map['streamAnalyticsJobId'] as String).input(),
     );
   }

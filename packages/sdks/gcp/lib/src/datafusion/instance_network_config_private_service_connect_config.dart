@@ -37,9 +37,9 @@ class InstanceNetworkConfigPrivateServiceConnectConfig {
 
   factory InstanceNetworkConfigPrivateServiceConnectConfig.fromMap(Map<String, dynamic> map) {
     return InstanceNetworkConfigPrivateServiceConnectConfig(
-      effectiveUnreachableCidrBlock: map['effectiveUnreachableCidrBlock'] == null ? null : (map['effectiveUnreachableCidrBlock'] as String).input(),
-      networkAttachment: map['networkAttachment'] == null ? null : (map['networkAttachment'] as String).input(),
-      unreachableCidrBlock: map['unreachableCidrBlock'] == null ? null : (map['unreachableCidrBlock'] as String).input(),
+      effectiveUnreachableCidrBlock: map['effectiveUnreachableCidrBlock'] == null ? null : (map['effectiveUnreachableCidrBlock']! as String).input(),
+      networkAttachment: map['networkAttachment'] == null ? null : (map['networkAttachment']! as String).input(),
+      unreachableCidrBlock: map['unreachableCidrBlock'] == null ? null : (map['unreachableCidrBlock']! as String).input(),
     );
   }
 }

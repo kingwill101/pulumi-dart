@@ -32,9 +32,9 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSc
 
   factory ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchema.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchema(
-      recordColumns: (pulumi.Input.decodeList<ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordColumn>(map['recordColumns'], (value) => ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      recordEncoding: map['recordEncoding'] == null ? null : (map['recordEncoding'] as String).input(),
-      recordFormat: (ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormat.fromMap((map['recordFormat'] as Map).cast<String, dynamic>())).input(),
+      recordColumns: (pulumi.Input.decodeList<ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordColumn>(map['recordColumns']!, (value) => ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      recordEncoding: map['recordEncoding'] == null ? null : ((map['recordEncoding'] as String).input()).input(),
+      recordFormat: (ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormat.fromMap((map['recordFormat']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

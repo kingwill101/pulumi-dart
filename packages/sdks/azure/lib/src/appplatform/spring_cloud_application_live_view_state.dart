@@ -26,8 +26,8 @@ class SpringCloudApplicationLiveViewState {
 
   factory SpringCloudApplicationLiveViewState.fromMap(Map<String, dynamic> map) {
     return SpringCloudApplicationLiveViewState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId']! as String).input(),
     );
   }
 }

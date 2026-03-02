@@ -58,13 +58,13 @@ class MonitorArgs {
 
   factory MonitorArgs.fromMap(Map<String, dynamic> map) {
     return MonitorArgs(
-      localResources: (pulumi.Input.decodeList<MonitorLocalResource>(map['localResources'], (value) => MonitorLocalResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      localResources: (pulumi.Input.decodeList<MonitorLocalResource>(map['localResources']!, (value) => MonitorLocalResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
       monitorName: (map['monitorName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      remoteResources: map['remoteResources'] == null ? null : (pulumi.Input.decodeList<MonitorRemoteResource>(map['remoteResources'], (value) => MonitorRemoteResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      remoteResources: map['remoteResources'] == null ? null : ((pulumi.Input.decodeList<MonitorRemoteResource>(map['remoteResources']!, (value) => MonitorRemoteResource.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       scopeArn: (map['scopeArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (MonitorTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((MonitorTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

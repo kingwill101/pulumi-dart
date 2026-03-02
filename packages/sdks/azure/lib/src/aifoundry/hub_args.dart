@@ -104,22 +104,22 @@ class HubArgs {
 
   factory HubArgs.fromMap(Map<String, dynamic> map) {
     return HubArgs(
-      applicationInsightsId: map['applicationInsightsId'] == null ? null : (map['applicationInsightsId'] as String).input(),
-      containerRegistryId: map['containerRegistryId'] == null ? null : (map['containerRegistryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryption: map['encryption'] == null ? null : (HubEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      highBusinessImpactEnabled: map['highBusinessImpactEnabled'] == null ? null : (map['highBusinessImpactEnabled'] as bool).input(),
+      applicationInsightsId: map['applicationInsightsId'] == null ? null : (map['applicationInsightsId']! as String).input(),
+      containerRegistryId: map['containerRegistryId'] == null ? null : (map['containerRegistryId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encryption: map['encryption'] == null ? null : (HubEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      highBusinessImpactEnabled: map['highBusinessImpactEnabled'] == null ? null : (map['highBusinessImpactEnabled']! as bool).input(),
       identity: (HubIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
       keyVaultId: (map['keyVaultId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedNetwork: map['managedNetwork'] == null ? null : (HubManagedNetwork.fromMap((map['managedNetwork'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      primaryUserAssignedIdentity: map['primaryUserAssignedIdentity'] == null ? null : (map['primaryUserAssignedIdentity'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedNetwork: map['managedNetwork'] == null ? null : (HubManagedNetwork.fromMap((map['managedNetwork']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      primaryUserAssignedIdentity: map['primaryUserAssignedIdentity'] == null ? null : (map['primaryUserAssignedIdentity']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       storageAccountId: (map['storageAccountId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

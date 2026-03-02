@@ -28,7 +28,7 @@ class FrontdoorSecretSecretCustomerCertificate {
   factory FrontdoorSecretSecretCustomerCertificate.fromMap(Map<String, dynamic> map) {
     return FrontdoorSecretSecretCustomerCertificate(
       keyVaultCertificateId: (map['keyVaultCertificateId'] as String).input(),
-      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : ((map['subjectAlternativeNames'] as List).cast<String>()).input(),
+      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : ((map['subjectAlternativeNames']! as List).cast<String>()).input(),
     );
   }
 }

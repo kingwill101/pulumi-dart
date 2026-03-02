@@ -44,10 +44,10 @@ class LocalRulestackFqdnListArgs {
 
   factory LocalRulestackFqdnListArgs.fromMap(Map<String, dynamic> map) {
     return LocalRulestackFqdnListArgs(
-      auditComment: map['auditComment'] == null ? null : (map['auditComment'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      auditComment: map['auditComment'] == null ? null : (map['auditComment']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       fullyQualifiedDomainNames: ((map['fullyQualifiedDomainNames'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       rulestackId: (map['rulestackId'] as String).input(),
     );
   }

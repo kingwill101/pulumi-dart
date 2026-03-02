@@ -49,12 +49,12 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
-      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      purpose: map['purpose'] == null ? null : (map['purpose'] as String).input(),
-      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      environment: map['environment'] == null ? null : (map['environment']! as String).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      purpose: map['purpose'] == null ? null : (map['purpose']! as String).input(),
+      resources: map['resources'] == null ? null : ((map['resources']! as List).cast<String>()).input(),
     );
   }
 }

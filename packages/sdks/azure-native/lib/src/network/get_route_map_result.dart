@@ -62,14 +62,14 @@ class GetRouteMapResult {
 
   factory GetRouteMapResult.fromMap(Map<String, dynamic> map) {
     return GetRouteMapResult(
-      associatedInboundConnections: map['associatedInboundConnections'] == null ? null : (map['associatedInboundConnections'] as List).cast<String>(),
-      associatedOutboundConnections: map['associatedOutboundConnections'] == null ? null : (map['associatedOutboundConnections'] as List).cast<String>(),
+      associatedInboundConnections: map['associatedInboundConnections'] == null ? null : (map['associatedInboundConnections']! as List).cast<String>(),
+      associatedOutboundConnections: map['associatedOutboundConnections'] == null ? null : (map['associatedOutboundConnections']! as List).cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<RouteMapRuleResponse>(map['rules'], (value) => RouteMapRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      rules: map['rules'] == null ? null : pulumi.Input.decodeList<RouteMapRuleResponse>(map['rules']!, (value) => RouteMapRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }

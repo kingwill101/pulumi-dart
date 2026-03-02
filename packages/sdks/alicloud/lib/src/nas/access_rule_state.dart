@@ -61,15 +61,15 @@ class AccessRuleState {
 
   factory AccessRuleState.fromMap(Map<String, dynamic> map) {
     return AccessRuleState(
-      accessGroupName: map['accessGroupName'] == null ? null : (map['accessGroupName'] as String).input(),
-      accessRuleId: map['accessRuleId'] == null ? null : (map['accessRuleId'] as String).input(),
-      fileSystemType: map['fileSystemType'] == null ? null : (map['fileSystemType'] as String).input(),
-      ipv6SourceCidrIp: map['ipv6SourceCidrIp'] == null ? null : (map['ipv6SourceCidrIp'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      rwAccessType: map['rwAccessType'] == null ? null : (map['rwAccessType'] as String).input(),
-      sourceCidrIp: map['sourceCidrIp'] == null ? null : (map['sourceCidrIp'] as String).input(),
-      userAccessType: map['userAccessType'] == null ? null : (map['userAccessType'] as String).input(),
+      accessGroupName: map['accessGroupName'] == null ? null : (map['accessGroupName']! as String).input(),
+      accessRuleId: map['accessRuleId'] == null ? null : (map['accessRuleId']! as String).input(),
+      fileSystemType: map['fileSystemType'] == null ? null : (map['fileSystemType']! as String).input(),
+      ipv6SourceCidrIp: map['ipv6SourceCidrIp'] == null ? null : (map['ipv6SourceCidrIp']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      rwAccessType: map['rwAccessType'] == null ? null : (map['rwAccessType']! as String).input(),
+      sourceCidrIp: map['sourceCidrIp'] == null ? null : (map['sourceCidrIp']! as String).input(),
+      userAccessType: map['userAccessType'] == null ? null : (map['userAccessType']! as String).input(),
     );
   }
 }

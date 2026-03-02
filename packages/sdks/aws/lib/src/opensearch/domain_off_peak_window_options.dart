@@ -25,8 +25,8 @@ class DomainOffPeakWindowOptions {
 
   factory DomainOffPeakWindowOptions.fromMap(Map<String, dynamic> map) {
     return DomainOffPeakWindowOptions(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      offPeakWindow: map['offPeakWindow'] == null ? null : (DomainOffPeakWindowOptionsOffPeakWindow.fromMap((map['offPeakWindow'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      offPeakWindow: map['offPeakWindow'] == null ? null : ((DomainOffPeakWindowOptionsOffPeakWindow.fromMap((map['offPeakWindow']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

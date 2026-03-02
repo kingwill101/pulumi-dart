@@ -85,7 +85,7 @@ class GetClustersCluster {
       minorVersion: (map['minorVersion'] as String).input(),
       payType: (map['payType'] as String).input(),
       status: (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -112,19 +112,19 @@ class AppVersionSnapshotGuardrail {
 
   factory AppVersionSnapshotGuardrail.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrail(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailAction>(map['actions'], (value) => AppVersionSnapshotGuardrailAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      codeCallbacks: map['codeCallbacks'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailCodeCallback>(map['codeCallbacks'], (value) => AppVersionSnapshotGuardrailCodeCallback.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      contentFilters: map['contentFilters'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailContentFilter>(map['contentFilters'], (value) => AppVersionSnapshotGuardrailContentFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      llmPolicies: map['llmPolicies'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailLlmPolicy>(map['llmPolicies'], (value) => AppVersionSnapshotGuardrailLlmPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      llmPromptSecurities: map['llmPromptSecurities'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailLlmPromptSecurity>(map['llmPromptSecurities'], (value) => AppVersionSnapshotGuardrailLlmPromptSecurity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      modelSafeties: map['modelSafeties'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailModelSafety>(map['modelSafeties'], (value) => AppVersionSnapshotGuardrailModelSafety.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailAction>(map['actions']!, (value) => AppVersionSnapshotGuardrailAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      codeCallbacks: map['codeCallbacks'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailCodeCallback>(map['codeCallbacks']!, (value) => AppVersionSnapshotGuardrailCodeCallback.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      contentFilters: map['contentFilters'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailContentFilter>(map['contentFilters']!, (value) => AppVersionSnapshotGuardrailContentFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      llmPolicies: map['llmPolicies'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailLlmPolicy>(map['llmPolicies']!, (value) => AppVersionSnapshotGuardrailLlmPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      llmPromptSecurities: map['llmPromptSecurities'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailLlmPromptSecurity>(map['llmPromptSecurities']!, (value) => AppVersionSnapshotGuardrailLlmPromptSecurity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      modelSafeties: map['modelSafeties'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailModelSafety>(map['modelSafeties']!, (value) => AppVersionSnapshotGuardrailModelSafety.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

@@ -33,8 +33,8 @@ class SshPublicKeyOsloginV1betaArgs {
 
   factory SshPublicKeyOsloginV1betaArgs.fromMap(Map<String, dynamic> map) {
     return SshPublicKeyOsloginV1betaArgs(
-      expirationTimeUsec: map['expirationTimeUsec'] == null ? null : (map['expirationTimeUsec'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      expirationTimeUsec: map['expirationTimeUsec'] == null ? null : (map['expirationTimeUsec']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
       userId: (map['userId'] as String).input(),
     );
   }

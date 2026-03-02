@@ -53,7 +53,7 @@ class ServiceGroupMemberRelationshipPropertiesResponse {
       provisioningState: (map['provisioningState'] as String).input(),
       sourceId: (map['sourceId'] as String).input(),
       targetId: (map['targetId'] as String).input(),
-      targetTenant: map['targetTenant'] == null ? null : (map['targetTenant'] as String).input(),
+      targetTenant: map['targetTenant'] == null ? null : (map['targetTenant']! as String).input(),
     );
   }
 }

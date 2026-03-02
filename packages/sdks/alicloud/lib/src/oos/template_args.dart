@@ -49,12 +49,12 @@ class TemplateArgs {
 
   factory TemplateArgs.fromMap(Map<String, dynamic> map) {
     return TemplateArgs(
-      autoDeleteExecutions: map['autoDeleteExecutions'] == null ? null : (map['autoDeleteExecutions'] as bool).input(),
+      autoDeleteExecutions: map['autoDeleteExecutions'] == null ? null : (map['autoDeleteExecutions']! as bool).input(),
       content: (map['content'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       templateName: (map['templateName'] as String).input(),
-      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName']! as String).input(),
     );
   }
 }

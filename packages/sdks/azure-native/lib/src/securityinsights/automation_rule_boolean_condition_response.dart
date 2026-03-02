@@ -26,8 +26,8 @@ class AutomationRuleBooleanConditionResponse {
 
   factory AutomationRuleBooleanConditionResponse.fromMap(Map<String, dynamic> map) {
     return AutomationRuleBooleanConditionResponse(
-      innerConditions: map['innerConditions'] == null ? null : (pulumi.Input.decodeList<BooleanConditionPropertiesResponse>(map['innerConditions'], (value) => BooleanConditionPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
+      innerConditions: map['innerConditions'] == null ? null : (pulumi.Input.decodeList<BooleanConditionPropertiesResponse>(map['innerConditions']!, (value) => BooleanConditionPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
     );
   }
 }

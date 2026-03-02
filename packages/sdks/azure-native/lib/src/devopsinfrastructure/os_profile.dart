@@ -27,8 +27,8 @@ class OsProfile {
 
   factory OsProfile.fromMap(Map<String, dynamic> map) {
     return OsProfile(
-      logonType: map['logonType'] == null ? null : (map['logonType'] as String).input(),
-      secretsManagementSettings: map['secretsManagementSettings'] == null ? null : (SecretsManagementSettings.fromMap((map['secretsManagementSettings'] as Map).cast<String, dynamic>())).input(),
+      logonType: map['logonType'] == null ? null : (map['logonType']! as String).input(),
+      secretsManagementSettings: map['secretsManagementSettings'] == null ? null : (SecretsManagementSettings.fromMap((map['secretsManagementSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

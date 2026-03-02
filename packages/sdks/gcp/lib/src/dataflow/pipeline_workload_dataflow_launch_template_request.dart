@@ -43,11 +43,11 @@ class PipelineWorkloadDataflowLaunchTemplateRequest {
 
   factory PipelineWorkloadDataflowLaunchTemplateRequest.fromMap(Map<String, dynamic> map) {
     return PipelineWorkloadDataflowLaunchTemplateRequest(
-      gcsPath: map['gcsPath'] == null ? null : (map['gcsPath'] as String).input(),
-      launchParameters: map['launchParameters'] == null ? null : (PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters.fromMap((map['launchParameters'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      gcsPath: map['gcsPath'] == null ? null : (map['gcsPath']! as String).input(),
+      launchParameters: map['launchParameters'] == null ? null : (PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters.fromMap((map['launchParameters']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       projectId: (map['projectId'] as String).input(),
-      validateOnly: map['validateOnly'] == null ? null : (map['validateOnly'] as bool).input(),
+      validateOnly: map['validateOnly'] == null ? null : (map['validateOnly']! as bool).input(),
     );
   }
 }

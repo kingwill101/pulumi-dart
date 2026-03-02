@@ -52,11 +52,11 @@ class VolumeGroupArgs {
   factory VolumeGroupArgs.fromMap(Map<String, dynamic> map) {
     return VolumeGroupArgs(
       accountName: (map['accountName'] as String).input(),
-      groupMetaData: map['groupMetaData'] == null ? null : (VolumeGroupMetaData.fromMap((map['groupMetaData'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      groupMetaData: map['groupMetaData'] == null ? null : (VolumeGroupMetaData.fromMap((map['groupMetaData']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      volumeGroupName: map['volumeGroupName'] == null ? null : (map['volumeGroupName'] as String).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<VolumeGroupVolumeProperties>(map['volumes'], (value) => VolumeGroupVolumeProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumeGroupName: map['volumeGroupName'] == null ? null : (map['volumeGroupName']! as String).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<VolumeGroupVolumeProperties>(map['volumes']!, (value) => VolumeGroupVolumeProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

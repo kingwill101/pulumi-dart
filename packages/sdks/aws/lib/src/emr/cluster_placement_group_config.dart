@@ -26,7 +26,7 @@ class ClusterPlacementGroupConfig {
   factory ClusterPlacementGroupConfig.fromMap(Map<String, dynamic> map) {
     return ClusterPlacementGroupConfig(
       instanceRole: (map['instanceRole'] as String).input(),
-      placementStrategy: map['placementStrategy'] == null ? null : (map['placementStrategy'] as String).input(),
+      placementStrategy: map['placementStrategy'] == null ? null : ((map['placementStrategy'] as String).input()).input(),
     );
   }
 }

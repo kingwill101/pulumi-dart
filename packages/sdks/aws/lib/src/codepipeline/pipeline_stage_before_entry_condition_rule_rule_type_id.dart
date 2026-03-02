@@ -36,9 +36,9 @@ class PipelineStageBeforeEntryConditionRuleRuleTypeId {
   factory PipelineStageBeforeEntryConditionRuleRuleTypeId.fromMap(Map<String, dynamic> map) {
     return PipelineStageBeforeEntryConditionRuleRuleTypeId(
       category: (map['category'] as String).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
+      owner: map['owner'] == null ? null : ((map['owner'] as String).input()).input(),
       provider: (map['provider'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

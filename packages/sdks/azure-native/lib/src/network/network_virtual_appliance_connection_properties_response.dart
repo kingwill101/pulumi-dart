@@ -52,13 +52,13 @@ class NetworkVirtualApplianceConnectionPropertiesResponse {
 
   factory NetworkVirtualApplianceConnectionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NetworkVirtualApplianceConnectionPropertiesResponse(
-      asn: map['asn'] == null ? null : (map['asn'] as double).input(),
-      bgpPeerAddress: map['bgpPeerAddress'] == null ? null : ((map['bgpPeerAddress'] as List).cast<String>()).input(),
-      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : (map['enableInternetSecurity'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      asn: map['asn'] == null ? null : (map['asn']! as double).input(),
+      bgpPeerAddress: map['bgpPeerAddress'] == null ? null : ((map['bgpPeerAddress']! as List).cast<String>()).input(),
+      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : (map['enableInternetSecurity']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      routingConfiguration: map['routingConfiguration'] == null ? null : (RoutingConfigurationResponse.fromMap((map['routingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      tunnelIdentifier: map['tunnelIdentifier'] == null ? null : (map['tunnelIdentifier'] as double).input(),
+      routingConfiguration: map['routingConfiguration'] == null ? null : (RoutingConfigurationResponse.fromMap((map['routingConfiguration']! as Map).cast<String, dynamic>())).input(),
+      tunnelIdentifier: map['tunnelIdentifier'] == null ? null : (map['tunnelIdentifier']! as double).input(),
     );
   }
 }

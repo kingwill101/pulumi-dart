@@ -26,7 +26,7 @@ class ObjectFieldSelector {
 
   factory ObjectFieldSelector.fromMap(Map<String, dynamic> map) {
     return ObjectFieldSelector(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
       fieldPath: (map['fieldPath'] as String).input(),
     );
   }

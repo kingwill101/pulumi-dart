@@ -43,11 +43,11 @@ class DomainDevicesHostdevSubsysPci {
 
   factory DomainDevicesHostdevSubsysPci.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevSubsysPci(
-      display: map['display'] == null ? null : (map['display'] as String).input(),
-      driver: map['driver'] == null ? null : (DomainDevicesHostdevSubsysPciDriver.fromMap((map['driver'] as Map).cast<String, dynamic>())).input(),
-      ramFb: map['ramFb'] == null ? null : (map['ramFb'] as String).input(),
-      source: map['source'] == null ? null : (DomainDevicesHostdevSubsysPciSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      teaming: map['teaming'] == null ? null : (DomainDevicesHostdevSubsysPciTeaming.fromMap((map['teaming'] as Map).cast<String, dynamic>())).input(),
+      display: map['display'] == null ? null : (map['display']! as String).input(),
+      driver: map['driver'] == null ? null : (DomainDevicesHostdevSubsysPciDriver.fromMap((map['driver']! as Map).cast<String, dynamic>())).input(),
+      ramFb: map['ramFb'] == null ? null : (map['ramFb']! as String).input(),
+      source: map['source'] == null ? null : (DomainDevicesHostdevSubsysPciSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      teaming: map['teaming'] == null ? null : (DomainDevicesHostdevSubsysPciTeaming.fromMap((map['teaming']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

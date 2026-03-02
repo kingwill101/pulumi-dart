@@ -29,7 +29,7 @@ class AutoscalingPolicyBasicAlgorithm {
 
   factory AutoscalingPolicyBasicAlgorithm.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyBasicAlgorithm(
-      cooldownPeriod: map['cooldownPeriod'] == null ? null : (map['cooldownPeriod'] as String).input(),
+      cooldownPeriod: map['cooldownPeriod'] == null ? null : (map['cooldownPeriod']! as String).input(),
       yarnConfig: (AutoscalingPolicyBasicAlgorithmYarnConfig.fromMap((map['yarnConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }

@@ -36,9 +36,9 @@ class ChannelInputAttachmentAutomaticInputFailoverSettings {
 
   factory ChannelInputAttachmentAutomaticInputFailoverSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentAutomaticInputFailoverSettings(
-      errorClearTimeMsec: map['errorClearTimeMsec'] == null ? null : (map['errorClearTimeMsec'] as int).input(),
-      failoverConditions: map['failoverConditions'] == null ? null : (pulumi.Input.decodeList<ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition>(map['failoverConditions'], (value) => ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inputPreference: map['inputPreference'] == null ? null : (map['inputPreference'] as String).input(),
+      errorClearTimeMsec: map['errorClearTimeMsec'] == null ? null : ((map['errorClearTimeMsec'] as int).input()).input(),
+      failoverConditions: map['failoverConditions'] == null ? null : ((pulumi.Input.decodeList<ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition>(map['failoverConditions']!, (value) => ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      inputPreference: map['inputPreference'] == null ? null : ((map['inputPreference'] as String).input()).input(),
       secondaryInputId: (map['secondaryInputId'] as String).input(),
     );
   }

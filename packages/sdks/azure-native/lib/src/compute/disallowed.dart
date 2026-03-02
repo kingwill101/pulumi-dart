@@ -21,7 +21,7 @@ class Disallowed {
 
   factory Disallowed.fromMap(Map<String, dynamic> map) {
     return Disallowed(
-      diskTypes: map['diskTypes'] == null ? null : ((map['diskTypes'] as List).cast<String>()).input(),
+      diskTypes: map['diskTypes'] == null ? null : ((map['diskTypes']! as List).cast<String>()).input(),
     );
   }
 }

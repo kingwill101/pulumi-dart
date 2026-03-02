@@ -96,19 +96,19 @@ class ServiceMeshArgs {
 
   factory ServiceMeshArgs.fromMap(Map<String, dynamic> map) {
     return ServiceMeshArgs(
-      clusterIds: map['clusterIds'] == null ? null : ((map['clusterIds'] as List).cast<String>()).input(),
-      clusterSpec: map['clusterSpec'] == null ? null : (map['clusterSpec'] as String).input(),
-      customizedPrometheus: map['customizedPrometheus'] == null ? null : (map['customizedPrometheus'] as bool).input(),
-      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
-      extraConfiguration: map['extraConfiguration'] == null ? null : (ServiceMeshExtraConfiguration.fromMap((map['extraConfiguration'] as Map).cast<String, dynamic>())).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      loadBalancer: map['loadBalancer'] == null ? null : (ServiceMeshLoadBalancer.fromMap((map['loadBalancer'] as Map).cast<String, dynamic>())).input(),
-      meshConfig: map['meshConfig'] == null ? null : (ServiceMeshMeshConfig.fromMap((map['meshConfig'] as Map).cast<String, dynamic>())).input(),
+      clusterIds: map['clusterIds'] == null ? null : ((map['clusterIds']! as List).cast<String>()).input(),
+      clusterSpec: map['clusterSpec'] == null ? null : (map['clusterSpec']! as String).input(),
+      customizedPrometheus: map['customizedPrometheus'] == null ? null : (map['customizedPrometheus']! as bool).input(),
+      edition: map['edition'] == null ? null : (map['edition']! as String).input(),
+      extraConfiguration: map['extraConfiguration'] == null ? null : (ServiceMeshExtraConfiguration.fromMap((map['extraConfiguration']! as Map).cast<String, dynamic>())).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
+      loadBalancer: map['loadBalancer'] == null ? null : (ServiceMeshLoadBalancer.fromMap((map['loadBalancer']! as Map).cast<String, dynamic>())).input(),
+      meshConfig: map['meshConfig'] == null ? null : (ServiceMeshMeshConfig.fromMap((map['meshConfig']! as Map).cast<String, dynamic>())).input(),
       network: (ServiceMeshNetwork.fromMap((map['network'] as Map).cast<String, dynamic>())).input(),
-      prometheusUrl: map['prometheusUrl'] == null ? null : (map['prometheusUrl'] as String).input(),
-      serviceMeshName: map['serviceMeshName'] == null ? null : (map['serviceMeshName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      prometheusUrl: map['prometheusUrl'] == null ? null : (map['prometheusUrl']! as String).input(),
+      serviceMeshName: map['serviceMeshName'] == null ? null : (map['serviceMeshName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

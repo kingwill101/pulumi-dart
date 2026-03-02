@@ -32,7 +32,7 @@ class ProviderClientcert {
     return ProviderClientcert(
       cert: (map['cert'] as String).input(),
       key: (map['key'] as String).input(),
-      sslinline: map['sslinline'] == null ? null : (map['sslinline'] as bool).input(),
+      sslinline: map['sslinline'] == null ? null : (map['sslinline']! as bool).input(),
     );
   }
 }

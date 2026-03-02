@@ -73,7 +73,7 @@ class DeviceResponse {
   factory DeviceResponse.fromMap(Map<String, dynamic> map) {
     return DeviceResponse(
       chipSku: (map['chipSku'] as String).input(),
-      deviceId: map['deviceId'] == null ? null : (map['deviceId'] as String).input(),
+      deviceId: map['deviceId'] == null ? null : (map['deviceId']! as String).input(),
       id: (map['id'] as String).input(),
       lastAvailableOsVersion: (map['lastAvailableOsVersion'] as String).input(),
       lastInstalledOsVersion: (map['lastInstalledOsVersion'] as String).input(),

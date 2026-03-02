@@ -39,9 +39,9 @@ class ServerTrustCertificateArgs {
 
   factory ServerTrustCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ServerTrustCertificateArgs(
-      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName']! as String).input(),
       managedInstanceName: (map['managedInstanceName'] as String).input(),
-      publicBlob: map['publicBlob'] == null ? null : (map['publicBlob'] as String).input(),
+      publicBlob: map['publicBlob'] == null ? null : (map['publicBlob']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

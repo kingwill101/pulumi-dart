@@ -42,11 +42,11 @@ class ProjectFileSystemLocationResponse {
 
   factory ProjectFileSystemLocationResponse.fromMap(Map<String, dynamic> map) {
     return ProjectFileSystemLocationResponse(
-      identifier: map['identifier'] == null ? null : (map['identifier'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mountOptions: map['mountOptions'] == null ? null : (map['mountOptions'] as String).input(),
-      mountPoint: map['mountPoint'] == null ? null : (map['mountPoint'] as String).input(),
-      type: map['type'] == null ? null : (FileSystemTypeEnumValueResponse.fromMap((map['type'] as Map).cast<String, dynamic>())).input(),
+      identifier: map['identifier'] == null ? null : (map['identifier']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mountOptions: map['mountOptions'] == null ? null : (map['mountOptions']! as String).input(),
+      mountPoint: map['mountPoint'] == null ? null : (map['mountPoint']! as String).input(),
+      type: map['type'] == null ? null : (FileSystemTypeEnumValueResponse.fromMap((map['type']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

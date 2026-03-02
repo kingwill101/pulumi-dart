@@ -56,14 +56,14 @@ class RocketMQTopicState {
 
   factory RocketMQTopicState.fromMap(Map<String, dynamic> map) {
     return RocketMQTopicState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      maxSendTps: map['maxSendTps'] == null ? null : (map['maxSendTps'] as int).input(),
-      messageType: map['messageType'] == null ? null : (map['messageType'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      maxSendTps: map['maxSendTps'] == null ? null : (map['maxSendTps']! as int).input(),
+      messageType: map['messageType'] == null ? null : (map['messageType']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName']! as String).input(),
     );
   }
 }

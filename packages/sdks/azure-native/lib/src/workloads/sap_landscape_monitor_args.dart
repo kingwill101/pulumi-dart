@@ -41,10 +41,10 @@ class SapLandscapeMonitorArgs {
 
   factory SapLandscapeMonitorArgs.fromMap(Map<String, dynamic> map) {
     return SapLandscapeMonitorArgs(
-      grouping: map['grouping'] == null ? null : (SapLandscapeMonitorPropertiesGrouping.fromMap((map['grouping'] as Map).cast<String, dynamic>())).input(),
+      grouping: map['grouping'] == null ? null : (SapLandscapeMonitorPropertiesGrouping.fromMap((map['grouping']! as Map).cast<String, dynamic>())).input(),
       monitorName: (map['monitorName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      topMetricsThresholds: map['topMetricsThresholds'] == null ? null : (pulumi.Input.decodeList<SapLandscapeMonitorMetricThresholds>(map['topMetricsThresholds'], (value) => SapLandscapeMonitorMetricThresholds.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      topMetricsThresholds: map['topMetricsThresholds'] == null ? null : (pulumi.Input.decodeList<SapLandscapeMonitorMetricThresholds>(map['topMetricsThresholds']!, (value) => SapLandscapeMonitorMetricThresholds.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

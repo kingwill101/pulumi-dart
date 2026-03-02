@@ -64,11 +64,11 @@ class GetJitNetworkAccessPolicyResult {
     return GetJitNetworkAccessPolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      requests: map['requests'] == null ? null : pulumi.Input.decodeList<JitNetworkAccessRequestResponse>(map['requests'], (value) => JitNetworkAccessRequestResponse.fromMap((value as Map).cast<String, dynamic>())),
+      requests: map['requests'] == null ? null : pulumi.Input.decodeList<JitNetworkAccessRequestResponse>(map['requests']!, (value) => JitNetworkAccessRequestResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
       virtualMachines: pulumi.Input.decodeList<JitNetworkAccessPolicyVirtualMachineResponse>(map['virtualMachines'], (value) => JitNetworkAccessPolicyVirtualMachineResponse.fromMap((value as Map).cast<String, dynamic>())),
     );

@@ -26,7 +26,7 @@ class DomainDevicesDiskMirrorFormat {
 
   factory DomainDevicesDiskMirrorFormat.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorFormat(
-      metadataCache: map['metadataCache'] == null ? null : (DomainDevicesDiskMirrorFormatMetadataCache.fromMap((map['metadataCache'] as Map).cast<String, dynamic>())).input(),
+      metadataCache: map['metadataCache'] == null ? null : (DomainDevicesDiskMirrorFormatMetadataCache.fromMap((map['metadataCache']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

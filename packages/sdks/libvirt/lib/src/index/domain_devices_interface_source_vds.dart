@@ -35,9 +35,9 @@ class DomainDevicesInterfaceSourceVds {
 
   factory DomainDevicesInterfaceSourceVds.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceVds(
-      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as double).input(),
-      portGroupId: map['portGroupId'] == null ? null : (map['portGroupId'] as String).input(),
-      portId: map['portId'] == null ? null : (map['portId'] as double).input(),
+      connectionId: map['connectionId'] == null ? null : (map['connectionId']! as double).input(),
+      portGroupId: map['portGroupId'] == null ? null : (map['portGroupId']! as String).input(),
+      portId: map['portId'] == null ? null : (map['portId']! as double).input(),
       switchId: (map['switchId'] as String).input(),
     );
   }

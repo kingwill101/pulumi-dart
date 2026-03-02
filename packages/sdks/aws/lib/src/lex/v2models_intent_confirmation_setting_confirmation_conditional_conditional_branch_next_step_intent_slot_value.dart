@@ -20,7 +20,7 @@ class V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranchN
 
   factory V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranchNextStepIntentSlotValue.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranchNextStepIntentSlotValue(
-      interpretedValue: map['interpretedValue'] == null ? null : (map['interpretedValue'] as String).input(),
+      interpretedValue: map['interpretedValue'] == null ? null : ((map['interpretedValue'] as String).input()).input(),
     );
   }
 }

@@ -30,8 +30,8 @@ class DeviceConstraintPatchResourceK8sIoV1alpha3 {
 
   factory DeviceConstraintPatchResourceK8sIoV1alpha3.fromMap(Map<String, dynamic> map) {
     return DeviceConstraintPatchResourceK8sIoV1alpha3(
-      matchAttribute: map['matchAttribute'] == null ? null : (map['matchAttribute'] as String).input(),
-      requests: map['requests'] == null ? null : ((map['requests'] as List).cast<String>()).input(),
+      matchAttribute: map['matchAttribute'] == null ? null : (map['matchAttribute']! as String).input(),
+      requests: map['requests'] == null ? null : ((map['requests']! as List).cast<String>()).input(),
     );
   }
 }

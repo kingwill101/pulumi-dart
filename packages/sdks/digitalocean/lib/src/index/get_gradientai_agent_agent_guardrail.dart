@@ -75,18 +75,18 @@ class GetGradientaiAgentAgentGuardrail {
 
   factory GetGradientaiAgentAgentGuardrail.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentAgentGuardrail(
-      agentUuid: map['agentUuid'] == null ? null : (map['agentUuid'] as String).input(),
+      agentUuid: map['agentUuid'] == null ? null : (map['agentUuid']! as String).input(),
       createdAt: (map['createdAt'] as String).input(),
-      defaultResponse: map['defaultResponse'] == null ? null : (map['defaultResponse'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      guardrailUuid: map['guardrailUuid'] == null ? null : (map['guardrailUuid'] as String).input(),
+      defaultResponse: map['defaultResponse'] == null ? null : (map['defaultResponse']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      guardrailUuid: map['guardrailUuid'] == null ? null : (map['guardrailUuid']! as String).input(),
       isAttached: (map['isAttached'] as bool).input(),
-      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
       updatedAt: (map['updatedAt'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

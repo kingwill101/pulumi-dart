@@ -79,18 +79,18 @@ class TriggerBlobEventState {
 
   factory TriggerBlobEventState.fromMap(Map<String, dynamic> map) {
     return TriggerBlobEventState(
-      activated: map['activated'] == null ? null : (map['activated'] as bool).input(),
-      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
-      blobPathBeginsWith: map['blobPathBeginsWith'] == null ? null : (map['blobPathBeginsWith'] as String).input(),
-      blobPathEndsWith: map['blobPathEndsWith'] == null ? null : (map['blobPathEndsWith'] as String).input(),
-      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      events: map['events'] == null ? null : ((map['events'] as List).cast<String>()).input(),
-      ignoreEmptyBlobs: map['ignoreEmptyBlobs'] == null ? null : (map['ignoreEmptyBlobs'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pipelines: map['pipelines'] == null ? null : (pulumi.Input.decodeList<TriggerBlobEventPipeline>(map['pipelines'], (value) => TriggerBlobEventPipeline.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      activated: map['activated'] == null ? null : (map['activated']! as bool).input(),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties']! as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
+      blobPathBeginsWith: map['blobPathBeginsWith'] == null ? null : (map['blobPathBeginsWith']! as String).input(),
+      blobPathEndsWith: map['blobPathEndsWith'] == null ? null : (map['blobPathEndsWith']! as String).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      events: map['events'] == null ? null : ((map['events']! as List).cast<String>()).input(),
+      ignoreEmptyBlobs: map['ignoreEmptyBlobs'] == null ? null : (map['ignoreEmptyBlobs']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pipelines: map['pipelines'] == null ? null : (pulumi.Input.decodeList<TriggerBlobEventPipeline>(map['pipelines']!, (value) => TriggerBlobEventPipeline.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
     );
   }
 }

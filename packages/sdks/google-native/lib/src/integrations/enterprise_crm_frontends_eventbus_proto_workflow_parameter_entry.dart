@@ -89,20 +89,20 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry {
 
   factory EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry(
-      attributes: map['attributes'] == null ? null : (EnterpriseCrmEventbusProtoAttributes.fromMap((map['attributes'] as Map).cast<String, dynamic>())).input(),
-      children: map['children'] == null ? null : (pulumi.Input.decodeList<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry>(map['children'], (value) => EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dataType: map['dataType'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType.fromValue(map['dataType'] as String)).input(),
-      defaultValue: map['defaultValue'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoParameterValueType.fromMap((map['defaultValue'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      inOutType: map['inOutType'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutType.fromValue(map['inOutType'] as String)).input(),
-      isTransient: map['isTransient'] == null ? null : (map['isTransient'] as bool).input(),
-      jsonSchema: map['jsonSchema'] == null ? null : (map['jsonSchema'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      producedBy: map['producedBy'] == null ? null : (EnterpriseCrmEventbusProtoNodeIdentifier.fromMap((map['producedBy'] as Map).cast<String, dynamic>())).input(),
-      producer: map['producer'] == null ? null : (map['producer'] as String).input(),
-      protoDefName: map['protoDefName'] == null ? null : (map['protoDefName'] as String).input(),
-      protoDefPath: map['protoDefPath'] == null ? null : (map['protoDefPath'] as String).input(),
+      attributes: map['attributes'] == null ? null : (EnterpriseCrmEventbusProtoAttributes.fromMap((map['attributes']! as Map).cast<String, dynamic>())).input(),
+      children: map['children'] == null ? null : (pulumi.Input.decodeList<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry>(map['children']!, (value) => EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataType: map['dataType'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType.fromValue(map['dataType']! as String)).input(),
+      defaultValue: map['defaultValue'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoParameterValueType.fromMap((map['defaultValue']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      inOutType: map['inOutType'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutType.fromValue(map['inOutType']! as String)).input(),
+      isTransient: map['isTransient'] == null ? null : (map['isTransient']! as bool).input(),
+      jsonSchema: map['jsonSchema'] == null ? null : (map['jsonSchema']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      producedBy: map['producedBy'] == null ? null : (EnterpriseCrmEventbusProtoNodeIdentifier.fromMap((map['producedBy']! as Map).cast<String, dynamic>())).input(),
+      producer: map['producer'] == null ? null : (map['producer']! as String).input(),
+      protoDefName: map['protoDefName'] == null ? null : (map['protoDefName']! as String).input(),
+      protoDefPath: map['protoDefPath'] == null ? null : (map['protoDefPath']! as String).input(),
     );
   }
 }

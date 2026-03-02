@@ -45,11 +45,11 @@ class ConnectorDryrunArgs {
 
   factory ConnectorDryrunArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorDryrunArgs(
-      dryrunName: map['dryrunName'] == null ? null : (map['dryrunName'] as String).input(),
+      dryrunName: map['dryrunName'] == null ? null : (map['dryrunName']! as String).input(),
       location: (map['location'] as String).input(),
-      parameters: map['parameters'] == null ? null : (CreateOrUpdateDryrunParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : (CreateOrUpdateDryrunParameters.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

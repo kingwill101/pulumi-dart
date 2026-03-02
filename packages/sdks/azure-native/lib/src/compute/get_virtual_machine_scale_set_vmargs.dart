@@ -39,7 +39,7 @@ class GetVirtualMachineScaleSetVMArgs {
 
   factory GetVirtualMachineScaleSetVMArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineScaleSetVMArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       vmScaleSetName: (map['vmScaleSetName'] as String).input(),

@@ -109,7 +109,7 @@ class GetElasticityAssurancesAssurance {
       startTime: (map['startTime'] as String).input(),
       startTimeType: (map['startTimeType'] as String).input(),
       status: (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       totalAssuranceTimes: (map['totalAssuranceTimes'] as String).input(),
       usedAssuranceTimes: (map['usedAssuranceTimes'] as int).input(),
     );

@@ -34,7 +34,7 @@ class AzureResourceSignalGroupResponse {
     return AzureResourceSignalGroupResponse(
       authenticationSetting: (map['authenticationSetting'] as String).input(),
       azureResourceId: (map['azureResourceId'] as String).input(),
-      signalAssignments: map['signalAssignments'] == null ? null : (pulumi.Input.decodeList<SignalAssignmentResponse>(map['signalAssignments'], (value) => SignalAssignmentResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      signalAssignments: map['signalAssignments'] == null ? null : (pulumi.Input.decodeList<SignalAssignmentResponse>(map['signalAssignments']!, (value) => SignalAssignmentResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

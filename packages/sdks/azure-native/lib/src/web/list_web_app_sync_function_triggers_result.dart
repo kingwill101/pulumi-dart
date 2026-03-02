@@ -25,8 +25,8 @@ class ListWebAppSyncFunctionTriggersResult {
 
   factory ListWebAppSyncFunctionTriggersResult.fromMap(Map<String, dynamic> map) {
     return ListWebAppSyncFunctionTriggersResult(
-      key: map['key'] == null ? null : map['key'] as String,
-      triggerUrl: map['triggerUrl'] == null ? null : map['triggerUrl'] as String,
+      key: map['key'] == null ? null : map['key']! as String,
+      triggerUrl: map['triggerUrl'] == null ? null : map['triggerUrl']! as String,
     );
   }
 }

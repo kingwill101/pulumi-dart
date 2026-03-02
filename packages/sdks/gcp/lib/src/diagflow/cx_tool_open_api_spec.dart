@@ -42,10 +42,10 @@ class CxToolOpenApiSpec {
 
   factory CxToolOpenApiSpec.fromMap(Map<String, dynamic> map) {
     return CxToolOpenApiSpec(
-      authentication: map['authentication'] == null ? null : (CxToolOpenApiSpecAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : (CxToolOpenApiSpecServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig'] as Map).cast<String, dynamic>())).input(),
+      authentication: map['authentication'] == null ? null : (CxToolOpenApiSpecAuthentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
+      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : (CxToolOpenApiSpecServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig']! as Map).cast<String, dynamic>())).input(),
       textSchema: (map['textSchema'] as String).input(),
-      tlsConfig: map['tlsConfig'] == null ? null : (CxToolOpenApiSpecTlsConfig.fromMap((map['tlsConfig'] as Map).cast<String, dynamic>())).input(),
+      tlsConfig: map['tlsConfig'] == null ? null : (CxToolOpenApiSpecTlsConfig.fromMap((map['tlsConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

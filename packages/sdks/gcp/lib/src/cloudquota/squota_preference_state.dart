@@ -91,19 +91,19 @@ class SQuotaPreferenceState {
 
   factory SQuotaPreferenceState.fromMap(Map<String, dynamic> map) {
     return SQuotaPreferenceState(
-      contactEmail: map['contactEmail'] == null ? null : (map['contactEmail'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dimensions: map['dimensions'] == null ? null : ((map['dimensions'] as Map).cast<String, String>()).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      ignoreSafetyChecks: map['ignoreSafetyChecks'] == null ? null : (map['ignoreSafetyChecks'] as String).input(),
-      justification: map['justification'] == null ? null : (map['justification'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      quotaConfig: map['quotaConfig'] == null ? null : (SQuotaPreferenceQuotaConfig.fromMap((map['quotaConfig'] as Map).cast<String, dynamic>())).input(),
-      quotaId: map['quotaId'] == null ? null : (map['quotaId'] as String).input(),
-      reconciling: map['reconciling'] == null ? null : (map['reconciling'] as bool).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      contactEmail: map['contactEmail'] == null ? null : (map['contactEmail']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dimensions: map['dimensions'] == null ? null : ((map['dimensions']! as Map).cast<String, String>()).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      ignoreSafetyChecks: map['ignoreSafetyChecks'] == null ? null : (map['ignoreSafetyChecks']! as String).input(),
+      justification: map['justification'] == null ? null : (map['justification']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      quotaConfig: map['quotaConfig'] == null ? null : (SQuotaPreferenceQuotaConfig.fromMap((map['quotaConfig']! as Map).cast<String, dynamic>())).input(),
+      quotaId: map['quotaId'] == null ? null : (map['quotaId']! as String).input(),
+      reconciling: map['reconciling'] == null ? null : (map['reconciling']! as bool).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

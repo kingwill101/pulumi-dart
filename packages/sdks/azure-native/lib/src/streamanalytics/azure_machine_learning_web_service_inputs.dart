@@ -27,8 +27,8 @@ class AzureMachineLearningWebServiceInputs {
 
   factory AzureMachineLearningWebServiceInputs.fromMap(Map<String, dynamic> map) {
     return AzureMachineLearningWebServiceInputs(
-      columnNames: map['columnNames'] == null ? null : (pulumi.Input.decodeList<AzureMachineLearningWebServiceInputColumn>(map['columnNames'], (value) => AzureMachineLearningWebServiceInputColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      columnNames: map['columnNames'] == null ? null : (pulumi.Input.decodeList<AzureMachineLearningWebServiceInputColumn>(map['columnNames']!, (value) => AzureMachineLearningWebServiceInputColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

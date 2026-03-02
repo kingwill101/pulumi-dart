@@ -53,11 +53,11 @@ class HostingReleaseArgs {
 
   factory HostingReleaseArgs.fromMap(Map<String, dynamic> map) {
     return HostingReleaseArgs(
-      channelId: map['channelId'] == null ? null : (map['channelId'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      channelId: map['channelId'] == null ? null : (map['channelId']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
       siteId: (map['siteId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName']! as String).input(),
     );
   }
 }

@@ -41,11 +41,11 @@ class Recipe {
 
   factory Recipe.fromMap(Map<String, dynamic> map) {
     return Recipe(
-      arguments: map['arguments'] == null ? null : ((map['arguments'] as List).cast<Map<String, String>>()).input(),
-      definedInMaterial: map['definedInMaterial'] == null ? null : (map['definedInMaterial'] as String).input(),
-      entryPoint: map['entryPoint'] == null ? null : (map['entryPoint'] as String).input(),
-      environment: map['environment'] == null ? null : ((map['environment'] as List).cast<Map<String, String>>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      arguments: map['arguments'] == null ? null : ((map['arguments']! as List).cast<Map<String, String>>()).input(),
+      definedInMaterial: map['definedInMaterial'] == null ? null : (map['definedInMaterial']! as String).input(),
+      entryPoint: map['entryPoint'] == null ? null : (map['entryPoint']! as String).input(),
+      environment: map['environment'] == null ? null : ((map['environment']! as List).cast<Map<String, String>>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

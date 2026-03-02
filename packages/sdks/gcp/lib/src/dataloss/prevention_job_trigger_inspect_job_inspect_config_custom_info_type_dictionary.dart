@@ -29,8 +29,8 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary {
 
   factory PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary(
-      cloudStoragePath: map['cloudStoragePath'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePath.fromMap((map['cloudStoragePath'] as Map).cast<String, dynamic>())).input(),
-      wordList: map['wordList'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordList.fromMap((map['wordList'] as Map).cast<String, dynamic>())).input(),
+      cloudStoragePath: map['cloudStoragePath'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePath.fromMap((map['cloudStoragePath']! as Map).cast<String, dynamic>())).input(),
+      wordList: map['wordList'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordList.fromMap((map['wordList']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

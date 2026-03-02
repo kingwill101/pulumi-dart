@@ -46,12 +46,12 @@ class ExtensionAssociationState {
 
   factory ExtensionAssociationState.fromMap(Map<String, dynamic> map) {
     return ExtensionAssociationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      extensionArn: map['extensionArn'] == null ? null : (map['extensionArn'] as String).input(),
-      extensionVersion: map['extensionVersion'] == null ? null : (map['extensionVersion'] as int).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      extensionArn: map['extensionArn'] == null ? null : ((map['extensionArn'] as String).input()).input(),
+      extensionVersion: map['extensionVersion'] == null ? null : ((map['extensionVersion'] as int).input()).input(),
+      parameters: map['parameters'] == null ? null : (((map['parameters'] as Map).cast<String, String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceArn: map['resourceArn'] == null ? null : ((map['resourceArn'] as String).input()).input(),
     );
   }
 }

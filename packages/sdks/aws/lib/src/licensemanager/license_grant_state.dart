@@ -66,16 +66,16 @@ class LicenseGrantState {
 
   factory LicenseGrantState.fromMap(Map<String, dynamic> map) {
     return LicenseGrantState(
-      allowedOperations: map['allowedOperations'] == null ? null : ((map['allowedOperations'] as List).cast<String>()).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      homeRegion: map['homeRegion'] == null ? null : (map['homeRegion'] as String).input(),
-      licenseArn: map['licenseArn'] == null ? null : (map['licenseArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentArn: map['parentArn'] == null ? null : (map['parentArn'] as String).input(),
-      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      allowedOperations: map['allowedOperations'] == null ? null : (((map['allowedOperations'] as List).cast<String>()).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      homeRegion: map['homeRegion'] == null ? null : ((map['homeRegion'] as String).input()).input(),
+      licenseArn: map['licenseArn'] == null ? null : ((map['licenseArn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      parentArn: map['parentArn'] == null ? null : ((map['parentArn'] as String).input()).input(),
+      principal: map['principal'] == null ? null : ((map['principal'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

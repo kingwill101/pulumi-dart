@@ -25,7 +25,7 @@ class DomainDevicesDiskBoot {
 
   factory DomainDevicesDiskBoot.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBoot(
-      loadParm: map['loadParm'] == null ? null : (map['loadParm'] as String).input(),
+      loadParm: map['loadParm'] == null ? null : (map['loadParm']! as String).input(),
       order: (map['order'] as double).input(),
     );
   }

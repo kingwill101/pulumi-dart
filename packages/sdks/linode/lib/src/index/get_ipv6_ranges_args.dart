@@ -24,7 +24,7 @@ class GetIpv6RangesArgs {
 
   factory GetIpv6RangesArgs.fromMap(Map<String, dynamic> map) {
     return GetIpv6RangesArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetIpv6RangesFilter>(map['filters'], (value) => GetIpv6RangesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetIpv6RangesFilter>(map['filters']!, (value) => GetIpv6RangesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

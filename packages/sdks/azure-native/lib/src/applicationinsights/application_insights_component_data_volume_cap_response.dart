@@ -46,12 +46,12 @@ class ApplicationInsightsComponentDataVolumeCapResponse {
 
   factory ApplicationInsightsComponentDataVolumeCapResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationInsightsComponentDataVolumeCapResponse(
-      cap: map['cap'] == null ? null : (map['cap'] as double).input(),
+      cap: map['cap'] == null ? null : (map['cap']! as double).input(),
       maxHistoryCap: (map['maxHistoryCap'] as double).input(),
       resetTime: (map['resetTime'] as int).input(),
-      stopSendNotificationWhenHitCap: map['stopSendNotificationWhenHitCap'] == null ? null : (map['stopSendNotificationWhenHitCap'] as bool).input(),
-      stopSendNotificationWhenHitThreshold: map['stopSendNotificationWhenHitThreshold'] == null ? null : (map['stopSendNotificationWhenHitThreshold'] as bool).input(),
-      warningThreshold: map['warningThreshold'] == null ? null : (map['warningThreshold'] as int).input(),
+      stopSendNotificationWhenHitCap: map['stopSendNotificationWhenHitCap'] == null ? null : (map['stopSendNotificationWhenHitCap']! as bool).input(),
+      stopSendNotificationWhenHitThreshold: map['stopSendNotificationWhenHitThreshold'] == null ? null : (map['stopSendNotificationWhenHitThreshold']! as bool).input(),
+      warningThreshold: map['warningThreshold'] == null ? null : (map['warningThreshold']! as int).input(),
     );
   }
 }

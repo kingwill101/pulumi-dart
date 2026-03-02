@@ -41,10 +41,10 @@ class ProjectLogsConfigS3Logs {
 
   factory ProjectLogsConfigS3Logs.fromMap(Map<String, dynamic> map) {
     return ProjectLogsConfigS3Logs(
-      bucketOwnerAccess: map['bucketOwnerAccess'] == null ? null : (map['bucketOwnerAccess'] as String).input(),
-      encryptionDisabled: map['encryptionDisabled'] == null ? null : (map['encryptionDisabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      bucketOwnerAccess: map['bucketOwnerAccess'] == null ? null : ((map['bucketOwnerAccess'] as String).input()).input(),
+      encryptionDisabled: map['encryptionDisabled'] == null ? null : ((map['encryptionDisabled'] as bool).input()).input(),
+      location: map['location'] == null ? null : ((map['location'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

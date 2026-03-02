@@ -67,7 +67,7 @@ class GetPlaceIndexResult {
     return GetPlaceIndexResult(
       createTime: map['createTime'] as String,
       dataSource: map['dataSource'] as String,
-      dataSourceConfigurations: pulumi.Input.decodeList<GetPlaceIndexDataSourceConfiguration>(map['dataSourceConfigurations'], (value) => GetPlaceIndexDataSourceConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      dataSourceConfigurations: pulumi.Input.decodeList<GetPlaceIndexDataSourceConfiguration>(map['dataSourceConfigurations']!, (value) => GetPlaceIndexDataSourceConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       description: map['description'] as String,
       id: map['id'] as String,
       indexArn: map['indexArn'] as String,

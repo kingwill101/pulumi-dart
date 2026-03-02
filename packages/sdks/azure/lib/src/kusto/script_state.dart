@@ -61,15 +61,15 @@ class ScriptState {
 
   factory ScriptState.fromMap(Map<String, dynamic> map) {
     return ScriptState(
-      continueOnErrorsEnabled: map['continueOnErrorsEnabled'] == null ? null : (map['continueOnErrorsEnabled'] as bool).input(),
-      databaseId: map['databaseId'] == null ? null : (map['databaseId'] as String).input(),
-      forceAnUpdateWhenValueChanged: map['forceAnUpdateWhenValueChanged'] == null ? null : (map['forceAnUpdateWhenValueChanged'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      principalPermissionsAction: map['principalPermissionsAction'] == null ? null : (map['principalPermissionsAction'] as String).input(),
-      sasToken: map['sasToken'] == null ? null : (map['sasToken'] as String).input(),
-      scriptContent: map['scriptContent'] == null ? null : (map['scriptContent'] as String).input(),
-      scriptLevel: map['scriptLevel'] == null ? null : (map['scriptLevel'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      continueOnErrorsEnabled: map['continueOnErrorsEnabled'] == null ? null : (map['continueOnErrorsEnabled']! as bool).input(),
+      databaseId: map['databaseId'] == null ? null : (map['databaseId']! as String).input(),
+      forceAnUpdateWhenValueChanged: map['forceAnUpdateWhenValueChanged'] == null ? null : (map['forceAnUpdateWhenValueChanged']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      principalPermissionsAction: map['principalPermissionsAction'] == null ? null : (map['principalPermissionsAction']! as String).input(),
+      sasToken: map['sasToken'] == null ? null : (map['sasToken']! as String).input(),
+      scriptContent: map['scriptContent'] == null ? null : (map['scriptContent']! as String).input(),
+      scriptLevel: map['scriptLevel'] == null ? null : (map['scriptLevel']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

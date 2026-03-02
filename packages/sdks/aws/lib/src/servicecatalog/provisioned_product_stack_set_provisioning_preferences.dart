@@ -45,12 +45,12 @@ class ProvisionedProductStackSetProvisioningPreferences {
 
   factory ProvisionedProductStackSetProvisioningPreferences.fromMap(Map<String, dynamic> map) {
     return ProvisionedProductStackSetProvisioningPreferences(
-      accounts: map['accounts'] == null ? null : ((map['accounts'] as List).cast<String>()).input(),
-      failureToleranceCount: map['failureToleranceCount'] == null ? null : (map['failureToleranceCount'] as int).input(),
-      failureTolerancePercentage: map['failureTolerancePercentage'] == null ? null : (map['failureTolerancePercentage'] as int).input(),
-      maxConcurrencyCount: map['maxConcurrencyCount'] == null ? null : (map['maxConcurrencyCount'] as int).input(),
-      maxConcurrencyPercentage: map['maxConcurrencyPercentage'] == null ? null : (map['maxConcurrencyPercentage'] as int).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      accounts: map['accounts'] == null ? null : (((map['accounts'] as List).cast<String>()).input()).input(),
+      failureToleranceCount: map['failureToleranceCount'] == null ? null : ((map['failureToleranceCount'] as int).input()).input(),
+      failureTolerancePercentage: map['failureTolerancePercentage'] == null ? null : ((map['failureTolerancePercentage'] as int).input()).input(),
+      maxConcurrencyCount: map['maxConcurrencyCount'] == null ? null : ((map['maxConcurrencyCount'] as int).input()).input(),
+      maxConcurrencyPercentage: map['maxConcurrencyPercentage'] == null ? null : ((map['maxConcurrencyPercentage'] as int).input()).input(),
+      regions: map['regions'] == null ? null : (((map['regions'] as List).cast<String>()).input()).input(),
     );
   }
 }

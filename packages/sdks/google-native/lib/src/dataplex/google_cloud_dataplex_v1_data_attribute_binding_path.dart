@@ -26,7 +26,7 @@ class GoogleCloudDataplexV1DataAttributeBindingPath {
 
   factory GoogleCloudDataplexV1DataAttributeBindingPath.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataAttributeBindingPath(
-      attributes: map['attributes'] == null ? null : ((map['attributes'] as List).cast<String>()).input(),
+      attributes: map['attributes'] == null ? null : ((map['attributes']! as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
     );
   }

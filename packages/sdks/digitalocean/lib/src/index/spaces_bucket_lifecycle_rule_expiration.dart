@@ -32,9 +32,9 @@ class SpacesBucketLifecycleRuleExpiration {
 
   factory SpacesBucketLifecycleRuleExpiration.fromMap(Map<String, dynamic> map) {
     return SpacesBucketLifecycleRuleExpiration(
-      date: map['date'] == null ? null : (map['date'] as String).input(),
-      days: map['days'] == null ? null : (map['days'] as int).input(),
-      expiredObjectDeleteMarker: map['expiredObjectDeleteMarker'] == null ? null : (map['expiredObjectDeleteMarker'] as bool).input(),
+      date: map['date'] == null ? null : (map['date']! as String).input(),
+      days: map['days'] == null ? null : (map['days']! as int).input(),
+      expiredObjectDeleteMarker: map['expiredObjectDeleteMarker'] == null ? null : (map['expiredObjectDeleteMarker']! as bool).input(),
     );
   }
 }

@@ -25,7 +25,7 @@ class InterconnectAttachmentGroupAttachment {
 
   factory InterconnectAttachmentGroupAttachment.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentGroupAttachment(
-      attachment: map['attachment'] == null ? null : (map['attachment'] as String).input(),
+      attachment: map['attachment'] == null ? null : (map['attachment']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

@@ -74,17 +74,17 @@ class SubnetState {
 
   factory SubnetState.fromMap(Map<String, dynamic> map) {
     return SubnetState(
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      gmtModified: map['gmtModified'] == null ? null : (map['gmtModified'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      subnetName: map['subnetName'] == null ? null : (map['subnetName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      vpdId: map['vpdId'] == null ? null : (map['vpdId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      gmtModified: map['gmtModified'] == null ? null : (map['gmtModified']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      subnetName: map['subnetName'] == null ? null : (map['subnetName']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      vpdId: map['vpdId'] == null ? null : (map['vpdId']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

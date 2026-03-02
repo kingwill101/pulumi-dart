@@ -27,7 +27,7 @@ class Hl7StoreIamBindingCondition {
 
   factory Hl7StoreIamBindingCondition.fromMap(Map<String, dynamic> map) {
     return Hl7StoreIamBindingCondition(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       expression: (map['expression'] as String).input(),
       title: (map['title'] as String).input(),
     );

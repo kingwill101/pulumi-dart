@@ -37,9 +37,9 @@ class MetricCounter {
 
   factory MetricCounter.fromMap(Map<String, dynamic> map) {
     return MetricCounter(
-      additionalDimensions: map['additionalDimensions'] == null ? null : (pulumi.Input.decodeList<MetricDimension>(map['additionalDimensions'], (value) => MetricDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dimensionFilter: map['dimensionFilter'] == null ? null : (pulumi.Input.decodeList<MetricDimension>(map['dimensionFilter'], (value) => MetricDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      additionalDimensions: map['additionalDimensions'] == null ? null : (pulumi.Input.decodeList<MetricDimension>(map['additionalDimensions']!, (value) => MetricDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dimensionFilter: map['dimensionFilter'] == null ? null : (pulumi.Input.decodeList<MetricDimension>(map['dimensionFilter']!, (value) => MetricDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

@@ -101,22 +101,22 @@ class EdgeMachinePropertiesResponse {
 
   factory EdgeMachinePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EdgeMachinePropertiesResponse(
-      arcGatewayResourceId: map['arcGatewayResourceId'] == null ? null : (map['arcGatewayResourceId'] as String).input(),
-      arcMachineResourceGroupId: map['arcMachineResourceGroupId'] == null ? null : (map['arcMachineResourceGroupId'] as String).input(),
-      arcMachineResourceId: map['arcMachineResourceId'] == null ? null : (map['arcMachineResourceId'] as String).input(),
+      arcGatewayResourceId: map['arcGatewayResourceId'] == null ? null : (map['arcGatewayResourceId']! as String).input(),
+      arcMachineResourceGroupId: map['arcMachineResourceGroupId'] == null ? null : (map['arcMachineResourceGroupId']! as String).input(),
+      arcMachineResourceId: map['arcMachineResourceId'] == null ? null : (map['arcMachineResourceId']! as String).input(),
       claimedBy: (map['claimedBy'] as String).input(),
       cloudId: (map['cloudId'] as String).input(),
       connectivityStatus: (map['connectivityStatus'] as String).input(),
       devicePoolResourceId: (map['devicePoolResourceId'] as String).input(),
-      edgeMachineKind: map['edgeMachineKind'] == null ? null : (map['edgeMachineKind'] as String).input(),
+      edgeMachineKind: map['edgeMachineKind'] == null ? null : (map['edgeMachineKind']! as String).input(),
       lastSyncTimestamp: (map['lastSyncTimestamp'] as String).input(),
       machineState: (map['machineState'] as String).input(),
       operationDetails: (pulumi.Input.decodeList<OperationDetailResponse>(map['operationDetails'], (value) => OperationDetailResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ownershipVoucherDetails: map['ownershipVoucherDetails'] == null ? null : (OwnershipVoucherDetailsResponse.fromMap((map['ownershipVoucherDetails'] as Map).cast<String, dynamic>())).input(),
-      provisioningDetails: map['provisioningDetails'] == null ? null : (ProvisioningDetailsResponse.fromMap((map['provisioningDetails'] as Map).cast<String, dynamic>())).input(),
+      ownershipVoucherDetails: map['ownershipVoucherDetails'] == null ? null : (OwnershipVoucherDetailsResponse.fromMap((map['ownershipVoucherDetails']! as Map).cast<String, dynamic>())).input(),
+      provisioningDetails: map['provisioningDetails'] == null ? null : (ProvisioningDetailsResponse.fromMap((map['provisioningDetails']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       reportedProperties: (EdgeMachineReportedPropertiesResponse.fromMap((map['reportedProperties'] as Map).cast<String, dynamic>())).input(),
-      siteDetails: map['siteDetails'] == null ? null : (SiteDetailsResponse.fromMap((map['siteDetails'] as Map).cast<String, dynamic>())).input(),
+      siteDetails: map['siteDetails'] == null ? null : (SiteDetailsResponse.fromMap((map['siteDetails']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

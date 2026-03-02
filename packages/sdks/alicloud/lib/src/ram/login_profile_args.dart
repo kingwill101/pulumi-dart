@@ -43,9 +43,9 @@ class LoginProfileArgs {
 
   factory LoginProfileArgs.fromMap(Map<String, dynamic> map) {
     return LoginProfileArgs(
-      mfaBindRequired: map['mfaBindRequired'] == null ? null : (map['mfaBindRequired'] as bool).input(),
+      mfaBindRequired: map['mfaBindRequired'] == null ? null : (map['mfaBindRequired']! as bool).input(),
       password: (map['password'] as String).input(),
-      passwordResetRequired: map['passwordResetRequired'] == null ? null : (map['passwordResetRequired'] as bool).input(),
+      passwordResetRequired: map['passwordResetRequired'] == null ? null : (map['passwordResetRequired']! as bool).input(),
       userName: (map['userName'] as String).input(),
     );
   }

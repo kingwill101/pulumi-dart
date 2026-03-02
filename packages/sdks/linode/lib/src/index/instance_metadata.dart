@@ -20,7 +20,7 @@ class InstanceMetadata {
 
   factory InstanceMetadata.fromMap(Map<String, dynamic> map) {
     return InstanceMetadata(
-      userData: map['userData'] == null ? null : (map['userData'] as String).input(),
+      userData: map['userData'] == null ? null : (map['userData']! as String).input(),
     );
   }
 }

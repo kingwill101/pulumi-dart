@@ -52,13 +52,13 @@ class CertRequestState {
 
   factory CertRequestState.fromMap(Map<String, dynamic> map) {
     return CertRequestState(
-      certRequestPem: map['certRequestPem'] == null ? null : (map['certRequestPem'] as String).input(),
-      dnsNames: map['dnsNames'] == null ? null : ((map['dnsNames'] as List).cast<String>()).input(),
-      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
-      keyAlgorithm: map['keyAlgorithm'] == null ? null : (map['keyAlgorithm'] as String).input(),
-      privateKeyPem: map['privateKeyPem'] == null ? null : (map['privateKeyPem'] as String).input(),
-      subject: map['subject'] == null ? null : (CertRequestSubject.fromMap((map['subject'] as Map).cast<String, dynamic>())).input(),
-      uris: map['uris'] == null ? null : ((map['uris'] as List).cast<String>()).input(),
+      certRequestPem: map['certRequestPem'] == null ? null : (map['certRequestPem']! as String).input(),
+      dnsNames: map['dnsNames'] == null ? null : ((map['dnsNames']! as List).cast<String>()).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses']! as List).cast<String>()).input(),
+      keyAlgorithm: map['keyAlgorithm'] == null ? null : (map['keyAlgorithm']! as String).input(),
+      privateKeyPem: map['privateKeyPem'] == null ? null : (map['privateKeyPem']! as String).input(),
+      subject: map['subject'] == null ? null : (CertRequestSubject.fromMap((map['subject']! as Map).cast<String, dynamic>())).input(),
+      uris: map['uris'] == null ? null : ((map['uris']! as List).cast<String>()).input(),
     );
   }
 }

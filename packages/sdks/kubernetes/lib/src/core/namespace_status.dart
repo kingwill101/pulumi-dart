@@ -27,8 +27,8 @@ class NamespaceStatus {
 
   factory NamespaceStatus.fromMap(Map<String, dynamic> map) {
     return NamespaceStatus(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<NamespaceCondition>(map['conditions'], (value) => NamespaceCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      phase: map['phase'] == null ? null : (map['phase'] as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<NamespaceCondition>(map['conditions']!, (value) => NamespaceCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      phase: map['phase'] == null ? null : (map['phase']! as String).input(),
     );
   }
 }

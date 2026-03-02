@@ -26,8 +26,8 @@ class DnsConfig {
 
   factory DnsConfig.fromMap(Map<String, dynamic> map) {
     return DnsConfig(
-      relativeName: map['relativeName'] == null ? null : (map['relativeName'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as double).input(),
+      relativeName: map['relativeName'] == null ? null : (map['relativeName']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as double).input(),
     );
   }
 }

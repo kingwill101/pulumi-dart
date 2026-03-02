@@ -45,8 +45,8 @@ class CustomRoutingEndpointGroupArgs {
   factory CustomRoutingEndpointGroupArgs.fromMap(Map<String, dynamic> map) {
     return CustomRoutingEndpointGroupArgs(
       acceleratorId: (map['acceleratorId'] as String).input(),
-      customRoutingEndpointGroupName: map['customRoutingEndpointGroupName'] == null ? null : (map['customRoutingEndpointGroupName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      customRoutingEndpointGroupName: map['customRoutingEndpointGroupName'] == null ? null : (map['customRoutingEndpointGroupName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       endpointGroupRegion: (map['endpointGroupRegion'] as String).input(),
       listenerId: (map['listenerId'] as String).input(),
     );

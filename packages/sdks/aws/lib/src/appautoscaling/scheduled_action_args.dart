@@ -70,16 +70,16 @@ class ScheduledActionArgs {
 
   factory ScheduledActionArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledActionArgs(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      endTime: map['endTime'] == null ? null : ((map['endTime'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceId: (map['resourceId'] as String).input(),
       scalableDimension: (map['scalableDimension'] as String).input(),
-      scalableTargetAction: (ScheduledActionScalableTargetAction.fromMap((map['scalableTargetAction'] as Map).cast<String, dynamic>())).input(),
+      scalableTargetAction: (ScheduledActionScalableTargetAction.fromMap((map['scalableTargetAction']! as Map).cast<String, dynamic>())).input(),
       schedule: (map['schedule'] as String).input(),
       serviceNamespace: (map['serviceNamespace'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
+      startTime: map['startTime'] == null ? null : ((map['startTime'] as String).input()).input(),
+      timezone: map['timezone'] == null ? null : ((map['timezone'] as String).input()).input(),
     );
   }
 }

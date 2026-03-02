@@ -31,7 +31,7 @@ class BudgetSubscriptionFilterTag {
   factory BudgetSubscriptionFilterTag.fromMap(Map<String, dynamic> map) {
     return BudgetSubscriptionFilterTag(
       name: (map['name'] as String).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
       values: ((map['values'] as List).cast<String>()).input(),
     );
   }

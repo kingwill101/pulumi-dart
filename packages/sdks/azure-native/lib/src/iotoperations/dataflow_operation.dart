@@ -44,11 +44,11 @@ class DataflowOperation {
 
   factory DataflowOperation.fromMap(Map<String, dynamic> map) {
     return DataflowOperation(
-      builtInTransformationSettings: map['builtInTransformationSettings'] == null ? null : (DataflowBuiltInTransformationSettings.fromMap((map['builtInTransformationSettings'] as Map).cast<String, dynamic>())).input(),
-      destinationSettings: map['destinationSettings'] == null ? null : (DataflowDestinationOperationSettings.fromMap((map['destinationSettings'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      builtInTransformationSettings: map['builtInTransformationSettings'] == null ? null : (DataflowBuiltInTransformationSettings.fromMap((map['builtInTransformationSettings']! as Map).cast<String, dynamic>())).input(),
+      destinationSettings: map['destinationSettings'] == null ? null : (DataflowDestinationOperationSettings.fromMap((map['destinationSettings']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       operationType: (map['operationType'] as String).input(),
-      sourceSettings: map['sourceSettings'] == null ? null : (DataflowSourceOperationSettings.fromMap((map['sourceSettings'] as Map).cast<String, dynamic>())).input(),
+      sourceSettings: map['sourceSettings'] == null ? null : (DataflowSourceOperationSettings.fromMap((map['sourceSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

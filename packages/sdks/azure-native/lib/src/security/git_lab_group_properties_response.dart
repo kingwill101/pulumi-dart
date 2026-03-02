@@ -70,8 +70,8 @@ class GitLabGroupPropertiesResponse {
     return GitLabGroupPropertiesResponse(
       fullyQualifiedFriendlyName: (map['fullyQualifiedFriendlyName'] as String).input(),
       fullyQualifiedName: (map['fullyQualifiedName'] as String).input(),
-      onboardingState: map['onboardingState'] == null ? null : (map['onboardingState'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      onboardingState: map['onboardingState'] == null ? null : (map['onboardingState']! as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
       provisioningStatusMessage: (map['provisioningStatusMessage'] as String).input(),
       provisioningStatusUpdateTimeUtc: (map['provisioningStatusUpdateTimeUtc'] as String).input(),
       url: (map['url'] as String).input(),

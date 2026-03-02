@@ -38,10 +38,10 @@ class V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranch 
 
   factory V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranch.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranch(
-      condition: map['condition'] == null ? null : (V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranchCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : ((V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranchCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input()).input(),
       name: (map['name'] as String).input(),
-      nextStep: map['nextStep'] == null ? null : (V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranchNextStep.fromMap((map['nextStep'] as Map).cast<String, dynamic>())).input(),
-      response: map['response'] == null ? null : (V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranchResponse.fromMap((map['response'] as Map).cast<String, dynamic>())).input(),
+      nextStep: map['nextStep'] == null ? null : ((V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranchNextStep.fromMap((map['nextStep']! as Map).cast<String, dynamic>())).input()).input(),
+      response: map['response'] == null ? null : ((V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranchResponse.fromMap((map['response']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

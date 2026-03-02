@@ -27,8 +27,8 @@ class AccountBlobPropertiesDeleteRetentionPolicy {
 
   factory AccountBlobPropertiesDeleteRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return AccountBlobPropertiesDeleteRetentionPolicy(
-      days: map['days'] == null ? null : (map['days'] as int).input(),
-      permanentDeleteEnabled: map['permanentDeleteEnabled'] == null ? null : (map['permanentDeleteEnabled'] as bool).input(),
+      days: map['days'] == null ? null : (map['days']! as int).input(),
+      permanentDeleteEnabled: map['permanentDeleteEnabled'] == null ? null : (map['permanentDeleteEnabled']! as bool).input(),
     );
   }
 }

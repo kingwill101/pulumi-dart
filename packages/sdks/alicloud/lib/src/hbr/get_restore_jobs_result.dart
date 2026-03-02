@@ -69,15 +69,15 @@ class GetRestoreJobsResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       jobs: pulumi.Input.decodeList<GetRestoreJobsJob>(map['jobs'], (value) => GetRestoreJobsJob.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      restoreIds: map['restoreIds'] == null ? null : (map['restoreIds'] as List).cast<String>(),
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      restoreIds: map['restoreIds'] == null ? null : (map['restoreIds']! as List).cast<String>(),
       restoreType: map['restoreType'] as String,
-      sourceTypes: map['sourceTypes'] == null ? null : (map['sourceTypes'] as List).cast<String>(),
-      status: map['status'] == null ? null : map['status'] as String,
-      targetBuckets: map['targetBuckets'] == null ? null : (map['targetBuckets'] as List).cast<String>(),
-      targetFileSystemIds: map['targetFileSystemIds'] == null ? null : (map['targetFileSystemIds'] as List).cast<String>(),
-      targetInstanceIds: map['targetInstanceIds'] == null ? null : (map['targetInstanceIds'] as List).cast<String>(),
-      vaultIds: map['vaultIds'] == null ? null : (map['vaultIds'] as List).cast<String>(),
+      sourceTypes: map['sourceTypes'] == null ? null : (map['sourceTypes']! as List).cast<String>(),
+      status: map['status'] == null ? null : map['status']! as String,
+      targetBuckets: map['targetBuckets'] == null ? null : (map['targetBuckets']! as List).cast<String>(),
+      targetFileSystemIds: map['targetFileSystemIds'] == null ? null : (map['targetFileSystemIds']! as List).cast<String>(),
+      targetInstanceIds: map['targetInstanceIds'] == null ? null : (map['targetInstanceIds']! as List).cast<String>(),
+      vaultIds: map['vaultIds'] == null ? null : (map['vaultIds']! as List).cast<String>(),
     );
   }
 }

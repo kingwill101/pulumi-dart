@@ -35,9 +35,9 @@ class AlertRuleAnomalyDuplicateMultiSelectObservation {
 
   factory AlertRuleAnomalyDuplicateMultiSelectObservation.fromMap(Map<String, dynamic> map) {
     return AlertRuleAnomalyDuplicateMultiSelectObservation(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       name: (map['name'] as String).input(),
-      supportedValues: map['supportedValues'] == null ? null : ((map['supportedValues'] as List).cast<String>()).input(),
+      supportedValues: map['supportedValues'] == null ? null : ((map['supportedValues']! as List).cast<String>()).input(),
       values: ((map['values'] as List).cast<String>()).input(),
     );
   }

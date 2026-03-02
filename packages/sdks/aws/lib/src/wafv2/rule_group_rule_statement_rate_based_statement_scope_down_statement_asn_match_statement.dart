@@ -27,7 +27,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementAsnMatchStatemen
   factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementAsnMatchStatement.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatementScopeDownStatementAsnMatchStatement(
       asnLists: ((map['asnLists'] as List).cast<int>()).input(),
-      forwardedIpConfig: map['forwardedIpConfig'] == null ? null : (RuleGroupRuleStatementRateBasedStatementScopeDownStatementAsnMatchStatementForwardedIpConfig.fromMap((map['forwardedIpConfig'] as Map).cast<String, dynamic>())).input(),
+      forwardedIpConfig: map['forwardedIpConfig'] == null ? null : ((RuleGroupRuleStatementRateBasedStatementScopeDownStatementAsnMatchStatementForwardedIpConfig.fromMap((map['forwardedIpConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

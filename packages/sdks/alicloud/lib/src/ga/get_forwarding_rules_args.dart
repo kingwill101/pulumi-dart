@@ -45,10 +45,10 @@ class GetForwardingRulesArgs {
   factory GetForwardingRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetForwardingRulesArgs(
       acceleratorId: (map['acceleratorId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
       listenerId: (map['listenerId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

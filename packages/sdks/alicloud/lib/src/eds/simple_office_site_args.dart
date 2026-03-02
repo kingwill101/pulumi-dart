@@ -74,17 +74,17 @@ class SimpleOfficeSiteArgs {
 
   factory SimpleOfficeSiteArgs.fromMap(Map<String, dynamic> map) {
     return SimpleOfficeSiteArgs(
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
-      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
-      cenOwnerId: map['cenOwnerId'] == null ? null : (map['cenOwnerId'] as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
+      cenOwnerId: map['cenOwnerId'] == null ? null : (map['cenOwnerId']! as String).input(),
       cidrBlock: (map['cidrBlock'] as String).input(),
-      desktopAccessType: map['desktopAccessType'] == null ? null : (map['desktopAccessType'] as String).input(),
-      enableAdminAccess: map['enableAdminAccess'] == null ? null : (map['enableAdminAccess'] as bool).input(),
-      enableCrossDesktopAccess: map['enableCrossDesktopAccess'] == null ? null : (map['enableCrossDesktopAccess'] as bool).input(),
-      enableInternetAccess: map['enableInternetAccess'] == null ? null : (map['enableInternetAccess'] as bool).input(),
-      mfaEnabled: map['mfaEnabled'] == null ? null : (map['mfaEnabled'] as bool).input(),
-      officeSiteName: map['officeSiteName'] == null ? null : (map['officeSiteName'] as String).input(),
-      ssoEnabled: map['ssoEnabled'] == null ? null : (map['ssoEnabled'] as bool).input(),
+      desktopAccessType: map['desktopAccessType'] == null ? null : (map['desktopAccessType']! as String).input(),
+      enableAdminAccess: map['enableAdminAccess'] == null ? null : (map['enableAdminAccess']! as bool).input(),
+      enableCrossDesktopAccess: map['enableCrossDesktopAccess'] == null ? null : (map['enableCrossDesktopAccess']! as bool).input(),
+      enableInternetAccess: map['enableInternetAccess'] == null ? null : (map['enableInternetAccess']! as bool).input(),
+      mfaEnabled: map['mfaEnabled'] == null ? null : (map['mfaEnabled']! as bool).input(),
+      officeSiteName: map['officeSiteName'] == null ? null : (map['officeSiteName']! as String).input(),
+      ssoEnabled: map['ssoEnabled'] == null ? null : (map['ssoEnabled']! as bool).input(),
     );
   }
 }

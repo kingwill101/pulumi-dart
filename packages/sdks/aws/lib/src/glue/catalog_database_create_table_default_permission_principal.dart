@@ -20,7 +20,7 @@ class CatalogDatabaseCreateTableDefaultPermissionPrincipal {
 
   factory CatalogDatabaseCreateTableDefaultPermissionPrincipal.fromMap(Map<String, dynamic> map) {
     return CatalogDatabaseCreateTableDefaultPermissionPrincipal(
-      dataLakePrincipalIdentifier: map['dataLakePrincipalIdentifier'] == null ? null : (map['dataLakePrincipalIdentifier'] as String).input(),
+      dataLakePrincipalIdentifier: map['dataLakePrincipalIdentifier'] == null ? null : ((map['dataLakePrincipalIdentifier'] as String).input()).input(),
     );
   }
 }

@@ -72,17 +72,17 @@ class VirtualNodeState {
 
   factory VirtualNodeState.fromMap(Map<String, dynamic> map) {
     return VirtualNodeState(
-      eipInstanceId: map['eipInstanceId'] == null ? null : (map['eipInstanceId'] as String).input(),
-      enablePublicNetwork: map['enablePublicNetwork'] == null ? null : (map['enablePublicNetwork'] as bool).input(),
-      kubeConfig: map['kubeConfig'] == null ? null : (map['kubeConfig'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<VirtualNodeTaint>(map['taints'], (value) => VirtualNodeTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      virtualNodeName: map['virtualNodeName'] == null ? null : (map['virtualNodeName'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      eipInstanceId: map['eipInstanceId'] == null ? null : (map['eipInstanceId']! as String).input(),
+      enablePublicNetwork: map['enablePublicNetwork'] == null ? null : (map['enablePublicNetwork']! as bool).input(),
+      kubeConfig: map['kubeConfig'] == null ? null : (map['kubeConfig']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<VirtualNodeTaint>(map['taints']!, (value) => VirtualNodeTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualNodeName: map['virtualNodeName'] == null ? null : (map['virtualNodeName']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

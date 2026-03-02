@@ -40,11 +40,11 @@ class FunctionAppSourceControl {
 
   factory FunctionAppSourceControl.fromMap(Map<String, dynamic> map) {
     return FunctionAppSourceControl(
-      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
-      manualIntegration: map['manualIntegration'] == null ? null : (map['manualIntegration'] as bool).input(),
-      repoUrl: map['repoUrl'] == null ? null : (map['repoUrl'] as String).input(),
-      rollbackEnabled: map['rollbackEnabled'] == null ? null : (map['rollbackEnabled'] as bool).input(),
-      useMercurial: map['useMercurial'] == null ? null : (map['useMercurial'] as bool).input(),
+      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
+      manualIntegration: map['manualIntegration'] == null ? null : (map['manualIntegration']! as bool).input(),
+      repoUrl: map['repoUrl'] == null ? null : (map['repoUrl']! as String).input(),
+      rollbackEnabled: map['rollbackEnabled'] == null ? null : (map['rollbackEnabled']! as bool).input(),
+      useMercurial: map['useMercurial'] == null ? null : (map['useMercurial']! as bool).input(),
     );
   }
 }

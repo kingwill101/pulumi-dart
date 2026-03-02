@@ -40,11 +40,11 @@ class DomainCpuTopology {
 
   factory DomainCpuTopology.fromMap(Map<String, dynamic> map) {
     return DomainCpuTopology(
-      clusters: map['clusters'] == null ? null : (map['clusters'] as double).input(),
-      cores: map['cores'] == null ? null : (map['cores'] as double).input(),
-      dies: map['dies'] == null ? null : (map['dies'] as double).input(),
-      sockets: map['sockets'] == null ? null : (map['sockets'] as double).input(),
-      threads: map['threads'] == null ? null : (map['threads'] as double).input(),
+      clusters: map['clusters'] == null ? null : (map['clusters']! as double).input(),
+      cores: map['cores'] == null ? null : (map['cores']! as double).input(),
+      dies: map['dies'] == null ? null : (map['dies']! as double).input(),
+      sockets: map['sockets'] == null ? null : (map['sockets']! as double).input(),
+      threads: map['threads'] == null ? null : (map['threads']! as double).input(),
     );
   }
 }

@@ -83,17 +83,17 @@ class BackupVaultArgs {
 
   factory BackupVaultArgs.fromMap(Map<String, dynamic> map) {
     return BackupVaultArgs(
-      crossRegionRestoreEnabled: map['crossRegionRestoreEnabled'] == null ? null : (map['crossRegionRestoreEnabled'] as bool).input(),
+      crossRegionRestoreEnabled: map['crossRegionRestoreEnabled'] == null ? null : (map['crossRegionRestoreEnabled']! as bool).input(),
       datastoreType: (map['datastoreType'] as String).input(),
-      identity: map['identity'] == null ? null : (BackupVaultIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      immutability: map['immutability'] == null ? null : (map['immutability'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      identity: map['identity'] == null ? null : (BackupVaultIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      immutability: map['immutability'] == null ? null : (map['immutability']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       redundancy: (map['redundancy'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      retentionDurationInDays: map['retentionDurationInDays'] == null ? null : (map['retentionDurationInDays'] as double).input(),
-      softDelete: map['softDelete'] == null ? null : (map['softDelete'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      retentionDurationInDays: map['retentionDurationInDays'] == null ? null : (map['retentionDurationInDays']! as double).input(),
+      softDelete: map['softDelete'] == null ? null : (map['softDelete']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

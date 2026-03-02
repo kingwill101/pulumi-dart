@@ -33,9 +33,9 @@ class LocalBrokerConnectionSpecResponse {
 
   factory LocalBrokerConnectionSpecResponse.fromMap(Map<String, dynamic> map) {
     return LocalBrokerConnectionSpecResponse(
-      authentication: map['authentication'] == null ? null : (LocalBrokerAuthenticationMethodsResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      tls: map['tls'] == null ? null : (LocalBrokerConnectionTlsResponse.fromMap((map['tls'] as Map).cast<String, dynamic>())).input(),
+      authentication: map['authentication'] == null ? null : (LocalBrokerAuthenticationMethodsResponse.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      tls: map['tls'] == null ? null : (LocalBrokerConnectionTlsResponse.fromMap((map['tls']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -64,16 +64,16 @@ class GetQuotaApplicationsResult {
   factory GetQuotaApplicationsResult.fromMap(Map<String, dynamic> map) {
     return GetQuotaApplicationsResult(
       applications: pulumi.Input.decodeList<GetQuotaApplicationsApplication>(map['applications'], (value) => GetQuotaApplicationsApplication.fromMap((value as Map).cast<String, dynamic>())),
-      dimensions: map['dimensions'] == null ? null : pulumi.Input.decodeList<GetQuotaApplicationsDimension>(map['dimensions'], (value) => GetQuotaApplicationsDimension.fromMap((value as Map).cast<String, dynamic>())),
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      dimensions: map['dimensions'] == null ? null : pulumi.Input.decodeList<GetQuotaApplicationsDimension>(map['dimensions']!, (value) => GetQuotaApplicationsDimension.fromMap((value as Map).cast<String, dynamic>())),
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keyWord: map['keyWord'] == null ? null : map['keyWord'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      keyWord: map['keyWord'] == null ? null : map['keyWord']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       productCode: map['productCode'] as String,
-      quotaActionCode: map['quotaActionCode'] == null ? null : map['quotaActionCode'] as String,
-      quotaCategory: map['quotaCategory'] == null ? null : map['quotaCategory'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      quotaActionCode: map['quotaActionCode'] == null ? null : map['quotaActionCode']! as String,
+      quotaCategory: map['quotaCategory'] == null ? null : map['quotaCategory']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

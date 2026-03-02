@@ -31,9 +31,9 @@ class QueryLogState {
 
   factory QueryLogState.fromMap(Map<String, dynamic> map) {
     return QueryLogState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      cloudwatchLogGroupArn: map['cloudwatchLogGroupArn'] == null ? null : (map['cloudwatchLogGroupArn'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      cloudwatchLogGroupArn: map['cloudwatchLogGroupArn'] == null ? null : ((map['cloudwatchLogGroupArn'] as String).input()).input(),
+      zoneId: map['zoneId'] == null ? null : ((map['zoneId'] as String).input()).input(),
     );
   }
 }

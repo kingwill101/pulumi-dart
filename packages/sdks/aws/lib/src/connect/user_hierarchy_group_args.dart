@@ -46,10 +46,10 @@ class UserHierarchyGroupArgs {
   factory UserHierarchyGroupArgs.fromMap(Map<String, dynamic> map) {
     return UserHierarchyGroupArgs(
       instanceId: (map['instanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentGroupId: map['parentGroupId'] == null ? null : (map['parentGroupId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      parentGroupId: map['parentGroupId'] == null ? null : ((map['parentGroupId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

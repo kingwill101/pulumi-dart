@@ -50,12 +50,12 @@ class NamespaceTopicArgs {
 
   factory NamespaceTopicArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceTopicArgs(
-      eventRetentionInDays: map['eventRetentionInDays'] == null ? null : (map['eventRetentionInDays'] as int).input(),
-      inputSchema: map['inputSchema'] == null ? null : (map['inputSchema'] as String).input(),
+      eventRetentionInDays: map['eventRetentionInDays'] == null ? null : (map['eventRetentionInDays']! as int).input(),
+      inputSchema: map['inputSchema'] == null ? null : (map['inputSchema']! as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
-      publisherType: map['publisherType'] == null ? null : (map['publisherType'] as String).input(),
+      publisherType: map['publisherType'] == null ? null : (map['publisherType']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName']! as String).input(),
     );
   }
 }

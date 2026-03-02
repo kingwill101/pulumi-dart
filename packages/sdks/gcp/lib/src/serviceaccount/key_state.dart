@@ -81,17 +81,17 @@ class KeyState {
 
   factory KeyState.fromMap(Map<String, dynamic> map) {
     return KeyState(
-      keepers: map['keepers'] == null ? null : ((map['keepers'] as Map).cast<String, String>()).input(),
-      keyAlgorithm: map['keyAlgorithm'] == null ? null : (map['keyAlgorithm'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      privateKeyType: map['privateKeyType'] == null ? null : (map['privateKeyType'] as String).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
-      publicKeyData: map['publicKeyData'] == null ? null : (map['publicKeyData'] as String).input(),
-      publicKeyType: map['publicKeyType'] == null ? null : (map['publicKeyType'] as String).input(),
-      serviceAccountId: map['serviceAccountId'] == null ? null : (map['serviceAccountId'] as String).input(),
-      validAfter: map['validAfter'] == null ? null : (map['validAfter'] as String).input(),
-      validBefore: map['validBefore'] == null ? null : (map['validBefore'] as String).input(),
+      keepers: map['keepers'] == null ? null : ((map['keepers']! as Map).cast<String, String>()).input(),
+      keyAlgorithm: map['keyAlgorithm'] == null ? null : (map['keyAlgorithm']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
+      privateKeyType: map['privateKeyType'] == null ? null : (map['privateKeyType']! as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey']! as String).input(),
+      publicKeyData: map['publicKeyData'] == null ? null : (map['publicKeyData']! as String).input(),
+      publicKeyType: map['publicKeyType'] == null ? null : (map['publicKeyType']! as String).input(),
+      serviceAccountId: map['serviceAccountId'] == null ? null : (map['serviceAccountId']! as String).input(),
+      validAfter: map['validAfter'] == null ? null : (map['validAfter']! as String).input(),
+      validBefore: map['validBefore'] == null ? null : (map['validBefore']! as String).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class PlacementPolicy {
 
   factory PlacementPolicy.fromMap(Map<String, dynamic> map) {
     return PlacementPolicy(
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      tpuTopology: map['tpuTopology'] == null ? null : (map['tpuTopology'] as String).input(),
-      type: map['type'] == null ? null : (PlacementPolicyType.fromValue(map['type'] as String)).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
+      tpuTopology: map['tpuTopology'] == null ? null : (map['tpuTopology']! as String).input(),
+      type: map['type'] == null ? null : (PlacementPolicyType.fromValue(map['type']! as String)).input(),
     );
   }
 }

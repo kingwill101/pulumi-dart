@@ -22,7 +22,7 @@ class NamespaceActuationFeatureSpec {
 
   factory NamespaceActuationFeatureSpec.fromMap(Map<String, dynamic> map) {
     return NamespaceActuationFeatureSpec(
-      actuationMode: map['actuationMode'] == null ? null : (NamespaceActuationFeatureSpecActuationMode.fromValue(map['actuationMode'] as String)).input(),
+      actuationMode: map['actuationMode'] == null ? null : (NamespaceActuationFeatureSpecActuationMode.fromValue(map['actuationMode']! as String)).input(),
     );
   }
 }

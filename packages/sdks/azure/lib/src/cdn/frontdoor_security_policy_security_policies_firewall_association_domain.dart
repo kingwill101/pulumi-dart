@@ -25,7 +25,7 @@ class FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomain {
 
   factory FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomain.fromMap(Map<String, dynamic> map) {
     return FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomain(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      active: map['active'] == null ? null : (map['active']! as bool).input(),
       cdnFrontdoorDomainId: (map['cdnFrontdoorDomainId'] as String).input(),
     );
   }

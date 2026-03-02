@@ -26,8 +26,8 @@ class InstanceGroupManagerStatusStateful {
 
   factory InstanceGroupManagerStatusStateful.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerStatusStateful(
-      hasStatefulConfig: map['hasStatefulConfig'] == null ? null : (map['hasStatefulConfig'] as bool).input(),
-      perInstanceConfigs: map['perInstanceConfigs'] == null ? null : (pulumi.Input.decodeList<InstanceGroupManagerStatusStatefulPerInstanceConfig>(map['perInstanceConfigs'], (value) => InstanceGroupManagerStatusStatefulPerInstanceConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hasStatefulConfig: map['hasStatefulConfig'] == null ? null : (map['hasStatefulConfig']! as bool).input(),
+      perInstanceConfigs: map['perInstanceConfigs'] == null ? null : (pulumi.Input.decodeList<InstanceGroupManagerStatusStatefulPerInstanceConfig>(map['perInstanceConfigs']!, (value) => InstanceGroupManagerStatusStatefulPerInstanceConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

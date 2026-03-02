@@ -27,7 +27,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDe
 
   factory RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay(
-      nanos: map['nanos'] == null ? null : (map['nanos'] as int).input(),
+      nanos: map['nanos'] == null ? null : (map['nanos']! as int).input(),
       seconds: (map['seconds'] as String).input(),
     );
   }

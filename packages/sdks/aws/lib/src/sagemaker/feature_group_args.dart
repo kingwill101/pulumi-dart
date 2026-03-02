@@ -77,17 +77,17 @@ class FeatureGroupArgs {
 
   factory FeatureGroupArgs.fromMap(Map<String, dynamic> map) {
     return FeatureGroupArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       eventTimeFeatureName: (map['eventTimeFeatureName'] as String).input(),
-      featureDefinitions: (pulumi.Input.decodeList<FeatureGroupFeatureDefinition>(map['featureDefinitions'], (value) => FeatureGroupFeatureDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      featureDefinitions: (pulumi.Input.decodeList<FeatureGroupFeatureDefinition>(map['featureDefinitions']!, (value) => FeatureGroupFeatureDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
       featureGroupName: (map['featureGroupName'] as String).input(),
-      offlineStoreConfig: map['offlineStoreConfig'] == null ? null : (FeatureGroupOfflineStoreConfig.fromMap((map['offlineStoreConfig'] as Map).cast<String, dynamic>())).input(),
-      onlineStoreConfig: map['onlineStoreConfig'] == null ? null : (FeatureGroupOnlineStoreConfig.fromMap((map['onlineStoreConfig'] as Map).cast<String, dynamic>())).input(),
+      offlineStoreConfig: map['offlineStoreConfig'] == null ? null : ((FeatureGroupOfflineStoreConfig.fromMap((map['offlineStoreConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      onlineStoreConfig: map['onlineStoreConfig'] == null ? null : ((FeatureGroupOnlineStoreConfig.fromMap((map['onlineStoreConfig']! as Map).cast<String, dynamic>())).input()).input(),
       recordIdentifierFeatureName: (map['recordIdentifierFeatureName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      throughputConfig: map['throughputConfig'] == null ? null : (FeatureGroupThroughputConfig.fromMap((map['throughputConfig'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      throughputConfig: map['throughputConfig'] == null ? null : ((FeatureGroupThroughputConfig.fromMap((map['throughputConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

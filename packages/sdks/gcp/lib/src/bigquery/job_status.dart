@@ -39,9 +39,9 @@ class JobStatus {
 
   factory JobStatus.fromMap(Map<String, dynamic> map) {
     return JobStatus(
-      errorResults: map['errorResults'] == null ? null : (pulumi.Input.decodeList<JobStatusErrorResult>(map['errorResults'], (value) => JobStatusErrorResult.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<JobStatusError>(map['errors'], (value) => JobStatusError.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      errorResults: map['errorResults'] == null ? null : (pulumi.Input.decodeList<JobStatusErrorResult>(map['errorResults']!, (value) => JobStatusErrorResult.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<JobStatusError>(map['errors']!, (value) => JobStatusError.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

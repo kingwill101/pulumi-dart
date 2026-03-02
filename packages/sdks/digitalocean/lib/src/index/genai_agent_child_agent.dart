@@ -86,14 +86,14 @@ class GenaiAgentChildAgent {
 
   factory GenaiAgentChildAgent.fromMap(Map<String, dynamic> map) {
     return GenaiAgentChildAgent(
-      agentId: map['agentId'] == null ? null : (map['agentId'] as String).input(),
-      anthropicApiKeys: map['anthropicApiKeys'] == null ? null : (pulumi.Input.decodeList<GenaiAgentChildAgentAnthropicApiKey>(map['anthropicApiKeys'], (value) => GenaiAgentChildAgentAnthropicApiKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      apiKeyInfos: map['apiKeyInfos'] == null ? null : (pulumi.Input.decodeList<GenaiAgentChildAgentApiKeyInfo>(map['apiKeyInfos'], (value) => GenaiAgentChildAgentApiKeyInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      apiKeys: map['apiKeys'] == null ? null : (pulumi.Input.decodeList<GenaiAgentChildAgentApiKey>(map['apiKeys'], (value) => GenaiAgentChildAgentApiKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      chatbotIdentifiers: map['chatbotIdentifiers'] == null ? null : (pulumi.Input.decodeList<GenaiAgentChildAgentChatbotIdentifier>(map['chatbotIdentifiers'], (value) => GenaiAgentChildAgentChatbotIdentifier.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      chatbots: map['chatbots'] == null ? null : (pulumi.Input.decodeList<GenaiAgentChildAgentChatbot>(map['chatbots'], (value) => GenaiAgentChildAgentChatbot.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deployments: map['deployments'] == null ? null : (pulumi.Input.decodeList<GenaiAgentChildAgentDeployment>(map['deployments'], (value) => GenaiAgentChildAgentDeployment.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      agentId: map['agentId'] == null ? null : (map['agentId']! as String).input(),
+      anthropicApiKeys: map['anthropicApiKeys'] == null ? null : (pulumi.Input.decodeList<GenaiAgentChildAgentAnthropicApiKey>(map['anthropicApiKeys']!, (value) => GenaiAgentChildAgentAnthropicApiKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiKeyInfos: map['apiKeyInfos'] == null ? null : (pulumi.Input.decodeList<GenaiAgentChildAgentApiKeyInfo>(map['apiKeyInfos']!, (value) => GenaiAgentChildAgentApiKeyInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiKeys: map['apiKeys'] == null ? null : (pulumi.Input.decodeList<GenaiAgentChildAgentApiKey>(map['apiKeys']!, (value) => GenaiAgentChildAgentApiKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      chatbotIdentifiers: map['chatbotIdentifiers'] == null ? null : (pulumi.Input.decodeList<GenaiAgentChildAgentChatbotIdentifier>(map['chatbotIdentifiers']!, (value) => GenaiAgentChildAgentChatbotIdentifier.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      chatbots: map['chatbots'] == null ? null : (pulumi.Input.decodeList<GenaiAgentChildAgentChatbot>(map['chatbots']!, (value) => GenaiAgentChildAgentChatbot.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deployments: map['deployments'] == null ? null : (pulumi.Input.decodeList<GenaiAgentChildAgentDeployment>(map['deployments']!, (value) => GenaiAgentChildAgentDeployment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       instruction: (map['instruction'] as String).input(),
       modelUuid: (map['modelUuid'] as String).input(),
       name: (map['name'] as String).input(),

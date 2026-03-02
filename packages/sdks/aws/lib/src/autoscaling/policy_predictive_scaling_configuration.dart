@@ -41,11 +41,11 @@ class PolicyPredictiveScalingConfiguration {
 
   factory PolicyPredictiveScalingConfiguration.fromMap(Map<String, dynamic> map) {
     return PolicyPredictiveScalingConfiguration(
-      maxCapacityBreachBehavior: map['maxCapacityBreachBehavior'] == null ? null : (map['maxCapacityBreachBehavior'] as String).input(),
-      maxCapacityBuffer: map['maxCapacityBuffer'] == null ? null : (map['maxCapacityBuffer'] as String).input(),
-      metricSpecification: (PolicyPredictiveScalingConfigurationMetricSpecification.fromMap((map['metricSpecification'] as Map).cast<String, dynamic>())).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      schedulingBufferTime: map['schedulingBufferTime'] == null ? null : (map['schedulingBufferTime'] as String).input(),
+      maxCapacityBreachBehavior: map['maxCapacityBreachBehavior'] == null ? null : ((map['maxCapacityBreachBehavior'] as String).input()).input(),
+      maxCapacityBuffer: map['maxCapacityBuffer'] == null ? null : ((map['maxCapacityBuffer'] as String).input()).input(),
+      metricSpecification: (PolicyPredictiveScalingConfigurationMetricSpecification.fromMap((map['metricSpecification']! as Map).cast<String, dynamic>())).input(),
+      mode: map['mode'] == null ? null : ((map['mode'] as String).input()).input(),
+      schedulingBufferTime: map['schedulingBufferTime'] == null ? null : ((map['schedulingBufferTime'] as String).input()).input(),
     );
   }
 }

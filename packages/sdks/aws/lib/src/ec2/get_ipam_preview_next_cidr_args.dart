@@ -39,10 +39,10 @@ class GetIpamPreviewNextCidrArgs {
 
   factory GetIpamPreviewNextCidrArgs.fromMap(Map<String, dynamic> map) {
     return GetIpamPreviewNextCidrArgs(
-      disallowedCidrs: map['disallowedCidrs'] == null ? null : ((map['disallowedCidrs'] as List).cast<String>()).input(),
+      disallowedCidrs: map['disallowedCidrs'] == null ? null : (((map['disallowedCidrs'] as List).cast<String>()).input()).input(),
       ipamPoolId: (map['ipamPoolId'] as String).input(),
-      netmaskLength: map['netmaskLength'] == null ? null : (map['netmaskLength'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      netmaskLength: map['netmaskLength'] == null ? null : ((map['netmaskLength'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

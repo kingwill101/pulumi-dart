@@ -48,12 +48,12 @@ class LogMetricFilterState {
 
   factory LogMetricFilterState.fromMap(Map<String, dynamic> map) {
     return LogMetricFilterState(
-      applyOnTransformedLogs: map['applyOnTransformedLogs'] == null ? null : (map['applyOnTransformedLogs'] as bool).input(),
-      logGroupName: map['logGroupName'] == null ? null : (map['logGroupName'] as String).input(),
-      metricTransformation: map['metricTransformation'] == null ? null : (LogMetricFilterMetricTransformation.fromMap((map['metricTransformation'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pattern: map['pattern'] == null ? null : (map['pattern'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      applyOnTransformedLogs: map['applyOnTransformedLogs'] == null ? null : ((map['applyOnTransformedLogs'] as bool).input()).input(),
+      logGroupName: map['logGroupName'] == null ? null : ((map['logGroupName'] as String).input()).input(),
+      metricTransformation: map['metricTransformation'] == null ? null : ((LogMetricFilterMetricTransformation.fromMap((map['metricTransformation']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      pattern: map['pattern'] == null ? null : ((map['pattern'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

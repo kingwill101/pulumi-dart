@@ -43,7 +43,7 @@ class StandardsSubscriptionArgs {
 
   factory StandardsSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return StandardsSubscriptionArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       standardsArn: (map['standardsArn'] as String).input(),
     );
   }

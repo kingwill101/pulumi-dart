@@ -38,8 +38,8 @@ class GoogleCloudDialogflowV2beta1IntentMessageListSelectItem {
 
   factory GoogleCloudDialogflowV2beta1IntentMessageListSelectItem.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageListSelectItem(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      image: map['image'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageImage.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      image: map['image'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageImage.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
       info: (GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo.fromMap((map['info'] as Map).cast<String, dynamic>())).input(),
       title: (map['title'] as String).input(),
     );

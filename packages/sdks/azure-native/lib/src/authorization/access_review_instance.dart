@@ -37,10 +37,10 @@ class AccessReviewInstance {
 
   factory AccessReviewInstance.fromMap(Map<String, dynamic> map) {
     return AccessReviewInstance(
-      backupReviewers: map['backupReviewers'] == null ? null : (pulumi.Input.decodeList<AccessReviewReviewer>(map['backupReviewers'], (value) => AccessReviewReviewer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      endDateTime: map['endDateTime'] == null ? null : (map['endDateTime'] as String).input(),
-      reviewers: map['reviewers'] == null ? null : (pulumi.Input.decodeList<AccessReviewReviewer>(map['reviewers'], (value) => AccessReviewReviewer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      startDateTime: map['startDateTime'] == null ? null : (map['startDateTime'] as String).input(),
+      backupReviewers: map['backupReviewers'] == null ? null : (pulumi.Input.decodeList<AccessReviewReviewer>(map['backupReviewers']!, (value) => AccessReviewReviewer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endDateTime: map['endDateTime'] == null ? null : (map['endDateTime']! as String).input(),
+      reviewers: map['reviewers'] == null ? null : (pulumi.Input.decodeList<AccessReviewReviewer>(map['reviewers']!, (value) => AccessReviewReviewer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      startDateTime: map['startDateTime'] == null ? null : (map['startDateTime']! as String).input(),
     );
   }
 }

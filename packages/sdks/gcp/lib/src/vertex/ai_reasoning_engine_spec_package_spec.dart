@@ -37,10 +37,10 @@ class AiReasoningEngineSpecPackageSpec {
 
   factory AiReasoningEngineSpecPackageSpec.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineSpecPackageSpec(
-      dependencyFilesGcsUri: map['dependencyFilesGcsUri'] == null ? null : (map['dependencyFilesGcsUri'] as String).input(),
-      pickleObjectGcsUri: map['pickleObjectGcsUri'] == null ? null : (map['pickleObjectGcsUri'] as String).input(),
-      pythonVersion: map['pythonVersion'] == null ? null : (map['pythonVersion'] as String).input(),
-      requirementsGcsUri: map['requirementsGcsUri'] == null ? null : (map['requirementsGcsUri'] as String).input(),
+      dependencyFilesGcsUri: map['dependencyFilesGcsUri'] == null ? null : (map['dependencyFilesGcsUri']! as String).input(),
+      pickleObjectGcsUri: map['pickleObjectGcsUri'] == null ? null : (map['pickleObjectGcsUri']! as String).input(),
+      pythonVersion: map['pythonVersion'] == null ? null : (map['pythonVersion']! as String).input(),
+      requirementsGcsUri: map['requirementsGcsUri'] == null ? null : (map['requirementsGcsUri']! as String).input(),
     );
   }
 }

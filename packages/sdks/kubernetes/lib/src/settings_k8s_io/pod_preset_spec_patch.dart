@@ -46,11 +46,11 @@ class PodPresetSpecPatch {
 
   factory PodPresetSpecPatch.fromMap(Map<String, dynamic> map) {
     return PodPresetSpecPatch(
-      env: map['env'] == null ? null : (pulumi.Input.decodeList<EnvVarPatch>(map['env'], (value) => EnvVarPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      envFrom: map['envFrom'] == null ? null : (pulumi.Input.decodeList<EnvFromSourcePatch>(map['envFrom'], (value) => EnvFromSourcePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      selector: map['selector'] == null ? null : (LabelSelectorPatch.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
-      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<VolumeMountPatch>(map['volumeMounts'], (value) => VolumeMountPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<VolumePatch>(map['volumes'], (value) => VolumePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      env: map['env'] == null ? null : (pulumi.Input.decodeList<EnvVarPatch>(map['env']!, (value) => EnvVarPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      envFrom: map['envFrom'] == null ? null : (pulumi.Input.decodeList<EnvFromSourcePatch>(map['envFrom']!, (value) => EnvFromSourcePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selector: map['selector'] == null ? null : (LabelSelectorPatch.fromMap((map['selector']! as Map).cast<String, dynamic>())).input(),
+      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<VolumeMountPatch>(map['volumeMounts']!, (value) => VolumeMountPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<VolumePatch>(map['volumes']!, (value) => VolumePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class TlsInspectionConfigurationTlsInspectionConfiguration {
 
   factory TlsInspectionConfigurationTlsInspectionConfiguration.fromMap(Map<String, dynamic> map) {
     return TlsInspectionConfigurationTlsInspectionConfiguration(
-      serverCertificateConfiguration: (TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfiguration.fromMap((map['serverCertificateConfiguration'] as Map).cast<String, dynamic>())).input(),
+      serverCertificateConfiguration: (TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfiguration.fromMap((map['serverCertificateConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

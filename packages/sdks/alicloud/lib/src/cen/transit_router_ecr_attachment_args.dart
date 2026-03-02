@@ -54,13 +54,13 @@ class TransitRouterEcrAttachmentArgs {
 
   factory TransitRouterEcrAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterEcrAttachmentArgs(
-      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
       ecrId: (map['ecrId'] as String).input(),
-      ecrOwnerId: map['ecrOwnerId'] == null ? null : (map['ecrOwnerId'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      transitRouterAttachmentDescription: map['transitRouterAttachmentDescription'] == null ? null : (map['transitRouterAttachmentDescription'] as String).input(),
-      transitRouterEcrAttachmentName: map['transitRouterEcrAttachmentName'] == null ? null : (map['transitRouterEcrAttachmentName'] as String).input(),
-      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
+      ecrOwnerId: map['ecrOwnerId'] == null ? null : (map['ecrOwnerId']! as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      transitRouterAttachmentDescription: map['transitRouterAttachmentDescription'] == null ? null : (map['transitRouterAttachmentDescription']! as String).input(),
+      transitRouterEcrAttachmentName: map['transitRouterEcrAttachmentName'] == null ? null : (map['transitRouterEcrAttachmentName']! as String).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId']! as String).input(),
     );
   }
 }

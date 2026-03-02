@@ -39,10 +39,10 @@ class BackendBucketSignedUrlKeyState {
 
   factory BackendBucketSignedUrlKeyState.fromMap(Map<String, dynamic> map) {
     return BackendBucketSignedUrlKeyState(
-      backendBucket: map['backendBucket'] == null ? null : (map['backendBucket'] as String).input(),
-      keyValue: map['keyValue'] == null ? null : (map['keyValue'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      backendBucket: map['backendBucket'] == null ? null : (map['backendBucket']! as String).input(),
+      keyValue: map['keyValue'] == null ? null : (map['keyValue']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

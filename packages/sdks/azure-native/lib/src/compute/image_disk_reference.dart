@@ -36,10 +36,10 @@ class ImageDiskReference {
 
   factory ImageDiskReference.fromMap(Map<String, dynamic> map) {
     return ImageDiskReference(
-      communityGalleryImageId: map['communityGalleryImageId'] == null ? null : (map['communityGalleryImageId'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      lun: map['lun'] == null ? null : (map['lun'] as int).input(),
-      sharedGalleryImageId: map['sharedGalleryImageId'] == null ? null : (map['sharedGalleryImageId'] as String).input(),
+      communityGalleryImageId: map['communityGalleryImageId'] == null ? null : (map['communityGalleryImageId']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      lun: map['lun'] == null ? null : (map['lun']! as int).input(),
+      sharedGalleryImageId: map['sharedGalleryImageId'] == null ? null : (map['sharedGalleryImageId']! as String).input(),
     );
   }
 }

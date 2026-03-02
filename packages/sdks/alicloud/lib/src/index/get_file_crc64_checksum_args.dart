@@ -29,7 +29,7 @@ class GetFileCrc64ChecksumArgs {
   factory GetFileCrc64ChecksumArgs.fromMap(Map<String, dynamic> map) {
     return GetFileCrc64ChecksumArgs(
       filename: (map['filename'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

@@ -68,16 +68,16 @@ class VpcIpamResourceDiscoveryState {
 
   factory VpcIpamResourceDiscoveryState.fromMap(Map<String, dynamic> map) {
     return VpcIpamResourceDiscoveryState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipamResourceDiscoveryRegion: map['ipamResourceDiscoveryRegion'] == null ? null : (map['ipamResourceDiscoveryRegion'] as String).input(),
-      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
-      operatingRegions: map['operatingRegions'] == null ? null : (pulumi.Input.decodeList<VpcIpamResourceDiscoveryOperatingRegion>(map['operatingRegions'], (value) => VpcIpamResourceDiscoveryOperatingRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      organizationalUnitExclusions: map['organizationalUnitExclusions'] == null ? null : (pulumi.Input.decodeList<VpcIpamResourceDiscoveryOrganizationalUnitExclusion>(map['organizationalUnitExclusions'], (value) => VpcIpamResourceDiscoveryOrganizationalUnitExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      ipamResourceDiscoveryRegion: map['ipamResourceDiscoveryRegion'] == null ? null : ((map['ipamResourceDiscoveryRegion'] as String).input()).input(),
+      isDefault: map['isDefault'] == null ? null : ((map['isDefault'] as bool).input()).input(),
+      operatingRegions: map['operatingRegions'] == null ? null : ((pulumi.Input.decodeList<VpcIpamResourceDiscoveryOperatingRegion>(map['operatingRegions']!, (value) => VpcIpamResourceDiscoveryOperatingRegion.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      organizationalUnitExclusions: map['organizationalUnitExclusions'] == null ? null : ((pulumi.Input.decodeList<VpcIpamResourceDiscoveryOrganizationalUnitExclusion>(map['organizationalUnitExclusions']!, (value) => VpcIpamResourceDiscoveryOrganizationalUnitExclusion.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

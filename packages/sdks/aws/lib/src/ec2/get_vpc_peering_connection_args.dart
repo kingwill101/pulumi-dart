@@ -74,16 +74,16 @@ class GetVpcPeeringConnectionArgs {
 
   factory GetVpcPeeringConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcPeeringConnectionArgs(
-      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpcPeeringConnectionFilter>(map['filters'], (value) => GetVpcPeeringConnectionFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
-      peerCidrBlock: map['peerCidrBlock'] == null ? null : (map['peerCidrBlock'] as String).input(),
-      peerOwnerId: map['peerOwnerId'] == null ? null : (map['peerOwnerId'] as String).input(),
-      peerVpcId: map['peerVpcId'] == null ? null : (map['peerVpcId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : ((map['cidrBlock'] as String).input()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetVpcPeeringConnectionFilter>(map['filters']!, (value) => GetVpcPeeringConnectionFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
+      peerCidrBlock: map['peerCidrBlock'] == null ? null : ((map['peerCidrBlock'] as String).input()).input(),
+      peerOwnerId: map['peerOwnerId'] == null ? null : ((map['peerOwnerId'] as String).input()).input(),
+      peerVpcId: map['peerVpcId'] == null ? null : ((map['peerVpcId'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

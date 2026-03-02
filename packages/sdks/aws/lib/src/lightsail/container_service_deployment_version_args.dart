@@ -43,9 +43,9 @@ class ContainerServiceDeploymentVersionArgs {
 
   factory ContainerServiceDeploymentVersionArgs.fromMap(Map<String, dynamic> map) {
     return ContainerServiceDeploymentVersionArgs(
-      containers: (pulumi.Input.decodeList<ContainerServiceDeploymentVersionContainer>(map['containers'], (value) => ContainerServiceDeploymentVersionContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      publicEndpoint: map['publicEndpoint'] == null ? null : (ContainerServiceDeploymentVersionPublicEndpoint.fromMap((map['publicEndpoint'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      containers: (pulumi.Input.decodeList<ContainerServiceDeploymentVersionContainer>(map['containers']!, (value) => ContainerServiceDeploymentVersionContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicEndpoint: map['publicEndpoint'] == null ? null : ((ContainerServiceDeploymentVersionPublicEndpoint.fromMap((map['publicEndpoint']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       serviceName: (map['serviceName'] as String).input(),
     );
   }

@@ -22,7 +22,7 @@ class MetadataComputeV1 {
 
   factory MetadataComputeV1.fromMap(Map<String, dynamic> map) {
     return MetadataComputeV1(
-      items: map['items'] == null ? null : (pulumi.Input.decodeList<MetadataItemsItemComputeV1>(map['items'], (value) => MetadataItemsItemComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      items: map['items'] == null ? null : (pulumi.Input.decodeList<MetadataItemsItemComputeV1>(map['items']!, (value) => MetadataItemsItemComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

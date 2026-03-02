@@ -26,8 +26,8 @@ class ErrorAction {
 
   factory ErrorAction.fromMap(Map<String, dynamic> map) {
     return ErrorAction(
-      maxToleratedFailures: map['maxToleratedFailures'] == null ? null : (map['maxToleratedFailures'] as int).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      maxToleratedFailures: map['maxToleratedFailures'] == null ? null : (map['maxToleratedFailures']! as int).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
     );
   }
 }

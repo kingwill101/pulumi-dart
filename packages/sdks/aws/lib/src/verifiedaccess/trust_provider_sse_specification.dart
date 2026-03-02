@@ -23,8 +23,8 @@ class TrustProviderSseSpecification {
 
   factory TrustProviderSseSpecification.fromMap(Map<String, dynamic> map) {
     return TrustProviderSseSpecification(
-      customerManagedKeyEnabled: map['customerManagedKeyEnabled'] == null ? null : (map['customerManagedKeyEnabled'] as bool).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      customerManagedKeyEnabled: map['customerManagedKeyEnabled'] == null ? null : ((map['customerManagedKeyEnabled'] as bool).input()).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
     );
   }
 }

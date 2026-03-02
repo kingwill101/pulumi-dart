@@ -35,10 +35,10 @@ class PoolDataDisk {
 
   factory PoolDataDisk.fromMap(Map<String, dynamic> map) {
     return PoolDataDisk(
-      caching: map['caching'] == null ? null : (map['caching'] as String).input(),
+      caching: map['caching'] == null ? null : (map['caching']! as String).input(),
       diskSizeGb: (map['diskSizeGb'] as int).input(),
       lun: (map['lun'] as int).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType']! as String).input(),
     );
   }
 }

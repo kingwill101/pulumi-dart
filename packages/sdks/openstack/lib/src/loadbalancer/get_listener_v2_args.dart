@@ -59,13 +59,13 @@ class GetListenerV2Args {
 
   factory GetListenerV2Args.fromMap(Map<String, dynamic> map) {
     return GetListenerV2Args(
-      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
-      loadbalancerId: map['loadbalancerId'] == null ? null : (map['loadbalancerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      protocolPort: map['protocolPort'] == null ? null : (map['protocolPort'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId']! as String).input(),
+      loadbalancerId: map['loadbalancerId'] == null ? null : (map['loadbalancerId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      protocolPort: map['protocolPort'] == null ? null : (map['protocolPort']! as int).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
     );
   }
 }

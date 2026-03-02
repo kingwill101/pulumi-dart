@@ -102,22 +102,22 @@ class InterconnectArgs {
 
   factory InterconnectArgs.fromMap(Map<String, dynamic> map) {
     return InterconnectArgs(
-      adminEnabled: map['adminEnabled'] == null ? null : (map['adminEnabled'] as bool).input(),
-      customerName: map['customerName'] == null ? null : (map['customerName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      interconnectType: map['interconnectType'] == null ? null : (InterconnectInterconnectType.fromValue(map['interconnectType'] as String)).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      linkType: map['linkType'] == null ? null : (InterconnectLinkType.fromValue(map['linkType'] as String)).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      macsec: map['macsec'] == null ? null : (InterconnectMacsec.fromMap((map['macsec'] as Map).cast<String, dynamic>())).input(),
-      macsecEnabled: map['macsecEnabled'] == null ? null : (map['macsecEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nocContactEmail: map['nocContactEmail'] == null ? null : (map['nocContactEmail'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      remoteLocation: map['remoteLocation'] == null ? null : (map['remoteLocation'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      requestedFeatures: map['requestedFeatures'] == null ? null : (pulumi.Input.decodeList<InterconnectRequestedFeaturesItem>(map['requestedFeatures'], (value) => InterconnectRequestedFeaturesItem.fromValue(value as String))).input(),
-      requestedLinkCount: map['requestedLinkCount'] == null ? null : (map['requestedLinkCount'] as int).input(),
+      adminEnabled: map['adminEnabled'] == null ? null : (map['adminEnabled']! as bool).input(),
+      customerName: map['customerName'] == null ? null : (map['customerName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      interconnectType: map['interconnectType'] == null ? null : (InterconnectInterconnectType.fromValue(map['interconnectType']! as String)).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      linkType: map['linkType'] == null ? null : (InterconnectLinkType.fromValue(map['linkType']! as String)).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      macsec: map['macsec'] == null ? null : (InterconnectMacsec.fromMap((map['macsec']! as Map).cast<String, dynamic>())).input(),
+      macsecEnabled: map['macsecEnabled'] == null ? null : (map['macsecEnabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nocContactEmail: map['nocContactEmail'] == null ? null : (map['nocContactEmail']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      remoteLocation: map['remoteLocation'] == null ? null : (map['remoteLocation']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      requestedFeatures: map['requestedFeatures'] == null ? null : (pulumi.Input.decodeList<InterconnectRequestedFeaturesItem>(map['requestedFeatures']!, (value) => InterconnectRequestedFeaturesItem.fromValue(value as String))).input(),
+      requestedLinkCount: map['requestedLinkCount'] == null ? null : (map['requestedLinkCount']! as int).input(),
     );
   }
 }

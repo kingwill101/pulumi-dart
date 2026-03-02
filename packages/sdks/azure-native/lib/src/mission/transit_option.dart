@@ -27,8 +27,8 @@ class TransitOption {
 
   factory TransitOption.fromMap(Map<String, dynamic> map) {
     return TransitOption(
-      params: map['params'] == null ? null : (TransitOptionParams.fromMap((map['params'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      params: map['params'] == null ? null : (TransitOptionParams.fromMap((map['params']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

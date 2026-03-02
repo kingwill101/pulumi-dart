@@ -25,7 +25,7 @@ class WebhookPullRequestBuildPolicy {
 
   factory WebhookPullRequestBuildPolicy.fromMap(Map<String, dynamic> map) {
     return WebhookPullRequestBuildPolicy(
-      approverRoles: map['approverRoles'] == null ? null : ((map['approverRoles'] as List).cast<String>()).input(),
+      approverRoles: map['approverRoles'] == null ? null : (((map['approverRoles'] as List).cast<String>()).input()).input(),
       requiresCommentApproval: (map['requiresCommentApproval'] as String).input(),
     );
   }

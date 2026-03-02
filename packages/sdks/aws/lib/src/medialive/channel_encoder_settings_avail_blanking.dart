@@ -26,8 +26,8 @@ class ChannelEncoderSettingsAvailBlanking {
 
   factory ChannelEncoderSettingsAvailBlanking.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAvailBlanking(
-      availBlankingImage: map['availBlankingImage'] == null ? null : (ChannelEncoderSettingsAvailBlankingAvailBlankingImage.fromMap((map['availBlankingImage'] as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      availBlankingImage: map['availBlankingImage'] == null ? null : ((ChannelEncoderSettingsAvailBlankingAvailBlankingImage.fromMap((map['availBlankingImage']! as Map).cast<String, dynamic>())).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
     );
   }
 }

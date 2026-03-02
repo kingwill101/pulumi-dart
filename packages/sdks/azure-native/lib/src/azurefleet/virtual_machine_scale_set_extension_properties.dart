@@ -82,17 +82,17 @@ class VirtualMachineScaleSetExtensionProperties {
 
   factory VirtualMachineScaleSetExtensionProperties.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetExtensionProperties(
-      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : (map['autoUpgradeMinorVersion'] as bool).input(),
-      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : (map['enableAutomaticUpgrade'] as bool).input(),
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag'] as String).input(),
-      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings']).input(),
-      protectedSettingsFromKeyVault: map['protectedSettingsFromKeyVault'] == null ? null : (KeyVaultSecretReference.fromMap((map['protectedSettingsFromKeyVault'] as Map).cast<String, dynamic>())).input(),
-      provisionAfterExtensions: map['provisionAfterExtensions'] == null ? null : ((map['provisionAfterExtensions'] as List).cast<String>()).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
-      settings: map['settings'] == null ? null : (map['settings']).input(),
-      suppressFailures: map['suppressFailures'] == null ? null : (map['suppressFailures'] as bool).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion'] as String).input(),
+      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : (map['autoUpgradeMinorVersion']! as bool).input(),
+      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : (map['enableAutomaticUpgrade']! as bool).input(),
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag']! as String).input(),
+      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings']!).input(),
+      protectedSettingsFromKeyVault: map['protectedSettingsFromKeyVault'] == null ? null : (KeyVaultSecretReference.fromMap((map['protectedSettingsFromKeyVault']! as Map).cast<String, dynamic>())).input(),
+      provisionAfterExtensions: map['provisionAfterExtensions'] == null ? null : ((map['provisionAfterExtensions']! as List).cast<String>()).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
+      settings: map['settings'] == null ? null : (map['settings']!).input(),
+      suppressFailures: map['suppressFailures'] == null ? null : (map['suppressFailures']! as bool).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion']! as String).input(),
     );
   }
 }

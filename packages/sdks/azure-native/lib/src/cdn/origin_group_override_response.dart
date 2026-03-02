@@ -27,8 +27,8 @@ class OriginGroupOverrideResponse {
 
   factory OriginGroupOverrideResponse.fromMap(Map<String, dynamic> map) {
     return OriginGroupOverrideResponse(
-      forwardingProtocol: map['forwardingProtocol'] == null ? null : (map['forwardingProtocol'] as String).input(),
-      originGroup: map['originGroup'] == null ? null : (ResourceReferenceResponse.fromMap((map['originGroup'] as Map).cast<String, dynamic>())).input(),
+      forwardingProtocol: map['forwardingProtocol'] == null ? null : (map['forwardingProtocol']! as String).input(),
+      originGroup: map['originGroup'] == null ? null : (ResourceReferenceResponse.fromMap((map['originGroup']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata {
 
   factory TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata.fromMap(Map<String, dynamic> map) {
     return TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata(
-      authMethod: map['authMethod'] == null ? null : (map['authMethod'] as String).input(),
-      listApi: map['listApi'] == null ? null : (map['listApi'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      requestModel: map['requestModel'] == null ? null : (map['requestModel'] as String).input(),
+      authMethod: map['authMethod'] == null ? null : (map['authMethod']! as String).input(),
+      listApi: map['listApi'] == null ? null : (map['listApi']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      requestModel: map['requestModel'] == null ? null : (map['requestModel']! as String).input(),
     );
   }
 }

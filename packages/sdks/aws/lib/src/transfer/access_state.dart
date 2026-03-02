@@ -63,15 +63,15 @@ class AccessState {
 
   factory AccessState.fromMap(Map<String, dynamic> map) {
     return AccessState(
-      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
-      homeDirectory: map['homeDirectory'] == null ? null : (map['homeDirectory'] as String).input(),
-      homeDirectoryMappings: map['homeDirectoryMappings'] == null ? null : (pulumi.Input.decodeList<AccessHomeDirectoryMapping>(map['homeDirectoryMappings'], (value) => AccessHomeDirectoryMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      homeDirectoryType: map['homeDirectoryType'] == null ? null : (map['homeDirectoryType'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      posixProfile: map['posixProfile'] == null ? null : (AccessPosixProfile.fromMap((map['posixProfile'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
+      externalId: map['externalId'] == null ? null : ((map['externalId'] as String).input()).input(),
+      homeDirectory: map['homeDirectory'] == null ? null : ((map['homeDirectory'] as String).input()).input(),
+      homeDirectoryMappings: map['homeDirectoryMappings'] == null ? null : ((pulumi.Input.decodeList<AccessHomeDirectoryMapping>(map['homeDirectoryMappings']!, (value) => AccessHomeDirectoryMapping.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      homeDirectoryType: map['homeDirectoryType'] == null ? null : ((map['homeDirectoryType'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      posixProfile: map['posixProfile'] == null ? null : ((AccessPosixProfile.fromMap((map['posixProfile']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      role: map['role'] == null ? null : ((map['role'] as String).input()).input(),
+      serverId: map['serverId'] == null ? null : ((map['serverId'] as String).input()).input(),
     );
   }
 }

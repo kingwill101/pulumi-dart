@@ -84,16 +84,16 @@ class BackupPlanArgs {
 
   factory BackupPlanArgs.fromMap(Map<String, dynamic> map) {
     return BackupPlanArgs(
-      backupConfig: map['backupConfig'] == null ? null : (BackupPlanBackupConfig.fromMap((map['backupConfig'] as Map).cast<String, dynamic>())).input(),
-      backupSchedule: map['backupSchedule'] == null ? null : (BackupPlanBackupSchedule.fromMap((map['backupSchedule'] as Map).cast<String, dynamic>())).input(),
+      backupConfig: map['backupConfig'] == null ? null : (BackupPlanBackupConfig.fromMap((map['backupConfig']! as Map).cast<String, dynamic>())).input(),
+      backupSchedule: map['backupSchedule'] == null ? null : (BackupPlanBackupSchedule.fromMap((map['backupSchedule']! as Map).cast<String, dynamic>())).input(),
       cluster: (map['cluster'] as String).input(),
-      deactivated: map['deactivated'] == null ? null : (map['deactivated'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      deactivated: map['deactivated'] == null ? null : (map['deactivated']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      retentionPolicy: map['retentionPolicy'] == null ? null : (BackupPlanRetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (BackupPlanRetentionPolicy.fromMap((map['retentionPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

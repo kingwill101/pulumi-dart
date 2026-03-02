@@ -51,13 +51,13 @@ class ApplicationFederatedIdentityCredentialState {
 
   factory ApplicationFederatedIdentityCredentialState.fromMap(Map<String, dynamic> map) {
     return ApplicationFederatedIdentityCredentialState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      audiences: map['audiences'] == null ? null : ((map['audiences'] as List).cast<String>()).input(),
-      credentialId: map['credentialId'] == null ? null : (map['credentialId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
-      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      audiences: map['audiences'] == null ? null : ((map['audiences']! as List).cast<String>()).input(),
+      credentialId: map['credentialId'] == null ? null : (map['credentialId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer']! as String).input(),
+      subject: map['subject'] == null ? null : (map['subject']! as String).input(),
     );
   }
 }

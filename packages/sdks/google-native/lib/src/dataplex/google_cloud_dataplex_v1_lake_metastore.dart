@@ -21,7 +21,7 @@ class GoogleCloudDataplexV1LakeMetastore {
 
   factory GoogleCloudDataplexV1LakeMetastore.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1LakeMetastore(
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

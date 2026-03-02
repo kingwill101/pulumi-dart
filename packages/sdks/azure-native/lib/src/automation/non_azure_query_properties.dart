@@ -26,8 +26,8 @@ class NonAzureQueryProperties {
 
   factory NonAzureQueryProperties.fromMap(Map<String, dynamic> map) {
     return NonAzureQueryProperties(
-      functionAlias: map['functionAlias'] == null ? null : (map['functionAlias'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      functionAlias: map['functionAlias'] == null ? null : (map['functionAlias']! as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class AutoscaleCapacity {
 
   factory AutoscaleCapacity.fromMap(Map<String, dynamic> map) {
     return AutoscaleCapacity(
-      maxInstanceCount: map['maxInstanceCount'] == null ? null : (map['maxInstanceCount'] as int).input(),
-      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount'] as int).input(),
+      maxInstanceCount: map['maxInstanceCount'] == null ? null : (map['maxInstanceCount']! as int).input(),
+      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount']! as int).input(),
     );
   }
 }

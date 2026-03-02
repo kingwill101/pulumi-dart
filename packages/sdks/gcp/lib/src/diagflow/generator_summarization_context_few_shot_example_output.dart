@@ -22,7 +22,7 @@ class GeneratorSummarizationContextFewShotExampleOutput {
 
   factory GeneratorSummarizationContextFewShotExampleOutput.fromMap(Map<String, dynamic> map) {
     return GeneratorSummarizationContextFewShotExampleOutput(
-      summarySuggestion: map['summarySuggestion'] == null ? null : (GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion.fromMap((map['summarySuggestion'] as Map).cast<String, dynamic>())).input(),
+      summarySuggestion: map['summarySuggestion'] == null ? null : (GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion.fromMap((map['summarySuggestion']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

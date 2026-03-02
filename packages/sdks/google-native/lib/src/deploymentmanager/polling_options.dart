@@ -41,11 +41,11 @@ class PollingOptions {
 
   factory PollingOptions.fromMap(Map<String, dynamic> map) {
     return PollingOptions(
-      diagnostics: map['diagnostics'] == null ? null : (pulumi.Input.decodeList<Diagnostic>(map['diagnostics'], (value) => Diagnostic.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      failCondition: map['failCondition'] == null ? null : (map['failCondition'] as String).input(),
-      finishCondition: map['finishCondition'] == null ? null : (map['finishCondition'] as String).input(),
-      pollingLink: map['pollingLink'] == null ? null : (map['pollingLink'] as String).input(),
-      targetLink: map['targetLink'] == null ? null : (map['targetLink'] as String).input(),
+      diagnostics: map['diagnostics'] == null ? null : (pulumi.Input.decodeList<Diagnostic>(map['diagnostics']!, (value) => Diagnostic.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      failCondition: map['failCondition'] == null ? null : (map['failCondition']! as String).input(),
+      finishCondition: map['finishCondition'] == null ? null : (map['finishCondition']! as String).input(),
+      pollingLink: map['pollingLink'] == null ? null : (map['pollingLink']! as String).input(),
+      targetLink: map['targetLink'] == null ? null : (map['targetLink']! as String).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class ClusterMasterAuthorizedNetworksConfigCidrBlock {
   factory ClusterMasterAuthorizedNetworksConfigCidrBlock.fromMap(Map<String, dynamic> map) {
     return ClusterMasterAuthorizedNetworksConfigCidrBlock(
       cidrBlock: (map['cidrBlock'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
     );
   }
 }

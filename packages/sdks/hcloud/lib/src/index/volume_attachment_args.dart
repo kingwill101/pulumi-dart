@@ -34,7 +34,7 @@ class VolumeAttachmentArgs {
 
   factory VolumeAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return VolumeAttachmentArgs(
-      automount: map['automount'] == null ? null : (map['automount'] as bool).input(),
+      automount: map['automount'] == null ? null : (map['automount']! as bool).input(),
       serverId: (map['serverId'] as int).input(),
       volumeId: (map['volumeId'] as int).input(),
     );

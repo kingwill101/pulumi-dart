@@ -21,7 +21,7 @@ class DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh {
 
   factory DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh.fromMap(Map<String, dynamic> map) {
     return DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh(
-      lookbackWindow: (DataSetRefreshPropertiesRefreshConfigurationIncrementalRefreshLookbackWindow.fromMap((map['lookbackWindow'] as Map).cast<String, dynamic>())).input(),
+      lookbackWindow: (DataSetRefreshPropertiesRefreshConfigurationIncrementalRefreshLookbackWindow.fromMap((map['lookbackWindow']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -47,12 +47,12 @@ class NamespaceTopicSpacesConfiguration {
 
   factory NamespaceTopicSpacesConfiguration.fromMap(Map<String, dynamic> map) {
     return NamespaceTopicSpacesConfiguration(
-      alternativeAuthenticationNameSources: map['alternativeAuthenticationNameSources'] == null ? null : ((map['alternativeAuthenticationNameSources'] as List).cast<String>()).input(),
-      dynamicRoutingEnrichments: map['dynamicRoutingEnrichments'] == null ? null : (pulumi.Input.decodeList<NamespaceTopicSpacesConfigurationDynamicRoutingEnrichment>(map['dynamicRoutingEnrichments'], (value) => NamespaceTopicSpacesConfigurationDynamicRoutingEnrichment.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maximumClientSessionsPerAuthenticationName: map['maximumClientSessionsPerAuthenticationName'] == null ? null : (map['maximumClientSessionsPerAuthenticationName'] as int).input(),
-      maximumSessionExpiryInHours: map['maximumSessionExpiryInHours'] == null ? null : (map['maximumSessionExpiryInHours'] as int).input(),
-      routeTopicId: map['routeTopicId'] == null ? null : (map['routeTopicId'] as String).input(),
-      staticRoutingEnrichments: map['staticRoutingEnrichments'] == null ? null : (pulumi.Input.decodeList<NamespaceTopicSpacesConfigurationStaticRoutingEnrichment>(map['staticRoutingEnrichments'], (value) => NamespaceTopicSpacesConfigurationStaticRoutingEnrichment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      alternativeAuthenticationNameSources: map['alternativeAuthenticationNameSources'] == null ? null : ((map['alternativeAuthenticationNameSources']! as List).cast<String>()).input(),
+      dynamicRoutingEnrichments: map['dynamicRoutingEnrichments'] == null ? null : (pulumi.Input.decodeList<NamespaceTopicSpacesConfigurationDynamicRoutingEnrichment>(map['dynamicRoutingEnrichments']!, (value) => NamespaceTopicSpacesConfigurationDynamicRoutingEnrichment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maximumClientSessionsPerAuthenticationName: map['maximumClientSessionsPerAuthenticationName'] == null ? null : (map['maximumClientSessionsPerAuthenticationName']! as int).input(),
+      maximumSessionExpiryInHours: map['maximumSessionExpiryInHours'] == null ? null : (map['maximumSessionExpiryInHours']! as int).input(),
+      routeTopicId: map['routeTopicId'] == null ? null : (map['routeTopicId']! as String).input(),
+      staticRoutingEnrichments: map['staticRoutingEnrichments'] == null ? null : (pulumi.Input.decodeList<NamespaceTopicSpacesConfigurationStaticRoutingEnrichment>(map['staticRoutingEnrichments']!, (value) => NamespaceTopicSpacesConfigurationStaticRoutingEnrichment.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

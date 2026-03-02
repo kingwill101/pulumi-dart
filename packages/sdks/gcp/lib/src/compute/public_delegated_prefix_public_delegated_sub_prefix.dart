@@ -90,17 +90,17 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefix {
 
   factory PublicDelegatedPrefixPublicDelegatedSubPrefix.fromMap(Map<String, dynamic> map) {
     return PublicDelegatedPrefixPublicDelegatedSubPrefix(
-      allocatablePrefixLength: map['allocatablePrefixLength'] == null ? null : (map['allocatablePrefixLength'] as int).input(),
-      delegateeProject: map['delegateeProject'] == null ? null : (map['delegateeProject'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enableEnhancedIpv4Allocation: map['enableEnhancedIpv4Allocation'] == null ? null : (map['enableEnhancedIpv4Allocation'] as bool).input(),
-      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange'] as String).input(),
-      ipv6AccessType: map['ipv6AccessType'] == null ? null : (map['ipv6AccessType'] as String).input(),
-      isAddress: map['isAddress'] == null ? null : (map['isAddress'] as bool).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      allocatablePrefixLength: map['allocatablePrefixLength'] == null ? null : (map['allocatablePrefixLength']! as int).input(),
+      delegateeProject: map['delegateeProject'] == null ? null : (map['delegateeProject']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enableEnhancedIpv4Allocation: map['enableEnhancedIpv4Allocation'] == null ? null : (map['enableEnhancedIpv4Allocation']! as bool).input(),
+      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange']! as String).input(),
+      ipv6AccessType: map['ipv6AccessType'] == null ? null : (map['ipv6AccessType']! as String).input(),
+      isAddress: map['isAddress'] == null ? null : (map['isAddress']! as bool).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

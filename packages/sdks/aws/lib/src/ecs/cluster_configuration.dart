@@ -27,8 +27,8 @@ class ClusterConfiguration {
 
   factory ClusterConfiguration.fromMap(Map<String, dynamic> map) {
     return ClusterConfiguration(
-      executeCommandConfiguration: map['executeCommandConfiguration'] == null ? null : (ClusterConfigurationExecuteCommandConfiguration.fromMap((map['executeCommandConfiguration'] as Map).cast<String, dynamic>())).input(),
-      managedStorageConfiguration: map['managedStorageConfiguration'] == null ? null : (ClusterConfigurationManagedStorageConfiguration.fromMap((map['managedStorageConfiguration'] as Map).cast<String, dynamic>())).input(),
+      executeCommandConfiguration: map['executeCommandConfiguration'] == null ? null : ((ClusterConfigurationExecuteCommandConfiguration.fromMap((map['executeCommandConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      managedStorageConfiguration: map['managedStorageConfiguration'] == null ? null : ((ClusterConfigurationManagedStorageConfiguration.fromMap((map['managedStorageConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -60,13 +60,13 @@ class ScheduledSqlArgs {
 
   factory ScheduledSqlArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledSqlArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       project: (map['project'] as String).input(),
       schedule: (ScheduledSqlSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
       scheduledSqlConfiguration: (ScheduledSqlScheduledSqlConfiguration.fromMap((map['scheduledSqlConfiguration'] as Map).cast<String, dynamic>())).input(),
       scheduledSqlName: (map['scheduledSqlName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

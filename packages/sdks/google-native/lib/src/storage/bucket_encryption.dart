@@ -21,7 +21,7 @@ class BucketEncryption {
 
   factory BucketEncryption.fromMap(Map<String, dynamic> map) {
     return BucketEncryption(
-      defaultKmsKeyName: map['defaultKmsKeyName'] == null ? null : (map['defaultKmsKeyName'] as String).input(),
+      defaultKmsKeyName: map['defaultKmsKeyName'] == null ? null : (map['defaultKmsKeyName']! as String).input(),
     );
   }
 }

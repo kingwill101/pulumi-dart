@@ -50,13 +50,13 @@ class NetworkAclEntriesEgress {
 
   factory NetworkAclEntriesEgress.fromMap(Map<String, dynamic> map) {
     return NetworkAclEntriesEgress(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationCidrIp: map['destinationCidrIp'] == null ? null : (map['destinationCidrIp'] as String).input(),
-      entryType: map['entryType'] == null ? null : (map['entryType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationCidrIp: map['destinationCidrIp'] == null ? null : (map['destinationCidrIp']! as String).input(),
+      entryType: map['entryType'] == null ? null : (map['entryType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
     );
   }
 }

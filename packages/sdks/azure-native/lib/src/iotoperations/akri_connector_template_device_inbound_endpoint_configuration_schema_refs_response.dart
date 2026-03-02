@@ -41,11 +41,11 @@ class AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse 
 
   factory AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse(
-      additionalConfigSchemaRef: map['additionalConfigSchemaRef'] == null ? null : (map['additionalConfigSchemaRef'] as String).input(),
-      defaultDatasetConfigSchemaRef: map['defaultDatasetConfigSchemaRef'] == null ? null : (map['defaultDatasetConfigSchemaRef'] as String).input(),
-      defaultEventsConfigSchemaRef: map['defaultEventsConfigSchemaRef'] == null ? null : (map['defaultEventsConfigSchemaRef'] as String).input(),
-      defaultProcessControlConfigSchemaRef: map['defaultProcessControlConfigSchemaRef'] == null ? null : (map['defaultProcessControlConfigSchemaRef'] as String).input(),
-      defaultStreamsConfigSchemaRef: map['defaultStreamsConfigSchemaRef'] == null ? null : (map['defaultStreamsConfigSchemaRef'] as String).input(),
+      additionalConfigSchemaRef: map['additionalConfigSchemaRef'] == null ? null : (map['additionalConfigSchemaRef']! as String).input(),
+      defaultDatasetConfigSchemaRef: map['defaultDatasetConfigSchemaRef'] == null ? null : (map['defaultDatasetConfigSchemaRef']! as String).input(),
+      defaultEventsConfigSchemaRef: map['defaultEventsConfigSchemaRef'] == null ? null : (map['defaultEventsConfigSchemaRef']! as String).input(),
+      defaultProcessControlConfigSchemaRef: map['defaultProcessControlConfigSchemaRef'] == null ? null : (map['defaultProcessControlConfigSchemaRef']! as String).input(),
+      defaultStreamsConfigSchemaRef: map['defaultStreamsConfigSchemaRef'] == null ? null : (map['defaultStreamsConfigSchemaRef']! as String).input(),
     );
   }
 }

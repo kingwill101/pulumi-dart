@@ -34,9 +34,9 @@ class ResourcePolicySnapshotSchedulePolicyComputeBeta {
 
   factory ResourcePolicySnapshotSchedulePolicyComputeBeta.fromMap(Map<String, dynamic> map) {
     return ResourcePolicySnapshotSchedulePolicyComputeBeta(
-      retentionPolicy: map['retentionPolicy'] == null ? null : (ResourcePolicySnapshotSchedulePolicyRetentionPolicyComputeBeta.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
-      schedule: map['schedule'] == null ? null : (ResourcePolicySnapshotSchedulePolicyScheduleComputeBeta.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      snapshotProperties: map['snapshotProperties'] == null ? null : (ResourcePolicySnapshotSchedulePolicySnapshotPropertiesComputeBeta.fromMap((map['snapshotProperties'] as Map).cast<String, dynamic>())).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (ResourcePolicySnapshotSchedulePolicyRetentionPolicyComputeBeta.fromMap((map['retentionPolicy']! as Map).cast<String, dynamic>())).input(),
+      schedule: map['schedule'] == null ? null : (ResourcePolicySnapshotSchedulePolicyScheduleComputeBeta.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
+      snapshotProperties: map['snapshotProperties'] == null ? null : (ResourcePolicySnapshotSchedulePolicySnapshotPropertiesComputeBeta.fromMap((map['snapshotProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

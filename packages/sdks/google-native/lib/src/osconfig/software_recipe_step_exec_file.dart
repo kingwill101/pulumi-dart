@@ -36,10 +36,10 @@ class SoftwareRecipeStepExecFile {
 
   factory SoftwareRecipeStepExecFile.fromMap(Map<String, dynamic> map) {
     return SoftwareRecipeStepExecFile(
-      allowedExitCodes: map['allowedExitCodes'] == null ? null : ((map['allowedExitCodes'] as List).cast<int>()).input(),
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      artifactId: map['artifactId'] == null ? null : (map['artifactId'] as String).input(),
-      localPath: map['localPath'] == null ? null : (map['localPath'] as String).input(),
+      allowedExitCodes: map['allowedExitCodes'] == null ? null : ((map['allowedExitCodes']! as List).cast<int>()).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      artifactId: map['artifactId'] == null ? null : (map['artifactId']! as String).input(),
+      localPath: map['localPath'] == null ? null : (map['localPath']! as String).input(),
     );
   }
 }

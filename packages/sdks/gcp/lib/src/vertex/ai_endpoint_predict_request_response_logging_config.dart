@@ -32,9 +32,9 @@ class AiEndpointPredictRequestResponseLoggingConfig {
 
   factory AiEndpointPredictRequestResponseLoggingConfig.fromMap(Map<String, dynamic> map) {
     return AiEndpointPredictRequestResponseLoggingConfig(
-      bigqueryDestination: map['bigqueryDestination'] == null ? null : (AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination.fromMap((map['bigqueryDestination'] as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      samplingRate: map['samplingRate'] == null ? null : (map['samplingRate'] as double).input(),
+      bigqueryDestination: map['bigqueryDestination'] == null ? null : (AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination.fromMap((map['bigqueryDestination']! as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      samplingRate: map['samplingRate'] == null ? null : (map['samplingRate']! as double).input(),
     );
   }
 }

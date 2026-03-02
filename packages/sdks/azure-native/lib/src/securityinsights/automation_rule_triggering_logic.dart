@@ -40,8 +40,8 @@ class AutomationRuleTriggeringLogic {
 
   factory AutomationRuleTriggeringLogic.fromMap(Map<String, dynamic> map) {
     return AutomationRuleTriggeringLogic(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<BooleanConditionProperties>(map['conditions'], (value) => BooleanConditionProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      expirationTimeUtc: map['expirationTimeUtc'] == null ? null : (map['expirationTimeUtc'] as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<BooleanConditionProperties>(map['conditions']!, (value) => BooleanConditionProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expirationTimeUtc: map['expirationTimeUtc'] == null ? null : (map['expirationTimeUtc']! as String).input(),
       isEnabled: (map['isEnabled'] as bool).input(),
       triggersOn: (map['triggersOn'] as String).input(),
       triggersWhen: (map['triggersWhen'] as String).input(),

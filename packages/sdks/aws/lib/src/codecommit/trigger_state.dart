@@ -37,10 +37,10 @@ class TriggerState {
 
   factory TriggerState.fromMap(Map<String, dynamic> map) {
     return TriggerState(
-      configurationId: map['configurationId'] == null ? null : (map['configurationId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      repositoryName: map['repositoryName'] == null ? null : (map['repositoryName'] as String).input(),
-      triggers: map['triggers'] == null ? null : (pulumi.Input.decodeList<TriggerTrigger>(map['triggers'], (value) => TriggerTrigger.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configurationId: map['configurationId'] == null ? null : ((map['configurationId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      repositoryName: map['repositoryName'] == null ? null : ((map['repositoryName'] as String).input()).input(),
+      triggers: map['triggers'] == null ? null : ((pulumi.Input.decodeList<TriggerTrigger>(map['triggers']!, (value) => TriggerTrigger.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

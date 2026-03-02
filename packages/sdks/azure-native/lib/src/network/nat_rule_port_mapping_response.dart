@@ -31,9 +31,9 @@ class NatRulePortMappingResponse {
 
   factory NatRulePortMappingResponse.fromMap(Map<String, dynamic> map) {
     return NatRulePortMappingResponse(
-      backendPort: map['backendPort'] == null ? null : (map['backendPort'] as int).input(),
-      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort'] as int).input(),
-      inboundNatRuleName: map['inboundNatRuleName'] == null ? null : (map['inboundNatRuleName'] as String).input(),
+      backendPort: map['backendPort'] == null ? null : (map['backendPort']! as int).input(),
+      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort']! as int).input(),
+      inboundNatRuleName: map['inboundNatRuleName'] == null ? null : (map['inboundNatRuleName']! as String).input(),
     );
   }
 }

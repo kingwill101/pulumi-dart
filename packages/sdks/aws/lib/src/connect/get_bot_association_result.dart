@@ -35,7 +35,7 @@ class GetBotAssociationResult {
     return GetBotAssociationResult(
       id: map['id'] as String,
       instanceId: map['instanceId'] as String,
-      lexBot: GetBotAssociationLexBot.fromMap((map['lexBot'] as Map).cast<String, dynamic>()),
+      lexBot: GetBotAssociationLexBot.fromMap((map['lexBot']! as Map).cast<String, dynamic>()),
       region: map['region'] as String,
     );
   }

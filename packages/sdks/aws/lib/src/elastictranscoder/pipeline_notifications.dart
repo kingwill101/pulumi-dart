@@ -45,10 +45,10 @@ class PipelineNotifications {
 
   factory PipelineNotifications.fromMap(Map<String, dynamic> map) {
     return PipelineNotifications(
-      completed: map['completed'] == null ? null : (map['completed'] as String).input(),
-      error: map['error'] == null ? null : (map['error'] as String).input(),
-      progressing: map['progressing'] == null ? null : (map['progressing'] as String).input(),
-      warning: map['warning'] == null ? null : (map['warning'] as String).input(),
+      completed: map['completed'] == null ? null : ((map['completed'] as String).input()).input(),
+      error: map['error'] == null ? null : ((map['error'] as String).input()).input(),
+      progressing: map['progressing'] == null ? null : ((map['progressing'] as String).input()).input(),
+      warning: map['warning'] == null ? null : ((map['warning'] as String).input()).input(),
     );
   }
 }

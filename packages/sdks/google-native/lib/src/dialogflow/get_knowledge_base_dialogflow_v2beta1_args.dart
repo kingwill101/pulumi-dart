@@ -33,7 +33,7 @@ class GetKnowledgeBaseDialogflowV2beta1Args {
     return GetKnowledgeBaseDialogflowV2beta1Args(
       knowledgeBaseId: (map['knowledgeBaseId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

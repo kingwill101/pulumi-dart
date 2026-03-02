@@ -77,18 +77,18 @@ class A2AFabricSpecificLocationDetailsResponse {
 
   factory A2AFabricSpecificLocationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return A2AFabricSpecificLocationDetailsResponse(
-      initialPrimaryExtendedLocation: map['initialPrimaryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['initialPrimaryExtendedLocation'] as Map).cast<String, dynamic>())).input(),
-      initialPrimaryFabricLocation: map['initialPrimaryFabricLocation'] == null ? null : (map['initialPrimaryFabricLocation'] as String).input(),
-      initialPrimaryZone: map['initialPrimaryZone'] == null ? null : (map['initialPrimaryZone'] as String).input(),
-      initialRecoveryExtendedLocation: map['initialRecoveryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['initialRecoveryExtendedLocation'] as Map).cast<String, dynamic>())).input(),
-      initialRecoveryFabricLocation: map['initialRecoveryFabricLocation'] == null ? null : (map['initialRecoveryFabricLocation'] as String).input(),
-      initialRecoveryZone: map['initialRecoveryZone'] == null ? null : (map['initialRecoveryZone'] as String).input(),
-      primaryExtendedLocation: map['primaryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['primaryExtendedLocation'] as Map).cast<String, dynamic>())).input(),
-      primaryFabricLocation: map['primaryFabricLocation'] == null ? null : (map['primaryFabricLocation'] as String).input(),
-      primaryZone: map['primaryZone'] == null ? null : (map['primaryZone'] as String).input(),
-      recoveryExtendedLocation: map['recoveryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['recoveryExtendedLocation'] as Map).cast<String, dynamic>())).input(),
-      recoveryFabricLocation: map['recoveryFabricLocation'] == null ? null : (map['recoveryFabricLocation'] as String).input(),
-      recoveryZone: map['recoveryZone'] == null ? null : (map['recoveryZone'] as String).input(),
+      initialPrimaryExtendedLocation: map['initialPrimaryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['initialPrimaryExtendedLocation']! as Map).cast<String, dynamic>())).input(),
+      initialPrimaryFabricLocation: map['initialPrimaryFabricLocation'] == null ? null : (map['initialPrimaryFabricLocation']! as String).input(),
+      initialPrimaryZone: map['initialPrimaryZone'] == null ? null : (map['initialPrimaryZone']! as String).input(),
+      initialRecoveryExtendedLocation: map['initialRecoveryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['initialRecoveryExtendedLocation']! as Map).cast<String, dynamic>())).input(),
+      initialRecoveryFabricLocation: map['initialRecoveryFabricLocation'] == null ? null : (map['initialRecoveryFabricLocation']! as String).input(),
+      initialRecoveryZone: map['initialRecoveryZone'] == null ? null : (map['initialRecoveryZone']! as String).input(),
+      primaryExtendedLocation: map['primaryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['primaryExtendedLocation']! as Map).cast<String, dynamic>())).input(),
+      primaryFabricLocation: map['primaryFabricLocation'] == null ? null : (map['primaryFabricLocation']! as String).input(),
+      primaryZone: map['primaryZone'] == null ? null : (map['primaryZone']! as String).input(),
+      recoveryExtendedLocation: map['recoveryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['recoveryExtendedLocation']! as Map).cast<String, dynamic>())).input(),
+      recoveryFabricLocation: map['recoveryFabricLocation'] == null ? null : (map['recoveryFabricLocation']! as String).input(),
+      recoveryZone: map['recoveryZone'] == null ? null : (map['recoveryZone']! as String).input(),
     );
   }
 }

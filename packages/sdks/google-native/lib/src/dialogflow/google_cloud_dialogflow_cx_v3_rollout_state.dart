@@ -31,9 +31,9 @@ class GoogleCloudDialogflowCxV3RolloutState {
 
   factory GoogleCloudDialogflowCxV3RolloutState.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3RolloutState(
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      step: map['step'] == null ? null : (map['step'] as String).input(),
-      stepIndex: map['stepIndex'] == null ? null : (map['stepIndex'] as int).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      step: map['step'] == null ? null : (map['step']! as String).input(),
+      stepIndex: map['stepIndex'] == null ? null : (map['stepIndex']! as int).input(),
     );
   }
 }

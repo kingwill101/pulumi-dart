@@ -21,7 +21,7 @@ class RollingUpdateDaemonSet {
 
   factory RollingUpdateDaemonSet.fromMap(Map<String, dynamic> map) {
     return RollingUpdateDaemonSet(
-      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable'] as int).input(),
+      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable']! as int).input(),
     );
   }
 }

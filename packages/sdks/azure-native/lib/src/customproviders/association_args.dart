@@ -34,9 +34,9 @@ class AssociationArgs {
 
   factory AssociationArgs.fromMap(Map<String, dynamic> map) {
     return AssociationArgs(
-      associationName: map['associationName'] == null ? null : (map['associationName'] as String).input(),
+      associationName: map['associationName'] == null ? null : (map['associationName']! as String).input(),
       scope: (map['scope'] as String).input(),
-      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId']! as String).input(),
     );
   }
 }

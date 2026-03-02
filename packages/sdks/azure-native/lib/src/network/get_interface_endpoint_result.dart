@@ -85,17 +85,17 @@ class GetInterfaceEndpointResult {
   factory GetInterfaceEndpointResult.fromMap(Map<String, dynamic> map) {
     return GetInterfaceEndpointResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      endpointService: map['endpointService'] == null ? null : EndpointServiceResponse.fromMap((map['endpointService'] as Map).cast<String, dynamic>()),
-      etag: map['etag'] == null ? null : map['etag'] as String,
-      fqdn: map['fqdn'] == null ? null : map['fqdn'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      endpointService: map['endpointService'] == null ? null : EndpointServiceResponse.fromMap((map['endpointService']! as Map).cast<String, dynamic>()),
+      etag: map['etag'] == null ? null : map['etag']! as String,
+      fqdn: map['fqdn'] == null ? null : map['fqdn']! as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       networkInterfaces: pulumi.Input.decodeList<NetworkInterfaceResponse>(map['networkInterfaces'], (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())),
       owner: map['owner'] as String,
       provisioningState: map['provisioningState'] as String,
-      subnet: map['subnet'] == null ? null : SubnetResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      subnet: map['subnet'] == null ? null : SubnetResponse.fromMap((map['subnet']! as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

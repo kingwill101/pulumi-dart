@@ -72,17 +72,17 @@ class SnatState {
 
   factory SnatState.fromMap(Map<String, dynamic> map) {
     return SnatState(
-      autolasthop: map['autolasthop'] == null ? null : (map['autolasthop'] as String).input(),
-      fullPath: map['fullPath'] == null ? null : (map['fullPath'] as String).input(),
-      mirror: map['mirror'] == null ? null : (map['mirror'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      origins: map['origins'] == null ? null : (pulumi.Input.decodeList<SnatOrigin>(map['origins'], (value) => SnatOrigin.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
-      snatpool: map['snatpool'] == null ? null : (map['snatpool'] as String).input(),
-      sourceport: map['sourceport'] == null ? null : (map['sourceport'] as String).input(),
-      translation: map['translation'] == null ? null : (map['translation'] as String).input(),
-      vlans: map['vlans'] == null ? null : ((map['vlans'] as List).cast<String>()).input(),
-      vlansdisabled: map['vlansdisabled'] == null ? null : (map['vlansdisabled'] as bool).input(),
+      autolasthop: map['autolasthop'] == null ? null : (map['autolasthop']! as String).input(),
+      fullPath: map['fullPath'] == null ? null : (map['fullPath']! as String).input(),
+      mirror: map['mirror'] == null ? null : (map['mirror']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      origins: map['origins'] == null ? null : (pulumi.Input.decodeList<SnatOrigin>(map['origins']!, (value) => SnatOrigin.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      partition: map['partition'] == null ? null : (map['partition']! as String).input(),
+      snatpool: map['snatpool'] == null ? null : (map['snatpool']! as String).input(),
+      sourceport: map['sourceport'] == null ? null : (map['sourceport']! as String).input(),
+      translation: map['translation'] == null ? null : (map['translation']! as String).input(),
+      vlans: map['vlans'] == null ? null : ((map['vlans']! as List).cast<String>()).input(),
+      vlansdisabled: map['vlansdisabled'] == null ? null : (map['vlansdisabled']! as bool).input(),
     );
   }
 }

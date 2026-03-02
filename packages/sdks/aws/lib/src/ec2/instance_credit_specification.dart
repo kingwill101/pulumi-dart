@@ -20,7 +20,7 @@ class InstanceCreditSpecification {
 
   factory InstanceCreditSpecification.fromMap(Map<String, dynamic> map) {
     return InstanceCreditSpecification(
-      cpuCredits: map['cpuCredits'] == null ? null : (map['cpuCredits'] as String).input(),
+      cpuCredits: map['cpuCredits'] == null ? null : ((map['cpuCredits'] as String).input()).input(),
     );
   }
 }

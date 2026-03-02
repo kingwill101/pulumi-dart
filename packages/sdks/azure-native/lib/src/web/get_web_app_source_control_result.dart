@@ -77,16 +77,16 @@ class GetWebAppSourceControlResult {
   factory GetWebAppSourceControlResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppSourceControlResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      branch: map['branch'] == null ? null : map['branch'] as String,
-      deploymentRollbackEnabled: map['deploymentRollbackEnabled'] == null ? null : map['deploymentRollbackEnabled'] as bool,
-      gitHubActionConfiguration: map['gitHubActionConfiguration'] == null ? null : GitHubActionConfigurationResponse.fromMap((map['gitHubActionConfiguration'] as Map).cast<String, dynamic>()),
+      branch: map['branch'] == null ? null : map['branch']! as String,
+      deploymentRollbackEnabled: map['deploymentRollbackEnabled'] == null ? null : map['deploymentRollbackEnabled']! as bool,
+      gitHubActionConfiguration: map['gitHubActionConfiguration'] == null ? null : GitHubActionConfigurationResponse.fromMap((map['gitHubActionConfiguration']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      isGitHubAction: map['isGitHubAction'] == null ? null : map['isGitHubAction'] as bool,
-      isManualIntegration: map['isManualIntegration'] == null ? null : map['isManualIntegration'] as bool,
-      isMercurial: map['isMercurial'] == null ? null : map['isMercurial'] as bool,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      isGitHubAction: map['isGitHubAction'] == null ? null : map['isGitHubAction']! as bool,
+      isManualIntegration: map['isManualIntegration'] == null ? null : map['isManualIntegration']! as bool,
+      isMercurial: map['isMercurial'] == null ? null : map['isMercurial']! as bool,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
-      repoUrl: map['repoUrl'] == null ? null : map['repoUrl'] as String,
+      repoUrl: map['repoUrl'] == null ? null : map['repoUrl']! as String,
       type: map['type'] as String,
     );
   }

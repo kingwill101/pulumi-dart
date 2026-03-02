@@ -72,17 +72,17 @@ class RoleWithPolicy {
 
   factory RoleWithPolicy.fromMap(Map<String, dynamic> map) {
     return RoleWithPolicy(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      forceDetachPolicies: map['forceDetachPolicies'] == null ? null : (map['forceDetachPolicies'] as bool).input(),
-      inlinePolicies: map['inlinePolicies'] == null ? null : (pulumi.Input.decodeList<pulumi_aws_iam.RoleInlinePolicy>(map['inlinePolicies'], (value) => pulumi_aws_iam.RoleInlinePolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      managedPolicyArns: map['managedPolicyArns'] == null ? null : ((map['managedPolicyArns'] as List).cast<String>()).input(),
-      maxSessionDuration: map['maxSessionDuration'] == null ? null : (map['maxSessionDuration'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      permissionsBoundary: map['permissionsBoundary'] == null ? null : (map['permissionsBoundary'] as String).input(),
-      policyArns: map['policyArns'] == null ? null : ((map['policyArns'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      forceDetachPolicies: map['forceDetachPolicies'] == null ? null : (map['forceDetachPolicies']! as bool).input(),
+      inlinePolicies: map['inlinePolicies'] == null ? null : (pulumi.Input.decodeList<pulumi_aws_iam.RoleInlinePolicy>(map['inlinePolicies']!, (value) => pulumi_aws_iam.RoleInlinePolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managedPolicyArns: map['managedPolicyArns'] == null ? null : ((map['managedPolicyArns']! as List).cast<String>()).input(),
+      maxSessionDuration: map['maxSessionDuration'] == null ? null : (map['maxSessionDuration']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      permissionsBoundary: map['permissionsBoundary'] == null ? null : (map['permissionsBoundary']! as String).input(),
+      policyArns: map['policyArns'] == null ? null : ((map['policyArns']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class LinkedWorkspaceProps {
 
   factory LinkedWorkspaceProps.fromMap(Map<String, dynamic> map) {
     return LinkedWorkspaceProps(
-      linkedWorkspaceResourceId: map['linkedWorkspaceResourceId'] == null ? null : (map['linkedWorkspaceResourceId'] as String).input(),
-      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : (map['userAssignedIdentityResourceId'] as String).input(),
+      linkedWorkspaceResourceId: map['linkedWorkspaceResourceId'] == null ? null : (map['linkedWorkspaceResourceId']! as String).input(),
+      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : (map['userAssignedIdentityResourceId']! as String).input(),
     );
   }
 }

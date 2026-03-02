@@ -75,17 +75,17 @@ class AgentcoreBrowserState {
 
   factory AgentcoreBrowserState.fromMap(Map<String, dynamic> map) {
     return AgentcoreBrowserState(
-      browserArn: map['browserArn'] == null ? null : (map['browserArn'] as String).input(),
-      browserId: map['browserId'] == null ? null : (map['browserId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      executionRoleArn: map['executionRoleArn'] == null ? null : (map['executionRoleArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkConfiguration: map['networkConfiguration'] == null ? null : (AgentcoreBrowserNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      recording: map['recording'] == null ? null : (AgentcoreBrowserRecording.fromMap((map['recording'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (AgentcoreBrowserTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      browserArn: map['browserArn'] == null ? null : ((map['browserArn'] as String).input()).input(),
+      browserId: map['browserId'] == null ? null : ((map['browserId'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      executionRoleArn: map['executionRoleArn'] == null ? null : ((map['executionRoleArn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      networkConfiguration: map['networkConfiguration'] == null ? null : ((AgentcoreBrowserNetworkConfiguration.fromMap((map['networkConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      recording: map['recording'] == null ? null : ((AgentcoreBrowserRecording.fromMap((map['recording']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((AgentcoreBrowserTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

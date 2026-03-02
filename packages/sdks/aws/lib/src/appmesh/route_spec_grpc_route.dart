@@ -39,10 +39,10 @@ class RouteSpecGrpcRoute {
 
   factory RouteSpecGrpcRoute.fromMap(Map<String, dynamic> map) {
     return RouteSpecGrpcRoute(
-      action: (RouteSpecGrpcRouteAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      match: map['match'] == null ? null : (RouteSpecGrpcRouteMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
-      retryPolicy: map['retryPolicy'] == null ? null : (RouteSpecGrpcRouteRetryPolicy.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())).input(),
-      timeout: map['timeout'] == null ? null : (RouteSpecGrpcRouteTimeout.fromMap((map['timeout'] as Map).cast<String, dynamic>())).input(),
+      action: (RouteSpecGrpcRouteAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      match: map['match'] == null ? null : ((RouteSpecGrpcRouteMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input()).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : ((RouteSpecGrpcRouteRetryPolicy.fromMap((map['retryPolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      timeout: map['timeout'] == null ? null : ((RouteSpecGrpcRouteTimeout.fromMap((map['timeout']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

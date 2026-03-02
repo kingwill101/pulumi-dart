@@ -21,7 +21,7 @@ class AntivirusRulesetResponse {
 
   factory AntivirusRulesetResponse.fromMap(Map<String, dynamic> map) {
     return AntivirusRulesetResponse(
-      avSolutions: map['avSolutions'] == null ? null : ((map['avSolutions'] as List).cast<String>()).input(),
+      avSolutions: map['avSolutions'] == null ? null : ((map['avSolutions']! as List).cast<String>()).input(),
     );
   }
 }

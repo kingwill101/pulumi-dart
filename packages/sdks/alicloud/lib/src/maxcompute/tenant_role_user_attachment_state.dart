@@ -35,8 +35,8 @@ class TenantRoleUserAttachmentState {
 
   factory TenantRoleUserAttachmentState.fromMap(Map<String, dynamic> map) {
     return TenantRoleUserAttachmentState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      tenantRole: map['tenantRole'] == null ? null : (map['tenantRole'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      tenantRole: map['tenantRole'] == null ? null : (map['tenantRole']! as String).input(),
     );
   }
 }

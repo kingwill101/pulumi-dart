@@ -44,11 +44,11 @@ class PipelineStage {
 
   factory PipelineStage.fromMap(Map<String, dynamic> map) {
     return PipelineStage(
-      actions: (pulumi.Input.decodeList<PipelineStageAction>(map['actions'], (value) => PipelineStageAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      beforeEntry: map['beforeEntry'] == null ? null : (PipelineStageBeforeEntry.fromMap((map['beforeEntry'] as Map).cast<String, dynamic>())).input(),
+      actions: (pulumi.Input.decodeList<PipelineStageAction>(map['actions']!, (value) => PipelineStageAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      beforeEntry: map['beforeEntry'] == null ? null : ((PipelineStageBeforeEntry.fromMap((map['beforeEntry']! as Map).cast<String, dynamic>())).input()).input(),
       name: (map['name'] as String).input(),
-      onFailure: map['onFailure'] == null ? null : (PipelineStageOnFailure.fromMap((map['onFailure'] as Map).cast<String, dynamic>())).input(),
-      onSuccess: map['onSuccess'] == null ? null : (PipelineStageOnSuccess.fromMap((map['onSuccess'] as Map).cast<String, dynamic>())).input(),
+      onFailure: map['onFailure'] == null ? null : ((PipelineStageOnFailure.fromMap((map['onFailure']! as Map).cast<String, dynamic>())).input()).input(),
+      onSuccess: map['onSuccess'] == null ? null : ((PipelineStageOnSuccess.fromMap((map['onSuccess']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

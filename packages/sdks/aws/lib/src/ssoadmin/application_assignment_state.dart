@@ -36,10 +36,10 @@ class ApplicationAssignmentState {
 
   factory ApplicationAssignmentState.fromMap(Map<String, dynamic> map) {
     return ApplicationAssignmentState(
-      applicationArn: map['applicationArn'] == null ? null : (map['applicationArn'] as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      applicationArn: map['applicationArn'] == null ? null : ((map['applicationArn'] as String).input()).input(),
+      principalId: map['principalId'] == null ? null : ((map['principalId'] as String).input()).input(),
+      principalType: map['principalType'] == null ? null : ((map['principalType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -42,7 +42,7 @@ class IscsiTargetInfoResponse {
   factory IscsiTargetInfoResponse.fromMap(Map<String, dynamic> map) {
     return IscsiTargetInfoResponse(
       provisioningState: (map['provisioningState'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       targetIqn: (map['targetIqn'] as String).input(),
       targetPortalHostname: (map['targetPortalHostname'] as String).input(),
       targetPortalPort: (map['targetPortalPort'] as int).input(),

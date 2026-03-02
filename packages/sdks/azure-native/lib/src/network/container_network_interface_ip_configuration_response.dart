@@ -37,7 +37,7 @@ class ContainerNetworkInterfaceIpConfigurationResponse {
   factory ContainerNetworkInterfaceIpConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ContainerNetworkInterfaceIpConfigurationResponse(
       etag: (map['etag'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       type: (map['type'] as String).input(),
     );

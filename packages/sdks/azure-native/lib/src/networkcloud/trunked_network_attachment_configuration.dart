@@ -26,7 +26,7 @@ class TrunkedNetworkAttachmentConfiguration {
   factory TrunkedNetworkAttachmentConfiguration.fromMap(Map<String, dynamic> map) {
     return TrunkedNetworkAttachmentConfiguration(
       networkId: (map['networkId'] as String).input(),
-      pluginType: map['pluginType'] == null ? null : (map['pluginType'] as String).input(),
+      pluginType: map['pluginType'] == null ? null : (map['pluginType']! as String).input(),
     );
   }
 }

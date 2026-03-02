@@ -26,8 +26,8 @@ class BackendPoolsSettings {
 
   factory BackendPoolsSettings.fromMap(Map<String, dynamic> map) {
     return BackendPoolsSettings(
-      enforceCertificateNameCheck: map['enforceCertificateNameCheck'] == null ? null : (map['enforceCertificateNameCheck'] as String).input(),
-      sendRecvTimeoutSeconds: map['sendRecvTimeoutSeconds'] == null ? null : (map['sendRecvTimeoutSeconds'] as int).input(),
+      enforceCertificateNameCheck: map['enforceCertificateNameCheck'] == null ? null : (map['enforceCertificateNameCheck']! as String).input(),
+      sendRecvTimeoutSeconds: map['sendRecvTimeoutSeconds'] == null ? null : (map['sendRecvTimeoutSeconds']! as int).input(),
     );
   }
 }

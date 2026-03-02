@@ -26,7 +26,7 @@ class LocalVolumeSource {
 
   factory LocalVolumeSource.fromMap(Map<String, dynamic> map) {
     return LocalVolumeSource(
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
       path: (map['path'] as String).input(),
     );
   }

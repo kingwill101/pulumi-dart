@@ -86,19 +86,19 @@ class HciVirtualHardDiskArgs {
 
   factory HciVirtualHardDiskArgs.fromMap(Map<String, dynamic> map) {
     return HciVirtualHardDiskArgs(
-      blockSizeInBytes: map['blockSizeInBytes'] == null ? null : (map['blockSizeInBytes'] as int).input(),
+      blockSizeInBytes: map['blockSizeInBytes'] == null ? null : (map['blockSizeInBytes']! as int).input(),
       customLocationId: (map['customLocationId'] as String).input(),
-      diskFileFormat: map['diskFileFormat'] == null ? null : (map['diskFileFormat'] as String).input(),
+      diskFileFormat: map['diskFileFormat'] == null ? null : (map['diskFileFormat']! as String).input(),
       diskSizeInGb: (map['diskSizeInGb'] as int).input(),
-      dynamicEnabled: map['dynamicEnabled'] == null ? null : (map['dynamicEnabled'] as bool).input(),
-      hypervGeneration: map['hypervGeneration'] == null ? null : (map['hypervGeneration'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      logicalSectorInBytes: map['logicalSectorInBytes'] == null ? null : (map['logicalSectorInBytes'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      physicalSectorInBytes: map['physicalSectorInBytes'] == null ? null : (map['physicalSectorInBytes'] as int).input(),
+      dynamicEnabled: map['dynamicEnabled'] == null ? null : (map['dynamicEnabled']! as bool).input(),
+      hypervGeneration: map['hypervGeneration'] == null ? null : (map['hypervGeneration']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      logicalSectorInBytes: map['logicalSectorInBytes'] == null ? null : (map['logicalSectorInBytes']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      physicalSectorInBytes: map['physicalSectorInBytes'] == null ? null : (map['physicalSectorInBytes']! as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storagePathId: map['storagePathId'] == null ? null : (map['storagePathId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      storagePathId: map['storagePathId'] == null ? null : (map['storagePathId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

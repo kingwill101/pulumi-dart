@@ -71,16 +71,16 @@ class AzureClusterControlPlane {
 
   factory AzureClusterControlPlane.fromMap(Map<String, dynamic> map) {
     return AzureClusterControlPlane(
-      databaseEncryption: map['databaseEncryption'] == null ? null : (AzureClusterControlPlaneDatabaseEncryption.fromMap((map['databaseEncryption'] as Map).cast<String, dynamic>())).input(),
-      mainVolume: map['mainVolume'] == null ? null : (AzureClusterControlPlaneMainVolume.fromMap((map['mainVolume'] as Map).cast<String, dynamic>())).input(),
-      proxyConfig: map['proxyConfig'] == null ? null : (AzureClusterControlPlaneProxyConfig.fromMap((map['proxyConfig'] as Map).cast<String, dynamic>())).input(),
-      replicaPlacements: map['replicaPlacements'] == null ? null : (pulumi.Input.decodeList<AzureClusterControlPlaneReplicaPlacement>(map['replicaPlacements'], (value) => AzureClusterControlPlaneReplicaPlacement.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      rootVolume: map['rootVolume'] == null ? null : (AzureClusterControlPlaneRootVolume.fromMap((map['rootVolume'] as Map).cast<String, dynamic>())).input(),
+      databaseEncryption: map['databaseEncryption'] == null ? null : (AzureClusterControlPlaneDatabaseEncryption.fromMap((map['databaseEncryption']! as Map).cast<String, dynamic>())).input(),
+      mainVolume: map['mainVolume'] == null ? null : (AzureClusterControlPlaneMainVolume.fromMap((map['mainVolume']! as Map).cast<String, dynamic>())).input(),
+      proxyConfig: map['proxyConfig'] == null ? null : (AzureClusterControlPlaneProxyConfig.fromMap((map['proxyConfig']! as Map).cast<String, dynamic>())).input(),
+      replicaPlacements: map['replicaPlacements'] == null ? null : (pulumi.Input.decodeList<AzureClusterControlPlaneReplicaPlacement>(map['replicaPlacements']!, (value) => AzureClusterControlPlaneReplicaPlacement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rootVolume: map['rootVolume'] == null ? null : (AzureClusterControlPlaneRootVolume.fromMap((map['rootVolume']! as Map).cast<String, dynamic>())).input(),
       sshConfig: (AzureClusterControlPlaneSshConfig.fromMap((map['sshConfig'] as Map).cast<String, dynamic>())).input(),
       subnetId: (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       version: (map['version'] as String).input(),
-      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize']! as String).input(),
     );
   }
 }

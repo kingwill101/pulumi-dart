@@ -21,7 +21,7 @@ class GoogleCloudIdentitytoolkitAdminV2AllowlistOnly {
 
   factory GoogleCloudIdentitytoolkitAdminV2AllowlistOnly.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2AllowlistOnly(
-      allowedRegions: map['allowedRegions'] == null ? null : ((map['allowedRegions'] as List).cast<String>()).input(),
+      allowedRegions: map['allowedRegions'] == null ? null : ((map['allowedRegions']! as List).cast<String>()).input(),
     );
   }
 }

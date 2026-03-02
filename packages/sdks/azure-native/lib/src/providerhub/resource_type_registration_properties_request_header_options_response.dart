@@ -26,8 +26,8 @@ class ResourceTypeRegistrationPropertiesRequestHeaderOptionsResponse {
 
   factory ResourceTypeRegistrationPropertiesRequestHeaderOptionsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesRequestHeaderOptionsResponse(
-      optInHeaders: map['optInHeaders'] == null ? null : (map['optInHeaders'] as String).input(),
-      optOutHeaders: map['optOutHeaders'] == null ? null : (map['optOutHeaders'] as String).input(),
+      optInHeaders: map['optInHeaders'] == null ? null : (map['optInHeaders']! as String).input(),
+      optOutHeaders: map['optOutHeaders'] == null ? null : (map['optOutHeaders']! as String).input(),
     );
   }
 }

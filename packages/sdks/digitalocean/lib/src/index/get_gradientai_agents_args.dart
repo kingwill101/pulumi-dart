@@ -33,9 +33,9 @@ class GetGradientaiAgentsArgs {
 
   factory GetGradientaiAgentsArgs.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentsFilter>(map['filters'], (value) => GetGradientaiAgentsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      onlyDeployed: map['onlyDeployed'] == null ? null : (map['onlyDeployed'] as bool).input(),
-      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentsSort>(map['sorts'], (value) => GetGradientaiAgentsSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentsFilter>(map['filters']!, (value) => GetGradientaiAgentsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      onlyDeployed: map['onlyDeployed'] == null ? null : (map['onlyDeployed']! as bool).input(),
+      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentsSort>(map['sorts']!, (value) => GetGradientaiAgentsSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

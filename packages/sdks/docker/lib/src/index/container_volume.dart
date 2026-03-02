@@ -40,11 +40,11 @@ class ContainerVolume {
 
   factory ContainerVolume.fromMap(Map<String, dynamic> map) {
     return ContainerVolume(
-      containerPath: map['containerPath'] == null ? null : (map['containerPath'] as String).input(),
-      fromContainer: map['fromContainer'] == null ? null : (map['fromContainer'] as String).input(),
-      hostPath: map['hostPath'] == null ? null : (map['hostPath'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      volumeName: map['volumeName'] == null ? null : (map['volumeName'] as String).input(),
+      containerPath: map['containerPath'] == null ? null : (map['containerPath']! as String).input(),
+      fromContainer: map['fromContainer'] == null ? null : (map['fromContainer']! as String).input(),
+      hostPath: map['hostPath'] == null ? null : (map['hostPath']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      volumeName: map['volumeName'] == null ? null : (map['volumeName']! as String).input(),
     );
   }
 }

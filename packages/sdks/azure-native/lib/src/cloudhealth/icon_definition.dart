@@ -26,7 +26,7 @@ class IconDefinition {
 
   factory IconDefinition.fromMap(Map<String, dynamic> map) {
     return IconDefinition(
-      customData: map['customData'] == null ? null : (map['customData'] as String).input(),
+      customData: map['customData'] == null ? null : (map['customData']! as String).input(),
       iconName: (map['iconName'] as String).input(),
     );
   }

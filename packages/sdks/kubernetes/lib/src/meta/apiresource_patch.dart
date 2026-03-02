@@ -66,16 +66,16 @@ class APIResourcePatch {
 
   factory APIResourcePatch.fromMap(Map<String, dynamic> map) {
     return APIResourcePatch(
-      categories: map['categories'] == null ? null : ((map['categories'] as List).cast<String>()).input(),
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespaced: map['namespaced'] == null ? null : (map['namespaced'] as bool).input(),
-      shortNames: map['shortNames'] == null ? null : ((map['shortNames'] as List).cast<String>()).input(),
-      singularName: map['singularName'] == null ? null : (map['singularName'] as String).input(),
-      storageVersionHash: map['storageVersionHash'] == null ? null : (map['storageVersionHash'] as String).input(),
-      verbs: map['verbs'] == null ? null : ((map['verbs'] as List).cast<String>()).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      categories: map['categories'] == null ? null : ((map['categories']! as List).cast<String>()).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespaced: map['namespaced'] == null ? null : (map['namespaced']! as bool).input(),
+      shortNames: map['shortNames'] == null ? null : ((map['shortNames']! as List).cast<String>()).input(),
+      singularName: map['singularName'] == null ? null : (map['singularName']! as String).input(),
+      storageVersionHash: map['storageVersionHash'] == null ? null : (map['storageVersionHash']! as String).input(),
+      verbs: map['verbs'] == null ? null : ((map['verbs']! as List).cast<String>()).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

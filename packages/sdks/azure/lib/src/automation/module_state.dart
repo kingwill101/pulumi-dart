@@ -37,10 +37,10 @@ class ModuleState {
 
   factory ModuleState.fromMap(Map<String, dynamic> map) {
     return ModuleState(
-      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName'] as String).input(),
-      moduleLink: map['moduleLink'] == null ? null : (ModuleModuleLink.fromMap((map['moduleLink'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName']! as String).input(),
+      moduleLink: map['moduleLink'] == null ? null : (ModuleModuleLink.fromMap((map['moduleLink']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

@@ -38,10 +38,10 @@ class FileKeySelectorPatch {
 
   factory FileKeySelectorPatch.fromMap(Map<String, dynamic> map) {
     return FileKeySelectorPatch(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      optional: map['optional'] == null ? null : (map['optional'] as bool).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      volumeName: map['volumeName'] == null ? null : (map['volumeName'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      optional: map['optional'] == null ? null : (map['optional']! as bool).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      volumeName: map['volumeName'] == null ? null : (map['volumeName']! as String).input(),
     );
   }
 }

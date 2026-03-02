@@ -21,7 +21,7 @@ class IntegrationAccountMapPropertiesResponseParametersSchema {
 
   factory IntegrationAccountMapPropertiesResponseParametersSchema.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountMapPropertiesResponseParametersSchema(
-      ref: map['ref'] == null ? null : (map['ref'] as String).input(),
+      ref: map['ref'] == null ? null : (map['ref']! as String).input(),
     );
   }
 }

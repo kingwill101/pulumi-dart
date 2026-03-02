@@ -54,12 +54,12 @@ class FloatingIpArgs {
 
   factory FloatingIpArgs.fromMap(Map<String, dynamic> map) {
     return FloatingIpArgs(
-      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      homeLocation: map['homeLocation'] == null ? null : (map['homeLocation'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as int).input(),
+      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      homeLocation: map['homeLocation'] == null ? null : (map['homeLocation']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId']! as int).input(),
       type: (map['type'] as String).input(),
     );
   }

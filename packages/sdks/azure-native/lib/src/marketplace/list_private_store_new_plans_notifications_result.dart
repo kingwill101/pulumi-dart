@@ -21,7 +21,7 @@ class ListPrivateStoreNewPlansNotificationsResult {
 
   factory ListPrivateStoreNewPlansNotificationsResult.fromMap(Map<String, dynamic> map) {
     return ListPrivateStoreNewPlansNotificationsResult(
-      newPlansNotifications: map['newPlansNotifications'] == null ? null : pulumi.Input.decodeList<NewNotificationsResponse>(map['newPlansNotifications'], (value) => NewNotificationsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      newPlansNotifications: map['newPlansNotifications'] == null ? null : pulumi.Input.decodeList<NewNotificationsResponse>(map['newPlansNotifications']!, (value) => NewNotificationsResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

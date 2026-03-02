@@ -66,16 +66,16 @@ class EnterpriseLogicDatabaseState {
 
   factory EnterpriseLogicDatabaseState.fromMap(Map<String, dynamic> map) {
     return EnterpriseLogicDatabaseState(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      databaseIds: map['databaseIds'] == null ? null : ((map['databaseIds'] as List).cast<String>()).input(),
-      dbType: map['dbType'] == null ? null : (map['dbType'] as String).input(),
-      envType: map['envType'] == null ? null : (map['envType'] as String).input(),
-      logic: map['logic'] == null ? null : (map['logic'] as bool).input(),
-      logicDatabaseId: map['logicDatabaseId'] == null ? null : (map['logicDatabaseId'] as String).input(),
-      ownerIdLists: map['ownerIdLists'] == null ? null : ((map['ownerIdLists'] as List).cast<String>()).input(),
-      ownerNameLists: map['ownerNameLists'] == null ? null : ((map['ownerNameLists'] as List).cast<String>()).input(),
-      schemaName: map['schemaName'] == null ? null : (map['schemaName'] as String).input(),
-      searchName: map['searchName'] == null ? null : (map['searchName'] as String).input(),
+      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
+      databaseIds: map['databaseIds'] == null ? null : ((map['databaseIds']! as List).cast<String>()).input(),
+      dbType: map['dbType'] == null ? null : (map['dbType']! as String).input(),
+      envType: map['envType'] == null ? null : (map['envType']! as String).input(),
+      logic: map['logic'] == null ? null : (map['logic']! as bool).input(),
+      logicDatabaseId: map['logicDatabaseId'] == null ? null : (map['logicDatabaseId']! as String).input(),
+      ownerIdLists: map['ownerIdLists'] == null ? null : ((map['ownerIdLists']! as List).cast<String>()).input(),
+      ownerNameLists: map['ownerNameLists'] == null ? null : ((map['ownerNameLists']! as List).cast<String>()).input(),
+      schemaName: map['schemaName'] == null ? null : (map['schemaName']! as String).input(),
+      searchName: map['searchName'] == null ? null : (map['searchName']! as String).input(),
     );
   }
 }

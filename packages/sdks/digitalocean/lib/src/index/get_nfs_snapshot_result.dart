@@ -54,9 +54,9 @@ class GetNfsSnapshotResult {
     return GetNfsSnapshotResult(
       createdAt: map['createdAt'] as String,
       id: map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      region: map['region'] == null ? null : map['region']! as String,
       shareId: map['shareId'] as String,
       size: map['size'] as int,
       status: map['status'] as int,

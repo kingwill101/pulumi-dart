@@ -40,9 +40,9 @@ class DeploymentArgs {
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
       apiId: (map['apiId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      triggers: map['triggers'] == null ? null : (((map['triggers'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

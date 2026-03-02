@@ -107,21 +107,21 @@ class NodeGroupState {
 
   factory NodeGroupState.fromMap(Map<String, dynamic> map) {
     return NodeGroupState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      dockerVolumeSize: map['dockerVolumeSize'] == null ? null : (map['dockerVolumeSize'] as int).input(),
-      flavorId: map['flavorId'] == null ? null : (map['flavorId'] as String).input(),
-      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount'] as int).input(),
-      mergeLabels: map['mergeLabels'] == null ? null : (map['mergeLabels'] as bool).input(),
-      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      dockerVolumeSize: map['dockerVolumeSize'] == null ? null : (map['dockerVolumeSize']! as int).input(),
+      flavorId: map['flavorId'] == null ? null : (map['flavorId']! as String).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount']! as int).input(),
+      mergeLabels: map['mergeLabels'] == null ? null : (map['mergeLabels']! as bool).input(),
+      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt']! as String).input(),
     );
   }
 }

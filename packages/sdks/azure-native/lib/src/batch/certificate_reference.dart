@@ -39,9 +39,9 @@ class CertificateReference {
   factory CertificateReference.fromMap(Map<String, dynamic> map) {
     return CertificateReference(
       id: (map['id'] as String).input(),
-      storeLocation: map['storeLocation'] == null ? null : (CertificateStoreLocation.fromValue(map['storeLocation'] as String)).input(),
-      storeName: map['storeName'] == null ? null : (map['storeName'] as String).input(),
-      visibility: map['visibility'] == null ? null : (pulumi.Input.decodeList<CertificateVisibility>(map['visibility'], (value) => CertificateVisibility.fromValue(value as String))).input(),
+      storeLocation: map['storeLocation'] == null ? null : (CertificateStoreLocation.fromValue(map['storeLocation']! as String)).input(),
+      storeName: map['storeName'] == null ? null : (map['storeName']! as String).input(),
+      visibility: map['visibility'] == null ? null : (pulumi.Input.decodeList<CertificateVisibility>(map['visibility']!, (value) => CertificateVisibility.fromValue(value as String))).input(),
     );
   }
 }

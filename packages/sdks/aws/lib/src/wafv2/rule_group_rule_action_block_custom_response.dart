@@ -31,9 +31,9 @@ class RuleGroupRuleActionBlockCustomResponse {
 
   factory RuleGroupRuleActionBlockCustomResponse.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleActionBlockCustomResponse(
-      customResponseBodyKey: map['customResponseBodyKey'] == null ? null : (map['customResponseBodyKey'] as String).input(),
+      customResponseBodyKey: map['customResponseBodyKey'] == null ? null : ((map['customResponseBodyKey'] as String).input()).input(),
       responseCode: (map['responseCode'] as int).input(),
-      responseHeaders: map['responseHeaders'] == null ? null : (pulumi.Input.decodeList<RuleGroupRuleActionBlockCustomResponseResponseHeader>(map['responseHeaders'], (value) => RuleGroupRuleActionBlockCustomResponseResponseHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responseHeaders: map['responseHeaders'] == null ? null : ((pulumi.Input.decodeList<RuleGroupRuleActionBlockCustomResponseResponseHeader>(map['responseHeaders']!, (value) => RuleGroupRuleActionBlockCustomResponseResponseHeader.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

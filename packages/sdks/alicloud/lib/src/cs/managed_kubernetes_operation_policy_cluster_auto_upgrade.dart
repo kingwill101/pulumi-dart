@@ -35,8 +35,8 @@ class ManagedKubernetesOperationPolicyClusterAutoUpgrade {
 
   factory ManagedKubernetesOperationPolicyClusterAutoUpgrade.fromMap(Map<String, dynamic> map) {
     return ManagedKubernetesOperationPolicyClusterAutoUpgrade(
-      channel: map['channel'] == null ? null : (map['channel'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      channel: map['channel'] == null ? null : (map['channel']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

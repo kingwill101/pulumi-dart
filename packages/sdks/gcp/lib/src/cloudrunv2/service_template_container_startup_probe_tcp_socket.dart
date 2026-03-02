@@ -21,7 +21,7 @@ class ServiceTemplateContainerStartupProbeTcpSocket {
 
   factory ServiceTemplateContainerStartupProbeTcpSocket.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateContainerStartupProbeTcpSocket(
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

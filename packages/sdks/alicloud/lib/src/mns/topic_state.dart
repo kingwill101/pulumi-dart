@@ -31,9 +31,9 @@ class TopicState {
 
   factory TopicState.fromMap(Map<String, dynamic> map) {
     return TopicState(
-      loggingEnabled: map['loggingEnabled'] == null ? null : (map['loggingEnabled'] as bool).input(),
-      maximumMessageSize: map['maximumMessageSize'] == null ? null : (map['maximumMessageSize'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      loggingEnabled: map['loggingEnabled'] == null ? null : (map['loggingEnabled']! as bool).input(),
+      maximumMessageSize: map['maximumMessageSize'] == null ? null : (map['maximumMessageSize']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class GdcApplicationEnvironmentSparkApplicationEnvironmentConfig {
 
   factory GdcApplicationEnvironmentSparkApplicationEnvironmentConfig.fromMap(Map<String, dynamic> map) {
     return GdcApplicationEnvironmentSparkApplicationEnvironmentConfig(
-      defaultProperties: map['defaultProperties'] == null ? null : ((map['defaultProperties'] as Map).cast<String, String>()).input(),
-      defaultVersion: map['defaultVersion'] == null ? null : (map['defaultVersion'] as String).input(),
+      defaultProperties: map['defaultProperties'] == null ? null : ((map['defaultProperties']! as Map).cast<String, String>()).input(),
+      defaultVersion: map['defaultVersion'] == null ? null : (map['defaultVersion']! as String).input(),
     );
   }
 }

@@ -36,9 +36,9 @@ class FqdnOutboundRule {
 
   factory FqdnOutboundRule.fromMap(Map<String, dynamic> map) {
     return FqdnOutboundRule(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

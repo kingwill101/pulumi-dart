@@ -20,7 +20,7 @@ class InstanceNetworkConfigAuthorizedExternalNetwork {
 
   factory InstanceNetworkConfigAuthorizedExternalNetwork.fromMap(Map<String, dynamic> map) {
     return InstanceNetworkConfigAuthorizedExternalNetwork(
-      cidrRange: map['cidrRange'] == null ? null : (map['cidrRange'] as String).input(),
+      cidrRange: map['cidrRange'] == null ? null : (map['cidrRange']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class VirtualNetworksPropertiesNetworkCloud {
 
   factory VirtualNetworksPropertiesNetworkCloud.fromMap(Map<String, dynamic> map) {
     return VirtualNetworksPropertiesNetworkCloud(
-      networkId: map['networkId'] == null ? null : (map['networkId'] as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId']! as String).input(),
     );
   }
 }

@@ -61,14 +61,14 @@ class Smtp {
 
   factory Smtp.fromMap(Map<String, dynamic> map) {
     return Smtp(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      fromAddress: map['fromAddress'] == null ? null : (map['fromAddress'] as String).input(),
-      fromName: map['fromName'] == null ? null : (map['fromName'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      skipVerify: map['skipVerify'] == null ? null : (map['skipVerify'] as bool).input(),
-      startTLSPolicy: map['startTLSPolicy'] == null ? null : (map['startTLSPolicy'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      fromAddress: map['fromAddress'] == null ? null : (map['fromAddress']! as String).input(),
+      fromName: map['fromName'] == null ? null : (map['fromName']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      skipVerify: map['skipVerify'] == null ? null : (map['skipVerify']! as bool).input(),
+      startTLSPolicy: map['startTLSPolicy'] == null ? null : (map['startTLSPolicy']! as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

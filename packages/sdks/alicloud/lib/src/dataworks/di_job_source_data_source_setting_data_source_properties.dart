@@ -25,8 +25,8 @@ class DiJobSourceDataSourceSettingDataSourceProperties {
 
   factory DiJobSourceDataSourceSettingDataSourceProperties.fromMap(Map<String, dynamic> map) {
     return DiJobSourceDataSourceSettingDataSourceProperties(
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
-      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
+      timezone: map['timezone'] == null ? null : (map['timezone']! as String).input(),
     );
   }
 }

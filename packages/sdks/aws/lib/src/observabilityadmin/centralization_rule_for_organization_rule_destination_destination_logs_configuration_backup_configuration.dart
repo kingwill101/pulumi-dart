@@ -25,8 +25,8 @@ class CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurati
 
   factory CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfiguration.fromMap(Map<String, dynamic> map) {
     return CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfiguration(
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

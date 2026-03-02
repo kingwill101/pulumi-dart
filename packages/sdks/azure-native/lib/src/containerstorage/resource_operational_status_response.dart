@@ -26,7 +26,7 @@ class ResourceOperationalStatusResponse {
 
   factory ResourceOperationalStatusResponse.fromMap(Map<String, dynamic> map) {
     return ResourceOperationalStatusResponse(
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
       state: (map['state'] as String).input(),
     );
   }

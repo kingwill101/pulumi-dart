@@ -25,8 +25,8 @@ class MonitorAlertAlerts {
 
   factory MonitorAlertAlerts.fromMap(Map<String, dynamic> map) {
     return MonitorAlertAlerts(
-      emails: map['emails'] == null ? null : ((map['emails'] as List).cast<String>()).input(),
-      slacks: map['slacks'] == null ? null : (pulumi.Input.decodeList<MonitorAlertAlertsSlack>(map['slacks'], (value) => MonitorAlertAlertsSlack.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      emails: map['emails'] == null ? null : ((map['emails']! as List).cast<String>()).input(),
+      slacks: map['slacks'] == null ? null : (pulumi.Input.decodeList<MonitorAlertAlertsSlack>(map['slacks']!, (value) => MonitorAlertAlertsSlack.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

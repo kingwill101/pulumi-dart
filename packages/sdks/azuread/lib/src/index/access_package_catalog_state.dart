@@ -36,10 +36,10 @@ class AccessPackageCatalogState {
 
   factory AccessPackageCatalogState.fromMap(Map<String, dynamic> map) {
     return AccessPackageCatalogState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      externallyVisible: map['externallyVisible'] == null ? null : (map['externallyVisible'] as bool).input(),
-      published: map['published'] == null ? null : (map['published'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      externallyVisible: map['externallyVisible'] == null ? null : (map['externallyVisible']! as bool).input(),
+      published: map['published'] == null ? null : (map['published']! as bool).input(),
     );
   }
 }

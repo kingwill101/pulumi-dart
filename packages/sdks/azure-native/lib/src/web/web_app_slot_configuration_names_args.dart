@@ -49,10 +49,10 @@ class WebAppSlotConfigurationNamesArgs {
 
   factory WebAppSlotConfigurationNamesArgs.fromMap(Map<String, dynamic> map) {
     return WebAppSlotConfigurationNamesArgs(
-      appSettingNames: map['appSettingNames'] == null ? null : ((map['appSettingNames'] as List).cast<String>()).input(),
-      azureStorageConfigNames: map['azureStorageConfigNames'] == null ? null : ((map['azureStorageConfigNames'] as List).cast<String>()).input(),
-      connectionStringNames: map['connectionStringNames'] == null ? null : ((map['connectionStringNames'] as List).cast<String>()).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      appSettingNames: map['appSettingNames'] == null ? null : ((map['appSettingNames']! as List).cast<String>()).input(),
+      azureStorageConfigNames: map['azureStorageConfigNames'] == null ? null : ((map['azureStorageConfigNames']! as List).cast<String>()).input(),
+      connectionStringNames: map['connectionStringNames'] == null ? null : ((map['connectionStringNames']! as List).cast<String>()).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

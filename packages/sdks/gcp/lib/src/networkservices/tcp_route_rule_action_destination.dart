@@ -28,8 +28,8 @@ class TcpRouteRuleActionDestination {
 
   factory TcpRouteRuleActionDestination.fromMap(Map<String, dynamic> map) {
     return TcpRouteRuleActionDestination(
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

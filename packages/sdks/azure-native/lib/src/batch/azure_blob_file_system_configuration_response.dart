@@ -52,13 +52,13 @@ class AzureBlobFileSystemConfigurationResponse {
 
   factory AzureBlobFileSystemConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AzureBlobFileSystemConfigurationResponse(
-      accountKey: map['accountKey'] == null ? null : (map['accountKey'] as String).input(),
+      accountKey: map['accountKey'] == null ? null : (map['accountKey']! as String).input(),
       accountName: (map['accountName'] as String).input(),
-      blobfuseOptions: map['blobfuseOptions'] == null ? null : (map['blobfuseOptions'] as String).input(),
+      blobfuseOptions: map['blobfuseOptions'] == null ? null : (map['blobfuseOptions']! as String).input(),
       containerName: (map['containerName'] as String).input(),
-      identityReference: map['identityReference'] == null ? null : (ComputeNodeIdentityReferenceResponse.fromMap((map['identityReference'] as Map).cast<String, dynamic>())).input(),
+      identityReference: map['identityReference'] == null ? null : (ComputeNodeIdentityReferenceResponse.fromMap((map['identityReference']! as Map).cast<String, dynamic>())).input(),
       relativeMountPath: (map['relativeMountPath'] as String).input(),
-      sasKey: map['sasKey'] == null ? null : (map['sasKey'] as String).input(),
+      sasKey: map['sasKey'] == null ? null : (map['sasKey']! as String).input(),
     );
   }
 }

@@ -71,16 +71,16 @@ class AccessControlListArgs {
 
   factory AccessControlListArgs.fromMap(Map<String, dynamic> map) {
     return AccessControlListArgs(
-      accessControlListName: map['accessControlListName'] == null ? null : (map['accessControlListName'] as String).input(),
-      aclsUrl: map['aclsUrl'] == null ? null : (map['aclsUrl'] as String).input(),
-      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      accessControlListName: map['accessControlListName'] == null ? null : (map['accessControlListName']! as String).input(),
+      aclsUrl: map['aclsUrl'] == null ? null : (map['aclsUrl']! as String).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
       configurationType: (map['configurationType'] as String).input(),
-      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction'] as String).input(),
-      dynamicMatchConfigurations: map['dynamicMatchConfigurations'] == null ? null : (pulumi.Input.decodeList<CommonDynamicMatchConfiguration>(map['dynamicMatchConfigurations'], (value) => CommonDynamicMatchConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      matchConfigurations: map['matchConfigurations'] == null ? null : (pulumi.Input.decodeList<AccessControlListMatchConfiguration>(map['matchConfigurations'], (value) => AccessControlListMatchConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction']! as String).input(),
+      dynamicMatchConfigurations: map['dynamicMatchConfigurations'] == null ? null : (pulumi.Input.decodeList<CommonDynamicMatchConfiguration>(map['dynamicMatchConfigurations']!, (value) => CommonDynamicMatchConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      matchConfigurations: map['matchConfigurations'] == null ? null : (pulumi.Input.decodeList<AccessControlListMatchConfiguration>(map['matchConfigurations']!, (value) => AccessControlListMatchConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

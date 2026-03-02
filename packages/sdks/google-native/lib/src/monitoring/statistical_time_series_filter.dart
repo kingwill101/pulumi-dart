@@ -27,8 +27,8 @@ class StatisticalTimeSeriesFilter {
 
   factory StatisticalTimeSeriesFilter.fromMap(Map<String, dynamic> map) {
     return StatisticalTimeSeriesFilter(
-      numTimeSeries: map['numTimeSeries'] == null ? null : (map['numTimeSeries'] as int).input(),
-      rankingMethod: map['rankingMethod'] == null ? null : (StatisticalTimeSeriesFilterRankingMethod.fromValue(map['rankingMethod'] as String)).input(),
+      numTimeSeries: map['numTimeSeries'] == null ? null : (map['numTimeSeries']! as int).input(),
+      rankingMethod: map['rankingMethod'] == null ? null : (StatisticalTimeSeriesFilterRankingMethod.fromValue(map['rankingMethod']! as String)).input(),
     );
   }
 }

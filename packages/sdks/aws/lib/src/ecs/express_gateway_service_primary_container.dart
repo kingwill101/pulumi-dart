@@ -50,13 +50,13 @@ class ExpressGatewayServicePrimaryContainer {
 
   factory ExpressGatewayServicePrimaryContainer.fromMap(Map<String, dynamic> map) {
     return ExpressGatewayServicePrimaryContainer(
-      awsLogsConfigurations: map['awsLogsConfigurations'] == null ? null : (pulumi.Input.decodeList<ExpressGatewayServicePrimaryContainerAwsLogsConfiguration>(map['awsLogsConfigurations'], (value) => ExpressGatewayServicePrimaryContainerAwsLogsConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      containerPort: map['containerPort'] == null ? null : (map['containerPort'] as int).input(),
-      environments: map['environments'] == null ? null : (pulumi.Input.decodeList<ExpressGatewayServicePrimaryContainerEnvironment>(map['environments'], (value) => ExpressGatewayServicePrimaryContainerEnvironment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      awsLogsConfigurations: map['awsLogsConfigurations'] == null ? null : ((pulumi.Input.decodeList<ExpressGatewayServicePrimaryContainerAwsLogsConfiguration>(map['awsLogsConfigurations']!, (value) => ExpressGatewayServicePrimaryContainerAwsLogsConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      commands: map['commands'] == null ? null : (((map['commands'] as List).cast<String>()).input()).input(),
+      containerPort: map['containerPort'] == null ? null : ((map['containerPort'] as int).input()).input(),
+      environments: map['environments'] == null ? null : ((pulumi.Input.decodeList<ExpressGatewayServicePrimaryContainerEnvironment>(map['environments']!, (value) => ExpressGatewayServicePrimaryContainerEnvironment.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       image: (map['image'] as String).input(),
-      repositoryCredentials: map['repositoryCredentials'] == null ? null : (ExpressGatewayServicePrimaryContainerRepositoryCredentials.fromMap((map['repositoryCredentials'] as Map).cast<String, dynamic>())).input(),
-      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<ExpressGatewayServicePrimaryContainerSecret>(map['secrets'], (value) => ExpressGatewayServicePrimaryContainerSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      repositoryCredentials: map['repositoryCredentials'] == null ? null : ((ExpressGatewayServicePrimaryContainerRepositoryCredentials.fromMap((map['repositoryCredentials']! as Map).cast<String, dynamic>())).input()).input(),
+      secrets: map['secrets'] == null ? null : ((pulumi.Input.decodeList<ExpressGatewayServicePrimaryContainerSecret>(map['secrets']!, (value) => ExpressGatewayServicePrimaryContainerSecret.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

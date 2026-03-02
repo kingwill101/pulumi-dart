@@ -44,11 +44,11 @@ class ControlTowerControlState {
 
   factory ControlTowerControlState.fromMap(Map<String, dynamic> map) {
     return ControlTowerControlState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      controlIdentifier: map['controlIdentifier'] == null ? null : (map['controlIdentifier'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ControlTowerControlParameter>(map['parameters'], (value) => ControlTowerControlParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      targetIdentifier: map['targetIdentifier'] == null ? null : (map['targetIdentifier'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      controlIdentifier: map['controlIdentifier'] == null ? null : ((map['controlIdentifier'] as String).input()).input(),
+      parameters: map['parameters'] == null ? null : ((pulumi.Input.decodeList<ControlTowerControlParameter>(map['parameters']!, (value) => ControlTowerControlParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      targetIdentifier: map['targetIdentifier'] == null ? null : ((map['targetIdentifier'] as String).input()).input(),
     );
   }
 }

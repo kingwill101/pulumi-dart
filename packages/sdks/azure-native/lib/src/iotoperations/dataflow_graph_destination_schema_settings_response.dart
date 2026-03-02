@@ -26,7 +26,7 @@ class DataflowGraphDestinationSchemaSettingsResponse {
 
   factory DataflowGraphDestinationSchemaSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DataflowGraphDestinationSchemaSettingsResponse(
-      schemaRef: map['schemaRef'] == null ? null : (map['schemaRef'] as String).input(),
+      schemaRef: map['schemaRef'] == null ? null : (map['schemaRef']! as String).input(),
       serializationFormat: (map['serializationFormat'] as String).input(),
     );
   }

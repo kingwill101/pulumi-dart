@@ -32,9 +32,9 @@ class EnvGroupAttachmentState {
 
   factory EnvGroupAttachmentState.fromMap(Map<String, dynamic> map) {
     return EnvGroupAttachmentState(
-      envgroupId: map['envgroupId'] == null ? null : (map['envgroupId'] as String).input(),
-      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      envgroupId: map['envgroupId'] == null ? null : (map['envgroupId']! as String).input(),
+      environment: map['environment'] == null ? null : (map['environment']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

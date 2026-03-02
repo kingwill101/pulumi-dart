@@ -49,11 +49,11 @@ class AkriConnectorTemplateHelmConfigurationSettings {
 
   factory AkriConnectorTemplateHelmConfigurationSettings.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateHelmConfigurationSettings(
-      advancedConfiguration: map['advancedConfiguration'] == null ? null : (AkriConnectorTemplateHelmAdvancedConfiguration.fromMap((map['advancedConfiguration'] as Map).cast<String, dynamic>())).input(),
-      registrySettings: map['registrySettings'] == null ? null : (AkriConnectorTemplateHelmContainerRegistry.fromMap((map['registrySettings'] as Map).cast<String, dynamic>())).input(),
+      advancedConfiguration: map['advancedConfiguration'] == null ? null : (AkriConnectorTemplateHelmAdvancedConfiguration.fromMap((map['advancedConfiguration']! as Map).cast<String, dynamic>())).input(),
+      registrySettings: map['registrySettings'] == null ? null : (AkriConnectorTemplateHelmContainerRegistry.fromMap((map['registrySettings']! as Map).cast<String, dynamic>())).input(),
       releaseName: (map['releaseName'] as String).input(),
       repositoryName: (map['repositoryName'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as Map).cast<String, String>()).input(),
+      values: map['values'] == null ? null : ((map['values']! as Map).cast<String, String>()).input(),
       version: (map['version'] as String).input(),
     );
   }

@@ -26,7 +26,7 @@ class ResolverForwardingRuleTargetDnsServer {
   factory ResolverForwardingRuleTargetDnsServer.fromMap(Map<String, dynamic> map) {
     return ResolverForwardingRuleTargetDnsServer(
       ipAddress: (map['ipAddress'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

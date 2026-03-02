@@ -25,8 +25,8 @@ class ClusterNetworksVpdInfo {
 
   factory ClusterNetworksVpdInfo.fromMap(Map<String, dynamic> map) {
     return ClusterNetworksVpdInfo(
-      vpdId: map['vpdId'] == null ? null : (map['vpdId'] as String).input(),
-      vpdSubnets: map['vpdSubnets'] == null ? null : ((map['vpdSubnets'] as List).cast<String>()).input(),
+      vpdId: map['vpdId'] == null ? null : (map['vpdId']! as String).input(),
+      vpdSubnets: map['vpdSubnets'] == null ? null : ((map['vpdSubnets']! as List).cast<String>()).input(),
     );
   }
 }

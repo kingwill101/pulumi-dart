@@ -58,13 +58,13 @@ class CacheDefaultAccessPolicyAccessRule {
   factory CacheDefaultAccessPolicyAccessRule.fromMap(Map<String, dynamic> map) {
     return CacheDefaultAccessPolicyAccessRule(
       access: (map['access'] as String).input(),
-      anonymousGid: map['anonymousGid'] == null ? null : (map['anonymousGid'] as int).input(),
-      anonymousUid: map['anonymousUid'] == null ? null : (map['anonymousUid'] as int).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      rootSquashEnabled: map['rootSquashEnabled'] == null ? null : (map['rootSquashEnabled'] as bool).input(),
+      anonymousGid: map['anonymousGid'] == null ? null : (map['anonymousGid']! as int).input(),
+      anonymousUid: map['anonymousUid'] == null ? null : (map['anonymousUid']! as int).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      rootSquashEnabled: map['rootSquashEnabled'] == null ? null : (map['rootSquashEnabled']! as bool).input(),
       scope: (map['scope'] as String).input(),
-      submountAccessEnabled: map['submountAccessEnabled'] == null ? null : (map['submountAccessEnabled'] as bool).input(),
-      suidEnabled: map['suidEnabled'] == null ? null : (map['suidEnabled'] as bool).input(),
+      submountAccessEnabled: map['submountAccessEnabled'] == null ? null : (map['submountAccessEnabled']! as bool).input(),
+      suidEnabled: map['suidEnabled'] == null ? null : (map['suidEnabled']! as bool).input(),
     );
   }
 }

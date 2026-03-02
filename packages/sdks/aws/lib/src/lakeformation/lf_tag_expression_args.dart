@@ -47,11 +47,11 @@ class LfTagExpressionArgs {
 
   factory LfTagExpressionArgs.fromMap(Map<String, dynamic> map) {
     return LfTagExpressionArgs(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expressions: (pulumi.Input.decodeList<LfTagExpressionExpression>(map['expressions'], (value) => LfTagExpressionExpression.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      expressions: (pulumi.Input.decodeList<LfTagExpressionExpression>(map['expressions']!, (value) => LfTagExpressionExpression.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

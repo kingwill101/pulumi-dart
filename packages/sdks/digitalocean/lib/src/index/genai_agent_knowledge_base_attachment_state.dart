@@ -26,8 +26,8 @@ class GenaiAgentKnowledgeBaseAttachmentState {
 
   factory GenaiAgentKnowledgeBaseAttachmentState.fromMap(Map<String, dynamic> map) {
     return GenaiAgentKnowledgeBaseAttachmentState(
-      agentUuid: map['agentUuid'] == null ? null : (map['agentUuid'] as String).input(),
-      knowledgeBaseUuid: map['knowledgeBaseUuid'] == null ? null : (map['knowledgeBaseUuid'] as String).input(),
+      agentUuid: map['agentUuid'] == null ? null : (map['agentUuid']! as String).input(),
+      knowledgeBaseUuid: map['knowledgeBaseUuid'] == null ? null : (map['knowledgeBaseUuid']! as String).input(),
     );
   }
 }

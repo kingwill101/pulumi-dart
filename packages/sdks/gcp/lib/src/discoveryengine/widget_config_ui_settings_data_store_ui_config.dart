@@ -40,9 +40,9 @@ class WidgetConfigUiSettingsDataStoreUiConfig {
 
   factory WidgetConfigUiSettingsDataStoreUiConfig.fromMap(Map<String, dynamic> map) {
     return WidgetConfigUiSettingsDataStoreUiConfig(
-      facetFields: map['facetFields'] == null ? null : (pulumi.Input.decodeList<WidgetConfigUiSettingsDataStoreUiConfigFacetField>(map['facetFields'], (value) => WidgetConfigUiSettingsDataStoreUiConfigFacetField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fieldsUiComponentsMaps: map['fieldsUiComponentsMaps'] == null ? null : (pulumi.Input.decodeList<WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap>(map['fieldsUiComponentsMaps'], (value) => WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      facetFields: map['facetFields'] == null ? null : (pulumi.Input.decodeList<WidgetConfigUiSettingsDataStoreUiConfigFacetField>(map['facetFields']!, (value) => WidgetConfigUiSettingsDataStoreUiConfigFacetField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fieldsUiComponentsMaps: map['fieldsUiComponentsMaps'] == null ? null : (pulumi.Input.decodeList<WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap>(map['fieldsUiComponentsMaps']!, (value) => WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

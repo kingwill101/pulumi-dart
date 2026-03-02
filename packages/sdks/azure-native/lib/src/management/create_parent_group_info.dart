@@ -21,7 +21,7 @@ class CreateParentGroupInfo {
 
   factory CreateParentGroupInfo.fromMap(Map<String, dynamic> map) {
     return CreateParentGroupInfo(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

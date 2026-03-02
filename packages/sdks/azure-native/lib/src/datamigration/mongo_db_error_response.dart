@@ -36,10 +36,10 @@ class MongoDbErrorResponse {
 
   factory MongoDbErrorResponse.fromMap(Map<String, dynamic> map) {
     return MongoDbErrorResponse(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride
 
   factory PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride(
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
-      deviceType: map['deviceType'] == null ? null : (map['deviceType'] as String).input(),
+      deviceName: map['deviceName'] == null ? null : ((map['deviceName'] as String).input()).input(),
+      deviceType: map['deviceType'] == null ? null : ((map['deviceType'] as String).input()).input(),
     );
   }
 }

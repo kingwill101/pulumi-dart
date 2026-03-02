@@ -22,7 +22,7 @@ class Host {
 
   factory Host.fromMap(Map<String, dynamic> map) {
     return Host(
-      gceInstance: map['gceInstance'] == null ? null : (GceInstance.fromMap((map['gceInstance'] as Map).cast<String, dynamic>())).input(),
+      gceInstance: map['gceInstance'] == null ? null : (GceInstance.fromMap((map['gceInstance']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

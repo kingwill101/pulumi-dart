@@ -46,12 +46,12 @@ class StatusCodesBasedTriggerResponse {
 
   factory StatusCodesBasedTriggerResponse.fromMap(Map<String, dynamic> map) {
     return StatusCodesBasedTriggerResponse(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as int).input(),
-      subStatus: map['subStatus'] == null ? null : (map['subStatus'] as int).input(),
-      timeInterval: map['timeInterval'] == null ? null : (map['timeInterval'] as String).input(),
-      win32Status: map['win32Status'] == null ? null : (map['win32Status'] as int).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as int).input(),
+      subStatus: map['subStatus'] == null ? null : (map['subStatus']! as int).input(),
+      timeInterval: map['timeInterval'] == null ? null : (map['timeInterval']! as String).input(),
+      win32Status: map['win32Status'] == null ? null : (map['win32Status']! as int).input(),
     );
   }
 }

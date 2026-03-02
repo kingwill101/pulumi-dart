@@ -86,20 +86,20 @@ class InMageRcmNicDetailsResponse {
 
   factory InMageRcmNicDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageRcmNicDetailsResponse(
-      isPrimaryNic: map['isPrimaryNic'] == null ? null : (map['isPrimaryNic'] as String).input(),
-      isSelectedForFailover: map['isSelectedForFailover'] == null ? null : (map['isSelectedForFailover'] as String).input(),
+      isPrimaryNic: map['isPrimaryNic'] == null ? null : (map['isPrimaryNic']! as String).input(),
+      isSelectedForFailover: map['isSelectedForFailover'] == null ? null : (map['isSelectedForFailover']! as String).input(),
       nicId: (map['nicId'] as String).input(),
       sourceIPAddress: (map['sourceIPAddress'] as String).input(),
       sourceIPAddressType: (map['sourceIPAddressType'] as String).input(),
       sourceNetworkId: (map['sourceNetworkId'] as String).input(),
       sourceSubnetName: (map['sourceSubnetName'] as String).input(),
-      targetIPAddress: map['targetIPAddress'] == null ? null : (map['targetIPAddress'] as String).input(),
-      targetIPAddressType: map['targetIPAddressType'] == null ? null : (map['targetIPAddressType'] as String).input(),
-      targetNicName: map['targetNicName'] == null ? null : (map['targetNicName'] as String).input(),
-      targetSubnetName: map['targetSubnetName'] == null ? null : (map['targetSubnetName'] as String).input(),
-      testIPAddress: map['testIPAddress'] == null ? null : (map['testIPAddress'] as String).input(),
-      testIPAddressType: map['testIPAddressType'] == null ? null : (map['testIPAddressType'] as String).input(),
-      testSubnetName: map['testSubnetName'] == null ? null : (map['testSubnetName'] as String).input(),
+      targetIPAddress: map['targetIPAddress'] == null ? null : (map['targetIPAddress']! as String).input(),
+      targetIPAddressType: map['targetIPAddressType'] == null ? null : (map['targetIPAddressType']! as String).input(),
+      targetNicName: map['targetNicName'] == null ? null : (map['targetNicName']! as String).input(),
+      targetSubnetName: map['targetSubnetName'] == null ? null : (map['targetSubnetName']! as String).input(),
+      testIPAddress: map['testIPAddress'] == null ? null : (map['testIPAddress']! as String).input(),
+      testIPAddressType: map['testIPAddressType'] == null ? null : (map['testIPAddressType']! as String).input(),
+      testSubnetName: map['testSubnetName'] == null ? null : (map['testSubnetName']! as String).input(),
     );
   }
 }

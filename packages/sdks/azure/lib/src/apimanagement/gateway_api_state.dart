@@ -26,8 +26,8 @@ class GatewayApiState {
 
   factory GatewayApiState.fromMap(Map<String, dynamic> map) {
     return GatewayApiState(
-      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
-      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId'] as String).input(),
+      apiId: map['apiId'] == null ? null : (map['apiId']! as String).input(),
+      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId']! as String).input(),
     );
   }
 }

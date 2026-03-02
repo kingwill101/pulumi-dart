@@ -27,8 +27,8 @@ class ServerlessCacheCacheUsageLimits {
 
   factory ServerlessCacheCacheUsageLimits.fromMap(Map<String, dynamic> map) {
     return ServerlessCacheCacheUsageLimits(
-      dataStorage: map['dataStorage'] == null ? null : (ServerlessCacheCacheUsageLimitsDataStorage.fromMap((map['dataStorage'] as Map).cast<String, dynamic>())).input(),
-      ecpuPerSeconds: map['ecpuPerSeconds'] == null ? null : (pulumi.Input.decodeList<ServerlessCacheCacheUsageLimitsEcpuPerSecond>(map['ecpuPerSeconds'], (value) => ServerlessCacheCacheUsageLimitsEcpuPerSecond.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataStorage: map['dataStorage'] == null ? null : ((ServerlessCacheCacheUsageLimitsDataStorage.fromMap((map['dataStorage']! as Map).cast<String, dynamic>())).input()).input(),
+      ecpuPerSeconds: map['ecpuPerSeconds'] == null ? null : ((pulumi.Input.decodeList<ServerlessCacheCacheUsageLimitsEcpuPerSecond>(map['ecpuPerSeconds']!, (value) => ServerlessCacheCacheUsageLimitsEcpuPerSecond.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

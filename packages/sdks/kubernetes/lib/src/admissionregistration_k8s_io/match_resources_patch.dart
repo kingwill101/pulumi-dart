@@ -79,11 +79,11 @@ class MatchResourcesPatch {
 
   factory MatchResourcesPatch.fromMap(Map<String, dynamic> map) {
     return MatchResourcesPatch(
-      excludeResourceRules: map['excludeResourceRules'] == null ? null : (pulumi.Input.decodeList<NamedRuleWithOperationsPatch>(map['excludeResourceRules'], (value) => NamedRuleWithOperationsPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matchPolicy: map['matchPolicy'] == null ? null : (map['matchPolicy'] as String).input(),
-      namespaceSelector: map['namespaceSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['namespaceSelector'] as Map).cast<String, dynamic>())).input(),
-      objectSelector: map['objectSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['objectSelector'] as Map).cast<String, dynamic>())).input(),
-      resourceRules: map['resourceRules'] == null ? null : (pulumi.Input.decodeList<NamedRuleWithOperationsPatch>(map['resourceRules'], (value) => NamedRuleWithOperationsPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      excludeResourceRules: map['excludeResourceRules'] == null ? null : (pulumi.Input.decodeList<NamedRuleWithOperationsPatch>(map['excludeResourceRules']!, (value) => NamedRuleWithOperationsPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchPolicy: map['matchPolicy'] == null ? null : (map['matchPolicy']! as String).input(),
+      namespaceSelector: map['namespaceSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['namespaceSelector']! as Map).cast<String, dynamic>())).input(),
+      objectSelector: map['objectSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['objectSelector']! as Map).cast<String, dynamic>())).input(),
+      resourceRules: map['resourceRules'] == null ? null : (pulumi.Input.decodeList<NamedRuleWithOperationsPatch>(map['resourceRules']!, (value) => NamedRuleWithOperationsPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

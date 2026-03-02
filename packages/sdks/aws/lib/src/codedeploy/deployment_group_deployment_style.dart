@@ -27,8 +27,8 @@ class DeploymentGroupDeploymentStyle {
 
   factory DeploymentGroupDeploymentStyle.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupDeploymentStyle(
-      deploymentOption: map['deploymentOption'] == null ? null : (map['deploymentOption'] as String).input(),
-      deploymentType: map['deploymentType'] == null ? null : (map['deploymentType'] as String).input(),
+      deploymentOption: map['deploymentOption'] == null ? null : ((map['deploymentOption'] as String).input()).input(),
+      deploymentType: map['deploymentType'] == null ? null : ((map['deploymentType'] as String).input()).input(),
     );
   }
 }

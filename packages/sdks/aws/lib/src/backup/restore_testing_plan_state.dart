@@ -61,15 +61,15 @@ class RestoreTestingPlanState {
 
   factory RestoreTestingPlanState.fromMap(Map<String, dynamic> map) {
     return RestoreTestingPlanState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recoveryPointSelection: map['recoveryPointSelection'] == null ? null : (RestoreTestingPlanRecoveryPointSelection.fromMap((map['recoveryPointSelection'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scheduleExpression: map['scheduleExpression'] == null ? null : (map['scheduleExpression'] as String).input(),
-      scheduleExpressionTimezone: map['scheduleExpressionTimezone'] == null ? null : (map['scheduleExpressionTimezone'] as String).input(),
-      startWindowHours: map['startWindowHours'] == null ? null : (map['startWindowHours'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      recoveryPointSelection: map['recoveryPointSelection'] == null ? null : ((RestoreTestingPlanRecoveryPointSelection.fromMap((map['recoveryPointSelection']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scheduleExpression: map['scheduleExpression'] == null ? null : ((map['scheduleExpression'] as String).input()).input(),
+      scheduleExpressionTimezone: map['scheduleExpressionTimezone'] == null ? null : ((map['scheduleExpressionTimezone'] as String).input()).input(),
+      startWindowHours: map['startWindowHours'] == null ? null : ((map['startWindowHours'] as int).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

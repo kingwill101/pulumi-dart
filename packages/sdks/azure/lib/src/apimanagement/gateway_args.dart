@@ -41,9 +41,9 @@ class GatewayArgs {
   factory GatewayArgs.fromMap(Map<String, dynamic> map) {
     return GatewayArgs(
       apiManagementId: (map['apiManagementId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       locationData: (GatewayLocationData.fromMap((map['locationData'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

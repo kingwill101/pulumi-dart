@@ -67,14 +67,14 @@ class JobConfigurationResponse {
 
   factory JobConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return JobConfigurationResponse(
-      eventTriggerConfig: map['eventTriggerConfig'] == null ? null : (JobConfigurationResponseEventTriggerConfig.fromMap((map['eventTriggerConfig'] as Map).cast<String, dynamic>())).input(),
-      identitySettings: map['identitySettings'] == null ? null : (pulumi.Input.decodeList<IdentitySettingsResponse>(map['identitySettings'], (value) => IdentitySettingsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      manualTriggerConfig: map['manualTriggerConfig'] == null ? null : (JobConfigurationResponseManualTriggerConfig.fromMap((map['manualTriggerConfig'] as Map).cast<String, dynamic>())).input(),
-      registries: map['registries'] == null ? null : (pulumi.Input.decodeList<RegistryCredentialsResponse>(map['registries'], (value) => RegistryCredentialsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      replicaRetryLimit: map['replicaRetryLimit'] == null ? null : (map['replicaRetryLimit'] as int).input(),
+      eventTriggerConfig: map['eventTriggerConfig'] == null ? null : (JobConfigurationResponseEventTriggerConfig.fromMap((map['eventTriggerConfig']! as Map).cast<String, dynamic>())).input(),
+      identitySettings: map['identitySettings'] == null ? null : (pulumi.Input.decodeList<IdentitySettingsResponse>(map['identitySettings']!, (value) => IdentitySettingsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      manualTriggerConfig: map['manualTriggerConfig'] == null ? null : (JobConfigurationResponseManualTriggerConfig.fromMap((map['manualTriggerConfig']! as Map).cast<String, dynamic>())).input(),
+      registries: map['registries'] == null ? null : (pulumi.Input.decodeList<RegistryCredentialsResponse>(map['registries']!, (value) => RegistryCredentialsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      replicaRetryLimit: map['replicaRetryLimit'] == null ? null : (map['replicaRetryLimit']! as int).input(),
       replicaTimeout: (map['replicaTimeout'] as int).input(),
-      scheduleTriggerConfig: map['scheduleTriggerConfig'] == null ? null : (JobConfigurationResponseScheduleTriggerConfig.fromMap((map['scheduleTriggerConfig'] as Map).cast<String, dynamic>())).input(),
-      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<SecretResponse>(map['secrets'], (value) => SecretResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scheduleTriggerConfig: map['scheduleTriggerConfig'] == null ? null : (JobConfigurationResponseScheduleTriggerConfig.fromMap((map['scheduleTriggerConfig']! as Map).cast<String, dynamic>())).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<SecretResponse>(map['secrets']!, (value) => SecretResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       triggerType: (map['triggerType'] as String).input(),
     );
   }

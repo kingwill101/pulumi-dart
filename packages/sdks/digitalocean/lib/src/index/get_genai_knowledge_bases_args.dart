@@ -29,8 +29,8 @@ class GetGenaiKnowledgeBasesArgs {
 
   factory GetGenaiKnowledgeBasesArgs.fromMap(Map<String, dynamic> map) {
     return GetGenaiKnowledgeBasesArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetGenaiKnowledgeBasesFilter>(map['filters'], (value) => GetGenaiKnowledgeBasesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetGenaiKnowledgeBasesSort>(map['sorts'], (value) => GetGenaiKnowledgeBasesSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetGenaiKnowledgeBasesFilter>(map['filters']!, (value) => GetGenaiKnowledgeBasesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetGenaiKnowledgeBasesSort>(map['sorts']!, (value) => GetGenaiKnowledgeBasesSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -42,8 +42,8 @@ class AutoscalingPolicyWorkerConfig {
   factory AutoscalingPolicyWorkerConfig.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyWorkerConfig(
       maxInstances: (map['maxInstances'] as int).input(),
-      minInstances: map['minInstances'] == null ? null : (map['minInstances'] as int).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      minInstances: map['minInstances'] == null ? null : (map['minInstances']! as int).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

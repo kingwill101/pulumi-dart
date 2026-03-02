@@ -76,18 +76,18 @@ class LocationAzureBlobState {
 
   factory LocationAzureBlobState.fromMap(Map<String, dynamic> map) {
     return LocationAzureBlobState(
-      accessTier: map['accessTier'] == null ? null : (map['accessTier'] as String).input(),
-      agentArns: map['agentArns'] == null ? null : ((map['agentArns'] as List).cast<String>()).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
-      blobType: map['blobType'] == null ? null : (map['blobType'] as String).input(),
-      containerUrl: map['containerUrl'] == null ? null : (map['containerUrl'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sasConfiguration: map['sasConfiguration'] == null ? null : (LocationAzureBlobSasConfiguration.fromMap((map['sasConfiguration'] as Map).cast<String, dynamic>())).input(),
-      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      accessTier: map['accessTier'] == null ? null : ((map['accessTier'] as String).input()).input(),
+      agentArns: map['agentArns'] == null ? null : (((map['agentArns'] as List).cast<String>()).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      authenticationType: map['authenticationType'] == null ? null : ((map['authenticationType'] as String).input()).input(),
+      blobType: map['blobType'] == null ? null : ((map['blobType'] as String).input()).input(),
+      containerUrl: map['containerUrl'] == null ? null : ((map['containerUrl'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sasConfiguration: map['sasConfiguration'] == null ? null : ((LocationAzureBlobSasConfiguration.fromMap((map['sasConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      subdirectory: map['subdirectory'] == null ? null : ((map['subdirectory'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      uri: map['uri'] == null ? null : ((map['uri'] as String).input()).input(),
     );
   }
 }

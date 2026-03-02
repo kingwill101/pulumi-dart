@@ -51,13 +51,13 @@ class ContainerRegistryState {
 
   factory ContainerRegistryState.fromMap(Map<String, dynamic> map) {
     return ContainerRegistryState(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serverUrl: map['serverUrl'] == null ? null : (map['serverUrl'] as String).input(),
-      storageUsageBytes: map['storageUsageBytes'] == null ? null : (map['storageUsageBytes'] as int).input(),
-      subscriptionTierSlug: map['subscriptionTierSlug'] == null ? null : (map['subscriptionTierSlug'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      serverUrl: map['serverUrl'] == null ? null : (map['serverUrl']! as String).input(),
+      storageUsageBytes: map['storageUsageBytes'] == null ? null : (map['storageUsageBytes']! as int).input(),
+      subscriptionTierSlug: map['subscriptionTierSlug'] == null ? null : (map['subscriptionTierSlug']! as String).input(),
     );
   }
 }

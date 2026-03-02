@@ -31,8 +31,8 @@ class InstanceVmImage {
 
   factory InstanceVmImage.fromMap(Map<String, dynamic> map) {
     return InstanceVmImage(
-      imageFamily: map['imageFamily'] == null ? null : (map['imageFamily'] as String).input(),
-      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
+      imageFamily: map['imageFamily'] == null ? null : (map['imageFamily']! as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName']! as String).input(),
       project: (map['project'] as String).input(),
     );
   }

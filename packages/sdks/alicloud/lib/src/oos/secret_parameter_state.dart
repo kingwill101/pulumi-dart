@@ -70,16 +70,16 @@ class SecretParameterState {
 
   factory SecretParameterState.fromMap(Map<String, dynamic> map) {
     return SecretParameterState(
-      constraints: map['constraints'] == null ? null : (map['constraints'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dkmsInstanceId: map['dkmsInstanceId'] == null ? null : (map['dkmsInstanceId'] as String).input(),
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      secretParameterName: map['secretParameterName'] == null ? null : (map['secretParameterName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      constraints: map['constraints'] == null ? null : (map['constraints']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dkmsInstanceId: map['dkmsInstanceId'] == null ? null : (map['dkmsInstanceId']! as String).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      secretParameterName: map['secretParameterName'] == null ? null : (map['secretParameterName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

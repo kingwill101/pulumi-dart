@@ -26,8 +26,8 @@ class EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange {
 
   factory EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange(
-      max: map['max'] == null ? null : (map['max'] as double).input(),
-      min: map['min'] == null ? null : (map['min'] as double).input(),
+      max: map['max'] == null ? null : (map['max']! as double).input(),
+      min: map['min'] == null ? null : (map['min']! as double).input(),
     );
   }
 }

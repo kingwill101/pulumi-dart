@@ -47,11 +47,11 @@ class OrganizationSecurityPolicyArgs {
 
   factory OrganizationSecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationSecurityPolicyArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       parent: (map['parent'] as String).input(),
-      shortName: map['shortName'] == null ? null : (map['shortName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      shortName: map['shortName'] == null ? null : (map['shortName']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

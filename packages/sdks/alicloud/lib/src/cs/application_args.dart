@@ -55,15 +55,15 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      blueGreen: map['blueGreen'] == null ? null : (map['blueGreen'] as bool).input(),
-      blueGreenConfirm: map['blueGreenConfirm'] == null ? null : (map['blueGreenConfirm'] as bool).input(),
+      blueGreen: map['blueGreen'] == null ? null : (map['blueGreen']! as bool).input(),
+      blueGreenConfirm: map['blueGreenConfirm'] == null ? null : (map['blueGreenConfirm']! as bool).input(),
       clusterName: (map['clusterName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      environment: map['environment'] == null ? null : ((map['environment'] as Map).cast<String, String>()).input(),
-      latestImage: map['latestImage'] == null ? null : (map['latestImage'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      environment: map['environment'] == null ? null : ((map['environment']! as Map).cast<String, String>()).input(),
+      latestImage: map['latestImage'] == null ? null : (map['latestImage']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       template: (map['template'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

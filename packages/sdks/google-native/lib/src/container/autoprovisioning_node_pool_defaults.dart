@@ -74,17 +74,17 @@ class AutoprovisioningNodePoolDefaults {
 
   factory AutoprovisioningNodePoolDefaults.fromMap(Map<String, dynamic> map) {
     return AutoprovisioningNodePoolDefaults(
-      bootDiskKmsKey: map['bootDiskKmsKey'] == null ? null : (map['bootDiskKmsKey'] as String).input(),
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as int).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
-      imageType: map['imageType'] == null ? null : (map['imageType'] as String).input(),
-      insecureKubeletReadonlyPortEnabled: map['insecureKubeletReadonlyPortEnabled'] == null ? null : (map['insecureKubeletReadonlyPortEnabled'] as bool).input(),
-      management: map['management'] == null ? null : (NodeManagement.fromMap((map['management'] as Map).cast<String, dynamic>())).input(),
-      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform'] as String).input(),
-      oauthScopes: map['oauthScopes'] == null ? null : ((map['oauthScopes'] as List).cast<String>()).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : (ShieldedInstanceConfig.fromMap((map['shieldedInstanceConfig'] as Map).cast<String, dynamic>())).input(),
-      upgradeSettings: map['upgradeSettings'] == null ? null : (UpgradeSettings.fromMap((map['upgradeSettings'] as Map).cast<String, dynamic>())).input(),
+      bootDiskKmsKey: map['bootDiskKmsKey'] == null ? null : (map['bootDiskKmsKey']! as String).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as int).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
+      imageType: map['imageType'] == null ? null : (map['imageType']! as String).input(),
+      insecureKubeletReadonlyPortEnabled: map['insecureKubeletReadonlyPortEnabled'] == null ? null : (map['insecureKubeletReadonlyPortEnabled']! as bool).input(),
+      management: map['management'] == null ? null : (NodeManagement.fromMap((map['management']! as Map).cast<String, dynamic>())).input(),
+      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform']! as String).input(),
+      oauthScopes: map['oauthScopes'] == null ? null : ((map['oauthScopes']! as List).cast<String>()).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : (ShieldedInstanceConfig.fromMap((map['shieldedInstanceConfig']! as Map).cast<String, dynamic>())).input(),
+      upgradeSettings: map['upgradeSettings'] == null ? null : (UpgradeSettings.fromMap((map['upgradeSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

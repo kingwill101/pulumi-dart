@@ -54,15 +54,15 @@ class GetRdsBackupsResult {
 
   factory GetRdsBackupsResult.fromMap(Map<String, dynamic> map) {
     return GetRdsBackupsResult(
-      backupMode: map['backupMode'] == null ? null : map['backupMode'] as String,
-      backupStatus: map['backupStatus'] == null ? null : map['backupStatus'] as String,
+      backupMode: map['backupMode'] == null ? null : map['backupMode']! as String,
+      backupStatus: map['backupStatus'] == null ? null : map['backupStatus']! as String,
       backups: pulumi.Input.decodeList<GetRdsBackupsBackup>(map['backups'], (value) => GetRdsBackupsBackup.fromMap((value as Map).cast<String, dynamic>())),
       dbInstanceId: map['dbInstanceId'] as String,
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
+      endTime: map['endTime'] == null ? null : map['endTime']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      startTime: map['startTime'] == null ? null : map['startTime']! as String,
     );
   }
 }

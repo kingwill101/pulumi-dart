@@ -44,11 +44,11 @@ class NatIpCidrArgs {
 
   factory NatIpCidrArgs.fromMap(Map<String, dynamic> map) {
     return NatIpCidrArgs(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
       natGatewayId: (map['natGatewayId'] as String).input(),
-      natIpCidr: map['natIpCidr'] == null ? null : (map['natIpCidr'] as String).input(),
-      natIpCidrDescription: map['natIpCidrDescription'] == null ? null : (map['natIpCidrDescription'] as String).input(),
-      natIpCidrName: map['natIpCidrName'] == null ? null : (map['natIpCidrName'] as String).input(),
+      natIpCidr: map['natIpCidr'] == null ? null : (map['natIpCidr']! as String).input(),
+      natIpCidrDescription: map['natIpCidrDescription'] == null ? null : (map['natIpCidrDescription']! as String).input(),
+      natIpCidrName: map['natIpCidrName'] == null ? null : (map['natIpCidrName']! as String).input(),
     );
   }
 }

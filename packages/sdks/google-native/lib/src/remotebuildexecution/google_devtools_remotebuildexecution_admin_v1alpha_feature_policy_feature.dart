@@ -27,8 +27,8 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature {
 
   factory GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature(
-      allowedValues: map['allowedValues'] == null ? null : ((map['allowedValues'] as List).cast<String>()).input(),
-      policy: map['policy'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy.fromValue(map['policy'] as String)).input(),
+      allowedValues: map['allowedValues'] == null ? null : ((map['allowedValues']! as List).cast<String>()).input(),
+      policy: map['policy'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy.fromValue(map['policy']! as String)).input(),
     );
   }
 }

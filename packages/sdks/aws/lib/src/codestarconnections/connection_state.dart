@@ -56,14 +56,14 @@ class ConnectionState {
 
   factory ConnectionState.fromMap(Map<String, dynamic> map) {
     return ConnectionState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      connectionStatus: map['connectionStatus'] == null ? null : (map['connectionStatus'] as String).input(),
-      hostArn: map['hostArn'] == null ? null : (map['hostArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      providerType: map['providerType'] == null ? null : (map['providerType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      connectionStatus: map['connectionStatus'] == null ? null : ((map['connectionStatus'] as String).input()).input(),
+      hostArn: map['hostArn'] == null ? null : ((map['hostArn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      providerType: map['providerType'] == null ? null : ((map['providerType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

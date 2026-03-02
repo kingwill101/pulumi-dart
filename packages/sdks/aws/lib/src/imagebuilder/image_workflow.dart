@@ -38,9 +38,9 @@ class ImageWorkflow {
 
   factory ImageWorkflow.fromMap(Map<String, dynamic> map) {
     return ImageWorkflow(
-      onFailure: map['onFailure'] == null ? null : (map['onFailure'] as String).input(),
-      parallelGroup: map['parallelGroup'] == null ? null : (map['parallelGroup'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ImageWorkflowParameter>(map['parameters'], (value) => ImageWorkflowParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      onFailure: map['onFailure'] == null ? null : ((map['onFailure'] as String).input()).input(),
+      parallelGroup: map['parallelGroup'] == null ? null : ((map['parallelGroup'] as String).input()).input(),
+      parameters: map['parameters'] == null ? null : ((pulumi.Input.decodeList<ImageWorkflowParameter>(map['parameters']!, (value) => ImageWorkflowParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       workflowArn: (map['workflowArn'] as String).input(),
     );
   }

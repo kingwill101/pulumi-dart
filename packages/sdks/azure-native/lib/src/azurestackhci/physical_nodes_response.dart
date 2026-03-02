@@ -26,8 +26,8 @@ class PhysicalNodesResponse {
 
   factory PhysicalNodesResponse.fromMap(Map<String, dynamic> map) {
     return PhysicalNodesResponse(
-      ipv4Address: map['ipv4Address'] == null ? null : (map['ipv4Address'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ipv4Address: map['ipv4Address'] == null ? null : (map['ipv4Address']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

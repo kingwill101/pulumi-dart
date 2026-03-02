@@ -46,11 +46,11 @@ class GetServiceResult {
   factory GetServiceResult.fromMap(Map<String, dynamic> map) {
     return GetServiceResult(
       description: map['description'] as String,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : map['enabled']! as bool,
       id: map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
       region: map['region'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      type: map['type'] == null ? null : map['type']! as String,
     );
   }
 }

@@ -51,12 +51,12 @@ class DataShareConsumerAssociationArgs {
 
   factory DataShareConsumerAssociationArgs.fromMap(Map<String, dynamic> map) {
     return DataShareConsumerAssociationArgs(
-      allowWrites: map['allowWrites'] == null ? null : (map['allowWrites'] as bool).input(),
-      associateEntireAccount: map['associateEntireAccount'] == null ? null : (map['associateEntireAccount'] as bool).input(),
-      consumerArn: map['consumerArn'] == null ? null : (map['consumerArn'] as String).input(),
-      consumerRegion: map['consumerRegion'] == null ? null : (map['consumerRegion'] as String).input(),
+      allowWrites: map['allowWrites'] == null ? null : ((map['allowWrites'] as bool).input()).input(),
+      associateEntireAccount: map['associateEntireAccount'] == null ? null : ((map['associateEntireAccount'] as bool).input()).input(),
+      consumerArn: map['consumerArn'] == null ? null : ((map['consumerArn'] as String).input()).input(),
+      consumerRegion: map['consumerRegion'] == null ? null : ((map['consumerRegion'] as String).input()).input(),
       dataShareArn: (map['dataShareArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -38,7 +38,7 @@ class GetCrossRegionsResult {
     return GetCrossRegionsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       regions: pulumi.Input.decodeList<GetCrossRegionsRegion>(map['regions'], (value) => GetCrossRegionsRegion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

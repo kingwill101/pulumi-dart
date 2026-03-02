@@ -50,12 +50,12 @@ class FolderIamPolicyCloudresourcemanagerV2beta1Args {
 
   factory FolderIamPolicyCloudresourcemanagerV2beta1Args.fromMap(Map<String, dynamic> map) {
     return FolderIamPolicyCloudresourcemanagerV2beta1Args(
-      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfigCloudresourcemanagerV2beta1>(map['auditConfigs'], (value) => AuditConfigCloudresourcemanagerV2beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingCloudresourcemanagerV2beta1>(map['bindings'], (value) => BindingCloudresourcemanagerV2beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfigCloudresourcemanagerV2beta1>(map['auditConfigs']!, (value) => AuditConfigCloudresourcemanagerV2beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingCloudresourcemanagerV2beta1>(map['bindings']!, (value) => BindingCloudresourcemanagerV2beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       folderId: (map['folderId'] as String).input(),
-      updateMask: map['updateMask'] == null ? null : (map['updateMask'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      updateMask: map['updateMask'] == null ? null : (map['updateMask']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

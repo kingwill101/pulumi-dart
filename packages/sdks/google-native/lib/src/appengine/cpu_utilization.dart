@@ -26,8 +26,8 @@ class CpuUtilization {
 
   factory CpuUtilization.fromMap(Map<String, dynamic> map) {
     return CpuUtilization(
-      aggregationWindowLength: map['aggregationWindowLength'] == null ? null : (map['aggregationWindowLength'] as String).input(),
-      targetUtilization: map['targetUtilization'] == null ? null : (map['targetUtilization'] as double).input(),
+      aggregationWindowLength: map['aggregationWindowLength'] == null ? null : (map['aggregationWindowLength']! as String).input(),
+      targetUtilization: map['targetUtilization'] == null ? null : (map['targetUtilization']! as double).input(),
     );
   }
 }

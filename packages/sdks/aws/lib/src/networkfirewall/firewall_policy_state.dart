@@ -63,15 +63,15 @@ class FirewallPolicyState {
 
   factory FirewallPolicyState.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (FirewallPolicyEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      firewallPolicy: map['firewallPolicy'] == null ? null : (FirewallPolicyFirewallPolicy.fromMap((map['firewallPolicy'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      updateToken: map['updateToken'] == null ? null : (map['updateToken'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : ((FirewallPolicyEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      firewallPolicy: map['firewallPolicy'] == null ? null : ((FirewallPolicyFirewallPolicy.fromMap((map['firewallPolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      updateToken: map['updateToken'] == null ? null : ((map['updateToken'] as String).input()).input(),
     );
   }
 }

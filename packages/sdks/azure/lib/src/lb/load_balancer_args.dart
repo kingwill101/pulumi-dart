@@ -74,16 +74,16 @@ class LoadBalancerArgs {
 
   factory LoadBalancerArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerArgs(
-      edgeZone: map['edgeZone'] == null ? null : (map['edgeZone'] as String).input(),
-      frontendIpConfigurations: map['frontendIpConfigurations'] == null ? null : (pulumi.Input.decodeList<LoadBalancerFrontendIpConfiguration>(map['frontendIpConfigurations'], (value) => LoadBalancerFrontendIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId'] as String).input(),
+      edgeZone: map['edgeZone'] == null ? null : (map['edgeZone']! as String).input(),
+      frontendIpConfigurations: map['frontendIpConfigurations'] == null ? null : (pulumi.Input.decodeList<LoadBalancerFrontendIpConfiguration>(map['frontendIpConfigurations']!, (value) => LoadBalancerFrontendIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
-      skuTier: map['skuTier'] == null ? null : (map['skuTier'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
+      skuTier: map['skuTier'] == null ? null : (map['skuTier']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

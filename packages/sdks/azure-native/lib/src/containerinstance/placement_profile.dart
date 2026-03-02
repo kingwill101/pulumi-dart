@@ -21,7 +21,7 @@ class PlacementProfile {
 
   factory PlacementProfile.fromMap(Map<String, dynamic> map) {
     return PlacementProfile(
-      faultDomainCount: map['faultDomainCount'] == null ? null : (map['faultDomainCount'] as int).input(),
+      faultDomainCount: map['faultDomainCount'] == null ? null : (map['faultDomainCount']! as int).input(),
     );
   }
 }

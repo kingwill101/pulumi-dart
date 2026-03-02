@@ -20,7 +20,7 @@ class ClusterServerSideEncryption {
 
   factory ClusterServerSideEncryption.fromMap(Map<String, dynamic> map) {
     return ClusterServerSideEncryption(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
     );
   }
 }

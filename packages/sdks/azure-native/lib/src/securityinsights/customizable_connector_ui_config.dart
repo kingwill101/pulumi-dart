@@ -83,15 +83,15 @@ class CustomizableConnectorUiConfig {
 
   factory CustomizableConnectorUiConfig.fromMap(Map<String, dynamic> map) {
     return CustomizableConnectorUiConfig(
-      availability: map['availability'] == null ? null : (ConnectorDefinitionsAvailability.fromMap((map['availability'] as Map).cast<String, dynamic>())).input(),
+      availability: map['availability'] == null ? null : (ConnectorDefinitionsAvailability.fromMap((map['availability']! as Map).cast<String, dynamic>())).input(),
       connectivityCriteria: (pulumi.Input.decodeList<ConnectivityCriterion>(map['connectivityCriteria'], (value) => ConnectivityCriterion.fromMap((value as Map).cast<String, dynamic>()))).input(),
       dataTypes: (pulumi.Input.decodeList<ConnectorDataType>(map['dataTypes'], (value) => ConnectorDataType.fromMap((value as Map).cast<String, dynamic>()))).input(),
       descriptionMarkdown: (map['descriptionMarkdown'] as String).input(),
       graphQueries: (pulumi.Input.decodeList<GraphQuery>(map['graphQueries'], (value) => GraphQuery.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       instructionSteps: (pulumi.Input.decodeList<InstructionStep>(map['instructionSteps'], (value) => InstructionStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      isConnectivityCriteriasMatchSome: map['isConnectivityCriteriasMatchSome'] == null ? null : (map['isConnectivityCriteriasMatchSome'] as bool).input(),
-      logo: map['logo'] == null ? null : (map['logo'] as String).input(),
+      isConnectivityCriteriasMatchSome: map['isConnectivityCriteriasMatchSome'] == null ? null : (map['isConnectivityCriteriasMatchSome']! as bool).input(),
+      logo: map['logo'] == null ? null : (map['logo']! as String).input(),
       permissions: (ConnectorDefinitionsPermissions.fromMap((map['permissions'] as Map).cast<String, dynamic>())).input(),
       publisher: (map['publisher'] as String).input(),
       title: (map['title'] as String).input(),

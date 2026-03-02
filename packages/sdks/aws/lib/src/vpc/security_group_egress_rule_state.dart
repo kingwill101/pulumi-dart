@@ -88,20 +88,20 @@ class SecurityGroupEgressRuleState {
 
   factory SecurityGroupEgressRuleState.fromMap(Map<String, dynamic> map) {
     return SecurityGroupEgressRuleState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      cidrIpv4: map['cidrIpv4'] == null ? null : (map['cidrIpv4'] as String).input(),
-      cidrIpv6: map['cidrIpv6'] == null ? null : (map['cidrIpv6'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fromPort: map['fromPort'] == null ? null : (map['fromPort'] as int).input(),
-      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as String).input(),
-      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId'] as String).input(),
-      referencedSecurityGroupId: map['referencedSecurityGroupId'] == null ? null : (map['referencedSecurityGroupId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
-      securityGroupRuleId: map['securityGroupRuleId'] == null ? null : (map['securityGroupRuleId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      toPort: map['toPort'] == null ? null : (map['toPort'] as int).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      cidrIpv4: map['cidrIpv4'] == null ? null : ((map['cidrIpv4'] as String).input()).input(),
+      cidrIpv6: map['cidrIpv6'] == null ? null : ((map['cidrIpv6'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      fromPort: map['fromPort'] == null ? null : ((map['fromPort'] as int).input()).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : ((map['ipProtocol'] as String).input()).input(),
+      prefixListId: map['prefixListId'] == null ? null : ((map['prefixListId'] as String).input()).input(),
+      referencedSecurityGroupId: map['referencedSecurityGroupId'] == null ? null : ((map['referencedSecurityGroupId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : ((map['securityGroupId'] as String).input()).input(),
+      securityGroupRuleId: map['securityGroupRuleId'] == null ? null : ((map['securityGroupRuleId'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      toPort: map['toPort'] == null ? null : ((map['toPort'] as int).input()).input(),
     );
   }
 }

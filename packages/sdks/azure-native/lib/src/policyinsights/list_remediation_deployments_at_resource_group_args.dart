@@ -36,7 +36,7 @@ class ListRemediationDeploymentsAtResourceGroupArgs {
     return ListRemediationDeploymentsAtResourceGroupArgs(
       remediationName: (map['remediationName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      top: map['top'] == null ? null : (map['top'] as int).input(),
+      top: map['top'] == null ? null : (map['top']! as int).input(),
     );
   }
 }

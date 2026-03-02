@@ -26,8 +26,8 @@ class KinesisStreamSpecificationResponse {
 
   factory KinesisStreamSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return KinesisStreamSpecificationResponse(
-      approximateCreationDateTimePrecision: map['approximateCreationDateTimePrecision'] == null ? null : (map['approximateCreationDateTimePrecision'] as String).input(),
-      streamArn: map['streamArn'] == null ? null : (map['streamArn'] as String).input(),
+      approximateCreationDateTimePrecision: map['approximateCreationDateTimePrecision'] == null ? null : (map['approximateCreationDateTimePrecision']! as String).input(),
+      streamArn: map['streamArn'] == null ? null : (map['streamArn']! as String).input(),
     );
   }
 }

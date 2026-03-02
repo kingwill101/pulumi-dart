@@ -39,8 +39,8 @@ class ResolverRuleAssociationArgs {
 
   factory ResolverRuleAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ResolverRuleAssociationArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resolverRuleId: (map['resolverRuleId'] as String).input(),
       vpcId: (map['vpcId'] as String).input(),
     );

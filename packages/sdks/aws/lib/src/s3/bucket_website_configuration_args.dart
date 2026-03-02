@@ -65,13 +65,13 @@ class BucketWebsiteConfigurationArgs {
   factory BucketWebsiteConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteConfigurationArgs(
       bucket: (map['bucket'] as String).input(),
-      errorDocument: map['errorDocument'] == null ? null : (BucketWebsiteConfigurationErrorDocument.fromMap((map['errorDocument'] as Map).cast<String, dynamic>())).input(),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
-      indexDocument: map['indexDocument'] == null ? null : (BucketWebsiteConfigurationIndexDocument.fromMap((map['indexDocument'] as Map).cast<String, dynamic>())).input(),
-      redirectAllRequestsTo: map['redirectAllRequestsTo'] == null ? null : (BucketWebsiteConfigurationRedirectAllRequestsTo.fromMap((map['redirectAllRequestsTo'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routingRuleDetails: map['routingRuleDetails'] == null ? null : (map['routingRuleDetails'] as String).input(),
-      routingRules: map['routingRules'] == null ? null : (pulumi.Input.decodeList<BucketWebsiteConfigurationRoutingRule>(map['routingRules'], (value) => BucketWebsiteConfigurationRoutingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errorDocument: map['errorDocument'] == null ? null : ((BucketWebsiteConfigurationErrorDocument.fromMap((map['errorDocument']! as Map).cast<String, dynamic>())).input()).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : ((map['expectedBucketOwner'] as String).input()).input(),
+      indexDocument: map['indexDocument'] == null ? null : ((BucketWebsiteConfigurationIndexDocument.fromMap((map['indexDocument']! as Map).cast<String, dynamic>())).input()).input(),
+      redirectAllRequestsTo: map['redirectAllRequestsTo'] == null ? null : ((BucketWebsiteConfigurationRedirectAllRequestsTo.fromMap((map['redirectAllRequestsTo']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      routingRuleDetails: map['routingRuleDetails'] == null ? null : ((map['routingRuleDetails'] as String).input()).input(),
+      routingRules: map['routingRules'] == null ? null : ((pulumi.Input.decodeList<BucketWebsiteConfigurationRoutingRule>(map['routingRules']!, (value) => BucketWebsiteConfigurationRoutingRule.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

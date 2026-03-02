@@ -31,9 +31,9 @@ class DaprSubscriptionBulkSubscribeOptionsResponse {
 
   factory DaprSubscriptionBulkSubscribeOptionsResponse.fromMap(Map<String, dynamic> map) {
     return DaprSubscriptionBulkSubscribeOptionsResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      maxAwaitDurationMs: map['maxAwaitDurationMs'] == null ? null : (map['maxAwaitDurationMs'] as int).input(),
-      maxMessagesCount: map['maxMessagesCount'] == null ? null : (map['maxMessagesCount'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      maxAwaitDurationMs: map['maxAwaitDurationMs'] == null ? null : (map['maxAwaitDurationMs']! as int).input(),
+      maxMessagesCount: map['maxMessagesCount'] == null ? null : (map['maxMessagesCount']! as int).input(),
     );
   }
 }

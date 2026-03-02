@@ -41,11 +41,11 @@ class MonitoredResourceResponse {
 
   factory MonitoredResourceResponse.fromMap(Map<String, dynamic> map) {
     return MonitoredResourceResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      reasonForLogsStatus: map['reasonForLogsStatus'] == null ? null : (map['reasonForLogsStatus'] as String).input(),
-      reasonForMetricsStatus: map['reasonForMetricsStatus'] == null ? null : (map['reasonForMetricsStatus'] as String).input(),
-      sendingLogs: map['sendingLogs'] == null ? null : (map['sendingLogs'] as bool).input(),
-      sendingMetrics: map['sendingMetrics'] == null ? null : (map['sendingMetrics'] as bool).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      reasonForLogsStatus: map['reasonForLogsStatus'] == null ? null : (map['reasonForLogsStatus']! as String).input(),
+      reasonForMetricsStatus: map['reasonForMetricsStatus'] == null ? null : (map['reasonForMetricsStatus']! as String).input(),
+      sendingLogs: map['sendingLogs'] == null ? null : (map['sendingLogs']! as bool).input(),
+      sendingMetrics: map['sendingMetrics'] == null ? null : (map['sendingMetrics']! as bool).input(),
     );
   }
 }

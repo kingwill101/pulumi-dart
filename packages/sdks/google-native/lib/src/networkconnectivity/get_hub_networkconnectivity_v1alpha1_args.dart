@@ -28,7 +28,7 @@ class GetHubNetworkconnectivityV1alpha1Args {
   factory GetHubNetworkconnectivityV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetHubNetworkconnectivityV1alpha1Args(
       hubId: (map['hubId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

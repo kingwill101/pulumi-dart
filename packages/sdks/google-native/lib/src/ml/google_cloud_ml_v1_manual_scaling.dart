@@ -21,7 +21,7 @@ class GoogleCloudMlV1ManualScaling {
 
   factory GoogleCloudMlV1ManualScaling.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1ManualScaling(
-      nodes: map['nodes'] == null ? null : (map['nodes'] as int).input(),
+      nodes: map['nodes'] == null ? null : (map['nodes']! as int).input(),
     );
   }
 }

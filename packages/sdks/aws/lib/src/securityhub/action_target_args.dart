@@ -41,8 +41,8 @@ class ActionTargetArgs {
     return ActionTargetArgs(
       description: (map['description'] as String).input(),
       identifier: (map['identifier'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

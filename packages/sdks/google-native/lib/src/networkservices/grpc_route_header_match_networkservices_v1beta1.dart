@@ -33,7 +33,7 @@ class GrpcRouteHeaderMatchNetworkservicesV1beta1 {
   factory GrpcRouteHeaderMatchNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return GrpcRouteHeaderMatchNetworkservicesV1beta1(
       key: (map['key'] as String).input(),
-      type: map['type'] == null ? null : (GrpcRouteHeaderMatchTypeNetworkservicesV1beta1.fromValue(map['type'] as String)).input(),
+      type: map['type'] == null ? null : (GrpcRouteHeaderMatchTypeNetworkservicesV1beta1.fromValue(map['type']! as String)).input(),
       value: (map['value'] as String).input(),
     );
   }

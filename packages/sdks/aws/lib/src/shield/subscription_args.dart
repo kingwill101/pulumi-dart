@@ -29,8 +29,8 @@ class SubscriptionArgs {
 
   factory SubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionArgs(
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as String).input(),
-      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
+      autoRenew: map['autoRenew'] == null ? null : ((map['autoRenew'] as String).input()).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : ((map['skipDestroy'] as bool).input()).input(),
     );
   }
 }

@@ -44,11 +44,11 @@ class ClusterAutoscalingContainerV1beta1 {
 
   factory ClusterAutoscalingContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ClusterAutoscalingContainerV1beta1(
-      autoprovisioningLocations: map['autoprovisioningLocations'] == null ? null : ((map['autoprovisioningLocations'] as List).cast<String>()).input(),
-      autoprovisioningNodePoolDefaults: map['autoprovisioningNodePoolDefaults'] == null ? null : (AutoprovisioningNodePoolDefaultsContainerV1beta1.fromMap((map['autoprovisioningNodePoolDefaults'] as Map).cast<String, dynamic>())).input(),
-      autoscalingProfile: map['autoscalingProfile'] == null ? null : (ClusterAutoscalingAutoscalingProfileContainerV1beta1.fromValue(map['autoscalingProfile'] as String)).input(),
-      enableNodeAutoprovisioning: map['enableNodeAutoprovisioning'] == null ? null : (map['enableNodeAutoprovisioning'] as bool).input(),
-      resourceLimits: map['resourceLimits'] == null ? null : (pulumi.Input.decodeList<ResourceLimitContainerV1beta1>(map['resourceLimits'], (value) => ResourceLimitContainerV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoprovisioningLocations: map['autoprovisioningLocations'] == null ? null : ((map['autoprovisioningLocations']! as List).cast<String>()).input(),
+      autoprovisioningNodePoolDefaults: map['autoprovisioningNodePoolDefaults'] == null ? null : (AutoprovisioningNodePoolDefaultsContainerV1beta1.fromMap((map['autoprovisioningNodePoolDefaults']! as Map).cast<String, dynamic>())).input(),
+      autoscalingProfile: map['autoscalingProfile'] == null ? null : (ClusterAutoscalingAutoscalingProfileContainerV1beta1.fromValue(map['autoscalingProfile']! as String)).input(),
+      enableNodeAutoprovisioning: map['enableNodeAutoprovisioning'] == null ? null : (map['enableNodeAutoprovisioning']! as bool).input(),
+      resourceLimits: map['resourceLimits'] == null ? null : (pulumi.Input.decodeList<ResourceLimitContainerV1beta1>(map['resourceLimits']!, (value) => ResourceLimitContainerV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

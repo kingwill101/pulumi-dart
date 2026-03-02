@@ -58,13 +58,13 @@ class DomainManagedidentitiesV1beta1Args {
 
   factory DomainManagedidentitiesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return DomainManagedidentitiesV1beta1Args(
-      admin: map['admin'] == null ? null : (map['admin'] as String).input(),
-      auditLogsEnabled: map['auditLogsEnabled'] == null ? null : (map['auditLogsEnabled'] as bool).input(),
-      authorizedNetworks: map['authorizedNetworks'] == null ? null : ((map['authorizedNetworks'] as List).cast<String>()).input(),
+      admin: map['admin'] == null ? null : (map['admin']! as String).input(),
+      auditLogsEnabled: map['auditLogsEnabled'] == null ? null : (map['auditLogsEnabled']! as bool).input(),
+      authorizedNetworks: map['authorizedNetworks'] == null ? null : ((map['authorizedNetworks']! as List).cast<String>()).input(),
       domainName: (map['domainName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       locations: ((map['locations'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       reservedIpRange: (map['reservedIpRange'] as String).input(),
     );
   }

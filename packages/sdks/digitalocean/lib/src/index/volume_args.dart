@@ -64,15 +64,15 @@ class VolumeArgs {
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      filesystemType: map['filesystemType'] == null ? null : (map['filesystemType'] as String).input(),
-      initialFilesystemLabel: map['initialFilesystemLabel'] == null ? null : (map['initialFilesystemLabel'] as String).input(),
-      initialFilesystemType: map['initialFilesystemType'] == null ? null : (map['initialFilesystemType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      filesystemType: map['filesystemType'] == null ? null : (map['filesystemType']! as String).input(),
+      initialFilesystemLabel: map['initialFilesystemLabel'] == null ? null : (map['initialFilesystemLabel']! as String).input(),
+      initialFilesystemType: map['initialFilesystemType'] == null ? null : (map['initialFilesystemType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       region: (map['region'] as String).input(),
       size: (map['size'] as int).input(),
-      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
     );
   }
 }

@@ -49,7 +49,7 @@ class GetVoicesResult {
       includeAdditionalLanguageCodes: map['includeAdditionalLanguageCodes'] == null ? null : map['includeAdditionalLanguageCodes'] as bool,
       languageCode: map['languageCode'] == null ? null : map['languageCode'] as String,
       region: map['region'] as String,
-      voices: map['voices'] == null ? null : pulumi.Input.decodeList<GetVoicesVoice>(map['voices'], (value) => GetVoicesVoice.fromMap((value as Map).cast<String, dynamic>())),
+      voices: map['voices'] == null ? null : pulumi.Input.decodeList<GetVoicesVoice>(map['voices']!, (value) => GetVoicesVoice.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

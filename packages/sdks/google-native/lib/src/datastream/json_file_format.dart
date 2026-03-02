@@ -28,8 +28,8 @@ class JsonFileFormat {
 
   factory JsonFileFormat.fromMap(Map<String, dynamic> map) {
     return JsonFileFormat(
-      compression: map['compression'] == null ? null : (JsonFileFormatCompression.fromValue(map['compression'] as String)).input(),
-      schemaFileFormat: map['schemaFileFormat'] == null ? null : (JsonFileFormatSchemaFileFormat.fromValue(map['schemaFileFormat'] as String)).input(),
+      compression: map['compression'] == null ? null : (JsonFileFormatCompression.fromValue(map['compression']! as String)).input(),
+      schemaFileFormat: map['schemaFileFormat'] == null ? null : (JsonFileFormatSchemaFileFormat.fromValue(map['schemaFileFormat']! as String)).input(),
     );
   }
 }

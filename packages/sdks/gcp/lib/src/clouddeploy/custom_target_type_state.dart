@@ -98,21 +98,21 @@ class CustomTargetTypeState {
 
   factory CustomTargetTypeState.fromMap(Map<String, dynamic> map) {
     return CustomTargetTypeState(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      customActions: map['customActions'] == null ? null : (CustomTargetTypeCustomActions.fromMap((map['customActions'] as Map).cast<String, dynamic>())).input(),
-      customTargetTypeId: map['customTargetTypeId'] == null ? null : (map['customTargetTypeId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : ((map['effectiveAnnotations'] as Map).cast<String, String>()).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      customActions: map['customActions'] == null ? null : (CustomTargetTypeCustomActions.fromMap((map['customActions']! as Map).cast<String, dynamic>())).input(),
+      customTargetTypeId: map['customTargetTypeId'] == null ? null : (map['customTargetTypeId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : ((map['effectiveAnnotations']! as Map).cast<String, String>()).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

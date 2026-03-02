@@ -29,9 +29,9 @@ class NetworkInsightsAnalysisExplanationRouteTable {
 
   factory NetworkInsightsAnalysisExplanationRouteTable.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisExplanationRouteTable(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
     );
   }
 }

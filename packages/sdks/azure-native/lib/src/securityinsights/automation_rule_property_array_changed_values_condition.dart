@@ -23,8 +23,8 @@ class AutomationRulePropertyArrayChangedValuesCondition {
 
   factory AutomationRulePropertyArrayChangedValuesCondition.fromMap(Map<String, dynamic> map) {
     return AutomationRulePropertyArrayChangedValuesCondition(
-      arrayType: map['arrayType'] == null ? null : (map['arrayType'] as String).input(),
-      changeType: map['changeType'] == null ? null : (map['changeType'] as String).input(),
+      arrayType: map['arrayType'] == null ? null : (map['arrayType']! as String).input(),
+      changeType: map['changeType'] == null ? null : (map['changeType']! as String).input(),
     );
   }
 }

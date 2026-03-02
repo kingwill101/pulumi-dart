@@ -37,10 +37,10 @@ class CertificateManagedAuthorizationAttemptInfo {
 
   factory CertificateManagedAuthorizationAttemptInfo.fromMap(Map<String, dynamic> map) {
     return CertificateManagedAuthorizationAttemptInfo(
-      details: map['details'] == null ? null : (map['details'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      failureReason: map['failureReason'] == null ? null : (map['failureReason'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      details: map['details'] == null ? null : (map['details']! as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      failureReason: map['failureReason'] == null ? null : (map['failureReason']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

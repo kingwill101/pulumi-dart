@@ -42,11 +42,11 @@ class SpringCloudConfigurationServiceState {
 
   factory SpringCloudConfigurationServiceState.fromMap(Map<String, dynamic> map) {
     return SpringCloudConfigurationServiceState(
-      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      refreshIntervalInSeconds: map['refreshIntervalInSeconds'] == null ? null : (map['refreshIntervalInSeconds'] as int).input(),
-      repositories: map['repositories'] == null ? null : (pulumi.Input.decodeList<SpringCloudConfigurationServiceRepository>(map['repositories'], (value) => SpringCloudConfigurationServiceRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId'] as String).input(),
+      generation: map['generation'] == null ? null : (map['generation']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      refreshIntervalInSeconds: map['refreshIntervalInSeconds'] == null ? null : (map['refreshIntervalInSeconds']! as int).input(),
+      repositories: map['repositories'] == null ? null : (pulumi.Input.decodeList<SpringCloudConfigurationServiceRepository>(map['repositories']!, (value) => SpringCloudConfigurationServiceRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId']! as String).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class GetTestMatrixArgs {
 
   factory GetTestMatrixArgs.fromMap(Map<String, dynamic> map) {
     return GetTestMatrixArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       testMatrixId: (map['testMatrixId'] as String).input(),
     );
   }

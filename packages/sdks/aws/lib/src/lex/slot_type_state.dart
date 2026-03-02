@@ -75,16 +75,16 @@ class SlotTypeState {
 
   factory SlotTypeState.fromMap(Map<String, dynamic> map) {
     return SlotTypeState(
-      checksum: map['checksum'] == null ? null : (map['checksum'] as String).input(),
-      createVersion: map['createVersion'] == null ? null : (map['createVersion'] as bool).input(),
-      createdDate: map['createdDate'] == null ? null : (map['createdDate'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enumerationValues: map['enumerationValues'] == null ? null : (pulumi.Input.decodeList<SlotTypeEnumerationValue>(map['enumerationValues'], (value) => SlotTypeEnumerationValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lastUpdatedDate: map['lastUpdatedDate'] == null ? null : (map['lastUpdatedDate'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      valueSelectionStrategy: map['valueSelectionStrategy'] == null ? null : (map['valueSelectionStrategy'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      checksum: map['checksum'] == null ? null : ((map['checksum'] as String).input()).input(),
+      createVersion: map['createVersion'] == null ? null : ((map['createVersion'] as bool).input()).input(),
+      createdDate: map['createdDate'] == null ? null : ((map['createdDate'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      enumerationValues: map['enumerationValues'] == null ? null : ((pulumi.Input.decodeList<SlotTypeEnumerationValue>(map['enumerationValues']!, (value) => SlotTypeEnumerationValue.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      lastUpdatedDate: map['lastUpdatedDate'] == null ? null : ((map['lastUpdatedDate'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      valueSelectionStrategy: map['valueSelectionStrategy'] == null ? null : ((map['valueSelectionStrategy'] as String).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

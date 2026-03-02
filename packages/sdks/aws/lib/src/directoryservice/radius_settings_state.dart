@@ -66,16 +66,16 @@ class RadiusSettingsState {
 
   factory RadiusSettingsState.fromMap(Map<String, dynamic> map) {
     return RadiusSettingsState(
-      authenticationProtocol: map['authenticationProtocol'] == null ? null : (map['authenticationProtocol'] as String).input(),
-      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
-      displayLabel: map['displayLabel'] == null ? null : (map['displayLabel'] as String).input(),
-      radiusPort: map['radiusPort'] == null ? null : (map['radiusPort'] as int).input(),
-      radiusRetries: map['radiusRetries'] == null ? null : (map['radiusRetries'] as int).input(),
-      radiusServers: map['radiusServers'] == null ? null : ((map['radiusServers'] as List).cast<String>()).input(),
-      radiusTimeout: map['radiusTimeout'] == null ? null : (map['radiusTimeout'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sharedSecret: map['sharedSecret'] == null ? null : (map['sharedSecret'] as String).input(),
-      useSameUsername: map['useSameUsername'] == null ? null : (map['useSameUsername'] as bool).input(),
+      authenticationProtocol: map['authenticationProtocol'] == null ? null : ((map['authenticationProtocol'] as String).input()).input(),
+      directoryId: map['directoryId'] == null ? null : ((map['directoryId'] as String).input()).input(),
+      displayLabel: map['displayLabel'] == null ? null : ((map['displayLabel'] as String).input()).input(),
+      radiusPort: map['radiusPort'] == null ? null : ((map['radiusPort'] as int).input()).input(),
+      radiusRetries: map['radiusRetries'] == null ? null : ((map['radiusRetries'] as int).input()).input(),
+      radiusServers: map['radiusServers'] == null ? null : (((map['radiusServers'] as List).cast<String>()).input()).input(),
+      radiusTimeout: map['radiusTimeout'] == null ? null : ((map['radiusTimeout'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sharedSecret: map['sharedSecret'] == null ? null : ((map['sharedSecret'] as String).input()).input(),
+      useSameUsername: map['useSameUsername'] == null ? null : ((map['useSameUsername'] as bool).input()).input(),
     );
   }
 }

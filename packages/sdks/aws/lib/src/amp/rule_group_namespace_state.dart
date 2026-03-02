@@ -51,13 +51,13 @@ class RuleGroupNamespaceState {
 
   factory RuleGroupNamespaceState.fromMap(Map<String, dynamic> map) {
     return RuleGroupNamespaceState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      data: map['data'] == null ? null : (map['data'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      data: map['data'] == null ? null : ((map['data'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      workspaceId: map['workspaceId'] == null ? null : ((map['workspaceId'] as String).input()).input(),
     );
   }
 }

@@ -68,14 +68,14 @@ class InboundNatPool {
   factory InboundNatPool.fromMap(Map<String, dynamic> map) {
     return InboundNatPool(
       backendPort: (map['backendPort'] as int).input(),
-      enableFloatingIP: map['enableFloatingIP'] == null ? null : (map['enableFloatingIP'] as bool).input(),
-      enableTcpReset: map['enableTcpReset'] == null ? null : (map['enableTcpReset'] as bool).input(),
-      frontendIPConfiguration: map['frontendIPConfiguration'] == null ? null : (SubResource.fromMap((map['frontendIPConfiguration'] as Map).cast<String, dynamic>())).input(),
+      enableFloatingIP: map['enableFloatingIP'] == null ? null : (map['enableFloatingIP']! as bool).input(),
+      enableTcpReset: map['enableTcpReset'] == null ? null : (map['enableTcpReset']! as bool).input(),
+      frontendIPConfiguration: map['frontendIPConfiguration'] == null ? null : (SubResource.fromMap((map['frontendIPConfiguration']! as Map).cast<String, dynamic>())).input(),
       frontendPortRangeEnd: (map['frontendPortRangeEnd'] as int).input(),
       frontendPortRangeStart: (map['frontendPortRangeStart'] as int).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       protocol: (map['protocol'] as String).input(),
     );
   }

@@ -32,8 +32,8 @@ class AgentDataSourceVectorIngestionConfigurationParsingConfiguration {
 
   factory AgentDataSourceVectorIngestionConfigurationParsingConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationParsingConfiguration(
-      bedrockDataAutomationConfiguration: map['bedrockDataAutomationConfiguration'] == null ? null : (AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockDataAutomationConfiguration.fromMap((map['bedrockDataAutomationConfiguration'] as Map).cast<String, dynamic>())).input(),
-      bedrockFoundationModelConfiguration: map['bedrockFoundationModelConfiguration'] == null ? null : (AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfiguration.fromMap((map['bedrockFoundationModelConfiguration'] as Map).cast<String, dynamic>())).input(),
+      bedrockDataAutomationConfiguration: map['bedrockDataAutomationConfiguration'] == null ? null : ((AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockDataAutomationConfiguration.fromMap((map['bedrockDataAutomationConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      bedrockFoundationModelConfiguration: map['bedrockFoundationModelConfiguration'] == null ? null : ((AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfiguration.fromMap((map['bedrockFoundationModelConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       parsingStrategy: (map['parsingStrategy'] as String).input(),
     );
   }

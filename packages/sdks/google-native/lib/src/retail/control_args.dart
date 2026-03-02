@@ -67,11 +67,11 @@ class ControlArgs {
       catalogId: (map['catalogId'] as String).input(),
       controlId: (map['controlId'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rule: map['rule'] == null ? null : (GoogleCloudRetailV2Rule.fromMap((map['rule'] as Map).cast<String, dynamic>())).input(),
-      searchSolutionUseCase: map['searchSolutionUseCase'] == null ? null : (pulumi.Input.decodeList<ControlSearchSolutionUseCaseItem>(map['searchSolutionUseCase'], (value) => ControlSearchSolutionUseCaseItem.fromValue(value as String))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rule: map['rule'] == null ? null : (GoogleCloudRetailV2Rule.fromMap((map['rule']! as Map).cast<String, dynamic>())).input(),
+      searchSolutionUseCase: map['searchSolutionUseCase'] == null ? null : (pulumi.Input.decodeList<ControlSearchSolutionUseCaseItem>(map['searchSolutionUseCase']!, (value) => ControlSearchSolutionUseCaseItem.fromValue(value as String))).input(),
       solutionTypes: (pulumi.Input.decodeList<ControlSolutionTypesItem>(map['solutionTypes'], (value) => ControlSolutionTypesItem.fromValue(value as String))).input(),
     );
   }

@@ -80,18 +80,18 @@ class VolumeExportPolicyRule {
   factory VolumeExportPolicyRule.fromMap(Map<String, dynamic> map) {
     return VolumeExportPolicyRule(
       allowedClients: ((map['allowedClients'] as List).cast<String>()).input(),
-      kerberos5ReadOnlyEnabled: map['kerberos5ReadOnlyEnabled'] == null ? null : (map['kerberos5ReadOnlyEnabled'] as bool).input(),
-      kerberos5ReadWriteEnabled: map['kerberos5ReadWriteEnabled'] == null ? null : (map['kerberos5ReadWriteEnabled'] as bool).input(),
-      kerberos5iReadOnlyEnabled: map['kerberos5iReadOnlyEnabled'] == null ? null : (map['kerberos5iReadOnlyEnabled'] as bool).input(),
-      kerberos5iReadWriteEnabled: map['kerberos5iReadWriteEnabled'] == null ? null : (map['kerberos5iReadWriteEnabled'] as bool).input(),
-      kerberos5pReadOnlyEnabled: map['kerberos5pReadOnlyEnabled'] == null ? null : (map['kerberos5pReadOnlyEnabled'] as bool).input(),
-      kerberos5pReadWriteEnabled: map['kerberos5pReadWriteEnabled'] == null ? null : (map['kerberos5pReadWriteEnabled'] as bool).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      protocolsEnabled: map['protocolsEnabled'] == null ? null : (map['protocolsEnabled'] as String).input(),
-      rootAccessEnabled: map['rootAccessEnabled'] == null ? null : (map['rootAccessEnabled'] as bool).input(),
+      kerberos5ReadOnlyEnabled: map['kerberos5ReadOnlyEnabled'] == null ? null : (map['kerberos5ReadOnlyEnabled']! as bool).input(),
+      kerberos5ReadWriteEnabled: map['kerberos5ReadWriteEnabled'] == null ? null : (map['kerberos5ReadWriteEnabled']! as bool).input(),
+      kerberos5iReadOnlyEnabled: map['kerberos5iReadOnlyEnabled'] == null ? null : (map['kerberos5iReadOnlyEnabled']! as bool).input(),
+      kerberos5iReadWriteEnabled: map['kerberos5iReadWriteEnabled'] == null ? null : (map['kerberos5iReadWriteEnabled']! as bool).input(),
+      kerberos5pReadOnlyEnabled: map['kerberos5pReadOnlyEnabled'] == null ? null : (map['kerberos5pReadOnlyEnabled']! as bool).input(),
+      kerberos5pReadWriteEnabled: map['kerberos5pReadWriteEnabled'] == null ? null : (map['kerberos5pReadWriteEnabled']! as bool).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      protocolsEnabled: map['protocolsEnabled'] == null ? null : (map['protocolsEnabled']! as String).input(),
+      rootAccessEnabled: map['rootAccessEnabled'] == null ? null : (map['rootAccessEnabled']! as bool).input(),
       ruleIndex: (map['ruleIndex'] as int).input(),
-      unixReadOnly: map['unixReadOnly'] == null ? null : (map['unixReadOnly'] as bool).input(),
-      unixReadWrite: map['unixReadWrite'] == null ? null : (map['unixReadWrite'] as bool).input(),
+      unixReadOnly: map['unixReadOnly'] == null ? null : (map['unixReadOnly']! as bool).input(),
+      unixReadWrite: map['unixReadWrite'] == null ? null : (map['unixReadWrite']! as bool).input(),
     );
   }
 }

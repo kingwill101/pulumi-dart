@@ -20,7 +20,7 @@ class GetAuthorizationLoginLinkPostResult {
 
   factory GetAuthorizationLoginLinkPostResult.fromMap(Map<String, dynamic> map) {
     return GetAuthorizationLoginLinkPostResult(
-      loginLink: map['loginLink'] == null ? null : map['loginLink'] as String,
+      loginLink: map['loginLink'] == null ? null : map['loginLink']! as String,
     );
   }
 }

@@ -36,10 +36,10 @@ class ACR {
 
   factory ACR.fromMap(Map<String, dynamic> map) {
     return ACR(
-      acrRegistryName: map['acrRegistryName'] == null ? null : (map['acrRegistryName'] as String).input(),
-      acrRepositoryName: map['acrRepositoryName'] == null ? null : (map['acrRepositoryName'] as String).input(),
-      acrResourceGroup: map['acrResourceGroup'] == null ? null : (map['acrResourceGroup'] as String).input(),
-      acrSubscriptionId: map['acrSubscriptionId'] == null ? null : (map['acrSubscriptionId'] as String).input(),
+      acrRegistryName: map['acrRegistryName'] == null ? null : (map['acrRegistryName']! as String).input(),
+      acrRepositoryName: map['acrRepositoryName'] == null ? null : (map['acrRepositoryName']! as String).input(),
+      acrResourceGroup: map['acrResourceGroup'] == null ? null : (map['acrResourceGroup']! as String).input(),
+      acrSubscriptionId: map['acrSubscriptionId'] == null ? null : (map['acrSubscriptionId']! as String).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class DatabaseInstanceReplicationCluster {
 
   factory DatabaseInstanceReplicationCluster.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceReplicationCluster(
-      drReplica: map['drReplica'] == null ? null : (map['drReplica'] as bool).input(),
-      failoverDrReplicaName: map['failoverDrReplicaName'] == null ? null : (map['failoverDrReplicaName'] as String).input(),
-      psaWriteEndpoint: map['psaWriteEndpoint'] == null ? null : (map['psaWriteEndpoint'] as String).input(),
+      drReplica: map['drReplica'] == null ? null : (map['drReplica']! as bool).input(),
+      failoverDrReplicaName: map['failoverDrReplicaName'] == null ? null : (map['failoverDrReplicaName']! as String).input(),
+      psaWriteEndpoint: map['psaWriteEndpoint'] == null ? null : (map['psaWriteEndpoint']! as String).input(),
     );
   }
 }

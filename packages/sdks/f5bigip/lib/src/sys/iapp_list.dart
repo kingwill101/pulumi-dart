@@ -25,8 +25,8 @@ class IAppList {
 
   factory IAppList.fromMap(Map<String, dynamic> map) {
     return IAppList(
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

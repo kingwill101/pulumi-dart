@@ -39,11 +39,11 @@ class AlarmCompositeExpressionExpressionList {
 
   factory AlarmCompositeExpressionExpressionList.fromMap(Map<String, dynamic> map) {
     return AlarmCompositeExpressionExpressionList(
-      comparisonOperator: map['comparisonOperator'] == null ? null : (map['comparisonOperator'] as String).input(),
-      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as String).input(),
-      statistics: map['statistics'] == null ? null : (map['statistics'] as String).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold'] as String).input(),
+      comparisonOperator: map['comparisonOperator'] == null ? null : (map['comparisonOperator']! as String).input(),
+      metricName: map['metricName'] == null ? null : (map['metricName']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as String).input(),
+      statistics: map['statistics'] == null ? null : (map['statistics']! as String).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold']! as String).input(),
     );
   }
 }

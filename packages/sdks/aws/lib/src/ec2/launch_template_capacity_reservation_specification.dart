@@ -26,8 +26,8 @@ class LaunchTemplateCapacityReservationSpecification {
 
   factory LaunchTemplateCapacityReservationSpecification.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateCapacityReservationSpecification(
-      capacityReservationPreference: map['capacityReservationPreference'] == null ? null : (map['capacityReservationPreference'] as String).input(),
-      capacityReservationTarget: map['capacityReservationTarget'] == null ? null : (LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget.fromMap((map['capacityReservationTarget'] as Map).cast<String, dynamic>())).input(),
+      capacityReservationPreference: map['capacityReservationPreference'] == null ? null : ((map['capacityReservationPreference'] as String).input()).input(),
+      capacityReservationTarget: map['capacityReservationTarget'] == null ? null : ((LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget.fromMap((map['capacityReservationTarget']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -42,7 +42,7 @@ class TransitRouterMulticastDomainSourceArgs {
       groupIpAddress: (map['groupIpAddress'] as String).input(),
       networkInterfaceId: (map['networkInterfaceId'] as String).input(),
       transitRouterMulticastDomainId: (map['transitRouterMulticastDomainId'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

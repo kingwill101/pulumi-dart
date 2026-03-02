@@ -37,10 +37,10 @@ class GroupMixedInstancesPolicyLaunchTemplateOverride {
 
   factory GroupMixedInstancesPolicyLaunchTemplateOverride.fromMap(Map<String, dynamic> map) {
     return GroupMixedInstancesPolicyLaunchTemplateOverride(
-      instanceRequirements: map['instanceRequirements'] == null ? null : (GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements.fromMap((map['instanceRequirements'] as Map).cast<String, dynamic>())).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      launchTemplateSpecification: map['launchTemplateSpecification'] == null ? null : (GroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification.fromMap((map['launchTemplateSpecification'] as Map).cast<String, dynamic>())).input(),
-      weightedCapacity: map['weightedCapacity'] == null ? null : (map['weightedCapacity'] as String).input(),
+      instanceRequirements: map['instanceRequirements'] == null ? null : ((GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements.fromMap((map['instanceRequirements']! as Map).cast<String, dynamic>())).input()).input(),
+      instanceType: map['instanceType'] == null ? null : ((map['instanceType'] as String).input()).input(),
+      launchTemplateSpecification: map['launchTemplateSpecification'] == null ? null : ((GroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification.fromMap((map['launchTemplateSpecification']! as Map).cast<String, dynamic>())).input()).input(),
+      weightedCapacity: map['weightedCapacity'] == null ? null : ((map['weightedCapacity'] as String).input()).input(),
     );
   }
 }

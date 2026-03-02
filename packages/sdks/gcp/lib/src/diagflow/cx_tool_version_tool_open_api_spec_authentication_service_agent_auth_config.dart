@@ -22,7 +22,7 @@ class CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfig {
 
   factory CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfig.fromMap(Map<String, dynamic> map) {
     return CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfig(
-      serviceAgentAuth: map['serviceAgentAuth'] == null ? null : (map['serviceAgentAuth'] as String).input(),
+      serviceAgentAuth: map['serviceAgentAuth'] == null ? null : (map['serviceAgentAuth']! as String).input(),
     );
   }
 }

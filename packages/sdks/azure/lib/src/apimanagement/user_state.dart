@@ -68,16 +68,16 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
-      confirmation: map['confirmation'] == null ? null : (map['confirmation'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      firstName: map['firstName'] == null ? null : (map['firstName'] as String).input(),
-      lastName: map['lastName'] == null ? null : (map['lastName'] as String).input(),
-      note: map['note'] == null ? null : (map['note'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName']! as String).input(),
+      confirmation: map['confirmation'] == null ? null : (map['confirmation']! as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      firstName: map['firstName'] == null ? null : (map['firstName']! as String).input(),
+      lastName: map['lastName'] == null ? null : (map['lastName']! as String).input(),
+      note: map['note'] == null ? null : (map['note']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
     );
   }
 }

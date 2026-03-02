@@ -46,11 +46,11 @@ class BackendAddressPoolAddressArgs {
 
   factory BackendAddressPoolAddressArgs.fromMap(Map<String, dynamic> map) {
     return BackendAddressPoolAddressArgs(
-      backendAddressIpConfigurationId: map['backendAddressIpConfigurationId'] == null ? null : (map['backendAddressIpConfigurationId'] as String).input(),
+      backendAddressIpConfigurationId: map['backendAddressIpConfigurationId'] == null ? null : (map['backendAddressIpConfigurationId']! as String).input(),
       backendAddressPoolId: (map['backendAddressPoolId'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId']! as String).input(),
     );
   }
 }

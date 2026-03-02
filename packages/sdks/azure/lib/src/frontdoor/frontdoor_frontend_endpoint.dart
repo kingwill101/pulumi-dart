@@ -46,11 +46,11 @@ class FrontdoorFrontendEndpoint {
   factory FrontdoorFrontendEndpoint.fromMap(Map<String, dynamic> map) {
     return FrontdoorFrontendEndpoint(
       hostName: (map['hostName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       name: (map['name'] as String).input(),
-      sessionAffinityEnabled: map['sessionAffinityEnabled'] == null ? null : (map['sessionAffinityEnabled'] as bool).input(),
-      sessionAffinityTtlSeconds: map['sessionAffinityTtlSeconds'] == null ? null : (map['sessionAffinityTtlSeconds'] as int).input(),
-      webApplicationFirewallPolicyLinkId: map['webApplicationFirewallPolicyLinkId'] == null ? null : (map['webApplicationFirewallPolicyLinkId'] as String).input(),
+      sessionAffinityEnabled: map['sessionAffinityEnabled'] == null ? null : (map['sessionAffinityEnabled']! as bool).input(),
+      sessionAffinityTtlSeconds: map['sessionAffinityTtlSeconds'] == null ? null : (map['sessionAffinityTtlSeconds']! as int).input(),
+      webApplicationFirewallPolicyLinkId: map['webApplicationFirewallPolicyLinkId'] == null ? null : (map['webApplicationFirewallPolicyLinkId']! as String).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class RuleGroupRuleStatementRateBasedStatementCustomKeyCookie {
   factory RuleGroupRuleStatementRateBasedStatementCustomKeyCookie.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatementCustomKeyCookie(
       name: (map['name'] as String).input(),
-      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementRateBasedStatementCustomKeyCookieTextTransformation>(map['textTransformations'], (value) => RuleGroupRuleStatementRateBasedStatementCustomKeyCookieTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementRateBasedStatementCustomKeyCookieTextTransformation>(map['textTransformations']!, (value) => RuleGroupRuleStatementRateBasedStatementCustomKeyCookieTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

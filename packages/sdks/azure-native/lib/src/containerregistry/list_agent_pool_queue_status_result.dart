@@ -20,7 +20,7 @@ class ListAgentPoolQueueStatusResult {
 
   factory ListAgentPoolQueueStatusResult.fromMap(Map<String, dynamic> map) {
     return ListAgentPoolQueueStatusResult(
-      count: map['count'] == null ? null : map['count'] as int,
+      count: map['count'] == null ? null : map['count']! as int,
     );
   }
 }

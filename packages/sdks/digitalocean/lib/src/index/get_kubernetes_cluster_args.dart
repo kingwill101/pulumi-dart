@@ -63,15 +63,15 @@ class GetKubernetesClusterArgs {
 
   factory GetKubernetesClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterArgs(
-      amdGpuDeviceMetricsExporterPlugin: map['amdGpuDeviceMetricsExporterPlugin'] == null ? null : (GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin.fromMap((map['amdGpuDeviceMetricsExporterPlugin'] as Map).cast<String, dynamic>())).input(),
-      amdGpuDevicePlugin: map['amdGpuDevicePlugin'] == null ? null : (GetKubernetesClusterAmdGpuDevicePlugin.fromMap((map['amdGpuDevicePlugin'] as Map).cast<String, dynamic>())).input(),
-      clusterAutoscalerConfigurations: map['clusterAutoscalerConfigurations'] == null ? null : (pulumi.Input.decodeList<GetKubernetesClusterClusterAutoscalerConfiguration>(map['clusterAutoscalerConfigurations'], (value) => GetKubernetesClusterClusterAutoscalerConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kubeconfigExpireSeconds: map['kubeconfigExpireSeconds'] == null ? null : (map['kubeconfigExpireSeconds'] as int).input(),
+      amdGpuDeviceMetricsExporterPlugin: map['amdGpuDeviceMetricsExporterPlugin'] == null ? null : (GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin.fromMap((map['amdGpuDeviceMetricsExporterPlugin']! as Map).cast<String, dynamic>())).input(),
+      amdGpuDevicePlugin: map['amdGpuDevicePlugin'] == null ? null : (GetKubernetesClusterAmdGpuDevicePlugin.fromMap((map['amdGpuDevicePlugin']! as Map).cast<String, dynamic>())).input(),
+      clusterAutoscalerConfigurations: map['clusterAutoscalerConfigurations'] == null ? null : (pulumi.Input.decodeList<GetKubernetesClusterClusterAutoscalerConfiguration>(map['clusterAutoscalerConfigurations']!, (value) => GetKubernetesClusterClusterAutoscalerConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kubeconfigExpireSeconds: map['kubeconfigExpireSeconds'] == null ? null : (map['kubeconfigExpireSeconds']! as int).input(),
       name: (map['name'] as String).input(),
-      nvidiaGpuDevicePlugin: map['nvidiaGpuDevicePlugin'] == null ? null : (GetKubernetesClusterNvidiaGpuDevicePlugin.fromMap((map['nvidiaGpuDevicePlugin'] as Map).cast<String, dynamic>())).input(),
-      rdmaSharedDevicePlugin: map['rdmaSharedDevicePlugin'] == null ? null : (GetKubernetesClusterRdmaSharedDevicePlugin.fromMap((map['rdmaSharedDevicePlugin'] as Map).cast<String, dynamic>())).input(),
-      routingAgent: map['routingAgent'] == null ? null : (GetKubernetesClusterRoutingAgent.fromMap((map['routingAgent'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      nvidiaGpuDevicePlugin: map['nvidiaGpuDevicePlugin'] == null ? null : (GetKubernetesClusterNvidiaGpuDevicePlugin.fromMap((map['nvidiaGpuDevicePlugin']! as Map).cast<String, dynamic>())).input(),
+      rdmaSharedDevicePlugin: map['rdmaSharedDevicePlugin'] == null ? null : (GetKubernetesClusterRdmaSharedDevicePlugin.fromMap((map['rdmaSharedDevicePlugin']! as Map).cast<String, dynamic>())).input(),
+      routingAgent: map['routingAgent'] == null ? null : (GetKubernetesClusterRoutingAgent.fromMap((map['routingAgent']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
     );
   }
 }

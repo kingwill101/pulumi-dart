@@ -91,19 +91,19 @@ class ForecastingSettings {
 
   factory ForecastingSettings.fromMap(Map<String, dynamic> map) {
     return ForecastingSettings(
-      countryOrRegionForHolidays: map['countryOrRegionForHolidays'] == null ? null : (map['countryOrRegionForHolidays'] as String).input(),
-      cvStepSize: map['cvStepSize'] == null ? null : (map['cvStepSize'] as int).input(),
-      featureLags: map['featureLags'] == null ? null : (map['featureLags'] as String).input(),
-      forecastHorizon: map['forecastHorizon'] == null ? null : (AutoForecastHorizon.fromMap((map['forecastHorizon'] as Map).cast<String, dynamic>())).input(),
-      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
-      seasonality: map['seasonality'] == null ? null : (AutoSeasonality.fromMap((map['seasonality'] as Map).cast<String, dynamic>())).input(),
-      shortSeriesHandlingConfig: map['shortSeriesHandlingConfig'] == null ? null : (map['shortSeriesHandlingConfig'] as String).input(),
-      targetAggregateFunction: map['targetAggregateFunction'] == null ? null : (map['targetAggregateFunction'] as String).input(),
-      targetLags: map['targetLags'] == null ? null : (AutoTargetLags.fromMap((map['targetLags'] as Map).cast<String, dynamic>())).input(),
-      targetRollingWindowSize: map['targetRollingWindowSize'] == null ? null : (AutoTargetRollingWindowSize.fromMap((map['targetRollingWindowSize'] as Map).cast<String, dynamic>())).input(),
-      timeColumnName: map['timeColumnName'] == null ? null : (map['timeColumnName'] as String).input(),
-      timeSeriesIdColumnNames: map['timeSeriesIdColumnNames'] == null ? null : ((map['timeSeriesIdColumnNames'] as List).cast<String>()).input(),
-      useStl: map['useStl'] == null ? null : (map['useStl'] as String).input(),
+      countryOrRegionForHolidays: map['countryOrRegionForHolidays'] == null ? null : (map['countryOrRegionForHolidays']! as String).input(),
+      cvStepSize: map['cvStepSize'] == null ? null : (map['cvStepSize']! as int).input(),
+      featureLags: map['featureLags'] == null ? null : (map['featureLags']! as String).input(),
+      forecastHorizon: map['forecastHorizon'] == null ? null : (AutoForecastHorizon.fromMap((map['forecastHorizon']! as Map).cast<String, dynamic>())).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency']! as String).input(),
+      seasonality: map['seasonality'] == null ? null : (AutoSeasonality.fromMap((map['seasonality']! as Map).cast<String, dynamic>())).input(),
+      shortSeriesHandlingConfig: map['shortSeriesHandlingConfig'] == null ? null : (map['shortSeriesHandlingConfig']! as String).input(),
+      targetAggregateFunction: map['targetAggregateFunction'] == null ? null : (map['targetAggregateFunction']! as String).input(),
+      targetLags: map['targetLags'] == null ? null : (AutoTargetLags.fromMap((map['targetLags']! as Map).cast<String, dynamic>())).input(),
+      targetRollingWindowSize: map['targetRollingWindowSize'] == null ? null : (AutoTargetRollingWindowSize.fromMap((map['targetRollingWindowSize']! as Map).cast<String, dynamic>())).input(),
+      timeColumnName: map['timeColumnName'] == null ? null : (map['timeColumnName']! as String).input(),
+      timeSeriesIdColumnNames: map['timeSeriesIdColumnNames'] == null ? null : ((map['timeSeriesIdColumnNames']! as List).cast<String>()).input(),
+      useStl: map['useStl'] == null ? null : (map['useStl']! as String).input(),
     );
   }
 }

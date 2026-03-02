@@ -101,22 +101,22 @@ class ReservedCacheNodeState {
 
   factory ReservedCacheNodeState.fromMap(Map<String, dynamic> map) {
     return ReservedCacheNodeState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      cacheNodeCount: map['cacheNodeCount'] == null ? null : (map['cacheNodeCount'] as int).input(),
-      cacheNodeType: map['cacheNodeType'] == null ? null : (map['cacheNodeType'] as String).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
-      fixedPrice: map['fixedPrice'] == null ? null : (map['fixedPrice'] as double).input(),
-      offeringType: map['offeringType'] == null ? null : (map['offeringType'] as String).input(),
-      productDescription: map['productDescription'] == null ? null : (map['productDescription'] as String).input(),
-      recurringCharges: map['recurringCharges'] == null ? null : (pulumi.Input.decodeList<ReservedCacheNodeRecurringCharge>(map['recurringCharges'], (value) => ReservedCacheNodeRecurringCharge.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      reservedCacheNodesOfferingId: map['reservedCacheNodesOfferingId'] == null ? null : (map['reservedCacheNodesOfferingId'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ReservedCacheNodeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      usagePrice: map['usagePrice'] == null ? null : (map['usagePrice'] as double).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      cacheNodeCount: map['cacheNodeCount'] == null ? null : ((map['cacheNodeCount'] as int).input()).input(),
+      cacheNodeType: map['cacheNodeType'] == null ? null : ((map['cacheNodeType'] as String).input()).input(),
+      duration: map['duration'] == null ? null : ((map['duration'] as String).input()).input(),
+      fixedPrice: map['fixedPrice'] == null ? null : ((map['fixedPrice'] as double).input()).input(),
+      offeringType: map['offeringType'] == null ? null : ((map['offeringType'] as String).input()).input(),
+      productDescription: map['productDescription'] == null ? null : ((map['productDescription'] as String).input()).input(),
+      recurringCharges: map['recurringCharges'] == null ? null : ((pulumi.Input.decodeList<ReservedCacheNodeRecurringCharge>(map['recurringCharges']!, (value) => ReservedCacheNodeRecurringCharge.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      reservedCacheNodesOfferingId: map['reservedCacheNodesOfferingId'] == null ? null : ((map['reservedCacheNodesOfferingId'] as String).input()).input(),
+      startTime: map['startTime'] == null ? null : ((map['startTime'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ReservedCacheNodeTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      usagePrice: map['usagePrice'] == null ? null : ((map['usagePrice'] as double).input()).input(),
     );
   }
 }

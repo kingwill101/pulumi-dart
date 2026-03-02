@@ -46,7 +46,7 @@ class BackupPolicyArgs {
     return BackupPolicyArgs(
       backupPolicyName: (map['backupPolicyName'] as String).input(),
       policy: (map['policy'] as String).input(),
-      policyRegionId: map['policyRegionId'] == null ? null : (map['policyRegionId'] as String).input(),
+      policyRegionId: map['policyRegionId'] == null ? null : (map['policyRegionId']! as String).input(),
       policyVersion: (map['policyVersion'] as String).input(),
       uuidLists: ((map['uuidLists'] as List).cast<String>()).input(),
     );

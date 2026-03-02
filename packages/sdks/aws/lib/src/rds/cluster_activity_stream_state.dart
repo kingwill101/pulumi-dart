@@ -49,12 +49,12 @@ class ClusterActivityStreamState {
 
   factory ClusterActivityStreamState.fromMap(Map<String, dynamic> map) {
     return ClusterActivityStreamState(
-      engineNativeAuditFieldsIncluded: map['engineNativeAuditFieldsIncluded'] == null ? null : (map['engineNativeAuditFieldsIncluded'] as bool).input(),
-      kinesisStreamName: map['kinesisStreamName'] == null ? null : (map['kinesisStreamName'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
+      engineNativeAuditFieldsIncluded: map['engineNativeAuditFieldsIncluded'] == null ? null : ((map['engineNativeAuditFieldsIncluded'] as bool).input()).input(),
+      kinesisStreamName: map['kinesisStreamName'] == null ? null : ((map['kinesisStreamName'] as String).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      mode: map['mode'] == null ? null : ((map['mode'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceArn: map['resourceArn'] == null ? null : ((map['resourceArn'] as String).input()).input(),
     );
   }
 }

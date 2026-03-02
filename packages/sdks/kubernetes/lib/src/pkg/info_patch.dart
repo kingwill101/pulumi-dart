@@ -74,19 +74,19 @@ class InfoPatch {
 
   factory InfoPatch.fromMap(Map<String, dynamic> map) {
     return InfoPatch(
-      buildDate: map['buildDate'] == null ? null : (map['buildDate'] as String).input(),
-      compiler: map['compiler'] == null ? null : (map['compiler'] as String).input(),
-      emulationMajor: map['emulationMajor'] == null ? null : (map['emulationMajor'] as String).input(),
-      emulationMinor: map['emulationMinor'] == null ? null : (map['emulationMinor'] as String).input(),
-      gitCommit: map['gitCommit'] == null ? null : (map['gitCommit'] as String).input(),
-      gitTreeState: map['gitTreeState'] == null ? null : (map['gitTreeState'] as String).input(),
-      gitVersion: map['gitVersion'] == null ? null : (map['gitVersion'] as String).input(),
-      goVersion: map['goVersion'] == null ? null : (map['goVersion'] as String).input(),
-      major: map['major'] == null ? null : (map['major'] as String).input(),
-      minCompatibilityMajor: map['minCompatibilityMajor'] == null ? null : (map['minCompatibilityMajor'] as String).input(),
-      minCompatibilityMinor: map['minCompatibilityMinor'] == null ? null : (map['minCompatibilityMinor'] as String).input(),
-      minor: map['minor'] == null ? null : (map['minor'] as String).input(),
-      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
+      buildDate: map['buildDate'] == null ? null : (map['buildDate']! as String).input(),
+      compiler: map['compiler'] == null ? null : (map['compiler']! as String).input(),
+      emulationMajor: map['emulationMajor'] == null ? null : (map['emulationMajor']! as String).input(),
+      emulationMinor: map['emulationMinor'] == null ? null : (map['emulationMinor']! as String).input(),
+      gitCommit: map['gitCommit'] == null ? null : (map['gitCommit']! as String).input(),
+      gitTreeState: map['gitTreeState'] == null ? null : (map['gitTreeState']! as String).input(),
+      gitVersion: map['gitVersion'] == null ? null : (map['gitVersion']! as String).input(),
+      goVersion: map['goVersion'] == null ? null : (map['goVersion']! as String).input(),
+      major: map['major'] == null ? null : (map['major']! as String).input(),
+      minCompatibilityMajor: map['minCompatibilityMajor'] == null ? null : (map['minCompatibilityMajor']! as String).input(),
+      minCompatibilityMinor: map['minCompatibilityMinor'] == null ? null : (map['minCompatibilityMinor']! as String).input(),
+      minor: map['minor'] == null ? null : (map['minor']! as String).input(),
+      platform: map['platform'] == null ? null : (map['platform']! as String).input(),
     );
   }
 }

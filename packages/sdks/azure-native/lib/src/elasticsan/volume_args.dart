@@ -56,13 +56,13 @@ class VolumeArgs {
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      creationData: map['creationData'] == null ? null : (SourceCreationData.fromMap((map['creationData'] as Map).cast<String, dynamic>())).input(),
+      creationData: map['creationData'] == null ? null : (SourceCreationData.fromMap((map['creationData']! as Map).cast<String, dynamic>())).input(),
       elasticSanName: (map['elasticSanName'] as String).input(),
-      managedBy: map['managedBy'] == null ? null : (ManagedByInfo.fromMap((map['managedBy'] as Map).cast<String, dynamic>())).input(),
+      managedBy: map['managedBy'] == null ? null : (ManagedByInfo.fromMap((map['managedBy']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sizeGiB: (map['sizeGiB'] as double).input(),
       volumeGroupName: (map['volumeGroupName'] as String).input(),
-      volumeName: map['volumeName'] == null ? null : (map['volumeName'] as String).input(),
+      volumeName: map['volumeName'] == null ? null : (map['volumeName']! as String).input(),
     );
   }
 }

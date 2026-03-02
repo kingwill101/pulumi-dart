@@ -51,12 +51,12 @@ class EndpointGlobalDeliveryRule {
 
   factory EndpointGlobalDeliveryRule.fromMap(Map<String, dynamic> map) {
     return EndpointGlobalDeliveryRule(
-      cacheExpirationAction: map['cacheExpirationAction'] == null ? null : (EndpointGlobalDeliveryRuleCacheExpirationAction.fromMap((map['cacheExpirationAction'] as Map).cast<String, dynamic>())).input(),
-      cacheKeyQueryStringAction: map['cacheKeyQueryStringAction'] == null ? null : (EndpointGlobalDeliveryRuleCacheKeyQueryStringAction.fromMap((map['cacheKeyQueryStringAction'] as Map).cast<String, dynamic>())).input(),
-      modifyRequestHeaderActions: map['modifyRequestHeaderActions'] == null ? null : (pulumi.Input.decodeList<EndpointGlobalDeliveryRuleModifyRequestHeaderAction>(map['modifyRequestHeaderActions'], (value) => EndpointGlobalDeliveryRuleModifyRequestHeaderAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      modifyResponseHeaderActions: map['modifyResponseHeaderActions'] == null ? null : (pulumi.Input.decodeList<EndpointGlobalDeliveryRuleModifyResponseHeaderAction>(map['modifyResponseHeaderActions'], (value) => EndpointGlobalDeliveryRuleModifyResponseHeaderAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      urlRedirectAction: map['urlRedirectAction'] == null ? null : (EndpointGlobalDeliveryRuleUrlRedirectAction.fromMap((map['urlRedirectAction'] as Map).cast<String, dynamic>())).input(),
-      urlRewriteAction: map['urlRewriteAction'] == null ? null : (EndpointGlobalDeliveryRuleUrlRewriteAction.fromMap((map['urlRewriteAction'] as Map).cast<String, dynamic>())).input(),
+      cacheExpirationAction: map['cacheExpirationAction'] == null ? null : (EndpointGlobalDeliveryRuleCacheExpirationAction.fromMap((map['cacheExpirationAction']! as Map).cast<String, dynamic>())).input(),
+      cacheKeyQueryStringAction: map['cacheKeyQueryStringAction'] == null ? null : (EndpointGlobalDeliveryRuleCacheKeyQueryStringAction.fromMap((map['cacheKeyQueryStringAction']! as Map).cast<String, dynamic>())).input(),
+      modifyRequestHeaderActions: map['modifyRequestHeaderActions'] == null ? null : (pulumi.Input.decodeList<EndpointGlobalDeliveryRuleModifyRequestHeaderAction>(map['modifyRequestHeaderActions']!, (value) => EndpointGlobalDeliveryRuleModifyRequestHeaderAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      modifyResponseHeaderActions: map['modifyResponseHeaderActions'] == null ? null : (pulumi.Input.decodeList<EndpointGlobalDeliveryRuleModifyResponseHeaderAction>(map['modifyResponseHeaderActions']!, (value) => EndpointGlobalDeliveryRuleModifyResponseHeaderAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      urlRedirectAction: map['urlRedirectAction'] == null ? null : (EndpointGlobalDeliveryRuleUrlRedirectAction.fromMap((map['urlRedirectAction']! as Map).cast<String, dynamic>())).input(),
+      urlRewriteAction: map['urlRewriteAction'] == null ? null : (EndpointGlobalDeliveryRuleUrlRewriteAction.fromMap((map['urlRewriteAction']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

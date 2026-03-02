@@ -42,11 +42,11 @@ class VolumeReplicationDestinationVolumeParameters {
 
   factory VolumeReplicationDestinationVolumeParameters.fromMap(Map<String, dynamic> map) {
     return VolumeReplicationDestinationVolumeParameters(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      shareName: map['shareName'] == null ? null : (map['shareName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      shareName: map['shareName'] == null ? null : (map['shareName']! as String).input(),
       storagePool: (map['storagePool'] as String).input(),
-      tieringPolicy: map['tieringPolicy'] == null ? null : (VolumeReplicationDestinationVolumeParametersTieringPolicy.fromMap((map['tieringPolicy'] as Map).cast<String, dynamic>())).input(),
-      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as String).input(),
+      tieringPolicy: map['tieringPolicy'] == null ? null : (VolumeReplicationDestinationVolumeParametersTieringPolicy.fromMap((map['tieringPolicy']! as Map).cast<String, dynamic>())).input(),
+      volumeId: map['volumeId'] == null ? null : (map['volumeId']! as String).input(),
     );
   }
 }

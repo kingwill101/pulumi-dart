@@ -49,12 +49,12 @@ class AttachmentArgs {
 
   factory AttachmentArgs.fromMap(Map<String, dynamic> map) {
     return AttachmentArgs(
-      backendServers: map['backendServers'] == null ? null : (map['backendServers'] as String).input(),
-      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : (map['deleteProtectionValidation'] as bool).input(),
+      backendServers: map['backendServers'] == null ? null : (map['backendServers']! as String).input(),
+      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : (map['deleteProtectionValidation']! as bool).input(),
       instanceIds: ((map['instanceIds'] as List).cast<String>()).input(),
       loadBalancerId: (map['loadBalancerId'] as String).input(),
-      serverType: map['serverType'] == null ? null : (map['serverType'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      serverType: map['serverType'] == null ? null : (map['serverType']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class DeviceMessagingEndpointResponse {
   factory DeviceMessagingEndpointResponse.fromMap(Map<String, dynamic> map) {
     return DeviceMessagingEndpointResponse(
       address: (map['address'] as String).input(),
-      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
     );
   }
 }

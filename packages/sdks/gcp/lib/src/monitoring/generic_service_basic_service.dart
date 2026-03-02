@@ -27,8 +27,8 @@ class GenericServiceBasicService {
 
   factory GenericServiceBasicService.fromMap(Map<String, dynamic> map) {
     return GenericServiceBasicService(
-      serviceLabels: map['serviceLabels'] == null ? null : ((map['serviceLabels'] as Map).cast<String, String>()).input(),
-      serviceType: map['serviceType'] == null ? null : (map['serviceType'] as String).input(),
+      serviceLabels: map['serviceLabels'] == null ? null : ((map['serviceLabels']! as Map).cast<String, String>()).input(),
+      serviceType: map['serviceType'] == null ? null : (map['serviceType']! as String).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class CriteriaForJob {
 
   factory CriteriaForJob.fromMap(Map<String, dynamic> map) {
     return CriteriaForJob(
-      simpleCriterion: map['simpleCriterion'] == null ? null : (SimpleCriterionForJob.fromMap((map['simpleCriterion'] as Map).cast<String, dynamic>())).input(),
-      tagCriterion: map['tagCriterion'] == null ? null : (TagCriterionForJob.fromMap((map['tagCriterion'] as Map).cast<String, dynamic>())).input(),
+      simpleCriterion: map['simpleCriterion'] == null ? null : (SimpleCriterionForJob.fromMap((map['simpleCriterion']! as Map).cast<String, dynamic>())).input(),
+      tagCriterion: map['tagCriterion'] == null ? null : (TagCriterionForJob.fromMap((map['tagCriterion']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

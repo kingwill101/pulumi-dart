@@ -47,11 +47,11 @@ class RealTimeLogDeliveryState {
 
   factory RealTimeLogDeliveryState.fromMap(Map<String, dynamic> map) {
     return RealTimeLogDeliveryState(
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      logstore: map['logstore'] == null ? null : (map['logstore'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      slsRegion: map['slsRegion'] == null ? null : (map['slsRegion'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      logstore: map['logstore'] == null ? null : (map['logstore']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      slsRegion: map['slsRegion'] == null ? null : (map['slsRegion']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

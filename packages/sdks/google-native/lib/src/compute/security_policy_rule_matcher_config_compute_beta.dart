@@ -31,9 +31,9 @@ class SecurityPolicyRuleMatcherConfigComputeBeta {
 
   factory SecurityPolicyRuleMatcherConfigComputeBeta.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleMatcherConfigComputeBeta(
-      destIpRanges: map['destIpRanges'] == null ? null : ((map['destIpRanges'] as List).cast<String>()).input(),
-      layer4Configs: map['layer4Configs'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRuleMatcherConfigLayer4ConfigComputeBeta>(map['layer4Configs'], (value) => SecurityPolicyRuleMatcherConfigLayer4ConfigComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      srcIpRanges: map['srcIpRanges'] == null ? null : ((map['srcIpRanges'] as List).cast<String>()).input(),
+      destIpRanges: map['destIpRanges'] == null ? null : ((map['destIpRanges']! as List).cast<String>()).input(),
+      layer4Configs: map['layer4Configs'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRuleMatcherConfigLayer4ConfigComputeBeta>(map['layer4Configs']!, (value) => SecurityPolicyRuleMatcherConfigLayer4ConfigComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      srcIpRanges: map['srcIpRanges'] == null ? null : ((map['srcIpRanges']! as List).cast<String>()).input(),
     );
   }
 }

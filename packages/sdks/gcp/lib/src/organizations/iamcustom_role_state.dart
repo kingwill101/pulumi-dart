@@ -58,14 +58,14 @@ class IAMCustomRoleState {
 
   factory IAMCustomRoleState.fromMap(Map<String, dynamic> map) {
     return IAMCustomRoleState(
-      deleted: map['deleted'] == null ? null : (map['deleted'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
-      permissions: map['permissions'] == null ? null : ((map['permissions'] as List).cast<String>()).input(),
-      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
-      stage: map['stage'] == null ? null : (map['stage'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      deleted: map['deleted'] == null ? null : (map['deleted']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
+      permissions: map['permissions'] == null ? null : ((map['permissions']! as List).cast<String>()).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId']! as String).input(),
+      stage: map['stage'] == null ? null : (map['stage']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

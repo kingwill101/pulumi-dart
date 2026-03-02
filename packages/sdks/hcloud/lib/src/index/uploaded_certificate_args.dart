@@ -41,8 +41,8 @@ class UploadedCertificateArgs {
   factory UploadedCertificateArgs.fromMap(Map<String, dynamic> map) {
     return UploadedCertificateArgs(
       certificate: (map['certificate'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       privateKey: (map['privateKey'] as String).input(),
     );
   }

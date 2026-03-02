@@ -34,9 +34,9 @@ class ResourceManagementPrivateLinkArgs {
 
   factory ResourceManagementPrivateLinkArgs.fromMap(Map<String, dynamic> map) {
     return ResourceManagementPrivateLinkArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      rmplName: map['rmplName'] == null ? null : (map['rmplName'] as String).input(),
+      rmplName: map['rmplName'] == null ? null : (map['rmplName']! as String).input(),
     );
   }
 }

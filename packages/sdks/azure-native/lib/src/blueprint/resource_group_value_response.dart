@@ -26,8 +26,8 @@ class ResourceGroupValueResponse {
 
   factory ResourceGroupValueResponse.fromMap(Map<String, dynamic> map) {
     return ResourceGroupValueResponse(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

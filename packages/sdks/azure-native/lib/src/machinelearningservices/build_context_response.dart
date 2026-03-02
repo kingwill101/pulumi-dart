@@ -29,7 +29,7 @@ class BuildContextResponse {
   factory BuildContextResponse.fromMap(Map<String, dynamic> map) {
     return BuildContextResponse(
       contextUri: (map['contextUri'] as String).input(),
-      dockerfilePath: map['dockerfilePath'] == null ? null : (map['dockerfilePath'] as String).input(),
+      dockerfilePath: map['dockerfilePath'] == null ? null : (map['dockerfilePath']! as String).input(),
     );
   }
 }

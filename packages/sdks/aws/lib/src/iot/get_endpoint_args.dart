@@ -29,8 +29,8 @@ class GetEndpointArgs {
 
   factory GetEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointArgs(
-      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      endpointType: map['endpointType'] == null ? null : ((map['endpointType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class SiteMonitorCustomSchedule {
 
   factory SiteMonitorCustomSchedule.fromMap(Map<String, dynamic> map) {
     return SiteMonitorCustomSchedule(
-      days: map['days'] == null ? null : ((map['days'] as List).cast<int>()).input(),
-      endHour: map['endHour'] == null ? null : (map['endHour'] as int).input(),
-      startHour: map['startHour'] == null ? null : (map['startHour'] as int).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      days: map['days'] == null ? null : ((map['days']! as List).cast<int>()).input(),
+      endHour: map['endHour'] == null ? null : (map['endHour']! as int).input(),
+      startHour: map['startHour'] == null ? null : (map['startHour']! as int).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

@@ -34,8 +34,8 @@ class GetExposureControlFeatureValueArgs {
 
   factory GetExposureControlFeatureValueArgs.fromMap(Map<String, dynamic> map) {
     return GetExposureControlFeatureValueArgs(
-      featureName: map['featureName'] == null ? null : (map['featureName'] as String).input(),
-      featureType: map['featureType'] == null ? null : (map['featureType'] as String).input(),
+      featureName: map['featureName'] == null ? null : (map['featureName']! as String).input(),
+      featureType: map['featureType'] == null ? null : (map['featureType']! as String).input(),
       locationId: (map['locationId'] as String).input(),
     );
   }

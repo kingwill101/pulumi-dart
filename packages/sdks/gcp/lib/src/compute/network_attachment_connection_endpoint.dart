@@ -45,11 +45,11 @@ class NetworkAttachmentConnectionEndpoint {
 
   factory NetworkAttachmentConnectionEndpoint.fromMap(Map<String, dynamic> map) {
     return NetworkAttachmentConnectionEndpoint(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      projectIdOrNum: map['projectIdOrNum'] == null ? null : (map['projectIdOrNum'] as String).input(),
-      secondaryIpCidrRanges: map['secondaryIpCidrRanges'] == null ? null : (map['secondaryIpCidrRanges'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      projectIdOrNum: map['projectIdOrNum'] == null ? null : (map['projectIdOrNum']! as String).input(),
+      secondaryIpCidrRanges: map['secondaryIpCidrRanges'] == null ? null : (map['secondaryIpCidrRanges']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
     );
   }
 }

@@ -50,13 +50,13 @@ class PoolMountAzureBlobFileSystem {
 
   factory PoolMountAzureBlobFileSystem.fromMap(Map<String, dynamic> map) {
     return PoolMountAzureBlobFileSystem(
-      accountKey: map['accountKey'] == null ? null : (map['accountKey'] as String).input(),
+      accountKey: map['accountKey'] == null ? null : (map['accountKey']! as String).input(),
       accountName: (map['accountName'] as String).input(),
-      blobfuseOptions: map['blobfuseOptions'] == null ? null : (map['blobfuseOptions'] as String).input(),
+      blobfuseOptions: map['blobfuseOptions'] == null ? null : (map['blobfuseOptions']! as String).input(),
       containerName: (map['containerName'] as String).input(),
-      identityId: map['identityId'] == null ? null : (map['identityId'] as String).input(),
+      identityId: map['identityId'] == null ? null : (map['identityId']! as String).input(),
       relativeMountPath: (map['relativeMountPath'] as String).input(),
-      sasKey: map['sasKey'] == null ? null : (map['sasKey'] as String).input(),
+      sasKey: map['sasKey'] == null ? null : (map['sasKey']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class ElasticSan {
 
   factory ElasticSan.fromMap(Map<String, dynamic> map) {
     return ElasticSan(
-      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
+      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
     );
   }
 }

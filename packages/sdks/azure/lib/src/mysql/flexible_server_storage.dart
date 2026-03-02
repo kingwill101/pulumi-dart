@@ -42,11 +42,11 @@ class FlexibleServerStorage {
 
   factory FlexibleServerStorage.fromMap(Map<String, dynamic> map) {
     return FlexibleServerStorage(
-      autoGrowEnabled: map['autoGrowEnabled'] == null ? null : (map['autoGrowEnabled'] as bool).input(),
-      ioScalingEnabled: map['ioScalingEnabled'] == null ? null : (map['ioScalingEnabled'] as bool).input(),
-      iops: map['iops'] == null ? null : (map['iops'] as int).input(),
-      logOnDiskEnabled: map['logOnDiskEnabled'] == null ? null : (map['logOnDiskEnabled'] as bool).input(),
-      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb'] as int).input(),
+      autoGrowEnabled: map['autoGrowEnabled'] == null ? null : (map['autoGrowEnabled']! as bool).input(),
+      ioScalingEnabled: map['ioScalingEnabled'] == null ? null : (map['ioScalingEnabled']! as bool).input(),
+      iops: map['iops'] == null ? null : (map['iops']! as int).input(),
+      logOnDiskEnabled: map['logOnDiskEnabled'] == null ? null : (map['logOnDiskEnabled']! as bool).input(),
+      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb']! as int).input(),
     );
   }
 }

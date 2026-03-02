@@ -50,10 +50,10 @@ class ApplicationArgs {
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
       accountName: (map['accountName'] as String).input(),
-      allowUpdates: map['allowUpdates'] == null ? null : (map['allowUpdates'] as bool).input(),
-      defaultVersion: map['defaultVersion'] == null ? null : (map['defaultVersion'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      allowUpdates: map['allowUpdates'] == null ? null : (map['allowUpdates']! as bool).input(),
+      defaultVersion: map['defaultVersion'] == null ? null : (map['defaultVersion']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

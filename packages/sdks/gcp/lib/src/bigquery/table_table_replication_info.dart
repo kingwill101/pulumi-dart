@@ -36,7 +36,7 @@ class TableTableReplicationInfo {
 
   factory TableTableReplicationInfo.fromMap(Map<String, dynamic> map) {
     return TableTableReplicationInfo(
-      replicationIntervalMs: map['replicationIntervalMs'] == null ? null : (map['replicationIntervalMs'] as int).input(),
+      replicationIntervalMs: map['replicationIntervalMs'] == null ? null : (map['replicationIntervalMs']! as int).input(),
       sourceDatasetId: (map['sourceDatasetId'] as String).input(),
       sourceProjectId: (map['sourceProjectId'] as String).input(),
       sourceTableId: (map['sourceTableId'] as String).input(),

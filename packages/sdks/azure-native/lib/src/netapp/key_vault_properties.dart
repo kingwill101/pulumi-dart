@@ -32,7 +32,7 @@ class KeyVaultProperties {
   factory KeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return KeyVaultProperties(
       keyName: (map['keyName'] as String).input(),
-      keyVaultResourceId: map['keyVaultResourceId'] == null ? null : (map['keyVaultResourceId'] as String).input(),
+      keyVaultResourceId: map['keyVaultResourceId'] == null ? null : (map['keyVaultResourceId']! as String).input(),
       keyVaultUri: (map['keyVaultUri'] as String).input(),
     );
   }

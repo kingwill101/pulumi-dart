@@ -39,10 +39,10 @@ class VpcServiceControlsState {
 
   factory VpcServiceControlsState.fromMap(Map<String, dynamic> map) {
     return VpcServiceControlsState(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

@@ -25,7 +25,7 @@ class LifecyclePolicyPolicyDetailsAction {
 
   factory LifecyclePolicyPolicyDetailsAction.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsAction(
-      crossRegionCopies: (pulumi.Input.decodeList<LifecyclePolicyPolicyDetailsActionCrossRegionCopy>(map['crossRegionCopies'], (value) => LifecyclePolicyPolicyDetailsActionCrossRegionCopy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      crossRegionCopies: (pulumi.Input.decodeList<LifecyclePolicyPolicyDetailsActionCrossRegionCopy>(map['crossRegionCopies']!, (value) => LifecyclePolicyPolicyDetailsActionCrossRegionCopy.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
     );
   }

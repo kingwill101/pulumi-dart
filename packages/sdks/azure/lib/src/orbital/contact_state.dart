@@ -46,12 +46,12 @@ class ContactState {
 
   factory ContactState.fromMap(Map<String, dynamic> map) {
     return ContactState(
-      contactProfileId: map['contactProfileId'] == null ? null : (map['contactProfileId'] as String).input(),
-      groundStationName: map['groundStationName'] == null ? null : (map['groundStationName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      reservationEndTime: map['reservationEndTime'] == null ? null : (map['reservationEndTime'] as String).input(),
-      reservationStartTime: map['reservationStartTime'] == null ? null : (map['reservationStartTime'] as String).input(),
-      spacecraftId: map['spacecraftId'] == null ? null : (map['spacecraftId'] as String).input(),
+      contactProfileId: map['contactProfileId'] == null ? null : (map['contactProfileId']! as String).input(),
+      groundStationName: map['groundStationName'] == null ? null : (map['groundStationName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      reservationEndTime: map['reservationEndTime'] == null ? null : (map['reservationEndTime']! as String).input(),
+      reservationStartTime: map['reservationStartTime'] == null ? null : (map['reservationStartTime']! as String).input(),
+      spacecraftId: map['spacecraftId'] == null ? null : (map['spacecraftId']! as String).input(),
     );
   }
 }

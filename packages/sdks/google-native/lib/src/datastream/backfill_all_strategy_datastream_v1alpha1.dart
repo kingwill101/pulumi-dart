@@ -28,8 +28,8 @@ class BackfillAllStrategyDatastreamV1alpha1 {
 
   factory BackfillAllStrategyDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return BackfillAllStrategyDatastreamV1alpha1(
-      mysqlExcludedObjects: map['mysqlExcludedObjects'] == null ? null : (MysqlRdbmsDatastreamV1alpha1.fromMap((map['mysqlExcludedObjects'] as Map).cast<String, dynamic>())).input(),
-      oracleExcludedObjects: map['oracleExcludedObjects'] == null ? null : (OracleRdbmsDatastreamV1alpha1.fromMap((map['oracleExcludedObjects'] as Map).cast<String, dynamic>())).input(),
+      mysqlExcludedObjects: map['mysqlExcludedObjects'] == null ? null : (MysqlRdbmsDatastreamV1alpha1.fromMap((map['mysqlExcludedObjects']! as Map).cast<String, dynamic>())).input(),
+      oracleExcludedObjects: map['oracleExcludedObjects'] == null ? null : (OracleRdbmsDatastreamV1alpha1.fromMap((map['oracleExcludedObjects']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

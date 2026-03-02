@@ -50,12 +50,12 @@ class RaiPolicyProperties {
 
   factory RaiPolicyProperties.fromMap(Map<String, dynamic> map) {
     return RaiPolicyProperties(
-      basePolicyName: map['basePolicyName'] == null ? null : (map['basePolicyName'] as String).input(),
-      contentFilters: map['contentFilters'] == null ? null : (pulumi.Input.decodeList<RaiPolicyContentFilter>(map['contentFilters'], (value) => RaiPolicyContentFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      customBlocklists: map['customBlocklists'] == null ? null : (pulumi.Input.decodeList<CustomBlocklistConfig>(map['customBlocklists'], (value) => CustomBlocklistConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      customTopics: map['customTopics'] == null ? null : (pulumi.Input.decodeList<CustomTopicConfig>(map['customTopics'], (value) => CustomTopicConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      safetyProviders: map['safetyProviders'] == null ? null : (pulumi.Input.decodeList<SafetyProviderConfig>(map['safetyProviders'], (value) => SafetyProviderConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      basePolicyName: map['basePolicyName'] == null ? null : (map['basePolicyName']! as String).input(),
+      contentFilters: map['contentFilters'] == null ? null : (pulumi.Input.decodeList<RaiPolicyContentFilter>(map['contentFilters']!, (value) => RaiPolicyContentFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customBlocklists: map['customBlocklists'] == null ? null : (pulumi.Input.decodeList<CustomBlocklistConfig>(map['customBlocklists']!, (value) => CustomBlocklistConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customTopics: map['customTopics'] == null ? null : (pulumi.Input.decodeList<CustomTopicConfig>(map['customTopics']!, (value) => CustomTopicConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      safetyProviders: map['safetyProviders'] == null ? null : (pulumi.Input.decodeList<SafetyProviderConfig>(map['safetyProviders']!, (value) => SafetyProviderConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

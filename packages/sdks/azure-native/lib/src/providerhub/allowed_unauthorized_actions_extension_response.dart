@@ -25,8 +25,8 @@ class AllowedUnauthorizedActionsExtensionResponse {
 
   factory AllowedUnauthorizedActionsExtensionResponse.fromMap(Map<String, dynamic> map) {
     return AllowedUnauthorizedActionsExtensionResponse(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      intent: map['intent'] == null ? null : (map['intent'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      intent: map['intent'] == null ? null : (map['intent']! as String).input(),
     );
   }
 }

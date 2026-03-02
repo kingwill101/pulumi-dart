@@ -90,19 +90,19 @@ class DisksMigrationVmTargetDefaults {
 
   factory DisksMigrationVmTargetDefaults.fromMap(Map<String, dynamic> map) {
     return DisksMigrationVmTargetDefaults(
-      additionalLicenses: map['additionalLicenses'] == null ? null : ((map['additionalLicenses'] as List).cast<String>()).input(),
-      bootDiskDefaults: map['bootDiskDefaults'] == null ? null : (BootDiskDefaults.fromMap((map['bootDiskDefaults'] as Map).cast<String, dynamic>())).input(),
-      computeScheduling: map['computeScheduling'] == null ? null : (ComputeScheduling.fromMap((map['computeScheduling'] as Map).cast<String, dynamic>())).input(),
-      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      additionalLicenses: map['additionalLicenses'] == null ? null : ((map['additionalLicenses']! as List).cast<String>()).input(),
+      bootDiskDefaults: map['bootDiskDefaults'] == null ? null : (BootDiskDefaults.fromMap((map['bootDiskDefaults']! as Map).cast<String, dynamic>())).input(),
+      computeScheduling: map['computeScheduling'] == null ? null : (ComputeScheduling.fromMap((map['computeScheduling']! as Map).cast<String, dynamic>())).input(),
+      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       machineType: (map['machineType'] as String).input(),
-      machineTypeSeries: map['machineTypeSeries'] == null ? null : (map['machineTypeSeries'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<NetworkInterface>(map['networkInterfaces'], (value) => NetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      networkTags: map['networkTags'] == null ? null : ((map['networkTags'] as List).cast<String>()).input(),
-      secureBoot: map['secureBoot'] == null ? null : (map['secureBoot'] as bool).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      machineTypeSeries: map['machineTypeSeries'] == null ? null : (map['machineTypeSeries']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<NetworkInterface>(map['networkInterfaces']!, (value) => NetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkTags: map['networkTags'] == null ? null : ((map['networkTags']! as List).cast<String>()).input(),
+      secureBoot: map['secureBoot'] == null ? null : (map['secureBoot']! as bool).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
       vmName: (map['vmName'] as String).input(),
     );
   }

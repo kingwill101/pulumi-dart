@@ -26,8 +26,8 @@ class AttestationEvidence {
 
   factory AttestationEvidence.fromMap(Map<String, dynamic> map) {
     return AttestationEvidence(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      sourceUrl: map['sourceUrl'] == null ? null : (map['sourceUrl'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      sourceUrl: map['sourceUrl'] == null ? null : (map['sourceUrl']! as String).input(),
     );
   }
 }

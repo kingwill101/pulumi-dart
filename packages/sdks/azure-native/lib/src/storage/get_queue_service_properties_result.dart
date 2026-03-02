@@ -42,7 +42,7 @@ class GetQueueServicePropertiesResult {
   factory GetQueueServicePropertiesResult.fromMap(Map<String, dynamic> map) {
     return GetQueueServicePropertiesResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      cors: map['cors'] == null ? null : CorsRulesResponse.fromMap((map['cors'] as Map).cast<String, dynamic>()),
+      cors: map['cors'] == null ? null : CorsRulesResponse.fromMap((map['cors']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
       type: map['type'] as String,

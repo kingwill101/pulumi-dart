@@ -90,19 +90,19 @@ class TopicArgs {
 
   factory TopicArgs.fromMap(Map<String, dynamic> map) {
     return TopicArgs(
-      dataResidencyBoundary: map['dataResidencyBoundary'] == null ? null : (map['dataResidencyBoundary'] as String).input(),
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth'] as bool).input(),
-      eventTypeInfo: map['eventTypeInfo'] == null ? null : (EventTypeInfo.fromMap((map['eventTypeInfo'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (IdentityInfo.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      inboundIpRules: map['inboundIpRules'] == null ? null : (pulumi.Input.decodeList<InboundIpRule>(map['inboundIpRules'], (value) => InboundIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inputSchema: map['inputSchema'] == null ? null : (map['inputSchema'] as String).input(),
-      inputSchemaMapping: map['inputSchemaMapping'] == null ? null : (JsonInputSchemaMapping.fromMap((map['inputSchemaMapping'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      minimumTlsVersionAllowed: map['minimumTlsVersionAllowed'] == null ? null : (map['minimumTlsVersionAllowed'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      dataResidencyBoundary: map['dataResidencyBoundary'] == null ? null : (map['dataResidencyBoundary']! as String).input(),
+      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth']! as bool).input(),
+      eventTypeInfo: map['eventTypeInfo'] == null ? null : (EventTypeInfo.fromMap((map['eventTypeInfo']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (IdentityInfo.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      inboundIpRules: map['inboundIpRules'] == null ? null : (pulumi.Input.decodeList<InboundIpRule>(map['inboundIpRules']!, (value) => InboundIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputSchema: map['inputSchema'] == null ? null : (map['inputSchema']! as String).input(),
+      inputSchemaMapping: map['inputSchemaMapping'] == null ? null : (JsonInputSchemaMapping.fromMap((map['inputSchemaMapping']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      minimumTlsVersionAllowed: map['minimumTlsVersionAllowed'] == null ? null : (map['minimumTlsVersionAllowed']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName']! as String).input(),
     );
   }
 }

@@ -57,14 +57,14 @@ class MonitorConfigState {
 
   factory MonitorConfigState.fromMap(Map<String, dynamic> map) {
     return MonitorConfigState(
-      addrPoolId: map['addrPoolId'] == null ? null : (map['addrPoolId'] as String).input(),
-      evaluationCount: map['evaluationCount'] == null ? null : (map['evaluationCount'] as int).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      ispCityNodes: map['ispCityNodes'] == null ? null : (pulumi.Input.decodeList<MonitorConfigIspCityNode>(map['ispCityNodes'], (value) => MonitorConfigIspCityNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      monitorExtendInfo: map['monitorExtendInfo'] == null ? null : (map['monitorExtendInfo'] as String).input(),
-      protocolType: map['protocolType'] == null ? null : (map['protocolType'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      addrPoolId: map['addrPoolId'] == null ? null : (map['addrPoolId']! as String).input(),
+      evaluationCount: map['evaluationCount'] == null ? null : (map['evaluationCount']! as int).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      ispCityNodes: map['ispCityNodes'] == null ? null : (pulumi.Input.decodeList<MonitorConfigIspCityNode>(map['ispCityNodes']!, (value) => MonitorConfigIspCityNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      monitorExtendInfo: map['monitorExtendInfo'] == null ? null : (map['monitorExtendInfo']! as String).input(),
+      protocolType: map['protocolType'] == null ? null : (map['protocolType']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
     );
   }
 }

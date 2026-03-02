@@ -75,13 +75,13 @@ class ExportArgs {
     return ExportArgs(
       definition: (ExportDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())).input(),
       deliveryInfo: (ExportDeliveryInfo.fromMap((map['deliveryInfo'] as Map).cast<String, dynamic>())).input(),
-      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
-      exportName: map['exportName'] == null ? null : (map['exportName'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      identity: map['identity'] == null ? null : (SystemAssignedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      partitionData: map['partitionData'] == null ? null : (map['partitionData'] as bool).input(),
-      schedule: map['schedule'] == null ? null : (ExportSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      eTag: map['eTag'] == null ? null : (map['eTag']! as String).input(),
+      exportName: map['exportName'] == null ? null : (map['exportName']! as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      identity: map['identity'] == null ? null : (SystemAssignedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      partitionData: map['partitionData'] == null ? null : (map['partitionData']! as bool).input(),
+      schedule: map['schedule'] == null ? null : (ExportSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
       scope: (map['scope'] as String).input(),
     );
   }

@@ -35,9 +35,9 @@ class Hl7StoreIamPolicyState {
 
   factory Hl7StoreIamPolicyState.fromMap(Map<String, dynamic> map) {
     return Hl7StoreIamPolicyState(
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      hl7V2StoreId: map['hl7V2StoreId'] == null ? null : (map['hl7V2StoreId'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      hl7V2StoreId: map['hl7V2StoreId'] == null ? null : (map['hl7V2StoreId']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
     );
   }
 }

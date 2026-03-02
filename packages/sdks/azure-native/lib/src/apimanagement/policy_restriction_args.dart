@@ -44,10 +44,10 @@ class PolicyRestrictionArgs {
 
   factory PolicyRestrictionArgs.fromMap(Map<String, dynamic> map) {
     return PolicyRestrictionArgs(
-      policyRestrictionId: map['policyRestrictionId'] == null ? null : (map['policyRestrictionId'] as String).input(),
-      requireBase: map['requireBase'] == null ? null : (map['requireBase'] as String).input(),
+      policyRestrictionId: map['policyRestrictionId'] == null ? null : (map['policyRestrictionId']! as String).input(),
+      requireBase: map['requireBase'] == null ? null : (map['requireBase']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );
   }

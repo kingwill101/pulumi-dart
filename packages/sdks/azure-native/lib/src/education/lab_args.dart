@@ -68,12 +68,12 @@ class LabArgs {
       billingAccountName: (map['billingAccountName'] as String).input(),
       billingProfileName: (map['billingProfileName'] as String).input(),
       budgetPerStudent: (Amount.fromMap((map['budgetPerStudent'] as Map).cast<String, dynamic>())).input(),
-      currency: map['currency'] == null ? null : (map['currency'] as String).input(),
+      currency: map['currency'] == null ? null : (map['currency']! as String).input(),
       description: (map['description'] as String).input(),
       displayName: (map['displayName'] as String).input(),
       expirationDate: (map['expirationDate'] as String).input(),
       invoiceSectionName: (map['invoiceSectionName'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as double).input(),
+      value: map['value'] == null ? null : (map['value']! as double).input(),
     );
   }
 }

@@ -32,8 +32,8 @@ class DiAlarmRuleNotificationSettingsNotificationChannel {
 
   factory DiAlarmRuleNotificationSettingsNotificationChannel.fromMap(Map<String, dynamic> map) {
     return DiAlarmRuleNotificationSettingsNotificationChannel(
-      channels: map['channels'] == null ? null : ((map['channels'] as List).cast<String>()).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
+      channels: map['channels'] == null ? null : ((map['channels']! as List).cast<String>()).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
     );
   }
 }

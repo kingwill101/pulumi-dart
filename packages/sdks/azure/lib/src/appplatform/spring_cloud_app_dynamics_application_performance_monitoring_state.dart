@@ -76,18 +76,18 @@ class SpringCloudAppDynamicsApplicationPerformanceMonitoringState {
 
   factory SpringCloudAppDynamicsApplicationPerformanceMonitoringState.fromMap(Map<String, dynamic> map) {
     return SpringCloudAppDynamicsApplicationPerformanceMonitoringState(
-      agentAccountAccessKey: map['agentAccountAccessKey'] == null ? null : (map['agentAccountAccessKey'] as String).input(),
-      agentAccountName: map['agentAccountName'] == null ? null : (map['agentAccountName'] as String).input(),
-      agentApplicationName: map['agentApplicationName'] == null ? null : (map['agentApplicationName'] as String).input(),
-      agentNodeName: map['agentNodeName'] == null ? null : (map['agentNodeName'] as String).input(),
-      agentTierName: map['agentTierName'] == null ? null : (map['agentTierName'] as String).input(),
-      agentUniqueHostId: map['agentUniqueHostId'] == null ? null : (map['agentUniqueHostId'] as String).input(),
-      controllerHostName: map['controllerHostName'] == null ? null : (map['controllerHostName'] as String).input(),
-      controllerPort: map['controllerPort'] == null ? null : (map['controllerPort'] as int).input(),
-      controllerSslEnabled: map['controllerSslEnabled'] == null ? null : (map['controllerSslEnabled'] as bool).input(),
-      globallyEnabled: map['globallyEnabled'] == null ? null : (map['globallyEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId'] as String).input(),
+      agentAccountAccessKey: map['agentAccountAccessKey'] == null ? null : (map['agentAccountAccessKey']! as String).input(),
+      agentAccountName: map['agentAccountName'] == null ? null : (map['agentAccountName']! as String).input(),
+      agentApplicationName: map['agentApplicationName'] == null ? null : (map['agentApplicationName']! as String).input(),
+      agentNodeName: map['agentNodeName'] == null ? null : (map['agentNodeName']! as String).input(),
+      agentTierName: map['agentTierName'] == null ? null : (map['agentTierName']! as String).input(),
+      agentUniqueHostId: map['agentUniqueHostId'] == null ? null : (map['agentUniqueHostId']! as String).input(),
+      controllerHostName: map['controllerHostName'] == null ? null : (map['controllerHostName']! as String).input(),
+      controllerPort: map['controllerPort'] == null ? null : (map['controllerPort']! as int).input(),
+      controllerSslEnabled: map['controllerSslEnabled'] == null ? null : (map['controllerSslEnabled']! as bool).input(),
+      globallyEnabled: map['globallyEnabled'] == null ? null : (map['globallyEnabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId']! as String).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class HttpRouteRouteRuleNetworkservicesV1beta1 {
 
   factory HttpRouteRouteRuleNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpRouteRouteRuleNetworkservicesV1beta1(
-      action: map['action'] == null ? null : (HttpRouteRouteActionNetworkservicesV1beta1.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      matches: map['matches'] == null ? null : (pulumi.Input.decodeList<HttpRouteRouteMatchNetworkservicesV1beta1>(map['matches'], (value) => HttpRouteRouteMatchNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      action: map['action'] == null ? null : (HttpRouteRouteActionNetworkservicesV1beta1.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      matches: map['matches'] == null ? null : (pulumi.Input.decodeList<HttpRouteRouteMatchNetworkservicesV1beta1>(map['matches']!, (value) => HttpRouteRouteMatchNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

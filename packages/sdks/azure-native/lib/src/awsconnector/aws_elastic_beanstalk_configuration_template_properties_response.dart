@@ -58,14 +58,14 @@ class AwsElasticBeanstalkConfigurationTemplatePropertiesResponse {
 
   factory AwsElasticBeanstalkConfigurationTemplatePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsElasticBeanstalkConfigurationTemplatePropertiesResponse(
-      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
-      optionSettings: map['optionSettings'] == null ? null : (pulumi.Input.decodeList<ConfigurationOptionSettingResponse>(map['optionSettings'], (value) => ConfigurationOptionSettingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      platformArn: map['platformArn'] == null ? null : (map['platformArn'] as String).input(),
-      solutionStackName: map['solutionStackName'] == null ? null : (map['solutionStackName'] as String).input(),
-      sourceConfiguration: map['sourceConfiguration'] == null ? null : (SourceConfigurationResponse.fromMap((map['sourceConfiguration'] as Map).cast<String, dynamic>())).input(),
-      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId']! as String).input(),
+      optionSettings: map['optionSettings'] == null ? null : (pulumi.Input.decodeList<ConfigurationOptionSettingResponse>(map['optionSettings']!, (value) => ConfigurationOptionSettingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      platformArn: map['platformArn'] == null ? null : (map['platformArn']! as String).input(),
+      solutionStackName: map['solutionStackName'] == null ? null : (map['solutionStackName']! as String).input(),
+      sourceConfiguration: map['sourceConfiguration'] == null ? null : (SourceConfigurationResponse.fromMap((map['sourceConfiguration']! as Map).cast<String, dynamic>())).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName']! as String).input(),
     );
   }
 }

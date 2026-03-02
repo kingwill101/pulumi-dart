@@ -82,16 +82,16 @@ class SmbAclAttachmentState {
 
   factory SmbAclAttachmentState.fromMap(Map<String, dynamic> map) {
     return SmbAclAttachmentState(
-      authMethod: map['authMethod'] == null ? null : (map['authMethod'] as String).input(),
-      enableAnonymousAccess: map['enableAnonymousAccess'] == null ? null : (map['enableAnonymousAccess'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as String).input(),
-      encryptData: map['encryptData'] == null ? null : (map['encryptData'] as bool).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      homeDirPath: map['homeDirPath'] == null ? null : (map['homeDirPath'] as String).input(),
-      keytab: map['keytab'] == null ? null : (map['keytab'] as String).input(),
-      keytabMd5: map['keytabMd5'] == null ? null : (map['keytabMd5'] as String).input(),
-      rejectUnencryptedAccess: map['rejectUnencryptedAccess'] == null ? null : (map['rejectUnencryptedAccess'] as bool).input(),
-      superAdminSid: map['superAdminSid'] == null ? null : (map['superAdminSid'] as String).input(),
+      authMethod: map['authMethod'] == null ? null : (map['authMethod']! as String).input(),
+      enableAnonymousAccess: map['enableAnonymousAccess'] == null ? null : (map['enableAnonymousAccess']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as String).input(),
+      encryptData: map['encryptData'] == null ? null : (map['encryptData']! as bool).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId']! as String).input(),
+      homeDirPath: map['homeDirPath'] == null ? null : (map['homeDirPath']! as String).input(),
+      keytab: map['keytab'] == null ? null : (map['keytab']! as String).input(),
+      keytabMd5: map['keytabMd5'] == null ? null : (map['keytabMd5']! as String).input(),
+      rejectUnencryptedAccess: map['rejectUnencryptedAccess'] == null ? null : (map['rejectUnencryptedAccess']! as bool).input(),
+      superAdminSid: map['superAdminSid'] == null ? null : (map['superAdminSid']! as String).input(),
     );
   }
 }

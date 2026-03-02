@@ -91,19 +91,19 @@ class AppHostingDomainState {
 
   factory AppHostingDomainState.fromMap(Map<String, dynamic> map) {
     return AppHostingDomainState(
-      backend: map['backend'] == null ? null : (map['backend'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      customDomainStatuses: map['customDomainStatuses'] == null ? null : (pulumi.Input.decodeList<AppHostingDomainCustomDomainStatus>(map['customDomainStatuses'], (value) => AppHostingDomainCustomDomainStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime'] as String).input(),
-      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      purgeTime: map['purgeTime'] == null ? null : (map['purgeTime'] as String).input(),
-      serve: map['serve'] == null ? null : (AppHostingDomainServe.fromMap((map['serve'] as Map).cast<String, dynamic>())).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      backend: map['backend'] == null ? null : (map['backend']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      customDomainStatuses: map['customDomainStatuses'] == null ? null : (pulumi.Input.decodeList<AppHostingDomainCustomDomainStatus>(map['customDomainStatuses']!, (value) => AppHostingDomainCustomDomainStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime']! as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      purgeTime: map['purgeTime'] == null ? null : (map['purgeTime']! as String).input(),
+      serve: map['serve'] == null ? null : (AppHostingDomainServe.fromMap((map['serve']! as Map).cast<String, dynamic>())).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

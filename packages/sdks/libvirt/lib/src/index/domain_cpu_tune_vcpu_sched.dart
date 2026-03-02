@@ -30,8 +30,8 @@ class DomainCpuTuneVcpuSched {
 
   factory DomainCpuTuneVcpuSched.fromMap(Map<String, dynamic> map) {
     return DomainCpuTuneVcpuSched(
-      priority: map['priority'] == null ? null : (map['priority'] as double).input(),
-      scheduler: map['scheduler'] == null ? null : (map['scheduler'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as double).input(),
+      scheduler: map['scheduler'] == null ? null : (map['scheduler']! as String).input(),
       vcpus: (map['vcpus'] as String).input(),
     );
   }

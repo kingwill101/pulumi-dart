@@ -51,12 +51,12 @@ class NetworkFunctionArgs {
 
   factory NetworkFunctionArgs.fromMap(Map<String, dynamic> map) {
     return NetworkFunctionArgs(
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      networkFunctionName: map['networkFunctionName'] == null ? null : (map['networkFunctionName'] as String).input(),
-      properties: map['properties'] == null ? null : (NetworkFunctionValueWithSecrets.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      networkFunctionName: map['networkFunctionName'] == null ? null : (map['networkFunctionName']! as String).input(),
+      properties: map['properties'] == null ? null : (NetworkFunctionValueWithSecrets.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

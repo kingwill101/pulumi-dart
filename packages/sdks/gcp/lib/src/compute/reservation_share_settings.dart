@@ -33,9 +33,9 @@ class ReservationShareSettings {
 
   factory ReservationShareSettings.fromMap(Map<String, dynamic> map) {
     return ReservationShareSettings(
-      projectMaps: map['projectMaps'] == null ? null : (pulumi.Input.decodeList<ReservationShareSettingsProjectMap>(map['projectMaps'], (value) => ReservationShareSettingsProjectMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      projects: map['projects'] == null ? null : ((map['projects'] as List).cast<String>()).input(),
-      shareType: map['shareType'] == null ? null : (map['shareType'] as String).input(),
+      projectMaps: map['projectMaps'] == null ? null : (pulumi.Input.decodeList<ReservationShareSettingsProjectMap>(map['projectMaps']!, (value) => ReservationShareSettingsProjectMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      projects: map['projects'] == null ? null : ((map['projects']! as List).cast<String>()).input(),
+      shareType: map['shareType'] == null ? null : (map['shareType']! as String).input(),
     );
   }
 }

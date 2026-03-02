@@ -21,7 +21,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
   factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfig.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfig(
-      partToExtract: map['partToExtract'] == null ? null : (map['partToExtract'] as String).input(),
+      partToExtract: map['partToExtract'] == null ? null : (map['partToExtract']! as String).input(),
     );
   }
 }

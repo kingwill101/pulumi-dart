@@ -27,7 +27,7 @@ class JobHttpTargetOauthToken {
 
   factory JobHttpTargetOauthToken.fromMap(Map<String, dynamic> map) {
     return JobHttpTargetOauthToken(
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
       serviceAccountEmail: (map['serviceAccountEmail'] as String).input(),
     );
   }

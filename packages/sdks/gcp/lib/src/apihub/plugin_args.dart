@@ -94,16 +94,16 @@ class PluginArgs {
 
   factory PluginArgs.fromMap(Map<String, dynamic> map) {
     return PluginArgs(
-      actionsConfigs: map['actionsConfigs'] == null ? null : (pulumi.Input.decodeList<PluginActionsConfig>(map['actionsConfigs'], (value) => PluginActionsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      configTemplate: map['configTemplate'] == null ? null : (PluginConfigTemplate.fromMap((map['configTemplate'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      actionsConfigs: map['actionsConfigs'] == null ? null : (pulumi.Input.decodeList<PluginActionsConfig>(map['actionsConfigs']!, (value) => PluginActionsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configTemplate: map['configTemplate'] == null ? null : (PluginConfigTemplate.fromMap((map['configTemplate']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      documentation: map['documentation'] == null ? null : (PluginDocumentation.fromMap((map['documentation'] as Map).cast<String, dynamic>())).input(),
-      hostingService: map['hostingService'] == null ? null : (PluginHostingService.fromMap((map['hostingService'] as Map).cast<String, dynamic>())).input(),
+      documentation: map['documentation'] == null ? null : (PluginDocumentation.fromMap((map['documentation']! as Map).cast<String, dynamic>())).input(),
+      hostingService: map['hostingService'] == null ? null : (PluginHostingService.fromMap((map['hostingService']! as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
-      pluginCategory: map['pluginCategory'] == null ? null : (map['pluginCategory'] as String).input(),
+      pluginCategory: map['pluginCategory'] == null ? null : (map['pluginCategory']! as String).input(),
       pluginId: (map['pluginId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

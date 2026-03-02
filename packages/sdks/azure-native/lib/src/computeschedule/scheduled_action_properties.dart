@@ -54,8 +54,8 @@ class ScheduledActionProperties {
   factory ScheduledActionProperties.fromMap(Map<String, dynamic> map) {
     return ScheduledActionProperties(
       actionType: (map['actionType'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
       notificationSettings: (pulumi.Input.decodeList<NotificationProperties>(map['notificationSettings'], (value) => NotificationProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceType: (map['resourceType'] as String).input(),
       schedule: (ScheduledActionsSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),

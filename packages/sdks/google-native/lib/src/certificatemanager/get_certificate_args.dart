@@ -33,7 +33,7 @@ class GetCertificateArgs {
     return GetCertificateArgs(
       certificateId: (map['certificateId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

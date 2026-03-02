@@ -31,9 +31,9 @@ class HPAScalingPolicyPatch {
 
   factory HPAScalingPolicyPatch.fromMap(Map<String, dynamic> map) {
     return HPAScalingPolicyPatch(
-      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as int).input(),
+      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as int).input(),
     );
   }
 }

@@ -60,14 +60,14 @@ class ReplicationRecoveryPlanState {
 
   factory ReplicationRecoveryPlanState.fromMap(Map<String, dynamic> map) {
     return ReplicationRecoveryPlanState(
-      azureToAzureSettings: map['azureToAzureSettings'] == null ? null : (ReplicationRecoveryPlanAzureToAzureSettings.fromMap((map['azureToAzureSettings'] as Map).cast<String, dynamic>())).input(),
-      bootRecoveryGroups: map['bootRecoveryGroups'] == null ? null : (pulumi.Input.decodeList<ReplicationRecoveryPlanBootRecoveryGroup>(map['bootRecoveryGroups'], (value) => ReplicationRecoveryPlanBootRecoveryGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      failoverRecoveryGroup: map['failoverRecoveryGroup'] == null ? null : (ReplicationRecoveryPlanFailoverRecoveryGroup.fromMap((map['failoverRecoveryGroup'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recoveryVaultId: map['recoveryVaultId'] == null ? null : (map['recoveryVaultId'] as String).input(),
-      shutdownRecoveryGroup: map['shutdownRecoveryGroup'] == null ? null : (ReplicationRecoveryPlanShutdownRecoveryGroup.fromMap((map['shutdownRecoveryGroup'] as Map).cast<String, dynamic>())).input(),
-      sourceRecoveryFabricId: map['sourceRecoveryFabricId'] == null ? null : (map['sourceRecoveryFabricId'] as String).input(),
-      targetRecoveryFabricId: map['targetRecoveryFabricId'] == null ? null : (map['targetRecoveryFabricId'] as String).input(),
+      azureToAzureSettings: map['azureToAzureSettings'] == null ? null : (ReplicationRecoveryPlanAzureToAzureSettings.fromMap((map['azureToAzureSettings']! as Map).cast<String, dynamic>())).input(),
+      bootRecoveryGroups: map['bootRecoveryGroups'] == null ? null : (pulumi.Input.decodeList<ReplicationRecoveryPlanBootRecoveryGroup>(map['bootRecoveryGroups']!, (value) => ReplicationRecoveryPlanBootRecoveryGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      failoverRecoveryGroup: map['failoverRecoveryGroup'] == null ? null : (ReplicationRecoveryPlanFailoverRecoveryGroup.fromMap((map['failoverRecoveryGroup']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      recoveryVaultId: map['recoveryVaultId'] == null ? null : (map['recoveryVaultId']! as String).input(),
+      shutdownRecoveryGroup: map['shutdownRecoveryGroup'] == null ? null : (ReplicationRecoveryPlanShutdownRecoveryGroup.fromMap((map['shutdownRecoveryGroup']! as Map).cast<String, dynamic>())).input(),
+      sourceRecoveryFabricId: map['sourceRecoveryFabricId'] == null ? null : (map['sourceRecoveryFabricId']! as String).input(),
+      targetRecoveryFabricId: map['targetRecoveryFabricId'] == null ? null : (map['targetRecoveryFabricId']! as String).input(),
     );
   }
 }

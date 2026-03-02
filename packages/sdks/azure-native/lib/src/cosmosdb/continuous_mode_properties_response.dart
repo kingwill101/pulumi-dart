@@ -21,7 +21,7 @@ class ContinuousModePropertiesResponse {
 
   factory ContinuousModePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ContinuousModePropertiesResponse(
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

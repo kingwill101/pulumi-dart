@@ -71,17 +71,17 @@ class ProfileState {
 
   factory ProfileState.fromMap(Map<String, dynamic> map) {
     return ProfileState(
-      acceptRoleSessionName: map['acceptRoleSessionName'] == null ? null : (map['acceptRoleSessionName'] as bool).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      durationSeconds: map['durationSeconds'] == null ? null : (map['durationSeconds'] as int).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      managedPolicyArns: map['managedPolicyArns'] == null ? null : ((map['managedPolicyArns'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      requireInstanceProperties: map['requireInstanceProperties'] == null ? null : (map['requireInstanceProperties'] as bool).input(),
-      roleArns: map['roleArns'] == null ? null : ((map['roleArns'] as List).cast<String>()).input(),
-      sessionPolicy: map['sessionPolicy'] == null ? null : (map['sessionPolicy'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      acceptRoleSessionName: map['acceptRoleSessionName'] == null ? null : ((map['acceptRoleSessionName'] as bool).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      durationSeconds: map['durationSeconds'] == null ? null : ((map['durationSeconds'] as int).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      managedPolicyArns: map['managedPolicyArns'] == null ? null : (((map['managedPolicyArns'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      requireInstanceProperties: map['requireInstanceProperties'] == null ? null : ((map['requireInstanceProperties'] as bool).input()).input(),
+      roleArns: map['roleArns'] == null ? null : (((map['roleArns'] as List).cast<String>()).input()).input(),
+      sessionPolicy: map['sessionPolicy'] == null ? null : ((map['sessionPolicy'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

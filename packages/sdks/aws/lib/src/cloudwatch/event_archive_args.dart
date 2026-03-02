@@ -54,13 +54,13 @@ class EventArchiveArgs {
 
   factory EventArchiveArgs.fromMap(Map<String, dynamic> map) {
     return EventArchiveArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      eventPattern: map['eventPattern'] == null ? null : (map['eventPattern'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      eventPattern: map['eventPattern'] == null ? null : ((map['eventPattern'] as String).input()).input(),
       eventSourceArn: (map['eventSourceArn'] as String).input(),
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : (map['kmsKeyIdentifier'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : ((map['kmsKeyIdentifier'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      retentionDays: map['retentionDays'] == null ? null : ((map['retentionDays'] as int).input()).input(),
     );
   }
 }

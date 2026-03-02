@@ -44,7 +44,7 @@ class EventHubAuthorizationRuleArgs {
 
   factory EventHubAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return EventHubAuthorizationRuleArgs(
-      authorizationRuleName: map['authorizationRuleName'] == null ? null : (map['authorizationRuleName'] as String).input(),
+      authorizationRuleName: map['authorizationRuleName'] == null ? null : (map['authorizationRuleName']! as String).input(),
       eventHubName: (map['eventHubName'] as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

@@ -86,19 +86,19 @@ class FlowArgs {
 
   factory FlowArgs.fromMap(Map<String, dynamic> map) {
     return FlowArgs(
-      advancedSettings: map['advancedSettings'] == null ? null : (GoogleCloudDialogflowCxV3AdvancedSettings.fromMap((map['advancedSettings'] as Map).cast<String, dynamic>())).input(),
+      advancedSettings: map['advancedSettings'] == null ? null : (GoogleCloudDialogflowCxV3AdvancedSettings.fromMap((map['advancedSettings']! as Map).cast<String, dynamic>())).input(),
       agentId: (map['agentId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      eventHandlers: map['eventHandlers'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3EventHandler>(map['eventHandlers'], (value) => GoogleCloudDialogflowCxV3EventHandler.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      knowledgeConnectorSettings: map['knowledgeConnectorSettings'] == null ? null : (GoogleCloudDialogflowCxV3KnowledgeConnectorSettings.fromMap((map['knowledgeConnectorSettings'] as Map).cast<String, dynamic>())).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nluSettings: map['nluSettings'] == null ? null : (GoogleCloudDialogflowCxV3NluSettings.fromMap((map['nluSettings'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      transitionRouteGroups: map['transitionRouteGroups'] == null ? null : ((map['transitionRouteGroups'] as List).cast<String>()).input(),
-      transitionRoutes: map['transitionRoutes'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3TransitionRoute>(map['transitionRoutes'], (value) => GoogleCloudDialogflowCxV3TransitionRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eventHandlers: map['eventHandlers'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3EventHandler>(map['eventHandlers']!, (value) => GoogleCloudDialogflowCxV3EventHandler.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      knowledgeConnectorSettings: map['knowledgeConnectorSettings'] == null ? null : (GoogleCloudDialogflowCxV3KnowledgeConnectorSettings.fromMap((map['knowledgeConnectorSettings']! as Map).cast<String, dynamic>())).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nluSettings: map['nluSettings'] == null ? null : (GoogleCloudDialogflowCxV3NluSettings.fromMap((map['nluSettings']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      transitionRouteGroups: map['transitionRouteGroups'] == null ? null : ((map['transitionRouteGroups']! as List).cast<String>()).input(),
+      transitionRoutes: map['transitionRoutes'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3TransitionRoute>(map['transitionRoutes']!, (value) => GoogleCloudDialogflowCxV3TransitionRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

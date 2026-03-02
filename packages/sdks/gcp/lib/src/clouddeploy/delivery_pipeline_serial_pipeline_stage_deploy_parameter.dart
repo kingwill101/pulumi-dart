@@ -25,7 +25,7 @@ class DeliveryPipelineSerialPipelineStageDeployParameter {
 
   factory DeliveryPipelineSerialPipelineStageDeployParameter.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineSerialPipelineStageDeployParameter(
-      matchTargetLabels: map['matchTargetLabels'] == null ? null : ((map['matchTargetLabels'] as Map).cast<String, String>()).input(),
+      matchTargetLabels: map['matchTargetLabels'] == null ? null : ((map['matchTargetLabels']! as Map).cast<String, String>()).input(),
       values: ((map['values'] as Map).cast<String, String>()).input(),
     );
   }

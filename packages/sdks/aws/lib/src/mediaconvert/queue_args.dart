@@ -60,14 +60,14 @@ class QueueArgs {
 
   factory QueueArgs.fromMap(Map<String, dynamic> map) {
     return QueueArgs(
-      concurrentJobs: map['concurrentJobs'] == null ? null : (map['concurrentJobs'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pricingPlan: map['pricingPlan'] == null ? null : (map['pricingPlan'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      reservationPlanSettings: map['reservationPlanSettings'] == null ? null : (QueueReservationPlanSettings.fromMap((map['reservationPlanSettings'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      concurrentJobs: map['concurrentJobs'] == null ? null : ((map['concurrentJobs'] as int).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      pricingPlan: map['pricingPlan'] == null ? null : ((map['pricingPlan'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      reservationPlanSettings: map['reservationPlanSettings'] == null ? null : ((QueueReservationPlanSettings.fromMap((map['reservationPlanSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

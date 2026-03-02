@@ -81,15 +81,15 @@ class SpringCloudAppDynamicsApplicationPerformanceMonitoringArgs {
     return SpringCloudAppDynamicsApplicationPerformanceMonitoringArgs(
       agentAccountAccessKey: (map['agentAccountAccessKey'] as String).input(),
       agentAccountName: (map['agentAccountName'] as String).input(),
-      agentApplicationName: map['agentApplicationName'] == null ? null : (map['agentApplicationName'] as String).input(),
-      agentNodeName: map['agentNodeName'] == null ? null : (map['agentNodeName'] as String).input(),
-      agentTierName: map['agentTierName'] == null ? null : (map['agentTierName'] as String).input(),
-      agentUniqueHostId: map['agentUniqueHostId'] == null ? null : (map['agentUniqueHostId'] as String).input(),
+      agentApplicationName: map['agentApplicationName'] == null ? null : (map['agentApplicationName']! as String).input(),
+      agentNodeName: map['agentNodeName'] == null ? null : (map['agentNodeName']! as String).input(),
+      agentTierName: map['agentTierName'] == null ? null : (map['agentTierName']! as String).input(),
+      agentUniqueHostId: map['agentUniqueHostId'] == null ? null : (map['agentUniqueHostId']! as String).input(),
       controllerHostName: (map['controllerHostName'] as String).input(),
-      controllerPort: map['controllerPort'] == null ? null : (map['controllerPort'] as int).input(),
-      controllerSslEnabled: map['controllerSslEnabled'] == null ? null : (map['controllerSslEnabled'] as bool).input(),
-      globallyEnabled: map['globallyEnabled'] == null ? null : (map['globallyEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      controllerPort: map['controllerPort'] == null ? null : (map['controllerPort']! as int).input(),
+      controllerSslEnabled: map['controllerSslEnabled'] == null ? null : (map['controllerSslEnabled']! as bool).input(),
+      globallyEnabled: map['globallyEnabled'] == null ? null : (map['globallyEnabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       springCloudServiceId: (map['springCloudServiceId'] as String).input(),
     );
   }

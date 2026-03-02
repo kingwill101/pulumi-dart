@@ -37,7 +37,7 @@ class RouteTableRoute {
     return RouteTableRoute(
       addressPrefix: (map['addressPrefix'] as String).input(),
       name: (map['name'] as String).input(),
-      nextHopInIpAddress: map['nextHopInIpAddress'] == null ? null : (map['nextHopInIpAddress'] as String).input(),
+      nextHopInIpAddress: map['nextHopInIpAddress'] == null ? null : (map['nextHopInIpAddress']! as String).input(),
       nextHopType: (map['nextHopType'] as String).input(),
     );
   }

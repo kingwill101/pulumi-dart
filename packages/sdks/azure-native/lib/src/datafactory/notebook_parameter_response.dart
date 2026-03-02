@@ -26,8 +26,8 @@ class NotebookParameterResponse {
 
   factory NotebookParameterResponse.fromMap(Map<String, dynamic> map) {
     return NotebookParameterResponse(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value']).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']!).input(),
     );
   }
 }

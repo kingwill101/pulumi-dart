@@ -64,15 +64,15 @@ class GoogleCloudIntegrationsV1alphaIntegrationAlertConfig {
 
   factory GoogleCloudIntegrationsV1alphaIntegrationAlertConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaIntegrationAlertConfig(
-      aggregationPeriod: map['aggregationPeriod'] == null ? null : (map['aggregationPeriod'] as String).input(),
-      alertThreshold: map['alertThreshold'] == null ? null : (map['alertThreshold'] as int).input(),
-      disableAlert: map['disableAlert'] == null ? null : (map['disableAlert'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      durationThreshold: map['durationThreshold'] == null ? null : (map['durationThreshold'] as String).input(),
-      metricType: map['metricType'] == null ? null : (GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType.fromValue(map['metricType'] as String)).input(),
-      onlyFinalAttempt: map['onlyFinalAttempt'] == null ? null : (map['onlyFinalAttempt'] as bool).input(),
-      thresholdType: map['thresholdType'] == null ? null : (GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdType.fromValue(map['thresholdType'] as String)).input(),
-      thresholdValue: map['thresholdValue'] == null ? null : (GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue.fromMap((map['thresholdValue'] as Map).cast<String, dynamic>())).input(),
+      aggregationPeriod: map['aggregationPeriod'] == null ? null : (map['aggregationPeriod']! as String).input(),
+      alertThreshold: map['alertThreshold'] == null ? null : (map['alertThreshold']! as int).input(),
+      disableAlert: map['disableAlert'] == null ? null : (map['disableAlert']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      durationThreshold: map['durationThreshold'] == null ? null : (map['durationThreshold']! as String).input(),
+      metricType: map['metricType'] == null ? null : (GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType.fromValue(map['metricType']! as String)).input(),
+      onlyFinalAttempt: map['onlyFinalAttempt'] == null ? null : (map['onlyFinalAttempt']! as bool).input(),
+      thresholdType: map['thresholdType'] == null ? null : (GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdType.fromValue(map['thresholdType']! as String)).input(),
+      thresholdValue: map['thresholdValue'] == null ? null : (GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue.fromMap((map['thresholdValue']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

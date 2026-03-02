@@ -22,7 +22,7 @@ class OriginGroupFailoverCriteriaResponse {
 
   factory OriginGroupFailoverCriteriaResponse.fromMap(Map<String, dynamic> map) {
     return OriginGroupFailoverCriteriaResponse(
-      statusCodes: map['statusCodes'] == null ? null : (StatusCodesResponse.fromMap((map['statusCodes'] as Map).cast<String, dynamic>())).input(),
+      statusCodes: map['statusCodes'] == null ? null : (StatusCodesResponse.fromMap((map['statusCodes']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

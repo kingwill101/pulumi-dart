@@ -31,9 +31,9 @@ class Artifact {
 
   factory Artifact.fromMap(Map<String, dynamic> map) {
     return Artifact(
-      checksum: map['checksum'] == null ? null : (map['checksum'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      names: map['names'] == null ? null : ((map['names'] as List).cast<String>()).input(),
+      checksum: map['checksum'] == null ? null : (map['checksum']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      names: map['names'] == null ? null : ((map['names']! as List).cast<String>()).input(),
     );
   }
 }

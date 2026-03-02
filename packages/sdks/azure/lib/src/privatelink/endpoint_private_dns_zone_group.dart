@@ -30,7 +30,7 @@ class EndpointPrivateDnsZoneGroup {
 
   factory EndpointPrivateDnsZoneGroup.fromMap(Map<String, dynamic> map) {
     return EndpointPrivateDnsZoneGroup(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       name: (map['name'] as String).input(),
       privateDnsZoneIds: ((map['privateDnsZoneIds'] as List).cast<String>()).input(),
     );

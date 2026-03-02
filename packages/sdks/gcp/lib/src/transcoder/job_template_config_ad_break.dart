@@ -20,7 +20,7 @@ class JobTemplateConfigAdBreak {
 
   factory JobTemplateConfigAdBreak.fromMap(Map<String, dynamic> map) {
     return JobTemplateConfigAdBreak(
-      startTimeOffset: map['startTimeOffset'] == null ? null : (map['startTimeOffset'] as String).input(),
+      startTimeOffset: map['startTimeOffset'] == null ? null : (map['startTimeOffset']! as String).input(),
     );
   }
 }

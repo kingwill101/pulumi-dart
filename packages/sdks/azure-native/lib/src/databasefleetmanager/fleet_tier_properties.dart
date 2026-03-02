@@ -71,17 +71,17 @@ class FleetTierProperties {
 
   factory FleetTierProperties.fromMap(Map<String, dynamic> map) {
     return FleetTierProperties(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
-      databaseCapacityMax: map['databaseCapacityMax'] == null ? null : (map['databaseCapacityMax'] as double).input(),
-      databaseCapacityMin: map['databaseCapacityMin'] == null ? null : (map['databaseCapacityMin'] as double).input(),
-      databaseSizeGbMax: map['databaseSizeGbMax'] == null ? null : (map['databaseSizeGbMax'] as int).input(),
-      family: map['family'] == null ? null : (map['family'] as String).input(),
-      highAvailabilityReplicaCount: map['highAvailabilityReplicaCount'] == null ? null : (map['highAvailabilityReplicaCount'] as int).input(),
-      poolNumOfDatabasesMax: map['poolNumOfDatabasesMax'] == null ? null : (map['poolNumOfDatabasesMax'] as int).input(),
-      pooled: map['pooled'] == null ? null : (map['pooled'] as bool).input(),
-      serverless: map['serverless'] == null ? null : (map['serverless'] as bool).input(),
-      serviceTier: map['serviceTier'] == null ? null : (map['serviceTier'] as String).input(),
-      zoneRedundancy: map['zoneRedundancy'] == null ? null : (map['zoneRedundancy'] as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
+      databaseCapacityMax: map['databaseCapacityMax'] == null ? null : (map['databaseCapacityMax']! as double).input(),
+      databaseCapacityMin: map['databaseCapacityMin'] == null ? null : (map['databaseCapacityMin']! as double).input(),
+      databaseSizeGbMax: map['databaseSizeGbMax'] == null ? null : (map['databaseSizeGbMax']! as int).input(),
+      family: map['family'] == null ? null : (map['family']! as String).input(),
+      highAvailabilityReplicaCount: map['highAvailabilityReplicaCount'] == null ? null : (map['highAvailabilityReplicaCount']! as int).input(),
+      poolNumOfDatabasesMax: map['poolNumOfDatabasesMax'] == null ? null : (map['poolNumOfDatabasesMax']! as int).input(),
+      pooled: map['pooled'] == null ? null : (map['pooled']! as bool).input(),
+      serverless: map['serverless'] == null ? null : (map['serverless']! as bool).input(),
+      serviceTier: map['serviceTier'] == null ? null : (map['serviceTier']! as String).input(),
+      zoneRedundancy: map['zoneRedundancy'] == null ? null : (map['zoneRedundancy']! as String).input(),
     );
   }
 }

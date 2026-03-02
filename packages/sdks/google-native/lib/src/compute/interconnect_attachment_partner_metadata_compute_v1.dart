@@ -31,9 +31,9 @@ class InterconnectAttachmentPartnerMetadataComputeV1 {
 
   factory InterconnectAttachmentPartnerMetadataComputeV1.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentPartnerMetadataComputeV1(
-      interconnectName: map['interconnectName'] == null ? null : (map['interconnectName'] as String).input(),
-      partnerName: map['partnerName'] == null ? null : (map['partnerName'] as String).input(),
-      portalUrl: map['portalUrl'] == null ? null : (map['portalUrl'] as String).input(),
+      interconnectName: map['interconnectName'] == null ? null : (map['interconnectName']! as String).input(),
+      partnerName: map['partnerName'] == null ? null : (map['partnerName']! as String).input(),
+      portalUrl: map['portalUrl'] == null ? null : (map['portalUrl']! as String).input(),
     );
   }
 }

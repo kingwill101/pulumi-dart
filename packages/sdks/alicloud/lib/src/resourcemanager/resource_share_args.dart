@@ -70,14 +70,14 @@ class ResourceShareArgs {
 
   factory ResourceShareArgs.fromMap(Map<String, dynamic> map) {
     return ResourceShareArgs(
-      allowExternalTargets: map['allowExternalTargets'] == null ? null : (map['allowExternalTargets'] as bool).input(),
-      permissionNames: map['permissionNames'] == null ? null : ((map['permissionNames'] as List).cast<String>()).input(),
-      resourceArns: map['resourceArns'] == null ? null : ((map['resourceArns'] as List).cast<String>()).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      allowExternalTargets: map['allowExternalTargets'] == null ? null : (map['allowExternalTargets']! as bool).input(),
+      permissionNames: map['permissionNames'] == null ? null : ((map['permissionNames']! as List).cast<String>()).input(),
+      resourceArns: map['resourceArns'] == null ? null : ((map['resourceArns']! as List).cast<String>()).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
       resourceShareName: (map['resourceShareName'] as String).input(),
-      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<ResourceShareResource>(map['resources'], (value) => ResourceShareResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targets: map['targets'] == null ? null : ((map['targets'] as List).cast<String>()).input(),
+      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<ResourceShareResource>(map['resources']!, (value) => ResourceShareResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targets: map['targets'] == null ? null : ((map['targets']! as List).cast<String>()).input(),
     );
   }
 }

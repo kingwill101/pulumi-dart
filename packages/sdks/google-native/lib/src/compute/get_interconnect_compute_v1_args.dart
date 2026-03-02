@@ -28,7 +28,7 @@ class GetInterconnectComputeV1Args {
   factory GetInterconnectComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetInterconnectComputeV1Args(
       interconnect: (map['interconnect'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

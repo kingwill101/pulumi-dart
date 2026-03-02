@@ -33,7 +33,7 @@ class ImageRepositoryCredentialResponse {
   factory ImageRepositoryCredentialResponse.fromMap(Map<String, dynamic> map) {
     return ImageRepositoryCredentialResponse(
       imageRepositoryUrl: (map['imageRepositoryUrl'] as String).input(),
-      password: map['password'] == null ? null : (AsymmetricEncryptedSecretResponse.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      password: map['password'] == null ? null : (AsymmetricEncryptedSecretResponse.fromMap((map['password']! as Map).cast<String, dynamic>())).input(),
       userName: (map['userName'] as String).input(),
     );
   }

@@ -29,8 +29,8 @@ class GetAuthorizationTokenArgs {
 
   factory GetAuthorizationTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorizationTokenArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      registryId: map['registryId'] == null ? null : (map['registryId'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      registryId: map['registryId'] == null ? null : ((map['registryId'] as String).input()).input(),
     );
   }
 }

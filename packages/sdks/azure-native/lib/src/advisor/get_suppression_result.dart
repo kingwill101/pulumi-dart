@@ -60,9 +60,9 @@ class GetSuppressionResult {
       expirationTimeStamp: map['expirationTimeStamp'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      suppressionId: map['suppressionId'] == null ? null : map['suppressionId'] as String,
+      suppressionId: map['suppressionId'] == null ? null : map['suppressionId']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      ttl: map['ttl'] == null ? null : map['ttl'] as String,
+      ttl: map['ttl'] == null ? null : map['ttl']! as String,
       type: map['type'] as String,
     );
   }

@@ -27,7 +27,7 @@ class ConnectionAwsAccessRole {
   factory ConnectionAwsAccessRole.fromMap(Map<String, dynamic> map) {
     return ConnectionAwsAccessRole(
       iamRoleId: (map['iamRoleId'] as String).input(),
-      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
+      identity: map['identity'] == null ? null : (map['identity']! as String).input(),
     );
   }
 }

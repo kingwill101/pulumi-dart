@@ -57,14 +57,14 @@ class ModelCardExportJobState {
 
   factory ModelCardExportJobState.fromMap(Map<String, dynamic> map) {
     return ModelCardExportJobState(
-      exportArtifacts: map['exportArtifacts'] == null ? null : (pulumi.Input.decodeList<ModelCardExportJobExportArtifact>(map['exportArtifacts'], (value) => ModelCardExportJobExportArtifact.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      modelCardExportJobArn: map['modelCardExportJobArn'] == null ? null : (map['modelCardExportJobArn'] as String).input(),
-      modelCardExportJobName: map['modelCardExportJobName'] == null ? null : (map['modelCardExportJobName'] as String).input(),
-      modelCardName: map['modelCardName'] == null ? null : (map['modelCardName'] as String).input(),
-      modelCardVersion: map['modelCardVersion'] == null ? null : (map['modelCardVersion'] as int).input(),
-      outputConfig: map['outputConfig'] == null ? null : (ModelCardExportJobOutputConfig.fromMap((map['outputConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (ModelCardExportJobTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      exportArtifacts: map['exportArtifacts'] == null ? null : ((pulumi.Input.decodeList<ModelCardExportJobExportArtifact>(map['exportArtifacts']!, (value) => ModelCardExportJobExportArtifact.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      modelCardExportJobArn: map['modelCardExportJobArn'] == null ? null : ((map['modelCardExportJobArn'] as String).input()).input(),
+      modelCardExportJobName: map['modelCardExportJobName'] == null ? null : ((map['modelCardExportJobName'] as String).input()).input(),
+      modelCardName: map['modelCardName'] == null ? null : ((map['modelCardName'] as String).input()).input(),
+      modelCardVersion: map['modelCardVersion'] == null ? null : ((map['modelCardVersion'] as int).input()).input(),
+      outputConfig: map['outputConfig'] == null ? null : ((ModelCardExportJobOutputConfig.fromMap((map['outputConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ModelCardExportJobTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

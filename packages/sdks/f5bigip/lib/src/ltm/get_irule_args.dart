@@ -34,7 +34,7 @@ class GetIruleArgs {
 
   factory GetIruleArgs.fromMap(Map<String, dynamic> map) {
     return GetIruleArgs(
-      irule: map['irule'] == null ? null : (map['irule'] as String).input(),
+      irule: map['irule'] == null ? null : (map['irule']! as String).input(),
       name: (map['name'] as String).input(),
       partition: (map['partition'] as String).input(),
     );

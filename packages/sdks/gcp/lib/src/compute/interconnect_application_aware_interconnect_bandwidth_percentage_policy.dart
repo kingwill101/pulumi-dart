@@ -23,7 +23,7 @@ class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy {
 
   factory InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy.fromMap(Map<String, dynamic> map) {
     return InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy(
-      bandwidthPercentages: map['bandwidthPercentages'] == null ? null : (pulumi.Input.decodeList<InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage>(map['bandwidthPercentages'], (value) => InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bandwidthPercentages: map['bandwidthPercentages'] == null ? null : (pulumi.Input.decodeList<InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage>(map['bandwidthPercentages']!, (value) => InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

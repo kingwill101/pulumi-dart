@@ -89,19 +89,19 @@ class EnvironmentEC2State {
 
   factory EnvironmentEC2State.fromMap(Map<String, dynamic> map) {
     return EnvironmentEC2State(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      automaticStopTimeMinutes: map['automaticStopTimeMinutes'] == null ? null : (map['automaticStopTimeMinutes'] as int).input(),
-      connectionType: map['connectionType'] == null ? null : (map['connectionType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ownerArn: map['ownerArn'] == null ? null : (map['ownerArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      automaticStopTimeMinutes: map['automaticStopTimeMinutes'] == null ? null : ((map['automaticStopTimeMinutes'] as int).input()).input(),
+      connectionType: map['connectionType'] == null ? null : ((map['connectionType'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      imageId: map['imageId'] == null ? null : ((map['imageId'] as String).input()).input(),
+      instanceType: map['instanceType'] == null ? null : ((map['instanceType'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      ownerArn: map['ownerArn'] == null ? null : ((map['ownerArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

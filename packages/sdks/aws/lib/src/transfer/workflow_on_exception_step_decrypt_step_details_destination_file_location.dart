@@ -27,8 +27,8 @@ class WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocation {
 
   factory WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocation.fromMap(Map<String, dynamic> map) {
     return WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocation(
-      efsFileLocation: map['efsFileLocation'] == null ? null : (WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationEfsFileLocation.fromMap((map['efsFileLocation'] as Map).cast<String, dynamic>())).input(),
-      s3FileLocation: map['s3FileLocation'] == null ? null : (WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationS3FileLocation.fromMap((map['s3FileLocation'] as Map).cast<String, dynamic>())).input(),
+      efsFileLocation: map['efsFileLocation'] == null ? null : ((WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationEfsFileLocation.fromMap((map['efsFileLocation']! as Map).cast<String, dynamic>())).input()).input(),
+      s3FileLocation: map['s3FileLocation'] == null ? null : ((WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationS3FileLocation.fromMap((map['s3FileLocation']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

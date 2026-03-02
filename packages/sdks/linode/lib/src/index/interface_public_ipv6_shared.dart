@@ -25,8 +25,8 @@ class InterfacePublicIpv6Shared {
 
   factory InterfacePublicIpv6Shared.fromMap(Map<String, dynamic> map) {
     return InterfacePublicIpv6Shared(
-      range: map['range'] == null ? null : (map['range'] as String).input(),
-      routeTarget: map['routeTarget'] == null ? null : (map['routeTarget'] as String).input(),
+      range: map['range'] == null ? null : (map['range']! as String).input(),
+      routeTarget: map['routeTarget'] == null ? null : (map['routeTarget']! as String).input(),
     );
   }
 }

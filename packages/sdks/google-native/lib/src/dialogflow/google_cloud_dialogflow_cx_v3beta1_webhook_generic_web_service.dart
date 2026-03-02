@@ -63,15 +63,15 @@ class GoogleCloudDialogflowCxV3beta1WebhookGenericWebService {
 
   factory GoogleCloudDialogflowCxV3beta1WebhookGenericWebService.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1WebhookGenericWebService(
-      allowedCaCerts: map['allowedCaCerts'] == null ? null : ((map['allowedCaCerts'] as List).cast<String>()).input(),
-      httpMethod: map['httpMethod'] == null ? null : (GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod.fromValue(map['httpMethod'] as String)).input(),
-      parameterMapping: map['parameterMapping'] == null ? null : ((map['parameterMapping'] as Map).cast<String, String>()).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      requestBody: map['requestBody'] == null ? null : (map['requestBody'] as String).input(),
-      requestHeaders: map['requestHeaders'] == null ? null : ((map['requestHeaders'] as Map).cast<String, String>()).input(),
+      allowedCaCerts: map['allowedCaCerts'] == null ? null : ((map['allowedCaCerts']! as List).cast<String>()).input(),
+      httpMethod: map['httpMethod'] == null ? null : (GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod.fromValue(map['httpMethod']! as String)).input(),
+      parameterMapping: map['parameterMapping'] == null ? null : ((map['parameterMapping']! as Map).cast<String, String>()).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      requestBody: map['requestBody'] == null ? null : (map['requestBody']! as String).input(),
+      requestHeaders: map['requestHeaders'] == null ? null : ((map['requestHeaders']! as Map).cast<String, String>()).input(),
       uri: (map['uri'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
-      webhookType: map['webhookType'] == null ? null : (GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType.fromValue(map['webhookType'] as String)).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
+      webhookType: map['webhookType'] == null ? null : (GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType.fromValue(map['webhookType']! as String)).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class CxGeneratorPromptText {
 
   factory CxGeneratorPromptText.fromMap(Map<String, dynamic> map) {
     return CxGeneratorPromptText(
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
     );
   }
 }

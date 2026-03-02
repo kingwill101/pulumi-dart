@@ -21,7 +21,7 @@ class AzurePostgreSqlSinkUpsertSettings {
 
   factory AzurePostgreSqlSinkUpsertSettings.fromMap(Map<String, dynamic> map) {
     return AzurePostgreSqlSinkUpsertSettings(
-      keys: map['keys'] == null ? null : (map['keys']).input(),
+      keys: map['keys'] == null ? null : (map['keys']!).input(),
     );
   }
 }

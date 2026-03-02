@@ -43,10 +43,10 @@ class CreateRecoveryPlanInputProperties {
 
   factory CreateRecoveryPlanInputProperties.fromMap(Map<String, dynamic> map) {
     return CreateRecoveryPlanInputProperties(
-      failoverDeploymentModel: map['failoverDeploymentModel'] == null ? null : (map['failoverDeploymentModel'] as String).input(),
+      failoverDeploymentModel: map['failoverDeploymentModel'] == null ? null : (map['failoverDeploymentModel']! as String).input(),
       groups: (pulumi.Input.decodeList<RecoveryPlanGroup>(map['groups'], (value) => RecoveryPlanGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
       primaryFabricId: (map['primaryFabricId'] as String).input(),
-      providerSpecificInput: map['providerSpecificInput'] == null ? null : (pulumi.Input.decodeList<RecoveryPlanA2AInput>(map['providerSpecificInput'], (value) => RecoveryPlanA2AInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      providerSpecificInput: map['providerSpecificInput'] == null ? null : (pulumi.Input.decodeList<RecoveryPlanA2AInput>(map['providerSpecificInput']!, (value) => RecoveryPlanA2AInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
       recoveryFabricId: (map['recoveryFabricId'] as String).input(),
     );
   }

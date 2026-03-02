@@ -27,8 +27,8 @@ class CertificateManagedProvisioningIssue {
 
   factory CertificateManagedProvisioningIssue.fromMap(Map<String, dynamic> map) {
     return CertificateManagedProvisioningIssue(
-      details: map['details'] == null ? null : (map['details'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      details: map['details'] == null ? null : (map['details']! as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
     );
   }
 }

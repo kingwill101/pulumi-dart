@@ -27,8 +27,8 @@ class FirewallLogConfigComputeV1 {
 
   factory FirewallLogConfigComputeV1.fromMap(Map<String, dynamic> map) {
     return FirewallLogConfigComputeV1(
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      metadata: map['metadata'] == null ? null : (FirewallLogConfigMetadataComputeV1.fromValue(map['metadata'] as String)).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      metadata: map['metadata'] == null ? null : (FirewallLogConfigMetadataComputeV1.fromValue(map['metadata']! as String)).input(),
     );
   }
 }

@@ -43,11 +43,11 @@ class AzureBlob {
 
   factory AzureBlob.fromMap(Map<String, dynamic> map) {
     return AzureBlob(
-      accountKey: map['accountKey'] == null ? null : (map['accountKey'] as String).input(),
-      authType: map['authType'] == null ? null : (AuthType.fromValue(map['authType'] as String)).input(),
-      blobContainerName: map['blobContainerName'] == null ? null : (map['blobContainerName'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId'] as String).input(),
+      accountKey: map['accountKey'] == null ? null : (map['accountKey']! as String).input(),
+      authType: map['authType'] == null ? null : (AuthType.fromValue(map['authType']! as String)).input(),
+      blobContainerName: map['blobContainerName'] == null ? null : (map['blobContainerName']! as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId']! as String).input(),
     );
   }
 }

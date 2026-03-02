@@ -39,10 +39,10 @@ class HostingVersionState {
 
   factory HostingVersionState.fromMap(Map<String, dynamic> map) {
     return HostingVersionState(
-      config: map['config'] == null ? null : (HostingVersionConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
+      config: map['config'] == null ? null : (HostingVersionConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId']! as String).input(),
     );
   }
 }

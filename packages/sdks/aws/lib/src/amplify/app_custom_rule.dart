@@ -35,9 +35,9 @@ class AppCustomRule {
 
   factory AppCustomRule.fromMap(Map<String, dynamic> map) {
     return AppCustomRule(
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
+      condition: map['condition'] == null ? null : ((map['condition'] as String).input()).input(),
       source: (map['source'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
       target: (map['target'] as String).input(),
     );
   }

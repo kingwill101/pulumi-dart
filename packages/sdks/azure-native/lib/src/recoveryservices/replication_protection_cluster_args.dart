@@ -51,9 +51,9 @@ class ReplicationProtectionClusterArgs {
   factory ReplicationProtectionClusterArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationProtectionClusterArgs(
       fabricName: (map['fabricName'] as String).input(),
-      properties: map['properties'] == null ? null : (ReplicationProtectionClusterProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (ReplicationProtectionClusterProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       protectionContainerName: (map['protectionContainerName'] as String).input(),
-      replicationProtectionClusterName: map['replicationProtectionClusterName'] == null ? null : (map['replicationProtectionClusterName'] as String).input(),
+      replicationProtectionClusterName: map['replicationProtectionClusterName'] == null ? null : (map['replicationProtectionClusterName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
     );

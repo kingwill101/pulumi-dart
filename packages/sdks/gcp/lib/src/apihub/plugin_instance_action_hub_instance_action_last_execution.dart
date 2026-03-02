@@ -41,10 +41,10 @@ class PluginInstanceActionHubInstanceActionLastExecution {
 
   factory PluginInstanceActionHubInstanceActionLastExecution.fromMap(Map<String, dynamic> map) {
     return PluginInstanceActionHubInstanceActionLastExecution(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
-      result: map['result'] == null ? null : (map['result'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      result: map['result'] == null ? null : (map['result']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

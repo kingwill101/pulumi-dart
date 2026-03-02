@@ -40,7 +40,7 @@ class GetProducerDataSharesResult {
 
   factory GetProducerDataSharesResult.fromMap(Map<String, dynamic> map) {
     return GetProducerDataSharesResult(
-      dataShares: pulumi.Input.decodeList<GetProducerDataSharesDataShare>(map['dataShares'], (value) => GetProducerDataSharesDataShare.fromMap((value as Map).cast<String, dynamic>())),
+      dataShares: pulumi.Input.decodeList<GetProducerDataSharesDataShare>(map['dataShares']!, (value) => GetProducerDataSharesDataShare.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       producerArn: map['producerArn'] as String,
       region: map['region'] as String,

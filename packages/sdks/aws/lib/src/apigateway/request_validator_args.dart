@@ -44,11 +44,11 @@ class RequestValidatorArgs {
 
   factory RequestValidatorArgs.fromMap(Map<String, dynamic> map) {
     return RequestValidatorArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       restApi: (map['restApi'] as String).input(),
-      validateRequestBody: map['validateRequestBody'] == null ? null : (map['validateRequestBody'] as bool).input(),
-      validateRequestParameters: map['validateRequestParameters'] == null ? null : (map['validateRequestParameters'] as bool).input(),
+      validateRequestBody: map['validateRequestBody'] == null ? null : ((map['validateRequestBody'] as bool).input()).input(),
+      validateRequestParameters: map['validateRequestParameters'] == null ? null : ((map['validateRequestParameters'] as bool).input()).input(),
     );
   }
 }

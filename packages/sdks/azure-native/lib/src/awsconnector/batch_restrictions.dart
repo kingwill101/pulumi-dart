@@ -26,8 +26,8 @@ class BatchRestrictions {
 
   factory BatchRestrictions.fromMap(Map<String, dynamic> map) {
     return BatchRestrictions(
-      computeTypesAllowed: map['computeTypesAllowed'] == null ? null : ((map['computeTypesAllowed'] as List).cast<String>()).input(),
-      maximumBuildsAllowed: map['maximumBuildsAllowed'] == null ? null : (map['maximumBuildsAllowed'] as int).input(),
+      computeTypesAllowed: map['computeTypesAllowed'] == null ? null : ((map['computeTypesAllowed']! as List).cast<String>()).input(),
+      maximumBuildsAllowed: map['maximumBuildsAllowed'] == null ? null : (map['maximumBuildsAllowed']! as int).input(),
     );
   }
 }

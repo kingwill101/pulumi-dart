@@ -47,12 +47,12 @@ class SparkRJob {
 
   factory SparkRJob.fromMap(Map<String, dynamic> map) {
     return SparkRJob(
-      archiveUris: map['archiveUris'] == null ? null : ((map['archiveUris'] as List).cast<String>()).input(),
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      fileUris: map['fileUris'] == null ? null : ((map['fileUris'] as List).cast<String>()).input(),
-      loggingConfig: map['loggingConfig'] == null ? null : (LoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
+      archiveUris: map['archiveUris'] == null ? null : ((map['archiveUris']! as List).cast<String>()).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      fileUris: map['fileUris'] == null ? null : ((map['fileUris']! as List).cast<String>()).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : (LoggingConfig.fromMap((map['loggingConfig']! as Map).cast<String, dynamic>())).input(),
       mainRFileUri: (map['mainRFileUri'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
     );
   }
 }

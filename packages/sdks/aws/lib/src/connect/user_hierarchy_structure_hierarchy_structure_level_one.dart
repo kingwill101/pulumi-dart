@@ -30,8 +30,8 @@ class UserHierarchyStructureHierarchyStructureLevelOne {
 
   factory UserHierarchyStructureHierarchyStructureLevelOne.fromMap(Map<String, dynamic> map) {
     return UserHierarchyStructureHierarchyStructureLevelOne(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
       name: (map['name'] as String).input(),
     );
   }

@@ -39,9 +39,9 @@ class GraphQLApiAdditionalAuthenticationProvider {
   factory GraphQLApiAdditionalAuthenticationProvider.fromMap(Map<String, dynamic> map) {
     return GraphQLApiAdditionalAuthenticationProvider(
       authenticationType: (map['authenticationType'] as String).input(),
-      lambdaAuthorizerConfig: map['lambdaAuthorizerConfig'] == null ? null : (GraphQLApiAdditionalAuthenticationProviderLambdaAuthorizerConfig.fromMap((map['lambdaAuthorizerConfig'] as Map).cast<String, dynamic>())).input(),
-      openidConnectConfig: map['openidConnectConfig'] == null ? null : (GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfig.fromMap((map['openidConnectConfig'] as Map).cast<String, dynamic>())).input(),
-      userPoolConfig: map['userPoolConfig'] == null ? null : (GraphQLApiAdditionalAuthenticationProviderUserPoolConfig.fromMap((map['userPoolConfig'] as Map).cast<String, dynamic>())).input(),
+      lambdaAuthorizerConfig: map['lambdaAuthorizerConfig'] == null ? null : ((GraphQLApiAdditionalAuthenticationProviderLambdaAuthorizerConfig.fromMap((map['lambdaAuthorizerConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      openidConnectConfig: map['openidConnectConfig'] == null ? null : ((GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfig.fromMap((map['openidConnectConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      userPoolConfig: map['userPoolConfig'] == null ? null : ((GraphQLApiAdditionalAuthenticationProviderUserPoolConfig.fromMap((map['userPoolConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

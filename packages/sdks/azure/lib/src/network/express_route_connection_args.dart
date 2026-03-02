@@ -64,15 +64,15 @@ class ExpressRouteConnectionArgs {
 
   factory ExpressRouteConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ExpressRouteConnectionArgs(
-      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey'] as String).input(),
-      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : (map['enableInternetSecurity'] as bool).input(),
+      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey']! as String).input(),
+      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : (map['enableInternetSecurity']! as bool).input(),
       expressRouteCircuitPeeringId: (map['expressRouteCircuitPeeringId'] as String).input(),
-      expressRouteGatewayBypassEnabled: map['expressRouteGatewayBypassEnabled'] == null ? null : (map['expressRouteGatewayBypassEnabled'] as bool).input(),
+      expressRouteGatewayBypassEnabled: map['expressRouteGatewayBypassEnabled'] == null ? null : (map['expressRouteGatewayBypassEnabled']! as bool).input(),
       expressRouteGatewayId: (map['expressRouteGatewayId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateLinkFastPathEnabled: map['privateLinkFastPathEnabled'] == null ? null : (map['privateLinkFastPathEnabled'] as bool).input(),
-      routing: map['routing'] == null ? null : (ExpressRouteConnectionRouting.fromMap((map['routing'] as Map).cast<String, dynamic>())).input(),
-      routingWeight: map['routingWeight'] == null ? null : (map['routingWeight'] as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateLinkFastPathEnabled: map['privateLinkFastPathEnabled'] == null ? null : (map['privateLinkFastPathEnabled']! as bool).input(),
+      routing: map['routing'] == null ? null : (ExpressRouteConnectionRouting.fromMap((map['routing']! as Map).cast<String, dynamic>())).input(),
+      routingWeight: map['routingWeight'] == null ? null : (map['routingWeight']! as int).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig {
 
   factory BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig(
-      asn: map['asn'] == null ? null : (map['asn'] as int).input(),
-      controlPlaneNodes: map['controlPlaneNodes'] == null ? null : ((map['controlPlaneNodes'] as List).cast<String>()).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      asn: map['asn'] == null ? null : (map['asn']! as int).input(),
+      controlPlaneNodes: map['controlPlaneNodes'] == null ? null : ((map['controlPlaneNodes']! as List).cast<String>()).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
     );
   }
 }

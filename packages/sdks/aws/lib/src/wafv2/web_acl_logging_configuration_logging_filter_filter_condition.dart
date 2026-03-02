@@ -27,8 +27,8 @@ class WebAclLoggingConfigurationLoggingFilterFilterCondition {
 
   factory WebAclLoggingConfigurationLoggingFilterFilterCondition.fromMap(Map<String, dynamic> map) {
     return WebAclLoggingConfigurationLoggingFilterFilterCondition(
-      actionCondition: map['actionCondition'] == null ? null : (WebAclLoggingConfigurationLoggingFilterFilterConditionActionCondition.fromMap((map['actionCondition'] as Map).cast<String, dynamic>())).input(),
-      labelNameCondition: map['labelNameCondition'] == null ? null : (WebAclLoggingConfigurationLoggingFilterFilterConditionLabelNameCondition.fromMap((map['labelNameCondition'] as Map).cast<String, dynamic>())).input(),
+      actionCondition: map['actionCondition'] == null ? null : ((WebAclLoggingConfigurationLoggingFilterFilterConditionActionCondition.fromMap((map['actionCondition']! as Map).cast<String, dynamic>())).input()).input(),
+      labelNameCondition: map['labelNameCondition'] == null ? null : ((WebAclLoggingConfigurationLoggingFilterFilterConditionLabelNameCondition.fromMap((map['labelNameCondition']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -35,9 +35,9 @@ class VirtualMachineScaleSetManagedDiskParameters {
 
   factory VirtualMachineScaleSetManagedDiskParameters.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetManagedDiskParameters(
-      diskEncryptionSet: map['diskEncryptionSet'] == null ? null : (DiskEncryptionSetParameters.fromMap((map['diskEncryptionSet'] as Map).cast<String, dynamic>())).input(),
-      securityProfile: map['securityProfile'] == null ? null : (VMDiskSecurityProfile.fromMap((map['securityProfile'] as Map).cast<String, dynamic>())).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
+      diskEncryptionSet: map['diskEncryptionSet'] == null ? null : (DiskEncryptionSetParameters.fromMap((map['diskEncryptionSet']! as Map).cast<String, dynamic>())).input(),
+      securityProfile: map['securityProfile'] == null ? null : (VMDiskSecurityProfile.fromMap((map['securityProfile']! as Map).cast<String, dynamic>())).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType']! as String).input(),
     );
   }
 }

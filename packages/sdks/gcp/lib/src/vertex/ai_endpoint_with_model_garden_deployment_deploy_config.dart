@@ -34,9 +34,9 @@ class AiEndpointWithModelGardenDeploymentDeployConfig {
 
   factory AiEndpointWithModelGardenDeploymentDeployConfig.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentDeployConfig(
-      dedicatedResources: map['dedicatedResources'] == null ? null : (AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources.fromMap((map['dedicatedResources'] as Map).cast<String, dynamic>())).input(),
-      fastTryoutEnabled: map['fastTryoutEnabled'] == null ? null : (map['fastTryoutEnabled'] as bool).input(),
-      systemLabels: map['systemLabels'] == null ? null : ((map['systemLabels'] as Map).cast<String, String>()).input(),
+      dedicatedResources: map['dedicatedResources'] == null ? null : (AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources.fromMap((map['dedicatedResources']! as Map).cast<String, dynamic>())).input(),
+      fastTryoutEnabled: map['fastTryoutEnabled'] == null ? null : (map['fastTryoutEnabled']! as bool).input(),
+      systemLabels: map['systemLabels'] == null ? null : ((map['systemLabels']! as Map).cast<String, String>()).input(),
     );
   }
 }

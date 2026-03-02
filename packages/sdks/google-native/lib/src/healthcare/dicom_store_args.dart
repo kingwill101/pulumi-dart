@@ -59,13 +59,13 @@ class DicomStoreArgs {
   factory DicomStoreArgs.fromMap(Map<String, dynamic> map) {
     return DicomStoreArgs(
       datasetId: (map['datasetId'] as String).input(),
-      dicomStoreId: map['dicomStoreId'] == null ? null : (map['dicomStoreId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationConfig: map['notificationConfig'] == null ? null : (NotificationConfig.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      streamConfigs: map['streamConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudHealthcareV1DicomStreamConfig>(map['streamConfigs'], (value) => GoogleCloudHealthcareV1DicomStreamConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dicomStoreId: map['dicomStoreId'] == null ? null : (map['dicomStoreId']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notificationConfig: map['notificationConfig'] == null ? null : (NotificationConfig.fromMap((map['notificationConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      streamConfigs: map['streamConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudHealthcareV1DicomStreamConfig>(map['streamConfigs']!, (value) => GoogleCloudHealthcareV1DicomStreamConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class RestApiEndpointConfiguration {
 
   factory RestApiEndpointConfiguration.fromMap(Map<String, dynamic> map) {
     return RestApiEndpointConfiguration(
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : ((map['ipAddressType'] as String).input()).input(),
       types: (map['types'] as String).input(),
-      vpcEndpointIds: map['vpcEndpointIds'] == null ? null : ((map['vpcEndpointIds'] as List).cast<String>()).input(),
+      vpcEndpointIds: map['vpcEndpointIds'] == null ? null : (((map['vpcEndpointIds'] as List).cast<String>()).input()).input(),
     );
   }
 }

@@ -33,8 +33,8 @@ class JobLoadTimePartitioning {
 
   factory JobLoadTimePartitioning.fromMap(Map<String, dynamic> map) {
     return JobLoadTimePartitioning(
-      expirationMs: map['expirationMs'] == null ? null : (map['expirationMs'] as String).input(),
-      field: map['field'] == null ? null : (map['field'] as String).input(),
+      expirationMs: map['expirationMs'] == null ? null : (map['expirationMs']! as String).input(),
+      field: map['field'] == null ? null : (map['field']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

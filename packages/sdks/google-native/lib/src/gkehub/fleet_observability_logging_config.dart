@@ -27,8 +27,8 @@ class FleetObservabilityLoggingConfig {
 
   factory FleetObservabilityLoggingConfig.fromMap(Map<String, dynamic> map) {
     return FleetObservabilityLoggingConfig(
-      defaultConfig: map['defaultConfig'] == null ? null : (FleetObservabilityRoutingConfig.fromMap((map['defaultConfig'] as Map).cast<String, dynamic>())).input(),
-      fleetScopeLogsConfig: map['fleetScopeLogsConfig'] == null ? null : (FleetObservabilityRoutingConfig.fromMap((map['fleetScopeLogsConfig'] as Map).cast<String, dynamic>())).input(),
+      defaultConfig: map['defaultConfig'] == null ? null : (FleetObservabilityRoutingConfig.fromMap((map['defaultConfig']! as Map).cast<String, dynamic>())).input(),
+      fleetScopeLogsConfig: map['fleetScopeLogsConfig'] == null ? null : (FleetObservabilityRoutingConfig.fromMap((map['fleetScopeLogsConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

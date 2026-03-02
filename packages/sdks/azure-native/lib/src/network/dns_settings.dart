@@ -31,9 +31,9 @@ class DnsSettings {
 
   factory DnsSettings.fromMap(Map<String, dynamic> map) {
     return DnsSettings(
-      enableProxy: map['enableProxy'] == null ? null : (map['enableProxy'] as bool).input(),
-      requireProxyForNetworkRules: map['requireProxyForNetworkRules'] == null ? null : (map['requireProxyForNetworkRules'] as bool).input(),
-      servers: map['servers'] == null ? null : ((map['servers'] as List).cast<String>()).input(),
+      enableProxy: map['enableProxy'] == null ? null : (map['enableProxy']! as bool).input(),
+      requireProxyForNetworkRules: map['requireProxyForNetworkRules'] == null ? null : (map['requireProxyForNetworkRules']! as bool).input(),
+      servers: map['servers'] == null ? null : ((map['servers']! as List).cast<String>()).input(),
     );
   }
 }

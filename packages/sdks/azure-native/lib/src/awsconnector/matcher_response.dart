@@ -26,8 +26,8 @@ class MatcherResponse {
 
   factory MatcherResponse.fromMap(Map<String, dynamic> map) {
     return MatcherResponse(
-      grpcCode: map['grpcCode'] == null ? null : (map['grpcCode'] as String).input(),
-      httpCode: map['httpCode'] == null ? null : (map['httpCode'] as String).input(),
+      grpcCode: map['grpcCode'] == null ? null : (map['grpcCode']! as String).input(),
+      httpCode: map['httpCode'] == null ? null : (map['httpCode']! as String).input(),
     );
   }
 }

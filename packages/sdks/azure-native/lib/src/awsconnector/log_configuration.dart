@@ -32,9 +32,9 @@ class LogConfiguration {
 
   factory LogConfiguration.fromMap(Map<String, dynamic> map) {
     return LogConfiguration(
-      logDriver: map['logDriver'] == null ? null : (map['logDriver'] as String).input(),
-      options: map['options'] == null ? null : (map['options']).input(),
-      secretOptions: map['secretOptions'] == null ? null : (pulumi.Input.decodeList<Secret>(map['secretOptions'], (value) => Secret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logDriver: map['logDriver'] == null ? null : (map['logDriver']! as String).input(),
+      options: map['options'] == null ? null : (map['options']!).input(),
+      secretOptions: map['secretOptions'] == null ? null : (pulumi.Input.decodeList<Secret>(map['secretOptions']!, (value) => Secret.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

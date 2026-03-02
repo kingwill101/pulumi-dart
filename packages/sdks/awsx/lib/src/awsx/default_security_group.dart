@@ -32,9 +32,9 @@ class DefaultSecurityGroup {
 
   factory DefaultSecurityGroup.fromMap(Map<String, dynamic> map) {
     return DefaultSecurityGroup(
-      args: map['args'] == null ? null : (SecurityGroup.fromMap((map['args'] as Map).cast<String, dynamic>())).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
-      skip: map['skip'] == null ? null : (map['skip'] as bool).input(),
+      args: map['args'] == null ? null : (SecurityGroup.fromMap((map['args']! as Map).cast<String, dynamic>())).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId']! as String).input(),
+      skip: map['skip'] == null ? null : (map['skip']! as bool).input(),
     );
   }
 }

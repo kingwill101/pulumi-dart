@@ -36,7 +36,7 @@ class DataProtectionPolicyArgs {
     return DataProtectionPolicyArgs(
       arn: (map['arn'] as String).input(),
       policy: (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

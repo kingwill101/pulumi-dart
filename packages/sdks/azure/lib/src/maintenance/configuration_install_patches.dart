@@ -32,9 +32,9 @@ class ConfigurationInstallPatches {
 
   factory ConfigurationInstallPatches.fromMap(Map<String, dynamic> map) {
     return ConfigurationInstallPatches(
-      linuxes: map['linuxes'] == null ? null : (pulumi.Input.decodeList<ConfigurationInstallPatchesLinux>(map['linuxes'], (value) => ConfigurationInstallPatchesLinux.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      reboot: map['reboot'] == null ? null : (map['reboot'] as String).input(),
-      windows: map['windows'] == null ? null : (pulumi.Input.decodeList<ConfigurationInstallPatchesWindow>(map['windows'], (value) => ConfigurationInstallPatchesWindow.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      linuxes: map['linuxes'] == null ? null : (pulumi.Input.decodeList<ConfigurationInstallPatchesLinux>(map['linuxes']!, (value) => ConfigurationInstallPatchesLinux.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      reboot: map['reboot'] == null ? null : (map['reboot']! as String).input(),
+      windows: map['windows'] == null ? null : (pulumi.Input.decodeList<ConfigurationInstallPatchesWindow>(map['windows']!, (value) => ConfigurationInstallPatchesWindow.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

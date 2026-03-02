@@ -72,16 +72,16 @@ class StandardAssignmentArgs {
 
   factory StandardAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return StandardAssignmentArgs(
-      assignedStandard: map['assignedStandard'] == null ? null : (AssignedStandardItem.fromMap((map['assignedStandard'] as Map).cast<String, dynamic>())).input(),
-      attestationData: map['attestationData'] == null ? null : (StandardAssignmentPropertiesAttestationData.fromMap((map['attestationData'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      effect: map['effect'] == null ? null : (map['effect'] as String).input(),
-      excludedScopes: map['excludedScopes'] == null ? null : ((map['excludedScopes'] as List).cast<String>()).input(),
-      exemptionData: map['exemptionData'] == null ? null : (StandardAssignmentPropertiesExemptionData.fromMap((map['exemptionData'] as Map).cast<String, dynamic>())).input(),
-      expiresOn: map['expiresOn'] == null ? null : (map['expiresOn'] as String).input(),
+      assignedStandard: map['assignedStandard'] == null ? null : (AssignedStandardItem.fromMap((map['assignedStandard']! as Map).cast<String, dynamic>())).input(),
+      attestationData: map['attestationData'] == null ? null : (StandardAssignmentPropertiesAttestationData.fromMap((map['attestationData']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      effect: map['effect'] == null ? null : (map['effect']! as String).input(),
+      excludedScopes: map['excludedScopes'] == null ? null : ((map['excludedScopes']! as List).cast<String>()).input(),
+      exemptionData: map['exemptionData'] == null ? null : (StandardAssignmentPropertiesExemptionData.fromMap((map['exemptionData']! as Map).cast<String, dynamic>())).input(),
+      expiresOn: map['expiresOn'] == null ? null : (map['expiresOn']! as String).input(),
       resourceId: (map['resourceId'] as String).input(),
-      standardAssignmentName: map['standardAssignmentName'] == null ? null : (map['standardAssignmentName'] as String).input(),
+      standardAssignmentName: map['standardAssignmentName'] == null ? null : (map['standardAssignmentName']! as String).input(),
     );
   }
 }

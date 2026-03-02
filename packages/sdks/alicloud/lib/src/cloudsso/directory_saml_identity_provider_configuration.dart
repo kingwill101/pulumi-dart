@@ -60,15 +60,15 @@ class DirectorySamlIdentityProviderConfiguration {
 
   factory DirectorySamlIdentityProviderConfiguration.fromMap(Map<String, dynamic> map) {
     return DirectorySamlIdentityProviderConfiguration(
-      bindingType: map['bindingType'] == null ? null : (map['bindingType'] as String).input(),
-      certificateIds: map['certificateIds'] == null ? null : ((map['certificateIds'] as List).cast<String>()).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      encodedMetadataDocument: map['encodedMetadataDocument'] == null ? null : (map['encodedMetadataDocument'] as String).input(),
-      entityId: map['entityId'] == null ? null : (map['entityId'] as String).input(),
-      loginUrl: map['loginUrl'] == null ? null : (map['loginUrl'] as String).input(),
-      ssoStatus: map['ssoStatus'] == null ? null : (map['ssoStatus'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      wantRequestSigned: map['wantRequestSigned'] == null ? null : (map['wantRequestSigned'] as bool).input(),
+      bindingType: map['bindingType'] == null ? null : (map['bindingType']! as String).input(),
+      certificateIds: map['certificateIds'] == null ? null : ((map['certificateIds']! as List).cast<String>()).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      encodedMetadataDocument: map['encodedMetadataDocument'] == null ? null : (map['encodedMetadataDocument']! as String).input(),
+      entityId: map['entityId'] == null ? null : (map['entityId']! as String).input(),
+      loginUrl: map['loginUrl'] == null ? null : (map['loginUrl']! as String).input(),
+      ssoStatus: map['ssoStatus'] == null ? null : (map['ssoStatus']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      wantRequestSigned: map['wantRequestSigned'] == null ? null : (map['wantRequestSigned']! as bool).input(),
     );
   }
 }

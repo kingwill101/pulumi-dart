@@ -38,10 +38,10 @@ class DatabaseDump {
 
   factory DatabaseDump.fromMap(Map<String, dynamic> map) {
     return DatabaseDump(
-      databaseType: map['databaseType'] == null ? null : (DatabaseDumpDatabaseType.fromValue(map['databaseType'] as String)).input(),
-      gcsUri: map['gcsUri'] == null ? null : (map['gcsUri'] as String).input(),
-      sourceDatabase: map['sourceDatabase'] == null ? null : (map['sourceDatabase'] as String).input(),
-      type: map['type'] == null ? null : (DatabaseDumpType.fromValue(map['type'] as String)).input(),
+      databaseType: map['databaseType'] == null ? null : (DatabaseDumpDatabaseType.fromValue(map['databaseType']! as String)).input(),
+      gcsUri: map['gcsUri'] == null ? null : (map['gcsUri']! as String).input(),
+      sourceDatabase: map['sourceDatabase'] == null ? null : (map['sourceDatabase']! as String).input(),
+      type: map['type'] == null ? null : (DatabaseDumpType.fromValue(map['type']! as String)).input(),
     );
   }
 }

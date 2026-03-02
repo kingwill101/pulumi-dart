@@ -58,7 +58,7 @@ class ApplicationAppRoleArgs {
       description: (map['description'] as String).input(),
       displayName: (map['displayName'] as String).input(),
       roleId: (map['roleId'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

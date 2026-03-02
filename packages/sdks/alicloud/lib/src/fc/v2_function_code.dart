@@ -30,9 +30,9 @@ class V2FunctionCode {
 
   factory V2FunctionCode.fromMap(Map<String, dynamic> map) {
     return V2FunctionCode(
-      ossBucketName: map['ossBucketName'] == null ? null : (map['ossBucketName'] as String).input(),
-      ossObjectName: map['ossObjectName'] == null ? null : (map['ossObjectName'] as String).input(),
-      zipFile: map['zipFile'] == null ? null : (map['zipFile'] as String).input(),
+      ossBucketName: map['ossBucketName'] == null ? null : (map['ossBucketName']! as String).input(),
+      ossObjectName: map['ossObjectName'] == null ? null : (map['ossObjectName']! as String).input(),
+      zipFile: map['zipFile'] == null ? null : (map['zipFile']! as String).input(),
     );
   }
 }

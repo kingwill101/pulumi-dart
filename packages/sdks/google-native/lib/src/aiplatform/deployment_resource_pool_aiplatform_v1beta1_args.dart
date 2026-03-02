@@ -45,9 +45,9 @@ class DeploymentResourcePoolAiplatformV1beta1Args {
     return DeploymentResourcePoolAiplatformV1beta1Args(
       dedicatedResources: (GoogleCloudAiplatformV1beta1DedicatedResources.fromMap((map['dedicatedResources'] as Map).cast<String, dynamic>())).input(),
       deploymentResourcePoolId: (map['deploymentResourcePoolId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

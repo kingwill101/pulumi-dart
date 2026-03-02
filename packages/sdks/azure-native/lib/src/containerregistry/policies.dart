@@ -52,12 +52,12 @@ class Policies {
 
   factory Policies.fromMap(Map<String, dynamic> map) {
     return Policies(
-      azureADAuthenticationAsArmPolicy: map['azureADAuthenticationAsArmPolicy'] == null ? null : (AzureADAuthenticationAsArmPolicy.fromMap((map['azureADAuthenticationAsArmPolicy'] as Map).cast<String, dynamic>())).input(),
-      exportPolicy: map['exportPolicy'] == null ? null : (ExportPolicy.fromMap((map['exportPolicy'] as Map).cast<String, dynamic>())).input(),
-      quarantinePolicy: map['quarantinePolicy'] == null ? null : (QuarantinePolicy.fromMap((map['quarantinePolicy'] as Map).cast<String, dynamic>())).input(),
-      retentionPolicy: map['retentionPolicy'] == null ? null : (RetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
-      softDeletePolicy: map['softDeletePolicy'] == null ? null : (SoftDeletePolicy.fromMap((map['softDeletePolicy'] as Map).cast<String, dynamic>())).input(),
-      trustPolicy: map['trustPolicy'] == null ? null : (TrustPolicy.fromMap((map['trustPolicy'] as Map).cast<String, dynamic>())).input(),
+      azureADAuthenticationAsArmPolicy: map['azureADAuthenticationAsArmPolicy'] == null ? null : (AzureADAuthenticationAsArmPolicy.fromMap((map['azureADAuthenticationAsArmPolicy']! as Map).cast<String, dynamic>())).input(),
+      exportPolicy: map['exportPolicy'] == null ? null : (ExportPolicy.fromMap((map['exportPolicy']! as Map).cast<String, dynamic>())).input(),
+      quarantinePolicy: map['quarantinePolicy'] == null ? null : (QuarantinePolicy.fromMap((map['quarantinePolicy']! as Map).cast<String, dynamic>())).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (RetentionPolicy.fromMap((map['retentionPolicy']! as Map).cast<String, dynamic>())).input(),
+      softDeletePolicy: map['softDeletePolicy'] == null ? null : (SoftDeletePolicy.fromMap((map['softDeletePolicy']! as Map).cast<String, dynamic>())).input(),
+      trustPolicy: map['trustPolicy'] == null ? null : (TrustPolicy.fromMap((map['trustPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

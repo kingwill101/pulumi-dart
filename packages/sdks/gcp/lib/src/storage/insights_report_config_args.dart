@@ -67,14 +67,14 @@ class InsightsReportConfigArgs {
 
   factory InsightsReportConfigArgs.fromMap(Map<String, dynamic> map) {
     return InsightsReportConfigArgs(
-      csvOptions: map['csvOptions'] == null ? null : (InsightsReportConfigCsvOptions.fromMap((map['csvOptions'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      frequencyOptions: map['frequencyOptions'] == null ? null : (InsightsReportConfigFrequencyOptions.fromMap((map['frequencyOptions'] as Map).cast<String, dynamic>())).input(),
+      csvOptions: map['csvOptions'] == null ? null : (InsightsReportConfigCsvOptions.fromMap((map['csvOptions']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy']! as bool).input(),
+      frequencyOptions: map['frequencyOptions'] == null ? null : (InsightsReportConfigFrequencyOptions.fromMap((map['frequencyOptions']! as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
-      objectMetadataReportOptions: map['objectMetadataReportOptions'] == null ? null : (InsightsReportConfigObjectMetadataReportOptions.fromMap((map['objectMetadataReportOptions'] as Map).cast<String, dynamic>())).input(),
-      parquetOptions: map['parquetOptions'] == null ? null : ((map['parquetOptions'] as Map).cast<String, dynamic>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      objectMetadataReportOptions: map['objectMetadataReportOptions'] == null ? null : (InsightsReportConfigObjectMetadataReportOptions.fromMap((map['objectMetadataReportOptions']! as Map).cast<String, dynamic>())).input(),
+      parquetOptions: map['parquetOptions'] == null ? null : ((map['parquetOptions']! as Map).cast<String, dynamic>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

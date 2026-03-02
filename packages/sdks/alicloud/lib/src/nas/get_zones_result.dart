@@ -35,9 +35,9 @@ class GetZonesResult {
 
   factory GetZonesResult.fromMap(Map<String, dynamic> map) {
     return GetZonesResult(
-      fileSystemType: map['fileSystemType'] == null ? null : map['fileSystemType'] as String,
+      fileSystemType: map['fileSystemType'] == null ? null : map['fileSystemType']! as String,
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       zones: pulumi.Input.decodeList<GetZonesZone>(map['zones'], (value) => GetZonesZone.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

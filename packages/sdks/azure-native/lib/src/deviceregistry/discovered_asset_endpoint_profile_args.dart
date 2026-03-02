@@ -75,15 +75,15 @@ class DiscoveredAssetEndpointProfileArgs {
 
   factory DiscoveredAssetEndpointProfileArgs.fromMap(Map<String, dynamic> map) {
     return DiscoveredAssetEndpointProfileArgs(
-      additionalConfiguration: map['additionalConfiguration'] == null ? null : (map['additionalConfiguration'] as String).input(),
-      discoveredAssetEndpointProfileName: map['discoveredAssetEndpointProfileName'] == null ? null : (map['discoveredAssetEndpointProfileName'] as String).input(),
+      additionalConfiguration: map['additionalConfiguration'] == null ? null : (map['additionalConfiguration']! as String).input(),
+      discoveredAssetEndpointProfileName: map['discoveredAssetEndpointProfileName'] == null ? null : (map['discoveredAssetEndpointProfileName']! as String).input(),
       discoveryId: (map['discoveryId'] as String).input(),
       endpointProfileType: (map['endpointProfileType'] as String).input(),
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      supportedAuthenticationMethods: map['supportedAuthenticationMethods'] == null ? null : ((map['supportedAuthenticationMethods'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      supportedAuthenticationMethods: map['supportedAuthenticationMethods'] == null ? null : ((map['supportedAuthenticationMethods']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       targetAddress: (map['targetAddress'] as String).input(),
       version: (map['version'] as double).input(),
     );

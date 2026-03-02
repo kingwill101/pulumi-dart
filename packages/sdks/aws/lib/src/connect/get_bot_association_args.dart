@@ -36,8 +36,8 @@ class GetBotAssociationArgs {
   factory GetBotAssociationArgs.fromMap(Map<String, dynamic> map) {
     return GetBotAssociationArgs(
       instanceId: (map['instanceId'] as String).input(),
-      lexBot: (GetBotAssociationLexBot.fromMap((map['lexBot'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      lexBot: (GetBotAssociationLexBot.fromMap((map['lexBot']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class HostingVersionConfigHeader {
 
   factory HostingVersionConfigHeader.fromMap(Map<String, dynamic> map) {
     return HostingVersionConfigHeader(
-      glob: map['glob'] == null ? null : (map['glob'] as String).input(),
+      glob: map['glob'] == null ? null : (map['glob']! as String).input(),
       headers: ((map['headers'] as Map).cast<String, String>()).input(),
-      regex: map['regex'] == null ? null : (map['regex'] as String).input(),
+      regex: map['regex'] == null ? null : (map['regex']! as String).input(),
     );
   }
 }

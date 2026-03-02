@@ -32,8 +32,8 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRule {
 
   factory GoogleCloudContactcenterinsightsV1PhraseMatchRule.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1PhraseMatchRule(
-      config: map['config'] == null ? null : (GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      negated: map['negated'] == null ? null : (map['negated'] as bool).input(),
+      config: map['config'] == null ? null : (GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      negated: map['negated'] == null ? null : (map['negated']! as bool).input(),
       query: (map['query'] as String).input(),
     );
   }

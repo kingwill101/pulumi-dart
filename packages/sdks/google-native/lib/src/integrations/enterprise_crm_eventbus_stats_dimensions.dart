@@ -59,16 +59,16 @@ class EnterpriseCrmEventbusStatsDimensions {
 
   factory EnterpriseCrmEventbusStatsDimensions.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusStatsDimensions(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      enumFilterType: map['enumFilterType'] == null ? null : (EnterpriseCrmEventbusStatsDimensionsEnumFilterType.fromValue(map['enumFilterType'] as String)).input(),
-      errorEnumString: map['errorEnumString'] == null ? null : (map['errorEnumString'] as String).input(),
-      retryAttempt: map['retryAttempt'] == null ? null : (EnterpriseCrmEventbusStatsDimensionsRetryAttempt.fromValue(map['retryAttempt'] as String)).input(),
-      taskName: map['taskName'] == null ? null : (map['taskName'] as String).input(),
-      taskNumber: map['taskNumber'] == null ? null : (map['taskNumber'] as String).input(),
-      triggerId: map['triggerId'] == null ? null : (map['triggerId'] as String).input(),
-      warningEnumString: map['warningEnumString'] == null ? null : (map['warningEnumString'] as String).input(),
-      workflowId: map['workflowId'] == null ? null : (map['workflowId'] as String).input(),
-      workflowName: map['workflowName'] == null ? null : (map['workflowName'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      enumFilterType: map['enumFilterType'] == null ? null : (EnterpriseCrmEventbusStatsDimensionsEnumFilterType.fromValue(map['enumFilterType']! as String)).input(),
+      errorEnumString: map['errorEnumString'] == null ? null : (map['errorEnumString']! as String).input(),
+      retryAttempt: map['retryAttempt'] == null ? null : (EnterpriseCrmEventbusStatsDimensionsRetryAttempt.fromValue(map['retryAttempt']! as String)).input(),
+      taskName: map['taskName'] == null ? null : (map['taskName']! as String).input(),
+      taskNumber: map['taskNumber'] == null ? null : (map['taskNumber']! as String).input(),
+      triggerId: map['triggerId'] == null ? null : (map['triggerId']! as String).input(),
+      warningEnumString: map['warningEnumString'] == null ? null : (map['warningEnumString']! as String).input(),
+      workflowId: map['workflowId'] == null ? null : (map['workflowId']! as String).input(),
+      workflowName: map['workflowName'] == null ? null : (map['workflowName']! as String).input(),
     );
   }
 }

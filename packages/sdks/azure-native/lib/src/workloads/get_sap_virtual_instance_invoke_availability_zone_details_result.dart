@@ -22,7 +22,7 @@ class GetSapVirtualInstanceInvokeAvailabilityZoneDetailsResult {
 
   factory GetSapVirtualInstanceInvokeAvailabilityZoneDetailsResult.fromMap(Map<String, dynamic> map) {
     return GetSapVirtualInstanceInvokeAvailabilityZoneDetailsResult(
-      availabilityZonePairs: map['availabilityZonePairs'] == null ? null : pulumi.Input.decodeList<SAPAvailabilityZonePairResponse>(map['availabilityZonePairs'], (value) => SAPAvailabilityZonePairResponse.fromMap((value as Map).cast<String, dynamic>())),
+      availabilityZonePairs: map['availabilityZonePairs'] == null ? null : pulumi.Input.decodeList<SAPAvailabilityZonePairResponse>(map['availabilityZonePairs']!, (value) => SAPAvailabilityZonePairResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

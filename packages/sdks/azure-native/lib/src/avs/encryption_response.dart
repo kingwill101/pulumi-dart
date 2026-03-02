@@ -27,8 +27,8 @@ class EncryptionResponse {
 
   factory EncryptionResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionResponse(
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : (EncryptionKeyVaultPropertiesResponse.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (EncryptionKeyVaultPropertiesResponse.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class DistributionPolicyComputeV1 {
 
   factory DistributionPolicyComputeV1.fromMap(Map<String, dynamic> map) {
     return DistributionPolicyComputeV1(
-      targetShape: map['targetShape'] == null ? null : (DistributionPolicyTargetShapeComputeV1.fromValue(map['targetShape'] as String)).input(),
-      zones: map['zones'] == null ? null : (pulumi.Input.decodeList<DistributionPolicyZoneConfigurationComputeV1>(map['zones'], (value) => DistributionPolicyZoneConfigurationComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetShape: map['targetShape'] == null ? null : (DistributionPolicyTargetShapeComputeV1.fromValue(map['targetShape']! as String)).input(),
+      zones: map['zones'] == null ? null : (pulumi.Input.decodeList<DistributionPolicyZoneConfigurationComputeV1>(map['zones']!, (value) => DistributionPolicyZoneConfigurationComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class V3FunctionCustomDns {
 
   factory V3FunctionCustomDns.fromMap(Map<String, dynamic> map) {
     return V3FunctionCustomDns(
-      dnsOptions: map['dnsOptions'] == null ? null : (pulumi.Input.decodeList<V3FunctionCustomDnsDnsOption>(map['dnsOptions'], (value) => V3FunctionCustomDnsDnsOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nameServers: map['nameServers'] == null ? null : ((map['nameServers'] as List).cast<String>()).input(),
-      searches: map['searches'] == null ? null : ((map['searches'] as List).cast<String>()).input(),
+      dnsOptions: map['dnsOptions'] == null ? null : (pulumi.Input.decodeList<V3FunctionCustomDnsDnsOption>(map['dnsOptions']!, (value) => V3FunctionCustomDnsDnsOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nameServers: map['nameServers'] == null ? null : ((map['nameServers']! as List).cast<String>()).input(),
+      searches: map['searches'] == null ? null : ((map['searches']! as List).cast<String>()).input(),
     );
   }
 }

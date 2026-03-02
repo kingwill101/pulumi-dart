@@ -20,7 +20,7 @@ class ListApmSecretKeysResult {
 
   factory ListApmSecretKeysResult.fromMap(Map<String, dynamic> map) {
     return ListApmSecretKeysResult(
-      value: map['value'] == null ? null : (map['value'] as List).cast<String>(),
+      value: map['value'] == null ? null : (map['value']! as List).cast<String>(),
     );
   }
 }

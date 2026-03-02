@@ -42,7 +42,7 @@ class GetDockerImagesResult {
       dockerImages: pulumi.Input.decodeList<GetDockerImagesDockerImage>(map['dockerImages'], (value) => GetDockerImagesDockerImage.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       location: map['location'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       repositoryId: map['repositoryId'] as String,
     );
   }

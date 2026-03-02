@@ -31,9 +31,9 @@ class AutomationRulePropertyArrayValuesConditionResponse {
 
   factory AutomationRulePropertyArrayValuesConditionResponse.fromMap(Map<String, dynamic> map) {
     return AutomationRulePropertyArrayValuesConditionResponse(
-      arrayConditionType: map['arrayConditionType'] == null ? null : (map['arrayConditionType'] as String).input(),
-      arrayType: map['arrayType'] == null ? null : (map['arrayType'] as String).input(),
-      itemConditions: map['itemConditions'] == null ? null : (pulumi.Input.decodeList<BooleanConditionPropertiesResponse>(map['itemConditions'], (value) => BooleanConditionPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arrayConditionType: map['arrayConditionType'] == null ? null : (map['arrayConditionType']! as String).input(),
+      arrayType: map['arrayType'] == null ? null : (map['arrayType']! as String).input(),
+      itemConditions: map['itemConditions'] == null ? null : (pulumi.Input.decodeList<BooleanConditionPropertiesResponse>(map['itemConditions']!, (value) => BooleanConditionPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

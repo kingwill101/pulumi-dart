@@ -22,7 +22,7 @@ class ProtocolSettings {
 
   factory ProtocolSettings.fromMap(Map<String, dynamic> map) {
     return ProtocolSettings(
-      smb: map['smb'] == null ? null : (SmbSetting.fromMap((map['smb'] as Map).cast<String, dynamic>())).input(),
+      smb: map['smb'] == null ? null : (SmbSetting.fromMap((map['smb']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

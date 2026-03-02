@@ -39,9 +39,9 @@ class VoiceConnectorLoggingArgs {
 
   factory VoiceConnectorLoggingArgs.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorLoggingArgs(
-      enableMediaMetricLogs: map['enableMediaMetricLogs'] == null ? null : (map['enableMediaMetricLogs'] as bool).input(),
-      enableSipLogs: map['enableSipLogs'] == null ? null : (map['enableSipLogs'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      enableMediaMetricLogs: map['enableMediaMetricLogs'] == null ? null : ((map['enableMediaMetricLogs'] as bool).input()).input(),
+      enableSipLogs: map['enableSipLogs'] == null ? null : ((map['enableSipLogs'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       voiceConnectorId: (map['voiceConnectorId'] as String).input(),
     );
   }

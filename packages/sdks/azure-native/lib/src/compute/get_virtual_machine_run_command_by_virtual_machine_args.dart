@@ -39,7 +39,7 @@ class GetVirtualMachineRunCommandByVirtualMachineArgs {
 
   factory GetVirtualMachineRunCommandByVirtualMachineArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineRunCommandByVirtualMachineArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       runCommandName: (map['runCommandName'] as String).input(),
       vmName: (map['vmName'] as String).input(),

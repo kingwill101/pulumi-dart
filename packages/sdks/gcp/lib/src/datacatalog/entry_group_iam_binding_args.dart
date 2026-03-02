@@ -66,11 +66,11 @@ class EntryGroupIamBindingArgs {
 
   factory EntryGroupIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return EntryGroupIamBindingArgs(
-      condition: map['condition'] == null ? null : (EntryGroupIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (EntryGroupIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       entryGroup: (map['entryGroup'] as String).input(),
       members: ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

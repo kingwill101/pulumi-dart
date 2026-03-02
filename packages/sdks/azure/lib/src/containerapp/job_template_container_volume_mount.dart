@@ -32,7 +32,7 @@ class JobTemplateContainerVolumeMount {
     return JobTemplateContainerVolumeMount(
       name: (map['name'] as String).input(),
       path: (map['path'] as String).input(),
-      subPath: map['subPath'] == null ? null : (map['subPath'] as String).input(),
+      subPath: map['subPath'] == null ? null : (map['subPath']! as String).input(),
     );
   }
 }

@@ -55,11 +55,11 @@ class ToolOpenApiToolApiAuthentication {
 
   factory ToolOpenApiToolApiAuthentication.fromMap(Map<String, dynamic> map) {
     return ToolOpenApiToolApiAuthentication(
-      apiKeyConfigs: map['apiKeyConfigs'] == null ? null : (pulumi.Input.decodeList<ToolOpenApiToolApiAuthenticationApiKeyConfig>(map['apiKeyConfigs'], (value) => ToolOpenApiToolApiAuthenticationApiKeyConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bearerTokenConfigs: map['bearerTokenConfigs'] == null ? null : (pulumi.Input.decodeList<ToolOpenApiToolApiAuthenticationBearerTokenConfig>(map['bearerTokenConfigs'], (value) => ToolOpenApiToolApiAuthenticationBearerTokenConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      oauthConfigs: map['oauthConfigs'] == null ? null : (pulumi.Input.decodeList<ToolOpenApiToolApiAuthenticationOauthConfig>(map['oauthConfigs'], (value) => ToolOpenApiToolApiAuthenticationOauthConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceAccountAuthConfigs: map['serviceAccountAuthConfigs'] == null ? null : (pulumi.Input.decodeList<ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig>(map['serviceAccountAuthConfigs'], (value) => ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceAgentIdTokenAuthConfigs: map['serviceAgentIdTokenAuthConfigs'] == null ? null : ((map['serviceAgentIdTokenAuthConfigs'] as List).cast<Map<String, dynamic>>()).input(),
+      apiKeyConfigs: map['apiKeyConfigs'] == null ? null : (pulumi.Input.decodeList<ToolOpenApiToolApiAuthenticationApiKeyConfig>(map['apiKeyConfigs']!, (value) => ToolOpenApiToolApiAuthenticationApiKeyConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bearerTokenConfigs: map['bearerTokenConfigs'] == null ? null : (pulumi.Input.decodeList<ToolOpenApiToolApiAuthenticationBearerTokenConfig>(map['bearerTokenConfigs']!, (value) => ToolOpenApiToolApiAuthenticationBearerTokenConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      oauthConfigs: map['oauthConfigs'] == null ? null : (pulumi.Input.decodeList<ToolOpenApiToolApiAuthenticationOauthConfig>(map['oauthConfigs']!, (value) => ToolOpenApiToolApiAuthenticationOauthConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceAccountAuthConfigs: map['serviceAccountAuthConfigs'] == null ? null : (pulumi.Input.decodeList<ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig>(map['serviceAccountAuthConfigs']!, (value) => ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceAgentIdTokenAuthConfigs: map['serviceAgentIdTokenAuthConfigs'] == null ? null : ((map['serviceAgentIdTokenAuthConfigs']! as List).cast<Map<String, dynamic>>()).input(),
     );
   }
 }

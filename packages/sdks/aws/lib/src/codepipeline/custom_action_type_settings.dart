@@ -35,10 +35,10 @@ class CustomActionTypeSettings {
 
   factory CustomActionTypeSettings.fromMap(Map<String, dynamic> map) {
     return CustomActionTypeSettings(
-      entityUrlTemplate: map['entityUrlTemplate'] == null ? null : (map['entityUrlTemplate'] as String).input(),
-      executionUrlTemplate: map['executionUrlTemplate'] == null ? null : (map['executionUrlTemplate'] as String).input(),
-      revisionUrlTemplate: map['revisionUrlTemplate'] == null ? null : (map['revisionUrlTemplate'] as String).input(),
-      thirdPartyConfigurationUrl: map['thirdPartyConfigurationUrl'] == null ? null : (map['thirdPartyConfigurationUrl'] as String).input(),
+      entityUrlTemplate: map['entityUrlTemplate'] == null ? null : ((map['entityUrlTemplate'] as String).input()).input(),
+      executionUrlTemplate: map['executionUrlTemplate'] == null ? null : ((map['executionUrlTemplate'] as String).input()).input(),
+      revisionUrlTemplate: map['revisionUrlTemplate'] == null ? null : ((map['revisionUrlTemplate'] as String).input()).input(),
+      thirdPartyConfigurationUrl: map['thirdPartyConfigurationUrl'] == null ? null : ((map['thirdPartyConfigurationUrl'] as String).input()).input(),
     );
   }
 }

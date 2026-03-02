@@ -58,8 +58,8 @@ class RuleArgs {
 
   factory RuleArgs.fromMap(Map<String, dynamic> map) {
     return RuleArgs(
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
       listenerId: (map['listenerId'] as String).input(),
       priority: (map['priority'] as int).input(),
       ruleActions: (pulumi.Input.decodeList<RuleRuleAction>(map['ruleActions'], (value) => RuleRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),

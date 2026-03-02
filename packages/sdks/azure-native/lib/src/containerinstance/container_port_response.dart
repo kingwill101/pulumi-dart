@@ -27,7 +27,7 @@ class ContainerPortResponse {
   factory ContainerPortResponse.fromMap(Map<String, dynamic> map) {
     return ContainerPortResponse(
       port: (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
     );
   }
 }

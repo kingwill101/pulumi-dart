@@ -30,9 +30,9 @@ class FrontdoorRuleConditionsRequestSchemeCondition {
 
   factory FrontdoorRuleConditionsRequestSchemeCondition.fromMap(Map<String, dynamic> map) {
     return FrontdoorRuleConditionsRequestSchemeCondition(
-      matchValues: map['matchValues'] == null ? null : (map['matchValues'] as String).input(),
-      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition'] as bool).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
+      matchValues: map['matchValues'] == null ? null : (map['matchValues']! as String).input(),
+      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition']! as bool).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
     );
   }
 }

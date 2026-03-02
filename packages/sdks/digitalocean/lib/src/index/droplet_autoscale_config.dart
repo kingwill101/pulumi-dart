@@ -47,12 +47,12 @@ class DropletAutoscaleConfig {
 
   factory DropletAutoscaleConfig.fromMap(Map<String, dynamic> map) {
     return DropletAutoscaleConfig(
-      cooldownMinutes: map['cooldownMinutes'] == null ? null : (map['cooldownMinutes'] as int).input(),
-      maxInstances: map['maxInstances'] == null ? null : (map['maxInstances'] as int).input(),
-      minInstances: map['minInstances'] == null ? null : (map['minInstances'] as int).input(),
-      targetCpuUtilization: map['targetCpuUtilization'] == null ? null : (map['targetCpuUtilization'] as double).input(),
-      targetMemoryUtilization: map['targetMemoryUtilization'] == null ? null : (map['targetMemoryUtilization'] as double).input(),
-      targetNumberInstances: map['targetNumberInstances'] == null ? null : (map['targetNumberInstances'] as int).input(),
+      cooldownMinutes: map['cooldownMinutes'] == null ? null : (map['cooldownMinutes']! as int).input(),
+      maxInstances: map['maxInstances'] == null ? null : (map['maxInstances']! as int).input(),
+      minInstances: map['minInstances'] == null ? null : (map['minInstances']! as int).input(),
+      targetCpuUtilization: map['targetCpuUtilization'] == null ? null : (map['targetCpuUtilization']! as double).input(),
+      targetMemoryUtilization: map['targetMemoryUtilization'] == null ? null : (map['targetMemoryUtilization']! as double).input(),
+      targetNumberInstances: map['targetNumberInstances'] == null ? null : (map['targetNumberInstances']! as int).input(),
     );
   }
 }

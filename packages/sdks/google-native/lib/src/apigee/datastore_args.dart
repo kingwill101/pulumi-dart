@@ -39,10 +39,10 @@ class DatastoreArgs {
 
   factory DatastoreArgs.fromMap(Map<String, dynamic> map) {
     return DatastoreArgs(
-      datastoreConfig: map['datastoreConfig'] == null ? null : (GoogleCloudApigeeV1DatastoreConfig.fromMap((map['datastoreConfig'] as Map).cast<String, dynamic>())).input(),
+      datastoreConfig: map['datastoreConfig'] == null ? null : (GoogleCloudApigeeV1DatastoreConfig.fromMap((map['datastoreConfig']! as Map).cast<String, dynamic>())).input(),
       displayName: (map['displayName'] as String).input(),
       organizationId: (map['organizationId'] as String).input(),
-      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType']! as String).input(),
     );
   }
 }

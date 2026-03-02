@@ -56,14 +56,14 @@ class TapePoolState {
 
   factory TapePoolState.fromMap(Map<String, dynamic> map) {
     return TapePoolState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      poolName: map['poolName'] == null ? null : (map['poolName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      retentionLockTimeInDays: map['retentionLockTimeInDays'] == null ? null : (map['retentionLockTimeInDays'] as int).input(),
-      retentionLockType: map['retentionLockType'] == null ? null : (map['retentionLockType'] as String).input(),
-      storageClass: map['storageClass'] == null ? null : (map['storageClass'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      poolName: map['poolName'] == null ? null : ((map['poolName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      retentionLockTimeInDays: map['retentionLockTimeInDays'] == null ? null : ((map['retentionLockTimeInDays'] as int).input()).input(),
+      retentionLockType: map['retentionLockType'] == null ? null : ((map['retentionLockType'] as String).input()).input(),
+      storageClass: map['storageClass'] == null ? null : ((map['storageClass'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

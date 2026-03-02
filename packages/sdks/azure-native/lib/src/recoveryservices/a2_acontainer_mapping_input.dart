@@ -37,9 +37,9 @@ class A2AContainerMappingInput {
 
   factory A2AContainerMappingInput.fromMap(Map<String, dynamic> map) {
     return A2AContainerMappingInput(
-      agentAutoUpdateStatus: map['agentAutoUpdateStatus'] == null ? null : (map['agentAutoUpdateStatus'] as String).input(),
-      automationAccountArmId: map['automationAccountArmId'] == null ? null : (map['automationAccountArmId'] as String).input(),
-      automationAccountAuthenticationType: map['automationAccountAuthenticationType'] == null ? null : (map['automationAccountAuthenticationType'] as String).input(),
+      agentAutoUpdateStatus: map['agentAutoUpdateStatus'] == null ? null : (map['agentAutoUpdateStatus']! as String).input(),
+      automationAccountArmId: map['automationAccountArmId'] == null ? null : (map['automationAccountArmId']! as String).input(),
+      automationAccountAuthenticationType: map['automationAccountAuthenticationType'] == null ? null : (map['automationAccountAuthenticationType']! as String).input(),
       instanceType: (map['instanceType'] as String).input(),
     );
   }

@@ -47,12 +47,12 @@ class DomainConfigState {
 
   factory DomainConfigState.fromMap(Map<String, dynamic> map) {
     return DomainConfigState(
-      configId: map['configId'] == null ? null : (map['configId'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      functionArgs: map['functionArgs'] == null ? null : (pulumi.Input.decodeList<DomainConfigFunctionArg>(map['functionArgs'], (value) => DomainConfigFunctionArg.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
-      parentId: map['parentId'] == null ? null : (map['parentId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      configId: map['configId'] == null ? null : (map['configId']! as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      functionArgs: map['functionArgs'] == null ? null : (pulumi.Input.decodeList<DomainConfigFunctionArg>(map['functionArgs']!, (value) => DomainConfigFunctionArg.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName']! as String).input(),
+      parentId: map['parentId'] == null ? null : (map['parentId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -83,15 +83,15 @@ class RuleRuleCondition {
 
   factory RuleRuleCondition.fromMap(Map<String, dynamic> map) {
     return RuleRuleCondition(
-      cookieConfig: map['cookieConfig'] == null ? null : (RuleRuleConditionCookieConfig.fromMap((map['cookieConfig'] as Map).cast<String, dynamic>())).input(),
-      headerConfig: map['headerConfig'] == null ? null : (RuleRuleConditionHeaderConfig.fromMap((map['headerConfig'] as Map).cast<String, dynamic>())).input(),
-      hostConfig: map['hostConfig'] == null ? null : (RuleRuleConditionHostConfig.fromMap((map['hostConfig'] as Map).cast<String, dynamic>())).input(),
-      methodConfig: map['methodConfig'] == null ? null : (RuleRuleConditionMethodConfig.fromMap((map['methodConfig'] as Map).cast<String, dynamic>())).input(),
-      pathConfig: map['pathConfig'] == null ? null : (RuleRuleConditionPathConfig.fromMap((map['pathConfig'] as Map).cast<String, dynamic>())).input(),
-      queryStringConfig: map['queryStringConfig'] == null ? null : (RuleRuleConditionQueryStringConfig.fromMap((map['queryStringConfig'] as Map).cast<String, dynamic>())).input(),
-      responseHeaderConfig: map['responseHeaderConfig'] == null ? null : (RuleRuleConditionResponseHeaderConfig.fromMap((map['responseHeaderConfig'] as Map).cast<String, dynamic>())).input(),
-      responseStatusCodeConfig: map['responseStatusCodeConfig'] == null ? null : (RuleRuleConditionResponseStatusCodeConfig.fromMap((map['responseStatusCodeConfig'] as Map).cast<String, dynamic>())).input(),
-      sourceIpConfig: map['sourceIpConfig'] == null ? null : (RuleRuleConditionSourceIpConfig.fromMap((map['sourceIpConfig'] as Map).cast<String, dynamic>())).input(),
+      cookieConfig: map['cookieConfig'] == null ? null : (RuleRuleConditionCookieConfig.fromMap((map['cookieConfig']! as Map).cast<String, dynamic>())).input(),
+      headerConfig: map['headerConfig'] == null ? null : (RuleRuleConditionHeaderConfig.fromMap((map['headerConfig']! as Map).cast<String, dynamic>())).input(),
+      hostConfig: map['hostConfig'] == null ? null : (RuleRuleConditionHostConfig.fromMap((map['hostConfig']! as Map).cast<String, dynamic>())).input(),
+      methodConfig: map['methodConfig'] == null ? null : (RuleRuleConditionMethodConfig.fromMap((map['methodConfig']! as Map).cast<String, dynamic>())).input(),
+      pathConfig: map['pathConfig'] == null ? null : (RuleRuleConditionPathConfig.fromMap((map['pathConfig']! as Map).cast<String, dynamic>())).input(),
+      queryStringConfig: map['queryStringConfig'] == null ? null : (RuleRuleConditionQueryStringConfig.fromMap((map['queryStringConfig']! as Map).cast<String, dynamic>())).input(),
+      responseHeaderConfig: map['responseHeaderConfig'] == null ? null : (RuleRuleConditionResponseHeaderConfig.fromMap((map['responseHeaderConfig']! as Map).cast<String, dynamic>())).input(),
+      responseStatusCodeConfig: map['responseStatusCodeConfig'] == null ? null : (RuleRuleConditionResponseStatusCodeConfig.fromMap((map['responseStatusCodeConfig']! as Map).cast<String, dynamic>())).input(),
+      sourceIpConfig: map['sourceIpConfig'] == null ? null : (RuleRuleConditionSourceIpConfig.fromMap((map['sourceIpConfig']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

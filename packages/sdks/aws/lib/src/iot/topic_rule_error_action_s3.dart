@@ -36,7 +36,7 @@ class TopicRuleErrorActionS3 {
   factory TopicRuleErrorActionS3.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorActionS3(
       bucketName: (map['bucketName'] as String).input(),
-      cannedAcl: map['cannedAcl'] == null ? null : (map['cannedAcl'] as String).input(),
+      cannedAcl: map['cannedAcl'] == null ? null : ((map['cannedAcl'] as String).input()).input(),
       key: (map['key'] as String).input(),
       roleArn: (map['roleArn'] as String).input(),
     );

@@ -26,8 +26,8 @@ class InstanceSharedIpsState {
 
   factory InstanceSharedIpsState.fromMap(Map<String, dynamic> map) {
     return InstanceSharedIpsState(
-      addresses: map['addresses'] == null ? null : ((map['addresses'] as List).cast<String>()).input(),
-      linodeId: map['linodeId'] == null ? null : (map['linodeId'] as int).input(),
+      addresses: map['addresses'] == null ? null : ((map['addresses']! as List).cast<String>()).input(),
+      linodeId: map['linodeId'] == null ? null : (map['linodeId']! as int).input(),
     );
   }
 }

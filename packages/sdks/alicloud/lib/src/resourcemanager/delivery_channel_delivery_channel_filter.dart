@@ -22,7 +22,7 @@ class DeliveryChannelDeliveryChannelFilter {
 
   factory DeliveryChannelDeliveryChannelFilter.fromMap(Map<String, dynamic> map) {
     return DeliveryChannelDeliveryChannelFilter(
-      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes']! as List).cast<String>()).input(),
     );
   }
 }

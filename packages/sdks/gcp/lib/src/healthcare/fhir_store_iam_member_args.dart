@@ -51,7 +51,7 @@ class FhirStoreIamMemberArgs {
 
   factory FhirStoreIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return FhirStoreIamMemberArgs(
-      condition: map['condition'] == null ? null : (FhirStoreIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (FhirStoreIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       fhirStoreId: (map['fhirStoreId'] as String).input(),
       member: (map['member'] as String).input(),
       role: (map['role'] as String).input(),

@@ -78,18 +78,18 @@ class NetworkOptimizationState {
 
   factory NetworkOptimizationState.fromMap(Map<String, dynamic> map) {
     return NetworkOptimizationState(
-      configId: map['configId'] == null ? null : (map['configId'] as int).input(),
-      grpc: map['grpc'] == null ? null : (map['grpc'] as String).input(),
-      http2Origin: map['http2Origin'] == null ? null : (map['http2Origin'] as String).input(),
-      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
-      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      sequence: map['sequence'] == null ? null : (map['sequence'] as int).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion'] as int).input(),
-      smartRouting: map['smartRouting'] == null ? null : (map['smartRouting'] as String).input(),
-      uploadMaxFilesize: map['uploadMaxFilesize'] == null ? null : (map['uploadMaxFilesize'] as String).input(),
-      websocket: map['websocket'] == null ? null : (map['websocket'] as String).input(),
+      configId: map['configId'] == null ? null : (map['configId']! as int).input(),
+      grpc: map['grpc'] == null ? null : (map['grpc']! as String).input(),
+      http2Origin: map['http2Origin'] == null ? null : (map['http2Origin']! as String).input(),
+      rule: map['rule'] == null ? null : (map['rule']! as String).input(),
+      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      sequence: map['sequence'] == null ? null : (map['sequence']! as int).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion']! as int).input(),
+      smartRouting: map['smartRouting'] == null ? null : (map['smartRouting']! as String).input(),
+      uploadMaxFilesize: map['uploadMaxFilesize'] == null ? null : (map['uploadMaxFilesize']! as String).input(),
+      websocket: map['websocket'] == null ? null : (map['websocket']! as String).input(),
     );
   }
 }

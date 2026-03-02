@@ -40,8 +40,8 @@ class FleetManagedNamespaceProperties {
     return FleetManagedNamespaceProperties(
       adoptionPolicy: (map['adoptionPolicy'] as String).input(),
       deletePolicy: (map['deletePolicy'] as String).input(),
-      managedNamespaceProperties: map['managedNamespaceProperties'] == null ? null : (ManagedNamespaceProperties.fromMap((map['managedNamespaceProperties'] as Map).cast<String, dynamic>())).input(),
-      propagationPolicy: map['propagationPolicy'] == null ? null : (PropagationPolicy.fromMap((map['propagationPolicy'] as Map).cast<String, dynamic>())).input(),
+      managedNamespaceProperties: map['managedNamespaceProperties'] == null ? null : (ManagedNamespaceProperties.fromMap((map['managedNamespaceProperties']! as Map).cast<String, dynamic>())).input(),
+      propagationPolicy: map['propagationPolicy'] == null ? null : (PropagationPolicy.fromMap((map['propagationPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

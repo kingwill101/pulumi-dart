@@ -42,11 +42,11 @@ class GceRegionalPersistentDisk {
 
   factory GceRegionalPersistentDisk.fromMap(Map<String, dynamic> map) {
     return GceRegionalPersistentDisk(
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
-      reclaimPolicy: map['reclaimPolicy'] == null ? null : (GceRegionalPersistentDiskReclaimPolicy.fromValue(map['reclaimPolicy'] as String)).input(),
-      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb'] as int).input(),
-      sourceSnapshot: map['sourceSnapshot'] == null ? null : (map['sourceSnapshot'] as String).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
+      reclaimPolicy: map['reclaimPolicy'] == null ? null : (GceRegionalPersistentDiskReclaimPolicy.fromValue(map['reclaimPolicy']! as String)).input(),
+      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb']! as int).input(),
+      sourceSnapshot: map['sourceSnapshot'] == null ? null : (map['sourceSnapshot']! as String).input(),
     );
   }
 }

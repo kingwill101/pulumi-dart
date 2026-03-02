@@ -30,8 +30,8 @@ class PortFixedIp {
 
   factory PortFixedIp.fromMap(Map<String, dynamic> map) {
     return PortFixedIp(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

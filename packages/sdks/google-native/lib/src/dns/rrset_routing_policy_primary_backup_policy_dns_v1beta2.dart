@@ -37,10 +37,10 @@ class RRSetRoutingPolicyPrimaryBackupPolicyDnsV1beta2 {
 
   factory RRSetRoutingPolicyPrimaryBackupPolicyDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return RRSetRoutingPolicyPrimaryBackupPolicyDnsV1beta2(
-      backupGeoTargets: map['backupGeoTargets'] == null ? null : (RRSetRoutingPolicyGeoPolicyDnsV1beta2.fromMap((map['backupGeoTargets'] as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      primaryTargets: map['primaryTargets'] == null ? null : (RRSetRoutingPolicyHealthCheckTargetsDnsV1beta2.fromMap((map['primaryTargets'] as Map).cast<String, dynamic>())).input(),
-      trickleTraffic: map['trickleTraffic'] == null ? null : (map['trickleTraffic'] as double).input(),
+      backupGeoTargets: map['backupGeoTargets'] == null ? null : (RRSetRoutingPolicyGeoPolicyDnsV1beta2.fromMap((map['backupGeoTargets']! as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      primaryTargets: map['primaryTargets'] == null ? null : (RRSetRoutingPolicyHealthCheckTargetsDnsV1beta2.fromMap((map['primaryTargets']! as Map).cast<String, dynamic>())).input(),
+      trickleTraffic: map['trickleTraffic'] == null ? null : (map['trickleTraffic']! as double).input(),
     );
   }
 }

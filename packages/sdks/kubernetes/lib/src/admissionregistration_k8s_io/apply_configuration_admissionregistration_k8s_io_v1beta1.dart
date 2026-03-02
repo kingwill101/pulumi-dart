@@ -48,7 +48,7 @@ class ApplyConfigurationAdmissionregistrationK8sIoV1beta1 {
 
   factory ApplyConfigurationAdmissionregistrationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return ApplyConfigurationAdmissionregistrationK8sIoV1beta1(
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
+      expression: map['expression'] == null ? null : (map['expression']! as String).input(),
     );
   }
 }

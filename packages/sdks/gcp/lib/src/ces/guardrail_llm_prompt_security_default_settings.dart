@@ -23,7 +23,7 @@ class GuardrailLlmPromptSecurityDefaultSettings {
 
   factory GuardrailLlmPromptSecurityDefaultSettings.fromMap(Map<String, dynamic> map) {
     return GuardrailLlmPromptSecurityDefaultSettings(
-      defaultPromptTemplate: map['defaultPromptTemplate'] == null ? null : (map['defaultPromptTemplate'] as String).input(),
+      defaultPromptTemplate: map['defaultPromptTemplate'] == null ? null : (map['defaultPromptTemplate']! as String).input(),
     );
   }
 }

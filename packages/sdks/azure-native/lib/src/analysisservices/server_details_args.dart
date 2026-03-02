@@ -84,18 +84,18 @@ class ServerDetailsArgs {
 
   factory ServerDetailsArgs.fromMap(Map<String, dynamic> map) {
     return ServerDetailsArgs(
-      asAdministrators: map['asAdministrators'] == null ? null : (ServerAdministrators.fromMap((map['asAdministrators'] as Map).cast<String, dynamic>())).input(),
-      backupBlobContainerUri: map['backupBlobContainerUri'] == null ? null : (map['backupBlobContainerUri'] as String).input(),
-      gatewayDetails: map['gatewayDetails'] == null ? null : (GatewayDetails.fromMap((map['gatewayDetails'] as Map).cast<String, dynamic>())).input(),
-      ipV4FirewallSettings: map['ipV4FirewallSettings'] == null ? null : (IPv4FirewallSettings.fromMap((map['ipV4FirewallSettings'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedMode: map['managedMode'] == null ? null : (map['managedMode'] as int).input(),
-      querypoolConnectionMode: map['querypoolConnectionMode'] == null ? null : (ConnectionMode.fromValue(map['querypoolConnectionMode'] as String)).input(),
+      asAdministrators: map['asAdministrators'] == null ? null : (ServerAdministrators.fromMap((map['asAdministrators']! as Map).cast<String, dynamic>())).input(),
+      backupBlobContainerUri: map['backupBlobContainerUri'] == null ? null : (map['backupBlobContainerUri']! as String).input(),
+      gatewayDetails: map['gatewayDetails'] == null ? null : (GatewayDetails.fromMap((map['gatewayDetails']! as Map).cast<String, dynamic>())).input(),
+      ipV4FirewallSettings: map['ipV4FirewallSettings'] == null ? null : (IPv4FirewallSettings.fromMap((map['ipV4FirewallSettings']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedMode: map['managedMode'] == null ? null : (map['managedMode']! as int).input(),
+      querypoolConnectionMode: map['querypoolConnectionMode'] == null ? null : (ConnectionMode.fromValue(map['querypoolConnectionMode']! as String)).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverMonitorMode: map['serverMonitorMode'] == null ? null : (map['serverMonitorMode'] as int).input(),
-      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
+      serverMonitorMode: map['serverMonitorMode'] == null ? null : (map['serverMonitorMode']! as int).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName']! as String).input(),
       sku: (ResourceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -69,16 +69,16 @@ class ResourceGroupCostManagementViewState {
 
   factory ResourceGroupCostManagementViewState.fromMap(Map<String, dynamic> map) {
     return ResourceGroupCostManagementViewState(
-      accumulated: map['accumulated'] == null ? null : (map['accumulated'] as bool).input(),
-      chartType: map['chartType'] == null ? null : (map['chartType'] as String).input(),
-      dataset: map['dataset'] == null ? null : (ResourceGroupCostManagementViewDataset.fromMap((map['dataset'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      kpis: map['kpis'] == null ? null : (pulumi.Input.decodeList<ResourceGroupCostManagementViewKpi>(map['kpis'], (value) => ResourceGroupCostManagementViewKpi.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pivots: map['pivots'] == null ? null : (pulumi.Input.decodeList<ResourceGroupCostManagementViewPivot>(map['pivots'], (value) => ResourceGroupCostManagementViewPivot.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      reportType: map['reportType'] == null ? null : (map['reportType'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      timeframe: map['timeframe'] == null ? null : (map['timeframe'] as String).input(),
+      accumulated: map['accumulated'] == null ? null : (map['accumulated']! as bool).input(),
+      chartType: map['chartType'] == null ? null : (map['chartType']! as String).input(),
+      dataset: map['dataset'] == null ? null : (ResourceGroupCostManagementViewDataset.fromMap((map['dataset']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      kpis: map['kpis'] == null ? null : (pulumi.Input.decodeList<ResourceGroupCostManagementViewKpi>(map['kpis']!, (value) => ResourceGroupCostManagementViewKpi.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pivots: map['pivots'] == null ? null : (pulumi.Input.decodeList<ResourceGroupCostManagementViewPivot>(map['pivots']!, (value) => ResourceGroupCostManagementViewPivot.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      reportType: map['reportType'] == null ? null : (map['reportType']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      timeframe: map['timeframe'] == null ? null : (map['timeframe']! as String).input(),
     );
   }
 }

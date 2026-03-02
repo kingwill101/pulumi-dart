@@ -21,7 +21,7 @@ class StorageProperties {
 
   factory StorageProperties.fromMap(Map<String, dynamic> map) {
     return StorageProperties(
-      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb'] as double).input(),
+      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb']! as double).input(),
     );
   }
 }

@@ -72,7 +72,7 @@ class GetSharedPrivateLinkResourceResult {
   factory GetSharedPrivateLinkResourceResult.fromMap(Map<String, dynamic> map) {
     return GetSharedPrivateLinkResourceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      dnsZone: map['dnsZone'] == null ? null : map['dnsZone'] as String,
+      dnsZone: map['dnsZone'] == null ? null : map['dnsZone']! as String,
       groupId: map['groupId'] as String,
       id: map['id'] as String,
       name: map['name'] as String,

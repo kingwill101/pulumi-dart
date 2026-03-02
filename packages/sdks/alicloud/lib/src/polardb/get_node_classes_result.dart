@@ -61,16 +61,16 @@ class GetNodeClassesResult {
 
   factory GetNodeClassesResult.fromMap(Map<String, dynamic> map) {
     return GetNodeClassesResult(
-      category: map['category'] == null ? null : map['category'] as String,
+      category: map['category'] == null ? null : map['category']! as String,
       classes: pulumi.Input.decodeList<GetNodeClassesClass>(map['classes'], (value) => GetNodeClassesClass.fromMap((value as Map).cast<String, dynamic>())),
-      dbNodeClass: map['dbNodeClass'] == null ? null : map['dbNodeClass'] as String,
-      dbType: map['dbType'] == null ? null : map['dbType'] as String,
-      dbVersion: map['dbVersion'] == null ? null : map['dbVersion'] as String,
+      dbNodeClass: map['dbNodeClass'] == null ? null : map['dbNodeClass']! as String,
+      dbType: map['dbType'] == null ? null : map['dbType']! as String,
+      dbVersion: map['dbVersion'] == null ? null : map['dbVersion']! as String,
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       payType: map['payType'] as String,
-      regionId: map['regionId'] == null ? null : map['regionId'] as String,
-      zoneId: map['zoneId'] == null ? null : map['zoneId'] as String,
+      regionId: map['regionId'] == null ? null : map['regionId']! as String,
+      zoneId: map['zoneId'] == null ? null : map['zoneId']! as String,
     );
   }
 }

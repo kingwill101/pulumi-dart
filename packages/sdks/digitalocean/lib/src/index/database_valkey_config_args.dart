@@ -89,20 +89,20 @@ class DatabaseValkeyConfigArgs {
 
   factory DatabaseValkeyConfigArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseValkeyConfigArgs(
-      aclChannelsDefault: map['aclChannelsDefault'] == null ? null : (map['aclChannelsDefault'] as String).input(),
+      aclChannelsDefault: map['aclChannelsDefault'] == null ? null : (map['aclChannelsDefault']! as String).input(),
       clusterId: (map['clusterId'] as String).input(),
-      frequentSnapshots: map['frequentSnapshots'] == null ? null : (map['frequentSnapshots'] as bool).input(),
-      ioThreads: map['ioThreads'] == null ? null : (map['ioThreads'] as int).input(),
-      lfuDecayTime: map['lfuDecayTime'] == null ? null : (map['lfuDecayTime'] as int).input(),
-      lfuLogFactor: map['lfuLogFactor'] == null ? null : (map['lfuLogFactor'] as int).input(),
-      notifyKeyspaceEvents: map['notifyKeyspaceEvents'] == null ? null : (map['notifyKeyspaceEvents'] as String).input(),
-      numberOfDatabases: map['numberOfDatabases'] == null ? null : (map['numberOfDatabases'] as int).input(),
-      persistence: map['persistence'] == null ? null : (map['persistence'] as String).input(),
-      pubsubClientOutputBufferLimit: map['pubsubClientOutputBufferLimit'] == null ? null : (map['pubsubClientOutputBufferLimit'] as int).input(),
-      ssl: map['ssl'] == null ? null : (map['ssl'] as bool).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
-      valkeyActiveExpireEffort: map['valkeyActiveExpireEffort'] == null ? null : (map['valkeyActiveExpireEffort'] as int).input(),
-      valkeyMaxmemoryPolicy: map['valkeyMaxmemoryPolicy'] == null ? null : (map['valkeyMaxmemoryPolicy'] as String).input(),
+      frequentSnapshots: map['frequentSnapshots'] == null ? null : (map['frequentSnapshots']! as bool).input(),
+      ioThreads: map['ioThreads'] == null ? null : (map['ioThreads']! as int).input(),
+      lfuDecayTime: map['lfuDecayTime'] == null ? null : (map['lfuDecayTime']! as int).input(),
+      lfuLogFactor: map['lfuLogFactor'] == null ? null : (map['lfuLogFactor']! as int).input(),
+      notifyKeyspaceEvents: map['notifyKeyspaceEvents'] == null ? null : (map['notifyKeyspaceEvents']! as String).input(),
+      numberOfDatabases: map['numberOfDatabases'] == null ? null : (map['numberOfDatabases']! as int).input(),
+      persistence: map['persistence'] == null ? null : (map['persistence']! as String).input(),
+      pubsubClientOutputBufferLimit: map['pubsubClientOutputBufferLimit'] == null ? null : (map['pubsubClientOutputBufferLimit']! as int).input(),
+      ssl: map['ssl'] == null ? null : (map['ssl']! as bool).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
+      valkeyActiveExpireEffort: map['valkeyActiveExpireEffort'] == null ? null : (map['valkeyActiveExpireEffort']! as int).input(),
+      valkeyMaxmemoryPolicy: map['valkeyMaxmemoryPolicy'] == null ? null : (map['valkeyMaxmemoryPolicy']! as String).input(),
     );
   }
 }

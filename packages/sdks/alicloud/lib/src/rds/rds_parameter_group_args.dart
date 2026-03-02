@@ -48,7 +48,7 @@ class RdsParameterGroupArgs {
       engine: (map['engine'] as String).input(),
       engineVersion: (map['engineVersion'] as String).input(),
       paramDetails: (pulumi.Input.decodeList<RdsParameterGroupParamDetail>(map['paramDetails'], (value) => RdsParameterGroupParamDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parameterGroupDesc: map['parameterGroupDesc'] == null ? null : (map['parameterGroupDesc'] as String).input(),
+      parameterGroupDesc: map['parameterGroupDesc'] == null ? null : (map['parameterGroupDesc']! as String).input(),
       parameterGroupName: (map['parameterGroupName'] as String).input(),
     );
   }

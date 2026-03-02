@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2TableOptions {
 
   factory GooglePrivacyDlpV2TableOptions.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2TableOptions(
-      identifyingFields: map['identifyingFields'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2FieldId>(map['identifyingFields'], (value) => GooglePrivacyDlpV2FieldId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identifyingFields: map['identifyingFields'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2FieldId>(map['identifyingFields']!, (value) => GooglePrivacyDlpV2FieldId.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

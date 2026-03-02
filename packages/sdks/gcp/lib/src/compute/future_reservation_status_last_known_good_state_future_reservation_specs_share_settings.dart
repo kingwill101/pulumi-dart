@@ -33,9 +33,9 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettin
 
   factory FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettings.fromMap(Map<String, dynamic> map) {
     return FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettings(
-      projectMaps: map['projectMaps'] == null ? null : (pulumi.Input.decodeList<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap>(map['projectMaps'], (value) => FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      projects: map['projects'] == null ? null : ((map['projects'] as List).cast<String>()).input(),
-      shareType: map['shareType'] == null ? null : (map['shareType'] as String).input(),
+      projectMaps: map['projectMaps'] == null ? null : (pulumi.Input.decodeList<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap>(map['projectMaps']!, (value) => FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      projects: map['projects'] == null ? null : ((map['projects']! as List).cast<String>()).input(),
+      shareType: map['shareType'] == null ? null : (map['shareType']! as String).input(),
     );
   }
 }

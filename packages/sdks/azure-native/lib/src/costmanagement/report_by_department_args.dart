@@ -55,9 +55,9 @@ class ReportByDepartmentArgs {
       definition: (ReportDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())).input(),
       deliveryInfo: (ReportDeliveryInfo.fromMap((map['deliveryInfo'] as Map).cast<String, dynamic>())).input(),
       departmentId: (map['departmentId'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      reportName: map['reportName'] == null ? null : (map['reportName'] as String).input(),
-      schedule: map['schedule'] == null ? null : (ReportSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      reportName: map['reportName'] == null ? null : (map['reportName']! as String).input(),
+      schedule: map['schedule'] == null ? null : (ReportSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

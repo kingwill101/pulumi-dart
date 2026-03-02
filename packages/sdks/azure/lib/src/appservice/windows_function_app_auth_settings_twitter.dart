@@ -31,8 +31,8 @@ class WindowsFunctionAppAuthSettingsTwitter {
   factory WindowsFunctionAppAuthSettingsTwitter.fromMap(Map<String, dynamic> map) {
     return WindowsFunctionAppAuthSettingsTwitter(
       consumerKey: (map['consumerKey'] as String).input(),
-      consumerSecret: map['consumerSecret'] == null ? null : (map['consumerSecret'] as String).input(),
-      consumerSecretSettingName: map['consumerSecretSettingName'] == null ? null : (map['consumerSecretSettingName'] as String).input(),
+      consumerSecret: map['consumerSecret'] == null ? null : (map['consumerSecret']! as String).input(),
+      consumerSecretSettingName: map['consumerSecretSettingName'] == null ? null : (map['consumerSecretSettingName']! as String).input(),
     );
   }
 }

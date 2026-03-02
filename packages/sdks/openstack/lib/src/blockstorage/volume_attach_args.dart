@@ -87,18 +87,18 @@ class VolumeAttachArgs {
 
   factory VolumeAttachArgs.fromMap(Map<String, dynamic> map) {
     return VolumeAttachArgs(
-      attachMode: map['attachMode'] == null ? null : (map['attachMode'] as String).input(),
-      device: map['device'] == null ? null : (map['device'] as String).input(),
+      attachMode: map['attachMode'] == null ? null : (map['attachMode']! as String).input(),
+      device: map['device'] == null ? null : (map['device']! as String).input(),
       hostName: (map['hostName'] as String).input(),
-      initiator: map['initiator'] == null ? null : (map['initiator'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      multipath: map['multipath'] == null ? null : (map['multipath'] as bool).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      initiator: map['initiator'] == null ? null : (map['initiator']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      multipath: map['multipath'] == null ? null : (map['multipath']! as bool).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      platform: map['platform'] == null ? null : (map['platform']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       volumeId: (map['volumeId'] as String).input(),
-      wwnn: map['wwnn'] == null ? null : (map['wwnn'] as String).input(),
-      wwpns: map['wwpns'] == null ? null : ((map['wwpns'] as List).cast<String>()).input(),
+      wwnn: map['wwnn'] == null ? null : (map['wwnn']! as String).input(),
+      wwpns: map['wwpns'] == null ? null : ((map['wwpns']! as List).cast<String>()).input(),
     );
   }
 }

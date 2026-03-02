@@ -42,8 +42,8 @@ class SiteToSiteVpnAttachmentArgs {
   factory SiteToSiteVpnAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return SiteToSiteVpnAttachmentArgs(
       coreNetworkId: (map['coreNetworkId'] as String).input(),
-      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : (map['routingPolicyLabel'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : ((map['routingPolicyLabel'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       vpnConnectionArn: (map['vpnConnectionArn'] as String).input(),
     );
   }

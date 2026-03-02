@@ -52,8 +52,8 @@ class RaiPolicyArgs {
     return RaiPolicyArgs(
       endpointName: (map['endpointName'] as String).input(),
       properties: (RaiPolicyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      proxyApiVersion: map['proxyApiVersion'] == null ? null : (map['proxyApiVersion'] as String).input(),
-      raiPolicyName: map['raiPolicyName'] == null ? null : (map['raiPolicyName'] as String).input(),
+      proxyApiVersion: map['proxyApiVersion'] == null ? null : (map['proxyApiVersion']! as String).input(),
+      raiPolicyName: map['raiPolicyName'] == null ? null : (map['raiPolicyName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );

@@ -48,12 +48,12 @@ class ServiceTopicState {
 
   factory ServiceTopicState.fromMap(Map<String, dynamic> map) {
     return ServiceTopicState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging'] as bool).input(),
-      loggingEnabled: map['loggingEnabled'] == null ? null : (map['loggingEnabled'] as bool).input(),
-      maxMessageSize: map['maxMessageSize'] == null ? null : (map['maxMessageSize'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging']! as bool).input(),
+      loggingEnabled: map['loggingEnabled'] == null ? null : (map['loggingEnabled']! as bool).input(),
+      maxMessageSize: map['maxMessageSize'] == null ? null : (map['maxMessageSize']! as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName']! as String).input(),
     );
   }
 }

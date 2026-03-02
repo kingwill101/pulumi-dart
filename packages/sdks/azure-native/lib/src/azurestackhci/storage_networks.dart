@@ -37,10 +37,10 @@ class StorageNetworks {
 
   factory StorageNetworks.fromMap(Map<String, dynamic> map) {
     return StorageNetworks(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkAdapterName: map['networkAdapterName'] == null ? null : (map['networkAdapterName'] as String).input(),
-      storageAdapterIPInfo: map['storageAdapterIPInfo'] == null ? null : (pulumi.Input.decodeList<StorageAdapterIPInfo>(map['storageAdapterIPInfo'], (value) => StorageAdapterIPInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vlanId: map['vlanId'] == null ? null : (map['vlanId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkAdapterName: map['networkAdapterName'] == null ? null : (map['networkAdapterName']! as String).input(),
+      storageAdapterIPInfo: map['storageAdapterIPInfo'] == null ? null : (pulumi.Input.decodeList<StorageAdapterIPInfo>(map['storageAdapterIPInfo']!, (value) => StorageAdapterIPInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vlanId: map['vlanId'] == null ? null : (map['vlanId']! as String).input(),
     );
   }
 }

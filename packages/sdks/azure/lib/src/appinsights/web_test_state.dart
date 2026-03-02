@@ -87,20 +87,20 @@ class WebTestState {
 
   factory WebTestState.fromMap(Map<String, dynamic> map) {
     return WebTestState(
-      applicationInsightsId: map['applicationInsightsId'] == null ? null : (map['applicationInsightsId'] as String).input(),
-      configuration: map['configuration'] == null ? null : (map['configuration'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      frequency: map['frequency'] == null ? null : (map['frequency'] as int).input(),
-      geoLocations: map['geoLocations'] == null ? null : ((map['geoLocations'] as List).cast<String>()).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      retryEnabled: map['retryEnabled'] == null ? null : (map['retryEnabled'] as bool).input(),
-      syntheticMonitorId: map['syntheticMonitorId'] == null ? null : (map['syntheticMonitorId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      applicationInsightsId: map['applicationInsightsId'] == null ? null : (map['applicationInsightsId']! as String).input(),
+      configuration: map['configuration'] == null ? null : (map['configuration']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency']! as int).input(),
+      geoLocations: map['geoLocations'] == null ? null : ((map['geoLocations']! as List).cast<String>()).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      retryEnabled: map['retryEnabled'] == null ? null : (map['retryEnabled']! as bool).input(),
+      syntheticMonitorId: map['syntheticMonitorId'] == null ? null : (map['syntheticMonitorId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
     );
   }
 }

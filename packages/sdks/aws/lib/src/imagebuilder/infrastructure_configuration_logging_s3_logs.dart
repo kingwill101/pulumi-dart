@@ -28,7 +28,7 @@ class InfrastructureConfigurationLoggingS3Logs {
   factory InfrastructureConfigurationLoggingS3Logs.fromMap(Map<String, dynamic> map) {
     return InfrastructureConfigurationLoggingS3Logs(
       s3BucketName: (map['s3BucketName'] as String).input(),
-      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : (map['s3KeyPrefix'] as String).input(),
+      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : ((map['s3KeyPrefix'] as String).input()).input(),
     );
   }
 }

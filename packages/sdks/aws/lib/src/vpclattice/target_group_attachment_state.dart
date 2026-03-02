@@ -32,9 +32,9 @@ class TargetGroupAttachmentState {
 
   factory TargetGroupAttachmentState.fromMap(Map<String, dynamic> map) {
     return TargetGroupAttachmentState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      target: map['target'] == null ? null : (TargetGroupAttachmentTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
-      targetGroupIdentifier: map['targetGroupIdentifier'] == null ? null : (map['targetGroupIdentifier'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      target: map['target'] == null ? null : ((TargetGroupAttachmentTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input()).input(),
+      targetGroupIdentifier: map['targetGroupIdentifier'] == null ? null : ((map['targetGroupIdentifier'] as String).input()).input(),
     );
   }
 }

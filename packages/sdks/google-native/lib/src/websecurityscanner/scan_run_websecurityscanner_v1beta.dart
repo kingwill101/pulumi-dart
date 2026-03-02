@@ -75,17 +75,17 @@ class ScanRunWebsecurityscannerV1beta {
 
   factory ScanRunWebsecurityscannerV1beta.fromMap(Map<String, dynamic> map) {
     return ScanRunWebsecurityscannerV1beta(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      errorTrace: map['errorTrace'] == null ? null : (ScanRunErrorTrace.fromMap((map['errorTrace'] as Map).cast<String, dynamic>())).input(),
-      executionState: map['executionState'] == null ? null : (ScanRunExecutionStateWebsecurityscannerV1beta.fromValue(map['executionState'] as String)).input(),
-      hasVulnerabilities: map['hasVulnerabilities'] == null ? null : (map['hasVulnerabilities'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      progressPercent: map['progressPercent'] == null ? null : (map['progressPercent'] as int).input(),
-      resultState: map['resultState'] == null ? null : (ScanRunResultStateWebsecurityscannerV1beta.fromValue(map['resultState'] as String)).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      urlsCrawledCount: map['urlsCrawledCount'] == null ? null : (map['urlsCrawledCount'] as String).input(),
-      urlsTestedCount: map['urlsTestedCount'] == null ? null : (map['urlsTestedCount'] as String).input(),
-      warningTraces: map['warningTraces'] == null ? null : (pulumi.Input.decodeList<ScanRunWarningTrace>(map['warningTraces'], (value) => ScanRunWarningTrace.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      errorTrace: map['errorTrace'] == null ? null : (ScanRunErrorTrace.fromMap((map['errorTrace']! as Map).cast<String, dynamic>())).input(),
+      executionState: map['executionState'] == null ? null : (ScanRunExecutionStateWebsecurityscannerV1beta.fromValue(map['executionState']! as String)).input(),
+      hasVulnerabilities: map['hasVulnerabilities'] == null ? null : (map['hasVulnerabilities']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      progressPercent: map['progressPercent'] == null ? null : (map['progressPercent']! as int).input(),
+      resultState: map['resultState'] == null ? null : (ScanRunResultStateWebsecurityscannerV1beta.fromValue(map['resultState']! as String)).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      urlsCrawledCount: map['urlsCrawledCount'] == null ? null : (map['urlsCrawledCount']! as String).input(),
+      urlsTestedCount: map['urlsTestedCount'] == null ? null : (map['urlsTestedCount']! as String).input(),
+      warningTraces: map['warningTraces'] == null ? null : (pulumi.Input.decodeList<ScanRunWarningTrace>(map['warningTraces']!, (value) => ScanRunWarningTrace.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

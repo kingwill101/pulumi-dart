@@ -19,7 +19,7 @@ class GetVpnLinkConnectionIkeSasResult {
 
   factory GetVpnLinkConnectionIkeSasResult.fromMap(Map<String, dynamic> map) {
     return GetVpnLinkConnectionIkeSasResult(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : map['value']! as String,
     );
   }
 }

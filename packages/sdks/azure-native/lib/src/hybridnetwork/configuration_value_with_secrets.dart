@@ -33,9 +33,9 @@ class ConfigurationValueWithSecrets {
 
   factory ConfigurationValueWithSecrets.fromMap(Map<String, dynamic> map) {
     return ConfigurationValueWithSecrets(
-      configurationGroupSchemaResourceReference: map['configurationGroupSchemaResourceReference'] == null ? null : (OpenDeploymentResourceReference.fromMap((map['configurationGroupSchemaResourceReference'] as Map).cast<String, dynamic>())).input(),
+      configurationGroupSchemaResourceReference: map['configurationGroupSchemaResourceReference'] == null ? null : (OpenDeploymentResourceReference.fromMap((map['configurationGroupSchemaResourceReference']! as Map).cast<String, dynamic>())).input(),
       configurationType: (map['configurationType'] as String).input(),
-      secretConfigurationValue: map['secretConfigurationValue'] == null ? null : (map['secretConfigurationValue'] as String).input(),
+      secretConfigurationValue: map['secretConfigurationValue'] == null ? null : (map['secretConfigurationValue']! as String).input(),
     );
   }
 }

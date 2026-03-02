@@ -40,9 +40,9 @@ class HostingCustomDomainCert {
 
   factory HostingCustomDomainCert.fromMap(Map<String, dynamic> map) {
     return HostingCustomDomainCert(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      verification: map['verification'] == null ? null : (HostingCustomDomainCertVerification.fromMap((map['verification'] as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      verification: map['verification'] == null ? null : (HostingCustomDomainCertVerification.fromMap((map['verification']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

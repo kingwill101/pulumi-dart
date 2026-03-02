@@ -90,17 +90,17 @@ class PipelineJobState {
 
   factory PipelineJobState.fromMap(Map<String, dynamic> map) {
     return PipelineJobState(
-      backfillPipelineJob: map['backfillPipelineJob'] == null ? null : (PipelineJobBackfillPipelineJob.fromMap((map['backfillPipelineJob'] as Map).cast<String, dynamic>())).input(),
-      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
-      disableLineage: map['disableLineage'] == null ? null : (map['disableLineage'] as bool).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mappingPipelineJob: map['mappingPipelineJob'] == null ? null : (PipelineJobMappingPipelineJob.fromMap((map['mappingPipelineJob'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      reconciliationPipelineJob: map['reconciliationPipelineJob'] == null ? null : (PipelineJobReconciliationPipelineJob.fromMap((map['reconciliationPipelineJob'] as Map).cast<String, dynamic>())).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      backfillPipelineJob: map['backfillPipelineJob'] == null ? null : (PipelineJobBackfillPipelineJob.fromMap((map['backfillPipelineJob']! as Map).cast<String, dynamic>())).input(),
+      dataset: map['dataset'] == null ? null : (map['dataset']! as String).input(),
+      disableLineage: map['disableLineage'] == null ? null : (map['disableLineage']! as bool).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mappingPipelineJob: map['mappingPipelineJob'] == null ? null : (PipelineJobMappingPipelineJob.fromMap((map['mappingPipelineJob']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      reconciliationPipelineJob: map['reconciliationPipelineJob'] == null ? null : (PipelineJobReconciliationPipelineJob.fromMap((map['reconciliationPipelineJob']! as Map).cast<String, dynamic>())).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
     );
   }
 }

@@ -48,11 +48,11 @@ class SpecialistPoolArgs {
   factory SpecialistPoolArgs.fromMap(Map<String, dynamic> map) {
     return SpecialistPoolArgs(
       displayName: (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      specialistManagerEmails: map['specialistManagerEmails'] == null ? null : ((map['specialistManagerEmails'] as List).cast<String>()).input(),
-      specialistWorkerEmails: map['specialistWorkerEmails'] == null ? null : ((map['specialistWorkerEmails'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      specialistManagerEmails: map['specialistManagerEmails'] == null ? null : ((map['specialistManagerEmails']! as List).cast<String>()).input(),
+      specialistWorkerEmails: map['specialistWorkerEmails'] == null ? null : ((map['specialistWorkerEmails']! as List).cast<String>()).input(),
     );
   }
 }

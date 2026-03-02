@@ -21,7 +21,7 @@ class GkeClusterGkehubV1alpha2 {
 
   factory GkeClusterGkehubV1alpha2.fromMap(Map<String, dynamic> map) {
     return GkeClusterGkehubV1alpha2(
-      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink'] as String).input(),
+      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink']! as String).input(),
     );
   }
 }

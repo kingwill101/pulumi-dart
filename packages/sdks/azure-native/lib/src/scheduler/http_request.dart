@@ -41,11 +41,11 @@ class HttpRequest {
 
   factory HttpRequest.fromMap(Map<String, dynamic> map) {
     return HttpRequest(
-      authentication: map['authentication'] == null ? null : (BasicAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      body: map['body'] == null ? null : (map['body'] as String).input(),
-      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, String>()).input(),
-      method: map['method'] == null ? null : (map['method'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      authentication: map['authentication'] == null ? null : (BasicAuthentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
+      headers: map['headers'] == null ? null : ((map['headers']! as Map).cast<String, String>()).input(),
+      method: map['method'] == null ? null : (map['method']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

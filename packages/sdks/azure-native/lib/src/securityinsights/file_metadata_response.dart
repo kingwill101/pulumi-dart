@@ -43,9 +43,9 @@ class FileMetadataResponse {
     return FileMetadataResponse(
       deleteStatus: (map['deleteStatus'] as String).input(),
       fileContentUri: (map['fileContentUri'] as String).input(),
-      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat'] as String).input(),
-      fileName: map['fileName'] == null ? null : (map['fileName'] as String).input(),
-      fileSize: map['fileSize'] == null ? null : (map['fileSize'] as int).input(),
+      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat']! as String).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName']! as String).input(),
+      fileSize: map['fileSize'] == null ? null : (map['fileSize']! as int).input(),
     );
   }
 }

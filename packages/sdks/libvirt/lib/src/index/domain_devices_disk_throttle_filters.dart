@@ -21,7 +21,7 @@ class DomainDevicesDiskThrottleFilters {
 
   factory DomainDevicesDiskThrottleFilters.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskThrottleFilters(
-      throttleFilters: map['throttleFilters'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskThrottleFiltersThrottleFilter>(map['throttleFilters'], (value) => DomainDevicesDiskThrottleFiltersThrottleFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      throttleFilters: map['throttleFilters'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskThrottleFiltersThrottleFilter>(map['throttleFilters']!, (value) => DomainDevicesDiskThrottleFiltersThrottleFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

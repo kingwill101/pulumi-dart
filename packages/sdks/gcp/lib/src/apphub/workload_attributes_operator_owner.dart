@@ -25,7 +25,7 @@ class WorkloadAttributesOperatorOwner {
 
   factory WorkloadAttributesOperatorOwner.fromMap(Map<String, dynamic> map) {
     return WorkloadAttributesOperatorOwner(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       email: (map['email'] as String).input(),
     );
   }

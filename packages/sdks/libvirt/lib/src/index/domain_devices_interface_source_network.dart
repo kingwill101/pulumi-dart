@@ -35,10 +35,10 @@ class DomainDevicesInterfaceSourceNetwork {
 
   factory DomainDevicesInterfaceSourceNetwork.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceNetwork(
-      bridge: map['bridge'] == null ? null : (map['bridge'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      portGroup: map['portGroup'] == null ? null : (map['portGroup'] as String).input(),
-      portId: map['portId'] == null ? null : (map['portId'] as String).input(),
+      bridge: map['bridge'] == null ? null : (map['bridge']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      portGroup: map['portGroup'] == null ? null : (map['portGroup']! as String).input(),
+      portId: map['portId'] == null ? null : (map['portId']! as String).input(),
     );
   }
 }

@@ -59,10 +59,10 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfig 
 
   factory PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfig.fromMap(Map<String, dynamic> map) {
     return PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfig(
-      customOutput: map['customOutput'] == null ? null : (PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutput.fromMap((map['customOutput'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      customOutput: map['customOutput'] == null ? null : (PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutput.fromMap((map['customOutput']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       predicate: (PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigPredicate.fromMap((map['predicate'] as Map).cast<String, dynamic>())).input(),
-      recommendation: map['recommendation'] == null ? null : (map['recommendation'] as String).input(),
+      recommendation: map['recommendation'] == null ? null : (map['recommendation']! as String).input(),
       resourceSelector: (PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelector.fromMap((map['resourceSelector'] as Map).cast<String, dynamic>())).input(),
       severity: (map['severity'] as String).input(),
     );

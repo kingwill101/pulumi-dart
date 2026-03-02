@@ -32,8 +32,8 @@ class ServiceServiceConnectConfigurationLogConfiguration {
   factory ServiceServiceConnectConfigurationLogConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceServiceConnectConfigurationLogConfiguration(
       logDriver: (map['logDriver'] as String).input(),
-      options: map['options'] == null ? null : ((map['options'] as Map).cast<String, String>()).input(),
-      secretOptions: map['secretOptions'] == null ? null : (pulumi.Input.decodeList<ServiceServiceConnectConfigurationLogConfigurationSecretOption>(map['secretOptions'], (value) => ServiceServiceConnectConfigurationLogConfigurationSecretOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      options: map['options'] == null ? null : (((map['options'] as Map).cast<String, String>()).input()).input(),
+      secretOptions: map['secretOptions'] == null ? null : ((pulumi.Input.decodeList<ServiceServiceConnectConfigurationLogConfigurationSecretOption>(map['secretOptions']!, (value) => ServiceServiceConnectConfigurationLogConfigurationSecretOption.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

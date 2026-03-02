@@ -95,17 +95,17 @@ class NetworkFirewallPolicyPacketMirroringRuleArgs {
   factory NetworkFirewallPolicyPacketMirroringRuleArgs.fromMap(Map<String, dynamic> map) {
     return NetworkFirewallPolicyPacketMirroringRuleArgs(
       action: (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       direction: (map['direction'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
       firewallPolicy: (map['firewallPolicy'] as String).input(),
       match: (NetworkFirewallPolicyPacketMirroringRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
       priority: (map['priority'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      securityProfileGroup: map['securityProfileGroup'] == null ? null : (map['securityProfileGroup'] as String).input(),
-      targetSecureTags: map['targetSecureTags'] == null ? null : (pulumi.Input.decodeList<NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag>(map['targetSecureTags'], (value) => NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tlsInspect: map['tlsInspect'] == null ? null : (map['tlsInspect'] as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      securityProfileGroup: map['securityProfileGroup'] == null ? null : (map['securityProfileGroup']! as String).input(),
+      targetSecureTags: map['targetSecureTags'] == null ? null : (pulumi.Input.decodeList<NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag>(map['targetSecureTags']!, (value) => NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tlsInspect: map['tlsInspect'] == null ? null : (map['tlsInspect']! as bool).input(),
     );
   }
 }

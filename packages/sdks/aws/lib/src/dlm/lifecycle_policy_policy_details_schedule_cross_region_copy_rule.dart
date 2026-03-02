@@ -46,13 +46,13 @@ class LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule {
 
   factory LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule(
-      cmkArn: map['cmkArn'] == null ? null : (map['cmkArn'] as String).input(),
-      copyTags: map['copyTags'] == null ? null : (map['copyTags'] as bool).input(),
-      deprecateRule: map['deprecateRule'] == null ? null : (LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule.fromMap((map['deprecateRule'] as Map).cast<String, dynamic>())).input(),
+      cmkArn: map['cmkArn'] == null ? null : ((map['cmkArn'] as String).input()).input(),
+      copyTags: map['copyTags'] == null ? null : ((map['copyTags'] as bool).input()).input(),
+      deprecateRule: map['deprecateRule'] == null ? null : ((LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule.fromMap((map['deprecateRule']! as Map).cast<String, dynamic>())).input()).input(),
       encrypted: (map['encrypted'] as bool).input(),
-      retainRule: map['retainRule'] == null ? null : (LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule.fromMap((map['retainRule'] as Map).cast<String, dynamic>())).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
-      targetRegion: map['targetRegion'] == null ? null : (map['targetRegion'] as String).input(),
+      retainRule: map['retainRule'] == null ? null : ((LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule.fromMap((map['retainRule']! as Map).cast<String, dynamic>())).input()).input(),
+      target: map['target'] == null ? null : ((map['target'] as String).input()).input(),
+      targetRegion: map['targetRegion'] == null ? null : ((map['targetRegion'] as String).input()).input(),
     );
   }
 }

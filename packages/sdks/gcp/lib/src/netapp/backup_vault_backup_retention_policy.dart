@@ -41,10 +41,10 @@ class BackupVaultBackupRetentionPolicy {
   factory BackupVaultBackupRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return BackupVaultBackupRetentionPolicy(
       backupMinimumEnforcedRetentionDays: (map['backupMinimumEnforcedRetentionDays'] as int).input(),
-      dailyBackupImmutable: map['dailyBackupImmutable'] == null ? null : (map['dailyBackupImmutable'] as bool).input(),
-      manualBackupImmutable: map['manualBackupImmutable'] == null ? null : (map['manualBackupImmutable'] as bool).input(),
-      monthlyBackupImmutable: map['monthlyBackupImmutable'] == null ? null : (map['monthlyBackupImmutable'] as bool).input(),
-      weeklyBackupImmutable: map['weeklyBackupImmutable'] == null ? null : (map['weeklyBackupImmutable'] as bool).input(),
+      dailyBackupImmutable: map['dailyBackupImmutable'] == null ? null : (map['dailyBackupImmutable']! as bool).input(),
+      manualBackupImmutable: map['manualBackupImmutable'] == null ? null : (map['manualBackupImmutable']! as bool).input(),
+      monthlyBackupImmutable: map['monthlyBackupImmutable'] == null ? null : (map['monthlyBackupImmutable']! as bool).input(),
+      weeklyBackupImmutable: map['weeklyBackupImmutable'] == null ? null : (map['weeklyBackupImmutable']! as bool).input(),
     );
   }
 }

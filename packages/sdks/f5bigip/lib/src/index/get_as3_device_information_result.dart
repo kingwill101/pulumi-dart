@@ -32,7 +32,7 @@ class GetAs3DeviceInformationResult {
 
   factory GetAs3DeviceInformationResult.fromMap(Map<String, dynamic> map) {
     return GetAs3DeviceInformationResult(
-      applications: map['applications'] == null ? null : (map['applications'] as List).cast<String>(),
+      applications: map['applications'] == null ? null : (map['applications']! as List).cast<String>(),
       as3Json: map['as3Json'] as String,
       id: map['id'] as String,
       tenant: map['tenant'] as String,

@@ -53,12 +53,12 @@ class DeploymentModelResponse {
   factory DeploymentModelResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentModelResponse(
       callRateLimit: (CallRateLimitResponse.fromMap((map['callRateLimit'] as Map).cast<String, dynamic>())).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      sourceAccount: map['sourceAccount'] == null ? null : (map['sourceAccount'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      sourceAccount: map['sourceAccount'] == null ? null : (map['sourceAccount']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

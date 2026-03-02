@@ -37,10 +37,10 @@ class IoTDeviceInfo {
 
   factory IoTDeviceInfo.fromMap(Map<String, dynamic> map) {
     return IoTDeviceInfo(
-      authentication: map['authentication'] == null ? null : (Authentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      authentication: map['authentication'] == null ? null : (Authentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
       deviceId: (map['deviceId'] as String).input(),
       ioTHostHub: (map['ioTHostHub'] as String).input(),
-      ioTHostHubId: map['ioTHostHubId'] == null ? null : (map['ioTHostHubId'] as String).input(),
+      ioTHostHubId: map['ioTHostHubId'] == null ? null : (map['ioTHostHubId']! as String).input(),
     );
   }
 }

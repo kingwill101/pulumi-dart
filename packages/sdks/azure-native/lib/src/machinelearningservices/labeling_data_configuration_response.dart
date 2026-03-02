@@ -26,8 +26,8 @@ class LabelingDataConfigurationResponse {
 
   factory LabelingDataConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return LabelingDataConfigurationResponse(
-      dataId: map['dataId'] == null ? null : (map['dataId'] as String).input(),
-      incrementalDataRefresh: map['incrementalDataRefresh'] == null ? null : (map['incrementalDataRefresh'] as String).input(),
+      dataId: map['dataId'] == null ? null : (map['dataId']! as String).input(),
+      incrementalDataRefresh: map['incrementalDataRefresh'] == null ? null : (map['incrementalDataRefresh']! as String).input(),
     );
   }
 }

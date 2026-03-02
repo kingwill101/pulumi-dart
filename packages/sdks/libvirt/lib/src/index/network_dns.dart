@@ -49,12 +49,12 @@ class NetworkDns {
 
   factory NetworkDns.fromMap(Map<String, dynamic> map) {
     return NetworkDns(
-      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
-      forwardPlainNames: map['forwardPlainNames'] == null ? null : (map['forwardPlainNames'] as String).input(),
-      forwarders: map['forwarders'] == null ? null : (pulumi.Input.decodeList<NetworkDnsForwarder>(map['forwarders'], (value) => NetworkDnsForwarder.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<NetworkDnsHost>(map['hosts'], (value) => NetworkDnsHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      srVs: map['srVs'] == null ? null : (pulumi.Input.decodeList<NetworkDnsSrV>(map['srVs'], (value) => NetworkDnsSrV.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      txTs: map['txTs'] == null ? null : (pulumi.Input.decodeList<NetworkDnsTxT>(map['txTs'], (value) => NetworkDnsTxT.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as String).input(),
+      forwardPlainNames: map['forwardPlainNames'] == null ? null : (map['forwardPlainNames']! as String).input(),
+      forwarders: map['forwarders'] == null ? null : (pulumi.Input.decodeList<NetworkDnsForwarder>(map['forwarders']!, (value) => NetworkDnsForwarder.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<NetworkDnsHost>(map['hosts']!, (value) => NetworkDnsHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      srVs: map['srVs'] == null ? null : (pulumi.Input.decodeList<NetworkDnsSrV>(map['srVs']!, (value) => NetworkDnsSrV.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      txTs: map['txTs'] == null ? null : (pulumi.Input.decodeList<NetworkDnsTxT>(map['txTs']!, (value) => NetworkDnsTxT.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

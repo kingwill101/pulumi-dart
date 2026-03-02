@@ -26,8 +26,8 @@ class ApiResourceDefinitionsResponse {
 
   factory ApiResourceDefinitionsResponse.fromMap(Map<String, dynamic> map) {
     return ApiResourceDefinitionsResponse(
-      modifiedSwaggerUrl: map['modifiedSwaggerUrl'] == null ? null : (map['modifiedSwaggerUrl'] as String).input(),
-      originalSwaggerUrl: map['originalSwaggerUrl'] == null ? null : (map['originalSwaggerUrl'] as String).input(),
+      modifiedSwaggerUrl: map['modifiedSwaggerUrl'] == null ? null : (map['modifiedSwaggerUrl']! as String).input(),
+      originalSwaggerUrl: map['originalSwaggerUrl'] == null ? null : (map['originalSwaggerUrl']! as String).input(),
     );
   }
 }

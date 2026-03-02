@@ -41,11 +41,11 @@ class KubernetesFleetManagerState {
 
   factory KubernetesFleetManagerState.fromMap(Map<String, dynamic> map) {
     return KubernetesFleetManagerState(
-      hubProfile: map['hubProfile'] == null ? null : (KubernetesFleetManagerHubProfile.fromMap((map['hubProfile'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      hubProfile: map['hubProfile'] == null ? null : (KubernetesFleetManagerHubProfile.fromMap((map['hubProfile']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

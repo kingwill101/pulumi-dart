@@ -25,8 +25,8 @@ class FirewallPolicyAssociationComputeBeta {
 
   factory FirewallPolicyAssociationComputeBeta.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyAssociationComputeBeta(
-      attachmentTarget: map['attachmentTarget'] == null ? null : (map['attachmentTarget'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      attachmentTarget: map['attachmentTarget'] == null ? null : (map['attachmentTarget']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

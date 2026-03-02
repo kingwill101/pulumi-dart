@@ -85,19 +85,19 @@ class VpcNatGatewayState {
 
   factory VpcNatGatewayState.fromMap(Map<String, dynamic> map) {
     return VpcNatGatewayState(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      egresses: map['egresses'] == null ? null : (pulumi.Input.decodeList<VpcNatGatewayEgress>(map['egresses'], (value) => VpcNatGatewayEgress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      icmpTimeoutSeconds: map['icmpTimeoutSeconds'] == null ? null : (map['icmpTimeoutSeconds'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tcpTimeoutSeconds: map['tcpTimeoutSeconds'] == null ? null : (map['tcpTimeoutSeconds'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      udpTimeoutSeconds: map['udpTimeoutSeconds'] == null ? null : (map['udpTimeoutSeconds'] as int).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
-      vpcs: map['vpcs'] == null ? null : (pulumi.Input.decodeList<VpcNatGatewayVpc>(map['vpcs'], (value) => VpcNatGatewayVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      egresses: map['egresses'] == null ? null : (pulumi.Input.decodeList<VpcNatGatewayEgress>(map['egresses']!, (value) => VpcNatGatewayEgress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      icmpTimeoutSeconds: map['icmpTimeoutSeconds'] == null ? null : (map['icmpTimeoutSeconds']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      tcpTimeoutSeconds: map['tcpTimeoutSeconds'] == null ? null : (map['tcpTimeoutSeconds']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      udpTimeoutSeconds: map['udpTimeoutSeconds'] == null ? null : (map['udpTimeoutSeconds']! as int).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt']! as String).input(),
+      vpcs: map['vpcs'] == null ? null : (pulumi.Input.decodeList<VpcNatGatewayVpc>(map['vpcs']!, (value) => VpcNatGatewayVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

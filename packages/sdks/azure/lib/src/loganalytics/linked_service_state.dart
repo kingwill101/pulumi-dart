@@ -43,11 +43,11 @@ class LinkedServiceState {
 
   factory LinkedServiceState.fromMap(Map<String, dynamic> map) {
     return LinkedServiceState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      readAccessId: map['readAccessId'] == null ? null : (map['readAccessId'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
-      writeAccessId: map['writeAccessId'] == null ? null : (map['writeAccessId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      readAccessId: map['readAccessId'] == null ? null : (map['readAccessId']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
+      writeAccessId: map['writeAccessId'] == null ? null : (map['writeAccessId']! as String).input(),
     );
   }
 }

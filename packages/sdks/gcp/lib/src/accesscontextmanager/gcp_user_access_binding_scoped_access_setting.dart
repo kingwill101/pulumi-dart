@@ -36,9 +36,9 @@ class GcpUserAccessBindingScopedAccessSetting {
 
   factory GcpUserAccessBindingScopedAccessSetting.fromMap(Map<String, dynamic> map) {
     return GcpUserAccessBindingScopedAccessSetting(
-      activeSettings: map['activeSettings'] == null ? null : (GcpUserAccessBindingScopedAccessSettingActiveSettings.fromMap((map['activeSettings'] as Map).cast<String, dynamic>())).input(),
-      dryRunSettings: map['dryRunSettings'] == null ? null : (GcpUserAccessBindingScopedAccessSettingDryRunSettings.fromMap((map['dryRunSettings'] as Map).cast<String, dynamic>())).input(),
-      scope: map['scope'] == null ? null : (GcpUserAccessBindingScopedAccessSettingScope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
+      activeSettings: map['activeSettings'] == null ? null : (GcpUserAccessBindingScopedAccessSettingActiveSettings.fromMap((map['activeSettings']! as Map).cast<String, dynamic>())).input(),
+      dryRunSettings: map['dryRunSettings'] == null ? null : (GcpUserAccessBindingScopedAccessSettingDryRunSettings.fromMap((map['dryRunSettings']! as Map).cast<String, dynamic>())).input(),
+      scope: map['scope'] == null ? null : (GcpUserAccessBindingScopedAccessSettingScope.fromMap((map['scope']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

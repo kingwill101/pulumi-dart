@@ -62,15 +62,15 @@ class FirewallVpcFirewallCenState {
 
   factory FirewallVpcFirewallCenState.fromMap(Map<String, dynamic> map) {
     return FirewallVpcFirewallCenState(
-      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
-      connectType: map['connectType'] == null ? null : (map['connectType'] as String).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      localVpc: map['localVpc'] == null ? null : (FirewallVpcFirewallCenLocalVpc.fromMap((map['localVpc'] as Map).cast<String, dynamic>())).input(),
-      memberUid: map['memberUid'] == null ? null : (map['memberUid'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vpcFirewallId: map['vpcFirewallId'] == null ? null : (map['vpcFirewallId'] as String).input(),
-      vpcFirewallName: map['vpcFirewallName'] == null ? null : (map['vpcFirewallName'] as String).input(),
-      vpcRegion: map['vpcRegion'] == null ? null : (map['vpcRegion'] as String).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
+      connectType: map['connectType'] == null ? null : (map['connectType']! as String).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      localVpc: map['localVpc'] == null ? null : (FirewallVpcFirewallCenLocalVpc.fromMap((map['localVpc']! as Map).cast<String, dynamic>())).input(),
+      memberUid: map['memberUid'] == null ? null : (map['memberUid']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vpcFirewallId: map['vpcFirewallId'] == null ? null : (map['vpcFirewallId']! as String).input(),
+      vpcFirewallName: map['vpcFirewallName'] == null ? null : (map['vpcFirewallName']! as String).input(),
+      vpcRegion: map['vpcRegion'] == null ? null : (map['vpcRegion']! as String).input(),
     );
   }
 }

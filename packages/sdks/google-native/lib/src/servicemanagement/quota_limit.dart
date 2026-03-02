@@ -66,16 +66,16 @@ class QuotaLimit {
 
   factory QuotaLimit.fromMap(Map<String, dynamic> map) {
     return QuotaLimit(
-      defaultLimit: map['defaultLimit'] == null ? null : (map['defaultLimit'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
-      freeTier: map['freeTier'] == null ? null : (map['freeTier'] as String).input(),
-      maxLimit: map['maxLimit'] == null ? null : (map['maxLimit'] as String).input(),
-      metric: map['metric'] == null ? null : (map['metric'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as Map).cast<String, String>()).input(),
+      defaultLimit: map['defaultLimit'] == null ? null : (map['defaultLimit']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
+      freeTier: map['freeTier'] == null ? null : (map['freeTier']! as String).input(),
+      maxLimit: map['maxLimit'] == null ? null : (map['maxLimit']! as String).input(),
+      metric: map['metric'] == null ? null : (map['metric']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      unit: map['unit'] == null ? null : (map['unit']! as String).input(),
+      values: map['values'] == null ? null : ((map['values']! as Map).cast<String, String>()).input(),
     );
   }
 }

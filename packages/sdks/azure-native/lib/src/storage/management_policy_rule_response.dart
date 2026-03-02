@@ -38,7 +38,7 @@ class ManagementPolicyRuleResponse {
   factory ManagementPolicyRuleResponse.fromMap(Map<String, dynamic> map) {
     return ManagementPolicyRuleResponse(
       definition: (ManagementPolicyDefinitionResponse.fromMap((map['definition'] as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       name: (map['name'] as String).input(),
       type: (map['type'] as String).input(),
     );

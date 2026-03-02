@@ -34,9 +34,9 @@ class GalleryImageVersionStorageProfileResponse {
 
   factory GalleryImageVersionStorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return GalleryImageVersionStorageProfileResponse(
-      dataDiskImages: map['dataDiskImages'] == null ? null : (pulumi.Input.decodeList<GalleryDataDiskImageResponse>(map['dataDiskImages'], (value) => GalleryDataDiskImageResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      osDiskImage: map['osDiskImage'] == null ? null : (GalleryOSDiskImageResponse.fromMap((map['osDiskImage'] as Map).cast<String, dynamic>())).input(),
-      source: map['source'] == null ? null : (GalleryArtifactVersionFullSourceResponse.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      dataDiskImages: map['dataDiskImages'] == null ? null : (pulumi.Input.decodeList<GalleryDataDiskImageResponse>(map['dataDiskImages']!, (value) => GalleryDataDiskImageResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      osDiskImage: map['osDiskImage'] == null ? null : (GalleryOSDiskImageResponse.fromMap((map['osDiskImage']! as Map).cast<String, dynamic>())).input(),
+      source: map['source'] == null ? null : (GalleryArtifactVersionFullSourceResponse.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

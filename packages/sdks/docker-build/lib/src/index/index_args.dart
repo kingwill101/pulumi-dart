@@ -44,8 +44,8 @@ class IndexArgs {
 
   factory IndexArgs.fromMap(Map<String, dynamic> map) {
     return IndexArgs(
-      push: map['push'] == null ? null : (map['push'] as bool).input(),
-      registry: map['registry'] == null ? null : (Registry.fromMap((map['registry'] as Map).cast<String, dynamic>())).input(),
+      push: map['push'] == null ? null : (map['push']! as bool).input(),
+      registry: map['registry'] == null ? null : (Registry.fromMap((map['registry']! as Map).cast<String, dynamic>())).input(),
       sources: ((map['sources'] as List).cast<String>()).input(),
       tag: (map['tag'] as String).input(),
     );

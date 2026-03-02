@@ -36,10 +36,10 @@ class SigningKey {
 
   factory SigningKey.fromMap(Map<String, dynamic> map) {
     return SigningKey(
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      keyScheme: map['keyScheme'] == null ? null : (map['keyScheme'] as String).input(),
-      keyType: map['keyType'] == null ? null : (map['keyType'] as String).input(),
-      publicKeyValue: map['publicKeyValue'] == null ? null : (map['publicKeyValue'] as String).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
+      keyScheme: map['keyScheme'] == null ? null : (map['keyScheme']! as String).input(),
+      keyType: map['keyType'] == null ? null : (map['keyType']! as String).input(),
+      publicKeyValue: map['publicKeyValue'] == null ? null : (map['publicKeyValue']! as String).input(),
     );
   }
 }

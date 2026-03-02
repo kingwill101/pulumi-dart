@@ -77,17 +77,17 @@ class VolumeHybridReplicationParameters {
 
   factory VolumeHybridReplicationParameters.fromMap(Map<String, dynamic> map) {
     return VolumeHybridReplicationParameters(
-      clusterLocation: map['clusterLocation'] == null ? null : (map['clusterLocation'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      hybridReplicationType: map['hybridReplicationType'] == null ? null : (map['hybridReplicationType'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      largeVolumeConstituentCount: map['largeVolumeConstituentCount'] == null ? null : (map['largeVolumeConstituentCount'] as int).input(),
-      peerClusterName: map['peerClusterName'] == null ? null : (map['peerClusterName'] as String).input(),
-      peerIpAddresses: map['peerIpAddresses'] == null ? null : ((map['peerIpAddresses'] as List).cast<String>()).input(),
-      peerSvmName: map['peerSvmName'] == null ? null : (map['peerSvmName'] as String).input(),
-      peerVolumeName: map['peerVolumeName'] == null ? null : (map['peerVolumeName'] as String).input(),
-      replication: map['replication'] == null ? null : (map['replication'] as String).input(),
-      replicationSchedule: map['replicationSchedule'] == null ? null : (map['replicationSchedule'] as String).input(),
+      clusterLocation: map['clusterLocation'] == null ? null : (map['clusterLocation']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      hybridReplicationType: map['hybridReplicationType'] == null ? null : (map['hybridReplicationType']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      largeVolumeConstituentCount: map['largeVolumeConstituentCount'] == null ? null : (map['largeVolumeConstituentCount']! as int).input(),
+      peerClusterName: map['peerClusterName'] == null ? null : (map['peerClusterName']! as String).input(),
+      peerIpAddresses: map['peerIpAddresses'] == null ? null : ((map['peerIpAddresses']! as List).cast<String>()).input(),
+      peerSvmName: map['peerSvmName'] == null ? null : (map['peerSvmName']! as String).input(),
+      peerVolumeName: map['peerVolumeName'] == null ? null : (map['peerVolumeName']! as String).input(),
+      replication: map['replication'] == null ? null : (map['replication']! as String).input(),
+      replicationSchedule: map['replicationSchedule'] == null ? null : (map['replicationSchedule']! as String).input(),
     );
   }
 }

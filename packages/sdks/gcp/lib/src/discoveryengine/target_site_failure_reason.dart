@@ -22,7 +22,7 @@ class TargetSiteFailureReason {
 
   factory TargetSiteFailureReason.fromMap(Map<String, dynamic> map) {
     return TargetSiteFailureReason(
-      quotaFailure: map['quotaFailure'] == null ? null : (TargetSiteFailureReasonQuotaFailure.fromMap((map['quotaFailure'] as Map).cast<String, dynamic>())).input(),
+      quotaFailure: map['quotaFailure'] == null ? null : (TargetSiteFailureReasonQuotaFailure.fromMap((map['quotaFailure']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class GooglePrivacyDlpV2PartitionId {
 
   factory GooglePrivacyDlpV2PartitionId.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2PartitionId(
-      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

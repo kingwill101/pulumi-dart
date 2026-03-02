@@ -27,8 +27,8 @@ class DatabaseEncryption {
 
   factory DatabaseEncryption.fromMap(Map<String, dynamic> map) {
     return DatabaseEncryption(
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      state: map['state'] == null ? null : (DatabaseEncryptionState.fromValue(map['state'] as String)).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
+      state: map['state'] == null ? null : (DatabaseEncryptionState.fromValue(map['state']! as String)).input(),
     );
   }
 }

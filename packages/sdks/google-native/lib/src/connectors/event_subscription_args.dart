@@ -69,15 +69,15 @@ class EventSubscriptionArgs {
   factory EventSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionArgs(
       connectionId: (map['connectionId'] as String).input(),
-      destinations: map['destinations'] == null ? null : (EventSubscriptionDestination.fromMap((map['destinations'] as Map).cast<String, dynamic>())).input(),
+      destinations: map['destinations'] == null ? null : (EventSubscriptionDestination.fromMap((map['destinations']! as Map).cast<String, dynamic>())).input(),
       eventSubscriptionId: (map['eventSubscriptionId'] as String).input(),
-      eventTypeId: map['eventTypeId'] == null ? null : (map['eventTypeId'] as String).input(),
-      jms: map['jms'] == null ? null : (JMS.fromMap((map['jms'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      subscriber: map['subscriber'] == null ? null : (map['subscriber'] as String).input(),
-      subscriberLink: map['subscriberLink'] == null ? null : (map['subscriberLink'] as String).input(),
+      eventTypeId: map['eventTypeId'] == null ? null : (map['eventTypeId']! as String).input(),
+      jms: map['jms'] == null ? null : (JMS.fromMap((map['jms']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      subscriber: map['subscriber'] == null ? null : (map['subscriber']! as String).input(),
+      subscriberLink: map['subscriberLink'] == null ? null : (map['subscriberLink']! as String).input(),
     );
   }
 }

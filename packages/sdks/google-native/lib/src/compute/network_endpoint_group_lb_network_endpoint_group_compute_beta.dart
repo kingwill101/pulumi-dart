@@ -31,9 +31,9 @@ class NetworkEndpointGroupLbNetworkEndpointGroupComputeBeta {
 
   factory NetworkEndpointGroupLbNetworkEndpointGroupComputeBeta.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointGroupLbNetworkEndpointGroupComputeBeta(
-      defaultPort: map['defaultPort'] == null ? null : (map['defaultPort'] as int).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      defaultPort: map['defaultPort'] == null ? null : (map['defaultPort']! as int).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
     );
   }
 }

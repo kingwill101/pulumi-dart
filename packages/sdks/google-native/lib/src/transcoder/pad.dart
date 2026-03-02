@@ -36,10 +36,10 @@ class Pad {
 
   factory Pad.fromMap(Map<String, dynamic> map) {
     return Pad(
-      bottomPixels: map['bottomPixels'] == null ? null : (map['bottomPixels'] as int).input(),
-      leftPixels: map['leftPixels'] == null ? null : (map['leftPixels'] as int).input(),
-      rightPixels: map['rightPixels'] == null ? null : (map['rightPixels'] as int).input(),
-      topPixels: map['topPixels'] == null ? null : (map['topPixels'] as int).input(),
+      bottomPixels: map['bottomPixels'] == null ? null : (map['bottomPixels']! as int).input(),
+      leftPixels: map['leftPixels'] == null ? null : (map['leftPixels']! as int).input(),
+      rightPixels: map['rightPixels'] == null ? null : (map['rightPixels']! as int).input(),
+      topPixels: map['topPixels'] == null ? null : (map['topPixels']! as int).input(),
     );
   }
 }

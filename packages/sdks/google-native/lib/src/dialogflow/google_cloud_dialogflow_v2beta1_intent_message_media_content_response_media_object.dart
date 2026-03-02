@@ -43,9 +43,9 @@ class GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject {
   factory GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject(
       contentUrl: (map['contentUrl'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      icon: map['icon'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageImage.fromMap((map['icon'] as Map).cast<String, dynamic>())).input(),
-      largeImage: map['largeImage'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageImage.fromMap((map['largeImage'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      icon: map['icon'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageImage.fromMap((map['icon']! as Map).cast<String, dynamic>())).input(),
+      largeImage: map['largeImage'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageImage.fromMap((map['largeImage']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
     );
   }

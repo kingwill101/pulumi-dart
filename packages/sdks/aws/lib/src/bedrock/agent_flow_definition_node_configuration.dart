@@ -86,19 +86,19 @@ class AgentFlowDefinitionNodeConfiguration {
 
   factory AgentFlowDefinitionNodeConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfiguration(
-      agent: map['agent'] == null ? null : (AgentFlowDefinitionNodeConfigurationAgent.fromMap((map['agent'] as Map).cast<String, dynamic>())).input(),
-      collector: map['collector'] == null ? null : ((map['collector'] as Map).cast<String, dynamic>()).input(),
-      condition: map['condition'] == null ? null : (AgentFlowDefinitionNodeConfigurationCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      inlineCode: map['inlineCode'] == null ? null : (AgentFlowDefinitionNodeConfigurationInlineCode.fromMap((map['inlineCode'] as Map).cast<String, dynamic>())).input(),
-      input: map['input'] == null ? null : ((map['input'] as Map).cast<String, dynamic>()).input(),
-      iterator: map['iterator'] == null ? null : ((map['iterator'] as Map).cast<String, dynamic>()).input(),
-      knowledgeBase: map['knowledgeBase'] == null ? null : (AgentFlowDefinitionNodeConfigurationKnowledgeBase.fromMap((map['knowledgeBase'] as Map).cast<String, dynamic>())).input(),
-      lambdaFunction: map['lambdaFunction'] == null ? null : (AgentFlowDefinitionNodeConfigurationLambdaFunction.fromMap((map['lambdaFunction'] as Map).cast<String, dynamic>())).input(),
-      lex: map['lex'] == null ? null : (AgentFlowDefinitionNodeConfigurationLex.fromMap((map['lex'] as Map).cast<String, dynamic>())).input(),
-      output: map['output'] == null ? null : ((map['output'] as Map).cast<String, dynamic>()).input(),
-      prompt: map['prompt'] == null ? null : (AgentFlowDefinitionNodeConfigurationPrompt.fromMap((map['prompt'] as Map).cast<String, dynamic>())).input(),
-      retrieval: map['retrieval'] == null ? null : (AgentFlowDefinitionNodeConfigurationRetrieval.fromMap((map['retrieval'] as Map).cast<String, dynamic>())).input(),
-      storage: map['storage'] == null ? null : (AgentFlowDefinitionNodeConfigurationStorage.fromMap((map['storage'] as Map).cast<String, dynamic>())).input(),
+      agent: map['agent'] == null ? null : ((AgentFlowDefinitionNodeConfigurationAgent.fromMap((map['agent']! as Map).cast<String, dynamic>())).input()).input(),
+      collector: map['collector'] == null ? null : (((map['collector'] as Map).cast<String, dynamic>()).input()).input(),
+      condition: map['condition'] == null ? null : ((AgentFlowDefinitionNodeConfigurationCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input()).input(),
+      inlineCode: map['inlineCode'] == null ? null : ((AgentFlowDefinitionNodeConfigurationInlineCode.fromMap((map['inlineCode']! as Map).cast<String, dynamic>())).input()).input(),
+      input: map['input'] == null ? null : (((map['input'] as Map).cast<String, dynamic>()).input()).input(),
+      iterator: map['iterator'] == null ? null : (((map['iterator'] as Map).cast<String, dynamic>()).input()).input(),
+      knowledgeBase: map['knowledgeBase'] == null ? null : ((AgentFlowDefinitionNodeConfigurationKnowledgeBase.fromMap((map['knowledgeBase']! as Map).cast<String, dynamic>())).input()).input(),
+      lambdaFunction: map['lambdaFunction'] == null ? null : ((AgentFlowDefinitionNodeConfigurationLambdaFunction.fromMap((map['lambdaFunction']! as Map).cast<String, dynamic>())).input()).input(),
+      lex: map['lex'] == null ? null : ((AgentFlowDefinitionNodeConfigurationLex.fromMap((map['lex']! as Map).cast<String, dynamic>())).input()).input(),
+      output: map['output'] == null ? null : (((map['output'] as Map).cast<String, dynamic>()).input()).input(),
+      prompt: map['prompt'] == null ? null : ((AgentFlowDefinitionNodeConfigurationPrompt.fromMap((map['prompt']! as Map).cast<String, dynamic>())).input()).input(),
+      retrieval: map['retrieval'] == null ? null : ((AgentFlowDefinitionNodeConfigurationRetrieval.fromMap((map['retrieval']! as Map).cast<String, dynamic>())).input()).input(),
+      storage: map['storage'] == null ? null : ((AgentFlowDefinitionNodeConfigurationStorage.fromMap((map['storage']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

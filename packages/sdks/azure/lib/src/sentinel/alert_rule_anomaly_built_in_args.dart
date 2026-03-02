@@ -46,11 +46,11 @@ class AlertRuleAnomalyBuiltInArgs {
 
   factory AlertRuleAnomalyBuiltInArgs.fromMap(Map<String, dynamic> map) {
     return AlertRuleAnomalyBuiltInArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       enabled: (map['enabled'] as bool).input(),
       logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
       mode: (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

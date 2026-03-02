@@ -35,10 +35,10 @@ class PoolTargetPermissions {
 
   factory PoolTargetPermissions.fromMap(Map<String, dynamic> map) {
     return PoolTargetPermissions(
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
     );
   }
 }

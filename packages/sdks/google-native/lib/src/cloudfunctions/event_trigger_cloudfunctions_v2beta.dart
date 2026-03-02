@@ -53,13 +53,13 @@ class EventTriggerCloudfunctionsV2beta {
 
   factory EventTriggerCloudfunctionsV2beta.fromMap(Map<String, dynamic> map) {
     return EventTriggerCloudfunctionsV2beta(
-      channel: map['channel'] == null ? null : (map['channel'] as String).input(),
-      eventFilters: map['eventFilters'] == null ? null : (pulumi.Input.decodeList<EventFilterCloudfunctionsV2beta>(map['eventFilters'], (value) => EventFilterCloudfunctionsV2beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      channel: map['channel'] == null ? null : (map['channel']! as String).input(),
+      eventFilters: map['eventFilters'] == null ? null : (pulumi.Input.decodeList<EventFilterCloudfunctionsV2beta>(map['eventFilters']!, (value) => EventFilterCloudfunctionsV2beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
       eventType: (map['eventType'] as String).input(),
-      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic'] as String).input(),
-      retryPolicy: map['retryPolicy'] == null ? null : (EventTriggerRetryPolicyCloudfunctionsV2beta.fromValue(map['retryPolicy'] as String)).input(),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
-      triggerRegion: map['triggerRegion'] == null ? null : (map['triggerRegion'] as String).input(),
+      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic']! as String).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (EventTriggerRetryPolicyCloudfunctionsV2beta.fromValue(map['retryPolicy']! as String)).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
+      triggerRegion: map['triggerRegion'] == null ? null : (map['triggerRegion']! as String).input(),
     );
   }
 }

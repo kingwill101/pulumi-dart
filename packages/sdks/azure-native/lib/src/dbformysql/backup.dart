@@ -31,9 +31,9 @@ class Backup {
 
   factory Backup.fromMap(Map<String, dynamic> map) {
     return Backup(
-      backupIntervalHours: map['backupIntervalHours'] == null ? null : (map['backupIntervalHours'] as int).input(),
-      backupRetentionDays: map['backupRetentionDays'] == null ? null : (map['backupRetentionDays'] as int).input(),
-      geoRedundantBackup: map['geoRedundantBackup'] == null ? null : (map['geoRedundantBackup'] as String).input(),
+      backupIntervalHours: map['backupIntervalHours'] == null ? null : (map['backupIntervalHours']! as int).input(),
+      backupRetentionDays: map['backupRetentionDays'] == null ? null : (map['backupRetentionDays']! as int).input(),
+      geoRedundantBackup: map['geoRedundantBackup'] == null ? null : (map['geoRedundantBackup']! as String).input(),
     );
   }
 }

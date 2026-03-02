@@ -56,11 +56,11 @@ class BindingResourcePropertiesResponse {
 
   factory BindingResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BindingResourcePropertiesResponse(
-      bindingParameters: map['bindingParameters'] == null ? null : ((map['bindingParameters'] as Map).cast<String, String>()).input(),
+      bindingParameters: map['bindingParameters'] == null ? null : ((map['bindingParameters']! as Map).cast<String, String>()).input(),
       createdAt: (map['createdAt'] as String).input(),
       generatedProperties: (map['generatedProperties'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
       resourceName: (map['resourceName'] as String).input(),
       resourceType: (map['resourceType'] as String).input(),
       updatedAt: (map['updatedAt'] as String).input(),

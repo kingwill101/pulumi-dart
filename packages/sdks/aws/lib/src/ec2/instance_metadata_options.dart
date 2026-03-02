@@ -42,11 +42,11 @@ class InstanceMetadataOptions {
 
   factory InstanceMetadataOptions.fromMap(Map<String, dynamic> map) {
     return InstanceMetadataOptions(
-      httpEndpoint: map['httpEndpoint'] == null ? null : (map['httpEndpoint'] as String).input(),
-      httpProtocolIpv6: map['httpProtocolIpv6'] == null ? null : (map['httpProtocolIpv6'] as String).input(),
-      httpPutResponseHopLimit: map['httpPutResponseHopLimit'] == null ? null : (map['httpPutResponseHopLimit'] as int).input(),
-      httpTokens: map['httpTokens'] == null ? null : (map['httpTokens'] as String).input(),
-      instanceMetadataTags: map['instanceMetadataTags'] == null ? null : (map['instanceMetadataTags'] as String).input(),
+      httpEndpoint: map['httpEndpoint'] == null ? null : ((map['httpEndpoint'] as String).input()).input(),
+      httpProtocolIpv6: map['httpProtocolIpv6'] == null ? null : ((map['httpProtocolIpv6'] as String).input()).input(),
+      httpPutResponseHopLimit: map['httpPutResponseHopLimit'] == null ? null : ((map['httpPutResponseHopLimit'] as int).input()).input(),
+      httpTokens: map['httpTokens'] == null ? null : ((map['httpTokens'] as String).input()).input(),
+      instanceMetadataTags: map['instanceMetadataTags'] == null ? null : ((map['instanceMetadataTags'] as String).input()).input(),
     );
   }
 }

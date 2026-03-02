@@ -61,14 +61,14 @@ class PortfolioShareArgs {
 
   factory PortfolioShareArgs.fromMap(Map<String, dynamic> map) {
     return PortfolioShareArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
+      acceptLanguage: map['acceptLanguage'] == null ? null : ((map['acceptLanguage'] as String).input()).input(),
       portfolioId: (map['portfolioId'] as String).input(),
       principalId: (map['principalId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sharePrincipals: map['sharePrincipals'] == null ? null : (map['sharePrincipals'] as bool).input(),
-      shareTagOptions: map['shareTagOptions'] == null ? null : (map['shareTagOptions'] as bool).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sharePrincipals: map['sharePrincipals'] == null ? null : ((map['sharePrincipals'] as bool).input()).input(),
+      shareTagOptions: map['shareTagOptions'] == null ? null : ((map['shareTagOptions'] as bool).input()).input(),
       type: (map['type'] as String).input(),
-      waitForAcceptance: map['waitForAcceptance'] == null ? null : (map['waitForAcceptance'] as bool).input(),
+      waitForAcceptance: map['waitForAcceptance'] == null ? null : ((map['waitForAcceptance'] as bool).input()).input(),
     );
   }
 }

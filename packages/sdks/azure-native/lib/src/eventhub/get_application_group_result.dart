@@ -66,10 +66,10 @@ class GetApplicationGroupResult {
       azureApiVersion: map['azureApiVersion'] as String,
       clientAppGroupIdentifier: map['clientAppGroupIdentifier'] as String,
       id: map['id'] as String,
-      isEnabled: map['isEnabled'] == null ? null : map['isEnabled'] as bool,
+      isEnabled: map['isEnabled'] == null ? null : map['isEnabled']! as bool,
       location: map['location'] as String,
       name: map['name'] as String,
-      policies: map['policies'] == null ? null : pulumi.Input.decodeList<ThrottlingPolicyResponse>(map['policies'], (value) => ThrottlingPolicyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      policies: map['policies'] == null ? null : pulumi.Input.decodeList<ThrottlingPolicyResponse>(map['policies']!, (value) => ThrottlingPolicyResponse.fromMap((value as Map).cast<String, dynamic>())),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

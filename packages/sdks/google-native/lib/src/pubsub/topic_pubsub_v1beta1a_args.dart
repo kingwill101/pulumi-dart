@@ -24,7 +24,7 @@ class TopicPubsubV1beta1aArgs {
 
   factory TopicPubsubV1beta1aArgs.fromMap(Map<String, dynamic> map) {
     return TopicPubsubV1beta1aArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

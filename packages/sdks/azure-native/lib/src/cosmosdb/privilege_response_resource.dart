@@ -26,8 +26,8 @@ class PrivilegeResponseResource {
 
   factory PrivilegeResponseResource.fromMap(Map<String, dynamic> map) {
     return PrivilegeResponseResource(
-      collection: map['collection'] == null ? null : (map['collection'] as String).input(),
-      db: map['db'] == null ? null : (map['db'] as String).input(),
+      collection: map['collection'] == null ? null : (map['collection']! as String).input(),
+      db: map['db'] == null ? null : (map['db']! as String).input(),
     );
   }
 }

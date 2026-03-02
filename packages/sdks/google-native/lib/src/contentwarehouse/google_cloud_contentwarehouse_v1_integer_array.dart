@@ -21,7 +21,7 @@ class GoogleCloudContentwarehouseV1IntegerArray {
 
   factory GoogleCloudContentwarehouseV1IntegerArray.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1IntegerArray(
-      values: map['values'] == null ? null : ((map['values'] as List).cast<int>()).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<int>()).input(),
     );
   }
 }

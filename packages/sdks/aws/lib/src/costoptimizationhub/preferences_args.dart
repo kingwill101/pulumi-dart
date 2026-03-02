@@ -29,8 +29,8 @@ class PreferencesArgs {
 
   factory PreferencesArgs.fromMap(Map<String, dynamic> map) {
     return PreferencesArgs(
-      memberAccountDiscountVisibility: map['memberAccountDiscountVisibility'] == null ? null : (map['memberAccountDiscountVisibility'] as String).input(),
-      savingsEstimationMode: map['savingsEstimationMode'] == null ? null : (map['savingsEstimationMode'] as String).input(),
+      memberAccountDiscountVisibility: map['memberAccountDiscountVisibility'] == null ? null : ((map['memberAccountDiscountVisibility'] as String).input()).input(),
+      savingsEstimationMode: map['savingsEstimationMode'] == null ? null : ((map['savingsEstimationMode'] as String).input()).input(),
     );
   }
 }

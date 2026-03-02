@@ -31,9 +31,9 @@ class FleetStackAssociationState {
 
   factory FleetStackAssociationState.fromMap(Map<String, dynamic> map) {
     return FleetStackAssociationState(
-      fleetName: map['fleetName'] == null ? null : (map['fleetName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      stackName: map['stackName'] == null ? null : (map['stackName'] as String).input(),
+      fleetName: map['fleetName'] == null ? null : ((map['fleetName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      stackName: map['stackName'] == null ? null : ((map['stackName'] as String).input()).input(),
     );
   }
 }

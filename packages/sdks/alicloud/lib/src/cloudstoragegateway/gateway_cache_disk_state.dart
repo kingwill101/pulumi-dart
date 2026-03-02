@@ -51,13 +51,13 @@ class GatewayCacheDiskState {
 
   factory GatewayCacheDiskState.fromMap(Map<String, dynamic> map) {
     return GatewayCacheDiskState(
-      cacheDiskCategory: map['cacheDiskCategory'] == null ? null : (map['cacheDiskCategory'] as String).input(),
-      cacheDiskSizeInGb: map['cacheDiskSizeInGb'] == null ? null : (map['cacheDiskSizeInGb'] as int).input(),
-      cacheId: map['cacheId'] == null ? null : (map['cacheId'] as String).input(),
-      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId'] as String).input(),
-      localFilePath: map['localFilePath'] == null ? null : (map['localFilePath'] as String).input(),
-      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as int).input(),
+      cacheDiskCategory: map['cacheDiskCategory'] == null ? null : (map['cacheDiskCategory']! as String).input(),
+      cacheDiskSizeInGb: map['cacheDiskSizeInGb'] == null ? null : (map['cacheDiskSizeInGb']! as int).input(),
+      cacheId: map['cacheId'] == null ? null : (map['cacheId']! as String).input(),
+      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId']! as String).input(),
+      localFilePath: map['localFilePath'] == null ? null : (map['localFilePath']! as String).input(),
+      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as int).input(),
     );
   }
 }

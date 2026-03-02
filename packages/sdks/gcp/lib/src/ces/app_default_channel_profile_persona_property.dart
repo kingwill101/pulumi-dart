@@ -24,7 +24,7 @@ class AppDefaultChannelProfilePersonaProperty {
 
   factory AppDefaultChannelProfilePersonaProperty.fromMap(Map<String, dynamic> map) {
     return AppDefaultChannelProfilePersonaProperty(
-      persona: map['persona'] == null ? null : (map['persona'] as String).input(),
+      persona: map['persona'] == null ? null : (map['persona']! as String).input(),
     );
   }
 }

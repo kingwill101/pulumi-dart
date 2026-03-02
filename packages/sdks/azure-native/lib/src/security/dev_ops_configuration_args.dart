@@ -35,7 +35,7 @@ class DevOpsConfigurationArgs {
 
   factory DevOpsConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return DevOpsConfigurationArgs(
-      properties: map['properties'] == null ? null : (DevOpsConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (DevOpsConfigurationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       securityConnectorName: (map['securityConnectorName'] as String).input(),
     );

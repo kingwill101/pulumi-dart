@@ -44,9 +44,9 @@ class OrganizationConfigurationArgs {
   factory OrganizationConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationArgs(
       autoEnableOrganizationMembers: (map['autoEnableOrganizationMembers'] as String).input(),
-      datasources: map['datasources'] == null ? null : (OrganizationConfigurationDatasources.fromMap((map['datasources'] as Map).cast<String, dynamic>())).input(),
+      datasources: map['datasources'] == null ? null : ((OrganizationConfigurationDatasources.fromMap((map['datasources']! as Map).cast<String, dynamic>())).input()).input(),
       detectorId: (map['detectorId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class ApiCreateOrUpdatePropertiesWsdlSelector {
 
   factory ApiCreateOrUpdatePropertiesWsdlSelector.fromMap(Map<String, dynamic> map) {
     return ApiCreateOrUpdatePropertiesWsdlSelector(
-      wsdlEndpointName: map['wsdlEndpointName'] == null ? null : (map['wsdlEndpointName'] as String).input(),
-      wsdlServiceName: map['wsdlServiceName'] == null ? null : (map['wsdlServiceName'] as String).input(),
+      wsdlEndpointName: map['wsdlEndpointName'] == null ? null : (map['wsdlEndpointName']! as String).input(),
+      wsdlServiceName: map['wsdlServiceName'] == null ? null : (map['wsdlServiceName']! as String).input(),
     );
   }
 }

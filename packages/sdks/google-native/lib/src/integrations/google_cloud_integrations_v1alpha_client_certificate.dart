@@ -31,9 +31,9 @@ class GoogleCloudIntegrationsV1alphaClientCertificate {
 
   factory GoogleCloudIntegrationsV1alphaClientCertificate.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaClientCertificate(
-      encryptedPrivateKey: map['encryptedPrivateKey'] == null ? null : (map['encryptedPrivateKey'] as String).input(),
-      passphrase: map['passphrase'] == null ? null : (map['passphrase'] as String).input(),
-      sslCertificate: map['sslCertificate'] == null ? null : (map['sslCertificate'] as String).input(),
+      encryptedPrivateKey: map['encryptedPrivateKey'] == null ? null : (map['encryptedPrivateKey']! as String).input(),
+      passphrase: map['passphrase'] == null ? null : (map['passphrase']! as String).input(),
+      sslCertificate: map['sslCertificate'] == null ? null : (map['sslCertificate']! as String).input(),
     );
   }
 }

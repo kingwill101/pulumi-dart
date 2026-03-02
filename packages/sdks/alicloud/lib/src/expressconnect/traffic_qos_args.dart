@@ -41,10 +41,10 @@ class TrafficQosArgs {
 
   factory TrafficQosArgs.fromMap(Map<String, dynamic> map) {
     return TrafficQosArgs(
-      qosDescription: map['qosDescription'] == null ? null : (map['qosDescription'] as String).input(),
-      qosName: map['qosName'] == null ? null : (map['qosName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      qosDescription: map['qosDescription'] == null ? null : (map['qosDescription']! as String).input(),
+      qosName: map['qosName'] == null ? null : (map['qosName']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class NodeGroupResource {
 
   factory NodeGroupResource.fromMap(Map<String, dynamic> map) {
     return NodeGroupResource(
-      autoscalingGroups: map['autoscalingGroups'] == null ? null : (pulumi.Input.decodeList<NodeGroupResourceAutoscalingGroup>(map['autoscalingGroups'], (value) => NodeGroupResourceAutoscalingGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      remoteAccessSecurityGroupId: map['remoteAccessSecurityGroupId'] == null ? null : (map['remoteAccessSecurityGroupId'] as String).input(),
+      autoscalingGroups: map['autoscalingGroups'] == null ? null : ((pulumi.Input.decodeList<NodeGroupResourceAutoscalingGroup>(map['autoscalingGroups']!, (value) => NodeGroupResourceAutoscalingGroup.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      remoteAccessSecurityGroupId: map['remoteAccessSecurityGroupId'] == null ? null : ((map['remoteAccessSecurityGroupId'] as String).input()).input(),
     );
   }
 }

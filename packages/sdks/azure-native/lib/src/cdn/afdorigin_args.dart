@@ -91,20 +91,20 @@ class AFDOriginArgs {
 
   factory AFDOriginArgs.fromMap(Map<String, dynamic> map) {
     return AFDOriginArgs(
-      azureOrigin: map['azureOrigin'] == null ? null : (ResourceReference.fromMap((map['azureOrigin'] as Map).cast<String, dynamic>())).input(),
-      enabledState: map['enabledState'] == null ? null : (map['enabledState'] as String).input(),
-      enforceCertificateNameCheck: map['enforceCertificateNameCheck'] == null ? null : (map['enforceCertificateNameCheck'] as bool).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      httpPort: map['httpPort'] == null ? null : (map['httpPort'] as int).input(),
-      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort'] as int).input(),
+      azureOrigin: map['azureOrigin'] == null ? null : (ResourceReference.fromMap((map['azureOrigin']! as Map).cast<String, dynamic>())).input(),
+      enabledState: map['enabledState'] == null ? null : (map['enabledState']! as String).input(),
+      enforceCertificateNameCheck: map['enforceCertificateNameCheck'] == null ? null : (map['enforceCertificateNameCheck']! as bool).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      httpPort: map['httpPort'] == null ? null : (map['httpPort']! as int).input(),
+      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort']! as int).input(),
       originGroupName: (map['originGroupName'] as String).input(),
-      originHostHeader: map['originHostHeader'] == null ? null : (map['originHostHeader'] as String).input(),
-      originName: map['originName'] == null ? null : (map['originName'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      originHostHeader: map['originHostHeader'] == null ? null : (map['originHostHeader']! as String).input(),
+      originName: map['originName'] == null ? null : (map['originName']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
       profileName: (map['profileName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sharedPrivateLinkResource: map['sharedPrivateLinkResource'] == null ? null : (SharedPrivateLinkResourceProperties.fromMap((map['sharedPrivateLinkResource'] as Map).cast<String, dynamic>())).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      sharedPrivateLinkResource: map['sharedPrivateLinkResource'] == null ? null : (SharedPrivateLinkResourceProperties.fromMap((map['sharedPrivateLinkResource']! as Map).cast<String, dynamic>())).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

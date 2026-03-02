@@ -28,8 +28,8 @@ class GooglePrivacyDlpV2InfoTypeLikelihood {
 
   factory GooglePrivacyDlpV2InfoTypeLikelihood.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2InfoTypeLikelihood(
-      infoType: map['infoType'] == null ? null : (GooglePrivacyDlpV2InfoType.fromMap((map['infoType'] as Map).cast<String, dynamic>())).input(),
-      minLikelihood: map['minLikelihood'] == null ? null : (GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood.fromValue(map['minLikelihood'] as String)).input(),
+      infoType: map['infoType'] == null ? null : (GooglePrivacyDlpV2InfoType.fromMap((map['infoType']! as Map).cast<String, dynamic>())).input(),
+      minLikelihood: map['minLikelihood'] == null ? null : (GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood.fromValue(map['minLikelihood']! as String)).input(),
     );
   }
 }

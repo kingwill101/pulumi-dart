@@ -50,13 +50,13 @@ class NodePoolScalingConfig {
 
   factory NodePoolScalingConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolScalingConfig(
-      eipBandwidth: map['eipBandwidth'] == null ? null : (map['eipBandwidth'] as int).input(),
-      eipInternetChargeType: map['eipInternetChargeType'] == null ? null : (map['eipInternetChargeType'] as String).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      isBondEip: map['isBondEip'] == null ? null : (map['isBondEip'] as bool).input(),
-      maxSize: map['maxSize'] == null ? null : (map['maxSize'] as int).input(),
-      minSize: map['minSize'] == null ? null : (map['minSize'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      eipBandwidth: map['eipBandwidth'] == null ? null : (map['eipBandwidth']! as int).input(),
+      eipInternetChargeType: map['eipInternetChargeType'] == null ? null : (map['eipInternetChargeType']! as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      isBondEip: map['isBondEip'] == null ? null : (map['isBondEip']! as bool).input(),
+      maxSize: map['maxSize'] == null ? null : (map['maxSize']! as int).input(),
+      minSize: map['minSize'] == null ? null : (map['minSize']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

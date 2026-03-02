@@ -25,8 +25,8 @@ class ListInferenceGroupDeltaModelsAsyncResult {
 
   factory ListInferenceGroupDeltaModelsAsyncResult.fromMap(Map<String, dynamic> map) {
     return ListInferenceGroupDeltaModelsAsyncResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : (map['value'] as List).cast<String>(),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : (map['value']! as List).cast<String>(),
     );
   }
 }

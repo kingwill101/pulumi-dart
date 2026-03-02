@@ -42,10 +42,10 @@ class GetFlavorprofileV2Args {
 
   factory GetFlavorprofileV2Args.fromMap(Map<String, dynamic> map) {
     return GetFlavorprofileV2Args(
-      flavorprofileId: map['flavorprofileId'] == null ? null : (map['flavorprofileId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      flavorprofileId: map['flavorprofileId'] == null ? null : (map['flavorprofileId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      providerName: map['providerName'] == null ? null : (map['providerName']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

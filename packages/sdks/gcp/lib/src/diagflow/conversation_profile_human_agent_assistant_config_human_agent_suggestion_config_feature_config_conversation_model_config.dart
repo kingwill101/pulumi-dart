@@ -25,8 +25,8 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
 
   factory ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfig(
-      baselineModelVersion: map['baselineModelVersion'] == null ? null : (map['baselineModelVersion'] as String).input(),
-      model: map['model'] == null ? null : (map['model'] as String).input(),
+      baselineModelVersion: map['baselineModelVersion'] == null ? null : (map['baselineModelVersion']! as String).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
     );
   }
 }

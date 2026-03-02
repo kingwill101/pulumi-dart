@@ -31,9 +31,9 @@ class AwsIamAccessKeyLastUsedProperties {
 
   factory AwsIamAccessKeyLastUsedProperties.fromMap(Map<String, dynamic> map) {
     return AwsIamAccessKeyLastUsedProperties(
-      lastUsedDate: map['lastUsedDate'] == null ? null : (map['lastUsedDate'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      lastUsedDate: map['lastUsedDate'] == null ? null : (map['lastUsedDate']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
     );
   }
 }

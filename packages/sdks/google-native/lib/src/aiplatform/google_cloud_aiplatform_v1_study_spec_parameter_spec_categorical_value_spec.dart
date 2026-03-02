@@ -26,7 +26,7 @@ class GoogleCloudAiplatformV1StudySpecParameterSpecCategoricalValueSpec {
 
   factory GoogleCloudAiplatformV1StudySpecParameterSpecCategoricalValueSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1StudySpecParameterSpecCategoricalValueSpec(
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']! as String).input(),
       values: ((map['values'] as List).cast<String>()).input(),
     );
   }

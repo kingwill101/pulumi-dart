@@ -42,8 +42,8 @@ class VpcSubnetArgs {
 
   factory VpcSubnetArgs.fromMap(Map<String, dynamic> map) {
     return VpcSubnetArgs(
-      ipv4: map['ipv4'] == null ? null : (map['ipv4'] as String).input(),
-      ipv6s: map['ipv6s'] == null ? null : (pulumi.Input.decodeList<VpcSubnetIpv6>(map['ipv6s'], (value) => VpcSubnetIpv6.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipv4: map['ipv4'] == null ? null : (map['ipv4']! as String).input(),
+      ipv6s: map['ipv6s'] == null ? null : (pulumi.Input.decodeList<VpcSubnetIpv6>(map['ipv6s']!, (value) => VpcSubnetIpv6.fromMap((value as Map).cast<String, dynamic>()))).input(),
       label: (map['label'] as String).input(),
       vpcId: (map['vpcId'] as int).input(),
     );

@@ -57,13 +57,13 @@ class AzureTableOutputDataSource {
 
   factory AzureTableOutputDataSource.fromMap(Map<String, dynamic> map) {
     return AzureTableOutputDataSource(
-      accountKey: map['accountKey'] == null ? null : (map['accountKey'] as String).input(),
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      batchSize: map['batchSize'] == null ? null : (map['batchSize'] as int).input(),
-      columnsToRemove: map['columnsToRemove'] == null ? null : ((map['columnsToRemove'] as List).cast<String>()).input(),
-      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey'] as String).input(),
-      rowKey: map['rowKey'] == null ? null : (map['rowKey'] as String).input(),
-      table: map['table'] == null ? null : (map['table'] as String).input(),
+      accountKey: map['accountKey'] == null ? null : (map['accountKey']! as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      batchSize: map['batchSize'] == null ? null : (map['batchSize']! as int).input(),
+      columnsToRemove: map['columnsToRemove'] == null ? null : ((map['columnsToRemove']! as List).cast<String>()).input(),
+      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey']! as String).input(),
+      rowKey: map['rowKey'] == null ? null : (map['rowKey']! as String).input(),
+      table: map['table'] == null ? null : (map['table']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

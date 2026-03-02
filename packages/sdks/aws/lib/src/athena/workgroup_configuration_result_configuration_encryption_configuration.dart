@@ -25,8 +25,8 @@ class WorkgroupConfigurationResultConfigurationEncryptionConfiguration {
 
   factory WorkgroupConfigurationResultConfigurationEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkgroupConfigurationResultConfigurationEncryptionConfiguration(
-      encryptionOption: map['encryptionOption'] == null ? null : (map['encryptionOption'] as String).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      encryptionOption: map['encryptionOption'] == null ? null : ((map['encryptionOption'] as String).input()).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
     );
   }
 }

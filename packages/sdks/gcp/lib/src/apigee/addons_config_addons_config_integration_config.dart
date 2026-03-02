@@ -20,7 +20,7 @@ class AddonsConfigAddonsConfigIntegrationConfig {
 
   factory AddonsConfigAddonsConfigIntegrationConfig.fromMap(Map<String, dynamic> map) {
     return AddonsConfigAddonsConfigIntegrationConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

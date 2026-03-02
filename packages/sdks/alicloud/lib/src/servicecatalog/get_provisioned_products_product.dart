@@ -150,7 +150,7 @@ class GetProvisionedProductsProduct {
       stackRegionId: (map['stackRegionId'] as String).input(),
       status: (map['status'] as String).input(),
       statusMessage: (map['statusMessage'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

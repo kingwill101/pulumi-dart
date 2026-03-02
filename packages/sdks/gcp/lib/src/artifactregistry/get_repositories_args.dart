@@ -35,8 +35,8 @@ class GetRepositoriesArgs {
   factory GetRepositoriesArgs.fromMap(Map<String, dynamic> map) {
     return GetRepositoriesArgs(
       location: (map['location'] as String).input(),
-      nameFilter: map['nameFilter'] == null ? null : (map['nameFilter'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      nameFilter: map['nameFilter'] == null ? null : (map['nameFilter']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

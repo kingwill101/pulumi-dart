@@ -50,10 +50,10 @@ class GetProductAsEndUsersResult {
     return GetProductAsEndUsersResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      sortBy: map['sortBy'] == null ? null : map['sortBy'] as String,
-      sortOrder: map['sortOrder'] == null ? null : map['sortOrder'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      sortBy: map['sortBy'] == null ? null : map['sortBy']! as String,
+      sortOrder: map['sortOrder'] == null ? null : map['sortOrder']! as String,
       users: pulumi.Input.decodeList<GetProductAsEndUsersUser>(map['users'], (value) => GetProductAsEndUsersUser.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

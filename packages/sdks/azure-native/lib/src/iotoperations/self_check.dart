@@ -31,9 +31,9 @@ class SelfCheck {
 
   factory SelfCheck.fromMap(Map<String, dynamic> map) {
     return SelfCheck(
-      intervalSeconds: map['intervalSeconds'] == null ? null : (map['intervalSeconds'] as int).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      intervalSeconds: map['intervalSeconds'] == null ? null : (map['intervalSeconds']! as int).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
     );
   }
 }

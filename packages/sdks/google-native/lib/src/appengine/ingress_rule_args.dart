@@ -44,11 +44,11 @@ class IngressRuleArgs {
 
   factory IngressRuleArgs.fromMap(Map<String, dynamic> map) {
     return IngressRuleArgs(
-      action: map['action'] == null ? null : (IngressRuleAction.fromValue(map['action'] as String)).input(),
+      action: map['action'] == null ? null : (IngressRuleAction.fromValue(map['action']! as String)).input(),
       appId: (map['appId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      sourceRange: map['sourceRange'] == null ? null : (map['sourceRange'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      sourceRange: map['sourceRange'] == null ? null : (map['sourceRange']! as String).input(),
     );
   }
 }

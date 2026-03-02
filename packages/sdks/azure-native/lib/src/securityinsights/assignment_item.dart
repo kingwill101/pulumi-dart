@@ -21,7 +21,7 @@ class AssignmentItem {
 
   factory AssignmentItem.fromMap(Map<String, dynamic> map) {
     return AssignmentItem(
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

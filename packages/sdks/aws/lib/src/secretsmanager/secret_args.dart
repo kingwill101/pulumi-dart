@@ -70,16 +70,16 @@ class SecretArgs {
 
   factory SecretArgs.fromMap(Map<String, dynamic> map) {
     return SecretArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      forceOverwriteReplicaSecret: map['forceOverwriteReplicaSecret'] == null ? null : (map['forceOverwriteReplicaSecret'] as bool).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      recoveryWindowInDays: map['recoveryWindowInDays'] == null ? null : (map['recoveryWindowInDays'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<SecretReplica>(map['replicas'], (value) => SecretReplica.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      forceOverwriteReplicaSecret: map['forceOverwriteReplicaSecret'] == null ? null : ((map['forceOverwriteReplicaSecret'] as bool).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      recoveryWindowInDays: map['recoveryWindowInDays'] == null ? null : ((map['recoveryWindowInDays'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      replicas: map['replicas'] == null ? null : ((pulumi.Input.decodeList<SecretReplica>(map['replicas']!, (value) => SecretReplica.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

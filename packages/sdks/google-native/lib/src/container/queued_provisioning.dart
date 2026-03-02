@@ -21,7 +21,7 @@ class QueuedProvisioning {
 
   factory QueuedProvisioning.fromMap(Map<String, dynamic> map) {
     return QueuedProvisioning(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

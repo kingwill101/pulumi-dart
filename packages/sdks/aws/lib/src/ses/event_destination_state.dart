@@ -66,15 +66,15 @@ class EventDestinationState {
 
   factory EventDestinationState.fromMap(Map<String, dynamic> map) {
     return EventDestinationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      cloudwatchDestinations: map['cloudwatchDestinations'] == null ? null : (pulumi.Input.decodeList<EventDestinationCloudwatchDestination>(map['cloudwatchDestinations'], (value) => EventDestinationCloudwatchDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      configurationSetName: map['configurationSetName'] == null ? null : (map['configurationSetName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      kinesisDestination: map['kinesisDestination'] == null ? null : (EventDestinationKinesisDestination.fromMap((map['kinesisDestination'] as Map).cast<String, dynamic>())).input(),
-      matchingTypes: map['matchingTypes'] == null ? null : ((map['matchingTypes'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      snsDestination: map['snsDestination'] == null ? null : (EventDestinationSnsDestination.fromMap((map['snsDestination'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      cloudwatchDestinations: map['cloudwatchDestinations'] == null ? null : ((pulumi.Input.decodeList<EventDestinationCloudwatchDestination>(map['cloudwatchDestinations']!, (value) => EventDestinationCloudwatchDestination.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      configurationSetName: map['configurationSetName'] == null ? null : ((map['configurationSetName'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      kinesisDestination: map['kinesisDestination'] == null ? null : ((EventDestinationKinesisDestination.fromMap((map['kinesisDestination']! as Map).cast<String, dynamic>())).input()).input(),
+      matchingTypes: map['matchingTypes'] == null ? null : (((map['matchingTypes'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      snsDestination: map['snsDestination'] == null ? null : ((EventDestinationSnsDestination.fromMap((map['snsDestination']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

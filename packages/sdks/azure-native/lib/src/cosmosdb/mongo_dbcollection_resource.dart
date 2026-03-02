@@ -48,12 +48,12 @@ class MongoDBCollectionResource {
 
   factory MongoDBCollectionResource.fromMap(Map<String, dynamic> map) {
     return MongoDBCollectionResource(
-      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl'] as int).input(),
-      createMode: map['createMode'] == null ? null : (map['createMode'] as String).input(),
+      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl']! as int).input(),
+      createMode: map['createMode'] == null ? null : (map['createMode']! as String).input(),
       id: (map['id'] as String).input(),
-      indexes: map['indexes'] == null ? null : (pulumi.Input.decodeList<MongoIndex>(map['indexes'], (value) => MongoIndex.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      restoreParameters: map['restoreParameters'] == null ? null : (ResourceRestoreParameters.fromMap((map['restoreParameters'] as Map).cast<String, dynamic>())).input(),
-      shardKey: map['shardKey'] == null ? null : ((map['shardKey'] as Map).cast<String, String>()).input(),
+      indexes: map['indexes'] == null ? null : (pulumi.Input.decodeList<MongoIndex>(map['indexes']!, (value) => MongoIndex.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      restoreParameters: map['restoreParameters'] == null ? null : (ResourceRestoreParameters.fromMap((map['restoreParameters']! as Map).cast<String, dynamic>())).input(),
+      shardKey: map['shardKey'] == null ? null : ((map['shardKey']! as Map).cast<String, String>()).input(),
     );
   }
 }

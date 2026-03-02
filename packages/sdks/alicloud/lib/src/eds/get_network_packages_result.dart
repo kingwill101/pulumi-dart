@@ -40,9 +40,9 @@ class GetNetworkPackagesResult {
     return GetNetworkPackagesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       packages: pulumi.Input.decodeList<GetNetworkPackagesPackage>(map['packages'], (value) => GetNetworkPackagesPackage.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

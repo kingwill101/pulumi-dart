@@ -58,10 +58,10 @@ class AssessmentArgs {
 
   factory AssessmentArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentArgs(
-      additionalData: map['additionalData'] == null ? null : ((map['additionalData'] as Map).cast<String, String>()).input(),
-      assessmentName: map['assessmentName'] == null ? null : (map['assessmentName'] as String).input(),
-      metadata: map['metadata'] == null ? null : (SecurityAssessmentMetadataProperties.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      partnersData: map['partnersData'] == null ? null : (SecurityAssessmentPartnerData.fromMap((map['partnersData'] as Map).cast<String, dynamic>())).input(),
+      additionalData: map['additionalData'] == null ? null : ((map['additionalData']! as Map).cast<String, String>()).input(),
+      assessmentName: map['assessmentName'] == null ? null : (map['assessmentName']! as String).input(),
+      metadata: map['metadata'] == null ? null : (SecurityAssessmentMetadataProperties.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      partnersData: map['partnersData'] == null ? null : (SecurityAssessmentPartnerData.fromMap((map['partnersData']! as Map).cast<String, dynamic>())).input(),
       resourceDetails: (AzureResourceDetails.fromMap((map['resourceDetails'] as Map).cast<String, dynamic>())).input(),
       resourceId: (map['resourceId'] as String).input(),
       status: (AssessmentStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),

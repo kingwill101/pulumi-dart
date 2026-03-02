@@ -44,10 +44,10 @@ class ThroughputPoolAccountArgs {
 
   factory ThroughputPoolAccountArgs.fromMap(Map<String, dynamic> map) {
     return ThroughputPoolAccountArgs(
-      accountLocation: map['accountLocation'] == null ? null : (map['accountLocation'] as String).input(),
-      accountResourceIdentifier: map['accountResourceIdentifier'] == null ? null : (map['accountResourceIdentifier'] as String).input(),
+      accountLocation: map['accountLocation'] == null ? null : (map['accountLocation']! as String).input(),
+      accountResourceIdentifier: map['accountResourceIdentifier'] == null ? null : (map['accountResourceIdentifier']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      throughputPoolAccountName: map['throughputPoolAccountName'] == null ? null : (map['throughputPoolAccountName'] as String).input(),
+      throughputPoolAccountName: map['throughputPoolAccountName'] == null ? null : (map['throughputPoolAccountName']! as String).input(),
       throughputPoolName: (map['throughputPoolName'] as String).input(),
     );
   }

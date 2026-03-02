@@ -31,8 +31,8 @@ class EdgeCacheOriginOriginOverrideAction {
 
   factory EdgeCacheOriginOriginOverrideAction.fromMap(Map<String, dynamic> map) {
     return EdgeCacheOriginOriginOverrideAction(
-      headerAction: map['headerAction'] == null ? null : (EdgeCacheOriginOriginOverrideActionHeaderAction.fromMap((map['headerAction'] as Map).cast<String, dynamic>())).input(),
-      urlRewrite: map['urlRewrite'] == null ? null : (EdgeCacheOriginOriginOverrideActionUrlRewrite.fromMap((map['urlRewrite'] as Map).cast<String, dynamic>())).input(),
+      headerAction: map['headerAction'] == null ? null : (EdgeCacheOriginOriginOverrideActionHeaderAction.fromMap((map['headerAction']! as Map).cast<String, dynamic>())).input(),
+      urlRewrite: map['urlRewrite'] == null ? null : (EdgeCacheOriginOriginOverrideActionUrlRewrite.fromMap((map['urlRewrite']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

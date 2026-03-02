@@ -24,8 +24,8 @@ class WeeklyScheduleResponse {
 
   factory WeeklyScheduleResponse.fromMap(Map<String, dynamic> map) {
     return WeeklyScheduleResponse(
-      scheduleRunDays: map['scheduleRunDays'] == null ? null : ((map['scheduleRunDays'] as List).cast<String>()).input(),
-      scheduleRunTimes: map['scheduleRunTimes'] == null ? null : ((map['scheduleRunTimes'] as List).cast<String>()).input(),
+      scheduleRunDays: map['scheduleRunDays'] == null ? null : ((map['scheduleRunDays']! as List).cast<String>()).input(),
+      scheduleRunTimes: map['scheduleRunTimes'] == null ? null : ((map['scheduleRunTimes']! as List).cast<String>()).input(),
     );
   }
 }

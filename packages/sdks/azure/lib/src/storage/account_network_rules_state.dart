@@ -57,12 +57,12 @@ class AccountNetworkRulesState {
 
   factory AccountNetworkRulesState.fromMap(Map<String, dynamic> map) {
     return AccountNetworkRulesState(
-      bypasses: map['bypasses'] == null ? null : ((map['bypasses'] as List).cast<String>()).input(),
-      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction'] as String).input(),
-      ipRules: map['ipRules'] == null ? null : ((map['ipRules'] as List).cast<String>()).input(),
-      privateLinkAccessRules: map['privateLinkAccessRules'] == null ? null : (pulumi.Input.decodeList<AccountNetworkRulesPrivateLinkAccessRule>(map['privateLinkAccessRules'], (value) => AccountNetworkRulesPrivateLinkAccessRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
-      virtualNetworkSubnetIds: map['virtualNetworkSubnetIds'] == null ? null : ((map['virtualNetworkSubnetIds'] as List).cast<String>()).input(),
+      bypasses: map['bypasses'] == null ? null : ((map['bypasses']! as List).cast<String>()).input(),
+      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction']! as String).input(),
+      ipRules: map['ipRules'] == null ? null : ((map['ipRules']! as List).cast<String>()).input(),
+      privateLinkAccessRules: map['privateLinkAccessRules'] == null ? null : (pulumi.Input.decodeList<AccountNetworkRulesPrivateLinkAccessRule>(map['privateLinkAccessRules']!, (value) => AccountNetworkRulesPrivateLinkAccessRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
+      virtualNetworkSubnetIds: map['virtualNetworkSubnetIds'] == null ? null : ((map['virtualNetworkSubnetIds']! as List).cast<String>()).input(),
     );
   }
 }

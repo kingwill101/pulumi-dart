@@ -37,9 +37,9 @@ class GalleryApplicationCustomAction {
 
   factory GalleryApplicationCustomAction.fromMap(Map<String, dynamic> map) {
     return GalleryApplicationCustomAction(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<GalleryApplicationCustomActionParameter>(map['parameters'], (value) => GalleryApplicationCustomActionParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<GalleryApplicationCustomActionParameter>(map['parameters']!, (value) => GalleryApplicationCustomActionParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       script: (map['script'] as String).input(),
     );
   }

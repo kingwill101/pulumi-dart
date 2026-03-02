@@ -109,21 +109,21 @@ class GetImageIdsArgs {
 
   factory GetImageIdsArgs.fromMap(Map<String, dynamic> map) {
     return GetImageIdsArgs(
-      containerFormat: map['containerFormat'] == null ? null : (map['containerFormat'] as String).input(),
-      diskFormat: map['diskFormat'] == null ? null : (map['diskFormat'] as String).input(),
-      hidden: map['hidden'] == null ? null : (map['hidden'] as bool).input(),
-      memberStatus: map['memberStatus'] == null ? null : (map['memberStatus'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sizeMax: map['sizeMax'] == null ? null : (map['sizeMax'] as int).input(),
-      sizeMin: map['sizeMin'] == null ? null : (map['sizeMin'] as int).input(),
-      sort: map['sort'] == null ? null : (map['sort'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      visibility: map['visibility'] == null ? null : (map['visibility'] as String).input(),
+      containerFormat: map['containerFormat'] == null ? null : (map['containerFormat']! as String).input(),
+      diskFormat: map['diskFormat'] == null ? null : (map['diskFormat']! as String).input(),
+      hidden: map['hidden'] == null ? null : (map['hidden']! as bool).input(),
+      memberStatus: map['memberStatus'] == null ? null : (map['memberStatus']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      sizeMax: map['sizeMax'] == null ? null : (map['sizeMax']! as int).input(),
+      sizeMin: map['sizeMin'] == null ? null : (map['sizeMin']! as int).input(),
+      sort: map['sort'] == null ? null : (map['sort']! as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      visibility: map['visibility'] == null ? null : (map['visibility']! as String).input(),
     );
   }
 }

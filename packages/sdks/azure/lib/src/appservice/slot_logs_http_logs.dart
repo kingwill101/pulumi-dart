@@ -27,8 +27,8 @@ class SlotLogsHttpLogs {
 
   factory SlotLogsHttpLogs.fromMap(Map<String, dynamic> map) {
     return SlotLogsHttpLogs(
-      azureBlobStorage: map['azureBlobStorage'] == null ? null : (SlotLogsHttpLogsAzureBlobStorage.fromMap((map['azureBlobStorage'] as Map).cast<String, dynamic>())).input(),
-      fileSystem: map['fileSystem'] == null ? null : (SlotLogsHttpLogsFileSystem.fromMap((map['fileSystem'] as Map).cast<String, dynamic>())).input(),
+      azureBlobStorage: map['azureBlobStorage'] == null ? null : (SlotLogsHttpLogsAzureBlobStorage.fromMap((map['azureBlobStorage']! as Map).cast<String, dynamic>())).input(),
+      fileSystem: map['fileSystem'] == null ? null : (SlotLogsHttpLogsFileSystem.fromMap((map['fileSystem']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

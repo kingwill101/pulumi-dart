@@ -37,10 +37,10 @@ class GetLifecyclePolicyDocumentRule {
 
   factory GetLifecyclePolicyDocumentRule.fromMap(Map<String, dynamic> map) {
     return GetLifecyclePolicyDocumentRule(
-      action: map['action'] == null ? null : (GetLifecyclePolicyDocumentRuleAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      action: map['action'] == null ? null : ((GetLifecyclePolicyDocumentRuleAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       priority: (map['priority'] as int).input(),
-      selection: (GetLifecyclePolicyDocumentRuleSelection.fromMap((map['selection'] as Map).cast<String, dynamic>())).input(),
+      selection: (GetLifecyclePolicyDocumentRuleSelection.fromMap((map['selection']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

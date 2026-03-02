@@ -33,8 +33,8 @@ class PolicyDefinitionTemplateLinked {
   factory PolicyDefinitionTemplateLinked.fromMap(Map<String, dynamic> map) {
     return PolicyDefinitionTemplateLinked(
       policyTemplateId: (map['policyTemplateId'] as String).input(),
-      principal: map['principal'] == null ? null : (PolicyDefinitionTemplateLinkedPrincipal.fromMap((map['principal'] as Map).cast<String, dynamic>())).input(),
-      resource: map['resource'] == null ? null : (PolicyDefinitionTemplateLinkedResource.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
+      principal: map['principal'] == null ? null : ((PolicyDefinitionTemplateLinkedPrincipal.fromMap((map['principal']! as Map).cast<String, dynamic>())).input()).input(),
+      resource: map['resource'] == null ? null : ((PolicyDefinitionTemplateLinkedResource.fromMap((map['resource']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

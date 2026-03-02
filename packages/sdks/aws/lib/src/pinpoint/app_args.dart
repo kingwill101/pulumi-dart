@@ -57,13 +57,13 @@ class AppArgs {
 
   factory AppArgs.fromMap(Map<String, dynamic> map) {
     return AppArgs(
-      campaignHook: map['campaignHook'] == null ? null : (AppCampaignHook.fromMap((map['campaignHook'] as Map).cast<String, dynamic>())).input(),
-      limits: map['limits'] == null ? null : (AppLimits.fromMap((map['limits'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      quietTime: map['quietTime'] == null ? null : (AppQuietTime.fromMap((map['quietTime'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      campaignHook: map['campaignHook'] == null ? null : ((AppCampaignHook.fromMap((map['campaignHook']! as Map).cast<String, dynamic>())).input()).input(),
+      limits: map['limits'] == null ? null : ((AppLimits.fromMap((map['limits']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      quietTime: map['quietTime'] == null ? null : ((AppQuietTime.fromMap((map['quietTime']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class HTTPIngressRuleValuePatchNetworkingK8sIoV1beta1 {
 
   factory HTTPIngressRuleValuePatchNetworkingK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return HTTPIngressRuleValuePatchNetworkingK8sIoV1beta1(
-      paths: map['paths'] == null ? null : (pulumi.Input.decodeList<HTTPIngressPathPatchNetworkingK8sIoV1beta1>(map['paths'], (value) => HTTPIngressPathPatchNetworkingK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      paths: map['paths'] == null ? null : (pulumi.Input.decodeList<HTTPIngressPathPatchNetworkingK8sIoV1beta1>(map['paths']!, (value) => HTTPIngressPathPatchNetworkingK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

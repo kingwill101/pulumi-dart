@@ -48,9 +48,9 @@ class AddRecoveryServicesProviderInputProperties {
   factory AddRecoveryServicesProviderInputProperties.fromMap(Map<String, dynamic> map) {
     return AddRecoveryServicesProviderInputProperties(
       authenticationIdentityInput: (IdentityProviderInput.fromMap((map['authenticationIdentityInput'] as Map).cast<String, dynamic>())).input(),
-      biosId: map['biosId'] == null ? null : (map['biosId'] as String).input(),
-      dataPlaneAuthenticationIdentityInput: map['dataPlaneAuthenticationIdentityInput'] == null ? null : (IdentityProviderInput.fromMap((map['dataPlaneAuthenticationIdentityInput'] as Map).cast<String, dynamic>())).input(),
-      machineId: map['machineId'] == null ? null : (map['machineId'] as String).input(),
+      biosId: map['biosId'] == null ? null : (map['biosId']! as String).input(),
+      dataPlaneAuthenticationIdentityInput: map['dataPlaneAuthenticationIdentityInput'] == null ? null : (IdentityProviderInput.fromMap((map['dataPlaneAuthenticationIdentityInput']! as Map).cast<String, dynamic>())).input(),
+      machineId: map['machineId'] == null ? null : (map['machineId']! as String).input(),
       machineName: (map['machineName'] as String).input(),
       resourceAccessIdentityInput: (IdentityProviderInput.fromMap((map['resourceAccessIdentityInput'] as Map).cast<String, dynamic>())).input(),
     );

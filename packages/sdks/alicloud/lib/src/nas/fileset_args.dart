@@ -46,9 +46,9 @@ class FilesetArgs {
 
   factory FilesetArgs.fromMap(Map<String, dynamic> map) {
     return FilesetArgs(
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
       fileSystemId: (map['fileSystemId'] as String).input(),
       fileSystemPath: (map['fileSystemPath'] as String).input(),
     );

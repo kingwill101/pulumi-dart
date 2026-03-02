@@ -33,9 +33,9 @@ class VaultPropertiesEncryption {
 
   factory VaultPropertiesEncryption.fromMap(Map<String, dynamic> map) {
     return VaultPropertiesEncryption(
-      infrastructureEncryption: map['infrastructureEncryption'] == null ? null : (map['infrastructureEncryption'] as String).input(),
-      kekIdentity: map['kekIdentity'] == null ? null : (CmkKekIdentity.fromMap((map['kekIdentity'] as Map).cast<String, dynamic>())).input(),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : (CmkKeyVaultProperties.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
+      infrastructureEncryption: map['infrastructureEncryption'] == null ? null : (map['infrastructureEncryption']! as String).input(),
+      kekIdentity: map['kekIdentity'] == null ? null : (CmkKekIdentity.fromMap((map['kekIdentity']! as Map).cast<String, dynamic>())).input(),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (CmkKeyVaultProperties.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

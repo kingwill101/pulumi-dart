@@ -21,7 +21,7 @@ class DataSetRefreshPropertiesRefreshConfiguration {
 
   factory DataSetRefreshPropertiesRefreshConfiguration.fromMap(Map<String, dynamic> map) {
     return DataSetRefreshPropertiesRefreshConfiguration(
-      incrementalRefresh: (DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh.fromMap((map['incrementalRefresh'] as Map).cast<String, dynamic>())).input(),
+      incrementalRefresh: (DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh.fromMap((map['incrementalRefresh']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

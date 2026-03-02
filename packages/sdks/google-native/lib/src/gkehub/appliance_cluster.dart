@@ -21,7 +21,7 @@ class ApplianceCluster {
 
   factory ApplianceCluster.fromMap(Map<String, dynamic> map) {
     return ApplianceCluster(
-      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink'] as String).input(),
+      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink']! as String).input(),
     );
   }
 }

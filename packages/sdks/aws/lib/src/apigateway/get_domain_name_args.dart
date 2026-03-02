@@ -40,9 +40,9 @@ class GetDomainNameArgs {
   factory GetDomainNameArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainNameArgs(
       domainName: (map['domainName'] as String).input(),
-      domainNameId: map['domainNameId'] == null ? null : (map['domainNameId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      domainNameId: map['domainNameId'] == null ? null : ((map['domainNameId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

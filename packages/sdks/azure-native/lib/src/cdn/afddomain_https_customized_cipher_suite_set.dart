@@ -26,8 +26,8 @@ class AFDDomainHttpsCustomizedCipherSuiteSet {
 
   factory AFDDomainHttpsCustomizedCipherSuiteSet.fromMap(Map<String, dynamic> map) {
     return AFDDomainHttpsCustomizedCipherSuiteSet(
-      cipherSuiteSetForTls12: map['cipherSuiteSetForTls12'] == null ? null : ((map['cipherSuiteSetForTls12'] as List).cast<String>()).input(),
-      cipherSuiteSetForTls13: map['cipherSuiteSetForTls13'] == null ? null : ((map['cipherSuiteSetForTls13'] as List).cast<String>()).input(),
+      cipherSuiteSetForTls12: map['cipherSuiteSetForTls12'] == null ? null : ((map['cipherSuiteSetForTls12']! as List).cast<String>()).input(),
+      cipherSuiteSetForTls13: map['cipherSuiteSetForTls13'] == null ? null : ((map['cipherSuiteSetForTls13']! as List).cast<String>()).input(),
     );
   }
 }

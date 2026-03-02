@@ -26,8 +26,8 @@ class OAuthToken {
 
   factory OAuthToken.fromMap(Map<String, dynamic> map) {
     return OAuthToken(
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
     );
   }
 }

@@ -88,19 +88,19 @@ class HookState {
 
   factory HookState.fromMap(Map<String, dynamic> map) {
     return HookState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      events: map['events'] == null ? null : ((map['events'] as List).cast<String>()).input(),
-      hookId: map['hookId'] == null ? null : (map['hookId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pushOption: map['pushOption'] == null ? null : (HookPushOption.fromMap((map['pushOption'] as Map).cast<String, dynamic>())).input(),
-      repositoryId: map['repositoryId'] == null ? null : (map['repositoryId'] as String).input(),
-      sensitiveQueryString: map['sensitiveQueryString'] == null ? null : (map['sensitiveQueryString'] as String).input(),
-      targetUri: map['targetUri'] == null ? null : (map['targetUri'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      events: map['events'] == null ? null : ((map['events']! as List).cast<String>()).input(),
+      hookId: map['hookId'] == null ? null : (map['hookId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pushOption: map['pushOption'] == null ? null : (HookPushOption.fromMap((map['pushOption']! as Map).cast<String, dynamic>())).input(),
+      repositoryId: map['repositoryId'] == null ? null : (map['repositoryId']! as String).input(),
+      sensitiveQueryString: map['sensitiveQueryString'] == null ? null : (map['sensitiveQueryString']! as String).input(),
+      targetUri: map['targetUri'] == null ? null : (map['targetUri']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

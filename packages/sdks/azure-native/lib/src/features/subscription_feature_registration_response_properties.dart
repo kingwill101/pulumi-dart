@@ -87,17 +87,17 @@ class SubscriptionFeatureRegistrationResponseProperties {
   factory SubscriptionFeatureRegistrationResponseProperties.fromMap(Map<String, dynamic> map) {
     return SubscriptionFeatureRegistrationResponseProperties(
       approvalType: (map['approvalType'] as String).input(),
-      authorizationProfile: map['authorizationProfile'] == null ? null : (AuthorizationProfileResponse.fromMap((map['authorizationProfile'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      authorizationProfile: map['authorizationProfile'] == null ? null : (AuthorizationProfileResponse.fromMap((map['authorizationProfile']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       documentationLink: (map['documentationLink'] as String).input(),
       featureName: (map['featureName'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
       providerNamespace: (map['providerNamespace'] as String).input(),
       registrationDate: (map['registrationDate'] as String).input(),
       releaseDate: (map['releaseDate'] as String).input(),
-      shouldFeatureDisplayInPortal: map['shouldFeatureDisplayInPortal'] == null ? null : (map['shouldFeatureDisplayInPortal'] as bool).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      shouldFeatureDisplayInPortal: map['shouldFeatureDisplayInPortal'] == null ? null : (map['shouldFeatureDisplayInPortal']! as bool).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
       subscriptionId: (map['subscriptionId'] as String).input(),
       tenantId: (map['tenantId'] as String).input(),
     );

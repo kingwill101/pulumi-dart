@@ -25,8 +25,8 @@ class InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapp
 
   factory InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping(
-      innerApplianceIpAddress: map['innerApplianceIpAddress'] == null ? null : (map['innerApplianceIpAddress'] as String).input(),
-      innerVlanTags: map['innerVlanTags'] == null ? null : ((map['innerVlanTags'] as List).cast<String>()).input(),
+      innerApplianceIpAddress: map['innerApplianceIpAddress'] == null ? null : (map['innerApplianceIpAddress']! as String).input(),
+      innerVlanTags: map['innerVlanTags'] == null ? null : ((map['innerVlanTags']! as List).cast<String>()).input(),
     );
   }
 }

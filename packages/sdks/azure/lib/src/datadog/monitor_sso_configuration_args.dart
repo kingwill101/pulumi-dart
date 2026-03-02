@@ -45,9 +45,9 @@ class MonitorSsoConfigurationArgs {
     return MonitorSsoConfigurationArgs(
       datadogMonitorId: (map['datadogMonitorId'] as String).input(),
       enterpriseApplicationId: (map['enterpriseApplicationId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      singleSignOn: map['singleSignOn'] == null ? null : (map['singleSignOn'] as String).input(),
-      singleSignOnEnabled: map['singleSignOnEnabled'] == null ? null : (map['singleSignOnEnabled'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      singleSignOn: map['singleSignOn'] == null ? null : (map['singleSignOn']! as String).input(),
+      singleSignOnEnabled: map['singleSignOnEnabled'] == null ? null : (map['singleSignOnEnabled']! as String).input(),
     );
   }
 }

@@ -50,13 +50,13 @@ class FlexibleAppVersionLivenessCheck {
 
   factory FlexibleAppVersionLivenessCheck.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionLivenessCheck(
-      checkInterval: map['checkInterval'] == null ? null : (map['checkInterval'] as String).input(),
-      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as double).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      initialDelay: map['initialDelay'] == null ? null : (map['initialDelay'] as String).input(),
+      checkInterval: map['checkInterval'] == null ? null : (map['checkInterval']! as String).input(),
+      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold']! as double).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      initialDelay: map['initialDelay'] == null ? null : (map['initialDelay']! as String).input(),
       path: (map['path'] as String).input(),
-      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold'] as double).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold']! as double).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

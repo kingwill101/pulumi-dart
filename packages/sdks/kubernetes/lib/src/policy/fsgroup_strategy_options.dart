@@ -27,8 +27,8 @@ class FSGroupStrategyOptions {
 
   factory FSGroupStrategyOptions.fromMap(Map<String, dynamic> map) {
     return FSGroupStrategyOptions(
-      ranges: map['ranges'] == null ? null : (pulumi.Input.decodeList<IDRange>(map['ranges'], (value) => IDRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
+      ranges: map['ranges'] == null ? null : (pulumi.Input.decodeList<IDRange>(map['ranges']!, (value) => IDRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rule: map['rule'] == null ? null : (map['rule']! as String).input(),
     );
   }
 }

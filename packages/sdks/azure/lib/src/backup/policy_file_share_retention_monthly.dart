@@ -43,10 +43,10 @@ class PolicyFileShareRetentionMonthly {
   factory PolicyFileShareRetentionMonthly.fromMap(Map<String, dynamic> map) {
     return PolicyFileShareRetentionMonthly(
       count: (map['count'] as int).input(),
-      days: map['days'] == null ? null : ((map['days'] as List).cast<int>()).input(),
-      includeLastDays: map['includeLastDays'] == null ? null : (map['includeLastDays'] as bool).input(),
-      weekdays: map['weekdays'] == null ? null : ((map['weekdays'] as List).cast<String>()).input(),
-      weeks: map['weeks'] == null ? null : ((map['weeks'] as List).cast<String>()).input(),
+      days: map['days'] == null ? null : ((map['days']! as List).cast<int>()).input(),
+      includeLastDays: map['includeLastDays'] == null ? null : (map['includeLastDays']! as bool).input(),
+      weekdays: map['weekdays'] == null ? null : ((map['weekdays']! as List).cast<String>()).input(),
+      weeks: map['weeks'] == null ? null : ((map['weeks']! as List).cast<String>()).input(),
     );
   }
 }

@@ -45,11 +45,11 @@ class TablePolicyState {
 
   factory TablePolicyState.fromMap(Map<String, dynamic> map) {
     return TablePolicyState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourcePolicy: map['resourcePolicy'] == null ? null : (map['resourcePolicy'] as String).input(),
-      tableBucketArn: map['tableBucketArn'] == null ? null : (map['tableBucketArn'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namespace: map['namespace'] == null ? null : ((map['namespace'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourcePolicy: map['resourcePolicy'] == null ? null : ((map['resourcePolicy'] as String).input()).input(),
+      tableBucketArn: map['tableBucketArn'] == null ? null : ((map['tableBucketArn'] as String).input()).input(),
     );
   }
 }

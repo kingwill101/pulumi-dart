@@ -31,9 +31,9 @@ class Image {
 
   factory Image.fromMap(Map<String, dynamic> map) {
     return Image(
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
-      regionalDataBoundary: map['regionalDataBoundary'] == null ? null : (map['regionalDataBoundary'] as String).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId']! as String).input(),
+      regionalDataBoundary: map['regionalDataBoundary'] == null ? null : (map['regionalDataBoundary']! as String).input(),
     );
   }
 }

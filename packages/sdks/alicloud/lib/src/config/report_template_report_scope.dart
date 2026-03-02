@@ -33,9 +33,9 @@ class ReportTemplateReportScope {
 
   factory ReportTemplateReportScope.fromMap(Map<String, dynamic> map) {
     return ReportTemplateReportScope(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      matchType: map['matchType'] == null ? null : (map['matchType'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      matchType: map['matchType'] == null ? null : (map['matchType']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

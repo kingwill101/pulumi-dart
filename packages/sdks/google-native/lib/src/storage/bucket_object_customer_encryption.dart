@@ -26,8 +26,8 @@ class BucketObjectCustomerEncryption {
 
   factory BucketObjectCustomerEncryption.fromMap(Map<String, dynamic> map) {
     return BucketObjectCustomerEncryption(
-      encryptionAlgorithm: map['encryptionAlgorithm'] == null ? null : (map['encryptionAlgorithm'] as String).input(),
-      keySha256: map['keySha256'] == null ? null : (map['keySha256'] as String).input(),
+      encryptionAlgorithm: map['encryptionAlgorithm'] == null ? null : (map['encryptionAlgorithm']! as String).input(),
+      keySha256: map['keySha256'] == null ? null : (map['keySha256']! as String).input(),
     );
   }
 }

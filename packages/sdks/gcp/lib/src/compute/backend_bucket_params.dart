@@ -22,7 +22,7 @@ class BackendBucketParams {
 
   factory BackendBucketParams.fromMap(Map<String, dynamic> map) {
     return BackendBucketParams(
-      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags'] as Map).cast<String, String>()).input(),
+      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags']! as Map).cast<String, String>()).input(),
     );
   }
 }

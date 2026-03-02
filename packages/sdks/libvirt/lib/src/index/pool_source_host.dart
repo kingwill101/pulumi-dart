@@ -26,7 +26,7 @@ class PoolSourceHost {
   factory PoolSourceHost.fromMap(Map<String, dynamic> map) {
     return PoolSourceHost(
       name: (map['name'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
     );
   }
 }

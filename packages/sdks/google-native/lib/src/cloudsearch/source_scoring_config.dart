@@ -22,7 +22,7 @@ class SourceScoringConfig {
 
   factory SourceScoringConfig.fromMap(Map<String, dynamic> map) {
     return SourceScoringConfig(
-      sourceImportance: map['sourceImportance'] == null ? null : (SourceScoringConfigSourceImportance.fromValue(map['sourceImportance'] as String)).input(),
+      sourceImportance: map['sourceImportance'] == null ? null : (SourceScoringConfigSourceImportance.fromValue(map['sourceImportance']! as String)).input(),
     );
   }
 }

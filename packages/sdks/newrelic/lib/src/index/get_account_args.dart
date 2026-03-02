@@ -33,9 +33,9 @@ class GetAccountArgs {
 
   factory GetAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
     );
   }
 }

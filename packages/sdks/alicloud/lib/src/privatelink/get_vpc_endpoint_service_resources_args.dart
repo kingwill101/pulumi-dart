@@ -29,7 +29,7 @@ class GetVpcEndpointServiceResourcesArgs {
 
   factory GetVpcEndpointServiceResourcesArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointServiceResourcesArgs(
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
       serviceId: (map['serviceId'] as String).input(),
     );
   }

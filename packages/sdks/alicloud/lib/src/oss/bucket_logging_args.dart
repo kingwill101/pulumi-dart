@@ -40,9 +40,9 @@ class BucketLoggingArgs {
   factory BucketLoggingArgs.fromMap(Map<String, dynamic> map) {
     return BucketLoggingArgs(
       bucket: (map['bucket'] as String).input(),
-      loggingRole: map['loggingRole'] == null ? null : (map['loggingRole'] as String).input(),
+      loggingRole: map['loggingRole'] == null ? null : (map['loggingRole']! as String).input(),
       targetBucket: (map['targetBucket'] as String).input(),
-      targetPrefix: map['targetPrefix'] == null ? null : (map['targetPrefix'] as String).input(),
+      targetPrefix: map['targetPrefix'] == null ? null : (map['targetPrefix']! as String).input(),
     );
   }
 }

@@ -74,14 +74,14 @@ class SapVirtualInstanceArgs {
     return SapVirtualInstanceArgs(
       configuration: (DeploymentConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
       environment: (map['environment'] as String).input(),
-      identity: map['identity'] == null ? null : (SAPVirtualInstanceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : (ManagedRGConfiguration.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>())).input(),
-      managedResourcesNetworkAccessType: map['managedResourcesNetworkAccessType'] == null ? null : (map['managedResourcesNetworkAccessType'] as String).input(),
+      identity: map['identity'] == null ? null : (SAPVirtualInstanceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : (ManagedRGConfiguration.fromMap((map['managedResourceGroupConfiguration']! as Map).cast<String, dynamic>())).input(),
+      managedResourcesNetworkAccessType: map['managedResourcesNetworkAccessType'] == null ? null : (map['managedResourcesNetworkAccessType']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sapProduct: (map['sapProduct'] as String).input(),
-      sapVirtualInstanceName: map['sapVirtualInstanceName'] == null ? null : (map['sapVirtualInstanceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sapVirtualInstanceName: map['sapVirtualInstanceName'] == null ? null : (map['sapVirtualInstanceName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

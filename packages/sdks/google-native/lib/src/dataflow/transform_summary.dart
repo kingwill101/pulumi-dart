@@ -48,12 +48,12 @@ class TransformSummary {
 
   factory TransformSummary.fromMap(Map<String, dynamic> map) {
     return TransformSummary(
-      displayData: map['displayData'] == null ? null : (pulumi.Input.decodeList<DisplayData>(map['displayData'], (value) => DisplayData.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      inputCollectionName: map['inputCollectionName'] == null ? null : ((map['inputCollectionName'] as List).cast<String>()).input(),
-      kind: map['kind'] == null ? null : (TransformSummaryKind.fromValue(map['kind'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      outputCollectionName: map['outputCollectionName'] == null ? null : ((map['outputCollectionName'] as List).cast<String>()).input(),
+      displayData: map['displayData'] == null ? null : (pulumi.Input.decodeList<DisplayData>(map['displayData']!, (value) => DisplayData.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      inputCollectionName: map['inputCollectionName'] == null ? null : ((map['inputCollectionName']! as List).cast<String>()).input(),
+      kind: map['kind'] == null ? null : (TransformSummaryKind.fromValue(map['kind']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      outputCollectionName: map['outputCollectionName'] == null ? null : ((map['outputCollectionName']! as List).cast<String>()).input(),
     );
   }
 }

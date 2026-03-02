@@ -27,8 +27,8 @@ class SecurityPolicyAdaptiveProtectionConfigComputeBeta {
 
   factory SecurityPolicyAdaptiveProtectionConfigComputeBeta.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAdaptiveProtectionConfigComputeBeta(
-      autoDeployConfig: map['autoDeployConfig'] == null ? null : (SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigComputeBeta.fromMap((map['autoDeployConfig'] as Map).cast<String, dynamic>())).input(),
-      layer7DdosDefenseConfig: map['layer7DdosDefenseConfig'] == null ? null : (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigComputeBeta.fromMap((map['layer7DdosDefenseConfig'] as Map).cast<String, dynamic>())).input(),
+      autoDeployConfig: map['autoDeployConfig'] == null ? null : (SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigComputeBeta.fromMap((map['autoDeployConfig']! as Map).cast<String, dynamic>())).input(),
+      layer7DdosDefenseConfig: map['layer7DdosDefenseConfig'] == null ? null : (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigComputeBeta.fromMap((map['layer7DdosDefenseConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

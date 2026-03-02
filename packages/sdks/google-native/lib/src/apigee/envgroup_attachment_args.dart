@@ -39,7 +39,7 @@ class EnvgroupAttachmentArgs {
     return EnvgroupAttachmentArgs(
       envgroupId: (map['envgroupId'] as String).input(),
       environment: (map['environment'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
     );
   }

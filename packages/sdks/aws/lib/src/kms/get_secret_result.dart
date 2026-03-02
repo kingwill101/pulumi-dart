@@ -32,7 +32,7 @@ class GetSecretResult {
     return GetSecretResult(
       id: map['id'] as String,
       region: map['region'] as String,
-      secrets: pulumi.Input.decodeList<GetSecretSecret>(map['secrets'], (value) => GetSecretSecret.fromMap((value as Map).cast<String, dynamic>())),
+      secrets: pulumi.Input.decodeList<GetSecretSecret>(map['secrets']!, (value) => GetSecretSecret.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

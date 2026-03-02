@@ -22,7 +22,7 @@ class RowLayout {
 
   factory RowLayout.fromMap(Map<String, dynamic> map) {
     return RowLayout(
-      rows: map['rows'] == null ? null : (pulumi.Input.decodeList<Row>(map['rows'], (value) => Row.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rows: map['rows'] == null ? null : (pulumi.Input.decodeList<Row>(map['rows']!, (value) => Row.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

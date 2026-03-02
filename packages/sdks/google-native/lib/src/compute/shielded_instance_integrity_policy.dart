@@ -21,7 +21,7 @@ class ShieldedInstanceIntegrityPolicy {
 
   factory ShieldedInstanceIntegrityPolicy.fromMap(Map<String, dynamic> map) {
     return ShieldedInstanceIntegrityPolicy(
-      updateAutoLearnPolicy: map['updateAutoLearnPolicy'] == null ? null : (map['updateAutoLearnPolicy'] as bool).input(),
+      updateAutoLearnPolicy: map['updateAutoLearnPolicy'] == null ? null : (map['updateAutoLearnPolicy']! as bool).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class FirewallApplyTo {
 
   factory FirewallApplyTo.fromMap(Map<String, dynamic> map) {
     return FirewallApplyTo(
-      labelSelector: map['labelSelector'] == null ? null : (map['labelSelector'] as String).input(),
-      server: map['server'] == null ? null : (map['server'] as int).input(),
+      labelSelector: map['labelSelector'] == null ? null : (map['labelSelector']! as String).input(),
+      server: map['server'] == null ? null : (map['server']! as int).input(),
     );
   }
 }

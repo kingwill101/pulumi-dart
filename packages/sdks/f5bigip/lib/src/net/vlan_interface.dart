@@ -25,8 +25,8 @@ class VlanInterface {
 
   factory VlanInterface.fromMap(Map<String, dynamic> map) {
     return VlanInterface(
-      tagged: map['tagged'] == null ? null : (map['tagged'] as bool).input(),
-      vlanport: map['vlanport'] == null ? null : (map['vlanport'] as String).input(),
+      tagged: map['tagged'] == null ? null : (map['tagged']! as bool).input(),
+      vlanport: map['vlanport'] == null ? null : (map['vlanport']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class PolicyAlternativeNameServerConfig {
 
   factory PolicyAlternativeNameServerConfig.fromMap(Map<String, dynamic> map) {
     return PolicyAlternativeNameServerConfig(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      targetNameServers: map['targetNameServers'] == null ? null : (pulumi.Input.decodeList<PolicyAlternativeNameServerConfigTargetNameServer>(map['targetNameServers'], (value) => PolicyAlternativeNameServerConfigTargetNameServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      targetNameServers: map['targetNameServers'] == null ? null : (pulumi.Input.decodeList<PolicyAlternativeNameServerConfigTargetNameServer>(map['targetNameServers']!, (value) => PolicyAlternativeNameServerConfigTargetNameServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

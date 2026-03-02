@@ -29,8 +29,8 @@ class RecommendationPreferencesPreferredResource {
 
   factory RecommendationPreferencesPreferredResource.fromMap(Map<String, dynamic> map) {
     return RecommendationPreferencesPreferredResource(
-      excludeLists: map['excludeLists'] == null ? null : ((map['excludeLists'] as List).cast<String>()).input(),
-      includeLists: map['includeLists'] == null ? null : ((map['includeLists'] as List).cast<String>()).input(),
+      excludeLists: map['excludeLists'] == null ? null : (((map['excludeLists'] as List).cast<String>()).input()).input(),
+      includeLists: map['includeLists'] == null ? null : (((map['includeLists'] as List).cast<String>()).input()).input(),
       name: (map['name'] as String).input(),
     );
   }

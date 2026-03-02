@@ -25,8 +25,8 @@ class MonitorCustomHeader {
 
   factory MonitorCustomHeader.fromMap(Map<String, dynamic> map) {
     return MonitorCustomHeader(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

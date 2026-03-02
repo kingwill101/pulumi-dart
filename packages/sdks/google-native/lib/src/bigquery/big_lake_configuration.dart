@@ -35,10 +35,10 @@ class BigLakeConfiguration {
 
   factory BigLakeConfiguration.fromMap(Map<String, dynamic> map) {
     return BigLakeConfiguration(
-      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
-      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat'] as String).input(),
-      storageUri: map['storageUri'] == null ? null : (map['storageUri'] as String).input(),
-      tableFormat: map['tableFormat'] == null ? null : (map['tableFormat'] as String).input(),
+      connectionId: map['connectionId'] == null ? null : (map['connectionId']! as String).input(),
+      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat']! as String).input(),
+      storageUri: map['storageUri'] == null ? null : (map['storageUri']! as String).input(),
+      tableFormat: map['tableFormat'] == null ? null : (map['tableFormat']! as String).input(),
     );
   }
 }

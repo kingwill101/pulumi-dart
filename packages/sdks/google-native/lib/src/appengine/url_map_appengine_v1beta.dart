@@ -63,14 +63,14 @@ class UrlMapAppengineV1beta {
 
   factory UrlMapAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return UrlMapAppengineV1beta(
-      apiEndpoint: map['apiEndpoint'] == null ? null : (ApiEndpointHandlerAppengineV1beta.fromMap((map['apiEndpoint'] as Map).cast<String, dynamic>())).input(),
-      authFailAction: map['authFailAction'] == null ? null : (UrlMapAuthFailActionAppengineV1beta.fromValue(map['authFailAction'] as String)).input(),
-      login: map['login'] == null ? null : (UrlMapLoginAppengineV1beta.fromValue(map['login'] as String)).input(),
-      redirectHttpResponseCode: map['redirectHttpResponseCode'] == null ? null : (UrlMapRedirectHttpResponseCodeAppengineV1beta.fromValue(map['redirectHttpResponseCode'] as String)).input(),
-      script: map['script'] == null ? null : (ScriptHandlerAppengineV1beta.fromMap((map['script'] as Map).cast<String, dynamic>())).input(),
-      securityLevel: map['securityLevel'] == null ? null : (UrlMapSecurityLevelAppengineV1beta.fromValue(map['securityLevel'] as String)).input(),
-      staticFiles: map['staticFiles'] == null ? null : (StaticFilesHandlerAppengineV1beta.fromMap((map['staticFiles'] as Map).cast<String, dynamic>())).input(),
-      urlRegex: map['urlRegex'] == null ? null : (map['urlRegex'] as String).input(),
+      apiEndpoint: map['apiEndpoint'] == null ? null : (ApiEndpointHandlerAppengineV1beta.fromMap((map['apiEndpoint']! as Map).cast<String, dynamic>())).input(),
+      authFailAction: map['authFailAction'] == null ? null : (UrlMapAuthFailActionAppengineV1beta.fromValue(map['authFailAction']! as String)).input(),
+      login: map['login'] == null ? null : (UrlMapLoginAppengineV1beta.fromValue(map['login']! as String)).input(),
+      redirectHttpResponseCode: map['redirectHttpResponseCode'] == null ? null : (UrlMapRedirectHttpResponseCodeAppengineV1beta.fromValue(map['redirectHttpResponseCode']! as String)).input(),
+      script: map['script'] == null ? null : (ScriptHandlerAppengineV1beta.fromMap((map['script']! as Map).cast<String, dynamic>())).input(),
+      securityLevel: map['securityLevel'] == null ? null : (UrlMapSecurityLevelAppengineV1beta.fromValue(map['securityLevel']! as String)).input(),
+      staticFiles: map['staticFiles'] == null ? null : (StaticFilesHandlerAppengineV1beta.fromMap((map['staticFiles']! as Map).cast<String, dynamic>())).input(),
+      urlRegex: map['urlRegex'] == null ? null : (map['urlRegex']! as String).input(),
     );
   }
 }

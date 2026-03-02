@@ -27,8 +27,8 @@ class IngressClassSpecNetworkingK8sIoV1beta1 {
 
   factory IngressClassSpecNetworkingK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return IngressClassSpecNetworkingK8sIoV1beta1(
-      controller: map['controller'] == null ? null : (map['controller'] as String).input(),
-      parameters: map['parameters'] == null ? null : (TypedLocalObjectReference.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      controller: map['controller'] == null ? null : (map['controller']! as String).input(),
+      parameters: map['parameters'] == null ? null : (TypedLocalObjectReference.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

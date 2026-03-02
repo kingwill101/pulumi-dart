@@ -21,7 +21,7 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedSca
 
   factory PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecification.fromMap(Map<String, dynamic> map) {
     return PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecification(
-      metricDataQueries: (pulumi.Input.decodeList<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQuery>(map['metricDataQueries'], (value) => PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQuery.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metricDataQueries: (pulumi.Input.decodeList<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQuery>(map['metricDataQueries']!, (value) => PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQuery.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

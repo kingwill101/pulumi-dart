@@ -39,10 +39,10 @@ class NotificationState {
 
   factory NotificationState.fromMap(Map<String, dynamic> map) {
     return NotificationState(
-      notificationArn: map['notificationArn'] == null ? null : (map['notificationArn'] as String).input(),
-      notificationTypes: map['notificationTypes'] == null ? null : ((map['notificationTypes'] as List).cast<String>()).input(),
-      scalingGroupId: map['scalingGroupId'] == null ? null : (map['scalingGroupId'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      notificationArn: map['notificationArn'] == null ? null : (map['notificationArn']! as String).input(),
+      notificationTypes: map['notificationTypes'] == null ? null : ((map['notificationTypes']! as List).cast<String>()).input(),
+      scalingGroupId: map['scalingGroupId'] == null ? null : (map['scalingGroupId']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

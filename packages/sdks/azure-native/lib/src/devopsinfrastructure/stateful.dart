@@ -43,11 +43,11 @@ class Stateful {
 
   factory Stateful.fromMap(Map<String, dynamic> map) {
     return Stateful(
-      gracePeriodTimeSpan: map['gracePeriodTimeSpan'] == null ? null : (map['gracePeriodTimeSpan'] as String).input(),
+      gracePeriodTimeSpan: map['gracePeriodTimeSpan'] == null ? null : (map['gracePeriodTimeSpan']! as String).input(),
       kind: (map['kind'] as String).input(),
-      maxAgentLifetime: map['maxAgentLifetime'] == null ? null : (map['maxAgentLifetime'] as String).input(),
-      resourcePredictions: map['resourcePredictions'] == null ? null : (map['resourcePredictions']).input(),
-      resourcePredictionsProfile: map['resourcePredictionsProfile'] == null ? null : (AutomaticResourcePredictionsProfile.fromMap((map['resourcePredictionsProfile'] as Map).cast<String, dynamic>())).input(),
+      maxAgentLifetime: map['maxAgentLifetime'] == null ? null : (map['maxAgentLifetime']! as String).input(),
+      resourcePredictions: map['resourcePredictions'] == null ? null : (map['resourcePredictions']!).input(),
+      resourcePredictionsProfile: map['resourcePredictionsProfile'] == null ? null : (AutomaticResourcePredictionsProfile.fromMap((map['resourcePredictionsProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

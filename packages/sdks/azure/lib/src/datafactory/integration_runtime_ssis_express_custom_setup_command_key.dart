@@ -36,8 +36,8 @@ class IntegrationRuntimeSsisExpressCustomSetupCommandKey {
 
   factory IntegrationRuntimeSsisExpressCustomSetupCommandKey.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSsisExpressCustomSetupCommandKey(
-      keyVaultPassword: map['keyVaultPassword'] == null ? null : (IntegrationRuntimeSsisExpressCustomSetupCommandKeyKeyVaultPassword.fromMap((map['keyVaultPassword'] as Map).cast<String, dynamic>())).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      keyVaultPassword: map['keyVaultPassword'] == null ? null : (IntegrationRuntimeSsisExpressCustomSetupCommandKeyKeyVaultPassword.fromMap((map['keyVaultPassword']! as Map).cast<String, dynamic>())).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       targetName: (map['targetName'] as String).input(),
       userName: (map['userName'] as String).input(),
     );

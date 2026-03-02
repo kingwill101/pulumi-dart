@@ -72,16 +72,16 @@ class CycleTaskState {
 
   factory CycleTaskState.fromMap(Map<String, dynamic> map) {
     return CycleTaskState(
-      enable: map['enable'] == null ? null : (map['enable'] as int).input(),
-      firstDateStr: map['firstDateStr'] == null ? null : (map['firstDateStr'] as int).input(),
-      intervalPeriod: map['intervalPeriod'] == null ? null : (map['intervalPeriod'] as int).input(),
-      param: map['param'] == null ? null : (map['param'] as String).input(),
-      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      targetEndTime: map['targetEndTime'] == null ? null : (map['targetEndTime'] as int).input(),
-      targetStartTime: map['targetStartTime'] == null ? null : (map['targetStartTime'] as int).input(),
-      taskName: map['taskName'] == null ? null : (map['taskName'] as String).input(),
-      taskType: map['taskType'] == null ? null : (map['taskType'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as int).input(),
+      firstDateStr: map['firstDateStr'] == null ? null : (map['firstDateStr']! as int).input(),
+      intervalPeriod: map['intervalPeriod'] == null ? null : (map['intervalPeriod']! as int).input(),
+      param: map['param'] == null ? null : (map['param']! as String).input(),
+      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      targetEndTime: map['targetEndTime'] == null ? null : (map['targetEndTime']! as int).input(),
+      targetStartTime: map['targetStartTime'] == null ? null : (map['targetStartTime']! as int).input(),
+      taskName: map['taskName'] == null ? null : (map['taskName']! as String).input(),
+      taskType: map['taskType'] == null ? null : (map['taskType']! as String).input(),
     );
   }
 }

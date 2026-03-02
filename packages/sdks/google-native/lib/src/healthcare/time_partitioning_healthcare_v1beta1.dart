@@ -27,8 +27,8 @@ class TimePartitioningHealthcareV1beta1 {
 
   factory TimePartitioningHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return TimePartitioningHealthcareV1beta1(
-      expirationMs: map['expirationMs'] == null ? null : (map['expirationMs'] as String).input(),
-      type: map['type'] == null ? null : (TimePartitioningTypeHealthcareV1beta1.fromValue(map['type'] as String)).input(),
+      expirationMs: map['expirationMs'] == null ? null : (map['expirationMs']! as String).input(),
+      type: map['type'] == null ? null : (TimePartitioningTypeHealthcareV1beta1.fromValue(map['type']! as String)).input(),
     );
   }
 }

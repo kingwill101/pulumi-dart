@@ -34,10 +34,10 @@ class NrqlAlertConditionNrql {
 
   factory NrqlAlertConditionNrql.fromMap(Map<String, dynamic> map) {
     return NrqlAlertConditionNrql(
-      dataAccountId: map['dataAccountId'] == null ? null : (map['dataAccountId'] as String).input(),
-      evaluationOffset: map['evaluationOffset'] == null ? null : (map['evaluationOffset'] as int).input(),
+      dataAccountId: map['dataAccountId'] == null ? null : (map['dataAccountId']! as String).input(),
+      evaluationOffset: map['evaluationOffset'] == null ? null : (map['evaluationOffset']! as int).input(),
       query: (map['query'] as String).input(),
-      sinceValue: map['sinceValue'] == null ? null : (map['sinceValue'] as String).input(),
+      sinceValue: map['sinceValue'] == null ? null : (map['sinceValue']! as String).input(),
     );
   }
 }

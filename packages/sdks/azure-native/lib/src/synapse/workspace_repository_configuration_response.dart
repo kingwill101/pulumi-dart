@@ -61,15 +61,15 @@ class WorkspaceRepositoryConfigurationResponse {
 
   factory WorkspaceRepositoryConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return WorkspaceRepositoryConfigurationResponse(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      collaborationBranch: map['collaborationBranch'] == null ? null : (map['collaborationBranch'] as String).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      lastCommitId: map['lastCommitId'] == null ? null : (map['lastCommitId'] as String).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
-      repositoryName: map['repositoryName'] == null ? null : (map['repositoryName'] as String).input(),
-      rootFolder: map['rootFolder'] == null ? null : (map['rootFolder'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      collaborationBranch: map['collaborationBranch'] == null ? null : (map['collaborationBranch']! as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      lastCommitId: map['lastCommitId'] == null ? null : (map['lastCommitId']! as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName']! as String).input(),
+      repositoryName: map['repositoryName'] == null ? null : (map['repositoryName']! as String).input(),
+      rootFolder: map['rootFolder'] == null ? null : (map['rootFolder']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

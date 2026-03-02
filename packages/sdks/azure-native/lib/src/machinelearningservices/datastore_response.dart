@@ -99,21 +99,21 @@ class DatastoreResponse {
 
   factory DatastoreResponse.fromMap(Map<String, dynamic> map) {
     return DatastoreResponse(
-      azureDataLakeSection: map['azureDataLakeSection'] == null ? null : (AzureDataLakeSectionResponse.fromMap((map['azureDataLakeSection'] as Map).cast<String, dynamic>())).input(),
-      azureMySqlSection: map['azureMySqlSection'] == null ? null : (AzureMySqlSectionResponse.fromMap((map['azureMySqlSection'] as Map).cast<String, dynamic>())).input(),
-      azurePostgreSqlSection: map['azurePostgreSqlSection'] == null ? null : (AzurePostgreSqlSectionResponse.fromMap((map['azurePostgreSqlSection'] as Map).cast<String, dynamic>())).input(),
-      azureSqlDatabaseSection: map['azureSqlDatabaseSection'] == null ? null : (AzureSqlDatabaseSectionResponse.fromMap((map['azureSqlDatabaseSection'] as Map).cast<String, dynamic>())).input(),
-      azureStorageSection: map['azureStorageSection'] == null ? null : (AzureStorageSectionResponse.fromMap((map['azureStorageSection'] as Map).cast<String, dynamic>())).input(),
+      azureDataLakeSection: map['azureDataLakeSection'] == null ? null : (AzureDataLakeSectionResponse.fromMap((map['azureDataLakeSection']! as Map).cast<String, dynamic>())).input(),
+      azureMySqlSection: map['azureMySqlSection'] == null ? null : (AzureMySqlSectionResponse.fromMap((map['azureMySqlSection']! as Map).cast<String, dynamic>())).input(),
+      azurePostgreSqlSection: map['azurePostgreSqlSection'] == null ? null : (AzurePostgreSqlSectionResponse.fromMap((map['azurePostgreSqlSection']! as Map).cast<String, dynamic>())).input(),
+      azureSqlDatabaseSection: map['azureSqlDatabaseSection'] == null ? null : (AzureSqlDatabaseSectionResponse.fromMap((map['azureSqlDatabaseSection']! as Map).cast<String, dynamic>())).input(),
+      azureStorageSection: map['azureStorageSection'] == null ? null : (AzureStorageSectionResponse.fromMap((map['azureStorageSection']! as Map).cast<String, dynamic>())).input(),
       createdBy: (UserInfoResponse.fromMap((map['createdBy'] as Map).cast<String, dynamic>())).input(),
       createdTime: (map['createdTime'] as String).input(),
-      dataStoreType: map['dataStoreType'] == null ? null : (map['dataStoreType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      glusterFsSection: map['glusterFsSection'] == null ? null : (GlusterFsSectionResponse.fromMap((map['glusterFsSection'] as Map).cast<String, dynamic>())).input(),
-      hasBeenValidated: map['hasBeenValidated'] == null ? null : (map['hasBeenValidated'] as bool).input(),
-      linkedInfo: map['linkedInfo'] == null ? null : (LinkedInfoResponse.fromMap((map['linkedInfo'] as Map).cast<String, dynamic>())).input(),
+      dataStoreType: map['dataStoreType'] == null ? null : (map['dataStoreType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      glusterFsSection: map['glusterFsSection'] == null ? null : (GlusterFsSectionResponse.fromMap((map['glusterFsSection']! as Map).cast<String, dynamic>())).input(),
+      hasBeenValidated: map['hasBeenValidated'] == null ? null : (map['hasBeenValidated']! as bool).input(),
+      linkedInfo: map['linkedInfo'] == null ? null : (LinkedInfoResponse.fromMap((map['linkedInfo']! as Map).cast<String, dynamic>())).input(),
       modifiedBy: (UserInfoResponse.fromMap((map['modifiedBy'] as Map).cast<String, dynamic>())).input(),
       modifiedTime: (map['modifiedTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       tags: ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }

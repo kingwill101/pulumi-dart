@@ -53,13 +53,13 @@ class EventTriggerCloudfunctionsV2 {
 
   factory EventTriggerCloudfunctionsV2.fromMap(Map<String, dynamic> map) {
     return EventTriggerCloudfunctionsV2(
-      channel: map['channel'] == null ? null : (map['channel'] as String).input(),
-      eventFilters: map['eventFilters'] == null ? null : (pulumi.Input.decodeList<EventFilter>(map['eventFilters'], (value) => EventFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      channel: map['channel'] == null ? null : (map['channel']! as String).input(),
+      eventFilters: map['eventFilters'] == null ? null : (pulumi.Input.decodeList<EventFilter>(map['eventFilters']!, (value) => EventFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       eventType: (map['eventType'] as String).input(),
-      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic'] as String).input(),
-      retryPolicy: map['retryPolicy'] == null ? null : (EventTriggerRetryPolicy.fromValue(map['retryPolicy'] as String)).input(),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
-      triggerRegion: map['triggerRegion'] == null ? null : (map['triggerRegion'] as String).input(),
+      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic']! as String).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (EventTriggerRetryPolicy.fromValue(map['retryPolicy']! as String)).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
+      triggerRegion: map['triggerRegion'] == null ? null : (map['triggerRegion']! as String).input(),
     );
   }
 }

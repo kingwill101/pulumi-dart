@@ -40,7 +40,7 @@ class GetRegionalParametersResult {
 
   factory GetRegionalParametersResult.fromMap(Map<String, dynamic> map) {
     return GetRegionalParametersResult(
-      filter: map['filter'] == null ? null : map['filter'] as String,
+      filter: map['filter'] == null ? null : map['filter']! as String,
       id: map['id'] as String,
       location: map['location'] as String,
       parameters: pulumi.Input.decodeList<GetRegionalParametersParameter>(map['parameters'], (value) => GetRegionalParametersParameter.fromMap((value as Map).cast<String, dynamic>())),

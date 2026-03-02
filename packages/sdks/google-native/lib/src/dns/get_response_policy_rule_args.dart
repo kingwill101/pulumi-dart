@@ -35,8 +35,8 @@ class GetResponsePolicyRuleArgs {
 
   factory GetResponsePolicyRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetResponsePolicyRuleArgs(
-      clientOperationId: map['clientOperationId'] == null ? null : (map['clientOperationId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      clientOperationId: map['clientOperationId'] == null ? null : (map['clientOperationId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       responsePolicy: (map['responsePolicy'] as String).input(),
       responsePolicyRule: (map['responsePolicyRule'] as String).input(),
     );

@@ -31,9 +31,9 @@ class BackendServiceIAPComputeV1 {
 
   factory BackendServiceIAPComputeV1.fromMap(Map<String, dynamic> map) {
     return BackendServiceIAPComputeV1(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      oauth2ClientId: map['oauth2ClientId'] == null ? null : (map['oauth2ClientId'] as String).input(),
-      oauth2ClientSecret: map['oauth2ClientSecret'] == null ? null : (map['oauth2ClientSecret'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      oauth2ClientId: map['oauth2ClientId'] == null ? null : (map['oauth2ClientId']! as String).input(),
+      oauth2ClientSecret: map['oauth2ClientSecret'] == null ? null : (map['oauth2ClientSecret']! as String).input(),
     );
   }
 }

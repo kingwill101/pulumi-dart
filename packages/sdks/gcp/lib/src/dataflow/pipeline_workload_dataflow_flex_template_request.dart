@@ -41,7 +41,7 @@ class PipelineWorkloadDataflowFlexTemplateRequest {
       launchParameter: (PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter.fromMap((map['launchParameter'] as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
       projectId: (map['projectId'] as String).input(),
-      validateOnly: map['validateOnly'] == null ? null : (map['validateOnly'] as bool).input(),
+      validateOnly: map['validateOnly'] == null ? null : (map['validateOnly']! as bool).input(),
     );
   }
 }

@@ -25,7 +25,7 @@ class GetOriginRequestPolicyHeadersConfig {
   factory GetOriginRequestPolicyHeadersConfig.fromMap(Map<String, dynamic> map) {
     return GetOriginRequestPolicyHeadersConfig(
       headerBehavior: (map['headerBehavior'] as String).input(),
-      headers: (pulumi.Input.decodeList<GetOriginRequestPolicyHeadersConfigHeader>(map['headers'], (value) => GetOriginRequestPolicyHeadersConfigHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      headers: (pulumi.Input.decodeList<GetOriginRequestPolicyHeadersConfigHeader>(map['headers']!, (value) => GetOriginRequestPolicyHeadersConfigHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

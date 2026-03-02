@@ -21,7 +21,7 @@ class SecurityResponse {
 
   factory SecurityResponse.fromMap(Map<String, dynamic> map) {
     return SecurityResponse(
-      csrfAlwaysCheck: map['csrfAlwaysCheck'] == null ? null : (map['csrfAlwaysCheck'] as bool).input(),
+      csrfAlwaysCheck: map['csrfAlwaysCheck'] == null ? null : (map['csrfAlwaysCheck']! as bool).input(),
     );
   }
 }

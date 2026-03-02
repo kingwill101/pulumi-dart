@@ -26,8 +26,8 @@ class DeploymentScaleSettings {
 
   factory DeploymentScaleSettings.fromMap(Map<String, dynamic> map) {
     return DeploymentScaleSettings(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
-      scaleType: map['scaleType'] == null ? null : (map['scaleType'] as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
+      scaleType: map['scaleType'] == null ? null : (map['scaleType']! as String).input(),
     );
   }
 }

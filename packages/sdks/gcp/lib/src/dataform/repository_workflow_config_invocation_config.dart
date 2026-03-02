@@ -47,12 +47,12 @@ class RepositoryWorkflowConfigInvocationConfig {
 
   factory RepositoryWorkflowConfigInvocationConfig.fromMap(Map<String, dynamic> map) {
     return RepositoryWorkflowConfigInvocationConfig(
-      fullyRefreshIncrementalTablesEnabled: map['fullyRefreshIncrementalTablesEnabled'] == null ? null : (map['fullyRefreshIncrementalTablesEnabled'] as bool).input(),
-      includedTags: map['includedTags'] == null ? null : ((map['includedTags'] as List).cast<String>()).input(),
-      includedTargets: map['includedTargets'] == null ? null : (pulumi.Input.decodeList<RepositoryWorkflowConfigInvocationConfigIncludedTarget>(map['includedTargets'], (value) => RepositoryWorkflowConfigInvocationConfigIncludedTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      transitiveDependenciesIncluded: map['transitiveDependenciesIncluded'] == null ? null : (map['transitiveDependenciesIncluded'] as bool).input(),
-      transitiveDependentsIncluded: map['transitiveDependentsIncluded'] == null ? null : (map['transitiveDependentsIncluded'] as bool).input(),
+      fullyRefreshIncrementalTablesEnabled: map['fullyRefreshIncrementalTablesEnabled'] == null ? null : (map['fullyRefreshIncrementalTablesEnabled']! as bool).input(),
+      includedTags: map['includedTags'] == null ? null : ((map['includedTags']! as List).cast<String>()).input(),
+      includedTargets: map['includedTargets'] == null ? null : (pulumi.Input.decodeList<RepositoryWorkflowConfigInvocationConfigIncludedTarget>(map['includedTargets']!, (value) => RepositoryWorkflowConfigInvocationConfigIncludedTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      transitiveDependenciesIncluded: map['transitiveDependenciesIncluded'] == null ? null : (map['transitiveDependenciesIncluded']! as bool).input(),
+      transitiveDependentsIncluded: map['transitiveDependentsIncluded'] == null ? null : (map['transitiveDependentsIncluded']! as bool).input(),
     );
   }
 }

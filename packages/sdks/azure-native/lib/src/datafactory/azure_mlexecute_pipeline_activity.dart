@@ -106,23 +106,23 @@ class AzureMLExecutePipelineActivity {
 
   factory AzureMLExecutePipelineActivity.fromMap(Map<String, dynamic> map) {
     return AzureMLExecutePipelineActivity(
-      continueOnStepFailure: map['continueOnStepFailure'] == null ? null : (map['continueOnStepFailure']).input(),
-      dataPathAssignments: map['dataPathAssignments'] == null ? null : (map['dataPathAssignments']).input(),
-      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn'], (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      experimentName: map['experimentName'] == null ? null : (map['experimentName']).input(),
-      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
-      mlParentRunId: map['mlParentRunId'] == null ? null : (map['mlParentRunId']).input(),
-      mlPipelineEndpointId: map['mlPipelineEndpointId'] == null ? null : (map['mlPipelineEndpointId']).input(),
-      mlPipelineId: map['mlPipelineId'] == null ? null : (map['mlPipelineId']).input(),
-      mlPipelineParameters: map['mlPipelineParameters'] == null ? null : (map['mlPipelineParameters']).input(),
+      continueOnStepFailure: map['continueOnStepFailure'] == null ? null : (map['continueOnStepFailure']!).input(),
+      dataPathAssignments: map['dataPathAssignments'] == null ? null : (map['dataPathAssignments']!).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn']!, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      experimentName: map['experimentName'] == null ? null : (map['experimentName']!).input(),
+      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReference.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())).input(),
+      mlParentRunId: map['mlParentRunId'] == null ? null : (map['mlParentRunId']!).input(),
+      mlPipelineEndpointId: map['mlPipelineEndpointId'] == null ? null : (map['mlPipelineEndpointId']!).input(),
+      mlPipelineId: map['mlPipelineId'] == null ? null : (map['mlPipelineId']!).input(),
+      mlPipelineParameters: map['mlPipelineParameters'] == null ? null : (map['mlPipelineParameters']!).input(),
       name: (map['name'] as String).input(),
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
-      policy: map['policy'] == null ? null : (ActivityPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs']! as String).input(),
+      policy: map['policy'] == null ? null : (ActivityPolicy.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
       type: (map['type'] as String).input(),
-      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties'], (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : (map['version']).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties']!, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version']!).input(),
     );
   }
 }

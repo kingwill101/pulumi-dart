@@ -84,19 +84,19 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      apiRetries: map['apiRetries'] == null ? null : (map['apiRetries'] as int).input(),
-      apiTimeout: map['apiTimeout'] == null ? null : (map['apiTimeout'] as int).input(),
-      loginRef: map['loginRef'] == null ? null : (map['loginRef'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      teemDisable: map['teemDisable'] == null ? null : (map['teemDisable'] as bool).input(),
-      tokenAuth: map['tokenAuth'] == null ? null : (map['tokenAuth'] as bool).input(),
-      tokenTimeout: map['tokenTimeout'] == null ? null : (map['tokenTimeout'] as int).input(),
-      tokenValue: map['tokenValue'] == null ? null : (map['tokenValue'] as String).input(),
-      trustedCertPath: map['trustedCertPath'] == null ? null : (map['trustedCertPath'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
-      validateCertsDisable: map['validateCertsDisable'] == null ? null : (map['validateCertsDisable'] as bool).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      apiRetries: map['apiRetries'] == null ? null : (map['apiRetries']! as int).input(),
+      apiTimeout: map['apiTimeout'] == null ? null : (map['apiTimeout']! as int).input(),
+      loginRef: map['loginRef'] == null ? null : (map['loginRef']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      teemDisable: map['teemDisable'] == null ? null : (map['teemDisable']! as bool).input(),
+      tokenAuth: map['tokenAuth'] == null ? null : (map['tokenAuth']! as bool).input(),
+      tokenTimeout: map['tokenTimeout'] == null ? null : (map['tokenTimeout']! as int).input(),
+      tokenValue: map['tokenValue'] == null ? null : (map['tokenValue']! as String).input(),
+      trustedCertPath: map['trustedCertPath'] == null ? null : (map['trustedCertPath']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
+      validateCertsDisable: map['validateCertsDisable'] == null ? null : (map['validateCertsDisable']! as bool).input(),
     );
   }
 }

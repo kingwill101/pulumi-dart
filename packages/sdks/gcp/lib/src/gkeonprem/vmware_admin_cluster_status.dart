@@ -33,8 +33,8 @@ class VmwareAdminClusterStatus {
 
   factory VmwareAdminClusterStatus.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterStatus(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<VmwareAdminClusterStatusCondition>(map['conditions'], (value) => VmwareAdminClusterStatusCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<VmwareAdminClusterStatusCondition>(map['conditions']!, (value) => VmwareAdminClusterStatusCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
     );
   }
 }

@@ -44,11 +44,11 @@ class Argument {
 
   factory Argument.fromMap(Map<String, dynamic> map) {
     return Argument(
-      argumentKind: map['argumentKind'] == null ? null : (ArgumentArgumentKind.fromValue(map['argumentKind'] as String)).input(),
-      dataType: map['dataType'] == null ? null : (StandardSqlDataType.fromMap((map['dataType'] as Map).cast<String, dynamic>())).input(),
-      isAggregate: map['isAggregate'] == null ? null : (map['isAggregate'] as bool).input(),
-      mode: map['mode'] == null ? null : (ArgumentMode.fromValue(map['mode'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      argumentKind: map['argumentKind'] == null ? null : (ArgumentArgumentKind.fromValue(map['argumentKind']! as String)).input(),
+      dataType: map['dataType'] == null ? null : (StandardSqlDataType.fromMap((map['dataType']! as Map).cast<String, dynamic>())).input(),
+      isAggregate: map['isAggregate'] == null ? null : (map['isAggregate']! as bool).input(),
+      mode: map['mode'] == null ? null : (ArgumentMode.fromValue(map['mode']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

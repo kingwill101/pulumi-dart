@@ -58,7 +58,7 @@ class MembershipRbacRoleBindingArgs {
       location: (map['location'] as String).input(),
       membershipId: (map['membershipId'] as String).input(),
       membershipRbacRoleBindingId: (map['membershipRbacRoleBindingId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (MembershipRbacRoleBindingRole.fromMap((map['role'] as Map).cast<String, dynamic>())).input(),
       user: (map['user'] as String).input(),
     );

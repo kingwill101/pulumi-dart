@@ -65,7 +65,7 @@ class GetNamespaceDisasterRecoveryConfigResult {
 
   factory GetNamespaceDisasterRecoveryConfigResult.fromMap(Map<String, dynamic> map) {
     return GetNamespaceDisasterRecoveryConfigResult(
-      aliasAuthorizationRuleId: map['aliasAuthorizationRuleId'] == null ? null : map['aliasAuthorizationRuleId'] as String,
+      aliasAuthorizationRuleId: map['aliasAuthorizationRuleId'] == null ? null : map['aliasAuthorizationRuleId']! as String,
       defaultPrimaryKey: map['defaultPrimaryKey'] as String,
       defaultSecondaryKey: map['defaultSecondaryKey'] as String,
       id: map['id'] as String,

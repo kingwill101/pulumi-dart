@@ -38,7 +38,7 @@ class GetAppSpecDomain {
       name: (map['name'] as String).input(),
       type: (map['type'] as String).input(),
       wildcard: (map['wildcard'] as bool).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

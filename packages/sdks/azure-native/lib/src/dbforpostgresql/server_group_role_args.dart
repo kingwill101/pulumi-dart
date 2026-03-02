@@ -59,12 +59,12 @@ class ServerGroupRoleArgs {
     return ServerGroupRoleArgs(
       clusterName: (map['clusterName'] as String).input(),
       objectId: (map['objectId'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       principalType: (map['principalType'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
-      roleType: map['roleType'] == null ? null : (map['roleType'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName']! as String).input(),
+      roleType: map['roleType'] == null ? null : (map['roleType']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

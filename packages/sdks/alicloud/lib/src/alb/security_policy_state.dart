@@ -51,13 +51,13 @@ class SecurityPolicyState {
 
   factory SecurityPolicyState.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyState(
-      ciphers: map['ciphers'] == null ? null : ((map['ciphers'] as List).cast<String>()).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      securityPolicyName: map['securityPolicyName'] == null ? null : (map['securityPolicyName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tlsVersions: map['tlsVersions'] == null ? null : ((map['tlsVersions'] as List).cast<String>()).input(),
+      ciphers: map['ciphers'] == null ? null : ((map['ciphers']! as List).cast<String>()).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      securityPolicyName: map['securityPolicyName'] == null ? null : (map['securityPolicyName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tlsVersions: map['tlsVersions'] == null ? null : ((map['tlsVersions']! as List).cast<String>()).input(),
     );
   }
 }

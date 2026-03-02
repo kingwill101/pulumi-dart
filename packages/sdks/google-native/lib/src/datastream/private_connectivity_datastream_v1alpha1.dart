@@ -20,7 +20,7 @@ class PrivateConnectivityDatastreamV1alpha1 {
 
   factory PrivateConnectivityDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return PrivateConnectivityDatastreamV1alpha1(
-      privateConnectionName: map['privateConnectionName'] == null ? null : (map['privateConnectionName'] as String).input(),
+      privateConnectionName: map['privateConnectionName'] == null ? null : (map['privateConnectionName']! as String).input(),
     );
   }
 }

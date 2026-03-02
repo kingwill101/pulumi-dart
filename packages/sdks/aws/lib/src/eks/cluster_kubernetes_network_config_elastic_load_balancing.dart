@@ -20,7 +20,7 @@ class ClusterKubernetesNetworkConfigElasticLoadBalancing {
 
   factory ClusterKubernetesNetworkConfigElasticLoadBalancing.fromMap(Map<String, dynamic> map) {
     return ClusterKubernetesNetworkConfigElasticLoadBalancing(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
     );
   }
 }

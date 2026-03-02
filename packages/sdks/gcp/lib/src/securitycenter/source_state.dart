@@ -42,10 +42,10 @@ class SourceState {
 
   factory SourceState.fromMap(Map<String, dynamic> map) {
     return SourceState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      organization: map['organization'] == null ? null : (map['organization']! as String).input(),
     );
   }
 }

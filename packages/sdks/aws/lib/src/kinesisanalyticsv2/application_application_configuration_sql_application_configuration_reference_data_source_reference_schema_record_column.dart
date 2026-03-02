@@ -30,7 +30,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDat
 
   factory ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn(
-      mapping: map['mapping'] == null ? null : (map['mapping'] as String).input(),
+      mapping: map['mapping'] == null ? null : ((map['mapping'] as String).input()).input(),
       name: (map['name'] as String).input(),
       sqlType: (map['sqlType'] as String).input(),
     );

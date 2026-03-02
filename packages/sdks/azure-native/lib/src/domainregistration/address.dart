@@ -47,7 +47,7 @@ class Address {
   factory Address.fromMap(Map<String, dynamic> map) {
     return Address(
       address1: (map['address1'] as String).input(),
-      address2: map['address2'] == null ? null : (map['address2'] as String).input(),
+      address2: map['address2'] == null ? null : (map['address2']! as String).input(),
       city: (map['city'] as String).input(),
       country: (map['country'] as String).input(),
       postalCode: (map['postalCode'] as String).input(),

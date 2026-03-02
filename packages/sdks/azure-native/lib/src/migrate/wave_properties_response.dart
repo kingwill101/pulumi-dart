@@ -64,9 +64,9 @@ class WavePropertiesResponse {
     return WavePropertiesResponse(
       actualStartDate: (map['actualStartDate'] as String).input(),
       arg: (ArgResponse.fromMap((map['arg'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      plannedCompletionDate: map['plannedCompletionDate'] == null ? null : (map['plannedCompletionDate'] as String).input(),
+      plannedCompletionDate: map['plannedCompletionDate'] == null ? null : (map['plannedCompletionDate']! as String).input(),
       plannedStartDate: (map['plannedStartDate'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       stage: (map['stage'] as String).input(),

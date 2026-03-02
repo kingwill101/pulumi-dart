@@ -57,7 +57,7 @@ class GetUserResult {
     return GetUserResult(
       accessString: map['accessString'] as String,
       arn: map['arn'] as String,
-      authenticationModes: pulumi.Input.decodeList<GetUserAuthenticationMode>(map['authenticationModes'], (value) => GetUserAuthenticationMode.fromMap((value as Map).cast<String, dynamic>())),
+      authenticationModes: pulumi.Input.decodeList<GetUserAuthenticationMode>(map['authenticationModes']!, (value) => GetUserAuthenticationMode.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       minimumEngineVersion: map['minimumEngineVersion'] as String,
       region: map['region'] as String,

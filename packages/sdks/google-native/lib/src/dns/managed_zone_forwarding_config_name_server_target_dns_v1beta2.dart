@@ -35,10 +35,10 @@ class ManagedZoneForwardingConfigNameServerTargetDnsV1beta2 {
 
   factory ManagedZoneForwardingConfigNameServerTargetDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return ManagedZoneForwardingConfigNameServerTargetDnsV1beta2(
-      forwardingPath: map['forwardingPath'] == null ? null : (ManagedZoneForwardingConfigNameServerTargetForwardingPathDnsV1beta2.fromValue(map['forwardingPath'] as String)).input(),
-      ipv4Address: map['ipv4Address'] == null ? null : (map['ipv4Address'] as String).input(),
-      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      forwardingPath: map['forwardingPath'] == null ? null : (ManagedZoneForwardingConfigNameServerTargetForwardingPathDnsV1beta2.fromValue(map['forwardingPath']! as String)).input(),
+      ipv4Address: map['ipv4Address'] == null ? null : (map['ipv4Address']! as String).input(),
+      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
     );
   }
 }

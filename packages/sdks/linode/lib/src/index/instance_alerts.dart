@@ -40,11 +40,11 @@ class InstanceAlerts {
 
   factory InstanceAlerts.fromMap(Map<String, dynamic> map) {
     return InstanceAlerts(
-      cpu: map['cpu'] == null ? null : (map['cpu'] as int).input(),
-      io: map['io'] == null ? null : (map['io'] as int).input(),
-      networkIn: map['networkIn'] == null ? null : (map['networkIn'] as int).input(),
-      networkOut: map['networkOut'] == null ? null : (map['networkOut'] as int).input(),
-      transferQuota: map['transferQuota'] == null ? null : (map['transferQuota'] as int).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as int).input(),
+      io: map['io'] == null ? null : (map['io']! as int).input(),
+      networkIn: map['networkIn'] == null ? null : (map['networkIn']! as int).input(),
+      networkOut: map['networkOut'] == null ? null : (map['networkOut']! as int).input(),
+      transferQuota: map['transferQuota'] == null ? null : (map['transferQuota']! as int).input(),
     );
   }
 }

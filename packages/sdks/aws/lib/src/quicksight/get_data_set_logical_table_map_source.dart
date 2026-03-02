@@ -29,7 +29,7 @@ class GetDataSetLogicalTableMapSource {
   factory GetDataSetLogicalTableMapSource.fromMap(Map<String, dynamic> map) {
     return GetDataSetLogicalTableMapSource(
       dataSetArn: (map['dataSetArn'] as String).input(),
-      joinInstructions: (pulumi.Input.decodeList<GetDataSetLogicalTableMapSourceJoinInstruction>(map['joinInstructions'], (value) => GetDataSetLogicalTableMapSourceJoinInstruction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      joinInstructions: (pulumi.Input.decodeList<GetDataSetLogicalTableMapSourceJoinInstruction>(map['joinInstructions']!, (value) => GetDataSetLogicalTableMapSourceJoinInstruction.fromMap((value as Map).cast<String, dynamic>()))).input(),
       physicalTableId: (map['physicalTableId'] as String).input(),
     );
   }

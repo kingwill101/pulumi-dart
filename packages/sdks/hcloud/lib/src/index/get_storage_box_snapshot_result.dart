@@ -63,7 +63,7 @@ class GetStorageBoxSnapshotResult {
       name: map['name'] as String,
       stats: GetStorageBoxSnapshotStats.fromMap((map['stats'] as Map).cast<String, dynamic>()),
       storageBoxId: map['storageBoxId'] as int,
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
     );
   }
 }

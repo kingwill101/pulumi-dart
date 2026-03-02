@@ -53,13 +53,13 @@ class ConfigurationInfoResponse {
 
   factory ConfigurationInfoResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationInfoResponse(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      additionalConfigurations: map['additionalConfigurations'] == null ? null : ((map['additionalConfigurations'] as Map).cast<String, String>()).input(),
-      additionalConnectionStringProperties: map['additionalConnectionStringProperties'] == null ? null : ((map['additionalConnectionStringProperties'] as Map).cast<String, String>()).input(),
-      configurationStore: map['configurationStore'] == null ? null : (ConfigurationStoreResponse.fromMap((map['configurationStore'] as Map).cast<String, dynamic>())).input(),
-      customizedKeys: map['customizedKeys'] == null ? null : ((map['customizedKeys'] as Map).cast<String, String>()).input(),
-      daprProperties: map['daprProperties'] == null ? null : (DaprPropertiesResponse.fromMap((map['daprProperties'] as Map).cast<String, dynamic>())).input(),
-      deleteOrUpdateBehavior: map['deleteOrUpdateBehavior'] == null ? null : (map['deleteOrUpdateBehavior'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      additionalConfigurations: map['additionalConfigurations'] == null ? null : ((map['additionalConfigurations']! as Map).cast<String, String>()).input(),
+      additionalConnectionStringProperties: map['additionalConnectionStringProperties'] == null ? null : ((map['additionalConnectionStringProperties']! as Map).cast<String, String>()).input(),
+      configurationStore: map['configurationStore'] == null ? null : (ConfigurationStoreResponse.fromMap((map['configurationStore']! as Map).cast<String, dynamic>())).input(),
+      customizedKeys: map['customizedKeys'] == null ? null : ((map['customizedKeys']! as Map).cast<String, String>()).input(),
+      daprProperties: map['daprProperties'] == null ? null : (DaprPropertiesResponse.fromMap((map['daprProperties']! as Map).cast<String, dynamic>())).input(),
+      deleteOrUpdateBehavior: map['deleteOrUpdateBehavior'] == null ? null : (map['deleteOrUpdateBehavior']! as String).input(),
     );
   }
 }

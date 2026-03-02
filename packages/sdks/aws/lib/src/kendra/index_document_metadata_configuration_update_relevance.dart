@@ -40,11 +40,11 @@ class IndexDocumentMetadataConfigurationUpdateRelevance {
 
   factory IndexDocumentMetadataConfigurationUpdateRelevance.fromMap(Map<String, dynamic> map) {
     return IndexDocumentMetadataConfigurationUpdateRelevance(
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
-      freshness: map['freshness'] == null ? null : (map['freshness'] as bool).input(),
-      importance: map['importance'] == null ? null : (map['importance'] as int).input(),
-      rankOrder: map['rankOrder'] == null ? null : (map['rankOrder'] as String).input(),
-      valuesImportanceMap: map['valuesImportanceMap'] == null ? null : ((map['valuesImportanceMap'] as Map).cast<String, int>()).input(),
+      duration: map['duration'] == null ? null : ((map['duration'] as String).input()).input(),
+      freshness: map['freshness'] == null ? null : ((map['freshness'] as bool).input()).input(),
+      importance: map['importance'] == null ? null : ((map['importance'] as int).input()).input(),
+      rankOrder: map['rankOrder'] == null ? null : ((map['rankOrder'] as String).input()).input(),
+      valuesImportanceMap: map['valuesImportanceMap'] == null ? null : (((map['valuesImportanceMap'] as Map).cast<String, int>()).input()).input(),
     );
   }
 }

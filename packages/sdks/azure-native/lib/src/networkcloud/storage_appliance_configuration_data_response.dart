@@ -39,7 +39,7 @@ class StorageApplianceConfigurationDataResponse {
       adminCredentials: (AdministrativeCredentialsResponse.fromMap((map['adminCredentials'] as Map).cast<String, dynamic>())).input(),
       rackSlot: (map['rackSlot'] as double).input(),
       serialNumber: (map['serialNumber'] as String).input(),
-      storageApplianceName: map['storageApplianceName'] == null ? null : (map['storageApplianceName'] as String).input(),
+      storageApplianceName: map['storageApplianceName'] == null ? null : (map['storageApplianceName']! as String).input(),
     );
   }
 }

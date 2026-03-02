@@ -67,15 +67,15 @@ class PeeringArgs {
 
   factory PeeringArgs.fromMap(Map<String, dynamic> map) {
     return PeeringArgs(
-      direct: map['direct'] == null ? null : (PeeringPropertiesDirect.fromMap((map['direct'] as Map).cast<String, dynamic>())).input(),
-      exchange: map['exchange'] == null ? null : (PeeringPropertiesExchange.fromMap((map['exchange'] as Map).cast<String, dynamic>())).input(),
+      direct: map['direct'] == null ? null : (PeeringPropertiesDirect.fromMap((map['direct']! as Map).cast<String, dynamic>())).input(),
+      exchange: map['exchange'] == null ? null : (PeeringPropertiesExchange.fromMap((map['exchange']! as Map).cast<String, dynamic>())).input(),
       kind: (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      peeringLocation: map['peeringLocation'] == null ? null : (map['peeringLocation'] as String).input(),
-      peeringName: map['peeringName'] == null ? null : (map['peeringName'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      peeringLocation: map['peeringLocation'] == null ? null : (map['peeringLocation']! as String).input(),
+      peeringName: map['peeringName'] == null ? null : (map['peeringName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (PeeringSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

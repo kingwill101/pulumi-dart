@@ -59,14 +59,14 @@ class ConnectorState {
 
   factory ConnectorState.fromMap(Map<String, dynamic> map) {
     return ConnectorState(
-      configs: map['configs'] == null ? null : ((map['configs'] as Map).cast<String, String>()).input(),
-      connectCluster: map['connectCluster'] == null ? null : (map['connectCluster'] as String).input(),
-      connectorId: map['connectorId'] == null ? null : (map['connectorId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      taskRestartPolicy: map['taskRestartPolicy'] == null ? null : (ConnectorTaskRestartPolicy.fromMap((map['taskRestartPolicy'] as Map).cast<String, dynamic>())).input(),
+      configs: map['configs'] == null ? null : ((map['configs']! as Map).cast<String, String>()).input(),
+      connectCluster: map['connectCluster'] == null ? null : (map['connectCluster']! as String).input(),
+      connectorId: map['connectorId'] == null ? null : (map['connectorId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      taskRestartPolicy: map['taskRestartPolicy'] == null ? null : (ConnectorTaskRestartPolicy.fromMap((map['taskRestartPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

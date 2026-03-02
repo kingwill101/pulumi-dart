@@ -21,7 +21,7 @@ class GoogleCloudIntegrationsV1alphaStringParameterArray {
 
   factory GoogleCloudIntegrationsV1alphaStringParameterArray.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaStringParameterArray(
-      stringValues: map['stringValues'] == null ? null : ((map['stringValues'] as List).cast<String>()).input(),
+      stringValues: map['stringValues'] == null ? null : ((map['stringValues']! as List).cast<String>()).input(),
     );
   }
 }

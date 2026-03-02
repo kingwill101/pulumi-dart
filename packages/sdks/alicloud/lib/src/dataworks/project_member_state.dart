@@ -37,10 +37,10 @@ class ProjectMemberState {
 
   factory ProjectMemberState.fromMap(Map<String, dynamic> map) {
     return ProjectMemberState(
-      projectId: map['projectId'] == null ? null : (map['projectId'] as int).input(),
-      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<ProjectMemberRole>(map['roles'], (value) => ProjectMemberRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as int).input(),
+      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<ProjectMemberRole>(map['roles']!, (value) => ProjectMemberRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
     );
   }
 }

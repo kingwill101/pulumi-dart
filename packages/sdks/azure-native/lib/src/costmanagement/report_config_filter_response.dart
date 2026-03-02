@@ -37,10 +37,10 @@ class ReportConfigFilterResponse {
 
   factory ReportConfigFilterResponse.fromMap(Map<String, dynamic> map) {
     return ReportConfigFilterResponse(
-      and: map['and'] == null ? null : (pulumi.Input.decodeList<ReportConfigFilterResponse>(map['and'], (value) => ReportConfigFilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dimensions: map['dimensions'] == null ? null : (ReportConfigComparisonExpressionResponse.fromMap((map['dimensions'] as Map).cast<String, dynamic>())).input(),
-      or: map['or'] == null ? null : (pulumi.Input.decodeList<ReportConfigFilterResponse>(map['or'], (value) => ReportConfigFilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : (ReportConfigComparisonExpressionResponse.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
+      and: map['and'] == null ? null : (pulumi.Input.decodeList<ReportConfigFilterResponse>(map['and']!, (value) => ReportConfigFilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dimensions: map['dimensions'] == null ? null : (ReportConfigComparisonExpressionResponse.fromMap((map['dimensions']! as Map).cast<String, dynamic>())).input(),
+      or: map['or'] == null ? null : (pulumi.Input.decodeList<ReportConfigFilterResponse>(map['or']!, (value) => ReportConfigFilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : (ReportConfigComparisonExpressionResponse.fromMap((map['tags']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

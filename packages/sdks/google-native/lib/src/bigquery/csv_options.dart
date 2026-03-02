@@ -55,14 +55,14 @@ class CsvOptions {
 
   factory CsvOptions.fromMap(Map<String, dynamic> map) {
     return CsvOptions(
-      allowJaggedRows: map['allowJaggedRows'] == null ? null : (map['allowJaggedRows'] as bool).input(),
-      allowQuotedNewlines: map['allowQuotedNewlines'] == null ? null : (map['allowQuotedNewlines'] as bool).input(),
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
-      fieldDelimiter: map['fieldDelimiter'] == null ? null : (map['fieldDelimiter'] as String).input(),
-      nullMarker: map['nullMarker'] == null ? null : (map['nullMarker'] as String).input(),
-      preserveAsciiControlCharacters: map['preserveAsciiControlCharacters'] == null ? null : (map['preserveAsciiControlCharacters'] as bool).input(),
-      quote: map['quote'] == null ? null : (map['quote'] as String).input(),
-      skipLeadingRows: map['skipLeadingRows'] == null ? null : (map['skipLeadingRows'] as String).input(),
+      allowJaggedRows: map['allowJaggedRows'] == null ? null : (map['allowJaggedRows']! as bool).input(),
+      allowQuotedNewlines: map['allowQuotedNewlines'] == null ? null : (map['allowQuotedNewlines']! as bool).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
+      fieldDelimiter: map['fieldDelimiter'] == null ? null : (map['fieldDelimiter']! as String).input(),
+      nullMarker: map['nullMarker'] == null ? null : (map['nullMarker']! as String).input(),
+      preserveAsciiControlCharacters: map['preserveAsciiControlCharacters'] == null ? null : (map['preserveAsciiControlCharacters']! as bool).input(),
+      quote: map['quote'] == null ? null : (map['quote']! as String).input(),
+      skipLeadingRows: map['skipLeadingRows'] == null ? null : (map['skipLeadingRows']! as String).input(),
     );
   }
 }

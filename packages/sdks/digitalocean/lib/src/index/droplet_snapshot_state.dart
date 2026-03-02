@@ -46,12 +46,12 @@ class DropletSnapshotState {
 
   factory DropletSnapshotState.fromMap(Map<String, dynamic> map) {
     return DropletSnapshotState(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      dropletId: map['dropletId'] == null ? null : (map['dropletId'] as String).input(),
-      minDiskSize: map['minDiskSize'] == null ? null : (map['minDiskSize'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
-      size: map['size'] == null ? null : (map['size'] as double).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      dropletId: map['dropletId'] == null ? null : (map['dropletId']! as String).input(),
+      minDiskSize: map['minDiskSize'] == null ? null : (map['minDiskSize']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
+      size: map['size'] == null ? null : (map['size']! as double).input(),
     );
   }
 }

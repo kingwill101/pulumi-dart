@@ -37,10 +37,10 @@ class GoogleCloudAiplatformV1beta1MachineSpec {
 
   factory GoogleCloudAiplatformV1beta1MachineSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1MachineSpec(
-      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount'] as int).input(),
-      acceleratorType: map['acceleratorType'] == null ? null : (GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType.fromValue(map['acceleratorType'] as String)).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      tpuTopology: map['tpuTopology'] == null ? null : (map['tpuTopology'] as String).input(),
+      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount']! as int).input(),
+      acceleratorType: map['acceleratorType'] == null ? null : (GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType.fromValue(map['acceleratorType']! as String)).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      tpuTopology: map['tpuTopology'] == null ? null : (map['tpuTopology']! as String).input(),
     );
   }
 }

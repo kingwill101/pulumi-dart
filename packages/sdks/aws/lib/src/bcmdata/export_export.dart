@@ -47,12 +47,12 @@ class ExportExport {
 
   factory ExportExport.fromMap(Map<String, dynamic> map) {
     return ExportExport(
-      dataQueries: map['dataQueries'] == null ? null : (pulumi.Input.decodeList<ExportExportDataQuery>(map['dataQueries'], (value) => ExportExportDataQuery.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationConfigurations: map['destinationConfigurations'] == null ? null : (pulumi.Input.decodeList<ExportExportDestinationConfiguration>(map['destinationConfigurations'], (value) => ExportExportDestinationConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      exportArn: map['exportArn'] == null ? null : (map['exportArn'] as String).input(),
+      dataQueries: map['dataQueries'] == null ? null : ((pulumi.Input.decodeList<ExportExportDataQuery>(map['dataQueries']!, (value) => ExportExportDataQuery.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      destinationConfigurations: map['destinationConfigurations'] == null ? null : ((pulumi.Input.decodeList<ExportExportDestinationConfiguration>(map['destinationConfigurations']!, (value) => ExportExportDestinationConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      exportArn: map['exportArn'] == null ? null : ((map['exportArn'] as String).input()).input(),
       name: (map['name'] as String).input(),
-      refreshCadences: map['refreshCadences'] == null ? null : (pulumi.Input.decodeList<ExportExportRefreshCadence>(map['refreshCadences'], (value) => ExportExportRefreshCadence.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      refreshCadences: map['refreshCadences'] == null ? null : ((pulumi.Input.decodeList<ExportExportRefreshCadence>(map['refreshCadences']!, (value) => ExportExportRefreshCadence.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

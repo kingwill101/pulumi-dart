@@ -29,8 +29,8 @@ class SessionTemplateEnvironmentConfig {
 
   factory SessionTemplateEnvironmentConfig.fromMap(Map<String, dynamic> map) {
     return SessionTemplateEnvironmentConfig(
-      executionConfig: map['executionConfig'] == null ? null : (SessionTemplateEnvironmentConfigExecutionConfig.fromMap((map['executionConfig'] as Map).cast<String, dynamic>())).input(),
-      peripheralsConfig: map['peripheralsConfig'] == null ? null : (SessionTemplateEnvironmentConfigPeripheralsConfig.fromMap((map['peripheralsConfig'] as Map).cast<String, dynamic>())).input(),
+      executionConfig: map['executionConfig'] == null ? null : (SessionTemplateEnvironmentConfigExecutionConfig.fromMap((map['executionConfig']! as Map).cast<String, dynamic>())).input(),
+      peripheralsConfig: map['peripheralsConfig'] == null ? null : (SessionTemplateEnvironmentConfigPeripheralsConfig.fromMap((map['peripheralsConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

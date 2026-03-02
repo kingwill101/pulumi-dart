@@ -50,12 +50,12 @@ class StartStopManagedInstanceScheduleArgs {
 
   factory StartStopManagedInstanceScheduleArgs.fromMap(Map<String, dynamic> map) {
     return StartStopManagedInstanceScheduleArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       managedInstanceName: (map['managedInstanceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       scheduleList: (pulumi.Input.decodeList<ScheduleItem>(map['scheduleList'], (value) => ScheduleItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      startStopScheduleName: map['startStopScheduleName'] == null ? null : (map['startStopScheduleName'] as String).input(),
-      timeZoneId: map['timeZoneId'] == null ? null : (map['timeZoneId'] as String).input(),
+      startStopScheduleName: map['startStopScheduleName'] == null ? null : (map['startStopScheduleName']! as String).input(),
+      timeZoneId: map['timeZoneId'] == null ? null : (map['timeZoneId']! as String).input(),
     );
   }
 }

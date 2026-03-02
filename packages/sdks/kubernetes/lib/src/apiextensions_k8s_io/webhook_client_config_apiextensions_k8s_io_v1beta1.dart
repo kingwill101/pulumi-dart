@@ -44,9 +44,9 @@ class WebhookClientConfigApiextensionsK8sIoV1beta1 {
 
   factory WebhookClientConfigApiextensionsK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return WebhookClientConfigApiextensionsK8sIoV1beta1(
-      caBundle: map['caBundle'] == null ? null : (map['caBundle'] as String).input(),
-      service: map['service'] == null ? null : (ServiceReferenceApiextensionsK8sIoV1beta1.fromMap((map['service'] as Map).cast<String, dynamic>())).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      caBundle: map['caBundle'] == null ? null : (map['caBundle']! as String).input(),
+      service: map['service'] == null ? null : (ServiceReferenceApiextensionsK8sIoV1beta1.fromMap((map['service']! as Map).cast<String, dynamic>())).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

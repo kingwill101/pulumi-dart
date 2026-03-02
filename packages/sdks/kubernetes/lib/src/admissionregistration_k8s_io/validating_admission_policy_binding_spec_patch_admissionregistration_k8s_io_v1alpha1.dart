@@ -56,10 +56,10 @@ class ValidatingAdmissionPolicyBindingSpecPatchAdmissionregistrationK8sIoV1alpha
 
   factory ValidatingAdmissionPolicyBindingSpecPatchAdmissionregistrationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return ValidatingAdmissionPolicyBindingSpecPatchAdmissionregistrationK8sIoV1alpha1(
-      matchResources: map['matchResources'] == null ? null : (MatchResourcesPatchAdmissionregistrationK8sIoV1alpha1.fromMap((map['matchResources'] as Map).cast<String, dynamic>())).input(),
-      paramRef: map['paramRef'] == null ? null : (ParamRefPatchAdmissionregistrationK8sIoV1alpha1.fromMap((map['paramRef'] as Map).cast<String, dynamic>())).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      validationActions: map['validationActions'] == null ? null : ((map['validationActions'] as List).cast<String>()).input(),
+      matchResources: map['matchResources'] == null ? null : (MatchResourcesPatchAdmissionregistrationK8sIoV1alpha1.fromMap((map['matchResources']! as Map).cast<String, dynamic>())).input(),
+      paramRef: map['paramRef'] == null ? null : (ParamRefPatchAdmissionregistrationK8sIoV1alpha1.fromMap((map['paramRef']! as Map).cast<String, dynamic>())).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
+      validationActions: map['validationActions'] == null ? null : ((map['validationActions']! as List).cast<String>()).input(),
     );
   }
 }

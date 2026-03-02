@@ -25,7 +25,7 @@ class GetLifecyclePolicyDocumentRuleAction {
 
   factory GetLifecyclePolicyDocumentRuleAction.fromMap(Map<String, dynamic> map) {
     return GetLifecyclePolicyDocumentRuleAction(
-      targetStorageClass: map['targetStorageClass'] == null ? null : (map['targetStorageClass'] as String).input(),
+      targetStorageClass: map['targetStorageClass'] == null ? null : ((map['targetStorageClass'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

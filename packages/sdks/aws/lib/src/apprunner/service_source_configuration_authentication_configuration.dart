@@ -25,8 +25,8 @@ class ServiceSourceConfigurationAuthenticationConfiguration {
 
   factory ServiceSourceConfigurationAuthenticationConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceSourceConfigurationAuthenticationConfiguration(
-      accessRoleArn: map['accessRoleArn'] == null ? null : (map['accessRoleArn'] as String).input(),
-      connectionArn: map['connectionArn'] == null ? null : (map['connectionArn'] as String).input(),
+      accessRoleArn: map['accessRoleArn'] == null ? null : ((map['accessRoleArn'] as String).input()).input(),
+      connectionArn: map['connectionArn'] == null ? null : ((map['connectionArn'] as String).input()).input(),
     );
   }
 }

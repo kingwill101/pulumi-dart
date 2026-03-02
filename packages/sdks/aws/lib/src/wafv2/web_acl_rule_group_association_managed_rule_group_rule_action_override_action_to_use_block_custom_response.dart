@@ -31,9 +31,9 @@ class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlo
 
   factory WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponse.fromMap(Map<String, dynamic> map) {
     return WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponse(
-      customResponseBodyKey: map['customResponseBodyKey'] == null ? null : (map['customResponseBodyKey'] as String).input(),
+      customResponseBodyKey: map['customResponseBodyKey'] == null ? null : ((map['customResponseBodyKey'] as String).input()).input(),
       responseCode: (map['responseCode'] as int).input(),
-      responseHeaders: map['responseHeaders'] == null ? null : (pulumi.Input.decodeList<WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader>(map['responseHeaders'], (value) => WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responseHeaders: map['responseHeaders'] == null ? null : ((pulumi.Input.decodeList<WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader>(map['responseHeaders']!, (value) => WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

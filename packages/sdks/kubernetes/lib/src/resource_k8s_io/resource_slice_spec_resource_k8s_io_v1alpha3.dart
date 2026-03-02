@@ -63,11 +63,11 @@ class ResourceSliceSpecResourceK8sIoV1alpha3 {
 
   factory ResourceSliceSpecResourceK8sIoV1alpha3.fromMap(Map<String, dynamic> map) {
     return ResourceSliceSpecResourceK8sIoV1alpha3(
-      allNodes: map['allNodes'] == null ? null : (map['allNodes'] as bool).input(),
-      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<DeviceResourceK8sIoV1alpha3>(map['devices'], (value) => DeviceResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allNodes: map['allNodes'] == null ? null : (map['allNodes']! as bool).input(),
+      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<DeviceResourceK8sIoV1alpha3>(map['devices']!, (value) => DeviceResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
       driver: (map['driver'] as String).input(),
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
-      nodeSelector: map['nodeSelector'] == null ? null : (NodeSelector.fromMap((map['nodeSelector'] as Map).cast<String, dynamic>())).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
+      nodeSelector: map['nodeSelector'] == null ? null : (NodeSelector.fromMap((map['nodeSelector']! as Map).cast<String, dynamic>())).input(),
       pool: (ResourcePoolResourceK8sIoV1alpha3.fromMap((map['pool'] as Map).cast<String, dynamic>())).input(),
     );
   }

@@ -25,8 +25,8 @@ class EntitlementRequesterJustificationConfig {
 
   factory EntitlementRequesterJustificationConfig.fromMap(Map<String, dynamic> map) {
     return EntitlementRequesterJustificationConfig(
-      notMandatory: map['notMandatory'] == null ? null : ((map['notMandatory'] as Map).cast<String, dynamic>()).input(),
-      unstructured: map['unstructured'] == null ? null : ((map['unstructured'] as Map).cast<String, dynamic>()).input(),
+      notMandatory: map['notMandatory'] == null ? null : ((map['notMandatory']! as Map).cast<String, dynamic>()).input(),
+      unstructured: map['unstructured'] == null ? null : ((map['unstructured']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

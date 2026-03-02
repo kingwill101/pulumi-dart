@@ -62,15 +62,15 @@ class DedicatedHostGroupState {
 
   factory DedicatedHostGroupState.fromMap(Map<String, dynamic> map) {
     return DedicatedHostGroupState(
-      allocationPolicy: map['allocationPolicy'] == null ? null : (map['allocationPolicy'] as String).input(),
-      cpuAllocationRatio: map['cpuAllocationRatio'] == null ? null : (map['cpuAllocationRatio'] as int).input(),
-      dedicatedHostGroupDesc: map['dedicatedHostGroupDesc'] == null ? null : (map['dedicatedHostGroupDesc'] as String).input(),
-      diskAllocationRatio: map['diskAllocationRatio'] == null ? null : (map['diskAllocationRatio'] as int).input(),
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      hostReplacePolicy: map['hostReplacePolicy'] == null ? null : (map['hostReplacePolicy'] as String).input(),
-      memAllocationRatio: map['memAllocationRatio'] == null ? null : (map['memAllocationRatio'] as int).input(),
-      openPermission: map['openPermission'] == null ? null : (map['openPermission'] as bool).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      allocationPolicy: map['allocationPolicy'] == null ? null : (map['allocationPolicy']! as String).input(),
+      cpuAllocationRatio: map['cpuAllocationRatio'] == null ? null : (map['cpuAllocationRatio']! as int).input(),
+      dedicatedHostGroupDesc: map['dedicatedHostGroupDesc'] == null ? null : (map['dedicatedHostGroupDesc']! as String).input(),
+      diskAllocationRatio: map['diskAllocationRatio'] == null ? null : (map['diskAllocationRatio']! as int).input(),
+      engine: map['engine'] == null ? null : (map['engine']! as String).input(),
+      hostReplacePolicy: map['hostReplacePolicy'] == null ? null : (map['hostReplacePolicy']! as String).input(),
+      memAllocationRatio: map['memAllocationRatio'] == null ? null : (map['memAllocationRatio']! as int).input(),
+      openPermission: map['openPermission'] == null ? null : (map['openPermission']! as bool).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

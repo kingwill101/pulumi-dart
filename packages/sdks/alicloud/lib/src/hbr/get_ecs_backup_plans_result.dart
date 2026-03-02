@@ -52,12 +52,12 @@ class GetEcsBackupPlansResult {
     return GetEcsBackupPlansResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      instanceId: map['instanceId'] == null ? null : map['instanceId']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       plans: pulumi.Input.decodeList<GetEcsBackupPlansPlan>(map['plans'], (value) => GetEcsBackupPlansPlan.fromMap((value as Map).cast<String, dynamic>())),
-      vaultId: map['vaultId'] == null ? null : map['vaultId'] as String,
+      vaultId: map['vaultId'] == null ? null : map['vaultId']! as String,
     );
   }
 }

@@ -111,11 +111,11 @@ class GetCapacityReservationResult {
       reservationId: map['reservationId'] as String,
       sku: SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       timeCreated: map['timeCreated'] as String,
       type: map['type'] as String,
       virtualMachinesAssociated: pulumi.Input.decodeList<SubResourceReadOnlyResponse>(map['virtualMachinesAssociated'], (value) => SubResourceReadOnlyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      zones: map['zones'] == null ? null : (map['zones'] as List).cast<String>(),
+      zones: map['zones'] == null ? null : (map['zones']! as List).cast<String>(),
     );
   }
 }

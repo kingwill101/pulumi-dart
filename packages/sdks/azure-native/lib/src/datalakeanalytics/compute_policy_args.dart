@@ -55,9 +55,9 @@ class ComputePolicyArgs {
   factory ComputePolicyArgs.fromMap(Map<String, dynamic> map) {
     return ComputePolicyArgs(
       accountName: (map['accountName'] as String).input(),
-      computePolicyName: map['computePolicyName'] == null ? null : (map['computePolicyName'] as String).input(),
-      maxDegreeOfParallelismPerJob: map['maxDegreeOfParallelismPerJob'] == null ? null : (map['maxDegreeOfParallelismPerJob'] as int).input(),
-      minPriorityPerJob: map['minPriorityPerJob'] == null ? null : (map['minPriorityPerJob'] as int).input(),
+      computePolicyName: map['computePolicyName'] == null ? null : (map['computePolicyName']! as String).input(),
+      maxDegreeOfParallelismPerJob: map['maxDegreeOfParallelismPerJob'] == null ? null : (map['maxDegreeOfParallelismPerJob']! as int).input(),
+      minPriorityPerJob: map['minPriorityPerJob'] == null ? null : (map['minPriorityPerJob']! as int).input(),
       objectId: (map['objectId'] as String).input(),
       objectType: (map['objectType'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

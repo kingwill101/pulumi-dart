@@ -89,19 +89,19 @@ class GetFirmwareResult {
   factory GetFirmwareResult.fromMap(Map<String, dynamic> map) {
     return GetFirmwareResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      fileName: map['fileName'] == null ? null : map['fileName'] as String,
-      fileSize: map['fileSize'] == null ? null : map['fileSize'] as double,
+      description: map['description'] == null ? null : map['description']! as String,
+      fileName: map['fileName'] == null ? null : map['fileName']! as String,
+      fileSize: map['fileSize'] == null ? null : map['fileSize']! as double,
       id: map['id'] as String,
-      model: map['model'] == null ? null : map['model'] as String,
+      model: map['model'] == null ? null : map['model']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      statusMessages: map['statusMessages'] == null ? null : pulumi.Input.decodeList<StatusMessageResponse>(map['statusMessages'], (value) => StatusMessageResponse.fromMap((value as Map).cast<String, dynamic>())),
+      status: map['status'] == null ? null : map['status']! as String,
+      statusMessages: map['statusMessages'] == null ? null : pulumi.Input.decodeList<StatusMessageResponse>(map['statusMessages']!, (value) => StatusMessageResponse.fromMap((value as Map).cast<String, dynamic>())),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      vendor: map['vendor'] == null ? null : map['vendor'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      vendor: map['vendor'] == null ? null : map['vendor']! as String,
+      version: map['version'] == null ? null : map['version']! as String,
     );
   }
 }

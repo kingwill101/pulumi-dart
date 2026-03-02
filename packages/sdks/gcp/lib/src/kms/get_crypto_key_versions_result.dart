@@ -41,7 +41,7 @@ class GetCryptoKeyVersionsResult {
   factory GetCryptoKeyVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetCryptoKeyVersionsResult(
       cryptoKey: map['cryptoKey'] as String,
-      filter: map['filter'] == null ? null : map['filter'] as String,
+      filter: map['filter'] == null ? null : map['filter']! as String,
       id: map['id'] as String,
       publicKeys: pulumi.Input.decodeList<GetCryptoKeyVersionsPublicKey>(map['publicKeys'], (value) => GetCryptoKeyVersionsPublicKey.fromMap((value as Map).cast<String, dynamic>())),
       versions: pulumi.Input.decodeList<GetCryptoKeyVersionsVersion>(map['versions'], (value) => GetCryptoKeyVersionsVersion.fromMap((value as Map).cast<String, dynamic>())),

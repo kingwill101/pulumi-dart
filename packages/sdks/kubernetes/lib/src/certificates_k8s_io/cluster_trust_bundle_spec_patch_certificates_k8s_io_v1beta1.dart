@@ -38,8 +38,8 @@ class ClusterTrustBundleSpecPatchCertificatesK8sIoV1beta1 {
 
   factory ClusterTrustBundleSpecPatchCertificatesK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return ClusterTrustBundleSpecPatchCertificatesK8sIoV1beta1(
-      signerName: map['signerName'] == null ? null : (map['signerName'] as String).input(),
-      trustBundle: map['trustBundle'] == null ? null : (map['trustBundle'] as String).input(),
+      signerName: map['signerName'] == null ? null : (map['signerName']! as String).input(),
+      trustBundle: map['trustBundle'] == null ? null : (map['trustBundle']! as String).input(),
     );
   }
 }

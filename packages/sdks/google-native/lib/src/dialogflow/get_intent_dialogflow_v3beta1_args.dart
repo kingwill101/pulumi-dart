@@ -41,9 +41,9 @@ class GetIntentDialogflowV3beta1Args {
     return GetIntentDialogflowV3beta1Args(
       agentId: (map['agentId'] as String).input(),
       intentId: (map['intentId'] as String).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

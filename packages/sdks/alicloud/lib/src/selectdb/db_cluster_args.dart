@@ -59,8 +59,8 @@ class DbClusterArgs {
       dbClusterClass: (map['dbClusterClass'] as String).input(),
       dbClusterDescription: (map['dbClusterDescription'] as String).input(),
       dbInstanceId: (map['dbInstanceId'] as String).input(),
-      desiredParams: map['desiredParams'] == null ? null : (pulumi.Input.decodeList<DbClusterDesiredParam>(map['desiredParams'], (value) => DbClusterDesiredParam.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      desiredStatus: map['desiredStatus'] == null ? null : (map['desiredStatus'] as String).input(),
+      desiredParams: map['desiredParams'] == null ? null : (pulumi.Input.decodeList<DbClusterDesiredParam>(map['desiredParams']!, (value) => DbClusterDesiredParam.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      desiredStatus: map['desiredStatus'] == null ? null : (map['desiredStatus']! as String).input(),
       paymentType: (map['paymentType'] as String).input(),
     );
   }

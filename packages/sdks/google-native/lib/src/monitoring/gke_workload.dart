@@ -41,11 +41,11 @@ class GkeWorkload {
 
   factory GkeWorkload.fromMap(Map<String, dynamic> map) {
     return GkeWorkload(
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
-      topLevelControllerName: map['topLevelControllerName'] == null ? null : (map['topLevelControllerName'] as String).input(),
-      topLevelControllerType: map['topLevelControllerType'] == null ? null : (map['topLevelControllerType'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
+      topLevelControllerName: map['topLevelControllerName'] == null ? null : (map['topLevelControllerName']! as String).input(),
+      topLevelControllerType: map['topLevelControllerType'] == null ? null : (map['topLevelControllerType']! as String).input(),
     );
   }
 }

@@ -50,12 +50,12 @@ class ResourceSetState {
 
   factory ResourceSetState.fromMap(Map<String, dynamic> map) {
     return ResourceSetState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      resourceSetName: map['resourceSetName'] == null ? null : (map['resourceSetName'] as String).input(),
-      resourceSetType: map['resourceSetType'] == null ? null : (map['resourceSetType'] as String).input(),
-      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<ResourceSetResource>(map['resources'], (value) => ResourceSetResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      resourceSetName: map['resourceSetName'] == null ? null : ((map['resourceSetName'] as String).input()).input(),
+      resourceSetType: map['resourceSetType'] == null ? null : ((map['resourceSetType'] as String).input()).input(),
+      resources: map['resources'] == null ? null : ((pulumi.Input.decodeList<ResourceSetResource>(map['resources']!, (value) => ResourceSetResource.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

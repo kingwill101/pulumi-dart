@@ -67,16 +67,16 @@ class GameSessionQueueState {
 
   factory GameSessionQueueState.fromMap(Map<String, dynamic> map) {
     return GameSessionQueueState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      customEventData: map['customEventData'] == null ? null : (map['customEventData'] as String).input(),
-      destinations: map['destinations'] == null ? null : ((map['destinations'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationTarget: map['notificationTarget'] == null ? null : (map['notificationTarget'] as String).input(),
-      playerLatencyPolicies: map['playerLatencyPolicies'] == null ? null : (pulumi.Input.decodeList<GameSessionQueuePlayerLatencyPolicy>(map['playerLatencyPolicies'], (value) => GameSessionQueuePlayerLatencyPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as int).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      customEventData: map['customEventData'] == null ? null : ((map['customEventData'] as String).input()).input(),
+      destinations: map['destinations'] == null ? null : (((map['destinations'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      notificationTarget: map['notificationTarget'] == null ? null : ((map['notificationTarget'] as String).input()).input(),
+      playerLatencyPolicies: map['playerLatencyPolicies'] == null ? null : ((pulumi.Input.decodeList<GameSessionQueuePlayerLatencyPolicy>(map['playerLatencyPolicies']!, (value) => GameSessionQueuePlayerLatencyPolicy.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : ((map['timeoutInSeconds'] as int).input()).input(),
     );
   }
 }

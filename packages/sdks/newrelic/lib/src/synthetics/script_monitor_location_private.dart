@@ -26,7 +26,7 @@ class ScriptMonitorLocationPrivate {
   factory ScriptMonitorLocationPrivate.fromMap(Map<String, dynamic> map) {
     return ScriptMonitorLocationPrivate(
       guid: (map['guid'] as String).input(),
-      vsePassword: map['vsePassword'] == null ? null : (map['vsePassword'] as String).input(),
+      vsePassword: map['vsePassword'] == null ? null : (map['vsePassword']! as String).input(),
     );
   }
 }

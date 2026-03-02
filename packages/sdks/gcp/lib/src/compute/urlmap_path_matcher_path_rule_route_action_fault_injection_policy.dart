@@ -29,8 +29,8 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy {
 
   factory URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy(
-      abort: map['abort'] == null ? null : (URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort.fromMap((map['abort'] as Map).cast<String, dynamic>())).input(),
-      delay: map['delay'] == null ? null : (URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay.fromMap((map['delay'] as Map).cast<String, dynamic>())).input(),
+      abort: map['abort'] == null ? null : (URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort.fromMap((map['abort']! as Map).cast<String, dynamic>())).input(),
+      delay: map['delay'] == null ? null : (URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay.fromMap((map['delay']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

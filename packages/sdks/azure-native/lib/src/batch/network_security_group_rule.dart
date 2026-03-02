@@ -40,7 +40,7 @@ class NetworkSecurityGroupRule {
       access: (NetworkSecurityGroupRuleAccess.fromValue(map['access'] as String)).input(),
       priority: (map['priority'] as int).input(),
       sourceAddressPrefix: (map['sourceAddressPrefix'] as String).input(),
-      sourcePortRanges: map['sourcePortRanges'] == null ? null : ((map['sourcePortRanges'] as List).cast<String>()).input(),
+      sourcePortRanges: map['sourcePortRanges'] == null ? null : ((map['sourcePortRanges']! as List).cast<String>()).input(),
     );
   }
 }

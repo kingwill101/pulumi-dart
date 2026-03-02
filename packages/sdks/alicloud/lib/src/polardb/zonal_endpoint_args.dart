@@ -74,17 +74,17 @@ class ZonalEndpointArgs {
 
   factory ZonalEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ZonalEndpointArgs(
-      autoAddNewNodes: map['autoAddNewNodes'] == null ? null : (map['autoAddNewNodes'] as String).input(),
+      autoAddNewNodes: map['autoAddNewNodes'] == null ? null : (map['autoAddNewNodes']! as String).input(),
       dbClusterId: (map['dbClusterId'] as String).input(),
       dbClusterNodesIds: ((map['dbClusterNodesIds'] as Map).cast<String, String>()).input(),
-      dbEndpointDescription: map['dbEndpointDescription'] == null ? null : (map['dbEndpointDescription'] as String).input(),
-      endpointConfig: map['endpointConfig'] == null ? null : ((map['endpointConfig'] as Map).cast<String, String>()).input(),
-      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
-      netType: map['netType'] == null ? null : (map['netType'] as String).input(),
-      nodesKeys: map['nodesKeys'] == null ? null : ((map['nodesKeys'] as List).cast<String>()).input(),
-      readWriteMode: map['readWriteMode'] == null ? null : (map['readWriteMode'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      dbEndpointDescription: map['dbEndpointDescription'] == null ? null : (map['dbEndpointDescription']! as String).input(),
+      endpointConfig: map['endpointConfig'] == null ? null : ((map['endpointConfig']! as Map).cast<String, String>()).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
+      netType: map['netType'] == null ? null : (map['netType']! as String).input(),
+      nodesKeys: map['nodesKeys'] == null ? null : ((map['nodesKeys']! as List).cast<String>()).input(),
+      readWriteMode: map['readWriteMode'] == null ? null : (map['readWriteMode']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

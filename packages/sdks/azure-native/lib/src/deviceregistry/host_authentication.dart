@@ -34,8 +34,8 @@ class HostAuthentication {
   factory HostAuthentication.fromMap(Map<String, dynamic> map) {
     return HostAuthentication(
       method: (map['method'] as String).input(),
-      usernamePasswordCredentials: map['usernamePasswordCredentials'] == null ? null : (UsernamePasswordCredentials.fromMap((map['usernamePasswordCredentials'] as Map).cast<String, dynamic>())).input(),
-      x509Credentials: map['x509Credentials'] == null ? null : (X509Credentials.fromMap((map['x509Credentials'] as Map).cast<String, dynamic>())).input(),
+      usernamePasswordCredentials: map['usernamePasswordCredentials'] == null ? null : (UsernamePasswordCredentials.fromMap((map['usernamePasswordCredentials']! as Map).cast<String, dynamic>())).input(),
+      x509Credentials: map['x509Credentials'] == null ? null : (X509Credentials.fromMap((map['x509Credentials']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

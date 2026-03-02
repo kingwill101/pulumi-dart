@@ -32,8 +32,8 @@ class StackStorageConnector {
   factory StackStorageConnector.fromMap(Map<String, dynamic> map) {
     return StackStorageConnector(
       connectorType: (map['connectorType'] as String).input(),
-      domains: map['domains'] == null ? null : ((map['domains'] as List).cast<String>()).input(),
-      resourceIdentifier: map['resourceIdentifier'] == null ? null : (map['resourceIdentifier'] as String).input(),
+      domains: map['domains'] == null ? null : (((map['domains'] as List).cast<String>()).input()).input(),
+      resourceIdentifier: map['resourceIdentifier'] == null ? null : ((map['resourceIdentifier'] as String).input()).input(),
     );
   }
 }

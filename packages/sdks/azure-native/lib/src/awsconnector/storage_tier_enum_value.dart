@@ -21,7 +21,7 @@ class StorageTierEnumValue {
 
   factory StorageTierEnumValue.fromMap(Map<String, dynamic> map) {
     return StorageTierEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

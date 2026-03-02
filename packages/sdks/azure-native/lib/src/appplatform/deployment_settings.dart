@@ -71,16 +71,16 @@ class DeploymentSettings {
 
   factory DeploymentSettings.fromMap(Map<String, dynamic> map) {
     return DeploymentSettings(
-      addonConfigs: map['addonConfigs'] == null ? null : ((map['addonConfigs'] as Map).cast<String, dynamic>()).input(),
-      apms: map['apms'] == null ? null : (pulumi.Input.decodeList<ApmReference>(map['apms'], (value) => ApmReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      containerProbeSettings: map['containerProbeSettings'] == null ? null : (ContainerProbeSettings.fromMap((map['containerProbeSettings'] as Map).cast<String, dynamic>())).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables'] as Map).cast<String, String>()).input(),
-      livenessProbe: map['livenessProbe'] == null ? null : (Probe.fromMap((map['livenessProbe'] as Map).cast<String, dynamic>())).input(),
-      readinessProbe: map['readinessProbe'] == null ? null : (Probe.fromMap((map['readinessProbe'] as Map).cast<String, dynamic>())).input(),
-      resourceRequests: map['resourceRequests'] == null ? null : (ResourceRequests.fromMap((map['resourceRequests'] as Map).cast<String, dynamic>())).input(),
-      scale: map['scale'] == null ? null : (Scale.fromMap((map['scale'] as Map).cast<String, dynamic>())).input(),
-      startupProbe: map['startupProbe'] == null ? null : (Probe.fromMap((map['startupProbe'] as Map).cast<String, dynamic>())).input(),
-      terminationGracePeriodSeconds: map['terminationGracePeriodSeconds'] == null ? null : (map['terminationGracePeriodSeconds'] as int).input(),
+      addonConfigs: map['addonConfigs'] == null ? null : ((map['addonConfigs']! as Map).cast<String, dynamic>()).input(),
+      apms: map['apms'] == null ? null : (pulumi.Input.decodeList<ApmReference>(map['apms']!, (value) => ApmReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containerProbeSettings: map['containerProbeSettings'] == null ? null : (ContainerProbeSettings.fromMap((map['containerProbeSettings']! as Map).cast<String, dynamic>())).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables']! as Map).cast<String, String>()).input(),
+      livenessProbe: map['livenessProbe'] == null ? null : (Probe.fromMap((map['livenessProbe']! as Map).cast<String, dynamic>())).input(),
+      readinessProbe: map['readinessProbe'] == null ? null : (Probe.fromMap((map['readinessProbe']! as Map).cast<String, dynamic>())).input(),
+      resourceRequests: map['resourceRequests'] == null ? null : (ResourceRequests.fromMap((map['resourceRequests']! as Map).cast<String, dynamic>())).input(),
+      scale: map['scale'] == null ? null : (Scale.fromMap((map['scale']! as Map).cast<String, dynamic>())).input(),
+      startupProbe: map['startupProbe'] == null ? null : (Probe.fromMap((map['startupProbe']! as Map).cast<String, dynamic>())).input(),
+      terminationGracePeriodSeconds: map['terminationGracePeriodSeconds'] == null ? null : (map['terminationGracePeriodSeconds']! as int).input(),
     );
   }
 }

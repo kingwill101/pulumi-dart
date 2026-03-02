@@ -32,9 +32,9 @@ class ResourceType {
 
   factory ResourceType.fromMap(Map<String, dynamic> map) {
     return ResourceType(
-      contentHash: map['contentHash'] == null ? null : (Hash.fromMap((map['contentHash'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      contentHash: map['contentHash'] == null ? null : (Hash.fromMap((map['contentHash']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

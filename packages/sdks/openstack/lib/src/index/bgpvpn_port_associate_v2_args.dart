@@ -59,12 +59,12 @@ class BgpvpnPortAssociateV2Args {
 
   factory BgpvpnPortAssociateV2Args.fromMap(Map<String, dynamic> map) {
     return BgpvpnPortAssociateV2Args(
-      advertiseFixedIps: map['advertiseFixedIps'] == null ? null : (map['advertiseFixedIps'] as bool).input(),
+      advertiseFixedIps: map['advertiseFixedIps'] == null ? null : (map['advertiseFixedIps']! as bool).input(),
       bgpvpnId: (map['bgpvpnId'] as String).input(),
       portId: (map['portId'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<BgpvpnPortAssociateV2Route>(map['routes'], (value) => BgpvpnPortAssociateV2Route.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<BgpvpnPortAssociateV2Route>(map['routes']!, (value) => BgpvpnPortAssociateV2Route.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

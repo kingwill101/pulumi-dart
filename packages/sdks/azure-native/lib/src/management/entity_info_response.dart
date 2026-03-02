@@ -82,18 +82,18 @@ class EntityInfoResponse {
 
   factory EntityInfoResponse.fromMap(Map<String, dynamic> map) {
     return EntityInfoResponse(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       id: (map['id'] as String).input(),
-      inheritedPermissions: map['inheritedPermissions'] == null ? null : (map['inheritedPermissions'] as String).input(),
+      inheritedPermissions: map['inheritedPermissions'] == null ? null : (map['inheritedPermissions']! as String).input(),
       name: (map['name'] as String).input(),
-      numberOfChildGroups: map['numberOfChildGroups'] == null ? null : (map['numberOfChildGroups'] as int).input(),
-      numberOfChildren: map['numberOfChildren'] == null ? null : (map['numberOfChildren'] as int).input(),
-      numberOfDescendants: map['numberOfDescendants'] == null ? null : (map['numberOfDescendants'] as int).input(),
-      parent: map['parent'] == null ? null : (EntityParentGroupInfoResponse.fromMap((map['parent'] as Map).cast<String, dynamic>())).input(),
-      parentDisplayNameChain: map['parentDisplayNameChain'] == null ? null : ((map['parentDisplayNameChain'] as List).cast<String>()).input(),
-      parentNameChain: map['parentNameChain'] == null ? null : ((map['parentNameChain'] as List).cast<String>()).input(),
-      permissions: map['permissions'] == null ? null : (map['permissions'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      numberOfChildGroups: map['numberOfChildGroups'] == null ? null : (map['numberOfChildGroups']! as int).input(),
+      numberOfChildren: map['numberOfChildren'] == null ? null : (map['numberOfChildren']! as int).input(),
+      numberOfDescendants: map['numberOfDescendants'] == null ? null : (map['numberOfDescendants']! as int).input(),
+      parent: map['parent'] == null ? null : (EntityParentGroupInfoResponse.fromMap((map['parent']! as Map).cast<String, dynamic>())).input(),
+      parentDisplayNameChain: map['parentDisplayNameChain'] == null ? null : ((map['parentDisplayNameChain']! as List).cast<String>()).input(),
+      parentNameChain: map['parentNameChain'] == null ? null : ((map['parentNameChain']! as List).cast<String>()).input(),
+      permissions: map['permissions'] == null ? null : (map['permissions']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

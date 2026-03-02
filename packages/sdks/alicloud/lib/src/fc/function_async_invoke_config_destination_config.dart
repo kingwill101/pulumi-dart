@@ -27,8 +27,8 @@ class FunctionAsyncInvokeConfigDestinationConfig {
 
   factory FunctionAsyncInvokeConfigDestinationConfig.fromMap(Map<String, dynamic> map) {
     return FunctionAsyncInvokeConfigDestinationConfig(
-      onFailure: map['onFailure'] == null ? null : (FunctionAsyncInvokeConfigDestinationConfigOnFailure.fromMap((map['onFailure'] as Map).cast<String, dynamic>())).input(),
-      onSuccess: map['onSuccess'] == null ? null : (FunctionAsyncInvokeConfigDestinationConfigOnSuccess.fromMap((map['onSuccess'] as Map).cast<String, dynamic>())).input(),
+      onFailure: map['onFailure'] == null ? null : (FunctionAsyncInvokeConfigDestinationConfigOnFailure.fromMap((map['onFailure']! as Map).cast<String, dynamic>())).input(),
+      onSuccess: map['onSuccess'] == null ? null : (FunctionAsyncInvokeConfigDestinationConfigOnSuccess.fromMap((map['onSuccess']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

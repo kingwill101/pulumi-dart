@@ -48,9 +48,9 @@ class TagArgs {
 
   factory TagArgs.fromMap(Map<String, dynamic> map) {
     return TagArgs(
-      column: map['column'] == null ? null : (map['column'] as String).input(),
+      column: map['column'] == null ? null : (map['column']! as String).input(),
       fields: (pulumi.Input.decodeList<TagField>(map['fields'], (value) => TagField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
       template: (map['template'] as String).input(),
     );
   }

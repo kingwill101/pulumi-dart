@@ -31,9 +31,9 @@ class ListAccessRoleBindingNameResult {
 
   factory ListAccessRoleBindingNameResult.fromMap(Map<String, dynamic> map) {
     return ListAccessRoleBindingNameResult(
-      data: map['data'] == null ? null : (map['data'] as List).cast<String>(),
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      metadata: map['metadata'] == null ? null : ConfluentListMetadataResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      data: map['data'] == null ? null : (map['data']! as List).cast<String>(),
+      kind: map['kind'] == null ? null : map['kind']! as String,
+      metadata: map['metadata'] == null ? null : ConfluentListMetadataResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>()),
     );
   }
 }

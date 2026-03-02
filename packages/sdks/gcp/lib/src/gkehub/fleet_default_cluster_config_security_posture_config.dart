@@ -27,8 +27,8 @@ class FleetDefaultClusterConfigSecurityPostureConfig {
 
   factory FleetDefaultClusterConfigSecurityPostureConfig.fromMap(Map<String, dynamic> map) {
     return FleetDefaultClusterConfigSecurityPostureConfig(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      vulnerabilityMode: map['vulnerabilityMode'] == null ? null : (map['vulnerabilityMode'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      vulnerabilityMode: map['vulnerabilityMode'] == null ? null : (map['vulnerabilityMode']! as String).input(),
     );
   }
 }

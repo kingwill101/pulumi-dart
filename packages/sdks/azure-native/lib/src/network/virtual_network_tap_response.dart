@@ -79,17 +79,17 @@ class VirtualNetworkTapResponse {
 
   factory VirtualNetworkTapResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkTapResponse(
-      destinationLoadBalancerFrontEndIPConfiguration: map['destinationLoadBalancerFrontEndIPConfiguration'] == null ? null : (FrontendIPConfigurationResponse.fromMap((map['destinationLoadBalancerFrontEndIPConfiguration'] as Map).cast<String, dynamic>())).input(),
-      destinationNetworkInterfaceIPConfiguration: map['destinationNetworkInterfaceIPConfiguration'] == null ? null : (NetworkInterfaceIPConfigurationResponse.fromMap((map['destinationNetworkInterfaceIPConfiguration'] as Map).cast<String, dynamic>())).input(),
-      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as int).input(),
+      destinationLoadBalancerFrontEndIPConfiguration: map['destinationLoadBalancerFrontEndIPConfiguration'] == null ? null : (FrontendIPConfigurationResponse.fromMap((map['destinationLoadBalancerFrontEndIPConfiguration']! as Map).cast<String, dynamic>())).input(),
+      destinationNetworkInterfaceIPConfiguration: map['destinationNetworkInterfaceIPConfiguration'] == null ? null : (NetworkInterfaceIPConfigurationResponse.fromMap((map['destinationNetworkInterfaceIPConfiguration']! as Map).cast<String, dynamic>())).input(),
+      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort']! as int).input(),
       etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       name: (map['name'] as String).input(),
       networkInterfaceTapConfigurations: (pulumi.Input.decodeList<NetworkInterfaceTapConfigurationResponse>(map['networkInterfaceTapConfigurations'], (value) => NetworkInterfaceTapConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       resourceGuid: (map['resourceGuid'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       type: (map['type'] as String).input(),
     );
   }

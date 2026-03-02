@@ -43,11 +43,11 @@ class ConfigurationRecorderState {
 
   factory ConfigurationRecorderState.fromMap(Map<String, dynamic> map) {
     return ConfigurationRecorderState(
-      enterpriseEdition: map['enterpriseEdition'] == null ? null : (map['enterpriseEdition'] as bool).input(),
-      organizationEnableStatus: map['organizationEnableStatus'] == null ? null : (map['organizationEnableStatus'] as String).input(),
-      organizationMasterId: map['organizationMasterId'] == null ? null : (map['organizationMasterId'] as int).input(),
-      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      enterpriseEdition: map['enterpriseEdition'] == null ? null : (map['enterpriseEdition']! as bool).input(),
+      organizationEnableStatus: map['organizationEnableStatus'] == null ? null : (map['organizationEnableStatus']! as String).input(),
+      organizationMasterId: map['organizationMasterId'] == null ? null : (map['organizationMasterId']! as int).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes']! as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

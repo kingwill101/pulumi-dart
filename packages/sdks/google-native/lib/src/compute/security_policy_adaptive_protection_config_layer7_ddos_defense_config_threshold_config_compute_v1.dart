@@ -36,11 +36,11 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConf
 
   factory SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigComputeV1.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigComputeV1(
-      autoDeployConfidenceThreshold: map['autoDeployConfidenceThreshold'] == null ? null : (map['autoDeployConfidenceThreshold'] as double).input(),
-      autoDeployExpirationSec: map['autoDeployExpirationSec'] == null ? null : (map['autoDeployExpirationSec'] as int).input(),
-      autoDeployImpactedBaselineThreshold: map['autoDeployImpactedBaselineThreshold'] == null ? null : (map['autoDeployImpactedBaselineThreshold'] as double).input(),
-      autoDeployLoadThreshold: map['autoDeployLoadThreshold'] == null ? null : (map['autoDeployLoadThreshold'] as double).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      autoDeployConfidenceThreshold: map['autoDeployConfidenceThreshold'] == null ? null : (map['autoDeployConfidenceThreshold']! as double).input(),
+      autoDeployExpirationSec: map['autoDeployExpirationSec'] == null ? null : (map['autoDeployExpirationSec']! as int).input(),
+      autoDeployImpactedBaselineThreshold: map['autoDeployImpactedBaselineThreshold'] == null ? null : (map['autoDeployImpactedBaselineThreshold']! as double).input(),
+      autoDeployLoadThreshold: map['autoDeployLoadThreshold'] == null ? null : (map['autoDeployLoadThreshold']! as double).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

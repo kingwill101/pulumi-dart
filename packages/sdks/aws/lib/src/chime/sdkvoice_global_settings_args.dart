@@ -25,7 +25,7 @@ class SdkvoiceGlobalSettingsArgs {
 
   factory SdkvoiceGlobalSettingsArgs.fromMap(Map<String, dynamic> map) {
     return SdkvoiceGlobalSettingsArgs(
-      voiceConnector: (SdkvoiceGlobalSettingsVoiceConnector.fromMap((map['voiceConnector'] as Map).cast<String, dynamic>())).input(),
+      voiceConnector: (SdkvoiceGlobalSettingsVoiceConnector.fromMap((map['voiceConnector']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

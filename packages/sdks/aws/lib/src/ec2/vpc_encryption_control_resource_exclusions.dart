@@ -63,14 +63,14 @@ class VpcEncryptionControlResourceExclusions {
 
   factory VpcEncryptionControlResourceExclusions.fromMap(Map<String, dynamic> map) {
     return VpcEncryptionControlResourceExclusions(
-      egressOnlyInternetGateway: (VpcEncryptionControlResourceExclusionsEgressOnlyInternetGateway.fromMap((map['egressOnlyInternetGateway'] as Map).cast<String, dynamic>())).input(),
-      elasticFileSystem: (VpcEncryptionControlResourceExclusionsElasticFileSystem.fromMap((map['elasticFileSystem'] as Map).cast<String, dynamic>())).input(),
-      internetGateway: (VpcEncryptionControlResourceExclusionsInternetGateway.fromMap((map['internetGateway'] as Map).cast<String, dynamic>())).input(),
-      lambda: (VpcEncryptionControlResourceExclusionsLambda.fromMap((map['lambda'] as Map).cast<String, dynamic>())).input(),
-      natGateway: (VpcEncryptionControlResourceExclusionsNatGateway.fromMap((map['natGateway'] as Map).cast<String, dynamic>())).input(),
-      virtualPrivateGateway: (VpcEncryptionControlResourceExclusionsVirtualPrivateGateway.fromMap((map['virtualPrivateGateway'] as Map).cast<String, dynamic>())).input(),
-      vpcLattice: (VpcEncryptionControlResourceExclusionsVpcLattice.fromMap((map['vpcLattice'] as Map).cast<String, dynamic>())).input(),
-      vpcPeering: (VpcEncryptionControlResourceExclusionsVpcPeering.fromMap((map['vpcPeering'] as Map).cast<String, dynamic>())).input(),
+      egressOnlyInternetGateway: (VpcEncryptionControlResourceExclusionsEgressOnlyInternetGateway.fromMap((map['egressOnlyInternetGateway']! as Map).cast<String, dynamic>())).input(),
+      elasticFileSystem: (VpcEncryptionControlResourceExclusionsElasticFileSystem.fromMap((map['elasticFileSystem']! as Map).cast<String, dynamic>())).input(),
+      internetGateway: (VpcEncryptionControlResourceExclusionsInternetGateway.fromMap((map['internetGateway']! as Map).cast<String, dynamic>())).input(),
+      lambda: (VpcEncryptionControlResourceExclusionsLambda.fromMap((map['lambda']! as Map).cast<String, dynamic>())).input(),
+      natGateway: (VpcEncryptionControlResourceExclusionsNatGateway.fromMap((map['natGateway']! as Map).cast<String, dynamic>())).input(),
+      virtualPrivateGateway: (VpcEncryptionControlResourceExclusionsVirtualPrivateGateway.fromMap((map['virtualPrivateGateway']! as Map).cast<String, dynamic>())).input(),
+      vpcLattice: (VpcEncryptionControlResourceExclusionsVpcLattice.fromMap((map['vpcLattice']! as Map).cast<String, dynamic>())).input(),
+      vpcPeering: (VpcEncryptionControlResourceExclusionsVpcPeering.fromMap((map['vpcPeering']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

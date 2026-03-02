@@ -37,9 +37,9 @@ class SubnetServiceEndpointStoragePolicyDefinition {
 
   factory SubnetServiceEndpointStoragePolicyDefinition.fromMap(Map<String, dynamic> map) {
     return SubnetServiceEndpointStoragePolicyDefinition(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       name: (map['name'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
       serviceResources: ((map['serviceResources'] as List).cast<String>()).input(),
     );
   }

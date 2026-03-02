@@ -46,11 +46,11 @@ class HsmArgs {
 
   factory HsmArgs.fromMap(Map<String, dynamic> map) {
     return HsmArgs(
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
       clusterId: (map['clusterId'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : ((map['ipAddress'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
     );
   }
 }

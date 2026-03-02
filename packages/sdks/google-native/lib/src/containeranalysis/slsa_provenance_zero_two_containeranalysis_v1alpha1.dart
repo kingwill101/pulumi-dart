@@ -50,12 +50,12 @@ class SlsaProvenanceZeroTwoContaineranalysisV1alpha1 {
 
   factory SlsaProvenanceZeroTwoContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return SlsaProvenanceZeroTwoContaineranalysisV1alpha1(
-      buildConfig: map['buildConfig'] == null ? null : ((map['buildConfig'] as Map).cast<String, String>()).input(),
-      buildType: map['buildType'] == null ? null : (map['buildType'] as String).input(),
-      builder: map['builder'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder.fromMap((map['builder'] as Map).cast<String, dynamic>())).input(),
-      invocation: map['invocation'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation.fromMap((map['invocation'] as Map).cast<String, dynamic>())).input(),
-      materials: map['materials'] == null ? null : (pulumi.Input.decodeList<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial>(map['materials'], (value) => GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metadata: map['metadata'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      buildConfig: map['buildConfig'] == null ? null : ((map['buildConfig']! as Map).cast<String, String>()).input(),
+      buildType: map['buildType'] == null ? null : (map['buildType']! as String).input(),
+      builder: map['builder'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder.fromMap((map['builder']! as Map).cast<String, dynamic>())).input(),
+      invocation: map['invocation'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation.fromMap((map['invocation']! as Map).cast<String, dynamic>())).input(),
+      materials: map['materials'] == null ? null : (pulumi.Input.decodeList<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial>(map['materials']!, (value) => GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadata: map['metadata'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

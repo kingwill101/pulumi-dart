@@ -42,10 +42,10 @@ class GetBackupRunArgs {
 
   factory GetBackupRunArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupRunArgs(
-      backupId: map['backupId'] == null ? null : (map['backupId'] as int).input(),
+      backupId: map['backupId'] == null ? null : (map['backupId']! as int).input(),
       instance: (map['instance'] as String).input(),
-      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

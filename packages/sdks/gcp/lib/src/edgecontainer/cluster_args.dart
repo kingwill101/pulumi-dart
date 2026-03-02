@@ -122,20 +122,20 @@ class ClusterArgs {
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
       authorization: (ClusterAuthorization.fromMap((map['authorization'] as Map).cast<String, dynamic>())).input(),
-      controlPlane: map['controlPlane'] == null ? null : (ClusterControlPlane.fromMap((map['controlPlane'] as Map).cast<String, dynamic>())).input(),
-      controlPlaneEncryption: map['controlPlaneEncryption'] == null ? null : (ClusterControlPlaneEncryption.fromMap((map['controlPlaneEncryption'] as Map).cast<String, dynamic>())).input(),
-      defaultMaxPodsPerNode: map['defaultMaxPodsPerNode'] == null ? null : (map['defaultMaxPodsPerNode'] as int).input(),
-      externalLoadBalancerIpv4AddressPools: map['externalLoadBalancerIpv4AddressPools'] == null ? null : ((map['externalLoadBalancerIpv4AddressPools'] as List).cast<String>()).input(),
+      controlPlane: map['controlPlane'] == null ? null : (ClusterControlPlane.fromMap((map['controlPlane']! as Map).cast<String, dynamic>())).input(),
+      controlPlaneEncryption: map['controlPlaneEncryption'] == null ? null : (ClusterControlPlaneEncryption.fromMap((map['controlPlaneEncryption']! as Map).cast<String, dynamic>())).input(),
+      defaultMaxPodsPerNode: map['defaultMaxPodsPerNode'] == null ? null : (map['defaultMaxPodsPerNode']! as int).input(),
+      externalLoadBalancerIpv4AddressPools: map['externalLoadBalancerIpv4AddressPools'] == null ? null : ((map['externalLoadBalancerIpv4AddressPools']! as List).cast<String>()).input(),
       fleet: (ClusterFleet.fromMap((map['fleet'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      maintenancePolicy: map['maintenancePolicy'] == null ? null : (ClusterMaintenancePolicy.fromMap((map['maintenancePolicy'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      maintenancePolicy: map['maintenancePolicy'] == null ? null : (ClusterMaintenancePolicy.fromMap((map['maintenancePolicy']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networking: (ClusterNetworking.fromMap((map['networking'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      releaseChannel: map['releaseChannel'] == null ? null : (map['releaseChannel'] as String).input(),
-      systemAddonsConfig: map['systemAddonsConfig'] == null ? null : (ClusterSystemAddonsConfig.fromMap((map['systemAddonsConfig'] as Map).cast<String, dynamic>())).input(),
-      targetVersion: map['targetVersion'] == null ? null : (map['targetVersion'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      releaseChannel: map['releaseChannel'] == null ? null : (map['releaseChannel']! as String).input(),
+      systemAddonsConfig: map['systemAddonsConfig'] == null ? null : (ClusterSystemAddonsConfig.fromMap((map['systemAddonsConfig']! as Map).cast<String, dynamic>())).input(),
+      targetVersion: map['targetVersion'] == null ? null : (map['targetVersion']! as String).input(),
     );
   }
 }

@@ -54,11 +54,11 @@ class BlobInventoryPolicyRuleFilter {
   factory BlobInventoryPolicyRuleFilter.fromMap(Map<String, dynamic> map) {
     return BlobInventoryPolicyRuleFilter(
       blobTypes: ((map['blobTypes'] as List).cast<String>()).input(),
-      excludePrefixes: map['excludePrefixes'] == null ? null : ((map['excludePrefixes'] as List).cast<String>()).input(),
-      includeBlobVersions: map['includeBlobVersions'] == null ? null : (map['includeBlobVersions'] as bool).input(),
-      includeDeleted: map['includeDeleted'] == null ? null : (map['includeDeleted'] as bool).input(),
-      includeSnapshots: map['includeSnapshots'] == null ? null : (map['includeSnapshots'] as bool).input(),
-      prefixMatches: map['prefixMatches'] == null ? null : ((map['prefixMatches'] as List).cast<String>()).input(),
+      excludePrefixes: map['excludePrefixes'] == null ? null : ((map['excludePrefixes']! as List).cast<String>()).input(),
+      includeBlobVersions: map['includeBlobVersions'] == null ? null : (map['includeBlobVersions']! as bool).input(),
+      includeDeleted: map['includeDeleted'] == null ? null : (map['includeDeleted']! as bool).input(),
+      includeSnapshots: map['includeSnapshots'] == null ? null : (map['includeSnapshots']! as bool).input(),
+      prefixMatches: map['prefixMatches'] == null ? null : ((map['prefixMatches']! as List).cast<String>()).input(),
     );
   }
 }

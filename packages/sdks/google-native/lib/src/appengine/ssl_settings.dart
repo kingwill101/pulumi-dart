@@ -27,8 +27,8 @@ class SslSettings {
 
   factory SslSettings.fromMap(Map<String, dynamic> map) {
     return SslSettings(
-      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
-      sslManagementType: map['sslManagementType'] == null ? null : (SslSettingsSslManagementType.fromValue(map['sslManagementType'] as String)).input(),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as String).input(),
+      sslManagementType: map['sslManagementType'] == null ? null : (SslSettingsSslManagementType.fromValue(map['sslManagementType']! as String)).input(),
     );
   }
 }

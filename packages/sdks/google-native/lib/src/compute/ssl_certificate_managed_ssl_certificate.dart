@@ -21,7 +21,7 @@ class SslCertificateManagedSslCertificate {
 
   factory SslCertificateManagedSslCertificate.fromMap(Map<String, dynamic> map) {
     return SslCertificateManagedSslCertificate(
-      domains: map['domains'] == null ? null : ((map['domains'] as List).cast<String>()).input(),
+      domains: map['domains'] == null ? null : ((map['domains']! as List).cast<String>()).input(),
     );
   }
 }

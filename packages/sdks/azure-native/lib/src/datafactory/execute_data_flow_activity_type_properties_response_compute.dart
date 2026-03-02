@@ -26,8 +26,8 @@ class ExecuteDataFlowActivityTypePropertiesResponseCompute {
 
   factory ExecuteDataFlowActivityTypePropertiesResponseCompute.fromMap(Map<String, dynamic> map) {
     return ExecuteDataFlowActivityTypePropertiesResponseCompute(
-      computeType: map['computeType'] == null ? null : (map['computeType']).input(),
-      coreCount: map['coreCount'] == null ? null : (map['coreCount']).input(),
+      computeType: map['computeType'] == null ? null : (map['computeType']!).input(),
+      coreCount: map['coreCount'] == null ? null : (map['coreCount']!).input(),
     );
   }
 }

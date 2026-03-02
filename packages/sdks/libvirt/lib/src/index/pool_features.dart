@@ -21,7 +21,7 @@ class PoolFeatures {
 
   factory PoolFeatures.fromMap(Map<String, dynamic> map) {
     return PoolFeatures(
-      cow: map['cow'] == null ? null : (PoolFeaturesCow.fromMap((map['cow'] as Map).cast<String, dynamic>())).input(),
+      cow: map['cow'] == null ? null : (PoolFeaturesCow.fromMap((map['cow']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -61,13 +61,13 @@ class VmwareAdminClusterNetworkConfig {
 
   factory VmwareAdminClusterNetworkConfig.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterNetworkConfig(
-      dhcpIpConfig: map['dhcpIpConfig'] == null ? null : (VmwareAdminClusterNetworkConfigDhcpIpConfig.fromMap((map['dhcpIpConfig'] as Map).cast<String, dynamic>())).input(),
-      haControlPlaneConfig: map['haControlPlaneConfig'] == null ? null : (VmwareAdminClusterNetworkConfigHaControlPlaneConfig.fromMap((map['haControlPlaneConfig'] as Map).cast<String, dynamic>())).input(),
-      hostConfig: map['hostConfig'] == null ? null : (VmwareAdminClusterNetworkConfigHostConfig.fromMap((map['hostConfig'] as Map).cast<String, dynamic>())).input(),
+      dhcpIpConfig: map['dhcpIpConfig'] == null ? null : (VmwareAdminClusterNetworkConfigDhcpIpConfig.fromMap((map['dhcpIpConfig']! as Map).cast<String, dynamic>())).input(),
+      haControlPlaneConfig: map['haControlPlaneConfig'] == null ? null : (VmwareAdminClusterNetworkConfigHaControlPlaneConfig.fromMap((map['haControlPlaneConfig']! as Map).cast<String, dynamic>())).input(),
+      hostConfig: map['hostConfig'] == null ? null : (VmwareAdminClusterNetworkConfigHostConfig.fromMap((map['hostConfig']! as Map).cast<String, dynamic>())).input(),
       podAddressCidrBlocks: ((map['podAddressCidrBlocks'] as List).cast<String>()).input(),
       serviceAddressCidrBlocks: ((map['serviceAddressCidrBlocks'] as List).cast<String>()).input(),
-      staticIpConfig: map['staticIpConfig'] == null ? null : (VmwareAdminClusterNetworkConfigStaticIpConfig.fromMap((map['staticIpConfig'] as Map).cast<String, dynamic>())).input(),
-      vcenterNetwork: map['vcenterNetwork'] == null ? null : (map['vcenterNetwork'] as String).input(),
+      staticIpConfig: map['staticIpConfig'] == null ? null : (VmwareAdminClusterNetworkConfigStaticIpConfig.fromMap((map['staticIpConfig']! as Map).cast<String, dynamic>())).input(),
+      vcenterNetwork: map['vcenterNetwork'] == null ? null : (map['vcenterNetwork']! as String).input(),
     );
   }
 }

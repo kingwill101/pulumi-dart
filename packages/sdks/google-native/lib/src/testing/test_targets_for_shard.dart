@@ -21,7 +21,7 @@ class TestTargetsForShard {
 
   factory TestTargetsForShard.fromMap(Map<String, dynamic> map) {
     return TestTargetsForShard(
-      testTargets: map['testTargets'] == null ? null : ((map['testTargets'] as List).cast<String>()).input(),
+      testTargets: map['testTargets'] == null ? null : ((map['testTargets']! as List).cast<String>()).input(),
     );
   }
 }

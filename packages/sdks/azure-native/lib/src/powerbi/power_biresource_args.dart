@@ -51,12 +51,12 @@ class PowerBIResourceArgs {
 
   factory PowerBIResourceArgs.fromMap(Map<String, dynamic> map) {
     return PowerBIResourceArgs(
-      azureResourceName: map['azureResourceName'] == null ? null : (map['azureResourceName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : ((map['privateEndpointConnections'] as List).cast<PrivateEndpointConnectionPowerbi>()).input(),
+      azureResourceName: map['azureResourceName'] == null ? null : (map['azureResourceName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : ((map['privateEndpointConnections']! as List).cast<PrivateEndpointConnectionPowerbi>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

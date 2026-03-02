@@ -77,13 +77,13 @@ class LicenseConfigArgs {
 
   factory LicenseConfigArgs.fromMap(Map<String, dynamic> map) {
     return LicenseConfigArgs(
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      endDate: map['endDate'] == null ? null : (LicenseConfigEndDate.fromMap((map['endDate'] as Map).cast<String, dynamic>())).input(),
-      freeTrial: map['freeTrial'] == null ? null : (map['freeTrial'] as bool).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      endDate: map['endDate'] == null ? null : (LicenseConfigEndDate.fromMap((map['endDate']! as Map).cast<String, dynamic>())).input(),
+      freeTrial: map['freeTrial'] == null ? null : (map['freeTrial']! as bool).input(),
       licenseConfigId: (map['licenseConfigId'] as String).input(),
       licenseCount: (map['licenseCount'] as int).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       startDate: (LicenseConfigStartDate.fromMap((map['startDate'] as Map).cast<String, dynamic>())).input(),
       subscriptionTerm: (map['subscriptionTerm'] as String).input(),
       subscriptionTier: (map['subscriptionTier'] as String).input(),

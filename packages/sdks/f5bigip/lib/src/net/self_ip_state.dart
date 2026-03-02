@@ -41,11 +41,11 @@ class SelfIpState {
 
   factory SelfIpState.fromMap(Map<String, dynamic> map) {
     return SelfIpState(
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      portLockdowns: map['portLockdowns'] == null ? null : ((map['portLockdowns'] as List).cast<String>()).input(),
-      trafficGroup: map['trafficGroup'] == null ? null : (map['trafficGroup'] as String).input(),
-      vlan: map['vlan'] == null ? null : (map['vlan'] as String).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      portLockdowns: map['portLockdowns'] == null ? null : ((map['portLockdowns']! as List).cast<String>()).input(),
+      trafficGroup: map['trafficGroup'] == null ? null : (map['trafficGroup']! as String).input(),
+      vlan: map['vlan'] == null ? null : (map['vlan']! as String).input(),
     );
   }
 }

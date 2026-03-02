@@ -59,12 +59,12 @@ class AlertPolicyConditionConditionSql {
 
   factory AlertPolicyConditionConditionSql.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionSql(
-      booleanTest: map['booleanTest'] == null ? null : (AlertPolicyConditionConditionSqlBooleanTest.fromMap((map['booleanTest'] as Map).cast<String, dynamic>())).input(),
-      daily: map['daily'] == null ? null : (AlertPolicyConditionConditionSqlDaily.fromMap((map['daily'] as Map).cast<String, dynamic>())).input(),
-      hourly: map['hourly'] == null ? null : (AlertPolicyConditionConditionSqlHourly.fromMap((map['hourly'] as Map).cast<String, dynamic>())).input(),
-      minutes: map['minutes'] == null ? null : (AlertPolicyConditionConditionSqlMinutes.fromMap((map['minutes'] as Map).cast<String, dynamic>())).input(),
+      booleanTest: map['booleanTest'] == null ? null : (AlertPolicyConditionConditionSqlBooleanTest.fromMap((map['booleanTest']! as Map).cast<String, dynamic>())).input(),
+      daily: map['daily'] == null ? null : (AlertPolicyConditionConditionSqlDaily.fromMap((map['daily']! as Map).cast<String, dynamic>())).input(),
+      hourly: map['hourly'] == null ? null : (AlertPolicyConditionConditionSqlHourly.fromMap((map['hourly']! as Map).cast<String, dynamic>())).input(),
+      minutes: map['minutes'] == null ? null : (AlertPolicyConditionConditionSqlMinutes.fromMap((map['minutes']! as Map).cast<String, dynamic>())).input(),
       query: (map['query'] as String).input(),
-      rowCountTest: map['rowCountTest'] == null ? null : (AlertPolicyConditionConditionSqlRowCountTest.fromMap((map['rowCountTest'] as Map).cast<String, dynamic>())).input(),
+      rowCountTest: map['rowCountTest'] == null ? null : (AlertPolicyConditionConditionSqlRowCountTest.fromMap((map['rowCountTest']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

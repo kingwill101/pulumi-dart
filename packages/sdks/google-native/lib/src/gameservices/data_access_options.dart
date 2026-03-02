@@ -21,7 +21,7 @@ class DataAccessOptions {
 
   factory DataAccessOptions.fromMap(Map<String, dynamic> map) {
     return DataAccessOptions(
-      logMode: map['logMode'] == null ? null : (DataAccessOptionsLogMode.fromValue(map['logMode'] as String)).input(),
+      logMode: map['logMode'] == null ? null : (DataAccessOptionsLogMode.fromValue(map['logMode']! as String)).input(),
     );
   }
 }

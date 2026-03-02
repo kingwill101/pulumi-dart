@@ -42,9 +42,9 @@ class InstanceAutoscalingConfig {
 
   factory InstanceAutoscalingConfig.fromMap(Map<String, dynamic> map) {
     return InstanceAutoscalingConfig(
-      asymmetricAutoscalingOptions: map['asymmetricAutoscalingOptions'] == null ? null : (pulumi.Input.decodeList<InstanceAutoscalingConfigAsymmetricAutoscalingOption>(map['asymmetricAutoscalingOptions'], (value) => InstanceAutoscalingConfigAsymmetricAutoscalingOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      autoscalingLimits: map['autoscalingLimits'] == null ? null : (InstanceAutoscalingConfigAutoscalingLimits.fromMap((map['autoscalingLimits'] as Map).cast<String, dynamic>())).input(),
-      autoscalingTargets: map['autoscalingTargets'] == null ? null : (InstanceAutoscalingConfigAutoscalingTargets.fromMap((map['autoscalingTargets'] as Map).cast<String, dynamic>())).input(),
+      asymmetricAutoscalingOptions: map['asymmetricAutoscalingOptions'] == null ? null : (pulumi.Input.decodeList<InstanceAutoscalingConfigAsymmetricAutoscalingOption>(map['asymmetricAutoscalingOptions']!, (value) => InstanceAutoscalingConfigAsymmetricAutoscalingOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoscalingLimits: map['autoscalingLimits'] == null ? null : (InstanceAutoscalingConfigAutoscalingLimits.fromMap((map['autoscalingLimits']! as Map).cast<String, dynamic>())).input(),
+      autoscalingTargets: map['autoscalingTargets'] == null ? null : (InstanceAutoscalingConfigAutoscalingTargets.fromMap((map['autoscalingTargets']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

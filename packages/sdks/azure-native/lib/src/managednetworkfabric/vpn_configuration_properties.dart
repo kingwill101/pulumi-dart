@@ -38,9 +38,9 @@ class VpnConfigurationProperties {
 
   factory VpnConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return VpnConfigurationProperties(
-      networkToNetworkInterconnectId: map['networkToNetworkInterconnectId'] == null ? null : (map['networkToNetworkInterconnectId'] as String).input(),
-      optionAProperties: map['optionAProperties'] == null ? null : (VpnConfigurationPropertiesOptionAProperties.fromMap((map['optionAProperties'] as Map).cast<String, dynamic>())).input(),
-      optionBProperties: map['optionBProperties'] == null ? null : (FabricOptionBProperties.fromMap((map['optionBProperties'] as Map).cast<String, dynamic>())).input(),
+      networkToNetworkInterconnectId: map['networkToNetworkInterconnectId'] == null ? null : (map['networkToNetworkInterconnectId']! as String).input(),
+      optionAProperties: map['optionAProperties'] == null ? null : (VpnConfigurationPropertiesOptionAProperties.fromMap((map['optionAProperties']! as Map).cast<String, dynamic>())).input(),
+      optionBProperties: map['optionBProperties'] == null ? null : (FabricOptionBProperties.fromMap((map['optionBProperties']! as Map).cast<String, dynamic>())).input(),
       peeringOption: (map['peeringOption'] as String).input(),
     );
   }

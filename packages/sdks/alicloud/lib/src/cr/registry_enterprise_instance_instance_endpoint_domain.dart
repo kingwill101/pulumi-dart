@@ -25,8 +25,8 @@ class RegistryEnterpriseInstanceInstanceEndpointDomain {
 
   factory RegistryEnterpriseInstanceInstanceEndpointDomain.fromMap(Map<String, dynamic> map) {
     return RegistryEnterpriseInstanceInstanceEndpointDomain(
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

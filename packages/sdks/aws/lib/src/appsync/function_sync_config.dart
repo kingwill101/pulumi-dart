@@ -31,9 +31,9 @@ class FunctionSyncConfig {
 
   factory FunctionSyncConfig.fromMap(Map<String, dynamic> map) {
     return FunctionSyncConfig(
-      conflictDetection: map['conflictDetection'] == null ? null : (map['conflictDetection'] as String).input(),
-      conflictHandler: map['conflictHandler'] == null ? null : (map['conflictHandler'] as String).input(),
-      lambdaConflictHandlerConfig: map['lambdaConflictHandlerConfig'] == null ? null : (FunctionSyncConfigLambdaConflictHandlerConfig.fromMap((map['lambdaConflictHandlerConfig'] as Map).cast<String, dynamic>())).input(),
+      conflictDetection: map['conflictDetection'] == null ? null : ((map['conflictDetection'] as String).input()).input(),
+      conflictHandler: map['conflictHandler'] == null ? null : ((map['conflictHandler'] as String).input()).input(),
+      lambdaConflictHandlerConfig: map['lambdaConflictHandlerConfig'] == null ? null : ((FunctionSyncConfigLambdaConflictHandlerConfig.fromMap((map['lambdaConflictHandlerConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

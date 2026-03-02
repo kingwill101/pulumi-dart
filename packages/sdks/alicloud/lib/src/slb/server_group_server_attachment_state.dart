@@ -46,12 +46,12 @@ class ServerGroupServerAttachmentState {
 
   factory ServerGroupServerAttachmentState.fromMap(Map<String, dynamic> map) {
     return ServerGroupServerAttachmentState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId'] as String).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId']! as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

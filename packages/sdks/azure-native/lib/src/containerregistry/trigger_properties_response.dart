@@ -34,9 +34,9 @@ class TriggerPropertiesResponse {
 
   factory TriggerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return TriggerPropertiesResponse(
-      baseImageTrigger: map['baseImageTrigger'] == null ? null : (BaseImageTriggerResponse.fromMap((map['baseImageTrigger'] as Map).cast<String, dynamic>())).input(),
-      sourceTriggers: map['sourceTriggers'] == null ? null : (pulumi.Input.decodeList<SourceTriggerResponse>(map['sourceTriggers'], (value) => SourceTriggerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timerTriggers: map['timerTriggers'] == null ? null : (pulumi.Input.decodeList<TimerTriggerResponse>(map['timerTriggers'], (value) => TimerTriggerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      baseImageTrigger: map['baseImageTrigger'] == null ? null : (BaseImageTriggerResponse.fromMap((map['baseImageTrigger']! as Map).cast<String, dynamic>())).input(),
+      sourceTriggers: map['sourceTriggers'] == null ? null : (pulumi.Input.decodeList<SourceTriggerResponse>(map['sourceTriggers']!, (value) => SourceTriggerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timerTriggers: map['timerTriggers'] == null ? null : (pulumi.Input.decodeList<TimerTriggerResponse>(map['timerTriggers']!, (value) => TimerTriggerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

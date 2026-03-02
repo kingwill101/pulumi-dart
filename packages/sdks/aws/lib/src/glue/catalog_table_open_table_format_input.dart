@@ -21,7 +21,7 @@ class CatalogTableOpenTableFormatInput {
 
   factory CatalogTableOpenTableFormatInput.fromMap(Map<String, dynamic> map) {
     return CatalogTableOpenTableFormatInput(
-      icebergInput: (CatalogTableOpenTableFormatInputIcebergInput.fromMap((map['icebergInput'] as Map).cast<String, dynamic>())).input(),
+      icebergInput: (CatalogTableOpenTableFormatInputIcebergInput.fromMap((map['icebergInput']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -108,22 +108,22 @@ class PostureDeploymentState {
 
   factory PostureDeploymentState.fromMap(Map<String, dynamic> map) {
     return PostureDeploymentState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      desiredPostureId: map['desiredPostureId'] == null ? null : (map['desiredPostureId'] as String).input(),
-      desiredPostureRevisionId: map['desiredPostureRevisionId'] == null ? null : (map['desiredPostureRevisionId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      failureMessage: map['failureMessage'] == null ? null : (map['failureMessage'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      postureDeploymentId: map['postureDeploymentId'] == null ? null : (map['postureDeploymentId'] as String).input(),
-      postureId: map['postureId'] == null ? null : (map['postureId'] as String).input(),
-      postureRevisionId: map['postureRevisionId'] == null ? null : (map['postureRevisionId'] as String).input(),
-      reconciling: map['reconciling'] == null ? null : (map['reconciling'] as bool).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      targetResource: map['targetResource'] == null ? null : (map['targetResource'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      desiredPostureId: map['desiredPostureId'] == null ? null : (map['desiredPostureId']! as String).input(),
+      desiredPostureRevisionId: map['desiredPostureRevisionId'] == null ? null : (map['desiredPostureRevisionId']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      failureMessage: map['failureMessage'] == null ? null : (map['failureMessage']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      postureDeploymentId: map['postureDeploymentId'] == null ? null : (map['postureDeploymentId']! as String).input(),
+      postureId: map['postureId'] == null ? null : (map['postureId']! as String).input(),
+      postureRevisionId: map['postureRevisionId'] == null ? null : (map['postureRevisionId']! as String).input(),
+      reconciling: map['reconciling'] == null ? null : (map['reconciling']! as bool).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      targetResource: map['targetResource'] == null ? null : (map['targetResource']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

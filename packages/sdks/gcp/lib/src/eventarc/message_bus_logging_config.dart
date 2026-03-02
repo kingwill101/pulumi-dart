@@ -22,7 +22,7 @@ class MessageBusLoggingConfig {
 
   factory MessageBusLoggingConfig.fromMap(Map<String, dynamic> map) {
     return MessageBusLoggingConfig(
-      logSeverity: map['logSeverity'] == null ? null : (map['logSeverity'] as String).input(),
+      logSeverity: map['logSeverity'] == null ? null : (map['logSeverity']! as String).input(),
     );
   }
 }

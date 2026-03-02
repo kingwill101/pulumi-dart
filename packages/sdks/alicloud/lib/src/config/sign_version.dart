@@ -23,8 +23,8 @@ class SignVersion {
 
   factory SignVersion.fromMap(Map<String, dynamic> map) {
     return SignVersion(
-      oss: map['oss'] == null ? null : (map['oss'] as String).input(),
-      sls: map['sls'] == null ? null : (map['sls'] as String).input(),
+      oss: map['oss'] == null ? null : (map['oss']! as String).input(),
+      sls: map['sls'] == null ? null : (map['sls']! as String).input(),
     );
   }
 }

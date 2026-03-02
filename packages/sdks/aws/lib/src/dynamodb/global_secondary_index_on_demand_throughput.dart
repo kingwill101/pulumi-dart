@@ -25,8 +25,8 @@ class GlobalSecondaryIndexOnDemandThroughput {
 
   factory GlobalSecondaryIndexOnDemandThroughput.fromMap(Map<String, dynamic> map) {
     return GlobalSecondaryIndexOnDemandThroughput(
-      maxReadRequestUnits: map['maxReadRequestUnits'] == null ? null : (map['maxReadRequestUnits'] as int).input(),
-      maxWriteRequestUnits: map['maxWriteRequestUnits'] == null ? null : (map['maxWriteRequestUnits'] as int).input(),
+      maxReadRequestUnits: map['maxReadRequestUnits'] == null ? null : ((map['maxReadRequestUnits'] as int).input()).input(),
+      maxWriteRequestUnits: map['maxWriteRequestUnits'] == null ? null : ((map['maxWriteRequestUnits'] as int).input()).input(),
     );
   }
 }

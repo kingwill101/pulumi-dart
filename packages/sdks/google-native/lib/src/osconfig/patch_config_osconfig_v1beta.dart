@@ -67,15 +67,15 @@ class PatchConfigOsconfigV1beta {
 
   factory PatchConfigOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return PatchConfigOsconfigV1beta(
-      apt: map['apt'] == null ? null : (AptSettingsOsconfigV1beta.fromMap((map['apt'] as Map).cast<String, dynamic>())).input(),
-      goo: map['goo'] == null ? null : ((map['goo'] as Map).cast<String, dynamic>()).input(),
-      migInstancesAllowed: map['migInstancesAllowed'] == null ? null : (map['migInstancesAllowed'] as bool).input(),
-      postStep: map['postStep'] == null ? null : (ExecStepOsconfigV1beta.fromMap((map['postStep'] as Map).cast<String, dynamic>())).input(),
-      preStep: map['preStep'] == null ? null : (ExecStepOsconfigV1beta.fromMap((map['preStep'] as Map).cast<String, dynamic>())).input(),
-      rebootConfig: map['rebootConfig'] == null ? null : (PatchConfigRebootConfigOsconfigV1beta.fromValue(map['rebootConfig'] as String)).input(),
-      windowsUpdate: map['windowsUpdate'] == null ? null : (WindowsUpdateSettingsOsconfigV1beta.fromMap((map['windowsUpdate'] as Map).cast<String, dynamic>())).input(),
-      yum: map['yum'] == null ? null : (YumSettingsOsconfigV1beta.fromMap((map['yum'] as Map).cast<String, dynamic>())).input(),
-      zypper: map['zypper'] == null ? null : (ZypperSettingsOsconfigV1beta.fromMap((map['zypper'] as Map).cast<String, dynamic>())).input(),
+      apt: map['apt'] == null ? null : (AptSettingsOsconfigV1beta.fromMap((map['apt']! as Map).cast<String, dynamic>())).input(),
+      goo: map['goo'] == null ? null : ((map['goo']! as Map).cast<String, dynamic>()).input(),
+      migInstancesAllowed: map['migInstancesAllowed'] == null ? null : (map['migInstancesAllowed']! as bool).input(),
+      postStep: map['postStep'] == null ? null : (ExecStepOsconfigV1beta.fromMap((map['postStep']! as Map).cast<String, dynamic>())).input(),
+      preStep: map['preStep'] == null ? null : (ExecStepOsconfigV1beta.fromMap((map['preStep']! as Map).cast<String, dynamic>())).input(),
+      rebootConfig: map['rebootConfig'] == null ? null : (PatchConfigRebootConfigOsconfigV1beta.fromValue(map['rebootConfig']! as String)).input(),
+      windowsUpdate: map['windowsUpdate'] == null ? null : (WindowsUpdateSettingsOsconfigV1beta.fromMap((map['windowsUpdate']! as Map).cast<String, dynamic>())).input(),
+      yum: map['yum'] == null ? null : (YumSettingsOsconfigV1beta.fromMap((map['yum']! as Map).cast<String, dynamic>())).input(),
+      zypper: map['zypper'] == null ? null : (ZypperSettingsOsconfigV1beta.fromMap((map['zypper']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

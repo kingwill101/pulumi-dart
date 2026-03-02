@@ -62,14 +62,14 @@ class WebAppSitePushSettingsSlotArgs {
 
   factory WebAppSitePushSettingsSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppSitePushSettingsSlotArgs(
-      dynamicTagsJson: map['dynamicTagsJson'] == null ? null : (map['dynamicTagsJson'] as String).input(),
+      dynamicTagsJson: map['dynamicTagsJson'] == null ? null : (map['dynamicTagsJson']! as String).input(),
       isPushEnabled: (map['isPushEnabled'] as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       slot: (map['slot'] as String).input(),
-      tagWhitelistJson: map['tagWhitelistJson'] == null ? null : (map['tagWhitelistJson'] as String).input(),
-      tagsRequiringAuth: map['tagsRequiringAuth'] == null ? null : (map['tagsRequiringAuth'] as String).input(),
+      tagWhitelistJson: map['tagWhitelistJson'] == null ? null : (map['tagWhitelistJson']! as String).input(),
+      tagsRequiringAuth: map['tagsRequiringAuth'] == null ? null : (map['tagsRequiringAuth']! as String).input(),
     );
   }
 }

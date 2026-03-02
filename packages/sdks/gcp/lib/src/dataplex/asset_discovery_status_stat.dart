@@ -35,10 +35,10 @@ class AssetDiscoveryStatusStat {
 
   factory AssetDiscoveryStatusStat.fromMap(Map<String, dynamic> map) {
     return AssetDiscoveryStatusStat(
-      dataItems: map['dataItems'] == null ? null : (map['dataItems'] as int).input(),
-      dataSize: map['dataSize'] == null ? null : (map['dataSize'] as int).input(),
-      filesets: map['filesets'] == null ? null : (map['filesets'] as int).input(),
-      tables: map['tables'] == null ? null : (map['tables'] as int).input(),
+      dataItems: map['dataItems'] == null ? null : (map['dataItems']! as int).input(),
+      dataSize: map['dataSize'] == null ? null : (map['dataSize']! as int).input(),
+      filesets: map['filesets'] == null ? null : (map['filesets']! as int).input(),
+      tables: map['tables'] == null ? null : (map['tables']! as int).input(),
     );
   }
 }

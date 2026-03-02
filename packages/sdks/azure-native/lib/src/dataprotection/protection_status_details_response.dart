@@ -27,8 +27,8 @@ class ProtectionStatusDetailsResponse {
 
   factory ProtectionStatusDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ProtectionStatusDetailsResponse(
-      errorDetails: map['errorDetails'] == null ? null : (UserFacingErrorResponse.fromMap((map['errorDetails'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      errorDetails: map['errorDetails'] == null ? null : (UserFacingErrorResponse.fromMap((map['errorDetails']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

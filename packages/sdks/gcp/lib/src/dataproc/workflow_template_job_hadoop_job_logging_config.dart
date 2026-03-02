@@ -20,7 +20,7 @@ class WorkflowTemplateJobHadoopJobLoggingConfig {
 
   factory WorkflowTemplateJobHadoopJobLoggingConfig.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplateJobHadoopJobLoggingConfig(
-      driverLogLevels: map['driverLogLevels'] == null ? null : ((map['driverLogLevels'] as Map).cast<String, String>()).input(),
+      driverLogLevels: map['driverLogLevels'] == null ? null : ((map['driverLogLevels']! as Map).cast<String, String>()).input(),
     );
   }
 }

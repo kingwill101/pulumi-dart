@@ -31,8 +31,8 @@ class GetApplicationTemplateArgs {
 
   factory GetApplicationTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationTemplateArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
     );
   }
 }

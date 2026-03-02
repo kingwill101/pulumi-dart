@@ -21,7 +21,7 @@ class TableSchema {
 
   factory TableSchema.fromMap(Map<String, dynamic> map) {
     return TableSchema(
-      compositePartitionKey: map['compositePartitionKey'] == null ? null : (TableSchemaCompositePartitionKey.fromMap((map['compositePartitionKey'] as Map).cast<String, dynamic>())).input(),
+      compositePartitionKey: map['compositePartitionKey'] == null ? null : ((TableSchemaCompositePartitionKey.fromMap((map['compositePartitionKey']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

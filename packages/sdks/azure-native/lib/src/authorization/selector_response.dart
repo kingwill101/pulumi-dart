@@ -31,9 +31,9 @@ class SelectorResponse {
 
   factory SelectorResponse.fromMap(Map<String, dynamic> map) {
     return SelectorResponse(
-      in_: map['in'] == null ? null : ((map['in'] as List).cast<String>()).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      notIn: map['notIn'] == null ? null : ((map['notIn'] as List).cast<String>()).input(),
+      in_: map['in'] == null ? null : ((map['in']! as List).cast<String>()).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      notIn: map['notIn'] == null ? null : ((map['notIn']! as List).cast<String>()).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class AutomationRuleRepairRolloutRuleRepairPhaseRollback {
 
   factory AutomationRuleRepairRolloutRuleRepairPhaseRollback.fromMap(Map<String, dynamic> map) {
     return AutomationRuleRepairRolloutRuleRepairPhaseRollback(
-      destinationPhase: map['destinationPhase'] == null ? null : (map['destinationPhase'] as String).input(),
-      disableRollbackIfRolloutPending: map['disableRollbackIfRolloutPending'] == null ? null : (map['disableRollbackIfRolloutPending'] as bool).input(),
+      destinationPhase: map['destinationPhase'] == null ? null : (map['destinationPhase']! as String).input(),
+      disableRollbackIfRolloutPending: map['disableRollbackIfRolloutPending'] == null ? null : (map['disableRollbackIfRolloutPending']! as bool).input(),
     );
   }
 }

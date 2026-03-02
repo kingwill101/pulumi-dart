@@ -78,11 +78,11 @@ class GetTableResult {
       databaseName: map['databaseName'] as String,
       id: map['id'] as String,
       lastUpdatedTime: map['lastUpdatedTime'] as String,
-      magneticStoreWriteProperties: pulumi.Input.decodeList<GetTableMagneticStoreWriteProperty>(map['magneticStoreWriteProperties'], (value) => GetTableMagneticStoreWriteProperty.fromMap((value as Map).cast<String, dynamic>())),
+      magneticStoreWriteProperties: pulumi.Input.decodeList<GetTableMagneticStoreWriteProperty>(map['magneticStoreWriteProperties']!, (value) => GetTableMagneticStoreWriteProperty.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       region: map['region'] as String,
-      retentionProperties: pulumi.Input.decodeList<GetTableRetentionProperty>(map['retentionProperties'], (value) => GetTableRetentionProperty.fromMap((value as Map).cast<String, dynamic>())),
-      schemas: pulumi.Input.decodeList<GetTableSchema>(map['schemas'], (value) => GetTableSchema.fromMap((value as Map).cast<String, dynamic>())),
+      retentionProperties: pulumi.Input.decodeList<GetTableRetentionProperty>(map['retentionProperties']!, (value) => GetTableRetentionProperty.fromMap((value as Map).cast<String, dynamic>())),
+      schemas: pulumi.Input.decodeList<GetTableSchema>(map['schemas']!, (value) => GetTableSchema.fromMap((value as Map).cast<String, dynamic>())),
       tableStatus: map['tableStatus'] as String,
     );
   }

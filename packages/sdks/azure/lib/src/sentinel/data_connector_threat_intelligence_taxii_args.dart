@@ -75,12 +75,12 @@ class DataConnectorThreatIntelligenceTaxiiArgs {
       collectionId: (map['collectionId'] as String).input(),
       displayName: (map['displayName'] as String).input(),
       logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
-      lookbackDate: map['lookbackDate'] == null ? null : (map['lookbackDate'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      pollingFrequency: map['pollingFrequency'] == null ? null : (map['pollingFrequency'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      lookbackDate: map['lookbackDate'] == null ? null : (map['lookbackDate']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      pollingFrequency: map['pollingFrequency'] == null ? null : (map['pollingFrequency']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

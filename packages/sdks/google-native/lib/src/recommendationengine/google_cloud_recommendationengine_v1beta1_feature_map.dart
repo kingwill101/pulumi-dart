@@ -26,8 +26,8 @@ class GoogleCloudRecommendationengineV1beta1FeatureMap {
 
   factory GoogleCloudRecommendationengineV1beta1FeatureMap.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecommendationengineV1beta1FeatureMap(
-      categoricalFeatures: map['categoricalFeatures'] == null ? null : ((map['categoricalFeatures'] as Map).cast<String, String>()).input(),
-      numericalFeatures: map['numericalFeatures'] == null ? null : ((map['numericalFeatures'] as Map).cast<String, String>()).input(),
+      categoricalFeatures: map['categoricalFeatures'] == null ? null : ((map['categoricalFeatures']! as Map).cast<String, String>()).input(),
+      numericalFeatures: map['numericalFeatures'] == null ? null : ((map['numericalFeatures']! as Map).cast<String, String>()).input(),
     );
   }
 }

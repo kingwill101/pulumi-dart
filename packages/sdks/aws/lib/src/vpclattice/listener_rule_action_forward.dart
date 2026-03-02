@@ -23,7 +23,7 @@ class ListenerRuleActionForward {
 
   factory ListenerRuleActionForward.fromMap(Map<String, dynamic> map) {
     return ListenerRuleActionForward(
-      targetGroups: (pulumi.Input.decodeList<ListenerRuleActionForwardTargetGroup>(map['targetGroups'], (value) => ListenerRuleActionForwardTargetGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetGroups: (pulumi.Input.decodeList<ListenerRuleActionForwardTargetGroup>(map['targetGroups']!, (value) => ListenerRuleActionForwardTargetGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class EnterpriseCrmEventbusProtoSuccessPolicy {
 
   factory EnterpriseCrmEventbusProtoSuccessPolicy.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoSuccessPolicy(
-      finalState: map['finalState'] == null ? null : (EnterpriseCrmEventbusProtoSuccessPolicyFinalState.fromValue(map['finalState'] as String)).input(),
+      finalState: map['finalState'] == null ? null : (EnterpriseCrmEventbusProtoSuccessPolicyFinalState.fromValue(map['finalState']! as String)).input(),
     );
   }
 }

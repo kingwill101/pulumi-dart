@@ -29,8 +29,8 @@ class ListDomainRecommendationsArgs {
 
   factory ListDomainRecommendationsArgs.fromMap(Map<String, dynamic> map) {
     return ListDomainRecommendationsArgs(
-      keywords: map['keywords'] == null ? null : (map['keywords'] as String).input(),
-      maxDomainRecommendations: map['maxDomainRecommendations'] == null ? null : (map['maxDomainRecommendations'] as int).input(),
+      keywords: map['keywords'] == null ? null : (map['keywords']! as String).input(),
+      maxDomainRecommendations: map['maxDomainRecommendations'] == null ? null : (map['maxDomainRecommendations']! as int).input(),
     );
   }
 }

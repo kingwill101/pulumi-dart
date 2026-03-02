@@ -65,15 +65,15 @@ class SpringCloudGatewayRouteConfigState {
 
   factory SpringCloudGatewayRouteConfigState.fromMap(Map<String, dynamic> map) {
     return SpringCloudGatewayRouteConfigState(
-      filters: map['filters'] == null ? null : ((map['filters'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      openApi: map['openApi'] == null ? null : (SpringCloudGatewayRouteConfigOpenApi.fromMap((map['openApi'] as Map).cast<String, dynamic>())).input(),
-      predicates: map['predicates'] == null ? null : ((map['predicates'] as List).cast<String>()).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<SpringCloudGatewayRouteConfigRoute>(map['routes'], (value) => SpringCloudGatewayRouteConfigRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      springCloudAppId: map['springCloudAppId'] == null ? null : (map['springCloudAppId'] as String).input(),
-      springCloudGatewayId: map['springCloudGatewayId'] == null ? null : (map['springCloudGatewayId'] as String).input(),
-      ssoValidationEnabled: map['ssoValidationEnabled'] == null ? null : (map['ssoValidationEnabled'] as bool).input(),
+      filters: map['filters'] == null ? null : ((map['filters']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      openApi: map['openApi'] == null ? null : (SpringCloudGatewayRouteConfigOpenApi.fromMap((map['openApi']! as Map).cast<String, dynamic>())).input(),
+      predicates: map['predicates'] == null ? null : ((map['predicates']! as List).cast<String>()).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<SpringCloudGatewayRouteConfigRoute>(map['routes']!, (value) => SpringCloudGatewayRouteConfigRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      springCloudAppId: map['springCloudAppId'] == null ? null : (map['springCloudAppId']! as String).input(),
+      springCloudGatewayId: map['springCloudGatewayId'] == null ? null : (map['springCloudGatewayId']! as String).input(),
+      ssoValidationEnabled: map['ssoValidationEnabled'] == null ? null : (map['ssoValidationEnabled']! as bool).input(),
     );
   }
 }

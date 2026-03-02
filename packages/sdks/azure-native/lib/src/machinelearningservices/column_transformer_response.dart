@@ -27,8 +27,8 @@ class ColumnTransformerResponse {
 
   factory ColumnTransformerResponse.fromMap(Map<String, dynamic> map) {
     return ColumnTransformerResponse(
-      fields: map['fields'] == null ? null : ((map['fields'] as List).cast<String>()).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters']).input(),
+      fields: map['fields'] == null ? null : ((map['fields']! as List).cast<String>()).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']!).input(),
     );
   }
 }

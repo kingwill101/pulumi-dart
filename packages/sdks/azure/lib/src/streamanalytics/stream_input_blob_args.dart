@@ -75,9 +75,9 @@ class StreamInputBlobArgs {
 
   factory StreamInputBlobArgs.fromMap(Map<String, dynamic> map) {
     return StreamInputBlobArgs(
-      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode']! as String).input(),
       dateFormat: (map['dateFormat'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       pathPattern: (map['pathPattern'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serialization: (StreamInputBlobSerialization.fromMap((map['serialization'] as Map).cast<String, dynamic>())).input(),

@@ -21,7 +21,7 @@ class RegionPreferencesMigrationcenterV1alpha1 {
 
   factory RegionPreferencesMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return RegionPreferencesMigrationcenterV1alpha1(
-      preferredRegions: map['preferredRegions'] == null ? null : ((map['preferredRegions'] as List).cast<String>()).input(),
+      preferredRegions: map['preferredRegions'] == null ? null : ((map['preferredRegions']! as List).cast<String>()).input(),
     );
   }
 }

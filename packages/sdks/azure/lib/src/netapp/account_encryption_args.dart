@@ -49,12 +49,12 @@ class AccountEncryptionArgs {
 
   factory AccountEncryptionArgs.fromMap(Map<String, dynamic> map) {
     return AccountEncryptionArgs(
-      crossTenantKeyVaultResourceId: map['crossTenantKeyVaultResourceId'] == null ? null : (map['crossTenantKeyVaultResourceId'] as String).input(),
+      crossTenantKeyVaultResourceId: map['crossTenantKeyVaultResourceId'] == null ? null : (map['crossTenantKeyVaultResourceId']! as String).input(),
       encryptionKey: (map['encryptionKey'] as String).input(),
-      federatedClientId: map['federatedClientId'] == null ? null : (map['federatedClientId'] as String).input(),
+      federatedClientId: map['federatedClientId'] == null ? null : (map['federatedClientId']! as String).input(),
       netappAccountId: (map['netappAccountId'] as String).input(),
-      systemAssignedIdentityPrincipalId: map['systemAssignedIdentityPrincipalId'] == null ? null : (map['systemAssignedIdentityPrincipalId'] as String).input(),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
+      systemAssignedIdentityPrincipalId: map['systemAssignedIdentityPrincipalId'] == null ? null : (map['systemAssignedIdentityPrincipalId']! as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId']! as String).input(),
     );
   }
 }

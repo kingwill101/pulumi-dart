@@ -41,7 +41,7 @@ class MarketplaceSubscriptionArgs {
   factory MarketplaceSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return MarketplaceSubscriptionArgs(
       marketplaceSubscriptionProperties: (map['marketplaceSubscriptionProperties'] as MarketplaceSubscriptionMachinelearningservices).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );

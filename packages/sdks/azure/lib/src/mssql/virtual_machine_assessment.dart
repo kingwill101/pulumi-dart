@@ -31,9 +31,9 @@ class VirtualMachineAssessment {
 
   factory VirtualMachineAssessment.fromMap(Map<String, dynamic> map) {
     return VirtualMachineAssessment(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      runImmediately: map['runImmediately'] == null ? null : (map['runImmediately'] as bool).input(),
-      schedule: map['schedule'] == null ? null : (VirtualMachineAssessmentSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      runImmediately: map['runImmediately'] == null ? null : (map['runImmediately']! as bool).input(),
+      schedule: map['schedule'] == null ? null : (VirtualMachineAssessmentSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

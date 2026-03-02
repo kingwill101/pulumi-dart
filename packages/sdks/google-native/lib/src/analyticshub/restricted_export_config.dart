@@ -26,8 +26,8 @@ class RestrictedExportConfig {
 
   factory RestrictedExportConfig.fromMap(Map<String, dynamic> map) {
     return RestrictedExportConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      restrictQueryResult: map['restrictQueryResult'] == null ? null : (map['restrictQueryResult'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      restrictQueryResult: map['restrictQueryResult'] == null ? null : (map['restrictQueryResult']! as bool).input(),
     );
   }
 }

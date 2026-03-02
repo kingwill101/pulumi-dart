@@ -27,8 +27,8 @@ class ControlFolderIntelligenceConfigEffectiveIntelligenceConfig {
 
   factory ControlFolderIntelligenceConfigEffectiveIntelligenceConfig.fromMap(Map<String, dynamic> map) {
     return ControlFolderIntelligenceConfigEffectiveIntelligenceConfig(
-      effectiveEdition: map['effectiveEdition'] == null ? null : (map['effectiveEdition'] as String).input(),
-      intelligenceConfig: map['intelligenceConfig'] == null ? null : (map['intelligenceConfig'] as String).input(),
+      effectiveEdition: map['effectiveEdition'] == null ? null : (map['effectiveEdition']! as String).input(),
+      intelligenceConfig: map['intelligenceConfig'] == null ? null : (map['intelligenceConfig']! as String).input(),
     );
   }
 }

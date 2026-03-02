@@ -22,7 +22,7 @@ class ImageTemplateAutoRun {
 
   factory ImageTemplateAutoRun.fromMap(Map<String, dynamic> map) {
     return ImageTemplateAutoRun(
-      state: map['state'] == null ? null : (AutoRunState.fromValue(map['state'] as String)).input(),
+      state: map['state'] == null ? null : (AutoRunState.fromValue(map['state']! as String)).input(),
     );
   }
 }

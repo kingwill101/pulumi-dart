@@ -26,8 +26,8 @@ class EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex {
 
   factory EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex(
-      exclusive: map['exclusive'] == null ? null : (map['exclusive'] as bool).input(),
-      regex: map['regex'] == null ? null : (map['regex'] as String).input(),
+      exclusive: map['exclusive'] == null ? null : (map['exclusive']! as bool).input(),
+      regex: map['regex'] == null ? null : (map['regex']! as String).input(),
     );
   }
 }

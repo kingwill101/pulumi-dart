@@ -60,14 +60,14 @@ class ContainerGroupContainerLivenessProbe {
 
   factory ContainerGroupContainerLivenessProbe.fromMap(Map<String, dynamic> map) {
     return ContainerGroupContainerLivenessProbe(
-      execs: map['execs'] == null ? null : (pulumi.Input.decodeList<ContainerGroupContainerLivenessProbeExec>(map['execs'], (value) => ContainerGroupContainerLivenessProbeExec.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as int).input(),
-      httpGets: map['httpGets'] == null ? null : (pulumi.Input.decodeList<ContainerGroupContainerLivenessProbeHttpGet>(map['httpGets'], (value) => ContainerGroupContainerLivenessProbeHttpGet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds'] as int).input(),
-      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds'] as int).input(),
-      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold'] as int).input(),
-      tcpSockets: map['tcpSockets'] == null ? null : (pulumi.Input.decodeList<ContainerGroupContainerLivenessProbeTcpSocket>(map['tcpSockets'], (value) => ContainerGroupContainerLivenessProbeTcpSocket.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      execs: map['execs'] == null ? null : (pulumi.Input.decodeList<ContainerGroupContainerLivenessProbeExec>(map['execs']!, (value) => ContainerGroupContainerLivenessProbeExec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold']! as int).input(),
+      httpGets: map['httpGets'] == null ? null : (pulumi.Input.decodeList<ContainerGroupContainerLivenessProbeHttpGet>(map['httpGets']!, (value) => ContainerGroupContainerLivenessProbeHttpGet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds']! as int).input(),
+      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds']! as int).input(),
+      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold']! as int).input(),
+      tcpSockets: map['tcpSockets'] == null ? null : (pulumi.Input.decodeList<ContainerGroupContainerLivenessProbeTcpSocket>(map['tcpSockets']!, (value) => ContainerGroupContainerLivenessProbeTcpSocket.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
     );
   }
 }

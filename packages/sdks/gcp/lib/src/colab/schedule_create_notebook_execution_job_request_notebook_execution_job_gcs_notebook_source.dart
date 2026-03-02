@@ -25,7 +25,7 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSo
 
   factory ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource.fromMap(Map<String, dynamic> map) {
     return ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource(
-      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
+      generation: map['generation'] == null ? null : (map['generation']! as String).input(),
       uri: (map['uri'] as String).input(),
     );
   }

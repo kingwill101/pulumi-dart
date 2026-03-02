@@ -58,11 +58,11 @@ class GetClientGroupResult {
   factory GetClientGroupResult.fromMap(Map<String, dynamic> map) {
     return GetClientGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      query: map['query'] == null ? null : map['query'] as String,
+      query: map['query'] == null ? null : map['query']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

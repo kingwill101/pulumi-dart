@@ -21,7 +21,7 @@ class SessionIngress {
 
   factory SessionIngress.fromMap(Map<String, dynamic> map) {
     return SessionIngress(
-      targetPort: map['targetPort'] == null ? null : (map['targetPort'] as int).input(),
+      targetPort: map['targetPort'] == null ? null : (map['targetPort']! as int).input(),
     );
   }
 }

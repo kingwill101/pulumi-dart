@@ -47,11 +47,11 @@ class CustomDomainState {
 
   factory CustomDomainState.fromMap(Map<String, dynamic> map) {
     return CustomDomainState(
-      certificateBindingType: map['certificateBindingType'] == null ? null : (map['certificateBindingType'] as String).input(),
-      containerAppEnvironmentCertificateId: map['containerAppEnvironmentCertificateId'] == null ? null : (map['containerAppEnvironmentCertificateId'] as String).input(),
-      containerAppEnvironmentManagedCertificateId: map['containerAppEnvironmentManagedCertificateId'] == null ? null : (map['containerAppEnvironmentManagedCertificateId'] as String).input(),
-      containerAppId: map['containerAppId'] == null ? null : (map['containerAppId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      certificateBindingType: map['certificateBindingType'] == null ? null : (map['certificateBindingType']! as String).input(),
+      containerAppEnvironmentCertificateId: map['containerAppEnvironmentCertificateId'] == null ? null : (map['containerAppEnvironmentCertificateId']! as String).input(),
+      containerAppEnvironmentManagedCertificateId: map['containerAppEnvironmentManagedCertificateId'] == null ? null : (map['containerAppEnvironmentManagedCertificateId']! as String).input(),
+      containerAppId: map['containerAppId'] == null ? null : (map['containerAppId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

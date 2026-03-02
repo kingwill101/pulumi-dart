@@ -21,7 +21,7 @@ class UnknownTargetResponse {
 
   factory UnknownTargetResponse.fromMap(Map<String, dynamic> map) {
     return UnknownTargetResponse(
-      attributes: map['attributes'] == null ? null : ((map['attributes'] as Map).cast<String, String>()).input(),
+      attributes: map['attributes'] == null ? null : ((map['attributes']! as Map).cast<String, String>()).input(),
     );
   }
 }

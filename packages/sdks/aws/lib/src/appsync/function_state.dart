@@ -88,20 +88,20 @@ class FunctionState {
 
   factory FunctionState.fromMap(Map<String, dynamic> map) {
     return FunctionState(
-      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      dataSource: map['dataSource'] == null ? null : (map['dataSource'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      functionId: map['functionId'] == null ? null : (map['functionId'] as String).input(),
-      functionVersion: map['functionVersion'] == null ? null : (map['functionVersion'] as String).input(),
-      maxBatchSize: map['maxBatchSize'] == null ? null : (map['maxBatchSize'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      requestMappingTemplate: map['requestMappingTemplate'] == null ? null : (map['requestMappingTemplate'] as String).input(),
-      responseMappingTemplate: map['responseMappingTemplate'] == null ? null : (map['responseMappingTemplate'] as String).input(),
-      runtime: map['runtime'] == null ? null : (FunctionRuntime.fromMap((map['runtime'] as Map).cast<String, dynamic>())).input(),
-      syncConfig: map['syncConfig'] == null ? null : (FunctionSyncConfig.fromMap((map['syncConfig'] as Map).cast<String, dynamic>())).input(),
+      apiId: map['apiId'] == null ? null : ((map['apiId'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      code: map['code'] == null ? null : ((map['code'] as String).input()).input(),
+      dataSource: map['dataSource'] == null ? null : ((map['dataSource'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      functionId: map['functionId'] == null ? null : ((map['functionId'] as String).input()).input(),
+      functionVersion: map['functionVersion'] == null ? null : ((map['functionVersion'] as String).input()).input(),
+      maxBatchSize: map['maxBatchSize'] == null ? null : ((map['maxBatchSize'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      requestMappingTemplate: map['requestMappingTemplate'] == null ? null : ((map['requestMappingTemplate'] as String).input()).input(),
+      responseMappingTemplate: map['responseMappingTemplate'] == null ? null : ((map['responseMappingTemplate'] as String).input()).input(),
+      runtime: map['runtime'] == null ? null : ((FunctionRuntime.fromMap((map['runtime']! as Map).cast<String, dynamic>())).input()).input(),
+      syncConfig: map['syncConfig'] == null ? null : ((FunctionSyncConfig.fromMap((map['syncConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

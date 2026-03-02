@@ -31,8 +31,8 @@ class JobCopyDestinationTable {
 
   factory JobCopyDestinationTable.fromMap(Map<String, dynamic> map) {
     return JobCopyDestinationTable(
-      datasetId: map['datasetId'] == null ? null : (map['datasetId'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      datasetId: map['datasetId'] == null ? null : (map['datasetId']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
       tableId: (map['tableId'] as String).input(),
     );
   }

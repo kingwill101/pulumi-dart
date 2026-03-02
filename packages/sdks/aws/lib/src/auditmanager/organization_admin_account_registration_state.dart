@@ -31,9 +31,9 @@ class OrganizationAdminAccountRegistrationState {
 
   factory OrganizationAdminAccountRegistrationState.fromMap(Map<String, dynamic> map) {
     return OrganizationAdminAccountRegistrationState(
-      adminAccountId: map['adminAccountId'] == null ? null : (map['adminAccountId'] as String).input(),
-      organizationId: map['organizationId'] == null ? null : (map['organizationId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      adminAccountId: map['adminAccountId'] == null ? null : ((map['adminAccountId'] as String).input()).input(),
+      organizationId: map['organizationId'] == null ? null : ((map['organizationId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

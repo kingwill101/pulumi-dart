@@ -44,11 +44,11 @@ class GetHealthCheckTemplatesArgs {
 
   factory GetHealthCheckTemplatesArgs.fromMap(Map<String, dynamic> map) {
     return GetHealthCheckTemplatesArgs(
-      healthCheckTemplateIds: map['healthCheckTemplateIds'] == null ? null : ((map['healthCheckTemplateIds'] as List).cast<String>()).input(),
-      healthCheckTemplateName: map['healthCheckTemplateName'] == null ? null : (map['healthCheckTemplateName'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      healthCheckTemplateIds: map['healthCheckTemplateIds'] == null ? null : ((map['healthCheckTemplateIds']! as List).cast<String>()).input(),
+      healthCheckTemplateName: map['healthCheckTemplateName'] == null ? null : (map['healthCheckTemplateName']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

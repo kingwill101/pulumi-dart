@@ -104,22 +104,22 @@ class FlowLogArgs {
 
   factory FlowLogArgs.fromMap(Map<String, dynamic> map) {
     return FlowLogArgs(
-      deliverCrossAccountRole: map['deliverCrossAccountRole'] == null ? null : (map['deliverCrossAccountRole'] as String).input(),
-      destinationOptions: map['destinationOptions'] == null ? null : (FlowLogDestinationOptions.fromMap((map['destinationOptions'] as Map).cast<String, dynamic>())).input(),
-      eniId: map['eniId'] == null ? null : (map['eniId'] as String).input(),
-      iamRoleArn: map['iamRoleArn'] == null ? null : (map['iamRoleArn'] as String).input(),
-      logDestination: map['logDestination'] == null ? null : (map['logDestination'] as String).input(),
-      logDestinationType: map['logDestinationType'] == null ? null : (map['logDestinationType'] as String).input(),
-      logFormat: map['logFormat'] == null ? null : (map['logFormat'] as String).input(),
-      maxAggregationInterval: map['maxAggregationInterval'] == null ? null : (map['maxAggregationInterval'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      regionalNatGatewayId: map['regionalNatGatewayId'] == null ? null : (map['regionalNatGatewayId'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      trafficType: map['trafficType'] == null ? null : (map['trafficType'] as String).input(),
-      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : (map['transitGatewayAttachmentId'] as String).input(),
-      transitGatewayId: map['transitGatewayId'] == null ? null : (map['transitGatewayId'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      deliverCrossAccountRole: map['deliverCrossAccountRole'] == null ? null : ((map['deliverCrossAccountRole'] as String).input()).input(),
+      destinationOptions: map['destinationOptions'] == null ? null : ((FlowLogDestinationOptions.fromMap((map['destinationOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      eniId: map['eniId'] == null ? null : ((map['eniId'] as String).input()).input(),
+      iamRoleArn: map['iamRoleArn'] == null ? null : ((map['iamRoleArn'] as String).input()).input(),
+      logDestination: map['logDestination'] == null ? null : ((map['logDestination'] as String).input()).input(),
+      logDestinationType: map['logDestinationType'] == null ? null : ((map['logDestinationType'] as String).input()).input(),
+      logFormat: map['logFormat'] == null ? null : ((map['logFormat'] as String).input()).input(),
+      maxAggregationInterval: map['maxAggregationInterval'] == null ? null : ((map['maxAggregationInterval'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      regionalNatGatewayId: map['regionalNatGatewayId'] == null ? null : ((map['regionalNatGatewayId'] as String).input()).input(),
+      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      trafficType: map['trafficType'] == null ? null : ((map['trafficType'] as String).input()).input(),
+      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : ((map['transitGatewayAttachmentId'] as String).input()).input(),
+      transitGatewayId: map['transitGatewayId'] == null ? null : ((map['transitGatewayId'] as String).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

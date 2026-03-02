@@ -33,9 +33,9 @@ class ListAccessClustersResult {
 
   factory ListAccessClustersResult.fromMap(Map<String, dynamic> map) {
     return ListAccessClustersResult(
-      data: map['data'] == null ? null : pulumi.Input.decodeList<ClusterRecordResponse>(map['data'], (value) => ClusterRecordResponse.fromMap((value as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      metadata: map['metadata'] == null ? null : ConfluentListMetadataResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      data: map['data'] == null ? null : pulumi.Input.decodeList<ClusterRecordResponse>(map['data']!, (value) => ClusterRecordResponse.fromMap((value as Map).cast<String, dynamic>())),
+      kind: map['kind'] == null ? null : map['kind']! as String,
+      metadata: map['metadata'] == null ? null : ConfluentListMetadataResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>()),
     );
   }
 }

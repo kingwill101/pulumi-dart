@@ -31,7 +31,7 @@ class GetReplicationVaultRegionsResult {
   factory GetReplicationVaultRegionsResult.fromMap(Map<String, dynamic> map) {
     return GetReplicationVaultRegionsResult(
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       regions: pulumi.Input.decodeList<GetReplicationVaultRegionsRegion>(map['regions'], (value) => GetReplicationVaultRegionsRegion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

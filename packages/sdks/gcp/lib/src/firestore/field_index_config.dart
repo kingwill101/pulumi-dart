@@ -22,7 +22,7 @@ class FieldIndexConfig {
 
   factory FieldIndexConfig.fromMap(Map<String, dynamic> map) {
     return FieldIndexConfig(
-      indexes: map['indexes'] == null ? null : (pulumi.Input.decodeList<FieldIndexConfigIndex>(map['indexes'], (value) => FieldIndexConfigIndex.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      indexes: map['indexes'] == null ? null : (pulumi.Input.decodeList<FieldIndexConfigIndex>(map['indexes']!, (value) => FieldIndexConfigIndex.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

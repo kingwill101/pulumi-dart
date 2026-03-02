@@ -40,10 +40,10 @@ class GetVpcIpamsResult {
 
   factory GetVpcIpamsResult.fromMap(Map<String, dynamic> map) {
     return GetVpcIpamsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVpcIpamsFilter>(map['filters'], (value) => GetVpcIpamsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVpcIpamsFilter>(map['filters']!, (value) => GetVpcIpamsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ipamIds: map['ipamIds'] == null ? null : (map['ipamIds'] as List).cast<String>(),
-      ipams: pulumi.Input.decodeList<GetVpcIpamsIpam>(map['ipams'], (value) => GetVpcIpamsIpam.fromMap((value as Map).cast<String, dynamic>())),
+      ipams: pulumi.Input.decodeList<GetVpcIpamsIpam>(map['ipams']!, (value) => GetVpcIpamsIpam.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
     );
   }

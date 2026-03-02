@@ -42,7 +42,7 @@ class MigrateSqlServerSqlDbSyncTaskInput {
       selectedDatabases: (pulumi.Input.decodeList<MigrateSqlServerSqlDbSyncDatabaseInput>(map['selectedDatabases'], (value) => MigrateSqlServerSqlDbSyncDatabaseInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
       sourceConnectionInfo: (SqlConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
       targetConnectionInfo: (SqlConnectionInfo.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
-      validationOptions: map['validationOptions'] == null ? null : (MigrationValidationOptions.fromMap((map['validationOptions'] as Map).cast<String, dynamic>())).input(),
+      validationOptions: map['validationOptions'] == null ? null : (MigrationValidationOptions.fromMap((map['validationOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class GoogleDevtoolsContaineranalysisV1alpha1SourceContext {
 
   factory GoogleDevtoolsContaineranalysisV1alpha1SourceContext.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsContaineranalysisV1alpha1SourceContext(
-      cloudRepo: map['cloudRepo'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext.fromMap((map['cloudRepo'] as Map).cast<String, dynamic>())).input(),
-      gerrit: map['gerrit'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext.fromMap((map['gerrit'] as Map).cast<String, dynamic>())).input(),
-      git: map['git'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext.fromMap((map['git'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      cloudRepo: map['cloudRepo'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext.fromMap((map['cloudRepo']! as Map).cast<String, dynamic>())).input(),
+      gerrit: map['gerrit'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext.fromMap((map['gerrit']! as Map).cast<String, dynamic>())).input(),
+      git: map['git'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext.fromMap((map['git']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
     );
   }
 }

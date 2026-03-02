@@ -76,19 +76,19 @@ class GetDataBackupsResult {
 
   factory GetDataBackupsResult.fromMap(Map<String, dynamic> map) {
     return GetDataBackupsResult(
-      backupMode: map['backupMode'] == null ? null : map['backupMode'] as String,
+      backupMode: map['backupMode'] == null ? null : map['backupMode']! as String,
       backups: pulumi.Input.decodeList<GetDataBackupsBackup>(map['backups'], (value) => GetDataBackupsBackup.fromMap((value as Map).cast<String, dynamic>())),
-      dataBackupId: map['dataBackupId'] == null ? null : map['dataBackupId'] as String,
-      dataType: map['dataType'] == null ? null : map['dataType'] as String,
+      dataBackupId: map['dataBackupId'] == null ? null : map['dataBackupId']! as String,
+      dataType: map['dataType'] == null ? null : map['dataType']! as String,
       dbInstanceId: map['dbInstanceId'] as String,
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
+      endTime: map['endTime'] == null ? null : map['endTime']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      startTime: map['startTime'] == null ? null : map['startTime']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

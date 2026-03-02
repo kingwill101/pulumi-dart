@@ -21,7 +21,7 @@ class GuestAgentProfile {
 
   factory GuestAgentProfile.fromMap(Map<String, dynamic> map) {
     return GuestAgentProfile(
-      clientPublicKey: map['clientPublicKey'] == null ? null : (map['clientPublicKey'] as String).input(),
+      clientPublicKey: map['clientPublicKey'] == null ? null : (map['clientPublicKey']! as String).input(),
     );
   }
 }

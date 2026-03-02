@@ -35,8 +35,8 @@ class GetRouteCalculatorArgs {
   factory GetRouteCalculatorArgs.fromMap(Map<String, dynamic> map) {
     return GetRouteCalculatorArgs(
       calculatorName: (map['calculatorName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

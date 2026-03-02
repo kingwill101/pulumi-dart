@@ -65,15 +65,15 @@ class PhraseMatcherArgs {
 
   factory PhraseMatcherArgs.fromMap(Map<String, dynamic> map) {
     return PhraseMatcherArgs(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      phraseMatchRuleGroups: map['phraseMatchRuleGroups'] == null ? null : (pulumi.Input.decodeList<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup>(map['phraseMatchRuleGroups'], (value) => GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      roleMatch: map['roleMatch'] == null ? null : (PhraseMatcherRoleMatch.fromValue(map['roleMatch'] as String)).input(),
+      active: map['active'] == null ? null : (map['active']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      phraseMatchRuleGroups: map['phraseMatchRuleGroups'] == null ? null : (pulumi.Input.decodeList<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup>(map['phraseMatchRuleGroups']!, (value) => GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      roleMatch: map['roleMatch'] == null ? null : (PhraseMatcherRoleMatch.fromValue(map['roleMatch']! as String)).input(),
       type: (PhraseMatcherType.fromValue(map['type'] as String)).input(),
-      versionTag: map['versionTag'] == null ? null : (map['versionTag'] as String).input(),
+      versionTag: map['versionTag'] == null ? null : (map['versionTag']! as String).input(),
     );
   }
 }

@@ -44,11 +44,11 @@ class GetAppSpecFunctionLogDestination {
 
   factory GetAppSpecFunctionLogDestination.fromMap(Map<String, dynamic> map) {
     return GetAppSpecFunctionLogDestination(
-      datadog: map['datadog'] == null ? null : (GetAppSpecFunctionLogDestinationDatadog.fromMap((map['datadog'] as Map).cast<String, dynamic>())).input(),
-      logtail: map['logtail'] == null ? null : (GetAppSpecFunctionLogDestinationLogtail.fromMap((map['logtail'] as Map).cast<String, dynamic>())).input(),
+      datadog: map['datadog'] == null ? null : (GetAppSpecFunctionLogDestinationDatadog.fromMap((map['datadog']! as Map).cast<String, dynamic>())).input(),
+      logtail: map['logtail'] == null ? null : (GetAppSpecFunctionLogDestinationLogtail.fromMap((map['logtail']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      openSearch: map['openSearch'] == null ? null : (GetAppSpecFunctionLogDestinationOpenSearch.fromMap((map['openSearch'] as Map).cast<String, dynamic>())).input(),
-      papertrail: map['papertrail'] == null ? null : (GetAppSpecFunctionLogDestinationPapertrail.fromMap((map['papertrail'] as Map).cast<String, dynamic>())).input(),
+      openSearch: map['openSearch'] == null ? null : (GetAppSpecFunctionLogDestinationOpenSearch.fromMap((map['openSearch']! as Map).cast<String, dynamic>())).input(),
+      papertrail: map['papertrail'] == null ? null : (GetAppSpecFunctionLogDestinationPapertrail.fromMap((map['papertrail']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

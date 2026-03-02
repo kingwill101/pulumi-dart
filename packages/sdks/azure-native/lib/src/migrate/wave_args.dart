@@ -41,9 +41,9 @@ class WaveArgs {
   factory WaveArgs.fromMap(Map<String, dynamic> map) {
     return WaveArgs(
       projectName: (map['projectName'] as String).input(),
-      properties: map['properties'] == null ? null : (WaveProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (WaveProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      waveName: map['waveName'] == null ? null : (map['waveName'] as String).input(),
+      waveName: map['waveName'] == null ? null : (map['waveName']! as String).input(),
     );
   }
 }

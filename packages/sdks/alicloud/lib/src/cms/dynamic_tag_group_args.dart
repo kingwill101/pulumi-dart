@@ -46,10 +46,10 @@ class DynamicTagGroupArgs {
   factory DynamicTagGroupArgs.fromMap(Map<String, dynamic> map) {
     return DynamicTagGroupArgs(
       contactGroupLists: ((map['contactGroupLists'] as List).cast<String>()).input(),
-      matchExpressFilterRelation: map['matchExpressFilterRelation'] == null ? null : (map['matchExpressFilterRelation'] as String).input(),
+      matchExpressFilterRelation: map['matchExpressFilterRelation'] == null ? null : (map['matchExpressFilterRelation']! as String).input(),
       matchExpresses: (pulumi.Input.decodeList<DynamicTagGroupMatchExpress>(map['matchExpresses'], (value) => DynamicTagGroupMatchExpress.fromMap((value as Map).cast<String, dynamic>()))).input(),
       tagKey: (map['tagKey'] as String).input(),
-      templateIdLists: map['templateIdLists'] == null ? null : ((map['templateIdLists'] as List).cast<String>()).input(),
+      templateIdLists: map['templateIdLists'] == null ? null : ((map['templateIdLists']! as List).cast<String>()).input(),
     );
   }
 }

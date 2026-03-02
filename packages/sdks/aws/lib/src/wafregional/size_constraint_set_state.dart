@@ -36,10 +36,10 @@ class SizeConstraintSetState {
 
   factory SizeConstraintSetState.fromMap(Map<String, dynamic> map) {
     return SizeConstraintSetState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sizeConstraints: map['sizeConstraints'] == null ? null : (pulumi.Input.decodeList<SizeConstraintSetSizeConstraint>(map['sizeConstraints'], (value) => SizeConstraintSetSizeConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sizeConstraints: map['sizeConstraints'] == null ? null : ((pulumi.Input.decodeList<SizeConstraintSetSizeConstraint>(map['sizeConstraints']!, (value) => SizeConstraintSetSizeConstraint.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

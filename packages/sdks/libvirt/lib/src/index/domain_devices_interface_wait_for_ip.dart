@@ -25,8 +25,8 @@ class DomainDevicesInterfaceWaitForIp {
 
   factory DomainDevicesInterfaceWaitForIp.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceWaitForIp(
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as double).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as double).input(),
     );
   }
 }

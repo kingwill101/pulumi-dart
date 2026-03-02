@@ -22,7 +22,7 @@ class TrustConfigTrustStoreIntermediateCa {
 
   factory TrustConfigTrustStoreIntermediateCa.fromMap(Map<String, dynamic> map) {
     return TrustConfigTrustStoreIntermediateCa(
-      pemCertificate: map['pemCertificate'] == null ? null : (map['pemCertificate'] as String).input(),
+      pemCertificate: map['pemCertificate'] == null ? null : (map['pemCertificate']! as String).input(),
     );
   }
 }

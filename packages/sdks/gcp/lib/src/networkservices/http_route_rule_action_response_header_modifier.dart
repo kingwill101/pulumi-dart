@@ -30,9 +30,9 @@ class HttpRouteRuleActionResponseHeaderModifier {
 
   factory HttpRouteRuleActionResponseHeaderModifier.fromMap(Map<String, dynamic> map) {
     return HttpRouteRuleActionResponseHeaderModifier(
-      add: map['add'] == null ? null : ((map['add'] as Map).cast<String, String>()).input(),
-      removes: map['removes'] == null ? null : ((map['removes'] as List).cast<String>()).input(),
-      set: map['set'] == null ? null : ((map['set'] as Map).cast<String, String>()).input(),
+      add: map['add'] == null ? null : ((map['add']! as Map).cast<String, String>()).input(),
+      removes: map['removes'] == null ? null : ((map['removes']! as List).cast<String>()).input(),
+      set: map['set'] == null ? null : ((map['set']! as Map).cast<String, String>()).input(),
     );
   }
 }

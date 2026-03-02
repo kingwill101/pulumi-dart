@@ -51,13 +51,13 @@ class ChildInstanceRouteEntryToAttachmentState {
 
   factory ChildInstanceRouteEntryToAttachmentState.fromMap(Map<String, dynamic> map) {
     return ChildInstanceRouteEntryToAttachmentState(
-      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
-      childInstanceRouteTableId: map['childInstanceRouteTableId'] == null ? null : (map['childInstanceRouteTableId'] as String).input(),
-      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : (map['destinationCidrBlock'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      serviceType: map['serviceType'] == null ? null : (map['serviceType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : (map['transitRouterAttachmentId'] as String).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
+      childInstanceRouteTableId: map['childInstanceRouteTableId'] == null ? null : (map['childInstanceRouteTableId']! as String).input(),
+      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : (map['destinationCidrBlock']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      serviceType: map['serviceType'] == null ? null : (map['serviceType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : (map['transitRouterAttachmentId']! as String).input(),
     );
   }
 }

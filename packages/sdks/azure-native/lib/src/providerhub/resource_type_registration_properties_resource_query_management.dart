@@ -21,7 +21,7 @@ class ResourceTypeRegistrationPropertiesResourceQueryManagement {
 
   factory ResourceTypeRegistrationPropertiesResourceQueryManagement.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesResourceQueryManagement(
-      filterOption: map['filterOption'] == null ? null : (map['filterOption'] as String).input(),
+      filterOption: map['filterOption'] == null ? null : (map['filterOption']! as String).input(),
     );
   }
 }

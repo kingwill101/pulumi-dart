@@ -49,7 +49,7 @@ class GetSpotPriceResult {
   factory GetSpotPriceResult.fromMap(Map<String, dynamic> map) {
     return GetSpotPriceResult(
       availabilityZone: map['availabilityZone'] == null ? null : map['availabilityZone'] as String,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetSpotPriceFilter>(map['filters'], (value) => GetSpotPriceFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetSpotPriceFilter>(map['filters']!, (value) => GetSpotPriceFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       instanceType: map['instanceType'] == null ? null : map['instanceType'] as String,
       region: map['region'] as String,

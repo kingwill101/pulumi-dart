@@ -51,12 +51,12 @@ class BudgetFilterExpressionNot {
 
   factory BudgetFilterExpressionNot.fromMap(Map<String, dynamic> map) {
     return BudgetFilterExpressionNot(
-      ands: map['ands'] == null ? null : (pulumi.Input.decodeList<BudgetFilterExpressionNotAnd>(map['ands'], (value) => BudgetFilterExpressionNotAnd.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      costCategories: map['costCategories'] == null ? null : (BudgetFilterExpressionNotCostCategories.fromMap((map['costCategories'] as Map).cast<String, dynamic>())).input(),
-      dimensions: map['dimensions'] == null ? null : (BudgetFilterExpressionNotDimensions.fromMap((map['dimensions'] as Map).cast<String, dynamic>())).input(),
-      not: map['not'] == null ? null : (BudgetFilterExpressionNotNot.fromMap((map['not'] as Map).cast<String, dynamic>())).input(),
-      ors: map['ors'] == null ? null : (pulumi.Input.decodeList<BudgetFilterExpressionNotOr>(map['ors'], (value) => BudgetFilterExpressionNotOr.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : (BudgetFilterExpressionNotTags.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
+      ands: map['ands'] == null ? null : ((pulumi.Input.decodeList<BudgetFilterExpressionNotAnd>(map['ands']!, (value) => BudgetFilterExpressionNotAnd.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      costCategories: map['costCategories'] == null ? null : ((BudgetFilterExpressionNotCostCategories.fromMap((map['costCategories']! as Map).cast<String, dynamic>())).input()).input(),
+      dimensions: map['dimensions'] == null ? null : ((BudgetFilterExpressionNotDimensions.fromMap((map['dimensions']! as Map).cast<String, dynamic>())).input()).input(),
+      not: map['not'] == null ? null : ((BudgetFilterExpressionNotNot.fromMap((map['not']! as Map).cast<String, dynamic>())).input()).input(),
+      ors: map['ors'] == null ? null : ((pulumi.Input.decodeList<BudgetFilterExpressionNotOr>(map['ors']!, (value) => BudgetFilterExpressionNotOr.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : ((BudgetFilterExpressionNotTags.fromMap((map['tags']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

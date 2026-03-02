@@ -48,10 +48,10 @@ class RouteTableArgs {
 
   factory RouteTableArgs.fromMap(Map<String, dynamic> map) {
     return RouteTableArgs(
-      propagatingVgws: map['propagatingVgws'] == null ? null : ((map['propagatingVgws'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<RouteTableRoute>(map['routes'], (value) => RouteTableRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      propagatingVgws: map['propagatingVgws'] == null ? null : (((map['propagatingVgws'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      routes: map['routes'] == null ? null : ((pulumi.Input.decodeList<RouteTableRoute>(map['routes']!, (value) => RouteTableRoute.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

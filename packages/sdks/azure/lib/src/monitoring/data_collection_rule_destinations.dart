@@ -67,14 +67,14 @@ class DataCollectionRuleDestinations {
 
   factory DataCollectionRuleDestinations.fromMap(Map<String, dynamic> map) {
     return DataCollectionRuleDestinations(
-      azureMonitorMetrics: map['azureMonitorMetrics'] == null ? null : (DataCollectionRuleDestinationsAzureMonitorMetrics.fromMap((map['azureMonitorMetrics'] as Map).cast<String, dynamic>())).input(),
-      eventHub: map['eventHub'] == null ? null : (DataCollectionRuleDestinationsEventHub.fromMap((map['eventHub'] as Map).cast<String, dynamic>())).input(),
-      eventHubDirect: map['eventHubDirect'] == null ? null : (DataCollectionRuleDestinationsEventHubDirect.fromMap((map['eventHubDirect'] as Map).cast<String, dynamic>())).input(),
-      logAnalytics: map['logAnalytics'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDestinationsLogAnalytic>(map['logAnalytics'], (value) => DataCollectionRuleDestinationsLogAnalytic.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      monitorAccounts: map['monitorAccounts'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDestinationsMonitorAccount>(map['monitorAccounts'], (value) => DataCollectionRuleDestinationsMonitorAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      storageBlobDirects: map['storageBlobDirects'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDestinationsStorageBlobDirect>(map['storageBlobDirects'], (value) => DataCollectionRuleDestinationsStorageBlobDirect.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      storageBlobs: map['storageBlobs'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDestinationsStorageBlob>(map['storageBlobs'], (value) => DataCollectionRuleDestinationsStorageBlob.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      storageTableDirects: map['storageTableDirects'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDestinationsStorageTableDirect>(map['storageTableDirects'], (value) => DataCollectionRuleDestinationsStorageTableDirect.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      azureMonitorMetrics: map['azureMonitorMetrics'] == null ? null : (DataCollectionRuleDestinationsAzureMonitorMetrics.fromMap((map['azureMonitorMetrics']! as Map).cast<String, dynamic>())).input(),
+      eventHub: map['eventHub'] == null ? null : (DataCollectionRuleDestinationsEventHub.fromMap((map['eventHub']! as Map).cast<String, dynamic>())).input(),
+      eventHubDirect: map['eventHubDirect'] == null ? null : (DataCollectionRuleDestinationsEventHubDirect.fromMap((map['eventHubDirect']! as Map).cast<String, dynamic>())).input(),
+      logAnalytics: map['logAnalytics'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDestinationsLogAnalytic>(map['logAnalytics']!, (value) => DataCollectionRuleDestinationsLogAnalytic.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      monitorAccounts: map['monitorAccounts'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDestinationsMonitorAccount>(map['monitorAccounts']!, (value) => DataCollectionRuleDestinationsMonitorAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageBlobDirects: map['storageBlobDirects'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDestinationsStorageBlobDirect>(map['storageBlobDirects']!, (value) => DataCollectionRuleDestinationsStorageBlobDirect.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageBlobs: map['storageBlobs'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDestinationsStorageBlob>(map['storageBlobs']!, (value) => DataCollectionRuleDestinationsStorageBlob.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageTableDirects: map['storageTableDirects'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDestinationsStorageTableDirect>(map['storageTableDirects']!, (value) => DataCollectionRuleDestinationsStorageTableDirect.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

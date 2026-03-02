@@ -61,15 +61,15 @@ class VpdState {
 
   factory VpdState.fromMap(Map<String, dynamic> map) {
     return VpdState(
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      gmtModified: map['gmtModified'] == null ? null : (map['gmtModified'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      secondaryCidrBlocks: map['secondaryCidrBlocks'] == null ? null : ((map['secondaryCidrBlocks'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpdName: map['vpdName'] == null ? null : (map['vpdName'] as String).input(),
+      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      gmtModified: map['gmtModified'] == null ? null : (map['gmtModified']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      secondaryCidrBlocks: map['secondaryCidrBlocks'] == null ? null : ((map['secondaryCidrBlocks']! as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vpdName: map['vpdName'] == null ? null : (map['vpdName']! as String).input(),
     );
   }
 }

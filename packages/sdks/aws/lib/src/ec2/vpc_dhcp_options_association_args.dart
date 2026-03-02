@@ -35,7 +35,7 @@ class VpcDhcpOptionsAssociationArgs {
   factory VpcDhcpOptionsAssociationArgs.fromMap(Map<String, dynamic> map) {
     return VpcDhcpOptionsAssociationArgs(
       dhcpOptionsId: (map['dhcpOptionsId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

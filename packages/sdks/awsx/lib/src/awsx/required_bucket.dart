@@ -28,8 +28,8 @@ class RequiredBucket {
 
   factory RequiredBucket.fromMap(Map<String, dynamic> map) {
     return RequiredBucket(
-      args: map['args'] == null ? null : (Bucket.fromMap((map['args'] as Map).cast<String, dynamic>())).input(),
-      existing: map['existing'] == null ? null : (ExistingBucket.fromMap((map['existing'] as Map).cast<String, dynamic>())).input(),
+      args: map['args'] == null ? null : (Bucket.fromMap((map['args']! as Map).cast<String, dynamic>())).input(),
+      existing: map['existing'] == null ? null : (ExistingBucket.fromMap((map['existing']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

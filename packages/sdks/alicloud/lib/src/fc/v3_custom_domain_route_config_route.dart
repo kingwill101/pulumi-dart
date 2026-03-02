@@ -41,11 +41,11 @@ class V3CustomDomainRouteConfigRoute {
 
   factory V3CustomDomainRouteConfigRoute.fromMap(Map<String, dynamic> map) {
     return V3CustomDomainRouteConfigRoute(
-      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
-      methods: map['methods'] == null ? null : ((map['methods'] as List).cast<String>()).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
-      rewriteConfig: map['rewriteConfig'] == null ? null : (V3CustomDomainRouteConfigRouteRewriteConfig.fromMap((map['rewriteConfig'] as Map).cast<String, dynamic>())).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName']! as String).input(),
+      methods: map['methods'] == null ? null : ((map['methods']! as List).cast<String>()).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      qualifier: map['qualifier'] == null ? null : (map['qualifier']! as String).input(),
+      rewriteConfig: map['rewriteConfig'] == null ? null : (V3CustomDomainRouteConfigRouteRewriteConfig.fromMap((map['rewriteConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

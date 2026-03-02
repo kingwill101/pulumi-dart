@@ -35,7 +35,7 @@ class LogicAppArgs {
   factory LogicAppArgs.fromMap(Map<String, dynamic> map) {
     return LogicAppArgs(
       containerAppName: (map['containerAppName'] as String).input(),
-      logicAppName: map['logicAppName'] == null ? null : (map['logicAppName'] as String).input(),
+      logicAppName: map['logicAppName'] == null ? null : (map['logicAppName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

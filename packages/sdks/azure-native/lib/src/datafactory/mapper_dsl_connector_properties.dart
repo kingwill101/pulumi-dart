@@ -26,8 +26,8 @@ class MapperDslConnectorProperties {
 
   factory MapperDslConnectorProperties.fromMap(Map<String, dynamic> map) {
     return MapperDslConnectorProperties(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value']).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      value: map['value'] == null ? null : (map['value']!).input(),
     );
   }
 }

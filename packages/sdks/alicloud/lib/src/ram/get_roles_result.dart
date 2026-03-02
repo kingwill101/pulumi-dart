@@ -59,13 +59,13 @@ class GetRolesResult {
     return GetRolesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      policyName: map['policyName'] == null ? null : map['policyName'] as String,
-      policyType: map['policyType'] == null ? null : map['policyType'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      policyName: map['policyName'] == null ? null : map['policyName']! as String,
+      policyType: map['policyType'] == null ? null : map['policyType']! as String,
       roles: pulumi.Input.decodeList<GetRolesRole>(map['roles'], (value) => GetRolesRole.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

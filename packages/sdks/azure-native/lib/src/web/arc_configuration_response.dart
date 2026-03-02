@@ -40,12 +40,12 @@ class ArcConfigurationResponse {
 
   factory ArcConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ArcConfigurationResponse(
-      artifactStorageAccessMode: map['artifactStorageAccessMode'] == null ? null : (map['artifactStorageAccessMode'] as String).input(),
-      artifactStorageClassName: map['artifactStorageClassName'] == null ? null : (map['artifactStorageClassName'] as String).input(),
-      artifactStorageMountPath: map['artifactStorageMountPath'] == null ? null : (map['artifactStorageMountPath'] as String).input(),
-      artifactStorageNodeName: map['artifactStorageNodeName'] == null ? null : (map['artifactStorageNodeName'] as String).input(),
-      artifactsStorageType: map['artifactsStorageType'] == null ? null : (map['artifactsStorageType'] as String).input(),
-      frontEndServiceConfiguration: map['frontEndServiceConfiguration'] == null ? null : (FrontEndConfigurationResponse.fromMap((map['frontEndServiceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      artifactStorageAccessMode: map['artifactStorageAccessMode'] == null ? null : (map['artifactStorageAccessMode']! as String).input(),
+      artifactStorageClassName: map['artifactStorageClassName'] == null ? null : (map['artifactStorageClassName']! as String).input(),
+      artifactStorageMountPath: map['artifactStorageMountPath'] == null ? null : (map['artifactStorageMountPath']! as String).input(),
+      artifactStorageNodeName: map['artifactStorageNodeName'] == null ? null : (map['artifactStorageNodeName']! as String).input(),
+      artifactsStorageType: map['artifactsStorageType'] == null ? null : (map['artifactsStorageType']! as String).input(),
+      frontEndServiceConfiguration: map['frontEndServiceConfiguration'] == null ? null : (FrontEndConfigurationResponse.fromMap((map['frontEndServiceConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class InstanceCpuOptions {
 
   factory InstanceCpuOptions.fromMap(Map<String, dynamic> map) {
     return InstanceCpuOptions(
-      coreCount: map['coreCount'] == null ? null : (map['coreCount'] as int).input(),
-      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore'] as int).input(),
-      topologyType: map['topologyType'] == null ? null : (map['topologyType'] as String).input(),
+      coreCount: map['coreCount'] == null ? null : (map['coreCount']! as int).input(),
+      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore']! as int).input(),
+      topologyType: map['topologyType'] == null ? null : (map['topologyType']! as String).input(),
     );
   }
 }

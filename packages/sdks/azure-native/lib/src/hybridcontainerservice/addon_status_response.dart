@@ -30,9 +30,9 @@ class AddonStatusResponse {
 
   factory AddonStatusResponse.fromMap(Map<String, dynamic> map) {
     return AddonStatusResponse(
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
-      phase: map['phase'] == null ? null : (map['phase'] as String).input(),
-      ready: map['ready'] == null ? null : (map['ready'] as bool).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      phase: map['phase'] == null ? null : (map['phase']! as String).input(),
+      ready: map['ready'] == null ? null : (map['ready']! as bool).input(),
     );
   }
 }

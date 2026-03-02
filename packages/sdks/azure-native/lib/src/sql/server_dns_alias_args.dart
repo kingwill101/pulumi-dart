@@ -34,7 +34,7 @@ class ServerDnsAliasArgs {
 
   factory ServerDnsAliasArgs.fromMap(Map<String, dynamic> map) {
     return ServerDnsAliasArgs(
-      dnsAliasName: map['dnsAliasName'] == null ? null : (map['dnsAliasName'] as String).input(),
+      dnsAliasName: map['dnsAliasName'] == null ? null : (map['dnsAliasName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
     );

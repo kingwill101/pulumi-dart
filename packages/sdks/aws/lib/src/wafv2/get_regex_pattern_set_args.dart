@@ -35,7 +35,7 @@ class GetRegexPatternSetArgs {
   factory GetRegexPatternSetArgs.fromMap(Map<String, dynamic> map) {
     return GetRegexPatternSetArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       scope: (map['scope'] as String).input(),
     );
   }

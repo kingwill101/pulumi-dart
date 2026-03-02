@@ -21,7 +21,7 @@ class AaaaRecordResponse {
 
   factory AaaaRecordResponse.fromMap(Map<String, dynamic> map) {
     return AaaaRecordResponse(
-      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address'] as String).input(),
+      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address']! as String).input(),
     );
   }
 }

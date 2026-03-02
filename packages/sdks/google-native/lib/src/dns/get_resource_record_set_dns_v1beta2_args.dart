@@ -39,10 +39,10 @@ class GetResourceRecordSetDnsV1beta2Args {
 
   factory GetResourceRecordSetDnsV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetResourceRecordSetDnsV1beta2Args(
-      clientOperationId: map['clientOperationId'] == null ? null : (map['clientOperationId'] as String).input(),
+      clientOperationId: map['clientOperationId'] == null ? null : (map['clientOperationId']! as String).input(),
       managedZone: (map['managedZone'] as String).input(),
       name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

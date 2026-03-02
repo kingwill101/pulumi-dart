@@ -54,10 +54,10 @@ class BucketReplicationConfigArgs {
   factory BucketReplicationConfigArgs.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigArgs(
       bucket: (map['bucket'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       role: (map['role'] as String).input(),
-      rules: (pulumi.Input.decodeList<BucketReplicationConfigRule>(map['rules'], (value) => BucketReplicationConfigRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
+      rules: (pulumi.Input.decodeList<BucketReplicationConfigRule>(map['rules']!, (value) => BucketReplicationConfigRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      token: map['token'] == null ? null : ((map['token'] as String).input()).input(),
     );
   }
 }

@@ -45,11 +45,11 @@ class ScheduledActionArgs {
 
   factory ScheduledActionArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledActionArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (ScheduledActionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (ScheduledActionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scheduledActionName: map['scheduledActionName'] == null ? null : (map['scheduledActionName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      scheduledActionName: map['scheduledActionName'] == null ? null : (map['scheduledActionName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

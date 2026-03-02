@@ -83,16 +83,16 @@ class HttpRouteRuleAction {
 
   factory HttpRouteRuleAction.fromMap(Map<String, dynamic> map) {
     return HttpRouteRuleAction(
-      corsPolicy: map['corsPolicy'] == null ? null : (HttpRouteRuleActionCorsPolicy.fromMap((map['corsPolicy'] as Map).cast<String, dynamic>())).input(),
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<HttpRouteRuleActionDestination>(map['destinations'], (value) => HttpRouteRuleActionDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      faultInjectionPolicy: map['faultInjectionPolicy'] == null ? null : (HttpRouteRuleActionFaultInjectionPolicy.fromMap((map['faultInjectionPolicy'] as Map).cast<String, dynamic>())).input(),
-      redirect: map['redirect'] == null ? null : (HttpRouteRuleActionRedirect.fromMap((map['redirect'] as Map).cast<String, dynamic>())).input(),
-      requestHeaderModifier: map['requestHeaderModifier'] == null ? null : (HttpRouteRuleActionRequestHeaderModifier.fromMap((map['requestHeaderModifier'] as Map).cast<String, dynamic>())).input(),
-      requestMirrorPolicy: map['requestMirrorPolicy'] == null ? null : (HttpRouteRuleActionRequestMirrorPolicy.fromMap((map['requestMirrorPolicy'] as Map).cast<String, dynamic>())).input(),
-      responseHeaderModifier: map['responseHeaderModifier'] == null ? null : (HttpRouteRuleActionResponseHeaderModifier.fromMap((map['responseHeaderModifier'] as Map).cast<String, dynamic>())).input(),
-      retryPolicy: map['retryPolicy'] == null ? null : (HttpRouteRuleActionRetryPolicy.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
-      urlRewrite: map['urlRewrite'] == null ? null : (HttpRouteRuleActionUrlRewrite.fromMap((map['urlRewrite'] as Map).cast<String, dynamic>())).input(),
+      corsPolicy: map['corsPolicy'] == null ? null : (HttpRouteRuleActionCorsPolicy.fromMap((map['corsPolicy']! as Map).cast<String, dynamic>())).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<HttpRouteRuleActionDestination>(map['destinations']!, (value) => HttpRouteRuleActionDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      faultInjectionPolicy: map['faultInjectionPolicy'] == null ? null : (HttpRouteRuleActionFaultInjectionPolicy.fromMap((map['faultInjectionPolicy']! as Map).cast<String, dynamic>())).input(),
+      redirect: map['redirect'] == null ? null : (HttpRouteRuleActionRedirect.fromMap((map['redirect']! as Map).cast<String, dynamic>())).input(),
+      requestHeaderModifier: map['requestHeaderModifier'] == null ? null : (HttpRouteRuleActionRequestHeaderModifier.fromMap((map['requestHeaderModifier']! as Map).cast<String, dynamic>())).input(),
+      requestMirrorPolicy: map['requestMirrorPolicy'] == null ? null : (HttpRouteRuleActionRequestMirrorPolicy.fromMap((map['requestMirrorPolicy']! as Map).cast<String, dynamic>())).input(),
+      responseHeaderModifier: map['responseHeaderModifier'] == null ? null : (HttpRouteRuleActionResponseHeaderModifier.fromMap((map['responseHeaderModifier']! as Map).cast<String, dynamic>())).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (HttpRouteRuleActionRetryPolicy.fromMap((map['retryPolicy']! as Map).cast<String, dynamic>())).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
+      urlRewrite: map['urlRewrite'] == null ? null : (HttpRouteRuleActionUrlRewrite.fromMap((map['urlRewrite']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

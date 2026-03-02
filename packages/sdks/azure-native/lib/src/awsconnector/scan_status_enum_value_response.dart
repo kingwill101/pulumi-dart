@@ -21,7 +21,7 @@ class ScanStatusEnumValueResponse {
 
   factory ScanStatusEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return ScanStatusEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

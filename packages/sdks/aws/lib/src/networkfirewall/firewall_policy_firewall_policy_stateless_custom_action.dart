@@ -26,7 +26,7 @@ class FirewallPolicyFirewallPolicyStatelessCustomAction {
 
   factory FirewallPolicyFirewallPolicyStatelessCustomAction.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyFirewallPolicyStatelessCustomAction(
-      actionDefinition: (FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition.fromMap((map['actionDefinition'] as Map).cast<String, dynamic>())).input(),
+      actionDefinition: (FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition.fromMap((map['actionDefinition']! as Map).cast<String, dynamic>())).input(),
       actionName: (map['actionName'] as String).input(),
     );
   }

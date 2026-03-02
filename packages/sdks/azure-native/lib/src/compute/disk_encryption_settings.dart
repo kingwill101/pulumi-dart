@@ -33,9 +33,9 @@ class DiskEncryptionSettings {
 
   factory DiskEncryptionSettings.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionSettings(
-      diskEncryptionKey: map['diskEncryptionKey'] == null ? null : (KeyVaultSecretReference.fromMap((map['diskEncryptionKey'] as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : (KeyVaultKeyReference.fromMap((map['keyEncryptionKey'] as Map).cast<String, dynamic>())).input(),
+      diskEncryptionKey: map['diskEncryptionKey'] == null ? null : (KeyVaultSecretReference.fromMap((map['diskEncryptionKey']! as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : (KeyVaultKeyReference.fromMap((map['keyEncryptionKey']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

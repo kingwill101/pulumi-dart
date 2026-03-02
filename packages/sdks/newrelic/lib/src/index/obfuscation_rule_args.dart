@@ -50,12 +50,12 @@ class ObfuscationRuleArgs {
 
   factory ObfuscationRuleArgs.fromMap(Map<String, dynamic> map) {
     return ObfuscationRuleArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
       actions: (pulumi.Input.decodeList<ObfuscationRuleAction>(map['actions'], (value) => ObfuscationRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       enabled: (map['enabled'] as bool).input(),
       filter: (map['filter'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

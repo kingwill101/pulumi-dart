@@ -21,7 +21,7 @@ class InstanceParamsComputeV1 {
 
   factory InstanceParamsComputeV1.fromMap(Map<String, dynamic> map) {
     return InstanceParamsComputeV1(
-      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags'] as Map).cast<String, String>()).input(),
+      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags']! as Map).cast<String, String>()).input(),
     );
   }
 }

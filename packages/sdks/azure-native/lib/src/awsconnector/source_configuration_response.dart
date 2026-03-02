@@ -26,8 +26,8 @@ class SourceConfigurationResponse {
 
   factory SourceConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return SourceConfigurationResponse(
-      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
-      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName']! as String).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName']! as String).input(),
     );
   }
 }

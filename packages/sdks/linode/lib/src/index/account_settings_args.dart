@@ -44,11 +44,11 @@ class AccountSettingsArgs {
 
   factory AccountSettingsArgs.fromMap(Map<String, dynamic> map) {
     return AccountSettingsArgs(
-      backupsEnabled: map['backupsEnabled'] == null ? null : (map['backupsEnabled'] as bool).input(),
-      interfacesForNewLinodes: map['interfacesForNewLinodes'] == null ? null : (map['interfacesForNewLinodes'] as String).input(),
-      longviewSubscription: map['longviewSubscription'] == null ? null : (map['longviewSubscription'] as String).input(),
-      maintenancePolicy: map['maintenancePolicy'] == null ? null : (map['maintenancePolicy'] as String).input(),
-      networkHelper: map['networkHelper'] == null ? null : (map['networkHelper'] as bool).input(),
+      backupsEnabled: map['backupsEnabled'] == null ? null : (map['backupsEnabled']! as bool).input(),
+      interfacesForNewLinodes: map['interfacesForNewLinodes'] == null ? null : (map['interfacesForNewLinodes']! as String).input(),
+      longviewSubscription: map['longviewSubscription'] == null ? null : (map['longviewSubscription']! as String).input(),
+      maintenancePolicy: map['maintenancePolicy'] == null ? null : (map['maintenancePolicy']! as String).input(),
+      networkHelper: map['networkHelper'] == null ? null : (map['networkHelper']! as bool).input(),
     );
   }
 }

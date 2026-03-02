@@ -35,9 +35,9 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfig {
 
   factory AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfig(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      modelSettings: map['modelSettings'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSetting>(map['modelSettings'], (value) => AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      prompt: map['prompt'] == null ? null : (map['prompt'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      modelSettings: map['modelSettings'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSetting>(map['modelSettings']!, (value) => AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      prompt: map['prompt'] == null ? null : (map['prompt']! as String).input(),
     );
   }
 }

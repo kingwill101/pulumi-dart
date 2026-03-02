@@ -31,9 +31,9 @@ class HostAccountShareKeyAttachmentState {
 
   factory HostAccountShareKeyAttachmentState.fromMap(Map<String, dynamic> map) {
     return HostAccountShareKeyAttachmentState(
-      hostAccountId: map['hostAccountId'] == null ? null : (map['hostAccountId'] as String).input(),
-      hostShareKeyId: map['hostShareKeyId'] == null ? null : (map['hostShareKeyId'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      hostAccountId: map['hostAccountId'] == null ? null : (map['hostAccountId']! as String).input(),
+      hostShareKeyId: map['hostShareKeyId'] == null ? null : (map['hostShareKeyId']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
     );
   }
 }

@@ -44,10 +44,10 @@ class Transformation {
 
   factory Transformation.fromMap(Map<String, dynamic> map) {
     return Transformation(
-      dataset: map['dataset'] == null ? null : (DatasetReference.fromMap((map['dataset'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      flowlet: map['flowlet'] == null ? null : (DataFlowReference.fromMap((map['flowlet'] as Map).cast<String, dynamic>())).input(),
-      linkedService: map['linkedService'] == null ? null : (LinkedServiceReference.fromMap((map['linkedService'] as Map).cast<String, dynamic>())).input(),
+      dataset: map['dataset'] == null ? null : (DatasetReference.fromMap((map['dataset']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      flowlet: map['flowlet'] == null ? null : (DataFlowReference.fromMap((map['flowlet']! as Map).cast<String, dynamic>())).input(),
+      linkedService: map['linkedService'] == null ? null : (LinkedServiceReference.fromMap((map['linkedService']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
     );
   }

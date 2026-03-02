@@ -22,7 +22,7 @@ class TransferConfigurationResponseTransferFilterDetails {
 
   factory TransferConfigurationResponseTransferFilterDetails.fromMap(Map<String, dynamic> map) {
     return TransferConfigurationResponseTransferFilterDetails(
-      include: map['include'] == null ? null : (TransferFilterDetailsResponse.fromMap((map['include'] as Map).cast<String, dynamic>())).input(),
+      include: map['include'] == null ? null : (TransferFilterDetailsResponse.fromMap((map['include']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

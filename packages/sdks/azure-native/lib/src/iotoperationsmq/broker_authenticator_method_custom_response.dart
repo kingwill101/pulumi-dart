@@ -37,10 +37,10 @@ class BrokerAuthenticatorMethodCustomResponse {
 
   factory BrokerAuthenticatorMethodCustomResponse.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticatorMethodCustomResponse(
-      auth: map['auth'] == null ? null : (BrokerAuthenticatorCustomAuthResponse.fromMap((map['auth'] as Map).cast<String, dynamic>())).input(),
-      caCertConfigMap: map['caCertConfigMap'] == null ? null : (map['caCertConfigMap'] as String).input(),
+      auth: map['auth'] == null ? null : (BrokerAuthenticatorCustomAuthResponse.fromMap((map['auth']! as Map).cast<String, dynamic>())).input(),
+      caCertConfigMap: map['caCertConfigMap'] == null ? null : (map['caCertConfigMap']! as String).input(),
       endpoint: (map['endpoint'] as String).input(),
-      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, String>()).input(),
+      headers: map['headers'] == null ? null : ((map['headers']! as Map).cast<String, String>()).input(),
     );
   }
 }

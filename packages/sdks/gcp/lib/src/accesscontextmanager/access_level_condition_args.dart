@@ -89,13 +89,13 @@ class AccessLevelConditionArgs {
   factory AccessLevelConditionArgs.fromMap(Map<String, dynamic> map) {
     return AccessLevelConditionArgs(
       accessLevel: (map['accessLevel'] as String).input(),
-      devicePolicy: map['devicePolicy'] == null ? null : (AccessLevelConditionDevicePolicy.fromMap((map['devicePolicy'] as Map).cast<String, dynamic>())).input(),
-      ipSubnetworks: map['ipSubnetworks'] == null ? null : ((map['ipSubnetworks'] as List).cast<String>()).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      negate: map['negate'] == null ? null : (map['negate'] as bool).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
-      requiredAccessLevels: map['requiredAccessLevels'] == null ? null : ((map['requiredAccessLevels'] as List).cast<String>()).input(),
-      vpcNetworkSources: map['vpcNetworkSources'] == null ? null : (pulumi.Input.decodeList<AccessLevelConditionVpcNetworkSource>(map['vpcNetworkSources'], (value) => AccessLevelConditionVpcNetworkSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      devicePolicy: map['devicePolicy'] == null ? null : (AccessLevelConditionDevicePolicy.fromMap((map['devicePolicy']! as Map).cast<String, dynamic>())).input(),
+      ipSubnetworks: map['ipSubnetworks'] == null ? null : ((map['ipSubnetworks']! as List).cast<String>()).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      negate: map['negate'] == null ? null : (map['negate']! as bool).input(),
+      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
+      requiredAccessLevels: map['requiredAccessLevels'] == null ? null : ((map['requiredAccessLevels']! as List).cast<String>()).input(),
+      vpcNetworkSources: map['vpcNetworkSources'] == null ? null : (pulumi.Input.decodeList<AccessLevelConditionVpcNetworkSource>(map['vpcNetworkSources']!, (value) => AccessLevelConditionVpcNetworkSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

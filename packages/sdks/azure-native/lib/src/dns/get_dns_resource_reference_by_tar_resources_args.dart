@@ -25,7 +25,7 @@ class GetDnsResourceReferenceByTarResourcesArgs {
 
   factory GetDnsResourceReferenceByTarResourcesArgs.fromMap(Map<String, dynamic> map) {
     return GetDnsResourceReferenceByTarResourcesArgs(
-      targetResources: map['targetResources'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['targetResources'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetResources: map['targetResources'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['targetResources']!, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

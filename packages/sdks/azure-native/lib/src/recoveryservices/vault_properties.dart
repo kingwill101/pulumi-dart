@@ -56,13 +56,13 @@ class VaultProperties {
 
   factory VaultProperties.fromMap(Map<String, dynamic> map) {
     return VaultProperties(
-      encryption: map['encryption'] == null ? null : (VaultPropertiesEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      monitoringSettings: map['monitoringSettings'] == null ? null : (MonitoringSettings.fromMap((map['monitoringSettings'] as Map).cast<String, dynamic>())).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
-      redundancySettings: map['redundancySettings'] == null ? null : (VaultPropertiesRedundancySettings.fromMap((map['redundancySettings'] as Map).cast<String, dynamic>())).input(),
-      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : ((map['resourceGuardOperationRequests'] as List).cast<String>()).input(),
-      restoreSettings: map['restoreSettings'] == null ? null : (RestoreSettings.fromMap((map['restoreSettings'] as Map).cast<String, dynamic>())).input(),
-      securitySettings: map['securitySettings'] == null ? null : (SecuritySettings.fromMap((map['securitySettings'] as Map).cast<String, dynamic>())).input(),
+      encryption: map['encryption'] == null ? null : (VaultPropertiesEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      monitoringSettings: map['monitoringSettings'] == null ? null : (MonitoringSettings.fromMap((map['monitoringSettings']! as Map).cast<String, dynamic>())).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
+      redundancySettings: map['redundancySettings'] == null ? null : (VaultPropertiesRedundancySettings.fromMap((map['redundancySettings']! as Map).cast<String, dynamic>())).input(),
+      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : ((map['resourceGuardOperationRequests']! as List).cast<String>()).input(),
+      restoreSettings: map['restoreSettings'] == null ? null : (RestoreSettings.fromMap((map['restoreSettings']! as Map).cast<String, dynamic>())).input(),
+      securitySettings: map['securitySettings'] == null ? null : (SecuritySettings.fromMap((map['securitySettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

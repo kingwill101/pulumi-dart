@@ -45,11 +45,11 @@ class LoadBalancerCookieStickinessPolicyState {
 
   factory LoadBalancerCookieStickinessPolicyState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerCookieStickinessPolicyState(
-      cookieExpirationPeriod: map['cookieExpirationPeriod'] == null ? null : (map['cookieExpirationPeriod'] as int).input(),
-      lbPort: map['lbPort'] == null ? null : (map['lbPort'] as int).input(),
-      loadBalancer: map['loadBalancer'] == null ? null : (map['loadBalancer'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      cookieExpirationPeriod: map['cookieExpirationPeriod'] == null ? null : ((map['cookieExpirationPeriod'] as int).input()).input(),
+      lbPort: map['lbPort'] == null ? null : ((map['lbPort'] as int).input()).input(),
+      loadBalancer: map['loadBalancer'] == null ? null : ((map['loadBalancer'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

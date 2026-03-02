@@ -38,9 +38,9 @@ class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule {
 
   factory MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule(
-      issueDetectionConfiguration: map['issueDetectionConfiguration'] == null ? null : (MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetectionConfiguration.fromMap((map['issueDetectionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      keywordMatchConfiguration: map['keywordMatchConfiguration'] == null ? null : (MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMatchConfiguration.fromMap((map['keywordMatchConfiguration'] as Map).cast<String, dynamic>())).input(),
-      sentimentConfiguration: map['sentimentConfiguration'] == null ? null : (MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration.fromMap((map['sentimentConfiguration'] as Map).cast<String, dynamic>())).input(),
+      issueDetectionConfiguration: map['issueDetectionConfiguration'] == null ? null : ((MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetectionConfiguration.fromMap((map['issueDetectionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      keywordMatchConfiguration: map['keywordMatchConfiguration'] == null ? null : ((MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMatchConfiguration.fromMap((map['keywordMatchConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      sentimentConfiguration: map['sentimentConfiguration'] == null ? null : ((MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration.fromMap((map['sentimentConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

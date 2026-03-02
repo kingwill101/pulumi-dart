@@ -78,19 +78,19 @@ class ProbeState {
 
   factory ProbeState.fromMap(Map<String, dynamic> map) {
     return ProbeState(
-      addressFamily: map['addressFamily'] == null ? null : (map['addressFamily'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
-      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as int).input(),
-      monitorName: map['monitorName'] == null ? null : (map['monitorName'] as String).input(),
-      packetSize: map['packetSize'] == null ? null : (map['packetSize'] as int).input(),
-      probeId: map['probeId'] == null ? null : (map['probeId'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      addressFamily: map['addressFamily'] == null ? null : ((map['addressFamily'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      destination: map['destination'] == null ? null : ((map['destination'] as String).input()).input(),
+      destinationPort: map['destinationPort'] == null ? null : ((map['destinationPort'] as int).input()).input(),
+      monitorName: map['monitorName'] == null ? null : ((map['monitorName'] as String).input()).input(),
+      packetSize: map['packetSize'] == null ? null : ((map['packetSize'] as int).input()).input(),
+      probeId: map['probeId'] == null ? null : ((map['probeId'] as String).input()).input(),
+      protocol: map['protocol'] == null ? null : ((map['protocol'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sourceArn: map['sourceArn'] == null ? null : ((map['sourceArn'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class RegionBackendServiceCdnPolicyNegativeCachingPolicy {
 
   factory RegionBackendServiceCdnPolicyNegativeCachingPolicy.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceCdnPolicyNegativeCachingPolicy(
-      code: map['code'] == null ? null : (map['code'] as int).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      code: map['code'] == null ? null : (map['code']! as int).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
     );
   }
 }

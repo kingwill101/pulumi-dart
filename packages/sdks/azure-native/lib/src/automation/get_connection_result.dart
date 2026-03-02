@@ -62,9 +62,9 @@ class GetConnectionResult {
   factory GetConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      connectionType: map['connectionType'] == null ? null : ConnectionTypeAssociationPropertyResponse.fromMap((map['connectionType'] as Map).cast<String, dynamic>()),
+      connectionType: map['connectionType'] == null ? null : ConnectionTypeAssociationPropertyResponse.fromMap((map['connectionType']! as Map).cast<String, dynamic>()),
       creationTime: map['creationTime'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       fieldDefinitionValues: (map['fieldDefinitionValues'] as Map).cast<String, String>(),
       id: map['id'] as String,
       lastModifiedTime: map['lastModifiedTime'] as String,

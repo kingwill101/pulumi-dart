@@ -38,8 +38,8 @@ class AgentKnowledgeBaseStorageConfigurationPineconeConfiguration {
     return AgentKnowledgeBaseStorageConfigurationPineconeConfiguration(
       connectionString: (map['connectionString'] as String).input(),
       credentialsSecretArn: (map['credentialsSecretArn'] as String).input(),
-      fieldMapping: (AgentKnowledgeBaseStorageConfigurationPineconeConfigurationFieldMapping.fromMap((map['fieldMapping'] as Map).cast<String, dynamic>())).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      fieldMapping: (AgentKnowledgeBaseStorageConfigurationPineconeConfigurationFieldMapping.fromMap((map['fieldMapping']! as Map).cast<String, dynamic>())).input(),
+      namespace: map['namespace'] == null ? null : ((map['namespace'] as String).input()).input(),
     );
   }
 }

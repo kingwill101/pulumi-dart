@@ -36,8 +36,8 @@ class GetTriggerIamPolicyEventarcV1beta1Args {
   factory GetTriggerIamPolicyEventarcV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetTriggerIamPolicyEventarcV1beta1Args(
       location: (map['location'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       triggerId: (map['triggerId'] as String).input(),
     );
   }

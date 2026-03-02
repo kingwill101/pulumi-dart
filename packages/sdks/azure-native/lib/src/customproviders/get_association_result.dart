@@ -49,7 +49,7 @@ class GetAssociationResult {
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      targetResourceId: map['targetResourceId'] == null ? null : map['targetResourceId'] as String,
+      targetResourceId: map['targetResourceId'] == null ? null : map['targetResourceId']! as String,
       type: map['type'] as String,
     );
   }

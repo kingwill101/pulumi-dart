@@ -35,10 +35,10 @@ class GeneratorInferenceParameter {
 
   factory GeneratorInferenceParameter.fromMap(Map<String, dynamic> map) {
     return GeneratorInferenceParameter(
-      maxOutputTokens: map['maxOutputTokens'] == null ? null : (map['maxOutputTokens'] as int).input(),
-      temperature: map['temperature'] == null ? null : (map['temperature'] as double).input(),
-      topK: map['topK'] == null ? null : (map['topK'] as int).input(),
-      topP: map['topP'] == null ? null : (map['topP'] as double).input(),
+      maxOutputTokens: map['maxOutputTokens'] == null ? null : (map['maxOutputTokens']! as int).input(),
+      temperature: map['temperature'] == null ? null : (map['temperature']! as double).input(),
+      topK: map['topK'] == null ? null : (map['topK']! as int).input(),
+      topP: map['topP'] == null ? null : (map['topP']! as double).input(),
     );
   }
 }

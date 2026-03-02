@@ -33,9 +33,9 @@ class BatchStateHistory {
 
   factory BatchStateHistory.fromMap(Map<String, dynamic> map) {
     return BatchStateHistory(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      stateMessage: map['stateMessage'] == null ? null : (map['stateMessage'] as String).input(),
-      stateStartTime: map['stateStartTime'] == null ? null : (map['stateStartTime'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      stateMessage: map['stateMessage'] == null ? null : (map['stateMessage']! as String).input(),
+      stateStartTime: map['stateStartTime'] == null ? null : (map['stateStartTime']! as String).input(),
     );
   }
 }

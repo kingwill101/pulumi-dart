@@ -43,11 +43,11 @@ class StreamDestinationConfigGcsDestinationConfig {
 
   factory StreamDestinationConfigGcsDestinationConfig.fromMap(Map<String, dynamic> map) {
     return StreamDestinationConfigGcsDestinationConfig(
-      avroFileFormat: map['avroFileFormat'] == null ? null : ((map['avroFileFormat'] as Map).cast<String, dynamic>()).input(),
-      fileRotationInterval: map['fileRotationInterval'] == null ? null : (map['fileRotationInterval'] as String).input(),
-      fileRotationMb: map['fileRotationMb'] == null ? null : (map['fileRotationMb'] as int).input(),
-      jsonFileFormat: map['jsonFileFormat'] == null ? null : (StreamDestinationConfigGcsDestinationConfigJsonFileFormat.fromMap((map['jsonFileFormat'] as Map).cast<String, dynamic>())).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      avroFileFormat: map['avroFileFormat'] == null ? null : ((map['avroFileFormat']! as Map).cast<String, dynamic>()).input(),
+      fileRotationInterval: map['fileRotationInterval'] == null ? null : (map['fileRotationInterval']! as String).input(),
+      fileRotationMb: map['fileRotationMb'] == null ? null : (map['fileRotationMb']! as int).input(),
+      jsonFileFormat: map['jsonFileFormat'] == null ? null : (StreamDestinationConfigGcsDestinationConfigJsonFileFormat.fromMap((map['jsonFileFormat']! as Map).cast<String, dynamic>())).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

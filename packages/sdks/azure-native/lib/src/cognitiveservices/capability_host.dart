@@ -55,14 +55,14 @@ class CapabilityHost {
 
   factory CapabilityHost.fromMap(Map<String, dynamic> map) {
     return CapabilityHost(
-      aiServicesConnections: map['aiServicesConnections'] == null ? null : ((map['aiServicesConnections'] as List).cast<String>()).input(),
-      capabilityHostKind: map['capabilityHostKind'] == null ? null : (map['capabilityHostKind'] as String).input(),
-      customerSubnet: map['customerSubnet'] == null ? null : (map['customerSubnet'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      storageConnections: map['storageConnections'] == null ? null : ((map['storageConnections'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      threadStorageConnections: map['threadStorageConnections'] == null ? null : ((map['threadStorageConnections'] as List).cast<String>()).input(),
-      vectorStoreConnections: map['vectorStoreConnections'] == null ? null : ((map['vectorStoreConnections'] as List).cast<String>()).input(),
+      aiServicesConnections: map['aiServicesConnections'] == null ? null : ((map['aiServicesConnections']! as List).cast<String>()).input(),
+      capabilityHostKind: map['capabilityHostKind'] == null ? null : (map['capabilityHostKind']! as String).input(),
+      customerSubnet: map['customerSubnet'] == null ? null : (map['customerSubnet']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      storageConnections: map['storageConnections'] == null ? null : ((map['storageConnections']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      threadStorageConnections: map['threadStorageConnections'] == null ? null : ((map['threadStorageConnections']! as List).cast<String>()).input(),
+      vectorStoreConnections: map['vectorStoreConnections'] == null ? null : ((map['vectorStoreConnections']! as List).cast<String>()).input(),
     );
   }
 }

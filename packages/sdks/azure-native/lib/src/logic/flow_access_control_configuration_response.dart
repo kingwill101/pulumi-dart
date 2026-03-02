@@ -37,10 +37,10 @@ class FlowAccessControlConfigurationResponse {
 
   factory FlowAccessControlConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return FlowAccessControlConfigurationResponse(
-      actions: map['actions'] == null ? null : (FlowAccessControlConfigurationPolicyResponse.fromMap((map['actions'] as Map).cast<String, dynamic>())).input(),
-      contents: map['contents'] == null ? null : (FlowAccessControlConfigurationPolicyResponse.fromMap((map['contents'] as Map).cast<String, dynamic>())).input(),
-      triggers: map['triggers'] == null ? null : (FlowAccessControlConfigurationPolicyResponse.fromMap((map['triggers'] as Map).cast<String, dynamic>())).input(),
-      workflowManagement: map['workflowManagement'] == null ? null : (FlowAccessControlConfigurationPolicyResponse.fromMap((map['workflowManagement'] as Map).cast<String, dynamic>())).input(),
+      actions: map['actions'] == null ? null : (FlowAccessControlConfigurationPolicyResponse.fromMap((map['actions']! as Map).cast<String, dynamic>())).input(),
+      contents: map['contents'] == null ? null : (FlowAccessControlConfigurationPolicyResponse.fromMap((map['contents']! as Map).cast<String, dynamic>())).input(),
+      triggers: map['triggers'] == null ? null : (FlowAccessControlConfigurationPolicyResponse.fromMap((map['triggers']! as Map).cast<String, dynamic>())).input(),
+      workflowManagement: map['workflowManagement'] == null ? null : (FlowAccessControlConfigurationPolicyResponse.fromMap((map['workflowManagement']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

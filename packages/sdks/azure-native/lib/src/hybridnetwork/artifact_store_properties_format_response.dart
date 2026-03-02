@@ -46,12 +46,12 @@ class ArtifactStorePropertiesFormatResponse {
 
   factory ArtifactStorePropertiesFormatResponse.fromMap(Map<String, dynamic> map) {
     return ArtifactStorePropertiesFormatResponse(
-      backingResourcePublicNetworkAccess: map['backingResourcePublicNetworkAccess'] == null ? null : (map['backingResourcePublicNetworkAccess'] as String).input(),
-      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : (ArtifactStorePropertiesFormatResponseManagedResourceGroupConfiguration.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>())).input(),
+      backingResourcePublicNetworkAccess: map['backingResourcePublicNetworkAccess'] == null ? null : (map['backingResourcePublicNetworkAccess']! as String).input(),
+      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : (ArtifactStorePropertiesFormatResponseManagedResourceGroupConfiguration.fromMap((map['managedResourceGroupConfiguration']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      replicationStrategy: map['replicationStrategy'] == null ? null : (map['replicationStrategy'] as String).input(),
+      replicationStrategy: map['replicationStrategy'] == null ? null : (map['replicationStrategy']! as String).input(),
       storageResourceId: (map['storageResourceId'] as String).input(),
-      storeType: map['storeType'] == null ? null : (map['storeType'] as String).input(),
+      storeType: map['storeType'] == null ? null : (map['storeType']! as String).input(),
     );
   }
 }

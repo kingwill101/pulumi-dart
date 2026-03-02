@@ -25,8 +25,8 @@ class GetTagsSortBy {
 
   factory GetTagsSortBy.fromMap(Map<String, dynamic> map) {
     return GetTagsSortBy(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      sortOrder: map['sortOrder'] == null ? null : (map['sortOrder'] as String).input(),
+      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
+      sortOrder: map['sortOrder'] == null ? null : ((map['sortOrder'] as String).input()).input(),
     );
   }
 }

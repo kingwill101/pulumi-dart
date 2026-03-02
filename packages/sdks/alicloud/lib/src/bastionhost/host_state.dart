@@ -74,17 +74,17 @@ class HostState {
 
   factory HostState.fromMap(Map<String, dynamic> map) {
     return HostState(
-      activeAddressType: map['activeAddressType'] == null ? null : (map['activeAddressType'] as String).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      hostId: map['hostId'] == null ? null : (map['hostId'] as String).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      hostPrivateAddress: map['hostPrivateAddress'] == null ? null : (map['hostPrivateAddress'] as String).input(),
-      hostPublicAddress: map['hostPublicAddress'] == null ? null : (map['hostPublicAddress'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      instanceRegionId: map['instanceRegionId'] == null ? null : (map['instanceRegionId'] as String).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      sourceInstanceId: map['sourceInstanceId'] == null ? null : (map['sourceInstanceId'] as String).input(),
+      activeAddressType: map['activeAddressType'] == null ? null : (map['activeAddressType']! as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      hostId: map['hostId'] == null ? null : (map['hostId']! as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      hostPrivateAddress: map['hostPrivateAddress'] == null ? null : (map['hostPrivateAddress']! as String).input(),
+      hostPublicAddress: map['hostPublicAddress'] == null ? null : (map['hostPublicAddress']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      instanceRegionId: map['instanceRegionId'] == null ? null : (map['instanceRegionId']! as String).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      sourceInstanceId: map['sourceInstanceId'] == null ? null : (map['sourceInstanceId']! as String).input(),
     );
   }
 }

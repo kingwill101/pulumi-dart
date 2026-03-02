@@ -46,9 +46,9 @@ class AuditArgs {
     return AuditArgs(
       aliuid: (map['aliuid'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      multiAccounts: map['multiAccounts'] == null ? null : ((map['multiAccounts'] as List).cast<String>()).input(),
-      resourceDirectoryType: map['resourceDirectoryType'] == null ? null : (map['resourceDirectoryType'] as String).input(),
-      variableMap: map['variableMap'] == null ? null : ((map['variableMap'] as Map).cast<String, String>()).input(),
+      multiAccounts: map['multiAccounts'] == null ? null : ((map['multiAccounts']! as List).cast<String>()).input(),
+      resourceDirectoryType: map['resourceDirectoryType'] == null ? null : (map['resourceDirectoryType']! as String).input(),
+      variableMap: map['variableMap'] == null ? null : ((map['variableMap']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class SSISPropertyOverrideResponse {
 
   factory SSISPropertyOverrideResponse.fromMap(Map<String, dynamic> map) {
     return SSISPropertyOverrideResponse(
-      isSensitive: map['isSensitive'] == null ? null : (map['isSensitive'] as bool).input(),
+      isSensitive: map['isSensitive'] == null ? null : (map['isSensitive']! as bool).input(),
       value: (map['value']).input(),
     );
   }

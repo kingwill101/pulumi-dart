@@ -30,9 +30,9 @@ class RulesEngineRuleActionRequestHeader {
 
   factory RulesEngineRuleActionRequestHeader.fromMap(Map<String, dynamic> map) {
     return RulesEngineRuleActionRequestHeader(
-      headerActionType: map['headerActionType'] == null ? null : (map['headerActionType'] as String).input(),
-      headerName: map['headerName'] == null ? null : (map['headerName'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      headerActionType: map['headerActionType'] == null ? null : (map['headerActionType']! as String).input(),
+      headerName: map['headerName'] == null ? null : (map['headerName']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

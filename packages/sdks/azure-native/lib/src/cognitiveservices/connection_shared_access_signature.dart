@@ -19,7 +19,7 @@ class ConnectionSharedAccessSignature {
 
   factory ConnectionSharedAccessSignature.fromMap(Map<String, dynamic> map) {
     return ConnectionSharedAccessSignature(
-      sas: map['sas'] == null ? null : (map['sas'] as String).input(),
+      sas: map['sas'] == null ? null : (map['sas']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class InputFormatOptionsResponse {
 
   factory InputFormatOptionsResponse.fromMap(Map<String, dynamic> map) {
     return InputFormatOptionsResponse(
-      csv: map['csv'] == null ? null : (CsvResponse.fromMap((map['csv'] as Map).cast<String, dynamic>())).input(),
+      csv: map['csv'] == null ? null : (CsvResponse.fromMap((map['csv']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

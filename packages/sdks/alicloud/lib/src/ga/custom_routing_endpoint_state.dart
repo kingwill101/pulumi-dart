@@ -59,14 +59,14 @@ class CustomRoutingEndpointState {
 
   factory CustomRoutingEndpointState.fromMap(Map<String, dynamic> map) {
     return CustomRoutingEndpointState(
-      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
-      customRoutingEndpointId: map['customRoutingEndpointId'] == null ? null : (map['customRoutingEndpointId'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      endpointGroupId: map['endpointGroupId'] == null ? null : (map['endpointGroupId'] as String).input(),
-      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      trafficToEndpointPolicy: map['trafficToEndpointPolicy'] == null ? null : (map['trafficToEndpointPolicy'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId']! as String).input(),
+      customRoutingEndpointId: map['customRoutingEndpointId'] == null ? null : (map['customRoutingEndpointId']! as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      endpointGroupId: map['endpointGroupId'] == null ? null : (map['endpointGroupId']! as String).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      trafficToEndpointPolicy: map['trafficToEndpointPolicy'] == null ? null : (map['trafficToEndpointPolicy']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

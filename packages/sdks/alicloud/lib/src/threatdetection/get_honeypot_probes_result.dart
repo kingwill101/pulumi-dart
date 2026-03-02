@@ -58,14 +58,14 @@ class GetHoneypotProbesResult {
 
   factory GetHoneypotProbesResult.fromMap(Map<String, dynamic> map) {
     return GetHoneypotProbesResult(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      probeStatus: map['probeStatus'] == null ? null : map['probeStatus'] as String,
-      probeType: map['probeType'] == null ? null : map['probeType'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      probeStatus: map['probeStatus'] == null ? null : map['probeStatus']! as String,
+      probeType: map['probeType'] == null ? null : map['probeType']! as String,
       probes: pulumi.Input.decodeList<GetHoneypotProbesProbe>(map['probes'], (value) => GetHoneypotProbesProbe.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

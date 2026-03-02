@@ -22,7 +22,7 @@ class ConfigSnapshotDeliveryProperties {
 
   factory ConfigSnapshotDeliveryProperties.fromMap(Map<String, dynamic> map) {
     return ConfigSnapshotDeliveryProperties(
-      deliveryFrequency: map['deliveryFrequency'] == null ? null : (MaximumExecutionFrequencyEnumValue.fromMap((map['deliveryFrequency'] as Map).cast<String, dynamic>())).input(),
+      deliveryFrequency: map['deliveryFrequency'] == null ? null : (MaximumExecutionFrequencyEnumValue.fromMap((map['deliveryFrequency']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

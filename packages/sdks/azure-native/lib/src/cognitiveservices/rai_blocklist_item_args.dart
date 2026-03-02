@@ -51,11 +51,11 @@ class RaiBlocklistItemArgs {
   factory RaiBlocklistItemArgs.fromMap(Map<String, dynamic> map) {
     return RaiBlocklistItemArgs(
       accountName: (map['accountName'] as String).input(),
-      properties: map['properties'] == null ? null : (RaiBlocklistItemProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      raiBlocklistItemName: map['raiBlocklistItemName'] == null ? null : (map['raiBlocklistItemName'] as String).input(),
+      properties: map['properties'] == null ? null : (RaiBlocklistItemProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      raiBlocklistItemName: map['raiBlocklistItemName'] == null ? null : (map['raiBlocklistItemName']! as String).input(),
       raiBlocklistName: (map['raiBlocklistName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

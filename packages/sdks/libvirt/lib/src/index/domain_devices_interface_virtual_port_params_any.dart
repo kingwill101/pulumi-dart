@@ -45,12 +45,12 @@ class DomainDevicesInterfaceVirtualPortParamsAny {
 
   factory DomainDevicesInterfaceVirtualPortParamsAny.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceVirtualPortParamsAny(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      interfaceId: map['interfaceId'] == null ? null : (map['interfaceId'] as String).input(),
-      managerId: map['managerId'] == null ? null : (map['managerId'] as double).input(),
-      profileId: map['profileId'] == null ? null : (map['profileId'] as String).input(),
-      typeId: map['typeId'] == null ? null : (map['typeId'] as double).input(),
-      typeIdVersion: map['typeIdVersion'] == null ? null : (map['typeIdVersion'] as double).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      interfaceId: map['interfaceId'] == null ? null : (map['interfaceId']! as String).input(),
+      managerId: map['managerId'] == null ? null : (map['managerId']! as double).input(),
+      profileId: map['profileId'] == null ? null : (map['profileId']! as String).input(),
+      typeId: map['typeId'] == null ? null : (map['typeId']! as double).input(),
+      typeIdVersion: map['typeIdVersion'] == null ? null : (map['typeIdVersion']! as double).input(),
     );
   }
 }

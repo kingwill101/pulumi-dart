@@ -51,13 +51,13 @@ class Ipv6RangeState {
 
   factory Ipv6RangeState.fromMap(Map<String, dynamic> map) {
     return Ipv6RangeState(
-      isBgp: map['isBgp'] == null ? null : (map['isBgp'] as bool).input(),
-      linodeId: map['linodeId'] == null ? null : (map['linodeId'] as int).input(),
-      linodes: map['linodes'] == null ? null : ((map['linodes'] as List).cast<int>()).input(),
-      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength'] as int).input(),
-      range: map['range'] == null ? null : (map['range'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routeTarget: map['routeTarget'] == null ? null : (map['routeTarget'] as String).input(),
+      isBgp: map['isBgp'] == null ? null : (map['isBgp']! as bool).input(),
+      linodeId: map['linodeId'] == null ? null : (map['linodeId']! as int).input(),
+      linodes: map['linodes'] == null ? null : ((map['linodes']! as List).cast<int>()).input(),
+      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength']! as int).input(),
+      range: map['range'] == null ? null : (map['range']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      routeTarget: map['routeTarget'] == null ? null : (map['routeTarget']! as String).input(),
     );
   }
 }

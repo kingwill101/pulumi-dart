@@ -87,16 +87,16 @@ class GlobalReplicationGroupArgs {
 
   factory GlobalReplicationGroupArgs.fromMap(Map<String, dynamic> map) {
     return GlobalReplicationGroupArgs(
-      automaticFailoverEnabled: map['automaticFailoverEnabled'] == null ? null : (map['automaticFailoverEnabled'] as bool).input(),
-      cacheNodeType: map['cacheNodeType'] == null ? null : (map['cacheNodeType'] as String).input(),
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
-      globalReplicationGroupDescription: map['globalReplicationGroupDescription'] == null ? null : (map['globalReplicationGroupDescription'] as String).input(),
+      automaticFailoverEnabled: map['automaticFailoverEnabled'] == null ? null : ((map['automaticFailoverEnabled'] as bool).input()).input(),
+      cacheNodeType: map['cacheNodeType'] == null ? null : ((map['cacheNodeType'] as String).input()).input(),
+      engine: map['engine'] == null ? null : ((map['engine'] as String).input()).input(),
+      engineVersion: map['engineVersion'] == null ? null : ((map['engineVersion'] as String).input()).input(),
+      globalReplicationGroupDescription: map['globalReplicationGroupDescription'] == null ? null : ((map['globalReplicationGroupDescription'] as String).input()).input(),
       globalReplicationGroupIdSuffix: (map['globalReplicationGroupIdSuffix'] as String).input(),
-      numNodeGroups: map['numNodeGroups'] == null ? null : (map['numNodeGroups'] as int).input(),
-      parameterGroupName: map['parameterGroupName'] == null ? null : (map['parameterGroupName'] as String).input(),
+      numNodeGroups: map['numNodeGroups'] == null ? null : ((map['numNodeGroups'] as int).input()).input(),
+      parameterGroupName: map['parameterGroupName'] == null ? null : ((map['parameterGroupName'] as String).input()).input(),
       primaryReplicationGroupId: (map['primaryReplicationGroupId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

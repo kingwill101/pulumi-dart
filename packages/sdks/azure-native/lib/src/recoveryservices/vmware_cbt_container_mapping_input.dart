@@ -53,11 +53,11 @@ class VMwareCbtContainerMappingInput {
   factory VMwareCbtContainerMappingInput.fromMap(Map<String, dynamic> map) {
     return VMwareCbtContainerMappingInput(
       instanceType: (map['instanceType'] as String).input(),
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
-      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri'] as String).input(),
-      serviceBusConnectionStringSecretName: map['serviceBusConnectionStringSecretName'] == null ? null : (map['serviceBusConnectionStringSecretName'] as String).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
+      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri']! as String).input(),
+      serviceBusConnectionStringSecretName: map['serviceBusConnectionStringSecretName'] == null ? null : (map['serviceBusConnectionStringSecretName']! as String).input(),
       storageAccountId: (map['storageAccountId'] as String).input(),
-      storageAccountSasSecretName: map['storageAccountSasSecretName'] == null ? null : (map['storageAccountSasSecretName'] as String).input(),
+      storageAccountSasSecretName: map['storageAccountSasSecretName'] == null ? null : (map['storageAccountSasSecretName']! as String).input(),
       targetLocation: (map['targetLocation'] as String).input(),
     );
   }

@@ -45,10 +45,10 @@ class RoleAliasArgs {
   factory RoleAliasArgs.fromMap(Map<String, dynamic> map) {
     return RoleAliasArgs(
       alias: (map['alias'] as String).input(),
-      credentialDuration: map['credentialDuration'] == null ? null : (map['credentialDuration'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      credentialDuration: map['credentialDuration'] == null ? null : ((map['credentialDuration'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

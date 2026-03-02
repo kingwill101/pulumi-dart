@@ -46,8 +46,8 @@ class AppSpecWorkerAlert {
 
   factory AppSpecWorkerAlert.fromMap(Map<String, dynamic> map) {
     return AppSpecWorkerAlert(
-      destinations: map['destinations'] == null ? null : (AppSpecWorkerAlertDestinations.fromMap((map['destinations'] as Map).cast<String, dynamic>())).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      destinations: map['destinations'] == null ? null : (AppSpecWorkerAlertDestinations.fromMap((map['destinations']! as Map).cast<String, dynamic>())).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
       operator: (map['operator'] as String).input(),
       rule: (map['rule'] as String).input(),
       value: (map['value'] as double).input(),

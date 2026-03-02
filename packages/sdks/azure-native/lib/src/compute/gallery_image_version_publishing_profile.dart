@@ -53,13 +53,13 @@ class GalleryImageVersionPublishingProfile {
 
   factory GalleryImageVersionPublishingProfile.fromMap(Map<String, dynamic> map) {
     return GalleryImageVersionPublishingProfile(
-      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate'] as String).input(),
-      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest'] as bool).input(),
-      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount'] as int).input(),
-      replicationMode: map['replicationMode'] == null ? null : (map['replicationMode'] as String).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
-      targetExtendedLocations: map['targetExtendedLocations'] == null ? null : (pulumi.Input.decodeList<GalleryTargetExtendedLocation>(map['targetExtendedLocations'], (value) => GalleryTargetExtendedLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetRegions: map['targetRegions'] == null ? null : (pulumi.Input.decodeList<TargetRegion>(map['targetRegions'], (value) => TargetRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate']! as String).input(),
+      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest']! as bool).input(),
+      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount']! as int).input(),
+      replicationMode: map['replicationMode'] == null ? null : (map['replicationMode']! as String).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType']! as String).input(),
+      targetExtendedLocations: map['targetExtendedLocations'] == null ? null : (pulumi.Input.decodeList<GalleryTargetExtendedLocation>(map['targetExtendedLocations']!, (value) => GalleryTargetExtendedLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetRegions: map['targetRegions'] == null ? null : (pulumi.Input.decodeList<TargetRegion>(map['targetRegions']!, (value) => TargetRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

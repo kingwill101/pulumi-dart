@@ -43,11 +43,11 @@ class RouterBgpComputeV1 {
 
   factory RouterBgpComputeV1.fromMap(Map<String, dynamic> map) {
     return RouterBgpComputeV1(
-      advertiseMode: map['advertiseMode'] == null ? null : (RouterBgpAdvertiseModeComputeV1.fromValue(map['advertiseMode'] as String)).input(),
-      advertisedGroups: map['advertisedGroups'] == null ? null : (pulumi.Input.decodeList<RouterBgpAdvertisedGroupsItemComputeV1>(map['advertisedGroups'], (value) => RouterBgpAdvertisedGroupsItemComputeV1.fromValue(value as String))).input(),
-      advertisedIpRanges: map['advertisedIpRanges'] == null ? null : (pulumi.Input.decodeList<RouterAdvertisedIpRangeComputeV1>(map['advertisedIpRanges'], (value) => RouterAdvertisedIpRangeComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      asn: map['asn'] == null ? null : (map['asn'] as int).input(),
-      keepaliveInterval: map['keepaliveInterval'] == null ? null : (map['keepaliveInterval'] as int).input(),
+      advertiseMode: map['advertiseMode'] == null ? null : (RouterBgpAdvertiseModeComputeV1.fromValue(map['advertiseMode']! as String)).input(),
+      advertisedGroups: map['advertisedGroups'] == null ? null : (pulumi.Input.decodeList<RouterBgpAdvertisedGroupsItemComputeV1>(map['advertisedGroups']!, (value) => RouterBgpAdvertisedGroupsItemComputeV1.fromValue(value as String))).input(),
+      advertisedIpRanges: map['advertisedIpRanges'] == null ? null : (pulumi.Input.decodeList<RouterAdvertisedIpRangeComputeV1>(map['advertisedIpRanges']!, (value) => RouterAdvertisedIpRangeComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      asn: map['asn'] == null ? null : (map['asn']! as int).input(),
+      keepaliveInterval: map['keepaliveInterval'] == null ? null : (map['keepaliveInterval']! as int).input(),
     );
   }
 }

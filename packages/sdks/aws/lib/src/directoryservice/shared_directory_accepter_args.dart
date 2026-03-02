@@ -29,7 +29,7 @@ class SharedDirectoryAccepterArgs {
 
   factory SharedDirectoryAccepterArgs.fromMap(Map<String, dynamic> map) {
     return SharedDirectoryAccepterArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       sharedDirectoryId: (map['sharedDirectoryId'] as String).input(),
     );
   }

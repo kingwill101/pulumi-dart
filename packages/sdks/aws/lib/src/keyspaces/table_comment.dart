@@ -20,7 +20,7 @@ class TableComment {
 
   factory TableComment.fromMap(Map<String, dynamic> map) {
     return TableComment(
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      message: map['message'] == null ? null : ((map['message'] as String).input()).input(),
     );
   }
 }

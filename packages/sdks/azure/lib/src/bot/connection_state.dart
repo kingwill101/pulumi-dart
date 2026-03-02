@@ -61,15 +61,15 @@ class ConnectionState {
 
   factory ConnectionState.fromMap(Map<String, dynamic> map) {
     return ConnectionState(
-      botName: map['botName'] == null ? null : (map['botName'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      scopes: map['scopes'] == null ? null : (map['scopes'] as String).input(),
-      serviceProviderName: map['serviceProviderName'] == null ? null : (map['serviceProviderName'] as String).input(),
+      botName: map['botName'] == null ? null : (map['botName']! as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      scopes: map['scopes'] == null ? null : (map['scopes']! as String).input(),
+      serviceProviderName: map['serviceProviderName'] == null ? null : (map['serviceProviderName']! as String).input(),
     );
   }
 }

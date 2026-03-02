@@ -31,9 +31,9 @@ class IpGroupPropertiesResponse {
 
   factory IpGroupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return IpGroupPropertiesResponse(
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
-      ipPrefixes: map['ipPrefixes'] == null ? null : ((map['ipPrefixes'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType']! as String).input(),
+      ipPrefixes: map['ipPrefixes'] == null ? null : ((map['ipPrefixes']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

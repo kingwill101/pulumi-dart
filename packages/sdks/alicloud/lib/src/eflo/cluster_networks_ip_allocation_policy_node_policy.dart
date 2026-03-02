@@ -25,8 +25,8 @@ class ClusterNetworksIpAllocationPolicyNodePolicy {
 
   factory ClusterNetworksIpAllocationPolicyNodePolicy.fromMap(Map<String, dynamic> map) {
     return ClusterNetworksIpAllocationPolicyNodePolicy(
-      bonds: map['bonds'] == null ? null : (pulumi.Input.decodeList<ClusterNetworksIpAllocationPolicyNodePolicyBond>(map['bonds'], (value) => ClusterNetworksIpAllocationPolicyNodePolicyBond.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
+      bonds: map['bonds'] == null ? null : (pulumi.Input.decodeList<ClusterNetworksIpAllocationPolicyNodePolicyBond>(map['bonds']!, (value) => ClusterNetworksIpAllocationPolicyNodePolicyBond.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
     );
   }
 }

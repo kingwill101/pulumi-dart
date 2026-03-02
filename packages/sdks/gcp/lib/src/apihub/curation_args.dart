@@ -64,11 +64,11 @@ class CurationArgs {
   factory CurationArgs.fromMap(Map<String, dynamic> map) {
     return CurationArgs(
       curationId: (map['curationId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       endpoint: (CurationEndpoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

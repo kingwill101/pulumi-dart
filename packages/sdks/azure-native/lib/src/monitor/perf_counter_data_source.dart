@@ -41,10 +41,10 @@ class PerfCounterDataSource {
 
   factory PerfCounterDataSource.fromMap(Map<String, dynamic> map) {
     return PerfCounterDataSource(
-      counterSpecifiers: map['counterSpecifiers'] == null ? null : ((map['counterSpecifiers'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      samplingFrequencyInSeconds: map['samplingFrequencyInSeconds'] == null ? null : (map['samplingFrequencyInSeconds'] as int).input(),
-      streams: map['streams'] == null ? null : ((map['streams'] as List).cast<String>()).input(),
+      counterSpecifiers: map['counterSpecifiers'] == null ? null : ((map['counterSpecifiers']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      samplingFrequencyInSeconds: map['samplingFrequencyInSeconds'] == null ? null : (map['samplingFrequencyInSeconds']! as int).input(),
+      streams: map['streams'] == null ? null : ((map['streams']! as List).cast<String>()).input(),
     );
   }
 }

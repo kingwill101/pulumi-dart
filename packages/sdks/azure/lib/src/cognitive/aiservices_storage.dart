@@ -25,7 +25,7 @@ class AIServicesStorage {
 
   factory AIServicesStorage.fromMap(Map<String, dynamic> map) {
     return AIServicesStorage(
-      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId']! as String).input(),
       storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }

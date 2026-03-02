@@ -29,8 +29,8 @@ class ConnectionAuthConfigOauth2JwtBearer {
 
   factory ConnectionAuthConfigOauth2JwtBearer.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthConfigOauth2JwtBearer(
-      clientKey: map['clientKey'] == null ? null : (ConnectionAuthConfigOauth2JwtBearerClientKey.fromMap((map['clientKey'] as Map).cast<String, dynamic>())).input(),
-      jwtClaims: map['jwtClaims'] == null ? null : (ConnectionAuthConfigOauth2JwtBearerJwtClaims.fromMap((map['jwtClaims'] as Map).cast<String, dynamic>())).input(),
+      clientKey: map['clientKey'] == null ? null : (ConnectionAuthConfigOauth2JwtBearerClientKey.fromMap((map['clientKey']! as Map).cast<String, dynamic>())).input(),
+      jwtClaims: map['jwtClaims'] == null ? null : (ConnectionAuthConfigOauth2JwtBearerJwtClaims.fromMap((map['jwtClaims']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

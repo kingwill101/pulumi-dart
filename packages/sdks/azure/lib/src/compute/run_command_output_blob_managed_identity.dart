@@ -25,8 +25,8 @@ class RunCommandOutputBlobManagedIdentity {
 
   factory RunCommandOutputBlobManagedIdentity.fromMap(Map<String, dynamic> map) {
     return RunCommandOutputBlobManagedIdentity(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
     );
   }
 }

@@ -58,15 +58,15 @@ class GetDomainsResult {
 
   factory GetDomainsResult.fromMap(Map<String, dynamic> map) {
     return GetDomainsResult(
-      acceleratorId: map['acceleratorId'] == null ? null : map['acceleratorId'] as String,
-      domain: map['domain'] == null ? null : map['domain'] as String,
+      acceleratorId: map['acceleratorId'] == null ? null : map['acceleratorId']! as String,
+      domain: map['domain'] == null ? null : map['domain']! as String,
       domains: pulumi.Input.decodeList<GetDomainsDomain>(map['domains'], (value) => GetDomainsDomain.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

@@ -55,12 +55,12 @@ class ControlPolicyState {
 
   factory ControlPolicyState.fromMap(Map<String, dynamic> map) {
     return ControlPolicyState(
-      controlPolicyName: map['controlPolicyName'] == null ? null : (map['controlPolicyName'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectScope: map['effectScope'] == null ? null : (map['effectScope'] as String).input(),
-      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      controlPolicyName: map['controlPolicyName'] == null ? null : (map['controlPolicyName']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectScope: map['effectScope'] == null ? null : (map['effectScope']! as String).input(),
+      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

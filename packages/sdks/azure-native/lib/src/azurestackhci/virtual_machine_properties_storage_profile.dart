@@ -39,10 +39,10 @@ class VirtualMachinePropertiesStorageProfile {
 
   factory VirtualMachinePropertiesStorageProfile.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePropertiesStorageProfile(
-      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<VirtualMachinePropertiesDataDisks>(map['dataDisks'], (value) => VirtualMachinePropertiesDataDisks.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      imageReference: map['imageReference'] == null ? null : (VirtualMachinePropertiesImageReference.fromMap((map['imageReference'] as Map).cast<String, dynamic>())).input(),
-      osDisk: map['osDisk'] == null ? null : (VirtualMachinePropertiesOsDisk.fromMap((map['osDisk'] as Map).cast<String, dynamic>())).input(),
-      vmConfigStoragePathId: map['vmConfigStoragePathId'] == null ? null : (map['vmConfigStoragePathId'] as String).input(),
+      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<VirtualMachinePropertiesDataDisks>(map['dataDisks']!, (value) => VirtualMachinePropertiesDataDisks.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      imageReference: map['imageReference'] == null ? null : (VirtualMachinePropertiesImageReference.fromMap((map['imageReference']! as Map).cast<String, dynamic>())).input(),
+      osDisk: map['osDisk'] == null ? null : (VirtualMachinePropertiesOsDisk.fromMap((map['osDisk']! as Map).cast<String, dynamic>())).input(),
+      vmConfigStoragePathId: map['vmConfigStoragePathId'] == null ? null : (map['vmConfigStoragePathId']! as String).input(),
     );
   }
 }

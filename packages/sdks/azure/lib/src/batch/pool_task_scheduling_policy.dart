@@ -20,7 +20,7 @@ class PoolTaskSchedulingPolicy {
 
   factory PoolTaskSchedulingPolicy.fromMap(Map<String, dynamic> map) {
     return PoolTaskSchedulingPolicy(
-      nodeFillType: map['nodeFillType'] == null ? null : (map['nodeFillType'] as String).input(),
+      nodeFillType: map['nodeFillType'] == null ? null : (map['nodeFillType']! as String).input(),
     );
   }
 }

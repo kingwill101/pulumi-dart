@@ -27,7 +27,7 @@ class ListGlobalRulestackCountriesResult {
 
   factory ListGlobalRulestackCountriesResult.fromMap(Map<String, dynamic> map) {
     return ListGlobalRulestackCountriesResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
       value: pulumi.Input.decodeList<CountryResponse>(map['value'], (value) => CountryResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

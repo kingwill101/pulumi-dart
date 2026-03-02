@@ -51,10 +51,10 @@ class GroupMembershipArgs {
 
   factory GroupMembershipArgs.fromMap(Map<String, dynamic> map) {
     return GroupMembershipArgs(
-      createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] == null ? null : (map['createIgnoreAlreadyExists'] as bool).input(),
+      createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] == null ? null : (map['createIgnoreAlreadyExists']! as bool).input(),
       group: (map['group'] as String).input(),
-      memberKey: map['memberKey'] == null ? null : (GroupMembershipMemberKey.fromMap((map['memberKey'] as Map).cast<String, dynamic>())).input(),
-      preferredMemberKey: map['preferredMemberKey'] == null ? null : (GroupMembershipPreferredMemberKey.fromMap((map['preferredMemberKey'] as Map).cast<String, dynamic>())).input(),
+      memberKey: map['memberKey'] == null ? null : (GroupMembershipMemberKey.fromMap((map['memberKey']! as Map).cast<String, dynamic>())).input(),
+      preferredMemberKey: map['preferredMemberKey'] == null ? null : (GroupMembershipPreferredMemberKey.fromMap((map['preferredMemberKey']! as Map).cast<String, dynamic>())).input(),
       roles: (pulumi.Input.decodeList<GroupMembershipRole>(map['roles'], (value) => GroupMembershipRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

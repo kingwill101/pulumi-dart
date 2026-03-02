@@ -22,7 +22,7 @@ class ReleaseChannel {
 
   factory ReleaseChannel.fromMap(Map<String, dynamic> map) {
     return ReleaseChannel(
-      channel: map['channel'] == null ? null : (ReleaseChannelChannel.fromValue(map['channel'] as String)).input(),
+      channel: map['channel'] == null ? null : (ReleaseChannelChannel.fromValue(map['channel']! as String)).input(),
     );
   }
 }

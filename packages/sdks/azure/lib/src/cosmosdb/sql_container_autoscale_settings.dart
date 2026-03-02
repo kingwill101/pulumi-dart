@@ -20,7 +20,7 @@ class SqlContainerAutoscaleSettings {
 
   factory SqlContainerAutoscaleSettings.fromMap(Map<String, dynamic> map) {
     return SqlContainerAutoscaleSettings(
-      maxThroughput: map['maxThroughput'] == null ? null : (map['maxThroughput'] as int).input(),
+      maxThroughput: map['maxThroughput'] == null ? null : (map['maxThroughput']! as int).input(),
     );
   }
 }

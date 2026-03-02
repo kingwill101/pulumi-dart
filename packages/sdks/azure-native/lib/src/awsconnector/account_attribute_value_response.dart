@@ -21,7 +21,7 @@ class AccountAttributeValueResponse {
 
   factory AccountAttributeValueResponse.fromMap(Map<String, dynamic> map) {
     return AccountAttributeValueResponse(
-      attributeValue: map['attributeValue'] == null ? null : (map['attributeValue'] as String).input(),
+      attributeValue: map['attributeValue'] == null ? null : (map['attributeValue']! as String).input(),
     );
   }
 }

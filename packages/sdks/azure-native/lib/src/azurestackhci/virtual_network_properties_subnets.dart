@@ -53,13 +53,13 @@ class VirtualNetworkPropertiesSubnets {
 
   factory VirtualNetworkPropertiesSubnets.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkPropertiesSubnets(
-      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix'] as String).input(),
-      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes'] as List).cast<String>()).input(),
-      ipAllocationMethod: map['ipAllocationMethod'] == null ? null : (map['ipAllocationMethod'] as String).input(),
-      ipConfigurationReferences: map['ipConfigurationReferences'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkPropertiesIpConfigurationReferences>(map['ipConfigurationReferences'], (value) => VirtualNetworkPropertiesIpConfigurationReferences.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      routeTable: map['routeTable'] == null ? null : (VirtualNetworkPropertiesRouteTable.fromMap((map['routeTable'] as Map).cast<String, dynamic>())).input(),
-      vlan: map['vlan'] == null ? null : (map['vlan'] as int).input(),
+      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix']! as String).input(),
+      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes']! as List).cast<String>()).input(),
+      ipAllocationMethod: map['ipAllocationMethod'] == null ? null : (map['ipAllocationMethod']! as String).input(),
+      ipConfigurationReferences: map['ipConfigurationReferences'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkPropertiesIpConfigurationReferences>(map['ipConfigurationReferences']!, (value) => VirtualNetworkPropertiesIpConfigurationReferences.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      routeTable: map['routeTable'] == null ? null : (VirtualNetworkPropertiesRouteTable.fromMap((map['routeTable']! as Map).cast<String, dynamic>())).input(),
+      vlan: map['vlan'] == null ? null : (map['vlan']! as int).input(),
     );
   }
 }

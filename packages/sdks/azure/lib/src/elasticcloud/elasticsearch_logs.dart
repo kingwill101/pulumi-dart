@@ -36,10 +36,10 @@ class ElasticsearchLogs {
 
   factory ElasticsearchLogs.fromMap(Map<String, dynamic> map) {
     return ElasticsearchLogs(
-      filteringTags: map['filteringTags'] == null ? null : (pulumi.Input.decodeList<ElasticsearchLogsFilteringTag>(map['filteringTags'], (value) => ElasticsearchLogsFilteringTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sendActivityLogs: map['sendActivityLogs'] == null ? null : (map['sendActivityLogs'] as bool).input(),
-      sendAzureadLogs: map['sendAzureadLogs'] == null ? null : (map['sendAzureadLogs'] as bool).input(),
-      sendSubscriptionLogs: map['sendSubscriptionLogs'] == null ? null : (map['sendSubscriptionLogs'] as bool).input(),
+      filteringTags: map['filteringTags'] == null ? null : (pulumi.Input.decodeList<ElasticsearchLogsFilteringTag>(map['filteringTags']!, (value) => ElasticsearchLogsFilteringTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sendActivityLogs: map['sendActivityLogs'] == null ? null : (map['sendActivityLogs']! as bool).input(),
+      sendAzureadLogs: map['sendAzureadLogs'] == null ? null : (map['sendAzureadLogs']! as bool).input(),
+      sendSubscriptionLogs: map['sendSubscriptionLogs'] == null ? null : (map['sendSubscriptionLogs']! as bool).input(),
     );
   }
 }

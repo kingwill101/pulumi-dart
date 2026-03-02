@@ -50,13 +50,13 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettingsAc3Settings {
 
   factory ChannelEncoderSettingsAudioDescriptionCodecSettingsAc3Settings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionCodecSettingsAc3Settings(
-      bitrate: map['bitrate'] == null ? null : (map['bitrate'] as double).input(),
-      bitstreamMode: map['bitstreamMode'] == null ? null : (map['bitstreamMode'] as String).input(),
-      codingMode: map['codingMode'] == null ? null : (map['codingMode'] as String).input(),
-      dialnorm: map['dialnorm'] == null ? null : (map['dialnorm'] as int).input(),
-      drcProfile: map['drcProfile'] == null ? null : (map['drcProfile'] as String).input(),
-      lfeFilter: map['lfeFilter'] == null ? null : (map['lfeFilter'] as String).input(),
-      metadataControl: map['metadataControl'] == null ? null : (map['metadataControl'] as String).input(),
+      bitrate: map['bitrate'] == null ? null : ((map['bitrate'] as double).input()).input(),
+      bitstreamMode: map['bitstreamMode'] == null ? null : ((map['bitstreamMode'] as String).input()).input(),
+      codingMode: map['codingMode'] == null ? null : ((map['codingMode'] as String).input()).input(),
+      dialnorm: map['dialnorm'] == null ? null : ((map['dialnorm'] as int).input()).input(),
+      drcProfile: map['drcProfile'] == null ? null : ((map['drcProfile'] as String).input()).input(),
+      lfeFilter: map['lfeFilter'] == null ? null : ((map['lfeFilter'] as String).input()).input(),
+      metadataControl: map['metadataControl'] == null ? null : ((map['metadataControl'] as String).input()).input(),
     );
   }
 }

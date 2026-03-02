@@ -29,9 +29,9 @@ class RevisionAssetsAssetCreateS3DataAccessFromS3Bucket {
 
   factory RevisionAssetsAssetCreateS3DataAccessFromS3Bucket.fromMap(Map<String, dynamic> map) {
     return RevisionAssetsAssetCreateS3DataAccessFromS3Bucket(
-      accessPointAlias: map['accessPointAlias'] == null ? null : (map['accessPointAlias'] as String).input(),
-      accessPointArn: map['accessPointArn'] == null ? null : (map['accessPointArn'] as String).input(),
-      assetSource: map['assetSource'] == null ? null : (RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSource.fromMap((map['assetSource'] as Map).cast<String, dynamic>())).input(),
+      accessPointAlias: map['accessPointAlias'] == null ? null : ((map['accessPointAlias'] as String).input()).input(),
+      accessPointArn: map['accessPointArn'] == null ? null : ((map['accessPointArn'] as String).input()).input(),
+      assetSource: map['assetSource'] == null ? null : ((RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSource.fromMap((map['assetSource']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

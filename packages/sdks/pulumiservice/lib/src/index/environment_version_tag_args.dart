@@ -46,7 +46,7 @@ class EnvironmentVersionTagArgs {
     return EnvironmentVersionTagArgs(
       environment: (map['environment'] as String).input(),
       organization: (map['organization'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       revision: (map['revision'] as int).input(),
       tagName: (map['tagName'] as String).input(),
     );

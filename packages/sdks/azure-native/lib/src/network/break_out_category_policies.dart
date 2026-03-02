@@ -31,9 +31,9 @@ class BreakOutCategoryPolicies {
 
   factory BreakOutCategoryPolicies.fromMap(Map<String, dynamic> map) {
     return BreakOutCategoryPolicies(
-      allow: map['allow'] == null ? null : (map['allow'] as bool).input(),
-      default_: map['default'] == null ? null : (map['default'] as bool).input(),
-      optimize: map['optimize'] == null ? null : (map['optimize'] as bool).input(),
+      allow: map['allow'] == null ? null : (map['allow']! as bool).input(),
+      default_: map['default'] == null ? null : (map['default']! as bool).input(),
+      optimize: map['optimize'] == null ? null : (map['optimize']! as bool).input(),
     );
   }
 }

@@ -32,8 +32,8 @@ class HciClusterIdentity {
 
   factory HciClusterIdentity.fromMap(Map<String, dynamic> map) {
     return HciClusterIdentity(
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

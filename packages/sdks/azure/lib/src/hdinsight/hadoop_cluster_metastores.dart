@@ -33,9 +33,9 @@ class HadoopClusterMetastores {
 
   factory HadoopClusterMetastores.fromMap(Map<String, dynamic> map) {
     return HadoopClusterMetastores(
-      ambari: map['ambari'] == null ? null : (HadoopClusterMetastoresAmbari.fromMap((map['ambari'] as Map).cast<String, dynamic>())).input(),
-      hive: map['hive'] == null ? null : (HadoopClusterMetastoresHive.fromMap((map['hive'] as Map).cast<String, dynamic>())).input(),
-      oozie: map['oozie'] == null ? null : (HadoopClusterMetastoresOozie.fromMap((map['oozie'] as Map).cast<String, dynamic>())).input(),
+      ambari: map['ambari'] == null ? null : (HadoopClusterMetastoresAmbari.fromMap((map['ambari']! as Map).cast<String, dynamic>())).input(),
+      hive: map['hive'] == null ? null : (HadoopClusterMetastoresHive.fromMap((map['hive']! as Map).cast<String, dynamic>())).input(),
+      oozie: map['oozie'] == null ? null : (HadoopClusterMetastoresOozie.fromMap((map['oozie']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

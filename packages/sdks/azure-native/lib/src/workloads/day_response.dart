@@ -26,8 +26,8 @@ class DayResponse {
 
   factory DayResponse.fromMap(Map<String, dynamic> map) {
     return DayResponse(
-      date: map['date'] == null ? null : (map['date'] as int).input(),
-      isLast: map['isLast'] == null ? null : (map['isLast'] as bool).input(),
+      date: map['date'] == null ? null : (map['date']! as int).input(),
+      isLast: map['isLast'] == null ? null : (map['isLast']! as bool).input(),
     );
   }
 }

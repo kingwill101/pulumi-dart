@@ -92,21 +92,21 @@ class ProjectState {
 
   factory ProjectState.fromMap(Map<String, dynamic> map) {
     return ProjectState(
-      activeExperimentCount: map['activeExperimentCount'] == null ? null : (map['activeExperimentCount'] as int).input(),
-      activeLaunchCount: map['activeLaunchCount'] == null ? null : (map['activeLaunchCount'] as int).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
-      dataDelivery: map['dataDelivery'] == null ? null : (ProjectDataDelivery.fromMap((map['dataDelivery'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      experimentCount: map['experimentCount'] == null ? null : (map['experimentCount'] as int).input(),
-      featureCount: map['featureCount'] == null ? null : (map['featureCount'] as int).input(),
-      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : (map['lastUpdatedTime'] as String).input(),
-      launchCount: map['launchCount'] == null ? null : (map['launchCount'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      activeExperimentCount: map['activeExperimentCount'] == null ? null : ((map['activeExperimentCount'] as int).input()).input(),
+      activeLaunchCount: map['activeLaunchCount'] == null ? null : ((map['activeLaunchCount'] as int).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      createdTime: map['createdTime'] == null ? null : ((map['createdTime'] as String).input()).input(),
+      dataDelivery: map['dataDelivery'] == null ? null : ((ProjectDataDelivery.fromMap((map['dataDelivery']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      experimentCount: map['experimentCount'] == null ? null : ((map['experimentCount'] as int).input()).input(),
+      featureCount: map['featureCount'] == null ? null : ((map['featureCount'] as int).input()).input(),
+      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : ((map['lastUpdatedTime'] as String).input()).input(),
+      launchCount: map['launchCount'] == null ? null : ((map['launchCount'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

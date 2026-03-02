@@ -75,16 +75,16 @@ class AppConnectionBeyondcorpV1alphaArgs {
 
   factory AppConnectionBeyondcorpV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return AppConnectionBeyondcorpV1alphaArgs(
-      appConnectionId: map['appConnectionId'] == null ? null : (map['appConnectionId'] as String).input(),
+      appConnectionId: map['appConnectionId'] == null ? null : (map['appConnectionId']! as String).input(),
       applicationEndpoint: (GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpoint.fromMap((map['applicationEndpoint'] as Map).cast<String, dynamic>())).input(),
-      connectors: map['connectors'] == null ? null : ((map['connectors'] as List).cast<String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      gateway: map['gateway'] == null ? null : (GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGateway.fromMap((map['gateway'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      connectors: map['connectors'] == null ? null : ((map['connectors']! as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      gateway: map['gateway'] == null ? null : (GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGateway.fromMap((map['gateway']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       type: (AppConnectionTypeBeyondcorpV1alpha.fromValue(map['type'] as String)).input(),
     );
   }

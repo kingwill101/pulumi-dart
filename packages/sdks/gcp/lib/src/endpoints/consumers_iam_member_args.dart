@@ -57,7 +57,7 @@ class ConsumersIamMemberArgs {
 
   factory ConsumersIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return ConsumersIamMemberArgs(
-      condition: map['condition'] == null ? null : (ConsumersIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (ConsumersIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       consumerProject: (map['consumerProject'] as String).input(),
       member: (map['member'] as String).input(),
       role: (map['role'] as String).input(),

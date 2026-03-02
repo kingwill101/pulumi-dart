@@ -39,10 +39,10 @@ class ConsentStoreIamPolicyState {
 
   factory ConsentStoreIamPolicyState.fromMap(Map<String, dynamic> map) {
     return ConsentStoreIamPolicyState(
-      consentStoreId: map['consentStoreId'] == null ? null : (map['consentStoreId'] as String).input(),
-      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      consentStoreId: map['consentStoreId'] == null ? null : (map['consentStoreId']! as String).input(),
+      dataset: map['dataset'] == null ? null : (map['dataset']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class RegionResizeRequestStatusErrorErrorErrorDetailHelpLink {
 
   factory RegionResizeRequestStatusErrorErrorErrorDetailHelpLink.fromMap(Map<String, dynamic> map) {
     return RegionResizeRequestStatusErrorErrorErrorDetailHelpLink(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

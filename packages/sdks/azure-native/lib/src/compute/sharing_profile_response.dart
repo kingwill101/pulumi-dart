@@ -33,9 +33,9 @@ class SharingProfileResponse {
 
   factory SharingProfileResponse.fromMap(Map<String, dynamic> map) {
     return SharingProfileResponse(
-      communityGalleryInfo: map['communityGalleryInfo'] == null ? null : (CommunityGalleryInfoResponse.fromMap((map['communityGalleryInfo'] as Map).cast<String, dynamic>())).input(),
+      communityGalleryInfo: map['communityGalleryInfo'] == null ? null : (CommunityGalleryInfoResponse.fromMap((map['communityGalleryInfo']! as Map).cast<String, dynamic>())).input(),
       groups: (pulumi.Input.decodeList<SharingProfileGroupResponse>(map['groups'], (value) => SharingProfileGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      permissions: map['permissions'] == null ? null : (map['permissions'] as String).input(),
+      permissions: map['permissions'] == null ? null : (map['permissions']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class DefenderForContainersAwsOfferingResponseMdcContainersImageAssessment {
 
   factory DefenderForContainersAwsOfferingResponseMdcContainersImageAssessment.fromMap(Map<String, dynamic> map) {
     return DefenderForContainersAwsOfferingResponseMdcContainersImageAssessment(
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

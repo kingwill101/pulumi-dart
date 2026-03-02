@@ -28,8 +28,8 @@ class CostAllocationRuleDetailsResponse {
 
   factory CostAllocationRuleDetailsResponse.fromMap(Map<String, dynamic> map) {
     return CostAllocationRuleDetailsResponse(
-      sourceResources: map['sourceResources'] == null ? null : (pulumi.Input.decodeList<SourceCostAllocationResourceResponse>(map['sourceResources'], (value) => SourceCostAllocationResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetResources: map['targetResources'] == null ? null : (pulumi.Input.decodeList<TargetCostAllocationResourceResponse>(map['targetResources'], (value) => TargetCostAllocationResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceResources: map['sourceResources'] == null ? null : (pulumi.Input.decodeList<SourceCostAllocationResourceResponse>(map['sourceResources']!, (value) => SourceCostAllocationResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetResources: map['targetResources'] == null ? null : (pulumi.Input.decodeList<TargetCostAllocationResourceResponse>(map['targetResources']!, (value) => TargetCostAllocationResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -40,11 +40,11 @@ class ConfigSignInHashConfig {
 
   factory ConfigSignInHashConfig.fromMap(Map<String, dynamic> map) {
     return ConfigSignInHashConfig(
-      algorithm: map['algorithm'] == null ? null : (map['algorithm'] as String).input(),
-      memoryCost: map['memoryCost'] == null ? null : (map['memoryCost'] as int).input(),
-      rounds: map['rounds'] == null ? null : (map['rounds'] as int).input(),
-      saltSeparator: map['saltSeparator'] == null ? null : (map['saltSeparator'] as String).input(),
-      signerKey: map['signerKey'] == null ? null : (map['signerKey'] as String).input(),
+      algorithm: map['algorithm'] == null ? null : (map['algorithm']! as String).input(),
+      memoryCost: map['memoryCost'] == null ? null : (map['memoryCost']! as int).input(),
+      rounds: map['rounds'] == null ? null : (map['rounds']! as int).input(),
+      saltSeparator: map['saltSeparator'] == null ? null : (map['saltSeparator']! as String).input(),
+      signerKey: map['signerKey'] == null ? null : (map['signerKey']! as String).input(),
     );
   }
 }

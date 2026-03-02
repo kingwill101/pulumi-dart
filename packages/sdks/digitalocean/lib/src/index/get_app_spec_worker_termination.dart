@@ -20,7 +20,7 @@ class GetAppSpecWorkerTermination {
 
   factory GetAppSpecWorkerTermination.fromMap(Map<String, dynamic> map) {
     return GetAppSpecWorkerTermination(
-      gracePeriodSeconds: map['gracePeriodSeconds'] == null ? null : (map['gracePeriodSeconds'] as int).input(),
+      gracePeriodSeconds: map['gracePeriodSeconds'] == null ? null : (map['gracePeriodSeconds']! as int).input(),
     );
   }
 }

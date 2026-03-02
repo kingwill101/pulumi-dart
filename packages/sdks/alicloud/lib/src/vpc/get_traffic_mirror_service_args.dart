@@ -26,7 +26,7 @@ class GetTrafficMirrorServiceArgs {
 
   factory GetTrafficMirrorServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetTrafficMirrorServiceArgs(
-      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as String).input(),
     );
   }
 }

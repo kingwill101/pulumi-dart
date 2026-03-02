@@ -41,11 +41,11 @@ class GoogleCloudApigeeV1DatastoreConfig {
 
   factory GoogleCloudApigeeV1DatastoreConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1DatastoreConfig(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      datasetName: map['datasetName'] == null ? null : (map['datasetName'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
+      datasetName: map['datasetName'] == null ? null : (map['datasetName']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
       project: (map['project'] as String).input(),
-      tablePrefix: map['tablePrefix'] == null ? null : (map['tablePrefix'] as String).input(),
+      tablePrefix: map['tablePrefix'] == null ? null : (map['tablePrefix']! as String).input(),
     );
   }
 }

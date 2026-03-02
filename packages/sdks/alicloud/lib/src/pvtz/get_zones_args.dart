@@ -71,16 +71,16 @@ class GetZonesArgs {
 
   factory GetZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetZonesArgs(
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      keyword: map['keyword'] == null ? null : (map['keyword'] as String).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      queryRegionId: map['queryRegionId'] == null ? null : (map['queryRegionId'] as String).input(),
-      queryVpcId: map['queryVpcId'] == null ? null : (map['queryVpcId'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      searchMode: map['searchMode'] == null ? null : (map['searchMode'] as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      keyword: map['keyword'] == null ? null : (map['keyword']! as String).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      queryRegionId: map['queryRegionId'] == null ? null : (map['queryRegionId']! as String).input(),
+      queryVpcId: map['queryVpcId'] == null ? null : (map['queryVpcId']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      searchMode: map['searchMode'] == null ? null : (map['searchMode']! as String).input(),
     );
   }
 }

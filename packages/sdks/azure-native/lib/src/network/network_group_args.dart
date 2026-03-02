@@ -44,9 +44,9 @@ class NetworkGroupArgs {
 
   factory NetworkGroupArgs.fromMap(Map<String, dynamic> map) {
     return NetworkGroupArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      memberType: map['memberType'] == null ? null : (map['memberType'] as String).input(),
-      networkGroupName: map['networkGroupName'] == null ? null : (map['networkGroupName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      memberType: map['memberType'] == null ? null : (map['memberType']! as String).input(),
+      networkGroupName: map['networkGroupName'] == null ? null : (map['networkGroupName']! as String).input(),
       networkManagerName: (map['networkManagerName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

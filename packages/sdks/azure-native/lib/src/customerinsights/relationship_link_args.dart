@@ -71,14 +71,14 @@ class RelationshipLinkArgs {
 
   factory RelationshipLinkArgs.fromMap(Map<String, dynamic> map) {
     return RelationshipLinkArgs(
-      description: map['description'] == null ? null : ((map['description'] as Map).cast<String, String>()).input(),
-      displayName: map['displayName'] == null ? null : ((map['displayName'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : ((map['description']! as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : ((map['displayName']! as Map).cast<String, String>()).input(),
       hubName: (map['hubName'] as String).input(),
       interactionType: (map['interactionType'] as String).input(),
-      mappings: map['mappings'] == null ? null : (pulumi.Input.decodeList<RelationshipLinkFieldMapping>(map['mappings'], (value) => RelationshipLinkFieldMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mappings: map['mappings'] == null ? null : (pulumi.Input.decodeList<RelationshipLinkFieldMapping>(map['mappings']!, (value) => RelationshipLinkFieldMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
       profilePropertyReferences: (pulumi.Input.decodeList<ParticipantProfilePropertyReference>(map['profilePropertyReferences'], (value) => ParticipantProfilePropertyReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
       relatedProfilePropertyReferences: (pulumi.Input.decodeList<ParticipantProfilePropertyReference>(map['relatedProfilePropertyReferences'], (value) => ParticipantProfilePropertyReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      relationshipLinkName: map['relationshipLinkName'] == null ? null : (map['relationshipLinkName'] as String).input(),
+      relationshipLinkName: map['relationshipLinkName'] == null ? null : (map['relationshipLinkName']! as String).input(),
       relationshipName: (map['relationshipName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

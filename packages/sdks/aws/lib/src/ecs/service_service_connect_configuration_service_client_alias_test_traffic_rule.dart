@@ -21,7 +21,7 @@ class ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRule {
 
   factory ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRule.fromMap(Map<String, dynamic> map) {
     return ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRule(
-      header: map['header'] == null ? null : (ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader.fromMap((map['header'] as Map).cast<String, dynamic>())).input(),
+      header: map['header'] == null ? null : ((ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader.fromMap((map['header']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

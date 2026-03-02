@@ -33,7 +33,7 @@ class ReportDeliveryDestinationResponse {
     return ReportDeliveryDestinationResponse(
       container: (map['container'] as String).input(),
       resourceId: (map['resourceId'] as String).input(),
-      rootFolderPath: map['rootFolderPath'] == null ? null : (map['rootFolderPath'] as String).input(),
+      rootFolderPath: map['rootFolderPath'] == null ? null : (map['rootFolderPath']! as String).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class UpgradePolicyResponse {
 
   factory UpgradePolicyResponse.fromMap(Map<String, dynamic> map) {
     return UpgradePolicyResponse(
-      automaticOSUpgradePolicy: map['automaticOSUpgradePolicy'] == null ? null : (AutomaticOSUpgradePolicyResponse.fromMap((map['automaticOSUpgradePolicy'] as Map).cast<String, dynamic>())).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      rollingUpgradePolicy: map['rollingUpgradePolicy'] == null ? null : (RollingUpgradePolicyResponse.fromMap((map['rollingUpgradePolicy'] as Map).cast<String, dynamic>())).input(),
+      automaticOSUpgradePolicy: map['automaticOSUpgradePolicy'] == null ? null : (AutomaticOSUpgradePolicyResponse.fromMap((map['automaticOSUpgradePolicy']! as Map).cast<String, dynamic>())).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      rollingUpgradePolicy: map['rollingUpgradePolicy'] == null ? null : (RollingUpgradePolicyResponse.fromMap((map['rollingUpgradePolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

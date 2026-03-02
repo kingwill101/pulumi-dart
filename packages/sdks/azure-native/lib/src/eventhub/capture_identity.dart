@@ -27,8 +27,8 @@ class CaptureIdentity {
 
   factory CaptureIdentity.fromMap(Map<String, dynamic> map) {
     return CaptureIdentity(
-      type: map['type'] == null ? null : (CaptureIdentityType.fromValue(map['type'] as String)).input(),
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity'] as String).input(),
+      type: map['type'] == null ? null : (CaptureIdentityType.fromValue(map['type']! as String)).input(),
+      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']! as String).input(),
     );
   }
 }

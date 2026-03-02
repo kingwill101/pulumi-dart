@@ -65,13 +65,13 @@ class GetManagementGroupResult {
   factory GetManagementGroupResult.fromMap(Map<String, dynamic> map) {
     return GetManagementGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      children: map['children'] == null ? null : pulumi.Input.decodeList<ManagementGroupChildInfoResponse>(map['children'], (value) => ManagementGroupChildInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      details: map['details'] == null ? null : ManagementGroupDetailsResponse.fromMap((map['details'] as Map).cast<String, dynamic>()),
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      children: map['children'] == null ? null : pulumi.Input.decodeList<ManagementGroupChildInfoResponse>(map['children']!, (value) => ManagementGroupChildInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
+      details: map['details'] == null ? null : ManagementGroupDetailsResponse.fromMap((map['details']! as Map).cast<String, dynamic>()),
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
       type: map['type'] as String,
     );
   }

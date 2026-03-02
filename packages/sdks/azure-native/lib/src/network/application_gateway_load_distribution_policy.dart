@@ -37,10 +37,10 @@ class ApplicationGatewayLoadDistributionPolicy {
 
   factory ApplicationGatewayLoadDistributionPolicy.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayLoadDistributionPolicy(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      loadDistributionAlgorithm: map['loadDistributionAlgorithm'] == null ? null : (map['loadDistributionAlgorithm'] as String).input(),
-      loadDistributionTargets: map['loadDistributionTargets'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayLoadDistributionTarget>(map['loadDistributionTargets'], (value) => ApplicationGatewayLoadDistributionTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      loadDistributionAlgorithm: map['loadDistributionAlgorithm'] == null ? null : (map['loadDistributionAlgorithm']! as String).input(),
+      loadDistributionTargets: map['loadDistributionTargets'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayLoadDistributionTarget>(map['loadDistributionTargets']!, (value) => ApplicationGatewayLoadDistributionTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

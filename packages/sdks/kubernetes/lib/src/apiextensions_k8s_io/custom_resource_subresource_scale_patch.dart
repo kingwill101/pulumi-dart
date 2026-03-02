@@ -31,9 +31,9 @@ class CustomResourceSubresourceScalePatch {
 
   factory CustomResourceSubresourceScalePatch.fromMap(Map<String, dynamic> map) {
     return CustomResourceSubresourceScalePatch(
-      labelSelectorPath: map['labelSelectorPath'] == null ? null : (map['labelSelectorPath'] as String).input(),
-      specReplicasPath: map['specReplicasPath'] == null ? null : (map['specReplicasPath'] as String).input(),
-      statusReplicasPath: map['statusReplicasPath'] == null ? null : (map['statusReplicasPath'] as String).input(),
+      labelSelectorPath: map['labelSelectorPath'] == null ? null : (map['labelSelectorPath']! as String).input(),
+      specReplicasPath: map['specReplicasPath'] == null ? null : (map['specReplicasPath']! as String).input(),
+      statusReplicasPath: map['statusReplicasPath'] == null ? null : (map['statusReplicasPath']! as String).input(),
     );
   }
 }

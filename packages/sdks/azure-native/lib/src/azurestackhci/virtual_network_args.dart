@@ -67,15 +67,15 @@ class VirtualNetworkArgs {
 
   factory VirtualNetworkArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkArgs(
-      dhcpOptions: map['dhcpOptions'] == null ? null : (VirtualNetworkPropertiesDhcpOptions.fromMap((map['dhcpOptions'] as Map).cast<String, dynamic>())).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
+      dhcpOptions: map['dhcpOptions'] == null ? null : (VirtualNetworkPropertiesDhcpOptions.fromMap((map['dhcpOptions']! as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkPropertiesSubnets>(map['subnets'], (value) => VirtualNetworkPropertiesSubnets.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      virtualNetworkName: map['virtualNetworkName'] == null ? null : (map['virtualNetworkName'] as String).input(),
-      vmSwitchName: map['vmSwitchName'] == null ? null : (map['vmSwitchName'] as String).input(),
+      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkPropertiesSubnets>(map['subnets']!, (value) => VirtualNetworkPropertiesSubnets.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      virtualNetworkName: map['virtualNetworkName'] == null ? null : (map['virtualNetworkName']! as String).input(),
+      vmSwitchName: map['vmSwitchName'] == null ? null : (map['vmSwitchName']! as String).input(),
     );
   }
 }

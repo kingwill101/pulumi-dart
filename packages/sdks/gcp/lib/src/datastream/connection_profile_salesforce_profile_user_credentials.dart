@@ -42,11 +42,11 @@ class ConnectionProfileSalesforceProfileUserCredentials {
 
   factory ConnectionProfileSalesforceProfileUserCredentials.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileSalesforceProfileUserCredentials(
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      secretManagerStoredPassword: map['secretManagerStoredPassword'] == null ? null : (map['secretManagerStoredPassword'] as String).input(),
-      secretManagerStoredSecurityToken: map['secretManagerStoredSecurityToken'] == null ? null : (map['secretManagerStoredSecurityToken'] as String).input(),
-      securityToken: map['securityToken'] == null ? null : (map['securityToken'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      secretManagerStoredPassword: map['secretManagerStoredPassword'] == null ? null : (map['secretManagerStoredPassword']! as String).input(),
+      secretManagerStoredSecurityToken: map['secretManagerStoredSecurityToken'] == null ? null : (map['secretManagerStoredSecurityToken']! as String).input(),
+      securityToken: map['securityToken'] == null ? null : (map['securityToken']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

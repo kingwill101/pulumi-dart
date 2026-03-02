@@ -83,18 +83,18 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      domainConfigurationType: map['domainConfigurationType'] == null ? null : (map['domainConfigurationType'] as String).input(),
+      domainConfigurationType: map['domainConfigurationType'] == null ? null : (map['domainConfigurationType']! as String).input(),
       domainName: (map['domainName'] as String).input(),
-      filteredSyncEnabled: map['filteredSyncEnabled'] == null ? null : (map['filteredSyncEnabled'] as bool).input(),
+      filteredSyncEnabled: map['filteredSyncEnabled'] == null ? null : (map['filteredSyncEnabled']! as bool).input(),
       initialReplicaSet: (ServiceInitialReplicaSet.fromMap((map['initialReplicaSet'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notifications: map['notifications'] == null ? null : (ServiceNotifications.fromMap((map['notifications'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notifications: map['notifications'] == null ? null : (ServiceNotifications.fromMap((map['notifications']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      secureLdap: map['secureLdap'] == null ? null : (ServiceSecureLdap.fromMap((map['secureLdap'] as Map).cast<String, dynamic>())).input(),
-      security: map['security'] == null ? null : (ServiceSecurity.fromMap((map['security'] as Map).cast<String, dynamic>())).input(),
+      secureLdap: map['secureLdap'] == null ? null : (ServiceSecureLdap.fromMap((map['secureLdap']! as Map).cast<String, dynamic>())).input(),
+      security: map['security'] == null ? null : (ServiceSecurity.fromMap((map['security']! as Map).cast<String, dynamic>())).input(),
       sku: (map['sku'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

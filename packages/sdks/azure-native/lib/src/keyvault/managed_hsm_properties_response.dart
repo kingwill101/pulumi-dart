@@ -90,20 +90,20 @@ class ManagedHsmPropertiesResponse {
 
   factory ManagedHsmPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ManagedHsmPropertiesResponse(
-      enablePurgeProtection: map['enablePurgeProtection'] == null ? null : (map['enablePurgeProtection'] as bool).input(),
-      enableSoftDelete: map['enableSoftDelete'] == null ? null : (map['enableSoftDelete'] as bool).input(),
+      enablePurgeProtection: map['enablePurgeProtection'] == null ? null : (map['enablePurgeProtection']! as bool).input(),
+      enableSoftDelete: map['enableSoftDelete'] == null ? null : (map['enableSoftDelete']! as bool).input(),
       hsmUri: (map['hsmUri'] as String).input(),
-      initialAdminObjectIds: map['initialAdminObjectIds'] == null ? null : ((map['initialAdminObjectIds'] as List).cast<String>()).input(),
-      networkAcls: map['networkAcls'] == null ? null : (MHSMNetworkRuleSetResponse.fromMap((map['networkAcls'] as Map).cast<String, dynamic>())).input(),
+      initialAdminObjectIds: map['initialAdminObjectIds'] == null ? null : ((map['initialAdminObjectIds']! as List).cast<String>()).input(),
+      networkAcls: map['networkAcls'] == null ? null : (MHSMNetworkRuleSetResponse.fromMap((map['networkAcls']! as Map).cast<String, dynamic>())).input(),
       privateEndpointConnections: (pulumi.Input.decodeList<MHSMPrivateEndpointConnectionItemResponse>(map['privateEndpointConnections'], (value) => MHSMPrivateEndpointConnectionItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
-      regions: map['regions'] == null ? null : (pulumi.Input.decodeList<MHSMGeoReplicatedRegionResponse>(map['regions'], (value) => MHSMGeoReplicatedRegionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
+      regions: map['regions'] == null ? null : (pulumi.Input.decodeList<MHSMGeoReplicatedRegionResponse>(map['regions']!, (value) => MHSMGeoReplicatedRegionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       scheduledPurgeDate: (map['scheduledPurgeDate'] as String).input(),
       securityDomainProperties: (ManagedHSMSecurityDomainPropertiesResponse.fromMap((map['securityDomainProperties'] as Map).cast<String, dynamic>())).input(),
-      softDeleteRetentionInDays: map['softDeleteRetentionInDays'] == null ? null : (map['softDeleteRetentionInDays'] as int).input(),
+      softDeleteRetentionInDays: map['softDeleteRetentionInDays'] == null ? null : (map['softDeleteRetentionInDays']! as int).input(),
       statusMessage: (map['statusMessage'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

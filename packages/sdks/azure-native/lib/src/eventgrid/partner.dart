@@ -33,9 +33,9 @@ class Partner {
 
   factory Partner.fromMap(Map<String, dynamic> map) {
     return Partner(
-      authorizationExpirationTimeInUtc: map['authorizationExpirationTimeInUtc'] == null ? null : (map['authorizationExpirationTimeInUtc'] as String).input(),
-      partnerName: map['partnerName'] == null ? null : (map['partnerName'] as String).input(),
-      partnerRegistrationImmutableId: map['partnerRegistrationImmutableId'] == null ? null : (map['partnerRegistrationImmutableId'] as String).input(),
+      authorizationExpirationTimeInUtc: map['authorizationExpirationTimeInUtc'] == null ? null : (map['authorizationExpirationTimeInUtc']! as String).input(),
+      partnerName: map['partnerName'] == null ? null : (map['partnerName']! as String).input(),
+      partnerRegistrationImmutableId: map['partnerRegistrationImmutableId'] == null ? null : (map['partnerRegistrationImmutableId']! as String).input(),
     );
   }
 }

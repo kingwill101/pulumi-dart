@@ -51,12 +51,12 @@ class CostCategoryRuleRuleNot {
 
   factory CostCategoryRuleRuleNot.fromMap(Map<String, dynamic> map) {
     return CostCategoryRuleRuleNot(
-      ands: map['ands'] == null ? null : (pulumi.Input.decodeList<CostCategoryRuleRuleNotAnd>(map['ands'], (value) => CostCategoryRuleRuleNotAnd.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      costCategory: map['costCategory'] == null ? null : (CostCategoryRuleRuleNotCostCategory.fromMap((map['costCategory'] as Map).cast<String, dynamic>())).input(),
-      dimension: map['dimension'] == null ? null : (CostCategoryRuleRuleNotDimension.fromMap((map['dimension'] as Map).cast<String, dynamic>())).input(),
-      not: map['not'] == null ? null : (CostCategoryRuleRuleNotNot.fromMap((map['not'] as Map).cast<String, dynamic>())).input(),
-      ors: map['ors'] == null ? null : (pulumi.Input.decodeList<CostCategoryRuleRuleNotOr>(map['ors'], (value) => CostCategoryRuleRuleNotOr.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : (CostCategoryRuleRuleNotTags.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
+      ands: map['ands'] == null ? null : ((pulumi.Input.decodeList<CostCategoryRuleRuleNotAnd>(map['ands']!, (value) => CostCategoryRuleRuleNotAnd.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      costCategory: map['costCategory'] == null ? null : ((CostCategoryRuleRuleNotCostCategory.fromMap((map['costCategory']! as Map).cast<String, dynamic>())).input()).input(),
+      dimension: map['dimension'] == null ? null : ((CostCategoryRuleRuleNotDimension.fromMap((map['dimension']! as Map).cast<String, dynamic>())).input()).input(),
+      not: map['not'] == null ? null : ((CostCategoryRuleRuleNotNot.fromMap((map['not']! as Map).cast<String, dynamic>())).input()).input(),
+      ors: map['ors'] == null ? null : ((pulumi.Input.decodeList<CostCategoryRuleRuleNotOr>(map['ors']!, (value) => CostCategoryRuleRuleNotOr.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : ((CostCategoryRuleRuleNotTags.fromMap((map['tags']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

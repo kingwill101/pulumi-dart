@@ -21,7 +21,7 @@ class AnthosCluster {
 
   factory AnthosCluster.fromMap(Map<String, dynamic> map) {
     return AnthosCluster(
-      membership: map['membership'] == null ? null : (map['membership'] as String).input(),
+      membership: map['membership'] == null ? null : (map['membership']! as String).input(),
     );
   }
 }

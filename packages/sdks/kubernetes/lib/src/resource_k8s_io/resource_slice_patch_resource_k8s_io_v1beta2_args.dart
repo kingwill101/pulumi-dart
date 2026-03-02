@@ -43,10 +43,10 @@ class ResourceSlicePatchResourceK8sIoV1beta2Args {
 
   factory ResourceSlicePatchResourceK8sIoV1beta2Args.fromMap(Map<String, dynamic> map) {
     return ResourceSlicePatchResourceK8sIoV1beta2Args(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      spec: map['spec'] == null ? null : (ResourceSliceSpecPatchResourceK8sIoV1beta2.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (ResourceSliceSpecPatchResourceK8sIoV1beta2.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

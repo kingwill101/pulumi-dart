@@ -62,15 +62,15 @@ class ConsumerGroupState {
 
   factory ConsumerGroupState.fromMap(Map<String, dynamic> map) {
     return ConsumerGroupState(
-      consumeRetryPolicy: map['consumeRetryPolicy'] == null ? null : (ConsumerGroupConsumeRetryPolicy.fromMap((map['consumeRetryPolicy'] as Map).cast<String, dynamic>())).input(),
-      consumerGroupId: map['consumerGroupId'] == null ? null : (map['consumerGroupId'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      deliveryOrderType: map['deliveryOrderType'] == null ? null : (map['deliveryOrderType'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      maxReceiveTps: map['maxReceiveTps'] == null ? null : (map['maxReceiveTps'] as int).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      consumeRetryPolicy: map['consumeRetryPolicy'] == null ? null : (ConsumerGroupConsumeRetryPolicy.fromMap((map['consumeRetryPolicy']! as Map).cast<String, dynamic>())).input(),
+      consumerGroupId: map['consumerGroupId'] == null ? null : (map['consumerGroupId']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      deliveryOrderType: map['deliveryOrderType'] == null ? null : (map['deliveryOrderType']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      maxReceiveTps: map['maxReceiveTps'] == null ? null : (map['maxReceiveTps']! as int).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

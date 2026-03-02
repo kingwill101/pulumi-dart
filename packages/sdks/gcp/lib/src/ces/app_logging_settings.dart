@@ -50,11 +50,11 @@ class AppLoggingSettings {
 
   factory AppLoggingSettings.fromMap(Map<String, dynamic> map) {
     return AppLoggingSettings(
-      audioRecordingConfig: map['audioRecordingConfig'] == null ? null : (AppLoggingSettingsAudioRecordingConfig.fromMap((map['audioRecordingConfig'] as Map).cast<String, dynamic>())).input(),
-      bigqueryExportSettings: map['bigqueryExportSettings'] == null ? null : (AppLoggingSettingsBigqueryExportSettings.fromMap((map['bigqueryExportSettings'] as Map).cast<String, dynamic>())).input(),
-      cloudLoggingSettings: map['cloudLoggingSettings'] == null ? null : (AppLoggingSettingsCloudLoggingSettings.fromMap((map['cloudLoggingSettings'] as Map).cast<String, dynamic>())).input(),
-      conversationLoggingSettings: map['conversationLoggingSettings'] == null ? null : (AppLoggingSettingsConversationLoggingSettings.fromMap((map['conversationLoggingSettings'] as Map).cast<String, dynamic>())).input(),
-      redactionConfig: map['redactionConfig'] == null ? null : (AppLoggingSettingsRedactionConfig.fromMap((map['redactionConfig'] as Map).cast<String, dynamic>())).input(),
+      audioRecordingConfig: map['audioRecordingConfig'] == null ? null : (AppLoggingSettingsAudioRecordingConfig.fromMap((map['audioRecordingConfig']! as Map).cast<String, dynamic>())).input(),
+      bigqueryExportSettings: map['bigqueryExportSettings'] == null ? null : (AppLoggingSettingsBigqueryExportSettings.fromMap((map['bigqueryExportSettings']! as Map).cast<String, dynamic>())).input(),
+      cloudLoggingSettings: map['cloudLoggingSettings'] == null ? null : (AppLoggingSettingsCloudLoggingSettings.fromMap((map['cloudLoggingSettings']! as Map).cast<String, dynamic>())).input(),
+      conversationLoggingSettings: map['conversationLoggingSettings'] == null ? null : (AppLoggingSettingsConversationLoggingSettings.fromMap((map['conversationLoggingSettings']! as Map).cast<String, dynamic>())).input(),
+      redactionConfig: map['redactionConfig'] == null ? null : (AppLoggingSettingsRedactionConfig.fromMap((map['redactionConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

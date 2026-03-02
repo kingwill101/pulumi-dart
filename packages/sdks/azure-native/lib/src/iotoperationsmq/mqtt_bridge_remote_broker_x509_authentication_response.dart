@@ -27,8 +27,8 @@ class MqttBridgeRemoteBrokerX509AuthenticationResponse {
 
   factory MqttBridgeRemoteBrokerX509AuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return MqttBridgeRemoteBrokerX509AuthenticationResponse(
-      keyVault: map['keyVault'] == null ? null : (KeyVaultCertificatePropertiesResponse.fromMap((map['keyVault'] as Map).cast<String, dynamic>())).input(),
-      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
+      keyVault: map['keyVault'] == null ? null : (KeyVaultCertificatePropertiesResponse.fromMap((map['keyVault']! as Map).cast<String, dynamic>())).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName']! as String).input(),
     );
   }
 }

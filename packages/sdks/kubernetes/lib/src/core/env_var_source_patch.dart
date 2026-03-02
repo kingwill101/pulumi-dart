@@ -46,11 +46,11 @@ class EnvVarSourcePatch {
 
   factory EnvVarSourcePatch.fromMap(Map<String, dynamic> map) {
     return EnvVarSourcePatch(
-      configMapKeyRef: map['configMapKeyRef'] == null ? null : (ConfigMapKeySelectorPatch.fromMap((map['configMapKeyRef'] as Map).cast<String, dynamic>())).input(),
-      fieldRef: map['fieldRef'] == null ? null : (ObjectFieldSelectorPatch.fromMap((map['fieldRef'] as Map).cast<String, dynamic>())).input(),
-      fileKeyRef: map['fileKeyRef'] == null ? null : (FileKeySelectorPatch.fromMap((map['fileKeyRef'] as Map).cast<String, dynamic>())).input(),
-      resourceFieldRef: map['resourceFieldRef'] == null ? null : (ResourceFieldSelectorPatch.fromMap((map['resourceFieldRef'] as Map).cast<String, dynamic>())).input(),
-      secretKeyRef: map['secretKeyRef'] == null ? null : (SecretKeySelectorPatch.fromMap((map['secretKeyRef'] as Map).cast<String, dynamic>())).input(),
+      configMapKeyRef: map['configMapKeyRef'] == null ? null : (ConfigMapKeySelectorPatch.fromMap((map['configMapKeyRef']! as Map).cast<String, dynamic>())).input(),
+      fieldRef: map['fieldRef'] == null ? null : (ObjectFieldSelectorPatch.fromMap((map['fieldRef']! as Map).cast<String, dynamic>())).input(),
+      fileKeyRef: map['fileKeyRef'] == null ? null : (FileKeySelectorPatch.fromMap((map['fileKeyRef']! as Map).cast<String, dynamic>())).input(),
+      resourceFieldRef: map['resourceFieldRef'] == null ? null : (ResourceFieldSelectorPatch.fromMap((map['resourceFieldRef']! as Map).cast<String, dynamic>())).input(),
+      secretKeyRef: map['secretKeyRef'] == null ? null : (SecretKeySelectorPatch.fromMap((map['secretKeyRef']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

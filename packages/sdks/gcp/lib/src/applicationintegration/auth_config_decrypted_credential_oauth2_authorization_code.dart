@@ -40,11 +40,11 @@ class AuthConfigDecryptedCredentialOauth2AuthorizationCode {
 
   factory AuthConfigDecryptedCredentialOauth2AuthorizationCode.fromMap(Map<String, dynamic> map) {
     return AuthConfigDecryptedCredentialOauth2AuthorizationCode(
-      authEndpoint: map['authEndpoint'] == null ? null : (map['authEndpoint'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      tokenEndpoint: map['tokenEndpoint'] == null ? null : (map['tokenEndpoint'] as String).input(),
+      authEndpoint: map['authEndpoint'] == null ? null : (map['authEndpoint']! as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      tokenEndpoint: map['tokenEndpoint'] == null ? null : (map['tokenEndpoint']! as String).input(),
     );
   }
 }

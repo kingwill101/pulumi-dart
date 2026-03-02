@@ -26,8 +26,8 @@ class DiskSecurityProfileResponse {
 
   factory DiskSecurityProfileResponse.fromMap(Map<String, dynamic> map) {
     return DiskSecurityProfileResponse(
-      secureVMDiskEncryptionSetId: map['secureVMDiskEncryptionSetId'] == null ? null : (map['secureVMDiskEncryptionSetId'] as String).input(),
-      securityType: map['securityType'] == null ? null : (map['securityType'] as String).input(),
+      secureVMDiskEncryptionSetId: map['secureVMDiskEncryptionSetId'] == null ? null : (map['secureVMDiskEncryptionSetId']! as String).input(),
+      securityType: map['securityType'] == null ? null : (map['securityType']! as String).input(),
     );
   }
 }

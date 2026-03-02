@@ -27,8 +27,8 @@ class ListPolicyDefinitionVersionAllAtManagementGroupResult {
 
   factory ListPolicyDefinitionVersionAllAtManagementGroupResult.fromMap(Map<String, dynamic> map) {
     return ListPolicyDefinitionVersionAllAtManagementGroupResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<PolicyDefinitionVersionResponse>(map['value'], (value) => PolicyDefinitionVersionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<PolicyDefinitionVersionResponse>(map['value']!, (value) => PolicyDefinitionVersionResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

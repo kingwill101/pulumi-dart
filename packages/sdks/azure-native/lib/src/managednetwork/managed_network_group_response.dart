@@ -74,15 +74,15 @@ class ManagedNetworkGroupResponse {
     return ManagedNetworkGroupResponse(
       etag: (map['etag'] as String).input(),
       id: (map['id'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managementGroups: map['managementGroups'] == null ? null : (pulumi.Input.decodeList<ResourceIdResponse>(map['managementGroups'], (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managementGroups: map['managementGroups'] == null ? null : (pulumi.Input.decodeList<ResourceIdResponse>(map['managementGroups']!, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<ResourceIdResponse>(map['subnets'], (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subscriptions: map['subscriptions'] == null ? null : (pulumi.Input.decodeList<ResourceIdResponse>(map['subscriptions'], (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<ResourceIdResponse>(map['subnets']!, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subscriptions: map['subscriptions'] == null ? null : (pulumi.Input.decodeList<ResourceIdResponse>(map['subscriptions']!, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
-      virtualNetworks: map['virtualNetworks'] == null ? null : (pulumi.Input.decodeList<ResourceIdResponse>(map['virtualNetworks'], (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualNetworks: map['virtualNetworks'] == null ? null : (pulumi.Input.decodeList<ResourceIdResponse>(map['virtualNetworks']!, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

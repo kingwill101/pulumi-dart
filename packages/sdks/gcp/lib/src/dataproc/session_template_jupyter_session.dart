@@ -26,8 +26,8 @@ class SessionTemplateJupyterSession {
 
   factory SessionTemplateJupyterSession.fromMap(Map<String, dynamic> map) {
     return SessionTemplateJupyterSession(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      kernel: map['kernel'] == null ? null : (map['kernel'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      kernel: map['kernel'] == null ? null : (map['kernel']! as String).input(),
     );
   }
 }

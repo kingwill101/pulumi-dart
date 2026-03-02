@@ -54,7 +54,7 @@ class GetDiscoveredWorkloadResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       workloadProperties: pulumi.Input.decodeList<GetDiscoveredWorkloadWorkloadProperty>(map['workloadProperties'], (value) => GetDiscoveredWorkloadWorkloadProperty.fromMap((value as Map).cast<String, dynamic>())),
       workloadReferences: pulumi.Input.decodeList<GetDiscoveredWorkloadWorkloadReference>(map['workloadReferences'], (value) => GetDiscoveredWorkloadWorkloadReference.fromMap((value as Map).cast<String, dynamic>())),
       workloadUri: map['workloadUri'] as String,

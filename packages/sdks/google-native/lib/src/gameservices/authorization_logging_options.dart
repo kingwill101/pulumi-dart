@@ -22,7 +22,7 @@ class AuthorizationLoggingOptions {
 
   factory AuthorizationLoggingOptions.fromMap(Map<String, dynamic> map) {
     return AuthorizationLoggingOptions(
-      permissionType: map['permissionType'] == null ? null : (AuthorizationLoggingOptionsPermissionType.fromValue(map['permissionType'] as String)).input(),
+      permissionType: map['permissionType'] == null ? null : (AuthorizationLoggingOptionsPermissionType.fromValue(map['permissionType']! as String)).input(),
     );
   }
 }

@@ -57,12 +57,12 @@ class NetworkPeeringConnectionArgs {
   factory NetworkPeeringConnectionArgs.fromMap(Map<String, dynamic> map) {
     return NetworkPeeringConnectionArgs(
       displayName: (map['displayName'] as String).input(),
-      odbNetworkArn: map['odbNetworkArn'] == null ? null : (map['odbNetworkArn'] as String).input(),
-      odbNetworkId: map['odbNetworkId'] == null ? null : (map['odbNetworkId'] as String).input(),
+      odbNetworkArn: map['odbNetworkArn'] == null ? null : ((map['odbNetworkArn'] as String).input()).input(),
+      odbNetworkId: map['odbNetworkId'] == null ? null : ((map['odbNetworkId'] as String).input()).input(),
       peerNetworkId: (map['peerNetworkId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (NetworkPeeringConnectionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((NetworkPeeringConnectionTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

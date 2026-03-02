@@ -28,7 +28,7 @@ class LifecyclePolicyPolicyDetailAction {
 
   factory LifecyclePolicyPolicyDetailAction.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailAction(
-      includeResources: map['includeResources'] == null ? null : (LifecyclePolicyPolicyDetailActionIncludeResources.fromMap((map['includeResources'] as Map).cast<String, dynamic>())).input(),
+      includeResources: map['includeResources'] == null ? null : ((LifecyclePolicyPolicyDetailActionIncludeResources.fromMap((map['includeResources']! as Map).cast<String, dynamic>())).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -64,15 +64,15 @@ class TrafficMirrorSessionArgs {
 
   factory TrafficMirrorSessionArgs.fromMap(Map<String, dynamic> map) {
     return TrafficMirrorSessionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       networkInterfaceId: (map['networkInterfaceId'] as String).input(),
-      packetLength: map['packetLength'] == null ? null : (map['packetLength'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      packetLength: map['packetLength'] == null ? null : ((map['packetLength'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       sessionNumber: (map['sessionNumber'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       trafficMirrorFilterId: (map['trafficMirrorFilterId'] as String).input(),
       trafficMirrorTargetId: (map['trafficMirrorTargetId'] as String).input(),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId'] as int).input(),
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : ((map['virtualNetworkId'] as int).input()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class VMwareClusterNetworkConfigControlPlaneV2Config {
 
   factory VMwareClusterNetworkConfigControlPlaneV2Config.fromMap(Map<String, dynamic> map) {
     return VMwareClusterNetworkConfigControlPlaneV2Config(
-      controlPlaneIpBlock: map['controlPlaneIpBlock'] == null ? null : (VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock.fromMap((map['controlPlaneIpBlock'] as Map).cast<String, dynamic>())).input(),
+      controlPlaneIpBlock: map['controlPlaneIpBlock'] == null ? null : (VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock.fromMap((map['controlPlaneIpBlock']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

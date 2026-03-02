@@ -30,9 +30,9 @@ class ProvisionedClusterAzureActiveDirectory {
 
   factory ProvisionedClusterAzureActiveDirectory.fromMap(Map<String, dynamic> map) {
     return ProvisionedClusterAzureActiveDirectory(
-      adminGroupObjectIds: map['adminGroupObjectIds'] == null ? null : ((map['adminGroupObjectIds'] as List).cast<String>()).input(),
-      azureRbacEnabled: map['azureRbacEnabled'] == null ? null : (map['azureRbacEnabled'] as bool).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      adminGroupObjectIds: map['adminGroupObjectIds'] == null ? null : ((map['adminGroupObjectIds']! as List).cast<String>()).input(),
+      azureRbacEnabled: map['azureRbacEnabled'] == null ? null : (map['azureRbacEnabled']! as bool).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

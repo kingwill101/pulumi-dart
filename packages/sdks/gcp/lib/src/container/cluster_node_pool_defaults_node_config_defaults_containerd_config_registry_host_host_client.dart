@@ -28,7 +28,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostC
   factory ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClient.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClient(
       cert: (ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientCert.fromMap((map['cert'] as Map).cast<String, dynamic>())).input(),
-      key: map['key'] == null ? null : (ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientKey.fromMap((map['key'] as Map).cast<String, dynamic>())).input(),
+      key: map['key'] == null ? null : (ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientKey.fromMap((map['key']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

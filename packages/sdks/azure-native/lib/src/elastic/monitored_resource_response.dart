@@ -31,9 +31,9 @@ class MonitoredResourceResponse {
 
   factory MonitoredResourceResponse.fromMap(Map<String, dynamic> map) {
     return MonitoredResourceResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      reasonForLogsStatus: map['reasonForLogsStatus'] == null ? null : (map['reasonForLogsStatus'] as String).input(),
-      sendingLogs: map['sendingLogs'] == null ? null : (map['sendingLogs'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      reasonForLogsStatus: map['reasonForLogsStatus'] == null ? null : (map['reasonForLogsStatus']! as String).input(),
+      sendingLogs: map['sendingLogs'] == null ? null : (map['sendingLogs']! as String).input(),
     );
   }
 }

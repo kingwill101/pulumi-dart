@@ -68,16 +68,16 @@ class PrometheusRule {
 
   factory PrometheusRule.fromMap(Map<String, dynamic> map) {
     return PrometheusRule(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<PrometheusRuleGroupAction>(map['actions'], (value) => PrometheusRuleGroupAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      alert: map['alert'] == null ? null : (map['alert'] as String).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<PrometheusRuleGroupAction>(map['actions']!, (value) => PrometheusRuleGroupAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      alert: map['alert'] == null ? null : (map['alert']! as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       expression: (map['expression'] as String).input(),
-      for_: map['for'] == null ? null : (map['for'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      record: map['record'] == null ? null : (map['record'] as String).input(),
-      resolveConfiguration: map['resolveConfiguration'] == null ? null : (PrometheusRuleResolveConfiguration.fromMap((map['resolveConfiguration'] as Map).cast<String, dynamic>())).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as int).input(),
+      for_: map['for'] == null ? null : (map['for']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      record: map['record'] == null ? null : (map['record']! as String).input(),
+      resolveConfiguration: map['resolveConfiguration'] == null ? null : (PrometheusRuleResolveConfiguration.fromMap((map['resolveConfiguration']! as Map).cast<String, dynamic>())).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as int).input(),
     );
   }
 }

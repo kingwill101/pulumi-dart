@@ -26,8 +26,8 @@ class IotDpsSkuInfo {
 
   factory IotDpsSkuInfo.fromMap(Map<String, dynamic> map) {
     return IotDpsSkuInfo(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as double).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as double).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

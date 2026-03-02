@@ -27,7 +27,7 @@ class NodeImageSelectionResponse {
 
   factory NodeImageSelectionResponse.fromMap(Map<String, dynamic> map) {
     return NodeImageSelectionResponse(
-      customNodeImageVersions: map['customNodeImageVersions'] == null ? null : (pulumi.Input.decodeList<NodeImageVersionResponse>(map['customNodeImageVersions'], (value) => NodeImageVersionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customNodeImageVersions: map['customNodeImageVersions'] == null ? null : (pulumi.Input.decodeList<NodeImageVersionResponse>(map['customNodeImageVersions']!, (value) => NodeImageVersionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
     );
   }

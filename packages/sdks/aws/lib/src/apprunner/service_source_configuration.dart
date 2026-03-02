@@ -38,10 +38,10 @@ class ServiceSourceConfiguration {
 
   factory ServiceSourceConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceSourceConfiguration(
-      authenticationConfiguration: map['authenticationConfiguration'] == null ? null : (ServiceSourceConfigurationAuthenticationConfiguration.fromMap((map['authenticationConfiguration'] as Map).cast<String, dynamic>())).input(),
-      autoDeploymentsEnabled: map['autoDeploymentsEnabled'] == null ? null : (map['autoDeploymentsEnabled'] as bool).input(),
-      codeRepository: map['codeRepository'] == null ? null : (ServiceSourceConfigurationCodeRepository.fromMap((map['codeRepository'] as Map).cast<String, dynamic>())).input(),
-      imageRepository: map['imageRepository'] == null ? null : (ServiceSourceConfigurationImageRepository.fromMap((map['imageRepository'] as Map).cast<String, dynamic>())).input(),
+      authenticationConfiguration: map['authenticationConfiguration'] == null ? null : ((ServiceSourceConfigurationAuthenticationConfiguration.fromMap((map['authenticationConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      autoDeploymentsEnabled: map['autoDeploymentsEnabled'] == null ? null : ((map['autoDeploymentsEnabled'] as bool).input()).input(),
+      codeRepository: map['codeRepository'] == null ? null : ((ServiceSourceConfigurationCodeRepository.fromMap((map['codeRepository']! as Map).cast<String, dynamic>())).input()).input(),
+      imageRepository: map['imageRepository'] == null ? null : ((ServiceSourceConfigurationImageRepository.fromMap((map['imageRepository']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

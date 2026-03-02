@@ -26,7 +26,7 @@ class RealtimeLogConfigEndpoint {
 
   factory RealtimeLogConfigEndpoint.fromMap(Map<String, dynamic> map) {
     return RealtimeLogConfigEndpoint(
-      kinesisStreamConfig: (RealtimeLogConfigEndpointKinesisStreamConfig.fromMap((map['kinesisStreamConfig'] as Map).cast<String, dynamic>())).input(),
+      kinesisStreamConfig: (RealtimeLogConfigEndpointKinesisStreamConfig.fromMap((map['kinesisStreamConfig']! as Map).cast<String, dynamic>())).input(),
       streamType: (map['streamType'] as String).input(),
     );
   }

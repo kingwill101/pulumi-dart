@@ -20,7 +20,7 @@ class GetBuildServiceBuildResultLogResult {
 
   factory GetBuildServiceBuildResultLogResult.fromMap(Map<String, dynamic> map) {
     return GetBuildServiceBuildResultLogResult(
-      blobUrl: map['blobUrl'] == null ? null : map['blobUrl'] as String,
+      blobUrl: map['blobUrl'] == null ? null : map['blobUrl']! as String,
     );
   }
 }

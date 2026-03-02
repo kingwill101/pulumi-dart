@@ -21,7 +21,7 @@ class InsightsConfigErrorDetail {
 
   factory InsightsConfigErrorDetail.fromMap(Map<String, dynamic> map) {
     return InsightsConfigErrorDetail(
-      detailMessage: map['detailMessage'] == null ? null : (map['detailMessage'] as String).input(),
+      detailMessage: map['detailMessage'] == null ? null : (map['detailMessage']! as String).input(),
     );
   }
 }

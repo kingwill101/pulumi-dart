@@ -35,10 +35,10 @@ class ChannelEncoderSettingsCaptionDescriptionDestinationSettingsEbuTtDDestinati
 
   factory ChannelEncoderSettingsCaptionDescriptionDestinationSettingsEbuTtDDestinationSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsCaptionDescriptionDestinationSettingsEbuTtDDestinationSettings(
-      copyrightHolder: map['copyrightHolder'] == null ? null : (map['copyrightHolder'] as String).input(),
-      fillLineGap: map['fillLineGap'] == null ? null : (map['fillLineGap'] as String).input(),
-      fontFamily: map['fontFamily'] == null ? null : (map['fontFamily'] as String).input(),
-      styleControl: map['styleControl'] == null ? null : (map['styleControl'] as String).input(),
+      copyrightHolder: map['copyrightHolder'] == null ? null : ((map['copyrightHolder'] as String).input()).input(),
+      fillLineGap: map['fillLineGap'] == null ? null : ((map['fillLineGap'] as String).input()).input(),
+      fontFamily: map['fontFamily'] == null ? null : ((map['fontFamily'] as String).input()).input(),
+      styleControl: map['styleControl'] == null ? null : ((map['styleControl'] as String).input()).input(),
     );
   }
 }

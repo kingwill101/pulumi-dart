@@ -27,8 +27,8 @@ class EnterpriseCrmEventbusProtoPropertyEntry {
 
   factory EnterpriseCrmEventbusProtoPropertyEntry.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoPropertyEntry(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      value: map['value'] == null ? null : (EnterpriseCrmEventbusProtoValueType.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      value: map['value'] == null ? null : (EnterpriseCrmEventbusProtoValueType.fromMap((map['value']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -45,9 +45,9 @@ class WebAppCollectorOperationArgs {
 
   factory WebAppCollectorOperationArgs.fromMap(Map<String, dynamic> map) {
     return WebAppCollectorOperationArgs(
-      agentProperties: map['agentProperties'] == null ? null : (CollectorAgentPropertiesBase.fromMap((map['agentProperties'] as Map).cast<String, dynamic>())).input(),
-      collectorName: map['collectorName'] == null ? null : (map['collectorName'] as String).input(),
-      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId'] as String).input(),
+      agentProperties: map['agentProperties'] == null ? null : (CollectorAgentPropertiesBase.fromMap((map['agentProperties']! as Map).cast<String, dynamic>())).input(),
+      collectorName: map['collectorName'] == null ? null : (map['collectorName']! as String).input(),
+      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId']! as String).input(),
       projectName: (map['projectName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

@@ -26,8 +26,8 @@ class UserCreatedResourceTagResponse {
 
   factory UserCreatedResourceTagResponse.fromMap(Map<String, dynamic> map) {
     return UserCreatedResourceTagResponse(
-      tagName: map['tagName'] == null ? null : (map['tagName'] as String).input(),
-      tagValue: map['tagValue'] == null ? null : (map['tagValue'] as String).input(),
+      tagName: map['tagName'] == null ? null : (map['tagName']! as String).input(),
+      tagValue: map['tagValue'] == null ? null : (map['tagValue']! as String).input(),
     );
   }
 }

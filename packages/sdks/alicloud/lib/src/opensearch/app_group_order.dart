@@ -30,9 +30,9 @@ class AppGroupOrder {
 
   factory AppGroupOrder.fromMap(Map<String, dynamic> map) {
     return AppGroupOrder(
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as int).input(),
-      pricingCycle: map['pricingCycle'] == null ? null : (map['pricingCycle'] as String).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as int).input(),
+      pricingCycle: map['pricingCycle'] == null ? null : (map['pricingCycle']! as String).input(),
     );
   }
 }

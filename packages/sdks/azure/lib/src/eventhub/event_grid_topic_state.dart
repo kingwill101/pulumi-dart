@@ -90,20 +90,20 @@ class EventGridTopicState {
 
   factory EventGridTopicState.fromMap(Map<String, dynamic> map) {
     return EventGridTopicState(
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      identity: map['identity'] == null ? null : (EventGridTopicIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      inboundIpRules: map['inboundIpRules'] == null ? null : (pulumi.Input.decodeList<EventGridTopicInboundIpRule>(map['inboundIpRules'], (value) => EventGridTopicInboundIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inputMappingDefaultValues: map['inputMappingDefaultValues'] == null ? null : (EventGridTopicInputMappingDefaultValues.fromMap((map['inputMappingDefaultValues'] as Map).cast<String, dynamic>())).input(),
-      inputMappingFields: map['inputMappingFields'] == null ? null : (EventGridTopicInputMappingFields.fromMap((map['inputMappingFields'] as Map).cast<String, dynamic>())).input(),
-      inputSchema: map['inputSchema'] == null ? null : (map['inputSchema'] as String).input(),
-      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      primaryAccessKey: map['primaryAccessKey'] == null ? null : (map['primaryAccessKey'] as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      secondaryAccessKey: map['secondaryAccessKey'] == null ? null : (map['secondaryAccessKey'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      identity: map['identity'] == null ? null : (EventGridTopicIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      inboundIpRules: map['inboundIpRules'] == null ? null : (pulumi.Input.decodeList<EventGridTopicInboundIpRule>(map['inboundIpRules']!, (value) => EventGridTopicInboundIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputMappingDefaultValues: map['inputMappingDefaultValues'] == null ? null : (EventGridTopicInputMappingDefaultValues.fromMap((map['inputMappingDefaultValues']! as Map).cast<String, dynamic>())).input(),
+      inputMappingFields: map['inputMappingFields'] == null ? null : (EventGridTopicInputMappingFields.fromMap((map['inputMappingFields']! as Map).cast<String, dynamic>())).input(),
+      inputSchema: map['inputSchema'] == null ? null : (map['inputSchema']! as String).input(),
+      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      primaryAccessKey: map['primaryAccessKey'] == null ? null : (map['primaryAccessKey']! as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      secondaryAccessKey: map['secondaryAccessKey'] == null ? null : (map['secondaryAccessKey']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

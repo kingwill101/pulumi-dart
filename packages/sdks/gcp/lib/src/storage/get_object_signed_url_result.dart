@@ -58,12 +58,12 @@ class GetObjectSignedUrlResult {
   factory GetObjectSignedUrlResult.fromMap(Map<String, dynamic> map) {
     return GetObjectSignedUrlResult(
       bucket: map['bucket'] as String,
-      contentMd5: map['contentMd5'] == null ? null : map['contentMd5'] as String,
-      contentType: map['contentType'] == null ? null : map['contentType'] as String,
-      credentials: map['credentials'] == null ? null : map['credentials'] as String,
-      duration: map['duration'] == null ? null : map['duration'] as String,
-      extensionHeaders: map['extensionHeaders'] == null ? null : (map['extensionHeaders'] as Map).cast<String, String>(),
-      httpMethod: map['httpMethod'] == null ? null : map['httpMethod'] as String,
+      contentMd5: map['contentMd5'] == null ? null : map['contentMd5']! as String,
+      contentType: map['contentType'] == null ? null : map['contentType']! as String,
+      credentials: map['credentials'] == null ? null : map['credentials']! as String,
+      duration: map['duration'] == null ? null : map['duration']! as String,
+      extensionHeaders: map['extensionHeaders'] == null ? null : (map['extensionHeaders']! as Map).cast<String, String>(),
+      httpMethod: map['httpMethod'] == null ? null : map['httpMethod']! as String,
       id: map['id'] as String,
       path: map['path'] as String,
       signedUrl: map['signedUrl'] as String,

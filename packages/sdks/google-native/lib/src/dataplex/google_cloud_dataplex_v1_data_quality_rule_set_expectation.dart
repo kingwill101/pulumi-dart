@@ -21,7 +21,7 @@ class GoogleCloudDataplexV1DataQualityRuleSetExpectation {
 
   factory GoogleCloudDataplexV1DataQualityRuleSetExpectation.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataQualityRuleSetExpectation(
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

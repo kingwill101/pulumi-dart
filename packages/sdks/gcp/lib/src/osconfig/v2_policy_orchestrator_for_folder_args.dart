@@ -83,13 +83,13 @@ class V2PolicyOrchestratorForFolderArgs {
   factory V2PolicyOrchestratorForFolderArgs.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForFolderArgs(
       action: (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       folderId: (map['folderId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       orchestratedResource: (V2PolicyOrchestratorForFolderOrchestratedResource.fromMap((map['orchestratedResource'] as Map).cast<String, dynamic>())).input(),
-      orchestrationScope: map['orchestrationScope'] == null ? null : (V2PolicyOrchestratorForFolderOrchestrationScope.fromMap((map['orchestrationScope'] as Map).cast<String, dynamic>())).input(),
+      orchestrationScope: map['orchestrationScope'] == null ? null : (V2PolicyOrchestratorForFolderOrchestrationScope.fromMap((map['orchestrationScope']! as Map).cast<String, dynamic>())).input(),
       policyOrchestratorId: (map['policyOrchestratorId'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

@@ -59,14 +59,14 @@ class SecurityProfileArgs {
 
   factory SecurityProfileArgs.fromMap(Map<String, dynamic> map) {
     return SecurityProfileArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
       securityProfileId: (map['securityProfileId'] as String).input(),
-      threatPreventionProfile: map['threatPreventionProfile'] == null ? null : (ThreatPreventionProfile.fromMap((map['threatPreventionProfile'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (SecurityProfileType.fromValue(map['type'] as String)).input(),
+      threatPreventionProfile: map['threatPreventionProfile'] == null ? null : (ThreatPreventionProfile.fromMap((map['threatPreventionProfile']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (SecurityProfileType.fromValue(map['type']! as String)).input(),
     );
   }
 }

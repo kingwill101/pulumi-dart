@@ -110,24 +110,24 @@ class GetIotSecuritySolutionResult {
 
   factory GetIotSecuritySolutionResult.fromMap(Map<String, dynamic> map) {
     return GetIotSecuritySolutionResult(
-      additionalWorkspaces: map['additionalWorkspaces'] == null ? null : pulumi.Input.decodeList<AdditionalWorkspacesPropertiesResponse>(map['additionalWorkspaces'], (value) => AdditionalWorkspacesPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      additionalWorkspaces: map['additionalWorkspaces'] == null ? null : pulumi.Input.decodeList<AdditionalWorkspacesPropertiesResponse>(map['additionalWorkspaces']!, (value) => AdditionalWorkspacesPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
       autoDiscoveredResources: (map['autoDiscoveredResources'] as List).cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
-      disabledDataSources: map['disabledDataSources'] == null ? null : (map['disabledDataSources'] as List).cast<String>(),
+      disabledDataSources: map['disabledDataSources'] == null ? null : (map['disabledDataSources']! as List).cast<String>(),
       displayName: map['displayName'] as String,
-      export: map['export'] == null ? null : (map['export'] as List).cast<String>(),
+      export: map['export'] == null ? null : (map['export']! as List).cast<String>(),
       id: map['id'] as String,
       iotHubs: (map['iotHubs'] as List).cast<String>(),
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      recommendationsConfiguration: map['recommendationsConfiguration'] == null ? null : pulumi.Input.decodeList<RecommendationConfigurationPropertiesResponse>(map['recommendationsConfiguration'], (value) => RecommendationConfigurationPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
+      recommendationsConfiguration: map['recommendationsConfiguration'] == null ? null : pulumi.Input.decodeList<RecommendationConfigurationPropertiesResponse>(map['recommendationsConfiguration']!, (value) => RecommendationConfigurationPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      status: map['status'] == null ? null : map['status']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      unmaskedIpLoggingStatus: map['unmaskedIpLoggingStatus'] == null ? null : map['unmaskedIpLoggingStatus'] as String,
-      userDefinedResources: map['userDefinedResources'] == null ? null : UserDefinedResourcesPropertiesResponse.fromMap((map['userDefinedResources'] as Map).cast<String, dynamic>()),
-      workspace: map['workspace'] == null ? null : map['workspace'] as String,
+      unmaskedIpLoggingStatus: map['unmaskedIpLoggingStatus'] == null ? null : map['unmaskedIpLoggingStatus']! as String,
+      userDefinedResources: map['userDefinedResources'] == null ? null : UserDefinedResourcesPropertiesResponse.fromMap((map['userDefinedResources']! as Map).cast<String, dynamic>()),
+      workspace: map['workspace'] == null ? null : map['workspace']! as String,
     );
   }
 }

@@ -32,8 +32,8 @@ class DomainAdvancedSecurityOptions {
   factory DomainAdvancedSecurityOptions.fromMap(Map<String, dynamic> map) {
     return DomainAdvancedSecurityOptions(
       enabled: (map['enabled'] as bool).input(),
-      internalUserDatabaseEnabled: map['internalUserDatabaseEnabled'] == null ? null : (map['internalUserDatabaseEnabled'] as bool).input(),
-      masterUserOptions: map['masterUserOptions'] == null ? null : (DomainAdvancedSecurityOptionsMasterUserOptions.fromMap((map['masterUserOptions'] as Map).cast<String, dynamic>())).input(),
+      internalUserDatabaseEnabled: map['internalUserDatabaseEnabled'] == null ? null : ((map['internalUserDatabaseEnabled'] as bool).input()).input(),
+      masterUserOptions: map['masterUserOptions'] == null ? null : ((DomainAdvancedSecurityOptionsMasterUserOptions.fromMap((map['masterUserOptions']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class VirtualApplianceAdditionalNicProperties {
 
   factory VirtualApplianceAdditionalNicProperties.fromMap(Map<String, dynamic> map) {
     return VirtualApplianceAdditionalNicProperties(
-      hasPublicIp: map['hasPublicIp'] == null ? null : (map['hasPublicIp'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      hasPublicIp: map['hasPublicIp'] == null ? null : (map['hasPublicIp']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

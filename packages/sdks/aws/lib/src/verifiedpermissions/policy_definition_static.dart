@@ -25,7 +25,7 @@ class PolicyDefinitionStatic {
 
   factory PolicyDefinitionStatic.fromMap(Map<String, dynamic> map) {
     return PolicyDefinitionStatic(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       statement: (map['statement'] as String).input(),
     );
   }

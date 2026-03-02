@@ -38,7 +38,7 @@ class GetGatewayRouteSpecHttpRouteMatchHeaderMatch {
     return GetGatewayRouteSpecHttpRouteMatchHeaderMatch(
       exact: (map['exact'] as String).input(),
       prefix: (map['prefix'] as String).input(),
-      ranges: (pulumi.Input.decodeList<GetGatewayRouteSpecHttpRouteMatchHeaderMatchRange>(map['ranges'], (value) => GetGatewayRouteSpecHttpRouteMatchHeaderMatchRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ranges: (pulumi.Input.decodeList<GetGatewayRouteSpecHttpRouteMatchHeaderMatchRange>(map['ranges']!, (value) => GetGatewayRouteSpecHttpRouteMatchHeaderMatchRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
       regex: (map['regex'] as String).input(),
       suffix: (map['suffix'] as String).input(),
     );

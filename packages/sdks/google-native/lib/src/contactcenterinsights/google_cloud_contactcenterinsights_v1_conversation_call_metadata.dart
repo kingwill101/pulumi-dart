@@ -26,8 +26,8 @@ class GoogleCloudContactcenterinsightsV1ConversationCallMetadata {
 
   factory GoogleCloudContactcenterinsightsV1ConversationCallMetadata.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1ConversationCallMetadata(
-      agentChannel: map['agentChannel'] == null ? null : (map['agentChannel'] as int).input(),
-      customerChannel: map['customerChannel'] == null ? null : (map['customerChannel'] as int).input(),
+      agentChannel: map['agentChannel'] == null ? null : (map['agentChannel']! as int).input(),
+      customerChannel: map['customerChannel'] == null ? null : (map['customerChannel']! as int).input(),
     );
   }
 }

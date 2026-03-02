@@ -37,9 +37,9 @@ class IdentityCenterConfigurationArgs {
 
   factory IdentityCenterConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return IdentityCenterConfigurationArgs(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
       instanceArn: (map['instanceArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

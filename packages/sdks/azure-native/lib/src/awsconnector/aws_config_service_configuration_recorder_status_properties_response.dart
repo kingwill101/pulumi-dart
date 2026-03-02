@@ -57,14 +57,14 @@ class AwsConfigServiceConfigurationRecorderStatusPropertiesResponse {
 
   factory AwsConfigServiceConfigurationRecorderStatusPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsConfigServiceConfigurationRecorderStatusPropertiesResponse(
-      lastErrorCode: map['lastErrorCode'] == null ? null : (map['lastErrorCode'] as String).input(),
-      lastErrorMessage: map['lastErrorMessage'] == null ? null : (map['lastErrorMessage'] as String).input(),
-      lastStartTime: map['lastStartTime'] == null ? null : (map['lastStartTime'] as String).input(),
-      lastStatus: map['lastStatus'] == null ? null : (RecorderStatusEnumValueResponse.fromMap((map['lastStatus'] as Map).cast<String, dynamic>())).input(),
-      lastStatusChangeTime: map['lastStatusChangeTime'] == null ? null : (map['lastStatusChangeTime'] as String).input(),
-      lastStopTime: map['lastStopTime'] == null ? null : (map['lastStopTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recording: map['recording'] == null ? null : (map['recording'] as bool).input(),
+      lastErrorCode: map['lastErrorCode'] == null ? null : (map['lastErrorCode']! as String).input(),
+      lastErrorMessage: map['lastErrorMessage'] == null ? null : (map['lastErrorMessage']! as String).input(),
+      lastStartTime: map['lastStartTime'] == null ? null : (map['lastStartTime']! as String).input(),
+      lastStatus: map['lastStatus'] == null ? null : (RecorderStatusEnumValueResponse.fromMap((map['lastStatus']! as Map).cast<String, dynamic>())).input(),
+      lastStatusChangeTime: map['lastStatusChangeTime'] == null ? null : (map['lastStatusChangeTime']! as String).input(),
+      lastStopTime: map['lastStopTime'] == null ? null : (map['lastStopTime']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      recording: map['recording'] == null ? null : (map['recording']! as bool).input(),
     );
   }
 }

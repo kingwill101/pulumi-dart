@@ -84,17 +84,17 @@ class GetStandardAssignmentResult {
 
   factory GetStandardAssignmentResult.fromMap(Map<String, dynamic> map) {
     return GetStandardAssignmentResult(
-      assignedStandard: map['assignedStandard'] == null ? null : AssignedStandardItemResponse.fromMap((map['assignedStandard'] as Map).cast<String, dynamic>()),
-      attestationData: map['attestationData'] == null ? null : StandardAssignmentPropertiesResponseAttestationData.fromMap((map['attestationData'] as Map).cast<String, dynamic>()),
+      assignedStandard: map['assignedStandard'] == null ? null : AssignedStandardItemResponse.fromMap((map['assignedStandard']! as Map).cast<String, dynamic>()),
+      attestationData: map['attestationData'] == null ? null : StandardAssignmentPropertiesResponseAttestationData.fromMap((map['attestationData']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      effect: map['effect'] == null ? null : map['effect'] as String,
-      excludedScopes: map['excludedScopes'] == null ? null : (map['excludedScopes'] as List).cast<String>(),
-      exemptionData: map['exemptionData'] == null ? null : StandardAssignmentPropertiesResponseExemptionData.fromMap((map['exemptionData'] as Map).cast<String, dynamic>()),
-      expiresOn: map['expiresOn'] == null ? null : map['expiresOn'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
+      effect: map['effect'] == null ? null : map['effect']! as String,
+      excludedScopes: map['excludedScopes'] == null ? null : (map['excludedScopes']! as List).cast<String>(),
+      exemptionData: map['exemptionData'] == null ? null : StandardAssignmentPropertiesResponseExemptionData.fromMap((map['exemptionData']! as Map).cast<String, dynamic>()),
+      expiresOn: map['expiresOn'] == null ? null : map['expiresOn']! as String,
       id: map['id'] as String,
-      metadata: map['metadata'] == null ? null : StandardAssignmentMetadataResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      metadata: map['metadata'] == null ? null : StandardAssignmentMetadataResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       type: map['type'] as String,
     );

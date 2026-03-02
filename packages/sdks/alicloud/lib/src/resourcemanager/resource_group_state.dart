@@ -52,13 +52,13 @@ class ResourceGroupState {
 
   factory ResourceGroupState.fromMap(Map<String, dynamic> map) {
     return ResourceGroupState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      regionStatuses: map['regionStatuses'] == null ? null : (pulumi.Input.decodeList<ResourceGroupRegionStatus>(map['regionStatuses'], (value) => ResourceGroupRegionStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      regionStatuses: map['regionStatuses'] == null ? null : (pulumi.Input.decodeList<ResourceGroupRegionStatus>(map['regionStatuses']!, (value) => ResourceGroupRegionStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

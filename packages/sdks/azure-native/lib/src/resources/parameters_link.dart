@@ -26,7 +26,7 @@ class ParametersLink {
 
   factory ParametersLink.fromMap(Map<String, dynamic> map) {
     return ParametersLink(
-      contentVersion: map['contentVersion'] == null ? null : (map['contentVersion'] as String).input(),
+      contentVersion: map['contentVersion'] == null ? null : (map['contentVersion']! as String).input(),
       uri: (map['uri'] as String).input(),
     );
   }

@@ -42,11 +42,11 @@ class MultiRegionAccessPointPolicyState {
 
   factory MultiRegionAccessPointPolicyState.fromMap(Map<String, dynamic> map) {
     return MultiRegionAccessPointPolicyState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      details: map['details'] == null ? null : (MultiRegionAccessPointPolicyDetails.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
-      established: map['established'] == null ? null : (map['established'] as String).input(),
-      proposed: map['proposed'] == null ? null : (map['proposed'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      details: map['details'] == null ? null : ((MultiRegionAccessPointPolicyDetails.fromMap((map['details']! as Map).cast<String, dynamic>())).input()).input(),
+      established: map['established'] == null ? null : ((map['established'] as String).input()).input(),
+      proposed: map['proposed'] == null ? null : ((map['proposed'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -93,21 +93,21 @@ class LinkedServiceAzureDatabricksState {
 
   factory LinkedServiceAzureDatabricksState.fromMap(Map<String, dynamic> map) {
     return LinkedServiceAzureDatabricksState(
-      accessToken: map['accessToken'] == null ? null : (map['accessToken'] as String).input(),
-      adbDomain: map['adbDomain'] == null ? null : (map['adbDomain'] as String).input(),
-      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
-      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      existingClusterId: map['existingClusterId'] == null ? null : (map['existingClusterId'] as String).input(),
-      instancePool: map['instancePool'] == null ? null : (LinkedServiceAzureDatabricksInstancePool.fromMap((map['instancePool'] as Map).cast<String, dynamic>())).input(),
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName'] as String).input(),
-      keyVaultPassword: map['keyVaultPassword'] == null ? null : (LinkedServiceAzureDatabricksKeyVaultPassword.fromMap((map['keyVaultPassword'] as Map).cast<String, dynamic>())).input(),
-      msiWorkSpaceResourceId: map['msiWorkSpaceResourceId'] == null ? null : (map['msiWorkSpaceResourceId'] as String).input(),
-      msiWorkspaceId: map['msiWorkspaceId'] == null ? null : (map['msiWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      newClusterConfig: map['newClusterConfig'] == null ? null : (LinkedServiceAzureDatabricksNewClusterConfig.fromMap((map['newClusterConfig'] as Map).cast<String, dynamic>())).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      accessToken: map['accessToken'] == null ? null : (map['accessToken']! as String).input(),
+      adbDomain: map['adbDomain'] == null ? null : (map['adbDomain']! as String).input(),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties']! as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      existingClusterId: map['existingClusterId'] == null ? null : (map['existingClusterId']! as String).input(),
+      instancePool: map['instancePool'] == null ? null : (LinkedServiceAzureDatabricksInstancePool.fromMap((map['instancePool']! as Map).cast<String, dynamic>())).input(),
+      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName']! as String).input(),
+      keyVaultPassword: map['keyVaultPassword'] == null ? null : (LinkedServiceAzureDatabricksKeyVaultPassword.fromMap((map['keyVaultPassword']! as Map).cast<String, dynamic>())).input(),
+      msiWorkSpaceResourceId: map['msiWorkSpaceResourceId'] == null ? null : (map['msiWorkSpaceResourceId']! as String).input(),
+      msiWorkspaceId: map['msiWorkspaceId'] == null ? null : (map['msiWorkspaceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      newClusterConfig: map['newClusterConfig'] == null ? null : (LinkedServiceAzureDatabricksNewClusterConfig.fromMap((map['newClusterConfig']! as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
     );
   }
 }

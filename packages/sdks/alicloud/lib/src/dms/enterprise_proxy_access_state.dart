@@ -77,18 +77,18 @@ class EnterpriseProxyAccessState {
 
   factory EnterpriseProxyAccessState.fromMap(Map<String, dynamic> map) {
     return EnterpriseProxyAccessState(
-      accessId: map['accessId'] == null ? null : (map['accessId'] as String).input(),
-      accessSecret: map['accessSecret'] == null ? null : (map['accessSecret'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      indepAccount: map['indepAccount'] == null ? null : (map['indepAccount'] as String).input(),
-      indepPassword: map['indepPassword'] == null ? null : (map['indepPassword'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      originInfo: map['originInfo'] == null ? null : (map['originInfo'] as String).input(),
-      proxyAccessId: map['proxyAccessId'] == null ? null : (map['proxyAccessId'] as String).input(),
-      proxyId: map['proxyId'] == null ? null : (map['proxyId'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
-      userUid: map['userUid'] == null ? null : (map['userUid'] as String).input(),
+      accessId: map['accessId'] == null ? null : (map['accessId']! as String).input(),
+      accessSecret: map['accessSecret'] == null ? null : (map['accessSecret']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      indepAccount: map['indepAccount'] == null ? null : (map['indepAccount']! as String).input(),
+      indepPassword: map['indepPassword'] == null ? null : (map['indepPassword']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      originInfo: map['originInfo'] == null ? null : (map['originInfo']! as String).input(),
+      proxyAccessId: map['proxyAccessId'] == null ? null : (map['proxyAccessId']! as String).input(),
+      proxyId: map['proxyId'] == null ? null : (map['proxyId']! as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
+      userUid: map['userUid'] == null ? null : (map['userUid']! as String).input(),
     );
   }
 }

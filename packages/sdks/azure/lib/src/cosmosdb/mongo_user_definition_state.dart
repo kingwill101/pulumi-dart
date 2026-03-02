@@ -38,10 +38,10 @@ class MongoUserDefinitionState {
 
   factory MongoUserDefinitionState.fromMap(Map<String, dynamic> map) {
     return MongoUserDefinitionState(
-      cosmosMongoDatabaseId: map['cosmosMongoDatabaseId'] == null ? null : (map['cosmosMongoDatabaseId'] as String).input(),
-      inheritedRoleNames: map['inheritedRoleNames'] == null ? null : ((map['inheritedRoleNames'] as List).cast<String>()).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      cosmosMongoDatabaseId: map['cosmosMongoDatabaseId'] == null ? null : (map['cosmosMongoDatabaseId']! as String).input(),
+      inheritedRoleNames: map['inheritedRoleNames'] == null ? null : ((map['inheritedRoleNames']! as List).cast<String>()).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

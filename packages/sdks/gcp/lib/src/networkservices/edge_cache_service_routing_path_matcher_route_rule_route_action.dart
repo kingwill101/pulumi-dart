@@ -43,10 +43,10 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction {
 
   factory EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction(
-      cdnPolicy: map['cdnPolicy'] == null ? null : (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy.fromMap((map['cdnPolicy'] as Map).cast<String, dynamic>())).input(),
-      compressionMode: map['compressionMode'] == null ? null : (map['compressionMode'] as String).input(),
-      corsPolicy: map['corsPolicy'] == null ? null : (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy.fromMap((map['corsPolicy'] as Map).cast<String, dynamic>())).input(),
-      urlRewrite: map['urlRewrite'] == null ? null : (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite.fromMap((map['urlRewrite'] as Map).cast<String, dynamic>())).input(),
+      cdnPolicy: map['cdnPolicy'] == null ? null : (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy.fromMap((map['cdnPolicy']! as Map).cast<String, dynamic>())).input(),
+      compressionMode: map['compressionMode'] == null ? null : (map['compressionMode']! as String).input(),
+      corsPolicy: map['corsPolicy'] == null ? null : (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy.fromMap((map['corsPolicy']! as Map).cast<String, dynamic>())).input(),
+      urlRewrite: map['urlRewrite'] == null ? null : (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite.fromMap((map['urlRewrite']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

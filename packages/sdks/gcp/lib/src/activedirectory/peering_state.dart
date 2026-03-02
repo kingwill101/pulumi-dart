@@ -70,16 +70,16 @@ class PeeringState {
 
   factory PeeringState.fromMap(Map<String, dynamic> map) {
     return PeeringState(
-      authorizedNetwork: map['authorizedNetwork'] == null ? null : (map['authorizedNetwork'] as String).input(),
-      domainResource: map['domainResource'] == null ? null : (map['domainResource'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      peeringId: map['peeringId'] == null ? null : (map['peeringId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      statusMessage: map['statusMessage'] == null ? null : (map['statusMessage'] as String).input(),
+      authorizedNetwork: map['authorizedNetwork'] == null ? null : (map['authorizedNetwork']! as String).input(),
+      domainResource: map['domainResource'] == null ? null : (map['domainResource']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      peeringId: map['peeringId'] == null ? null : (map['peeringId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      statusMessage: map['statusMessage'] == null ? null : (map['statusMessage']! as String).input(),
     );
   }
 }

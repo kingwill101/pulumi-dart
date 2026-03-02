@@ -37,10 +37,10 @@ class GooglePrivacyDlpV2TimespanConfig {
 
   factory GooglePrivacyDlpV2TimespanConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2TimespanConfig(
-      enableAutoPopulationOfTimespanConfig: map['enableAutoPopulationOfTimespanConfig'] == null ? null : (map['enableAutoPopulationOfTimespanConfig'] as bool).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      timestampField: map['timestampField'] == null ? null : (GooglePrivacyDlpV2FieldId.fromMap((map['timestampField'] as Map).cast<String, dynamic>())).input(),
+      enableAutoPopulationOfTimespanConfig: map['enableAutoPopulationOfTimespanConfig'] == null ? null : (map['enableAutoPopulationOfTimespanConfig']! as bool).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      timestampField: map['timestampField'] == null ? null : (GooglePrivacyDlpV2FieldId.fromMap((map['timestampField']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

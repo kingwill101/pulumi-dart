@@ -46,10 +46,10 @@ class DomainMappingStatus {
 
   factory DomainMappingStatus.fromMap(Map<String, dynamic> map) {
     return DomainMappingStatus(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<DomainMappingStatusCondition>(map['conditions'], (value) => DomainMappingStatusCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mappedRouteName: map['mappedRouteName'] == null ? null : (map['mappedRouteName'] as String).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
-      resourceRecords: map['resourceRecords'] == null ? null : (pulumi.Input.decodeList<DomainMappingStatusResourceRecord>(map['resourceRecords'], (value) => DomainMappingStatusResourceRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<DomainMappingStatusCondition>(map['conditions']!, (value) => DomainMappingStatusCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mappedRouteName: map['mappedRouteName'] == null ? null : (map['mappedRouteName']! as String).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
+      resourceRecords: map['resourceRecords'] == null ? null : (pulumi.Input.decodeList<DomainMappingStatusResourceRecord>(map['resourceRecords']!, (value) => DomainMappingStatusResourceRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

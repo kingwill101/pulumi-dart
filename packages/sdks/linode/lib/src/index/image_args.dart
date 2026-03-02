@@ -85,18 +85,18 @@ class ImageArgs {
 
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
-      cloudInit: map['cloudInit'] == null ? null : (map['cloudInit'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      diskId: map['diskId'] == null ? null : (map['diskId'] as int).input(),
-      fileHash: map['fileHash'] == null ? null : (map['fileHash'] as String).input(),
-      filePath: map['filePath'] == null ? null : (map['filePath'] as String).input(),
+      cloudInit: map['cloudInit'] == null ? null : (map['cloudInit']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId']! as int).input(),
+      fileHash: map['fileHash'] == null ? null : (map['fileHash']! as String).input(),
+      filePath: map['filePath'] == null ? null : (map['filePath']! as String).input(),
       label: (map['label'] as String).input(),
-      linodeId: map['linodeId'] == null ? null : (map['linodeId'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      replicaRegions: map['replicaRegions'] == null ? null : ((map['replicaRegions'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ImageTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      waitForReplications: map['waitForReplications'] == null ? null : (map['waitForReplications'] as bool).input(),
+      linodeId: map['linodeId'] == null ? null : (map['linodeId']! as int).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      replicaRegions: map['replicaRegions'] == null ? null : ((map['replicaRegions']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ImageTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input(),
+      waitForReplications: map['waitForReplications'] == null ? null : (map['waitForReplications']! as bool).input(),
     );
   }
 }

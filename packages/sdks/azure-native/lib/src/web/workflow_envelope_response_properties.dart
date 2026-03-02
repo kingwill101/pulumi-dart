@@ -32,9 +32,9 @@ class WorkflowEnvelopeResponseProperties {
 
   factory WorkflowEnvelopeResponseProperties.fromMap(Map<String, dynamic> map) {
     return WorkflowEnvelopeResponseProperties(
-      files: map['files'] == null ? null : ((map['files'] as Map).cast<String, dynamic>()).input(),
-      flowState: map['flowState'] == null ? null : (map['flowState'] as String).input(),
-      health: map['health'] == null ? null : (WorkflowHealthResponse.fromMap((map['health'] as Map).cast<String, dynamic>())).input(),
+      files: map['files'] == null ? null : ((map['files']! as Map).cast<String, dynamic>()).input(),
+      flowState: map['flowState'] == null ? null : (map['flowState']! as String).input(),
+      health: map['health'] == null ? null : (WorkflowHealthResponse.fromMap((map['health']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

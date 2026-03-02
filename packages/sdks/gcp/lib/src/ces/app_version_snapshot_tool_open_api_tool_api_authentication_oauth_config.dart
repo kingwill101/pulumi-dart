@@ -52,11 +52,11 @@ class AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig {
 
   factory AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecretVersion: map['clientSecretVersion'] == null ? null : (map['clientSecretVersion'] as String).input(),
-      oauthGrantType: map['oauthGrantType'] == null ? null : (map['oauthGrantType'] as String).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
-      tokenEndpoint: map['tokenEndpoint'] == null ? null : (map['tokenEndpoint'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecretVersion: map['clientSecretVersion'] == null ? null : (map['clientSecretVersion']! as String).input(),
+      oauthGrantType: map['oauthGrantType'] == null ? null : (map['oauthGrantType']! as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
+      tokenEndpoint: map['tokenEndpoint'] == null ? null : (map['tokenEndpoint']! as String).input(),
     );
   }
 }

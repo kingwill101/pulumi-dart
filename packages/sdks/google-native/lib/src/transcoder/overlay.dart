@@ -28,8 +28,8 @@ class Overlay {
 
   factory Overlay.fromMap(Map<String, dynamic> map) {
     return Overlay(
-      animations: map['animations'] == null ? null : (pulumi.Input.decodeList<Animation>(map['animations'], (value) => Animation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      image: map['image'] == null ? null : (Image.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
+      animations: map['animations'] == null ? null : (pulumi.Input.decodeList<Animation>(map['animations']!, (value) => Animation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      image: map['image'] == null ? null : (Image.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

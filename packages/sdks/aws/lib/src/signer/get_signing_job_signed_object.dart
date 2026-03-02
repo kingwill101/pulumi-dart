@@ -20,7 +20,7 @@ class GetSigningJobSignedObject {
 
   factory GetSigningJobSignedObject.fromMap(Map<String, dynamic> map) {
     return GetSigningJobSignedObject(
-      s3s: (pulumi.Input.decodeList<GetSigningJobSignedObjectS3>(map['s3s'], (value) => GetSigningJobSignedObjectS3.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      s3s: (pulumi.Input.decodeList<GetSigningJobSignedObjectS3>(map['s3s']!, (value) => GetSigningJobSignedObjectS3.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -54,12 +54,12 @@ class TenantArgs {
 
   factory TenantArgs.fromMap(Map<String, dynamic> map) {
     return TenantArgs(
-      allowPasswordSignup: map['allowPasswordSignup'] == null ? null : (map['allowPasswordSignup'] as bool).input(),
-      client: map['client'] == null ? null : (TenantClient.fromMap((map['client'] as Map).cast<String, dynamic>())).input(),
-      disableAuth: map['disableAuth'] == null ? null : (map['disableAuth'] as bool).input(),
+      allowPasswordSignup: map['allowPasswordSignup'] == null ? null : (map['allowPasswordSignup']! as bool).input(),
+      client: map['client'] == null ? null : (TenantClient.fromMap((map['client']! as Map).cast<String, dynamic>())).input(),
+      disableAuth: map['disableAuth'] == null ? null : (map['disableAuth']! as bool).input(),
       displayName: (map['displayName'] as String).input(),
-      enableEmailLinkSignin: map['enableEmailLinkSignin'] == null ? null : (map['enableEmailLinkSignin'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      enableEmailLinkSignin: map['enableEmailLinkSignin'] == null ? null : (map['enableEmailLinkSignin']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

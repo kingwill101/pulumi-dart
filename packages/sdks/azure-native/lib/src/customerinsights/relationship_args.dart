@@ -77,16 +77,16 @@ class RelationshipArgs {
 
   factory RelationshipArgs.fromMap(Map<String, dynamic> map) {
     return RelationshipArgs(
-      cardinality: map['cardinality'] == null ? null : (CardinalityTypes.fromValue(map['cardinality'] as String)).input(),
-      description: map['description'] == null ? null : ((map['description'] as Map).cast<String, String>()).input(),
-      displayName: map['displayName'] == null ? null : ((map['displayName'] as Map).cast<String, String>()).input(),
-      expiryDateTimeUtc: map['expiryDateTimeUtc'] == null ? null : (map['expiryDateTimeUtc'] as String).input(),
-      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<PropertyDefinition>(map['fields'], (value) => PropertyDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cardinality: map['cardinality'] == null ? null : (CardinalityTypes.fromValue(map['cardinality']! as String)).input(),
+      description: map['description'] == null ? null : ((map['description']! as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : ((map['displayName']! as Map).cast<String, String>()).input(),
+      expiryDateTimeUtc: map['expiryDateTimeUtc'] == null ? null : (map['expiryDateTimeUtc']! as String).input(),
+      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<PropertyDefinition>(map['fields']!, (value) => PropertyDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
       hubName: (map['hubName'] as String).input(),
-      lookupMappings: map['lookupMappings'] == null ? null : (pulumi.Input.decodeList<RelationshipTypeMapping>(map['lookupMappings'], (value) => RelationshipTypeMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lookupMappings: map['lookupMappings'] == null ? null : (pulumi.Input.decodeList<RelationshipTypeMapping>(map['lookupMappings']!, (value) => RelationshipTypeMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
       profileType: (map['profileType'] as String).input(),
       relatedProfileType: (map['relatedProfileType'] as String).input(),
-      relationshipName: map['relationshipName'] == null ? null : (map['relationshipName'] as String).input(),
+      relationshipName: map['relationshipName'] == null ? null : (map['relationshipName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

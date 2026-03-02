@@ -37,7 +37,7 @@ class GoogleCloudIntegrationsV1alphaCloudSchedulerConfig {
   factory GoogleCloudIntegrationsV1alphaCloudSchedulerConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaCloudSchedulerConfig(
       cronTab: (map['cronTab'] as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
       location: (map['location'] as String).input(),
       serviceAccountEmail: (map['serviceAccountEmail'] as String).input(),
     );

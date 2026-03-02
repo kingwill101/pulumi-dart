@@ -36,7 +36,7 @@ class GetSiteArgs {
     return GetSiteArgs(
       globalNetworkId: (map['globalNetworkId'] as String).input(),
       siteId: (map['siteId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

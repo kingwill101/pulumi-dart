@@ -30,8 +30,8 @@ class Credentials {
 
   factory Credentials.fromMap(Map<String, dynamic> map) {
     return Credentials(
-      customRegistries: map['customRegistries'] == null ? null : (pulumi.Input.decodeMapValues<CustomRegistryCredentials>(map['customRegistries'], (value) => CustomRegistryCredentials.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceRegistry: map['sourceRegistry'] == null ? null : (SourceRegistryCredentials.fromMap((map['sourceRegistry'] as Map).cast<String, dynamic>())).input(),
+      customRegistries: map['customRegistries'] == null ? null : (pulumi.Input.decodeMapValues<CustomRegistryCredentials>(map['customRegistries']!, (value) => CustomRegistryCredentials.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceRegistry: map['sourceRegistry'] == null ? null : (SourceRegistryCredentials.fromMap((map['sourceRegistry']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

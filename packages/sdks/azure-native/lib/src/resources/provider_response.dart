@@ -48,8 +48,8 @@ class ProviderResponse {
   factory ProviderResponse.fromMap(Map<String, dynamic> map) {
     return ProviderResponse(
       id: (map['id'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      providerAuthorizationConsentState: map['providerAuthorizationConsentState'] == null ? null : (map['providerAuthorizationConsentState'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      providerAuthorizationConsentState: map['providerAuthorizationConsentState'] == null ? null : (map['providerAuthorizationConsentState']! as String).input(),
       registrationPolicy: (map['registrationPolicy'] as String).input(),
       registrationState: (map['registrationState'] as String).input(),
       resourceTypes: (pulumi.Input.decodeList<ProviderResourceTypeResponse>(map['resourceTypes'], (value) => ProviderResourceTypeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),

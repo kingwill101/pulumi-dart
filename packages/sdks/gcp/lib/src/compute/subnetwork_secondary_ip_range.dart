@@ -38,9 +38,9 @@ class SubnetworkSecondaryIpRange {
 
   factory SubnetworkSecondaryIpRange.fromMap(Map<String, dynamic> map) {
     return SubnetworkSecondaryIpRange(
-      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange'] as String).input(),
+      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange']! as String).input(),
       rangeName: (map['rangeName'] as String).input(),
-      reservedInternalRange: map['reservedInternalRange'] == null ? null : (map['reservedInternalRange'] as String).input(),
+      reservedInternalRange: map['reservedInternalRange'] == null ? null : (map['reservedInternalRange']! as String).input(),
     );
   }
 }

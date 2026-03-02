@@ -30,7 +30,7 @@ class GetExportArgs {
   factory GetExportArgs.fromMap(Map<String, dynamic> map) {
     return GetExportArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

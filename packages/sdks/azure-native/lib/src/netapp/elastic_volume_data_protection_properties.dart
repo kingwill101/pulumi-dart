@@ -28,8 +28,8 @@ class ElasticVolumeDataProtectionProperties {
 
   factory ElasticVolumeDataProtectionProperties.fromMap(Map<String, dynamic> map) {
     return ElasticVolumeDataProtectionProperties(
-      backup: map['backup'] == null ? null : (ElasticVolumeBackupProperties.fromMap((map['backup'] as Map).cast<String, dynamic>())).input(),
-      snapshot: map['snapshot'] == null ? null : (ElasticVolumeSnapshotProperties.fromMap((map['snapshot'] as Map).cast<String, dynamic>())).input(),
+      backup: map['backup'] == null ? null : (ElasticVolumeBackupProperties.fromMap((map['backup']! as Map).cast<String, dynamic>())).input(),
+      snapshot: map['snapshot'] == null ? null : (ElasticVolumeSnapshotProperties.fromMap((map['snapshot']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

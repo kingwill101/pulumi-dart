@@ -31,7 +31,7 @@ class AppTemplateHttpScaleRule {
 
   factory AppTemplateHttpScaleRule.fromMap(Map<String, dynamic> map) {
     return AppTemplateHttpScaleRule(
-      authentications: map['authentications'] == null ? null : (pulumi.Input.decodeList<AppTemplateHttpScaleRuleAuthentication>(map['authentications'], (value) => AppTemplateHttpScaleRuleAuthentication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authentications: map['authentications'] == null ? null : (pulumi.Input.decodeList<AppTemplateHttpScaleRuleAuthentication>(map['authentications']!, (value) => AppTemplateHttpScaleRuleAuthentication.fromMap((value as Map).cast<String, dynamic>()))).input(),
       concurrentRequests: (map['concurrentRequests'] as String).input(),
       name: (map['name'] as String).input(),
     );

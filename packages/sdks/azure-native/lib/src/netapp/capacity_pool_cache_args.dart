@@ -61,13 +61,13 @@ class CapacityPoolCacheArgs {
   factory CapacityPoolCacheArgs.fromMap(Map<String, dynamic> map) {
     return CapacityPoolCacheArgs(
       accountName: (map['accountName'] as String).input(),
-      cacheName: map['cacheName'] == null ? null : (map['cacheName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      cacheName: map['cacheName'] == null ? null : (map['cacheName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       poolName: (map['poolName'] as String).input(),
       properties: (CacheProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

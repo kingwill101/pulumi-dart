@@ -46,10 +46,10 @@ class CatalogArgs {
 
   factory CatalogArgs.fromMap(Map<String, dynamic> map) {
     return CatalogArgs(
-      catalogAdogit: map['catalogAdogit'] == null ? null : (CatalogCatalogAdogit.fromMap((map['catalogAdogit'] as Map).cast<String, dynamic>())).input(),
-      catalogGithub: map['catalogGithub'] == null ? null : (CatalogCatalogGithub.fromMap((map['catalogGithub'] as Map).cast<String, dynamic>())).input(),
+      catalogAdogit: map['catalogAdogit'] == null ? null : (CatalogCatalogAdogit.fromMap((map['catalogAdogit']! as Map).cast<String, dynamic>())).input(),
+      catalogGithub: map['catalogGithub'] == null ? null : (CatalogCatalogGithub.fromMap((map['catalogGithub']! as Map).cast<String, dynamic>())).input(),
       devCenterId: (map['devCenterId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

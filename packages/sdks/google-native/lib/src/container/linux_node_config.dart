@@ -27,8 +27,8 @@ class LinuxNodeConfig {
 
   factory LinuxNodeConfig.fromMap(Map<String, dynamic> map) {
     return LinuxNodeConfig(
-      cgroupMode: map['cgroupMode'] == null ? null : (LinuxNodeConfigCgroupMode.fromValue(map['cgroupMode'] as String)).input(),
-      sysctls: map['sysctls'] == null ? null : ((map['sysctls'] as Map).cast<String, String>()).input(),
+      cgroupMode: map['cgroupMode'] == null ? null : (LinuxNodeConfigCgroupMode.fromValue(map['cgroupMode']! as String)).input(),
+      sysctls: map['sysctls'] == null ? null : ((map['sysctls']! as Map).cast<String, String>()).input(),
     );
   }
 }

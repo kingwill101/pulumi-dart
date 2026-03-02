@@ -30,9 +30,9 @@ class DomainDevicesDiskBlockIo {
 
   factory DomainDevicesDiskBlockIo.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBlockIo(
-      discardGranularity: map['discardGranularity'] == null ? null : (map['discardGranularity'] as double).input(),
-      logicalBlockSize: map['logicalBlockSize'] == null ? null : (map['logicalBlockSize'] as double).input(),
-      physicalBlockSize: map['physicalBlockSize'] == null ? null : (map['physicalBlockSize'] as double).input(),
+      discardGranularity: map['discardGranularity'] == null ? null : (map['discardGranularity']! as double).input(),
+      logicalBlockSize: map['logicalBlockSize'] == null ? null : (map['logicalBlockSize']! as double).input(),
+      physicalBlockSize: map['physicalBlockSize'] == null ? null : (map['physicalBlockSize']! as double).input(),
     );
   }
 }

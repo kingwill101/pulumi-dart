@@ -45,12 +45,12 @@ class JobMapTaskXattrs {
 
   factory JobMapTaskXattrs.fromMap(Map<String, dynamic> map) {
     return JobMapTaskXattrs(
-      consumerSize: map['consumerSize'] == null ? null : (map['consumerSize'] as int).input(),
-      dispatcherSize: map['dispatcherSize'] == null ? null : (map['dispatcherSize'] as int).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
-      queueSize: map['queueSize'] == null ? null : (map['queueSize'] as int).input(),
-      taskAttemptInterval: map['taskAttemptInterval'] == null ? null : (map['taskAttemptInterval'] as int).input(),
-      taskMaxAttempt: map['taskMaxAttempt'] == null ? null : (map['taskMaxAttempt'] as int).input(),
+      consumerSize: map['consumerSize'] == null ? null : (map['consumerSize']! as int).input(),
+      dispatcherSize: map['dispatcherSize'] == null ? null : (map['dispatcherSize']! as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
+      queueSize: map['queueSize'] == null ? null : (map['queueSize']! as int).input(),
+      taskAttemptInterval: map['taskAttemptInterval'] == null ? null : (map['taskAttemptInterval']! as int).input(),
+      taskMaxAttempt: map['taskMaxAttempt'] == null ? null : (map['taskMaxAttempt']! as int).input(),
     );
   }
 }

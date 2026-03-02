@@ -26,8 +26,8 @@ class TransitOptionParams {
 
   factory TransitOptionParams.fromMap(Map<String, dynamic> map) {
     return TransitOptionParams(
-      remoteVirtualNetworkId: map['remoteVirtualNetworkId'] == null ? null : (map['remoteVirtualNetworkId'] as String).input(),
-      scaleUnits: map['scaleUnits'] == null ? null : (map['scaleUnits'] as double).input(),
+      remoteVirtualNetworkId: map['remoteVirtualNetworkId'] == null ? null : (map['remoteVirtualNetworkId']! as String).input(),
+      scaleUnits: map['scaleUnits'] == null ? null : (map['scaleUnits']! as double).input(),
     );
   }
 }

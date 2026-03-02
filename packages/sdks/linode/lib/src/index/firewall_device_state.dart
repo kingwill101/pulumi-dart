@@ -41,11 +41,11 @@ class FirewallDeviceState {
 
   factory FirewallDeviceState.fromMap(Map<String, dynamic> map) {
     return FirewallDeviceState(
-      created: map['created'] == null ? null : (map['created'] as String).input(),
-      entityId: map['entityId'] == null ? null : (map['entityId'] as int).input(),
-      entityType: map['entityType'] == null ? null : (map['entityType'] as String).input(),
-      firewallId: map['firewallId'] == null ? null : (map['firewallId'] as int).input(),
-      updated: map['updated'] == null ? null : (map['updated'] as String).input(),
+      created: map['created'] == null ? null : (map['created']! as String).input(),
+      entityId: map['entityId'] == null ? null : (map['entityId']! as int).input(),
+      entityType: map['entityType'] == null ? null : (map['entityType']! as String).input(),
+      firewallId: map['firewallId'] == null ? null : (map['firewallId']! as int).input(),
+      updated: map['updated'] == null ? null : (map['updated']! as String).input(),
     );
   }
 }

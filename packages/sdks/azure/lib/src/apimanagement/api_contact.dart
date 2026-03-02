@@ -30,9 +30,9 @@ class ApiContact {
 
   factory ApiContact.fromMap(Map<String, dynamic> map) {
     return ApiContact(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

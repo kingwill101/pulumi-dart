@@ -63,13 +63,13 @@ class RoutineRouteArgs {
 
   factory RoutineRouteArgs.fromMap(Map<String, dynamic> map) {
     return RoutineRouteArgs(
-      bypass: map['bypass'] == null ? null : (map['bypass'] as String).input(),
-      fallback: map['fallback'] == null ? null : (map['fallback'] as String).input(),
-      routeEnable: map['routeEnable'] == null ? null : (map['routeEnable'] as String).input(),
-      routeName: map['routeName'] == null ? null : (map['routeName'] as String).input(),
+      bypass: map['bypass'] == null ? null : (map['bypass']! as String).input(),
+      fallback: map['fallback'] == null ? null : (map['fallback']! as String).input(),
+      routeEnable: map['routeEnable'] == null ? null : (map['routeEnable']! as String).input(),
+      routeName: map['routeName'] == null ? null : (map['routeName']! as String).input(),
       routineName: (map['routineName'] as String).input(),
-      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
-      sequence: map['sequence'] == null ? null : (map['sequence'] as int).input(),
+      rule: map['rule'] == null ? null : (map['rule']! as String).input(),
+      sequence: map['sequence'] == null ? null : (map['sequence']! as int).input(),
       siteId: (map['siteId'] as String).input(),
     );
   }

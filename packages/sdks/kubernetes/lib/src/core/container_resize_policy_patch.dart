@@ -26,8 +26,8 @@ class ContainerResizePolicyPatch {
 
   factory ContainerResizePolicyPatch.fromMap(Map<String, dynamic> map) {
     return ContainerResizePolicyPatch(
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
-      restartPolicy: map['restartPolicy'] == null ? null : (map['restartPolicy'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
+      restartPolicy: map['restartPolicy'] == null ? null : (map['restartPolicy']! as String).input(),
     );
   }
 }

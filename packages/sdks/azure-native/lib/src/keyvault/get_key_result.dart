@@ -92,19 +92,19 @@ class GetKeyResult {
 
   factory GetKeyResult.fromMap(Map<String, dynamic> map) {
     return GetKeyResult(
-      attributes: map['attributes'] == null ? null : KeyAttributesResponse.fromMap((map['attributes'] as Map).cast<String, dynamic>()),
+      attributes: map['attributes'] == null ? null : KeyAttributesResponse.fromMap((map['attributes']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
-      curveName: map['curveName'] == null ? null : map['curveName'] as String,
+      curveName: map['curveName'] == null ? null : map['curveName']! as String,
       id: map['id'] as String,
-      keyOps: map['keyOps'] == null ? null : (map['keyOps'] as List).cast<String>(),
-      keySize: map['keySize'] == null ? null : map['keySize'] as int,
+      keyOps: map['keyOps'] == null ? null : (map['keyOps']! as List).cast<String>(),
+      keySize: map['keySize'] == null ? null : map['keySize']! as int,
       keyUri: map['keyUri'] as String,
       keyUriWithVersion: map['keyUriWithVersion'] as String,
-      kty: map['kty'] == null ? null : map['kty'] as String,
+      kty: map['kty'] == null ? null : map['kty']! as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      releasePolicy: map['releasePolicy'] == null ? null : KeyReleasePolicyResponse.fromMap((map['releasePolicy'] as Map).cast<String, dynamic>()),
-      rotationPolicy: map['rotationPolicy'] == null ? null : RotationPolicyResponse.fromMap((map['rotationPolicy'] as Map).cast<String, dynamic>()),
+      releasePolicy: map['releasePolicy'] == null ? null : KeyReleasePolicyResponse.fromMap((map['releasePolicy']! as Map).cast<String, dynamic>()),
+      rotationPolicy: map['rotationPolicy'] == null ? null : RotationPolicyResponse.fromMap((map['rotationPolicy']! as Map).cast<String, dynamic>()),
       tags: (map['tags'] as Map).cast<String, String>(),
       type: map['type'] as String,
     );

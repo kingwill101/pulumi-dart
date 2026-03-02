@@ -46,11 +46,11 @@ class RecordSetRoutingPolicy {
 
   factory RecordSetRoutingPolicy.fromMap(Map<String, dynamic> map) {
     return RecordSetRoutingPolicy(
-      enableGeoFencing: map['enableGeoFencing'] == null ? null : (map['enableGeoFencing'] as bool).input(),
-      geos: map['geos'] == null ? null : (pulumi.Input.decodeList<RecordSetRoutingPolicyGeo>(map['geos'], (value) => RecordSetRoutingPolicyGeo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      healthCheck: map['healthCheck'] == null ? null : (map['healthCheck'] as String).input(),
-      primaryBackup: map['primaryBackup'] == null ? null : (RecordSetRoutingPolicyPrimaryBackup.fromMap((map['primaryBackup'] as Map).cast<String, dynamic>())).input(),
-      wrrs: map['wrrs'] == null ? null : (pulumi.Input.decodeList<RecordSetRoutingPolicyWrr>(map['wrrs'], (value) => RecordSetRoutingPolicyWrr.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableGeoFencing: map['enableGeoFencing'] == null ? null : (map['enableGeoFencing']! as bool).input(),
+      geos: map['geos'] == null ? null : (pulumi.Input.decodeList<RecordSetRoutingPolicyGeo>(map['geos']!, (value) => RecordSetRoutingPolicyGeo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      healthCheck: map['healthCheck'] == null ? null : (map['healthCheck']! as String).input(),
+      primaryBackup: map['primaryBackup'] == null ? null : (RecordSetRoutingPolicyPrimaryBackup.fromMap((map['primaryBackup']! as Map).cast<String, dynamic>())).input(),
+      wrrs: map['wrrs'] == null ? null : (pulumi.Input.decodeList<RecordSetRoutingPolicyWrr>(map['wrrs']!, (value) => RecordSetRoutingPolicyWrr.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

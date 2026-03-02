@@ -34,9 +34,9 @@ class PoolType {
 
   factory PoolType.fromMap(Map<String, dynamic> map) {
     return PoolType(
-      azureDisk: map['azureDisk'] == null ? null : (AzureDisk.fromMap((map['azureDisk'] as Map).cast<String, dynamic>())).input(),
-      elasticSan: map['elasticSan'] == null ? null : (ElasticSan.fromMap((map['elasticSan'] as Map).cast<String, dynamic>())).input(),
-      ephemeralDisk: map['ephemeralDisk'] == null ? null : (EphemeralDisk.fromMap((map['ephemeralDisk'] as Map).cast<String, dynamic>())).input(),
+      azureDisk: map['azureDisk'] == null ? null : (AzureDisk.fromMap((map['azureDisk']! as Map).cast<String, dynamic>())).input(),
+      elasticSan: map['elasticSan'] == null ? null : (ElasticSan.fromMap((map['elasticSan']! as Map).cast<String, dynamic>())).input(),
+      ephemeralDisk: map['ephemeralDisk'] == null ? null : (EphemeralDisk.fromMap((map['ephemeralDisk']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

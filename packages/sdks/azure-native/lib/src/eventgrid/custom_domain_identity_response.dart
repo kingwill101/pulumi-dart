@@ -26,8 +26,8 @@ class CustomDomainIdentityResponse {
 
   factory CustomDomainIdentityResponse.fromMap(Map<String, dynamic> map) {
     return CustomDomainIdentityResponse(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']! as String).input(),
     );
   }
 }

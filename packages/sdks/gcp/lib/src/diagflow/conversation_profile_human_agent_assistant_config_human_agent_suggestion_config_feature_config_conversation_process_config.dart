@@ -20,7 +20,7 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
 
   factory ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfig(
-      recentSentencesCount: map['recentSentencesCount'] == null ? null : (map['recentSentencesCount'] as int).input(),
+      recentSentencesCount: map['recentSentencesCount'] == null ? null : (map['recentSentencesCount']! as int).input(),
     );
   }
 }

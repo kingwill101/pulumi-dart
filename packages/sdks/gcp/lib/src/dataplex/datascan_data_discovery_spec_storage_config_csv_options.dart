@@ -40,11 +40,11 @@ class DatascanDataDiscoverySpecStorageConfigCsvOptions {
 
   factory DatascanDataDiscoverySpecStorageConfigCsvOptions.fromMap(Map<String, dynamic> map) {
     return DatascanDataDiscoverySpecStorageConfigCsvOptions(
-      delimiter: map['delimiter'] == null ? null : (map['delimiter'] as String).input(),
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
-      headerRows: map['headerRows'] == null ? null : (map['headerRows'] as int).input(),
-      quote: map['quote'] == null ? null : (map['quote'] as String).input(),
-      typeInferenceDisabled: map['typeInferenceDisabled'] == null ? null : (map['typeInferenceDisabled'] as bool).input(),
+      delimiter: map['delimiter'] == null ? null : (map['delimiter']! as String).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
+      headerRows: map['headerRows'] == null ? null : (map['headerRows']! as int).input(),
+      quote: map['quote'] == null ? null : (map['quote']! as String).input(),
+      typeInferenceDisabled: map['typeInferenceDisabled'] == null ? null : (map['typeInferenceDisabled']! as bool).input(),
     );
   }
 }

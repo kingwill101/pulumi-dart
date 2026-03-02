@@ -43,7 +43,7 @@ class ManagedPrivateEndpointArgs {
 
   factory ManagedPrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ManagedPrivateEndpointArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       subresourceName: (map['subresourceName'] as String).input(),
       synapseWorkspaceId: (map['synapseWorkspaceId'] as String).input(),
       targetResourceId: (map['targetResourceId'] as String).input(),

@@ -38,9 +38,9 @@ class URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule {
 
   factory URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule(
-      matchResponseCodes: map['matchResponseCodes'] == null ? null : ((map['matchResponseCodes'] as List).cast<String>()).input(),
-      overrideResponseCode: map['overrideResponseCode'] == null ? null : (map['overrideResponseCode'] as int).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      matchResponseCodes: map['matchResponseCodes'] == null ? null : ((map['matchResponseCodes']! as List).cast<String>()).input(),
+      overrideResponseCode: map['overrideResponseCode'] == null ? null : (map['overrideResponseCode']! as int).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

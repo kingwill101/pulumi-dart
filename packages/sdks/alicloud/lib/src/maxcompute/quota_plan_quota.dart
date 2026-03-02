@@ -30,8 +30,8 @@ class QuotaPlanQuota {
 
   factory QuotaPlanQuota.fromMap(Map<String, dynamic> map) {
     return QuotaPlanQuota(
-      parameter: map['parameter'] == null ? null : (QuotaPlanQuotaParameter.fromMap((map['parameter'] as Map).cast<String, dynamic>())).input(),
-      subQuotaInfoLists: map['subQuotaInfoLists'] == null ? null : (pulumi.Input.decodeList<QuotaPlanQuotaSubQuotaInfoList>(map['subQuotaInfoLists'], (value) => QuotaPlanQuotaSubQuotaInfoList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameter: map['parameter'] == null ? null : (QuotaPlanQuotaParameter.fromMap((map['parameter']! as Map).cast<String, dynamic>())).input(),
+      subQuotaInfoLists: map['subQuotaInfoLists'] == null ? null : (pulumi.Input.decodeList<QuotaPlanQuotaSubQuotaInfoList>(map['subQuotaInfoLists']!, (value) => QuotaPlanQuotaSubQuotaInfoList.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

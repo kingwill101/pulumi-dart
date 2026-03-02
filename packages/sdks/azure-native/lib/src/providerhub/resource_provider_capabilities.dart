@@ -32,7 +32,7 @@ class ResourceProviderCapabilities {
     return ResourceProviderCapabilities(
       effect: (map['effect'] as String).input(),
       quotaId: (map['quotaId'] as String).input(),
-      requiredFeatures: map['requiredFeatures'] == null ? null : ((map['requiredFeatures'] as List).cast<String>()).input(),
+      requiredFeatures: map['requiredFeatures'] == null ? null : ((map['requiredFeatures']! as List).cast<String>()).input(),
     );
   }
 }

@@ -38,10 +38,10 @@ class AwsConfigServiceConfigurationRecorderPropertiesResponse {
 
   factory AwsConfigServiceConfigurationRecorderPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsConfigServiceConfigurationRecorderPropertiesResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recordingGroup: map['recordingGroup'] == null ? null : (RecordingGroupResponse.fromMap((map['recordingGroup'] as Map).cast<String, dynamic>())).input(),
-      recordingMode: map['recordingMode'] == null ? null : (RecordingModeResponse.fromMap((map['recordingMode'] as Map).cast<String, dynamic>())).input(),
-      roleARN: map['roleARN'] == null ? null : (map['roleARN'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      recordingGroup: map['recordingGroup'] == null ? null : (RecordingGroupResponse.fromMap((map['recordingGroup']! as Map).cast<String, dynamic>())).input(),
+      recordingMode: map['recordingMode'] == null ? null : (RecordingModeResponse.fromMap((map['recordingMode']! as Map).cast<String, dynamic>())).input(),
+      roleARN: map['roleARN'] == null ? null : (map['roleARN']! as String).input(),
     );
   }
 }

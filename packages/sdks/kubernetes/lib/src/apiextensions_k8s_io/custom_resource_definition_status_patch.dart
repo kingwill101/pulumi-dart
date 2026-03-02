@@ -38,10 +38,10 @@ class CustomResourceDefinitionStatusPatch {
 
   factory CustomResourceDefinitionStatusPatch.fromMap(Map<String, dynamic> map) {
     return CustomResourceDefinitionStatusPatch(
-      acceptedNames: map['acceptedNames'] == null ? null : (CustomResourceDefinitionNamesPatch.fromMap((map['acceptedNames'] as Map).cast<String, dynamic>())).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<CustomResourceDefinitionConditionPatch>(map['conditions'], (value) => CustomResourceDefinitionConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
-      storedVersions: map['storedVersions'] == null ? null : ((map['storedVersions'] as List).cast<String>()).input(),
+      acceptedNames: map['acceptedNames'] == null ? null : (CustomResourceDefinitionNamesPatch.fromMap((map['acceptedNames']! as Map).cast<String, dynamic>())).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<CustomResourceDefinitionConditionPatch>(map['conditions']!, (value) => CustomResourceDefinitionConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
+      storedVersions: map['storedVersions'] == null ? null : ((map['storedVersions']! as List).cast<String>()).input(),
     );
   }
 }

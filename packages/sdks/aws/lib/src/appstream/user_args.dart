@@ -57,11 +57,11 @@ class UserArgs {
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
       authenticationType: (map['authenticationType'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      firstName: map['firstName'] == null ? null : (map['firstName'] as String).input(),
-      lastName: map['lastName'] == null ? null : (map['lastName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sendEmailNotification: map['sendEmailNotification'] == null ? null : (map['sendEmailNotification'] as bool).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      firstName: map['firstName'] == null ? null : ((map['firstName'] as String).input()).input(),
+      lastName: map['lastName'] == null ? null : ((map['lastName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sendEmailNotification: map['sendEmailNotification'] == null ? null : ((map['sendEmailNotification'] as bool).input()).input(),
       userName: (map['userName'] as String).input(),
     );
   }

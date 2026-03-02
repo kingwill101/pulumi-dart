@@ -35,8 +35,8 @@ class AzureMonitorWorkspaceLogsExporter {
   factory AzureMonitorWorkspaceLogsExporter.fromMap(Map<String, dynamic> map) {
     return AzureMonitorWorkspaceLogsExporter(
       api: (AzureMonitorWorkspaceLogsApiConfig.fromMap((map['api'] as Map).cast<String, dynamic>())).input(),
-      cache: map['cache'] == null ? null : (CacheConfiguration.fromMap((map['cache'] as Map).cast<String, dynamic>())).input(),
-      concurrency: map['concurrency'] == null ? null : (ConcurrencyConfiguration.fromMap((map['concurrency'] as Map).cast<String, dynamic>())).input(),
+      cache: map['cache'] == null ? null : (CacheConfiguration.fromMap((map['cache']! as Map).cast<String, dynamic>())).input(),
+      concurrency: map['concurrency'] == null ? null : (ConcurrencyConfiguration.fromMap((map['concurrency']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

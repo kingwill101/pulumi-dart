@@ -27,7 +27,7 @@ class WebAclRuleStatementRateBasedStatementCustomKeyCookie {
   factory WebAclRuleStatementRateBasedStatementCustomKeyCookie.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatementCustomKeyCookie(
       name: (map['name'] as String).input(),
-      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementCustomKeyCookieTextTransformation>(map['textTransformations'], (value) => WebAclRuleStatementRateBasedStatementCustomKeyCookieTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementCustomKeyCookieTextTransformation>(map['textTransformations']!, (value) => WebAclRuleStatementRateBasedStatementCustomKeyCookieTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

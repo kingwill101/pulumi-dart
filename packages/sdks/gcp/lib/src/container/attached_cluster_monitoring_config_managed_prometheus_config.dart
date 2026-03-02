@@ -20,7 +20,7 @@ class AttachedClusterMonitoringConfigManagedPrometheusConfig {
 
   factory AttachedClusterMonitoringConfigManagedPrometheusConfig.fromMap(Map<String, dynamic> map) {
     return AttachedClusterMonitoringConfigManagedPrometheusConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

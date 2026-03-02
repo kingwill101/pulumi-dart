@@ -93,13 +93,13 @@ class GetWCFRelayResult {
       listenerCount: map['listenerCount'] as int,
       location: map['location'] as String,
       name: map['name'] as String,
-      relayType: map['relayType'] == null ? null : map['relayType'] as String,
-      requiresClientAuthorization: map['requiresClientAuthorization'] == null ? null : map['requiresClientAuthorization'] as bool,
-      requiresTransportSecurity: map['requiresTransportSecurity'] == null ? null : map['requiresTransportSecurity'] as bool,
+      relayType: map['relayType'] == null ? null : map['relayType']! as String,
+      requiresClientAuthorization: map['requiresClientAuthorization'] == null ? null : map['requiresClientAuthorization']! as bool,
+      requiresTransportSecurity: map['requiresTransportSecurity'] == null ? null : map['requiresTransportSecurity']! as bool,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       updatedAt: map['updatedAt'] as String,
-      userMetadata: map['userMetadata'] == null ? null : map['userMetadata'] as String,
+      userMetadata: map['userMetadata'] == null ? null : map['userMetadata']! as String,
     );
   }
 }

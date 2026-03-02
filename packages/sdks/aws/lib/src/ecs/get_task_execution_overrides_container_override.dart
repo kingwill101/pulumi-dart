@@ -52,13 +52,13 @@ class GetTaskExecutionOverridesContainerOverride {
 
   factory GetTaskExecutionOverridesContainerOverride.fromMap(Map<String, dynamic> map) {
     return GetTaskExecutionOverridesContainerOverride(
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      cpu: map['cpu'] == null ? null : (map['cpu'] as int).input(),
-      environments: map['environments'] == null ? null : (pulumi.Input.decodeList<GetTaskExecutionOverridesContainerOverrideEnvironment>(map['environments'], (value) => GetTaskExecutionOverridesContainerOverrideEnvironment.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as int).input(),
-      memoryReservation: map['memoryReservation'] == null ? null : (map['memoryReservation'] as int).input(),
+      commands: map['commands'] == null ? null : (((map['commands'] as List).cast<String>()).input()).input(),
+      cpu: map['cpu'] == null ? null : ((map['cpu'] as int).input()).input(),
+      environments: map['environments'] == null ? null : ((pulumi.Input.decodeList<GetTaskExecutionOverridesContainerOverrideEnvironment>(map['environments']!, (value) => GetTaskExecutionOverridesContainerOverrideEnvironment.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      memory: map['memory'] == null ? null : ((map['memory'] as int).input()).input(),
+      memoryReservation: map['memoryReservation'] == null ? null : ((map['memoryReservation'] as int).input()).input(),
       name: (map['name'] as String).input(),
-      resourceRequirements: map['resourceRequirements'] == null ? null : (pulumi.Input.decodeList<GetTaskExecutionOverridesContainerOverrideResourceRequirement>(map['resourceRequirements'], (value) => GetTaskExecutionOverridesContainerOverrideResourceRequirement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceRequirements: map['resourceRequirements'] == null ? null : ((pulumi.Input.decodeList<GetTaskExecutionOverridesContainerOverrideResourceRequirement>(map['resourceRequirements']!, (value) => GetTaskExecutionOverridesContainerOverrideResourceRequirement.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -48,9 +48,9 @@ class RepositoryIamPolicyArgs {
 
   factory RepositoryIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryIamPolicyArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       policyData: (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       repository: (map['repository'] as String).input(),
     );
   }

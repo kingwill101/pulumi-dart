@@ -116,14 +116,14 @@ class GetRedisEnterpriseResult {
   factory GetRedisEnterpriseResult.fromMap(Map<String, dynamic> map) {
     return GetRedisEnterpriseResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      encryption: map['encryption'] == null ? null : ClusterPropertiesResponseEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
-      highAvailability: map['highAvailability'] == null ? null : map['highAvailability'] as String,
+      encryption: map['encryption'] == null ? null : ClusterPropertiesResponseEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>()),
+      highAvailability: map['highAvailability'] == null ? null : map['highAvailability']! as String,
       hostName: map['hostName'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
       kind: map['kind'] as String,
       location: map['location'] as String,
-      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : map['minimumTlsVersion'] as String,
+      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : map['minimumTlsVersion']! as String,
       name: map['name'] as String,
       privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
@@ -131,9 +131,9 @@ class GetRedisEnterpriseResult {
       redundancyMode: map['redundancyMode'] as String,
       resourceState: map['resourceState'] as String,
       sku: SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      zones: map['zones'] == null ? null : (map['zones'] as List).cast<String>(),
+      zones: map['zones'] == null ? null : (map['zones']! as List).cast<String>(),
     );
   }
 }

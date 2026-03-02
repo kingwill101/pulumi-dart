@@ -22,7 +22,7 @@ class ImageFeatures {
 
   factory ImageFeatures.fromMap(Map<String, dynamic> map) {
     return ImageFeatures(
-      nvmeSupport: map['nvmeSupport'] == null ? null : (map['nvmeSupport'] as String).input(),
+      nvmeSupport: map['nvmeSupport'] == null ? null : (map['nvmeSupport']! as String).input(),
     );
   }
 }

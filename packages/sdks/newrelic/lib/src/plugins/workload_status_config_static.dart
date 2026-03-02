@@ -35,10 +35,10 @@ class WorkloadStatusConfigStatic {
 
   factory WorkloadStatusConfigStatic.fromMap(Map<String, dynamic> map) {
     return WorkloadStatusConfigStatic(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       enabled: (map['enabled'] as bool).input(),
       status: (map['status'] as String).input(),
-      summary: map['summary'] == null ? null : (map['summary'] as String).input(),
+      summary: map['summary'] == null ? null : (map['summary']! as String).input(),
     );
   }
 }

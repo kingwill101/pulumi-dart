@@ -38,10 +38,10 @@ class RouteServerPropagationState {
 
   factory RouteServerPropagationState.fromMap(Map<String, dynamic> map) {
     return RouteServerPropagationState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routeServerId: map['routeServerId'] == null ? null : (map['routeServerId'] as String).input(),
-      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (RouteServerPropagationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      routeServerId: map['routeServerId'] == null ? null : ((map['routeServerId'] as String).input()).input(),
+      routeTableId: map['routeTableId'] == null ? null : ((map['routeTableId'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((RouteServerPropagationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

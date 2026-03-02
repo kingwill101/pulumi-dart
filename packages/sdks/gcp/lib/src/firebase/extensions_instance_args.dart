@@ -40,7 +40,7 @@ class ExtensionsInstanceArgs {
     return ExtensionsInstanceArgs(
       config: (ExtensionsInstanceConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
       instanceId: (map['instanceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -25,7 +25,7 @@ class GetNetworkInsightsAnalysisReturnPathComponentAdditionalDetail {
   factory GetNetworkInsightsAnalysisReturnPathComponentAdditionalDetail.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisReturnPathComponentAdditionalDetail(
       additionalDetailType: (map['additionalDetailType'] as String).input(),
-      components: (pulumi.Input.decodeList<GetNetworkInsightsAnalysisReturnPathComponentAdditionalDetailComponent>(map['components'], (value) => GetNetworkInsightsAnalysisReturnPathComponentAdditionalDetailComponent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      components: (pulumi.Input.decodeList<GetNetworkInsightsAnalysisReturnPathComponentAdditionalDetailComponent>(map['components']!, (value) => GetNetworkInsightsAnalysisReturnPathComponentAdditionalDetailComponent.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

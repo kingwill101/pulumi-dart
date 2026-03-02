@@ -36,7 +36,7 @@ class AclEntryAttachmentArgs {
     return AclEntryAttachmentArgs(
       aclId: (map['aclId'] as String).input(),
       entry: (map['entry'] as String).input(),
-      entryDescription: map['entryDescription'] == null ? null : (map['entryDescription'] as String).input(),
+      entryDescription: map['entryDescription'] == null ? null : (map['entryDescription']! as String).input(),
     );
   }
 }

@@ -41,10 +41,10 @@ class NotificationRegistrationPropertiesResponse {
 
   factory NotificationRegistrationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NotificationRegistrationPropertiesResponse(
-      includedEvents: map['includedEvents'] == null ? null : ((map['includedEvents'] as List).cast<String>()).input(),
-      messageScope: map['messageScope'] == null ? null : (map['messageScope'] as String).input(),
-      notificationEndpoints: map['notificationEndpoints'] == null ? null : (pulumi.Input.decodeList<NotificationEndpointResponse>(map['notificationEndpoints'], (value) => NotificationEndpointResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      notificationMode: map['notificationMode'] == null ? null : (map['notificationMode'] as String).input(),
+      includedEvents: map['includedEvents'] == null ? null : ((map['includedEvents']! as List).cast<String>()).input(),
+      messageScope: map['messageScope'] == null ? null : (map['messageScope']! as String).input(),
+      notificationEndpoints: map['notificationEndpoints'] == null ? null : (pulumi.Input.decodeList<NotificationEndpointResponse>(map['notificationEndpoints']!, (value) => NotificationEndpointResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notificationMode: map['notificationMode'] == null ? null : (map['notificationMode']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

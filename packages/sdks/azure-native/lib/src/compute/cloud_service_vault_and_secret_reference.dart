@@ -27,8 +27,8 @@ class CloudServiceVaultAndSecretReference {
 
   factory CloudServiceVaultAndSecretReference.fromMap(Map<String, dynamic> map) {
     return CloudServiceVaultAndSecretReference(
-      secretUrl: map['secretUrl'] == null ? null : (map['secretUrl'] as String).input(),
-      sourceVault: map['sourceVault'] == null ? null : (SubResource.fromMap((map['sourceVault'] as Map).cast<String, dynamic>())).input(),
+      secretUrl: map['secretUrl'] == null ? null : (map['secretUrl']! as String).input(),
+      sourceVault: map['sourceVault'] == null ? null : (SubResource.fromMap((map['sourceVault']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

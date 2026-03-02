@@ -29,8 +29,8 @@ class GetVolumesArgs {
 
   factory GetVolumesArgs.fromMap(Map<String, dynamic> map) {
     return GetVolumesArgs(
-      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
-      withStatuses: map['withStatuses'] == null ? null : ((map['withStatuses'] as List).cast<String>()).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
+      withStatuses: map['withStatuses'] == null ? null : ((map['withStatuses']! as List).cast<String>()).input(),
     );
   }
 }

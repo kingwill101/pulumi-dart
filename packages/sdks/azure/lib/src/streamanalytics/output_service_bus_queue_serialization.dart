@@ -41,9 +41,9 @@ class OutputServiceBusQueueSerialization {
 
   factory OutputServiceBusQueueSerialization.fromMap(Map<String, dynamic> map) {
     return OutputServiceBusQueueSerialization(
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
-      fieldDelimiter: map['fieldDelimiter'] == null ? null : (map['fieldDelimiter'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
+      fieldDelimiter: map['fieldDelimiter'] == null ? null : (map['fieldDelimiter']! as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

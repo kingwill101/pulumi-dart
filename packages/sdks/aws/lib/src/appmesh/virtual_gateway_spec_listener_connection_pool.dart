@@ -33,9 +33,9 @@ class VirtualGatewaySpecListenerConnectionPool {
 
   factory VirtualGatewaySpecListenerConnectionPool.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecListenerConnectionPool(
-      grpc: map['grpc'] == null ? null : (VirtualGatewaySpecListenerConnectionPoolGrpc.fromMap((map['grpc'] as Map).cast<String, dynamic>())).input(),
-      http: map['http'] == null ? null : (VirtualGatewaySpecListenerConnectionPoolHttp.fromMap((map['http'] as Map).cast<String, dynamic>())).input(),
-      http2: map['http2'] == null ? null : (VirtualGatewaySpecListenerConnectionPoolHttp2.fromMap((map['http2'] as Map).cast<String, dynamic>())).input(),
+      grpc: map['grpc'] == null ? null : ((VirtualGatewaySpecListenerConnectionPoolGrpc.fromMap((map['grpc']! as Map).cast<String, dynamic>())).input()).input(),
+      http: map['http'] == null ? null : ((VirtualGatewaySpecListenerConnectionPoolHttp.fromMap((map['http']! as Map).cast<String, dynamic>())).input()).input(),
+      http2: map['http2'] == null ? null : ((VirtualGatewaySpecListenerConnectionPoolHttp2.fromMap((map['http2']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

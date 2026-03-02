@@ -59,12 +59,12 @@ class ScheduledQueryRulesAlertV2Criteria {
 
   factory ScheduledQueryRulesAlertV2Criteria.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryRulesAlertV2Criteria(
-      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<ScheduledQueryRulesAlertV2CriteriaDimension>(map['dimensions'], (value) => ScheduledQueryRulesAlertV2CriteriaDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      failingPeriods: map['failingPeriods'] == null ? null : (ScheduledQueryRulesAlertV2CriteriaFailingPeriods.fromMap((map['failingPeriods'] as Map).cast<String, dynamic>())).input(),
-      metricMeasureColumn: map['metricMeasureColumn'] == null ? null : (map['metricMeasureColumn'] as String).input(),
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<ScheduledQueryRulesAlertV2CriteriaDimension>(map['dimensions']!, (value) => ScheduledQueryRulesAlertV2CriteriaDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      failingPeriods: map['failingPeriods'] == null ? null : (ScheduledQueryRulesAlertV2CriteriaFailingPeriods.fromMap((map['failingPeriods']! as Map).cast<String, dynamic>())).input(),
+      metricMeasureColumn: map['metricMeasureColumn'] == null ? null : (map['metricMeasureColumn']! as String).input(),
       operator: (map['operator'] as String).input(),
       query: (map['query'] as String).input(),
-      resourceIdColumn: map['resourceIdColumn'] == null ? null : (map['resourceIdColumn'] as String).input(),
+      resourceIdColumn: map['resourceIdColumn'] == null ? null : (map['resourceIdColumn']! as String).input(),
       threshold: (map['threshold'] as double).input(),
       timeAggregationMethod: (map['timeAggregationMethod'] as String).input(),
     );

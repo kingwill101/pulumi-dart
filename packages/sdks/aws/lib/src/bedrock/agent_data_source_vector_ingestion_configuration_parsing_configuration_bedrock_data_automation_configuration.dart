@@ -20,7 +20,7 @@ class AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockData
 
   factory AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockDataAutomationConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockDataAutomationConfiguration(
-      parsingModality: map['parsingModality'] == null ? null : (map['parsingModality'] as String).input(),
+      parsingModality: map['parsingModality'] == null ? null : ((map['parsingModality'] as String).input()).input(),
     );
   }
 }

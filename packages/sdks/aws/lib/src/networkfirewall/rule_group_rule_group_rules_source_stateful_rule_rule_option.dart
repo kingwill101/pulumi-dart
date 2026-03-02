@@ -27,7 +27,7 @@ class RuleGroupRuleGroupRulesSourceStatefulRuleRuleOption {
   factory RuleGroupRuleGroupRulesSourceStatefulRuleRuleOption.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupRulesSourceStatefulRuleRuleOption(
       keyword: (map['keyword'] as String).input(),
-      settings: map['settings'] == null ? null : ((map['settings'] as List).cast<String>()).input(),
+      settings: map['settings'] == null ? null : (((map['settings'] as List).cast<String>()).input()).input(),
     );
   }
 }

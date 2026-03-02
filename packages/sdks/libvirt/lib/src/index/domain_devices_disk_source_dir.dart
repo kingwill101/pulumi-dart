@@ -20,7 +20,7 @@ class DomainDevicesDiskSourceDir {
 
   factory DomainDevicesDiskSourceDir.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskSourceDir(
-      dir: map['dir'] == null ? null : (map['dir'] as String).input(),
+      dir: map['dir'] == null ? null : (map['dir']! as String).input(),
     );
   }
 }

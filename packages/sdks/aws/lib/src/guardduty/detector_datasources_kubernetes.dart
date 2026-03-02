@@ -22,7 +22,7 @@ class DetectorDatasourcesKubernetes {
 
   factory DetectorDatasourcesKubernetes.fromMap(Map<String, dynamic> map) {
     return DetectorDatasourcesKubernetes(
-      auditLogs: (DetectorDatasourcesKubernetesAuditLogs.fromMap((map['auditLogs'] as Map).cast<String, dynamic>())).input(),
+      auditLogs: (DetectorDatasourcesKubernetesAuditLogs.fromMap((map['auditLogs']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

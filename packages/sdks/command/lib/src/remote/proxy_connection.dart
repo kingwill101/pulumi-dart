@@ -66,16 +66,16 @@ class ProxyConnection {
 
   factory ProxyConnection.fromMap(Map<String, dynamic> map) {
     return ProxyConnection(
-      agentSocketPath: map['agentSocketPath'] == null ? null : (map['agentSocketPath'] as String).input(),
-      dialErrorLimit: map['dialErrorLimit'] == null ? null : (map['dialErrorLimit'] as int).input(),
+      agentSocketPath: map['agentSocketPath'] == null ? null : (map['agentSocketPath']! as String).input(),
+      dialErrorLimit: map['dialErrorLimit'] == null ? null : (map['dialErrorLimit']! as int).input(),
       host: (map['host'] as String).input(),
-      hostKey: map['hostKey'] == null ? null : (map['hostKey'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      perDialTimeout: map['perDialTimeout'] == null ? null : (map['perDialTimeout'] as int).input(),
-      port: map['port'] == null ? null : (map['port'] as double).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      privateKeyPassword: map['privateKeyPassword'] == null ? null : (map['privateKeyPassword'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      hostKey: map['hostKey'] == null ? null : (map['hostKey']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      perDialTimeout: map['perDialTimeout'] == null ? null : (map['perDialTimeout']! as int).input(),
+      port: map['port'] == null ? null : (map['port']! as double).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
+      privateKeyPassword: map['privateKeyPassword'] == null ? null : (map['privateKeyPassword']! as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

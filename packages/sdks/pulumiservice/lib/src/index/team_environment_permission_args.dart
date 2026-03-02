@@ -51,10 +51,10 @@ class TeamEnvironmentPermissionArgs {
   factory TeamEnvironmentPermissionArgs.fromMap(Map<String, dynamic> map) {
     return TeamEnvironmentPermissionArgs(
       environment: (map['environment'] as String).input(),
-      maxOpenDuration: map['maxOpenDuration'] == null ? null : (map['maxOpenDuration'] as String).input(),
+      maxOpenDuration: map['maxOpenDuration'] == null ? null : (map['maxOpenDuration']! as String).input(),
       organization: (map['organization'] as String).input(),
       permission: (EnvironmentPermission.fromValue(map['permission'] as String)).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       team: (map['team'] as String).input(),
     );
   }

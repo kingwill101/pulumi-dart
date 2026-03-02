@@ -27,8 +27,8 @@ class TcpRouteRouteAction {
 
   factory TcpRouteRouteAction.fromMap(Map<String, dynamic> map) {
     return TcpRouteRouteAction(
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<TcpRouteRouteDestination>(map['destinations'], (value) => TcpRouteRouteDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      originalDestination: map['originalDestination'] == null ? null : (map['originalDestination'] as bool).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<TcpRouteRouteDestination>(map['destinations']!, (value) => TcpRouteRouteDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      originalDestination: map['originalDestination'] == null ? null : (map['originalDestination']! as bool).input(),
     );
   }
 }

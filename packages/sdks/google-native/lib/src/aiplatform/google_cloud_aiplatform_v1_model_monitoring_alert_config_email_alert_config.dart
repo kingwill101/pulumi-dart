@@ -21,7 +21,7 @@ class GoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfig {
 
   factory GoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfig(
-      userEmails: map['userEmails'] == null ? null : ((map['userEmails'] as List).cast<String>()).input(),
+      userEmails: map['userEmails'] == null ? null : ((map['userEmails']! as List).cast<String>()).input(),
     );
   }
 }

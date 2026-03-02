@@ -47,10 +47,10 @@ class DataDisk {
 
   factory DataDisk.fromMap(Map<String, dynamic> map) {
     return DataDisk(
-      caching: map['caching'] == null ? null : (CachingType.fromValue(map['caching'] as String)).input(),
+      caching: map['caching'] == null ? null : (CachingType.fromValue(map['caching']! as String)).input(),
       diskSizeGB: (map['diskSizeGB'] as int).input(),
       lun: (map['lun'] as int).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (StorageAccountType.fromValue(map['storageAccountType'] as String)).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (StorageAccountType.fromValue(map['storageAccountType']! as String)).input(),
     );
   }
 }

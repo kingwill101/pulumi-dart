@@ -28,8 +28,8 @@ class SecuritySettings {
 
   factory SecuritySettings.fromMap(Map<String, dynamic> map) {
     return SecuritySettings(
-      immutabilitySettings: map['immutabilitySettings'] == null ? null : (ImmutabilitySettings.fromMap((map['immutabilitySettings'] as Map).cast<String, dynamic>())).input(),
-      softDeleteSettings: map['softDeleteSettings'] == null ? null : (SoftDeleteSettings.fromMap((map['softDeleteSettings'] as Map).cast<String, dynamic>())).input(),
+      immutabilitySettings: map['immutabilitySettings'] == null ? null : (ImmutabilitySettings.fromMap((map['immutabilitySettings']! as Map).cast<String, dynamic>())).input(),
+      softDeleteSettings: map['softDeleteSettings'] == null ? null : (SoftDeleteSettings.fromMap((map['softDeleteSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

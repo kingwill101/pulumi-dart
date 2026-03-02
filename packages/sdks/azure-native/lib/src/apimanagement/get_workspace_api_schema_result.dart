@@ -56,13 +56,13 @@ class GetWorkspaceApiSchemaResult {
   factory GetWorkspaceApiSchemaResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceApiSchemaResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      components: map['components'] == null ? null : map['components'],
+      components: map['components'] == null ? null : map['components']!,
       contentType: map['contentType'] as String,
-      definitions: map['definitions'] == null ? null : map['definitions'],
+      definitions: map['definitions'] == null ? null : map['definitions']!,
       id: map['id'] as String,
       name: map['name'] as String,
       type: map['type'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : map['value']! as String,
     );
   }
 }

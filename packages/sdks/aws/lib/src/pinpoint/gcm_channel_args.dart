@@ -47,12 +47,12 @@ class GcmChannelArgs {
 
   factory GcmChannelArgs.fromMap(Map<String, dynamic> map) {
     return GcmChannelArgs(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
+      apiKey: map['apiKey'] == null ? null : ((map['apiKey'] as String).input()).input(),
       applicationId: (map['applicationId'] as String).input(),
-      defaultAuthenticationMethod: map['defaultAuthenticationMethod'] == null ? null : (map['defaultAuthenticationMethod'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceJson: map['serviceJson'] == null ? null : (map['serviceJson'] as String).input(),
+      defaultAuthenticationMethod: map['defaultAuthenticationMethod'] == null ? null : ((map['defaultAuthenticationMethod'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serviceJson: map['serviceJson'] == null ? null : ((map['serviceJson'] as String).input()).input(),
     );
   }
 }

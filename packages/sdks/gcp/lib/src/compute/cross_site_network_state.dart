@@ -36,9 +36,9 @@ class CrossSiteNetworkState {
 
   factory CrossSiteNetworkState.fromMap(Map<String, dynamic> map) {
     return CrossSiteNetworkState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -71,13 +71,13 @@ class EnvironmentArgs {
 
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
-      customProperties: map['customProperties'] == null ? null : (map['customProperties']).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      environmentName: map['environmentName'] == null ? null : (map['environmentName'] as String).input(),
+      customProperties: map['customProperties'] == null ? null : (map['customProperties']!).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      environmentName: map['environmentName'] == null ? null : (map['environmentName']! as String).input(),
       kind: (map['kind'] as String).input(),
-      onboarding: map['onboarding'] == null ? null : (Onboarding.fromMap((map['onboarding'] as Map).cast<String, dynamic>())).input(),
+      onboarding: map['onboarding'] == null ? null : (Onboarding.fromMap((map['onboarding']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      server: map['server'] == null ? null : (EnvironmentServer.fromMap((map['server'] as Map).cast<String, dynamic>())).input(),
+      server: map['server'] == null ? null : (EnvironmentServer.fromMap((map['server']! as Map).cast<String, dynamic>())).input(),
       serviceName: (map['serviceName'] as String).input(),
       title: (map['title'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),

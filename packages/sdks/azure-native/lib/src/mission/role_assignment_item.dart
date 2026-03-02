@@ -27,7 +27,7 @@ class RoleAssignmentItem {
 
   factory RoleAssignmentItem.fromMap(Map<String, dynamic> map) {
     return RoleAssignmentItem(
-      principals: map['principals'] == null ? null : (pulumi.Input.decodeList<Principal>(map['principals'], (value) => Principal.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      principals: map['principals'] == null ? null : (pulumi.Input.decodeList<Principal>(map['principals']!, (value) => Principal.fromMap((value as Map).cast<String, dynamic>()))).input(),
       roleDefinitionId: (map['roleDefinitionId'] as String).input(),
     );
   }

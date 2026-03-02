@@ -57,7 +57,7 @@ class AiFeatureStoreEntityTypeIamBindingArgs {
 
   factory AiFeatureStoreEntityTypeIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreEntityTypeIamBindingArgs(
-      condition: map['condition'] == null ? null : (AiFeatureStoreEntityTypeIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (AiFeatureStoreEntityTypeIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       entitytype: (map['entitytype'] as String).input(),
       featurestore: (map['featurestore'] as String).input(),
       members: ((map['members'] as List).cast<String>()).input(),

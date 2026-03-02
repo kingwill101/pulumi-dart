@@ -79,15 +79,15 @@ class EdifactDelimiterOverrideResponse {
       componentSeparator: (map['componentSeparator'] as int).input(),
       dataElementSeparator: (map['dataElementSeparator'] as int).input(),
       decimalPointIndicator: (map['decimalPointIndicator'] as String).input(),
-      messageAssociationAssignedCode: map['messageAssociationAssignedCode'] == null ? null : (map['messageAssociationAssignedCode'] as String).input(),
-      messageId: map['messageId'] == null ? null : (map['messageId'] as String).input(),
-      messageRelease: map['messageRelease'] == null ? null : (map['messageRelease'] as String).input(),
-      messageVersion: map['messageVersion'] == null ? null : (map['messageVersion'] as String).input(),
+      messageAssociationAssignedCode: map['messageAssociationAssignedCode'] == null ? null : (map['messageAssociationAssignedCode']! as String).input(),
+      messageId: map['messageId'] == null ? null : (map['messageId']! as String).input(),
+      messageRelease: map['messageRelease'] == null ? null : (map['messageRelease']! as String).input(),
+      messageVersion: map['messageVersion'] == null ? null : (map['messageVersion']! as String).input(),
       releaseIndicator: (map['releaseIndicator'] as int).input(),
       repetitionSeparator: (map['repetitionSeparator'] as int).input(),
       segmentTerminator: (map['segmentTerminator'] as int).input(),
       segmentTerminatorSuffix: (map['segmentTerminatorSuffix'] as String).input(),
-      targetNamespace: map['targetNamespace'] == null ? null : (map['targetNamespace'] as String).input(),
+      targetNamespace: map['targetNamespace'] == null ? null : (map['targetNamespace']! as String).input(),
     );
   }
 }

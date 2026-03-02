@@ -27,7 +27,7 @@ class JsonWriteSettings {
 
   factory JsonWriteSettings.fromMap(Map<String, dynamic> map) {
     return JsonWriteSettings(
-      filePattern: map['filePattern'] == null ? null : (map['filePattern']).input(),
+      filePattern: map['filePattern'] == null ? null : (map['filePattern']!).input(),
       type: (map['type'] as String).input(),
     );
   }

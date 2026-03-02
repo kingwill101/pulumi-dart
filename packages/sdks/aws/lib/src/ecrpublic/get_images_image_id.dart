@@ -25,8 +25,8 @@ class GetImagesImageId {
 
   factory GetImagesImageId.fromMap(Map<String, dynamic> map) {
     return GetImagesImageId(
-      imageDigest: map['imageDigest'] == null ? null : (map['imageDigest'] as String).input(),
-      imageTag: map['imageTag'] == null ? null : (map['imageTag'] as String).input(),
+      imageDigest: map['imageDigest'] == null ? null : ((map['imageDigest'] as String).input()).input(),
+      imageTag: map['imageTag'] == null ? null : ((map['imageTag'] as String).input()).input(),
     );
   }
 }

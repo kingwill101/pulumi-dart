@@ -31,8 +31,8 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdju
 
   factory PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment(
-      fixedLikelihood: map['fixedLikelihood'] == null ? null : (map['fixedLikelihood'] as String).input(),
-      relativeLikelihood: map['relativeLikelihood'] == null ? null : (map['relativeLikelihood'] as int).input(),
+      fixedLikelihood: map['fixedLikelihood'] == null ? null : (map['fixedLikelihood']! as String).input(),
+      relativeLikelihood: map['relativeLikelihood'] == null ? null : (map['relativeLikelihood']! as int).input(),
     );
   }
 }

@@ -69,7 +69,7 @@ class GetAccessPointsAccessPoint {
       dataSourceType: (map['dataSourceType'] as String).input(),
       name: (map['name'] as String).input(),
       networkOrigin: (map['networkOrigin'] as String).input(),
-      vpcConfigurations: (pulumi.Input.decodeList<GetAccessPointsAccessPointVpcConfiguration>(map['vpcConfigurations'], (value) => GetAccessPointsAccessPointVpcConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcConfigurations: (pulumi.Input.decodeList<GetAccessPointsAccessPointVpcConfiguration>(map['vpcConfigurations']!, (value) => GetAccessPointsAccessPointVpcConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

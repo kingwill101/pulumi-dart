@@ -27,8 +27,8 @@ class PolicyControllerPolicyContentSpec {
 
   factory PolicyControllerPolicyContentSpec.fromMap(Map<String, dynamic> map) {
     return PolicyControllerPolicyContentSpec(
-      bundles: map['bundles'] == null ? null : ((map['bundles'] as Map).cast<String, String>()).input(),
-      templateLibrary: map['templateLibrary'] == null ? null : (PolicyControllerTemplateLibraryConfig.fromMap((map['templateLibrary'] as Map).cast<String, dynamic>())).input(),
+      bundles: map['bundles'] == null ? null : ((map['bundles']! as Map).cast<String, String>()).input(),
+      templateLibrary: map['templateLibrary'] == null ? null : (PolicyControllerTemplateLibraryConfig.fromMap((map['templateLibrary']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

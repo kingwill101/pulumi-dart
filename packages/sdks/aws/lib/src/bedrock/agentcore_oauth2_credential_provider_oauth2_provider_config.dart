@@ -51,12 +51,12 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfig {
 
   factory AgentcoreOauth2CredentialProviderOauth2ProviderConfig.fromMap(Map<String, dynamic> map) {
     return AgentcoreOauth2CredentialProviderOauth2ProviderConfig(
-      customOauth2ProviderConfig: map['customOauth2ProviderConfig'] == null ? null : (AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfig.fromMap((map['customOauth2ProviderConfig'] as Map).cast<String, dynamic>())).input(),
-      githubOauth2ProviderConfig: map['githubOauth2ProviderConfig'] == null ? null : (AgentcoreOauth2CredentialProviderOauth2ProviderConfigGithubOauth2ProviderConfig.fromMap((map['githubOauth2ProviderConfig'] as Map).cast<String, dynamic>())).input(),
-      googleOauth2ProviderConfig: map['googleOauth2ProviderConfig'] == null ? null : (AgentcoreOauth2CredentialProviderOauth2ProviderConfigGoogleOauth2ProviderConfig.fromMap((map['googleOauth2ProviderConfig'] as Map).cast<String, dynamic>())).input(),
-      microsoftOauth2ProviderConfig: map['microsoftOauth2ProviderConfig'] == null ? null : (AgentcoreOauth2CredentialProviderOauth2ProviderConfigMicrosoftOauth2ProviderConfig.fromMap((map['microsoftOauth2ProviderConfig'] as Map).cast<String, dynamic>())).input(),
-      salesforceOauth2ProviderConfig: map['salesforceOauth2ProviderConfig'] == null ? null : (AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfig.fromMap((map['salesforceOauth2ProviderConfig'] as Map).cast<String, dynamic>())).input(),
-      slackOauth2ProviderConfig: map['slackOauth2ProviderConfig'] == null ? null : (AgentcoreOauth2CredentialProviderOauth2ProviderConfigSlackOauth2ProviderConfig.fromMap((map['slackOauth2ProviderConfig'] as Map).cast<String, dynamic>())).input(),
+      customOauth2ProviderConfig: map['customOauth2ProviderConfig'] == null ? null : ((AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfig.fromMap((map['customOauth2ProviderConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      githubOauth2ProviderConfig: map['githubOauth2ProviderConfig'] == null ? null : ((AgentcoreOauth2CredentialProviderOauth2ProviderConfigGithubOauth2ProviderConfig.fromMap((map['githubOauth2ProviderConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      googleOauth2ProviderConfig: map['googleOauth2ProviderConfig'] == null ? null : ((AgentcoreOauth2CredentialProviderOauth2ProviderConfigGoogleOauth2ProviderConfig.fromMap((map['googleOauth2ProviderConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      microsoftOauth2ProviderConfig: map['microsoftOauth2ProviderConfig'] == null ? null : ((AgentcoreOauth2CredentialProviderOauth2ProviderConfigMicrosoftOauth2ProviderConfig.fromMap((map['microsoftOauth2ProviderConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      salesforceOauth2ProviderConfig: map['salesforceOauth2ProviderConfig'] == null ? null : ((AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfig.fromMap((map['salesforceOauth2ProviderConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      slackOauth2ProviderConfig: map['slackOauth2ProviderConfig'] == null ? null : ((AgentcoreOauth2CredentialProviderOauth2ProviderConfigSlackOauth2ProviderConfig.fromMap((map['slackOauth2ProviderConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

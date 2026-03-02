@@ -34,9 +34,9 @@ class PipelineInputPayloadFormat {
 
   factory PipelineInputPayloadFormat.fromMap(Map<String, dynamic> map) {
     return PipelineInputPayloadFormat(
-      avro: map['avro'] == null ? null : (PipelineInputPayloadFormatAvro.fromMap((map['avro'] as Map).cast<String, dynamic>())).input(),
-      json: map['json'] == null ? null : ((map['json'] as Map).cast<String, dynamic>()).input(),
-      protobuf: map['protobuf'] == null ? null : (PipelineInputPayloadFormatProtobuf.fromMap((map['protobuf'] as Map).cast<String, dynamic>())).input(),
+      avro: map['avro'] == null ? null : (PipelineInputPayloadFormatAvro.fromMap((map['avro']! as Map).cast<String, dynamic>())).input(),
+      json: map['json'] == null ? null : ((map['json']! as Map).cast<String, dynamic>()).input(),
+      protobuf: map['protobuf'] == null ? null : (PipelineInputPayloadFormatProtobuf.fromMap((map['protobuf']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

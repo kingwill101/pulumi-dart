@@ -32,7 +32,7 @@ class GetReportConfigArgs {
   factory GetReportConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetReportConfigArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       reportConfigId: (map['reportConfigId'] as String).input(),
     );
   }

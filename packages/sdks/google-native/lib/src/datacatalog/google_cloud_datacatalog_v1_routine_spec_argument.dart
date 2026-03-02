@@ -32,9 +32,9 @@ class GoogleCloudDatacatalogV1RoutineSpecArgument {
 
   factory GoogleCloudDatacatalogV1RoutineSpecArgument.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1RoutineSpecArgument(
-      mode: map['mode'] == null ? null : (GoogleCloudDatacatalogV1RoutineSpecArgumentMode.fromValue(map['mode'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      mode: map['mode'] == null ? null : (GoogleCloudDatacatalogV1RoutineSpecArgumentMode.fromValue(map['mode']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

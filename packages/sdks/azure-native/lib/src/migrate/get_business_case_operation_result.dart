@@ -69,7 +69,7 @@ class GetBusinessCaseOperationResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       reportStatusDetails: pulumi.Input.decodeList<ReportDetailsResponse>(map['reportStatusDetails'], (value) => ReportDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      settings: map['settings'] == null ? null : SettingsResponse.fromMap((map['settings'] as Map).cast<String, dynamic>()),
+      settings: map['settings'] == null ? null : SettingsResponse.fromMap((map['settings']! as Map).cast<String, dynamic>()),
       state: map['state'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,

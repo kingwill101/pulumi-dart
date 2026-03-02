@@ -22,7 +22,7 @@ class SlsaCheck {
 
   factory SlsaCheck.fromMap(Map<String, dynamic> map) {
     return SlsaCheck(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<VerificationRule>(map['rules'], (value) => VerificationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<VerificationRule>(map['rules']!, (value) => VerificationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

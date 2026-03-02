@@ -29,8 +29,8 @@ class AppVersionSnapshotAgentToolset {
 
   factory AppVersionSnapshotAgentToolset.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAgentToolset(
-      toolIds: map['toolIds'] == null ? null : ((map['toolIds'] as List).cast<String>()).input(),
-      toolset: map['toolset'] == null ? null : (map['toolset'] as String).input(),
+      toolIds: map['toolIds'] == null ? null : ((map['toolIds']! as List).cast<String>()).input(),
+      toolset: map['toolset'] == null ? null : (map['toolset']! as String).input(),
     );
   }
 }

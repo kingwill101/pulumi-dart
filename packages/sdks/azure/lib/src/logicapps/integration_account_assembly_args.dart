@@ -60,12 +60,12 @@ class IntegrationAccountAssemblyArgs {
   factory IntegrationAccountAssemblyArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountAssemblyArgs(
       assemblyName: (map['assemblyName'] as String).input(),
-      assemblyVersion: map['assemblyVersion'] == null ? null : (map['assemblyVersion'] as String).input(),
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      contentLinkUri: map['contentLinkUri'] == null ? null : (map['contentLinkUri'] as String).input(),
+      assemblyVersion: map['assemblyVersion'] == null ? null : (map['assemblyVersion']! as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      contentLinkUri: map['contentLinkUri'] == null ? null : (map['contentLinkUri']! as String).input(),
       integrationAccountName: (map['integrationAccountName'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

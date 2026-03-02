@@ -32,8 +32,8 @@ class GetHmacKeyArgs {
   factory GetHmacKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetHmacKeyArgs(
       accessId: (map['accessId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      userProject: map['userProject'] == null ? null : (map['userProject'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      userProject: map['userProject'] == null ? null : (map['userProject']! as String).input(),
     );
   }
 }

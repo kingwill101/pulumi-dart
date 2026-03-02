@@ -58,13 +58,13 @@ class BackupArgs {
   factory BackupArgs.fromMap(Map<String, dynamic> map) {
     return BackupArgs(
       backupId: (map['backupId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      sourceFileShare: map['sourceFileShare'] == null ? null : (map['sourceFileShare'] as String).input(),
-      sourceInstance: map['sourceInstance'] == null ? null : (map['sourceInstance'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      sourceFileShare: map['sourceFileShare'] == null ? null : (map['sourceFileShare']! as String).input(),
+      sourceInstance: map['sourceInstance'] == null ? null : (map['sourceInstance']! as String).input(),
     );
   }
 }

@@ -37,8 +37,8 @@ class DeploymentExtensionResponse {
 
   factory DeploymentExtensionResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentExtensionResponse(
-      config: map['config'] == null ? null : (pulumi.Input.decodeMapValues<DeploymentExtensionConfigItemResponse>(map['config'], (value) => DeploymentExtensionConfigItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      configId: map['configId'] == null ? null : (map['configId'] as String).input(),
+      config: map['config'] == null ? null : (pulumi.Input.decodeMapValues<DeploymentExtensionConfigItemResponse>(map['config']!, (value) => DeploymentExtensionConfigItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configId: map['configId'] == null ? null : (map['configId']! as String).input(),
       name: (map['name'] as String).input(),
       version: (map['version'] as String).input(),
     );

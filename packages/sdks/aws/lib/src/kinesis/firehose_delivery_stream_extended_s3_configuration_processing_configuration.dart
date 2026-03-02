@@ -26,8 +26,8 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration {
 
   factory FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      processors: map['processors'] == null ? null : (pulumi.Input.decodeList<FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessor>(map['processors'], (value) => FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessor.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      processors: map['processors'] == null ? null : ((pulumi.Input.decodeList<FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessor>(map['processors']!, (value) => FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessor.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

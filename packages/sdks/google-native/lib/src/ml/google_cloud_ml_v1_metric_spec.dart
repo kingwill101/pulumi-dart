@@ -27,8 +27,8 @@ class GoogleCloudMlV1MetricSpec {
 
   factory GoogleCloudMlV1MetricSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1MetricSpec(
-      name: map['name'] == null ? null : (GoogleCloudMlV1MetricSpecName.fromValue(map['name'] as String)).input(),
-      target: map['target'] == null ? null : (map['target'] as int).input(),
+      name: map['name'] == null ? null : (GoogleCloudMlV1MetricSpecName.fromValue(map['name']! as String)).input(),
+      target: map['target'] == null ? null : (map['target']! as int).input(),
     );
   }
 }

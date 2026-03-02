@@ -45,8 +45,8 @@ class RegistryCacheRuleArgs {
   factory RegistryCacheRuleArgs.fromMap(Map<String, dynamic> map) {
     return RegistryCacheRuleArgs(
       containerRegistryId: (map['containerRegistryId'] as String).input(),
-      credentialSetId: map['credentialSetId'] == null ? null : (map['credentialSetId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      credentialSetId: map['credentialSetId'] == null ? null : (map['credentialSetId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       sourceRepo: (map['sourceRepo'] as String).input(),
       targetRepo: (map['targetRepo'] as String).input(),
     );

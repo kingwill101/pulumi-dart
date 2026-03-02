@@ -66,11 +66,11 @@ class ResourceGroupCostManagementExportArgs {
 
   factory ResourceGroupCostManagementExportArgs.fromMap(Map<String, dynamic> map) {
     return ResourceGroupCostManagementExportArgs(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      active: map['active'] == null ? null : (map['active']! as bool).input(),
       exportDataOptions: (ResourceGroupCostManagementExportExportDataOptions.fromMap((map['exportDataOptions'] as Map).cast<String, dynamic>())).input(),
       exportDataStorageLocation: (ResourceGroupCostManagementExportExportDataStorageLocation.fromMap((map['exportDataStorageLocation'] as Map).cast<String, dynamic>())).input(),
-      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       recurrencePeriodEndDate: (map['recurrencePeriodEndDate'] as String).input(),
       recurrencePeriodStartDate: (map['recurrencePeriodStartDate'] as String).input(),
       recurrenceType: (map['recurrenceType'] as String).input(),

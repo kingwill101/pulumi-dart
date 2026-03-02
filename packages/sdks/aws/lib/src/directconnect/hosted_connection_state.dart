@@ -96,22 +96,22 @@ class HostedConnectionState {
 
   factory HostedConnectionState.fromMap(Map<String, dynamic> map) {
     return HostedConnectionState(
-      awsDevice: map['awsDevice'] == null ? null : (map['awsDevice'] as String).input(),
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as String).input(),
-      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
-      connectionRegion: map['connectionRegion'] == null ? null : (map['connectionRegion'] as String).input(),
-      hasLogicalRedundancy: map['hasLogicalRedundancy'] == null ? null : (map['hasLogicalRedundancy'] as String).input(),
-      jumboFrameCapable: map['jumboFrameCapable'] == null ? null : (map['jumboFrameCapable'] as bool).input(),
-      lagId: map['lagId'] == null ? null : (map['lagId'] as String).input(),
-      loaIssueTime: map['loaIssueTime'] == null ? null : (map['loaIssueTime'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ownerAccountId: map['ownerAccountId'] == null ? null : (map['ownerAccountId'] as String).input(),
-      partnerName: map['partnerName'] == null ? null : (map['partnerName'] as String).input(),
-      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      vlan: map['vlan'] == null ? null : (map['vlan'] as int).input(),
+      awsDevice: map['awsDevice'] == null ? null : ((map['awsDevice'] as String).input()).input(),
+      bandwidth: map['bandwidth'] == null ? null : ((map['bandwidth'] as String).input()).input(),
+      connectionId: map['connectionId'] == null ? null : ((map['connectionId'] as String).input()).input(),
+      connectionRegion: map['connectionRegion'] == null ? null : ((map['connectionRegion'] as String).input()).input(),
+      hasLogicalRedundancy: map['hasLogicalRedundancy'] == null ? null : ((map['hasLogicalRedundancy'] as String).input()).input(),
+      jumboFrameCapable: map['jumboFrameCapable'] == null ? null : ((map['jumboFrameCapable'] as bool).input()).input(),
+      lagId: map['lagId'] == null ? null : ((map['lagId'] as String).input()).input(),
+      loaIssueTime: map['loaIssueTime'] == null ? null : ((map['loaIssueTime'] as String).input()).input(),
+      location: map['location'] == null ? null : ((map['location'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      ownerAccountId: map['ownerAccountId'] == null ? null : ((map['ownerAccountId'] as String).input()).input(),
+      partnerName: map['partnerName'] == null ? null : ((map['partnerName'] as String).input()).input(),
+      providerName: map['providerName'] == null ? null : ((map['providerName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      vlan: map['vlan'] == null ? null : ((map['vlan'] as int).input()).input(),
     );
   }
 }

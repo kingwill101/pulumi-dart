@@ -39,10 +39,10 @@ class V2VmSymptom {
 
   factory V2VmSymptom.fromMap(Map<String, dynamic> map) {
     return V2VmSymptom(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      details: map['details'] == null ? null : (map['details'] as String).input(),
-      symptomType: map['symptomType'] == null ? null : (map['symptomType'] as String).input(),
-      workerId: map['workerId'] == null ? null : (map['workerId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      details: map['details'] == null ? null : (map['details']! as String).input(),
+      symptomType: map['symptomType'] == null ? null : (map['symptomType']! as String).input(),
+      workerId: map['workerId'] == null ? null : (map['workerId']! as String).input(),
     );
   }
 }

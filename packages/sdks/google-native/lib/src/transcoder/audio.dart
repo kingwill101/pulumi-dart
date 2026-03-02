@@ -31,9 +31,9 @@ class Audio {
 
   factory Audio.fromMap(Map<String, dynamic> map) {
     return Audio(
-      highBoost: map['highBoost'] == null ? null : (map['highBoost'] as bool).input(),
-      lowBoost: map['lowBoost'] == null ? null : (map['lowBoost'] as bool).input(),
-      lufs: map['lufs'] == null ? null : (map['lufs'] as double).input(),
+      highBoost: map['highBoost'] == null ? null : (map['highBoost']! as bool).input(),
+      lowBoost: map['lowBoost'] == null ? null : (map['lowBoost']! as bool).input(),
+      lufs: map['lufs'] == null ? null : (map['lufs']! as double).input(),
     );
   }
 }

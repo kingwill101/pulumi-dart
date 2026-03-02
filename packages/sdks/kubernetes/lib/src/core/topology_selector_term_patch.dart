@@ -22,7 +22,7 @@ class TopologySelectorTermPatch {
 
   factory TopologySelectorTermPatch.fromMap(Map<String, dynamic> map) {
     return TopologySelectorTermPatch(
-      matchLabelExpressions: map['matchLabelExpressions'] == null ? null : (pulumi.Input.decodeList<TopologySelectorLabelRequirementPatch>(map['matchLabelExpressions'], (value) => TopologySelectorLabelRequirementPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchLabelExpressions: map['matchLabelExpressions'] == null ? null : (pulumi.Input.decodeList<TopologySelectorLabelRequirementPatch>(map['matchLabelExpressions']!, (value) => TopologySelectorLabelRequirementPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

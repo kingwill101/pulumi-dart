@@ -93,15 +93,15 @@ class MetricDescriptorArgs {
 
   factory MetricDescriptorArgs.fromMap(Map<String, dynamic> map) {
     return MetricDescriptorArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<MetricDescriptorLabel>(map['labels'], (value) => MetricDescriptorLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      launchStage: map['launchStage'] == null ? null : (map['launchStage'] as String).input(),
-      metadata: map['metadata'] == null ? null : (MetricDescriptorMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<MetricDescriptorLabel>(map['labels']!, (value) => MetricDescriptorLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      launchStage: map['launchStage'] == null ? null : (map['launchStage']! as String).input(),
+      metadata: map['metadata'] == null ? null : (MetricDescriptorMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
       metricKind: (map['metricKind'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       type: (map['type'] as String).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      unit: map['unit'] == null ? null : (map['unit']! as String).input(),
       valueType: (map['valueType'] as String).input(),
     );
   }

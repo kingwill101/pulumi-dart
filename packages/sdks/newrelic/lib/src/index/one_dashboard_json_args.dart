@@ -29,7 +29,7 @@ class OneDashboardJsonArgs {
 
   factory OneDashboardJsonArgs.fromMap(Map<String, dynamic> map) {
     return OneDashboardJsonArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
       json: (map['json'] as String).input(),
     );
   }

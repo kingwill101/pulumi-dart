@@ -39,10 +39,10 @@ class SubjectFlowcontrolApiserverK8sIoV1beta2 {
 
   factory SubjectFlowcontrolApiserverK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return SubjectFlowcontrolApiserverK8sIoV1beta2(
-      group: map['group'] == null ? null : (GroupSubjectFlowcontrolApiserverK8sIoV1beta2.fromMap((map['group'] as Map).cast<String, dynamic>())).input(),
+      group: map['group'] == null ? null : (GroupSubjectFlowcontrolApiserverK8sIoV1beta2.fromMap((map['group']! as Map).cast<String, dynamic>())).input(),
       kind: (map['kind'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (ServiceAccountSubjectFlowcontrolApiserverK8sIoV1beta2.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>())).input(),
-      user: map['user'] == null ? null : (UserSubjectFlowcontrolApiserverK8sIoV1beta2.fromMap((map['user'] as Map).cast<String, dynamic>())).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (ServiceAccountSubjectFlowcontrolApiserverK8sIoV1beta2.fromMap((map['serviceAccount']! as Map).cast<String, dynamic>())).input(),
+      user: map['user'] == null ? null : (UserSubjectFlowcontrolApiserverK8sIoV1beta2.fromMap((map['user']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

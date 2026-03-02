@@ -30,7 +30,7 @@ class ListRemediationDeploymentsAtSubscriptionArgs {
   factory ListRemediationDeploymentsAtSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return ListRemediationDeploymentsAtSubscriptionArgs(
       remediationName: (map['remediationName'] as String).input(),
-      top: map['top'] == null ? null : (map['top'] as int).input(),
+      top: map['top'] == null ? null : (map['top']! as int).input(),
     );
   }
 }

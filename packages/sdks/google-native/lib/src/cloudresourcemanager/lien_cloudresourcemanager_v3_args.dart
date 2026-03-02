@@ -49,12 +49,12 @@ class LienCloudresourcemanagerV3Args {
 
   factory LienCloudresourcemanagerV3Args.fromMap(Map<String, dynamic> map) {
     return LienCloudresourcemanagerV3Args(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      origin: map['origin'] == null ? null : (map['origin'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
-      restrictions: map['restrictions'] == null ? null : ((map['restrictions'] as List).cast<String>()).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      origin: map['origin'] == null ? null : (map['origin']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
+      restrictions: map['restrictions'] == null ? null : ((map['restrictions']! as List).cast<String>()).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class PropertiesNetworkInjection {
 
   factory PropertiesNetworkInjection.fromMap(Map<String, dynamic> map) {
     return PropertiesNetworkInjection(
-      virtualNetworks: map['virtualNetworks'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkProperties>(map['virtualNetworks'], (value) => VirtualNetworkProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualNetworks: map['virtualNetworks'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkProperties>(map['virtualNetworks']!, (value) => VirtualNetworkProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

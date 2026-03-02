@@ -98,21 +98,21 @@ class GetWebhookResult {
   factory GetWebhookResult.fromMap(Map<String, dynamic> map) {
     return GetWebhookResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      creationTime: map['creationTime'] == null ? null : map['creationTime'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      expiryTime: map['expiryTime'] == null ? null : map['expiryTime'] as String,
+      creationTime: map['creationTime'] == null ? null : map['creationTime']! as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      expiryTime: map['expiryTime'] == null ? null : map['expiryTime']! as String,
       id: map['id'] as String,
-      isEnabled: map['isEnabled'] == null ? null : map['isEnabled'] as bool,
-      lastInvokedTime: map['lastInvokedTime'] == null ? null : map['lastInvokedTime'] as String,
-      lastModifiedBy: map['lastModifiedBy'] == null ? null : map['lastModifiedBy'] as String,
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : map['lastModifiedTime'] as String,
+      isEnabled: map['isEnabled'] == null ? null : map['isEnabled']! as bool,
+      lastInvokedTime: map['lastInvokedTime'] == null ? null : map['lastInvokedTime']! as String,
+      lastModifiedBy: map['lastModifiedBy'] == null ? null : map['lastModifiedBy']! as String,
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : map['lastModifiedTime']! as String,
       name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
-      runOn: map['runOn'] == null ? null : map['runOn'] as String,
-      runbook: map['runbook'] == null ? null : RunbookAssociationPropertyResponse.fromMap((map['runbook'] as Map).cast<String, dynamic>()),
+      parameters: map['parameters'] == null ? null : (map['parameters']! as Map).cast<String, String>(),
+      runOn: map['runOn'] == null ? null : map['runOn']! as String,
+      runbook: map['runbook'] == null ? null : RunbookAssociationPropertyResponse.fromMap((map['runbook']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      uri: map['uri'] == null ? null : map['uri']! as String,
     );
   }
 }

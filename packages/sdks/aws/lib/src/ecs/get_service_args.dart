@@ -40,9 +40,9 @@ class GetServiceArgs {
   factory GetServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceArgs(
       clusterArn: (map['clusterArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       serviceName: (map['serviceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

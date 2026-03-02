@@ -66,16 +66,16 @@ class EnvironmentApiRevisionDeploymentState {
 
   factory EnvironmentApiRevisionDeploymentState.fromMap(Map<String, dynamic> map) {
     return EnvironmentApiRevisionDeploymentState(
-      api: map['api'] == null ? null : (map['api'] as String).input(),
-      basepaths: map['basepaths'] == null ? null : ((map['basepaths'] as List).cast<String>()).input(),
-      deployStartTime: map['deployStartTime'] == null ? null : (map['deployStartTime'] as String).input(),
-      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
-      override: map['override'] == null ? null : (map['override'] as bool).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as int).input(),
-      sequencedRollout: map['sequencedRollout'] == null ? null : (map['sequencedRollout'] as bool).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      api: map['api'] == null ? null : (map['api']! as String).input(),
+      basepaths: map['basepaths'] == null ? null : ((map['basepaths']! as List).cast<String>()).input(),
+      deployStartTime: map['deployStartTime'] == null ? null : (map['deployStartTime']! as String).input(),
+      environment: map['environment'] == null ? null : (map['environment']! as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
+      override: map['override'] == null ? null : (map['override']! as bool).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as int).input(),
+      sequencedRollout: map['sequencedRollout'] == null ? null : (map['sequencedRollout']! as bool).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class PrincipalDefinitionResponse {
 
   factory PrincipalDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return PrincipalDefinitionResponse(
-      attributes: map['attributes'] == null ? null : ((map['attributes'] as List).cast<Map<String, String>>()).input(),
-      clientIds: map['clientIds'] == null ? null : ((map['clientIds'] as List).cast<String>()).input(),
-      usernames: map['usernames'] == null ? null : ((map['usernames'] as List).cast<String>()).input(),
+      attributes: map['attributes'] == null ? null : ((map['attributes']! as List).cast<Map<String, String>>()).input(),
+      clientIds: map['clientIds'] == null ? null : ((map['clientIds']! as List).cast<String>()).input(),
+      usernames: map['usernames'] == null ? null : ((map['usernames']! as List).cast<String>()).input(),
     );
   }
 }

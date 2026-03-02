@@ -38,10 +38,10 @@ class FrontendIPConfigurationProperties {
 
   factory FrontendIPConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return FrontendIPConfigurationProperties(
-      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod'] as String).input(),
-      publicIPAddress: map['publicIPAddress'] == null ? null : (PublicIPAddressArmReference.fromMap((map['publicIPAddress'] as Map).cast<String, dynamic>())).input(),
-      subnet: map['subnet'] == null ? null : (VirtualNetworkSubnetArmReference.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress']! as String).input(),
+      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod']! as String).input(),
+      publicIPAddress: map['publicIPAddress'] == null ? null : (PublicIPAddressArmReference.fromMap((map['publicIPAddress']! as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (VirtualNetworkSubnetArmReference.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

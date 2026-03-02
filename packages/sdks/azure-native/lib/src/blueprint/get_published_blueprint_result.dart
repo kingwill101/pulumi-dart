@@ -80,16 +80,16 @@ class GetPublishedBlueprintResult {
   factory GetPublishedBlueprintResult.fromMap(Map<String, dynamic> map) {
     return GetPublishedBlueprintResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      blueprintName: map['blueprintName'] == null ? null : map['blueprintName'] as String,
-      changeNotes: map['changeNotes'] == null ? null : map['changeNotes'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      blueprintName: map['blueprintName'] == null ? null : map['blueprintName']! as String,
+      changeNotes: map['changeNotes'] == null ? null : map['changeNotes']! as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterDefinitionResponse>(map['parameters'], (value) => ParameterDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      resourceGroups: map['resourceGroups'] == null ? null : pulumi.Input.decodeMapValues<ResourceGroupDefinitionResponse>(map['resourceGroups'], (value) => ResourceGroupDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterDefinitionResponse>(map['parameters']!, (value) => ParameterDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      resourceGroups: map['resourceGroups'] == null ? null : pulumi.Input.decodeMapValues<ResourceGroupDefinitionResponse>(map['resourceGroups']!, (value) => ResourceGroupDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
       status: BlueprintStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
-      targetScope: map['targetScope'] == null ? null : map['targetScope'] as String,
+      targetScope: map['targetScope'] == null ? null : map['targetScope']! as String,
       type: map['type'] as String,
     );
   }

@@ -62,15 +62,15 @@ class MedtechServiceState {
 
   factory MedtechServiceState.fromMap(Map<String, dynamic> map) {
     return MedtechServiceState(
-      deviceMappingJson: map['deviceMappingJson'] == null ? null : (map['deviceMappingJson'] as String).input(),
-      eventhubConsumerGroupName: map['eventhubConsumerGroupName'] == null ? null : (map['eventhubConsumerGroupName'] as String).input(),
-      eventhubName: map['eventhubName'] == null ? null : (map['eventhubName'] as String).input(),
-      eventhubNamespaceName: map['eventhubNamespaceName'] == null ? null : (map['eventhubNamespaceName'] as String).input(),
-      identity: map['identity'] == null ? null : (MedtechServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      deviceMappingJson: map['deviceMappingJson'] == null ? null : (map['deviceMappingJson']! as String).input(),
+      eventhubConsumerGroupName: map['eventhubConsumerGroupName'] == null ? null : (map['eventhubConsumerGroupName']! as String).input(),
+      eventhubName: map['eventhubName'] == null ? null : (map['eventhubName']! as String).input(),
+      eventhubNamespaceName: map['eventhubNamespaceName'] == null ? null : (map['eventhubNamespaceName']! as String).input(),
+      identity: map['identity'] == null ? null : (MedtechServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

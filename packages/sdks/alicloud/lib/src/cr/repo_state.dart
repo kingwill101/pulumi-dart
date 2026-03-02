@@ -47,12 +47,12 @@ class RepoState {
 
   factory RepoState.fromMap(Map<String, dynamic> map) {
     return RepoState(
-      detail: map['detail'] == null ? null : (map['detail'] as String).input(),
-      domainList: map['domainList'] == null ? null : (RepoDomainList.fromMap((map['domainList'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      repoType: map['repoType'] == null ? null : (map['repoType'] as String).input(),
-      summary: map['summary'] == null ? null : (map['summary'] as String).input(),
+      detail: map['detail'] == null ? null : (map['detail']! as String).input(),
+      domainList: map['domainList'] == null ? null : (RepoDomainList.fromMap((map['domainList']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      repoType: map['repoType'] == null ? null : (map['repoType']! as String).input(),
+      summary: map['summary'] == null ? null : (map['summary']! as String).input(),
     );
   }
 }

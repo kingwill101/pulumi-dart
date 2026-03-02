@@ -26,8 +26,8 @@ class TimeZoneOsconfigV1beta {
 
   factory TimeZoneOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return TimeZoneOsconfigV1beta(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class SecurityProfile {
 
   factory SecurityProfile.fromMap(Map<String, dynamic> map) {
     return SecurityProfile(
-      openAccess: map['openAccess'] == null ? null : (EnableState.fromValue(map['openAccess'] as String)).input(),
+      openAccess: map['openAccess'] == null ? null : (EnableState.fromValue(map['openAccess']! as String)).input(),
     );
   }
 }

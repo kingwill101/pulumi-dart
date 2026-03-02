@@ -68,14 +68,14 @@ class KubernetesClusterBackupDatasourceParametersResponse {
 
   factory KubernetesClusterBackupDatasourceParametersResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterBackupDatasourceParametersResponse(
-      backupHookReferences: map['backupHookReferences'] == null ? null : (pulumi.Input.decodeList<NamespacedNameResourceResponse>(map['backupHookReferences'], (value) => NamespacedNameResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      excludedNamespaces: map['excludedNamespaces'] == null ? null : ((map['excludedNamespaces'] as List).cast<String>()).input(),
-      excludedResourceTypes: map['excludedResourceTypes'] == null ? null : ((map['excludedResourceTypes'] as List).cast<String>()).input(),
+      backupHookReferences: map['backupHookReferences'] == null ? null : (pulumi.Input.decodeList<NamespacedNameResourceResponse>(map['backupHookReferences']!, (value) => NamespacedNameResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      excludedNamespaces: map['excludedNamespaces'] == null ? null : ((map['excludedNamespaces']! as List).cast<String>()).input(),
+      excludedResourceTypes: map['excludedResourceTypes'] == null ? null : ((map['excludedResourceTypes']! as List).cast<String>()).input(),
       includeClusterScopeResources: (map['includeClusterScopeResources'] as bool).input(),
-      includedNamespaces: map['includedNamespaces'] == null ? null : ((map['includedNamespaces'] as List).cast<String>()).input(),
-      includedResourceTypes: map['includedResourceTypes'] == null ? null : ((map['includedResourceTypes'] as List).cast<String>()).input(),
-      includedVolumeTypes: map['includedVolumeTypes'] == null ? null : ((map['includedVolumeTypes'] as List).cast<String>()).input(),
-      labelSelectors: map['labelSelectors'] == null ? null : ((map['labelSelectors'] as List).cast<String>()).input(),
+      includedNamespaces: map['includedNamespaces'] == null ? null : ((map['includedNamespaces']! as List).cast<String>()).input(),
+      includedResourceTypes: map['includedResourceTypes'] == null ? null : ((map['includedResourceTypes']! as List).cast<String>()).input(),
+      includedVolumeTypes: map['includedVolumeTypes'] == null ? null : ((map['includedVolumeTypes']! as List).cast<String>()).input(),
+      labelSelectors: map['labelSelectors'] == null ? null : ((map['labelSelectors']! as List).cast<String>()).input(),
       objectType: (map['objectType'] as String).input(),
       snapshotVolumes: (map['snapshotVolumes'] as bool).input(),
     );

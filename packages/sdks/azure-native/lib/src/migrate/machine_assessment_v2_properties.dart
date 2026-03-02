@@ -28,8 +28,8 @@ class MachineAssessmentV2Properties {
 
   factory MachineAssessmentV2Properties.fromMap(Map<String, dynamic> map) {
     return MachineAssessmentV2Properties(
-      scope: map['scope'] == null ? null : (Scope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
-      settings: map['settings'] == null ? null : (MachineAssessmentSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      scope: map['scope'] == null ? null : (Scope.fromMap((map['scope']! as Map).cast<String, dynamic>())).input(),
+      settings: map['settings'] == null ? null : (MachineAssessmentSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

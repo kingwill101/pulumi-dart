@@ -25,8 +25,8 @@ class PhoneNumberStatus {
 
   factory PhoneNumberStatus.fromMap(Map<String, dynamic> map) {
     return PhoneNumberStatus(
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      message: map['message'] == null ? null : ((map['message'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

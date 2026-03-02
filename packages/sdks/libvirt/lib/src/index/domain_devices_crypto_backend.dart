@@ -30,9 +30,9 @@ class DomainDevicesCryptoBackend {
 
   factory DomainDevicesCryptoBackend.fromMap(Map<String, dynamic> map) {
     return DomainDevicesCryptoBackend(
-      builtIn: map['builtIn'] == null ? null : (map['builtIn'] as bool).input(),
-      lkcf: map['lkcf'] == null ? null : (map['lkcf'] as bool).input(),
-      queues: map['queues'] == null ? null : (map['queues'] as double).input(),
+      builtIn: map['builtIn'] == null ? null : (map['builtIn']! as bool).input(),
+      lkcf: map['lkcf'] == null ? null : (map['lkcf']! as bool).input(),
+      queues: map['queues'] == null ? null : (map['queues']! as double).input(),
     );
   }
 }

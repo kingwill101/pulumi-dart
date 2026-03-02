@@ -40,11 +40,11 @@ class AwsIntegrationsCloudfront {
 
   factory AwsIntegrationsCloudfront.fromMap(Map<String, dynamic> map) {
     return AwsIntegrationsCloudfront(
-      fetchLambdasAtEdge: map['fetchLambdasAtEdge'] == null ? null : (map['fetchLambdasAtEdge'] as bool).input(),
-      fetchTags: map['fetchTags'] == null ? null : (map['fetchTags'] as bool).input(),
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
-      tagKey: map['tagKey'] == null ? null : (map['tagKey'] as String).input(),
-      tagValue: map['tagValue'] == null ? null : (map['tagValue'] as String).input(),
+      fetchLambdasAtEdge: map['fetchLambdasAtEdge'] == null ? null : (map['fetchLambdasAtEdge']! as bool).input(),
+      fetchTags: map['fetchTags'] == null ? null : (map['fetchTags']! as bool).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
+      tagKey: map['tagKey'] == null ? null : (map['tagKey']! as String).input(),
+      tagValue: map['tagValue'] == null ? null : (map['tagValue']! as String).input(),
     );
   }
 }

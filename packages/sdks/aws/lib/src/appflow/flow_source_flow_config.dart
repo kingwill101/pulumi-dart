@@ -42,11 +42,11 @@ class FlowSourceFlowConfig {
 
   factory FlowSourceFlowConfig.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfig(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      connectorProfileName: map['connectorProfileName'] == null ? null : (map['connectorProfileName'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : ((map['apiVersion'] as String).input()).input(),
+      connectorProfileName: map['connectorProfileName'] == null ? null : ((map['connectorProfileName'] as String).input()).input(),
       connectorType: (map['connectorType'] as String).input(),
-      incrementalPullConfig: map['incrementalPullConfig'] == null ? null : (FlowSourceFlowConfigIncrementalPullConfig.fromMap((map['incrementalPullConfig'] as Map).cast<String, dynamic>())).input(),
-      sourceConnectorProperties: (FlowSourceFlowConfigSourceConnectorProperties.fromMap((map['sourceConnectorProperties'] as Map).cast<String, dynamic>())).input(),
+      incrementalPullConfig: map['incrementalPullConfig'] == null ? null : ((FlowSourceFlowConfigIncrementalPullConfig.fromMap((map['incrementalPullConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      sourceConnectorProperties: (FlowSourceFlowConfigSourceConnectorProperties.fromMap((map['sourceConnectorProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

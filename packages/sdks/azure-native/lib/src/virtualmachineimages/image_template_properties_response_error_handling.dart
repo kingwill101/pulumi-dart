@@ -26,8 +26,8 @@ class ImageTemplatePropertiesResponseErrorHandling {
 
   factory ImageTemplatePropertiesResponseErrorHandling.fromMap(Map<String, dynamic> map) {
     return ImageTemplatePropertiesResponseErrorHandling(
-      onCustomizerError: map['onCustomizerError'] == null ? null : (map['onCustomizerError'] as String).input(),
-      onValidationError: map['onValidationError'] == null ? null : (map['onValidationError'] as String).input(),
+      onCustomizerError: map['onCustomizerError'] == null ? null : (map['onCustomizerError']! as String).input(),
+      onValidationError: map['onValidationError'] == null ? null : (map['onValidationError']! as String).input(),
     );
   }
 }

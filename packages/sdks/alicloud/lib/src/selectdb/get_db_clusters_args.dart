@@ -29,8 +29,8 @@ class GetDbClustersArgs {
 
   factory GetDbClustersArgs.fromMap(Map<String, dynamic> map) {
     return GetDbClustersArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

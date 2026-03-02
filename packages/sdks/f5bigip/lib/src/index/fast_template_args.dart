@@ -35,7 +35,7 @@ class FastTemplateArgs {
   factory FastTemplateArgs.fromMap(Map<String, dynamic> map) {
     return FastTemplateArgs(
       md5Hash: (map['md5Hash'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       source: (map['source'] as String).input(),
     );
   }

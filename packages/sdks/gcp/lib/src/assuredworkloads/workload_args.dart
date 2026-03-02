@@ -105,21 +105,21 @@ class WorkloadArgs {
 
   factory WorkloadArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadArgs(
-      billingAccount: map['billingAccount'] == null ? null : (map['billingAccount'] as String).input(),
+      billingAccount: map['billingAccount'] == null ? null : (map['billingAccount']! as String).input(),
       complianceRegime: (map['complianceRegime'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      enableSovereignControls: map['enableSovereignControls'] == null ? null : (map['enableSovereignControls'] as bool).input(),
-      kmsSettings: map['kmsSettings'] == null ? null : (WorkloadKmsSettings.fromMap((map['kmsSettings'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      enableSovereignControls: map['enableSovereignControls'] == null ? null : (map['enableSovereignControls']! as bool).input(),
+      kmsSettings: map['kmsSettings'] == null ? null : (WorkloadKmsSettings.fromMap((map['kmsSettings']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
       organization: (map['organization'] as String).input(),
-      partner: map['partner'] == null ? null : (map['partner'] as String).input(),
-      partnerPermissions: map['partnerPermissions'] == null ? null : (WorkloadPartnerPermissions.fromMap((map['partnerPermissions'] as Map).cast<String, dynamic>())).input(),
-      partnerServicesBillingAccount: map['partnerServicesBillingAccount'] == null ? null : (map['partnerServicesBillingAccount'] as String).input(),
-      provisionedResourcesParent: map['provisionedResourcesParent'] == null ? null : (map['provisionedResourcesParent'] as String).input(),
-      resourceSettings: map['resourceSettings'] == null ? null : (pulumi.Input.decodeList<WorkloadResourceSetting>(map['resourceSettings'], (value) => WorkloadResourceSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      violationNotificationsEnabled: map['violationNotificationsEnabled'] == null ? null : (map['violationNotificationsEnabled'] as bool).input(),
-      workloadOptions: map['workloadOptions'] == null ? null : (WorkloadWorkloadOptions.fromMap((map['workloadOptions'] as Map).cast<String, dynamic>())).input(),
+      partner: map['partner'] == null ? null : (map['partner']! as String).input(),
+      partnerPermissions: map['partnerPermissions'] == null ? null : (WorkloadPartnerPermissions.fromMap((map['partnerPermissions']! as Map).cast<String, dynamic>())).input(),
+      partnerServicesBillingAccount: map['partnerServicesBillingAccount'] == null ? null : (map['partnerServicesBillingAccount']! as String).input(),
+      provisionedResourcesParent: map['provisionedResourcesParent'] == null ? null : (map['provisionedResourcesParent']! as String).input(),
+      resourceSettings: map['resourceSettings'] == null ? null : (pulumi.Input.decodeList<WorkloadResourceSetting>(map['resourceSettings']!, (value) => WorkloadResourceSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      violationNotificationsEnabled: map['violationNotificationsEnabled'] == null ? null : (map['violationNotificationsEnabled']! as bool).input(),
+      workloadOptions: map['workloadOptions'] == null ? null : (WorkloadWorkloadOptions.fromMap((map['workloadOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

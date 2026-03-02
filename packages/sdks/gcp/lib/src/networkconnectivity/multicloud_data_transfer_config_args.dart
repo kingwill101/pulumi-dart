@@ -56,12 +56,12 @@ class MulticloudDataTransferConfigArgs {
 
   factory MulticloudDataTransferConfigArgs.fromMap(Map<String, dynamic> map) {
     return MulticloudDataTransferConfigArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      services: map['services'] == null ? null : (pulumi.Input.decodeList<MulticloudDataTransferConfigService>(map['services'], (value) => MulticloudDataTransferConfigService.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      services: map['services'] == null ? null : (pulumi.Input.decodeList<MulticloudDataTransferConfigService>(map['services']!, (value) => MulticloudDataTransferConfigService.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

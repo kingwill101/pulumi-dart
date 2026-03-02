@@ -21,7 +21,7 @@ class PlacementGroupStrategyEnumValueResponse {
 
   factory PlacementGroupStrategyEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return PlacementGroupStrategyEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

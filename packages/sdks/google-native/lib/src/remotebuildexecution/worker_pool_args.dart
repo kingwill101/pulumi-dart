@@ -64,15 +64,15 @@ class WorkerPoolArgs {
 
   factory WorkerPoolArgs.fromMap(Map<String, dynamic> map) {
     return WorkerPoolArgs(
-      autoscale: map['autoscale'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale.fromMap((map['autoscale'] as Map).cast<String, dynamic>())).input(),
-      channel: map['channel'] == null ? null : (map['channel'] as String).input(),
+      autoscale: map['autoscale'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale.fromMap((map['autoscale']! as Map).cast<String, dynamic>())).input(),
+      channel: map['channel'] == null ? null : (map['channel']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      poolId: map['poolId'] == null ? null : (map['poolId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      workerConfig: map['workerConfig'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig.fromMap((map['workerConfig'] as Map).cast<String, dynamic>())).input(),
-      workerCount: map['workerCount'] == null ? null : (map['workerCount'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      poolId: map['poolId'] == null ? null : (map['poolId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      workerConfig: map['workerConfig'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig.fromMap((map['workerConfig']! as Map).cast<String, dynamic>())).input(),
+      workerCount: map['workerCount'] == null ? null : (map['workerCount']! as String).input(),
     );
   }
 }

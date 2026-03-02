@@ -66,16 +66,16 @@ class CorrelationFilterResponse {
 
   factory CorrelationFilterResponse.fromMap(Map<String, dynamic> map) {
     return CorrelationFilterResponse(
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      correlationId: map['correlationId'] == null ? null : (map['correlationId'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      messageId: map['messageId'] == null ? null : (map['messageId'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      replyTo: map['replyTo'] == null ? null : (map['replyTo'] as String).input(),
-      replyToSessionId: map['replyToSessionId'] == null ? null : (map['replyToSessionId'] as String).input(),
-      requiresPreprocessing: map['requiresPreprocessing'] == null ? null : (map['requiresPreprocessing'] as bool).input(),
-      sessionId: map['sessionId'] == null ? null : (map['sessionId'] as String).input(),
-      to: map['to'] == null ? null : (map['to'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      correlationId: map['correlationId'] == null ? null : (map['correlationId']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      messageId: map['messageId'] == null ? null : (map['messageId']! as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      replyTo: map['replyTo'] == null ? null : (map['replyTo']! as String).input(),
+      replyToSessionId: map['replyToSessionId'] == null ? null : (map['replyToSessionId']! as String).input(),
+      requiresPreprocessing: map['requiresPreprocessing'] == null ? null : (map['requiresPreprocessing']! as bool).input(),
+      sessionId: map['sessionId'] == null ? null : (map['sessionId']! as String).input(),
+      to: map['to'] == null ? null : (map['to']! as String).input(),
     );
   }
 }

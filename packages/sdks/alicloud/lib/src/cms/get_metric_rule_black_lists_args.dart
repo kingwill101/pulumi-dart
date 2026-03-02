@@ -61,15 +61,15 @@ class GetMetricRuleBlackListsArgs {
 
   factory GetMetricRuleBlackListsArgs.fromMap(Map<String, dynamic> map) {
     return GetMetricRuleBlackListsArgs(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      metricRuleBlackListId: map['metricRuleBlackListId'] == null ? null : (map['metricRuleBlackListId'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      order: map['order'] == null ? null : (map['order'] as int).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      metricRuleBlackListId: map['metricRuleBlackListId'] == null ? null : (map['metricRuleBlackListId']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      order: map['order'] == null ? null : (map['order']! as int).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber']! as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
     );
   }
 }

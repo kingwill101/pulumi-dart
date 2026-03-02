@@ -26,8 +26,8 @@ class PipelineStageOnFailureCondition {
 
   factory PipelineStageOnFailureCondition.fromMap(Map<String, dynamic> map) {
     return PipelineStageOnFailureCondition(
-      result: map['result'] == null ? null : (map['result'] as String).input(),
-      rules: (pulumi.Input.decodeList<PipelineStageOnFailureConditionRule>(map['rules'], (value) => PipelineStageOnFailureConditionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      result: map['result'] == null ? null : ((map['result'] as String).input()).input(),
+      rules: (pulumi.Input.decodeList<PipelineStageOnFailureConditionRule>(map['rules']!, (value) => PipelineStageOnFailureConditionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

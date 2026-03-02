@@ -54,15 +54,15 @@ class GetDeviceGroupsResult {
 
   factory GetDeviceGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetDeviceGroupsResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
-      groupName: map['groupName'] == null ? null : map['groupName'] as String,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      groupName: map['groupName'] == null ? null : map['groupName']! as String,
       groups: pulumi.Input.decodeList<GetDeviceGroupsGroup>(map['groups'], (value) => GetDeviceGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      iotInstanceId: map['iotInstanceId'] == null ? null : map['iotInstanceId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      superGroupId: map['superGroupId'] == null ? null : map['superGroupId'] as String,
+      iotInstanceId: map['iotInstanceId'] == null ? null : map['iotInstanceId']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      superGroupId: map['superGroupId'] == null ? null : map['superGroupId']! as String,
     );
   }
 }

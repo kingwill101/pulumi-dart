@@ -21,7 +21,7 @@ class GalleryScriptVersionSafetyProfile {
 
   factory GalleryScriptVersionSafetyProfile.fromMap(Map<String, dynamic> map) {
     return GalleryScriptVersionSafetyProfile(
-      allowDeletionOfReplicatedLocations: map['allowDeletionOfReplicatedLocations'] == null ? null : (map['allowDeletionOfReplicatedLocations'] as bool).input(),
+      allowDeletionOfReplicatedLocations: map['allowDeletionOfReplicatedLocations'] == null ? null : (map['allowDeletionOfReplicatedLocations']! as bool).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class VpcNatGatewayEgress {
 
   factory VpcNatGatewayEgress.fromMap(Map<String, dynamic> map) {
     return VpcNatGatewayEgress(
-      publicGateways: map['publicGateways'] == null ? null : (pulumi.Input.decodeList<VpcNatGatewayEgressPublicGateway>(map['publicGateways'], (value) => VpcNatGatewayEgressPublicGateway.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicGateways: map['publicGateways'] == null ? null : (pulumi.Input.decodeList<VpcNatGatewayEgressPublicGateway>(map['publicGateways']!, (value) => VpcNatGatewayEgressPublicGateway.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

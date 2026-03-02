@@ -42,11 +42,11 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSett
 
   factory CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings.fromMap(Map<String, dynamic> map) {
     return CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      endpointingTimeoutDuration: map['endpointingTimeoutDuration'] == null ? null : (map['endpointingTimeoutDuration'] as String).input(),
-      finishDigit: map['finishDigit'] == null ? null : (map['finishDigit'] as String).input(),
-      interdigitTimeoutDuration: map['interdigitTimeoutDuration'] == null ? null : (map['interdigitTimeoutDuration'] as String).input(),
-      maxDigits: map['maxDigits'] == null ? null : (map['maxDigits'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      endpointingTimeoutDuration: map['endpointingTimeoutDuration'] == null ? null : (map['endpointingTimeoutDuration']! as String).input(),
+      finishDigit: map['finishDigit'] == null ? null : (map['finishDigit']! as String).input(),
+      interdigitTimeoutDuration: map['interdigitTimeoutDuration'] == null ? null : (map['interdigitTimeoutDuration']! as String).input(),
+      maxDigits: map['maxDigits'] == null ? null : (map['maxDigits']! as int).input(),
     );
   }
 }

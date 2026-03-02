@@ -51,13 +51,13 @@ class AnomalyAlertState {
 
   factory AnomalyAlertState.fromMap(Map<String, dynamic> map) {
     return AnomalyAlertState(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      emailAddresses: map['emailAddresses'] == null ? null : ((map['emailAddresses'] as List).cast<String>()).input(),
-      emailSubject: map['emailSubject'] == null ? null : (map['emailSubject'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationEmail: map['notificationEmail'] == null ? null : (map['notificationEmail'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      emailAddresses: map['emailAddresses'] == null ? null : ((map['emailAddresses']! as List).cast<String>()).input(),
+      emailSubject: map['emailSubject'] == null ? null : (map['emailSubject']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notificationEmail: map['notificationEmail'] == null ? null : (map['notificationEmail']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

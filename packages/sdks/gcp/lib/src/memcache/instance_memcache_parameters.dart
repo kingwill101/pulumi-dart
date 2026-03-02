@@ -26,8 +26,8 @@ class InstanceMemcacheParameters {
 
   factory InstanceMemcacheParameters.fromMap(Map<String, dynamic> map) {
     return InstanceMemcacheParameters(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      params: map['params'] == null ? null : ((map['params'] as Map).cast<String, String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      params: map['params'] == null ? null : ((map['params']! as Map).cast<String, String>()).input(),
     );
   }
 }

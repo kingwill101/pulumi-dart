@@ -37,10 +37,10 @@ class ForwardedValues {
 
   factory ForwardedValues.fromMap(Map<String, dynamic> map) {
     return ForwardedValues(
-      cookies: map['cookies'] == null ? null : (Cookies.fromMap((map['cookies'] as Map).cast<String, dynamic>())).input(),
-      headers: map['headers'] == null ? null : ((map['headers'] as List).cast<String>()).input(),
-      queryString: map['queryString'] == null ? null : (map['queryString'] as bool).input(),
-      queryStringCacheKeys: map['queryStringCacheKeys'] == null ? null : ((map['queryStringCacheKeys'] as List).cast<String>()).input(),
+      cookies: map['cookies'] == null ? null : (Cookies.fromMap((map['cookies']! as Map).cast<String, dynamic>())).input(),
+      headers: map['headers'] == null ? null : ((map['headers']! as List).cast<String>()).input(),
+      queryString: map['queryString'] == null ? null : (map['queryString']! as bool).input(),
+      queryStringCacheKeys: map['queryStringCacheKeys'] == null ? null : ((map['queryStringCacheKeys']! as List).cast<String>()).input(),
     );
   }
 }

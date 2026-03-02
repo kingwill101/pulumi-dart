@@ -54,15 +54,15 @@ class GetServerDisksResult {
 
   factory GetServerDisksResult.fromMap(Map<String, dynamic> map) {
     return GetServerDisksResult(
-      diskType: map['diskType'] == null ? null : map['diskType'] as String,
+      diskType: map['diskType'] == null ? null : map['diskType']! as String,
       disks: pulumi.Input.decodeList<GetServerDisksDisk>(map['disks'], (value) => GetServerDisksDisk.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      instanceId: map['instanceId'] == null ? null : map['instanceId']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

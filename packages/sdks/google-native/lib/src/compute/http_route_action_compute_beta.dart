@@ -62,14 +62,14 @@ class HttpRouteActionComputeBeta {
 
   factory HttpRouteActionComputeBeta.fromMap(Map<String, dynamic> map) {
     return HttpRouteActionComputeBeta(
-      corsPolicy: map['corsPolicy'] == null ? null : (CorsPolicyComputeBeta.fromMap((map['corsPolicy'] as Map).cast<String, dynamic>())).input(),
-      faultInjectionPolicy: map['faultInjectionPolicy'] == null ? null : (HttpFaultInjectionComputeBeta.fromMap((map['faultInjectionPolicy'] as Map).cast<String, dynamic>())).input(),
-      maxStreamDuration: map['maxStreamDuration'] == null ? null : (DurationComputeBeta.fromMap((map['maxStreamDuration'] as Map).cast<String, dynamic>())).input(),
-      requestMirrorPolicy: map['requestMirrorPolicy'] == null ? null : (RequestMirrorPolicyComputeBeta.fromMap((map['requestMirrorPolicy'] as Map).cast<String, dynamic>())).input(),
-      retryPolicy: map['retryPolicy'] == null ? null : (HttpRetryPolicyComputeBeta.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())).input(),
-      timeout: map['timeout'] == null ? null : (DurationComputeBeta.fromMap((map['timeout'] as Map).cast<String, dynamic>())).input(),
-      urlRewrite: map['urlRewrite'] == null ? null : (UrlRewriteComputeBeta.fromMap((map['urlRewrite'] as Map).cast<String, dynamic>())).input(),
-      weightedBackendServices: map['weightedBackendServices'] == null ? null : (pulumi.Input.decodeList<WeightedBackendServiceComputeBeta>(map['weightedBackendServices'], (value) => WeightedBackendServiceComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      corsPolicy: map['corsPolicy'] == null ? null : (CorsPolicyComputeBeta.fromMap((map['corsPolicy']! as Map).cast<String, dynamic>())).input(),
+      faultInjectionPolicy: map['faultInjectionPolicy'] == null ? null : (HttpFaultInjectionComputeBeta.fromMap((map['faultInjectionPolicy']! as Map).cast<String, dynamic>())).input(),
+      maxStreamDuration: map['maxStreamDuration'] == null ? null : (DurationComputeBeta.fromMap((map['maxStreamDuration']! as Map).cast<String, dynamic>())).input(),
+      requestMirrorPolicy: map['requestMirrorPolicy'] == null ? null : (RequestMirrorPolicyComputeBeta.fromMap((map['requestMirrorPolicy']! as Map).cast<String, dynamic>())).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (HttpRetryPolicyComputeBeta.fromMap((map['retryPolicy']! as Map).cast<String, dynamic>())).input(),
+      timeout: map['timeout'] == null ? null : (DurationComputeBeta.fromMap((map['timeout']! as Map).cast<String, dynamic>())).input(),
+      urlRewrite: map['urlRewrite'] == null ? null : (UrlRewriteComputeBeta.fromMap((map['urlRewrite']! as Map).cast<String, dynamic>())).input(),
+      weightedBackendServices: map['weightedBackendServices'] == null ? null : (pulumi.Input.decodeList<WeightedBackendServiceComputeBeta>(map['weightedBackendServices']!, (value) => WeightedBackendServiceComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

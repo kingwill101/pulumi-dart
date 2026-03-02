@@ -43,8 +43,8 @@ class MongoRoleDefinitionArgs {
   factory MongoRoleDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return MongoRoleDefinitionArgs(
       cosmosMongoDatabaseId: (map['cosmosMongoDatabaseId'] as String).input(),
-      inheritedRoleNames: map['inheritedRoleNames'] == null ? null : ((map['inheritedRoleNames'] as List).cast<String>()).input(),
-      privileges: map['privileges'] == null ? null : (pulumi.Input.decodeList<MongoRoleDefinitionPrivilege>(map['privileges'], (value) => MongoRoleDefinitionPrivilege.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inheritedRoleNames: map['inheritedRoleNames'] == null ? null : ((map['inheritedRoleNames']! as List).cast<String>()).input(),
+      privileges: map['privileges'] == null ? null : (pulumi.Input.decodeList<MongoRoleDefinitionPrivilege>(map['privileges']!, (value) => MongoRoleDefinitionPrivilege.fromMap((value as Map).cast<String, dynamic>()))).input(),
       roleName: (map['roleName'] as String).input(),
     );
   }

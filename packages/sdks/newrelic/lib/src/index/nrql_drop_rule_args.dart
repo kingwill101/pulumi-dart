@@ -39,9 +39,9 @@ class NrqlDropRuleArgs {
 
   factory NrqlDropRuleArgs.fromMap(Map<String, dynamic> map) {
     return NrqlDropRuleArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
       action: (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       nrql: (map['nrql'] as String).input(),
     );
   }

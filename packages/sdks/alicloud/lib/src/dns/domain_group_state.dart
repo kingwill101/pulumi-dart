@@ -31,9 +31,9 @@ class DomainGroupState {
 
   factory DomainGroupState.fromMap(Map<String, dynamic> map) {
     return DomainGroupState(
-      domainGroupName: map['domainGroupName'] == null ? null : (map['domainGroupName'] as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      domainGroupName: map['domainGroupName'] == null ? null : (map['domainGroupName']! as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
     );
   }
 }

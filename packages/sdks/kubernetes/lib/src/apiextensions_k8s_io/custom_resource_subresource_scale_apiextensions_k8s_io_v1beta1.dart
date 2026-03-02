@@ -31,7 +31,7 @@ class CustomResourceSubresourceScaleApiextensionsK8sIoV1beta1 {
 
   factory CustomResourceSubresourceScaleApiextensionsK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CustomResourceSubresourceScaleApiextensionsK8sIoV1beta1(
-      labelSelectorPath: map['labelSelectorPath'] == null ? null : (map['labelSelectorPath'] as String).input(),
+      labelSelectorPath: map['labelSelectorPath'] == null ? null : (map['labelSelectorPath']! as String).input(),
       specReplicasPath: (map['specReplicasPath'] as String).input(),
       statusReplicasPath: (map['statusReplicasPath'] as String).input(),
     );

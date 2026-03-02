@@ -21,7 +21,7 @@ class FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig {
 
   factory FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig.fromMap(Map<String, dynamic> map) {
     return FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
     );
   }
 }

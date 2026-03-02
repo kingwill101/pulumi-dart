@@ -44,10 +44,10 @@ class ResourceClaimStatusResourceK8sIoV1alpha1 {
 
   factory ResourceClaimStatusResourceK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return ResourceClaimStatusResourceK8sIoV1alpha1(
-      allocation: map['allocation'] == null ? null : (AllocationResultResourceK8sIoV1alpha1.fromMap((map['allocation'] as Map).cast<String, dynamic>())).input(),
-      deallocationRequested: map['deallocationRequested'] == null ? null : (map['deallocationRequested'] as bool).input(),
-      driverName: map['driverName'] == null ? null : (map['driverName'] as String).input(),
-      reservedFor: map['reservedFor'] == null ? null : (pulumi.Input.decodeList<ResourceClaimConsumerReferenceResourceK8sIoV1alpha1>(map['reservedFor'], (value) => ResourceClaimConsumerReferenceResourceK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allocation: map['allocation'] == null ? null : (AllocationResultResourceK8sIoV1alpha1.fromMap((map['allocation']! as Map).cast<String, dynamic>())).input(),
+      deallocationRequested: map['deallocationRequested'] == null ? null : (map['deallocationRequested']! as bool).input(),
+      driverName: map['driverName'] == null ? null : (map['driverName']! as String).input(),
+      reservedFor: map['reservedFor'] == null ? null : (pulumi.Input.decodeList<ResourceClaimConsumerReferenceResourceK8sIoV1alpha1>(map['reservedFor']!, (value) => ResourceClaimConsumerReferenceResourceK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

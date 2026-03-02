@@ -36,9 +36,9 @@ class WorkflowIssuesFilter {
 
   factory WorkflowIssuesFilter.fromMap(Map<String, dynamic> map) {
     return WorkflowIssuesFilter(
-      filterId: map['filterId'] == null ? null : (map['filterId'] as String).input(),
+      filterId: map['filterId'] == null ? null : (map['filterId']! as String).input(),
       name: (map['name'] as String).input(),
-      predicates: map['predicates'] == null ? null : (pulumi.Input.decodeList<WorkflowIssuesFilterPredicate>(map['predicates'], (value) => WorkflowIssuesFilterPredicate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      predicates: map['predicates'] == null ? null : (pulumi.Input.decodeList<WorkflowIssuesFilterPredicate>(map['predicates']!, (value) => WorkflowIssuesFilterPredicate.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
     );
   }

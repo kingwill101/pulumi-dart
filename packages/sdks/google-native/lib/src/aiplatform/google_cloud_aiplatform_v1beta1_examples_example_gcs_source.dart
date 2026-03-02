@@ -28,8 +28,8 @@ class GoogleCloudAiplatformV1beta1ExamplesExampleGcsSource {
 
   factory GoogleCloudAiplatformV1beta1ExamplesExampleGcsSource.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ExamplesExampleGcsSource(
-      dataFormat: map['dataFormat'] == null ? null : (GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat.fromValue(map['dataFormat'] as String)).input(),
-      gcsSource: map['gcsSource'] == null ? null : (GoogleCloudAiplatformV1beta1GcsSource.fromMap((map['gcsSource'] as Map).cast<String, dynamic>())).input(),
+      dataFormat: map['dataFormat'] == null ? null : (GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat.fromValue(map['dataFormat']! as String)).input(),
+      gcsSource: map['gcsSource'] == null ? null : (GoogleCloudAiplatformV1beta1GcsSource.fromMap((map['gcsSource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

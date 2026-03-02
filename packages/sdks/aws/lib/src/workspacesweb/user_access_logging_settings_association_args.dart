@@ -37,7 +37,7 @@ class UserAccessLoggingSettingsAssociationArgs {
   factory UserAccessLoggingSettingsAssociationArgs.fromMap(Map<String, dynamic> map) {
     return UserAccessLoggingSettingsAssociationArgs(
       portalArn: (map['portalArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       userAccessLoggingSettingsArn: (map['userAccessLoggingSettingsArn'] as String).input(),
     );
   }

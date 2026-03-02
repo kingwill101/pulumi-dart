@@ -39,9 +39,9 @@ class RegisteredAsnArgs {
 
   factory RegisteredAsnArgs.fromMap(Map<String, dynamic> map) {
     return RegisteredAsnArgs(
-      asn: map['asn'] == null ? null : (map['asn'] as int).input(),
+      asn: map['asn'] == null ? null : (map['asn']! as int).input(),
       peeringName: (map['peeringName'] as String).input(),
-      registeredAsnName: map['registeredAsnName'] == null ? null : (map['registeredAsnName'] as String).input(),
+      registeredAsnName: map['registeredAsnName'] == null ? null : (map['registeredAsnName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

@@ -44,10 +44,10 @@ class LifecyclePolicySelection {
   factory LifecyclePolicySelection.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicySelection(
       countNumber: (map['countNumber'] as int).input(),
-      countType: (LifecyclePolicyCountType.fromValue(map['countType'] as String)).input(),
-      countUnit: map['countUnit'] == null ? null : (map['countUnit'] as String).input(),
-      tagPrefixList: map['tagPrefixList'] == null ? null : ((map['tagPrefixList'] as List).cast<String>()).input(),
-      tagStatus: (LifecyclePolicyTagStatus.fromValue(map['tagStatus'] as String)).input(),
+      countType: (LifecyclePolicyCountType.fromValue(map['countType']! as String)).input(),
+      countUnit: map['countUnit'] == null ? null : ((map['countUnit'] as String).input()).input(),
+      tagPrefixList: map['tagPrefixList'] == null ? null : (((map['tagPrefixList'] as List).cast<String>()).input()).input(),
+      tagStatus: (LifecyclePolicyTagStatus.fromValue(map['tagStatus']! as String)).input(),
     );
   }
 }

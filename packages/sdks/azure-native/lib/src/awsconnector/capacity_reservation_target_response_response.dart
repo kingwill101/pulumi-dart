@@ -26,8 +26,8 @@ class CapacityReservationTargetResponseResponse {
 
   factory CapacityReservationTargetResponseResponse.fromMap(Map<String, dynamic> map) {
     return CapacityReservationTargetResponseResponse(
-      capacityReservationId: map['capacityReservationId'] == null ? null : (map['capacityReservationId'] as String).input(),
-      capacityReservationResourceGroupArn: map['capacityReservationResourceGroupArn'] == null ? null : (map['capacityReservationResourceGroupArn'] as String).input(),
+      capacityReservationId: map['capacityReservationId'] == null ? null : (map['capacityReservationId']! as String).input(),
+      capacityReservationResourceGroupArn: map['capacityReservationResourceGroupArn'] == null ? null : (map['capacityReservationResourceGroupArn']! as String).input(),
     );
   }
 }

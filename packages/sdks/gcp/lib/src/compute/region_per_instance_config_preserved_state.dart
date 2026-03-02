@@ -41,10 +41,10 @@ class RegionPerInstanceConfigPreservedState {
 
   factory RegionPerInstanceConfigPreservedState.fromMap(Map<String, dynamic> map) {
     return RegionPerInstanceConfigPreservedState(
-      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<RegionPerInstanceConfigPreservedStateDisk>(map['disks'], (value) => RegionPerInstanceConfigPreservedStateDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      externalIps: map['externalIps'] == null ? null : (pulumi.Input.decodeList<RegionPerInstanceConfigPreservedStateExternalIp>(map['externalIps'], (value) => RegionPerInstanceConfigPreservedStateExternalIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      internalIps: map['internalIps'] == null ? null : (pulumi.Input.decodeList<RegionPerInstanceConfigPreservedStateInternalIp>(map['internalIps'], (value) => RegionPerInstanceConfigPreservedStateInternalIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<RegionPerInstanceConfigPreservedStateDisk>(map['disks']!, (value) => RegionPerInstanceConfigPreservedStateDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      externalIps: map['externalIps'] == null ? null : (pulumi.Input.decodeList<RegionPerInstanceConfigPreservedStateExternalIp>(map['externalIps']!, (value) => RegionPerInstanceConfigPreservedStateExternalIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      internalIps: map['internalIps'] == null ? null : (pulumi.Input.decodeList<RegionPerInstanceConfigPreservedStateInternalIp>(map['internalIps']!, (value) => RegionPerInstanceConfigPreservedStateInternalIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
     );
   }
 }

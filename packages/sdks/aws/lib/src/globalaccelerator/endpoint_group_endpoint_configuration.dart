@@ -36,10 +36,10 @@ class EndpointGroupEndpointConfiguration {
 
   factory EndpointGroupEndpointConfiguration.fromMap(Map<String, dynamic> map) {
     return EndpointGroupEndpointConfiguration(
-      attachmentArn: map['attachmentArn'] == null ? null : (map['attachmentArn'] as String).input(),
-      clientIpPreservationEnabled: map['clientIpPreservationEnabled'] == null ? null : (map['clientIpPreservationEnabled'] as bool).input(),
-      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      attachmentArn: map['attachmentArn'] == null ? null : ((map['attachmentArn'] as String).input()).input(),
+      clientIpPreservationEnabled: map['clientIpPreservationEnabled'] == null ? null : ((map['clientIpPreservationEnabled'] as bool).input()).input(),
+      endpointId: map['endpointId'] == null ? null : ((map['endpointId'] as String).input()).input(),
+      weight: map['weight'] == null ? null : ((map['weight'] as int).input()).input(),
     );
   }
 }

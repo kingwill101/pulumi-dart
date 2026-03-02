@@ -107,19 +107,19 @@ class JobState {
 
   factory JobState.fromMap(Map<String, dynamic> map) {
     return JobState(
-      appEngineHttpTarget: map['appEngineHttpTarget'] == null ? null : (JobAppEngineHttpTarget.fromMap((map['appEngineHttpTarget'] as Map).cast<String, dynamic>())).input(),
-      attemptDeadline: map['attemptDeadline'] == null ? null : (map['attemptDeadline'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      httpTarget: map['httpTarget'] == null ? null : (JobHttpTarget.fromMap((map['httpTarget'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      paused: map['paused'] == null ? null : (map['paused'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pubsubTarget: map['pubsubTarget'] == null ? null : (JobPubsubTarget.fromMap((map['pubsubTarget'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      retryConfig: map['retryConfig'] == null ? null : (JobRetryConfig.fromMap((map['retryConfig'] as Map).cast<String, dynamic>())).input(),
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      appEngineHttpTarget: map['appEngineHttpTarget'] == null ? null : (JobAppEngineHttpTarget.fromMap((map['appEngineHttpTarget']! as Map).cast<String, dynamic>())).input(),
+      attemptDeadline: map['attemptDeadline'] == null ? null : (map['attemptDeadline']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      httpTarget: map['httpTarget'] == null ? null : (JobHttpTarget.fromMap((map['httpTarget']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      paused: map['paused'] == null ? null : (map['paused']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pubsubTarget: map['pubsubTarget'] == null ? null : (JobPubsubTarget.fromMap((map['pubsubTarget']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      retryConfig: map['retryConfig'] == null ? null : (JobRetryConfig.fromMap((map['retryConfig']! as Map).cast<String, dynamic>())).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

@@ -70,14 +70,14 @@ class PatchDeploymentRecurringSchedule {
 
   factory PatchDeploymentRecurringSchedule.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentRecurringSchedule(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      lastExecuteTime: map['lastExecuteTime'] == null ? null : (map['lastExecuteTime'] as String).input(),
-      monthly: map['monthly'] == null ? null : (PatchDeploymentRecurringScheduleMonthly.fromMap((map['monthly'] as Map).cast<String, dynamic>())).input(),
-      nextExecuteTime: map['nextExecuteTime'] == null ? null : (map['nextExecuteTime'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      lastExecuteTime: map['lastExecuteTime'] == null ? null : (map['lastExecuteTime']! as String).input(),
+      monthly: map['monthly'] == null ? null : (PatchDeploymentRecurringScheduleMonthly.fromMap((map['monthly']! as Map).cast<String, dynamic>())).input(),
+      nextExecuteTime: map['nextExecuteTime'] == null ? null : (map['nextExecuteTime']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
       timeOfDay: (PatchDeploymentRecurringScheduleTimeOfDay.fromMap((map['timeOfDay'] as Map).cast<String, dynamic>())).input(),
       timeZone: (PatchDeploymentRecurringScheduleTimeZone.fromMap((map['timeZone'] as Map).cast<String, dynamic>())).input(),
-      weekly: map['weekly'] == null ? null : (PatchDeploymentRecurringScheduleWeekly.fromMap((map['weekly'] as Map).cast<String, dynamic>())).input(),
+      weekly: map['weekly'] == null ? null : (PatchDeploymentRecurringScheduleWeekly.fromMap((map['weekly']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

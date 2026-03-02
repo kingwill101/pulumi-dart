@@ -27,7 +27,7 @@ class AccountCustomerManagedKey {
 
   factory AccountCustomerManagedKey.fromMap(Map<String, dynamic> map) {
     return AccountCustomerManagedKey(
-      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId']! as String).input(),
       keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
     );
   }

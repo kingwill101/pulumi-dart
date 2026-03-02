@@ -27,8 +27,8 @@ class MaintenancePolicyRedisV1beta1 {
 
   factory MaintenancePolicyRedisV1beta1.fromMap(Map<String, dynamic> map) {
     return MaintenancePolicyRedisV1beta1(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      weeklyMaintenanceWindow: map['weeklyMaintenanceWindow'] == null ? null : (pulumi.Input.decodeList<WeeklyMaintenanceWindowRedisV1beta1>(map['weeklyMaintenanceWindow'], (value) => WeeklyMaintenanceWindowRedisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      weeklyMaintenanceWindow: map['weeklyMaintenanceWindow'] == null ? null : (pulumi.Input.decodeList<WeeklyMaintenanceWindowRedisV1beta1>(map['weeklyMaintenanceWindow']!, (value) => WeeklyMaintenanceWindowRedisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

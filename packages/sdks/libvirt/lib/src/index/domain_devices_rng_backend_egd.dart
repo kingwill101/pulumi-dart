@@ -27,8 +27,8 @@ class DomainDevicesRngBackendEgd {
 
   factory DomainDevicesRngBackendEgd.fromMap(Map<String, dynamic> map) {
     return DomainDevicesRngBackendEgd(
-      protocol: map['protocol'] == null ? null : (DomainDevicesRngBackendEgdProtocol.fromMap((map['protocol'] as Map).cast<String, dynamic>())).input(),
-      source: map['source'] == null ? null : (DomainDevicesRngBackendEgdSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      protocol: map['protocol'] == null ? null : (DomainDevicesRngBackendEgdProtocol.fromMap((map['protocol']! as Map).cast<String, dynamic>())).input(),
+      source: map['source'] == null ? null : (DomainDevicesRngBackendEgdSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

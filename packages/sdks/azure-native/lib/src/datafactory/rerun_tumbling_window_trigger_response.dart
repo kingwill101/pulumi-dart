@@ -57,8 +57,8 @@ class RerunTumblingWindowTriggerResponse {
 
   factory RerunTumblingWindowTriggerResponse.fromMap(Map<String, dynamic> map) {
     return RerunTumblingWindowTriggerResponse(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       parentTrigger: (map['parentTrigger']).input(),
       requestedEndTime: (map['requestedEndTime'] as String).input(),
       requestedStartTime: (map['requestedStartTime'] as String).input(),

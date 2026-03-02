@@ -26,8 +26,8 @@ class NetworkPortGroupVlan {
 
   factory NetworkPortGroupVlan.fromMap(Map<String, dynamic> map) {
     return NetworkPortGroupVlan(
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<NetworkPortGroupVlanTag>(map['tags'], (value) => NetworkPortGroupVlanTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      trunk: map['trunk'] == null ? null : (map['trunk'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<NetworkPortGroupVlanTag>(map['tags']!, (value) => NetworkPortGroupVlanTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      trunk: map['trunk'] == null ? null : (map['trunk']! as String).input(),
     );
   }
 }

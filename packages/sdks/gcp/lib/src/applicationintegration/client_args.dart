@@ -50,11 +50,11 @@ class ClientArgs {
 
   factory ClientArgs.fromMap(Map<String, dynamic> map) {
     return ClientArgs(
-      cloudKmsConfig: map['cloudKmsConfig'] == null ? null : (ClientCloudKmsConfig.fromMap((map['cloudKmsConfig'] as Map).cast<String, dynamic>())).input(),
-      createSampleIntegrations: map['createSampleIntegrations'] == null ? null : (map['createSampleIntegrations'] as bool).input(),
+      cloudKmsConfig: map['cloudKmsConfig'] == null ? null : (ClientCloudKmsConfig.fromMap((map['cloudKmsConfig']! as Map).cast<String, dynamic>())).input(),
+      createSampleIntegrations: map['createSampleIntegrations'] == null ? null : (map['createSampleIntegrations']! as bool).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      runAsServiceAccount: map['runAsServiceAccount'] == null ? null : (map['runAsServiceAccount'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      runAsServiceAccount: map['runAsServiceAccount'] == null ? null : (map['runAsServiceAccount']! as String).input(),
     );
   }
 }

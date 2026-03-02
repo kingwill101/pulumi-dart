@@ -20,7 +20,7 @@ class DomainFeaturesCapabilitiesSetUid {
 
   factory DomainFeaturesCapabilitiesSetUid.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesSetUid(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

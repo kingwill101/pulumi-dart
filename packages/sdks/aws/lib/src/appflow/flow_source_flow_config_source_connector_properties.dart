@@ -111,22 +111,22 @@ class FlowSourceFlowConfigSourceConnectorProperties {
 
   factory FlowSourceFlowConfigSourceConnectorProperties.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorProperties(
-      amplitude: map['amplitude'] == null ? null : (FlowSourceFlowConfigSourceConnectorPropertiesAmplitude.fromMap((map['amplitude'] as Map).cast<String, dynamic>())).input(),
-      customConnector: map['customConnector'] == null ? null : (FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector.fromMap((map['customConnector'] as Map).cast<String, dynamic>())).input(),
-      datadog: map['datadog'] == null ? null : (FlowSourceFlowConfigSourceConnectorPropertiesDatadog.fromMap((map['datadog'] as Map).cast<String, dynamic>())).input(),
-      dynatrace: map['dynatrace'] == null ? null : (FlowSourceFlowConfigSourceConnectorPropertiesDynatrace.fromMap((map['dynatrace'] as Map).cast<String, dynamic>())).input(),
-      googleAnalytics: map['googleAnalytics'] == null ? null : (FlowSourceFlowConfigSourceConnectorPropertiesGoogleAnalytics.fromMap((map['googleAnalytics'] as Map).cast<String, dynamic>())).input(),
-      inforNexus: map['inforNexus'] == null ? null : (FlowSourceFlowConfigSourceConnectorPropertiesInforNexus.fromMap((map['inforNexus'] as Map).cast<String, dynamic>())).input(),
-      marketo: map['marketo'] == null ? null : (FlowSourceFlowConfigSourceConnectorPropertiesMarketo.fromMap((map['marketo'] as Map).cast<String, dynamic>())).input(),
-      s3: map['s3'] == null ? null : (FlowSourceFlowConfigSourceConnectorPropertiesS3.fromMap((map['s3'] as Map).cast<String, dynamic>())).input(),
-      salesforce: map['salesforce'] == null ? null : (FlowSourceFlowConfigSourceConnectorPropertiesSalesforce.fromMap((map['salesforce'] as Map).cast<String, dynamic>())).input(),
-      sapoData: map['sapoData'] == null ? null : (FlowSourceFlowConfigSourceConnectorPropertiesSapoData.fromMap((map['sapoData'] as Map).cast<String, dynamic>())).input(),
-      serviceNow: map['serviceNow'] == null ? null : (FlowSourceFlowConfigSourceConnectorPropertiesServiceNow.fromMap((map['serviceNow'] as Map).cast<String, dynamic>())).input(),
-      singular: map['singular'] == null ? null : (FlowSourceFlowConfigSourceConnectorPropertiesSingular.fromMap((map['singular'] as Map).cast<String, dynamic>())).input(),
-      slack: map['slack'] == null ? null : (FlowSourceFlowConfigSourceConnectorPropertiesSlack.fromMap((map['slack'] as Map).cast<String, dynamic>())).input(),
-      trendmicro: map['trendmicro'] == null ? null : (FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro.fromMap((map['trendmicro'] as Map).cast<String, dynamic>())).input(),
-      veeva: map['veeva'] == null ? null : (FlowSourceFlowConfigSourceConnectorPropertiesVeeva.fromMap((map['veeva'] as Map).cast<String, dynamic>())).input(),
-      zendesk: map['zendesk'] == null ? null : (FlowSourceFlowConfigSourceConnectorPropertiesZendesk.fromMap((map['zendesk'] as Map).cast<String, dynamic>())).input(),
+      amplitude: map['amplitude'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesAmplitude.fromMap((map['amplitude']! as Map).cast<String, dynamic>())).input()).input(),
+      customConnector: map['customConnector'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector.fromMap((map['customConnector']! as Map).cast<String, dynamic>())).input()).input(),
+      datadog: map['datadog'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesDatadog.fromMap((map['datadog']! as Map).cast<String, dynamic>())).input()).input(),
+      dynatrace: map['dynatrace'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesDynatrace.fromMap((map['dynatrace']! as Map).cast<String, dynamic>())).input()).input(),
+      googleAnalytics: map['googleAnalytics'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesGoogleAnalytics.fromMap((map['googleAnalytics']! as Map).cast<String, dynamic>())).input()).input(),
+      inforNexus: map['inforNexus'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesInforNexus.fromMap((map['inforNexus']! as Map).cast<String, dynamic>())).input()).input(),
+      marketo: map['marketo'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesMarketo.fromMap((map['marketo']! as Map).cast<String, dynamic>())).input()).input(),
+      s3: map['s3'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesS3.fromMap((map['s3']! as Map).cast<String, dynamic>())).input()).input(),
+      salesforce: map['salesforce'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesSalesforce.fromMap((map['salesforce']! as Map).cast<String, dynamic>())).input()).input(),
+      sapoData: map['sapoData'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesSapoData.fromMap((map['sapoData']! as Map).cast<String, dynamic>())).input()).input(),
+      serviceNow: map['serviceNow'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesServiceNow.fromMap((map['serviceNow']! as Map).cast<String, dynamic>())).input()).input(),
+      singular: map['singular'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesSingular.fromMap((map['singular']! as Map).cast<String, dynamic>())).input()).input(),
+      slack: map['slack'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesSlack.fromMap((map['slack']! as Map).cast<String, dynamic>())).input()).input(),
+      trendmicro: map['trendmicro'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro.fromMap((map['trendmicro']! as Map).cast<String, dynamic>())).input()).input(),
+      veeva: map['veeva'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesVeeva.fromMap((map['veeva']! as Map).cast<String, dynamic>())).input()).input(),
+      zendesk: map['zendesk'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesZendesk.fromMap((map['zendesk']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

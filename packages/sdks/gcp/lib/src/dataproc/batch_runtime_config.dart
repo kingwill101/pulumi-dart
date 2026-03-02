@@ -48,12 +48,12 @@ class BatchRuntimeConfig {
 
   factory BatchRuntimeConfig.fromMap(Map<String, dynamic> map) {
     return BatchRuntimeConfig(
-      autotuningConfig: map['autotuningConfig'] == null ? null : (BatchRuntimeConfigAutotuningConfig.fromMap((map['autotuningConfig'] as Map).cast<String, dynamic>())).input(),
-      cohort: map['cohort'] == null ? null : (map['cohort'] as String).input(),
-      containerImage: map['containerImage'] == null ? null : (map['containerImage'] as String).input(),
-      effectiveProperties: map['effectiveProperties'] == null ? null : ((map['effectiveProperties'] as Map).cast<String, String>()).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      autotuningConfig: map['autotuningConfig'] == null ? null : (BatchRuntimeConfigAutotuningConfig.fromMap((map['autotuningConfig']! as Map).cast<String, dynamic>())).input(),
+      cohort: map['cohort'] == null ? null : (map['cohort']! as String).input(),
+      containerImage: map['containerImage'] == null ? null : (map['containerImage']! as String).input(),
+      effectiveProperties: map['effectiveProperties'] == null ? null : ((map['effectiveProperties']! as Map).cast<String, String>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

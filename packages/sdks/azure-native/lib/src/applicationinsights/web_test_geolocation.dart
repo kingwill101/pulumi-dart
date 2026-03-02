@@ -21,7 +21,7 @@ class WebTestGeolocation {
 
   factory WebTestGeolocation.fromMap(Map<String, dynamic> map) {
     return WebTestGeolocation(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
     );
   }
 }

@@ -36,7 +36,7 @@ class TopicRuleDestinationVpcConfiguration {
   factory TopicRuleDestinationVpcConfiguration.fromMap(Map<String, dynamic> map) {
     return TopicRuleDestinationVpcConfiguration(
       roleArn: (map['roleArn'] as String).input(),
-      securityGroups: map['securityGroups'] == null ? null : ((map['securityGroups'] as List).cast<String>()).input(),
+      securityGroups: map['securityGroups'] == null ? null : (((map['securityGroups'] as List).cast<String>()).input()).input(),
       subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );

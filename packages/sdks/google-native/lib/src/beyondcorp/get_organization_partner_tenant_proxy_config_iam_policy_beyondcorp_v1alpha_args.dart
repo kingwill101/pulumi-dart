@@ -35,7 +35,7 @@ class GetOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaArgs {
 
   factory GetOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaArgs(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
       organizationId: (map['organizationId'] as String).input(),
       partnerTenantId: (map['partnerTenantId'] as String).input(),
       proxyConfigId: (map['proxyConfigId'] as String).input(),

@@ -52,11 +52,11 @@ class DomainNameArgs {
   factory DomainNameArgs.fromMap(Map<String, dynamic> map) {
     return DomainNameArgs(
       domainName: (map['domainName'] as String).input(),
-      domainNameConfiguration: (DomainNameDomainNameConfiguration.fromMap((map['domainNameConfiguration'] as Map).cast<String, dynamic>())).input(),
-      mutualTlsAuthentication: map['mutualTlsAuthentication'] == null ? null : (DomainNameMutualTlsAuthentication.fromMap((map['mutualTlsAuthentication'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routingMode: map['routingMode'] == null ? null : (map['routingMode'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      domainNameConfiguration: (DomainNameDomainNameConfiguration.fromMap((map['domainNameConfiguration']! as Map).cast<String, dynamic>())).input(),
+      mutualTlsAuthentication: map['mutualTlsAuthentication'] == null ? null : ((DomainNameMutualTlsAuthentication.fromMap((map['mutualTlsAuthentication']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      routingMode: map['routingMode'] == null ? null : ((map['routingMode'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

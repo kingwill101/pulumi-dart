@@ -36,10 +36,10 @@ class BillingProfilePropertiesResponseCurrentPaymentTerm {
 
   factory BillingProfilePropertiesResponseCurrentPaymentTerm.fromMap(Map<String, dynamic> map) {
     return BillingProfilePropertiesResponseCurrentPaymentTerm(
-      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
+      endDate: map['endDate'] == null ? null : (map['endDate']! as String).input(),
       isDefault: (map['isDefault'] as bool).input(),
-      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
-      term: map['term'] == null ? null : (map['term'] as String).input(),
+      startDate: map['startDate'] == null ? null : (map['startDate']! as String).input(),
+      term: map['term'] == null ? null : (map['term']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class RegionBackendServiceNetworkPassThroughLbTrafficPolicy {
 
   factory RegionBackendServiceNetworkPassThroughLbTrafficPolicy.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceNetworkPassThroughLbTrafficPolicy(
-      zonalAffinity: map['zonalAffinity'] == null ? null : (RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity.fromMap((map['zonalAffinity'] as Map).cast<String, dynamic>())).input(),
+      zonalAffinity: map['zonalAffinity'] == null ? null : (RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity.fromMap((map['zonalAffinity']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class CloudProviderProfileResponseInfraStorageProfile {
 
   factory CloudProviderProfileResponseInfraStorageProfile.fromMap(Map<String, dynamic> map) {
     return CloudProviderProfileResponseInfraStorageProfile(
-      storageSpaceIds: map['storageSpaceIds'] == null ? null : ((map['storageSpaceIds'] as List).cast<String>()).input(),
+      storageSpaceIds: map['storageSpaceIds'] == null ? null : ((map['storageSpaceIds']! as List).cast<String>()).input(),
     );
   }
 }

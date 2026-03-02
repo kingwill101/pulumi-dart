@@ -25,8 +25,8 @@ class ProviderIgnoreTags {
 
   factory ProviderIgnoreTags.fromMap(Map<String, dynamic> map) {
     return ProviderIgnoreTags(
-      keyPrefixes: map['keyPrefixes'] == null ? null : ((map['keyPrefixes'] as List).cast<String>()).input(),
-      keys: map['keys'] == null ? null : ((map['keys'] as List).cast<String>()).input(),
+      keyPrefixes: map['keyPrefixes'] == null ? null : (((map['keyPrefixes'] as List).cast<String>()).input()).input(),
+      keys: map['keys'] == null ? null : (((map['keys'] as List).cast<String>()).input()).input(),
     );
   }
 }

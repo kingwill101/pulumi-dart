@@ -30,7 +30,7 @@ class RoutinePythonOptions {
   factory RoutinePythonOptions.fromMap(Map<String, dynamic> map) {
     return RoutinePythonOptions(
       entryPoint: (map['entryPoint'] as String).input(),
-      packages: map['packages'] == null ? null : ((map['packages'] as List).cast<String>()).input(),
+      packages: map['packages'] == null ? null : ((map['packages']! as List).cast<String>()).input(),
     );
   }
 }

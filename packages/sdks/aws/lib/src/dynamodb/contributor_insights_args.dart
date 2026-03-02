@@ -39,9 +39,9 @@ class ContributorInsightsArgs {
 
   factory ContributorInsightsArgs.fromMap(Map<String, dynamic> map) {
     return ContributorInsightsArgs(
-      indexName: map['indexName'] == null ? null : (map['indexName'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      indexName: map['indexName'] == null ? null : ((map['indexName'] as String).input()).input(),
+      mode: map['mode'] == null ? null : ((map['mode'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       tableName: (map['tableName'] as String).input(),
     );
   }

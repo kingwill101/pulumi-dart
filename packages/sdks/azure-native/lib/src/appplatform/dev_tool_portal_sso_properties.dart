@@ -36,10 +36,10 @@ class DevToolPortalSsoProperties {
 
   factory DevToolPortalSsoProperties.fromMap(Map<String, dynamic> map) {
     return DevToolPortalSsoProperties(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      metadataUrl: map['metadataUrl'] == null ? null : (map['metadataUrl'] as String).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      metadataUrl: map['metadataUrl'] == null ? null : (map['metadataUrl']! as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
     );
   }
 }

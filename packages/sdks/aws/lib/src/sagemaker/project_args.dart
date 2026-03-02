@@ -45,11 +45,11 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      projectDescription: map['projectDescription'] == null ? null : (map['projectDescription'] as String).input(),
+      projectDescription: map['projectDescription'] == null ? null : ((map['projectDescription'] as String).input()).input(),
       projectName: (map['projectName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceCatalogProvisioningDetails: (ProjectServiceCatalogProvisioningDetails.fromMap((map['serviceCatalogProvisioningDetails'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serviceCatalogProvisioningDetails: (ProjectServiceCatalogProvisioningDetails.fromMap((map['serviceCatalogProvisioningDetails']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

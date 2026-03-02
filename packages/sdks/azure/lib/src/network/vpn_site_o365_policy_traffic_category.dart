@@ -30,9 +30,9 @@ class VpnSiteO365PolicyTrafficCategory {
 
   factory VpnSiteO365PolicyTrafficCategory.fromMap(Map<String, dynamic> map) {
     return VpnSiteO365PolicyTrafficCategory(
-      allowEndpointEnabled: map['allowEndpointEnabled'] == null ? null : (map['allowEndpointEnabled'] as bool).input(),
-      defaultEndpointEnabled: map['defaultEndpointEnabled'] == null ? null : (map['defaultEndpointEnabled'] as bool).input(),
-      optimizeEndpointEnabled: map['optimizeEndpointEnabled'] == null ? null : (map['optimizeEndpointEnabled'] as bool).input(),
+      allowEndpointEnabled: map['allowEndpointEnabled'] == null ? null : (map['allowEndpointEnabled']! as bool).input(),
+      defaultEndpointEnabled: map['defaultEndpointEnabled'] == null ? null : (map['defaultEndpointEnabled']! as bool).input(),
+      optimizeEndpointEnabled: map['optimizeEndpointEnabled'] == null ? null : (map['optimizeEndpointEnabled']! as bool).input(),
     );
   }
 }

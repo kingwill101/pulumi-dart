@@ -36,10 +36,10 @@ class PutAliasRequestAdditionalProperties {
 
   factory PutAliasRequestAdditionalProperties.fromMap(Map<String, dynamic> map) {
     return PutAliasRequestAdditionalProperties(
-      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId'] as String).input(),
-      subscriptionOwnerId: map['subscriptionOwnerId'] == null ? null : (map['subscriptionOwnerId'] as String).input(),
-      subscriptionTenantId: map['subscriptionTenantId'] == null ? null : (map['subscriptionTenantId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId']! as String).input(),
+      subscriptionOwnerId: map['subscriptionOwnerId'] == null ? null : (map['subscriptionOwnerId']! as String).input(),
+      subscriptionTenantId: map['subscriptionTenantId'] == null ? null : (map['subscriptionTenantId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

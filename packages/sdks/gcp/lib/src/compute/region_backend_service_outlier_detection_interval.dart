@@ -28,7 +28,7 @@ class RegionBackendServiceOutlierDetectionInterval {
 
   factory RegionBackendServiceOutlierDetectionInterval.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceOutlierDetectionInterval(
-      nanos: map['nanos'] == null ? null : (map['nanos'] as int).input(),
+      nanos: map['nanos'] == null ? null : (map['nanos']! as int).input(),
       seconds: (map['seconds'] as int).input(),
     );
   }

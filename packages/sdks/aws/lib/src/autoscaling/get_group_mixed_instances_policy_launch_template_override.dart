@@ -38,9 +38,9 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverride {
 
   factory GetGroupMixedInstancesPolicyLaunchTemplateOverride.fromMap(Map<String, dynamic> map) {
     return GetGroupMixedInstancesPolicyLaunchTemplateOverride(
-      instanceRequirements: (pulumi.Input.decodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement>(map['instanceRequirements'], (value) => GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceRequirements: (pulumi.Input.decodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement>(map['instanceRequirements']!, (value) => GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement.fromMap((value as Map).cast<String, dynamic>()))).input(),
       instanceType: (map['instanceType'] as String).input(),
-      launchTemplateSpecifications: (pulumi.Input.decodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification>(map['launchTemplateSpecifications'], (value) => GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      launchTemplateSpecifications: (pulumi.Input.decodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification>(map['launchTemplateSpecifications']!, (value) => GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
       weightedCapacity: (map['weightedCapacity'] as String).input(),
     );
   }

@@ -57,10 +57,10 @@ class AnomalyAlertArgs {
       displayName: (map['displayName'] as String).input(),
       emailAddresses: ((map['emailAddresses'] as List).cast<String>()).input(),
       emailSubject: (map['emailSubject'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationEmail: map['notificationEmail'] == null ? null : (map['notificationEmail'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notificationEmail: map['notificationEmail'] == null ? null : (map['notificationEmail']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

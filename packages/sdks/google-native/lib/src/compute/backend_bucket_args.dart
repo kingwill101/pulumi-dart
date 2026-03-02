@@ -70,16 +70,16 @@ class BackendBucketArgs {
 
   factory BackendBucketArgs.fromMap(Map<String, dynamic> map) {
     return BackendBucketArgs(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      cdnPolicy: map['cdnPolicy'] == null ? null : (BackendBucketCdnPolicy.fromMap((map['cdnPolicy'] as Map).cast<String, dynamic>())).input(),
-      compressionMode: map['compressionMode'] == null ? null : (BackendBucketCompressionMode.fromValue(map['compressionMode'] as String)).input(),
-      customResponseHeaders: map['customResponseHeaders'] == null ? null : ((map['customResponseHeaders'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enableCdn: map['enableCdn'] == null ? null : (map['enableCdn'] as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
+      cdnPolicy: map['cdnPolicy'] == null ? null : (BackendBucketCdnPolicy.fromMap((map['cdnPolicy']! as Map).cast<String, dynamic>())).input(),
+      compressionMode: map['compressionMode'] == null ? null : (BackendBucketCompressionMode.fromValue(map['compressionMode']! as String)).input(),
+      customResponseHeaders: map['customResponseHeaders'] == null ? null : ((map['customResponseHeaders']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enableCdn: map['enableCdn'] == null ? null : (map['enableCdn']! as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

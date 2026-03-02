@@ -30,8 +30,8 @@ class EventSourcesConfigArgs {
 
   factory EventSourcesConfigArgs.fromMap(Map<String, dynamic> map) {
     return EventSourcesConfigArgs(
-      eventSources: (pulumi.Input.decodeList<EventSourcesConfigEventSource>(map['eventSources'], (value) => EventSourcesConfigEventSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      eventSources: (pulumi.Input.decodeList<EventSourcesConfigEventSource>(map['eventSources']!, (value) => EventSourcesConfigEventSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

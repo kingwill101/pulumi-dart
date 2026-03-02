@@ -33,7 +33,7 @@ class GetAuthorizedCertificateAppengineV1alphaArgs {
     return GetAuthorizedCertificateAppengineV1alphaArgs(
       appId: (map['appId'] as String).input(),
       authorizedCertificateId: (map['authorizedCertificateId'] as String).input(),
-      view: map['view'] == null ? null : (map['view'] as String).input(),
+      view: map['view'] == null ? null : (map['view']! as String).input(),
     );
   }
 }

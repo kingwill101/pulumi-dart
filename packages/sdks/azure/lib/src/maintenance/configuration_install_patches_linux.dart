@@ -30,9 +30,9 @@ class ConfigurationInstallPatchesLinux {
 
   factory ConfigurationInstallPatchesLinux.fromMap(Map<String, dynamic> map) {
     return ConfigurationInstallPatchesLinux(
-      classificationsToIncludes: map['classificationsToIncludes'] == null ? null : ((map['classificationsToIncludes'] as List).cast<String>()).input(),
-      packageNamesMaskToExcludes: map['packageNamesMaskToExcludes'] == null ? null : ((map['packageNamesMaskToExcludes'] as List).cast<String>()).input(),
-      packageNamesMaskToIncludes: map['packageNamesMaskToIncludes'] == null ? null : ((map['packageNamesMaskToIncludes'] as List).cast<String>()).input(),
+      classificationsToIncludes: map['classificationsToIncludes'] == null ? null : ((map['classificationsToIncludes']! as List).cast<String>()).input(),
+      packageNamesMaskToExcludes: map['packageNamesMaskToExcludes'] == null ? null : ((map['packageNamesMaskToExcludes']! as List).cast<String>()).input(),
+      packageNamesMaskToIncludes: map['packageNamesMaskToIncludes'] == null ? null : ((map['packageNamesMaskToIncludes']! as List).cast<String>()).input(),
     );
   }
 }

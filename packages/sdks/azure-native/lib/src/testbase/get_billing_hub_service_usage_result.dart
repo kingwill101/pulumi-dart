@@ -38,11 +38,11 @@ class GetBillingHubServiceUsageResult {
 
   factory GetBillingHubServiceUsageResult.fromMap(Map<String, dynamic> map) {
     return GetBillingHubServiceUsageResult(
-      nextRequest: map['nextRequest'] == null ? null : BillingHubGetUsageRequestResponse.fromMap((map['nextRequest'] as Map).cast<String, dynamic>()),
-      packageUsageEntries: map['packageUsageEntries'] == null ? null : pulumi.Input.decodeList<BillingHubPackageUsageResponse>(map['packageUsageEntries'], (value) => BillingHubPackageUsageResponse.fromMap((value as Map).cast<String, dynamic>())),
-      totalCharges: map['totalCharges'] == null ? null : map['totalCharges'] as double,
-      totalUsedBillableHours: map['totalUsedBillableHours'] == null ? null : map['totalUsedBillableHours'] as double,
-      totalUsedFreeHours: map['totalUsedFreeHours'] == null ? null : map['totalUsedFreeHours'] as double,
+      nextRequest: map['nextRequest'] == null ? null : BillingHubGetUsageRequestResponse.fromMap((map['nextRequest']! as Map).cast<String, dynamic>()),
+      packageUsageEntries: map['packageUsageEntries'] == null ? null : pulumi.Input.decodeList<BillingHubPackageUsageResponse>(map['packageUsageEntries']!, (value) => BillingHubPackageUsageResponse.fromMap((value as Map).cast<String, dynamic>())),
+      totalCharges: map['totalCharges'] == null ? null : map['totalCharges']! as double,
+      totalUsedBillableHours: map['totalUsedBillableHours'] == null ? null : map['totalUsedBillableHours']! as double,
+      totalUsedFreeHours: map['totalUsedFreeHours'] == null ? null : map['totalUsedFreeHours']! as double,
     );
   }
 }

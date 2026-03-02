@@ -65,15 +65,15 @@ class AppleAppState {
 
   factory AppleAppState.fromMap(Map<String, dynamic> map) {
     return AppleAppState(
-      apiKeyId: map['apiKeyId'] == null ? null : (map['apiKeyId'] as String).input(),
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      appStoreId: map['appStoreId'] == null ? null : (map['appStoreId'] as String).input(),
-      bundleId: map['bundleId'] == null ? null : (map['bundleId'] as String).input(),
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      teamId: map['teamId'] == null ? null : (map['teamId'] as String).input(),
+      apiKeyId: map['apiKeyId'] == null ? null : (map['apiKeyId']! as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      appStoreId: map['appStoreId'] == null ? null : (map['appStoreId']! as String).input(),
+      bundleId: map['bundleId'] == null ? null : (map['bundleId']! as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      teamId: map['teamId'] == null ? null : (map['teamId']! as String).input(),
     );
   }
 }

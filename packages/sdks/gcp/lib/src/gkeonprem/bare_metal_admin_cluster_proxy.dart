@@ -29,7 +29,7 @@ class BareMetalAdminClusterProxy {
 
   factory BareMetalAdminClusterProxy.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterProxy(
-      noProxies: map['noProxies'] == null ? null : ((map['noProxies'] as List).cast<String>()).input(),
+      noProxies: map['noProxies'] == null ? null : ((map['noProxies']! as List).cast<String>()).input(),
       uri: (map['uri'] as String).input(),
     );
   }

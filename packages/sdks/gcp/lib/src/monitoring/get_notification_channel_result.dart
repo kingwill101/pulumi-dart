@@ -74,16 +74,16 @@ class GetNotificationChannelResult {
   factory GetNotificationChannelResult.fromMap(Map<String, dynamic> map) {
     return GetNotificationChannelResult(
       description: map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       enabled: map['enabled'] as bool,
       forceDelete: map['forceDelete'] as bool,
       id: map['id'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
+      labels: map['labels'] == null ? null : (map['labels']! as Map).cast<String, String>(),
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       sensitiveLabels: pulumi.Input.decodeList<GetNotificationChannelSensitiveLabel>(map['sensitiveLabels'], (value) => GetNotificationChannelSensitiveLabel.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : map['type'] as String,
-      userLabels: map['userLabels'] == null ? null : (map['userLabels'] as Map).cast<String, String>(),
+      type: map['type'] == null ? null : map['type']! as String,
+      userLabels: map['userLabels'] == null ? null : (map['userLabels']! as Map).cast<String, String>(),
       verificationStatus: map['verificationStatus'] as String,
     );
   }

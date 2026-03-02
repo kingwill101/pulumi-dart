@@ -35,10 +35,10 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMul
 
   factory BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate(
-      mirrorMultiAlternateDstRegion: map['mirrorMultiAlternateDstRegion'] == null ? null : (map['mirrorMultiAlternateDstRegion'] as String).input(),
-      mirrorMultiAlternateNumber: map['mirrorMultiAlternateNumber'] == null ? null : (map['mirrorMultiAlternateNumber'] as int).input(),
-      mirrorMultiAlternateUrl: map['mirrorMultiAlternateUrl'] == null ? null : (map['mirrorMultiAlternateUrl'] as String).input(),
-      mirrorMultiAlternateVpcId: map['mirrorMultiAlternateVpcId'] == null ? null : (map['mirrorMultiAlternateVpcId'] as String).input(),
+      mirrorMultiAlternateDstRegion: map['mirrorMultiAlternateDstRegion'] == null ? null : (map['mirrorMultiAlternateDstRegion']! as String).input(),
+      mirrorMultiAlternateNumber: map['mirrorMultiAlternateNumber'] == null ? null : (map['mirrorMultiAlternateNumber']! as int).input(),
+      mirrorMultiAlternateUrl: map['mirrorMultiAlternateUrl'] == null ? null : (map['mirrorMultiAlternateUrl']! as String).input(),
+      mirrorMultiAlternateVpcId: map['mirrorMultiAlternateVpcId'] == null ? null : (map['mirrorMultiAlternateVpcId']! as String).input(),
     );
   }
 }

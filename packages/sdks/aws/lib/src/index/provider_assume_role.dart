@@ -60,15 +60,15 @@ class ProviderAssumeRole {
 
   factory ProviderAssumeRole.fromMap(Map<String, dynamic> map) {
     return ProviderAssumeRole(
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
-      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      policyArns: map['policyArns'] == null ? null : ((map['policyArns'] as List).cast<String>()).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      sessionName: map['sessionName'] == null ? null : (map['sessionName'] as String).input(),
-      sourceIdentity: map['sourceIdentity'] == null ? null : (map['sourceIdentity'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      transitiveTagKeys: map['transitiveTagKeys'] == null ? null : ((map['transitiveTagKeys'] as List).cast<String>()).input(),
+      duration: map['duration'] == null ? null : ((map['duration'] as String).input()).input(),
+      externalId: map['externalId'] == null ? null : ((map['externalId'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      policyArns: map['policyArns'] == null ? null : (((map['policyArns'] as List).cast<String>()).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      sessionName: map['sessionName'] == null ? null : ((map['sessionName'] as String).input()).input(),
+      sourceIdentity: map['sourceIdentity'] == null ? null : ((map['sourceIdentity'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      transitiveTagKeys: map['transitiveTagKeys'] == null ? null : (((map['transitiveTagKeys'] as List).cast<String>()).input()).input(),
     );
   }
 }

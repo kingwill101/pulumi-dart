@@ -50,13 +50,13 @@ class EndpointMongodbSettings {
 
   factory EndpointMongodbSettings.fromMap(Map<String, dynamic> map) {
     return EndpointMongodbSettings(
-      authMechanism: map['authMechanism'] == null ? null : (map['authMechanism'] as String).input(),
-      authSource: map['authSource'] == null ? null : (map['authSource'] as String).input(),
-      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
-      docsToInvestigate: map['docsToInvestigate'] == null ? null : (map['docsToInvestigate'] as String).input(),
-      extractDocId: map['extractDocId'] == null ? null : (map['extractDocId'] as String).input(),
-      nestingLevel: map['nestingLevel'] == null ? null : (map['nestingLevel'] as String).input(),
-      useUpdateLookup: map['useUpdateLookup'] == null ? null : (map['useUpdateLookup'] as bool).input(),
+      authMechanism: map['authMechanism'] == null ? null : ((map['authMechanism'] as String).input()).input(),
+      authSource: map['authSource'] == null ? null : ((map['authSource'] as String).input()).input(),
+      authType: map['authType'] == null ? null : ((map['authType'] as String).input()).input(),
+      docsToInvestigate: map['docsToInvestigate'] == null ? null : ((map['docsToInvestigate'] as String).input()).input(),
+      extractDocId: map['extractDocId'] == null ? null : ((map['extractDocId'] as String).input()).input(),
+      nestingLevel: map['nestingLevel'] == null ? null : ((map['nestingLevel'] as String).input()).input(),
+      useUpdateLookup: map['useUpdateLookup'] == null ? null : ((map['useUpdateLookup'] as bool).input()).input(),
     );
   }
 }

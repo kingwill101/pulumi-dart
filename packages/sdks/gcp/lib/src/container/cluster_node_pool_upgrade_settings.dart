@@ -36,10 +36,10 @@ class ClusterNodePoolUpgradeSettings {
 
   factory ClusterNodePoolUpgradeSettings.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolUpgradeSettings(
-      blueGreenSettings: map['blueGreenSettings'] == null ? null : (ClusterNodePoolUpgradeSettingsBlueGreenSettings.fromMap((map['blueGreenSettings'] as Map).cast<String, dynamic>())).input(),
-      maxSurge: map['maxSurge'] == null ? null : (map['maxSurge'] as int).input(),
-      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable'] as int).input(),
-      strategy: map['strategy'] == null ? null : (map['strategy'] as String).input(),
+      blueGreenSettings: map['blueGreenSettings'] == null ? null : (ClusterNodePoolUpgradeSettingsBlueGreenSettings.fromMap((map['blueGreenSettings']! as Map).cast<String, dynamic>())).input(),
+      maxSurge: map['maxSurge'] == null ? null : (map['maxSurge']! as int).input(),
+      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable']! as int).input(),
+      strategy: map['strategy'] == null ? null : (map['strategy']! as String).input(),
     );
   }
 }

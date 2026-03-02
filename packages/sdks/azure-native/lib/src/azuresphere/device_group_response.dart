@@ -72,17 +72,17 @@ class DeviceGroupResponse {
 
   factory DeviceGroupResponse.fromMap(Map<String, dynamic> map) {
     return DeviceGroupResponse(
-      allowCrashDumpsCollection: map['allowCrashDumpsCollection'] == null ? null : (map['allowCrashDumpsCollection'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      allowCrashDumpsCollection: map['allowCrashDumpsCollection'] == null ? null : (map['allowCrashDumpsCollection']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       hasDeployment: (map['hasDeployment'] as bool).input(),
       id: (map['id'] as String).input(),
       name: (map['name'] as String).input(),
-      osFeedType: map['osFeedType'] == null ? null : (map['osFeedType'] as String).input(),
+      osFeedType: map['osFeedType'] == null ? null : (map['osFeedType']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      regionalDataBoundary: map['regionalDataBoundary'] == null ? null : (map['regionalDataBoundary'] as String).input(),
+      regionalDataBoundary: map['regionalDataBoundary'] == null ? null : (map['regionalDataBoundary']! as String).input(),
       systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
-      updatePolicy: map['updatePolicy'] == null ? null : (map['updatePolicy'] as String).input(),
+      updatePolicy: map['updatePolicy'] == null ? null : (map['updatePolicy']! as String).input(),
     );
   }
 }

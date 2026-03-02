@@ -39,10 +39,10 @@ class GetCipherTextArgs {
 
   factory GetCipherTextArgs.fromMap(Map<String, dynamic> map) {
     return GetCipherTextArgs(
-      context: map['context'] == null ? null : ((map['context'] as Map).cast<String, String>()).input(),
+      context: map['context'] == null ? null : (((map['context'] as Map).cast<String, String>()).input()).input(),
       keyId: (map['keyId'] as String).input(),
       plaintext: (map['plaintext'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

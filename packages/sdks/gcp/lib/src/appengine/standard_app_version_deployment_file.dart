@@ -31,7 +31,7 @@ class StandardAppVersionDeploymentFile {
   factory StandardAppVersionDeploymentFile.fromMap(Map<String, dynamic> map) {
     return StandardAppVersionDeploymentFile(
       name: (map['name'] as String).input(),
-      sha1Sum: map['sha1Sum'] == null ? null : (map['sha1Sum'] as String).input(),
+      sha1Sum: map['sha1Sum'] == null ? null : (map['sha1Sum']! as String).input(),
       sourceUrl: (map['sourceUrl'] as String).input(),
     );
   }

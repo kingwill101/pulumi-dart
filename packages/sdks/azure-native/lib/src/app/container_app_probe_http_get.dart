@@ -42,11 +42,11 @@ class ContainerAppProbeHttpGet {
 
   factory ContainerAppProbeHttpGet.fromMap(Map<String, dynamic> map) {
     return ContainerAppProbeHttpGet(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      httpHeaders: map['httpHeaders'] == null ? null : (pulumi.Input.decodeList<ContainerAppProbeHttpHeaders>(map['httpHeaders'], (value) => ContainerAppProbeHttpHeaders.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      httpHeaders: map['httpHeaders'] == null ? null : (pulumi.Input.decodeList<ContainerAppProbeHttpHeaders>(map['httpHeaders']!, (value) => ContainerAppProbeHttpHeaders.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
       port: (map['port'] as int).input(),
-      scheme: map['scheme'] == null ? null : (map['scheme'] as String).input(),
+      scheme: map['scheme'] == null ? null : (map['scheme']! as String).input(),
     );
   }
 }

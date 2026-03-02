@@ -40,7 +40,7 @@ class DomainCpuTuneCacheTuneCach {
 
   factory DomainCpuTuneCacheTuneCach.fromMap(Map<String, dynamic> map) {
     return DomainCpuTuneCacheTuneCach(
-      id: map['id'] == null ? null : (map['id'] as double).input(),
+      id: map['id'] == null ? null : (map['id']! as double).input(),
       level: (map['level'] as double).input(),
       size: (map['size'] as double).input(),
       type: (map['type'] as String).input(),

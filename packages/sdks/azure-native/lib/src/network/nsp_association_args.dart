@@ -70,16 +70,16 @@ class NspAssociationArgs {
 
   factory NspAssociationArgs.fromMap(Map<String, dynamic> map) {
     return NspAssociationArgs(
-      accessMode: map['accessMode'] == null ? null : (map['accessMode'] as String).input(),
-      associationName: map['associationName'] == null ? null : (map['associationName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      accessMode: map['accessMode'] == null ? null : (map['accessMode']! as String).input(),
+      associationName: map['associationName'] == null ? null : (map['associationName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networkSecurityPerimeterName: (map['networkSecurityPerimeterName'] as String).input(),
-      privateLinkResource: map['privateLinkResource'] == null ? null : (SubResource.fromMap((map['privateLinkResource'] as Map).cast<String, dynamic>())).input(),
-      profile: map['profile'] == null ? null : (SubResource.fromMap((map['profile'] as Map).cast<String, dynamic>())).input(),
+      privateLinkResource: map['privateLinkResource'] == null ? null : (SubResource.fromMap((map['privateLinkResource']! as Map).cast<String, dynamic>())).input(),
+      profile: map['profile'] == null ? null : (SubResource.fromMap((map['profile']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

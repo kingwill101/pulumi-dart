@@ -62,15 +62,15 @@ class ReleaseConfigArgs {
 
   factory ReleaseConfigArgs.fromMap(Map<String, dynamic> map) {
     return ReleaseConfigArgs(
-      codeCompilationConfig: map['codeCompilationConfig'] == null ? null : (CodeCompilationConfig.fromMap((map['codeCompilationConfig'] as Map).cast<String, dynamic>())).input(),
-      cronSchedule: map['cronSchedule'] == null ? null : (map['cronSchedule'] as String).input(),
+      codeCompilationConfig: map['codeCompilationConfig'] == null ? null : (CodeCompilationConfig.fromMap((map['codeCompilationConfig']! as Map).cast<String, dynamic>())).input(),
+      cronSchedule: map['cronSchedule'] == null ? null : (map['cronSchedule']! as String).input(),
       gitCommitish: (map['gitCommitish'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      releaseCompilationResult: map['releaseCompilationResult'] == null ? null : (map['releaseCompilationResult'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      releaseCompilationResult: map['releaseCompilationResult'] == null ? null : (map['releaseCompilationResult']! as String).input(),
       releaseConfigId: (map['releaseConfigId'] as String).input(),
       repositoryId: (map['repositoryId'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

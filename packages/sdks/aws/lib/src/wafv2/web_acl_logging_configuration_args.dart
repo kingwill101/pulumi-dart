@@ -47,9 +47,9 @@ class WebAclLoggingConfigurationArgs {
   factory WebAclLoggingConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return WebAclLoggingConfigurationArgs(
       logDestinationConfigs: ((map['logDestinationConfigs'] as List).cast<String>()).input(),
-      loggingFilter: map['loggingFilter'] == null ? null : (WebAclLoggingConfigurationLoggingFilter.fromMap((map['loggingFilter'] as Map).cast<String, dynamic>())).input(),
-      redactedFields: map['redactedFields'] == null ? null : (pulumi.Input.decodeList<WebAclLoggingConfigurationRedactedField>(map['redactedFields'], (value) => WebAclLoggingConfigurationRedactedField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      loggingFilter: map['loggingFilter'] == null ? null : ((WebAclLoggingConfigurationLoggingFilter.fromMap((map['loggingFilter']! as Map).cast<String, dynamic>())).input()).input(),
+      redactedFields: map['redactedFields'] == null ? null : ((pulumi.Input.decodeList<WebAclLoggingConfigurationRedactedField>(map['redactedFields']!, (value) => WebAclLoggingConfigurationRedactedField.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceArn: (map['resourceArn'] as String).input(),
     );
   }

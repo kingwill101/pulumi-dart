@@ -68,14 +68,14 @@ class ExpressRouteGatewayArgs {
 
   factory ExpressRouteGatewayArgs.fromMap(Map<String, dynamic> map) {
     return ExpressRouteGatewayArgs(
-      allowNonVirtualWanTraffic: map['allowNonVirtualWanTraffic'] == null ? null : (map['allowNonVirtualWanTraffic'] as bool).input(),
-      autoScaleConfiguration: map['autoScaleConfiguration'] == null ? null : (ExpressRouteGatewayPropertiesAutoScaleConfiguration.fromMap((map['autoScaleConfiguration'] as Map).cast<String, dynamic>())).input(),
-      expressRouteConnections: map['expressRouteConnections'] == null ? null : ((map['expressRouteConnections'] as List).cast<ExpressRouteConnectionNetwork>()).input(),
-      expressRouteGatewayName: map['expressRouteGatewayName'] == null ? null : (map['expressRouteGatewayName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      allowNonVirtualWanTraffic: map['allowNonVirtualWanTraffic'] == null ? null : (map['allowNonVirtualWanTraffic']! as bool).input(),
+      autoScaleConfiguration: map['autoScaleConfiguration'] == null ? null : (ExpressRouteGatewayPropertiesAutoScaleConfiguration.fromMap((map['autoScaleConfiguration']! as Map).cast<String, dynamic>())).input(),
+      expressRouteConnections: map['expressRouteConnections'] == null ? null : ((map['expressRouteConnections']! as List).cast<ExpressRouteConnectionNetwork>()).input(),
+      expressRouteGatewayName: map['expressRouteGatewayName'] == null ? null : (map['expressRouteGatewayName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       virtualHub: (VirtualHubId.fromMap((map['virtualHub'] as Map).cast<String, dynamic>())).input(),
     );
   }

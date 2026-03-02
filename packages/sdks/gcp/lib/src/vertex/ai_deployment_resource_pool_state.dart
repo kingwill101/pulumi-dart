@@ -44,11 +44,11 @@ class AiDeploymentResourcePoolState {
 
   factory AiDeploymentResourcePoolState.fromMap(Map<String, dynamic> map) {
     return AiDeploymentResourcePoolState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dedicatedResources: map['dedicatedResources'] == null ? null : (AiDeploymentResourcePoolDedicatedResources.fromMap((map['dedicatedResources'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dedicatedResources: map['dedicatedResources'] == null ? null : (AiDeploymentResourcePoolDedicatedResources.fromMap((map['dedicatedResources']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

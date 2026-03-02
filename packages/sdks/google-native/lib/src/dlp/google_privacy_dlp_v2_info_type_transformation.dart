@@ -28,7 +28,7 @@ class GooglePrivacyDlpV2InfoTypeTransformation {
 
   factory GooglePrivacyDlpV2InfoTypeTransformation.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2InfoTypeTransformation(
-      infoTypes: map['infoTypes'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2InfoType>(map['infoTypes'], (value) => GooglePrivacyDlpV2InfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      infoTypes: map['infoTypes'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2InfoType>(map['infoTypes']!, (value) => GooglePrivacyDlpV2InfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
       primitiveTransformation: (GooglePrivacyDlpV2PrimitiveTransformation.fromMap((map['primitiveTransformation'] as Map).cast<String, dynamic>())).input(),
     );
   }

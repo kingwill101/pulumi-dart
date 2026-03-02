@@ -30,8 +30,8 @@ class GetImagePipelinesArgs {
 
   factory GetImagePipelinesArgs.fromMap(Map<String, dynamic> map) {
     return GetImagePipelinesArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetImagePipelinesFilter>(map['filters'], (value) => GetImagePipelinesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetImagePipelinesFilter>(map['filters']!, (value) => GetImagePipelinesFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

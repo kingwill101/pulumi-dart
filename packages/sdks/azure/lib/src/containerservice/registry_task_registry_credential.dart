@@ -27,8 +27,8 @@ class RegistryTaskRegistryCredential {
 
   factory RegistryTaskRegistryCredential.fromMap(Map<String, dynamic> map) {
     return RegistryTaskRegistryCredential(
-      customs: map['customs'] == null ? null : (pulumi.Input.decodeList<RegistryTaskRegistryCredentialCustom>(map['customs'], (value) => RegistryTaskRegistryCredentialCustom.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      source: map['source'] == null ? null : (RegistryTaskRegistryCredentialSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      customs: map['customs'] == null ? null : (pulumi.Input.decodeList<RegistryTaskRegistryCredentialCustom>(map['customs']!, (value) => RegistryTaskRegistryCredentialCustom.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      source: map['source'] == null ? null : (RegistryTaskRegistryCredentialSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

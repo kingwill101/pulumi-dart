@@ -36,10 +36,10 @@ class IdentityPolicyState {
 
   factory IdentityPolicyState.fromMap(Map<String, dynamic> map) {
     return IdentityPolicyState(
-      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      identity: map['identity'] == null ? null : ((map['identity'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

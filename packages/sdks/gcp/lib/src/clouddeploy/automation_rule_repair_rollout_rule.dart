@@ -38,9 +38,9 @@ class AutomationRuleRepairRolloutRule {
   factory AutomationRuleRepairRolloutRule.fromMap(Map<String, dynamic> map) {
     return AutomationRuleRepairRolloutRule(
       id: (map['id'] as String).input(),
-      jobs: map['jobs'] == null ? null : ((map['jobs'] as List).cast<String>()).input(),
-      phases: map['phases'] == null ? null : ((map['phases'] as List).cast<String>()).input(),
-      repairPhases: map['repairPhases'] == null ? null : (pulumi.Input.decodeList<AutomationRuleRepairRolloutRuleRepairPhase>(map['repairPhases'], (value) => AutomationRuleRepairRolloutRuleRepairPhase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      jobs: map['jobs'] == null ? null : ((map['jobs']! as List).cast<String>()).input(),
+      phases: map['phases'] == null ? null : ((map['phases']! as List).cast<String>()).input(),
+      repairPhases: map['repairPhases'] == null ? null : (pulumi.Input.decodeList<AutomationRuleRepairRolloutRuleRepairPhase>(map['repairPhases']!, (value) => AutomationRuleRepairRolloutRuleRepairPhase.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

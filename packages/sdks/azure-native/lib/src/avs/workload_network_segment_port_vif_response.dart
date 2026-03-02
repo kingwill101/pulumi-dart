@@ -21,7 +21,7 @@ class WorkloadNetworkSegmentPortVifResponse {
 
   factory WorkloadNetworkSegmentPortVifResponse.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkSegmentPortVifResponse(
-      portName: map['portName'] == null ? null : (map['portName'] as String).input(),
+      portName: map['portName'] == null ? null : (map['portName']! as String).input(),
     );
   }
 }

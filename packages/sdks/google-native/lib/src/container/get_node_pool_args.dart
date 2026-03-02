@@ -46,9 +46,9 @@ class GetNodePoolArgs {
       clusterId: (map['clusterId'] as String).input(),
       location: (map['location'] as String).input(),
       nodePoolId: (map['nodePoolId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

@@ -45,7 +45,7 @@ class GetComponentsResult {
   factory GetComponentsResult.fromMap(Map<String, dynamic> map) {
     return GetComponentsResult(
       arns: (map['arns'] as List).cast<String>(),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetComponentsFilter>(map['filters'], (value) => GetComponentsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetComponentsFilter>(map['filters']!, (value) => GetComponentsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       names: (map['names'] as List).cast<String>(),
       owner: map['owner'] == null ? null : map['owner'] as String,

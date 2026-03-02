@@ -31,7 +31,7 @@ class AppTemplateTcpScaleRule {
 
   factory AppTemplateTcpScaleRule.fromMap(Map<String, dynamic> map) {
     return AppTemplateTcpScaleRule(
-      authentications: map['authentications'] == null ? null : (pulumi.Input.decodeList<AppTemplateTcpScaleRuleAuthentication>(map['authentications'], (value) => AppTemplateTcpScaleRuleAuthentication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authentications: map['authentications'] == null ? null : (pulumi.Input.decodeList<AppTemplateTcpScaleRuleAuthentication>(map['authentications']!, (value) => AppTemplateTcpScaleRuleAuthentication.fromMap((value as Map).cast<String, dynamic>()))).input(),
       concurrentRequests: (map['concurrentRequests'] as String).input(),
       name: (map['name'] as String).input(),
     );

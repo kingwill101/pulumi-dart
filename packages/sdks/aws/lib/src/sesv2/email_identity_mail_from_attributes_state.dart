@@ -36,10 +36,10 @@ class EmailIdentityMailFromAttributesState {
 
   factory EmailIdentityMailFromAttributesState.fromMap(Map<String, dynamic> map) {
     return EmailIdentityMailFromAttributesState(
-      behaviorOnMxFailure: map['behaviorOnMxFailure'] == null ? null : (map['behaviorOnMxFailure'] as String).input(),
-      emailIdentity: map['emailIdentity'] == null ? null : (map['emailIdentity'] as String).input(),
-      mailFromDomain: map['mailFromDomain'] == null ? null : (map['mailFromDomain'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      behaviorOnMxFailure: map['behaviorOnMxFailure'] == null ? null : ((map['behaviorOnMxFailure'] as String).input()).input(),
+      emailIdentity: map['emailIdentity'] == null ? null : ((map['emailIdentity'] as String).input()).input(),
+      mailFromDomain: map['mailFromDomain'] == null ? null : ((map['mailFromDomain'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

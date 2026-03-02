@@ -36,9 +36,9 @@ class StageCanarySettings {
   factory StageCanarySettings.fromMap(Map<String, dynamic> map) {
     return StageCanarySettings(
       deploymentId: (map['deploymentId'] as String).input(),
-      percentTraffic: map['percentTraffic'] == null ? null : (map['percentTraffic'] as double).input(),
-      stageVariableOverrides: map['stageVariableOverrides'] == null ? null : ((map['stageVariableOverrides'] as Map).cast<String, String>()).input(),
-      useStageCache: map['useStageCache'] == null ? null : (map['useStageCache'] as bool).input(),
+      percentTraffic: map['percentTraffic'] == null ? null : ((map['percentTraffic'] as double).input()).input(),
+      stageVariableOverrides: map['stageVariableOverrides'] == null ? null : (((map['stageVariableOverrides'] as Map).cast<String, String>()).input()).input(),
+      useStageCache: map['useStageCache'] == null ? null : ((map['useStageCache'] as bool).input()).input(),
     );
   }
 }

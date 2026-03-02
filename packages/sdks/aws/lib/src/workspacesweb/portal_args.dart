@@ -69,16 +69,16 @@ class PortalArgs {
 
   factory PortalArgs.fromMap(Map<String, dynamic> map) {
     return PortalArgs(
-      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : ((map['additionalEncryptionContext'] as Map).cast<String, String>()).input(),
-      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
-      browserSettingsArn: map['browserSettingsArn'] == null ? null : (map['browserSettingsArn'] as String).input(),
-      customerManagedKey: map['customerManagedKey'] == null ? null : (map['customerManagedKey'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      maxConcurrentSessions: map['maxConcurrentSessions'] == null ? null : (map['maxConcurrentSessions'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (PortalTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : (((map['additionalEncryptionContext'] as Map).cast<String, String>()).input()).input(),
+      authenticationType: map['authenticationType'] == null ? null : ((map['authenticationType'] as String).input()).input(),
+      browserSettingsArn: map['browserSettingsArn'] == null ? null : ((map['browserSettingsArn'] as String).input()).input(),
+      customerManagedKey: map['customerManagedKey'] == null ? null : ((map['customerManagedKey'] as String).input()).input(),
+      displayName: map['displayName'] == null ? null : ((map['displayName'] as String).input()).input(),
+      instanceType: map['instanceType'] == null ? null : ((map['instanceType'] as String).input()).input(),
+      maxConcurrentSessions: map['maxConcurrentSessions'] == null ? null : ((map['maxConcurrentSessions'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((PortalTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

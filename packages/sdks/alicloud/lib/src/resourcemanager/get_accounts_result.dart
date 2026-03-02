@@ -50,12 +50,12 @@ class GetAccountsResult {
   factory GetAccountsResult.fromMap(Map<String, dynamic> map) {
     return GetAccountsResult(
       accounts: pulumi.Input.decodeList<GetAccountsAccount>(map['accounts'], (value) => GetAccountsAccount.fromMap((value as Map).cast<String, dynamic>())),
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

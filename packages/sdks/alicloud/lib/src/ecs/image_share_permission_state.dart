@@ -26,8 +26,8 @@ class ImageSharePermissionState {
 
   factory ImageSharePermissionState.fromMap(Map<String, dynamic> map) {
     return ImageSharePermissionState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId']! as String).input(),
     );
   }
 }

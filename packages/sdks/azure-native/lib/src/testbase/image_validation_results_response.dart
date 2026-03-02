@@ -22,7 +22,7 @@ class ImageValidationResultsResponse {
 
   factory ImageValidationResultsResponse.fromMap(Map<String, dynamic> map) {
     return ImageValidationResultsResponse(
-      results: map['results'] == null ? null : (pulumi.Input.decodeList<VerificationResultResponse>(map['results'], (value) => VerificationResultResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      results: map['results'] == null ? null : (pulumi.Input.decodeList<VerificationResultResponse>(map['results']!, (value) => VerificationResultResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

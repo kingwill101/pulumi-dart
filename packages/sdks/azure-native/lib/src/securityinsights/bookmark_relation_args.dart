@@ -46,7 +46,7 @@ class BookmarkRelationArgs {
     return BookmarkRelationArgs(
       bookmarkId: (map['bookmarkId'] as String).input(),
       relatedResourceId: (map['relatedResourceId'] as String).input(),
-      relationName: map['relationName'] == null ? null : (map['relationName'] as String).input(),
+      relationName: map['relationName'] == null ? null : (map['relationName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );

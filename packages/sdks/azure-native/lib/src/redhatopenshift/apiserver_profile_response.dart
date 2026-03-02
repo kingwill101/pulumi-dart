@@ -33,7 +33,7 @@ class APIServerProfileResponse {
     return APIServerProfileResponse(
       ip: (map['ip'] as String).input(),
       url: (map['url'] as String).input(),
-      visibility: map['visibility'] == null ? null : (map['visibility'] as String).input(),
+      visibility: map['visibility'] == null ? null : (map['visibility']! as String).input(),
     );
   }
 }

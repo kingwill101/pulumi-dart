@@ -41,9 +41,9 @@ class BucketHttpsConfigArgs {
   factory BucketHttpsConfigArgs.fromMap(Map<String, dynamic> map) {
     return BucketHttpsConfigArgs(
       bucket: (map['bucket'] as String).input(),
-      cipherSuit: map['cipherSuit'] == null ? null : (BucketHttpsConfigCipherSuit.fromMap((map['cipherSuit'] as Map).cast<String, dynamic>())).input(),
+      cipherSuit: map['cipherSuit'] == null ? null : (BucketHttpsConfigCipherSuit.fromMap((map['cipherSuit']! as Map).cast<String, dynamic>())).input(),
       enable: (map['enable'] as bool).input(),
-      tlsVersions: map['tlsVersions'] == null ? null : ((map['tlsVersions'] as List).cast<String>()).input(),
+      tlsVersions: map['tlsVersions'] == null ? null : ((map['tlsVersions']! as List).cast<String>()).input(),
     );
   }
 }

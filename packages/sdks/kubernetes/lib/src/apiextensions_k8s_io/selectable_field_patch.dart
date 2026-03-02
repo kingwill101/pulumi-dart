@@ -21,7 +21,7 @@ class SelectableFieldPatch {
 
   factory SelectableFieldPatch.fromMap(Map<String, dynamic> map) {
     return SelectableFieldPatch(
-      jsonPath: map['jsonPath'] == null ? null : (map['jsonPath'] as String).input(),
+      jsonPath: map['jsonPath'] == null ? null : (map['jsonPath']! as String).input(),
     );
   }
 }

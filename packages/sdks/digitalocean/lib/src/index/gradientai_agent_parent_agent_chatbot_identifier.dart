@@ -19,7 +19,7 @@ class GradientaiAgentParentAgentChatbotIdentifier {
 
   factory GradientaiAgentParentAgentChatbotIdentifier.fromMap(Map<String, dynamic> map) {
     return GradientaiAgentParentAgentChatbotIdentifier(
-      chatbotId: map['chatbotId'] == null ? null : (map['chatbotId'] as String).input(),
+      chatbotId: map['chatbotId'] == null ? null : (map['chatbotId']! as String).input(),
     );
   }
 }

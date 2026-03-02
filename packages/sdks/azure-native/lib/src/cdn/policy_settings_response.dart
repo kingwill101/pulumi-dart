@@ -41,11 +41,11 @@ class PolicySettingsResponse {
 
   factory PolicySettingsResponse.fromMap(Map<String, dynamic> map) {
     return PolicySettingsResponse(
-      defaultCustomBlockResponseBody: map['defaultCustomBlockResponseBody'] == null ? null : (map['defaultCustomBlockResponseBody'] as String).input(),
-      defaultCustomBlockResponseStatusCode: map['defaultCustomBlockResponseStatusCode'] == null ? null : (map['defaultCustomBlockResponseStatusCode'] as double).input(),
-      defaultRedirectUrl: map['defaultRedirectUrl'] == null ? null : (map['defaultRedirectUrl'] as String).input(),
-      enabledState: map['enabledState'] == null ? null : (map['enabledState'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      defaultCustomBlockResponseBody: map['defaultCustomBlockResponseBody'] == null ? null : (map['defaultCustomBlockResponseBody']! as String).input(),
+      defaultCustomBlockResponseStatusCode: map['defaultCustomBlockResponseStatusCode'] == null ? null : (map['defaultCustomBlockResponseStatusCode']! as double).input(),
+      defaultRedirectUrl: map['defaultRedirectUrl'] == null ? null : (map['defaultRedirectUrl']! as String).input(),
+      enabledState: map['enabledState'] == null ? null : (map['enabledState']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class TargetAssessmentArmIdsResponse {
 
   factory TargetAssessmentArmIdsResponse.fromMap(Map<String, dynamic> map) {
     return TargetAssessmentArmIdsResponse(
-      aks: map['aks'] == null ? null : (map['aks'] as String).input(),
-      azureAppService: map['azureAppService'] == null ? null : (map['azureAppService'] as String).input(),
-      azureAppServiceContainer: map['azureAppServiceContainer'] == null ? null : (map['azureAppServiceContainer'] as String).input(),
+      aks: map['aks'] == null ? null : (map['aks']! as String).input(),
+      azureAppService: map['azureAppService'] == null ? null : (map['azureAppService']! as String).input(),
+      azureAppServiceContainer: map['azureAppServiceContainer'] == null ? null : (map['azureAppServiceContainer']! as String).input(),
     );
   }
 }

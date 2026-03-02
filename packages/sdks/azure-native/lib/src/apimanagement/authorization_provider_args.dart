@@ -50,10 +50,10 @@ class AuthorizationProviderArgs {
 
   factory AuthorizationProviderArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizationProviderArgs(
-      authorizationProviderId: map['authorizationProviderId'] == null ? null : (map['authorizationProviderId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      identityProvider: map['identityProvider'] == null ? null : (map['identityProvider'] as String).input(),
-      oauth2: map['oauth2'] == null ? null : (AuthorizationProviderOAuth2Settings.fromMap((map['oauth2'] as Map).cast<String, dynamic>())).input(),
+      authorizationProviderId: map['authorizationProviderId'] == null ? null : (map['authorizationProviderId']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      identityProvider: map['identityProvider'] == null ? null : (map['identityProvider']! as String).input(),
+      oauth2: map['oauth2'] == null ? null : (AuthorizationProviderOAuth2Settings.fromMap((map['oauth2']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

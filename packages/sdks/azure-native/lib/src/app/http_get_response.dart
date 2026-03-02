@@ -31,8 +31,8 @@ class HttpGetResponse {
 
   factory HttpGetResponse.fromMap(Map<String, dynamic> map) {
     return HttpGetResponse(
-      fileName: map['fileName'] == null ? null : (map['fileName'] as String).input(),
-      headers: map['headers'] == null ? null : ((map['headers'] as List).cast<String>()).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName']! as String).input(),
+      headers: map['headers'] == null ? null : ((map['headers']! as List).cast<String>()).input(),
       url: (map['url'] as String).input(),
     );
   }

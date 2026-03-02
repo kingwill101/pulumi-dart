@@ -47,11 +47,11 @@ class IoTHubStreamInputDataSource {
 
   factory IoTHubStreamInputDataSource.fromMap(Map<String, dynamic> map) {
     return IoTHubStreamInputDataSource(
-      consumerGroupName: map['consumerGroupName'] == null ? null : (map['consumerGroupName'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      iotHubNamespace: map['iotHubNamespace'] == null ? null : (map['iotHubNamespace'] as String).input(),
-      sharedAccessPolicyKey: map['sharedAccessPolicyKey'] == null ? null : (map['sharedAccessPolicyKey'] as String).input(),
-      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : (map['sharedAccessPolicyName'] as String).input(),
+      consumerGroupName: map['consumerGroupName'] == null ? null : (map['consumerGroupName']! as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      iotHubNamespace: map['iotHubNamespace'] == null ? null : (map['iotHubNamespace']! as String).input(),
+      sharedAccessPolicyKey: map['sharedAccessPolicyKey'] == null ? null : (map['sharedAccessPolicyKey']! as String).input(),
+      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : (map['sharedAccessPolicyName']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -42,7 +42,7 @@ class GetProvisioningArtifactsResult {
       acceptLanguage: map['acceptLanguage'] == null ? null : map['acceptLanguage'] as String,
       id: map['id'] as String,
       productId: map['productId'] as String,
-      provisioningArtifactDetails: pulumi.Input.decodeList<GetProvisioningArtifactsProvisioningArtifactDetail>(map['provisioningArtifactDetails'], (value) => GetProvisioningArtifactsProvisioningArtifactDetail.fromMap((value as Map).cast<String, dynamic>())),
+      provisioningArtifactDetails: pulumi.Input.decodeList<GetProvisioningArtifactsProvisioningArtifactDetail>(map['provisioningArtifactDetails']!, (value) => GetProvisioningArtifactsProvisioningArtifactDetail.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
     );
   }

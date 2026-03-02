@@ -26,8 +26,8 @@ class BucketAclState {
 
   factory BucketAclState.fromMap(Map<String, dynamic> map) {
     return BucketAclState(
-      acl: map['acl'] == null ? null : (map['acl'] as String).input(),
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      acl: map['acl'] == null ? null : (map['acl']! as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
     );
   }
 }

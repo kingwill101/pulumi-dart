@@ -53,9 +53,9 @@ class PrivateCloudManagementClusterAutoscalingSettings {
   factory PrivateCloudManagementClusterAutoscalingSettings.fromMap(Map<String, dynamic> map) {
     return PrivateCloudManagementClusterAutoscalingSettings(
       autoscalingPolicies: (pulumi.Input.decodeList<PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy>(map['autoscalingPolicies'], (value) => PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      coolDownPeriod: map['coolDownPeriod'] == null ? null : (map['coolDownPeriod'] as String).input(),
-      maxClusterNodeCount: map['maxClusterNodeCount'] == null ? null : (map['maxClusterNodeCount'] as int).input(),
-      minClusterNodeCount: map['minClusterNodeCount'] == null ? null : (map['minClusterNodeCount'] as int).input(),
+      coolDownPeriod: map['coolDownPeriod'] == null ? null : (map['coolDownPeriod']! as String).input(),
+      maxClusterNodeCount: map['maxClusterNodeCount'] == null ? null : (map['maxClusterNodeCount']! as int).input(),
+      minClusterNodeCount: map['minClusterNodeCount'] == null ? null : (map['minClusterNodeCount']! as int).input(),
     );
   }
 }

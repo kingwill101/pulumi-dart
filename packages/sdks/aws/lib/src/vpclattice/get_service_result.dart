@@ -73,7 +73,7 @@ class GetServiceResult {
       authType: map['authType'] as String,
       certificateArn: map['certificateArn'] as String,
       customDomainName: map['customDomainName'] as String,
-      dnsEntries: pulumi.Input.decodeList<GetServiceDnsEntry>(map['dnsEntries'], (value) => GetServiceDnsEntry.fromMap((value as Map).cast<String, dynamic>())),
+      dnsEntries: pulumi.Input.decodeList<GetServiceDnsEntry>(map['dnsEntries']!, (value) => GetServiceDnsEntry.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
       region: map['region'] as String,

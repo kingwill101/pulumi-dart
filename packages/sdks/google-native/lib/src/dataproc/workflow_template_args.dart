@@ -70,16 +70,16 @@ class WorkflowTemplateArgs {
 
   factory WorkflowTemplateArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplateArgs(
-      dagTimeout: map['dagTimeout'] == null ? null : (map['dagTimeout'] as String).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      dagTimeout: map['dagTimeout'] == null ? null : (map['dagTimeout']! as String).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       jobs: (pulumi.Input.decodeList<OrderedJob>(map['jobs'], (value) => OrderedJob.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<TemplateParameter>(map['parameters'], (value) => TemplateParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<TemplateParameter>(map['parameters']!, (value) => TemplateParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       placement: (WorkflowTemplatePlacement.fromMap((map['placement'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

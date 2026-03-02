@@ -81,19 +81,19 @@ class DwResourceGroupState {
 
   factory DwResourceGroupState.fromMap(Map<String, dynamic> map) {
     return DwResourceGroupState(
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
-      defaultVpcId: map['defaultVpcId'] == null ? null : (map['defaultVpcId'] as String).input(),
-      defaultVswitchId: map['defaultVswitchId'] == null ? null : (map['defaultVswitchId'] as String).input(),
-      paymentDuration: map['paymentDuration'] == null ? null : (map['paymentDuration'] as int).input(),
-      paymentDurationUnit: map['paymentDurationUnit'] == null ? null : (map['paymentDurationUnit'] as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      specification: map['specification'] == null ? null : (map['specification'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
+      defaultVpcId: map['defaultVpcId'] == null ? null : (map['defaultVpcId']! as String).input(),
+      defaultVswitchId: map['defaultVswitchId'] == null ? null : (map['defaultVswitchId']! as String).input(),
+      paymentDuration: map['paymentDuration'] == null ? null : (map['paymentDuration']! as int).input(),
+      paymentDurationUnit: map['paymentDurationUnit'] == null ? null : (map['paymentDurationUnit']! as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      specification: map['specification'] == null ? null : (map['specification']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class DomainDevicesTpmBackendExternalSourceDbus {
 
   factory DomainDevicesTpmBackendExternalSourceDbus.fromMap(Map<String, dynamic> map) {
     return DomainDevicesTpmBackendExternalSourceDbus(
-      channel: map['channel'] == null ? null : (map['channel'] as String).input(),
+      channel: map['channel'] == null ? null : (map['channel']! as String).input(),
     );
   }
 }

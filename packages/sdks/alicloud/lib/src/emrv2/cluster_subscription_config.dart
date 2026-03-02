@@ -45,10 +45,10 @@ class ClusterSubscriptionConfig {
 
   factory ClusterSubscriptionConfig.fromMap(Map<String, dynamic> map) {
     return ClusterSubscriptionConfig(
-      autoPayOrder: map['autoPayOrder'] == null ? null : (map['autoPayOrder'] as bool).input(),
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      autoRenewDuration: map['autoRenewDuration'] == null ? null : (map['autoRenewDuration'] as int).input(),
-      autoRenewDurationUnit: map['autoRenewDurationUnit'] == null ? null : (map['autoRenewDurationUnit'] as String).input(),
+      autoPayOrder: map['autoPayOrder'] == null ? null : (map['autoPayOrder']! as bool).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      autoRenewDuration: map['autoRenewDuration'] == null ? null : (map['autoRenewDuration']! as int).input(),
+      autoRenewDurationUnit: map['autoRenewDurationUnit'] == null ? null : (map['autoRenewDurationUnit']! as String).input(),
       paymentDuration: (map['paymentDuration'] as int).input(),
       paymentDurationUnit: (map['paymentDurationUnit'] as String).input(),
     );

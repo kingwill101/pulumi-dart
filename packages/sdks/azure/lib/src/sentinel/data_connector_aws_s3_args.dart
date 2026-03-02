@@ -47,7 +47,7 @@ class DataConnectorAwsS3Args {
       awsRoleArn: (map['awsRoleArn'] as String).input(),
       destinationTable: (map['destinationTable'] as String).input(),
       logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       sqsUrls: ((map['sqsUrls'] as List).cast<String>()).input(),
     );
   }

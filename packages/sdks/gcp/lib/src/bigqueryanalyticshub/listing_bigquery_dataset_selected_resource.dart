@@ -27,8 +27,8 @@ class ListingBigqueryDatasetSelectedResource {
 
   factory ListingBigqueryDatasetSelectedResource.fromMap(Map<String, dynamic> map) {
     return ListingBigqueryDatasetSelectedResource(
-      routine: map['routine'] == null ? null : (map['routine'] as String).input(),
-      table: map['table'] == null ? null : (map['table'] as String).input(),
+      routine: map['routine'] == null ? null : (map['routine']! as String).input(),
+      table: map['table'] == null ? null : (map['table']! as String).input(),
     );
   }
 }

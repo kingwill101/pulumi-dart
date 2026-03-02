@@ -21,7 +21,7 @@ class TableDisplayOptions {
 
   factory TableDisplayOptions.fromMap(Map<String, dynamic> map) {
     return TableDisplayOptions(
-      shownColumns: map['shownColumns'] == null ? null : ((map['shownColumns'] as List).cast<String>()).input(),
+      shownColumns: map['shownColumns'] == null ? null : ((map['shownColumns']! as List).cast<String>()).input(),
     );
   }
 }

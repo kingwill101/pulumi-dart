@@ -26,8 +26,8 @@ class SubscriptionResponse {
 
   factory SubscriptionResponse.fromMap(Map<String, dynamic> map) {
     return SubscriptionResponse(
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
     );
   }
 }

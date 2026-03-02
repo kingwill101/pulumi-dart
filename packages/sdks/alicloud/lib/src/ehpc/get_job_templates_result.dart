@@ -37,7 +37,7 @@ class GetJobTemplatesResult {
     return GetJobTemplatesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       templates: pulumi.Input.decodeList<GetJobTemplatesTemplate>(map['templates'], (value) => GetJobTemplatesTemplate.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

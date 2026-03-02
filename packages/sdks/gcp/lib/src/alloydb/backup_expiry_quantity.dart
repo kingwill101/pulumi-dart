@@ -27,8 +27,8 @@ class BackupExpiryQuantity {
 
   factory BackupExpiryQuantity.fromMap(Map<String, dynamic> map) {
     return BackupExpiryQuantity(
-      retentionCount: map['retentionCount'] == null ? null : (map['retentionCount'] as int).input(),
-      totalRetentionCount: map['totalRetentionCount'] == null ? null : (map['totalRetentionCount'] as int).input(),
+      retentionCount: map['retentionCount'] == null ? null : (map['retentionCount']! as int).input(),
+      totalRetentionCount: map['totalRetentionCount'] == null ? null : (map['totalRetentionCount']! as int).input(),
     );
   }
 }

@@ -43,11 +43,11 @@ class CustomRoutingEndpointGroupState {
 
   factory CustomRoutingEndpointGroupState.fromMap(Map<String, dynamic> map) {
     return CustomRoutingEndpointGroupState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      destinationConfigurations: map['destinationConfigurations'] == null ? null : (pulumi.Input.decodeList<CustomRoutingEndpointGroupDestinationConfiguration>(map['destinationConfigurations'], (value) => CustomRoutingEndpointGroupDestinationConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      endpointConfigurations: map['endpointConfigurations'] == null ? null : (pulumi.Input.decodeList<CustomRoutingEndpointGroupEndpointConfiguration>(map['endpointConfigurations'], (value) => CustomRoutingEndpointGroupEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      endpointGroupRegion: map['endpointGroupRegion'] == null ? null : (map['endpointGroupRegion'] as String).input(),
-      listenerArn: map['listenerArn'] == null ? null : (map['listenerArn'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      destinationConfigurations: map['destinationConfigurations'] == null ? null : ((pulumi.Input.decodeList<CustomRoutingEndpointGroupDestinationConfiguration>(map['destinationConfigurations']!, (value) => CustomRoutingEndpointGroupDestinationConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      endpointConfigurations: map['endpointConfigurations'] == null ? null : ((pulumi.Input.decodeList<CustomRoutingEndpointGroupEndpointConfiguration>(map['endpointConfigurations']!, (value) => CustomRoutingEndpointGroupEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      endpointGroupRegion: map['endpointGroupRegion'] == null ? null : ((map['endpointGroupRegion'] as String).input()).input(),
+      listenerArn: map['listenerArn'] == null ? null : ((map['listenerArn'] as String).input()).input(),
     );
   }
 }

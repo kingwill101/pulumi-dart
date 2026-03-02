@@ -27,7 +27,7 @@ class FileReferenceInputDataSource {
 
   factory FileReferenceInputDataSource.fromMap(Map<String, dynamic> map) {
     return FileReferenceInputDataSource(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -76,18 +76,18 @@ class ClusterArgs {
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
       cidrBlock: (map['cidrBlock'] as String).input(),
-      diskCategory: map['diskCategory'] == null ? null : (map['diskCategory'] as String).input(),
-      diskSize: map['diskSize'] == null ? null : (map['diskSize'] as int).input(),
-      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
+      diskCategory: map['diskCategory'] == null ? null : (map['diskCategory']! as String).input(),
+      diskSize: map['diskSize'] == null ? null : (map['diskSize']! as int).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId']! as String).input(),
       instanceType: (map['instanceType'] as String).input(),
-      isOutdated: map['isOutdated'] == null ? null : (map['isOutdated'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      needSlb: map['needSlb'] == null ? null : (map['needSlb'] as bool).input(),
-      nodeNumber: map['nodeNumber'] == null ? null : (map['nodeNumber'] as int).input(),
+      isOutdated: map['isOutdated'] == null ? null : (map['isOutdated']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix']! as String).input(),
+      needSlb: map['needSlb'] == null ? null : (map['needSlb']! as bool).input(),
+      nodeNumber: map['nodeNumber'] == null ? null : (map['nodeNumber']! as int).input(),
       password: (map['password'] as String).input(),
-      releaseEip: map['releaseEip'] == null ? null : (map['releaseEip'] as bool).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
+      releaseEip: map['releaseEip'] == null ? null : (map['releaseEip']! as bool).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
       vswitchId: (map['vswitchId'] as String).input(),
     );
   }

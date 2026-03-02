@@ -108,19 +108,19 @@ class ClusterClusterConfigGceClusterConfig {
 
   factory ClusterClusterConfigGceClusterConfig.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigGceClusterConfig(
-      confidentialInstanceConfig: map['confidentialInstanceConfig'] == null ? null : (ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig.fromMap((map['confidentialInstanceConfig'] as Map).cast<String, dynamic>())).input(),
-      internalIpOnly: map['internalIpOnly'] == null ? null : (map['internalIpOnly'] as bool).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      nodeGroupAffinity: map['nodeGroupAffinity'] == null ? null : (ClusterClusterConfigGceClusterConfigNodeGroupAffinity.fromMap((map['nodeGroupAffinity'] as Map).cast<String, dynamic>())).input(),
-      reservationAffinity: map['reservationAffinity'] == null ? null : (ClusterClusterConfigGceClusterConfigReservationAffinity.fromMap((map['reservationAffinity'] as Map).cast<String, dynamic>())).input(),
-      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags'] as Map).cast<String, String>()).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      serviceAccountScopes: map['serviceAccountScopes'] == null ? null : ((map['serviceAccountScopes'] as List).cast<String>()).input(),
-      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : (ClusterClusterConfigGceClusterConfigShieldedInstanceConfig.fromMap((map['shieldedInstanceConfig'] as Map).cast<String, dynamic>())).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      confidentialInstanceConfig: map['confidentialInstanceConfig'] == null ? null : (ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig.fromMap((map['confidentialInstanceConfig']! as Map).cast<String, dynamic>())).input(),
+      internalIpOnly: map['internalIpOnly'] == null ? null : (map['internalIpOnly']! as bool).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      nodeGroupAffinity: map['nodeGroupAffinity'] == null ? null : (ClusterClusterConfigGceClusterConfigNodeGroupAffinity.fromMap((map['nodeGroupAffinity']! as Map).cast<String, dynamic>())).input(),
+      reservationAffinity: map['reservationAffinity'] == null ? null : (ClusterClusterConfigGceClusterConfigReservationAffinity.fromMap((map['reservationAffinity']! as Map).cast<String, dynamic>())).input(),
+      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags']! as Map).cast<String, String>()).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      serviceAccountScopes: map['serviceAccountScopes'] == null ? null : ((map['serviceAccountScopes']! as List).cast<String>()).input(),
+      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : (ClusterClusterConfigGceClusterConfigShieldedInstanceConfig.fromMap((map['shieldedInstanceConfig']! as Map).cast<String, dynamic>())).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

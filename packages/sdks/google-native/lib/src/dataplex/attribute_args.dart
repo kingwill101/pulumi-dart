@@ -73,17 +73,17 @@ class AttributeArgs {
 
   factory AttributeArgs.fromMap(Map<String, dynamic> map) {
     return AttributeArgs(
-      dataAccessSpec: map['dataAccessSpec'] == null ? null : (GoogleCloudDataplexV1DataAccessSpec.fromMap((map['dataAccessSpec'] as Map).cast<String, dynamic>())).input(),
+      dataAccessSpec: map['dataAccessSpec'] == null ? null : (GoogleCloudDataplexV1DataAccessSpec.fromMap((map['dataAccessSpec']! as Map).cast<String, dynamic>())).input(),
       dataAttributeId: (map['dataAttributeId'] as String).input(),
       dataTaxonomyId: (map['dataTaxonomyId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      parentId: map['parentId'] == null ? null : (map['parentId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      resourceAccessSpec: map['resourceAccessSpec'] == null ? null : (GoogleCloudDataplexV1ResourceAccessSpec.fromMap((map['resourceAccessSpec'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      parentId: map['parentId'] == null ? null : (map['parentId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      resourceAccessSpec: map['resourceAccessSpec'] == null ? null : (GoogleCloudDataplexV1ResourceAccessSpec.fromMap((map['resourceAccessSpec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

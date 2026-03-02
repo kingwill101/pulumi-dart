@@ -22,7 +22,7 @@ class EnterpriseCrmFrontendsEventbusProtoEventParameters {
 
   factory EnterpriseCrmFrontendsEventbusProtoEventParameters.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmFrontendsEventbusProtoEventParameters(
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<EnterpriseCrmFrontendsEventbusProtoParameterEntry>(map['parameters'], (value) => EnterpriseCrmFrontendsEventbusProtoParameterEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<EnterpriseCrmFrontendsEventbusProtoParameterEntry>(map['parameters']!, (value) => EnterpriseCrmFrontendsEventbusProtoParameterEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

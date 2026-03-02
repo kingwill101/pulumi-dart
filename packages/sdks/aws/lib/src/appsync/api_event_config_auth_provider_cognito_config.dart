@@ -30,7 +30,7 @@ class ApiEventConfigAuthProviderCognitoConfig {
 
   factory ApiEventConfigAuthProviderCognitoConfig.fromMap(Map<String, dynamic> map) {
     return ApiEventConfigAuthProviderCognitoConfig(
-      appIdClientRegex: map['appIdClientRegex'] == null ? null : (map['appIdClientRegex'] as String).input(),
+      appIdClientRegex: map['appIdClientRegex'] == null ? null : ((map['appIdClientRegex'] as String).input()).input(),
       awsRegion: (map['awsRegion'] as String).input(),
       userPoolId: (map['userPoolId'] as String).input(),
     );

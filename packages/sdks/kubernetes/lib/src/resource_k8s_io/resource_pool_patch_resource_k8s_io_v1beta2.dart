@@ -37,9 +37,9 @@ class ResourcePoolPatchResourceK8sIoV1beta2 {
 
   factory ResourcePoolPatchResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return ResourcePoolPatchResourceK8sIoV1beta2(
-      generation: map['generation'] == null ? null : (map['generation'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceSliceCount: map['resourceSliceCount'] == null ? null : (map['resourceSliceCount'] as int).input(),
+      generation: map['generation'] == null ? null : (map['generation']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceSliceCount: map['resourceSliceCount'] == null ? null : (map['resourceSliceCount']! as int).input(),
     );
   }
 }

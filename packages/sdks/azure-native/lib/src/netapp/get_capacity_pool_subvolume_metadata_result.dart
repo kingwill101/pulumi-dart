@@ -80,18 +80,18 @@ class GetCapacityPoolSubvolumeMetadataResult {
 
   factory GetCapacityPoolSubvolumeMetadataResult.fromMap(Map<String, dynamic> map) {
     return GetCapacityPoolSubvolumeMetadataResult(
-      accessedTimeStamp: map['accessedTimeStamp'] == null ? null : map['accessedTimeStamp'] as String,
-      bytesUsed: map['bytesUsed'] == null ? null : map['bytesUsed'] as double,
-      changedTimeStamp: map['changedTimeStamp'] == null ? null : map['changedTimeStamp'] as String,
-      creationTimeStamp: map['creationTimeStamp'] == null ? null : map['creationTimeStamp'] as String,
+      accessedTimeStamp: map['accessedTimeStamp'] == null ? null : map['accessedTimeStamp']! as String,
+      bytesUsed: map['bytesUsed'] == null ? null : map['bytesUsed']! as double,
+      changedTimeStamp: map['changedTimeStamp'] == null ? null : map['changedTimeStamp']! as String,
+      creationTimeStamp: map['creationTimeStamp'] == null ? null : map['creationTimeStamp']! as String,
       id: map['id'] as String,
-      modifiedTimeStamp: map['modifiedTimeStamp'] == null ? null : map['modifiedTimeStamp'] as String,
+      modifiedTimeStamp: map['modifiedTimeStamp'] == null ? null : map['modifiedTimeStamp']! as String,
       name: map['name'] as String,
-      parentPath: map['parentPath'] == null ? null : map['parentPath'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
-      permissions: map['permissions'] == null ? null : map['permissions'] as String,
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
-      size: map['size'] == null ? null : map['size'] as double,
+      parentPath: map['parentPath'] == null ? null : map['parentPath']! as String,
+      path: map['path'] == null ? null : map['path']! as String,
+      permissions: map['permissions'] == null ? null : map['permissions']! as String,
+      provisioningState: map['provisioningState'] == null ? null : map['provisioningState']! as String,
+      size: map['size'] == null ? null : map['size']! as double,
       type: map['type'] as String,
     );
   }

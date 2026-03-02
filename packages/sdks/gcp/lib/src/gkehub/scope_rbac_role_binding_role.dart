@@ -26,8 +26,8 @@ class ScopeRbacRoleBindingRole {
 
   factory ScopeRbacRoleBindingRole.fromMap(Map<String, dynamic> map) {
     return ScopeRbacRoleBindingRole(
-      customRole: map['customRole'] == null ? null : (map['customRole'] as String).input(),
-      predefinedRole: map['predefinedRole'] == null ? null : (map['predefinedRole'] as String).input(),
+      customRole: map['customRole'] == null ? null : (map['customRole']! as String).input(),
+      predefinedRole: map['predefinedRole'] == null ? null : (map['predefinedRole']! as String).input(),
     );
   }
 }

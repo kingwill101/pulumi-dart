@@ -20,7 +20,7 @@ class GcpUserAccessBindingScopedAccessSettingDryRunSettings {
 
   factory GcpUserAccessBindingScopedAccessSettingDryRunSettings.fromMap(Map<String, dynamic> map) {
     return GcpUserAccessBindingScopedAccessSettingDryRunSettings(
-      accessLevels: map['accessLevels'] == null ? null : (map['accessLevels'] as String).input(),
+      accessLevels: map['accessLevels'] == null ? null : (map['accessLevels']! as String).input(),
     );
   }
 }

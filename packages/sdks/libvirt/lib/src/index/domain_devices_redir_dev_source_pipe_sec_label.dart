@@ -35,10 +35,10 @@ class DomainDevicesRedirDevSourcePipeSecLabel {
 
   factory DomainDevicesRedirDevSourcePipeSecLabel.fromMap(Map<String, dynamic> map) {
     return DomainDevicesRedirDevSourcePipeSecLabel(
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      labelSkip: map['labelSkip'] == null ? null : (map['labelSkip'] as String).input(),
-      model: map['model'] == null ? null : (map['model'] as String).input(),
-      relabel: map['relabel'] == null ? null : (map['relabel'] as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      labelSkip: map['labelSkip'] == null ? null : (map['labelSkip']! as String).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
+      relabel: map['relabel'] == null ? null : (map['relabel']! as String).input(),
     );
   }
 }

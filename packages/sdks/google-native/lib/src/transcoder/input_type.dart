@@ -32,9 +32,9 @@ class InputType {
 
   factory InputType.fromMap(Map<String, dynamic> map) {
     return InputType(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      preprocessingConfig: map['preprocessingConfig'] == null ? null : (PreprocessingConfig.fromMap((map['preprocessingConfig'] as Map).cast<String, dynamic>())).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      preprocessingConfig: map['preprocessingConfig'] == null ? null : (PreprocessingConfig.fromMap((map['preprocessingConfig']! as Map).cast<String, dynamic>())).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

@@ -56,12 +56,12 @@ class UserProfileArgs {
   factory UserProfileArgs.fromMap(Map<String, dynamic> map) {
     return UserProfileArgs(
       domainId: (map['domainId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      singleSignOnUserIdentifier: map['singleSignOnUserIdentifier'] == null ? null : (map['singleSignOnUserIdentifier'] as String).input(),
-      singleSignOnUserValue: map['singleSignOnUserValue'] == null ? null : (map['singleSignOnUserValue'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      singleSignOnUserIdentifier: map['singleSignOnUserIdentifier'] == null ? null : ((map['singleSignOnUserIdentifier'] as String).input()).input(),
+      singleSignOnUserValue: map['singleSignOnUserValue'] == null ? null : ((map['singleSignOnUserValue'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       userProfileName: (map['userProfileName'] as String).input(),
-      userSettings: map['userSettings'] == null ? null : (UserProfileUserSettings.fromMap((map['userSettings'] as Map).cast<String, dynamic>())).input(),
+      userSettings: map['userSettings'] == null ? null : ((UserProfileUserSettings.fromMap((map['userSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

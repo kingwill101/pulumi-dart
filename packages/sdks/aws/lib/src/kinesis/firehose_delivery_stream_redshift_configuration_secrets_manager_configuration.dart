@@ -30,9 +30,9 @@ class FirehoseDeliveryStreamRedshiftConfigurationSecretsManagerConfiguration {
 
   factory FirehoseDeliveryStreamRedshiftConfigurationSecretsManagerConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamRedshiftConfigurationSecretsManagerConfiguration(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      secretArn: map['secretArn'] == null ? null : (map['secretArn'] as String).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      secretArn: map['secretArn'] == null ? null : ((map['secretArn'] as String).input()).input(),
     );
   }
 }

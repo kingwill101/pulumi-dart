@@ -65,14 +65,14 @@ class PortForwardingV2State {
 
   factory PortForwardingV2State.fromMap(Map<String, dynamic> map) {
     return PortForwardingV2State(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      externalPort: map['externalPort'] == null ? null : (map['externalPort'] as int).input(),
-      floatingipId: map['floatingipId'] == null ? null : (map['floatingipId'] as String).input(),
-      internalIpAddress: map['internalIpAddress'] == null ? null : (map['internalIpAddress'] as String).input(),
-      internalPort: map['internalPort'] == null ? null : (map['internalPort'] as int).input(),
-      internalPortId: map['internalPortId'] == null ? null : (map['internalPortId'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      externalPort: map['externalPort'] == null ? null : (map['externalPort']! as int).input(),
+      floatingipId: map['floatingipId'] == null ? null : (map['floatingipId']! as String).input(),
+      internalIpAddress: map['internalIpAddress'] == null ? null : (map['internalIpAddress']! as String).input(),
+      internalPort: map['internalPort'] == null ? null : (map['internalPort']! as int).input(),
+      internalPortId: map['internalPortId'] == null ? null : (map['internalPortId']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

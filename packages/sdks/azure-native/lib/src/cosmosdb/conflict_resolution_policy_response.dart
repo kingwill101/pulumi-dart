@@ -31,9 +31,9 @@ class ConflictResolutionPolicyResponse {
 
   factory ConflictResolutionPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ConflictResolutionPolicyResponse(
-      conflictResolutionPath: map['conflictResolutionPath'] == null ? null : (map['conflictResolutionPath'] as String).input(),
-      conflictResolutionProcedure: map['conflictResolutionProcedure'] == null ? null : (map['conflictResolutionProcedure'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      conflictResolutionPath: map['conflictResolutionPath'] == null ? null : (map['conflictResolutionPath']! as String).input(),
+      conflictResolutionProcedure: map['conflictResolutionProcedure'] == null ? null : (map['conflictResolutionProcedure']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
     );
   }
 }

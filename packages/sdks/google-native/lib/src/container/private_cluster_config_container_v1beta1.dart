@@ -42,11 +42,11 @@ class PrivateClusterConfigContainerV1beta1 {
 
   factory PrivateClusterConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return PrivateClusterConfigContainerV1beta1(
-      enablePrivateEndpoint: map['enablePrivateEndpoint'] == null ? null : (map['enablePrivateEndpoint'] as bool).input(),
-      enablePrivateNodes: map['enablePrivateNodes'] == null ? null : (map['enablePrivateNodes'] as bool).input(),
-      masterGlobalAccessConfig: map['masterGlobalAccessConfig'] == null ? null : (PrivateClusterMasterGlobalAccessConfigContainerV1beta1.fromMap((map['masterGlobalAccessConfig'] as Map).cast<String, dynamic>())).input(),
-      masterIpv4CidrBlock: map['masterIpv4CidrBlock'] == null ? null : (map['masterIpv4CidrBlock'] as String).input(),
-      privateEndpointSubnetwork: map['privateEndpointSubnetwork'] == null ? null : (map['privateEndpointSubnetwork'] as String).input(),
+      enablePrivateEndpoint: map['enablePrivateEndpoint'] == null ? null : (map['enablePrivateEndpoint']! as bool).input(),
+      enablePrivateNodes: map['enablePrivateNodes'] == null ? null : (map['enablePrivateNodes']! as bool).input(),
+      masterGlobalAccessConfig: map['masterGlobalAccessConfig'] == null ? null : (PrivateClusterMasterGlobalAccessConfigContainerV1beta1.fromMap((map['masterGlobalAccessConfig']! as Map).cast<String, dynamic>())).input(),
+      masterIpv4CidrBlock: map['masterIpv4CidrBlock'] == null ? null : (map['masterIpv4CidrBlock']! as String).input(),
+      privateEndpointSubnetwork: map['privateEndpointSubnetwork'] == null ? null : (map['privateEndpointSubnetwork']! as String).input(),
     );
   }
 }

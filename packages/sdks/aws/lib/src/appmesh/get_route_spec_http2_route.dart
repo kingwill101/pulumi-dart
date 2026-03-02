@@ -35,10 +35,10 @@ class GetRouteSpecHttp2Route {
 
   factory GetRouteSpecHttp2Route.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecHttp2Route(
-      actions: (pulumi.Input.decodeList<GetRouteSpecHttp2RouteAction>(map['actions'], (value) => GetRouteSpecHttp2RouteAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matches: (pulumi.Input.decodeList<GetRouteSpecHttp2RouteMatch>(map['matches'], (value) => GetRouteSpecHttp2RouteMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      retryPolicies: (pulumi.Input.decodeList<GetRouteSpecHttp2RouteRetryPolicy>(map['retryPolicies'], (value) => GetRouteSpecHttp2RouteRetryPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeouts: (pulumi.Input.decodeList<GetRouteSpecHttp2RouteTimeout>(map['timeouts'], (value) => GetRouteSpecHttp2RouteTimeout.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      actions: (pulumi.Input.decodeList<GetRouteSpecHttp2RouteAction>(map['actions']!, (value) => GetRouteSpecHttp2RouteAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matches: (pulumi.Input.decodeList<GetRouteSpecHttp2RouteMatch>(map['matches']!, (value) => GetRouteSpecHttp2RouteMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      retryPolicies: (pulumi.Input.decodeList<GetRouteSpecHttp2RouteRetryPolicy>(map['retryPolicies']!, (value) => GetRouteSpecHttp2RouteRetryPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeouts: (pulumi.Input.decodeList<GetRouteSpecHttp2RouteTimeout>(map['timeouts']!, (value) => GetRouteSpecHttp2RouteTimeout.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

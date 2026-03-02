@@ -44,11 +44,11 @@ class MultiplexProgramState {
 
   factory MultiplexProgramState.fromMap(Map<String, dynamic> map) {
     return MultiplexProgramState(
-      multiplexId: map['multiplexId'] == null ? null : (map['multiplexId'] as String).input(),
-      multiplexProgramSettings: map['multiplexProgramSettings'] == null ? null : (MultiplexProgramMultiplexProgramSettings.fromMap((map['multiplexProgramSettings'] as Map).cast<String, dynamic>())).input(),
-      programName: map['programName'] == null ? null : (map['programName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (MultiplexProgramTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      multiplexId: map['multiplexId'] == null ? null : ((map['multiplexId'] as String).input()).input(),
+      multiplexProgramSettings: map['multiplexProgramSettings'] == null ? null : ((MultiplexProgramMultiplexProgramSettings.fromMap((map['multiplexProgramSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      programName: map['programName'] == null ? null : ((map['programName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((MultiplexProgramTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

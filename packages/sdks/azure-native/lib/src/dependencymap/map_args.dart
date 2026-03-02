@@ -39,10 +39,10 @@ class MapArgs {
 
   factory MapArgs.fromMap(Map<String, dynamic> map) {
     return MapArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mapName: map['mapName'] == null ? null : (map['mapName'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mapName: map['mapName'] == null ? null : (map['mapName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

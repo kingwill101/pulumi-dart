@@ -34,7 +34,7 @@ class GetNetworkProfileArgs {
 
   factory GetNetworkProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkProfileArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       networkProfileName: (map['networkProfileName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

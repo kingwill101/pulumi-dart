@@ -34,8 +34,8 @@ class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo {
 
   factory TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo.fromMap(Map<String, dynamic> map) {
     return TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
       serializationLibrary: (map['serializationLibrary'] as String).input(),
     );
   }

@@ -100,21 +100,21 @@ class GetNotificationHubPnsCredentialsResult {
 
   factory GetNotificationHubPnsCredentialsResult.fromMap(Map<String, dynamic> map) {
     return GetNotificationHubPnsCredentialsResult(
-      admCredential: map['admCredential'] == null ? null : AdmCredentialResponse.fromMap((map['admCredential'] as Map).cast<String, dynamic>()),
-      apnsCredential: map['apnsCredential'] == null ? null : ApnsCredentialResponse.fromMap((map['apnsCredential'] as Map).cast<String, dynamic>()),
-      baiduCredential: map['baiduCredential'] == null ? null : BaiduCredentialResponse.fromMap((map['baiduCredential'] as Map).cast<String, dynamic>()),
-      browserCredential: map['browserCredential'] == null ? null : BrowserCredentialResponse.fromMap((map['browserCredential'] as Map).cast<String, dynamic>()),
-      fcmV1Credential: map['fcmV1Credential'] == null ? null : FcmV1CredentialResponse.fromMap((map['fcmV1Credential'] as Map).cast<String, dynamic>()),
-      gcmCredential: map['gcmCredential'] == null ? null : GcmCredentialResponse.fromMap((map['gcmCredential'] as Map).cast<String, dynamic>()),
+      admCredential: map['admCredential'] == null ? null : AdmCredentialResponse.fromMap((map['admCredential']! as Map).cast<String, dynamic>()),
+      apnsCredential: map['apnsCredential'] == null ? null : ApnsCredentialResponse.fromMap((map['apnsCredential']! as Map).cast<String, dynamic>()),
+      baiduCredential: map['baiduCredential'] == null ? null : BaiduCredentialResponse.fromMap((map['baiduCredential']! as Map).cast<String, dynamic>()),
+      browserCredential: map['browserCredential'] == null ? null : BrowserCredentialResponse.fromMap((map['browserCredential']! as Map).cast<String, dynamic>()),
+      fcmV1Credential: map['fcmV1Credential'] == null ? null : FcmV1CredentialResponse.fromMap((map['fcmV1Credential']! as Map).cast<String, dynamic>()),
+      gcmCredential: map['gcmCredential'] == null ? null : GcmCredentialResponse.fromMap((map['gcmCredential']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      mpnsCredential: map['mpnsCredential'] == null ? null : MpnsCredentialResponse.fromMap((map['mpnsCredential'] as Map).cast<String, dynamic>()),
+      location: map['location'] == null ? null : map['location']! as String,
+      mpnsCredential: map['mpnsCredential'] == null ? null : MpnsCredentialResponse.fromMap((map['mpnsCredential']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      wnsCredential: map['wnsCredential'] == null ? null : WnsCredentialResponse.fromMap((map['wnsCredential'] as Map).cast<String, dynamic>()),
-      xiaomiCredential: map['xiaomiCredential'] == null ? null : XiaomiCredentialResponse.fromMap((map['xiaomiCredential'] as Map).cast<String, dynamic>()),
+      wnsCredential: map['wnsCredential'] == null ? null : WnsCredentialResponse.fromMap((map['wnsCredential']! as Map).cast<String, dynamic>()),
+      xiaomiCredential: map['xiaomiCredential'] == null ? null : XiaomiCredentialResponse.fromMap((map['xiaomiCredential']! as Map).cast<String, dynamic>()),
     );
   }
 }

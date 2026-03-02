@@ -50,12 +50,12 @@ class AccessPointState {
 
   factory AccessPointState.fromMap(Map<String, dynamic> map) {
     return AccessPointState(
-      accessPointName: map['accessPointName'] == null ? null : (map['accessPointName'] as String).input(),
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      networkOrigin: map['networkOrigin'] == null ? null : (map['networkOrigin'] as String).input(),
-      publicAccessBlockConfiguration: map['publicAccessBlockConfiguration'] == null ? null : (AccessPointPublicAccessBlockConfiguration.fromMap((map['publicAccessBlockConfiguration'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vpcConfiguration: map['vpcConfiguration'] == null ? null : (AccessPointVpcConfiguration.fromMap((map['vpcConfiguration'] as Map).cast<String, dynamic>())).input(),
+      accessPointName: map['accessPointName'] == null ? null : (map['accessPointName']! as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      networkOrigin: map['networkOrigin'] == null ? null : (map['networkOrigin']! as String).input(),
+      publicAccessBlockConfiguration: map['publicAccessBlockConfiguration'] == null ? null : (AccessPointPublicAccessBlockConfiguration.fromMap((map['publicAccessBlockConfiguration']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vpcConfiguration: map['vpcConfiguration'] == null ? null : (AccessPointVpcConfiguration.fromMap((map['vpcConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

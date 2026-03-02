@@ -26,8 +26,8 @@ class PrivateSrvNetworkAddressState {
 
   factory PrivateSrvNetworkAddressState.fromMap(Map<String, dynamic> map) {
     return PrivateSrvNetworkAddressState(
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      privateSrvConnectionStringUri: map['privateSrvConnectionStringUri'] == null ? null : (map['privateSrvConnectionStringUri'] as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      privateSrvConnectionStringUri: map['privateSrvConnectionStringUri'] == null ? null : (map['privateSrvConnectionStringUri']! as String).input(),
     );
   }
 }

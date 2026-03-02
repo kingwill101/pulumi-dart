@@ -39,10 +39,10 @@ class AssessmentArgs {
 
   factory AssessmentArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentArgs(
-      assessmentName: map['assessmentName'] == null ? null : (map['assessmentName'] as String).input(),
-      locale: map['locale'] == null ? null : (map['locale'] as String).input(),
-      typeId: map['typeId'] == null ? null : (map['typeId'] as String).input(),
-      workloadId: map['workloadId'] == null ? null : (map['workloadId'] as String).input(),
+      assessmentName: map['assessmentName'] == null ? null : (map['assessmentName']! as String).input(),
+      locale: map['locale'] == null ? null : (map['locale']! as String).input(),
+      typeId: map['typeId'] == null ? null : (map['typeId']! as String).input(),
+      workloadId: map['workloadId'] == null ? null : (map['workloadId']! as String).input(),
     );
   }
 }

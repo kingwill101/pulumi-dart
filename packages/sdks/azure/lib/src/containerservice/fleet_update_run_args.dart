@@ -46,11 +46,11 @@ class FleetUpdateRunArgs {
 
   factory FleetUpdateRunArgs.fromMap(Map<String, dynamic> map) {
     return FleetUpdateRunArgs(
-      fleetUpdateStrategyId: map['fleetUpdateStrategyId'] == null ? null : (map['fleetUpdateStrategyId'] as String).input(),
+      fleetUpdateStrategyId: map['fleetUpdateStrategyId'] == null ? null : (map['fleetUpdateStrategyId']! as String).input(),
       kubernetesFleetManagerId: (map['kubernetesFleetManagerId'] as String).input(),
       managedClusterUpdate: (FleetUpdateRunManagedClusterUpdate.fromMap((map['managedClusterUpdate'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      stages: map['stages'] == null ? null : (pulumi.Input.decodeList<FleetUpdateRunStage>(map['stages'], (value) => FleetUpdateRunStage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      stages: map['stages'] == null ? null : (pulumi.Input.decodeList<FleetUpdateRunStage>(map['stages']!, (value) => FleetUpdateRunStage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

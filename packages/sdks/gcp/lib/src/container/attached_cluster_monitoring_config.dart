@@ -22,7 +22,7 @@ class AttachedClusterMonitoringConfig {
 
   factory AttachedClusterMonitoringConfig.fromMap(Map<String, dynamic> map) {
     return AttachedClusterMonitoringConfig(
-      managedPrometheusConfig: map['managedPrometheusConfig'] == null ? null : (AttachedClusterMonitoringConfigManagedPrometheusConfig.fromMap((map['managedPrometheusConfig'] as Map).cast<String, dynamic>())).input(),
+      managedPrometheusConfig: map['managedPrometheusConfig'] == null ? null : (AttachedClusterMonitoringConfigManagedPrometheusConfig.fromMap((map['managedPrometheusConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

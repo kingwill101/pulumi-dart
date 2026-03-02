@@ -21,7 +21,7 @@ class RuleGroupRuleActionCaptcha {
 
   factory RuleGroupRuleActionCaptcha.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleActionCaptcha(
-      customRequestHandling: map['customRequestHandling'] == null ? null : (RuleGroupRuleActionCaptchaCustomRequestHandling.fromMap((map['customRequestHandling'] as Map).cast<String, dynamic>())).input(),
+      customRequestHandling: map['customRequestHandling'] == null ? null : ((RuleGroupRuleActionCaptchaCustomRequestHandling.fromMap((map['customRequestHandling']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

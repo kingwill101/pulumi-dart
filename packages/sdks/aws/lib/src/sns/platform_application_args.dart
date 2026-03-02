@@ -91,20 +91,20 @@ class PlatformApplicationArgs {
 
   factory PlatformApplicationArgs.fromMap(Map<String, dynamic> map) {
     return PlatformApplicationArgs(
-      applePlatformBundleId: map['applePlatformBundleId'] == null ? null : (map['applePlatformBundleId'] as String).input(),
-      applePlatformTeamId: map['applePlatformTeamId'] == null ? null : (map['applePlatformTeamId'] as String).input(),
-      eventDeliveryFailureTopicArn: map['eventDeliveryFailureTopicArn'] == null ? null : (map['eventDeliveryFailureTopicArn'] as String).input(),
-      eventEndpointCreatedTopicArn: map['eventEndpointCreatedTopicArn'] == null ? null : (map['eventEndpointCreatedTopicArn'] as String).input(),
-      eventEndpointDeletedTopicArn: map['eventEndpointDeletedTopicArn'] == null ? null : (map['eventEndpointDeletedTopicArn'] as String).input(),
-      eventEndpointUpdatedTopicArn: map['eventEndpointUpdatedTopicArn'] == null ? null : (map['eventEndpointUpdatedTopicArn'] as String).input(),
-      failureFeedbackRoleArn: map['failureFeedbackRoleArn'] == null ? null : (map['failureFeedbackRoleArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      applePlatformBundleId: map['applePlatformBundleId'] == null ? null : ((map['applePlatformBundleId'] as String).input()).input(),
+      applePlatformTeamId: map['applePlatformTeamId'] == null ? null : ((map['applePlatformTeamId'] as String).input()).input(),
+      eventDeliveryFailureTopicArn: map['eventDeliveryFailureTopicArn'] == null ? null : ((map['eventDeliveryFailureTopicArn'] as String).input()).input(),
+      eventEndpointCreatedTopicArn: map['eventEndpointCreatedTopicArn'] == null ? null : ((map['eventEndpointCreatedTopicArn'] as String).input()).input(),
+      eventEndpointDeletedTopicArn: map['eventEndpointDeletedTopicArn'] == null ? null : ((map['eventEndpointDeletedTopicArn'] as String).input()).input(),
+      eventEndpointUpdatedTopicArn: map['eventEndpointUpdatedTopicArn'] == null ? null : ((map['eventEndpointUpdatedTopicArn'] as String).input()).input(),
+      failureFeedbackRoleArn: map['failureFeedbackRoleArn'] == null ? null : ((map['failureFeedbackRoleArn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       platform: (map['platform'] as String).input(),
       platformCredential: (map['platformCredential'] as String).input(),
-      platformPrincipal: map['platformPrincipal'] == null ? null : (map['platformPrincipal'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      successFeedbackRoleArn: map['successFeedbackRoleArn'] == null ? null : (map['successFeedbackRoleArn'] as String).input(),
-      successFeedbackSampleRate: map['successFeedbackSampleRate'] == null ? null : (map['successFeedbackSampleRate'] as String).input(),
+      platformPrincipal: map['platformPrincipal'] == null ? null : ((map['platformPrincipal'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      successFeedbackRoleArn: map['successFeedbackRoleArn'] == null ? null : ((map['successFeedbackRoleArn'] as String).input()).input(),
+      successFeedbackSampleRate: map['successFeedbackSampleRate'] == null ? null : ((map['successFeedbackSampleRate'] as String).input()).input(),
     );
   }
 }

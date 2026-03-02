@@ -55,13 +55,13 @@ class VolumeArgs {
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      azureFileParameters: map['azureFileParameters'] == null ? null : (VolumeProviderParametersAzureFile.fromMap((map['azureFileParameters'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      azureFileParameters: map['azureFileParameters'] == null ? null : (VolumeProviderParametersAzureFile.fromMap((map['azureFileParameters']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       provider: (map['provider'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      volumeResourceName: map['volumeResourceName'] == null ? null : (map['volumeResourceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      volumeResourceName: map['volumeResourceName'] == null ? null : (map['volumeResourceName']! as String).input(),
     );
   }
 }

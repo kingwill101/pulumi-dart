@@ -89,20 +89,20 @@ class AvailabilityGroupConfigure {
 
   factory AvailabilityGroupConfigure.fromMap(Map<String, dynamic> map) {
     return AvailabilityGroupConfigure(
-      availabilityMode: map['availabilityMode'] == null ? null : (map['availabilityMode'] as String).input(),
-      backupPriority: map['backupPriority'] == null ? null : (map['backupPriority'] as int).input(),
-      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
-      endpointAuthenticationMode: map['endpointAuthenticationMode'] == null ? null : (map['endpointAuthenticationMode'] as String).input(),
-      endpointConnectLogin: map['endpointConnectLogin'] == null ? null : (map['endpointConnectLogin'] as String).input(),
-      endpointName: map['endpointName'] == null ? null : (map['endpointName'] as String).input(),
-      endpointUrl: map['endpointUrl'] == null ? null : (map['endpointUrl'] as String).input(),
-      failoverMode: map['failoverMode'] == null ? null : (map['failoverMode'] as String).input(),
-      primaryAllowConnections: map['primaryAllowConnections'] == null ? null : (PrimaryAllowConnections.fromValue(map['primaryAllowConnections'] as String)).input(),
-      readOnlyRoutingUrl: map['readOnlyRoutingUrl'] == null ? null : (map['readOnlyRoutingUrl'] as String).input(),
-      readWriteRoutingUrl: map['readWriteRoutingUrl'] == null ? null : (map['readWriteRoutingUrl'] as String).input(),
-      secondaryAllowConnections: map['secondaryAllowConnections'] == null ? null : (SecondaryAllowConnections.fromValue(map['secondaryAllowConnections'] as String)).input(),
-      seedingMode: map['seedingMode'] == null ? null : (SeedingMode.fromValue(map['seedingMode'] as String)).input(),
-      sessionTimeout: map['sessionTimeout'] == null ? null : (map['sessionTimeout'] as int).input(),
+      availabilityMode: map['availabilityMode'] == null ? null : (map['availabilityMode']! as String).input(),
+      backupPriority: map['backupPriority'] == null ? null : (map['backupPriority']! as int).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName']! as String).input(),
+      endpointAuthenticationMode: map['endpointAuthenticationMode'] == null ? null : (map['endpointAuthenticationMode']! as String).input(),
+      endpointConnectLogin: map['endpointConnectLogin'] == null ? null : (map['endpointConnectLogin']! as String).input(),
+      endpointName: map['endpointName'] == null ? null : (map['endpointName']! as String).input(),
+      endpointUrl: map['endpointUrl'] == null ? null : (map['endpointUrl']! as String).input(),
+      failoverMode: map['failoverMode'] == null ? null : (map['failoverMode']! as String).input(),
+      primaryAllowConnections: map['primaryAllowConnections'] == null ? null : (PrimaryAllowConnections.fromValue(map['primaryAllowConnections']! as String)).input(),
+      readOnlyRoutingUrl: map['readOnlyRoutingUrl'] == null ? null : (map['readOnlyRoutingUrl']! as String).input(),
+      readWriteRoutingUrl: map['readWriteRoutingUrl'] == null ? null : (map['readWriteRoutingUrl']! as String).input(),
+      secondaryAllowConnections: map['secondaryAllowConnections'] == null ? null : (SecondaryAllowConnections.fromValue(map['secondaryAllowConnections']! as String)).input(),
+      seedingMode: map['seedingMode'] == null ? null : (SeedingMode.fromValue(map['seedingMode']! as String)).input(),
+      sessionTimeout: map['sessionTimeout'] == null ? null : (map['sessionTimeout']! as int).input(),
     );
   }
 }

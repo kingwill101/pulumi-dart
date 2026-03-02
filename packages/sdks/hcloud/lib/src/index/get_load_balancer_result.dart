@@ -100,13 +100,13 @@ class GetLoadBalancerResult {
       labels: (map['labels'] as Map).cast<String, String>(),
       loadBalancerType: map['loadBalancerType'] as String,
       location: map['location'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
       networkId: map['networkId'] as int,
       networkIp: map['networkIp'] as String,
       networkZone: map['networkZone'] as String,
       services: pulumi.Input.decodeList<GetLoadBalancerService>(map['services'], (value) => GetLoadBalancerService.fromMap((value as Map).cast<String, dynamic>())),
       targets: pulumi.Input.decodeList<GetLoadBalancerTarget>(map['targets'], (value) => GetLoadBalancerTarget.fromMap((value as Map).cast<String, dynamic>())),
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
     );
   }
 }

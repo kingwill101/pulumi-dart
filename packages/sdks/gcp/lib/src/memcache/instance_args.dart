@@ -106,20 +106,20 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      authorizedNetwork: map['authorizedNetwork'] == null ? null : (map['authorizedNetwork'] as String).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      maintenancePolicy: map['maintenancePolicy'] == null ? null : (InstanceMaintenancePolicy.fromMap((map['maintenancePolicy'] as Map).cast<String, dynamic>())).input(),
-      memcacheParameters: map['memcacheParameters'] == null ? null : (InstanceMemcacheParameters.fromMap((map['memcacheParameters'] as Map).cast<String, dynamic>())).input(),
-      memcacheVersion: map['memcacheVersion'] == null ? null : (map['memcacheVersion'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      authorizedNetwork: map['authorizedNetwork'] == null ? null : (map['authorizedNetwork']! as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      maintenancePolicy: map['maintenancePolicy'] == null ? null : (InstanceMaintenancePolicy.fromMap((map['maintenancePolicy']! as Map).cast<String, dynamic>())).input(),
+      memcacheParameters: map['memcacheParameters'] == null ? null : (InstanceMemcacheParameters.fromMap((map['memcacheParameters']! as Map).cast<String, dynamic>())).input(),
+      memcacheVersion: map['memcacheVersion'] == null ? null : (map['memcacheVersion']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       nodeConfig: (InstanceNodeConfig.fromMap((map['nodeConfig'] as Map).cast<String, dynamic>())).input(),
       nodeCount: (map['nodeCount'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      reservedIpRangeIds: map['reservedIpRangeIds'] == null ? null : ((map['reservedIpRangeIds'] as List).cast<String>()).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      reservedIpRangeIds: map['reservedIpRangeIds'] == null ? null : ((map['reservedIpRangeIds']! as List).cast<String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

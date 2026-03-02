@@ -27,8 +27,8 @@ class AwsRdsDBSnapshotAttributesResultPropertiesResponse {
 
   factory AwsRdsDBSnapshotAttributesResultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsRdsDBSnapshotAttributesResultPropertiesResponse(
-      dbSnapshotAttributes: map['dbSnapshotAttributes'] == null ? null : (pulumi.Input.decodeList<DBSnapshotAttributeResponse>(map['dbSnapshotAttributes'], (value) => DBSnapshotAttributeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dbSnapshotIdentifier: map['dbSnapshotIdentifier'] == null ? null : (map['dbSnapshotIdentifier'] as String).input(),
+      dbSnapshotAttributes: map['dbSnapshotAttributes'] == null ? null : (pulumi.Input.decodeList<DBSnapshotAttributeResponse>(map['dbSnapshotAttributes']!, (value) => DBSnapshotAttributeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dbSnapshotIdentifier: map['dbSnapshotIdentifier'] == null ? null : (map['dbSnapshotIdentifier']! as String).input(),
     );
   }
 }

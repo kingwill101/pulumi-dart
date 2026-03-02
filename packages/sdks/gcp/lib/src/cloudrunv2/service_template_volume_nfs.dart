@@ -31,7 +31,7 @@ class ServiceTemplateVolumeNfs {
   factory ServiceTemplateVolumeNfs.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateVolumeNfs(
       path: (map['path'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
       server: (map['server'] as String).input(),
     );
   }

@@ -99,22 +99,22 @@ class RouteArgs {
 
   factory RouteArgs.fromMap(Map<String, dynamic> map) {
     return RouteArgs(
-      allowConflictingSubnetworks: map['allowConflictingSubnetworks'] == null ? null : (map['allowConflictingSubnetworks'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destRange: map['destRange'] == null ? null : (map['destRange'] as String).input(),
-      ilbRouteBehaviorOnUnhealthy: map['ilbRouteBehaviorOnUnhealthy'] == null ? null : (RouteIlbRouteBehaviorOnUnhealthy.fromValue(map['ilbRouteBehaviorOnUnhealthy'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      nextHopGateway: map['nextHopGateway'] == null ? null : (map['nextHopGateway'] as String).input(),
-      nextHopIlb: map['nextHopIlb'] == null ? null : (map['nextHopIlb'] as String).input(),
-      nextHopInstance: map['nextHopInstance'] == null ? null : (map['nextHopInstance'] as String).input(),
-      nextHopIp: map['nextHopIp'] == null ? null : (map['nextHopIp'] as String).input(),
-      nextHopNetwork: map['nextHopNetwork'] == null ? null : (map['nextHopNetwork'] as String).input(),
-      nextHopVpnTunnel: map['nextHopVpnTunnel'] == null ? null : (map['nextHopVpnTunnel'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      allowConflictingSubnetworks: map['allowConflictingSubnetworks'] == null ? null : (map['allowConflictingSubnetworks']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destRange: map['destRange'] == null ? null : (map['destRange']! as String).input(),
+      ilbRouteBehaviorOnUnhealthy: map['ilbRouteBehaviorOnUnhealthy'] == null ? null : (RouteIlbRouteBehaviorOnUnhealthy.fromValue(map['ilbRouteBehaviorOnUnhealthy']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      nextHopGateway: map['nextHopGateway'] == null ? null : (map['nextHopGateway']! as String).input(),
+      nextHopIlb: map['nextHopIlb'] == null ? null : (map['nextHopIlb']! as String).input(),
+      nextHopInstance: map['nextHopInstance'] == null ? null : (map['nextHopInstance']! as String).input(),
+      nextHopIp: map['nextHopIp'] == null ? null : (map['nextHopIp']! as String).input(),
+      nextHopNetwork: map['nextHopNetwork'] == null ? null : (map['nextHopNetwork']! as String).input(),
+      nextHopVpnTunnel: map['nextHopVpnTunnel'] == null ? null : (map['nextHopVpnTunnel']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
     );
   }
 }

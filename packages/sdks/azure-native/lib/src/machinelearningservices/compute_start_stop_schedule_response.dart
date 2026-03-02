@@ -59,14 +59,14 @@ class ComputeStartStopScheduleResponse {
 
   factory ComputeStartStopScheduleResponse.fromMap(Map<String, dynamic> map) {
     return ComputeStartStopScheduleResponse(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      cron: map['cron'] == null ? null : (CronResponse.fromMap((map['cron'] as Map).cast<String, dynamic>())).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      cron: map['cron'] == null ? null : (CronResponse.fromMap((map['cron']! as Map).cast<String, dynamic>())).input(),
       id: (map['id'] as String).input(),
       provisioningStatus: (map['provisioningStatus'] as String).input(),
-      recurrence: map['recurrence'] == null ? null : (RecurrenceResponse.fromMap((map['recurrence'] as Map).cast<String, dynamic>())).input(),
-      schedule: map['schedule'] == null ? null : (ScheduleBaseResponse.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      triggerType: map['triggerType'] == null ? null : (map['triggerType'] as String).input(),
+      recurrence: map['recurrence'] == null ? null : (RecurrenceResponse.fromMap((map['recurrence']! as Map).cast<String, dynamic>())).input(),
+      schedule: map['schedule'] == null ? null : (ScheduleBaseResponse.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      triggerType: map['triggerType'] == null ? null : (map['triggerType']! as String).input(),
     );
   }
 }

@@ -19,7 +19,7 @@ class ProviderFeaturesLogAnalyticsWorkspace {
 
   factory ProviderFeaturesLogAnalyticsWorkspace.fromMap(Map<String, dynamic> map) {
     return ProviderFeaturesLogAnalyticsWorkspace(
-      permanentlyDeleteOnDestroy: map['permanentlyDeleteOnDestroy'] == null ? null : (map['permanentlyDeleteOnDestroy'] as bool).input(),
+      permanentlyDeleteOnDestroy: map['permanentlyDeleteOnDestroy'] == null ? null : (map['permanentlyDeleteOnDestroy']! as bool).input(),
     );
   }
 }

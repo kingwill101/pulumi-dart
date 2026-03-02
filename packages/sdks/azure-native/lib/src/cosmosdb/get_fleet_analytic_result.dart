@@ -60,8 +60,8 @@ class GetFleetAnalyticResult {
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      storageLocationType: map['storageLocationType'] == null ? null : map['storageLocationType'] as String,
-      storageLocationUri: map['storageLocationUri'] == null ? null : map['storageLocationUri'] as String,
+      storageLocationType: map['storageLocationType'] == null ? null : map['storageLocationType']! as String,
+      storageLocationUri: map['storageLocationUri'] == null ? null : map['storageLocationUri']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

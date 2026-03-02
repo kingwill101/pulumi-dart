@@ -38,9 +38,9 @@ class NotificationChannelArgs {
 
   factory NotificationChannelArgs.fromMap(Map<String, dynamic> map) {
     return NotificationChannelArgs(
-      filters: map['filters'] == null ? null : (NotificationChannelFilters.fromMap((map['filters'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sns: (NotificationChannelSns.fromMap((map['sns'] as Map).cast<String, dynamic>())).input(),
+      filters: map['filters'] == null ? null : ((NotificationChannelFilters.fromMap((map['filters']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sns: (NotificationChannelSns.fromMap((map['sns']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

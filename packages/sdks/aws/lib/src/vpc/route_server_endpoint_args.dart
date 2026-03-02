@@ -46,11 +46,11 @@ class RouteServerEndpointArgs {
 
   factory RouteServerEndpointArgs.fromMap(Map<String, dynamic> map) {
     return RouteServerEndpointArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       routeServerId: (map['routeServerId'] as String).input(),
       subnetId: (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (RouteServerEndpointTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((RouteServerEndpointTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

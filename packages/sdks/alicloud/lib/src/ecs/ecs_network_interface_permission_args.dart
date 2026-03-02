@@ -40,7 +40,7 @@ class EcsNetworkInterfacePermissionArgs {
   factory EcsNetworkInterfacePermissionArgs.fromMap(Map<String, dynamic> map) {
     return EcsNetworkInterfacePermissionArgs(
       accountId: (map['accountId'] as String).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
       networkInterfaceId: (map['networkInterfaceId'] as String).input(),
       permission: (map['permission'] as String).input(),
     );

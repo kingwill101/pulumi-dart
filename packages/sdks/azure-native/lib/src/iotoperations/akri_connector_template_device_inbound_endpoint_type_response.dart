@@ -37,10 +37,10 @@ class AkriConnectorTemplateDeviceInboundEndpointTypeResponse {
 
   factory AkriConnectorTemplateDeviceInboundEndpointTypeResponse.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateDeviceInboundEndpointTypeResponse(
-      configurationSchemaRefs: map['configurationSchemaRefs'] == null ? null : (AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse.fromMap((map['configurationSchemaRefs'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      configurationSchemaRefs: map['configurationSchemaRefs'] == null ? null : (AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse.fromMap((map['configurationSchemaRefs']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       endpointType: (map['endpointType'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

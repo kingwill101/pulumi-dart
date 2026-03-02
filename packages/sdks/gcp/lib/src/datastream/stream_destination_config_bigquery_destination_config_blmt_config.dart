@@ -43,7 +43,7 @@ class StreamDestinationConfigBigqueryDestinationConfigBlmtConfig {
       bucket: (map['bucket'] as String).input(),
       connectionName: (map['connectionName'] as String).input(),
       fileFormat: (map['fileFormat'] as String).input(),
-      rootPath: map['rootPath'] == null ? null : (map['rootPath'] as String).input(),
+      rootPath: map['rootPath'] == null ? null : (map['rootPath']! as String).input(),
       tableFormat: (map['tableFormat'] as String).input(),
     );
   }

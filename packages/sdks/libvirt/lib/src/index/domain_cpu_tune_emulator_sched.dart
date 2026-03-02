@@ -25,8 +25,8 @@ class DomainCpuTuneEmulatorSched {
 
   factory DomainCpuTuneEmulatorSched.fromMap(Map<String, dynamic> map) {
     return DomainCpuTuneEmulatorSched(
-      priority: map['priority'] == null ? null : (map['priority'] as double).input(),
-      scheduler: map['scheduler'] == null ? null : (map['scheduler'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as double).input(),
+      scheduler: map['scheduler'] == null ? null : (map['scheduler']! as String).input(),
     );
   }
 }

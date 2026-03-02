@@ -47,10 +47,10 @@ class GetTableItemArgs {
 
   factory GetTableItemArgs.fromMap(Map<String, dynamic> map) {
     return GetTableItemArgs(
-      expressionAttributeNames: map['expressionAttributeNames'] == null ? null : ((map['expressionAttributeNames'] as Map).cast<String, String>()).input(),
+      expressionAttributeNames: map['expressionAttributeNames'] == null ? null : (((map['expressionAttributeNames'] as Map).cast<String, String>()).input()).input(),
       key: (map['key'] as String).input(),
-      projectionExpression: map['projectionExpression'] == null ? null : (map['projectionExpression'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      projectionExpression: map['projectionExpression'] == null ? null : ((map['projectionExpression'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       tableName: (map['tableName'] as String).input(),
     );
   }

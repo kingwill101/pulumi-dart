@@ -31,9 +31,9 @@ class CidrLocationState {
 
   factory CidrLocationState.fromMap(Map<String, dynamic> map) {
     return CidrLocationState(
-      cidrBlocks: map['cidrBlocks'] == null ? null : ((map['cidrBlocks'] as List).cast<String>()).input(),
-      cidrCollectionId: map['cidrCollectionId'] == null ? null : (map['cidrCollectionId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      cidrBlocks: map['cidrBlocks'] == null ? null : (((map['cidrBlocks'] as List).cast<String>()).input()).input(),
+      cidrCollectionId: map['cidrCollectionId'] == null ? null : ((map['cidrCollectionId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
     );
   }
 }

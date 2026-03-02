@@ -43,11 +43,11 @@ class GlobalNetworkEndpointState {
 
   factory GlobalNetworkEndpointState.fromMap(Map<String, dynamic> map) {
     return GlobalNetworkEndpointState(
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      globalNetworkEndpointGroup: map['globalNetworkEndpointGroup'] == null ? null : (map['globalNetworkEndpointGroup'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      globalNetworkEndpointGroup: map['globalNetworkEndpointGroup'] == null ? null : (map['globalNetworkEndpointGroup']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

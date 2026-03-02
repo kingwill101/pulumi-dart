@@ -30,7 +30,7 @@ class GetDatabasesArgs {
   factory GetDatabasesArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabasesArgs(
       dbClusterId: (map['dbClusterId'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
     );
   }
 }

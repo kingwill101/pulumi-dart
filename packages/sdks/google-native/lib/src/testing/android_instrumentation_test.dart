@@ -65,15 +65,15 @@ class AndroidInstrumentationTest {
 
   factory AndroidInstrumentationTest.fromMap(Map<String, dynamic> map) {
     return AndroidInstrumentationTest(
-      appApk: map['appApk'] == null ? null : (FileReference.fromMap((map['appApk'] as Map).cast<String, dynamic>())).input(),
-      appBundle: map['appBundle'] == null ? null : (AppBundle.fromMap((map['appBundle'] as Map).cast<String, dynamic>())).input(),
-      appPackageId: map['appPackageId'] == null ? null : (map['appPackageId'] as String).input(),
-      orchestratorOption: map['orchestratorOption'] == null ? null : (AndroidInstrumentationTestOrchestratorOption.fromValue(map['orchestratorOption'] as String)).input(),
-      shardingOption: map['shardingOption'] == null ? null : (ShardingOption.fromMap((map['shardingOption'] as Map).cast<String, dynamic>())).input(),
+      appApk: map['appApk'] == null ? null : (FileReference.fromMap((map['appApk']! as Map).cast<String, dynamic>())).input(),
+      appBundle: map['appBundle'] == null ? null : (AppBundle.fromMap((map['appBundle']! as Map).cast<String, dynamic>())).input(),
+      appPackageId: map['appPackageId'] == null ? null : (map['appPackageId']! as String).input(),
+      orchestratorOption: map['orchestratorOption'] == null ? null : (AndroidInstrumentationTestOrchestratorOption.fromValue(map['orchestratorOption']! as String)).input(),
+      shardingOption: map['shardingOption'] == null ? null : (ShardingOption.fromMap((map['shardingOption']! as Map).cast<String, dynamic>())).input(),
       testApk: (FileReference.fromMap((map['testApk'] as Map).cast<String, dynamic>())).input(),
-      testPackageId: map['testPackageId'] == null ? null : (map['testPackageId'] as String).input(),
-      testRunnerClass: map['testRunnerClass'] == null ? null : (map['testRunnerClass'] as String).input(),
-      testTargets: map['testTargets'] == null ? null : ((map['testTargets'] as List).cast<String>()).input(),
+      testPackageId: map['testPackageId'] == null ? null : (map['testPackageId']! as String).input(),
+      testRunnerClass: map['testRunnerClass'] == null ? null : (map['testRunnerClass']! as String).input(),
+      testTargets: map['testTargets'] == null ? null : ((map['testTargets']! as List).cast<String>()).input(),
     );
   }
 }

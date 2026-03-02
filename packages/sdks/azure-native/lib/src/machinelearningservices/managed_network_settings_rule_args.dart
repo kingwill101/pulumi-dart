@@ -42,7 +42,7 @@ class ManagedNetworkSettingsRuleArgs {
     return ManagedNetworkSettingsRuleArgs(
       properties: (FqdnOutboundRule.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

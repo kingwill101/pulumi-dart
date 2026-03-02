@@ -30,9 +30,9 @@ class EventConnectionAuthParametersInvocationHttpParametersQueryString {
 
   factory EventConnectionAuthParametersInvocationHttpParametersQueryString.fromMap(Map<String, dynamic> map) {
     return EventConnectionAuthParametersInvocationHttpParametersQueryString(
-      isValueSecret: map['isValueSecret'] == null ? null : (map['isValueSecret'] as bool).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      isValueSecret: map['isValueSecret'] == null ? null : ((map['isValueSecret'] as bool).input()).input(),
+      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
+      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
     );
   }
 }

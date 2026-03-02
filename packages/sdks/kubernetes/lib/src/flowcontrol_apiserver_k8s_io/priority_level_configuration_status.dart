@@ -22,7 +22,7 @@ class PriorityLevelConfigurationStatus {
 
   factory PriorityLevelConfigurationStatus.fromMap(Map<String, dynamic> map) {
     return PriorityLevelConfigurationStatus(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<PriorityLevelConfigurationCondition>(map['conditions'], (value) => PriorityLevelConfigurationCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<PriorityLevelConfigurationCondition>(map['conditions']!, (value) => PriorityLevelConfigurationCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

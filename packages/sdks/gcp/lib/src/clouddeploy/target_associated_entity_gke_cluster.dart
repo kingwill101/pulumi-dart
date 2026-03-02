@@ -30,9 +30,9 @@ class TargetAssociatedEntityGkeCluster {
 
   factory TargetAssociatedEntityGkeCluster.fromMap(Map<String, dynamic> map) {
     return TargetAssociatedEntityGkeCluster(
-      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
-      internalIp: map['internalIp'] == null ? null : (map['internalIp'] as bool).input(),
-      proxyUrl: map['proxyUrl'] == null ? null : (map['proxyUrl'] as String).input(),
+      cluster: map['cluster'] == null ? null : (map['cluster']! as String).input(),
+      internalIp: map['internalIp'] == null ? null : (map['internalIp']! as bool).input(),
+      proxyUrl: map['proxyUrl'] == null ? null : (map['proxyUrl']! as String).input(),
     );
   }
 }

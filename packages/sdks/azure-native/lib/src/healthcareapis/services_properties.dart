@@ -69,15 +69,15 @@ class ServicesProperties {
 
   factory ServicesProperties.fromMap(Map<String, dynamic> map) {
     return ServicesProperties(
-      accessPolicies: map['accessPolicies'] == null ? null : (pulumi.Input.decodeList<ServiceAccessPolicyEntry>(map['accessPolicies'], (value) => ServiceAccessPolicyEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      acrConfiguration: map['acrConfiguration'] == null ? null : (ServiceAcrConfigurationInfo.fromMap((map['acrConfiguration'] as Map).cast<String, dynamic>())).input(),
-      authenticationConfiguration: map['authenticationConfiguration'] == null ? null : (ServiceAuthenticationConfigurationInfo.fromMap((map['authenticationConfiguration'] as Map).cast<String, dynamic>())).input(),
-      corsConfiguration: map['corsConfiguration'] == null ? null : (ServiceCorsConfigurationInfo.fromMap((map['corsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      cosmosDbConfiguration: map['cosmosDbConfiguration'] == null ? null : (ServiceCosmosDbConfigurationInfo.fromMap((map['cosmosDbConfiguration'] as Map).cast<String, dynamic>())).input(),
-      exportConfiguration: map['exportConfiguration'] == null ? null : (ServiceExportConfigurationInfo.fromMap((map['exportConfiguration'] as Map).cast<String, dynamic>())).input(),
-      importConfiguration: map['importConfiguration'] == null ? null : (ServiceImportConfigurationInfo.fromMap((map['importConfiguration'] as Map).cast<String, dynamic>())).input(),
-      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : (pulumi.Input.decodeList<PrivateEndpointConnection>(map['privateEndpointConnections'], (value) => PrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      accessPolicies: map['accessPolicies'] == null ? null : (pulumi.Input.decodeList<ServiceAccessPolicyEntry>(map['accessPolicies']!, (value) => ServiceAccessPolicyEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      acrConfiguration: map['acrConfiguration'] == null ? null : (ServiceAcrConfigurationInfo.fromMap((map['acrConfiguration']! as Map).cast<String, dynamic>())).input(),
+      authenticationConfiguration: map['authenticationConfiguration'] == null ? null : (ServiceAuthenticationConfigurationInfo.fromMap((map['authenticationConfiguration']! as Map).cast<String, dynamic>())).input(),
+      corsConfiguration: map['corsConfiguration'] == null ? null : (ServiceCorsConfigurationInfo.fromMap((map['corsConfiguration']! as Map).cast<String, dynamic>())).input(),
+      cosmosDbConfiguration: map['cosmosDbConfiguration'] == null ? null : (ServiceCosmosDbConfigurationInfo.fromMap((map['cosmosDbConfiguration']! as Map).cast<String, dynamic>())).input(),
+      exportConfiguration: map['exportConfiguration'] == null ? null : (ServiceExportConfigurationInfo.fromMap((map['exportConfiguration']! as Map).cast<String, dynamic>())).input(),
+      importConfiguration: map['importConfiguration'] == null ? null : (ServiceImportConfigurationInfo.fromMap((map['importConfiguration']! as Map).cast<String, dynamic>())).input(),
+      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : (pulumi.Input.decodeList<PrivateEndpointConnection>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
     );
   }
 }

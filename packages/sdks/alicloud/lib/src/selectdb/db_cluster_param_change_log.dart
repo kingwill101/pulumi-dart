@@ -50,13 +50,13 @@ class DbClusterParamChangeLog {
 
   factory DbClusterParamChangeLog.fromMap(Map<String, dynamic> map) {
     return DbClusterParamChangeLog(
-      configId: map['configId'] == null ? null : (map['configId'] as int).input(),
-      gmtCreated: map['gmtCreated'] == null ? null : (map['gmtCreated'] as String).input(),
-      gmtModified: map['gmtModified'] == null ? null : (map['gmtModified'] as String).input(),
-      isApplied: map['isApplied'] == null ? null : (map['isApplied'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      newValue: map['newValue'] == null ? null : (map['newValue'] as String).input(),
-      oldValue: map['oldValue'] == null ? null : (map['oldValue'] as String).input(),
+      configId: map['configId'] == null ? null : (map['configId']! as int).input(),
+      gmtCreated: map['gmtCreated'] == null ? null : (map['gmtCreated']! as String).input(),
+      gmtModified: map['gmtModified'] == null ? null : (map['gmtModified']! as String).input(),
+      isApplied: map['isApplied'] == null ? null : (map['isApplied']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      newValue: map['newValue'] == null ? null : (map['newValue']! as String).input(),
+      oldValue: map['oldValue'] == null ? null : (map['oldValue']! as String).input(),
     );
   }
 }

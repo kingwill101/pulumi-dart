@@ -40,7 +40,7 @@ class WorkforcePoolProviderOidcWebSsoConfig {
 
   factory WorkforcePoolProviderOidcWebSsoConfig.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderOidcWebSsoConfig(
-      additionalScopes: map['additionalScopes'] == null ? null : ((map['additionalScopes'] as List).cast<String>()).input(),
+      additionalScopes: map['additionalScopes'] == null ? null : ((map['additionalScopes']! as List).cast<String>()).input(),
       assertionClaimsBehavior: (map['assertionClaimsBehavior'] as String).input(),
       responseType: (map['responseType'] as String).input(),
     );

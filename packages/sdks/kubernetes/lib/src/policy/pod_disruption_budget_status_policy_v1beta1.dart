@@ -48,10 +48,10 @@ class PodDisruptionBudgetStatusPolicyV1beta1 {
     return PodDisruptionBudgetStatusPolicyV1beta1(
       currentHealthy: (map['currentHealthy'] as int).input(),
       desiredHealthy: (map['desiredHealthy'] as int).input(),
-      disruptedPods: map['disruptedPods'] == null ? null : ((map['disruptedPods'] as Map).cast<String, String>()).input(),
+      disruptedPods: map['disruptedPods'] == null ? null : ((map['disruptedPods']! as Map).cast<String, String>()).input(),
       disruptionsAllowed: (map['disruptionsAllowed'] as int).input(),
       expectedPods: (map['expectedPods'] as int).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
     );
   }
 }

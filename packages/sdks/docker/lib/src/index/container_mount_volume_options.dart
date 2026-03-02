@@ -41,11 +41,11 @@ class ContainerMountVolumeOptions {
 
   factory ContainerMountVolumeOptions.fromMap(Map<String, dynamic> map) {
     return ContainerMountVolumeOptions(
-      driverName: map['driverName'] == null ? null : (map['driverName'] as String).input(),
-      driverOptions: map['driverOptions'] == null ? null : ((map['driverOptions'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<ContainerMountVolumeOptionsLabel>(map['labels'], (value) => ContainerMountVolumeOptionsLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      noCopy: map['noCopy'] == null ? null : (map['noCopy'] as bool).input(),
-      subpath: map['subpath'] == null ? null : (map['subpath'] as String).input(),
+      driverName: map['driverName'] == null ? null : (map['driverName']! as String).input(),
+      driverOptions: map['driverOptions'] == null ? null : ((map['driverOptions']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<ContainerMountVolumeOptionsLabel>(map['labels']!, (value) => ContainerMountVolumeOptionsLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      noCopy: map['noCopy'] == null ? null : (map['noCopy']! as bool).input(),
+      subpath: map['subpath'] == null ? null : (map['subpath']! as String).input(),
     );
   }
 }

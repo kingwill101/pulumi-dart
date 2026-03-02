@@ -34,9 +34,9 @@ class GetCertificateArgs {
 
   factory GetCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateArgs(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
-      verifyChain: map['verifyChain'] == null ? null : (map['verifyChain'] as bool).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
+      verifyChain: map['verifyChain'] == null ? null : (map['verifyChain']! as bool).input(),
     );
   }
 }

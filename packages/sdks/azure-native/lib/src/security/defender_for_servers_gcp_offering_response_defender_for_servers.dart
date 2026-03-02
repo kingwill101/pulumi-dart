@@ -26,8 +26,8 @@ class DefenderForServersGcpOfferingResponseDefenderForServers {
 
   factory DefenderForServersGcpOfferingResponseDefenderForServers.fromMap(Map<String, dynamic> map) {
     return DefenderForServersGcpOfferingResponseDefenderForServers(
-      serviceAccountEmailAddress: map['serviceAccountEmailAddress'] == null ? null : (map['serviceAccountEmailAddress'] as String).input(),
-      workloadIdentityProviderId: map['workloadIdentityProviderId'] == null ? null : (map['workloadIdentityProviderId'] as String).input(),
+      serviceAccountEmailAddress: map['serviceAccountEmailAddress'] == null ? null : (map['serviceAccountEmailAddress']! as String).input(),
+      workloadIdentityProviderId: map['workloadIdentityProviderId'] == null ? null : (map['workloadIdentityProviderId']! as String).input(),
     );
   }
 }

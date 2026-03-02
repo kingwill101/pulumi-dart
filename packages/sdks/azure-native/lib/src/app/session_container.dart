@@ -54,13 +54,13 @@ class SessionContainer {
 
   factory SessionContainer.fromMap(Map<String, dynamic> map) {
     return SessionContainer(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      command: map['command'] == null ? null : ((map['command'] as List).cast<String>()).input(),
-      env: map['env'] == null ? null : (pulumi.Input.decodeList<EnvironmentVar>(map['env'], (value) => EnvironmentVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      probes: map['probes'] == null ? null : (pulumi.Input.decodeList<SessionProbe>(map['probes'], (value) => SessionProbe.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resources: map['resources'] == null ? null : (SessionContainerResources.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      command: map['command'] == null ? null : ((map['command']! as List).cast<String>()).input(),
+      env: map['env'] == null ? null : (pulumi.Input.decodeList<EnvironmentVar>(map['env']!, (value) => EnvironmentVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      probes: map['probes'] == null ? null : (pulumi.Input.decodeList<SessionProbe>(map['probes']!, (value) => SessionProbe.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resources: map['resources'] == null ? null : (SessionContainerResources.fromMap((map['resources']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class CxFlowEventHandlerTriggerFulfillmentConditionalCase {
 
   factory CxFlowEventHandlerTriggerFulfillmentConditionalCase.fromMap(Map<String, dynamic> map) {
     return CxFlowEventHandlerTriggerFulfillmentConditionalCase(
-      cases: map['cases'] == null ? null : (map['cases'] as String).input(),
+      cases: map['cases'] == null ? null : (map['cases']! as String).input(),
     );
   }
 }

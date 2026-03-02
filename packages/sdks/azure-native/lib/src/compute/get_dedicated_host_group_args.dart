@@ -34,7 +34,7 @@ class GetDedicatedHostGroupArgs {
 
   factory GetDedicatedHostGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostGroupArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       hostGroupName: (map['hostGroupName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

@@ -21,7 +21,7 @@ class ScheduledQueryTargetConfiguration {
 
   factory ScheduledQueryTargetConfiguration.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryTargetConfiguration(
-      timestreamConfiguration: (ScheduledQueryTargetConfigurationTimestreamConfiguration.fromMap((map['timestreamConfiguration'] as Map).cast<String, dynamic>())).input(),
+      timestreamConfiguration: (ScheduledQueryTargetConfigurationTimestreamConfiguration.fromMap((map['timestreamConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

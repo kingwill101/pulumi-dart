@@ -51,12 +51,12 @@ class SyntheticTaskCommonSetting {
 
   factory SyntheticTaskCommonSetting.fromMap(Map<String, dynamic> map) {
     return SyntheticTaskCommonSetting(
-      customHost: map['customHost'] == null ? null : (SyntheticTaskCommonSettingCustomHost.fromMap((map['customHost'] as Map).cast<String, dynamic>())).input(),
-      ipType: map['ipType'] == null ? null : (map['ipType'] as int).input(),
-      isOpenTrace: map['isOpenTrace'] == null ? null : (map['isOpenTrace'] as bool).input(),
-      monitorSamples: map['monitorSamples'] == null ? null : (map['monitorSamples'] as int).input(),
-      traceClientType: map['traceClientType'] == null ? null : (map['traceClientType'] as int).input(),
-      xtraceRegion: map['xtraceRegion'] == null ? null : (map['xtraceRegion'] as String).input(),
+      customHost: map['customHost'] == null ? null : (SyntheticTaskCommonSettingCustomHost.fromMap((map['customHost']! as Map).cast<String, dynamic>())).input(),
+      ipType: map['ipType'] == null ? null : (map['ipType']! as int).input(),
+      isOpenTrace: map['isOpenTrace'] == null ? null : (map['isOpenTrace']! as bool).input(),
+      monitorSamples: map['monitorSamples'] == null ? null : (map['monitorSamples']! as int).input(),
+      traceClientType: map['traceClientType'] == null ? null : (map['traceClientType']! as int).input(),
+      xtraceRegion: map['xtraceRegion'] == null ? null : (map['xtraceRegion']! as String).input(),
     );
   }
 }

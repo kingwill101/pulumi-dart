@@ -49,10 +49,10 @@ class ARecordArgs {
 
   factory ARecordArgs.fromMap(Map<String, dynamic> map) {
     return ARecordArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       records: ((map['records'] as List).cast<String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       ttl: (map['ttl'] as int).input(),
       zoneName: (map['zoneName'] as String).input(),
     );

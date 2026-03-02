@@ -85,18 +85,18 @@ class SyncMemberArgs {
   factory SyncMemberArgs.fromMap(Map<String, dynamic> map) {
     return SyncMemberArgs(
       databaseName: (map['databaseName'] as String).input(),
-      databaseType: map['databaseType'] == null ? null : (map['databaseType'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      databaseType: map['databaseType'] == null ? null : (map['databaseType']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
-      sqlServerDatabaseId: map['sqlServerDatabaseId'] == null ? null : (map['sqlServerDatabaseId'] as String).input(),
-      syncAgentId: map['syncAgentId'] == null ? null : (map['syncAgentId'] as String).input(),
-      syncDirection: map['syncDirection'] == null ? null : (map['syncDirection'] as String).input(),
+      sqlServerDatabaseId: map['sqlServerDatabaseId'] == null ? null : (map['sqlServerDatabaseId']! as String).input(),
+      syncAgentId: map['syncAgentId'] == null ? null : (map['syncAgentId']! as String).input(),
+      syncDirection: map['syncDirection'] == null ? null : (map['syncDirection']! as String).input(),
       syncGroupName: (map['syncGroupName'] as String).input(),
-      syncMemberAzureDatabaseResourceId: map['syncMemberAzureDatabaseResourceId'] == null ? null : (map['syncMemberAzureDatabaseResourceId'] as String).input(),
-      syncMemberName: map['syncMemberName'] == null ? null : (map['syncMemberName'] as String).input(),
-      usePrivateLinkConnection: map['usePrivateLinkConnection'] == null ? null : (map['usePrivateLinkConnection'] as bool).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      syncMemberAzureDatabaseResourceId: map['syncMemberAzureDatabaseResourceId'] == null ? null : (map['syncMemberAzureDatabaseResourceId']! as String).input(),
+      syncMemberName: map['syncMemberName'] == null ? null : (map['syncMemberName']! as String).input(),
+      usePrivateLinkConnection: map['usePrivateLinkConnection'] == null ? null : (map['usePrivateLinkConnection']! as bool).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

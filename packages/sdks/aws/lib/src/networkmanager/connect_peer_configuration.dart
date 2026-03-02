@@ -41,11 +41,11 @@ class ConnectPeerConfiguration {
 
   factory ConnectPeerConfiguration.fromMap(Map<String, dynamic> map) {
     return ConnectPeerConfiguration(
-      bgpConfigurations: map['bgpConfigurations'] == null ? null : (pulumi.Input.decodeList<ConnectPeerConfigurationBgpConfiguration>(map['bgpConfigurations'], (value) => ConnectPeerConfigurationBgpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      coreNetworkAddress: map['coreNetworkAddress'] == null ? null : (map['coreNetworkAddress'] as String).input(),
-      insideCidrBlocks: map['insideCidrBlocks'] == null ? null : ((map['insideCidrBlocks'] as List).cast<String>()).input(),
-      peerAddress: map['peerAddress'] == null ? null : (map['peerAddress'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      bgpConfigurations: map['bgpConfigurations'] == null ? null : ((pulumi.Input.decodeList<ConnectPeerConfigurationBgpConfiguration>(map['bgpConfigurations']!, (value) => ConnectPeerConfigurationBgpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      coreNetworkAddress: map['coreNetworkAddress'] == null ? null : ((map['coreNetworkAddress'] as String).input()).input(),
+      insideCidrBlocks: map['insideCidrBlocks'] == null ? null : (((map['insideCidrBlocks'] as List).cast<String>()).input()).input(),
+      peerAddress: map['peerAddress'] == null ? null : ((map['peerAddress'] as String).input()).input(),
+      protocol: map['protocol'] == null ? null : ((map['protocol'] as String).input()).input(),
     );
   }
 }

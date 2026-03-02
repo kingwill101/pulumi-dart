@@ -35,7 +35,7 @@ class RegionUrlMapTest {
 
   factory RegionUrlMapTest.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapTest(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       host: (map['host'] as String).input(),
       path: (map['path'] as String).input(),
       service: (map['service'] as String).input(),

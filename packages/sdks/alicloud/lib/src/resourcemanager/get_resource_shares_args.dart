@@ -49,12 +49,12 @@ class GetResourceSharesArgs {
 
   factory GetResourceSharesArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceSharesArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      resourceShareName: map['resourceShareName'] == null ? null : (map['resourceShareName'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      resourceShareName: map['resourceShareName'] == null ? null : (map['resourceShareName']! as String).input(),
       resourceShareOwner: (map['resourceShareOwner'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class GetRegionNetworkFirewallPolicyComputeV1Args {
   factory GetRegionNetworkFirewallPolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetRegionNetworkFirewallPolicyComputeV1Args(
       firewallPolicy: (map['firewallPolicy'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
     );
   }

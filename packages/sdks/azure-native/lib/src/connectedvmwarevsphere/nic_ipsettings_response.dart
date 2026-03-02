@@ -57,14 +57,14 @@ class NicIPSettingsResponse {
 
   factory NicIPSettingsResponse.fromMap(Map<String, dynamic> map) {
     return NicIPSettingsResponse(
-      allocationMethod: map['allocationMethod'] == null ? null : (map['allocationMethod'] as String).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      gateway: map['gateway'] == null ? null : ((map['gateway'] as List).cast<String>()).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      allocationMethod: map['allocationMethod'] == null ? null : (map['allocationMethod']! as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      gateway: map['gateway'] == null ? null : ((map['gateway']! as List).cast<String>()).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
       ipAddressInfo: (pulumi.Input.decodeList<NicIPAddressSettingsResponse>(map['ipAddressInfo'], (value) => NicIPAddressSettingsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       primaryWinsServer: (map['primaryWinsServer'] as String).input(),
       secondaryWinsServer: (map['secondaryWinsServer'] as String).input(),
-      subnetMask: map['subnetMask'] == null ? null : (map['subnetMask'] as String).input(),
+      subnetMask: map['subnetMask'] == null ? null : (map['subnetMask']! as String).input(),
     );
   }
 }

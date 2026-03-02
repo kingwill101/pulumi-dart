@@ -94,17 +94,17 @@ class DatascanArgs {
   factory DatascanArgs.fromMap(Map<String, dynamic> map) {
     return DatascanArgs(
       data: (DatascanData.fromMap((map['data'] as Map).cast<String, dynamic>())).input(),
-      dataDiscoverySpec: map['dataDiscoverySpec'] == null ? null : (DatascanDataDiscoverySpec.fromMap((map['dataDiscoverySpec'] as Map).cast<String, dynamic>())).input(),
-      dataDocumentationSpec: map['dataDocumentationSpec'] == null ? null : ((map['dataDocumentationSpec'] as Map).cast<String, dynamic>()).input(),
-      dataProfileSpec: map['dataProfileSpec'] == null ? null : (DatascanDataProfileSpec.fromMap((map['dataProfileSpec'] as Map).cast<String, dynamic>())).input(),
-      dataQualitySpec: map['dataQualitySpec'] == null ? null : (DatascanDataQualitySpec.fromMap((map['dataQualitySpec'] as Map).cast<String, dynamic>())).input(),
+      dataDiscoverySpec: map['dataDiscoverySpec'] == null ? null : (DatascanDataDiscoverySpec.fromMap((map['dataDiscoverySpec']! as Map).cast<String, dynamic>())).input(),
+      dataDocumentationSpec: map['dataDocumentationSpec'] == null ? null : ((map['dataDocumentationSpec']! as Map).cast<String, dynamic>()).input(),
+      dataProfileSpec: map['dataProfileSpec'] == null ? null : (DatascanDataProfileSpec.fromMap((map['dataProfileSpec']! as Map).cast<String, dynamic>())).input(),
+      dataQualitySpec: map['dataQualitySpec'] == null ? null : (DatascanDataQualitySpec.fromMap((map['dataQualitySpec']! as Map).cast<String, dynamic>())).input(),
       dataScanId: (map['dataScanId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       executionSpec: (DatascanExecutionSpec.fromMap((map['executionSpec'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

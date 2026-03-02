@@ -75,17 +75,17 @@ class SetVariableActivity {
 
   factory SetVariableActivity.fromMap(Map<String, dynamic> map) {
     return SetVariableActivity(
-      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn'], (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn']!, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       name: (map['name'] as String).input(),
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
-      policy: map['policy'] == null ? null : (SecureInputOutputPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
-      setSystemVariable: map['setSystemVariable'] == null ? null : (map['setSystemVariable'] as bool).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs']! as String).input(),
+      policy: map['policy'] == null ? null : (SecureInputOutputPolicy.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
+      setSystemVariable: map['setSystemVariable'] == null ? null : (map['setSystemVariable']! as bool).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
       type: (map['type'] as String).input(),
-      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties'], (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      value: map['value'] == null ? null : (map['value']).input(),
-      variableName: map['variableName'] == null ? null : (map['variableName'] as String).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties']!, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      value: map['value'] == null ? null : (map['value']!).input(),
+      variableName: map['variableName'] == null ? null : (map['variableName']! as String).input(),
     );
   }
 }

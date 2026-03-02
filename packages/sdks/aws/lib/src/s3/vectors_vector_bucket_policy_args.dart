@@ -37,7 +37,7 @@ class VectorsVectorBucketPolicyArgs {
   factory VectorsVectorBucketPolicyArgs.fromMap(Map<String, dynamic> map) {
     return VectorsVectorBucketPolicyArgs(
       policy: (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       vectorBucketArn: (map['vectorBucketArn'] as String).input(),
     );
   }

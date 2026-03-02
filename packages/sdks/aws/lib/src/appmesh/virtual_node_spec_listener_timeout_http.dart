@@ -27,8 +27,8 @@ class VirtualNodeSpecListenerTimeoutHttp {
 
   factory VirtualNodeSpecListenerTimeoutHttp.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerTimeoutHttp(
-      idle: map['idle'] == null ? null : (VirtualNodeSpecListenerTimeoutHttpIdle.fromMap((map['idle'] as Map).cast<String, dynamic>())).input(),
-      perRequest: map['perRequest'] == null ? null : (VirtualNodeSpecListenerTimeoutHttpPerRequest.fromMap((map['perRequest'] as Map).cast<String, dynamic>())).input(),
+      idle: map['idle'] == null ? null : ((VirtualNodeSpecListenerTimeoutHttpIdle.fromMap((map['idle']! as Map).cast<String, dynamic>())).input()).input(),
+      perRequest: map['perRequest'] == null ? null : ((VirtualNodeSpecListenerTimeoutHttpPerRequest.fromMap((map['perRequest']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

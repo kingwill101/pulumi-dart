@@ -74,15 +74,15 @@ class MembersMember {
   factory MembersMember.fromMap(Map<String, dynamic> map) {
     return MembersMember(
       address: (map['address'] as String).input(),
-      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp'] as bool).input(),
-      backup: map['backup'] == null ? null : (map['backup'] as bool).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      monitorAddress: map['monitorAddress'] == null ? null : (map['monitorAddress'] as String).input(),
-      monitorPort: map['monitorPort'] == null ? null : (map['monitorPort'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp']! as bool).input(),
+      backup: map['backup'] == null ? null : (map['backup']! as bool).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      monitorAddress: map['monitorAddress'] == null ? null : (map['monitorAddress']! as String).input(),
+      monitorPort: map['monitorPort'] == null ? null : (map['monitorPort']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       protocolPort: (map['protocolPort'] as int).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

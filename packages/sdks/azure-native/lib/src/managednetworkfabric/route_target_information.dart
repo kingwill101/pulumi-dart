@@ -36,10 +36,10 @@ class RouteTargetInformation {
 
   factory RouteTargetInformation.fromMap(Map<String, dynamic> map) {
     return RouteTargetInformation(
-      exportIpv4RouteTargets: map['exportIpv4RouteTargets'] == null ? null : ((map['exportIpv4RouteTargets'] as List).cast<String>()).input(),
-      exportIpv6RouteTargets: map['exportIpv6RouteTargets'] == null ? null : ((map['exportIpv6RouteTargets'] as List).cast<String>()).input(),
-      importIpv4RouteTargets: map['importIpv4RouteTargets'] == null ? null : ((map['importIpv4RouteTargets'] as List).cast<String>()).input(),
-      importIpv6RouteTargets: map['importIpv6RouteTargets'] == null ? null : ((map['importIpv6RouteTargets'] as List).cast<String>()).input(),
+      exportIpv4RouteTargets: map['exportIpv4RouteTargets'] == null ? null : ((map['exportIpv4RouteTargets']! as List).cast<String>()).input(),
+      exportIpv6RouteTargets: map['exportIpv6RouteTargets'] == null ? null : ((map['exportIpv6RouteTargets']! as List).cast<String>()).input(),
+      importIpv4RouteTargets: map['importIpv4RouteTargets'] == null ? null : ((map['importIpv4RouteTargets']! as List).cast<String>()).input(),
+      importIpv6RouteTargets: map['importIpv6RouteTargets'] == null ? null : ((map['importIpv6RouteTargets']! as List).cast<String>()).input(),
     );
   }
 }

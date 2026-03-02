@@ -21,7 +21,7 @@ class DomainDevicesInterfaceVirtualPort {
 
   factory DomainDevicesInterfaceVirtualPort.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceVirtualPort(
-      params: map['params'] == null ? null : (DomainDevicesInterfaceVirtualPortParams.fromMap((map['params'] as Map).cast<String, dynamic>())).input(),
+      params: map['params'] == null ? null : (DomainDevicesInterfaceVirtualPortParams.fromMap((map['params']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

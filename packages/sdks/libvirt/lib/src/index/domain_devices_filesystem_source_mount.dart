@@ -25,8 +25,8 @@ class DomainDevicesFilesystemSourceMount {
 
   factory DomainDevicesFilesystemSourceMount.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemSourceMount(
-      dir: map['dir'] == null ? null : (map['dir'] as String).input(),
-      socket: map['socket'] == null ? null : (map['socket'] as String).input(),
+      dir: map['dir'] == null ? null : (map['dir']! as String).input(),
+      socket: map['socket'] == null ? null : (map['socket']! as String).input(),
     );
   }
 }

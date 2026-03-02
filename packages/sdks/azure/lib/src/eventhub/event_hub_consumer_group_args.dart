@@ -45,10 +45,10 @@ class EventHubConsumerGroupArgs {
   factory EventHubConsumerGroupArgs.fromMap(Map<String, dynamic> map) {
     return EventHubConsumerGroupArgs(
       eventhubName: (map['eventhubName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      userMetadata: map['userMetadata'] == null ? null : (map['userMetadata'] as String).input(),
+      userMetadata: map['userMetadata'] == null ? null : (map['userMetadata']! as String).input(),
     );
   }
 }

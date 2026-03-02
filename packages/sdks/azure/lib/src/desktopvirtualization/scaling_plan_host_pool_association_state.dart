@@ -31,9 +31,9 @@ class ScalingPlanHostPoolAssociationState {
 
   factory ScalingPlanHostPoolAssociationState.fromMap(Map<String, dynamic> map) {
     return ScalingPlanHostPoolAssociationState(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      hostPoolId: map['hostPoolId'] == null ? null : (map['hostPoolId'] as String).input(),
-      scalingPlanId: map['scalingPlanId'] == null ? null : (map['scalingPlanId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      hostPoolId: map['hostPoolId'] == null ? null : (map['hostPoolId']! as String).input(),
+      scalingPlanId: map['scalingPlanId'] == null ? null : (map['scalingPlanId']! as String).input(),
     );
   }
 }

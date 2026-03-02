@@ -21,7 +21,7 @@ class OAuthCredential {
 
   factory OAuthCredential.fromMap(Map<String, dynamic> map) {
     return OAuthCredential(
-      oauthTokenSecretVersion: map['oauthTokenSecretVersion'] == null ? null : (map['oauthTokenSecretVersion'] as String).input(),
+      oauthTokenSecretVersion: map['oauthTokenSecretVersion'] == null ? null : (map['oauthTokenSecretVersion']! as String).input(),
     );
   }
 }

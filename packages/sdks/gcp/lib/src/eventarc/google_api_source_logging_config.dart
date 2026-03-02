@@ -22,7 +22,7 @@ class GoogleApiSourceLoggingConfig {
 
   factory GoogleApiSourceLoggingConfig.fromMap(Map<String, dynamic> map) {
     return GoogleApiSourceLoggingConfig(
-      logSeverity: map['logSeverity'] == null ? null : (map['logSeverity'] as String).input(),
+      logSeverity: map['logSeverity'] == null ? null : (map['logSeverity']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class GkeNodePoolAcceleratorConfig {
 
   factory GkeNodePoolAcceleratorConfig.fromMap(Map<String, dynamic> map) {
     return GkeNodePoolAcceleratorConfig(
-      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount'] as String).input(),
-      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType'] as String).input(),
-      gpuPartitionSize: map['gpuPartitionSize'] == null ? null : (map['gpuPartitionSize'] as String).input(),
+      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount']! as String).input(),
+      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType']! as String).input(),
+      gpuPartitionSize: map['gpuPartitionSize'] == null ? null : (map['gpuPartitionSize']! as String).input(),
     );
   }
 }

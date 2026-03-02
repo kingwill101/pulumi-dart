@@ -33,8 +33,8 @@ class V2modelsIntentConfirmationSettingFailureConditional {
   factory V2modelsIntentConfirmationSettingFailureConditional.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingFailureConditional(
       active: (map['active'] as bool).input(),
-      conditionalBranches: map['conditionalBranches'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentConfirmationSettingFailureConditionalConditionalBranch>(map['conditionalBranches'], (value) => V2modelsIntentConfirmationSettingFailureConditionalConditionalBranch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultBranch: map['defaultBranch'] == null ? null : (V2modelsIntentConfirmationSettingFailureConditionalDefaultBranch.fromMap((map['defaultBranch'] as Map).cast<String, dynamic>())).input(),
+      conditionalBranches: map['conditionalBranches'] == null ? null : ((pulumi.Input.decodeList<V2modelsIntentConfirmationSettingFailureConditionalConditionalBranch>(map['conditionalBranches']!, (value) => V2modelsIntentConfirmationSettingFailureConditionalConditionalBranch.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      defaultBranch: map['defaultBranch'] == null ? null : ((V2modelsIntentConfirmationSettingFailureConditionalDefaultBranch.fromMap((map['defaultBranch']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

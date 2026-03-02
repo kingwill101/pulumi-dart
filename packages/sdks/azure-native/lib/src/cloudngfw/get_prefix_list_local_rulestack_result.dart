@@ -66,10 +66,10 @@ class GetPrefixListLocalRulestackResult {
 
   factory GetPrefixListLocalRulestackResult.fromMap(Map<String, dynamic> map) {
     return GetPrefixListLocalRulestackResult(
-      auditComment: map['auditComment'] == null ? null : map['auditComment'] as String,
+      auditComment: map['auditComment'] == null ? null : map['auditComment']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       prefixList: (map['prefixList'] as List).cast<String>(),

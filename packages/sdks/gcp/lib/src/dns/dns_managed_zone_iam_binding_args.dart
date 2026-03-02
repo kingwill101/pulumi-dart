@@ -58,10 +58,10 @@ class DnsManagedZoneIamBindingArgs {
 
   factory DnsManagedZoneIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return DnsManagedZoneIamBindingArgs(
-      condition: map['condition'] == null ? null : (DnsManagedZoneIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (DnsManagedZoneIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       managedZone: (map['managedZone'] as String).input(),
       members: ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

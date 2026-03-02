@@ -33,8 +33,8 @@ class AutoStorageBaseProperties {
 
   factory AutoStorageBaseProperties.fromMap(Map<String, dynamic> map) {
     return AutoStorageBaseProperties(
-      authenticationMode: map['authenticationMode'] == null ? null : (AutoStorageAuthenticationMode.fromValue(map['authenticationMode'] as String)).input(),
-      nodeIdentityReference: map['nodeIdentityReference'] == null ? null : (ComputeNodeIdentityReference.fromMap((map['nodeIdentityReference'] as Map).cast<String, dynamic>())).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : (AutoStorageAuthenticationMode.fromValue(map['authenticationMode']! as String)).input(),
+      nodeIdentityReference: map['nodeIdentityReference'] == null ? null : (ComputeNodeIdentityReference.fromMap((map['nodeIdentityReference']! as Map).cast<String, dynamic>())).input(),
       storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }

@@ -48,7 +48,7 @@ class GetQueueResult {
       approximateMessageCount: map['approximateMessageCount'] as int,
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      metadata: map['metadata'] == null ? null : (map['metadata'] as Map).cast<String, String>(),
+      metadata: map['metadata'] == null ? null : (map['metadata']! as Map).cast<String, String>(),
       name: map['name'] as String,
       type: map['type'] as String,
     );

@@ -59,7 +59,7 @@ class ConsentStoreIamMemberArgs {
 
   factory ConsentStoreIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return ConsentStoreIamMemberArgs(
-      condition: map['condition'] == null ? null : (ConsentStoreIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (ConsentStoreIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       consentStoreId: (map['consentStoreId'] as String).input(),
       dataset: (map['dataset'] as String).input(),
       member: (map['member'] as String).input(),

@@ -74,7 +74,7 @@ class GetGroupResult {
       resourceGroupName: map['resourceGroupName'] as String,
       subnetIds: (map['subnetIds'] as List).cast<String>(),
       tags: (map['tags'] as Map).cast<String, String>(),
-      zones: map['zones'] == null ? null : (map['zones'] as List).cast<String>(),
+      zones: map['zones'] == null ? null : (map['zones']! as List).cast<String>(),
     );
   }
 }

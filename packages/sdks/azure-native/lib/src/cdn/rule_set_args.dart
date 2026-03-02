@@ -36,7 +36,7 @@ class RuleSetArgs {
     return RuleSetArgs(
       profileName: (map['profileName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      ruleSetName: map['ruleSetName'] == null ? null : (map['ruleSetName'] as String).input(),
+      ruleSetName: map['ruleSetName'] == null ? null : (map['ruleSetName']! as String).input(),
     );
   }
 }

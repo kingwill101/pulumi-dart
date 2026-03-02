@@ -37,9 +37,9 @@ class BucketObjectContextsCustom {
 
   factory BucketObjectContextsCustom.fromMap(Map<String, dynamic> map) {
     return BucketObjectContextsCustom(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
       key: (map['key'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
       value: (map['value'] as String).input(),
     );
   }

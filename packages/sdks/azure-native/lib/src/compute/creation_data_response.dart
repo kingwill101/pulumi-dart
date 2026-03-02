@@ -83,18 +83,18 @@ class CreationDataResponse {
   factory CreationDataResponse.fromMap(Map<String, dynamic> map) {
     return CreationDataResponse(
       createOption: (map['createOption'] as String).input(),
-      elasticSanResourceId: map['elasticSanResourceId'] == null ? null : (map['elasticSanResourceId'] as String).input(),
-      galleryImageReference: map['galleryImageReference'] == null ? null : (ImageDiskReferenceResponse.fromMap((map['galleryImageReference'] as Map).cast<String, dynamic>())).input(),
-      imageReference: map['imageReference'] == null ? null : (ImageDiskReferenceResponse.fromMap((map['imageReference'] as Map).cast<String, dynamic>())).input(),
-      logicalSectorSize: map['logicalSectorSize'] == null ? null : (map['logicalSectorSize'] as int).input(),
-      performancePlus: map['performancePlus'] == null ? null : (map['performancePlus'] as bool).input(),
-      provisionedBandwidthCopySpeed: map['provisionedBandwidthCopySpeed'] == null ? null : (map['provisionedBandwidthCopySpeed'] as String).input(),
-      securityDataUri: map['securityDataUri'] == null ? null : (map['securityDataUri'] as String).input(),
-      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
+      elasticSanResourceId: map['elasticSanResourceId'] == null ? null : (map['elasticSanResourceId']! as String).input(),
+      galleryImageReference: map['galleryImageReference'] == null ? null : (ImageDiskReferenceResponse.fromMap((map['galleryImageReference']! as Map).cast<String, dynamic>())).input(),
+      imageReference: map['imageReference'] == null ? null : (ImageDiskReferenceResponse.fromMap((map['imageReference']! as Map).cast<String, dynamic>())).input(),
+      logicalSectorSize: map['logicalSectorSize'] == null ? null : (map['logicalSectorSize']! as int).input(),
+      performancePlus: map['performancePlus'] == null ? null : (map['performancePlus']! as bool).input(),
+      provisionedBandwidthCopySpeed: map['provisionedBandwidthCopySpeed'] == null ? null : (map['provisionedBandwidthCopySpeed']! as String).input(),
+      securityDataUri: map['securityDataUri'] == null ? null : (map['securityDataUri']! as String).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId']! as String).input(),
       sourceUniqueId: (map['sourceUniqueId'] as String).input(),
-      sourceUri: map['sourceUri'] == null ? null : (map['sourceUri'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
-      uploadSizeBytes: map['uploadSizeBytes'] == null ? null : (map['uploadSizeBytes'] as double).input(),
+      sourceUri: map['sourceUri'] == null ? null : (map['sourceUri']! as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
+      uploadSizeBytes: map['uploadSizeBytes'] == null ? null : (map['uploadSizeBytes']! as double).input(),
     );
   }
 }

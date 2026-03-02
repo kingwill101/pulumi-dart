@@ -115,21 +115,21 @@ class ConversationProfileArgs {
 
   factory ConversationProfileArgs.fromMap(Map<String, dynamic> map) {
     return ConversationProfileArgs(
-      automatedAgentConfig: map['automatedAgentConfig'] == null ? null : (ConversationProfileAutomatedAgentConfig.fromMap((map['automatedAgentConfig'] as Map).cast<String, dynamic>())).input(),
+      automatedAgentConfig: map['automatedAgentConfig'] == null ? null : (ConversationProfileAutomatedAgentConfig.fromMap((map['automatedAgentConfig']! as Map).cast<String, dynamic>())).input(),
       displayName: (map['displayName'] as String).input(),
-      humanAgentAssistantConfig: map['humanAgentAssistantConfig'] == null ? null : (ConversationProfileHumanAgentAssistantConfig.fromMap((map['humanAgentAssistantConfig'] as Map).cast<String, dynamic>())).input(),
-      humanAgentHandoffConfig: map['humanAgentHandoffConfig'] == null ? null : (ConversationProfileHumanAgentHandoffConfig.fromMap((map['humanAgentHandoffConfig'] as Map).cast<String, dynamic>())).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      humanAgentAssistantConfig: map['humanAgentAssistantConfig'] == null ? null : (ConversationProfileHumanAgentAssistantConfig.fromMap((map['humanAgentAssistantConfig']! as Map).cast<String, dynamic>())).input(),
+      humanAgentHandoffConfig: map['humanAgentHandoffConfig'] == null ? null : (ConversationProfileHumanAgentHandoffConfig.fromMap((map['humanAgentHandoffConfig']! as Map).cast<String, dynamic>())).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
       location: (map['location'] as String).input(),
-      loggingConfig: map['loggingConfig'] == null ? null : (ConversationProfileLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
-      newMessageEventNotificationConfig: map['newMessageEventNotificationConfig'] == null ? null : (ConversationProfileNewMessageEventNotificationConfig.fromMap((map['newMessageEventNotificationConfig'] as Map).cast<String, dynamic>())).input(),
-      newRecognitionResultNotificationConfig: map['newRecognitionResultNotificationConfig'] == null ? null : (ConversationProfileNewRecognitionResultNotificationConfig.fromMap((map['newRecognitionResultNotificationConfig'] as Map).cast<String, dynamic>())).input(),
-      notificationConfig: map['notificationConfig'] == null ? null : (ConversationProfileNotificationConfig.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      securitySettings: map['securitySettings'] == null ? null : (map['securitySettings'] as String).input(),
-      sttConfig: map['sttConfig'] == null ? null : (ConversationProfileSttConfig.fromMap((map['sttConfig'] as Map).cast<String, dynamic>())).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
-      ttsConfig: map['ttsConfig'] == null ? null : (ConversationProfileTtsConfig.fromMap((map['ttsConfig'] as Map).cast<String, dynamic>())).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : (ConversationProfileLoggingConfig.fromMap((map['loggingConfig']! as Map).cast<String, dynamic>())).input(),
+      newMessageEventNotificationConfig: map['newMessageEventNotificationConfig'] == null ? null : (ConversationProfileNewMessageEventNotificationConfig.fromMap((map['newMessageEventNotificationConfig']! as Map).cast<String, dynamic>())).input(),
+      newRecognitionResultNotificationConfig: map['newRecognitionResultNotificationConfig'] == null ? null : (ConversationProfileNewRecognitionResultNotificationConfig.fromMap((map['newRecognitionResultNotificationConfig']! as Map).cast<String, dynamic>())).input(),
+      notificationConfig: map['notificationConfig'] == null ? null : (ConversationProfileNotificationConfig.fromMap((map['notificationConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      securitySettings: map['securitySettings'] == null ? null : (map['securitySettings']! as String).input(),
+      sttConfig: map['sttConfig'] == null ? null : (ConversationProfileSttConfig.fromMap((map['sttConfig']! as Map).cast<String, dynamic>())).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      ttsConfig: map['ttsConfig'] == null ? null : (ConversationProfileTtsConfig.fromMap((map['ttsConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

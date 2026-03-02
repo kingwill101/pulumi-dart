@@ -29,8 +29,8 @@ class RuleGroupRuleStatementXssMatchStatement {
 
   factory RuleGroupRuleStatementXssMatchStatement.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementXssMatchStatement(
-      fieldToMatch: map['fieldToMatch'] == null ? null : (RuleGroupRuleStatementXssMatchStatementFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>())).input(),
-      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementXssMatchStatementTextTransformation>(map['textTransformations'], (value) => RuleGroupRuleStatementXssMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fieldToMatch: map['fieldToMatch'] == null ? null : ((RuleGroupRuleStatementXssMatchStatementFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input()).input(),
+      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementXssMatchStatementTextTransformation>(map['textTransformations']!, (value) => RuleGroupRuleStatementXssMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

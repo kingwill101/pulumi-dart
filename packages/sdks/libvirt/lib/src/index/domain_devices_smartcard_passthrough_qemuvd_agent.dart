@@ -27,8 +27,8 @@ class DomainDevicesSmartcardPassthroughQemuvdAgent {
 
   factory DomainDevicesSmartcardPassthroughQemuvdAgent.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSmartcardPassthroughQemuvdAgent(
-      clipBoard: map['clipBoard'] == null ? null : (DomainDevicesSmartcardPassthroughQemuvdAgentClipBoard.fromMap((map['clipBoard'] as Map).cast<String, dynamic>())).input(),
-      mouse: map['mouse'] == null ? null : (DomainDevicesSmartcardPassthroughQemuvdAgentMouse.fromMap((map['mouse'] as Map).cast<String, dynamic>())).input(),
+      clipBoard: map['clipBoard'] == null ? null : (DomainDevicesSmartcardPassthroughQemuvdAgentClipBoard.fromMap((map['clipBoard']! as Map).cast<String, dynamic>())).input(),
+      mouse: map['mouse'] == null ? null : (DomainDevicesSmartcardPassthroughQemuvdAgentMouse.fromMap((map['mouse']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

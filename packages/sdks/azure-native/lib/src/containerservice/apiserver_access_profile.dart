@@ -31,9 +31,9 @@ class APIServerAccessProfile {
 
   factory APIServerAccessProfile.fromMap(Map<String, dynamic> map) {
     return APIServerAccessProfile(
-      enablePrivateCluster: map['enablePrivateCluster'] == null ? null : (map['enablePrivateCluster'] as bool).input(),
-      enableVnetIntegration: map['enableVnetIntegration'] == null ? null : (map['enableVnetIntegration'] as bool).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      enablePrivateCluster: map['enablePrivateCluster'] == null ? null : (map['enablePrivateCluster']! as bool).input(),
+      enableVnetIntegration: map['enableVnetIntegration'] == null ? null : (map['enableVnetIntegration']! as bool).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

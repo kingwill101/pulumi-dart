@@ -59,14 +59,14 @@ class CustomResourceDefinitionVersionPatchApiextensionsK8sIoV1beta1 {
 
   factory CustomResourceDefinitionVersionPatchApiextensionsK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CustomResourceDefinitionVersionPatchApiextensionsK8sIoV1beta1(
-      additionalPrinterColumns: map['additionalPrinterColumns'] == null ? null : (pulumi.Input.decodeList<CustomResourceColumnDefinitionPatchApiextensionsK8sIoV1beta1>(map['additionalPrinterColumns'], (value) => CustomResourceColumnDefinitionPatchApiextensionsK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deprecated: map['deprecated'] == null ? null : (map['deprecated'] as bool).input(),
-      deprecationWarning: map['deprecationWarning'] == null ? null : (map['deprecationWarning'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      schema: map['schema'] == null ? null : (CustomResourceValidationPatchApiextensionsK8sIoV1beta1.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
-      served: map['served'] == null ? null : (map['served'] as bool).input(),
-      storage: map['storage'] == null ? null : (map['storage'] as bool).input(),
-      subresources: map['subresources'] == null ? null : (CustomResourceSubresourcesPatchApiextensionsK8sIoV1beta1.fromMap((map['subresources'] as Map).cast<String, dynamic>())).input(),
+      additionalPrinterColumns: map['additionalPrinterColumns'] == null ? null : (pulumi.Input.decodeList<CustomResourceColumnDefinitionPatchApiextensionsK8sIoV1beta1>(map['additionalPrinterColumns']!, (value) => CustomResourceColumnDefinitionPatchApiextensionsK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deprecated: map['deprecated'] == null ? null : (map['deprecated']! as bool).input(),
+      deprecationWarning: map['deprecationWarning'] == null ? null : (map['deprecationWarning']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      schema: map['schema'] == null ? null : (CustomResourceValidationPatchApiextensionsK8sIoV1beta1.fromMap((map['schema']! as Map).cast<String, dynamic>())).input(),
+      served: map['served'] == null ? null : (map['served']! as bool).input(),
+      storage: map['storage'] == null ? null : (map['storage']! as bool).input(),
+      subresources: map['subresources'] == null ? null : (CustomResourceSubresourcesPatchApiextensionsK8sIoV1beta1.fromMap((map['subresources']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

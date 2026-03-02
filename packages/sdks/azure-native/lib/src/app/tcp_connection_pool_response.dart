@@ -21,7 +21,7 @@ class TcpConnectionPoolResponse {
 
   factory TcpConnectionPoolResponse.fromMap(Map<String, dynamic> map) {
     return TcpConnectionPoolResponse(
-      maxConnections: map['maxConnections'] == null ? null : (map['maxConnections'] as int).input(),
+      maxConnections: map['maxConnections'] == null ? null : (map['maxConnections']! as int).input(),
     );
   }
 }

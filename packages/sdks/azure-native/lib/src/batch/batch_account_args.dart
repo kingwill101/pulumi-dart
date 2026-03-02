@@ -87,18 +87,18 @@ class BatchAccountArgs {
 
   factory BatchAccountArgs.fromMap(Map<String, dynamic> map) {
     return BatchAccountArgs(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      allowedAuthenticationModes: map['allowedAuthenticationModes'] == null ? null : (pulumi.Input.decodeList<AuthenticationMode>(map['allowedAuthenticationModes'], (value) => AuthenticationMode.fromValue(value as String))).input(),
-      autoStorage: map['autoStorage'] == null ? null : (AutoStorageBaseProperties.fromMap((map['autoStorage'] as Map).cast<String, dynamic>())).input(),
-      encryption: map['encryption'] == null ? null : (EncryptionProperties.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (BatchAccountIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      keyVaultReference: map['keyVaultReference'] == null ? null : (KeyVaultReference.fromMap((map['keyVaultReference'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      networkProfile: map['networkProfile'] == null ? null : (NetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
-      poolAllocationMode: map['poolAllocationMode'] == null ? null : (PoolAllocationMode.fromValue(map['poolAllocationMode'] as String)).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (PublicNetworkAccessType.fromValue(map['publicNetworkAccess'] as String)).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      allowedAuthenticationModes: map['allowedAuthenticationModes'] == null ? null : (pulumi.Input.decodeList<AuthenticationMode>(map['allowedAuthenticationModes']!, (value) => AuthenticationMode.fromValue(value as String))).input(),
+      autoStorage: map['autoStorage'] == null ? null : (AutoStorageBaseProperties.fromMap((map['autoStorage']! as Map).cast<String, dynamic>())).input(),
+      encryption: map['encryption'] == null ? null : (EncryptionProperties.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (BatchAccountIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      keyVaultReference: map['keyVaultReference'] == null ? null : (KeyVaultReference.fromMap((map['keyVaultReference']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      networkProfile: map['networkProfile'] == null ? null : (NetworkProfile.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())).input(),
+      poolAllocationMode: map['poolAllocationMode'] == null ? null : (PoolAllocationMode.fromValue(map['poolAllocationMode']! as String)).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (PublicNetworkAccessType.fromValue(map['publicNetworkAccess']! as String)).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

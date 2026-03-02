@@ -31,7 +31,7 @@ class NetworkRuleSetIpRule {
 
   factory NetworkRuleSetIpRule.fromMap(Map<String, dynamic> map) {
     return NetworkRuleSetIpRule(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
       filterName: (map['filterName'] as String).input(),
       ipMask: (map['ipMask'] as String).input(),
     );

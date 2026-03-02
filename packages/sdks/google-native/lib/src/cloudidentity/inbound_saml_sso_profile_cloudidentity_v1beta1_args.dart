@@ -40,10 +40,10 @@ class InboundSamlSsoProfileCloudidentityV1beta1Args {
 
   factory InboundSamlSsoProfileCloudidentityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return InboundSamlSsoProfileCloudidentityV1beta1Args(
-      customer: map['customer'] == null ? null : (map['customer'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      idpConfig: map['idpConfig'] == null ? null : (SamlIdpConfigCloudidentityV1beta1.fromMap((map['idpConfig'] as Map).cast<String, dynamic>())).input(),
-      spConfig: map['spConfig'] == null ? null : ((map['spConfig'] as Map).cast<String, dynamic>()).input(),
+      customer: map['customer'] == null ? null : (map['customer']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      idpConfig: map['idpConfig'] == null ? null : (SamlIdpConfigCloudidentityV1beta1.fromMap((map['idpConfig']! as Map).cast<String, dynamic>())).input(),
+      spConfig: map['spConfig'] == null ? null : ((map['spConfig']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

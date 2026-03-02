@@ -26,8 +26,8 @@ class GoogleCloudRunV2GRPCAction {
 
   factory GoogleCloudRunV2GRPCAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2GRPCAction(
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

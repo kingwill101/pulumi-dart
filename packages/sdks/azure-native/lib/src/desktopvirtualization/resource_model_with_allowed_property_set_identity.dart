@@ -21,7 +21,7 @@ class ResourceModelWithAllowedPropertySetIdentity {
 
   factory ResourceModelWithAllowedPropertySetIdentity.fromMap(Map<String, dynamic> map) {
     return ResourceModelWithAllowedPropertySetIdentity(
-      type: map['type'] == null ? null : (ResourceIdentityType.fromValue(map['type'] as String)).input(),
+      type: map['type'] == null ? null : (ResourceIdentityType.fromValue(map['type']! as String)).input(),
     );
   }
 }

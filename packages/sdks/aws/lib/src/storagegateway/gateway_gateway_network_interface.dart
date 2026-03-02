@@ -20,7 +20,7 @@ class GatewayGatewayNetworkInterface {
 
   factory GatewayGatewayNetworkInterface.fromMap(Map<String, dynamic> map) {
     return GatewayGatewayNetworkInterface(
-      ipv4Address: map['ipv4Address'] == null ? null : (map['ipv4Address'] as String).input(),
+      ipv4Address: map['ipv4Address'] == null ? null : ((map['ipv4Address'] as String).input()).input(),
     );
   }
 }

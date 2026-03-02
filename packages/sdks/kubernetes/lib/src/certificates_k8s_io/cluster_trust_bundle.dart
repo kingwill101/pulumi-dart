@@ -42,9 +42,9 @@ class ClusterTrustBundle {
 
   factory ClusterTrustBundle.fromMap(Map<String, dynamic> map) {
     return ClusterTrustBundle(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
       spec: (ClusterTrustBundleSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }

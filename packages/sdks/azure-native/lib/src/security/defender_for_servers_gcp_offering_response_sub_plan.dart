@@ -21,7 +21,7 @@ class DefenderForServersGcpOfferingResponseSubPlan {
 
   factory DefenderForServersGcpOfferingResponseSubPlan.fromMap(Map<String, dynamic> map) {
     return DefenderForServersGcpOfferingResponseSubPlan(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

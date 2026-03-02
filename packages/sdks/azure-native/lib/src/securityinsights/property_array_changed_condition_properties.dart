@@ -26,7 +26,7 @@ class PropertyArrayChangedConditionProperties {
 
   factory PropertyArrayChangedConditionProperties.fromMap(Map<String, dynamic> map) {
     return PropertyArrayChangedConditionProperties(
-      conditionProperties: map['conditionProperties'] == null ? null : (AutomationRulePropertyArrayChangedValuesCondition.fromMap((map['conditionProperties'] as Map).cast<String, dynamic>())).input(),
+      conditionProperties: map['conditionProperties'] == null ? null : (AutomationRulePropertyArrayChangedValuesCondition.fromMap((map['conditionProperties']! as Map).cast<String, dynamic>())).input(),
       conditionType: (map['conditionType'] as String).input(),
     );
   }

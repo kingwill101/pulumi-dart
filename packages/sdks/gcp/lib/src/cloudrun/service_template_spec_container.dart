@@ -115,19 +115,19 @@ class ServiceTemplateSpecContainer {
 
   factory ServiceTemplateSpecContainer.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateSpecContainer(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      envFroms: map['envFroms'] == null ? null : (pulumi.Input.decodeList<ServiceTemplateSpecContainerEnvFrom>(map['envFroms'], (value) => ServiceTemplateSpecContainerEnvFrom.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<ServiceTemplateSpecContainerEnv>(map['envs'], (value) => ServiceTemplateSpecContainerEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
+      envFroms: map['envFroms'] == null ? null : (pulumi.Input.decodeList<ServiceTemplateSpecContainerEnvFrom>(map['envFroms']!, (value) => ServiceTemplateSpecContainerEnvFrom.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<ServiceTemplateSpecContainerEnv>(map['envs']!, (value) => ServiceTemplateSpecContainerEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
       image: (map['image'] as String).input(),
-      livenessProbe: map['livenessProbe'] == null ? null : (ServiceTemplateSpecContainerLivenessProbe.fromMap((map['livenessProbe'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<ServiceTemplateSpecContainerPort>(map['ports'], (value) => ServiceTemplateSpecContainerPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      readinessProbe: map['readinessProbe'] == null ? null : (ServiceTemplateSpecContainerReadinessProbe.fromMap((map['readinessProbe'] as Map).cast<String, dynamic>())).input(),
-      resources: map['resources'] == null ? null : (ServiceTemplateSpecContainerResources.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
-      startupProbe: map['startupProbe'] == null ? null : (ServiceTemplateSpecContainerStartupProbe.fromMap((map['startupProbe'] as Map).cast<String, dynamic>())).input(),
-      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<ServiceTemplateSpecContainerVolumeMount>(map['volumeMounts'], (value) => ServiceTemplateSpecContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      workingDir: map['workingDir'] == null ? null : (map['workingDir'] as String).input(),
+      livenessProbe: map['livenessProbe'] == null ? null : (ServiceTemplateSpecContainerLivenessProbe.fromMap((map['livenessProbe']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<ServiceTemplateSpecContainerPort>(map['ports']!, (value) => ServiceTemplateSpecContainerPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      readinessProbe: map['readinessProbe'] == null ? null : (ServiceTemplateSpecContainerReadinessProbe.fromMap((map['readinessProbe']! as Map).cast<String, dynamic>())).input(),
+      resources: map['resources'] == null ? null : (ServiceTemplateSpecContainerResources.fromMap((map['resources']! as Map).cast<String, dynamic>())).input(),
+      startupProbe: map['startupProbe'] == null ? null : (ServiceTemplateSpecContainerStartupProbe.fromMap((map['startupProbe']! as Map).cast<String, dynamic>())).input(),
+      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<ServiceTemplateSpecContainerVolumeMount>(map['volumeMounts']!, (value) => ServiceTemplateSpecContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      workingDir: map['workingDir'] == null ? null : (map['workingDir']! as String).input(),
     );
   }
 }

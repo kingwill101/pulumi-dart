@@ -26,7 +26,7 @@ class DomainDevicesRngRate {
   factory DomainDevicesRngRate.fromMap(Map<String, dynamic> map) {
     return DomainDevicesRngRate(
       bytes: (map['bytes'] as double).input(),
-      period: map['period'] == null ? null : (map['period'] as double).input(),
+      period: map['period'] == null ? null : (map['period']! as double).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class ConnectionNodeConfig {
 
   factory ConnectionNodeConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionNodeConfig(
-      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount'] as int).input(),
-      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount'] as int).input(),
+      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount']! as int).input(),
+      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount']! as int).input(),
     );
   }
 }

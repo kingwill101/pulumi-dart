@@ -27,8 +27,8 @@ class MethodPolicy {
 
   factory MethodPolicy.fromMap(Map<String, dynamic> map) {
     return MethodPolicy(
-      requestPolicies: map['requestPolicies'] == null ? null : (pulumi.Input.decodeList<FieldPolicy>(map['requestPolicies'], (value) => FieldPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
+      requestPolicies: map['requestPolicies'] == null ? null : (pulumi.Input.decodeList<FieldPolicy>(map['requestPolicies']!, (value) => FieldPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
     );
   }
 }

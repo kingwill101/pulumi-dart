@@ -105,20 +105,20 @@ class SecurityPolicyState {
 
   factory SecurityPolicyState.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyState(
-      adaptiveProtectionConfig: map['adaptiveProtectionConfig'] == null ? null : (SecurityPolicyAdaptiveProtectionConfig.fromMap((map['adaptiveProtectionConfig'] as Map).cast<String, dynamic>())).input(),
-      advancedOptionsConfig: map['advancedOptionsConfig'] == null ? null : (SecurityPolicyAdvancedOptionsConfig.fromMap((map['advancedOptionsConfig'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
-      labelFingerprint: map['labelFingerprint'] == null ? null : (map['labelFingerprint'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      recaptchaOptionsConfig: map['recaptchaOptionsConfig'] == null ? null : (SecurityPolicyRecaptchaOptionsConfig.fromMap((map['recaptchaOptionsConfig'] as Map).cast<String, dynamic>())).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRule>(map['rules'], (value) => SecurityPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      adaptiveProtectionConfig: map['adaptiveProtectionConfig'] == null ? null : (SecurityPolicyAdaptiveProtectionConfig.fromMap((map['adaptiveProtectionConfig']! as Map).cast<String, dynamic>())).input(),
+      advancedOptionsConfig: map['advancedOptionsConfig'] == null ? null : (SecurityPolicyAdvancedOptionsConfig.fromMap((map['advancedOptionsConfig']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint']! as String).input(),
+      labelFingerprint: map['labelFingerprint'] == null ? null : (map['labelFingerprint']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      recaptchaOptionsConfig: map['recaptchaOptionsConfig'] == null ? null : (SecurityPolicyRecaptchaOptionsConfig.fromMap((map['recaptchaOptionsConfig']! as Map).cast<String, dynamic>())).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRule>(map['rules']!, (value) => SecurityPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

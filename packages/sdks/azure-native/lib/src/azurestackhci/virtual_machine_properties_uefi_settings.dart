@@ -20,7 +20,7 @@ class VirtualMachinePropertiesUefiSettings {
 
   factory VirtualMachinePropertiesUefiSettings.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePropertiesUefiSettings(
-      secureBootEnabled: map['secureBootEnabled'] == null ? null : (map['secureBootEnabled'] as bool).input(),
+      secureBootEnabled: map['secureBootEnabled'] == null ? null : (map['secureBootEnabled']! as bool).input(),
     );
   }
 }

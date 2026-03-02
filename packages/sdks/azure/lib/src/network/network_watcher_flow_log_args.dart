@@ -83,17 +83,17 @@ class NetworkWatcherFlowLogArgs {
   factory NetworkWatcherFlowLogArgs.fromMap(Map<String, dynamic> map) {
     return NetworkWatcherFlowLogArgs(
       enabled: (map['enabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkSecurityGroupId: map['networkSecurityGroupId'] == null ? null : (map['networkSecurityGroupId'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkSecurityGroupId: map['networkSecurityGroupId'] == null ? null : (map['networkSecurityGroupId']! as String).input(),
       networkWatcherName: (map['networkWatcherName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       retentionPolicy: (NetworkWatcherFlowLogRetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
       storageAccountId: (map['storageAccountId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
-      trafficAnalytics: map['trafficAnalytics'] == null ? null : (NetworkWatcherFlowLogTrafficAnalytics.fromMap((map['trafficAnalytics'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId']! as String).input(),
+      trafficAnalytics: map['trafficAnalytics'] == null ? null : (NetworkWatcherFlowLogTrafficAnalytics.fromMap((map['trafficAnalytics']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

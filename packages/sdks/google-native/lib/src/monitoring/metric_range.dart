@@ -27,8 +27,8 @@ class MetricRange {
 
   factory MetricRange.fromMap(Map<String, dynamic> map) {
     return MetricRange(
-      range: map['range'] == null ? null : (GoogleMonitoringV3Range.fromMap((map['range'] as Map).cast<String, dynamic>())).input(),
-      timeSeries: map['timeSeries'] == null ? null : (map['timeSeries'] as String).input(),
+      range: map['range'] == null ? null : (GoogleMonitoringV3Range.fromMap((map['range']! as Map).cast<String, dynamic>())).input(),
+      timeSeries: map['timeSeries'] == null ? null : (map['timeSeries']! as String).input(),
     );
   }
 }

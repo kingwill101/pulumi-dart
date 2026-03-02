@@ -27,8 +27,8 @@ class ResourceMetricSourcePatch {
 
   factory ResourceMetricSourcePatch.fromMap(Map<String, dynamic> map) {
     return ResourceMetricSourcePatch(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      target: map['target'] == null ? null : (MetricTargetPatch.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      target: map['target'] == null ? null : (MetricTargetPatch.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

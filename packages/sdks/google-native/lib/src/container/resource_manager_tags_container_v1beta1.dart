@@ -21,7 +21,7 @@ class ResourceManagerTagsContainerV1beta1 {
 
   factory ResourceManagerTagsContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ResourceManagerTagsContainerV1beta1(
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

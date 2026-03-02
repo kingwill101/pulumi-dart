@@ -30,9 +30,9 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
 
   factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationAuthConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationAuthConfiguration(
-      databaseUser: map['databaseUser'] == null ? null : (map['databaseUser'] as String).input(),
+      databaseUser: map['databaseUser'] == null ? null : ((map['databaseUser'] as String).input()).input(),
       type: (map['type'] as String).input(),
-      usernamePasswordSecretArn: map['usernamePasswordSecretArn'] == null ? null : (map['usernamePasswordSecretArn'] as String).input(),
+      usernamePasswordSecretArn: map['usernamePasswordSecretArn'] == null ? null : ((map['usernamePasswordSecretArn'] as String).input()).input(),
     );
   }
 }

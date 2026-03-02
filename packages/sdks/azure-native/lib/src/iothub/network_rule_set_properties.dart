@@ -33,7 +33,7 @@ class NetworkRuleSetProperties {
   factory NetworkRuleSetProperties.fromMap(Map<String, dynamic> map) {
     return NetworkRuleSetProperties(
       applyToBuiltInEventHubEndpoint: (map['applyToBuiltInEventHubEndpoint'] as bool).input(),
-      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction'] as String).input(),
+      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction']! as String).input(),
       ipRules: (pulumi.Input.decodeList<NetworkRuleSetIpRule>(map['ipRules'], (value) => NetworkRuleSetIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

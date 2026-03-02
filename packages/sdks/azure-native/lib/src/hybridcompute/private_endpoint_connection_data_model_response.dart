@@ -39,7 +39,7 @@ class PrivateEndpointConnectionDataModelResponse {
     return PrivateEndpointConnectionDataModelResponse(
       id: (map['id'] as String).input(),
       name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (PrivateEndpointConnectionPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (PrivateEndpointConnectionPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

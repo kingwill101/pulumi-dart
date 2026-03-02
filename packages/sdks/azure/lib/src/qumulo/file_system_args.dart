@@ -81,15 +81,15 @@ class FileSystemArgs {
     return FileSystemArgs(
       adminPassword: (map['adminPassword'] as String).input(),
       email: (map['email'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      offerId: map['offerId'] == null ? null : (map['offerId'] as String).input(),
-      planId: map['planId'] == null ? null : (map['planId'] as String).input(),
-      publisherId: map['publisherId'] == null ? null : (map['publisherId'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      offerId: map['offerId'] == null ? null : (map['offerId']! as String).input(),
+      planId: map['planId'] == null ? null : (map['planId']! as String).input(),
+      publisherId: map['publisherId'] == null ? null : (map['publisherId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       storageSku: (map['storageSku'] as String).input(),
       subnetId: (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       zone: (map['zone'] as String).input(),
     );
   }

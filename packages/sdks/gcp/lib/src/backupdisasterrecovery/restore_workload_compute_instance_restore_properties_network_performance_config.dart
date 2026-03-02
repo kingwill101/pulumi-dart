@@ -20,7 +20,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig {
 
   factory RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig(
-      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] == null ? null : (map['totalEgressBandwidthTier'] as String).input(),
+      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] == null ? null : (map['totalEgressBandwidthTier']! as String).input(),
     );
   }
 }

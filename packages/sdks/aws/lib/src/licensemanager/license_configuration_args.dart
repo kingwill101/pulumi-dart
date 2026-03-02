@@ -59,14 +59,14 @@ class LicenseConfigurationArgs {
 
   factory LicenseConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return LicenseConfigurationArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      licenseCount: map['licenseCount'] == null ? null : (map['licenseCount'] as int).input(),
-      licenseCountHardLimit: map['licenseCountHardLimit'] == null ? null : (map['licenseCountHardLimit'] as bool).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      licenseCount: map['licenseCount'] == null ? null : ((map['licenseCount'] as int).input()).input(),
+      licenseCountHardLimit: map['licenseCountHardLimit'] == null ? null : ((map['licenseCountHardLimit'] as bool).input()).input(),
       licenseCountingType: (map['licenseCountingType'] as String).input(),
-      licenseRules: map['licenseRules'] == null ? null : ((map['licenseRules'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      licenseRules: map['licenseRules'] == null ? null : (((map['licenseRules'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

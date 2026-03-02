@@ -108,22 +108,22 @@ class GetPrivateEndpointResult {
 
   factory GetPrivateEndpointResult.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointResult(
-      applicationSecurityGroups: map['applicationSecurityGroups'] == null ? null : pulumi.Input.decodeList<ApplicationSecurityGroupResponse>(map['applicationSecurityGroups'], (value) => ApplicationSecurityGroupResponse.fromMap((value as Map).cast<String, dynamic>())),
+      applicationSecurityGroups: map['applicationSecurityGroups'] == null ? null : pulumi.Input.decodeList<ApplicationSecurityGroupResponse>(map['applicationSecurityGroups']!, (value) => ApplicationSecurityGroupResponse.fromMap((value as Map).cast<String, dynamic>())),
       azureApiVersion: map['azureApiVersion'] as String,
-      customDnsConfigs: map['customDnsConfigs'] == null ? null : pulumi.Input.decodeList<CustomDnsConfigPropertiesFormatResponse>(map['customDnsConfigs'], (value) => CustomDnsConfigPropertiesFormatResponse.fromMap((value as Map).cast<String, dynamic>())),
-      customNetworkInterfaceName: map['customNetworkInterfaceName'] == null ? null : map['customNetworkInterfaceName'] as String,
+      customDnsConfigs: map['customDnsConfigs'] == null ? null : pulumi.Input.decodeList<CustomDnsConfigPropertiesFormatResponse>(map['customDnsConfigs']!, (value) => CustomDnsConfigPropertiesFormatResponse.fromMap((value as Map).cast<String, dynamic>())),
+      customNetworkInterfaceName: map['customNetworkInterfaceName'] == null ? null : map['customNetworkInterfaceName']! as String,
       etag: map['etag'] as String,
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
-      id: map['id'] == null ? null : map['id'] as String,
-      ipConfigurations: map['ipConfigurations'] == null ? null : pulumi.Input.decodeList<PrivateEndpointIPConfigurationResponse>(map['ipConfigurations'], (value) => PrivateEndpointIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : map['location'] as String,
-      manualPrivateLinkServiceConnections: map['manualPrivateLinkServiceConnections'] == null ? null : pulumi.Input.decodeList<PrivateLinkServiceConnectionResponse>(map['manualPrivateLinkServiceConnections'], (value) => PrivateLinkServiceConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
+      id: map['id'] == null ? null : map['id']! as String,
+      ipConfigurations: map['ipConfigurations'] == null ? null : pulumi.Input.decodeList<PrivateEndpointIPConfigurationResponse>(map['ipConfigurations']!, (value) => PrivateEndpointIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      location: map['location'] == null ? null : map['location']! as String,
+      manualPrivateLinkServiceConnections: map['manualPrivateLinkServiceConnections'] == null ? null : pulumi.Input.decodeList<PrivateLinkServiceConnectionResponse>(map['manualPrivateLinkServiceConnections']!, (value) => PrivateLinkServiceConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       networkInterfaces: pulumi.Input.decodeList<NetworkInterfaceResponse>(map['networkInterfaces'], (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      privateLinkServiceConnections: map['privateLinkServiceConnections'] == null ? null : pulumi.Input.decodeList<PrivateLinkServiceConnectionResponse>(map['privateLinkServiceConnections'], (value) => PrivateLinkServiceConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      privateLinkServiceConnections: map['privateLinkServiceConnections'] == null ? null : pulumi.Input.decodeList<PrivateLinkServiceConnectionResponse>(map['privateLinkServiceConnections']!, (value) => PrivateLinkServiceConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
-      subnet: map['subnet'] == null ? null : SubnetResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      subnet: map['subnet'] == null ? null : SubnetResponse.fromMap((map['subnet']! as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

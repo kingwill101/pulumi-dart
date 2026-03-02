@@ -76,18 +76,18 @@ class LocationFsxWindowsState {
 
   factory LocationFsxWindowsState.fromMap(Map<String, dynamic> map) {
     return LocationFsxWindowsState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      fsxFilesystemArn: map['fsxFilesystemArn'] == null ? null : (map['fsxFilesystemArn'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityGroupArns: map['securityGroupArns'] == null ? null : ((map['securityGroupArns'] as List).cast<String>()).input(),
-      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      creationTime: map['creationTime'] == null ? null : ((map['creationTime'] as String).input()).input(),
+      domain: map['domain'] == null ? null : ((map['domain'] as String).input()).input(),
+      fsxFilesystemArn: map['fsxFilesystemArn'] == null ? null : ((map['fsxFilesystemArn'] as String).input()).input(),
+      password: map['password'] == null ? null : ((map['password'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityGroupArns: map['securityGroupArns'] == null ? null : (((map['securityGroupArns'] as List).cast<String>()).input()).input(),
+      subdirectory: map['subdirectory'] == null ? null : ((map['subdirectory'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      uri: map['uri'] == null ? null : ((map['uri'] as String).input()).input(),
+      user: map['user'] == null ? null : ((map['user'] as String).input()).input(),
     );
   }
 }

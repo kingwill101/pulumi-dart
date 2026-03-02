@@ -32,9 +32,9 @@ class PipelineStageOnFailure {
 
   factory PipelineStageOnFailure.fromMap(Map<String, dynamic> map) {
     return PipelineStageOnFailure(
-      condition: map['condition'] == null ? null : (PipelineStageOnFailureCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      result: map['result'] == null ? null : (map['result'] as String).input(),
-      retryConfiguration: map['retryConfiguration'] == null ? null : (PipelineStageOnFailureRetryConfiguration.fromMap((map['retryConfiguration'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : ((PipelineStageOnFailureCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input()).input(),
+      result: map['result'] == null ? null : ((map['result'] as String).input()).input(),
+      retryConfiguration: map['retryConfiguration'] == null ? null : ((PipelineStageOnFailureRetryConfiguration.fromMap((map['retryConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

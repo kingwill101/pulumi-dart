@@ -26,8 +26,8 @@ class V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchRespon
 
   factory V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchResponse.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchResponse(
-      allowInterrupt: map['allowInterrupt'] == null ? null : (map['allowInterrupt'] as bool).input(),
-      messageGroups: map['messageGroups'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchResponseMessageGroup>(map['messageGroups'], (value) => V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchResponseMessageGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowInterrupt: map['allowInterrupt'] == null ? null : ((map['allowInterrupt'] as bool).input()).input(),
+      messageGroups: map['messageGroups'] == null ? null : ((pulumi.Input.decodeList<V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchResponseMessageGroup>(map['messageGroups']!, (value) => V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchResponseMessageGroup.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

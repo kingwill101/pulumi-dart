@@ -114,24 +114,24 @@ class AzureCliScriptArgs {
 
   factory AzureCliScriptArgs.fromMap(Map<String, dynamic> map) {
     return AzureCliScriptArgs(
-      arguments: map['arguments'] == null ? null : (map['arguments'] as String).input(),
+      arguments: map['arguments'] == null ? null : (map['arguments']! as String).input(),
       azCliVersion: (map['azCliVersion'] as String).input(),
-      cleanupPreference: map['cleanupPreference'] == null ? null : (map['cleanupPreference'] as String).input(),
-      containerSettings: map['containerSettings'] == null ? null : (ContainerConfiguration.fromMap((map['containerSettings'] as Map).cast<String, dynamic>())).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariable>(map['environmentVariables'], (value) => EnvironmentVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      cleanupPreference: map['cleanupPreference'] == null ? null : (map['cleanupPreference']! as String).input(),
+      containerSettings: map['containerSettings'] == null ? null : (ContainerConfiguration.fromMap((map['containerSettings']! as Map).cast<String, dynamic>())).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariable>(map['environmentVariables']!, (value) => EnvironmentVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag']! as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
       kind: (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      primaryScriptUri: map['primaryScriptUri'] == null ? null : (map['primaryScriptUri'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      primaryScriptUri: map['primaryScriptUri'] == null ? null : (map['primaryScriptUri']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       retentionInterval: (map['retentionInterval'] as String).input(),
-      scriptContent: map['scriptContent'] == null ? null : (map['scriptContent'] as String).input(),
-      scriptName: map['scriptName'] == null ? null : (map['scriptName'] as String).input(),
-      storageAccountSettings: map['storageAccountSettings'] == null ? null : (StorageAccountConfiguration.fromMap((map['storageAccountSettings'] as Map).cast<String, dynamic>())).input(),
-      supportingScriptUris: map['supportingScriptUris'] == null ? null : ((map['supportingScriptUris'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      scriptContent: map['scriptContent'] == null ? null : (map['scriptContent']! as String).input(),
+      scriptName: map['scriptName'] == null ? null : (map['scriptName']! as String).input(),
+      storageAccountSettings: map['storageAccountSettings'] == null ? null : (StorageAccountConfiguration.fromMap((map['storageAccountSettings']! as Map).cast<String, dynamic>())).input(),
+      supportingScriptUris: map['supportingScriptUris'] == null ? null : ((map['supportingScriptUris']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

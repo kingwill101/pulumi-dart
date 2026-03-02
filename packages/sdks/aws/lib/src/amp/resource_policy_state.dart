@@ -43,11 +43,11 @@ class ResourcePolicyState {
 
   factory ResourcePolicyState.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyState(
-      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      revisionId: map['revisionId'] == null ? null : (map['revisionId'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (ResourcePolicyTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      policyDocument: map['policyDocument'] == null ? null : ((map['policyDocument'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      revisionId: map['revisionId'] == null ? null : ((map['revisionId'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ResourcePolicyTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      workspaceId: map['workspaceId'] == null ? null : ((map['workspaceId'] as String).input()).input(),
     );
   }
 }

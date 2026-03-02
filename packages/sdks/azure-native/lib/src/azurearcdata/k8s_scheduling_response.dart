@@ -22,7 +22,7 @@ class K8sSchedulingResponse {
 
   factory K8sSchedulingResponse.fromMap(Map<String, dynamic> map) {
     return K8sSchedulingResponse(
-      default_: map['default'] == null ? null : (K8sSchedulingOptionsResponse.fromMap((map['default'] as Map).cast<String, dynamic>())).input(),
+      default_: map['default'] == null ? null : (K8sSchedulingOptionsResponse.fromMap((map['default']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

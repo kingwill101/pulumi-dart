@@ -37,9 +37,9 @@ class EndpointDeploymentConfigRollingUpdatePolicy {
 
   factory EndpointDeploymentConfigRollingUpdatePolicy.fromMap(Map<String, dynamic> map) {
     return EndpointDeploymentConfigRollingUpdatePolicy(
-      maximumBatchSize: (EndpointDeploymentConfigRollingUpdatePolicyMaximumBatchSize.fromMap((map['maximumBatchSize'] as Map).cast<String, dynamic>())).input(),
-      maximumExecutionTimeoutInSeconds: map['maximumExecutionTimeoutInSeconds'] == null ? null : (map['maximumExecutionTimeoutInSeconds'] as int).input(),
-      rollbackMaximumBatchSize: map['rollbackMaximumBatchSize'] == null ? null : (EndpointDeploymentConfigRollingUpdatePolicyRollbackMaximumBatchSize.fromMap((map['rollbackMaximumBatchSize'] as Map).cast<String, dynamic>())).input(),
+      maximumBatchSize: (EndpointDeploymentConfigRollingUpdatePolicyMaximumBatchSize.fromMap((map['maximumBatchSize']! as Map).cast<String, dynamic>())).input(),
+      maximumExecutionTimeoutInSeconds: map['maximumExecutionTimeoutInSeconds'] == null ? null : ((map['maximumExecutionTimeoutInSeconds'] as int).input()).input(),
+      rollbackMaximumBatchSize: map['rollbackMaximumBatchSize'] == null ? null : ((EndpointDeploymentConfigRollingUpdatePolicyRollbackMaximumBatchSize.fromMap((map['rollbackMaximumBatchSize']! as Map).cast<String, dynamic>())).input()).input(),
       waitIntervalInSeconds: (map['waitIntervalInSeconds'] as int).input(),
     );
   }

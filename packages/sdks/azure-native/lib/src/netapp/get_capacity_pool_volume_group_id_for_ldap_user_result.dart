@@ -20,7 +20,7 @@ class GetCapacityPoolVolumeGroupIdForLdapUserResult {
 
   factory GetCapacityPoolVolumeGroupIdForLdapUserResult.fromMap(Map<String, dynamic> map) {
     return GetCapacityPoolVolumeGroupIdForLdapUserResult(
-      groupIdsForLdapUser: map['groupIdsForLdapUser'] == null ? null : (map['groupIdsForLdapUser'] as List).cast<String>(),
+      groupIdsForLdapUser: map['groupIdsForLdapUser'] == null ? null : (map['groupIdsForLdapUser']! as List).cast<String>(),
     );
   }
 }

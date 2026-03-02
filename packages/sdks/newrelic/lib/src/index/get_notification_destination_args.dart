@@ -42,10 +42,10 @@ class GetNotificationDestinationArgs {
 
   factory GetNotificationDestinationArgs.fromMap(Map<String, dynamic> map) {
     return GetNotificationDestinationArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      secureUrls: map['secureUrls'] == null ? null : (pulumi.Input.decodeList<GetNotificationDestinationSecureUrl>(map['secureUrls'], (value) => GetNotificationDestinationSecureUrl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      secureUrls: map['secureUrls'] == null ? null : (pulumi.Input.decodeList<GetNotificationDestinationSecureUrl>(map['secureUrls']!, (value) => GetNotificationDestinationSecureUrl.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

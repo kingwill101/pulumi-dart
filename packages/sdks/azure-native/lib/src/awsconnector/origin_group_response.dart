@@ -33,9 +33,9 @@ class OriginGroupResponse {
 
   factory OriginGroupResponse.fromMap(Map<String, dynamic> map) {
     return OriginGroupResponse(
-      failoverCriteria: map['failoverCriteria'] == null ? null : (OriginGroupFailoverCriteriaResponse.fromMap((map['failoverCriteria'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      members: map['members'] == null ? null : (OriginGroupMembersResponse.fromMap((map['members'] as Map).cast<String, dynamic>())).input(),
+      failoverCriteria: map['failoverCriteria'] == null ? null : (OriginGroupFailoverCriteriaResponse.fromMap((map['failoverCriteria']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      members: map['members'] == null ? null : (OriginGroupMembersResponse.fromMap((map['members']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

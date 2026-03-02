@@ -103,20 +103,20 @@ class GetPartnerNamespaceResult {
   factory GetPartnerNamespaceResult.fromMap(Map<String, dynamic> map) {
     return GetPartnerNamespaceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : map['disableLocalAuth'] as bool,
+      disableLocalAuth: map['disableLocalAuth'] == null ? null : map['disableLocalAuth']! as bool,
       endpoint: map['endpoint'] as String,
       id: map['id'] as String,
-      inboundIpRules: map['inboundIpRules'] == null ? null : pulumi.Input.decodeList<InboundIpRuleResponse>(map['inboundIpRules'], (value) => InboundIpRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      inboundIpRules: map['inboundIpRules'] == null ? null : pulumi.Input.decodeList<InboundIpRuleResponse>(map['inboundIpRules']!, (value) => InboundIpRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
-      minimumTlsVersionAllowed: map['minimumTlsVersionAllowed'] == null ? null : map['minimumTlsVersionAllowed'] as String,
+      minimumTlsVersionAllowed: map['minimumTlsVersionAllowed'] == null ? null : map['minimumTlsVersionAllowed']! as String,
       name: map['name'] as String,
-      partnerRegistrationFullyQualifiedId: map['partnerRegistrationFullyQualifiedId'] == null ? null : map['partnerRegistrationFullyQualifiedId'] as String,
-      partnerTopicRoutingMode: map['partnerTopicRoutingMode'] == null ? null : map['partnerTopicRoutingMode'] as String,
+      partnerRegistrationFullyQualifiedId: map['partnerRegistrationFullyQualifiedId'] == null ? null : map['partnerRegistrationFullyQualifiedId']! as String,
+      partnerTopicRoutingMode: map['partnerTopicRoutingMode'] == null ? null : map['partnerTopicRoutingMode']! as String,
       privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess'] as String,
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

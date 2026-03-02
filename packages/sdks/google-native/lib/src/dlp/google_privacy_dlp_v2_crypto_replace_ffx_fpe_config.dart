@@ -50,12 +50,12 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
 
   factory GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig(
-      commonAlphabet: map['commonAlphabet'] == null ? null : (GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet.fromValue(map['commonAlphabet'] as String)).input(),
-      context: map['context'] == null ? null : (GooglePrivacyDlpV2FieldId.fromMap((map['context'] as Map).cast<String, dynamic>())).input(),
+      commonAlphabet: map['commonAlphabet'] == null ? null : (GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet.fromValue(map['commonAlphabet']! as String)).input(),
+      context: map['context'] == null ? null : (GooglePrivacyDlpV2FieldId.fromMap((map['context']! as Map).cast<String, dynamic>())).input(),
       cryptoKey: (GooglePrivacyDlpV2CryptoKey.fromMap((map['cryptoKey'] as Map).cast<String, dynamic>())).input(),
-      customAlphabet: map['customAlphabet'] == null ? null : (map['customAlphabet'] as String).input(),
-      radix: map['radix'] == null ? null : (map['radix'] as int).input(),
-      surrogateInfoType: map['surrogateInfoType'] == null ? null : (GooglePrivacyDlpV2InfoType.fromMap((map['surrogateInfoType'] as Map).cast<String, dynamic>())).input(),
+      customAlphabet: map['customAlphabet'] == null ? null : (map['customAlphabet']! as String).input(),
+      radix: map['radix'] == null ? null : (map['radix']! as int).input(),
+      surrogateInfoType: map['surrogateInfoType'] == null ? null : (GooglePrivacyDlpV2InfoType.fromMap((map['surrogateInfoType']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

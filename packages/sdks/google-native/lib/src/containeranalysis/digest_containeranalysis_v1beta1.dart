@@ -26,8 +26,8 @@ class DigestContaineranalysisV1beta1 {
 
   factory DigestContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return DigestContaineranalysisV1beta1(
-      algo: map['algo'] == null ? null : (map['algo'] as String).input(),
-      digestBytes: map['digestBytes'] == null ? null : (map['digestBytes'] as String).input(),
+      algo: map['algo'] == null ? null : (map['algo']! as String).input(),
+      digestBytes: map['digestBytes'] == null ? null : (map['digestBytes']! as String).input(),
     );
   }
 }

@@ -55,12 +55,12 @@ class EntityTypeState {
 
   factory EntityTypeState.fromMap(Map<String, dynamic> map) {
     return EntityTypeState(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enableFuzzyExtraction: map['enableFuzzyExtraction'] == null ? null : (map['enableFuzzyExtraction'] as bool).input(),
-      entities: map['entities'] == null ? null : (pulumi.Input.decodeList<EntityTypeEntity>(map['entities'], (value) => EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enableFuzzyExtraction: map['enableFuzzyExtraction'] == null ? null : (map['enableFuzzyExtraction']! as bool).input(),
+      entities: map['entities'] == null ? null : (pulumi.Input.decodeList<EntityTypeEntity>(map['entities']!, (value) => EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -74,20 +74,20 @@ class GetGradientaiKnowledgeBaseResult {
 
   factory GetGradientaiKnowledgeBaseResult.fromMap(Map<String, dynamic> map) {
     return GetGradientaiKnowledgeBaseResult(
-      addedToAgentAt: map['addedToAgentAt'] == null ? null : map['addedToAgentAt'] as String,
+      addedToAgentAt: map['addedToAgentAt'] == null ? null : map['addedToAgentAt']! as String,
       createdAt: map['createdAt'] as String,
-      databaseId: map['databaseId'] == null ? null : map['databaseId'] as String,
-      embeddingModelUuid: map['embeddingModelUuid'] == null ? null : map['embeddingModelUuid'] as String,
+      databaseId: map['databaseId'] == null ? null : map['databaseId']! as String,
+      embeddingModelUuid: map['embeddingModelUuid'] == null ? null : map['embeddingModelUuid']! as String,
       id: map['id'] as String,
-      isPublic: map['isPublic'] == null ? null : map['isPublic'] as bool,
-      lastIndexingJobs: map['lastIndexingJobs'] == null ? null : pulumi.Input.decodeList<GetGradientaiKnowledgeBaseLastIndexingJob>(map['lastIndexingJobs'], (value) => GetGradientaiKnowledgeBaseLastIndexingJob.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : map['name'] as String,
-      projectId: map['projectId'] == null ? null : map['projectId'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>(),
+      isPublic: map['isPublic'] == null ? null : map['isPublic']! as bool,
+      lastIndexingJobs: map['lastIndexingJobs'] == null ? null : pulumi.Input.decodeList<GetGradientaiKnowledgeBaseLastIndexingJob>(map['lastIndexingJobs']!, (value) => GetGradientaiKnowledgeBaseLastIndexingJob.fromMap((value as Map).cast<String, dynamic>())),
+      name: map['name'] == null ? null : map['name']! as String,
+      projectId: map['projectId'] == null ? null : map['projectId']! as String,
+      region: map['region'] == null ? null : map['region']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as List).cast<String>(),
       updatedAt: map['updatedAt'] as String,
-      userId: map['userId'] == null ? null : map['userId'] as String,
-      uuid: map['uuid'] == null ? null : map['uuid'] as String,
+      userId: map['userId'] == null ? null : map['userId']! as String,
+      uuid: map['uuid'] == null ? null : map['uuid']! as String,
     );
   }
 }

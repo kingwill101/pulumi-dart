@@ -49,9 +49,9 @@ class PolicyFragmentArgs {
 
   factory PolicyFragmentArgs.fromMap(Map<String, dynamic> map) {
     return PolicyFragmentArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
       value: (map['value'] as String).input(),

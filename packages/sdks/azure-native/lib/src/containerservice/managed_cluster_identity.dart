@@ -33,9 +33,9 @@ class ManagedClusterIdentity {
 
   factory ManagedClusterIdentity.fromMap(Map<String, dynamic> map) {
     return ManagedClusterIdentity(
-      delegatedResources: map['delegatedResources'] == null ? null : (pulumi.Input.decodeMapValues<DelegatedResource>(map['delegatedResources'], (value) => DelegatedResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (ResourceIdentityType.fromValue(map['type'] as String)).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities'] as List).cast<String>()).input(),
+      delegatedResources: map['delegatedResources'] == null ? null : (pulumi.Input.decodeMapValues<DelegatedResource>(map['delegatedResources']!, (value) => DelegatedResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (ResourceIdentityType.fromValue(map['type']! as String)).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities']! as List).cast<String>()).input(),
     );
   }
 }

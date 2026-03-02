@@ -42,7 +42,7 @@ class WorkspaceUserConfigArgs {
       categoryName: (map['categoryName'] as String).input(),
       configKey: (map['configKey'] as String).input(),
       configValue: (map['configValue'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
     );
   }
 }

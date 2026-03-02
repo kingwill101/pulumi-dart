@@ -21,7 +21,7 @@ class DataQualityJobDefinitionJobResources {
 
   factory DataQualityJobDefinitionJobResources.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionJobResources(
-      clusterConfig: (DataQualityJobDefinitionJobResourcesClusterConfig.fromMap((map['clusterConfig'] as Map).cast<String, dynamic>())).input(),
+      clusterConfig: (DataQualityJobDefinitionJobResourcesClusterConfig.fromMap((map['clusterConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -74,15 +74,15 @@ class GetClusterResult {
     return GetClusterResult(
       azureApiVersion: map['azureApiVersion'] as String,
       clusterId: map['clusterId'] as int,
-      clusterSize: map['clusterSize'] == null ? null : map['clusterSize'] as int,
-      hosts: map['hosts'] == null ? null : (map['hosts'] as List).cast<String>(),
+      clusterSize: map['clusterSize'] == null ? null : map['clusterSize']! as int,
+      hosts: map['hosts'] == null ? null : (map['hosts']! as List).cast<String>(),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       sku: SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      vsanDatastoreName: map['vsanDatastoreName'] == null ? null : map['vsanDatastoreName'] as String,
+      vsanDatastoreName: map['vsanDatastoreName'] == null ? null : map['vsanDatastoreName']! as String,
     );
   }
 }

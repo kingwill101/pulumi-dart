@@ -21,7 +21,7 @@ class SourceVault {
 
   factory SourceVault.fromMap(Map<String, dynamic> map) {
     return SourceVault(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

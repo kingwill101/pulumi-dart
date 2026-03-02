@@ -34,9 +34,9 @@ class HierarchySettingArgs {
 
   factory HierarchySettingArgs.fromMap(Map<String, dynamic> map) {
     return HierarchySettingArgs(
-      defaultManagementGroup: map['defaultManagementGroup'] == null ? null : (map['defaultManagementGroup'] as String).input(),
+      defaultManagementGroup: map['defaultManagementGroup'] == null ? null : (map['defaultManagementGroup']! as String).input(),
       groupId: (map['groupId'] as String).input(),
-      requireAuthorizationForGroupCreation: map['requireAuthorizationForGroupCreation'] == null ? null : (map['requireAuthorizationForGroupCreation'] as bool).input(),
+      requireAuthorizationForGroupCreation: map['requireAuthorizationForGroupCreation'] == null ? null : (map['requireAuthorizationForGroupCreation']! as bool).input(),
     );
   }
 }

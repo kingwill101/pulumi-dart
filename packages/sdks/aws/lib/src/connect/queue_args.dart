@@ -70,16 +70,16 @@ class QueueArgs {
 
   factory QueueArgs.fromMap(Map<String, dynamic> map) {
     return QueueArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       hoursOfOperationId: (map['hoursOfOperationId'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      maxContacts: map['maxContacts'] == null ? null : (map['maxContacts'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      outboundCallerConfig: map['outboundCallerConfig'] == null ? null : (QueueOutboundCallerConfig.fromMap((map['outboundCallerConfig'] as Map).cast<String, dynamic>())).input(),
-      quickConnectIds: map['quickConnectIds'] == null ? null : ((map['quickConnectIds'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      maxContacts: map['maxContacts'] == null ? null : ((map['maxContacts'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      outboundCallerConfig: map['outboundCallerConfig'] == null ? null : ((QueueOutboundCallerConfig.fromMap((map['outboundCallerConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      quickConnectIds: map['quickConnectIds'] == null ? null : (((map['quickConnectIds'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

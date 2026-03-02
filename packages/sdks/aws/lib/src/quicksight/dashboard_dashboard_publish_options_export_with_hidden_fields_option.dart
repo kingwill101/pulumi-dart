@@ -20,7 +20,7 @@ class DashboardDashboardPublishOptionsExportWithHiddenFieldsOption {
 
   factory DashboardDashboardPublishOptionsExportWithHiddenFieldsOption.fromMap(Map<String, dynamic> map) {
     return DashboardDashboardPublishOptionsExportWithHiddenFieldsOption(
-      availabilityStatus: map['availabilityStatus'] == null ? null : (map['availabilityStatus'] as String).input(),
+      availabilityStatus: map['availabilityStatus'] == null ? null : ((map['availabilityStatus'] as String).input()).input(),
     );
   }
 }

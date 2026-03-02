@@ -42,7 +42,7 @@ class DatabaseInstancePropertiesResponse {
   factory DatabaseInstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseInstancePropertiesResponse(
       databaseFqdn: (map['databaseFqdn'] as String).input(),
-      databaseInstanceId: map['databaseInstanceId'] == null ? null : (map['databaseInstanceId'] as String).input(),
+      databaseInstanceId: map['databaseInstanceId'] == null ? null : (map['databaseInstanceId']! as String).input(),
       dwDatabaseId: (map['dwDatabaseId'] as String).input(),
       dwDatabaseName: (map['dwDatabaseName'] as String).input(),
       operationalDatabaseId: (map['operationalDatabaseId'] as String).input(),

@@ -32,9 +32,9 @@ class ListAppServicePlanServerFarmInstanceDetailsResult {
 
   factory ListAppServicePlanServerFarmInstanceDetailsResult.fromMap(Map<String, dynamic> map) {
     return ListAppServicePlanServerFarmInstanceDetailsResult(
-      instanceCount: map['instanceCount'] == null ? null : map['instanceCount'] as int,
-      instances: map['instances'] == null ? null : pulumi.Input.decodeList<ServerFarmInstanceResponse>(map['instances'], (value) => ServerFarmInstanceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      serverFarmName: map['serverFarmName'] == null ? null : map['serverFarmName'] as String,
+      instanceCount: map['instanceCount'] == null ? null : map['instanceCount']! as int,
+      instances: map['instances'] == null ? null : pulumi.Input.decodeList<ServerFarmInstanceResponse>(map['instances']!, (value) => ServerFarmInstanceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      serverFarmName: map['serverFarmName'] == null ? null : map['serverFarmName']! as String,
     );
   }
 }

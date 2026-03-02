@@ -39,10 +39,10 @@ class CustomerSubscriptionArgs {
 
   factory CustomerSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return CustomerSubscriptionArgs(
-      customerSubscriptionName: map['customerSubscriptionName'] == null ? null : (map['customerSubscriptionName'] as String).input(),
+      customerSubscriptionName: map['customerSubscriptionName'] == null ? null : (map['customerSubscriptionName']! as String).input(),
       registrationName: (map['registrationName'] as String).input(),
       resourceGroup: (map['resourceGroup'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

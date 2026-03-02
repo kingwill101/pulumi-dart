@@ -41,7 +41,7 @@ class CustomDomainAssociationArgs {
     return CustomDomainAssociationArgs(
       customDomainCertificateArn: (map['customDomainCertificateArn'] as String).input(),
       customDomainName: (map['customDomainName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       workgroupName: (map['workgroupName'] as String).input(),
     );
   }

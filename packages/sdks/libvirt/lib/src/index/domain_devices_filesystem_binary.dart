@@ -55,13 +55,13 @@ class DomainDevicesFilesystemBinary {
 
   factory DomainDevicesFilesystemBinary.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemBinary(
-      cache: map['cache'] == null ? null : (DomainDevicesFilesystemBinaryCache.fromMap((map['cache'] as Map).cast<String, dynamic>())).input(),
-      lock: map['lock'] == null ? null : (DomainDevicesFilesystemBinaryLock.fromMap((map['lock'] as Map).cast<String, dynamic>())).input(),
-      openFiles: map['openFiles'] == null ? null : (DomainDevicesFilesystemBinaryOpenFiles.fromMap((map['openFiles'] as Map).cast<String, dynamic>())).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      sandbox: map['sandbox'] == null ? null : (DomainDevicesFilesystemBinarySandbox.fromMap((map['sandbox'] as Map).cast<String, dynamic>())).input(),
-      threadPool: map['threadPool'] == null ? null : (DomainDevicesFilesystemBinaryThreadPool.fromMap((map['threadPool'] as Map).cast<String, dynamic>())).input(),
-      xattr: map['xattr'] == null ? null : (map['xattr'] as String).input(),
+      cache: map['cache'] == null ? null : (DomainDevicesFilesystemBinaryCache.fromMap((map['cache']! as Map).cast<String, dynamic>())).input(),
+      lock: map['lock'] == null ? null : (DomainDevicesFilesystemBinaryLock.fromMap((map['lock']! as Map).cast<String, dynamic>())).input(),
+      openFiles: map['openFiles'] == null ? null : (DomainDevicesFilesystemBinaryOpenFiles.fromMap((map['openFiles']! as Map).cast<String, dynamic>())).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      sandbox: map['sandbox'] == null ? null : (DomainDevicesFilesystemBinarySandbox.fromMap((map['sandbox']! as Map).cast<String, dynamic>())).input(),
+      threadPool: map['threadPool'] == null ? null : (DomainDevicesFilesystemBinaryThreadPool.fromMap((map['threadPool']! as Map).cast<String, dynamic>())).input(),
+      xattr: map['xattr'] == null ? null : (map['xattr']! as String).input(),
     );
   }
 }

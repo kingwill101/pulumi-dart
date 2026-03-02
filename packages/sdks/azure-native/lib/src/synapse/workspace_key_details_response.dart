@@ -26,8 +26,8 @@ class WorkspaceKeyDetailsResponse {
 
   factory WorkspaceKeyDetailsResponse.fromMap(Map<String, dynamic> map) {
     return WorkspaceKeyDetailsResponse(
-      keyVaultUrl: map['keyVaultUrl'] == null ? null : (map['keyVaultUrl'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      keyVaultUrl: map['keyVaultUrl'] == null ? null : (map['keyVaultUrl']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

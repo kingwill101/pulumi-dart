@@ -35,9 +35,9 @@ class GetAmiIdsArgs {
 
   factory GetAmiIdsArgs.fromMap(Map<String, dynamic> map) {
     return GetAmiIdsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetAmiIdsFilter>(map['filters'], (value) => GetAmiIdsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      names: map['names'] == null ? null : ((map['names'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetAmiIdsFilter>(map['filters']!, (value) => GetAmiIdsFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      names: map['names'] == null ? null : (((map['names'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

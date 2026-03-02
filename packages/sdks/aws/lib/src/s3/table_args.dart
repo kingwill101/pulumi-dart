@@ -78,15 +78,15 @@ class TableArgs {
 
   factory TableArgs.fromMap(Map<String, dynamic> map) {
     return TableArgs(
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (TableEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : ((TableEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       format: (map['format'] as String).input(),
-      maintenanceConfiguration: map['maintenanceConfiguration'] == null ? null : (TableMaintenanceConfiguration.fromMap((map['maintenanceConfiguration'] as Map).cast<String, dynamic>())).input(),
-      metadata: map['metadata'] == null ? null : (TableMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      maintenanceConfiguration: map['maintenanceConfiguration'] == null ? null : ((TableMaintenanceConfiguration.fromMap((map['maintenanceConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      metadata: map['metadata'] == null ? null : ((TableMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       namespace: (map['namespace'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       tableBucketArn: (map['tableBucketArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

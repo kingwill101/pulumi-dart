@@ -25,7 +25,7 @@ class WidgetConfigUiSettingsDataStoreUiConfigFacetField {
 
   factory WidgetConfigUiSettingsDataStoreUiConfigFacetField.fromMap(Map<String, dynamic> map) {
     return WidgetConfigUiSettingsDataStoreUiConfigFacetField(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       field: (map['field'] as String).input(),
     );
   }

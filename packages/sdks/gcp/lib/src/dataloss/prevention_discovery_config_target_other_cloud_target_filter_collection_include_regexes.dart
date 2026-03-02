@@ -22,7 +22,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
 
   factory PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexes.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexes(
-      patterns: map['patterns'] == null ? null : (pulumi.Input.decodeList<PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPattern>(map['patterns'], (value) => PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPattern.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      patterns: map['patterns'] == null ? null : (pulumi.Input.decodeList<PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPattern>(map['patterns']!, (value) => PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPattern.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

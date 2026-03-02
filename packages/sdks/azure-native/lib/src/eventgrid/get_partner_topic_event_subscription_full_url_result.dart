@@ -20,7 +20,7 @@ class GetPartnerTopicEventSubscriptionFullUrlResult {
 
   factory GetPartnerTopicEventSubscriptionFullUrlResult.fromMap(Map<String, dynamic> map) {
     return GetPartnerTopicEventSubscriptionFullUrlResult(
-      endpointUrl: map['endpointUrl'] == null ? null : map['endpointUrl'] as String,
+      endpointUrl: map['endpointUrl'] == null ? null : map['endpointUrl']! as String,
     );
   }
 }

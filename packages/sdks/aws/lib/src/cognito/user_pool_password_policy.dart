@@ -52,13 +52,13 @@ class UserPoolPasswordPolicy {
 
   factory UserPoolPasswordPolicy.fromMap(Map<String, dynamic> map) {
     return UserPoolPasswordPolicy(
-      minimumLength: map['minimumLength'] == null ? null : (map['minimumLength'] as int).input(),
-      passwordHistorySize: map['passwordHistorySize'] == null ? null : (map['passwordHistorySize'] as int).input(),
-      requireLowercase: map['requireLowercase'] == null ? null : (map['requireLowercase'] as bool).input(),
-      requireNumbers: map['requireNumbers'] == null ? null : (map['requireNumbers'] as bool).input(),
-      requireSymbols: map['requireSymbols'] == null ? null : (map['requireSymbols'] as bool).input(),
-      requireUppercase: map['requireUppercase'] == null ? null : (map['requireUppercase'] as bool).input(),
-      temporaryPasswordValidityDays: map['temporaryPasswordValidityDays'] == null ? null : (map['temporaryPasswordValidityDays'] as int).input(),
+      minimumLength: map['minimumLength'] == null ? null : ((map['minimumLength'] as int).input()).input(),
+      passwordHistorySize: map['passwordHistorySize'] == null ? null : ((map['passwordHistorySize'] as int).input()).input(),
+      requireLowercase: map['requireLowercase'] == null ? null : ((map['requireLowercase'] as bool).input()).input(),
+      requireNumbers: map['requireNumbers'] == null ? null : ((map['requireNumbers'] as bool).input()).input(),
+      requireSymbols: map['requireSymbols'] == null ? null : ((map['requireSymbols'] as bool).input()).input(),
+      requireUppercase: map['requireUppercase'] == null ? null : ((map['requireUppercase'] as bool).input()).input(),
+      temporaryPasswordValidityDays: map['temporaryPasswordValidityDays'] == null ? null : ((map['temporaryPasswordValidityDays'] as int).input()).input(),
     );
   }
 }

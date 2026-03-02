@@ -21,7 +21,7 @@ class LogTransformerTransformerConfigCopyValue {
 
   factory LogTransformerTransformerConfigCopyValue.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigCopyValue(
-      entries: (pulumi.Input.decodeList<LogTransformerTransformerConfigCopyValueEntry>(map['entries'], (value) => LogTransformerTransformerConfigCopyValueEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entries: (pulumi.Input.decodeList<LogTransformerTransformerConfigCopyValueEntry>(map['entries']!, (value) => LogTransformerTransformerConfigCopyValueEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

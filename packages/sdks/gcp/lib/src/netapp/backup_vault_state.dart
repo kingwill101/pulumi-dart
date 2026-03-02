@@ -99,21 +99,21 @@ class BackupVaultState {
 
   factory BackupVaultState.fromMap(Map<String, dynamic> map) {
     return BackupVaultState(
-      backupRegion: map['backupRegion'] == null ? null : (map['backupRegion'] as String).input(),
-      backupRetentionPolicy: map['backupRetentionPolicy'] == null ? null : (BackupVaultBackupRetentionPolicy.fromMap((map['backupRetentionPolicy'] as Map).cast<String, dynamic>())).input(),
-      backupVaultType: map['backupVaultType'] == null ? null : (map['backupVaultType'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationBackupVault: map['destinationBackupVault'] == null ? null : (map['destinationBackupVault'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      sourceBackupVault: map['sourceBackupVault'] == null ? null : (map['sourceBackupVault'] as String).input(),
-      sourceRegion: map['sourceRegion'] == null ? null : (map['sourceRegion'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      backupRegion: map['backupRegion'] == null ? null : (map['backupRegion']! as String).input(),
+      backupRetentionPolicy: map['backupRetentionPolicy'] == null ? null : (BackupVaultBackupRetentionPolicy.fromMap((map['backupRetentionPolicy']! as Map).cast<String, dynamic>())).input(),
+      backupVaultType: map['backupVaultType'] == null ? null : (map['backupVaultType']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationBackupVault: map['destinationBackupVault'] == null ? null : (map['destinationBackupVault']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      sourceBackupVault: map['sourceBackupVault'] == null ? null : (map['sourceBackupVault']! as String).input(),
+      sourceRegion: map['sourceRegion'] == null ? null : (map['sourceRegion']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

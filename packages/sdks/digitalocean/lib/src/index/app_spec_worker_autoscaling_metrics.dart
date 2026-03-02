@@ -21,7 +21,7 @@ class AppSpecWorkerAutoscalingMetrics {
 
   factory AppSpecWorkerAutoscalingMetrics.fromMap(Map<String, dynamic> map) {
     return AppSpecWorkerAutoscalingMetrics(
-      cpu: map['cpu'] == null ? null : (AppSpecWorkerAutoscalingMetricsCpu.fromMap((map['cpu'] as Map).cast<String, dynamic>())).input(),
+      cpu: map['cpu'] == null ? null : (AppSpecWorkerAutoscalingMetricsCpu.fromMap((map['cpu']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

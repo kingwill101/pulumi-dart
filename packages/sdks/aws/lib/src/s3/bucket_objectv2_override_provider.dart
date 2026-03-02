@@ -21,7 +21,7 @@ class BucketObjectv2OverrideProvider {
 
   factory BucketObjectv2OverrideProvider.fromMap(Map<String, dynamic> map) {
     return BucketObjectv2OverrideProvider(
-      defaultTags: map['defaultTags'] == null ? null : (BucketObjectv2OverrideProviderDefaultTags.fromMap((map['defaultTags'] as Map).cast<String, dynamic>())).input(),
+      defaultTags: map['defaultTags'] == null ? null : ((BucketObjectv2OverrideProviderDefaultTags.fromMap((map['defaultTags']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

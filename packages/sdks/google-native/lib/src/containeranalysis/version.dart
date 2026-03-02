@@ -47,12 +47,12 @@ class Version {
 
   factory Version.fromMap(Map<String, dynamic> map) {
     return Version(
-      epoch: map['epoch'] == null ? null : (map['epoch'] as int).input(),
-      fullName: map['fullName'] == null ? null : (map['fullName'] as String).input(),
-      inclusive: map['inclusive'] == null ? null : (map['inclusive'] as bool).input(),
+      epoch: map['epoch'] == null ? null : (map['epoch']! as int).input(),
+      fullName: map['fullName'] == null ? null : (map['fullName']! as String).input(),
+      inclusive: map['inclusive'] == null ? null : (map['inclusive']! as bool).input(),
       kind: (VersionKind.fromValue(map['kind'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as String).input(),
     );
   }
 }

@@ -75,18 +75,18 @@ class GetMountTargetsResult {
 
   factory GetMountTargetsResult.fromMap(Map<String, dynamic> map) {
     return GetMountTargetsResult(
-      accessGroupName: map['accessGroupName'] == null ? null : map['accessGroupName'] as String,
+      accessGroupName: map['accessGroupName'] == null ? null : map['accessGroupName']! as String,
       fileSystemId: map['fileSystemId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      mountTargetDomain: map['mountTargetDomain'] == null ? null : map['mountTargetDomain'] as String,
-      networkType: map['networkType'] == null ? null : map['networkType'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      mountTargetDomain: map['mountTargetDomain'] == null ? null : map['mountTargetDomain']! as String,
+      networkType: map['networkType'] == null ? null : map['networkType']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
       targets: pulumi.Input.decodeList<GetMountTargetsTarget>(map['targets'], (value) => GetMountTargetsTarget.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : map['type'] as String,
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
-      vswitchId: map['vswitchId'] == null ? null : map['vswitchId'] as String,
+      type: map['type'] == null ? null : map['type']! as String,
+      vpcId: map['vpcId'] == null ? null : map['vpcId']! as String,
+      vswitchId: map['vswitchId'] == null ? null : map['vswitchId']! as String,
     );
   }
 }

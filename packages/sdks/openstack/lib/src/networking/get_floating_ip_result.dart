@@ -73,19 +73,19 @@ class GetFloatingIpResult {
 
   factory GetFloatingIpResult.fromMap(Map<String, dynamic> map) {
     return GetFloatingIpResult(
-      address: map['address'] == null ? null : map['address'] as String,
+      address: map['address'] == null ? null : map['address']! as String,
       allTags: (map['allTags'] as List).cast<String>(),
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       dnsDomain: map['dnsDomain'] as String,
       dnsName: map['dnsName'] as String,
-      fixedIp: map['fixedIp'] == null ? null : map['fixedIp'] as String,
+      fixedIp: map['fixedIp'] == null ? null : map['fixedIp']! as String,
       id: map['id'] as String,
-      pool: map['pool'] == null ? null : map['pool'] as String,
-      portId: map['portId'] == null ? null : map['portId'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>(),
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      pool: map['pool'] == null ? null : map['pool']! as String,
+      portId: map['portId'] == null ? null : map['portId']! as String,
+      region: map['region'] == null ? null : map['region']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as List).cast<String>(),
+      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
     );
   }
 }

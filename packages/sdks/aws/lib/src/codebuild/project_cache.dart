@@ -38,10 +38,10 @@ class ProjectCache {
 
   factory ProjectCache.fromMap(Map<String, dynamic> map) {
     return ProjectCache(
-      cacheNamespace: map['cacheNamespace'] == null ? null : (map['cacheNamespace'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      modes: map['modes'] == null ? null : ((map['modes'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      cacheNamespace: map['cacheNamespace'] == null ? null : ((map['cacheNamespace'] as String).input()).input(),
+      location: map['location'] == null ? null : ((map['location'] as String).input()).input(),
+      modes: map['modes'] == null ? null : (((map['modes'] as List).cast<String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

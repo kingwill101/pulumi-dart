@@ -20,7 +20,7 @@ class JobConfigMuxStreamSegmentSettings {
 
   factory JobConfigMuxStreamSegmentSettings.fromMap(Map<String, dynamic> map) {
     return JobConfigMuxStreamSegmentSettings(
-      segmentDuration: map['segmentDuration'] == null ? null : (map['segmentDuration'] as String).input(),
+      segmentDuration: map['segmentDuration'] == null ? null : (map['segmentDuration']! as String).input(),
     );
   }
 }

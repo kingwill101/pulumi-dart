@@ -78,7 +78,7 @@ class RestorePointSourceMetadataResponse {
       location: (map['location'] as String).input(),
       osProfile: (OSProfileResponse.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
       securityProfile: (SecurityProfileResponse.fromMap((map['securityProfile'] as Map).cast<String, dynamic>())).input(),
-      storageProfile: map['storageProfile'] == null ? null : (RestorePointSourceVMStorageProfileResponse.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
+      storageProfile: map['storageProfile'] == null ? null : (RestorePointSourceVMStorageProfileResponse.fromMap((map['storageProfile']! as Map).cast<String, dynamic>())).input(),
       userData: (map['userData'] as String).input(),
       vmId: (map['vmId'] as String).input(),
     );

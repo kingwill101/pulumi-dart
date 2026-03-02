@@ -26,7 +26,7 @@ class SessionProbeResponseTcpSocket {
 
   factory SessionProbeResponseTcpSocket.fromMap(Map<String, dynamic> map) {
     return SessionProbeResponseTcpSocket(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
       port: (map['port'] as int).input(),
     );
   }

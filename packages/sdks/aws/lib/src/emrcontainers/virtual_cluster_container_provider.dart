@@ -32,7 +32,7 @@ class VirtualClusterContainerProvider {
   factory VirtualClusterContainerProvider.fromMap(Map<String, dynamic> map) {
     return VirtualClusterContainerProvider(
       id: (map['id'] as String).input(),
-      info: (VirtualClusterContainerProviderInfo.fromMap((map['info'] as Map).cast<String, dynamic>())).input(),
+      info: (VirtualClusterContainerProviderInfo.fromMap((map['info']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -33,7 +33,7 @@ class GetProcessArgs {
     return GetProcessArgs(
       location: (map['location'] as String).input(),
       processId: (map['processId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

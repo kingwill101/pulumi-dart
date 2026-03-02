@@ -57,11 +57,11 @@ class GalleryScriptVersionArgs {
     return GalleryScriptVersionArgs(
       galleryName: (map['galleryName'] as String).input(),
       galleryScriptName: (map['galleryScriptName'] as String).input(),
-      galleryScriptVersionName: map['galleryScriptVersionName'] == null ? null : (map['galleryScriptVersionName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (GalleryScriptVersionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      galleryScriptVersionName: map['galleryScriptVersionName'] == null ? null : (map['galleryScriptVersionName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (GalleryScriptVersionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

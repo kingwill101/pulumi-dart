@@ -58,15 +58,15 @@ class GetMetricRuleTemplatesResult {
 
   factory GetMetricRuleTemplatesResult.fromMap(Map<String, dynamic> map) {
     return GetMetricRuleTemplatesResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keyword: map['keyword'] == null ? null : map['keyword'] as String,
-      metricRuleTemplateName: map['metricRuleTemplateName'] == null ? null : map['metricRuleTemplateName'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      keyword: map['keyword'] == null ? null : map['keyword']! as String,
+      metricRuleTemplateName: map['metricRuleTemplateName'] == null ? null : map['metricRuleTemplateName']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      templateId: map['templateId'] == null ? null : map['templateId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      templateId: map['templateId'] == null ? null : map['templateId']! as String,
       templates: pulumi.Input.decodeList<GetMetricRuleTemplatesTemplate>(map['templates'], (value) => GetMetricRuleTemplatesTemplate.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

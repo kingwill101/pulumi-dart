@@ -28,7 +28,7 @@ class KeyForDiskEncryptionSetResponse {
   factory KeyForDiskEncryptionSetResponse.fromMap(Map<String, dynamic> map) {
     return KeyForDiskEncryptionSetResponse(
       keyUrl: (map['keyUrl'] as String).input(),
-      sourceVault: map['sourceVault'] == null ? null : (SourceVaultResponse.fromMap((map['sourceVault'] as Map).cast<String, dynamic>())).input(),
+      sourceVault: map['sourceVault'] == null ? null : (SourceVaultResponse.fromMap((map['sourceVault']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

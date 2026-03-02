@@ -23,7 +23,7 @@ class AppVersionSnapshotAppDataStoreSetting {
 
   factory AppVersionSnapshotAppDataStoreSetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppDataStoreSetting(
-      engines: map['engines'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAppDataStoreSettingEngine>(map['engines'], (value) => AppVersionSnapshotAppDataStoreSettingEngine.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      engines: map['engines'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAppDataStoreSettingEngine>(map['engines']!, (value) => AppVersionSnapshotAppDataStoreSettingEngine.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

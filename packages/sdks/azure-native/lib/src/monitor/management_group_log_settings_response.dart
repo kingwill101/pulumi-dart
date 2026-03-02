@@ -31,8 +31,8 @@ class ManagementGroupLogSettingsResponse {
 
   factory ManagementGroupLogSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ManagementGroupLogSettingsResponse(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      categoryGroup: map['categoryGroup'] == null ? null : (map['categoryGroup'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      categoryGroup: map['categoryGroup'] == null ? null : (map['categoryGroup']! as String).input(),
       enabled: (map['enabled'] as bool).input(),
     );
   }

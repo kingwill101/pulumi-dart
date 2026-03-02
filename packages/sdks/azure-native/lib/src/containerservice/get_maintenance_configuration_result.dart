@@ -62,11 +62,11 @@ class GetMaintenanceConfigurationResult {
     return GetMaintenanceConfigurationResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      maintenanceWindow: map['maintenanceWindow'] == null ? null : MaintenanceWindowResponse.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>()),
+      maintenanceWindow: map['maintenanceWindow'] == null ? null : MaintenanceWindowResponse.fromMap((map['maintenanceWindow']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      notAllowedTime: map['notAllowedTime'] == null ? null : pulumi.Input.decodeList<TimeSpanResponse>(map['notAllowedTime'], (value) => TimeSpanResponse.fromMap((value as Map).cast<String, dynamic>())),
+      notAllowedTime: map['notAllowedTime'] == null ? null : pulumi.Input.decodeList<TimeSpanResponse>(map['notAllowedTime']!, (value) => TimeSpanResponse.fromMap((value as Map).cast<String, dynamic>())),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      timeInWeek: map['timeInWeek'] == null ? null : pulumi.Input.decodeList<TimeInWeekResponse>(map['timeInWeek'], (value) => TimeInWeekResponse.fromMap((value as Map).cast<String, dynamic>())),
+      timeInWeek: map['timeInWeek'] == null ? null : pulumi.Input.decodeList<TimeInWeekResponse>(map['timeInWeek']!, (value) => TimeInWeekResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }

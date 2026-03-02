@@ -36,7 +36,7 @@ class ResourceClaimConsumerReference {
 
   factory ResourceClaimConsumerReference.fromMap(Map<String, dynamic> map) {
     return ResourceClaimConsumerReference(
-      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup'] as String).input(),
+      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup']! as String).input(),
       name: (map['name'] as String).input(),
       resource: (map['resource'] as String).input(),
       uid: (map['uid'] as String).input(),

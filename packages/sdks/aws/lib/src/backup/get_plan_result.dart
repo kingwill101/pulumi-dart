@@ -66,8 +66,8 @@ class GetPlanResult {
       name: map['name'] as String,
       planId: map['planId'] as String,
       region: map['region'] as String,
-      rules: pulumi.Input.decodeList<GetPlanRule>(map['rules'], (value) => GetPlanRule.fromMap((value as Map).cast<String, dynamic>())),
-      scanSettings: pulumi.Input.decodeList<GetPlanScanSetting>(map['scanSettings'], (value) => GetPlanScanSetting.fromMap((value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<GetPlanRule>(map['rules']!, (value) => GetPlanRule.fromMap((value as Map).cast<String, dynamic>())),
+      scanSettings: pulumi.Input.decodeList<GetPlanScanSetting>(map['scanSettings']!, (value) => GetPlanScanSetting.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as Map).cast<String, String>(),
       version: map['version'] as String,
     );

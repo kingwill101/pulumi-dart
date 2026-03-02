@@ -26,8 +26,8 @@ class SourceConfiguration {
 
   factory SourceConfiguration.fromMap(Map<String, dynamic> map) {
     return SourceConfiguration(
-      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
-      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName']! as String).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName']! as String).input(),
     );
   }
 }

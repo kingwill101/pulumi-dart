@@ -26,8 +26,8 @@ class ApplicationGatewayGlobalConfigurationResponse {
 
   factory ApplicationGatewayGlobalConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayGlobalConfigurationResponse(
-      enableRequestBuffering: map['enableRequestBuffering'] == null ? null : (map['enableRequestBuffering'] as bool).input(),
-      enableResponseBuffering: map['enableResponseBuffering'] == null ? null : (map['enableResponseBuffering'] as bool).input(),
+      enableRequestBuffering: map['enableRequestBuffering'] == null ? null : (map['enableRequestBuffering']! as bool).input(),
+      enableResponseBuffering: map['enableResponseBuffering'] == null ? null : (map['enableResponseBuffering']! as bool).input(),
     );
   }
 }

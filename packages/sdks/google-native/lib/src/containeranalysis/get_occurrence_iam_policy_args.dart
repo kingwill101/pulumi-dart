@@ -28,7 +28,7 @@ class GetOccurrenceIamPolicyArgs {
   factory GetOccurrenceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetOccurrenceIamPolicyArgs(
       occurrenceId: (map['occurrenceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class RecordGeolocationRoutingPolicy {
 
   factory RecordGeolocationRoutingPolicy.fromMap(Map<String, dynamic> map) {
     return RecordGeolocationRoutingPolicy(
-      continent: map['continent'] == null ? null : (map['continent'] as String).input(),
-      country: map['country'] == null ? null : (map['country'] as String).input(),
-      subdivision: map['subdivision'] == null ? null : (map['subdivision'] as String).input(),
+      continent: map['continent'] == null ? null : ((map['continent'] as String).input()).input(),
+      country: map['country'] == null ? null : ((map['country'] as String).input()).input(),
+      subdivision: map['subdivision'] == null ? null : ((map['subdivision'] as String).input()).input(),
     );
   }
 }

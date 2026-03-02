@@ -34,8 +34,8 @@ class AuthenticationResponse {
   factory AuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return AuthenticationResponse(
       method: (map['method'] as String).input(),
-      usernamePasswordCredentials: map['usernamePasswordCredentials'] == null ? null : (UsernamePasswordCredentialsResponse.fromMap((map['usernamePasswordCredentials'] as Map).cast<String, dynamic>())).input(),
-      x509Credentials: map['x509Credentials'] == null ? null : (X509CredentialsResponse.fromMap((map['x509Credentials'] as Map).cast<String, dynamic>())).input(),
+      usernamePasswordCredentials: map['usernamePasswordCredentials'] == null ? null : (UsernamePasswordCredentialsResponse.fromMap((map['usernamePasswordCredentials']! as Map).cast<String, dynamic>())).input(),
+      x509Credentials: map['x509Credentials'] == null ? null : (X509CredentialsResponse.fromMap((map['x509Credentials']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

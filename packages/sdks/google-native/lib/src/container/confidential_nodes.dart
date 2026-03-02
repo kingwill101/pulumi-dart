@@ -21,7 +21,7 @@ class ConfidentialNodes {
 
   factory ConfidentialNodes.fromMap(Map<String, dynamic> map) {
     return ConfidentialNodes(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

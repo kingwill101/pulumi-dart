@@ -38,11 +38,11 @@ class ProviderAssumeRole {
 
   factory ProviderAssumeRole.fromMap(Map<String, dynamic> map) {
     return ProviderAssumeRole(
-      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      externalId: map['externalId'] == null ? null : (map['externalId']! as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
       roleArn: (map['roleArn'] as String).input(),
-      sessionExpiration: map['sessionExpiration'] == null ? null : (map['sessionExpiration'] as int).input(),
-      sessionName: map['sessionName'] == null ? null : (map['sessionName'] as String).input(),
+      sessionExpiration: map['sessionExpiration'] == null ? null : (map['sessionExpiration']! as int).input(),
+      sessionName: map['sessionName'] == null ? null : (map['sessionName']! as String).input(),
     );
   }
 }

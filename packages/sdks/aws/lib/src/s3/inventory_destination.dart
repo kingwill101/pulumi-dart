@@ -21,7 +21,7 @@ class InventoryDestination {
 
   factory InventoryDestination.fromMap(Map<String, dynamic> map) {
     return InventoryDestination(
-      bucket: (InventoryDestinationBucket.fromMap((map['bucket'] as Map).cast<String, dynamic>())).input(),
+      bucket: (InventoryDestinationBucket.fromMap((map['bucket']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

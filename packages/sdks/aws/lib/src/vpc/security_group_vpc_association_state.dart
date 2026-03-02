@@ -41,11 +41,11 @@ class SecurityGroupVpcAssociationState {
 
   factory SecurityGroupVpcAssociationState.fromMap(Map<String, dynamic> map) {
     return SecurityGroupVpcAssociationState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (SecurityGroupVpcAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : ((map['securityGroupId'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((SecurityGroupVpcAssociationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

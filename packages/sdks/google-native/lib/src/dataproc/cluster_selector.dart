@@ -27,7 +27,7 @@ class ClusterSelector {
   factory ClusterSelector.fromMap(Map<String, dynamic> map) {
     return ClusterSelector(
       clusterLabels: ((map['clusterLabels'] as Map).cast<String, String>()).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

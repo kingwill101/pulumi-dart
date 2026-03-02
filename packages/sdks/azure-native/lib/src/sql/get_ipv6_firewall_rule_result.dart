@@ -46,10 +46,10 @@ class GetIPv6FirewallRuleResult {
   factory GetIPv6FirewallRuleResult.fromMap(Map<String, dynamic> map) {
     return GetIPv6FirewallRuleResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      endIPv6Address: map['endIPv6Address'] == null ? null : map['endIPv6Address'] as String,
+      endIPv6Address: map['endIPv6Address'] == null ? null : map['endIPv6Address']! as String,
       id: map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      startIPv6Address: map['startIPv6Address'] == null ? null : map['startIPv6Address'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
+      startIPv6Address: map['startIPv6Address'] == null ? null : map['startIPv6Address']! as String,
       type: map['type'] as String,
     );
   }

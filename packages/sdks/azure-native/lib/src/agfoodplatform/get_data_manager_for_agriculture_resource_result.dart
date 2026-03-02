@@ -87,16 +87,16 @@ class GetDataManagerForAgricultureResourceResult {
     return GetDataManagerForAgricultureResourceResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : IdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : IdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
       instanceUri: map['instanceUri'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess'] as String,
-      sensorIntegration: map['sensorIntegration'] == null ? null : SensorIntegrationResponse.fromMap((map['sensorIntegration'] as Map).cast<String, dynamic>()),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess']! as String,
+      sensorIntegration: map['sensorIntegration'] == null ? null : SensorIntegrationResponse.fromMap((map['sensorIntegration']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

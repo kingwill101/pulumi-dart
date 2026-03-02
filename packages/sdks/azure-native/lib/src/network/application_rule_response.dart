@@ -84,19 +84,19 @@ class ApplicationRuleResponse {
 
   factory ApplicationRuleResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationRuleResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationAddresses: map['destinationAddresses'] == null ? null : ((map['destinationAddresses'] as List).cast<String>()).input(),
-      fqdnTags: map['fqdnTags'] == null ? null : ((map['fqdnTags'] as List).cast<String>()).input(),
-      httpHeadersToInsert: map['httpHeadersToInsert'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyHttpHeaderToInsertResponse>(map['httpHeadersToInsert'], (value) => FirewallPolicyHttpHeaderToInsertResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protocols: map['protocols'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyRuleApplicationProtocolResponse>(map['protocols'], (value) => FirewallPolicyRuleApplicationProtocolResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationAddresses: map['destinationAddresses'] == null ? null : ((map['destinationAddresses']! as List).cast<String>()).input(),
+      fqdnTags: map['fqdnTags'] == null ? null : ((map['fqdnTags']! as List).cast<String>()).input(),
+      httpHeadersToInsert: map['httpHeadersToInsert'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyHttpHeaderToInsertResponse>(map['httpHeadersToInsert']!, (value) => FirewallPolicyHttpHeaderToInsertResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protocols: map['protocols'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyRuleApplicationProtocolResponse>(map['protocols']!, (value) => FirewallPolicyRuleApplicationProtocolResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       ruleType: (map['ruleType'] as String).input(),
-      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses'] as List).cast<String>()).input(),
-      sourceIpGroups: map['sourceIpGroups'] == null ? null : ((map['sourceIpGroups'] as List).cast<String>()).input(),
-      targetFqdns: map['targetFqdns'] == null ? null : ((map['targetFqdns'] as List).cast<String>()).input(),
-      targetUrls: map['targetUrls'] == null ? null : ((map['targetUrls'] as List).cast<String>()).input(),
-      terminateTLS: map['terminateTLS'] == null ? null : (map['terminateTLS'] as bool).input(),
-      webCategories: map['webCategories'] == null ? null : ((map['webCategories'] as List).cast<String>()).input(),
+      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses']! as List).cast<String>()).input(),
+      sourceIpGroups: map['sourceIpGroups'] == null ? null : ((map['sourceIpGroups']! as List).cast<String>()).input(),
+      targetFqdns: map['targetFqdns'] == null ? null : ((map['targetFqdns']! as List).cast<String>()).input(),
+      targetUrls: map['targetUrls'] == null ? null : ((map['targetUrls']! as List).cast<String>()).input(),
+      terminateTLS: map['terminateTLS'] == null ? null : (map['terminateTLS']! as bool).input(),
+      webCategories: map['webCategories'] == null ? null : ((map['webCategories']! as List).cast<String>()).input(),
     );
   }
 }

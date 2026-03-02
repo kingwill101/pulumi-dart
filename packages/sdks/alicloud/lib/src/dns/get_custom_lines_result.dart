@@ -55,14 +55,14 @@ class GetCustomLinesResult {
   factory GetCustomLinesResult.fromMap(Map<String, dynamic> map) {
     return GetCustomLinesResult(
       domainName: map['domainName'] as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      lang: map['lang'] == null ? null : map['lang'] as String,
+      lang: map['lang'] == null ? null : map['lang']! as String,
       lines: pulumi.Input.decodeList<GetCustomLinesLine>(map['lines'], (value) => GetCustomLinesLine.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

@@ -20,7 +20,7 @@ class ServiceTaskSpecContainerSpecMountBindOptions {
 
   factory ServiceTaskSpecContainerSpecMountBindOptions.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecContainerSpecMountBindOptions(
-      propagation: map['propagation'] == null ? null : (map['propagation'] as String).input(),
+      propagation: map['propagation'] == null ? null : (map['propagation']! as String).input(),
     );
   }
 }

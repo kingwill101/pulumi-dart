@@ -55,12 +55,12 @@ class AzureActiveDirectoryRegistrationResponse {
 
   factory AzureActiveDirectoryRegistrationResponse.fromMap(Map<String, dynamic> map) {
     return AzureActiveDirectoryRegistrationResponse(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecretCertificateIssuer: map['clientSecretCertificateIssuer'] == null ? null : (map['clientSecretCertificateIssuer'] as String).input(),
-      clientSecretCertificateSubjectAlternativeName: map['clientSecretCertificateSubjectAlternativeName'] == null ? null : (map['clientSecretCertificateSubjectAlternativeName'] as String).input(),
-      clientSecretCertificateThumbprint: map['clientSecretCertificateThumbprint'] == null ? null : (map['clientSecretCertificateThumbprint'] as String).input(),
-      clientSecretSettingName: map['clientSecretSettingName'] == null ? null : (map['clientSecretSettingName'] as String).input(),
-      openIdIssuer: map['openIdIssuer'] == null ? null : (map['openIdIssuer'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecretCertificateIssuer: map['clientSecretCertificateIssuer'] == null ? null : (map['clientSecretCertificateIssuer']! as String).input(),
+      clientSecretCertificateSubjectAlternativeName: map['clientSecretCertificateSubjectAlternativeName'] == null ? null : (map['clientSecretCertificateSubjectAlternativeName']! as String).input(),
+      clientSecretCertificateThumbprint: map['clientSecretCertificateThumbprint'] == null ? null : (map['clientSecretCertificateThumbprint']! as String).input(),
+      clientSecretSettingName: map['clientSecretSettingName'] == null ? null : (map['clientSecretSettingName']! as String).input(),
+      openIdIssuer: map['openIdIssuer'] == null ? null : (map['openIdIssuer']! as String).input(),
     );
   }
 }

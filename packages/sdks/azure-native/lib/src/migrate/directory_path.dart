@@ -26,8 +26,8 @@ class DirectoryPath {
 
   factory DirectoryPath.fromMap(Map<String, dynamic> map) {
     return DirectoryPath(
-      physical: map['physical'] == null ? null : (map['physical'] as String).input(),
-      virtual: map['virtual'] == null ? null : (map['virtual'] as String).input(),
+      physical: map['physical'] == null ? null : (map['physical']! as String).input(),
+      virtual: map['virtual'] == null ? null : (map['virtual']! as String).input(),
     );
   }
 }

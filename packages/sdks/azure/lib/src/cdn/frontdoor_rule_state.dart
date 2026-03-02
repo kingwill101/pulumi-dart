@@ -55,13 +55,13 @@ class FrontdoorRuleState {
 
   factory FrontdoorRuleState.fromMap(Map<String, dynamic> map) {
     return FrontdoorRuleState(
-      actions: map['actions'] == null ? null : (FrontdoorRuleActions.fromMap((map['actions'] as Map).cast<String, dynamic>())).input(),
-      behaviorOnMatch: map['behaviorOnMatch'] == null ? null : (map['behaviorOnMatch'] as String).input(),
-      cdnFrontdoorRuleSetId: map['cdnFrontdoorRuleSetId'] == null ? null : (map['cdnFrontdoorRuleSetId'] as String).input(),
-      cdnFrontdoorRuleSetName: map['cdnFrontdoorRuleSetName'] == null ? null : (map['cdnFrontdoorRuleSetName'] as String).input(),
-      conditions: map['conditions'] == null ? null : (FrontdoorRuleConditions.fromMap((map['conditions'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      order: map['order'] == null ? null : (map['order'] as int).input(),
+      actions: map['actions'] == null ? null : (FrontdoorRuleActions.fromMap((map['actions']! as Map).cast<String, dynamic>())).input(),
+      behaviorOnMatch: map['behaviorOnMatch'] == null ? null : (map['behaviorOnMatch']! as String).input(),
+      cdnFrontdoorRuleSetId: map['cdnFrontdoorRuleSetId'] == null ? null : (map['cdnFrontdoorRuleSetId']! as String).input(),
+      cdnFrontdoorRuleSetName: map['cdnFrontdoorRuleSetName'] == null ? null : (map['cdnFrontdoorRuleSetName']! as String).input(),
+      conditions: map['conditions'] == null ? null : (FrontdoorRuleConditions.fromMap((map['conditions']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      order: map['order'] == null ? null : (map['order']! as int).input(),
     );
   }
 }

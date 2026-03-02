@@ -26,8 +26,8 @@ class LoggingDestination {
 
   factory LoggingDestination.fromMap(Map<String, dynamic> map) {
     return LoggingDestination(
-      logs: map['logs'] == null ? null : ((map['logs'] as List).cast<String>()).input(),
-      monitoredResource: map['monitoredResource'] == null ? null : (map['monitoredResource'] as String).input(),
+      logs: map['logs'] == null ? null : ((map['logs']! as List).cast<String>()).input(),
+      monitoredResource: map['monitoredResource'] == null ? null : (map['monitoredResource']! as String).input(),
     );
   }
 }

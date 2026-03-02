@@ -26,7 +26,7 @@ class CatalogTableOpenTableFormatInputIcebergInput {
   factory CatalogTableOpenTableFormatInputIcebergInput.fromMap(Map<String, dynamic> map) {
     return CatalogTableOpenTableFormatInputIcebergInput(
       metadataOperation: (map['metadataOperation'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

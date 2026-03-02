@@ -43,11 +43,11 @@ class BatchPipelineComponentDeploymentConfiguration {
 
   factory BatchPipelineComponentDeploymentConfiguration.fromMap(Map<String, dynamic> map) {
     return BatchPipelineComponentDeploymentConfiguration(
-      componentId: map['componentId'] == null ? null : (IdAssetReference.fromMap((map['componentId'] as Map).cast<String, dynamic>())).input(),
+      componentId: map['componentId'] == null ? null : (IdAssetReference.fromMap((map['componentId']! as Map).cast<String, dynamic>())).input(),
       deploymentConfigurationType: (map['deploymentConfigurationType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      settings: map['settings'] == null ? null : ((map['settings'] as Map).cast<String, String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      settings: map['settings'] == null ? null : ((map['settings']! as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

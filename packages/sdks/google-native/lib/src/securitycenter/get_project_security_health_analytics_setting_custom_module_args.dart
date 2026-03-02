@@ -28,7 +28,7 @@ class GetProjectSecurityHealthAnalyticsSettingCustomModuleArgs {
   factory GetProjectSecurityHealthAnalyticsSettingCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectSecurityHealthAnalyticsSettingCustomModuleArgs(
       customModuleId: (map['customModuleId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

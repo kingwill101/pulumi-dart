@@ -26,8 +26,8 @@ class EnvironmentServerResponse {
 
   factory EnvironmentServerResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentServerResponse(
-      managementPortalUri: map['managementPortalUri'] == null ? null : ((map['managementPortalUri'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      managementPortalUri: map['managementPortalUri'] == null ? null : ((map['managementPortalUri']! as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

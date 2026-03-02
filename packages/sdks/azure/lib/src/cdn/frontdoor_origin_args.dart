@@ -83,15 +83,15 @@ class FrontdoorOriginArgs {
     return FrontdoorOriginArgs(
       cdnFrontdoorOriginGroupId: (map['cdnFrontdoorOriginGroupId'] as String).input(),
       certificateNameCheckEnabled: (map['certificateNameCheckEnabled'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       hostName: (map['hostName'] as String).input(),
-      httpPort: map['httpPort'] == null ? null : (map['httpPort'] as int).input(),
-      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      originHostHeader: map['originHostHeader'] == null ? null : (map['originHostHeader'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      privateLink: map['privateLink'] == null ? null : (FrontdoorOriginPrivateLink.fromMap((map['privateLink'] as Map).cast<String, dynamic>())).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      httpPort: map['httpPort'] == null ? null : (map['httpPort']! as int).input(),
+      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      originHostHeader: map['originHostHeader'] == null ? null : (map['originHostHeader']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      privateLink: map['privateLink'] == null ? null : (FrontdoorOriginPrivateLink.fromMap((map['privateLink']! as Map).cast<String, dynamic>())).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

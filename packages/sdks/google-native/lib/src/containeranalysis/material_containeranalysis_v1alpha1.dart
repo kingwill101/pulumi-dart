@@ -26,8 +26,8 @@ class MaterialContaineranalysisV1alpha1 {
 
   factory MaterialContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return MaterialContaineranalysisV1alpha1(
-      digest: map['digest'] == null ? null : ((map['digest'] as Map).cast<String, String>()).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      digest: map['digest'] == null ? null : ((map['digest']! as Map).cast<String, String>()).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

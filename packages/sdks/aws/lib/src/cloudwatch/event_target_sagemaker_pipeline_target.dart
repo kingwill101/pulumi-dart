@@ -21,7 +21,7 @@ class EventTargetSagemakerPipelineTarget {
 
   factory EventTargetSagemakerPipelineTarget.fromMap(Map<String, dynamic> map) {
     return EventTargetSagemakerPipelineTarget(
-      pipelineParameterLists: map['pipelineParameterLists'] == null ? null : (pulumi.Input.decodeList<EventTargetSagemakerPipelineTargetPipelineParameterList>(map['pipelineParameterLists'], (value) => EventTargetSagemakerPipelineTargetPipelineParameterList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pipelineParameterLists: map['pipelineParameterLists'] == null ? null : ((pulumi.Input.decodeList<EventTargetSagemakerPipelineTargetPipelineParameterList>(map['pipelineParameterLists']!, (value) => EventTargetSagemakerPipelineTargetPipelineParameterList.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

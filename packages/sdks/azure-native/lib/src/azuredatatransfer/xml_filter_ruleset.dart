@@ -31,9 +31,9 @@ class XmlFilterRuleset {
 
   factory XmlFilterRuleset.fromMap(Map<String, dynamic> map) {
     return XmlFilterRuleset(
-      defaultNamespace: map['defaultNamespace'] == null ? null : (map['defaultNamespace'] as String).input(),
-      reference: map['reference'] == null ? null : (map['reference'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
+      defaultNamespace: map['defaultNamespace'] == null ? null : (map['defaultNamespace']! as String).input(),
+      reference: map['reference'] == null ? null : (map['reference']! as String).input(),
+      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
     );
   }
 }

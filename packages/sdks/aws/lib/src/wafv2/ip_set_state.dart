@@ -70,17 +70,17 @@ class IpSetState {
 
   factory IpSetState.fromMap(Map<String, dynamic> map) {
     return IpSetState(
-      addresses: map['addresses'] == null ? null : ((map['addresses'] as List).cast<String>()).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipAddressVersion: map['ipAddressVersion'] == null ? null : (map['ipAddressVersion'] as String).input(),
-      lockToken: map['lockToken'] == null ? null : (map['lockToken'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      addresses: map['addresses'] == null ? null : (((map['addresses'] as List).cast<String>()).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      ipAddressVersion: map['ipAddressVersion'] == null ? null : ((map['ipAddressVersion'] as String).input()).input(),
+      lockToken: map['lockToken'] == null ? null : ((map['lockToken'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scope: map['scope'] == null ? null : ((map['scope'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

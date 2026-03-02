@@ -80,14 +80,14 @@ class ProjectSecondarySource {
 
   factory ProjectSecondarySource.fromMap(Map<String, dynamic> map) {
     return ProjectSecondarySource(
-      auth: map['auth'] == null ? null : (ProjectSecondarySourceAuth.fromMap((map['auth'] as Map).cast<String, dynamic>())).input(),
-      buildStatusConfig: map['buildStatusConfig'] == null ? null : (ProjectSecondarySourceBuildStatusConfig.fromMap((map['buildStatusConfig'] as Map).cast<String, dynamic>())).input(),
-      buildspec: map['buildspec'] == null ? null : (map['buildspec'] as String).input(),
-      gitCloneDepth: map['gitCloneDepth'] == null ? null : (map['gitCloneDepth'] as int).input(),
-      gitSubmodulesConfig: map['gitSubmodulesConfig'] == null ? null : (ProjectSecondarySourceGitSubmodulesConfig.fromMap((map['gitSubmodulesConfig'] as Map).cast<String, dynamic>())).input(),
-      insecureSsl: map['insecureSsl'] == null ? null : (map['insecureSsl'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      reportBuildStatus: map['reportBuildStatus'] == null ? null : (map['reportBuildStatus'] as bool).input(),
+      auth: map['auth'] == null ? null : ((ProjectSecondarySourceAuth.fromMap((map['auth']! as Map).cast<String, dynamic>())).input()).input(),
+      buildStatusConfig: map['buildStatusConfig'] == null ? null : ((ProjectSecondarySourceBuildStatusConfig.fromMap((map['buildStatusConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      buildspec: map['buildspec'] == null ? null : ((map['buildspec'] as String).input()).input(),
+      gitCloneDepth: map['gitCloneDepth'] == null ? null : ((map['gitCloneDepth'] as int).input()).input(),
+      gitSubmodulesConfig: map['gitSubmodulesConfig'] == null ? null : ((ProjectSecondarySourceGitSubmodulesConfig.fromMap((map['gitSubmodulesConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      insecureSsl: map['insecureSsl'] == null ? null : ((map['insecureSsl'] as bool).input()).input(),
+      location: map['location'] == null ? null : ((map['location'] as String).input()).input(),
+      reportBuildStatus: map['reportBuildStatus'] == null ? null : ((map['reportBuildStatus'] as bool).input()).input(),
       sourceIdentifier: (map['sourceIdentifier'] as String).input(),
       type: (map['type'] as String).input(),
     );

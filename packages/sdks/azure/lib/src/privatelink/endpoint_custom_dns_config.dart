@@ -25,8 +25,8 @@ class EndpointCustomDnsConfig {
 
   factory EndpointCustomDnsConfig.fromMap(Map<String, dynamic> map) {
     return EndpointCustomDnsConfig(
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses']! as List).cast<String>()).input(),
     );
   }
 }

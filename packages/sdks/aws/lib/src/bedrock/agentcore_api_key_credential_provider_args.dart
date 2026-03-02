@@ -51,11 +51,11 @@ class AgentcoreApiKeyCredentialProviderArgs {
 
   factory AgentcoreApiKeyCredentialProviderArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreApiKeyCredentialProviderArgs(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
-      apiKeyWo: map['apiKeyWo'] == null ? null : (map['apiKeyWo'] as String).input(),
-      apiKeyWoVersion: map['apiKeyWoVersion'] == null ? null : (map['apiKeyWoVersion'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      apiKey: map['apiKey'] == null ? null : ((map['apiKey'] as String).input()).input(),
+      apiKeyWo: map['apiKeyWo'] == null ? null : ((map['apiKeyWo'] as String).input()).input(),
+      apiKeyWoVersion: map['apiKeyWoVersion'] == null ? null : ((map['apiKeyWoVersion'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

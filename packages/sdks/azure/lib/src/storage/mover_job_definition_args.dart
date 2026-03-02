@@ -64,15 +64,15 @@ class MoverJobDefinitionArgs {
 
   factory MoverJobDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return MoverJobDefinitionArgs(
-      agentName: map['agentName'] == null ? null : (map['agentName'] as String).input(),
+      agentName: map['agentName'] == null ? null : (map['agentName']! as String).input(),
       copyMode: (map['copyMode'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       sourceName: (map['sourceName'] as String).input(),
-      sourceSubPath: map['sourceSubPath'] == null ? null : (map['sourceSubPath'] as String).input(),
+      sourceSubPath: map['sourceSubPath'] == null ? null : (map['sourceSubPath']! as String).input(),
       storageMoverProjectId: (map['storageMoverProjectId'] as String).input(),
       targetName: (map['targetName'] as String).input(),
-      targetSubPath: map['targetSubPath'] == null ? null : (map['targetSubPath'] as String).input(),
+      targetSubPath: map['targetSubPath'] == null ? null : (map['targetSubPath']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class StackTrace {
 
   factory StackTrace.fromMap(Map<String, dynamic> map) {
     return StackTrace(
-      exception: map['exception'] == null ? null : (map['exception'] as String).input(),
+      exception: map['exception'] == null ? null : (map['exception']! as String).input(),
     );
   }
 }

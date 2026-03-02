@@ -49,12 +49,12 @@ class ClusterRecordResponse {
 
   factory ClusterRecordResponse.fromMap(Map<String, dynamic> map) {
     return ClusterRecordResponse(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (MetadataEntityResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      spec: map['spec'] == null ? null : (ClusterSpecEntityResponse.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (ClusterStatusEntityResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (MetadataEntityResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (ClusterSpecEntityResponse.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (ClusterStatusEntityResponse.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

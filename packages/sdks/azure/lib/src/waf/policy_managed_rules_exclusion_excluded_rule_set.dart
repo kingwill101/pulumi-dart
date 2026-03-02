@@ -31,9 +31,9 @@ class PolicyManagedRulesExclusionExcludedRuleSet {
 
   factory PolicyManagedRulesExclusionExcludedRuleSet.fromMap(Map<String, dynamic> map) {
     return PolicyManagedRulesExclusionExcludedRuleSet(
-      ruleGroups: map['ruleGroups'] == null ? null : (pulumi.Input.decodeList<PolicyManagedRulesExclusionExcludedRuleSetRuleGroup>(map['ruleGroups'], (value) => PolicyManagedRulesExclusionExcludedRuleSetRuleGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      ruleGroups: map['ruleGroups'] == null ? null : (pulumi.Input.decodeList<PolicyManagedRulesExclusionExcludedRuleSetRuleGroup>(map['ruleGroups']!, (value) => PolicyManagedRulesExclusionExcludedRuleSetRuleGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

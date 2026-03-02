@@ -47,11 +47,11 @@ class MySqlConnectionProfile {
 
   factory MySqlConnectionProfile.fromMap(Map<String, dynamic> map) {
     return MySqlConnectionProfile(
-      cloudSqlId: map['cloudSqlId'] == null ? null : (map['cloudSqlId'] as String).input(),
+      cloudSqlId: map['cloudSqlId'] == null ? null : (map['cloudSqlId']! as String).input(),
       host: (map['host'] as String).input(),
       password: (map['password'] as String).input(),
       port: (map['port'] as int).input(),
-      ssl: map['ssl'] == null ? null : (SslConfig.fromMap((map['ssl'] as Map).cast<String, dynamic>())).input(),
+      ssl: map['ssl'] == null ? null : (SslConfig.fromMap((map['ssl']! as Map).cast<String, dynamic>())).input(),
       username: (map['username'] as String).input(),
     );
   }

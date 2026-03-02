@@ -59,9 +59,9 @@ class AttestorIamMemberArgs {
   factory AttestorIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return AttestorIamMemberArgs(
       attestor: (map['attestor'] as String).input(),
-      condition: map['condition'] == null ? null : (AttestorIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (AttestorIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       member: (map['member'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

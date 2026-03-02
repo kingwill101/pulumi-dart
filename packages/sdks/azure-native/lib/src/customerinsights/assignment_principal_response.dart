@@ -32,7 +32,7 @@ class AssignmentPrincipalResponse {
   factory AssignmentPrincipalResponse.fromMap(Map<String, dynamic> map) {
     return AssignmentPrincipalResponse(
       principalId: (map['principalId'] as String).input(),
-      principalMetadata: map['principalMetadata'] == null ? null : ((map['principalMetadata'] as Map).cast<String, String>()).input(),
+      principalMetadata: map['principalMetadata'] == null ? null : ((map['principalMetadata']! as Map).cast<String, String>()).input(),
       principalType: (map['principalType'] as String).input(),
     );
   }

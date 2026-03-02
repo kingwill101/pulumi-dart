@@ -42,11 +42,11 @@ class NetworkPortGroup {
 
   factory NetworkPortGroup.fromMap(Map<String, dynamic> map) {
     return NetworkPortGroup(
-      default_: map['default'] == null ? null : (map['default'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      trustGuestRxFilters: map['trustGuestRxFilters'] == null ? null : (map['trustGuestRxFilters'] as String).input(),
-      virtualPort: map['virtualPort'] == null ? null : (NetworkPortGroupVirtualPort.fromMap((map['virtualPort'] as Map).cast<String, dynamic>())).input(),
-      vlan: map['vlan'] == null ? null : (NetworkPortGroupVlan.fromMap((map['vlan'] as Map).cast<String, dynamic>())).input(),
+      default_: map['default'] == null ? null : (map['default']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      trustGuestRxFilters: map['trustGuestRxFilters'] == null ? null : (map['trustGuestRxFilters']! as String).input(),
+      virtualPort: map['virtualPort'] == null ? null : (NetworkPortGroupVirtualPort.fromMap((map['virtualPort']! as Map).cast<String, dynamic>())).input(),
+      vlan: map['vlan'] == null ? null : (NetworkPortGroupVlan.fromMap((map['vlan']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

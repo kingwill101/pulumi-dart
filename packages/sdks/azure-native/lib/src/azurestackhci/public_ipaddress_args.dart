@@ -51,12 +51,12 @@ class PublicIPAddressArgs {
 
   factory PublicIPAddressArgs.fromMap(Map<String, dynamic> map) {
     return PublicIPAddressArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (PublicIPAddressProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      publicIPAddressName: map['publicIPAddressName'] == null ? null : (map['publicIPAddressName'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (PublicIPAddressProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      publicIPAddressName: map['publicIPAddressName'] == null ? null : (map['publicIPAddressName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

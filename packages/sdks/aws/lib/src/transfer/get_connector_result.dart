@@ -79,14 +79,14 @@ class GetConnectorResult {
     return GetConnectorResult(
       accessRole: map['accessRole'] as String,
       arn: map['arn'] as String,
-      as2Configs: pulumi.Input.decodeList<GetConnectorAs2Config>(map['as2Configs'], (value) => GetConnectorAs2Config.fromMap((value as Map).cast<String, dynamic>())),
-      egressConfigs: pulumi.Input.decodeList<GetConnectorEgressConfig>(map['egressConfigs'], (value) => GetConnectorEgressConfig.fromMap((value as Map).cast<String, dynamic>())),
+      as2Configs: pulumi.Input.decodeList<GetConnectorAs2Config>(map['as2Configs']!, (value) => GetConnectorAs2Config.fromMap((value as Map).cast<String, dynamic>())),
+      egressConfigs: pulumi.Input.decodeList<GetConnectorEgressConfig>(map['egressConfigs']!, (value) => GetConnectorEgressConfig.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       loggingRole: map['loggingRole'] as String,
       region: map['region'] as String,
       securityPolicyName: map['securityPolicyName'] as String,
       serviceManagedEgressIpAddresses: (map['serviceManagedEgressIpAddresses'] as List).cast<String>(),
-      sftpConfigs: pulumi.Input.decodeList<GetConnectorSftpConfig>(map['sftpConfigs'], (value) => GetConnectorSftpConfig.fromMap((value as Map).cast<String, dynamic>())),
+      sftpConfigs: pulumi.Input.decodeList<GetConnectorSftpConfig>(map['sftpConfigs']!, (value) => GetConnectorSftpConfig.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as Map).cast<String, String>(),
       url: map['url'] as String,
     );

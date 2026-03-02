@@ -41,11 +41,11 @@ class DatabaseState {
 
   factory DatabaseState.fromMap(Map<String, dynamic> map) {
     return DatabaseState(
-      charset: map['charset'] == null ? null : (map['charset'] as String).input(),
-      collation: map['collation'] == null ? null : (map['collation'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
+      charset: map['charset'] == null ? null : (map['charset']! as String).input(),
+      collation: map['collation'] == null ? null : (map['collation']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName']! as String).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class DatadogApiKeyResponse {
 
   factory DatadogApiKeyResponse.fromMap(Map<String, dynamic> map) {
     return DatadogApiKeyResponse(
-      created: map['created'] == null ? null : (map['created'] as String).input(),
-      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
+      created: map['created'] == null ? null : (map['created']! as String).input(),
+      createdBy: map['createdBy'] == null ? null : (map['createdBy']! as String).input(),
       key: (map['key'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

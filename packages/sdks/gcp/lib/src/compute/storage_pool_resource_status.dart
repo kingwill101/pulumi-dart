@@ -78,16 +78,16 @@ class StoragePoolResourceStatus {
 
   factory StoragePoolResourceStatus.fromMap(Map<String, dynamic> map) {
     return StoragePoolResourceStatus(
-      diskCount: map['diskCount'] == null ? null : (map['diskCount'] as String).input(),
-      lastResizeTimestamp: map['lastResizeTimestamp'] == null ? null : (map['lastResizeTimestamp'] as String).input(),
-      maxTotalProvisionedDiskCapacityGb: map['maxTotalProvisionedDiskCapacityGb'] == null ? null : (map['maxTotalProvisionedDiskCapacityGb'] as String).input(),
-      poolUsedCapacityBytes: map['poolUsedCapacityBytes'] == null ? null : (map['poolUsedCapacityBytes'] as String).input(),
-      poolUsedIops: map['poolUsedIops'] == null ? null : (map['poolUsedIops'] as String).input(),
-      poolUsedThroughput: map['poolUsedThroughput'] == null ? null : (map['poolUsedThroughput'] as String).input(),
-      poolUserWrittenBytes: map['poolUserWrittenBytes'] == null ? null : (map['poolUserWrittenBytes'] as String).input(),
-      totalProvisionedDiskCapacityGb: map['totalProvisionedDiskCapacityGb'] == null ? null : (map['totalProvisionedDiskCapacityGb'] as String).input(),
-      totalProvisionedDiskIops: map['totalProvisionedDiskIops'] == null ? null : (map['totalProvisionedDiskIops'] as String).input(),
-      totalProvisionedDiskThroughput: map['totalProvisionedDiskThroughput'] == null ? null : (map['totalProvisionedDiskThroughput'] as String).input(),
+      diskCount: map['diskCount'] == null ? null : (map['diskCount']! as String).input(),
+      lastResizeTimestamp: map['lastResizeTimestamp'] == null ? null : (map['lastResizeTimestamp']! as String).input(),
+      maxTotalProvisionedDiskCapacityGb: map['maxTotalProvisionedDiskCapacityGb'] == null ? null : (map['maxTotalProvisionedDiskCapacityGb']! as String).input(),
+      poolUsedCapacityBytes: map['poolUsedCapacityBytes'] == null ? null : (map['poolUsedCapacityBytes']! as String).input(),
+      poolUsedIops: map['poolUsedIops'] == null ? null : (map['poolUsedIops']! as String).input(),
+      poolUsedThroughput: map['poolUsedThroughput'] == null ? null : (map['poolUsedThroughput']! as String).input(),
+      poolUserWrittenBytes: map['poolUserWrittenBytes'] == null ? null : (map['poolUserWrittenBytes']! as String).input(),
+      totalProvisionedDiskCapacityGb: map['totalProvisionedDiskCapacityGb'] == null ? null : (map['totalProvisionedDiskCapacityGb']! as String).input(),
+      totalProvisionedDiskIops: map['totalProvisionedDiskIops'] == null ? null : (map['totalProvisionedDiskIops']! as String).input(),
+      totalProvisionedDiskThroughput: map['totalProvisionedDiskThroughput'] == null ? null : (map['totalProvisionedDiskThroughput']! as String).input(),
     );
   }
 }

@@ -51,13 +51,13 @@ class AccountAssignmentState {
 
   factory AccountAssignmentState.fromMap(Map<String, dynamic> map) {
     return AccountAssignmentState(
-      instanceArn: map['instanceArn'] == null ? null : (map['instanceArn'] as String).input(),
-      permissionSetArn: map['permissionSetArn'] == null ? null : (map['permissionSetArn'] as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
-      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
+      instanceArn: map['instanceArn'] == null ? null : ((map['instanceArn'] as String).input()).input(),
+      permissionSetArn: map['permissionSetArn'] == null ? null : ((map['permissionSetArn'] as String).input()).input(),
+      principalId: map['principalId'] == null ? null : ((map['principalId'] as String).input()).input(),
+      principalType: map['principalType'] == null ? null : ((map['principalType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      targetId: map['targetId'] == null ? null : ((map['targetId'] as String).input()).input(),
+      targetType: map['targetType'] == null ? null : ((map['targetType'] as String).input()).input(),
     );
   }
 }

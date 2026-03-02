@@ -69,16 +69,16 @@ class DomainState {
 
   factory DomainState.fromMap(Map<String, dynamic> map) {
     return DomainState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      documentServiceEndpoint: map['documentServiceEndpoint'] == null ? null : (map['documentServiceEndpoint'] as String).input(),
-      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
-      endpointOptions: map['endpointOptions'] == null ? null : (DomainEndpointOptions.fromMap((map['endpointOptions'] as Map).cast<String, dynamic>())).input(),
-      indexFields: map['indexFields'] == null ? null : (pulumi.Input.decodeList<DomainIndexField>(map['indexFields'], (value) => DomainIndexField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      multiAz: map['multiAz'] == null ? null : (map['multiAz'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scalingParameters: map['scalingParameters'] == null ? null : (DomainScalingParameters.fromMap((map['scalingParameters'] as Map).cast<String, dynamic>())).input(),
-      searchServiceEndpoint: map['searchServiceEndpoint'] == null ? null : (map['searchServiceEndpoint'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      documentServiceEndpoint: map['documentServiceEndpoint'] == null ? null : ((map['documentServiceEndpoint'] as String).input()).input(),
+      domainId: map['domainId'] == null ? null : ((map['domainId'] as String).input()).input(),
+      endpointOptions: map['endpointOptions'] == null ? null : ((DomainEndpointOptions.fromMap((map['endpointOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      indexFields: map['indexFields'] == null ? null : ((pulumi.Input.decodeList<DomainIndexField>(map['indexFields']!, (value) => DomainIndexField.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      multiAz: map['multiAz'] == null ? null : ((map['multiAz'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scalingParameters: map['scalingParameters'] == null ? null : ((DomainScalingParameters.fromMap((map['scalingParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      searchServiceEndpoint: map['searchServiceEndpoint'] == null ? null : ((map['searchServiceEndpoint'] as String).input()).input(),
     );
   }
 }

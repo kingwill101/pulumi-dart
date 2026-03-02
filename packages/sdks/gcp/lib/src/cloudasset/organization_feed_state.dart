@@ -79,15 +79,15 @@ class OrganizationFeedState {
 
   factory OrganizationFeedState.fromMap(Map<String, dynamic> map) {
     return OrganizationFeedState(
-      assetNames: map['assetNames'] == null ? null : ((map['assetNames'] as List).cast<String>()).input(),
-      assetTypes: map['assetTypes'] == null ? null : ((map['assetTypes'] as List).cast<String>()).input(),
-      billingProject: map['billingProject'] == null ? null : (map['billingProject'] as String).input(),
-      condition: map['condition'] == null ? null : (OrganizationFeedCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      feedId: map['feedId'] == null ? null : (map['feedId'] as String).input(),
-      feedOutputConfig: map['feedOutputConfig'] == null ? null : (OrganizationFeedFeedOutputConfig.fromMap((map['feedOutputConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
+      assetNames: map['assetNames'] == null ? null : ((map['assetNames']! as List).cast<String>()).input(),
+      assetTypes: map['assetTypes'] == null ? null : ((map['assetTypes']! as List).cast<String>()).input(),
+      billingProject: map['billingProject'] == null ? null : (map['billingProject']! as String).input(),
+      condition: map['condition'] == null ? null : (OrganizationFeedCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      feedId: map['feedId'] == null ? null : (map['feedId']! as String).input(),
+      feedOutputConfig: map['feedOutputConfig'] == null ? null : (OrganizationFeedFeedOutputConfig.fromMap((map['feedOutputConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
     );
   }
 }

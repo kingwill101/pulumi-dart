@@ -61,13 +61,13 @@ class FunctionEventTrigger {
 
   factory FunctionEventTrigger.fromMap(Map<String, dynamic> map) {
     return FunctionEventTrigger(
-      eventFilters: map['eventFilters'] == null ? null : (pulumi.Input.decodeList<FunctionEventTriggerEventFilter>(map['eventFilters'], (value) => FunctionEventTriggerEventFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eventFilters: map['eventFilters'] == null ? null : (pulumi.Input.decodeList<FunctionEventTriggerEventFilter>(map['eventFilters']!, (value) => FunctionEventTriggerEventFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       eventType: (map['eventType'] as String).input(),
-      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic'] as String).input(),
-      retryPolicy: map['retryPolicy'] == null ? null : (map['retryPolicy'] as String).input(),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
-      trigger: map['trigger'] == null ? null : (map['trigger'] as String).input(),
-      triggerRegion: map['triggerRegion'] == null ? null : (map['triggerRegion'] as String).input(),
+      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic']! as String).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (map['retryPolicy']! as String).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
+      trigger: map['trigger'] == null ? null : (map['trigger']! as String).input(),
+      triggerRegion: map['triggerRegion'] == null ? null : (map['triggerRegion']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class ArchivePackageSourceProperties {
 
   factory ArchivePackageSourceProperties.fromMap(Map<String, dynamic> map) {
     return ArchivePackageSourceProperties(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

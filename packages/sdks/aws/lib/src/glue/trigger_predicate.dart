@@ -26,8 +26,8 @@ class TriggerPredicate {
 
   factory TriggerPredicate.fromMap(Map<String, dynamic> map) {
     return TriggerPredicate(
-      conditions: (pulumi.Input.decodeList<TriggerPredicateCondition>(map['conditions'], (value) => TriggerPredicateCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      logical: map['logical'] == null ? null : (map['logical'] as String).input(),
+      conditions: (pulumi.Input.decodeList<TriggerPredicateCondition>(map['conditions']!, (value) => TriggerPredicateCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logical: map['logical'] == null ? null : ((map['logical'] as String).input()).input(),
     );
   }
 }

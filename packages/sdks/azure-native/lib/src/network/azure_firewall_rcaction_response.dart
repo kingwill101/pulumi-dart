@@ -21,7 +21,7 @@ class AzureFirewallRCActionResponse {
 
   factory AzureFirewallRCActionResponse.fromMap(Map<String, dynamic> map) {
     return AzureFirewallRCActionResponse(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

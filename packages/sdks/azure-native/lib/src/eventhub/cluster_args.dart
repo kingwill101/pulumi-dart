@@ -50,12 +50,12 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (ClusterSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      supportsScaling: map['supportsScaling'] == null ? null : (map['supportsScaling'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sku: map['sku'] == null ? null : (ClusterSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      supportsScaling: map['supportsScaling'] == null ? null : (map['supportsScaling']! as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

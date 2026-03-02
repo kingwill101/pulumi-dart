@@ -45,7 +45,7 @@ class GetSchedulingPolicyResult {
   factory GetSchedulingPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetSchedulingPolicyResult(
       arn: map['arn'] as String,
-      fairSharePolicies: pulumi.Input.decodeList<GetSchedulingPolicyFairSharePolicy>(map['fairSharePolicies'], (value) => GetSchedulingPolicyFairSharePolicy.fromMap((value as Map).cast<String, dynamic>())),
+      fairSharePolicies: pulumi.Input.decodeList<GetSchedulingPolicyFairSharePolicy>(map['fairSharePolicies']!, (value) => GetSchedulingPolicyFairSharePolicy.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
       region: map['region'] as String,

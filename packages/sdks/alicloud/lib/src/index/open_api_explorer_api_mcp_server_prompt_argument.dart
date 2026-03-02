@@ -30,9 +30,9 @@ class OpenApiExplorerApiMcpServerPromptArgument {
 
   factory OpenApiExplorerApiMcpServerPromptArgument.fromMap(Map<String, dynamic> map) {
     return OpenApiExplorerApiMcpServerPromptArgument(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      required: map['required'] == null ? null : (map['required'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      required: map['required'] == null ? null : (map['required']! as bool).input(),
     );
   }
 }

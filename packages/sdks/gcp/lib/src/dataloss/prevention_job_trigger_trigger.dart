@@ -27,8 +27,8 @@ class PreventionJobTriggerTrigger {
 
   factory PreventionJobTriggerTrigger.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerTrigger(
-      manual: map['manual'] == null ? null : ((map['manual'] as Map).cast<String, dynamic>()).input(),
-      schedule: map['schedule'] == null ? null : (PreventionJobTriggerTriggerSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      manual: map['manual'] == null ? null : ((map['manual']! as Map).cast<String, dynamic>()).input(),
+      schedule: map['schedule'] == null ? null : (PreventionJobTriggerTriggerSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

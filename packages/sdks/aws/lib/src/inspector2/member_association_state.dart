@@ -41,11 +41,11 @@ class MemberAssociationState {
 
   factory MemberAssociationState.fromMap(Map<String, dynamic> map) {
     return MemberAssociationState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      delegatedAdminAccountId: map['delegatedAdminAccountId'] == null ? null : (map['delegatedAdminAccountId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      relationshipStatus: map['relationshipStatus'] == null ? null : (map['relationshipStatus'] as String).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      delegatedAdminAccountId: map['delegatedAdminAccountId'] == null ? null : ((map['delegatedAdminAccountId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      relationshipStatus: map['relationshipStatus'] == null ? null : ((map['relationshipStatus'] as String).input()).input(),
+      updatedAt: map['updatedAt'] == null ? null : ((map['updatedAt'] as String).input()).input(),
     );
   }
 }

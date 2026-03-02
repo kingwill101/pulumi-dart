@@ -40,10 +40,10 @@ class SpringbootserverArgs {
 
   factory SpringbootserverArgs.fromMap(Map<String, dynamic> map) {
     return SpringbootserverArgs(
-      properties: map['properties'] == null ? null : (SpringbootserversProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (SpringbootserversProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       siteName: (map['siteName'] as String).input(),
-      springbootserversName: map['springbootserversName'] == null ? null : (map['springbootserversName'] as String).input(),
+      springbootserversName: map['springbootserversName'] == null ? null : (map['springbootserversName']! as String).input(),
     );
   }
 }

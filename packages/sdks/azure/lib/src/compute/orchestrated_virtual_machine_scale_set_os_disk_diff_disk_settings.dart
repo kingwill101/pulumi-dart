@@ -26,7 +26,7 @@ class OrchestratedVirtualMachineScaleSetOsDiskDiffDiskSettings {
   factory OrchestratedVirtualMachineScaleSetOsDiskDiffDiskSettings.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetOsDiskDiffDiskSettings(
       option: (map['option'] as String).input(),
-      placement: map['placement'] == null ? null : (map['placement'] as String).input(),
+      placement: map['placement'] == null ? null : (map['placement']! as String).input(),
     );
   }
 }

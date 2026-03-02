@@ -26,8 +26,8 @@ class FleetspacePropertiesThroughputPoolConfiguration {
 
   factory FleetspacePropertiesThroughputPoolConfiguration.fromMap(Map<String, dynamic> map) {
     return FleetspacePropertiesThroughputPoolConfiguration(
-      maxThroughput: map['maxThroughput'] == null ? null : (map['maxThroughput'] as int).input(),
-      minThroughput: map['minThroughput'] == null ? null : (map['minThroughput'] as int).input(),
+      maxThroughput: map['maxThroughput'] == null ? null : (map['maxThroughput']! as int).input(),
+      minThroughput: map['minThroughput'] == null ? null : (map['minThroughput']! as int).input(),
     );
   }
 }

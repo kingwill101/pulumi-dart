@@ -28,8 +28,8 @@ class GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig {
 
   factory GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig(
-      allowByDefault: map['allowByDefault'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2AllowByDefault.fromMap((map['allowByDefault'] as Map).cast<String, dynamic>())).input(),
-      allowlistOnly: map['allowlistOnly'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2AllowlistOnly.fromMap((map['allowlistOnly'] as Map).cast<String, dynamic>())).input(),
+      allowByDefault: map['allowByDefault'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2AllowByDefault.fromMap((map['allowByDefault']! as Map).cast<String, dynamic>())).input(),
+      allowlistOnly: map['allowlistOnly'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2AllowlistOnly.fromMap((map['allowlistOnly']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

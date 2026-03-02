@@ -54,7 +54,7 @@ class DnatEntryArgs {
 
   factory DnatEntryArgs.fromMap(Map<String, dynamic> map) {
     return DnatEntryArgs(
-      externalIp: map['externalIp'] == null ? null : (map['externalIp'] as String).input(),
+      externalIp: map['externalIp'] == null ? null : (map['externalIp']! as String).input(),
       externalPort: (map['externalPort'] as String).input(),
       internalIp: (map['internalIp'] as String).input(),
       internalPort: (map['internalPort'] as String).input(),

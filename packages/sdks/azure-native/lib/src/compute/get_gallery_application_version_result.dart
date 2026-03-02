@@ -81,9 +81,9 @@ class GetGalleryApplicationVersionResult {
       provisioningState: map['provisioningState'] as String,
       publishingProfile: GalleryApplicationVersionPublishingProfileResponse.fromMap((map['publishingProfile'] as Map).cast<String, dynamic>()),
       replicationStatus: ReplicationStatusResponse.fromMap((map['replicationStatus'] as Map).cast<String, dynamic>()),
-      safetyProfile: map['safetyProfile'] == null ? null : GalleryApplicationVersionSafetyProfileResponse.fromMap((map['safetyProfile'] as Map).cast<String, dynamic>()),
+      safetyProfile: map['safetyProfile'] == null ? null : GalleryApplicationVersionSafetyProfileResponse.fromMap((map['safetyProfile']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

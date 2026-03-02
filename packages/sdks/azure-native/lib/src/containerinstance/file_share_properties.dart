@@ -27,8 +27,8 @@ class FileShareProperties {
 
   factory FileShareProperties.fromMap(Map<String, dynamic> map) {
     return FileShareProperties(
-      shareAccessTier: map['shareAccessTier'] == null ? null : (AzureFileShareAccessTier.fromValue(map['shareAccessTier'] as String)).input(),
-      shareAccessType: map['shareAccessType'] == null ? null : (AzureFileShareAccessType.fromValue(map['shareAccessType'] as String)).input(),
+      shareAccessTier: map['shareAccessTier'] == null ? null : (AzureFileShareAccessTier.fromValue(map['shareAccessTier']! as String)).input(),
+      shareAccessType: map['shareAccessType'] == null ? null : (AzureFileShareAccessType.fromValue(map['shareAccessType']! as String)).input(),
     );
   }
 }

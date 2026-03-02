@@ -94,20 +94,20 @@ class SecurityProfileGroupState {
 
   factory SecurityProfileGroupState.fromMap(Map<String, dynamic> map) {
     return SecurityProfileGroupState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      customInterceptProfile: map['customInterceptProfile'] == null ? null : (map['customInterceptProfile'] as String).input(),
-      customMirroringProfile: map['customMirroringProfile'] == null ? null : (map['customMirroringProfile'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      threatPreventionProfile: map['threatPreventionProfile'] == null ? null : (map['threatPreventionProfile'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      urlFilteringProfile: map['urlFilteringProfile'] == null ? null : (map['urlFilteringProfile'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      customInterceptProfile: map['customInterceptProfile'] == null ? null : (map['customInterceptProfile']! as String).input(),
+      customMirroringProfile: map['customMirroringProfile'] == null ? null : (map['customMirroringProfile']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      threatPreventionProfile: map['threatPreventionProfile'] == null ? null : (map['threatPreventionProfile']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      urlFilteringProfile: map['urlFilteringProfile'] == null ? null : (map['urlFilteringProfile']! as String).input(),
     );
   }
 }

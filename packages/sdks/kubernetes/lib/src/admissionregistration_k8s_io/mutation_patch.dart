@@ -33,9 +33,9 @@ class MutationPatch {
 
   factory MutationPatch.fromMap(Map<String, dynamic> map) {
     return MutationPatch(
-      applyConfiguration: map['applyConfiguration'] == null ? null : (ApplyConfigurationPatch.fromMap((map['applyConfiguration'] as Map).cast<String, dynamic>())).input(),
-      jsonPatch: map['jsonPatch'] == null ? null : (JSONPatchPatch.fromMap((map['jsonPatch'] as Map).cast<String, dynamic>())).input(),
-      patchType: map['patchType'] == null ? null : (map['patchType'] as String).input(),
+      applyConfiguration: map['applyConfiguration'] == null ? null : (ApplyConfigurationPatch.fromMap((map['applyConfiguration']! as Map).cast<String, dynamic>())).input(),
+      jsonPatch: map['jsonPatch'] == null ? null : (JSONPatchPatch.fromMap((map['jsonPatch']! as Map).cast<String, dynamic>())).input(),
+      patchType: map['patchType'] == null ? null : (map['patchType']! as String).input(),
     );
   }
 }

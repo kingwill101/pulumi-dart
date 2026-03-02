@@ -28,7 +28,7 @@ class AlertPolicyConditionConditionSqlHourly {
 
   factory AlertPolicyConditionConditionSqlHourly.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionSqlHourly(
-      minuteOffset: map['minuteOffset'] == null ? null : (map['minuteOffset'] as int).input(),
+      minuteOffset: map['minuteOffset'] == null ? null : (map['minuteOffset']! as int).input(),
       periodicity: (map['periodicity'] as int).input(),
     );
   }

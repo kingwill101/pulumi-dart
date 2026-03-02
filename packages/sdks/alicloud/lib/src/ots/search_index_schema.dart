@@ -34,8 +34,8 @@ class SearchIndexSchema {
   factory SearchIndexSchema.fromMap(Map<String, dynamic> map) {
     return SearchIndexSchema(
       fieldSchemas: (pulumi.Input.decodeList<SearchIndexSchemaFieldSchema>(map['fieldSchemas'], (value) => SearchIndexSchemaFieldSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      indexSettings: map['indexSettings'] == null ? null : (pulumi.Input.decodeList<SearchIndexSchemaIndexSetting>(map['indexSettings'], (value) => SearchIndexSchemaIndexSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      indexSorts: map['indexSorts'] == null ? null : (pulumi.Input.decodeList<SearchIndexSchemaIndexSort>(map['indexSorts'], (value) => SearchIndexSchemaIndexSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      indexSettings: map['indexSettings'] == null ? null : (pulumi.Input.decodeList<SearchIndexSchemaIndexSetting>(map['indexSettings']!, (value) => SearchIndexSchemaIndexSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      indexSorts: map['indexSorts'] == null ? null : (pulumi.Input.decodeList<SearchIndexSchemaIndexSort>(map['indexSorts']!, (value) => SearchIndexSchemaIndexSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

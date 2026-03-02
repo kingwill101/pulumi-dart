@@ -65,14 +65,14 @@ class IdentityProviders {
 
   factory IdentityProviders.fromMap(Map<String, dynamic> map) {
     return IdentityProviders(
-      apple: map['apple'] == null ? null : (Apple.fromMap((map['apple'] as Map).cast<String, dynamic>())).input(),
-      azureActiveDirectory: map['azureActiveDirectory'] == null ? null : (AzureActiveDirectory.fromMap((map['azureActiveDirectory'] as Map).cast<String, dynamic>())).input(),
-      azureStaticWebApps: map['azureStaticWebApps'] == null ? null : (AzureStaticWebApps.fromMap((map['azureStaticWebApps'] as Map).cast<String, dynamic>())).input(),
-      customOpenIdConnectProviders: map['customOpenIdConnectProviders'] == null ? null : (pulumi.Input.decodeMapValues<CustomOpenIdConnectProvider>(map['customOpenIdConnectProviders'], (value) => CustomOpenIdConnectProvider.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      facebook: map['facebook'] == null ? null : (Facebook.fromMap((map['facebook'] as Map).cast<String, dynamic>())).input(),
-      gitHub: map['gitHub'] == null ? null : (GitHub.fromMap((map['gitHub'] as Map).cast<String, dynamic>())).input(),
-      google: map['google'] == null ? null : (Google.fromMap((map['google'] as Map).cast<String, dynamic>())).input(),
-      twitter: map['twitter'] == null ? null : (Twitter.fromMap((map['twitter'] as Map).cast<String, dynamic>())).input(),
+      apple: map['apple'] == null ? null : (Apple.fromMap((map['apple']! as Map).cast<String, dynamic>())).input(),
+      azureActiveDirectory: map['azureActiveDirectory'] == null ? null : (AzureActiveDirectory.fromMap((map['azureActiveDirectory']! as Map).cast<String, dynamic>())).input(),
+      azureStaticWebApps: map['azureStaticWebApps'] == null ? null : (AzureStaticWebApps.fromMap((map['azureStaticWebApps']! as Map).cast<String, dynamic>())).input(),
+      customOpenIdConnectProviders: map['customOpenIdConnectProviders'] == null ? null : (pulumi.Input.decodeMapValues<CustomOpenIdConnectProvider>(map['customOpenIdConnectProviders']!, (value) => CustomOpenIdConnectProvider.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      facebook: map['facebook'] == null ? null : (Facebook.fromMap((map['facebook']! as Map).cast<String, dynamic>())).input(),
+      gitHub: map['gitHub'] == null ? null : (GitHub.fromMap((map['gitHub']! as Map).cast<String, dynamic>())).input(),
+      google: map['google'] == null ? null : (Google.fromMap((map['google']! as Map).cast<String, dynamic>())).input(),
+      twitter: map['twitter'] == null ? null : (Twitter.fromMap((map['twitter']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

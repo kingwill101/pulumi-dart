@@ -37,7 +37,7 @@ class GetWebhookArgs {
     return GetWebhookArgs(
       agentId: (map['agentId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       webhookId: (map['webhookId'] as String).input(),
     );
   }

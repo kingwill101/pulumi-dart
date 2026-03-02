@@ -53,10 +53,10 @@ class BgpvpnRouterAssociateV2Args {
 
   factory BgpvpnRouterAssociateV2Args.fromMap(Map<String, dynamic> map) {
     return BgpvpnRouterAssociateV2Args(
-      advertiseExtraRoutes: map['advertiseExtraRoutes'] == null ? null : (map['advertiseExtraRoutes'] as bool).input(),
+      advertiseExtraRoutes: map['advertiseExtraRoutes'] == null ? null : (map['advertiseExtraRoutes']! as bool).input(),
       bgpvpnId: (map['bgpvpnId'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       routerId: (map['routerId'] as String).input(),
     );
   }

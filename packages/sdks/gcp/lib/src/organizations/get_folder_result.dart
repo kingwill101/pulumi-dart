@@ -84,7 +84,7 @@ class GetFolderResult {
       folderId: map['folderId'] as String,
       id: map['id'] as String,
       lifecycleState: map['lifecycleState'] as String,
-      lookupOrganization: map['lookupOrganization'] == null ? null : map['lookupOrganization'] as bool,
+      lookupOrganization: map['lookupOrganization'] == null ? null : map['lookupOrganization']! as bool,
       managementProject: map['managementProject'] as String,
       name: map['name'] as String,
       organization: map['organization'] as String,

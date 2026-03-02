@@ -26,8 +26,8 @@ class TimeoutPolicyResponse {
 
   factory TimeoutPolicyResponse.fromMap(Map<String, dynamic> map) {
     return TimeoutPolicyResponse(
-      connectionTimeoutInSeconds: map['connectionTimeoutInSeconds'] == null ? null : (map['connectionTimeoutInSeconds'] as int).input(),
-      responseTimeoutInSeconds: map['responseTimeoutInSeconds'] == null ? null : (map['responseTimeoutInSeconds'] as int).input(),
+      connectionTimeoutInSeconds: map['connectionTimeoutInSeconds'] == null ? null : (map['connectionTimeoutInSeconds']! as int).input(),
+      responseTimeoutInSeconds: map['responseTimeoutInSeconds'] == null ? null : (map['responseTimeoutInSeconds']! as int).input(),
     );
   }
 }

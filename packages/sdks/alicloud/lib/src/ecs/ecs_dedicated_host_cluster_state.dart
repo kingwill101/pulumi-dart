@@ -41,11 +41,11 @@ class EcsDedicatedHostClusterState {
 
   factory EcsDedicatedHostClusterState.fromMap(Map<String, dynamic> map) {
     return EcsDedicatedHostClusterState(
-      dedicatedHostClusterName: map['dedicatedHostClusterName'] == null ? null : (map['dedicatedHostClusterName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      dedicatedHostClusterName: map['dedicatedHostClusterName'] == null ? null : (map['dedicatedHostClusterName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

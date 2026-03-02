@@ -26,8 +26,8 @@ class PipelineTriggerAll {
 
   factory PipelineTriggerAll.fromMap(Map<String, dynamic> map) {
     return PipelineTriggerAll(
-      gitConfigurations: map['gitConfigurations'] == null ? null : (pulumi.Input.decodeList<PipelineTriggerAllGitConfiguration>(map['gitConfigurations'], (value) => PipelineTriggerAllGitConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      providerType: map['providerType'] == null ? null : (map['providerType'] as String).input(),
+      gitConfigurations: map['gitConfigurations'] == null ? null : ((pulumi.Input.decodeList<PipelineTriggerAllGitConfiguration>(map['gitConfigurations']!, (value) => PipelineTriggerAllGitConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      providerType: map['providerType'] == null ? null : ((map['providerType'] as String).input()).input(),
     );
   }
 }

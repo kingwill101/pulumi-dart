@@ -32,9 +32,9 @@ class ApplicationGatewayBackendAddressPool {
 
   factory ApplicationGatewayBackendAddressPool.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayBackendAddressPool(
-      backendAddresses: map['backendAddresses'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayBackendAddress>(map['backendAddresses'], (value) => ApplicationGatewayBackendAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      backendAddresses: map['backendAddresses'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayBackendAddress>(map['backendAddresses']!, (value) => ApplicationGatewayBackendAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

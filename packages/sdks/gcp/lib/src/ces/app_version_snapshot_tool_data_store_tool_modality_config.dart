@@ -48,10 +48,10 @@ class AppVersionSnapshotToolDataStoreToolModalityConfig {
 
   factory AppVersionSnapshotToolDataStoreToolModalityConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolDataStoreToolModalityConfig(
-      groundingConfigs: map['groundingConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig>(map['groundingConfigs'], (value) => AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      modalityType: map['modalityType'] == null ? null : (map['modalityType'] as String).input(),
-      rewriterConfigs: map['rewriterConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfig>(map['rewriterConfigs'], (value) => AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      summarizationConfigs: map['summarizationConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfig>(map['summarizationConfigs'], (value) => AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      groundingConfigs: map['groundingConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig>(map['groundingConfigs']!, (value) => AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      modalityType: map['modalityType'] == null ? null : (map['modalityType']! as String).input(),
+      rewriterConfigs: map['rewriterConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfig>(map['rewriterConfigs']!, (value) => AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      summarizationConfigs: map['summarizationConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfig>(map['summarizationConfigs']!, (value) => AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

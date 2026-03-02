@@ -46,10 +46,10 @@ class GovernedServiceItemResponse {
 
   factory GovernedServiceItemResponse.fromMap(Map<String, dynamic> map) {
     return GovernedServiceItemResponse(
-      enforcement: map['enforcement'] == null ? null : (map['enforcement'] as String).input(),
+      enforcement: map['enforcement'] == null ? null : (map['enforcement']! as String).input(),
       initiatives: ((map['initiatives'] as List).cast<String>()).input(),
-      option: map['option'] == null ? null : (map['option'] as String).input(),
-      policyAction: map['policyAction'] == null ? null : (map['policyAction'] as String).input(),
+      option: map['option'] == null ? null : (map['option']! as String).input(),
+      policyAction: map['policyAction'] == null ? null : (map['policyAction']! as String).input(),
       serviceId: (map['serviceId'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

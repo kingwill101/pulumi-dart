@@ -21,7 +21,7 @@ class VirtualNetworkProfile {
 
   factory VirtualNetworkProfile.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkProfile(
-      computeSubnetId: map['computeSubnetId'] == null ? null : (map['computeSubnetId'] as String).input(),
+      computeSubnetId: map['computeSubnetId'] == null ? null : (map['computeSubnetId']! as String).input(),
     );
   }
 }

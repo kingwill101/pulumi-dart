@@ -74,18 +74,18 @@ class CustomActionTypeState {
 
   factory CustomActionTypeState.fromMap(Map<String, dynamic> map) {
     return CustomActionTypeState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      configurationProperties: map['configurationProperties'] == null ? null : (pulumi.Input.decodeList<CustomActionTypeConfigurationProperty>(map['configurationProperties'], (value) => CustomActionTypeConfigurationProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inputArtifactDetails: map['inputArtifactDetails'] == null ? null : (CustomActionTypeInputArtifactDetails.fromMap((map['inputArtifactDetails'] as Map).cast<String, dynamic>())).input(),
-      outputArtifactDetails: map['outputArtifactDetails'] == null ? null : (CustomActionTypeOutputArtifactDetails.fromMap((map['outputArtifactDetails'] as Map).cast<String, dynamic>())).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
-      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      settings: map['settings'] == null ? null : (CustomActionTypeSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      category: map['category'] == null ? null : ((map['category'] as String).input()).input(),
+      configurationProperties: map['configurationProperties'] == null ? null : ((pulumi.Input.decodeList<CustomActionTypeConfigurationProperty>(map['configurationProperties']!, (value) => CustomActionTypeConfigurationProperty.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      inputArtifactDetails: map['inputArtifactDetails'] == null ? null : ((CustomActionTypeInputArtifactDetails.fromMap((map['inputArtifactDetails']! as Map).cast<String, dynamic>())).input()).input(),
+      outputArtifactDetails: map['outputArtifactDetails'] == null ? null : ((CustomActionTypeOutputArtifactDetails.fromMap((map['outputArtifactDetails']! as Map).cast<String, dynamic>())).input()).input(),
+      owner: map['owner'] == null ? null : ((map['owner'] as String).input()).input(),
+      providerName: map['providerName'] == null ? null : ((map['providerName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      settings: map['settings'] == null ? null : ((CustomActionTypeSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

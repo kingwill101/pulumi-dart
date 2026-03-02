@@ -35,9 +35,9 @@ class AgentcoreGatewayTargetCredentialProviderConfigurationApiKey {
 
   factory AgentcoreGatewayTargetCredentialProviderConfigurationApiKey.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetCredentialProviderConfigurationApiKey(
-      credentialLocation: map['credentialLocation'] == null ? null : (map['credentialLocation'] as String).input(),
-      credentialParameterName: map['credentialParameterName'] == null ? null : (map['credentialParameterName'] as String).input(),
-      credentialPrefix: map['credentialPrefix'] == null ? null : (map['credentialPrefix'] as String).input(),
+      credentialLocation: map['credentialLocation'] == null ? null : ((map['credentialLocation'] as String).input()).input(),
+      credentialParameterName: map['credentialParameterName'] == null ? null : ((map['credentialParameterName'] as String).input()).input(),
+      credentialPrefix: map['credentialPrefix'] == null ? null : ((map['credentialPrefix'] as String).input()).input(),
       providerArn: (map['providerArn'] as String).input(),
     );
   }

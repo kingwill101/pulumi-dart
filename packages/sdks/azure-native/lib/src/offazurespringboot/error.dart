@@ -61,15 +61,15 @@ class Error {
 
   factory Error.fromMap(Map<String, dynamic> map) {
     return Error(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as double).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      possibleCauses: map['possibleCauses'] == null ? null : (map['possibleCauses'] as String).input(),
-      recommendedAction: map['recommendedAction'] == null ? null : (map['recommendedAction'] as String).input(),
-      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId'] as String).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
-      summaryMessage: map['summaryMessage'] == null ? null : (map['summaryMessage'] as String).input(),
-      updatedTimeStamp: map['updatedTimeStamp'] == null ? null : (map['updatedTimeStamp'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as double).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      possibleCauses: map['possibleCauses'] == null ? null : (map['possibleCauses']! as String).input(),
+      recommendedAction: map['recommendedAction'] == null ? null : (map['recommendedAction']! as String).input(),
+      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId']! as String).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
+      summaryMessage: map['summaryMessage'] == null ? null : (map['summaryMessage']! as String).input(),
+      updatedTimeStamp: map['updatedTimeStamp'] == null ? null : (map['updatedTimeStamp']! as String).input(),
     );
   }
 }

@@ -24,8 +24,8 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSetting
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSettings(
-      h265PackagingType: map['h265PackagingType'] == null ? null : (map['h265PackagingType'] as String).input(),
-      nameModifier: map['nameModifier'] == null ? null : (map['nameModifier'] as String).input(),
+      h265PackagingType: map['h265PackagingType'] == null ? null : ((map['h265PackagingType'] as String).input()).input(),
+      nameModifier: map['nameModifier'] == null ? null : ((map['nameModifier'] as String).input()).input(),
     );
   }
 }

@@ -56,14 +56,14 @@ class InstanceReplicaSet {
 
   factory InstanceReplicaSet.fromMap(Map<String, dynamic> map) {
     return InstanceReplicaSet(
-      connectionDomain: map['connectionDomain'] == null ? null : (map['connectionDomain'] as String).input(),
-      connectionPort: map['connectionPort'] == null ? null : (map['connectionPort'] as String).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
-      replicaSetRole: map['replicaSetRole'] == null ? null : (map['replicaSetRole'] as String).input(),
-      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
-      vpcCloudInstanceId: map['vpcCloudInstanceId'] == null ? null : (map['vpcCloudInstanceId'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      connectionDomain: map['connectionDomain'] == null ? null : (map['connectionDomain']! as String).input(),
+      connectionPort: map['connectionPort'] == null ? null : (map['connectionPort']! as String).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType']! as String).input(),
+      replicaSetRole: map['replicaSetRole'] == null ? null : (map['replicaSetRole']! as String).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId']! as String).input(),
+      vpcCloudInstanceId: map['vpcCloudInstanceId'] == null ? null : (map['vpcCloudInstanceId']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

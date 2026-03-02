@@ -35,7 +35,7 @@ class GetDiscoveredServiceArgs {
   factory GetDiscoveredServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetDiscoveredServiceArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serviceUri: (map['serviceUri'] as String).input(),
     );
   }

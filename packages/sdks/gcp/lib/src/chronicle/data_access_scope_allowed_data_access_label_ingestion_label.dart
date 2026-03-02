@@ -28,7 +28,7 @@ class DataAccessScopeAllowedDataAccessLabelIngestionLabel {
   factory DataAccessScopeAllowedDataAccessLabelIngestionLabel.fromMap(Map<String, dynamic> map) {
     return DataAccessScopeAllowedDataAccessLabelIngestionLabel(
       ingestionLabelKey: (map['ingestionLabelKey'] as String).input(),
-      ingestionLabelValue: map['ingestionLabelValue'] == null ? null : (map['ingestionLabelValue'] as String).input(),
+      ingestionLabelValue: map['ingestionLabelValue'] == null ? null : (map['ingestionLabelValue']! as String).input(),
     );
   }
 }

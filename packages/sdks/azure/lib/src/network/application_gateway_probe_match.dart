@@ -25,7 +25,7 @@ class ApplicationGatewayProbeMatch {
 
   factory ApplicationGatewayProbeMatch.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayProbeMatch(
-      body: map['body'] == null ? null : (map['body'] as String).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
       statusCodes: ((map['statusCodes'] as List).cast<String>()).input(),
     );
   }

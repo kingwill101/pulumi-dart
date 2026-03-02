@@ -27,8 +27,8 @@ class InstanceTemplateDiskDiskEncryptionKey {
 
   factory InstanceTemplateDiskDiskEncryptionKey.fromMap(Map<String, dynamic> map) {
     return InstanceTemplateDiskDiskEncryptionKey(
-      kmsKeySelfLink: map['kmsKeySelfLink'] == null ? null : (map['kmsKeySelfLink'] as String).input(),
-      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : (map['kmsKeyServiceAccount'] as String).input(),
+      kmsKeySelfLink: map['kmsKeySelfLink'] == null ? null : (map['kmsKeySelfLink']! as String).input(),
+      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : (map['kmsKeyServiceAccount']! as String).input(),
     );
   }
 }

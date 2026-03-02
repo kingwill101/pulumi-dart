@@ -25,8 +25,8 @@ class WebhookAuthenticationConfiguration {
 
   factory WebhookAuthenticationConfiguration.fromMap(Map<String, dynamic> map) {
     return WebhookAuthenticationConfiguration(
-      allowedIpRange: map['allowedIpRange'] == null ? null : (map['allowedIpRange'] as String).input(),
-      secretToken: map['secretToken'] == null ? null : (map['secretToken'] as String).input(),
+      allowedIpRange: map['allowedIpRange'] == null ? null : ((map['allowedIpRange'] as String).input()).input(),
+      secretToken: map['secretToken'] == null ? null : ((map['secretToken'] as String).input()).input(),
     );
   }
 }

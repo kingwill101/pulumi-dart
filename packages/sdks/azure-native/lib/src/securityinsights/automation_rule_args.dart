@@ -57,7 +57,7 @@ class AutomationRuleArgs {
   factory AutomationRuleArgs.fromMap(Map<String, dynamic> map) {
     return AutomationRuleArgs(
       actions: (pulumi.Input.decodeList<AutomationRuleAddIncidentTaskAction>(map['actions'], (value) => AutomationRuleAddIncidentTaskAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      automationRuleId: map['automationRuleId'] == null ? null : (map['automationRuleId'] as String).input(),
+      automationRuleId: map['automationRuleId'] == null ? null : (map['automationRuleId']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       order: (map['order'] as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

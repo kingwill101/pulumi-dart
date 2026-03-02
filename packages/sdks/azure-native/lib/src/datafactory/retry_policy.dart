@@ -26,8 +26,8 @@ class RetryPolicy {
 
   factory RetryPolicy.fromMap(Map<String, dynamic> map) {
     return RetryPolicy(
-      count: map['count'] == null ? null : (map['count']).input(),
-      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds'] as int).input(),
+      count: map['count'] == null ? null : (map['count']!).input(),
+      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds']! as int).input(),
     );
   }
 }

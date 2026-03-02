@@ -21,7 +21,7 @@ class DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputs {
 
   factory DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputs.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputs(
-      s3Output: (DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputsS3Output.fromMap((map['s3Output'] as Map).cast<String, dynamic>())).input(),
+      s3Output: (DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputsS3Output.fromMap((map['s3Output']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

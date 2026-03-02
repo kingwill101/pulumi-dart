@@ -72,16 +72,16 @@ class ISCSIVolumeSource {
 
   factory ISCSIVolumeSource.fromMap(Map<String, dynamic> map) {
     return ISCSIVolumeSource(
-      chapAuthDiscovery: map['chapAuthDiscovery'] == null ? null : (map['chapAuthDiscovery'] as bool).input(),
-      chapAuthSession: map['chapAuthSession'] == null ? null : (map['chapAuthSession'] as bool).input(),
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
-      initiatorName: map['initiatorName'] == null ? null : (map['initiatorName'] as String).input(),
+      chapAuthDiscovery: map['chapAuthDiscovery'] == null ? null : (map['chapAuthDiscovery']! as bool).input(),
+      chapAuthSession: map['chapAuthSession'] == null ? null : (map['chapAuthSession']! as bool).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
+      initiatorName: map['initiatorName'] == null ? null : (map['initiatorName']! as String).input(),
       iqn: (map['iqn'] as String).input(),
-      iscsiInterface: map['iscsiInterface'] == null ? null : (map['iscsiInterface'] as String).input(),
+      iscsiInterface: map['iscsiInterface'] == null ? null : (map['iscsiInterface']! as String).input(),
       lun: (map['lun'] as int).input(),
-      portals: map['portals'] == null ? null : ((map['portals'] as List).cast<String>()).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      secretRef: map['secretRef'] == null ? null : (LocalObjectReference.fromMap((map['secretRef'] as Map).cast<String, dynamic>())).input(),
+      portals: map['portals'] == null ? null : ((map['portals']! as List).cast<String>()).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      secretRef: map['secretRef'] == null ? null : (LocalObjectReference.fromMap((map['secretRef']! as Map).cast<String, dynamic>())).input(),
       targetPortal: (map['targetPortal'] as String).input(),
     );
   }

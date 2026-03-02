@@ -44,11 +44,11 @@ class PortBinding {
 
   factory PortBinding.fromMap(Map<String, dynamic> map) {
     return PortBinding(
-      hostId: map['hostId'] == null ? null : (map['hostId'] as String).input(),
-      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
-      vifDetails: map['vifDetails'] == null ? null : ((map['vifDetails'] as Map).cast<String, String>()).input(),
-      vifType: map['vifType'] == null ? null : (map['vifType'] as String).input(),
-      vnicType: map['vnicType'] == null ? null : (map['vnicType'] as String).input(),
+      hostId: map['hostId'] == null ? null : (map['hostId']! as String).input(),
+      profile: map['profile'] == null ? null : (map['profile']! as String).input(),
+      vifDetails: map['vifDetails'] == null ? null : ((map['vifDetails']! as Map).cast<String, String>()).input(),
+      vifType: map['vifType'] == null ? null : (map['vifType']! as String).input(),
+      vnicType: map['vnicType'] == null ? null : (map['vnicType']! as String).input(),
     );
   }
 }

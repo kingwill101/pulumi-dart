@@ -21,7 +21,7 @@ class RollingUpdateDaemonSetAppsV1beta2 {
 
   factory RollingUpdateDaemonSetAppsV1beta2.fromMap(Map<String, dynamic> map) {
     return RollingUpdateDaemonSetAppsV1beta2(
-      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable'] as int).input(),
+      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable']! as int).input(),
     );
   }
 }

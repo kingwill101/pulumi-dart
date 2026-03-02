@@ -22,7 +22,7 @@ class Authority {
 
   factory Authority.fromMap(Map<String, dynamic> map) {
     return Authority(
-      hint: map['hint'] == null ? null : (HintContaineranalysisV1beta1.fromMap((map['hint'] as Map).cast<String, dynamic>())).input(),
+      hint: map['hint'] == null ? null : (HintContaineranalysisV1beta1.fromMap((map['hint']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

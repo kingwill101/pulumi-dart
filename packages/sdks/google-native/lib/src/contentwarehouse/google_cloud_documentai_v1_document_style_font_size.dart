@@ -26,8 +26,8 @@ class GoogleCloudDocumentaiV1DocumentStyleFontSize {
 
   factory GoogleCloudDocumentaiV1DocumentStyleFontSize.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentStyleFontSize(
-      size: map['size'] == null ? null : (map['size'] as double).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      size: map['size'] == null ? null : (map['size']! as double).input(),
+      unit: map['unit'] == null ? null : (map['unit']! as String).input(),
     );
   }
 }

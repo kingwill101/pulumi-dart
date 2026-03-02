@@ -47,7 +47,7 @@ class RouterRouteArgs {
     return RouterRouteArgs(
       destinationCidr: (map['destinationCidr'] as String).input(),
       nextHop: (map['nextHop'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       routerId: (map['routerId'] as String).input(),
     );
   }

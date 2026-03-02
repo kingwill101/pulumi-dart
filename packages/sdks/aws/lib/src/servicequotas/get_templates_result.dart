@@ -38,7 +38,7 @@ class GetTemplatesResult {
       awsRegion: map['awsRegion'] == null ? null : map['awsRegion'] as String,
       id: map['id'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      templates: pulumi.Input.decodeList<GetTemplatesTemplate>(map['templates'], (value) => GetTemplatesTemplate.fromMap((value as Map).cast<String, dynamic>())),
+      templates: pulumi.Input.decodeList<GetTemplatesTemplate>(map['templates']!, (value) => GetTemplatesTemplate.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

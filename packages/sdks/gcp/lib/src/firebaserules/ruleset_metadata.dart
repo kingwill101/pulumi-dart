@@ -20,7 +20,7 @@ class RulesetMetadata {
 
   factory RulesetMetadata.fromMap(Map<String, dynamic> map) {
     return RulesetMetadata(
-      services: map['services'] == null ? null : ((map['services'] as List).cast<String>()).input(),
+      services: map['services'] == null ? null : ((map['services']! as List).cast<String>()).input(),
     );
   }
 }

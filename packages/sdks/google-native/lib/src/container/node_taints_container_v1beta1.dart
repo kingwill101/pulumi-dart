@@ -22,7 +22,7 @@ class NodeTaintsContainerV1beta1 {
 
   factory NodeTaintsContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NodeTaintsContainerV1beta1(
-      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<NodeTaintContainerV1beta1>(map['taints'], (value) => NodeTaintContainerV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<NodeTaintContainerV1beta1>(map['taints']!, (value) => NodeTaintContainerV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

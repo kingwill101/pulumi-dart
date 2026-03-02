@@ -35,7 +35,7 @@ class FunctionEventTrigger {
   factory FunctionEventTrigger.fromMap(Map<String, dynamic> map) {
     return FunctionEventTrigger(
       eventType: (map['eventType'] as String).input(),
-      failurePolicy: map['failurePolicy'] == null ? null : (FunctionEventTriggerFailurePolicy.fromMap((map['failurePolicy'] as Map).cast<String, dynamic>())).input(),
+      failurePolicy: map['failurePolicy'] == null ? null : (FunctionEventTriggerFailurePolicy.fromMap((map['failurePolicy']! as Map).cast<String, dynamic>())).input(),
       resource: (map['resource'] as String).input(),
     );
   }

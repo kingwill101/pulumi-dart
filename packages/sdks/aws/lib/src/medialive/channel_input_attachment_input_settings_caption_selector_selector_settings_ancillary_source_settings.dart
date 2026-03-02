@@ -20,7 +20,7 @@ class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsAncillar
 
   factory ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsAncillarySourceSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsAncillarySourceSettings(
-      sourceAncillaryChannelNumber: map['sourceAncillaryChannelNumber'] == null ? null : (map['sourceAncillaryChannelNumber'] as int).input(),
+      sourceAncillaryChannelNumber: map['sourceAncillaryChannelNumber'] == null ? null : ((map['sourceAncillaryChannelNumber'] as int).input()).input(),
     );
   }
 }

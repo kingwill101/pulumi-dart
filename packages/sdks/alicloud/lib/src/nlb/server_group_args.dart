@@ -110,19 +110,19 @@ class ServerGroupArgs {
 
   factory ServerGroupArgs.fromMap(Map<String, dynamic> map) {
     return ServerGroupArgs(
-      addressIpVersion: map['addressIpVersion'] == null ? null : (map['addressIpVersion'] as String).input(),
-      anyPortEnabled: map['anyPortEnabled'] == null ? null : (map['anyPortEnabled'] as bool).input(),
-      connectionDrain: map['connectionDrain'] == null ? null : (map['connectionDrain'] as bool).input(),
-      connectionDrainEnabled: map['connectionDrainEnabled'] == null ? null : (map['connectionDrainEnabled'] as bool).input(),
-      connectionDrainTimeout: map['connectionDrainTimeout'] == null ? null : (map['connectionDrainTimeout'] as int).input(),
-      healthCheck: map['healthCheck'] == null ? null : (ServerGroupHealthCheck.fromMap((map['healthCheck'] as Map).cast<String, dynamic>())).input(),
-      preserveClientIpEnabled: map['preserveClientIpEnabled'] == null ? null : (map['preserveClientIpEnabled'] as bool).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      scheduler: map['scheduler'] == null ? null : (map['scheduler'] as String).input(),
+      addressIpVersion: map['addressIpVersion'] == null ? null : (map['addressIpVersion']! as String).input(),
+      anyPortEnabled: map['anyPortEnabled'] == null ? null : (map['anyPortEnabled']! as bool).input(),
+      connectionDrain: map['connectionDrain'] == null ? null : (map['connectionDrain']! as bool).input(),
+      connectionDrainEnabled: map['connectionDrainEnabled'] == null ? null : (map['connectionDrainEnabled']! as bool).input(),
+      connectionDrainTimeout: map['connectionDrainTimeout'] == null ? null : (map['connectionDrainTimeout']! as int).input(),
+      healthCheck: map['healthCheck'] == null ? null : (ServerGroupHealthCheck.fromMap((map['healthCheck']! as Map).cast<String, dynamic>())).input(),
+      preserveClientIpEnabled: map['preserveClientIpEnabled'] == null ? null : (map['preserveClientIpEnabled']! as bool).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      scheduler: map['scheduler'] == null ? null : (map['scheduler']! as String).input(),
       serverGroupName: (map['serverGroupName'] as String).input(),
-      serverGroupType: map['serverGroupType'] == null ? null : (map['serverGroupType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      serverGroupType: map['serverGroupType'] == null ? null : (map['serverGroupType']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

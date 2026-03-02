@@ -49,12 +49,12 @@ class WindowsConfiguration {
 
   factory WindowsConfiguration.fromMap(Map<String, dynamic> map) {
     return WindowsConfiguration(
-      additionalUnattendContent: map['additionalUnattendContent'] == null ? null : (pulumi.Input.decodeList<AdditionalUnattendContent>(map['additionalUnattendContent'], (value) => AdditionalUnattendContent.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableAutomaticUpdates: map['enableAutomaticUpdates'] == null ? null : (map['enableAutomaticUpdates'] as bool).input(),
-      patchSettings: map['patchSettings'] == null ? null : (PatchSettings.fromMap((map['patchSettings'] as Map).cast<String, dynamic>())).input(),
-      provisionVMAgent: map['provisionVMAgent'] == null ? null : (map['provisionVMAgent'] as bool).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
-      winRM: map['winRM'] == null ? null : (WinRMConfiguration.fromMap((map['winRM'] as Map).cast<String, dynamic>())).input(),
+      additionalUnattendContent: map['additionalUnattendContent'] == null ? null : (pulumi.Input.decodeList<AdditionalUnattendContent>(map['additionalUnattendContent']!, (value) => AdditionalUnattendContent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableAutomaticUpdates: map['enableAutomaticUpdates'] == null ? null : (map['enableAutomaticUpdates']! as bool).input(),
+      patchSettings: map['patchSettings'] == null ? null : (PatchSettings.fromMap((map['patchSettings']! as Map).cast<String, dynamic>())).input(),
+      provisionVMAgent: map['provisionVMAgent'] == null ? null : (map['provisionVMAgent']! as bool).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      winRM: map['winRM'] == null ? null : (WinRMConfiguration.fromMap((map['winRM']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

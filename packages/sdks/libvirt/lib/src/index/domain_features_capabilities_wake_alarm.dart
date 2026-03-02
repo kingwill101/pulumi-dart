@@ -20,7 +20,7 @@ class DomainFeaturesCapabilitiesWakeAlarm {
 
   factory DomainFeaturesCapabilitiesWakeAlarm.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesWakeAlarm(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

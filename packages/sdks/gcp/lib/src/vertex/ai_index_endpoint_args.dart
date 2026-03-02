@@ -74,15 +74,15 @@ class AiIndexEndpointArgs {
 
   factory AiIndexEndpointArgs.fromMap(Map<String, dynamic> map) {
     return AiIndexEndpointArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (AiIndexEndpointEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : (AiIndexEndpointPrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      publicEndpointEnabled: map['publicEndpointEnabled'] == null ? null : (map['publicEndpointEnabled'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (AiIndexEndpointEncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : (AiIndexEndpointPrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      publicEndpointEnabled: map['publicEndpointEnabled'] == null ? null : (map['publicEndpointEnabled']! as bool).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

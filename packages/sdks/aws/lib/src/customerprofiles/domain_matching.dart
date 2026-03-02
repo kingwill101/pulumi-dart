@@ -38,10 +38,10 @@ class DomainMatching {
 
   factory DomainMatching.fromMap(Map<String, dynamic> map) {
     return DomainMatching(
-      autoMerging: map['autoMerging'] == null ? null : (DomainMatchingAutoMerging.fromMap((map['autoMerging'] as Map).cast<String, dynamic>())).input(),
+      autoMerging: map['autoMerging'] == null ? null : ((DomainMatchingAutoMerging.fromMap((map['autoMerging']! as Map).cast<String, dynamic>())).input()).input(),
       enabled: (map['enabled'] as bool).input(),
-      exportingConfig: map['exportingConfig'] == null ? null : (DomainMatchingExportingConfig.fromMap((map['exportingConfig'] as Map).cast<String, dynamic>())).input(),
-      jobSchedule: map['jobSchedule'] == null ? null : (DomainMatchingJobSchedule.fromMap((map['jobSchedule'] as Map).cast<String, dynamic>())).input(),
+      exportingConfig: map['exportingConfig'] == null ? null : ((DomainMatchingExportingConfig.fromMap((map['exportingConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      jobSchedule: map['jobSchedule'] == null ? null : ((DomainMatchingJobSchedule.fromMap((map['jobSchedule']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

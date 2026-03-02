@@ -56,14 +56,14 @@ class SnatEntryState {
 
   factory SnatEntryState.fromMap(Map<String, dynamic> map) {
     return SnatEntryState(
-      eipAffinity: map['eipAffinity'] == null ? null : (map['eipAffinity'] as int).input(),
-      snatEntryId: map['snatEntryId'] == null ? null : (map['snatEntryId'] as String).input(),
-      snatEntryName: map['snatEntryName'] == null ? null : (map['snatEntryName'] as String).input(),
-      snatIp: map['snatIp'] == null ? null : (map['snatIp'] as String).input(),
-      snatTableId: map['snatTableId'] == null ? null : (map['snatTableId'] as String).input(),
-      sourceCidr: map['sourceCidr'] == null ? null : (map['sourceCidr'] as String).input(),
-      sourceVswitchId: map['sourceVswitchId'] == null ? null : (map['sourceVswitchId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      eipAffinity: map['eipAffinity'] == null ? null : (map['eipAffinity']! as int).input(),
+      snatEntryId: map['snatEntryId'] == null ? null : (map['snatEntryId']! as String).input(),
+      snatEntryName: map['snatEntryName'] == null ? null : (map['snatEntryName']! as String).input(),
+      snatIp: map['snatIp'] == null ? null : (map['snatIp']! as String).input(),
+      snatTableId: map['snatTableId'] == null ? null : (map['snatTableId']! as String).input(),
+      sourceCidr: map['sourceCidr'] == null ? null : (map['sourceCidr']! as String).input(),
+      sourceVswitchId: map['sourceVswitchId'] == null ? null : (map['sourceVswitchId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

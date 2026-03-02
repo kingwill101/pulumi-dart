@@ -44,10 +44,10 @@ class GetInternetGatewayArgs {
 
   factory GetInternetGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetInternetGatewayArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetInternetGatewayFilter>(map['filters'], (value) => GetInternetGatewayFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      internetGatewayId: map['internetGatewayId'] == null ? null : (map['internetGatewayId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetInternetGatewayFilter>(map['filters']!, (value) => GetInternetGatewayFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      internetGatewayId: map['internetGatewayId'] == null ? null : ((map['internetGatewayId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

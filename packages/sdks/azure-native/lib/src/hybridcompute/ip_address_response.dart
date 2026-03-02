@@ -32,8 +32,8 @@ class IpAddressResponse {
 
   factory IpAddressResponse.fromMap(Map<String, dynamic> map) {
     return IpAddressResponse(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      ipAddressVersion: map['ipAddressVersion'] == null ? null : (map['ipAddressVersion'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      ipAddressVersion: map['ipAddressVersion'] == null ? null : (map['ipAddressVersion']! as String).input(),
       subnet: (SubnetResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
     );
   }

@@ -31,7 +31,7 @@ class GetKMSCryptoKeyVersionArgs {
   factory GetKMSCryptoKeyVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetKMSCryptoKeyVersionArgs(
       cryptoKey: (map['cryptoKey'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

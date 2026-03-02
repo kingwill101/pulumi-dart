@@ -31,9 +31,9 @@ class ConnectionTrackingSpecification {
 
   factory ConnectionTrackingSpecification.fromMap(Map<String, dynamic> map) {
     return ConnectionTrackingSpecification(
-      tcpEstablishedTimeout: map['tcpEstablishedTimeout'] == null ? null : (map['tcpEstablishedTimeout'] as int).input(),
-      udpStreamTimeout: map['udpStreamTimeout'] == null ? null : (map['udpStreamTimeout'] as int).input(),
-      udpTimeout: map['udpTimeout'] == null ? null : (map['udpTimeout'] as int).input(),
+      tcpEstablishedTimeout: map['tcpEstablishedTimeout'] == null ? null : (map['tcpEstablishedTimeout']! as int).input(),
+      udpStreamTimeout: map['udpStreamTimeout'] == null ? null : (map['udpStreamTimeout']! as int).input(),
+      udpTimeout: map['udpTimeout'] == null ? null : (map['udpTimeout']! as int).input(),
     );
   }
 }

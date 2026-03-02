@@ -60,15 +60,15 @@ class EventSourceV2SourceKafkaParameters {
 
   factory EventSourceV2SourceKafkaParameters.fromMap(Map<String, dynamic> map) {
     return EventSourceV2SourceKafkaParameters(
-      consumerGroup: map['consumerGroup'] == null ? null : (map['consumerGroup'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      offsetReset: map['offsetReset'] == null ? null : (map['offsetReset'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchIds: map['vswitchIds'] == null ? null : (map['vswitchIds'] as String).input(),
+      consumerGroup: map['consumerGroup'] == null ? null : (map['consumerGroup']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      offsetReset: map['offsetReset'] == null ? null : (map['offsetReset']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId']! as String).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchIds: map['vswitchIds'] == null ? null : (map['vswitchIds']! as String).input(),
     );
   }
 }

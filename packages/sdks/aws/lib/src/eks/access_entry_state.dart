@@ -73,17 +73,17 @@ class AccessEntryState {
 
   factory AccessEntryState.fromMap(Map<String, dynamic> map) {
     return AccessEntryState(
-      accessEntryArn: map['accessEntryArn'] == null ? null : (map['accessEntryArn'] as String).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      kubernetesGroups: map['kubernetesGroups'] == null ? null : ((map['kubernetesGroups'] as List).cast<String>()).input(),
-      modifiedAt: map['modifiedAt'] == null ? null : (map['modifiedAt'] as String).input(),
-      principalArn: map['principalArn'] == null ? null : (map['principalArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      accessEntryArn: map['accessEntryArn'] == null ? null : ((map['accessEntryArn'] as String).input()).input(),
+      clusterName: map['clusterName'] == null ? null : ((map['clusterName'] as String).input()).input(),
+      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
+      kubernetesGroups: map['kubernetesGroups'] == null ? null : (((map['kubernetesGroups'] as List).cast<String>()).input()).input(),
+      modifiedAt: map['modifiedAt'] == null ? null : ((map['modifiedAt'] as String).input()).input(),
+      principalArn: map['principalArn'] == null ? null : ((map['principalArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      userName: map['userName'] == null ? null : ((map['userName'] as String).input()).input(),
     );
   }
 }

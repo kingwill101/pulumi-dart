@@ -29,7 +29,7 @@ class VpcPeeringArgs {
 
   factory VpcPeeringArgs.fromMap(Map<String, dynamic> map) {
     return VpcPeeringArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       vpcIds: ((map['vpcIds'] as List).cast<String>()).input(),
     );
   }

@@ -25,8 +25,8 @@ class DeveloperAppCredentialAttribute {
 
   factory DeveloperAppCredentialAttribute.fromMap(Map<String, dynamic> map) {
     return DeveloperAppCredentialAttribute(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

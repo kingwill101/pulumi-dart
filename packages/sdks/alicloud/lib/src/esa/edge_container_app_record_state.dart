@@ -36,10 +36,10 @@ class EdgeContainerAppRecordState {
 
   factory EdgeContainerAppRecordState.fromMap(Map<String, dynamic> map) {
     return EdgeContainerAppRecordState(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      recordName: map['recordName'] == null ? null : (map['recordName'] as String).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      recordName: map['recordName'] == null ? null : (map['recordName']! as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
     );
   }
 }

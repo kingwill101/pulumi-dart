@@ -21,7 +21,7 @@ class RemotePrivateEndpointConnectionResponse {
 
   factory RemotePrivateEndpointConnectionResponse.fromMap(Map<String, dynamic> map) {
     return RemotePrivateEndpointConnectionResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

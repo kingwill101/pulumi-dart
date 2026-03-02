@@ -37,8 +37,8 @@ class GetServersResult {
     return GetServersResult(
       id: map['id'] as String,
       servers: pulumi.Input.decodeList<GetServersServer>(map['servers'], (value) => GetServersServer.fromMap((value as Map).cast<String, dynamic>())),
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
-      withStatuses: map['withStatuses'] == null ? null : (map['withStatuses'] as List).cast<String>(),
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
+      withStatuses: map['withStatuses'] == null ? null : (map['withStatuses']! as List).cast<String>(),
     );
   }
 }

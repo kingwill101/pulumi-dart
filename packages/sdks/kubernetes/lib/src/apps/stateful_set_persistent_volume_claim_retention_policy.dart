@@ -26,8 +26,8 @@ class StatefulSetPersistentVolumeClaimRetentionPolicy {
 
   factory StatefulSetPersistentVolumeClaimRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return StatefulSetPersistentVolumeClaimRetentionPolicy(
-      whenDeleted: map['whenDeleted'] == null ? null : (map['whenDeleted'] as String).input(),
-      whenScaled: map['whenScaled'] == null ? null : (map['whenScaled'] as String).input(),
+      whenDeleted: map['whenDeleted'] == null ? null : (map['whenDeleted']! as String).input(),
+      whenScaled: map['whenScaled'] == null ? null : (map['whenScaled']! as String).input(),
     );
   }
 }

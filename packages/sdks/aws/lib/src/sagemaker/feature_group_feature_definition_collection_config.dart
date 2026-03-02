@@ -20,7 +20,7 @@ class FeatureGroupFeatureDefinitionCollectionConfig {
 
   factory FeatureGroupFeatureDefinitionCollectionConfig.fromMap(Map<String, dynamic> map) {
     return FeatureGroupFeatureDefinitionCollectionConfig(
-      vectorConfig: map['vectorConfig'] == null ? null : (FeatureGroupFeatureDefinitionCollectionConfigVectorConfig.fromMap((map['vectorConfig'] as Map).cast<String, dynamic>())).input(),
+      vectorConfig: map['vectorConfig'] == null ? null : ((FeatureGroupFeatureDefinitionCollectionConfigVectorConfig.fromMap((map['vectorConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

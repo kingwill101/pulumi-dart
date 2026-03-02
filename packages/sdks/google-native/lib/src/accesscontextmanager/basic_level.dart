@@ -28,7 +28,7 @@ class BasicLevel {
 
   factory BasicLevel.fromMap(Map<String, dynamic> map) {
     return BasicLevel(
-      combiningFunction: map['combiningFunction'] == null ? null : (BasicLevelCombiningFunction.fromValue(map['combiningFunction'] as String)).input(),
+      combiningFunction: map['combiningFunction'] == null ? null : (BasicLevelCombiningFunction.fromValue(map['combiningFunction']! as String)).input(),
       conditions: (pulumi.Input.decodeList<Condition>(map['conditions'], (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

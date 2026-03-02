@@ -30,9 +30,9 @@ class BlockchainNodesEthereumDetailsAdditionalEndpoint {
 
   factory BlockchainNodesEthereumDetailsAdditionalEndpoint.fromMap(Map<String, dynamic> map) {
     return BlockchainNodesEthereumDetailsAdditionalEndpoint(
-      beaconApiEndpoint: map['beaconApiEndpoint'] == null ? null : (map['beaconApiEndpoint'] as String).input(),
-      beaconPrometheusMetricsApiEndpoint: map['beaconPrometheusMetricsApiEndpoint'] == null ? null : (map['beaconPrometheusMetricsApiEndpoint'] as String).input(),
-      executionClientPrometheusMetricsApiEndpoint: map['executionClientPrometheusMetricsApiEndpoint'] == null ? null : (map['executionClientPrometheusMetricsApiEndpoint'] as String).input(),
+      beaconApiEndpoint: map['beaconApiEndpoint'] == null ? null : (map['beaconApiEndpoint']! as String).input(),
+      beaconPrometheusMetricsApiEndpoint: map['beaconPrometheusMetricsApiEndpoint'] == null ? null : (map['beaconPrometheusMetricsApiEndpoint']! as String).input(),
+      executionClientPrometheusMetricsApiEndpoint: map['executionClientPrometheusMetricsApiEndpoint'] == null ? null : (map['executionClientPrometheusMetricsApiEndpoint']! as String).input(),
     );
   }
 }

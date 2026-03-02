@@ -32,9 +32,9 @@ class WidgetConfigHomepageSettingShortcut {
 
   factory WidgetConfigHomepageSettingShortcut.fromMap(Map<String, dynamic> map) {
     return WidgetConfigHomepageSettingShortcut(
-      destinationUri: map['destinationUri'] == null ? null : (map['destinationUri'] as String).input(),
-      icon: map['icon'] == null ? null : (WidgetConfigHomepageSettingShortcutIcon.fromMap((map['icon'] as Map).cast<String, dynamic>())).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      destinationUri: map['destinationUri'] == null ? null : (map['destinationUri']! as String).input(),
+      icon: map['icon'] == null ? null : (WidgetConfigHomepageSettingShortcutIcon.fromMap((map['icon']! as Map).cast<String, dynamic>())).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

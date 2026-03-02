@@ -26,8 +26,8 @@ class DataPlaneProxyProperties {
 
   factory DataPlaneProxyProperties.fromMap(Map<String, dynamic> map) {
     return DataPlaneProxyProperties(
-      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
-      privateLinkDelegation: map['privateLinkDelegation'] == null ? null : (map['privateLinkDelegation'] as String).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode']! as String).input(),
+      privateLinkDelegation: map['privateLinkDelegation'] == null ? null : (map['privateLinkDelegation']! as String).input(),
     );
   }
 }

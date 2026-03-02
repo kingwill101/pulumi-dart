@@ -48,13 +48,13 @@ class GetCheckStructuresResult {
 
   factory GetCheckStructuresResult.fromMap(Map<String, dynamic> map) {
     return GetCheckStructuresResult(
-      currentPage: map['currentPage'] == null ? null : map['currentPage'] as int,
+      currentPage: map['currentPage'] == null ? null : map['currentPage']! as int,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      lang: map['lang'] == null ? null : map['lang'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      lang: map['lang'] == null ? null : map['lang']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       structures: pulumi.Input.decodeList<GetCheckStructuresStructure>(map['structures'], (value) => GetCheckStructuresStructure.fromMap((value as Map).cast<String, dynamic>())),
-      taskSources: map['taskSources'] == null ? null : (map['taskSources'] as List).cast<String>(),
+      taskSources: map['taskSources'] == null ? null : (map['taskSources']! as List).cast<String>(),
     );
   }
 }

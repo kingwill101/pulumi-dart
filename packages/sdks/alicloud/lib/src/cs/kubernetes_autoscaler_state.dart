@@ -47,12 +47,12 @@ class KubernetesAutoscalerState {
 
   factory KubernetesAutoscalerState.fromMap(Map<String, dynamic> map) {
     return KubernetesAutoscalerState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      coolDownDuration: map['coolDownDuration'] == null ? null : (map['coolDownDuration'] as String).input(),
-      deferScaleInDuration: map['deferScaleInDuration'] == null ? null : (map['deferScaleInDuration'] as String).input(),
-      nodepools: map['nodepools'] == null ? null : (pulumi.Input.decodeList<KubernetesAutoscalerNodepool>(map['nodepools'], (value) => KubernetesAutoscalerNodepool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      useEcsRamRoleToken: map['useEcsRamRoleToken'] == null ? null : (map['useEcsRamRoleToken'] as bool).input(),
-      utilization: map['utilization'] == null ? null : (map['utilization'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      coolDownDuration: map['coolDownDuration'] == null ? null : (map['coolDownDuration']! as String).input(),
+      deferScaleInDuration: map['deferScaleInDuration'] == null ? null : (map['deferScaleInDuration']! as String).input(),
+      nodepools: map['nodepools'] == null ? null : (pulumi.Input.decodeList<KubernetesAutoscalerNodepool>(map['nodepools']!, (value) => KubernetesAutoscalerNodepool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      useEcsRamRoleToken: map['useEcsRamRoleToken'] == null ? null : (map['useEcsRamRoleToken']! as bool).input(),
+      utilization: map['utilization'] == null ? null : (map['utilization']! as String).input(),
     );
   }
 }

@@ -100,15 +100,15 @@ class GetUsersUser {
 
   factory GetUsersUser.fromMap(Map<String, dynamic> map) {
     return GetUsersUser(
-      addresses: (pulumi.Input.decodeList<GetUsersUserAddress>(map['addresses'], (value) => GetUsersUserAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      addresses: (pulumi.Input.decodeList<GetUsersUserAddress>(map['addresses']!, (value) => GetUsersUserAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
       displayName: (map['displayName'] as String).input(),
-      emails: (pulumi.Input.decodeList<GetUsersUserEmail>(map['emails'], (value) => GetUsersUserEmail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      externalIds: (pulumi.Input.decodeList<GetUsersUserExternalId>(map['externalIds'], (value) => GetUsersUserExternalId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      emails: (pulumi.Input.decodeList<GetUsersUserEmail>(map['emails']!, (value) => GetUsersUserEmail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      externalIds: (pulumi.Input.decodeList<GetUsersUserExternalId>(map['externalIds']!, (value) => GetUsersUserExternalId.fromMap((value as Map).cast<String, dynamic>()))).input(),
       identityStoreId: (map['identityStoreId'] as String).input(),
       locale: (map['locale'] as String).input(),
-      names: (pulumi.Input.decodeList<GetUsersUserName>(map['names'], (value) => GetUsersUserName.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      names: (pulumi.Input.decodeList<GetUsersUserName>(map['names']!, (value) => GetUsersUserName.fromMap((value as Map).cast<String, dynamic>()))).input(),
       nickname: (map['nickname'] as String).input(),
-      phoneNumbers: (pulumi.Input.decodeList<GetUsersUserPhoneNumber>(map['phoneNumbers'], (value) => GetUsersUserPhoneNumber.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      phoneNumbers: (pulumi.Input.decodeList<GetUsersUserPhoneNumber>(map['phoneNumbers']!, (value) => GetUsersUserPhoneNumber.fromMap((value as Map).cast<String, dynamic>()))).input(),
       preferredLanguage: (map['preferredLanguage'] as String).input(),
       profileUrl: (map['profileUrl'] as String).input(),
       timezone: (map['timezone'] as String).input(),

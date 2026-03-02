@@ -20,7 +20,7 @@ class ListNamedValueResult {
 
   factory ListNamedValueResult.fromMap(Map<String, dynamic> map) {
     return ListNamedValueResult(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : map['value']! as String,
     );
   }
 }

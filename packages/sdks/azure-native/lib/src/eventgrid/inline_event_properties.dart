@@ -36,10 +36,10 @@ class InlineEventProperties {
 
   factory InlineEventProperties.fromMap(Map<String, dynamic> map) {
     return InlineEventProperties(
-      dataSchemaUrl: map['dataSchemaUrl'] == null ? null : (map['dataSchemaUrl'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      documentationUrl: map['documentationUrl'] == null ? null : (map['documentationUrl'] as String).input(),
+      dataSchemaUrl: map['dataSchemaUrl'] == null ? null : (map['dataSchemaUrl']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      documentationUrl: map['documentationUrl'] == null ? null : (map['documentationUrl']! as String).input(),
     );
   }
 }

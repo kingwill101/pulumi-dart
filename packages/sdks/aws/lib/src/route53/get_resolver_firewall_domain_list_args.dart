@@ -30,7 +30,7 @@ class GetResolverFirewallDomainListArgs {
   factory GetResolverFirewallDomainListArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverFirewallDomainListArgs(
       firewallDomainListId: (map['firewallDomainListId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

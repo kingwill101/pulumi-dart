@@ -44,11 +44,11 @@ class GetJobDefinitionArgs {
 
   factory GetJobDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionArgs(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      revision: map['revision'] == null ? null : ((map['revision'] as int).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

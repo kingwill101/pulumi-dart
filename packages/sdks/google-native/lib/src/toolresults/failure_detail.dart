@@ -51,13 +51,13 @@ class FailureDetail {
 
   factory FailureDetail.fromMap(Map<String, dynamic> map) {
     return FailureDetail(
-      crashed: map['crashed'] == null ? null : (map['crashed'] as bool).input(),
-      deviceOutOfMemory: map['deviceOutOfMemory'] == null ? null : (map['deviceOutOfMemory'] as bool).input(),
-      failedRoboscript: map['failedRoboscript'] == null ? null : (map['failedRoboscript'] as bool).input(),
-      notInstalled: map['notInstalled'] == null ? null : (map['notInstalled'] as bool).input(),
-      otherNativeCrash: map['otherNativeCrash'] == null ? null : (map['otherNativeCrash'] as bool).input(),
-      timedOut: map['timedOut'] == null ? null : (map['timedOut'] as bool).input(),
-      unableToCrawl: map['unableToCrawl'] == null ? null : (map['unableToCrawl'] as bool).input(),
+      crashed: map['crashed'] == null ? null : (map['crashed']! as bool).input(),
+      deviceOutOfMemory: map['deviceOutOfMemory'] == null ? null : (map['deviceOutOfMemory']! as bool).input(),
+      failedRoboscript: map['failedRoboscript'] == null ? null : (map['failedRoboscript']! as bool).input(),
+      notInstalled: map['notInstalled'] == null ? null : (map['notInstalled']! as bool).input(),
+      otherNativeCrash: map['otherNativeCrash'] == null ? null : (map['otherNativeCrash']! as bool).input(),
+      timedOut: map['timedOut'] == null ? null : (map['timedOut']! as bool).input(),
+      unableToCrawl: map['unableToCrawl'] == null ? null : (map['unableToCrawl']! as bool).input(),
     );
   }
 }

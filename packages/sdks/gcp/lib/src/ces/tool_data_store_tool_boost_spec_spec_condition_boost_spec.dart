@@ -45,8 +45,8 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpec {
 
   factory ToolDataStoreToolBoostSpecSpecConditionBoostSpec.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreToolBoostSpecSpecConditionBoostSpec(
-      boost: map['boost'] == null ? null : (map['boost'] as double).input(),
-      boostControlSpec: map['boostControlSpec'] == null ? null : (ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec.fromMap((map['boostControlSpec'] as Map).cast<String, dynamic>())).input(),
+      boost: map['boost'] == null ? null : (map['boost']! as double).input(),
+      boostControlSpec: map['boostControlSpec'] == null ? null : (ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec.fromMap((map['boostControlSpec']! as Map).cast<String, dynamic>())).input(),
       condition: (map['condition'] as String).input(),
     );
   }

@@ -27,8 +27,8 @@ class ListWebhookEventsResult {
 
   factory ListWebhookEventsResult.fromMap(Map<String, dynamic> map) {
     return ListWebhookEventsResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<EventResponse>(map['value'], (value) => EventResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<EventResponse>(map['value']!, (value) => EventResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

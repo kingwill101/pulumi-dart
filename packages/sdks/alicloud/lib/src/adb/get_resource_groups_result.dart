@@ -46,11 +46,11 @@ class GetResourceGroupsResult {
   factory GetResourceGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetResourceGroupsResult(
       dbClusterId: map['dbClusterId'] as String,
-      groupName: map['groupName'] == null ? null : map['groupName'] as String,
+      groupName: map['groupName'] == null ? null : map['groupName']! as String,
       groups: pulumi.Input.decodeList<GetResourceGroupsGroup>(map['groups'], (value) => GetResourceGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

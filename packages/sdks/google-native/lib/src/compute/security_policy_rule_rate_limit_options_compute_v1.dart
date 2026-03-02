@@ -64,15 +64,15 @@ class SecurityPolicyRuleRateLimitOptionsComputeV1 {
 
   factory SecurityPolicyRuleRateLimitOptionsComputeV1.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleRateLimitOptionsComputeV1(
-      banDurationSec: map['banDurationSec'] == null ? null : (map['banDurationSec'] as int).input(),
-      banThreshold: map['banThreshold'] == null ? null : (SecurityPolicyRuleRateLimitOptionsThresholdComputeV1.fromMap((map['banThreshold'] as Map).cast<String, dynamic>())).input(),
-      conformAction: map['conformAction'] == null ? null : (map['conformAction'] as String).input(),
-      enforceOnKey: map['enforceOnKey'] == null ? null : (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeV1.fromValue(map['enforceOnKey'] as String)).input(),
-      enforceOnKeyConfigs: map['enforceOnKeyConfigs'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigComputeV1>(map['enforceOnKeyConfigs'], (value) => SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enforceOnKeyName: map['enforceOnKeyName'] == null ? null : (map['enforceOnKeyName'] as String).input(),
-      exceedAction: map['exceedAction'] == null ? null : (map['exceedAction'] as String).input(),
-      exceedRedirectOptions: map['exceedRedirectOptions'] == null ? null : (SecurityPolicyRuleRedirectOptionsComputeV1.fromMap((map['exceedRedirectOptions'] as Map).cast<String, dynamic>())).input(),
-      rateLimitThreshold: map['rateLimitThreshold'] == null ? null : (SecurityPolicyRuleRateLimitOptionsThresholdComputeV1.fromMap((map['rateLimitThreshold'] as Map).cast<String, dynamic>())).input(),
+      banDurationSec: map['banDurationSec'] == null ? null : (map['banDurationSec']! as int).input(),
+      banThreshold: map['banThreshold'] == null ? null : (SecurityPolicyRuleRateLimitOptionsThresholdComputeV1.fromMap((map['banThreshold']! as Map).cast<String, dynamic>())).input(),
+      conformAction: map['conformAction'] == null ? null : (map['conformAction']! as String).input(),
+      enforceOnKey: map['enforceOnKey'] == null ? null : (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeV1.fromValue(map['enforceOnKey']! as String)).input(),
+      enforceOnKeyConfigs: map['enforceOnKeyConfigs'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigComputeV1>(map['enforceOnKeyConfigs']!, (value) => SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enforceOnKeyName: map['enforceOnKeyName'] == null ? null : (map['enforceOnKeyName']! as String).input(),
+      exceedAction: map['exceedAction'] == null ? null : (map['exceedAction']! as String).input(),
+      exceedRedirectOptions: map['exceedRedirectOptions'] == null ? null : (SecurityPolicyRuleRedirectOptionsComputeV1.fromMap((map['exceedRedirectOptions']! as Map).cast<String, dynamic>())).input(),
+      rateLimitThreshold: map['rateLimitThreshold'] == null ? null : (SecurityPolicyRuleRateLimitOptionsThresholdComputeV1.fromMap((map['rateLimitThreshold']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

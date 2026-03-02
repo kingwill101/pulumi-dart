@@ -37,10 +37,10 @@ class NetworkManagerConnectivityConfigurationAppliesToGroup {
 
   factory NetworkManagerConnectivityConfigurationAppliesToGroup.fromMap(Map<String, dynamic> map) {
     return NetworkManagerConnectivityConfigurationAppliesToGroup(
-      globalMeshEnabled: map['globalMeshEnabled'] == null ? null : (map['globalMeshEnabled'] as bool).input(),
+      globalMeshEnabled: map['globalMeshEnabled'] == null ? null : (map['globalMeshEnabled']! as bool).input(),
       groupConnectivity: (map['groupConnectivity'] as String).input(),
       networkGroupId: (map['networkGroupId'] as String).input(),
-      useHubGateway: map['useHubGateway'] == null ? null : (map['useHubGateway'] as bool).input(),
+      useHubGateway: map['useHubGateway'] == null ? null : (map['useHubGateway']! as bool).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class MetricRuleTemplateAlertTemplateEscalationsWarn {
 
   factory MetricRuleTemplateAlertTemplateEscalationsWarn.fromMap(Map<String, dynamic> map) {
     return MetricRuleTemplateAlertTemplateEscalationsWarn(
-      comparisonOperator: map['comparisonOperator'] == null ? null : (map['comparisonOperator'] as String).input(),
-      statistics: map['statistics'] == null ? null : (map['statistics'] as String).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold'] as String).input(),
-      times: map['times'] == null ? null : (map['times'] as String).input(),
+      comparisonOperator: map['comparisonOperator'] == null ? null : (map['comparisonOperator']! as String).input(),
+      statistics: map['statistics'] == null ? null : (map['statistics']! as String).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold']! as String).input(),
+      times: map['times'] == null ? null : (map['times']! as String).input(),
     );
   }
 }

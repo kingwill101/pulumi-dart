@@ -36,10 +36,10 @@ class DomainCacheConfig {
   factory DomainCacheConfig.fromMap(Map<String, dynamic> map) {
     return DomainCacheConfig(
       cacheContent: (map['cacheContent'] as String).input(),
-      cacheId: map['cacheId'] == null ? null : (map['cacheId'] as String).input(),
+      cacheId: map['cacheId'] == null ? null : (map['cacheId']! as String).input(),
       cacheType: (map['cacheType'] as String).input(),
       ttl: (map['ttl'] as int).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

@@ -33,7 +33,7 @@ class GetFeatureOnlineStoreAiplatformV1beta1Args {
     return GetFeatureOnlineStoreAiplatformV1beta1Args(
       featureOnlineStoreId: (map['featureOnlineStoreId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

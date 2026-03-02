@@ -30,8 +30,8 @@ class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeo
 
   factory V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchNextStepDialogAction.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranchNextStepDialogAction(
-      slotToElicit: map['slotToElicit'] == null ? null : (map['slotToElicit'] as String).input(),
-      suppressNextMessage: map['suppressNextMessage'] == null ? null : (map['suppressNextMessage'] as bool).input(),
+      slotToElicit: map['slotToElicit'] == null ? null : ((map['slotToElicit'] as String).input()).input(),
+      suppressNextMessage: map['suppressNextMessage'] == null ? null : ((map['suppressNextMessage'] as bool).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

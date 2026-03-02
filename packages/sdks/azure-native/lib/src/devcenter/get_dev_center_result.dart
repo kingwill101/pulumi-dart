@@ -86,16 +86,16 @@ class GetDevCenterResult {
     return GetDevCenterResult(
       azureApiVersion: map['azureApiVersion'] as String,
       devCenterUri: map['devCenterUri'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      encryption: map['encryption'] == null ? null : EncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
+      encryption: map['encryption'] == null ? null : EncryptionResponse.fromMap((map['encryption']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
       name: map['name'] as String,
-      projectCatalogSettings: map['projectCatalogSettings'] == null ? null : DevCenterProjectCatalogSettingsResponse.fromMap((map['projectCatalogSettings'] as Map).cast<String, dynamic>()),
+      projectCatalogSettings: map['projectCatalogSettings'] == null ? null : DevCenterProjectCatalogSettingsResponse.fromMap((map['projectCatalogSettings']! as Map).cast<String, dynamic>()),
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

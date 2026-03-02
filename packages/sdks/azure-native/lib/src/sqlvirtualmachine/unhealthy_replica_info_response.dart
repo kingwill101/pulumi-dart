@@ -21,7 +21,7 @@ class UnhealthyReplicaInfoResponse {
 
   factory UnhealthyReplicaInfoResponse.fromMap(Map<String, dynamic> map) {
     return UnhealthyReplicaInfoResponse(
-      availabilityGroupName: map['availabilityGroupName'] == null ? null : (map['availabilityGroupName'] as String).input(),
+      availabilityGroupName: map['availabilityGroupName'] == null ? null : (map['availabilityGroupName']! as String).input(),
     );
   }
 }

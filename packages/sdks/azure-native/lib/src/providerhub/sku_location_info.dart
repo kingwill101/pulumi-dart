@@ -41,11 +41,11 @@ class SkuLocationInfo {
 
   factory SkuLocationInfo.fromMap(Map<String, dynamic> map) {
     return SkuLocationInfo(
-      extendedLocations: map['extendedLocations'] == null ? null : ((map['extendedLocations'] as List).cast<String>()).input(),
+      extendedLocations: map['extendedLocations'] == null ? null : ((map['extendedLocations']! as List).cast<String>()).input(),
       location: (map['location'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      zoneDetails: map['zoneDetails'] == null ? null : (pulumi.Input.decodeList<SkuZoneDetail>(map['zoneDetails'], (value) => SkuZoneDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      zoneDetails: map['zoneDetails'] == null ? null : (pulumi.Input.decodeList<SkuZoneDetail>(map['zoneDetails']!, (value) => SkuZoneDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

@@ -41,11 +41,11 @@ class DatasetKustoDatabaseState {
 
   factory DatasetKustoDatabaseState.fromMap(Map<String, dynamic> map) {
     return DatasetKustoDatabaseState(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      kustoClusterLocation: map['kustoClusterLocation'] == null ? null : (map['kustoClusterLocation'] as String).input(),
-      kustoDatabaseId: map['kustoDatabaseId'] == null ? null : (map['kustoDatabaseId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      shareId: map['shareId'] == null ? null : (map['shareId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      kustoClusterLocation: map['kustoClusterLocation'] == null ? null : (map['kustoClusterLocation']! as String).input(),
+      kustoDatabaseId: map['kustoDatabaseId'] == null ? null : (map['kustoDatabaseId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      shareId: map['shareId'] == null ? null : (map['shareId']! as String).input(),
     );
   }
 }

@@ -43,11 +43,11 @@ class TableItemState {
 
   factory TableItemState.fromMap(Map<String, dynamic> map) {
     return TableItemState(
-      hashKey: map['hashKey'] == null ? null : (map['hashKey'] as String).input(),
-      item: map['item'] == null ? null : (map['item'] as String).input(),
-      rangeKey: map['rangeKey'] == null ? null : (map['rangeKey'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      hashKey: map['hashKey'] == null ? null : ((map['hashKey'] as String).input()).input(),
+      item: map['item'] == null ? null : ((map['item'] as String).input()).input(),
+      rangeKey: map['rangeKey'] == null ? null : ((map['rangeKey'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tableName: map['tableName'] == null ? null : ((map['tableName'] as String).input()).input(),
     );
   }
 }

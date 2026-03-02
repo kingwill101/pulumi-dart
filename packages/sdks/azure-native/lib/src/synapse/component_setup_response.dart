@@ -34,7 +34,7 @@ class ComponentSetupResponse {
   factory ComponentSetupResponse.fromMap(Map<String, dynamic> map) {
     return ComponentSetupResponse(
       componentName: (map['componentName'] as String).input(),
-      licenseKey: map['licenseKey'] == null ? null : (SecureStringResponse.fromMap((map['licenseKey'] as Map).cast<String, dynamic>())).input(),
+      licenseKey: map['licenseKey'] == null ? null : (SecureStringResponse.fromMap((map['licenseKey']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

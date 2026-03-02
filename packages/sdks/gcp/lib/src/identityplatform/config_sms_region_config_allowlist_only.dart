@@ -20,7 +20,7 @@ class ConfigSmsRegionConfigAllowlistOnly {
 
   factory ConfigSmsRegionConfigAllowlistOnly.fromMap(Map<String, dynamic> map) {
     return ConfigSmsRegionConfigAllowlistOnly(
-      allowedRegions: map['allowedRegions'] == null ? null : ((map['allowedRegions'] as List).cast<String>()).input(),
+      allowedRegions: map['allowedRegions'] == null ? null : ((map['allowedRegions']! as List).cast<String>()).input(),
     );
   }
 }

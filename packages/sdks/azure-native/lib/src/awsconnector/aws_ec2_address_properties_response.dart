@@ -88,20 +88,20 @@ class AwsEc2AddressPropertiesResponse {
 
   factory AwsEc2AddressPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsEc2AddressPropertiesResponse(
-      allocationId: map['allocationId'] == null ? null : (map['allocationId'] as String).input(),
-      associationId: map['associationId'] == null ? null : (map['associationId'] as String).input(),
-      carrierIp: map['carrierIp'] == null ? null : (map['carrierIp'] as String).input(),
-      customerOwnedIp: map['customerOwnedIp'] == null ? null : (map['customerOwnedIp'] as String).input(),
-      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] == null ? null : (map['customerOwnedIpv4Pool'] as String).input(),
-      domain: map['domain'] == null ? null : (DomainTypeEnumValueResponse.fromMap((map['domain'] as Map).cast<String, dynamic>())).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      networkBorderGroup: map['networkBorderGroup'] == null ? null : (map['networkBorderGroup'] as String).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
-      networkInterfaceOwnerId: map['networkInterfaceOwnerId'] == null ? null : (map['networkInterfaceOwnerId'] as String).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
-      publicIp: map['publicIp'] == null ? null : (map['publicIp'] as String).input(),
-      publicIpv4Pool: map['publicIpv4Pool'] == null ? null : (map['publicIpv4Pool'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allocationId: map['allocationId'] == null ? null : (map['allocationId']! as String).input(),
+      associationId: map['associationId'] == null ? null : (map['associationId']! as String).input(),
+      carrierIp: map['carrierIp'] == null ? null : (map['carrierIp']! as String).input(),
+      customerOwnedIp: map['customerOwnedIp'] == null ? null : (map['customerOwnedIp']! as String).input(),
+      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] == null ? null : (map['customerOwnedIpv4Pool']! as String).input(),
+      domain: map['domain'] == null ? null : (DomainTypeEnumValueResponse.fromMap((map['domain']! as Map).cast<String, dynamic>())).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      networkBorderGroup: map['networkBorderGroup'] == null ? null : (map['networkBorderGroup']! as String).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId']! as String).input(),
+      networkInterfaceOwnerId: map['networkInterfaceOwnerId'] == null ? null : (map['networkInterfaceOwnerId']! as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
+      publicIp: map['publicIp'] == null ? null : (map['publicIp']! as String).input(),
+      publicIpv4Pool: map['publicIpv4Pool'] == null ? null : (map['publicIpv4Pool']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

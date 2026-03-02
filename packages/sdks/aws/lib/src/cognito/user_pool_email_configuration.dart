@@ -40,11 +40,11 @@ class UserPoolEmailConfiguration {
 
   factory UserPoolEmailConfiguration.fromMap(Map<String, dynamic> map) {
     return UserPoolEmailConfiguration(
-      configurationSet: map['configurationSet'] == null ? null : (map['configurationSet'] as String).input(),
-      emailSendingAccount: map['emailSendingAccount'] == null ? null : (map['emailSendingAccount'] as String).input(),
-      fromEmailAddress: map['fromEmailAddress'] == null ? null : (map['fromEmailAddress'] as String).input(),
-      replyToEmailAddress: map['replyToEmailAddress'] == null ? null : (map['replyToEmailAddress'] as String).input(),
-      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn'] as String).input(),
+      configurationSet: map['configurationSet'] == null ? null : ((map['configurationSet'] as String).input()).input(),
+      emailSendingAccount: map['emailSendingAccount'] == null ? null : ((map['emailSendingAccount'] as String).input()).input(),
+      fromEmailAddress: map['fromEmailAddress'] == null ? null : ((map['fromEmailAddress'] as String).input()).input(),
+      replyToEmailAddress: map['replyToEmailAddress'] == null ? null : ((map['replyToEmailAddress'] as String).input()).input(),
+      sourceArn: map['sourceArn'] == null ? null : ((map['sourceArn'] as String).input()).input(),
     );
   }
 }

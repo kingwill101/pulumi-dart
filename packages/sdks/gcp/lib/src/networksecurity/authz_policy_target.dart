@@ -28,7 +28,7 @@ class AuthzPolicyTarget {
   factory AuthzPolicyTarget.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyTarget(
       loadBalancingScheme: (map['loadBalancingScheme'] as String).input(),
-      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
+      resources: map['resources'] == null ? null : ((map['resources']! as List).cast<String>()).input(),
     );
   }
 }

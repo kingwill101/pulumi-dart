@@ -21,7 +21,7 @@ class BackendSubnetConfiguration {
 
   factory BackendSubnetConfiguration.fromMap(Map<String, dynamic> map) {
     return BackendSubnetConfiguration(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

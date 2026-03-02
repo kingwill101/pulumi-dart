@@ -63,11 +63,11 @@ class GetStaticSitePrivateEndpointConnectionResult {
     return GetStaticSitePrivateEndpointConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      ipAddresses: map['ipAddresses'] == null ? null : (map['ipAddresses'] as List).cast<String>(),
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      ipAddresses: map['ipAddresses'] == null ? null : (map['ipAddresses']! as List).cast<String>(),
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
-      privateEndpoint: map['privateEndpoint'] == null ? null : ArmIdWrapperResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>()),
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : PrivateLinkConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>()),
+      privateEndpoint: map['privateEndpoint'] == null ? null : ArmIdWrapperResponse.fromMap((map['privateEndpoint']! as Map).cast<String, dynamic>()),
+      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : PrivateLinkConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState']! as Map).cast<String, dynamic>()),
       provisioningState: map['provisioningState'] as String,
       type: map['type'] as String,
     );

@@ -38,7 +38,7 @@ class RegistrationContactSettingsAdminContact {
   factory RegistrationContactSettingsAdminContact.fromMap(Map<String, dynamic> map) {
     return RegistrationContactSettingsAdminContact(
       email: (map['email'] as String).input(),
-      faxNumber: map['faxNumber'] == null ? null : (map['faxNumber'] as String).input(),
+      faxNumber: map['faxNumber'] == null ? null : (map['faxNumber']! as String).input(),
       phoneNumber: (map['phoneNumber'] as String).input(),
       postalAddress: (RegistrationContactSettingsAdminContactPostalAddress.fromMap((map['postalAddress'] as Map).cast<String, dynamic>())).input(),
     );

@@ -19,7 +19,7 @@ class WorkgroupConfigurationManagedQueryResultsConfigurationEncryptionConfigurat
 
   factory WorkgroupConfigurationManagedQueryResultsConfigurationEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkgroupConfigurationManagedQueryResultsConfigurationEncryptionConfiguration(
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : ((map['kmsKey'] as String).input()).input(),
     );
   }
 }

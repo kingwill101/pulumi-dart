@@ -82,16 +82,16 @@ class VirtualNetworkSubnet {
   factory VirtualNetworkSubnet.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkSubnet(
       addressPrefixes: ((map['addressPrefixes'] as List).cast<String>()).input(),
-      defaultOutboundAccessEnabled: map['defaultOutboundAccessEnabled'] == null ? null : (map['defaultOutboundAccessEnabled'] as bool).input(),
-      delegation: map['delegation'] == null ? null : (VirtualNetworkSubnetDelegation.fromMap((map['delegation'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      defaultOutboundAccessEnabled: map['defaultOutboundAccessEnabled'] == null ? null : (map['defaultOutboundAccessEnabled']! as bool).input(),
+      delegation: map['delegation'] == null ? null : (VirtualNetworkSubnetDelegation.fromMap((map['delegation']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       name: (map['name'] as String).input(),
-      privateEndpointNetworkPolicies: map['privateEndpointNetworkPolicies'] == null ? null : (map['privateEndpointNetworkPolicies'] as String).input(),
-      privateLinkServiceNetworkPoliciesEnabled: map['privateLinkServiceNetworkPoliciesEnabled'] == null ? null : (map['privateLinkServiceNetworkPoliciesEnabled'] as bool).input(),
-      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
-      securityGroup: map['securityGroup'] == null ? null : (map['securityGroup'] as String).input(),
-      serviceEndpointPolicyIds: map['serviceEndpointPolicyIds'] == null ? null : ((map['serviceEndpointPolicyIds'] as List).cast<String>()).input(),
-      serviceEndpoints: map['serviceEndpoints'] == null ? null : ((map['serviceEndpoints'] as List).cast<String>()).input(),
+      privateEndpointNetworkPolicies: map['privateEndpointNetworkPolicies'] == null ? null : (map['privateEndpointNetworkPolicies']! as String).input(),
+      privateLinkServiceNetworkPoliciesEnabled: map['privateLinkServiceNetworkPoliciesEnabled'] == null ? null : (map['privateLinkServiceNetworkPoliciesEnabled']! as bool).input(),
+      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId']! as String).input(),
+      securityGroup: map['securityGroup'] == null ? null : (map['securityGroup']! as String).input(),
+      serviceEndpointPolicyIds: map['serviceEndpointPolicyIds'] == null ? null : ((map['serviceEndpointPolicyIds']! as List).cast<String>()).input(),
+      serviceEndpoints: map['serviceEndpoints'] == null ? null : ((map['serviceEndpoints']! as List).cast<String>()).input(),
     );
   }
 }

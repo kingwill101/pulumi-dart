@@ -35,8 +35,8 @@ class VnetRouteResponse {
   factory VnetRouteResponse.fromMap(Map<String, dynamic> map) {
     return VnetRouteResponse(
       bgpConnections: (pulumi.Input.decodeList<SubResourceResponse>(map['bgpConnections'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      staticRoutes: map['staticRoutes'] == null ? null : (pulumi.Input.decodeList<StaticRouteResponse>(map['staticRoutes'], (value) => StaticRouteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      staticRoutesConfig: map['staticRoutesConfig'] == null ? null : (StaticRoutesConfigResponse.fromMap((map['staticRoutesConfig'] as Map).cast<String, dynamic>())).input(),
+      staticRoutes: map['staticRoutes'] == null ? null : (pulumi.Input.decodeList<StaticRouteResponse>(map['staticRoutes']!, (value) => StaticRouteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      staticRoutesConfig: map['staticRoutesConfig'] == null ? null : (StaticRoutesConfigResponse.fromMap((map['staticRoutesConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

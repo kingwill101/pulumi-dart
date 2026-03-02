@@ -28,8 +28,8 @@ class Networking {
 
   factory Networking.fromMap(Map<String, dynamic> map) {
     return Networking(
-      monthlyTransfer: map['monthlyTransfer'] == null ? null : (MonthlyTransfer.fromMap((map['monthlyTransfer'] as Map).cast<String, dynamic>())).input(),
-      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<Port>(map['ports'], (value) => Port.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      monthlyTransfer: map['monthlyTransfer'] == null ? null : (MonthlyTransfer.fromMap((map['monthlyTransfer']! as Map).cast<String, dynamic>())).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<Port>(map['ports']!, (value) => Port.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

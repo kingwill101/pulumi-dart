@@ -51,10 +51,10 @@ class CommonExportPropertiesResponse {
     return CommonExportPropertiesResponse(
       definition: (ExportDefinitionResponse.fromMap((map['definition'] as Map).cast<String, dynamic>())).input(),
       deliveryInfo: (ExportDeliveryInfoResponse.fromMap((map['deliveryInfo'] as Map).cast<String, dynamic>())).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
       nextRunTimeEstimate: (map['nextRunTimeEstimate'] as String).input(),
-      partitionData: map['partitionData'] == null ? null : (map['partitionData'] as bool).input(),
-      runHistory: map['runHistory'] == null ? null : (ExportExecutionListResultResponse.fromMap((map['runHistory'] as Map).cast<String, dynamic>())).input(),
+      partitionData: map['partitionData'] == null ? null : (map['partitionData']! as bool).input(),
+      runHistory: map['runHistory'] == null ? null : (ExportExecutionListResultResponse.fromMap((map['runHistory']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

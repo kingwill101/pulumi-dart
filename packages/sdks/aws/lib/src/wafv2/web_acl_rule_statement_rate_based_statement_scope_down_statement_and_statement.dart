@@ -21,7 +21,7 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementAndStatement {
 
   factory WebAclRuleStatementRateBasedStatementScopeDownStatementAndStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatementScopeDownStatementAndStatement(
-      statements: (pulumi.Input.decodeList<WebAclRuleStatement>(map['statements'], (value) => WebAclRuleStatement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      statements: (pulumi.Input.decodeList<WebAclRuleStatement>(map['statements']!, (value) => WebAclRuleStatement.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

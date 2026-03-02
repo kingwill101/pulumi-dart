@@ -89,20 +89,20 @@ class ScheduledActionArgs {
 
   factory ScheduledActionArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledActionArgs(
-      dayOfMonth: map['dayOfMonth'] == null ? null : (map['dayOfMonth'] as int).input(),
-      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((map['daysOfWeeks'] as List).cast<String>()).input(),
+      dayOfMonth: map['dayOfMonth'] == null ? null : (map['dayOfMonth']! as int).input(),
+      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((map['daysOfWeeks']! as List).cast<String>()).input(),
       displayName: (map['displayName'] as String).input(),
       emailAddressSender: (map['emailAddressSender'] as String).input(),
       emailAddresses: ((map['emailAddresses'] as List).cast<String>()).input(),
       emailSubject: (map['emailSubject'] as String).input(),
       endDate: (map['endDate'] as String).input(),
       frequency: (map['frequency'] as String).input(),
-      hourOfDay: map['hourOfDay'] == null ? null : (map['hourOfDay'] as int).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      hourOfDay: map['hourOfDay'] == null ? null : (map['hourOfDay']! as int).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       startDate: (map['startDate'] as String).input(),
       viewId: (map['viewId'] as String).input(),
-      weeksOfMonths: map['weeksOfMonths'] == null ? null : ((map['weeksOfMonths'] as List).cast<String>()).input(),
+      weeksOfMonths: map['weeksOfMonths'] == null ? null : ((map['weeksOfMonths']! as List).cast<String>()).input(),
     );
   }
 }

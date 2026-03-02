@@ -39,9 +39,9 @@ class GroupInstanceRefresh {
 
   factory GroupInstanceRefresh.fromMap(Map<String, dynamic> map) {
     return GroupInstanceRefresh(
-      preferences: map['preferences'] == null ? null : (GroupInstanceRefreshPreferences.fromMap((map['preferences'] as Map).cast<String, dynamic>())).input(),
+      preferences: map['preferences'] == null ? null : ((GroupInstanceRefreshPreferences.fromMap((map['preferences']! as Map).cast<String, dynamic>())).input()).input(),
       strategy: (map['strategy'] as String).input(),
-      triggers: map['triggers'] == null ? null : ((map['triggers'] as List).cast<String>()).input(),
+      triggers: map['triggers'] == null ? null : (((map['triggers'] as List).cast<String>()).input()).input(),
     );
   }
 }

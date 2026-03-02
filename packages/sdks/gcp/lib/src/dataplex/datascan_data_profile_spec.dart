@@ -55,12 +55,12 @@ class DatascanDataProfileSpec {
 
   factory DatascanDataProfileSpec.fromMap(Map<String, dynamic> map) {
     return DatascanDataProfileSpec(
-      catalogPublishingEnabled: map['catalogPublishingEnabled'] == null ? null : (map['catalogPublishingEnabled'] as bool).input(),
-      excludeFields: map['excludeFields'] == null ? null : (DatascanDataProfileSpecExcludeFields.fromMap((map['excludeFields'] as Map).cast<String, dynamic>())).input(),
-      includeFields: map['includeFields'] == null ? null : (DatascanDataProfileSpecIncludeFields.fromMap((map['includeFields'] as Map).cast<String, dynamic>())).input(),
-      postScanActions: map['postScanActions'] == null ? null : (DatascanDataProfileSpecPostScanActions.fromMap((map['postScanActions'] as Map).cast<String, dynamic>())).input(),
-      rowFilter: map['rowFilter'] == null ? null : (map['rowFilter'] as String).input(),
-      samplingPercent: map['samplingPercent'] == null ? null : (map['samplingPercent'] as double).input(),
+      catalogPublishingEnabled: map['catalogPublishingEnabled'] == null ? null : (map['catalogPublishingEnabled']! as bool).input(),
+      excludeFields: map['excludeFields'] == null ? null : (DatascanDataProfileSpecExcludeFields.fromMap((map['excludeFields']! as Map).cast<String, dynamic>())).input(),
+      includeFields: map['includeFields'] == null ? null : (DatascanDataProfileSpecIncludeFields.fromMap((map['includeFields']! as Map).cast<String, dynamic>())).input(),
+      postScanActions: map['postScanActions'] == null ? null : (DatascanDataProfileSpecPostScanActions.fromMap((map['postScanActions']! as Map).cast<String, dynamic>())).input(),
+      rowFilter: map['rowFilter'] == null ? null : (map['rowFilter']! as String).input(),
+      samplingPercent: map['samplingPercent'] == null ? null : (map['samplingPercent']! as double).input(),
     );
   }
 }

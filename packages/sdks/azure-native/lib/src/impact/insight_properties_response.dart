@@ -68,16 +68,16 @@ class InsightPropertiesResponse {
 
   factory InsightPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return InsightPropertiesResponse(
-      additionalDetails: map['additionalDetails'] == null ? null : (map['additionalDetails']).input(),
+      additionalDetails: map['additionalDetails'] == null ? null : (map['additionalDetails']!).input(),
       category: (map['category'] as String).input(),
       content: (ContentResponse.fromMap((map['content'] as Map).cast<String, dynamic>())).input(),
-      eventId: map['eventId'] == null ? null : (map['eventId'] as String).input(),
-      eventTime: map['eventTime'] == null ? null : (map['eventTime'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      eventId: map['eventId'] == null ? null : (map['eventId']! as String).input(),
+      eventTime: map['eventTime'] == null ? null : (map['eventTime']! as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
       impact: (ImpactDetailsResponse.fromMap((map['impact'] as Map).cast<String, dynamic>())).input(),
       insightUniqueId: (map['insightUniqueId'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

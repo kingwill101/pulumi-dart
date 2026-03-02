@@ -27,8 +27,8 @@ class AgentFlowDefinition {
 
   factory AgentFlowDefinition.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinition(
-      connections: map['connections'] == null ? null : (pulumi.Input.decodeList<AgentFlowDefinitionConnection>(map['connections'], (value) => AgentFlowDefinitionConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nodes: map['nodes'] == null ? null : (pulumi.Input.decodeList<AgentFlowDefinitionNode>(map['nodes'], (value) => AgentFlowDefinitionNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connections: map['connections'] == null ? null : ((pulumi.Input.decodeList<AgentFlowDefinitionConnection>(map['connections']!, (value) => AgentFlowDefinitionConnection.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      nodes: map['nodes'] == null ? null : ((pulumi.Input.decodeList<AgentFlowDefinitionNode>(map['nodes']!, (value) => AgentFlowDefinitionNode.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

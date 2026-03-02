@@ -60,7 +60,7 @@ class ApiIssueAttachmentArgs {
   factory ApiIssueAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ApiIssueAttachmentArgs(
       apiId: (map['apiId'] as String).input(),
-      attachmentId: map['attachmentId'] == null ? null : (map['attachmentId'] as String).input(),
+      attachmentId: map['attachmentId'] == null ? null : (map['attachmentId']! as String).input(),
       content: (map['content'] as String).input(),
       contentFormat: (map['contentFormat'] as String).input(),
       issueId: (map['issueId'] as String).input(),

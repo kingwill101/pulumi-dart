@@ -57,12 +57,12 @@ class ConfigurationGroupResponse {
 
   factory ConfigurationGroupResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationGroupResponse(
-      conditionalMembership: map['conditionalMembership'] == null ? null : (map['conditionalMembership'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      groupMembers: map['groupMembers'] == null ? null : (pulumi.Input.decodeList<GroupMembersItemResponse>(map['groupMembers'], (value) => GroupMembersItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      memberType: map['memberType'] == null ? null : (map['memberType'] as String).input(),
+      conditionalMembership: map['conditionalMembership'] == null ? null : (map['conditionalMembership']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      groupMembers: map['groupMembers'] == null ? null : (pulumi.Input.decodeList<GroupMembersItemResponse>(map['groupMembers']!, (value) => GroupMembersItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      memberType: map['memberType'] == null ? null : (map['memberType']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       resourceGuid: (map['resourceGuid'] as String).input(),
     );

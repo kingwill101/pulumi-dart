@@ -42,11 +42,11 @@ class ResourcePolicyInstanceSchedulePolicyComputeV1 {
 
   factory ResourcePolicyInstanceSchedulePolicyComputeV1.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyInstanceSchedulePolicyComputeV1(
-      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
-      vmStartSchedule: map['vmStartSchedule'] == null ? null : (ResourcePolicyInstanceSchedulePolicyScheduleComputeV1.fromMap((map['vmStartSchedule'] as Map).cast<String, dynamic>())).input(),
-      vmStopSchedule: map['vmStopSchedule'] == null ? null : (ResourcePolicyInstanceSchedulePolicyScheduleComputeV1.fromMap((map['vmStopSchedule'] as Map).cast<String, dynamic>())).input(),
+      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      vmStartSchedule: map['vmStartSchedule'] == null ? null : (ResourcePolicyInstanceSchedulePolicyScheduleComputeV1.fromMap((map['vmStartSchedule']! as Map).cast<String, dynamic>())).input(),
+      vmStopSchedule: map['vmStopSchedule'] == null ? null : (ResourcePolicyInstanceSchedulePolicyScheduleComputeV1.fromMap((map['vmStopSchedule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

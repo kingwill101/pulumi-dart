@@ -62,13 +62,13 @@ class SafetyRuleArgs {
 
   factory SafetyRuleArgs.fromMap(Map<String, dynamic> map) {
     return SafetyRuleArgs(
-      assertedControls: map['assertedControls'] == null ? null : ((map['assertedControls'] as List).cast<String>()).input(),
+      assertedControls: map['assertedControls'] == null ? null : (((map['assertedControls'] as List).cast<String>()).input()).input(),
       controlPanelArn: (map['controlPanelArn'] as String).input(),
-      gatingControls: map['gatingControls'] == null ? null : ((map['gatingControls'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ruleConfig: (SafetyRuleRuleConfig.fromMap((map['ruleConfig'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetControls: map['targetControls'] == null ? null : ((map['targetControls'] as List).cast<String>()).input(),
+      gatingControls: map['gatingControls'] == null ? null : (((map['gatingControls'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      ruleConfig: (SafetyRuleRuleConfig.fromMap((map['ruleConfig']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      targetControls: map['targetControls'] == null ? null : (((map['targetControls'] as List).cast<String>()).input()).input(),
       waitPeriodMs: (map['waitPeriodMs'] as int).input(),
     );
   }

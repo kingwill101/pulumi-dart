@@ -28,8 +28,8 @@ class TargetProperties {
 
   factory TargetProperties.fromMap(Map<String, dynamic> map) {
     return TargetProperties(
-      azureQueries: map['azureQueries'] == null ? null : (pulumi.Input.decodeList<AzureQueryProperties>(map['azureQueries'], (value) => AzureQueryProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nonAzureQueries: map['nonAzureQueries'] == null ? null : (pulumi.Input.decodeList<NonAzureQueryProperties>(map['nonAzureQueries'], (value) => NonAzureQueryProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      azureQueries: map['azureQueries'] == null ? null : (pulumi.Input.decodeList<AzureQueryProperties>(map['azureQueries']!, (value) => AzureQueryProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nonAzureQueries: map['nonAzureQueries'] == null ? null : (pulumi.Input.decodeList<NonAzureQueryProperties>(map['nonAzureQueries']!, (value) => NonAzureQueryProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

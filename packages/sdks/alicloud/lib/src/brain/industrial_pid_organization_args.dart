@@ -29,7 +29,7 @@ class IndustrialPidOrganizationArgs {
 
   factory IndustrialPidOrganizationArgs.fromMap(Map<String, dynamic> map) {
     return IndustrialPidOrganizationArgs(
-      parentPidOrganizationId: map['parentPidOrganizationId'] == null ? null : (map['parentPidOrganizationId'] as String).input(),
+      parentPidOrganizationId: map['parentPidOrganizationId'] == null ? null : (map['parentPidOrganizationId']! as String).input(),
       pidOrganizationName: (map['pidOrganizationName'] as String).input(),
     );
   }

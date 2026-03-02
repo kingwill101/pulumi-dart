@@ -27,7 +27,7 @@ class DomainDevicesSmartcardPassthroughPipe {
   factory DomainDevicesSmartcardPassthroughPipe.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSmartcardPassthroughPipe(
       path: (map['path'] as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesSmartcardPassthroughPipeSecLabel>(map['secLabels'], (value) => DomainDevicesSmartcardPassthroughPipeSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesSmartcardPassthroughPipeSecLabel>(map['secLabels']!, (value) => DomainDevicesSmartcardPassthroughPipeSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class GetResourcesArgs {
 
   factory GetResourcesArgs.fromMap(Map<String, dynamic> map) {
     return GetResourcesArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      requiredTags: map['requiredTags'] == null ? null : ((map['requiredTags'] as Map).cast<String, String>()).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      requiredTags: map['requiredTags'] == null ? null : ((map['requiredTags']! as Map).cast<String, String>()).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

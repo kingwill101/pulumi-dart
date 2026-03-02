@@ -27,8 +27,8 @@ class Action {
 
   factory Action.fromMap(Map<String, dynamic> map) {
     return Action(
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<Parameter>(map['parameters'], (value) => Parameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<Parameter>(map['parameters']!, (value) => Parameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

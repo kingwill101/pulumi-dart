@@ -37,8 +37,8 @@ class SSISChildPackage {
   factory SSISChildPackage.fromMap(Map<String, dynamic> map) {
     return SSISChildPackage(
       packageContent: (map['packageContent']).input(),
-      packageLastModifiedDate: map['packageLastModifiedDate'] == null ? null : (map['packageLastModifiedDate'] as String).input(),
-      packageName: map['packageName'] == null ? null : (map['packageName'] as String).input(),
+      packageLastModifiedDate: map['packageLastModifiedDate'] == null ? null : (map['packageLastModifiedDate']! as String).input(),
+      packageName: map['packageName'] == null ? null : (map['packageName']! as String).input(),
       packagePath: (map['packagePath']).input(),
     );
   }

@@ -54,12 +54,12 @@ class EnvironmentArgs {
 
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
-      config: map['config'] == null ? null : (EnvironmentConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      storageConfig: map['storageConfig'] == null ? null : (EnvironmentStorageConfig.fromMap((map['storageConfig'] as Map).cast<String, dynamic>())).input(),
+      config: map['config'] == null ? null : (EnvironmentConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      storageConfig: map['storageConfig'] == null ? null : (EnvironmentStorageConfig.fromMap((map['storageConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

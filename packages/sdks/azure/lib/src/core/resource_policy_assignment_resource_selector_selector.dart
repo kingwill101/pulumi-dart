@@ -27,9 +27,9 @@ class ResourcePolicyAssignmentResourceSelectorSelector {
 
   factory ResourcePolicyAssignmentResourceSelectorSelector.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyAssignmentResourceSelectorSelector(
-      ins: map['ins'] == null ? null : ((map['ins'] as List).cast<String>()).input(),
+      ins: map['ins'] == null ? null : ((map['ins']! as List).cast<String>()).input(),
       kind: (map['kind'] as String).input(),
-      notIns: map['notIns'] == null ? null : ((map['notIns'] as List).cast<String>()).input(),
+      notIns: map['notIns'] == null ? null : ((map['notIns']! as List).cast<String>()).input(),
     );
   }
 }

@@ -56,13 +56,13 @@ class AppleAppArgs {
 
   factory AppleAppArgs.fromMap(Map<String, dynamic> map) {
     return AppleAppArgs(
-      apiKeyId: map['apiKeyId'] == null ? null : (map['apiKeyId'] as String).input(),
-      appStoreId: map['appStoreId'] == null ? null : (map['appStoreId'] as String).input(),
+      apiKeyId: map['apiKeyId'] == null ? null : (map['apiKeyId']! as String).input(),
+      appStoreId: map['appStoreId'] == null ? null : (map['appStoreId']! as String).input(),
       bundleId: (map['bundleId'] as String).input(),
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      teamId: map['teamId'] == null ? null : (map['teamId'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      teamId: map['teamId'] == null ? null : (map['teamId']! as String).input(),
     );
   }
 }

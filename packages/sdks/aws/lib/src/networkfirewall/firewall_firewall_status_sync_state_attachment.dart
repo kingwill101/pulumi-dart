@@ -25,8 +25,8 @@ class FirewallFirewallStatusSyncStateAttachment {
 
   factory FirewallFirewallStatusSyncStateAttachment.fromMap(Map<String, dynamic> map) {
     return FirewallFirewallStatusSyncStateAttachment(
-      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      endpointId: map['endpointId'] == null ? null : ((map['endpointId'] as String).input()).input(),
+      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
     );
   }
 }

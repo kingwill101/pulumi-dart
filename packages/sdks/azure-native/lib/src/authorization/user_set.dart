@@ -36,10 +36,10 @@ class UserSet {
 
   factory UserSet.fromMap(Map<String, dynamic> map) {
     return UserSet(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      isBackup: map['isBackup'] == null ? null : (map['isBackup'] as bool).input(),
-      userType: map['userType'] == null ? null : (map['userType'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      isBackup: map['isBackup'] == null ? null : (map['isBackup']! as bool).input(),
+      userType: map['userType'] == null ? null : (map['userType']! as String).input(),
     );
   }
 }

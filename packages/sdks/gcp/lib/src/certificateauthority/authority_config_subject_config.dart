@@ -30,7 +30,7 @@ class AuthorityConfigSubjectConfig {
   factory AuthorityConfigSubjectConfig.fromMap(Map<String, dynamic> map) {
     return AuthorityConfigSubjectConfig(
       subject: (AuthorityConfigSubjectConfigSubject.fromMap((map['subject'] as Map).cast<String, dynamic>())).input(),
-      subjectAltName: map['subjectAltName'] == null ? null : (AuthorityConfigSubjectConfigSubjectAltName.fromMap((map['subjectAltName'] as Map).cast<String, dynamic>())).input(),
+      subjectAltName: map['subjectAltName'] == null ? null : (AuthorityConfigSubjectConfigSubjectAltName.fromMap((map['subjectAltName']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -43,11 +43,11 @@ class ConversationArgs {
 
   factory ConversationArgs.fromMap(Map<String, dynamic> map) {
     return ConversationArgs(
-      conversationId: map['conversationId'] == null ? null : (map['conversationId'] as String).input(),
+      conversationId: map['conversationId'] == null ? null : (map['conversationId']! as String).input(),
       conversationProfile: (map['conversationProfile'] as String).input(),
-      conversationStage: map['conversationStage'] == null ? null : (ConversationConversationStage.fromValue(map['conversationStage'] as String)).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      conversationStage: map['conversationStage'] == null ? null : (ConversationConversationStage.fromValue(map['conversationStage']! as String)).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

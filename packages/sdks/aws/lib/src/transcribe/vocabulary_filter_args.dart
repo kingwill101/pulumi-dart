@@ -52,11 +52,11 @@ class VocabularyFilterArgs {
   factory VocabularyFilterArgs.fromMap(Map<String, dynamic> map) {
     return VocabularyFilterArgs(
       languageCode: (map['languageCode'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vocabularyFilterFileUri: map['vocabularyFilterFileUri'] == null ? null : (map['vocabularyFilterFileUri'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      vocabularyFilterFileUri: map['vocabularyFilterFileUri'] == null ? null : ((map['vocabularyFilterFileUri'] as String).input()).input(),
       vocabularyFilterName: (map['vocabularyFilterName'] as String).input(),
-      words: map['words'] == null ? null : ((map['words'] as List).cast<String>()).input(),
+      words: map['words'] == null ? null : (((map['words'] as List).cast<String>()).input()).input(),
     );
   }
 }

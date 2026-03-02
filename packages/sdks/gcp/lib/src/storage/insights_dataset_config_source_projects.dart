@@ -20,7 +20,7 @@ class InsightsDatasetConfigSourceProjects {
 
   factory InsightsDatasetConfigSourceProjects.fromMap(Map<String, dynamic> map) {
     return InsightsDatasetConfigSourceProjects(
-      projectNumbers: map['projectNumbers'] == null ? null : ((map['projectNumbers'] as List).cast<String>()).input(),
+      projectNumbers: map['projectNumbers'] == null ? null : ((map['projectNumbers']! as List).cast<String>()).input(),
     );
   }
 }

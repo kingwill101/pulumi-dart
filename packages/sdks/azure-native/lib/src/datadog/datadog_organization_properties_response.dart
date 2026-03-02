@@ -31,9 +31,9 @@ class DatadogOrganizationPropertiesResponse {
 
   factory DatadogOrganizationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DatadogOrganizationPropertiesResponse(
-      cspm: map['cspm'] == null ? null : (map['cspm'] as bool).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      cspm: map['cspm'] == null ? null : (map['cspm']! as bool).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

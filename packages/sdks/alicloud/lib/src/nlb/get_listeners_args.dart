@@ -39,10 +39,10 @@ class GetListenersArgs {
 
   factory GetListenersArgs.fromMap(Map<String, dynamic> map) {
     return GetListenersArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      listenerProtocol: map['listenerProtocol'] == null ? null : (map['listenerProtocol'] as String).input(),
-      loadBalancerIds: map['loadBalancerIds'] == null ? null : ((map['loadBalancerIds'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      listenerProtocol: map['listenerProtocol'] == null ? null : (map['listenerProtocol']! as String).input(),
+      loadBalancerIds: map['loadBalancerIds'] == null ? null : ((map['loadBalancerIds']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

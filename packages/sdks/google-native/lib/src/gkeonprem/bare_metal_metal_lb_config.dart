@@ -29,7 +29,7 @@ class BareMetalMetalLbConfig {
   factory BareMetalMetalLbConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalMetalLbConfig(
       addressPools: (pulumi.Input.decodeList<BareMetalLoadBalancerAddressPool>(map['addressPools'], (value) => BareMetalLoadBalancerAddressPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      loadBalancerNodePoolConfig: map['loadBalancerNodePoolConfig'] == null ? null : (BareMetalLoadBalancerNodePoolConfig.fromMap((map['loadBalancerNodePoolConfig'] as Map).cast<String, dynamic>())).input(),
+      loadBalancerNodePoolConfig: map['loadBalancerNodePoolConfig'] == null ? null : (BareMetalLoadBalancerNodePoolConfig.fromMap((map['loadBalancerNodePoolConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

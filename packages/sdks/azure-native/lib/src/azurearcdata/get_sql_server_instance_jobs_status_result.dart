@@ -22,7 +22,7 @@ class GetSqlServerInstanceJobsStatusResult {
 
   factory GetSqlServerInstanceJobsStatusResult.fromMap(Map<String, dynamic> map) {
     return GetSqlServerInstanceJobsStatusResult(
-      jobsStatus: map['jobsStatus'] == null ? null : pulumi.Input.decodeList<SqlServerInstanceJobStatusResponse>(map['jobsStatus'], (value) => SqlServerInstanceJobStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
+      jobsStatus: map['jobsStatus'] == null ? null : pulumi.Input.decodeList<SqlServerInstanceJobStatusResponse>(map['jobsStatus']!, (value) => SqlServerInstanceJobStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

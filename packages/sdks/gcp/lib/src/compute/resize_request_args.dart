@@ -57,13 +57,13 @@ class ResizeRequestArgs {
 
   factory ResizeRequestArgs.fromMap(Map<String, dynamic> map) {
     return ResizeRequestArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       instanceGroupManager: (map['instanceGroupManager'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestedRunDuration: map['requestedRunDuration'] == null ? null : (ResizeRequestRequestedRunDuration.fromMap((map['requestedRunDuration'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestedRunDuration: map['requestedRunDuration'] == null ? null : (ResizeRequestRequestedRunDuration.fromMap((map['requestedRunDuration']! as Map).cast<String, dynamic>())).input(),
       resizeBy: (map['resizeBy'] as int).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class CrawlerRecrawlPolicy {
 
   factory CrawlerRecrawlPolicy.fromMap(Map<String, dynamic> map) {
     return CrawlerRecrawlPolicy(
-      recrawlBehavior: map['recrawlBehavior'] == null ? null : (map['recrawlBehavior'] as String).input(),
+      recrawlBehavior: map['recrawlBehavior'] == null ? null : ((map['recrawlBehavior'] as String).input()).input(),
     );
   }
 }

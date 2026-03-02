@@ -44,11 +44,11 @@ class CdnArgs {
 
   factory CdnArgs.fromMap(Map<String, dynamic> map) {
     return CdnArgs(
-      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
-      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
-      customDomain: map['customDomain'] == null ? null : (map['customDomain'] as String).input(),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as String).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName']! as String).input(),
+      customDomain: map['customDomain'] == null ? null : (map['customDomain']! as String).input(),
       origin: (map['origin'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
     );
   }
 }

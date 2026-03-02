@@ -27,8 +27,8 @@ class S3BucketCriteriaForJobResponse {
 
   factory S3BucketCriteriaForJobResponse.fromMap(Map<String, dynamic> map) {
     return S3BucketCriteriaForJobResponse(
-      excludes: map['excludes'] == null ? null : (CriteriaBlockForJobResponse.fromMap((map['excludes'] as Map).cast<String, dynamic>())).input(),
-      includes: map['includes'] == null ? null : (CriteriaBlockForJobResponse.fromMap((map['includes'] as Map).cast<String, dynamic>())).input(),
+      excludes: map['excludes'] == null ? null : (CriteriaBlockForJobResponse.fromMap((map['excludes']! as Map).cast<String, dynamic>())).input(),
+      includes: map['includes'] == null ? null : (CriteriaBlockForJobResponse.fromMap((map['includes']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -30,8 +30,8 @@ class ClusterApiServerProfile {
 
   factory ClusterApiServerProfile.fromMap(Map<String, dynamic> map) {
     return ClusterApiServerProfile(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
       visibility: (map['visibility'] as String).input(),
     );
   }

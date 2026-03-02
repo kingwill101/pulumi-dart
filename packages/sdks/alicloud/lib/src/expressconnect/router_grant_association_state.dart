@@ -48,12 +48,12 @@ class RouterGrantAssociationState {
 
   factory RouterGrantAssociationState.fromMap(Map<String, dynamic> map) {
     return RouterGrantAssociationState(
-      ecrId: map['ecrId'] == null ? null : (map['ecrId'] as String).input(),
-      ecrOwnerAliUid: map['ecrOwnerAliUid'] == null ? null : (map['ecrOwnerAliUid'] as int).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      instanceRegionId: map['instanceRegionId'] == null ? null : (map['instanceRegionId'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      ecrId: map['ecrId'] == null ? null : (map['ecrId']! as String).input(),
+      ecrOwnerAliUid: map['ecrOwnerAliUid'] == null ? null : (map['ecrOwnerAliUid']! as int).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      instanceRegionId: map['instanceRegionId'] == null ? null : (map['instanceRegionId']! as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

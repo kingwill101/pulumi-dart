@@ -27,7 +27,7 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition {
   factory StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition.fromMap(Map<String, dynamic> map) {
     return StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition(
       column: (map['column'] as String).input(),
-      partitioningTimeGranularity: map['partitioningTimeGranularity'] == null ? null : (map['partitioningTimeGranularity'] as String).input(),
+      partitioningTimeGranularity: map['partitioningTimeGranularity'] == null ? null : (map['partitioningTimeGranularity']! as String).input(),
     );
   }
 }

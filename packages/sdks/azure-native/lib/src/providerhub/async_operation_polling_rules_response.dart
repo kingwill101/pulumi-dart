@@ -25,8 +25,8 @@ class AsyncOperationPollingRulesResponse {
 
   factory AsyncOperationPollingRulesResponse.fromMap(Map<String, dynamic> map) {
     return AsyncOperationPollingRulesResponse(
-      additionalOptions: map['additionalOptions'] == null ? null : (map['additionalOptions'] as String).input(),
-      authorizationActions: map['authorizationActions'] == null ? null : ((map['authorizationActions'] as List).cast<String>()).input(),
+      additionalOptions: map['additionalOptions'] == null ? null : (map['additionalOptions']! as String).input(),
+      authorizationActions: map['authorizationActions'] == null ? null : ((map['authorizationActions']! as List).cast<String>()).input(),
     );
   }
 }

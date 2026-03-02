@@ -72,7 +72,7 @@ class VirtualMachineSizeResponse {
 
   factory VirtualMachineSizeResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineSizeResponse(
-      estimatedVMPrices: map['estimatedVMPrices'] == null ? null : (EstimatedVMPricesResponse.fromMap((map['estimatedVMPrices'] as Map).cast<String, dynamic>())).input(),
+      estimatedVMPrices: map['estimatedVMPrices'] == null ? null : (EstimatedVMPricesResponse.fromMap((map['estimatedVMPrices']! as Map).cast<String, dynamic>())).input(),
       family: (map['family'] as String).input(),
       gpus: (map['gpus'] as int).input(),
       lowPriorityCapable: (map['lowPriorityCapable'] as bool).input(),
@@ -81,7 +81,7 @@ class VirtualMachineSizeResponse {
       name: (map['name'] as String).input(),
       osVhdSizeMB: (map['osVhdSizeMB'] as int).input(),
       premiumIO: (map['premiumIO'] as bool).input(),
-      supportedComputeTypes: map['supportedComputeTypes'] == null ? null : ((map['supportedComputeTypes'] as List).cast<String>()).input(),
+      supportedComputeTypes: map['supportedComputeTypes'] == null ? null : ((map['supportedComputeTypes']! as List).cast<String>()).input(),
       vCPUs: (map['vCPUs'] as int).input(),
     );
   }

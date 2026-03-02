@@ -22,7 +22,7 @@ class InstanceConfig {
 
   factory InstanceConfig.fromMap(Map<String, dynamic> map) {
     return InstanceConfig(
-      instanceSize: map['instanceSize'] == null ? null : (InstanceConfigInstanceSize.fromValue(map['instanceSize'] as String)).input(),
+      instanceSize: map['instanceSize'] == null ? null : (InstanceConfigInstanceSize.fromValue(map['instanceSize']! as String)).input(),
     );
   }
 }

@@ -60,7 +60,7 @@ class GetAliasResult {
       id: map['id'] as String,
       name: map['name'] as String,
       region: map['region'] as String,
-      routingConfigurations: pulumi.Input.decodeList<GetAliasRoutingConfiguration>(map['routingConfigurations'], (value) => GetAliasRoutingConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      routingConfigurations: pulumi.Input.decodeList<GetAliasRoutingConfiguration>(map['routingConfigurations']!, (value) => GetAliasRoutingConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       statemachineArn: map['statemachineArn'] as String,
     );
   }

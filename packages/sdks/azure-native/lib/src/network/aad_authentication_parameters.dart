@@ -31,9 +31,9 @@ class AadAuthenticationParameters {
 
   factory AadAuthenticationParameters.fromMap(Map<String, dynamic> map) {
     return AadAuthenticationParameters(
-      aadAudience: map['aadAudience'] == null ? null : (map['aadAudience'] as String).input(),
-      aadIssuer: map['aadIssuer'] == null ? null : (map['aadIssuer'] as String).input(),
-      aadTenant: map['aadTenant'] == null ? null : (map['aadTenant'] as String).input(),
+      aadAudience: map['aadAudience'] == null ? null : (map['aadAudience']! as String).input(),
+      aadIssuer: map['aadIssuer'] == null ? null : (map['aadIssuer']! as String).input(),
+      aadTenant: map['aadTenant'] == null ? null : (map['aadTenant']! as String).input(),
     );
   }
 }

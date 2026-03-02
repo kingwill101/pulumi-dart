@@ -86,12 +86,12 @@ class GetCapacityReservationGroupResult {
       instanceView: CapacityReservationGroupInstanceViewResponse.fromMap((map['instanceView'] as Map).cast<String, dynamic>()),
       location: map['location'] as String,
       name: map['name'] as String,
-      sharingProfile: map['sharingProfile'] == null ? null : ResourceSharingProfileResponse.fromMap((map['sharingProfile'] as Map).cast<String, dynamic>()),
+      sharingProfile: map['sharingProfile'] == null ? null : ResourceSharingProfileResponse.fromMap((map['sharingProfile']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
       virtualMachinesAssociated: pulumi.Input.decodeList<SubResourceReadOnlyResponse>(map['virtualMachinesAssociated'], (value) => SubResourceReadOnlyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      zones: map['zones'] == null ? null : (map['zones'] as List).cast<String>(),
+      zones: map['zones'] == null ? null : (map['zones']! as List).cast<String>(),
     );
   }
 }

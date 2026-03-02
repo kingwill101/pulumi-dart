@@ -27,7 +27,7 @@ class InterconnectMacsecPreSharedKeyComputeV1 {
   factory InterconnectMacsecPreSharedKeyComputeV1.fromMap(Map<String, dynamic> map) {
     return InterconnectMacsecPreSharedKeyComputeV1(
       name: (map['name'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

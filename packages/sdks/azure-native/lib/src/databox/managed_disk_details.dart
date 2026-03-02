@@ -39,7 +39,7 @@ class ManagedDiskDetails {
     return ManagedDiskDetails(
       dataAccountType: (map['dataAccountType'] as String).input(),
       resourceGroupId: (map['resourceGroupId'] as String).input(),
-      sharePassword: map['sharePassword'] == null ? null : (map['sharePassword'] as String).input(),
+      sharePassword: map['sharePassword'] == null ? null : (map['sharePassword']! as String).input(),
       stagingStorageAccountId: (map['stagingStorageAccountId'] as String).input(),
     );
   }

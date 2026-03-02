@@ -32,9 +32,9 @@ class WeightedBackendServiceComputeV1 {
 
   factory WeightedBackendServiceComputeV1.fromMap(Map<String, dynamic> map) {
     return WeightedBackendServiceComputeV1(
-      backendService: map['backendService'] == null ? null : (map['backendService'] as String).input(),
-      headerAction: map['headerAction'] == null ? null : (HttpHeaderActionComputeV1.fromMap((map['headerAction'] as Map).cast<String, dynamic>())).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      backendService: map['backendService'] == null ? null : (map['backendService']! as String).input(),
+      headerAction: map['headerAction'] == null ? null : (HttpHeaderActionComputeV1.fromMap((map['headerAction']! as Map).cast<String, dynamic>())).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

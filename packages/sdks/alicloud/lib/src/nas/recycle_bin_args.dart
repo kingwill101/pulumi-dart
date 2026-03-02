@@ -30,7 +30,7 @@ class RecycleBinArgs {
   factory RecycleBinArgs.fromMap(Map<String, dynamic> map) {
     return RecycleBinArgs(
       fileSystemId: (map['fileSystemId'] as String).input(),
-      reservedDays: map['reservedDays'] == null ? null : (map['reservedDays'] as int).input(),
+      reservedDays: map['reservedDays'] == null ? null : (map['reservedDays']! as int).input(),
     );
   }
 }

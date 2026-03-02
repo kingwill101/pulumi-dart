@@ -95,17 +95,17 @@ class GuestPoliciesState {
 
   factory GuestPoliciesState.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesState(
-      assignment: map['assignment'] == null ? null : (GuestPoliciesAssignment.fromMap((map['assignment'] as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      guestPolicyId: map['guestPolicyId'] == null ? null : (map['guestPolicyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      packageRepositories: map['packageRepositories'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesPackageRepository>(map['packageRepositories'], (value) => GuestPoliciesPackageRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      packages: map['packages'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesPackage>(map['packages'], (value) => GuestPoliciesPackage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      recipes: map['recipes'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesRecipe>(map['recipes'], (value) => GuestPoliciesRecipe.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      assignment: map['assignment'] == null ? null : (GuestPoliciesAssignment.fromMap((map['assignment']! as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      guestPolicyId: map['guestPolicyId'] == null ? null : (map['guestPolicyId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      packageRepositories: map['packageRepositories'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesPackageRepository>(map['packageRepositories']!, (value) => GuestPoliciesPackageRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      packages: map['packages'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesPackage>(map['packages']!, (value) => GuestPoliciesPackage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      recipes: map['recipes'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesRecipe>(map['recipes']!, (value) => GuestPoliciesRecipe.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

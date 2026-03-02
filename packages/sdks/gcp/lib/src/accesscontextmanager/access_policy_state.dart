@@ -48,12 +48,12 @@ class AccessPolicyState {
 
   factory AccessPolicyState.fromMap(Map<String, dynamic> map) {
     return AccessPolicyState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      scopes: map['scopes'] == null ? null : (map['scopes'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      scopes: map['scopes'] == null ? null : (map['scopes']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

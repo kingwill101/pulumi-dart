@@ -41,11 +41,11 @@ class DeploymentSettingsGithub {
 
   factory DeploymentSettingsGithub.fromMap(Map<String, dynamic> map) {
     return DeploymentSettingsGithub(
-      deployCommits: map['deployCommits'] == null ? null : (map['deployCommits'] as bool).input(),
-      paths: map['paths'] == null ? null : ((map['paths'] as List).cast<String>()).input(),
-      previewPullRequests: map['previewPullRequests'] == null ? null : (map['previewPullRequests'] as bool).input(),
-      pullRequestTemplate: map['pullRequestTemplate'] == null ? null : (map['pullRequestTemplate'] as bool).input(),
-      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
+      deployCommits: map['deployCommits'] == null ? null : (map['deployCommits']! as bool).input(),
+      paths: map['paths'] == null ? null : ((map['paths']! as List).cast<String>()).input(),
+      previewPullRequests: map['previewPullRequests'] == null ? null : (map['previewPullRequests']! as bool).input(),
+      pullRequestTemplate: map['pullRequestTemplate'] == null ? null : (map['pullRequestTemplate']! as bool).input(),
+      repository: map['repository'] == null ? null : (map['repository']! as String).input(),
     );
   }
 }

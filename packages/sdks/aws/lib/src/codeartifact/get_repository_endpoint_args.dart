@@ -45,9 +45,9 @@ class GetRepositoryEndpointArgs {
   factory GetRepositoryEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetRepositoryEndpointArgs(
       domain: (map['domain'] as String).input(),
-      domainOwner: map['domainOwner'] == null ? null : (map['domainOwner'] as String).input(),
+      domainOwner: map['domainOwner'] == null ? null : ((map['domainOwner'] as String).input()).input(),
       format: (map['format'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       repository: (map['repository'] as String).input(),
     );
   }

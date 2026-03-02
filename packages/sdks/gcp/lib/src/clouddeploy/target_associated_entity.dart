@@ -32,9 +32,9 @@ class TargetAssociatedEntity {
 
   factory TargetAssociatedEntity.fromMap(Map<String, dynamic> map) {
     return TargetAssociatedEntity(
-      anthosClusters: map['anthosClusters'] == null ? null : (pulumi.Input.decodeList<TargetAssociatedEntityAnthosCluster>(map['anthosClusters'], (value) => TargetAssociatedEntityAnthosCluster.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      anthosClusters: map['anthosClusters'] == null ? null : (pulumi.Input.decodeList<TargetAssociatedEntityAnthosCluster>(map['anthosClusters']!, (value) => TargetAssociatedEntityAnthosCluster.fromMap((value as Map).cast<String, dynamic>()))).input(),
       entityId: (map['entityId'] as String).input(),
-      gkeClusters: map['gkeClusters'] == null ? null : (pulumi.Input.decodeList<TargetAssociatedEntityGkeCluster>(map['gkeClusters'], (value) => TargetAssociatedEntityGkeCluster.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gkeClusters: map['gkeClusters'] == null ? null : (pulumi.Input.decodeList<TargetAssociatedEntityGkeCluster>(map['gkeClusters']!, (value) => TargetAssociatedEntityGkeCluster.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

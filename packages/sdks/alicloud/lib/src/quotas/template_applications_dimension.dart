@@ -25,8 +25,8 @@ class TemplateApplicationsDimension {
 
   factory TemplateApplicationsDimension.fromMap(Map<String, dynamic> map) {
     return TemplateApplicationsDimension(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

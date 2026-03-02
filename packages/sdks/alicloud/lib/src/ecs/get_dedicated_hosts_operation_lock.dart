@@ -20,7 +20,7 @@ class GetDedicatedHostsOperationLock {
 
   factory GetDedicatedHostsOperationLock.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostsOperationLock(
-      lockReason: map['lockReason'] == null ? null : (map['lockReason'] as String).input(),
+      lockReason: map['lockReason'] == null ? null : (map['lockReason']! as String).input(),
     );
   }
 }

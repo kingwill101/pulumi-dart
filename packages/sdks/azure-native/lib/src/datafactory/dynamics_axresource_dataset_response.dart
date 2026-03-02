@@ -65,14 +65,14 @@ class DynamicsAXResourceDatasetResponse {
 
   factory DynamicsAXResourceDatasetResponse.fromMap(Map<String, dynamic> map) {
     return DynamicsAXResourceDatasetResponse(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      folder: map['folder'] == null ? null : (DatasetResponseFolder.fromMap((map['folder'] as Map).cast<String, dynamic>())).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      folder: map['folder'] == null ? null : (DatasetResponseFolder.fromMap((map['folder']! as Map).cast<String, dynamic>())).input(),
       linkedServiceName: (LinkedServiceReferenceResponse.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters']!, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       path: (map['path']).input(),
-      schema: map['schema'] == null ? null : (map['schema']).input(),
-      structure: map['structure'] == null ? null : (map['structure']).input(),
+      schema: map['schema'] == null ? null : (map['schema']!).input(),
+      structure: map['structure'] == null ? null : (map['structure']!).input(),
       type: (map['type'] as String).input(),
     );
   }

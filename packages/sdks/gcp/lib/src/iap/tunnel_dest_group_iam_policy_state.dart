@@ -46,11 +46,11 @@ class TunnelDestGroupIamPolicyState {
 
   factory TunnelDestGroupIamPolicyState.fromMap(Map<String, dynamic> map) {
     return TunnelDestGroupIamPolicyState(
-      destGroup: map['destGroup'] == null ? null : (map['destGroup'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      destGroup: map['destGroup'] == null ? null : (map['destGroup']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

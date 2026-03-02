@@ -26,8 +26,8 @@ class SubsettingComputeBeta {
 
   factory SubsettingComputeBeta.fromMap(Map<String, dynamic> map) {
     return SubsettingComputeBeta(
-      policy: map['policy'] == null ? null : (SubsettingPolicyComputeBeta.fromValue(map['policy'] as String)).input(),
-      subsetSize: map['subsetSize'] == null ? null : (map['subsetSize'] as int).input(),
+      policy: map['policy'] == null ? null : (SubsettingPolicyComputeBeta.fromValue(map['policy']! as String)).input(),
+      subsetSize: map['subsetSize'] == null ? null : (map['subsetSize']! as int).input(),
     );
   }
 }

@@ -41,7 +41,7 @@ class CloudHsmClusterPrivateEndpointConnectionArgs {
   factory CloudHsmClusterPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return CloudHsmClusterPrivateEndpointConnectionArgs(
       cloudHsmClusterName: (map['cloudHsmClusterName'] as String).input(),
-      peConnectionName: map['peConnectionName'] == null ? null : (map['peConnectionName'] as String).input(),
+      peConnectionName: map['peConnectionName'] == null ? null : (map['peConnectionName']! as String).input(),
       privateLinkServiceConnectionState: (PrivateLinkServiceConnectionState.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

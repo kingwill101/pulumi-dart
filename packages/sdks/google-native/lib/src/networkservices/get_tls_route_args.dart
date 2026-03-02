@@ -32,7 +32,7 @@ class GetTlsRouteArgs {
   factory GetTlsRouteArgs.fromMap(Map<String, dynamic> map) {
     return GetTlsRouteArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       tlsRouteId: (map['tlsRouteId'] as String).input(),
     );
   }

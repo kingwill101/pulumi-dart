@@ -42,10 +42,10 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfig {
 
   factory BareMetalAdminClusterLoadBalancerBgpLbConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterLoadBalancerBgpLbConfig(
-      addressPools: map['addressPools'] == null ? null : (pulumi.Input.decodeList<BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool>(map['addressPools'], (value) => BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      asn: map['asn'] == null ? null : (map['asn'] as int).input(),
-      bgpPeerConfigs: map['bgpPeerConfigs'] == null ? null : (pulumi.Input.decodeList<BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig>(map['bgpPeerConfigs'], (value) => BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      loadBalancerNodePoolConfig: map['loadBalancerNodePoolConfig'] == null ? null : (BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig.fromMap((map['loadBalancerNodePoolConfig'] as Map).cast<String, dynamic>())).input(),
+      addressPools: map['addressPools'] == null ? null : (pulumi.Input.decodeList<BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool>(map['addressPools']!, (value) => BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      asn: map['asn'] == null ? null : (map['asn']! as int).input(),
+      bgpPeerConfigs: map['bgpPeerConfigs'] == null ? null : (pulumi.Input.decodeList<BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig>(map['bgpPeerConfigs']!, (value) => BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loadBalancerNodePoolConfig: map['loadBalancerNodePoolConfig'] == null ? null : (BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig.fromMap((map['loadBalancerNodePoolConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

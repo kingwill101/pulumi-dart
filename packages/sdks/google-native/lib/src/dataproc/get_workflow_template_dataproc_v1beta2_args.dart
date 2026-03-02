@@ -36,8 +36,8 @@ class GetWorkflowTemplateDataprocV1beta2Args {
   factory GetWorkflowTemplateDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetWorkflowTemplateDataprocV1beta2Args(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
       workflowTemplateId: (map['workflowTemplateId'] as String).input(),
     );
   }

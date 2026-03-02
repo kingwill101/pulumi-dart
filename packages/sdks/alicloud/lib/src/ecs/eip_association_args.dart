@@ -76,12 +76,12 @@ class EipAssociationArgs {
   factory EipAssociationArgs.fromMap(Map<String, dynamic> map) {
     return EipAssociationArgs(
       allocationId: (map['allocationId'] as String).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
       instanceId: (map['instanceId'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

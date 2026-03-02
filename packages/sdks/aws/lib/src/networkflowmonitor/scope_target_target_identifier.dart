@@ -26,7 +26,7 @@ class ScopeTargetTargetIdentifier {
 
   factory ScopeTargetTargetIdentifier.fromMap(Map<String, dynamic> map) {
     return ScopeTargetTargetIdentifier(
-      targetId: (ScopeTargetTargetIdentifierTargetId.fromMap((map['targetId'] as Map).cast<String, dynamic>())).input(),
+      targetId: (ScopeTargetTargetIdentifierTargetId.fromMap((map['targetId']! as Map).cast<String, dynamic>())).input(),
       targetType: (map['targetType'] as String).input(),
     );
   }

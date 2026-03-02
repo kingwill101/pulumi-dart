@@ -40,9 +40,9 @@ class StoredInfoTypeArgs {
   factory StoredInfoTypeArgs.fromMap(Map<String, dynamic> map) {
     return StoredInfoTypeArgs(
       config: (GooglePrivacyDlpV2StoredInfoTypeConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      storedInfoTypeId: map['storedInfoTypeId'] == null ? null : (map['storedInfoTypeId'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      storedInfoTypeId: map['storedInfoTypeId'] == null ? null : (map['storedInfoTypeId']! as String).input(),
     );
   }
 }

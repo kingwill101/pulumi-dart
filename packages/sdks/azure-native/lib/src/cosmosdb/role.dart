@@ -26,8 +26,8 @@ class Role {
 
   factory Role.fromMap(Map<String, dynamic> map) {
     return Role(
-      db: map['db'] == null ? null : (map['db'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      db: map['db'] == null ? null : (map['db']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

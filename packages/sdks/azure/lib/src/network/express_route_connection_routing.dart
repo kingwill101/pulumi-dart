@@ -36,10 +36,10 @@ class ExpressRouteConnectionRouting {
 
   factory ExpressRouteConnectionRouting.fromMap(Map<String, dynamic> map) {
     return ExpressRouteConnectionRouting(
-      associatedRouteTableId: map['associatedRouteTableId'] == null ? null : (map['associatedRouteTableId'] as String).input(),
-      inboundRouteMapId: map['inboundRouteMapId'] == null ? null : (map['inboundRouteMapId'] as String).input(),
-      outboundRouteMapId: map['outboundRouteMapId'] == null ? null : (map['outboundRouteMapId'] as String).input(),
-      propagatedRouteTable: map['propagatedRouteTable'] == null ? null : (ExpressRouteConnectionRoutingPropagatedRouteTable.fromMap((map['propagatedRouteTable'] as Map).cast<String, dynamic>())).input(),
+      associatedRouteTableId: map['associatedRouteTableId'] == null ? null : (map['associatedRouteTableId']! as String).input(),
+      inboundRouteMapId: map['inboundRouteMapId'] == null ? null : (map['inboundRouteMapId']! as String).input(),
+      outboundRouteMapId: map['outboundRouteMapId'] == null ? null : (map['outboundRouteMapId']! as String).input(),
+      propagatedRouteTable: map['propagatedRouteTable'] == null ? null : (ExpressRouteConnectionRoutingPropagatedRouteTable.fromMap((map['propagatedRouteTable']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

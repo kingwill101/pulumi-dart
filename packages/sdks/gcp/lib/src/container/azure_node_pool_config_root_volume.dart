@@ -20,7 +20,7 @@ class AzureNodePoolConfigRootVolume {
 
   factory AzureNodePoolConfigRootVolume.fromMap(Map<String, dynamic> map) {
     return AzureNodePoolConfigRootVolume(
-      sizeGib: map['sizeGib'] == null ? null : (map['sizeGib'] as int).input(),
+      sizeGib: map['sizeGib'] == null ? null : (map['sizeGib']! as int).input(),
     );
   }
 }

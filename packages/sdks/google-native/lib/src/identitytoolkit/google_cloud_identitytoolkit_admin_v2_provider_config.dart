@@ -28,8 +28,8 @@ class GoogleCloudIdentitytoolkitAdminV2ProviderConfig {
 
   factory GoogleCloudIdentitytoolkitAdminV2ProviderConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2ProviderConfig(
-      state: map['state'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2ProviderConfigState.fromValue(map['state'] as String)).input(),
-      totpProviderConfig: map['totpProviderConfig'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig.fromMap((map['totpProviderConfig'] as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2ProviderConfigState.fromValue(map['state']! as String)).input(),
+      totpProviderConfig: map['totpProviderConfig'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig.fromMap((map['totpProviderConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -70,7 +70,7 @@ class DiscoveryRulePropertiesResponse {
       authenticationSetting: (map['authenticationSetting'] as String).input(),
       deletionDate: (map['deletionDate'] as String).input(),
       discoverRelationships: (map['discoverRelationships'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       entityName: (map['entityName'] as String).input(),
       errorMessage: (map['errorMessage'] as String).input(),
       numberOfDiscoveredEntities: (map['numberOfDiscoveredEntities'] as int).input(),

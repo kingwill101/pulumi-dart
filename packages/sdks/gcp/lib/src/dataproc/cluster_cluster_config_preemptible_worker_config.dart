@@ -48,11 +48,11 @@ class ClusterClusterConfigPreemptibleWorkerConfig {
 
   factory ClusterClusterConfigPreemptibleWorkerConfig.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigPreemptibleWorkerConfig(
-      diskConfig: map['diskConfig'] == null ? null : (ClusterClusterConfigPreemptibleWorkerConfigDiskConfig.fromMap((map['diskConfig'] as Map).cast<String, dynamic>())).input(),
-      instanceFlexibilityPolicy: map['instanceFlexibilityPolicy'] == null ? null : (ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy.fromMap((map['instanceFlexibilityPolicy'] as Map).cast<String, dynamic>())).input(),
-      instanceNames: map['instanceNames'] == null ? null : ((map['instanceNames'] as List).cast<String>()).input(),
-      numInstances: map['numInstances'] == null ? null : (map['numInstances'] as int).input(),
-      preemptibility: map['preemptibility'] == null ? null : (map['preemptibility'] as String).input(),
+      diskConfig: map['diskConfig'] == null ? null : (ClusterClusterConfigPreemptibleWorkerConfigDiskConfig.fromMap((map['diskConfig']! as Map).cast<String, dynamic>())).input(),
+      instanceFlexibilityPolicy: map['instanceFlexibilityPolicy'] == null ? null : (ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy.fromMap((map['instanceFlexibilityPolicy']! as Map).cast<String, dynamic>())).input(),
+      instanceNames: map['instanceNames'] == null ? null : ((map['instanceNames']! as List).cast<String>()).input(),
+      numInstances: map['numInstances'] == null ? null : (map['numInstances']! as int).input(),
+      preemptibility: map['preemptibility'] == null ? null : (map['preemptibility']! as String).input(),
     );
   }
 }

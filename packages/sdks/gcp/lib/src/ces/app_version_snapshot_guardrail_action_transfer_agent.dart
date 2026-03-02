@@ -24,7 +24,7 @@ class AppVersionSnapshotGuardrailActionTransferAgent {
 
   factory AppVersionSnapshotGuardrailActionTransferAgent.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrailActionTransferAgent(
-      agent: map['agent'] == null ? null : (map['agent'] as String).input(),
+      agent: map['agent'] == null ? null : (map['agent']! as String).input(),
     );
   }
 }

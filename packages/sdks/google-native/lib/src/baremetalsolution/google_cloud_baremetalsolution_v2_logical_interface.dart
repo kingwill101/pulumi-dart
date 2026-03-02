@@ -32,9 +32,9 @@ class GoogleCloudBaremetalsolutionV2LogicalInterface {
 
   factory GoogleCloudBaremetalsolutionV2LogicalInterface.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBaremetalsolutionV2LogicalInterface(
-      interfaceIndex: map['interfaceIndex'] == null ? null : (map['interfaceIndex'] as int).input(),
-      logicalNetworkInterfaces: map['logicalNetworkInterfaces'] == null ? null : (pulumi.Input.decodeList<LogicalNetworkInterface>(map['logicalNetworkInterfaces'], (value) => LogicalNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      interfaceIndex: map['interfaceIndex'] == null ? null : (map['interfaceIndex']! as int).input(),
+      logicalNetworkInterfaces: map['logicalNetworkInterfaces'] == null ? null : (pulumi.Input.decodeList<LogicalNetworkInterface>(map['logicalNetworkInterfaces']!, (value) => LogicalNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

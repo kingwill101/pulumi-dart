@@ -65,15 +65,15 @@ class DomainIndexField {
 
   factory DomainIndexField.fromMap(Map<String, dynamic> map) {
     return DomainIndexField(
-      analysisScheme: map['analysisScheme'] == null ? null : (map['analysisScheme'] as String).input(),
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
-      facet: map['facet'] == null ? null : (map['facet'] as bool).input(),
-      highlight: map['highlight'] == null ? null : (map['highlight'] as bool).input(),
+      analysisScheme: map['analysisScheme'] == null ? null : ((map['analysisScheme'] as String).input()).input(),
+      defaultValue: map['defaultValue'] == null ? null : ((map['defaultValue'] as String).input()).input(),
+      facet: map['facet'] == null ? null : ((map['facet'] as bool).input()).input(),
+      highlight: map['highlight'] == null ? null : ((map['highlight'] as bool).input()).input(),
       name: (map['name'] as String).input(),
-      return_: map['return'] == null ? null : (map['return'] as bool).input(),
-      search: map['search'] == null ? null : (map['search'] as bool).input(),
-      sort: map['sort'] == null ? null : (map['sort'] as bool).input(),
-      sourceFields: map['sourceFields'] == null ? null : (map['sourceFields'] as String).input(),
+      return_: map['return'] == null ? null : ((map['return'] as bool).input()).input(),
+      search: map['search'] == null ? null : ((map['search'] as bool).input()).input(),
+      sort: map['sort'] == null ? null : ((map['sort'] as bool).input()).input(),
+      sourceFields: map['sourceFields'] == null ? null : ((map['sourceFields'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -26,8 +26,8 @@ class AwsKmsAliasProperties {
 
   factory AwsKmsAliasProperties.fromMap(Map<String, dynamic> map) {
     return AwsKmsAliasProperties(
-      aliasName: map['aliasName'] == null ? null : (map['aliasName'] as String).input(),
-      targetKeyId: map['targetKeyId'] == null ? null : (map['targetKeyId'] as String).input(),
+      aliasName: map['aliasName'] == null ? null : (map['aliasName']! as String).input(),
+      targetKeyId: map['targetKeyId'] == null ? null : (map['targetKeyId']! as String).input(),
     );
   }
 }

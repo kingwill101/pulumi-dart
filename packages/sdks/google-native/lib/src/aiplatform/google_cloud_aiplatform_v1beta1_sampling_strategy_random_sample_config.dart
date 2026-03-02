@@ -21,7 +21,7 @@ class GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig {
 
   factory GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig(
-      sampleRate: map['sampleRate'] == null ? null : (map['sampleRate'] as double).input(),
+      sampleRate: map['sampleRate'] == null ? null : (map['sampleRate']! as double).input(),
     );
   }
 }

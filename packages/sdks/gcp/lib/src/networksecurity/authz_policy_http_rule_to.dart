@@ -29,8 +29,8 @@ class AuthzPolicyHttpRuleTo {
 
   factory AuthzPolicyHttpRuleTo.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyHttpRuleTo(
-      notOperations: map['notOperations'] == null ? null : (pulumi.Input.decodeList<AuthzPolicyHttpRuleToNotOperation>(map['notOperations'], (value) => AuthzPolicyHttpRuleToNotOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      operations: map['operations'] == null ? null : (pulumi.Input.decodeList<AuthzPolicyHttpRuleToOperation>(map['operations'], (value) => AuthzPolicyHttpRuleToOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notOperations: map['notOperations'] == null ? null : (pulumi.Input.decodeList<AuthzPolicyHttpRuleToNotOperation>(map['notOperations']!, (value) => AuthzPolicyHttpRuleToNotOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      operations: map['operations'] == null ? null : (pulumi.Input.decodeList<AuthzPolicyHttpRuleToOperation>(map['operations']!, (value) => AuthzPolicyHttpRuleToOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

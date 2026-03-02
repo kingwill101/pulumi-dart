@@ -37,10 +37,10 @@ class LoggerEventhub {
 
   factory LoggerEventhub.fromMap(Map<String, dynamic> map) {
     return LoggerEventhub(
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri'] as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri']! as String).input(),
       name: (map['name'] as String).input(),
-      userAssignedIdentityClientId: map['userAssignedIdentityClientId'] == null ? null : (map['userAssignedIdentityClientId'] as String).input(),
+      userAssignedIdentityClientId: map['userAssignedIdentityClientId'] == null ? null : (map['userAssignedIdentityClientId']! as String).input(),
     );
   }
 }

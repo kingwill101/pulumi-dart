@@ -62,15 +62,15 @@ class KustomizationDefinition {
 
   factory KustomizationDefinition.fromMap(Map<String, dynamic> map) {
     return KustomizationDefinition(
-      dependsOn: map['dependsOn'] == null ? null : ((map['dependsOn'] as List).cast<String>()).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      postBuild: map['postBuild'] == null ? null : (PostBuildDefinition.fromMap((map['postBuild'] as Map).cast<String, dynamic>())).input(),
-      prune: map['prune'] == null ? null : (map['prune'] as bool).input(),
-      retryIntervalInSeconds: map['retryIntervalInSeconds'] == null ? null : (map['retryIntervalInSeconds'] as double).input(),
-      syncIntervalInSeconds: map['syncIntervalInSeconds'] == null ? null : (map['syncIntervalInSeconds'] as double).input(),
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as double).input(),
-      wait: map['wait'] == null ? null : (map['wait'] as bool).input(),
+      dependsOn: map['dependsOn'] == null ? null : ((map['dependsOn']! as List).cast<String>()).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      postBuild: map['postBuild'] == null ? null : (PostBuildDefinition.fromMap((map['postBuild']! as Map).cast<String, dynamic>())).input(),
+      prune: map['prune'] == null ? null : (map['prune']! as bool).input(),
+      retryIntervalInSeconds: map['retryIntervalInSeconds'] == null ? null : (map['retryIntervalInSeconds']! as double).input(),
+      syncIntervalInSeconds: map['syncIntervalInSeconds'] == null ? null : (map['syncIntervalInSeconds']! as double).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds']! as double).input(),
+      wait: map['wait'] == null ? null : (map['wait']! as bool).input(),
     );
   }
 }

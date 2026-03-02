@@ -78,16 +78,16 @@ class SecurityServiceArgs {
 
   factory SecurityServiceArgs.fromMap(Map<String, dynamic> map) {
     return SecurityServiceArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dnsIp: map['dnsIp'] == null ? null : (map['dnsIp'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ou: map['ou'] == null ? null : (map['ou'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      server: map['server'] == null ? null : (map['server'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dnsIp: map['dnsIp'] == null ? null : (map['dnsIp']! as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ou: map['ou'] == null ? null : (map['ou']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      server: map['server'] == null ? null : (map['server']! as String).input(),
       type: (map['type'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

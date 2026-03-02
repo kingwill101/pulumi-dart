@@ -72,16 +72,16 @@ class AndroidAppState {
 
   factory AndroidAppState.fromMap(Map<String, dynamic> map) {
     return AndroidAppState(
-      apiKeyId: map['apiKeyId'] == null ? null : (map['apiKeyId'] as String).input(),
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      packageName: map['packageName'] == null ? null : (map['packageName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      sha1Hashes: map['sha1Hashes'] == null ? null : ((map['sha1Hashes'] as List).cast<String>()).input(),
-      sha256Hashes: map['sha256Hashes'] == null ? null : ((map['sha256Hashes'] as List).cast<String>()).input(),
+      apiKeyId: map['apiKeyId'] == null ? null : (map['apiKeyId']! as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      packageName: map['packageName'] == null ? null : (map['packageName']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      sha1Hashes: map['sha1Hashes'] == null ? null : ((map['sha1Hashes']! as List).cast<String>()).input(),
+      sha256Hashes: map['sha256Hashes'] == null ? null : ((map['sha256Hashes']! as List).cast<String>()).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class GoogleCloudDocumentaiV1DocumentTextChange {
 
   factory GoogleCloudDocumentaiV1DocumentTextChange.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentTextChange(
-      changedText: map['changedText'] == null ? null : (map['changedText'] as String).input(),
-      provenance: map['provenance'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentProvenance>(map['provenance'], (value) => GoogleCloudDocumentaiV1DocumentProvenance.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      textAnchor: map['textAnchor'] == null ? null : (GoogleCloudDocumentaiV1DocumentTextAnchor.fromMap((map['textAnchor'] as Map).cast<String, dynamic>())).input(),
+      changedText: map['changedText'] == null ? null : (map['changedText']! as String).input(),
+      provenance: map['provenance'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentProvenance>(map['provenance']!, (value) => GoogleCloudDocumentaiV1DocumentProvenance.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      textAnchor: map['textAnchor'] == null ? null : (GoogleCloudDocumentaiV1DocumentTextAnchor.fromMap((map['textAnchor']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

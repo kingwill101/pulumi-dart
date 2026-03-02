@@ -48,11 +48,11 @@ class AppVersionSnapshotExampleMessageChunkToolResponse {
 
   factory AppVersionSnapshotExampleMessageChunkToolResponse.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotExampleMessageChunkToolResponse(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      response: map['response'] == null ? null : (map['response'] as String).input(),
-      tool: map['tool'] == null ? null : (map['tool'] as String).input(),
-      toolsetTools: map['toolsetTools'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotExampleMessageChunkToolResponseToolsetTool>(map['toolsetTools'], (value) => AppVersionSnapshotExampleMessageChunkToolResponseToolsetTool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      response: map['response'] == null ? null : (map['response']! as String).input(),
+      tool: map['tool'] == null ? null : (map['tool']! as String).input(),
+      toolsetTools: map['toolsetTools'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotExampleMessageChunkToolResponseToolsetTool>(map['toolsetTools']!, (value) => AppVersionSnapshotExampleMessageChunkToolResponseToolsetTool.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

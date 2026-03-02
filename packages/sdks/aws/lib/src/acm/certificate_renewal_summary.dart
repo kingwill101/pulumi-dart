@@ -29,9 +29,9 @@ class CertificateRenewalSummary {
 
   factory CertificateRenewalSummary.fromMap(Map<String, dynamic> map) {
     return CertificateRenewalSummary(
-      renewalStatus: map['renewalStatus'] == null ? null : (map['renewalStatus'] as String).input(),
-      renewalStatusReason: map['renewalStatusReason'] == null ? null : (map['renewalStatusReason'] as String).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
+      renewalStatus: map['renewalStatus'] == null ? null : ((map['renewalStatus'] as String).input()).input(),
+      renewalStatusReason: map['renewalStatusReason'] == null ? null : ((map['renewalStatusReason'] as String).input()).input(),
+      updatedAt: map['updatedAt'] == null ? null : ((map['updatedAt'] as String).input()).input(),
     );
   }
 }

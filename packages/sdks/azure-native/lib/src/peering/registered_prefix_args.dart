@@ -40,8 +40,8 @@ class RegisteredPrefixArgs {
   factory RegisteredPrefixArgs.fromMap(Map<String, dynamic> map) {
     return RegisteredPrefixArgs(
       peeringName: (map['peeringName'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      registeredPrefixName: map['registeredPrefixName'] == null ? null : (map['registeredPrefixName'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      registeredPrefixName: map['registeredPrefixName'] == null ? null : (map['registeredPrefixName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

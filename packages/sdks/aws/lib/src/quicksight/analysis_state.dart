@@ -100,22 +100,22 @@ class AnalysisState {
 
   factory AnalysisState.fromMap(Map<String, dynamic> map) {
     return AnalysisState(
-      analysisId: map['analysisId'] == null ? null : (map['analysisId'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
-      lastPublishedTime: map['lastPublishedTime'] == null ? null : (map['lastPublishedTime'] as String).input(),
-      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : (map['lastUpdatedTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (AnalysisParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
-      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<AnalysisPermission>(map['permissions'], (value) => AnalysisPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      recoveryWindowInDays: map['recoveryWindowInDays'] == null ? null : (map['recoveryWindowInDays'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sourceEntity: map['sourceEntity'] == null ? null : (AnalysisSourceEntity.fromMap((map['sourceEntity'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      themeArn: map['themeArn'] == null ? null : (map['themeArn'] as String).input(),
+      analysisId: map['analysisId'] == null ? null : ((map['analysisId'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      createdTime: map['createdTime'] == null ? null : ((map['createdTime'] as String).input()).input(),
+      lastPublishedTime: map['lastPublishedTime'] == null ? null : ((map['lastPublishedTime'] as String).input()).input(),
+      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : ((map['lastUpdatedTime'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      parameters: map['parameters'] == null ? null : ((AnalysisParameters.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input()).input(),
+      permissions: map['permissions'] == null ? null : ((pulumi.Input.decodeList<AnalysisPermission>(map['permissions']!, (value) => AnalysisPermission.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      recoveryWindowInDays: map['recoveryWindowInDays'] == null ? null : ((map['recoveryWindowInDays'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sourceEntity: map['sourceEntity'] == null ? null : ((AnalysisSourceEntity.fromMap((map['sourceEntity']! as Map).cast<String, dynamic>())).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      themeArn: map['themeArn'] == null ? null : ((map['themeArn'] as String).input()).input(),
     );
   }
 }

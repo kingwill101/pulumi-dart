@@ -36,10 +36,10 @@ class RepositoryPolicyState {
 
   factory RepositoryPolicyState.fromMap(Map<String, dynamic> map) {
     return RepositoryPolicyState(
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      registryId: map['registryId'] == null ? null : (map['registryId'] as String).input(),
-      repositoryName: map['repositoryName'] == null ? null : (map['repositoryName'] as String).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      registryId: map['registryId'] == null ? null : ((map['registryId'] as String).input()).input(),
+      repositoryName: map['repositoryName'] == null ? null : ((map['repositoryName'] as String).input()).input(),
     );
   }
 }

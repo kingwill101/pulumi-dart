@@ -39,9 +39,9 @@ class LinkedStorageAccountArgs {
 
   factory LinkedStorageAccountArgs.fromMap(Map<String, dynamic> map) {
     return LinkedStorageAccountArgs(
-      dataSourceType: map['dataSourceType'] == null ? null : (map['dataSourceType'] as String).input(),
+      dataSourceType: map['dataSourceType'] == null ? null : (map['dataSourceType']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageAccountIds: map['storageAccountIds'] == null ? null : ((map['storageAccountIds'] as List).cast<String>()).input(),
+      storageAccountIds: map['storageAccountIds'] == null ? null : ((map['storageAccountIds']! as List).cast<String>()).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

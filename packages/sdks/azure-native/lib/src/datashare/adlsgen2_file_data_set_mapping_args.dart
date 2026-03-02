@@ -82,11 +82,11 @@ class ADLSGen2FileDataSetMappingArgs {
     return ADLSGen2FileDataSetMappingArgs(
       accountName: (map['accountName'] as String).input(),
       dataSetId: (map['dataSetId'] as String).input(),
-      dataSetMappingName: map['dataSetMappingName'] == null ? null : (map['dataSetMappingName'] as String).input(),
+      dataSetMappingName: map['dataSetMappingName'] == null ? null : (map['dataSetMappingName']! as String).input(),
       filePath: (map['filePath'] as String).input(),
       fileSystem: (map['fileSystem'] as String).input(),
       kind: (map['kind'] as String).input(),
-      outputType: map['outputType'] == null ? null : (map['outputType'] as String).input(),
+      outputType: map['outputType'] == null ? null : (map['outputType']! as String).input(),
       resourceGroup: (map['resourceGroup'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       shareSubscriptionName: (map['shareSubscriptionName'] as String).input(),

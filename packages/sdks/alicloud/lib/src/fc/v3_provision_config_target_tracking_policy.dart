@@ -55,14 +55,14 @@ class V3ProvisionConfigTargetTrackingPolicy {
 
   factory V3ProvisionConfigTargetTrackingPolicy.fromMap(Map<String, dynamic> map) {
     return V3ProvisionConfigTargetTrackingPolicy(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity'] as int).input(),
-      metricTarget: map['metricTarget'] == null ? null : (map['metricTarget'] as double).input(),
-      metricType: map['metricType'] == null ? null : (map['metricType'] as String).input(),
-      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity']! as int).input(),
+      metricTarget: map['metricTarget'] == null ? null : (map['metricTarget']! as double).input(),
+      metricType: map['metricType'] == null ? null : (map['metricType']! as String).input(),
+      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

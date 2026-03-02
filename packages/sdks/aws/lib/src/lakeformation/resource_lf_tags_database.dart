@@ -27,7 +27,7 @@ class ResourceLfTagsDatabase {
 
   factory ResourceLfTagsDatabase.fromMap(Map<String, dynamic> map) {
     return ResourceLfTagsDatabase(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
       name: (map['name'] as String).input(),
     );
   }

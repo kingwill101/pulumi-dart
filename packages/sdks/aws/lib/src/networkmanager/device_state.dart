@@ -80,18 +80,18 @@ class DeviceState {
 
   factory DeviceState.fromMap(Map<String, dynamic> map) {
     return DeviceState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      awsLocation: map['awsLocation'] == null ? null : (DeviceAwsLocation.fromMap((map['awsLocation'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      globalNetworkId: map['globalNetworkId'] == null ? null : (map['globalNetworkId'] as String).input(),
-      location: map['location'] == null ? null : (DeviceLocation.fromMap((map['location'] as Map).cast<String, dynamic>())).input(),
-      model: map['model'] == null ? null : (map['model'] as String).input(),
-      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      vendor: map['vendor'] == null ? null : (map['vendor'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      awsLocation: map['awsLocation'] == null ? null : ((DeviceAwsLocation.fromMap((map['awsLocation']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      globalNetworkId: map['globalNetworkId'] == null ? null : ((map['globalNetworkId'] as String).input()).input(),
+      location: map['location'] == null ? null : ((DeviceLocation.fromMap((map['location']! as Map).cast<String, dynamic>())).input()).input(),
+      model: map['model'] == null ? null : ((map['model'] as String).input()).input(),
+      serialNumber: map['serialNumber'] == null ? null : ((map['serialNumber'] as String).input()).input(),
+      siteId: map['siteId'] == null ? null : ((map['siteId'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      vendor: map['vendor'] == null ? null : ((map['vendor'] as String).input()).input(),
     );
   }
 }

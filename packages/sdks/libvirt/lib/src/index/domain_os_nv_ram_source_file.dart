@@ -31,9 +31,9 @@ class DomainOsNvRamSourceFile {
 
   factory DomainOsNvRamSourceFile.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceFile(
-      fdGroup: map['fdGroup'] == null ? null : (map['fdGroup'] as String).input(),
-      file: map['file'] == null ? null : (map['file'] as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceFileSecLabel>(map['secLabels'], (value) => DomainOsNvRamSourceFileSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fdGroup: map['fdGroup'] == null ? null : (map['fdGroup']! as String).input(),
+      file: map['file'] == null ? null : (map['file']! as String).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceFileSecLabel>(map['secLabels']!, (value) => DomainOsNvRamSourceFileSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

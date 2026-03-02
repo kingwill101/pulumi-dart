@@ -39,10 +39,10 @@ class LegacyMicrosoftAccount {
 
   factory LegacyMicrosoftAccount.fromMap(Map<String, dynamic> map) {
     return LegacyMicrosoftAccount(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      login: map['login'] == null ? null : (LoginScopes.fromMap((map['login'] as Map).cast<String, dynamic>())).input(),
-      registration: map['registration'] == null ? null : (ClientRegistration.fromMap((map['registration'] as Map).cast<String, dynamic>())).input(),
-      validation: map['validation'] == null ? null : (AllowedAudiencesValidation.fromMap((map['validation'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      login: map['login'] == null ? null : (LoginScopes.fromMap((map['login']! as Map).cast<String, dynamic>())).input(),
+      registration: map['registration'] == null ? null : (ClientRegistration.fromMap((map['registration']! as Map).cast<String, dynamic>())).input(),
+      validation: map['validation'] == null ? null : (AllowedAudiencesValidation.fromMap((map['validation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

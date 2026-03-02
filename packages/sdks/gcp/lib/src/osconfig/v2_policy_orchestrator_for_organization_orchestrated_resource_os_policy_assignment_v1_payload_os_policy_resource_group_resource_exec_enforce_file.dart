@@ -42,10 +42,10 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
   factory V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile(
-      allowInsecure: map['allowInsecure'] == null ? null : (map['allowInsecure'] as bool).input(),
-      gcs: map['gcs'] == null ? null : (V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs.fromMap((map['gcs'] as Map).cast<String, dynamic>())).input(),
-      localPath: map['localPath'] == null ? null : (map['localPath'] as String).input(),
-      remote: map['remote'] == null ? null : (V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemote.fromMap((map['remote'] as Map).cast<String, dynamic>())).input(),
+      allowInsecure: map['allowInsecure'] == null ? null : (map['allowInsecure']! as bool).input(),
+      gcs: map['gcs'] == null ? null : (V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs.fromMap((map['gcs']! as Map).cast<String, dynamic>())).input(),
+      localPath: map['localPath'] == null ? null : (map['localPath']! as String).input(),
+      remote: map['remote'] == null ? null : (V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemote.fromMap((map['remote']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class TrafficPercentStrategy {
 
   factory TrafficPercentStrategy.fromMap(Map<String, dynamic> map) {
     return TrafficPercentStrategy(
-      percentages: map['percentages'] == null ? null : ((map['percentages'] as Map).cast<String, String>()).input(),
+      percentages: map['percentages'] == null ? null : ((map['percentages']! as Map).cast<String, String>()).input(),
     );
   }
 }

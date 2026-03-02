@@ -26,8 +26,8 @@ class DatabaseInstanceSettingsConnectionPoolConfig {
 
   factory DatabaseInstanceSettingsConnectionPoolConfig.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsConnectionPoolConfig(
-      connectionPoolingEnabled: map['connectionPoolingEnabled'] == null ? null : (map['connectionPoolingEnabled'] as bool).input(),
-      flags: map['flags'] == null ? null : (pulumi.Input.decodeList<DatabaseInstanceSettingsConnectionPoolConfigFlag>(map['flags'], (value) => DatabaseInstanceSettingsConnectionPoolConfigFlag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connectionPoolingEnabled: map['connectionPoolingEnabled'] == null ? null : (map['connectionPoolingEnabled']! as bool).input(),
+      flags: map['flags'] == null ? null : (pulumi.Input.decodeList<DatabaseInstanceSettingsConnectionPoolConfigFlag>(map['flags']!, (value) => DatabaseInstanceSettingsConnectionPoolConfigFlag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

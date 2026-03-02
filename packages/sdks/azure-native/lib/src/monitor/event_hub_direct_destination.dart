@@ -26,8 +26,8 @@ class EventHubDirectDestination {
 
   factory EventHubDirectDestination.fromMap(Map<String, dynamic> map) {
     return EventHubDirectDestination(
-      eventHubResourceId: map['eventHubResourceId'] == null ? null : (map['eventHubResourceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      eventHubResourceId: map['eventHubResourceId'] == null ? null : (map['eventHubResourceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

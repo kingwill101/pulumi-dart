@@ -58,10 +58,10 @@ class GetEtlsResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       logstore: map['logstore'] as String,
-      offset: map['offset'] == null ? null : map['offset'] as int,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      offset: map['offset'] == null ? null : map['offset']! as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       project: map['project'] as String,
-      size: map['size'] == null ? null : map['size'] as int,
+      size: map['size'] == null ? null : map['size']! as int,
     );
   }
 }

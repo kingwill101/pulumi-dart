@@ -70,12 +70,12 @@ class GetConfigurationPolicyGroupResult {
     return GetConfigurationPolicyGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      isDefault: map['isDefault'] == null ? null : map['isDefault'] as bool,
-      name: map['name'] == null ? null : map['name'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      isDefault: map['isDefault'] == null ? null : map['isDefault']! as bool,
+      name: map['name'] == null ? null : map['name']! as String,
       p2SConnectionConfigurations: pulumi.Input.decodeList<SubResourceResponse>(map['p2SConnectionConfigurations'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      policyMembers: map['policyMembers'] == null ? null : pulumi.Input.decodeList<VpnServerConfigurationPolicyGroupMemberResponse>(map['policyMembers'], (value) => VpnServerConfigurationPolicyGroupMemberResponse.fromMap((value as Map).cast<String, dynamic>())),
-      priority: map['priority'] == null ? null : map['priority'] as int,
+      policyMembers: map['policyMembers'] == null ? null : pulumi.Input.decodeList<VpnServerConfigurationPolicyGroupMemberResponse>(map['policyMembers']!, (value) => VpnServerConfigurationPolicyGroupMemberResponse.fromMap((value as Map).cast<String, dynamic>())),
+      priority: map['priority'] == null ? null : map['priority']! as int,
       provisioningState: map['provisioningState'] as String,
       type: map['type'] as String,
     );

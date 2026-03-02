@@ -53,13 +53,13 @@ class GatewayRouteConfigProperties {
 
   factory GatewayRouteConfigProperties.fromMap(Map<String, dynamic> map) {
     return GatewayRouteConfigProperties(
-      appResourceId: map['appResourceId'] == null ? null : (map['appResourceId'] as String).input(),
-      filters: map['filters'] == null ? null : ((map['filters'] as List).cast<String>()).input(),
-      openApi: map['openApi'] == null ? null : (GatewayRouteConfigOpenApiProperties.fromMap((map['openApi'] as Map).cast<String, dynamic>())).input(),
-      predicates: map['predicates'] == null ? null : ((map['predicates'] as List).cast<String>()).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<GatewayApiRoute>(map['routes'], (value) => GatewayApiRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ssoEnabled: map['ssoEnabled'] == null ? null : (map['ssoEnabled'] as bool).input(),
+      appResourceId: map['appResourceId'] == null ? null : (map['appResourceId']! as String).input(),
+      filters: map['filters'] == null ? null : ((map['filters']! as List).cast<String>()).input(),
+      openApi: map['openApi'] == null ? null : (GatewayRouteConfigOpenApiProperties.fromMap((map['openApi']! as Map).cast<String, dynamic>())).input(),
+      predicates: map['predicates'] == null ? null : ((map['predicates']! as List).cast<String>()).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<GatewayApiRoute>(map['routes']!, (value) => GatewayApiRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ssoEnabled: map['ssoEnabled'] == null ? null : (map['ssoEnabled']! as bool).input(),
     );
   }
 }

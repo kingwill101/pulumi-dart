@@ -86,18 +86,18 @@ class BitbucketServerConfigState {
 
   factory BitbucketServerConfigState.fromMap(Map<String, dynamic> map) {
     return BitbucketServerConfigState(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
-      configId: map['configId'] == null ? null : (map['configId'] as String).input(),
-      connectedRepositories: map['connectedRepositories'] == null ? null : (pulumi.Input.decodeList<BitbucketServerConfigConnectedRepository>(map['connectedRepositories'], (value) => BitbucketServerConfigConnectedRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      hostUri: map['hostUri'] == null ? null : (map['hostUri'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      peeredNetwork: map['peeredNetwork'] == null ? null : (map['peeredNetwork'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      secrets: map['secrets'] == null ? null : (BitbucketServerConfigSecrets.fromMap((map['secrets'] as Map).cast<String, dynamic>())).input(),
-      sslCa: map['sslCa'] == null ? null : (map['sslCa'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
-      webhookKey: map['webhookKey'] == null ? null : (map['webhookKey'] as String).input(),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey']! as String).input(),
+      configId: map['configId'] == null ? null : (map['configId']! as String).input(),
+      connectedRepositories: map['connectedRepositories'] == null ? null : (pulumi.Input.decodeList<BitbucketServerConfigConnectedRepository>(map['connectedRepositories']!, (value) => BitbucketServerConfigConnectedRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hostUri: map['hostUri'] == null ? null : (map['hostUri']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      peeredNetwork: map['peeredNetwork'] == null ? null : (map['peeredNetwork']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      secrets: map['secrets'] == null ? null : (BitbucketServerConfigSecrets.fromMap((map['secrets']! as Map).cast<String, dynamic>())).input(),
+      sslCa: map['sslCa'] == null ? null : (map['sslCa']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
+      webhookKey: map['webhookKey'] == null ? null : (map['webhookKey']! as String).input(),
     );
   }
 }

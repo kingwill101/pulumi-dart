@@ -28,7 +28,7 @@ class ExampleMessageChunkAgentTransfer {
 
   factory ExampleMessageChunkAgentTransfer.fromMap(Map<String, dynamic> map) {
     return ExampleMessageChunkAgentTransfer(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       targetAgent: (map['targetAgent'] as String).input(),
     );
   }

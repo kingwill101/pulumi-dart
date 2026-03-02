@@ -21,7 +21,7 @@ class SpotFleetRequestSpotMaintenanceStrategies {
 
   factory SpotFleetRequestSpotMaintenanceStrategies.fromMap(Map<String, dynamic> map) {
     return SpotFleetRequestSpotMaintenanceStrategies(
-      capacityRebalance: map['capacityRebalance'] == null ? null : (SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance.fromMap((map['capacityRebalance'] as Map).cast<String, dynamic>())).input(),
+      capacityRebalance: map['capacityRebalance'] == null ? null : ((SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance.fromMap((map['capacityRebalance']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

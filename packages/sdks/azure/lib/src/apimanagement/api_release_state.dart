@@ -31,9 +31,9 @@ class ApiReleaseState {
 
   factory ApiReleaseState.fromMap(Map<String, dynamic> map) {
     return ApiReleaseState(
-      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
+      apiId: map['apiId'] == null ? null : (map['apiId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
     );
   }
 }

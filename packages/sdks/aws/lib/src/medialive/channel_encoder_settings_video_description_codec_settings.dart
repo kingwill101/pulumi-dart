@@ -32,9 +32,9 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettings {
 
   factory ChannelEncoderSettingsVideoDescriptionCodecSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsVideoDescriptionCodecSettings(
-      frameCaptureSettings: map['frameCaptureSettings'] == null ? null : (ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings.fromMap((map['frameCaptureSettings'] as Map).cast<String, dynamic>())).input(),
-      h264Settings: map['h264Settings'] == null ? null : (ChannelEncoderSettingsVideoDescriptionCodecSettingsH264Settings.fromMap((map['h264Settings'] as Map).cast<String, dynamic>())).input(),
-      h265Settings: map['h265Settings'] == null ? null : (ChannelEncoderSettingsVideoDescriptionCodecSettingsH265Settings.fromMap((map['h265Settings'] as Map).cast<String, dynamic>())).input(),
+      frameCaptureSettings: map['frameCaptureSettings'] == null ? null : ((ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings.fromMap((map['frameCaptureSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      h264Settings: map['h264Settings'] == null ? null : ((ChannelEncoderSettingsVideoDescriptionCodecSettingsH264Settings.fromMap((map['h264Settings']! as Map).cast<String, dynamic>())).input()).input(),
+      h265Settings: map['h265Settings'] == null ? null : ((ChannelEncoderSettingsVideoDescriptionCodecSettingsH265Settings.fromMap((map['h265Settings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -52,13 +52,13 @@ class ResourceFile {
 
   factory ResourceFile.fromMap(Map<String, dynamic> map) {
     return ResourceFile(
-      autoStorageContainerName: map['autoStorageContainerName'] == null ? null : (map['autoStorageContainerName'] as String).input(),
-      blobPrefix: map['blobPrefix'] == null ? null : (map['blobPrefix'] as String).input(),
-      fileMode: map['fileMode'] == null ? null : (map['fileMode'] as String).input(),
-      filePath: map['filePath'] == null ? null : (map['filePath'] as String).input(),
-      httpUrl: map['httpUrl'] == null ? null : (map['httpUrl'] as String).input(),
-      identityReference: map['identityReference'] == null ? null : (ComputeNodeIdentityReference.fromMap((map['identityReference'] as Map).cast<String, dynamic>())).input(),
-      storageContainerUrl: map['storageContainerUrl'] == null ? null : (map['storageContainerUrl'] as String).input(),
+      autoStorageContainerName: map['autoStorageContainerName'] == null ? null : (map['autoStorageContainerName']! as String).input(),
+      blobPrefix: map['blobPrefix'] == null ? null : (map['blobPrefix']! as String).input(),
+      fileMode: map['fileMode'] == null ? null : (map['fileMode']! as String).input(),
+      filePath: map['filePath'] == null ? null : (map['filePath']! as String).input(),
+      httpUrl: map['httpUrl'] == null ? null : (map['httpUrl']! as String).input(),
+      identityReference: map['identityReference'] == null ? null : (ComputeNodeIdentityReference.fromMap((map['identityReference']! as Map).cast<String, dynamic>())).input(),
+      storageContainerUrl: map['storageContainerUrl'] == null ? null : (map['storageContainerUrl']! as String).input(),
     );
   }
 }

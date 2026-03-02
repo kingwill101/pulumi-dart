@@ -50,11 +50,11 @@ class NetworkVirtualApplianceConnectionArgs {
 
   factory NetworkVirtualApplianceConnectionArgs.fromMap(Map<String, dynamic> map) {
     return NetworkVirtualApplianceConnectionArgs(
-      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      connectionName: map['connectionName'] == null ? null : (map['connectionName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networkVirtualApplianceName: (map['networkVirtualApplianceName'] as String).input(),
-      properties: map['properties'] == null ? null : (NetworkVirtualApplianceConnectionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (NetworkVirtualApplianceConnectionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

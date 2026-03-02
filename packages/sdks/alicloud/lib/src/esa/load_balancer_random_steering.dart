@@ -25,8 +25,8 @@ class LoadBalancerRandomSteering {
 
   factory LoadBalancerRandomSteering.fromMap(Map<String, dynamic> map) {
     return LoadBalancerRandomSteering(
-      defaultWeight: map['defaultWeight'] == null ? null : (map['defaultWeight'] as int).input(),
-      poolWeights: map['poolWeights'] == null ? null : ((map['poolWeights'] as Map).cast<String, String>()).input(),
+      defaultWeight: map['defaultWeight'] == null ? null : (map['defaultWeight']! as int).input(),
+      poolWeights: map['poolWeights'] == null ? null : ((map['poolWeights']! as Map).cast<String, String>()).input(),
     );
   }
 }

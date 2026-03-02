@@ -52,11 +52,11 @@ class AccountIamMemberState {
 
   factory AccountIamMemberState.fromMap(Map<String, dynamic> map) {
     return AccountIamMemberState(
-      billingAccountId: map['billingAccountId'] == null ? null : (map['billingAccountId'] as String).input(),
-      condition: map['condition'] == null ? null : (AccountIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      member: map['member'] == null ? null : (map['member'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      billingAccountId: map['billingAccountId'] == null ? null : (map['billingAccountId']! as String).input(),
+      condition: map['condition'] == null ? null : (AccountIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      member: map['member'] == null ? null : (map['member']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

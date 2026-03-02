@@ -65,15 +65,15 @@ class CustomResourceDefinitionVersionPatch {
 
   factory CustomResourceDefinitionVersionPatch.fromMap(Map<String, dynamic> map) {
     return CustomResourceDefinitionVersionPatch(
-      additionalPrinterColumns: map['additionalPrinterColumns'] == null ? null : (pulumi.Input.decodeList<CustomResourceColumnDefinitionPatch>(map['additionalPrinterColumns'], (value) => CustomResourceColumnDefinitionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deprecated: map['deprecated'] == null ? null : (map['deprecated'] as bool).input(),
-      deprecationWarning: map['deprecationWarning'] == null ? null : (map['deprecationWarning'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      schema: map['schema'] == null ? null : (CustomResourceValidationPatch.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
-      selectableFields: map['selectableFields'] == null ? null : (pulumi.Input.decodeList<SelectableFieldPatch>(map['selectableFields'], (value) => SelectableFieldPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      served: map['served'] == null ? null : (map['served'] as bool).input(),
-      storage: map['storage'] == null ? null : (map['storage'] as bool).input(),
-      subresources: map['subresources'] == null ? null : (CustomResourceSubresourcesPatch.fromMap((map['subresources'] as Map).cast<String, dynamic>())).input(),
+      additionalPrinterColumns: map['additionalPrinterColumns'] == null ? null : (pulumi.Input.decodeList<CustomResourceColumnDefinitionPatch>(map['additionalPrinterColumns']!, (value) => CustomResourceColumnDefinitionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deprecated: map['deprecated'] == null ? null : (map['deprecated']! as bool).input(),
+      deprecationWarning: map['deprecationWarning'] == null ? null : (map['deprecationWarning']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      schema: map['schema'] == null ? null : (CustomResourceValidationPatch.fromMap((map['schema']! as Map).cast<String, dynamic>())).input(),
+      selectableFields: map['selectableFields'] == null ? null : (pulumi.Input.decodeList<SelectableFieldPatch>(map['selectableFields']!, (value) => SelectableFieldPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      served: map['served'] == null ? null : (map['served']! as bool).input(),
+      storage: map['storage'] == null ? null : (map['storage']! as bool).input(),
+      subresources: map['subresources'] == null ? null : (CustomResourceSubresourcesPatch.fromMap((map['subresources']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

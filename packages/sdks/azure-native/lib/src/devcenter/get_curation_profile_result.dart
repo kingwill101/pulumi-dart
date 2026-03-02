@@ -62,8 +62,8 @@ class GetCurationProfileResult {
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      resourcePolicies: map['resourcePolicies'] == null ? null : pulumi.Input.decodeList<ResourcePolicyResponse>(map['resourcePolicies'], (value) => ResourcePolicyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      scopes: map['scopes'] == null ? null : (map['scopes'] as List).cast<String>(),
+      resourcePolicies: map['resourcePolicies'] == null ? null : pulumi.Input.decodeList<ResourcePolicyResponse>(map['resourcePolicies']!, (value) => ResourcePolicyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      scopes: map['scopes'] == null ? null : (map['scopes']! as List).cast<String>(),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

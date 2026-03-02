@@ -21,7 +21,7 @@ class AgentPoolGatewayProfileResponse {
 
   factory AgentPoolGatewayProfileResponse.fromMap(Map<String, dynamic> map) {
     return AgentPoolGatewayProfileResponse(
-      publicIPPrefixSize: map['publicIPPrefixSize'] == null ? null : (map['publicIPPrefixSize'] as int).input(),
+      publicIPPrefixSize: map['publicIPPrefixSize'] == null ? null : (map['publicIPPrefixSize']! as int).input(),
     );
   }
 }

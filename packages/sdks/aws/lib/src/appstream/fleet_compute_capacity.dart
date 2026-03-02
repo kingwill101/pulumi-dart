@@ -40,11 +40,11 @@ class FleetComputeCapacity {
 
   factory FleetComputeCapacity.fromMap(Map<String, dynamic> map) {
     return FleetComputeCapacity(
-      available: map['available'] == null ? null : (map['available'] as int).input(),
-      desiredInstances: map['desiredInstances'] == null ? null : (map['desiredInstances'] as int).input(),
-      desiredSessions: map['desiredSessions'] == null ? null : (map['desiredSessions'] as int).input(),
-      inUse: map['inUse'] == null ? null : (map['inUse'] as int).input(),
-      running: map['running'] == null ? null : (map['running'] as int).input(),
+      available: map['available'] == null ? null : ((map['available'] as int).input()).input(),
+      desiredInstances: map['desiredInstances'] == null ? null : ((map['desiredInstances'] as int).input()).input(),
+      desiredSessions: map['desiredSessions'] == null ? null : ((map['desiredSessions'] as int).input()).input(),
+      inUse: map['inUse'] == null ? null : ((map['inUse'] as int).input()).input(),
+      running: map['running'] == null ? null : ((map['running'] as int).input()).input(),
     );
   }
 }

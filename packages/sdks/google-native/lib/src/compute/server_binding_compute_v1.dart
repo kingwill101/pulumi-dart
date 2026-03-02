@@ -20,7 +20,7 @@ class ServerBindingComputeV1 {
 
   factory ServerBindingComputeV1.fromMap(Map<String, dynamic> map) {
     return ServerBindingComputeV1(
-      type: map['type'] == null ? null : (ServerBindingTypeComputeV1.fromValue(map['type'] as String)).input(),
+      type: map['type'] == null ? null : (ServerBindingTypeComputeV1.fromValue(map['type']! as String)).input(),
     );
   }
 }

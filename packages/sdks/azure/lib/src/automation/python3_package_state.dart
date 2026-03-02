@@ -56,14 +56,14 @@ class Python3PackageState {
 
   factory Python3PackageState.fromMap(Map<String, dynamic> map) {
     return Python3PackageState(
-      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName'] as String).input(),
-      contentUri: map['contentUri'] == null ? null : (map['contentUri'] as String).input(),
-      contentVersion: map['contentVersion'] == null ? null : (map['contentVersion'] as String).input(),
-      hashAlgorithm: map['hashAlgorithm'] == null ? null : (map['hashAlgorithm'] as String).input(),
-      hashValue: map['hashValue'] == null ? null : (map['hashValue'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName']! as String).input(),
+      contentUri: map['contentUri'] == null ? null : (map['contentUri']! as String).input(),
+      contentVersion: map['contentVersion'] == null ? null : (map['contentVersion']! as String).input(),
+      hashAlgorithm: map['hashAlgorithm'] == null ? null : (map['hashAlgorithm']! as String).input(),
+      hashValue: map['hashValue'] == null ? null : (map['hashValue']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

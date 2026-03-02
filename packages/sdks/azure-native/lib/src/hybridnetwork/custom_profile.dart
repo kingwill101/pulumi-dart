@@ -21,7 +21,7 @@ class CustomProfile {
 
   factory CustomProfile.fromMap(Map<String, dynamic> map) {
     return CustomProfile(
-      metadataConfigurationPath: map['metadataConfigurationPath'] == null ? null : (map['metadataConfigurationPath'] as String).input(),
+      metadataConfigurationPath: map['metadataConfigurationPath'] == null ? null : (map['metadataConfigurationPath']! as String).input(),
     );
   }
 }

@@ -55,13 +55,13 @@ class DataFlowSink {
 
   factory DataFlowSink.fromMap(Map<String, dynamic> map) {
     return DataFlowSink(
-      dataset: map['dataset'] == null ? null : (DataFlowSinkDataset.fromMap((map['dataset'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      flowlet: map['flowlet'] == null ? null : (DataFlowSinkFlowlet.fromMap((map['flowlet'] as Map).cast<String, dynamic>())).input(),
-      linkedService: map['linkedService'] == null ? null : (DataFlowSinkLinkedService.fromMap((map['linkedService'] as Map).cast<String, dynamic>())).input(),
+      dataset: map['dataset'] == null ? null : (DataFlowSinkDataset.fromMap((map['dataset']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      flowlet: map['flowlet'] == null ? null : (DataFlowSinkFlowlet.fromMap((map['flowlet']! as Map).cast<String, dynamic>())).input(),
+      linkedService: map['linkedService'] == null ? null : (DataFlowSinkLinkedService.fromMap((map['linkedService']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      rejectedLinkedService: map['rejectedLinkedService'] == null ? null : (DataFlowSinkRejectedLinkedService.fromMap((map['rejectedLinkedService'] as Map).cast<String, dynamic>())).input(),
-      schemaLinkedService: map['schemaLinkedService'] == null ? null : (DataFlowSinkSchemaLinkedService.fromMap((map['schemaLinkedService'] as Map).cast<String, dynamic>())).input(),
+      rejectedLinkedService: map['rejectedLinkedService'] == null ? null : (DataFlowSinkRejectedLinkedService.fromMap((map['rejectedLinkedService']! as Map).cast<String, dynamic>())).input(),
+      schemaLinkedService: map['schemaLinkedService'] == null ? null : (DataFlowSinkSchemaLinkedService.fromMap((map['schemaLinkedService']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

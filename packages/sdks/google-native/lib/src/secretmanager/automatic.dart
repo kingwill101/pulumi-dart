@@ -22,7 +22,7 @@ class Automatic {
 
   factory Automatic.fromMap(Map<String, dynamic> map) {
     return Automatic(
-      customerManagedEncryption: map['customerManagedEncryption'] == null ? null : (CustomerManagedEncryption.fromMap((map['customerManagedEncryption'] as Map).cast<String, dynamic>())).input(),
+      customerManagedEncryption: map['customerManagedEncryption'] == null ? null : (CustomerManagedEncryption.fromMap((map['customerManagedEncryption']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

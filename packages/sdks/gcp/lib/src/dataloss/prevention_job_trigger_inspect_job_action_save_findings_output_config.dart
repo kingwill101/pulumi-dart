@@ -45,9 +45,9 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig {
 
   factory PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig(
-      outputSchema: map['outputSchema'] == null ? null : (map['outputSchema'] as String).input(),
-      storagePath: map['storagePath'] == null ? null : (PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath.fromMap((map['storagePath'] as Map).cast<String, dynamic>())).input(),
-      table: map['table'] == null ? null : (PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable.fromMap((map['table'] as Map).cast<String, dynamic>())).input(),
+      outputSchema: map['outputSchema'] == null ? null : (map['outputSchema']! as String).input(),
+      storagePath: map['storagePath'] == null ? null : (PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath.fromMap((map['storagePath']! as Map).cast<String, dynamic>())).input(),
+      table: map['table'] == null ? null : (PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable.fromMap((map['table']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

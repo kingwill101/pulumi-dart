@@ -47,9 +47,9 @@ class AccessLevelsAccessLevel {
 
   factory AccessLevelsAccessLevel.fromMap(Map<String, dynamic> map) {
     return AccessLevelsAccessLevel(
-      basic: map['basic'] == null ? null : (AccessLevelsAccessLevelBasic.fromMap((map['basic'] as Map).cast<String, dynamic>())).input(),
-      custom: map['custom'] == null ? null : (AccessLevelsAccessLevelCustom.fromMap((map['custom'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      basic: map['basic'] == null ? null : (AccessLevelsAccessLevelBasic.fromMap((map['basic']! as Map).cast<String, dynamic>())).input(),
+      custom: map['custom'] == null ? null : (AccessLevelsAccessLevelCustom.fromMap((map['custom']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       name: (map['name'] as String).input(),
       title: (map['title'] as String).input(),
     );

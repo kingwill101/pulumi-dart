@@ -22,7 +22,7 @@ class NodeConfigSource {
 
   factory NodeConfigSource.fromMap(Map<String, dynamic> map) {
     return NodeConfigSource(
-      configMap: map['configMap'] == null ? null : (ConfigMapNodeConfigSource.fromMap((map['configMap'] as Map).cast<String, dynamic>())).input(),
+      configMap: map['configMap'] == null ? null : (ConfigMapNodeConfigSource.fromMap((map['configMap']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

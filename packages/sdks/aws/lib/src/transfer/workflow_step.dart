@@ -49,11 +49,11 @@ class WorkflowStep {
 
   factory WorkflowStep.fromMap(Map<String, dynamic> map) {
     return WorkflowStep(
-      copyStepDetails: map['copyStepDetails'] == null ? null : (WorkflowStepCopyStepDetails.fromMap((map['copyStepDetails'] as Map).cast<String, dynamic>())).input(),
-      customStepDetails: map['customStepDetails'] == null ? null : (WorkflowStepCustomStepDetails.fromMap((map['customStepDetails'] as Map).cast<String, dynamic>())).input(),
-      decryptStepDetails: map['decryptStepDetails'] == null ? null : (WorkflowStepDecryptStepDetails.fromMap((map['decryptStepDetails'] as Map).cast<String, dynamic>())).input(),
-      deleteStepDetails: map['deleteStepDetails'] == null ? null : (WorkflowStepDeleteStepDetails.fromMap((map['deleteStepDetails'] as Map).cast<String, dynamic>())).input(),
-      tagStepDetails: map['tagStepDetails'] == null ? null : (WorkflowStepTagStepDetails.fromMap((map['tagStepDetails'] as Map).cast<String, dynamic>())).input(),
+      copyStepDetails: map['copyStepDetails'] == null ? null : ((WorkflowStepCopyStepDetails.fromMap((map['copyStepDetails']! as Map).cast<String, dynamic>())).input()).input(),
+      customStepDetails: map['customStepDetails'] == null ? null : ((WorkflowStepCustomStepDetails.fromMap((map['customStepDetails']! as Map).cast<String, dynamic>())).input()).input(),
+      decryptStepDetails: map['decryptStepDetails'] == null ? null : ((WorkflowStepDecryptStepDetails.fromMap((map['decryptStepDetails']! as Map).cast<String, dynamic>())).input()).input(),
+      deleteStepDetails: map['deleteStepDetails'] == null ? null : ((WorkflowStepDeleteStepDetails.fromMap((map['deleteStepDetails']! as Map).cast<String, dynamic>())).input()).input(),
+      tagStepDetails: map['tagStepDetails'] == null ? null : ((WorkflowStepTagStepDetails.fromMap((map['tagStepDetails']! as Map).cast<String, dynamic>())).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

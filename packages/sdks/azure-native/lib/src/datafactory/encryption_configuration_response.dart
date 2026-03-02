@@ -37,9 +37,9 @@ class EncryptionConfigurationResponse {
 
   factory EncryptionConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionConfigurationResponse(
-      identity: map['identity'] == null ? null : (CMKIdentityDefinitionResponse.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (CMKIdentityDefinitionResponse.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
       keyName: (map['keyName'] as String).input(),
-      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion']! as String).input(),
       vaultBaseUrl: (map['vaultBaseUrl'] as String).input(),
     );
   }

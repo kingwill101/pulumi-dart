@@ -44,10 +44,10 @@ class VpcConnectorArgs {
 
   factory VpcConnectorArgs.fromMap(Map<String, dynamic> map) {
     return VpcConnectorArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       securityGroups: ((map['securityGroups'] as List).cast<String>()).input(),
       subnets: ((map['subnets'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       vpcConnectorName: (map['vpcConnectorName'] as String).input(),
     );
   }

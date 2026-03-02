@@ -31,9 +31,9 @@ class ReplicaPairDrillState {
 
   factory ReplicaPairDrillState.fromMap(Map<String, dynamic> map) {
     return ReplicaPairDrillState(
-      pairId: map['pairId'] == null ? null : (map['pairId'] as String).input(),
-      replicaPairDrillId: map['replicaPairDrillId'] == null ? null : (map['replicaPairDrillId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      pairId: map['pairId'] == null ? null : (map['pairId']! as String).input(),
+      replicaPairDrillId: map['replicaPairDrillId'] == null ? null : (map['replicaPairDrillId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

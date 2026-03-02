@@ -25,8 +25,8 @@ class AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelS3 {
 
   factory AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelS3.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelS3(
-      bucketOwnerAccountId: map['bucketOwnerAccountId'] == null ? null : (map['bucketOwnerAccountId'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      bucketOwnerAccountId: map['bucketOwnerAccountId'] == null ? null : ((map['bucketOwnerAccountId'] as String).input()).input(),
+      uri: map['uri'] == null ? null : ((map['uri'] as String).input()).input(),
     );
   }
 }

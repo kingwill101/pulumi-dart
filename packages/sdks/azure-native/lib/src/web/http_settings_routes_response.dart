@@ -21,7 +21,7 @@ class HttpSettingsRoutesResponse {
 
   factory HttpSettingsRoutesResponse.fromMap(Map<String, dynamic> map) {
     return HttpSettingsRoutesResponse(
-      apiPrefix: map['apiPrefix'] == null ? null : (map['apiPrefix'] as String).input(),
+      apiPrefix: map['apiPrefix'] == null ? null : (map['apiPrefix']! as String).input(),
     );
   }
 }

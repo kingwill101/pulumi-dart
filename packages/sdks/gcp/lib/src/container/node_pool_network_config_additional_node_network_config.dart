@@ -25,8 +25,8 @@ class NodePoolNetworkConfigAdditionalNodeNetworkConfig {
 
   factory NodePoolNetworkConfigAdditionalNodeNetworkConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNetworkConfigAdditionalNodeNetworkConfig(
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
     );
   }
 }

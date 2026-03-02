@@ -26,8 +26,8 @@ class SqlServerDatabaseDetails {
 
   factory SqlServerDatabaseDetails.fromMap(Map<String, dynamic> map) {
     return SqlServerDatabaseDetails(
-      compatibilityLevel: map['compatibilityLevel'] == null ? null : (map['compatibilityLevel'] as int).input(),
-      recoveryModel: map['recoveryModel'] == null ? null : (map['recoveryModel'] as String).input(),
+      compatibilityLevel: map['compatibilityLevel'] == null ? null : (map['compatibilityLevel']! as int).input(),
+      recoveryModel: map['recoveryModel'] == null ? null : (map['recoveryModel']! as String).input(),
     );
   }
 }

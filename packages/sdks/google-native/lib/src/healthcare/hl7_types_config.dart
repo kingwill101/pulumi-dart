@@ -28,8 +28,8 @@ class Hl7TypesConfig {
 
   factory Hl7TypesConfig.fromMap(Map<String, dynamic> map) {
     return Hl7TypesConfig(
-      type: map['type'] == null ? null : (pulumi.Input.decodeList<Type>(map['type'], (value) => Type.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : (pulumi.Input.decodeList<VersionSource>(map['version'], (value) => VersionSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (pulumi.Input.decodeList<Type>(map['type']!, (value) => Type.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (pulumi.Input.decodeList<VersionSource>(map['version']!, (value) => VersionSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

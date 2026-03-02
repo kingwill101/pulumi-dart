@@ -66,16 +66,16 @@ class ProfileOneConnectState {
 
   factory ProfileOneConnectState.fromMap(Map<String, dynamic> map) {
     return ProfileOneConnectState(
-      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom'] as String).input(),
-      idleTimeoutOverride: map['idleTimeoutOverride'] == null ? null : (map['idleTimeoutOverride'] as String).input(),
-      limitType: map['limitType'] == null ? null : (map['limitType'] as String).input(),
-      maxAge: map['maxAge'] == null ? null : (map['maxAge'] as int).input(),
-      maxReuse: map['maxReuse'] == null ? null : (map['maxReuse'] as int).input(),
-      maxSize: map['maxSize'] == null ? null : (map['maxSize'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
-      sharePools: map['sharePools'] == null ? null : (map['sharePools'] as String).input(),
-      sourceMask: map['sourceMask'] == null ? null : (map['sourceMask'] as String).input(),
+      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom']! as String).input(),
+      idleTimeoutOverride: map['idleTimeoutOverride'] == null ? null : (map['idleTimeoutOverride']! as String).input(),
+      limitType: map['limitType'] == null ? null : (map['limitType']! as String).input(),
+      maxAge: map['maxAge'] == null ? null : (map['maxAge']! as int).input(),
+      maxReuse: map['maxReuse'] == null ? null : (map['maxReuse']! as int).input(),
+      maxSize: map['maxSize'] == null ? null : (map['maxSize']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      partition: map['partition'] == null ? null : (map['partition']! as String).input(),
+      sharePools: map['sharePools'] == null ? null : (map['sharePools']! as String).input(),
+      sourceMask: map['sourceMask'] == null ? null : (map['sourceMask']! as String).input(),
     );
   }
 }

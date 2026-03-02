@@ -21,7 +21,7 @@ class AccessControlTranslation {
 
   factory AccessControlTranslation.fromMap(Map<String, dynamic> map) {
     return AccessControlTranslation(
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
+      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
     );
   }
 }

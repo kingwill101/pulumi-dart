@@ -61,12 +61,12 @@ class CaPoolArgs {
   factory CaPoolArgs.fromMap(Map<String, dynamic> map) {
     return CaPoolArgs(
       caPoolId: (map['caPoolId'] as String).input(),
-      issuancePolicy: map['issuancePolicy'] == null ? null : (IssuancePolicy.fromMap((map['issuancePolicy'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      publishingOptions: map['publishingOptions'] == null ? null : (PublishingOptions.fromMap((map['publishingOptions'] as Map).cast<String, dynamic>())).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      issuancePolicy: map['issuancePolicy'] == null ? null : (IssuancePolicy.fromMap((map['issuancePolicy']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      publishingOptions: map['publishingOptions'] == null ? null : (PublishingOptions.fromMap((map['publishingOptions']! as Map).cast<String, dynamic>())).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       tier: (CaPoolTier.fromValue(map['tier'] as String)).input(),
     );
   }

@@ -50,11 +50,11 @@ class SlbAttachmentArgs {
   factory SlbAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return SlbAttachmentArgs(
       appId: (map['appId'] as String).input(),
-      listenerPort: map['listenerPort'] == null ? null : (map['listenerPort'] as int).input(),
+      listenerPort: map['listenerPort'] == null ? null : (map['listenerPort']! as int).input(),
       slbId: (map['slbId'] as String).input(),
       slbIp: (map['slbIp'] as String).input(),
       type: (map['type'] as String).input(),
-      vserverGroupId: map['vserverGroupId'] == null ? null : (map['vserverGroupId'] as String).input(),
+      vserverGroupId: map['vserverGroupId'] == null ? null : (map['vserverGroupId']! as String).input(),
     );
   }
 }

@@ -42,9 +42,9 @@ class GetEncryptedValueArgs {
   factory GetEncryptedValueArgs.fromMap(Map<String, dynamic> map) {
     return GetEncryptedValueArgs(
       algorithm: (map['algorithm'] as String).input(),
-      encryptedData: map['encryptedData'] == null ? null : (map['encryptedData'] as String).input(),
+      encryptedData: map['encryptedData'] == null ? null : (map['encryptedData']! as String).input(),
       keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
-      plainTextValue: map['plainTextValue'] == null ? null : (map['plainTextValue'] as String).input(),
+      plainTextValue: map['plainTextValue'] == null ? null : (map['plainTextValue']! as String).input(),
     );
   }
 }

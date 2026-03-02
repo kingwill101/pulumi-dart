@@ -51,12 +51,12 @@ class LandingZoneAccountOperationArgs {
 
   factory LandingZoneAccountOperationArgs.fromMap(Map<String, dynamic> map) {
     return LandingZoneAccountOperationArgs(
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      landingZoneAccountName: map['landingZoneAccountName'] == null ? null : (map['landingZoneAccountName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (LandingZoneAccountResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      landingZoneAccountName: map['landingZoneAccountName'] == null ? null : (map['landingZoneAccountName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (LandingZoneAccountResourceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

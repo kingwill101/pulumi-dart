@@ -21,7 +21,7 @@ class GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig {
 
   factory GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig(
-      adjacentIntervals: map['adjacentIntervals'] == null ? null : (map['adjacentIntervals'] as int).input(),
+      adjacentIntervals: map['adjacentIntervals'] == null ? null : (map['adjacentIntervals']! as int).input(),
     );
   }
 }

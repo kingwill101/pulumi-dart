@@ -32,9 +32,9 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting {
 
   factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting(
-      archiveCdnSettings: map['archiveCdnSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings.fromMap((map['archiveCdnSettings'] as Map).cast<String, dynamic>())).input(),
-      destination: (ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      rolloverInterval: map['rolloverInterval'] == null ? null : (map['rolloverInterval'] as int).input(),
+      archiveCdnSettings: map['archiveCdnSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings.fromMap((map['archiveCdnSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      destination: (ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
+      rolloverInterval: map['rolloverInterval'] == null ? null : ((map['rolloverInterval'] as int).input()).input(),
     );
   }
 }

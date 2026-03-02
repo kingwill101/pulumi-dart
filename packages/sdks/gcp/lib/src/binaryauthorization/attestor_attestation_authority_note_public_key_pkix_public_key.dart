@@ -30,8 +30,8 @@ class AttestorAttestationAuthorityNotePublicKeyPkixPublicKey {
 
   factory AttestorAttestationAuthorityNotePublicKeyPkixPublicKey.fromMap(Map<String, dynamic> map) {
     return AttestorAttestationAuthorityNotePublicKeyPkixPublicKey(
-      publicKeyPem: map['publicKeyPem'] == null ? null : (map['publicKeyPem'] as String).input(),
-      signatureAlgorithm: map['signatureAlgorithm'] == null ? null : (map['signatureAlgorithm'] as String).input(),
+      publicKeyPem: map['publicKeyPem'] == null ? null : (map['publicKeyPem']! as String).input(),
+      signatureAlgorithm: map['signatureAlgorithm'] == null ? null : (map['signatureAlgorithm']! as String).input(),
     );
   }
 }

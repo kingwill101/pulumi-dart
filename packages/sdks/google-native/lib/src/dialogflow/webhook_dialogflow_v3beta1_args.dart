@@ -64,14 +64,14 @@ class WebhookDialogflowV3beta1Args {
   factory WebhookDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
     return WebhookDialogflowV3beta1Args(
       agentId: (map['agentId'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
       displayName: (map['displayName'] as String).input(),
-      genericWebService: map['genericWebService'] == null ? null : (GoogleCloudDialogflowCxV3beta1WebhookGenericWebService.fromMap((map['genericWebService'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serviceDirectory: map['serviceDirectory'] == null ? null : (GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig.fromMap((map['serviceDirectory'] as Map).cast<String, dynamic>())).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      genericWebService: map['genericWebService'] == null ? null : (GoogleCloudDialogflowCxV3beta1WebhookGenericWebService.fromMap((map['genericWebService']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serviceDirectory: map['serviceDirectory'] == null ? null : (GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig.fromMap((map['serviceDirectory']! as Map).cast<String, dynamic>())).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

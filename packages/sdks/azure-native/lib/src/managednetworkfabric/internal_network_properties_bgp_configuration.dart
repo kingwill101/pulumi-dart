@@ -68,15 +68,15 @@ class InternalNetworkPropertiesBgpConfiguration {
 
   factory InternalNetworkPropertiesBgpConfiguration.fromMap(Map<String, dynamic> map) {
     return InternalNetworkPropertiesBgpConfiguration(
-      allowAS: map['allowAS'] == null ? null : (map['allowAS'] as int).input(),
-      allowASOverride: map['allowASOverride'] == null ? null : (map['allowASOverride'] as String).input(),
-      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
-      bfdConfiguration: map['bfdConfiguration'] == null ? null : (BfdConfiguration.fromMap((map['bfdConfiguration'] as Map).cast<String, dynamic>())).input(),
-      defaultRouteOriginate: map['defaultRouteOriginate'] == null ? null : (map['defaultRouteOriginate'] as String).input(),
-      ipv4ListenRangePrefixes: map['ipv4ListenRangePrefixes'] == null ? null : ((map['ipv4ListenRangePrefixes'] as List).cast<String>()).input(),
-      ipv4NeighborAddress: map['ipv4NeighborAddress'] == null ? null : (pulumi.Input.decodeList<NeighborAddress>(map['ipv4NeighborAddress'], (value) => NeighborAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipv6ListenRangePrefixes: map['ipv6ListenRangePrefixes'] == null ? null : ((map['ipv6ListenRangePrefixes'] as List).cast<String>()).input(),
-      ipv6NeighborAddress: map['ipv6NeighborAddress'] == null ? null : (pulumi.Input.decodeList<NeighborAddress>(map['ipv6NeighborAddress'], (value) => NeighborAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowAS: map['allowAS'] == null ? null : (map['allowAS']! as int).input(),
+      allowASOverride: map['allowASOverride'] == null ? null : (map['allowASOverride']! as String).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
+      bfdConfiguration: map['bfdConfiguration'] == null ? null : (BfdConfiguration.fromMap((map['bfdConfiguration']! as Map).cast<String, dynamic>())).input(),
+      defaultRouteOriginate: map['defaultRouteOriginate'] == null ? null : (map['defaultRouteOriginate']! as String).input(),
+      ipv4ListenRangePrefixes: map['ipv4ListenRangePrefixes'] == null ? null : ((map['ipv4ListenRangePrefixes']! as List).cast<String>()).input(),
+      ipv4NeighborAddress: map['ipv4NeighborAddress'] == null ? null : (pulumi.Input.decodeList<NeighborAddress>(map['ipv4NeighborAddress']!, (value) => NeighborAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipv6ListenRangePrefixes: map['ipv6ListenRangePrefixes'] == null ? null : ((map['ipv6ListenRangePrefixes']! as List).cast<String>()).input(),
+      ipv6NeighborAddress: map['ipv6NeighborAddress'] == null ? null : (pulumi.Input.decodeList<NeighborAddress>(map['ipv6NeighborAddress']!, (value) => NeighborAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
       peerASN: (map['peerASN'] as double).input(),
     );
   }

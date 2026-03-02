@@ -27,8 +27,8 @@ class AppVersionSnapshotGuardrailActionRespondImmediatelyResponse {
 
   factory AppVersionSnapshotGuardrailActionRespondImmediatelyResponse.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrailActionRespondImmediatelyResponse(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
     );
   }
 }

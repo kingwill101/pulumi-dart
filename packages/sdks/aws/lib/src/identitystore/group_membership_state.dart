@@ -41,11 +41,11 @@ class GroupMembershipState {
 
   factory GroupMembershipState.fromMap(Map<String, dynamic> map) {
     return GroupMembershipState(
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      identityStoreId: map['identityStoreId'] == null ? null : (map['identityStoreId'] as String).input(),
-      memberId: map['memberId'] == null ? null : (map['memberId'] as String).input(),
-      membershipId: map['membershipId'] == null ? null : (map['membershipId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      groupId: map['groupId'] == null ? null : ((map['groupId'] as String).input()).input(),
+      identityStoreId: map['identityStoreId'] == null ? null : ((map['identityStoreId'] as String).input()).input(),
+      memberId: map['memberId'] == null ? null : ((map['memberId'] as String).input()).input(),
+      membershipId: map['membershipId'] == null ? null : ((map['membershipId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

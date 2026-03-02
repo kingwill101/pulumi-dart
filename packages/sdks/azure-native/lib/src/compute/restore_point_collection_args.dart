@@ -45,11 +45,11 @@ class RestorePointCollectionArgs {
 
   factory RestorePointCollectionArgs.fromMap(Map<String, dynamic> map) {
     return RestorePointCollectionArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      restorePointCollectionName: map['restorePointCollectionName'] == null ? null : (map['restorePointCollectionName'] as String).input(),
-      source: map['source'] == null ? null : (RestorePointCollectionSourceProperties.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      restorePointCollectionName: map['restorePointCollectionName'] == null ? null : (map['restorePointCollectionName']! as String).input(),
+      source: map['source'] == null ? null : (RestorePointCollectionSourceProperties.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

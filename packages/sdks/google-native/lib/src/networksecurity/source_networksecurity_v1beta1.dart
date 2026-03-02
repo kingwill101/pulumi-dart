@@ -26,8 +26,8 @@ class SourceNetworksecurityV1beta1 {
 
   factory SourceNetworksecurityV1beta1.fromMap(Map<String, dynamic> map) {
     return SourceNetworksecurityV1beta1(
-      ipBlocks: map['ipBlocks'] == null ? null : ((map['ipBlocks'] as List).cast<String>()).input(),
-      principals: map['principals'] == null ? null : ((map['principals'] as List).cast<String>()).input(),
+      ipBlocks: map['ipBlocks'] == null ? null : ((map['ipBlocks']! as List).cast<String>()).input(),
+      principals: map['principals'] == null ? null : ((map['principals']! as List).cast<String>()).input(),
     );
   }
 }

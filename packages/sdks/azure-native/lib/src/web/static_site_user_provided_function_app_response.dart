@@ -52,10 +52,10 @@ class StaticSiteUserProvidedFunctionAppResponse {
   factory StaticSiteUserProvidedFunctionAppResponse.fromMap(Map<String, dynamic> map) {
     return StaticSiteUserProvidedFunctionAppResponse(
       createdOn: (map['createdOn'] as String).input(),
-      functionAppRegion: map['functionAppRegion'] == null ? null : (map['functionAppRegion'] as String).input(),
-      functionAppResourceId: map['functionAppResourceId'] == null ? null : (map['functionAppResourceId'] as String).input(),
+      functionAppRegion: map['functionAppRegion'] == null ? null : (map['functionAppRegion']! as String).input(),
+      functionAppResourceId: map['functionAppResourceId'] == null ? null : (map['functionAppResourceId']! as String).input(),
       id: (map['id'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
       type: (map['type'] as String).input(),
     );

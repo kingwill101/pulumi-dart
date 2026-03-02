@@ -36,10 +36,10 @@ class NetworkPackageState {
 
   factory NetworkPackageState.fromMap(Map<String, dynamic> map) {
     return NetworkPackageState(
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
-      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType'] as String).input(),
-      officeSiteId: map['officeSiteId'] == null ? null : (map['officeSiteId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
+      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType']! as String).input(),
+      officeSiteId: map['officeSiteId'] == null ? null : (map['officeSiteId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

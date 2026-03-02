@@ -59,13 +59,13 @@ class TenantInboundSamlConfigState {
 
   factory TenantInboundSamlConfigState.fromMap(Map<String, dynamic> map) {
     return TenantInboundSamlConfigState(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      idpConfig: map['idpConfig'] == null ? null : (TenantInboundSamlConfigIdpConfig.fromMap((map['idpConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      spConfig: map['spConfig'] == null ? null : (TenantInboundSamlConfigSpConfig.fromMap((map['spConfig'] as Map).cast<String, dynamic>())).input(),
-      tenant: map['tenant'] == null ? null : (map['tenant'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      idpConfig: map['idpConfig'] == null ? null : (TenantInboundSamlConfigIdpConfig.fromMap((map['idpConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      spConfig: map['spConfig'] == null ? null : (TenantInboundSamlConfigSpConfig.fromMap((map['spConfig']! as Map).cast<String, dynamic>())).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant']! as String).input(),
     );
   }
 }

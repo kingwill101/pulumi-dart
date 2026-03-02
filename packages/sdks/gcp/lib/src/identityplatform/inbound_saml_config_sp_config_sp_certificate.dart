@@ -20,7 +20,7 @@ class InboundSamlConfigSpConfigSpCertificate {
 
   factory InboundSamlConfigSpConfigSpCertificate.fromMap(Map<String, dynamic> map) {
     return InboundSamlConfigSpConfigSpCertificate(
-      x509Certificate: map['x509Certificate'] == null ? null : (map['x509Certificate'] as String).input(),
+      x509Certificate: map['x509Certificate'] == null ? null : (map['x509Certificate']! as String).input(),
     );
   }
 }

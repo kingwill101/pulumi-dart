@@ -32,7 +32,7 @@ class GetInstancesInstanceConfigInterfaceIpv6Slaac {
     return GetInstancesInstanceConfigInterfaceIpv6Slaac(
       address: (map['address'] as String).input(),
       assignedRange: (map['assignedRange'] as String).input(),
-      range: map['range'] == null ? null : (map['range'] as String).input(),
+      range: map['range'] == null ? null : (map['range']! as String).input(),
     );
   }
 }

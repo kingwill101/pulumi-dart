@@ -35,7 +35,7 @@ class VolumeGroupOracleVolumeDataProtectionReplication {
 
   factory VolumeGroupOracleVolumeDataProtectionReplication.fromMap(Map<String, dynamic> map) {
     return VolumeGroupOracleVolumeDataProtectionReplication(
-      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
       remoteVolumeLocation: (map['remoteVolumeLocation'] as String).input(),
       remoteVolumeResourceId: (map['remoteVolumeResourceId'] as String).input(),
       replicationFrequency: (map['replicationFrequency'] as String).input(),

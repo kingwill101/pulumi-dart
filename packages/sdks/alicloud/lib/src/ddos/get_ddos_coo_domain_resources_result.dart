@@ -46,9 +46,9 @@ class GetDdosCooDomainResourcesResult {
     return GetDdosCooDomainResourcesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceIds: map['instanceIds'] == null ? null : (map['instanceIds'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      queryDomainPattern: map['queryDomainPattern'] == null ? null : map['queryDomainPattern'] as String,
+      instanceIds: map['instanceIds'] == null ? null : (map['instanceIds']! as List).cast<String>(),
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      queryDomainPattern: map['queryDomainPattern'] == null ? null : map['queryDomainPattern']! as String,
       resources: pulumi.Input.decodeList<GetDdosCooDomainResourcesResource>(map['resources'], (value) => GetDdosCooDomainResourcesResource.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

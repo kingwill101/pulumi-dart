@@ -27,8 +27,8 @@ class AutoscalingPolicyScaleDownControlComputeBeta {
 
   factory AutoscalingPolicyScaleDownControlComputeBeta.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyScaleDownControlComputeBeta(
-      maxScaledDownReplicas: map['maxScaledDownReplicas'] == null ? null : (FixedOrPercentComputeBeta.fromMap((map['maxScaledDownReplicas'] as Map).cast<String, dynamic>())).input(),
-      timeWindowSec: map['timeWindowSec'] == null ? null : (map['timeWindowSec'] as int).input(),
+      maxScaledDownReplicas: map['maxScaledDownReplicas'] == null ? null : (FixedOrPercentComputeBeta.fromMap((map['maxScaledDownReplicas']! as Map).cast<String, dynamic>())).input(),
+      timeWindowSec: map['timeWindowSec'] == null ? null : (map['timeWindowSec']! as int).input(),
     );
   }
 }

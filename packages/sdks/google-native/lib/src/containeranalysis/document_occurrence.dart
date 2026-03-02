@@ -61,15 +61,15 @@ class DocumentOccurrence {
 
   factory DocumentOccurrence.fromMap(Map<String, dynamic> map) {
     return DocumentOccurrence(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      creatorComment: map['creatorComment'] == null ? null : (map['creatorComment'] as String).input(),
-      creators: map['creators'] == null ? null : ((map['creators'] as List).cast<String>()).input(),
-      documentComment: map['documentComment'] == null ? null : (map['documentComment'] as String).input(),
-      externalDocumentRefs: map['externalDocumentRefs'] == null ? null : ((map['externalDocumentRefs'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      licenseListVersion: map['licenseListVersion'] == null ? null : (map['licenseListVersion'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      creatorComment: map['creatorComment'] == null ? null : (map['creatorComment']! as String).input(),
+      creators: map['creators'] == null ? null : ((map['creators']! as List).cast<String>()).input(),
+      documentComment: map['documentComment'] == null ? null : (map['documentComment']! as String).input(),
+      externalDocumentRefs: map['externalDocumentRefs'] == null ? null : ((map['externalDocumentRefs']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      licenseListVersion: map['licenseListVersion'] == null ? null : (map['licenseListVersion']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

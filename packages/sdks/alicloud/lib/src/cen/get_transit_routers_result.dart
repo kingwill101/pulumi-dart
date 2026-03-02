@@ -65,13 +65,13 @@ class GetTransitRoutersResult {
     return GetTransitRoutersResult(
       cenId: map['cenId'] as String,
       id: map['id'] as String,
-      ids: map['ids'] == null ? null : (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      ids: map['ids'] == null ? null : (map['ids']! as List).cast<String>(),
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      transitRouterId: map['transitRouterId'] == null ? null : map['transitRouterId'] as String,
-      transitRouterIds: map['transitRouterIds'] == null ? null : (map['transitRouterIds'] as List).cast<String>(),
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      transitRouterId: map['transitRouterId'] == null ? null : map['transitRouterId']! as String,
+      transitRouterIds: map['transitRouterIds'] == null ? null : (map['transitRouterIds']! as List).cast<String>(),
       transitRouters: pulumi.Input.decodeList<GetTransitRoutersTransitRouter>(map['transitRouters'], (value) => GetTransitRoutersTransitRouter.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

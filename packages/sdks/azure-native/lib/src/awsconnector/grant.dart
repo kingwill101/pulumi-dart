@@ -28,8 +28,8 @@ class Grant {
 
   factory Grant.fromMap(Map<String, dynamic> map) {
     return Grant(
-      grantee: map['grantee'] == null ? null : (Grantee.fromMap((map['grantee'] as Map).cast<String, dynamic>())).input(),
-      permission: map['permission'] == null ? null : (PermissionEnumValue.fromMap((map['permission'] as Map).cast<String, dynamic>())).input(),
+      grantee: map['grantee'] == null ? null : (Grantee.fromMap((map['grantee']! as Map).cast<String, dynamic>())).input(),
+      permission: map['permission'] == null ? null : (PermissionEnumValue.fromMap((map['permission']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

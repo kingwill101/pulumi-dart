@@ -20,7 +20,7 @@ class LaunchTemplateMonitoring {
 
   factory LaunchTemplateMonitoring.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateMonitoring(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
     );
   }
 }

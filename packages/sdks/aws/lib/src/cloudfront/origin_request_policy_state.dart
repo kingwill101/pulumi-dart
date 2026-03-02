@@ -54,13 +54,13 @@ class OriginRequestPolicyState {
 
   factory OriginRequestPolicyState.fromMap(Map<String, dynamic> map) {
     return OriginRequestPolicyState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      cookiesConfig: map['cookiesConfig'] == null ? null : (OriginRequestPolicyCookiesConfig.fromMap((map['cookiesConfig'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      headersConfig: map['headersConfig'] == null ? null : (OriginRequestPolicyHeadersConfig.fromMap((map['headersConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      queryStringsConfig: map['queryStringsConfig'] == null ? null : (OriginRequestPolicyQueryStringsConfig.fromMap((map['queryStringsConfig'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
+      cookiesConfig: map['cookiesConfig'] == null ? null : ((OriginRequestPolicyCookiesConfig.fromMap((map['cookiesConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      etag: map['etag'] == null ? null : ((map['etag'] as String).input()).input(),
+      headersConfig: map['headersConfig'] == null ? null : ((OriginRequestPolicyHeadersConfig.fromMap((map['headersConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      queryStringsConfig: map['queryStringsConfig'] == null ? null : ((OriginRequestPolicyQueryStringsConfig.fromMap((map['queryStringsConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

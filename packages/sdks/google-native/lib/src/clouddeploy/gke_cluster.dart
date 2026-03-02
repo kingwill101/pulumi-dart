@@ -26,8 +26,8 @@ class GkeCluster {
 
   factory GkeCluster.fromMap(Map<String, dynamic> map) {
     return GkeCluster(
-      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
-      internalIp: map['internalIp'] == null ? null : (map['internalIp'] as bool).input(),
+      cluster: map['cluster'] == null ? null : (map['cluster']! as String).input(),
+      internalIp: map['internalIp'] == null ? null : (map['internalIp']! as bool).input(),
     );
   }
 }

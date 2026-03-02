@@ -26,8 +26,8 @@ class GooglePrivacyDlpV2OrConditions {
 
   factory GooglePrivacyDlpV2OrConditions.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2OrConditions(
-      minAge: map['minAge'] == null ? null : (map['minAge'] as String).input(),
-      minRowCount: map['minRowCount'] == null ? null : (map['minRowCount'] as int).input(),
+      minAge: map['minAge'] == null ? null : (map['minAge']! as String).input(),
+      minRowCount: map['minRowCount'] == null ? null : (map['minRowCount']! as int).input(),
     );
   }
 }

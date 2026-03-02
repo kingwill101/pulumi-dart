@@ -27,8 +27,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig {
 
   factory GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig(
-      featureConfigs: map['featureConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig>(map['featureConfigs'], (value) => GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      groupSuggestionResponses: map['groupSuggestionResponses'] == null ? null : (map['groupSuggestionResponses'] as bool).input(),
+      featureConfigs: map['featureConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig>(map['featureConfigs']!, (value) => GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      groupSuggestionResponses: map['groupSuggestionResponses'] == null ? null : (map['groupSuggestionResponses']! as bool).input(),
     );
   }
 }

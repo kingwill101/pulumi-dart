@@ -56,10 +56,10 @@ class FirewallEndpointArgs {
   factory FirewallEndpointArgs.fromMap(Map<String, dynamic> map) {
     return FirewallEndpointArgs(
       billingProjectId: (map['billingProjectId'] as String).input(),
-      endpointSettings: map['endpointSettings'] == null ? null : (FirewallEndpointEndpointSettings.fromMap((map['endpointSettings'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      endpointSettings: map['endpointSettings'] == null ? null : (FirewallEndpointEndpointSettings.fromMap((map['endpointSettings']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       parent: (map['parent'] as String).input(),
     );
   }

@@ -31,8 +31,8 @@ class PlanWorkflowStepEc2AsgCapacityIncreaseConfigAsg {
   factory PlanWorkflowStepEc2AsgCapacityIncreaseConfigAsg.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepEc2AsgCapacityIncreaseConfigAsg(
       arn: (map['arn'] as String).input(),
-      crossAccountRole: map['crossAccountRole'] == null ? null : (map['crossAccountRole'] as String).input(),
-      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
+      crossAccountRole: map['crossAccountRole'] == null ? null : ((map['crossAccountRole'] as String).input()).input(),
+      externalId: map['externalId'] == null ? null : ((map['externalId'] as String).input()).input(),
     );
   }
 }

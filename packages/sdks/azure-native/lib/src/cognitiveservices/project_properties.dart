@@ -26,8 +26,8 @@ class ProjectProperties {
 
   factory ProjectProperties.fromMap(Map<String, dynamic> map) {
     return ProjectProperties(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
     );
   }
 }

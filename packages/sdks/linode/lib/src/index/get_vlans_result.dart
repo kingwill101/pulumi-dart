@@ -38,10 +38,10 @@ class GetVlansResult {
 
   factory GetVlansResult.fromMap(Map<String, dynamic> map) {
     return GetVlansResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVlansFilter>(map['filters'], (value) => GetVlansFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVlansFilter>(map['filters']!, (value) => GetVlansFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      order: map['order'] == null ? null : map['order'] as String,
-      orderBy: map['orderBy'] == null ? null : map['orderBy'] as String,
+      order: map['order'] == null ? null : map['order']! as String,
+      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
       vlans: pulumi.Input.decodeList<GetVlansVlan>(map['vlans'], (value) => GetVlansVlan.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

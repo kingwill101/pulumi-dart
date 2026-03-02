@@ -26,8 +26,8 @@ class GetCoreNetworkPolicyDocumentSegmentActionVia {
 
   factory GetCoreNetworkPolicyDocumentSegmentActionVia.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentSegmentActionVia(
-      networkFunctionGroups: map['networkFunctionGroups'] == null ? null : ((map['networkFunctionGroups'] as List).cast<String>()).input(),
-      withEdgeOverrides: map['withEdgeOverrides'] == null ? null : (pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride>(map['withEdgeOverrides'], (value) => GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkFunctionGroups: map['networkFunctionGroups'] == null ? null : (((map['networkFunctionGroups'] as List).cast<String>()).input()).input(),
+      withEdgeOverrides: map['withEdgeOverrides'] == null ? null : ((pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride>(map['withEdgeOverrides']!, (value) => GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -102,19 +102,19 @@ class ProtocolMountTargetState {
 
   factory ProtocolMountTargetState.fromMap(Map<String, dynamic> map) {
     return ProtocolMountTargetState(
-      accessGroupName: map['accessGroupName'] == null ? null : (map['accessGroupName'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      exportId: map['exportId'] == null ? null : (map['exportId'] as String).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      fsetId: map['fsetId'] == null ? null : (map['fsetId'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      protocolServiceId: map['protocolServiceId'] == null ? null : (map['protocolServiceId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
-      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds'] as List).cast<String>()).input(),
+      accessGroupName: map['accessGroupName'] == null ? null : (map['accessGroupName']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      exportId: map['exportId'] == null ? null : (map['exportId']! as String).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId']! as String).input(),
+      fsetId: map['fsetId'] == null ? null : (map['fsetId']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      protocolServiceId: map['protocolServiceId'] == null ? null : (map['protocolServiceId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds']! as List).cast<String>()).input(),
     );
   }
 }

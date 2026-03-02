@@ -27,9 +27,9 @@ class FeatureGroupThroughputConfig {
 
   factory FeatureGroupThroughputConfig.fromMap(Map<String, dynamic> map) {
     return FeatureGroupThroughputConfig(
-      provisionedReadCapacityUnits: map['provisionedReadCapacityUnits'] == null ? null : (map['provisionedReadCapacityUnits'] as int).input(),
-      provisionedWriteCapacityUnits: map['provisionedWriteCapacityUnits'] == null ? null : (map['provisionedWriteCapacityUnits'] as int).input(),
-      throughputMode: map['throughputMode'] == null ? null : (map['throughputMode'] as String).input(),
+      provisionedReadCapacityUnits: map['provisionedReadCapacityUnits'] == null ? null : ((map['provisionedReadCapacityUnits'] as int).input()).input(),
+      provisionedWriteCapacityUnits: map['provisionedWriteCapacityUnits'] == null ? null : ((map['provisionedWriteCapacityUnits'] as int).input()).input(),
+      throughputMode: map['throughputMode'] == null ? null : ((map['throughputMode'] as String).input()).input(),
     );
   }
 }

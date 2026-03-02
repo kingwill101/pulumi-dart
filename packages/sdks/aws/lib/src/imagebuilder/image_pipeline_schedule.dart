@@ -32,9 +32,9 @@ class ImagePipelineSchedule {
 
   factory ImagePipelineSchedule.fromMap(Map<String, dynamic> map) {
     return ImagePipelineSchedule(
-      pipelineExecutionStartCondition: map['pipelineExecutionStartCondition'] == null ? null : (map['pipelineExecutionStartCondition'] as String).input(),
+      pipelineExecutionStartCondition: map['pipelineExecutionStartCondition'] == null ? null : ((map['pipelineExecutionStartCondition'] as String).input()).input(),
       scheduleExpression: (map['scheduleExpression'] as String).input(),
-      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
+      timezone: map['timezone'] == null ? null : ((map['timezone'] as String).input()).input(),
     );
   }
 }

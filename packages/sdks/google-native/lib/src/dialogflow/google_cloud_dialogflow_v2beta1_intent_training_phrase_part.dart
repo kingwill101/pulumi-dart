@@ -36,10 +36,10 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart {
 
   factory GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      entityType: map['entityType'] == null ? null : (map['entityType'] as String).input(),
+      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
+      entityType: map['entityType'] == null ? null : (map['entityType']! as String).input(),
       text: (map['text'] as String).input(),
-      userDefined: map['userDefined'] == null ? null : (map['userDefined'] as bool).input(),
+      userDefined: map['userDefined'] == null ? null : (map['userDefined']! as bool).input(),
     );
   }
 }

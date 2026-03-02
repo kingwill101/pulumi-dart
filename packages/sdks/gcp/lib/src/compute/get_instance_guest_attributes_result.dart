@@ -59,10 +59,10 @@ class GetInstanceGuestAttributesResult {
       id: map['id'] as String,
       name: map['name'] as String,
       project: map['project'] as String,
-      queryPath: map['queryPath'] == null ? null : map['queryPath'] as String,
+      queryPath: map['queryPath'] == null ? null : map['queryPath']! as String,
       queryValues: pulumi.Input.decodeList<GetInstanceGuestAttributesQueryValue>(map['queryValues'], (value) => GetInstanceGuestAttributesQueryValue.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
-      variableKey: map['variableKey'] == null ? null : map['variableKey'] as String,
+      variableKey: map['variableKey'] == null ? null : map['variableKey']! as String,
       variableValue: map['variableValue'] as String,
       zone: map['zone'] as String,
     );

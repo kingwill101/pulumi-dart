@@ -64,7 +64,7 @@ class IngestionArgs {
 
   factory IngestionArgs.fromMap(Map<String, dynamic> map) {
     return IngestionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       ingestionName: (map['ingestionName'] as String).input(),
       interval: (map['interval'] as String).input(),
@@ -72,7 +72,7 @@ class IngestionArgs {
       project: (map['project'] as String).input(),
       runImmediately: (map['runImmediately'] as bool).input(),
       source: (map['source'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

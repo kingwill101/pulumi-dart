@@ -51,13 +51,13 @@ class LinkedServerState {
 
   factory LinkedServerState.fromMap(Map<String, dynamic> map) {
     return LinkedServerState(
-      geoReplicatedPrimaryHostName: map['geoReplicatedPrimaryHostName'] == null ? null : (map['geoReplicatedPrimaryHostName'] as String).input(),
-      linkedRedisCacheId: map['linkedRedisCacheId'] == null ? null : (map['linkedRedisCacheId'] as String).input(),
-      linkedRedisCacheLocation: map['linkedRedisCacheLocation'] == null ? null : (map['linkedRedisCacheLocation'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      serverRole: map['serverRole'] == null ? null : (map['serverRole'] as String).input(),
-      targetRedisCacheName: map['targetRedisCacheName'] == null ? null : (map['targetRedisCacheName'] as String).input(),
+      geoReplicatedPrimaryHostName: map['geoReplicatedPrimaryHostName'] == null ? null : (map['geoReplicatedPrimaryHostName']! as String).input(),
+      linkedRedisCacheId: map['linkedRedisCacheId'] == null ? null : (map['linkedRedisCacheId']! as String).input(),
+      linkedRedisCacheLocation: map['linkedRedisCacheLocation'] == null ? null : (map['linkedRedisCacheLocation']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      serverRole: map['serverRole'] == null ? null : (map['serverRole']! as String).input(),
+      targetRedisCacheName: map['targetRedisCacheName'] == null ? null : (map['targetRedisCacheName']! as String).input(),
     );
   }
 }

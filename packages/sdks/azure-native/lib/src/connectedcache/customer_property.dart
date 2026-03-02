@@ -28,8 +28,8 @@ class CustomerProperty {
 
   factory CustomerProperty.fromMap(Map<String, dynamic> map) {
     return CustomerProperty(
-      additionalCustomerProperties: map['additionalCustomerProperties'] == null ? null : (AdditionalCustomerProperties.fromMap((map['additionalCustomerProperties'] as Map).cast<String, dynamic>())).input(),
-      customer: map['customer'] == null ? null : (CustomerEntity.fromMap((map['customer'] as Map).cast<String, dynamic>())).input(),
+      additionalCustomerProperties: map['additionalCustomerProperties'] == null ? null : (AdditionalCustomerProperties.fromMap((map['additionalCustomerProperties']! as Map).cast<String, dynamic>())).input(),
+      customer: map['customer'] == null ? null : (CustomerEntity.fromMap((map['customer']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

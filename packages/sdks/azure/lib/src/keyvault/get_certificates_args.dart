@@ -31,7 +31,7 @@ class GetCertificatesArgs {
 
   factory GetCertificatesArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificatesArgs(
-      includePending: map['includePending'] == null ? null : (map['includePending'] as bool).input(),
+      includePending: map['includePending'] == null ? null : (map['includePending']! as bool).input(),
       keyVaultId: (map['keyVaultId'] as String).input(),
     );
   }

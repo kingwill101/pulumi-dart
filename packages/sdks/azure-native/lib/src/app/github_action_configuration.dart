@@ -74,17 +74,17 @@ class GithubActionConfiguration {
 
   factory GithubActionConfiguration.fromMap(Map<String, dynamic> map) {
     return GithubActionConfiguration(
-      azureCredentials: map['azureCredentials'] == null ? null : (AzureCredentials.fromMap((map['azureCredentials'] as Map).cast<String, dynamic>())).input(),
-      buildEnvironmentVariables: map['buildEnvironmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariable>(map['buildEnvironmentVariables'], (value) => EnvironmentVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      contextPath: map['contextPath'] == null ? null : (map['contextPath'] as String).input(),
-      dockerfilePath: map['dockerfilePath'] == null ? null : (map['dockerfilePath'] as String).input(),
-      githubPersonalAccessToken: map['githubPersonalAccessToken'] == null ? null : (map['githubPersonalAccessToken'] as String).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      os: map['os'] == null ? null : (map['os'] as String).input(),
-      publishType: map['publishType'] == null ? null : (map['publishType'] as String).input(),
-      registryInfo: map['registryInfo'] == null ? null : (RegistryInfo.fromMap((map['registryInfo'] as Map).cast<String, dynamic>())).input(),
-      runtimeStack: map['runtimeStack'] == null ? null : (map['runtimeStack'] as String).input(),
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
+      azureCredentials: map['azureCredentials'] == null ? null : (AzureCredentials.fromMap((map['azureCredentials']! as Map).cast<String, dynamic>())).input(),
+      buildEnvironmentVariables: map['buildEnvironmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariable>(map['buildEnvironmentVariables']!, (value) => EnvironmentVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      contextPath: map['contextPath'] == null ? null : (map['contextPath']! as String).input(),
+      dockerfilePath: map['dockerfilePath'] == null ? null : (map['dockerfilePath']! as String).input(),
+      githubPersonalAccessToken: map['githubPersonalAccessToken'] == null ? null : (map['githubPersonalAccessToken']! as String).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      os: map['os'] == null ? null : (map['os']! as String).input(),
+      publishType: map['publishType'] == null ? null : (map['publishType']! as String).input(),
+      registryInfo: map['registryInfo'] == null ? null : (RegistryInfo.fromMap((map['registryInfo']! as Map).cast<String, dynamic>())).input(),
+      runtimeStack: map['runtimeStack'] == null ? null : (map['runtimeStack']! as String).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']! as String).input(),
     );
   }
 }

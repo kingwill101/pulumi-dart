@@ -50,8 +50,8 @@ class WorkspaceApiReleaseArgs {
   factory WorkspaceApiReleaseArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceApiReleaseArgs(
       apiId: (map['apiId'] as String).input(),
-      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
-      releaseId: map['releaseId'] == null ? null : (map['releaseId'] as String).input(),
+      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
+      releaseId: map['releaseId'] == null ? null : (map['releaseId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
       workspaceId: (map['workspaceId'] as String).input(),

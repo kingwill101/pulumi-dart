@@ -53,8 +53,8 @@ class GetHybridRunbookWorkerGroupResult {
   factory GetHybridRunbookWorkerGroupResult.fromMap(Map<String, dynamic> map) {
     return GetHybridRunbookWorkerGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      credential: map['credential'] == null ? null : RunAsCredentialAssociationPropertyResponse.fromMap((map['credential'] as Map).cast<String, dynamic>()),
-      groupType: map['groupType'] == null ? null : map['groupType'] as String,
+      credential: map['credential'] == null ? null : RunAsCredentialAssociationPropertyResponse.fromMap((map['credential']! as Map).cast<String, dynamic>()),
+      groupType: map['groupType'] == null ? null : map['groupType']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),

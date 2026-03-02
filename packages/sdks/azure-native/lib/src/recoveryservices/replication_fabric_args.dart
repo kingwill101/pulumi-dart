@@ -40,8 +40,8 @@ class ReplicationFabricArgs {
 
   factory ReplicationFabricArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationFabricArgs(
-      fabricName: map['fabricName'] == null ? null : (map['fabricName'] as String).input(),
-      properties: map['properties'] == null ? null : (FabricCreationInputProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      fabricName: map['fabricName'] == null ? null : (map['fabricName']! as String).input(),
+      properties: map['properties'] == null ? null : (FabricCreationInputProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
     );

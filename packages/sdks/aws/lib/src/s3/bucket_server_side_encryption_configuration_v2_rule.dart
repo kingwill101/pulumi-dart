@@ -31,9 +31,9 @@ class BucketServerSideEncryptionConfigurationV2Rule {
 
   factory BucketServerSideEncryptionConfigurationV2Rule.fromMap(Map<String, dynamic> map) {
     return BucketServerSideEncryptionConfigurationV2Rule(
-      applyServerSideEncryptionByDefault: map['applyServerSideEncryptionByDefault'] == null ? null : (BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefault.fromMap((map['applyServerSideEncryptionByDefault'] as Map).cast<String, dynamic>())).input(),
-      blockedEncryptionTypes: map['blockedEncryptionTypes'] == null ? null : ((map['blockedEncryptionTypes'] as List).cast<String>()).input(),
-      bucketKeyEnabled: map['bucketKeyEnabled'] == null ? null : (map['bucketKeyEnabled'] as bool).input(),
+      applyServerSideEncryptionByDefault: map['applyServerSideEncryptionByDefault'] == null ? null : ((BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefault.fromMap((map['applyServerSideEncryptionByDefault']! as Map).cast<String, dynamic>())).input()).input(),
+      blockedEncryptionTypes: map['blockedEncryptionTypes'] == null ? null : (((map['blockedEncryptionTypes'] as List).cast<String>()).input()).input(),
+      bucketKeyEnabled: map['bucketKeyEnabled'] == null ? null : ((map['bucketKeyEnabled'] as bool).input()).input(),
     );
   }
 }

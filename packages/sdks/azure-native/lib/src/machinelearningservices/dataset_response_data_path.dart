@@ -62,7 +62,7 @@ class DatasetResponseDataPath {
 
   factory DatasetResponseDataPath.fromMap(Map<String, dynamic> map) {
     return DatasetResponseDataPath(
-      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, dynamic>()).input(),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties']! as Map).cast<String, dynamic>()).input(),
       azureFilePath: (map['azureFilePath'] as String).input(),
       datastoreName: (map['datastoreName'] as String).input(),
       httpUrl: (map['httpUrl'] as String).input(),
@@ -70,7 +70,7 @@ class DatasetResponseDataPath {
       partitionFormatIgnoreError: (map['partitionFormatIgnoreError'] as bool).input(),
       paths: ((map['paths'] as List).cast<String>()).input(),
       relativePath: (map['relativePath'] as String).input(),
-      sqlDataPath: map['sqlDataPath'] == null ? null : (DatasetResponseSqlDataPath.fromMap((map['sqlDataPath'] as Map).cast<String, dynamic>())).input(),
+      sqlDataPath: map['sqlDataPath'] == null ? null : (DatasetResponseSqlDataPath.fromMap((map['sqlDataPath']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -82,19 +82,19 @@ class GetADCCatalogResult {
 
   factory GetADCCatalogResult.fromMap(Map<String, dynamic> map) {
     return GetADCCatalogResult(
-      admins: map['admins'] == null ? null : pulumi.Input.decodeList<PrincipalsResponse>(map['admins'], (value) => PrincipalsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      admins: map['admins'] == null ? null : pulumi.Input.decodeList<PrincipalsResponse>(map['admins']!, (value) => PrincipalsResponse.fromMap((value as Map).cast<String, dynamic>())),
       azureApiVersion: map['azureApiVersion'] as String,
-      enableAutomaticUnitAdjustment: map['enableAutomaticUnitAdjustment'] == null ? null : map['enableAutomaticUnitAdjustment'] as bool,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      enableAutomaticUnitAdjustment: map['enableAutomaticUnitAdjustment'] == null ? null : map['enableAutomaticUnitAdjustment']! as bool,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      sku: map['sku'] == null ? null : map['sku'] as String,
-      successfullyProvisioned: map['successfullyProvisioned'] == null ? null : map['successfullyProvisioned'] as bool,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      sku: map['sku'] == null ? null : map['sku']! as String,
+      successfullyProvisioned: map['successfullyProvisioned'] == null ? null : map['successfullyProvisioned']! as bool,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      units: map['units'] == null ? null : map['units'] as int,
-      users: map['users'] == null ? null : pulumi.Input.decodeList<PrincipalsResponse>(map['users'], (value) => PrincipalsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      units: map['units'] == null ? null : map['units']! as int,
+      users: map['users'] == null ? null : pulumi.Input.decodeList<PrincipalsResponse>(map['users']!, (value) => PrincipalsResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

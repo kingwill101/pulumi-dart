@@ -25,8 +25,8 @@ class VirtualMachinePropertiesResponsePublicKeys {
 
   factory VirtualMachinePropertiesResponsePublicKeys.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePropertiesResponsePublicKeys(
-      keyData: map['keyData'] == null ? null : (map['keyData'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      keyData: map['keyData'] == null ? null : (map['keyData']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

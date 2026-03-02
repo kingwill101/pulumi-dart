@@ -30,9 +30,9 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPre
 
   factory StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria(
-      delimiter: map['delimiter'] == null ? null : (map['delimiter'] as String).input(),
-      maxDepth: map['maxDepth'] == null ? null : (map['maxDepth'] as int).input(),
-      minStorageBytesPercentage: map['minStorageBytesPercentage'] == null ? null : (map['minStorageBytesPercentage'] as double).input(),
+      delimiter: map['delimiter'] == null ? null : ((map['delimiter'] as String).input()).input(),
+      maxDepth: map['maxDepth'] == null ? null : ((map['maxDepth'] as int).input()).input(),
+      minStorageBytesPercentage: map['minStorageBytesPercentage'] == null ? null : ((map['minStorageBytesPercentage'] as double).input()).input(),
     );
   }
 }

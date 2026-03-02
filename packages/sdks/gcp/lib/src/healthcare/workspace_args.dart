@@ -46,8 +46,8 @@ class WorkspaceArgs {
   factory WorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceArgs(
       dataset: (map['dataset'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       settings: (WorkspaceSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
     );
   }

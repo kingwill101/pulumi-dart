@@ -46,12 +46,12 @@ class RoleManagementPolicyRuleTarget {
 
   factory RoleManagementPolicyRuleTarget.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyRuleTarget(
-      caller: map['caller'] == null ? null : (map['caller'] as String).input(),
-      enforcedSettings: map['enforcedSettings'] == null ? null : ((map['enforcedSettings'] as List).cast<String>()).input(),
-      inheritableSettings: map['inheritableSettings'] == null ? null : ((map['inheritableSettings'] as List).cast<String>()).input(),
-      level: map['level'] == null ? null : (map['level'] as String).input(),
-      operations: map['operations'] == null ? null : ((map['operations'] as List).cast<String>()).input(),
-      targetObjects: map['targetObjects'] == null ? null : ((map['targetObjects'] as List).cast<String>()).input(),
+      caller: map['caller'] == null ? null : (map['caller']! as String).input(),
+      enforcedSettings: map['enforcedSettings'] == null ? null : ((map['enforcedSettings']! as List).cast<String>()).input(),
+      inheritableSettings: map['inheritableSettings'] == null ? null : ((map['inheritableSettings']! as List).cast<String>()).input(),
+      level: map['level'] == null ? null : (map['level']! as String).input(),
+      operations: map['operations'] == null ? null : ((map['operations']! as List).cast<String>()).input(),
+      targetObjects: map['targetObjects'] == null ? null : ((map['targetObjects']! as List).cast<String>()).input(),
     );
   }
 }

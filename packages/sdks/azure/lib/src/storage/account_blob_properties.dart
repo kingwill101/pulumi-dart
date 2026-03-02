@@ -76,15 +76,15 @@ class AccountBlobProperties {
 
   factory AccountBlobProperties.fromMap(Map<String, dynamic> map) {
     return AccountBlobProperties(
-      changeFeedEnabled: map['changeFeedEnabled'] == null ? null : (map['changeFeedEnabled'] as bool).input(),
-      changeFeedRetentionInDays: map['changeFeedRetentionInDays'] == null ? null : (map['changeFeedRetentionInDays'] as int).input(),
-      containerDeleteRetentionPolicy: map['containerDeleteRetentionPolicy'] == null ? null : (AccountBlobPropertiesContainerDeleteRetentionPolicy.fromMap((map['containerDeleteRetentionPolicy'] as Map).cast<String, dynamic>())).input(),
-      corsRules: map['corsRules'] == null ? null : (pulumi.Input.decodeList<AccountBlobPropertiesCorsRule>(map['corsRules'], (value) => AccountBlobPropertiesCorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultServiceVersion: map['defaultServiceVersion'] == null ? null : (map['defaultServiceVersion'] as String).input(),
-      deleteRetentionPolicy: map['deleteRetentionPolicy'] == null ? null : (AccountBlobPropertiesDeleteRetentionPolicy.fromMap((map['deleteRetentionPolicy'] as Map).cast<String, dynamic>())).input(),
-      lastAccessTimeEnabled: map['lastAccessTimeEnabled'] == null ? null : (map['lastAccessTimeEnabled'] as bool).input(),
-      restorePolicy: map['restorePolicy'] == null ? null : (AccountBlobPropertiesRestorePolicy.fromMap((map['restorePolicy'] as Map).cast<String, dynamic>())).input(),
-      versioningEnabled: map['versioningEnabled'] == null ? null : (map['versioningEnabled'] as bool).input(),
+      changeFeedEnabled: map['changeFeedEnabled'] == null ? null : (map['changeFeedEnabled']! as bool).input(),
+      changeFeedRetentionInDays: map['changeFeedRetentionInDays'] == null ? null : (map['changeFeedRetentionInDays']! as int).input(),
+      containerDeleteRetentionPolicy: map['containerDeleteRetentionPolicy'] == null ? null : (AccountBlobPropertiesContainerDeleteRetentionPolicy.fromMap((map['containerDeleteRetentionPolicy']! as Map).cast<String, dynamic>())).input(),
+      corsRules: map['corsRules'] == null ? null : (pulumi.Input.decodeList<AccountBlobPropertiesCorsRule>(map['corsRules']!, (value) => AccountBlobPropertiesCorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultServiceVersion: map['defaultServiceVersion'] == null ? null : (map['defaultServiceVersion']! as String).input(),
+      deleteRetentionPolicy: map['deleteRetentionPolicy'] == null ? null : (AccountBlobPropertiesDeleteRetentionPolicy.fromMap((map['deleteRetentionPolicy']! as Map).cast<String, dynamic>())).input(),
+      lastAccessTimeEnabled: map['lastAccessTimeEnabled'] == null ? null : (map['lastAccessTimeEnabled']! as bool).input(),
+      restorePolicy: map['restorePolicy'] == null ? null : (AccountBlobPropertiesRestorePolicy.fromMap((map['restorePolicy']! as Map).cast<String, dynamic>())).input(),
+      versioningEnabled: map['versioningEnabled'] == null ? null : (map['versioningEnabled']! as bool).input(),
     );
   }
 }

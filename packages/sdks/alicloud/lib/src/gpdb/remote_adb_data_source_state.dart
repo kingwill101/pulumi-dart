@@ -71,17 +71,17 @@ class RemoteAdbDataSourceState {
 
   factory RemoteAdbDataSourceState.fromMap(Map<String, dynamic> map) {
     return RemoteAdbDataSourceState(
-      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName'] as String).input(),
-      localDatabase: map['localDatabase'] == null ? null : (map['localDatabase'] as String).input(),
-      localDbInstanceId: map['localDbInstanceId'] == null ? null : (map['localDbInstanceId'] as String).input(),
-      managerUserName: map['managerUserName'] == null ? null : (map['managerUserName'] as String).input(),
-      managerUserPassword: map['managerUserPassword'] == null ? null : (map['managerUserPassword'] as String).input(),
-      remoteAdbDataSourceId: map['remoteAdbDataSourceId'] == null ? null : (map['remoteAdbDataSourceId'] as int).input(),
-      remoteDatabase: map['remoteDatabase'] == null ? null : (map['remoteDatabase'] as String).input(),
-      remoteDbInstanceId: map['remoteDbInstanceId'] == null ? null : (map['remoteDbInstanceId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
-      userPassword: map['userPassword'] == null ? null : (map['userPassword'] as String).input(),
+      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName']! as String).input(),
+      localDatabase: map['localDatabase'] == null ? null : (map['localDatabase']! as String).input(),
+      localDbInstanceId: map['localDbInstanceId'] == null ? null : (map['localDbInstanceId']! as String).input(),
+      managerUserName: map['managerUserName'] == null ? null : (map['managerUserName']! as String).input(),
+      managerUserPassword: map['managerUserPassword'] == null ? null : (map['managerUserPassword']! as String).input(),
+      remoteAdbDataSourceId: map['remoteAdbDataSourceId'] == null ? null : (map['remoteAdbDataSourceId']! as int).input(),
+      remoteDatabase: map['remoteDatabase'] == null ? null : (map['remoteDatabase']! as String).input(),
+      remoteDbInstanceId: map['remoteDbInstanceId'] == null ? null : (map['remoteDbInstanceId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
+      userPassword: map['userPassword'] == null ? null : (map['userPassword']! as String).input(),
     );
   }
 }

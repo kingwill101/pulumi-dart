@@ -32,7 +32,7 @@ class EnterpriseCrmFrontendsEventbusProtoRollbackStrategy {
 
   factory EnterpriseCrmFrontendsEventbusProtoRollbackStrategy.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmFrontendsEventbusProtoRollbackStrategy(
-      parameters: map['parameters'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoEventParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoEventParameters.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input(),
       rollbackTaskImplementationClassName: (map['rollbackTaskImplementationClassName'] as String).input(),
       taskNumbersToRollback: ((map['taskNumbersToRollback'] as List).cast<String>()).input(),
     );

@@ -38,7 +38,7 @@ class CustomHostnameAnalysisResultResponseCustomDomainVerificationFailureInfo {
   factory CustomHostnameAnalysisResultResponseCustomDomainVerificationFailureInfo.fromMap(Map<String, dynamic> map) {
     return CustomHostnameAnalysisResultResponseCustomDomainVerificationFailureInfo(
       code: (map['code'] as String).input(),
-      details: map['details'] == null ? null : (pulumi.Input.decodeList<CustomHostnameAnalysisResultResponseDetails>(map['details'], (value) => CustomHostnameAnalysisResultResponseDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      details: map['details'] == null ? null : (pulumi.Input.decodeList<CustomHostnameAnalysisResultResponseDetails>(map['details']!, (value) => CustomHostnameAnalysisResultResponseDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
       message: (map['message'] as String).input(),
       target: (map['target'] as String).input(),
     );

@@ -26,8 +26,8 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo {
 
   factory GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo(
-      encryptionSaEmail: map['encryptionSaEmail'] == null ? null : (map['encryptionSaEmail'] as String).input(),
-      jwk: map['jwk'] == null ? null : (map['jwk'] as String).input(),
+      encryptionSaEmail: map['encryptionSaEmail'] == null ? null : (map['encryptionSaEmail']! as String).input(),
+      jwk: map['jwk'] == null ? null : (map['jwk']! as String).input(),
     );
   }
 }

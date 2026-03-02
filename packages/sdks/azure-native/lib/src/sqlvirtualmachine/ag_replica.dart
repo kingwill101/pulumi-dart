@@ -41,11 +41,11 @@ class AgReplica {
 
   factory AgReplica.fromMap(Map<String, dynamic> map) {
     return AgReplica(
-      commit: map['commit'] == null ? null : (map['commit'] as String).input(),
-      failover: map['failover'] == null ? null : (map['failover'] as String).input(),
-      readableSecondary: map['readableSecondary'] == null ? null : (map['readableSecondary'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      sqlVirtualMachineInstanceId: map['sqlVirtualMachineInstanceId'] == null ? null : (map['sqlVirtualMachineInstanceId'] as String).input(),
+      commit: map['commit'] == null ? null : (map['commit']! as String).input(),
+      failover: map['failover'] == null ? null : (map['failover']! as String).input(),
+      readableSecondary: map['readableSecondary'] == null ? null : (map['readableSecondary']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      sqlVirtualMachineInstanceId: map['sqlVirtualMachineInstanceId'] == null ? null : (map['sqlVirtualMachineInstanceId']! as String).input(),
     );
   }
 }

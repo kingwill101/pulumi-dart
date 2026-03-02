@@ -72,7 +72,7 @@ class GetKnowledgeSourceResult {
   factory GetKnowledgeSourceResult.fromMap(Map<String, dynamic> map) {
     return GetKnowledgeSourceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       lastRefreshedTime: map['lastRefreshedTime'] as String,
       name: map['name'] as String,
@@ -80,7 +80,7 @@ class GetKnowledgeSourceResult {
       sourceType: map['sourceType'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      updateFrequency: map['updateFrequency'] == null ? null : map['updateFrequency'] as String,
+      updateFrequency: map['updateFrequency'] == null ? null : map['updateFrequency']! as String,
       url: map['url'] as String,
     );
   }

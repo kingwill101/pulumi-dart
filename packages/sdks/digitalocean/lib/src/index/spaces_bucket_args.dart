@@ -57,13 +57,13 @@ class SpacesBucketArgs {
 
   factory SpacesBucketArgs.fromMap(Map<String, dynamic> map) {
     return SpacesBucketArgs(
-      acl: map['acl'] == null ? null : (map['acl'] as String).input(),
-      corsRules: map['corsRules'] == null ? null : (pulumi.Input.decodeList<SpacesBucketCorsRule>(map['corsRules'], (value) => SpacesBucketCorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      lifecycleRules: map['lifecycleRules'] == null ? null : (pulumi.Input.decodeList<SpacesBucketLifecycleRule>(map['lifecycleRules'], (value) => SpacesBucketLifecycleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      versioning: map['versioning'] == null ? null : (SpacesBucketVersioning.fromMap((map['versioning'] as Map).cast<String, dynamic>())).input(),
+      acl: map['acl'] == null ? null : (map['acl']! as String).input(),
+      corsRules: map['corsRules'] == null ? null : (pulumi.Input.decodeList<SpacesBucketCorsRule>(map['corsRules']!, (value) => SpacesBucketCorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy']! as bool).input(),
+      lifecycleRules: map['lifecycleRules'] == null ? null : (pulumi.Input.decodeList<SpacesBucketLifecycleRule>(map['lifecycleRules']!, (value) => SpacesBucketLifecycleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      versioning: map['versioning'] == null ? null : (SpacesBucketVersioning.fromMap((map['versioning']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

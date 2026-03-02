@@ -64,12 +64,12 @@ class ServiceStatus {
 
   factory ServiceStatus.fromMap(Map<String, dynamic> map) {
     return ServiceStatus(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ServiceStatusCondition>(map['conditions'], (value) => ServiceStatusCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      latestCreatedRevisionName: map['latestCreatedRevisionName'] == null ? null : (map['latestCreatedRevisionName'] as String).input(),
-      latestReadyRevisionName: map['latestReadyRevisionName'] == null ? null : (map['latestReadyRevisionName'] as String).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
-      traffics: map['traffics'] == null ? null : (pulumi.Input.decodeList<ServiceStatusTraffic>(map['traffics'], (value) => ServiceStatusTraffic.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ServiceStatusCondition>(map['conditions']!, (value) => ServiceStatusCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      latestCreatedRevisionName: map['latestCreatedRevisionName'] == null ? null : (map['latestCreatedRevisionName']! as String).input(),
+      latestReadyRevisionName: map['latestReadyRevisionName'] == null ? null : (map['latestReadyRevisionName']! as String).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
+      traffics: map['traffics'] == null ? null : (pulumi.Input.decodeList<ServiceStatusTraffic>(map['traffics']!, (value) => ServiceStatusTraffic.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

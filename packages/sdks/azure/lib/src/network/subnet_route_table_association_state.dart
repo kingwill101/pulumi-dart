@@ -28,8 +28,8 @@ class SubnetRouteTableAssociationState {
 
   factory SubnetRouteTableAssociationState.fromMap(Map<String, dynamic> map) {
     return SubnetRouteTableAssociationState(
-      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

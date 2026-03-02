@@ -21,7 +21,7 @@ class DomainDevicesHostdevSubsysScsiSourceIscsiInitiator {
 
   factory DomainDevicesHostdevSubsysScsiSourceIscsiInitiator.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevSubsysScsiSourceIscsiInitiator(
-      iqn: map['iqn'] == null ? null : (DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn.fromMap((map['iqn'] as Map).cast<String, dynamic>())).input(),
+      iqn: map['iqn'] == null ? null : (DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn.fromMap((map['iqn']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class ListenerRuleMatchHttpMatchPathMatch {
 
   factory ListenerRuleMatchHttpMatchPathMatch.fromMap(Map<String, dynamic> map) {
     return ListenerRuleMatchHttpMatchPathMatch(
-      caseSensitive: map['caseSensitive'] == null ? null : (map['caseSensitive'] as bool).input(),
-      match: (ListenerRuleMatchHttpMatchPathMatchMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
+      caseSensitive: map['caseSensitive'] == null ? null : ((map['caseSensitive'] as bool).input()).input(),
+      match: (ListenerRuleMatchHttpMatchPathMatchMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

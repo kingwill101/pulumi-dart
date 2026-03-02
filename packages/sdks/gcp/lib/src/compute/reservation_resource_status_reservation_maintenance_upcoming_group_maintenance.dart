@@ -63,14 +63,14 @@ class ReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance {
 
   factory ReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance.fromMap(Map<String, dynamic> map) {
     return ReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance(
-      canReschedule: map['canReschedule'] == null ? null : (map['canReschedule'] as bool).input(),
-      latestWindowStartTime: map['latestWindowStartTime'] == null ? null : (map['latestWindowStartTime'] as String).input(),
-      maintenanceOnShutdown: map['maintenanceOnShutdown'] == null ? null : (map['maintenanceOnShutdown'] as bool).input(),
-      maintenanceReasons: map['maintenanceReasons'] == null ? null : ((map['maintenanceReasons'] as List).cast<String>()).input(),
-      maintenanceStatus: map['maintenanceStatus'] == null ? null : (map['maintenanceStatus'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      windowEndTime: map['windowEndTime'] == null ? null : (map['windowEndTime'] as String).input(),
-      windowStartTime: map['windowStartTime'] == null ? null : (map['windowStartTime'] as String).input(),
+      canReschedule: map['canReschedule'] == null ? null : (map['canReschedule']! as bool).input(),
+      latestWindowStartTime: map['latestWindowStartTime'] == null ? null : (map['latestWindowStartTime']! as String).input(),
+      maintenanceOnShutdown: map['maintenanceOnShutdown'] == null ? null : (map['maintenanceOnShutdown']! as bool).input(),
+      maintenanceReasons: map['maintenanceReasons'] == null ? null : ((map['maintenanceReasons']! as List).cast<String>()).input(),
+      maintenanceStatus: map['maintenanceStatus'] == null ? null : (map['maintenanceStatus']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      windowEndTime: map['windowEndTime'] == null ? null : (map['windowEndTime']! as String).input(),
+      windowStartTime: map['windowStartTime'] == null ? null : (map['windowStartTime']! as String).input(),
     );
   }
 }

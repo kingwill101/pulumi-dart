@@ -78,17 +78,17 @@ class LocalNetworkGatewayResponse {
 
   factory LocalNetworkGatewayResponse.fromMap(Map<String, dynamic> map) {
     return LocalNetworkGatewayResponse(
-      bgpSettings: map['bgpSettings'] == null ? null : (BgpSettingsResponse.fromMap((map['bgpSettings'] as Map).cast<String, dynamic>())).input(),
+      bgpSettings: map['bgpSettings'] == null ? null : (BgpSettingsResponse.fromMap((map['bgpSettings']! as Map).cast<String, dynamic>())).input(),
       etag: (map['etag'] as String).input(),
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      gatewayIpAddress: map['gatewayIpAddress'] == null ? null : (map['gatewayIpAddress'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      localNetworkAddressSpace: map['localNetworkAddressSpace'] == null ? null : (AddressSpaceResponse.fromMap((map['localNetworkAddressSpace'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      gatewayIpAddress: map['gatewayIpAddress'] == null ? null : (map['gatewayIpAddress']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      localNetworkAddressSpace: map['localNetworkAddressSpace'] == null ? null : (AddressSpaceResponse.fromMap((map['localNetworkAddressSpace']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       name: (map['name'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       resourceGuid: (map['resourceGuid'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       type: (map['type'] as String).input(),
     );
   }

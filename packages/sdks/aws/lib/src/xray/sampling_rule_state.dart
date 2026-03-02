@@ -96,22 +96,22 @@ class SamplingRuleState {
 
   factory SamplingRuleState.fromMap(Map<String, dynamic> map) {
     return SamplingRuleState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      attributes: map['attributes'] == null ? null : ((map['attributes'] as Map).cast<String, String>()).input(),
-      fixedRate: map['fixedRate'] == null ? null : (map['fixedRate'] as double).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      reservoirSize: map['reservoirSize'] == null ? null : (map['reservoirSize'] as int).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      serviceType: map['serviceType'] == null ? null : (map['serviceType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      urlPath: map['urlPath'] == null ? null : (map['urlPath'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      attributes: map['attributes'] == null ? null : (((map['attributes'] as Map).cast<String, String>()).input()).input(),
+      fixedRate: map['fixedRate'] == null ? null : ((map['fixedRate'] as double).input()).input(),
+      host: map['host'] == null ? null : ((map['host'] as String).input()).input(),
+      httpMethod: map['httpMethod'] == null ? null : ((map['httpMethod'] as String).input()).input(),
+      priority: map['priority'] == null ? null : ((map['priority'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      reservoirSize: map['reservoirSize'] == null ? null : ((map['reservoirSize'] as int).input()).input(),
+      resourceArn: map['resourceArn'] == null ? null : ((map['resourceArn'] as String).input()).input(),
+      ruleName: map['ruleName'] == null ? null : ((map['ruleName'] as String).input()).input(),
+      serviceName: map['serviceName'] == null ? null : ((map['serviceName'] as String).input()).input(),
+      serviceType: map['serviceType'] == null ? null : ((map['serviceType'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      urlPath: map['urlPath'] == null ? null : ((map['urlPath'] as String).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as int).input()).input(),
     );
   }
 }

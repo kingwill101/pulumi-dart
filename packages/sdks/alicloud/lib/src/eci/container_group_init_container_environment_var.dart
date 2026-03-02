@@ -28,9 +28,9 @@ class ContainerGroupInitContainerEnvironmentVar {
 
   factory ContainerGroupInitContainerEnvironmentVar.fromMap(Map<String, dynamic> map) {
     return ContainerGroupInitContainerEnvironmentVar(
-      fieldReves: map['fieldReves'] == null ? null : (pulumi.Input.decodeList<ContainerGroupInitContainerEnvironmentVarFieldRef>(map['fieldReves'], (value) => ContainerGroupInitContainerEnvironmentVarFieldRef.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      fieldReves: map['fieldReves'] == null ? null : (pulumi.Input.decodeList<ContainerGroupInitContainerEnvironmentVarFieldRef>(map['fieldReves']!, (value) => ContainerGroupInitContainerEnvironmentVarFieldRef.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

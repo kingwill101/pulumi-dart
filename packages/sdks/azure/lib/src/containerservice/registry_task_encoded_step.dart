@@ -45,12 +45,12 @@ class RegistryTaskEncodedStep {
 
   factory RegistryTaskEncodedStep.fromMap(Map<String, dynamic> map) {
     return RegistryTaskEncodedStep(
-      contextAccessToken: map['contextAccessToken'] == null ? null : (map['contextAccessToken'] as String).input(),
-      contextPath: map['contextPath'] == null ? null : (map['contextPath'] as String).input(),
-      secretValues: map['secretValues'] == null ? null : ((map['secretValues'] as Map).cast<String, String>()).input(),
+      contextAccessToken: map['contextAccessToken'] == null ? null : (map['contextAccessToken']! as String).input(),
+      contextPath: map['contextPath'] == null ? null : (map['contextPath']! as String).input(),
+      secretValues: map['secretValues'] == null ? null : ((map['secretValues']! as Map).cast<String, String>()).input(),
       taskContent: (map['taskContent'] as String).input(),
-      valueContent: map['valueContent'] == null ? null : (map['valueContent'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as Map).cast<String, String>()).input(),
+      valueContent: map['valueContent'] == null ? null : (map['valueContent']! as String).input(),
+      values: map['values'] == null ? null : ((map['values']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -30,7 +30,7 @@ class GetResolverFirewallRuleGroupAssociationArgs {
   factory GetResolverFirewallRuleGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverFirewallRuleGroupAssociationArgs(
       firewallRuleGroupAssociationId: (map['firewallRuleGroupAssociationId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -34,8 +34,8 @@ class ManagedRulesDefinitionResponse {
 
   factory ManagedRulesDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return ManagedRulesDefinitionResponse(
-      exceptions: map['exceptions'] == null ? null : (pulumi.Input.decodeList<ExceptionEntryResponse>(map['exceptions'], (value) => ExceptionEntryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<OwaspCrsExclusionEntryResponse>(map['exclusions'], (value) => OwaspCrsExclusionEntryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      exceptions: map['exceptions'] == null ? null : (pulumi.Input.decodeList<ExceptionEntryResponse>(map['exceptions']!, (value) => ExceptionEntryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<OwaspCrsExclusionEntryResponse>(map['exclusions']!, (value) => OwaspCrsExclusionEntryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       managedRuleSets: (pulumi.Input.decodeList<ManagedRuleSetResponse>(map['managedRuleSets'], (value) => ManagedRuleSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

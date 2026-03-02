@@ -25,8 +25,8 @@ class GoogleSheetsOptions {
 
   factory GoogleSheetsOptions.fromMap(Map<String, dynamic> map) {
     return GoogleSheetsOptions(
-      range: map['range'] == null ? null : (map['range'] as String).input(),
-      skipLeadingRows: map['skipLeadingRows'] == null ? null : (map['skipLeadingRows'] as String).input(),
+      range: map['range'] == null ? null : (map['range']! as String).input(),
+      skipLeadingRows: map['skipLeadingRows'] == null ? null : (map['skipLeadingRows']! as String).input(),
     );
   }
 }

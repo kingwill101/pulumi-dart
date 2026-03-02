@@ -36,9 +36,9 @@ class LoadBalancerAccessLogs {
   factory LoadBalancerAccessLogs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerAccessLogs(
       bucket: (map['bucket'] as String).input(),
-      bucketPrefix: map['bucketPrefix'] == null ? null : (map['bucketPrefix'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
+      bucketPrefix: map['bucketPrefix'] == null ? null : ((map['bucketPrefix'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      interval: map['interval'] == null ? null : ((map['interval'] as int).input()).input(),
     );
   }
 }

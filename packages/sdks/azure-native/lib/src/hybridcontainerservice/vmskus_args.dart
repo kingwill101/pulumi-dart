@@ -31,7 +31,7 @@ class VMSkusArgs {
   factory VMSkusArgs.fromMap(Map<String, dynamic> map) {
     return VMSkusArgs(
       customLocationResourceUri: (map['customLocationResourceUri'] as String).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

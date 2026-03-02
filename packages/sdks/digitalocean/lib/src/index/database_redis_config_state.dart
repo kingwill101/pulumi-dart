@@ -78,18 +78,18 @@ class DatabaseRedisConfigState {
 
   factory DatabaseRedisConfigState.fromMap(Map<String, dynamic> map) {
     return DatabaseRedisConfigState(
-      aclChannelsDefault: map['aclChannelsDefault'] == null ? null : (map['aclChannelsDefault'] as String).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      ioThreads: map['ioThreads'] == null ? null : (map['ioThreads'] as int).input(),
-      lfuDecayTime: map['lfuDecayTime'] == null ? null : (map['lfuDecayTime'] as int).input(),
-      lfuLogFactor: map['lfuLogFactor'] == null ? null : (map['lfuLogFactor'] as int).input(),
-      maxmemoryPolicy: map['maxmemoryPolicy'] == null ? null : (map['maxmemoryPolicy'] as String).input(),
-      notifyKeyspaceEvents: map['notifyKeyspaceEvents'] == null ? null : (map['notifyKeyspaceEvents'] as String).input(),
-      numberOfDatabases: map['numberOfDatabases'] == null ? null : (map['numberOfDatabases'] as int).input(),
-      persistence: map['persistence'] == null ? null : (map['persistence'] as String).input(),
-      pubsubClientOutputBufferLimit: map['pubsubClientOutputBufferLimit'] == null ? null : (map['pubsubClientOutputBufferLimit'] as int).input(),
-      ssl: map['ssl'] == null ? null : (map['ssl'] as bool).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      aclChannelsDefault: map['aclChannelsDefault'] == null ? null : (map['aclChannelsDefault']! as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      ioThreads: map['ioThreads'] == null ? null : (map['ioThreads']! as int).input(),
+      lfuDecayTime: map['lfuDecayTime'] == null ? null : (map['lfuDecayTime']! as int).input(),
+      lfuLogFactor: map['lfuLogFactor'] == null ? null : (map['lfuLogFactor']! as int).input(),
+      maxmemoryPolicy: map['maxmemoryPolicy'] == null ? null : (map['maxmemoryPolicy']! as String).input(),
+      notifyKeyspaceEvents: map['notifyKeyspaceEvents'] == null ? null : (map['notifyKeyspaceEvents']! as String).input(),
+      numberOfDatabases: map['numberOfDatabases'] == null ? null : (map['numberOfDatabases']! as int).input(),
+      persistence: map['persistence'] == null ? null : (map['persistence']! as String).input(),
+      pubsubClientOutputBufferLimit: map['pubsubClientOutputBufferLimit'] == null ? null : (map['pubsubClientOutputBufferLimit']! as int).input(),
+      ssl: map['ssl'] == null ? null : (map['ssl']! as bool).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
     );
   }
 }

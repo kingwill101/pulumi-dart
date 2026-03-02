@@ -85,13 +85,13 @@ class ExactDeviceRequestResourceK8sIoV1beta2 {
 
   factory ExactDeviceRequestResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return ExactDeviceRequestResourceK8sIoV1beta2(
-      adminAccess: map['adminAccess'] == null ? null : (map['adminAccess'] as bool).input(),
-      allocationMode: map['allocationMode'] == null ? null : (map['allocationMode'] as String).input(),
-      capacity: map['capacity'] == null ? null : (CapacityRequirementsResourceK8sIoV1beta2.fromMap((map['capacity'] as Map).cast<String, dynamic>())).input(),
-      count: map['count'] == null ? null : (map['count'] as int).input(),
+      adminAccess: map['adminAccess'] == null ? null : (map['adminAccess']! as bool).input(),
+      allocationMode: map['allocationMode'] == null ? null : (map['allocationMode']! as String).input(),
+      capacity: map['capacity'] == null ? null : (CapacityRequirementsResourceK8sIoV1beta2.fromMap((map['capacity']! as Map).cast<String, dynamic>())).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
       deviceClassName: (map['deviceClassName'] as String).input(),
-      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<DeviceSelectorResourceK8sIoV1beta2>(map['selectors'], (value) => DeviceSelectorResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tolerations: map['tolerations'] == null ? null : (pulumi.Input.decodeList<DeviceTolerationResourceK8sIoV1beta2>(map['tolerations'], (value) => DeviceTolerationResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<DeviceSelectorResourceK8sIoV1beta2>(map['selectors']!, (value) => DeviceSelectorResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tolerations: map['tolerations'] == null ? null : (pulumi.Input.decodeList<DeviceTolerationResourceK8sIoV1beta2>(map['tolerations']!, (value) => DeviceTolerationResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

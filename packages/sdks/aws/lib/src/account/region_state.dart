@@ -36,10 +36,10 @@ class RegionState {
 
   factory RegionState.fromMap(Map<String, dynamic> map) {
     return RegionState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      optStatus: map['optStatus'] == null ? null : (map['optStatus'] as String).input(),
-      regionName: map['regionName'] == null ? null : (map['regionName'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      optStatus: map['optStatus'] == null ? null : ((map['optStatus'] as String).input()).input(),
+      regionName: map['regionName'] == null ? null : ((map['regionName'] as String).input()).input(),
     );
   }
 }

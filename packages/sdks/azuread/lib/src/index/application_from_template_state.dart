@@ -46,12 +46,12 @@ class ApplicationFromTemplateState {
 
   factory ApplicationFromTemplateState.fromMap(Map<String, dynamic> map) {
     return ApplicationFromTemplateState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      applicationObjectId: map['applicationObjectId'] == null ? null : (map['applicationObjectId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId'] as String).input(),
-      servicePrincipalObjectId: map['servicePrincipalObjectId'] == null ? null : (map['servicePrincipalObjectId'] as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      applicationObjectId: map['applicationObjectId'] == null ? null : (map['applicationObjectId']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId']! as String).input(),
+      servicePrincipalObjectId: map['servicePrincipalObjectId'] == null ? null : (map['servicePrincipalObjectId']! as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
     );
   }
 }

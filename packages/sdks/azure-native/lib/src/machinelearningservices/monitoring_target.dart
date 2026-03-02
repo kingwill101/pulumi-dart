@@ -31,8 +31,8 @@ class MonitoringTarget {
 
   factory MonitoringTarget.fromMap(Map<String, dynamic> map) {
     return MonitoringTarget(
-      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId'] as String).input(),
-      modelId: map['modelId'] == null ? null : (map['modelId'] as String).input(),
+      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId']! as String).input(),
+      modelId: map['modelId'] == null ? null : (map['modelId']! as String).input(),
       taskType: (map['taskType'] as String).input(),
     );
   }

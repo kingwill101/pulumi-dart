@@ -53,11 +53,11 @@ class BackendPoolResponse {
 
   factory BackendPoolResponse.fromMap(Map<String, dynamic> map) {
     return BackendPoolResponse(
-      backends: map['backends'] == null ? null : (pulumi.Input.decodeList<BackendResponse>(map['backends'], (value) => BackendResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      healthProbeSettings: map['healthProbeSettings'] == null ? null : (SubResourceResponse.fromMap((map['healthProbeSettings'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      loadBalancingSettings: map['loadBalancingSettings'] == null ? null : (SubResourceResponse.fromMap((map['loadBalancingSettings'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      backends: map['backends'] == null ? null : (pulumi.Input.decodeList<BackendResponse>(map['backends']!, (value) => BackendResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      healthProbeSettings: map['healthProbeSettings'] == null ? null : (SubResourceResponse.fromMap((map['healthProbeSettings']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      loadBalancingSettings: map['loadBalancingSettings'] == null ? null : (SubResourceResponse.fromMap((map['loadBalancingSettings']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceState: (map['resourceState'] as String).input(),
       type: (map['type'] as String).input(),
     );

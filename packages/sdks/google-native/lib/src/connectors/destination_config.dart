@@ -27,8 +27,8 @@ class DestinationConfig {
 
   factory DestinationConfig.fromMap(Map<String, dynamic> map) {
     return DestinationConfig(
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<Destination>(map['destinations'], (value) => Destination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<Destination>(map['destinations']!, (value) => Destination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
     );
   }
 }

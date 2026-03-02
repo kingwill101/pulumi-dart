@@ -48,12 +48,12 @@ class BackupPolicyPostgresqlFlexibleServerState {
 
   factory BackupPolicyPostgresqlFlexibleServerState.fromMap(Map<String, dynamic> map) {
     return BackupPolicyPostgresqlFlexibleServerState(
-      backupRepeatingTimeIntervals: map['backupRepeatingTimeIntervals'] == null ? null : ((map['backupRepeatingTimeIntervals'] as List).cast<String>()).input(),
-      defaultRetentionRule: map['defaultRetentionRule'] == null ? null : (BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule.fromMap((map['defaultRetentionRule'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      retentionRules: map['retentionRules'] == null ? null : (pulumi.Input.decodeList<BackupPolicyPostgresqlFlexibleServerRetentionRule>(map['retentionRules'], (value) => BackupPolicyPostgresqlFlexibleServerRetentionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
-      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
+      backupRepeatingTimeIntervals: map['backupRepeatingTimeIntervals'] == null ? null : ((map['backupRepeatingTimeIntervals']! as List).cast<String>()).input(),
+      defaultRetentionRule: map['defaultRetentionRule'] == null ? null : (BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule.fromMap((map['defaultRetentionRule']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      retentionRules: map['retentionRules'] == null ? null : (pulumi.Input.decodeList<BackupPolicyPostgresqlFlexibleServerRetentionRule>(map['retentionRules']!, (value) => BackupPolicyPostgresqlFlexibleServerRetentionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId']! as String).input(),
     );
   }
 }

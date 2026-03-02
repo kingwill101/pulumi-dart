@@ -53,13 +53,13 @@ class BulkInsertInstanceResource {
 
   factory BulkInsertInstanceResource.fromMap(Map<String, dynamic> map) {
     return BulkInsertInstanceResource(
-      count: map['count'] == null ? null : (map['count'] as String).input(),
-      instanceProperties: map['instanceProperties'] == null ? null : (InstanceProperties.fromMap((map['instanceProperties'] as Map).cast<String, dynamic>())).input(),
-      locationPolicy: map['locationPolicy'] == null ? null : (LocationPolicy.fromMap((map['locationPolicy'] as Map).cast<String, dynamic>())).input(),
-      minCount: map['minCount'] == null ? null : (map['minCount'] as String).input(),
-      namePattern: map['namePattern'] == null ? null : (map['namePattern'] as String).input(),
-      perInstanceProperties: map['perInstanceProperties'] == null ? null : ((map['perInstanceProperties'] as Map).cast<String, String>()).input(),
-      sourceInstanceTemplate: map['sourceInstanceTemplate'] == null ? null : (map['sourceInstanceTemplate'] as String).input(),
+      count: map['count'] == null ? null : (map['count']! as String).input(),
+      instanceProperties: map['instanceProperties'] == null ? null : (InstanceProperties.fromMap((map['instanceProperties']! as Map).cast<String, dynamic>())).input(),
+      locationPolicy: map['locationPolicy'] == null ? null : (LocationPolicy.fromMap((map['locationPolicy']! as Map).cast<String, dynamic>())).input(),
+      minCount: map['minCount'] == null ? null : (map['minCount']! as String).input(),
+      namePattern: map['namePattern'] == null ? null : (map['namePattern']! as String).input(),
+      perInstanceProperties: map['perInstanceProperties'] == null ? null : ((map['perInstanceProperties']! as Map).cast<String, String>()).input(),
+      sourceInstanceTemplate: map['sourceInstanceTemplate'] == null ? null : (map['sourceInstanceTemplate']! as String).input(),
     );
   }
 }

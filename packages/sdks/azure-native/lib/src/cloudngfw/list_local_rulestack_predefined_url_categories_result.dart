@@ -27,7 +27,7 @@ class ListLocalRulestackPredefinedUrlCategoriesResult {
 
   factory ListLocalRulestackPredefinedUrlCategoriesResult.fromMap(Map<String, dynamic> map) {
     return ListLocalRulestackPredefinedUrlCategoriesResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
       value: pulumi.Input.decodeList<PredefinedUrlCategoryResponse>(map['value'], (value) => PredefinedUrlCategoryResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

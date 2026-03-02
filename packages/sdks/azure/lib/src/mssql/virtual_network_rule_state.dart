@@ -38,10 +38,10 @@ class VirtualNetworkRuleState {
 
   factory VirtualNetworkRuleState.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkRuleState(
-      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : (map['ignoreMissingVnetServiceEndpoint'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : (map['ignoreMissingVnetServiceEndpoint']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

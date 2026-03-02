@@ -58,11 +58,11 @@ class ParameterArgs {
 
   factory ParameterArgs.fromMap(Map<String, dynamic> map) {
     return ParameterArgs(
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       parameterId: (map['parameterId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

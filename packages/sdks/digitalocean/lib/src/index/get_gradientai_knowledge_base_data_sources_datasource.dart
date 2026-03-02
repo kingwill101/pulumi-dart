@@ -55,12 +55,12 @@ class GetGradientaiKnowledgeBaseDataSourcesDatasource {
   factory GetGradientaiKnowledgeBaseDataSourcesDatasource.fromMap(Map<String, dynamic> map) {
     return GetGradientaiKnowledgeBaseDataSourcesDatasource(
       createdAt: (map['createdAt'] as String).input(),
-      fileUploadDataSources: map['fileUploadDataSources'] == null ? null : (pulumi.Input.decodeList<GetGradientaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource>(map['fileUploadDataSources'], (value) => GetGradientaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lastIndexingJobs: map['lastIndexingJobs'] == null ? null : (pulumi.Input.decodeList<GetGradientaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob>(map['lastIndexingJobs'], (value) => GetGradientaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      spacesDataSources: map['spacesDataSources'] == null ? null : (pulumi.Input.decodeList<GetGradientaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource>(map['spacesDataSources'], (value) => GetGradientaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fileUploadDataSources: map['fileUploadDataSources'] == null ? null : (pulumi.Input.decodeList<GetGradientaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource>(map['fileUploadDataSources']!, (value) => GetGradientaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastIndexingJobs: map['lastIndexingJobs'] == null ? null : (pulumi.Input.decodeList<GetGradientaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob>(map['lastIndexingJobs']!, (value) => GetGradientaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      spacesDataSources: map['spacesDataSources'] == null ? null : (pulumi.Input.decodeList<GetGradientaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource>(map['spacesDataSources']!, (value) => GetGradientaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
       updatedAt: (map['updatedAt'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
-      webCrawlerDataSources: map['webCrawlerDataSources'] == null ? null : (pulumi.Input.decodeList<GetGradientaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource>(map['webCrawlerDataSources'], (value) => GetGradientaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
+      webCrawlerDataSources: map['webCrawlerDataSources'] == null ? null : (pulumi.Input.decodeList<GetGradientaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource>(map['webCrawlerDataSources']!, (value) => GetGradientaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

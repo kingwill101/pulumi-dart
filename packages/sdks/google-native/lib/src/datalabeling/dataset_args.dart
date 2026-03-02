@@ -38,10 +38,10 @@ class DatasetArgs {
 
   factory DatasetArgs.fromMap(Map<String, dynamic> map) {
     return DatasetArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      lastMigrateTime: map['lastMigrateTime'] == null ? null : (map['lastMigrateTime'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      lastMigrateTime: map['lastMigrateTime'] == null ? null : (map['lastMigrateTime']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

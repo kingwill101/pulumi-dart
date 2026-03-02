@@ -47,11 +47,11 @@ class GetCoreNetworkPolicyDocumentCoreNetworkConfiguration {
   factory GetCoreNetworkPolicyDocumentCoreNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentCoreNetworkConfiguration(
       asnRanges: ((map['asnRanges'] as List).cast<String>()).input(),
-      dnsSupport: map['dnsSupport'] == null ? null : (map['dnsSupport'] as bool).input(),
-      edgeLocations: (pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocation>(map['edgeLocations'], (value) => GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      insideCidrBlocks: map['insideCidrBlocks'] == null ? null : ((map['insideCidrBlocks'] as List).cast<String>()).input(),
-      securityGroupReferencingSupport: map['securityGroupReferencingSupport'] == null ? null : (map['securityGroupReferencingSupport'] as bool).input(),
-      vpnEcmpSupport: map['vpnEcmpSupport'] == null ? null : (map['vpnEcmpSupport'] as bool).input(),
+      dnsSupport: map['dnsSupport'] == null ? null : ((map['dnsSupport'] as bool).input()).input(),
+      edgeLocations: (pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocation>(map['edgeLocations']!, (value) => GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      insideCidrBlocks: map['insideCidrBlocks'] == null ? null : (((map['insideCidrBlocks'] as List).cast<String>()).input()).input(),
+      securityGroupReferencingSupport: map['securityGroupReferencingSupport'] == null ? null : ((map['securityGroupReferencingSupport'] as bool).input()).input(),
+      vpnEcmpSupport: map['vpnEcmpSupport'] == null ? null : ((map['vpnEcmpSupport'] as bool).input()).input(),
     );
   }
 }

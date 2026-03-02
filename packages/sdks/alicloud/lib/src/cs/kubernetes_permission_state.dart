@@ -27,8 +27,8 @@ class KubernetesPermissionState {
 
   factory KubernetesPermissionState.fromMap(Map<String, dynamic> map) {
     return KubernetesPermissionState(
-      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<KubernetesPermissionPermission>(map['permissions'], (value) => KubernetesPermissionPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<KubernetesPermissionPermission>(map['permissions']!, (value) => KubernetesPermissionPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
     );
   }
 }

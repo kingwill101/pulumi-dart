@@ -34,9 +34,9 @@ class GetVolumeTypesArgs {
 
   factory GetVolumeTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetVolumeTypesArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVolumeTypesFilter>(map['filters'], (value) => GetVolumeTypesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      order: map['order'] == null ? null : (map['order'] as String).input(),
-      orderBy: map['orderBy'] == null ? null : (map['orderBy'] as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVolumeTypesFilter>(map['filters']!, (value) => GetVolumeTypesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      order: map['order'] == null ? null : (map['order']! as String).input(),
+      orderBy: map['orderBy'] == null ? null : (map['orderBy']! as String).input(),
     );
   }
 }

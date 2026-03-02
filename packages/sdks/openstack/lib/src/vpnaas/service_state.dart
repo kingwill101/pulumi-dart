@@ -78,17 +78,17 @@ class ServiceState {
 
   factory ServiceState.fromMap(Map<String, dynamic> map) {
     return ServiceState(
-      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      externalV4Ip: map['externalV4Ip'] == null ? null : (map['externalV4Ip'] as String).input(),
-      externalV6Ip: map['externalV6Ip'] == null ? null : (map['externalV6Ip'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routerId: map['routerId'] == null ? null : (map['routerId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
+      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      externalV4Ip: map['externalV4Ip'] == null ? null : (map['externalV4Ip']! as String).input(),
+      externalV6Ip: map['externalV6Ip'] == null ? null : (map['externalV6Ip']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      routerId: map['routerId'] == null ? null : (map['routerId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -46,12 +46,12 @@ class ManagedHardwareSecurityModuleRoleAssignmentState {
 
   factory ManagedHardwareSecurityModuleRoleAssignmentState.fromMap(Map<String, dynamic> map) {
     return ManagedHardwareSecurityModuleRoleAssignmentState(
-      managedHsmId: map['managedHsmId'] == null ? null : (map['managedHsmId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      managedHsmId: map['managedHsmId'] == null ? null : (map['managedHsmId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
     );
   }
 }

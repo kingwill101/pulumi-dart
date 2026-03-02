@@ -36,10 +36,10 @@ class K8sActiveDirectory {
 
   factory K8sActiveDirectory.fromMap(Map<String, dynamic> map) {
     return K8sActiveDirectory(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      connector: map['connector'] == null ? null : (K8sActiveDirectoryConnector.fromMap((map['connector'] as Map).cast<String, dynamic>())).input(),
-      encryptionTypes: map['encryptionTypes'] == null ? null : ((map['encryptionTypes'] as List).cast<String>()).input(),
-      keytabSecret: map['keytabSecret'] == null ? null : (map['keytabSecret'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      connector: map['connector'] == null ? null : (K8sActiveDirectoryConnector.fromMap((map['connector']! as Map).cast<String, dynamic>())).input(),
+      encryptionTypes: map['encryptionTypes'] == null ? null : ((map['encryptionTypes']! as List).cast<String>()).input(),
+      keytabSecret: map['keytabSecret'] == null ? null : (map['keytabSecret']! as String).input(),
     );
   }
 }

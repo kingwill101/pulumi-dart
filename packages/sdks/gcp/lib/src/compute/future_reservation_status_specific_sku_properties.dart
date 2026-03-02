@@ -20,7 +20,7 @@ class FutureReservationStatusSpecificSkuProperties {
 
   factory FutureReservationStatusSpecificSkuProperties.fromMap(Map<String, dynamic> map) {
     return FutureReservationStatusSpecificSkuProperties(
-      sourceInstanceTemplateId: map['sourceInstanceTemplateId'] == null ? null : (map['sourceInstanceTemplateId'] as String).input(),
+      sourceInstanceTemplateId: map['sourceInstanceTemplateId'] == null ? null : (map['sourceInstanceTemplateId']! as String).input(),
     );
   }
 }

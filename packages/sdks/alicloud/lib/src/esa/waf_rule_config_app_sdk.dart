@@ -31,9 +31,9 @@ class WafRuleConfigAppSdk {
 
   factory WafRuleConfigAppSdk.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigAppSdk(
-      customSign: map['customSign'] == null ? null : (WafRuleConfigAppSdkCustomSign.fromMap((map['customSign'] as Map).cast<String, dynamic>())).input(),
-      customSignStatus: map['customSignStatus'] == null ? null : (map['customSignStatus'] as String).input(),
-      featureAbnormals: map['featureAbnormals'] == null ? null : ((map['featureAbnormals'] as List).cast<String>()).input(),
+      customSign: map['customSign'] == null ? null : (WafRuleConfigAppSdkCustomSign.fromMap((map['customSign']! as Map).cast<String, dynamic>())).input(),
+      customSignStatus: map['customSignStatus'] == null ? null : (map['customSignStatus']! as String).input(),
+      featureAbnormals: map['featureAbnormals'] == null ? null : ((map['featureAbnormals']! as List).cast<String>()).input(),
     );
   }
 }

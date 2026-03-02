@@ -37,10 +37,10 @@ class ExternalRef {
 
   factory ExternalRef.fromMap(Map<String, dynamic> map) {
     return ExternalRef(
-      category: map['category'] == null ? null : (ExternalRefCategory.fromValue(map['category'] as String)).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      locator: map['locator'] == null ? null : (map['locator'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      category: map['category'] == null ? null : (ExternalRefCategory.fromValue(map['category']! as String)).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      locator: map['locator'] == null ? null : (map['locator']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

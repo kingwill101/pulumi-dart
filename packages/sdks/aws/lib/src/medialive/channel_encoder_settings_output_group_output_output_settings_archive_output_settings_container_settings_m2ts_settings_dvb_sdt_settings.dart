@@ -31,10 +31,10 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings(
-      outputSdt: map['outputSdt'] == null ? null : (map['outputSdt'] as String).input(),
-      repInterval: map['repInterval'] == null ? null : (map['repInterval'] as int).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      serviceProviderName: map['serviceProviderName'] == null ? null : (map['serviceProviderName'] as String).input(),
+      outputSdt: map['outputSdt'] == null ? null : ((map['outputSdt'] as String).input()).input(),
+      repInterval: map['repInterval'] == null ? null : ((map['repInterval'] as int).input()).input(),
+      serviceName: map['serviceName'] == null ? null : ((map['serviceName'] as String).input()).input(),
+      serviceProviderName: map['serviceProviderName'] == null ? null : ((map['serviceProviderName'] as String).input()).input(),
     );
   }
 }

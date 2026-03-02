@@ -71,16 +71,16 @@ class VolumeArgs {
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      allocationUnit: map['allocationUnit'] == null ? null : (map['allocationUnit'] as String).input(),
-      backingStore: map['backingStore'] == null ? null : (VolumeBackingStore.fromMap((map['backingStore'] as Map).cast<String, dynamic>())).input(),
-      capacity: map['capacity'] == null ? null : (map['capacity'] as double).input(),
-      capacityUnit: map['capacityUnit'] == null ? null : (map['capacityUnit'] as String).input(),
-      create: map['create'] == null ? null : (VolumeCreate.fromMap((map['create'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      physicalUnit: map['physicalUnit'] == null ? null : (map['physicalUnit'] as String).input(),
+      allocationUnit: map['allocationUnit'] == null ? null : (map['allocationUnit']! as String).input(),
+      backingStore: map['backingStore'] == null ? null : (VolumeBackingStore.fromMap((map['backingStore']! as Map).cast<String, dynamic>())).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as double).input(),
+      capacityUnit: map['capacityUnit'] == null ? null : (map['capacityUnit']! as String).input(),
+      create: map['create'] == null ? null : (VolumeCreate.fromMap((map['create']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      physicalUnit: map['physicalUnit'] == null ? null : (map['physicalUnit']! as String).input(),
       pool: (map['pool'] as String).input(),
-      target: map['target'] == null ? null : (VolumeTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      target: map['target'] == null ? null : (VolumeTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

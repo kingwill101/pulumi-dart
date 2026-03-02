@@ -45,10 +45,10 @@ class ClusterSnapshotArgs {
   factory ClusterSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return ClusterSnapshotArgs(
       clusterIdentifier: (map['clusterIdentifier'] as String).input(),
-      manualSnapshotRetentionPeriod: map['manualSnapshotRetentionPeriod'] == null ? null : (map['manualSnapshotRetentionPeriod'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      manualSnapshotRetentionPeriod: map['manualSnapshotRetentionPeriod'] == null ? null : ((map['manualSnapshotRetentionPeriod'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       snapshotIdentifier: (map['snapshotIdentifier'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -80,17 +80,17 @@ class GetBlueprintResult {
   factory GetBlueprintResult.fromMap(Map<String, dynamic> map) {
     return GetBlueprintResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       id: map['id'] as String,
       layout: map['layout'],
       name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterDefinitionResponse>(map['parameters'], (value) => ParameterDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      resourceGroups: map['resourceGroups'] == null ? null : pulumi.Input.decodeMapValues<ResourceGroupDefinitionResponse>(map['resourceGroups'], (value) => ResourceGroupDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterDefinitionResponse>(map['parameters']!, (value) => ParameterDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      resourceGroups: map['resourceGroups'] == null ? null : pulumi.Input.decodeMapValues<ResourceGroupDefinitionResponse>(map['resourceGroups']!, (value) => ResourceGroupDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
       status: BlueprintStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
       targetScope: map['targetScope'] as String,
       type: map['type'] as String,
-      versions: map['versions'] == null ? null : map['versions'],
+      versions: map['versions'] == null ? null : map['versions']!,
     );
   }
 }

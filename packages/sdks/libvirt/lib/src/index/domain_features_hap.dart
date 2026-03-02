@@ -20,7 +20,7 @@ class DomainFeaturesHap {
 
   factory DomainFeaturesHap.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesHap(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

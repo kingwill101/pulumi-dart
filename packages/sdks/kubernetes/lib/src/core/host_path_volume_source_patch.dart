@@ -26,8 +26,8 @@ class HostPathVolumeSourcePatch {
 
   factory HostPathVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return HostPathVolumeSourcePatch(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

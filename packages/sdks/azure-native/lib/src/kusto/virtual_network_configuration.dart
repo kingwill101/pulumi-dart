@@ -38,7 +38,7 @@ class VirtualNetworkConfiguration {
     return VirtualNetworkConfiguration(
       dataManagementPublicIpId: (map['dataManagementPublicIpId'] as String).input(),
       enginePublicIpId: (map['enginePublicIpId'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
       subnetId: (map['subnetId'] as String).input(),
     );
   }

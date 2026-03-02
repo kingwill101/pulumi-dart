@@ -61,14 +61,14 @@ class KeyArgs {
 
   factory KeyArgs.fromMap(Map<String, dynamic> map) {
     return KeyArgs(
-      deletionWindowInDays: map['deletionWindowInDays'] == null ? null : (map['deletionWindowInDays'] as int).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      deletionWindowInDays: map['deletionWindowInDays'] == null ? null : ((map['deletionWindowInDays'] as int).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
       exportable: (map['exportable'] as bool).input(),
-      keyAttributes: map['keyAttributes'] == null ? null : (pulumi.Input.decodeList<KeyKeyAttribute>(map['keyAttributes'], (value) => KeyKeyAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      keyCheckValueAlgorithm: map['keyCheckValueAlgorithm'] == null ? null : (map['keyCheckValueAlgorithm'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (KeyTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      keyAttributes: map['keyAttributes'] == null ? null : ((pulumi.Input.decodeList<KeyKeyAttribute>(map['keyAttributes']!, (value) => KeyKeyAttribute.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      keyCheckValueAlgorithm: map['keyCheckValueAlgorithm'] == null ? null : ((map['keyCheckValueAlgorithm'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((KeyTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

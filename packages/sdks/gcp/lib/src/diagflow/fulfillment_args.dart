@@ -50,10 +50,10 @@ class FulfillmentArgs {
   factory FulfillmentArgs.fromMap(Map<String, dynamic> map) {
     return FulfillmentArgs(
       displayName: (map['displayName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      features: map['features'] == null ? null : (pulumi.Input.decodeList<FulfillmentFeature>(map['features'], (value) => FulfillmentFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      genericWebService: map['genericWebService'] == null ? null : (FulfillmentGenericWebService.fromMap((map['genericWebService'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      features: map['features'] == null ? null : (pulumi.Input.decodeList<FulfillmentFeature>(map['features']!, (value) => FulfillmentFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      genericWebService: map['genericWebService'] == null ? null : (FulfillmentGenericWebService.fromMap((map['genericWebService']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

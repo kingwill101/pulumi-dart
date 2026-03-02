@@ -21,7 +21,7 @@ class PatchInstanceFilterGroupLabel {
 
   factory PatchInstanceFilterGroupLabel.fromMap(Map<String, dynamic> map) {
     return PatchInstanceFilterGroupLabel(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
     );
   }
 }

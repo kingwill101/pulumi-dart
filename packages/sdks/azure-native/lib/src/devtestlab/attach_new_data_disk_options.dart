@@ -31,9 +31,9 @@ class AttachNewDataDiskOptions {
 
   factory AttachNewDataDiskOptions.fromMap(Map<String, dynamic> map) {
     return AttachNewDataDiskOptions(
-      diskName: map['diskName'] == null ? null : (map['diskName'] as String).input(),
-      diskSizeGiB: map['diskSizeGiB'] == null ? null : (map['diskSizeGiB'] as int).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
+      diskName: map['diskName'] == null ? null : (map['diskName']! as String).input(),
+      diskSizeGiB: map['diskSizeGiB'] == null ? null : (map['diskSizeGiB']! as int).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
     );
   }
 }

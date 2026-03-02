@@ -31,9 +31,9 @@ class WorkerConfigCloudbuildV1beta1 {
 
   factory WorkerConfigCloudbuildV1beta1.fromMap(Map<String, dynamic> map) {
     return WorkerConfigCloudbuildV1beta1(
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as String).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      noExternalIp: map['noExternalIp'] == null ? null : (map['noExternalIp'] as bool).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as String).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      noExternalIp: map['noExternalIp'] == null ? null : (map['noExternalIp']! as bool).input(),
     );
   }
 }

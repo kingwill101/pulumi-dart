@@ -36,10 +36,10 @@ class ConsentLinkDefinitionResponse {
 
   factory ConsentLinkDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return ConsentLinkDefinitionResponse(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      firstPartyLoginUri: map['firstPartyLoginUri'] == null ? null : (map['firstPartyLoginUri'] as String).input(),
-      link: map['link'] == null ? null : (map['link'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      firstPartyLoginUri: map['firstPartyLoginUri'] == null ? null : (map['firstPartyLoginUri']! as String).input(),
+      link: map['link'] == null ? null : (map['link']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -37,9 +37,9 @@ class SubjectAccessReviewStatusAuthorizationK8sIoV1beta1 {
   factory SubjectAccessReviewStatusAuthorizationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return SubjectAccessReviewStatusAuthorizationK8sIoV1beta1(
       allowed: (map['allowed'] as bool).input(),
-      denied: map['denied'] == null ? null : (map['denied'] as bool).input(),
-      evaluationError: map['evaluationError'] == null ? null : (map['evaluationError'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      denied: map['denied'] == null ? null : (map['denied']! as bool).input(),
+      evaluationError: map['evaluationError'] == null ? null : (map['evaluationError']! as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
     );
   }
 }

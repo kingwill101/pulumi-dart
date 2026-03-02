@@ -40,9 +40,9 @@ class TargetArgs {
 
   factory TargetArgs.fromMap(Map<String, dynamic> map) {
     return TargetArgs(
-      properties: map['properties'] == null ? null : (SqlDbElasticPoolTargetProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (SqlDbElasticPoolTargetProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      targetName: map['targetName'] == null ? null : (map['targetName'] as String).input(),
+      targetName: map['targetName'] == null ? null : (map['targetName']! as String).input(),
       watcherName: (map['watcherName'] as String).input(),
     );
   }

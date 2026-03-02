@@ -52,12 +52,12 @@ class LiteSubscriptionArgs {
 
   factory LiteSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return LiteSubscriptionArgs(
-      deliveryConfig: map['deliveryConfig'] == null ? null : (LiteSubscriptionDeliveryConfig.fromMap((map['deliveryConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      deliveryConfig: map['deliveryConfig'] == null ? null : (LiteSubscriptionDeliveryConfig.fromMap((map['deliveryConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       topic: (map['topic'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

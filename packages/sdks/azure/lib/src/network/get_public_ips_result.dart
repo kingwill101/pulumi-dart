@@ -43,10 +43,10 @@ class GetPublicIPsResult {
 
   factory GetPublicIPsResult.fromMap(Map<String, dynamic> map) {
     return GetPublicIPsResult(
-      allocationType: map['allocationType'] == null ? null : map['allocationType'] as String,
-      attachmentStatus: map['attachmentStatus'] == null ? null : map['attachmentStatus'] as String,
+      allocationType: map['allocationType'] == null ? null : map['allocationType']! as String,
+      attachmentStatus: map['attachmentStatus'] == null ? null : map['attachmentStatus']! as String,
       id: map['id'] as String,
-      namePrefix: map['namePrefix'] == null ? null : map['namePrefix'] as String,
+      namePrefix: map['namePrefix'] == null ? null : map['namePrefix']! as String,
       publicIps: pulumi.Input.decodeList<GetPublicIPsPublicIp>(map['publicIps'], (value) => GetPublicIPsPublicIp.fromMap((value as Map).cast<String, dynamic>())),
       resourceGroupName: map['resourceGroupName'] as String,
     );

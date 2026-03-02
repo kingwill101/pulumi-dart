@@ -44,11 +44,11 @@ class VirtualClusterArgs {
 
   factory VirtualClusterArgs.fromMap(Map<String, dynamic> map) {
     return VirtualClusterArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
-      virtualClusterName: map['virtualClusterName'] == null ? null : (map['virtualClusterName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
+      virtualClusterName: map['virtualClusterName'] == null ? null : (map['virtualClusterName']! as String).input(),
     );
   }
 }

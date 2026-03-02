@@ -33,8 +33,8 @@ class ListenerRuleMatchHttpMatchHeaderMatch {
 
   factory ListenerRuleMatchHttpMatchHeaderMatch.fromMap(Map<String, dynamic> map) {
     return ListenerRuleMatchHttpMatchHeaderMatch(
-      caseSensitive: map['caseSensitive'] == null ? null : (map['caseSensitive'] as bool).input(),
-      match: (ListenerRuleMatchHttpMatchHeaderMatchMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
+      caseSensitive: map['caseSensitive'] == null ? null : ((map['caseSensitive'] as bool).input()).input(),
+      match: (ListenerRuleMatchHttpMatchHeaderMatchMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
     );
   }

@@ -55,13 +55,13 @@ class GetWorkspaceCollectionResult {
   factory GetWorkspaceCollectionResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceCollectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      location: map['location'] == null ? null : map['location']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
       properties: map['properties'],
-      sku: map['sku'] == null ? null : AzureSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] == null ? null : map['type'] as String,
+      sku: map['sku'] == null ? null : AzureSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      type: map['type'] == null ? null : map['type']! as String,
     );
   }
 }

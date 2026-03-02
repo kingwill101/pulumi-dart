@@ -42,7 +42,7 @@ class ModuleArgs {
     return ModuleArgs(
       automationAccountName: (map['automationAccountName'] as String).input(),
       moduleLink: (ModuleModuleLink.fromMap((map['moduleLink'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

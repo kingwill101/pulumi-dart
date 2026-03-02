@@ -43,11 +43,11 @@ class WebAclRule {
 
   factory WebAclRule.fromMap(Map<String, dynamic> map) {
     return WebAclRule(
-      action: map['action'] == null ? null : (WebAclRuleAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      overrideAction: map['overrideAction'] == null ? null : (WebAclRuleOverrideAction.fromMap((map['overrideAction'] as Map).cast<String, dynamic>())).input(),
+      action: map['action'] == null ? null : ((WebAclRuleAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input()).input(),
+      overrideAction: map['overrideAction'] == null ? null : ((WebAclRuleOverrideAction.fromMap((map['overrideAction']! as Map).cast<String, dynamic>())).input()).input(),
       priority: (map['priority'] as int).input(),
       ruleId: (map['ruleId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

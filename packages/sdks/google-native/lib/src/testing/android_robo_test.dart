@@ -71,16 +71,16 @@ class AndroidRoboTest {
 
   factory AndroidRoboTest.fromMap(Map<String, dynamic> map) {
     return AndroidRoboTest(
-      appApk: map['appApk'] == null ? null : (FileReference.fromMap((map['appApk'] as Map).cast<String, dynamic>())).input(),
-      appBundle: map['appBundle'] == null ? null : (AppBundle.fromMap((map['appBundle'] as Map).cast<String, dynamic>())).input(),
-      appInitialActivity: map['appInitialActivity'] == null ? null : (map['appInitialActivity'] as String).input(),
-      appPackageId: map['appPackageId'] == null ? null : (map['appPackageId'] as String).input(),
-      maxDepth: map['maxDepth'] == null ? null : (map['maxDepth'] as int).input(),
-      maxSteps: map['maxSteps'] == null ? null : (map['maxSteps'] as int).input(),
-      roboDirectives: map['roboDirectives'] == null ? null : (pulumi.Input.decodeList<RoboDirective>(map['roboDirectives'], (value) => RoboDirective.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      roboMode: map['roboMode'] == null ? null : (AndroidRoboTestRoboMode.fromValue(map['roboMode'] as String)).input(),
-      roboScript: map['roboScript'] == null ? null : (FileReference.fromMap((map['roboScript'] as Map).cast<String, dynamic>())).input(),
-      startingIntents: map['startingIntents'] == null ? null : (pulumi.Input.decodeList<RoboStartingIntent>(map['startingIntents'], (value) => RoboStartingIntent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      appApk: map['appApk'] == null ? null : (FileReference.fromMap((map['appApk']! as Map).cast<String, dynamic>())).input(),
+      appBundle: map['appBundle'] == null ? null : (AppBundle.fromMap((map['appBundle']! as Map).cast<String, dynamic>())).input(),
+      appInitialActivity: map['appInitialActivity'] == null ? null : (map['appInitialActivity']! as String).input(),
+      appPackageId: map['appPackageId'] == null ? null : (map['appPackageId']! as String).input(),
+      maxDepth: map['maxDepth'] == null ? null : (map['maxDepth']! as int).input(),
+      maxSteps: map['maxSteps'] == null ? null : (map['maxSteps']! as int).input(),
+      roboDirectives: map['roboDirectives'] == null ? null : (pulumi.Input.decodeList<RoboDirective>(map['roboDirectives']!, (value) => RoboDirective.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      roboMode: map['roboMode'] == null ? null : (AndroidRoboTestRoboMode.fromValue(map['roboMode']! as String)).input(),
+      roboScript: map['roboScript'] == null ? null : (FileReference.fromMap((map['roboScript']! as Map).cast<String, dynamic>())).input(),
+      startingIntents: map['startingIntents'] == null ? null : (pulumi.Input.decodeList<RoboStartingIntent>(map['startingIntents']!, (value) => RoboStartingIntent.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

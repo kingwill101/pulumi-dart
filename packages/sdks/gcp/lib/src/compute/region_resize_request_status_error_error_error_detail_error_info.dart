@@ -33,9 +33,9 @@ class RegionResizeRequestStatusErrorErrorErrorDetailErrorInfo {
 
   factory RegionResizeRequestStatusErrorErrorErrorDetailErrorInfo.fromMap(Map<String, dynamic> map) {
     return RegionResizeRequestStatusErrorErrorErrorDetailErrorInfo(
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      metadatas: map['metadatas'] == null ? null : ((map['metadatas'] as Map).cast<String, String>()).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      metadatas: map['metadatas'] == null ? null : ((map['metadatas']! as Map).cast<String, String>()).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
     );
   }
 }

@@ -69,16 +69,16 @@ class GetApplicationsArgs {
 
   factory GetApplicationsArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationsArgs(
-      appName: map['appName'] == null ? null : (map['appName'] as String).input(),
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      fieldType: map['fieldType'] == null ? null : (map['fieldType'] as String).input(),
-      fieldValue: map['fieldValue'] == null ? null : (map['fieldValue'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
-      orderBy: map['orderBy'] == null ? null : (map['orderBy'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      reverse: map['reverse'] == null ? null : (map['reverse'] as bool).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      appName: map['appName'] == null ? null : (map['appName']! as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      fieldType: map['fieldType'] == null ? null : (map['fieldType']! as String).input(),
+      fieldValue: map['fieldValue'] == null ? null : (map['fieldValue']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId']! as String).input(),
+      orderBy: map['orderBy'] == null ? null : (map['orderBy']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      reverse: map['reverse'] == null ? null : (map['reverse']! as bool).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

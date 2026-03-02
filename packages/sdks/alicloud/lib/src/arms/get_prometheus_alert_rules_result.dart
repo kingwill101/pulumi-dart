@@ -61,13 +61,13 @@ class GetPrometheusAlertRulesResult {
       clusterId: map['clusterId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      matchExpressions: map['matchExpressions'] == null ? null : map['matchExpressions'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      matchExpressions: map['matchExpressions'] == null ? null : map['matchExpressions']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       rules: pulumi.Input.decodeList<GetPrometheusAlertRulesRule>(map['rules'], (value) => GetPrometheusAlertRulesRule.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as int,
-      type: map['type'] == null ? null : map['type'] as String,
+      status: map['status'] == null ? null : map['status']! as int,
+      type: map['type'] == null ? null : map['type']! as String,
     );
   }
 }

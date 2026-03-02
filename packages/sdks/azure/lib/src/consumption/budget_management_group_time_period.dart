@@ -25,7 +25,7 @@ class BudgetManagementGroupTimePeriod {
 
   factory BudgetManagementGroupTimePeriod.fromMap(Map<String, dynamic> map) {
     return BudgetManagementGroupTimePeriod(
-      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
+      endDate: map['endDate'] == null ? null : (map['endDate']! as String).input(),
       startDate: (map['startDate'] as String).input(),
     );
   }

@@ -50,9 +50,9 @@ class RegionalSecretVersionArgs {
 
   factory RegionalSecretVersionArgs.fromMap(Map<String, dynamic> map) {
     return RegionalSecretVersionArgs(
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : (map['isSecretDataBase64'] as bool).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : (map['isSecretDataBase64']! as bool).input(),
       secret: (map['secret'] as String).input(),
       secretData: (map['secretData'] as String).input(),
     );

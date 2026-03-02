@@ -44,11 +44,11 @@ class FirewallPolicyNatRuleCollection {
 
   factory FirewallPolicyNatRuleCollection.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyNatRuleCollection(
-      action: map['action'] == null ? null : (FirewallPolicyNatRuleCollectionAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      action: map['action'] == null ? null : (FirewallPolicyNatRuleCollectionAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
       ruleCollectionType: (map['ruleCollectionType'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ApplicationRule>(map['rules'], (value) => ApplicationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ApplicationRule>(map['rules']!, (value) => ApplicationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -61,12 +61,12 @@ class ExperimentPlanTemplateTemplatePipelineEnvParams {
   factory ExperimentPlanTemplateTemplatePipelineEnvParams.fromMap(Map<String, dynamic> map) {
     return ExperimentPlanTemplateTemplatePipelineEnvParams(
       cpuPerWorker: (map['cpuPerWorker'] as int).input(),
-      cudaVersion: map['cudaVersion'] == null ? null : (map['cudaVersion'] as String).input(),
-      gpuDriverVersion: map['gpuDriverVersion'] == null ? null : (map['gpuDriverVersion'] as String).input(),
+      cudaVersion: map['cudaVersion'] == null ? null : (map['cudaVersion']! as String).input(),
+      gpuDriverVersion: map['gpuDriverVersion'] == null ? null : (map['gpuDriverVersion']! as String).input(),
       gpuPerWorker: (map['gpuPerWorker'] as int).input(),
       memoryPerWorker: (map['memoryPerWorker'] as int).input(),
-      ncclVersion: map['ncclVersion'] == null ? null : (map['ncclVersion'] as String).input(),
-      pyTorchVersion: map['pyTorchVersion'] == null ? null : (map['pyTorchVersion'] as String).input(),
+      ncclVersion: map['ncclVersion'] == null ? null : (map['ncclVersion']! as String).input(),
+      pyTorchVersion: map['pyTorchVersion'] == null ? null : (map['pyTorchVersion']! as String).input(),
       shareMemory: (map['shareMemory'] as int).input(),
       workerNum: (map['workerNum'] as int).input(),
     );

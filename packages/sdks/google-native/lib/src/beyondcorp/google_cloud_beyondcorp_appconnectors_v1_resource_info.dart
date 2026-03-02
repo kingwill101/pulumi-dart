@@ -43,10 +43,10 @@ class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo {
   factory GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo(
       id: (map['id'] as String).input(),
-      resource: map['resource'] == null ? null : ((map['resource'] as Map).cast<String, String>()).input(),
-      status: map['status'] == null ? null : (GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus.fromValue(map['status'] as String)).input(),
-      sub: map['sub'] == null ? null : (pulumi.Input.decodeList<GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo>(map['sub'], (value) => GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      time: map['time'] == null ? null : (map['time'] as String).input(),
+      resource: map['resource'] == null ? null : ((map['resource']! as Map).cast<String, String>()).input(),
+      status: map['status'] == null ? null : (GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus.fromValue(map['status']! as String)).input(),
+      sub: map['sub'] == null ? null : (pulumi.Input.decodeList<GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo>(map['sub']!, (value) => GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      time: map['time'] == null ? null : (map['time']! as String).input(),
     );
   }
 }

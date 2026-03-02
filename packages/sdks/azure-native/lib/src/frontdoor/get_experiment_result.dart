@@ -82,17 +82,17 @@ class GetExperimentResult {
   factory GetExperimentResult.fromMap(Map<String, dynamic> map) {
     return GetExperimentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      enabledState: map['enabledState'] == null ? null : map['enabledState'] as String,
-      endpointA: map['endpointA'] == null ? null : EndpointResponse.fromMap((map['endpointA'] as Map).cast<String, dynamic>()),
-      endpointB: map['endpointB'] == null ? null : EndpointResponse.fromMap((map['endpointB'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description']! as String,
+      enabledState: map['enabledState'] == null ? null : map['enabledState']! as String,
+      endpointA: map['endpointA'] == null ? null : EndpointResponse.fromMap((map['endpointA']! as Map).cast<String, dynamic>()),
+      endpointB: map['endpointB'] == null ? null : EndpointResponse.fromMap((map['endpointB']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       resourceState: map['resourceState'] as String,
       scriptFileUri: map['scriptFileUri'] as String,
       status: map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

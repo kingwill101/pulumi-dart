@@ -38,9 +38,9 @@ class RegistryGeoreplication {
   factory RegistryGeoreplication.fromMap(Map<String, dynamic> map) {
     return RegistryGeoreplication(
       location: (map['location'] as String).input(),
-      regionalEndpointEnabled: map['regionalEndpointEnabled'] == null ? null : (map['regionalEndpointEnabled'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zoneRedundancyEnabled: map['zoneRedundancyEnabled'] == null ? null : (map['zoneRedundancyEnabled'] as bool).input(),
+      regionalEndpointEnabled: map['regionalEndpointEnabled'] == null ? null : (map['regionalEndpointEnabled']! as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zoneRedundancyEnabled: map['zoneRedundancyEnabled'] == null ? null : (map['zoneRedundancyEnabled']! as bool).input(),
     );
   }
 }

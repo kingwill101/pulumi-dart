@@ -17,12 +17,12 @@ class ExampleStack extends pulumi.Stack {
     final cloudSqlInstance = gcp.sql.DatabaseInstance(
       'my-cloud-sql-instance',
       args: gcp.sql.DatabaseInstanceArgs(
-        name: cloudSqlInstanceName,
-        databaseVersion: 'POSTGRES_12',
-        deletionProtection: false,
+        name: cloudSqlInstanceName.output(),
+        databaseVersion: 'POSTGRES_12'.output(),
+        deletionProtection: false.output(),
         settings: gcp.sql.DatabaseInstanceSettings(
-          tier: 'db-f1-micro',
-        ),
+          tier: 'db-f1-micro'.output(),
+        ).output(),
       ),
     );
 
@@ -40,7 +40,7 @@ class ExampleStack extends pulumi.Stack {
     gcp.sql.User(
       'users',
       args: gcp.sql.UserArgs(
-        name: dbName,
+        name: dbName.output(),
         instance: cloudSqlInstance.name,
         password: pulumi.secret(dbPassword).apply((value) => value as String),
       ),
@@ -54,28 +54,28 @@ class ExampleStack extends pulumi.Stack {
           metadata: gcp.cloudrun.ServiceTemplateMetadata(
             annotations: {
               'run.googleapis.com/cloudsql-instances': cloudSqlConnectionName,
-            },
-          ),
+            }.output(),
+          ).output(),
           spec: gcp.cloudrun.ServiceTemplateSpec(
             containers: [
               gcp.cloudrun.ServiceTemplateSpecContainer(
-                image: 'gcr.io/cloudrun/hello',
+                image: 'gcr.io/cloudrun/hello'.output(),
                 envs: [
                   gcp.cloudrun.ServiceTemplateSpecContainerEnv(
-                    name: 'DATABASE_URL',
-                    value: cloudRunEnvironment,
+                    name: 'DATABASE_URL'.output(),
+                    value: cloudRunEnvironment.output(),
                   ),
-                ],
+                ].output(),
               ),
-            ],
-          ),
-        ),
+        ].output(),
+          ).output(),
+        ).output(),
         traffics: [
           gcp.cloudrun.ServiceTraffic(
-            latestRevision: true,
-            percent: 100,
+            latestRevision: true.output(),
+            percent: 100.output(),
           ),
-        ],
+        ].output(),
       ),
     );
 

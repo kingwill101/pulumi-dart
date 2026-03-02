@@ -40,9 +40,9 @@ class GetPatchBaselinesResult {
 
   factory GetPatchBaselinesResult.fromMap(Map<String, dynamic> map) {
     return GetPatchBaselinesResult(
-      baselineIdentities: pulumi.Input.decodeList<GetPatchBaselinesBaselineIdentity>(map['baselineIdentities'], (value) => GetPatchBaselinesBaselineIdentity.fromMap((value as Map).cast<String, dynamic>())),
+      baselineIdentities: pulumi.Input.decodeList<GetPatchBaselinesBaselineIdentity>(map['baselineIdentities']!, (value) => GetPatchBaselinesBaselineIdentity.fromMap((value as Map).cast<String, dynamic>())),
       defaultBaselines: map['defaultBaselines'] == null ? null : map['defaultBaselines'] as bool,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetPatchBaselinesFilter>(map['filters'], (value) => GetPatchBaselinesFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetPatchBaselinesFilter>(map['filters']!, (value) => GetPatchBaselinesFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
     );

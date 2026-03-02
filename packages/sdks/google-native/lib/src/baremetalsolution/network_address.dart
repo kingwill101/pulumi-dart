@@ -31,9 +31,9 @@ class NetworkAddress {
 
   factory NetworkAddress.fromMap(Map<String, dynamic> map) {
     return NetworkAddress(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      existingNetworkId: map['existingNetworkId'] == null ? null : (map['existingNetworkId'] as String).input(),
-      networkId: map['networkId'] == null ? null : (map['networkId'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      existingNetworkId: map['existingNetworkId'] == null ? null : (map['existingNetworkId']! as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId']! as String).input(),
     );
   }
 }

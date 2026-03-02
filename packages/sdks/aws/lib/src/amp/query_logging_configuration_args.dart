@@ -42,9 +42,9 @@ class QueryLoggingConfigurationArgs {
 
   factory QueryLoggingConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return QueryLoggingConfigurationArgs(
-      destinations: (pulumi.Input.decodeList<QueryLoggingConfigurationDestination>(map['destinations'], (value) => QueryLoggingConfigurationDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (QueryLoggingConfigurationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      destinations: (pulumi.Input.decodeList<QueryLoggingConfigurationDestination>(map['destinations']!, (value) => QueryLoggingConfigurationDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((QueryLoggingConfigurationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );
   }

@@ -64,15 +64,15 @@ class RoleArgs {
 
   factory RoleArgs.fromMap(Map<String, dynamic> map) {
     return RoleArgs(
-      deleted: map['deleted'] == null ? null : (map['deleted'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      includedPermissions: map['includedPermissions'] == null ? null : ((map['includedPermissions'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
-      stage: map['stage'] == null ? null : (RoleStage.fromValue(map['stage'] as String)).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      deleted: map['deleted'] == null ? null : (map['deleted']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      includedPermissions: map['includedPermissions'] == null ? null : ((map['includedPermissions']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId']! as String).input(),
+      stage: map['stage'] == null ? null : (RoleStage.fromValue(map['stage']! as String)).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

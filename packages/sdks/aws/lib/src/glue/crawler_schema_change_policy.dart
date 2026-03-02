@@ -25,8 +25,8 @@ class CrawlerSchemaChangePolicy {
 
   factory CrawlerSchemaChangePolicy.fromMap(Map<String, dynamic> map) {
     return CrawlerSchemaChangePolicy(
-      deleteBehavior: map['deleteBehavior'] == null ? null : (map['deleteBehavior'] as String).input(),
-      updateBehavior: map['updateBehavior'] == null ? null : (map['updateBehavior'] as String).input(),
+      deleteBehavior: map['deleteBehavior'] == null ? null : ((map['deleteBehavior'] as String).input()).input(),
+      updateBehavior: map['updateBehavior'] == null ? null : ((map['updateBehavior'] as String).input()).input(),
     );
   }
 }

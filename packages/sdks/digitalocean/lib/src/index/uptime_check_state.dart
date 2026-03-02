@@ -41,11 +41,11 @@ class UptimeCheckState {
 
   factory UptimeCheckState.fromMap(Map<String, dynamic> map) {
     return UptimeCheckState(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -53,13 +53,13 @@ class ResourceState {
 
   factory ResourceState.fromMap(Map<String, dynamic> map) {
     return ResourceState(
-      desiredState: map['desiredState'] == null ? null : (map['desiredState'] as String).input(),
-      properties: map['properties'] == null ? null : (map['properties'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
-      typeName: map['typeName'] == null ? null : (map['typeName'] as String).input(),
-      typeVersionId: map['typeVersionId'] == null ? null : (map['typeVersionId'] as String).input(),
+      desiredState: map['desiredState'] == null ? null : ((map['desiredState'] as String).input()).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      schema: map['schema'] == null ? null : ((map['schema'] as String).input()).input(),
+      typeName: map['typeName'] == null ? null : ((map['typeName'] as String).input()).input(),
+      typeVersionId: map['typeVersionId'] == null ? null : ((map['typeVersionId'] as String).input()).input(),
     );
   }
 }

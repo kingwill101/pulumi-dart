@@ -33,9 +33,9 @@ class MapperTable {
 
   factory MapperTable.fromMap(Map<String, dynamic> map) {
     return MapperTable(
-      dslConnectorProperties: map['dslConnectorProperties'] == null ? null : (pulumi.Input.decodeList<MapperDslConnectorProperties>(map['dslConnectorProperties'], (value) => MapperDslConnectorProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      schema: map['schema'] == null ? null : (pulumi.Input.decodeList<MapperTableSchema>(map['schema'], (value) => MapperTableSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dslConnectorProperties: map['dslConnectorProperties'] == null ? null : (pulumi.Input.decodeList<MapperDslConnectorProperties>(map['dslConnectorProperties']!, (value) => MapperDslConnectorProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      schema: map['schema'] == null ? null : (pulumi.Input.decodeList<MapperTableSchema>(map['schema']!, (value) => MapperTableSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

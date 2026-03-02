@@ -27,7 +27,7 @@ class LimitResponse {
 
   factory LimitResponse.fromMap(Map<String, dynamic> map) {
     return LimitResponse(
-      queuing: map['queuing'] == null ? null : (QueuingConfiguration.fromMap((map['queuing'] as Map).cast<String, dynamic>())).input(),
+      queuing: map['queuing'] == null ? null : (QueuingConfiguration.fromMap((map['queuing']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

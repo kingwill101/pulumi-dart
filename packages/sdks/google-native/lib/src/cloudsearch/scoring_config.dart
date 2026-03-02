@@ -26,8 +26,8 @@ class ScoringConfig {
 
   factory ScoringConfig.fromMap(Map<String, dynamic> map) {
     return ScoringConfig(
-      disableFreshness: map['disableFreshness'] == null ? null : (map['disableFreshness'] as bool).input(),
-      disablePersonalization: map['disablePersonalization'] == null ? null : (map['disablePersonalization'] as bool).input(),
+      disableFreshness: map['disableFreshness'] == null ? null : (map['disableFreshness']! as bool).input(),
+      disablePersonalization: map['disablePersonalization'] == null ? null : (map['disablePersonalization']! as bool).input(),
     );
   }
 }

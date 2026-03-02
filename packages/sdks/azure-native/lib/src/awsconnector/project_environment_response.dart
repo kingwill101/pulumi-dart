@@ -67,15 +67,15 @@ class ProjectEnvironmentResponse {
 
   factory ProjectEnvironmentResponse.fromMap(Map<String, dynamic> map) {
     return ProjectEnvironmentResponse(
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
-      computeType: map['computeType'] == null ? null : (ComputeTypeEnumValueResponse.fromMap((map['computeType'] as Map).cast<String, dynamic>())).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariableResponse>(map['environmentVariables'], (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fleet: map['fleet'] == null ? null : (ProjectFleetResponse.fromMap((map['fleet'] as Map).cast<String, dynamic>())).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      imagePullCredentialsType: map['imagePullCredentialsType'] == null ? null : (ImagePullCredentialsTypeEnumValueResponse.fromMap((map['imagePullCredentialsType'] as Map).cast<String, dynamic>())).input(),
-      privilegedMode: map['privilegedMode'] == null ? null : (map['privilegedMode'] as bool).input(),
-      registryCredential: map['registryCredential'] == null ? null : (RegistryCredentialResponse.fromMap((map['registryCredential'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (EnvironmentTypeEnumValueResponse.fromMap((map['type'] as Map).cast<String, dynamic>())).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
+      computeType: map['computeType'] == null ? null : (ComputeTypeEnumValueResponse.fromMap((map['computeType']! as Map).cast<String, dynamic>())).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariableResponse>(map['environmentVariables']!, (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fleet: map['fleet'] == null ? null : (ProjectFleetResponse.fromMap((map['fleet']! as Map).cast<String, dynamic>())).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      imagePullCredentialsType: map['imagePullCredentialsType'] == null ? null : (ImagePullCredentialsTypeEnumValueResponse.fromMap((map['imagePullCredentialsType']! as Map).cast<String, dynamic>())).input(),
+      privilegedMode: map['privilegedMode'] == null ? null : (map['privilegedMode']! as bool).input(),
+      registryCredential: map['registryCredential'] == null ? null : (RegistryCredentialResponse.fromMap((map['registryCredential']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (EnvironmentTypeEnumValueResponse.fromMap((map['type']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

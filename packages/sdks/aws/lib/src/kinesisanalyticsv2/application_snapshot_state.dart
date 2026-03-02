@@ -41,11 +41,11 @@ class ApplicationSnapshotState {
 
   factory ApplicationSnapshotState.fromMap(Map<String, dynamic> map) {
     return ApplicationSnapshotState(
-      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
-      applicationVersionId: map['applicationVersionId'] == null ? null : (map['applicationVersionId'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      snapshotCreationTimestamp: map['snapshotCreationTimestamp'] == null ? null : (map['snapshotCreationTimestamp'] as String).input(),
-      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
+      applicationName: map['applicationName'] == null ? null : ((map['applicationName'] as String).input()).input(),
+      applicationVersionId: map['applicationVersionId'] == null ? null : ((map['applicationVersionId'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      snapshotCreationTimestamp: map['snapshotCreationTimestamp'] == null ? null : ((map['snapshotCreationTimestamp'] as String).input()).input(),
+      snapshotName: map['snapshotName'] == null ? null : ((map['snapshotName'] as String).input()).input(),
     );
   }
 }

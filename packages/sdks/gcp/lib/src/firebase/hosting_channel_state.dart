@@ -70,15 +70,15 @@ class HostingChannelState {
 
   factory HostingChannelState.fromMap(Map<String, dynamic> map) {
     return HostingChannelState(
-      channelId: map['channelId'] == null ? null : (map['channelId'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      retainedReleaseCount: map['retainedReleaseCount'] == null ? null : (map['retainedReleaseCount'] as int).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
+      channelId: map['channelId'] == null ? null : (map['channelId']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      retainedReleaseCount: map['retainedReleaseCount'] == null ? null : (map['retainedReleaseCount']! as int).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as String).input(),
     );
   }
 }

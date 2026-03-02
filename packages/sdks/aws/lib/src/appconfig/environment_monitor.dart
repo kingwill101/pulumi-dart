@@ -26,7 +26,7 @@ class EnvironmentMonitor {
   factory EnvironmentMonitor.fromMap(Map<String, dynamic> map) {
     return EnvironmentMonitor(
       alarmArn: (map['alarmArn'] as String).input(),
-      alarmRoleArn: map['alarmRoleArn'] == null ? null : (map['alarmRoleArn'] as String).input(),
+      alarmRoleArn: map['alarmRoleArn'] == null ? null : ((map['alarmRoleArn'] as String).input()).input(),
     );
   }
 }

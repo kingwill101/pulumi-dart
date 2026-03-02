@@ -30,7 +30,7 @@ class InvitationAccepterArgs {
   factory InvitationAccepterArgs.fromMap(Map<String, dynamic> map) {
     return InvitationAccepterArgs(
       graphArn: (map['graphArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

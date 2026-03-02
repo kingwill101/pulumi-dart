@@ -36,10 +36,10 @@ class ActiveDirectoryConnectorDNSDetails {
 
   factory ActiveDirectoryConnectorDNSDetails.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryConnectorDNSDetails(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
       nameserverIPAddresses: ((map['nameserverIPAddresses'] as List).cast<String>()).input(),
-      preferK8sDnsForPtrLookups: map['preferK8sDnsForPtrLookups'] == null ? null : (map['preferK8sDnsForPtrLookups'] as bool).input(),
-      replicas: map['replicas'] == null ? null : (map['replicas'] as double).input(),
+      preferK8sDnsForPtrLookups: map['preferK8sDnsForPtrLookups'] == null ? null : (map['preferK8sDnsForPtrLookups']! as bool).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas']! as double).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class LifecyclePolicyPolicyDetailsScheduleFastRestoreRule {
   factory LifecyclePolicyPolicyDetailsScheduleFastRestoreRule.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsScheduleFastRestoreRule(
       availabilityZones: ((map['availabilityZones'] as List).cast<String>()).input(),
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      intervalUnit: map['intervalUnit'] == null ? null : (map['intervalUnit'] as String).input(),
+      count: map['count'] == null ? null : ((map['count'] as int).input()).input(),
+      interval: map['interval'] == null ? null : ((map['interval'] as int).input()).input(),
+      intervalUnit: map['intervalUnit'] == null ? null : ((map['intervalUnit'] as String).input()).input(),
     );
   }
 }

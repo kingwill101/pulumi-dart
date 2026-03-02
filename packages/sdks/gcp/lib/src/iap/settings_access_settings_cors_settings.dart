@@ -21,7 +21,7 @@ class SettingsAccessSettingsCorsSettings {
 
   factory SettingsAccessSettingsCorsSettings.fromMap(Map<String, dynamic> map) {
     return SettingsAccessSettingsCorsSettings(
-      allowHttpOptions: map['allowHttpOptions'] == null ? null : (map['allowHttpOptions'] as bool).input(),
+      allowHttpOptions: map['allowHttpOptions'] == null ? null : (map['allowHttpOptions']! as bool).input(),
     );
   }
 }

@@ -68,16 +68,16 @@ class AwsSageMakerNotebookInstanceSummaryProperties {
 
   factory AwsSageMakerNotebookInstanceSummaryProperties.fromMap(Map<String, dynamic> map) {
     return AwsSageMakerNotebookInstanceSummaryProperties(
-      additionalCodeRepositories: map['additionalCodeRepositories'] == null ? null : ((map['additionalCodeRepositories'] as List).cast<String>()).input(),
-      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
-      defaultCodeRepository: map['defaultCodeRepository'] == null ? null : (map['defaultCodeRepository'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (InstanceTypeEnumValue.fromMap((map['instanceType'] as Map).cast<String, dynamic>())).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
-      notebookInstanceArn: map['notebookInstanceArn'] == null ? null : (map['notebookInstanceArn'] as String).input(),
-      notebookInstanceLifecycleConfigName: map['notebookInstanceLifecycleConfigName'] == null ? null : (map['notebookInstanceLifecycleConfigName'] as String).input(),
-      notebookInstanceName: map['notebookInstanceName'] == null ? null : (map['notebookInstanceName'] as String).input(),
-      notebookInstanceStatus: map['notebookInstanceStatus'] == null ? null : (NotebookInstanceStatusEnumValue.fromMap((map['notebookInstanceStatus'] as Map).cast<String, dynamic>())).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      additionalCodeRepositories: map['additionalCodeRepositories'] == null ? null : ((map['additionalCodeRepositories']! as List).cast<String>()).input(),
+      creationTime: map['creationTime'] == null ? null : (map['creationTime']! as String).input(),
+      defaultCodeRepository: map['defaultCodeRepository'] == null ? null : (map['defaultCodeRepository']! as String).input(),
+      instanceType: map['instanceType'] == null ? null : (InstanceTypeEnumValue.fromMap((map['instanceType']! as Map).cast<String, dynamic>())).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime']! as String).input(),
+      notebookInstanceArn: map['notebookInstanceArn'] == null ? null : (map['notebookInstanceArn']! as String).input(),
+      notebookInstanceLifecycleConfigName: map['notebookInstanceLifecycleConfigName'] == null ? null : (map['notebookInstanceLifecycleConfigName']! as String).input(),
+      notebookInstanceName: map['notebookInstanceName'] == null ? null : (map['notebookInstanceName']! as String).input(),
+      notebookInstanceStatus: map['notebookInstanceStatus'] == null ? null : (NotebookInstanceStatusEnumValue.fromMap((map['notebookInstanceStatus']! as Map).cast<String, dynamic>())).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

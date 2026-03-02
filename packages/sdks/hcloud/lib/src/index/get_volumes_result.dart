@@ -37,8 +37,8 @@ class GetVolumesResult {
     return GetVolumesResult(
       id: map['id'] as String,
       volumes: pulumi.Input.decodeList<GetVolumesVolume>(map['volumes'], (value) => GetVolumesVolume.fromMap((value as Map).cast<String, dynamic>())),
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
-      withStatuses: map['withStatuses'] == null ? null : (map['withStatuses'] as List).cast<String>(),
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
+      withStatuses: map['withStatuses'] == null ? null : (map['withStatuses']! as List).cast<String>(),
     );
   }
 }

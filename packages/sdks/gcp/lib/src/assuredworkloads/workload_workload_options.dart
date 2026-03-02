@@ -20,7 +20,7 @@ class WorkloadWorkloadOptions {
 
   factory WorkloadWorkloadOptions.fromMap(Map<String, dynamic> map) {
     return WorkloadWorkloadOptions(
-      kajEnrollmentType: map['kajEnrollmentType'] == null ? null : (map['kajEnrollmentType'] as String).input(),
+      kajEnrollmentType: map['kajEnrollmentType'] == null ? null : (map['kajEnrollmentType']! as String).input(),
     );
   }
 }

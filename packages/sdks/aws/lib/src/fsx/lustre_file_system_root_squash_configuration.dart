@@ -25,8 +25,8 @@ class LustreFileSystemRootSquashConfiguration {
 
   factory LustreFileSystemRootSquashConfiguration.fromMap(Map<String, dynamic> map) {
     return LustreFileSystemRootSquashConfiguration(
-      noSquashNids: map['noSquashNids'] == null ? null : ((map['noSquashNids'] as List).cast<String>()).input(),
-      rootSquash: map['rootSquash'] == null ? null : (map['rootSquash'] as String).input(),
+      noSquashNids: map['noSquashNids'] == null ? null : (((map['noSquashNids'] as List).cast<String>()).input()).input(),
+      rootSquash: map['rootSquash'] == null ? null : ((map['rootSquash'] as String).input()).input(),
     );
   }
 }

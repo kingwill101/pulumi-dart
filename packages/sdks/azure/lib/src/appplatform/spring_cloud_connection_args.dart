@@ -54,12 +54,12 @@ class SpringCloudConnectionArgs {
   factory SpringCloudConnectionArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudConnectionArgs(
       authentication: (SpringCloudConnectionAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      clientType: map['clientType'] == null ? null : (map['clientType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      secretStore: map['secretStore'] == null ? null : (SpringCloudConnectionSecretStore.fromMap((map['secretStore'] as Map).cast<String, dynamic>())).input(),
+      clientType: map['clientType'] == null ? null : (map['clientType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      secretStore: map['secretStore'] == null ? null : (SpringCloudConnectionSecretStore.fromMap((map['secretStore']! as Map).cast<String, dynamic>())).input(),
       springCloudId: (map['springCloudId'] as String).input(),
       targetResourceId: (map['targetResourceId'] as String).input(),
-      vnetSolution: map['vnetSolution'] == null ? null : (map['vnetSolution'] as String).input(),
+      vnetSolution: map['vnetSolution'] == null ? null : (map['vnetSolution']! as String).input(),
     );
   }
 }

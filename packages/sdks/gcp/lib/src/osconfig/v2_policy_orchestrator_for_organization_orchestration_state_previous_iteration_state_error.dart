@@ -35,9 +35,9 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
 
   factory V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateError.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateError(
-      code: map['code'] == null ? null : (map['code'] as int).input(),
-      details: map['details'] == null ? null : (pulumi.Input.decodeList<V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorDetail>(map['details'], (value) => V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as int).input(),
+      details: map['details'] == null ? null : (pulumi.Input.decodeList<V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorDetail>(map['details']!, (value) => V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

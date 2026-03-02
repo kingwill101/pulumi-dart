@@ -30,8 +30,8 @@ class PolicyManagedRulesManagedRuleSetRuleGroupOverrideRule {
 
   factory PolicyManagedRulesManagedRuleSetRuleGroupOverrideRule.fromMap(Map<String, dynamic> map) {
     return PolicyManagedRulesManagedRuleSetRuleGroupOverrideRule(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       id: (map['id'] as String).input(),
     );
   }

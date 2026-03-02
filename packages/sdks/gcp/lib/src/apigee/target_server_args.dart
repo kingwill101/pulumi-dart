@@ -63,14 +63,14 @@ class TargetServerArgs {
 
   factory TargetServerArgs.fromMap(Map<String, dynamic> map) {
     return TargetServerArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       envId: (map['envId'] as String).input(),
       host: (map['host'] as String).input(),
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       port: (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      sSlInfo: map['sSlInfo'] == null ? null : (TargetServerSSlInfo.fromMap((map['sSlInfo'] as Map).cast<String, dynamic>())).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      sSlInfo: map['sSlInfo'] == null ? null : (TargetServerSSlInfo.fromMap((map['sSlInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

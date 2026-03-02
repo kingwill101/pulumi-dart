@@ -26,8 +26,8 @@ class RequestUtilization {
 
   factory RequestUtilization.fromMap(Map<String, dynamic> map) {
     return RequestUtilization(
-      targetConcurrentRequests: map['targetConcurrentRequests'] == null ? null : (map['targetConcurrentRequests'] as int).input(),
-      targetRequestCountPerSecond: map['targetRequestCountPerSecond'] == null ? null : (map['targetRequestCountPerSecond'] as int).input(),
+      targetConcurrentRequests: map['targetConcurrentRequests'] == null ? null : (map['targetConcurrentRequests']! as int).input(),
+      targetRequestCountPerSecond: map['targetRequestCountPerSecond'] == null ? null : (map['targetRequestCountPerSecond']! as int).input(),
     );
   }
 }

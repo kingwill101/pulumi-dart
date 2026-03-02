@@ -53,7 +53,7 @@ class SyncStatsResponse {
     return SyncStatsResponse(
       added: (map['added'] as int).input(),
       removed: (map['removed'] as int).input(),
-      syncedCatalogItemTypes: map['syncedCatalogItemTypes'] == null ? null : ((map['syncedCatalogItemTypes'] as List).cast<String>()).input(),
+      syncedCatalogItemTypes: map['syncedCatalogItemTypes'] == null ? null : ((map['syncedCatalogItemTypes']! as List).cast<String>()).input(),
       synchronizationErrors: (map['synchronizationErrors'] as int).input(),
       unchanged: (map['unchanged'] as int).input(),
       updated: (map['updated'] as int).input(),

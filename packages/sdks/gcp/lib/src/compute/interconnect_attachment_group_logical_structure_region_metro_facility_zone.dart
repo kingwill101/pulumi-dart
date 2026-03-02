@@ -41,9 +41,9 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone {
 
   factory InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone(
-      attachment: map['attachment'] == null ? null : ((map['attachment'] as List).cast<String>()).input(),
-      attachments: map['attachments'] == null ? null : ((map['attachments'] as List).cast<String>()).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      attachment: map['attachment'] == null ? null : ((map['attachment']! as List).cast<String>()).input(),
+      attachments: map['attachments'] == null ? null : ((map['attachments']! as List).cast<String>()).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

@@ -31,7 +31,7 @@ class ClassifierGrokClassifier {
   factory ClassifierGrokClassifier.fromMap(Map<String, dynamic> map) {
     return ClassifierGrokClassifier(
       classification: (map['classification'] as String).input(),
-      customPatterns: map['customPatterns'] == null ? null : (map['customPatterns'] as String).input(),
+      customPatterns: map['customPatterns'] == null ? null : ((map['customPatterns'] as String).input()).input(),
       grokPattern: (map['grokPattern'] as String).input(),
     );
   }

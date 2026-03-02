@@ -29,7 +29,7 @@ class RulesetArgs {
 
   factory RulesetArgs.fromMap(Map<String, dynamic> map) {
     return RulesetArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       source: (Source.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }

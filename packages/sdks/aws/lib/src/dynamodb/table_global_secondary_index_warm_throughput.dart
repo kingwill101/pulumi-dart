@@ -25,8 +25,8 @@ class TableGlobalSecondaryIndexWarmThroughput {
 
   factory TableGlobalSecondaryIndexWarmThroughput.fromMap(Map<String, dynamic> map) {
     return TableGlobalSecondaryIndexWarmThroughput(
-      readUnitsPerSecond: map['readUnitsPerSecond'] == null ? null : (map['readUnitsPerSecond'] as int).input(),
-      writeUnitsPerSecond: map['writeUnitsPerSecond'] == null ? null : (map['writeUnitsPerSecond'] as int).input(),
+      readUnitsPerSecond: map['readUnitsPerSecond'] == null ? null : ((map['readUnitsPerSecond'] as int).input()).input(),
+      writeUnitsPerSecond: map['writeUnitsPerSecond'] == null ? null : ((map['writeUnitsPerSecond'] as int).input()).input(),
     );
   }
 }

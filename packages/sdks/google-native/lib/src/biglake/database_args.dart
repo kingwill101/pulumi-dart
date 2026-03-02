@@ -50,10 +50,10 @@ class DatabaseArgs {
     return DatabaseArgs(
       catalogId: (map['catalogId'] as String).input(),
       databaseId: (map['databaseId'] as String).input(),
-      hiveOptions: map['hiveOptions'] == null ? null : (HiveDatabaseOptions.fromMap((map['hiveOptions'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      type: map['type'] == null ? null : (DatabaseType.fromValue(map['type'] as String)).input(),
+      hiveOptions: map['hiveOptions'] == null ? null : (HiveDatabaseOptions.fromMap((map['hiveOptions']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      type: map['type'] == null ? null : (DatabaseType.fromValue(map['type']! as String)).input(),
     );
   }
 }

@@ -32,8 +32,8 @@ class GetLogDataProtectionPolicyDocumentStatement {
   factory GetLogDataProtectionPolicyDocumentStatement.fromMap(Map<String, dynamic> map) {
     return GetLogDataProtectionPolicyDocumentStatement(
       dataIdentifiers: ((map['dataIdentifiers'] as List).cast<String>()).input(),
-      operation: (GetLogDataProtectionPolicyDocumentStatementOperation.fromMap((map['operation'] as Map).cast<String, dynamic>())).input(),
-      sid: map['sid'] == null ? null : (map['sid'] as String).input(),
+      operation: (GetLogDataProtectionPolicyDocumentStatementOperation.fromMap((map['operation']! as Map).cast<String, dynamic>())).input(),
+      sid: map['sid'] == null ? null : ((map['sid'] as String).input()).input(),
     );
   }
 }

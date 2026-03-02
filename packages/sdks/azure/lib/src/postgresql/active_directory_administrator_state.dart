@@ -41,11 +41,11 @@ class ActiveDirectoryAdministratorState {
 
   factory ActiveDirectoryAdministratorState.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryAdministratorState(
-      login: map['login'] == null ? null : (map['login'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      login: map['login'] == null ? null : (map['login']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

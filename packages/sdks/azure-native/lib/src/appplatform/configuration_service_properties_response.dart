@@ -44,11 +44,11 @@ class ConfigurationServicePropertiesResponse {
 
   factory ConfigurationServicePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationServicePropertiesResponse(
-      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
+      generation: map['generation'] == null ? null : (map['generation']! as String).input(),
       instances: (pulumi.Input.decodeList<ConfigurationServiceInstanceResponse>(map['instances'], (value) => ConfigurationServiceInstanceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       resourceRequests: (ConfigurationServiceResourceRequestsResponse.fromMap((map['resourceRequests'] as Map).cast<String, dynamic>())).input(),
-      settings: map['settings'] == null ? null : (ConfigurationServiceSettingsResponse.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      settings: map['settings'] == null ? null : (ConfigurationServiceSettingsResponse.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

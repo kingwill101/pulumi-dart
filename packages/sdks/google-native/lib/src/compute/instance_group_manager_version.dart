@@ -36,10 +36,10 @@ class InstanceGroupManagerVersion {
 
   factory InstanceGroupManagerVersion.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerVersion(
-      instanceTemplate: map['instanceTemplate'] == null ? null : (map['instanceTemplate'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
-      targetSize: map['targetSize'] == null ? null : (FixedOrPercent.fromMap((map['targetSize'] as Map).cast<String, dynamic>())).input(),
+      instanceTemplate: map['instanceTemplate'] == null ? null : (map['instanceTemplate']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      targetSize: map['targetSize'] == null ? null : (FixedOrPercent.fromMap((map['targetSize']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

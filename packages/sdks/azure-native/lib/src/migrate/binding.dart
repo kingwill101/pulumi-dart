@@ -48,12 +48,12 @@ class Binding {
 
   factory Binding.fromMap(Map<String, dynamic> map) {
     return Binding(
-      cert: map['cert'] == null ? null : (Cert.fromMap((map['cert'] as Map).cast<String, dynamic>())).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      portMapping: map['portMapping'] == null ? null : (PortMapping.fromMap((map['portMapping'] as Map).cast<String, dynamic>())).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      cert: map['cert'] == null ? null : (Cert.fromMap((map['cert']! as Map).cast<String, dynamic>())).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      portMapping: map['portMapping'] == null ? null : (PortMapping.fromMap((map['portMapping']! as Map).cast<String, dynamic>())).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
     );
   }
 }

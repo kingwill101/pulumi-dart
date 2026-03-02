@@ -31,8 +31,8 @@ class GetAdministrativeUnitArgs {
 
   factory GetAdministrativeUnitArgs.fromMap(Map<String, dynamic> map) {
     return GetAdministrativeUnitArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
     );
   }
 }

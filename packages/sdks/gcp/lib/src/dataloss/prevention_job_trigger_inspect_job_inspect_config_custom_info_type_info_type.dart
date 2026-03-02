@@ -34,8 +34,8 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType {
   factory PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType(
       name: (map['name'] as String).input(),
-      sensitivityScore: map['sensitivityScore'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScore.fromMap((map['sensitivityScore'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      sensitivityScore: map['sensitivityScore'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScore.fromMap((map['sensitivityScore']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -66,7 +66,7 @@ class GetLinkResult {
   factory GetLinkResult.fromMap(Map<String, dynamic> map) {
     return GetLinkResult(
       arn: map['arn'] as String,
-      bandwidths: pulumi.Input.decodeList<GetLinkBandwidth>(map['bandwidths'], (value) => GetLinkBandwidth.fromMap((value as Map).cast<String, dynamic>())),
+      bandwidths: pulumi.Input.decodeList<GetLinkBandwidth>(map['bandwidths']!, (value) => GetLinkBandwidth.fromMap((value as Map).cast<String, dynamic>())),
       description: map['description'] as String,
       globalNetworkId: map['globalNetworkId'] as String,
       id: map['id'] as String,

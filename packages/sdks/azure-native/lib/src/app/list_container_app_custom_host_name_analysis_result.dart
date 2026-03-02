@@ -76,10 +76,10 @@ class ListContainerAppCustomHostNameAnalysisResult {
 
   factory ListContainerAppCustomHostNameAnalysisResult.fromMap(Map<String, dynamic> map) {
     return ListContainerAppCustomHostNameAnalysisResult(
-      aRecords: map['aRecords'] == null ? null : (map['aRecords'] as List).cast<String>(),
-      alternateCNameRecords: map['alternateCNameRecords'] == null ? null : (map['alternateCNameRecords'] as List).cast<String>(),
-      alternateTxtRecords: map['alternateTxtRecords'] == null ? null : (map['alternateTxtRecords'] as List).cast<String>(),
-      cNameRecords: map['cNameRecords'] == null ? null : (map['cNameRecords'] as List).cast<String>(),
+      aRecords: map['aRecords'] == null ? null : (map['aRecords']! as List).cast<String>(),
+      alternateCNameRecords: map['alternateCNameRecords'] == null ? null : (map['alternateCNameRecords']! as List).cast<String>(),
+      alternateTxtRecords: map['alternateTxtRecords'] == null ? null : (map['alternateTxtRecords']! as List).cast<String>(),
+      cNameRecords: map['cNameRecords'] == null ? null : (map['cNameRecords']! as List).cast<String>(),
       conflictWithEnvironmentCustomDomain: map['conflictWithEnvironmentCustomDomain'] as bool,
       conflictingContainerAppResourceId: map['conflictingContainerAppResourceId'] as String,
       customDomainVerificationFailureInfo: CustomHostnameAnalysisResultResponseCustomDomainVerificationFailureInfo.fromMap((map['customDomainVerificationFailureInfo'] as Map).cast<String, dynamic>()),
@@ -87,7 +87,7 @@ class ListContainerAppCustomHostNameAnalysisResult {
       hasConflictOnManagedEnvironment: map['hasConflictOnManagedEnvironment'] as bool,
       hostName: map['hostName'] as String,
       isHostnameAlreadyVerified: map['isHostnameAlreadyVerified'] as bool,
-      txtRecords: map['txtRecords'] == null ? null : (map['txtRecords'] as List).cast<String>(),
+      txtRecords: map['txtRecords'] == null ? null : (map['txtRecords']! as List).cast<String>(),
     );
   }
 }

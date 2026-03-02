@@ -20,7 +20,7 @@ class AnycastIpListTimeouts {
 
   factory AnycastIpListTimeouts.fromMap(Map<String, dynamic> map) {
     return AnycastIpListTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
+      create: map['create'] == null ? null : ((map['create'] as String).input()).input(),
     );
   }
 }

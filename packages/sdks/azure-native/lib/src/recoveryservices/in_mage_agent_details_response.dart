@@ -36,10 +36,10 @@ class InMageAgentDetailsResponse {
 
   factory InMageAgentDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageAgentDetailsResponse(
-      agentExpiryDate: map['agentExpiryDate'] == null ? null : (map['agentExpiryDate'] as String).input(),
-      agentUpdateStatus: map['agentUpdateStatus'] == null ? null : (map['agentUpdateStatus'] as String).input(),
-      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
-      postUpdateRebootStatus: map['postUpdateRebootStatus'] == null ? null : (map['postUpdateRebootStatus'] as String).input(),
+      agentExpiryDate: map['agentExpiryDate'] == null ? null : (map['agentExpiryDate']! as String).input(),
+      agentUpdateStatus: map['agentUpdateStatus'] == null ? null : (map['agentUpdateStatus']! as String).input(),
+      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion']! as String).input(),
+      postUpdateRebootStatus: map['postUpdateRebootStatus'] == null ? null : (map['postUpdateRebootStatus']! as String).input(),
     );
   }
 }

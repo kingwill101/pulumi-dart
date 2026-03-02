@@ -27,7 +27,7 @@ class ExternalInstallationSoftwareConfigurationResponse {
 
   factory ExternalInstallationSoftwareConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ExternalInstallationSoftwareConfigurationResponse(
-      centralServerVmId: map['centralServerVmId'] == null ? null : (map['centralServerVmId'] as String).input(),
+      centralServerVmId: map['centralServerVmId'] == null ? null : (map['centralServerVmId']! as String).input(),
       softwareInstallationType: (map['softwareInstallationType'] as String).input(),
     );
   }

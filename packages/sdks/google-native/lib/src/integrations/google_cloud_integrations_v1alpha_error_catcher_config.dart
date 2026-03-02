@@ -48,11 +48,11 @@ class GoogleCloudIntegrationsV1alphaErrorCatcherConfig {
 
   factory GoogleCloudIntegrationsV1alphaErrorCatcherConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaErrorCatcherConfig(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       errorCatcherId: (map['errorCatcherId'] as String).input(),
       errorCatcherNumber: (map['errorCatcherNumber'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      position: map['position'] == null ? null : (GoogleCloudIntegrationsV1alphaCoordinate.fromMap((map['position'] as Map).cast<String, dynamic>())).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      position: map['position'] == null ? null : (GoogleCloudIntegrationsV1alphaCoordinate.fromMap((map['position']! as Map).cast<String, dynamic>())).input(),
       startErrorTasks: (pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaNextTask>(map['startErrorTasks'], (value) => GoogleCloudIntegrationsV1alphaNextTask.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

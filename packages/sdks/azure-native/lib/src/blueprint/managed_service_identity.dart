@@ -37,10 +37,10 @@ class ManagedServiceIdentity {
 
   factory ManagedServiceIdentity.fromMap(Map<String, dynamic> map) {
     return ManagedServiceIdentity(
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
       type: (map['type'] as String).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<UserAssignedIdentity>(map['userAssignedIdentities'], (value) => UserAssignedIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<UserAssignedIdentity>(map['userAssignedIdentities']!, (value) => UserAssignedIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

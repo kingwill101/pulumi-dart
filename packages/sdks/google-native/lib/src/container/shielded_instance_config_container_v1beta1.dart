@@ -26,8 +26,8 @@ class ShieldedInstanceConfigContainerV1beta1 {
 
   factory ShieldedInstanceConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ShieldedInstanceConfigContainerV1beta1(
-      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null ? null : (map['enableIntegrityMonitoring'] as bool).input(),
-      enableSecureBoot: map['enableSecureBoot'] == null ? null : (map['enableSecureBoot'] as bool).input(),
+      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null ? null : (map['enableIntegrityMonitoring']! as bool).input(),
+      enableSecureBoot: map['enableSecureBoot'] == null ? null : (map['enableSecureBoot']! as bool).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence 
 
   factory PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence(
-      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
-      types: map['types'] == null ? null : ((map['types'] as List).cast<String>()).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency']! as String).input(),
+      types: map['types'] == null ? null : ((map['types']! as List).cast<String>()).input(),
     );
   }
 }

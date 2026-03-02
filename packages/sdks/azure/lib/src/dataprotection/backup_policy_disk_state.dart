@@ -47,12 +47,12 @@ class BackupPolicyDiskState {
 
   factory BackupPolicyDiskState.fromMap(Map<String, dynamic> map) {
     return BackupPolicyDiskState(
-      backupRepeatingTimeIntervals: map['backupRepeatingTimeIntervals'] == null ? null : ((map['backupRepeatingTimeIntervals'] as List).cast<String>()).input(),
-      defaultRetentionDuration: map['defaultRetentionDuration'] == null ? null : (map['defaultRetentionDuration'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      retentionRules: map['retentionRules'] == null ? null : (pulumi.Input.decodeList<BackupPolicyDiskRetentionRule>(map['retentionRules'], (value) => BackupPolicyDiskRetentionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
-      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
+      backupRepeatingTimeIntervals: map['backupRepeatingTimeIntervals'] == null ? null : ((map['backupRepeatingTimeIntervals']! as List).cast<String>()).input(),
+      defaultRetentionDuration: map['defaultRetentionDuration'] == null ? null : (map['defaultRetentionDuration']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      retentionRules: map['retentionRules'] == null ? null : (pulumi.Input.decodeList<BackupPolicyDiskRetentionRule>(map['retentionRules']!, (value) => BackupPolicyDiskRetentionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId']! as String).input(),
     );
   }
 }

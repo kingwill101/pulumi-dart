@@ -80,19 +80,19 @@ class AlertConfigurationQueryList {
 
   factory AlertConfigurationQueryList.fromMap(Map<String, dynamic> map) {
     return AlertConfigurationQueryList(
-      chartTitle: map['chartTitle'] == null ? null : (map['chartTitle'] as String).input(),
-      dashboardId: map['dashboardId'] == null ? null : (map['dashboardId'] as String).input(),
-      end: map['end'] == null ? null : (map['end'] as String).input(),
-      powerSqlMode: map['powerSqlMode'] == null ? null : (map['powerSqlMode'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      query: map['query'] == null ? null : (map['query'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      start: map['start'] == null ? null : (map['start'] as String).input(),
-      store: map['store'] == null ? null : (map['store'] as String).input(),
-      storeType: map['storeType'] == null ? null : (map['storeType'] as String).input(),
-      timeSpanType: map['timeSpanType'] == null ? null : (map['timeSpanType'] as String).input(),
-      ui: map['ui'] == null ? null : (map['ui'] as String).input(),
+      chartTitle: map['chartTitle'] == null ? null : (map['chartTitle']! as String).input(),
+      dashboardId: map['dashboardId'] == null ? null : (map['dashboardId']! as String).input(),
+      end: map['end'] == null ? null : (map['end']! as String).input(),
+      powerSqlMode: map['powerSqlMode'] == null ? null : (map['powerSqlMode']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
+      start: map['start'] == null ? null : (map['start']! as String).input(),
+      store: map['store'] == null ? null : (map['store']! as String).input(),
+      storeType: map['storeType'] == null ? null : (map['storeType']! as String).input(),
+      timeSpanType: map['timeSpanType'] == null ? null : (map['timeSpanType']! as String).input(),
+      ui: map['ui'] == null ? null : (map['ui']! as String).input(),
     );
   }
 }

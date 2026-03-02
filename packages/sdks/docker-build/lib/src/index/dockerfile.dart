@@ -35,8 +35,8 @@ class Dockerfile {
 
   factory Dockerfile.fromMap(Map<String, dynamic> map) {
     return Dockerfile(
-      inline: map['inline'] == null ? null : (map['inline'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      inline: map['inline'] == null ? null : (map['inline']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
     );
   }
 }

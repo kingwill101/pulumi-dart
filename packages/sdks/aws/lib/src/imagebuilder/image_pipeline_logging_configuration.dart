@@ -25,8 +25,8 @@ class ImagePipelineLoggingConfiguration {
 
   factory ImagePipelineLoggingConfiguration.fromMap(Map<String, dynamic> map) {
     return ImagePipelineLoggingConfiguration(
-      imageLogGroupName: map['imageLogGroupName'] == null ? null : (map['imageLogGroupName'] as String).input(),
-      pipelineLogGroupName: map['pipelineLogGroupName'] == null ? null : (map['pipelineLogGroupName'] as String).input(),
+      imageLogGroupName: map['imageLogGroupName'] == null ? null : ((map['imageLogGroupName'] as String).input()).input(),
+      pipelineLogGroupName: map['pipelineLogGroupName'] == null ? null : ((map['pipelineLogGroupName'] as String).input()).input(),
     );
   }
 }

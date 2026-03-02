@@ -45,7 +45,7 @@ class ProductGroupLinkArgs {
   factory ProductGroupLinkArgs.fromMap(Map<String, dynamic> map) {
     return ProductGroupLinkArgs(
       groupId: (map['groupId'] as String).input(),
-      groupLinkId: map['groupLinkId'] == null ? null : (map['groupLinkId'] as String).input(),
+      groupLinkId: map['groupLinkId'] == null ? null : (map['groupLinkId']! as String).input(),
       productId: (map['productId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),

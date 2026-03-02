@@ -47,12 +47,12 @@ class IISApplicationDetails {
 
   factory IISApplicationDetails.fromMap(Map<String, dynamic> map) {
     return IISApplicationDetails(
-      applicationPoolName: map['applicationPoolName'] == null ? null : (map['applicationPoolName'] as String).input(),
-      directories: map['directories'] == null ? null : (pulumi.Input.decodeList<DirectoryPath>(map['directories'], (value) => DirectoryPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enable32BitApiOnWin64: map['enable32BitApiOnWin64'] == null ? null : (map['enable32BitApiOnWin64'] as bool).input(),
-      managedPipelineMode: map['managedPipelineMode'] == null ? null : (map['managedPipelineMode'] as String).input(),
-      path: map['path'] == null ? null : (DirectoryPath.fromMap((map['path'] as Map).cast<String, dynamic>())).input(),
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
+      applicationPoolName: map['applicationPoolName'] == null ? null : (map['applicationPoolName']! as String).input(),
+      directories: map['directories'] == null ? null : (pulumi.Input.decodeList<DirectoryPath>(map['directories']!, (value) => DirectoryPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enable32BitApiOnWin64: map['enable32BitApiOnWin64'] == null ? null : (map['enable32BitApiOnWin64']! as bool).input(),
+      managedPipelineMode: map['managedPipelineMode'] == null ? null : (map['managedPipelineMode']! as String).input(),
+      path: map['path'] == null ? null : (DirectoryPath.fromMap((map['path']! as Map).cast<String, dynamic>())).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']! as String).input(),
     );
   }
 }

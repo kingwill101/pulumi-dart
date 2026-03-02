@@ -65,14 +65,14 @@ class ImportJobMigrationcenterV1alpha1Args {
   factory ImportJobMigrationcenterV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return ImportJobMigrationcenterV1alpha1Args(
       assetSource: (map['assetSource'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      gcsPayload: map['gcsPayload'] == null ? null : (GCSPayloadInfo.fromMap((map['gcsPayload'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      gcsPayload: map['gcsPayload'] == null ? null : (GCSPayloadInfo.fromMap((map['gcsPayload']! as Map).cast<String, dynamic>())).input(),
       importJobId: (map['importJobId'] as String).input(),
-      inlinePayload: map['inlinePayload'] == null ? null : (InlinePayloadInfo.fromMap((map['inlinePayload'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      inlinePayload: map['inlinePayload'] == null ? null : (InlinePayloadInfo.fromMap((map['inlinePayload']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

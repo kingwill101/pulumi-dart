@@ -26,7 +26,7 @@ class ApplicationGatewayWafConfigurationDisabledRuleGroup {
   factory ApplicationGatewayWafConfigurationDisabledRuleGroup.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayWafConfigurationDisabledRuleGroup(
       ruleGroupName: (map['ruleGroupName'] as String).input(),
-      rules: map['rules'] == null ? null : ((map['rules'] as List).cast<int>()).input(),
+      rules: map['rules'] == null ? null : ((map['rules']! as List).cast<int>()).input(),
     );
   }
 }

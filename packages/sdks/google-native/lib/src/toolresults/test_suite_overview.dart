@@ -58,14 +58,14 @@ class TestSuiteOverview {
 
   factory TestSuiteOverview.fromMap(Map<String, dynamic> map) {
     return TestSuiteOverview(
-      elapsedTime: map['elapsedTime'] == null ? null : (Duration.fromMap((map['elapsedTime'] as Map).cast<String, dynamic>())).input(),
-      errorCount: map['errorCount'] == null ? null : (map['errorCount'] as int).input(),
-      failureCount: map['failureCount'] == null ? null : (map['failureCount'] as int).input(),
-      flakyCount: map['flakyCount'] == null ? null : (map['flakyCount'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      skippedCount: map['skippedCount'] == null ? null : (map['skippedCount'] as int).input(),
-      totalCount: map['totalCount'] == null ? null : (map['totalCount'] as int).input(),
-      xmlSource: map['xmlSource'] == null ? null : (FileReference.fromMap((map['xmlSource'] as Map).cast<String, dynamic>())).input(),
+      elapsedTime: map['elapsedTime'] == null ? null : (Duration.fromMap((map['elapsedTime']! as Map).cast<String, dynamic>())).input(),
+      errorCount: map['errorCount'] == null ? null : (map['errorCount']! as int).input(),
+      failureCount: map['failureCount'] == null ? null : (map['failureCount']! as int).input(),
+      flakyCount: map['flakyCount'] == null ? null : (map['flakyCount']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      skippedCount: map['skippedCount'] == null ? null : (map['skippedCount']! as int).input(),
+      totalCount: map['totalCount'] == null ? null : (map['totalCount']! as int).input(),
+      xmlSource: map['xmlSource'] == null ? null : (FileReference.fromMap((map['xmlSource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

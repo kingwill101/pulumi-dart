@@ -79,19 +79,19 @@ class GetInstanceTypesResult {
 
   factory GetInstanceTypesResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypesResult(
-      chargeType: map['chargeType'] == null ? null : map['chargeType'] as String,
+      chargeType: map['chargeType'] == null ? null : map['chargeType']! as String,
       coreInstanceTypes: pulumi.Input.decodeList<GetInstanceTypesCoreInstanceType>(map['coreInstanceTypes'], (value) => GetInstanceTypesCoreInstanceType.fromMap((value as Map).cast<String, dynamic>())),
-      diskType: map['diskType'] == null ? null : map['diskType'] as String,
-      engine: map['engine'] == null ? null : map['engine'] as String,
+      diskType: map['diskType'] == null ? null : map['diskType']! as String,
+      engine: map['engine'] == null ? null : map['engine']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceType: map['instanceType'] == null ? null : map['instanceType'] as String,
+      instanceType: map['instanceType'] == null ? null : map['instanceType']! as String,
       masterInstanceTypes: pulumi.Input.decodeList<GetInstanceTypesMasterInstanceType>(map['masterInstanceTypes'], (value) => GetInstanceTypesMasterInstanceType.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      regionId: map['regionId'] == null ? null : map['regionId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      regionId: map['regionId'] == null ? null : map['regionId']! as String,
       types: pulumi.Input.decodeList<GetInstanceTypesType>(map['types'], (value) => GetInstanceTypesType.fromMap((value as Map).cast<String, dynamic>())),
-      version: map['version'] == null ? null : map['version'] as String,
-      zoneId: map['zoneId'] == null ? null : map['zoneId'] as String,
+      version: map['version'] == null ? null : map['version']! as String,
+      zoneId: map['zoneId'] == null ? null : map['zoneId']! as String,
     );
   }
 }

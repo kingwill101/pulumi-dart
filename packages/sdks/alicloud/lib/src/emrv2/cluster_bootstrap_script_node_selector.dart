@@ -48,12 +48,12 @@ class ClusterBootstrapScriptNodeSelector {
 
   factory ClusterBootstrapScriptNodeSelector.fromMap(Map<String, dynamic> map) {
     return ClusterBootstrapScriptNodeSelector(
-      nodeGroupId: map['nodeGroupId'] == null ? null : (map['nodeGroupId'] as String).input(),
-      nodeGroupIds: map['nodeGroupIds'] == null ? null : ((map['nodeGroupIds'] as List).cast<String>()).input(),
-      nodeGroupName: map['nodeGroupName'] == null ? null : (map['nodeGroupName'] as String).input(),
-      nodeGroupNames: map['nodeGroupNames'] == null ? null : ((map['nodeGroupNames'] as List).cast<String>()).input(),
-      nodeGroupTypes: map['nodeGroupTypes'] == null ? null : ((map['nodeGroupTypes'] as List).cast<String>()).input(),
-      nodeNames: map['nodeNames'] == null ? null : ((map['nodeNames'] as List).cast<String>()).input(),
+      nodeGroupId: map['nodeGroupId'] == null ? null : (map['nodeGroupId']! as String).input(),
+      nodeGroupIds: map['nodeGroupIds'] == null ? null : ((map['nodeGroupIds']! as List).cast<String>()).input(),
+      nodeGroupName: map['nodeGroupName'] == null ? null : (map['nodeGroupName']! as String).input(),
+      nodeGroupNames: map['nodeGroupNames'] == null ? null : ((map['nodeGroupNames']! as List).cast<String>()).input(),
+      nodeGroupTypes: map['nodeGroupTypes'] == null ? null : ((map['nodeGroupTypes']! as List).cast<String>()).input(),
+      nodeNames: map['nodeNames'] == null ? null : ((map['nodeNames']! as List).cast<String>()).input(),
       nodeSelectType: (map['nodeSelectType'] as String).input(),
     );
   }

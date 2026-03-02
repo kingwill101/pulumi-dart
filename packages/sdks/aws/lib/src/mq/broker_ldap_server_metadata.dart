@@ -70,17 +70,17 @@ class BrokerLdapServerMetadata {
 
   factory BrokerLdapServerMetadata.fromMap(Map<String, dynamic> map) {
     return BrokerLdapServerMetadata(
-      hosts: map['hosts'] == null ? null : ((map['hosts'] as List).cast<String>()).input(),
-      roleBase: map['roleBase'] == null ? null : (map['roleBase'] as String).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
-      roleSearchMatching: map['roleSearchMatching'] == null ? null : (map['roleSearchMatching'] as String).input(),
-      roleSearchSubtree: map['roleSearchSubtree'] == null ? null : (map['roleSearchSubtree'] as bool).input(),
-      serviceAccountPassword: map['serviceAccountPassword'] == null ? null : (map['serviceAccountPassword'] as String).input(),
-      serviceAccountUsername: map['serviceAccountUsername'] == null ? null : (map['serviceAccountUsername'] as String).input(),
-      userBase: map['userBase'] == null ? null : (map['userBase'] as String).input(),
-      userRoleName: map['userRoleName'] == null ? null : (map['userRoleName'] as String).input(),
-      userSearchMatching: map['userSearchMatching'] == null ? null : (map['userSearchMatching'] as String).input(),
-      userSearchSubtree: map['userSearchSubtree'] == null ? null : (map['userSearchSubtree'] as bool).input(),
+      hosts: map['hosts'] == null ? null : (((map['hosts'] as List).cast<String>()).input()).input(),
+      roleBase: map['roleBase'] == null ? null : ((map['roleBase'] as String).input()).input(),
+      roleName: map['roleName'] == null ? null : ((map['roleName'] as String).input()).input(),
+      roleSearchMatching: map['roleSearchMatching'] == null ? null : ((map['roleSearchMatching'] as String).input()).input(),
+      roleSearchSubtree: map['roleSearchSubtree'] == null ? null : ((map['roleSearchSubtree'] as bool).input()).input(),
+      serviceAccountPassword: map['serviceAccountPassword'] == null ? null : ((map['serviceAccountPassword'] as String).input()).input(),
+      serviceAccountUsername: map['serviceAccountUsername'] == null ? null : ((map['serviceAccountUsername'] as String).input()).input(),
+      userBase: map['userBase'] == null ? null : ((map['userBase'] as String).input()).input(),
+      userRoleName: map['userRoleName'] == null ? null : ((map['userRoleName'] as String).input()).input(),
+      userSearchMatching: map['userSearchMatching'] == null ? null : ((map['userSearchMatching'] as String).input()).input(),
+      userSearchSubtree: map['userSearchSubtree'] == null ? null : ((map['userSearchSubtree'] as bool).input()).input(),
     );
   }
 }

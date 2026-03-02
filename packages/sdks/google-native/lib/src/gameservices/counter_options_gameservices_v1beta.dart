@@ -32,9 +32,9 @@ class CounterOptionsGameservicesV1beta {
 
   factory CounterOptionsGameservicesV1beta.fromMap(Map<String, dynamic> map) {
     return CounterOptionsGameservicesV1beta(
-      customFields: map['customFields'] == null ? null : (pulumi.Input.decodeList<CustomFieldGameservicesV1beta>(map['customFields'], (value) => CustomFieldGameservicesV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      field: map['field'] == null ? null : (map['field'] as String).input(),
-      metric: map['metric'] == null ? null : (map['metric'] as String).input(),
+      customFields: map['customFields'] == null ? null : (pulumi.Input.decodeList<CustomFieldGameservicesV1beta>(map['customFields']!, (value) => CustomFieldGameservicesV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      field: map['field'] == null ? null : (map['field']! as String).input(),
+      metric: map['metric'] == null ? null : (map['metric']! as String).input(),
     );
   }
 }

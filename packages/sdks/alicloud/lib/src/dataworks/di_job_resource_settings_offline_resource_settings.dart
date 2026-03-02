@@ -25,8 +25,8 @@ class DiJobResourceSettingsOfflineResourceSettings {
 
   factory DiJobResourceSettingsOfflineResourceSettings.fromMap(Map<String, dynamic> map) {
     return DiJobResourceSettingsOfflineResourceSettings(
-      requestedCu: map['requestedCu'] == null ? null : (map['requestedCu'] as double).input(),
-      resourceGroupIdentifier: map['resourceGroupIdentifier'] == null ? null : (map['resourceGroupIdentifier'] as String).input(),
+      requestedCu: map['requestedCu'] == null ? null : (map['requestedCu']! as double).input(),
+      resourceGroupIdentifier: map['resourceGroupIdentifier'] == null ? null : (map['resourceGroupIdentifier']! as String).input(),
     );
   }
 }

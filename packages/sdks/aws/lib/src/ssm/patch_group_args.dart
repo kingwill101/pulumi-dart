@@ -36,7 +36,7 @@ class PatchGroupArgs {
     return PatchGroupArgs(
       baselineId: (map['baselineId'] as String).input(),
       patchGroup: (map['patchGroup'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

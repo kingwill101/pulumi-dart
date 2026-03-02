@@ -39,10 +39,10 @@ class TransferJobReplicationSpec {
 
   factory TransferJobReplicationSpec.fromMap(Map<String, dynamic> map) {
     return TransferJobReplicationSpec(
-      gcsDataSink: map['gcsDataSink'] == null ? null : (TransferJobReplicationSpecGcsDataSink.fromMap((map['gcsDataSink'] as Map).cast<String, dynamic>())).input(),
-      gcsDataSource: map['gcsDataSource'] == null ? null : (TransferJobReplicationSpecGcsDataSource.fromMap((map['gcsDataSource'] as Map).cast<String, dynamic>())).input(),
-      objectConditions: map['objectConditions'] == null ? null : (TransferJobReplicationSpecObjectConditions.fromMap((map['objectConditions'] as Map).cast<String, dynamic>())).input(),
-      transferOptions: map['transferOptions'] == null ? null : (TransferJobReplicationSpecTransferOptions.fromMap((map['transferOptions'] as Map).cast<String, dynamic>())).input(),
+      gcsDataSink: map['gcsDataSink'] == null ? null : (TransferJobReplicationSpecGcsDataSink.fromMap((map['gcsDataSink']! as Map).cast<String, dynamic>())).input(),
+      gcsDataSource: map['gcsDataSource'] == null ? null : (TransferJobReplicationSpecGcsDataSource.fromMap((map['gcsDataSource']! as Map).cast<String, dynamic>())).input(),
+      objectConditions: map['objectConditions'] == null ? null : (TransferJobReplicationSpecObjectConditions.fromMap((map['objectConditions']! as Map).cast<String, dynamic>())).input(),
+      transferOptions: map['transferOptions'] == null ? null : (TransferJobReplicationSpecTransferOptions.fromMap((map['transferOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

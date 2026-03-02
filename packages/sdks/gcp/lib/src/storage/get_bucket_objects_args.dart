@@ -35,8 +35,8 @@ class GetBucketObjectsArgs {
   factory GetBucketObjectsArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectsArgs(
       bucket: (map['bucket'] as String).input(),
-      matchGlob: map['matchGlob'] == null ? null : (map['matchGlob'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      matchGlob: map['matchGlob'] == null ? null : (map['matchGlob']! as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
     );
   }
 }

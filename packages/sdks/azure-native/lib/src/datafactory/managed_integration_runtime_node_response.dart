@@ -32,7 +32,7 @@ class ManagedIntegrationRuntimeNodeResponse {
 
   factory ManagedIntegrationRuntimeNodeResponse.fromMap(Map<String, dynamic> map) {
     return ManagedIntegrationRuntimeNodeResponse(
-      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<ManagedIntegrationRuntimeErrorResponse>(map['errors'], (value) => ManagedIntegrationRuntimeErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<ManagedIntegrationRuntimeErrorResponse>(map['errors']!, (value) => ManagedIntegrationRuntimeErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       nodeId: (map['nodeId'] as String).input(),
       status: (map['status'] as String).input(),
     );

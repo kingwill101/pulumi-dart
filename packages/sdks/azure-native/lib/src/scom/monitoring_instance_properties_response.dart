@@ -79,17 +79,17 @@ class MonitoringInstancePropertiesResponse {
 
   factory MonitoringInstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MonitoringInstancePropertiesResponse(
-      azureHybridBenefit: map['azureHybridBenefit'] == null ? null : (AzureHybridBenefitPropertiesResponse.fromMap((map['azureHybridBenefit'] as Map).cast<String, dynamic>())).input(),
-      databaseInstance: map['databaseInstance'] == null ? null : (DatabaseInstancePropertiesResponse.fromMap((map['databaseInstance'] as Map).cast<String, dynamic>())).input(),
-      domainController: map['domainController'] == null ? null : (DomainControllerPropertiesResponse.fromMap((map['domainController'] as Map).cast<String, dynamic>())).input(),
-      domainUserCredentials: map['domainUserCredentials'] == null ? null : (DomainUserCredentialsResponse.fromMap((map['domainUserCredentials'] as Map).cast<String, dynamic>())).input(),
-      gmsaDetails: map['gmsaDetails'] == null ? null : (GmsaDetailsResponse.fromMap((map['gmsaDetails'] as Map).cast<String, dynamic>())).input(),
+      azureHybridBenefit: map['azureHybridBenefit'] == null ? null : (AzureHybridBenefitPropertiesResponse.fromMap((map['azureHybridBenefit']! as Map).cast<String, dynamic>())).input(),
+      databaseInstance: map['databaseInstance'] == null ? null : (DatabaseInstancePropertiesResponse.fromMap((map['databaseInstance']! as Map).cast<String, dynamic>())).input(),
+      domainController: map['domainController'] == null ? null : (DomainControllerPropertiesResponse.fromMap((map['domainController']! as Map).cast<String, dynamic>())).input(),
+      domainUserCredentials: map['domainUserCredentials'] == null ? null : (DomainUserCredentialsResponse.fromMap((map['domainUserCredentials']! as Map).cast<String, dynamic>())).input(),
+      gmsaDetails: map['gmsaDetails'] == null ? null : (GmsaDetailsResponse.fromMap((map['gmsaDetails']! as Map).cast<String, dynamic>())).input(),
       logAnalyticsProperties: (LogAnalyticsConfigurationResponse.fromMap((map['logAnalyticsProperties'] as Map).cast<String, dynamic>())).input(),
       managementEndpoints: (pulumi.Input.decodeList<ManagementServerPropertiesResponse>(map['managementEndpoints'], (value) => ManagementServerPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       operationsStatus: (pulumi.Input.decodeList<ManagedInstanceOperationStatusResponse>(map['operationsStatus'], (value) => ManagedInstanceOperationStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       productVersion: (map['productVersion'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      vNetSubnetId: map['vNetSubnetId'] == null ? null : (map['vNetSubnetId'] as String).input(),
+      vNetSubnetId: map['vNetSubnetId'] == null ? null : (map['vNetSubnetId']! as String).input(),
     );
   }
 }

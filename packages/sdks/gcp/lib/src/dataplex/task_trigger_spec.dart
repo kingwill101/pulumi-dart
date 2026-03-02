@@ -41,10 +41,10 @@ class TaskTriggerSpec {
 
   factory TaskTriggerSpec.fromMap(Map<String, dynamic> map) {
     return TaskTriggerSpec(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries'] as int).input(),
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries']! as int).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

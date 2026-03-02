@@ -19,7 +19,7 @@ class EnterpriseCrmEventbusProtoStringParameterArray {
 
   factory EnterpriseCrmEventbusProtoStringParameterArray.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoStringParameterArray(
-      stringValues: map['stringValues'] == null ? null : ((map['stringValues'] as List).cast<String>()).input(),
+      stringValues: map['stringValues'] == null ? null : ((map['stringValues']! as List).cast<String>()).input(),
     );
   }
 }

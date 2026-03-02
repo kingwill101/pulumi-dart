@@ -25,8 +25,8 @@ class OntapStorageVirtualMachineEndpointNf {
 
   factory OntapStorageVirtualMachineEndpointNf.fromMap(Map<String, dynamic> map) {
     return OntapStorageVirtualMachineEndpointNf(
-      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
-      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
+      dnsName: map['dnsName'] == null ? null : ((map['dnsName'] as String).input()).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : (((map['ipAddresses'] as List).cast<String>()).input()).input(),
     );
   }
 }

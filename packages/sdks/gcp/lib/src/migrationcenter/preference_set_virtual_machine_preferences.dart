@@ -58,13 +58,13 @@ class PreferenceSetVirtualMachinePreferences {
 
   factory PreferenceSetVirtualMachinePreferences.fromMap(Map<String, dynamic> map) {
     return PreferenceSetVirtualMachinePreferences(
-      commitmentPlan: map['commitmentPlan'] == null ? null : (map['commitmentPlan'] as String).input(),
-      computeEnginePreferences: map['computeEnginePreferences'] == null ? null : (PreferenceSetVirtualMachinePreferencesComputeEnginePreferences.fromMap((map['computeEnginePreferences'] as Map).cast<String, dynamic>())).input(),
-      regionPreferences: map['regionPreferences'] == null ? null : (PreferenceSetVirtualMachinePreferencesRegionPreferences.fromMap((map['regionPreferences'] as Map).cast<String, dynamic>())).input(),
-      sizingOptimizationStrategy: map['sizingOptimizationStrategy'] == null ? null : (map['sizingOptimizationStrategy'] as String).input(),
-      soleTenancyPreferences: map['soleTenancyPreferences'] == null ? null : (PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences.fromMap((map['soleTenancyPreferences'] as Map).cast<String, dynamic>())).input(),
-      targetProduct: map['targetProduct'] == null ? null : (map['targetProduct'] as String).input(),
-      vmwareEnginePreferences: map['vmwareEnginePreferences'] == null ? null : (PreferenceSetVirtualMachinePreferencesVmwareEnginePreferences.fromMap((map['vmwareEnginePreferences'] as Map).cast<String, dynamic>())).input(),
+      commitmentPlan: map['commitmentPlan'] == null ? null : (map['commitmentPlan']! as String).input(),
+      computeEnginePreferences: map['computeEnginePreferences'] == null ? null : (PreferenceSetVirtualMachinePreferencesComputeEnginePreferences.fromMap((map['computeEnginePreferences']! as Map).cast<String, dynamic>())).input(),
+      regionPreferences: map['regionPreferences'] == null ? null : (PreferenceSetVirtualMachinePreferencesRegionPreferences.fromMap((map['regionPreferences']! as Map).cast<String, dynamic>())).input(),
+      sizingOptimizationStrategy: map['sizingOptimizationStrategy'] == null ? null : (map['sizingOptimizationStrategy']! as String).input(),
+      soleTenancyPreferences: map['soleTenancyPreferences'] == null ? null : (PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences.fromMap((map['soleTenancyPreferences']! as Map).cast<String, dynamic>())).input(),
+      targetProduct: map['targetProduct'] == null ? null : (map['targetProduct']! as String).input(),
+      vmwareEnginePreferences: map['vmwareEnginePreferences'] == null ? null : (PreferenceSetVirtualMachinePreferencesVmwareEnginePreferences.fromMap((map['vmwareEnginePreferences']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -48,12 +48,12 @@ class RuleSetArgs {
 
   factory RuleSetArgs.fromMap(Map<String, dynamic> map) {
     return RuleSetArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<GoogleCloudContentwarehouseV1Rule>(map['rules'], (value) => GoogleCloudContentwarehouseV1Rule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<GoogleCloudContentwarehouseV1Rule>(map['rules']!, (value) => GoogleCloudContentwarehouseV1Rule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

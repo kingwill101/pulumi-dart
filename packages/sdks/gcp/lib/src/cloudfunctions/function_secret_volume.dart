@@ -37,9 +37,9 @@ class FunctionSecretVolume {
   factory FunctionSecretVolume.fromMap(Map<String, dynamic> map) {
     return FunctionSecretVolume(
       mountPath: (map['mountPath'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
       secret: (map['secret'] as String).input(),
-      versions: map['versions'] == null ? null : (pulumi.Input.decodeList<FunctionSecretVolumeVersion>(map['versions'], (value) => FunctionSecretVolumeVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      versions: map['versions'] == null ? null : (pulumi.Input.decodeList<FunctionSecretVolumeVersion>(map['versions']!, (value) => FunctionSecretVolumeVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class DomainDevicesInterfaceBandwidth {
 
   factory DomainDevicesInterfaceBandwidth.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceBandwidth(
-      inbound: map['inbound'] == null ? null : (DomainDevicesInterfaceBandwidthInbound.fromMap((map['inbound'] as Map).cast<String, dynamic>())).input(),
-      outbound: map['outbound'] == null ? null : (DomainDevicesInterfaceBandwidthOutbound.fromMap((map['outbound'] as Map).cast<String, dynamic>())).input(),
+      inbound: map['inbound'] == null ? null : (DomainDevicesInterfaceBandwidthInbound.fromMap((map['inbound']! as Map).cast<String, dynamic>())).input(),
+      outbound: map['outbound'] == null ? null : (DomainDevicesInterfaceBandwidthOutbound.fromMap((map['outbound']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

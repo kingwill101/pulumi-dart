@@ -31,9 +31,9 @@ class ContinuationSettingsReferenceResponse {
 
   factory ContinuationSettingsReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ContinuationSettingsReferenceResponse(
-      continuationTtlInMinutes: map['continuationTtlInMinutes'] == null ? null : (map['continuationTtlInMinutes']).input(),
-      customizedCheckpointKey: map['customizedCheckpointKey'] == null ? null : (map['customizedCheckpointKey']).input(),
-      idleCondition: map['idleCondition'] == null ? null : (map['idleCondition']).input(),
+      continuationTtlInMinutes: map['continuationTtlInMinutes'] == null ? null : (map['continuationTtlInMinutes']!).input(),
+      customizedCheckpointKey: map['customizedCheckpointKey'] == null ? null : (map['customizedCheckpointKey']!).input(),
+      idleCondition: map['idleCondition'] == null ? null : (map['idleCondition']!).input(),
     );
   }
 }

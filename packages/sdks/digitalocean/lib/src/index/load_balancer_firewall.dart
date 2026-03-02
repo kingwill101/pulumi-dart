@@ -26,8 +26,8 @@ class LoadBalancerFirewall {
 
   factory LoadBalancerFirewall.fromMap(Map<String, dynamic> map) {
     return LoadBalancerFirewall(
-      allows: map['allows'] == null ? null : ((map['allows'] as List).cast<String>()).input(),
-      denies: map['denies'] == null ? null : ((map['denies'] as List).cast<String>()).input(),
+      allows: map['allows'] == null ? null : ((map['allows']! as List).cast<String>()).input(),
+      denies: map['denies'] == null ? null : ((map['denies']! as List).cast<String>()).input(),
     );
   }
 }

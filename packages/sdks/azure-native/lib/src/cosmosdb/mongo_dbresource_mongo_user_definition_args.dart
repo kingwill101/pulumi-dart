@@ -66,14 +66,14 @@ class MongoDBResourceMongoUserDefinitionArgs {
   factory MongoDBResourceMongoUserDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return MongoDBResourceMongoUserDefinitionArgs(
       accountName: (map['accountName'] as String).input(),
-      customData: map['customData'] == null ? null : (map['customData'] as String).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      mechanisms: map['mechanisms'] == null ? null : (map['mechanisms'] as String).input(),
-      mongoUserDefinitionId: map['mongoUserDefinitionId'] == null ? null : (map['mongoUserDefinitionId'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      customData: map['customData'] == null ? null : (map['customData']! as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
+      mechanisms: map['mechanisms'] == null ? null : (map['mechanisms']! as String).input(),
+      mongoUserDefinitionId: map['mongoUserDefinitionId'] == null ? null : (map['mongoUserDefinitionId']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<Role>(map['roles'], (value) => Role.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<Role>(map['roles']!, (value) => Role.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

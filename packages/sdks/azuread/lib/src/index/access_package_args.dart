@@ -42,7 +42,7 @@ class AccessPackageArgs {
       catalogId: (map['catalogId'] as String).input(),
       description: (map['description'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      hidden: map['hidden'] == null ? null : (map['hidden'] as bool).input(),
+      hidden: map['hidden'] == null ? null : (map['hidden']! as bool).input(),
     );
   }
 }

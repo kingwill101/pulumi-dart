@@ -47,12 +47,12 @@ class FieldLevelEncryptionProfileState {
 
   factory FieldLevelEncryptionProfileState.fromMap(Map<String, dynamic> map) {
     return FieldLevelEncryptionProfileState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      callerReference: map['callerReference'] == null ? null : (map['callerReference'] as String).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      encryptionEntities: map['encryptionEntities'] == null ? null : (FieldLevelEncryptionProfileEncryptionEntities.fromMap((map['encryptionEntities'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      callerReference: map['callerReference'] == null ? null : ((map['callerReference'] as String).input()).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
+      encryptionEntities: map['encryptionEntities'] == null ? null : ((FieldLevelEncryptionProfileEncryptionEntities.fromMap((map['encryptionEntities']! as Map).cast<String, dynamic>())).input()).input(),
+      etag: map['etag'] == null ? null : ((map['etag'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
     );
   }
 }

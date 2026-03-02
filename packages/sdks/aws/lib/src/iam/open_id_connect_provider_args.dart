@@ -40,8 +40,8 @@ class OpenIdConnectProviderArgs {
   factory OpenIdConnectProviderArgs.fromMap(Map<String, dynamic> map) {
     return OpenIdConnectProviderArgs(
       clientIdLists: ((map['clientIdLists'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      thumbprintLists: map['thumbprintLists'] == null ? null : ((map['thumbprintLists'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      thumbprintLists: map['thumbprintLists'] == null ? null : (((map['thumbprintLists'] as List).cast<String>()).input()).input(),
       url: (map['url'] as String).input(),
     );
   }

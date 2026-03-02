@@ -46,12 +46,12 @@ class HsmClientCertificateState {
 
   factory HsmClientCertificateState.fromMap(Map<String, dynamic> map) {
     return HsmClientCertificateState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      hsmClientCertificateIdentifier: map['hsmClientCertificateIdentifier'] == null ? null : (map['hsmClientCertificateIdentifier'] as String).input(),
-      hsmClientCertificatePublicKey: map['hsmClientCertificatePublicKey'] == null ? null : (map['hsmClientCertificatePublicKey'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      hsmClientCertificateIdentifier: map['hsmClientCertificateIdentifier'] == null ? null : ((map['hsmClientCertificateIdentifier'] as String).input()).input(),
+      hsmClientCertificatePublicKey: map['hsmClientCertificatePublicKey'] == null ? null : ((map['hsmClientCertificatePublicKey'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

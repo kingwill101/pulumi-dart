@@ -28,9 +28,9 @@ class AzureMonitorAlertSettings {
 
   factory AzureMonitorAlertSettings.fromMap(Map<String, dynamic> map) {
     return AzureMonitorAlertSettings(
-      alertsForAllFailoverIssues: map['alertsForAllFailoverIssues'] == null ? null : (map['alertsForAllFailoverIssues'] as String).input(),
-      alertsForAllJobFailures: map['alertsForAllJobFailures'] == null ? null : (map['alertsForAllJobFailures'] as String).input(),
-      alertsForAllReplicationIssues: map['alertsForAllReplicationIssues'] == null ? null : (map['alertsForAllReplicationIssues'] as String).input(),
+      alertsForAllFailoverIssues: map['alertsForAllFailoverIssues'] == null ? null : (map['alertsForAllFailoverIssues']! as String).input(),
+      alertsForAllJobFailures: map['alertsForAllJobFailures'] == null ? null : (map['alertsForAllJobFailures']! as String).input(),
+      alertsForAllReplicationIssues: map['alertsForAllReplicationIssues'] == null ? null : (map['alertsForAllReplicationIssues']! as String).input(),
     );
   }
 }

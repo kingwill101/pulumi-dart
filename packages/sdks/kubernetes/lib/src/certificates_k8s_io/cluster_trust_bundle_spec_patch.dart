@@ -38,8 +38,8 @@ class ClusterTrustBundleSpecPatch {
 
   factory ClusterTrustBundleSpecPatch.fromMap(Map<String, dynamic> map) {
     return ClusterTrustBundleSpecPatch(
-      signerName: map['signerName'] == null ? null : (map['signerName'] as String).input(),
-      trustBundle: map['trustBundle'] == null ? null : (map['trustBundle'] as String).input(),
+      signerName: map['signerName'] == null ? null : (map['signerName']! as String).input(),
+      trustBundle: map['trustBundle'] == null ? null : (map['trustBundle']! as String).input(),
     );
   }
 }

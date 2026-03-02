@@ -31,9 +31,9 @@ class ApplicationAccessPointState {
 
   factory ApplicationAccessPointState.fromMap(Map<String, dynamic> map) {
     return ApplicationAccessPointState(
-      applicationAccessPointName: map['applicationAccessPointName'] == null ? null : (map['applicationAccessPointName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      policies: map['policies'] == null ? null : ((map['policies'] as List).cast<String>()).input(),
+      applicationAccessPointName: map['applicationAccessPointName'] == null ? null : (map['applicationAccessPointName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      policies: map['policies'] == null ? null : ((map['policies']! as List).cast<String>()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class VirtualApplianceIPConfigurationPropertiesResponse {
 
   factory VirtualApplianceIPConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VirtualApplianceIPConfigurationPropertiesResponse(
-      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
+      primary: map['primary'] == null ? null : (map['primary']! as bool).input(),
     );
   }
 }

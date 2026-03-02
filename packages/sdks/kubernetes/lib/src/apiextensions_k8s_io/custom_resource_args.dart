@@ -42,8 +42,8 @@ class CustomResourceArgs {
     return CustomResourceArgs(
       apiVersion: (map['apiVersion'] as String).input(),
       kind: (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      others: map['others'] == null ? null : ((map['others'] as Map).cast<String, dynamic>()).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      others: map['others'] == null ? null : ((map['others']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

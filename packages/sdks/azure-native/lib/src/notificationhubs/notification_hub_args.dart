@@ -114,23 +114,23 @@ class NotificationHubArgs {
 
   factory NotificationHubArgs.fromMap(Map<String, dynamic> map) {
     return NotificationHubArgs(
-      admCredential: map['admCredential'] == null ? null : (AdmCredential.fromMap((map['admCredential'] as Map).cast<String, dynamic>())).input(),
-      apnsCredential: map['apnsCredential'] == null ? null : (ApnsCredential.fromMap((map['apnsCredential'] as Map).cast<String, dynamic>())).input(),
-      baiduCredential: map['baiduCredential'] == null ? null : (BaiduCredential.fromMap((map['baiduCredential'] as Map).cast<String, dynamic>())).input(),
-      browserCredential: map['browserCredential'] == null ? null : (BrowserCredential.fromMap((map['browserCredential'] as Map).cast<String, dynamic>())).input(),
-      fcmV1Credential: map['fcmV1Credential'] == null ? null : (FcmV1Credential.fromMap((map['fcmV1Credential'] as Map).cast<String, dynamic>())).input(),
-      gcmCredential: map['gcmCredential'] == null ? null : (GcmCredential.fromMap((map['gcmCredential'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mpnsCredential: map['mpnsCredential'] == null ? null : (MpnsCredential.fromMap((map['mpnsCredential'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      admCredential: map['admCredential'] == null ? null : (AdmCredential.fromMap((map['admCredential']! as Map).cast<String, dynamic>())).input(),
+      apnsCredential: map['apnsCredential'] == null ? null : (ApnsCredential.fromMap((map['apnsCredential']! as Map).cast<String, dynamic>())).input(),
+      baiduCredential: map['baiduCredential'] == null ? null : (BaiduCredential.fromMap((map['baiduCredential']! as Map).cast<String, dynamic>())).input(),
+      browserCredential: map['browserCredential'] == null ? null : (BrowserCredential.fromMap((map['browserCredential']! as Map).cast<String, dynamic>())).input(),
+      fcmV1Credential: map['fcmV1Credential'] == null ? null : (FcmV1Credential.fromMap((map['fcmV1Credential']! as Map).cast<String, dynamic>())).input(),
+      gcmCredential: map['gcmCredential'] == null ? null : (GcmCredential.fromMap((map['gcmCredential']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mpnsCredential: map['mpnsCredential'] == null ? null : (MpnsCredential.fromMap((map['mpnsCredential']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
-      notificationHubName: map['notificationHubName'] == null ? null : (map['notificationHubName'] as String).input(),
-      registrationTtl: map['registrationTtl'] == null ? null : (map['registrationTtl'] as String).input(),
+      notificationHubName: map['notificationHubName'] == null ? null : (map['notificationHubName']! as String).input(),
+      registrationTtl: map['registrationTtl'] == null ? null : (map['registrationTtl']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      wnsCredential: map['wnsCredential'] == null ? null : (WnsCredential.fromMap((map['wnsCredential'] as Map).cast<String, dynamic>())).input(),
-      xiaomiCredential: map['xiaomiCredential'] == null ? null : (XiaomiCredential.fromMap((map['xiaomiCredential'] as Map).cast<String, dynamic>())).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      wnsCredential: map['wnsCredential'] == null ? null : (WnsCredential.fromMap((map['wnsCredential']! as Map).cast<String, dynamic>())).input(),
+      xiaomiCredential: map['xiaomiCredential'] == null ? null : (XiaomiCredential.fromMap((map['xiaomiCredential']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

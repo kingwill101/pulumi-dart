@@ -25,8 +25,8 @@ class AzureIntegrationsCostManagement {
 
   factory AzureIntegrationsCostManagement.fromMap(Map<String, dynamic> map) {
     return AzureIntegrationsCostManagement(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
-      tagKeys: map['tagKeys'] == null ? null : ((map['tagKeys'] as List).cast<String>()).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
+      tagKeys: map['tagKeys'] == null ? null : ((map['tagKeys']! as List).cast<String>()).input(),
     );
   }
 }

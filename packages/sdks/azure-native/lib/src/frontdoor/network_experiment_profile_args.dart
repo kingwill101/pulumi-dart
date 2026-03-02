@@ -49,12 +49,12 @@ class NetworkExperimentProfileArgs {
 
   factory NetworkExperimentProfileArgs.fromMap(Map<String, dynamic> map) {
     return NetworkExperimentProfileArgs(
-      enabledState: map['enabledState'] == null ? null : (map['enabledState'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      profileName: map['profileName'] == null ? null : (map['profileName'] as String).input(),
+      enabledState: map['enabledState'] == null ? null : (map['enabledState']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      profileName: map['profileName'] == null ? null : (map['profileName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -33,7 +33,7 @@ class GetDatabaseArgs {
     return GetDatabaseArgs(
       database: (map['database'] as String).input(),
       instance: (map['instance'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

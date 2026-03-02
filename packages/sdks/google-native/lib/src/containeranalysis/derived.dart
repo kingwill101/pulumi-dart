@@ -28,8 +28,8 @@ class Derived {
 
   factory Derived.fromMap(Map<String, dynamic> map) {
     return Derived(
-      fingerprint: map['fingerprint'] == null ? null : (FingerprintContaineranalysisV1alpha1.fromMap((map['fingerprint'] as Map).cast<String, dynamic>())).input(),
-      layerInfo: map['layerInfo'] == null ? null : (pulumi.Input.decodeList<LayerContaineranalysisV1alpha1>(map['layerInfo'], (value) => LayerContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fingerprint: map['fingerprint'] == null ? null : (FingerprintContaineranalysisV1alpha1.fromMap((map['fingerprint']! as Map).cast<String, dynamic>())).input(),
+      layerInfo: map['layerInfo'] == null ? null : (pulumi.Input.decodeList<LayerContaineranalysisV1alpha1>(map['layerInfo']!, (value) => LayerContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

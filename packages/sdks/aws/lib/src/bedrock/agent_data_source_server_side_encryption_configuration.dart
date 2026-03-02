@@ -20,7 +20,7 @@ class AgentDataSourceServerSideEncryptionConfiguration {
 
   factory AgentDataSourceServerSideEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceServerSideEncryptionConfiguration(
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
     );
   }
 }

@@ -51,13 +51,13 @@ class GuestOSNICCustomizationResponse {
 
   factory GuestOSNICCustomizationResponse.fromMap(Map<String, dynamic> map) {
     return GuestOSNICCustomizationResponse(
-      allocation: map['allocation'] == null ? null : (map['allocation'] as String).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      gateway: map['gateway'] == null ? null : ((map['gateway'] as List).cast<String>()).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      mask: map['mask'] == null ? null : (map['mask'] as String).input(),
-      primaryWinsServer: map['primaryWinsServer'] == null ? null : (map['primaryWinsServer'] as String).input(),
-      secondaryWinsServer: map['secondaryWinsServer'] == null ? null : (map['secondaryWinsServer'] as String).input(),
+      allocation: map['allocation'] == null ? null : (map['allocation']! as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      gateway: map['gateway'] == null ? null : ((map['gateway']! as List).cast<String>()).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      mask: map['mask'] == null ? null : (map['mask']! as String).input(),
+      primaryWinsServer: map['primaryWinsServer'] == null ? null : (map['primaryWinsServer']! as String).input(),
+      secondaryWinsServer: map['secondaryWinsServer'] == null ? null : (map['secondaryWinsServer']! as String).input(),
     );
   }
 }

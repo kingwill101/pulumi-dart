@@ -46,12 +46,12 @@ class StorageDefenderState {
 
   factory StorageDefenderState.fromMap(Map<String, dynamic> map) {
     return StorageDefenderState(
-      malwareScanningOnUploadCapGbPerMonth: map['malwareScanningOnUploadCapGbPerMonth'] == null ? null : (map['malwareScanningOnUploadCapGbPerMonth'] as int).input(),
-      malwareScanningOnUploadEnabled: map['malwareScanningOnUploadEnabled'] == null ? null : (map['malwareScanningOnUploadEnabled'] as bool).input(),
-      overrideSubscriptionSettingsEnabled: map['overrideSubscriptionSettingsEnabled'] == null ? null : (map['overrideSubscriptionSettingsEnabled'] as bool).input(),
-      scanResultsEventGridTopicId: map['scanResultsEventGridTopicId'] == null ? null : (map['scanResultsEventGridTopicId'] as String).input(),
-      sensitiveDataDiscoveryEnabled: map['sensitiveDataDiscoveryEnabled'] == null ? null : (map['sensitiveDataDiscoveryEnabled'] as bool).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      malwareScanningOnUploadCapGbPerMonth: map['malwareScanningOnUploadCapGbPerMonth'] == null ? null : (map['malwareScanningOnUploadCapGbPerMonth']! as int).input(),
+      malwareScanningOnUploadEnabled: map['malwareScanningOnUploadEnabled'] == null ? null : (map['malwareScanningOnUploadEnabled']! as bool).input(),
+      overrideSubscriptionSettingsEnabled: map['overrideSubscriptionSettingsEnabled'] == null ? null : (map['overrideSubscriptionSettingsEnabled']! as bool).input(),
+      scanResultsEventGridTopicId: map['scanResultsEventGridTopicId'] == null ? null : (map['scanResultsEventGridTopicId']! as String).input(),
+      sensitiveDataDiscoveryEnabled: map['sensitiveDataDiscoveryEnabled'] == null ? null : (map['sensitiveDataDiscoveryEnabled']! as bool).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
     );
   }
 }

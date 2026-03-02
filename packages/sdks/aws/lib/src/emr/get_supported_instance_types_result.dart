@@ -37,7 +37,7 @@ class GetSupportedInstanceTypesResult {
       id: map['id'] as String,
       region: map['region'] as String,
       releaseLabel: map['releaseLabel'] as String,
-      supportedInstanceTypes: pulumi.Input.decodeList<GetSupportedInstanceTypesSupportedInstanceType>(map['supportedInstanceTypes'], (value) => GetSupportedInstanceTypesSupportedInstanceType.fromMap((value as Map).cast<String, dynamic>())),
+      supportedInstanceTypes: pulumi.Input.decodeList<GetSupportedInstanceTypesSupportedInstanceType>(map['supportedInstanceTypes']!, (value) => GetSupportedInstanceTypesSupportedInstanceType.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

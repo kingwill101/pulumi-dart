@@ -52,12 +52,12 @@ class AccountState {
 
   factory AccountState.fromMap(Map<String, dynamic> map) {
     return AccountState(
-      account: map['account'] == null ? null : (map['account'] as String).input(),
-      accountType: map['accountType'] == null ? null : (map['accountType'] as String).input(),
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dmlAuthSetting: map['dmlAuthSetting'] == null ? null : (AccountDmlAuthSetting.fromMap((map['dmlAuthSetting'] as Map).cast<String, dynamic>())).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      account: map['account'] == null ? null : (map['account']! as String).input(),
+      accountType: map['accountType'] == null ? null : (map['accountType']! as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dmlAuthSetting: map['dmlAuthSetting'] == null ? null : (AccountDmlAuthSetting.fromMap((map['dmlAuthSetting']! as Map).cast<String, dynamic>())).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
     );
   }
 }

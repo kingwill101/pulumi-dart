@@ -36,10 +36,10 @@ class GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfig {
 
   factory GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfig(
-      excludedFields: map['excludedFields'] == null ? null : ((map['excludedFields'] as List).cast<String>()).input(),
-      includedFields: map['includedFields'] == null ? null : ((map['includedFields'] as List).cast<String>()).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      keyField: map['keyField'] == null ? null : (map['keyField'] as String).input(),
+      excludedFields: map['excludedFields'] == null ? null : ((map['excludedFields']! as List).cast<String>()).input(),
+      includedFields: map['includedFields'] == null ? null : ((map['includedFields']! as List).cast<String>()).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      keyField: map['keyField'] == null ? null : (map['keyField']! as String).input(),
     );
   }
 }

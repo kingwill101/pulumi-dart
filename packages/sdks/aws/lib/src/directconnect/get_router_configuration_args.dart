@@ -51,7 +51,7 @@ class GetRouterConfigurationArgs {
 
   factory GetRouterConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetRouterConfigurationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       routerTypeIdentifier: (map['routerTypeIdentifier'] as String).input(),
       virtualInterfaceId: (map['virtualInterfaceId'] as String).input(),
     );

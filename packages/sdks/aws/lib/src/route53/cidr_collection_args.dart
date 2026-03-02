@@ -24,7 +24,7 @@ class CidrCollectionArgs {
 
   factory CidrCollectionArgs.fromMap(Map<String, dynamic> map) {
     return CidrCollectionArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
     );
   }
 }

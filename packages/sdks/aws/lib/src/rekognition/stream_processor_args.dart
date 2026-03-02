@@ -87,18 +87,18 @@ class StreamProcessorArgs {
 
   factory StreamProcessorArgs.fromMap(Map<String, dynamic> map) {
     return StreamProcessorArgs(
-      dataSharingPreference: map['dataSharingPreference'] == null ? null : (StreamProcessorDataSharingPreference.fromMap((map['dataSharingPreference'] as Map).cast<String, dynamic>())).input(),
-      input: (StreamProcessorInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationChannel: map['notificationChannel'] == null ? null : (StreamProcessorNotificationChannel.fromMap((map['notificationChannel'] as Map).cast<String, dynamic>())).input(),
-      output: (StreamProcessorOutput.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      regionsOfInterests: map['regionsOfInterests'] == null ? null : (pulumi.Input.decodeList<StreamProcessorRegionsOfInterest>(map['regionsOfInterests'], (value) => StreamProcessorRegionsOfInterest.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataSharingPreference: map['dataSharingPreference'] == null ? null : ((StreamProcessorDataSharingPreference.fromMap((map['dataSharingPreference']! as Map).cast<String, dynamic>())).input()).input(),
+      input: (StreamProcessorInput.fromMap((map['input']! as Map).cast<String, dynamic>())).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      notificationChannel: map['notificationChannel'] == null ? null : ((StreamProcessorNotificationChannel.fromMap((map['notificationChannel']! as Map).cast<String, dynamic>())).input()).input(),
+      output: (StreamProcessorOutput.fromMap((map['output']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      regionsOfInterests: map['regionsOfInterests'] == null ? null : ((pulumi.Input.decodeList<StreamProcessorRegionsOfInterest>(map['regionsOfInterests']!, (value) => StreamProcessorRegionsOfInterest.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      settings: (StreamProcessorSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (StreamProcessorTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      settings: (StreamProcessorSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((StreamProcessorTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

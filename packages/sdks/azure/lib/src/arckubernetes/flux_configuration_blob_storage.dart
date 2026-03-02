@@ -51,13 +51,13 @@ class FluxConfigurationBlobStorage {
 
   factory FluxConfigurationBlobStorage.fromMap(Map<String, dynamic> map) {
     return FluxConfigurationBlobStorage(
-      accountKey: map['accountKey'] == null ? null : (map['accountKey'] as String).input(),
+      accountKey: map['accountKey'] == null ? null : (map['accountKey']! as String).input(),
       containerId: (map['containerId'] as String).input(),
-      localAuthReference: map['localAuthReference'] == null ? null : (map['localAuthReference'] as String).input(),
-      sasToken: map['sasToken'] == null ? null : (map['sasToken'] as String).input(),
-      servicePrincipal: map['servicePrincipal'] == null ? null : (FluxConfigurationBlobStorageServicePrincipal.fromMap((map['servicePrincipal'] as Map).cast<String, dynamic>())).input(),
-      syncIntervalInSeconds: map['syncIntervalInSeconds'] == null ? null : (map['syncIntervalInSeconds'] as int).input(),
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as int).input(),
+      localAuthReference: map['localAuthReference'] == null ? null : (map['localAuthReference']! as String).input(),
+      sasToken: map['sasToken'] == null ? null : (map['sasToken']! as String).input(),
+      servicePrincipal: map['servicePrincipal'] == null ? null : (FluxConfigurationBlobStorageServicePrincipal.fromMap((map['servicePrincipal']! as Map).cast<String, dynamic>())).input(),
+      syncIntervalInSeconds: map['syncIntervalInSeconds'] == null ? null : (map['syncIntervalInSeconds']! as int).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds']! as int).input(),
     );
   }
 }

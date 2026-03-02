@@ -41,9 +41,9 @@ class BackendServiceConsistentHash {
 
   factory BackendServiceConsistentHash.fromMap(Map<String, dynamic> map) {
     return BackendServiceConsistentHash(
-      httpCookie: map['httpCookie'] == null ? null : (BackendServiceConsistentHashHttpCookie.fromMap((map['httpCookie'] as Map).cast<String, dynamic>())).input(),
-      httpHeaderName: map['httpHeaderName'] == null ? null : (map['httpHeaderName'] as String).input(),
-      minimumRingSize: map['minimumRingSize'] == null ? null : (map['minimumRingSize'] as int).input(),
+      httpCookie: map['httpCookie'] == null ? null : (BackendServiceConsistentHashHttpCookie.fromMap((map['httpCookie']! as Map).cast<String, dynamic>())).input(),
+      httpHeaderName: map['httpHeaderName'] == null ? null : (map['httpHeaderName']! as String).input(),
+      minimumRingSize: map['minimumRingSize'] == null ? null : (map['minimumRingSize']! as int).input(),
     );
   }
 }

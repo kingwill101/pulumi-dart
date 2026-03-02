@@ -26,8 +26,8 @@ class GarbageCollectionProperties {
 
   factory GarbageCollectionProperties.fromMap(Map<String, dynamic> map) {
     return GarbageCollectionProperties(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule']! as String).input(),
     );
   }
 }

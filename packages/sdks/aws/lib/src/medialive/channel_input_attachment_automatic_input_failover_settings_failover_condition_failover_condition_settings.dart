@@ -33,9 +33,9 @@ class ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailo
 
   factory ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettings(
-      audioSilenceSettings: map['audioSilenceSettings'] == null ? null : (ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsAudioSilenceSettings.fromMap((map['audioSilenceSettings'] as Map).cast<String, dynamic>())).input(),
-      inputLossSettings: map['inputLossSettings'] == null ? null : (ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsInputLossSettings.fromMap((map['inputLossSettings'] as Map).cast<String, dynamic>())).input(),
-      videoBlackSettings: map['videoBlackSettings'] == null ? null : (ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsVideoBlackSettings.fromMap((map['videoBlackSettings'] as Map).cast<String, dynamic>())).input(),
+      audioSilenceSettings: map['audioSilenceSettings'] == null ? null : ((ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsAudioSilenceSettings.fromMap((map['audioSilenceSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      inputLossSettings: map['inputLossSettings'] == null ? null : ((ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsInputLossSettings.fromMap((map['inputLossSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      videoBlackSettings: map['videoBlackSettings'] == null ? null : ((ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsVideoBlackSettings.fromMap((map['videoBlackSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

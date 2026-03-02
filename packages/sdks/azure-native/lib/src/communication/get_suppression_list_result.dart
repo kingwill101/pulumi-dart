@@ -66,7 +66,7 @@ class GetSuppressionListResult {
       dataLocation: map['dataLocation'] as String,
       id: map['id'] as String,
       lastUpdatedTimeStamp: map['lastUpdatedTimeStamp'] as String,
-      listName: map['listName'] == null ? null : map['listName'] as String,
+      listName: map['listName'] == null ? null : map['listName']! as String,
       name: map['name'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,

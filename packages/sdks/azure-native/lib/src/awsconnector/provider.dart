@@ -21,7 +21,7 @@ class Provider {
 
   factory Provider.fromMap(Map<String, dynamic> map) {
     return Provider(
-      keyArn: map['keyArn'] == null ? null : (map['keyArn'] as String).input(),
+      keyArn: map['keyArn'] == null ? null : (map['keyArn']! as String).input(),
     );
   }
 }

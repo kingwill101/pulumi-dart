@@ -54,13 +54,13 @@ class GetHostAccountsArgs {
 
   factory GetHostAccountsArgs.fromMap(Map<String, dynamic> map) {
     return GetHostAccountsArgs(
-      hostAccountName: map['hostAccountName'] == null ? null : (map['hostAccountName'] as String).input(),
+      hostAccountName: map['hostAccountName'] == null ? null : (map['hostAccountName']! as String).input(),
       hostId: (map['hostId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
       instanceId: (map['instanceId'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      protocolName: map['protocolName'] == null ? null : (map['protocolName'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      protocolName: map['protocolName'] == null ? null : (map['protocolName']! as String).input(),
     );
   }
 }

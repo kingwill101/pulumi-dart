@@ -25,8 +25,8 @@ class SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch {
 
   factory SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

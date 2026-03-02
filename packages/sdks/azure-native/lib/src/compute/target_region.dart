@@ -48,12 +48,12 @@ class TargetRegion {
 
   factory TargetRegion.fromMap(Map<String, dynamic> map) {
     return TargetRegion(
-      additionalReplicaSets: map['additionalReplicaSets'] == null ? null : (pulumi.Input.decodeList<AdditionalReplicaSet>(map['additionalReplicaSets'], (value) => AdditionalReplicaSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      encryption: map['encryption'] == null ? null : (EncryptionImages.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest'] as bool).input(),
+      additionalReplicaSets: map['additionalReplicaSets'] == null ? null : (pulumi.Input.decodeList<AdditionalReplicaSet>(map['additionalReplicaSets']!, (value) => AdditionalReplicaSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encryption: map['encryption'] == null ? null : (EncryptionImages.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest']! as bool).input(),
       name: (map['name'] as String).input(),
-      regionalReplicaCount: map['regionalReplicaCount'] == null ? null : (map['regionalReplicaCount'] as int).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
+      regionalReplicaCount: map['regionalReplicaCount'] == null ? null : (map['regionalReplicaCount']! as int).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType']! as String).input(),
     );
   }
 }

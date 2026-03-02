@@ -61,15 +61,15 @@ class SfdcInstanceArgs {
 
   factory SfdcInstanceArgs.fromMap(Map<String, dynamic> map) {
     return SfdcInstanceArgs(
-      authConfigId: map['authConfigId'] == null ? null : ((map['authConfigId'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      authConfigId: map['authConfigId'] == null ? null : ((map['authConfigId']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       productId: (map['productId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serviceAuthority: map['serviceAuthority'] == null ? null : (map['serviceAuthority'] as String).input(),
-      sfdcOrgId: map['sfdcOrgId'] == null ? null : (map['sfdcOrgId'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serviceAuthority: map['serviceAuthority'] == null ? null : (map['serviceAuthority']! as String).input(),
+      sfdcOrgId: map['sfdcOrgId'] == null ? null : (map['sfdcOrgId']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion {
 
   factory GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion(
-      customStrengthOptions: map['customStrengthOptions'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions.fromMap((map['customStrengthOptions'] as Map).cast<String, dynamic>())).input(),
+      customStrengthOptions: map['customStrengthOptions'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions.fromMap((map['customStrengthOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

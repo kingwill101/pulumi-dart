@@ -21,7 +21,7 @@ class AdditionalFeaturesServerConfigurations {
 
   factory AdditionalFeaturesServerConfigurations.fromMap(Map<String, dynamic> map) {
     return AdditionalFeaturesServerConfigurations(
-      isRServicesEnabled: map['isRServicesEnabled'] == null ? null : (map['isRServicesEnabled'] as bool).input(),
+      isRServicesEnabled: map['isRServicesEnabled'] == null ? null : (map['isRServicesEnabled']! as bool).input(),
     );
   }
 }

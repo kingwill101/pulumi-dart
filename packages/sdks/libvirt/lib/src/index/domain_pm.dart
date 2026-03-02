@@ -27,8 +27,8 @@ class DomainPm {
 
   factory DomainPm.fromMap(Map<String, dynamic> map) {
     return DomainPm(
-      suspendToDisk: map['suspendToDisk'] == null ? null : (DomainPmSuspendToDisk.fromMap((map['suspendToDisk'] as Map).cast<String, dynamic>())).input(),
-      suspendToMem: map['suspendToMem'] == null ? null : (DomainPmSuspendToMem.fromMap((map['suspendToMem'] as Map).cast<String, dynamic>())).input(),
+      suspendToDisk: map['suspendToDisk'] == null ? null : (DomainPmSuspendToDisk.fromMap((map['suspendToDisk']! as Map).cast<String, dynamic>())).input(),
+      suspendToMem: map['suspendToMem'] == null ? null : (DomainPmSuspendToMem.fromMap((map['suspendToMem']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

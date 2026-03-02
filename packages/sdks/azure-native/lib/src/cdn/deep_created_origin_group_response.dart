@@ -44,11 +44,11 @@ class DeepCreatedOriginGroupResponse {
 
   factory DeepCreatedOriginGroupResponse.fromMap(Map<String, dynamic> map) {
     return DeepCreatedOriginGroupResponse(
-      healthProbeSettings: map['healthProbeSettings'] == null ? null : (HealthProbeParametersResponse.fromMap((map['healthProbeSettings'] as Map).cast<String, dynamic>())).input(),
+      healthProbeSettings: map['healthProbeSettings'] == null ? null : (HealthProbeParametersResponse.fromMap((map['healthProbeSettings']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
       origins: (pulumi.Input.decodeList<ResourceReferenceResponse>(map['origins'], (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      responseBasedOriginErrorDetectionSettings: map['responseBasedOriginErrorDetectionSettings'] == null ? null : (ResponseBasedOriginErrorDetectionParametersResponse.fromMap((map['responseBasedOriginErrorDetectionSettings'] as Map).cast<String, dynamic>())).input(),
-      trafficRestorationTimeToHealedOrNewEndpointsInMinutes: map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes'] == null ? null : (map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes'] as int).input(),
+      responseBasedOriginErrorDetectionSettings: map['responseBasedOriginErrorDetectionSettings'] == null ? null : (ResponseBasedOriginErrorDetectionParametersResponse.fromMap((map['responseBasedOriginErrorDetectionSettings']! as Map).cast<String, dynamic>())).input(),
+      trafficRestorationTimeToHealedOrNewEndpointsInMinutes: map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes'] == null ? null : (map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes']! as int).input(),
     );
   }
 }

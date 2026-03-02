@@ -51,10 +51,10 @@ class DbSystemPropertiesDbHomeDatabaseProperties {
 
   factory DbSystemPropertiesDbHomeDatabaseProperties.fromMap(Map<String, dynamic> map) {
     return DbSystemPropertiesDbHomeDatabaseProperties(
-      databaseManagementConfig: map['databaseManagementConfig'] == null ? null : (DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig.fromMap((map['databaseManagementConfig'] as Map).cast<String, dynamic>())).input(),
-      dbBackupConfig: map['dbBackupConfig'] == null ? null : (DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig.fromMap((map['dbBackupConfig'] as Map).cast<String, dynamic>())).input(),
+      databaseManagementConfig: map['databaseManagementConfig'] == null ? null : (DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig.fromMap((map['databaseManagementConfig']! as Map).cast<String, dynamic>())).input(),
+      dbBackupConfig: map['dbBackupConfig'] == null ? null : (DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig.fromMap((map['dbBackupConfig']! as Map).cast<String, dynamic>())).input(),
       dbVersion: (map['dbVersion'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

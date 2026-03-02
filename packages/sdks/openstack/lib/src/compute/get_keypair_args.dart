@@ -38,8 +38,8 @@ class GetKeypairArgs {
   factory GetKeypairArgs.fromMap(Map<String, dynamic> map) {
     return GetKeypairArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
     );
   }
 }

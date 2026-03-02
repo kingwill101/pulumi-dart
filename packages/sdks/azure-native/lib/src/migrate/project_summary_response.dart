@@ -36,10 +36,10 @@ class ProjectSummaryResponse {
 
   factory ProjectSummaryResponse.fromMap(Map<String, dynamic> map) {
     return ProjectSummaryResponse(
-      extendedSummary: map['extendedSummary'] == null ? null : ((map['extendedSummary'] as Map).cast<String, String>()).input(),
+      extendedSummary: map['extendedSummary'] == null ? null : ((map['extendedSummary']! as Map).cast<String, String>()).input(),
       instanceType: (map['instanceType'] as String).input(),
-      lastSummaryRefreshedTime: map['lastSummaryRefreshedTime'] == null ? null : (map['lastSummaryRefreshedTime'] as String).input(),
-      refreshSummaryState: map['refreshSummaryState'] == null ? null : (map['refreshSummaryState'] as String).input(),
+      lastSummaryRefreshedTime: map['lastSummaryRefreshedTime'] == null ? null : (map['lastSummaryRefreshedTime']! as String).input(),
+      refreshSummaryState: map['refreshSummaryState'] == null ? null : (map['refreshSummaryState']! as String).input(),
     );
   }
 }

@@ -69,16 +69,16 @@ class VirtualMachineStorageOsDisk {
 
   factory VirtualMachineStorageOsDisk.fromMap(Map<String, dynamic> map) {
     return VirtualMachineStorageOsDisk(
-      caching: map['caching'] == null ? null : (map['caching'] as String).input(),
+      caching: map['caching'] == null ? null : (map['caching']! as String).input(),
       createOption: (map['createOption'] as String).input(),
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as int).input(),
-      imageUri: map['imageUri'] == null ? null : (map['imageUri'] as String).input(),
-      managedDiskId: map['managedDiskId'] == null ? null : (map['managedDiskId'] as String).input(),
-      managedDiskType: map['managedDiskType'] == null ? null : (map['managedDiskType'] as String).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as int).input(),
+      imageUri: map['imageUri'] == null ? null : (map['imageUri']! as String).input(),
+      managedDiskId: map['managedDiskId'] == null ? null : (map['managedDiskId']! as String).input(),
+      managedDiskType: map['managedDiskType'] == null ? null : (map['managedDiskType']! as String).input(),
       name: (map['name'] as String).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      vhdUri: map['vhdUri'] == null ? null : (map['vhdUri'] as String).input(),
-      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled'] as bool).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      vhdUri: map['vhdUri'] == null ? null : (map['vhdUri']! as String).input(),
+      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled']! as bool).input(),
     );
   }
 }

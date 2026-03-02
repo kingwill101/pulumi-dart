@@ -86,7 +86,7 @@ class GetComputeEnvironmentResult {
       statusReason: map['statusReason'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       type: map['type'] as String,
-      updatePolicies: pulumi.Input.decodeList<GetComputeEnvironmentUpdatePolicy>(map['updatePolicies'], (value) => GetComputeEnvironmentUpdatePolicy.fromMap((value as Map).cast<String, dynamic>())),
+      updatePolicies: pulumi.Input.decodeList<GetComputeEnvironmentUpdatePolicy>(map['updatePolicies']!, (value) => GetComputeEnvironmentUpdatePolicy.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -32,9 +32,9 @@ class StagingSettingsResponse {
 
   factory StagingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return StagingSettingsResponse(
-      enableCompression: map['enableCompression'] == null ? null : (map['enableCompression']).input(),
+      enableCompression: map['enableCompression'] == null ? null : (map['enableCompression']!).input(),
       linkedServiceName: (LinkedServiceReferenceResponse.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
-      path: map['path'] == null ? null : (map['path']).input(),
+      path: map['path'] == null ? null : (map['path']!).input(),
     );
   }
 }

@@ -86,18 +86,18 @@ class JobTemplateContainer {
 
   factory JobTemplateContainer.fromMap(Map<String, dynamic> map) {
     return JobTemplateContainer(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
       cpu: (map['cpu'] as double).input(),
-      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<JobTemplateContainerEnv>(map['envs'], (value) => JobTemplateContainerEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ephemeralStorage: map['ephemeralStorage'] == null ? null : (map['ephemeralStorage'] as String).input(),
+      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<JobTemplateContainerEnv>(map['envs']!, (value) => JobTemplateContainerEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ephemeralStorage: map['ephemeralStorage'] == null ? null : (map['ephemeralStorage']! as String).input(),
       image: (map['image'] as String).input(),
-      livenessProbes: map['livenessProbes'] == null ? null : (pulumi.Input.decodeList<JobTemplateContainerLivenessProbe>(map['livenessProbes'], (value) => JobTemplateContainerLivenessProbe.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      livenessProbes: map['livenessProbes'] == null ? null : (pulumi.Input.decodeList<JobTemplateContainerLivenessProbe>(map['livenessProbes']!, (value) => JobTemplateContainerLivenessProbe.fromMap((value as Map).cast<String, dynamic>()))).input(),
       memory: (map['memory'] as String).input(),
       name: (map['name'] as String).input(),
-      readinessProbes: map['readinessProbes'] == null ? null : (pulumi.Input.decodeList<JobTemplateContainerReadinessProbe>(map['readinessProbes'], (value) => JobTemplateContainerReadinessProbe.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      startupProbes: map['startupProbes'] == null ? null : (pulumi.Input.decodeList<JobTemplateContainerStartupProbe>(map['startupProbes'], (value) => JobTemplateContainerStartupProbe.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<JobTemplateContainerVolumeMount>(map['volumeMounts'], (value) => JobTemplateContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      readinessProbes: map['readinessProbes'] == null ? null : (pulumi.Input.decodeList<JobTemplateContainerReadinessProbe>(map['readinessProbes']!, (value) => JobTemplateContainerReadinessProbe.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      startupProbes: map['startupProbes'] == null ? null : (pulumi.Input.decodeList<JobTemplateContainerStartupProbe>(map['startupProbes']!, (value) => JobTemplateContainerStartupProbe.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<JobTemplateContainerVolumeMount>(map['volumeMounts']!, (value) => JobTemplateContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

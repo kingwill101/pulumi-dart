@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2Export {
 
   factory GooglePrivacyDlpV2Export.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Export(
-      profileTable: map['profileTable'] == null ? null : (GooglePrivacyDlpV2BigQueryTable.fromMap((map['profileTable'] as Map).cast<String, dynamic>())).input(),
+      profileTable: map['profileTable'] == null ? null : (GooglePrivacyDlpV2BigQueryTable.fromMap((map['profileTable']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

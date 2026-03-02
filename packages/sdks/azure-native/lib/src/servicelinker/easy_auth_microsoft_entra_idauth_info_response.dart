@@ -42,11 +42,11 @@ class EasyAuthMicrosoftEntraIDAuthInfoResponse {
 
   factory EasyAuthMicrosoftEntraIDAuthInfoResponse.fromMap(Map<String, dynamic> map) {
     return EasyAuthMicrosoftEntraIDAuthInfoResponse(
-      authMode: map['authMode'] == null ? null : (map['authMode'] as String).input(),
+      authMode: map['authMode'] == null ? null : (map['authMode']! as String).input(),
       authType: (map['authType'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      deleteOrUpdateBehavior: map['deleteOrUpdateBehavior'] == null ? null : (map['deleteOrUpdateBehavior'] as String).input(),
-      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      deleteOrUpdateBehavior: map['deleteOrUpdateBehavior'] == null ? null : (map['deleteOrUpdateBehavior']! as String).input(),
+      secret: map['secret'] == null ? null : (map['secret']! as String).input(),
     );
   }
 }

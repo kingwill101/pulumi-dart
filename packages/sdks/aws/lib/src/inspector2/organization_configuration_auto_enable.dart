@@ -40,11 +40,11 @@ class OrganizationConfigurationAutoEnable {
 
   factory OrganizationConfigurationAutoEnable.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationAutoEnable(
-      codeRepository: map['codeRepository'] == null ? null : (map['codeRepository'] as bool).input(),
+      codeRepository: map['codeRepository'] == null ? null : ((map['codeRepository'] as bool).input()).input(),
       ec2: (map['ec2'] as bool).input(),
       ecr: (map['ecr'] as bool).input(),
-      lambda: map['lambda'] == null ? null : (map['lambda'] as bool).input(),
-      lambdaCode: map['lambdaCode'] == null ? null : (map['lambdaCode'] as bool).input(),
+      lambda: map['lambda'] == null ? null : ((map['lambda'] as bool).input()).input(),
+      lambdaCode: map['lambdaCode'] == null ? null : ((map['lambdaCode'] as bool).input()).input(),
     );
   }
 }

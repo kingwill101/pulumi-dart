@@ -77,18 +77,18 @@ class ConsentArtifactHealthcareV1beta1Args {
 
   factory ConsentArtifactHealthcareV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ConsentArtifactHealthcareV1beta1Args(
-      consentContentScreenshots: map['consentContentScreenshots'] == null ? null : (pulumi.Input.decodeList<ImageHealthcareV1beta1>(map['consentContentScreenshots'], (value) => ImageHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      consentContentVersion: map['consentContentVersion'] == null ? null : (map['consentContentVersion'] as String).input(),
+      consentContentScreenshots: map['consentContentScreenshots'] == null ? null : (pulumi.Input.decodeList<ImageHealthcareV1beta1>(map['consentContentScreenshots']!, (value) => ImageHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      consentContentVersion: map['consentContentVersion'] == null ? null : (map['consentContentVersion']! as String).input(),
       consentStoreId: (map['consentStoreId'] as String).input(),
       datasetId: (map['datasetId'] as String).input(),
-      guardianSignature: map['guardianSignature'] == null ? null : (SignatureHealthcareV1beta1.fromMap((map['guardianSignature'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      guardianSignature: map['guardianSignature'] == null ? null : (SignatureHealthcareV1beta1.fromMap((map['guardianSignature']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       userId: (map['userId'] as String).input(),
-      userSignature: map['userSignature'] == null ? null : (SignatureHealthcareV1beta1.fromMap((map['userSignature'] as Map).cast<String, dynamic>())).input(),
-      witnessSignature: map['witnessSignature'] == null ? null : (SignatureHealthcareV1beta1.fromMap((map['witnessSignature'] as Map).cast<String, dynamic>())).input(),
+      userSignature: map['userSignature'] == null ? null : (SignatureHealthcareV1beta1.fromMap((map['userSignature']! as Map).cast<String, dynamic>())).input(),
+      witnessSignature: map['witnessSignature'] == null ? null : (SignatureHealthcareV1beta1.fromMap((map['witnessSignature']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

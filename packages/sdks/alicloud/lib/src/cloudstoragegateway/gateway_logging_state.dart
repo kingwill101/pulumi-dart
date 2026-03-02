@@ -36,10 +36,10 @@ class GatewayLoggingState {
 
   factory GatewayLoggingState.fromMap(Map<String, dynamic> map) {
     return GatewayLoggingState(
-      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId'] as String).input(),
-      slsLogstore: map['slsLogstore'] == null ? null : (map['slsLogstore'] as String).input(),
-      slsProject: map['slsProject'] == null ? null : (map['slsProject'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId']! as String).input(),
+      slsLogstore: map['slsLogstore'] == null ? null : (map['slsLogstore']! as String).input(),
+      slsProject: map['slsProject'] == null ? null : (map['slsProject']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

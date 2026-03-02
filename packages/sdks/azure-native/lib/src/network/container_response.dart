@@ -21,7 +21,7 @@ class ContainerResponse {
 
   factory ContainerResponse.fromMap(Map<String, dynamic> map) {
     return ContainerResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

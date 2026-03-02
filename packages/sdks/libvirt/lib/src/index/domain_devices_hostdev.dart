@@ -97,20 +97,20 @@ class DomainDevicesHostdev {
 
   factory DomainDevicesHostdev.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdev(
-      acpi: map['acpi'] == null ? null : (DomainDevicesHostdevAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
-      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
-      alias: map['alias'] == null ? null : (DomainDevicesHostdevAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
-      boot: map['boot'] == null ? null : (DomainDevicesHostdevBoot.fromMap((map['boot'] as Map).cast<String, dynamic>())).input(),
-      capsMisc: map['capsMisc'] == null ? null : (DomainDevicesHostdevCapsMisc.fromMap((map['capsMisc'] as Map).cast<String, dynamic>())).input(),
-      capsNet: map['capsNet'] == null ? null : (DomainDevicesHostdevCapsNet.fromMap((map['capsNet'] as Map).cast<String, dynamic>())).input(),
-      capsStorage: map['capsStorage'] == null ? null : (DomainDevicesHostdevCapsStorage.fromMap((map['capsStorage'] as Map).cast<String, dynamic>())).input(),
-      managed: map['managed'] == null ? null : (map['managed'] as bool).input(),
-      rom: map['rom'] == null ? null : (DomainDevicesHostdevRom.fromMap((map['rom'] as Map).cast<String, dynamic>())).input(),
-      subsysMDev: map['subsysMDev'] == null ? null : (DomainDevicesHostdevSubsysMDev.fromMap((map['subsysMDev'] as Map).cast<String, dynamic>())).input(),
-      subsysPci: map['subsysPci'] == null ? null : (DomainDevicesHostdevSubsysPci.fromMap((map['subsysPci'] as Map).cast<String, dynamic>())).input(),
-      subsysScsi: map['subsysScsi'] == null ? null : (DomainDevicesHostdevSubsysScsi.fromMap((map['subsysScsi'] as Map).cast<String, dynamic>())).input(),
-      subsysScsiHost: map['subsysScsiHost'] == null ? null : (DomainDevicesHostdevSubsysScsiHost.fromMap((map['subsysScsiHost'] as Map).cast<String, dynamic>())).input(),
-      subsysUsb: map['subsysUsb'] == null ? null : (DomainDevicesHostdevSubsysUsb.fromMap((map['subsysUsb'] as Map).cast<String, dynamic>())).input(),
+      acpi: map['acpi'] == null ? null : (DomainDevicesHostdevAcpi.fromMap((map['acpi']! as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : ((map['address']! as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesHostdevAlias.fromMap((map['alias']! as Map).cast<String, dynamic>())).input(),
+      boot: map['boot'] == null ? null : (DomainDevicesHostdevBoot.fromMap((map['boot']! as Map).cast<String, dynamic>())).input(),
+      capsMisc: map['capsMisc'] == null ? null : (DomainDevicesHostdevCapsMisc.fromMap((map['capsMisc']! as Map).cast<String, dynamic>())).input(),
+      capsNet: map['capsNet'] == null ? null : (DomainDevicesHostdevCapsNet.fromMap((map['capsNet']! as Map).cast<String, dynamic>())).input(),
+      capsStorage: map['capsStorage'] == null ? null : (DomainDevicesHostdevCapsStorage.fromMap((map['capsStorage']! as Map).cast<String, dynamic>())).input(),
+      managed: map['managed'] == null ? null : (map['managed']! as bool).input(),
+      rom: map['rom'] == null ? null : (DomainDevicesHostdevRom.fromMap((map['rom']! as Map).cast<String, dynamic>())).input(),
+      subsysMDev: map['subsysMDev'] == null ? null : (DomainDevicesHostdevSubsysMDev.fromMap((map['subsysMDev']! as Map).cast<String, dynamic>())).input(),
+      subsysPci: map['subsysPci'] == null ? null : (DomainDevicesHostdevSubsysPci.fromMap((map['subsysPci']! as Map).cast<String, dynamic>())).input(),
+      subsysScsi: map['subsysScsi'] == null ? null : (DomainDevicesHostdevSubsysScsi.fromMap((map['subsysScsi']! as Map).cast<String, dynamic>())).input(),
+      subsysScsiHost: map['subsysScsiHost'] == null ? null : (DomainDevicesHostdevSubsysScsiHost.fromMap((map['subsysScsiHost']! as Map).cast<String, dynamic>())).input(),
+      subsysUsb: map['subsysUsb'] == null ? null : (DomainDevicesHostdevSubsysUsb.fromMap((map['subsysUsb']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -38,9 +38,9 @@ class DomainDevicesHostdevSubsysScsiSourceIscsi {
 
   factory DomainDevicesHostdevSubsysScsiSourceIscsi.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevSubsysScsiSourceIscsi(
-      auth: map['auth'] == null ? null : (DomainDevicesHostdevSubsysScsiSourceIscsiAuth.fromMap((map['auth'] as Map).cast<String, dynamic>())).input(),
-      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<DomainDevicesHostdevSubsysScsiSourceIscsiHost>(map['hosts'], (value) => DomainDevicesHostdevSubsysScsiSourceIscsiHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      initiator: map['initiator'] == null ? null : (DomainDevicesHostdevSubsysScsiSourceIscsiInitiator.fromMap((map['initiator'] as Map).cast<String, dynamic>())).input(),
+      auth: map['auth'] == null ? null : (DomainDevicesHostdevSubsysScsiSourceIscsiAuth.fromMap((map['auth']! as Map).cast<String, dynamic>())).input(),
+      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<DomainDevicesHostdevSubsysScsiSourceIscsiHost>(map['hosts']!, (value) => DomainDevicesHostdevSubsysScsiSourceIscsiHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      initiator: map['initiator'] == null ? null : (DomainDevicesHostdevSubsysScsiSourceIscsiInitiator.fromMap((map['initiator']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
     );
   }

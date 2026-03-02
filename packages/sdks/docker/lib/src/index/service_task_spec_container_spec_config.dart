@@ -46,11 +46,11 @@ class ServiceTaskSpecContainerSpecConfig {
   factory ServiceTaskSpecContainerSpecConfig.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecContainerSpecConfig(
       configId: (map['configId'] as String).input(),
-      configName: map['configName'] == null ? null : (map['configName'] as String).input(),
-      fileGid: map['fileGid'] == null ? null : (map['fileGid'] as String).input(),
-      fileMode: map['fileMode'] == null ? null : (map['fileMode'] as int).input(),
+      configName: map['configName'] == null ? null : (map['configName']! as String).input(),
+      fileGid: map['fileGid'] == null ? null : (map['fileGid']! as String).input(),
+      fileMode: map['fileMode'] == null ? null : (map['fileMode']! as int).input(),
       fileName: (map['fileName'] as String).input(),
-      fileUid: map['fileUid'] == null ? null : (map['fileUid'] as String).input(),
+      fileUid: map['fileUid'] == null ? null : (map['fileUid']! as String).input(),
     );
   }
 }

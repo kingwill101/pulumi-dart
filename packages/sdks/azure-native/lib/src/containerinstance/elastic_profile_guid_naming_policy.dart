@@ -20,7 +20,7 @@ class ElasticProfileGuidNamingPolicy {
 
   factory ElasticProfileGuidNamingPolicy.fromMap(Map<String, dynamic> map) {
     return ElasticProfileGuidNamingPolicy(
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
     );
   }
 }

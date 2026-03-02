@@ -38,9 +38,9 @@ class HostingSiteArgs {
 
   factory HostingSiteArgs.fromMap(Map<String, dynamic> map) {
     return HostingSiteArgs(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
     );
   }
 }

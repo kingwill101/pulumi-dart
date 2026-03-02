@@ -46,12 +46,12 @@ class CustomResourceColumnDefinitionPatchApiextensionsK8sIoV1beta1 {
 
   factory CustomResourceColumnDefinitionPatchApiextensionsK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CustomResourceColumnDefinitionPatchApiextensionsK8sIoV1beta1(
-      jSONPath: map['JSONPath'] == null ? null : (map['JSONPath'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      jSONPath: map['JSONPath'] == null ? null : (map['JSONPath']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

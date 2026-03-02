@@ -35,10 +35,10 @@ class MLTransformParametersFindMatchesParameters {
 
   factory MLTransformParametersFindMatchesParameters.fromMap(Map<String, dynamic> map) {
     return MLTransformParametersFindMatchesParameters(
-      accuracyCostTradeOff: map['accuracyCostTradeOff'] == null ? null : (map['accuracyCostTradeOff'] as double).input(),
-      enforceProvidedLabels: map['enforceProvidedLabels'] == null ? null : (map['enforceProvidedLabels'] as bool).input(),
-      precisionRecallTradeOff: map['precisionRecallTradeOff'] == null ? null : (map['precisionRecallTradeOff'] as double).input(),
-      primaryKeyColumnName: map['primaryKeyColumnName'] == null ? null : (map['primaryKeyColumnName'] as String).input(),
+      accuracyCostTradeOff: map['accuracyCostTradeOff'] == null ? null : ((map['accuracyCostTradeOff'] as double).input()).input(),
+      enforceProvidedLabels: map['enforceProvidedLabels'] == null ? null : ((map['enforceProvidedLabels'] as bool).input()).input(),
+      precisionRecallTradeOff: map['precisionRecallTradeOff'] == null ? null : ((map['precisionRecallTradeOff'] as double).input()).input(),
+      primaryKeyColumnName: map['primaryKeyColumnName'] == null ? null : ((map['primaryKeyColumnName'] as String).input()).input(),
     );
   }
 }

@@ -35,8 +35,8 @@ class RuleGroupRuleStatementRegexPatternSetReferenceStatement {
   factory RuleGroupRuleStatementRegexPatternSetReferenceStatement.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRegexPatternSetReferenceStatement(
       arn: (map['arn'] as String).input(),
-      fieldToMatch: map['fieldToMatch'] == null ? null : (RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>())).input(),
-      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation>(map['textTransformations'], (value) => RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fieldToMatch: map['fieldToMatch'] == null ? null : ((RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input()).input(),
+      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation>(map['textTransformations']!, (value) => RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

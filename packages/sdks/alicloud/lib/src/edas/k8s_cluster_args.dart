@@ -30,7 +30,7 @@ class K8sClusterArgs {
   factory K8sClusterArgs.fromMap(Map<String, dynamic> map) {
     return K8sClusterArgs(
       csClusterId: (map['csClusterId'] as String).input(),
-      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class VirtualHubConnectionRoutingPropagatedRouteTable {
 
   factory VirtualHubConnectionRoutingPropagatedRouteTable.fromMap(Map<String, dynamic> map) {
     return VirtualHubConnectionRoutingPropagatedRouteTable(
-      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
-      routeTableIds: map['routeTableIds'] == null ? null : ((map['routeTableIds'] as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as List).cast<String>()).input(),
+      routeTableIds: map['routeTableIds'] == null ? null : ((map['routeTableIds']! as List).cast<String>()).input(),
     );
   }
 }

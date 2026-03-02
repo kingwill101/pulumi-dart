@@ -56,7 +56,7 @@ class V2OrganizationSourceIamBindingArgs {
 
   factory V2OrganizationSourceIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return V2OrganizationSourceIamBindingArgs(
-      condition: map['condition'] == null ? null : (V2OrganizationSourceIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (V2OrganizationSourceIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       members: ((map['members'] as List).cast<String>()).input(),
       organization: (map['organization'] as String).input(),
       role: (map['role'] as String).input(),

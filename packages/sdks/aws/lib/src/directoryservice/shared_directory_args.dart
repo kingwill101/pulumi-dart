@@ -48,10 +48,10 @@ class SharedDirectoryArgs {
   factory SharedDirectoryArgs.fromMap(Map<String, dynamic> map) {
     return SharedDirectoryArgs(
       directoryId: (map['directoryId'] as String).input(),
-      method: map['method'] == null ? null : (map['method'] as String).input(),
-      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      target: (SharedDirectoryTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      method: map['method'] == null ? null : ((map['method'] as String).input()).input(),
+      notes: map['notes'] == null ? null : ((map['notes'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      target: (SharedDirectoryTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

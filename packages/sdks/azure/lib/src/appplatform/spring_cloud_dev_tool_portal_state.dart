@@ -47,12 +47,12 @@ class SpringCloudDevToolPortalState {
 
   factory SpringCloudDevToolPortalState.fromMap(Map<String, dynamic> map) {
     return SpringCloudDevToolPortalState(
-      applicationAcceleratorEnabled: map['applicationAcceleratorEnabled'] == null ? null : (map['applicationAcceleratorEnabled'] as bool).input(),
-      applicationLiveViewEnabled: map['applicationLiveViewEnabled'] == null ? null : (map['applicationLiveViewEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
-      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId'] as String).input(),
-      sso: map['sso'] == null ? null : (SpringCloudDevToolPortalSso.fromMap((map['sso'] as Map).cast<String, dynamic>())).input(),
+      applicationAcceleratorEnabled: map['applicationAcceleratorEnabled'] == null ? null : (map['applicationAcceleratorEnabled']! as bool).input(),
+      applicationLiveViewEnabled: map['applicationLiveViewEnabled'] == null ? null : (map['applicationLiveViewEnabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
+      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId']! as String).input(),
+      sso: map['sso'] == null ? null : (SpringCloudDevToolPortalSso.fromMap((map['sso']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

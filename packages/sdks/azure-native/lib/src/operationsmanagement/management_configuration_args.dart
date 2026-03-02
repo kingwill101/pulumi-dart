@@ -40,9 +40,9 @@ class ManagementConfigurationArgs {
 
   factory ManagementConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ManagementConfigurationArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managementConfigurationName: map['managementConfigurationName'] == null ? null : (map['managementConfigurationName'] as String).input(),
-      properties: map['properties'] == null ? null : (ManagementConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managementConfigurationName: map['managementConfigurationName'] == null ? null : (map['managementConfigurationName']! as String).input(),
+      properties: map['properties'] == null ? null : (ManagementConfigurationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

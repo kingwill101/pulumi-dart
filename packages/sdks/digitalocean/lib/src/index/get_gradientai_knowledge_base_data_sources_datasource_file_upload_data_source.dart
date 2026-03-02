@@ -30,9 +30,9 @@ class GetGradientaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource {
 
   factory GetGradientaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource.fromMap(Map<String, dynamic> map) {
     return GetGradientaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource(
-      originalFileName: map['originalFileName'] == null ? null : (map['originalFileName'] as String).input(),
-      sizeInBytes: map['sizeInBytes'] == null ? null : (map['sizeInBytes'] as String).input(),
-      storedObjectKey: map['storedObjectKey'] == null ? null : (map['storedObjectKey'] as String).input(),
+      originalFileName: map['originalFileName'] == null ? null : (map['originalFileName']! as String).input(),
+      sizeInBytes: map['sizeInBytes'] == null ? null : (map['sizeInBytes']! as String).input(),
+      storedObjectKey: map['storedObjectKey'] == null ? null : (map['storedObjectKey']! as String).input(),
     );
   }
 }

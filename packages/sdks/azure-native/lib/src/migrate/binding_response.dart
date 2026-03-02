@@ -53,13 +53,13 @@ class BindingResponse {
 
   factory BindingResponse.fromMap(Map<String, dynamic> map) {
     return BindingResponse(
-      cert: map['cert'] == null ? null : (CertResponse.fromMap((map['cert'] as Map).cast<String, dynamic>())).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
+      cert: map['cert'] == null ? null : (CertResponse.fromMap((map['cert']! as Map).cast<String, dynamic>())).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
       id: (map['id'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      portMapping: map['portMapping'] == null ? null : (PortMappingResponse.fromMap((map['portMapping'] as Map).cast<String, dynamic>())).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      portMapping: map['portMapping'] == null ? null : (PortMappingResponse.fromMap((map['portMapping']! as Map).cast<String, dynamic>())).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
     );
   }
 }

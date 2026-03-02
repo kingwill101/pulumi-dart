@@ -41,7 +41,7 @@ class DedicatedHostAccountArgs {
     return DedicatedHostAccountArgs(
       accountName: (map['accountName'] as String).input(),
       accountPassword: (map['accountPassword'] as String).input(),
-      accountType: map['accountType'] == null ? null : (map['accountType'] as String).input(),
+      accountType: map['accountType'] == null ? null : (map['accountType']! as String).input(),
       dedicatedHostId: (map['dedicatedHostId'] as String).input(),
     );
   }

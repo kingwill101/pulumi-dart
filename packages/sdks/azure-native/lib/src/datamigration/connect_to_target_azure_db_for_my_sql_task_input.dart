@@ -32,7 +32,7 @@ class ConnectToTargetAzureDbForMySqlTaskInput {
 
   factory ConnectToTargetAzureDbForMySqlTaskInput.fromMap(Map<String, dynamic> map) {
     return ConnectToTargetAzureDbForMySqlTaskInput(
-      isOfflineMigration: map['isOfflineMigration'] == null ? null : (map['isOfflineMigration'] as bool).input(),
+      isOfflineMigration: map['isOfflineMigration'] == null ? null : (map['isOfflineMigration']! as bool).input(),
       sourceConnectionInfo: (MySqlConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
       targetConnectionInfo: (MySqlConnectionInfo.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
     );

@@ -22,7 +22,7 @@ class DeidServiceProperties {
 
   factory DeidServiceProperties.fromMap(Map<String, dynamic> map) {
     return DeidServiceProperties(
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (PublicNetworkAccess.fromValue(map['publicNetworkAccess'] as String)).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (PublicNetworkAccess.fromValue(map['publicNetworkAccess']! as String)).input(),
     );
   }
 }

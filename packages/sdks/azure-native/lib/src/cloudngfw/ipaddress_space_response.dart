@@ -26,8 +26,8 @@ class IPAddressSpaceResponse {
 
   factory IPAddressSpaceResponse.fromMap(Map<String, dynamic> map) {
     return IPAddressSpaceResponse(
-      addressSpace: map['addressSpace'] == null ? null : (map['addressSpace'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      addressSpace: map['addressSpace'] == null ? null : (map['addressSpace']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

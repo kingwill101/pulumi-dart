@@ -32,9 +32,9 @@ class PolicySecurityServicePolicyDataPolicyOption {
 
   factory PolicySecurityServicePolicyDataPolicyOption.fromMap(Map<String, dynamic> map) {
     return PolicySecurityServicePolicyDataPolicyOption(
-      networkAclCommonPolicy: map['networkAclCommonPolicy'] == null ? null : (PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy.fromMap((map['networkAclCommonPolicy'] as Map).cast<String, dynamic>())).input(),
-      networkFirewallPolicy: map['networkFirewallPolicy'] == null ? null : (PolicySecurityServicePolicyDataPolicyOptionNetworkFirewallPolicy.fromMap((map['networkFirewallPolicy'] as Map).cast<String, dynamic>())).input(),
-      thirdPartyFirewallPolicy: map['thirdPartyFirewallPolicy'] == null ? null : (PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy.fromMap((map['thirdPartyFirewallPolicy'] as Map).cast<String, dynamic>())).input(),
+      networkAclCommonPolicy: map['networkAclCommonPolicy'] == null ? null : ((PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy.fromMap((map['networkAclCommonPolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      networkFirewallPolicy: map['networkFirewallPolicy'] == null ? null : ((PolicySecurityServicePolicyDataPolicyOptionNetworkFirewallPolicy.fromMap((map['networkFirewallPolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      thirdPartyFirewallPolicy: map['thirdPartyFirewallPolicy'] == null ? null : ((PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy.fromMap((map['thirdPartyFirewallPolicy']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

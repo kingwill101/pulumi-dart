@@ -36,10 +36,10 @@ class ListMetaPatch {
 
   factory ListMetaPatch.fromMap(Map<String, dynamic> map) {
     return ListMetaPatch(
-      continue_: map['continue'] == null ? null : (map['continue'] as String).input(),
-      remainingItemCount: map['remainingItemCount'] == null ? null : (map['remainingItemCount'] as int).input(),
-      resourceVersion: map['resourceVersion'] == null ? null : (map['resourceVersion'] as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      continue_: map['continue'] == null ? null : (map['continue']! as String).input(),
+      remainingItemCount: map['remainingItemCount'] == null ? null : (map['remainingItemCount']! as int).input(),
+      resourceVersion: map['resourceVersion'] == null ? null : (map['resourceVersion']! as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
     );
   }
 }

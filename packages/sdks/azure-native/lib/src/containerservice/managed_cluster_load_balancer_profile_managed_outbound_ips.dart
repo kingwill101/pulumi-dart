@@ -26,8 +26,8 @@ class ManagedClusterLoadBalancerProfileManagedOutboundIPs {
 
   factory ManagedClusterLoadBalancerProfileManagedOutboundIPs.fromMap(Map<String, dynamic> map) {
     return ManagedClusterLoadBalancerProfileManagedOutboundIPs(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      countIPv6: map['countIPv6'] == null ? null : (map['countIPv6'] as int).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      countIPv6: map['countIPv6'] == null ? null : (map['countIPv6']! as int).input(),
     );
   }
 }

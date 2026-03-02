@@ -25,8 +25,8 @@ class DataLakeConfigurationReplicationConfiguration {
 
   factory DataLakeConfigurationReplicationConfiguration.fromMap(Map<String, dynamic> map) {
     return DataLakeConfigurationReplicationConfiguration(
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      regions: map['regions'] == null ? null : (((map['regions'] as List).cast<String>()).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
     );
   }
 }

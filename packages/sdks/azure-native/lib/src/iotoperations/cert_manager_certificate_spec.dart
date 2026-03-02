@@ -49,12 +49,12 @@ class CertManagerCertificateSpec {
 
   factory CertManagerCertificateSpec.fromMap(Map<String, dynamic> map) {
     return CertManagerCertificateSpec(
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
       issuerRef: (CertManagerIssuerRef.fromMap((map['issuerRef'] as Map).cast<String, dynamic>())).input(),
-      privateKey: map['privateKey'] == null ? null : (CertManagerPrivateKey.fromMap((map['privateKey'] as Map).cast<String, dynamic>())).input(),
-      renewBefore: map['renewBefore'] == null ? null : (map['renewBefore'] as String).input(),
-      san: map['san'] == null ? null : (SanForCert.fromMap((map['san'] as Map).cast<String, dynamic>())).input(),
-      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (CertManagerPrivateKey.fromMap((map['privateKey']! as Map).cast<String, dynamic>())).input(),
+      renewBefore: map['renewBefore'] == null ? null : (map['renewBefore']! as String).input(),
+      san: map['san'] == null ? null : (SanForCert.fromMap((map['san']! as Map).cast<String, dynamic>())).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName']! as String).input(),
     );
   }
 }

@@ -58,14 +58,14 @@ class SkuDescriptionResponse {
 
   factory SkuDescriptionResponse.fromMap(Map<String, dynamic> map) {
     return SkuDescriptionResponse(
-      capabilities: map['capabilities'] == null ? null : (pulumi.Input.decodeList<CapabilityResponse>(map['capabilities'], (value) => CapabilityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
-      family: map['family'] == null ? null : (map['family'] as String).input(),
-      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as String).input(),
-      skuCapacity: map['skuCapacity'] == null ? null : (SkuCapacityResponse.fromMap((map['skuCapacity'] as Map).cast<String, dynamic>())).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      capabilities: map['capabilities'] == null ? null : (pulumi.Input.decodeList<CapabilityResponse>(map['capabilities']!, (value) => CapabilityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
+      family: map['family'] == null ? null : (map['family']! as String).input(),
+      locations: map['locations'] == null ? null : ((map['locations']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as String).input(),
+      skuCapacity: map['skuCapacity'] == null ? null : (SkuCapacityResponse.fromMap((map['skuCapacity']! as Map).cast<String, dynamic>())).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

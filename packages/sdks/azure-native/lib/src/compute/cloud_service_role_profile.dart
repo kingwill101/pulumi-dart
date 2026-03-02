@@ -22,7 +22,7 @@ class CloudServiceRoleProfile {
 
   factory CloudServiceRoleProfile.fromMap(Map<String, dynamic> map) {
     return CloudServiceRoleProfile(
-      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<CloudServiceRoleProfileProperties>(map['roles'], (value) => CloudServiceRoleProfileProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<CloudServiceRoleProfileProperties>(map['roles']!, (value) => CloudServiceRoleProfileProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

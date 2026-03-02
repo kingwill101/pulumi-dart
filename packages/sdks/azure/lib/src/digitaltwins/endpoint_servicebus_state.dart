@@ -41,11 +41,11 @@ class EndpointServicebusState {
 
   factory EndpointServicebusState.fromMap(Map<String, dynamic> map) {
     return EndpointServicebusState(
-      deadLetterStorageSecret: map['deadLetterStorageSecret'] == null ? null : (map['deadLetterStorageSecret'] as String).input(),
-      digitalTwinsId: map['digitalTwinsId'] == null ? null : (map['digitalTwinsId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      servicebusPrimaryConnectionString: map['servicebusPrimaryConnectionString'] == null ? null : (map['servicebusPrimaryConnectionString'] as String).input(),
-      servicebusSecondaryConnectionString: map['servicebusSecondaryConnectionString'] == null ? null : (map['servicebusSecondaryConnectionString'] as String).input(),
+      deadLetterStorageSecret: map['deadLetterStorageSecret'] == null ? null : (map['deadLetterStorageSecret']! as String).input(),
+      digitalTwinsId: map['digitalTwinsId'] == null ? null : (map['digitalTwinsId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      servicebusPrimaryConnectionString: map['servicebusPrimaryConnectionString'] == null ? null : (map['servicebusPrimaryConnectionString']! as String).input(),
+      servicebusSecondaryConnectionString: map['servicebusSecondaryConnectionString'] == null ? null : (map['servicebusSecondaryConnectionString']! as String).input(),
     );
   }
 }

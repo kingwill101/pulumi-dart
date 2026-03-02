@@ -26,8 +26,8 @@ class V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStepIn
 
   factory V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStepIntent.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStepIntent(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      slots: map['slots'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStepIntentSlot>(map['slots'], (value) => V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStepIntentSlot.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      slots: map['slots'] == null ? null : ((pulumi.Input.decodeList<V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStepIntentSlot>(map['slots']!, (value) => V2modelsIntentInitialResponseSettingConditionalConditionalBranchNextStepIntentSlot.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

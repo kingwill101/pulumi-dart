@@ -36,7 +36,7 @@ class ApiOperationTagArgs {
     return ApiOperationTagArgs(
       apiOperationId: (map['apiOperationId'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

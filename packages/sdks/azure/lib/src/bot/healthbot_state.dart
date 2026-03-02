@@ -48,12 +48,12 @@ class HealthbotState {
 
   factory HealthbotState.fromMap(Map<String, dynamic> map) {
     return HealthbotState(
-      botManagementPortalUrl: map['botManagementPortalUrl'] == null ? null : (map['botManagementPortalUrl'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      botManagementPortalUrl: map['botManagementPortalUrl'] == null ? null : (map['botManagementPortalUrl']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

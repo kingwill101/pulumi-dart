@@ -84,13 +84,13 @@ class LicenseProfileMachineInstanceViewResponse {
       disenrollmentDate: (map['disenrollmentDate'] as String).input(),
       enrollmentDate: (map['enrollmentDate'] as String).input(),
       error: (ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
-      esuProfile: map['esuProfile'] == null ? null : (LicenseProfileMachineInstanceViewEsuPropertiesResponse.fromMap((map['esuProfile'] as Map).cast<String, dynamic>())).input(),
+      esuProfile: map['esuProfile'] == null ? null : (LicenseProfileMachineInstanceViewEsuPropertiesResponse.fromMap((map['esuProfile']! as Map).cast<String, dynamic>())).input(),
       licenseChannel: (map['licenseChannel'] as String).input(),
       licenseStatus: (map['licenseStatus'] as String).input(),
-      productFeatures: map['productFeatures'] == null ? null : (pulumi.Input.decodeList<ProductFeatureResponse>(map['productFeatures'], (value) => ProductFeatureResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      productType: map['productType'] == null ? null : (map['productType'] as String).input(),
-      softwareAssuranceCustomer: map['softwareAssuranceCustomer'] == null ? null : (map['softwareAssuranceCustomer'] as bool).input(),
-      subscriptionStatus: map['subscriptionStatus'] == null ? null : (map['subscriptionStatus'] as String).input(),
+      productFeatures: map['productFeatures'] == null ? null : (pulumi.Input.decodeList<ProductFeatureResponse>(map['productFeatures']!, (value) => ProductFeatureResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      productType: map['productType'] == null ? null : (map['productType']! as String).input(),
+      softwareAssuranceCustomer: map['softwareAssuranceCustomer'] == null ? null : (map['softwareAssuranceCustomer']! as bool).input(),
+      subscriptionStatus: map['subscriptionStatus'] == null ? null : (map['subscriptionStatus']! as String).input(),
     );
   }
 }

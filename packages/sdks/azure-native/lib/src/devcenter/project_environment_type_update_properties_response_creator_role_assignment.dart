@@ -22,7 +22,7 @@ class ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment {
 
   factory ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment.fromMap(Map<String, dynamic> map) {
     return ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment(
-      roles: map['roles'] == null ? null : (pulumi.Input.decodeMapValues<EnvironmentRoleResponse>(map['roles'], (value) => EnvironmentRoleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      roles: map['roles'] == null ? null : (pulumi.Input.decodeMapValues<EnvironmentRoleResponse>(map['roles']!, (value) => EnvironmentRoleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

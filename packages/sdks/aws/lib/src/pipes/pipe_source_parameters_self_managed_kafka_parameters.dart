@@ -62,15 +62,15 @@ class PipeSourceParametersSelfManagedKafkaParameters {
 
   factory PipeSourceParametersSelfManagedKafkaParameters.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersSelfManagedKafkaParameters(
-      additionalBootstrapServers: map['additionalBootstrapServers'] == null ? null : ((map['additionalBootstrapServers'] as List).cast<String>()).input(),
-      batchSize: map['batchSize'] == null ? null : (map['batchSize'] as int).input(),
-      consumerGroupId: map['consumerGroupId'] == null ? null : (map['consumerGroupId'] as String).input(),
-      credentials: map['credentials'] == null ? null : (PipeSourceParametersSelfManagedKafkaParametersCredentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
-      maximumBatchingWindowInSeconds: map['maximumBatchingWindowInSeconds'] == null ? null : (map['maximumBatchingWindowInSeconds'] as int).input(),
-      serverRootCaCertificate: map['serverRootCaCertificate'] == null ? null : (map['serverRootCaCertificate'] as String).input(),
-      startingPosition: map['startingPosition'] == null ? null : (map['startingPosition'] as String).input(),
+      additionalBootstrapServers: map['additionalBootstrapServers'] == null ? null : (((map['additionalBootstrapServers'] as List).cast<String>()).input()).input(),
+      batchSize: map['batchSize'] == null ? null : ((map['batchSize'] as int).input()).input(),
+      consumerGroupId: map['consumerGroupId'] == null ? null : ((map['consumerGroupId'] as String).input()).input(),
+      credentials: map['credentials'] == null ? null : ((PipeSourceParametersSelfManagedKafkaParametersCredentials.fromMap((map['credentials']! as Map).cast<String, dynamic>())).input()).input(),
+      maximumBatchingWindowInSeconds: map['maximumBatchingWindowInSeconds'] == null ? null : ((map['maximumBatchingWindowInSeconds'] as int).input()).input(),
+      serverRootCaCertificate: map['serverRootCaCertificate'] == null ? null : ((map['serverRootCaCertificate'] as String).input()).input(),
+      startingPosition: map['startingPosition'] == null ? null : ((map['startingPosition'] as String).input()).input(),
       topicName: (map['topicName'] as String).input(),
-      vpc: map['vpc'] == null ? null : (PipeSourceParametersSelfManagedKafkaParametersVpc.fromMap((map['vpc'] as Map).cast<String, dynamic>())).input(),
+      vpc: map['vpc'] == null ? null : ((PipeSourceParametersSelfManagedKafkaParametersVpc.fromMap((map['vpc']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

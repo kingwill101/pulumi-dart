@@ -52,13 +52,13 @@ class NetworkIp {
 
   factory NetworkIp.fromMap(Map<String, dynamic> map) {
     return NetworkIp(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      dhcp: map['dhcp'] == null ? null : (NetworkIpDhcp.fromMap((map['dhcp'] as Map).cast<String, dynamic>())).input(),
-      family: map['family'] == null ? null : (map['family'] as String).input(),
-      localPtr: map['localPtr'] == null ? null : (map['localPtr'] as String).input(),
-      netmask: map['netmask'] == null ? null : (map['netmask'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as double).input(),
-      tftp: map['tftp'] == null ? null : (NetworkIpTftp.fromMap((map['tftp'] as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      dhcp: map['dhcp'] == null ? null : (NetworkIpDhcp.fromMap((map['dhcp']! as Map).cast<String, dynamic>())).input(),
+      family: map['family'] == null ? null : (map['family']! as String).input(),
+      localPtr: map['localPtr'] == null ? null : (map['localPtr']! as String).input(),
+      netmask: map['netmask'] == null ? null : (map['netmask']! as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as double).input(),
+      tftp: map['tftp'] == null ? null : (NetworkIpTftp.fromMap((map['tftp']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

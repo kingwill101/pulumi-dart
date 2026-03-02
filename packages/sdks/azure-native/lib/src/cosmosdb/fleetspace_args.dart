@@ -55,13 +55,13 @@ class FleetspaceArgs {
 
   factory FleetspaceArgs.fromMap(Map<String, dynamic> map) {
     return FleetspaceArgs(
-      dataRegions: map['dataRegions'] == null ? null : ((map['dataRegions'] as List).cast<String>()).input(),
+      dataRegions: map['dataRegions'] == null ? null : ((map['dataRegions']! as List).cast<String>()).input(),
       fleetName: (map['fleetName'] as String).input(),
-      fleetspaceApiKind: map['fleetspaceApiKind'] == null ? null : (map['fleetspaceApiKind'] as String).input(),
-      fleetspaceName: map['fleetspaceName'] == null ? null : (map['fleetspaceName'] as String).input(),
+      fleetspaceApiKind: map['fleetspaceApiKind'] == null ? null : (map['fleetspaceApiKind']! as String).input(),
+      fleetspaceName: map['fleetspaceName'] == null ? null : (map['fleetspaceName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceTier: map['serviceTier'] == null ? null : (map['serviceTier'] as String).input(),
-      throughputPoolConfiguration: map['throughputPoolConfiguration'] == null ? null : (FleetspacePropertiesThroughputPoolConfiguration.fromMap((map['throughputPoolConfiguration'] as Map).cast<String, dynamic>())).input(),
+      serviceTier: map['serviceTier'] == null ? null : (map['serviceTier']! as String).input(),
+      throughputPoolConfiguration: map['throughputPoolConfiguration'] == null ? null : (FleetspacePropertiesThroughputPoolConfiguration.fromMap((map['throughputPoolConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

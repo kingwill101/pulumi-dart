@@ -22,7 +22,7 @@ class Transport {
 
   factory Transport.fromMap(Map<String, dynamic> map) {
     return Transport(
-      pubsub: map['pubsub'] == null ? null : (Pubsub.fromMap((map['pubsub'] as Map).cast<String, dynamic>())).input(),
+      pubsub: map['pubsub'] == null ? null : (Pubsub.fromMap((map['pubsub']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class WebAclAssociationConfig {
 
   factory WebAclAssociationConfig.fromMap(Map<String, dynamic> map) {
     return WebAclAssociationConfig(
-      requestBodies: map['requestBodies'] == null ? null : (pulumi.Input.decodeList<WebAclAssociationConfigRequestBody>(map['requestBodies'], (value) => WebAclAssociationConfigRequestBody.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestBodies: map['requestBodies'] == null ? null : ((pulumi.Input.decodeList<WebAclAssociationConfigRequestBody>(map['requestBodies']!, (value) => WebAclAssociationConfigRequestBody.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

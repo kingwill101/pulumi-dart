@@ -67,11 +67,11 @@ class RegionUrlMapDefaultUrlRedirect {
 
   factory RegionUrlMapDefaultUrlRedirect.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapDefaultUrlRedirect(
-      hostRedirect: map['hostRedirect'] == null ? null : (map['hostRedirect'] as String).input(),
-      httpsRedirect: map['httpsRedirect'] == null ? null : (map['httpsRedirect'] as bool).input(),
-      pathRedirect: map['pathRedirect'] == null ? null : (map['pathRedirect'] as String).input(),
-      prefixRedirect: map['prefixRedirect'] == null ? null : (map['prefixRedirect'] as String).input(),
-      redirectResponseCode: map['redirectResponseCode'] == null ? null : (map['redirectResponseCode'] as String).input(),
+      hostRedirect: map['hostRedirect'] == null ? null : (map['hostRedirect']! as String).input(),
+      httpsRedirect: map['httpsRedirect'] == null ? null : (map['httpsRedirect']! as bool).input(),
+      pathRedirect: map['pathRedirect'] == null ? null : (map['pathRedirect']! as String).input(),
+      prefixRedirect: map['prefixRedirect'] == null ? null : (map['prefixRedirect']! as String).input(),
+      redirectResponseCode: map['redirectResponseCode'] == null ? null : (map['redirectResponseCode']! as String).input(),
       stripQuery: (map['stripQuery'] as bool).input(),
     );
   }

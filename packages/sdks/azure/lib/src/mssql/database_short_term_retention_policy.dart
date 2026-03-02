@@ -25,7 +25,7 @@ class DatabaseShortTermRetentionPolicy {
 
   factory DatabaseShortTermRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return DatabaseShortTermRetentionPolicy(
-      backupIntervalInHours: map['backupIntervalInHours'] == null ? null : (map['backupIntervalInHours'] as int).input(),
+      backupIntervalInHours: map['backupIntervalInHours'] == null ? null : (map['backupIntervalInHours']! as int).input(),
       retentionDays: (map['retentionDays'] as int).input(),
     );
   }

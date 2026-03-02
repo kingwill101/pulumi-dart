@@ -25,8 +25,8 @@ class RepositoryAssociationKmsKeyDetails {
 
   factory RepositoryAssociationKmsKeyDetails.fromMap(Map<String, dynamic> map) {
     return RepositoryAssociationKmsKeyDetails(
-      encryptionOption: map['encryptionOption'] == null ? null : (map['encryptionOption'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      encryptionOption: map['encryptionOption'] == null ? null : ((map['encryptionOption'] as String).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
     );
   }
 }

@@ -99,17 +99,17 @@ class StreamArgs {
 
   factory StreamArgs.fromMap(Map<String, dynamic> map) {
     return StreamArgs(
-      backfillAll: map['backfillAll'] == null ? null : (StreamBackfillAll.fromMap((map['backfillAll'] as Map).cast<String, dynamic>())).input(),
-      backfillNone: map['backfillNone'] == null ? null : ((map['backfillNone'] as Map).cast<String, dynamic>()).input(),
-      createWithoutValidation: map['createWithoutValidation'] == null ? null : (map['createWithoutValidation'] as bool).input(),
-      customerManagedEncryptionKey: map['customerManagedEncryptionKey'] == null ? null : (map['customerManagedEncryptionKey'] as String).input(),
-      desiredState: map['desiredState'] == null ? null : (map['desiredState'] as String).input(),
+      backfillAll: map['backfillAll'] == null ? null : (StreamBackfillAll.fromMap((map['backfillAll']! as Map).cast<String, dynamic>())).input(),
+      backfillNone: map['backfillNone'] == null ? null : ((map['backfillNone']! as Map).cast<String, dynamic>()).input(),
+      createWithoutValidation: map['createWithoutValidation'] == null ? null : (map['createWithoutValidation']! as bool).input(),
+      customerManagedEncryptionKey: map['customerManagedEncryptionKey'] == null ? null : (map['customerManagedEncryptionKey']! as String).input(),
+      desiredState: map['desiredState'] == null ? null : (map['desiredState']! as String).input(),
       destinationConfig: (StreamDestinationConfig.fromMap((map['destinationConfig'] as Map).cast<String, dynamic>())).input(),
       displayName: (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      ruleSets: map['ruleSets'] == null ? null : (pulumi.Input.decodeList<StreamRuleSet>(map['ruleSets'], (value) => StreamRuleSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      ruleSets: map['ruleSets'] == null ? null : (pulumi.Input.decodeList<StreamRuleSet>(map['ruleSets']!, (value) => StreamRuleSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
       sourceConfig: (StreamSourceConfig.fromMap((map['sourceConfig'] as Map).cast<String, dynamic>())).input(),
       streamId: (map['streamId'] as String).input(),
     );

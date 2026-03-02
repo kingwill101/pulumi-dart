@@ -35,10 +35,10 @@ class GetVirtualNodeSpecListenerTimeout {
 
   factory GetVirtualNodeSpecListenerTimeout.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerTimeout(
-      grpcs: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutGrpc>(map['grpcs'], (value) => GetVirtualNodeSpecListenerTimeoutGrpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      http2s: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutHttp2>(map['http2s'], (value) => GetVirtualNodeSpecListenerTimeoutHttp2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      https: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutHttp>(map['https'], (value) => GetVirtualNodeSpecListenerTimeoutHttp.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tcps: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutTcp>(map['tcps'], (value) => GetVirtualNodeSpecListenerTimeoutTcp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      grpcs: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutGrpc>(map['grpcs']!, (value) => GetVirtualNodeSpecListenerTimeoutGrpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      http2s: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutHttp2>(map['http2s']!, (value) => GetVirtualNodeSpecListenerTimeoutHttp2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      https: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutHttp>(map['https']!, (value) => GetVirtualNodeSpecListenerTimeoutHttp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tcps: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutTcp>(map['tcps']!, (value) => GetVirtualNodeSpecListenerTimeoutTcp.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

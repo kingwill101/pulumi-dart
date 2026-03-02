@@ -81,17 +81,17 @@ class ShareNetworkState {
 
   factory ShareNetworkState.fromMap(Map<String, dynamic> map) {
     return ShareNetworkState(
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
-      neutronNetId: map['neutronNetId'] == null ? null : (map['neutronNetId'] as String).input(),
-      neutronSubnetId: map['neutronSubnetId'] == null ? null : (map['neutronSubnetId'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityServiceIds: map['securityServiceIds'] == null ? null : ((map['securityServiceIds'] as List).cast<String>()).input(),
-      segmentationId: map['segmentationId'] == null ? null : (map['segmentationId'] as int).input(),
+      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType']! as String).input(),
+      neutronNetId: map['neutronNetId'] == null ? null : (map['neutronNetId']! as String).input(),
+      neutronSubnetId: map['neutronSubnetId'] == null ? null : (map['neutronSubnetId']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      securityServiceIds: map['securityServiceIds'] == null ? null : ((map['securityServiceIds']! as List).cast<String>()).input(),
+      segmentationId: map['segmentationId'] == null ? null : (map['segmentationId']! as int).input(),
     );
   }
 }

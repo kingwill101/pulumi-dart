@@ -26,7 +26,7 @@ class ListGlobalRulestackAdvancedSecurityObjectsResult {
 
   factory ListGlobalRulestackAdvancedSecurityObjectsResult.fromMap(Map<String, dynamic> map) {
     return ListGlobalRulestackAdvancedSecurityObjectsResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
       value: AdvSecurityObjectModelResponse.fromMap((map['value'] as Map).cast<String, dynamic>()),
     );
   }

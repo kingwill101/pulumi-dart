@@ -37,10 +37,10 @@ class CxAgentAdvancedSettingsSpeechSettings {
 
   factory CxAgentAdvancedSettingsSpeechSettings.fromMap(Map<String, dynamic> map) {
     return CxAgentAdvancedSettingsSpeechSettings(
-      endpointerSensitivity: map['endpointerSensitivity'] == null ? null : (map['endpointerSensitivity'] as int).input(),
-      models: map['models'] == null ? null : ((map['models'] as Map).cast<String, String>()).input(),
-      noSpeechTimeout: map['noSpeechTimeout'] == null ? null : (map['noSpeechTimeout'] as String).input(),
-      useTimeoutBasedEndpointing: map['useTimeoutBasedEndpointing'] == null ? null : (map['useTimeoutBasedEndpointing'] as bool).input(),
+      endpointerSensitivity: map['endpointerSensitivity'] == null ? null : (map['endpointerSensitivity']! as int).input(),
+      models: map['models'] == null ? null : ((map['models']! as Map).cast<String, String>()).input(),
+      noSpeechTimeout: map['noSpeechTimeout'] == null ? null : (map['noSpeechTimeout']! as String).input(),
+      useTimeoutBasedEndpointing: map['useTimeoutBasedEndpointing'] == null ? null : (map['useTimeoutBasedEndpointing']! as bool).input(),
     );
   }
 }

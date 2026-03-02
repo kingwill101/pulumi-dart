@@ -51,13 +51,13 @@ class DiskResponse {
 
   factory DiskResponse.fromMap(Map<String, dynamic> map) {
     return DiskResponse(
-      attachedTo: map['attachedTo'] == null ? null : (map['attachedTo'] as String).input(),
-      attachmentState: map['attachmentState'] == null ? null : (map['attachmentState'] as String).input(),
-      diskName: map['diskName'] == null ? null : (map['diskName'] as String).input(),
-      iops: map['iops'] == null ? null : (map['iops'] as int).input(),
-      isSystemDisk: map['isSystemDisk'] == null ? null : (map['isSystemDisk'] as bool).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      sizeInGb: map['sizeInGb'] == null ? null : (map['sizeInGb'] as String).input(),
+      attachedTo: map['attachedTo'] == null ? null : (map['attachedTo']! as String).input(),
+      attachmentState: map['attachmentState'] == null ? null : (map['attachmentState']! as String).input(),
+      diskName: map['diskName'] == null ? null : (map['diskName']! as String).input(),
+      iops: map['iops'] == null ? null : (map['iops']! as int).input(),
+      isSystemDisk: map['isSystemDisk'] == null ? null : (map['isSystemDisk']! as bool).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      sizeInGb: map['sizeInGb'] == null ? null : (map['sizeInGb']! as String).input(),
     );
   }
 }

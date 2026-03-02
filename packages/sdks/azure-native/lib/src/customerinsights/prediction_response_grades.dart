@@ -31,9 +31,9 @@ class PredictionResponseGrades {
 
   factory PredictionResponseGrades.fromMap(Map<String, dynamic> map) {
     return PredictionResponseGrades(
-      gradeName: map['gradeName'] == null ? null : (map['gradeName'] as String).input(),
-      maxScoreThreshold: map['maxScoreThreshold'] == null ? null : (map['maxScoreThreshold'] as int).input(),
-      minScoreThreshold: map['minScoreThreshold'] == null ? null : (map['minScoreThreshold'] as int).input(),
+      gradeName: map['gradeName'] == null ? null : (map['gradeName']! as String).input(),
+      maxScoreThreshold: map['maxScoreThreshold'] == null ? null : (map['maxScoreThreshold']! as int).input(),
+      minScoreThreshold: map['minScoreThreshold'] == null ? null : (map['minScoreThreshold']! as int).input(),
     );
   }
 }

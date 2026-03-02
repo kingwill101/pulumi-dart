@@ -43,7 +43,7 @@ class DataboxJobSecretsResponse {
       dcAccessSecurityCode: (DcAccessSecurityCodeResponse.fromMap((map['dcAccessSecurityCode'] as Map).cast<String, dynamic>())).input(),
       error: (CloudErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
       jobSecretsType: (map['jobSecretsType'] as String).input(),
-      podSecrets: map['podSecrets'] == null ? null : (pulumi.Input.decodeList<DataBoxSecretResponse>(map['podSecrets'], (value) => DataBoxSecretResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      podSecrets: map['podSecrets'] == null ? null : (pulumi.Input.decodeList<DataBoxSecretResponse>(map['podSecrets']!, (value) => DataBoxSecretResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

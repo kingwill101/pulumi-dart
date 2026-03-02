@@ -38,7 +38,7 @@ class GetModelRetailV2betaArgs {
       catalogId: (map['catalogId'] as String).input(),
       location: (map['location'] as String).input(),
       modelId: (map['modelId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

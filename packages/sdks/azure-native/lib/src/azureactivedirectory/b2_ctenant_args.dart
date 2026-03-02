@@ -60,14 +60,14 @@ class B2CTenantArgs {
 
   factory B2CTenantArgs.fromMap(Map<String, dynamic> map) {
     return B2CTenantArgs(
-      countryCode: map['countryCode'] == null ? null : (map['countryCode'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      isGoLocalTenant: map['isGoLocalTenant'] == null ? null : (map['isGoLocalTenant'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      countryCode: map['countryCode'] == null ? null : (map['countryCode']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      isGoLocalTenant: map['isGoLocalTenant'] == null ? null : (map['isGoLocalTenant']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
       sku: (B2CResourceSKU.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

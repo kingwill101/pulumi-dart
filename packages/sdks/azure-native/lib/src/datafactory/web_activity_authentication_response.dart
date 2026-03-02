@@ -53,13 +53,13 @@ class WebActivityAuthenticationResponse {
 
   factory WebActivityAuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return WebActivityAuthenticationResponse(
-      credential: map['credential'] == null ? null : (CredentialReferenceResponse.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
-      password: map['password'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
-      pfx: map['pfx'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['pfx'] as Map).cast<String, dynamic>())).input(),
-      resource: map['resource'] == null ? null : (map['resource']).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      userTenant: map['userTenant'] == null ? null : (map['userTenant']).input(),
-      username: map['username'] == null ? null : (map['username']).input(),
+      credential: map['credential'] == null ? null : (CredentialReferenceResponse.fromMap((map['credential']! as Map).cast<String, dynamic>())).input(),
+      password: map['password'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['password']! as Map).cast<String, dynamic>())).input(),
+      pfx: map['pfx'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['pfx']! as Map).cast<String, dynamic>())).input(),
+      resource: map['resource'] == null ? null : (map['resource']!).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      userTenant: map['userTenant'] == null ? null : (map['userTenant']!).input(),
+      username: map['username'] == null ? null : (map['username']!).input(),
     );
   }
 }

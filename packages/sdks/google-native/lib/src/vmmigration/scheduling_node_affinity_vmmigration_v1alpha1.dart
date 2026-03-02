@@ -32,9 +32,9 @@ class SchedulingNodeAffinityVmmigrationV1alpha1 {
 
   factory SchedulingNodeAffinityVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return SchedulingNodeAffinityVmmigrationV1alpha1(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      operator: map['operator'] == null ? null : (SchedulingNodeAffinityOperatorVmmigrationV1alpha1.fromValue(map['operator'] as String)).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      operator: map['operator'] == null ? null : (SchedulingNodeAffinityOperatorVmmigrationV1alpha1.fromValue(map['operator']! as String)).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

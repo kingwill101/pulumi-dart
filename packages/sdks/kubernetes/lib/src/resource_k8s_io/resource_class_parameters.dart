@@ -50,12 +50,12 @@ class ResourceClassParameters {
 
   factory ResourceClassParameters.fromMap(Map<String, dynamic> map) {
     return ResourceClassParameters(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<ResourceFilter>(map['filters'], (value) => ResourceFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      generatedFrom: map['generatedFrom'] == null ? null : (ResourceClassParametersReferenceResourceK8sIoV1alpha2.fromMap((map['generatedFrom'] as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      vendorParameters: map['vendorParameters'] == null ? null : (pulumi.Input.decodeList<VendorParameters>(map['vendorParameters'], (value) => VendorParameters.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<ResourceFilter>(map['filters']!, (value) => ResourceFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      generatedFrom: map['generatedFrom'] == null ? null : (ResourceClassParametersReferenceResourceK8sIoV1alpha2.fromMap((map['generatedFrom']! as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      vendorParameters: map['vendorParameters'] == null ? null : (pulumi.Input.decodeList<VendorParameters>(map['vendorParameters']!, (value) => VendorParameters.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

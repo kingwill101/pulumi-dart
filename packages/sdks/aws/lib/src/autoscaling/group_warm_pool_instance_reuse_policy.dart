@@ -20,7 +20,7 @@ class GroupWarmPoolInstanceReusePolicy {
 
   factory GroupWarmPoolInstanceReusePolicy.fromMap(Map<String, dynamic> map) {
     return GroupWarmPoolInstanceReusePolicy(
-      reuseOnScaleIn: map['reuseOnScaleIn'] == null ? null : (map['reuseOnScaleIn'] as bool).input(),
+      reuseOnScaleIn: map['reuseOnScaleIn'] == null ? null : ((map['reuseOnScaleIn'] as bool).input()).input(),
     );
   }
 }

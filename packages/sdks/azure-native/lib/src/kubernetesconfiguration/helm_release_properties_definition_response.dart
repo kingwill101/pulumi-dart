@@ -42,11 +42,11 @@ class HelmReleasePropertiesDefinitionResponse {
 
   factory HelmReleasePropertiesDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return HelmReleasePropertiesDefinitionResponse(
-      failureCount: map['failureCount'] == null ? null : (map['failureCount'] as double).input(),
-      helmChartRef: map['helmChartRef'] == null ? null : (ObjectReferenceDefinitionResponse.fromMap((map['helmChartRef'] as Map).cast<String, dynamic>())).input(),
-      installFailureCount: map['installFailureCount'] == null ? null : (map['installFailureCount'] as double).input(),
-      lastRevisionApplied: map['lastRevisionApplied'] == null ? null : (map['lastRevisionApplied'] as double).input(),
-      upgradeFailureCount: map['upgradeFailureCount'] == null ? null : (map['upgradeFailureCount'] as double).input(),
+      failureCount: map['failureCount'] == null ? null : (map['failureCount']! as double).input(),
+      helmChartRef: map['helmChartRef'] == null ? null : (ObjectReferenceDefinitionResponse.fromMap((map['helmChartRef']! as Map).cast<String, dynamic>())).input(),
+      installFailureCount: map['installFailureCount'] == null ? null : (map['installFailureCount']! as double).input(),
+      lastRevisionApplied: map['lastRevisionApplied'] == null ? null : (map['lastRevisionApplied']! as double).input(),
+      upgradeFailureCount: map['upgradeFailureCount'] == null ? null : (map['upgradeFailureCount']! as double).input(),
     );
   }
 }

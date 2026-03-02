@@ -39,8 +39,8 @@ class GetRecordsArgs {
   factory GetRecordsArgs.fromMap(Map<String, dynamic> map) {
     return GetRecordsArgs(
       domain: (map['domain'] as String).input(),
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetRecordsFilter>(map['filters'], (value) => GetRecordsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetRecordsSort>(map['sorts'], (value) => GetRecordsSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetRecordsFilter>(map['filters']!, (value) => GetRecordsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetRecordsSort>(map['sorts']!, (value) => GetRecordsSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

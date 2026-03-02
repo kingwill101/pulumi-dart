@@ -98,19 +98,19 @@ class SqlContainerArgs {
   factory SqlContainerArgs.fromMap(Map<String, dynamic> map) {
     return SqlContainerArgs(
       accountName: (map['accountName'] as String).input(),
-      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl'] as int).input(),
-      autoscaleSettings: map['autoscaleSettings'] == null ? null : (SqlContainerAutoscaleSettings.fromMap((map['autoscaleSettings'] as Map).cast<String, dynamic>())).input(),
-      conflictResolutionPolicy: map['conflictResolutionPolicy'] == null ? null : (SqlContainerConflictResolutionPolicy.fromMap((map['conflictResolutionPolicy'] as Map).cast<String, dynamic>())).input(),
+      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl']! as int).input(),
+      autoscaleSettings: map['autoscaleSettings'] == null ? null : (SqlContainerAutoscaleSettings.fromMap((map['autoscaleSettings']! as Map).cast<String, dynamic>())).input(),
+      conflictResolutionPolicy: map['conflictResolutionPolicy'] == null ? null : (SqlContainerConflictResolutionPolicy.fromMap((map['conflictResolutionPolicy']! as Map).cast<String, dynamic>())).input(),
       databaseName: (map['databaseName'] as String).input(),
-      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl'] as int).input(),
-      indexingPolicy: map['indexingPolicy'] == null ? null : (SqlContainerIndexingPolicy.fromMap((map['indexingPolicy'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      partitionKeyKind: map['partitionKeyKind'] == null ? null : (map['partitionKeyKind'] as String).input(),
+      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl']! as int).input(),
+      indexingPolicy: map['indexingPolicy'] == null ? null : (SqlContainerIndexingPolicy.fromMap((map['indexingPolicy']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      partitionKeyKind: map['partitionKeyKind'] == null ? null : (map['partitionKeyKind']! as String).input(),
       partitionKeyPaths: ((map['partitionKeyPaths'] as List).cast<String>()).input(),
-      partitionKeyVersion: map['partitionKeyVersion'] == null ? null : (map['partitionKeyVersion'] as int).input(),
+      partitionKeyVersion: map['partitionKeyVersion'] == null ? null : (map['partitionKeyVersion']! as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
-      uniqueKeys: map['uniqueKeys'] == null ? null : (pulumi.Input.decodeList<SqlContainerUniqueKey>(map['uniqueKeys'], (value) => SqlContainerUniqueKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput']! as int).input(),
+      uniqueKeys: map['uniqueKeys'] == null ? null : (pulumi.Input.decodeList<SqlContainerUniqueKey>(map['uniqueKeys']!, (value) => SqlContainerUniqueKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

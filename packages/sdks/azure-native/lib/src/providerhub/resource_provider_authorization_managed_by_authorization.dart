@@ -31,9 +31,9 @@ class ResourceProviderAuthorizationManagedByAuthorization {
 
   factory ResourceProviderAuthorizationManagedByAuthorization.fromMap(Map<String, dynamic> map) {
     return ResourceProviderAuthorizationManagedByAuthorization(
-      additionalAuthorizations: map['additionalAuthorizations'] == null ? null : (pulumi.Input.decodeList<AdditionalAuthorization>(map['additionalAuthorizations'], (value) => AdditionalAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      allowManagedByInheritance: map['allowManagedByInheritance'] == null ? null : (map['allowManagedByInheritance'] as bool).input(),
-      managedByResourceRoleDefinitionId: map['managedByResourceRoleDefinitionId'] == null ? null : (map['managedByResourceRoleDefinitionId'] as String).input(),
+      additionalAuthorizations: map['additionalAuthorizations'] == null ? null : (pulumi.Input.decodeList<AdditionalAuthorization>(map['additionalAuthorizations']!, (value) => AdditionalAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowManagedByInheritance: map['allowManagedByInheritance'] == null ? null : (map['allowManagedByInheritance']! as bool).input(),
+      managedByResourceRoleDefinitionId: map['managedByResourceRoleDefinitionId'] == null ? null : (map['managedByResourceRoleDefinitionId']! as String).input(),
     );
   }
 }

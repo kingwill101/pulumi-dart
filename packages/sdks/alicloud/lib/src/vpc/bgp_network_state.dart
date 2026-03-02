@@ -36,10 +36,10 @@ class BgpNetworkState {
 
   factory BgpNetworkState.fromMap(Map<String, dynamic> map) {
     return BgpNetworkState(
-      dstCidrBlock: map['dstCidrBlock'] == null ? null : (map['dstCidrBlock'] as String).input(),
-      routerId: map['routerId'] == null ? null : (map['routerId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      dstCidrBlock: map['dstCidrBlock'] == null ? null : (map['dstCidrBlock']! as String).input(),
+      routerId: map['routerId'] == null ? null : (map['routerId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

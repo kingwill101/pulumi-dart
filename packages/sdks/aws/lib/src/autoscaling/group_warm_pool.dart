@@ -36,10 +36,10 @@ class GroupWarmPool {
 
   factory GroupWarmPool.fromMap(Map<String, dynamic> map) {
     return GroupWarmPool(
-      instanceReusePolicy: map['instanceReusePolicy'] == null ? null : (GroupWarmPoolInstanceReusePolicy.fromMap((map['instanceReusePolicy'] as Map).cast<String, dynamic>())).input(),
-      maxGroupPreparedCapacity: map['maxGroupPreparedCapacity'] == null ? null : (map['maxGroupPreparedCapacity'] as int).input(),
-      minSize: map['minSize'] == null ? null : (map['minSize'] as int).input(),
-      poolState: map['poolState'] == null ? null : (map['poolState'] as String).input(),
+      instanceReusePolicy: map['instanceReusePolicy'] == null ? null : ((GroupWarmPoolInstanceReusePolicy.fromMap((map['instanceReusePolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      maxGroupPreparedCapacity: map['maxGroupPreparedCapacity'] == null ? null : ((map['maxGroupPreparedCapacity'] as int).input()).input(),
+      minSize: map['minSize'] == null ? null : ((map['minSize'] as int).input()).input(),
+      poolState: map['poolState'] == null ? null : ((map['poolState'] as String).input()).input(),
     );
   }
 }

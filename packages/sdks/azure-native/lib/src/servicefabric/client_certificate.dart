@@ -36,10 +36,10 @@ class ClientCertificate {
 
   factory ClientCertificate.fromMap(Map<String, dynamic> map) {
     return ClientCertificate(
-      commonName: map['commonName'] == null ? null : (map['commonName'] as String).input(),
+      commonName: map['commonName'] == null ? null : (map['commonName']! as String).input(),
       isAdmin: (map['isAdmin'] as bool).input(),
-      issuerThumbprint: map['issuerThumbprint'] == null ? null : (map['issuerThumbprint'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      issuerThumbprint: map['issuerThumbprint'] == null ? null : (map['issuerThumbprint']! as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

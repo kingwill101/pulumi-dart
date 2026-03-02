@@ -96,21 +96,21 @@ class WebHookActivity {
 
   factory WebHookActivity.fromMap(Map<String, dynamic> map) {
     return WebHookActivity(
-      authentication: map['authentication'] == null ? null : (WebActivityAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      body: map['body'] == null ? null : (map['body']).input(),
-      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn'], (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, dynamic>()).input(),
+      authentication: map['authentication'] == null ? null : (WebActivityAuthentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
+      body: map['body'] == null ? null : (map['body']!).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn']!, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      headers: map['headers'] == null ? null : ((map['headers']! as Map).cast<String, dynamic>()).input(),
       method: (map['method'] as String).input(),
       name: (map['name'] as String).input(),
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
-      policy: map['policy'] == null ? null : (SecureInputOutputPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
-      reportStatusOnCallBack: map['reportStatusOnCallBack'] == null ? null : (map['reportStatusOnCallBack']).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs']! as String).input(),
+      policy: map['policy'] == null ? null : (SecureInputOutputPolicy.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
+      reportStatusOnCallBack: map['reportStatusOnCallBack'] == null ? null : (map['reportStatusOnCallBack']!).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
       type: (map['type'] as String).input(),
       url: (map['url']).input(),
-      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties'], (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties']!, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

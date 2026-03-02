@@ -35,10 +35,10 @@ class MultitenantDistributionViewerCertificate {
 
   factory MultitenantDistributionViewerCertificate.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionViewerCertificate(
-      acmCertificateArn: map['acmCertificateArn'] == null ? null : (map['acmCertificateArn'] as String).input(),
-      cloudfrontDefaultCertificate: map['cloudfrontDefaultCertificate'] == null ? null : (map['cloudfrontDefaultCertificate'] as bool).input(),
-      minimumProtocolVersion: map['minimumProtocolVersion'] == null ? null : (map['minimumProtocolVersion'] as String).input(),
-      sslSupportMethod: map['sslSupportMethod'] == null ? null : (map['sslSupportMethod'] as String).input(),
+      acmCertificateArn: map['acmCertificateArn'] == null ? null : ((map['acmCertificateArn'] as String).input()).input(),
+      cloudfrontDefaultCertificate: map['cloudfrontDefaultCertificate'] == null ? null : ((map['cloudfrontDefaultCertificate'] as bool).input()).input(),
+      minimumProtocolVersion: map['minimumProtocolVersion'] == null ? null : ((map['minimumProtocolVersion'] as String).input()).input(),
+      sslSupportMethod: map['sslSupportMethod'] == null ? null : ((map['sslSupportMethod'] as String).input()).input(),
     );
   }
 }

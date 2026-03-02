@@ -43,10 +43,10 @@ class GetVolumeSnapshotArgs {
 
   factory GetVolumeSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetVolumeSnapshotArgs(
-      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

@@ -25,7 +25,7 @@ class DatasetBinaryCompression {
 
   factory DatasetBinaryCompression.fromMap(Map<String, dynamic> map) {
     return DatasetBinaryCompression(
-      level: map['level'] == null ? null : (map['level'] as String).input(),
+      level: map['level'] == null ? null : (map['level']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

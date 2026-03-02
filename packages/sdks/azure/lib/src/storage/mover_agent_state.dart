@@ -41,11 +41,11 @@ class MoverAgentState {
 
   factory MoverAgentState.fromMap(Map<String, dynamic> map) {
     return MoverAgentState(
-      arcVirtualMachineId: map['arcVirtualMachineId'] == null ? null : (map['arcVirtualMachineId'] as String).input(),
-      arcVirtualMachineUuid: map['arcVirtualMachineUuid'] == null ? null : (map['arcVirtualMachineUuid'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      storageMoverId: map['storageMoverId'] == null ? null : (map['storageMoverId'] as String).input(),
+      arcVirtualMachineId: map['arcVirtualMachineId'] == null ? null : (map['arcVirtualMachineId']! as String).input(),
+      arcVirtualMachineUuid: map['arcVirtualMachineUuid'] == null ? null : (map['arcVirtualMachineUuid']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      storageMoverId: map['storageMoverId'] == null ? null : (map['storageMoverId']! as String).input(),
     );
   }
 }

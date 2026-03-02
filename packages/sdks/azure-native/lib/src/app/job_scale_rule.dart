@@ -43,11 +43,11 @@ class JobScaleRule {
 
   factory JobScaleRule.fromMap(Map<String, dynamic> map) {
     return JobScaleRule(
-      auth: map['auth'] == null ? null : (pulumi.Input.decodeList<ScaleRuleAuth>(map['auth'], (value) => ScaleRuleAuth.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      auth: map['auth'] == null ? null : (pulumi.Input.decodeList<ScaleRuleAuth>(map['auth']!, (value) => ScaleRuleAuth.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identity: map['identity'] == null ? null : (map['identity']! as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

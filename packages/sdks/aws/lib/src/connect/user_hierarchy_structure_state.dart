@@ -32,9 +32,9 @@ class UserHierarchyStructureState {
 
   factory UserHierarchyStructureState.fromMap(Map<String, dynamic> map) {
     return UserHierarchyStructureState(
-      hierarchyStructure: map['hierarchyStructure'] == null ? null : (UserHierarchyStructureHierarchyStructure.fromMap((map['hierarchyStructure'] as Map).cast<String, dynamic>())).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      hierarchyStructure: map['hierarchyStructure'] == null ? null : ((UserHierarchyStructureHierarchyStructure.fromMap((map['hierarchyStructure']! as Map).cast<String, dynamic>())).input()).input(),
+      instanceId: map['instanceId'] == null ? null : ((map['instanceId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

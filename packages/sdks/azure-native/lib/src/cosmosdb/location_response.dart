@@ -47,10 +47,10 @@ class LocationResponse {
   factory LocationResponse.fromMap(Map<String, dynamic> map) {
     return LocationResponse(
       documentEndpoint: (map['documentEndpoint'] as String).input(),
-      failoverPriority: map['failoverPriority'] == null ? null : (map['failoverPriority'] as int).input(),
+      failoverPriority: map['failoverPriority'] == null ? null : (map['failoverPriority']! as int).input(),
       id: (map['id'] as String).input(),
-      isZoneRedundant: map['isZoneRedundant'] == null ? null : (map['isZoneRedundant'] as bool).input(),
-      locationName: map['locationName'] == null ? null : (map['locationName'] as String).input(),
+      isZoneRedundant: map['isZoneRedundant'] == null ? null : (map['isZoneRedundant']! as bool).input(),
+      locationName: map['locationName'] == null ? null : (map['locationName']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

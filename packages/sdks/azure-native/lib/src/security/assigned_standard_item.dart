@@ -21,7 +21,7 @@ class AssignedStandardItem {
 
   factory AssignedStandardItem.fromMap(Map<String, dynamic> map) {
     return AssignedStandardItem(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

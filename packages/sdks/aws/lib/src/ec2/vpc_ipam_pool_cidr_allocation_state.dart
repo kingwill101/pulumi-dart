@@ -65,16 +65,16 @@ class VpcIpamPoolCidrAllocationState {
 
   factory VpcIpamPoolCidrAllocationState.fromMap(Map<String, dynamic> map) {
     return VpcIpamPoolCidrAllocationState(
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disallowedCidrs: map['disallowedCidrs'] == null ? null : ((map['disallowedCidrs'] as List).cast<String>()).input(),
-      ipamPoolAllocationId: map['ipamPoolAllocationId'] == null ? null : (map['ipamPoolAllocationId'] as String).input(),
-      ipamPoolId: map['ipamPoolId'] == null ? null : (map['ipamPoolId'] as String).input(),
-      netmaskLength: map['netmaskLength'] == null ? null : (map['netmaskLength'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      resourceOwner: map['resourceOwner'] == null ? null : (map['resourceOwner'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      cidr: map['cidr'] == null ? null : ((map['cidr'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      disallowedCidrs: map['disallowedCidrs'] == null ? null : (((map['disallowedCidrs'] as List).cast<String>()).input()).input(),
+      ipamPoolAllocationId: map['ipamPoolAllocationId'] == null ? null : ((map['ipamPoolAllocationId'] as String).input()).input(),
+      ipamPoolId: map['ipamPoolId'] == null ? null : ((map['ipamPoolId'] as String).input()).input(),
+      netmaskLength: map['netmaskLength'] == null ? null : ((map['netmaskLength'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceId: map['resourceId'] == null ? null : ((map['resourceId'] as String).input()).input(),
+      resourceOwner: map['resourceOwner'] == null ? null : ((map['resourceOwner'] as String).input()).input(),
+      resourceType: map['resourceType'] == null ? null : ((map['resourceType'] as String).input()).input(),
     );
   }
 }

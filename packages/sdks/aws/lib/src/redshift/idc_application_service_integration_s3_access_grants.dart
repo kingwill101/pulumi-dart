@@ -21,7 +21,7 @@ class IdcApplicationServiceIntegrationS3AccessGrants {
 
   factory IdcApplicationServiceIntegrationS3AccessGrants.fromMap(Map<String, dynamic> map) {
     return IdcApplicationServiceIntegrationS3AccessGrants(
-      readWriteAccess: map['readWriteAccess'] == null ? null : (IdcApplicationServiceIntegrationS3AccessGrantsReadWriteAccess.fromMap((map['readWriteAccess'] as Map).cast<String, dynamic>())).input(),
+      readWriteAccess: map['readWriteAccess'] == null ? null : ((IdcApplicationServiceIntegrationS3AccessGrantsReadWriteAccess.fromMap((map['readWriteAccess']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -100,22 +100,22 @@ class InternalRangeNetworkconnectivityV1alpha1Args {
 
   factory InternalRangeNetworkconnectivityV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return InternalRangeNetworkconnectivityV1alpha1Args(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      internalRangeId: map['internalRangeId'] == null ? null : (map['internalRangeId'] as String).input(),
-      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      overlaps: map['overlaps'] == null ? null : (pulumi.Input.decodeList<InternalRangeOverlapsItemNetworkconnectivityV1alpha1>(map['overlaps'], (value) => InternalRangeOverlapsItemNetworkconnectivityV1alpha1.fromValue(value as String))).input(),
-      peering: map['peering'] == null ? null : (InternalRangePeeringNetworkconnectivityV1alpha1.fromValue(map['peering'] as String)).input(),
-      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      targetCidrRange: map['targetCidrRange'] == null ? null : ((map['targetCidrRange'] as List).cast<String>()).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      usage: map['usage'] == null ? null : (InternalRangeUsageNetworkconnectivityV1alpha1.fromValue(map['usage'] as String)).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      internalRangeId: map['internalRangeId'] == null ? null : (map['internalRangeId']! as String).input(),
+      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      overlaps: map['overlaps'] == null ? null : (pulumi.Input.decodeList<InternalRangeOverlapsItemNetworkconnectivityV1alpha1>(map['overlaps']!, (value) => InternalRangeOverlapsItemNetworkconnectivityV1alpha1.fromValue(value as String))).input(),
+      peering: map['peering'] == null ? null : (InternalRangePeeringNetworkconnectivityV1alpha1.fromValue(map['peering']! as String)).input(),
+      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      targetCidrRange: map['targetCidrRange'] == null ? null : ((map['targetCidrRange']! as List).cast<String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      usage: map['usage'] == null ? null : (InternalRangeUsageNetworkconnectivityV1alpha1.fromValue(map['usage']! as String)).input(),
     );
   }
 }

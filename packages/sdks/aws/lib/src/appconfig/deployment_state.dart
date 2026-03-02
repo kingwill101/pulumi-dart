@@ -86,20 +86,20 @@ class DeploymentState {
 
   factory DeploymentState.fromMap(Map<String, dynamic> map) {
     return DeploymentState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      configurationProfileId: map['configurationProfileId'] == null ? null : (map['configurationProfileId'] as String).input(),
-      configurationVersion: map['configurationVersion'] == null ? null : (map['configurationVersion'] as String).input(),
-      deploymentNumber: map['deploymentNumber'] == null ? null : (map['deploymentNumber'] as int).input(),
-      deploymentStrategyId: map['deploymentStrategyId'] == null ? null : (map['deploymentStrategyId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : (map['kmsKeyIdentifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      applicationId: map['applicationId'] == null ? null : ((map['applicationId'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      configurationProfileId: map['configurationProfileId'] == null ? null : ((map['configurationProfileId'] as String).input()).input(),
+      configurationVersion: map['configurationVersion'] == null ? null : ((map['configurationVersion'] as String).input()).input(),
+      deploymentNumber: map['deploymentNumber'] == null ? null : ((map['deploymentNumber'] as int).input()).input(),
+      deploymentStrategyId: map['deploymentStrategyId'] == null ? null : ((map['deploymentStrategyId'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      environmentId: map['environmentId'] == null ? null : ((map['environmentId'] as String).input()).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
+      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : ((map['kmsKeyIdentifier'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

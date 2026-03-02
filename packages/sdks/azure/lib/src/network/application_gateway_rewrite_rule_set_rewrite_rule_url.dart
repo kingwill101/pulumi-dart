@@ -37,10 +37,10 @@ class ApplicationGatewayRewriteRuleSetRewriteRuleUrl {
 
   factory ApplicationGatewayRewriteRuleSetRewriteRuleUrl.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayRewriteRuleSetRewriteRuleUrl(
-      components: map['components'] == null ? null : (map['components'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      queryString: map['queryString'] == null ? null : (map['queryString'] as String).input(),
-      reroute: map['reroute'] == null ? null : (map['reroute'] as bool).input(),
+      components: map['components'] == null ? null : (map['components']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      queryString: map['queryString'] == null ? null : (map['queryString']! as String).input(),
+      reroute: map['reroute'] == null ? null : (map['reroute']! as bool).input(),
     );
   }
 }

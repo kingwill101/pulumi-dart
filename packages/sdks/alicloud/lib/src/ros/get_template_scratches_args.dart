@@ -44,11 +44,11 @@ class GetTemplateScratchesArgs {
 
   factory GetTemplateScratchesArgs.fromMap(Map<String, dynamic> map) {
     return GetTemplateScratchesArgs(
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      templateScratchType: map['templateScratchType'] == null ? null : (map['templateScratchType'] as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      templateScratchType: map['templateScratchType'] == null ? null : (map['templateScratchType']! as String).input(),
     );
   }
 }

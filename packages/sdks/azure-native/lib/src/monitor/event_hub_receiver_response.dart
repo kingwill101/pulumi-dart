@@ -53,11 +53,11 @@ class EventHubReceiverResponse {
     return EventHubReceiverResponse(
       eventHubName: (map['eventHubName'] as String).input(),
       eventHubNameSpace: (map['eventHubNameSpace'] as String).input(),
-      managedIdentity: map['managedIdentity'] == null ? null : (map['managedIdentity'] as String).input(),
+      managedIdentity: map['managedIdentity'] == null ? null : (map['managedIdentity']! as String).input(),
       name: (map['name'] as String).input(),
       subscriptionId: (map['subscriptionId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema'] as bool).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema']! as bool).input(),
     );
   }
 }

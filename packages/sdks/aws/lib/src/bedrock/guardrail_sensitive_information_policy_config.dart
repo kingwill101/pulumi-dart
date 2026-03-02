@@ -27,8 +27,8 @@ class GuardrailSensitiveInformationPolicyConfig {
 
   factory GuardrailSensitiveInformationPolicyConfig.fromMap(Map<String, dynamic> map) {
     return GuardrailSensitiveInformationPolicyConfig(
-      piiEntitiesConfigs: map['piiEntitiesConfigs'] == null ? null : (pulumi.Input.decodeList<GuardrailSensitiveInformationPolicyConfigPiiEntitiesConfig>(map['piiEntitiesConfigs'], (value) => GuardrailSensitiveInformationPolicyConfigPiiEntitiesConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      regexesConfigs: map['regexesConfigs'] == null ? null : (pulumi.Input.decodeList<GuardrailSensitiveInformationPolicyConfigRegexesConfig>(map['regexesConfigs'], (value) => GuardrailSensitiveInformationPolicyConfigRegexesConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      piiEntitiesConfigs: map['piiEntitiesConfigs'] == null ? null : ((pulumi.Input.decodeList<GuardrailSensitiveInformationPolicyConfigPiiEntitiesConfig>(map['piiEntitiesConfigs']!, (value) => GuardrailSensitiveInformationPolicyConfigPiiEntitiesConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      regexesConfigs: map['regexesConfigs'] == null ? null : ((pulumi.Input.decodeList<GuardrailSensitiveInformationPolicyConfigRegexesConfig>(map['regexesConfigs']!, (value) => GuardrailSensitiveInformationPolicyConfigRegexesConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

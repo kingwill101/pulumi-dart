@@ -41,11 +41,11 @@ class ContainerPortPatch {
 
   factory ContainerPortPatch.fromMap(Map<String, dynamic> map) {
     return ContainerPortPatch(
-      containerPort: map['containerPort'] == null ? null : (map['containerPort'] as int).input(),
-      hostIP: map['hostIP'] == null ? null : (map['hostIP'] as String).input(),
-      hostPort: map['hostPort'] == null ? null : (map['hostPort'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      containerPort: map['containerPort'] == null ? null : (map['containerPort']! as int).input(),
+      hostIP: map['hostIP'] == null ? null : (map['hostIP']! as String).input(),
+      hostPort: map['hostPort'] == null ? null : (map['hostPort']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
     );
   }
 }

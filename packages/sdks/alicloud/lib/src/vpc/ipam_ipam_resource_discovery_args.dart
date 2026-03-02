@@ -44,11 +44,11 @@ class IpamIpamResourceDiscoveryArgs {
 
   factory IpamIpamResourceDiscoveryArgs.fromMap(Map<String, dynamic> map) {
     return IpamIpamResourceDiscoveryArgs(
-      ipamResourceDiscoveryDescription: map['ipamResourceDiscoveryDescription'] == null ? null : (map['ipamResourceDiscoveryDescription'] as String).input(),
-      ipamResourceDiscoveryName: map['ipamResourceDiscoveryName'] == null ? null : (map['ipamResourceDiscoveryName'] as String).input(),
+      ipamResourceDiscoveryDescription: map['ipamResourceDiscoveryDescription'] == null ? null : (map['ipamResourceDiscoveryDescription']! as String).input(),
+      ipamResourceDiscoveryName: map['ipamResourceDiscoveryName'] == null ? null : (map['ipamResourceDiscoveryName']! as String).input(),
       operatingRegionLists: ((map['operatingRegionLists'] as List).cast<String>()).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

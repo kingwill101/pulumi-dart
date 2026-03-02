@@ -27,7 +27,7 @@ class EntitlementApprovalWorkflowManualApprovals {
 
   factory EntitlementApprovalWorkflowManualApprovals.fromMap(Map<String, dynamic> map) {
     return EntitlementApprovalWorkflowManualApprovals(
-      requireApproverJustification: map['requireApproverJustification'] == null ? null : (map['requireApproverJustification'] as bool).input(),
+      requireApproverJustification: map['requireApproverJustification'] == null ? null : (map['requireApproverJustification']! as bool).input(),
       steps: (pulumi.Input.decodeList<EntitlementApprovalWorkflowManualApprovalsStep>(map['steps'], (value) => EntitlementApprovalWorkflowManualApprovalsStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

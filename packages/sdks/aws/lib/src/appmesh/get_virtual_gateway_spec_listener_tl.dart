@@ -29,9 +29,9 @@ class GetVirtualGatewaySpecListenerTl {
 
   factory GetVirtualGatewaySpecListenerTl.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecListenerTl(
-      certificates: (pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTlCertificate>(map['certificates'], (value) => GetVirtualGatewaySpecListenerTlCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      certificates: (pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTlCertificate>(map['certificates']!, (value) => GetVirtualGatewaySpecListenerTlCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
       mode: (map['mode'] as String).input(),
-      validations: (pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTlValidation>(map['validations'], (value) => GetVirtualGatewaySpecListenerTlValidation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      validations: (pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTlValidation>(map['validations']!, (value) => GetVirtualGatewaySpecListenerTlValidation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

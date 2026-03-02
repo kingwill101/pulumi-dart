@@ -65,10 +65,10 @@ class StorageTaskArgs {
       description: (map['description'] as String).input(),
       enabled: (map['enabled'] as bool).input(),
       identity: (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageTaskName: map['storageTaskName'] == null ? null : (map['storageTaskName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      storageTaskName: map['storageTaskName'] == null ? null : (map['storageTaskName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

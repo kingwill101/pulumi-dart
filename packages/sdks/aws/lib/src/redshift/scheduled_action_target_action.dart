@@ -33,9 +33,9 @@ class ScheduledActionTargetAction {
 
   factory ScheduledActionTargetAction.fromMap(Map<String, dynamic> map) {
     return ScheduledActionTargetAction(
-      pauseCluster: map['pauseCluster'] == null ? null : (ScheduledActionTargetActionPauseCluster.fromMap((map['pauseCluster'] as Map).cast<String, dynamic>())).input(),
-      resizeCluster: map['resizeCluster'] == null ? null : (ScheduledActionTargetActionResizeCluster.fromMap((map['resizeCluster'] as Map).cast<String, dynamic>())).input(),
-      resumeCluster: map['resumeCluster'] == null ? null : (ScheduledActionTargetActionResumeCluster.fromMap((map['resumeCluster'] as Map).cast<String, dynamic>())).input(),
+      pauseCluster: map['pauseCluster'] == null ? null : ((ScheduledActionTargetActionPauseCluster.fromMap((map['pauseCluster']! as Map).cast<String, dynamic>())).input()).input(),
+      resizeCluster: map['resizeCluster'] == null ? null : ((ScheduledActionTargetActionResizeCluster.fromMap((map['resizeCluster']! as Map).cast<String, dynamic>())).input()).input(),
+      resumeCluster: map['resumeCluster'] == null ? null : ((ScheduledActionTargetActionResumeCluster.fromMap((map['resumeCluster']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

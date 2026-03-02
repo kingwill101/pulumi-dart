@@ -36,7 +36,7 @@ class TableLocalSecondaryIndex {
   factory TableLocalSecondaryIndex.fromMap(Map<String, dynamic> map) {
     return TableLocalSecondaryIndex(
       name: (map['name'] as String).input(),
-      nonKeyAttributes: map['nonKeyAttributes'] == null ? null : ((map['nonKeyAttributes'] as List).cast<String>()).input(),
+      nonKeyAttributes: map['nonKeyAttributes'] == null ? null : (((map['nonKeyAttributes'] as List).cast<String>()).input()).input(),
       projectionType: (map['projectionType'] as String).input(),
       rangeKey: (map['rangeKey'] as String).input(),
     );

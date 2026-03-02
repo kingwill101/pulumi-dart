@@ -26,8 +26,8 @@ class IRuleState {
 
   factory IRuleState.fromMap(Map<String, dynamic> map) {
     return IRuleState(
-      irule: map['irule'] == null ? null : (map['irule'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      irule: map['irule'] == null ? null : (map['irule']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

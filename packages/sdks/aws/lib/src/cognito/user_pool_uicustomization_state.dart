@@ -61,15 +61,15 @@ class UserPoolUICustomizationState {
 
   factory UserPoolUICustomizationState.fromMap(Map<String, dynamic> map) {
     return UserPoolUICustomizationState(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      creationDate: map['creationDate'] == null ? null : (map['creationDate'] as String).input(),
-      css: map['css'] == null ? null : (map['css'] as String).input(),
-      cssVersion: map['cssVersion'] == null ? null : (map['cssVersion'] as String).input(),
-      imageFile: map['imageFile'] == null ? null : (map['imageFile'] as String).input(),
-      imageUrl: map['imageUrl'] == null ? null : (map['imageUrl'] as String).input(),
-      lastModifiedDate: map['lastModifiedDate'] == null ? null : (map['lastModifiedDate'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      userPoolId: map['userPoolId'] == null ? null : (map['userPoolId'] as String).input(),
+      clientId: map['clientId'] == null ? null : ((map['clientId'] as String).input()).input(),
+      creationDate: map['creationDate'] == null ? null : ((map['creationDate'] as String).input()).input(),
+      css: map['css'] == null ? null : ((map['css'] as String).input()).input(),
+      cssVersion: map['cssVersion'] == null ? null : ((map['cssVersion'] as String).input()).input(),
+      imageFile: map['imageFile'] == null ? null : ((map['imageFile'] as String).input()).input(),
+      imageUrl: map['imageUrl'] == null ? null : ((map['imageUrl'] as String).input()).input(),
+      lastModifiedDate: map['lastModifiedDate'] == null ? null : ((map['lastModifiedDate'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      userPoolId: map['userPoolId'] == null ? null : ((map['userPoolId'] as String).input()).input(),
     );
   }
 }

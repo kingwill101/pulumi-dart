@@ -74,15 +74,15 @@ class GetClientResult {
 
   factory GetClientResult.fromMap(Map<String, dynamic> map) {
     return GetClientResult(
-      attributes: map['attributes'] == null ? null : map['attributes'],
-      authenticationName: map['authenticationName'] == null ? null : map['authenticationName'] as String,
+      attributes: map['attributes'] == null ? null : map['attributes']!,
+      authenticationName: map['authenticationName'] == null ? null : map['authenticationName']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      clientCertificateAuthentication: map['clientCertificateAuthentication'] == null ? null : ClientCertificateAuthenticationResponse.fromMap((map['clientCertificateAuthentication'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
+      clientCertificateAuthentication: map['clientCertificateAuthentication'] == null ? null : ClientCertificateAuthenticationResponse.fromMap((map['clientCertificateAuthentication']! as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      state: map['state'] == null ? null : map['state']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

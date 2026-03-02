@@ -36,10 +36,10 @@ class ExecutionState {
 
   factory ExecutionState.fromMap(Map<String, dynamic> map) {
     return ExecutionState(
-      executionName: map['executionName'] == null ? null : (map['executionName'] as String).input(),
-      flowName: map['flowName'] == null ? null : (map['flowName'] as String).input(),
-      input: map['input'] == null ? null : (map['input'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      executionName: map['executionName'] == null ? null : (map['executionName']! as String).input(),
+      flowName: map['flowName'] == null ? null : (map['flowName']! as String).input(),
+      input: map['input'] == null ? null : (map['input']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

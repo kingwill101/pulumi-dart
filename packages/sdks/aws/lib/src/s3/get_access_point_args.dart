@@ -34,9 +34,9 @@ class GetAccessPointArgs {
 
   factory GetAccessPointArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPointArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

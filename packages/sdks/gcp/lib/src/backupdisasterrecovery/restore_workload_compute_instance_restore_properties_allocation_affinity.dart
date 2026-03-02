@@ -30,9 +30,9 @@ class RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity {
 
   factory RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity(
-      consumeAllocationType: map['consumeAllocationType'] == null ? null : (map['consumeAllocationType'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      consumeAllocationType: map['consumeAllocationType'] == null ? null : (map['consumeAllocationType']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

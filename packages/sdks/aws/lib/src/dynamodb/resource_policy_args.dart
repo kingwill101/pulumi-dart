@@ -41,9 +41,9 @@ class ResourcePolicyArgs {
 
   factory ResourcePolicyArgs.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyArgs(
-      confirmRemoveSelfResourceAccess: map['confirmRemoveSelfResourceAccess'] == null ? null : (map['confirmRemoveSelfResourceAccess'] as bool).input(),
+      confirmRemoveSelfResourceAccess: map['confirmRemoveSelfResourceAccess'] == null ? null : ((map['confirmRemoveSelfResourceAccess'] as bool).input()).input(),
       policy: (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceArn: (map['resourceArn'] as String).input(),
     );
   }

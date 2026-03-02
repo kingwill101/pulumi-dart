@@ -20,7 +20,7 @@ class WidgetConfigHomepageSettingShortcutIcon {
 
   factory WidgetConfigHomepageSettingShortcutIcon.fromMap(Map<String, dynamic> map) {
     return WidgetConfigHomepageSettingShortcutIcon(
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

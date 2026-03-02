@@ -25,8 +25,8 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
 
   factory FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests.fromMap(Map<String, dynamic> map) {
     return FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests(
-      cpu: map['cpu'] == null ? null : (map['cpu'] as String).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as String).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as String).input(),
+      memory: map['memory'] == null ? null : (map['memory']! as String).input(),
     );
   }
 }

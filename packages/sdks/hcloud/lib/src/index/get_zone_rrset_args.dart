@@ -44,10 +44,10 @@ class GetZoneRrsetArgs {
 
   factory GetZoneRrsetArgs.fromMap(Map<String, dynamic> map) {
     return GetZoneRrsetArgs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
       zone: (map['zone'] as String).input(),
     );
   }

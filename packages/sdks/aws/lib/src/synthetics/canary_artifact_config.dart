@@ -21,7 +21,7 @@ class CanaryArtifactConfig {
 
   factory CanaryArtifactConfig.fromMap(Map<String, dynamic> map) {
     return CanaryArtifactConfig(
-      s3Encryption: map['s3Encryption'] == null ? null : (CanaryArtifactConfigS3Encryption.fromMap((map['s3Encryption'] as Map).cast<String, dynamic>())).input(),
+      s3Encryption: map['s3Encryption'] == null ? null : ((CanaryArtifactConfigS3Encryption.fromMap((map['s3Encryption']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

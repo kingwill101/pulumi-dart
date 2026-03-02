@@ -53,12 +53,12 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse {
   factory MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse.fromMap(Map<String, dynamic> map) {
     return MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse(
       id: (map['id'] as String).input(),
-      migrationSetting: map['migrationSetting'] == null ? null : (map['migrationSetting']).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      selectedTables: map['selectedTables'] == null ? null : (pulumi.Input.decodeList<MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInputResponse>(map['selectedTables'], (value) => MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInputResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceSetting: map['sourceSetting'] == null ? null : ((map['sourceSetting'] as Map).cast<String, String>()).input(),
-      targetDatabaseName: map['targetDatabaseName'] == null ? null : (map['targetDatabaseName'] as String).input(),
-      targetSetting: map['targetSetting'] == null ? null : ((map['targetSetting'] as Map).cast<String, String>()).input(),
+      migrationSetting: map['migrationSetting'] == null ? null : (map['migrationSetting']!).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      selectedTables: map['selectedTables'] == null ? null : (pulumi.Input.decodeList<MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInputResponse>(map['selectedTables']!, (value) => MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInputResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceSetting: map['sourceSetting'] == null ? null : ((map['sourceSetting']! as Map).cast<String, String>()).input(),
+      targetDatabaseName: map['targetDatabaseName'] == null ? null : (map['targetDatabaseName']! as String).input(),
+      targetSetting: map['targetSetting'] == null ? null : ((map['targetSetting']! as Map).cast<String, String>()).input(),
     );
   }
 }

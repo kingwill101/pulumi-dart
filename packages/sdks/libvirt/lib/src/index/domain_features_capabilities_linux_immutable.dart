@@ -20,7 +20,7 @@ class DomainFeaturesCapabilitiesLinuxImmutable {
 
   factory DomainFeaturesCapabilitiesLinuxImmutable.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesLinuxImmutable(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

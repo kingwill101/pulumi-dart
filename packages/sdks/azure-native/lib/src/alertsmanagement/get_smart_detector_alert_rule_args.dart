@@ -35,7 +35,7 @@ class GetSmartDetectorAlertRuleArgs {
   factory GetSmartDetectorAlertRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetSmartDetectorAlertRuleArgs(
       alertRuleName: (map['alertRuleName'] as String).input(),
-      expandDetector: map['expandDetector'] == null ? null : (map['expandDetector'] as bool).input(),
+      expandDetector: map['expandDetector'] == null ? null : (map['expandDetector']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

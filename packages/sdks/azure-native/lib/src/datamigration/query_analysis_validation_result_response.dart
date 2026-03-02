@@ -28,8 +28,8 @@ class QueryAnalysisValidationResultResponse {
 
   factory QueryAnalysisValidationResultResponse.fromMap(Map<String, dynamic> map) {
     return QueryAnalysisValidationResultResponse(
-      queryResults: map['queryResults'] == null ? null : (QueryExecutionResultResponse.fromMap((map['queryResults'] as Map).cast<String, dynamic>())).input(),
-      validationErrors: map['validationErrors'] == null ? null : (ValidationErrorResponse.fromMap((map['validationErrors'] as Map).cast<String, dynamic>())).input(),
+      queryResults: map['queryResults'] == null ? null : (QueryExecutionResultResponse.fromMap((map['queryResults']! as Map).cast<String, dynamic>())).input(),
+      validationErrors: map['validationErrors'] == null ? null : (ValidationErrorResponse.fromMap((map['validationErrors']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class SlowRequestsBasedTriggerResponse {
 
   factory SlowRequestsBasedTriggerResponse.fromMap(Map<String, dynamic> map) {
     return SlowRequestsBasedTriggerResponse(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      timeInterval: map['timeInterval'] == null ? null : (map['timeInterval'] as String).input(),
-      timeTaken: map['timeTaken'] == null ? null : (map['timeTaken'] as String).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      timeInterval: map['timeInterval'] == null ? null : (map['timeInterval']! as String).input(),
+      timeTaken: map['timeTaken'] == null ? null : (map['timeTaken']! as String).input(),
     );
   }
 }

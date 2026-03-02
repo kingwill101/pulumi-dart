@@ -41,11 +41,11 @@ class ApplicationGatewaySslPolicyResponse {
 
   factory ApplicationGatewaySslPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewaySslPolicyResponse(
-      cipherSuites: map['cipherSuites'] == null ? null : ((map['cipherSuites'] as List).cast<String>()).input(),
-      disabledSslProtocols: map['disabledSslProtocols'] == null ? null : ((map['disabledSslProtocols'] as List).cast<String>()).input(),
-      minProtocolVersion: map['minProtocolVersion'] == null ? null : (map['minProtocolVersion'] as String).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
+      cipherSuites: map['cipherSuites'] == null ? null : ((map['cipherSuites']! as List).cast<String>()).input(),
+      disabledSslProtocols: map['disabledSslProtocols'] == null ? null : ((map['disabledSslProtocols']! as List).cast<String>()).input(),
+      minProtocolVersion: map['minProtocolVersion'] == null ? null : (map['minProtocolVersion']! as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType']! as String).input(),
     );
   }
 }

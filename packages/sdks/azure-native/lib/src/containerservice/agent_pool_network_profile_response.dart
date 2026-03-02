@@ -33,9 +33,9 @@ class AgentPoolNetworkProfileResponse {
 
   factory AgentPoolNetworkProfileResponse.fromMap(Map<String, dynamic> map) {
     return AgentPoolNetworkProfileResponse(
-      allowedHostPorts: map['allowedHostPorts'] == null ? null : (pulumi.Input.decodeList<PortRangeResponse>(map['allowedHostPorts'], (value) => PortRangeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      applicationSecurityGroups: map['applicationSecurityGroups'] == null ? null : ((map['applicationSecurityGroups'] as List).cast<String>()).input(),
-      nodePublicIPTags: map['nodePublicIPTags'] == null ? null : (pulumi.Input.decodeList<IPTagResponse>(map['nodePublicIPTags'], (value) => IPTagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowedHostPorts: map['allowedHostPorts'] == null ? null : (pulumi.Input.decodeList<PortRangeResponse>(map['allowedHostPorts']!, (value) => PortRangeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applicationSecurityGroups: map['applicationSecurityGroups'] == null ? null : ((map['applicationSecurityGroups']! as List).cast<String>()).input(),
+      nodePublicIPTags: map['nodePublicIPTags'] == null ? null : (pulumi.Input.decodeList<IPTagResponse>(map['nodePublicIPTags']!, (value) => IPTagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class Accelerator {
 
   factory Accelerator.fromMap(Map<String, dynamic> map) {
     return Accelerator(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

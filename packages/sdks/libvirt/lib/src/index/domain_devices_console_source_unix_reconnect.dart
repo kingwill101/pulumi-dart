@@ -26,7 +26,7 @@ class DomainDevicesConsoleSourceUnixReconnect {
   factory DomainDevicesConsoleSourceUnixReconnect.fromMap(Map<String, dynamic> map) {
     return DomainDevicesConsoleSourceUnixReconnect(
       enabled: (map['enabled'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as double).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as double).input(),
     );
   }
 }

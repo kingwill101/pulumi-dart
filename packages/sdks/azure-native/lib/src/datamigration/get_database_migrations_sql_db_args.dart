@@ -43,8 +43,8 @@ class GetDatabaseMigrationsSqlDbArgs {
 
   factory GetDatabaseMigrationsSqlDbArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMigrationsSqlDbArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
-      migrationOperationId: map['migrationOperationId'] == null ? null : (map['migrationOperationId'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
+      migrationOperationId: map['migrationOperationId'] == null ? null : (map['migrationOperationId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sqlDbInstanceName: (map['sqlDbInstanceName'] as String).input(),
       targetDbName: (map['targetDbName'] as String).input(),

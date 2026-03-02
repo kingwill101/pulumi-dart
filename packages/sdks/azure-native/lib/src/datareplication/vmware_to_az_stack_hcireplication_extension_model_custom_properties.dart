@@ -44,8 +44,8 @@ class VMwareToAzStackHCIReplicationExtensionModelCustomProperties {
     return VMwareToAzStackHCIReplicationExtensionModelCustomProperties(
       azStackHciFabricArmId: (map['azStackHciFabricArmId'] as String).input(),
       instanceType: (map['instanceType'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
-      storageAccountSasSecretName: map['storageAccountSasSecretName'] == null ? null : (map['storageAccountSasSecretName'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
+      storageAccountSasSecretName: map['storageAccountSasSecretName'] == null ? null : (map['storageAccountSasSecretName']! as String).input(),
       vmwareFabricArmId: (map['vmwareFabricArmId'] as String).input(),
     );
   }

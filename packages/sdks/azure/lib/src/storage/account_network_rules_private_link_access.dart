@@ -26,7 +26,7 @@ class AccountNetworkRulesPrivateLinkAccess {
   factory AccountNetworkRulesPrivateLinkAccess.fromMap(Map<String, dynamic> map) {
     return AccountNetworkRulesPrivateLinkAccess(
       endpointResourceId: (map['endpointResourceId'] as String).input(),
-      endpointTenantId: map['endpointTenantId'] == null ? null : (map['endpointTenantId'] as String).input(),
+      endpointTenantId: map['endpointTenantId'] == null ? null : (map['endpointTenantId']! as String).input(),
     );
   }
 }

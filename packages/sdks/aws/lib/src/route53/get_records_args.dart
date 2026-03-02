@@ -29,7 +29,7 @@ class GetRecordsArgs {
 
   factory GetRecordsArgs.fromMap(Map<String, dynamic> map) {
     return GetRecordsArgs(
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : ((map['nameRegex'] as String).input()).input(),
       zoneId: (map['zoneId'] as String).input(),
     );
   }

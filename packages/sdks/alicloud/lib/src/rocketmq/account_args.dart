@@ -39,7 +39,7 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      accountStatus: map['accountStatus'] == null ? null : (map['accountStatus'] as String).input(),
+      accountStatus: map['accountStatus'] == null ? null : (map['accountStatus']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
       password: (map['password'] as String).input(),
       username: (map['username'] as String).input(),

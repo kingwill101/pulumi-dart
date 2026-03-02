@@ -49,10 +49,10 @@ class SpringCloudCertificateArgs {
 
   factory SpringCloudCertificateArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudCertificateArgs(
-      certificateContent: map['certificateContent'] == null ? null : (map['certificateContent'] as String).input(),
-      excludePrivateKey: map['excludePrivateKey'] == null ? null : (map['excludePrivateKey'] as bool).input(),
-      keyVaultCertificateId: map['keyVaultCertificateId'] == null ? null : (map['keyVaultCertificateId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      certificateContent: map['certificateContent'] == null ? null : (map['certificateContent']! as String).input(),
+      excludePrivateKey: map['excludePrivateKey'] == null ? null : (map['excludePrivateKey']! as bool).input(),
+      keyVaultCertificateId: map['keyVaultCertificateId'] == null ? null : (map['keyVaultCertificateId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

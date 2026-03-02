@@ -26,7 +26,7 @@ class StorageInsightStatusResponse {
 
   factory StorageInsightStatusResponse.fromMap(Map<String, dynamic> map) {
     return StorageInsightStatusResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       state: (map['state'] as String).input(),
     );
   }

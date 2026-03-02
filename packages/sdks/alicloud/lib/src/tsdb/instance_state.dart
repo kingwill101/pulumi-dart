@@ -93,17 +93,17 @@ class InstanceState {
 
   factory InstanceState.fromMap(Map<String, dynamic> map) {
     return InstanceState(
-      appKey: map['appKey'] == null ? null : (map['appKey'] as String).input(),
-      diskCategory: map['diskCategory'] == null ? null : (map['diskCategory'] as String).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
-      engineType: map['engineType'] == null ? null : (map['engineType'] as String).input(),
-      instanceAlias: map['instanceAlias'] == null ? null : (map['instanceAlias'] as String).input(),
-      instanceClass: map['instanceClass'] == null ? null : (map['instanceClass'] as String).input(),
-      instanceStorage: map['instanceStorage'] == null ? null : (map['instanceStorage'] as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      appKey: map['appKey'] == null ? null : (map['appKey']! as String).input(),
+      diskCategory: map['diskCategory'] == null ? null : (map['diskCategory']! as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
+      engineType: map['engineType'] == null ? null : (map['engineType']! as String).input(),
+      instanceAlias: map['instanceAlias'] == null ? null : (map['instanceAlias']! as String).input(),
+      instanceClass: map['instanceClass'] == null ? null : (map['instanceClass']! as String).input(),
+      instanceStorage: map['instanceStorage'] == null ? null : (map['instanceStorage']! as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

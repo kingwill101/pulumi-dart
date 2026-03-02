@@ -36,10 +36,10 @@ class ParameterDefinitionsValueMetadata {
 
   factory ParameterDefinitionsValueMetadata.fromMap(Map<String, dynamic> map) {
     return ParameterDefinitionsValueMetadata(
-      assignPermissions: map['assignPermissions'] == null ? null : (map['assignPermissions'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      strongType: map['strongType'] == null ? null : (map['strongType'] as String).input(),
+      assignPermissions: map['assignPermissions'] == null ? null : (map['assignPermissions']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      strongType: map['strongType'] == null ? null : (map['strongType']! as String).input(),
     );
   }
 }

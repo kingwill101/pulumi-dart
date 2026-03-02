@@ -47,9 +47,9 @@ class GetDatacenterResult {
     return GetDatacenterResult(
       availableServerTypeIds: (map['availableServerTypeIds'] as List).cast<int>(),
       description: map['description'] as String,
-      id: map['id'] == null ? null : map['id'] as int,
+      id: map['id'] == null ? null : map['id']! as int,
       location: (map['location'] as Map).cast<String, String>(),
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
       supportedServerTypeIds: (map['supportedServerTypeIds'] as List).cast<int>(),
     );
   }

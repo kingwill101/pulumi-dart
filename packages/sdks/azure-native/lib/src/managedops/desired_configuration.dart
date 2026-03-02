@@ -45,8 +45,8 @@ class DesiredConfiguration {
     return DesiredConfiguration(
       azureMonitorInsights: (AzureMonitorConfiguration.fromMap((map['azureMonitorInsights'] as Map).cast<String, dynamic>())).input(),
       changeTrackingAndInventory: (ChangeTrackingConfiguration.fromMap((map['changeTrackingAndInventory'] as Map).cast<String, dynamic>())).input(),
-      defenderCspm: map['defenderCspm'] == null ? null : (map['defenderCspm'] as String).input(),
-      defenderForServers: map['defenderForServers'] == null ? null : (map['defenderForServers'] as String).input(),
+      defenderCspm: map['defenderCspm'] == null ? null : (map['defenderCspm']! as String).input(),
+      defenderForServers: map['defenderForServers'] == null ? null : (map['defenderForServers']! as String).input(),
       userAssignedManagedIdentityId: (map['userAssignedManagedIdentityId'] as String).input(),
     );
   }

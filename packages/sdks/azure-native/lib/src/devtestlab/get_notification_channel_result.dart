@@ -89,18 +89,18 @@ class GetNotificationChannelResult {
     return GetNotificationChannelResult(
       azureApiVersion: map['azureApiVersion'] as String,
       createdDate: map['createdDate'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      emailRecipient: map['emailRecipient'] == null ? null : map['emailRecipient'] as String,
-      events: map['events'] == null ? null : pulumi.Input.decodeList<EventResponse>(map['events'], (value) => EventResponse.fromMap((value as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : map['description']! as String,
+      emailRecipient: map['emailRecipient'] == null ? null : map['emailRecipient']! as String,
+      events: map['events'] == null ? null : pulumi.Input.decodeList<EventResponse>(map['events']!, (value) => EventResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      notificationLocale: map['notificationLocale'] == null ? null : map['notificationLocale'] as String,
+      notificationLocale: map['notificationLocale'] == null ? null : map['notificationLocale']! as String,
       provisioningState: map['provisioningState'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
       uniqueIdentifier: map['uniqueIdentifier'] as String,
-      webHookUrl: map['webHookUrl'] == null ? null : map['webHookUrl'] as String,
+      webHookUrl: map['webHookUrl'] == null ? null : map['webHookUrl']! as String,
     );
   }
 }

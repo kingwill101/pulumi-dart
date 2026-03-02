@@ -32,9 +32,9 @@ class InstanceEncryptionConfig {
 
   factory InstanceEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return InstanceEncryptionConfig(
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      kmsKeyNameVersion: map['kmsKeyNameVersion'] == null ? null : (map['kmsKeyNameVersion'] as String).input(),
-      kmsKeyState: map['kmsKeyState'] == null ? null : (map['kmsKeyState'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      kmsKeyNameVersion: map['kmsKeyNameVersion'] == null ? null : (map['kmsKeyNameVersion']! as String).input(),
+      kmsKeyState: map['kmsKeyState'] == null ? null : (map['kmsKeyState']! as String).input(),
     );
   }
 }

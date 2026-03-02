@@ -26,7 +26,7 @@ class NetworkDnsHost {
 
   factory NetworkDnsHost.fromMap(Map<String, dynamic> map) {
     return NetworkDnsHost(
-      hostnames: map['hostnames'] == null ? null : (pulumi.Input.decodeList<NetworkDnsHostHostname>(map['hostnames'], (value) => NetworkDnsHostHostname.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hostnames: map['hostnames'] == null ? null : (pulumi.Input.decodeList<NetworkDnsHostHostname>(map['hostnames']!, (value) => NetworkDnsHostHostname.fromMap((value as Map).cast<String, dynamic>()))).input(),
       ip: (map['ip'] as String).input(),
     );
   }

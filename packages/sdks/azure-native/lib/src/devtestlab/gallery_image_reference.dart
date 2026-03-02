@@ -41,11 +41,11 @@ class GalleryImageReference {
 
   factory GalleryImageReference.fromMap(Map<String, dynamic> map) {
     return GalleryImageReference(
-      offer: map['offer'] == null ? null : (map['offer'] as String).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      offer: map['offer'] == null ? null : (map['offer']! as String).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -90,20 +90,20 @@ class BackupPlanState {
 
   factory BackupPlanState.fromMap(Map<String, dynamic> map) {
     return BackupPlanState(
-      backupPlanId: map['backupPlanId'] == null ? null : (map['backupPlanId'] as String).input(),
-      backupRules: map['backupRules'] == null ? null : (pulumi.Input.decodeList<BackupPlanBackupRule>(map['backupRules'], (value) => BackupPlanBackupRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      backupVault: map['backupVault'] == null ? null : (map['backupVault'] as String).input(),
-      backupVaultServiceAccount: map['backupVaultServiceAccount'] == null ? null : (map['backupVaultServiceAccount'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      logRetentionDays: map['logRetentionDays'] == null ? null : (map['logRetentionDays'] as int).input(),
-      maxCustomOnDemandRetentionDays: map['maxCustomOnDemandRetentionDays'] == null ? null : (map['maxCustomOnDemandRetentionDays'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      supportedResourceTypes: map['supportedResourceTypes'] == null ? null : ((map['supportedResourceTypes'] as List).cast<String>()).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      backupPlanId: map['backupPlanId'] == null ? null : (map['backupPlanId']! as String).input(),
+      backupRules: map['backupRules'] == null ? null : (pulumi.Input.decodeList<BackupPlanBackupRule>(map['backupRules']!, (value) => BackupPlanBackupRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backupVault: map['backupVault'] == null ? null : (map['backupVault']! as String).input(),
+      backupVaultServiceAccount: map['backupVaultServiceAccount'] == null ? null : (map['backupVaultServiceAccount']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      logRetentionDays: map['logRetentionDays'] == null ? null : (map['logRetentionDays']! as int).input(),
+      maxCustomOnDemandRetentionDays: map['maxCustomOnDemandRetentionDays'] == null ? null : (map['maxCustomOnDemandRetentionDays']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
+      supportedResourceTypes: map['supportedResourceTypes'] == null ? null : ((map['supportedResourceTypes']! as List).cast<String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

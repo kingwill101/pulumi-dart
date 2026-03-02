@@ -76,7 +76,7 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponse 
 
   factory MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponse.fromMap(Map<String, dynamic> map) {
     return MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponse(
-      databaseCount: map['databaseCount'] == null ? null : (map['databaseCount'] as double).input(),
+      databaseCount: map['databaseCount'] == null ? null : (map['databaseCount']! as double).input(),
       endedOn: (map['endedOn'] as String).input(),
       id: (map['id'] as String).input(),
       resultType: (map['resultType'] as String).input(),

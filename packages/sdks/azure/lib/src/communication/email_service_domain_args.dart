@@ -46,9 +46,9 @@ class EmailServiceDomainArgs {
     return EmailServiceDomainArgs(
       domainManagement: (map['domainManagement'] as String).input(),
       emailServiceId: (map['emailServiceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      userEngagementTrackingEnabled: map['userEngagementTrackingEnabled'] == null ? null : (map['userEngagementTrackingEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      userEngagementTrackingEnabled: map['userEngagementTrackingEnabled'] == null ? null : (map['userEngagementTrackingEnabled']! as bool).input(),
     );
   }
 }

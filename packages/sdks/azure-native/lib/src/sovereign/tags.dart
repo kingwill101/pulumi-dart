@@ -27,7 +27,7 @@ class Tags {
   factory Tags.fromMap(Map<String, dynamic> map) {
     return Tags(
       name: (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class KeySchema {
 
   factory KeySchema.fromMap(Map<String, dynamic> map) {
     return KeySchema(
-      attributeName: map['attributeName'] == null ? null : (map['attributeName'] as String).input(),
-      keyType: map['keyType'] == null ? null : (map['keyType'] as String).input(),
+      attributeName: map['attributeName'] == null ? null : (map['attributeName']! as String).input(),
+      keyType: map['keyType'] == null ? null : (map['keyType']! as String).input(),
     );
   }
 }

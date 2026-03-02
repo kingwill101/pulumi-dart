@@ -30,7 +30,7 @@ class DataCollectionRuleDataSourcesDataImportEventHubDataSource {
 
   factory DataCollectionRuleDataSourcesDataImportEventHubDataSource.fromMap(Map<String, dynamic> map) {
     return DataCollectionRuleDataSourcesDataImportEventHubDataSource(
-      consumerGroup: map['consumerGroup'] == null ? null : (map['consumerGroup'] as String).input(),
+      consumerGroup: map['consumerGroup'] == null ? null : (map['consumerGroup']! as String).input(),
       name: (map['name'] as String).input(),
       stream: (map['stream'] as String).input(),
     );

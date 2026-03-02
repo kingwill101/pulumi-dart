@@ -61,15 +61,15 @@ class VirtualMachineManagerServerState {
 
   factory VirtualMachineManagerServerState.fromMap(Map<String, dynamic> map) {
     return VirtualMachineManagerServerState(
-      customLocationId: map['customLocationId'] == null ? null : (map['customLocationId'] as String).input(),
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      customLocationId: map['customLocationId'] == null ? null : (map['customLocationId']! as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

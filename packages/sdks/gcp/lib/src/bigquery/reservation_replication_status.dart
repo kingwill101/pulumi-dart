@@ -39,9 +39,9 @@ class ReservationReplicationStatus {
 
   factory ReservationReplicationStatus.fromMap(Map<String, dynamic> map) {
     return ReservationReplicationStatus(
-      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<ReservationReplicationStatusError>(map['errors'], (value) => ReservationReplicationStatusError.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lastErrorTime: map['lastErrorTime'] == null ? null : (map['lastErrorTime'] as String).input(),
-      lastReplicationTime: map['lastReplicationTime'] == null ? null : (map['lastReplicationTime'] as String).input(),
+      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<ReservationReplicationStatusError>(map['errors']!, (value) => ReservationReplicationStatusError.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastErrorTime: map['lastErrorTime'] == null ? null : (map['lastErrorTime']! as String).input(),
+      lastReplicationTime: map['lastReplicationTime'] == null ? null : (map['lastReplicationTime']! as String).input(),
     );
   }
 }

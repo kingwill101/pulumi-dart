@@ -26,8 +26,8 @@ class ProfileEnumValidValuesFormatResponse {
 
   factory ProfileEnumValidValuesFormatResponse.fromMap(Map<String, dynamic> map) {
     return ProfileEnumValidValuesFormatResponse(
-      localizedValueNames: map['localizedValueNames'] == null ? null : ((map['localizedValueNames'] as Map).cast<String, String>()).input(),
-      value: map['value'] == null ? null : (map['value'] as int).input(),
+      localizedValueNames: map['localizedValueNames'] == null ? null : ((map['localizedValueNames']! as Map).cast<String, String>()).input(),
+      value: map['value'] == null ? null : (map['value']! as int).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class DeliveryConfig {
 
   factory DeliveryConfig.fromMap(Map<String, dynamic> map) {
     return DeliveryConfig(
-      deliveryRequirement: map['deliveryRequirement'] == null ? null : (DeliveryConfigDeliveryRequirement.fromValue(map['deliveryRequirement'] as String)).input(),
+      deliveryRequirement: map['deliveryRequirement'] == null ? null : (DeliveryConfigDeliveryRequirement.fromValue(map['deliveryRequirement']! as String)).input(),
     );
   }
 }

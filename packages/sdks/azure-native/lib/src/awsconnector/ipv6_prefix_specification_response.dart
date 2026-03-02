@@ -21,7 +21,7 @@ class Ipv6PrefixSpecificationResponse {
 
   factory Ipv6PrefixSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return Ipv6PrefixSpecificationResponse(
-      ipv6Prefix: map['ipv6Prefix'] == null ? null : (map['ipv6Prefix'] as String).input(),
+      ipv6Prefix: map['ipv6Prefix'] == null ? null : (map['ipv6Prefix']! as String).input(),
     );
   }
 }

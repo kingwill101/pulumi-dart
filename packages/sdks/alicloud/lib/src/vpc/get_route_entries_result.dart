@@ -51,13 +51,13 @@ class GetRouteEntriesResult {
 
   factory GetRouteEntriesResult.fromMap(Map<String, dynamic> map) {
     return GetRouteEntriesResult(
-      cidrBlock: map['cidrBlock'] == null ? null : map['cidrBlock'] as String,
+      cidrBlock: map['cidrBlock'] == null ? null : map['cidrBlock']! as String,
       entries: pulumi.Input.decodeList<GetRouteEntriesEntry>(map['entries'], (value) => GetRouteEntriesEntry.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      instanceId: map['instanceId'] == null ? null : map['instanceId']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       routeTableId: map['routeTableId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      type: map['type'] == null ? null : map['type']! as String,
     );
   }
 }

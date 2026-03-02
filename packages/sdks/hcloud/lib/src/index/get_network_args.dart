@@ -47,12 +47,12 @@ class GetNetworkArgs {
 
   factory GetNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkArgs(
-      id: map['id'] == null ? null : (map['id'] as int).input(),
-      ipRange: map['ipRange'] == null ? null : (map['ipRange'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
+      ipRange: map['ipRange'] == null ? null : (map['ipRange']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
     );
   }
 }

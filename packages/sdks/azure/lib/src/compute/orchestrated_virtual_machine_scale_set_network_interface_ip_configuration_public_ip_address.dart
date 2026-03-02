@@ -51,13 +51,13 @@ class OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpA
 
   factory OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress(
-      domainNameLabel: map['domainNameLabel'] == null ? null : (map['domainNameLabel'] as String).input(),
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
-      ipTags: map['ipTags'] == null ? null : (pulumi.Input.decodeList<OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag>(map['ipTags'], (value) => OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      domainNameLabel: map['domainNameLabel'] == null ? null : (map['domainNameLabel']! as String).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes']! as int).input(),
+      ipTags: map['ipTags'] == null ? null : (pulumi.Input.decodeList<OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag>(map['ipTags']!, (value) => OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
-      publicIpPrefixId: map['publicIpPrefixId'] == null ? null : (map['publicIpPrefixId'] as String).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      publicIpPrefixId: map['publicIpPrefixId'] == null ? null : (map['publicIpPrefixId']! as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class OpenApiExplorerApiMcpServerPrompt {
 
   factory OpenApiExplorerApiMcpServerPrompt.fromMap(Map<String, dynamic> map) {
     return OpenApiExplorerApiMcpServerPrompt(
-      arguments: map['arguments'] == null ? null : (pulumi.Input.decodeList<OpenApiExplorerApiMcpServerPromptArgument>(map['arguments'], (value) => OpenApiExplorerApiMcpServerPromptArgument.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      arguments: map['arguments'] == null ? null : (pulumi.Input.decodeList<OpenApiExplorerApiMcpServerPromptArgument>(map['arguments']!, (value) => OpenApiExplorerApiMcpServerPromptArgument.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

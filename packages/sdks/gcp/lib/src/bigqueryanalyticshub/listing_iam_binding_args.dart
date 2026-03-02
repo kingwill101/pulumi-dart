@@ -71,12 +71,12 @@ class ListingIamBindingArgs {
 
   factory ListingIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return ListingIamBindingArgs(
-      condition: map['condition'] == null ? null : (ListingIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (ListingIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       dataExchangeId: (map['dataExchangeId'] as String).input(),
       listingId: (map['listingId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       members: ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

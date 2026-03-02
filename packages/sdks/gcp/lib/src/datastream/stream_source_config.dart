@@ -69,14 +69,14 @@ class StreamSourceConfig {
 
   factory StreamSourceConfig.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfig(
-      mongodbSourceConfig: map['mongodbSourceConfig'] == null ? null : (StreamSourceConfigMongodbSourceConfig.fromMap((map['mongodbSourceConfig'] as Map).cast<String, dynamic>())).input(),
-      mysqlSourceConfig: map['mysqlSourceConfig'] == null ? null : (StreamSourceConfigMysqlSourceConfig.fromMap((map['mysqlSourceConfig'] as Map).cast<String, dynamic>())).input(),
-      oracleSourceConfig: map['oracleSourceConfig'] == null ? null : (StreamSourceConfigOracleSourceConfig.fromMap((map['oracleSourceConfig'] as Map).cast<String, dynamic>())).input(),
-      postgresqlSourceConfig: map['postgresqlSourceConfig'] == null ? null : (StreamSourceConfigPostgresqlSourceConfig.fromMap((map['postgresqlSourceConfig'] as Map).cast<String, dynamic>())).input(),
-      salesforceSourceConfig: map['salesforceSourceConfig'] == null ? null : (StreamSourceConfigSalesforceSourceConfig.fromMap((map['salesforceSourceConfig'] as Map).cast<String, dynamic>())).input(),
+      mongodbSourceConfig: map['mongodbSourceConfig'] == null ? null : (StreamSourceConfigMongodbSourceConfig.fromMap((map['mongodbSourceConfig']! as Map).cast<String, dynamic>())).input(),
+      mysqlSourceConfig: map['mysqlSourceConfig'] == null ? null : (StreamSourceConfigMysqlSourceConfig.fromMap((map['mysqlSourceConfig']! as Map).cast<String, dynamic>())).input(),
+      oracleSourceConfig: map['oracleSourceConfig'] == null ? null : (StreamSourceConfigOracleSourceConfig.fromMap((map['oracleSourceConfig']! as Map).cast<String, dynamic>())).input(),
+      postgresqlSourceConfig: map['postgresqlSourceConfig'] == null ? null : (StreamSourceConfigPostgresqlSourceConfig.fromMap((map['postgresqlSourceConfig']! as Map).cast<String, dynamic>())).input(),
+      salesforceSourceConfig: map['salesforceSourceConfig'] == null ? null : (StreamSourceConfigSalesforceSourceConfig.fromMap((map['salesforceSourceConfig']! as Map).cast<String, dynamic>())).input(),
       sourceConnectionProfile: (map['sourceConnectionProfile'] as String).input(),
-      spannerSourceConfig: map['spannerSourceConfig'] == null ? null : (StreamSourceConfigSpannerSourceConfig.fromMap((map['spannerSourceConfig'] as Map).cast<String, dynamic>())).input(),
-      sqlServerSourceConfig: map['sqlServerSourceConfig'] == null ? null : (StreamSourceConfigSqlServerSourceConfig.fromMap((map['sqlServerSourceConfig'] as Map).cast<String, dynamic>())).input(),
+      spannerSourceConfig: map['spannerSourceConfig'] == null ? null : (StreamSourceConfigSpannerSourceConfig.fromMap((map['spannerSourceConfig']! as Map).cast<String, dynamic>())).input(),
+      sqlServerSourceConfig: map['sqlServerSourceConfig'] == null ? null : (StreamSourceConfigSqlServerSourceConfig.fromMap((map['sqlServerSourceConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

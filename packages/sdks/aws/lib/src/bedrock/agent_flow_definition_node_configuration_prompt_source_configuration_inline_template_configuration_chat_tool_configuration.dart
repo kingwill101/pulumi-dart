@@ -27,8 +27,8 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
 
   factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfiguration(
-      toolChoice: map['toolChoice'] == null ? null : (AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolChoice.fromMap((map['toolChoice'] as Map).cast<String, dynamic>())).input(),
-      tools: map['tools'] == null ? null : (pulumi.Input.decodeList<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationTool>(map['tools'], (value) => AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationTool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      toolChoice: map['toolChoice'] == null ? null : ((AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolChoice.fromMap((map['toolChoice']! as Map).cast<String, dynamic>())).input()).input(),
+      tools: map['tools'] == null ? null : ((pulumi.Input.decodeList<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationTool>(map['tools']!, (value) => AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationTool.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

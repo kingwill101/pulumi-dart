@@ -128,22 +128,22 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      alwaysRender: map['alwaysRender'] == null ? null : (map['alwaysRender'] as bool).input(),
-      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : (map['clusterIdentifier'] as String).input(),
-      context: map['context'] == null ? null : (map['context'] as String).input(),
-      deleteUnreachable: map['deleteUnreachable'] == null ? null : (map['deleteUnreachable'] as bool).input(),
-      enableConfigMapMutable: map['enableConfigMapMutable'] == null ? null : (map['enableConfigMapMutable'] as bool).input(),
-      enableSecretMutable: map['enableSecretMutable'] == null ? null : (map['enableSecretMutable'] as bool).input(),
-      enableServerSideApply: map['enableServerSideApply'] == null ? null : (map['enableServerSideApply'] as bool).input(),
-      helmReleaseSettings: map['helmReleaseSettings'] == null ? null : (HelmReleaseSettings.fromMap((map['helmReleaseSettings'] as Map).cast<String, dynamic>())).input(),
-      kubeClientSettings: map['kubeClientSettings'] == null ? null : (KubeClientSettings.fromMap((map['kubeClientSettings'] as Map).cast<String, dynamic>())).input(),
-      kubeconfig: map['kubeconfig'] == null ? null : (map['kubeconfig'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      renderYamlToDirectory: map['renderYamlToDirectory'] == null ? null : (map['renderYamlToDirectory'] as String).input(),
-      skipUpdateUnreachable: map['skipUpdateUnreachable'] == null ? null : (map['skipUpdateUnreachable'] as bool).input(),
-      suppressDeprecationWarnings: map['suppressDeprecationWarnings'] == null ? null : (map['suppressDeprecationWarnings'] as bool).input(),
-      suppressHelmHookWarnings: map['suppressHelmHookWarnings'] == null ? null : (map['suppressHelmHookWarnings'] as bool).input(),
+      alwaysRender: map['alwaysRender'] == null ? null : (map['alwaysRender']! as bool).input(),
+      cluster: map['cluster'] == null ? null : (map['cluster']! as String).input(),
+      clusterIdentifier: map['clusterIdentifier'] == null ? null : (map['clusterIdentifier']! as String).input(),
+      context: map['context'] == null ? null : (map['context']! as String).input(),
+      deleteUnreachable: map['deleteUnreachable'] == null ? null : (map['deleteUnreachable']! as bool).input(),
+      enableConfigMapMutable: map['enableConfigMapMutable'] == null ? null : (map['enableConfigMapMutable']! as bool).input(),
+      enableSecretMutable: map['enableSecretMutable'] == null ? null : (map['enableSecretMutable']! as bool).input(),
+      enableServerSideApply: map['enableServerSideApply'] == null ? null : (map['enableServerSideApply']! as bool).input(),
+      helmReleaseSettings: map['helmReleaseSettings'] == null ? null : (HelmReleaseSettings.fromMap((map['helmReleaseSettings']! as Map).cast<String, dynamic>())).input(),
+      kubeClientSettings: map['kubeClientSettings'] == null ? null : (KubeClientSettings.fromMap((map['kubeClientSettings']! as Map).cast<String, dynamic>())).input(),
+      kubeconfig: map['kubeconfig'] == null ? null : (map['kubeconfig']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      renderYamlToDirectory: map['renderYamlToDirectory'] == null ? null : (map['renderYamlToDirectory']! as String).input(),
+      skipUpdateUnreachable: map['skipUpdateUnreachable'] == null ? null : (map['skipUpdateUnreachable']! as bool).input(),
+      suppressDeprecationWarnings: map['suppressDeprecationWarnings'] == null ? null : (map['suppressDeprecationWarnings']! as bool).input(),
+      suppressHelmHookWarnings: map['suppressHelmHookWarnings'] == null ? null : (map['suppressHelmHookWarnings']! as bool).input(),
     );
   }
 }

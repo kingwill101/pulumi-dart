@@ -26,8 +26,8 @@ class SourceCreationDataResponse {
 
   factory SourceCreationDataResponse.fromMap(Map<String, dynamic> map) {
     return SourceCreationDataResponse(
-      createSource: map['createSource'] == null ? null : (map['createSource'] as String).input(),
-      sourceId: map['sourceId'] == null ? null : (map['sourceId'] as String).input(),
+      createSource: map['createSource'] == null ? null : (map['createSource']! as String).input(),
+      sourceId: map['sourceId'] == null ? null : (map['sourceId']! as String).input(),
     );
   }
 }

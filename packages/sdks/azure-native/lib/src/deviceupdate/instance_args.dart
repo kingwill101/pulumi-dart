@@ -62,13 +62,13 @@ class InstanceArgs {
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
       accountName: (map['accountName'] as String).input(),
-      diagnosticStorageProperties: map['diagnosticStorageProperties'] == null ? null : (DiagnosticStorageProperties.fromMap((map['diagnosticStorageProperties'] as Map).cast<String, dynamic>())).input(),
-      enableDiagnostics: map['enableDiagnostics'] == null ? null : (map['enableDiagnostics'] as bool).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      iotHubs: map['iotHubs'] == null ? null : (pulumi.Input.decodeList<IotHubSettings>(map['iotHubs'], (value) => IotHubSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      diagnosticStorageProperties: map['diagnosticStorageProperties'] == null ? null : (DiagnosticStorageProperties.fromMap((map['diagnosticStorageProperties']! as Map).cast<String, dynamic>())).input(),
+      enableDiagnostics: map['enableDiagnostics'] == null ? null : (map['enableDiagnostics']! as bool).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
+      iotHubs: map['iotHubs'] == null ? null : (pulumi.Input.decodeList<IotHubSettings>(map['iotHubs']!, (value) => IotHubSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -79,16 +79,16 @@ class GetUserResult {
   factory GetUserResult.fromMap(Map<String, dynamic> map) {
     return GetUserResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      email: map['email'] == null ? null : map['email'] as String,
-      firstName: map['firstName'] == null ? null : map['firstName'] as String,
+      email: map['email'] == null ? null : map['email']! as String,
+      firstName: map['firstName'] == null ? null : map['firstName']! as String,
       groups: pulumi.Input.decodeList<GroupContractPropertiesResponse>(map['groups'], (value) => GroupContractPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      identities: map['identities'] == null ? null : pulumi.Input.decodeList<UserIdentityContractResponse>(map['identities'], (value) => UserIdentityContractResponse.fromMap((value as Map).cast<String, dynamic>())),
-      lastName: map['lastName'] == null ? null : map['lastName'] as String,
+      identities: map['identities'] == null ? null : pulumi.Input.decodeList<UserIdentityContractResponse>(map['identities']!, (value) => UserIdentityContractResponse.fromMap((value as Map).cast<String, dynamic>())),
+      lastName: map['lastName'] == null ? null : map['lastName']! as String,
       name: map['name'] as String,
-      note: map['note'] == null ? null : map['note'] as String,
-      registrationDate: map['registrationDate'] == null ? null : map['registrationDate'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      note: map['note'] == null ? null : map['note']! as String,
+      registrationDate: map['registrationDate'] == null ? null : map['registrationDate']! as String,
+      state: map['state'] == null ? null : map['state']! as String,
       type: map['type'] as String,
     );
   }

@@ -32,8 +32,8 @@ class HighlightedFileResponse {
   factory HighlightedFileResponse.fromMap(Map<String, dynamic> map) {
     return HighlightedFileResponse(
       path: (map['path'] as String).input(),
-      sections: map['sections'] == null ? null : ((map['sections'] as List).cast<String>()).input(),
-      visited: map['visited'] == null ? null : (map['visited'] as bool).input(),
+      sections: map['sections'] == null ? null : ((map['sections']! as List).cast<String>()).input(),
+      visited: map['visited'] == null ? null : (map['visited']! as bool).input(),
     );
   }
 }

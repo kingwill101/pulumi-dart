@@ -45,10 +45,10 @@ class DomainMappingAppengineV1alphaArgs {
   factory DomainMappingAppengineV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return DomainMappingAppengineV1alphaArgs(
       appId: (map['appId'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      noManagedCertificate: map['noManagedCertificate'] == null ? null : (map['noManagedCertificate'] as bool).input(),
-      overrideStrategy: map['overrideStrategy'] == null ? null : (map['overrideStrategy'] as String).input(),
-      sslSettings: map['sslSettings'] == null ? null : (SslSettingsAppengineV1alpha.fromMap((map['sslSettings'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      noManagedCertificate: map['noManagedCertificate'] == null ? null : (map['noManagedCertificate']! as bool).input(),
+      overrideStrategy: map['overrideStrategy'] == null ? null : (map['overrideStrategy']! as String).input(),
+      sslSettings: map['sslSettings'] == null ? null : (SslSettingsAppengineV1alpha.fromMap((map['sslSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -53,12 +53,12 @@ class ServiceTemplateSpecContainerReadinessProbe {
 
   factory ServiceTemplateSpecContainerReadinessProbe.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateSpecContainerReadinessProbe(
-      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as int).input(),
-      grpc: map['grpc'] == null ? null : (ServiceTemplateSpecContainerReadinessProbeGrpc.fromMap((map['grpc'] as Map).cast<String, dynamic>())).input(),
-      httpGet: map['httpGet'] == null ? null : (ServiceTemplateSpecContainerReadinessProbeHttpGet.fromMap((map['httpGet'] as Map).cast<String, dynamic>())).input(),
-      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds'] as int).input(),
-      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold'] as int).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold']! as int).input(),
+      grpc: map['grpc'] == null ? null : (ServiceTemplateSpecContainerReadinessProbeGrpc.fromMap((map['grpc']! as Map).cast<String, dynamic>())).input(),
+      httpGet: map['httpGet'] == null ? null : (ServiceTemplateSpecContainerReadinessProbeHttpGet.fromMap((map['httpGet']! as Map).cast<String, dynamic>())).input(),
+      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds']! as int).input(),
+      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold']! as int).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
     );
   }
 }

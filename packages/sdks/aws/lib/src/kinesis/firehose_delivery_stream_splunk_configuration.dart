@@ -79,18 +79,18 @@ class FirehoseDeliveryStreamSplunkConfiguration {
 
   factory FirehoseDeliveryStreamSplunkConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamSplunkConfiguration(
-      bufferingInterval: map['bufferingInterval'] == null ? null : (map['bufferingInterval'] as int).input(),
-      bufferingSize: map['bufferingSize'] == null ? null : (map['bufferingSize'] as int).input(),
-      cloudwatchLoggingOptions: map['cloudwatchLoggingOptions'] == null ? null : (FirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptions.fromMap((map['cloudwatchLoggingOptions'] as Map).cast<String, dynamic>())).input(),
-      hecAcknowledgmentTimeout: map['hecAcknowledgmentTimeout'] == null ? null : (map['hecAcknowledgmentTimeout'] as int).input(),
+      bufferingInterval: map['bufferingInterval'] == null ? null : ((map['bufferingInterval'] as int).input()).input(),
+      bufferingSize: map['bufferingSize'] == null ? null : ((map['bufferingSize'] as int).input()).input(),
+      cloudwatchLoggingOptions: map['cloudwatchLoggingOptions'] == null ? null : ((FirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptions.fromMap((map['cloudwatchLoggingOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      hecAcknowledgmentTimeout: map['hecAcknowledgmentTimeout'] == null ? null : ((map['hecAcknowledgmentTimeout'] as int).input()).input(),
       hecEndpoint: (map['hecEndpoint'] as String).input(),
-      hecEndpointType: map['hecEndpointType'] == null ? null : (map['hecEndpointType'] as String).input(),
-      hecToken: map['hecToken'] == null ? null : (map['hecToken'] as String).input(),
-      processingConfiguration: map['processingConfiguration'] == null ? null : (FirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration.fromMap((map['processingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      retryDuration: map['retryDuration'] == null ? null : (map['retryDuration'] as int).input(),
-      s3BackupMode: map['s3BackupMode'] == null ? null : (map['s3BackupMode'] as String).input(),
-      s3Configuration: (FirehoseDeliveryStreamSplunkConfigurationS3Configuration.fromMap((map['s3Configuration'] as Map).cast<String, dynamic>())).input(),
-      secretsManagerConfiguration: map['secretsManagerConfiguration'] == null ? null : (FirehoseDeliveryStreamSplunkConfigurationSecretsManagerConfiguration.fromMap((map['secretsManagerConfiguration'] as Map).cast<String, dynamic>())).input(),
+      hecEndpointType: map['hecEndpointType'] == null ? null : ((map['hecEndpointType'] as String).input()).input(),
+      hecToken: map['hecToken'] == null ? null : ((map['hecToken'] as String).input()).input(),
+      processingConfiguration: map['processingConfiguration'] == null ? null : ((FirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration.fromMap((map['processingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      retryDuration: map['retryDuration'] == null ? null : ((map['retryDuration'] as int).input()).input(),
+      s3BackupMode: map['s3BackupMode'] == null ? null : ((map['s3BackupMode'] as String).input()).input(),
+      s3Configuration: (FirehoseDeliveryStreamSplunkConfigurationS3Configuration.fromMap((map['s3Configuration']! as Map).cast<String, dynamic>())).input(),
+      secretsManagerConfiguration: map['secretsManagerConfiguration'] == null ? null : ((FirehoseDeliveryStreamSplunkConfigurationSecretsManagerConfiguration.fromMap((map['secretsManagerConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

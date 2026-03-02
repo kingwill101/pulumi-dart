@@ -21,7 +21,7 @@ class ManagedByInfo {
 
   factory ManagedByInfo.fromMap(Map<String, dynamic> map) {
     return ManagedByInfo(
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

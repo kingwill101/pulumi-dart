@@ -41,10 +41,10 @@ class BackupArgs {
 
   factory BackupArgs.fromMap(Map<String, dynamic> map) {
     return BackupArgs(
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as String).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : ((map['fileSystemId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      volumeId: map['volumeId'] == null ? null : ((map['volumeId'] as String).input()).input(),
     );
   }
 }

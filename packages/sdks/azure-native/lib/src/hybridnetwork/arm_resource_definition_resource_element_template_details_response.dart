@@ -39,9 +39,9 @@ class ArmResourceDefinitionResourceElementTemplateDetailsResponse {
 
   factory ArmResourceDefinitionResourceElementTemplateDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ArmResourceDefinitionResourceElementTemplateDetailsResponse(
-      configuration: map['configuration'] == null ? null : (ArmResourceDefinitionResourceElementTemplateResponse.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      dependsOnProfile: map['dependsOnProfile'] == null ? null : (DependsOnProfileResponse.fromMap((map['dependsOnProfile'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      configuration: map['configuration'] == null ? null : (ArmResourceDefinitionResourceElementTemplateResponse.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
+      dependsOnProfile: map['dependsOnProfile'] == null ? null : (DependsOnProfileResponse.fromMap((map['dependsOnProfile']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceElementType: (map['resourceElementType'] as String).input(),
     );
   }

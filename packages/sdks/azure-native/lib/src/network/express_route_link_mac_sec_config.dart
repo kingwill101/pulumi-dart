@@ -36,10 +36,10 @@ class ExpressRouteLinkMacSecConfig {
 
   factory ExpressRouteLinkMacSecConfig.fromMap(Map<String, dynamic> map) {
     return ExpressRouteLinkMacSecConfig(
-      cakSecretIdentifier: map['cakSecretIdentifier'] == null ? null : (map['cakSecretIdentifier'] as String).input(),
-      cipher: map['cipher'] == null ? null : (map['cipher'] as String).input(),
-      cknSecretIdentifier: map['cknSecretIdentifier'] == null ? null : (map['cknSecretIdentifier'] as String).input(),
-      sciState: map['sciState'] == null ? null : (map['sciState'] as String).input(),
+      cakSecretIdentifier: map['cakSecretIdentifier'] == null ? null : (map['cakSecretIdentifier']! as String).input(),
+      cipher: map['cipher'] == null ? null : (map['cipher']! as String).input(),
+      cknSecretIdentifier: map['cknSecretIdentifier'] == null ? null : (map['cknSecretIdentifier']! as String).input(),
+      sciState: map['sciState'] == null ? null : (map['sciState']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class GroupInstanceRefreshPreferencesAlarmSpecification {
 
   factory GroupInstanceRefreshPreferencesAlarmSpecification.fromMap(Map<String, dynamic> map) {
     return GroupInstanceRefreshPreferencesAlarmSpecification(
-      alarms: map['alarms'] == null ? null : ((map['alarms'] as List).cast<String>()).input(),
+      alarms: map['alarms'] == null ? null : (((map['alarms'] as List).cast<String>()).input()).input(),
     );
   }
 }

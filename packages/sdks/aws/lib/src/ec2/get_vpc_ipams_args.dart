@@ -37,9 +37,9 @@ class GetVpcIpamsArgs {
 
   factory GetVpcIpamsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcIpamsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpcIpamsFilter>(map['filters'], (value) => GetVpcIpamsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipamIds: map['ipamIds'] == null ? null : ((map['ipamIds'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetVpcIpamsFilter>(map['filters']!, (value) => GetVpcIpamsFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      ipamIds: map['ipamIds'] == null ? null : (((map['ipamIds'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

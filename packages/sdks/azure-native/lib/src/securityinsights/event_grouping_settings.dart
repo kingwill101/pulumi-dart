@@ -21,7 +21,7 @@ class EventGroupingSettings {
 
   factory EventGroupingSettings.fromMap(Map<String, dynamic> map) {
     return EventGroupingSettings(
-      aggregationKind: map['aggregationKind'] == null ? null : (map['aggregationKind'] as String).input(),
+      aggregationKind: map['aggregationKind'] == null ? null : (map['aggregationKind']! as String).input(),
     );
   }
 }

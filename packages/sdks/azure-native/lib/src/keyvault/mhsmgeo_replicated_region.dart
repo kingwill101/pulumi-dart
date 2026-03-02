@@ -26,8 +26,8 @@ class MHSMGeoReplicatedRegion {
 
   factory MHSMGeoReplicatedRegion.fromMap(Map<String, dynamic> map) {
     return MHSMGeoReplicatedRegion(
-      isPrimary: map['isPrimary'] == null ? null : (map['isPrimary'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      isPrimary: map['isPrimary'] == null ? null : (map['isPrimary']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

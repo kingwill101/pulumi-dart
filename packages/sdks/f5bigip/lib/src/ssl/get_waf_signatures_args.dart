@@ -66,16 +66,16 @@ class GetWafSignaturesArgs {
 
   factory GetWafSignaturesArgs.fromMap(Map<String, dynamic> map) {
     return GetWafSignaturesArgs(
-      accuracy: map['accuracy'] == null ? null : (map['accuracy'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      performStaging: map['performStaging'] == null ? null : (map['performStaging'] as bool).input(),
-      risk: map['risk'] == null ? null : (map['risk'] as String).input(),
+      accuracy: map['accuracy'] == null ? null : (map['accuracy']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      performStaging: map['performStaging'] == null ? null : (map['performStaging']! as bool).input(),
+      risk: map['risk'] == null ? null : (map['risk']! as String).input(),
       signatureId: (map['signatureId'] as int).input(),
-      systemSignatureId: map['systemSignatureId'] == null ? null : (map['systemSignatureId'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      systemSignatureId: map['systemSignatureId'] == null ? null : (map['systemSignatureId']! as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

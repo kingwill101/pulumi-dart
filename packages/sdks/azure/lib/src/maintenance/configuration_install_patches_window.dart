@@ -30,9 +30,9 @@ class ConfigurationInstallPatchesWindow {
 
   factory ConfigurationInstallPatchesWindow.fromMap(Map<String, dynamic> map) {
     return ConfigurationInstallPatchesWindow(
-      classificationsToIncludes: map['classificationsToIncludes'] == null ? null : ((map['classificationsToIncludes'] as List).cast<String>()).input(),
-      kbNumbersToExcludes: map['kbNumbersToExcludes'] == null ? null : ((map['kbNumbersToExcludes'] as List).cast<String>()).input(),
-      kbNumbersToIncludes: map['kbNumbersToIncludes'] == null ? null : ((map['kbNumbersToIncludes'] as List).cast<String>()).input(),
+      classificationsToIncludes: map['classificationsToIncludes'] == null ? null : ((map['classificationsToIncludes']! as List).cast<String>()).input(),
+      kbNumbersToExcludes: map['kbNumbersToExcludes'] == null ? null : ((map['kbNumbersToExcludes']! as List).cast<String>()).input(),
+      kbNumbersToIncludes: map['kbNumbersToIncludes'] == null ? null : ((map['kbNumbersToIncludes']! as List).cast<String>()).input(),
     );
   }
 }

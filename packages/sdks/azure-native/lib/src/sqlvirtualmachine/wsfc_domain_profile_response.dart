@@ -61,15 +61,15 @@ class WsfcDomainProfileResponse {
 
   factory WsfcDomainProfileResponse.fromMap(Map<String, dynamic> map) {
     return WsfcDomainProfileResponse(
-      clusterBootstrapAccount: map['clusterBootstrapAccount'] == null ? null : (map['clusterBootstrapAccount'] as String).input(),
-      clusterOperatorAccount: map['clusterOperatorAccount'] == null ? null : (map['clusterOperatorAccount'] as String).input(),
-      clusterSubnetType: map['clusterSubnetType'] == null ? null : (map['clusterSubnetType'] as String).input(),
-      domainFqdn: map['domainFqdn'] == null ? null : (map['domainFqdn'] as String).input(),
-      fileShareWitnessPath: map['fileShareWitnessPath'] == null ? null : (map['fileShareWitnessPath'] as String).input(),
-      isSqlServiceAccountGmsa: map['isSqlServiceAccountGmsa'] == null ? null : (map['isSqlServiceAccountGmsa'] as bool).input(),
-      ouPath: map['ouPath'] == null ? null : (map['ouPath'] as String).input(),
-      sqlServiceAccount: map['sqlServiceAccount'] == null ? null : (map['sqlServiceAccount'] as String).input(),
-      storageAccountUrl: map['storageAccountUrl'] == null ? null : (map['storageAccountUrl'] as String).input(),
+      clusterBootstrapAccount: map['clusterBootstrapAccount'] == null ? null : (map['clusterBootstrapAccount']! as String).input(),
+      clusterOperatorAccount: map['clusterOperatorAccount'] == null ? null : (map['clusterOperatorAccount']! as String).input(),
+      clusterSubnetType: map['clusterSubnetType'] == null ? null : (map['clusterSubnetType']! as String).input(),
+      domainFqdn: map['domainFqdn'] == null ? null : (map['domainFqdn']! as String).input(),
+      fileShareWitnessPath: map['fileShareWitnessPath'] == null ? null : (map['fileShareWitnessPath']! as String).input(),
+      isSqlServiceAccountGmsa: map['isSqlServiceAccountGmsa'] == null ? null : (map['isSqlServiceAccountGmsa']! as bool).input(),
+      ouPath: map['ouPath'] == null ? null : (map['ouPath']! as String).input(),
+      sqlServiceAccount: map['sqlServiceAccount'] == null ? null : (map['sqlServiceAccount']! as String).input(),
+      storageAccountUrl: map['storageAccountUrl'] == null ? null : (map['storageAccountUrl']! as String).input(),
     );
   }
 }

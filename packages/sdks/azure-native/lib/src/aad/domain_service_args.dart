@@ -100,21 +100,21 @@ class DomainServiceArgs {
 
   factory DomainServiceArgs.fromMap(Map<String, dynamic> map) {
     return DomainServiceArgs(
-      configDiagnostics: map['configDiagnostics'] == null ? null : (ConfigDiagnostics.fromMap((map['configDiagnostics'] as Map).cast<String, dynamic>())).input(),
-      domainConfigurationType: map['domainConfigurationType'] == null ? null : (map['domainConfigurationType'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      domainSecuritySettings: map['domainSecuritySettings'] == null ? null : (DomainSecuritySettings.fromMap((map['domainSecuritySettings'] as Map).cast<String, dynamic>())).input(),
-      domainServiceName: map['domainServiceName'] == null ? null : (map['domainServiceName'] as String).input(),
-      filteredSync: map['filteredSync'] == null ? null : (map['filteredSync'] as String).input(),
-      ldapsSettings: map['ldapsSettings'] == null ? null : (LdapsSettings.fromMap((map['ldapsSettings'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      notificationSettings: map['notificationSettings'] == null ? null : (NotificationSettings.fromMap((map['notificationSettings'] as Map).cast<String, dynamic>())).input(),
-      replicaSets: map['replicaSets'] == null ? null : (pulumi.Input.decodeList<ReplicaSet>(map['replicaSets'], (value) => ReplicaSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceForestSettings: map['resourceForestSettings'] == null ? null : (ResourceForestSettings.fromMap((map['resourceForestSettings'] as Map).cast<String, dynamic>())).input(),
+      configDiagnostics: map['configDiagnostics'] == null ? null : (ConfigDiagnostics.fromMap((map['configDiagnostics']! as Map).cast<String, dynamic>())).input(),
+      domainConfigurationType: map['domainConfigurationType'] == null ? null : (map['domainConfigurationType']! as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      domainSecuritySettings: map['domainSecuritySettings'] == null ? null : (DomainSecuritySettings.fromMap((map['domainSecuritySettings']! as Map).cast<String, dynamic>())).input(),
+      domainServiceName: map['domainServiceName'] == null ? null : (map['domainServiceName']! as String).input(),
+      filteredSync: map['filteredSync'] == null ? null : (map['filteredSync']! as String).input(),
+      ldapsSettings: map['ldapsSettings'] == null ? null : (LdapsSettings.fromMap((map['ldapsSettings']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      notificationSettings: map['notificationSettings'] == null ? null : (NotificationSettings.fromMap((map['notificationSettings']! as Map).cast<String, dynamic>())).input(),
+      replicaSets: map['replicaSets'] == null ? null : (pulumi.Input.decodeList<ReplicaSet>(map['replicaSets']!, (value) => ReplicaSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceForestSettings: map['resourceForestSettings'] == null ? null : (ResourceForestSettings.fromMap((map['resourceForestSettings']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
-      syncScope: map['syncScope'] == null ? null : (map['syncScope'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
+      syncScope: map['syncScope'] == null ? null : (map['syncScope']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

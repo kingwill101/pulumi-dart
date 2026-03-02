@@ -72,17 +72,17 @@ class V3LayerVersionState {
 
   factory V3LayerVersionState.fromMap(Map<String, dynamic> map) {
     return V3LayerVersionState(
-      acl: map['acl'] == null ? null : (map['acl'] as String).input(),
-      code: map['code'] == null ? null : (V3LayerVersionCode.fromMap((map['code'] as Map).cast<String, dynamic>())).input(),
-      codeSize: map['codeSize'] == null ? null : (map['codeSize'] as String).input(),
-      compatibleRuntimes: map['compatibleRuntimes'] == null ? null : ((map['compatibleRuntimes'] as List).cast<String>()).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      layerName: map['layerName'] == null ? null : (map['layerName'] as String).input(),
-      layerVersionArn: map['layerVersionArn'] == null ? null : (map['layerVersionArn'] as String).input(),
-      license: map['license'] == null ? null : (map['license'] as String).input(),
-      public: map['public'] == null ? null : (map['public'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      acl: map['acl'] == null ? null : (map['acl']! as String).input(),
+      code: map['code'] == null ? null : (V3LayerVersionCode.fromMap((map['code']! as Map).cast<String, dynamic>())).input(),
+      codeSize: map['codeSize'] == null ? null : (map['codeSize']! as String).input(),
+      compatibleRuntimes: map['compatibleRuntimes'] == null ? null : ((map['compatibleRuntimes']! as List).cast<String>()).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      layerName: map['layerName'] == null ? null : (map['layerName']! as String).input(),
+      layerVersionArn: map['layerVersionArn'] == null ? null : (map['layerVersionArn']! as String).input(),
+      license: map['license'] == null ? null : (map['license']! as String).input(),
+      public: map['public'] == null ? null : (map['public']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

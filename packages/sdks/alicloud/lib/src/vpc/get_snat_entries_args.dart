@@ -64,15 +64,15 @@ class GetSnatEntriesArgs {
 
   factory GetSnatEntriesArgs.fromMap(Map<String, dynamic> map) {
     return GetSnatEntriesArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      snatEntryName: map['snatEntryName'] == null ? null : (map['snatEntryName'] as String).input(),
-      snatIp: map['snatIp'] == null ? null : (map['snatIp'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      snatEntryName: map['snatEntryName'] == null ? null : (map['snatEntryName']! as String).input(),
+      snatIp: map['snatIp'] == null ? null : (map['snatIp']! as String).input(),
       snatTableId: (map['snatTableId'] as String).input(),
-      sourceCidr: map['sourceCidr'] == null ? null : (map['sourceCidr'] as String).input(),
-      sourceVswitchId: map['sourceVswitchId'] == null ? null : (map['sourceVswitchId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      sourceCidr: map['sourceCidr'] == null ? null : (map['sourceCidr']! as String).input(),
+      sourceVswitchId: map['sourceVswitchId'] == null ? null : (map['sourceVswitchId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

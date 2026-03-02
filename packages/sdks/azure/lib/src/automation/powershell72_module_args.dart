@@ -42,8 +42,8 @@ class Powershell72ModuleArgs {
     return Powershell72ModuleArgs(
       automationAccountId: (map['automationAccountId'] as String).input(),
       moduleLink: (Powershell72ModuleModuleLink.fromMap((map['moduleLink'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

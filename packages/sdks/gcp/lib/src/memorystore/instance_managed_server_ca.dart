@@ -23,7 +23,7 @@ class InstanceManagedServerCa {
 
   factory InstanceManagedServerCa.fromMap(Map<String, dynamic> map) {
     return InstanceManagedServerCa(
-      caCerts: map['caCerts'] == null ? null : (pulumi.Input.decodeList<InstanceManagedServerCaCaCert>(map['caCerts'], (value) => InstanceManagedServerCaCaCert.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      caCerts: map['caCerts'] == null ? null : (pulumi.Input.decodeList<InstanceManagedServerCaCaCert>(map['caCerts']!, (value) => InstanceManagedServerCaCaCert.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

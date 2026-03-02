@@ -30,7 +30,7 @@ class AiFeatureOnlineStoreBigtableAutoScaling {
 
   factory AiFeatureOnlineStoreBigtableAutoScaling.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreBigtableAutoScaling(
-      cpuUtilizationTarget: map['cpuUtilizationTarget'] == null ? null : (map['cpuUtilizationTarget'] as int).input(),
+      cpuUtilizationTarget: map['cpuUtilizationTarget'] == null ? null : (map['cpuUtilizationTarget']! as int).input(),
       maxNodeCount: (map['maxNodeCount'] as int).input(),
       minNodeCount: (map['minNodeCount'] as int).input(),
     );

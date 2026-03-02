@@ -29,7 +29,7 @@ class GroupMembershipRole {
 
   factory GroupMembershipRole.fromMap(Map<String, dynamic> map) {
     return GroupMembershipRole(
-      expiryDetail: map['expiryDetail'] == null ? null : (GroupMembershipRoleExpiryDetail.fromMap((map['expiryDetail'] as Map).cast<String, dynamic>())).input(),
+      expiryDetail: map['expiryDetail'] == null ? null : (GroupMembershipRoleExpiryDetail.fromMap((map['expiryDetail']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
     );
   }

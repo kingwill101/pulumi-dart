@@ -51,12 +51,12 @@ class AnalyticsApplicationOutput {
 
   factory AnalyticsApplicationOutput.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationOutput(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      kinesisFirehose: map['kinesisFirehose'] == null ? null : (AnalyticsApplicationOutputKinesisFirehose.fromMap((map['kinesisFirehose'] as Map).cast<String, dynamic>())).input(),
-      kinesisStream: map['kinesisStream'] == null ? null : (AnalyticsApplicationOutputKinesisStream.fromMap((map['kinesisStream'] as Map).cast<String, dynamic>())).input(),
-      lambda: map['lambda'] == null ? null : (AnalyticsApplicationOutputLambda.fromMap((map['lambda'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      kinesisFirehose: map['kinesisFirehose'] == null ? null : ((AnalyticsApplicationOutputKinesisFirehose.fromMap((map['kinesisFirehose']! as Map).cast<String, dynamic>())).input()).input(),
+      kinesisStream: map['kinesisStream'] == null ? null : ((AnalyticsApplicationOutputKinesisStream.fromMap((map['kinesisStream']! as Map).cast<String, dynamic>())).input()).input(),
+      lambda: map['lambda'] == null ? null : ((AnalyticsApplicationOutputLambda.fromMap((map['lambda']! as Map).cast<String, dynamic>())).input()).input(),
       name: (map['name'] as String).input(),
-      schema: (AnalyticsApplicationOutputSchema.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
+      schema: (AnalyticsApplicationOutputSchema.fromMap((map['schema']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

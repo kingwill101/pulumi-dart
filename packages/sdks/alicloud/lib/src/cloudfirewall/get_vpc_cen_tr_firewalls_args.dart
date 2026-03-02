@@ -79,18 +79,18 @@ class GetVpcCenTrFirewallsArgs {
 
   factory GetVpcCenTrFirewallsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcCenTrFirewallsArgs(
-      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
-      currentPage: map['currentPage'] == null ? null : (map['currentPage'] as int).input(),
-      firewallId: map['firewallId'] == null ? null : (map['firewallId'] as String).input(),
-      firewallName: map['firewallName'] == null ? null : (map['firewallName'] as String).input(),
-      firewallSwitchStatus: map['firewallSwitchStatus'] == null ? null : (map['firewallSwitchStatus'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
-      regionNo: map['regionNo'] == null ? null : (map['regionNo'] as String).input(),
-      routeMode: map['routeMode'] == null ? null : (map['routeMode'] as String).input(),
-      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
+      currentPage: map['currentPage'] == null ? null : (map['currentPage']! as int).input(),
+      firewallId: map['firewallId'] == null ? null : (map['firewallId']! as String).input(),
+      firewallName: map['firewallName'] == null ? null : (map['firewallName']! as String).input(),
+      firewallSwitchStatus: map['firewallSwitchStatus'] == null ? null : (map['firewallSwitchStatus']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber']! as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
+      regionNo: map['regionNo'] == null ? null : (map['regionNo']! as String).input(),
+      routeMode: map['routeMode'] == null ? null : (map['routeMode']! as String).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId']! as String).input(),
     );
   }
 }

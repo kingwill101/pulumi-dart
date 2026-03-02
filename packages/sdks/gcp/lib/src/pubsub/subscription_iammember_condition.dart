@@ -27,7 +27,7 @@ class SubscriptionIAMMemberCondition {
 
   factory SubscriptionIAMMemberCondition.fromMap(Map<String, dynamic> map) {
     return SubscriptionIAMMemberCondition(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       expression: (map['expression'] as String).input(),
       title: (map['title'] as String).input(),
     );

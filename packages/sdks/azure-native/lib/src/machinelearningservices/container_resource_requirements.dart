@@ -27,8 +27,8 @@ class ContainerResourceRequirements {
 
   factory ContainerResourceRequirements.fromMap(Map<String, dynamic> map) {
     return ContainerResourceRequirements(
-      containerResourceLimits: map['containerResourceLimits'] == null ? null : (ContainerResourceSettings.fromMap((map['containerResourceLimits'] as Map).cast<String, dynamic>())).input(),
-      containerResourceRequests: map['containerResourceRequests'] == null ? null : (ContainerResourceSettings.fromMap((map['containerResourceRequests'] as Map).cast<String, dynamic>())).input(),
+      containerResourceLimits: map['containerResourceLimits'] == null ? null : (ContainerResourceSettings.fromMap((map['containerResourceLimits']! as Map).cast<String, dynamic>())).input(),
+      containerResourceRequests: map['containerResourceRequests'] == null ? null : (ContainerResourceSettings.fromMap((map['containerResourceRequests']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

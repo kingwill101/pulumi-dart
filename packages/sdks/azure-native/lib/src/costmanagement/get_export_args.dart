@@ -34,7 +34,7 @@ class GetExportArgs {
 
   factory GetExportArgs.fromMap(Map<String, dynamic> map) {
     return GetExportArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       exportName: (map['exportName'] as String).input(),
       scope: (map['scope'] as String).input(),
     );

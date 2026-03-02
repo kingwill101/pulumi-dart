@@ -27,8 +27,8 @@ class LabelingJobInputConfig {
 
   factory LabelingJobInputConfig.fromMap(Map<String, dynamic> map) {
     return LabelingJobInputConfig(
-      dataAttributes: map['dataAttributes'] == null ? null : (LabelingJobInputConfigDataAttributes.fromMap((map['dataAttributes'] as Map).cast<String, dynamic>())).input(),
-      dataSource: (LabelingJobInputConfigDataSource.fromMap((map['dataSource'] as Map).cast<String, dynamic>())).input(),
+      dataAttributes: map['dataAttributes'] == null ? null : ((LabelingJobInputConfigDataAttributes.fromMap((map['dataAttributes']! as Map).cast<String, dynamic>())).input()).input(),
+      dataSource: (LabelingJobInputConfigDataSource.fromMap((map['dataSource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

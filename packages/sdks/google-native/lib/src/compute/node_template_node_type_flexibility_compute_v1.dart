@@ -27,9 +27,9 @@ class NodeTemplateNodeTypeFlexibilityComputeV1 {
 
   factory NodeTemplateNodeTypeFlexibilityComputeV1.fromMap(Map<String, dynamic> map) {
     return NodeTemplateNodeTypeFlexibilityComputeV1(
-      cpus: map['cpus'] == null ? null : (map['cpus'] as String).input(),
-      localSsd: map['localSsd'] == null ? null : (map['localSsd'] as String).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as String).input(),
+      cpus: map['cpus'] == null ? null : (map['cpus']! as String).input(),
+      localSsd: map['localSsd'] == null ? null : (map['localSsd']! as String).input(),
+      memory: map['memory'] == null ? null : (map['memory']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class LinuxVirtualMachineScaleSetScaleIn {
 
   factory LinuxVirtualMachineScaleSetScaleIn.fromMap(Map<String, dynamic> map) {
     return LinuxVirtualMachineScaleSetScaleIn(
-      forceDeletionEnabled: map['forceDeletionEnabled'] == null ? null : (map['forceDeletionEnabled'] as bool).input(),
-      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
+      forceDeletionEnabled: map['forceDeletionEnabled'] == null ? null : (map['forceDeletionEnabled']! as bool).input(),
+      rule: map['rule'] == null ? null : (map['rule']! as String).input(),
     );
   }
 }

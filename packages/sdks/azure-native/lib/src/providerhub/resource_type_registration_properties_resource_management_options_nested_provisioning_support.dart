@@ -21,7 +21,7 @@ class ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvision
 
   factory ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupport.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupport(
-      minimumApiVersion: map['minimumApiVersion'] == null ? null : (map['minimumApiVersion'] as String).input(),
+      minimumApiVersion: map['minimumApiVersion'] == null ? null : (map['minimumApiVersion']! as String).input(),
     );
   }
 }

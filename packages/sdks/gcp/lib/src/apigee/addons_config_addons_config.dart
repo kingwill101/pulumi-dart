@@ -50,11 +50,11 @@ class AddonsConfigAddonsConfig {
 
   factory AddonsConfigAddonsConfig.fromMap(Map<String, dynamic> map) {
     return AddonsConfigAddonsConfig(
-      advancedApiOpsConfig: map['advancedApiOpsConfig'] == null ? null : (AddonsConfigAddonsConfigAdvancedApiOpsConfig.fromMap((map['advancedApiOpsConfig'] as Map).cast<String, dynamic>())).input(),
-      apiSecurityConfig: map['apiSecurityConfig'] == null ? null : (AddonsConfigAddonsConfigApiSecurityConfig.fromMap((map['apiSecurityConfig'] as Map).cast<String, dynamic>())).input(),
-      connectorsPlatformConfig: map['connectorsPlatformConfig'] == null ? null : (AddonsConfigAddonsConfigConnectorsPlatformConfig.fromMap((map['connectorsPlatformConfig'] as Map).cast<String, dynamic>())).input(),
-      integrationConfig: map['integrationConfig'] == null ? null : (AddonsConfigAddonsConfigIntegrationConfig.fromMap((map['integrationConfig'] as Map).cast<String, dynamic>())).input(),
-      monetizationConfig: map['monetizationConfig'] == null ? null : (AddonsConfigAddonsConfigMonetizationConfig.fromMap((map['monetizationConfig'] as Map).cast<String, dynamic>())).input(),
+      advancedApiOpsConfig: map['advancedApiOpsConfig'] == null ? null : (AddonsConfigAddonsConfigAdvancedApiOpsConfig.fromMap((map['advancedApiOpsConfig']! as Map).cast<String, dynamic>())).input(),
+      apiSecurityConfig: map['apiSecurityConfig'] == null ? null : (AddonsConfigAddonsConfigApiSecurityConfig.fromMap((map['apiSecurityConfig']! as Map).cast<String, dynamic>())).input(),
+      connectorsPlatformConfig: map['connectorsPlatformConfig'] == null ? null : (AddonsConfigAddonsConfigConnectorsPlatformConfig.fromMap((map['connectorsPlatformConfig']! as Map).cast<String, dynamic>())).input(),
+      integrationConfig: map['integrationConfig'] == null ? null : (AddonsConfigAddonsConfigIntegrationConfig.fromMap((map['integrationConfig']! as Map).cast<String, dynamic>())).input(),
+      monetizationConfig: map['monetizationConfig'] == null ? null : (AddonsConfigAddonsConfigMonetizationConfig.fromMap((map['monetizationConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

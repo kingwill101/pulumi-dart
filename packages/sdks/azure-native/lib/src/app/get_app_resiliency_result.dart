@@ -78,15 +78,15 @@ class GetAppResiliencyResult {
   factory GetAppResiliencyResult.fromMap(Map<String, dynamic> map) {
     return GetAppResiliencyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      circuitBreakerPolicy: map['circuitBreakerPolicy'] == null ? null : CircuitBreakerPolicyResponse.fromMap((map['circuitBreakerPolicy'] as Map).cast<String, dynamic>()),
-      httpConnectionPool: map['httpConnectionPool'] == null ? null : HttpConnectionPoolResponse.fromMap((map['httpConnectionPool'] as Map).cast<String, dynamic>()),
-      httpRetryPolicy: map['httpRetryPolicy'] == null ? null : HttpRetryPolicyResponse.fromMap((map['httpRetryPolicy'] as Map).cast<String, dynamic>()),
+      circuitBreakerPolicy: map['circuitBreakerPolicy'] == null ? null : CircuitBreakerPolicyResponse.fromMap((map['circuitBreakerPolicy']! as Map).cast<String, dynamic>()),
+      httpConnectionPool: map['httpConnectionPool'] == null ? null : HttpConnectionPoolResponse.fromMap((map['httpConnectionPool']! as Map).cast<String, dynamic>()),
+      httpRetryPolicy: map['httpRetryPolicy'] == null ? null : HttpRetryPolicyResponse.fromMap((map['httpRetryPolicy']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tcpConnectionPool: map['tcpConnectionPool'] == null ? null : TcpConnectionPoolResponse.fromMap((map['tcpConnectionPool'] as Map).cast<String, dynamic>()),
-      tcpRetryPolicy: map['tcpRetryPolicy'] == null ? null : TcpRetryPolicyResponse.fromMap((map['tcpRetryPolicy'] as Map).cast<String, dynamic>()),
-      timeoutPolicy: map['timeoutPolicy'] == null ? null : TimeoutPolicyResponse.fromMap((map['timeoutPolicy'] as Map).cast<String, dynamic>()),
+      tcpConnectionPool: map['tcpConnectionPool'] == null ? null : TcpConnectionPoolResponse.fromMap((map['tcpConnectionPool']! as Map).cast<String, dynamic>()),
+      tcpRetryPolicy: map['tcpRetryPolicy'] == null ? null : TcpRetryPolicyResponse.fromMap((map['tcpRetryPolicy']! as Map).cast<String, dynamic>()),
+      timeoutPolicy: map['timeoutPolicy'] == null ? null : TimeoutPolicyResponse.fromMap((map['timeoutPolicy']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }

@@ -42,11 +42,11 @@ class EcsPrefixListState {
 
   factory EcsPrefixListState.fromMap(Map<String, dynamic> map) {
     return EcsPrefixListState(
-      addressFamily: map['addressFamily'] == null ? null : (map['addressFamily'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<EcsPrefixListEntry>(map['entries'], (value) => EcsPrefixListEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maxEntries: map['maxEntries'] == null ? null : (map['maxEntries'] as int).input(),
-      prefixListName: map['prefixListName'] == null ? null : (map['prefixListName'] as String).input(),
+      addressFamily: map['addressFamily'] == null ? null : (map['addressFamily']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<EcsPrefixListEntry>(map['entries']!, (value) => EcsPrefixListEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxEntries: map['maxEntries'] == null ? null : (map['maxEntries']! as int).input(),
+      prefixListName: map['prefixListName'] == null ? null : (map['prefixListName']! as String).input(),
     );
   }
 }

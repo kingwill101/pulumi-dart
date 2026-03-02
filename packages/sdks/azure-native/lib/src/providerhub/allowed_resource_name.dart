@@ -25,8 +25,8 @@ class AllowedResourceName {
 
   factory AllowedResourceName.fromMap(Map<String, dynamic> map) {
     return AllowedResourceName(
-      getActionVerb: map['getActionVerb'] == null ? null : (map['getActionVerb'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      getActionVerb: map['getActionVerb'] == null ? null : (map['getActionVerb']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

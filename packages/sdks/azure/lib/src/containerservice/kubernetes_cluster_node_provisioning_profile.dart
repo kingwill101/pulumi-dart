@@ -24,8 +24,8 @@ class KubernetesClusterNodeProvisioningProfile {
 
   factory KubernetesClusterNodeProvisioningProfile.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterNodeProvisioningProfile(
-      defaultNodePools: map['defaultNodePools'] == null ? null : (map['defaultNodePools'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      defaultNodePools: map['defaultNodePools'] == null ? null : (map['defaultNodePools']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
     );
   }
 }

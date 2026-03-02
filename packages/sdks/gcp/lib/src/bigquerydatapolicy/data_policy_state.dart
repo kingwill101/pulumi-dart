@@ -55,13 +55,13 @@ class DataPolicyState {
 
   factory DataPolicyState.fromMap(Map<String, dynamic> map) {
     return DataPolicyState(
-      dataMaskingPolicy: map['dataMaskingPolicy'] == null ? null : (DataPolicyDataMaskingPolicy.fromMap((map['dataMaskingPolicy'] as Map).cast<String, dynamic>())).input(),
-      dataPolicyId: map['dataPolicyId'] == null ? null : (map['dataPolicyId'] as String).input(),
-      dataPolicyType: map['dataPolicyType'] == null ? null : (map['dataPolicyType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyTag: map['policyTag'] == null ? null : (map['policyTag'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      dataMaskingPolicy: map['dataMaskingPolicy'] == null ? null : (DataPolicyDataMaskingPolicy.fromMap((map['dataMaskingPolicy']! as Map).cast<String, dynamic>())).input(),
+      dataPolicyId: map['dataPolicyId'] == null ? null : (map['dataPolicyId']! as String).input(),
+      dataPolicyType: map['dataPolicyType'] == null ? null : (map['dataPolicyType']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policyTag: map['policyTag'] == null ? null : (map['policyTag']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

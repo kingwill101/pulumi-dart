@@ -41,10 +41,10 @@ class ListProductsAndConfigurationProductFamiliesArgs {
 
   factory ListProductsAndConfigurationProductFamiliesArgs.fromMap(Map<String, dynamic> map) {
     return ListProductsAndConfigurationProductFamiliesArgs(
-      customerSubscriptionDetails: map['customerSubscriptionDetails'] == null ? null : (CustomerSubscriptionDetails.fromMap((map['customerSubscriptionDetails'] as Map).cast<String, dynamic>())).input(),
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      customerSubscriptionDetails: map['customerSubscriptionDetails'] == null ? null : (CustomerSubscriptionDetails.fromMap((map['customerSubscriptionDetails']! as Map).cast<String, dynamic>())).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       filterableProperties: (pulumi.Input.decodeMapValues<List<FilterableProperty>>(map['filterableProperties'], (value) => pulumi.Input.decodeList<FilterableProperty>(value, (value) => FilterableProperty.fromMap((value as Map).cast<String, dynamic>())))).input(),
-      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken']! as String).input(),
     );
   }
 }

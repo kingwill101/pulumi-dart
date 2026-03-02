@@ -26,7 +26,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSc
 
   factory ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormat.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormat(
-      mappingParameters: (ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters.fromMap((map['mappingParameters'] as Map).cast<String, dynamic>())).input(),
+      mappingParameters: (ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters.fromMap((map['mappingParameters']! as Map).cast<String, dynamic>())).input(),
       recordFormatType: (map['recordFormatType'] as String).input(),
     );
   }

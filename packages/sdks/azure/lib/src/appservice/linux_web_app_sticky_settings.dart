@@ -25,8 +25,8 @@ class LinuxWebAppStickySettings {
 
   factory LinuxWebAppStickySettings.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppStickySettings(
-      appSettingNames: map['appSettingNames'] == null ? null : ((map['appSettingNames'] as List).cast<String>()).input(),
-      connectionStringNames: map['connectionStringNames'] == null ? null : ((map['connectionStringNames'] as List).cast<String>()).input(),
+      appSettingNames: map['appSettingNames'] == null ? null : ((map['appSettingNames']! as List).cast<String>()).input(),
+      connectionStringNames: map['connectionStringNames'] == null ? null : ((map['connectionStringNames']! as List).cast<String>()).input(),
     );
   }
 }

@@ -31,7 +31,7 @@ class VirtualNetworkApplianceArgs {
 
   factory VirtualNetworkApplianceArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkApplianceArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       virtualHubId: (map['virtualHubId'] as String).input(),
     );
   }

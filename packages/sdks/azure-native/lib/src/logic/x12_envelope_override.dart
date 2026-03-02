@@ -67,7 +67,7 @@ class X12EnvelopeOverride {
   factory X12EnvelopeOverride.fromMap(Map<String, dynamic> map) {
     return X12EnvelopeOverride(
       dateFormat: (map['dateFormat'] as String).input(),
-      functionalIdentifierCode: map['functionalIdentifierCode'] == null ? null : (map['functionalIdentifierCode'] as String).input(),
+      functionalIdentifierCode: map['functionalIdentifierCode'] == null ? null : (map['functionalIdentifierCode']! as String).input(),
       headerVersion: (map['headerVersion'] as String).input(),
       messageId: (map['messageId'] as String).input(),
       protocolVersion: (map['protocolVersion'] as String).input(),

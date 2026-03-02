@@ -31,8 +31,8 @@ class PipelineDefinitionPipelineObjectField {
   factory PipelineDefinitionPipelineObjectField.fromMap(Map<String, dynamic> map) {
     return PipelineDefinitionPipelineObjectField(
       key: (map['key'] as String).input(),
-      refValue: map['refValue'] == null ? null : (map['refValue'] as String).input(),
-      stringValue: map['stringValue'] == null ? null : (map['stringValue'] as String).input(),
+      refValue: map['refValue'] == null ? null : ((map['refValue'] as String).input()).input(),
+      stringValue: map['stringValue'] == null ? null : ((map['stringValue'] as String).input()).input(),
     );
   }
 }

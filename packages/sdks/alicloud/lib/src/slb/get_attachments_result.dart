@@ -40,9 +40,9 @@ class GetAttachmentsResult {
   factory GetAttachmentsResult.fromMap(Map<String, dynamic> map) {
     return GetAttachmentsResult(
       id: map['id'] as String,
-      instanceIds: map['instanceIds'] == null ? null : (map['instanceIds'] as List).cast<String>(),
+      instanceIds: map['instanceIds'] == null ? null : (map['instanceIds']! as List).cast<String>(),
       loadBalancerId: map['loadBalancerId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       slbAttachments: pulumi.Input.decodeList<GetAttachmentsSlbAttachment>(map['slbAttachments'], (value) => GetAttachmentsSlbAttachment.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

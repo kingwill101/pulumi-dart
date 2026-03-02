@@ -90,20 +90,20 @@ class ReplicaKeyState {
 
   factory ReplicaKeyState.fromMap(Map<String, dynamic> map) {
     return ReplicaKeyState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : (map['bypassPolicyLockoutSafetyCheck'] as bool).input(),
-      deletionWindowInDays: map['deletionWindowInDays'] == null ? null : (map['deletionWindowInDays'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      keyRotationEnabled: map['keyRotationEnabled'] == null ? null : (map['keyRotationEnabled'] as bool).input(),
-      keySpec: map['keySpec'] == null ? null : (map['keySpec'] as String).input(),
-      keyUsage: map['keyUsage'] == null ? null : (map['keyUsage'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      primaryKeyArn: map['primaryKeyArn'] == null ? null : (map['primaryKeyArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : ((map['bypassPolicyLockoutSafetyCheck'] as bool).input()).input(),
+      deletionWindowInDays: map['deletionWindowInDays'] == null ? null : ((map['deletionWindowInDays'] as int).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      keyId: map['keyId'] == null ? null : ((map['keyId'] as String).input()).input(),
+      keyRotationEnabled: map['keyRotationEnabled'] == null ? null : ((map['keyRotationEnabled'] as bool).input()).input(),
+      keySpec: map['keySpec'] == null ? null : ((map['keySpec'] as String).input()).input(),
+      keyUsage: map['keyUsage'] == null ? null : ((map['keyUsage'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      primaryKeyArn: map['primaryKeyArn'] == null ? null : ((map['primaryKeyArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

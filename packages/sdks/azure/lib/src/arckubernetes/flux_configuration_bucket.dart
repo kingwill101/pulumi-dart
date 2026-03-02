@@ -55,13 +55,13 @@ class FluxConfigurationBucket {
 
   factory FluxConfigurationBucket.fromMap(Map<String, dynamic> map) {
     return FluxConfigurationBucket(
-      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
+      accessKey: map['accessKey'] == null ? null : (map['accessKey']! as String).input(),
       bucketName: (map['bucketName'] as String).input(),
-      localAuthReference: map['localAuthReference'] == null ? null : (map['localAuthReference'] as String).input(),
-      secretKeyBase64: map['secretKeyBase64'] == null ? null : (map['secretKeyBase64'] as String).input(),
-      syncIntervalInSeconds: map['syncIntervalInSeconds'] == null ? null : (map['syncIntervalInSeconds'] as int).input(),
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as int).input(),
-      tlsEnabled: map['tlsEnabled'] == null ? null : (map['tlsEnabled'] as bool).input(),
+      localAuthReference: map['localAuthReference'] == null ? null : (map['localAuthReference']! as String).input(),
+      secretKeyBase64: map['secretKeyBase64'] == null ? null : (map['secretKeyBase64']! as String).input(),
+      syncIntervalInSeconds: map['syncIntervalInSeconds'] == null ? null : (map['syncIntervalInSeconds']! as int).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds']! as int).input(),
+      tlsEnabled: map['tlsEnabled'] == null ? null : (map['tlsEnabled']! as bool).input(),
       url: (map['url'] as String).input(),
     );
   }

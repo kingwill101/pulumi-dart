@@ -33,9 +33,9 @@ class ConnectorLogDeliveryWorkerLogDelivery {
 
   factory ConnectorLogDeliveryWorkerLogDelivery.fromMap(Map<String, dynamic> map) {
     return ConnectorLogDeliveryWorkerLogDelivery(
-      cloudwatchLogs: map['cloudwatchLogs'] == null ? null : (ConnectorLogDeliveryWorkerLogDeliveryCloudwatchLogs.fromMap((map['cloudwatchLogs'] as Map).cast<String, dynamic>())).input(),
-      firehose: map['firehose'] == null ? null : (ConnectorLogDeliveryWorkerLogDeliveryFirehose.fromMap((map['firehose'] as Map).cast<String, dynamic>())).input(),
-      s3: map['s3'] == null ? null : (ConnectorLogDeliveryWorkerLogDeliveryS3.fromMap((map['s3'] as Map).cast<String, dynamic>())).input(),
+      cloudwatchLogs: map['cloudwatchLogs'] == null ? null : ((ConnectorLogDeliveryWorkerLogDeliveryCloudwatchLogs.fromMap((map['cloudwatchLogs']! as Map).cast<String, dynamic>())).input()).input(),
+      firehose: map['firehose'] == null ? null : ((ConnectorLogDeliveryWorkerLogDeliveryFirehose.fromMap((map['firehose']! as Map).cast<String, dynamic>())).input()).input(),
+      s3: map['s3'] == null ? null : ((ConnectorLogDeliveryWorkerLogDeliveryS3.fromMap((map['s3']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

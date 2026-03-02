@@ -177,21 +177,21 @@ class WorkforcePoolProviderState {
 
   factory WorkforcePoolProviderState.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderState(
-      attributeCondition: map['attributeCondition'] == null ? null : (map['attributeCondition'] as String).input(),
-      attributeMapping: map['attributeMapping'] == null ? null : ((map['attributeMapping'] as Map).cast<String, String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      extendedAttributesOauth2Client: map['extendedAttributesOauth2Client'] == null ? null : (WorkforcePoolProviderExtendedAttributesOauth2Client.fromMap((map['extendedAttributesOauth2Client'] as Map).cast<String, dynamic>())).input(),
-      extraAttributesOauth2Client: map['extraAttributesOauth2Client'] == null ? null : (WorkforcePoolProviderExtraAttributesOauth2Client.fromMap((map['extraAttributesOauth2Client'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      oidc: map['oidc'] == null ? null : (WorkforcePoolProviderOidc.fromMap((map['oidc'] as Map).cast<String, dynamic>())).input(),
-      providerId: map['providerId'] == null ? null : (map['providerId'] as String).input(),
-      saml: map['saml'] == null ? null : (WorkforcePoolProviderSaml.fromMap((map['saml'] as Map).cast<String, dynamic>())).input(),
-      scimUsage: map['scimUsage'] == null ? null : (map['scimUsage'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      workforcePoolId: map['workforcePoolId'] == null ? null : (map['workforcePoolId'] as String).input(),
+      attributeCondition: map['attributeCondition'] == null ? null : (map['attributeCondition']! as String).input(),
+      attributeMapping: map['attributeMapping'] == null ? null : ((map['attributeMapping']! as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      extendedAttributesOauth2Client: map['extendedAttributesOauth2Client'] == null ? null : (WorkforcePoolProviderExtendedAttributesOauth2Client.fromMap((map['extendedAttributesOauth2Client']! as Map).cast<String, dynamic>())).input(),
+      extraAttributesOauth2Client: map['extraAttributesOauth2Client'] == null ? null : (WorkforcePoolProviderExtraAttributesOauth2Client.fromMap((map['extraAttributesOauth2Client']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      oidc: map['oidc'] == null ? null : (WorkforcePoolProviderOidc.fromMap((map['oidc']! as Map).cast<String, dynamic>())).input(),
+      providerId: map['providerId'] == null ? null : (map['providerId']! as String).input(),
+      saml: map['saml'] == null ? null : (WorkforcePoolProviderSaml.fromMap((map['saml']! as Map).cast<String, dynamic>())).input(),
+      scimUsage: map['scimUsage'] == null ? null : (map['scimUsage']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      workforcePoolId: map['workforcePoolId'] == null ? null : (map['workforcePoolId']! as String).input(),
     );
   }
 }

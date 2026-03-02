@@ -66,17 +66,17 @@ class FileCacheDataRepositoryAssociation {
 
   factory FileCacheDataRepositoryAssociation.fromMap(Map<String, dynamic> map) {
     return FileCacheDataRepositoryAssociation(
-      associationId: map['associationId'] == null ? null : (map['associationId'] as String).input(),
+      associationId: map['associationId'] == null ? null : ((map['associationId'] as String).input()).input(),
       dataRepositoryPath: (map['dataRepositoryPath'] as String).input(),
-      dataRepositorySubdirectories: map['dataRepositorySubdirectories'] == null ? null : ((map['dataRepositorySubdirectories'] as List).cast<String>()).input(),
-      fileCacheId: map['fileCacheId'] == null ? null : (map['fileCacheId'] as String).input(),
+      dataRepositorySubdirectories: map['dataRepositorySubdirectories'] == null ? null : (((map['dataRepositorySubdirectories'] as List).cast<String>()).input()).input(),
+      fileCacheId: map['fileCacheId'] == null ? null : ((map['fileCacheId'] as String).input()).input(),
       fileCachePath: (map['fileCachePath'] as String).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      fileSystemPath: map['fileSystemPath'] == null ? null : (map['fileSystemPath'] as String).input(),
-      importedFileChunkSize: map['importedFileChunkSize'] == null ? null : (map['importedFileChunkSize'] as int).input(),
-      nfs: map['nfs'] == null ? null : (pulumi.Input.decodeList<FileCacheDataRepositoryAssociationNf>(map['nfs'], (value) => FileCacheDataRepositoryAssociationNf.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : ((map['fileSystemId'] as String).input()).input(),
+      fileSystemPath: map['fileSystemPath'] == null ? null : ((map['fileSystemPath'] as String).input()).input(),
+      importedFileChunkSize: map['importedFileChunkSize'] == null ? null : ((map['importedFileChunkSize'] as int).input()).input(),
+      nfs: map['nfs'] == null ? null : ((pulumi.Input.decodeList<FileCacheDataRepositoryAssociationNf>(map['nfs']!, (value) => FileCacheDataRepositoryAssociationNf.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      resourceArn: map['resourceArn'] == null ? null : ((map['resourceArn'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -69,13 +69,13 @@ class GatewayArgs {
 
   factory GatewayArgs.fromMap(Map<String, dynamic> map) {
     return GatewayArgs(
-      backupVswitchId: map['backupVswitchId'] == null ? null : (map['backupVswitchId'] as String).input(),
-      deleteSlb: map['deleteSlb'] == null ? null : (map['deleteSlb'] as bool).input(),
-      enterpriseSecurityGroup: map['enterpriseSecurityGroup'] == null ? null : (map['enterpriseSecurityGroup'] as bool).input(),
-      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName'] as String).input(),
-      internetSlbSpec: map['internetSlbSpec'] == null ? null : (map['internetSlbSpec'] as String).input(),
+      backupVswitchId: map['backupVswitchId'] == null ? null : (map['backupVswitchId']! as String).input(),
+      deleteSlb: map['deleteSlb'] == null ? null : (map['deleteSlb']! as bool).input(),
+      enterpriseSecurityGroup: map['enterpriseSecurityGroup'] == null ? null : (map['enterpriseSecurityGroup']! as bool).input(),
+      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName']! as String).input(),
+      internetSlbSpec: map['internetSlbSpec'] == null ? null : (map['internetSlbSpec']! as String).input(),
       replica: (map['replica'] as int).input(),
-      slbSpec: map['slbSpec'] == null ? null : (map['slbSpec'] as String).input(),
+      slbSpec: map['slbSpec'] == null ? null : (map['slbSpec']! as String).input(),
       spec: (map['spec'] as String).input(),
       vpcId: (map['vpcId'] as String).input(),
       vswitchId: (map['vswitchId'] as String).input(),

@@ -26,8 +26,8 @@ class GoogleCloudDatapipelinesV1ScheduleSpec {
 
   factory GoogleCloudDatapipelinesV1ScheduleSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatapipelinesV1ScheduleSpec(
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

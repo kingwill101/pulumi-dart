@@ -42,11 +42,11 @@ class WidgetConfigAccessSettings {
 
   factory WidgetConfigAccessSettings.fromMap(Map<String, dynamic> map) {
     return WidgetConfigAccessSettings(
-      allowPublicAccess: map['allowPublicAccess'] == null ? null : (map['allowPublicAccess'] as bool).input(),
-      allowlistedDomains: map['allowlistedDomains'] == null ? null : ((map['allowlistedDomains'] as List).cast<String>()).input(),
-      enableWebApp: map['enableWebApp'] == null ? null : (map['enableWebApp'] as bool).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      workforceIdentityPoolProvider: map['workforceIdentityPoolProvider'] == null ? null : (map['workforceIdentityPoolProvider'] as String).input(),
+      allowPublicAccess: map['allowPublicAccess'] == null ? null : (map['allowPublicAccess']! as bool).input(),
+      allowlistedDomains: map['allowlistedDomains'] == null ? null : ((map['allowlistedDomains']! as List).cast<String>()).input(),
+      enableWebApp: map['enableWebApp'] == null ? null : (map['enableWebApp']! as bool).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      workforceIdentityPoolProvider: map['workforceIdentityPoolProvider'] == null ? null : (map['workforceIdentityPoolProvider']! as String).input(),
     );
   }
 }

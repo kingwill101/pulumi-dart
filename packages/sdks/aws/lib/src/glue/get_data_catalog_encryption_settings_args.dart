@@ -30,7 +30,7 @@ class GetDataCatalogEncryptionSettingsArgs {
   factory GetDataCatalogEncryptionSettingsArgs.fromMap(Map<String, dynamic> map) {
     return GetDataCatalogEncryptionSettingsArgs(
       catalogId: (map['catalogId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

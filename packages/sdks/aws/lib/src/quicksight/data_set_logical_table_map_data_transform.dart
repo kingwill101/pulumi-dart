@@ -57,13 +57,13 @@ class DataSetLogicalTableMapDataTransform {
 
   factory DataSetLogicalTableMapDataTransform.fromMap(Map<String, dynamic> map) {
     return DataSetLogicalTableMapDataTransform(
-      castColumnTypeOperation: map['castColumnTypeOperation'] == null ? null : (DataSetLogicalTableMapDataTransformCastColumnTypeOperation.fromMap((map['castColumnTypeOperation'] as Map).cast<String, dynamic>())).input(),
-      createColumnsOperation: map['createColumnsOperation'] == null ? null : (DataSetLogicalTableMapDataTransformCreateColumnsOperation.fromMap((map['createColumnsOperation'] as Map).cast<String, dynamic>())).input(),
-      filterOperation: map['filterOperation'] == null ? null : (DataSetLogicalTableMapDataTransformFilterOperation.fromMap((map['filterOperation'] as Map).cast<String, dynamic>())).input(),
-      projectOperation: map['projectOperation'] == null ? null : (DataSetLogicalTableMapDataTransformProjectOperation.fromMap((map['projectOperation'] as Map).cast<String, dynamic>())).input(),
-      renameColumnOperation: map['renameColumnOperation'] == null ? null : (DataSetLogicalTableMapDataTransformRenameColumnOperation.fromMap((map['renameColumnOperation'] as Map).cast<String, dynamic>())).input(),
-      tagColumnOperation: map['tagColumnOperation'] == null ? null : (DataSetLogicalTableMapDataTransformTagColumnOperation.fromMap((map['tagColumnOperation'] as Map).cast<String, dynamic>())).input(),
-      untagColumnOperation: map['untagColumnOperation'] == null ? null : (DataSetLogicalTableMapDataTransformUntagColumnOperation.fromMap((map['untagColumnOperation'] as Map).cast<String, dynamic>())).input(),
+      castColumnTypeOperation: map['castColumnTypeOperation'] == null ? null : ((DataSetLogicalTableMapDataTransformCastColumnTypeOperation.fromMap((map['castColumnTypeOperation']! as Map).cast<String, dynamic>())).input()).input(),
+      createColumnsOperation: map['createColumnsOperation'] == null ? null : ((DataSetLogicalTableMapDataTransformCreateColumnsOperation.fromMap((map['createColumnsOperation']! as Map).cast<String, dynamic>())).input()).input(),
+      filterOperation: map['filterOperation'] == null ? null : ((DataSetLogicalTableMapDataTransformFilterOperation.fromMap((map['filterOperation']! as Map).cast<String, dynamic>())).input()).input(),
+      projectOperation: map['projectOperation'] == null ? null : ((DataSetLogicalTableMapDataTransformProjectOperation.fromMap((map['projectOperation']! as Map).cast<String, dynamic>())).input()).input(),
+      renameColumnOperation: map['renameColumnOperation'] == null ? null : ((DataSetLogicalTableMapDataTransformRenameColumnOperation.fromMap((map['renameColumnOperation']! as Map).cast<String, dynamic>())).input()).input(),
+      tagColumnOperation: map['tagColumnOperation'] == null ? null : ((DataSetLogicalTableMapDataTransformTagColumnOperation.fromMap((map['tagColumnOperation']! as Map).cast<String, dynamic>())).input()).input(),
+      untagColumnOperation: map['untagColumnOperation'] == null ? null : ((DataSetLogicalTableMapDataTransformUntagColumnOperation.fromMap((map['untagColumnOperation']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

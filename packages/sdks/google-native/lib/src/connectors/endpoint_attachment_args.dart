@@ -47,11 +47,11 @@ class EndpointAttachmentArgs {
 
   factory EndpointAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return EndpointAttachmentArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       endpointAttachmentId: (map['endpointAttachmentId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serviceAttachment: (map['serviceAttachment'] as String).input(),
     );
   }

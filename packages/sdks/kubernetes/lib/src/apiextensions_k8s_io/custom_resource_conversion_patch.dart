@@ -28,8 +28,8 @@ class CustomResourceConversionPatch {
 
   factory CustomResourceConversionPatch.fromMap(Map<String, dynamic> map) {
     return CustomResourceConversionPatch(
-      strategy: map['strategy'] == null ? null : (map['strategy'] as String).input(),
-      webhook: map['webhook'] == null ? null : (WebhookConversionPatch.fromMap((map['webhook'] as Map).cast<String, dynamic>())).input(),
+      strategy: map['strategy'] == null ? null : (map['strategy']! as String).input(),
+      webhook: map['webhook'] == null ? null : (WebhookConversionPatch.fromMap((map['webhook']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

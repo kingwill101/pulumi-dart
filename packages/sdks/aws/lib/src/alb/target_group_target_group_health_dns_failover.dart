@@ -25,8 +25,8 @@ class TargetGroupTargetGroupHealthDnsFailover {
 
   factory TargetGroupTargetGroupHealthDnsFailover.fromMap(Map<String, dynamic> map) {
     return TargetGroupTargetGroupHealthDnsFailover(
-      minimumHealthyTargetsCount: map['minimumHealthyTargetsCount'] == null ? null : (map['minimumHealthyTargetsCount'] as String).input(),
-      minimumHealthyTargetsPercentage: map['minimumHealthyTargetsPercentage'] == null ? null : (map['minimumHealthyTargetsPercentage'] as String).input(),
+      minimumHealthyTargetsCount: map['minimumHealthyTargetsCount'] == null ? null : ((map['minimumHealthyTargetsCount'] as String).input()).input(),
+      minimumHealthyTargetsPercentage: map['minimumHealthyTargetsPercentage'] == null ? null : ((map['minimumHealthyTargetsPercentage'] as String).input()).input(),
     );
   }
 }

@@ -80,18 +80,18 @@ class AcceleratorState {
 
   factory AcceleratorState.fromMap(Map<String, dynamic> map) {
     return AcceleratorState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      attributes: map['attributes'] == null ? null : (AcceleratorAttributes.fromMap((map['attributes'] as Map).cast<String, dynamic>())).input(),
-      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
-      dualStackDnsName: map['dualStackDnsName'] == null ? null : (map['dualStackDnsName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      hostedZoneId: map['hostedZoneId'] == null ? null : (map['hostedZoneId'] as String).input(),
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
-      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
-      ipSets: map['ipSets'] == null ? null : (pulumi.Input.decodeList<AcceleratorIpSet>(map['ipSets'], (value) => AcceleratorIpSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      attributes: map['attributes'] == null ? null : ((AcceleratorAttributes.fromMap((map['attributes']! as Map).cast<String, dynamic>())).input()).input(),
+      dnsName: map['dnsName'] == null ? null : ((map['dnsName'] as String).input()).input(),
+      dualStackDnsName: map['dualStackDnsName'] == null ? null : ((map['dualStackDnsName'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      hostedZoneId: map['hostedZoneId'] == null ? null : ((map['hostedZoneId'] as String).input()).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : ((map['ipAddressType'] as String).input()).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : (((map['ipAddresses'] as List).cast<String>()).input()).input(),
+      ipSets: map['ipSets'] == null ? null : ((pulumi.Input.decodeList<AcceleratorIpSet>(map['ipSets']!, (value) => AcceleratorIpSet.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

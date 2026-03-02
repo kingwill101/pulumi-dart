@@ -33,9 +33,9 @@ class WeeklyRetentionSchedule {
 
   factory WeeklyRetentionSchedule.fromMap(Map<String, dynamic> map) {
     return WeeklyRetentionSchedule(
-      daysOfTheWeek: map['daysOfTheWeek'] == null ? null : (pulumi.Input.decodeList<DayOfWeek>(map['daysOfTheWeek'], (value) => DayOfWeek.fromValue(value as String))).input(),
-      retentionDuration: map['retentionDuration'] == null ? null : (RetentionDuration.fromMap((map['retentionDuration'] as Map).cast<String, dynamic>())).input(),
-      retentionTimes: map['retentionTimes'] == null ? null : ((map['retentionTimes'] as List).cast<String>()).input(),
+      daysOfTheWeek: map['daysOfTheWeek'] == null ? null : (pulumi.Input.decodeList<DayOfWeek>(map['daysOfTheWeek']!, (value) => DayOfWeek.fromValue(value as String))).input(),
+      retentionDuration: map['retentionDuration'] == null ? null : (RetentionDuration.fromMap((map['retentionDuration']! as Map).cast<String, dynamic>())).input(),
+      retentionTimes: map['retentionTimes'] == null ? null : ((map['retentionTimes']! as List).cast<String>()).input(),
     );
   }
 }

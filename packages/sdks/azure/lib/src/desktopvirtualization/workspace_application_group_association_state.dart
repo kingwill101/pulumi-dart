@@ -26,8 +26,8 @@ class WorkspaceApplicationGroupAssociationState {
 
   factory WorkspaceApplicationGroupAssociationState.fromMap(Map<String, dynamic> map) {
     return WorkspaceApplicationGroupAssociationState(
-      applicationGroupId: map['applicationGroupId'] == null ? null : (map['applicationGroupId'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      applicationGroupId: map['applicationGroupId'] == null ? null : (map['applicationGroupId']! as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

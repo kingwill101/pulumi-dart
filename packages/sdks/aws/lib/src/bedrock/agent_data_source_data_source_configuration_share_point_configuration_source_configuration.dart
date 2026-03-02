@@ -50,7 +50,7 @@ class AgentDataSourceDataSourceConfigurationSharePointConfigurationSourceConfigu
       domain: (map['domain'] as String).input(),
       hostType: (map['hostType'] as String).input(),
       siteUrls: ((map['siteUrls'] as List).cast<String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : ((map['tenantId'] as String).input()).input(),
     );
   }
 }

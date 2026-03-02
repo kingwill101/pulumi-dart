@@ -32,7 +32,7 @@ class HostedZoneDnsSecArgs {
   factory HostedZoneDnsSecArgs.fromMap(Map<String, dynamic> map) {
     return HostedZoneDnsSecArgs(
       hostedZoneId: (map['hostedZoneId'] as String).input(),
-      signingStatus: map['signingStatus'] == null ? null : (map['signingStatus'] as String).input(),
+      signingStatus: map['signingStatus'] == null ? null : ((map['signingStatus'] as String).input()).input(),
     );
   }
 }

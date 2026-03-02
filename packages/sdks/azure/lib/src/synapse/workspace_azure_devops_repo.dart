@@ -52,11 +52,11 @@ class WorkspaceAzureDevopsRepo {
     return WorkspaceAzureDevopsRepo(
       accountName: (map['accountName'] as String).input(),
       branchName: (map['branchName'] as String).input(),
-      lastCommitId: map['lastCommitId'] == null ? null : (map['lastCommitId'] as String).input(),
+      lastCommitId: map['lastCommitId'] == null ? null : (map['lastCommitId']! as String).input(),
       projectName: (map['projectName'] as String).input(),
       repositoryName: (map['repositoryName'] as String).input(),
       rootFolder: (map['rootFolder'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

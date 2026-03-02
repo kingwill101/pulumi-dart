@@ -39,8 +39,8 @@ class DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig {
 
   factory DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig.fromMap(Map<String, dynamic> map) {
     return DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig(
-      managementState: map['managementState'] == null ? null : (map['managementState'] as String).input(),
-      managementType: map['managementType'] == null ? null : (map['managementType'] as String).input(),
+      managementState: map['managementState'] == null ? null : (map['managementState']! as String).input(),
+      managementType: map['managementType'] == null ? null : (map['managementType']! as String).input(),
     );
   }
 }

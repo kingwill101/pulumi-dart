@@ -52,13 +52,13 @@ class SecurityProfileGroupArgs {
 
   factory SecurityProfileGroupArgs.fromMap(Map<String, dynamic> map) {
     return SecurityProfileGroupArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
       securityProfileGroupId: (map['securityProfileGroupId'] as String).input(),
-      threatPreventionProfile: map['threatPreventionProfile'] == null ? null : (map['threatPreventionProfile'] as String).input(),
+      threatPreventionProfile: map['threatPreventionProfile'] == null ? null : (map['threatPreventionProfile']! as String).input(),
     );
   }
 }

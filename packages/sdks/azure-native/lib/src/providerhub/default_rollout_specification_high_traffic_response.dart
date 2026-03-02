@@ -25,8 +25,8 @@ class DefaultRolloutSpecificationHighTrafficResponse {
 
   factory DefaultRolloutSpecificationHighTrafficResponse.fromMap(Map<String, dynamic> map) {
     return DefaultRolloutSpecificationHighTrafficResponse(
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
-      waitDuration: map['waitDuration'] == null ? null : (map['waitDuration'] as String).input(),
+      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
+      waitDuration: map['waitDuration'] == null ? null : (map['waitDuration']! as String).input(),
     );
   }
 }

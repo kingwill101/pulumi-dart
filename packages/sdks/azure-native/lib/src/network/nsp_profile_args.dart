@@ -54,13 +54,13 @@ class NspProfileArgs {
 
   factory NspProfileArgs.fromMap(Map<String, dynamic> map) {
     return NspProfileArgs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networkSecurityPerimeterName: (map['networkSecurityPerimeterName'] as String).input(),
-      profileName: map['profileName'] == null ? null : (map['profileName'] as String).input(),
+      profileName: map['profileName'] == null ? null : (map['profileName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

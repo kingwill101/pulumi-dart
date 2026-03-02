@@ -35,9 +35,9 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError {
 
   factory AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError.fromMap(Map<String, dynamic> map) {
     return AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError(
-      code: map['code'] == null ? null : (map['code'] as int).input(),
-      details: map['details'] == null ? null : (map['details'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as int).input(),
+      details: map['details'] == null ? null : (map['details']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

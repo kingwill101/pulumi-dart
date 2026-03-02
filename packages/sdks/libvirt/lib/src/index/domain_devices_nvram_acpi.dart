@@ -20,7 +20,7 @@ class DomainDevicesNvramAcpi {
 
   factory DomainDevicesNvramAcpi.fromMap(Map<String, dynamic> map) {
     return DomainDevicesNvramAcpi(
-      index: map['index'] == null ? null : (map['index'] as double).input(),
+      index: map['index'] == null ? null : (map['index']! as double).input(),
     );
   }
 }

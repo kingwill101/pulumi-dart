@@ -26,8 +26,8 @@ class AllowedIpRangeComposerV1beta1 {
 
   factory AllowedIpRangeComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return AllowedIpRangeComposerV1beta1(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

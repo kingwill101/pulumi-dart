@@ -32,9 +32,9 @@ class ArcAgentProfile {
 
   factory ArcAgentProfile.fromMap(Map<String, dynamic> map) {
     return ArcAgentProfile(
-      agentAutoUpgrade: map['agentAutoUpgrade'] == null ? null : (map['agentAutoUpgrade'] as String).input(),
-      desiredAgentVersion: map['desiredAgentVersion'] == null ? null : (map['desiredAgentVersion'] as String).input(),
-      systemComponents: map['systemComponents'] == null ? null : (pulumi.Input.decodeList<SystemComponent>(map['systemComponents'], (value) => SystemComponent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      agentAutoUpgrade: map['agentAutoUpgrade'] == null ? null : (map['agentAutoUpgrade']! as String).input(),
+      desiredAgentVersion: map['desiredAgentVersion'] == null ? null : (map['desiredAgentVersion']! as String).input(),
+      systemComponents: map['systemComponents'] == null ? null : (pulumi.Input.decodeList<SystemComponent>(map['systemComponents']!, (value) => SystemComponent.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

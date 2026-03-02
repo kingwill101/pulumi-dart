@@ -82,19 +82,19 @@ class RoutingStorageContainerPropertiesResponse {
 
   factory RoutingStorageContainerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RoutingStorageContainerPropertiesResponse(
-      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
-      batchFrequencyInSeconds: map['batchFrequencyInSeconds'] == null ? null : (map['batchFrequencyInSeconds'] as int).input(),
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType']! as String).input(),
+      batchFrequencyInSeconds: map['batchFrequencyInSeconds'] == null ? null : (map['batchFrequencyInSeconds']! as int).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
       containerName: (map['containerName'] as String).input(),
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
-      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri'] as String).input(),
-      fileNameFormat: map['fileNameFormat'] == null ? null : (map['fileNameFormat'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      maxChunkSizeInBytes: map['maxChunkSizeInBytes'] == null ? null : (map['maxChunkSizeInBytes'] as int).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
+      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri']! as String).input(),
+      fileNameFormat: map['fileNameFormat'] == null ? null : (map['fileNameFormat']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      identity: map['identity'] == null ? null : (ManagedIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      maxChunkSizeInBytes: map['maxChunkSizeInBytes'] == null ? null : (map['maxChunkSizeInBytes']! as int).input(),
       name: (map['name'] as String).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

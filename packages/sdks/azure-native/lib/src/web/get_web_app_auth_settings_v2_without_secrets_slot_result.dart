@@ -71,14 +71,14 @@ class GetWebAppAuthSettingsV2WithoutSecretsSlotResult {
   factory GetWebAppAuthSettingsV2WithoutSecretsSlotResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppAuthSettingsV2WithoutSecretsSlotResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      globalValidation: map['globalValidation'] == null ? null : GlobalValidationResponse.fromMap((map['globalValidation'] as Map).cast<String, dynamic>()),
-      httpSettings: map['httpSettings'] == null ? null : HttpSettingsResponse.fromMap((map['httpSettings'] as Map).cast<String, dynamic>()),
+      globalValidation: map['globalValidation'] == null ? null : GlobalValidationResponse.fromMap((map['globalValidation']! as Map).cast<String, dynamic>()),
+      httpSettings: map['httpSettings'] == null ? null : HttpSettingsResponse.fromMap((map['httpSettings']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      identityProviders: map['identityProviders'] == null ? null : IdentityProvidersResponse.fromMap((map['identityProviders'] as Map).cast<String, dynamic>()),
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      login: map['login'] == null ? null : LoginResponse.fromMap((map['login'] as Map).cast<String, dynamic>()),
+      identityProviders: map['identityProviders'] == null ? null : IdentityProvidersResponse.fromMap((map['identityProviders']! as Map).cast<String, dynamic>()),
+      kind: map['kind'] == null ? null : map['kind']! as String,
+      login: map['login'] == null ? null : LoginResponse.fromMap((map['login']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      platform: map['platform'] == null ? null : AuthPlatformResponse.fromMap((map['platform'] as Map).cast<String, dynamic>()),
+      platform: map['platform'] == null ? null : AuthPlatformResponse.fromMap((map['platform']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }

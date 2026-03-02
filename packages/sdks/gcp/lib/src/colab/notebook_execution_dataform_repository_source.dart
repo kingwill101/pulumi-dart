@@ -25,7 +25,7 @@ class NotebookExecutionDataformRepositorySource {
 
   factory NotebookExecutionDataformRepositorySource.fromMap(Map<String, dynamic> map) {
     return NotebookExecutionDataformRepositorySource(
-      commitSha: map['commitSha'] == null ? null : (map['commitSha'] as String).input(),
+      commitSha: map['commitSha'] == null ? null : (map['commitSha']! as String).input(),
       dataformRepositoryResourceName: (map['dataformRepositoryResourceName'] as String).input(),
     );
   }

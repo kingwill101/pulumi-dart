@@ -27,8 +27,8 @@ class DefenderForServersGcpOfferingResponseVaAutoProvisioning {
 
   factory DefenderForServersGcpOfferingResponseVaAutoProvisioning.fromMap(Map<String, dynamic> map) {
     return DefenderForServersGcpOfferingResponseVaAutoProvisioning(
-      configuration: map['configuration'] == null ? null : (DefenderForServersGcpOfferingResponseConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      configuration: map['configuration'] == null ? null : (DefenderForServersGcpOfferingResponseConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

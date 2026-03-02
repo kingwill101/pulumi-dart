@@ -21,7 +21,7 @@ class GoogleCloudDataplexV1StorageFormatJsonOptions {
 
   factory GoogleCloudDataplexV1StorageFormatJsonOptions.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1StorageFormatJsonOptions(
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
     );
   }
 }

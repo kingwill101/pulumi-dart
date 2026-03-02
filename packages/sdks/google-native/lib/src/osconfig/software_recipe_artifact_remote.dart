@@ -26,8 +26,8 @@ class SoftwareRecipeArtifactRemote {
 
   factory SoftwareRecipeArtifactRemote.fromMap(Map<String, dynamic> map) {
     return SoftwareRecipeArtifactRemote(
-      checksum: map['checksum'] == null ? null : (map['checksum'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      checksum: map['checksum'] == null ? null : (map['checksum']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

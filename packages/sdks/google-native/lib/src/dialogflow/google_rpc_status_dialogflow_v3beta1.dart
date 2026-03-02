@@ -31,9 +31,9 @@ class GoogleRpcStatusDialogflowV3beta1 {
 
   factory GoogleRpcStatusDialogflowV3beta1.fromMap(Map<String, dynamic> map) {
     return GoogleRpcStatusDialogflowV3beta1(
-      code: map['code'] == null ? null : (map['code'] as int).input(),
-      details: map['details'] == null ? null : ((map['details'] as List).cast<Map<String, String>>()).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as int).input(),
+      details: map['details'] == null ? null : ((map['details']! as List).cast<Map<String, String>>()).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

@@ -53,12 +53,12 @@ class HdfsSourceResponse {
 
   factory HdfsSourceResponse.fromMap(Map<String, dynamic> map) {
     return HdfsSourceResponse(
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      distcpSettings: map['distcpSettings'] == null ? null : (DistcpSettingsResponse.fromMap((map['distcpSettings'] as Map).cast<String, dynamic>())).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      recursive: map['recursive'] == null ? null : (map['recursive']).input(),
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      distcpSettings: map['distcpSettings'] == null ? null : (DistcpSettingsResponse.fromMap((map['distcpSettings']! as Map).cast<String, dynamic>())).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      recursive: map['recursive'] == null ? null : (map['recursive']!).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']!).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']!).input(),
       type: (map['type'] as String).input(),
     );
   }

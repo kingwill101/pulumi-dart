@@ -44,11 +44,11 @@ class NetworkTapRuleMatchCondition {
 
   factory NetworkTapRuleMatchCondition.fromMap(Map<String, dynamic> map) {
     return NetworkTapRuleMatchCondition(
-      encapsulationType: map['encapsulationType'] == null ? null : (map['encapsulationType'] as String).input(),
-      ipCondition: map['ipCondition'] == null ? null : (IpMatchCondition.fromMap((map['ipCondition'] as Map).cast<String, dynamic>())).input(),
-      portCondition: map['portCondition'] == null ? null : (PortCondition.fromMap((map['portCondition'] as Map).cast<String, dynamic>())).input(),
-      protocolTypes: map['protocolTypes'] == null ? null : ((map['protocolTypes'] as List).cast<String>()).input(),
-      vlanMatchCondition: map['vlanMatchCondition'] == null ? null : (VlanMatchCondition.fromMap((map['vlanMatchCondition'] as Map).cast<String, dynamic>())).input(),
+      encapsulationType: map['encapsulationType'] == null ? null : (map['encapsulationType']! as String).input(),
+      ipCondition: map['ipCondition'] == null ? null : (IpMatchCondition.fromMap((map['ipCondition']! as Map).cast<String, dynamic>())).input(),
+      portCondition: map['portCondition'] == null ? null : (PortCondition.fromMap((map['portCondition']! as Map).cast<String, dynamic>())).input(),
+      protocolTypes: map['protocolTypes'] == null ? null : ((map['protocolTypes']! as List).cast<String>()).input(),
+      vlanMatchCondition: map['vlanMatchCondition'] == null ? null : (VlanMatchCondition.fromMap((map['vlanMatchCondition']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

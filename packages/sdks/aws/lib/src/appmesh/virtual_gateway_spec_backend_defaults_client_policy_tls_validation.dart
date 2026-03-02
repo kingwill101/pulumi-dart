@@ -27,8 +27,8 @@ class VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation {
 
   factory VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation(
-      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : (VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames.fromMap((map['subjectAlternativeNames'] as Map).cast<String, dynamic>())).input(),
-      trust: (VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrust.fromMap((map['trust'] as Map).cast<String, dynamic>())).input(),
+      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : ((VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames.fromMap((map['subjectAlternativeNames']! as Map).cast<String, dynamic>())).input()).input(),
+      trust: (VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrust.fromMap((map['trust']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

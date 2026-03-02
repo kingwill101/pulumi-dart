@@ -30,9 +30,9 @@ class WindowsFileSystemAuditLogConfiguration {
 
   factory WindowsFileSystemAuditLogConfiguration.fromMap(Map<String, dynamic> map) {
     return WindowsFileSystemAuditLogConfiguration(
-      auditLogDestination: map['auditLogDestination'] == null ? null : (map['auditLogDestination'] as String).input(),
-      fileAccessAuditLogLevel: map['fileAccessAuditLogLevel'] == null ? null : (map['fileAccessAuditLogLevel'] as String).input(),
-      fileShareAccessAuditLogLevel: map['fileShareAccessAuditLogLevel'] == null ? null : (map['fileShareAccessAuditLogLevel'] as String).input(),
+      auditLogDestination: map['auditLogDestination'] == null ? null : ((map['auditLogDestination'] as String).input()).input(),
+      fileAccessAuditLogLevel: map['fileAccessAuditLogLevel'] == null ? null : ((map['fileAccessAuditLogLevel'] as String).input()).input(),
+      fileShareAccessAuditLogLevel: map['fileShareAccessAuditLogLevel'] == null ? null : ((map['fileShareAccessAuditLogLevel'] as String).input()).input(),
     );
   }
 }

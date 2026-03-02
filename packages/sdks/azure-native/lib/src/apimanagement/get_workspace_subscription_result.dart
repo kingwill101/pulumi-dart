@@ -100,22 +100,22 @@ class GetWorkspaceSubscriptionResult {
 
   factory GetWorkspaceSubscriptionResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceSubscriptionResult(
-      allowTracing: map['allowTracing'] == null ? null : map['allowTracing'] as bool,
+      allowTracing: map['allowTracing'] == null ? null : map['allowTracing']! as bool,
       azureApiVersion: map['azureApiVersion'] as String,
       createdDate: map['createdDate'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      endDate: map['endDate'] == null ? null : map['endDate'] as String,
-      expirationDate: map['expirationDate'] == null ? null : map['expirationDate'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
+      endDate: map['endDate'] == null ? null : map['endDate']! as String,
+      expirationDate: map['expirationDate'] == null ? null : map['expirationDate']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      notificationDate: map['notificationDate'] == null ? null : map['notificationDate'] as String,
-      ownerId: map['ownerId'] == null ? null : map['ownerId'] as String,
-      primaryKey: map['primaryKey'] == null ? null : map['primaryKey'] as String,
+      notificationDate: map['notificationDate'] == null ? null : map['notificationDate']! as String,
+      ownerId: map['ownerId'] == null ? null : map['ownerId']! as String,
+      primaryKey: map['primaryKey'] == null ? null : map['primaryKey']! as String,
       scope: map['scope'] as String,
-      secondaryKey: map['secondaryKey'] == null ? null : map['secondaryKey'] as String,
-      startDate: map['startDate'] == null ? null : map['startDate'] as String,
+      secondaryKey: map['secondaryKey'] == null ? null : map['secondaryKey']! as String,
+      startDate: map['startDate'] == null ? null : map['startDate']! as String,
       state: map['state'] as String,
-      stateComment: map['stateComment'] == null ? null : map['stateComment'] as String,
+      stateComment: map['stateComment'] == null ? null : map['stateComment']! as String,
       type: map['type'] as String,
     );
   }

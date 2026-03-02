@@ -25,7 +25,7 @@ class OneDashboardPageWidgetPyNrqlQuery {
 
   factory OneDashboardPageWidgetPyNrqlQuery.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetPyNrqlQuery(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
       query: (map['query'] as String).input(),
     );
   }

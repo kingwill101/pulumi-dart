@@ -26,8 +26,8 @@ class DomainDevicesInterfaceVlan {
 
   factory DomainDevicesInterfaceVlan.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceVlan(
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<DomainDevicesInterfaceVlanTag>(map['tags'], (value) => DomainDevicesInterfaceVlanTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      trunk: map['trunk'] == null ? null : (map['trunk'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<DomainDevicesInterfaceVlanTag>(map['tags']!, (value) => DomainDevicesInterfaceVlanTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      trunk: map['trunk'] == null ? null : (map['trunk']! as String).input(),
     );
   }
 }

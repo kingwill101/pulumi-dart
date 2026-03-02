@@ -32,8 +32,8 @@ class ServicePerimeterSpecEgressPolicyEgressToOperation {
 
   factory ServicePerimeterSpecEgressPolicyEgressToOperation.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterSpecEgressPolicyEgressToOperation(
-      methodSelectors: map['methodSelectors'] == null ? null : (pulumi.Input.decodeList<ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector>(map['methodSelectors'], (value) => ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      methodSelectors: map['methodSelectors'] == null ? null : (pulumi.Input.decodeList<ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector>(map['methodSelectors']!, (value) => ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
     );
   }
 }

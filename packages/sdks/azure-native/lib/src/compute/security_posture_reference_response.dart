@@ -31,9 +31,9 @@ class SecurityPostureReferenceResponse {
 
   factory SecurityPostureReferenceResponse.fromMap(Map<String, dynamic> map) {
     return SecurityPostureReferenceResponse(
-      excludeExtensions: map['excludeExtensions'] == null ? null : ((map['excludeExtensions'] as List).cast<String>()).input(),
+      excludeExtensions: map['excludeExtensions'] == null ? null : ((map['excludeExtensions']! as List).cast<String>()).input(),
       id: (map['id'] as String).input(),
-      isOverridable: map['isOverridable'] == null ? null : (map['isOverridable'] as bool).input(),
+      isOverridable: map['isOverridable'] == null ? null : (map['isOverridable']! as bool).input(),
     );
   }
 }

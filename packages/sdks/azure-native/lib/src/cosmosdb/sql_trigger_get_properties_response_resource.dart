@@ -50,12 +50,12 @@ class SqlTriggerGetPropertiesResponseResource {
 
   factory SqlTriggerGetPropertiesResponseResource.fromMap(Map<String, dynamic> map) {
     return SqlTriggerGetPropertiesResponseResource(
-      body: map['body'] == null ? null : (map['body'] as String).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
       etag: (map['etag'] as String).input(),
       id: (map['id'] as String).input(),
       rid: (map['rid'] as String).input(),
-      triggerOperation: map['triggerOperation'] == null ? null : (map['triggerOperation'] as String).input(),
-      triggerType: map['triggerType'] == null ? null : (map['triggerType'] as String).input(),
+      triggerOperation: map['triggerOperation'] == null ? null : (map['triggerOperation']! as String).input(),
+      triggerType: map['triggerType'] == null ? null : (map['triggerType']! as String).input(),
       ts: (map['ts'] as double).input(),
     );
   }

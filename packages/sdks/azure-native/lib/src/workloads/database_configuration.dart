@@ -43,8 +43,8 @@ class DatabaseConfiguration {
 
   factory DatabaseConfiguration.fromMap(Map<String, dynamic> map) {
     return DatabaseConfiguration(
-      databaseType: map['databaseType'] == null ? null : (map['databaseType'] as String).input(),
-      diskConfiguration: map['diskConfiguration'] == null ? null : (DiskConfiguration.fromMap((map['diskConfiguration'] as Map).cast<String, dynamic>())).input(),
+      databaseType: map['databaseType'] == null ? null : (map['databaseType']! as String).input(),
+      diskConfiguration: map['diskConfiguration'] == null ? null : (DiskConfiguration.fromMap((map['diskConfiguration']! as Map).cast<String, dynamic>())).input(),
       instanceCount: (map['instanceCount'] as double).input(),
       subnetId: (map['subnetId'] as String).input(),
       virtualMachineConfiguration: (VirtualMachineConfiguration.fromMap((map['virtualMachineConfiguration'] as Map).cast<String, dynamic>())).input(),

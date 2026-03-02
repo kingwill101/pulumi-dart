@@ -49,10 +49,10 @@ class SignalRCustomCertificateArgs {
 
   factory SignalRCustomCertificateArgs.fromMap(Map<String, dynamic> map) {
     return SignalRCustomCertificateArgs(
-      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName']! as String).input(),
       keyVaultBaseUri: (map['keyVaultBaseUri'] as String).input(),
       keyVaultSecretName: (map['keyVaultSecretName'] as String).input(),
-      keyVaultSecretVersion: map['keyVaultSecretVersion'] == null ? null : (map['keyVaultSecretVersion'] as String).input(),
+      keyVaultSecretVersion: map['keyVaultSecretVersion'] == null ? null : (map['keyVaultSecretVersion']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
     );

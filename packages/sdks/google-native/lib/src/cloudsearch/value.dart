@@ -41,12 +41,12 @@ class Value {
 
   factory Value.fromMap(Map<String, dynamic> map) {
     return Value(
-      booleanValue: map['booleanValue'] == null ? null : (map['booleanValue'] as bool).input(),
-      dateValue: map['dateValue'] == null ? null : (Date.fromMap((map['dateValue'] as Map).cast<String, dynamic>())).input(),
-      doubleValue: map['doubleValue'] == null ? null : (map['doubleValue'] as double).input(),
-      integerValue: map['integerValue'] == null ? null : (map['integerValue'] as String).input(),
-      stringValue: map['stringValue'] == null ? null : (map['stringValue'] as String).input(),
-      timestampValue: map['timestampValue'] == null ? null : (map['timestampValue'] as String).input(),
+      booleanValue: map['booleanValue'] == null ? null : (map['booleanValue']! as bool).input(),
+      dateValue: map['dateValue'] == null ? null : (Date.fromMap((map['dateValue']! as Map).cast<String, dynamic>())).input(),
+      doubleValue: map['doubleValue'] == null ? null : (map['doubleValue']! as double).input(),
+      integerValue: map['integerValue'] == null ? null : (map['integerValue']! as String).input(),
+      stringValue: map['stringValue'] == null ? null : (map['stringValue']! as String).input(),
+      timestampValue: map['timestampValue'] == null ? null : (map['timestampValue']! as String).input(),
     );
   }
 }

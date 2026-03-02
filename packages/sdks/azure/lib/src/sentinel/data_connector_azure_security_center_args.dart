@@ -35,8 +35,8 @@ class DataConnectorAzureSecurityCenterArgs {
   factory DataConnectorAzureSecurityCenterArgs.fromMap(Map<String, dynamic> map) {
     return DataConnectorAzureSecurityCenterArgs(
       logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

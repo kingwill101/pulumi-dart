@@ -26,8 +26,8 @@ class WeeklyRetentionFormatResponse {
 
   factory WeeklyRetentionFormatResponse.fromMap(Map<String, dynamic> map) {
     return WeeklyRetentionFormatResponse(
-      daysOfTheWeek: map['daysOfTheWeek'] == null ? null : ((map['daysOfTheWeek'] as List).cast<String>()).input(),
-      weeksOfTheMonth: map['weeksOfTheMonth'] == null ? null : ((map['weeksOfTheMonth'] as List).cast<String>()).input(),
+      daysOfTheWeek: map['daysOfTheWeek'] == null ? null : ((map['daysOfTheWeek']! as List).cast<String>()).input(),
+      weeksOfTheMonth: map['weeksOfTheMonth'] == null ? null : ((map['weeksOfTheMonth']! as List).cast<String>()).input(),
     );
   }
 }

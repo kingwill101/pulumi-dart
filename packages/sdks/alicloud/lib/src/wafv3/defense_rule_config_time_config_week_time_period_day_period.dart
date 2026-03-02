@@ -25,8 +25,8 @@ class DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod {
 
   factory DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod.fromMap(Map<String, dynamic> map) {
     return DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod(
-      end: map['end'] == null ? null : (map['end'] as int).input(),
-      start: map['start'] == null ? null : (map['start'] as int).input(),
+      end: map['end'] == null ? null : (map['end']! as int).input(),
+      start: map['start'] == null ? null : (map['start']! as int).input(),
     );
   }
 }

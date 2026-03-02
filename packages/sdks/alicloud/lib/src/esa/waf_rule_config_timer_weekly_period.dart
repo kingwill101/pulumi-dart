@@ -26,8 +26,8 @@ class WafRuleConfigTimerWeeklyPeriod {
 
   factory WafRuleConfigTimerWeeklyPeriod.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigTimerWeeklyPeriod(
-      dailyPeriods: map['dailyPeriods'] == null ? null : (pulumi.Input.decodeList<WafRuleConfigTimerWeeklyPeriodDailyPeriod>(map['dailyPeriods'], (value) => WafRuleConfigTimerWeeklyPeriodDailyPeriod.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      days: map['days'] == null ? null : (map['days'] as String).input(),
+      dailyPeriods: map['dailyPeriods'] == null ? null : (pulumi.Input.decodeList<WafRuleConfigTimerWeeklyPeriodDailyPeriod>(map['dailyPeriods']!, (value) => WafRuleConfigTimerWeeklyPeriodDailyPeriod.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      days: map['days'] == null ? null : (map['days']! as String).input(),
     );
   }
 }

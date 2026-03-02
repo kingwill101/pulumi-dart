@@ -50,12 +50,12 @@ class TriggerSourceToBuild {
 
   factory TriggerSourceToBuild.fromMap(Map<String, dynamic> map) {
     return TriggerSourceToBuild(
-      bitbucketServerConfig: map['bitbucketServerConfig'] == null ? null : (map['bitbucketServerConfig'] as String).input(),
-      githubEnterpriseConfig: map['githubEnterpriseConfig'] == null ? null : (map['githubEnterpriseConfig'] as String).input(),
+      bitbucketServerConfig: map['bitbucketServerConfig'] == null ? null : (map['bitbucketServerConfig']! as String).input(),
+      githubEnterpriseConfig: map['githubEnterpriseConfig'] == null ? null : (map['githubEnterpriseConfig']! as String).input(),
       ref: (map['ref'] as String).input(),
       repoType: (map['repoType'] as String).input(),
-      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      repository: map['repository'] == null ? null : (map['repository']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

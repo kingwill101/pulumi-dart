@@ -39,10 +39,10 @@ class ControlBoostActionInterpolationBoostSpec {
 
   factory ControlBoostActionInterpolationBoostSpec.fromMap(Map<String, dynamic> map) {
     return ControlBoostActionInterpolationBoostSpec(
-      attributeType: map['attributeType'] == null ? null : (map['attributeType'] as String).input(),
-      controlPoint: map['controlPoint'] == null ? null : (ControlBoostActionInterpolationBoostSpecControlPoint.fromMap((map['controlPoint'] as Map).cast<String, dynamic>())).input(),
-      fieldName: map['fieldName'] == null ? null : (map['fieldName'] as String).input(),
-      interpolationType: map['interpolationType'] == null ? null : (map['interpolationType'] as String).input(),
+      attributeType: map['attributeType'] == null ? null : (map['attributeType']! as String).input(),
+      controlPoint: map['controlPoint'] == null ? null : (ControlBoostActionInterpolationBoostSpecControlPoint.fromMap((map['controlPoint']! as Map).cast<String, dynamic>())).input(),
+      fieldName: map['fieldName'] == null ? null : (map['fieldName']! as String).input(),
+      interpolationType: map['interpolationType'] == null ? null : (map['interpolationType']! as String).input(),
     );
   }
 }

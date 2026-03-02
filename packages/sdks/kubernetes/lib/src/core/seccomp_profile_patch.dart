@@ -28,8 +28,8 @@ class SeccompProfilePatch {
 
   factory SeccompProfilePatch.fromMap(Map<String, dynamic> map) {
     return SeccompProfilePatch(
-      localhostProfile: map['localhostProfile'] == null ? null : (map['localhostProfile'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      localhostProfile: map['localhostProfile'] == null ? null : (map['localhostProfile']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

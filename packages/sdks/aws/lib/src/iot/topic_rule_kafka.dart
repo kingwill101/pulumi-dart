@@ -48,9 +48,9 @@ class TopicRuleKafka {
     return TopicRuleKafka(
       clientProperties: ((map['clientProperties'] as Map).cast<String, String>()).input(),
       destinationArn: (map['destinationArn'] as String).input(),
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<TopicRuleKafkaHeader>(map['headers'], (value) => TopicRuleKafkaHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
+      headers: map['headers'] == null ? null : ((pulumi.Input.decodeList<TopicRuleKafkaHeader>(map['headers']!, (value) => TopicRuleKafkaHeader.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
+      partition: map['partition'] == null ? null : ((map['partition'] as String).input()).input(),
       topic: (map['topic'] as String).input(),
     );
   }

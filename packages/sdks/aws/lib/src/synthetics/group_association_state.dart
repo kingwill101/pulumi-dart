@@ -40,11 +40,11 @@ class GroupAssociationState {
 
   factory GroupAssociationState.fromMap(Map<String, dynamic> map) {
     return GroupAssociationState(
-      canaryArn: map['canaryArn'] == null ? null : (map['canaryArn'] as String).input(),
-      groupArn: map['groupArn'] == null ? null : (map['groupArn'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      canaryArn: map['canaryArn'] == null ? null : ((map['canaryArn'] as String).input()).input(),
+      groupArn: map['groupArn'] == null ? null : ((map['groupArn'] as String).input()).input(),
+      groupId: map['groupId'] == null ? null : ((map['groupId'] as String).input()).input(),
+      groupName: map['groupName'] == null ? null : ((map['groupName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

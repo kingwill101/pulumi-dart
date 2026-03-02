@@ -53,13 +53,13 @@ class RemediationState {
 
   factory RemediationState.fromMap(Map<String, dynamic> map) {
     return RemediationState(
-      configRuleId: map['configRuleId'] == null ? null : (map['configRuleId'] as String).input(),
-      invokeType: map['invokeType'] == null ? null : (map['invokeType'] as String).input(),
-      params: map['params'] == null ? null : (map['params'] as String).input(),
-      remediationId: map['remediationId'] == null ? null : (map['remediationId'] as String).input(),
-      remediationSourceType: map['remediationSourceType'] == null ? null : (map['remediationSourceType'] as String).input(),
-      remediationTemplateId: map['remediationTemplateId'] == null ? null : (map['remediationTemplateId'] as String).input(),
-      remediationType: map['remediationType'] == null ? null : (map['remediationType'] as String).input(),
+      configRuleId: map['configRuleId'] == null ? null : (map['configRuleId']! as String).input(),
+      invokeType: map['invokeType'] == null ? null : (map['invokeType']! as String).input(),
+      params: map['params'] == null ? null : (map['params']! as String).input(),
+      remediationId: map['remediationId'] == null ? null : (map['remediationId']! as String).input(),
+      remediationSourceType: map['remediationSourceType'] == null ? null : (map['remediationSourceType']! as String).input(),
+      remediationTemplateId: map['remediationTemplateId'] == null ? null : (map['remediationTemplateId']! as String).input(),
+      remediationType: map['remediationType'] == null ? null : (map['remediationType']! as String).input(),
     );
   }
 }

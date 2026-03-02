@@ -45,11 +45,11 @@ class BareMetalNodePoolConfig {
 
   factory BareMetalNodePoolConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalNodePoolConfig(
-      kubeletConfig: map['kubeletConfig'] == null ? null : (BareMetalKubeletConfig.fromMap((map['kubeletConfig'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      kubeletConfig: map['kubeletConfig'] == null ? null : (BareMetalKubeletConfig.fromMap((map['kubeletConfig']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       nodeConfigs: (pulumi.Input.decodeList<BareMetalNodeConfig>(map['nodeConfigs'], (value) => BareMetalNodeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      operatingSystem: map['operatingSystem'] == null ? null : (BareMetalNodePoolConfigOperatingSystem.fromValue(map['operatingSystem'] as String)).input(),
-      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<NodeTaint>(map['taints'], (value) => NodeTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      operatingSystem: map['operatingSystem'] == null ? null : (BareMetalNodePoolConfigOperatingSystem.fromValue(map['operatingSystem']! as String)).input(),
+      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<NodeTaint>(map['taints']!, (value) => NodeTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

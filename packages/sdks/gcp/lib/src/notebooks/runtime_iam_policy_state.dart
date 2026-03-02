@@ -45,11 +45,11 @@ class RuntimeIamPolicyState {
 
   factory RuntimeIamPolicyState.fromMap(Map<String, dynamic> map) {
     return RuntimeIamPolicyState(
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      runtimeName: map['runtimeName'] == null ? null : (map['runtimeName'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      runtimeName: map['runtimeName'] == null ? null : (map['runtimeName']! as String).input(),
     );
   }
 }

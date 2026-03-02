@@ -41,11 +41,11 @@ class ImageTemplateLastRunStatusResponse {
 
   factory ImageTemplateLastRunStatusResponse.fromMap(Map<String, dynamic> map) {
     return ImageTemplateLastRunStatusResponse(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      runState: map['runState'] == null ? null : (map['runState'] as String).input(),
-      runSubState: map['runSubState'] == null ? null : (map['runSubState'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      runState: map['runState'] == null ? null : (map['runState']! as String).input(),
+      runSubState: map['runSubState'] == null ? null : (map['runSubState']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

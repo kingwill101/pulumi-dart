@@ -40,8 +40,8 @@ class FileShareSnapshotArgs {
 
   factory FileShareSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return FileShareSnapshotArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (FileShareSnapshotProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      properties: map['properties'] == null ? null : (FileShareSnapshotProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
     );

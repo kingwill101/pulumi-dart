@@ -33,9 +33,9 @@ class DNSConfigContainerV1beta1 {
 
   factory DNSConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return DNSConfigContainerV1beta1(
-      clusterDns: map['clusterDns'] == null ? null : (DNSConfigClusterDnsContainerV1beta1.fromValue(map['clusterDns'] as String)).input(),
-      clusterDnsDomain: map['clusterDnsDomain'] == null ? null : (map['clusterDnsDomain'] as String).input(),
-      clusterDnsScope: map['clusterDnsScope'] == null ? null : (DNSConfigClusterDnsScopeContainerV1beta1.fromValue(map['clusterDnsScope'] as String)).input(),
+      clusterDns: map['clusterDns'] == null ? null : (DNSConfigClusterDnsContainerV1beta1.fromValue(map['clusterDns']! as String)).input(),
+      clusterDnsDomain: map['clusterDnsDomain'] == null ? null : (map['clusterDnsDomain']! as String).input(),
+      clusterDnsScope: map['clusterDnsScope'] == null ? null : (DNSConfigClusterDnsScopeContainerV1beta1.fromValue(map['clusterDnsScope']! as String)).input(),
     );
   }
 }

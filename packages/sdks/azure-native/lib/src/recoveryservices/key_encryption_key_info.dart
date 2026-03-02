@@ -26,8 +26,8 @@ class KeyEncryptionKeyInfo {
 
   factory KeyEncryptionKeyInfo.fromMap(Map<String, dynamic> map) {
     return KeyEncryptionKeyInfo(
-      keyIdentifier: map['keyIdentifier'] == null ? null : (map['keyIdentifier'] as String).input(),
-      keyVaultResourceArmId: map['keyVaultResourceArmId'] == null ? null : (map['keyVaultResourceArmId'] as String).input(),
+      keyIdentifier: map['keyIdentifier'] == null ? null : (map['keyIdentifier']! as String).input(),
+      keyVaultResourceArmId: map['keyVaultResourceArmId'] == null ? null : (map['keyVaultResourceArmId']! as String).input(),
     );
   }
 }

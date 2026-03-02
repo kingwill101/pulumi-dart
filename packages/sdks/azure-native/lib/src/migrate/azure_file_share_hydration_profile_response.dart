@@ -42,11 +42,11 @@ class AzureFileShareHydrationProfileResponse {
 
   factory AzureFileShareHydrationProfileResponse.fromMap(Map<String, dynamic> map) {
     return AzureFileShareHydrationProfileResponse(
-      azureFileShareDirPath: map['azureFileShareDirPath'] == null ? null : (map['azureFileShareDirPath'] as String).input(),
-      azureFileShareName: map['azureFileShareName'] == null ? null : (map['azureFileShareName'] as String).input(),
-      azureFileShareResourceGroup: map['azureFileShareResourceGroup'] == null ? null : (map['azureFileShareResourceGroup'] as String).input(),
-      azureFileShareStorageAccount: map['azureFileShareStorageAccount'] == null ? null : (map['azureFileShareStorageAccount'] as String).input(),
-      azureFileShareSubscriptionId: map['azureFileShareSubscriptionId'] == null ? null : (map['azureFileShareSubscriptionId'] as String).input(),
+      azureFileShareDirPath: map['azureFileShareDirPath'] == null ? null : (map['azureFileShareDirPath']! as String).input(),
+      azureFileShareName: map['azureFileShareName'] == null ? null : (map['azureFileShareName']! as String).input(),
+      azureFileShareResourceGroup: map['azureFileShareResourceGroup'] == null ? null : (map['azureFileShareResourceGroup']! as String).input(),
+      azureFileShareStorageAccount: map['azureFileShareStorageAccount'] == null ? null : (map['azureFileShareStorageAccount']! as String).input(),
+      azureFileShareSubscriptionId: map['azureFileShareSubscriptionId'] == null ? null : (map['azureFileShareSubscriptionId']! as String).input(),
     );
   }
 }

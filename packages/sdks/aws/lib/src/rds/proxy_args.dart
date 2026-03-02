@@ -90,19 +90,19 @@ class ProxyArgs {
 
   factory ProxyArgs.fromMap(Map<String, dynamic> map) {
     return ProxyArgs(
-      auths: map['auths'] == null ? null : (pulumi.Input.decodeList<ProxyAuth>(map['auths'], (value) => ProxyAuth.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      debugLogging: map['debugLogging'] == null ? null : (map['debugLogging'] as bool).input(),
-      defaultAuthScheme: map['defaultAuthScheme'] == null ? null : (map['defaultAuthScheme'] as String).input(),
-      endpointNetworkType: map['endpointNetworkType'] == null ? null : (map['endpointNetworkType'] as String).input(),
+      auths: map['auths'] == null ? null : ((pulumi.Input.decodeList<ProxyAuth>(map['auths']!, (value) => ProxyAuth.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      debugLogging: map['debugLogging'] == null ? null : ((map['debugLogging'] as bool).input()).input(),
+      defaultAuthScheme: map['defaultAuthScheme'] == null ? null : ((map['defaultAuthScheme'] as String).input()).input(),
+      endpointNetworkType: map['endpointNetworkType'] == null ? null : ((map['endpointNetworkType'] as String).input()).input(),
       engineFamily: (map['engineFamily'] as String).input(),
-      idleClientTimeout: map['idleClientTimeout'] == null ? null : (map['idleClientTimeout'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      requireTls: map['requireTls'] == null ? null : (map['requireTls'] as bool).input(),
+      idleClientTimeout: map['idleClientTimeout'] == null ? null : ((map['idleClientTimeout'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      requireTls: map['requireTls'] == null ? null : ((map['requireTls'] as bool).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetConnectionNetworkType: map['targetConnectionNetworkType'] == null ? null : (map['targetConnectionNetworkType'] as String).input(),
-      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : ((map['vpcSecurityGroupIds'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      targetConnectionNetworkType: map['targetConnectionNetworkType'] == null ? null : ((map['targetConnectionNetworkType'] as String).input()).input(),
+      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : (((map['vpcSecurityGroupIds'] as List).cast<String>()).input()).input(),
       vpcSubnetIds: ((map['vpcSubnetIds'] as List).cast<String>()).input(),
     );
   }

@@ -40,11 +40,11 @@ class BqmlIterationResult {
 
   factory BqmlIterationResult.fromMap(Map<String, dynamic> map) {
     return BqmlIterationResult(
-      durationMs: map['durationMs'] == null ? null : (map['durationMs'] as String).input(),
-      evalLoss: map['evalLoss'] == null ? null : (map['evalLoss'] as double).input(),
-      index: map['index'] == null ? null : (map['index'] as int).input(),
-      learnRate: map['learnRate'] == null ? null : (map['learnRate'] as double).input(),
-      trainingLoss: map['trainingLoss'] == null ? null : (map['trainingLoss'] as double).input(),
+      durationMs: map['durationMs'] == null ? null : (map['durationMs']! as String).input(),
+      evalLoss: map['evalLoss'] == null ? null : (map['evalLoss']! as double).input(),
+      index: map['index'] == null ? null : (map['index']! as int).input(),
+      learnRate: map['learnRate'] == null ? null : (map['learnRate']! as double).input(),
+      trainingLoss: map['trainingLoss'] == null ? null : (map['trainingLoss']! as double).input(),
     );
   }
 }

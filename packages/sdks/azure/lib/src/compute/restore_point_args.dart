@@ -39,9 +39,9 @@ class RestorePointArgs {
 
   factory RestorePointArgs.fromMap(Map<String, dynamic> map) {
     return RestorePointArgs(
-      crashConsistencyModeEnabled: map['crashConsistencyModeEnabled'] == null ? null : (map['crashConsistencyModeEnabled'] as bool).input(),
-      excludedDisks: map['excludedDisks'] == null ? null : ((map['excludedDisks'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      crashConsistencyModeEnabled: map['crashConsistencyModeEnabled'] == null ? null : (map['crashConsistencyModeEnabled']! as bool).input(),
+      excludedDisks: map['excludedDisks'] == null ? null : ((map['excludedDisks']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       virtualMachineRestorePointCollectionId: (map['virtualMachineRestorePointCollectionId'] as String).input(),
     );
   }

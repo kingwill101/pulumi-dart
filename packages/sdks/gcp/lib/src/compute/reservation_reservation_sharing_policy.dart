@@ -21,7 +21,7 @@ class ReservationReservationSharingPolicy {
 
   factory ReservationReservationSharingPolicy.fromMap(Map<String, dynamic> map) {
     return ReservationReservationSharingPolicy(
-      serviceShareType: map['serviceShareType'] == null ? null : (map['serviceShareType'] as String).input(),
+      serviceShareType: map['serviceShareType'] == null ? null : (map['serviceShareType']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class MaintenanceWindowTaskTaskInvocationParametersAutomationParameters {
 
   factory MaintenanceWindowTaskTaskInvocationParametersAutomationParameters.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowTaskTaskInvocationParametersAutomationParameters(
-      documentVersion: map['documentVersion'] == null ? null : (map['documentVersion'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameter>(map['parameters'], (value) => MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      documentVersion: map['documentVersion'] == null ? null : ((map['documentVersion'] as String).input()).input(),
+      parameters: map['parameters'] == null ? null : ((pulumi.Input.decodeList<MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameter>(map['parameters']!, (value) => MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

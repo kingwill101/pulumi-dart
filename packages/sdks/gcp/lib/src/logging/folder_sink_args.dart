@@ -84,16 +84,16 @@ class FolderSinkArgs {
 
   factory FolderSinkArgs.fromMap(Map<String, dynamic> map) {
     return FolderSinkArgs(
-      bigqueryOptions: map['bigqueryOptions'] == null ? null : (FolderSinkBigqueryOptions.fromMap((map['bigqueryOptions'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      bigqueryOptions: map['bigqueryOptions'] == null ? null : (FolderSinkBigqueryOptions.fromMap((map['bigqueryOptions']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       destination: (map['destination'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<FolderSinkExclusion>(map['exclusions'], (value) => FolderSinkExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<FolderSinkExclusion>(map['exclusions']!, (value) => FolderSinkExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
       folder: (map['folder'] as String).input(),
-      includeChildren: map['includeChildren'] == null ? null : (map['includeChildren'] as bool).input(),
-      interceptChildren: map['interceptChildren'] == null ? null : (map['interceptChildren'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      includeChildren: map['includeChildren'] == null ? null : (map['includeChildren']! as bool).input(),
+      interceptChildren: map['interceptChildren'] == null ? null : (map['interceptChildren']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

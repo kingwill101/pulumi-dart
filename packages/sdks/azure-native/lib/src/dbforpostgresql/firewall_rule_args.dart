@@ -45,7 +45,7 @@ class FirewallRuleArgs {
   factory FirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return FirewallRuleArgs(
       endIpAddress: (map['endIpAddress'] as String).input(),
-      firewallRuleName: map['firewallRuleName'] == null ? null : (map['firewallRuleName'] as String).input(),
+      firewallRuleName: map['firewallRuleName'] == null ? null : (map['firewallRuleName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
       startIpAddress: (map['startIpAddress'] as String).input(),

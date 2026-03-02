@@ -31,9 +31,9 @@ class WorkingStorageState {
 
   factory WorkingStorageState.fromMap(Map<String, dynamic> map) {
     return WorkingStorageState(
-      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
-      gatewayArn: map['gatewayArn'] == null ? null : (map['gatewayArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      diskId: map['diskId'] == null ? null : ((map['diskId'] as String).input()).input(),
+      gatewayArn: map['gatewayArn'] == null ? null : ((map['gatewayArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -33,7 +33,7 @@ class MulticloudDataTransferConfigService {
   factory MulticloudDataTransferConfigService.fromMap(Map<String, dynamic> map) {
     return MulticloudDataTransferConfigService(
       serviceName: (map['serviceName'] as String).input(),
-      states: map['states'] == null ? null : (pulumi.Input.decodeList<MulticloudDataTransferConfigServiceState>(map['states'], (value) => MulticloudDataTransferConfigServiceState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      states: map['states'] == null ? null : (pulumi.Input.decodeList<MulticloudDataTransferConfigServiceState>(map['states']!, (value) => MulticloudDataTransferConfigServiceState.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

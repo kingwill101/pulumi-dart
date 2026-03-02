@@ -24,7 +24,7 @@ class GetTransferProjectServiceAccountArgs {
 
   factory GetTransferProjectServiceAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetTransferProjectServiceAccountArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

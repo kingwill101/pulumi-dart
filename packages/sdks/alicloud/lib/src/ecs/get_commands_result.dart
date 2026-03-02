@@ -62,17 +62,17 @@ class GetCommandsResult {
 
   factory GetCommandsResult.fromMap(Map<String, dynamic> map) {
     return GetCommandsResult(
-      commandProvider: map['commandProvider'] == null ? null : map['commandProvider'] as String,
+      commandProvider: map['commandProvider'] == null ? null : map['commandProvider']! as String,
       commands: pulumi.Input.decodeList<GetCommandsCommand>(map['commands'], (value) => GetCommandsCommand.fromMap((value as Map).cast<String, dynamic>())),
-      contentEncoding: map['contentEncoding'] == null ? null : map['contentEncoding'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      contentEncoding: map['contentEncoding'] == null ? null : map['contentEncoding']! as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      name: map['name'] == null ? null : map['name'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      type: map['type'] == null ? null : map['type']! as String,
     );
   }
 }

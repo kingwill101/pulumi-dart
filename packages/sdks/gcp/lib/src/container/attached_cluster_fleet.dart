@@ -28,7 +28,7 @@ class AttachedClusterFleet {
 
   factory AttachedClusterFleet.fromMap(Map<String, dynamic> map) {
     return AttachedClusterFleet(
-      membership: map['membership'] == null ? null : (map['membership'] as String).input(),
+      membership: map['membership'] == null ? null : (map['membership']! as String).input(),
       project: (map['project'] as String).input(),
     );
   }

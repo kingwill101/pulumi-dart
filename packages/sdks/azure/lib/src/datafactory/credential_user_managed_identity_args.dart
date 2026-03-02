@@ -48,11 +48,11 @@ class CredentialUserManagedIdentityArgs {
 
   factory CredentialUserManagedIdentityArgs.fromMap(Map<String, dynamic> map) {
     return CredentialUserManagedIdentityArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
       dataFactoryId: (map['dataFactoryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       identityId: (map['identityId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

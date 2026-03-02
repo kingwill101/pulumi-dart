@@ -53,13 +53,13 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      groupType: map['groupType'] == null ? null : (map['groupType'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      readEnable: map['readEnable'] == null ? null : (map['readEnable'] as bool).input(),
-      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      groupType: map['groupType'] == null ? null : (map['groupType']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      readEnable: map['readEnable'] == null ? null : (map['readEnable']! as bool).input(),
+      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

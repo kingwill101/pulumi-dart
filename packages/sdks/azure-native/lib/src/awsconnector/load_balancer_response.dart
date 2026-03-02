@@ -36,10 +36,10 @@ class LoadBalancerResponse {
 
   factory LoadBalancerResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerResponse(
-      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
-      containerPort: map['containerPort'] == null ? null : (map['containerPort'] as int).input(),
-      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName'] as String).input(),
-      targetGroupArn: map['targetGroupArn'] == null ? null : (map['targetGroupArn'] as String).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
+      containerPort: map['containerPort'] == null ? null : (map['containerPort']! as int).input(),
+      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName']! as String).input(),
+      targetGroupArn: map['targetGroupArn'] == null ? null : (map['targetGroupArn']! as String).input(),
     );
   }
 }

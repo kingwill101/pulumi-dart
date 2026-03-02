@@ -35,10 +35,10 @@ class GlobalVMShutdownScheduleNotificationSettings {
 
   factory GlobalVMShutdownScheduleNotificationSettings.fromMap(Map<String, dynamic> map) {
     return GlobalVMShutdownScheduleNotificationSettings(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
       enabled: (map['enabled'] as bool).input(),
-      timeInMinutes: map['timeInMinutes'] == null ? null : (map['timeInMinutes'] as int).input(),
-      webhookUrl: map['webhookUrl'] == null ? null : (map['webhookUrl'] as String).input(),
+      timeInMinutes: map['timeInMinutes'] == null ? null : (map['timeInMinutes']! as int).input(),
+      webhookUrl: map['webhookUrl'] == null ? null : (map['webhookUrl']! as String).input(),
     );
   }
 }

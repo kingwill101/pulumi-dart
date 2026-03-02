@@ -35,10 +35,10 @@ class AppProductionBranch {
 
   factory AppProductionBranch.fromMap(Map<String, dynamic> map) {
     return AppProductionBranch(
-      branchName: map['branchName'] == null ? null : (map['branchName'] as String).input(),
-      lastDeployTime: map['lastDeployTime'] == null ? null : (map['lastDeployTime'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      thumbnailUrl: map['thumbnailUrl'] == null ? null : (map['thumbnailUrl'] as String).input(),
+      branchName: map['branchName'] == null ? null : ((map['branchName'] as String).input()).input(),
+      lastDeployTime: map['lastDeployTime'] == null ? null : ((map['lastDeployTime'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      thumbnailUrl: map['thumbnailUrl'] == null ? null : ((map['thumbnailUrl'] as String).input()).input(),
     );
   }
 }

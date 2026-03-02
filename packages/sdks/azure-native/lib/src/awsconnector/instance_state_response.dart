@@ -27,8 +27,8 @@ class InstanceStateResponse {
 
   factory InstanceStateResponse.fromMap(Map<String, dynamic> map) {
     return InstanceStateResponse(
-      code: map['code'] == null ? null : (map['code'] as int).input(),
-      name: map['name'] == null ? null : (InstanceStateNameEnumValueResponse.fromMap((map['name'] as Map).cast<String, dynamic>())).input(),
+      code: map['code'] == null ? null : (map['code']! as int).input(),
+      name: map['name'] == null ? null : (InstanceStateNameEnumValueResponse.fromMap((map['name']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

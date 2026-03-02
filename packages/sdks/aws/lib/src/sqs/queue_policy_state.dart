@@ -31,9 +31,9 @@ class QueuePolicyState {
 
   factory QueuePolicyState.fromMap(Map<String, dynamic> map) {
     return QueuePolicyState(
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      queueUrl: map['queueUrl'] == null ? null : (map['queueUrl'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      queueUrl: map['queueUrl'] == null ? null : ((map['queueUrl'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

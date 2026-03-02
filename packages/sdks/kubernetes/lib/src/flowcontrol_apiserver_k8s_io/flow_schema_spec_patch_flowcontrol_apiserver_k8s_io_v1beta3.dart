@@ -39,10 +39,10 @@ class FlowSchemaSpecPatchFlowcontrolApiserverK8sIoV1beta3 {
 
   factory FlowSchemaSpecPatchFlowcontrolApiserverK8sIoV1beta3.fromMap(Map<String, dynamic> map) {
     return FlowSchemaSpecPatchFlowcontrolApiserverK8sIoV1beta3(
-      distinguisherMethod: map['distinguisherMethod'] == null ? null : (FlowDistinguisherMethodPatchFlowcontrolApiserverK8sIoV1beta3.fromMap((map['distinguisherMethod'] as Map).cast<String, dynamic>())).input(),
-      matchingPrecedence: map['matchingPrecedence'] == null ? null : (map['matchingPrecedence'] as int).input(),
-      priorityLevelConfiguration: map['priorityLevelConfiguration'] == null ? null : (PriorityLevelConfigurationReferencePatchFlowcontrolApiserverK8sIoV1beta3.fromMap((map['priorityLevelConfiguration'] as Map).cast<String, dynamic>())).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PolicyRulesWithSubjectsPatchFlowcontrolApiserverK8sIoV1beta3>(map['rules'], (value) => PolicyRulesWithSubjectsPatchFlowcontrolApiserverK8sIoV1beta3.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      distinguisherMethod: map['distinguisherMethod'] == null ? null : (FlowDistinguisherMethodPatchFlowcontrolApiserverK8sIoV1beta3.fromMap((map['distinguisherMethod']! as Map).cast<String, dynamic>())).input(),
+      matchingPrecedence: map['matchingPrecedence'] == null ? null : (map['matchingPrecedence']! as int).input(),
+      priorityLevelConfiguration: map['priorityLevelConfiguration'] == null ? null : (PriorityLevelConfigurationReferencePatchFlowcontrolApiserverK8sIoV1beta3.fromMap((map['priorityLevelConfiguration']! as Map).cast<String, dynamic>())).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PolicyRulesWithSubjectsPatchFlowcontrolApiserverK8sIoV1beta3>(map['rules']!, (value) => PolicyRulesWithSubjectsPatchFlowcontrolApiserverK8sIoV1beta3.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

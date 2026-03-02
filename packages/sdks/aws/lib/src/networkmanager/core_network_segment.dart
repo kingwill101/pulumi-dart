@@ -30,9 +30,9 @@ class CoreNetworkSegment {
 
   factory CoreNetworkSegment.fromMap(Map<String, dynamic> map) {
     return CoreNetworkSegment(
-      edgeLocations: map['edgeLocations'] == null ? null : ((map['edgeLocations'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sharedSegments: map['sharedSegments'] == null ? null : ((map['sharedSegments'] as List).cast<String>()).input(),
+      edgeLocations: map['edgeLocations'] == null ? null : (((map['edgeLocations'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      sharedSegments: map['sharedSegments'] == null ? null : (((map['sharedSegments'] as List).cast<String>()).input()).input(),
     );
   }
 }

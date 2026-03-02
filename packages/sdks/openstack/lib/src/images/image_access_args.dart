@@ -45,8 +45,8 @@ class ImageAccessArgs {
     return ImageAccessArgs(
       imageId: (map['imageId'] as String).input(),
       memberId: (map['memberId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

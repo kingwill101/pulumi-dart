@@ -55,6 +55,14 @@ void main(List<String> args) async {
   if (!generatedSdksRoot.existsSync()) {
     generatedSdksRoot.createSync(recursive: true);
   }
+  final languageHostPath = _buildLanguageHost(repoRoot.path);
+  final generationEnvironment = {
+    ...Platform.environment,
+    'PULUMI_DART_WORKSPACE_RESOLUTION': 'true',
+    'PULUMI_DART_PULUMI_DEPENDENCY_PATH': '',
+    'PULUMI_DART_PULUMI_DEPENDENCY_VERSION': pulumiVersion,
+    'PATH': _mergePathPrefix(languageHostPath, Platform.environment['PATH'] ?? ''),
+  };
 
   stdout.writeln(
     'Generating ${selectedProviders.length} provider package(s)...',
@@ -90,12 +98,7 @@ void main(List<String> args) async {
         outputPath,
       ],
       workingDirectory: repoRoot.path,
-      environment: {
-        ...Platform.environment,
-        'PULUMI_DART_WORKSPACE_RESOLUTION': 'true',
-        'PULUMI_DART_PULUMI_DEPENDENCY_PATH': '',
-        'PULUMI_DART_PULUMI_DEPENDENCY_VERSION': pulumiVersion,
-      },
+      environment: generationEnvironment,
       runInShell: false,
     );
 
@@ -313,6 +316,48 @@ Directory _findRepoRoot(String start) {
     }
     current = parent;
   }
+}
+
+String _buildLanguageHost(String repoRootPath) {
+  final languageHostDir = _joinPath([repoRootPath, 'pulumi-language-dart']);
+  final languageHostBinary = Platform.isWindows
+      ? 'pulumi-language-dart.exe'
+      : 'pulumi-language-dart';
+  final result = Process.runSync(
+    'go',
+    ['build', '-o', languageHostBinary, '.'],
+    workingDirectory: languageHostDir,
+    environment: Platform.environment,
+  );
+
+  if (result.exitCode != 0) {
+    if (result.stdout is String && (result.stdout as String).isNotEmpty) {
+      stdout.writeln(result.stdout);
+    }
+    if (result.stderr is String && (result.stderr as String).isNotEmpty) {
+      stderr.writeln(result.stderr);
+    }
+    stderr.writeln(
+      'Failed to build pulumi-language-dart in $languageHostDir '
+      '(exit ${result.exitCode}).',
+    );
+    exit(result.exitCode);
+  }
+  return languageHostDir;
+}
+
+String _mergePathPrefix(String value, String existingPath) {
+  if (value.isEmpty) {
+    return existingPath;
+  }
+  if (existingPath.isEmpty) {
+    return value;
+  }
+  return '$value${_pathListSeparator()}$existingPath';
+}
+
+String _pathListSeparator() {
+  return Platform.isWindows ? ';' : ':';
 }
 
 String? _findSchemaSourcesPath(String repoRootPath) {

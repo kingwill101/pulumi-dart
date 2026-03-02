@@ -36,9 +36,9 @@ class AuthorizationResponse {
 
   factory AuthorizationResponse.fromMap(Map<String, dynamic> map) {
     return AuthorizationResponse(
-      delegatedRoleDefinitionIds: map['delegatedRoleDefinitionIds'] == null ? null : ((map['delegatedRoleDefinitionIds'] as List).cast<String>()).input(),
+      delegatedRoleDefinitionIds: map['delegatedRoleDefinitionIds'] == null ? null : ((map['delegatedRoleDefinitionIds']! as List).cast<String>()).input(),
       principalId: (map['principalId'] as String).input(),
-      principalIdDisplayName: map['principalIdDisplayName'] == null ? null : (map['principalIdDisplayName'] as String).input(),
+      principalIdDisplayName: map['principalIdDisplayName'] == null ? null : (map['principalIdDisplayName']! as String).input(),
       roleDefinitionId: (map['roleDefinitionId'] as String).input(),
     );
   }

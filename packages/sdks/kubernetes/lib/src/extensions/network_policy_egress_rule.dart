@@ -28,8 +28,8 @@ class NetworkPolicyEgressRule {
 
   factory NetworkPolicyEgressRule.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyEgressRule(
-      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<NetworkPolicyPort>(map['ports'], (value) => NetworkPolicyPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      to: map['to'] == null ? null : (pulumi.Input.decodeList<NetworkPolicyPeer>(map['to'], (value) => NetworkPolicyPeer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<NetworkPolicyPort>(map['ports']!, (value) => NetworkPolicyPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      to: map['to'] == null ? null : (pulumi.Input.decodeList<NetworkPolicyPeer>(map['to']!, (value) => NetworkPolicyPeer.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

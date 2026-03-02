@@ -29,8 +29,8 @@ class DeadLetterWithResourceIdentity {
 
   factory DeadLetterWithResourceIdentity.fromMap(Map<String, dynamic> map) {
     return DeadLetterWithResourceIdentity(
-      deadLetterDestination: map['deadLetterDestination'] == null ? null : (StorageBlobDeadLetterDestination.fromMap((map['deadLetterDestination'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (EventSubscriptionIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      deadLetterDestination: map['deadLetterDestination'] == null ? null : (StorageBlobDeadLetterDestination.fromMap((map['deadLetterDestination']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (EventSubscriptionIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

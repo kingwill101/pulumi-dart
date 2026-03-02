@@ -70,15 +70,15 @@ class CustomerArgs {
   factory CustomerArgs.fromMap(Map<String, dynamic> map) {
     return CustomerArgs(
       accountId: (map['accountId'] as String).input(),
-      alternateEmail: map['alternateEmail'] == null ? null : (map['alternateEmail'] as String).input(),
-      channelPartnerId: map['channelPartnerId'] == null ? null : (map['channelPartnerId'] as String).input(),
+      alternateEmail: map['alternateEmail'] == null ? null : (map['alternateEmail']! as String).input(),
+      channelPartnerId: map['channelPartnerId'] == null ? null : (map['channelPartnerId']! as String).input(),
       channelPartnerLinkId: (map['channelPartnerLinkId'] as String).input(),
-      correlationId: map['correlationId'] == null ? null : (map['correlationId'] as String).input(),
+      correlationId: map['correlationId'] == null ? null : (map['correlationId']! as String).input(),
       domain: (map['domain'] as String).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
       orgDisplayName: (map['orgDisplayName'] as String).input(),
       orgPostalAddress: (GoogleTypePostalAddress.fromMap((map['orgPostalAddress'] as Map).cast<String, dynamic>())).input(),
-      primaryContactInfo: map['primaryContactInfo'] == null ? null : (GoogleCloudChannelV1ContactInfo.fromMap((map['primaryContactInfo'] as Map).cast<String, dynamic>())).input(),
+      primaryContactInfo: map['primaryContactInfo'] == null ? null : (GoogleCloudChannelV1ContactInfo.fromMap((map['primaryContactInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

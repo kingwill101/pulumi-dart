@@ -45,10 +45,10 @@ class GetSchedulesArgs {
   factory GetSchedulesArgs.fromMap(Map<String, dynamic> map) {
     return GetSchedulesArgs(
       flowName: (map['flowName'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      limit: map['limit'] == null ? null : (map['limit'] as int).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      limit: map['limit'] == null ? null : (map['limit']! as int).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

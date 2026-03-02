@@ -25,8 +25,8 @@ class EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfigAcc
 
   factory EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      uri: map['uri'] == null ? null : ((map['uri'] as String).input()).input(),
     );
   }
 }

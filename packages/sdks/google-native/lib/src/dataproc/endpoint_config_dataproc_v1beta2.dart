@@ -21,7 +21,7 @@ class EndpointConfigDataprocV1beta2 {
 
   factory EndpointConfigDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return EndpointConfigDataprocV1beta2(
-      enableHttpPortAccess: map['enableHttpPortAccess'] == null ? null : (map['enableHttpPortAccess'] as bool).input(),
+      enableHttpPortAccess: map['enableHttpPortAccess'] == null ? null : (map['enableHttpPortAccess']! as bool).input(),
     );
   }
 }

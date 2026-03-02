@@ -26,8 +26,8 @@ class ArcAgentProfile {
 
   factory ArcAgentProfile.fromMap(Map<String, dynamic> map) {
     return ArcAgentProfile(
-      agentAutoUpgrade: map['agentAutoUpgrade'] == null ? null : (map['agentAutoUpgrade'] as String).input(),
-      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
+      agentAutoUpgrade: map['agentAutoUpgrade'] == null ? null : (map['agentAutoUpgrade']! as String).input(),
+      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion']! as String).input(),
     );
   }
 }

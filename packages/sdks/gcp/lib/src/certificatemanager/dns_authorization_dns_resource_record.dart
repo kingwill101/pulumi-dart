@@ -39,9 +39,9 @@ class DnsAuthorizationDnsResourceRecord {
 
   factory DnsAuthorizationDnsResourceRecord.fromMap(Map<String, dynamic> map) {
     return DnsAuthorizationDnsResourceRecord(
-      data: map['data'] == null ? null : (map['data'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

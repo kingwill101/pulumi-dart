@@ -38,10 +38,10 @@ class ApplicationGatewayRewriteRule {
 
   factory ApplicationGatewayRewriteRule.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayRewriteRule(
-      actionSet: map['actionSet'] == null ? null : (ApplicationGatewayRewriteRuleActionSet.fromMap((map['actionSet'] as Map).cast<String, dynamic>())).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayRewriteRuleCondition>(map['conditions'], (value) => ApplicationGatewayRewriteRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ruleSequence: map['ruleSequence'] == null ? null : (map['ruleSequence'] as int).input(),
+      actionSet: map['actionSet'] == null ? null : (ApplicationGatewayRewriteRuleActionSet.fromMap((map['actionSet']! as Map).cast<String, dynamic>())).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayRewriteRuleCondition>(map['conditions']!, (value) => ApplicationGatewayRewriteRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ruleSequence: map['ruleSequence'] == null ? null : (map['ruleSequence']! as int).input(),
     );
   }
 }

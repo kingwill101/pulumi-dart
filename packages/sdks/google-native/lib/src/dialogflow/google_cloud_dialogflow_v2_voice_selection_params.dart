@@ -27,8 +27,8 @@ class GoogleCloudDialogflowV2VoiceSelectionParams {
 
   factory GoogleCloudDialogflowV2VoiceSelectionParams.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2VoiceSelectionParams(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ssmlGender: map['ssmlGender'] == null ? null : (GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender.fromValue(map['ssmlGender'] as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ssmlGender: map['ssmlGender'] == null ? null : (GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender.fromValue(map['ssmlGender']! as String)).input(),
     );
   }
 }

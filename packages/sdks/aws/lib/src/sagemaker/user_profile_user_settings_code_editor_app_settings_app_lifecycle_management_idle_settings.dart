@@ -35,10 +35,10 @@ class UserProfileUserSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSett
 
   factory UserProfileUserSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings(
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
-      lifecycleManagement: map['lifecycleManagement'] == null ? null : (map['lifecycleManagement'] as String).input(),
-      maxIdleTimeoutInMinutes: map['maxIdleTimeoutInMinutes'] == null ? null : (map['maxIdleTimeoutInMinutes'] as int).input(),
-      minIdleTimeoutInMinutes: map['minIdleTimeoutInMinutes'] == null ? null : (map['minIdleTimeoutInMinutes'] as int).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : ((map['idleTimeoutInMinutes'] as int).input()).input(),
+      lifecycleManagement: map['lifecycleManagement'] == null ? null : ((map['lifecycleManagement'] as String).input()).input(),
+      maxIdleTimeoutInMinutes: map['maxIdleTimeoutInMinutes'] == null ? null : ((map['maxIdleTimeoutInMinutes'] as int).input()).input(),
+      minIdleTimeoutInMinutes: map['minIdleTimeoutInMinutes'] == null ? null : ((map['minIdleTimeoutInMinutes'] as int).input()).input(),
     );
   }
 }

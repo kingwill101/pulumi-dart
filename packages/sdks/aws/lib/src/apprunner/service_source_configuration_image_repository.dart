@@ -32,7 +32,7 @@ class ServiceSourceConfigurationImageRepository {
 
   factory ServiceSourceConfigurationImageRepository.fromMap(Map<String, dynamic> map) {
     return ServiceSourceConfigurationImageRepository(
-      imageConfiguration: map['imageConfiguration'] == null ? null : (ServiceSourceConfigurationImageRepositoryImageConfiguration.fromMap((map['imageConfiguration'] as Map).cast<String, dynamic>())).input(),
+      imageConfiguration: map['imageConfiguration'] == null ? null : ((ServiceSourceConfigurationImageRepositoryImageConfiguration.fromMap((map['imageConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       imageIdentifier: (map['imageIdentifier'] as String).input(),
       imageRepositoryType: (map['imageRepositoryType'] as String).input(),
     );

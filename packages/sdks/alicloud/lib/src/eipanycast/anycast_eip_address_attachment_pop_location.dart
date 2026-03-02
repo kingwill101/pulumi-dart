@@ -20,7 +20,7 @@ class AnycastEipAddressAttachmentPopLocation {
 
   factory AnycastEipAddressAttachmentPopLocation.fromMap(Map<String, dynamic> map) {
     return AnycastEipAddressAttachmentPopLocation(
-      popLocation: map['popLocation'] == null ? null : (map['popLocation'] as String).input(),
+      popLocation: map['popLocation'] == null ? null : (map['popLocation']! as String).input(),
     );
   }
 }

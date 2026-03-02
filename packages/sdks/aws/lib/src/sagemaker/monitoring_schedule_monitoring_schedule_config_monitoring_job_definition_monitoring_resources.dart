@@ -21,7 +21,7 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
 
   factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringResources.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringResources(
-      clusterConfig: (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringResourcesClusterConfig.fromMap((map['clusterConfig'] as Map).cast<String, dynamic>())).input(),
+      clusterConfig: (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringResourcesClusterConfig.fromMap((map['clusterConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

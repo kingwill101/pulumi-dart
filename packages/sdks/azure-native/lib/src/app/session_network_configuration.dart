@@ -21,7 +21,7 @@ class SessionNetworkConfiguration {
 
   factory SessionNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return SessionNetworkConfiguration(
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

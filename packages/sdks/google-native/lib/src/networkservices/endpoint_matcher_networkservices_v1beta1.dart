@@ -22,7 +22,7 @@ class EndpointMatcherNetworkservicesV1beta1 {
 
   factory EndpointMatcherNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return EndpointMatcherNetworkservicesV1beta1(
-      metadataLabelMatcher: map['metadataLabelMatcher'] == null ? null : (MetadataLabelMatcher.fromMap((map['metadataLabelMatcher'] as Map).cast<String, dynamic>())).input(),
+      metadataLabelMatcher: map['metadataLabelMatcher'] == null ? null : (MetadataLabelMatcher.fromMap((map['metadataLabelMatcher']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

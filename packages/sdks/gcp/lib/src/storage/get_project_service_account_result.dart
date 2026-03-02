@@ -43,7 +43,7 @@ class GetProjectServiceAccountResult {
       id: map['id'] as String,
       member: map['member'] as String,
       project: map['project'] as String,
-      userProject: map['userProject'] == null ? null : map['userProject'] as String,
+      userProject: map['userProject'] == null ? null : map['userProject']! as String,
     );
   }
 }

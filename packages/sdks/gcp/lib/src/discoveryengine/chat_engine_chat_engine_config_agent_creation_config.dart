@@ -35,9 +35,9 @@ class ChatEngineChatEngineConfigAgentCreationConfig {
 
   factory ChatEngineChatEngineConfigAgentCreationConfig.fromMap(Map<String, dynamic> map) {
     return ChatEngineChatEngineConfigAgentCreationConfig(
-      business: map['business'] == null ? null : (map['business'] as String).input(),
+      business: map['business'] == null ? null : (map['business']! as String).input(),
       defaultLanguageCode: (map['defaultLanguageCode'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       timeZone: (map['timeZone'] as String).input(),
     );
   }

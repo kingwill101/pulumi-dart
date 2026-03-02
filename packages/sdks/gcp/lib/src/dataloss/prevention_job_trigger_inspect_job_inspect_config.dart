@@ -64,13 +64,13 @@ class PreventionJobTriggerInspectJobInspectConfig {
 
   factory PreventionJobTriggerInspectJobInspectConfig.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfig(
-      customInfoTypes: map['customInfoTypes'] == null ? null : (pulumi.Input.decodeList<PreventionJobTriggerInspectJobInspectConfigCustomInfoType>(map['customInfoTypes'], (value) => PreventionJobTriggerInspectJobInspectConfigCustomInfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      excludeInfoTypes: map['excludeInfoTypes'] == null ? null : (map['excludeInfoTypes'] as bool).input(),
-      includeQuote: map['includeQuote'] == null ? null : (map['includeQuote'] as bool).input(),
-      infoTypes: map['infoTypes'] == null ? null : (pulumi.Input.decodeList<PreventionJobTriggerInspectJobInspectConfigInfoType>(map['infoTypes'], (value) => PreventionJobTriggerInspectJobInspectConfigInfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      limits: map['limits'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigLimits.fromMap((map['limits'] as Map).cast<String, dynamic>())).input(),
-      minLikelihood: map['minLikelihood'] == null ? null : (map['minLikelihood'] as String).input(),
-      ruleSets: map['ruleSets'] == null ? null : (pulumi.Input.decodeList<PreventionJobTriggerInspectJobInspectConfigRuleSet>(map['ruleSets'], (value) => PreventionJobTriggerInspectJobInspectConfigRuleSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customInfoTypes: map['customInfoTypes'] == null ? null : (pulumi.Input.decodeList<PreventionJobTriggerInspectJobInspectConfigCustomInfoType>(map['customInfoTypes']!, (value) => PreventionJobTriggerInspectJobInspectConfigCustomInfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      excludeInfoTypes: map['excludeInfoTypes'] == null ? null : (map['excludeInfoTypes']! as bool).input(),
+      includeQuote: map['includeQuote'] == null ? null : (map['includeQuote']! as bool).input(),
+      infoTypes: map['infoTypes'] == null ? null : (pulumi.Input.decodeList<PreventionJobTriggerInspectJobInspectConfigInfoType>(map['infoTypes']!, (value) => PreventionJobTriggerInspectJobInspectConfigInfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      limits: map['limits'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigLimits.fromMap((map['limits']! as Map).cast<String, dynamic>())).input(),
+      minLikelihood: map['minLikelihood'] == null ? null : (map['minLikelihood']! as String).input(),
+      ruleSets: map['ruleSets'] == null ? null : (pulumi.Input.decodeList<PreventionJobTriggerInspectJobInspectConfigRuleSet>(map['ruleSets']!, (value) => PreventionJobTriggerInspectJobInspectConfigRuleSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

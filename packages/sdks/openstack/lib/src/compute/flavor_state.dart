@@ -89,18 +89,18 @@ class FlavorState {
 
   factory FlavorState.fromMap(Map<String, dynamic> map) {
     return FlavorState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disk: map['disk'] == null ? null : (map['disk'] as int).input(),
-      ephemeral: map['ephemeral'] == null ? null : (map['ephemeral'] as int).input(),
-      extraSpecs: map['extraSpecs'] == null ? null : ((map['extraSpecs'] as Map).cast<String, String>()).input(),
-      flavorId: map['flavorId'] == null ? null : (map['flavorId'] as String).input(),
-      isPublic: map['isPublic'] == null ? null : (map['isPublic'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ram: map['ram'] == null ? null : (map['ram'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rxTxFactor: map['rxTxFactor'] == null ? null : (map['rxTxFactor'] as double).input(),
-      swap: map['swap'] == null ? null : (map['swap'] as int).input(),
-      vcpus: map['vcpus'] == null ? null : (map['vcpus'] as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disk: map['disk'] == null ? null : (map['disk']! as int).input(),
+      ephemeral: map['ephemeral'] == null ? null : (map['ephemeral']! as int).input(),
+      extraSpecs: map['extraSpecs'] == null ? null : ((map['extraSpecs']! as Map).cast<String, String>()).input(),
+      flavorId: map['flavorId'] == null ? null : (map['flavorId']! as String).input(),
+      isPublic: map['isPublic'] == null ? null : (map['isPublic']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ram: map['ram'] == null ? null : (map['ram']! as int).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      rxTxFactor: map['rxTxFactor'] == null ? null : (map['rxTxFactor']! as double).input(),
+      swap: map['swap'] == null ? null : (map['swap']! as int).input(),
+      vcpus: map['vcpus'] == null ? null : (map['vcpus']! as int).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class LaunchTemplateInstanceRequirementsMemoryGibPerVcpu {
 
   factory LaunchTemplateInstanceRequirementsMemoryGibPerVcpu.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateInstanceRequirementsMemoryGibPerVcpu(
-      max: map['max'] == null ? null : (map['max'] as double).input(),
-      min: map['min'] == null ? null : (map['min'] as double).input(),
+      max: map['max'] == null ? null : ((map['max'] as double).input()).input(),
+      min: map['min'] == null ? null : ((map['min'] as double).input()).input(),
     );
   }
 }

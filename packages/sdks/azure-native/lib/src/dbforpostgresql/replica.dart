@@ -31,9 +31,9 @@ class Replica {
 
   factory Replica.fromMap(Map<String, dynamic> map) {
     return Replica(
-      promoteMode: map['promoteMode'] == null ? null : (map['promoteMode'] as String).input(),
-      promoteOption: map['promoteOption'] == null ? null : (map['promoteOption'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      promoteMode: map['promoteMode'] == null ? null : (map['promoteMode']! as String).input(),
+      promoteOption: map['promoteOption'] == null ? null : (map['promoteOption']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

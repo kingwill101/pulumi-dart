@@ -28,8 +28,8 @@ class RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay {
 
   factory RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay(
-      fixedDelay: map['fixedDelay'] == null ? null : (RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelay.fromMap((map['fixedDelay'] as Map).cast<String, dynamic>())).input(),
-      percentage: map['percentage'] == null ? null : (map['percentage'] as double).input(),
+      fixedDelay: map['fixedDelay'] == null ? null : (RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelay.fromMap((map['fixedDelay']! as Map).cast<String, dynamic>())).input(),
+      percentage: map['percentage'] == null ? null : (map['percentage']! as double).input(),
     );
   }
 }

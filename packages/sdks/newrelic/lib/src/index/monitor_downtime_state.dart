@@ -68,16 +68,16 @@ class MonitorDowntimeState {
 
   factory MonitorDowntimeState.fromMap(Map<String, dynamic> map) {
     return MonitorDowntimeState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      endRepeat: map['endRepeat'] == null ? null : (MonitorDowntimeEndRepeat.fromMap((map['endRepeat'] as Map).cast<String, dynamic>())).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      frequency: map['frequency'] == null ? null : (MonitorDowntimeFrequency.fromMap((map['frequency'] as Map).cast<String, dynamic>())).input(),
-      maintenanceDays: map['maintenanceDays'] == null ? null : ((map['maintenanceDays'] as List).cast<String>()).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      monitorGuids: map['monitorGuids'] == null ? null : ((map['monitorGuids'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      endRepeat: map['endRepeat'] == null ? null : (MonitorDowntimeEndRepeat.fromMap((map['endRepeat']! as Map).cast<String, dynamic>())).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      frequency: map['frequency'] == null ? null : (MonitorDowntimeFrequency.fromMap((map['frequency']! as Map).cast<String, dynamic>())).input(),
+      maintenanceDays: map['maintenanceDays'] == null ? null : ((map['maintenanceDays']! as List).cast<String>()).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      monitorGuids: map['monitorGuids'] == null ? null : ((map['monitorGuids']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

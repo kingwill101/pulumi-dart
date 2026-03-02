@@ -90,20 +90,20 @@ class AwsApiGatewayStagePropertiesResponse {
 
   factory AwsApiGatewayStagePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsApiGatewayStagePropertiesResponse(
-      accessLogSetting: map['accessLogSetting'] == null ? null : (AccessLogSettingResponse.fromMap((map['accessLogSetting'] as Map).cast<String, dynamic>())).input(),
-      cacheClusterEnabled: map['cacheClusterEnabled'] == null ? null : (map['cacheClusterEnabled'] as bool).input(),
-      cacheClusterSize: map['cacheClusterSize'] == null ? null : (map['cacheClusterSize'] as String).input(),
-      canarySetting: map['canarySetting'] == null ? null : (CanarySettingResponse.fromMap((map['canarySetting'] as Map).cast<String, dynamic>())).input(),
-      clientCertificateId: map['clientCertificateId'] == null ? null : (map['clientCertificateId'] as String).input(),
-      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      documentationVersion: map['documentationVersion'] == null ? null : (map['documentationVersion'] as String).input(),
-      methodSettings: map['methodSettings'] == null ? null : (pulumi.Input.decodeList<MethodSettingResponse>(map['methodSettings'], (value) => MethodSettingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      restApiId: map['restApiId'] == null ? null : (map['restApiId'] as String).input(),
-      stageName: map['stageName'] == null ? null : (map['stageName'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tracingEnabled: map['tracingEnabled'] == null ? null : (map['tracingEnabled'] as bool).input(),
-      variables: map['variables'] == null ? null : ((map['variables'] as Map).cast<String, String>()).input(),
+      accessLogSetting: map['accessLogSetting'] == null ? null : (AccessLogSettingResponse.fromMap((map['accessLogSetting']! as Map).cast<String, dynamic>())).input(),
+      cacheClusterEnabled: map['cacheClusterEnabled'] == null ? null : (map['cacheClusterEnabled']! as bool).input(),
+      cacheClusterSize: map['cacheClusterSize'] == null ? null : (map['cacheClusterSize']! as String).input(),
+      canarySetting: map['canarySetting'] == null ? null : (CanarySettingResponse.fromMap((map['canarySetting']! as Map).cast<String, dynamic>())).input(),
+      clientCertificateId: map['clientCertificateId'] == null ? null : (map['clientCertificateId']! as String).input(),
+      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      documentationVersion: map['documentationVersion'] == null ? null : (map['documentationVersion']! as String).input(),
+      methodSettings: map['methodSettings'] == null ? null : (pulumi.Input.decodeList<MethodSettingResponse>(map['methodSettings']!, (value) => MethodSettingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      restApiId: map['restApiId'] == null ? null : (map['restApiId']! as String).input(),
+      stageName: map['stageName'] == null ? null : (map['stageName']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tracingEnabled: map['tracingEnabled'] == null ? null : (map['tracingEnabled']! as bool).input(),
+      variables: map['variables'] == null ? null : ((map['variables']! as Map).cast<String, String>()).input(),
     );
   }
 }

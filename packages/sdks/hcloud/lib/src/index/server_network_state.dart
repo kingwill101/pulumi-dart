@@ -46,12 +46,12 @@ class ServerNetworkState {
 
   factory ServerNetworkState.fromMap(Map<String, dynamic> map) {
     return ServerNetworkState(
-      aliasIps: map['aliasIps'] == null ? null : ((map['aliasIps'] as List).cast<String>()).input(),
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
-      macAddress: map['macAddress'] == null ? null : (map['macAddress'] as String).input(),
-      networkId: map['networkId'] == null ? null : (map['networkId'] as int).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as int).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      aliasIps: map['aliasIps'] == null ? null : ((map['aliasIps']! as List).cast<String>()).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
+      macAddress: map['macAddress'] == null ? null : (map['macAddress']! as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId']! as int).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId']! as int).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

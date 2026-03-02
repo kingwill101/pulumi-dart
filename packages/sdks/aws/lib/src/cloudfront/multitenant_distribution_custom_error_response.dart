@@ -35,10 +35,10 @@ class MultitenantDistributionCustomErrorResponse {
 
   factory MultitenantDistributionCustomErrorResponse.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionCustomErrorResponse(
-      errorCachingMinTtl: map['errorCachingMinTtl'] == null ? null : (map['errorCachingMinTtl'] as int).input(),
+      errorCachingMinTtl: map['errorCachingMinTtl'] == null ? null : ((map['errorCachingMinTtl'] as int).input()).input(),
       errorCode: (map['errorCode'] as int).input(),
-      responseCode: map['responseCode'] == null ? null : (map['responseCode'] as String).input(),
-      responsePagePath: map['responsePagePath'] == null ? null : (map['responsePagePath'] as String).input(),
+      responseCode: map['responseCode'] == null ? null : ((map['responseCode'] as String).input()).input(),
+      responsePagePath: map['responsePagePath'] == null ? null : ((map['responsePagePath'] as String).input()).input(),
     );
   }
 }

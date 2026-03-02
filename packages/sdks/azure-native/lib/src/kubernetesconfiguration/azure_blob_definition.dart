@@ -63,15 +63,15 @@ class AzureBlobDefinition {
 
   factory AzureBlobDefinition.fromMap(Map<String, dynamic> map) {
     return AzureBlobDefinition(
-      accountKey: map['accountKey'] == null ? null : (map['accountKey'] as String).input(),
-      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
-      localAuthRef: map['localAuthRef'] == null ? null : (map['localAuthRef'] as String).input(),
-      managedIdentity: map['managedIdentity'] == null ? null : (ManagedIdentityDefinition.fromMap((map['managedIdentity'] as Map).cast<String, dynamic>())).input(),
-      sasToken: map['sasToken'] == null ? null : (map['sasToken'] as String).input(),
-      servicePrincipal: map['servicePrincipal'] == null ? null : (ServicePrincipalDefinition.fromMap((map['servicePrincipal'] as Map).cast<String, dynamic>())).input(),
-      syncIntervalInSeconds: map['syncIntervalInSeconds'] == null ? null : (map['syncIntervalInSeconds'] as double).input(),
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as double).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      accountKey: map['accountKey'] == null ? null : (map['accountKey']! as String).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
+      localAuthRef: map['localAuthRef'] == null ? null : (map['localAuthRef']! as String).input(),
+      managedIdentity: map['managedIdentity'] == null ? null : (ManagedIdentityDefinition.fromMap((map['managedIdentity']! as Map).cast<String, dynamic>())).input(),
+      sasToken: map['sasToken'] == null ? null : (map['sasToken']! as String).input(),
+      servicePrincipal: map['servicePrincipal'] == null ? null : (ServicePrincipalDefinition.fromMap((map['servicePrincipal']! as Map).cast<String, dynamic>())).input(),
+      syncIntervalInSeconds: map['syncIntervalInSeconds'] == null ? null : (map['syncIntervalInSeconds']! as double).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds']! as double).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

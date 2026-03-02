@@ -32,7 +32,7 @@ class GetScriptDagEdge {
     return GetScriptDagEdge(
       source: (map['source'] as String).input(),
       target: (map['target'] as String).input(),
-      targetParameter: map['targetParameter'] == null ? null : (map['targetParameter'] as String).input(),
+      targetParameter: map['targetParameter'] == null ? null : ((map['targetParameter'] as String).input()).input(),
     );
   }
 }

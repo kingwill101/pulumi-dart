@@ -64,15 +64,15 @@ class FeatureGkehubV1alphaArgs {
 
   factory FeatureGkehubV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return FeatureGkehubV1alphaArgs(
-      featureId: map['featureId'] == null ? null : (map['featureId'] as String).input(),
-      fleetDefaultMemberConfig: map['fleetDefaultMemberConfig'] == null ? null : (CommonFleetDefaultMemberConfigSpecGkehubV1alpha.fromMap((map['fleetDefaultMemberConfig'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      membershipSpecs: map['membershipSpecs'] == null ? null : ((map['membershipSpecs'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      scopeSpecs: map['scopeSpecs'] == null ? null : ((map['scopeSpecs'] as Map).cast<String, String>()).input(),
-      spec: map['spec'] == null ? null : (CommonFeatureSpecGkehubV1alpha.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      featureId: map['featureId'] == null ? null : (map['featureId']! as String).input(),
+      fleetDefaultMemberConfig: map['fleetDefaultMemberConfig'] == null ? null : (CommonFleetDefaultMemberConfigSpecGkehubV1alpha.fromMap((map['fleetDefaultMemberConfig']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      membershipSpecs: map['membershipSpecs'] == null ? null : ((map['membershipSpecs']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      scopeSpecs: map['scopeSpecs'] == null ? null : ((map['scopeSpecs']! as Map).cast<String, String>()).input(),
+      spec: map['spec'] == null ? null : (CommonFeatureSpecGkehubV1alpha.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

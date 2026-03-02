@@ -24,7 +24,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyPro
 
   factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyProviderSettingsStaticKeySetting.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyProviderSettingsStaticKeySetting(
-      keyProviderServer: map['keyProviderServer'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyProviderSettingsStaticKeySettingKeyProviderServer.fromMap((map['keyProviderServer'] as Map).cast<String, dynamic>())).input(),
+      keyProviderServer: map['keyProviderServer'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyProviderSettingsStaticKeySettingKeyProviderServer.fromMap((map['keyProviderServer']! as Map).cast<String, dynamic>())).input()).input(),
       staticKeyValue: (map['staticKeyValue'] as String).input(),
     );
   }

@@ -27,8 +27,8 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
 
   factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationTool.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationTool(
-      cachePoint: map['cachePoint'] == null ? null : (AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolCachePoint.fromMap((map['cachePoint'] as Map).cast<String, dynamic>())).input(),
-      toolSpec: map['toolSpec'] == null ? null : (AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpec.fromMap((map['toolSpec'] as Map).cast<String, dynamic>())).input(),
+      cachePoint: map['cachePoint'] == null ? null : ((AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolCachePoint.fromMap((map['cachePoint']! as Map).cast<String, dynamic>())).input()).input(),
+      toolSpec: map['toolSpec'] == null ? null : ((AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpec.fromMap((map['toolSpec']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

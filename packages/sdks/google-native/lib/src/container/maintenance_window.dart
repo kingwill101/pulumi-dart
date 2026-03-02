@@ -33,9 +33,9 @@ class MaintenanceWindow {
 
   factory MaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindow(
-      dailyMaintenanceWindow: map['dailyMaintenanceWindow'] == null ? null : (DailyMaintenanceWindow.fromMap((map['dailyMaintenanceWindow'] as Map).cast<String, dynamic>())).input(),
-      maintenanceExclusions: map['maintenanceExclusions'] == null ? null : ((map['maintenanceExclusions'] as Map).cast<String, String>()).input(),
-      recurringWindow: map['recurringWindow'] == null ? null : (RecurringTimeWindow.fromMap((map['recurringWindow'] as Map).cast<String, dynamic>())).input(),
+      dailyMaintenanceWindow: map['dailyMaintenanceWindow'] == null ? null : (DailyMaintenanceWindow.fromMap((map['dailyMaintenanceWindow']! as Map).cast<String, dynamic>())).input(),
+      maintenanceExclusions: map['maintenanceExclusions'] == null ? null : ((map['maintenanceExclusions']! as Map).cast<String, String>()).input(),
+      recurringWindow: map['recurringWindow'] == null ? null : (RecurringTimeWindow.fromMap((map['recurringWindow']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

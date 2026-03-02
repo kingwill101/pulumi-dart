@@ -39,10 +39,10 @@ class SoleTenancyPreferencesMigrationcenterV1alpha1 {
 
   factory SoleTenancyPreferencesMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return SoleTenancyPreferencesMigrationcenterV1alpha1(
-      commitmentPlan: map['commitmentPlan'] == null ? null : (SoleTenancyPreferencesCommitmentPlanMigrationcenterV1alpha1.fromValue(map['commitmentPlan'] as String)).input(),
-      cpuOvercommitRatio: map['cpuOvercommitRatio'] == null ? null : (map['cpuOvercommitRatio'] as double).input(),
-      hostMaintenancePolicy: map['hostMaintenancePolicy'] == null ? null : (SoleTenancyPreferencesHostMaintenancePolicyMigrationcenterV1alpha1.fromValue(map['hostMaintenancePolicy'] as String)).input(),
-      nodeTypes: map['nodeTypes'] == null ? null : (pulumi.Input.decodeList<SoleTenantNodeTypeMigrationcenterV1alpha1>(map['nodeTypes'], (value) => SoleTenantNodeTypeMigrationcenterV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      commitmentPlan: map['commitmentPlan'] == null ? null : (SoleTenancyPreferencesCommitmentPlanMigrationcenterV1alpha1.fromValue(map['commitmentPlan']! as String)).input(),
+      cpuOvercommitRatio: map['cpuOvercommitRatio'] == null ? null : (map['cpuOvercommitRatio']! as double).input(),
+      hostMaintenancePolicy: map['hostMaintenancePolicy'] == null ? null : (SoleTenancyPreferencesHostMaintenancePolicyMigrationcenterV1alpha1.fromValue(map['hostMaintenancePolicy']! as String)).input(),
+      nodeTypes: map['nodeTypes'] == null ? null : (pulumi.Input.decodeList<SoleTenantNodeTypeMigrationcenterV1alpha1>(map['nodeTypes']!, (value) => SoleTenantNodeTypeMigrationcenterV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

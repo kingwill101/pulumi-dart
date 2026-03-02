@@ -27,8 +27,8 @@ class GetIndexUserTokenConfiguration {
 
   factory GetIndexUserTokenConfiguration.fromMap(Map<String, dynamic> map) {
     return GetIndexUserTokenConfiguration(
-      jsonTokenTypeConfigurations: (pulumi.Input.decodeList<GetIndexUserTokenConfigurationJsonTokenTypeConfiguration>(map['jsonTokenTypeConfigurations'], (value) => GetIndexUserTokenConfigurationJsonTokenTypeConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      jwtTokenTypeConfigurations: (pulumi.Input.decodeList<GetIndexUserTokenConfigurationJwtTokenTypeConfiguration>(map['jwtTokenTypeConfigurations'], (value) => GetIndexUserTokenConfigurationJwtTokenTypeConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      jsonTokenTypeConfigurations: (pulumi.Input.decodeList<GetIndexUserTokenConfigurationJsonTokenTypeConfiguration>(map['jsonTokenTypeConfigurations']!, (value) => GetIndexUserTokenConfigurationJsonTokenTypeConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      jwtTokenTypeConfigurations: (pulumi.Input.decodeList<GetIndexUserTokenConfigurationJwtTokenTypeConfiguration>(map['jwtTokenTypeConfigurations']!, (value) => GetIndexUserTokenConfigurationJwtTokenTypeConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

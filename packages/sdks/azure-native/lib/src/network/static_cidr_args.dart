@@ -47,9 +47,9 @@ class StaticCidrArgs {
     return StaticCidrArgs(
       networkManagerName: (map['networkManagerName'] as String).input(),
       poolName: (map['poolName'] as String).input(),
-      properties: map['properties'] == null ? null : (StaticCidrProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (StaticCidrProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      staticCidrName: map['staticCidrName'] == null ? null : (map['staticCidrName'] as String).input(),
+      staticCidrName: map['staticCidrName'] == null ? null : (map['staticCidrName']! as String).input(),
     );
   }
 }

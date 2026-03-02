@@ -82,13 +82,13 @@ class GuestPoliciesArgs {
   factory GuestPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesArgs(
       assignment: (GuestPoliciesAssignment.fromMap((map['assignment'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       guestPolicyId: (map['guestPolicyId'] as String).input(),
-      packageRepositories: map['packageRepositories'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesPackageRepository>(map['packageRepositories'], (value) => GuestPoliciesPackageRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      packages: map['packages'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesPackage>(map['packages'], (value) => GuestPoliciesPackage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      recipes: map['recipes'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesRecipe>(map['recipes'], (value) => GuestPoliciesRecipe.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      packageRepositories: map['packageRepositories'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesPackageRepository>(map['packageRepositories']!, (value) => GuestPoliciesPackageRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      packages: map['packages'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesPackage>(map['packages']!, (value) => GuestPoliciesPackage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      recipes: map['recipes'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesRecipe>(map['recipes']!, (value) => GuestPoliciesRecipe.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

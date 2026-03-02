@@ -47,12 +47,12 @@ class GlossaryState {
 
   factory GlossaryState.fromMap(Map<String, dynamic> map) {
     return GlossaryState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      domainIdentifier: map['domainIdentifier'] == null ? null : (map['domainIdentifier'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      owningProjectIdentifier: map['owningProjectIdentifier'] == null ? null : (map['owningProjectIdentifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      domainIdentifier: map['domainIdentifier'] == null ? null : ((map['domainIdentifier'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      owningProjectIdentifier: map['owningProjectIdentifier'] == null ? null : ((map['owningProjectIdentifier'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

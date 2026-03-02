@@ -60,13 +60,13 @@ class GetExpressRouteCircuitAuthorizationResult {
 
   factory GetExpressRouteCircuitAuthorizationResult.fromMap(Map<String, dynamic> map) {
     return GetExpressRouteCircuitAuthorizationResult(
-      authorizationKey: map['authorizationKey'] == null ? null : map['authorizationKey'] as String,
-      authorizationUseStatus: map['authorizationUseStatus'] == null ? null : map['authorizationUseStatus'] as String,
+      authorizationKey: map['authorizationKey'] == null ? null : map['authorizationKey']! as String,
+      authorizationUseStatus: map['authorizationUseStatus'] == null ? null : map['authorizationUseStatus']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       connectionResourceUri: map['connectionResourceUri'] as String,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
       provisioningState: map['provisioningState'] as String,
       type: map['type'] as String,
     );

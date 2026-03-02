@@ -47,9 +47,9 @@ class SchemaArgs {
   factory SchemaArgs.fromMap(Map<String, dynamic> map) {
     return SchemaArgs(
       dataStoreId: (map['dataStoreId'] as String).input(),
-      jsonSchema: map['jsonSchema'] == null ? null : (map['jsonSchema'] as String).input(),
+      jsonSchema: map['jsonSchema'] == null ? null : (map['jsonSchema']! as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       schemaId: (map['schemaId'] as String).input(),
     );
   }

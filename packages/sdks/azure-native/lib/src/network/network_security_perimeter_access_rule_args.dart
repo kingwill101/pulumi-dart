@@ -90,20 +90,20 @@ class NetworkSecurityPerimeterAccessRuleArgs {
 
   factory NetworkSecurityPerimeterAccessRuleArgs.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityPerimeterAccessRuleArgs(
-      accessRuleName: map['accessRuleName'] == null ? null : (map['accessRuleName'] as String).input(),
-      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes'] as List).cast<String>()).input(),
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
-      emailAddresses: map['emailAddresses'] == null ? null : ((map['emailAddresses'] as List).cast<String>()).input(),
-      fullyQualifiedDomainNames: map['fullyQualifiedDomainNames'] == null ? null : ((map['fullyQualifiedDomainNames'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      accessRuleName: map['accessRuleName'] == null ? null : (map['accessRuleName']! as String).input(),
+      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes']! as List).cast<String>()).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
+      emailAddresses: map['emailAddresses'] == null ? null : ((map['emailAddresses']! as List).cast<String>()).input(),
+      fullyQualifiedDomainNames: map['fullyQualifiedDomainNames'] == null ? null : ((map['fullyQualifiedDomainNames']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       networkSecurityPerimeterName: (map['networkSecurityPerimeterName'] as String).input(),
-      phoneNumbers: map['phoneNumbers'] == null ? null : ((map['phoneNumbers'] as List).cast<String>()).input(),
+      phoneNumbers: map['phoneNumbers'] == null ? null : ((map['phoneNumbers']! as List).cast<String>()).input(),
       profileName: (map['profileName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceTags: map['serviceTags'] == null ? null : ((map['serviceTags'] as List).cast<String>()).input(),
-      subscriptions: map['subscriptions'] == null ? null : (pulumi.Input.decodeList<SubscriptionId>(map['subscriptions'], (value) => SubscriptionId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      serviceTags: map['serviceTags'] == null ? null : ((map['serviceTags']! as List).cast<String>()).input(),
+      subscriptions: map['subscriptions'] == null ? null : (pulumi.Input.decodeList<SubscriptionId>(map['subscriptions']!, (value) => SubscriptionId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

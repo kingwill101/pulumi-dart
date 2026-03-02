@@ -27,7 +27,7 @@ class DomainDevicesSerialSourcePty {
   factory DomainDevicesSerialSourcePty.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSerialSourcePty(
       path: (map['path'] as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesSerialSourcePtySecLabel>(map['secLabels'], (value) => DomainDevicesSerialSourcePtySecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesSerialSourcePtySecLabel>(map['secLabels']!, (value) => DomainDevicesSerialSourcePtySecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

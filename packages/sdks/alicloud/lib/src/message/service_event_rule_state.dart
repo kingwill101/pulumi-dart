@@ -44,11 +44,11 @@ class ServiceEventRuleState {
 
   factory ServiceEventRuleState.fromMap(Map<String, dynamic> map) {
     return ServiceEventRuleState(
-      deliveryMode: map['deliveryMode'] == null ? null : (map['deliveryMode'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (ServiceEventRuleEndpoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>())).input(),
-      eventTypes: map['eventTypes'] == null ? null : ((map['eventTypes'] as List).cast<String>()).input(),
-      matchRules: map['matchRules'] == null ? null : (pulumi.Input.decodeList<List<ServiceEventRuleMatchRule>>(map['matchRules'], (value) => pulumi.Input.decodeList<ServiceEventRuleMatchRule>(value, (value) => ServiceEventRuleMatchRule.fromMap((value as Map).cast<String, dynamic>())))).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      deliveryMode: map['deliveryMode'] == null ? null : (map['deliveryMode']! as String).input(),
+      endpoint: map['endpoint'] == null ? null : (ServiceEventRuleEndpoint.fromMap((map['endpoint']! as Map).cast<String, dynamic>())).input(),
+      eventTypes: map['eventTypes'] == null ? null : ((map['eventTypes']! as List).cast<String>()).input(),
+      matchRules: map['matchRules'] == null ? null : (pulumi.Input.decodeList<List<ServiceEventRuleMatchRule>>(map['matchRules']!, (value) => pulumi.Input.decodeList<ServiceEventRuleMatchRule>(value, (value) => ServiceEventRuleMatchRule.fromMap((value as Map).cast<String, dynamic>())))).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
     );
   }
 }

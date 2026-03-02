@@ -38,9 +38,9 @@ class TumblingWindowTriggerDependencyReferenceResponse {
 
   factory TumblingWindowTriggerDependencyReferenceResponse.fromMap(Map<String, dynamic> map) {
     return TumblingWindowTriggerDependencyReferenceResponse(
-      offset: map['offset'] == null ? null : (map['offset'] as String).input(),
+      offset: map['offset'] == null ? null : (map['offset']! as String).input(),
       referenceTrigger: (TriggerReferenceResponse.fromMap((map['referenceTrigger'] as Map).cast<String, dynamic>())).input(),
-      size: map['size'] == null ? null : (map['size'] as String).input(),
+      size: map['size'] == null ? null : (map['size']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

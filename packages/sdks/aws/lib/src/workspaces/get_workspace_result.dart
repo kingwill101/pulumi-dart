@@ -97,7 +97,7 @@ class GetWorkspaceResult {
       userVolumeEncryptionEnabled: map['userVolumeEncryptionEnabled'] as bool,
       volumeEncryptionKey: map['volumeEncryptionKey'] as String,
       workspaceId: map['workspaceId'] as String,
-      workspaceProperties: pulumi.Input.decodeList<GetWorkspaceWorkspaceProperty>(map['workspaceProperties'], (value) => GetWorkspaceWorkspaceProperty.fromMap((value as Map).cast<String, dynamic>())),
+      workspaceProperties: pulumi.Input.decodeList<GetWorkspaceWorkspaceProperty>(map['workspaceProperties']!, (value) => GetWorkspaceWorkspaceProperty.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

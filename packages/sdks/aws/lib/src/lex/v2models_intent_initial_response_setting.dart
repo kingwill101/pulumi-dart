@@ -39,10 +39,10 @@ class V2modelsIntentInitialResponseSetting {
 
   factory V2modelsIntentInitialResponseSetting.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSetting(
-      codeHook: map['codeHook'] == null ? null : (V2modelsIntentInitialResponseSettingCodeHook.fromMap((map['codeHook'] as Map).cast<String, dynamic>())).input(),
-      conditional: map['conditional'] == null ? null : (V2modelsIntentInitialResponseSettingConditional.fromMap((map['conditional'] as Map).cast<String, dynamic>())).input(),
-      initialResponse: map['initialResponse'] == null ? null : (V2modelsIntentInitialResponseSettingInitialResponse.fromMap((map['initialResponse'] as Map).cast<String, dynamic>())).input(),
-      nextStep: map['nextStep'] == null ? null : (V2modelsIntentInitialResponseSettingNextStep.fromMap((map['nextStep'] as Map).cast<String, dynamic>())).input(),
+      codeHook: map['codeHook'] == null ? null : ((V2modelsIntentInitialResponseSettingCodeHook.fromMap((map['codeHook']! as Map).cast<String, dynamic>())).input()).input(),
+      conditional: map['conditional'] == null ? null : ((V2modelsIntentInitialResponseSettingConditional.fromMap((map['conditional']! as Map).cast<String, dynamic>())).input()).input(),
+      initialResponse: map['initialResponse'] == null ? null : ((V2modelsIntentInitialResponseSettingInitialResponse.fromMap((map['initialResponse']! as Map).cast<String, dynamic>())).input()).input(),
+      nextStep: map['nextStep'] == null ? null : ((V2modelsIntentInitialResponseSettingNextStep.fromMap((map['nextStep']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

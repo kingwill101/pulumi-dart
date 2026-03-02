@@ -37,10 +37,10 @@ class CertificateProperties {
 
   factory CertificateProperties.fromMap(Map<String, dynamic> map) {
     return CertificateProperties(
-      certificateKeyVaultProperties: map['certificateKeyVaultProperties'] == null ? null : (CertificateKeyVaultProperties.fromMap((map['certificateKeyVaultProperties'] as Map).cast<String, dynamic>())).input(),
-      certificateType: map['certificateType'] == null ? null : (map['certificateType'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      certificateKeyVaultProperties: map['certificateKeyVaultProperties'] == null ? null : (CertificateKeyVaultProperties.fromMap((map['certificateKeyVaultProperties']! as Map).cast<String, dynamic>())).input(),
+      certificateType: map['certificateType'] == null ? null : (map['certificateType']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

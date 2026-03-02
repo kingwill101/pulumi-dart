@@ -33,7 +33,7 @@ class OnPremiseProperty {
     return OnPremiseProperty(
       id: (map['id'] as String).input(),
       publicSigningKey: (map['publicSigningKey'] as String).input(),
-      signingCertificateThumbprint: map['signingCertificateThumbprint'] == null ? null : (map['signingCertificateThumbprint'] as String).input(),
+      signingCertificateThumbprint: map['signingCertificateThumbprint'] == null ? null : (map['signingCertificateThumbprint']! as String).input(),
     );
   }
 }

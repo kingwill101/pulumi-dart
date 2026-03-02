@@ -21,7 +21,7 @@ class IPConfigurationArmReferenceResponse {
 
   factory IPConfigurationArmReferenceResponse.fromMap(Map<String, dynamic> map) {
     return IPConfigurationArmReferenceResponse(
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

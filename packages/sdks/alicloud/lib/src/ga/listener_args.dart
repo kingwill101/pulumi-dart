@@ -104,19 +104,19 @@ class ListenerArgs {
   factory ListenerArgs.fromMap(Map<String, dynamic> map) {
     return ListenerArgs(
       acceleratorId: (map['acceleratorId'] as String).input(),
-      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeList<ListenerCertificate>(map['certificates'], (value) => ListenerCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      clientAffinity: map['clientAffinity'] == null ? null : (map['clientAffinity'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      forwardedForConfig: map['forwardedForConfig'] == null ? null : (ListenerForwardedForConfig.fromMap((map['forwardedForConfig'] as Map).cast<String, dynamic>())).input(),
-      httpVersion: map['httpVersion'] == null ? null : (map['httpVersion'] as String).input(),
-      idleTimeout: map['idleTimeout'] == null ? null : (map['idleTimeout'] as int).input(),
-      listenerType: map['listenerType'] == null ? null : (map['listenerType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeList<ListenerCertificate>(map['certificates']!, (value) => ListenerCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientAffinity: map['clientAffinity'] == null ? null : (map['clientAffinity']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      forwardedForConfig: map['forwardedForConfig'] == null ? null : (ListenerForwardedForConfig.fromMap((map['forwardedForConfig']! as Map).cast<String, dynamic>())).input(),
+      httpVersion: map['httpVersion'] == null ? null : (map['httpVersion']! as String).input(),
+      idleTimeout: map['idleTimeout'] == null ? null : (map['idleTimeout']! as int).input(),
+      listenerType: map['listenerType'] == null ? null : (map['listenerType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       portRanges: (pulumi.Input.decodeList<ListenerPortRange>(map['portRanges'], (value) => ListenerPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      proxyProtocol: map['proxyProtocol'] == null ? null : (map['proxyProtocol'] as bool).input(),
-      requestTimeout: map['requestTimeout'] == null ? null : (map['requestTimeout'] as int).input(),
-      securityPolicyId: map['securityPolicyId'] == null ? null : (map['securityPolicyId'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      proxyProtocol: map['proxyProtocol'] == null ? null : (map['proxyProtocol']! as bool).input(),
+      requestTimeout: map['requestTimeout'] == null ? null : (map['requestTimeout']! as int).input(),
+      securityPolicyId: map['securityPolicyId'] == null ? null : (map['securityPolicyId']! as String).input(),
     );
   }
 }

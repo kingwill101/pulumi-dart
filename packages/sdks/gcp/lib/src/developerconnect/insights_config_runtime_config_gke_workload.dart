@@ -31,7 +31,7 @@ class InsightsConfigRuntimeConfigGkeWorkload {
   factory InsightsConfigRuntimeConfigGkeWorkload.fromMap(Map<String, dynamic> map) {
     return InsightsConfigRuntimeConfigGkeWorkload(
       cluster: (map['cluster'] as String).input(),
-      deployment: map['deployment'] == null ? null : (map['deployment'] as String).input(),
+      deployment: map['deployment'] == null ? null : (map['deployment']! as String).input(),
     );
   }
 }

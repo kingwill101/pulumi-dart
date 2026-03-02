@@ -27,8 +27,8 @@ class FieldSelectorAttributesPatch {
 
   factory FieldSelectorAttributesPatch.fromMap(Map<String, dynamic> map) {
     return FieldSelectorAttributesPatch(
-      rawSelector: map['rawSelector'] == null ? null : (map['rawSelector'] as String).input(),
-      requirements: map['requirements'] == null ? null : (pulumi.Input.decodeList<FieldSelectorRequirementPatch>(map['requirements'], (value) => FieldSelectorRequirementPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rawSelector: map['rawSelector'] == null ? null : (map['rawSelector']! as String).input(),
+      requirements: map['requirements'] == null ? null : (pulumi.Input.decodeList<FieldSelectorRequirementPatch>(map['requirements']!, (value) => FieldSelectorRequirementPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

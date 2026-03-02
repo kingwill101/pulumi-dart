@@ -54,12 +54,12 @@ class PipelinePropertiesResponse {
   factory PipelinePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PipelinePropertiesResponse(
       connections: (pulumi.Input.decodeList<PipelineConnectionResponse>(map['connections'], (value) => PipelineConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      flowTypes: map['flowTypes'] == null ? null : ((map['flowTypes'] as List).cast<String>()).input(),
-      policies: map['policies'] == null ? null : ((map['policies'] as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      flowTypes: map['flowTypes'] == null ? null : ((map['flowTypes']! as List).cast<String>()).input(),
+      policies: map['policies'] == null ? null : ((map['policies']! as List).cast<String>()).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       remoteCloud: (map['remoteCloud'] as String).input(),
-      subscribers: map['subscribers'] == null ? null : (pulumi.Input.decodeList<SubscriberResponse>(map['subscribers'], (value) => SubscriberResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subscribers: map['subscribers'] == null ? null : (pulumi.Input.decodeList<SubscriberResponse>(map['subscribers']!, (value) => SubscriberResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

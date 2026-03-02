@@ -34,8 +34,8 @@ class CustomEntityStoreAssignmentArgs {
 
   factory CustomEntityStoreAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return CustomEntityStoreAssignmentArgs(
-      customEntityStoreAssignmentName: map['customEntityStoreAssignmentName'] == null ? null : (map['customEntityStoreAssignmentName'] as String).input(),
-      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
+      customEntityStoreAssignmentName: map['customEntityStoreAssignmentName'] == null ? null : (map['customEntityStoreAssignmentName']! as String).input(),
+      principal: map['principal'] == null ? null : (map['principal']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

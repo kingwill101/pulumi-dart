@@ -51,7 +51,7 @@ class AppCheckDebugTokenArgs {
     return AppCheckDebugTokenArgs(
       appId: (map['appId'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       token: (map['token'] as String).input(),
     );
   }

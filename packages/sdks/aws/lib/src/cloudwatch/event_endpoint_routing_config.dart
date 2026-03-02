@@ -21,7 +21,7 @@ class EventEndpointRoutingConfig {
 
   factory EventEndpointRoutingConfig.fromMap(Map<String, dynamic> map) {
     return EventEndpointRoutingConfig(
-      failoverConfig: (EventEndpointRoutingConfigFailoverConfig.fromMap((map['failoverConfig'] as Map).cast<String, dynamic>())).input(),
+      failoverConfig: (EventEndpointRoutingConfigFailoverConfig.fromMap((map['failoverConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

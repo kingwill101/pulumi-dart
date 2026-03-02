@@ -21,7 +21,7 @@ class NetworkInterfaceResourceNamesResponse {
 
   factory NetworkInterfaceResourceNamesResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceResourceNamesResponse(
-      networkInterfaceName: map['networkInterfaceName'] == null ? null : (map['networkInterfaceName'] as String).input(),
+      networkInterfaceName: map['networkInterfaceName'] == null ? null : (map['networkInterfaceName']! as String).input(),
     );
   }
 }

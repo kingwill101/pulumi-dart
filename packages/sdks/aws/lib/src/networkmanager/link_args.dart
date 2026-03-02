@@ -57,13 +57,13 @@ class LinkArgs {
 
   factory LinkArgs.fromMap(Map<String, dynamic> map) {
     return LinkArgs(
-      bandwidth: (LinkBandwidth.fromMap((map['bandwidth'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      bandwidth: (LinkBandwidth.fromMap((map['bandwidth']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       globalNetworkId: (map['globalNetworkId'] as String).input(),
-      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
+      providerName: map['providerName'] == null ? null : ((map['providerName'] as String).input()).input(),
       siteId: (map['siteId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

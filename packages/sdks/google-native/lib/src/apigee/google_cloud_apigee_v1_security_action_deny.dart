@@ -21,7 +21,7 @@ class GoogleCloudApigeeV1SecurityActionDeny {
 
   factory GoogleCloudApigeeV1SecurityActionDeny.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1SecurityActionDeny(
-      responseCode: map['responseCode'] == null ? null : (map['responseCode'] as int).input(),
+      responseCode: map['responseCode'] == null ? null : (map['responseCode']! as int).input(),
     );
   }
 }

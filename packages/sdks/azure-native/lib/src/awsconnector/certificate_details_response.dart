@@ -26,8 +26,8 @@ class CertificateDetailsResponse {
 
   factory CertificateDetailsResponse.fromMap(Map<String, dynamic> map) {
     return CertificateDetailsResponse(
-      caIdentifier: map['caIdentifier'] == null ? null : (map['caIdentifier'] as String).input(),
-      validTill: map['validTill'] == null ? null : (map['validTill'] as String).input(),
+      caIdentifier: map['caIdentifier'] == null ? null : (map['caIdentifier']! as String).input(),
+      validTill: map['validTill'] == null ? null : (map['validTill']! as String).input(),
     );
   }
 }

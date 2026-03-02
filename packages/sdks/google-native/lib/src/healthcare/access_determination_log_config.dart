@@ -22,7 +22,7 @@ class AccessDeterminationLogConfig {
 
   factory AccessDeterminationLogConfig.fromMap(Map<String, dynamic> map) {
     return AccessDeterminationLogConfig(
-      logLevel: map['logLevel'] == null ? null : (AccessDeterminationLogConfigLogLevel.fromValue(map['logLevel'] as String)).input(),
+      logLevel: map['logLevel'] == null ? null : (AccessDeterminationLogConfigLogLevel.fromValue(map['logLevel']! as String)).input(),
     );
   }
 }

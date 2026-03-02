@@ -11,12 +11,14 @@ class ExampleStack extends pulumi.Stack {
         bootDisk: gcp.compute
             .InstanceBootDisk(
               initializeParams: gcp.compute.InstanceBootDiskInitializeParams(
-                image: "debian-cloud/debian-9",
-              ),
+                image: "debian-cloud/debian-9".output(),
+              ).output(),
             )
             .output(),
         networkInterfaces: [
-          gcp.compute.InstanceNetworkInterface(network: "default"),
+          gcp.compute.InstanceNetworkInterface(
+            network: "default".output(),
+          ),
         ].output(),
       ),
     );

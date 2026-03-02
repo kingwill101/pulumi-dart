@@ -28,8 +28,8 @@ class StatelessRulesAndCustomActionsResponse {
 
   factory StatelessRulesAndCustomActionsResponse.fromMap(Map<String, dynamic> map) {
     return StatelessRulesAndCustomActionsResponse(
-      customActions: map['customActions'] == null ? null : (pulumi.Input.decodeList<CustomActionResponse>(map['customActions'], (value) => CustomActionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      statelessRules: map['statelessRules'] == null ? null : (pulumi.Input.decodeList<StatelessRuleResponse>(map['statelessRules'], (value) => StatelessRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customActions: map['customActions'] == null ? null : (pulumi.Input.decodeList<CustomActionResponse>(map['customActions']!, (value) => CustomActionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      statelessRules: map['statelessRules'] == null ? null : (pulumi.Input.decodeList<StatelessRuleResponse>(map['statelessRules']!, (value) => StatelessRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

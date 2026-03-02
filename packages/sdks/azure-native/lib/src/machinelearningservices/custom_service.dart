@@ -51,12 +51,12 @@ class CustomService {
 
   factory CustomService.fromMap(Map<String, dynamic> map) {
     return CustomService(
-      docker: map['docker'] == null ? null : (Docker.fromMap((map['docker'] as Map).cast<String, dynamic>())).input(),
-      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<Endpoint>(map['endpoints'], (value) => Endpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeMapValues<EnvironmentVariable>(map['environmentVariables'], (value) => EnvironmentVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      image: map['image'] == null ? null : (Image.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<VolumeDefinition>(map['volumes'], (value) => VolumeDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      docker: map['docker'] == null ? null : (Docker.fromMap((map['docker']! as Map).cast<String, dynamic>())).input(),
+      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<Endpoint>(map['endpoints']!, (value) => Endpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeMapValues<EnvironmentVariable>(map['environmentVariables']!, (value) => EnvironmentVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      image: map['image'] == null ? null : (Image.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<VolumeDefinition>(map['volumes']!, (value) => VolumeDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

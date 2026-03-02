@@ -31,9 +31,9 @@ class NotificationRecipientUserState {
 
   factory NotificationRecipientUserState.fromMap(Map<String, dynamic> map) {
     return NotificationRecipientUserState(
-      apiManagementId: map['apiManagementId'] == null ? null : (map['apiManagementId'] as String).input(),
-      notificationType: map['notificationType'] == null ? null : (map['notificationType'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      apiManagementId: map['apiManagementId'] == null ? null : (map['apiManagementId']! as String).input(),
+      notificationType: map['notificationType'] == null ? null : (map['notificationType']! as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
     );
   }
 }

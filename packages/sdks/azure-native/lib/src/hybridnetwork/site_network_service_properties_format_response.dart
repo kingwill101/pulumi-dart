@@ -79,18 +79,18 @@ class SiteNetworkServicePropertiesFormatResponse {
 
   factory SiteNetworkServicePropertiesFormatResponse.fromMap(Map<String, dynamic> map) {
     return SiteNetworkServicePropertiesFormatResponse(
-      desiredStateConfigurationGroupValueReferences: map['desiredStateConfigurationGroupValueReferences'] == null ? null : (pulumi.Input.decodeMapValues<ReferencedResourceResponse>(map['desiredStateConfigurationGroupValueReferences'], (value) => ReferencedResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      desiredStateConfigurationGroupValueReferences: map['desiredStateConfigurationGroupValueReferences'] == null ? null : (pulumi.Input.decodeMapValues<ReferencedResourceResponse>(map['desiredStateConfigurationGroupValueReferences']!, (value) => ReferencedResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       lastStateConfigurationGroupValueReferences: (pulumi.Input.decodeMapValues<ReferencedResourceResponse>(map['lastStateConfigurationGroupValueReferences'], (value) => ReferencedResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       lastStateNetworkServiceDesignVersionName: (map['lastStateNetworkServiceDesignVersionName'] as String).input(),
-      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : (ManagedResourceGroupConfigurationResponse.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>())).input(),
+      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : (ManagedResourceGroupConfigurationResponse.fromMap((map['managedResourceGroupConfiguration']! as Map).cast<String, dynamic>())).input(),
       networkServiceDesignGroupName: (map['networkServiceDesignGroupName'] as String).input(),
       networkServiceDesignVersionName: (map['networkServiceDesignVersionName'] as String).input(),
       networkServiceDesignVersionOfferingLocation: (map['networkServiceDesignVersionOfferingLocation'] as String).input(),
-      networkServiceDesignVersionResourceReference: map['networkServiceDesignVersionResourceReference'] == null ? null : (OpenDeploymentResourceReferenceResponse.fromMap((map['networkServiceDesignVersionResourceReference'] as Map).cast<String, dynamic>())).input(),
+      networkServiceDesignVersionResourceReference: map['networkServiceDesignVersionResourceReference'] == null ? null : (OpenDeploymentResourceReferenceResponse.fromMap((map['networkServiceDesignVersionResourceReference']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       publisherName: (map['publisherName'] as String).input(),
       publisherScope: (map['publisherScope'] as String).input(),
-      siteReference: map['siteReference'] == null ? null : (ReferencedResourceResponse.fromMap((map['siteReference'] as Map).cast<String, dynamic>())).input(),
+      siteReference: map['siteReference'] == null ? null : (ReferencedResourceResponse.fromMap((map['siteReference']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

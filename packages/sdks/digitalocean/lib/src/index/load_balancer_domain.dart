@@ -45,12 +45,12 @@ class LoadBalancerDomain {
 
   factory LoadBalancerDomain.fromMap(Map<String, dynamic> map) {
     return LoadBalancerDomain(
-      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
-      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
-      isManaged: map['isManaged'] == null ? null : (map['isManaged'] as bool).input(),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as String).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName']! as String).input(),
+      isManaged: map['isManaged'] == null ? null : (map['isManaged']! as bool).input(),
       name: (map['name'] as String).input(),
-      sslValidationErrorReasons: map['sslValidationErrorReasons'] == null ? null : ((map['sslValidationErrorReasons'] as List).cast<String>()).input(),
-      verificationErrorReasons: map['verificationErrorReasons'] == null ? null : ((map['verificationErrorReasons'] as List).cast<String>()).input(),
+      sslValidationErrorReasons: map['sslValidationErrorReasons'] == null ? null : ((map['sslValidationErrorReasons']! as List).cast<String>()).input(),
+      verificationErrorReasons: map['verificationErrorReasons'] == null ? null : ((map['verificationErrorReasons']! as List).cast<String>()).input(),
     );
   }
 }

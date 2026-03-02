@@ -41,10 +41,10 @@ class GetImageArgs {
 
   factory GetImageArgs.fromMap(Map<String, dynamic> map) {
     return GetImageArgs(
-      id: map['id'] == null ? null : (map['id'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      slug: map['slug'] == null ? null : (map['slug'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      slug: map['slug'] == null ? null : (map['slug']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

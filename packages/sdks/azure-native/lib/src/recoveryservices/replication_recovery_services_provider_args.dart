@@ -47,7 +47,7 @@ class ReplicationRecoveryServicesProviderArgs {
     return ReplicationRecoveryServicesProviderArgs(
       fabricName: (map['fabricName'] as String).input(),
       properties: (AddRecoveryServicesProviderInputProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
+      providerName: map['providerName'] == null ? null : (map['providerName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
     );

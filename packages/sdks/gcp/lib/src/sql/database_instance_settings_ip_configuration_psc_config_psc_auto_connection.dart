@@ -41,10 +41,10 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection {
   factory DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection(
       consumerNetwork: (map['consumerNetwork'] as String).input(),
-      consumerNetworkStatus: map['consumerNetworkStatus'] == null ? null : (map['consumerNetworkStatus'] as String).input(),
-      consumerServiceProjectId: map['consumerServiceProjectId'] == null ? null : (map['consumerServiceProjectId'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      consumerNetworkStatus: map['consumerNetworkStatus'] == null ? null : (map['consumerNetworkStatus']! as String).input(),
+      consumerServiceProjectId: map['consumerServiceProjectId'] == null ? null : (map['consumerServiceProjectId']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

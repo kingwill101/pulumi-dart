@@ -36,9 +36,9 @@ class EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
   factory EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig(
       enabled: (map['enabled'] as bool).input(),
-      snapshotCreationSchedule: map['snapshotCreationSchedule'] == null ? null : (map['snapshotCreationSchedule'] as String).input(),
-      snapshotLocation: map['snapshotLocation'] == null ? null : (map['snapshotLocation'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      snapshotCreationSchedule: map['snapshotCreationSchedule'] == null ? null : (map['snapshotCreationSchedule']! as String).input(),
+      snapshotLocation: map['snapshotLocation'] == null ? null : (map['snapshotLocation']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

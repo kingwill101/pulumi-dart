@@ -37,10 +37,10 @@ class APIVersionsPatch {
 
   factory APIVersionsPatch.fromMap(Map<String, dynamic> map) {
     return APIVersionsPatch(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      serverAddressByClientCIDRs: map['serverAddressByClientCIDRs'] == null ? null : (pulumi.Input.decodeList<ServerAddressByClientCIDRPatch>(map['serverAddressByClientCIDRs'], (value) => ServerAddressByClientCIDRPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      versions: map['versions'] == null ? null : ((map['versions'] as List).cast<String>()).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      serverAddressByClientCIDRs: map['serverAddressByClientCIDRs'] == null ? null : (pulumi.Input.decodeList<ServerAddressByClientCIDRPatch>(map['serverAddressByClientCIDRs']!, (value) => ServerAddressByClientCIDRPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      versions: map['versions'] == null ? null : ((map['versions']! as List).cast<String>()).input(),
     );
   }
 }

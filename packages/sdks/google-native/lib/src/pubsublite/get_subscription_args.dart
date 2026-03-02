@@ -32,7 +32,7 @@ class GetSubscriptionArgs {
   factory GetSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       subscriptionId: (map['subscriptionId'] as String).input(),
     );
   }

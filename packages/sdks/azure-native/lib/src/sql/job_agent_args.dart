@@ -62,13 +62,13 @@ class JobAgentArgs {
   factory JobAgentArgs.fromMap(Map<String, dynamic> map) {
     return JobAgentArgs(
       databaseId: (map['databaseId'] as String).input(),
-      identity: map['identity'] == null ? null : (JobAgentIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      jobAgentName: map['jobAgentName'] == null ? null : (map['jobAgentName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      identity: map['identity'] == null ? null : (JobAgentIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      jobAgentName: map['jobAgentName'] == null ? null : (map['jobAgentName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -44,10 +44,10 @@ class TrustStoreRevocationArgs {
 
   factory TrustStoreRevocationArgs.fromMap(Map<String, dynamic> map) {
     return TrustStoreRevocationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       revocationsS3Bucket: (map['revocationsS3Bucket'] as String).input(),
       revocationsS3Key: (map['revocationsS3Key'] as String).input(),
-      revocationsS3ObjectVersion: map['revocationsS3ObjectVersion'] == null ? null : (map['revocationsS3ObjectVersion'] as String).input(),
+      revocationsS3ObjectVersion: map['revocationsS3ObjectVersion'] == null ? null : ((map['revocationsS3ObjectVersion'] as String).input()).input(),
       trustStoreArn: (map['trustStoreArn'] as String).input(),
     );
   }

@@ -41,10 +41,10 @@ class DomainEbsOptions {
   factory DomainEbsOptions.fromMap(Map<String, dynamic> map) {
     return DomainEbsOptions(
       ebsEnabled: (map['ebsEnabled'] as bool).input(),
-      iops: map['iops'] == null ? null : (map['iops'] as int).input(),
-      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
-      volumeSize: map['volumeSize'] == null ? null : (map['volumeSize'] as int).input(),
-      volumeType: map['volumeType'] == null ? null : (map['volumeType'] as String).input(),
+      iops: map['iops'] == null ? null : ((map['iops'] as int).input()).input(),
+      throughput: map['throughput'] == null ? null : ((map['throughput'] as int).input()).input(),
+      volumeSize: map['volumeSize'] == null ? null : ((map['volumeSize'] as int).input()).input(),
+      volumeType: map['volumeType'] == null ? null : ((map['volumeType'] as String).input()).input(),
     );
   }
 }

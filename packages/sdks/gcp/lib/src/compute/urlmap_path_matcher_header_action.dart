@@ -41,10 +41,10 @@ class URLMapPathMatcherHeaderAction {
 
   factory URLMapPathMatcherHeaderAction.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherHeaderAction(
-      requestHeadersToAdds: map['requestHeadersToAdds'] == null ? null : (pulumi.Input.decodeList<URLMapPathMatcherHeaderActionRequestHeadersToAdd>(map['requestHeadersToAdds'], (value) => URLMapPathMatcherHeaderActionRequestHeadersToAdd.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requestHeadersToRemoves: map['requestHeadersToRemoves'] == null ? null : ((map['requestHeadersToRemoves'] as List).cast<String>()).input(),
-      responseHeadersToAdds: map['responseHeadersToAdds'] == null ? null : (pulumi.Input.decodeList<URLMapPathMatcherHeaderActionResponseHeadersToAdd>(map['responseHeadersToAdds'], (value) => URLMapPathMatcherHeaderActionResponseHeadersToAdd.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      responseHeadersToRemoves: map['responseHeadersToRemoves'] == null ? null : ((map['responseHeadersToRemoves'] as List).cast<String>()).input(),
+      requestHeadersToAdds: map['requestHeadersToAdds'] == null ? null : (pulumi.Input.decodeList<URLMapPathMatcherHeaderActionRequestHeadersToAdd>(map['requestHeadersToAdds']!, (value) => URLMapPathMatcherHeaderActionRequestHeadersToAdd.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestHeadersToRemoves: map['requestHeadersToRemoves'] == null ? null : ((map['requestHeadersToRemoves']! as List).cast<String>()).input(),
+      responseHeadersToAdds: map['responseHeadersToAdds'] == null ? null : (pulumi.Input.decodeList<URLMapPathMatcherHeaderActionResponseHeadersToAdd>(map['responseHeadersToAdds']!, (value) => URLMapPathMatcherHeaderActionResponseHeadersToAdd.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responseHeadersToRemoves: map['responseHeadersToRemoves'] == null ? null : ((map['responseHeadersToRemoves']! as List).cast<String>()).input(),
     );
   }
 }

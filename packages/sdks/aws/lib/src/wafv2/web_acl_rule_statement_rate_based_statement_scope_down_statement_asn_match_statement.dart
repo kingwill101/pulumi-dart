@@ -27,7 +27,7 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementAsnMatchStatement {
   factory WebAclRuleStatementRateBasedStatementScopeDownStatementAsnMatchStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatementScopeDownStatementAsnMatchStatement(
       asnLists: ((map['asnLists'] as List).cast<int>()).input(),
-      forwardedIpConfig: map['forwardedIpConfig'] == null ? null : (WebAclRuleStatementRateBasedStatementScopeDownStatementAsnMatchStatementForwardedIpConfig.fromMap((map['forwardedIpConfig'] as Map).cast<String, dynamic>())).input(),
+      forwardedIpConfig: map['forwardedIpConfig'] == null ? null : ((WebAclRuleStatementRateBasedStatementScopeDownStatementAsnMatchStatementForwardedIpConfig.fromMap((map['forwardedIpConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

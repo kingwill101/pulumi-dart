@@ -54,11 +54,11 @@ class RouteArgs {
 
   factory RouteArgs.fromMap(Map<String, dynamic> map) {
     return RouteArgs(
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
       enabled: (map['enabled'] as bool).input(),
       endpointNames: (map['endpointNames'] as String).input(),
       iothubName: (map['iothubName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       source: (map['source'] as String).input(),
     );

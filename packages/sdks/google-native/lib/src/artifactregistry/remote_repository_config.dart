@@ -63,14 +63,14 @@ class RemoteRepositoryConfig {
 
   factory RemoteRepositoryConfig.fromMap(Map<String, dynamic> map) {
     return RemoteRepositoryConfig(
-      aptRepository: map['aptRepository'] == null ? null : (AptRepository.fromMap((map['aptRepository'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dockerRepository: map['dockerRepository'] == null ? null : (DockerRepository.fromMap((map['dockerRepository'] as Map).cast<String, dynamic>())).input(),
-      mavenRepository: map['mavenRepository'] == null ? null : (MavenRepository.fromMap((map['mavenRepository'] as Map).cast<String, dynamic>())).input(),
-      npmRepository: map['npmRepository'] == null ? null : (NpmRepository.fromMap((map['npmRepository'] as Map).cast<String, dynamic>())).input(),
-      pythonRepository: map['pythonRepository'] == null ? null : (PythonRepository.fromMap((map['pythonRepository'] as Map).cast<String, dynamic>())).input(),
-      upstreamCredentials: map['upstreamCredentials'] == null ? null : (UpstreamCredentials.fromMap((map['upstreamCredentials'] as Map).cast<String, dynamic>())).input(),
-      yumRepository: map['yumRepository'] == null ? null : (YumRepository.fromMap((map['yumRepository'] as Map).cast<String, dynamic>())).input(),
+      aptRepository: map['aptRepository'] == null ? null : (AptRepository.fromMap((map['aptRepository']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dockerRepository: map['dockerRepository'] == null ? null : (DockerRepository.fromMap((map['dockerRepository']! as Map).cast<String, dynamic>())).input(),
+      mavenRepository: map['mavenRepository'] == null ? null : (MavenRepository.fromMap((map['mavenRepository']! as Map).cast<String, dynamic>())).input(),
+      npmRepository: map['npmRepository'] == null ? null : (NpmRepository.fromMap((map['npmRepository']! as Map).cast<String, dynamic>())).input(),
+      pythonRepository: map['pythonRepository'] == null ? null : (PythonRepository.fromMap((map['pythonRepository']! as Map).cast<String, dynamic>())).input(),
+      upstreamCredentials: map['upstreamCredentials'] == null ? null : (UpstreamCredentials.fromMap((map['upstreamCredentials']! as Map).cast<String, dynamic>())).input(),
+      yumRepository: map['yumRepository'] == null ? null : (YumRepository.fromMap((map['yumRepository']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig
 
   factory ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig.fromMap(Map<String, dynamic> map) {
     return ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig(
-      dataprocCluster: map['dataprocCluster'] == null ? null : (map['dataprocCluster'] as String).input(),
+      dataprocCluster: map['dataprocCluster'] == null ? null : (map['dataprocCluster']! as String).input(),
     );
   }
 }

@@ -45,12 +45,12 @@ class NetworkSubnetState {
 
   factory NetworkSubnetState.fromMap(Map<String, dynamic> map) {
     return NetworkSubnetState(
-      gateway: map['gateway'] == null ? null : (map['gateway'] as String).input(),
-      ipRange: map['ipRange'] == null ? null : (map['ipRange'] as String).input(),
-      networkId: map['networkId'] == null ? null : (map['networkId'] as int).input(),
-      networkZone: map['networkZone'] == null ? null : (map['networkZone'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as int).input(),
+      gateway: map['gateway'] == null ? null : (map['gateway']! as String).input(),
+      ipRange: map['ipRange'] == null ? null : (map['ipRange']! as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId']! as int).input(),
+      networkZone: map['networkZone'] == null ? null : (map['networkZone']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as int).input(),
     );
   }
 }

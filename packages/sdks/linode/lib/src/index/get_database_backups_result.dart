@@ -54,11 +54,11 @@ class GetDatabaseBackupsResult {
       backups: pulumi.Input.decodeList<GetDatabaseBackupsBackup>(map['backups'], (value) => GetDatabaseBackupsBackup.fromMap((value as Map).cast<String, dynamic>())),
       databaseId: map['databaseId'] as int,
       databaseType: map['databaseType'] as String,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetDatabaseBackupsFilter>(map['filters'], (value) => GetDatabaseBackupsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetDatabaseBackupsFilter>(map['filters']!, (value) => GetDatabaseBackupsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as int,
-      latest: map['latest'] == null ? null : map['latest'] as bool,
-      order: map['order'] == null ? null : map['order'] as String,
-      orderBy: map['orderBy'] == null ? null : map['orderBy'] as String,
+      latest: map['latest'] == null ? null : map['latest']! as bool,
+      order: map['order'] == null ? null : map['order']! as String,
+      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
     );
   }
 }

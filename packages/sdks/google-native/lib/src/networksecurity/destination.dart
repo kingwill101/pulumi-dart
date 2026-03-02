@@ -38,8 +38,8 @@ class Destination {
   factory Destination.fromMap(Map<String, dynamic> map) {
     return Destination(
       hosts: ((map['hosts'] as List).cast<String>()).input(),
-      httpHeaderMatch: map['httpHeaderMatch'] == null ? null : (HttpHeaderMatch.fromMap((map['httpHeaderMatch'] as Map).cast<String, dynamic>())).input(),
-      methods: map['methods'] == null ? null : ((map['methods'] as List).cast<String>()).input(),
+      httpHeaderMatch: map['httpHeaderMatch'] == null ? null : (HttpHeaderMatch.fromMap((map['httpHeaderMatch']! as Map).cast<String, dynamic>())).input(),
+      methods: map['methods'] == null ? null : ((map['methods']! as List).cast<String>()).input(),
       ports: ((map['ports'] as List).cast<int>()).input(),
     );
   }

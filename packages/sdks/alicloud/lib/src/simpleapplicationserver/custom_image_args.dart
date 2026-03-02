@@ -47,9 +47,9 @@ class CustomImageArgs {
   factory CustomImageArgs.fromMap(Map<String, dynamic> map) {
     return CustomImageArgs(
       customImageName: (map['customImageName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       systemSnapshotId: (map['systemSnapshotId'] as String).input(),
     );
   }

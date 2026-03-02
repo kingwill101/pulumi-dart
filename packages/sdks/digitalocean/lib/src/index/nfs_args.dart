@@ -48,11 +48,11 @@ class NfsArgs {
 
   factory NfsArgs.fromMap(Map<String, dynamic> map) {
     return NfsArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      performanceTier: map['performanceTier'] == null ? null : (map['performanceTier'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      performanceTier: map['performanceTier'] == null ? null : (map['performanceTier']! as String).input(),
       region: (map['region'] as String).input(),
       size: (map['size'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

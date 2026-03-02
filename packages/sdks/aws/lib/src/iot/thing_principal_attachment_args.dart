@@ -40,9 +40,9 @@ class ThingPrincipalAttachmentArgs {
   factory ThingPrincipalAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ThingPrincipalAttachmentArgs(
       principal: (map['principal'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       thing: (map['thing'] as String).input(),
-      thingPrincipalType: map['thingPrincipalType'] == null ? null : (map['thingPrincipalType'] as String).input(),
+      thingPrincipalType: map['thingPrincipalType'] == null ? null : ((map['thingPrincipalType'] as String).input()).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class SequencerActionResponse {
 
   factory SequencerActionResponse.fromMap(Map<String, dynamic> map) {
     return SequencerActionResponse(
-      actionId: map['actionId'] == null ? null : (map['actionId'] as String).input(),
-      result: map['result'] == null ? null : (map['result'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      actionId: map['actionId'] == null ? null : (map['actionId']! as String).input(),
+      result: map['result'] == null ? null : (map['result']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

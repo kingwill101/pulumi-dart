@@ -49,11 +49,11 @@ class MaintenanceWindow {
   factory MaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindow(
       durationHours: (map['durationHours'] as int).input(),
-      notAllowedDates: map['notAllowedDates'] == null ? null : (pulumi.Input.decodeList<DateSpan>(map['notAllowedDates'], (value) => DateSpan.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notAllowedDates: map['notAllowedDates'] == null ? null : (pulumi.Input.decodeList<DateSpan>(map['notAllowedDates']!, (value) => DateSpan.fromMap((value as Map).cast<String, dynamic>()))).input(),
       schedule: (Schedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
+      startDate: map['startDate'] == null ? null : (map['startDate']! as String).input(),
       startTime: (map['startTime'] as String).input(),
-      utcOffset: map['utcOffset'] == null ? null : (map['utcOffset'] as String).input(),
+      utcOffset: map['utcOffset'] == null ? null : (map['utcOffset']! as String).input(),
     );
   }
 }

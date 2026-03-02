@@ -31,7 +31,7 @@ class GetWorkgroupEndpointVpcEndpoint {
 
   factory GetWorkgroupEndpointVpcEndpoint.fromMap(Map<String, dynamic> map) {
     return GetWorkgroupEndpointVpcEndpoint(
-      networkInterfaces: (pulumi.Input.decodeList<GetWorkgroupEndpointVpcEndpointNetworkInterface>(map['networkInterfaces'], (value) => GetWorkgroupEndpointVpcEndpointNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkInterfaces: (pulumi.Input.decodeList<GetWorkgroupEndpointVpcEndpointNetworkInterface>(map['networkInterfaces']!, (value) => GetWorkgroupEndpointVpcEndpointNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
       vpcEndpointId: (map['vpcEndpointId'] as String).input(),
       vpcId: (map['vpcId'] as String).input(),
     );

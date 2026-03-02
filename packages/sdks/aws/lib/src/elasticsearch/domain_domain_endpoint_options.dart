@@ -40,11 +40,11 @@ class DomainDomainEndpointOptions {
 
   factory DomainDomainEndpointOptions.fromMap(Map<String, dynamic> map) {
     return DomainDomainEndpointOptions(
-      customEndpoint: map['customEndpoint'] == null ? null : (map['customEndpoint'] as String).input(),
-      customEndpointCertificateArn: map['customEndpointCertificateArn'] == null ? null : (map['customEndpointCertificateArn'] as String).input(),
-      customEndpointEnabled: map['customEndpointEnabled'] == null ? null : (map['customEndpointEnabled'] as bool).input(),
-      enforceHttps: map['enforceHttps'] == null ? null : (map['enforceHttps'] as bool).input(),
-      tlsSecurityPolicy: map['tlsSecurityPolicy'] == null ? null : (map['tlsSecurityPolicy'] as String).input(),
+      customEndpoint: map['customEndpoint'] == null ? null : ((map['customEndpoint'] as String).input()).input(),
+      customEndpointCertificateArn: map['customEndpointCertificateArn'] == null ? null : ((map['customEndpointCertificateArn'] as String).input()).input(),
+      customEndpointEnabled: map['customEndpointEnabled'] == null ? null : ((map['customEndpointEnabled'] as bool).input()).input(),
+      enforceHttps: map['enforceHttps'] == null ? null : ((map['enforceHttps'] as bool).input()).input(),
+      tlsSecurityPolicy: map['tlsSecurityPolicy'] == null ? null : ((map['tlsSecurityPolicy'] as String).input()).input(),
     );
   }
 }

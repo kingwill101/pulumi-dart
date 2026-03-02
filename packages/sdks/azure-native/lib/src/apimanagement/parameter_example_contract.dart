@@ -36,10 +36,10 @@ class ParameterExampleContract {
 
   factory ParameterExampleContract.fromMap(Map<String, dynamic> map) {
     return ParameterExampleContract(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      externalValue: map['externalValue'] == null ? null : (map['externalValue'] as String).input(),
-      summary: map['summary'] == null ? null : (map['summary'] as String).input(),
-      value: map['value'] == null ? null : (map['value']).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      externalValue: map['externalValue'] == null ? null : (map['externalValue']! as String).input(),
+      summary: map['summary'] == null ? null : (map['summary']! as String).input(),
+      value: map['value'] == null ? null : (map['value']!).input(),
     );
   }
 }

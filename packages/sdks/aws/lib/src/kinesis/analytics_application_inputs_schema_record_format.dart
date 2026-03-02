@@ -27,8 +27,8 @@ class AnalyticsApplicationInputsSchemaRecordFormat {
 
   factory AnalyticsApplicationInputsSchemaRecordFormat.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationInputsSchemaRecordFormat(
-      mappingParameters: map['mappingParameters'] == null ? null : (AnalyticsApplicationInputsSchemaRecordFormatMappingParameters.fromMap((map['mappingParameters'] as Map).cast<String, dynamic>())).input(),
-      recordFormatType: map['recordFormatType'] == null ? null : (map['recordFormatType'] as String).input(),
+      mappingParameters: map['mappingParameters'] == null ? null : ((AnalyticsApplicationInputsSchemaRecordFormatMappingParameters.fromMap((map['mappingParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      recordFormatType: map['recordFormatType'] == null ? null : ((map['recordFormatType'] as String).input()).input(),
     );
   }
 }

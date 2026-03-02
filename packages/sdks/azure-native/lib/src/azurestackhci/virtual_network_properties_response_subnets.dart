@@ -53,13 +53,13 @@ class VirtualNetworkPropertiesResponseSubnets {
 
   factory VirtualNetworkPropertiesResponseSubnets.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkPropertiesResponseSubnets(
-      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix'] as String).input(),
-      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes'] as List).cast<String>()).input(),
-      ipAllocationMethod: map['ipAllocationMethod'] == null ? null : (map['ipAllocationMethod'] as String).input(),
-      ipConfigurationReferences: map['ipConfigurationReferences'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkPropertiesResponseIpConfigurationReferences>(map['ipConfigurationReferences'], (value) => VirtualNetworkPropertiesResponseIpConfigurationReferences.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      routeTable: map['routeTable'] == null ? null : (VirtualNetworkPropertiesResponseRouteTable.fromMap((map['routeTable'] as Map).cast<String, dynamic>())).input(),
-      vlan: map['vlan'] == null ? null : (map['vlan'] as int).input(),
+      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix']! as String).input(),
+      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes']! as List).cast<String>()).input(),
+      ipAllocationMethod: map['ipAllocationMethod'] == null ? null : (map['ipAllocationMethod']! as String).input(),
+      ipConfigurationReferences: map['ipConfigurationReferences'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkPropertiesResponseIpConfigurationReferences>(map['ipConfigurationReferences']!, (value) => VirtualNetworkPropertiesResponseIpConfigurationReferences.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      routeTable: map['routeTable'] == null ? null : (VirtualNetworkPropertiesResponseRouteTable.fromMap((map['routeTable']! as Map).cast<String, dynamic>())).input(),
+      vlan: map['vlan'] == null ? null : (map['vlan']! as int).input(),
     );
   }
 }

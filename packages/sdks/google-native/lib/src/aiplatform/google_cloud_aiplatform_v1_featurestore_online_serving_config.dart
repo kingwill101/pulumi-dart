@@ -27,8 +27,8 @@ class GoogleCloudAiplatformV1FeaturestoreOnlineServingConfig {
 
   factory GoogleCloudAiplatformV1FeaturestoreOnlineServingConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1FeaturestoreOnlineServingConfig(
-      fixedNodeCount: map['fixedNodeCount'] == null ? null : (map['fixedNodeCount'] as int).input(),
-      scaling: map['scaling'] == null ? null : (GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigScaling.fromMap((map['scaling'] as Map).cast<String, dynamic>())).input(),
+      fixedNodeCount: map['fixedNodeCount'] == null ? null : (map['fixedNodeCount']! as int).input(),
+      scaling: map['scaling'] == null ? null : (GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigScaling.fromMap((map['scaling']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

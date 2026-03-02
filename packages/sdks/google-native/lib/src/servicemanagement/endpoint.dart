@@ -36,10 +36,10 @@ class Endpoint {
 
   factory Endpoint.fromMap(Map<String, dynamic> map) {
     return Endpoint(
-      aliases: map['aliases'] == null ? null : ((map['aliases'] as List).cast<String>()).input(),
-      allowCors: map['allowCors'] == null ? null : (map['allowCors'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      aliases: map['aliases'] == null ? null : ((map['aliases']! as List).cast<String>()).input(),
+      allowCors: map['allowCors'] == null ? null : (map['allowCors']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
     );
   }
 }

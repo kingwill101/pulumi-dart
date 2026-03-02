@@ -50,12 +50,12 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput {
 
   factory GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput(
-      currentPage: map['currentPage'] == null ? null : (GoogleCloudDialogflowCxV3beta1Page.fromMap((map['currentPage'] as Map).cast<String, dynamic>())).input(),
+      currentPage: map['currentPage'] == null ? null : (GoogleCloudDialogflowCxV3beta1Page.fromMap((map['currentPage']! as Map).cast<String, dynamic>())).input(),
       diagnosticInfo: ((map['diagnosticInfo'] as Map).cast<String, String>()).input(),
-      sessionParameters: map['sessionParameters'] == null ? null : ((map['sessionParameters'] as Map).cast<String, String>()).input(),
-      status: map['status'] == null ? null : (GoogleRpcStatusDialogflowV3beta1.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
-      textResponses: map['textResponses'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1ResponseMessageText>(map['textResponses'], (value) => GoogleCloudDialogflowCxV3beta1ResponseMessageText.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      triggeredIntent: map['triggeredIntent'] == null ? null : (GoogleCloudDialogflowCxV3beta1Intent.fromMap((map['triggeredIntent'] as Map).cast<String, dynamic>())).input(),
+      sessionParameters: map['sessionParameters'] == null ? null : ((map['sessionParameters']! as Map).cast<String, String>()).input(),
+      status: map['status'] == null ? null : (GoogleRpcStatusDialogflowV3beta1.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
+      textResponses: map['textResponses'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1ResponseMessageText>(map['textResponses']!, (value) => GoogleCloudDialogflowCxV3beta1ResponseMessageText.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      triggeredIntent: map['triggeredIntent'] == null ? null : (GoogleCloudDialogflowCxV3beta1Intent.fromMap((map['triggeredIntent']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

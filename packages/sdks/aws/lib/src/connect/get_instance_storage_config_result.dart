@@ -48,7 +48,7 @@ class GetInstanceStorageConfigResult {
       instanceId: map['instanceId'] as String,
       region: map['region'] as String,
       resourceType: map['resourceType'] as String,
-      storageConfigs: pulumi.Input.decodeList<GetInstanceStorageConfigStorageConfig>(map['storageConfigs'], (value) => GetInstanceStorageConfigStorageConfig.fromMap((value as Map).cast<String, dynamic>())),
+      storageConfigs: pulumi.Input.decodeList<GetInstanceStorageConfigStorageConfig>(map['storageConfigs']!, (value) => GetInstanceStorageConfigStorageConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

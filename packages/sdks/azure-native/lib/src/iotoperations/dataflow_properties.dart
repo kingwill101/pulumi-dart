@@ -27,7 +27,7 @@ class DataflowProperties {
 
   factory DataflowProperties.fromMap(Map<String, dynamic> map) {
     return DataflowProperties(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
       operations: (pulumi.Input.decodeList<DataflowOperation>(map['operations'], (value) => DataflowOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

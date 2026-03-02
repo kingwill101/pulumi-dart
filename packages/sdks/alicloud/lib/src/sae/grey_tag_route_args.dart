@@ -47,10 +47,10 @@ class GreyTagRouteArgs {
   factory GreyTagRouteArgs.fromMap(Map<String, dynamic> map) {
     return GreyTagRouteArgs(
       appId: (map['appId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dubboRules: map['dubboRules'] == null ? null : (pulumi.Input.decodeList<GreyTagRouteDubboRule>(map['dubboRules'], (value) => GreyTagRouteDubboRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dubboRules: map['dubboRules'] == null ? null : (pulumi.Input.decodeList<GreyTagRouteDubboRule>(map['dubboRules']!, (value) => GreyTagRouteDubboRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       greyTagRouteName: (map['greyTagRouteName'] as String).input(),
-      scRules: map['scRules'] == null ? null : (pulumi.Input.decodeList<GreyTagRouteScRule>(map['scRules'], (value) => GreyTagRouteScRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scRules: map['scRules'] == null ? null : (pulumi.Input.decodeList<GreyTagRouteScRule>(map['scRules']!, (value) => GreyTagRouteScRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

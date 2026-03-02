@@ -40,11 +40,11 @@ class JobRecurrenceResponse {
 
   factory JobRecurrenceResponse.fromMap(Map<String, dynamic> map) {
     return JobRecurrenceResponse(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      schedule: map['schedule'] == null ? null : (JobRecurrenceScheduleResponse.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency']! as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      schedule: map['schedule'] == null ? null : (JobRecurrenceScheduleResponse.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

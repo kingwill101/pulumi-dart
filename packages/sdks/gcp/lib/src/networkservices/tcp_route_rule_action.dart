@@ -33,9 +33,9 @@ class TcpRouteRuleAction {
 
   factory TcpRouteRuleAction.fromMap(Map<String, dynamic> map) {
     return TcpRouteRuleAction(
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<TcpRouteRuleActionDestination>(map['destinations'], (value) => TcpRouteRuleActionDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      idleTimeout: map['idleTimeout'] == null ? null : (map['idleTimeout'] as String).input(),
-      originalDestination: map['originalDestination'] == null ? null : (map['originalDestination'] as bool).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<TcpRouteRuleActionDestination>(map['destinations']!, (value) => TcpRouteRuleActionDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      idleTimeout: map['idleTimeout'] == null ? null : (map['idleTimeout']! as String).input(),
+      originalDestination: map['originalDestination'] == null ? null : (map['originalDestination']! as bool).input(),
     );
   }
 }

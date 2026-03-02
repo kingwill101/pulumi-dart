@@ -27,7 +27,7 @@ class AzureFirstPartyManagedCertificateParameters {
 
   factory AzureFirstPartyManagedCertificateParameters.fromMap(Map<String, dynamic> map) {
     return AzureFirstPartyManagedCertificateParameters(
-      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : ((map['subjectAlternativeNames'] as List).cast<String>()).input(),
+      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : ((map['subjectAlternativeNames']! as List).cast<String>()).input(),
       type: (map['type'] as String).input(),
     );
   }

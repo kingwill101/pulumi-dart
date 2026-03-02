@@ -27,7 +27,7 @@ class GetDeviceCloudidentityV1beta1Args {
 
   factory GetDeviceCloudidentityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetDeviceCloudidentityV1beta1Args(
-      customer: map['customer'] == null ? null : (map['customer'] as String).input(),
+      customer: map['customer'] == null ? null : (map['customer']! as String).input(),
       deviceId: (map['deviceId'] as String).input(),
     );
   }

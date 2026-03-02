@@ -43,11 +43,11 @@ class OutputType {
 
   factory OutputType.fromMap(Map<String, dynamic> map) {
     return OutputType(
-      datasource: map['datasource'] == null ? null : (AzureDataLakeStoreOutputDataSource.fromMap((map['datasource'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      serialization: map['serialization'] == null ? null : (AvroSerialization.fromMap((map['serialization'] as Map).cast<String, dynamic>())).input(),
-      sizeWindow: map['sizeWindow'] == null ? null : (map['sizeWindow'] as int).input(),
-      timeWindow: map['timeWindow'] == null ? null : (map['timeWindow'] as String).input(),
+      datasource: map['datasource'] == null ? null : (AzureDataLakeStoreOutputDataSource.fromMap((map['datasource']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      serialization: map['serialization'] == null ? null : (AvroSerialization.fromMap((map['serialization']! as Map).cast<String, dynamic>())).input(),
+      sizeWindow: map['sizeWindow'] == null ? null : (map['sizeWindow']! as int).input(),
+      timeWindow: map['timeWindow'] == null ? null : (map['timeWindow']! as String).input(),
     );
   }
 }

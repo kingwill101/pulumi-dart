@@ -30,9 +30,9 @@ class SnapshotBackupAdditionalDetailsResponse {
 
   factory SnapshotBackupAdditionalDetailsResponse.fromMap(Map<String, dynamic> map) {
     return SnapshotBackupAdditionalDetailsResponse(
-      instantRPDetails: map['instantRPDetails'] == null ? null : (map['instantRPDetails'] as String).input(),
-      instantRpRetentionRangeInDays: map['instantRpRetentionRangeInDays'] == null ? null : (map['instantRpRetentionRangeInDays'] as int).input(),
-      userAssignedManagedIdentityDetails: map['userAssignedManagedIdentityDetails'] == null ? null : (UserAssignedManagedIdentityDetailsResponse.fromMap((map['userAssignedManagedIdentityDetails'] as Map).cast<String, dynamic>())).input(),
+      instantRPDetails: map['instantRPDetails'] == null ? null : (map['instantRPDetails']! as String).input(),
+      instantRpRetentionRangeInDays: map['instantRpRetentionRangeInDays'] == null ? null : (map['instantRpRetentionRangeInDays']! as int).input(),
+      userAssignedManagedIdentityDetails: map['userAssignedManagedIdentityDetails'] == null ? null : (UserAssignedManagedIdentityDetailsResponse.fromMap((map['userAssignedManagedIdentityDetails']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

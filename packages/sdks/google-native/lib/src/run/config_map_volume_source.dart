@@ -37,10 +37,10 @@ class ConfigMapVolumeSource {
 
   factory ConfigMapVolumeSource.fromMap(Map<String, dynamic> map) {
     return ConfigMapVolumeSource(
-      defaultMode: map['defaultMode'] == null ? null : (map['defaultMode'] as int).input(),
-      items: map['items'] == null ? null : (pulumi.Input.decodeList<KeyToPath>(map['items'], (value) => KeyToPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      optional: map['optional'] == null ? null : (map['optional'] as bool).input(),
+      defaultMode: map['defaultMode'] == null ? null : (map['defaultMode']! as int).input(),
+      items: map['items'] == null ? null : (pulumi.Input.decodeList<KeyToPath>(map['items']!, (value) => KeyToPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      optional: map['optional'] == null ? null : (map['optional']! as bool).input(),
     );
   }
 }

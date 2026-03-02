@@ -34,9 +34,9 @@ class BucketOptions {
 
   factory BucketOptions.fromMap(Map<String, dynamic> map) {
     return BucketOptions(
-      explicitBuckets: map['explicitBuckets'] == null ? null : (Explicit.fromMap((map['explicitBuckets'] as Map).cast<String, dynamic>())).input(),
-      exponentialBuckets: map['exponentialBuckets'] == null ? null : (Exponential.fromMap((map['exponentialBuckets'] as Map).cast<String, dynamic>())).input(),
-      linearBuckets: map['linearBuckets'] == null ? null : (Linear.fromMap((map['linearBuckets'] as Map).cast<String, dynamic>())).input(),
+      explicitBuckets: map['explicitBuckets'] == null ? null : (Explicit.fromMap((map['explicitBuckets']! as Map).cast<String, dynamic>())).input(),
+      exponentialBuckets: map['exponentialBuckets'] == null ? null : (Exponential.fromMap((map['exponentialBuckets']! as Map).cast<String, dynamic>())).input(),
+      linearBuckets: map['linearBuckets'] == null ? null : (Linear.fromMap((map['linearBuckets']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

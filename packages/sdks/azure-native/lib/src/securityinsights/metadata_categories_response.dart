@@ -26,8 +26,8 @@ class MetadataCategoriesResponse {
 
   factory MetadataCategoriesResponse.fromMap(Map<String, dynamic> map) {
     return MetadataCategoriesResponse(
-      domains: map['domains'] == null ? null : ((map['domains'] as List).cast<String>()).input(),
-      verticals: map['verticals'] == null ? null : ((map['verticals'] as List).cast<String>()).input(),
+      domains: map['domains'] == null ? null : ((map['domains']! as List).cast<String>()).input(),
+      verticals: map['verticals'] == null ? null : ((map['verticals']! as List).cast<String>()).input(),
     );
   }
 }

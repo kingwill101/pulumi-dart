@@ -64,15 +64,15 @@ class ResourcePolicyComputeV1Args {
 
   factory ResourcePolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyComputeV1Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      diskConsistencyGroupPolicy: map['diskConsistencyGroupPolicy'] == null ? null : ((map['diskConsistencyGroupPolicy'] as Map).cast<String, dynamic>()).input(),
-      groupPlacementPolicy: map['groupPlacementPolicy'] == null ? null : (ResourcePolicyGroupPlacementPolicyComputeV1.fromMap((map['groupPlacementPolicy'] as Map).cast<String, dynamic>())).input(),
-      instanceSchedulePolicy: map['instanceSchedulePolicy'] == null ? null : (ResourcePolicyInstanceSchedulePolicyComputeV1.fromMap((map['instanceSchedulePolicy'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      diskConsistencyGroupPolicy: map['diskConsistencyGroupPolicy'] == null ? null : ((map['diskConsistencyGroupPolicy']! as Map).cast<String, dynamic>()).input(),
+      groupPlacementPolicy: map['groupPlacementPolicy'] == null ? null : (ResourcePolicyGroupPlacementPolicyComputeV1.fromMap((map['groupPlacementPolicy']! as Map).cast<String, dynamic>())).input(),
+      instanceSchedulePolicy: map['instanceSchedulePolicy'] == null ? null : (ResourcePolicyInstanceSchedulePolicyComputeV1.fromMap((map['instanceSchedulePolicy']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      snapshotSchedulePolicy: map['snapshotSchedulePolicy'] == null ? null : (ResourcePolicySnapshotSchedulePolicyComputeV1.fromMap((map['snapshotSchedulePolicy'] as Map).cast<String, dynamic>())).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      snapshotSchedulePolicy: map['snapshotSchedulePolicy'] == null ? null : (ResourcePolicySnapshotSchedulePolicyComputeV1.fromMap((map['snapshotSchedulePolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

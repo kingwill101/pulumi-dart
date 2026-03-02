@@ -49,12 +49,12 @@ class TemplateArgs {
 
   factory TemplateArgs.fromMap(Map<String, dynamic> map) {
     return TemplateArgs(
-      environment: map['environment'] == null ? null : (RuntimeEnvironment.fromMap((map['environment'] as Map).cast<String, dynamic>())).input(),
+      environment: map['environment'] == null ? null : (RuntimeEnvironment.fromMap((map['environment']! as Map).cast<String, dynamic>())).input(),
       gcsPath: (map['gcsPath'] as String).input(),
       jobName: (map['jobName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

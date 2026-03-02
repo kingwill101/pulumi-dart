@@ -75,7 +75,7 @@ class GetWorkgroupResult {
   factory GetWorkgroupResult.fromMap(Map<String, dynamic> map) {
     return GetWorkgroupResult(
       arn: map['arn'] as String,
-      endpoints: pulumi.Input.decodeList<GetWorkgroupEndpoint>(map['endpoints'], (value) => GetWorkgroupEndpoint.fromMap((value as Map).cast<String, dynamic>())),
+      endpoints: pulumi.Input.decodeList<GetWorkgroupEndpoint>(map['endpoints']!, (value) => GetWorkgroupEndpoint.fromMap((value as Map).cast<String, dynamic>())),
       enhancedVpcRouting: map['enhancedVpcRouting'] as bool,
       id: map['id'] as String,
       namespaceName: map['namespaceName'] as String,

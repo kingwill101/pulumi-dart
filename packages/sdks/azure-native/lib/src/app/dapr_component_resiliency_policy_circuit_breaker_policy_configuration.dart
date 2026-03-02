@@ -31,9 +31,9 @@ class DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration {
 
   factory DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration.fromMap(Map<String, dynamic> map) {
     return DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration(
-      consecutiveErrors: map['consecutiveErrors'] == null ? null : (map['consecutiveErrors'] as int).input(),
-      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds'] as int).input(),
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as int).input(),
+      consecutiveErrors: map['consecutiveErrors'] == null ? null : (map['consecutiveErrors']! as int).input(),
+      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds']! as int).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds']! as int).input(),
     );
   }
 }

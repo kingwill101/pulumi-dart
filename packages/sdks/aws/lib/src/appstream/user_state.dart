@@ -63,15 +63,15 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
-      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      firstName: map['firstName'] == null ? null : (map['firstName'] as String).input(),
-      lastName: map['lastName'] == null ? null : (map['lastName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sendEmailNotification: map['sendEmailNotification'] == null ? null : (map['sendEmailNotification'] as bool).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      authenticationType: map['authenticationType'] == null ? null : ((map['authenticationType'] as String).input()).input(),
+      createdTime: map['createdTime'] == null ? null : ((map['createdTime'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      firstName: map['firstName'] == null ? null : ((map['firstName'] as String).input()).input(),
+      lastName: map['lastName'] == null ? null : ((map['lastName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sendEmailNotification: map['sendEmailNotification'] == null ? null : ((map['sendEmailNotification'] as bool).input()).input(),
+      userName: map['userName'] == null ? null : ((map['userName'] as String).input()).input(),
     );
   }
 }

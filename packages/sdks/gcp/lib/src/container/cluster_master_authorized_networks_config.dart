@@ -33,9 +33,9 @@ class ClusterMasterAuthorizedNetworksConfig {
 
   factory ClusterMasterAuthorizedNetworksConfig.fromMap(Map<String, dynamic> map) {
     return ClusterMasterAuthorizedNetworksConfig(
-      cidrBlocks: map['cidrBlocks'] == null ? null : (pulumi.Input.decodeList<ClusterMasterAuthorizedNetworksConfigCidrBlock>(map['cidrBlocks'], (value) => ClusterMasterAuthorizedNetworksConfigCidrBlock.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      gcpPublicCidrsAccessEnabled: map['gcpPublicCidrsAccessEnabled'] == null ? null : (map['gcpPublicCidrsAccessEnabled'] as bool).input(),
-      privateEndpointEnforcementEnabled: map['privateEndpointEnforcementEnabled'] == null ? null : (map['privateEndpointEnforcementEnabled'] as bool).input(),
+      cidrBlocks: map['cidrBlocks'] == null ? null : (pulumi.Input.decodeList<ClusterMasterAuthorizedNetworksConfigCidrBlock>(map['cidrBlocks']!, (value) => ClusterMasterAuthorizedNetworksConfigCidrBlock.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gcpPublicCidrsAccessEnabled: map['gcpPublicCidrsAccessEnabled'] == null ? null : (map['gcpPublicCidrsAccessEnabled']! as bool).input(),
+      privateEndpointEnforcementEnabled: map['privateEndpointEnforcementEnabled'] == null ? null : (map['privateEndpointEnforcementEnabled']! as bool).input(),
     );
   }
 }

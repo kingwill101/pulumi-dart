@@ -26,7 +26,7 @@ class KubernetesClusterKeyManagementService {
   factory KubernetesClusterKeyManagementService.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterKeyManagementService(
       keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
-      keyVaultNetworkAccess: map['keyVaultNetworkAccess'] == null ? null : (map['keyVaultNetworkAccess'] as String).input(),
+      keyVaultNetworkAccess: map['keyVaultNetworkAccess'] == null ? null : (map['keyVaultNetworkAccess']! as String).input(),
     );
   }
 }

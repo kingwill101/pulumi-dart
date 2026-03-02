@@ -21,7 +21,7 @@ class GoogleCloudRunV2CloudSqlInstance {
 
   factory GoogleCloudRunV2CloudSqlInstance.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2CloudSqlInstance(
-      instances: map['instances'] == null ? null : ((map['instances'] as List).cast<String>()).input(),
+      instances: map['instances'] == null ? null : ((map['instances']! as List).cast<String>()).input(),
     );
   }
 }

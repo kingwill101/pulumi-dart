@@ -26,7 +26,7 @@ class BucketV2Logging {
   factory BucketV2Logging.fromMap(Map<String, dynamic> map) {
     return BucketV2Logging(
       targetBucket: (map['targetBucket'] as String).input(),
-      targetPrefix: map['targetPrefix'] == null ? null : (map['targetPrefix'] as String).input(),
+      targetPrefix: map['targetPrefix'] == null ? null : ((map['targetPrefix'] as String).input()).input(),
     );
   }
 }

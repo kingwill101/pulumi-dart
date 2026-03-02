@@ -22,7 +22,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes {
 
   factory PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes(
-      patterns: map['patterns'] == null ? null : (pulumi.Input.decodeList<PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern>(map['patterns'], (value) => PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      patterns: map['patterns'] == null ? null : (pulumi.Input.decodeList<PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern>(map['patterns']!, (value) => PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

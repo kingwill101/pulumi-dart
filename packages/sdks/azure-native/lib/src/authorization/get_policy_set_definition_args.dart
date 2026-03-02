@@ -29,7 +29,7 @@ class GetPolicySetDefinitionArgs {
 
   factory GetPolicySetDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicySetDefinitionArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       policySetDefinitionName: (map['policySetDefinitionName'] as String).input(),
     );
   }

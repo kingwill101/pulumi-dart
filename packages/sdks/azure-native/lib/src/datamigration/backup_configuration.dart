@@ -28,8 +28,8 @@ class BackupConfiguration {
 
   factory BackupConfiguration.fromMap(Map<String, dynamic> map) {
     return BackupConfiguration(
-      sourceLocation: map['sourceLocation'] == null ? null : (SourceLocation.fromMap((map['sourceLocation'] as Map).cast<String, dynamic>())).input(),
-      targetLocation: map['targetLocation'] == null ? null : (TargetLocation.fromMap((map['targetLocation'] as Map).cast<String, dynamic>())).input(),
+      sourceLocation: map['sourceLocation'] == null ? null : (SourceLocation.fromMap((map['sourceLocation']! as Map).cast<String, dynamic>())).input(),
+      targetLocation: map['targetLocation'] == null ? null : (TargetLocation.fromMap((map['targetLocation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

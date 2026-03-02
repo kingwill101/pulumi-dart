@@ -27,8 +27,8 @@ class CreateUpdateOptions {
 
   factory CreateUpdateOptions.fromMap(Map<String, dynamic> map) {
     return CreateUpdateOptions(
-      autoscaleSettings: map['autoscaleSettings'] == null ? null : (AutoscaleSettings.fromMap((map['autoscaleSettings'] as Map).cast<String, dynamic>())).input(),
-      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
+      autoscaleSettings: map['autoscaleSettings'] == null ? null : (AutoscaleSettings.fromMap((map['autoscaleSettings']! as Map).cast<String, dynamic>())).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput']! as int).input(),
     );
   }
 }

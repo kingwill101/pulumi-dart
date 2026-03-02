@@ -88,17 +88,17 @@ class L3NetworkArgs {
   factory L3NetworkArgs.fromMap(Map<String, dynamic> map) {
     return L3NetworkArgs(
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      hybridAksIpamEnabled: map['hybridAksIpamEnabled'] == null ? null : (map['hybridAksIpamEnabled'] as String).input(),
-      hybridAksPluginType: map['hybridAksPluginType'] == null ? null : (map['hybridAksPluginType'] as String).input(),
-      interfaceName: map['interfaceName'] == null ? null : (map['interfaceName'] as String).input(),
-      ipAllocationType: map['ipAllocationType'] == null ? null : (map['ipAllocationType'] as String).input(),
-      ipv4ConnectedPrefix: map['ipv4ConnectedPrefix'] == null ? null : (map['ipv4ConnectedPrefix'] as String).input(),
-      ipv6ConnectedPrefix: map['ipv6ConnectedPrefix'] == null ? null : (map['ipv6ConnectedPrefix'] as String).input(),
+      hybridAksIpamEnabled: map['hybridAksIpamEnabled'] == null ? null : (map['hybridAksIpamEnabled']! as String).input(),
+      hybridAksPluginType: map['hybridAksPluginType'] == null ? null : (map['hybridAksPluginType']! as String).input(),
+      interfaceName: map['interfaceName'] == null ? null : (map['interfaceName']! as String).input(),
+      ipAllocationType: map['ipAllocationType'] == null ? null : (map['ipAllocationType']! as String).input(),
+      ipv4ConnectedPrefix: map['ipv4ConnectedPrefix'] == null ? null : (map['ipv4ConnectedPrefix']! as String).input(),
+      ipv6ConnectedPrefix: map['ipv6ConnectedPrefix'] == null ? null : (map['ipv6ConnectedPrefix']! as String).input(),
       l3IsolationDomainId: (map['l3IsolationDomainId'] as String).input(),
-      l3NetworkName: map['l3NetworkName'] == null ? null : (map['l3NetworkName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      l3NetworkName: map['l3NetworkName'] == null ? null : (map['l3NetworkName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vlan: (map['vlan'] as double).input(),
     );
   }

@@ -41,11 +41,11 @@ class ConnectorInfoBaseResponse {
 
   factory ConnectorInfoBaseResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorInfoBaseResponse(
-      connectorClass: map['connectorClass'] == null ? null : (map['connectorClass'] as String).input(),
-      connectorId: map['connectorId'] == null ? null : (map['connectorId'] as String).input(),
-      connectorName: map['connectorName'] == null ? null : (map['connectorName'] as String).input(),
-      connectorState: map['connectorState'] == null ? null : (map['connectorState'] as String).input(),
-      connectorType: map['connectorType'] == null ? null : (map['connectorType'] as String).input(),
+      connectorClass: map['connectorClass'] == null ? null : (map['connectorClass']! as String).input(),
+      connectorId: map['connectorId'] == null ? null : (map['connectorId']! as String).input(),
+      connectorName: map['connectorName'] == null ? null : (map['connectorName']! as String).input(),
+      connectorState: map['connectorState'] == null ? null : (map['connectorState']! as String).input(),
+      connectorType: map['connectorType'] == null ? null : (map['connectorType']! as String).input(),
     );
   }
 }

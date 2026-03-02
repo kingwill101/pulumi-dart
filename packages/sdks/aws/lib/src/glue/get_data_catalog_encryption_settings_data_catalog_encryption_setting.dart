@@ -27,8 +27,8 @@ class GetDataCatalogEncryptionSettingsDataCatalogEncryptionSetting {
 
   factory GetDataCatalogEncryptionSettingsDataCatalogEncryptionSetting.fromMap(Map<String, dynamic> map) {
     return GetDataCatalogEncryptionSettingsDataCatalogEncryptionSetting(
-      connectionPasswordEncryptions: (pulumi.Input.decodeList<GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingConnectionPasswordEncryption>(map['connectionPasswordEncryptions'], (value) => GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingConnectionPasswordEncryption.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      encryptionAtRests: (pulumi.Input.decodeList<GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingEncryptionAtRest>(map['encryptionAtRests'], (value) => GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingEncryptionAtRest.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connectionPasswordEncryptions: (pulumi.Input.decodeList<GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingConnectionPasswordEncryption>(map['connectionPasswordEncryptions']!, (value) => GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingConnectionPasswordEncryption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encryptionAtRests: (pulumi.Input.decodeList<GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingEncryptionAtRest>(map['encryptionAtRests']!, (value) => GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingEncryptionAtRest.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -56,14 +56,14 @@ class JobStepOutput {
 
   factory JobStepOutput.fromMap(Map<String, dynamic> map) {
     return JobStepOutput(
-      credential: map['credential'] == null ? null : (map['credential'] as String).input(),
+      credential: map['credential'] == null ? null : (map['credential']! as String).input(),
       databaseName: (map['databaseName'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      schemaName: map['schemaName'] == null ? null : (map['schemaName'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      schemaName: map['schemaName'] == null ? null : (map['schemaName']! as String).input(),
       serverName: (map['serverName'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
       tableName: (map['tableName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

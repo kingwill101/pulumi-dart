@@ -26,8 +26,8 @@ class DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange {
 
   factory DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange.fromMap(Map<String, dynamic> map) {
     return DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange(
-      after: map['after'] == null ? null : (map['after'] as String).input(),
-      before: map['before'] == null ? null : (map['before'] as String).input(),
+      after: map['after'] == null ? null : (map['after']! as String).input(),
+      before: map['before'] == null ? null : (map['before']! as String).input(),
     );
   }
 }

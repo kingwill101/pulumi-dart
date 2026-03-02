@@ -32,7 +32,7 @@ class GetSpecialistPoolArgs {
   factory GetSpecialistPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetSpecialistPoolArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       specialistPoolId: (map['specialistPoolId'] as String).input(),
     );
   }

@@ -63,15 +63,15 @@ class ConnectionState {
 
   factory ConnectionState.fromMap(Map<String, dynamic> map) {
     return ConnectionState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      connectedDeviceId: map['connectedDeviceId'] == null ? null : (map['connectedDeviceId'] as String).input(),
-      connectedLinkId: map['connectedLinkId'] == null ? null : (map['connectedLinkId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      deviceId: map['deviceId'] == null ? null : (map['deviceId'] as String).input(),
-      globalNetworkId: map['globalNetworkId'] == null ? null : (map['globalNetworkId'] as String).input(),
-      linkId: map['linkId'] == null ? null : (map['linkId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      connectedDeviceId: map['connectedDeviceId'] == null ? null : ((map['connectedDeviceId'] as String).input()).input(),
+      connectedLinkId: map['connectedLinkId'] == null ? null : ((map['connectedLinkId'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      deviceId: map['deviceId'] == null ? null : ((map['deviceId'] as String).input()).input(),
+      globalNetworkId: map['globalNetworkId'] == null ? null : ((map['globalNetworkId'] as String).input()).input(),
+      linkId: map['linkId'] == null ? null : ((map['linkId'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

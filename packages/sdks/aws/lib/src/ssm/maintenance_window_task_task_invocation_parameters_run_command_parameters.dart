@@ -73,17 +73,17 @@ class MaintenanceWindowTaskTaskInvocationParametersRunCommandParameters {
 
   factory MaintenanceWindowTaskTaskInvocationParametersRunCommandParameters.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowTaskTaskInvocationParametersRunCommandParameters(
-      cloudwatchConfig: map['cloudwatchConfig'] == null ? null : (MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfig.fromMap((map['cloudwatchConfig'] as Map).cast<String, dynamic>())).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      documentHash: map['documentHash'] == null ? null : (map['documentHash'] as String).input(),
-      documentHashType: map['documentHashType'] == null ? null : (map['documentHashType'] as String).input(),
-      documentVersion: map['documentVersion'] == null ? null : (map['documentVersion'] as String).input(),
-      notificationConfig: map['notificationConfig'] == null ? null : (MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfig.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>())).input(),
-      outputS3Bucket: map['outputS3Bucket'] == null ? null : (map['outputS3Bucket'] as String).input(),
-      outputS3KeyPrefix: map['outputS3KeyPrefix'] == null ? null : (map['outputS3KeyPrefix'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter>(map['parameters'], (value) => MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceRoleArn: map['serviceRoleArn'] == null ? null : (map['serviceRoleArn'] as String).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      cloudwatchConfig: map['cloudwatchConfig'] == null ? null : ((MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfig.fromMap((map['cloudwatchConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
+      documentHash: map['documentHash'] == null ? null : ((map['documentHash'] as String).input()).input(),
+      documentHashType: map['documentHashType'] == null ? null : ((map['documentHashType'] as String).input()).input(),
+      documentVersion: map['documentVersion'] == null ? null : ((map['documentVersion'] as String).input()).input(),
+      notificationConfig: map['notificationConfig'] == null ? null : ((MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfig.fromMap((map['notificationConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      outputS3Bucket: map['outputS3Bucket'] == null ? null : ((map['outputS3Bucket'] as String).input()).input(),
+      outputS3KeyPrefix: map['outputS3KeyPrefix'] == null ? null : ((map['outputS3KeyPrefix'] as String).input()).input(),
+      parameters: map['parameters'] == null ? null : ((pulumi.Input.decodeList<MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter>(map['parameters']!, (value) => MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      serviceRoleArn: map['serviceRoleArn'] == null ? null : ((map['serviceRoleArn'] as String).input()).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : ((map['timeoutSeconds'] as int).input()).input(),
     );
   }
 }

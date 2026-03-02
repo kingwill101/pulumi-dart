@@ -90,21 +90,21 @@ class MemberState {
 
   factory MemberState.fromMap(Map<String, dynamic> map) {
     return MemberState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      administratorAccountId: map['administratorAccountId'] == null ? null : (map['administratorAccountId'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      invitationDisableEmailNotification: map['invitationDisableEmailNotification'] == null ? null : (map['invitationDisableEmailNotification'] as bool).input(),
-      invitationMessage: map['invitationMessage'] == null ? null : (map['invitationMessage'] as String).input(),
-      invite: map['invite'] == null ? null : (map['invite'] as bool).input(),
-      invitedAt: map['invitedAt'] == null ? null : (map['invitedAt'] as String).input(),
-      masterAccountId: map['masterAccountId'] == null ? null : (map['masterAccountId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      relationshipStatus: map['relationshipStatus'] == null ? null : (map['relationshipStatus'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      administratorAccountId: map['administratorAccountId'] == null ? null : ((map['administratorAccountId'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      email: map['email'] == null ? null : ((map['email'] as String).input()).input(),
+      invitationDisableEmailNotification: map['invitationDisableEmailNotification'] == null ? null : ((map['invitationDisableEmailNotification'] as bool).input()).input(),
+      invitationMessage: map['invitationMessage'] == null ? null : ((map['invitationMessage'] as String).input()).input(),
+      invite: map['invite'] == null ? null : ((map['invite'] as bool).input()).input(),
+      invitedAt: map['invitedAt'] == null ? null : ((map['invitedAt'] as String).input()).input(),
+      masterAccountId: map['masterAccountId'] == null ? null : ((map['masterAccountId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      relationshipStatus: map['relationshipStatus'] == null ? null : ((map['relationshipStatus'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      updatedAt: map['updatedAt'] == null ? null : ((map['updatedAt'] as String).input()).input(),
     );
   }
 }

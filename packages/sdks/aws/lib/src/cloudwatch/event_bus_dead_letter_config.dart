@@ -20,7 +20,7 @@ class EventBusDeadLetterConfig {
 
   factory EventBusDeadLetterConfig.fromMap(Map<String, dynamic> map) {
     return EventBusDeadLetterConfig(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
     );
   }
 }

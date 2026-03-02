@@ -71,17 +71,17 @@ class ChannelState {
 
   factory ChannelState.fromMap(Map<String, dynamic> map) {
     return ChannelState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      authorized: map['authorized'] == null ? null : (map['authorized'] as bool).input(),
-      ingestEndpoint: map['ingestEndpoint'] == null ? null : (map['ingestEndpoint'] as String).input(),
-      latencyMode: map['latencyMode'] == null ? null : (map['latencyMode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      playbackUrl: map['playbackUrl'] == null ? null : (map['playbackUrl'] as String).input(),
-      recordingConfigurationArn: map['recordingConfigurationArn'] == null ? null : (map['recordingConfigurationArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      authorized: map['authorized'] == null ? null : ((map['authorized'] as bool).input()).input(),
+      ingestEndpoint: map['ingestEndpoint'] == null ? null : ((map['ingestEndpoint'] as String).input()).input(),
+      latencyMode: map['latencyMode'] == null ? null : ((map['latencyMode'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      playbackUrl: map['playbackUrl'] == null ? null : ((map['playbackUrl'] as String).input()).input(),
+      recordingConfigurationArn: map['recordingConfigurationArn'] == null ? null : ((map['recordingConfigurationArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

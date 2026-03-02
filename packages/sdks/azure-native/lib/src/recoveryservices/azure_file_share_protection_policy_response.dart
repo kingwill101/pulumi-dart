@@ -61,13 +61,13 @@ class AzureFileShareProtectionPolicyResponse {
   factory AzureFileShareProtectionPolicyResponse.fromMap(Map<String, dynamic> map) {
     return AzureFileShareProtectionPolicyResponse(
       backupManagementType: (map['backupManagementType'] as String).input(),
-      protectedItemsCount: map['protectedItemsCount'] == null ? null : (map['protectedItemsCount'] as int).input(),
-      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : ((map['resourceGuardOperationRequests'] as List).cast<String>()).input(),
-      retentionPolicy: map['retentionPolicy'] == null ? null : (LongTermRetentionPolicyResponse.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
-      schedulePolicy: map['schedulePolicy'] == null ? null : (LogSchedulePolicyResponse.fromMap((map['schedulePolicy'] as Map).cast<String, dynamic>())).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
-      vaultRetentionPolicy: map['vaultRetentionPolicy'] == null ? null : (VaultRetentionPolicyResponse.fromMap((map['vaultRetentionPolicy'] as Map).cast<String, dynamic>())).input(),
-      workLoadType: map['workLoadType'] == null ? null : (map['workLoadType'] as String).input(),
+      protectedItemsCount: map['protectedItemsCount'] == null ? null : (map['protectedItemsCount']! as int).input(),
+      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : ((map['resourceGuardOperationRequests']! as List).cast<String>()).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (LongTermRetentionPolicyResponse.fromMap((map['retentionPolicy']! as Map).cast<String, dynamic>())).input(),
+      schedulePolicy: map['schedulePolicy'] == null ? null : (LogSchedulePolicyResponse.fromMap((map['schedulePolicy']! as Map).cast<String, dynamic>())).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      vaultRetentionPolicy: map['vaultRetentionPolicy'] == null ? null : (VaultRetentionPolicyResponse.fromMap((map['vaultRetentionPolicy']! as Map).cast<String, dynamic>())).input(),
+      workLoadType: map['workLoadType'] == null ? null : (map['workLoadType']! as String).input(),
     );
   }
 }

@@ -36,8 +36,8 @@ class ServicePrincipalTokenSigningCertificateArgs {
 
   factory ServicePrincipalTokenSigningCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalTokenSigningCertificateArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      endDate: map['endDate'] == null ? null : (map['endDate']! as String).input(),
       servicePrincipalId: (map['servicePrincipalId'] as String).input(),
     );
   }

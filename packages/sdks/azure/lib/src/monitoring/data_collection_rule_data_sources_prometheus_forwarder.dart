@@ -31,7 +31,7 @@ class DataCollectionRuleDataSourcesPrometheusForwarder {
 
   factory DataCollectionRuleDataSourcesPrometheusForwarder.fromMap(Map<String, dynamic> map) {
     return DataCollectionRuleDataSourcesPrometheusForwarder(
-      labelIncludeFilters: map['labelIncludeFilters'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDataSourcesPrometheusForwarderLabelIncludeFilter>(map['labelIncludeFilters'], (value) => DataCollectionRuleDataSourcesPrometheusForwarderLabelIncludeFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labelIncludeFilters: map['labelIncludeFilters'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDataSourcesPrometheusForwarderLabelIncludeFilter>(map['labelIncludeFilters']!, (value) => DataCollectionRuleDataSourcesPrometheusForwarderLabelIncludeFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
       streams: ((map['streams'] as List).cast<String>()).input(),
     );

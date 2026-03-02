@@ -43,10 +43,10 @@ class MHSMPrivateEndpointConnectionItemResponse {
 
   factory MHSMPrivateEndpointConnectionItemResponse.fromMap(Map<String, dynamic> map) {
     return MHSMPrivateEndpointConnectionItemResponse(
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      privateEndpoint: map['privateEndpoint'] == null ? null : (MHSMPrivateEndpointResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>())).input(),
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (MHSMPrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      privateEndpoint: map['privateEndpoint'] == null ? null : (MHSMPrivateEndpointResponse.fromMap((map['privateEndpoint']! as Map).cast<String, dynamic>())).input(),
+      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (MHSMPrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

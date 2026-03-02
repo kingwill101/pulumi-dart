@@ -25,8 +25,8 @@ class SoftwareUpdateConfigurationTargetNonAzureQuery {
 
   factory SoftwareUpdateConfigurationTargetNonAzureQuery.fromMap(Map<String, dynamic> map) {
     return SoftwareUpdateConfigurationTargetNonAzureQuery(
-      functionAlias: map['functionAlias'] == null ? null : (map['functionAlias'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      functionAlias: map['functionAlias'] == null ? null : (map['functionAlias']! as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

@@ -73,17 +73,17 @@ class AwsEcrImageDetailPropertiesResponse {
 
   factory AwsEcrImageDetailPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsEcrImageDetailPropertiesResponse(
-      artifactMediaType: map['artifactMediaType'] == null ? null : (map['artifactMediaType'] as String).input(),
-      imageDigest: map['imageDigest'] == null ? null : (map['imageDigest'] as String).input(),
-      imageManifestMediaType: map['imageManifestMediaType'] == null ? null : (map['imageManifestMediaType'] as String).input(),
-      imagePushedAt: map['imagePushedAt'] == null ? null : (map['imagePushedAt'] as String).input(),
-      imageScanFindingsSummary: map['imageScanFindingsSummary'] == null ? null : (ImageScanFindingsSummaryResponse.fromMap((map['imageScanFindingsSummary'] as Map).cast<String, dynamic>())).input(),
-      imageScanStatus: map['imageScanStatus'] == null ? null : (ImageScanStatusResponse.fromMap((map['imageScanStatus'] as Map).cast<String, dynamic>())).input(),
-      imageSizeInBytes: map['imageSizeInBytes'] == null ? null : (map['imageSizeInBytes'] as double).input(),
-      imageTags: map['imageTags'] == null ? null : ((map['imageTags'] as List).cast<String>()).input(),
-      lastRecordedPullTime: map['lastRecordedPullTime'] == null ? null : (map['lastRecordedPullTime'] as String).input(),
-      registryId: map['registryId'] == null ? null : (map['registryId'] as String).input(),
-      repositoryName: map['repositoryName'] == null ? null : (map['repositoryName'] as String).input(),
+      artifactMediaType: map['artifactMediaType'] == null ? null : (map['artifactMediaType']! as String).input(),
+      imageDigest: map['imageDigest'] == null ? null : (map['imageDigest']! as String).input(),
+      imageManifestMediaType: map['imageManifestMediaType'] == null ? null : (map['imageManifestMediaType']! as String).input(),
+      imagePushedAt: map['imagePushedAt'] == null ? null : (map['imagePushedAt']! as String).input(),
+      imageScanFindingsSummary: map['imageScanFindingsSummary'] == null ? null : (ImageScanFindingsSummaryResponse.fromMap((map['imageScanFindingsSummary']! as Map).cast<String, dynamic>())).input(),
+      imageScanStatus: map['imageScanStatus'] == null ? null : (ImageScanStatusResponse.fromMap((map['imageScanStatus']! as Map).cast<String, dynamic>())).input(),
+      imageSizeInBytes: map['imageSizeInBytes'] == null ? null : (map['imageSizeInBytes']! as double).input(),
+      imageTags: map['imageTags'] == null ? null : ((map['imageTags']! as List).cast<String>()).input(),
+      lastRecordedPullTime: map['lastRecordedPullTime'] == null ? null : (map['lastRecordedPullTime']! as String).input(),
+      registryId: map['registryId'] == null ? null : (map['registryId']! as String).input(),
+      repositoryName: map['repositoryName'] == null ? null : (map['repositoryName']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class AssignmentGroupLabel {
 
   factory AssignmentGroupLabel.fromMap(Map<String, dynamic> map) {
     return AssignmentGroupLabel(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
     );
   }
 }

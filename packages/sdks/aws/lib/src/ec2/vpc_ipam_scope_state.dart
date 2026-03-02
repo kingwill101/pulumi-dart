@@ -64,16 +64,16 @@ class VpcIpamScopeState {
 
   factory VpcIpamScopeState.fromMap(Map<String, dynamic> map) {
     return VpcIpamScopeState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipamArn: map['ipamArn'] == null ? null : (map['ipamArn'] as String).input(),
-      ipamId: map['ipamId'] == null ? null : (map['ipamId'] as String).input(),
-      ipamScopeType: map['ipamScopeType'] == null ? null : (map['ipamScopeType'] as String).input(),
-      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
-      poolCount: map['poolCount'] == null ? null : (map['poolCount'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      ipamArn: map['ipamArn'] == null ? null : ((map['ipamArn'] as String).input()).input(),
+      ipamId: map['ipamId'] == null ? null : ((map['ipamId'] as String).input()).input(),
+      ipamScopeType: map['ipamScopeType'] == null ? null : ((map['ipamScopeType'] as String).input()).input(),
+      isDefault: map['isDefault'] == null ? null : ((map['isDefault'] as bool).input()).input(),
+      poolCount: map['poolCount'] == null ? null : ((map['poolCount'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

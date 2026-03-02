@@ -21,7 +21,7 @@ class MaximumExecutionFrequencyEnumValueResponse {
 
   factory MaximumExecutionFrequencyEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return MaximumExecutionFrequencyEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

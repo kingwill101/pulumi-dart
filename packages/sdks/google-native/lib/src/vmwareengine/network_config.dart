@@ -27,7 +27,7 @@ class NetworkConfig {
   factory NetworkConfig.fromMap(Map<String, dynamic> map) {
     return NetworkConfig(
       managementCidr: (map['managementCidr'] as String).input(),
-      vmwareEngineNetwork: map['vmwareEngineNetwork'] == null ? null : (map['vmwareEngineNetwork'] as String).input(),
+      vmwareEngineNetwork: map['vmwareEngineNetwork'] == null ? null : (map['vmwareEngineNetwork']! as String).input(),
     );
   }
 }

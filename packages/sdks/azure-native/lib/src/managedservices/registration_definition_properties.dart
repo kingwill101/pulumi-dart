@@ -44,10 +44,10 @@ class RegistrationDefinitionProperties {
   factory RegistrationDefinitionProperties.fromMap(Map<String, dynamic> map) {
     return RegistrationDefinitionProperties(
       authorizations: (pulumi.Input.decodeList<Authorization>(map['authorizations'], (value) => Authorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      eligibleAuthorizations: map['eligibleAuthorizations'] == null ? null : (pulumi.Input.decodeList<EligibleAuthorization>(map['eligibleAuthorizations'], (value) => EligibleAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      eligibleAuthorizations: map['eligibleAuthorizations'] == null ? null : (pulumi.Input.decodeList<EligibleAuthorization>(map['eligibleAuthorizations']!, (value) => EligibleAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
       managedByTenantId: (map['managedByTenantId'] as String).input(),
-      registrationDefinitionName: map['registrationDefinitionName'] == null ? null : (map['registrationDefinitionName'] as String).input(),
+      registrationDefinitionName: map['registrationDefinitionName'] == null ? null : (map['registrationDefinitionName']! as String).input(),
     );
   }
 }

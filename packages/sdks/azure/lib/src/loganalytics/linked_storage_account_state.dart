@@ -40,11 +40,11 @@ class LinkedStorageAccountState {
 
   factory LinkedStorageAccountState.fromMap(Map<String, dynamic> map) {
     return LinkedStorageAccountState(
-      dataSourceType: map['dataSourceType'] == null ? null : (map['dataSourceType'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      storageAccountIds: map['storageAccountIds'] == null ? null : ((map['storageAccountIds'] as List).cast<String>()).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
-      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId'] as String).input(),
+      dataSourceType: map['dataSourceType'] == null ? null : (map['dataSourceType']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      storageAccountIds: map['storageAccountIds'] == null ? null : ((map['storageAccountIds']! as List).cast<String>()).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
+      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId']! as String).input(),
     );
   }
 }

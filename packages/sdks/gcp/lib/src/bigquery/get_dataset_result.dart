@@ -141,7 +141,7 @@ class GetDatasetResult {
       lastModifiedTime: map['lastModifiedTime'] as int,
       location: map['location'] as String,
       maxTimeTravelHours: map['maxTimeTravelHours'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       resourceTags: (map['resourceTags'] as Map).cast<String, String>(),
       selfLink: map['selfLink'] as String,

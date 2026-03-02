@@ -38,7 +38,7 @@ class FunctionRecursionConfigArgs {
     return FunctionRecursionConfigArgs(
       functionName: (map['functionName'] as String).input(),
       recursiveLoop: (map['recursiveLoop'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

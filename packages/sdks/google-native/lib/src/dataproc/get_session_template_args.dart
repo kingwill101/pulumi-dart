@@ -32,7 +32,7 @@ class GetSessionTemplateArgs {
   factory GetSessionTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetSessionTemplateArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       sessionTemplateId: (map['sessionTemplateId'] as String).input(),
     );
   }

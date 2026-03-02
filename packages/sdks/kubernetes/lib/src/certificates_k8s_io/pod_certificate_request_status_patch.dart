@@ -57,11 +57,11 @@ class PodCertificateRequestStatusPatch {
 
   factory PodCertificateRequestStatusPatch.fromMap(Map<String, dynamic> map) {
     return PodCertificateRequestStatusPatch(
-      beginRefreshAt: map['beginRefreshAt'] == null ? null : (map['beginRefreshAt'] as String).input(),
-      certificateChain: map['certificateChain'] == null ? null : (map['certificateChain'] as String).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionPatch>(map['conditions'], (value) => ConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      notAfter: map['notAfter'] == null ? null : (map['notAfter'] as String).input(),
-      notBefore: map['notBefore'] == null ? null : (map['notBefore'] as String).input(),
+      beginRefreshAt: map['beginRefreshAt'] == null ? null : (map['beginRefreshAt']! as String).input(),
+      certificateChain: map['certificateChain'] == null ? null : (map['certificateChain']! as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionPatch>(map['conditions']!, (value) => ConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notAfter: map['notAfter'] == null ? null : (map['notAfter']! as String).input(),
+      notBefore: map['notBefore'] == null ? null : (map['notBefore']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class NtpState {
 
   factory NtpState.fromMap(Map<String, dynamic> map) {
     return NtpState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      servers: map['servers'] == null ? null : ((map['servers'] as List).cast<String>()).input(),
-      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      servers: map['servers'] == null ? null : ((map['servers']! as List).cast<String>()).input(),
+      timezone: map['timezone'] == null ? null : (map['timezone']! as String).input(),
     );
   }
 }

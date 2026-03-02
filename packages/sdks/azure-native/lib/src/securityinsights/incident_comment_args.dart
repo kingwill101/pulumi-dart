@@ -44,7 +44,7 @@ class IncidentCommentArgs {
 
   factory IncidentCommentArgs.fromMap(Map<String, dynamic> map) {
     return IncidentCommentArgs(
-      incidentCommentId: map['incidentCommentId'] == null ? null : (map['incidentCommentId'] as String).input(),
+      incidentCommentId: map['incidentCommentId'] == null ? null : (map['incidentCommentId']! as String).input(),
       incidentId: (map['incidentId'] as String).input(),
       message: (map['message'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

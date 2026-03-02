@@ -33,9 +33,9 @@ class BudgetFilterExpressionAndNot {
 
   factory BudgetFilterExpressionAndNot.fromMap(Map<String, dynamic> map) {
     return BudgetFilterExpressionAndNot(
-      costCategories: map['costCategories'] == null ? null : (BudgetFilterExpressionAndNotCostCategories.fromMap((map['costCategories'] as Map).cast<String, dynamic>())).input(),
-      dimensions: map['dimensions'] == null ? null : (BudgetFilterExpressionAndNotDimensions.fromMap((map['dimensions'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : (BudgetFilterExpressionAndNotTags.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
+      costCategories: map['costCategories'] == null ? null : ((BudgetFilterExpressionAndNotCostCategories.fromMap((map['costCategories']! as Map).cast<String, dynamic>())).input()).input(),
+      dimensions: map['dimensions'] == null ? null : ((BudgetFilterExpressionAndNotDimensions.fromMap((map['dimensions']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : ((BudgetFilterExpressionAndNotTags.fromMap((map['tags']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

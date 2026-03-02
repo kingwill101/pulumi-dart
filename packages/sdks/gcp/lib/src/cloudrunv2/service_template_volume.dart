@@ -55,12 +55,12 @@ class ServiceTemplateVolume {
 
   factory ServiceTemplateVolume.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateVolume(
-      cloudSqlInstance: map['cloudSqlInstance'] == null ? null : (ServiceTemplateVolumeCloudSqlInstance.fromMap((map['cloudSqlInstance'] as Map).cast<String, dynamic>())).input(),
-      emptyDir: map['emptyDir'] == null ? null : (ServiceTemplateVolumeEmptyDir.fromMap((map['emptyDir'] as Map).cast<String, dynamic>())).input(),
-      gcs: map['gcs'] == null ? null : (ServiceTemplateVolumeGcs.fromMap((map['gcs'] as Map).cast<String, dynamic>())).input(),
+      cloudSqlInstance: map['cloudSqlInstance'] == null ? null : (ServiceTemplateVolumeCloudSqlInstance.fromMap((map['cloudSqlInstance']! as Map).cast<String, dynamic>())).input(),
+      emptyDir: map['emptyDir'] == null ? null : (ServiceTemplateVolumeEmptyDir.fromMap((map['emptyDir']! as Map).cast<String, dynamic>())).input(),
+      gcs: map['gcs'] == null ? null : (ServiceTemplateVolumeGcs.fromMap((map['gcs']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      nfs: map['nfs'] == null ? null : (ServiceTemplateVolumeNfs.fromMap((map['nfs'] as Map).cast<String, dynamic>())).input(),
-      secret: map['secret'] == null ? null : (ServiceTemplateVolumeSecret.fromMap((map['secret'] as Map).cast<String, dynamic>())).input(),
+      nfs: map['nfs'] == null ? null : (ServiceTemplateVolumeNfs.fromMap((map['nfs']! as Map).cast<String, dynamic>())).input(),
+      secret: map['secret'] == null ? null : (ServiceTemplateVolumeSecret.fromMap((map['secret']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

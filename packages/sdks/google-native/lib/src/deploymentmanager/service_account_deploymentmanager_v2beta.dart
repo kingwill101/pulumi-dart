@@ -21,7 +21,7 @@ class ServiceAccountDeploymentmanagerV2beta {
 
   factory ServiceAccountDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return ServiceAccountDeploymentmanagerV2beta(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
     );
   }
 }

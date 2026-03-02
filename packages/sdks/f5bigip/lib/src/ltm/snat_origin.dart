@@ -25,8 +25,8 @@ class SnatOrigin {
 
   factory SnatOrigin.fromMap(Map<String, dynamic> map) {
     return SnatOrigin(
-      appService: map['appService'] == null ? null : (map['appService'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      appService: map['appService'] == null ? null : (map['appService']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

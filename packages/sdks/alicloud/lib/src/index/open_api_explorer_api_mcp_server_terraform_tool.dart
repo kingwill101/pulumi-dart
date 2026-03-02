@@ -40,11 +40,11 @@ class OpenApiExplorerApiMcpServerTerraformTool {
 
   factory OpenApiExplorerApiMcpServerTerraformTool.fromMap(Map<String, dynamic> map) {
     return OpenApiExplorerApiMcpServerTerraformTool(
-      async: map['async'] == null ? null : (map['async'] as bool).input(),
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destroyPolicy: map['destroyPolicy'] == null ? null : (map['destroyPolicy'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      async: map['async'] == null ? null : (map['async']! as bool).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destroyPolicy: map['destroyPolicy'] == null ? null : (map['destroyPolicy']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

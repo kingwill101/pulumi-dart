@@ -97,20 +97,20 @@ class ListingAnalyticshubV1beta1Args {
   factory ListingAnalyticshubV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ListingAnalyticshubV1beta1Args(
       bigqueryDataset: (BigQueryDatasetSourceAnalyticshubV1beta1.fromMap((map['bigqueryDataset'] as Map).cast<String, dynamic>())).input(),
-      categories: map['categories'] == null ? null : (pulumi.Input.decodeList<ListingCategoriesItemAnalyticshubV1beta1>(map['categories'], (value) => ListingCategoriesItemAnalyticshubV1beta1.fromValue(value as String))).input(),
+      categories: map['categories'] == null ? null : (pulumi.Input.decodeList<ListingCategoriesItemAnalyticshubV1beta1>(map['categories']!, (value) => ListingCategoriesItemAnalyticshubV1beta1.fromValue(value as String))).input(),
       dataExchangeId: (map['dataExchangeId'] as String).input(),
-      dataProvider: map['dataProvider'] == null ? null : (DataProviderAnalyticshubV1beta1.fromMap((map['dataProvider'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dataProvider: map['dataProvider'] == null ? null : (DataProviderAnalyticshubV1beta1.fromMap((map['dataProvider']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      documentation: map['documentation'] == null ? null : (map['documentation'] as String).input(),
-      icon: map['icon'] == null ? null : (map['icon'] as String).input(),
+      documentation: map['documentation'] == null ? null : (map['documentation']! as String).input(),
+      icon: map['icon'] == null ? null : (map['icon']! as String).input(),
       listingId: (map['listingId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      primaryContact: map['primaryContact'] == null ? null : (map['primaryContact'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      publisher: map['publisher'] == null ? null : (PublisherAnalyticshubV1beta1.fromMap((map['publisher'] as Map).cast<String, dynamic>())).input(),
-      requestAccess: map['requestAccess'] == null ? null : (map['requestAccess'] as String).input(),
-      restrictedExportConfig: map['restrictedExportConfig'] == null ? null : (RestrictedExportConfigAnalyticshubV1beta1.fromMap((map['restrictedExportConfig'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      primaryContact: map['primaryContact'] == null ? null : (map['primaryContact']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      publisher: map['publisher'] == null ? null : (PublisherAnalyticshubV1beta1.fromMap((map['publisher']! as Map).cast<String, dynamic>())).input(),
+      requestAccess: map['requestAccess'] == null ? null : (map['requestAccess']! as String).input(),
+      restrictedExportConfig: map['restrictedExportConfig'] == null ? null : (RestrictedExportConfigAnalyticshubV1beta1.fromMap((map['restrictedExportConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

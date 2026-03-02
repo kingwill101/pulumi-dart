@@ -30,9 +30,9 @@ class InstanceFromTemplateScratchDisk {
 
   factory InstanceFromTemplateScratchDisk.fromMap(Map<String, dynamic> map) {
     return InstanceFromTemplateScratchDisk(
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName']! as String).input(),
       interface: (map['interface'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
     );
   }
 }

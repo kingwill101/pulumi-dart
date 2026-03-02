@@ -21,7 +21,7 @@ class DashboardSourceEntity {
 
   factory DashboardSourceEntity.fromMap(Map<String, dynamic> map) {
     return DashboardSourceEntity(
-      sourceTemplate: map['sourceTemplate'] == null ? null : (DashboardSourceEntitySourceTemplate.fromMap((map['sourceTemplate'] as Map).cast<String, dynamic>())).input(),
+      sourceTemplate: map['sourceTemplate'] == null ? null : ((DashboardSourceEntitySourceTemplate.fromMap((map['sourceTemplate']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

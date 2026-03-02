@@ -22,7 +22,7 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret {
 
   factory GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret.fromMap(Map<String, dynamic> map) {
     return GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret(
-      value: map['value'] == null ? null : (GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
+      value: map['value'] == null ? null : (GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue.fromMap((map['value']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -108,20 +108,20 @@ class WorkflowArgs {
 
   factory WorkflowArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowArgs(
-      callLogLevel: map['callLogLevel'] == null ? null : (map['callLogLevel'] as String).input(),
-      cryptoKeyName: map['cryptoKeyName'] == null ? null : (map['cryptoKeyName'] as String).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      executionHistoryLevel: map['executionHistoryLevel'] == null ? null : (map['executionHistoryLevel'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      sourceContents: map['sourceContents'] == null ? null : (map['sourceContents'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      userEnvVars: map['userEnvVars'] == null ? null : ((map['userEnvVars'] as Map).cast<String, String>()).input(),
+      callLogLevel: map['callLogLevel'] == null ? null : (map['callLogLevel']! as String).input(),
+      cryptoKeyName: map['cryptoKeyName'] == null ? null : (map['cryptoKeyName']! as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      executionHistoryLevel: map['executionHistoryLevel'] == null ? null : (map['executionHistoryLevel']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      sourceContents: map['sourceContents'] == null ? null : (map['sourceContents']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      userEnvVars: map['userEnvVars'] == null ? null : ((map['userEnvVars']! as Map).cast<String, String>()).input(),
     );
   }
 }

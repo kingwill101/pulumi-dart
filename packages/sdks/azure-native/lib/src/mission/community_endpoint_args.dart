@@ -50,12 +50,12 @@ class CommunityEndpointArgs {
 
   factory CommunityEndpointArgs.fromMap(Map<String, dynamic> map) {
     return CommunityEndpointArgs(
-      communityEndpointName: map['communityEndpointName'] == null ? null : (map['communityEndpointName'] as String).input(),
+      communityEndpointName: map['communityEndpointName'] == null ? null : (map['communityEndpointName']! as String).input(),
       communityName: (map['communityName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       ruleCollection: (pulumi.Input.decodeList<CommunityEndpointDestinationRule>(map['ruleCollection'], (value) => CommunityEndpointDestinationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

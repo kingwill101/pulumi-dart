@@ -30,9 +30,9 @@ class OneDashboardPageWidgetBillboardBillboardSettingsGridOptions {
 
   factory OneDashboardPageWidgetBillboardBillboardSettingsGridOptions.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetBillboardBillboardSettingsGridOptions(
-      columns: map['columns'] == null ? null : (map['columns'] as int).input(),
-      label: map['label'] == null ? null : (map['label'] as int).input(),
-      value: map['value'] == null ? null : (map['value'] as int).input(),
+      columns: map['columns'] == null ? null : (map['columns']! as int).input(),
+      label: map['label'] == null ? null : (map['label']! as int).input(),
+      value: map['value'] == null ? null : (map['value']! as int).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class GuardrailWordPolicyConfig {
 
   factory GuardrailWordPolicyConfig.fromMap(Map<String, dynamic> map) {
     return GuardrailWordPolicyConfig(
-      managedWordListsConfigs: map['managedWordListsConfigs'] == null ? null : (pulumi.Input.decodeList<GuardrailWordPolicyConfigManagedWordListsConfig>(map['managedWordListsConfigs'], (value) => GuardrailWordPolicyConfigManagedWordListsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      wordsConfigs: map['wordsConfigs'] == null ? null : (pulumi.Input.decodeList<GuardrailWordPolicyConfigWordsConfig>(map['wordsConfigs'], (value) => GuardrailWordPolicyConfigWordsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managedWordListsConfigs: map['managedWordListsConfigs'] == null ? null : ((pulumi.Input.decodeList<GuardrailWordPolicyConfigManagedWordListsConfig>(map['managedWordListsConfigs']!, (value) => GuardrailWordPolicyConfigManagedWordListsConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      wordsConfigs: map['wordsConfigs'] == null ? null : ((pulumi.Input.decodeList<GuardrailWordPolicyConfigWordsConfig>(map['wordsConfigs']!, (value) => GuardrailWordPolicyConfigWordsConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

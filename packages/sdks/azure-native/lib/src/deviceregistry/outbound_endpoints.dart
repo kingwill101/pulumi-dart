@@ -28,7 +28,7 @@ class OutboundEndpoints {
   factory OutboundEndpoints.fromMap(Map<String, dynamic> map) {
     return OutboundEndpoints(
       assigned: (pulumi.Input.decodeMapValues<DeviceMessagingEndpoint>(map['assigned'], (value) => DeviceMessagingEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      unassigned: map['unassigned'] == null ? null : (pulumi.Input.decodeMapValues<DeviceMessagingEndpoint>(map['unassigned'], (value) => DeviceMessagingEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      unassigned: map['unassigned'] == null ? null : (pulumi.Input.decodeMapValues<DeviceMessagingEndpoint>(map['unassigned']!, (value) => DeviceMessagingEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

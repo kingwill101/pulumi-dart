@@ -54,12 +54,12 @@ class EipArgs {
 
   factory EipArgs.fromMap(Map<String, dynamic> map) {
     return EipArgs(
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      eipName: map['eipName'] == null ? null : (map['eipName'] as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      eipName: map['eipName'] == null ? null : (map['eipName']! as String).input(),
       ensRegionId: (map['ensRegionId'] as String).input(),
       internetChargeType: (map['internetChargeType'] as String).input(),
-      isp: map['isp'] == null ? null : (map['isp'] as String).input(),
+      isp: map['isp'] == null ? null : (map['isp']! as String).input(),
       paymentType: (map['paymentType'] as String).input(),
     );
   }

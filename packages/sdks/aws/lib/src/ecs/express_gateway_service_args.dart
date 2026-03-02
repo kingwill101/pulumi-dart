@@ -96,21 +96,21 @@ class ExpressGatewayServiceArgs {
 
   factory ExpressGatewayServiceArgs.fromMap(Map<String, dynamic> map) {
     return ExpressGatewayServiceArgs(
-      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
-      cpu: map['cpu'] == null ? null : (map['cpu'] as String).input(),
+      cluster: map['cluster'] == null ? null : ((map['cluster'] as String).input()).input(),
+      cpu: map['cpu'] == null ? null : ((map['cpu'] as String).input()).input(),
       executionRoleArn: (map['executionRoleArn'] as String).input(),
-      healthCheckPath: map['healthCheckPath'] == null ? null : (map['healthCheckPath'] as String).input(),
+      healthCheckPath: map['healthCheckPath'] == null ? null : ((map['healthCheckPath'] as String).input()).input(),
       infrastructureRoleArn: (map['infrastructureRoleArn'] as String).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as String).input(),
-      networkConfigurations: map['networkConfigurations'] == null ? null : (pulumi.Input.decodeList<ExpressGatewayServiceNetworkConfiguration>(map['networkConfigurations'], (value) => ExpressGatewayServiceNetworkConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      primaryContainer: (ExpressGatewayServicePrimaryContainer.fromMap((map['primaryContainer'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scalingTargets: map['scalingTargets'] == null ? null : (pulumi.Input.decodeList<ExpressGatewayServiceScalingTarget>(map['scalingTargets'], (value) => ExpressGatewayServiceScalingTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      taskRoleArn: map['taskRoleArn'] == null ? null : (map['taskRoleArn'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (ExpressGatewayServiceTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      waitForSteadyState: map['waitForSteadyState'] == null ? null : (map['waitForSteadyState'] as bool).input(),
+      memory: map['memory'] == null ? null : ((map['memory'] as String).input()).input(),
+      networkConfigurations: map['networkConfigurations'] == null ? null : ((pulumi.Input.decodeList<ExpressGatewayServiceNetworkConfiguration>(map['networkConfigurations']!, (value) => ExpressGatewayServiceNetworkConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      primaryContainer: (ExpressGatewayServicePrimaryContainer.fromMap((map['primaryContainer']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scalingTargets: map['scalingTargets'] == null ? null : ((pulumi.Input.decodeList<ExpressGatewayServiceScalingTarget>(map['scalingTargets']!, (value) => ExpressGatewayServiceScalingTarget.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      serviceName: map['serviceName'] == null ? null : ((map['serviceName'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      taskRoleArn: map['taskRoleArn'] == null ? null : ((map['taskRoleArn'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ExpressGatewayServiceTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      waitForSteadyState: map['waitForSteadyState'] == null ? null : ((map['waitForSteadyState'] as bool).input()).input(),
     );
   }
 }

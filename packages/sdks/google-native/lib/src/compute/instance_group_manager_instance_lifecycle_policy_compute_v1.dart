@@ -21,7 +21,7 @@ class InstanceGroupManagerInstanceLifecyclePolicyComputeV1 {
 
   factory InstanceGroupManagerInstanceLifecyclePolicyComputeV1.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerInstanceLifecyclePolicyComputeV1(
-      forceUpdateOnRepair: map['forceUpdateOnRepair'] == null ? null : (InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairComputeV1.fromValue(map['forceUpdateOnRepair'] as String)).input(),
+      forceUpdateOnRepair: map['forceUpdateOnRepair'] == null ? null : (InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairComputeV1.fromValue(map['forceUpdateOnRepair']! as String)).input(),
     );
   }
 }

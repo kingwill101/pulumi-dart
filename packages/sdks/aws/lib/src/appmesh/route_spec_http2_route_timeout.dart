@@ -27,8 +27,8 @@ class RouteSpecHttp2RouteTimeout {
 
   factory RouteSpecHttp2RouteTimeout.fromMap(Map<String, dynamic> map) {
     return RouteSpecHttp2RouteTimeout(
-      idle: map['idle'] == null ? null : (RouteSpecHttp2RouteTimeoutIdle.fromMap((map['idle'] as Map).cast<String, dynamic>())).input(),
-      perRequest: map['perRequest'] == null ? null : (RouteSpecHttp2RouteTimeoutPerRequest.fromMap((map['perRequest'] as Map).cast<String, dynamic>())).input(),
+      idle: map['idle'] == null ? null : ((RouteSpecHttp2RouteTimeoutIdle.fromMap((map['idle']! as Map).cast<String, dynamic>())).input()).input(),
+      perRequest: map['perRequest'] == null ? null : ((RouteSpecHttp2RouteTimeoutPerRequest.fromMap((map['perRequest']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

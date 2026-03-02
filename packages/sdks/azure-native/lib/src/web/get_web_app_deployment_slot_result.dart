@@ -85,19 +85,19 @@ class GetWebAppDeploymentSlotResult {
 
   factory GetWebAppDeploymentSlotResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppDeploymentSlotResult(
-      active: map['active'] == null ? null : map['active'] as bool,
-      author: map['author'] == null ? null : map['author'] as String,
-      authorEmail: map['authorEmail'] == null ? null : map['authorEmail'] as String,
+      active: map['active'] == null ? null : map['active']! as bool,
+      author: map['author'] == null ? null : map['author']! as String,
+      authorEmail: map['authorEmail'] == null ? null : map['authorEmail']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      deployer: map['deployer'] == null ? null : map['deployer'] as String,
-      details: map['details'] == null ? null : map['details'] as String,
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
+      deployer: map['deployer'] == null ? null : map['deployer']! as String,
+      details: map['details'] == null ? null : map['details']! as String,
+      endTime: map['endTime'] == null ? null : map['endTime']! as String,
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
+      message: map['message'] == null ? null : map['message']! as String,
       name: map['name'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
-      status: map['status'] == null ? null : map['status'] as int,
+      startTime: map['startTime'] == null ? null : map['startTime']! as String,
+      status: map['status'] == null ? null : map['status']! as int,
       type: map['type'] as String,
     );
   }

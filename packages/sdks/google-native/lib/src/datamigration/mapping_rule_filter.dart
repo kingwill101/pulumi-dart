@@ -41,11 +41,11 @@ class MappingRuleFilter {
 
   factory MappingRuleFilter.fromMap(Map<String, dynamic> map) {
     return MappingRuleFilter(
-      entities: map['entities'] == null ? null : ((map['entities'] as List).cast<String>()).input(),
-      entityNameContains: map['entityNameContains'] == null ? null : (map['entityNameContains'] as String).input(),
-      entityNamePrefix: map['entityNamePrefix'] == null ? null : (map['entityNamePrefix'] as String).input(),
-      entityNameSuffix: map['entityNameSuffix'] == null ? null : (map['entityNameSuffix'] as String).input(),
-      parentEntity: map['parentEntity'] == null ? null : (map['parentEntity'] as String).input(),
+      entities: map['entities'] == null ? null : ((map['entities']! as List).cast<String>()).input(),
+      entityNameContains: map['entityNameContains'] == null ? null : (map['entityNameContains']! as String).input(),
+      entityNamePrefix: map['entityNamePrefix'] == null ? null : (map['entityNamePrefix']! as String).input(),
+      entityNameSuffix: map['entityNameSuffix'] == null ? null : (map['entityNameSuffix']! as String).input(),
+      parentEntity: map['parentEntity'] == null ? null : (map['parentEntity']! as String).input(),
     );
   }
 }

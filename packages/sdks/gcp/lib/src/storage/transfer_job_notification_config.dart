@@ -30,7 +30,7 @@ class TransferJobNotificationConfig {
 
   factory TransferJobNotificationConfig.fromMap(Map<String, dynamic> map) {
     return TransferJobNotificationConfig(
-      eventTypes: map['eventTypes'] == null ? null : ((map['eventTypes'] as List).cast<String>()).input(),
+      eventTypes: map['eventTypes'] == null ? null : ((map['eventTypes']! as List).cast<String>()).input(),
       payloadFormat: (map['payloadFormat'] as String).input(),
       pubsubTopic: (map['pubsubTopic'] as String).input(),
     );

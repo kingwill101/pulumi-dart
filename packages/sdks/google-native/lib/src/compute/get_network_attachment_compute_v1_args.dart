@@ -32,7 +32,7 @@ class GetNetworkAttachmentComputeV1Args {
   factory GetNetworkAttachmentComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetNetworkAttachmentComputeV1Args(
       networkAttachment: (map['networkAttachment'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
     );
   }

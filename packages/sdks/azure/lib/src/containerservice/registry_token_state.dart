@@ -41,11 +41,11 @@ class RegistryTokenState {
 
   factory RegistryTokenState.fromMap(Map<String, dynamic> map) {
     return RegistryTokenState(
-      containerRegistryName: map['containerRegistryName'] == null ? null : (map['containerRegistryName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      scopeMapId: map['scopeMapId'] == null ? null : (map['scopeMapId'] as String).input(),
+      containerRegistryName: map['containerRegistryName'] == null ? null : (map['containerRegistryName']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      scopeMapId: map['scopeMapId'] == null ? null : (map['scopeMapId']! as String).input(),
     );
   }
 }

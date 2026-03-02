@@ -78,8 +78,8 @@ class IntegrationAccountAgreementArgs {
       hostIdentity: (IntegrationAccountAgreementHostIdentity.fromMap((map['hostIdentity'] as Map).cast<String, dynamic>())).input(),
       hostPartnerName: (map['hostPartnerName'] as String).input(),
       integrationAccountName: (map['integrationAccountName'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

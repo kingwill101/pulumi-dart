@@ -118,24 +118,24 @@ class GetDicomServiceResult {
 
   factory GetDicomServiceResult.fromMap(Map<String, dynamic> map) {
     return GetDicomServiceResult(
-      authenticationConfiguration: map['authenticationConfiguration'] == null ? null : DicomServiceAuthenticationConfigurationResponse.fromMap((map['authenticationConfiguration'] as Map).cast<String, dynamic>()),
+      authenticationConfiguration: map['authenticationConfiguration'] == null ? null : DicomServiceAuthenticationConfigurationResponse.fromMap((map['authenticationConfiguration']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
-      corsConfiguration: map['corsConfiguration'] == null ? null : CorsConfigurationResponse.fromMap((map['corsConfiguration'] as Map).cast<String, dynamic>()),
-      enableDataPartitions: map['enableDataPartitions'] == null ? null : map['enableDataPartitions'] as bool,
-      encryption: map['encryption'] == null ? null : EncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      corsConfiguration: map['corsConfiguration'] == null ? null : CorsConfigurationResponse.fromMap((map['corsConfiguration']! as Map).cast<String, dynamic>()),
+      enableDataPartitions: map['enableDataPartitions'] == null ? null : map['enableDataPartitions']! as bool,
+      encryption: map['encryption'] == null ? null : EncryptionResponse.fromMap((map['encryption']! as Map).cast<String, dynamic>()),
+      etag: map['etag'] == null ? null : map['etag']! as String,
       eventState: map['eventState'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ServiceManagedIdentityResponseIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location'] as String,
+      identity: map['identity'] == null ? null : ServiceManagedIdentityResponseIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
       publicNetworkAccess: map['publicNetworkAccess'] as String,
       serviceUrl: map['serviceUrl'] as String,
-      storageConfiguration: map['storageConfiguration'] == null ? null : StorageConfigurationResponse.fromMap((map['storageConfiguration'] as Map).cast<String, dynamic>()),
+      storageConfiguration: map['storageConfiguration'] == null ? null : StorageConfigurationResponse.fromMap((map['storageConfiguration']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

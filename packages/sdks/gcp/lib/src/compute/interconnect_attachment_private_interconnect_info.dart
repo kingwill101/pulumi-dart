@@ -22,7 +22,7 @@ class InterconnectAttachmentPrivateInterconnectInfo {
 
   factory InterconnectAttachmentPrivateInterconnectInfo.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentPrivateInterconnectInfo(
-      tag8021q: map['tag8021q'] == null ? null : (map['tag8021q'] as int).input(),
+      tag8021q: map['tag8021q'] == null ? null : (map['tag8021q']! as int).input(),
     );
   }
 }

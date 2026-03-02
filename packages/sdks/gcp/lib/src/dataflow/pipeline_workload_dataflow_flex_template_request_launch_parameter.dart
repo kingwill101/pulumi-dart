@@ -56,13 +56,13 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter {
 
   factory PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter.fromMap(Map<String, dynamic> map) {
     return PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter(
-      containerSpecGcsPath: map['containerSpecGcsPath'] == null ? null : (map['containerSpecGcsPath'] as String).input(),
-      environment: map['environment'] == null ? null : (PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment.fromMap((map['environment'] as Map).cast<String, dynamic>())).input(),
+      containerSpecGcsPath: map['containerSpecGcsPath'] == null ? null : (map['containerSpecGcsPath']! as String).input(),
+      environment: map['environment'] == null ? null : (PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment.fromMap((map['environment']! as Map).cast<String, dynamic>())).input(),
       jobName: (map['jobName'] as String).input(),
-      launchOptions: map['launchOptions'] == null ? null : ((map['launchOptions'] as Map).cast<String, String>()).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      transformNameMappings: map['transformNameMappings'] == null ? null : ((map['transformNameMappings'] as Map).cast<String, String>()).input(),
-      update: map['update'] == null ? null : (map['update'] as bool).input(),
+      launchOptions: map['launchOptions'] == null ? null : ((map['launchOptions']! as Map).cast<String, String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      transformNameMappings: map['transformNameMappings'] == null ? null : ((map['transformNameMappings']! as Map).cast<String, String>()).input(),
+      update: map['update'] == null ? null : (map['update']! as bool).input(),
     );
   }
 }

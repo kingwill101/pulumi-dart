@@ -41,11 +41,11 @@ class AclAttachmentState {
 
   factory AclAttachmentState.fromMap(Map<String, dynamic> map) {
     return AclAttachmentState(
-      aclId: map['aclId'] == null ? null : (map['aclId'] as String).input(),
-      aclType: map['aclType'] == null ? null : (map['aclType'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      aclId: map['aclId'] == null ? null : (map['aclId']! as String).input(),
+      aclType: map['aclType'] == null ? null : (map['aclType']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

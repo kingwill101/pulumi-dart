@@ -30,9 +30,9 @@ class LabelingJobOutputConfig {
 
   factory LabelingJobOutputConfig.fromMap(Map<String, dynamic> map) {
     return LabelingJobOutputConfig(
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
       s3OutputPath: (map['s3OutputPath'] as String).input(),
-      snsTopicArn: map['snsTopicArn'] == null ? null : (map['snsTopicArn'] as String).input(),
+      snsTopicArn: map['snsTopicArn'] == null ? null : ((map['snsTopicArn'] as String).input()).input(),
     );
   }
 }

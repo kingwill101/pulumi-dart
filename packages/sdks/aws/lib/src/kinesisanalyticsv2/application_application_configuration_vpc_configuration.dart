@@ -35,8 +35,8 @@ class ApplicationApplicationConfigurationVpcConfiguration {
     return ApplicationApplicationConfigurationVpcConfiguration(
       securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
       subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
-      vpcConfigurationId: map['vpcConfigurationId'] == null ? null : (map['vpcConfigurationId'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpcConfigurationId: map['vpcConfigurationId'] == null ? null : ((map['vpcConfigurationId'] as String).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

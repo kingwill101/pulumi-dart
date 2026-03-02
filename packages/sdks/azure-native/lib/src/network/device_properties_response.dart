@@ -31,9 +31,9 @@ class DevicePropertiesResponse {
 
   factory DevicePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DevicePropertiesResponse(
-      deviceModel: map['deviceModel'] == null ? null : (map['deviceModel'] as String).input(),
-      deviceVendor: map['deviceVendor'] == null ? null : (map['deviceVendor'] as String).input(),
-      linkSpeedInMbps: map['linkSpeedInMbps'] == null ? null : (map['linkSpeedInMbps'] as int).input(),
+      deviceModel: map['deviceModel'] == null ? null : (map['deviceModel']! as String).input(),
+      deviceVendor: map['deviceVendor'] == null ? null : (map['deviceVendor']! as String).input(),
+      linkSpeedInMbps: map['linkSpeedInMbps'] == null ? null : (map['linkSpeedInMbps']! as int).input(),
     );
   }
 }

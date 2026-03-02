@@ -36,7 +36,7 @@ class ImpactDetailsResponse {
 
   factory ImpactDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ImpactDetailsResponse(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
       impactId: (map['impactId'] as String).input(),
       impactedResourceId: (map['impactedResourceId'] as String).input(),
       startTime: (map['startTime'] as String).input(),

@@ -41,11 +41,11 @@ class MavenArtifact {
 
   factory MavenArtifact.fromMap(Map<String, dynamic> map) {
     return MavenArtifact(
-      artifactId: map['artifactId'] == null ? null : (map['artifactId'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      artifactId: map['artifactId'] == null ? null : (map['artifactId']! as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      repository: map['repository'] == null ? null : (map['repository']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

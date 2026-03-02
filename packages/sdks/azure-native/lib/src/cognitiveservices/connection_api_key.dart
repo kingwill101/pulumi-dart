@@ -20,7 +20,7 @@ class ConnectionApiKey {
 
   factory ConnectionApiKey.fromMap(Map<String, dynamic> map) {
     return ConnectionApiKey(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
     );
   }
 }

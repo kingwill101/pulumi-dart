@@ -54,7 +54,7 @@ class GetSecretVersionsResult {
       name: map['name'] as String,
       region: map['region'] as String,
       secretId: map['secretId'] as String,
-      versions: pulumi.Input.decodeList<GetSecretVersionsVersion>(map['versions'], (value) => GetSecretVersionsVersion.fromMap((value as Map).cast<String, dynamic>())),
+      versions: pulumi.Input.decodeList<GetSecretVersionsVersion>(map['versions']!, (value) => GetSecretVersionsVersion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

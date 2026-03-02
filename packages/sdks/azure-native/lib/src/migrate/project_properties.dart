@@ -46,12 +46,12 @@ class ProjectProperties {
 
   factory ProjectProperties.fromMap(Map<String, dynamic> map) {
     return ProjectProperties(
-      assessmentSolutionId: map['assessmentSolutionId'] == null ? null : (map['assessmentSolutionId'] as String).input(),
-      customerStorageAccountArmId: map['customerStorageAccountArmId'] == null ? null : (map['customerStorageAccountArmId'] as String).input(),
-      customerWorkspaceId: map['customerWorkspaceId'] == null ? null : (map['customerWorkspaceId'] as String).input(),
-      customerWorkspaceLocation: map['customerWorkspaceLocation'] == null ? null : (map['customerWorkspaceLocation'] as String).input(),
-      projectStatus: map['projectStatus'] == null ? null : (map['projectStatus'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      assessmentSolutionId: map['assessmentSolutionId'] == null ? null : (map['assessmentSolutionId']! as String).input(),
+      customerStorageAccountArmId: map['customerStorageAccountArmId'] == null ? null : (map['customerStorageAccountArmId']! as String).input(),
+      customerWorkspaceId: map['customerWorkspaceId'] == null ? null : (map['customerWorkspaceId']! as String).input(),
+      customerWorkspaceLocation: map['customerWorkspaceLocation'] == null ? null : (map['customerWorkspaceLocation']! as String).input(),
+      projectStatus: map['projectStatus'] == null ? null : (map['projectStatus']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
     );
   }
 }

@@ -53,13 +53,13 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       groupId: (map['groupId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      migrationTargetType: map['migrationTargetType'] == null ? null : (GroupMigrationTargetType.fromValue(map['migrationTargetType'] as String)).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      migrationTargetType: map['migrationTargetType'] == null ? null : (GroupMigrationTargetType.fromValue(map['migrationTargetType']! as String)).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

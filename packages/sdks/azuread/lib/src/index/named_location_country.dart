@@ -31,8 +31,8 @@ class NamedLocationCountry {
   factory NamedLocationCountry.fromMap(Map<String, dynamic> map) {
     return NamedLocationCountry(
       countriesAndRegions: ((map['countriesAndRegions'] as List).cast<String>()).input(),
-      countryLookupMethod: map['countryLookupMethod'] == null ? null : (map['countryLookupMethod'] as String).input(),
-      includeUnknownCountriesAndRegions: map['includeUnknownCountriesAndRegions'] == null ? null : (map['includeUnknownCountriesAndRegions'] as bool).input(),
+      countryLookupMethod: map['countryLookupMethod'] == null ? null : (map['countryLookupMethod']! as String).input(),
+      includeUnknownCountriesAndRegions: map['includeUnknownCountriesAndRegions'] == null ? null : (map['includeUnknownCountriesAndRegions']! as bool).input(),
     );
   }
 }

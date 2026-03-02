@@ -91,17 +91,17 @@ class ConfigArgs {
 
   factory ConfigArgs.fromMap(Map<String, dynamic> map) {
     return ConfigArgs(
-      authorizedDomains: map['authorizedDomains'] == null ? null : ((map['authorizedDomains'] as List).cast<String>()).input(),
-      autodeleteAnonymousUsers: map['autodeleteAnonymousUsers'] == null ? null : (map['autodeleteAnonymousUsers'] as bool).input(),
-      blockingFunctions: map['blockingFunctions'] == null ? null : (ConfigBlockingFunctions.fromMap((map['blockingFunctions'] as Map).cast<String, dynamic>())).input(),
-      client: map['client'] == null ? null : (ConfigClient.fromMap((map['client'] as Map).cast<String, dynamic>())).input(),
-      mfa: map['mfa'] == null ? null : (ConfigMfa.fromMap((map['mfa'] as Map).cast<String, dynamic>())).input(),
-      monitoring: map['monitoring'] == null ? null : (ConfigMonitoring.fromMap((map['monitoring'] as Map).cast<String, dynamic>())).input(),
-      multiTenant: map['multiTenant'] == null ? null : (ConfigMultiTenant.fromMap((map['multiTenant'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      quota: map['quota'] == null ? null : (ConfigQuota.fromMap((map['quota'] as Map).cast<String, dynamic>())).input(),
-      signIn: map['signIn'] == null ? null : (ConfigSignIn.fromMap((map['signIn'] as Map).cast<String, dynamic>())).input(),
-      smsRegionConfig: map['smsRegionConfig'] == null ? null : (ConfigSmsRegionConfig.fromMap((map['smsRegionConfig'] as Map).cast<String, dynamic>())).input(),
+      authorizedDomains: map['authorizedDomains'] == null ? null : ((map['authorizedDomains']! as List).cast<String>()).input(),
+      autodeleteAnonymousUsers: map['autodeleteAnonymousUsers'] == null ? null : (map['autodeleteAnonymousUsers']! as bool).input(),
+      blockingFunctions: map['blockingFunctions'] == null ? null : (ConfigBlockingFunctions.fromMap((map['blockingFunctions']! as Map).cast<String, dynamic>())).input(),
+      client: map['client'] == null ? null : (ConfigClient.fromMap((map['client']! as Map).cast<String, dynamic>())).input(),
+      mfa: map['mfa'] == null ? null : (ConfigMfa.fromMap((map['mfa']! as Map).cast<String, dynamic>())).input(),
+      monitoring: map['monitoring'] == null ? null : (ConfigMonitoring.fromMap((map['monitoring']! as Map).cast<String, dynamic>())).input(),
+      multiTenant: map['multiTenant'] == null ? null : (ConfigMultiTenant.fromMap((map['multiTenant']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      quota: map['quota'] == null ? null : (ConfigQuota.fromMap((map['quota']! as Map).cast<String, dynamic>())).input(),
+      signIn: map['signIn'] == null ? null : (ConfigSignIn.fromMap((map['signIn']! as Map).cast<String, dynamic>())).input(),
+      smsRegionConfig: map['smsRegionConfig'] == null ? null : (ConfigSmsRegionConfig.fromMap((map['smsRegionConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

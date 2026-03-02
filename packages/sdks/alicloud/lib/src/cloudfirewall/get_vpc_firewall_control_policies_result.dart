@@ -92,21 +92,21 @@ class GetVpcFirewallControlPoliciesResult {
 
   factory GetVpcFirewallControlPoliciesResult.fromMap(Map<String, dynamic> map) {
     return GetVpcFirewallControlPoliciesResult(
-      aclAction: map['aclAction'] == null ? null : map['aclAction'] as String,
-      aclUuid: map['aclUuid'] == null ? null : map['aclUuid'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      destination: map['destination'] == null ? null : map['destination'] as String,
+      aclAction: map['aclAction'] == null ? null : map['aclAction']! as String,
+      aclUuid: map['aclUuid'] == null ? null : map['aclUuid']! as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      destination: map['destination'] == null ? null : map['destination']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      lang: map['lang'] == null ? null : map['lang'] as String,
-      memberUid: map['memberUid'] == null ? null : map['memberUid'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
+      lang: map['lang'] == null ? null : map['lang']! as String,
+      memberUid: map['memberUid'] == null ? null : map['memberUid']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
       policies: pulumi.Input.decodeList<GetVpcFirewallControlPoliciesPolicy>(map['policies'], (value) => GetVpcFirewallControlPoliciesPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      proto: map['proto'] == null ? null : map['proto'] as String,
-      release: map['release'] == null ? null : map['release'] as bool,
-      source: map['source'] == null ? null : map['source'] as String,
+      proto: map['proto'] == null ? null : map['proto']! as String,
+      release: map['release'] == null ? null : map['release']! as bool,
+      source: map['source'] == null ? null : map['source']! as String,
       vpcFirewallId: map['vpcFirewallId'] as String,
     );
   }

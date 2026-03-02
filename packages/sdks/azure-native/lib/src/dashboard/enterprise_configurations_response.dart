@@ -26,8 +26,8 @@ class EnterpriseConfigurationsResponse {
 
   factory EnterpriseConfigurationsResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseConfigurationsResponse(
-      marketplaceAutoRenew: map['marketplaceAutoRenew'] == null ? null : (map['marketplaceAutoRenew'] as String).input(),
-      marketplacePlanId: map['marketplacePlanId'] == null ? null : (map['marketplacePlanId'] as String).input(),
+      marketplaceAutoRenew: map['marketplaceAutoRenew'] == null ? null : (map['marketplaceAutoRenew']! as String).input(),
+      marketplacePlanId: map['marketplacePlanId'] == null ? null : (map['marketplacePlanId']! as String).input(),
     );
   }
 }

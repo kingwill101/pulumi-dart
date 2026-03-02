@@ -93,19 +93,19 @@ class AlertConditionArgs {
 
   factory AlertConditionArgs.fromMap(Map<String, dynamic> map) {
     return AlertConditionArgs(
-      conditionScope: map['conditionScope'] == null ? null : (map['conditionScope'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      conditionScope: map['conditionScope'] == null ? null : (map['conditionScope']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       entities: ((map['entities'] as List).cast<String>()).input(),
-      gcMetric: map['gcMetric'] == null ? null : (map['gcMetric'] as String).input(),
+      gcMetric: map['gcMetric'] == null ? null : (map['gcMetric']! as String).input(),
       metric: (map['metric'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       policyId: (map['policyId'] as String).input(),
-      runbookUrl: map['runbookUrl'] == null ? null : (map['runbookUrl'] as String).input(),
+      runbookUrl: map['runbookUrl'] == null ? null : (map['runbookUrl']! as String).input(),
       terms: (pulumi.Input.decodeList<AlertConditionTerm>(map['terms'], (value) => AlertConditionTerm.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
-      userDefinedMetric: map['userDefinedMetric'] == null ? null : (map['userDefinedMetric'] as String).input(),
-      userDefinedValueFunction: map['userDefinedValueFunction'] == null ? null : (map['userDefinedValueFunction'] as String).input(),
-      violationCloseTimer: map['violationCloseTimer'] == null ? null : (map['violationCloseTimer'] as int).input(),
+      userDefinedMetric: map['userDefinedMetric'] == null ? null : (map['userDefinedMetric']! as String).input(),
+      userDefinedValueFunction: map['userDefinedValueFunction'] == null ? null : (map['userDefinedValueFunction']! as String).input(),
+      violationCloseTimer: map['violationCloseTimer'] == null ? null : (map['violationCloseTimer']! as int).input(),
     );
   }
 }

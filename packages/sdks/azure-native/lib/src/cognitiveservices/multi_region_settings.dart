@@ -26,8 +26,8 @@ class MultiRegionSettings {
 
   factory MultiRegionSettings.fromMap(Map<String, dynamic> map) {
     return MultiRegionSettings(
-      regions: map['regions'] == null ? null : (pulumi.Input.decodeList<RegionSetting>(map['regions'], (value) => RegionSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      routingMethod: map['routingMethod'] == null ? null : (map['routingMethod'] as String).input(),
+      regions: map['regions'] == null ? null : (pulumi.Input.decodeList<RegionSetting>(map['regions']!, (value) => RegionSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routingMethod: map['routingMethod'] == null ? null : (map['routingMethod']! as String).input(),
     );
   }
 }

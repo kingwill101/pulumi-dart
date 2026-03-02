@@ -86,17 +86,17 @@ class ExadataInfrastructureArgs {
   factory ExadataInfrastructureArgs.fromMap(Map<String, dynamic> map) {
     return ExadataInfrastructureArgs(
       computeCount: (map['computeCount'] as int).input(),
-      customerContacts: map['customerContacts'] == null ? null : ((map['customerContacts'] as List).cast<String>()).input(),
-      databaseServerType: map['databaseServerType'] == null ? null : (map['databaseServerType'] as String).input(),
+      customerContacts: map['customerContacts'] == null ? null : ((map['customerContacts']! as List).cast<String>()).input(),
+      databaseServerType: map['databaseServerType'] == null ? null : (map['databaseServerType']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maintenanceWindows: map['maintenanceWindows'] == null ? null : (pulumi.Input.decodeList<ExadataInfrastructureMaintenanceWindow>(map['maintenanceWindows'], (value) => ExadataInfrastructureMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maintenanceWindows: map['maintenanceWindows'] == null ? null : (pulumi.Input.decodeList<ExadataInfrastructureMaintenanceWindow>(map['maintenanceWindows']!, (value) => ExadataInfrastructureMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       shape: (map['shape'] as String).input(),
       storageCount: (map['storageCount'] as int).input(),
-      storageServerType: map['storageServerType'] == null ? null : (map['storageServerType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      storageServerType: map['storageServerType'] == null ? null : (map['storageServerType']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       zones: ((map['zones'] as List).cast<String>()).input(),
     );
   }

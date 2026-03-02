@@ -29,7 +29,7 @@ class StorageBundleArgs {
 
   factory StorageBundleArgs.fromMap(Map<String, dynamic> map) {
     return StorageBundleArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       storageBundleName: (map['storageBundleName'] as String).input(),
     );
   }

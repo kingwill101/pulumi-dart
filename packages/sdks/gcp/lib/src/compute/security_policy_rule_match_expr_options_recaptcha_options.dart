@@ -25,8 +25,8 @@ class SecurityPolicyRuleMatchExprOptionsRecaptchaOptions {
 
   factory SecurityPolicyRuleMatchExprOptionsRecaptchaOptions.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleMatchExprOptionsRecaptchaOptions(
-      actionTokenSiteKeys: map['actionTokenSiteKeys'] == null ? null : ((map['actionTokenSiteKeys'] as List).cast<String>()).input(),
-      sessionTokenSiteKeys: map['sessionTokenSiteKeys'] == null ? null : ((map['sessionTokenSiteKeys'] as List).cast<String>()).input(),
+      actionTokenSiteKeys: map['actionTokenSiteKeys'] == null ? null : ((map['actionTokenSiteKeys']! as List).cast<String>()).input(),
+      sessionTokenSiteKeys: map['sessionTokenSiteKeys'] == null ? null : ((map['sessionTokenSiteKeys']! as List).cast<String>()).input(),
     );
   }
 }

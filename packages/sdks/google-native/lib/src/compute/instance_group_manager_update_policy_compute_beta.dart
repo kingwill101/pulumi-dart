@@ -61,14 +61,14 @@ class InstanceGroupManagerUpdatePolicyComputeBeta {
 
   factory InstanceGroupManagerUpdatePolicyComputeBeta.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerUpdatePolicyComputeBeta(
-      instanceRedistributionType: map['instanceRedistributionType'] == null ? null : (InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeComputeBeta.fromValue(map['instanceRedistributionType'] as String)).input(),
-      maxSurge: map['maxSurge'] == null ? null : (FixedOrPercentComputeBeta.fromMap((map['maxSurge'] as Map).cast<String, dynamic>())).input(),
-      maxUnavailable: map['maxUnavailable'] == null ? null : (FixedOrPercentComputeBeta.fromMap((map['maxUnavailable'] as Map).cast<String, dynamic>())).input(),
-      minReadySec: map['minReadySec'] == null ? null : (map['minReadySec'] as int).input(),
-      minimalAction: map['minimalAction'] == null ? null : (InstanceGroupManagerUpdatePolicyMinimalActionComputeBeta.fromValue(map['minimalAction'] as String)).input(),
-      mostDisruptiveAllowedAction: map['mostDisruptiveAllowedAction'] == null ? null : (InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionComputeBeta.fromValue(map['mostDisruptiveAllowedAction'] as String)).input(),
-      replacementMethod: map['replacementMethod'] == null ? null : (InstanceGroupManagerUpdatePolicyReplacementMethodComputeBeta.fromValue(map['replacementMethod'] as String)).input(),
-      type: map['type'] == null ? null : (InstanceGroupManagerUpdatePolicyTypeComputeBeta.fromValue(map['type'] as String)).input(),
+      instanceRedistributionType: map['instanceRedistributionType'] == null ? null : (InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeComputeBeta.fromValue(map['instanceRedistributionType']! as String)).input(),
+      maxSurge: map['maxSurge'] == null ? null : (FixedOrPercentComputeBeta.fromMap((map['maxSurge']! as Map).cast<String, dynamic>())).input(),
+      maxUnavailable: map['maxUnavailable'] == null ? null : (FixedOrPercentComputeBeta.fromMap((map['maxUnavailable']! as Map).cast<String, dynamic>())).input(),
+      minReadySec: map['minReadySec'] == null ? null : (map['minReadySec']! as int).input(),
+      minimalAction: map['minimalAction'] == null ? null : (InstanceGroupManagerUpdatePolicyMinimalActionComputeBeta.fromValue(map['minimalAction']! as String)).input(),
+      mostDisruptiveAllowedAction: map['mostDisruptiveAllowedAction'] == null ? null : (InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionComputeBeta.fromValue(map['mostDisruptiveAllowedAction']! as String)).input(),
+      replacementMethod: map['replacementMethod'] == null ? null : (InstanceGroupManagerUpdatePolicyReplacementMethodComputeBeta.fromValue(map['replacementMethod']! as String)).input(),
+      type: map['type'] == null ? null : (InstanceGroupManagerUpdatePolicyTypeComputeBeta.fromValue(map['type']! as String)).input(),
     );
   }
 }

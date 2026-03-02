@@ -59,15 +59,15 @@ class EcsKeyPairState {
 
   factory EcsKeyPairState.fromMap(Map<String, dynamic> map) {
     return EcsKeyPairState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      fingerPrint: map['fingerPrint'] == null ? null : (map['fingerPrint'] as String).input(),
-      keyFile: map['keyFile'] == null ? null : (map['keyFile'] as String).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      keyNamePrefix: map['keyNamePrefix'] == null ? null : (map['keyNamePrefix'] as String).input(),
-      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName'] as String).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      fingerPrint: map['fingerPrint'] == null ? null : (map['fingerPrint']! as String).input(),
+      keyFile: map['keyFile'] == null ? null : (map['keyFile']! as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
+      keyNamePrefix: map['keyNamePrefix'] == null ? null : (map['keyNamePrefix']! as String).input(),
+      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName']! as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -35,8 +35,8 @@ class GetResolverZonesResult {
   factory GetResolverZonesResult.fromMap(Map<String, dynamic> map) {
     return GetResolverZonesResult(
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
       zones: pulumi.Input.decodeList<GetResolverZonesZone>(map['zones'], (value) => GetResolverZonesZone.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

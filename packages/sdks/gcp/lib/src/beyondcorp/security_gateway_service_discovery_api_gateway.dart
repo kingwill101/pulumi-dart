@@ -22,7 +22,7 @@ class SecurityGatewayServiceDiscoveryApiGateway {
 
   factory SecurityGatewayServiceDiscoveryApiGateway.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayServiceDiscoveryApiGateway(
-      resourceOverride: map['resourceOverride'] == null ? null : (SecurityGatewayServiceDiscoveryApiGatewayResourceOverride.fromMap((map['resourceOverride'] as Map).cast<String, dynamic>())).input(),
+      resourceOverride: map['resourceOverride'] == null ? null : (SecurityGatewayServiceDiscoveryApiGatewayResourceOverride.fromMap((map['resourceOverride']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

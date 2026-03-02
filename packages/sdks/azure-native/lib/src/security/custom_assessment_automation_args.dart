@@ -59,14 +59,14 @@ class CustomAssessmentAutomationArgs {
 
   factory CustomAssessmentAutomationArgs.fromMap(Map<String, dynamic> map) {
     return CustomAssessmentAutomationArgs(
-      compressedQuery: map['compressedQuery'] == null ? null : (map['compressedQuery'] as String).input(),
-      customAssessmentAutomationName: map['customAssessmentAutomationName'] == null ? null : (map['customAssessmentAutomationName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      remediationDescription: map['remediationDescription'] == null ? null : (map['remediationDescription'] as String).input(),
+      compressedQuery: map['compressedQuery'] == null ? null : (map['compressedQuery']! as String).input(),
+      customAssessmentAutomationName: map['customAssessmentAutomationName'] == null ? null : (map['customAssessmentAutomationName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      remediationDescription: map['remediationDescription'] == null ? null : (map['remediationDescription']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
-      supportedCloud: map['supportedCloud'] == null ? null : (map['supportedCloud'] as String).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
+      supportedCloud: map['supportedCloud'] == null ? null : (map['supportedCloud']! as String).input(),
     );
   }
 }

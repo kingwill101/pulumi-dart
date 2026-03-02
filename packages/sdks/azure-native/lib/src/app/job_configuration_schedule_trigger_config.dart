@@ -32,8 +32,8 @@ class JobConfigurationScheduleTriggerConfig {
   factory JobConfigurationScheduleTriggerConfig.fromMap(Map<String, dynamic> map) {
     return JobConfigurationScheduleTriggerConfig(
       cronExpression: (map['cronExpression'] as String).input(),
-      parallelism: map['parallelism'] == null ? null : (map['parallelism'] as int).input(),
-      replicaCompletionCount: map['replicaCompletionCount'] == null ? null : (map['replicaCompletionCount'] as int).input(),
+      parallelism: map['parallelism'] == null ? null : (map['parallelism']! as int).input(),
+      replicaCompletionCount: map['replicaCompletionCount'] == null ? null : (map['replicaCompletionCount']! as int).input(),
     );
   }
 }

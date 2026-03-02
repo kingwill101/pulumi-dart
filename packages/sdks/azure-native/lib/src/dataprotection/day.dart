@@ -26,8 +26,8 @@ class Day {
 
   factory Day.fromMap(Map<String, dynamic> map) {
     return Day(
-      date: map['date'] == null ? null : (map['date'] as int).input(),
-      isLast: map['isLast'] == null ? null : (map['isLast'] as bool).input(),
+      date: map['date'] == null ? null : (map['date']! as int).input(),
+      isLast: map['isLast'] == null ? null : (map['isLast']! as bool).input(),
     );
   }
 }

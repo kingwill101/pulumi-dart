@@ -36,10 +36,10 @@ class ElasticBackupProperties {
 
   factory ElasticBackupProperties.fromMap(Map<String, dynamic> map) {
     return ElasticBackupProperties(
-      elasticSnapshotResourceId: map['elasticSnapshotResourceId'] == null ? null : (map['elasticSnapshotResourceId'] as String).input(),
+      elasticSnapshotResourceId: map['elasticSnapshotResourceId'] == null ? null : (map['elasticSnapshotResourceId']! as String).input(),
       elasticVolumeResourceId: (map['elasticVolumeResourceId'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      snapshotUsage: map['snapshotUsage'] == null ? null : (map['snapshotUsage'] as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      snapshotUsage: map['snapshotUsage'] == null ? null : (map['snapshotUsage']! as String).input(),
     );
   }
 }

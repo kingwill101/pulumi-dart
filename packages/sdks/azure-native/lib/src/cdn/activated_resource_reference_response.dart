@@ -26,7 +26,7 @@ class ActivatedResourceReferenceResponse {
 
   factory ActivatedResourceReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ActivatedResourceReferenceResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       isActive: (map['isActive'] as bool).input(),
     );
   }

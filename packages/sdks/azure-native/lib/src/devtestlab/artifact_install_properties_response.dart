@@ -52,13 +52,13 @@ class ArtifactInstallPropertiesResponse {
 
   factory ArtifactInstallPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ArtifactInstallPropertiesResponse(
-      artifactId: map['artifactId'] == null ? null : (map['artifactId'] as String).input(),
-      artifactTitle: map['artifactTitle'] == null ? null : (map['artifactTitle'] as String).input(),
-      deploymentStatusMessage: map['deploymentStatusMessage'] == null ? null : (map['deploymentStatusMessage'] as String).input(),
-      installTime: map['installTime'] == null ? null : (map['installTime'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ArtifactParameterPropertiesResponse>(map['parameters'], (value) => ArtifactParameterPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vmExtensionStatusMessage: map['vmExtensionStatusMessage'] == null ? null : (map['vmExtensionStatusMessage'] as String).input(),
+      artifactId: map['artifactId'] == null ? null : (map['artifactId']! as String).input(),
+      artifactTitle: map['artifactTitle'] == null ? null : (map['artifactTitle']! as String).input(),
+      deploymentStatusMessage: map['deploymentStatusMessage'] == null ? null : (map['deploymentStatusMessage']! as String).input(),
+      installTime: map['installTime'] == null ? null : (map['installTime']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ArtifactParameterPropertiesResponse>(map['parameters']!, (value) => ArtifactParameterPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vmExtensionStatusMessage: map['vmExtensionStatusMessage'] == null ? null : (map['vmExtensionStatusMessage']! as String).input(),
     );
   }
 }

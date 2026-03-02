@@ -20,7 +20,7 @@ class CrawlerLineageConfiguration {
 
   factory CrawlerLineageConfiguration.fromMap(Map<String, dynamic> map) {
     return CrawlerLineageConfiguration(
-      crawlerLineageSettings: map['crawlerLineageSettings'] == null ? null : (map['crawlerLineageSettings'] as String).input(),
+      crawlerLineageSettings: map['crawlerLineageSettings'] == null ? null : ((map['crawlerLineageSettings'] as String).input()).input(),
     );
   }
 }

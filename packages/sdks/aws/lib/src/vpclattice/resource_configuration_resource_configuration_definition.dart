@@ -33,9 +33,9 @@ class ResourceConfigurationResourceConfigurationDefinition {
 
   factory ResourceConfigurationResourceConfigurationDefinition.fromMap(Map<String, dynamic> map) {
     return ResourceConfigurationResourceConfigurationDefinition(
-      arnResource: map['arnResource'] == null ? null : (ResourceConfigurationResourceConfigurationDefinitionArnResource.fromMap((map['arnResource'] as Map).cast<String, dynamic>())).input(),
-      dnsResource: map['dnsResource'] == null ? null : (ResourceConfigurationResourceConfigurationDefinitionDnsResource.fromMap((map['dnsResource'] as Map).cast<String, dynamic>())).input(),
-      ipResource: map['ipResource'] == null ? null : (ResourceConfigurationResourceConfigurationDefinitionIpResource.fromMap((map['ipResource'] as Map).cast<String, dynamic>())).input(),
+      arnResource: map['arnResource'] == null ? null : ((ResourceConfigurationResourceConfigurationDefinitionArnResource.fromMap((map['arnResource']! as Map).cast<String, dynamic>())).input()).input(),
+      dnsResource: map['dnsResource'] == null ? null : ((ResourceConfigurationResourceConfigurationDefinitionDnsResource.fromMap((map['dnsResource']! as Map).cast<String, dynamic>())).input()).input(),
+      ipResource: map['ipResource'] == null ? null : ((ResourceConfigurationResourceConfigurationDefinitionIpResource.fromMap((map['ipResource']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

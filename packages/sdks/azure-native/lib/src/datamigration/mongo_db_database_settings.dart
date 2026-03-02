@@ -28,7 +28,7 @@ class MongoDbDatabaseSettings {
   factory MongoDbDatabaseSettings.fromMap(Map<String, dynamic> map) {
     return MongoDbDatabaseSettings(
       collections: (pulumi.Input.decodeMapValues<MongoDbCollectionSettings>(map['collections'], (value) => MongoDbCollectionSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetRUs: map['targetRUs'] == null ? null : (map['targetRUs'] as int).input(),
+      targetRUs: map['targetRUs'] == null ? null : (map['targetRUs']! as int).input(),
     );
   }
 }

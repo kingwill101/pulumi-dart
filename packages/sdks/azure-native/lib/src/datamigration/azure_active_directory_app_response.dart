@@ -36,10 +36,10 @@ class AzureActiveDirectoryAppResponse {
 
   factory AzureActiveDirectoryAppResponse.fromMap(Map<String, dynamic> map) {
     return AzureActiveDirectoryAppResponse(
-      appKey: map['appKey'] == null ? null : (map['appKey'] as String).input(),
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      ignoreAzurePermissions: map['ignoreAzurePermissions'] == null ? null : (map['ignoreAzurePermissions'] as bool).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      appKey: map['appKey'] == null ? null : (map['appKey']! as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      ignoreAzurePermissions: map['ignoreAzurePermissions'] == null ? null : (map['ignoreAzurePermissions']! as bool).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

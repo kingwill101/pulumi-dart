@@ -33,7 +33,7 @@ class GetProcessorArgs {
     return GetProcessorArgs(
       location: (map['location'] as String).input(),
       processorId: (map['processorId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

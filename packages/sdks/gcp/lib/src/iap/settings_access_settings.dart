@@ -68,13 +68,13 @@ class SettingsAccessSettings {
 
   factory SettingsAccessSettings.fromMap(Map<String, dynamic> map) {
     return SettingsAccessSettings(
-      allowedDomainsSettings: map['allowedDomainsSettings'] == null ? null : (SettingsAccessSettingsAllowedDomainsSettings.fromMap((map['allowedDomainsSettings'] as Map).cast<String, dynamic>())).input(),
-      corsSettings: map['corsSettings'] == null ? null : (SettingsAccessSettingsCorsSettings.fromMap((map['corsSettings'] as Map).cast<String, dynamic>())).input(),
-      gcipSettings: map['gcipSettings'] == null ? null : (SettingsAccessSettingsGcipSettings.fromMap((map['gcipSettings'] as Map).cast<String, dynamic>())).input(),
-      identitySources: map['identitySources'] == null ? null : ((map['identitySources'] as List).cast<String>()).input(),
-      oauthSettings: map['oauthSettings'] == null ? null : (SettingsAccessSettingsOauthSettings.fromMap((map['oauthSettings'] as Map).cast<String, dynamic>())).input(),
-      reauthSettings: map['reauthSettings'] == null ? null : (SettingsAccessSettingsReauthSettings.fromMap((map['reauthSettings'] as Map).cast<String, dynamic>())).input(),
-      workforceIdentitySettings: map['workforceIdentitySettings'] == null ? null : (SettingsAccessSettingsWorkforceIdentitySettings.fromMap((map['workforceIdentitySettings'] as Map).cast<String, dynamic>())).input(),
+      allowedDomainsSettings: map['allowedDomainsSettings'] == null ? null : (SettingsAccessSettingsAllowedDomainsSettings.fromMap((map['allowedDomainsSettings']! as Map).cast<String, dynamic>())).input(),
+      corsSettings: map['corsSettings'] == null ? null : (SettingsAccessSettingsCorsSettings.fromMap((map['corsSettings']! as Map).cast<String, dynamic>())).input(),
+      gcipSettings: map['gcipSettings'] == null ? null : (SettingsAccessSettingsGcipSettings.fromMap((map['gcipSettings']! as Map).cast<String, dynamic>())).input(),
+      identitySources: map['identitySources'] == null ? null : ((map['identitySources']! as List).cast<String>()).input(),
+      oauthSettings: map['oauthSettings'] == null ? null : (SettingsAccessSettingsOauthSettings.fromMap((map['oauthSettings']! as Map).cast<String, dynamic>())).input(),
+      reauthSettings: map['reauthSettings'] == null ? null : (SettingsAccessSettingsReauthSettings.fromMap((map['reauthSettings']! as Map).cast<String, dynamic>())).input(),
+      workforceIdentitySettings: map['workforceIdentitySettings'] == null ? null : (SettingsAccessSettingsWorkforceIdentitySettings.fromMap((map['workforceIdentitySettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class BucketLifecycleRuleAbortMultipartUpload {
 
   factory BucketLifecycleRuleAbortMultipartUpload.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleRuleAbortMultipartUpload(
-      createdBeforeDate: map['createdBeforeDate'] == null ? null : (map['createdBeforeDate'] as String).input(),
-      days: map['days'] == null ? null : (map['days'] as int).input(),
+      createdBeforeDate: map['createdBeforeDate'] == null ? null : (map['createdBeforeDate']! as String).input(),
+      days: map['days'] == null ? null : (map['days']! as int).input(),
     );
   }
 }

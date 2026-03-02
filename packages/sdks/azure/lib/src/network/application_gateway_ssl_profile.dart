@@ -46,12 +46,12 @@ class ApplicationGatewaySslProfile {
 
   factory ApplicationGatewaySslProfile.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewaySslProfile(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       name: (map['name'] as String).input(),
-      sslPolicy: map['sslPolicy'] == null ? null : (ApplicationGatewaySslProfileSslPolicy.fromMap((map['sslPolicy'] as Map).cast<String, dynamic>())).input(),
-      trustedClientCertificateNames: map['trustedClientCertificateNames'] == null ? null : ((map['trustedClientCertificateNames'] as List).cast<String>()).input(),
-      verifyClientCertIssuerDn: map['verifyClientCertIssuerDn'] == null ? null : (map['verifyClientCertIssuerDn'] as bool).input(),
-      verifyClientCertificateRevocation: map['verifyClientCertificateRevocation'] == null ? null : (map['verifyClientCertificateRevocation'] as String).input(),
+      sslPolicy: map['sslPolicy'] == null ? null : (ApplicationGatewaySslProfileSslPolicy.fromMap((map['sslPolicy']! as Map).cast<String, dynamic>())).input(),
+      trustedClientCertificateNames: map['trustedClientCertificateNames'] == null ? null : ((map['trustedClientCertificateNames']! as List).cast<String>()).input(),
+      verifyClientCertIssuerDn: map['verifyClientCertIssuerDn'] == null ? null : (map['verifyClientCertIssuerDn']! as bool).input(),
+      verifyClientCertificateRevocation: map['verifyClientCertificateRevocation'] == null ? null : (map['verifyClientCertificateRevocation']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class SoftwareUpdateOptionsResponse {
 
   factory SoftwareUpdateOptionsResponse.fromMap(Map<String, dynamic> map) {
     return SoftwareUpdateOptionsResponse(
-      autoSoftwareUpdateEnabled: map['autoSoftwareUpdateEnabled'] == null ? null : (map['autoSoftwareUpdateEnabled'] as bool).input(),
+      autoSoftwareUpdateEnabled: map['autoSoftwareUpdateEnabled'] == null ? null : (map['autoSoftwareUpdateEnabled']! as bool).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class ContinuousBackupConfig {
 
   factory ContinuousBackupConfig.fromMap(Map<String, dynamic> map) {
     return ContinuousBackupConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
-      recoveryWindowDays: map['recoveryWindowDays'] == null ? null : (map['recoveryWindowDays'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfig.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
+      recoveryWindowDays: map['recoveryWindowDays'] == null ? null : (map['recoveryWindowDays']! as int).input(),
     );
   }
 }

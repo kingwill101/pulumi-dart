@@ -110,22 +110,22 @@ class GetNetworkTapRuleResult {
   factory GetNetworkTapRuleResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkTapRuleResult(
       administrativeState: map['administrativeState'] as String,
-      annotation: map['annotation'] == null ? null : map['annotation'] as String,
+      annotation: map['annotation'] == null ? null : map['annotation']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       configurationState: map['configurationState'] as String,
       configurationType: map['configurationType'] as String,
-      dynamicMatchConfigurations: map['dynamicMatchConfigurations'] == null ? null : pulumi.Input.decodeList<CommonDynamicMatchConfigurationResponse>(map['dynamicMatchConfigurations'], (value) => CommonDynamicMatchConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      dynamicMatchConfigurations: map['dynamicMatchConfigurations'] == null ? null : pulumi.Input.decodeList<CommonDynamicMatchConfigurationResponse>(map['dynamicMatchConfigurations']!, (value) => CommonDynamicMatchConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       lastSyncedTime: map['lastSyncedTime'] as String,
       location: map['location'] as String,
-      matchConfigurations: map['matchConfigurations'] == null ? null : pulumi.Input.decodeList<NetworkTapRuleMatchConfigurationResponse>(map['matchConfigurations'], (value) => NetworkTapRuleMatchConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      matchConfigurations: map['matchConfigurations'] == null ? null : pulumi.Input.decodeList<NetworkTapRuleMatchConfigurationResponse>(map['matchConfigurations']!, (value) => NetworkTapRuleMatchConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       networkTapId: map['networkTapId'] as String,
-      pollingIntervalInSeconds: map['pollingIntervalInSeconds'] == null ? null : map['pollingIntervalInSeconds'] as int,
+      pollingIntervalInSeconds: map['pollingIntervalInSeconds'] == null ? null : map['pollingIntervalInSeconds']! as int,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      tapRulesUrl: map['tapRulesUrl'] == null ? null : map['tapRulesUrl'] as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tapRulesUrl: map['tapRulesUrl'] == null ? null : map['tapRulesUrl']! as String,
       type: map['type'] as String,
     );
   }

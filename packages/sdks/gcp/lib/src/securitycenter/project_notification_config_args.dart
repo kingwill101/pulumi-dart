@@ -49,8 +49,8 @@ class ProjectNotificationConfigArgs {
   factory ProjectNotificationConfigArgs.fromMap(Map<String, dynamic> map) {
     return ProjectNotificationConfigArgs(
       configId: (map['configId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       pubsubTopic: (map['pubsubTopic'] as String).input(),
       streamingConfig: (ProjectNotificationConfigStreamingConfig.fromMap((map['streamingConfig'] as Map).cast<String, dynamic>())).input(),
     );

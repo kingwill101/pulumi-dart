@@ -32,9 +32,9 @@ class AttestationServiceCreationSpecificParams {
 
   factory AttestationServiceCreationSpecificParams.fromMap(Map<String, dynamic> map) {
     return AttestationServiceCreationSpecificParams(
-      policySigningCertificates: map['policySigningCertificates'] == null ? null : (JsonWebKeySet.fromMap((map['policySigningCertificates'] as Map).cast<String, dynamic>())).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
-      tpmAttestationAuthentication: map['tpmAttestationAuthentication'] == null ? null : (map['tpmAttestationAuthentication'] as String).input(),
+      policySigningCertificates: map['policySigningCertificates'] == null ? null : (JsonWebKeySet.fromMap((map['policySigningCertificates']! as Map).cast<String, dynamic>())).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
+      tpmAttestationAuthentication: map['tpmAttestationAuthentication'] == null ? null : (map['tpmAttestationAuthentication']! as String).input(),
     );
   }
 }

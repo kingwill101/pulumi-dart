@@ -67,12 +67,12 @@ class DeviceRequestPatchResourceK8sIoV1alpha3 {
 
   factory DeviceRequestPatchResourceK8sIoV1alpha3.fromMap(Map<String, dynamic> map) {
     return DeviceRequestPatchResourceK8sIoV1alpha3(
-      adminAccess: map['adminAccess'] == null ? null : (map['adminAccess'] as bool).input(),
-      allocationMode: map['allocationMode'] == null ? null : (map['allocationMode'] as String).input(),
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      deviceClassName: map['deviceClassName'] == null ? null : (map['deviceClassName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<DeviceSelectorPatchResourceK8sIoV1alpha3>(map['selectors'], (value) => DeviceSelectorPatchResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      adminAccess: map['adminAccess'] == null ? null : (map['adminAccess']! as bool).input(),
+      allocationMode: map['allocationMode'] == null ? null : (map['allocationMode']! as String).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      deviceClassName: map['deviceClassName'] == null ? null : (map['deviceClassName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<DeviceSelectorPatchResourceK8sIoV1alpha3>(map['selectors']!, (value) => DeviceSelectorPatchResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

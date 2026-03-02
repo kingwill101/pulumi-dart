@@ -59,14 +59,14 @@ class GetVpcEndpointServicesArgs {
 
   factory GetVpcEndpointServicesArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointServicesArgs(
-      autoAcceptConnection: map['autoAcceptConnection'] == null ? null : (map['autoAcceptConnection'] as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      serviceBusinessStatus: map['serviceBusinessStatus'] == null ? null : (map['serviceBusinessStatus'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcEndpointServiceName: map['vpcEndpointServiceName'] == null ? null : (map['vpcEndpointServiceName'] as String).input(),
+      autoAcceptConnection: map['autoAcceptConnection'] == null ? null : (map['autoAcceptConnection']! as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      serviceBusinessStatus: map['serviceBusinessStatus'] == null ? null : (map['serviceBusinessStatus']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vpcEndpointServiceName: map['vpcEndpointServiceName'] == null ? null : (map['vpcEndpointServiceName']! as String).input(),
     );
   }
 }

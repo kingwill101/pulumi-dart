@@ -26,8 +26,8 @@ class FutureReservationSpecificSkuPropertiesInstancePropertiesLocalSsd {
 
   factory FutureReservationSpecificSkuPropertiesInstancePropertiesLocalSsd.fromMap(Map<String, dynamic> map) {
     return FutureReservationSpecificSkuPropertiesInstancePropertiesLocalSsd(
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as String).input(),
-      interface: map['interface'] == null ? null : (map['interface'] as String).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as String).input(),
+      interface: map['interface'] == null ? null : (map['interface']! as String).input(),
     );
   }
 }

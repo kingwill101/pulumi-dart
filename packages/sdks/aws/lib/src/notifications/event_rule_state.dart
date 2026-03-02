@@ -48,12 +48,12 @@ class EventRuleState {
 
   factory EventRuleState.fromMap(Map<String, dynamic> map) {
     return EventRuleState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      eventPattern: map['eventPattern'] == null ? null : (map['eventPattern'] as String).input(),
-      eventType: map['eventType'] == null ? null : (map['eventType'] as String).input(),
-      notificationConfigurationArn: map['notificationConfigurationArn'] == null ? null : (map['notificationConfigurationArn'] as String).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      eventPattern: map['eventPattern'] == null ? null : ((map['eventPattern'] as String).input()).input(),
+      eventType: map['eventType'] == null ? null : ((map['eventType'] as String).input()).input(),
+      notificationConfigurationArn: map['notificationConfigurationArn'] == null ? null : ((map['notificationConfigurationArn'] as String).input()).input(),
+      regions: map['regions'] == null ? null : (((map['regions'] as List).cast<String>()).input()).input(),
+      source: map['source'] == null ? null : ((map['source'] as String).input()).input(),
     );
   }
 }

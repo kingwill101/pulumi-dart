@@ -27,8 +27,8 @@ class PublicIPAddressConfiguration {
 
   factory PublicIPAddressConfiguration.fromMap(Map<String, dynamic> map) {
     return PublicIPAddressConfiguration(
-      ipAddressIds: map['ipAddressIds'] == null ? null : ((map['ipAddressIds'] as List).cast<String>()).input(),
-      provision: map['provision'] == null ? null : (IPAddressProvisioningType.fromValue(map['provision'] as String)).input(),
+      ipAddressIds: map['ipAddressIds'] == null ? null : ((map['ipAddressIds']! as List).cast<String>()).input(),
+      provision: map['provision'] == null ? null : (IPAddressProvisioningType.fromValue(map['provision']! as String)).input(),
     );
   }
 }

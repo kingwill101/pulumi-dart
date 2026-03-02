@@ -31,9 +31,9 @@ class ApplicationPreAuthorizedState {
 
   factory ApplicationPreAuthorizedState.fromMap(Map<String, dynamic> map) {
     return ApplicationPreAuthorizedState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      authorizedClientId: map['authorizedClientId'] == null ? null : (map['authorizedClientId'] as String).input(),
-      permissionIds: map['permissionIds'] == null ? null : ((map['permissionIds'] as List).cast<String>()).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      authorizedClientId: map['authorizedClientId'] == null ? null : (map['authorizedClientId']! as String).input(),
+      permissionIds: map['permissionIds'] == null ? null : ((map['permissionIds']! as List).cast<String>()).input(),
     );
   }
 }

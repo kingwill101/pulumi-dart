@@ -21,7 +21,7 @@ class ClusterNodePoolDefaults {
 
   factory ClusterNodePoolDefaults.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolDefaults(
-      nodeConfigDefaults: map['nodeConfigDefaults'] == null ? null : (ClusterNodePoolDefaultsNodeConfigDefaults.fromMap((map['nodeConfigDefaults'] as Map).cast<String, dynamic>())).input(),
+      nodeConfigDefaults: map['nodeConfigDefaults'] == null ? null : (ClusterNodePoolDefaultsNodeConfigDefaults.fromMap((map['nodeConfigDefaults']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -36,9 +36,9 @@ class CertificateTemplatePredefinedValuesKeyUsage {
 
   factory CertificateTemplatePredefinedValuesKeyUsage.fromMap(Map<String, dynamic> map) {
     return CertificateTemplatePredefinedValuesKeyUsage(
-      baseKeyUsage: map['baseKeyUsage'] == null ? null : (CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage.fromMap((map['baseKeyUsage'] as Map).cast<String, dynamic>())).input(),
-      extendedKeyUsage: map['extendedKeyUsage'] == null ? null : (CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage.fromMap((map['extendedKeyUsage'] as Map).cast<String, dynamic>())).input(),
-      unknownExtendedKeyUsages: map['unknownExtendedKeyUsages'] == null ? null : (pulumi.Input.decodeList<CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage>(map['unknownExtendedKeyUsages'], (value) => CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      baseKeyUsage: map['baseKeyUsage'] == null ? null : (CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage.fromMap((map['baseKeyUsage']! as Map).cast<String, dynamic>())).input(),
+      extendedKeyUsage: map['extendedKeyUsage'] == null ? null : (CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage.fromMap((map['extendedKeyUsage']! as Map).cast<String, dynamic>())).input(),
+      unknownExtendedKeyUsages: map['unknownExtendedKeyUsages'] == null ? null : (pulumi.Input.decodeList<CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage>(map['unknownExtendedKeyUsages']!, (value) => CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

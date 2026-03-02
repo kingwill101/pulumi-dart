@@ -42,12 +42,12 @@ class GetOtsSnapshotsResult {
 
   factory GetOtsSnapshotsResult.fromMap(Map<String, dynamic> map) {
     return GetOtsSnapshotsResult(
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
+      endTime: map['endTime'] == null ? null : map['endTime']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       snapshots: pulumi.Input.decodeList<GetOtsSnapshotsSnapshot>(map['snapshots'], (value) => GetOtsSnapshotsSnapshot.fromMap((value as Map).cast<String, dynamic>())),
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
+      startTime: map['startTime'] == null ? null : map['startTime']! as String,
     );
   }
 }

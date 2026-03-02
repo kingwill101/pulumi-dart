@@ -38,10 +38,10 @@ class CloudSqlProperties {
 
   factory CloudSqlProperties.fromMap(Map<String, dynamic> map) {
     return CloudSqlProperties(
-      credential: map['credential'] == null ? null : (CloudSqlCredential.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      type: map['type'] == null ? null : (CloudSqlPropertiesType.fromValue(map['type'] as String)).input(),
+      credential: map['credential'] == null ? null : (CloudSqlCredential.fromMap((map['credential']! as Map).cast<String, dynamic>())).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      type: map['type'] == null ? null : (CloudSqlPropertiesType.fromValue(map['type']! as String)).input(),
     );
   }
 }

@@ -29,8 +29,8 @@ class RiskConfigurationRiskExceptionConfiguration {
 
   factory RiskConfigurationRiskExceptionConfiguration.fromMap(Map<String, dynamic> map) {
     return RiskConfigurationRiskExceptionConfiguration(
-      blockedIpRangeLists: map['blockedIpRangeLists'] == null ? null : ((map['blockedIpRangeLists'] as List).cast<String>()).input(),
-      skippedIpRangeLists: map['skippedIpRangeLists'] == null ? null : ((map['skippedIpRangeLists'] as List).cast<String>()).input(),
+      blockedIpRangeLists: map['blockedIpRangeLists'] == null ? null : (((map['blockedIpRangeLists'] as List).cast<String>()).input()).input(),
+      skippedIpRangeLists: map['skippedIpRangeLists'] == null ? null : (((map['skippedIpRangeLists'] as List).cast<String>()).input()).input(),
     );
   }
 }

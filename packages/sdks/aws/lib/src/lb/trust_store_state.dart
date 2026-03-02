@@ -66,16 +66,16 @@ class TrustStoreState {
 
   factory TrustStoreState.fromMap(Map<String, dynamic> map) {
     return TrustStoreState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      arnSuffix: map['arnSuffix'] == null ? null : (map['arnSuffix'] as String).input(),
-      caCertificatesBundleS3Bucket: map['caCertificatesBundleS3Bucket'] == null ? null : (map['caCertificatesBundleS3Bucket'] as String).input(),
-      caCertificatesBundleS3Key: map['caCertificatesBundleS3Key'] == null ? null : (map['caCertificatesBundleS3Key'] as String).input(),
-      caCertificatesBundleS3ObjectVersion: map['caCertificatesBundleS3ObjectVersion'] == null ? null : (map['caCertificatesBundleS3ObjectVersion'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      arnSuffix: map['arnSuffix'] == null ? null : ((map['arnSuffix'] as String).input()).input(),
+      caCertificatesBundleS3Bucket: map['caCertificatesBundleS3Bucket'] == null ? null : ((map['caCertificatesBundleS3Bucket'] as String).input()).input(),
+      caCertificatesBundleS3Key: map['caCertificatesBundleS3Key'] == null ? null : ((map['caCertificatesBundleS3Key'] as String).input()).input(),
+      caCertificatesBundleS3ObjectVersion: map['caCertificatesBundleS3ObjectVersion'] == null ? null : ((map['caCertificatesBundleS3ObjectVersion'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

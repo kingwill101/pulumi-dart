@@ -30,9 +30,9 @@ class DomainFeaturesHpt {
 
   factory DomainFeaturesHpt.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesHpt(
-      maxPageSize: map['maxPageSize'] == null ? null : (map['maxPageSize'] as String).input(),
-      maxPageSizeUnit: map['maxPageSizeUnit'] == null ? null : (map['maxPageSizeUnit'] as String).input(),
-      resizing: map['resizing'] == null ? null : (map['resizing'] as String).input(),
+      maxPageSize: map['maxPageSize'] == null ? null : (map['maxPageSize']! as String).input(),
+      maxPageSizeUnit: map['maxPageSizeUnit'] == null ? null : (map['maxPageSizeUnit']! as String).input(),
+      resizing: map['resizing'] == null ? null : (map['resizing']! as String).input(),
     );
   }
 }

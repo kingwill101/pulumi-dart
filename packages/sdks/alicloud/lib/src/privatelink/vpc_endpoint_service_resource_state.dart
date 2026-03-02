@@ -46,12 +46,12 @@ class VpcEndpointServiceResourceState {
 
   factory VpcEndpointServiceResourceState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointServiceResourceState(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

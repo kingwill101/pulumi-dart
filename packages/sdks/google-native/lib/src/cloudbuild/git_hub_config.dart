@@ -27,8 +27,8 @@ class GitHubConfig {
 
   factory GitHubConfig.fromMap(Map<String, dynamic> map) {
     return GitHubConfig(
-      appInstallationId: map['appInstallationId'] == null ? null : (map['appInstallationId'] as String).input(),
-      authorizerCredential: map['authorizerCredential'] == null ? null : (OAuthCredential.fromMap((map['authorizerCredential'] as Map).cast<String, dynamic>())).input(),
+      appInstallationId: map['appInstallationId'] == null ? null : (map['appInstallationId']! as String).input(),
+      authorizerCredential: map['authorizerCredential'] == null ? null : (OAuthCredential.fromMap((map['authorizerCredential']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

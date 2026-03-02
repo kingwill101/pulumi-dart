@@ -27,7 +27,7 @@ class BooleanConditionProperties {
 
   factory BooleanConditionProperties.fromMap(Map<String, dynamic> map) {
     return BooleanConditionProperties(
-      conditionProperties: map['conditionProperties'] == null ? null : (AutomationRuleBooleanCondition.fromMap((map['conditionProperties'] as Map).cast<String, dynamic>())).input(),
+      conditionProperties: map['conditionProperties'] == null ? null : (AutomationRuleBooleanCondition.fromMap((map['conditionProperties']! as Map).cast<String, dynamic>())).input(),
       conditionType: (map['conditionType'] as String).input(),
     );
   }

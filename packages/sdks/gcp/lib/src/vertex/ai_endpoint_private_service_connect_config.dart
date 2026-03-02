@@ -38,9 +38,9 @@ class AiEndpointPrivateServiceConnectConfig {
   factory AiEndpointPrivateServiceConnectConfig.fromMap(Map<String, dynamic> map) {
     return AiEndpointPrivateServiceConnectConfig(
       enablePrivateServiceConnect: (map['enablePrivateServiceConnect'] as bool).input(),
-      enableSecurePrivateServiceConnect: map['enableSecurePrivateServiceConnect'] == null ? null : (map['enableSecurePrivateServiceConnect'] as bool).input(),
-      projectAllowlists: map['projectAllowlists'] == null ? null : ((map['projectAllowlists'] as List).cast<String>()).input(),
-      pscAutomationConfigs: map['pscAutomationConfigs'] == null ? null : (pulumi.Input.decodeList<AiEndpointPrivateServiceConnectConfigPscAutomationConfig>(map['pscAutomationConfigs'], (value) => AiEndpointPrivateServiceConnectConfigPscAutomationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableSecurePrivateServiceConnect: map['enableSecurePrivateServiceConnect'] == null ? null : (map['enableSecurePrivateServiceConnect']! as bool).input(),
+      projectAllowlists: map['projectAllowlists'] == null ? null : ((map['projectAllowlists']! as List).cast<String>()).input(),
+      pscAutomationConfigs: map['pscAutomationConfigs'] == null ? null : (pulumi.Input.decodeList<AiEndpointPrivateServiceConnectConfigPscAutomationConfig>(map['pscAutomationConfigs']!, (value) => AiEndpointPrivateServiceConnectConfigPscAutomationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

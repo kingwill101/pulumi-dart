@@ -32,7 +32,7 @@ class EncryptionPropertyResponse {
 
   factory EncryptionPropertyResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionPropertyResponse(
-      identity: map['identity'] == null ? null : (IdentityForCmkResponse.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (IdentityForCmkResponse.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
       keyVaultProperties: (EncryptionKeyVaultPropertiesResponse.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
       status: (map['status'] as String).input(),
     );

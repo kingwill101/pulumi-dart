@@ -35,10 +35,10 @@ class ManagedHardwareSecurityModuleRoleDefinitionPermission {
 
   factory ManagedHardwareSecurityModuleRoleDefinitionPermission.fromMap(Map<String, dynamic> map) {
     return ManagedHardwareSecurityModuleRoleDefinitionPermission(
-      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
-      dataActions: map['dataActions'] == null ? null : ((map['dataActions'] as List).cast<String>()).input(),
-      notActions: map['notActions'] == null ? null : ((map['notActions'] as List).cast<String>()).input(),
-      notDataActions: map['notDataActions'] == null ? null : ((map['notDataActions'] as List).cast<String>()).input(),
+      actions: map['actions'] == null ? null : ((map['actions']! as List).cast<String>()).input(),
+      dataActions: map['dataActions'] == null ? null : ((map['dataActions']! as List).cast<String>()).input(),
+      notActions: map['notActions'] == null ? null : ((map['notActions']! as List).cast<String>()).input(),
+      notDataActions: map['notDataActions'] == null ? null : ((map['notDataActions']! as List).cast<String>()).input(),
     );
   }
 }

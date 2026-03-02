@@ -33,7 +33,7 @@ class GetModelArgs {
     return GetModelArgs(
       location: (map['location'] as String).input(),
       modelId: (map['modelId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -72,17 +72,17 @@ class EtlEtlSink {
 
   factory EtlEtlSink.fromMap(Map<String, dynamic> map) {
     return EtlEtlSink(
-      accessKeyId: map['accessKeyId'] == null ? null : (map['accessKeyId'] as String).input(),
-      accessKeySecret: map['accessKeySecret'] == null ? null : (map['accessKeySecret'] as String).input(),
-      datasets: map['datasets'] == null ? null : ((map['datasets'] as List).cast<String>()).input(),
+      accessKeyId: map['accessKeyId'] == null ? null : (map['accessKeyId']! as String).input(),
+      accessKeySecret: map['accessKeySecret'] == null ? null : (map['accessKeySecret']! as String).input(),
+      datasets: map['datasets'] == null ? null : ((map['datasets']! as List).cast<String>()).input(),
       endpoint: (map['endpoint'] as String).input(),
-      kmsEncryptedAccessKeyId: map['kmsEncryptedAccessKeyId'] == null ? null : (map['kmsEncryptedAccessKeyId'] as String).input(),
-      kmsEncryptedAccessKeySecret: map['kmsEncryptedAccessKeySecret'] == null ? null : (map['kmsEncryptedAccessKeySecret'] as String).input(),
+      kmsEncryptedAccessKeyId: map['kmsEncryptedAccessKeyId'] == null ? null : (map['kmsEncryptedAccessKeyId']! as String).input(),
+      kmsEncryptedAccessKeySecret: map['kmsEncryptedAccessKeySecret'] == null ? null : (map['kmsEncryptedAccessKeySecret']! as String).input(),
       logstore: (map['logstore'] as String).input(),
       name: (map['name'] as String).input(),
       project: (map['project'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

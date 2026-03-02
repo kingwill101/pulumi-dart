@@ -35,10 +35,10 @@ class ProjectCapabilityHost {
 
   factory ProjectCapabilityHost.fromMap(Map<String, dynamic> map) {
     return ProjectCapabilityHost(
-      aiServicesConnections: map['aiServicesConnections'] == null ? null : ((map['aiServicesConnections'] as List).cast<String>()).input(),
-      storageConnections: map['storageConnections'] == null ? null : ((map['storageConnections'] as List).cast<String>()).input(),
-      threadStorageConnections: map['threadStorageConnections'] == null ? null : ((map['threadStorageConnections'] as List).cast<String>()).input(),
-      vectorStoreConnections: map['vectorStoreConnections'] == null ? null : ((map['vectorStoreConnections'] as List).cast<String>()).input(),
+      aiServicesConnections: map['aiServicesConnections'] == null ? null : ((map['aiServicesConnections']! as List).cast<String>()).input(),
+      storageConnections: map['storageConnections'] == null ? null : ((map['storageConnections']! as List).cast<String>()).input(),
+      threadStorageConnections: map['threadStorageConnections'] == null ? null : ((map['threadStorageConnections']! as List).cast<String>()).input(),
+      vectorStoreConnections: map['vectorStoreConnections'] == null ? null : ((map['vectorStoreConnections']! as List).cast<String>()).input(),
     );
   }
 }

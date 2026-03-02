@@ -32,9 +32,9 @@ class AdvancedSchedule {
 
   factory AdvancedSchedule.fromMap(Map<String, dynamic> map) {
     return AdvancedSchedule(
-      monthDays: map['monthDays'] == null ? null : ((map['monthDays'] as List).cast<int>()).input(),
-      monthlyOccurrences: map['monthlyOccurrences'] == null ? null : (pulumi.Input.decodeList<AdvancedScheduleMonthlyOccurrence>(map['monthlyOccurrences'], (value) => AdvancedScheduleMonthlyOccurrence.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      weekDays: map['weekDays'] == null ? null : ((map['weekDays'] as List).cast<String>()).input(),
+      monthDays: map['monthDays'] == null ? null : ((map['monthDays']! as List).cast<int>()).input(),
+      monthlyOccurrences: map['monthlyOccurrences'] == null ? null : (pulumi.Input.decodeList<AdvancedScheduleMonthlyOccurrence>(map['monthlyOccurrences']!, (value) => AdvancedScheduleMonthlyOccurrence.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      weekDays: map['weekDays'] == null ? null : ((map['weekDays']! as List).cast<String>()).input(),
     );
   }
 }

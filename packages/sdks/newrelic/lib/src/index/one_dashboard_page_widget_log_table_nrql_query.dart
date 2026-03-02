@@ -25,7 +25,7 @@ class OneDashboardPageWidgetLogTableNrqlQuery {
 
   factory OneDashboardPageWidgetLogTableNrqlQuery.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetLogTableNrqlQuery(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
       query: (map['query'] as String).input(),
     );
   }

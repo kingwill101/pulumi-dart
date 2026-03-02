@@ -55,11 +55,11 @@ class PluginInstanceAuthConfig {
 
   factory PluginInstanceAuthConfig.fromMap(Map<String, dynamic> map) {
     return PluginInstanceAuthConfig(
-      apiKeyConfig: map['apiKeyConfig'] == null ? null : (PluginInstanceAuthConfigApiKeyConfig.fromMap((map['apiKeyConfig'] as Map).cast<String, dynamic>())).input(),
+      apiKeyConfig: map['apiKeyConfig'] == null ? null : (PluginInstanceAuthConfigApiKeyConfig.fromMap((map['apiKeyConfig']! as Map).cast<String, dynamic>())).input(),
       authType: (map['authType'] as String).input(),
-      googleServiceAccountConfig: map['googleServiceAccountConfig'] == null ? null : (PluginInstanceAuthConfigGoogleServiceAccountConfig.fromMap((map['googleServiceAccountConfig'] as Map).cast<String, dynamic>())).input(),
-      oauth2ClientCredentialsConfig: map['oauth2ClientCredentialsConfig'] == null ? null : (PluginInstanceAuthConfigOauth2ClientCredentialsConfig.fromMap((map['oauth2ClientCredentialsConfig'] as Map).cast<String, dynamic>())).input(),
-      userPasswordConfig: map['userPasswordConfig'] == null ? null : (PluginInstanceAuthConfigUserPasswordConfig.fromMap((map['userPasswordConfig'] as Map).cast<String, dynamic>())).input(),
+      googleServiceAccountConfig: map['googleServiceAccountConfig'] == null ? null : (PluginInstanceAuthConfigGoogleServiceAccountConfig.fromMap((map['googleServiceAccountConfig']! as Map).cast<String, dynamic>())).input(),
+      oauth2ClientCredentialsConfig: map['oauth2ClientCredentialsConfig'] == null ? null : (PluginInstanceAuthConfigOauth2ClientCredentialsConfig.fromMap((map['oauth2ClientCredentialsConfig']! as Map).cast<String, dynamic>())).input(),
+      userPasswordConfig: map['userPasswordConfig'] == null ? null : (PluginInstanceAuthConfigUserPasswordConfig.fromMap((map['userPasswordConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

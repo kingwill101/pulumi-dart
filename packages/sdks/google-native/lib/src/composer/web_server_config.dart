@@ -21,7 +21,7 @@ class WebServerConfig {
 
   factory WebServerConfig.fromMap(Map<String, dynamic> map) {
     return WebServerConfig(
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
     );
   }
 }

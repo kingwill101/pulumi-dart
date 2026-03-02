@@ -65,16 +65,16 @@ class ShardingNetworkPrivateAddressNetworkAddress {
 
   factory ShardingNetworkPrivateAddressNetworkAddress.fromMap(Map<String, dynamic> map) {
     return ShardingNetworkPrivateAddressNetworkAddress(
-      expiredTime: map['expiredTime'] == null ? null : (map['expiredTime'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      networkAddress: map['networkAddress'] == null ? null : (map['networkAddress'] as String).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
-      nodeType: map['nodeType'] == null ? null : (map['nodeType'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      expiredTime: map['expiredTime'] == null ? null : (map['expiredTime']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      networkAddress: map['networkAddress'] == null ? null : (map['networkAddress']! as String).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType']! as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
+      nodeType: map['nodeType'] == null ? null : (map['nodeType']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

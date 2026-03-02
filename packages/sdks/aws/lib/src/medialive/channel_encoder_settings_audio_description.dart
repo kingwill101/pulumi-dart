@@ -71,17 +71,17 @@ class ChannelEncoderSettingsAudioDescription {
 
   factory ChannelEncoderSettingsAudioDescription.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescription(
-      audioNormalizationSettings: map['audioNormalizationSettings'] == null ? null : (ChannelEncoderSettingsAudioDescriptionAudioNormalizationSettings.fromMap((map['audioNormalizationSettings'] as Map).cast<String, dynamic>())).input(),
+      audioNormalizationSettings: map['audioNormalizationSettings'] == null ? null : ((ChannelEncoderSettingsAudioDescriptionAudioNormalizationSettings.fromMap((map['audioNormalizationSettings']! as Map).cast<String, dynamic>())).input()).input(),
       audioSelectorName: (map['audioSelectorName'] as String).input(),
-      audioType: map['audioType'] == null ? null : (map['audioType'] as String).input(),
-      audioTypeControl: map['audioTypeControl'] == null ? null : (map['audioTypeControl'] as String).input(),
-      audioWatermarkSettings: map['audioWatermarkSettings'] == null ? null : (ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettings.fromMap((map['audioWatermarkSettings'] as Map).cast<String, dynamic>())).input(),
-      codecSettings: map['codecSettings'] == null ? null : (ChannelEncoderSettingsAudioDescriptionCodecSettings.fromMap((map['codecSettings'] as Map).cast<String, dynamic>())).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      languageCodeControl: map['languageCodeControl'] == null ? null : (map['languageCodeControl'] as String).input(),
+      audioType: map['audioType'] == null ? null : ((map['audioType'] as String).input()).input(),
+      audioTypeControl: map['audioTypeControl'] == null ? null : ((map['audioTypeControl'] as String).input()).input(),
+      audioWatermarkSettings: map['audioWatermarkSettings'] == null ? null : ((ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettings.fromMap((map['audioWatermarkSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      codecSettings: map['codecSettings'] == null ? null : ((ChannelEncoderSettingsAudioDescriptionCodecSettings.fromMap((map['codecSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      languageCode: map['languageCode'] == null ? null : ((map['languageCode'] as String).input()).input(),
+      languageCodeControl: map['languageCodeControl'] == null ? null : ((map['languageCodeControl'] as String).input()).input(),
       name: (map['name'] as String).input(),
-      remixSettings: map['remixSettings'] == null ? null : (ChannelEncoderSettingsAudioDescriptionRemixSettings.fromMap((map['remixSettings'] as Map).cast<String, dynamic>())).input(),
-      streamName: map['streamName'] == null ? null : (map['streamName'] as String).input(),
+      remixSettings: map['remixSettings'] == null ? null : ((ChannelEncoderSettingsAudioDescriptionRemixSettings.fromMap((map['remixSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      streamName: map['streamName'] == null ? null : ((map['streamName'] as String).input()).input(),
     );
   }
 }

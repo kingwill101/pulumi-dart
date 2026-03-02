@@ -64,14 +64,14 @@ class ResourcePolicyExemptionArgs {
 
   factory ResourcePolicyExemptionArgs.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyExemptionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       exemptionCategory: (map['exemptionCategory'] as String).input(),
-      expiresOn: map['expiresOn'] == null ? null : (map['expiresOn'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      expiresOn: map['expiresOn'] == null ? null : (map['expiresOn']! as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       policyAssignmentId: (map['policyAssignmentId'] as String).input(),
-      policyDefinitionReferenceIds: map['policyDefinitionReferenceIds'] == null ? null : ((map['policyDefinitionReferenceIds'] as List).cast<String>()).input(),
+      policyDefinitionReferenceIds: map['policyDefinitionReferenceIds'] == null ? null : ((map['policyDefinitionReferenceIds']! as List).cast<String>()).input(),
       resourceId: (map['resourceId'] as String).input(),
     );
   }

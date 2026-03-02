@@ -41,11 +41,11 @@ class EventHubConsumerGroupState {
 
   factory EventHubConsumerGroupState.fromMap(Map<String, dynamic> map) {
     return EventHubConsumerGroupState(
-      eventhubName: map['eventhubName'] == null ? null : (map['eventhubName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      userMetadata: map['userMetadata'] == null ? null : (map['userMetadata'] as String).input(),
+      eventhubName: map['eventhubName'] == null ? null : (map['eventhubName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      userMetadata: map['userMetadata'] == null ? null : (map['userMetadata']! as String).input(),
     );
   }
 }

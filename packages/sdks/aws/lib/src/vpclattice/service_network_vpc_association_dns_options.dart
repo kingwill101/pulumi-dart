@@ -25,8 +25,8 @@ class ServiceNetworkVpcAssociationDnsOptions {
 
   factory ServiceNetworkVpcAssociationDnsOptions.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkVpcAssociationDnsOptions(
-      privateDnsPreference: map['privateDnsPreference'] == null ? null : (map['privateDnsPreference'] as String).input(),
-      privateDnsSpecifiedDomains: map['privateDnsSpecifiedDomains'] == null ? null : ((map['privateDnsSpecifiedDomains'] as List).cast<String>()).input(),
+      privateDnsPreference: map['privateDnsPreference'] == null ? null : ((map['privateDnsPreference'] as String).input()).input(),
+      privateDnsSpecifiedDomains: map['privateDnsSpecifiedDomains'] == null ? null : (((map['privateDnsSpecifiedDomains'] as List).cast<String>()).input()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class IPSetResponse {
 
   factory IPSetResponse.fromMap(Map<String, dynamic> map) {
     return IPSetResponse(
-      definition: map['definition'] == null ? null : ((map['definition'] as List).cast<String>()).input(),
+      definition: map['definition'] == null ? null : ((map['definition']! as List).cast<String>()).input(),
     );
   }
 }

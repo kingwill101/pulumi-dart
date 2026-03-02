@@ -28,8 +28,8 @@ class WhitelistTemplateState {
 
   factory WhitelistTemplateState.fromMap(Map<String, dynamic> map) {
     return WhitelistTemplateState(
-      ipWhiteList: map['ipWhiteList'] == null ? null : (map['ipWhiteList'] as String).input(),
-      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
+      ipWhiteList: map['ipWhiteList'] == null ? null : (map['ipWhiteList']! as String).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName']! as String).input(),
     );
   }
 }

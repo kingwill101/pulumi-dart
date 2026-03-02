@@ -84,16 +84,16 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      accessLoggingConfig: map['accessLoggingConfig'] == null ? null : (InstanceAccessLoggingConfig.fromMap((map['accessLoggingConfig'] as Map).cast<String, dynamic>())).input(),
-      consumerAcceptLists: map['consumerAcceptLists'] == null ? null : ((map['consumerAcceptLists'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      diskEncryptionKeyName: map['diskEncryptionKeyName'] == null ? null : (map['diskEncryptionKeyName'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      ipRange: map['ipRange'] == null ? null : (map['ipRange'] as String).input(),
+      accessLoggingConfig: map['accessLoggingConfig'] == null ? null : (InstanceAccessLoggingConfig.fromMap((map['accessLoggingConfig']! as Map).cast<String, dynamic>())).input(),
+      consumerAcceptLists: map['consumerAcceptLists'] == null ? null : ((map['consumerAcceptLists']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      diskEncryptionKeyName: map['diskEncryptionKeyName'] == null ? null : (map['diskEncryptionKeyName']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      ipRange: map['ipRange'] == null ? null : (map['ipRange']! as String).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       orgId: (map['orgId'] as String).input(),
-      peeringCidrRange: map['peeringCidrRange'] == null ? null : (map['peeringCidrRange'] as String).input(),
+      peeringCidrRange: map['peeringCidrRange'] == null ? null : (map['peeringCidrRange']! as String).input(),
     );
   }
 }

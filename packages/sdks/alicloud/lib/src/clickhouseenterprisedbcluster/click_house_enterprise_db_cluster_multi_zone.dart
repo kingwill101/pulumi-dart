@@ -25,8 +25,8 @@ class ClickHouseEnterpriseDbClusterMultiZone {
 
   factory ClickHouseEnterpriseDbClusterMultiZone.fromMap(Map<String, dynamic> map) {
     return ClickHouseEnterpriseDbClusterMultiZone(
-      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds'] as List).cast<String>()).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds']! as List).cast<String>()).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

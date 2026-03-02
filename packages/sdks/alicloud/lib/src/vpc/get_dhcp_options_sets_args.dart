@@ -49,12 +49,12 @@ class GetDhcpOptionsSetsArgs {
 
   factory GetDhcpOptionsSetsArgs.fromMap(Map<String, dynamic> map) {
     return GetDhcpOptionsSetsArgs(
-      dhcpOptionsSetName: map['dhcpOptionsSetName'] == null ? null : (map['dhcpOptionsSetName'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      dhcpOptionsSetName: map['dhcpOptionsSetName'] == null ? null : (map['dhcpOptionsSetName']! as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

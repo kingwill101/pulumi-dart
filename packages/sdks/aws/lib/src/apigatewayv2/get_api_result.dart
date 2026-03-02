@@ -102,7 +102,7 @@ class GetApiResult {
       apiId: map['apiId'] as String,
       apiKeySelectionExpression: map['apiKeySelectionExpression'] as String,
       arn: map['arn'] as String,
-      corsConfigurations: pulumi.Input.decodeList<GetApiCorsConfiguration>(map['corsConfigurations'], (value) => GetApiCorsConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      corsConfigurations: pulumi.Input.decodeList<GetApiCorsConfiguration>(map['corsConfigurations']!, (value) => GetApiCorsConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       description: map['description'] as String,
       disableExecuteApiEndpoint: map['disableExecuteApiEndpoint'] as bool,
       executionArn: map['executionArn'] as String,

@@ -26,8 +26,8 @@ class Onboarding {
 
   factory Onboarding.fromMap(Map<String, dynamic> map) {
     return Onboarding(
-      developerPortalUri: map['developerPortalUri'] == null ? null : ((map['developerPortalUri'] as List).cast<String>()).input(),
-      instructions: map['instructions'] == null ? null : (map['instructions'] as String).input(),
+      developerPortalUri: map['developerPortalUri'] == null ? null : ((map['developerPortalUri']! as List).cast<String>()).input(),
+      instructions: map['instructions'] == null ? null : (map['instructions']! as String).input(),
     );
   }
 }

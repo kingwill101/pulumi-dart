@@ -51,9 +51,9 @@ class CatalogTableOptimizerArgs {
   factory CatalogTableOptimizerArgs.fromMap(Map<String, dynamic> map) {
     return CatalogTableOptimizerArgs(
       catalogId: (map['catalogId'] as String).input(),
-      configuration: (CatalogTableOptimizerConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      configuration: (CatalogTableOptimizerConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
       databaseName: (map['databaseName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       tableName: (map['tableName'] as String).input(),
       type: (map['type'] as String).input(),
     );

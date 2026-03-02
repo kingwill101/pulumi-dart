@@ -44,13 +44,13 @@ class BillingHubPackageUsageResponse {
 
   factory BillingHubPackageUsageResponse.fromMap(Map<String, dynamic> map) {
     return BillingHubPackageUsageResponse(
-      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
-      applicationVersion: map['applicationVersion'] == null ? null : (map['applicationVersion'] as String).input(),
-      azureResourceUri: map['azureResourceUri'] == null ? null : (map['azureResourceUri'] as String).input(),
-      totalCharges: map['totalCharges'] == null ? null : (map['totalCharges'] as double).input(),
-      totalUsedBillableHours: map['totalUsedBillableHours'] == null ? null : (map['totalUsedBillableHours'] as double).input(),
-      totalUsedFreeHours: map['totalUsedFreeHours'] == null ? null : (map['totalUsedFreeHours'] as double).input(),
-      usageEntriesGroupedByUpdateType: map['usageEntriesGroupedByUpdateType'] == null ? null : (pulumi.Input.decodeList<BillingHubUsageGroupedByUpdateTypeResponse>(map['usageEntriesGroupedByUpdateType'], (value) => BillingHubUsageGroupedByUpdateTypeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName']! as String).input(),
+      applicationVersion: map['applicationVersion'] == null ? null : (map['applicationVersion']! as String).input(),
+      azureResourceUri: map['azureResourceUri'] == null ? null : (map['azureResourceUri']! as String).input(),
+      totalCharges: map['totalCharges'] == null ? null : (map['totalCharges']! as double).input(),
+      totalUsedBillableHours: map['totalUsedBillableHours'] == null ? null : (map['totalUsedBillableHours']! as double).input(),
+      totalUsedFreeHours: map['totalUsedFreeHours'] == null ? null : (map['totalUsedFreeHours']! as double).input(),
+      usageEntriesGroupedByUpdateType: map['usageEntriesGroupedByUpdateType'] == null ? null : (pulumi.Input.decodeList<BillingHubUsageGroupedByUpdateTypeResponse>(map['usageEntriesGroupedByUpdateType']!, (value) => BillingHubUsageGroupedByUpdateTypeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

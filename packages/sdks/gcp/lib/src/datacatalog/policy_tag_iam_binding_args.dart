@@ -52,7 +52,7 @@ class PolicyTagIamBindingArgs {
 
   factory PolicyTagIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return PolicyTagIamBindingArgs(
-      condition: map['condition'] == null ? null : (PolicyTagIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (PolicyTagIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       members: ((map['members'] as List).cast<String>()).input(),
       policyTag: (map['policyTag'] as String).input(),
       role: (map['role'] as String).input(),

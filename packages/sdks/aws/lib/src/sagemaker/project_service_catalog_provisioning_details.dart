@@ -36,10 +36,10 @@ class ProjectServiceCatalogProvisioningDetails {
 
   factory ProjectServiceCatalogProvisioningDetails.fromMap(Map<String, dynamic> map) {
     return ProjectServiceCatalogProvisioningDetails(
-      pathId: map['pathId'] == null ? null : (map['pathId'] as String).input(),
+      pathId: map['pathId'] == null ? null : ((map['pathId'] as String).input()).input(),
       productId: (map['productId'] as String).input(),
-      provisioningArtifactId: map['provisioningArtifactId'] == null ? null : (map['provisioningArtifactId'] as String).input(),
-      provisioningParameters: map['provisioningParameters'] == null ? null : (pulumi.Input.decodeList<ProjectServiceCatalogProvisioningDetailsProvisioningParameter>(map['provisioningParameters'], (value) => ProjectServiceCatalogProvisioningDetailsProvisioningParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningArtifactId: map['provisioningArtifactId'] == null ? null : ((map['provisioningArtifactId'] as String).input()).input(),
+      provisioningParameters: map['provisioningParameters'] == null ? null : ((pulumi.Input.decodeList<ProjectServiceCatalogProvisioningDetailsProvisioningParameter>(map['provisioningParameters']!, (value) => ProjectServiceCatalogProvisioningDetailsProvisioningParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class Secret {
 
   factory Secret.fromMap(Map<String, dynamic> map) {
     return Secret(
-      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
-      keyVaultUrl: map['keyVaultUrl'] == null ? null : (map['keyVaultUrl'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      identity: map['identity'] == null ? null : (map['identity']! as String).input(),
+      keyVaultUrl: map['keyVaultUrl'] == null ? null : (map['keyVaultUrl']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

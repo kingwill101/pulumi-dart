@@ -56,13 +56,13 @@ class GetGroupsArgs {
 
   factory GetGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupsArgs(
-      displayNamePrefix: map['displayNamePrefix'] == null ? null : (map['displayNamePrefix'] as String).input(),
-      displayNames: map['displayNames'] == null ? null : ((map['displayNames'] as List).cast<String>()).input(),
-      ignoreMissing: map['ignoreMissing'] == null ? null : (map['ignoreMissing'] as bool).input(),
-      mailEnabled: map['mailEnabled'] == null ? null : (map['mailEnabled'] as bool).input(),
-      objectIds: map['objectIds'] == null ? null : ((map['objectIds'] as List).cast<String>()).input(),
-      returnAll: map['returnAll'] == null ? null : (map['returnAll'] as bool).input(),
-      securityEnabled: map['securityEnabled'] == null ? null : (map['securityEnabled'] as bool).input(),
+      displayNamePrefix: map['displayNamePrefix'] == null ? null : (map['displayNamePrefix']! as String).input(),
+      displayNames: map['displayNames'] == null ? null : ((map['displayNames']! as List).cast<String>()).input(),
+      ignoreMissing: map['ignoreMissing'] == null ? null : (map['ignoreMissing']! as bool).input(),
+      mailEnabled: map['mailEnabled'] == null ? null : (map['mailEnabled']! as bool).input(),
+      objectIds: map['objectIds'] == null ? null : ((map['objectIds']! as List).cast<String>()).input(),
+      returnAll: map['returnAll'] == null ? null : (map['returnAll']! as bool).input(),
+      securityEnabled: map['securityEnabled'] == null ? null : (map['securityEnabled']! as bool).input(),
     );
   }
 }

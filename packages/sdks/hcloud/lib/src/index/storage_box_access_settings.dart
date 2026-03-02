@@ -40,11 +40,11 @@ class StorageBoxAccessSettings {
 
   factory StorageBoxAccessSettings.fromMap(Map<String, dynamic> map) {
     return StorageBoxAccessSettings(
-      reachableExternally: map['reachableExternally'] == null ? null : (map['reachableExternally'] as bool).input(),
-      sambaEnabled: map['sambaEnabled'] == null ? null : (map['sambaEnabled'] as bool).input(),
-      sshEnabled: map['sshEnabled'] == null ? null : (map['sshEnabled'] as bool).input(),
-      webdavEnabled: map['webdavEnabled'] == null ? null : (map['webdavEnabled'] as bool).input(),
-      zfsEnabled: map['zfsEnabled'] == null ? null : (map['zfsEnabled'] as bool).input(),
+      reachableExternally: map['reachableExternally'] == null ? null : (map['reachableExternally']! as bool).input(),
+      sambaEnabled: map['sambaEnabled'] == null ? null : (map['sambaEnabled']! as bool).input(),
+      sshEnabled: map['sshEnabled'] == null ? null : (map['sshEnabled']! as bool).input(),
+      webdavEnabled: map['webdavEnabled'] == null ? null : (map['webdavEnabled']! as bool).input(),
+      zfsEnabled: map['zfsEnabled'] == null ? null : (map['zfsEnabled']! as bool).input(),
     );
   }
 }

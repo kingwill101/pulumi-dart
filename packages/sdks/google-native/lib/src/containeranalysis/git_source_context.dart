@@ -26,8 +26,8 @@ class GitSourceContext {
 
   factory GitSourceContext.fromMap(Map<String, dynamic> map) {
     return GitSourceContext(
-      revisionId: map['revisionId'] == null ? null : (map['revisionId'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      revisionId: map['revisionId'] == null ? null : (map['revisionId']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

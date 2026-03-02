@@ -45,12 +45,12 @@ class V3ProvisionConfigScheduledAction {
 
   factory V3ProvisionConfigScheduledAction.fromMap(Map<String, dynamic> map) {
     return V3ProvisionConfigScheduledAction(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      scheduleExpression: map['scheduleExpression'] == null ? null : (map['scheduleExpression'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as int).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      scheduleExpression: map['scheduleExpression'] == null ? null : (map['scheduleExpression']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as int).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

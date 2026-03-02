@@ -51,7 +51,7 @@ class ContactArgs {
     return ContactArgs(
       contactProfileId: (map['contactProfileId'] as String).input(),
       groundStationName: (map['groundStationName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       reservationEndTime: (map['reservationEndTime'] as String).input(),
       reservationStartTime: (map['reservationStartTime'] as String).input(),
       spacecraftId: (map['spacecraftId'] as String).input(),

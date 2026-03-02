@@ -20,7 +20,7 @@ class ConnectorCapacityAutoscalingScaleOutPolicy {
 
   factory ConnectorCapacityAutoscalingScaleOutPolicy.fromMap(Map<String, dynamic> map) {
     return ConnectorCapacityAutoscalingScaleOutPolicy(
-      cpuUtilizationPercentage: map['cpuUtilizationPercentage'] == null ? null : (map['cpuUtilizationPercentage'] as int).input(),
+      cpuUtilizationPercentage: map['cpuUtilizationPercentage'] == null ? null : ((map['cpuUtilizationPercentage'] as int).input()).input(),
     );
   }
 }

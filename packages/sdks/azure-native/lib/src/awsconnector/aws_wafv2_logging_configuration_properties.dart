@@ -43,11 +43,11 @@ class AwsWafv2LoggingConfigurationProperties {
 
   factory AwsWafv2LoggingConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return AwsWafv2LoggingConfigurationProperties(
-      logDestinationConfigs: map['logDestinationConfigs'] == null ? null : ((map['logDestinationConfigs'] as List).cast<String>()).input(),
-      loggingFilter: map['loggingFilter'] == null ? null : (LoggingFilterModelProperties.fromMap((map['loggingFilter'] as Map).cast<String, dynamic>())).input(),
-      managedByFirewallManager: map['managedByFirewallManager'] == null ? null : (map['managedByFirewallManager'] as bool).input(),
-      redactedFields: map['redactedFields'] == null ? null : (pulumi.Input.decodeList<FieldToMatch>(map['redactedFields'], (value) => FieldToMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
+      logDestinationConfigs: map['logDestinationConfigs'] == null ? null : ((map['logDestinationConfigs']! as List).cast<String>()).input(),
+      loggingFilter: map['loggingFilter'] == null ? null : (LoggingFilterModelProperties.fromMap((map['loggingFilter']! as Map).cast<String, dynamic>())).input(),
+      managedByFirewallManager: map['managedByFirewallManager'] == null ? null : (map['managedByFirewallManager']! as bool).input(),
+      redactedFields: map['redactedFields'] == null ? null : (pulumi.Input.decodeList<FieldToMatch>(map['redactedFields']!, (value) => FieldToMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn']! as String).input(),
     );
   }
 }

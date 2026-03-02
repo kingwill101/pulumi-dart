@@ -53,9 +53,9 @@ class AttestorAttestationAuthorityNote {
 
   factory AttestorAttestationAuthorityNote.fromMap(Map<String, dynamic> map) {
     return AttestorAttestationAuthorityNote(
-      delegationServiceAccountEmail: map['delegationServiceAccountEmail'] == null ? null : (map['delegationServiceAccountEmail'] as String).input(),
+      delegationServiceAccountEmail: map['delegationServiceAccountEmail'] == null ? null : (map['delegationServiceAccountEmail']! as String).input(),
       noteReference: (map['noteReference'] as String).input(),
-      publicKeys: map['publicKeys'] == null ? null : (pulumi.Input.decodeList<AttestorAttestationAuthorityNotePublicKey>(map['publicKeys'], (value) => AttestorAttestationAuthorityNotePublicKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicKeys: map['publicKeys'] == null ? null : (pulumi.Input.decodeList<AttestorAttestationAuthorityNotePublicKey>(map['publicKeys']!, (value) => AttestorAttestationAuthorityNotePublicKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

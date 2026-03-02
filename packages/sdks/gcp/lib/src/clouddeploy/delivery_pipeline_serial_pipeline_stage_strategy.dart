@@ -27,8 +27,8 @@ class DeliveryPipelineSerialPipelineStageStrategy {
 
   factory DeliveryPipelineSerialPipelineStageStrategy.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineSerialPipelineStageStrategy(
-      canary: map['canary'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanary.fromMap((map['canary'] as Map).cast<String, dynamic>())).input(),
-      standard: map['standard'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyStandard.fromMap((map['standard'] as Map).cast<String, dynamic>())).input(),
+      canary: map['canary'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanary.fromMap((map['canary']! as Map).cast<String, dynamic>())).input(),
+      standard: map['standard'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyStandard.fromMap((map['standard']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

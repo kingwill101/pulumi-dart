@@ -44,11 +44,11 @@ class SpringCloudAppRedisAssociationArgs {
 
   factory SpringCloudAppRedisAssociationArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudAppRedisAssociationArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       redisAccessKey: (map['redisAccessKey'] as String).input(),
       redisCacheId: (map['redisCacheId'] as String).input(),
       springCloudAppId: (map['springCloudAppId'] as String).input(),
-      sslEnabled: map['sslEnabled'] == null ? null : (map['sslEnabled'] as bool).input(),
+      sslEnabled: map['sslEnabled'] == null ? null : (map['sslEnabled']! as bool).input(),
     );
   }
 }

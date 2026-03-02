@@ -35,7 +35,7 @@ class LifecyclePolicyArgs {
   factory LifecyclePolicyArgs.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyArgs(
       policy: (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       repository: (map['repository'] as String).input(),
     );
   }

@@ -27,8 +27,8 @@ class GoogleIamV1AuditLogConfig {
 
   factory GoogleIamV1AuditLogConfig.fromMap(Map<String, dynamic> map) {
     return GoogleIamV1AuditLogConfig(
-      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers'] as List).cast<String>()).input(),
-      logType: map['logType'] == null ? null : (GoogleIamV1AuditLogConfigLogType.fromValue(map['logType'] as String)).input(),
+      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers']! as List).cast<String>()).input(),
+      logType: map['logType'] == null ? null : (GoogleIamV1AuditLogConfigLogType.fromValue(map['logType']! as String)).input(),
     );
   }
 }

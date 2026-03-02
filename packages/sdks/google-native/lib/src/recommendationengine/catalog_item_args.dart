@@ -81,15 +81,15 @@ class CatalogItemArgs {
     return CatalogItemArgs(
       catalogId: (map['catalogId'] as String).input(),
       categoryHierarchies: (pulumi.Input.decodeList<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>(map['categoryHierarchies'], (value) => GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       id: (map['id'] as String).input(),
-      itemAttributes: map['itemAttributes'] == null ? null : (GoogleCloudRecommendationengineV1beta1FeatureMap.fromMap((map['itemAttributes'] as Map).cast<String, dynamic>())).input(),
-      itemGroupId: map['itemGroupId'] == null ? null : (map['itemGroupId'] as String).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      productMetadata: map['productMetadata'] == null ? null : (GoogleCloudRecommendationengineV1beta1ProductCatalogItem.fromMap((map['productMetadata'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      itemAttributes: map['itemAttributes'] == null ? null : (GoogleCloudRecommendationengineV1beta1FeatureMap.fromMap((map['itemAttributes']! as Map).cast<String, dynamic>())).input(),
+      itemGroupId: map['itemGroupId'] == null ? null : (map['itemGroupId']! as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      productMetadata: map['productMetadata'] == null ? null : (GoogleCloudRecommendationengineV1beta1ProductCatalogItem.fromMap((map['productMetadata']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
       title: (map['title'] as String).input(),
     );
   }

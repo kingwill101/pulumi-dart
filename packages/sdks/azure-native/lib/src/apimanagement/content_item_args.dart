@@ -44,9 +44,9 @@ class ContentItemArgs {
 
   factory ContentItemArgs.fromMap(Map<String, dynamic> map) {
     return ContentItemArgs(
-      contentItemId: map['contentItemId'] == null ? null : (map['contentItemId'] as String).input(),
+      contentItemId: map['contentItemId'] == null ? null : (map['contentItemId']! as String).input(),
       contentTypeId: (map['contentTypeId'] as String).input(),
-      properties: map['properties'] == null ? null : (map['properties']).input(),
+      properties: map['properties'] == null ? null : (map['properties']!).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

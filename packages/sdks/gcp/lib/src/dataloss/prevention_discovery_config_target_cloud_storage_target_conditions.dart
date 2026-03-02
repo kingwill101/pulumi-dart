@@ -32,9 +32,9 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetConditions {
 
   factory PreventionDiscoveryConfigTargetCloudStorageTargetConditions.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetCloudStorageTargetConditions(
-      cloudStorageConditions: map['cloudStorageConditions'] == null ? null : (PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions.fromMap((map['cloudStorageConditions'] as Map).cast<String, dynamic>())).input(),
-      createdAfter: map['createdAfter'] == null ? null : (map['createdAfter'] as String).input(),
-      minAge: map['minAge'] == null ? null : (map['minAge'] as String).input(),
+      cloudStorageConditions: map['cloudStorageConditions'] == null ? null : (PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions.fromMap((map['cloudStorageConditions']! as Map).cast<String, dynamic>())).input(),
+      createdAfter: map['createdAfter'] == null ? null : (map['createdAfter']! as String).input(),
+      minAge: map['minAge'] == null ? null : (map['minAge']! as String).input(),
     );
   }
 }

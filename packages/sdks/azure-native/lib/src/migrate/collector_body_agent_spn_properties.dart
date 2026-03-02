@@ -40,11 +40,11 @@ class CollectorBodyAgentSpnProperties {
 
   factory CollectorBodyAgentSpnProperties.fromMap(Map<String, dynamic> map) {
     return CollectorBodyAgentSpnProperties(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
-      authority: map['authority'] == null ? null : (map['authority'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
+      authority: map['authority'] == null ? null : (map['authority']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

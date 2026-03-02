@@ -57,13 +57,13 @@ class VpcFirewallIpsConfigState {
 
   factory VpcFirewallIpsConfigState.fromMap(Map<String, dynamic> map) {
     return VpcFirewallIpsConfigState(
-      basicRules: map['basicRules'] == null ? null : (map['basicRules'] as int).input(),
-      enableAllPatch: map['enableAllPatch'] == null ? null : (map['enableAllPatch'] as int).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      memberUid: map['memberUid'] == null ? null : (map['memberUid'] as String).input(),
-      ruleClass: map['ruleClass'] == null ? null : (map['ruleClass'] as String).input(),
-      runMode: map['runMode'] == null ? null : (map['runMode'] as int).input(),
-      vpcFirewallId: map['vpcFirewallId'] == null ? null : (map['vpcFirewallId'] as String).input(),
+      basicRules: map['basicRules'] == null ? null : (map['basicRules']! as int).input(),
+      enableAllPatch: map['enableAllPatch'] == null ? null : (map['enableAllPatch']! as int).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      memberUid: map['memberUid'] == null ? null : (map['memberUid']! as String).input(),
+      ruleClass: map['ruleClass'] == null ? null : (map['ruleClass']! as String).input(),
+      runMode: map['runMode'] == null ? null : (map['runMode']! as int).input(),
+      vpcFirewallId: map['vpcFirewallId'] == null ? null : (map['vpcFirewallId']! as String).input(),
     );
   }
 }

@@ -36,8 +36,8 @@ class PrivateLinkAssociationArgs {
   factory PrivateLinkAssociationArgs.fromMap(Map<String, dynamic> map) {
     return PrivateLinkAssociationArgs(
       groupId: (map['groupId'] as String).input(),
-      plaId: map['plaId'] == null ? null : (map['plaId'] as String).input(),
-      properties: map['properties'] == null ? null : (PrivateLinkAssociationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      plaId: map['plaId'] == null ? null : (map['plaId']! as String).input(),
+      properties: map['properties'] == null ? null : (PrivateLinkAssociationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

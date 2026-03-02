@@ -86,19 +86,19 @@ class AutomaticScaling {
 
   factory AutomaticScaling.fromMap(Map<String, dynamic> map) {
     return AutomaticScaling(
-      coolDownPeriod: map['coolDownPeriod'] == null ? null : (map['coolDownPeriod'] as String).input(),
-      cpuUtilization: map['cpuUtilization'] == null ? null : (CpuUtilization.fromMap((map['cpuUtilization'] as Map).cast<String, dynamic>())).input(),
-      diskUtilization: map['diskUtilization'] == null ? null : (DiskUtilization.fromMap((map['diskUtilization'] as Map).cast<String, dynamic>())).input(),
-      maxConcurrentRequests: map['maxConcurrentRequests'] == null ? null : (map['maxConcurrentRequests'] as int).input(),
-      maxIdleInstances: map['maxIdleInstances'] == null ? null : (map['maxIdleInstances'] as int).input(),
-      maxPendingLatency: map['maxPendingLatency'] == null ? null : (map['maxPendingLatency'] as String).input(),
-      maxTotalInstances: map['maxTotalInstances'] == null ? null : (map['maxTotalInstances'] as int).input(),
-      minIdleInstances: map['minIdleInstances'] == null ? null : (map['minIdleInstances'] as int).input(),
-      minPendingLatency: map['minPendingLatency'] == null ? null : (map['minPendingLatency'] as String).input(),
-      minTotalInstances: map['minTotalInstances'] == null ? null : (map['minTotalInstances'] as int).input(),
-      networkUtilization: map['networkUtilization'] == null ? null : (NetworkUtilization.fromMap((map['networkUtilization'] as Map).cast<String, dynamic>())).input(),
-      requestUtilization: map['requestUtilization'] == null ? null : (RequestUtilization.fromMap((map['requestUtilization'] as Map).cast<String, dynamic>())).input(),
-      standardSchedulerSettings: map['standardSchedulerSettings'] == null ? null : (StandardSchedulerSettings.fromMap((map['standardSchedulerSettings'] as Map).cast<String, dynamic>())).input(),
+      coolDownPeriod: map['coolDownPeriod'] == null ? null : (map['coolDownPeriod']! as String).input(),
+      cpuUtilization: map['cpuUtilization'] == null ? null : (CpuUtilization.fromMap((map['cpuUtilization']! as Map).cast<String, dynamic>())).input(),
+      diskUtilization: map['diskUtilization'] == null ? null : (DiskUtilization.fromMap((map['diskUtilization']! as Map).cast<String, dynamic>())).input(),
+      maxConcurrentRequests: map['maxConcurrentRequests'] == null ? null : (map['maxConcurrentRequests']! as int).input(),
+      maxIdleInstances: map['maxIdleInstances'] == null ? null : (map['maxIdleInstances']! as int).input(),
+      maxPendingLatency: map['maxPendingLatency'] == null ? null : (map['maxPendingLatency']! as String).input(),
+      maxTotalInstances: map['maxTotalInstances'] == null ? null : (map['maxTotalInstances']! as int).input(),
+      minIdleInstances: map['minIdleInstances'] == null ? null : (map['minIdleInstances']! as int).input(),
+      minPendingLatency: map['minPendingLatency'] == null ? null : (map['minPendingLatency']! as String).input(),
+      minTotalInstances: map['minTotalInstances'] == null ? null : (map['minTotalInstances']! as int).input(),
+      networkUtilization: map['networkUtilization'] == null ? null : (NetworkUtilization.fromMap((map['networkUtilization']! as Map).cast<String, dynamic>())).input(),
+      requestUtilization: map['requestUtilization'] == null ? null : (RequestUtilization.fromMap((map['requestUtilization']! as Map).cast<String, dynamic>())).input(),
+      standardSchedulerSettings: map['standardSchedulerSettings'] == null ? null : (StandardSchedulerSettings.fromMap((map['standardSchedulerSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

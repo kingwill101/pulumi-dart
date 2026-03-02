@@ -20,7 +20,7 @@ class SlrState {
 
   factory SlrState.fromMap(Map<String, dynamic> map) {
     return SlrState(
-      productName: map['productName'] == null ? null : (map['productName'] as String).input(),
+      productName: map['productName'] == null ? null : (map['productName']! as String).input(),
     );
   }
 }

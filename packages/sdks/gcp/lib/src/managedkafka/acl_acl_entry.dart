@@ -38,9 +38,9 @@ class AclAclEntry {
 
   factory AclAclEntry.fromMap(Map<String, dynamic> map) {
     return AclAclEntry(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
       operation: (map['operation'] as String).input(),
-      permissionType: map['permissionType'] == null ? null : (map['permissionType'] as String).input(),
+      permissionType: map['permissionType'] == null ? null : (map['permissionType']! as String).input(),
       principal: (map['principal'] as String).input(),
     );
   }

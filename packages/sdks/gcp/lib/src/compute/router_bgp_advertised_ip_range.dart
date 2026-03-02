@@ -28,7 +28,7 @@ class RouterBgpAdvertisedIpRange {
 
   factory RouterBgpAdvertisedIpRange.fromMap(Map<String, dynamic> map) {
     return RouterBgpAdvertisedIpRange(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       range: (map['range'] as String).input(),
     );
   }

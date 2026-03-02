@@ -74,17 +74,17 @@ class OutputMssqlArgs {
 
   factory OutputMssqlArgs.fromMap(Map<String, dynamic> map) {
     return OutputMssqlArgs(
-      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode']! as String).input(),
       database: (map['database'] as String).input(),
-      maxBatchCount: map['maxBatchCount'] == null ? null : (map['maxBatchCount'] as double).input(),
-      maxWriterCount: map['maxWriterCount'] == null ? null : (map['maxWriterCount'] as double).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      maxBatchCount: map['maxBatchCount'] == null ? null : (map['maxBatchCount']! as double).input(),
+      maxWriterCount: map['maxWriterCount'] == null ? null : (map['maxWriterCount']! as double).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       server: (map['server'] as String).input(),
       streamAnalyticsJobName: (map['streamAnalyticsJobName'] as String).input(),
       table: (map['table'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

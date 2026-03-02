@@ -26,8 +26,8 @@ class TokenCredentialsProperties {
 
   factory TokenCredentialsProperties.fromMap(Map<String, dynamic> map) {
     return TokenCredentialsProperties(
-      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeList<TokenCertificate>(map['certificates'], (value) => TokenCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      passwords: map['passwords'] == null ? null : (pulumi.Input.decodeList<TokenPassword>(map['passwords'], (value) => TokenPassword.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeList<TokenCertificate>(map['certificates']!, (value) => TokenCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      passwords: map['passwords'] == null ? null : (pulumi.Input.decodeList<TokenPassword>(map['passwords']!, (value) => TokenPassword.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

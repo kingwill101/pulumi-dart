@@ -48,12 +48,12 @@ class RuntimeManagementConfigState {
 
   factory RuntimeManagementConfigState.fromMap(Map<String, dynamic> map) {
     return RuntimeManagementConfigState(
-      functionArn: map['functionArn'] == null ? null : (map['functionArn'] as String).input(),
-      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
-      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      runtimeVersionArn: map['runtimeVersionArn'] == null ? null : (map['runtimeVersionArn'] as String).input(),
-      updateRuntimeOn: map['updateRuntimeOn'] == null ? null : (map['updateRuntimeOn'] as String).input(),
+      functionArn: map['functionArn'] == null ? null : ((map['functionArn'] as String).input()).input(),
+      functionName: map['functionName'] == null ? null : ((map['functionName'] as String).input()).input(),
+      qualifier: map['qualifier'] == null ? null : ((map['qualifier'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      runtimeVersionArn: map['runtimeVersionArn'] == null ? null : ((map['runtimeVersionArn'] as String).input()).input(),
+      updateRuntimeOn: map['updateRuntimeOn'] == null ? null : ((map['updateRuntimeOn'] as String).input()).input(),
     );
   }
 }

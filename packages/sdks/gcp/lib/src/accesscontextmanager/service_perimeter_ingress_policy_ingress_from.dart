@@ -39,9 +39,9 @@ class ServicePerimeterIngressPolicyIngressFrom {
 
   factory ServicePerimeterIngressPolicyIngressFrom.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterIngressPolicyIngressFrom(
-      identities: map['identities'] == null ? null : ((map['identities'] as List).cast<String>()).input(),
-      identityType: map['identityType'] == null ? null : (map['identityType'] as String).input(),
-      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<ServicePerimeterIngressPolicyIngressFromSource>(map['sources'], (value) => ServicePerimeterIngressPolicyIngressFromSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identities: map['identities'] == null ? null : ((map['identities']! as List).cast<String>()).input(),
+      identityType: map['identityType'] == null ? null : (map['identityType']! as String).input(),
+      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<ServicePerimeterIngressPolicyIngressFromSource>(map['sources']!, (value) => ServicePerimeterIngressPolicyIngressFromSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

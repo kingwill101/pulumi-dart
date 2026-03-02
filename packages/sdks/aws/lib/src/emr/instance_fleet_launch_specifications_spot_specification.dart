@@ -36,7 +36,7 @@ class InstanceFleetLaunchSpecificationsSpotSpecification {
   factory InstanceFleetLaunchSpecificationsSpotSpecification.fromMap(Map<String, dynamic> map) {
     return InstanceFleetLaunchSpecificationsSpotSpecification(
       allocationStrategy: (map['allocationStrategy'] as String).input(),
-      blockDurationMinutes: map['blockDurationMinutes'] == null ? null : (map['blockDurationMinutes'] as int).input(),
+      blockDurationMinutes: map['blockDurationMinutes'] == null ? null : ((map['blockDurationMinutes'] as int).input()).input(),
       timeoutAction: (map['timeoutAction'] as String).input(),
       timeoutDurationMinutes: (map['timeoutDurationMinutes'] as int).input(),
     );

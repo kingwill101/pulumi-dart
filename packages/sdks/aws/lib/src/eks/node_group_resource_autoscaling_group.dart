@@ -20,7 +20,7 @@ class NodeGroupResourceAutoscalingGroup {
 
   factory NodeGroupResourceAutoscalingGroup.fromMap(Map<String, dynamic> map) {
     return NodeGroupResourceAutoscalingGroup(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
     );
   }
 }

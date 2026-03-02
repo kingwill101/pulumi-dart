@@ -17,11 +17,11 @@ class ExampleStack extends pulumi.Stack {
           spec: gcp.cloudrun.ServiceTemplateSpec(
             containers: [
               gcp.cloudrun.ServiceTemplateSpecContainer(
-                image: "gcr.io/cloudrun/hello",
+                image: "gcr.io/cloudrun/hello".output(),
               ),
-            ],
-          ),
-        ),
+            ].output(),
+          ).output(),
+        ).output(),
       ),
     );
 
@@ -30,8 +30,8 @@ class ExampleStack extends pulumi.Stack {
       args: gcp.cloudrun.IamMemberArgs(
         service: helloService.name,
         location: location.output(),
-        role: "roles/run.invoker",
-        member: "allUsers",
+        role: "roles/run.invoker".output(),
+        member: "allUsers".output(),
       ),
     );
 
@@ -39,11 +39,11 @@ class ExampleStack extends pulumi.Stack {
     final myImage = docker.index.Image(
       imageName,
       args: docker.index.ImageArgs(
-        imageName: "gcr.io/$project/$imageName:v1.0.0",
+        imageName: "gcr.io/$project/$imageName:v1.0.0".output(),
         build: docker.index.DockerBuild(
-          context: "./app",
-          platform: "linux/amd64",
-        ),
+          context: "./app".output(),
+          platform: "linux/amd64".output(),
+        ).output(),
       ),
     );
 
@@ -53,24 +53,24 @@ class ExampleStack extends pulumi.Stack {
         location: location.output(),
         template: gcp.cloudrun.ServiceTemplate(
           spec: gcp.cloudrun.ServiceTemplateSpec(
-            containerConcurrency: 50,
+            containerConcurrency: 50.output(),
             containers: [
               gcp.cloudrun.ServiceTemplateSpecContainer(
                 image: myImage.imageName,
                 resources: gcp.cloudrun.ServiceTemplateSpecContainerResources(
                   limits: {
-                    "memory": "1Gi",
-                  },
-                ),
+                    "memory": '1Gi',
+                  }.output(),
+                ).output(),
                 ports: [
                   gcp.cloudrun.ServiceTemplateSpecContainerPort(
-                    containerPort: 8080,
+                    containerPort: 8080.output(),
                   ),
-                ],
+                ].output(),
               ),
-            ],
-          ),
-        ),
+            ].output(),
+          ).output(),
+        ).output(),
       ),
     );
 
@@ -79,8 +79,8 @@ class ExampleStack extends pulumi.Stack {
       args: gcp.cloudrun.IamMemberArgs(
         service: rubyService.name,
         location: location.output(),
-        role: "roles/run.invoker",
-        member: "allUsers",
+        role: "roles/run.invoker".output(),
+        member: "allUsers".output(),
       ),
     );
 

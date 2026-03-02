@@ -28,8 +28,8 @@ class GoogleCloudContentwarehouseV1AccessControlAction {
 
   factory GoogleCloudContentwarehouseV1AccessControlAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1AccessControlAction(
-      operationType: map['operationType'] == null ? null : (GoogleCloudContentwarehouseV1AccessControlActionOperationType.fromValue(map['operationType'] as String)).input(),
-      policy: map['policy'] == null ? null : (GoogleIamV1Policy.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
+      operationType: map['operationType'] == null ? null : (GoogleCloudContentwarehouseV1AccessControlActionOperationType.fromValue(map['operationType']! as String)).input(),
+      policy: map['policy'] == null ? null : (GoogleIamV1Policy.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

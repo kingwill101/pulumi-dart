@@ -34,9 +34,9 @@ class DomainSamlOptionsState {
 
   factory DomainSamlOptionsState.fromMap(Map<String, dynamic> map) {
     return DomainSamlOptionsState(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      samlOptions: map['samlOptions'] == null ? null : (DomainSamlOptionsSamlOptions.fromMap((map['samlOptions'] as Map).cast<String, dynamic>())).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      samlOptions: map['samlOptions'] == null ? null : ((DomainSamlOptionsSamlOptions.fromMap((map['samlOptions']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -46,11 +46,11 @@ class AppCheckRecaptchaEnterpriseConfigState {
 
   factory AppCheckRecaptchaEnterpriseConfigState.fromMap(Map<String, dynamic> map) {
     return AppCheckRecaptchaEnterpriseConfigState(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      siteKey: map['siteKey'] == null ? null : (map['siteKey'] as String).input(),
-      tokenTtl: map['tokenTtl'] == null ? null : (map['tokenTtl'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      siteKey: map['siteKey'] == null ? null : (map['siteKey']! as String).input(),
+      tokenTtl: map['tokenTtl'] == null ? null : (map['tokenTtl']! as String).input(),
     );
   }
 }

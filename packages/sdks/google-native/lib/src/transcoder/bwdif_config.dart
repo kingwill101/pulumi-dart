@@ -31,9 +31,9 @@ class BwdifConfig {
 
   factory BwdifConfig.fromMap(Map<String, dynamic> map) {
     return BwdifConfig(
-      deinterlaceAllFrames: map['deinterlaceAllFrames'] == null ? null : (map['deinterlaceAllFrames'] as bool).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      parity: map['parity'] == null ? null : (map['parity'] as String).input(),
+      deinterlaceAllFrames: map['deinterlaceAllFrames'] == null ? null : (map['deinterlaceAllFrames']! as bool).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      parity: map['parity'] == null ? null : (map['parity']! as String).input(),
     );
   }
 }

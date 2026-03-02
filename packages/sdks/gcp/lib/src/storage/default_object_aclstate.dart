@@ -28,8 +28,8 @@ class DefaultObjectACLState {
 
   factory DefaultObjectACLState.fromMap(Map<String, dynamic> map) {
     return DefaultObjectACLState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      roleEntities: map['roleEntities'] == null ? null : ((map['roleEntities'] as List).cast<String>()).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      roleEntities: map['roleEntities'] == null ? null : ((map['roleEntities']! as List).cast<String>()).input(),
     );
   }
 }

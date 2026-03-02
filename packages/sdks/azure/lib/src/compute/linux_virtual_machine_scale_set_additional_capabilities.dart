@@ -20,7 +20,7 @@ class LinuxVirtualMachineScaleSetAdditionalCapabilities {
 
   factory LinuxVirtualMachineScaleSetAdditionalCapabilities.fromMap(Map<String, dynamic> map) {
     return LinuxVirtualMachineScaleSetAdditionalCapabilities(
-      ultraSsdEnabled: map['ultraSsdEnabled'] == null ? null : (map['ultraSsdEnabled'] as bool).input(),
+      ultraSsdEnabled: map['ultraSsdEnabled'] == null ? null : (map['ultraSsdEnabled']! as bool).input(),
     );
   }
 }

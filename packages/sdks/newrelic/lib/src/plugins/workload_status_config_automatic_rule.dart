@@ -32,8 +32,8 @@ class WorkloadStatusConfigAutomaticRule {
 
   factory WorkloadStatusConfigAutomaticRule.fromMap(Map<String, dynamic> map) {
     return WorkloadStatusConfigAutomaticRule(
-      entityGuids: map['entityGuids'] == null ? null : ((map['entityGuids'] as List).cast<String>()).input(),
-      nrqlQueries: map['nrqlQueries'] == null ? null : (pulumi.Input.decodeList<WorkloadStatusConfigAutomaticRuleNrqlQuery>(map['nrqlQueries'], (value) => WorkloadStatusConfigAutomaticRuleNrqlQuery.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entityGuids: map['entityGuids'] == null ? null : ((map['entityGuids']! as List).cast<String>()).input(),
+      nrqlQueries: map['nrqlQueries'] == null ? null : (pulumi.Input.decodeList<WorkloadStatusConfigAutomaticRuleNrqlQuery>(map['nrqlQueries']!, (value) => WorkloadStatusConfigAutomaticRuleNrqlQuery.fromMap((value as Map).cast<String, dynamic>()))).input(),
       rollup: (WorkloadStatusConfigAutomaticRuleRollup.fromMap((map['rollup'] as Map).cast<String, dynamic>())).input(),
     );
   }

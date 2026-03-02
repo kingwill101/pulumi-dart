@@ -74,15 +74,15 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobConfig {
   factory GoogleCloudDatalabelingV1beta1EvaluationJobConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1EvaluationJobConfig(
       bigqueryImportKeys: ((map['bigqueryImportKeys'] as Map).cast<String, String>()).input(),
-      boundingPolyConfig: map['boundingPolyConfig'] == null ? null : (GoogleCloudDatalabelingV1beta1BoundingPolyConfig.fromMap((map['boundingPolyConfig'] as Map).cast<String, dynamic>())).input(),
+      boundingPolyConfig: map['boundingPolyConfig'] == null ? null : (GoogleCloudDatalabelingV1beta1BoundingPolyConfig.fromMap((map['boundingPolyConfig']! as Map).cast<String, dynamic>())).input(),
       evaluationConfig: (GoogleCloudDatalabelingV1beta1EvaluationConfig.fromMap((map['evaluationConfig'] as Map).cast<String, dynamic>())).input(),
-      evaluationJobAlertConfig: map['evaluationJobAlertConfig'] == null ? null : (GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig.fromMap((map['evaluationJobAlertConfig'] as Map).cast<String, dynamic>())).input(),
+      evaluationJobAlertConfig: map['evaluationJobAlertConfig'] == null ? null : (GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig.fromMap((map['evaluationJobAlertConfig']! as Map).cast<String, dynamic>())).input(),
       exampleCount: (map['exampleCount'] as int).input(),
       exampleSamplePercentage: (map['exampleSamplePercentage'] as double).input(),
-      humanAnnotationConfig: map['humanAnnotationConfig'] == null ? null : (GoogleCloudDatalabelingV1beta1HumanAnnotationConfig.fromMap((map['humanAnnotationConfig'] as Map).cast<String, dynamic>())).input(),
-      imageClassificationConfig: map['imageClassificationConfig'] == null ? null : (GoogleCloudDatalabelingV1beta1ImageClassificationConfig.fromMap((map['imageClassificationConfig'] as Map).cast<String, dynamic>())).input(),
-      inputConfig: map['inputConfig'] == null ? null : (GoogleCloudDatalabelingV1beta1InputConfig.fromMap((map['inputConfig'] as Map).cast<String, dynamic>())).input(),
-      textClassificationConfig: map['textClassificationConfig'] == null ? null : (GoogleCloudDatalabelingV1beta1TextClassificationConfig.fromMap((map['textClassificationConfig'] as Map).cast<String, dynamic>())).input(),
+      humanAnnotationConfig: map['humanAnnotationConfig'] == null ? null : (GoogleCloudDatalabelingV1beta1HumanAnnotationConfig.fromMap((map['humanAnnotationConfig']! as Map).cast<String, dynamic>())).input(),
+      imageClassificationConfig: map['imageClassificationConfig'] == null ? null : (GoogleCloudDatalabelingV1beta1ImageClassificationConfig.fromMap((map['imageClassificationConfig']! as Map).cast<String, dynamic>())).input(),
+      inputConfig: map['inputConfig'] == null ? null : (GoogleCloudDatalabelingV1beta1InputConfig.fromMap((map['inputConfig']! as Map).cast<String, dynamic>())).input(),
+      textClassificationConfig: map['textClassificationConfig'] == null ? null : (GoogleCloudDatalabelingV1beta1TextClassificationConfig.fromMap((map['textClassificationConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

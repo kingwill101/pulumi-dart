@@ -32,7 +32,7 @@ class GetJobJobsV4Args {
   factory GetJobJobsV4Args.fromMap(Map<String, dynamic> map) {
     return GetJobJobsV4Args(
       jobId: (map['jobId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       tenantId: (map['tenantId'] as String).input(),
     );
   }

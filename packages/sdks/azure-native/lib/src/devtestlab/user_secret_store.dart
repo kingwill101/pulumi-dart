@@ -26,8 +26,8 @@ class UserSecretStore {
 
   factory UserSecretStore.fromMap(Map<String, dynamic> map) {
     return UserSecretStore(
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
-      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri'] as String).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
+      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri']! as String).input(),
     );
   }
 }

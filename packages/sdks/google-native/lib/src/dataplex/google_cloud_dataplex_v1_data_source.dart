@@ -26,8 +26,8 @@ class GoogleCloudDataplexV1DataSource {
 
   factory GoogleCloudDataplexV1DataSource.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataSource(
-      entity: map['entity'] == null ? null : (map['entity'] as String).input(),
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
+      entity: map['entity'] == null ? null : (map['entity']! as String).input(),
+      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
     );
   }
 }

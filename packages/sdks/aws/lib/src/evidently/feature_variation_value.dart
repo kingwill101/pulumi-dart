@@ -35,10 +35,10 @@ class FeatureVariationValue {
 
   factory FeatureVariationValue.fromMap(Map<String, dynamic> map) {
     return FeatureVariationValue(
-      boolValue: map['boolValue'] == null ? null : (map['boolValue'] as String).input(),
-      doubleValue: map['doubleValue'] == null ? null : (map['doubleValue'] as String).input(),
-      longValue: map['longValue'] == null ? null : (map['longValue'] as String).input(),
-      stringValue: map['stringValue'] == null ? null : (map['stringValue'] as String).input(),
+      boolValue: map['boolValue'] == null ? null : ((map['boolValue'] as String).input()).input(),
+      doubleValue: map['doubleValue'] == null ? null : ((map['doubleValue'] as String).input()).input(),
+      longValue: map['longValue'] == null ? null : ((map['longValue'] as String).input()).input(),
+      stringValue: map['stringValue'] == null ? null : ((map['stringValue'] as String).input()).input(),
     );
   }
 }

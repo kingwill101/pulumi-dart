@@ -37,10 +37,10 @@ class BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration 
 
   factory BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration.fromMap(Map<String, dynamic> map) {
     return BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration(
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      recordExpiration: (BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration.fromMap((map['recordExpiration'] as Map).cast<String, dynamic>())).input(),
-      tableArn: map['tableArn'] == null ? null : (map['tableArn'] as String).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : ((BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      recordExpiration: (BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration.fromMap((map['recordExpiration']! as Map).cast<String, dynamic>())).input(),
+      tableArn: map['tableArn'] == null ? null : ((map['tableArn'] as String).input()).input(),
+      tableName: map['tableName'] == null ? null : ((map['tableName'] as String).input()).input(),
     );
   }
 }

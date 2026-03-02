@@ -47,11 +47,11 @@ class DiJobJobSettings {
 
   factory DiJobJobSettings.fromMap(Map<String, dynamic> map) {
     return DiJobJobSettings(
-      channelSettings: map['channelSettings'] == null ? null : (map['channelSettings'] as String).input(),
-      columnDataTypeSettings: map['columnDataTypeSettings'] == null ? null : (pulumi.Input.decodeList<DiJobJobSettingsColumnDataTypeSetting>(map['columnDataTypeSettings'], (value) => DiJobJobSettingsColumnDataTypeSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cycleScheduleSettings: map['cycleScheduleSettings'] == null ? null : (DiJobJobSettingsCycleScheduleSettings.fromMap((map['cycleScheduleSettings'] as Map).cast<String, dynamic>())).input(),
-      ddlHandlingSettings: map['ddlHandlingSettings'] == null ? null : (pulumi.Input.decodeList<DiJobJobSettingsDdlHandlingSetting>(map['ddlHandlingSettings'], (value) => DiJobJobSettingsDdlHandlingSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      runtimeSettings: map['runtimeSettings'] == null ? null : (pulumi.Input.decodeList<DiJobJobSettingsRuntimeSetting>(map['runtimeSettings'], (value) => DiJobJobSettingsRuntimeSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      channelSettings: map['channelSettings'] == null ? null : (map['channelSettings']! as String).input(),
+      columnDataTypeSettings: map['columnDataTypeSettings'] == null ? null : (pulumi.Input.decodeList<DiJobJobSettingsColumnDataTypeSetting>(map['columnDataTypeSettings']!, (value) => DiJobJobSettingsColumnDataTypeSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cycleScheduleSettings: map['cycleScheduleSettings'] == null ? null : (DiJobJobSettingsCycleScheduleSettings.fromMap((map['cycleScheduleSettings']! as Map).cast<String, dynamic>())).input(),
+      ddlHandlingSettings: map['ddlHandlingSettings'] == null ? null : (pulumi.Input.decodeList<DiJobJobSettingsDdlHandlingSetting>(map['ddlHandlingSettings']!, (value) => DiJobJobSettingsDdlHandlingSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      runtimeSettings: map['runtimeSettings'] == null ? null : (pulumi.Input.decodeList<DiJobJobSettingsRuntimeSetting>(map['runtimeSettings']!, (value) => DiJobJobSettingsRuntimeSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

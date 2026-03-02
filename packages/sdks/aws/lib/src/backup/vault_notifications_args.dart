@@ -41,7 +41,7 @@ class VaultNotificationsArgs {
     return VaultNotificationsArgs(
       backupVaultEvents: ((map['backupVaultEvents'] as List).cast<String>()).input(),
       backupVaultName: (map['backupVaultName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       snsTopicArn: (map['snsTopicArn'] as String).input(),
     );
   }

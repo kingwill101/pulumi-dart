@@ -34,9 +34,9 @@ class DeployPolicyRuleRolloutRestrictionTimeWindows {
 
   factory DeployPolicyRuleRolloutRestrictionTimeWindows.fromMap(Map<String, dynamic> map) {
     return DeployPolicyRuleRolloutRestrictionTimeWindows(
-      oneTimeWindows: map['oneTimeWindows'] == null ? null : (pulumi.Input.decodeList<DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow>(map['oneTimeWindows'], (value) => DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      oneTimeWindows: map['oneTimeWindows'] == null ? null : (pulumi.Input.decodeList<DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow>(map['oneTimeWindows']!, (value) => DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow.fromMap((value as Map).cast<String, dynamic>()))).input(),
       timeZone: (map['timeZone'] as String).input(),
-      weeklyWindows: map['weeklyWindows'] == null ? null : (pulumi.Input.decodeList<DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow>(map['weeklyWindows'], (value) => DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      weeklyWindows: map['weeklyWindows'] == null ? null : (pulumi.Input.decodeList<DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow>(map['weeklyWindows']!, (value) => DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class ActiveRoleAssignmentTicket {
 
   factory ActiveRoleAssignmentTicket.fromMap(Map<String, dynamic> map) {
     return ActiveRoleAssignmentTicket(
-      number: map['number'] == null ? null : (map['number'] as String).input(),
-      system: map['system'] == null ? null : (map['system'] as String).input(),
+      number: map['number'] == null ? null : (map['number']! as String).input(),
+      system: map['system'] == null ? null : (map['system']! as String).input(),
     );
   }
 }

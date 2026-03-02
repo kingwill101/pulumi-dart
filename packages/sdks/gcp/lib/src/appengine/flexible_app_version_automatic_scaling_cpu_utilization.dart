@@ -25,7 +25,7 @@ class FlexibleAppVersionAutomaticScalingCpuUtilization {
 
   factory FlexibleAppVersionAutomaticScalingCpuUtilization.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionAutomaticScalingCpuUtilization(
-      aggregationWindowLength: map['aggregationWindowLength'] == null ? null : (map['aggregationWindowLength'] as String).input(),
+      aggregationWindowLength: map['aggregationWindowLength'] == null ? null : (map['aggregationWindowLength']! as String).input(),
       targetUtilization: (map['targetUtilization'] as double).input(),
     );
   }

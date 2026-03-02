@@ -49,11 +49,11 @@ class DataSourceArgs {
 
   factory DataSourceArgs.fromMap(Map<String, dynamic> map) {
     return DataSourceArgs(
-      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName'] as String).input(),
+      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName']! as String).input(),
       kind: (map['kind'] as String).input(),
       properties: (map['properties']).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

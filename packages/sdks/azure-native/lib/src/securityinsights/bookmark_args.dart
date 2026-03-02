@@ -101,21 +101,21 @@ class BookmarkArgs {
 
   factory BookmarkArgs.fromMap(Map<String, dynamic> map) {
     return BookmarkArgs(
-      bookmarkId: map['bookmarkId'] == null ? null : (map['bookmarkId'] as String).input(),
-      created: map['created'] == null ? null : (map['created'] as String).input(),
-      createdBy: map['createdBy'] == null ? null : (UserInfo.fromMap((map['createdBy'] as Map).cast<String, dynamic>())).input(),
+      bookmarkId: map['bookmarkId'] == null ? null : (map['bookmarkId']! as String).input(),
+      created: map['created'] == null ? null : (map['created']! as String).input(),
+      createdBy: map['createdBy'] == null ? null : (UserInfo.fromMap((map['createdBy']! as Map).cast<String, dynamic>())).input(),
       displayName: (map['displayName'] as String).input(),
-      eventTime: map['eventTime'] == null ? null : (map['eventTime'] as String).input(),
-      incidentInfo: map['incidentInfo'] == null ? null : (IncidentInfo.fromMap((map['incidentInfo'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
-      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
+      eventTime: map['eventTime'] == null ? null : (map['eventTime']! as String).input(),
+      incidentInfo: map['incidentInfo'] == null ? null : (IncidentInfo.fromMap((map['incidentInfo']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as List).cast<String>()).input(),
+      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
       query: (map['query'] as String).input(),
-      queryEndTime: map['queryEndTime'] == null ? null : (map['queryEndTime'] as String).input(),
-      queryResult: map['queryResult'] == null ? null : (map['queryResult'] as String).input(),
-      queryStartTime: map['queryStartTime'] == null ? null : (map['queryStartTime'] as String).input(),
+      queryEndTime: map['queryEndTime'] == null ? null : (map['queryEndTime']! as String).input(),
+      queryResult: map['queryResult'] == null ? null : (map['queryResult']! as String).input(),
+      queryStartTime: map['queryStartTime'] == null ? null : (map['queryStartTime']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      updated: map['updated'] == null ? null : (map['updated'] as String).input(),
-      updatedBy: map['updatedBy'] == null ? null : (UserInfo.fromMap((map['updatedBy'] as Map).cast<String, dynamic>())).input(),
+      updated: map['updated'] == null ? null : (map['updated']! as String).input(),
+      updatedBy: map['updatedBy'] == null ? null : (UserInfo.fromMap((map['updatedBy']! as Map).cast<String, dynamic>())).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

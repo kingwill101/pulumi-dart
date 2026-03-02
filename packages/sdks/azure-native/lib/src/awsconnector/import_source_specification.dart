@@ -38,10 +38,10 @@ class ImportSourceSpecification {
 
   factory ImportSourceSpecification.fromMap(Map<String, dynamic> map) {
     return ImportSourceSpecification(
-      inputCompressionType: map['inputCompressionType'] == null ? null : (map['inputCompressionType'] as String).input(),
-      inputFormat: map['inputFormat'] == null ? null : (map['inputFormat'] as String).input(),
-      inputFormatOptions: map['inputFormatOptions'] == null ? null : (InputFormatOptions.fromMap((map['inputFormatOptions'] as Map).cast<String, dynamic>())).input(),
-      s3BucketSource: map['s3BucketSource'] == null ? null : (S3BucketSource.fromMap((map['s3BucketSource'] as Map).cast<String, dynamic>())).input(),
+      inputCompressionType: map['inputCompressionType'] == null ? null : (map['inputCompressionType']! as String).input(),
+      inputFormat: map['inputFormat'] == null ? null : (map['inputFormat']! as String).input(),
+      inputFormatOptions: map['inputFormatOptions'] == null ? null : (InputFormatOptions.fromMap((map['inputFormatOptions']! as Map).cast<String, dynamic>())).input(),
+      s3BucketSource: map['s3BucketSource'] == null ? null : (S3BucketSource.fromMap((map['s3BucketSource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

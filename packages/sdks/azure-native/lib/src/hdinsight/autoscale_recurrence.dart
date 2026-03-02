@@ -27,8 +27,8 @@ class AutoscaleRecurrence {
 
   factory AutoscaleRecurrence.fromMap(Map<String, dynamic> map) {
     return AutoscaleRecurrence(
-      schedule: map['schedule'] == null ? null : (pulumi.Input.decodeList<AutoscaleSchedule>(map['schedule'], (value) => AutoscaleSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      schedule: map['schedule'] == null ? null : (pulumi.Input.decodeList<AutoscaleSchedule>(map['schedule']!, (value) => AutoscaleSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

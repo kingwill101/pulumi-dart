@@ -27,8 +27,8 @@ class JustificationContaineranalysisV1beta1 {
 
   factory JustificationContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return JustificationContaineranalysisV1beta1(
-      details: map['details'] == null ? null : (map['details'] as String).input(),
-      justificationType: map['justificationType'] == null ? null : (JustificationJustificationTypeContaineranalysisV1beta1.fromValue(map['justificationType'] as String)).input(),
+      details: map['details'] == null ? null : (map['details']! as String).input(),
+      justificationType: map['justificationType'] == null ? null : (JustificationJustificationTypeContaineranalysisV1beta1.fromValue(map['justificationType']! as String)).input(),
     );
   }
 }

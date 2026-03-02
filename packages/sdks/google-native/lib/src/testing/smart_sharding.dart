@@ -21,7 +21,7 @@ class SmartSharding {
 
   factory SmartSharding.fromMap(Map<String, dynamic> map) {
     return SmartSharding(
-      targetedShardDuration: map['targetedShardDuration'] == null ? null : (map['targetedShardDuration'] as String).input(),
+      targetedShardDuration: map['targetedShardDuration'] == null ? null : (map['targetedShardDuration']! as String).input(),
     );
   }
 }

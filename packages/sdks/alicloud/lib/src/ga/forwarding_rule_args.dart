@@ -52,9 +52,9 @@ class ForwardingRuleArgs {
   factory ForwardingRuleArgs.fromMap(Map<String, dynamic> map) {
     return ForwardingRuleArgs(
       acceleratorId: (map['acceleratorId'] as String).input(),
-      forwardingRuleName: map['forwardingRuleName'] == null ? null : (map['forwardingRuleName'] as String).input(),
+      forwardingRuleName: map['forwardingRuleName'] == null ? null : (map['forwardingRuleName']! as String).input(),
       listenerId: (map['listenerId'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
       ruleActions: (pulumi.Input.decodeList<ForwardingRuleRuleAction>(map['ruleActions'], (value) => ForwardingRuleRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
       ruleConditions: (pulumi.Input.decodeList<ForwardingRuleRuleCondition>(map['ruleConditions'], (value) => ForwardingRuleRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );

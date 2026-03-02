@@ -47,12 +47,12 @@ class EntityRecognizerInputDataConfigAugmentedManifest {
 
   factory EntityRecognizerInputDataConfigAugmentedManifest.fromMap(Map<String, dynamic> map) {
     return EntityRecognizerInputDataConfigAugmentedManifest(
-      annotationDataS3Uri: map['annotationDataS3Uri'] == null ? null : (map['annotationDataS3Uri'] as String).input(),
+      annotationDataS3Uri: map['annotationDataS3Uri'] == null ? null : ((map['annotationDataS3Uri'] as String).input()).input(),
       attributeNames: ((map['attributeNames'] as List).cast<String>()).input(),
-      documentType: map['documentType'] == null ? null : (map['documentType'] as String).input(),
+      documentType: map['documentType'] == null ? null : ((map['documentType'] as String).input()).input(),
       s3Uri: (map['s3Uri'] as String).input(),
-      sourceDocumentsS3Uri: map['sourceDocumentsS3Uri'] == null ? null : (map['sourceDocumentsS3Uri'] as String).input(),
-      split: map['split'] == null ? null : (map['split'] as String).input(),
+      sourceDocumentsS3Uri: map['sourceDocumentsS3Uri'] == null ? null : ((map['sourceDocumentsS3Uri'] as String).input()).input(),
+      split: map['split'] == null ? null : ((map['split'] as String).input()).input(),
     );
   }
 }

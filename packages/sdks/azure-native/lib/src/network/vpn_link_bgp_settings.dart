@@ -26,8 +26,8 @@ class VpnLinkBgpSettings {
 
   factory VpnLinkBgpSettings.fromMap(Map<String, dynamic> map) {
     return VpnLinkBgpSettings(
-      asn: map['asn'] == null ? null : (map['asn'] as double).input(),
-      bgpPeeringAddress: map['bgpPeeringAddress'] == null ? null : (map['bgpPeeringAddress'] as String).input(),
+      asn: map['asn'] == null ? null : (map['asn']! as double).input(),
+      bgpPeeringAddress: map['bgpPeeringAddress'] == null ? null : (map['bgpPeeringAddress']! as String).input(),
     );
   }
 }

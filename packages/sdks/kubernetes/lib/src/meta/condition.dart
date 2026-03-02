@@ -48,7 +48,7 @@ class Condition {
     return Condition(
       lastTransitionTime: (map['lastTransitionTime'] as String).input(),
       message: (map['message'] as String).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
       reason: (map['reason'] as String).input(),
       status: (map['status'] as String).input(),
       type: (map['type'] as String).input(),

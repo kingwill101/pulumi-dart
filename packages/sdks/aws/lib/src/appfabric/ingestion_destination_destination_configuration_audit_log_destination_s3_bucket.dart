@@ -25,7 +25,7 @@ class IngestionDestinationDestinationConfigurationAuditLogDestinationS3Bucket {
   factory IngestionDestinationDestinationConfigurationAuditLogDestinationS3Bucket.fromMap(Map<String, dynamic> map) {
     return IngestionDestinationDestinationConfigurationAuditLogDestinationS3Bucket(
       bucketName: (map['bucketName'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
     );
   }
 }

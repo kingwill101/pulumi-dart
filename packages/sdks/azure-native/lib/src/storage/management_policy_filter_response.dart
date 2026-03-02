@@ -32,9 +32,9 @@ class ManagementPolicyFilterResponse {
 
   factory ManagementPolicyFilterResponse.fromMap(Map<String, dynamic> map) {
     return ManagementPolicyFilterResponse(
-      blobIndexMatch: map['blobIndexMatch'] == null ? null : (pulumi.Input.decodeList<TagFilterResponse>(map['blobIndexMatch'], (value) => TagFilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      blobIndexMatch: map['blobIndexMatch'] == null ? null : (pulumi.Input.decodeList<TagFilterResponse>(map['blobIndexMatch']!, (value) => TagFilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       blobTypes: ((map['blobTypes'] as List).cast<String>()).input(),
-      prefixMatch: map['prefixMatch'] == null ? null : ((map['prefixMatch'] as List).cast<String>()).input(),
+      prefixMatch: map['prefixMatch'] == null ? null : ((map['prefixMatch']! as List).cast<String>()).input(),
     );
   }
 }

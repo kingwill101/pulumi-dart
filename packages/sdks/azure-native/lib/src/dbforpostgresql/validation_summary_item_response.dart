@@ -32,9 +32,9 @@ class ValidationSummaryItemResponse {
 
   factory ValidationSummaryItemResponse.fromMap(Map<String, dynamic> map) {
     return ValidationSummaryItemResponse(
-      messages: map['messages'] == null ? null : (pulumi.Input.decodeList<ValidationMessageResponse>(map['messages'], (value) => ValidationMessageResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      messages: map['messages'] == null ? null : (pulumi.Input.decodeList<ValidationMessageResponse>(map['messages']!, (value) => ValidationMessageResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

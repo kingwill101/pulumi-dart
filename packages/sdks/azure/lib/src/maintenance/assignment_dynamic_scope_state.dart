@@ -34,9 +34,9 @@ class AssignmentDynamicScopeState {
 
   factory AssignmentDynamicScopeState.fromMap(Map<String, dynamic> map) {
     return AssignmentDynamicScopeState(
-      filter: map['filter'] == null ? null : (AssignmentDynamicScopeFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : (map['maintenanceConfigurationId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      filter: map['filter'] == null ? null : (AssignmentDynamicScopeFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : (map['maintenanceConfigurationId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class PeerAuthenticationMethod {
 
   factory PeerAuthenticationMethod.fromMap(Map<String, dynamic> map) {
     return PeerAuthenticationMethod(
-      mtls: map['mtls'] == null ? null : (MutualTls.fromMap((map['mtls'] as Map).cast<String, dynamic>())).input(),
+      mtls: map['mtls'] == null ? null : (MutualTls.fromMap((map['mtls']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

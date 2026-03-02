@@ -45,10 +45,10 @@ class GoogleCloudDataplexV1StorageFormat {
 
   factory GoogleCloudDataplexV1StorageFormat.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1StorageFormat(
-      compressionFormat: map['compressionFormat'] == null ? null : (GoogleCloudDataplexV1StorageFormatCompressionFormat.fromValue(map['compressionFormat'] as String)).input(),
-      csv: map['csv'] == null ? null : (GoogleCloudDataplexV1StorageFormatCsvOptions.fromMap((map['csv'] as Map).cast<String, dynamic>())).input(),
-      iceberg: map['iceberg'] == null ? null : (GoogleCloudDataplexV1StorageFormatIcebergOptions.fromMap((map['iceberg'] as Map).cast<String, dynamic>())).input(),
-      json: map['json'] == null ? null : (GoogleCloudDataplexV1StorageFormatJsonOptions.fromMap((map['json'] as Map).cast<String, dynamic>())).input(),
+      compressionFormat: map['compressionFormat'] == null ? null : (GoogleCloudDataplexV1StorageFormatCompressionFormat.fromValue(map['compressionFormat']! as String)).input(),
+      csv: map['csv'] == null ? null : (GoogleCloudDataplexV1StorageFormatCsvOptions.fromMap((map['csv']! as Map).cast<String, dynamic>())).input(),
+      iceberg: map['iceberg'] == null ? null : (GoogleCloudDataplexV1StorageFormatIcebergOptions.fromMap((map['iceberg']! as Map).cast<String, dynamic>())).input(),
+      json: map['json'] == null ? null : (GoogleCloudDataplexV1StorageFormatJsonOptions.fromMap((map['json']! as Map).cast<String, dynamic>())).input(),
       mimeType: (map['mimeType'] as String).input(),
     );
   }

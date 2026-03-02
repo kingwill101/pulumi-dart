@@ -46,12 +46,12 @@ class CertificateBindingState {
 
   factory CertificateBindingState.fromMap(Map<String, dynamic> map) {
     return CertificateBindingState(
-      appServiceName: map['appServiceName'] == null ? null : (map['appServiceName'] as String).input(),
-      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      hostnameBindingId: map['hostnameBindingId'] == null ? null : (map['hostnameBindingId'] as String).input(),
-      sslState: map['sslState'] == null ? null : (map['sslState'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      appServiceName: map['appServiceName'] == null ? null : (map['appServiceName']! as String).input(),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      hostnameBindingId: map['hostnameBindingId'] == null ? null : (map['hostnameBindingId']! as String).input(),
+      sslState: map['sslState'] == null ? null : (map['sslState']! as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

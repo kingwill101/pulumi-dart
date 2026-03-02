@@ -21,7 +21,7 @@ class ConfigurationProperties {
 
   factory ConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return ConfigurationProperties(
-      enforcePrivateMarkdownStorage: map['enforcePrivateMarkdownStorage'] == null ? null : (map['enforcePrivateMarkdownStorage'] as bool).input(),
+      enforcePrivateMarkdownStorage: map['enforcePrivateMarkdownStorage'] == null ? null : (map['enforcePrivateMarkdownStorage']! as bool).input(),
     );
   }
 }

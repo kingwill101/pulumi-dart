@@ -36,7 +36,7 @@ class ModifyVolumeStatus {
   factory ModifyVolumeStatus.fromMap(Map<String, dynamic> map) {
     return ModifyVolumeStatus(
       status: (map['status'] as String).input(),
-      targetVolumeAttributesClassName: map['targetVolumeAttributesClassName'] == null ? null : (map['targetVolumeAttributesClassName'] as String).input(),
+      targetVolumeAttributesClassName: map['targetVolumeAttributesClassName'] == null ? null : (map['targetVolumeAttributesClassName']! as String).input(),
     );
   }
 }

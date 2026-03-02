@@ -26,8 +26,8 @@ class OnUploadProperties {
 
   factory OnUploadProperties.fromMap(Map<String, dynamic> map) {
     return OnUploadProperties(
-      capGBPerMonth: map['capGBPerMonth'] == null ? null : (map['capGBPerMonth'] as int).input(),
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
+      capGBPerMonth: map['capGBPerMonth'] == null ? null : (map['capGBPerMonth']! as int).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as bool).input(),
     );
   }
 }

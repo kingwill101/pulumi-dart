@@ -55,12 +55,12 @@ class ApiTagDescriptionArgs {
   factory ApiTagDescriptionArgs.fromMap(Map<String, dynamic> map) {
     return ApiTagDescriptionArgs(
       apiId: (map['apiId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      externalDocsDescription: map['externalDocsDescription'] == null ? null : (map['externalDocsDescription'] as String).input(),
-      externalDocsUrl: map['externalDocsUrl'] == null ? null : (map['externalDocsUrl'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      externalDocsDescription: map['externalDocsDescription'] == null ? null : (map['externalDocsDescription']! as String).input(),
+      externalDocsUrl: map['externalDocsUrl'] == null ? null : (map['externalDocsUrl']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      tagDescriptionId: map['tagDescriptionId'] == null ? null : (map['tagDescriptionId'] as String).input(),
+      tagDescriptionId: map['tagDescriptionId'] == null ? null : (map['tagDescriptionId']! as String).input(),
     );
   }
 }

@@ -71,16 +71,16 @@ class DiscoveryConfigArgs {
 
   factory DiscoveryConfigArgs.fromMap(Map<String, dynamic> map) {
     return DiscoveryConfigArgs(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2DataProfileAction>(map['actions'], (value) => GooglePrivacyDlpV2DataProfileAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      configId: map['configId'] == null ? null : (map['configId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      inspectTemplates: map['inspectTemplates'] == null ? null : ((map['inspectTemplates'] as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      orgConfig: map['orgConfig'] == null ? null : (GooglePrivacyDlpV2OrgConfig.fromMap((map['orgConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2DataProfileAction>(map['actions']!, (value) => GooglePrivacyDlpV2DataProfileAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configId: map['configId'] == null ? null : (map['configId']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      inspectTemplates: map['inspectTemplates'] == null ? null : ((map['inspectTemplates']! as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      orgConfig: map['orgConfig'] == null ? null : (GooglePrivacyDlpV2OrgConfig.fromMap((map['orgConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       status: (DiscoveryConfigStatus.fromValue(map['status'] as String)).input(),
-      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2DiscoveryTarget>(map['targets'], (value) => GooglePrivacyDlpV2DiscoveryTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2DiscoveryTarget>(map['targets']!, (value) => GooglePrivacyDlpV2DiscoveryTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

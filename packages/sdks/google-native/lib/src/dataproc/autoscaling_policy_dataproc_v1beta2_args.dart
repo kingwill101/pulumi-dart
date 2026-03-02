@@ -48,11 +48,11 @@ class AutoscalingPolicyDataprocV1beta2Args {
 
   factory AutoscalingPolicyDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyDataprocV1beta2Args(
-      basicAlgorithm: map['basicAlgorithm'] == null ? null : (BasicAutoscalingAlgorithmDataprocV1beta2.fromMap((map['basicAlgorithm'] as Map).cast<String, dynamic>())).input(),
+      basicAlgorithm: map['basicAlgorithm'] == null ? null : (BasicAutoscalingAlgorithmDataprocV1beta2.fromMap((map['basicAlgorithm']! as Map).cast<String, dynamic>())).input(),
       id: (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      secondaryWorkerConfig: map['secondaryWorkerConfig'] == null ? null : (InstanceGroupAutoscalingPolicyConfigDataprocV1beta2.fromMap((map['secondaryWorkerConfig'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      secondaryWorkerConfig: map['secondaryWorkerConfig'] == null ? null : (InstanceGroupAutoscalingPolicyConfigDataprocV1beta2.fromMap((map['secondaryWorkerConfig']! as Map).cast<String, dynamic>())).input(),
       workerConfig: (InstanceGroupAutoscalingPolicyConfigDataprocV1beta2.fromMap((map['workerConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }

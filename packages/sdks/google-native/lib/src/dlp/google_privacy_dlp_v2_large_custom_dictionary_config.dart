@@ -34,9 +34,9 @@ class GooglePrivacyDlpV2LargeCustomDictionaryConfig {
 
   factory GooglePrivacyDlpV2LargeCustomDictionaryConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2LargeCustomDictionaryConfig(
-      bigQueryField: map['bigQueryField'] == null ? null : (GooglePrivacyDlpV2BigQueryField.fromMap((map['bigQueryField'] as Map).cast<String, dynamic>())).input(),
-      cloudStorageFileSet: map['cloudStorageFileSet'] == null ? null : (GooglePrivacyDlpV2CloudStorageFileSet.fromMap((map['cloudStorageFileSet'] as Map).cast<String, dynamic>())).input(),
-      outputPath: map['outputPath'] == null ? null : (GooglePrivacyDlpV2CloudStoragePath.fromMap((map['outputPath'] as Map).cast<String, dynamic>())).input(),
+      bigQueryField: map['bigQueryField'] == null ? null : (GooglePrivacyDlpV2BigQueryField.fromMap((map['bigQueryField']! as Map).cast<String, dynamic>())).input(),
+      cloudStorageFileSet: map['cloudStorageFileSet'] == null ? null : (GooglePrivacyDlpV2CloudStorageFileSet.fromMap((map['cloudStorageFileSet']! as Map).cast<String, dynamic>())).input(),
+      outputPath: map['outputPath'] == null ? null : (GooglePrivacyDlpV2CloudStoragePath.fromMap((map['outputPath']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

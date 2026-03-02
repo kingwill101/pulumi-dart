@@ -80,18 +80,18 @@ class ScheduleState {
 
   factory ScheduleState.fromMap(Map<String, dynamic> map) {
     return ScheduleState(
-      dailyRecurrence: map['dailyRecurrence'] == null ? null : (ScheduleDailyRecurrence.fromMap((map['dailyRecurrence'] as Map).cast<String, dynamic>())).input(),
-      hourlyRecurrence: map['hourlyRecurrence'] == null ? null : (ScheduleHourlyRecurrence.fromMap((map['hourlyRecurrence'] as Map).cast<String, dynamic>())).input(),
-      labName: map['labName'] == null ? null : (map['labName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationSettings: map['notificationSettings'] == null ? null : (ScheduleNotificationSettings.fromMap((map['notificationSettings'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      taskType: map['taskType'] == null ? null : (map['taskType'] as String).input(),
-      timeZoneId: map['timeZoneId'] == null ? null : (map['timeZoneId'] as String).input(),
-      weeklyRecurrence: map['weeklyRecurrence'] == null ? null : (ScheduleWeeklyRecurrence.fromMap((map['weeklyRecurrence'] as Map).cast<String, dynamic>())).input(),
+      dailyRecurrence: map['dailyRecurrence'] == null ? null : (ScheduleDailyRecurrence.fromMap((map['dailyRecurrence']! as Map).cast<String, dynamic>())).input(),
+      hourlyRecurrence: map['hourlyRecurrence'] == null ? null : (ScheduleHourlyRecurrence.fromMap((map['hourlyRecurrence']! as Map).cast<String, dynamic>())).input(),
+      labName: map['labName'] == null ? null : (map['labName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notificationSettings: map['notificationSettings'] == null ? null : (ScheduleNotificationSettings.fromMap((map['notificationSettings']! as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      taskType: map['taskType'] == null ? null : (map['taskType']! as String).input(),
+      timeZoneId: map['timeZoneId'] == null ? null : (map['timeZoneId']! as String).input(),
+      weeklyRecurrence: map['weeklyRecurrence'] == null ? null : (ScheduleWeeklyRecurrence.fromMap((map['weeklyRecurrence']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

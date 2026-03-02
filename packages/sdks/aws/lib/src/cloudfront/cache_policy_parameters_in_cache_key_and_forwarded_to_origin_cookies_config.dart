@@ -27,7 +27,7 @@ class CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig {
   factory CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig.fromMap(Map<String, dynamic> map) {
     return CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig(
       cookieBehavior: (map['cookieBehavior'] as String).input(),
-      cookies: map['cookies'] == null ? null : (CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookies.fromMap((map['cookies'] as Map).cast<String, dynamic>())).input(),
+      cookies: map['cookies'] == null ? null : ((CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookies.fromMap((map['cookies']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

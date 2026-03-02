@@ -26,8 +26,8 @@ class JsonMapperDestinationFieldResponse {
 
   factory JsonMapperDestinationFieldResponse.fromMap(Map<String, dynamic> map) {
     return JsonMapperDestinationFieldResponse(
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
-      fieldName: map['fieldName'] == null ? null : (map['fieldName'] as String).input(),
+      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
+      fieldName: map['fieldName'] == null ? null : (map['fieldName']! as String).input(),
     );
   }
 }

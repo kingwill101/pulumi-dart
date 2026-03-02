@@ -86,10 +86,10 @@ class GetExperienceResult {
   factory GetExperienceResult.fromMap(Map<String, dynamic> map) {
     return GetExperienceResult(
       arn: map['arn'] as String,
-      configurations: pulumi.Input.decodeList<GetExperienceConfiguration>(map['configurations'], (value) => GetExperienceConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      configurations: pulumi.Input.decodeList<GetExperienceConfiguration>(map['configurations']!, (value) => GetExperienceConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       createdAt: map['createdAt'] as String,
       description: map['description'] as String,
-      endpoints: pulumi.Input.decodeList<GetExperienceEndpoint>(map['endpoints'], (value) => GetExperienceEndpoint.fromMap((value as Map).cast<String, dynamic>())),
+      endpoints: pulumi.Input.decodeList<GetExperienceEndpoint>(map['endpoints']!, (value) => GetExperienceEndpoint.fromMap((value as Map).cast<String, dynamic>())),
       errorMessage: map['errorMessage'] as String,
       experienceId: map['experienceId'] as String,
       id: map['id'] as String,

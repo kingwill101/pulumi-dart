@@ -85,15 +85,15 @@ class UnitArgs {
 
   factory UnitArgs.fromMap(Map<String, dynamic> map) {
     return UnitArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      maintenance: map['maintenance'] == null ? null : (UnitMaintenance.fromMap((map['maintenance'] as Map).cast<String, dynamic>())).input(),
-      managementMode: map['managementMode'] == null ? null : (map['managementMode'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      tenant: map['tenant'] == null ? null : (map['tenant'] as String).input(),
+      maintenance: map['maintenance'] == null ? null : (UnitMaintenance.fromMap((map['maintenance']! as Map).cast<String, dynamic>())).input(),
+      managementMode: map['managementMode'] == null ? null : (map['managementMode']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant']! as String).input(),
       unitId: (map['unitId'] as String).input(),
-      unitKind: map['unitKind'] == null ? null : (map['unitKind'] as String).input(),
+      unitKind: map['unitKind'] == null ? null : (map['unitKind']! as String).input(),
     );
   }
 }

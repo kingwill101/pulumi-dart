@@ -22,7 +22,7 @@ class TopicIngestionDataSourceSettingsCloudStorageTextFormat {
 
   factory TopicIngestionDataSourceSettingsCloudStorageTextFormat.fromMap(Map<String, dynamic> map) {
     return TopicIngestionDataSourceSettingsCloudStorageTextFormat(
-      delimiter: map['delimiter'] == null ? null : (map['delimiter'] as String).input(),
+      delimiter: map['delimiter'] == null ? null : (map['delimiter']! as String).input(),
     );
   }
 }

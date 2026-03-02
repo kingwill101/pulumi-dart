@@ -50,7 +50,7 @@ class ToolsetOpenApiToolsetApiAuthenticationOauthConfig {
       clientId: (map['clientId'] as String).input(),
       clientSecretVersion: (map['clientSecretVersion'] as String).input(),
       oauthGrantType: (map['oauthGrantType'] as String).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
       tokenEndpoint: (map['tokenEndpoint'] as String).input(),
     );
   }

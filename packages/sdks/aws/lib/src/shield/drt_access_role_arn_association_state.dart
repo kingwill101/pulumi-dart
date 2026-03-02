@@ -26,8 +26,8 @@ class DrtAccessRoleArnAssociationState {
 
   factory DrtAccessRoleArnAssociationState.fromMap(Map<String, dynamic> map) {
     return DrtAccessRoleArnAssociationState(
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (DrtAccessRoleArnAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((DrtAccessRoleArnAssociationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -64,15 +64,15 @@ class ConnectionMonitorEndpoint {
 
   factory ConnectionMonitorEndpoint.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorEndpoint(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      coverageLevel: map['coverageLevel'] == null ? null : (map['coverageLevel'] as String).input(),
-      filter: map['filter'] == null ? null : (ConnectionMonitorEndpointFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      locationDetails: map['locationDetails'] == null ? null : (ConnectionMonitorEndpointLocationDetails.fromMap((map['locationDetails'] as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      coverageLevel: map['coverageLevel'] == null ? null : (map['coverageLevel']! as String).input(),
+      filter: map['filter'] == null ? null : (ConnectionMonitorEndpointFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      locationDetails: map['locationDetails'] == null ? null : (ConnectionMonitorEndpointLocationDetails.fromMap((map['locationDetails']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      scope: map['scope'] == null ? null : (ConnectionMonitorEndpointScope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      scope: map['scope'] == null ? null : (ConnectionMonitorEndpointScope.fromMap((map['scope']! as Map).cast<String, dynamic>())).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

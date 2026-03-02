@@ -23,7 +23,7 @@ class GetProjectArgs {
 
   factory GetProjectArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

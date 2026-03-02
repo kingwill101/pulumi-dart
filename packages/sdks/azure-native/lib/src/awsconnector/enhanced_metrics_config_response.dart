@@ -34,9 +34,9 @@ class EnhancedMetricsConfigResponse {
 
   factory EnhancedMetricsConfigResponse.fromMap(Map<String, dynamic> map) {
     return EnhancedMetricsConfigResponse(
-      dataSourceLevelMetricsBehavior: map['dataSourceLevelMetricsBehavior'] == null ? null : (DataSourceLevelMetricsBehaviorEnumValueResponse.fromMap((map['dataSourceLevelMetricsBehavior'] as Map).cast<String, dynamic>())).input(),
-      operationLevelMetricsConfig: map['operationLevelMetricsConfig'] == null ? null : (OperationLevelMetricsConfigEnumValueResponse.fromMap((map['operationLevelMetricsConfig'] as Map).cast<String, dynamic>())).input(),
-      resolverLevelMetricsBehavior: map['resolverLevelMetricsBehavior'] == null ? null : (ResolverLevelMetricsBehaviorEnumValueResponse.fromMap((map['resolverLevelMetricsBehavior'] as Map).cast<String, dynamic>())).input(),
+      dataSourceLevelMetricsBehavior: map['dataSourceLevelMetricsBehavior'] == null ? null : (DataSourceLevelMetricsBehaviorEnumValueResponse.fromMap((map['dataSourceLevelMetricsBehavior']! as Map).cast<String, dynamic>())).input(),
+      operationLevelMetricsConfig: map['operationLevelMetricsConfig'] == null ? null : (OperationLevelMetricsConfigEnumValueResponse.fromMap((map['operationLevelMetricsConfig']! as Map).cast<String, dynamic>())).input(),
+      resolverLevelMetricsBehavior: map['resolverLevelMetricsBehavior'] == null ? null : (ResolverLevelMetricsBehaviorEnumValueResponse.fromMap((map['resolverLevelMetricsBehavior']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -33,8 +33,8 @@ class PlanWorkflowStepEcsCapacityIncreaseConfigService {
   factory PlanWorkflowStepEcsCapacityIncreaseConfigService.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepEcsCapacityIncreaseConfigService(
       clusterArn: (map['clusterArn'] as String).input(),
-      crossAccountRole: map['crossAccountRole'] == null ? null : (map['crossAccountRole'] as String).input(),
-      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
+      crossAccountRole: map['crossAccountRole'] == null ? null : ((map['crossAccountRole'] as String).input()).input(),
+      externalId: map['externalId'] == null ? null : ((map['externalId'] as String).input()).input(),
       serviceArn: (map['serviceArn'] as String).input(),
     );
   }

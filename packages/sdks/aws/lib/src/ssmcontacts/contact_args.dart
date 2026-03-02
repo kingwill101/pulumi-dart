@@ -48,9 +48,9 @@ class ContactArgs {
   factory ContactArgs.fromMap(Map<String, dynamic> map) {
     return ContactArgs(
       alias: (map['alias'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : ((map['displayName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

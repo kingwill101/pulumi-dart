@@ -21,7 +21,7 @@ class PodCIDROverprovisionConfig {
 
   factory PodCIDROverprovisionConfig.fromMap(Map<String, dynamic> map) {
     return PodCIDROverprovisionConfig(
-      disable: map['disable'] == null ? null : (map['disable'] as bool).input(),
+      disable: map['disable'] == null ? null : (map['disable']! as bool).input(),
     );
   }
 }

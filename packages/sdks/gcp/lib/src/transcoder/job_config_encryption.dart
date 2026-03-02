@@ -51,12 +51,12 @@ class JobConfigEncryption {
 
   factory JobConfigEncryption.fromMap(Map<String, dynamic> map) {
     return JobConfigEncryption(
-      aes128: map['aes128'] == null ? null : ((map['aes128'] as Map).cast<String, dynamic>()).input(),
-      drmSystems: map['drmSystems'] == null ? null : (JobConfigEncryptionDrmSystems.fromMap((map['drmSystems'] as Map).cast<String, dynamic>())).input(),
+      aes128: map['aes128'] == null ? null : ((map['aes128']! as Map).cast<String, dynamic>()).input(),
+      drmSystems: map['drmSystems'] == null ? null : (JobConfigEncryptionDrmSystems.fromMap((map['drmSystems']! as Map).cast<String, dynamic>())).input(),
       id: (map['id'] as String).input(),
-      mpegCenc: map['mpegCenc'] == null ? null : (JobConfigEncryptionMpegCenc.fromMap((map['mpegCenc'] as Map).cast<String, dynamic>())).input(),
-      sampleAes: map['sampleAes'] == null ? null : ((map['sampleAes'] as Map).cast<String, dynamic>()).input(),
-      secretManagerKeySource: map['secretManagerKeySource'] == null ? null : (JobConfigEncryptionSecretManagerKeySource.fromMap((map['secretManagerKeySource'] as Map).cast<String, dynamic>())).input(),
+      mpegCenc: map['mpegCenc'] == null ? null : (JobConfigEncryptionMpegCenc.fromMap((map['mpegCenc']! as Map).cast<String, dynamic>())).input(),
+      sampleAes: map['sampleAes'] == null ? null : ((map['sampleAes']! as Map).cast<String, dynamic>()).input(),
+      secretManagerKeySource: map['secretManagerKeySource'] == null ? null : (JobConfigEncryptionSecretManagerKeySource.fromMap((map['secretManagerKeySource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

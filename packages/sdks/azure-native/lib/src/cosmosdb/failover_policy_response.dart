@@ -31,9 +31,9 @@ class FailoverPolicyResponse {
 
   factory FailoverPolicyResponse.fromMap(Map<String, dynamic> map) {
     return FailoverPolicyResponse(
-      failoverPriority: map['failoverPriority'] == null ? null : (map['failoverPriority'] as int).input(),
+      failoverPriority: map['failoverPriority'] == null ? null : (map['failoverPriority']! as int).input(),
       id: (map['id'] as String).input(),
-      locationName: map['locationName'] == null ? null : (map['locationName'] as String).input(),
+      locationName: map['locationName'] == null ? null : (map['locationName']! as String).input(),
     );
   }
 }

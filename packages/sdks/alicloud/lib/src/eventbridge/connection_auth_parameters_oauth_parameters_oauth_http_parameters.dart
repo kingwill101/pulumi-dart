@@ -33,9 +33,9 @@ class ConnectionAuthParametersOauthParametersOauthHttpParameters {
 
   factory ConnectionAuthParametersOauthParametersOauthHttpParameters.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthParametersOauthParametersOauthHttpParameters(
-      bodyParameters: map['bodyParameters'] == null ? null : (pulumi.Input.decodeList<ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter>(map['bodyParameters'], (value) => ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      headerParameters: map['headerParameters'] == null ? null : (pulumi.Input.decodeList<ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter>(map['headerParameters'], (value) => ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      queryStringParameters: map['queryStringParameters'] == null ? null : (pulumi.Input.decodeList<ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter>(map['queryStringParameters'], (value) => ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bodyParameters: map['bodyParameters'] == null ? null : (pulumi.Input.decodeList<ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter>(map['bodyParameters']!, (value) => ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      headerParameters: map['headerParameters'] == null ? null : (pulumi.Input.decodeList<ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter>(map['headerParameters']!, (value) => ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      queryStringParameters: map['queryStringParameters'] == null ? null : (pulumi.Input.decodeList<ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter>(map['queryStringParameters']!, (value) => ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

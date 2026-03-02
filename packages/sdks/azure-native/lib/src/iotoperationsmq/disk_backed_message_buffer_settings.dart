@@ -32,9 +32,9 @@ class DiskBackedMessageBufferSettings {
 
   factory DiskBackedMessageBufferSettings.fromMap(Map<String, dynamic> map) {
     return DiskBackedMessageBufferSettings(
-      ephemeralVolumeClaimSpec: map['ephemeralVolumeClaimSpec'] == null ? null : (VolumeClaimSpec.fromMap((map['ephemeralVolumeClaimSpec'] as Map).cast<String, dynamic>())).input(),
+      ephemeralVolumeClaimSpec: map['ephemeralVolumeClaimSpec'] == null ? null : (VolumeClaimSpec.fromMap((map['ephemeralVolumeClaimSpec']! as Map).cast<String, dynamic>())).input(),
       maxSize: (map['maxSize'] as String).input(),
-      persistentVolumeClaimSpec: map['persistentVolumeClaimSpec'] == null ? null : (VolumeClaimSpec.fromMap((map['persistentVolumeClaimSpec'] as Map).cast<String, dynamic>())).input(),
+      persistentVolumeClaimSpec: map['persistentVolumeClaimSpec'] == null ? null : (VolumeClaimSpec.fromMap((map['persistentVolumeClaimSpec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

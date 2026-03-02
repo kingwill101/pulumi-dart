@@ -45,7 +45,7 @@ class WorkspaceWorkspaceArgs {
   factory WorkspaceWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceWorkspaceArgs(
       description: (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       envTypes: ((map['envTypes'] as List).cast<String>()).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );

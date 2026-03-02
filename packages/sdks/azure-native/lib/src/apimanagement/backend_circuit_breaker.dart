@@ -22,7 +22,7 @@ class BackendCircuitBreaker {
 
   factory BackendCircuitBreaker.fromMap(Map<String, dynamic> map) {
     return BackendCircuitBreaker(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<CircuitBreakerRule>(map['rules'], (value) => CircuitBreakerRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<CircuitBreakerRule>(map['rules']!, (value) => CircuitBreakerRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

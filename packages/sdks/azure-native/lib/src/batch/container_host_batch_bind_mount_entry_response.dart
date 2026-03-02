@@ -26,8 +26,8 @@ class ContainerHostBatchBindMountEntryResponse {
 
   factory ContainerHostBatchBindMountEntryResponse.fromMap(Map<String, dynamic> map) {
     return ContainerHostBatchBindMountEntryResponse(
-      isReadOnly: map['isReadOnly'] == null ? null : (map['isReadOnly'] as bool).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      isReadOnly: map['isReadOnly'] == null ? null : (map['isReadOnly']! as bool).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

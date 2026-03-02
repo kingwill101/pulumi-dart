@@ -60,14 +60,14 @@ class HyperVReplicaBaseReplicationDetailsResponse {
 
   factory HyperVReplicaBaseReplicationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return HyperVReplicaBaseReplicationDetailsResponse(
-      initialReplicationDetails: map['initialReplicationDetails'] == null ? null : (InitialReplicationDetailsResponse.fromMap((map['initialReplicationDetails'] as Map).cast<String, dynamic>())).input(),
+      initialReplicationDetails: map['initialReplicationDetails'] == null ? null : (InitialReplicationDetailsResponse.fromMap((map['initialReplicationDetails']! as Map).cast<String, dynamic>())).input(),
       instanceType: (map['instanceType'] as String).input(),
-      lastReplicatedTime: map['lastReplicatedTime'] == null ? null : (map['lastReplicatedTime'] as String).input(),
-      vMDiskDetails: map['vMDiskDetails'] == null ? null : (pulumi.Input.decodeList<DiskDetailsResponse>(map['vMDiskDetails'], (value) => DiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vmId: map['vmId'] == null ? null : (map['vmId'] as String).input(),
-      vmNics: map['vmNics'] == null ? null : (pulumi.Input.decodeList<VMNicDetailsResponse>(map['vmNics'], (value) => VMNicDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vmProtectionState: map['vmProtectionState'] == null ? null : (map['vmProtectionState'] as String).input(),
-      vmProtectionStateDescription: map['vmProtectionStateDescription'] == null ? null : (map['vmProtectionStateDescription'] as String).input(),
+      lastReplicatedTime: map['lastReplicatedTime'] == null ? null : (map['lastReplicatedTime']! as String).input(),
+      vMDiskDetails: map['vMDiskDetails'] == null ? null : (pulumi.Input.decodeList<DiskDetailsResponse>(map['vMDiskDetails']!, (value) => DiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmId: map['vmId'] == null ? null : (map['vmId']! as String).input(),
+      vmNics: map['vmNics'] == null ? null : (pulumi.Input.decodeList<VMNicDetailsResponse>(map['vmNics']!, (value) => VMNicDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmProtectionState: map['vmProtectionState'] == null ? null : (map['vmProtectionState']! as String).input(),
+      vmProtectionStateDescription: map['vmProtectionStateDescription'] == null ? null : (map['vmProtectionStateDescription']! as String).input(),
     );
   }
 }

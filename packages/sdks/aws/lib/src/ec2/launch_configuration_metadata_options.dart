@@ -30,9 +30,9 @@ class LaunchConfigurationMetadataOptions {
 
   factory LaunchConfigurationMetadataOptions.fromMap(Map<String, dynamic> map) {
     return LaunchConfigurationMetadataOptions(
-      httpEndpoint: map['httpEndpoint'] == null ? null : (map['httpEndpoint'] as String).input(),
-      httpPutResponseHopLimit: map['httpPutResponseHopLimit'] == null ? null : (map['httpPutResponseHopLimit'] as int).input(),
-      httpTokens: map['httpTokens'] == null ? null : (map['httpTokens'] as String).input(),
+      httpEndpoint: map['httpEndpoint'] == null ? null : ((map['httpEndpoint'] as String).input()).input(),
+      httpPutResponseHopLimit: map['httpPutResponseHopLimit'] == null ? null : ((map['httpPutResponseHopLimit'] as int).input()).input(),
+      httpTokens: map['httpTokens'] == null ? null : ((map['httpTokens'] as String).input()).input(),
     );
   }
 }

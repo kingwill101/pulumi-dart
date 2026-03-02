@@ -51,13 +51,13 @@ class ConfigurationState {
 
   factory ConfigurationState.fromMap(Map<String, dynamic> map) {
     return ConfigurationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      kafkaVersions: map['kafkaVersions'] == null ? null : ((map['kafkaVersions'] as List).cast<String>()).input(),
-      latestRevision: map['latestRevision'] == null ? null : (map['latestRevision'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serverProperties: map['serverProperties'] == null ? null : (map['serverProperties'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      kafkaVersions: map['kafkaVersions'] == null ? null : (((map['kafkaVersions'] as List).cast<String>()).input()).input(),
+      latestRevision: map['latestRevision'] == null ? null : ((map['latestRevision'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serverProperties: map['serverProperties'] == null ? null : ((map['serverProperties'] as String).input()).input(),
     );
   }
 }

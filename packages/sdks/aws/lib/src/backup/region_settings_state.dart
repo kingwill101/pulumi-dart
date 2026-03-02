@@ -31,9 +31,9 @@ class RegionSettingsState {
 
   factory RegionSettingsState.fromMap(Map<String, dynamic> map) {
     return RegionSettingsState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceTypeManagementPreference: map['resourceTypeManagementPreference'] == null ? null : ((map['resourceTypeManagementPreference'] as Map).cast<String, bool>()).input(),
-      resourceTypeOptInPreference: map['resourceTypeOptInPreference'] == null ? null : ((map['resourceTypeOptInPreference'] as Map).cast<String, bool>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceTypeManagementPreference: map['resourceTypeManagementPreference'] == null ? null : (((map['resourceTypeManagementPreference'] as Map).cast<String, bool>()).input()).input(),
+      resourceTypeOptInPreference: map['resourceTypeOptInPreference'] == null ? null : (((map['resourceTypeOptInPreference'] as Map).cast<String, bool>()).input()).input(),
     );
   }
 }

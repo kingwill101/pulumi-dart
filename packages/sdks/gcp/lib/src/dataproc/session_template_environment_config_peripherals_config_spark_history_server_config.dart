@@ -20,7 +20,7 @@ class SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig 
 
   factory SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig.fromMap(Map<String, dynamic> map) {
     return SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig(
-      dataprocCluster: map['dataprocCluster'] == null ? null : (map['dataprocCluster'] as String).input(),
+      dataprocCluster: map['dataprocCluster'] == null ? null : (map['dataprocCluster']! as String).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class BuilderProperties {
 
   factory BuilderProperties.fromMap(Map<String, dynamic> map) {
     return BuilderProperties(
-      buildpackGroups: map['buildpackGroups'] == null ? null : (pulumi.Input.decodeList<BuildpacksGroupProperties>(map['buildpackGroups'], (value) => BuildpacksGroupProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      stack: map['stack'] == null ? null : (StackProperties.fromMap((map['stack'] as Map).cast<String, dynamic>())).input(),
+      buildpackGroups: map['buildpackGroups'] == null ? null : (pulumi.Input.decodeList<BuildpacksGroupProperties>(map['buildpackGroups']!, (value) => BuildpacksGroupProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stack: map['stack'] == null ? null : (StackProperties.fromMap((map['stack']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

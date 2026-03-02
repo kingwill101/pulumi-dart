@@ -44,11 +44,11 @@ class HttpRouteConfigResponseProperties {
 
   factory HttpRouteConfigResponseProperties.fromMap(Map<String, dynamic> map) {
     return HttpRouteConfigResponseProperties(
-      customDomains: map['customDomains'] == null ? null : (pulumi.Input.decodeList<CustomDomainResponse>(map['customDomains'], (value) => CustomDomainResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customDomains: map['customDomains'] == null ? null : (pulumi.Input.decodeList<CustomDomainResponse>(map['customDomains']!, (value) => CustomDomainResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       fqdn: (map['fqdn'] as String).input(),
       provisioningErrors: (pulumi.Input.decodeList<HttpRouteProvisioningErrorsResponse>(map['provisioningErrors'], (value) => HttpRouteProvisioningErrorsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<HttpRouteRuleResponse>(map['rules'], (value) => HttpRouteRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<HttpRouteRuleResponse>(map['rules']!, (value) => HttpRouteRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

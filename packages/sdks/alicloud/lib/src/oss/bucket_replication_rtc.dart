@@ -26,7 +26,7 @@ class BucketReplicationRtc {
   factory BucketReplicationRtc.fromMap(Map<String, dynamic> map) {
     return BucketReplicationRtc(
       enabled: (map['enabled'] as bool).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

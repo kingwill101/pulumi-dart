@@ -31,8 +31,8 @@ class AppFlexConsumptionAuthSettingsTwitter {
   factory AppFlexConsumptionAuthSettingsTwitter.fromMap(Map<String, dynamic> map) {
     return AppFlexConsumptionAuthSettingsTwitter(
       consumerKey: (map['consumerKey'] as String).input(),
-      consumerSecret: map['consumerSecret'] == null ? null : (map['consumerSecret'] as String).input(),
-      consumerSecretSettingName: map['consumerSecretSettingName'] == null ? null : (map['consumerSecretSettingName'] as String).input(),
+      consumerSecret: map['consumerSecret'] == null ? null : (map['consumerSecret']! as String).input(),
+      consumerSecretSettingName: map['consumerSecretSettingName'] == null ? null : (map['consumerSecretSettingName']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class ApplicationPolicyResponse {
 
   factory ApplicationPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationPolicyResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
-      policyDefinitionId: map['policyDefinitionId'] == null ? null : (map['policyDefinitionId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']! as String).input(),
+      policyDefinitionId: map['policyDefinitionId'] == null ? null : (map['policyDefinitionId']! as String).input(),
     );
   }
 }

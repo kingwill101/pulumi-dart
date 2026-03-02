@@ -63,15 +63,15 @@ class ServiceBus {
 
   factory ServiceBus.fromMap(Map<String, dynamic> map) {
     return ServiceBus(
-      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
-      deadLetterSecret: map['deadLetterSecret'] == null ? null : (map['deadLetterSecret'] as String).input(),
-      deadLetterUri: map['deadLetterUri'] == null ? null : (map['deadLetterUri'] as String).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType']! as String).input(),
+      deadLetterSecret: map['deadLetterSecret'] == null ? null : (map['deadLetterSecret']! as String).input(),
+      deadLetterUri: map['deadLetterUri'] == null ? null : (map['deadLetterUri']! as String).input(),
       endpointType: (map['endpointType'] as String).input(),
-      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri'] as String).input(),
-      entityPath: map['entityPath'] == null ? null : (map['entityPath'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedIdentityReference.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      primaryConnectionString: map['primaryConnectionString'] == null ? null : (map['primaryConnectionString'] as String).input(),
-      secondaryConnectionString: map['secondaryConnectionString'] == null ? null : (map['secondaryConnectionString'] as String).input(),
+      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri']! as String).input(),
+      entityPath: map['entityPath'] == null ? null : (map['entityPath']! as String).input(),
+      identity: map['identity'] == null ? null : (ManagedIdentityReference.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      primaryConnectionString: map['primaryConnectionString'] == null ? null : (map['primaryConnectionString']! as String).input(),
+      secondaryConnectionString: map['secondaryConnectionString'] == null ? null : (map['secondaryConnectionString']! as String).input(),
     );
   }
 }

@@ -51,11 +51,11 @@ class ServiceTemplateSpecVolume {
 
   factory ServiceTemplateSpecVolume.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateSpecVolume(
-      csi: map['csi'] == null ? null : (ServiceTemplateSpecVolumeCsi.fromMap((map['csi'] as Map).cast<String, dynamic>())).input(),
-      emptyDir: map['emptyDir'] == null ? null : (ServiceTemplateSpecVolumeEmptyDir.fromMap((map['emptyDir'] as Map).cast<String, dynamic>())).input(),
+      csi: map['csi'] == null ? null : (ServiceTemplateSpecVolumeCsi.fromMap((map['csi']! as Map).cast<String, dynamic>())).input(),
+      emptyDir: map['emptyDir'] == null ? null : (ServiceTemplateSpecVolumeEmptyDir.fromMap((map['emptyDir']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      nfs: map['nfs'] == null ? null : (ServiceTemplateSpecVolumeNfs.fromMap((map['nfs'] as Map).cast<String, dynamic>())).input(),
-      secret: map['secret'] == null ? null : (ServiceTemplateSpecVolumeSecret.fromMap((map['secret'] as Map).cast<String, dynamic>())).input(),
+      nfs: map['nfs'] == null ? null : (ServiceTemplateSpecVolumeNfs.fromMap((map['nfs']! as Map).cast<String, dynamic>())).input(),
+      secret: map['secret'] == null ? null : (ServiceTemplateSpecVolumeSecret.fromMap((map['secret']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -52,13 +52,13 @@ class ElasticTrafficFilterResponse {
 
   factory ElasticTrafficFilterResponse.fromMap(Map<String, dynamic> map) {
     return ElasticTrafficFilterResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      includeByDefault: map['includeByDefault'] == null ? null : (map['includeByDefault'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ElasticTrafficFilterRuleResponse>(map['rules'], (value) => ElasticTrafficFilterRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      includeByDefault: map['includeByDefault'] == null ? null : (map['includeByDefault']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ElasticTrafficFilterRuleResponse>(map['rules']!, (value) => ElasticTrafficFilterRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

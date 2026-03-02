@@ -32,7 +32,7 @@ class ResourceLfTagsLfTag {
 
   factory ResourceLfTagsLfTag.fromMap(Map<String, dynamic> map) {
     return ResourceLfTagsLfTag(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
       key: (map['key'] as String).input(),
       value: (map['value'] as String).input(),
     );

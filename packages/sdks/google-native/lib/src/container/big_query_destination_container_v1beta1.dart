@@ -21,7 +21,7 @@ class BigQueryDestinationContainerV1beta1 {
 
   factory BigQueryDestinationContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return BigQueryDestinationContainerV1beta1(
-      datasetId: map['datasetId'] == null ? null : (map['datasetId'] as String).input(),
+      datasetId: map['datasetId'] == null ? null : (map['datasetId']! as String).input(),
     );
   }
 }

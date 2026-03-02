@@ -44,11 +44,11 @@ class BucketMetadataConfigurationState {
 
   factory BucketMetadataConfigurationState.fromMap(Map<String, dynamic> map) {
     return BucketMetadataConfigurationState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
-      metadataConfiguration: map['metadataConfiguration'] == null ? null : (BucketMetadataConfigurationMetadataConfiguration.fromMap((map['metadataConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (BucketMetadataConfigurationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : ((map['expectedBucketOwner'] as String).input()).input(),
+      metadataConfiguration: map['metadataConfiguration'] == null ? null : ((BucketMetadataConfigurationMetadataConfiguration.fromMap((map['metadataConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((BucketMetadataConfigurationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class GoogleCloudRunV2HTTPHeader {
   factory GoogleCloudRunV2HTTPHeader.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2HTTPHeader(
       name: (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

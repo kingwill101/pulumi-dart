@@ -28,7 +28,7 @@ class GetGlobalNetworkEndpointGroupComputeV1Args {
   factory GetGlobalNetworkEndpointGroupComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetGlobalNetworkEndpointGroupComputeV1Args(
       networkEndpointGroup: (map['networkEndpointGroup'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

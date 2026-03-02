@@ -29,7 +29,7 @@ class OsPolicyAssignmentInstanceFilterInventory {
   factory OsPolicyAssignmentInstanceFilterInventory.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentInstanceFilterInventory(
       osShortName: (map['osShortName'] as String).input(),
-      osVersion: map['osVersion'] == null ? null : (map['osVersion'] as String).input(),
+      osVersion: map['osVersion'] == null ? null : (map['osVersion']! as String).input(),
     );
   }
 }

@@ -68,13 +68,13 @@ class MonitorArgs {
   factory MonitorArgs.fromMap(Map<String, dynamic> map) {
     return MonitorArgs(
       datadogOrganization: (MonitorDatadogOrganization.fromMap((map['datadogOrganization'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (MonitorIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      monitoringEnabled: map['monitoringEnabled'] == null ? null : (map['monitoringEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      identity: map['identity'] == null ? null : (MonitorIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      monitoringEnabled: map['monitoringEnabled'] == null ? null : (map['monitoringEnabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       skuName: (map['skuName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       user: (MonitorUser.fromMap((map['user'] as Map).cast<String, dynamic>())).input(),
     );
   }

@@ -60,13 +60,13 @@ class GuardrailContentPolicyConfigFiltersConfig {
 
   factory GuardrailContentPolicyConfigFiltersConfig.fromMap(Map<String, dynamic> map) {
     return GuardrailContentPolicyConfigFiltersConfig(
-      inputAction: map['inputAction'] == null ? null : (map['inputAction'] as String).input(),
-      inputEnabled: map['inputEnabled'] == null ? null : (map['inputEnabled'] as bool).input(),
-      inputModalities: map['inputModalities'] == null ? null : ((map['inputModalities'] as List).cast<String>()).input(),
+      inputAction: map['inputAction'] == null ? null : ((map['inputAction'] as String).input()).input(),
+      inputEnabled: map['inputEnabled'] == null ? null : ((map['inputEnabled'] as bool).input()).input(),
+      inputModalities: map['inputModalities'] == null ? null : (((map['inputModalities'] as List).cast<String>()).input()).input(),
       inputStrength: (map['inputStrength'] as String).input(),
-      outputAction: map['outputAction'] == null ? null : (map['outputAction'] as String).input(),
-      outputEnabled: map['outputEnabled'] == null ? null : (map['outputEnabled'] as bool).input(),
-      outputModalities: map['outputModalities'] == null ? null : ((map['outputModalities'] as List).cast<String>()).input(),
+      outputAction: map['outputAction'] == null ? null : ((map['outputAction'] as String).input()).input(),
+      outputEnabled: map['outputEnabled'] == null ? null : ((map['outputEnabled'] as bool).input()).input(),
+      outputModalities: map['outputModalities'] == null ? null : (((map['outputModalities'] as List).cast<String>()).input()).input(),
       outputStrength: (map['outputStrength'] as String).input(),
       type: (map['type'] as String).input(),
     );

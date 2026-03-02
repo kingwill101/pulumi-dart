@@ -32,7 +32,7 @@ class LocalNetworkGatewayBgpSettings {
     return LocalNetworkGatewayBgpSettings(
       asn: (map['asn'] as int).input(),
       bgpPeeringAddress: (map['bgpPeeringAddress'] as String).input(),
-      peerWeight: map['peerWeight'] == null ? null : (map['peerWeight'] as int).input(),
+      peerWeight: map['peerWeight'] == null ? null : (map['peerWeight']! as int).input(),
     );
   }
 }

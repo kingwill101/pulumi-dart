@@ -21,7 +21,7 @@ class ResourcePolicy {
 
   factory ResourcePolicy.fromMap(Map<String, dynamic> map) {
     return ResourcePolicy(
-      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument']).input(),
+      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument']!).input(),
     );
   }
 }

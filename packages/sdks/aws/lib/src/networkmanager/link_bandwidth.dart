@@ -25,8 +25,8 @@ class LinkBandwidth {
 
   factory LinkBandwidth.fromMap(Map<String, dynamic> map) {
     return LinkBandwidth(
-      downloadSpeed: map['downloadSpeed'] == null ? null : (map['downloadSpeed'] as int).input(),
-      uploadSpeed: map['uploadSpeed'] == null ? null : (map['uploadSpeed'] as int).input(),
+      downloadSpeed: map['downloadSpeed'] == null ? null : ((map['downloadSpeed'] as int).input()).input(),
+      uploadSpeed: map['uploadSpeed'] == null ? null : ((map['uploadSpeed'] as int).input()).input(),
     );
   }
 }

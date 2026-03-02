@@ -71,16 +71,16 @@ class SecurityAssessmentMetadataProperties {
   factory SecurityAssessmentMetadataProperties.fromMap(Map<String, dynamic> map) {
     return SecurityAssessmentMetadataProperties(
       assessmentType: (map['assessmentType'] as String).input(),
-      categories: map['categories'] == null ? null : ((map['categories'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      categories: map['categories'] == null ? null : ((map['categories']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      implementationEffort: map['implementationEffort'] == null ? null : (map['implementationEffort'] as String).input(),
-      partnerData: map['partnerData'] == null ? null : (SecurityAssessmentMetadataPartnerData.fromMap((map['partnerData'] as Map).cast<String, dynamic>())).input(),
-      preview: map['preview'] == null ? null : (map['preview'] as bool).input(),
-      remediationDescription: map['remediationDescription'] == null ? null : (map['remediationDescription'] as String).input(),
+      implementationEffort: map['implementationEffort'] == null ? null : (map['implementationEffort']! as String).input(),
+      partnerData: map['partnerData'] == null ? null : (SecurityAssessmentMetadataPartnerData.fromMap((map['partnerData']! as Map).cast<String, dynamic>())).input(),
+      preview: map['preview'] == null ? null : (map['preview']! as bool).input(),
+      remediationDescription: map['remediationDescription'] == null ? null : (map['remediationDescription']! as String).input(),
       severity: (map['severity'] as String).input(),
-      threats: map['threats'] == null ? null : ((map['threats'] as List).cast<String>()).input(),
-      userImpact: map['userImpact'] == null ? null : (map['userImpact'] as String).input(),
+      threats: map['threats'] == null ? null : ((map['threats']! as List).cast<String>()).input(),
+      userImpact: map['userImpact'] == null ? null : (map['userImpact']! as String).input(),
     );
   }
 }

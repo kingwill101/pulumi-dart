@@ -39,10 +39,10 @@ class AdditionalUnattendContent {
 
   factory AdditionalUnattendContent.fromMap(Map<String, dynamic> map) {
     return AdditionalUnattendContent(
-      componentName: map['componentName'] == null ? null : (ComponentName.fromValue(map['componentName'] as String)).input(),
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      passName: map['passName'] == null ? null : (PassName.fromValue(map['passName'] as String)).input(),
-      settingName: map['settingName'] == null ? null : (SettingNames.fromValue(map['settingName'] as String)).input(),
+      componentName: map['componentName'] == null ? null : (ComponentName.fromValue(map['componentName']! as String)).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      passName: map['passName'] == null ? null : (PassName.fromValue(map['passName']! as String)).input(),
+      settingName: map['settingName'] == null ? null : (SettingNames.fromValue(map['settingName']! as String)).input(),
     );
   }
 }

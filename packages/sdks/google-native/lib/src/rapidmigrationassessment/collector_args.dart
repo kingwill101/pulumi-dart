@@ -77,18 +77,18 @@ class CollectorArgs {
 
   factory CollectorArgs.fromMap(Map<String, dynamic> map) {
     return CollectorArgs(
-      collectionDays: map['collectionDays'] == null ? null : (map['collectionDays'] as int).input(),
+      collectionDays: map['collectionDays'] == null ? null : (map['collectionDays']! as int).input(),
       collectorId: (map['collectorId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      eulaUri: map['eulaUri'] == null ? null : (map['eulaUri'] as String).input(),
-      expectedAssetCount: map['expectedAssetCount'] == null ? null : (map['expectedAssetCount'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      eulaUri: map['eulaUri'] == null ? null : (map['eulaUri']! as String).input(),
+      expectedAssetCount: map['expectedAssetCount'] == null ? null : (map['expectedAssetCount']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
     );
   }
 }

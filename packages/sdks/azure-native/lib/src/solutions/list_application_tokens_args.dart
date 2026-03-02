@@ -40,9 +40,9 @@ class ListApplicationTokensArgs {
   factory ListApplicationTokensArgs.fromMap(Map<String, dynamic> map) {
     return ListApplicationTokensArgs(
       applicationName: (map['applicationName'] as String).input(),
-      authorizationAudience: map['authorizationAudience'] == null ? null : (map['authorizationAudience'] as String).input(),
+      authorizationAudience: map['authorizationAudience'] == null ? null : (map['authorizationAudience']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities'] as List).cast<String>()).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities']! as List).cast<String>()).input(),
     );
   }
 }

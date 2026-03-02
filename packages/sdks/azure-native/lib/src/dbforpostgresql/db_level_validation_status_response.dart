@@ -37,10 +37,10 @@ class DbLevelValidationStatusResponse {
 
   factory DbLevelValidationStatusResponse.fromMap(Map<String, dynamic> map) {
     return DbLevelValidationStatusResponse(
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      endedOn: map['endedOn'] == null ? null : (map['endedOn'] as String).input(),
-      startedOn: map['startedOn'] == null ? null : (map['startedOn'] as String).input(),
-      summary: map['summary'] == null ? null : (pulumi.Input.decodeList<ValidationSummaryItemResponse>(map['summary'], (value) => ValidationSummaryItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
+      endedOn: map['endedOn'] == null ? null : (map['endedOn']! as String).input(),
+      startedOn: map['startedOn'] == null ? null : (map['startedOn']! as String).input(),
+      summary: map['summary'] == null ? null : (pulumi.Input.decodeList<ValidationSummaryItemResponse>(map['summary']!, (value) => ValidationSummaryItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

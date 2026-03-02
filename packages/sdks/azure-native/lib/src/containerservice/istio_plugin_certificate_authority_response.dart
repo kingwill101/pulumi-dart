@@ -41,11 +41,11 @@ class IstioPluginCertificateAuthorityResponse {
 
   factory IstioPluginCertificateAuthorityResponse.fromMap(Map<String, dynamic> map) {
     return IstioPluginCertificateAuthorityResponse(
-      certChainObjectName: map['certChainObjectName'] == null ? null : (map['certChainObjectName'] as String).input(),
-      certObjectName: map['certObjectName'] == null ? null : (map['certObjectName'] as String).input(),
-      keyObjectName: map['keyObjectName'] == null ? null : (map['keyObjectName'] as String).input(),
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
-      rootCertObjectName: map['rootCertObjectName'] == null ? null : (map['rootCertObjectName'] as String).input(),
+      certChainObjectName: map['certChainObjectName'] == null ? null : (map['certChainObjectName']! as String).input(),
+      certObjectName: map['certObjectName'] == null ? null : (map['certObjectName']! as String).input(),
+      keyObjectName: map['keyObjectName'] == null ? null : (map['keyObjectName']! as String).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
+      rootCertObjectName: map['rootCertObjectName'] == null ? null : (map['rootCertObjectName']! as String).input(),
     );
   }
 }

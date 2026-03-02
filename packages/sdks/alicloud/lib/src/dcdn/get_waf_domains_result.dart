@@ -44,11 +44,11 @@ class GetWafDomainsResult {
   factory GetWafDomainsResult.fromMap(Map<String, dynamic> map) {
     return GetWafDomainsResult(
       domains: pulumi.Input.decodeList<GetWafDomainsDomain>(map['domains'], (value) => GetWafDomainsDomain.fromMap((value as Map).cast<String, dynamic>())),
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      queryArgs: map['queryArgs'] == null ? null : map['queryArgs'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      queryArgs: map['queryArgs'] == null ? null : map['queryArgs']! as String,
     );
   }
 }

@@ -21,7 +21,7 @@ class FirewallPolicySQL {
 
   factory FirewallPolicySQL.fromMap(Map<String, dynamic> map) {
     return FirewallPolicySQL(
-      allowSqlRedirect: map['allowSqlRedirect'] == null ? null : (map['allowSqlRedirect'] as bool).input(),
+      allowSqlRedirect: map['allowSqlRedirect'] == null ? null : (map['allowSqlRedirect']! as bool).input(),
     );
   }
 }

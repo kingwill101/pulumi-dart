@@ -69,15 +69,15 @@ class ArtifactArgs {
 
   factory ArtifactArgs.fromMap(Map<String, dynamic> map) {
     return ArtifactArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
       apiId: (map['apiId'] as String).input(),
       artifactId: (map['artifactId'] as String).input(),
-      contents: map['contents'] == null ? null : (map['contents'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mimeType: map['mimeType'] == null ? null : (map['mimeType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      contents: map['contents'] == null ? null : (map['contents']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mimeType: map['mimeType'] == null ? null : (map['mimeType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       specId: (map['specId'] as String).input(),
       versionId: (map['versionId'] as String).input(),
     );

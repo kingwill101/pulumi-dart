@@ -22,7 +22,7 @@ class OracleRdbms {
 
   factory OracleRdbms.fromMap(Map<String, dynamic> map) {
     return OracleRdbms(
-      oracleSchemas: map['oracleSchemas'] == null ? null : (pulumi.Input.decodeList<OracleSchema>(map['oracleSchemas'], (value) => OracleSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      oracleSchemas: map['oracleSchemas'] == null ? null : (pulumi.Input.decodeList<OracleSchema>(map['oracleSchemas']!, (value) => OracleSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

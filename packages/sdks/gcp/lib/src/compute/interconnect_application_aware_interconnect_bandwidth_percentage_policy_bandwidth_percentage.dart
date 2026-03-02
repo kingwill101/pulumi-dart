@@ -27,8 +27,8 @@ class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidth
 
   factory InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage.fromMap(Map<String, dynamic> map) {
     return InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage(
-      percentage: map['percentage'] == null ? null : (map['percentage'] as int).input(),
-      trafficClass: map['trafficClass'] == null ? null : (map['trafficClass'] as String).input(),
+      percentage: map['percentage'] == null ? null : (map['percentage']! as int).input(),
+      trafficClass: map['trafficClass'] == null ? null : (map['trafficClass']! as String).input(),
     );
   }
 }

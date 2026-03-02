@@ -21,7 +21,7 @@ class NoWrapper {
 
   factory NoWrapper.fromMap(Map<String, dynamic> map) {
     return NoWrapper(
-      writeMetadata: map['writeMetadata'] == null ? null : (map['writeMetadata'] as bool).input(),
+      writeMetadata: map['writeMetadata'] == null ? null : (map['writeMetadata']! as bool).input(),
     );
   }
 }

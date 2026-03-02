@@ -22,7 +22,7 @@ class SAPVirtualInstanceErrorResponse {
 
   factory SAPVirtualInstanceErrorResponse.fromMap(Map<String, dynamic> map) {
     return SAPVirtualInstanceErrorResponse(
-      properties: map['properties'] == null ? null : (ErrorDefinitionResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (ErrorDefinitionResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

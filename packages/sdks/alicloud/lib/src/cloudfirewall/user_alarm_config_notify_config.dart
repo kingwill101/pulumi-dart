@@ -25,8 +25,8 @@ class UserAlarmConfigNotifyConfig {
 
   factory UserAlarmConfigNotifyConfig.fromMap(Map<String, dynamic> map) {
     return UserAlarmConfigNotifyConfig(
-      notifyType: map['notifyType'] == null ? null : (map['notifyType'] as String).input(),
-      notifyValue: map['notifyValue'] == null ? null : (map['notifyValue'] as String).input(),
+      notifyType: map['notifyType'] == null ? null : (map['notifyType']! as String).input(),
+      notifyValue: map['notifyValue'] == null ? null : (map['notifyValue']! as String).input(),
     );
   }
 }

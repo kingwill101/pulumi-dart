@@ -31,9 +31,9 @@ class StartActivityIntent {
 
   factory StartActivityIntent.fromMap(Map<String, dynamic> map) {
     return StartActivityIntent(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      categories: map['categories'] == null ? null : ((map['categories'] as List).cast<String>()).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      categories: map['categories'] == null ? null : ((map['categories']! as List).cast<String>()).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

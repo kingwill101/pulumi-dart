@@ -37,10 +37,10 @@ class ExecutionStatusResponse {
 
   factory ExecutionStatusResponse.fromMap(Map<String, dynamic> map) {
     return ExecutionStatusResponse(
-      stageHistory: map['stageHistory'] == null ? null : (pulumi.Input.decodeList<StageStatusResponse>(map['stageHistory'], (value) => StageStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status'] as int).input(),
-      statusMessage: map['statusMessage'] == null ? null : (map['statusMessage'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      stageHistory: map['stageHistory'] == null ? null : (pulumi.Input.decodeList<StageStatusResponse>(map['stageHistory']!, (value) => StageStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status']! as int).input(),
+      statusMessage: map['statusMessage'] == null ? null : (map['statusMessage']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

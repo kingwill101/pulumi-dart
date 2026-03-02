@@ -36,9 +36,9 @@ class DiagnosticSettingEnabledLog {
 
   factory DiagnosticSettingEnabledLog.fromMap(Map<String, dynamic> map) {
     return DiagnosticSettingEnabledLog(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      categoryGroup: map['categoryGroup'] == null ? null : (map['categoryGroup'] as String).input(),
-      retentionPolicy: map['retentionPolicy'] == null ? null : (DiagnosticSettingEnabledLogRetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      categoryGroup: map['categoryGroup'] == null ? null : (map['categoryGroup']! as String).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (DiagnosticSettingEnabledLogRetentionPolicy.fromMap((map['retentionPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

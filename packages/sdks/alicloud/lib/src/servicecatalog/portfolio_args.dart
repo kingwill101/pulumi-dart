@@ -34,7 +34,7 @@ class PortfolioArgs {
 
   factory PortfolioArgs.fromMap(Map<String, dynamic> map) {
     return PortfolioArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       portfolioName: (map['portfolioName'] as String).input(),
       providerName: (map['providerName'] as String).input(),
     );

@@ -30,9 +30,9 @@ class DomainDevicesHostdevCapsNetRoute {
 
   factory DomainDevicesHostdevCapsNetRoute.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevCapsNetRoute(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      family: map['family'] == null ? null : (map['family'] as String).input(),
-      gateway: map['gateway'] == null ? null : (map['gateway'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      family: map['family'] == null ? null : (map['family']! as String).input(),
+      gateway: map['gateway'] == null ? null : (map['gateway']! as String).input(),
     );
   }
 }

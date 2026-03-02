@@ -85,20 +85,20 @@ class SnapshotClusterConfiguration {
 
   factory SnapshotClusterConfiguration.fromMap(Map<String, dynamic> map) {
     return SnapshotClusterConfiguration(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
-      maintenanceWindow: map['maintenanceWindow'] == null ? null : (map['maintenanceWindow'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodeType: map['nodeType'] == null ? null : (map['nodeType'] as String).input(),
-      numShards: map['numShards'] == null ? null : (map['numShards'] as int).input(),
-      parameterGroupName: map['parameterGroupName'] == null ? null : (map['parameterGroupName'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      snapshotRetentionLimit: map['snapshotRetentionLimit'] == null ? null : (map['snapshotRetentionLimit'] as int).input(),
-      snapshotWindow: map['snapshotWindow'] == null ? null : (map['snapshotWindow'] as String).input(),
-      subnetGroupName: map['subnetGroupName'] == null ? null : (map['subnetGroupName'] as String).input(),
-      topicArn: map['topicArn'] == null ? null : (map['topicArn'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      engine: map['engine'] == null ? null : ((map['engine'] as String).input()).input(),
+      engineVersion: map['engineVersion'] == null ? null : ((map['engineVersion'] as String).input()).input(),
+      maintenanceWindow: map['maintenanceWindow'] == null ? null : ((map['maintenanceWindow'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      nodeType: map['nodeType'] == null ? null : ((map['nodeType'] as String).input()).input(),
+      numShards: map['numShards'] == null ? null : ((map['numShards'] as int).input()).input(),
+      parameterGroupName: map['parameterGroupName'] == null ? null : ((map['parameterGroupName'] as String).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
+      snapshotRetentionLimit: map['snapshotRetentionLimit'] == null ? null : ((map['snapshotRetentionLimit'] as int).input()).input(),
+      snapshotWindow: map['snapshotWindow'] == null ? null : ((map['snapshotWindow'] as String).input()).input(),
+      subnetGroupName: map['subnetGroupName'] == null ? null : ((map['subnetGroupName'] as String).input()).input(),
+      topicArn: map['topicArn'] == null ? null : ((map['topicArn'] as String).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

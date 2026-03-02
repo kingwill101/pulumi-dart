@@ -58,13 +58,13 @@ class DefenderCspmAwsOffering {
 
   factory DefenderCspmAwsOffering.fromMap(Map<String, dynamic> map) {
     return DefenderCspmAwsOffering(
-      ciem: map['ciem'] == null ? null : (DefenderCspmAwsOfferingCiem.fromMap((map['ciem'] as Map).cast<String, dynamic>())).input(),
-      dataSensitivityDiscovery: map['dataSensitivityDiscovery'] == null ? null : (DefenderCspmAwsOfferingDataSensitivityDiscovery.fromMap((map['dataSensitivityDiscovery'] as Map).cast<String, dynamic>())).input(),
-      databasesDspm: map['databasesDspm'] == null ? null : (DefenderCspmAwsOfferingDatabasesDspm.fromMap((map['databasesDspm'] as Map).cast<String, dynamic>())).input(),
-      mdcContainersAgentlessDiscoveryK8s: map['mdcContainersAgentlessDiscoveryK8s'] == null ? null : (DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8s.fromMap((map['mdcContainersAgentlessDiscoveryK8s'] as Map).cast<String, dynamic>())).input(),
-      mdcContainersImageAssessment: map['mdcContainersImageAssessment'] == null ? null : (DefenderCspmAwsOfferingMdcContainersImageAssessment.fromMap((map['mdcContainersImageAssessment'] as Map).cast<String, dynamic>())).input(),
+      ciem: map['ciem'] == null ? null : (DefenderCspmAwsOfferingCiem.fromMap((map['ciem']! as Map).cast<String, dynamic>())).input(),
+      dataSensitivityDiscovery: map['dataSensitivityDiscovery'] == null ? null : (DefenderCspmAwsOfferingDataSensitivityDiscovery.fromMap((map['dataSensitivityDiscovery']! as Map).cast<String, dynamic>())).input(),
+      databasesDspm: map['databasesDspm'] == null ? null : (DefenderCspmAwsOfferingDatabasesDspm.fromMap((map['databasesDspm']! as Map).cast<String, dynamic>())).input(),
+      mdcContainersAgentlessDiscoveryK8s: map['mdcContainersAgentlessDiscoveryK8s'] == null ? null : (DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8s.fromMap((map['mdcContainersAgentlessDiscoveryK8s']! as Map).cast<String, dynamic>())).input(),
+      mdcContainersImageAssessment: map['mdcContainersImageAssessment'] == null ? null : (DefenderCspmAwsOfferingMdcContainersImageAssessment.fromMap((map['mdcContainersImageAssessment']! as Map).cast<String, dynamic>())).input(),
       offeringType: (map['offeringType'] as String).input(),
-      vmScanners: map['vmScanners'] == null ? null : (DefenderCspmAwsOfferingVmScanners.fromMap((map['vmScanners'] as Map).cast<String, dynamic>())).input(),
+      vmScanners: map['vmScanners'] == null ? null : (DefenderCspmAwsOfferingVmScanners.fromMap((map['vmScanners']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

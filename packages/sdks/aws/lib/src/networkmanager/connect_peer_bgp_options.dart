@@ -20,7 +20,7 @@ class ConnectPeerBgpOptions {
 
   factory ConnectPeerBgpOptions.fromMap(Map<String, dynamic> map) {
     return ConnectPeerBgpOptions(
-      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn'] as String).input(),
+      peerAsn: map['peerAsn'] == null ? null : ((map['peerAsn'] as String).input()).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class IntegrationServiceEnvironmenEncryptionConfigurationResponse {
 
   factory IntegrationServiceEnvironmenEncryptionConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return IntegrationServiceEnvironmenEncryptionConfigurationResponse(
-      encryptionKeyReference: map['encryptionKeyReference'] == null ? null : (IntegrationServiceEnvironmenEncryptionKeyReferenceResponse.fromMap((map['encryptionKeyReference'] as Map).cast<String, dynamic>())).input(),
+      encryptionKeyReference: map['encryptionKeyReference'] == null ? null : (IntegrationServiceEnvironmenEncryptionKeyReferenceResponse.fromMap((map['encryptionKeyReference']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

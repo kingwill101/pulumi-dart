@@ -54,13 +54,13 @@ class CustomImageArgs {
 
   factory CustomImageArgs.fromMap(Map<String, dynamic> map) {
     return CustomImageArgs(
-      customImageName: map['customImageName'] == null ? null : (map['customImageName'] as String).input(),
+      customImageName: map['customImageName'] == null ? null : (map['customImageName']! as String).input(),
       definitionName: (map['definitionName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       source: (map['source'] as String).input(),
       testBaseAccountName: (map['testBaseAccountName'] as String).input(),
       versionName: (map['versionName'] as String).input(),
-      vhdId: map['vhdId'] == null ? null : (map['vhdId'] as String).input(),
+      vhdId: map['vhdId'] == null ? null : (map['vhdId']! as String).input(),
     );
   }
 }

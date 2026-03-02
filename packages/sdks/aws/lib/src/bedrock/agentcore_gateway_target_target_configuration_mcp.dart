@@ -39,10 +39,10 @@ class AgentcoreGatewayTargetTargetConfigurationMcp {
 
   factory AgentcoreGatewayTargetTargetConfigurationMcp.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcp(
-      lambda: map['lambda'] == null ? null : (AgentcoreGatewayTargetTargetConfigurationMcpLambda.fromMap((map['lambda'] as Map).cast<String, dynamic>())).input(),
-      mcpServer: map['mcpServer'] == null ? null : (AgentcoreGatewayTargetTargetConfigurationMcpMcpServer.fromMap((map['mcpServer'] as Map).cast<String, dynamic>())).input(),
-      openApiSchema: map['openApiSchema'] == null ? null : (AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema.fromMap((map['openApiSchema'] as Map).cast<String, dynamic>())).input(),
-      smithyModel: map['smithyModel'] == null ? null : (AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel.fromMap((map['smithyModel'] as Map).cast<String, dynamic>())).input(),
+      lambda: map['lambda'] == null ? null : ((AgentcoreGatewayTargetTargetConfigurationMcpLambda.fromMap((map['lambda']! as Map).cast<String, dynamic>())).input()).input(),
+      mcpServer: map['mcpServer'] == null ? null : ((AgentcoreGatewayTargetTargetConfigurationMcpMcpServer.fromMap((map['mcpServer']! as Map).cast<String, dynamic>())).input()).input(),
+      openApiSchema: map['openApiSchema'] == null ? null : ((AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema.fromMap((map['openApiSchema']! as Map).cast<String, dynamic>())).input()).input(),
+      smithyModel: map['smithyModel'] == null ? null : ((AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel.fromMap((map['smithyModel']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

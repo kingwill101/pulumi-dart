@@ -60,13 +60,13 @@ class ScaleSetNetworkProfileIpConfiguration {
 
   factory ScaleSetNetworkProfileIpConfiguration.fromMap(Map<String, dynamic> map) {
     return ScaleSetNetworkProfileIpConfiguration(
-      applicationGatewayBackendAddressPoolIds: map['applicationGatewayBackendAddressPoolIds'] == null ? null : ((map['applicationGatewayBackendAddressPoolIds'] as List).cast<String>()).input(),
-      applicationSecurityGroupIds: map['applicationSecurityGroupIds'] == null ? null : ((map['applicationSecurityGroupIds'] as List).cast<String>()).input(),
-      loadBalancerBackendAddressPoolIds: map['loadBalancerBackendAddressPoolIds'] == null ? null : ((map['loadBalancerBackendAddressPoolIds'] as List).cast<String>()).input(),
-      loadBalancerInboundNatRulesIds: map['loadBalancerInboundNatRulesIds'] == null ? null : ((map['loadBalancerInboundNatRulesIds'] as List).cast<String>()).input(),
+      applicationGatewayBackendAddressPoolIds: map['applicationGatewayBackendAddressPoolIds'] == null ? null : ((map['applicationGatewayBackendAddressPoolIds']! as List).cast<String>()).input(),
+      applicationSecurityGroupIds: map['applicationSecurityGroupIds'] == null ? null : ((map['applicationSecurityGroupIds']! as List).cast<String>()).input(),
+      loadBalancerBackendAddressPoolIds: map['loadBalancerBackendAddressPoolIds'] == null ? null : ((map['loadBalancerBackendAddressPoolIds']! as List).cast<String>()).input(),
+      loadBalancerInboundNatRulesIds: map['loadBalancerInboundNatRulesIds'] == null ? null : ((map['loadBalancerInboundNatRulesIds']! as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
       primary: (map['primary'] as bool).input(),
-      publicIpAddressConfiguration: map['publicIpAddressConfiguration'] == null ? null : (ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfiguration.fromMap((map['publicIpAddressConfiguration'] as Map).cast<String, dynamic>())).input(),
+      publicIpAddressConfiguration: map['publicIpAddressConfiguration'] == null ? null : (ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfiguration.fromMap((map['publicIpAddressConfiguration']! as Map).cast<String, dynamic>())).input(),
       subnetId: (map['subnetId'] as String).input(),
     );
   }

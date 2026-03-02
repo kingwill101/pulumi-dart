@@ -20,7 +20,7 @@ class AttachedClusterError {
 
   factory AttachedClusterError.fromMap(Map<String, dynamic> map) {
     return AttachedClusterError(
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

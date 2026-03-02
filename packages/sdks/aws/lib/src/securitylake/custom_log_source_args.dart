@@ -47,11 +47,11 @@ class CustomLogSourceArgs {
 
   factory CustomLogSourceArgs.fromMap(Map<String, dynamic> map) {
     return CustomLogSourceArgs(
-      configuration: (CustomLogSourceConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      eventClasses: map['eventClasses'] == null ? null : ((map['eventClasses'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      configuration: (CustomLogSourceConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
+      eventClasses: map['eventClasses'] == null ? null : (((map['eventClasses'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       sourceName: (map['sourceName'] as String).input(),
-      sourceVersion: map['sourceVersion'] == null ? null : (map['sourceVersion'] as String).input(),
+      sourceVersion: map['sourceVersion'] == null ? null : ((map['sourceVersion'] as String).input()).input(),
     );
   }
 }

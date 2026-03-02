@@ -34,7 +34,7 @@ class ScriptStringExecutionParameter {
     return ScriptStringExecutionParameter(
       name: (map['name'] as String).input(),
       type: (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

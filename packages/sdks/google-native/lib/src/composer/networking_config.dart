@@ -22,7 +22,7 @@ class NetworkingConfig {
 
   factory NetworkingConfig.fromMap(Map<String, dynamic> map) {
     return NetworkingConfig(
-      connectionType: map['connectionType'] == null ? null : (NetworkingConfigConnectionType.fromValue(map['connectionType'] as String)).input(),
+      connectionType: map['connectionType'] == null ? null : (NetworkingConfigConnectionType.fromValue(map['connectionType']! as String)).input(),
     );
   }
 }

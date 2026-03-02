@@ -25,8 +25,8 @@ class DeploymentWebApplicationFirewallStatusComponentVersion {
 
   factory DeploymentWebApplicationFirewallStatusComponentVersion.fromMap(Map<String, dynamic> map) {
     return DeploymentWebApplicationFirewallStatusComponentVersion(
-      wafEngineVersion: map['wafEngineVersion'] == null ? null : (map['wafEngineVersion'] as String).input(),
-      wafNginxVersion: map['wafNginxVersion'] == null ? null : (map['wafNginxVersion'] as String).input(),
+      wafEngineVersion: map['wafEngineVersion'] == null ? null : (map['wafEngineVersion']! as String).input(),
+      wafNginxVersion: map['wafNginxVersion'] == null ? null : (map['wafNginxVersion']! as String).input(),
     );
   }
 }

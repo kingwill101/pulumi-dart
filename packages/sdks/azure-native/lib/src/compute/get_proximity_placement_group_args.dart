@@ -34,7 +34,7 @@ class GetProximityPlacementGroupArgs {
 
   factory GetProximityPlacementGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetProximityPlacementGroupArgs(
-      includeColocationStatus: map['includeColocationStatus'] == null ? null : (map['includeColocationStatus'] as String).input(),
+      includeColocationStatus: map['includeColocationStatus'] == null ? null : (map['includeColocationStatus']! as String).input(),
       proximityPlacementGroupName: (map['proximityPlacementGroupName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

@@ -21,7 +21,7 @@ class LogsConfigStatusTypeEnumValueResponse {
 
   factory LogsConfigStatusTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return LogsConfigStatusTypeEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

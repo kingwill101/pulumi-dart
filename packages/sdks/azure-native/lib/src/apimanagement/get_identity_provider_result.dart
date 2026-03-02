@@ -85,19 +85,19 @@ class GetIdentityProviderResult {
 
   factory GetIdentityProviderResult.fromMap(Map<String, dynamic> map) {
     return GetIdentityProviderResult(
-      allowedTenants: map['allowedTenants'] == null ? null : (map['allowedTenants'] as List).cast<String>(),
-      authority: map['authority'] == null ? null : map['authority'] as String,
+      allowedTenants: map['allowedTenants'] == null ? null : (map['allowedTenants']! as List).cast<String>(),
+      authority: map['authority'] == null ? null : map['authority']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       clientId: map['clientId'] as String,
-      clientLibrary: map['clientLibrary'] == null ? null : map['clientLibrary'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
+      clientLibrary: map['clientLibrary'] == null ? null : map['clientLibrary']! as String,
+      clientSecret: map['clientSecret'] == null ? null : map['clientSecret']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      passwordResetPolicyName: map['passwordResetPolicyName'] == null ? null : map['passwordResetPolicyName'] as String,
-      profileEditingPolicyName: map['profileEditingPolicyName'] == null ? null : map['profileEditingPolicyName'] as String,
-      signinPolicyName: map['signinPolicyName'] == null ? null : map['signinPolicyName'] as String,
-      signinTenant: map['signinTenant'] == null ? null : map['signinTenant'] as String,
-      signupPolicyName: map['signupPolicyName'] == null ? null : map['signupPolicyName'] as String,
+      passwordResetPolicyName: map['passwordResetPolicyName'] == null ? null : map['passwordResetPolicyName']! as String,
+      profileEditingPolicyName: map['profileEditingPolicyName'] == null ? null : map['profileEditingPolicyName']! as String,
+      signinPolicyName: map['signinPolicyName'] == null ? null : map['signinPolicyName']! as String,
+      signinTenant: map['signinTenant'] == null ? null : map['signinTenant']! as String,
+      signupPolicyName: map['signupPolicyName'] == null ? null : map['signupPolicyName']! as String,
       type: map['type'] as String,
     );
   }

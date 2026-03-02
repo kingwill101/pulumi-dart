@@ -58,13 +58,13 @@ class UserArgs {
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
       clusterId: (map['clusterId'] as String).input(),
-      databaseRoles: map['databaseRoles'] == null ? null : ((map['databaseRoles'] as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      databaseRoles: map['databaseRoles'] == null ? null : ((map['databaseRoles']! as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       userId: (map['userId'] as String).input(),
-      userType: map['userType'] == null ? null : (UserUserType.fromValue(map['userType'] as String)).input(),
+      userType: map['userType'] == null ? null : (UserUserType.fromValue(map['userType']! as String)).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class InstanceV2EngineListConnectAddressList {
 
   factory InstanceV2EngineListConnectAddressList.fromMap(Map<String, dynamic> map) {
     return InstanceV2EngineListConnectAddressList(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

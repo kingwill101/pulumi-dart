@@ -39,10 +39,10 @@ class FolderSettingsArgs {
 
   factory FolderSettingsArgs.fromMap(Map<String, dynamic> map) {
     return FolderSettingsArgs(
-      disableDefaultSink: map['disableDefaultSink'] == null ? null : (map['disableDefaultSink'] as bool).input(),
+      disableDefaultSink: map['disableDefaultSink'] == null ? null : (map['disableDefaultSink']! as bool).input(),
       folder: (map['folder'] as String).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      storageLocation: map['storageLocation'] == null ? null : (map['storageLocation'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      storageLocation: map['storageLocation'] == null ? null : (map['storageLocation']! as String).input(),
     );
   }
 }

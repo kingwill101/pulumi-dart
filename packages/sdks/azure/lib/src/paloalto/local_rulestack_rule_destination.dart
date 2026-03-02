@@ -44,11 +44,11 @@ class LocalRulestackRuleDestination {
 
   factory LocalRulestackRuleDestination.fromMap(Map<String, dynamic> map) {
     return LocalRulestackRuleDestination(
-      cidrs: map['cidrs'] == null ? null : ((map['cidrs'] as List).cast<String>()).input(),
-      countries: map['countries'] == null ? null : ((map['countries'] as List).cast<String>()).input(),
-      feeds: map['feeds'] == null ? null : ((map['feeds'] as List).cast<String>()).input(),
-      localRulestackFqdnListIds: map['localRulestackFqdnListIds'] == null ? null : ((map['localRulestackFqdnListIds'] as List).cast<String>()).input(),
-      localRulestackPrefixListIds: map['localRulestackPrefixListIds'] == null ? null : ((map['localRulestackPrefixListIds'] as List).cast<String>()).input(),
+      cidrs: map['cidrs'] == null ? null : ((map['cidrs']! as List).cast<String>()).input(),
+      countries: map['countries'] == null ? null : ((map['countries']! as List).cast<String>()).input(),
+      feeds: map['feeds'] == null ? null : ((map['feeds']! as List).cast<String>()).input(),
+      localRulestackFqdnListIds: map['localRulestackFqdnListIds'] == null ? null : ((map['localRulestackFqdnListIds']! as List).cast<String>()).input(),
+      localRulestackPrefixListIds: map['localRulestackPrefixListIds'] == null ? null : ((map['localRulestackPrefixListIds']! as List).cast<String>()).input(),
     );
   }
 }

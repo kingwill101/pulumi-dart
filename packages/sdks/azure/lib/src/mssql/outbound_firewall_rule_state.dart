@@ -26,8 +26,8 @@ class OutboundFirewallRuleState {
 
   factory OutboundFirewallRuleState.fromMap(Map<String, dynamic> map) {
     return OutboundFirewallRuleState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId']! as String).input(),
     );
   }
 }

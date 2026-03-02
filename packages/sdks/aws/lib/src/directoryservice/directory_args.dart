@@ -91,20 +91,20 @@ class DirectoryArgs {
 
   factory DirectoryArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryArgs(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      connectSettings: map['connectSettings'] == null ? null : (DirectoryConnectSettings.fromMap((map['connectSettings'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      desiredNumberOfDomainControllers: map['desiredNumberOfDomainControllers'] == null ? null : (map['desiredNumberOfDomainControllers'] as int).input(),
-      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
-      enableSso: map['enableSso'] == null ? null : (map['enableSso'] as bool).input(),
+      alias: map['alias'] == null ? null : ((map['alias'] as String).input()).input(),
+      connectSettings: map['connectSettings'] == null ? null : ((DirectoryConnectSettings.fromMap((map['connectSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      desiredNumberOfDomainControllers: map['desiredNumberOfDomainControllers'] == null ? null : ((map['desiredNumberOfDomainControllers'] as int).input()).input(),
+      edition: map['edition'] == null ? null : ((map['edition'] as String).input()).input(),
+      enableSso: map['enableSso'] == null ? null : ((map['enableSso'] as bool).input()).input(),
       name: (map['name'] as String).input(),
       password: (map['password'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      shortName: map['shortName'] == null ? null : (map['shortName'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      vpcSettings: map['vpcSettings'] == null ? null : (DirectoryVpcSettings.fromMap((map['vpcSettings'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      shortName: map['shortName'] == null ? null : ((map['shortName'] as String).input()).input(),
+      size: map['size'] == null ? null : ((map['size'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      vpcSettings: map['vpcSettings'] == null ? null : ((DirectoryVpcSettings.fromMap((map['vpcSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

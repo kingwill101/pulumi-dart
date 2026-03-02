@@ -25,7 +25,7 @@ class RouteParams {
 
   factory RouteParams.fromMap(Map<String, dynamic> map) {
     return RouteParams(
-      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags'] as Map).cast<String, String>()).input(),
+      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags']! as Map).cast<String, String>()).input(),
     );
   }
 }

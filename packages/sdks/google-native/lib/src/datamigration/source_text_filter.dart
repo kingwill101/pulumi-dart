@@ -26,8 +26,8 @@ class SourceTextFilter {
 
   factory SourceTextFilter.fromMap(Map<String, dynamic> map) {
     return SourceTextFilter(
-      sourceMaxLengthFilter: map['sourceMaxLengthFilter'] == null ? null : (map['sourceMaxLengthFilter'] as String).input(),
-      sourceMinLengthFilter: map['sourceMinLengthFilter'] == null ? null : (map['sourceMinLengthFilter'] as String).input(),
+      sourceMaxLengthFilter: map['sourceMaxLengthFilter'] == null ? null : (map['sourceMaxLengthFilter']! as String).input(),
+      sourceMinLengthFilter: map['sourceMinLengthFilter'] == null ? null : (map['sourceMinLengthFilter']! as String).input(),
     );
   }
 }

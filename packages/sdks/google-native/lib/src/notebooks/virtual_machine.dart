@@ -22,7 +22,7 @@ class VirtualMachine {
 
   factory VirtualMachine.fromMap(Map<String, dynamic> map) {
     return VirtualMachine(
-      virtualMachineConfig: map['virtualMachineConfig'] == null ? null : (VirtualMachineConfig.fromMap((map['virtualMachineConfig'] as Map).cast<String, dynamic>())).input(),
+      virtualMachineConfig: map['virtualMachineConfig'] == null ? null : (VirtualMachineConfig.fromMap((map['virtualMachineConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

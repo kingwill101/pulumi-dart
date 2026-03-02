@@ -61,14 +61,14 @@ class RestorePointArgs {
 
   factory RestorePointArgs.fromMap(Map<String, dynamic> map) {
     return RestorePointArgs(
-      consistencyMode: map['consistencyMode'] == null ? null : (map['consistencyMode'] as String).input(),
-      excludeDisks: map['excludeDisks'] == null ? null : (pulumi.Input.decodeList<ApiEntityReference>(map['excludeDisks'], (value) => ApiEntityReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      consistencyMode: map['consistencyMode'] == null ? null : (map['consistencyMode']! as String).input(),
+      excludeDisks: map['excludeDisks'] == null ? null : (pulumi.Input.decodeList<ApiEntityReference>(map['excludeDisks']!, (value) => ApiEntityReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       restorePointCollectionName: (map['restorePointCollectionName'] as String).input(),
-      restorePointName: map['restorePointName'] == null ? null : (map['restorePointName'] as String).input(),
-      sourceMetadata: map['sourceMetadata'] == null ? null : (RestorePointSourceMetadata.fromMap((map['sourceMetadata'] as Map).cast<String, dynamic>())).input(),
-      sourceRestorePoint: map['sourceRestorePoint'] == null ? null : (ApiEntityReference.fromMap((map['sourceRestorePoint'] as Map).cast<String, dynamic>())).input(),
-      timeCreated: map['timeCreated'] == null ? null : (map['timeCreated'] as String).input(),
+      restorePointName: map['restorePointName'] == null ? null : (map['restorePointName']! as String).input(),
+      sourceMetadata: map['sourceMetadata'] == null ? null : (RestorePointSourceMetadata.fromMap((map['sourceMetadata']! as Map).cast<String, dynamic>())).input(),
+      sourceRestorePoint: map['sourceRestorePoint'] == null ? null : (ApiEntityReference.fromMap((map['sourceRestorePoint']! as Map).cast<String, dynamic>())).input(),
+      timeCreated: map['timeCreated'] == null ? null : (map['timeCreated']! as String).input(),
     );
   }
 }

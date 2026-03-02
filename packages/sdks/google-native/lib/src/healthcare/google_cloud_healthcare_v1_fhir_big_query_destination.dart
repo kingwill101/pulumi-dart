@@ -38,10 +38,10 @@ class GoogleCloudHealthcareV1FhirBigQueryDestination {
 
   factory GoogleCloudHealthcareV1FhirBigQueryDestination.fromMap(Map<String, dynamic> map) {
     return GoogleCloudHealthcareV1FhirBigQueryDestination(
-      datasetUri: map['datasetUri'] == null ? null : (map['datasetUri'] as String).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      schemaConfig: map['schemaConfig'] == null ? null : (SchemaConfig.fromMap((map['schemaConfig'] as Map).cast<String, dynamic>())).input(),
-      writeDisposition: map['writeDisposition'] == null ? null : (GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition.fromValue(map['writeDisposition'] as String)).input(),
+      datasetUri: map['datasetUri'] == null ? null : (map['datasetUri']! as String).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
+      schemaConfig: map['schemaConfig'] == null ? null : (SchemaConfig.fromMap((map['schemaConfig']! as Map).cast<String, dynamic>())).input(),
+      writeDisposition: map['writeDisposition'] == null ? null : (GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition.fromValue(map['writeDisposition']! as String)).input(),
     );
   }
 }

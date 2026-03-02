@@ -32,9 +32,9 @@ class VoiceConnectorGroupState {
 
   factory VoiceConnectorGroupState.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorGroupState(
-      connectors: map['connectors'] == null ? null : (pulumi.Input.decodeList<VoiceConnectorGroupConnector>(map['connectors'], (value) => VoiceConnectorGroupConnector.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      connectors: map['connectors'] == null ? null : ((pulumi.Input.decodeList<VoiceConnectorGroupConnector>(map['connectors']!, (value) => VoiceConnectorGroupConnector.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

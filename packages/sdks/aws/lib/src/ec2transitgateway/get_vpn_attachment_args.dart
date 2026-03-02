@@ -45,11 +45,11 @@ class GetVpnAttachmentArgs {
 
   factory GetVpnAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetVpnAttachmentArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpnAttachmentFilter>(map['filters'], (value) => GetVpnAttachmentFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      transitGatewayId: map['transitGatewayId'] == null ? null : (map['transitGatewayId'] as String).input(),
-      vpnConnectionId: map['vpnConnectionId'] == null ? null : (map['vpnConnectionId'] as String).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetVpnAttachmentFilter>(map['filters']!, (value) => GetVpnAttachmentFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      transitGatewayId: map['transitGatewayId'] == null ? null : ((map['transitGatewayId'] as String).input()).input(),
+      vpnConnectionId: map['vpnConnectionId'] == null ? null : ((map['vpnConnectionId'] as String).input()).input(),
     );
   }
 }

@@ -38,8 +38,8 @@ class ResponsePolicyRuleLocalDataLocalData {
   factory ResponsePolicyRuleLocalDataLocalData.fromMap(Map<String, dynamic> map) {
     return ResponsePolicyRuleLocalDataLocalData(
       name: (map['name'] as String).input(),
-      rrdatas: map['rrdatas'] == null ? null : ((map['rrdatas'] as List).cast<String>()).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      rrdatas: map['rrdatas'] == null ? null : ((map['rrdatas']! as List).cast<String>()).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
       type: (map['type'] as String).input(),
     );
   }

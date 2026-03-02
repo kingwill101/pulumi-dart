@@ -89,18 +89,18 @@ class GetConnectedEnvironmentResult {
   factory GetConnectedEnvironmentResult.fromMap(Map<String, dynamic> map) {
     return GetConnectedEnvironmentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      customDomainConfiguration: map['customDomainConfiguration'] == null ? null : CustomDomainConfigurationResponse.fromMap((map['customDomainConfiguration'] as Map).cast<String, dynamic>()),
-      daprAIConnectionString: map['daprAIConnectionString'] == null ? null : map['daprAIConnectionString'] as String,
+      customDomainConfiguration: map['customDomainConfiguration'] == null ? null : CustomDomainConfigurationResponse.fromMap((map['customDomainConfiguration']! as Map).cast<String, dynamic>()),
+      daprAIConnectionString: map['daprAIConnectionString'] == null ? null : map['daprAIConnectionString']! as String,
       defaultDomain: map['defaultDomain'] as String,
       deploymentErrors: map['deploymentErrors'] as String,
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
+      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      staticIp: map['staticIp'] == null ? null : map['staticIp'] as String,
+      staticIp: map['staticIp'] == null ? null : map['staticIp']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

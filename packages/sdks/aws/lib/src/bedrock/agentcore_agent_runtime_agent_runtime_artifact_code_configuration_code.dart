@@ -21,7 +21,7 @@ class AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCode {
 
   factory AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCode.fromMap(Map<String, dynamic> map) {
     return AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCode(
-      s3: map['s3'] == null ? null : (AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeS3.fromMap((map['s3'] as Map).cast<String, dynamic>())).input(),
+      s3: map['s3'] == null ? null : ((AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeS3.fromMap((map['s3']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

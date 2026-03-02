@@ -38,7 +38,7 @@ class ServiceLoadBalancerAdvancedConfiguration {
       alternateTargetGroupArn: (map['alternateTargetGroupArn'] as String).input(),
       productionListenerRule: (map['productionListenerRule'] as String).input(),
       roleArn: (map['roleArn'] as String).input(),
-      testListenerRule: map['testListenerRule'] == null ? null : (map['testListenerRule'] as String).input(),
+      testListenerRule: map['testListenerRule'] == null ? null : ((map['testListenerRule'] as String).input()).input(),
     );
   }
 }

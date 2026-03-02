@@ -50,8 +50,8 @@ class ListWorkflowVersionCallbackUrlArgs {
 
   factory ListWorkflowVersionCallbackUrlArgs.fromMap(Map<String, dynamic> map) {
     return ListWorkflowVersionCallbackUrlArgs(
-      keyType: map['keyType'] == null ? null : (KeyType.fromValue(map['keyType'] as String)).input(),
-      notAfter: map['notAfter'] == null ? null : (map['notAfter'] as String).input(),
+      keyType: map['keyType'] == null ? null : (KeyType.fromValue(map['keyType']! as String)).input(),
+      notAfter: map['notAfter'] == null ? null : (map['notAfter']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       triggerName: (map['triggerName'] as String).input(),
       versionId: (map['versionId'] as String).input(),

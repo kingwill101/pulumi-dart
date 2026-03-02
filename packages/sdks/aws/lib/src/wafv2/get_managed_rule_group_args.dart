@@ -45,10 +45,10 @@ class GetManagedRuleGroupArgs {
   factory GetManagedRuleGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       scope: (map['scope'] as String).input(),
       vendorName: (map['vendorName'] as String).input(),
-      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
+      versionName: map['versionName'] == null ? null : ((map['versionName'] as String).input()).input(),
     );
   }
 }

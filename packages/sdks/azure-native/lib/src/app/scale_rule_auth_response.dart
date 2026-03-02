@@ -26,8 +26,8 @@ class ScaleRuleAuthResponse {
 
   factory ScaleRuleAuthResponse.fromMap(Map<String, dynamic> map) {
     return ScaleRuleAuthResponse(
-      secretRef: map['secretRef'] == null ? null : (map['secretRef'] as String).input(),
-      triggerParameter: map['triggerParameter'] == null ? null : (map['triggerParameter'] as String).input(),
+      secretRef: map['secretRef'] == null ? null : (map['secretRef']! as String).input(),
+      triggerParameter: map['triggerParameter'] == null ? null : (map['triggerParameter']! as String).input(),
     );
   }
 }

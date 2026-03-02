@@ -32,9 +32,9 @@ class BucketReplicationConfigRuleFilter {
 
   factory BucketReplicationConfigRuleFilter.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigRuleFilter(
-      and: map['and'] == null ? null : (BucketReplicationConfigRuleFilterAnd.fromMap((map['and'] as Map).cast<String, dynamic>())).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      tag: map['tag'] == null ? null : (BucketReplicationConfigRuleFilterTag.fromMap((map['tag'] as Map).cast<String, dynamic>())).input(),
+      and: map['and'] == null ? null : ((BucketReplicationConfigRuleFilterAnd.fromMap((map['and']! as Map).cast<String, dynamic>())).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
+      tag: map['tag'] == null ? null : ((BucketReplicationConfigRuleFilterTag.fromMap((map['tag']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

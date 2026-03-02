@@ -101,23 +101,23 @@ class CustomerEntityResponse {
 
   factory CustomerEntityResponse.fromMap(Map<String, dynamic> map) {
     return CustomerEntityResponse(
-      clientTenantId: map['clientTenantId'] == null ? null : (map['clientTenantId'] as String).input(),
-      contactEmail: map['contactEmail'] == null ? null : (map['contactEmail'] as String).input(),
-      contactName: map['contactName'] == null ? null : (map['contactName'] as String).input(),
-      contactPhone: map['contactPhone'] == null ? null : (map['contactPhone'] as String).input(),
+      clientTenantId: map['clientTenantId'] == null ? null : (map['clientTenantId']! as String).input(),
+      contactEmail: map['contactEmail'] == null ? null : (map['contactEmail']! as String).input(),
+      contactName: map['contactName'] == null ? null : (map['contactName']! as String).input(),
+      contactPhone: map['contactPhone'] == null ? null : (map['contactPhone']! as String).input(),
       createAsyncOperationId: (map['createAsyncOperationId'] as String).input(),
       customerId: (map['customerId'] as String).input(),
-      customerName: map['customerName'] == null ? null : (map['customerName'] as String).input(),
+      customerName: map['customerName'] == null ? null : (map['customerName']! as String).input(),
       deleteAsyncOperationId: (map['deleteAsyncOperationId'] as String).input(),
-      fullyQualifiedResourceId: map['fullyQualifiedResourceId'] == null ? null : (map['fullyQualifiedResourceId'] as String).input(),
-      isEnterpriseManaged: map['isEnterpriseManaged'] == null ? null : (map['isEnterpriseManaged'] as bool).input(),
-      isEntitled: map['isEntitled'] == null ? null : (map['isEntitled'] as bool).input(),
+      fullyQualifiedResourceId: map['fullyQualifiedResourceId'] == null ? null : (map['fullyQualifiedResourceId']! as String).input(),
+      isEnterpriseManaged: map['isEnterpriseManaged'] == null ? null : (map['isEnterpriseManaged']! as bool).input(),
+      isEntitled: map['isEntitled'] == null ? null : (map['isEntitled']! as bool).input(),
       lastSyncWithAzureTimestamp: (map['lastSyncWithAzureTimestamp'] as String).input(),
-      releaseVersion: map['releaseVersion'] == null ? null : (map['releaseVersion'] as int).input(),
-      resendSignupCode: map['resendSignupCode'] == null ? null : (map['resendSignupCode'] as bool).input(),
-      shouldMigrate: map['shouldMigrate'] == null ? null : (map['shouldMigrate'] as bool).input(),
+      releaseVersion: map['releaseVersion'] == null ? null : (map['releaseVersion']! as int).input(),
+      resendSignupCode: map['resendSignupCode'] == null ? null : (map['resendSignupCode']! as bool).input(),
+      shouldMigrate: map['shouldMigrate'] == null ? null : (map['shouldMigrate']! as bool).input(),
       synchWithAzureAttemptsCount: (map['synchWithAzureAttemptsCount'] as int).input(),
-      verifySignupCode: map['verifySignupCode'] == null ? null : (map['verifySignupCode'] as bool).input(),
+      verifySignupCode: map['verifySignupCode'] == null ? null : (map['verifySignupCode']! as bool).input(),
     );
   }
 }

@@ -111,21 +111,21 @@ class TargetArgs {
 
   factory TargetArgs.fromMap(Map<String, dynamic> map) {
     return TargetArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      anthosCluster: map['anthosCluster'] == null ? null : (TargetAnthosCluster.fromMap((map['anthosCluster'] as Map).cast<String, dynamic>())).input(),
-      associatedEntities: map['associatedEntities'] == null ? null : (pulumi.Input.decodeList<TargetAssociatedEntity>(map['associatedEntities'], (value) => TargetAssociatedEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      customTarget: map['customTarget'] == null ? null : (TargetCustomTarget.fromMap((map['customTarget'] as Map).cast<String, dynamic>())).input(),
-      deployParameters: map['deployParameters'] == null ? null : ((map['deployParameters'] as Map).cast<String, String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      executionConfigs: map['executionConfigs'] == null ? null : (pulumi.Input.decodeList<TargetExecutionConfig>(map['executionConfigs'], (value) => TargetExecutionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      gke: map['gke'] == null ? null : (TargetGke.fromMap((map['gke'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      anthosCluster: map['anthosCluster'] == null ? null : (TargetAnthosCluster.fromMap((map['anthosCluster']! as Map).cast<String, dynamic>())).input(),
+      associatedEntities: map['associatedEntities'] == null ? null : (pulumi.Input.decodeList<TargetAssociatedEntity>(map['associatedEntities']!, (value) => TargetAssociatedEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customTarget: map['customTarget'] == null ? null : (TargetCustomTarget.fromMap((map['customTarget']! as Map).cast<String, dynamic>())).input(),
+      deployParameters: map['deployParameters'] == null ? null : ((map['deployParameters']! as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      executionConfigs: map['executionConfigs'] == null ? null : (pulumi.Input.decodeList<TargetExecutionConfig>(map['executionConfigs']!, (value) => TargetExecutionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gke: map['gke'] == null ? null : (TargetGke.fromMap((map['gke']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      multiTarget: map['multiTarget'] == null ? null : (TargetMultiTarget.fromMap((map['multiTarget'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requireApproval: map['requireApproval'] == null ? null : (map['requireApproval'] as bool).input(),
-      run: map['run'] == null ? null : (TargetRun.fromMap((map['run'] as Map).cast<String, dynamic>())).input(),
+      multiTarget: map['multiTarget'] == null ? null : (TargetMultiTarget.fromMap((map['multiTarget']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requireApproval: map['requireApproval'] == null ? null : (map['requireApproval']! as bool).input(),
+      run: map['run'] == null ? null : (TargetRun.fromMap((map['run']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

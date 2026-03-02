@@ -25,7 +25,7 @@ class DomainDevicesFilesystemBoot {
 
   factory DomainDevicesFilesystemBoot.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemBoot(
-      loadParm: map['loadParm'] == null ? null : (map['loadParm'] as String).input(),
+      loadParm: map['loadParm'] == null ? null : (map['loadParm']! as String).input(),
       order: (map['order'] as double).input(),
     );
   }

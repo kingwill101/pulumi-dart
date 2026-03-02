@@ -88,20 +88,20 @@ class GetAwsServiceDiscoveryArgs {
 
   factory GetAwsServiceDiscoveryArgs.fromMap(Map<String, dynamic> map) {
     return GetAwsServiceDiscoveryArgs(
-      addressRealm: map['addressRealm'] == null ? null : (map['addressRealm'] as String).input(),
-      awsAccessKey: map['awsAccessKey'] == null ? null : (map['awsAccessKey'] as String).input(),
-      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion'] as String).input(),
-      awsSecretAccessKey: map['awsSecretAccessKey'] == null ? null : (map['awsSecretAccessKey'] as String).input(),
-      credentialUpdate: map['credentialUpdate'] == null ? null : (map['credentialUpdate'] as bool).input(),
-      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
-      minimumMonitors: map['minimumMonitors'] == null ? null : (map['minimumMonitors'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      addressRealm: map['addressRealm'] == null ? null : (map['addressRealm']! as String).input(),
+      awsAccessKey: map['awsAccessKey'] == null ? null : (map['awsAccessKey']! as String).input(),
+      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion']! as String).input(),
+      awsSecretAccessKey: map['awsSecretAccessKey'] == null ? null : (map['awsSecretAccessKey']! as String).input(),
+      credentialUpdate: map['credentialUpdate'] == null ? null : (map['credentialUpdate']! as bool).input(),
+      externalId: map['externalId'] == null ? null : (map['externalId']! as String).input(),
+      minimumMonitors: map['minimumMonitors'] == null ? null : (map['minimumMonitors']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
       tagKey: (map['tagKey'] as String).input(),
       tagValue: (map['tagValue'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      undetectableAction: map['undetectableAction'] == null ? null : (map['undetectableAction'] as String).input(),
-      updateInterval: map['updateInterval'] == null ? null : (map['updateInterval'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      undetectableAction: map['undetectableAction'] == null ? null : (map['undetectableAction']! as String).input(),
+      updateInterval: map['updateInterval'] == null ? null : (map['updateInterval']! as String).input(),
     );
   }
 }

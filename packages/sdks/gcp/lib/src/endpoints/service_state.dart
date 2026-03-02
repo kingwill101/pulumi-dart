@@ -67,15 +67,15 @@ class ServiceState {
 
   factory ServiceState.fromMap(Map<String, dynamic> map) {
     return ServiceState(
-      apis: map['apis'] == null ? null : (pulumi.Input.decodeList<ServiceApi>(map['apis'], (value) => ServiceApi.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      configId: map['configId'] == null ? null : (map['configId'] as String).input(),
-      dnsAddress: map['dnsAddress'] == null ? null : (map['dnsAddress'] as String).input(),
-      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<ServiceEndpoint>(map['endpoints'], (value) => ServiceEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      grpcConfig: map['grpcConfig'] == null ? null : (map['grpcConfig'] as String).input(),
-      openapiConfig: map['openapiConfig'] == null ? null : (map['openapiConfig'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      protocOutputBase64: map['protocOutputBase64'] == null ? null : (map['protocOutputBase64'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      apis: map['apis'] == null ? null : (pulumi.Input.decodeList<ServiceApi>(map['apis']!, (value) => ServiceApi.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configId: map['configId'] == null ? null : (map['configId']! as String).input(),
+      dnsAddress: map['dnsAddress'] == null ? null : (map['dnsAddress']! as String).input(),
+      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<ServiceEndpoint>(map['endpoints']!, (value) => ServiceEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      grpcConfig: map['grpcConfig'] == null ? null : (map['grpcConfig']! as String).input(),
+      openapiConfig: map['openapiConfig'] == null ? null : (map['openapiConfig']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      protocOutputBase64: map['protocOutputBase64'] == null ? null : (map['protocOutputBase64']! as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
     );
   }
 }

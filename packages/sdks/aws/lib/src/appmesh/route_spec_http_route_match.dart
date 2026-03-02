@@ -54,13 +54,13 @@ class RouteSpecHttpRouteMatch {
 
   factory RouteSpecHttpRouteMatch.fromMap(Map<String, dynamic> map) {
     return RouteSpecHttpRouteMatch(
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<RouteSpecHttpRouteMatchHeader>(map['headers'], (value) => RouteSpecHttpRouteMatchHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      method: map['method'] == null ? null : (map['method'] as String).input(),
-      path: map['path'] == null ? null : (RouteSpecHttpRouteMatchPath.fromMap((map['path'] as Map).cast<String, dynamic>())).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      queryParameters: map['queryParameters'] == null ? null : (pulumi.Input.decodeList<RouteSpecHttpRouteMatchQueryParameter>(map['queryParameters'], (value) => RouteSpecHttpRouteMatchQueryParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      scheme: map['scheme'] == null ? null : (map['scheme'] as String).input(),
+      headers: map['headers'] == null ? null : ((pulumi.Input.decodeList<RouteSpecHttpRouteMatchHeader>(map['headers']!, (value) => RouteSpecHttpRouteMatchHeader.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      method: map['method'] == null ? null : ((map['method'] as String).input()).input(),
+      path: map['path'] == null ? null : ((RouteSpecHttpRouteMatchPath.fromMap((map['path']! as Map).cast<String, dynamic>())).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
+      queryParameters: map['queryParameters'] == null ? null : ((pulumi.Input.decodeList<RouteSpecHttpRouteMatchQueryParameter>(map['queryParameters']!, (value) => RouteSpecHttpRouteMatchQueryParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      scheme: map['scheme'] == null ? null : ((map['scheme'] as String).input()).input(),
     );
   }
 }

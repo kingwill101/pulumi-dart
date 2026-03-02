@@ -33,9 +33,9 @@ class TransferConfiguration {
 
   factory TransferConfiguration.fromMap(Map<String, dynamic> map) {
     return TransferConfiguration(
-      transferAllDetails: map['transferAllDetails'] == null ? null : (TransferConfigurationTransferAllDetails.fromMap((map['transferAllDetails'] as Map).cast<String, dynamic>())).input(),
+      transferAllDetails: map['transferAllDetails'] == null ? null : (TransferConfigurationTransferAllDetails.fromMap((map['transferAllDetails']! as Map).cast<String, dynamic>())).input(),
       transferConfigurationType: (map['transferConfigurationType'] as String).input(),
-      transferFilterDetails: map['transferFilterDetails'] == null ? null : (TransferConfigurationTransferFilterDetails.fromMap((map['transferFilterDetails'] as Map).cast<String, dynamic>())).input(),
+      transferFilterDetails: map['transferFilterDetails'] == null ? null : (TransferConfigurationTransferFilterDetails.fromMap((map['transferFilterDetails']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

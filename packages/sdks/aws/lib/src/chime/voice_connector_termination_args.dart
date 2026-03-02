@@ -56,10 +56,10 @@ class VoiceConnectorTerminationArgs {
     return VoiceConnectorTerminationArgs(
       callingRegions: ((map['callingRegions'] as List).cast<String>()).input(),
       cidrAllowLists: ((map['cidrAllowLists'] as List).cast<String>()).input(),
-      cpsLimit: map['cpsLimit'] == null ? null : (map['cpsLimit'] as int).input(),
-      defaultPhoneNumber: map['defaultPhoneNumber'] == null ? null : (map['defaultPhoneNumber'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      cpsLimit: map['cpsLimit'] == null ? null : ((map['cpsLimit'] as int).input()).input(),
+      defaultPhoneNumber: map['defaultPhoneNumber'] == null ? null : ((map['defaultPhoneNumber'] as String).input()).input(),
+      disabled: map['disabled'] == null ? null : ((map['disabled'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       voiceConnectorId: (map['voiceConnectorId'] as String).input(),
     );
   }

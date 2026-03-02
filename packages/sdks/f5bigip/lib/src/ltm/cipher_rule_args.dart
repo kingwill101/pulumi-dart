@@ -45,10 +45,10 @@ class CipherRuleArgs {
   factory CipherRuleArgs.fromMap(Map<String, dynamic> map) {
     return CipherRuleArgs(
       cipher: (map['cipher'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dhGroups: map['dhGroups'] == null ? null : (map['dhGroups'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dhGroups: map['dhGroups'] == null ? null : (map['dhGroups']! as String).input(),
       name: (map['name'] as String).input(),
-      signatureAlgorithms: map['signatureAlgorithms'] == null ? null : (map['signatureAlgorithms'] as String).input(),
+      signatureAlgorithms: map['signatureAlgorithms'] == null ? null : (map['signatureAlgorithms']! as String).input(),
     );
   }
 }

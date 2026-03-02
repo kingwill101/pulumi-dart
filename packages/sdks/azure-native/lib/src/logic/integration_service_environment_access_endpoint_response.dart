@@ -21,7 +21,7 @@ class IntegrationServiceEnvironmentAccessEndpointResponse {
 
   factory IntegrationServiceEnvironmentAccessEndpointResponse.fromMap(Map<String, dynamic> map) {
     return IntegrationServiceEnvironmentAccessEndpointResponse(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

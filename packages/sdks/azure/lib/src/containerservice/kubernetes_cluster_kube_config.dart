@@ -45,12 +45,12 @@ class KubernetesClusterKubeConfig {
 
   factory KubernetesClusterKubeConfig.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterKubeConfig(
-      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate'] as String).input(),
-      clientKey: map['clientKey'] == null ? null : (map['clientKey'] as String).input(),
-      clusterCaCertificate: map['clusterCaCertificate'] == null ? null : (map['clusterCaCertificate'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate']! as String).input(),
+      clientKey: map['clientKey'] == null ? null : (map['clientKey']! as String).input(),
+      clusterCaCertificate: map['clusterCaCertificate'] == null ? null : (map['clusterCaCertificate']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

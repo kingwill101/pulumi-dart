@@ -20,7 +20,7 @@ class GetVirtualNodeSpecBackendDefaultClientPolicy {
 
   factory GetVirtualNodeSpecBackendDefaultClientPolicy.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecBackendDefaultClientPolicy(
-      tls: (pulumi.Input.decodeList<GetVirtualNodeSpecBackendDefaultClientPolicyTl>(map['tls'], (value) => GetVirtualNodeSpecBackendDefaultClientPolicyTl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tls: (pulumi.Input.decodeList<GetVirtualNodeSpecBackendDefaultClientPolicyTl>(map['tls']!, (value) => GetVirtualNodeSpecBackendDefaultClientPolicyTl.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

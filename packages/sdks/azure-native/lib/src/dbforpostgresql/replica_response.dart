@@ -33,7 +33,7 @@ class ReplicaResponse {
     return ReplicaResponse(
       capacity: (map['capacity'] as int).input(),
       replicationState: (map['replicationState'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

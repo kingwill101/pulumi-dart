@@ -28,7 +28,7 @@ class NetworkRuleSet {
   factory NetworkRuleSet.fromMap(Map<String, dynamic> map) {
     return NetworkRuleSet(
       defaultAction: (map['defaultAction'] as String).input(),
-      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<IPRule>(map['ipRules'], (value) => IPRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<IPRule>(map['ipRules']!, (value) => IPRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -91,13 +91,13 @@ class GetVMInstanceGuestAgentResult {
   factory GetVMInstanceGuestAgentResult.fromMap(Map<String, dynamic> map) {
     return GetVMInstanceGuestAgentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      credentials: map['credentials'] == null ? null : GuestCredentialResponse.fromMap((map['credentials'] as Map).cast<String, dynamic>()),
+      credentials: map['credentials'] == null ? null : GuestCredentialResponse.fromMap((map['credentials']! as Map).cast<String, dynamic>()),
       customResourceName: map['customResourceName'] as String,
-      httpProxyConfig: map['httpProxyConfig'] == null ? null : HttpProxyConfigurationResponse.fromMap((map['httpProxyConfig'] as Map).cast<String, dynamic>()),
+      httpProxyConfig: map['httpProxyConfig'] == null ? null : HttpProxyConfigurationResponse.fromMap((map['httpProxyConfig']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
-      privateLinkScopeResourceId: map['privateLinkScopeResourceId'] == null ? null : map['privateLinkScopeResourceId'] as String,
-      provisioningAction: map['provisioningAction'] == null ? null : map['provisioningAction'] as String,
+      privateLinkScopeResourceId: map['privateLinkScopeResourceId'] == null ? null : map['privateLinkScopeResourceId']! as String,
+      provisioningAction: map['provisioningAction'] == null ? null : map['provisioningAction']! as String,
       provisioningState: map['provisioningState'] as String,
       status: map['status'] as String,
       statuses: pulumi.Input.decodeList<ResourceStatusResponse>(map['statuses'], (value) => ResourceStatusResponse.fromMap((value as Map).cast<String, dynamic>())),

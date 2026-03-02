@@ -54,7 +54,7 @@ class GetPoolStartTask {
   factory GetPoolStartTask.fromMap(Map<String, dynamic> map) {
     return GetPoolStartTask(
       commandLine: (map['commandLine'] as String).input(),
-      commonEnvironmentProperties: map['commonEnvironmentProperties'] == null ? null : ((map['commonEnvironmentProperties'] as Map).cast<String, String>()).input(),
+      commonEnvironmentProperties: map['commonEnvironmentProperties'] == null ? null : ((map['commonEnvironmentProperties']! as Map).cast<String, String>()).input(),
       containers: (pulumi.Input.decodeList<GetPoolStartTaskContainer>(map['containers'], (value) => GetPoolStartTaskContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceFiles: (pulumi.Input.decodeList<GetPoolStartTaskResourceFile>(map['resourceFiles'], (value) => GetPoolStartTaskResourceFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
       taskRetryMaximum: (map['taskRetryMaximum'] as int).input(),

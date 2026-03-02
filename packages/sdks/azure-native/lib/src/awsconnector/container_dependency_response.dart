@@ -26,8 +26,8 @@ class ContainerDependencyResponse {
 
   factory ContainerDependencyResponse.fromMap(Map<String, dynamic> map) {
     return ContainerDependencyResponse(
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
-      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
     );
   }
 }

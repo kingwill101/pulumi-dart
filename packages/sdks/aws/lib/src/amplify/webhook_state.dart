@@ -46,12 +46,12 @@ class WebhookState {
 
   factory WebhookState.fromMap(Map<String, dynamic> map) {
     return WebhookState(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      branchName: map['branchName'] == null ? null : (map['branchName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      appId: map['appId'] == null ? null : ((map['appId'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      branchName: map['branchName'] == null ? null : ((map['branchName'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      url: map['url'] == null ? null : ((map['url'] as String).input()).input(),
     );
   }
 }

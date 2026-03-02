@@ -32,9 +32,9 @@ class PointInTimeRecoveryDescription {
 
   factory PointInTimeRecoveryDescription.fromMap(Map<String, dynamic> map) {
     return PointInTimeRecoveryDescription(
-      earliestRestorableDateTime: map['earliestRestorableDateTime'] == null ? null : (map['earliestRestorableDateTime'] as String).input(),
-      latestRestorableDateTime: map['latestRestorableDateTime'] == null ? null : (map['latestRestorableDateTime'] as String).input(),
-      pointInTimeRecoveryStatus: map['pointInTimeRecoveryStatus'] == null ? null : (PointInTimeRecoveryStatusEnumValue.fromMap((map['pointInTimeRecoveryStatus'] as Map).cast<String, dynamic>())).input(),
+      earliestRestorableDateTime: map['earliestRestorableDateTime'] == null ? null : (map['earliestRestorableDateTime']! as String).input(),
+      latestRestorableDateTime: map['latestRestorableDateTime'] == null ? null : (map['latestRestorableDateTime']! as String).input(),
+      pointInTimeRecoveryStatus: map['pointInTimeRecoveryStatus'] == null ? null : (PointInTimeRecoveryStatusEnumValue.fromMap((map['pointInTimeRecoveryStatus']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

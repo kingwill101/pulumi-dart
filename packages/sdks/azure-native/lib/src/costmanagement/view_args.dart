@@ -103,22 +103,22 @@ class ViewArgs {
 
   factory ViewArgs.fromMap(Map<String, dynamic> map) {
     return ViewArgs(
-      accumulated: map['accumulated'] == null ? null : (map['accumulated'] as String).input(),
-      chart: map['chart'] == null ? null : (map['chart'] as String).input(),
-      dataSet: map['dataSet'] == null ? null : (ReportConfigDataset.fromMap((map['dataSet'] as Map).cast<String, dynamic>())).input(),
-      dateRange: map['dateRange'] == null ? null : (map['dateRange'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
-      includeMonetaryCommitment: map['includeMonetaryCommitment'] == null ? null : (map['includeMonetaryCommitment'] as bool).input(),
-      kpis: map['kpis'] == null ? null : (pulumi.Input.decodeList<KpiProperties>(map['kpis'], (value) => KpiProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metric: map['metric'] == null ? null : (map['metric'] as String).input(),
-      modifiedOn: map['modifiedOn'] == null ? null : (map['modifiedOn'] as String).input(),
-      pivots: map['pivots'] == null ? null : (pulumi.Input.decodeList<PivotProperties>(map['pivots'], (value) => PivotProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      timePeriod: map['timePeriod'] == null ? null : (ReportConfigTimePeriod.fromMap((map['timePeriod'] as Map).cast<String, dynamic>())).input(),
+      accumulated: map['accumulated'] == null ? null : (map['accumulated']! as String).input(),
+      chart: map['chart'] == null ? null : (map['chart']! as String).input(),
+      dataSet: map['dataSet'] == null ? null : (ReportConfigDataset.fromMap((map['dataSet']! as Map).cast<String, dynamic>())).input(),
+      dateRange: map['dateRange'] == null ? null : (map['dateRange']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      eTag: map['eTag'] == null ? null : (map['eTag']! as String).input(),
+      includeMonetaryCommitment: map['includeMonetaryCommitment'] == null ? null : (map['includeMonetaryCommitment']! as bool).input(),
+      kpis: map['kpis'] == null ? null : (pulumi.Input.decodeList<KpiProperties>(map['kpis']!, (value) => KpiProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metric: map['metric'] == null ? null : (map['metric']! as String).input(),
+      modifiedOn: map['modifiedOn'] == null ? null : (map['modifiedOn']! as String).input(),
+      pivots: map['pivots'] == null ? null : (pulumi.Input.decodeList<PivotProperties>(map['pivots']!, (value) => PivotProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      timePeriod: map['timePeriod'] == null ? null : (ReportConfigTimePeriod.fromMap((map['timePeriod']! as Map).cast<String, dynamic>())).input(),
       timeframe: (map['timeframe'] as String).input(),
       type: (map['type'] as String).input(),
-      viewName: map['viewName'] == null ? null : (map['viewName'] as String).input(),
+      viewName: map['viewName'] == null ? null : (map['viewName']! as String).input(),
     );
   }
 }

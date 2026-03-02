@@ -80,16 +80,16 @@ class SelfSignedCertArgs {
   factory SelfSignedCertArgs.fromMap(Map<String, dynamic> map) {
     return SelfSignedCertArgs(
       allowedUses: ((map['allowedUses'] as List).cast<String>()).input(),
-      dnsNames: map['dnsNames'] == null ? null : ((map['dnsNames'] as List).cast<String>()).input(),
-      earlyRenewalHours: map['earlyRenewalHours'] == null ? null : (map['earlyRenewalHours'] as int).input(),
-      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
-      isCaCertificate: map['isCaCertificate'] == null ? null : (map['isCaCertificate'] as bool).input(),
-      maxPathLength: map['maxPathLength'] == null ? null : (map['maxPathLength'] as int).input(),
+      dnsNames: map['dnsNames'] == null ? null : ((map['dnsNames']! as List).cast<String>()).input(),
+      earlyRenewalHours: map['earlyRenewalHours'] == null ? null : (map['earlyRenewalHours']! as int).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses']! as List).cast<String>()).input(),
+      isCaCertificate: map['isCaCertificate'] == null ? null : (map['isCaCertificate']! as bool).input(),
+      maxPathLength: map['maxPathLength'] == null ? null : (map['maxPathLength']! as int).input(),
       privateKeyPem: (map['privateKeyPem'] as String).input(),
-      setAuthorityKeyId: map['setAuthorityKeyId'] == null ? null : (map['setAuthorityKeyId'] as bool).input(),
-      setSubjectKeyId: map['setSubjectKeyId'] == null ? null : (map['setSubjectKeyId'] as bool).input(),
-      subject: map['subject'] == null ? null : (SelfSignedCertSubject.fromMap((map['subject'] as Map).cast<String, dynamic>())).input(),
-      uris: map['uris'] == null ? null : ((map['uris'] as List).cast<String>()).input(),
+      setAuthorityKeyId: map['setAuthorityKeyId'] == null ? null : (map['setAuthorityKeyId']! as bool).input(),
+      setSubjectKeyId: map['setSubjectKeyId'] == null ? null : (map['setSubjectKeyId']! as bool).input(),
+      subject: map['subject'] == null ? null : (SelfSignedCertSubject.fromMap((map['subject']! as Map).cast<String, dynamic>())).input(),
+      uris: map['uris'] == null ? null : ((map['uris']! as List).cast<String>()).input(),
       validityPeriodHours: (map['validityPeriodHours'] as int).input(),
     );
   }

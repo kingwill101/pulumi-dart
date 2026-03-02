@@ -35,8 +35,8 @@ class CertificateValidationArgs {
   factory CertificateValidationArgs.fromMap(Map<String, dynamic> map) {
     return CertificateValidationArgs(
       certificateArn: (map['certificateArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      validationRecordFqdns: map['validationRecordFqdns'] == null ? null : ((map['validationRecordFqdns'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      validationRecordFqdns: map['validationRecordFqdns'] == null ? null : (((map['validationRecordFqdns'] as List).cast<String>()).input()).input(),
     );
   }
 }

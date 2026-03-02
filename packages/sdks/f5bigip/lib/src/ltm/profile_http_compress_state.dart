@@ -81,19 +81,19 @@ class ProfileHttpCompressState {
 
   factory ProfileHttpCompressState.fromMap(Map<String, dynamic> map) {
     return ProfileHttpCompressState(
-      compressionBuffersize: map['compressionBuffersize'] == null ? null : (map['compressionBuffersize'] as int).input(),
-      contentTypeExcludes: map['contentTypeExcludes'] == null ? null : ((map['contentTypeExcludes'] as List).cast<String>()).input(),
-      contentTypeIncludes: map['contentTypeIncludes'] == null ? null : ((map['contentTypeIncludes'] as List).cast<String>()).input(),
-      cpuSaver: map['cpuSaver'] == null ? null : (map['cpuSaver'] as String).input(),
-      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom'] as String).input(),
-      gzipCompressionLevel: map['gzipCompressionLevel'] == null ? null : (map['gzipCompressionLevel'] as int).input(),
-      gzipMemoryLevel: map['gzipMemoryLevel'] == null ? null : (map['gzipMemoryLevel'] as int).input(),
-      gzipWindowSize: map['gzipWindowSize'] == null ? null : (map['gzipWindowSize'] as int).input(),
-      keepAcceptEncoding: map['keepAcceptEncoding'] == null ? null : (map['keepAcceptEncoding'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      uriExcludes: map['uriExcludes'] == null ? null : ((map['uriExcludes'] as List).cast<String>()).input(),
-      uriIncludes: map['uriIncludes'] == null ? null : ((map['uriIncludes'] as List).cast<String>()).input(),
-      varyHeader: map['varyHeader'] == null ? null : (map['varyHeader'] as String).input(),
+      compressionBuffersize: map['compressionBuffersize'] == null ? null : (map['compressionBuffersize']! as int).input(),
+      contentTypeExcludes: map['contentTypeExcludes'] == null ? null : ((map['contentTypeExcludes']! as List).cast<String>()).input(),
+      contentTypeIncludes: map['contentTypeIncludes'] == null ? null : ((map['contentTypeIncludes']! as List).cast<String>()).input(),
+      cpuSaver: map['cpuSaver'] == null ? null : (map['cpuSaver']! as String).input(),
+      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom']! as String).input(),
+      gzipCompressionLevel: map['gzipCompressionLevel'] == null ? null : (map['gzipCompressionLevel']! as int).input(),
+      gzipMemoryLevel: map['gzipMemoryLevel'] == null ? null : (map['gzipMemoryLevel']! as int).input(),
+      gzipWindowSize: map['gzipWindowSize'] == null ? null : (map['gzipWindowSize']! as int).input(),
+      keepAcceptEncoding: map['keepAcceptEncoding'] == null ? null : (map['keepAcceptEncoding']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      uriExcludes: map['uriExcludes'] == null ? null : ((map['uriExcludes']! as List).cast<String>()).input(),
+      uriIncludes: map['uriIncludes'] == null ? null : ((map['uriIncludes']! as List).cast<String>()).input(),
+      varyHeader: map['varyHeader'] == null ? null : (map['varyHeader']! as String).input(),
     );
   }
 }

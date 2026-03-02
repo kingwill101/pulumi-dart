@@ -27,7 +27,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable {
 
   factory StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable(
-      oracleColumns: map['oracleColumns'] == null ? null : (pulumi.Input.decodeList<StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn>(map['oracleColumns'], (value) => StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      oracleColumns: map['oracleColumns'] == null ? null : (pulumi.Input.decodeList<StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn>(map['oracleColumns']!, (value) => StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
       table: (map['table'] as String).input(),
     );
   }

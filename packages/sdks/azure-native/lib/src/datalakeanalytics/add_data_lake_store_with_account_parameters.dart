@@ -27,7 +27,7 @@ class AddDataLakeStoreWithAccountParameters {
   factory AddDataLakeStoreWithAccountParameters.fromMap(Map<String, dynamic> map) {
     return AddDataLakeStoreWithAccountParameters(
       name: (map['name'] as String).input(),
-      suffix: map['suffix'] == null ? null : (map['suffix'] as String).input(),
+      suffix: map['suffix'] == null ? null : (map['suffix']! as String).input(),
     );
   }
 }

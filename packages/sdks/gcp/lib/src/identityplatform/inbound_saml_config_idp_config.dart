@@ -39,7 +39,7 @@ class InboundSamlConfigIdpConfig {
     return InboundSamlConfigIdpConfig(
       idpCertificates: (pulumi.Input.decodeList<InboundSamlConfigIdpConfigIdpCertificate>(map['idpCertificates'], (value) => InboundSamlConfigIdpConfigIdpCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
       idpEntityId: (map['idpEntityId'] as String).input(),
-      signRequest: map['signRequest'] == null ? null : (map['signRequest'] as bool).input(),
+      signRequest: map['signRequest'] == null ? null : (map['signRequest']! as bool).input(),
       ssoUrl: (map['ssoUrl'] as String).input(),
     );
   }

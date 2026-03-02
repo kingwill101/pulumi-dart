@@ -33,9 +33,9 @@ class LkeClusterControlPlane {
 
   factory LkeClusterControlPlane.fromMap(Map<String, dynamic> map) {
     return LkeClusterControlPlane(
-      acl: map['acl'] == null ? null : (LkeClusterControlPlaneAcl.fromMap((map['acl'] as Map).cast<String, dynamic>())).input(),
-      auditLogsEnabled: map['auditLogsEnabled'] == null ? null : (map['auditLogsEnabled'] as bool).input(),
-      highAvailability: map['highAvailability'] == null ? null : (map['highAvailability'] as bool).input(),
+      acl: map['acl'] == null ? null : (LkeClusterControlPlaneAcl.fromMap((map['acl']! as Map).cast<String, dynamic>())).input(),
+      auditLogsEnabled: map['auditLogsEnabled'] == null ? null : (map['auditLogsEnabled']! as bool).input(),
+      highAvailability: map['highAvailability'] == null ? null : (map['highAvailability']! as bool).input(),
     );
   }
 }

@@ -29,8 +29,8 @@ class GetTemplatesArgs {
 
   factory GetTemplatesArgs.fromMap(Map<String, dynamic> map) {
     return GetTemplatesArgs(
-      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      awsRegion: map['awsRegion'] == null ? null : ((map['awsRegion'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

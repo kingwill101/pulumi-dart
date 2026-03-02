@@ -31,8 +31,8 @@ class ProvisionedProductProvisioningParameter {
   factory ProvisionedProductProvisioningParameter.fromMap(Map<String, dynamic> map) {
     return ProvisionedProductProvisioningParameter(
       key: (map['key'] as String).input(),
-      usePreviousValue: map['usePreviousValue'] == null ? null : (map['usePreviousValue'] as bool).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      usePreviousValue: map['usePreviousValue'] == null ? null : ((map['usePreviousValue'] as bool).input()).input(),
+      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
     );
   }
 }

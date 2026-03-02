@@ -21,7 +21,7 @@ class WorkspaceCapping {
 
   factory WorkspaceCapping.fromMap(Map<String, dynamic> map) {
     return WorkspaceCapping(
-      dailyQuotaGb: map['dailyQuotaGb'] == null ? null : (map['dailyQuotaGb'] as double).input(),
+      dailyQuotaGb: map['dailyQuotaGb'] == null ? null : (map['dailyQuotaGb']! as double).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class AccessReviewReviewer {
 
   factory AccessReviewReviewer.fromMap(Map<String, dynamic> map) {
     return AccessReviewReviewer(
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
     );
   }
 }

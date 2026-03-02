@@ -83,17 +83,17 @@ class GetLocalNetworkGatewayResult {
   factory GetLocalNetworkGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetLocalNetworkGatewayResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      bgpSettings: map['bgpSettings'] == null ? null : BgpSettingsResponse.fromMap((map['bgpSettings'] as Map).cast<String, dynamic>()),
+      bgpSettings: map['bgpSettings'] == null ? null : BgpSettingsResponse.fromMap((map['bgpSettings']! as Map).cast<String, dynamic>()),
       etag: map['etag'] as String,
-      fqdn: map['fqdn'] == null ? null : map['fqdn'] as String,
-      gatewayIpAddress: map['gatewayIpAddress'] == null ? null : map['gatewayIpAddress'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      localNetworkAddressSpace: map['localNetworkAddressSpace'] == null ? null : AddressSpaceResponse.fromMap((map['localNetworkAddressSpace'] as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location'] as String,
+      fqdn: map['fqdn'] == null ? null : map['fqdn']! as String,
+      gatewayIpAddress: map['gatewayIpAddress'] == null ? null : map['gatewayIpAddress']! as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      localNetworkAddressSpace: map['localNetworkAddressSpace'] == null ? null : AddressSpaceResponse.fromMap((map['localNetworkAddressSpace']! as Map).cast<String, dynamic>()),
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

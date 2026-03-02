@@ -25,8 +25,8 @@ class UptimeAlertNotification {
 
   factory UptimeAlertNotification.fromMap(Map<String, dynamic> map) {
     return UptimeAlertNotification(
-      emails: map['emails'] == null ? null : ((map['emails'] as List).cast<String>()).input(),
-      slacks: map['slacks'] == null ? null : (pulumi.Input.decodeList<UptimeAlertNotificationSlack>(map['slacks'], (value) => UptimeAlertNotificationSlack.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      emails: map['emails'] == null ? null : ((map['emails']! as List).cast<String>()).input(),
+      slacks: map['slacks'] == null ? null : (pulumi.Input.decodeList<UptimeAlertNotificationSlack>(map['slacks']!, (value) => UptimeAlertNotificationSlack.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

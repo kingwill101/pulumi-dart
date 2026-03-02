@@ -31,9 +31,9 @@ class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig {
 
   factory ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig(
-      collection: map['collection'] == null ? null : (map['collection'] as String).input(),
-      collectionDisplayName: map['collectionDisplayName'] == null ? null : (map['collectionDisplayName'] as String).input(),
-      dataSource: map['dataSource'] == null ? null : (map['dataSource'] as String).input(),
+      collection: map['collection'] == null ? null : (map['collection']! as String).input(),
+      collectionDisplayName: map['collectionDisplayName'] == null ? null : (map['collectionDisplayName']! as String).input(),
+      dataSource: map['dataSource'] == null ? null : (map['dataSource']! as String).input(),
     );
   }
 }

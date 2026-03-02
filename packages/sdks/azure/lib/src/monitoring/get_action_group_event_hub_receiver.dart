@@ -50,7 +50,7 @@ class GetActionGroupEventHubReceiver {
       name: (map['name'] as String).input(),
       subscriptionId: (map['subscriptionId'] as String).input(),
       tenantId: (map['tenantId'] as String).input(),
-      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema'] as bool).input(),
+      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema']! as bool).input(),
     );
   }
 }

@@ -57,13 +57,13 @@ class FlexibleAppVersionHandlerStaticFiles {
 
   factory FlexibleAppVersionHandlerStaticFiles.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionHandlerStaticFiles(
-      applicationReadable: map['applicationReadable'] == null ? null : (map['applicationReadable'] as bool).input(),
-      expiration: map['expiration'] == null ? null : (map['expiration'] as String).input(),
-      httpHeaders: map['httpHeaders'] == null ? null : ((map['httpHeaders'] as Map).cast<String, String>()).input(),
-      mimeType: map['mimeType'] == null ? null : (map['mimeType'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      requireMatchingFile: map['requireMatchingFile'] == null ? null : (map['requireMatchingFile'] as bool).input(),
-      uploadPathRegex: map['uploadPathRegex'] == null ? null : (map['uploadPathRegex'] as String).input(),
+      applicationReadable: map['applicationReadable'] == null ? null : (map['applicationReadable']! as bool).input(),
+      expiration: map['expiration'] == null ? null : (map['expiration']! as String).input(),
+      httpHeaders: map['httpHeaders'] == null ? null : ((map['httpHeaders']! as Map).cast<String, String>()).input(),
+      mimeType: map['mimeType'] == null ? null : (map['mimeType']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      requireMatchingFile: map['requireMatchingFile'] == null ? null : (map['requireMatchingFile']! as bool).input(),
+      uploadPathRegex: map['uploadPathRegex'] == null ? null : (map['uploadPathRegex']! as String).input(),
     );
   }
 }

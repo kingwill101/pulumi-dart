@@ -101,21 +101,21 @@ class AccountState {
 
   factory AccountState.fromMap(Map<String, dynamic> map) {
     return AccountState(
-      abandonAbleCheckIds: map['abandonAbleCheckIds'] == null ? null : ((map['abandonAbleCheckIds'] as List).cast<String>()).input(),
-      abandonableCheckIds: map['abandonableCheckIds'] == null ? null : ((map['abandonableCheckIds'] as List).cast<String>()).input(),
-      accountNamePrefix: map['accountNamePrefix'] == null ? null : (map['accountNamePrefix'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      folderId: map['folderId'] == null ? null : (map['folderId'] as String).input(),
-      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
-      joinMethod: map['joinMethod'] == null ? null : (map['joinMethod'] as String).input(),
-      joinTime: map['joinTime'] == null ? null : (map['joinTime'] as String).input(),
-      modifyTime: map['modifyTime'] == null ? null : (map['modifyTime'] as String).input(),
-      payerAccountId: map['payerAccountId'] == null ? null : (map['payerAccountId'] as String).input(),
-      resellAccountType: map['resellAccountType'] == null ? null : (map['resellAccountType'] as String).input(),
-      resourceDirectoryId: map['resourceDirectoryId'] == null ? null : (map['resourceDirectoryId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      abandonAbleCheckIds: map['abandonAbleCheckIds'] == null ? null : ((map['abandonAbleCheckIds']! as List).cast<String>()).input(),
+      abandonableCheckIds: map['abandonableCheckIds'] == null ? null : ((map['abandonableCheckIds']! as List).cast<String>()).input(),
+      accountNamePrefix: map['accountNamePrefix'] == null ? null : (map['accountNamePrefix']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      folderId: map['folderId'] == null ? null : (map['folderId']! as String).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete']! as bool).input(),
+      joinMethod: map['joinMethod'] == null ? null : (map['joinMethod']! as String).input(),
+      joinTime: map['joinTime'] == null ? null : (map['joinTime']! as String).input(),
+      modifyTime: map['modifyTime'] == null ? null : (map['modifyTime']! as String).input(),
+      payerAccountId: map['payerAccountId'] == null ? null : (map['payerAccountId']! as String).input(),
+      resellAccountType: map['resellAccountType'] == null ? null : (map['resellAccountType']! as String).input(),
+      resourceDirectoryId: map['resourceDirectoryId'] == null ? null : (map['resourceDirectoryId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

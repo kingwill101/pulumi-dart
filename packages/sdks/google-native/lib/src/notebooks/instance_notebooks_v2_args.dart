@@ -58,14 +58,14 @@ class InstanceNotebooksV2Args {
 
   factory InstanceNotebooksV2Args.fromMap(Map<String, dynamic> map) {
     return InstanceNotebooksV2Args(
-      disableProxyAccess: map['disableProxyAccess'] == null ? null : (map['disableProxyAccess'] as bool).input(),
-      gceSetup: map['gceSetup'] == null ? null : (GceSetup.fromMap((map['gceSetup'] as Map).cast<String, dynamic>())).input(),
+      disableProxyAccess: map['disableProxyAccess'] == null ? null : (map['disableProxyAccess']! as bool).input(),
+      gceSetup: map['gceSetup'] == null ? null : (GceSetup.fromMap((map['gceSetup']! as Map).cast<String, dynamic>())).input(),
       instanceId: (map['instanceId'] as String).input(),
-      instanceOwners: map['instanceOwners'] == null ? null : ((map['instanceOwners'] as List).cast<String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      instanceOwners: map['instanceOwners'] == null ? null : ((map['instanceOwners']! as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

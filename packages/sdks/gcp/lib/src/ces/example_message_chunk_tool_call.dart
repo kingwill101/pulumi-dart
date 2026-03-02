@@ -46,11 +46,11 @@ class ExampleMessageChunkToolCall {
 
   factory ExampleMessageChunkToolCall.fromMap(Map<String, dynamic> map) {
     return ExampleMessageChunkToolCall(
-      args: map['args'] == null ? null : (map['args'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      tool: map['tool'] == null ? null : (map['tool'] as String).input(),
-      toolsetTool: map['toolsetTool'] == null ? null : (ExampleMessageChunkToolCallToolsetTool.fromMap((map['toolsetTool'] as Map).cast<String, dynamic>())).input(),
+      args: map['args'] == null ? null : (map['args']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      tool: map['tool'] == null ? null : (map['tool']! as String).input(),
+      toolsetTool: map['toolsetTool'] == null ? null : (ExampleMessageChunkToolCallToolsetTool.fromMap((map['toolsetTool']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

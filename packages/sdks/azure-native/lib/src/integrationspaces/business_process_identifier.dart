@@ -26,8 +26,8 @@ class BusinessProcessIdentifier {
 
   factory BusinessProcessIdentifier.fromMap(Map<String, dynamic> map) {
     return BusinessProcessIdentifier(
-      propertyName: map['propertyName'] == null ? null : (map['propertyName'] as String).input(),
-      propertyType: map['propertyType'] == null ? null : (map['propertyType'] as String).input(),
+      propertyName: map['propertyName'] == null ? null : (map['propertyName']! as String).input(),
+      propertyType: map['propertyType'] == null ? null : (map['propertyType']! as String).input(),
     );
   }
 }

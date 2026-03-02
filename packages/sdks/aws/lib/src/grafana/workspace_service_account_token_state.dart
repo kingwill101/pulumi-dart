@@ -61,15 +61,15 @@ class WorkspaceServiceAccountTokenState {
 
   factory WorkspaceServiceAccountTokenState.fromMap(Map<String, dynamic> map) {
     return WorkspaceServiceAccountTokenState(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      expiresAt: map['expiresAt'] == null ? null : (map['expiresAt'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      secondsToLive: map['secondsToLive'] == null ? null : (map['secondsToLive'] as int).input(),
-      serviceAccountId: map['serviceAccountId'] == null ? null : (map['serviceAccountId'] as String).input(),
-      serviceAccountTokenId: map['serviceAccountTokenId'] == null ? null : (map['serviceAccountTokenId'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
+      expiresAt: map['expiresAt'] == null ? null : ((map['expiresAt'] as String).input()).input(),
+      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      secondsToLive: map['secondsToLive'] == null ? null : ((map['secondsToLive'] as int).input()).input(),
+      serviceAccountId: map['serviceAccountId'] == null ? null : ((map['serviceAccountId'] as String).input()).input(),
+      serviceAccountTokenId: map['serviceAccountTokenId'] == null ? null : ((map['serviceAccountTokenId'] as String).input()).input(),
+      workspaceId: map['workspaceId'] == null ? null : ((map['workspaceId'] as String).input()).input(),
     );
   }
 }

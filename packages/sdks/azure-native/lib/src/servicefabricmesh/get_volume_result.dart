@@ -77,8 +77,8 @@ class GetVolumeResult {
   factory GetVolumeResult.fromMap(Map<String, dynamic> map) {
     return GetVolumeResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      azureFileParameters: map['azureFileParameters'] == null ? null : VolumeProviderParametersAzureFileResponse.fromMap((map['azureFileParameters'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
+      azureFileParameters: map['azureFileParameters'] == null ? null : VolumeProviderParametersAzureFileResponse.fromMap((map['azureFileParameters']! as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
@@ -86,7 +86,7 @@ class GetVolumeResult {
       provisioningState: map['provisioningState'] as String,
       status: map['status'] as String,
       statusDetails: map['statusDetails'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

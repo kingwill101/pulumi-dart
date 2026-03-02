@@ -75,17 +75,17 @@ class GetServiceResult {
 
   factory GetServiceResult.fromMap(Map<String, dynamic> map) {
     return GetServiceResult(
-      adminDomainName: map['adminDomainName'] == null ? null : map['adminDomainName'] as String,
+      adminDomainName: map['adminDomainName'] == null ? null : map['adminDomainName']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      billingDomainName: map['billingDomainName'] == null ? null : map['billingDomainName'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      billingDomainName: map['billingDomainName'] == null ? null : map['billingDomainName']! as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      notes: map['notes'] == null ? null : map['notes'] as String,
-      quantity: map['quantity'] == null ? null : map['quantity'] as double,
+      notes: map['notes'] == null ? null : map['notes']! as String,
+      quantity: map['quantity'] == null ? null : map['quantity']! as double,
       startDate: map['startDate'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

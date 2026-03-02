@@ -46,9 +46,9 @@ class ManagementLockByScopeArgs {
   factory ManagementLockByScopeArgs.fromMap(Map<String, dynamic> map) {
     return ManagementLockByScopeArgs(
       level: (map['level'] as String).input(),
-      lockName: map['lockName'] == null ? null : (map['lockName'] as String).input(),
-      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
-      owners: map['owners'] == null ? null : (pulumi.Input.decodeList<ManagementLockOwner>(map['owners'], (value) => ManagementLockOwner.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lockName: map['lockName'] == null ? null : (map['lockName']! as String).input(),
+      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
+      owners: map['owners'] == null ? null : (pulumi.Input.decodeList<ManagementLockOwner>(map['owners']!, (value) => ManagementLockOwner.fromMap((value as Map).cast<String, dynamic>()))).input(),
       scope: (map['scope'] as String).input(),
     );
   }

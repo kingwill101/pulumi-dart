@@ -57,10 +57,10 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindow {
 
   factory BackupPlanBackupScheduleRpoConfigExclusionWindow.fromMap(Map<String, dynamic> map) {
     return BackupPlanBackupScheduleRpoConfigExclusionWindow(
-      daily: map['daily'] == null ? null : (map['daily'] as bool).input(),
-      daysOfWeek: map['daysOfWeek'] == null ? null : (BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek.fromMap((map['daysOfWeek'] as Map).cast<String, dynamic>())).input(),
+      daily: map['daily'] == null ? null : (map['daily']! as bool).input(),
+      daysOfWeek: map['daysOfWeek'] == null ? null : (BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek.fromMap((map['daysOfWeek']! as Map).cast<String, dynamic>())).input(),
       duration: (map['duration'] as String).input(),
-      singleOccurrenceDate: map['singleOccurrenceDate'] == null ? null : (BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate.fromMap((map['singleOccurrenceDate'] as Map).cast<String, dynamic>())).input(),
+      singleOccurrenceDate: map['singleOccurrenceDate'] == null ? null : (BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate.fromMap((map['singleOccurrenceDate']! as Map).cast<String, dynamic>())).input(),
       startTime: (BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime.fromMap((map['startTime'] as Map).cast<String, dynamic>())).input(),
     );
   }

@@ -20,7 +20,7 @@ class EnterpriseSnapshotPolicyStorageRule {
 
   factory EnterpriseSnapshotPolicyStorageRule.fromMap(Map<String, dynamic> map) {
     return EnterpriseSnapshotPolicyStorageRule(
-      enableImmediateAccess: map['enableImmediateAccess'] == null ? null : (map['enableImmediateAccess'] as bool).input(),
+      enableImmediateAccess: map['enableImmediateAccess'] == null ? null : (map['enableImmediateAccess']! as bool).input(),
     );
   }
 }

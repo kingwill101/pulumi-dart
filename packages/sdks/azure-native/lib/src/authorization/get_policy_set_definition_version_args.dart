@@ -34,7 +34,7 @@ class GetPolicySetDefinitionVersionArgs {
 
   factory GetPolicySetDefinitionVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicySetDefinitionVersionArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       policyDefinitionVersion: (map['policyDefinitionVersion'] as String).input(),
       policySetDefinitionName: (map['policySetDefinitionName'] as String).input(),
     );

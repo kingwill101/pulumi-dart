@@ -60,14 +60,14 @@ class ConfigurationSetState {
 
   factory ConfigurationSetState.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      deliveryOptions: map['deliveryOptions'] == null ? null : (ConfigurationSetDeliveryOptions.fromMap((map['deliveryOptions'] as Map).cast<String, dynamic>())).input(),
-      lastFreshStart: map['lastFreshStart'] == null ? null : (map['lastFreshStart'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      reputationMetricsEnabled: map['reputationMetricsEnabled'] == null ? null : (map['reputationMetricsEnabled'] as bool).input(),
-      sendingEnabled: map['sendingEnabled'] == null ? null : (map['sendingEnabled'] as bool).input(),
-      trackingOptions: map['trackingOptions'] == null ? null : (ConfigurationSetTrackingOptions.fromMap((map['trackingOptions'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      deliveryOptions: map['deliveryOptions'] == null ? null : ((ConfigurationSetDeliveryOptions.fromMap((map['deliveryOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      lastFreshStart: map['lastFreshStart'] == null ? null : ((map['lastFreshStart'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      reputationMetricsEnabled: map['reputationMetricsEnabled'] == null ? null : ((map['reputationMetricsEnabled'] as bool).input()).input(),
+      sendingEnabled: map['sendingEnabled'] == null ? null : ((map['sendingEnabled'] as bool).input()).input(),
+      trackingOptions: map['trackingOptions'] == null ? null : ((ConfigurationSetTrackingOptions.fromMap((map['trackingOptions']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

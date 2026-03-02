@@ -27,7 +27,7 @@ class AzureClusterAuthorization {
 
   factory AzureClusterAuthorization.fromMap(Map<String, dynamic> map) {
     return AzureClusterAuthorization(
-      adminGroups: map['adminGroups'] == null ? null : (pulumi.Input.decodeList<AzureClusterAuthorizationAdminGroup>(map['adminGroups'], (value) => AzureClusterAuthorizationAdminGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      adminGroups: map['adminGroups'] == null ? null : (pulumi.Input.decodeList<AzureClusterAuthorizationAdminGroup>(map['adminGroups']!, (value) => AzureClusterAuthorizationAdminGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
       adminUsers: (pulumi.Input.decodeList<AzureClusterAuthorizationAdminUser>(map['adminUsers'], (value) => AzureClusterAuthorizationAdminUser.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

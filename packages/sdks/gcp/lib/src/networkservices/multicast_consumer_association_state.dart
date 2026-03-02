@@ -29,7 +29,7 @@ class MulticastConsumerAssociationState {
 
   factory MulticastConsumerAssociationState.fromMap(Map<String, dynamic> map) {
     return MulticastConsumerAssociationState(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

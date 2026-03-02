@@ -59,14 +59,14 @@ class VbrHaState {
 
   factory VbrHaState.fromMap(Map<String, dynamic> map) {
     return VbrHaState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      peerVbrId: map['peerVbrId'] == null ? null : (map['peerVbrId'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vbrHaName: map['vbrHaName'] == null ? null : (map['vbrHaName'] as String).input(),
-      vbrId: map['vbrId'] == null ? null : (map['vbrId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      peerVbrId: map['peerVbrId'] == null ? null : (map['peerVbrId']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vbrHaName: map['vbrHaName'] == null ? null : (map['vbrHaName']! as String).input(),
+      vbrId: map['vbrId'] == null ? null : (map['vbrId']! as String).input(),
     );
   }
 }

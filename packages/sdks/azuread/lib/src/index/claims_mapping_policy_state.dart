@@ -26,8 +26,8 @@ class ClaimsMappingPolicyState {
 
   factory ClaimsMappingPolicyState.fromMap(Map<String, dynamic> map) {
     return ClaimsMappingPolicyState(
-      definitions: map['definitions'] == null ? null : ((map['definitions'] as List).cast<String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      definitions: map['definitions'] == null ? null : ((map['definitions']! as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
     );
   }
 }

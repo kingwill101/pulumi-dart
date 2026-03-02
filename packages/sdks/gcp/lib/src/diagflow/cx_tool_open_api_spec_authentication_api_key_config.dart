@@ -40,10 +40,10 @@ class CxToolOpenApiSpecAuthenticationApiKeyConfig {
 
   factory CxToolOpenApiSpecAuthenticationApiKeyConfig.fromMap(Map<String, dynamic> map) {
     return CxToolOpenApiSpecAuthenticationApiKeyConfig(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey']! as String).input(),
       keyName: (map['keyName'] as String).input(),
       requestLocation: (map['requestLocation'] as String).input(),
-      secretVersionForApiKey: map['secretVersionForApiKey'] == null ? null : (map['secretVersionForApiKey'] as String).input(),
+      secretVersionForApiKey: map['secretVersionForApiKey'] == null ? null : (map['secretVersionForApiKey']! as String).input(),
     );
   }
 }

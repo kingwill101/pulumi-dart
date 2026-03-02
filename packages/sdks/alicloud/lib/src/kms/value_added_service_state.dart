@@ -63,14 +63,14 @@ class ValueAddedServiceState {
 
   factory ValueAddedServiceState.fromMap(Map<String, dynamic> map) {
     return ValueAddedServiceState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      renewPeriod: map['renewPeriod'] == null ? null : (map['renewPeriod'] as int).input(),
-      renewStatus: map['renewStatus'] == null ? null : (map['renewStatus'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      valueAddedService: map['valueAddedService'] == null ? null : (map['valueAddedService'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      renewPeriod: map['renewPeriod'] == null ? null : (map['renewPeriod']! as int).input(),
+      renewStatus: map['renewStatus'] == null ? null : (map['renewStatus']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      valueAddedService: map['valueAddedService'] == null ? null : (map['valueAddedService']! as String).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class GetRestorePlanArgs {
   factory GetRestorePlanArgs.fromMap(Map<String, dynamic> map) {
     return GetRestorePlanArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       restorePlanId: (map['restorePlanId'] as String).input(),
     );
   }

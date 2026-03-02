@@ -35,10 +35,10 @@ class ProfileRewriteRequest {
 
   factory ProfileRewriteRequest.fromMap(Map<String, dynamic> map) {
     return ProfileRewriteRequest(
-      insertXfwdFor: map['insertXfwdFor'] == null ? null : (map['insertXfwdFor'] as String).input(),
-      insertXfwdHost: map['insertXfwdHost'] == null ? null : (map['insertXfwdHost'] as String).input(),
-      insertXfwdProtocol: map['insertXfwdProtocol'] == null ? null : (map['insertXfwdProtocol'] as String).input(),
-      rewriteHeaders: map['rewriteHeaders'] == null ? null : (map['rewriteHeaders'] as String).input(),
+      insertXfwdFor: map['insertXfwdFor'] == null ? null : (map['insertXfwdFor']! as String).input(),
+      insertXfwdHost: map['insertXfwdHost'] == null ? null : (map['insertXfwdHost']! as String).input(),
+      insertXfwdProtocol: map['insertXfwdProtocol'] == null ? null : (map['insertXfwdProtocol']! as String).input(),
+      rewriteHeaders: map['rewriteHeaders'] == null ? null : (map['rewriteHeaders']! as String).input(),
     );
   }
 }

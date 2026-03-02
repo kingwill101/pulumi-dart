@@ -31,9 +31,9 @@ class EmailIdentityState {
 
   factory EmailIdentityState.fromMap(Map<String, dynamic> map) {
     return EmailIdentityState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      email: map['email'] == null ? null : ((map['email'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

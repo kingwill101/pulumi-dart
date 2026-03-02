@@ -32,7 +32,7 @@ class IntegrationAccountCertificateKeyVaultKey {
     return IntegrationAccountCertificateKeyVaultKey(
       keyName: (map['keyName'] as String).input(),
       keyVaultId: (map['keyVaultId'] as String).input(),
-      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion']! as String).input(),
     );
   }
 }

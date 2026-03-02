@@ -43,11 +43,11 @@ class BucketLifecycleConfigurationRuleS3Control {
 
   factory BucketLifecycleConfigurationRuleS3Control.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationRuleS3Control(
-      abortIncompleteMultipartUpload: map['abortIncompleteMultipartUpload'] == null ? null : (BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control.fromMap((map['abortIncompleteMultipartUpload'] as Map).cast<String, dynamic>())).input(),
-      expiration: map['expiration'] == null ? null : (BucketLifecycleConfigurationRuleExpirationS3Control.fromMap((map['expiration'] as Map).cast<String, dynamic>())).input(),
-      filter: map['filter'] == null ? null : (BucketLifecycleConfigurationRuleFilterS3Control.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      abortIncompleteMultipartUpload: map['abortIncompleteMultipartUpload'] == null ? null : ((BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control.fromMap((map['abortIncompleteMultipartUpload']! as Map).cast<String, dynamic>())).input()).input(),
+      expiration: map['expiration'] == null ? null : ((BucketLifecycleConfigurationRuleExpirationS3Control.fromMap((map['expiration']! as Map).cast<String, dynamic>())).input()).input(),
+      filter: map['filter'] == null ? null : ((BucketLifecycleConfigurationRuleFilterS3Control.fromMap((map['filter']! as Map).cast<String, dynamic>())).input()).input(),
       id: (map['id'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

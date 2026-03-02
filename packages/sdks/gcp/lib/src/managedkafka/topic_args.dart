@@ -56,10 +56,10 @@ class TopicArgs {
   factory TopicArgs.fromMap(Map<String, dynamic> map) {
     return TopicArgs(
       cluster: (map['cluster'] as String).input(),
-      configs: map['configs'] == null ? null : ((map['configs'] as Map).cast<String, String>()).input(),
+      configs: map['configs'] == null ? null : ((map['configs']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       replicationFactor: (map['replicationFactor'] as int).input(),
       topicId: (map['topicId'] as String).input(),
     );

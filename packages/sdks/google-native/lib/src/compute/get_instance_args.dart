@@ -36,8 +36,8 @@ class GetInstanceArgs {
   factory GetInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceArgs(
       instance: (map['instance'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      view: map['view'] == null ? null : (map['view'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      view: map['view'] == null ? null : (map['view']! as String).input(),
       zone: (map['zone'] as String).input(),
     );
   }

@@ -32,9 +32,9 @@ class UploadedUserSourceInfoResponse {
 
   factory UploadedUserSourceInfoResponse.fromMap(Map<String, dynamic> map) {
     return UploadedUserSourceInfoResponse(
-      relativePath: map['relativePath'] == null ? null : (map['relativePath'] as String).input(),
+      relativePath: map['relativePath'] == null ? null : (map['relativePath']! as String).input(),
       type: (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

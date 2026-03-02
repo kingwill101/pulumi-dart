@@ -45,10 +45,10 @@ class SpringCloudConfigurationServiceArgs {
 
   factory SpringCloudConfigurationServiceArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudConfigurationServiceArgs(
-      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      refreshIntervalInSeconds: map['refreshIntervalInSeconds'] == null ? null : (map['refreshIntervalInSeconds'] as int).input(),
-      repositories: map['repositories'] == null ? null : (pulumi.Input.decodeList<SpringCloudConfigurationServiceRepository>(map['repositories'], (value) => SpringCloudConfigurationServiceRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      generation: map['generation'] == null ? null : (map['generation']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      refreshIntervalInSeconds: map['refreshIntervalInSeconds'] == null ? null : (map['refreshIntervalInSeconds']! as int).input(),
+      repositories: map['repositories'] == null ? null : (pulumi.Input.decodeList<SpringCloudConfigurationServiceRepository>(map['repositories']!, (value) => SpringCloudConfigurationServiceRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
       springCloudServiceId: (map['springCloudServiceId'] as String).input(),
     );
   }

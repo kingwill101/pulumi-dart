@@ -31,7 +31,7 @@ class UserSettingsArgs {
   factory UserSettingsArgs.fromMap(Map<String, dynamic> map) {
     return UserSettingsArgs(
       properties: (UserProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      userSettingsName: map['userSettingsName'] == null ? null : (map['userSettingsName'] as String).input(),
+      userSettingsName: map['userSettingsName'] == null ? null : (map['userSettingsName']! as String).input(),
     );
   }
 }

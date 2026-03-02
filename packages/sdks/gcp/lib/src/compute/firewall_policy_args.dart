@@ -36,7 +36,7 @@ class FirewallPolicyArgs {
 
   factory FirewallPolicyArgs.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       parent: (map['parent'] as String).input(),
       shortName: (map['shortName'] as String).input(),
     );

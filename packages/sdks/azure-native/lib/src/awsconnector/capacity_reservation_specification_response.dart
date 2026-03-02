@@ -28,8 +28,8 @@ class CapacityReservationSpecificationResponse {
 
   factory CapacityReservationSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return CapacityReservationSpecificationResponse(
-      capacityReservationPreference: map['capacityReservationPreference'] == null ? null : (CapacityReservationPreferenceEnumValue.fromMap((map['capacityReservationPreference'] as Map).cast<String, dynamic>())).input(),
-      capacityReservationTarget: map['capacityReservationTarget'] == null ? null : (CapacityReservationTargetResponse.fromMap((map['capacityReservationTarget'] as Map).cast<String, dynamic>())).input(),
+      capacityReservationPreference: map['capacityReservationPreference'] == null ? null : (CapacityReservationPreferenceEnumValue.fromMap((map['capacityReservationPreference']! as Map).cast<String, dynamic>())).input(),
+      capacityReservationTarget: map['capacityReservationTarget'] == null ? null : (CapacityReservationTargetResponse.fromMap((map['capacityReservationTarget']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

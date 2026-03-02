@@ -25,8 +25,8 @@ class FeatureMembershipMesh {
 
   factory FeatureMembershipMesh.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipMesh(
-      controlPlane: map['controlPlane'] == null ? null : (map['controlPlane'] as String).input(),
-      management: map['management'] == null ? null : (map['management'] as String).input(),
+      controlPlane: map['controlPlane'] == null ? null : (map['controlPlane']! as String).input(),
+      management: map['management'] == null ? null : (map['management']! as String).input(),
     );
   }
 }

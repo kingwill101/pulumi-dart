@@ -21,7 +21,7 @@ class IntegrationRuntimeCustomerVirtualNetworkResponse {
 
   factory IntegrationRuntimeCustomerVirtualNetworkResponse.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeCustomerVirtualNetworkResponse(
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

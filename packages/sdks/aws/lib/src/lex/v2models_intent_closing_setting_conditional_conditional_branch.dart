@@ -38,10 +38,10 @@ class V2modelsIntentClosingSettingConditionalConditionalBranch {
 
   factory V2modelsIntentClosingSettingConditionalConditionalBranch.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentClosingSettingConditionalConditionalBranch(
-      condition: map['condition'] == null ? null : (V2modelsIntentClosingSettingConditionalConditionalBranchCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : ((V2modelsIntentClosingSettingConditionalConditionalBranchCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input()).input(),
       name: (map['name'] as String).input(),
-      nextStep: map['nextStep'] == null ? null : (V2modelsIntentClosingSettingConditionalConditionalBranchNextStep.fromMap((map['nextStep'] as Map).cast<String, dynamic>())).input(),
-      response: map['response'] == null ? null : (V2modelsIntentClosingSettingConditionalConditionalBranchResponse.fromMap((map['response'] as Map).cast<String, dynamic>())).input(),
+      nextStep: map['nextStep'] == null ? null : ((V2modelsIntentClosingSettingConditionalConditionalBranchNextStep.fromMap((map['nextStep']! as Map).cast<String, dynamic>())).input()).input(),
+      response: map['response'] == null ? null : ((V2modelsIntentClosingSettingConditionalConditionalBranchResponse.fromMap((map['response']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

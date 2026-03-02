@@ -32,9 +32,9 @@ class PkixPublicKey {
 
   factory PkixPublicKey.fromMap(Map<String, dynamic> map) {
     return PkixPublicKey(
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      publicKeyPem: map['publicKeyPem'] == null ? null : (map['publicKeyPem'] as String).input(),
-      signatureAlgorithm: map['signatureAlgorithm'] == null ? null : (PkixPublicKeySignatureAlgorithm.fromValue(map['signatureAlgorithm'] as String)).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
+      publicKeyPem: map['publicKeyPem'] == null ? null : (map['publicKeyPem']! as String).input(),
+      signatureAlgorithm: map['signatureAlgorithm'] == null ? null : (PkixPublicKeySignatureAlgorithm.fromValue(map['signatureAlgorithm']! as String)).input(),
     );
   }
 }

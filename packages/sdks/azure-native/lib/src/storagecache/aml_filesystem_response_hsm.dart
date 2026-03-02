@@ -29,7 +29,7 @@ class AmlFilesystemResponseHsm {
   factory AmlFilesystemResponseHsm.fromMap(Map<String, dynamic> map) {
     return AmlFilesystemResponseHsm(
       archiveStatus: (pulumi.Input.decodeList<AmlFilesystemArchiveResponse>(map['archiveStatus'], (value) => AmlFilesystemArchiveResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      settings: map['settings'] == null ? null : (AmlFilesystemHsmSettingsResponse.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      settings: map['settings'] == null ? null : (AmlFilesystemHsmSettingsResponse.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

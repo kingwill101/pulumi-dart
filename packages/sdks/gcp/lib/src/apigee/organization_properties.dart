@@ -22,7 +22,7 @@ class OrganizationProperties {
 
   factory OrganizationProperties.fromMap(Map<String, dynamic> map) {
     return OrganizationProperties(
-      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<OrganizationPropertiesProperty>(map['properties'], (value) => OrganizationPropertiesProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<OrganizationPropertiesProperty>(map['properties']!, (value) => OrganizationPropertiesProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

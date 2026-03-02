@@ -95,20 +95,20 @@ class GceSetup {
 
   factory GceSetup.fromMap(Map<String, dynamic> map) {
     return GceSetup(
-      acceleratorConfigs: map['acceleratorConfigs'] == null ? null : (pulumi.Input.decodeList<AcceleratorConfigNotebooksV2>(map['acceleratorConfigs'], (value) => AcceleratorConfigNotebooksV2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bootDisk: map['bootDisk'] == null ? null : (BootDisk.fromMap((map['bootDisk'] as Map).cast<String, dynamic>())).input(),
-      containerImage: map['containerImage'] == null ? null : (ContainerImageNotebooksV2.fromMap((map['containerImage'] as Map).cast<String, dynamic>())).input(),
-      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<DataDisk>(map['dataDisks'], (value) => DataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      disablePublicIp: map['disablePublicIp'] == null ? null : (map['disablePublicIp'] as bool).input(),
-      enableIpForwarding: map['enableIpForwarding'] == null ? null : (map['enableIpForwarding'] as bool).input(),
-      gpuDriverConfig: map['gpuDriverConfig'] == null ? null : (GPUDriverConfig.fromMap((map['gpuDriverConfig'] as Map).cast<String, dynamic>())).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<NetworkInterface>(map['networkInterfaces'], (value) => NetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceAccounts: map['serviceAccounts'] == null ? null : (pulumi.Input.decodeList<ServiceAccount>(map['serviceAccounts'], (value) => ServiceAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : (ShieldedInstanceConfigNotebooksV2.fromMap((map['shieldedInstanceConfig'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      vmImage: map['vmImage'] == null ? null : (VmImageNotebooksV2.fromMap((map['vmImage'] as Map).cast<String, dynamic>())).input(),
+      acceleratorConfigs: map['acceleratorConfigs'] == null ? null : (pulumi.Input.decodeList<AcceleratorConfigNotebooksV2>(map['acceleratorConfigs']!, (value) => AcceleratorConfigNotebooksV2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bootDisk: map['bootDisk'] == null ? null : (BootDisk.fromMap((map['bootDisk']! as Map).cast<String, dynamic>())).input(),
+      containerImage: map['containerImage'] == null ? null : (ContainerImageNotebooksV2.fromMap((map['containerImage']! as Map).cast<String, dynamic>())).input(),
+      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<DataDisk>(map['dataDisks']!, (value) => DataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disablePublicIp: map['disablePublicIp'] == null ? null : (map['disablePublicIp']! as bool).input(),
+      enableIpForwarding: map['enableIpForwarding'] == null ? null : (map['enableIpForwarding']! as bool).input(),
+      gpuDriverConfig: map['gpuDriverConfig'] == null ? null : (GPUDriverConfig.fromMap((map['gpuDriverConfig']! as Map).cast<String, dynamic>())).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<NetworkInterface>(map['networkInterfaces']!, (value) => NetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceAccounts: map['serviceAccounts'] == null ? null : (pulumi.Input.decodeList<ServiceAccount>(map['serviceAccounts']!, (value) => ServiceAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : (ShieldedInstanceConfigNotebooksV2.fromMap((map['shieldedInstanceConfig']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      vmImage: map['vmImage'] == null ? null : (VmImageNotebooksV2.fromMap((map['vmImage']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

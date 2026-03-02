@@ -42,8 +42,8 @@ class GetAddonVersionArgs {
     return GetAddonVersionArgs(
       addonName: (map['addonName'] as String).input(),
       kubernetesVersion: (map['kubernetesVersion'] as String).input(),
-      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      mostRecent: map['mostRecent'] == null ? null : ((map['mostRecent'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

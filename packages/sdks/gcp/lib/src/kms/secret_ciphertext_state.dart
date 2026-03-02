@@ -39,10 +39,10 @@ class SecretCiphertextState {
 
   factory SecretCiphertextState.fromMap(Map<String, dynamic> map) {
     return SecretCiphertextState(
-      additionalAuthenticatedData: map['additionalAuthenticatedData'] == null ? null : (map['additionalAuthenticatedData'] as String).input(),
-      ciphertext: map['ciphertext'] == null ? null : (map['ciphertext'] as String).input(),
-      cryptoKey: map['cryptoKey'] == null ? null : (map['cryptoKey'] as String).input(),
-      plaintext: map['plaintext'] == null ? null : (map['plaintext'] as String).input(),
+      additionalAuthenticatedData: map['additionalAuthenticatedData'] == null ? null : (map['additionalAuthenticatedData']! as String).input(),
+      ciphertext: map['ciphertext'] == null ? null : (map['ciphertext']! as String).input(),
+      cryptoKey: map['cryptoKey'] == null ? null : (map['cryptoKey']! as String).input(),
+      plaintext: map['plaintext'] == null ? null : (map['plaintext']! as String).input(),
     );
   }
 }

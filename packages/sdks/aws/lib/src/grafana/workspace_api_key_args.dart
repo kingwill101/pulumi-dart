@@ -46,7 +46,7 @@ class WorkspaceApiKeyArgs {
     return WorkspaceApiKeyArgs(
       keyName: (map['keyName'] as String).input(),
       keyRole: (map['keyRole'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       secondsToLive: (map['secondsToLive'] as int).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );

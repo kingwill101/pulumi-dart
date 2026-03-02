@@ -32,9 +32,9 @@ class OsProperties {
 
   factory OsProperties.fromMap(Map<String, dynamic> map) {
     return OsProperties(
-      customImageId: map['customImageId'] == null ? null : (map['customImageId'] as String).input(),
-      osName: map['osName'] == null ? null : (map['osName'] as String).input(),
-      releaseProperties: map['releaseProperties'] == null ? null : (ReleaseProperties.fromMap((map['releaseProperties'] as Map).cast<String, dynamic>())).input(),
+      customImageId: map['customImageId'] == null ? null : (map['customImageId']! as String).input(),
+      osName: map['osName'] == null ? null : (map['osName']! as String).input(),
+      releaseProperties: map['releaseProperties'] == null ? null : (ReleaseProperties.fromMap((map['releaseProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

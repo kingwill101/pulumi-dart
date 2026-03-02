@@ -28,8 +28,8 @@ class SecurityConfig {
 
   factory SecurityConfig.fromMap(Map<String, dynamic> map) {
     return SecurityConfig(
-      identityConfig: map['identityConfig'] == null ? null : (IdentityConfig.fromMap((map['identityConfig'] as Map).cast<String, dynamic>())).input(),
-      kerberosConfig: map['kerberosConfig'] == null ? null : (KerberosConfig.fromMap((map['kerberosConfig'] as Map).cast<String, dynamic>())).input(),
+      identityConfig: map['identityConfig'] == null ? null : (IdentityConfig.fromMap((map['identityConfig']! as Map).cast<String, dynamic>())).input(),
+      kerberosConfig: map['kerberosConfig'] == null ? null : (KerberosConfig.fromMap((map['kerberosConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

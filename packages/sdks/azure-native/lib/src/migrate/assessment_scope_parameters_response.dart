@@ -21,7 +21,7 @@ class AssessmentScopeParametersResponse {
 
   factory AssessmentScopeParametersResponse.fromMap(Map<String, dynamic> map) {
     return AssessmentScopeParametersResponse(
-      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId'] as String).input(),
+      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId']! as String).input(),
     );
   }
 }

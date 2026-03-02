@@ -43,9 +43,9 @@ class AccountVdmAttributesArgs {
 
   factory AccountVdmAttributesArgs.fromMap(Map<String, dynamic> map) {
     return AccountVdmAttributesArgs(
-      dashboardAttributes: map['dashboardAttributes'] == null ? null : (AccountVdmAttributesDashboardAttributes.fromMap((map['dashboardAttributes'] as Map).cast<String, dynamic>())).input(),
-      guardianAttributes: map['guardianAttributes'] == null ? null : (AccountVdmAttributesGuardianAttributes.fromMap((map['guardianAttributes'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      dashboardAttributes: map['dashboardAttributes'] == null ? null : ((AccountVdmAttributesDashboardAttributes.fromMap((map['dashboardAttributes']! as Map).cast<String, dynamic>())).input()).input(),
+      guardianAttributes: map['guardianAttributes'] == null ? null : ((AccountVdmAttributesGuardianAttributes.fromMap((map['guardianAttributes']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       vdmEnabled: (map['vdmEnabled'] as String).input(),
     );
   }

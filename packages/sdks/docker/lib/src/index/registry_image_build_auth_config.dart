@@ -55,14 +55,14 @@ class RegistryImageBuildAuthConfig {
 
   factory RegistryImageBuildAuthConfig.fromMap(Map<String, dynamic> map) {
     return RegistryImageBuildAuthConfig(
-      auth: map['auth'] == null ? null : (map['auth'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
+      auth: map['auth'] == null ? null : (map['auth']! as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
       hostName: (map['hostName'] as String).input(),
-      identityToken: map['identityToken'] == null ? null : (map['identityToken'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      registryToken: map['registryToken'] == null ? null : (map['registryToken'] as String).input(),
-      serverAddress: map['serverAddress'] == null ? null : (map['serverAddress'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      identityToken: map['identityToken'] == null ? null : (map['identityToken']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      registryToken: map['registryToken'] == null ? null : (map['registryToken']! as String).input(),
+      serverAddress: map['serverAddress'] == null ? null : (map['serverAddress']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

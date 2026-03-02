@@ -21,7 +21,7 @@ class AppVersionSnapshotAppLoggingSettingConversationLoggingSetting {
 
   factory AppVersionSnapshotAppLoggingSettingConversationLoggingSetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppLoggingSettingConversationLoggingSetting(
-      disableConversationLogging: map['disableConversationLogging'] == null ? null : (map['disableConversationLogging'] as bool).input(),
+      disableConversationLogging: map['disableConversationLogging'] == null ? null : (map['disableConversationLogging']! as bool).input(),
     );
   }
 }

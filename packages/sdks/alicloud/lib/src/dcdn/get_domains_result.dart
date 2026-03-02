@@ -79,20 +79,20 @@ class GetDomainsResult {
 
   factory GetDomainsResult.fromMap(Map<String, dynamic> map) {
     return GetDomainsResult(
-      changeEndTime: map['changeEndTime'] == null ? null : map['changeEndTime'] as String,
-      changeStartTime: map['changeStartTime'] == null ? null : map['changeStartTime'] as String,
-      checkDomainShow: map['checkDomainShow'] == null ? null : map['checkDomainShow'] as bool,
-      domainSearchType: map['domainSearchType'] == null ? null : map['domainSearchType'] as String,
+      changeEndTime: map['changeEndTime'] == null ? null : map['changeEndTime']! as String,
+      changeStartTime: map['changeStartTime'] == null ? null : map['changeStartTime']! as String,
+      checkDomainShow: map['checkDomainShow'] == null ? null : map['checkDomainShow']! as bool,
+      domainSearchType: map['domainSearchType'] == null ? null : map['domainSearchType']! as String,
       domains: pulumi.Input.decodeList<GetDomainsDomain>(map['domains'], (value) => GetDomainsDomain.fromMap((value as Map).cast<String, dynamic>())),
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      securityToken: map['securityToken'] == null ? null : map['securityToken'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      securityToken: map['securityToken'] == null ? null : map['securityToken']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

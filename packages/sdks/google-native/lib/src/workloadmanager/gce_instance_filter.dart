@@ -21,7 +21,7 @@ class GceInstanceFilter {
 
   factory GceInstanceFilter.fromMap(Map<String, dynamic> map) {
     return GceInstanceFilter(
-      serviceAccounts: map['serviceAccounts'] == null ? null : ((map['serviceAccounts'] as List).cast<String>()).input(),
+      serviceAccounts: map['serviceAccounts'] == null ? null : ((map['serviceAccounts']! as List).cast<String>()).input(),
     );
   }
 }

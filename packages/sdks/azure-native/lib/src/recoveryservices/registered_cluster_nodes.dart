@@ -36,10 +36,10 @@ class RegisteredClusterNodes {
 
   factory RegisteredClusterNodes.fromMap(Map<String, dynamic> map) {
     return RegisteredClusterNodes(
-      biosId: map['biosId'] == null ? null : (map['biosId'] as String).input(),
-      clusterNodeFqdn: map['clusterNodeFqdn'] == null ? null : (map['clusterNodeFqdn'] as String).input(),
-      isSharedDiskVirtualNode: map['isSharedDiskVirtualNode'] == null ? null : (map['isSharedDiskVirtualNode'] as bool).input(),
-      machineId: map['machineId'] == null ? null : (map['machineId'] as String).input(),
+      biosId: map['biosId'] == null ? null : (map['biosId']! as String).input(),
+      clusterNodeFqdn: map['clusterNodeFqdn'] == null ? null : (map['clusterNodeFqdn']! as String).input(),
+      isSharedDiskVirtualNode: map['isSharedDiskVirtualNode'] == null ? null : (map['isSharedDiskVirtualNode']! as bool).input(),
+      machineId: map['machineId'] == null ? null : (map['machineId']! as String).input(),
     );
   }
 }

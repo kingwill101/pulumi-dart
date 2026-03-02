@@ -86,13 +86,13 @@ class DeviceSubRequestPatchResourceK8sIoV1beta2 {
 
   factory DeviceSubRequestPatchResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return DeviceSubRequestPatchResourceK8sIoV1beta2(
-      allocationMode: map['allocationMode'] == null ? null : (map['allocationMode'] as String).input(),
-      capacity: map['capacity'] == null ? null : (CapacityRequirementsPatchResourceK8sIoV1beta2.fromMap((map['capacity'] as Map).cast<String, dynamic>())).input(),
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      deviceClassName: map['deviceClassName'] == null ? null : (map['deviceClassName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<DeviceSelectorPatchResourceK8sIoV1beta2>(map['selectors'], (value) => DeviceSelectorPatchResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tolerations: map['tolerations'] == null ? null : (pulumi.Input.decodeList<DeviceTolerationPatchResourceK8sIoV1beta2>(map['tolerations'], (value) => DeviceTolerationPatchResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allocationMode: map['allocationMode'] == null ? null : (map['allocationMode']! as String).input(),
+      capacity: map['capacity'] == null ? null : (CapacityRequirementsPatchResourceK8sIoV1beta2.fromMap((map['capacity']! as Map).cast<String, dynamic>())).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      deviceClassName: map['deviceClassName'] == null ? null : (map['deviceClassName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<DeviceSelectorPatchResourceK8sIoV1beta2>(map['selectors']!, (value) => DeviceSelectorPatchResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tolerations: map['tolerations'] == null ? null : (pulumi.Input.decodeList<DeviceTolerationPatchResourceK8sIoV1beta2>(map['tolerations']!, (value) => DeviceTolerationPatchResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

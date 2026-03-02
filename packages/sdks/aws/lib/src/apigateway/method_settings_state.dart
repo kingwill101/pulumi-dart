@@ -42,11 +42,11 @@ class MethodSettingsState {
 
   factory MethodSettingsState.fromMap(Map<String, dynamic> map) {
     return MethodSettingsState(
-      methodPath: map['methodPath'] == null ? null : (map['methodPath'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      restApi: map['restApi'] == null ? null : (map['restApi'] as String).input(),
-      settings: map['settings'] == null ? null : (MethodSettingsSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
-      stageName: map['stageName'] == null ? null : (map['stageName'] as String).input(),
+      methodPath: map['methodPath'] == null ? null : ((map['methodPath'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      restApi: map['restApi'] == null ? null : ((map['restApi'] as String).input()).input(),
+      settings: map['settings'] == null ? null : ((MethodSettingsSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input()).input(),
+      stageName: map['stageName'] == null ? null : ((map['stageName'] as String).input()).input(),
     );
   }
 }

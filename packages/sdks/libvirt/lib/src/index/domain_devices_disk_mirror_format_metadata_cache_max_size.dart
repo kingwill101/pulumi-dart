@@ -25,7 +25,7 @@ class DomainDevicesDiskMirrorFormatMetadataCacheMaxSize {
 
   factory DomainDevicesDiskMirrorFormatMetadataCacheMaxSize.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorFormatMetadataCacheMaxSize(
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      unit: map['unit'] == null ? null : (map['unit']! as String).input(),
       value: (map['value'] as double).input(),
     );
   }

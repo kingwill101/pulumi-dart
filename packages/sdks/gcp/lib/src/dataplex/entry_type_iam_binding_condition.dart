@@ -27,7 +27,7 @@ class EntryTypeIamBindingCondition {
 
   factory EntryTypeIamBindingCondition.fromMap(Map<String, dynamic> map) {
     return EntryTypeIamBindingCondition(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       expression: (map['expression'] as String).input(),
       title: (map['title'] as String).input(),
     );

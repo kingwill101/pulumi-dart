@@ -20,7 +20,7 @@ class FirewallPolicyFirewallPolicyPolicyVariables {
 
   factory FirewallPolicyFirewallPolicyPolicyVariables.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyFirewallPolicyPolicyVariables(
-      ruleVariables: map['ruleVariables'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyFirewallPolicyPolicyVariablesRuleVariable>(map['ruleVariables'], (value) => FirewallPolicyFirewallPolicyPolicyVariablesRuleVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleVariables: map['ruleVariables'] == null ? null : ((pulumi.Input.decodeList<FirewallPolicyFirewallPolicyPolicyVariablesRuleVariable>(map['ruleVariables']!, (value) => FirewallPolicyFirewallPolicyPolicyVariablesRuleVariable.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class IdcApplicationServiceIntegrationLakeFormation {
 
   factory IdcApplicationServiceIntegrationLakeFormation.fromMap(Map<String, dynamic> map) {
     return IdcApplicationServiceIntegrationLakeFormation(
-      lakeFormationQuery: map['lakeFormationQuery'] == null ? null : (IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery.fromMap((map['lakeFormationQuery'] as Map).cast<String, dynamic>())).input(),
+      lakeFormationQuery: map['lakeFormationQuery'] == null ? null : ((IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery.fromMap((map['lakeFormationQuery']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

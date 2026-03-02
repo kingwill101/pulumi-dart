@@ -33,9 +33,9 @@ class GalleryDataDiskImage {
 
   factory GalleryDataDiskImage.fromMap(Map<String, dynamic> map) {
     return GalleryDataDiskImage(
-      hostCaching: map['hostCaching'] == null ? null : (HostCaching.fromValue(map['hostCaching'] as String)).input(),
+      hostCaching: map['hostCaching'] == null ? null : (HostCaching.fromValue(map['hostCaching']! as String)).input(),
       lun: (map['lun'] as int).input(),
-      source: map['source'] == null ? null : (GalleryDiskImageSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      source: map['source'] == null ? null : (GalleryDiskImageSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

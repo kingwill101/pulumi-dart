@@ -30,9 +30,9 @@ class EndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig {
 
   factory EndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig(
-      errorTopic: map['errorTopic'] == null ? null : (map['errorTopic'] as String).input(),
-      includeInferenceResponseIns: map['includeInferenceResponseIns'] == null ? null : ((map['includeInferenceResponseIns'] as List).cast<String>()).input(),
-      successTopic: map['successTopic'] == null ? null : (map['successTopic'] as String).input(),
+      errorTopic: map['errorTopic'] == null ? null : ((map['errorTopic'] as String).input()).input(),
+      includeInferenceResponseIns: map['includeInferenceResponseIns'] == null ? null : (((map['includeInferenceResponseIns'] as List).cast<String>()).input()).input(),
+      successTopic: map['successTopic'] == null ? null : ((map['successTopic'] as String).input()).input(),
     );
   }
 }

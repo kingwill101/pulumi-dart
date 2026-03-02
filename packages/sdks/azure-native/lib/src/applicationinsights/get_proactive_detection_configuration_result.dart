@@ -48,8 +48,8 @@ class GetProactiveDetectionConfigurationResult {
     return GetProactiveDetectionConfigurationResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
       properties: ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

@@ -32,9 +32,9 @@ class LocationContaineranalysisV1alpha1 {
 
   factory LocationContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return LocationContaineranalysisV1alpha1(
-      cpeUri: map['cpeUri'] == null ? null : (map['cpeUri'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      version: map['version'] == null ? null : (VersionContaineranalysisV1alpha1.fromMap((map['version'] as Map).cast<String, dynamic>())).input(),
+      cpeUri: map['cpeUri'] == null ? null : (map['cpeUri']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      version: map['version'] == null ? null : (VersionContaineranalysisV1alpha1.fromMap((map['version']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class MeshCertificatesContainerV1beta1 {
 
   factory MeshCertificatesContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return MeshCertificatesContainerV1beta1(
-      enableCertificates: map['enableCertificates'] == null ? null : (map['enableCertificates'] as bool).input(),
+      enableCertificates: map['enableCertificates'] == null ? null : (map['enableCertificates']! as bool).input(),
     );
   }
 }

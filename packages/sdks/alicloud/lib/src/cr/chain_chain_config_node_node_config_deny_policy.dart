@@ -35,10 +35,10 @@ class ChainChainConfigNodeNodeConfigDenyPolicy {
 
   factory ChainChainConfigNodeNodeConfigDenyPolicy.fromMap(Map<String, dynamic> map) {
     return ChainChainConfigNodeNodeConfigDenyPolicy(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      issueCount: map['issueCount'] == null ? null : (map['issueCount'] as String).input(),
-      issueLevel: map['issueLevel'] == null ? null : (map['issueLevel'] as String).input(),
-      logic: map['logic'] == null ? null : (map['logic'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      issueCount: map['issueCount'] == null ? null : (map['issueCount']! as String).input(),
+      issueLevel: map['issueLevel'] == null ? null : (map['issueLevel']! as String).input(),
+      logic: map['logic'] == null ? null : (map['logic']! as String).input(),
     );
   }
 }

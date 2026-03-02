@@ -42,11 +42,11 @@ class CommitmentPeriodResponse {
 
   factory CommitmentPeriodResponse.fromMap(Map<String, dynamic> map) {
     return CommitmentPeriodResponse(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
       endDate: (map['endDate'] as String).input(),
       quota: (CommitmentQuotaResponse.fromMap((map['quota'] as Map).cast<String, dynamic>())).input(),
       startDate: (map['startDate'] as String).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

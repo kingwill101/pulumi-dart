@@ -47,7 +47,7 @@ class TopicRuleErrorActionCloudwatchMetric {
     return TopicRuleErrorActionCloudwatchMetric(
       metricName: (map['metricName'] as String).input(),
       metricNamespace: (map['metricNamespace'] as String).input(),
-      metricTimestamp: map['metricTimestamp'] == null ? null : (map['metricTimestamp'] as String).input(),
+      metricTimestamp: map['metricTimestamp'] == null ? null : ((map['metricTimestamp'] as String).input()).input(),
       metricUnit: (map['metricUnit'] as String).input(),
       metricValue: (map['metricValue'] as String).input(),
       roleArn: (map['roleArn'] as String).input(),

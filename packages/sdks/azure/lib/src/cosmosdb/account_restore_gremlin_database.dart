@@ -25,7 +25,7 @@ class AccountRestoreGremlinDatabase {
 
   factory AccountRestoreGremlinDatabase.fromMap(Map<String, dynamic> map) {
     return AccountRestoreGremlinDatabase(
-      graphNames: map['graphNames'] == null ? null : ((map['graphNames'] as List).cast<String>()).input(),
+      graphNames: map['graphNames'] == null ? null : ((map['graphNames']! as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
     );
   }

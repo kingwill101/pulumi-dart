@@ -45,10 +45,10 @@ class UebaArgs {
 
   factory UebaArgs.fromMap(Map<String, dynamic> map) {
     return UebaArgs(
-      dataSources: map['dataSources'] == null ? null : ((map['dataSources'] as List).cast<String>()).input(),
+      dataSources: map['dataSources'] == null ? null : ((map['dataSources']! as List).cast<String>()).input(),
       kind: (map['kind'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      settingsName: map['settingsName'] == null ? null : (map['settingsName'] as String).input(),
+      settingsName: map['settingsName'] == null ? null : (map['settingsName']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

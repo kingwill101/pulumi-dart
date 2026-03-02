@@ -31,8 +31,8 @@ class LoadBalancerHealthCheckLogs {
   factory LoadBalancerHealthCheckLogs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerHealthCheckLogs(
       bucket: (map['bucket'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class BudgetFilterExpressionNotOr {
 
   factory BudgetFilterExpressionNotOr.fromMap(Map<String, dynamic> map) {
     return BudgetFilterExpressionNotOr(
-      costCategories: map['costCategories'] == null ? null : (BudgetFilterExpressionNotOrCostCategories.fromMap((map['costCategories'] as Map).cast<String, dynamic>())).input(),
-      dimensions: map['dimensions'] == null ? null : (BudgetFilterExpressionNotOrDimensions.fromMap((map['dimensions'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : (BudgetFilterExpressionNotOrTags.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
+      costCategories: map['costCategories'] == null ? null : ((BudgetFilterExpressionNotOrCostCategories.fromMap((map['costCategories']! as Map).cast<String, dynamic>())).input()).input(),
+      dimensions: map['dimensions'] == null ? null : ((BudgetFilterExpressionNotOrDimensions.fromMap((map['dimensions']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : ((BudgetFilterExpressionNotOrTags.fromMap((map['tags']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

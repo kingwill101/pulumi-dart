@@ -30,7 +30,7 @@ class AnalyticsApplicationCloudwatchLoggingOptions {
 
   factory AnalyticsApplicationCloudwatchLoggingOptions.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationCloudwatchLoggingOptions(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
       logStreamArn: (map['logStreamArn'] as String).input(),
       roleArn: (map['roleArn'] as String).input(),
     );

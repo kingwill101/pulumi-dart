@@ -35,9 +35,9 @@ class UserPhoneConfig {
 
   factory UserPhoneConfig.fromMap(Map<String, dynamic> map) {
     return UserPhoneConfig(
-      afterContactWorkTimeLimit: map['afterContactWorkTimeLimit'] == null ? null : (map['afterContactWorkTimeLimit'] as int).input(),
-      autoAccept: map['autoAccept'] == null ? null : (map['autoAccept'] as bool).input(),
-      deskPhoneNumber: map['deskPhoneNumber'] == null ? null : (map['deskPhoneNumber'] as String).input(),
+      afterContactWorkTimeLimit: map['afterContactWorkTimeLimit'] == null ? null : ((map['afterContactWorkTimeLimit'] as int).input()).input(),
+      autoAccept: map['autoAccept'] == null ? null : ((map['autoAccept'] as bool).input()).input(),
+      deskPhoneNumber: map['deskPhoneNumber'] == null ? null : ((map['deskPhoneNumber'] as String).input()).input(),
       phoneType: (map['phoneType'] as String).input(),
     );
   }

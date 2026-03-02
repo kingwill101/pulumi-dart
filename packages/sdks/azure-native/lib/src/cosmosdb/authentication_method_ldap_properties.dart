@@ -56,14 +56,14 @@ class AuthenticationMethodLdapProperties {
 
   factory AuthenticationMethodLdapProperties.fromMap(Map<String, dynamic> map) {
     return AuthenticationMethodLdapProperties(
-      connectionTimeoutInMs: map['connectionTimeoutInMs'] == null ? null : (map['connectionTimeoutInMs'] as int).input(),
-      searchBaseDistinguishedName: map['searchBaseDistinguishedName'] == null ? null : (map['searchBaseDistinguishedName'] as String).input(),
-      searchFilterTemplate: map['searchFilterTemplate'] == null ? null : (map['searchFilterTemplate'] as String).input(),
-      serverCertificates: map['serverCertificates'] == null ? null : (pulumi.Input.decodeList<Certificate>(map['serverCertificates'], (value) => Certificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serverHostname: map['serverHostname'] == null ? null : (map['serverHostname'] as String).input(),
-      serverPort: map['serverPort'] == null ? null : (map['serverPort'] as int).input(),
-      serviceUserDistinguishedName: map['serviceUserDistinguishedName'] == null ? null : (map['serviceUserDistinguishedName'] as String).input(),
-      serviceUserPassword: map['serviceUserPassword'] == null ? null : (map['serviceUserPassword'] as String).input(),
+      connectionTimeoutInMs: map['connectionTimeoutInMs'] == null ? null : (map['connectionTimeoutInMs']! as int).input(),
+      searchBaseDistinguishedName: map['searchBaseDistinguishedName'] == null ? null : (map['searchBaseDistinguishedName']! as String).input(),
+      searchFilterTemplate: map['searchFilterTemplate'] == null ? null : (map['searchFilterTemplate']! as String).input(),
+      serverCertificates: map['serverCertificates'] == null ? null : (pulumi.Input.decodeList<Certificate>(map['serverCertificates']!, (value) => Certificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serverHostname: map['serverHostname'] == null ? null : (map['serverHostname']! as String).input(),
+      serverPort: map['serverPort'] == null ? null : (map['serverPort']! as int).input(),
+      serviceUserDistinguishedName: map['serviceUserDistinguishedName'] == null ? null : (map['serviceUserDistinguishedName']! as String).input(),
+      serviceUserPassword: map['serviceUserPassword'] == null ? null : (map['serviceUserPassword']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class NfsLocationMountOptions {
 
   factory NfsLocationMountOptions.fromMap(Map<String, dynamic> map) {
     return NfsLocationMountOptions(
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

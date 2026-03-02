@@ -39,9 +39,9 @@ class VpcArgs {
 
   factory VpcArgs.fromMap(Map<String, dynamic> map) {
     return VpcArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipRange: map['ipRange'] == null ? null : (map['ipRange'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ipRange: map['ipRange'] == null ? null : (map['ipRange']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       region: (map['region'] as String).input(),
     );
   }

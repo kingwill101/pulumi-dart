@@ -113,19 +113,19 @@ class IntentArgs {
 
   factory IntentArgs.fromMap(Map<String, dynamic> map) {
     return IntentArgs(
-      conclusionStatement: map['conclusionStatement'] == null ? null : (IntentConclusionStatement.fromMap((map['conclusionStatement'] as Map).cast<String, dynamic>())).input(),
-      confirmationPrompt: map['confirmationPrompt'] == null ? null : (IntentConfirmationPrompt.fromMap((map['confirmationPrompt'] as Map).cast<String, dynamic>())).input(),
-      createVersion: map['createVersion'] == null ? null : (map['createVersion'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dialogCodeHook: map['dialogCodeHook'] == null ? null : (IntentDialogCodeHook.fromMap((map['dialogCodeHook'] as Map).cast<String, dynamic>())).input(),
-      followUpPrompt: map['followUpPrompt'] == null ? null : (IntentFollowUpPrompt.fromMap((map['followUpPrompt'] as Map).cast<String, dynamic>())).input(),
-      fulfillmentActivity: (IntentFulfillmentActivity.fromMap((map['fulfillmentActivity'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentIntentSignature: map['parentIntentSignature'] == null ? null : (map['parentIntentSignature'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rejectionStatement: map['rejectionStatement'] == null ? null : (IntentRejectionStatement.fromMap((map['rejectionStatement'] as Map).cast<String, dynamic>())).input(),
-      sampleUtterances: map['sampleUtterances'] == null ? null : ((map['sampleUtterances'] as List).cast<String>()).input(),
-      slots: map['slots'] == null ? null : (pulumi.Input.decodeList<IntentSlot>(map['slots'], (value) => IntentSlot.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conclusionStatement: map['conclusionStatement'] == null ? null : ((IntentConclusionStatement.fromMap((map['conclusionStatement']! as Map).cast<String, dynamic>())).input()).input(),
+      confirmationPrompt: map['confirmationPrompt'] == null ? null : ((IntentConfirmationPrompt.fromMap((map['confirmationPrompt']! as Map).cast<String, dynamic>())).input()).input(),
+      createVersion: map['createVersion'] == null ? null : ((map['createVersion'] as bool).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      dialogCodeHook: map['dialogCodeHook'] == null ? null : ((IntentDialogCodeHook.fromMap((map['dialogCodeHook']! as Map).cast<String, dynamic>())).input()).input(),
+      followUpPrompt: map['followUpPrompt'] == null ? null : ((IntentFollowUpPrompt.fromMap((map['followUpPrompt']! as Map).cast<String, dynamic>())).input()).input(),
+      fulfillmentActivity: (IntentFulfillmentActivity.fromMap((map['fulfillmentActivity']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      parentIntentSignature: map['parentIntentSignature'] == null ? null : ((map['parentIntentSignature'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      rejectionStatement: map['rejectionStatement'] == null ? null : ((IntentRejectionStatement.fromMap((map['rejectionStatement']! as Map).cast<String, dynamic>())).input()).input(),
+      sampleUtterances: map['sampleUtterances'] == null ? null : (((map['sampleUtterances'] as List).cast<String>()).input()).input(),
+      slots: map['slots'] == null ? null : ((pulumi.Input.decodeList<IntentSlot>(map['slots']!, (value) => IntentSlot.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

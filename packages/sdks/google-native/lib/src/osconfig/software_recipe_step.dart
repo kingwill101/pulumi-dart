@@ -58,13 +58,13 @@ class SoftwareRecipeStep {
 
   factory SoftwareRecipeStep.fromMap(Map<String, dynamic> map) {
     return SoftwareRecipeStep(
-      archiveExtraction: map['archiveExtraction'] == null ? null : (SoftwareRecipeStepExtractArchive.fromMap((map['archiveExtraction'] as Map).cast<String, dynamic>())).input(),
-      dpkgInstallation: map['dpkgInstallation'] == null ? null : (SoftwareRecipeStepInstallDpkg.fromMap((map['dpkgInstallation'] as Map).cast<String, dynamic>())).input(),
-      fileCopy: map['fileCopy'] == null ? null : (SoftwareRecipeStepCopyFile.fromMap((map['fileCopy'] as Map).cast<String, dynamic>())).input(),
-      fileExec: map['fileExec'] == null ? null : (SoftwareRecipeStepExecFile.fromMap((map['fileExec'] as Map).cast<String, dynamic>())).input(),
-      msiInstallation: map['msiInstallation'] == null ? null : (SoftwareRecipeStepInstallMsi.fromMap((map['msiInstallation'] as Map).cast<String, dynamic>())).input(),
-      rpmInstallation: map['rpmInstallation'] == null ? null : (SoftwareRecipeStepInstallRpm.fromMap((map['rpmInstallation'] as Map).cast<String, dynamic>())).input(),
-      scriptRun: map['scriptRun'] == null ? null : (SoftwareRecipeStepRunScript.fromMap((map['scriptRun'] as Map).cast<String, dynamic>())).input(),
+      archiveExtraction: map['archiveExtraction'] == null ? null : (SoftwareRecipeStepExtractArchive.fromMap((map['archiveExtraction']! as Map).cast<String, dynamic>())).input(),
+      dpkgInstallation: map['dpkgInstallation'] == null ? null : (SoftwareRecipeStepInstallDpkg.fromMap((map['dpkgInstallation']! as Map).cast<String, dynamic>())).input(),
+      fileCopy: map['fileCopy'] == null ? null : (SoftwareRecipeStepCopyFile.fromMap((map['fileCopy']! as Map).cast<String, dynamic>())).input(),
+      fileExec: map['fileExec'] == null ? null : (SoftwareRecipeStepExecFile.fromMap((map['fileExec']! as Map).cast<String, dynamic>())).input(),
+      msiInstallation: map['msiInstallation'] == null ? null : (SoftwareRecipeStepInstallMsi.fromMap((map['msiInstallation']! as Map).cast<String, dynamic>())).input(),
+      rpmInstallation: map['rpmInstallation'] == null ? null : (SoftwareRecipeStepInstallRpm.fromMap((map['rpmInstallation']! as Map).cast<String, dynamic>())).input(),
+      scriptRun: map['scriptRun'] == null ? null : (SoftwareRecipeStepRunScript.fromMap((map['scriptRun']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

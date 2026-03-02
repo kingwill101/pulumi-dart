@@ -40,11 +40,11 @@ class BuildxBuilderRemote {
 
   factory BuildxBuilderRemote.fromMap(Map<String, dynamic> map) {
     return BuildxBuilderRemote(
-      cacert: map['cacert'] == null ? null : (map['cacert'] as String).input(),
-      cert: map['cert'] == null ? null : (map['cert'] as String).input(),
-      defaultLoad: map['defaultLoad'] == null ? null : (map['defaultLoad'] as bool).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      servername: map['servername'] == null ? null : (map['servername'] as String).input(),
+      cacert: map['cacert'] == null ? null : (map['cacert']! as String).input(),
+      cert: map['cert'] == null ? null : (map['cert']! as String).input(),
+      defaultLoad: map['defaultLoad'] == null ? null : (map['defaultLoad']! as bool).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      servername: map['servername'] == null ? null : (map['servername']! as String).input(),
     );
   }
 }

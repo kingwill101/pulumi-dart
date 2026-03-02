@@ -63,15 +63,15 @@ class ScanRun {
 
   factory ScanRun.fromMap(Map<String, dynamic> map) {
     return ScanRun(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      executionState: map['executionState'] == null ? null : (ScanRunExecutionState.fromValue(map['executionState'] as String)).input(),
-      hasVulnerabilities: map['hasVulnerabilities'] == null ? null : (map['hasVulnerabilities'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      progressPercent: map['progressPercent'] == null ? null : (map['progressPercent'] as int).input(),
-      resultState: map['resultState'] == null ? null : (ScanRunResultState.fromValue(map['resultState'] as String)).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      urlsCrawledCount: map['urlsCrawledCount'] == null ? null : (map['urlsCrawledCount'] as String).input(),
-      urlsTestedCount: map['urlsTestedCount'] == null ? null : (map['urlsTestedCount'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      executionState: map['executionState'] == null ? null : (ScanRunExecutionState.fromValue(map['executionState']! as String)).input(),
+      hasVulnerabilities: map['hasVulnerabilities'] == null ? null : (map['hasVulnerabilities']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      progressPercent: map['progressPercent'] == null ? null : (map['progressPercent']! as int).input(),
+      resultState: map['resultState'] == null ? null : (ScanRunResultState.fromValue(map['resultState']! as String)).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      urlsCrawledCount: map['urlsCrawledCount'] == null ? null : (map['urlsCrawledCount']! as String).input(),
+      urlsTestedCount: map['urlsTestedCount'] == null ? null : (map['urlsTestedCount']! as String).input(),
     );
   }
 }

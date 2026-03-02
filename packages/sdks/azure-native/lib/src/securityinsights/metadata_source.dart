@@ -32,8 +32,8 @@ class MetadataSource {
   factory MetadataSource.fromMap(Map<String, dynamic> map) {
     return MetadataSource(
       kind: (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sourceId: map['sourceId'] == null ? null : (map['sourceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sourceId: map['sourceId'] == null ? null : (map['sourceId']! as String).input(),
     );
   }
 }

@@ -37,9 +37,9 @@ class GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime {
   factory GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime(
       imageVersion: (map['imageVersion'] as String).input(),
-      javaLibraries: map['javaLibraries'] == null ? null : ((map['javaLibraries'] as List).cast<String>()).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      pythonPackages: map['pythonPackages'] == null ? null : ((map['pythonPackages'] as List).cast<String>()).input(),
+      javaLibraries: map['javaLibraries'] == null ? null : ((map['javaLibraries']! as List).cast<String>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      pythonPackages: map['pythonPackages'] == null ? null : ((map['pythonPackages']! as List).cast<String>()).input(),
     );
   }
 }

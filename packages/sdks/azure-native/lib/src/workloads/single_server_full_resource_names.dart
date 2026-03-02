@@ -29,7 +29,7 @@ class SingleServerFullResourceNames {
   factory SingleServerFullResourceNames.fromMap(Map<String, dynamic> map) {
     return SingleServerFullResourceNames(
       namingPatternType: (map['namingPatternType'] as String).input(),
-      virtualMachine: map['virtualMachine'] == null ? null : (VirtualMachineResourceNames.fromMap((map['virtualMachine'] as Map).cast<String, dynamic>())).input(),
+      virtualMachine: map['virtualMachine'] == null ? null : (VirtualMachineResourceNames.fromMap((map['virtualMachine']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

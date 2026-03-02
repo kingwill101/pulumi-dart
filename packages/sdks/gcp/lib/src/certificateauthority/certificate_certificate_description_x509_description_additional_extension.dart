@@ -33,9 +33,9 @@ class CertificateCertificateDescriptionX509DescriptionAdditionalExtension {
 
   factory CertificateCertificateDescriptionX509DescriptionAdditionalExtension.fromMap(Map<String, dynamic> map) {
     return CertificateCertificateDescriptionX509DescriptionAdditionalExtension(
-      critical: map['critical'] == null ? null : (map['critical'] as bool).input(),
-      objectIds: map['objectIds'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId>(map['objectIds'], (value) => CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      critical: map['critical'] == null ? null : (map['critical']! as bool).input(),
+      objectIds: map['objectIds'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId>(map['objectIds']!, (value) => CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

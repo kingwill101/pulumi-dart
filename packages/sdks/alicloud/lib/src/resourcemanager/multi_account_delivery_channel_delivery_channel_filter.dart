@@ -28,7 +28,7 @@ class MultiAccountDeliveryChannelDeliveryChannelFilter {
   factory MultiAccountDeliveryChannelDeliveryChannelFilter.fromMap(Map<String, dynamic> map) {
     return MultiAccountDeliveryChannelDeliveryChannelFilter(
       accountScopes: ((map['accountScopes'] as List).cast<String>()).input(),
-      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes']! as List).cast<String>()).input(),
     );
   }
 }

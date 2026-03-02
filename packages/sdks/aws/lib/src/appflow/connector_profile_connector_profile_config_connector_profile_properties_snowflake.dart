@@ -48,11 +48,11 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake 
 
   factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      accountName: map['accountName'] == null ? null : ((map['accountName'] as String).input()).input(),
       bucketName: (map['bucketName'] as String).input(),
-      bucketPrefix: map['bucketPrefix'] == null ? null : (map['bucketPrefix'] as String).input(),
-      privateLinkServiceName: map['privateLinkServiceName'] == null ? null : (map['privateLinkServiceName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      bucketPrefix: map['bucketPrefix'] == null ? null : ((map['bucketPrefix'] as String).input()).input(),
+      privateLinkServiceName: map['privateLinkServiceName'] == null ? null : ((map['privateLinkServiceName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       stage: (map['stage'] as String).input(),
       warehouse: (map['warehouse'] as String).input(),
     );

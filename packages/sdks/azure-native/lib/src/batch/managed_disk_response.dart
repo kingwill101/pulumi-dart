@@ -26,8 +26,8 @@ class ManagedDiskResponse {
 
   factory ManagedDiskResponse.fromMap(Map<String, dynamic> map) {
     return ManagedDiskResponse(
-      securityProfile: map['securityProfile'] == null ? null : (VMDiskSecurityProfileResponse.fromMap((map['securityProfile'] as Map).cast<String, dynamic>())).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
+      securityProfile: map['securityProfile'] == null ? null : (VMDiskSecurityProfileResponse.fromMap((map['securityProfile']! as Map).cast<String, dynamic>())).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType']! as String).input(),
     );
   }
 }

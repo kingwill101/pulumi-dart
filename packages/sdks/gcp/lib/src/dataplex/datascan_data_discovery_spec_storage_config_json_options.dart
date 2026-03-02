@@ -25,8 +25,8 @@ class DatascanDataDiscoverySpecStorageConfigJsonOptions {
 
   factory DatascanDataDiscoverySpecStorageConfigJsonOptions.fromMap(Map<String, dynamic> map) {
     return DatascanDataDiscoverySpecStorageConfigJsonOptions(
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
-      typeInferenceDisabled: map['typeInferenceDisabled'] == null ? null : (map['typeInferenceDisabled'] as bool).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
+      typeInferenceDisabled: map['typeInferenceDisabled'] == null ? null : (map['typeInferenceDisabled']! as bool).input(),
     );
   }
 }

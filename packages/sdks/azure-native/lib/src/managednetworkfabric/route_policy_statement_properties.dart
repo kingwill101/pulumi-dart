@@ -39,7 +39,7 @@ class RoutePolicyStatementProperties {
   factory RoutePolicyStatementProperties.fromMap(Map<String, dynamic> map) {
     return RoutePolicyStatementProperties(
       action: (StatementActionProperties.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
       condition: (StatementConditionProperties.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
       sequenceNumber: (map['sequenceNumber'] as double).input(),
     );

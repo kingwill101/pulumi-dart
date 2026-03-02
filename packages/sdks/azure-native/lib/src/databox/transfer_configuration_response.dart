@@ -33,9 +33,9 @@ class TransferConfigurationResponse {
 
   factory TransferConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return TransferConfigurationResponse(
-      transferAllDetails: map['transferAllDetails'] == null ? null : (TransferConfigurationResponseTransferAllDetails.fromMap((map['transferAllDetails'] as Map).cast<String, dynamic>())).input(),
+      transferAllDetails: map['transferAllDetails'] == null ? null : (TransferConfigurationResponseTransferAllDetails.fromMap((map['transferAllDetails']! as Map).cast<String, dynamic>())).input(),
       transferConfigurationType: (map['transferConfigurationType'] as String).input(),
-      transferFilterDetails: map['transferFilterDetails'] == null ? null : (TransferConfigurationResponseTransferFilterDetails.fromMap((map['transferFilterDetails'] as Map).cast<String, dynamic>())).input(),
+      transferFilterDetails: map['transferFilterDetails'] == null ? null : (TransferConfigurationResponseTransferFilterDetails.fromMap((map['transferFilterDetails']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

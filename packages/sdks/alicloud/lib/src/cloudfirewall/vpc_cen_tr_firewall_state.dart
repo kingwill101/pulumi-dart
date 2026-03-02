@@ -100,22 +100,22 @@ class VpcCenTrFirewallState {
 
   factory VpcCenTrFirewallState.fromMap(Map<String, dynamic> map) {
     return VpcCenTrFirewallState(
-      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
-      firewallDescription: map['firewallDescription'] == null ? null : (map['firewallDescription'] as String).input(),
-      firewallEniId: map['firewallEniId'] == null ? null : (map['firewallEniId'] as String).input(),
-      firewallEniVpcId: map['firewallEniVpcId'] == null ? null : (map['firewallEniVpcId'] as String).input(),
-      firewallName: map['firewallName'] == null ? null : (map['firewallName'] as String).input(),
-      firewallSubnetCidr: map['firewallSubnetCidr'] == null ? null : (map['firewallSubnetCidr'] as String).input(),
-      firewallVpcAttachmentId: map['firewallVpcAttachmentId'] == null ? null : (map['firewallVpcAttachmentId'] as String).input(),
-      firewallVpcCidr: map['firewallVpcCidr'] == null ? null : (map['firewallVpcCidr'] as String).input(),
-      regionNo: map['regionNo'] == null ? null : (map['regionNo'] as String).input(),
-      routeMode: map['routeMode'] == null ? null : (map['routeMode'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      trAttachmentMasterCidr: map['trAttachmentMasterCidr'] == null ? null : (map['trAttachmentMasterCidr'] as String).input(),
-      trAttachmentMasterZone: map['trAttachmentMasterZone'] == null ? null : (map['trAttachmentMasterZone'] as String).input(),
-      trAttachmentSlaveCidr: map['trAttachmentSlaveCidr'] == null ? null : (map['trAttachmentSlaveCidr'] as String).input(),
-      trAttachmentSlaveZone: map['trAttachmentSlaveZone'] == null ? null : (map['trAttachmentSlaveZone'] as String).input(),
-      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
+      firewallDescription: map['firewallDescription'] == null ? null : (map['firewallDescription']! as String).input(),
+      firewallEniId: map['firewallEniId'] == null ? null : (map['firewallEniId']! as String).input(),
+      firewallEniVpcId: map['firewallEniVpcId'] == null ? null : (map['firewallEniVpcId']! as String).input(),
+      firewallName: map['firewallName'] == null ? null : (map['firewallName']! as String).input(),
+      firewallSubnetCidr: map['firewallSubnetCidr'] == null ? null : (map['firewallSubnetCidr']! as String).input(),
+      firewallVpcAttachmentId: map['firewallVpcAttachmentId'] == null ? null : (map['firewallVpcAttachmentId']! as String).input(),
+      firewallVpcCidr: map['firewallVpcCidr'] == null ? null : (map['firewallVpcCidr']! as String).input(),
+      regionNo: map['regionNo'] == null ? null : (map['regionNo']! as String).input(),
+      routeMode: map['routeMode'] == null ? null : (map['routeMode']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      trAttachmentMasterCidr: map['trAttachmentMasterCidr'] == null ? null : (map['trAttachmentMasterCidr']! as String).input(),
+      trAttachmentMasterZone: map['trAttachmentMasterZone'] == null ? null : (map['trAttachmentMasterZone']! as String).input(),
+      trAttachmentSlaveCidr: map['trAttachmentSlaveCidr'] == null ? null : (map['trAttachmentSlaveCidr']! as String).input(),
+      trAttachmentSlaveZone: map['trAttachmentSlaveZone'] == null ? null : (map['trAttachmentSlaveZone']! as String).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId']! as String).input(),
     );
   }
 }

@@ -42,11 +42,11 @@ class DashboardState {
 
   factory DashboardState.fromMap(Map<String, dynamic> map) {
     return DashboardState(
-      attribute: map['attribute'] == null ? null : (map['attribute'] as String).input(),
-      charList: map['charList'] == null ? null : (map['charList'] as String).input(),
-      dashboardName: map['dashboardName'] == null ? null : (map['dashboardName'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
+      attribute: map['attribute'] == null ? null : (map['attribute']! as String).input(),
+      charList: map['charList'] == null ? null : (map['charList']! as String).input(),
+      dashboardName: map['dashboardName'] == null ? null : (map['dashboardName']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class AggregationRule {
 
   factory AggregationRule.fromMap(Map<String, dynamic> map) {
     return AggregationRule(
-      clusterRoleSelectors: map['clusterRoleSelectors'] == null ? null : (pulumi.Input.decodeList<LabelSelector>(map['clusterRoleSelectors'], (value) => LabelSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clusterRoleSelectors: map['clusterRoleSelectors'] == null ? null : (pulumi.Input.decodeList<LabelSelector>(map['clusterRoleSelectors']!, (value) => LabelSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

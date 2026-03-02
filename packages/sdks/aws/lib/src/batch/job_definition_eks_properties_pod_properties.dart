@@ -65,15 +65,15 @@ class JobDefinitionEksPropertiesPodProperties {
 
   factory JobDefinitionEksPropertiesPodProperties.fromMap(Map<String, dynamic> map) {
     return JobDefinitionEksPropertiesPodProperties(
-      containers: (pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesContainer>(map['containers'], (value) => JobDefinitionEksPropertiesPodPropertiesContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dnsPolicy: map['dnsPolicy'] == null ? null : (map['dnsPolicy'] as String).input(),
-      hostNetwork: map['hostNetwork'] == null ? null : (map['hostNetwork'] as bool).input(),
-      imagePullSecrets: map['imagePullSecrets'] == null ? null : (pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesImagePullSecret>(map['imagePullSecrets'], (value) => JobDefinitionEksPropertiesPodPropertiesImagePullSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      initContainers: map['initContainers'] == null ? null : (pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesInitContainer>(map['initContainers'], (value) => JobDefinitionEksPropertiesPodPropertiesInitContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metadata: map['metadata'] == null ? null : (JobDefinitionEksPropertiesPodPropertiesMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      serviceAccountName: map['serviceAccountName'] == null ? null : (map['serviceAccountName'] as String).input(),
-      shareProcessNamespace: map['shareProcessNamespace'] == null ? null : (map['shareProcessNamespace'] as bool).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesVolume>(map['volumes'], (value) => JobDefinitionEksPropertiesPodPropertiesVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containers: (pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesContainer>(map['containers']!, (value) => JobDefinitionEksPropertiesPodPropertiesContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsPolicy: map['dnsPolicy'] == null ? null : ((map['dnsPolicy'] as String).input()).input(),
+      hostNetwork: map['hostNetwork'] == null ? null : ((map['hostNetwork'] as bool).input()).input(),
+      imagePullSecrets: map['imagePullSecrets'] == null ? null : ((pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesImagePullSecret>(map['imagePullSecrets']!, (value) => JobDefinitionEksPropertiesPodPropertiesImagePullSecret.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      initContainers: map['initContainers'] == null ? null : ((pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesInitContainer>(map['initContainers']!, (value) => JobDefinitionEksPropertiesPodPropertiesInitContainer.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      metadata: map['metadata'] == null ? null : ((JobDefinitionEksPropertiesPodPropertiesMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input()).input(),
+      serviceAccountName: map['serviceAccountName'] == null ? null : ((map['serviceAccountName'] as String).input()).input(),
+      shareProcessNamespace: map['shareProcessNamespace'] == null ? null : ((map['shareProcessNamespace'] as bool).input()).input(),
+      volumes: map['volumes'] == null ? null : ((pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesVolume>(map['volumes']!, (value) => JobDefinitionEksPropertiesPodPropertiesVolume.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

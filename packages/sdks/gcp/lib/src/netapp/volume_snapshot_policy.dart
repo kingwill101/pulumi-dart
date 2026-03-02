@@ -49,11 +49,11 @@ class VolumeSnapshotPolicy {
 
   factory VolumeSnapshotPolicy.fromMap(Map<String, dynamic> map) {
     return VolumeSnapshotPolicy(
-      dailySchedule: map['dailySchedule'] == null ? null : (VolumeSnapshotPolicyDailySchedule.fromMap((map['dailySchedule'] as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      hourlySchedule: map['hourlySchedule'] == null ? null : (VolumeSnapshotPolicyHourlySchedule.fromMap((map['hourlySchedule'] as Map).cast<String, dynamic>())).input(),
-      monthlySchedule: map['monthlySchedule'] == null ? null : (VolumeSnapshotPolicyMonthlySchedule.fromMap((map['monthlySchedule'] as Map).cast<String, dynamic>())).input(),
-      weeklySchedule: map['weeklySchedule'] == null ? null : (VolumeSnapshotPolicyWeeklySchedule.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>())).input(),
+      dailySchedule: map['dailySchedule'] == null ? null : (VolumeSnapshotPolicyDailySchedule.fromMap((map['dailySchedule']! as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      hourlySchedule: map['hourlySchedule'] == null ? null : (VolumeSnapshotPolicyHourlySchedule.fromMap((map['hourlySchedule']! as Map).cast<String, dynamic>())).input(),
+      monthlySchedule: map['monthlySchedule'] == null ? null : (VolumeSnapshotPolicyMonthlySchedule.fromMap((map['monthlySchedule']! as Map).cast<String, dynamic>())).input(),
+      weeklySchedule: map['weeklySchedule'] == null ? null : (VolumeSnapshotPolicyWeeklySchedule.fromMap((map['weeklySchedule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig {
   factory GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig(
       enablePrivateServiceConnect: (map['enablePrivateServiceConnect'] as bool).input(),
-      projectAllowlist: map['projectAllowlist'] == null ? null : ((map['projectAllowlist'] as List).cast<String>()).input(),
+      projectAllowlist: map['projectAllowlist'] == null ? null : ((map['projectAllowlist']! as List).cast<String>()).input(),
     );
   }
 }

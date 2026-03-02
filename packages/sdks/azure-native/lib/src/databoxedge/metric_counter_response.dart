@@ -37,9 +37,9 @@ class MetricCounterResponse {
 
   factory MetricCounterResponse.fromMap(Map<String, dynamic> map) {
     return MetricCounterResponse(
-      additionalDimensions: map['additionalDimensions'] == null ? null : (pulumi.Input.decodeList<MetricDimensionResponse>(map['additionalDimensions'], (value) => MetricDimensionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dimensionFilter: map['dimensionFilter'] == null ? null : (pulumi.Input.decodeList<MetricDimensionResponse>(map['dimensionFilter'], (value) => MetricDimensionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      additionalDimensions: map['additionalDimensions'] == null ? null : (pulumi.Input.decodeList<MetricDimensionResponse>(map['additionalDimensions']!, (value) => MetricDimensionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dimensionFilter: map['dimensionFilter'] == null ? null : (pulumi.Input.decodeList<MetricDimensionResponse>(map['dimensionFilter']!, (value) => MetricDimensionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

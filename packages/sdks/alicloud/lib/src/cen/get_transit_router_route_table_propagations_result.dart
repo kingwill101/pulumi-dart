@@ -52,10 +52,10 @@ class GetTransitRouterRouteTablePropagationsResult {
     return GetTransitRouterRouteTablePropagationsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       propagations: pulumi.Input.decodeList<GetTransitRouterRouteTablePropagationsPropagation>(map['propagations'], (value) => GetTransitRouterRouteTablePropagationsPropagation.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : map['transitRouterAttachmentId'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : map['transitRouterAttachmentId']! as String,
       transitRouterRouteTableId: map['transitRouterRouteTableId'] as String,
     );
   }

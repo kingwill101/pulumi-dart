@@ -55,14 +55,14 @@ class OrganizationAccount {
 
   factory OrganizationAccount.fromMap(Map<String, dynamic> map) {
     return OrganizationAccount(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      joinedMethod: map['joinedMethod'] == null ? null : (map['joinedMethod'] as String).input(),
-      joinedTimestamp: map['joinedTimestamp'] == null ? null : (map['joinedTimestamp'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      email: map['email'] == null ? null : ((map['email'] as String).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      joinedMethod: map['joinedMethod'] == null ? null : ((map['joinedMethod'] as String).input()).input(),
+      joinedTimestamp: map['joinedTimestamp'] == null ? null : ((map['joinedTimestamp'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

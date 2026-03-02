@@ -23,7 +23,7 @@ class FoldersPolicyBindingTarget {
 
   factory FoldersPolicyBindingTarget.fromMap(Map<String, dynamic> map) {
     return FoldersPolicyBindingTarget(
-      principalSet: map['principalSet'] == null ? null : (map['principalSet'] as String).input(),
+      principalSet: map['principalSet'] == null ? null : (map['principalSet']! as String).input(),
     );
   }
 }

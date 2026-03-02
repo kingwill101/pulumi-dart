@@ -69,16 +69,16 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      casId: map['casId'] == null ? null : (map['casId'] as String).input(),
-      certId: map['certId'] == null ? null : (map['certId'] as String).input(),
-      certName: map['certName'] == null ? null : (map['certName'] as String).input(),
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      casId: map['casId'] == null ? null : (map['casId']! as String).input(),
+      certId: map['certId'] == null ? null : (map['certId']! as String).input(),
+      certName: map['certName'] == null ? null : (map['certName']! as String).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
       createdType: (map['createdType'] as String).input(),
-      domains: map['domains'] == null ? null : (map['domains'] as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      domains: map['domains'] == null ? null : (map['domains']! as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       siteId: (map['siteId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

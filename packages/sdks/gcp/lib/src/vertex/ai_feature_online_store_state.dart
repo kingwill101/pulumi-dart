@@ -110,22 +110,22 @@ class AiFeatureOnlineStoreState {
 
   factory AiFeatureOnlineStoreState.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreState(
-      bigtable: map['bigtable'] == null ? null : (AiFeatureOnlineStoreBigtable.fromMap((map['bigtable'] as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dedicatedServingEndpoint: map['dedicatedServingEndpoint'] == null ? null : (AiFeatureOnlineStoreDedicatedServingEndpoint.fromMap((map['dedicatedServingEndpoint'] as Map).cast<String, dynamic>())).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      embeddingManagement: map['embeddingManagement'] == null ? null : (AiFeatureOnlineStoreEmbeddingManagement.fromMap((map['embeddingManagement'] as Map).cast<String, dynamic>())).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (AiFeatureOnlineStoreEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      optimized: map['optimized'] == null ? null : ((map['optimized'] as Map).cast<String, dynamic>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      bigtable: map['bigtable'] == null ? null : (AiFeatureOnlineStoreBigtable.fromMap((map['bigtable']! as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dedicatedServingEndpoint: map['dedicatedServingEndpoint'] == null ? null : (AiFeatureOnlineStoreDedicatedServingEndpoint.fromMap((map['dedicatedServingEndpoint']! as Map).cast<String, dynamic>())).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      embeddingManagement: map['embeddingManagement'] == null ? null : (AiFeatureOnlineStoreEmbeddingManagement.fromMap((map['embeddingManagement']! as Map).cast<String, dynamic>())).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (AiFeatureOnlineStoreEncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      optimized: map['optimized'] == null ? null : ((map['optimized']! as Map).cast<String, dynamic>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

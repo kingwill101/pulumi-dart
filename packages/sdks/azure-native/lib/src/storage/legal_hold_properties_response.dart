@@ -34,8 +34,8 @@ class LegalHoldPropertiesResponse {
   factory LegalHoldPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return LegalHoldPropertiesResponse(
       hasLegalHold: (map['hasLegalHold'] as bool).input(),
-      protectedAppendWritesHistory: map['protectedAppendWritesHistory'] == null ? null : (ProtectedAppendWritesHistoryResponse.fromMap((map['protectedAppendWritesHistory'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagPropertyResponse>(map['tags'], (value) => TagPropertyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      protectedAppendWritesHistory: map['protectedAppendWritesHistory'] == null ? null : (ProtectedAppendWritesHistoryResponse.fromMap((map['protectedAppendWritesHistory']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagPropertyResponse>(map['tags']!, (value) => TagPropertyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

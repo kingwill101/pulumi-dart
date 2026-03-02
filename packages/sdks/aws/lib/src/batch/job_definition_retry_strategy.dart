@@ -26,8 +26,8 @@ class JobDefinitionRetryStrategy {
 
   factory JobDefinitionRetryStrategy.fromMap(Map<String, dynamic> map) {
     return JobDefinitionRetryStrategy(
-      attempts: map['attempts'] == null ? null : (map['attempts'] as int).input(),
-      evaluateOnExits: map['evaluateOnExits'] == null ? null : (pulumi.Input.decodeList<JobDefinitionRetryStrategyEvaluateOnExit>(map['evaluateOnExits'], (value) => JobDefinitionRetryStrategyEvaluateOnExit.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      attempts: map['attempts'] == null ? null : ((map['attempts'] as int).input()).input(),
+      evaluateOnExits: map['evaluateOnExits'] == null ? null : ((pulumi.Input.decodeList<JobDefinitionRetryStrategyEvaluateOnExit>(map['evaluateOnExits']!, (value) => JobDefinitionRetryStrategyEvaluateOnExit.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

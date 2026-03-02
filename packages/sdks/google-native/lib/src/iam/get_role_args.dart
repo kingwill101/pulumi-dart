@@ -27,7 +27,7 @@ class GetRoleArgs {
 
   factory GetRoleArgs.fromMap(Map<String, dynamic> map) {
     return GetRoleArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       roleId: (map['roleId'] as String).input(),
     );
   }

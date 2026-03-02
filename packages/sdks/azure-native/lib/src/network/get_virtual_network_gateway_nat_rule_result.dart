@@ -69,12 +69,12 @@ class GetVirtualNetworkGatewayNatRuleResult {
     return GetVirtualNetworkGatewayNatRuleResult(
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
-      externalMappings: map['externalMappings'] == null ? null : pulumi.Input.decodeList<VpnNatRuleMappingResponse>(map['externalMappings'], (value) => VpnNatRuleMappingResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : map['id'] as String,
-      internalMappings: map['internalMappings'] == null ? null : pulumi.Input.decodeList<VpnNatRuleMappingResponse>(map['internalMappings'], (value) => VpnNatRuleMappingResponse.fromMap((value as Map).cast<String, dynamic>())),
-      ipConfigurationId: map['ipConfigurationId'] == null ? null : map['ipConfigurationId'] as String,
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      externalMappings: map['externalMappings'] == null ? null : pulumi.Input.decodeList<VpnNatRuleMappingResponse>(map['externalMappings']!, (value) => VpnNatRuleMappingResponse.fromMap((value as Map).cast<String, dynamic>())),
+      id: map['id'] == null ? null : map['id']! as String,
+      internalMappings: map['internalMappings'] == null ? null : pulumi.Input.decodeList<VpnNatRuleMappingResponse>(map['internalMappings']!, (value) => VpnNatRuleMappingResponse.fromMap((value as Map).cast<String, dynamic>())),
+      ipConfigurationId: map['ipConfigurationId'] == null ? null : map['ipConfigurationId']! as String,
+      mode: map['mode'] == null ? null : map['mode']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
       provisioningState: map['provisioningState'] as String,
       type: map['type'] as String,
     );

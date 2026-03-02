@@ -22,7 +22,7 @@ class AuthorizationConfig {
 
   factory AuthorizationConfig.fromMap(Map<String, dynamic> map) {
     return AuthorizationConfig(
-      policies: map['policies'] == null ? null : (pulumi.Input.decodeList<RbacPolicy>(map['policies'], (value) => RbacPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      policies: map['policies'] == null ? null : (pulumi.Input.decodeList<RbacPolicy>(map['policies']!, (value) => RbacPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

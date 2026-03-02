@@ -26,8 +26,8 @@ class FirewallPolicyHttpHeaderToInsert {
 
   factory FirewallPolicyHttpHeaderToInsert.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyHttpHeaderToInsert(
-      headerName: map['headerName'] == null ? null : (map['headerName'] as String).input(),
-      headerValue: map['headerValue'] == null ? null : (map['headerValue'] as String).input(),
+      headerName: map['headerName'] == null ? null : (map['headerName']! as String).input(),
+      headerValue: map['headerValue'] == null ? null : (map['headerValue']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class DomainFeaturesPvSpinlock {
 
   factory DomainFeaturesPvSpinlock.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesPvSpinlock(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

@@ -33,7 +33,7 @@ class V2modelsSlotSubSlotSettingSlotSpecification {
     return V2modelsSlotSubSlotSettingSlotSpecification(
       mapBlockKey: (map['mapBlockKey'] as String).input(),
       slotTypeId: (map['slotTypeId'] as String).input(),
-      valueElicitationSettings: map['valueElicitationSettings'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSetting>(map['valueElicitationSettings'], (value) => V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      valueElicitationSettings: map['valueElicitationSettings'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSetting>(map['valueElicitationSettings']!, (value) => V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

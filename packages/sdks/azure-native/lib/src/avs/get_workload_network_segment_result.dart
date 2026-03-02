@@ -80,15 +80,15 @@ class GetWorkloadNetworkSegmentResult {
   factory GetWorkloadNetworkSegmentResult.fromMap(Map<String, dynamic> map) {
     return GetWorkloadNetworkSegmentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      connectedGateway: map['connectedGateway'] == null ? null : map['connectedGateway'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      connectedGateway: map['connectedGateway'] == null ? null : map['connectedGateway']! as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       portVif: pulumi.Input.decodeList<WorkloadNetworkSegmentPortVifResponse>(map['portVif'], (value) => WorkloadNetworkSegmentPortVifResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
-      revision: map['revision'] == null ? null : map['revision'] as double,
+      revision: map['revision'] == null ? null : map['revision']! as double,
       status: map['status'] as String,
-      subnet: map['subnet'] == null ? null : WorkloadNetworkSegmentSubnetResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
+      subnet: map['subnet'] == null ? null : WorkloadNetworkSegmentSubnetResponse.fromMap((map['subnet']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

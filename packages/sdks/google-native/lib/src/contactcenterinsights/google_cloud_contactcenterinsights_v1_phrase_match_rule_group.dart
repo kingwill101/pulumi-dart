@@ -28,7 +28,7 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup {
 
   factory GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup(
-      phraseMatchRules: map['phraseMatchRules'] == null ? null : (pulumi.Input.decodeList<GoogleCloudContactcenterinsightsV1PhraseMatchRule>(map['phraseMatchRules'], (value) => GoogleCloudContactcenterinsightsV1PhraseMatchRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      phraseMatchRules: map['phraseMatchRules'] == null ? null : (pulumi.Input.decodeList<GoogleCloudContactcenterinsightsV1PhraseMatchRule>(map['phraseMatchRules']!, (value) => GoogleCloudContactcenterinsightsV1PhraseMatchRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType.fromValue(map['type'] as String)).input(),
     );
   }

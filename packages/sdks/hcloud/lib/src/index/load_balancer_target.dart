@@ -28,9 +28,9 @@ class LoadBalancerTarget {
 
   factory LoadBalancerTarget.fromMap(Map<String, dynamic> map) {
     return LoadBalancerTarget(
-      serverId: map['serverId'] == null ? null : (map['serverId'] as int).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId']! as int).input(),
       type: (map['type'] as String).input(),
-      usePrivateIp: map['usePrivateIp'] == null ? null : (map['usePrivateIp'] as bool).input(),
+      usePrivateIp: map['usePrivateIp'] == null ? null : (map['usePrivateIp']! as bool).input(),
     );
   }
 }

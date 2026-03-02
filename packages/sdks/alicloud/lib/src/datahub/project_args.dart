@@ -29,8 +29,8 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

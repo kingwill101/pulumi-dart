@@ -102,10 +102,10 @@ class GetIntegrationAccountAgreementResult {
       hostIdentity: BusinessIdentityResponse.fromMap((map['hostIdentity'] as Map).cast<String, dynamic>()),
       hostPartner: map['hostPartner'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      metadata: map['metadata'] == null ? null : map['metadata'],
+      location: map['location'] == null ? null : map['location']! as String,
+      metadata: map['metadata'] == null ? null : map['metadata']!,
       name: map['name'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

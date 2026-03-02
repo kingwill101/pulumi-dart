@@ -57,14 +57,14 @@ class MedicalVocabularyState {
 
   factory MedicalVocabularyState.fromMap(Map<String, dynamic> map) {
     return MedicalVocabularyState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      downloadUri: map['downloadUri'] == null ? null : (map['downloadUri'] as String).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      vocabularyFileUri: map['vocabularyFileUri'] == null ? null : (map['vocabularyFileUri'] as String).input(),
-      vocabularyName: map['vocabularyName'] == null ? null : (map['vocabularyName'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      downloadUri: map['downloadUri'] == null ? null : ((map['downloadUri'] as String).input()).input(),
+      languageCode: map['languageCode'] == null ? null : ((map['languageCode'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      vocabularyFileUri: map['vocabularyFileUri'] == null ? null : ((map['vocabularyFileUri'] as String).input()).input(),
+      vocabularyName: map['vocabularyName'] == null ? null : ((map['vocabularyName'] as String).input()).input(),
     );
   }
 }

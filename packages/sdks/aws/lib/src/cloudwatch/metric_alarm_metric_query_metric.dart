@@ -50,12 +50,12 @@ class MetricAlarmMetricQueryMetric {
 
   factory MetricAlarmMetricQueryMetric.fromMap(Map<String, dynamic> map) {
     return MetricAlarmMetricQueryMetric(
-      dimensions: map['dimensions'] == null ? null : ((map['dimensions'] as Map).cast<String, String>()).input(),
+      dimensions: map['dimensions'] == null ? null : (((map['dimensions'] as Map).cast<String, String>()).input()).input(),
       metricName: (map['metricName'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      namespace: map['namespace'] == null ? null : ((map['namespace'] as String).input()).input(),
       period: (map['period'] as int).input(),
       stat: (map['stat'] as String).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      unit: map['unit'] == null ? null : ((map['unit'] as String).input()).input(),
     );
   }
 }

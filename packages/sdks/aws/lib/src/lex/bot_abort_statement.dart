@@ -24,8 +24,8 @@ class BotAbortStatement {
 
   factory BotAbortStatement.fromMap(Map<String, dynamic> map) {
     return BotAbortStatement(
-      messages: (pulumi.Input.decodeList<BotAbortStatementMessage>(map['messages'], (value) => BotAbortStatementMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      responseCard: map['responseCard'] == null ? null : (map['responseCard'] as String).input(),
+      messages: (pulumi.Input.decodeList<BotAbortStatementMessage>(map['messages']!, (value) => BotAbortStatementMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responseCard: map['responseCard'] == null ? null : ((map['responseCard'] as String).input()).input(),
     );
   }
 }

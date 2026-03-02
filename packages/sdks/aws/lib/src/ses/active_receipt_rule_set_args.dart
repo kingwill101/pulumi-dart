@@ -29,7 +29,7 @@ class ActiveReceiptRuleSetArgs {
 
   factory ActiveReceiptRuleSetArgs.fromMap(Map<String, dynamic> map) {
     return ActiveReceiptRuleSetArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       ruleSetName: (map['ruleSetName'] as String).input(),
     );
   }

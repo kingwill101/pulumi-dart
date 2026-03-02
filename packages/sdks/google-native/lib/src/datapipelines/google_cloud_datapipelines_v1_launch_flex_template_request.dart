@@ -40,7 +40,7 @@ class GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest {
       launchParameter: (GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter.fromMap((map['launchParameter'] as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
       project: (map['project'] as String).input(),
-      validateOnly: map['validateOnly'] == null ? null : (map['validateOnly'] as bool).input(),
+      validateOnly: map['validateOnly'] == null ? null : (map['validateOnly']! as bool).input(),
     );
   }
 }

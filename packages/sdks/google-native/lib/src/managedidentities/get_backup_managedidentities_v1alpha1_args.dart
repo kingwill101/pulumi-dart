@@ -33,7 +33,7 @@ class GetBackupManagedidentitiesV1alpha1Args {
     return GetBackupManagedidentitiesV1alpha1Args(
       backupId: (map['backupId'] as String).input(),
       domainId: (map['domainId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

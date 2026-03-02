@@ -34,9 +34,9 @@ class PolicyRulesWithSubjectsPatchFlowcontrolApiserverK8sIoV1beta2 {
 
   factory PolicyRulesWithSubjectsPatchFlowcontrolApiserverK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return PolicyRulesWithSubjectsPatchFlowcontrolApiserverK8sIoV1beta2(
-      nonResourceRules: map['nonResourceRules'] == null ? null : (pulumi.Input.decodeList<NonResourcePolicyRulePatchFlowcontrolApiserverK8sIoV1beta2>(map['nonResourceRules'], (value) => NonResourcePolicyRulePatchFlowcontrolApiserverK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceRules: map['resourceRules'] == null ? null : (pulumi.Input.decodeList<ResourcePolicyRulePatchFlowcontrolApiserverK8sIoV1beta2>(map['resourceRules'], (value) => ResourcePolicyRulePatchFlowcontrolApiserverK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subjects: map['subjects'] == null ? null : (pulumi.Input.decodeList<SubjectPatchFlowcontrolApiserverK8sIoV1beta2>(map['subjects'], (value) => SubjectPatchFlowcontrolApiserverK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nonResourceRules: map['nonResourceRules'] == null ? null : (pulumi.Input.decodeList<NonResourcePolicyRulePatchFlowcontrolApiserverK8sIoV1beta2>(map['nonResourceRules']!, (value) => NonResourcePolicyRulePatchFlowcontrolApiserverK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceRules: map['resourceRules'] == null ? null : (pulumi.Input.decodeList<ResourcePolicyRulePatchFlowcontrolApiserverK8sIoV1beta2>(map['resourceRules']!, (value) => ResourcePolicyRulePatchFlowcontrolApiserverK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subjects: map['subjects'] == null ? null : (pulumi.Input.decodeList<SubjectPatchFlowcontrolApiserverK8sIoV1beta2>(map['subjects']!, (value) => SubjectPatchFlowcontrolApiserverK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

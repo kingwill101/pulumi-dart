@@ -184,7 +184,7 @@ class GetEngineVersionResult {
       engine: map['engine'] as String,
       engineDescription: map['engineDescription'] as String,
       exportableLogTypes: (map['exportableLogTypes'] as List).cast<String>(),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetEngineVersionFilter>(map['filters'], (value) => GetEngineVersionFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetEngineVersionFilter>(map['filters']!, (value) => GetEngineVersionFilter.fromMap((value as Map).cast<String, dynamic>())),
       hasMajorTarget: map['hasMajorTarget'] == null ? null : map['hasMajorTarget'] as bool,
       hasMinorTarget: map['hasMinorTarget'] == null ? null : map['hasMinorTarget'] as bool,
       id: map['id'] as String,

@@ -98,7 +98,7 @@ class GetReplicationLinkResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       isTerminationAllowed: map['isTerminationAllowed'] as bool,
-      linkType: map['linkType'] == null ? null : map['linkType'] as String,
+      linkType: map['linkType'] == null ? null : map['linkType']! as String,
       name: map['name'] as String,
       partnerDatabase: map['partnerDatabase'] as String,
       partnerDatabaseId: map['partnerDatabaseId'] as String,

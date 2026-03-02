@@ -46,12 +46,12 @@ class WorkspaceApiKeyState {
 
   factory WorkspaceApiKeyState.fromMap(Map<String, dynamic> map) {
     return WorkspaceApiKeyState(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      keyRole: map['keyRole'] == null ? null : (map['keyRole'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      secondsToLive: map['secondsToLive'] == null ? null : (map['secondsToLive'] as int).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
+      keyName: map['keyName'] == null ? null : ((map['keyName'] as String).input()).input(),
+      keyRole: map['keyRole'] == null ? null : ((map['keyRole'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      secondsToLive: map['secondsToLive'] == null ? null : ((map['secondsToLive'] as int).input()).input(),
+      workspaceId: map['workspaceId'] == null ? null : ((map['workspaceId'] as String).input()).input(),
     );
   }
 }

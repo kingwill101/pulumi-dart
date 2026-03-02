@@ -58,13 +58,13 @@ class Dimension {
   factory Dimension.fromMap(Map<String, dynamic> map) {
     return Dimension(
       column: (map['column'] as String).input(),
-      columnType: map['columnType'] == null ? null : (map['columnType'] as String).input(),
-      floatBinSize: map['floatBinSize'] == null ? null : (map['floatBinSize'] as double).input(),
-      maxBinCount: map['maxBinCount'] == null ? null : (map['maxBinCount'] as int).input(),
-      numericBinSize: map['numericBinSize'] == null ? null : (map['numericBinSize'] as int).input(),
-      sortColumn: map['sortColumn'] == null ? null : (map['sortColumn'] as String).input(),
-      sortOrder: map['sortOrder'] == null ? null : (DimensionSortOrder.fromValue(map['sortOrder'] as String)).input(),
-      timeBinSize: map['timeBinSize'] == null ? null : (map['timeBinSize'] as String).input(),
+      columnType: map['columnType'] == null ? null : (map['columnType']! as String).input(),
+      floatBinSize: map['floatBinSize'] == null ? null : (map['floatBinSize']! as double).input(),
+      maxBinCount: map['maxBinCount'] == null ? null : (map['maxBinCount']! as int).input(),
+      numericBinSize: map['numericBinSize'] == null ? null : (map['numericBinSize']! as int).input(),
+      sortColumn: map['sortColumn'] == null ? null : (map['sortColumn']! as String).input(),
+      sortOrder: map['sortOrder'] == null ? null : (DimensionSortOrder.fromValue(map['sortOrder']! as String)).input(),
+      timeBinSize: map['timeBinSize'] == null ? null : (map['timeBinSize']! as String).input(),
     );
   }
 }

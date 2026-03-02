@@ -32,8 +32,8 @@ class ServiceGroupPropertiesResponse {
 
   factory ServiceGroupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ServiceGroupPropertiesResponse(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      parent: map['parent'] == null ? null : (ParentServiceGroupPropertiesResponse.fromMap((map['parent'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      parent: map['parent'] == null ? null : (ParentServiceGroupPropertiesResponse.fromMap((map['parent']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

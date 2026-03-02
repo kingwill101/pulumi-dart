@@ -37,10 +37,10 @@ class SynchronizationJobState {
 
   factory SynchronizationJobState.fromMap(Map<String, dynamic> map) {
     return SynchronizationJobState(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      schedules: map['schedules'] == null ? null : (pulumi.Input.decodeList<SynchronizationJobSchedule>(map['schedules'], (value) => SynchronizationJobSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId'] as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      schedules: map['schedules'] == null ? null : (pulumi.Input.decodeList<SynchronizationJobSchedule>(map['schedules']!, (value) => SynchronizationJobSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId']! as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
     );
   }
 }

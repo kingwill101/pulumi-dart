@@ -27,7 +27,7 @@ class LogSchedulePolicyResponse {
 
   factory LogSchedulePolicyResponse.fromMap(Map<String, dynamic> map) {
     return LogSchedulePolicyResponse(
-      scheduleFrequencyInMins: map['scheduleFrequencyInMins'] == null ? null : (map['scheduleFrequencyInMins'] as int).input(),
+      scheduleFrequencyInMins: map['scheduleFrequencyInMins'] == null ? null : (map['scheduleFrequencyInMins']! as int).input(),
       schedulePolicyType: (map['schedulePolicyType'] as String).input(),
     );
   }

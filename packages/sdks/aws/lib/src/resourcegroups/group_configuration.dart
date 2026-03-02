@@ -26,7 +26,7 @@ class GroupConfiguration {
 
   factory GroupConfiguration.fromMap(Map<String, dynamic> map) {
     return GroupConfiguration(
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<GroupConfigurationParameter>(map['parameters'], (value) => GroupConfigurationParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : ((pulumi.Input.decodeList<GroupConfigurationParameter>(map['parameters']!, (value) => GroupConfigurationParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

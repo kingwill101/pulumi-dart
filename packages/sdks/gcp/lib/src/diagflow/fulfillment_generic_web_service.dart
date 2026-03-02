@@ -35,10 +35,10 @@ class FulfillmentGenericWebService {
 
   factory FulfillmentGenericWebService.fromMap(Map<String, dynamic> map) {
     return FulfillmentGenericWebService(
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      requestHeaders: map['requestHeaders'] == null ? null : ((map['requestHeaders'] as Map).cast<String, String>()).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      requestHeaders: map['requestHeaders'] == null ? null : ((map['requestHeaders']! as Map).cast<String, String>()).input(),
       uri: (map['uri'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

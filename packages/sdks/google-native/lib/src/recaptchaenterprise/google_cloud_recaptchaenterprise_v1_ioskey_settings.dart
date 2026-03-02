@@ -32,9 +32,9 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
 
   factory GoogleCloudRecaptchaenterpriseV1IOSKeySettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecaptchaenterpriseV1IOSKeySettings(
-      allowAllBundleIds: map['allowAllBundleIds'] == null ? null : (map['allowAllBundleIds'] as bool).input(),
-      allowedBundleIds: map['allowedBundleIds'] == null ? null : ((map['allowedBundleIds'] as List).cast<String>()).input(),
-      appleDeveloperId: map['appleDeveloperId'] == null ? null : (GoogleCloudRecaptchaenterpriseV1AppleDeveloperId.fromMap((map['appleDeveloperId'] as Map).cast<String, dynamic>())).input(),
+      allowAllBundleIds: map['allowAllBundleIds'] == null ? null : (map['allowAllBundleIds']! as bool).input(),
+      allowedBundleIds: map['allowedBundleIds'] == null ? null : ((map['allowedBundleIds']! as List).cast<String>()).input(),
+      appleDeveloperId: map['appleDeveloperId'] == null ? null : (GoogleCloudRecaptchaenterpriseV1AppleDeveloperId.fromMap((map['appleDeveloperId']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

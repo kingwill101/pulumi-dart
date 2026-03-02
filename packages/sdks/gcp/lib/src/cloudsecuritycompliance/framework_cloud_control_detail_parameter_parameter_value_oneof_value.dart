@@ -27,8 +27,8 @@ class FrameworkCloudControlDetailParameterParameterValueOneofValue {
 
   factory FrameworkCloudControlDetailParameterParameterValueOneofValue.fromMap(Map<String, dynamic> map) {
     return FrameworkCloudControlDetailParameterParameterValueOneofValue(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameterValue: map['parameterValue'] == null ? null : (FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue.fromMap((map['parameterValue'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameterValue: map['parameterValue'] == null ? null : (FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue.fromMap((map['parameterValue']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

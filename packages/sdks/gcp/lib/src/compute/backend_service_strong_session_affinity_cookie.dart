@@ -32,9 +32,9 @@ class BackendServiceStrongSessionAffinityCookie {
 
   factory BackendServiceStrongSessionAffinityCookie.fromMap(Map<String, dynamic> map) {
     return BackendServiceStrongSessionAffinityCookie(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      ttl: map['ttl'] == null ? null : (BackendServiceStrongSessionAffinityCookieTtl.fromMap((map['ttl'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      ttl: map['ttl'] == null ? null : (BackendServiceStrongSessionAffinityCookieTtl.fromMap((map['ttl']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

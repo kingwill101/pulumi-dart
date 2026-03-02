@@ -51,12 +51,12 @@ class ManagedDatabaseArgs {
 
   factory ManagedDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return ManagedDatabaseArgs(
-      longTermRetentionPolicy: map['longTermRetentionPolicy'] == null ? null : (ManagedDatabaseLongTermRetentionPolicy.fromMap((map['longTermRetentionPolicy'] as Map).cast<String, dynamic>())).input(),
+      longTermRetentionPolicy: map['longTermRetentionPolicy'] == null ? null : (ManagedDatabaseLongTermRetentionPolicy.fromMap((map['longTermRetentionPolicy']! as Map).cast<String, dynamic>())).input(),
       managedInstanceId: (map['managedInstanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pointInTimeRestore: map['pointInTimeRestore'] == null ? null : (ManagedDatabasePointInTimeRestore.fromMap((map['pointInTimeRestore'] as Map).cast<String, dynamic>())).input(),
-      shortTermRetentionDays: map['shortTermRetentionDays'] == null ? null : (map['shortTermRetentionDays'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pointInTimeRestore: map['pointInTimeRestore'] == null ? null : (ManagedDatabasePointInTimeRestore.fromMap((map['pointInTimeRestore']! as Map).cast<String, dynamic>())).input(),
+      shortTermRetentionDays: map['shortTermRetentionDays'] == null ? null : (map['shortTermRetentionDays']! as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

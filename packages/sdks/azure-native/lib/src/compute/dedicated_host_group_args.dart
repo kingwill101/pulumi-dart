@@ -60,14 +60,14 @@ class DedicatedHostGroupArgs {
 
   factory DedicatedHostGroupArgs.fromMap(Map<String, dynamic> map) {
     return DedicatedHostGroupArgs(
-      additionalCapabilities: map['additionalCapabilities'] == null ? null : (DedicatedHostGroupPropertiesAdditionalCapabilities.fromMap((map['additionalCapabilities'] as Map).cast<String, dynamic>())).input(),
-      hostGroupName: map['hostGroupName'] == null ? null : (map['hostGroupName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      additionalCapabilities: map['additionalCapabilities'] == null ? null : (DedicatedHostGroupPropertiesAdditionalCapabilities.fromMap((map['additionalCapabilities']! as Map).cast<String, dynamic>())).input(),
+      hostGroupName: map['hostGroupName'] == null ? null : (map['hostGroupName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       platformFaultDomainCount: (map['platformFaultDomainCount'] as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      supportAutomaticPlacement: map['supportAutomaticPlacement'] == null ? null : (map['supportAutomaticPlacement'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      supportAutomaticPlacement: map['supportAutomaticPlacement'] == null ? null : (map['supportAutomaticPlacement']! as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

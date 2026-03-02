@@ -71,17 +71,17 @@ class AutomationRuleState {
 
   factory AutomationRuleState.fromMap(Map<String, dynamic> map) {
     return AutomationRuleState(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<AutomationRuleAction>(map['actions'], (value) => AutomationRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      criteria: map['criteria'] == null ? null : (AutomationRuleCriteria.fromMap((map['criteria'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      isTerminal: map['isTerminal'] == null ? null : (map['isTerminal'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      ruleOrder: map['ruleOrder'] == null ? null : (map['ruleOrder'] as int).input(),
-      ruleStatus: map['ruleStatus'] == null ? null : (map['ruleStatus'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      actions: map['actions'] == null ? null : ((pulumi.Input.decodeList<AutomationRuleAction>(map['actions']!, (value) => AutomationRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      criteria: map['criteria'] == null ? null : ((AutomationRuleCriteria.fromMap((map['criteria']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      isTerminal: map['isTerminal'] == null ? null : ((map['isTerminal'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      ruleName: map['ruleName'] == null ? null : ((map['ruleName'] as String).input()).input(),
+      ruleOrder: map['ruleOrder'] == null ? null : ((map['ruleOrder'] as int).input()).input(),
+      ruleStatus: map['ruleStatus'] == null ? null : ((map['ruleStatus'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

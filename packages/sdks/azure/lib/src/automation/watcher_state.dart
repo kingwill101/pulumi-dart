@@ -71,17 +71,17 @@ class WatcherState {
 
   factory WatcherState.fromMap(Map<String, dynamic> map) {
     return WatcherState(
-      automationAccountId: map['automationAccountId'] == null ? null : (map['automationAccountId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      executionFrequencyInSeconds: map['executionFrequencyInSeconds'] == null ? null : (map['executionFrequencyInSeconds'] as int).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      scriptName: map['scriptName'] == null ? null : (map['scriptName'] as String).input(),
-      scriptParameters: map['scriptParameters'] == null ? null : ((map['scriptParameters'] as Map).cast<String, String>()).input(),
-      scriptRunOn: map['scriptRunOn'] == null ? null : (map['scriptRunOn'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      automationAccountId: map['automationAccountId'] == null ? null : (map['automationAccountId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      executionFrequencyInSeconds: map['executionFrequencyInSeconds'] == null ? null : (map['executionFrequencyInSeconds']! as int).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      scriptName: map['scriptName'] == null ? null : (map['scriptName']! as String).input(),
+      scriptParameters: map['scriptParameters'] == null ? null : ((map['scriptParameters']! as Map).cast<String, String>()).input(),
+      scriptRunOn: map['scriptRunOn'] == null ? null : (map['scriptRunOn']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

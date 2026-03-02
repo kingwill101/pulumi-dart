@@ -47,8 +47,8 @@ class TriggerBitbucketServerTriggerConfig {
     return TriggerBitbucketServerTriggerConfig(
       bitbucketServerConfigResource: (map['bitbucketServerConfigResource'] as String).input(),
       projectKey: (map['projectKey'] as String).input(),
-      pullRequest: map['pullRequest'] == null ? null : (TriggerBitbucketServerTriggerConfigPullRequest.fromMap((map['pullRequest'] as Map).cast<String, dynamic>())).input(),
-      push: map['push'] == null ? null : (TriggerBitbucketServerTriggerConfigPush.fromMap((map['push'] as Map).cast<String, dynamic>())).input(),
+      pullRequest: map['pullRequest'] == null ? null : (TriggerBitbucketServerTriggerConfigPullRequest.fromMap((map['pullRequest']! as Map).cast<String, dynamic>())).input(),
+      push: map['push'] == null ? null : (TriggerBitbucketServerTriggerConfigPush.fromMap((map['push']! as Map).cast<String, dynamic>())).input(),
       repoSlug: (map['repoSlug'] as String).input(),
     );
   }

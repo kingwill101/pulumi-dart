@@ -21,7 +21,7 @@ class NodeGroupMaintenanceWindow {
 
   factory NodeGroupMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return NodeGroupMaintenanceWindow(
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

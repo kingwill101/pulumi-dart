@@ -40,10 +40,10 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig 
 
   factory BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      nodeConfigs: map['nodeConfigs'] == null ? null : (pulumi.Input.decodeList<BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig>(map['nodeConfigs'], (value) => BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem'] as String).input(),
-      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint>(map['taints'], (value) => BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      nodeConfigs: map['nodeConfigs'] == null ? null : (pulumi.Input.decodeList<BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig>(map['nodeConfigs']!, (value) => BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem']! as String).input(),
+      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint>(map['taints']!, (value) => BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -56,14 +56,14 @@ class CustomRoutingEndpointGroupDestinationState {
 
   factory CustomRoutingEndpointGroupDestinationState.fromMap(Map<String, dynamic> map) {
     return CustomRoutingEndpointGroupDestinationState(
-      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
-      customRoutingEndpointGroupDestinationId: map['customRoutingEndpointGroupDestinationId'] == null ? null : (map['customRoutingEndpointGroupDestinationId'] as String).input(),
-      endpointGroupId: map['endpointGroupId'] == null ? null : (map['endpointGroupId'] as String).input(),
-      fromPort: map['fromPort'] == null ? null : (map['fromPort'] as int).input(),
-      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
-      protocols: map['protocols'] == null ? null : ((map['protocols'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      toPort: map['toPort'] == null ? null : (map['toPort'] as int).input(),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId']! as String).input(),
+      customRoutingEndpointGroupDestinationId: map['customRoutingEndpointGroupDestinationId'] == null ? null : (map['customRoutingEndpointGroupDestinationId']! as String).input(),
+      endpointGroupId: map['endpointGroupId'] == null ? null : (map['endpointGroupId']! as String).input(),
+      fromPort: map['fromPort'] == null ? null : (map['fromPort']! as int).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId']! as String).input(),
+      protocols: map['protocols'] == null ? null : ((map['protocols']! as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      toPort: map['toPort'] == null ? null : (map['toPort']! as int).input(),
     );
   }
 }

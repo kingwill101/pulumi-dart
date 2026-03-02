@@ -82,16 +82,16 @@ class SecurityScanConfigArgs {
 
   factory SecurityScanConfigArgs.fromMap(Map<String, dynamic> map) {
     return SecurityScanConfigArgs(
-      authentication: map['authentication'] == null ? null : (SecurityScanConfigAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      blacklistPatterns: map['blacklistPatterns'] == null ? null : ((map['blacklistPatterns'] as List).cast<String>()).input(),
+      authentication: map['authentication'] == null ? null : (SecurityScanConfigAuthentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
+      blacklistPatterns: map['blacklistPatterns'] == null ? null : ((map['blacklistPatterns']! as List).cast<String>()).input(),
       displayName: (map['displayName'] as String).input(),
-      exportToSecurityCommandCenter: map['exportToSecurityCommandCenter'] == null ? null : (map['exportToSecurityCommandCenter'] as String).input(),
-      maxQps: map['maxQps'] == null ? null : (map['maxQps'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      schedule: map['schedule'] == null ? null : (SecurityScanConfigSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      exportToSecurityCommandCenter: map['exportToSecurityCommandCenter'] == null ? null : (map['exportToSecurityCommandCenter']! as String).input(),
+      maxQps: map['maxQps'] == null ? null : (map['maxQps']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      schedule: map['schedule'] == null ? null : (SecurityScanConfigSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
       startingUrls: ((map['startingUrls'] as List).cast<String>()).input(),
-      targetPlatforms: map['targetPlatforms'] == null ? null : ((map['targetPlatforms'] as List).cast<String>()).input(),
-      userAgent: map['userAgent'] == null ? null : (map['userAgent'] as String).input(),
+      targetPlatforms: map['targetPlatforms'] == null ? null : ((map['targetPlatforms']! as List).cast<String>()).input(),
+      userAgent: map['userAgent'] == null ? null : (map['userAgent']! as String).input(),
     );
   }
 }

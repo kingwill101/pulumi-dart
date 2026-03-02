@@ -40,11 +40,11 @@ class InstanceAccessControlAttributesState {
 
   factory InstanceAccessControlAttributesState.fromMap(Map<String, dynamic> map) {
     return InstanceAccessControlAttributesState(
-      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<InstanceAccessControlAttributesAttribute>(map['attributes'], (value) => InstanceAccessControlAttributesAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instanceArn: map['instanceArn'] == null ? null : (map['instanceArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      statusReason: map['statusReason'] == null ? null : (map['statusReason'] as String).input(),
+      attributes: map['attributes'] == null ? null : ((pulumi.Input.decodeList<InstanceAccessControlAttributesAttribute>(map['attributes']!, (value) => InstanceAccessControlAttributesAttribute.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      instanceArn: map['instanceArn'] == null ? null : ((map['instanceArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      statusReason: map['statusReason'] == null ? null : ((map['statusReason'] as String).input()).input(),
     );
   }
 }

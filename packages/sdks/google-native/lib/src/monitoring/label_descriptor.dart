@@ -32,9 +32,9 @@ class LabelDescriptor {
 
   factory LabelDescriptor.fromMap(Map<String, dynamic> map) {
     return LabelDescriptor(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      valueType: map['valueType'] == null ? null : (LabelDescriptorValueType.fromValue(map['valueType'] as String)).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      valueType: map['valueType'] == null ? null : (LabelDescriptorValueType.fromValue(map['valueType']! as String)).input(),
     );
   }
 }

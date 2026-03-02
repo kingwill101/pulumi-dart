@@ -33,9 +33,9 @@ class AutoHealActionsResponse {
 
   factory AutoHealActionsResponse.fromMap(Map<String, dynamic> map) {
     return AutoHealActionsResponse(
-      actionType: map['actionType'] == null ? null : (map['actionType'] as String).input(),
-      customAction: map['customAction'] == null ? null : (AutoHealCustomActionResponse.fromMap((map['customAction'] as Map).cast<String, dynamic>())).input(),
-      minProcessExecutionTime: map['minProcessExecutionTime'] == null ? null : (map['minProcessExecutionTime'] as String).input(),
+      actionType: map['actionType'] == null ? null : (map['actionType']! as String).input(),
+      customAction: map['customAction'] == null ? null : (AutoHealCustomActionResponse.fromMap((map['customAction']! as Map).cast<String, dynamic>())).input(),
+      minProcessExecutionTime: map['minProcessExecutionTime'] == null ? null : (map['minProcessExecutionTime']! as String).input(),
     );
   }
 }

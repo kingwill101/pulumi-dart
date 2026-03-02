@@ -59,14 +59,14 @@ class TagField {
 
   factory TagField.fromMap(Map<String, dynamic> map) {
     return TagField(
-      boolValue: map['boolValue'] == null ? null : (map['boolValue'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      doubleValue: map['doubleValue'] == null ? null : (map['doubleValue'] as double).input(),
-      enumValue: map['enumValue'] == null ? null : (map['enumValue'] as String).input(),
+      boolValue: map['boolValue'] == null ? null : (map['boolValue']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      doubleValue: map['doubleValue'] == null ? null : (map['doubleValue']! as double).input(),
+      enumValue: map['enumValue'] == null ? null : (map['enumValue']! as String).input(),
       fieldName: (map['fieldName'] as String).input(),
-      order: map['order'] == null ? null : (map['order'] as int).input(),
-      stringValue: map['stringValue'] == null ? null : (map['stringValue'] as String).input(),
-      timestampValue: map['timestampValue'] == null ? null : (map['timestampValue'] as String).input(),
+      order: map['order'] == null ? null : (map['order']! as int).input(),
+      stringValue: map['stringValue'] == null ? null : (map['stringValue']! as String).input(),
+      timestampValue: map['timestampValue'] == null ? null : (map['timestampValue']! as String).input(),
     );
   }
 }

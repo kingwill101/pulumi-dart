@@ -30,9 +30,9 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPat
 
   factory PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern(
-      datasetIdRegex: map['datasetIdRegex'] == null ? null : (map['datasetIdRegex'] as String).input(),
-      projectIdRegex: map['projectIdRegex'] == null ? null : (map['projectIdRegex'] as String).input(),
-      tableIdRegex: map['tableIdRegex'] == null ? null : (map['tableIdRegex'] as String).input(),
+      datasetIdRegex: map['datasetIdRegex'] == null ? null : (map['datasetIdRegex']! as String).input(),
+      projectIdRegex: map['projectIdRegex'] == null ? null : (map['projectIdRegex']! as String).input(),
+      tableIdRegex: map['tableIdRegex'] == null ? null : (map['tableIdRegex']! as String).input(),
     );
   }
 }

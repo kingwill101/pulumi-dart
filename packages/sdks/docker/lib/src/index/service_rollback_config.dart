@@ -45,12 +45,12 @@ class ServiceRollbackConfig {
 
   factory ServiceRollbackConfig.fromMap(Map<String, dynamic> map) {
     return ServiceRollbackConfig(
-      delay: map['delay'] == null ? null : (map['delay'] as String).input(),
-      failureAction: map['failureAction'] == null ? null : (map['failureAction'] as String).input(),
-      maxFailureRatio: map['maxFailureRatio'] == null ? null : (map['maxFailureRatio'] as String).input(),
-      monitor: map['monitor'] == null ? null : (map['monitor'] as String).input(),
-      order: map['order'] == null ? null : (map['order'] as String).input(),
-      parallelism: map['parallelism'] == null ? null : (map['parallelism'] as int).input(),
+      delay: map['delay'] == null ? null : (map['delay']! as String).input(),
+      failureAction: map['failureAction'] == null ? null : (map['failureAction']! as String).input(),
+      maxFailureRatio: map['maxFailureRatio'] == null ? null : (map['maxFailureRatio']! as String).input(),
+      monitor: map['monitor'] == null ? null : (map['monitor']! as String).input(),
+      order: map['order'] == null ? null : (map['order']! as String).input(),
+      parallelism: map['parallelism'] == null ? null : (map['parallelism']! as int).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class VariablePatch {
 
   factory VariablePatch.fromMap(Map<String, dynamic> map) {
     return VariablePatch(
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      expression: map['expression'] == null ? null : (map['expression']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

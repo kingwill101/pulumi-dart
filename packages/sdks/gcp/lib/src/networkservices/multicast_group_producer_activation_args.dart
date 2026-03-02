@@ -66,13 +66,13 @@ class MulticastGroupProducerActivationArgs {
 
   factory MulticastGroupProducerActivationArgs.fromMap(Map<String, dynamic> map) {
     return MulticastGroupProducerActivationArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
       multicastGroupProducerActivationId: (map['multicastGroupProducerActivationId'] as String).input(),
       multicastGroupRangeActivation: (map['multicastGroupRangeActivation'] as String).input(),
       multicastProducerAssociation: (map['multicastProducerAssociation'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

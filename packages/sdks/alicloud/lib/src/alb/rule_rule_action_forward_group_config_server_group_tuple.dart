@@ -26,8 +26,8 @@ class RuleRuleActionForwardGroupConfigServerGroupTuple {
 
   factory RuleRuleActionForwardGroupConfigServerGroupTuple.fromMap(Map<String, dynamic> map) {
     return RuleRuleActionForwardGroupConfigServerGroupTuple(
-      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

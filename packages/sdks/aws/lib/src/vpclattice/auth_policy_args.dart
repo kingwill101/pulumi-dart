@@ -40,9 +40,9 @@ class AuthPolicyArgs {
   factory AuthPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AuthPolicyArgs(
       policy: (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceIdentifier: (map['resourceIdentifier'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
     );
   }
 }

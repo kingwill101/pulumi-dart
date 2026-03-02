@@ -38,9 +38,9 @@ class VirtualMachineAssessmentSchedule {
   factory VirtualMachineAssessmentSchedule.fromMap(Map<String, dynamic> map) {
     return VirtualMachineAssessmentSchedule(
       dayOfWeek: (map['dayOfWeek'] as String).input(),
-      monthlyOccurrence: map['monthlyOccurrence'] == null ? null : (map['monthlyOccurrence'] as int).input(),
+      monthlyOccurrence: map['monthlyOccurrence'] == null ? null : (map['monthlyOccurrence']! as int).input(),
       startTime: (map['startTime'] as String).input(),
-      weeklyInterval: map['weeklyInterval'] == null ? null : (map['weeklyInterval'] as int).input(),
+      weeklyInterval: map['weeklyInterval'] == null ? null : (map['weeklyInterval']! as int).input(),
     );
   }
 }

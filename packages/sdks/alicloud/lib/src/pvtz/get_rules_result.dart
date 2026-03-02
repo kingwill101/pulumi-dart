@@ -46,12 +46,12 @@ class GetRulesResult {
 
   factory GetRulesResult.fromMap(Map<String, dynamic> map) {
     return GetRulesResult(
-      endpointId: map['endpointId'] == null ? null : map['endpointId'] as String,
+      endpointId: map['endpointId'] == null ? null : map['endpointId']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       rules: pulumi.Input.decodeList<GetRulesRule>(map['rules'], (value) => GetRulesRule.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

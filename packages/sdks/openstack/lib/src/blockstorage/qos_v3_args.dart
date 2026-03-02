@@ -43,10 +43,10 @@ class QosV3Args {
 
   factory QosV3Args.fromMap(Map<String, dynamic> map) {
     return QosV3Args(
-      consumer: map['consumer'] == null ? null : (map['consumer'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      specs: map['specs'] == null ? null : ((map['specs'] as Map).cast<String, String>()).input(),
+      consumer: map['consumer'] == null ? null : (map['consumer']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      specs: map['specs'] == null ? null : ((map['specs']! as Map).cast<String, String>()).input(),
     );
   }
 }

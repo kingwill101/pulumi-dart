@@ -41,11 +41,11 @@ class SuppressionSchedule {
 
   factory SuppressionSchedule.fromMap(Map<String, dynamic> map) {
     return SuppressionSchedule(
-      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      recurrenceValues: map['recurrenceValues'] == null ? null : ((map['recurrenceValues'] as List).cast<int>()).input(),
-      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      endDate: map['endDate'] == null ? null : (map['endDate']! as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      recurrenceValues: map['recurrenceValues'] == null ? null : ((map['recurrenceValues']! as List).cast<int>()).input(),
+      startDate: map['startDate'] == null ? null : (map['startDate']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

@@ -76,7 +76,7 @@ class GetSolutionConfigurationResult {
       lastSyncTime: map['lastSyncTime'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      solutionSettings: map['solutionSettings'] == null ? null : (map['solutionSettings'] as Map).cast<String, String>(),
+      solutionSettings: map['solutionSettings'] == null ? null : (map['solutionSettings']! as Map).cast<String, String>(),
       solutionType: map['solutionType'] as String,
       status: map['status'] as String,
       statusDetails: map['statusDetails'] as String,

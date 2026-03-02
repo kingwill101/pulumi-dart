@@ -45,11 +45,11 @@ class PolicyStoreArgs {
 
   factory PolicyStoreArgs.fromMap(Map<String, dynamic> map) {
     return PolicyStoreArgs(
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      validationSettings: (PolicyStoreValidationSettings.fromMap((map['validationSettings'] as Map).cast<String, dynamic>())).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : ((map['deletionProtection'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      validationSettings: (PolicyStoreValidationSettings.fromMap((map['validationSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

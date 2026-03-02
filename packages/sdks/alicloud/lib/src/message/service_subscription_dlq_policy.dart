@@ -25,8 +25,8 @@ class ServiceSubscriptionDlqPolicy {
 
   factory ServiceSubscriptionDlqPolicy.fromMap(Map<String, dynamic> map) {
     return ServiceSubscriptionDlqPolicy(
-      deadLetterTargetQueue: map['deadLetterTargetQueue'] == null ? null : (map['deadLetterTargetQueue'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      deadLetterTargetQueue: map['deadLetterTargetQueue'] == null ? null : (map['deadLetterTargetQueue']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

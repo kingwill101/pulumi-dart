@@ -25,7 +25,7 @@ class FirewallParams {
 
   factory FirewallParams.fromMap(Map<String, dynamic> map) {
     return FirewallParams(
-      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags'] as Map).cast<String, String>()).input(),
+      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags']! as Map).cast<String, String>()).input(),
     );
   }
 }

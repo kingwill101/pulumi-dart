@@ -27,8 +27,8 @@ class GatewayRouteSpecGrpcRoute {
 
   factory GatewayRouteSpecGrpcRoute.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecGrpcRoute(
-      action: (GatewayRouteSpecGrpcRouteAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      match: (GatewayRouteSpecGrpcRouteMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
+      action: (GatewayRouteSpecGrpcRouteAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      match: (GatewayRouteSpecGrpcRouteMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

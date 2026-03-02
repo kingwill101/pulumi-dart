@@ -27,7 +27,7 @@ class GetSubscriptionPubsubV1beta2Args {
 
   factory GetSubscriptionPubsubV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionPubsubV1beta2Args(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       subscriptionId: (map['subscriptionId'] as String).input(),
     );
   }

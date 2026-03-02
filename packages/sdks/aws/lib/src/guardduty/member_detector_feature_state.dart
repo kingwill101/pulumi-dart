@@ -47,12 +47,12 @@ class MemberDetectorFeatureState {
 
   factory MemberDetectorFeatureState.fromMap(Map<String, dynamic> map) {
     return MemberDetectorFeatureState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      additionalConfigurations: map['additionalConfigurations'] == null ? null : (pulumi.Input.decodeList<MemberDetectorFeatureAdditionalConfiguration>(map['additionalConfigurations'], (value) => MemberDetectorFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      detectorId: map['detectorId'] == null ? null : (map['detectorId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      additionalConfigurations: map['additionalConfigurations'] == null ? null : ((pulumi.Input.decodeList<MemberDetectorFeatureAdditionalConfiguration>(map['additionalConfigurations']!, (value) => MemberDetectorFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      detectorId: map['detectorId'] == null ? null : ((map['detectorId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

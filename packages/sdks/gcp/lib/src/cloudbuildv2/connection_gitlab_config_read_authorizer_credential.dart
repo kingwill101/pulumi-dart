@@ -27,7 +27,7 @@ class ConnectionGitlabConfigReadAuthorizerCredential {
   factory ConnectionGitlabConfigReadAuthorizerCredential.fromMap(Map<String, dynamic> map) {
     return ConnectionGitlabConfigReadAuthorizerCredential(
       userTokenSecretVersion: (map['userTokenSecretVersion'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

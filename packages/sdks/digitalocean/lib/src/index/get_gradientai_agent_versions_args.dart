@@ -34,8 +34,8 @@ class GetGradientaiAgentVersionsArgs {
   factory GetGradientaiAgentVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentVersionsArgs(
       agentId: (map['agentId'] as String).input(),
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentVersionsFilter>(map['filters'], (value) => GetGradientaiAgentVersionsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentVersionsSort>(map['sorts'], (value) => GetGradientaiAgentVersionsSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentVersionsFilter>(map['filters']!, (value) => GetGradientaiAgentVersionsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentVersionsSort>(map['sorts']!, (value) => GetGradientaiAgentVersionsSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

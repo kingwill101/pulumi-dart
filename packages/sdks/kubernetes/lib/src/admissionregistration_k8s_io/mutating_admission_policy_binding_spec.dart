@@ -33,9 +33,9 @@ class MutatingAdmissionPolicyBindingSpec {
 
   factory MutatingAdmissionPolicyBindingSpec.fromMap(Map<String, dynamic> map) {
     return MutatingAdmissionPolicyBindingSpec(
-      matchResources: map['matchResources'] == null ? null : (MatchResourcesAdmissionregistrationK8sIoV1alpha1.fromMap((map['matchResources'] as Map).cast<String, dynamic>())).input(),
-      paramRef: map['paramRef'] == null ? null : (ParamRefAdmissionregistrationK8sIoV1alpha1.fromMap((map['paramRef'] as Map).cast<String, dynamic>())).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      matchResources: map['matchResources'] == null ? null : (MatchResourcesAdmissionregistrationK8sIoV1alpha1.fromMap((map['matchResources']! as Map).cast<String, dynamic>())).input(),
+      paramRef: map['paramRef'] == null ? null : (ParamRefAdmissionregistrationK8sIoV1alpha1.fromMap((map['paramRef']! as Map).cast<String, dynamic>())).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
     );
   }
 }

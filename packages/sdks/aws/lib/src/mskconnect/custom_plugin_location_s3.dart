@@ -32,7 +32,7 @@ class CustomPluginLocationS3 {
     return CustomPluginLocationS3(
       bucketArn: (map['bucketArn'] as String).input(),
       fileKey: (map['fileKey'] as String).input(),
-      objectVersion: map['objectVersion'] == null ? null : (map['objectVersion'] as String).input(),
+      objectVersion: map['objectVersion'] == null ? null : ((map['objectVersion'] as String).input()).input(),
     );
   }
 }

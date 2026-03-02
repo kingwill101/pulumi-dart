@@ -61,13 +61,13 @@ class GetDbInstancePlansResult {
       dbInstanceId: map['dbInstanceId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      planScheduleType: map['planScheduleType'] == null ? null : map['planScheduleType'] as String,
-      planType: map['planType'] == null ? null : map['planType'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      planScheduleType: map['planScheduleType'] == null ? null : map['planScheduleType']! as String,
+      planType: map['planType'] == null ? null : map['planType']! as String,
       plans: pulumi.Input.decodeList<GetDbInstancePlansPlan>(map['plans'], (value) => GetDbInstancePlansPlan.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

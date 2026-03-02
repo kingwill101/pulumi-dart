@@ -46,12 +46,12 @@ class FlowhookState {
 
   factory FlowhookState.fromMap(Map<String, dynamic> map) {
     return FlowhookState(
-      continueOnError: map['continueOnError'] == null ? null : (map['continueOnError'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
-      flowHookPoint: map['flowHookPoint'] == null ? null : (map['flowHookPoint'] as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
-      sharedflow: map['sharedflow'] == null ? null : (map['sharedflow'] as String).input(),
+      continueOnError: map['continueOnError'] == null ? null : (map['continueOnError']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      environment: map['environment'] == null ? null : (map['environment']! as String).input(),
+      flowHookPoint: map['flowHookPoint'] == null ? null : (map['flowHookPoint']! as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
+      sharedflow: map['sharedflow'] == null ? null : (map['sharedflow']! as String).input(),
     );
   }
 }

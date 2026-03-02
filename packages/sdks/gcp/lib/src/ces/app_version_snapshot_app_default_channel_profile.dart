@@ -64,12 +64,12 @@ class AppVersionSnapshotAppDefaultChannelProfile {
 
   factory AppVersionSnapshotAppDefaultChannelProfile.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppDefaultChannelProfile(
-      channelType: map['channelType'] == null ? null : (map['channelType'] as String).input(),
-      disableBargeInControl: map['disableBargeInControl'] == null ? null : (map['disableBargeInControl'] as bool).input(),
-      disableDtmf: map['disableDtmf'] == null ? null : (map['disableDtmf'] as bool).input(),
-      personaProperties: map['personaProperties'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAppDefaultChannelProfilePersonaProperty>(map['personaProperties'], (value) => AppVersionSnapshotAppDefaultChannelProfilePersonaProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      profileId: map['profileId'] == null ? null : (map['profileId'] as String).input(),
-      webWidgetConfigs: map['webWidgetConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig>(map['webWidgetConfigs'], (value) => AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      channelType: map['channelType'] == null ? null : (map['channelType']! as String).input(),
+      disableBargeInControl: map['disableBargeInControl'] == null ? null : (map['disableBargeInControl']! as bool).input(),
+      disableDtmf: map['disableDtmf'] == null ? null : (map['disableDtmf']! as bool).input(),
+      personaProperties: map['personaProperties'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAppDefaultChannelProfilePersonaProperty>(map['personaProperties']!, (value) => AppVersionSnapshotAppDefaultChannelProfilePersonaProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      profileId: map['profileId'] == null ? null : (map['profileId']! as String).input(),
+      webWidgetConfigs: map['webWidgetConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig>(map['webWidgetConfigs']!, (value) => AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

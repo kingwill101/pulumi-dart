@@ -35,7 +35,7 @@ class MonitoringSettingArgs {
 
   factory MonitoringSettingArgs.fromMap(Map<String, dynamic> map) {
     return MonitoringSettingArgs(
-      properties: map['properties'] == null ? null : (MonitoringSettingProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (MonitoringSettingProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

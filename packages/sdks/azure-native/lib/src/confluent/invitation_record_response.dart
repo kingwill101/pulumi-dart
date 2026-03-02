@@ -57,14 +57,14 @@ class InvitationRecordResponse {
 
   factory InvitationRecordResponse.fromMap(Map<String, dynamic> map) {
     return InvitationRecordResponse(
-      acceptedAt: map['acceptedAt'] == null ? null : (map['acceptedAt'] as String).input(),
-      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      expiresAt: map['expiresAt'] == null ? null : (map['expiresAt'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (MetadataEntityResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      acceptedAt: map['acceptedAt'] == null ? null : (map['acceptedAt']! as String).input(),
+      authType: map['authType'] == null ? null : (map['authType']! as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      expiresAt: map['expiresAt'] == null ? null : (map['expiresAt']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (MetadataEntityResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

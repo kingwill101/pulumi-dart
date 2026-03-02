@@ -41,7 +41,7 @@ class ListStaticSiteConfiguredRolesResult {
   factory ListStaticSiteConfiguredRolesResult.fromMap(Map<String, dynamic> map) {
     return ListStaticSiteConfiguredRolesResult(
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
       properties: (map['properties'] as List).cast<String>(),
       type: map['type'] as String,

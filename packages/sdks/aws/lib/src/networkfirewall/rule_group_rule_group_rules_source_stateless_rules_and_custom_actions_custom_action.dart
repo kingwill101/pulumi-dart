@@ -26,7 +26,7 @@ class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction {
 
   factory RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction(
-      actionDefinition: (RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinition.fromMap((map['actionDefinition'] as Map).cast<String, dynamic>())).input(),
+      actionDefinition: (RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinition.fromMap((map['actionDefinition']! as Map).cast<String, dynamic>())).input(),
       actionName: (map['actionName'] as String).input(),
     );
   }

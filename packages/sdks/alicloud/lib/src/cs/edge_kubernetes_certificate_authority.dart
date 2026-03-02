@@ -30,9 +30,9 @@ class EdgeKubernetesCertificateAuthority {
 
   factory EdgeKubernetesCertificateAuthority.fromMap(Map<String, dynamic> map) {
     return EdgeKubernetesCertificateAuthority(
-      clientCert: map['clientCert'] == null ? null : (map['clientCert'] as String).input(),
-      clientKey: map['clientKey'] == null ? null : (map['clientKey'] as String).input(),
-      clusterCert: map['clusterCert'] == null ? null : (map['clusterCert'] as String).input(),
+      clientCert: map['clientCert'] == null ? null : (map['clientCert']! as String).input(),
+      clientKey: map['clientKey'] == null ? null : (map['clientKey']! as String).input(),
+      clusterCert: map['clusterCert'] == null ? null : (map['clusterCert']! as String).input(),
     );
   }
 }

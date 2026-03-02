@@ -26,8 +26,8 @@ class AcceleratorConfig {
 
   factory AcceleratorConfig.fromMap(Map<String, dynamic> map) {
     return AcceleratorConfig(
-      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount'] as int).input(),
-      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType'] as String).input(),
+      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount']! as int).input(),
+      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType']! as String).input(),
     );
   }
 }

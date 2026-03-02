@@ -22,7 +22,7 @@ class NetworkPolicyStatusPatch {
 
   factory NetworkPolicyStatusPatch.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyStatusPatch(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionPatch>(map['conditions'], (value) => ConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionPatch>(map['conditions']!, (value) => ConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

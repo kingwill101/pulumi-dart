@@ -40,10 +40,10 @@ class GetInstanceArgs {
 
   factory GetInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceArgs(
-      config: map['config'] == null ? null : (map['config'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      config: map['config'] == null ? null : (map['config']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

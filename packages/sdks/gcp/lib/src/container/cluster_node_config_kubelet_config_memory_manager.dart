@@ -22,7 +22,7 @@ class ClusterNodeConfigKubeletConfigMemoryManager {
 
   factory ClusterNodeConfigKubeletConfigMemoryManager.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigKubeletConfigMemoryManager(
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
     );
   }
 }

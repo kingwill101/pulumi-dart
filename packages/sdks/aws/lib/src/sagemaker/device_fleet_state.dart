@@ -66,16 +66,16 @@ class DeviceFleetState {
 
   factory DeviceFleetState.fromMap(Map<String, dynamic> map) {
     return DeviceFleetState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      deviceFleetName: map['deviceFleetName'] == null ? null : (map['deviceFleetName'] as String).input(),
-      enableIotRoleAlias: map['enableIotRoleAlias'] == null ? null : (map['enableIotRoleAlias'] as bool).input(),
-      iotRoleAlias: map['iotRoleAlias'] == null ? null : (map['iotRoleAlias'] as String).input(),
-      outputConfig: map['outputConfig'] == null ? null : (DeviceFleetOutputConfig.fromMap((map['outputConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      deviceFleetName: map['deviceFleetName'] == null ? null : ((map['deviceFleetName'] as String).input()).input(),
+      enableIotRoleAlias: map['enableIotRoleAlias'] == null ? null : ((map['enableIotRoleAlias'] as bool).input()).input(),
+      iotRoleAlias: map['iotRoleAlias'] == null ? null : ((map['iotRoleAlias'] as String).input()).input(),
+      outputConfig: map['outputConfig'] == null ? null : ((DeviceFleetOutputConfig.fromMap((map['outputConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

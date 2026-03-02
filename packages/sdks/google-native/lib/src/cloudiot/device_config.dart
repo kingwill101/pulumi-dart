@@ -21,7 +21,7 @@ class DeviceConfig {
 
   factory DeviceConfig.fromMap(Map<String, dynamic> map) {
     return DeviceConfig(
-      binaryData: map['binaryData'] == null ? null : (map['binaryData'] as String).input(),
+      binaryData: map['binaryData'] == null ? null : (map['binaryData']! as String).input(),
     );
   }
 }

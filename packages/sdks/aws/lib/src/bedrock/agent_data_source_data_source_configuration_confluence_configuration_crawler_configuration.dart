@@ -21,7 +21,7 @@ class AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfig
 
   factory AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration(
-      filterConfiguration: map['filterConfiguration'] == null ? null : (AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfiguration.fromMap((map['filterConfiguration'] as Map).cast<String, dynamic>())).input(),
+      filterConfiguration: map['filterConfiguration'] == null ? null : ((AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfiguration.fromMap((map['filterConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

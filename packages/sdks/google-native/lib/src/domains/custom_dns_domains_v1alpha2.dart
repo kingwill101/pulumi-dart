@@ -27,7 +27,7 @@ class CustomDnsDomainsV1alpha2 {
 
   factory CustomDnsDomainsV1alpha2.fromMap(Map<String, dynamic> map) {
     return CustomDnsDomainsV1alpha2(
-      dsRecords: map['dsRecords'] == null ? null : (pulumi.Input.decodeList<DsRecordDomainsV1alpha2>(map['dsRecords'], (value) => DsRecordDomainsV1alpha2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dsRecords: map['dsRecords'] == null ? null : (pulumi.Input.decodeList<DsRecordDomainsV1alpha2>(map['dsRecords']!, (value) => DsRecordDomainsV1alpha2.fromMap((value as Map).cast<String, dynamic>()))).input(),
       nameServers: ((map['nameServers'] as List).cast<String>()).input(),
     );
   }

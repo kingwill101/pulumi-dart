@@ -47,9 +47,9 @@ class InvoiceSectionArgs {
     return InvoiceSectionArgs(
       billingAccountName: (map['billingAccountName'] as String).input(),
       billingProfileName: (map['billingProfileName'] as String).input(),
-      invoiceSectionName: map['invoiceSectionName'] == null ? null : (map['invoiceSectionName'] as String).input(),
-      properties: map['properties'] == null ? null : (InvoiceSectionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      invoiceSectionName: map['invoiceSectionName'] == null ? null : (map['invoiceSectionName']! as String).input(),
+      properties: map['properties'] == null ? null : (InvoiceSectionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

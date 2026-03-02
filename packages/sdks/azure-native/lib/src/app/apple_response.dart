@@ -33,9 +33,9 @@ class AppleResponse {
 
   factory AppleResponse.fromMap(Map<String, dynamic> map) {
     return AppleResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      login: map['login'] == null ? null : (LoginScopesResponse.fromMap((map['login'] as Map).cast<String, dynamic>())).input(),
-      registration: map['registration'] == null ? null : (AppleRegistrationResponse.fromMap((map['registration'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      login: map['login'] == null ? null : (LoginScopesResponse.fromMap((map['login']! as Map).cast<String, dynamic>())).input(),
+      registration: map['registration'] == null ? null : (AppleRegistrationResponse.fromMap((map['registration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

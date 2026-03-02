@@ -29,8 +29,8 @@ class ToolDataStoreToolEngineSourceDataStoreSource {
 
   factory ToolDataStoreToolEngineSourceDataStoreSource.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreToolEngineSourceDataStoreSource(
-      dataStore: map['dataStore'] == null ? null : (ToolDataStoreToolEngineSourceDataStoreSourceDataStore.fromMap((map['dataStore'] as Map).cast<String, dynamic>())).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      dataStore: map['dataStore'] == null ? null : (ToolDataStoreToolEngineSourceDataStoreSourceDataStore.fromMap((map['dataStore']! as Map).cast<String, dynamic>())).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
     );
   }
 }

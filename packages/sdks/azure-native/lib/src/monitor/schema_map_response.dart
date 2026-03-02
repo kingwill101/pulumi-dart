@@ -35,8 +35,8 @@ class SchemaMapResponse {
   factory SchemaMapResponse.fromMap(Map<String, dynamic> map) {
     return SchemaMapResponse(
       recordMap: (pulumi.Input.decodeList<RecordMapResponse>(map['recordMap'], (value) => RecordMapResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceMap: map['resourceMap'] == null ? null : (pulumi.Input.decodeList<ResourceMapResponse>(map['resourceMap'], (value) => ResourceMapResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      scopeMap: map['scopeMap'] == null ? null : (pulumi.Input.decodeList<ScopeMapResponse>(map['scopeMap'], (value) => ScopeMapResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceMap: map['resourceMap'] == null ? null : (pulumi.Input.decodeList<ResourceMapResponse>(map['resourceMap']!, (value) => ResourceMapResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scopeMap: map['scopeMap'] == null ? null : (pulumi.Input.decodeList<ScopeMapResponse>(map['scopeMap']!, (value) => ScopeMapResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

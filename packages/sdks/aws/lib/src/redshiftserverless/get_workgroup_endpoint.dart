@@ -33,7 +33,7 @@ class GetWorkgroupEndpoint {
     return GetWorkgroupEndpoint(
       address: (map['address'] as String).input(),
       port: (map['port'] as int).input(),
-      vpcEndpoints: (pulumi.Input.decodeList<GetWorkgroupEndpointVpcEndpoint>(map['vpcEndpoints'], (value) => GetWorkgroupEndpointVpcEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcEndpoints: (pulumi.Input.decodeList<GetWorkgroupEndpointVpcEndpoint>(map['vpcEndpoints']!, (value) => GetWorkgroupEndpointVpcEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

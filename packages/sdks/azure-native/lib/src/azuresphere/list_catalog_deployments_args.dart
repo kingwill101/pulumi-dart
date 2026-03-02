@@ -50,11 +50,11 @@ class ListCatalogDeploymentsArgs {
   factory ListCatalogDeploymentsArgs.fromMap(Map<String, dynamic> map) {
     return ListCatalogDeploymentsArgs(
       catalogName: (map['catalogName'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      maxpagesize: map['maxpagesize'] == null ? null : (map['maxpagesize'] as int).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      maxpagesize: map['maxpagesize'] == null ? null : (map['maxpagesize']! as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skip: map['skip'] == null ? null : (map['skip'] as int).input(),
-      top: map['top'] == null ? null : (map['top'] as int).input(),
+      skip: map['skip'] == null ? null : (map['skip']! as int).input(),
+      top: map['top'] == null ? null : (map['top']! as int).input(),
     );
   }
 }

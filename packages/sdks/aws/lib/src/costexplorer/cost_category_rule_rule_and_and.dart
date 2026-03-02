@@ -33,9 +33,9 @@ class CostCategoryRuleRuleAndAnd {
 
   factory CostCategoryRuleRuleAndAnd.fromMap(Map<String, dynamic> map) {
     return CostCategoryRuleRuleAndAnd(
-      costCategory: map['costCategory'] == null ? null : (CostCategoryRuleRuleAndAndCostCategory.fromMap((map['costCategory'] as Map).cast<String, dynamic>())).input(),
-      dimension: map['dimension'] == null ? null : (CostCategoryRuleRuleAndAndDimension.fromMap((map['dimension'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : (CostCategoryRuleRuleAndAndTags.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
+      costCategory: map['costCategory'] == null ? null : ((CostCategoryRuleRuleAndAndCostCategory.fromMap((map['costCategory']! as Map).cast<String, dynamic>())).input()).input(),
+      dimension: map['dimension'] == null ? null : ((CostCategoryRuleRuleAndAndDimension.fromMap((map['dimension']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : ((CostCategoryRuleRuleAndAndTags.fromMap((map['tags']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -37,9 +37,9 @@ class InstanceAutoscalingConfigAutoscalingTargets {
 
   factory InstanceAutoscalingConfigAutoscalingTargets.fromMap(Map<String, dynamic> map) {
     return InstanceAutoscalingConfigAutoscalingTargets(
-      highPriorityCpuUtilizationPercent: map['highPriorityCpuUtilizationPercent'] == null ? null : (map['highPriorityCpuUtilizationPercent'] as int).input(),
-      storageUtilizationPercent: map['storageUtilizationPercent'] == null ? null : (map['storageUtilizationPercent'] as int).input(),
-      totalCpuUtilizationPercent: map['totalCpuUtilizationPercent'] == null ? null : (map['totalCpuUtilizationPercent'] as int).input(),
+      highPriorityCpuUtilizationPercent: map['highPriorityCpuUtilizationPercent'] == null ? null : (map['highPriorityCpuUtilizationPercent']! as int).input(),
+      storageUtilizationPercent: map['storageUtilizationPercent'] == null ? null : (map['storageUtilizationPercent']! as int).input(),
+      totalCpuUtilizationPercent: map['totalCpuUtilizationPercent'] == null ? null : (map['totalCpuUtilizationPercent']! as int).input(),
     );
   }
 }

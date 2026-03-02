@@ -20,7 +20,7 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField
 
   factory StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField(
-      field: map['field'] == null ? null : (map['field'] as String).input(),
+      field: map['field'] == null ? null : (map['field']! as String).input(),
     );
   }
 }

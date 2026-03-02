@@ -57,14 +57,14 @@ class SpringCloudCustomizedAcceleratorState {
 
   factory SpringCloudCustomizedAcceleratorState.fromMap(Map<String, dynamic> map) {
     return SpringCloudCustomizedAcceleratorState(
-      acceleratorTags: map['acceleratorTags'] == null ? null : ((map['acceleratorTags'] as List).cast<String>()).input(),
-      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      gitRepository: map['gitRepository'] == null ? null : (SpringCloudCustomizedAcceleratorGitRepository.fromMap((map['gitRepository'] as Map).cast<String, dynamic>())).input(),
-      iconUrl: map['iconUrl'] == null ? null : (map['iconUrl'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      springCloudAcceleratorId: map['springCloudAcceleratorId'] == null ? null : (map['springCloudAcceleratorId'] as String).input(),
+      acceleratorTags: map['acceleratorTags'] == null ? null : ((map['acceleratorTags']! as List).cast<String>()).input(),
+      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      gitRepository: map['gitRepository'] == null ? null : (SpringCloudCustomizedAcceleratorGitRepository.fromMap((map['gitRepository']! as Map).cast<String, dynamic>())).input(),
+      iconUrl: map['iconUrl'] == null ? null : (map['iconUrl']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      springCloudAcceleratorId: map['springCloudAcceleratorId'] == null ? null : (map['springCloudAcceleratorId']! as String).input(),
     );
   }
 }

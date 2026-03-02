@@ -30,9 +30,9 @@ class IacTemplateDetailsResponse {
 
   factory IacTemplateDetailsResponse.fromMap(Map<String, dynamic> map) {
     return IacTemplateDetailsResponse(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      namingConvention: map['namingConvention'] == null ? null : (map['namingConvention'] as String).input(),
-      productName: map['productName'] == null ? null : (map['productName'] as String).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      namingConvention: map['namingConvention'] == null ? null : (map['namingConvention']! as String).input(),
+      productName: map['productName'] == null ? null : (map['productName']! as String).input(),
     );
   }
 }

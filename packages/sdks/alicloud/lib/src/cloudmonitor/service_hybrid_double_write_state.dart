@@ -36,10 +36,10 @@ class ServiceHybridDoubleWriteState {
 
   factory ServiceHybridDoubleWriteState.fromMap(Map<String, dynamic> map) {
     return ServiceHybridDoubleWriteState(
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      sourceNamespace: map['sourceNamespace'] == null ? null : (map['sourceNamespace'] as String).input(),
-      sourceUserId: map['sourceUserId'] == null ? null : (map['sourceUserId'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      sourceNamespace: map['sourceNamespace'] == null ? null : (map['sourceNamespace']! as String).input(),
+      sourceUserId: map['sourceUserId'] == null ? null : (map['sourceUserId']! as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
     );
   }
 }

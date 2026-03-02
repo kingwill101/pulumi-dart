@@ -45,11 +45,11 @@ class GetLocalGatewayVirtualInterfaceGroupArgs {
 
   factory GetLocalGatewayVirtualInterfaceGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetLocalGatewayVirtualInterfaceGroupArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetLocalGatewayVirtualInterfaceGroupFilter>(map['filters'], (value) => GetLocalGatewayVirtualInterfaceGroupFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      localGatewayId: map['localGatewayId'] == null ? null : (map['localGatewayId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetLocalGatewayVirtualInterfaceGroupFilter>(map['filters']!, (value) => GetLocalGatewayVirtualInterfaceGroupFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      localGatewayId: map['localGatewayId'] == null ? null : ((map['localGatewayId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

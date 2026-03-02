@@ -37,8 +37,8 @@ class BucketWormArgs {
   factory BucketWormArgs.fromMap(Map<String, dynamic> map) {
     return BucketWormArgs(
       bucket: (map['bucket'] as String).input(),
-      retentionPeriodInDays: map['retentionPeriodInDays'] == null ? null : (map['retentionPeriodInDays'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      retentionPeriodInDays: map['retentionPeriodInDays'] == null ? null : (map['retentionPeriodInDays']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

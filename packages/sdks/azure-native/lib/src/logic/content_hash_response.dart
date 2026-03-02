@@ -26,8 +26,8 @@ class ContentHashResponse {
 
   factory ContentHashResponse.fromMap(Map<String, dynamic> map) {
     return ContentHashResponse(
-      algorithm: map['algorithm'] == null ? null : (map['algorithm'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      algorithm: map['algorithm'] == null ? null : (map['algorithm']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -37,7 +37,7 @@ class ScopeIamPolicyArgs {
   factory ScopeIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ScopeIamPolicyArgs(
       policyData: (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       scopeId: (map['scopeId'] as String).input(),
     );
   }

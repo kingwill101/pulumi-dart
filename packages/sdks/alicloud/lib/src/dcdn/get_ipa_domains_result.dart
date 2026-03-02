@@ -54,14 +54,14 @@ class GetIpaDomainsResult {
 
   factory GetIpaDomainsResult.fromMap(Map<String, dynamic> map) {
     return GetIpaDomainsResult(
-      domainName: map['domainName'] == null ? null : map['domainName'] as String,
+      domainName: map['domainName'] == null ? null : map['domainName']! as String,
       domains: pulumi.Input.decodeList<GetIpaDomainsDomain>(map['domains'], (value) => GetIpaDomainsDomain.fromMap((value as Map).cast<String, dynamic>())),
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

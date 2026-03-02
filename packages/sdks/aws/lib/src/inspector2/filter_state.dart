@@ -64,15 +64,15 @@ class FilterState {
 
   factory FilterState.fromMap(Map<String, dynamic> map) {
     return FilterState(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      filterCriterias: map['filterCriterias'] == null ? null : (pulumi.Input.decodeList<FilterFilterCriteria>(map['filterCriterias'], (value) => FilterFilterCriteria.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      action: map['action'] == null ? null : ((map['action'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      filterCriterias: map['filterCriterias'] == null ? null : ((pulumi.Input.decodeList<FilterFilterCriteria>(map['filterCriterias']!, (value) => FilterFilterCriteria.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      reason: map['reason'] == null ? null : ((map['reason'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

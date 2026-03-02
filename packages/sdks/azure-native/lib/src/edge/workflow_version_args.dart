@@ -52,10 +52,10 @@ class WorkflowVersionArgs {
   factory WorkflowVersionArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowVersionArgs(
       contextName: (map['contextName'] as String).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      properties: map['properties'] == null ? null : (WorkflowVersionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (WorkflowVersionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName']! as String).input(),
       workflowName: (map['workflowName'] as String).input(),
     );
   }

@@ -26,8 +26,8 @@ class GoogleCloudDocumentaiV1DocumentRevisionHumanReview {
 
   factory GoogleCloudDocumentaiV1DocumentRevisionHumanReview.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentRevisionHumanReview(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      stateMessage: map['stateMessage'] == null ? null : (map['stateMessage'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      stateMessage: map['stateMessage'] == null ? null : (map['stateMessage']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus {
 
   factory RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus.fromMap(Map<String, dynamic> map) {
     return RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus(
-      code: map['code'] == null ? null : (map['code'] as int).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as int).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

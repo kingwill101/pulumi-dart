@@ -36,10 +36,10 @@ class ResolverConfigState {
 
   factory ResolverConfigState.fromMap(Map<String, dynamic> map) {
     return ResolverConfigState(
-      autodefinedReverseFlag: map['autodefinedReverseFlag'] == null ? null : (map['autodefinedReverseFlag'] as String).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      autodefinedReverseFlag: map['autodefinedReverseFlag'] == null ? null : ((map['autodefinedReverseFlag'] as String).input()).input(),
+      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceId: map['resourceId'] == null ? null : ((map['resourceId'] as String).input()).input(),
     );
   }
 }

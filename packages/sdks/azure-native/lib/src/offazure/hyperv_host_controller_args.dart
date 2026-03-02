@@ -49,11 +49,11 @@ class HypervHostControllerArgs {
 
   factory HypervHostControllerArgs.fromMap(Map<String, dynamic> map) {
     return HypervHostControllerArgs(
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId'] as String).input(),
+      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId']! as String).input(),
       siteName: (map['siteName'] as String).input(),
     );
   }

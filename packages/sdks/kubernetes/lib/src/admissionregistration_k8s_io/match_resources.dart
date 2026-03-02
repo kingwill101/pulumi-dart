@@ -79,11 +79,11 @@ class MatchResources {
 
   factory MatchResources.fromMap(Map<String, dynamic> map) {
     return MatchResources(
-      excludeResourceRules: map['excludeResourceRules'] == null ? null : (pulumi.Input.decodeList<NamedRuleWithOperations>(map['excludeResourceRules'], (value) => NamedRuleWithOperations.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matchPolicy: map['matchPolicy'] == null ? null : (map['matchPolicy'] as String).input(),
-      namespaceSelector: map['namespaceSelector'] == null ? null : (LabelSelector.fromMap((map['namespaceSelector'] as Map).cast<String, dynamic>())).input(),
-      objectSelector: map['objectSelector'] == null ? null : (LabelSelector.fromMap((map['objectSelector'] as Map).cast<String, dynamic>())).input(),
-      resourceRules: map['resourceRules'] == null ? null : (pulumi.Input.decodeList<NamedRuleWithOperations>(map['resourceRules'], (value) => NamedRuleWithOperations.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      excludeResourceRules: map['excludeResourceRules'] == null ? null : (pulumi.Input.decodeList<NamedRuleWithOperations>(map['excludeResourceRules']!, (value) => NamedRuleWithOperations.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchPolicy: map['matchPolicy'] == null ? null : (map['matchPolicy']! as String).input(),
+      namespaceSelector: map['namespaceSelector'] == null ? null : (LabelSelector.fromMap((map['namespaceSelector']! as Map).cast<String, dynamic>())).input(),
+      objectSelector: map['objectSelector'] == null ? null : (LabelSelector.fromMap((map['objectSelector']! as Map).cast<String, dynamic>())).input(),
+      resourceRules: map['resourceRules'] == null ? null : (pulumi.Input.decodeList<NamedRuleWithOperations>(map['resourceRules']!, (value) => NamedRuleWithOperations.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

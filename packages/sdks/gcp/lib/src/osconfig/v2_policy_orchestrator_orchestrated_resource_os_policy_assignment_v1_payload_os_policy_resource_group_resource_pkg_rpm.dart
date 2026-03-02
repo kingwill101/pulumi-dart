@@ -30,7 +30,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
   factory V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm(
-      pullDeps: map['pullDeps'] == null ? null : (map['pullDeps'] as bool).input(),
+      pullDeps: map['pullDeps'] == null ? null : (map['pullDeps']! as bool).input(),
       source: (V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }

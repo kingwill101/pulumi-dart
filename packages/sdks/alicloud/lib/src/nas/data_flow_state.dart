@@ -66,15 +66,15 @@ class DataFlowState {
 
   factory DataFlowState.fromMap(Map<String, dynamic> map) {
     return DataFlowState(
-      dataFlowId: map['dataFlowId'] == null ? null : (map['dataFlowId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      fsetId: map['fsetId'] == null ? null : (map['fsetId'] as String).input(),
-      sourceSecurityType: map['sourceSecurityType'] == null ? null : (map['sourceSecurityType'] as String).input(),
-      sourceStorage: map['sourceStorage'] == null ? null : (map['sourceStorage'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
+      dataFlowId: map['dataFlowId'] == null ? null : (map['dataFlowId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId']! as String).input(),
+      fsetId: map['fsetId'] == null ? null : (map['fsetId']! as String).input(),
+      sourceSecurityType: map['sourceSecurityType'] == null ? null : (map['sourceSecurityType']! as String).input(),
+      sourceStorage: map['sourceStorage'] == null ? null : (map['sourceStorage']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput']! as int).input(),
     );
   }
 }

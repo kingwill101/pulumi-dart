@@ -71,14 +71,14 @@ class AlertRuleMsSecurityIncidentArgs {
 
   factory AlertRuleMsSecurityIncidentArgs.fromMap(Map<String, dynamic> map) {
     return AlertRuleMsSecurityIncidentArgs(
-      alertRuleTemplateGuid: map['alertRuleTemplateGuid'] == null ? null : (map['alertRuleTemplateGuid'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      alertRuleTemplateGuid: map['alertRuleTemplateGuid'] == null ? null : (map['alertRuleTemplateGuid']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      displayNameExcludeFilters: map['displayNameExcludeFilters'] == null ? null : ((map['displayNameExcludeFilters'] as List).cast<String>()).input(),
-      displayNameFilters: map['displayNameFilters'] == null ? null : ((map['displayNameFilters'] as List).cast<String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      displayNameExcludeFilters: map['displayNameExcludeFilters'] == null ? null : ((map['displayNameExcludeFilters']! as List).cast<String>()).input(),
+      displayNameFilters: map['displayNameFilters'] == null ? null : ((map['displayNameFilters']! as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       productFilter: (map['productFilter'] as String).input(),
       severityFilters: ((map['severityFilters'] as List).cast<String>()).input(),
     );

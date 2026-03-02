@@ -51,12 +51,12 @@ class ReportConfigDataset {
 
   factory ReportConfigDataset.fromMap(Map<String, dynamic> map) {
     return ReportConfigDataset(
-      aggregation: map['aggregation'] == null ? null : (pulumi.Input.decodeMapValues<ReportConfigAggregation>(map['aggregation'], (value) => ReportConfigAggregation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      configuration: map['configuration'] == null ? null : (ReportConfigDatasetConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      filter: map['filter'] == null ? null : (ReportConfigFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      granularity: map['granularity'] == null ? null : (map['granularity'] as String).input(),
-      grouping: map['grouping'] == null ? null : (pulumi.Input.decodeList<ReportConfigGrouping>(map['grouping'], (value) => ReportConfigGrouping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sorting: map['sorting'] == null ? null : (pulumi.Input.decodeList<ReportConfigSorting>(map['sorting'], (value) => ReportConfigSorting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aggregation: map['aggregation'] == null ? null : (pulumi.Input.decodeMapValues<ReportConfigAggregation>(map['aggregation']!, (value) => ReportConfigAggregation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configuration: map['configuration'] == null ? null : (ReportConfigDatasetConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
+      filter: map['filter'] == null ? null : (ReportConfigFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      granularity: map['granularity'] == null ? null : (map['granularity']! as String).input(),
+      grouping: map['grouping'] == null ? null : (pulumi.Input.decodeList<ReportConfigGrouping>(map['grouping']!, (value) => ReportConfigGrouping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sorting: map['sorting'] == null ? null : (pulumi.Input.decodeList<ReportConfigSorting>(map['sorting']!, (value) => ReportConfigSorting.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

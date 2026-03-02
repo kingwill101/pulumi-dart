@@ -43,8 +43,8 @@ class GetAuthScopeArgs {
   factory GetAuthScopeArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthScopeArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      setTokenId: map['setTokenId'] == null ? null : (map['setTokenId'] as bool).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      setTokenId: map['setTokenId'] == null ? null : (map['setTokenId']! as bool).input(),
     );
   }
 }

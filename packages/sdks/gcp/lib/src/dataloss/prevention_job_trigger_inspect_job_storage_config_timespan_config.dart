@@ -40,10 +40,10 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfig {
 
   factory PreventionJobTriggerInspectJobStorageConfigTimespanConfig.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigTimespanConfig(
-      enableAutoPopulationOfTimespanConfig: map['enableAutoPopulationOfTimespanConfig'] == null ? null : (map['enableAutoPopulationOfTimespanConfig'] as bool).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      timestampField: map['timestampField'] == null ? null : (PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField.fromMap((map['timestampField'] as Map).cast<String, dynamic>())).input(),
+      enableAutoPopulationOfTimespanConfig: map['enableAutoPopulationOfTimespanConfig'] == null ? null : (map['enableAutoPopulationOfTimespanConfig']! as bool).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      timestampField: map['timestampField'] == null ? null : (PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField.fromMap((map['timestampField']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

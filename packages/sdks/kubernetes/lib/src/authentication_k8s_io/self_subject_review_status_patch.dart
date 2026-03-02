@@ -22,7 +22,7 @@ class SelfSubjectReviewStatusPatch {
 
   factory SelfSubjectReviewStatusPatch.fromMap(Map<String, dynamic> map) {
     return SelfSubjectReviewStatusPatch(
-      userInfo: map['userInfo'] == null ? null : (UserInfoPatch.fromMap((map['userInfo'] as Map).cast<String, dynamic>())).input(),
+      userInfo: map['userInfo'] == null ? null : (UserInfoPatch.fromMap((map['userInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

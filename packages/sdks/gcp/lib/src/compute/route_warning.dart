@@ -37,9 +37,9 @@ class RouteWarning {
 
   factory RouteWarning.fromMap(Map<String, dynamic> map) {
     return RouteWarning(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      datas: map['datas'] == null ? null : (pulumi.Input.decodeList<RouteWarningData>(map['datas'], (value) => RouteWarningData.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      datas: map['datas'] == null ? null : (pulumi.Input.decodeList<RouteWarningData>(map['datas']!, (value) => RouteWarningData.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

@@ -57,14 +57,14 @@ class DatasourceResponse {
 
   factory DatasourceResponse.fromMap(Map<String, dynamic> map) {
     return DatasourceResponse(
-      datasourceType: map['datasourceType'] == null ? null : (map['datasourceType'] as String).input(),
-      objectType: map['objectType'] == null ? null : (map['objectType'] as String).input(),
+      datasourceType: map['datasourceType'] == null ? null : (map['datasourceType']! as String).input(),
+      objectType: map['objectType'] == null ? null : (map['objectType']! as String).input(),
       resourceID: (map['resourceID'] as String).input(),
-      resourceLocation: map['resourceLocation'] == null ? null : (map['resourceLocation'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
-      resourceProperties: map['resourceProperties'] == null ? null : (DefaultResourcePropertiesResponse.fromMap((map['resourceProperties'] as Map).cast<String, dynamic>())).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      resourceUri: map['resourceUri'] == null ? null : (map['resourceUri'] as String).input(),
+      resourceLocation: map['resourceLocation'] == null ? null : (map['resourceLocation']! as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
+      resourceProperties: map['resourceProperties'] == null ? null : (DefaultResourcePropertiesResponse.fromMap((map['resourceProperties']! as Map).cast<String, dynamic>())).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
+      resourceUri: map['resourceUri'] == null ? null : (map['resourceUri']! as String).input(),
     );
   }
 }

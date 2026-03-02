@@ -21,7 +21,7 @@ class NodeLabels {
 
   factory NodeLabels.fromMap(Map<String, dynamic> map) {
     return NodeLabels(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
     );
   }
 }

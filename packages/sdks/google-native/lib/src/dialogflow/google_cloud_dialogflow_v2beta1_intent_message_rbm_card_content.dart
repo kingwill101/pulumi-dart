@@ -38,10 +38,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent {
 
   factory GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      media: map['media'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia.fromMap((map['media'] as Map).cast<String, dynamic>())).input(),
-      suggestions: map['suggestions'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>(map['suggestions'], (value) => GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      media: map['media'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia.fromMap((map['media']! as Map).cast<String, dynamic>())).input(),
+      suggestions: map['suggestions'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>(map['suggestions']!, (value) => GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

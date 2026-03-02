@@ -38,7 +38,7 @@ class DiskPoolVolumeResponse {
   factory DiskPoolVolumeResponse.fromMap(Map<String, dynamic> map) {
     return DiskPoolVolumeResponse(
       lunName: (map['lunName'] as String).input(),
-      mountOption: map['mountOption'] == null ? null : (map['mountOption'] as String).input(),
+      mountOption: map['mountOption'] == null ? null : (map['mountOption']! as String).input(),
       path: (map['path'] as String).input(),
       targetId: (map['targetId'] as String).input(),
     );

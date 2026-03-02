@@ -22,7 +22,7 @@ class CustomResourceValidationPatch {
 
   factory CustomResourceValidationPatch.fromMap(Map<String, dynamic> map) {
     return CustomResourceValidationPatch(
-      openAPIV3Schema: map['openAPIV3Schema'] == null ? null : (JSONSchemaPropsPatch.fromMap((map['openAPIV3Schema'] as Map).cast<String, dynamic>())).input(),
+      openAPIV3Schema: map['openAPIV3Schema'] == null ? null : (JSONSchemaPropsPatch.fromMap((map['openAPIV3Schema']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

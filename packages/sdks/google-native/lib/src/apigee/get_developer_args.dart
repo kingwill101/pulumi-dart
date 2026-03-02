@@ -31,7 +31,7 @@ class GetDeveloperArgs {
 
   factory GetDeveloperArgs.fromMap(Map<String, dynamic> map) {
     return GetDeveloperArgs(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
       developerId: (map['developerId'] as String).input(),
       organizationId: (map['organizationId'] as String).input(),
     );

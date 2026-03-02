@@ -42,11 +42,11 @@ class FaultSimulationResponse {
 
   factory FaultSimulationResponse.fromMap(Map<String, dynamic> map) {
     return FaultSimulationResponse(
-      details: map['details'] == null ? null : (FaultSimulationDetailsResponse.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      simulationId: map['simulationId'] == null ? null : (map['simulationId'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      details: map['details'] == null ? null : (FaultSimulationDetailsResponse.fromMap((map['details']! as Map).cast<String, dynamic>())).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      simulationId: map['simulationId'] == null ? null : (map['simulationId']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

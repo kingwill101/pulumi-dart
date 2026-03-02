@@ -29,8 +29,8 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      registries: map['registries'] == null ? null : (pulumi.Input.decodeList<Registry>(map['registries'], (value) => Registry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      registries: map['registries'] == null ? null : (pulumi.Input.decodeList<Registry>(map['registries']!, (value) => Registry.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

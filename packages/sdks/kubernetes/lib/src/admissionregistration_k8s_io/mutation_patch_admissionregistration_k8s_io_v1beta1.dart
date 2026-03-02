@@ -33,9 +33,9 @@ class MutationPatchAdmissionregistrationK8sIoV1beta1 {
 
   factory MutationPatchAdmissionregistrationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return MutationPatchAdmissionregistrationK8sIoV1beta1(
-      applyConfiguration: map['applyConfiguration'] == null ? null : (ApplyConfigurationPatchAdmissionregistrationK8sIoV1beta1.fromMap((map['applyConfiguration'] as Map).cast<String, dynamic>())).input(),
-      jsonPatch: map['jsonPatch'] == null ? null : (JSONPatchPatchAdmissionregistrationK8sIoV1beta1.fromMap((map['jsonPatch'] as Map).cast<String, dynamic>())).input(),
-      patchType: map['patchType'] == null ? null : (map['patchType'] as String).input(),
+      applyConfiguration: map['applyConfiguration'] == null ? null : (ApplyConfigurationPatchAdmissionregistrationK8sIoV1beta1.fromMap((map['applyConfiguration']! as Map).cast<String, dynamic>())).input(),
+      jsonPatch: map['jsonPatch'] == null ? null : (JSONPatchPatchAdmissionregistrationK8sIoV1beta1.fromMap((map['jsonPatch']! as Map).cast<String, dynamic>())).input(),
+      patchType: map['patchType'] == null ? null : (map['patchType']! as String).input(),
     );
   }
 }

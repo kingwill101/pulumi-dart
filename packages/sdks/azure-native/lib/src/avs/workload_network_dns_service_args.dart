@@ -64,15 +64,15 @@ class WorkloadNetworkDnsServiceArgs {
 
   factory WorkloadNetworkDnsServiceArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkDnsServiceArgs(
-      defaultDnsZone: map['defaultDnsZone'] == null ? null : (map['defaultDnsZone'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      dnsServiceId: map['dnsServiceId'] == null ? null : (map['dnsServiceId'] as String).input(),
-      dnsServiceIp: map['dnsServiceIp'] == null ? null : (map['dnsServiceIp'] as String).input(),
-      fqdnZones: map['fqdnZones'] == null ? null : ((map['fqdnZones'] as List).cast<String>()).input(),
-      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
+      defaultDnsZone: map['defaultDnsZone'] == null ? null : (map['defaultDnsZone']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      dnsServiceId: map['dnsServiceId'] == null ? null : (map['dnsServiceId']! as String).input(),
+      dnsServiceIp: map['dnsServiceIp'] == null ? null : (map['dnsServiceIp']! as String).input(),
+      fqdnZones: map['fqdnZones'] == null ? null : ((map['fqdnZones']! as List).cast<String>()).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel']! as String).input(),
       privateCloudName: (map['privateCloudName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as double).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as double).input(),
     );
   }
 }

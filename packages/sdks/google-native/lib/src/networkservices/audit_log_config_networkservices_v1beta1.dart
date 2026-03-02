@@ -27,8 +27,8 @@ class AuditLogConfigNetworkservicesV1beta1 {
 
   factory AuditLogConfigNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return AuditLogConfigNetworkservicesV1beta1(
-      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers'] as List).cast<String>()).input(),
-      logType: map['logType'] == null ? null : (AuditLogConfigLogTypeNetworkservicesV1beta1.fromValue(map['logType'] as String)).input(),
+      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers']! as List).cast<String>()).input(),
+      logType: map['logType'] == null ? null : (AuditLogConfigLogTypeNetworkservicesV1beta1.fromValue(map['logType']! as String)).input(),
     );
   }
 }

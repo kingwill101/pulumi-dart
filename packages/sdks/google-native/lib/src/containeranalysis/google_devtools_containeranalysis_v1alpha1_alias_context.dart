@@ -27,8 +27,8 @@ class GoogleDevtoolsContaineranalysisV1alpha1AliasContext {
 
   factory GoogleDevtoolsContaineranalysisV1alpha1AliasContext.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsContaineranalysisV1alpha1AliasContext(
-      kind: map['kind'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind.fromValue(map['kind'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      kind: map['kind'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind.fromValue(map['kind']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

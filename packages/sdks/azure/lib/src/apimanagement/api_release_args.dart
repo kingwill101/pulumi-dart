@@ -35,8 +35,8 @@ class ApiReleaseArgs {
   factory ApiReleaseArgs.fromMap(Map<String, dynamic> map) {
     return ApiReleaseArgs(
       apiId: (map['apiId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
     );
   }
 }

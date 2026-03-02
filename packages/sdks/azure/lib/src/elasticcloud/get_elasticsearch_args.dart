@@ -35,7 +35,7 @@ class GetElasticsearchArgs {
 
   factory GetElasticsearchArgs.fromMap(Map<String, dynamic> map) {
     return GetElasticsearchArgs(
-      logs: map['logs'] == null ? null : (pulumi.Input.decodeList<GetElasticsearchLog>(map['logs'], (value) => GetElasticsearchLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logs: map['logs'] == null ? null : (pulumi.Input.decodeList<GetElasticsearchLog>(map['logs']!, (value) => GetElasticsearchLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

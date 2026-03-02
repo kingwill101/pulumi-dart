@@ -29,9 +29,9 @@ class V3FunctionNasConfigMountPoint {
 
   factory V3FunctionNasConfigMountPoint.fromMap(Map<String, dynamic> map) {
     return V3FunctionNasConfigMountPoint(
-      enableTls: map['enableTls'] == null ? null : (map['enableTls'] as bool).input(),
-      mountDir: map['mountDir'] == null ? null : (map['mountDir'] as String).input(),
-      serverAddr: map['serverAddr'] == null ? null : (map['serverAddr'] as String).input(),
+      enableTls: map['enableTls'] == null ? null : (map['enableTls']! as bool).input(),
+      mountDir: map['mountDir'] == null ? null : (map['mountDir']! as String).input(),
+      serverAddr: map['serverAddr'] == null ? null : (map['serverAddr']! as String).input(),
     );
   }
 }

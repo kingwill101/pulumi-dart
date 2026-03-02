@@ -89,20 +89,20 @@ class GetSitesArgs {
 
   factory GetSitesArgs.fromMap(Map<String, dynamic> map) {
     return GetSitesArgs(
-      accessType: map['accessType'] == null ? null : (map['accessType'] as String).input(),
-      coverage: map['coverage'] == null ? null : (map['coverage'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      onlyEnterprise: map['onlyEnterprise'] == null ? null : (map['onlyEnterprise'] as bool).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
-      planSubscribeType: map['planSubscribeType'] == null ? null : (map['planSubscribeType'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      siteName: map['siteName'] == null ? null : (map['siteName'] as String).input(),
-      siteSearchType: map['siteSearchType'] == null ? null : (map['siteSearchType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      accessType: map['accessType'] == null ? null : (map['accessType']! as String).input(),
+      coverage: map['coverage'] == null ? null : (map['coverage']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      onlyEnterprise: map['onlyEnterprise'] == null ? null : (map['onlyEnterprise']! as bool).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber']! as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
+      planSubscribeType: map['planSubscribeType'] == null ? null : (map['planSubscribeType']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      siteName: map['siteName'] == null ? null : (map['siteName']! as String).input(),
+      siteSearchType: map['siteSearchType'] == null ? null : (map['siteSearchType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

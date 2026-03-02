@@ -31,9 +31,9 @@ class ApplicationRedirectUrisState {
 
   factory ApplicationRedirectUrisState.fromMap(Map<String, dynamic> map) {
     return ApplicationRedirectUrisState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      redirectUris: map['redirectUris'] == null ? null : ((map['redirectUris'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      redirectUris: map['redirectUris'] == null ? null : ((map['redirectUris']! as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

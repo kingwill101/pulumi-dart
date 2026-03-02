@@ -31,9 +31,9 @@ class AutomaticRepairsPolicy {
 
   factory AutomaticRepairsPolicy.fromMap(Map<String, dynamic> map) {
     return AutomaticRepairsPolicy(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      gracePeriod: map['gracePeriod'] == null ? null : (map['gracePeriod'] as String).input(),
-      repairAction: map['repairAction'] == null ? null : (map['repairAction'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      gracePeriod: map['gracePeriod'] == null ? null : (map['gracePeriod']! as String).input(),
+      repairAction: map['repairAction'] == null ? null : (map['repairAction']! as String).input(),
     );
   }
 }

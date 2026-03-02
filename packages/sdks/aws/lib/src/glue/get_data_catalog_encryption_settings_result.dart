@@ -36,7 +36,7 @@ class GetDataCatalogEncryptionSettingsResult {
   factory GetDataCatalogEncryptionSettingsResult.fromMap(Map<String, dynamic> map) {
     return GetDataCatalogEncryptionSettingsResult(
       catalogId: map['catalogId'] as String,
-      dataCatalogEncryptionSettings: pulumi.Input.decodeList<GetDataCatalogEncryptionSettingsDataCatalogEncryptionSetting>(map['dataCatalogEncryptionSettings'], (value) => GetDataCatalogEncryptionSettingsDataCatalogEncryptionSetting.fromMap((value as Map).cast<String, dynamic>())),
+      dataCatalogEncryptionSettings: pulumi.Input.decodeList<GetDataCatalogEncryptionSettingsDataCatalogEncryptionSetting>(map['dataCatalogEncryptionSettings']!, (value) => GetDataCatalogEncryptionSettingsDataCatalogEncryptionSetting.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
     );

@@ -43,10 +43,10 @@ class GetEncryptedValueResult {
     return GetEncryptedValueResult(
       algorithm: map['algorithm'] as String,
       decodedPlainTextValue: map['decodedPlainTextValue'] as String,
-      encryptedData: map['encryptedData'] == null ? null : map['encryptedData'] as String,
+      encryptedData: map['encryptedData'] == null ? null : map['encryptedData']! as String,
       id: map['id'] as String,
       keyVaultKeyId: map['keyVaultKeyId'] as String,
-      plainTextValue: map['plainTextValue'] == null ? null : map['plainTextValue'] as String,
+      plainTextValue: map['plainTextValue'] == null ? null : map['plainTextValue']! as String,
     );
   }
 }

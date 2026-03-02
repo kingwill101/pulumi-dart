@@ -35,9 +35,9 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecord {
 
   factory RepositoryReleaseConfigRecentScheduledReleaseRecord.fromMap(Map<String, dynamic> map) {
     return RepositoryReleaseConfigRecentScheduledReleaseRecord(
-      compilationResult: map['compilationResult'] == null ? null : (map['compilationResult'] as String).input(),
-      errorStatuses: map['errorStatuses'] == null ? null : (pulumi.Input.decodeList<RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus>(map['errorStatuses'], (value) => RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      releaseTime: map['releaseTime'] == null ? null : (map['releaseTime'] as String).input(),
+      compilationResult: map['compilationResult'] == null ? null : (map['compilationResult']! as String).input(),
+      errorStatuses: map['errorStatuses'] == null ? null : (pulumi.Input.decodeList<RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus>(map['errorStatuses']!, (value) => RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      releaseTime: map['releaseTime'] == null ? null : (map['releaseTime']! as String).input(),
     );
   }
 }

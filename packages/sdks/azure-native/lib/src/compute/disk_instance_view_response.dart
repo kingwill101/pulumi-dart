@@ -33,9 +33,9 @@ class DiskInstanceViewResponse {
 
   factory DiskInstanceViewResponse.fromMap(Map<String, dynamic> map) {
     return DiskInstanceViewResponse(
-      encryptionSettings: map['encryptionSettings'] == null ? null : (pulumi.Input.decodeList<DiskEncryptionSettingsResponse>(map['encryptionSettings'], (value) => DiskEncryptionSettingsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatusResponse>(map['statuses'], (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encryptionSettings: map['encryptionSettings'] == null ? null : (pulumi.Input.decodeList<DiskEncryptionSettingsResponse>(map['encryptionSettings']!, (value) => DiskEncryptionSettingsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatusResponse>(map['statuses']!, (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

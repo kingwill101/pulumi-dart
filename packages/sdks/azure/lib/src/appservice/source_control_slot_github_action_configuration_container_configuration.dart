@@ -36,9 +36,9 @@ class SourceControlSlotGithubActionConfigurationContainerConfiguration {
   factory SourceControlSlotGithubActionConfigurationContainerConfiguration.fromMap(Map<String, dynamic> map) {
     return SourceControlSlotGithubActionConfigurationContainerConfiguration(
       imageName: (map['imageName'] as String).input(),
-      registryPassword: map['registryPassword'] == null ? null : (map['registryPassword'] as String).input(),
+      registryPassword: map['registryPassword'] == null ? null : (map['registryPassword']! as String).input(),
       registryUrl: (map['registryUrl'] as String).input(),
-      registryUsername: map['registryUsername'] == null ? null : (map['registryUsername'] as String).input(),
+      registryUsername: map['registryUsername'] == null ? null : (map['registryUsername']! as String).input(),
     );
   }
 }

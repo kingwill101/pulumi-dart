@@ -26,8 +26,8 @@ class DataSourceParametersS3 {
 
   factory DataSourceParametersS3.fromMap(Map<String, dynamic> map) {
     return DataSourceParametersS3(
-      manifestFileLocation: (DataSourceParametersS3ManifestFileLocation.fromMap((map['manifestFileLocation'] as Map).cast<String, dynamic>())).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      manifestFileLocation: (DataSourceParametersS3ManifestFileLocation.fromMap((map['manifestFileLocation']! as Map).cast<String, dynamic>())).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
     );
   }
 }

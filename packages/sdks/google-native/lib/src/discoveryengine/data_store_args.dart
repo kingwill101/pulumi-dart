@@ -70,15 +70,15 @@ class DataStoreArgs {
   factory DataStoreArgs.fromMap(Map<String, dynamic> map) {
     return DataStoreArgs(
       collectionId: (map['collectionId'] as String).input(),
-      contentConfig: map['contentConfig'] == null ? null : (DataStoreContentConfig.fromValue(map['contentConfig'] as String)).input(),
-      createAdvancedSiteSearch: map['createAdvancedSiteSearch'] == null ? null : (map['createAdvancedSiteSearch'] as bool).input(),
+      contentConfig: map['contentConfig'] == null ? null : (DataStoreContentConfig.fromValue(map['contentConfig']! as String)).input(),
+      createAdvancedSiteSearch: map['createAdvancedSiteSearch'] == null ? null : (map['createAdvancedSiteSearch']! as bool).input(),
       dataStoreId: (map['dataStoreId'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      industryVertical: map['industryVertical'] == null ? null : (DataStoreIndustryVertical.fromValue(map['industryVertical'] as String)).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      solutionTypes: map['solutionTypes'] == null ? null : (pulumi.Input.decodeList<DataStoreSolutionTypesItem>(map['solutionTypes'], (value) => DataStoreSolutionTypesItem.fromValue(value as String))).input(),
+      industryVertical: map['industryVertical'] == null ? null : (DataStoreIndustryVertical.fromValue(map['industryVertical']! as String)).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      solutionTypes: map['solutionTypes'] == null ? null : (pulumi.Input.decodeList<DataStoreSolutionTypesItem>(map['solutionTypes']!, (value) => DataStoreSolutionTypesItem.fromValue(value as String))).input(),
     );
   }
 }

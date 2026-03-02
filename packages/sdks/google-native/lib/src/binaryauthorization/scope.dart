@@ -26,8 +26,8 @@ class Scope {
 
   factory Scope.fromMap(Map<String, dynamic> map) {
     return Scope(
-      kubernetesNamespace: map['kubernetesNamespace'] == null ? null : (map['kubernetesNamespace'] as String).input(),
-      kubernetesServiceAccount: map['kubernetesServiceAccount'] == null ? null : (map['kubernetesServiceAccount'] as String).input(),
+      kubernetesNamespace: map['kubernetesNamespace'] == null ? null : (map['kubernetesNamespace']! as String).input(),
+      kubernetesServiceAccount: map['kubernetesServiceAccount'] == null ? null : (map['kubernetesServiceAccount']! as String).input(),
     );
   }
 }

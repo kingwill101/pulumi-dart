@@ -30,9 +30,9 @@ class AccessPointPosixUser {
 
   factory AccessPointPosixUser.fromMap(Map<String, dynamic> map) {
     return AccessPointPosixUser(
-      posixGroupId: map['posixGroupId'] == null ? null : (map['posixGroupId'] as int).input(),
-      posixSecondaryGroupIds: map['posixSecondaryGroupIds'] == null ? null : ((map['posixSecondaryGroupIds'] as List).cast<int>()).input(),
-      posixUserId: map['posixUserId'] == null ? null : (map['posixUserId'] as int).input(),
+      posixGroupId: map['posixGroupId'] == null ? null : (map['posixGroupId']! as int).input(),
+      posixSecondaryGroupIds: map['posixSecondaryGroupIds'] == null ? null : ((map['posixSecondaryGroupIds']! as List).cast<int>()).input(),
+      posixUserId: map['posixUserId'] == null ? null : (map['posixUserId']! as int).input(),
     );
   }
 }

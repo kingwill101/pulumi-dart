@@ -63,13 +63,13 @@ class RegionNetworkEndpointArgs {
 
   factory RegionNetworkEndpointArgs.fromMap(Map<String, dynamic> map) {
     return RegionNetworkEndpointArgs(
-      clientDestinationPort: map['clientDestinationPort'] == null ? null : (map['clientDestinationPort'] as int).input(),
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      clientDestinationPort: map['clientDestinationPort'] == null ? null : (map['clientDestinationPort']! as int).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
       port: (map['port'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       regionNetworkEndpointGroup: (map['regionNetworkEndpointGroup'] as String).input(),
     );
   }

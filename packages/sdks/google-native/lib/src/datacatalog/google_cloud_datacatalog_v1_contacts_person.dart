@@ -26,8 +26,8 @@ class GoogleCloudDatacatalogV1ContactsPerson {
 
   factory GoogleCloudDatacatalogV1ContactsPerson.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1ContactsPerson(
-      designation: map['designation'] == null ? null : (map['designation'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
+      designation: map['designation'] == null ? null : (map['designation']! as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
     );
   }
 }

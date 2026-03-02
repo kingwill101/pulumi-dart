@@ -23,7 +23,7 @@ class ReleaseReleaseRequirements {
 
   factory ReleaseReleaseRequirements.fromMap(Map<String, dynamic> map) {
     return ReleaseReleaseRequirements(
-      upgradeableFromReleases: map['upgradeableFromReleases'] == null ? null : ((map['upgradeableFromReleases'] as List).cast<String>()).input(),
+      upgradeableFromReleases: map['upgradeableFromReleases'] == null ? null : ((map['upgradeableFromReleases']! as List).cast<String>()).input(),
     );
   }
 }

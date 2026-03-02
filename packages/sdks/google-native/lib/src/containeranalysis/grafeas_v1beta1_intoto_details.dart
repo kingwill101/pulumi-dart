@@ -26,8 +26,8 @@ class GrafeasV1beta1IntotoDetails {
 
   factory GrafeasV1beta1IntotoDetails.fromMap(Map<String, dynamic> map) {
     return GrafeasV1beta1IntotoDetails(
-      signatures: map['signatures'] == null ? null : (pulumi.Input.decodeList<GrafeasV1beta1IntotoSignature>(map['signatures'], (value) => GrafeasV1beta1IntotoSignature.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      signed: map['signed'] == null ? null : (Link.fromMap((map['signed'] as Map).cast<String, dynamic>())).input(),
+      signatures: map['signatures'] == null ? null : (pulumi.Input.decodeList<GrafeasV1beta1IntotoSignature>(map['signatures']!, (value) => GrafeasV1beta1IntotoSignature.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      signed: map['signed'] == null ? null : (Link.fromMap((map['signed']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class AlertStrategy {
 
   factory AlertStrategy.fromMap(Map<String, dynamic> map) {
     return AlertStrategy(
-      autoClose: map['autoClose'] == null ? null : (map['autoClose'] as String).input(),
-      notificationChannelStrategy: map['notificationChannelStrategy'] == null ? null : (pulumi.Input.decodeList<NotificationChannelStrategy>(map['notificationChannelStrategy'], (value) => NotificationChannelStrategy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      notificationRateLimit: map['notificationRateLimit'] == null ? null : (NotificationRateLimit.fromMap((map['notificationRateLimit'] as Map).cast<String, dynamic>())).input(),
+      autoClose: map['autoClose'] == null ? null : (map['autoClose']! as String).input(),
+      notificationChannelStrategy: map['notificationChannelStrategy'] == null ? null : (pulumi.Input.decodeList<NotificationChannelStrategy>(map['notificationChannelStrategy']!, (value) => NotificationChannelStrategy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notificationRateLimit: map['notificationRateLimit'] == null ? null : (NotificationRateLimit.fromMap((map['notificationRateLimit']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

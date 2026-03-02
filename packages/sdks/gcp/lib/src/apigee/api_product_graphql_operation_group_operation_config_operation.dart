@@ -26,8 +26,8 @@ class ApiProductGraphqlOperationGroupOperationConfigOperation {
 
   factory ApiProductGraphqlOperationGroupOperationConfigOperation.fromMap(Map<String, dynamic> map) {
     return ApiProductGraphqlOperationGroupOperationConfigOperation(
-      operation: map['operation'] == null ? null : (map['operation'] as String).input(),
-      operationTypes: map['operationTypes'] == null ? null : ((map['operationTypes'] as List).cast<String>()).input(),
+      operation: map['operation'] == null ? null : (map['operation']! as String).input(),
+      operationTypes: map['operationTypes'] == null ? null : ((map['operationTypes']! as List).cast<String>()).input(),
     );
   }
 }

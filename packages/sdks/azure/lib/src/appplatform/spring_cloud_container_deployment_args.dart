@@ -80,16 +80,16 @@ class SpringCloudContainerDeploymentArgs {
 
   factory SpringCloudContainerDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudContainerDeploymentArgs(
-      addonJson: map['addonJson'] == null ? null : (map['addonJson'] as String).input(),
-      applicationPerformanceMonitoringIds: map['applicationPerformanceMonitoringIds'] == null ? null : ((map['applicationPerformanceMonitoringIds'] as List).cast<String>()).input(),
-      arguments: map['arguments'] == null ? null : ((map['arguments'] as List).cast<String>()).input(),
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables'] as Map).cast<String, String>()).input(),
+      addonJson: map['addonJson'] == null ? null : (map['addonJson']! as String).input(),
+      applicationPerformanceMonitoringIds: map['applicationPerformanceMonitoringIds'] == null ? null : ((map['applicationPerformanceMonitoringIds']! as List).cast<String>()).input(),
+      arguments: map['arguments'] == null ? null : ((map['arguments']! as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables']! as Map).cast<String, String>()).input(),
       image: (map['image'] as String).input(),
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
-      languageFramework: map['languageFramework'] == null ? null : (map['languageFramework'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      quota: map['quota'] == null ? null : (SpringCloudContainerDeploymentQuota.fromMap((map['quota'] as Map).cast<String, dynamic>())).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
+      languageFramework: map['languageFramework'] == null ? null : (map['languageFramework']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      quota: map['quota'] == null ? null : (SpringCloudContainerDeploymentQuota.fromMap((map['quota']! as Map).cast<String, dynamic>())).input(),
       server: (map['server'] as String).input(),
       springCloudAppId: (map['springCloudAppId'] as String).input(),
     );

@@ -45,11 +45,11 @@ class PipelineArgs {
 
   factory PipelineArgs.fromMap(Map<String, dynamic> map) {
     return PipelineArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      pipelineName: map['pipelineName'] == null ? null : (map['pipelineName'] as String).input(),
-      properties: map['properties'] == null ? null : (PipelineProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      pipelineName: map['pipelineName'] == null ? null : (map['pipelineName']! as String).input(),
+      properties: map['properties'] == null ? null : (PipelineProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

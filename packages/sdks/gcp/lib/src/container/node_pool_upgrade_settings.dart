@@ -43,10 +43,10 @@ class NodePoolUpgradeSettings {
 
   factory NodePoolUpgradeSettings.fromMap(Map<String, dynamic> map) {
     return NodePoolUpgradeSettings(
-      blueGreenSettings: map['blueGreenSettings'] == null ? null : (NodePoolUpgradeSettingsBlueGreenSettings.fromMap((map['blueGreenSettings'] as Map).cast<String, dynamic>())).input(),
-      maxSurge: map['maxSurge'] == null ? null : (map['maxSurge'] as int).input(),
-      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable'] as int).input(),
-      strategy: map['strategy'] == null ? null : (map['strategy'] as String).input(),
+      blueGreenSettings: map['blueGreenSettings'] == null ? null : (NodePoolUpgradeSettingsBlueGreenSettings.fromMap((map['blueGreenSettings']! as Map).cast<String, dynamic>())).input(),
+      maxSurge: map['maxSurge'] == null ? null : (map['maxSurge']! as int).input(),
+      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable']! as int).input(),
+      strategy: map['strategy'] == null ? null : (map['strategy']! as String).input(),
     );
   }
 }

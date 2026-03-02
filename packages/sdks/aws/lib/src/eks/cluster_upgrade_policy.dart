@@ -20,7 +20,7 @@ class ClusterUpgradePolicy {
 
   factory ClusterUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return ClusterUpgradePolicy(
-      supportType: map['supportType'] == null ? null : (map['supportType'] as String).input(),
+      supportType: map['supportType'] == null ? null : ((map['supportType'] as String).input()).input(),
     );
   }
 }

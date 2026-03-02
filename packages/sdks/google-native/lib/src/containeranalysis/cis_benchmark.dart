@@ -25,8 +25,8 @@ class CisBenchmark {
 
   factory CisBenchmark.fromMap(Map<String, dynamic> map) {
     return CisBenchmark(
-      profileLevel: map['profileLevel'] == null ? null : (map['profileLevel'] as int).input(),
-      severity: map['severity'] == null ? null : (CisBenchmarkSeverity.fromValue(map['severity'] as String)).input(),
+      profileLevel: map['profileLevel'] == null ? null : (map['profileLevel']! as int).input(),
+      severity: map['severity'] == null ? null : (CisBenchmarkSeverity.fromValue(map['severity']! as String)).input(),
     );
   }
 }

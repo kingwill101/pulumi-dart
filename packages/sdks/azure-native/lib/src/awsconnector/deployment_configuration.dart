@@ -38,10 +38,10 @@ class DeploymentConfiguration {
 
   factory DeploymentConfiguration.fromMap(Map<String, dynamic> map) {
     return DeploymentConfiguration(
-      alarms: map['alarms'] == null ? null : (DeploymentAlarms.fromMap((map['alarms'] as Map).cast<String, dynamic>())).input(),
-      deploymentCircuitBreaker: map['deploymentCircuitBreaker'] == null ? null : (DeploymentCircuitBreaker.fromMap((map['deploymentCircuitBreaker'] as Map).cast<String, dynamic>())).input(),
-      maximumPercent: map['maximumPercent'] == null ? null : (map['maximumPercent'] as int).input(),
-      minimumHealthyPercent: map['minimumHealthyPercent'] == null ? null : (map['minimumHealthyPercent'] as int).input(),
+      alarms: map['alarms'] == null ? null : (DeploymentAlarms.fromMap((map['alarms']! as Map).cast<String, dynamic>())).input(),
+      deploymentCircuitBreaker: map['deploymentCircuitBreaker'] == null ? null : (DeploymentCircuitBreaker.fromMap((map['deploymentCircuitBreaker']! as Map).cast<String, dynamic>())).input(),
+      maximumPercent: map['maximumPercent'] == null ? null : (map['maximumPercent']! as int).input(),
+      minimumHealthyPercent: map['minimumHealthyPercent'] == null ? null : (map['minimumHealthyPercent']! as int).input(),
     );
   }
 }

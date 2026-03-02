@@ -20,7 +20,7 @@ class DataLakeConfigurationLifecycleConfigurationExpiration {
 
   factory DataLakeConfigurationLifecycleConfigurationExpiration.fromMap(Map<String, dynamic> map) {
     return DataLakeConfigurationLifecycleConfigurationExpiration(
-      days: map['days'] == null ? null : (map['days'] as int).input(),
+      days: map['days'] == null ? null : ((map['days'] as int).input()).input(),
     );
   }
 }

@@ -52,12 +52,12 @@ class GetImagesResult {
     return GetImagesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      imageType: map['imageType'] == null ? null : map['imageType'] as String,
+      imageType: map['imageType'] == null ? null : map['imageType']! as String,
       images: pulumi.Input.decodeList<GetImagesImage>(map['images'], (value) => GetImagesImage.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      platform: map['platform'] == null ? null : map['platform'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      platform: map['platform'] == null ? null : map['platform']! as String,
     );
   }
 }

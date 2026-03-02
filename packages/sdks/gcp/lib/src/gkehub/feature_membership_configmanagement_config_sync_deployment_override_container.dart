@@ -40,11 +40,11 @@ class FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer {
 
   factory FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer(
-      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
-      cpuLimit: map['cpuLimit'] == null ? null : (map['cpuLimit'] as String).input(),
-      cpuRequest: map['cpuRequest'] == null ? null : (map['cpuRequest'] as String).input(),
-      memoryLimit: map['memoryLimit'] == null ? null : (map['memoryLimit'] as String).input(),
-      memoryRequest: map['memoryRequest'] == null ? null : (map['memoryRequest'] as String).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
+      cpuLimit: map['cpuLimit'] == null ? null : (map['cpuLimit']! as String).input(),
+      cpuRequest: map['cpuRequest'] == null ? null : (map['cpuRequest']! as String).input(),
+      memoryLimit: map['memoryLimit'] == null ? null : (map['memoryLimit']! as String).input(),
+      memoryRequest: map['memoryRequest'] == null ? null : (map['memoryRequest']! as String).input(),
     );
   }
 }

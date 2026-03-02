@@ -48,11 +48,11 @@ class FolderExclusionArgs {
 
   factory FolderExclusionArgs.fromMap(Map<String, dynamic> map) {
     return FolderExclusionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
       filter: (map['filter'] as String).input(),
       folder: (map['folder'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

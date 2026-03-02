@@ -100,20 +100,20 @@ class LoadBalancerArgs {
 
   factory LoadBalancerArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerArgs(
-      backendAddressPools: map['backendAddressPools'] == null ? null : (pulumi.Input.decodeList<BackendAddressPool>(map['backendAddressPools'], (value) => BackendAddressPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      frontendIPConfigurations: map['frontendIPConfigurations'] == null ? null : (pulumi.Input.decodeList<FrontendIPConfiguration>(map['frontendIPConfigurations'], (value) => FrontendIPConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      inboundNatPools: map['inboundNatPools'] == null ? null : (pulumi.Input.decodeList<InboundNatPool>(map['inboundNatPools'], (value) => InboundNatPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inboundNatRules: map['inboundNatRules'] == null ? null : ((map['inboundNatRules'] as List).cast<InboundNatRuleNetwork>()).input(),
-      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName'] as String).input(),
-      loadBalancingRules: map['loadBalancingRules'] == null ? null : (pulumi.Input.decodeList<LoadBalancingRule>(map['loadBalancingRules'], (value) => LoadBalancingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      outboundRules: map['outboundRules'] == null ? null : (pulumi.Input.decodeList<OutboundRule>(map['outboundRules'], (value) => OutboundRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      probes: map['probes'] == null ? null : (pulumi.Input.decodeList<Probe>(map['probes'], (value) => Probe.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backendAddressPools: map['backendAddressPools'] == null ? null : (pulumi.Input.decodeList<BackendAddressPool>(map['backendAddressPools']!, (value) => BackendAddressPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      frontendIPConfigurations: map['frontendIPConfigurations'] == null ? null : (pulumi.Input.decodeList<FrontendIPConfiguration>(map['frontendIPConfigurations']!, (value) => FrontendIPConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      inboundNatPools: map['inboundNatPools'] == null ? null : (pulumi.Input.decodeList<InboundNatPool>(map['inboundNatPools']!, (value) => InboundNatPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inboundNatRules: map['inboundNatRules'] == null ? null : ((map['inboundNatRules']! as List).cast<InboundNatRuleNetwork>()).input(),
+      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName']! as String).input(),
+      loadBalancingRules: map['loadBalancingRules'] == null ? null : (pulumi.Input.decodeList<LoadBalancingRule>(map['loadBalancingRules']!, (value) => LoadBalancingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      outboundRules: map['outboundRules'] == null ? null : (pulumi.Input.decodeList<OutboundRule>(map['outboundRules']!, (value) => OutboundRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      probes: map['probes'] == null ? null : (pulumi.Input.decodeList<Probe>(map['probes']!, (value) => Probe.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (LoadBalancerSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sku: map['sku'] == null ? null : (LoadBalancerSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

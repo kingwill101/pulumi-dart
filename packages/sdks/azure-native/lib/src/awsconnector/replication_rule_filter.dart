@@ -33,9 +33,9 @@ class ReplicationRuleFilter {
 
   factory ReplicationRuleFilter.fromMap(Map<String, dynamic> map) {
     return ReplicationRuleFilter(
-      and: map['and'] == null ? null : (ReplicationRuleAndOperator.fromMap((map['and'] as Map).cast<String, dynamic>())).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      tagFilter: map['tagFilter'] == null ? null : (TagFilter.fromMap((map['tagFilter'] as Map).cast<String, dynamic>())).input(),
+      and: map['and'] == null ? null : (ReplicationRuleAndOperator.fromMap((map['and']! as Map).cast<String, dynamic>())).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      tagFilter: map['tagFilter'] == null ? null : (TagFilter.fromMap((map['tagFilter']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

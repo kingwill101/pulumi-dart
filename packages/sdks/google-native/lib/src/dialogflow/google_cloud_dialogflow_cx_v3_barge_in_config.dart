@@ -26,8 +26,8 @@ class GoogleCloudDialogflowCxV3BargeInConfig {
 
   factory GoogleCloudDialogflowCxV3BargeInConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3BargeInConfig(
-      noBargeInDuration: map['noBargeInDuration'] == null ? null : (map['noBargeInDuration'] as String).input(),
-      totalDuration: map['totalDuration'] == null ? null : (map['totalDuration'] as String).input(),
+      noBargeInDuration: map['noBargeInDuration'] == null ? null : (map['noBargeInDuration']! as String).input(),
+      totalDuration: map['totalDuration'] == null ? null : (map['totalDuration']! as String).input(),
     );
   }
 }

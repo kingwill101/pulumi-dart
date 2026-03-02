@@ -39,10 +39,10 @@ class InstanceDesiredUserCreatedEndpointsState {
 
   factory InstanceDesiredUserCreatedEndpointsState.fromMap(Map<String, dynamic> map) {
     return InstanceDesiredUserCreatedEndpointsState(
-      desiredUserCreatedEndpoints: map['desiredUserCreatedEndpoints'] == null ? null : (pulumi.Input.decodeList<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>(map['desiredUserCreatedEndpoints'], (value) => InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      desiredUserCreatedEndpoints: map['desiredUserCreatedEndpoints'] == null ? null : (pulumi.Input.decodeList<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>(map['desiredUserCreatedEndpoints']!, (value) => InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

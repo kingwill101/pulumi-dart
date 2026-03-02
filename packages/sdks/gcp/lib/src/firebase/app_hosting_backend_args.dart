@@ -94,15 +94,15 @@ class AppHostingBackendArgs {
 
   factory AppHostingBackendArgs.fromMap(Map<String, dynamic> map) {
     return AppHostingBackendArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
       appId: (map['appId'] as String).input(),
       backendId: (map['backendId'] as String).input(),
-      codebase: map['codebase'] == null ? null : (AppHostingBackendCodebase.fromMap((map['codebase'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      codebase: map['codebase'] == null ? null : (AppHostingBackendCodebase.fromMap((map['codebase']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      environment: map['environment'] == null ? null : (map['environment']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serviceAccount: (map['serviceAccount'] as String).input(),
       servingLocality: (map['servingLocality'] as String).input(),
     );

@@ -29,8 +29,8 @@ class RuntimeTemplateSoftwareConfig {
 
   factory RuntimeTemplateSoftwareConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeTemplateSoftwareConfig(
-      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<RuntimeTemplateSoftwareConfigEnv>(map['envs'], (value) => RuntimeTemplateSoftwareConfigEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      postStartupScriptConfig: map['postStartupScriptConfig'] == null ? null : (RuntimeTemplateSoftwareConfigPostStartupScriptConfig.fromMap((map['postStartupScriptConfig'] as Map).cast<String, dynamic>())).input(),
+      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<RuntimeTemplateSoftwareConfigEnv>(map['envs']!, (value) => RuntimeTemplateSoftwareConfigEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      postStartupScriptConfig: map['postStartupScriptConfig'] == null ? null : (RuntimeTemplateSoftwareConfigPostStartupScriptConfig.fromMap((map['postStartupScriptConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

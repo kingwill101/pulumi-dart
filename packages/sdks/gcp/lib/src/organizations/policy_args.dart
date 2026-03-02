@@ -60,12 +60,12 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      booleanPolicy: map['booleanPolicy'] == null ? null : (PolicyBooleanPolicy.fromMap((map['booleanPolicy'] as Map).cast<String, dynamic>())).input(),
+      booleanPolicy: map['booleanPolicy'] == null ? null : (PolicyBooleanPolicy.fromMap((map['booleanPolicy']! as Map).cast<String, dynamic>())).input(),
       constraint: (map['constraint'] as String).input(),
-      listPolicy: map['listPolicy'] == null ? null : (PolicyListPolicy.fromMap((map['listPolicy'] as Map).cast<String, dynamic>())).input(),
+      listPolicy: map['listPolicy'] == null ? null : (PolicyListPolicy.fromMap((map['listPolicy']! as Map).cast<String, dynamic>())).input(),
       orgId: (map['orgId'] as String).input(),
-      restorePolicy: map['restorePolicy'] == null ? null : (PolicyRestorePolicy.fromMap((map['restorePolicy'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      restorePolicy: map['restorePolicy'] == null ? null : (PolicyRestorePolicy.fromMap((map['restorePolicy']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

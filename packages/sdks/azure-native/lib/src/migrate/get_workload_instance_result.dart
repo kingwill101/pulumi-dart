@@ -56,7 +56,7 @@ class GetWorkloadInstanceResult {
       name: map['name'] as String,
       properties: WorkloadInstanceModelPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
       systemData: WorkloadInstanceModelResponseSystemData.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

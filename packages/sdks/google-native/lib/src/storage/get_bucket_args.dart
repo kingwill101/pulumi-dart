@@ -40,10 +40,10 @@ class GetBucketArgs {
   factory GetBucketArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketArgs(
       bucket: (map['bucket'] as String).input(),
-      ifMetagenerationMatch: map['ifMetagenerationMatch'] == null ? null : (map['ifMetagenerationMatch'] as String).input(),
-      ifMetagenerationNotMatch: map['ifMetagenerationNotMatch'] == null ? null : (map['ifMetagenerationNotMatch'] as String).input(),
-      projection: map['projection'] == null ? null : (map['projection'] as String).input(),
-      userProject: map['userProject'] == null ? null : (map['userProject'] as String).input(),
+      ifMetagenerationMatch: map['ifMetagenerationMatch'] == null ? null : (map['ifMetagenerationMatch']! as String).input(),
+      ifMetagenerationNotMatch: map['ifMetagenerationNotMatch'] == null ? null : (map['ifMetagenerationNotMatch']! as String).input(),
+      projection: map['projection'] == null ? null : (map['projection']! as String).input(),
+      userProject: map['userProject'] == null ? null : (map['userProject']! as String).input(),
     );
   }
 }

@@ -31,7 +31,7 @@ class BucketOverwriteConfigArgs {
   factory BucketOverwriteConfigArgs.fromMap(Map<String, dynamic> map) {
     return BucketOverwriteConfigArgs(
       bucket: (map['bucket'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<BucketOverwriteConfigRule>(map['rules'], (value) => BucketOverwriteConfigRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<BucketOverwriteConfigRule>(map['rules']!, (value) => BucketOverwriteConfigRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

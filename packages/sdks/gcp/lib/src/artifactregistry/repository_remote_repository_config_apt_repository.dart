@@ -22,7 +22,7 @@ class RepositoryRemoteRepositoryConfigAptRepository {
 
   factory RepositoryRemoteRepositoryConfigAptRepository.fromMap(Map<String, dynamic> map) {
     return RepositoryRemoteRepositoryConfigAptRepository(
-      publicRepository: map['publicRepository'] == null ? null : (RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository.fromMap((map['publicRepository'] as Map).cast<String, dynamic>())).input(),
+      publicRepository: map['publicRepository'] == null ? null : (RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository.fromMap((map['publicRepository']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

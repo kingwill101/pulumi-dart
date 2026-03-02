@@ -42,10 +42,10 @@ class ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration {
   factory ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration(
       enabled: (map['enabled'] as bool).input(),
-      encryptionKeyArn: map['encryptionKeyArn'] == null ? null : (map['encryptionKeyArn'] as String).input(),
-      logGroupName: map['logGroupName'] == null ? null : (map['logGroupName'] as String).input(),
-      logStreamNamePrefix: map['logStreamNamePrefix'] == null ? null : (map['logStreamNamePrefix'] as String).input(),
-      logTypes: map['logTypes'] == null ? null : (pulumi.Input.decodeList<ApplicationMonitoringConfigurationCloudwatchLoggingConfigurationLogType>(map['logTypes'], (value) => ApplicationMonitoringConfigurationCloudwatchLoggingConfigurationLogType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encryptionKeyArn: map['encryptionKeyArn'] == null ? null : ((map['encryptionKeyArn'] as String).input()).input(),
+      logGroupName: map['logGroupName'] == null ? null : ((map['logGroupName'] as String).input()).input(),
+      logStreamNamePrefix: map['logStreamNamePrefix'] == null ? null : ((map['logStreamNamePrefix'] as String).input()).input(),
+      logTypes: map['logTypes'] == null ? null : ((pulumi.Input.decodeList<ApplicationMonitoringConfigurationCloudwatchLoggingConfigurationLogType>(map['logTypes']!, (value) => ApplicationMonitoringConfigurationCloudwatchLoggingConfigurationLogType.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class V3CustomDomainTlsConfig {
 
   factory V3CustomDomainTlsConfig.fromMap(Map<String, dynamic> map) {
     return V3CustomDomainTlsConfig(
-      cipherSuites: map['cipherSuites'] == null ? null : ((map['cipherSuites'] as List).cast<String>()).input(),
-      maxVersion: map['maxVersion'] == null ? null : (map['maxVersion'] as String).input(),
-      minVersion: map['minVersion'] == null ? null : (map['minVersion'] as String).input(),
+      cipherSuites: map['cipherSuites'] == null ? null : ((map['cipherSuites']! as List).cast<String>()).input(),
+      maxVersion: map['maxVersion'] == null ? null : (map['maxVersion']! as String).input(),
+      minVersion: map['minVersion'] == null ? null : (map['minVersion']! as String).input(),
     );
   }
 }

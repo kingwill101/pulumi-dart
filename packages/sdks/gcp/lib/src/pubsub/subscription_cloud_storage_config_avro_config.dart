@@ -25,8 +25,8 @@ class SubscriptionCloudStorageConfigAvroConfig {
 
   factory SubscriptionCloudStorageConfigAvroConfig.fromMap(Map<String, dynamic> map) {
     return SubscriptionCloudStorageConfigAvroConfig(
-      useTopicSchema: map['useTopicSchema'] == null ? null : (map['useTopicSchema'] as bool).input(),
-      writeMetadata: map['writeMetadata'] == null ? null : (map['writeMetadata'] as bool).input(),
+      useTopicSchema: map['useTopicSchema'] == null ? null : (map['useTopicSchema']! as bool).input(),
+      writeMetadata: map['writeMetadata'] == null ? null : (map['writeMetadata']! as bool).input(),
     );
   }
 }

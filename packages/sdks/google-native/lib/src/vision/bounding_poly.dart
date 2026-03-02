@@ -28,8 +28,8 @@ class BoundingPoly {
 
   factory BoundingPoly.fromMap(Map<String, dynamic> map) {
     return BoundingPoly(
-      normalizedVertices: map['normalizedVertices'] == null ? null : (pulumi.Input.decodeList<NormalizedVertex>(map['normalizedVertices'], (value) => NormalizedVertex.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vertices: map['vertices'] == null ? null : (pulumi.Input.decodeList<Vertex>(map['vertices'], (value) => Vertex.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      normalizedVertices: map['normalizedVertices'] == null ? null : (pulumi.Input.decodeList<NormalizedVertex>(map['normalizedVertices']!, (value) => NormalizedVertex.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vertices: map['vertices'] == null ? null : (pulumi.Input.decodeList<Vertex>(map['vertices']!, (value) => Vertex.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

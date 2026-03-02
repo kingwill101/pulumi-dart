@@ -27,8 +27,8 @@ class GooglePrivacyDlpV2FileSet {
 
   factory GooglePrivacyDlpV2FileSet.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2FileSet(
-      regexFileSet: map['regexFileSet'] == null ? null : (GooglePrivacyDlpV2CloudStorageRegexFileSet.fromMap((map['regexFileSet'] as Map).cast<String, dynamic>())).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      regexFileSet: map['regexFileSet'] == null ? null : (GooglePrivacyDlpV2CloudStorageRegexFileSet.fromMap((map['regexFileSet']! as Map).cast<String, dynamic>())).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

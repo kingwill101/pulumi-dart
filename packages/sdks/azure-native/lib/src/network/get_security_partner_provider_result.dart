@@ -74,14 +74,14 @@ class GetSecurityPartnerProviderResult {
       azureApiVersion: map['azureApiVersion'] as String,
       connectionStatus: map['connectionStatus'] as String,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      securityProviderName: map['securityProviderName'] == null ? null : map['securityProviderName'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      securityProviderName: map['securityProviderName'] == null ? null : map['securityProviderName']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      virtualHub: map['virtualHub'] == null ? null : SubResourceResponse.fromMap((map['virtualHub'] as Map).cast<String, dynamic>()),
+      virtualHub: map['virtualHub'] == null ? null : SubResourceResponse.fromMap((map['virtualHub']! as Map).cast<String, dynamic>()),
     );
   }
 }

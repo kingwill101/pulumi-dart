@@ -34,7 +34,7 @@ class VolumeDataProtectionBackupPolicy {
     return VolumeDataProtectionBackupPolicy(
       backupPolicyId: (map['backupPolicyId'] as String).input(),
       backupVaultId: (map['backupVaultId'] as String).input(),
-      policyEnabled: map['policyEnabled'] == null ? null : (map['policyEnabled'] as bool).input(),
+      policyEnabled: map['policyEnabled'] == null ? null : (map['policyEnabled']! as bool).input(),
     );
   }
 }

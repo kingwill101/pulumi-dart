@@ -75,17 +75,17 @@ class AzureStorageLinkedServiceResponse {
 
   factory AzureStorageLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return AzureStorageLinkedServiceResponse(
-      accountKey: map['accountKey'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['accountKey'] as Map).cast<String, dynamic>())).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
-      connectionString: map['connectionString'] == null ? null : (map['connectionString']).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sasToken: map['sasToken'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['sasToken'] as Map).cast<String, dynamic>())).input(),
-      sasUri: map['sasUri'] == null ? null : (map['sasUri']).input(),
+      accountKey: map['accountKey'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['accountKey']! as Map).cast<String, dynamic>())).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia']! as Map).cast<String, dynamic>())).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']!).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters']!, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sasToken: map['sasToken'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['sasToken']! as Map).cast<String, dynamic>())).input(),
+      sasUri: map['sasUri'] == null ? null : (map['sasUri']!).input(),
       type: (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class BucketLifecycleConfigurationV2RuleExpiration {
 
   factory BucketLifecycleConfigurationV2RuleExpiration.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationV2RuleExpiration(
-      date: map['date'] == null ? null : (map['date'] as String).input(),
-      days: map['days'] == null ? null : (map['days'] as int).input(),
-      expiredObjectDeleteMarker: map['expiredObjectDeleteMarker'] == null ? null : (map['expiredObjectDeleteMarker'] as bool).input(),
+      date: map['date'] == null ? null : ((map['date'] as String).input()).input(),
+      days: map['days'] == null ? null : ((map['days'] as int).input()).input(),
+      expiredObjectDeleteMarker: map['expiredObjectDeleteMarker'] == null ? null : ((map['expiredObjectDeleteMarker'] as bool).input()).input(),
     );
   }
 }

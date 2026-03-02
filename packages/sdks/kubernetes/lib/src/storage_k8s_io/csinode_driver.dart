@@ -37,10 +37,10 @@ class CSINodeDriver {
 
   factory CSINodeDriver.fromMap(Map<String, dynamic> map) {
     return CSINodeDriver(
-      allocatable: map['allocatable'] == null ? null : (VolumeNodeResources.fromMap((map['allocatable'] as Map).cast<String, dynamic>())).input(),
+      allocatable: map['allocatable'] == null ? null : (VolumeNodeResources.fromMap((map['allocatable']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
       nodeID: (map['nodeID'] as String).input(),
-      topologyKeys: map['topologyKeys'] == null ? null : ((map['topologyKeys'] as List).cast<String>()).input(),
+      topologyKeys: map['topologyKeys'] == null ? null : ((map['topologyKeys']! as List).cast<String>()).input(),
     );
   }
 }

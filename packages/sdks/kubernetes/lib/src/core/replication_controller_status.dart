@@ -47,11 +47,11 @@ class ReplicationControllerStatus {
 
   factory ReplicationControllerStatus.fromMap(Map<String, dynamic> map) {
     return ReplicationControllerStatus(
-      availableReplicas: map['availableReplicas'] == null ? null : (map['availableReplicas'] as int).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ReplicationControllerCondition>(map['conditions'], (value) => ReplicationControllerCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fullyLabeledReplicas: map['fullyLabeledReplicas'] == null ? null : (map['fullyLabeledReplicas'] as int).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
-      readyReplicas: map['readyReplicas'] == null ? null : (map['readyReplicas'] as int).input(),
+      availableReplicas: map['availableReplicas'] == null ? null : (map['availableReplicas']! as int).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ReplicationControllerCondition>(map['conditions']!, (value) => ReplicationControllerCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fullyLabeledReplicas: map['fullyLabeledReplicas'] == null ? null : (map['fullyLabeledReplicas']! as int).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
+      readyReplicas: map['readyReplicas'] == null ? null : (map['readyReplicas']! as int).input(),
       replicas: (map['replicas'] as int).input(),
     );
   }

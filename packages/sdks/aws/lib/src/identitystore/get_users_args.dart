@@ -30,7 +30,7 @@ class GetUsersArgs {
   factory GetUsersArgs.fromMap(Map<String, dynamic> map) {
     return GetUsersArgs(
       identityStoreId: (map['identityStoreId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -30,7 +30,7 @@ class GetNfsArgs {
   factory GetNfsArgs.fromMap(Map<String, dynamic> map) {
     return GetNfsArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class GetDiskComputeV1Args {
   factory GetDiskComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetDiskComputeV1Args(
       disk: (map['disk'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       zone: (map['zone'] as String).input(),
     );
   }

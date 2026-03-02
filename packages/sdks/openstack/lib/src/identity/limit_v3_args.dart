@@ -60,10 +60,10 @@ class LimitV3Args {
 
   factory LimitV3Args.fromMap(Map<String, dynamic> map) {
     return LimitV3Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       resourceLimit: (map['resourceLimit'] as int).input(),
       resourceName: (map['resourceName'] as String).input(),
       serviceId: (map['serviceId'] as String).input(),

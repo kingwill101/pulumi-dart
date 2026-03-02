@@ -67,12 +67,12 @@ class ConnectivityConfigurationArgs {
   factory ConnectivityConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ConnectivityConfigurationArgs(
       appliesToGroups: (pulumi.Input.decodeList<ConnectivityGroupItem>(map['appliesToGroups'], (value) => ConnectivityGroupItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      configurationName: map['configurationName'] == null ? null : (map['configurationName'] as String).input(),
+      configurationName: map['configurationName'] == null ? null : (map['configurationName']! as String).input(),
       connectivityTopology: (map['connectivityTopology'] as String).input(),
-      deleteExistingPeering: map['deleteExistingPeering'] == null ? null : (map['deleteExistingPeering'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      hubs: map['hubs'] == null ? null : (pulumi.Input.decodeList<Hub>(map['hubs'], (value) => Hub.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      isGlobal: map['isGlobal'] == null ? null : (map['isGlobal'] as String).input(),
+      deleteExistingPeering: map['deleteExistingPeering'] == null ? null : (map['deleteExistingPeering']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      hubs: map['hubs'] == null ? null : (pulumi.Input.decodeList<Hub>(map['hubs']!, (value) => Hub.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isGlobal: map['isGlobal'] == null ? null : (map['isGlobal']! as String).input(),
       networkManagerName: (map['networkManagerName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

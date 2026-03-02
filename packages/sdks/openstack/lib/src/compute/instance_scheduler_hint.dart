@@ -70,14 +70,14 @@ class InstanceSchedulerHint {
 
   factory InstanceSchedulerHint.fromMap(Map<String, dynamic> map) {
     return InstanceSchedulerHint(
-      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
-      buildNearHostIp: map['buildNearHostIp'] == null ? null : (map['buildNearHostIp'] as String).input(),
-      differentCells: map['differentCells'] == null ? null : ((map['differentCells'] as List).cast<String>()).input(),
-      differentHosts: map['differentHosts'] == null ? null : ((map['differentHosts'] as List).cast<String>()).input(),
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      queries: map['queries'] == null ? null : ((map['queries'] as List).cast<String>()).input(),
-      sameHosts: map['sameHosts'] == null ? null : ((map['sameHosts'] as List).cast<String>()).input(),
-      targetCell: map['targetCell'] == null ? null : (map['targetCell'] as String).input(),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties']! as Map).cast<String, String>()).input(),
+      buildNearHostIp: map['buildNearHostIp'] == null ? null : (map['buildNearHostIp']! as String).input(),
+      differentCells: map['differentCells'] == null ? null : ((map['differentCells']! as List).cast<String>()).input(),
+      differentHosts: map['differentHosts'] == null ? null : ((map['differentHosts']! as List).cast<String>()).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      queries: map['queries'] == null ? null : ((map['queries']! as List).cast<String>()).input(),
+      sameHosts: map['sameHosts'] == null ? null : ((map['sameHosts']! as List).cast<String>()).input(),
+      targetCell: map['targetCell'] == null ? null : (map['targetCell']! as String).input(),
     );
   }
 }

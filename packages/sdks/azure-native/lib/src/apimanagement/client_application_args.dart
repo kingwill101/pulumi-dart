@@ -49,8 +49,8 @@ class ClientApplicationArgs {
 
   factory ClientApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ClientApplicationArgs(
-      clientApplicationId: map['clientApplicationId'] == null ? null : (map['clientApplicationId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      clientApplicationId: map['clientApplicationId'] == null ? null : (map['clientApplicationId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       ownerId: (map['ownerId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

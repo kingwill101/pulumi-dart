@@ -22,7 +22,7 @@ class AuthenticationResponse {
 
   factory AuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return AuthenticationResponse(
-      symmetricKey: map['symmetricKey'] == null ? null : (SymmetricKeyResponse.fromMap((map['symmetricKey'] as Map).cast<String, dynamic>())).input(),
+      symmetricKey: map['symmetricKey'] == null ? null : (SymmetricKeyResponse.fromMap((map['symmetricKey']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

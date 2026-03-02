@@ -56,14 +56,14 @@ class HostedConfigurationVersionState {
 
   factory HostedConfigurationVersionState.fromMap(Map<String, dynamic> map) {
     return HostedConfigurationVersionState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      configurationProfileId: map['configurationProfileId'] == null ? null : (map['configurationProfileId'] as String).input(),
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      versionNumber: map['versionNumber'] == null ? null : (map['versionNumber'] as int).input(),
+      applicationId: map['applicationId'] == null ? null : ((map['applicationId'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      configurationProfileId: map['configurationProfileId'] == null ? null : ((map['configurationProfileId'] as String).input()).input(),
+      content: map['content'] == null ? null : ((map['content'] as String).input()).input(),
+      contentType: map['contentType'] == null ? null : ((map['contentType'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      versionNumber: map['versionNumber'] == null ? null : ((map['versionNumber'] as int).input()).input(),
     );
   }
 }

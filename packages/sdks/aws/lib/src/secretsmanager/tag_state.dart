@@ -36,10 +36,10 @@ class TagState {
 
   factory TagState.fromMap(Map<String, dynamic> map) {
     return TagState(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      secretId: map['secretId'] == null ? null : (map['secretId'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      secretId: map['secretId'] == null ? null : ((map['secretId'] as String).input()).input(),
+      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class Hl7SchemaConfig {
 
   factory Hl7SchemaConfig.fromMap(Map<String, dynamic> map) {
     return Hl7SchemaConfig(
-      messageSchemaConfigs: map['messageSchemaConfigs'] == null ? null : ((map['messageSchemaConfigs'] as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (pulumi.Input.decodeList<VersionSource>(map['version'], (value) => VersionSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      messageSchemaConfigs: map['messageSchemaConfigs'] == null ? null : ((map['messageSchemaConfigs']! as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (pulumi.Input.decodeList<VersionSource>(map['version']!, (value) => VersionSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

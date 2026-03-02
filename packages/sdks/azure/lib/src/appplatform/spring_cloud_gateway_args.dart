@@ -106,22 +106,22 @@ class SpringCloudGatewayArgs {
 
   factory SpringCloudGatewayArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudGatewayArgs(
-      apiMetadata: map['apiMetadata'] == null ? null : (SpringCloudGatewayApiMetadata.fromMap((map['apiMetadata'] as Map).cast<String, dynamic>())).input(),
-      applicationPerformanceMonitoringIds: map['applicationPerformanceMonitoringIds'] == null ? null : ((map['applicationPerformanceMonitoringIds'] as List).cast<String>()).input(),
-      applicationPerformanceMonitoringTypes: map['applicationPerformanceMonitoringTypes'] == null ? null : ((map['applicationPerformanceMonitoringTypes'] as List).cast<String>()).input(),
-      clientAuthorization: map['clientAuthorization'] == null ? null : (SpringCloudGatewayClientAuthorization.fromMap((map['clientAuthorization'] as Map).cast<String, dynamic>())).input(),
-      cors: map['cors'] == null ? null : (SpringCloudGatewayCors.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables'] as Map).cast<String, String>()).input(),
-      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly'] as bool).input(),
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
-      localResponseCachePerInstance: map['localResponseCachePerInstance'] == null ? null : (SpringCloudGatewayLocalResponseCachePerInstance.fromMap((map['localResponseCachePerInstance'] as Map).cast<String, dynamic>())).input(),
-      localResponseCachePerRoute: map['localResponseCachePerRoute'] == null ? null : (SpringCloudGatewayLocalResponseCachePerRoute.fromMap((map['localResponseCachePerRoute'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
-      quota: map['quota'] == null ? null : (SpringCloudGatewayQuota.fromMap((map['quota'] as Map).cast<String, dynamic>())).input(),
-      sensitiveEnvironmentVariables: map['sensitiveEnvironmentVariables'] == null ? null : ((map['sensitiveEnvironmentVariables'] as Map).cast<String, String>()).input(),
+      apiMetadata: map['apiMetadata'] == null ? null : (SpringCloudGatewayApiMetadata.fromMap((map['apiMetadata']! as Map).cast<String, dynamic>())).input(),
+      applicationPerformanceMonitoringIds: map['applicationPerformanceMonitoringIds'] == null ? null : ((map['applicationPerformanceMonitoringIds']! as List).cast<String>()).input(),
+      applicationPerformanceMonitoringTypes: map['applicationPerformanceMonitoringTypes'] == null ? null : ((map['applicationPerformanceMonitoringTypes']! as List).cast<String>()).input(),
+      clientAuthorization: map['clientAuthorization'] == null ? null : (SpringCloudGatewayClientAuthorization.fromMap((map['clientAuthorization']! as Map).cast<String, dynamic>())).input(),
+      cors: map['cors'] == null ? null : (SpringCloudGatewayCors.fromMap((map['cors']! as Map).cast<String, dynamic>())).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables']! as Map).cast<String, String>()).input(),
+      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly']! as bool).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
+      localResponseCachePerInstance: map['localResponseCachePerInstance'] == null ? null : (SpringCloudGatewayLocalResponseCachePerInstance.fromMap((map['localResponseCachePerInstance']! as Map).cast<String, dynamic>())).input(),
+      localResponseCachePerRoute: map['localResponseCachePerRoute'] == null ? null : (SpringCloudGatewayLocalResponseCachePerRoute.fromMap((map['localResponseCachePerRoute']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
+      quota: map['quota'] == null ? null : (SpringCloudGatewayQuota.fromMap((map['quota']! as Map).cast<String, dynamic>())).input(),
+      sensitiveEnvironmentVariables: map['sensitiveEnvironmentVariables'] == null ? null : ((map['sensitiveEnvironmentVariables']! as Map).cast<String, String>()).input(),
       springCloudServiceId: (map['springCloudServiceId'] as String).input(),
-      sso: map['sso'] == null ? null : (SpringCloudGatewaySso.fromMap((map['sso'] as Map).cast<String, dynamic>())).input(),
+      sso: map['sso'] == null ? null : (SpringCloudGatewaySso.fromMap((map['sso']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

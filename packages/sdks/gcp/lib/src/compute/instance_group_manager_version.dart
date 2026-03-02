@@ -35,8 +35,8 @@ class InstanceGroupManagerVersion {
   factory InstanceGroupManagerVersion.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerVersion(
       instanceTemplate: (map['instanceTemplate'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      targetSize: map['targetSize'] == null ? null : (InstanceGroupManagerVersionTargetSize.fromMap((map['targetSize'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      targetSize: map['targetSize'] == null ? null : (InstanceGroupManagerVersionTargetSize.fromMap((map['targetSize']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

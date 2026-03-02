@@ -41,11 +41,11 @@ class LegacyCustomOriginResponse {
 
   factory LegacyCustomOriginResponse.fromMap(Map<String, dynamic> map) {
     return LegacyCustomOriginResponse(
-      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
-      httpPort: map['httpPort'] == null ? null : (map['httpPort'] as int).input(),
-      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort'] as int).input(),
-      originProtocolPolicy: map['originProtocolPolicy'] == null ? null : (map['originProtocolPolicy'] as String).input(),
-      originSSLProtocols: map['originSSLProtocols'] == null ? null : ((map['originSSLProtocols'] as List).cast<String>()).input(),
+      dnsName: map['dnsName'] == null ? null : (map['dnsName']! as String).input(),
+      httpPort: map['httpPort'] == null ? null : (map['httpPort']! as int).input(),
+      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort']! as int).input(),
+      originProtocolPolicy: map['originProtocolPolicy'] == null ? null : (map['originProtocolPolicy']! as String).input(),
+      originSSLProtocols: map['originSSLProtocols'] == null ? null : ((map['originSSLProtocols']! as List).cast<String>()).input(),
     );
   }
 }

@@ -44,11 +44,11 @@ class ApiGatewayConfigConnectionArgs {
 
   factory ApiGatewayConfigConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ApiGatewayConfigConnectionArgs(
-      configConnectionName: map['configConnectionName'] == null ? null : (map['configConnectionName'] as String).input(),
+      configConnectionName: map['configConnectionName'] == null ? null : (map['configConnectionName']! as String).input(),
       gatewayName: (map['gatewayName'] as String).input(),
-      hostnames: map['hostnames'] == null ? null : ((map['hostnames'] as List).cast<String>()).input(),
+      hostnames: map['hostnames'] == null ? null : ((map['hostnames']! as List).cast<String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sourceId: map['sourceId'] == null ? null : (map['sourceId'] as String).input(),
+      sourceId: map['sourceId'] == null ? null : (map['sourceId']! as String).input(),
     );
   }
 }

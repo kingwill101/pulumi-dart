@@ -35,10 +35,10 @@ class ServiceApiMethod {
 
   factory ServiceApiMethod.fromMap(Map<String, dynamic> map) {
     return ServiceApiMethod(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      requestType: map['requestType'] == null ? null : (map['requestType'] as String).input(),
-      responseType: map['responseType'] == null ? null : (map['responseType'] as String).input(),
-      syntax: map['syntax'] == null ? null : (map['syntax'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      requestType: map['requestType'] == null ? null : (map['requestType']! as String).input(),
+      responseType: map['responseType'] == null ? null : (map['responseType']! as String).input(),
+      syntax: map['syntax'] == null ? null : (map['syntax']! as String).input(),
     );
   }
 }

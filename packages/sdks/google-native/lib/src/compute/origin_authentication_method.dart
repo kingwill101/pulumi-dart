@@ -21,7 +21,7 @@ class OriginAuthenticationMethod {
 
   factory OriginAuthenticationMethod.fromMap(Map<String, dynamic> map) {
     return OriginAuthenticationMethod(
-      jwt: map['jwt'] == null ? null : (Jwt.fromMap((map['jwt'] as Map).cast<String, dynamic>())).input(),
+      jwt: map['jwt'] == null ? null : (Jwt.fromMap((map['jwt']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

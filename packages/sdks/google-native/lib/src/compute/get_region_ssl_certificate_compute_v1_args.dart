@@ -31,7 +31,7 @@ class GetRegionSslCertificateComputeV1Args {
 
   factory GetRegionSslCertificateComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetRegionSslCertificateComputeV1Args(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
       sslCertificate: (map['sslCertificate'] as String).input(),
     );

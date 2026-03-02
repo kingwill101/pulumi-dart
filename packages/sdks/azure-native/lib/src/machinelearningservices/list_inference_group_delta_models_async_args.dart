@@ -54,12 +54,12 @@ class ListInferenceGroupDeltaModelsAsyncArgs {
 
   factory ListInferenceGroupDeltaModelsAsyncArgs.fromMap(Map<String, dynamic> map) {
     return ListInferenceGroupDeltaModelsAsyncArgs(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
       groupName: (map['groupName'] as String).input(),
       poolName: (map['poolName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
-      targetBaseModel: map['targetBaseModel'] == null ? null : (map['targetBaseModel'] as String).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken']! as String).input(),
+      targetBaseModel: map['targetBaseModel'] == null ? null : (map['targetBaseModel']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

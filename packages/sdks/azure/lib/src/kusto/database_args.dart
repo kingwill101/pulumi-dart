@@ -50,11 +50,11 @@ class DatabaseArgs {
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
       clusterName: (map['clusterName'] as String).input(),
-      hotCachePeriod: map['hotCachePeriod'] == null ? null : (map['hotCachePeriod'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      hotCachePeriod: map['hotCachePeriod'] == null ? null : (map['hotCachePeriod']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      softDeletePeriod: map['softDeletePeriod'] == null ? null : (map['softDeletePeriod'] as String).input(),
+      softDeletePeriod: map['softDeletePeriod'] == null ? null : (map['softDeletePeriod']! as String).input(),
     );
   }
 }

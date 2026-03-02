@@ -56,13 +56,13 @@ class AggregatorState {
 
   factory AggregatorState.fromMap(Map<String, dynamic> map) {
     return AggregatorState(
-      aggregatorAccounts: map['aggregatorAccounts'] == null ? null : (pulumi.Input.decodeList<AggregatorAggregatorAccount>(map['aggregatorAccounts'], (value) => AggregatorAggregatorAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      aggregatorName: map['aggregatorName'] == null ? null : (map['aggregatorName'] as String).input(),
-      aggregatorType: map['aggregatorType'] == null ? null : (map['aggregatorType'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      folderId: map['folderId'] == null ? null : (map['folderId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      aggregatorAccounts: map['aggregatorAccounts'] == null ? null : (pulumi.Input.decodeList<AggregatorAggregatorAccount>(map['aggregatorAccounts']!, (value) => AggregatorAggregatorAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aggregatorName: map['aggregatorName'] == null ? null : (map['aggregatorName']! as String).input(),
+      aggregatorType: map['aggregatorType'] == null ? null : (map['aggregatorType']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      folderId: map['folderId'] == null ? null : (map['folderId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

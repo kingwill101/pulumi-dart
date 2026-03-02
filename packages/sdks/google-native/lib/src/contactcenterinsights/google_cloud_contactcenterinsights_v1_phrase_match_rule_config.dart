@@ -22,7 +22,7 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig {
 
   factory GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig(
-      exactMatchConfig: map['exactMatchConfig'] == null ? null : (GoogleCloudContactcenterinsightsV1ExactMatchConfig.fromMap((map['exactMatchConfig'] as Map).cast<String, dynamic>())).input(),
+      exactMatchConfig: map['exactMatchConfig'] == null ? null : (GoogleCloudContactcenterinsightsV1ExactMatchConfig.fromMap((map['exactMatchConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

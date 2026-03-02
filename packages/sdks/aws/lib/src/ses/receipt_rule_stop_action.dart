@@ -32,7 +32,7 @@ class ReceiptRuleStopAction {
     return ReceiptRuleStopAction(
       position: (map['position'] as int).input(),
       scope: (map['scope'] as String).input(),
-      topicArn: map['topicArn'] == null ? null : (map['topicArn'] as String).input(),
+      topicArn: map['topicArn'] == null ? null : ((map['topicArn'] as String).input()).input(),
     );
   }
 }

@@ -43,10 +43,10 @@ class FlowletDataFlowTransformation {
 
   factory FlowletDataFlowTransformation.fromMap(Map<String, dynamic> map) {
     return FlowletDataFlowTransformation(
-      dataset: map['dataset'] == null ? null : (FlowletDataFlowTransformationDataset.fromMap((map['dataset'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      flowlet: map['flowlet'] == null ? null : (FlowletDataFlowTransformationFlowlet.fromMap((map['flowlet'] as Map).cast<String, dynamic>())).input(),
-      linkedService: map['linkedService'] == null ? null : (FlowletDataFlowTransformationLinkedService.fromMap((map['linkedService'] as Map).cast<String, dynamic>())).input(),
+      dataset: map['dataset'] == null ? null : (FlowletDataFlowTransformationDataset.fromMap((map['dataset']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      flowlet: map['flowlet'] == null ? null : (FlowletDataFlowTransformationFlowlet.fromMap((map['flowlet']! as Map).cast<String, dynamic>())).input(),
+      linkedService: map['linkedService'] == null ? null : (FlowletDataFlowTransformationLinkedService.fromMap((map['linkedService']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
     );
   }

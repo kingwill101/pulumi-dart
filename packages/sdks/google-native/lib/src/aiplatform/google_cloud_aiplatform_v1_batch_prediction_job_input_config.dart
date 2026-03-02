@@ -33,8 +33,8 @@ class GoogleCloudAiplatformV1BatchPredictionJobInputConfig {
 
   factory GoogleCloudAiplatformV1BatchPredictionJobInputConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1BatchPredictionJobInputConfig(
-      bigquerySource: map['bigquerySource'] == null ? null : (GoogleCloudAiplatformV1BigQuerySource.fromMap((map['bigquerySource'] as Map).cast<String, dynamic>())).input(),
-      gcsSource: map['gcsSource'] == null ? null : (GoogleCloudAiplatformV1GcsSource.fromMap((map['gcsSource'] as Map).cast<String, dynamic>())).input(),
+      bigquerySource: map['bigquerySource'] == null ? null : (GoogleCloudAiplatformV1BigQuerySource.fromMap((map['bigquerySource']! as Map).cast<String, dynamic>())).input(),
+      gcsSource: map['gcsSource'] == null ? null : (GoogleCloudAiplatformV1GcsSource.fromMap((map['gcsSource']! as Map).cast<String, dynamic>())).input(),
       instancesFormat: (map['instancesFormat'] as String).input(),
     );
   }

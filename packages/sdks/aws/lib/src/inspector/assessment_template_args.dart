@@ -56,11 +56,11 @@ class AssessmentTemplateArgs {
   factory AssessmentTemplateArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentTemplateArgs(
       duration: (map['duration'] as int).input(),
-      eventSubscriptions: map['eventSubscriptions'] == null ? null : (pulumi.Input.decodeList<AssessmentTemplateEventSubscription>(map['eventSubscriptions'], (value) => AssessmentTemplateEventSubscription.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      eventSubscriptions: map['eventSubscriptions'] == null ? null : ((pulumi.Input.decodeList<AssessmentTemplateEventSubscription>(map['eventSubscriptions']!, (value) => AssessmentTemplateEventSubscription.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       rulesPackageArns: ((map['rulesPackageArns'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       targetArn: (map['targetArn'] as String).input(),
     );
   }

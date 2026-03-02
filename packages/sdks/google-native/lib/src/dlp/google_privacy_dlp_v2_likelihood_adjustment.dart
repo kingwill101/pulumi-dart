@@ -27,8 +27,8 @@ class GooglePrivacyDlpV2LikelihoodAdjustment {
 
   factory GooglePrivacyDlpV2LikelihoodAdjustment.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2LikelihoodAdjustment(
-      fixedLikelihood: map['fixedLikelihood'] == null ? null : (GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood.fromValue(map['fixedLikelihood'] as String)).input(),
-      relativeLikelihood: map['relativeLikelihood'] == null ? null : (map['relativeLikelihood'] as int).input(),
+      fixedLikelihood: map['fixedLikelihood'] == null ? null : (GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood.fromValue(map['fixedLikelihood']! as String)).input(),
+      relativeLikelihood: map['relativeLikelihood'] == null ? null : (map['relativeLikelihood']! as int).input(),
     );
   }
 }

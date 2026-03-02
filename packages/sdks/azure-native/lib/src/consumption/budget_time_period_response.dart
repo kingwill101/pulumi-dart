@@ -26,7 +26,7 @@ class BudgetTimePeriodResponse {
 
   factory BudgetTimePeriodResponse.fromMap(Map<String, dynamic> map) {
     return BudgetTimePeriodResponse(
-      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
+      endDate: map['endDate'] == null ? null : (map['endDate']! as String).input(),
       startDate: (map['startDate'] as String).input(),
     );
   }

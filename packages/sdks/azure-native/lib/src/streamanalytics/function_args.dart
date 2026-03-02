@@ -45,10 +45,10 @@ class FunctionArgs {
 
   factory FunctionArgs.fromMap(Map<String, dynamic> map) {
     return FunctionArgs(
-      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName']! as String).input(),
       jobName: (map['jobName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (AggregateFunctionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      properties: map['properties'] == null ? null : (AggregateFunctionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

@@ -35,7 +35,7 @@ class PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResourceR
 
   factory PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResourceResource.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResourceResource(
-      hpaName: map['hpaName'] == null ? null : (map['hpaName'] as String).input(),
+      hpaName: map['hpaName'] == null ? null : ((map['hpaName'] as String).input()).input(),
       name: (map['name'] as String).input(),
       namespace: (map['namespace'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),

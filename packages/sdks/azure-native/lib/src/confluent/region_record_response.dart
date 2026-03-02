@@ -38,10 +38,10 @@ class RegionRecordResponse {
 
   factory RegionRecordResponse.fromMap(Map<String, dynamic> map) {
     return RegionRecordResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (SCMetadataEntityResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      spec: map['spec'] == null ? null : (RegionSpecEntityResponse.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (SCMetadataEntityResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (RegionSpecEntityResponse.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

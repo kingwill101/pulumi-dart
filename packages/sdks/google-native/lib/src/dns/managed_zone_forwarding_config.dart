@@ -25,8 +25,8 @@ class ManagedZoneForwardingConfig {
 
   factory ManagedZoneForwardingConfig.fromMap(Map<String, dynamic> map) {
     return ManagedZoneForwardingConfig(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      targetNameServers: map['targetNameServers'] == null ? null : (pulumi.Input.decodeList<ManagedZoneForwardingConfigNameServerTarget>(map['targetNameServers'], (value) => ManagedZoneForwardingConfigNameServerTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      targetNameServers: map['targetNameServers'] == null ? null : (pulumi.Input.decodeList<ManagedZoneForwardingConfigNameServerTarget>(map['targetNameServers']!, (value) => ManagedZoneForwardingConfigNameServerTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

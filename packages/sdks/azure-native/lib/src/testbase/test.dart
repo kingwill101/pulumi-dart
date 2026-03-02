@@ -33,7 +33,7 @@ class Test {
   factory Test.fromMap(Map<String, dynamic> map) {
     return Test(
       commands: (pulumi.Input.decodeList<Command>(map['commands'], (value) => Command.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      isActive: map['isActive'] == null ? null : (map['isActive'] as bool).input(),
+      isActive: map['isActive'] == null ? null : (map['isActive']! as bool).input(),
       testType: (map['testType'] as String).input(),
     );
   }

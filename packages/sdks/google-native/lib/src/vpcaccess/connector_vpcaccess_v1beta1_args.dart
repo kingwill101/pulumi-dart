@@ -79,17 +79,17 @@ class ConnectorVpcaccessV1beta1Args {
   factory ConnectorVpcaccessV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ConnectorVpcaccessV1beta1Args(
       connectorId: (map['connectorId'] as String).input(),
-      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      maxInstances: map['maxInstances'] == null ? null : (map['maxInstances'] as int).input(),
-      maxThroughput: map['maxThroughput'] == null ? null : (map['maxThroughput'] as int).input(),
-      minInstances: map['minInstances'] == null ? null : (map['minInstances'] as int).input(),
-      minThroughput: map['minThroughput'] == null ? null : (map['minThroughput'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      subnet: map['subnet'] == null ? null : (SubnetVpcaccessV1beta1.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      maxInstances: map['maxInstances'] == null ? null : (map['maxInstances']! as int).input(),
+      maxThroughput: map['maxThroughput'] == null ? null : (map['maxThroughput']! as int).input(),
+      minInstances: map['minInstances'] == null ? null : (map['minInstances']! as int).input(),
+      minThroughput: map['minThroughput'] == null ? null : (map['minThroughput']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      subnet: map['subnet'] == null ? null : (SubnetVpcaccessV1beta1.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

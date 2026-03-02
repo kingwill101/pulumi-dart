@@ -82,18 +82,18 @@ class IpsecPolicyArgs {
 
   factory IpsecPolicyArgs.fromMap(Map<String, dynamic> map) {
     return IpsecPolicyArgs(
-      authAlgorithm: map['authAlgorithm'] == null ? null : (map['authAlgorithm'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptAlgorithm: map['encryptAlgorithm'] == null ? null : (map['encryptAlgorithm'] as String).input(),
-      ipcomp: map['ipcomp'] == null ? null : (map['ipcomp'] as String).input(),
-      kbLifetime: map['kbLifetime'] == null ? null : (map['kbLifetime'] as int).input(),
-      lifetime: map['lifetime'] == null ? null : (map['lifetime'] as int).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      authAlgorithm: map['authAlgorithm'] == null ? null : (map['authAlgorithm']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encryptAlgorithm: map['encryptAlgorithm'] == null ? null : (map['encryptAlgorithm']! as String).input(),
+      ipcomp: map['ipcomp'] == null ? null : (map['ipcomp']! as String).input(),
+      kbLifetime: map['kbLifetime'] == null ? null : (map['kbLifetime']! as int).input(),
+      lifetime: map['lifetime'] == null ? null : (map['lifetime']! as int).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
       name: (map['name'] as String).input(),
-      perfectForwardSecrecy: map['perfectForwardSecrecy'] == null ? null : (map['perfectForwardSecrecy'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      tunnelLocalAddress: map['tunnelLocalAddress'] == null ? null : (map['tunnelLocalAddress'] as String).input(),
-      tunnelRemoteAddress: map['tunnelRemoteAddress'] == null ? null : (map['tunnelRemoteAddress'] as String).input(),
+      perfectForwardSecrecy: map['perfectForwardSecrecy'] == null ? null : (map['perfectForwardSecrecy']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      tunnelLocalAddress: map['tunnelLocalAddress'] == null ? null : (map['tunnelLocalAddress']! as String).input(),
+      tunnelRemoteAddress: map['tunnelRemoteAddress'] == null ? null : (map['tunnelRemoteAddress']! as String).input(),
     );
   }
 }

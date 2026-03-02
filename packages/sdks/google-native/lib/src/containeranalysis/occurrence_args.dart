@@ -110,22 +110,22 @@ class OccurrenceArgs {
 
   factory OccurrenceArgs.fromMap(Map<String, dynamic> map) {
     return OccurrenceArgs(
-      attestation: map['attestation'] == null ? null : (AttestationOccurrence.fromMap((map['attestation'] as Map).cast<String, dynamic>())).input(),
-      build: map['build'] == null ? null : (BuildOccurrence.fromMap((map['build'] as Map).cast<String, dynamic>())).input(),
-      compliance: map['compliance'] == null ? null : (ComplianceOccurrence.fromMap((map['compliance'] as Map).cast<String, dynamic>())).input(),
-      deployment: map['deployment'] == null ? null : (DeploymentOccurrence.fromMap((map['deployment'] as Map).cast<String, dynamic>())).input(),
-      discovery: map['discovery'] == null ? null : (DiscoveryOccurrence.fromMap((map['discovery'] as Map).cast<String, dynamic>())).input(),
-      dsseAttestation: map['dsseAttestation'] == null ? null : (DSSEAttestationOccurrence.fromMap((map['dsseAttestation'] as Map).cast<String, dynamic>())).input(),
-      envelope: map['envelope'] == null ? null : (Envelope.fromMap((map['envelope'] as Map).cast<String, dynamic>())).input(),
-      image: map['image'] == null ? null : (ImageOccurrence.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
+      attestation: map['attestation'] == null ? null : (AttestationOccurrence.fromMap((map['attestation']! as Map).cast<String, dynamic>())).input(),
+      build: map['build'] == null ? null : (BuildOccurrence.fromMap((map['build']! as Map).cast<String, dynamic>())).input(),
+      compliance: map['compliance'] == null ? null : (ComplianceOccurrence.fromMap((map['compliance']! as Map).cast<String, dynamic>())).input(),
+      deployment: map['deployment'] == null ? null : (DeploymentOccurrence.fromMap((map['deployment']! as Map).cast<String, dynamic>())).input(),
+      discovery: map['discovery'] == null ? null : (DiscoveryOccurrence.fromMap((map['discovery']! as Map).cast<String, dynamic>())).input(),
+      dsseAttestation: map['dsseAttestation'] == null ? null : (DSSEAttestationOccurrence.fromMap((map['dsseAttestation']! as Map).cast<String, dynamic>())).input(),
+      envelope: map['envelope'] == null ? null : (Envelope.fromMap((map['envelope']! as Map).cast<String, dynamic>())).input(),
+      image: map['image'] == null ? null : (ImageOccurrence.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
       noteName: (map['noteName'] as String).input(),
-      package: map['package'] == null ? null : (PackageOccurrence.fromMap((map['package'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      remediation: map['remediation'] == null ? null : (map['remediation'] as String).input(),
+      package: map['package'] == null ? null : (PackageOccurrence.fromMap((map['package']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      remediation: map['remediation'] == null ? null : (map['remediation']! as String).input(),
       resourceUri: (map['resourceUri'] as String).input(),
-      sbomReference: map['sbomReference'] == null ? null : (SBOMReferenceOccurrence.fromMap((map['sbomReference'] as Map).cast<String, dynamic>())).input(),
-      upgrade: map['upgrade'] == null ? null : (UpgradeOccurrence.fromMap((map['upgrade'] as Map).cast<String, dynamic>())).input(),
-      vulnerability: map['vulnerability'] == null ? null : (VulnerabilityOccurrence.fromMap((map['vulnerability'] as Map).cast<String, dynamic>())).input(),
+      sbomReference: map['sbomReference'] == null ? null : (SBOMReferenceOccurrence.fromMap((map['sbomReference']! as Map).cast<String, dynamic>())).input(),
+      upgrade: map['upgrade'] == null ? null : (UpgradeOccurrence.fromMap((map['upgrade']! as Map).cast<String, dynamic>())).input(),
+      vulnerability: map['vulnerability'] == null ? null : (VulnerabilityOccurrence.fromMap((map['vulnerability']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

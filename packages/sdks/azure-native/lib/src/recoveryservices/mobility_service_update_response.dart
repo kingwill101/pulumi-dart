@@ -31,9 +31,9 @@ class MobilityServiceUpdateResponse {
 
   factory MobilityServiceUpdateResponse.fromMap(Map<String, dynamic> map) {
     return MobilityServiceUpdateResponse(
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      rebootStatus: map['rebootStatus'] == null ? null : (map['rebootStatus'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      rebootStatus: map['rebootStatus'] == null ? null : (map['rebootStatus']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

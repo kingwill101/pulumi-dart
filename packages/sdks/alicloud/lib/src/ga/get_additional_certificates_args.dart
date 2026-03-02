@@ -40,9 +40,9 @@ class GetAdditionalCertificatesArgs {
   factory GetAdditionalCertificatesArgs.fromMap(Map<String, dynamic> map) {
     return GetAdditionalCertificatesArgs(
       acceleratorId: (map['acceleratorId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
       listenerId: (map['listenerId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

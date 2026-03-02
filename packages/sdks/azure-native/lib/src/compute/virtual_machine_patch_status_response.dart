@@ -34,9 +34,9 @@ class VirtualMachinePatchStatusResponse {
 
   factory VirtualMachinePatchStatusResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePatchStatusResponse(
-      availablePatchSummary: map['availablePatchSummary'] == null ? null : (AvailablePatchSummaryResponse.fromMap((map['availablePatchSummary'] as Map).cast<String, dynamic>())).input(),
+      availablePatchSummary: map['availablePatchSummary'] == null ? null : (AvailablePatchSummaryResponse.fromMap((map['availablePatchSummary']! as Map).cast<String, dynamic>())).input(),
       configurationStatuses: (pulumi.Input.decodeList<InstanceViewStatusResponse>(map['configurationStatuses'], (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lastPatchInstallationSummary: map['lastPatchInstallationSummary'] == null ? null : (LastPatchInstallationSummaryResponse.fromMap((map['lastPatchInstallationSummary'] as Map).cast<String, dynamic>())).input(),
+      lastPatchInstallationSummary: map['lastPatchInstallationSummary'] == null ? null : (LastPatchInstallationSummaryResponse.fromMap((map['lastPatchInstallationSummary']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

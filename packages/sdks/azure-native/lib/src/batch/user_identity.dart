@@ -27,8 +27,8 @@ class UserIdentity {
 
   factory UserIdentity.fromMap(Map<String, dynamic> map) {
     return UserIdentity(
-      autoUser: map['autoUser'] == null ? null : (AutoUserSpecification.fromMap((map['autoUser'] as Map).cast<String, dynamic>())).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      autoUser: map['autoUser'] == null ? null : (AutoUserSpecification.fromMap((map['autoUser']! as Map).cast<String, dynamic>())).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

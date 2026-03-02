@@ -37,8 +37,8 @@ class GetCostCategoryRule {
 
   factory GetCostCategoryRule.fromMap(Map<String, dynamic> map) {
     return GetCostCategoryRule(
-      inheritedValues: (pulumi.Input.decodeList<GetCostCategoryRuleInheritedValue>(map['inheritedValues'], (value) => GetCostCategoryRuleInheritedValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      rules: (pulumi.Input.decodeList<GetCostCategoryRuleRule>(map['rules'], (value) => GetCostCategoryRuleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inheritedValues: (pulumi.Input.decodeList<GetCostCategoryRuleInheritedValue>(map['inheritedValues']!, (value) => GetCostCategoryRuleInheritedValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: (pulumi.Input.decodeList<GetCostCategoryRuleRule>(map['rules']!, (value) => GetCostCategoryRuleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
       value: (map['value'] as String).input(),
     );

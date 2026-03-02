@@ -75,10 +75,10 @@ class AlertRuleAnomalyDuplicateArgs {
       enabled: (map['enabled'] as bool).input(),
       logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
       mode: (map['mode'] as String).input(),
-      multiSelectObservations: map['multiSelectObservations'] == null ? null : (pulumi.Input.decodeList<AlertRuleAnomalyDuplicateMultiSelectObservation>(map['multiSelectObservations'], (value) => AlertRuleAnomalyDuplicateMultiSelectObservation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      prioritizedExcludeObservations: map['prioritizedExcludeObservations'] == null ? null : (pulumi.Input.decodeList<AlertRuleAnomalyDuplicatePrioritizedExcludeObservation>(map['prioritizedExcludeObservations'], (value) => AlertRuleAnomalyDuplicatePrioritizedExcludeObservation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      singleSelectObservations: map['singleSelectObservations'] == null ? null : (pulumi.Input.decodeList<AlertRuleAnomalyDuplicateSingleSelectObservation>(map['singleSelectObservations'], (value) => AlertRuleAnomalyDuplicateSingleSelectObservation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      thresholdObservations: map['thresholdObservations'] == null ? null : (pulumi.Input.decodeList<AlertRuleAnomalyDuplicateThresholdObservation>(map['thresholdObservations'], (value) => AlertRuleAnomalyDuplicateThresholdObservation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      multiSelectObservations: map['multiSelectObservations'] == null ? null : (pulumi.Input.decodeList<AlertRuleAnomalyDuplicateMultiSelectObservation>(map['multiSelectObservations']!, (value) => AlertRuleAnomalyDuplicateMultiSelectObservation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      prioritizedExcludeObservations: map['prioritizedExcludeObservations'] == null ? null : (pulumi.Input.decodeList<AlertRuleAnomalyDuplicatePrioritizedExcludeObservation>(map['prioritizedExcludeObservations']!, (value) => AlertRuleAnomalyDuplicatePrioritizedExcludeObservation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      singleSelectObservations: map['singleSelectObservations'] == null ? null : (pulumi.Input.decodeList<AlertRuleAnomalyDuplicateSingleSelectObservation>(map['singleSelectObservations']!, (value) => AlertRuleAnomalyDuplicateSingleSelectObservation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      thresholdObservations: map['thresholdObservations'] == null ? null : (pulumi.Input.decodeList<AlertRuleAnomalyDuplicateThresholdObservation>(map['thresholdObservations']!, (value) => AlertRuleAnomalyDuplicateThresholdObservation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

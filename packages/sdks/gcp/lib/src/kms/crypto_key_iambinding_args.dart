@@ -52,7 +52,7 @@ class CryptoKeyIAMBindingArgs {
 
   factory CryptoKeyIAMBindingArgs.fromMap(Map<String, dynamic> map) {
     return CryptoKeyIAMBindingArgs(
-      condition: map['condition'] == null ? null : (CryptoKeyIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (CryptoKeyIAMBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       cryptoKeyId: (map['cryptoKeyId'] as String).input(),
       members: ((map['members'] as List).cast<String>()).input(),
       role: (map['role'] as String).input(),

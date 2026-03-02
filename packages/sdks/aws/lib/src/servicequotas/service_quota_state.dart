@@ -75,18 +75,18 @@ class ServiceQuotaState {
 
   factory ServiceQuotaState.fromMap(Map<String, dynamic> map) {
     return ServiceQuotaState(
-      adjustable: map['adjustable'] == null ? null : (map['adjustable'] as bool).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as double).input(),
-      quotaCode: map['quotaCode'] == null ? null : (map['quotaCode'] as String).input(),
-      quotaName: map['quotaName'] == null ? null : (map['quotaName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      requestStatus: map['requestStatus'] == null ? null : (map['requestStatus'] as String).input(),
-      serviceCode: map['serviceCode'] == null ? null : (map['serviceCode'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      usageMetrics: map['usageMetrics'] == null ? null : (pulumi.Input.decodeList<ServiceQuotaUsageMetric>(map['usageMetrics'], (value) => ServiceQuotaUsageMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      value: map['value'] == null ? null : (map['value'] as double).input(),
+      adjustable: map['adjustable'] == null ? null : ((map['adjustable'] as bool).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      defaultValue: map['defaultValue'] == null ? null : ((map['defaultValue'] as double).input()).input(),
+      quotaCode: map['quotaCode'] == null ? null : ((map['quotaCode'] as String).input()).input(),
+      quotaName: map['quotaName'] == null ? null : ((map['quotaName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      requestId: map['requestId'] == null ? null : ((map['requestId'] as String).input()).input(),
+      requestStatus: map['requestStatus'] == null ? null : ((map['requestStatus'] as String).input()).input(),
+      serviceCode: map['serviceCode'] == null ? null : ((map['serviceCode'] as String).input()).input(),
+      serviceName: map['serviceName'] == null ? null : ((map['serviceName'] as String).input()).input(),
+      usageMetrics: map['usageMetrics'] == null ? null : ((pulumi.Input.decodeList<ServiceQuotaUsageMetric>(map['usageMetrics']!, (value) => ServiceQuotaUsageMetric.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      value: map['value'] == null ? null : ((map['value'] as double).input()).input(),
     );
   }
 }

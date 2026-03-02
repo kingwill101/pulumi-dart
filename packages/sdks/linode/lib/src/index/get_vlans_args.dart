@@ -34,9 +34,9 @@ class GetVlansArgs {
 
   factory GetVlansArgs.fromMap(Map<String, dynamic> map) {
     return GetVlansArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVlansFilter>(map['filters'], (value) => GetVlansFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      order: map['order'] == null ? null : (map['order'] as String).input(),
-      orderBy: map['orderBy'] == null ? null : (map['orderBy'] as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVlansFilter>(map['filters']!, (value) => GetVlansFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      order: map['order'] == null ? null : (map['order']! as String).input(),
+      orderBy: map['orderBy'] == null ? null : (map['orderBy']! as String).input(),
     );
   }
 }

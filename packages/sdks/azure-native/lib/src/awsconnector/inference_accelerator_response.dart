@@ -26,8 +26,8 @@ class InferenceAcceleratorResponse {
 
   factory InferenceAcceleratorResponse.fromMap(Map<String, dynamic> map) {
     return InferenceAcceleratorResponse(
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
-      deviceType: map['deviceType'] == null ? null : (map['deviceType'] as String).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName']! as String).input(),
+      deviceType: map['deviceType'] == null ? null : (map['deviceType']! as String).input(),
     );
   }
 }

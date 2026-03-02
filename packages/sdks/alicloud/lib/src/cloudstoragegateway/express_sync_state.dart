@@ -41,11 +41,11 @@ class ExpressSyncState {
 
   factory ExpressSyncState.fromMap(Map<String, dynamic> map) {
     return ExpressSyncState(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      bucketPrefix: map['bucketPrefix'] == null ? null : (map['bucketPrefix'] as String).input(),
-      bucketRegion: map['bucketRegion'] == null ? null : (map['bucketRegion'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expressSyncName: map['expressSyncName'] == null ? null : (map['expressSyncName'] as String).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
+      bucketPrefix: map['bucketPrefix'] == null ? null : (map['bucketPrefix']! as String).input(),
+      bucketRegion: map['bucketRegion'] == null ? null : (map['bucketRegion']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      expressSyncName: map['expressSyncName'] == null ? null : (map['expressSyncName']! as String).input(),
     );
   }
 }

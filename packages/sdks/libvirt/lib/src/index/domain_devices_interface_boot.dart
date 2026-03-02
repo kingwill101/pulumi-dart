@@ -25,7 +25,7 @@ class DomainDevicesInterfaceBoot {
 
   factory DomainDevicesInterfaceBoot.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceBoot(
-      loadParm: map['loadParm'] == null ? null : (map['loadParm'] as String).input(),
+      loadParm: map['loadParm'] == null ? null : (map['loadParm']! as String).input(),
       order: (map['order'] as double).input(),
     );
   }

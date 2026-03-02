@@ -41,11 +41,11 @@ class RegistryScopeMapState {
 
   factory RegistryScopeMapState.fromMap(Map<String, dynamic> map) {
     return RegistryScopeMapState(
-      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
-      containerRegistryName: map['containerRegistryName'] == null ? null : (map['containerRegistryName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      actions: map['actions'] == null ? null : ((map['actions']! as List).cast<String>()).input(),
+      containerRegistryName: map['containerRegistryName'] == null ? null : (map['containerRegistryName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

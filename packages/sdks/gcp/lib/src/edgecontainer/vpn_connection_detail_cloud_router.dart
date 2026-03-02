@@ -20,7 +20,7 @@ class VpnConnectionDetailCloudRouter {
 
   factory VpnConnectionDetailCloudRouter.fromMap(Map<String, dynamic> map) {
     return VpnConnectionDetailCloudRouter(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

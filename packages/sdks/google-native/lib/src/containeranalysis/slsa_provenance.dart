@@ -38,10 +38,10 @@ class SlsaProvenance {
 
   factory SlsaProvenance.fromMap(Map<String, dynamic> map) {
     return SlsaProvenance(
-      builder: map['builder'] == null ? null : (SlsaBuilder.fromMap((map['builder'] as Map).cast<String, dynamic>())).input(),
-      materials: map['materials'] == null ? null : (pulumi.Input.decodeList<Material>(map['materials'], (value) => Material.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metadata: map['metadata'] == null ? null : (SlsaMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      recipe: map['recipe'] == null ? null : (SlsaRecipe.fromMap((map['recipe'] as Map).cast<String, dynamic>())).input(),
+      builder: map['builder'] == null ? null : (SlsaBuilder.fromMap((map['builder']! as Map).cast<String, dynamic>())).input(),
+      materials: map['materials'] == null ? null : (pulumi.Input.decodeList<Material>(map['materials']!, (value) => Material.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadata: map['metadata'] == null ? null : (SlsaMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      recipe: map['recipe'] == null ? null : (SlsaRecipe.fromMap((map['recipe']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

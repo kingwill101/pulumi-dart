@@ -20,7 +20,7 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingC
 
   factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition(
-      maxRuntimeInSeconds: map['maxRuntimeInSeconds'] == null ? null : (map['maxRuntimeInSeconds'] as int).input(),
+      maxRuntimeInSeconds: map['maxRuntimeInSeconds'] == null ? null : ((map['maxRuntimeInSeconds'] as int).input()).input(),
     );
   }
 }

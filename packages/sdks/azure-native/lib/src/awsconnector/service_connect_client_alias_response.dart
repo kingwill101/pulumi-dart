@@ -26,8 +26,8 @@ class ServiceConnectClientAliasResponse {
 
   factory ServiceConnectClientAliasResponse.fromMap(Map<String, dynamic> map) {
     return ServiceConnectClientAliasResponse(
-      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      dnsName: map['dnsName'] == null ? null : (map['dnsName']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

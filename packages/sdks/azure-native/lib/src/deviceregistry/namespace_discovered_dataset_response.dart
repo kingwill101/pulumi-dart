@@ -53,13 +53,13 @@ class NamespaceDiscoveredDatasetResponse {
 
   factory NamespaceDiscoveredDatasetResponse.fromMap(Map<String, dynamic> map) {
     return NamespaceDiscoveredDatasetResponse(
-      dataPoints: map['dataPoints'] == null ? null : (pulumi.Input.decodeList<NamespaceDiscoveredDatasetDataPointResponse>(map['dataPoints'], (value) => NamespaceDiscoveredDatasetDataPointResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dataSource: map['dataSource'] == null ? null : (map['dataSource'] as String).input(),
-      datasetConfiguration: map['datasetConfiguration'] == null ? null : (map['datasetConfiguration'] as String).input(),
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<DatasetBrokerStateStoreDestinationResponse>(map['destinations'], (value) => DatasetBrokerStateStoreDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lastUpdatedOn: map['lastUpdatedOn'] == null ? null : (map['lastUpdatedOn'] as String).input(),
+      dataPoints: map['dataPoints'] == null ? null : (pulumi.Input.decodeList<NamespaceDiscoveredDatasetDataPointResponse>(map['dataPoints']!, (value) => NamespaceDiscoveredDatasetDataPointResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataSource: map['dataSource'] == null ? null : (map['dataSource']! as String).input(),
+      datasetConfiguration: map['datasetConfiguration'] == null ? null : (map['datasetConfiguration']! as String).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<DatasetBrokerStateStoreDestinationResponse>(map['destinations']!, (value) => DatasetBrokerStateStoreDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastUpdatedOn: map['lastUpdatedOn'] == null ? null : (map['lastUpdatedOn']! as String).input(),
       name: (map['name'] as String).input(),
-      typeRef: map['typeRef'] == null ? null : (map['typeRef'] as String).input(),
+      typeRef: map['typeRef'] == null ? null : (map['typeRef']! as String).input(),
     );
   }
 }

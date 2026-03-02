@@ -48,11 +48,11 @@ class CacheActiveDirectorySettings {
   factory CacheActiveDirectorySettings.fromMap(Map<String, dynamic> map) {
     return CacheActiveDirectorySettings(
       cacheNetBiosName: (map['cacheNetBiosName'] as String).input(),
-      credentials: map['credentials'] == null ? null : (CacheActiveDirectorySettingsCredentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
+      credentials: map['credentials'] == null ? null : (CacheActiveDirectorySettingsCredentials.fromMap((map['credentials']! as Map).cast<String, dynamic>())).input(),
       domainName: (map['domainName'] as String).input(),
       domainNetBiosName: (map['domainNetBiosName'] as String).input(),
       primaryDnsIpAddress: (map['primaryDnsIpAddress'] as String).input(),
-      secondaryDnsIpAddress: map['secondaryDnsIpAddress'] == null ? null : (map['secondaryDnsIpAddress'] as String).input(),
+      secondaryDnsIpAddress: map['secondaryDnsIpAddress'] == null ? null : (map['secondaryDnsIpAddress']! as String).input(),
     );
   }
 }

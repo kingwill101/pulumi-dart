@@ -25,8 +25,8 @@ class SqlServerDatabaseResourcePropertiesResponseBackupInformation {
 
   factory SqlServerDatabaseResourcePropertiesResponseBackupInformation.fromMap(Map<String, dynamic> map) {
     return SqlServerDatabaseResourcePropertiesResponseBackupInformation(
-      lastFullBackup: map['lastFullBackup'] == null ? null : (map['lastFullBackup'] as String).input(),
-      lastLogBackup: map['lastLogBackup'] == null ? null : (map['lastLogBackup'] as String).input(),
+      lastFullBackup: map['lastFullBackup'] == null ? null : (map['lastFullBackup']! as String).input(),
+      lastLogBackup: map['lastLogBackup'] == null ? null : (map['lastLogBackup']! as String).input(),
     );
   }
 }

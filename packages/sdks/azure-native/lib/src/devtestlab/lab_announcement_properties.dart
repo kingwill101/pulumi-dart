@@ -41,11 +41,11 @@ class LabAnnouncementProperties {
 
   factory LabAnnouncementProperties.fromMap(Map<String, dynamic> map) {
     return LabAnnouncementProperties(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as String).input(),
-      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
-      expired: map['expired'] == null ? null : (map['expired'] as bool).input(),
-      markdown: map['markdown'] == null ? null : (map['markdown'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate']! as String).input(),
+      expired: map['expired'] == null ? null : (map['expired']! as bool).input(),
+      markdown: map['markdown'] == null ? null : (map['markdown']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

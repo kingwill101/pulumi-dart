@@ -72,17 +72,17 @@ class ContainerGroupVolume {
 
   factory ContainerGroupVolume.fromMap(Map<String, dynamic> map) {
     return ContainerGroupVolume(
-      configFileVolumeConfigFileToPaths: map['configFileVolumeConfigFileToPaths'] == null ? null : (pulumi.Input.decodeList<ContainerGroupVolumeConfigFileVolumeConfigFileToPath>(map['configFileVolumeConfigFileToPaths'], (value) => ContainerGroupVolumeConfigFileVolumeConfigFileToPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      diskVolumeDiskId: map['diskVolumeDiskId'] == null ? null : (map['diskVolumeDiskId'] as String).input(),
-      diskVolumeFsType: map['diskVolumeFsType'] == null ? null : (map['diskVolumeFsType'] as String).input(),
-      flexVolumeDriver: map['flexVolumeDriver'] == null ? null : (map['flexVolumeDriver'] as String).input(),
-      flexVolumeFsType: map['flexVolumeFsType'] == null ? null : (map['flexVolumeFsType'] as String).input(),
-      flexVolumeOptions: map['flexVolumeOptions'] == null ? null : (map['flexVolumeOptions'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nfsVolumePath: map['nfsVolumePath'] == null ? null : (map['nfsVolumePath'] as String).input(),
-      nfsVolumeReadOnly: map['nfsVolumeReadOnly'] == null ? null : (map['nfsVolumeReadOnly'] as bool).input(),
-      nfsVolumeServer: map['nfsVolumeServer'] == null ? null : (map['nfsVolumeServer'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      configFileVolumeConfigFileToPaths: map['configFileVolumeConfigFileToPaths'] == null ? null : (pulumi.Input.decodeList<ContainerGroupVolumeConfigFileVolumeConfigFileToPath>(map['configFileVolumeConfigFileToPaths']!, (value) => ContainerGroupVolumeConfigFileVolumeConfigFileToPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      diskVolumeDiskId: map['diskVolumeDiskId'] == null ? null : (map['diskVolumeDiskId']! as String).input(),
+      diskVolumeFsType: map['diskVolumeFsType'] == null ? null : (map['diskVolumeFsType']! as String).input(),
+      flexVolumeDriver: map['flexVolumeDriver'] == null ? null : (map['flexVolumeDriver']! as String).input(),
+      flexVolumeFsType: map['flexVolumeFsType'] == null ? null : (map['flexVolumeFsType']! as String).input(),
+      flexVolumeOptions: map['flexVolumeOptions'] == null ? null : (map['flexVolumeOptions']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nfsVolumePath: map['nfsVolumePath'] == null ? null : (map['nfsVolumePath']! as String).input(),
+      nfsVolumeReadOnly: map['nfsVolumeReadOnly'] == null ? null : (map['nfsVolumeReadOnly']! as bool).input(),
+      nfsVolumeServer: map['nfsVolumeServer'] == null ? null : (map['nfsVolumeServer']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote {
 
   factory OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote(
-      sha256Checksum: map['sha256Checksum'] == null ? null : (map['sha256Checksum'] as String).input(),
+      sha256Checksum: map['sha256Checksum'] == null ? null : (map['sha256Checksum']! as String).input(),
       uri: (map['uri'] as String).input(),
     );
   }

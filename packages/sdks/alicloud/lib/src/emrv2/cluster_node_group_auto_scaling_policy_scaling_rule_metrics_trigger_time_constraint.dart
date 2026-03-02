@@ -25,8 +25,8 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint {
 
   factory ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

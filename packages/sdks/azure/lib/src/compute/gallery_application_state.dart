@@ -66,16 +66,16 @@ class GalleryApplicationState {
 
   factory GalleryApplicationState.fromMap(Map<String, dynamic> map) {
     return GalleryApplicationState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate'] as String).input(),
-      eula: map['eula'] == null ? null : (map['eula'] as String).input(),
-      galleryId: map['galleryId'] == null ? null : (map['galleryId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privacyStatementUri: map['privacyStatementUri'] == null ? null : (map['privacyStatementUri'] as String).input(),
-      releaseNoteUri: map['releaseNoteUri'] == null ? null : (map['releaseNoteUri'] as String).input(),
-      supportedOsType: map['supportedOsType'] == null ? null : (map['supportedOsType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate']! as String).input(),
+      eula: map['eula'] == null ? null : (map['eula']! as String).input(),
+      galleryId: map['galleryId'] == null ? null : (map['galleryId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privacyStatementUri: map['privacyStatementUri'] == null ? null : (map['privacyStatementUri']! as String).input(),
+      releaseNoteUri: map['releaseNoteUri'] == null ? null : (map['releaseNoteUri']! as String).input(),
+      supportedOsType: map['supportedOsType'] == null ? null : (map['supportedOsType']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -42,10 +42,10 @@ class GoogleCloudRunV2ExecutionTemplate {
 
   factory GoogleCloudRunV2ExecutionTemplate.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2ExecutionTemplate(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      parallelism: map['parallelism'] == null ? null : (map['parallelism'] as int).input(),
-      taskCount: map['taskCount'] == null ? null : (map['taskCount'] as int).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      parallelism: map['parallelism'] == null ? null : (map['parallelism']! as int).input(),
+      taskCount: map['taskCount'] == null ? null : (map['taskCount']! as int).input(),
       template: (GoogleCloudRunV2TaskTemplate.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
     );
   }

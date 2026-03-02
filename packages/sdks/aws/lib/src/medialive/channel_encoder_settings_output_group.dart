@@ -32,9 +32,9 @@ class ChannelEncoderSettingsOutputGroup {
 
   factory ChannelEncoderSettingsOutputGroup.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroup(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      outputGroupSettings: (ChannelEncoderSettingsOutputGroupOutputGroupSettings.fromMap((map['outputGroupSettings'] as Map).cast<String, dynamic>())).input(),
-      outputs: (pulumi.Input.decodeList<ChannelEncoderSettingsOutputGroupOutput>(map['outputs'], (value) => ChannelEncoderSettingsOutputGroupOutput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      outputGroupSettings: (ChannelEncoderSettingsOutputGroupOutputGroupSettings.fromMap((map['outputGroupSettings']! as Map).cast<String, dynamic>())).input(),
+      outputs: (pulumi.Input.decodeList<ChannelEncoderSettingsOutputGroupOutput>(map['outputs']!, (value) => ChannelEncoderSettingsOutputGroupOutput.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

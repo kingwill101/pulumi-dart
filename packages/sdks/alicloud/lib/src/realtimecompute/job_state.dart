@@ -65,15 +65,15 @@ class JobState {
 
   factory JobState.fromMap(Map<String, dynamic> map) {
     return JobState(
-      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId'] as String).input(),
-      jobId: map['jobId'] == null ? null : (map['jobId'] as String).input(),
-      localVariables: map['localVariables'] == null ? null : (pulumi.Input.decodeList<JobLocalVariable>(map['localVariables'], (value) => JobLocalVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      resourceQueueName: map['resourceQueueName'] == null ? null : (map['resourceQueueName'] as String).input(),
-      restoreStrategy: map['restoreStrategy'] == null ? null : (JobRestoreStrategy.fromMap((map['restoreStrategy'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (JobStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
-      stopStrategy: map['stopStrategy'] == null ? null : (map['stopStrategy'] as String).input(),
+      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId']! as String).input(),
+      jobId: map['jobId'] == null ? null : (map['jobId']! as String).input(),
+      localVariables: map['localVariables'] == null ? null : (pulumi.Input.decodeList<JobLocalVariable>(map['localVariables']!, (value) => JobLocalVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      resourceQueueName: map['resourceQueueName'] == null ? null : (map['resourceQueueName']! as String).input(),
+      restoreStrategy: map['restoreStrategy'] == null ? null : (JobRestoreStrategy.fromMap((map['restoreStrategy']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (JobStatus.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
+      stopStrategy: map['stopStrategy'] == null ? null : (map['stopStrategy']! as String).input(),
     );
   }
 }

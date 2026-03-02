@@ -32,7 +32,7 @@ class FleetRuntimeConfigurationServerProcess {
     return FleetRuntimeConfigurationServerProcess(
       concurrentExecutions: (map['concurrentExecutions'] as int).input(),
       launchPath: (map['launchPath'] as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as String).input()).input(),
     );
   }
 }

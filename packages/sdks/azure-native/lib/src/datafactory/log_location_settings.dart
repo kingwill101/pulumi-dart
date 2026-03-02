@@ -28,7 +28,7 @@ class LogLocationSettings {
   factory LogLocationSettings.fromMap(Map<String, dynamic> map) {
     return LogLocationSettings(
       linkedServiceName: (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
-      path: map['path'] == null ? null : (map['path']).input(),
+      path: map['path'] == null ? null : (map['path']!).input(),
     );
   }
 }

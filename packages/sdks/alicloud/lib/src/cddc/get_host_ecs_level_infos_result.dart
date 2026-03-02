@@ -48,9 +48,9 @@ class GetHostEcsLevelInfosResult {
     return GetHostEcsLevelInfosResult(
       dbType: map['dbType'] as String,
       id: map['id'] as String,
-      imageCategory: map['imageCategory'] == null ? null : map['imageCategory'] as String,
+      imageCategory: map['imageCategory'] == null ? null : map['imageCategory']! as String,
       infos: pulumi.Input.decodeList<GetHostEcsLevelInfosInfo>(map['infos'], (value) => GetHostEcsLevelInfosInfo.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       storageType: map['storageType'] as String,
       zoneId: map['zoneId'] as String,
     );

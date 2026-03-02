@@ -31,9 +31,9 @@ class AzureActiveDirectory {
 
   factory AzureActiveDirectory.fromMap(Map<String, dynamic> map) {
     return AzureActiveDirectory(
-      clientApplication: map['clientApplication'] == null ? null : (map['clientApplication'] as String).input(),
-      clusterApplication: map['clusterApplication'] == null ? null : (map['clusterApplication'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      clientApplication: map['clientApplication'] == null ? null : (map['clientApplication']! as String).input(),
+      clusterApplication: map['clusterApplication'] == null ? null : (map['clusterApplication']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

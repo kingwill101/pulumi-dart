@@ -22,7 +22,7 @@ class DeploymentSettingsSourceContext {
 
   factory DeploymentSettingsSourceContext.fromMap(Map<String, dynamic> map) {
     return DeploymentSettingsSourceContext(
-      git: map['git'] == null ? null : (DeploymentSettingsGitSource.fromMap((map['git'] as Map).cast<String, dynamic>())).input(),
+      git: map['git'] == null ? null : (DeploymentSettingsGitSource.fromMap((map['git']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

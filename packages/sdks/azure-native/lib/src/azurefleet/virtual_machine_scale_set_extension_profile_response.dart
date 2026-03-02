@@ -30,8 +30,8 @@ class VirtualMachineScaleSetExtensionProfileResponse {
 
   factory VirtualMachineScaleSetExtensionProfileResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetExtensionProfileResponse(
-      extensions: map['extensions'] == null ? null : (pulumi.Input.decodeList<VirtualMachineScaleSetExtensionResponse>(map['extensions'], (value) => VirtualMachineScaleSetExtensionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      extensionsTimeBudget: map['extensionsTimeBudget'] == null ? null : (map['extensionsTimeBudget'] as String).input(),
+      extensions: map['extensions'] == null ? null : (pulumi.Input.decodeList<VirtualMachineScaleSetExtensionResponse>(map['extensions']!, (value) => VirtualMachineScaleSetExtensionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      extensionsTimeBudget: map['extensionsTimeBudget'] == null ? null : (map['extensionsTimeBudget']! as String).input(),
     );
   }
 }

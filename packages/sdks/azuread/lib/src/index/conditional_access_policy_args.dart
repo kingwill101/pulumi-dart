@@ -51,8 +51,8 @@ class ConditionalAccessPolicyArgs {
     return ConditionalAccessPolicyArgs(
       conditions: (ConditionalAccessPolicyConditions.fromMap((map['conditions'] as Map).cast<String, dynamic>())).input(),
       displayName: (map['displayName'] as String).input(),
-      grantControls: map['grantControls'] == null ? null : (ConditionalAccessPolicyGrantControls.fromMap((map['grantControls'] as Map).cast<String, dynamic>())).input(),
-      sessionControls: map['sessionControls'] == null ? null : (ConditionalAccessPolicySessionControls.fromMap((map['sessionControls'] as Map).cast<String, dynamic>())).input(),
+      grantControls: map['grantControls'] == null ? null : (ConditionalAccessPolicyGrantControls.fromMap((map['grantControls']! as Map).cast<String, dynamic>())).input(),
+      sessionControls: map['sessionControls'] == null ? null : (ConditionalAccessPolicySessionControls.fromMap((map['sessionControls']! as Map).cast<String, dynamic>())).input(),
       state: (map['state'] as String).input(),
     );
   }

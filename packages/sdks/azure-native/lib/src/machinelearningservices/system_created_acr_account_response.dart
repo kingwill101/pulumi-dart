@@ -31,9 +31,9 @@ class SystemCreatedAcrAccountResponse {
 
   factory SystemCreatedAcrAccountResponse.fromMap(Map<String, dynamic> map) {
     return SystemCreatedAcrAccountResponse(
-      acrAccountName: map['acrAccountName'] == null ? null : (map['acrAccountName'] as String).input(),
-      acrAccountSku: map['acrAccountSku'] == null ? null : (map['acrAccountSku'] as String).input(),
-      armResourceId: map['armResourceId'] == null ? null : (ArmResourceIdResponse.fromMap((map['armResourceId'] as Map).cast<String, dynamic>())).input(),
+      acrAccountName: map['acrAccountName'] == null ? null : (map['acrAccountName']! as String).input(),
+      acrAccountSku: map['acrAccountSku'] == null ? null : (map['acrAccountSku']! as String).input(),
+      armResourceId: map['armResourceId'] == null ? null : (ArmResourceIdResponse.fromMap((map['armResourceId']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

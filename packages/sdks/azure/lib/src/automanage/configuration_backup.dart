@@ -42,11 +42,11 @@ class ConfigurationBackup {
 
   factory ConfigurationBackup.fromMap(Map<String, dynamic> map) {
     return ConfigurationBackup(
-      instantRpRetentionRangeInDays: map['instantRpRetentionRangeInDays'] == null ? null : (map['instantRpRetentionRangeInDays'] as int).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      retentionPolicy: map['retentionPolicy'] == null ? null : (ConfigurationBackupRetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
-      schedulePolicy: map['schedulePolicy'] == null ? null : (ConfigurationBackupSchedulePolicy.fromMap((map['schedulePolicy'] as Map).cast<String, dynamic>())).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      instantRpRetentionRangeInDays: map['instantRpRetentionRangeInDays'] == null ? null : (map['instantRpRetentionRangeInDays']! as int).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (ConfigurationBackupRetentionPolicy.fromMap((map['retentionPolicy']! as Map).cast<String, dynamic>())).input(),
+      schedulePolicy: map['schedulePolicy'] == null ? null : (ConfigurationBackupSchedulePolicy.fromMap((map['schedulePolicy']! as Map).cast<String, dynamic>())).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class GoogleCloudRunV2SecretKeySelector {
   factory GoogleCloudRunV2SecretKeySelector.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2SecretKeySelector(
       secret: (map['secret'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class ZnodeState {
 
   factory ZnodeState.fromMap(Map<String, dynamic> map) {
     return ZnodeState(
-      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      data: map['data'] == null ? null : (map['data'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage']! as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

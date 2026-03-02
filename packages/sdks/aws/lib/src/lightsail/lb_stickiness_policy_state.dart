@@ -38,10 +38,10 @@ class LbStickinessPolicyState {
 
   factory LbStickinessPolicyState.fromMap(Map<String, dynamic> map) {
     return LbStickinessPolicyState(
-      cookieDuration: map['cookieDuration'] == null ? null : (map['cookieDuration'] as int).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      lbName: map['lbName'] == null ? null : (map['lbName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      cookieDuration: map['cookieDuration'] == null ? null : ((map['cookieDuration'] as int).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      lbName: map['lbName'] == null ? null : ((map['lbName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

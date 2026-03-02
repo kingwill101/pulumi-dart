@@ -26,8 +26,8 @@ class QueryInterpretationConfig {
 
   factory QueryInterpretationConfig.fromMap(Map<String, dynamic> map) {
     return QueryInterpretationConfig(
-      forceDisableSupplementalResults: map['forceDisableSupplementalResults'] == null ? null : (map['forceDisableSupplementalResults'] as bool).input(),
-      forceVerbatimMode: map['forceVerbatimMode'] == null ? null : (map['forceVerbatimMode'] as bool).input(),
+      forceDisableSupplementalResults: map['forceDisableSupplementalResults'] == null ? null : (map['forceDisableSupplementalResults']! as bool).input(),
+      forceVerbatimMode: map['forceVerbatimMode'] == null ? null : (map['forceVerbatimMode']! as bool).input(),
     );
   }
 }

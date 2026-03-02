@@ -41,7 +41,7 @@ class DscNodeConfigurationArgs {
     return DscNodeConfigurationArgs(
       automationAccountName: (map['automationAccountName'] as String).input(),
       contentEmbedded: (map['contentEmbedded'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

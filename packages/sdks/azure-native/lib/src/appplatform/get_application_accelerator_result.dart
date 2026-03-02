@@ -57,7 +57,7 @@ class GetApplicationAcceleratorResult {
       id: map['id'] as String,
       name: map['name'] as String,
       properties: ApplicationAcceleratorPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      sku: map['sku'] == null ? null : SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
+      sku: map['sku'] == null ? null : SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

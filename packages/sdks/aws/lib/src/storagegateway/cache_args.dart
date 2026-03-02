@@ -36,7 +36,7 @@ class CacheArgs {
     return CacheArgs(
       diskId: (map['diskId'] as String).input(),
       gatewayArn: (map['gatewayArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

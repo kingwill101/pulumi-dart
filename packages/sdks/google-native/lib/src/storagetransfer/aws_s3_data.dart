@@ -47,12 +47,12 @@ class AwsS3Data {
 
   factory AwsS3Data.fromMap(Map<String, dynamic> map) {
     return AwsS3Data(
-      awsAccessKey: map['awsAccessKey'] == null ? null : (AwsAccessKey.fromMap((map['awsAccessKey'] as Map).cast<String, dynamic>())).input(),
+      awsAccessKey: map['awsAccessKey'] == null ? null : (AwsAccessKey.fromMap((map['awsAccessKey']! as Map).cast<String, dynamic>())).input(),
       bucketName: (map['bucketName'] as String).input(),
-      cloudfrontDomain: map['cloudfrontDomain'] == null ? null : (map['cloudfrontDomain'] as String).input(),
-      credentialsSecret: map['credentialsSecret'] == null ? null : (map['credentialsSecret'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      cloudfrontDomain: map['cloudfrontDomain'] == null ? null : (map['cloudfrontDomain']! as String).input(),
+      credentialsSecret: map['credentialsSecret'] == null ? null : (map['credentialsSecret']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class UserPoolDeviceConfiguration {
 
   factory UserPoolDeviceConfiguration.fromMap(Map<String, dynamic> map) {
     return UserPoolDeviceConfiguration(
-      challengeRequiredOnNewDevice: map['challengeRequiredOnNewDevice'] == null ? null : (map['challengeRequiredOnNewDevice'] as bool).input(),
-      deviceOnlyRememberedOnUserPrompt: map['deviceOnlyRememberedOnUserPrompt'] == null ? null : (map['deviceOnlyRememberedOnUserPrompt'] as bool).input(),
+      challengeRequiredOnNewDevice: map['challengeRequiredOnNewDevice'] == null ? null : ((map['challengeRequiredOnNewDevice'] as bool).input()).input(),
+      deviceOnlyRememberedOnUserPrompt: map['deviceOnlyRememberedOnUserPrompt'] == null ? null : ((map['deviceOnlyRememberedOnUserPrompt'] as bool).input()).input(),
     );
   }
 }

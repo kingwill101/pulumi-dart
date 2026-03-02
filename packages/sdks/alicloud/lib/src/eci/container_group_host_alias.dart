@@ -25,8 +25,8 @@ class ContainerGroupHostAlias {
 
   factory ContainerGroupHostAlias.fromMap(Map<String, dynamic> map) {
     return ContainerGroupHostAlias(
-      hostnames: map['hostnames'] == null ? null : ((map['hostnames'] as List).cast<String>()).input(),
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
+      hostnames: map['hostnames'] == null ? null : ((map['hostnames']! as List).cast<String>()).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
     );
   }
 }

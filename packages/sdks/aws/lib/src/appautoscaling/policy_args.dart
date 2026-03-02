@@ -67,15 +67,15 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
-      predictiveScalingPolicyConfiguration: map['predictiveScalingPolicyConfiguration'] == null ? null : (PolicyPredictiveScalingPolicyConfiguration.fromMap((map['predictiveScalingPolicyConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      policyType: map['policyType'] == null ? null : ((map['policyType'] as String).input()).input(),
+      predictiveScalingPolicyConfiguration: map['predictiveScalingPolicyConfiguration'] == null ? null : ((PolicyPredictiveScalingPolicyConfiguration.fromMap((map['predictiveScalingPolicyConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceId: (map['resourceId'] as String).input(),
       scalableDimension: (map['scalableDimension'] as String).input(),
       serviceNamespace: (map['serviceNamespace'] as String).input(),
-      stepScalingPolicyConfiguration: map['stepScalingPolicyConfiguration'] == null ? null : (PolicyStepScalingPolicyConfiguration.fromMap((map['stepScalingPolicyConfiguration'] as Map).cast<String, dynamic>())).input(),
-      targetTrackingScalingPolicyConfiguration: map['targetTrackingScalingPolicyConfiguration'] == null ? null : (PolicyTargetTrackingScalingPolicyConfiguration.fromMap((map['targetTrackingScalingPolicyConfiguration'] as Map).cast<String, dynamic>())).input(),
+      stepScalingPolicyConfiguration: map['stepScalingPolicyConfiguration'] == null ? null : ((PolicyStepScalingPolicyConfiguration.fromMap((map['stepScalingPolicyConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      targetTrackingScalingPolicyConfiguration: map['targetTrackingScalingPolicyConfiguration'] == null ? null : ((PolicyTargetTrackingScalingPolicyConfiguration.fromMap((map['targetTrackingScalingPolicyConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -30,8 +30,8 @@ class RegistryNetworkRuleSet {
 
   factory RegistryNetworkRuleSet.fromMap(Map<String, dynamic> map) {
     return RegistryNetworkRuleSet(
-      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction'] as String).input(),
-      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<RegistryNetworkRuleSetIpRule>(map['ipRules'], (value) => RegistryNetworkRuleSetIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction']! as String).input(),
+      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<RegistryNetworkRuleSetIpRule>(map['ipRules']!, (value) => RegistryNetworkRuleSetIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

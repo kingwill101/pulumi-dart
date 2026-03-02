@@ -32,8 +32,8 @@ class InstanceGroupAutoscalingPolicyConfig {
   factory InstanceGroupAutoscalingPolicyConfig.fromMap(Map<String, dynamic> map) {
     return InstanceGroupAutoscalingPolicyConfig(
       maxInstances: (map['maxInstances'] as int).input(),
-      minInstances: map['minInstances'] == null ? null : (map['minInstances'] as int).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      minInstances: map['minInstances'] == null ? null : (map['minInstances']! as int).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

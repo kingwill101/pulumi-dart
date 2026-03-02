@@ -73,16 +73,16 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      configuration: map['configuration'] == null ? null : (JobConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      jobName: map['jobName'] == null ? null : (map['jobName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      configuration: map['configuration'] == null ? null : (JobConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId']! as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      jobName: map['jobName'] == null ? null : (map['jobName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      template: map['template'] == null ? null : (JobTemplate.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
-      workloadProfileName: map['workloadProfileName'] == null ? null : (map['workloadProfileName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      template: map['template'] == null ? null : (JobTemplate.fromMap((map['template']! as Map).cast<String, dynamic>())).input(),
+      workloadProfileName: map['workloadProfileName'] == null ? null : (map['workloadProfileName']! as String).input(),
     );
   }
 }

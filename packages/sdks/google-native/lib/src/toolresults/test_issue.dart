@@ -51,12 +51,12 @@ class TestIssue {
 
   factory TestIssue.fromMap(Map<String, dynamic> map) {
     return TestIssue(
-      category: map['category'] == null ? null : (TestIssueCategory.fromValue(map['category'] as String)).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
-      severity: map['severity'] == null ? null : (TestIssueSeverity.fromValue(map['severity'] as String)).input(),
-      stackTrace: map['stackTrace'] == null ? null : (StackTrace.fromMap((map['stackTrace'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (TestIssueType.fromValue(map['type'] as String)).input(),
-      warning: map['warning'] == null ? null : (Any.fromMap((map['warning'] as Map).cast<String, dynamic>())).input(),
+      category: map['category'] == null ? null : (TestIssueCategory.fromValue(map['category']! as String)).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      severity: map['severity'] == null ? null : (TestIssueSeverity.fromValue(map['severity']! as String)).input(),
+      stackTrace: map['stackTrace'] == null ? null : (StackTrace.fromMap((map['stackTrace']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (TestIssueType.fromValue(map['type']! as String)).input(),
+      warning: map['warning'] == null ? null : (Any.fromMap((map['warning']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

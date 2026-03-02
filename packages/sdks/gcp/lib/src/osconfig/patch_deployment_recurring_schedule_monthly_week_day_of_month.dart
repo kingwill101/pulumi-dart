@@ -32,7 +32,7 @@ class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
   factory PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth(
       dayOfWeek: (map['dayOfWeek'] as String).input(),
-      dayOffset: map['dayOffset'] == null ? null : (map['dayOffset'] as int).input(),
+      dayOffset: map['dayOffset'] == null ? null : (map['dayOffset']! as int).input(),
       weekOrdinal: (map['weekOrdinal'] as int).input(),
     );
   }

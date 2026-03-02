@@ -30,7 +30,7 @@ class GetRouteSpecHttp2RouteMatchHeader {
   factory GetRouteSpecHttp2RouteMatchHeader.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecHttp2RouteMatchHeader(
       invert: (map['invert'] as bool).input(),
-      matches: (pulumi.Input.decodeList<GetRouteSpecHttp2RouteMatchHeaderMatch>(map['matches'], (value) => GetRouteSpecHttp2RouteMatchHeaderMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matches: (pulumi.Input.decodeList<GetRouteSpecHttp2RouteMatchHeaderMatch>(map['matches']!, (value) => GetRouteSpecHttp2RouteMatchHeaderMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
     );
   }

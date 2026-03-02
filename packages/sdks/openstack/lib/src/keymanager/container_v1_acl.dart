@@ -20,7 +20,7 @@ class ContainerV1Acl {
 
   factory ContainerV1Acl.fromMap(Map<String, dynamic> map) {
     return ContainerV1Acl(
-      read: map['read'] == null ? null : (ContainerV1AclRead.fromMap((map['read'] as Map).cast<String, dynamic>())).input(),
+      read: map['read'] == null ? null : (ContainerV1AclRead.fromMap((map['read']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class InplaceUpgradeOSInfoResponse {
 
   factory InplaceUpgradeOSInfoResponse.fromMap(Map<String, dynamic> map) {
     return InplaceUpgradeOSInfoResponse(
-      baselineOS: map['baselineOS'] == null ? null : (OsPropertiesResponse.fromMap((map['baselineOS'] as Map).cast<String, dynamic>())).input(),
-      targetOS: map['targetOS'] == null ? null : (map['targetOS'] as String).input(),
+      baselineOS: map['baselineOS'] == null ? null : (OsPropertiesResponse.fromMap((map['baselineOS']! as Map).cast<String, dynamic>())).input(),
+      targetOS: map['targetOS'] == null ? null : (map['targetOS']! as String).input(),
     );
   }
 }

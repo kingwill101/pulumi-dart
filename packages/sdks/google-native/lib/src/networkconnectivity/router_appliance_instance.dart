@@ -26,8 +26,8 @@ class RouterApplianceInstance {
 
   factory RouterApplianceInstance.fromMap(Map<String, dynamic> map) {
     return RouterApplianceInstance(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      virtualMachine: map['virtualMachine'] == null ? null : (map['virtualMachine'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      virtualMachine: map['virtualMachine'] == null ? null : (map['virtualMachine']! as String).input(),
     );
   }
 }

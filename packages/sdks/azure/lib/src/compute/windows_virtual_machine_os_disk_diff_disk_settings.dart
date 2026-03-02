@@ -28,7 +28,7 @@ class WindowsVirtualMachineOsDiskDiffDiskSettings {
   factory WindowsVirtualMachineOsDiskDiffDiskSettings.fromMap(Map<String, dynamic> map) {
     return WindowsVirtualMachineOsDiskDiffDiskSettings(
       option: (map['option'] as String).input(),
-      placement: map['placement'] == null ? null : (map['placement'] as String).input(),
+      placement: map['placement'] == null ? null : (map['placement']! as String).input(),
     );
   }
 }

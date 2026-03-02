@@ -61,14 +61,14 @@ class PathMatcherComputeV1 {
 
   factory PathMatcherComputeV1.fromMap(Map<String, dynamic> map) {
     return PathMatcherComputeV1(
-      defaultRouteAction: map['defaultRouteAction'] == null ? null : (HttpRouteActionComputeV1.fromMap((map['defaultRouteAction'] as Map).cast<String, dynamic>())).input(),
-      defaultService: map['defaultService'] == null ? null : (map['defaultService'] as String).input(),
-      defaultUrlRedirect: map['defaultUrlRedirect'] == null ? null : (HttpRedirectActionComputeV1.fromMap((map['defaultUrlRedirect'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      headerAction: map['headerAction'] == null ? null : (HttpHeaderActionComputeV1.fromMap((map['headerAction'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pathRules: map['pathRules'] == null ? null : (pulumi.Input.decodeList<PathRuleComputeV1>(map['pathRules'], (value) => PathRuleComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      routeRules: map['routeRules'] == null ? null : (pulumi.Input.decodeList<HttpRouteRuleComputeV1>(map['routeRules'], (value) => HttpRouteRuleComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultRouteAction: map['defaultRouteAction'] == null ? null : (HttpRouteActionComputeV1.fromMap((map['defaultRouteAction']! as Map).cast<String, dynamic>())).input(),
+      defaultService: map['defaultService'] == null ? null : (map['defaultService']! as String).input(),
+      defaultUrlRedirect: map['defaultUrlRedirect'] == null ? null : (HttpRedirectActionComputeV1.fromMap((map['defaultUrlRedirect']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      headerAction: map['headerAction'] == null ? null : (HttpHeaderActionComputeV1.fromMap((map['headerAction']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pathRules: map['pathRules'] == null ? null : (pulumi.Input.decodeList<PathRuleComputeV1>(map['pathRules']!, (value) => PathRuleComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routeRules: map['routeRules'] == null ? null : (pulumi.Input.decodeList<HttpRouteRuleComputeV1>(map['routeRules']!, (value) => HttpRouteRuleComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

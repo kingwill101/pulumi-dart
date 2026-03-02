@@ -27,9 +27,9 @@ class PipeEnrichmentParametersHttpParameters {
 
   factory PipeEnrichmentParametersHttpParameters.fromMap(Map<String, dynamic> map) {
     return PipeEnrichmentParametersHttpParameters(
-      headerParameters: map['headerParameters'] == null ? null : ((map['headerParameters'] as Map).cast<String, String>()).input(),
-      pathParameterValues: map['pathParameterValues'] == null ? null : (map['pathParameterValues'] as String).input(),
-      queryStringParameters: map['queryStringParameters'] == null ? null : ((map['queryStringParameters'] as Map).cast<String, String>()).input(),
+      headerParameters: map['headerParameters'] == null ? null : (((map['headerParameters'] as Map).cast<String, String>()).input()).input(),
+      pathParameterValues: map['pathParameterValues'] == null ? null : ((map['pathParameterValues'] as String).input()).input(),
+      queryStringParameters: map['queryStringParameters'] == null ? null : (((map['queryStringParameters'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

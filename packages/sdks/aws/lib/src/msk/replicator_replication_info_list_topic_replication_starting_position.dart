@@ -20,7 +20,7 @@ class ReplicatorReplicationInfoListTopicReplicationStartingPosition {
 
   factory ReplicatorReplicationInfoListTopicReplicationStartingPosition.fromMap(Map<String, dynamic> map) {
     return ReplicatorReplicationInfoListTopicReplicationStartingPosition(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

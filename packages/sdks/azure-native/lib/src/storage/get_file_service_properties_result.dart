@@ -60,11 +60,11 @@ class GetFileServicePropertiesResult {
   factory GetFileServicePropertiesResult.fromMap(Map<String, dynamic> map) {
     return GetFileServicePropertiesResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      cors: map['cors'] == null ? null : CorsRulesResponse.fromMap((map['cors'] as Map).cast<String, dynamic>()),
+      cors: map['cors'] == null ? null : CorsRulesResponse.fromMap((map['cors']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
-      protocolSettings: map['protocolSettings'] == null ? null : ProtocolSettingsResponse.fromMap((map['protocolSettings'] as Map).cast<String, dynamic>()),
-      shareDeleteRetentionPolicy: map['shareDeleteRetentionPolicy'] == null ? null : DeleteRetentionPolicyResponse.fromMap((map['shareDeleteRetentionPolicy'] as Map).cast<String, dynamic>()),
+      protocolSettings: map['protocolSettings'] == null ? null : ProtocolSettingsResponse.fromMap((map['protocolSettings']! as Map).cast<String, dynamic>()),
+      shareDeleteRetentionPolicy: map['shareDeleteRetentionPolicy'] == null ? null : DeleteRetentionPolicyResponse.fromMap((map['shareDeleteRetentionPolicy']! as Map).cast<String, dynamic>()),
       sku: SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

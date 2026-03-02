@@ -32,8 +32,8 @@ class GlueRecord {
   factory GlueRecord.fromMap(Map<String, dynamic> map) {
     return GlueRecord(
       hostName: (map['hostName'] as String).input(),
-      ipv4Addresses: map['ipv4Addresses'] == null ? null : ((map['ipv4Addresses'] as List).cast<String>()).input(),
-      ipv6Addresses: map['ipv6Addresses'] == null ? null : ((map['ipv6Addresses'] as List).cast<String>()).input(),
+      ipv4Addresses: map['ipv4Addresses'] == null ? null : ((map['ipv4Addresses']! as List).cast<String>()).input(),
+      ipv6Addresses: map['ipv6Addresses'] == null ? null : ((map['ipv6Addresses']! as List).cast<String>()).input(),
     );
   }
 }

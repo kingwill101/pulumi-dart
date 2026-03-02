@@ -106,7 +106,7 @@ class GetFaqResult {
       name: map['name'] as String,
       region: map['region'] as String,
       roleArn: map['roleArn'] as String,
-      s3Paths: pulumi.Input.decodeList<GetFaqS3Path>(map['s3Paths'], (value) => GetFaqS3Path.fromMap((value as Map).cast<String, dynamic>())),
+      s3Paths: pulumi.Input.decodeList<GetFaqS3Path>(map['s3Paths']!, (value) => GetFaqS3Path.fromMap((value as Map).cast<String, dynamic>())),
       status: map['status'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       updatedAt: map['updatedAt'] as String,

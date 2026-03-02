@@ -32,9 +32,9 @@ class QueryParameter {
 
   factory QueryParameter.fromMap(Map<String, dynamic> map) {
     return QueryParameter(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameterType: map['parameterType'] == null ? null : (QueryParameterType.fromMap((map['parameterType'] as Map).cast<String, dynamic>())).input(),
-      parameterValue: map['parameterValue'] == null ? null : (QueryParameterValue.fromMap((map['parameterValue'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameterType: map['parameterType'] == null ? null : (QueryParameterType.fromMap((map['parameterType']! as Map).cast<String, dynamic>())).input(),
+      parameterValue: map['parameterValue'] == null ? null : (QueryParameterValue.fromMap((map['parameterValue']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

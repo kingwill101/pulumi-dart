@@ -109,23 +109,23 @@ class ClusterAlloydbV1betaArgs {
 
   factory ClusterAlloydbV1betaArgs.fromMap(Map<String, dynamic> map) {
     return ClusterAlloydbV1betaArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      automatedBackupPolicy: map['automatedBackupPolicy'] == null ? null : (AutomatedBackupPolicyAlloydbV1beta.fromMap((map['automatedBackupPolicy'] as Map).cast<String, dynamic>())).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      automatedBackupPolicy: map['automatedBackupPolicy'] == null ? null : (AutomatedBackupPolicyAlloydbV1beta.fromMap((map['automatedBackupPolicy']! as Map).cast<String, dynamic>())).input(),
       clusterId: (map['clusterId'] as String).input(),
-      continuousBackupConfig: map['continuousBackupConfig'] == null ? null : (ContinuousBackupConfigAlloydbV1beta.fromMap((map['continuousBackupConfig'] as Map).cast<String, dynamic>())).input(),
-      databaseVersion: map['databaseVersion'] == null ? null : (ClusterDatabaseVersionAlloydbV1beta.fromValue(map['databaseVersion'] as String)).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfigAlloydbV1beta.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      initialUser: map['initialUser'] == null ? null : (UserPasswordAlloydbV1beta.fromMap((map['initialUser'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      continuousBackupConfig: map['continuousBackupConfig'] == null ? null : (ContinuousBackupConfigAlloydbV1beta.fromMap((map['continuousBackupConfig']! as Map).cast<String, dynamic>())).input(),
+      databaseVersion: map['databaseVersion'] == null ? null : (ClusterDatabaseVersionAlloydbV1beta.fromValue(map['databaseVersion']! as String)).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfigAlloydbV1beta.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      initialUser: map['initialUser'] == null ? null : (UserPasswordAlloydbV1beta.fromMap((map['initialUser']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       network: (map['network'] as String).input(),
-      networkConfig: map['networkConfig'] == null ? null : (NetworkConfigAlloydbV1beta.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      secondaryConfig: map['secondaryConfig'] == null ? null : (SecondaryConfigAlloydbV1beta.fromMap((map['secondaryConfig'] as Map).cast<String, dynamic>())).input(),
-      sslConfig: map['sslConfig'] == null ? null : (SslConfigAlloydbV1beta.fromMap((map['sslConfig'] as Map).cast<String, dynamic>())).input(),
+      networkConfig: map['networkConfig'] == null ? null : (NetworkConfigAlloydbV1beta.fromMap((map['networkConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      secondaryConfig: map['secondaryConfig'] == null ? null : (SecondaryConfigAlloydbV1beta.fromMap((map['secondaryConfig']! as Map).cast<String, dynamic>())).input(),
+      sslConfig: map['sslConfig'] == null ? null : (SslConfigAlloydbV1beta.fromMap((map['sslConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

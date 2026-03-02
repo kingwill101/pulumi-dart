@@ -102,22 +102,22 @@ class AppSpecStaticSite {
 
   factory AppSpecStaticSite.fromMap(Map<String, dynamic> map) {
     return AppSpecStaticSite(
-      bitbucket: map['bitbucket'] == null ? null : (AppSpecStaticSiteBitbucket.fromMap((map['bitbucket'] as Map).cast<String, dynamic>())).input(),
-      buildCommand: map['buildCommand'] == null ? null : (map['buildCommand'] as String).input(),
-      catchallDocument: map['catchallDocument'] == null ? null : (map['catchallDocument'] as String).input(),
-      cors: map['cors'] == null ? null : (AppSpecStaticSiteCors.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
-      dockerfilePath: map['dockerfilePath'] == null ? null : (map['dockerfilePath'] as String).input(),
-      environmentSlug: map['environmentSlug'] == null ? null : (map['environmentSlug'] as String).input(),
-      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<AppSpecStaticSiteEnv>(map['envs'], (value) => AppSpecStaticSiteEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      errorDocument: map['errorDocument'] == null ? null : (map['errorDocument'] as String).input(),
-      git: map['git'] == null ? null : (AppSpecStaticSiteGit.fromMap((map['git'] as Map).cast<String, dynamic>())).input(),
-      github: map['github'] == null ? null : (AppSpecStaticSiteGithub.fromMap((map['github'] as Map).cast<String, dynamic>())).input(),
-      gitlab: map['gitlab'] == null ? null : (AppSpecStaticSiteGitlab.fromMap((map['gitlab'] as Map).cast<String, dynamic>())).input(),
-      indexDocument: map['indexDocument'] == null ? null : (map['indexDocument'] as String).input(),
+      bitbucket: map['bitbucket'] == null ? null : (AppSpecStaticSiteBitbucket.fromMap((map['bitbucket']! as Map).cast<String, dynamic>())).input(),
+      buildCommand: map['buildCommand'] == null ? null : (map['buildCommand']! as String).input(),
+      catchallDocument: map['catchallDocument'] == null ? null : (map['catchallDocument']! as String).input(),
+      cors: map['cors'] == null ? null : (AppSpecStaticSiteCors.fromMap((map['cors']! as Map).cast<String, dynamic>())).input(),
+      dockerfilePath: map['dockerfilePath'] == null ? null : (map['dockerfilePath']! as String).input(),
+      environmentSlug: map['environmentSlug'] == null ? null : (map['environmentSlug']! as String).input(),
+      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<AppSpecStaticSiteEnv>(map['envs']!, (value) => AppSpecStaticSiteEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errorDocument: map['errorDocument'] == null ? null : (map['errorDocument']! as String).input(),
+      git: map['git'] == null ? null : (AppSpecStaticSiteGit.fromMap((map['git']! as Map).cast<String, dynamic>())).input(),
+      github: map['github'] == null ? null : (AppSpecStaticSiteGithub.fromMap((map['github']! as Map).cast<String, dynamic>())).input(),
+      gitlab: map['gitlab'] == null ? null : (AppSpecStaticSiteGitlab.fromMap((map['gitlab']! as Map).cast<String, dynamic>())).input(),
+      indexDocument: map['indexDocument'] == null ? null : (map['indexDocument']! as String).input(),
       name: (map['name'] as String).input(),
-      outputDir: map['outputDir'] == null ? null : (map['outputDir'] as String).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<AppSpecStaticSiteRoute>(map['routes'], (value) => AppSpecStaticSiteRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceDir: map['sourceDir'] == null ? null : (map['sourceDir'] as String).input(),
+      outputDir: map['outputDir'] == null ? null : (map['outputDir']! as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<AppSpecStaticSiteRoute>(map['routes']!, (value) => AppSpecStaticSiteRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceDir: map['sourceDir'] == null ? null : (map['sourceDir']! as String).input(),
     );
   }
 }

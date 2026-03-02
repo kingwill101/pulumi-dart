@@ -56,13 +56,13 @@ class TaskRunArgs {
 
   factory TaskRunArgs.fromMap(Map<String, dynamic> map) {
     return TaskRunArgs(
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag'] as String).input(),
-      identity: map['identity'] == null ? null : (IdentityProperties.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag']! as String).input(),
+      identity: map['identity'] == null ? null : (IdentityProperties.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       registryName: (map['registryName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      runRequest: map['runRequest'] == null ? null : (DockerBuildRequest.fromMap((map['runRequest'] as Map).cast<String, dynamic>())).input(),
-      taskRunName: map['taskRunName'] == null ? null : (map['taskRunName'] as String).input(),
+      runRequest: map['runRequest'] == null ? null : (DockerBuildRequest.fromMap((map['runRequest']! as Map).cast<String, dynamic>())).input(),
+      taskRunName: map['taskRunName'] == null ? null : (map['taskRunName']! as String).input(),
     );
   }
 }

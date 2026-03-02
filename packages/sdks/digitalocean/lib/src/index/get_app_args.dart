@@ -31,7 +31,7 @@ class GetAppArgs {
   factory GetAppArgs.fromMap(Map<String, dynamic> map) {
     return GetAppArgs(
       appId: (map['appId'] as String).input(),
-      dedicatedIps: map['dedicatedIps'] == null ? null : (pulumi.Input.decodeList<GetAppDedicatedIp>(map['dedicatedIps'], (value) => GetAppDedicatedIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dedicatedIps: map['dedicatedIps'] == null ? null : (pulumi.Input.decodeList<GetAppDedicatedIp>(map['dedicatedIps']!, (value) => GetAppDedicatedIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

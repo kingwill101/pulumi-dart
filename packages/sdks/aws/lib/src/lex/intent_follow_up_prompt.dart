@@ -29,8 +29,8 @@ class IntentFollowUpPrompt {
 
   factory IntentFollowUpPrompt.fromMap(Map<String, dynamic> map) {
     return IntentFollowUpPrompt(
-      prompt: (IntentFollowUpPromptPrompt.fromMap((map['prompt'] as Map).cast<String, dynamic>())).input(),
-      rejectionStatement: (IntentFollowUpPromptRejectionStatement.fromMap((map['rejectionStatement'] as Map).cast<String, dynamic>())).input(),
+      prompt: (IntentFollowUpPromptPrompt.fromMap((map['prompt']! as Map).cast<String, dynamic>())).input(),
+      rejectionStatement: (IntentFollowUpPromptRejectionStatement.fromMap((map['rejectionStatement']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

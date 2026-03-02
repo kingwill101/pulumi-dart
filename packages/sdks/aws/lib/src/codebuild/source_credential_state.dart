@@ -51,12 +51,12 @@ class SourceCredentialState {
 
   factory SourceCredentialState.fromMap(Map<String, dynamic> map) {
     return SourceCredentialState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serverType: map['serverType'] == null ? null : (map['serverType'] as String).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      authType: map['authType'] == null ? null : ((map['authType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serverType: map['serverType'] == null ? null : ((map['serverType'] as String).input()).input(),
+      token: map['token'] == null ? null : ((map['token'] as String).input()).input(),
+      userName: map['userName'] == null ? null : ((map['userName'] as String).input()).input(),
     );
   }
 }

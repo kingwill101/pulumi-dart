@@ -26,7 +26,7 @@ class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioLangu
   factory ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioLanguageSelection.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioLanguageSelection(
       languageCode: (map['languageCode'] as String).input(),
-      languageSelectionPolicy: map['languageSelectionPolicy'] == null ? null : (map['languageSelectionPolicy'] as String).input(),
+      languageSelectionPolicy: map['languageSelectionPolicy'] == null ? null : ((map['languageSelectionPolicy'] as String).input()).input(),
     );
   }
 }

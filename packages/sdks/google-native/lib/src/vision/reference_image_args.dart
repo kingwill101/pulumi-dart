@@ -52,12 +52,12 @@ class ReferenceImageArgs {
 
   factory ReferenceImageArgs.fromMap(Map<String, dynamic> map) {
     return ReferenceImageArgs(
-      boundingPolys: map['boundingPolys'] == null ? null : (pulumi.Input.decodeList<BoundingPoly>(map['boundingPolys'], (value) => BoundingPoly.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      boundingPolys: map['boundingPolys'] == null ? null : (pulumi.Input.decodeList<BoundingPoly>(map['boundingPolys']!, (value) => BoundingPoly.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       productId: (map['productId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      referenceImageId: map['referenceImageId'] == null ? null : (map['referenceImageId'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      referenceImageId: map['referenceImageId'] == null ? null : (map['referenceImageId']! as String).input(),
       uri: (map['uri'] as String).input(),
     );
   }

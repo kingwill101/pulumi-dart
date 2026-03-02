@@ -31,8 +31,8 @@ class AppDapr {
   factory AppDapr.fromMap(Map<String, dynamic> map) {
     return AppDapr(
       appId: (map['appId'] as String).input(),
-      appPort: map['appPort'] == null ? null : (map['appPort'] as int).input(),
-      appProtocol: map['appProtocol'] == null ? null : (map['appProtocol'] as String).input(),
+      appPort: map['appPort'] == null ? null : (map['appPort']! as int).input(),
+      appProtocol: map['appProtocol'] == null ? null : (map['appProtocol']! as String).input(),
     );
   }
 }

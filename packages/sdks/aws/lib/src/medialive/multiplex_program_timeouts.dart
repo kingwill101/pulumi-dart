@@ -20,7 +20,7 @@ class MultiplexProgramTimeouts {
 
   factory MultiplexProgramTimeouts.fromMap(Map<String, dynamic> map) {
     return MultiplexProgramTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
+      create: map['create'] == null ? null : ((map['create'] as String).input()).input(),
     );
   }
 }

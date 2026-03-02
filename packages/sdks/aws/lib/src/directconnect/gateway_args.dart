@@ -35,8 +35,8 @@ class GatewayArgs {
   factory GatewayArgs.fromMap(Map<String, dynamic> map) {
     return GatewayArgs(
       amazonSideAsn: (map['amazonSideAsn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

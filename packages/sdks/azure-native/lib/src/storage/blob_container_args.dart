@@ -72,14 +72,14 @@ class BlobContainerArgs {
   factory BlobContainerArgs.fromMap(Map<String, dynamic> map) {
     return BlobContainerArgs(
       accountName: (map['accountName'] as String).input(),
-      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
-      defaultEncryptionScope: map['defaultEncryptionScope'] == null ? null : (map['defaultEncryptionScope'] as String).input(),
-      denyEncryptionScopeOverride: map['denyEncryptionScopeOverride'] == null ? null : (map['denyEncryptionScopeOverride'] as bool).input(),
-      enableNfsV3AllSquash: map['enableNfsV3AllSquash'] == null ? null : (map['enableNfsV3AllSquash'] as bool).input(),
-      enableNfsV3RootSquash: map['enableNfsV3RootSquash'] == null ? null : (map['enableNfsV3RootSquash'] as bool).input(),
-      immutableStorageWithVersioning: map['immutableStorageWithVersioning'] == null ? null : (ImmutableStorageWithVersioning.fromMap((map['immutableStorageWithVersioning'] as Map).cast<String, dynamic>())).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      publicAccess: map['publicAccess'] == null ? null : (PublicAccess.fromValue(map['publicAccess'] as String)).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
+      defaultEncryptionScope: map['defaultEncryptionScope'] == null ? null : (map['defaultEncryptionScope']! as String).input(),
+      denyEncryptionScopeOverride: map['denyEncryptionScopeOverride'] == null ? null : (map['denyEncryptionScopeOverride']! as bool).input(),
+      enableNfsV3AllSquash: map['enableNfsV3AllSquash'] == null ? null : (map['enableNfsV3AllSquash']! as bool).input(),
+      enableNfsV3RootSquash: map['enableNfsV3RootSquash'] == null ? null : (map['enableNfsV3RootSquash']! as bool).input(),
+      immutableStorageWithVersioning: map['immutableStorageWithVersioning'] == null ? null : (ImmutableStorageWithVersioning.fromMap((map['immutableStorageWithVersioning']! as Map).cast<String, dynamic>())).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      publicAccess: map['publicAccess'] == null ? null : (PublicAccess.fromValue(map['publicAccess']! as String)).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

@@ -30,8 +30,8 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeAppro
 
   factory AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover.fromMap(Map<String, dynamic> map) {
     return AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover(
-      backup: map['backup'] == null ? null : (map['backup'] as bool).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      backup: map['backup'] == null ? null : (map['backup']! as bool).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
       subjectType: (map['subjectType'] as String).input(),
     );
   }

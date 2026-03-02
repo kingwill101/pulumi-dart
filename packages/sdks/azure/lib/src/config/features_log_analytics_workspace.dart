@@ -19,7 +19,7 @@ class FeaturesLogAnalyticsWorkspace {
 
   factory FeaturesLogAnalyticsWorkspace.fromMap(Map<String, dynamic> map) {
     return FeaturesLogAnalyticsWorkspace(
-      permanentlyDeleteOnDestroy: map['permanentlyDeleteOnDestroy'] == null ? null : (map['permanentlyDeleteOnDestroy'] as bool).input(),
+      permanentlyDeleteOnDestroy: map['permanentlyDeleteOnDestroy'] == null ? null : (map['permanentlyDeleteOnDestroy']! as bool).input(),
     );
   }
 }

@@ -65,15 +65,15 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      applicationDefinitionId: map['applicationDefinitionId'] == null ? null : (map['applicationDefinitionId'] as String).input(),
+      applicationDefinitionId: map['applicationDefinitionId'] == null ? null : (map['applicationDefinitionId']! as String).input(),
       kind: (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       managedResourceGroupName: (map['managedResourceGroupName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameterValues: map['parameterValues'] == null ? null : (map['parameterValues'] as String).input(),
-      plan: map['plan'] == null ? null : (ApplicationPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameterValues: map['parameterValues'] == null ? null : (map['parameterValues']! as String).input(),
+      plan: map['plan'] == null ? null : (ApplicationPlan.fromMap((map['plan']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

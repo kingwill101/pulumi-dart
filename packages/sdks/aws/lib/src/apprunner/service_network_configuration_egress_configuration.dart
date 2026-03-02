@@ -25,8 +25,8 @@ class ServiceNetworkConfigurationEgressConfiguration {
 
   factory ServiceNetworkConfigurationEgressConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkConfigurationEgressConfiguration(
-      egressType: map['egressType'] == null ? null : (map['egressType'] as String).input(),
-      vpcConnectorArn: map['vpcConnectorArn'] == null ? null : (map['vpcConnectorArn'] as String).input(),
+      egressType: map['egressType'] == null ? null : ((map['egressType'] as String).input()).input(),
+      vpcConnectorArn: map['vpcConnectorArn'] == null ? null : ((map['vpcConnectorArn'] as String).input()).input(),
     );
   }
 }

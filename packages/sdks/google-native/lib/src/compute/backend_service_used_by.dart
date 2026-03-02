@@ -19,7 +19,7 @@ class BackendServiceUsedBy {
 
   factory BackendServiceUsedBy.fromMap(Map<String, dynamic> map) {
     return BackendServiceUsedBy(
-      reference: map['reference'] == null ? null : (map['reference'] as String).input(),
+      reference: map['reference'] == null ? null : (map['reference']! as String).input(),
     );
   }
 }

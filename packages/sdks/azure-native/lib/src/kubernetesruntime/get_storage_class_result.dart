@@ -102,23 +102,23 @@ class GetStorageClassResult {
 
   factory GetStorageClassResult.fromMap(Map<String, dynamic> map) {
     return GetStorageClassResult(
-      accessModes: map['accessModes'] == null ? null : (map['accessModes'] as List).cast<String>(),
-      allowVolumeExpansion: map['allowVolumeExpansion'] == null ? null : map['allowVolumeExpansion'] as String,
+      accessModes: map['accessModes'] == null ? null : (map['accessModes']! as List).cast<String>(),
+      allowVolumeExpansion: map['allowVolumeExpansion'] == null ? null : map['allowVolumeExpansion']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      dataResilience: map['dataResilience'] == null ? null : map['dataResilience'] as String,
-      failoverSpeed: map['failoverSpeed'] == null ? null : map['failoverSpeed'] as String,
+      dataResilience: map['dataResilience'] == null ? null : map['dataResilience']! as String,
+      failoverSpeed: map['failoverSpeed'] == null ? null : map['failoverSpeed']! as String,
       id: map['id'] as String,
-      limitations: map['limitations'] == null ? null : (map['limitations'] as List).cast<String>(),
-      mountOptions: map['mountOptions'] == null ? null : (map['mountOptions'] as List).cast<String>(),
+      limitations: map['limitations'] == null ? null : (map['limitations']! as List).cast<String>(),
+      mountOptions: map['mountOptions'] == null ? null : (map['mountOptions']! as List).cast<String>(),
       name: map['name'] as String,
-      performance: map['performance'] == null ? null : map['performance'] as String,
-      priority: map['priority'] == null ? null : map['priority'] as double,
-      provisioner: map['provisioner'] == null ? null : map['provisioner'] as String,
+      performance: map['performance'] == null ? null : map['performance']! as String,
+      priority: map['priority'] == null ? null : map['priority']! as double,
+      provisioner: map['provisioner'] == null ? null : map['provisioner']! as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       typeProperties: BlobStorageClassTypePropertiesResponse.fromMap((map['typeProperties'] as Map).cast<String, dynamic>()),
-      volumeBindingMode: map['volumeBindingMode'] == null ? null : map['volumeBindingMode'] as String,
+      volumeBindingMode: map['volumeBindingMode'] == null ? null : map['volumeBindingMode']! as String,
     );
   }
 }

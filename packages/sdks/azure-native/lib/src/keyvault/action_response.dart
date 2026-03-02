@@ -20,7 +20,7 @@ class ActionResponse {
 
   factory ActionResponse.fromMap(Map<String, dynamic> map) {
     return ActionResponse(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

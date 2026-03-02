@@ -30,9 +30,9 @@ class ComputeInstanceSsh {
 
   factory ComputeInstanceSsh.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceSsh(
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
       publicKey: (map['publicKey'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

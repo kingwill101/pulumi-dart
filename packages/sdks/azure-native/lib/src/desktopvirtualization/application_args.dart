@@ -90,19 +90,19 @@ class ApplicationArgs {
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
       applicationGroupName: (map['applicationGroupName'] as String).input(),
-      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
-      applicationType: map['applicationType'] == null ? null : (map['applicationType'] as String).input(),
-      commandLineArguments: map['commandLineArguments'] == null ? null : (map['commandLineArguments'] as String).input(),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName']! as String).input(),
+      applicationType: map['applicationType'] == null ? null : (map['applicationType']! as String).input(),
+      commandLineArguments: map['commandLineArguments'] == null ? null : (map['commandLineArguments']! as String).input(),
       commandLineSetting: (map['commandLineSetting'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      filePath: map['filePath'] == null ? null : (map['filePath'] as String).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      iconIndex: map['iconIndex'] == null ? null : (map['iconIndex'] as int).input(),
-      iconPath: map['iconPath'] == null ? null : (map['iconPath'] as String).input(),
-      msixPackageApplicationId: map['msixPackageApplicationId'] == null ? null : (map['msixPackageApplicationId'] as String).input(),
-      msixPackageFamilyName: map['msixPackageFamilyName'] == null ? null : (map['msixPackageFamilyName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      filePath: map['filePath'] == null ? null : (map['filePath']! as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      iconIndex: map['iconIndex'] == null ? null : (map['iconIndex']! as int).input(),
+      iconPath: map['iconPath'] == null ? null : (map['iconPath']! as String).input(),
+      msixPackageApplicationId: map['msixPackageApplicationId'] == null ? null : (map['msixPackageApplicationId']! as String).input(),
+      msixPackageFamilyName: map['msixPackageFamilyName'] == null ? null : (map['msixPackageFamilyName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      showInPortal: map['showInPortal'] == null ? null : (map['showInPortal'] as bool).input(),
+      showInPortal: map['showInPortal'] == null ? null : (map['showInPortal']! as bool).input(),
     );
   }
 }

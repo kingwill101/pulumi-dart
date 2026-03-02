@@ -89,7 +89,7 @@ class GetAvailabilityZoneResult {
   factory GetAvailabilityZoneResult.fromMap(Map<String, dynamic> map) {
     return GetAvailabilityZoneResult(
       allAvailabilityZones: map['allAvailabilityZones'] == null ? null : map['allAvailabilityZones'] as bool,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetAvailabilityZoneFilter>(map['filters'], (value) => GetAvailabilityZoneFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetAvailabilityZoneFilter>(map['filters']!, (value) => GetAvailabilityZoneFilter.fromMap((value as Map).cast<String, dynamic>())),
       groupLongName: map['groupLongName'] as String,
       groupName: map['groupName'] as String,
       id: map['id'] as String,

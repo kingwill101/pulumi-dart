@@ -45,9 +45,9 @@ class RocketMQTopicArgs {
   factory RocketMQTopicArgs.fromMap(Map<String, dynamic> map) {
     return RocketMQTopicArgs(
       instanceId: (map['instanceId'] as String).input(),
-      maxSendTps: map['maxSendTps'] == null ? null : (map['maxSendTps'] as int).input(),
-      messageType: map['messageType'] == null ? null : (map['messageType'] as String).input(),
-      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
+      maxSendTps: map['maxSendTps'] == null ? null : (map['maxSendTps']! as int).input(),
+      messageType: map['messageType'] == null ? null : (map['messageType']! as String).input(),
+      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
       topicName: (map['topicName'] as String).input(),
     );
   }

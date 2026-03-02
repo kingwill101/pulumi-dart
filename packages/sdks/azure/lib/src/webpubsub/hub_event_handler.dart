@@ -36,10 +36,10 @@ class HubEventHandler {
 
   factory HubEventHandler.fromMap(Map<String, dynamic> map) {
     return HubEventHandler(
-      auth: map['auth'] == null ? null : (HubEventHandlerAuth.fromMap((map['auth'] as Map).cast<String, dynamic>())).input(),
-      systemEvents: map['systemEvents'] == null ? null : ((map['systemEvents'] as List).cast<String>()).input(),
+      auth: map['auth'] == null ? null : (HubEventHandlerAuth.fromMap((map['auth']! as Map).cast<String, dynamic>())).input(),
+      systemEvents: map['systemEvents'] == null ? null : ((map['systemEvents']! as List).cast<String>()).input(),
       urlTemplate: (map['urlTemplate'] as String).input(),
-      userEventPattern: map['userEventPattern'] == null ? null : (map['userEventPattern'] as String).input(),
+      userEventPattern: map['userEventPattern'] == null ? null : (map['userEventPattern']! as String).input(),
     );
   }
 }

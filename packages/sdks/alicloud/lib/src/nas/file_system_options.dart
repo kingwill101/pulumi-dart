@@ -24,7 +24,7 @@ class FileSystemOptions {
 
   factory FileSystemOptions.fromMap(Map<String, dynamic> map) {
     return FileSystemOptions(
-      enableOplock: map['enableOplock'] == null ? null : (map['enableOplock'] as bool).input(),
+      enableOplock: map['enableOplock'] == null ? null : (map['enableOplock']! as bool).input(),
     );
   }
 }

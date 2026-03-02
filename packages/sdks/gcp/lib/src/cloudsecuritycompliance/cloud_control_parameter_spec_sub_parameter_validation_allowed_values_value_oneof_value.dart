@@ -27,8 +27,8 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValu
 
   factory CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue.fromMap(Map<String, dynamic> map) {
     return CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameterValue: map['parameterValue'] == null ? null : (CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue.fromMap((map['parameterValue'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameterValue: map['parameterValue'] == null ? null : (CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue.fromMap((map['parameterValue']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

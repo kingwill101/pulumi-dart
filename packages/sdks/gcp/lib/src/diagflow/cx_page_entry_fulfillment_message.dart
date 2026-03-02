@@ -82,14 +82,14 @@ class CxPageEntryFulfillmentMessage {
 
   factory CxPageEntryFulfillmentMessage.fromMap(Map<String, dynamic> map) {
     return CxPageEntryFulfillmentMessage(
-      channel: map['channel'] == null ? null : (map['channel'] as String).input(),
-      conversationSuccess: map['conversationSuccess'] == null ? null : (CxPageEntryFulfillmentMessageConversationSuccess.fromMap((map['conversationSuccess'] as Map).cast<String, dynamic>())).input(),
-      liveAgentHandoff: map['liveAgentHandoff'] == null ? null : (CxPageEntryFulfillmentMessageLiveAgentHandoff.fromMap((map['liveAgentHandoff'] as Map).cast<String, dynamic>())).input(),
-      outputAudioText: map['outputAudioText'] == null ? null : (CxPageEntryFulfillmentMessageOutputAudioText.fromMap((map['outputAudioText'] as Map).cast<String, dynamic>())).input(),
-      payload: map['payload'] == null ? null : (map['payload'] as String).input(),
-      playAudio: map['playAudio'] == null ? null : (CxPageEntryFulfillmentMessagePlayAudio.fromMap((map['playAudio'] as Map).cast<String, dynamic>())).input(),
-      telephonyTransferCall: map['telephonyTransferCall'] == null ? null : (CxPageEntryFulfillmentMessageTelephonyTransferCall.fromMap((map['telephonyTransferCall'] as Map).cast<String, dynamic>())).input(),
-      text: map['text'] == null ? null : (CxPageEntryFulfillmentMessageText.fromMap((map['text'] as Map).cast<String, dynamic>())).input(),
+      channel: map['channel'] == null ? null : (map['channel']! as String).input(),
+      conversationSuccess: map['conversationSuccess'] == null ? null : (CxPageEntryFulfillmentMessageConversationSuccess.fromMap((map['conversationSuccess']! as Map).cast<String, dynamic>())).input(),
+      liveAgentHandoff: map['liveAgentHandoff'] == null ? null : (CxPageEntryFulfillmentMessageLiveAgentHandoff.fromMap((map['liveAgentHandoff']! as Map).cast<String, dynamic>())).input(),
+      outputAudioText: map['outputAudioText'] == null ? null : (CxPageEntryFulfillmentMessageOutputAudioText.fromMap((map['outputAudioText']! as Map).cast<String, dynamic>())).input(),
+      payload: map['payload'] == null ? null : (map['payload']! as String).input(),
+      playAudio: map['playAudio'] == null ? null : (CxPageEntryFulfillmentMessagePlayAudio.fromMap((map['playAudio']! as Map).cast<String, dynamic>())).input(),
+      telephonyTransferCall: map['telephonyTransferCall'] == null ? null : (CxPageEntryFulfillmentMessageTelephonyTransferCall.fromMap((map['telephonyTransferCall']! as Map).cast<String, dynamic>())).input(),
+      text: map['text'] == null ? null : (CxPageEntryFulfillmentMessageText.fromMap((map['text']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -50,12 +50,12 @@ class InternetGatewayRuleArgs {
 
   factory InternetGatewayRuleArgs.fromMap(Map<String, dynamic> map) {
     return InternetGatewayRuleArgs(
-      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
-      internetGatewayRuleName: map['internetGatewayRuleName'] == null ? null : (map['internetGatewayRuleName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
+      internetGatewayRuleName: map['internetGatewayRuleName'] == null ? null : (map['internetGatewayRuleName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       ruleProperties: (RuleProperties.fromMap((map['ruleProperties'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

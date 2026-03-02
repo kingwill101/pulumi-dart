@@ -32,9 +32,9 @@ class BackendServiceConsistentHashHttpCookie {
 
   factory BackendServiceConsistentHashHttpCookie.fromMap(Map<String, dynamic> map) {
     return BackendServiceConsistentHashHttpCookie(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      ttl: map['ttl'] == null ? null : (BackendServiceConsistentHashHttpCookieTtl.fromMap((map['ttl'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      ttl: map['ttl'] == null ? null : (BackendServiceConsistentHashHttpCookieTtl.fromMap((map['ttl']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

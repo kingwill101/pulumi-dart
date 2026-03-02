@@ -25,8 +25,8 @@ class DomainDevicesVsockCid {
 
   factory DomainDevicesVsockCid.fromMap(Map<String, dynamic> map) {
     return DomainDevicesVsockCid(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      auto: map['auto'] == null ? null : (map['auto'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      auto: map['auto'] == null ? null : (map['auto']! as String).input(),
     );
   }
 }

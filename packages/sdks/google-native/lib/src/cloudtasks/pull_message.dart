@@ -26,8 +26,8 @@ class PullMessage {
 
   factory PullMessage.fromMap(Map<String, dynamic> map) {
     return PullMessage(
-      payload: map['payload'] == null ? null : (map['payload'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      payload: map['payload'] == null ? null : (map['payload']! as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
     );
   }
 }

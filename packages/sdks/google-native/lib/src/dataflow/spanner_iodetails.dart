@@ -31,9 +31,9 @@ class SpannerIODetails {
 
   factory SpannerIODetails.fromMap(Map<String, dynamic> map) {
     return SpannerIODetails(
-      databaseId: map['databaseId'] == null ? null : (map['databaseId'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      databaseId: map['databaseId'] == null ? null : (map['databaseId']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

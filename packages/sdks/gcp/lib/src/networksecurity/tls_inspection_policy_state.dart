@@ -81,18 +81,18 @@ class TlsInspectionPolicyState {
 
   factory TlsInspectionPolicyState.fromMap(Map<String, dynamic> map) {
     return TlsInspectionPolicyState(
-      caPool: map['caPool'] == null ? null : (map['caPool'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      customTlsFeatures: map['customTlsFeatures'] == null ? null : ((map['customTlsFeatures'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      excludePublicCaSet: map['excludePublicCaSet'] == null ? null : (map['excludePublicCaSet'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      minTlsVersion: map['minTlsVersion'] == null ? null : (map['minTlsVersion'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      tlsFeatureProfile: map['tlsFeatureProfile'] == null ? null : (map['tlsFeatureProfile'] as String).input(),
-      trustConfig: map['trustConfig'] == null ? null : (map['trustConfig'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      caPool: map['caPool'] == null ? null : (map['caPool']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      customTlsFeatures: map['customTlsFeatures'] == null ? null : ((map['customTlsFeatures']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      excludePublicCaSet: map['excludePublicCaSet'] == null ? null : (map['excludePublicCaSet']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      minTlsVersion: map['minTlsVersion'] == null ? null : (map['minTlsVersion']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      tlsFeatureProfile: map['tlsFeatureProfile'] == null ? null : (map['tlsFeatureProfile']! as String).input(),
+      trustConfig: map['trustConfig'] == null ? null : (map['trustConfig']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

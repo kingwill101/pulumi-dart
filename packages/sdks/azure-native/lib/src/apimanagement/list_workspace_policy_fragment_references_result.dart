@@ -32,9 +32,9 @@ class ListWorkspacePolicyFragmentReferencesResult {
 
   factory ListWorkspacePolicyFragmentReferencesResult.fromMap(Map<String, dynamic> map) {
     return ListWorkspacePolicyFragmentReferencesResult(
-      count: map['count'] == null ? null : map['count'] as double,
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<ResourceCollectionResponseValue>(map['value'], (value) => ResourceCollectionResponseValue.fromMap((value as Map).cast<String, dynamic>())),
+      count: map['count'] == null ? null : map['count']! as double,
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<ResourceCollectionResponseValue>(map['value']!, (value) => ResourceCollectionResponseValue.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

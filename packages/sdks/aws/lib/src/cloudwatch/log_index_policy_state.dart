@@ -31,9 +31,9 @@ class LogIndexPolicyState {
 
   factory LogIndexPolicyState.fromMap(Map<String, dynamic> map) {
     return LogIndexPolicyState(
-      logGroupName: map['logGroupName'] == null ? null : (map['logGroupName'] as String).input(),
-      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      logGroupName: map['logGroupName'] == null ? null : ((map['logGroupName'] as String).input()).input(),
+      policyDocument: map['policyDocument'] == null ? null : ((map['policyDocument'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

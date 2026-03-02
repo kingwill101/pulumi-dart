@@ -57,14 +57,14 @@ class DataLakeState {
 
   factory DataLakeState.fromMap(Map<String, dynamic> map) {
     return DataLakeState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      configuration: map['configuration'] == null ? null : (DataLakeConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      metaStoreManagerRoleArn: map['metaStoreManagerRoleArn'] == null ? null : (map['metaStoreManagerRoleArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      s3BucketArn: map['s3BucketArn'] == null ? null : (map['s3BucketArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (DataLakeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      configuration: map['configuration'] == null ? null : ((DataLakeConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input()).input(),
+      metaStoreManagerRoleArn: map['metaStoreManagerRoleArn'] == null ? null : ((map['metaStoreManagerRoleArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      s3BucketArn: map['s3BucketArn'] == null ? null : ((map['s3BucketArn'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((DataLakeTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

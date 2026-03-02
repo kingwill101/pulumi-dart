@@ -25,8 +25,8 @@ class GlobalClusterGlobalClusterMember {
 
   factory GlobalClusterGlobalClusterMember.fromMap(Map<String, dynamic> map) {
     return GlobalClusterGlobalClusterMember(
-      dbClusterArn: map['dbClusterArn'] == null ? null : (map['dbClusterArn'] as String).input(),
-      isWriter: map['isWriter'] == null ? null : (map['isWriter'] as bool).input(),
+      dbClusterArn: map['dbClusterArn'] == null ? null : ((map['dbClusterArn'] as String).input()).input(),
+      isWriter: map['isWriter'] == null ? null : ((map['isWriter'] as bool).input()).input(),
     );
   }
 }

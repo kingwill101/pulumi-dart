@@ -41,11 +41,11 @@ class ApiMappingState {
 
   factory ApiMappingState.fromMap(Map<String, dynamic> map) {
     return ApiMappingState(
-      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
-      apiMappingKey: map['apiMappingKey'] == null ? null : (map['apiMappingKey'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      stage: map['stage'] == null ? null : (map['stage'] as String).input(),
+      apiId: map['apiId'] == null ? null : ((map['apiId'] as String).input()).input(),
+      apiMappingKey: map['apiMappingKey'] == null ? null : ((map['apiMappingKey'] as String).input()).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      stage: map['stage'] == null ? null : ((map['stage'] as String).input()).input(),
     );
   }
 }

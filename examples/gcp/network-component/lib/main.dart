@@ -34,7 +34,7 @@ class Vpc extends pulumi.ComponentResource {
         '$name-$i',
         args: gcp.compute.SubnetworkArgs(
           network: network.selfLink,
-          ipCidrRange: args.subnetCidrBlocks[i],
+          ipCidrRange: args.subnetCidrBlocks[i].output(),
         ),
         options: pulumi.CustomResourceOptions(parent: network),
       );
@@ -52,7 +52,7 @@ class Vpc extends pulumi.ComponentResource {
       args: gcp.compute.RouterNatArgs(
         router: router.name,
         natIpAllocateOption: 'AUTO_ONLY'.output(),
-        sourceSubnetworkIpRangesToNat: 'ALL_SUBNETWORKS_ALL_IP_RANGES',
+        sourceSubnetworkIpRangesToNat: 'ALL_SUBNETWORKS_ALL_IP_RANGES'.output(),
       ),
       options: pulumi.CustomResourceOptions(parent: network),
     );
@@ -94,12 +94,12 @@ class Server extends pulumi.ComponentResource {
     firewall = gcp.compute.Firewall(
       name,
       args: gcp.compute.FirewallArgs(
-        network: args.subnet.network,
+        network: args.subnet.network.output(),
         allows: [
           gcp.compute.FirewallAllow(
-            protocol: 'tcp',
-            ports: args.ports,
-          ).output(),
+            protocol: 'tcp'.output(),
+            ports: args.ports.output(),
+          ),
         ].output(),
         targetTags: [args.serviceName].output(),
       ),
@@ -114,11 +114,11 @@ class Server extends pulumi.ComponentResource {
     instance = gcp.compute.Instance(
       name,
       args: gcp.compute.InstanceArgs(
-        machineType: args.machineType,
+        machineType: args.machineType.output(),
         bootDisk: gcp.compute.InstanceBootDisk(
           initializeParams: gcp.compute.InstanceBootDiskInitializeParams(
-            image: 'ubuntu-os-cloud/ubuntu-1804-lts',
-          ),
+            image: 'ubuntu-os-cloud/ubuntu-1804-lts'.output(),
+          ).output(),
         ).output(),
         networkInterfaces: [
           gcp.compute.InstanceNetworkInterface(
@@ -126,13 +126,13 @@ class Server extends pulumi.ComponentResource {
             accessConfigs: [
               gcp.compute.InstanceNetworkInterfaceAccessConfig(
                 natIp: address.address,
-              ).output(),
+              ),
             ].output(),
-          ).output(),
+          ),
         ].output(),
         tags: [args.serviceName].output(),
         metadata: args.metadata.output(),
-        metadataStartupScript: args.metadataStartupScript,
+        metadataStartupScript: args.metadataStartupScript.output(),
       ),
       options: pulumi.CustomResourceOptions(parent: this),
     );
@@ -174,14 +174,15 @@ echo "Powered by Pulumi!" > /var/www/html/index.html
 
     registerOutputs({
       'network': network.network.name,
-      'nginx_public_ip': nginxInstance.instance.networkInterfaces.apply(
-        (networkInterfaces) =>
-            networkInterfaces[0].accessConfigs![0].natIp, 
-      ),
+      'nginx_public_ip': nginxInstance.instance.networkInterfaces
+          .apply((networkInterfaces) =>
+              networkInterfaces.isEmpty || networkInterfaces[0].accessConfigs == null
+                  ? ''
+                  : networkInterfaces[0].accessConfigs!.apply(
+                        (accessConfigs) => accessConfigs.isEmpty
+                            ? ''
+                            : accessConfigs[0].natIp ?? '',
+                      )),
     });
   }
-}
-
-Future<void> run() async {
-  await pulumi.Deployment.run(() => ExampleStack());
 }

@@ -42,11 +42,11 @@ class DomainDevicesAudioOss {
 
   factory DomainDevicesAudioOss.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioOss(
-      dspPolicy: map['dspPolicy'] == null ? null : (map['dspPolicy'] as double).input(),
-      exclusive: map['exclusive'] == null ? null : (map['exclusive'] as String).input(),
-      input: map['input'] == null ? null : (DomainDevicesAudioOssInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
-      output: map['output'] == null ? null : (DomainDevicesAudioOssOutput.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
-      tryMMap: map['tryMMap'] == null ? null : (map['tryMMap'] as String).input(),
+      dspPolicy: map['dspPolicy'] == null ? null : (map['dspPolicy']! as double).input(),
+      exclusive: map['exclusive'] == null ? null : (map['exclusive']! as String).input(),
+      input: map['input'] == null ? null : (DomainDevicesAudioOssInput.fromMap((map['input']! as Map).cast<String, dynamic>())).input(),
+      output: map['output'] == null ? null : (DomainDevicesAudioOssOutput.fromMap((map['output']! as Map).cast<String, dynamic>())).input(),
+      tryMMap: map['tryMMap'] == null ? null : (map['tryMMap']! as String).input(),
     );
   }
 }

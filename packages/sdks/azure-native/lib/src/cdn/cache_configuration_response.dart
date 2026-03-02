@@ -41,11 +41,11 @@ class CacheConfigurationResponse {
 
   factory CacheConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return CacheConfigurationResponse(
-      cacheBehavior: map['cacheBehavior'] == null ? null : (map['cacheBehavior'] as String).input(),
-      cacheDuration: map['cacheDuration'] == null ? null : (map['cacheDuration'] as String).input(),
-      isCompressionEnabled: map['isCompressionEnabled'] == null ? null : (map['isCompressionEnabled'] as String).input(),
-      queryParameters: map['queryParameters'] == null ? null : (map['queryParameters'] as String).input(),
-      queryStringCachingBehavior: map['queryStringCachingBehavior'] == null ? null : (map['queryStringCachingBehavior'] as String).input(),
+      cacheBehavior: map['cacheBehavior'] == null ? null : (map['cacheBehavior']! as String).input(),
+      cacheDuration: map['cacheDuration'] == null ? null : (map['cacheDuration']! as String).input(),
+      isCompressionEnabled: map['isCompressionEnabled'] == null ? null : (map['isCompressionEnabled']! as String).input(),
+      queryParameters: map['queryParameters'] == null ? null : (map['queryParameters']! as String).input(),
+      queryStringCachingBehavior: map['queryStringCachingBehavior'] == null ? null : (map['queryStringCachingBehavior']! as String).input(),
     );
   }
 }

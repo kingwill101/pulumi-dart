@@ -56,9 +56,9 @@ class RegionUrlMapPathMatcherPathRule {
   factory RegionUrlMapPathMatcherPathRule.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherPathRule(
       paths: ((map['paths'] as List).cast<String>()).input(),
-      routeAction: map['routeAction'] == null ? null : (RegionUrlMapPathMatcherPathRuleRouteAction.fromMap((map['routeAction'] as Map).cast<String, dynamic>())).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      urlRedirect: map['urlRedirect'] == null ? null : (RegionUrlMapPathMatcherPathRuleUrlRedirect.fromMap((map['urlRedirect'] as Map).cast<String, dynamic>())).input(),
+      routeAction: map['routeAction'] == null ? null : (RegionUrlMapPathMatcherPathRuleRouteAction.fromMap((map['routeAction']! as Map).cast<String, dynamic>())).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      urlRedirect: map['urlRedirect'] == null ? null : (RegionUrlMapPathMatcherPathRuleUrlRedirect.fromMap((map['urlRedirect']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

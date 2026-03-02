@@ -95,20 +95,20 @@ class CertCheckMonitorState {
 
   factory CertCheckMonitorState.fromMap(Map<String, dynamic> map) {
     return CertCheckMonitorState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      certificateExpiration: map['certificateExpiration'] == null ? null : (map['certificateExpiration'] as int).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      locationsPrivates: map['locationsPrivates'] == null ? null : ((map['locationsPrivates'] as List).cast<String>()).input(),
-      locationsPublics: map['locationsPublics'] == null ? null : ((map['locationsPublics'] as List).cast<String>()).input(),
-      monitorId: map['monitorId'] == null ? null : (map['monitorId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as String).input(),
-      periodInMinutes: map['periodInMinutes'] == null ? null : (map['periodInMinutes'] as int).input(),
-      runtimeType_: map['runtimeType'] == null ? null : (map['runtimeType'] as String).input(),
-      runtimeTypeVersion: map['runtimeTypeVersion'] == null ? null : (map['runtimeTypeVersion'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<CertCheckMonitorTag>(map['tags'], (value) => CertCheckMonitorTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      useUnsupportedLegacyRuntime: map['useUnsupportedLegacyRuntime'] == null ? null : (map['useUnsupportedLegacyRuntime'] as bool).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      certificateExpiration: map['certificateExpiration'] == null ? null : (map['certificateExpiration']! as int).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      locationsPrivates: map['locationsPrivates'] == null ? null : ((map['locationsPrivates']! as List).cast<String>()).input(),
+      locationsPublics: map['locationsPublics'] == null ? null : ((map['locationsPublics']! as List).cast<String>()).input(),
+      monitorId: map['monitorId'] == null ? null : (map['monitorId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as String).input(),
+      periodInMinutes: map['periodInMinutes'] == null ? null : (map['periodInMinutes']! as int).input(),
+      runtimeType_: map['runtimeType'] == null ? null : (map['runtimeType']! as String).input(),
+      runtimeTypeVersion: map['runtimeTypeVersion'] == null ? null : (map['runtimeTypeVersion']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<CertCheckMonitorTag>(map['tags']!, (value) => CertCheckMonitorTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      useUnsupportedLegacyRuntime: map['useUnsupportedLegacyRuntime'] == null ? null : (map['useUnsupportedLegacyRuntime']! as bool).input(),
     );
   }
 }

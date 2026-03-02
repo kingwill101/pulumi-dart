@@ -53,7 +53,7 @@ class GetRouterConfigurationResult {
       id: map['id'] as String,
       region: map['region'] as String,
       routerTypeIdentifier: map['routerTypeIdentifier'] as String,
-      routers: pulumi.Input.decodeList<GetRouterConfigurationRouter>(map['routers'], (value) => GetRouterConfigurationRouter.fromMap((value as Map).cast<String, dynamic>())),
+      routers: pulumi.Input.decodeList<GetRouterConfigurationRouter>(map['routers']!, (value) => GetRouterConfigurationRouter.fromMap((value as Map).cast<String, dynamic>())),
       virtualInterfaceId: map['virtualInterfaceId'] as String,
       virtualInterfaceName: map['virtualInterfaceName'] as String,
     );

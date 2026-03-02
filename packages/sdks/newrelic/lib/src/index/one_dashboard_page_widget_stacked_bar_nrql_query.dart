@@ -25,7 +25,7 @@ class OneDashboardPageWidgetStackedBarNrqlQuery {
 
   factory OneDashboardPageWidgetStackedBarNrqlQuery.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetStackedBarNrqlQuery(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
       query: (map['query'] as String).input(),
     );
   }

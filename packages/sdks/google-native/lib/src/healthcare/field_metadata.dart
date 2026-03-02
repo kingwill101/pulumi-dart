@@ -27,8 +27,8 @@ class FieldMetadata {
 
   factory FieldMetadata.fromMap(Map<String, dynamic> map) {
     return FieldMetadata(
-      action: map['action'] == null ? null : (FieldMetadataAction.fromValue(map['action'] as String)).input(),
-      paths: map['paths'] == null ? null : ((map['paths'] as List).cast<String>()).input(),
+      action: map['action'] == null ? null : (FieldMetadataAction.fromValue(map['action']! as String)).input(),
+      paths: map['paths'] == null ? null : ((map['paths']! as List).cast<String>()).input(),
     );
   }
 }

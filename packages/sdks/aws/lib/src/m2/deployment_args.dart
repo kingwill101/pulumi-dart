@@ -56,10 +56,10 @@ class DeploymentArgs {
       applicationId: (map['applicationId'] as String).input(),
       applicationVersion: (map['applicationVersion'] as int).input(),
       environmentId: (map['environmentId'] as String).input(),
-      forceStop: map['forceStop'] == null ? null : (map['forceStop'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      forceStop: map['forceStop'] == null ? null : ((map['forceStop'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       start: (map['start'] as bool).input(),
-      timeouts: map['timeouts'] == null ? null : (DeploymentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      timeouts: map['timeouts'] == null ? null : ((DeploymentTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -41,7 +41,7 @@ class AccountConnectionArgs {
   factory AccountConnectionArgs.fromMap(Map<String, dynamic> map) {
     return AccountConnectionArgs(
       accountName: (map['accountName'] as String).input(),
-      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
+      connectionName: map['connectionName'] == null ? null : (map['connectionName']! as String).input(),
       properties: (AADAuthTypeConnectionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

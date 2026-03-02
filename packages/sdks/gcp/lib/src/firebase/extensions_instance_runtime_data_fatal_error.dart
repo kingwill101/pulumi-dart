@@ -22,7 +22,7 @@ class ExtensionsInstanceRuntimeDataFatalError {
 
   factory ExtensionsInstanceRuntimeDataFatalError.fromMap(Map<String, dynamic> map) {
     return ExtensionsInstanceRuntimeDataFatalError(
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
     );
   }
 }

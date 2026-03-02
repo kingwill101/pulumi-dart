@@ -39,7 +39,7 @@ class AccessPolicyArgs {
 
   factory AccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AccessPolicyArgs(
-      accessPolicyName: map['accessPolicyName'] == null ? null : (map['accessPolicyName'] as String).input(),
+      accessPolicyName: map['accessPolicyName'] == null ? null : (map['accessPolicyName']! as String).input(),
       cacheName: (map['cacheName'] as String).input(),
       permissions: (map['permissions'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

@@ -69,12 +69,12 @@ class FactoryGitHubConfigurationResponse {
   factory FactoryGitHubConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return FactoryGitHubConfigurationResponse(
       accountName: (map['accountName'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (GitHubClientSecretResponse.fromMap((map['clientSecret'] as Map).cast<String, dynamic>())).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (GitHubClientSecretResponse.fromMap((map['clientSecret']! as Map).cast<String, dynamic>())).input(),
       collaborationBranch: (map['collaborationBranch'] as String).input(),
-      disablePublish: map['disablePublish'] == null ? null : (map['disablePublish'] as bool).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      lastCommitId: map['lastCommitId'] == null ? null : (map['lastCommitId'] as String).input(),
+      disablePublish: map['disablePublish'] == null ? null : (map['disablePublish']! as bool).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      lastCommitId: map['lastCommitId'] == null ? null : (map['lastCommitId']! as String).input(),
       repositoryName: (map['repositoryName'] as String).input(),
       rootFolder: (map['rootFolder'] as String).input(),
       type: (map['type'] as String).input(),

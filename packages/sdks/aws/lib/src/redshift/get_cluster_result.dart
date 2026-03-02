@@ -234,7 +234,7 @@ class GetClusterResult {
       bucketName: map['bucketName'] as String,
       clusterIdentifier: map['clusterIdentifier'] as String,
       clusterNamespaceArn: map['clusterNamespaceArn'] as String,
-      clusterNodes: pulumi.Input.decodeList<GetClusterClusterNode>(map['clusterNodes'], (value) => GetClusterClusterNode.fromMap((value as Map).cast<String, dynamic>())),
+      clusterNodes: pulumi.Input.decodeList<GetClusterClusterNode>(map['clusterNodes']!, (value) => GetClusterClusterNode.fromMap((value as Map).cast<String, dynamic>())),
       clusterParameterGroupName: map['clusterParameterGroupName'] as String,
       clusterPublicKey: map['clusterPublicKey'] as String,
       clusterRevisionNumber: map['clusterRevisionNumber'] as String,

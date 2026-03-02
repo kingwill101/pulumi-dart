@@ -26,8 +26,8 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenS
 
   factory ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings.fromMap(Map<String, dynamic> map) {
     return ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings(
-      nodePoolSoakDuration: map['nodePoolSoakDuration'] == null ? null : (map['nodePoolSoakDuration'] as String).input(),
-      standardRolloutPolicy: map['standardRolloutPolicy'] == null ? null : (ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy.fromMap((map['standardRolloutPolicy'] as Map).cast<String, dynamic>())).input(),
+      nodePoolSoakDuration: map['nodePoolSoakDuration'] == null ? null : (map['nodePoolSoakDuration']! as String).input(),
+      standardRolloutPolicy: map['standardRolloutPolicy'] == null ? null : (ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy.fromMap((map['standardRolloutPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

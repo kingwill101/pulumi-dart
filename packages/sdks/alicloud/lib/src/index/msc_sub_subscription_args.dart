@@ -62,14 +62,14 @@ class MscSubSubscriptionArgs {
 
   factory MscSubSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return MscSubSubscriptionArgs(
-      contactIds: map['contactIds'] == null ? null : ((map['contactIds'] as List).cast<String>()).input(),
-      emailStatus: map['emailStatus'] == null ? null : (map['emailStatus'] as int).input(),
+      contactIds: map['contactIds'] == null ? null : ((map['contactIds']! as List).cast<String>()).input(),
+      emailStatus: map['emailStatus'] == null ? null : (map['emailStatus']! as int).input(),
       itemName: (map['itemName'] as String).input(),
-      pmsgStatus: map['pmsgStatus'] == null ? null : (map['pmsgStatus'] as int).input(),
-      smsStatus: map['smsStatus'] == null ? null : (map['smsStatus'] as int).input(),
-      ttsStatus: map['ttsStatus'] == null ? null : (map['ttsStatus'] as int).input(),
-      webhookIds: map['webhookIds'] == null ? null : ((map['webhookIds'] as List).cast<String>()).input(),
-      webhookStatus: map['webhookStatus'] == null ? null : (map['webhookStatus'] as int).input(),
+      pmsgStatus: map['pmsgStatus'] == null ? null : (map['pmsgStatus']! as int).input(),
+      smsStatus: map['smsStatus'] == null ? null : (map['smsStatus']! as int).input(),
+      ttsStatus: map['ttsStatus'] == null ? null : (map['ttsStatus']! as int).input(),
+      webhookIds: map['webhookIds'] == null ? null : ((map['webhookIds']! as List).cast<String>()).input(),
+      webhookStatus: map['webhookStatus'] == null ? null : (map['webhookStatus']! as int).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class VirtualNetworkSwiftConnectionState {
 
   factory VirtualNetworkSwiftConnectionState.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkSwiftConnectionState(
-      appServiceId: map['appServiceId'] == null ? null : (map['appServiceId'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      appServiceId: map['appServiceId'] == null ? null : (map['appServiceId']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

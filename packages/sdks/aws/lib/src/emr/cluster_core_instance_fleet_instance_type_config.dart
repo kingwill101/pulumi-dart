@@ -47,12 +47,12 @@ class ClusterCoreInstanceFleetInstanceTypeConfig {
 
   factory ClusterCoreInstanceFleetInstanceTypeConfig.fromMap(Map<String, dynamic> map) {
     return ClusterCoreInstanceFleetInstanceTypeConfig(
-      bidPrice: map['bidPrice'] == null ? null : (map['bidPrice'] as String).input(),
-      bidPriceAsPercentageOfOnDemandPrice: map['bidPriceAsPercentageOfOnDemandPrice'] == null ? null : (map['bidPriceAsPercentageOfOnDemandPrice'] as double).input(),
-      configurations: map['configurations'] == null ? null : (pulumi.Input.decodeList<ClusterCoreInstanceFleetInstanceTypeConfigConfiguration>(map['configurations'], (value) => ClusterCoreInstanceFleetInstanceTypeConfigConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ebsConfigs: map['ebsConfigs'] == null ? null : (pulumi.Input.decodeList<ClusterCoreInstanceFleetInstanceTypeConfigEbsConfig>(map['ebsConfigs'], (value) => ClusterCoreInstanceFleetInstanceTypeConfigEbsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bidPrice: map['bidPrice'] == null ? null : ((map['bidPrice'] as String).input()).input(),
+      bidPriceAsPercentageOfOnDemandPrice: map['bidPriceAsPercentageOfOnDemandPrice'] == null ? null : ((map['bidPriceAsPercentageOfOnDemandPrice'] as double).input()).input(),
+      configurations: map['configurations'] == null ? null : ((pulumi.Input.decodeList<ClusterCoreInstanceFleetInstanceTypeConfigConfiguration>(map['configurations']!, (value) => ClusterCoreInstanceFleetInstanceTypeConfigConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      ebsConfigs: map['ebsConfigs'] == null ? null : ((pulumi.Input.decodeList<ClusterCoreInstanceFleetInstanceTypeConfigEbsConfig>(map['ebsConfigs']!, (value) => ClusterCoreInstanceFleetInstanceTypeConfigEbsConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       instanceType: (map['instanceType'] as String).input(),
-      weightedCapacity: map['weightedCapacity'] == null ? null : (map['weightedCapacity'] as int).input(),
+      weightedCapacity: map['weightedCapacity'] == null ? null : ((map['weightedCapacity'] as int).input()).input(),
     );
   }
 }

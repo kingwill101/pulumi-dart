@@ -53,13 +53,13 @@ class NodeSpec {
 
   factory NodeSpec.fromMap(Map<String, dynamic> map) {
     return NodeSpec(
-      configSource: map['configSource'] == null ? null : (NodeConfigSource.fromMap((map['configSource'] as Map).cast<String, dynamic>())).input(),
-      externalID: map['externalID'] == null ? null : (map['externalID'] as String).input(),
-      podCIDR: map['podCIDR'] == null ? null : (map['podCIDR'] as String).input(),
-      podCIDRs: map['podCIDRs'] == null ? null : ((map['podCIDRs'] as List).cast<String>()).input(),
-      providerID: map['providerID'] == null ? null : (map['providerID'] as String).input(),
-      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<Taint>(map['taints'], (value) => Taint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      unschedulable: map['unschedulable'] == null ? null : (map['unschedulable'] as bool).input(),
+      configSource: map['configSource'] == null ? null : (NodeConfigSource.fromMap((map['configSource']! as Map).cast<String, dynamic>())).input(),
+      externalID: map['externalID'] == null ? null : (map['externalID']! as String).input(),
+      podCIDR: map['podCIDR'] == null ? null : (map['podCIDR']! as String).input(),
+      podCIDRs: map['podCIDRs'] == null ? null : ((map['podCIDRs']! as List).cast<String>()).input(),
+      providerID: map['providerID'] == null ? null : (map['providerID']! as String).input(),
+      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<Taint>(map['taints']!, (value) => Taint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      unschedulable: map['unschedulable'] == null ? null : (map['unschedulable']! as bool).input(),
     );
   }
 }

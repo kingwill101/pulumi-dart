@@ -26,8 +26,8 @@ class SoftDeletePolicy {
 
   factory SoftDeletePolicy.fromMap(Map<String, dynamic> map) {
     return SoftDeletePolicy(
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

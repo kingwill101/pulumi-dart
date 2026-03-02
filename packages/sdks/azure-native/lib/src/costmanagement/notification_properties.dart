@@ -41,9 +41,9 @@ class NotificationProperties {
 
   factory NotificationProperties.fromMap(Map<String, dynamic> map) {
     return NotificationProperties(
-      language: map['language'] == null ? null : (map['language'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      regionalFormat: map['regionalFormat'] == null ? null : (map['regionalFormat'] as String).input(),
+      language: map['language'] == null ? null : (map['language']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      regionalFormat: map['regionalFormat'] == null ? null : (map['regionalFormat']! as String).input(),
       subject: (map['subject'] as String).input(),
       to: ((map['to'] as List).cast<String>()).input(),
     );

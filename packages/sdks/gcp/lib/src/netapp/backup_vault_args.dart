@@ -66,14 +66,14 @@ class BackupVaultArgs {
 
   factory BackupVaultArgs.fromMap(Map<String, dynamic> map) {
     return BackupVaultArgs(
-      backupRegion: map['backupRegion'] == null ? null : (map['backupRegion'] as String).input(),
-      backupRetentionPolicy: map['backupRetentionPolicy'] == null ? null : (BackupVaultBackupRetentionPolicy.fromMap((map['backupRetentionPolicy'] as Map).cast<String, dynamic>())).input(),
-      backupVaultType: map['backupVaultType'] == null ? null : (map['backupVaultType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      backupRegion: map['backupRegion'] == null ? null : (map['backupRegion']! as String).input(),
+      backupRetentionPolicy: map['backupRetentionPolicy'] == null ? null : (BackupVaultBackupRetentionPolicy.fromMap((map['backupRetentionPolicy']! as Map).cast<String, dynamic>())).input(),
+      backupVaultType: map['backupVaultType'] == null ? null : (map['backupVaultType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

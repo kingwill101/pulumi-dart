@@ -25,7 +25,7 @@ class BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationE
 
   factory BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration(
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
       sseAlgorithm: (map['sseAlgorithm'] as String).input(),
     );
   }

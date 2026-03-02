@@ -21,7 +21,7 @@ class ConnectionMonitorWorkspaceSettings {
 
   factory ConnectionMonitorWorkspaceSettings.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorWorkspaceSettings(
-      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId'] as String).input(),
+      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId']! as String).input(),
     );
   }
 }

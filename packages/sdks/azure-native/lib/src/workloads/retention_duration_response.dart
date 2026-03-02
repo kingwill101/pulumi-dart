@@ -27,8 +27,8 @@ class RetentionDurationResponse {
 
   factory RetentionDurationResponse.fromMap(Map<String, dynamic> map) {
     return RetentionDurationResponse(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      durationType: map['durationType'] == null ? null : (map['durationType'] as String).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      durationType: map['durationType'] == null ? null : (map['durationType']! as String).input(),
     );
   }
 }

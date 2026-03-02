@@ -26,8 +26,8 @@ class HealthBotKeyResponse {
 
   factory HealthBotKeyResponse.fromMap(Map<String, dynamic> map) {
     return HealthBotKeyResponse(
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

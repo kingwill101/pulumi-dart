@@ -105,7 +105,7 @@ class GetDefaultUserRuleResult {
       destinations: pulumi.Input.decodeList<AddressPrefixItemResponse>(map['destinations'], (value) => AddressPrefixItemResponse.fromMap((value as Map).cast<String, dynamic>())),
       direction: map['direction'] as String,
       etag: map['etag'] as String,
-      flag: map['flag'] == null ? null : map['flag'] as String,
+      flag: map['flag'] == null ? null : map['flag']! as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,

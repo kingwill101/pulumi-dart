@@ -35,10 +35,10 @@ class BgpPolicyContentSourceLimit {
 
   factory BgpPolicyContentSourceLimit.fromMap(Map<String, dynamic> map) {
     return BgpPolicyContentSourceLimit(
-      bps: map['bps'] == null ? null : (map['bps'] as int).input(),
-      pps: map['pps'] == null ? null : (map['pps'] as int).input(),
-      synBps: map['synBps'] == null ? null : (map['synBps'] as int).input(),
-      synPps: map['synPps'] == null ? null : (map['synPps'] as int).input(),
+      bps: map['bps'] == null ? null : (map['bps']! as int).input(),
+      pps: map['pps'] == null ? null : (map['pps']! as int).input(),
+      synBps: map['synBps'] == null ? null : (map['synBps']! as int).input(),
+      synPps: map['synPps'] == null ? null : (map['synPps']! as int).input(),
     );
   }
 }

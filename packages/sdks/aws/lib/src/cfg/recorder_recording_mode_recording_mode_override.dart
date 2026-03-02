@@ -30,7 +30,7 @@ class RecorderRecordingModeRecordingModeOverride {
 
   factory RecorderRecordingModeRecordingModeOverride.fromMap(Map<String, dynamic> map) {
     return RecorderRecordingModeRecordingModeOverride(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       recordingFrequency: (map['recordingFrequency'] as String).input(),
       resourceTypes: ((map['resourceTypes'] as List).cast<String>()).input(),
     );

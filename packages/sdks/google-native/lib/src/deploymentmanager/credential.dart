@@ -33,9 +33,9 @@ class Credential {
 
   factory Credential.fromMap(Map<String, dynamic> map) {
     return Credential(
-      basicAuth: map['basicAuth'] == null ? null : (BasicAuth.fromMap((map['basicAuth'] as Map).cast<String, dynamic>())).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (ServiceAccount.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>())).input(),
-      useProjectDefault: map['useProjectDefault'] == null ? null : (map['useProjectDefault'] as bool).input(),
+      basicAuth: map['basicAuth'] == null ? null : (BasicAuth.fromMap((map['basicAuth']! as Map).cast<String, dynamic>())).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (ServiceAccount.fromMap((map['serviceAccount']! as Map).cast<String, dynamic>())).input(),
+      useProjectDefault: map['useProjectDefault'] == null ? null : (map['useProjectDefault']! as bool).input(),
     );
   }
 }

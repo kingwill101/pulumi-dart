@@ -139,7 +139,7 @@ class GetInsightsDatasetConfigResult {
       name: map['name'] as String,
       organizationNumber: map['organizationNumber'] as String,
       organizationScope: map['organizationScope'] as bool,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       retentionPeriodDays: map['retentionPeriodDays'] as int,
       sourceFolders: pulumi.Input.decodeList<GetInsightsDatasetConfigSourceFolder>(map['sourceFolders'], (value) => GetInsightsDatasetConfigSourceFolder.fromMap((value as Map).cast<String, dynamic>())),
       sourceProjects: pulumi.Input.decodeList<GetInsightsDatasetConfigSourceProject>(map['sourceProjects'], (value) => GetInsightsDatasetConfigSourceProject.fromMap((value as Map).cast<String, dynamic>())),

@@ -59,13 +59,13 @@ class NodeBalancerArgs {
 
   factory NodeBalancerArgs.fromMap(Map<String, dynamic> map) {
     return NodeBalancerArgs(
-      clientConnThrottle: map['clientConnThrottle'] == null ? null : (map['clientConnThrottle'] as int).input(),
-      clientUdpSessThrottle: map['clientUdpSessThrottle'] == null ? null : (map['clientUdpSessThrottle'] as int).input(),
-      firewallId: map['firewallId'] == null ? null : (map['firewallId'] as int).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      vpcs: map['vpcs'] == null ? null : (pulumi.Input.decodeList<NodeBalancerVpc>(map['vpcs'], (value) => NodeBalancerVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientConnThrottle: map['clientConnThrottle'] == null ? null : (map['clientConnThrottle']! as int).input(),
+      clientUdpSessThrottle: map['clientUdpSessThrottle'] == null ? null : (map['clientUdpSessThrottle']! as int).input(),
+      firewallId: map['firewallId'] == null ? null : (map['firewallId']! as int).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      vpcs: map['vpcs'] == null ? null : (pulumi.Input.decodeList<NodeBalancerVpc>(map['vpcs']!, (value) => NodeBalancerVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class PeeringSku {
 
   factory PeeringSku.fromMap(Map<String, dynamic> map) {
     return PeeringSku(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

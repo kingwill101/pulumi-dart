@@ -49,11 +49,11 @@ class GetImagesResult {
     return GetImagesResult(
       id: map['id'] as String,
       images: pulumi.Input.decodeList<GetImagesImage>(map['images'], (value) => GetImagesImage.fromMap((value as Map).cast<String, dynamic>())),
-      includeDeprecated: map['includeDeprecated'] == null ? null : map['includeDeprecated'] as bool,
-      mostRecent: map['mostRecent'] == null ? null : map['mostRecent'] as bool,
-      withArchitectures: map['withArchitectures'] == null ? null : (map['withArchitectures'] as List).cast<String>(),
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
-      withStatuses: map['withStatuses'] == null ? null : (map['withStatuses'] as List).cast<String>(),
+      includeDeprecated: map['includeDeprecated'] == null ? null : map['includeDeprecated']! as bool,
+      mostRecent: map['mostRecent'] == null ? null : map['mostRecent']! as bool,
+      withArchitectures: map['withArchitectures'] == null ? null : (map['withArchitectures']! as List).cast<String>(),
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
+      withStatuses: map['withStatuses'] == null ? null : (map['withStatuses']! as List).cast<String>(),
     );
   }
 }

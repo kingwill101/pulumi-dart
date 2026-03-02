@@ -22,7 +22,7 @@ class CapacityProviderManagedInstancesProviderInfrastructureOptimization {
 
   factory CapacityProviderManagedInstancesProviderInfrastructureOptimization.fromMap(Map<String, dynamic> map) {
     return CapacityProviderManagedInstancesProviderInfrastructureOptimization(
-      scaleInAfter: map['scaleInAfter'] == null ? null : (map['scaleInAfter'] as int).input(),
+      scaleInAfter: map['scaleInAfter'] == null ? null : ((map['scaleInAfter'] as int).input()).input(),
     );
   }
 }

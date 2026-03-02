@@ -25,7 +25,7 @@ class GetLaunchTemplateInstanceMarketOption {
   factory GetLaunchTemplateInstanceMarketOption.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateInstanceMarketOption(
       marketType: (map['marketType'] as String).input(),
-      spotOptions: (pulumi.Input.decodeList<GetLaunchTemplateInstanceMarketOptionSpotOption>(map['spotOptions'], (value) => GetLaunchTemplateInstanceMarketOptionSpotOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      spotOptions: (pulumi.Input.decodeList<GetLaunchTemplateInstanceMarketOptionSpotOption>(map['spotOptions']!, (value) => GetLaunchTemplateInstanceMarketOptionSpotOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

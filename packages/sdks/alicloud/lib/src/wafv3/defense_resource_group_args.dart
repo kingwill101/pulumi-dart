@@ -39,10 +39,10 @@ class DefenseResourceGroupArgs {
 
   factory DefenseResourceGroupArgs.fromMap(Map<String, dynamic> map) {
     return DefenseResourceGroupArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       groupName: (map['groupName'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      resourceLists: map['resourceLists'] == null ? null : ((map['resourceLists'] as List).cast<String>()).input(),
+      resourceLists: map['resourceLists'] == null ? null : ((map['resourceLists']! as List).cast<String>()).input(),
     );
   }
 }

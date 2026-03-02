@@ -41,7 +41,7 @@ class SshKeyArgs {
     return SshKeyArgs(
       encoding: (map['encoding'] as String).input(),
       publicKey: (map['publicKey'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
       username: (map['username'] as String).input(),
     );
   }

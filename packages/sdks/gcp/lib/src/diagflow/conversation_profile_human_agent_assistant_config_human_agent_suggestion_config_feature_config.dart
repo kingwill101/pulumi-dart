@@ -81,16 +81,16 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
 
   factory ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig(
-      conversationModelConfig: map['conversationModelConfig'] == null ? null : (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfig.fromMap((map['conversationModelConfig'] as Map).cast<String, dynamic>())).input(),
-      conversationProcessConfig: map['conversationProcessConfig'] == null ? null : (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfig.fromMap((map['conversationProcessConfig'] as Map).cast<String, dynamic>())).input(),
-      disableAgentQueryLogging: map['disableAgentQueryLogging'] == null ? null : (map['disableAgentQueryLogging'] as bool).input(),
-      enableConversationAugmentedQuery: map['enableConversationAugmentedQuery'] == null ? null : (map['enableConversationAugmentedQuery'] as bool).input(),
-      enableEventBasedSuggestion: map['enableEventBasedSuggestion'] == null ? null : (map['enableEventBasedSuggestion'] as bool).input(),
-      enableQuerySuggestionOnly: map['enableQuerySuggestionOnly'] == null ? null : (map['enableQuerySuggestionOnly'] as bool).input(),
-      enableQuerySuggestionWhenNoAnswer: map['enableQuerySuggestionWhenNoAnswer'] == null ? null : (map['enableQuerySuggestionWhenNoAnswer'] as bool).input(),
-      queryConfig: map['queryConfig'] == null ? null : (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig.fromMap((map['queryConfig'] as Map).cast<String, dynamic>())).input(),
-      suggestionFeature: map['suggestionFeature'] == null ? null : (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeature.fromMap((map['suggestionFeature'] as Map).cast<String, dynamic>())).input(),
-      suggestionTriggerSettings: map['suggestionTriggerSettings'] == null ? null : (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettings.fromMap((map['suggestionTriggerSettings'] as Map).cast<String, dynamic>())).input(),
+      conversationModelConfig: map['conversationModelConfig'] == null ? null : (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfig.fromMap((map['conversationModelConfig']! as Map).cast<String, dynamic>())).input(),
+      conversationProcessConfig: map['conversationProcessConfig'] == null ? null : (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfig.fromMap((map['conversationProcessConfig']! as Map).cast<String, dynamic>())).input(),
+      disableAgentQueryLogging: map['disableAgentQueryLogging'] == null ? null : (map['disableAgentQueryLogging']! as bool).input(),
+      enableConversationAugmentedQuery: map['enableConversationAugmentedQuery'] == null ? null : (map['enableConversationAugmentedQuery']! as bool).input(),
+      enableEventBasedSuggestion: map['enableEventBasedSuggestion'] == null ? null : (map['enableEventBasedSuggestion']! as bool).input(),
+      enableQuerySuggestionOnly: map['enableQuerySuggestionOnly'] == null ? null : (map['enableQuerySuggestionOnly']! as bool).input(),
+      enableQuerySuggestionWhenNoAnswer: map['enableQuerySuggestionWhenNoAnswer'] == null ? null : (map['enableQuerySuggestionWhenNoAnswer']! as bool).input(),
+      queryConfig: map['queryConfig'] == null ? null : (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig.fromMap((map['queryConfig']! as Map).cast<String, dynamic>())).input(),
+      suggestionFeature: map['suggestionFeature'] == null ? null : (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeature.fromMap((map['suggestionFeature']! as Map).cast<String, dynamic>())).input(),
+      suggestionTriggerSettings: map['suggestionTriggerSettings'] == null ? null : (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettings.fromMap((map['suggestionTriggerSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

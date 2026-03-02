@@ -22,7 +22,7 @@ class GoogleCloudDatacatalogV1DatasetSpec {
 
   factory GoogleCloudDatacatalogV1DatasetSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1DatasetSpec(
-      vertexDatasetSpec: map['vertexDatasetSpec'] == null ? null : (GoogleCloudDatacatalogV1VertexDatasetSpec.fromMap((map['vertexDatasetSpec'] as Map).cast<String, dynamic>())).input(),
+      vertexDatasetSpec: map['vertexDatasetSpec'] == null ? null : (GoogleCloudDatacatalogV1VertexDatasetSpec.fromMap((map['vertexDatasetSpec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class UsagePlanApiStageThrottle {
 
   factory UsagePlanApiStageThrottle.fromMap(Map<String, dynamic> map) {
     return UsagePlanApiStageThrottle(
-      burstLimit: map['burstLimit'] == null ? null : (map['burstLimit'] as int).input(),
+      burstLimit: map['burstLimit'] == null ? null : ((map['burstLimit'] as int).input()).input(),
       path: (map['path'] as String).input(),
-      rateLimit: map['rateLimit'] == null ? null : (map['rateLimit'] as double).input(),
+      rateLimit: map['rateLimit'] == null ? null : ((map['rateLimit'] as double).input()).input(),
     );
   }
 }

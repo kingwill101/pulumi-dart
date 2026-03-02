@@ -20,7 +20,7 @@ class ArtifactRule {
 
   factory ArtifactRule.fromMap(Map<String, dynamic> map) {
     return ArtifactRule(
-      artifactRule: map['artifactRule'] == null ? null : ((map['artifactRule'] as List).cast<String>()).input(),
+      artifactRule: map['artifactRule'] == null ? null : ((map['artifactRule']! as List).cast<String>()).input(),
     );
   }
 }

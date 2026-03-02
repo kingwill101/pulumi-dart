@@ -55,10 +55,10 @@ class RecordArgs {
   factory RecordArgs.fromMap(Map<String, dynamic> map) {
     return RecordArgs(
       hostRecord: (map['hostRecord'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      routing: map['routing'] == null ? null : (map['routing'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      routing: map['routing'] == null ? null : (map['routing']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
       type: (map['type'] as String).input(),
       value: (map['value'] as String).input(),
     );

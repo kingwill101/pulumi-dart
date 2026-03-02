@@ -30,9 +30,9 @@ class CommitmentResponse {
 
   factory CommitmentResponse.fromMap(Map<String, dynamic> map) {
     return CommitmentResponse(
-      amount: map['amount'] == null ? null : (map['amount'] as double).input(),
-      currencyCode: map['currencyCode'] == null ? null : (map['currencyCode'] as String).input(),
-      grain: map['grain'] == null ? null : (map['grain'] as String).input(),
+      amount: map['amount'] == null ? null : (map['amount']! as double).input(),
+      currencyCode: map['currencyCode'] == null ? null : (map['currencyCode']! as String).input(),
+      grain: map['grain'] == null ? null : (map['grain']! as String).input(),
     );
   }
 }

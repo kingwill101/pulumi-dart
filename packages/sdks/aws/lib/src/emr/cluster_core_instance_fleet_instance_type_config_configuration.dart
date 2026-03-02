@@ -25,8 +25,8 @@ class ClusterCoreInstanceFleetInstanceTypeConfigConfiguration {
 
   factory ClusterCoreInstanceFleetInstanceTypeConfigConfiguration.fromMap(Map<String, dynamic> map) {
     return ClusterCoreInstanceFleetInstanceTypeConfigConfiguration(
-      classification: map['classification'] == null ? null : (map['classification'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      classification: map['classification'] == null ? null : ((map['classification'] as String).input()).input(),
+      properties: map['properties'] == null ? null : (((map['properties'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

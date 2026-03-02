@@ -52,13 +52,13 @@ class CronJobSpecPatchBatchV2alpha1 {
 
   factory CronJobSpecPatchBatchV2alpha1.fromMap(Map<String, dynamic> map) {
     return CronJobSpecPatchBatchV2alpha1(
-      concurrencyPolicy: map['concurrencyPolicy'] == null ? null : (map['concurrencyPolicy'] as String).input(),
-      failedJobsHistoryLimit: map['failedJobsHistoryLimit'] == null ? null : (map['failedJobsHistoryLimit'] as int).input(),
-      jobTemplate: map['jobTemplate'] == null ? null : (JobTemplateSpecPatchBatchV2alpha1.fromMap((map['jobTemplate'] as Map).cast<String, dynamic>())).input(),
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
-      startingDeadlineSeconds: map['startingDeadlineSeconds'] == null ? null : (map['startingDeadlineSeconds'] as int).input(),
-      successfulJobsHistoryLimit: map['successfulJobsHistoryLimit'] == null ? null : (map['successfulJobsHistoryLimit'] as int).input(),
-      suspend: map['suspend'] == null ? null : (map['suspend'] as bool).input(),
+      concurrencyPolicy: map['concurrencyPolicy'] == null ? null : (map['concurrencyPolicy']! as String).input(),
+      failedJobsHistoryLimit: map['failedJobsHistoryLimit'] == null ? null : (map['failedJobsHistoryLimit']! as int).input(),
+      jobTemplate: map['jobTemplate'] == null ? null : (JobTemplateSpecPatchBatchV2alpha1.fromMap((map['jobTemplate']! as Map).cast<String, dynamic>())).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule']! as String).input(),
+      startingDeadlineSeconds: map['startingDeadlineSeconds'] == null ? null : (map['startingDeadlineSeconds']! as int).input(),
+      successfulJobsHistoryLimit: map['successfulJobsHistoryLimit'] == null ? null : (map['successfulJobsHistoryLimit']! as int).input(),
+      suspend: map['suspend'] == null ? null : (map['suspend']! as bool).input(),
     );
   }
 }

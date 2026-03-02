@@ -55,12 +55,12 @@ class GetWorkspaceApiReleaseResult {
 
   factory GetWorkspaceApiReleaseResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceApiReleaseResult(
-      apiId: map['apiId'] == null ? null : map['apiId'] as String,
+      apiId: map['apiId'] == null ? null : map['apiId']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       createdDateTime: map['createdDateTime'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      notes: map['notes'] == null ? null : map['notes'] as String,
+      notes: map['notes'] == null ? null : map['notes']! as String,
       type: map['type'] as String,
       updatedDateTime: map['updatedDateTime'] as String,
     );

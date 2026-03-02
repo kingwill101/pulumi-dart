@@ -34,9 +34,9 @@ class SecurityPolicyRuleMatcherComputeV1 {
 
   factory SecurityPolicyRuleMatcherComputeV1.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleMatcherComputeV1(
-      config: map['config'] == null ? null : (SecurityPolicyRuleMatcherConfigComputeV1.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      expr: map['expr'] == null ? null : (ExprComputeV1.fromMap((map['expr'] as Map).cast<String, dynamic>())).input(),
-      versionedExpr: map['versionedExpr'] == null ? null : (SecurityPolicyRuleMatcherVersionedExprComputeV1.fromValue(map['versionedExpr'] as String)).input(),
+      config: map['config'] == null ? null : (SecurityPolicyRuleMatcherConfigComputeV1.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      expr: map['expr'] == null ? null : (ExprComputeV1.fromMap((map['expr']! as Map).cast<String, dynamic>())).input(),
+      versionedExpr: map['versionedExpr'] == null ? null : (SecurityPolicyRuleMatcherVersionedExprComputeV1.fromValue(map['versionedExpr']! as String)).input(),
     );
   }
 }

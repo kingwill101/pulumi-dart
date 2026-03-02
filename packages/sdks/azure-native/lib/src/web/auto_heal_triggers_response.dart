@@ -50,12 +50,12 @@ class AutoHealTriggersResponse {
 
   factory AutoHealTriggersResponse.fromMap(Map<String, dynamic> map) {
     return AutoHealTriggersResponse(
-      privateBytesInKB: map['privateBytesInKB'] == null ? null : (map['privateBytesInKB'] as int).input(),
-      requests: map['requests'] == null ? null : (RequestsBasedTriggerResponse.fromMap((map['requests'] as Map).cast<String, dynamic>())).input(),
-      slowRequests: map['slowRequests'] == null ? null : (SlowRequestsBasedTriggerResponse.fromMap((map['slowRequests'] as Map).cast<String, dynamic>())).input(),
-      slowRequestsWithPath: map['slowRequestsWithPath'] == null ? null : (pulumi.Input.decodeList<SlowRequestsBasedTriggerResponse>(map['slowRequestsWithPath'], (value) => SlowRequestsBasedTriggerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      statusCodes: map['statusCodes'] == null ? null : (pulumi.Input.decodeList<StatusCodesBasedTriggerResponse>(map['statusCodes'], (value) => StatusCodesBasedTriggerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      statusCodesRange: map['statusCodesRange'] == null ? null : (pulumi.Input.decodeList<StatusCodesRangeBasedTriggerResponse>(map['statusCodesRange'], (value) => StatusCodesRangeBasedTriggerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateBytesInKB: map['privateBytesInKB'] == null ? null : (map['privateBytesInKB']! as int).input(),
+      requests: map['requests'] == null ? null : (RequestsBasedTriggerResponse.fromMap((map['requests']! as Map).cast<String, dynamic>())).input(),
+      slowRequests: map['slowRequests'] == null ? null : (SlowRequestsBasedTriggerResponse.fromMap((map['slowRequests']! as Map).cast<String, dynamic>())).input(),
+      slowRequestsWithPath: map['slowRequestsWithPath'] == null ? null : (pulumi.Input.decodeList<SlowRequestsBasedTriggerResponse>(map['slowRequestsWithPath']!, (value) => SlowRequestsBasedTriggerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      statusCodes: map['statusCodes'] == null ? null : (pulumi.Input.decodeList<StatusCodesBasedTriggerResponse>(map['statusCodes']!, (value) => StatusCodesBasedTriggerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      statusCodesRange: map['statusCodesRange'] == null ? null : (pulumi.Input.decodeList<StatusCodesRangeBasedTriggerResponse>(map['statusCodesRange']!, (value) => StatusCodesRangeBasedTriggerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

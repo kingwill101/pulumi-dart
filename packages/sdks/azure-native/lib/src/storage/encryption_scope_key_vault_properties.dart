@@ -21,7 +21,7 @@ class EncryptionScopeKeyVaultProperties {
 
   factory EncryptionScopeKeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return EncryptionScopeKeyVaultProperties(
-      keyUri: map['keyUri'] == null ? null : (map['keyUri'] as String).input(),
+      keyUri: map['keyUri'] == null ? null : (map['keyUri']! as String).input(),
     );
   }
 }

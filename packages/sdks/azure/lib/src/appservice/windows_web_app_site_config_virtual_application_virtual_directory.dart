@@ -25,8 +25,8 @@ class WindowsWebAppSiteConfigVirtualApplicationVirtualDirectory {
 
   factory WindowsWebAppSiteConfigVirtualApplicationVirtualDirectory.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSiteConfigVirtualApplicationVirtualDirectory(
-      physicalPath: map['physicalPath'] == null ? null : (map['physicalPath'] as String).input(),
-      virtualPath: map['virtualPath'] == null ? null : (map['virtualPath'] as String).input(),
+      physicalPath: map['physicalPath'] == null ? null : (map['physicalPath']! as String).input(),
+      virtualPath: map['virtualPath'] == null ? null : (map['virtualPath']! as String).input(),
     );
   }
 }

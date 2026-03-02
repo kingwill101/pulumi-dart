@@ -69,12 +69,12 @@ class GetEncryptionScopeResult {
       azureApiVersion: map['azureApiVersion'] as String,
       creationTime: map['creationTime'] as String,
       id: map['id'] as String,
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : EncryptionScopeKeyVaultPropertiesResponse.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>()),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : EncryptionScopeKeyVaultPropertiesResponse.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>()),
       lastModifiedTime: map['lastModifiedTime'] as String,
       name: map['name'] as String,
-      requireInfrastructureEncryption: map['requireInfrastructureEncryption'] == null ? null : map['requireInfrastructureEncryption'] as bool,
-      source: map['source'] == null ? null : map['source'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      requireInfrastructureEncryption: map['requireInfrastructureEncryption'] == null ? null : map['requireInfrastructureEncryption']! as bool,
+      source: map['source'] == null ? null : map['source']! as String,
+      state: map['state'] == null ? null : map['state']! as String,
       type: map['type'] as String,
     );
   }

@@ -77,13 +77,13 @@ class MutatingAdmissionPolicySpecPatch {
 
   factory MutatingAdmissionPolicySpecPatch.fromMap(Map<String, dynamic> map) {
     return MutatingAdmissionPolicySpecPatch(
-      failurePolicy: map['failurePolicy'] == null ? null : (map['failurePolicy'] as String).input(),
-      matchConditions: map['matchConditions'] == null ? null : (pulumi.Input.decodeList<MatchConditionPatchAdmissionregistrationK8sIoV1alpha1>(map['matchConditions'], (value) => MatchConditionPatchAdmissionregistrationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matchConstraints: map['matchConstraints'] == null ? null : (MatchResourcesPatchAdmissionregistrationK8sIoV1alpha1.fromMap((map['matchConstraints'] as Map).cast<String, dynamic>())).input(),
-      mutations: map['mutations'] == null ? null : (pulumi.Input.decodeList<MutationPatch>(map['mutations'], (value) => MutationPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      paramKind: map['paramKind'] == null ? null : (ParamKindPatchAdmissionregistrationK8sIoV1alpha1.fromMap((map['paramKind'] as Map).cast<String, dynamic>())).input(),
-      reinvocationPolicy: map['reinvocationPolicy'] == null ? null : (map['reinvocationPolicy'] as String).input(),
-      variables: map['variables'] == null ? null : (pulumi.Input.decodeList<VariablePatchAdmissionregistrationK8sIoV1alpha1>(map['variables'], (value) => VariablePatchAdmissionregistrationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      failurePolicy: map['failurePolicy'] == null ? null : (map['failurePolicy']! as String).input(),
+      matchConditions: map['matchConditions'] == null ? null : (pulumi.Input.decodeList<MatchConditionPatchAdmissionregistrationK8sIoV1alpha1>(map['matchConditions']!, (value) => MatchConditionPatchAdmissionregistrationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchConstraints: map['matchConstraints'] == null ? null : (MatchResourcesPatchAdmissionregistrationK8sIoV1alpha1.fromMap((map['matchConstraints']! as Map).cast<String, dynamic>())).input(),
+      mutations: map['mutations'] == null ? null : (pulumi.Input.decodeList<MutationPatch>(map['mutations']!, (value) => MutationPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      paramKind: map['paramKind'] == null ? null : (ParamKindPatchAdmissionregistrationK8sIoV1alpha1.fromMap((map['paramKind']! as Map).cast<String, dynamic>())).input(),
+      reinvocationPolicy: map['reinvocationPolicy'] == null ? null : (map['reinvocationPolicy']! as String).input(),
+      variables: map['variables'] == null ? null : (pulumi.Input.decodeList<VariablePatchAdmissionregistrationK8sIoV1alpha1>(map['variables']!, (value) => VariablePatchAdmissionregistrationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

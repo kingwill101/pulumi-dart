@@ -22,7 +22,7 @@ class ListAllTrafficFilterResult {
 
   factory ListAllTrafficFilterResult.fromMap(Map<String, dynamic> map) {
     return ListAllTrafficFilterResult(
-      rulesets: map['rulesets'] == null ? null : pulumi.Input.decodeList<ElasticTrafficFilterResponse>(map['rulesets'], (value) => ElasticTrafficFilterResponse.fromMap((value as Map).cast<String, dynamic>())),
+      rulesets: map['rulesets'] == null ? null : pulumi.Input.decodeList<ElasticTrafficFilterResponse>(map['rulesets']!, (value) => ElasticTrafficFilterResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

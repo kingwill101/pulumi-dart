@@ -56,14 +56,14 @@ class BucketS3ControlState {
 
   factory BucketS3ControlState.fromMap(Map<String, dynamic> map) {
     return BucketS3ControlState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      creationDate: map['creationDate'] == null ? null : (map['creationDate'] as String).input(),
-      outpostId: map['outpostId'] == null ? null : (map['outpostId'] as String).input(),
-      publicAccessBlockEnabled: map['publicAccessBlockEnabled'] == null ? null : (map['publicAccessBlockEnabled'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
+      creationDate: map['creationDate'] == null ? null : ((map['creationDate'] as String).input()).input(),
+      outpostId: map['outpostId'] == null ? null : ((map['outpostId'] as String).input()).input(),
+      publicAccessBlockEnabled: map['publicAccessBlockEnabled'] == null ? null : ((map['publicAccessBlockEnabled'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

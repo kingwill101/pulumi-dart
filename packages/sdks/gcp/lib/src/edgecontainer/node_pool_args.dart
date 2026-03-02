@@ -79,15 +79,15 @@ class NodePoolArgs {
   factory NodePoolArgs.fromMap(Map<String, dynamic> map) {
     return NodePoolArgs(
       cluster: (map['cluster'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      localDiskEncryption: map['localDiskEncryption'] == null ? null : (NodePoolLocalDiskEncryption.fromMap((map['localDiskEncryption'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      localDiskEncryption: map['localDiskEncryption'] == null ? null : (NodePoolLocalDiskEncryption.fromMap((map['localDiskEncryption']! as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
-      machineFilter: map['machineFilter'] == null ? null : (map['machineFilter'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodeConfig: map['nodeConfig'] == null ? null : (NodePoolNodeConfig.fromMap((map['nodeConfig'] as Map).cast<String, dynamic>())).input(),
+      machineFilter: map['machineFilter'] == null ? null : (map['machineFilter']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodeConfig: map['nodeConfig'] == null ? null : (NodePoolNodeConfig.fromMap((map['nodeConfig']! as Map).cast<String, dynamic>())).input(),
       nodeCount: (map['nodeCount'] as int).input(),
       nodeLocation: (map['nodeLocation'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

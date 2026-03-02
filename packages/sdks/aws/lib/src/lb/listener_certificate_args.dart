@@ -36,7 +36,7 @@ class ListenerCertificateArgs {
     return ListenerCertificateArgs(
       certificateArn: (map['certificateArn'] as String).input(),
       listenerArn: (map['listenerArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

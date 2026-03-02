@@ -27,7 +27,7 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTable {
 
   factory StreamBackfillAllSqlServerExcludedObjectsSchemaTable.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllSqlServerExcludedObjectsSchemaTable(
-      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn>(map['columns'], (value) => StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn>(map['columns']!, (value) => StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
       table: (map['table'] as String).input(),
     );
   }

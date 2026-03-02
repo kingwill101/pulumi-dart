@@ -56,14 +56,14 @@ class PrivateLocationState {
 
   factory PrivateLocationState.fromMap(Map<String, dynamic> map) {
     return PrivateLocationState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
-      guid: map['guid'] == null ? null : (map['guid'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      locationId: map['locationId'] == null ? null : (map['locationId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      verifiedScriptExecution: map['verifiedScriptExecution'] == null ? null : (map['verifiedScriptExecution'] as bool).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId']! as String).input(),
+      guid: map['guid'] == null ? null : (map['guid']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      locationId: map['locationId'] == null ? null : (map['locationId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      verifiedScriptExecution: map['verifiedScriptExecution'] == null ? null : (map['verifiedScriptExecution']! as bool).input(),
     );
   }
 }

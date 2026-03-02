@@ -43,7 +43,7 @@ class AFDTargetGroupArgs {
       profileName: (map['profileName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       targetEndpoints: (pulumi.Input.decodeList<TargetEndpoint>(map['targetEndpoints'], (value) => TargetEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetGroupName: map['targetGroupName'] == null ? null : (map['targetGroupName'] as String).input(),
+      targetGroupName: map['targetGroupName'] == null ? null : (map['targetGroupName']! as String).input(),
     );
   }
 }

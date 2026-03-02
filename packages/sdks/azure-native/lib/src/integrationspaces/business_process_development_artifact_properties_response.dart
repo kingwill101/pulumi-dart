@@ -45,11 +45,11 @@ class BusinessProcessDevelopmentArtifactPropertiesResponse {
 
   factory BusinessProcessDevelopmentArtifactPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BusinessProcessDevelopmentArtifactPropertiesResponse(
-      businessProcessMapping: map['businessProcessMapping'] == null ? null : (pulumi.Input.decodeMapValues<BusinessProcessMappingItemResponse>(map['businessProcessMapping'], (value) => BusinessProcessMappingItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      businessProcessStages: map['businessProcessStages'] == null ? null : (pulumi.Input.decodeMapValues<BusinessProcessStageResponse>(map['businessProcessStages'], (value) => BusinessProcessStageResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      identifier: map['identifier'] == null ? null : (BusinessProcessIdentifierResponse.fromMap((map['identifier'] as Map).cast<String, dynamic>())).input(),
-      trackingProfiles: map['trackingProfiles'] == null ? null : (pulumi.Input.decodeMapValues<TrackingProfileDefinitionResponse>(map['trackingProfiles'], (value) => TrackingProfileDefinitionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      businessProcessMapping: map['businessProcessMapping'] == null ? null : (pulumi.Input.decodeMapValues<BusinessProcessMappingItemResponse>(map['businessProcessMapping']!, (value) => BusinessProcessMappingItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      businessProcessStages: map['businessProcessStages'] == null ? null : (pulumi.Input.decodeMapValues<BusinessProcessStageResponse>(map['businessProcessStages']!, (value) => BusinessProcessStageResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      identifier: map['identifier'] == null ? null : (BusinessProcessIdentifierResponse.fromMap((map['identifier']! as Map).cast<String, dynamic>())).input(),
+      trackingProfiles: map['trackingProfiles'] == null ? null : (pulumi.Input.decodeMapValues<TrackingProfileDefinitionResponse>(map['trackingProfiles']!, (value) => TrackingProfileDefinitionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -40,11 +40,11 @@ class ProfileClientSslCertKeyChain {
 
   factory ProfileClientSslCertKeyChain.fromMap(Map<String, dynamic> map) {
     return ProfileClientSslCertKeyChain(
-      cert: map['cert'] == null ? null : (map['cert'] as String).input(),
-      chain: map['chain'] == null ? null : (map['chain'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      passphrase: map['passphrase'] == null ? null : (map['passphrase'] as String).input(),
+      cert: map['cert'] == null ? null : (map['cert']! as String).input(),
+      chain: map['chain'] == null ? null : (map['chain']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      passphrase: map['passphrase'] == null ? null : (map['passphrase']! as String).input(),
     );
   }
 }

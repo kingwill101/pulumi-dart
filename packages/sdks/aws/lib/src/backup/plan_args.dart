@@ -52,12 +52,12 @@ class PlanArgs {
 
   factory PlanArgs.fromMap(Map<String, dynamic> map) {
     return PlanArgs(
-      advancedBackupSettings: map['advancedBackupSettings'] == null ? null : (pulumi.Input.decodeList<PlanAdvancedBackupSetting>(map['advancedBackupSettings'], (value) => PlanAdvancedBackupSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rules: (pulumi.Input.decodeList<PlanRule>(map['rules'], (value) => PlanRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      scanSettings: map['scanSettings'] == null ? null : (pulumi.Input.decodeList<PlanScanSetting>(map['scanSettings'], (value) => PlanScanSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      advancedBackupSettings: map['advancedBackupSettings'] == null ? null : ((pulumi.Input.decodeList<PlanAdvancedBackupSetting>(map['advancedBackupSettings']!, (value) => PlanAdvancedBackupSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      rules: (pulumi.Input.decodeList<PlanRule>(map['rules']!, (value) => PlanRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scanSettings: map['scanSettings'] == null ? null : ((pulumi.Input.decodeList<PlanScanSetting>(map['scanSettings']!, (value) => PlanScanSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

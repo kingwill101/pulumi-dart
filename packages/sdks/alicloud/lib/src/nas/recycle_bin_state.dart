@@ -31,9 +31,9 @@ class RecycleBinState {
 
   factory RecycleBinState.fromMap(Map<String, dynamic> map) {
     return RecycleBinState(
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      reservedDays: map['reservedDays'] == null ? null : (map['reservedDays'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId']! as String).input(),
+      reservedDays: map['reservedDays'] == null ? null : (map['reservedDays']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class V2VmServiceAccount {
 
   factory V2VmServiceAccount.fromMap(Map<String, dynamic> map) {
     return V2VmServiceAccount(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
     );
   }
 }

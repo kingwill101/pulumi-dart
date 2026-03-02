@@ -49,11 +49,11 @@ class SenderUsernameArgs {
 
   factory SenderUsernameArgs.fromMap(Map<String, dynamic> map) {
     return SenderUsernameArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       domainName: (map['domainName'] as String).input(),
       emailServiceName: (map['emailServiceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      senderUsername: map['senderUsername'] == null ? null : (map['senderUsername'] as String).input(),
+      senderUsername: map['senderUsername'] == null ? null : (map['senderUsername']! as String).input(),
       username: (map['username'] as String).input(),
     );
   }

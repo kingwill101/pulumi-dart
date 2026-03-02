@@ -51,13 +51,13 @@ class UserInfoResponse {
 
   factory UserInfoResponse.fromMap(Map<String, dynamic> map) {
     return UserInfoResponse(
-      userAltSecId: map['userAltSecId'] == null ? null : (map['userAltSecId'] as String).input(),
-      userIdp: map['userIdp'] == null ? null : (map['userIdp'] as String).input(),
-      userIss: map['userIss'] == null ? null : (map['userIss'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
-      userObjectId: map['userObjectId'] == null ? null : (map['userObjectId'] as String).input(),
-      userPuId: map['userPuId'] == null ? null : (map['userPuId'] as String).input(),
-      userTenantId: map['userTenantId'] == null ? null : (map['userTenantId'] as String).input(),
+      userAltSecId: map['userAltSecId'] == null ? null : (map['userAltSecId']! as String).input(),
+      userIdp: map['userIdp'] == null ? null : (map['userIdp']! as String).input(),
+      userIss: map['userIss'] == null ? null : (map['userIss']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
+      userObjectId: map['userObjectId'] == null ? null : (map['userObjectId']! as String).input(),
+      userPuId: map['userPuId'] == null ? null : (map['userPuId']! as String).input(),
+      userTenantId: map['userTenantId'] == null ? null : (map['userTenantId']! as String).input(),
     );
   }
 }

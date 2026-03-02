@@ -21,7 +21,7 @@ class EncryptionInTransitPropertiesResponse {
 
   factory EncryptionInTransitPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionInTransitPropertiesResponse(
-      isEncryptionInTransitEnabled: map['isEncryptionInTransitEnabled'] == null ? null : (map['isEncryptionInTransitEnabled'] as bool).input(),
+      isEncryptionInTransitEnabled: map['isEncryptionInTransitEnabled'] == null ? null : (map['isEncryptionInTransitEnabled']! as bool).input(),
     );
   }
 }

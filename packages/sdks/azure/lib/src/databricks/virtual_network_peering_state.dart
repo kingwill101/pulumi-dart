@@ -77,17 +77,17 @@ class VirtualNetworkPeeringState {
 
   factory VirtualNetworkPeeringState.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkPeeringState(
-      addressSpacePrefixes: map['addressSpacePrefixes'] == null ? null : ((map['addressSpacePrefixes'] as List).cast<String>()).input(),
-      allowForwardedTraffic: map['allowForwardedTraffic'] == null ? null : (map['allowForwardedTraffic'] as bool).input(),
-      allowGatewayTransit: map['allowGatewayTransit'] == null ? null : (map['allowGatewayTransit'] as bool).input(),
-      allowVirtualNetworkAccess: map['allowVirtualNetworkAccess'] == null ? null : (map['allowVirtualNetworkAccess'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      remoteAddressSpacePrefixes: map['remoteAddressSpacePrefixes'] == null ? null : ((map['remoteAddressSpacePrefixes'] as List).cast<String>()).input(),
-      remoteVirtualNetworkId: map['remoteVirtualNetworkId'] == null ? null : (map['remoteVirtualNetworkId'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      useRemoteGateways: map['useRemoteGateways'] == null ? null : (map['useRemoteGateways'] as bool).input(),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      addressSpacePrefixes: map['addressSpacePrefixes'] == null ? null : ((map['addressSpacePrefixes']! as List).cast<String>()).input(),
+      allowForwardedTraffic: map['allowForwardedTraffic'] == null ? null : (map['allowForwardedTraffic']! as bool).input(),
+      allowGatewayTransit: map['allowGatewayTransit'] == null ? null : (map['allowGatewayTransit']! as bool).input(),
+      allowVirtualNetworkAccess: map['allowVirtualNetworkAccess'] == null ? null : (map['allowVirtualNetworkAccess']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      remoteAddressSpacePrefixes: map['remoteAddressSpacePrefixes'] == null ? null : ((map['remoteAddressSpacePrefixes']! as List).cast<String>()).input(),
+      remoteVirtualNetworkId: map['remoteVirtualNetworkId'] == null ? null : (map['remoteVirtualNetworkId']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      useRemoteGateways: map['useRemoteGateways'] == null ? null : (map['useRemoteGateways']! as bool).input(),
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId']! as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

@@ -41,10 +41,10 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline {
 
   factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline(
-      additionalModelRequestFields: map['additionalModelRequestFields'] == null ? null : (map['additionalModelRequestFields'] as String).input(),
-      inferenceConfiguration: map['inferenceConfiguration'] == null ? null : (AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfiguration.fromMap((map['inferenceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      additionalModelRequestFields: map['additionalModelRequestFields'] == null ? null : ((map['additionalModelRequestFields'] as String).input()).input(),
+      inferenceConfiguration: map['inferenceConfiguration'] == null ? null : ((AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfiguration.fromMap((map['inferenceConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       modelId: (map['modelId'] as String).input(),
-      templateConfiguration: map['templateConfiguration'] == null ? null : (AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfiguration.fromMap((map['templateConfiguration'] as Map).cast<String, dynamic>())).input(),
+      templateConfiguration: map['templateConfiguration'] == null ? null : ((AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfiguration.fromMap((map['templateConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       templateType: (map['templateType'] as String).input(),
     );
   }

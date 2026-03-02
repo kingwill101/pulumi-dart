@@ -38,10 +38,10 @@ class StaticIpAttachmentState {
 
   factory StaticIpAttachmentState.fromMap(Map<String, dynamic> map) {
     return StaticIpAttachmentState(
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      staticIpName: map['staticIpName'] == null ? null : (map['staticIpName'] as String).input(),
+      instanceName: map['instanceName'] == null ? null : ((map['instanceName'] as String).input()).input(),
+      ipAddress: map['ipAddress'] == null ? null : ((map['ipAddress'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      staticIpName: map['staticIpName'] == null ? null : ((map['staticIpName'] as String).input()).input(),
     );
   }
 }

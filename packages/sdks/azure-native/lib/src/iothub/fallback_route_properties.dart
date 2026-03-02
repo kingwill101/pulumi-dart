@@ -41,10 +41,10 @@ class FallbackRouteProperties {
 
   factory FallbackRouteProperties.fromMap(Map<String, dynamic> map) {
     return FallbackRouteProperties(
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
       endpointNames: ((map['endpointNames'] as List).cast<String>()).input(),
       isEnabled: (map['isEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       source: (map['source'] as String).input(),
     );
   }

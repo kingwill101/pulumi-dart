@@ -47,10 +47,10 @@ class VectorsVectorBucketArgs {
 
   factory VectorsVectorBucketArgs.fromMap(Map<String, dynamic> map) {
     return VectorsVectorBucketArgs(
-      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : (pulumi.Input.decodeList<VectorsVectorBucketEncryptionConfiguration>(map['encryptionConfigurations'], (value) => VectorsVectorBucketEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : ((pulumi.Input.decodeList<VectorsVectorBucketEncryptionConfiguration>(map['encryptionConfigurations']!, (value) => VectorsVectorBucketEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : ((map['forceDestroy'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       vectorBucketName: (map['vectorBucketName'] as String).input(),
     );
   }

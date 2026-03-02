@@ -74,17 +74,17 @@ class WebhookState {
 
   factory WebhookState.fromMap(Map<String, dynamic> map) {
     return WebhookState(
-      branchFilter: map['branchFilter'] == null ? null : (map['branchFilter'] as String).input(),
-      buildType: map['buildType'] == null ? null : (map['buildType'] as String).input(),
-      filterGroups: map['filterGroups'] == null ? null : (pulumi.Input.decodeList<WebhookFilterGroup>(map['filterGroups'], (value) => WebhookFilterGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      manualCreation: map['manualCreation'] == null ? null : (map['manualCreation'] as bool).input(),
-      payloadUrl: map['payloadUrl'] == null ? null : (map['payloadUrl'] as String).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
-      pullRequestBuildPolicy: map['pullRequestBuildPolicy'] == null ? null : (WebhookPullRequestBuildPolicy.fromMap((map['pullRequestBuildPolicy'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scopeConfiguration: map['scopeConfiguration'] == null ? null : (WebhookScopeConfiguration.fromMap((map['scopeConfiguration'] as Map).cast<String, dynamic>())).input(),
-      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      branchFilter: map['branchFilter'] == null ? null : ((map['branchFilter'] as String).input()).input(),
+      buildType: map['buildType'] == null ? null : ((map['buildType'] as String).input()).input(),
+      filterGroups: map['filterGroups'] == null ? null : ((pulumi.Input.decodeList<WebhookFilterGroup>(map['filterGroups']!, (value) => WebhookFilterGroup.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      manualCreation: map['manualCreation'] == null ? null : ((map['manualCreation'] as bool).input()).input(),
+      payloadUrl: map['payloadUrl'] == null ? null : ((map['payloadUrl'] as String).input()).input(),
+      projectName: map['projectName'] == null ? null : ((map['projectName'] as String).input()).input(),
+      pullRequestBuildPolicy: map['pullRequestBuildPolicy'] == null ? null : ((WebhookPullRequestBuildPolicy.fromMap((map['pullRequestBuildPolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scopeConfiguration: map['scopeConfiguration'] == null ? null : ((WebhookScopeConfiguration.fromMap((map['scopeConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      secret: map['secret'] == null ? null : ((map['secret'] as String).input()).input(),
+      url: map['url'] == null ? null : ((map['url'] as String).input()).input(),
     );
   }
 }

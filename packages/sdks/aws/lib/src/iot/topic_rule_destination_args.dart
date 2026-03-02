@@ -35,9 +35,9 @@ class TopicRuleDestinationArgs {
 
   factory TopicRuleDestinationArgs.fromMap(Map<String, dynamic> map) {
     return TopicRuleDestinationArgs(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      vpcConfiguration: (TopicRuleDestinationVpcConfiguration.fromMap((map['vpcConfiguration'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      vpcConfiguration: (TopicRuleDestinationVpcConfiguration.fromMap((map['vpcConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

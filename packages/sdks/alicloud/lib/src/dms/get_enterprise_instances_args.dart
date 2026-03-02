@@ -69,16 +69,16 @@ class GetEnterpriseInstancesArgs {
 
   factory GetEnterpriseInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetEnterpriseInstancesArgs(
-      envType: map['envType'] == null ? null : (map['envType'] as String).input(),
-      instanceAliasRegex: map['instanceAliasRegex'] == null ? null : (map['instanceAliasRegex'] as String).input(),
-      instanceSource: map['instanceSource'] == null ? null : (map['instanceSource'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      netType: map['netType'] == null ? null : (map['netType'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      searchKey: map['searchKey'] == null ? null : (map['searchKey'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tid: map['tid'] == null ? null : (map['tid'] as int).input(),
+      envType: map['envType'] == null ? null : (map['envType']! as String).input(),
+      instanceAliasRegex: map['instanceAliasRegex'] == null ? null : (map['instanceAliasRegex']! as String).input(),
+      instanceSource: map['instanceSource'] == null ? null : (map['instanceSource']! as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      netType: map['netType'] == null ? null : (map['netType']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      searchKey: map['searchKey'] == null ? null : (map['searchKey']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tid: map['tid'] == null ? null : (map['tid']! as int).input(),
     );
   }
 }

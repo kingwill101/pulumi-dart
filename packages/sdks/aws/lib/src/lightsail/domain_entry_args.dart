@@ -52,9 +52,9 @@ class DomainEntryArgs {
   factory DomainEntryArgs.fromMap(Map<String, dynamic> map) {
     return DomainEntryArgs(
       domainName: (map['domainName'] as String).input(),
-      isAlias: map['isAlias'] == null ? null : (map['isAlias'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      isAlias: map['isAlias'] == null ? null : ((map['isAlias'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       target: (map['target'] as String).input(),
       type: (map['type'] as String).input(),
     );

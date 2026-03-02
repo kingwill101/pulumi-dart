@@ -81,18 +81,18 @@ class AuthomationRuleState {
 
   factory AuthomationRuleState.fromMap(Map<String, dynamic> map) {
     return AuthomationRuleState(
-      actionIncidentTasks: map['actionIncidentTasks'] == null ? null : (pulumi.Input.decodeList<AuthomationRuleActionIncidentTask>(map['actionIncidentTasks'], (value) => AuthomationRuleActionIncidentTask.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      actionIncidents: map['actionIncidents'] == null ? null : (pulumi.Input.decodeList<AuthomationRuleActionIncident>(map['actionIncidents'], (value) => AuthomationRuleActionIncident.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      actionPlaybooks: map['actionPlaybooks'] == null ? null : (pulumi.Input.decodeList<AuthomationRuleActionPlaybook>(map['actionPlaybooks'], (value) => AuthomationRuleActionPlaybook.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      conditionJson: map['conditionJson'] == null ? null : (map['conditionJson'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      expiration: map['expiration'] == null ? null : (map['expiration'] as String).input(),
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      order: map['order'] == null ? null : (map['order'] as int).input(),
-      triggersOn: map['triggersOn'] == null ? null : (map['triggersOn'] as String).input(),
-      triggersWhen: map['triggersWhen'] == null ? null : (map['triggersWhen'] as String).input(),
+      actionIncidentTasks: map['actionIncidentTasks'] == null ? null : (pulumi.Input.decodeList<AuthomationRuleActionIncidentTask>(map['actionIncidentTasks']!, (value) => AuthomationRuleActionIncidentTask.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      actionIncidents: map['actionIncidents'] == null ? null : (pulumi.Input.decodeList<AuthomationRuleActionIncident>(map['actionIncidents']!, (value) => AuthomationRuleActionIncident.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      actionPlaybooks: map['actionPlaybooks'] == null ? null : (pulumi.Input.decodeList<AuthomationRuleActionPlaybook>(map['actionPlaybooks']!, (value) => AuthomationRuleActionPlaybook.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditionJson: map['conditionJson'] == null ? null : (map['conditionJson']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      expiration: map['expiration'] == null ? null : (map['expiration']! as String).input(),
+      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      order: map['order'] == null ? null : (map['order']! as int).input(),
+      triggersOn: map['triggersOn'] == null ? null : (map['triggersOn']! as String).input(),
+      triggersWhen: map['triggersWhen'] == null ? null : (map['triggersWhen']! as String).input(),
     );
   }
 }

@@ -31,8 +31,8 @@ class GetInstanceEphemeralBlockDevice {
   factory GetInstanceEphemeralBlockDevice.fromMap(Map<String, dynamic> map) {
     return GetInstanceEphemeralBlockDevice(
       deviceName: (map['deviceName'] as String).input(),
-      noDevice: map['noDevice'] == null ? null : (map['noDevice'] as bool).input(),
-      virtualName: map['virtualName'] == null ? null : (map['virtualName'] as String).input(),
+      noDevice: map['noDevice'] == null ? null : ((map['noDevice'] as bool).input()).input(),
+      virtualName: map['virtualName'] == null ? null : ((map['virtualName'] as String).input()).input(),
     );
   }
 }

@@ -50,12 +50,12 @@ class GoogleCloudSecuritycenterV1CustomConfig {
 
   factory GoogleCloudSecuritycenterV1CustomConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudSecuritycenterV1CustomConfig(
-      customOutput: map['customOutput'] == null ? null : (GoogleCloudSecuritycenterV1CustomOutputSpec.fromMap((map['customOutput'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      predicate: map['predicate'] == null ? null : (Expr.fromMap((map['predicate'] as Map).cast<String, dynamic>())).input(),
-      recommendation: map['recommendation'] == null ? null : (map['recommendation'] as String).input(),
-      resourceSelector: map['resourceSelector'] == null ? null : (GoogleCloudSecuritycenterV1ResourceSelector.fromMap((map['resourceSelector'] as Map).cast<String, dynamic>())).input(),
-      severity: map['severity'] == null ? null : (GoogleCloudSecuritycenterV1CustomConfigSeverity.fromValue(map['severity'] as String)).input(),
+      customOutput: map['customOutput'] == null ? null : (GoogleCloudSecuritycenterV1CustomOutputSpec.fromMap((map['customOutput']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      predicate: map['predicate'] == null ? null : (Expr.fromMap((map['predicate']! as Map).cast<String, dynamic>())).input(),
+      recommendation: map['recommendation'] == null ? null : (map['recommendation']! as String).input(),
+      resourceSelector: map['resourceSelector'] == null ? null : (GoogleCloudSecuritycenterV1ResourceSelector.fromMap((map['resourceSelector']! as Map).cast<String, dynamic>())).input(),
+      severity: map['severity'] == null ? null : (GoogleCloudSecuritycenterV1CustomConfigSeverity.fromValue(map['severity']! as String)).input(),
     );
   }
 }

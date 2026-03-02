@@ -39,9 +39,9 @@ class ZnodeArgs {
 
   factory ZnodeArgs.fromMap(Map<String, dynamic> map) {
     return ZnodeArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
+      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage']! as String).input(),
       clusterId: (map['clusterId'] as String).input(),
-      data: map['data'] == null ? null : (map['data'] as String).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
       path: (map['path'] as String).input(),
     );
   }

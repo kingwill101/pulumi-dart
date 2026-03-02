@@ -38,7 +38,7 @@ class VirtualNetworkProfileResponse {
     return VirtualNetworkProfileResponse(
       id: (map['id'] as String).input(),
       name: (map['name'] as String).input(),
-      subnet: map['subnet'] == null ? null : (map['subnet'] as String).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

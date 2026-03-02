@@ -30,7 +30,7 @@ class GetImageArgs {
   factory GetImageArgs.fromMap(Map<String, dynamic> map) {
     return GetImageArgs(
       imageId: (map['imageId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

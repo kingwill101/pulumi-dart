@@ -43,11 +43,11 @@ class SynonymSetArgs {
 
   factory SynonymSetArgs.fromMap(Map<String, dynamic> map) {
     return SynonymSetArgs(
-      context: map['context'] == null ? null : (map['context'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      synonyms: map['synonyms'] == null ? null : (pulumi.Input.decodeList<GoogleCloudContentwarehouseV1SynonymSetSynonym>(map['synonyms'], (value) => GoogleCloudContentwarehouseV1SynonymSetSynonym.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      context: map['context'] == null ? null : (map['context']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      synonyms: map['synonyms'] == null ? null : (pulumi.Input.decodeList<GoogleCloudContentwarehouseV1SynonymSetSynonym>(map['synonyms']!, (value) => GoogleCloudContentwarehouseV1SynonymSetSynonym.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

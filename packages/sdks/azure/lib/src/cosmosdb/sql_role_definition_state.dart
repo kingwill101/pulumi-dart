@@ -54,13 +54,13 @@ class SqlRoleDefinitionState {
 
   factory SqlRoleDefinitionState.fromMap(Map<String, dynamic> map) {
     return SqlRoleDefinitionState(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      assignableScopes: map['assignableScopes'] == null ? null : ((map['assignableScopes'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<SqlRoleDefinitionPermission>(map['permissions'], (value) => SqlRoleDefinitionPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      assignableScopes: map['assignableScopes'] == null ? null : ((map['assignableScopes']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<SqlRoleDefinitionPermission>(map['permissions']!, (value) => SqlRoleDefinitionPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

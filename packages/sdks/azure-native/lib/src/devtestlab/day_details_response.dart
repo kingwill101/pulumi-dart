@@ -21,7 +21,7 @@ class DayDetailsResponse {
 
   factory DayDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DayDetailsResponse(
-      time: map['time'] == null ? null : (map['time'] as String).input(),
+      time: map['time'] == null ? null : (map['time']! as String).input(),
     );
   }
 }

@@ -54,7 +54,7 @@ class GetAkriConnectorResult {
   factory GetAkriConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetAkriConnectorResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
+      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
       properties: AkriConnectorPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),

@@ -26,7 +26,7 @@ class AccessStrategyDefaultAddrPool {
   factory AccessStrategyDefaultAddrPool.fromMap(Map<String, dynamic> map) {
     return AccessStrategyDefaultAddrPool(
       addrPoolId: (map['addrPoolId'] as String).input(),
-      lbaWeight: map['lbaWeight'] == null ? null : (map['lbaWeight'] as int).input(),
+      lbaWeight: map['lbaWeight'] == null ? null : (map['lbaWeight']! as int).input(),
     );
   }
 }

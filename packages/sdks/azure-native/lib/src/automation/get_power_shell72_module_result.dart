@@ -101,23 +101,23 @@ class GetPowerShell72ModuleResult {
 
   factory GetPowerShell72ModuleResult.fromMap(Map<String, dynamic> map) {
     return GetPowerShell72ModuleResult(
-      activityCount: map['activityCount'] == null ? null : map['activityCount'] as int,
+      activityCount: map['activityCount'] == null ? null : map['activityCount']! as int,
       azureApiVersion: map['azureApiVersion'] as String,
-      creationTime: map['creationTime'] == null ? null : map['creationTime'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      error: map['error'] == null ? null : ModuleErrorInfoResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      creationTime: map['creationTime'] == null ? null : map['creationTime']! as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      error: map['error'] == null ? null : ModuleErrorInfoResponse.fromMap((map['error']! as Map).cast<String, dynamic>()),
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
-      isComposite: map['isComposite'] == null ? null : map['isComposite'] as bool,
-      isGlobal: map['isGlobal'] == null ? null : map['isGlobal'] as bool,
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : map['lastModifiedTime'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      isComposite: map['isComposite'] == null ? null : map['isComposite']! as bool,
+      isGlobal: map['isGlobal'] == null ? null : map['isGlobal']! as bool,
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : map['lastModifiedTime']! as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
-      sizeInBytes: map['sizeInBytes'] == null ? null : map['sizeInBytes'] as double,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      provisioningState: map['provisioningState'] == null ? null : map['provisioningState']! as String,
+      sizeInBytes: map['sizeInBytes'] == null ? null : map['sizeInBytes']! as double,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      version: map['version'] == null ? null : map['version']! as String,
     );
   }
 }

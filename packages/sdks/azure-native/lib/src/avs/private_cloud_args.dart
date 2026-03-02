@@ -115,23 +115,23 @@ class PrivateCloudArgs {
 
   factory PrivateCloudArgs.fromMap(Map<String, dynamic> map) {
     return PrivateCloudArgs(
-      availability: map['availability'] == null ? null : (AvailabilityProperties.fromMap((map['availability'] as Map).cast<String, dynamic>())).input(),
-      dnsZoneType: map['dnsZoneType'] == null ? null : (map['dnsZoneType'] as String).input(),
-      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      extendedNetworkBlocks: map['extendedNetworkBlocks'] == null ? null : ((map['extendedNetworkBlocks'] as List).cast<String>()).input(),
-      identity: map['identity'] == null ? null : (SystemAssignedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      identitySources: map['identitySources'] == null ? null : (pulumi.Input.decodeList<IdentitySource>(map['identitySources'], (value) => IdentitySource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      internet: map['internet'] == null ? null : (map['internet'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      availability: map['availability'] == null ? null : (AvailabilityProperties.fromMap((map['availability']! as Map).cast<String, dynamic>())).input(),
+      dnsZoneType: map['dnsZoneType'] == null ? null : (map['dnsZoneType']! as String).input(),
+      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      extendedNetworkBlocks: map['extendedNetworkBlocks'] == null ? null : ((map['extendedNetworkBlocks']! as List).cast<String>()).input(),
+      identity: map['identity'] == null ? null : (SystemAssignedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      identitySources: map['identitySources'] == null ? null : (pulumi.Input.decodeList<IdentitySource>(map['identitySources']!, (value) => IdentitySource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      internet: map['internet'] == null ? null : (map['internet']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       managementCluster: (ManagementCluster.fromMap((map['managementCluster'] as Map).cast<String, dynamic>())).input(),
       networkBlock: (map['networkBlock'] as String).input(),
-      nsxtPassword: map['nsxtPassword'] == null ? null : (map['nsxtPassword'] as String).input(),
-      privateCloudName: map['privateCloudName'] == null ? null : (map['privateCloudName'] as String).input(),
+      nsxtPassword: map['nsxtPassword'] == null ? null : (map['nsxtPassword']! as String).input(),
+      privateCloudName: map['privateCloudName'] == null ? null : (map['privateCloudName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vcenterPassword: map['vcenterPassword'] == null ? null : (map['vcenterPassword'] as String).input(),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vcenterPassword: map['vcenterPassword'] == null ? null : (map['vcenterPassword']! as String).input(),
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId']! as String).input(),
     );
   }
 }

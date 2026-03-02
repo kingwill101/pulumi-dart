@@ -98,21 +98,21 @@ class ProfileArgs {
 
   factory ProfileArgs.fromMap(Map<String, dynamic> map) {
     return ProfileArgs(
-      allowedEndpointRecordTypes: map['allowedEndpointRecordTypes'] == null ? null : ((map['allowedEndpointRecordTypes'] as List).cast<String>()).input(),
-      dnsConfig: map['dnsConfig'] == null ? null : (DnsConfig.fromMap((map['dnsConfig'] as Map).cast<String, dynamic>())).input(),
-      endpoints: map['endpoints'] == null ? null : ((map['endpoints'] as List).cast<EndpointTrafficmanager>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maxReturn: map['maxReturn'] == null ? null : (map['maxReturn'] as double).input(),
-      monitorConfig: map['monitorConfig'] == null ? null : (MonitorConfig.fromMap((map['monitorConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      profileName: map['profileName'] == null ? null : (map['profileName'] as String).input(),
-      profileStatus: map['profileStatus'] == null ? null : (map['profileStatus'] as String).input(),
+      allowedEndpointRecordTypes: map['allowedEndpointRecordTypes'] == null ? null : ((map['allowedEndpointRecordTypes']! as List).cast<String>()).input(),
+      dnsConfig: map['dnsConfig'] == null ? null : (DnsConfig.fromMap((map['dnsConfig']! as Map).cast<String, dynamic>())).input(),
+      endpoints: map['endpoints'] == null ? null : ((map['endpoints']! as List).cast<EndpointTrafficmanager>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maxReturn: map['maxReturn'] == null ? null : (map['maxReturn']! as double).input(),
+      monitorConfig: map['monitorConfig'] == null ? null : (MonitorConfig.fromMap((map['monitorConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      profileName: map['profileName'] == null ? null : (map['profileName']! as String).input(),
+      profileStatus: map['profileStatus'] == null ? null : (map['profileStatus']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      trafficRoutingMethod: map['trafficRoutingMethod'] == null ? null : (map['trafficRoutingMethod'] as String).input(),
-      trafficViewEnrollmentStatus: map['trafficViewEnrollmentStatus'] == null ? null : (map['trafficViewEnrollmentStatus'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      trafficRoutingMethod: map['trafficRoutingMethod'] == null ? null : (map['trafficRoutingMethod']! as String).input(),
+      trafficViewEnrollmentStatus: map['trafficViewEnrollmentStatus'] == null ? null : (map['trafficViewEnrollmentStatus']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class VirtualMachinesProfile {
 
   factory VirtualMachinesProfile.fromMap(Map<String, dynamic> map) {
     return VirtualMachinesProfile(
-      scale: map['scale'] == null ? null : (ScaleProfile.fromMap((map['scale'] as Map).cast<String, dynamic>())).input(),
+      scale: map['scale'] == null ? null : (ScaleProfile.fromMap((map['scale']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -36,9 +36,9 @@ class GetPolicySetDefinitionArgs {
 
   factory GetPolicySetDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicySetDefinitionArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      managementGroupName: map['managementGroupName'] == null ? null : (map['managementGroupName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      managementGroupName: map['managementGroupName'] == null ? null : (map['managementGroupName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

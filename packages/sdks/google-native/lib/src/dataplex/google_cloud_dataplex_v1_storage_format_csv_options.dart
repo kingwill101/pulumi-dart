@@ -36,10 +36,10 @@ class GoogleCloudDataplexV1StorageFormatCsvOptions {
 
   factory GoogleCloudDataplexV1StorageFormatCsvOptions.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1StorageFormatCsvOptions(
-      delimiter: map['delimiter'] == null ? null : (map['delimiter'] as String).input(),
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
-      headerRows: map['headerRows'] == null ? null : (map['headerRows'] as int).input(),
-      quote: map['quote'] == null ? null : (map['quote'] as String).input(),
+      delimiter: map['delimiter'] == null ? null : (map['delimiter']! as String).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
+      headerRows: map['headerRows'] == null ? null : (map['headerRows']! as int).input(),
+      quote: map['quote'] == null ? null : (map['quote']! as String).input(),
     );
   }
 }

@@ -78,18 +78,18 @@ class LoadBalancerMonitor {
 
   factory LoadBalancerMonitor.fromMap(Map<String, dynamic> map) {
     return LoadBalancerMonitor(
-      consecutiveDown: map['consecutiveDown'] == null ? null : (map['consecutiveDown'] as int).input(),
-      consecutiveUp: map['consecutiveUp'] == null ? null : (map['consecutiveUp'] as int).input(),
-      expectedCodes: map['expectedCodes'] == null ? null : (map['expectedCodes'] as String).input(),
-      followRedirects: map['followRedirects'] == null ? null : (map['followRedirects'] as bool).input(),
-      header: map['header'] == null ? null : (map['header'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      method: map['method'] == null ? null : (map['method'] as String).input(),
-      monitoringRegion: map['monitoringRegion'] == null ? null : (map['monitoringRegion'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      consecutiveDown: map['consecutiveDown'] == null ? null : (map['consecutiveDown']! as int).input(),
+      consecutiveUp: map['consecutiveUp'] == null ? null : (map['consecutiveUp']! as int).input(),
+      expectedCodes: map['expectedCodes'] == null ? null : (map['expectedCodes']! as String).input(),
+      followRedirects: map['followRedirects'] == null ? null : (map['followRedirects']! as bool).input(),
+      header: map['header'] == null ? null : (map['header']! as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      method: map['method'] == null ? null : (map['method']! as String).input(),
+      monitoringRegion: map['monitoringRegion'] == null ? null : (map['monitoringRegion']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

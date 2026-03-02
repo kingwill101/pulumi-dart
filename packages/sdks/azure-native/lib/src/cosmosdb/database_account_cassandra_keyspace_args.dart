@@ -46,7 +46,7 @@ class DatabaseAccountCassandraKeyspaceArgs {
   factory DatabaseAccountCassandraKeyspaceArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseAccountCassandraKeyspaceArgs(
       accountName: (map['accountName'] as String).input(),
-      keyspaceName: map['keyspaceName'] == null ? null : (map['keyspaceName'] as String).input(),
+      keyspaceName: map['keyspaceName'] == null ? null : (map['keyspaceName']! as String).input(),
       options: ((map['options'] as Map).cast<String, String>()).input(),
       resource: (CassandraKeyspaceResource.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

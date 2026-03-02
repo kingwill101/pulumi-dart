@@ -56,7 +56,7 @@ class GetAgentAgentVersionsAgentVersionSummary {
       agentVersion: (map['agentVersion'] as String).input(),
       createdAt: (map['createdAt'] as String).input(),
       description: (map['description'] as String).input(),
-      guardrailConfigurations: map['guardrailConfigurations'] == null ? null : (pulumi.Input.decodeList<GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration>(map['guardrailConfigurations'], (value) => GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      guardrailConfigurations: map['guardrailConfigurations'] == null ? null : ((pulumi.Input.decodeList<GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration>(map['guardrailConfigurations']!, (value) => GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       updatedAt: (map['updatedAt'] as String).input(),
     );
   }

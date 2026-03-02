@@ -37,10 +37,10 @@ class LogStorageSettingsResponse {
 
   factory LogStorageSettingsResponse.fromMap(Map<String, dynamic> map) {
     return LogStorageSettingsResponse(
-      enableReliableLogging: map['enableReliableLogging'] == null ? null : (map['enableReliableLogging']).input(),
+      enableReliableLogging: map['enableReliableLogging'] == null ? null : (map['enableReliableLogging']!).input(),
       linkedServiceName: (LinkedServiceReferenceResponse.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
-      logLevel: map['logLevel'] == null ? null : (map['logLevel']).input(),
-      path: map['path'] == null ? null : (map['path']).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel']!).input(),
+      path: map['path'] == null ? null : (map['path']!).input(),
     );
   }
 }

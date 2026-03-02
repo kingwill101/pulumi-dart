@@ -87,19 +87,19 @@ class GoogleCloudIntegrationsV1alphaTriggerConfig {
 
   factory GoogleCloudIntegrationsV1alphaTriggerConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaTriggerConfig(
-      alertConfig: map['alertConfig'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaIntegrationAlertConfig>(map['alertConfig'], (value) => GoogleCloudIntegrationsV1alphaIntegrationAlertConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cloudSchedulerConfig: map['cloudSchedulerConfig'] == null ? null : (GoogleCloudIntegrationsV1alphaCloudSchedulerConfig.fromMap((map['cloudSchedulerConfig'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      errorCatcherId: map['errorCatcherId'] == null ? null : (map['errorCatcherId'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      nextTasksExecutionPolicy: map['nextTasksExecutionPolicy'] == null ? null : (GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicy.fromValue(map['nextTasksExecutionPolicy'] as String)).input(),
-      position: map['position'] == null ? null : (GoogleCloudIntegrationsV1alphaCoordinate.fromMap((map['position'] as Map).cast<String, dynamic>())).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      startTasks: map['startTasks'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaNextTask>(map['startTasks'], (value) => GoogleCloudIntegrationsV1alphaNextTask.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      trigger: map['trigger'] == null ? null : (map['trigger'] as String).input(),
-      triggerId: map['triggerId'] == null ? null : (map['triggerId'] as String).input(),
+      alertConfig: map['alertConfig'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaIntegrationAlertConfig>(map['alertConfig']!, (value) => GoogleCloudIntegrationsV1alphaIntegrationAlertConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cloudSchedulerConfig: map['cloudSchedulerConfig'] == null ? null : (GoogleCloudIntegrationsV1alphaCloudSchedulerConfig.fromMap((map['cloudSchedulerConfig']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      errorCatcherId: map['errorCatcherId'] == null ? null : (map['errorCatcherId']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      nextTasksExecutionPolicy: map['nextTasksExecutionPolicy'] == null ? null : (GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicy.fromValue(map['nextTasksExecutionPolicy']! as String)).input(),
+      position: map['position'] == null ? null : (GoogleCloudIntegrationsV1alphaCoordinate.fromMap((map['position']! as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      startTasks: map['startTasks'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaNextTask>(map['startTasks']!, (value) => GoogleCloudIntegrationsV1alphaNextTask.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      trigger: map['trigger'] == null ? null : (map['trigger']! as String).input(),
+      triggerId: map['triggerId'] == null ? null : (map['triggerId']! as String).input(),
       triggerNumber: (map['triggerNumber'] as String).input(),
-      triggerType: map['triggerType'] == null ? null : (GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType.fromValue(map['triggerType'] as String)).input(),
+      triggerType: map['triggerType'] == null ? null : (GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType.fromValue(map['triggerType']! as String)).input(),
     );
   }
 }

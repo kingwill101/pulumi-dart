@@ -27,8 +27,8 @@ class DriverAllocationResult {
 
   factory DriverAllocationResult.fromMap(Map<String, dynamic> map) {
     return DriverAllocationResult(
-      namedResources: map['namedResources'] == null ? null : (NamedResourcesAllocationResult.fromMap((map['namedResources'] as Map).cast<String, dynamic>())).input(),
-      vendorRequestParameters: map['vendorRequestParameters'] == null ? null : (map['vendorRequestParameters']).input(),
+      namedResources: map['namedResources'] == null ? null : (NamedResourcesAllocationResult.fromMap((map['namedResources']! as Map).cast<String, dynamic>())).input(),
+      vendorRequestParameters: map['vendorRequestParameters'] == null ? null : (map['vendorRequestParameters']!).input(),
     );
   }
 }

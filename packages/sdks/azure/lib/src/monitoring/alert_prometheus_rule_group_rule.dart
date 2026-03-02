@@ -67,16 +67,16 @@ class AlertPrometheusRuleGroupRule {
 
   factory AlertPrometheusRuleGroupRule.fromMap(Map<String, dynamic> map) {
     return AlertPrometheusRuleGroupRule(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<AlertPrometheusRuleGroupRuleAction>(map['actions'], (value) => AlertPrometheusRuleGroupRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      alert: map['alert'] == null ? null : (map['alert'] as String).input(),
-      alertResolution: map['alertResolution'] == null ? null : (AlertPrometheusRuleGroupRuleAlertResolution.fromMap((map['alertResolution'] as Map).cast<String, dynamic>())).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<AlertPrometheusRuleGroupRuleAction>(map['actions']!, (value) => AlertPrometheusRuleGroupRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      alert: map['alert'] == null ? null : (map['alert']! as String).input(),
+      alertResolution: map['alertResolution'] == null ? null : (AlertPrometheusRuleGroupRuleAlertResolution.fromMap((map['alertResolution']! as Map).cast<String, dynamic>())).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       expression: (map['expression'] as String).input(),
-      for_: map['for'] == null ? null : (map['for'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      record: map['record'] == null ? null : (map['record'] as String).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as int).input(),
+      for_: map['for'] == null ? null : (map['for']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      record: map['record'] == null ? null : (map['record']! as String).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as int).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class GoogleCloudAiplatformV1beta1Scheduling {
 
   factory GoogleCloudAiplatformV1beta1Scheduling.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1Scheduling(
-      disableRetries: map['disableRetries'] == null ? null : (map['disableRetries'] as bool).input(),
-      restartJobOnWorkerRestart: map['restartJobOnWorkerRestart'] == null ? null : (map['restartJobOnWorkerRestart'] as bool).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      disableRetries: map['disableRetries'] == null ? null : (map['disableRetries']! as bool).input(),
+      restartJobOnWorkerRestart: map['restartJobOnWorkerRestart'] == null ? null : (map['restartJobOnWorkerRestart']! as bool).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

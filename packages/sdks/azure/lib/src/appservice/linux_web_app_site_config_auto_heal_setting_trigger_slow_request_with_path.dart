@@ -37,7 +37,7 @@ class LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath {
     return LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath(
       count: (map['count'] as int).input(),
       interval: (map['interval'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
       timeTaken: (map['timeTaken'] as String).input(),
     );
   }

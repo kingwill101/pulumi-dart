@@ -62,13 +62,13 @@ class RoutingRuleArgs {
   factory RoutingRuleArgs.fromMap(Map<String, dynamic> map) {
     return RoutingRuleArgs(
       configurationName: (map['configurationName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       destination: (RoutingRuleRouteDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
       networkManagerName: (map['networkManagerName'] as String).input(),
       nextHop: (RoutingRuleNextHop.fromMap((map['nextHop'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       ruleCollectionName: (map['ruleCollectionName'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
     );
   }
 }

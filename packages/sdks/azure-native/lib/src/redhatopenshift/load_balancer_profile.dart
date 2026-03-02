@@ -22,7 +22,7 @@ class LoadBalancerProfile {
 
   factory LoadBalancerProfile.fromMap(Map<String, dynamic> map) {
     return LoadBalancerProfile(
-      managedOutboundIps: map['managedOutboundIps'] == null ? null : (ManagedOutboundIPs.fromMap((map['managedOutboundIps'] as Map).cast<String, dynamic>())).input(),
+      managedOutboundIps: map['managedOutboundIps'] == null ? null : (ManagedOutboundIPs.fromMap((map['managedOutboundIps']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

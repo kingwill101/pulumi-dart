@@ -20,7 +20,7 @@ class ConnectionAccountKeyResponse {
 
   factory ConnectionAccountKeyResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionAccountKeyResponse(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
     );
   }
 }

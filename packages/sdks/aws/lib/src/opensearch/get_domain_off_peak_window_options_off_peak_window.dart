@@ -21,7 +21,7 @@ class GetDomainOffPeakWindowOptionsOffPeakWindow {
 
   factory GetDomainOffPeakWindowOptionsOffPeakWindow.fromMap(Map<String, dynamic> map) {
     return GetDomainOffPeakWindowOptionsOffPeakWindow(
-      windowStartTimes: (pulumi.Input.decodeList<GetDomainOffPeakWindowOptionsOffPeakWindowWindowStartTime>(map['windowStartTimes'], (value) => GetDomainOffPeakWindowOptionsOffPeakWindowWindowStartTime.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      windowStartTimes: (pulumi.Input.decodeList<GetDomainOffPeakWindowOptionsOffPeakWindowWindowStartTime>(map['windowStartTimes']!, (value) => GetDomainOffPeakWindowOptionsOffPeakWindowWindowStartTime.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -34,7 +34,7 @@ class AddonArcPropertiesResponse {
     return AddonArcPropertiesResponse(
       addonType: (map['addonType'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      vCenter: map['vCenter'] == null ? null : (map['vCenter'] as String).input(),
+      vCenter: map['vCenter'] == null ? null : (map['vCenter']! as String).input(),
     );
   }
 }

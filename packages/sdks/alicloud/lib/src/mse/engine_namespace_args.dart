@@ -51,11 +51,11 @@ class EngineNamespaceArgs {
 
   factory EngineNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return EngineNamespaceArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      namespaceDesc: map['namespaceDesc'] == null ? null : (map['namespaceDesc'] as String).input(),
-      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
+      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage']! as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      namespaceDesc: map['namespaceDesc'] == null ? null : (map['namespaceDesc']! as String).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId']! as String).input(),
       namespaceShowName: (map['namespaceShowName'] as String).input(),
     );
   }

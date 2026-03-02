@@ -47,12 +47,12 @@ class CephFSPersistentVolumeSourcePatch {
 
   factory CephFSPersistentVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return CephFSPersistentVolumeSourcePatch(
-      monitors: map['monitors'] == null ? null : ((map['monitors'] as List).cast<String>()).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      secretFile: map['secretFile'] == null ? null : (map['secretFile'] as String).input(),
-      secretRef: map['secretRef'] == null ? null : (SecretReferencePatch.fromMap((map['secretRef'] as Map).cast<String, dynamic>())).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      monitors: map['monitors'] == null ? null : ((map['monitors']! as List).cast<String>()).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      secretFile: map['secretFile'] == null ? null : (map['secretFile']! as String).input(),
+      secretRef: map['secretRef'] == null ? null : (SecretReferencePatch.fromMap((map['secretRef']! as Map).cast<String, dynamic>())).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

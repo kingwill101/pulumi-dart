@@ -33,7 +33,7 @@ class GetPipelineArgs {
     return GetPipelineArgs(
       location: (map['location'] as String).input(),
       pipelineId: (map['pipelineId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

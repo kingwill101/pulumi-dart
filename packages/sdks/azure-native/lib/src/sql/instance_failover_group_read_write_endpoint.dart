@@ -27,7 +27,7 @@ class InstanceFailoverGroupReadWriteEndpoint {
   factory InstanceFailoverGroupReadWriteEndpoint.fromMap(Map<String, dynamic> map) {
     return InstanceFailoverGroupReadWriteEndpoint(
       failoverPolicy: (map['failoverPolicy'] as String).input(),
-      failoverWithDataLossGracePeriodMinutes: map['failoverWithDataLossGracePeriodMinutes'] == null ? null : (map['failoverWithDataLossGracePeriodMinutes'] as int).input(),
+      failoverWithDataLossGracePeriodMinutes: map['failoverWithDataLossGracePeriodMinutes'] == null ? null : (map['failoverWithDataLossGracePeriodMinutes']! as int).input(),
     );
   }
 }

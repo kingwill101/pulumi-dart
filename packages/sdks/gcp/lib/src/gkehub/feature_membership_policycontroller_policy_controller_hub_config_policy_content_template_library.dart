@@ -20,7 +20,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTem
 
   factory FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary(
-      installation: map['installation'] == null ? null : (map['installation'] as String).input(),
+      installation: map['installation'] == null ? null : (map['installation']! as String).input(),
     );
   }
 }

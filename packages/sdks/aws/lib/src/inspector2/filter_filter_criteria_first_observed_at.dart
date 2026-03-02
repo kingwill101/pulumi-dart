@@ -25,8 +25,8 @@ class FilterFilterCriteriaFirstObservedAt {
 
   factory FilterFilterCriteriaFirstObservedAt.fromMap(Map<String, dynamic> map) {
     return FilterFilterCriteriaFirstObservedAt(
-      endInclusive: map['endInclusive'] == null ? null : (map['endInclusive'] as String).input(),
-      startInclusive: map['startInclusive'] == null ? null : (map['startInclusive'] as String).input(),
+      endInclusive: map['endInclusive'] == null ? null : ((map['endInclusive'] as String).input()).input(),
+      startInclusive: map['startInclusive'] == null ? null : ((map['startInclusive'] as String).input()).input(),
     );
   }
 }

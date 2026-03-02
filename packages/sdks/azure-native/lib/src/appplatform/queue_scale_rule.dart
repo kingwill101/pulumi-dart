@@ -32,9 +32,9 @@ class QueueScaleRule {
 
   factory QueueScaleRule.fromMap(Map<String, dynamic> map) {
     return QueueScaleRule(
-      auth: map['auth'] == null ? null : (pulumi.Input.decodeList<ScaleRuleAuth>(map['auth'], (value) => ScaleRuleAuth.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      queueLength: map['queueLength'] == null ? null : (map['queueLength'] as int).input(),
-      queueName: map['queueName'] == null ? null : (map['queueName'] as String).input(),
+      auth: map['auth'] == null ? null : (pulumi.Input.decodeList<ScaleRuleAuth>(map['auth']!, (value) => ScaleRuleAuth.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      queueLength: map['queueLength'] == null ? null : (map['queueLength']! as int).input(),
+      queueName: map['queueName'] == null ? null : (map['queueName']! as String).input(),
     );
   }
 }

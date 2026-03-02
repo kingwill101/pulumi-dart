@@ -101,21 +101,21 @@ class NodePoolState {
 
   factory NodePoolState.fromMap(Map<String, dynamic> map) {
     return NodePoolState(
-      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      localDiskEncryption: map['localDiskEncryption'] == null ? null : (NodePoolLocalDiskEncryption.fromMap((map['localDiskEncryption'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      machineFilter: map['machineFilter'] == null ? null : (map['machineFilter'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodeConfig: map['nodeConfig'] == null ? null : (NodePoolNodeConfig.fromMap((map['nodeConfig'] as Map).cast<String, dynamic>())).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
-      nodeLocation: map['nodeLocation'] == null ? null : (map['nodeLocation'] as String).input(),
-      nodeVersion: map['nodeVersion'] == null ? null : (map['nodeVersion'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      cluster: map['cluster'] == null ? null : (map['cluster']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      localDiskEncryption: map['localDiskEncryption'] == null ? null : (NodePoolLocalDiskEncryption.fromMap((map['localDiskEncryption']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      machineFilter: map['machineFilter'] == null ? null : (map['machineFilter']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodeConfig: map['nodeConfig'] == null ? null : (NodePoolNodeConfig.fromMap((map['nodeConfig']! as Map).cast<String, dynamic>())).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
+      nodeLocation: map['nodeLocation'] == null ? null : (map['nodeLocation']! as String).input(),
+      nodeVersion: map['nodeVersion'] == null ? null : (map['nodeVersion']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

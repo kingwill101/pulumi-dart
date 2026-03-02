@@ -47,11 +47,11 @@ class CentralizationRuleForOrganizationArgs {
 
   factory CentralizationRuleForOrganizationArgs.fromMap(Map<String, dynamic> map) {
     return CentralizationRuleForOrganizationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rule: (CentralizationRuleForOrganizationRule.fromMap((map['rule'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      rule: (CentralizationRuleForOrganizationRule.fromMap((map['rule']! as Map).cast<String, dynamic>())).input(),
       ruleName: (map['ruleName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (CentralizationRuleForOrganizationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((CentralizationRuleForOrganizationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

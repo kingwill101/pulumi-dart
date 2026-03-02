@@ -64,15 +64,15 @@ class AccessControlListMatchConditionResponse {
 
   factory AccessControlListMatchConditionResponse.fromMap(Map<String, dynamic> map) {
     return AccessControlListMatchConditionResponse(
-      dscpMarkings: map['dscpMarkings'] == null ? null : ((map['dscpMarkings'] as List).cast<String>()).input(),
-      etherTypes: map['etherTypes'] == null ? null : ((map['etherTypes'] as List).cast<String>()).input(),
-      fragments: map['fragments'] == null ? null : ((map['fragments'] as List).cast<String>()).input(),
-      ipCondition: map['ipCondition'] == null ? null : (IpMatchConditionResponse.fromMap((map['ipCondition'] as Map).cast<String, dynamic>())).input(),
-      ipLengths: map['ipLengths'] == null ? null : ((map['ipLengths'] as List).cast<String>()).input(),
-      portCondition: map['portCondition'] == null ? null : (AccessControlListPortConditionResponse.fromMap((map['portCondition'] as Map).cast<String, dynamic>())).input(),
-      protocolTypes: map['protocolTypes'] == null ? null : ((map['protocolTypes'] as List).cast<String>()).input(),
-      ttlValues: map['ttlValues'] == null ? null : ((map['ttlValues'] as List).cast<String>()).input(),
-      vlanMatchCondition: map['vlanMatchCondition'] == null ? null : (VlanMatchConditionResponse.fromMap((map['vlanMatchCondition'] as Map).cast<String, dynamic>())).input(),
+      dscpMarkings: map['dscpMarkings'] == null ? null : ((map['dscpMarkings']! as List).cast<String>()).input(),
+      etherTypes: map['etherTypes'] == null ? null : ((map['etherTypes']! as List).cast<String>()).input(),
+      fragments: map['fragments'] == null ? null : ((map['fragments']! as List).cast<String>()).input(),
+      ipCondition: map['ipCondition'] == null ? null : (IpMatchConditionResponse.fromMap((map['ipCondition']! as Map).cast<String, dynamic>())).input(),
+      ipLengths: map['ipLengths'] == null ? null : ((map['ipLengths']! as List).cast<String>()).input(),
+      portCondition: map['portCondition'] == null ? null : (AccessControlListPortConditionResponse.fromMap((map['portCondition']! as Map).cast<String, dynamic>())).input(),
+      protocolTypes: map['protocolTypes'] == null ? null : ((map['protocolTypes']! as List).cast<String>()).input(),
+      ttlValues: map['ttlValues'] == null ? null : ((map['ttlValues']! as List).cast<String>()).input(),
+      vlanMatchCondition: map['vlanMatchCondition'] == null ? null : (VlanMatchConditionResponse.fromMap((map['vlanMatchCondition']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

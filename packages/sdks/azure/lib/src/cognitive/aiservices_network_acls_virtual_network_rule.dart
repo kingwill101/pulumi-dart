@@ -25,7 +25,7 @@ class AIServicesNetworkAclsVirtualNetworkRule {
 
   factory AIServicesNetworkAclsVirtualNetworkRule.fromMap(Map<String, dynamic> map) {
     return AIServicesNetworkAclsVirtualNetworkRule(
-      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : (map['ignoreMissingVnetServiceEndpoint'] as bool).input(),
+      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : (map['ignoreMissingVnetServiceEndpoint']! as bool).input(),
       subnetId: (map['subnetId'] as String).input(),
     );
   }

@@ -22,7 +22,7 @@ class ServiceServiceReference {
 
   factory ServiceServiceReference.fromMap(Map<String, dynamic> map) {
     return ServiceServiceReference(
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

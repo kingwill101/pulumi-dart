@@ -27,8 +27,8 @@ class MultiEntityRename {
 
   factory MultiEntityRename.fromMap(Map<String, dynamic> map) {
     return MultiEntityRename(
-      newNamePattern: map['newNamePattern'] == null ? null : (map['newNamePattern'] as String).input(),
-      sourceNameTransformation: map['sourceNameTransformation'] == null ? null : (MultiEntityRenameSourceNameTransformation.fromValue(map['sourceNameTransformation'] as String)).input(),
+      newNamePattern: map['newNamePattern'] == null ? null : (map['newNamePattern']! as String).input(),
+      sourceNameTransformation: map['sourceNameTransformation'] == null ? null : (MultiEntityRenameSourceNameTransformation.fromValue(map['sourceNameTransformation']! as String)).input(),
     );
   }
 }

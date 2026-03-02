@@ -29,8 +29,8 @@ class JsonFieldWithDefault {
 
   factory JsonFieldWithDefault.fromMap(Map<String, dynamic> map) {
     return JsonFieldWithDefault(
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
-      sourceField: map['sourceField'] == null ? null : (map['sourceField'] as String).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']! as String).input(),
+      sourceField: map['sourceField'] == null ? null : (map['sourceField']! as String).input(),
     );
   }
 }

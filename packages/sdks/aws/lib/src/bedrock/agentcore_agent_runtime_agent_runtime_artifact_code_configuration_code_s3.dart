@@ -32,7 +32,7 @@ class AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeS3 {
     return AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeS3(
       bucket: (map['bucket'] as String).input(),
       prefix: (map['prefix'] as String).input(),
-      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
+      versionId: map['versionId'] == null ? null : ((map['versionId'] as String).input()).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class IstioCertificateAuthority {
 
   factory IstioCertificateAuthority.fromMap(Map<String, dynamic> map) {
     return IstioCertificateAuthority(
-      plugin: map['plugin'] == null ? null : (IstioPluginCertificateAuthority.fromMap((map['plugin'] as Map).cast<String, dynamic>())).input(),
+      plugin: map['plugin'] == null ? null : (IstioPluginCertificateAuthority.fromMap((map['plugin']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -46,10 +46,10 @@ class GetListenersResult {
     return GetListenersResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      listenerProtocol: map['listenerProtocol'] == null ? null : map['listenerProtocol'] as String,
+      listenerProtocol: map['listenerProtocol'] == null ? null : map['listenerProtocol']! as String,
       listeners: pulumi.Input.decodeList<GetListenersListener>(map['listeners'], (value) => GetListenersListener.fromMap((value as Map).cast<String, dynamic>())),
-      loadBalancerIds: map['loadBalancerIds'] == null ? null : (map['loadBalancerIds'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      loadBalancerIds: map['loadBalancerIds'] == null ? null : (map['loadBalancerIds']! as List).cast<String>(),
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

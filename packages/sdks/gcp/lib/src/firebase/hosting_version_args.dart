@@ -31,7 +31,7 @@ class HostingVersionArgs {
 
   factory HostingVersionArgs.fromMap(Map<String, dynamic> map) {
     return HostingVersionArgs(
-      config: map['config'] == null ? null : (HostingVersionConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      config: map['config'] == null ? null : (HostingVersionConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
       siteId: (map['siteId'] as String).input(),
     );
   }

@@ -30,9 +30,9 @@ class ConfigQuotaSignUpQuotaConfig {
 
   factory ConfigQuotaSignUpQuotaConfig.fromMap(Map<String, dynamic> map) {
     return ConfigQuotaSignUpQuotaConfig(
-      quota: map['quota'] == null ? null : (map['quota'] as int).input(),
-      quotaDuration: map['quotaDuration'] == null ? null : (map['quotaDuration'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      quota: map['quota'] == null ? null : (map['quota']! as int).input(),
+      quotaDuration: map['quotaDuration'] == null ? null : (map['quotaDuration']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

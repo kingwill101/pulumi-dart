@@ -63,9 +63,9 @@ class LoadBalancerRulePropertiesResponse {
       backendPort: (map['backendPort'] as int).input(),
       frontendIPConfiguration: (LoadBalancerFrontendIPConfigurationReferenceResponse.fromMap((map['frontendIPConfiguration'] as Map).cast<String, dynamic>())).input(),
       frontendPort: (map['frontendPort'] as int).input(),
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
-      loadDistribution: map['loadDistribution'] == null ? null : (map['loadDistribution'] as String).input(),
-      probe: map['probe'] == null ? null : (LoadBalancerProbeReferenceResponse.fromMap((map['probe'] as Map).cast<String, dynamic>())).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes']! as int).input(),
+      loadDistribution: map['loadDistribution'] == null ? null : (map['loadDistribution']! as String).input(),
+      probe: map['probe'] == null ? null : (LoadBalancerProbeReferenceResponse.fromMap((map['probe']! as Map).cast<String, dynamic>())).input(),
       protocol: (map['protocol'] as String).input(),
     );
   }

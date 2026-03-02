@@ -21,7 +21,7 @@ class GenerateResourceLimitsResponse {
 
   factory GenerateResourceLimitsResponse.fromMap(Map<String, dynamic> map) {
     return GenerateResourceLimitsResponse(
-      cpu: map['cpu'] == null ? null : (map['cpu'] as String).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as String).input(),
     );
   }
 }

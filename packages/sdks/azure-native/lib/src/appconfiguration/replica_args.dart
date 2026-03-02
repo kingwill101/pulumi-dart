@@ -40,8 +40,8 @@ class ReplicaArgs {
   factory ReplicaArgs.fromMap(Map<String, dynamic> map) {
     return ReplicaArgs(
       configStoreName: (map['configStoreName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      replicaName: map['replicaName'] == null ? null : (map['replicaName'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      replicaName: map['replicaName'] == null ? null : (map['replicaName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

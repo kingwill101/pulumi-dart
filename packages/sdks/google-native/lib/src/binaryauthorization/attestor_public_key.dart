@@ -37,10 +37,10 @@ class AttestorPublicKey {
 
   factory AttestorPublicKey.fromMap(Map<String, dynamic> map) {
     return AttestorPublicKey(
-      asciiArmoredPgpPublicKey: map['asciiArmoredPgpPublicKey'] == null ? null : (map['asciiArmoredPgpPublicKey'] as String).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      pkixPublicKey: map['pkixPublicKey'] == null ? null : (PkixPublicKey.fromMap((map['pkixPublicKey'] as Map).cast<String, dynamic>())).input(),
+      asciiArmoredPgpPublicKey: map['asciiArmoredPgpPublicKey'] == null ? null : (map['asciiArmoredPgpPublicKey']! as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      pkixPublicKey: map['pkixPublicKey'] == null ? null : (PkixPublicKey.fromMap((map['pkixPublicKey']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -54,13 +54,13 @@ class OrganizationEnvironmentIamPolicyArgs {
 
   factory OrganizationEnvironmentIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationEnvironmentIamPolicyArgs(
-      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1AuditConfig>(map['auditConfigs'], (value) => GoogleIamV1AuditConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1Binding>(map['bindings'], (value) => GoogleIamV1Binding.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1AuditConfig>(map['auditConfigs']!, (value) => GoogleIamV1AuditConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1Binding>(map['bindings']!, (value) => GoogleIamV1Binding.fromMap((value as Map).cast<String, dynamic>()))).input(),
       environmentId: (map['environmentId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
-      updateMask: map['updateMask'] == null ? null : (map['updateMask'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      updateMask: map['updateMask'] == null ? null : (map['updateMask']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

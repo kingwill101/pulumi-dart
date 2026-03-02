@@ -37,7 +37,7 @@ class GetDatabasesResult {
       databases: pulumi.Input.decodeList<GetDatabasesDatabase>(map['databases'], (value) => GetDatabasesDatabase.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       instance: map['instance'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
     );
   }
 }

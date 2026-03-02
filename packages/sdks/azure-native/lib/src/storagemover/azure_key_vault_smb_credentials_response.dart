@@ -32,9 +32,9 @@ class AzureKeyVaultSmbCredentialsResponse {
 
   factory AzureKeyVaultSmbCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return AzureKeyVaultSmbCredentialsResponse(
-      passwordUri: map['passwordUri'] == null ? null : (map['passwordUri'] as String).input(),
+      passwordUri: map['passwordUri'] == null ? null : (map['passwordUri']! as String).input(),
       type: (map['type'] as String).input(),
-      usernameUri: map['usernameUri'] == null ? null : (map['usernameUri'] as String).input(),
+      usernameUri: map['usernameUri'] == null ? null : (map['usernameUri']! as String).input(),
     );
   }
 }

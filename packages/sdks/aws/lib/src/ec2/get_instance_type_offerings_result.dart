@@ -49,7 +49,7 @@ class GetInstanceTypeOfferingsResult {
 
   factory GetInstanceTypeOfferingsResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeOfferingsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetInstanceTypeOfferingsFilter>(map['filters'], (value) => GetInstanceTypeOfferingsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetInstanceTypeOfferingsFilter>(map['filters']!, (value) => GetInstanceTypeOfferingsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       instanceTypes: (map['instanceTypes'] as List).cast<String>(),
       locationType: map['locationType'] == null ? null : map['locationType'] as String,

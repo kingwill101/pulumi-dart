@@ -31,8 +31,8 @@ class GatewayHostnameBindingKeyVaultResponse {
 
   factory GatewayHostnameBindingKeyVaultResponse.fromMap(Map<String, dynamic> map) {
     return GatewayHostnameBindingKeyVaultResponse(
-      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
-      lastStatus: map['lastStatus'] == null ? null : (GatewayHostnameBindingKeyVaultLastStatusResponse.fromMap((map['lastStatus'] as Map).cast<String, dynamic>())).input(),
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId']! as String).input(),
+      lastStatus: map['lastStatus'] == null ? null : (GatewayHostnameBindingKeyVaultLastStatusResponse.fromMap((map['lastStatus']! as Map).cast<String, dynamic>())).input(),
       secretId: (map['secretId'] as String).input(),
     );
   }

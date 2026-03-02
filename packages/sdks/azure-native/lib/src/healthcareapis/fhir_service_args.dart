@@ -103,20 +103,20 @@ class FhirServiceArgs {
 
   factory FhirServiceArgs.fromMap(Map<String, dynamic> map) {
     return FhirServiceArgs(
-      acrConfiguration: map['acrConfiguration'] == null ? null : (FhirServiceAcrConfiguration.fromMap((map['acrConfiguration'] as Map).cast<String, dynamic>())).input(),
-      authenticationConfiguration: map['authenticationConfiguration'] == null ? null : (FhirServiceAuthenticationConfiguration.fromMap((map['authenticationConfiguration'] as Map).cast<String, dynamic>())).input(),
-      corsConfiguration: map['corsConfiguration'] == null ? null : (FhirServiceCorsConfiguration.fromMap((map['corsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      exportConfiguration: map['exportConfiguration'] == null ? null : (FhirServiceExportConfiguration.fromMap((map['exportConfiguration'] as Map).cast<String, dynamic>())).input(),
-      fhirServiceName: map['fhirServiceName'] == null ? null : (map['fhirServiceName'] as String).input(),
-      identity: map['identity'] == null ? null : (ServiceManagedIdentityIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      implementationGuidesConfiguration: map['implementationGuidesConfiguration'] == null ? null : (ImplementationGuidesConfiguration.fromMap((map['implementationGuidesConfiguration'] as Map).cast<String, dynamic>())).input(),
-      importConfiguration: map['importConfiguration'] == null ? null : (FhirServiceImportConfiguration.fromMap((map['importConfiguration'] as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      acrConfiguration: map['acrConfiguration'] == null ? null : (FhirServiceAcrConfiguration.fromMap((map['acrConfiguration']! as Map).cast<String, dynamic>())).input(),
+      authenticationConfiguration: map['authenticationConfiguration'] == null ? null : (FhirServiceAuthenticationConfiguration.fromMap((map['authenticationConfiguration']! as Map).cast<String, dynamic>())).input(),
+      corsConfiguration: map['corsConfiguration'] == null ? null : (FhirServiceCorsConfiguration.fromMap((map['corsConfiguration']! as Map).cast<String, dynamic>())).input(),
+      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      exportConfiguration: map['exportConfiguration'] == null ? null : (FhirServiceExportConfiguration.fromMap((map['exportConfiguration']! as Map).cast<String, dynamic>())).input(),
+      fhirServiceName: map['fhirServiceName'] == null ? null : (map['fhirServiceName']! as String).input(),
+      identity: map['identity'] == null ? null : (ServiceManagedIdentityIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      implementationGuidesConfiguration: map['implementationGuidesConfiguration'] == null ? null : (ImplementationGuidesConfiguration.fromMap((map['implementationGuidesConfiguration']! as Map).cast<String, dynamic>())).input(),
+      importConfiguration: map['importConfiguration'] == null ? null : (FhirServiceImportConfiguration.fromMap((map['importConfiguration']! as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceVersionPolicyConfiguration: map['resourceVersionPolicyConfiguration'] == null ? null : (ResourceVersionPolicyConfiguration.fromMap((map['resourceVersionPolicyConfiguration'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      resourceVersionPolicyConfiguration: map['resourceVersionPolicyConfiguration'] == null ? null : (ResourceVersionPolicyConfiguration.fromMap((map['resourceVersionPolicyConfiguration']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

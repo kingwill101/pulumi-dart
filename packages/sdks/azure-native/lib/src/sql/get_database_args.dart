@@ -45,8 +45,8 @@ class GetDatabaseArgs {
   factory GetDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseArgs(
       databaseName: (map['databaseName'] as String).input(),
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
     );

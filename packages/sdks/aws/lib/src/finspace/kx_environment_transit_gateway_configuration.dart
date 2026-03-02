@@ -31,7 +31,7 @@ class KxEnvironmentTransitGatewayConfiguration {
 
   factory KxEnvironmentTransitGatewayConfiguration.fromMap(Map<String, dynamic> map) {
     return KxEnvironmentTransitGatewayConfiguration(
-      attachmentNetworkAclConfigurations: map['attachmentNetworkAclConfigurations'] == null ? null : (pulumi.Input.decodeList<KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration>(map['attachmentNetworkAclConfigurations'], (value) => KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      attachmentNetworkAclConfigurations: map['attachmentNetworkAclConfigurations'] == null ? null : ((pulumi.Input.decodeList<KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration>(map['attachmentNetworkAclConfigurations']!, (value) => KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       routableCidrSpace: (map['routableCidrSpace'] as String).input(),
       transitGatewayId: (map['transitGatewayId'] as String).input(),
     );

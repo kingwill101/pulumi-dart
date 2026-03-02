@@ -40,9 +40,9 @@ class DatabaseMigrationsSqlMiArgs {
   factory DatabaseMigrationsSqlMiArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseMigrationsSqlMiArgs(
       managedInstanceName: (map['managedInstanceName'] as String).input(),
-      properties: map['properties'] == null ? null : (DatabaseMigrationPropertiesSqlMi.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (DatabaseMigrationPropertiesSqlMi.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      targetDbName: map['targetDbName'] == null ? null : (map['targetDbName'] as String).input(),
+      targetDbName: map['targetDbName'] == null ? null : (map['targetDbName']! as String).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class SkuCostResponse {
 
   factory SkuCostResponse.fromMap(Map<String, dynamic> map) {
     return SkuCostResponse(
-      extendedUnit: map['extendedUnit'] == null ? null : (map['extendedUnit'] as String).input(),
+      extendedUnit: map['extendedUnit'] == null ? null : (map['extendedUnit']! as String).input(),
       meterId: (map['meterId'] as String).input(),
-      quantity: map['quantity'] == null ? null : (map['quantity'] as int).input(),
+      quantity: map['quantity'] == null ? null : (map['quantity']! as int).input(),
     );
   }
 }

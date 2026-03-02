@@ -37,10 +37,10 @@ class Schema {
 
   factory Schema.fromMap(Map<String, dynamic> map) {
     return Schema(
-      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<Column>(map['columns'], (value) => Column.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<Column>(map['columns']!, (value) => Column.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

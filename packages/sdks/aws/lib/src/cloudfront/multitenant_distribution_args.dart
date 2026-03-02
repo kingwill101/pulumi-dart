@@ -108,22 +108,22 @@ class MultitenantDistributionArgs {
 
   factory MultitenantDistributionArgs.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionArgs(
-      activeTrustedKeyGroups: map['activeTrustedKeyGroups'] == null ? null : (pulumi.Input.decodeList<MultitenantDistributionActiveTrustedKeyGroup>(map['activeTrustedKeyGroups'], (value) => MultitenantDistributionActiveTrustedKeyGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cacheBehaviors: map['cacheBehaviors'] == null ? null : (pulumi.Input.decodeList<MultitenantDistributionCacheBehavior>(map['cacheBehaviors'], (value) => MultitenantDistributionCacheBehavior.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      activeTrustedKeyGroups: map['activeTrustedKeyGroups'] == null ? null : ((pulumi.Input.decodeList<MultitenantDistributionActiveTrustedKeyGroup>(map['activeTrustedKeyGroups']!, (value) => MultitenantDistributionActiveTrustedKeyGroup.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      cacheBehaviors: map['cacheBehaviors'] == null ? null : ((pulumi.Input.decodeList<MultitenantDistributionCacheBehavior>(map['cacheBehaviors']!, (value) => MultitenantDistributionCacheBehavior.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       comment: (map['comment'] as String).input(),
-      customErrorResponses: map['customErrorResponses'] == null ? null : (pulumi.Input.decodeList<MultitenantDistributionCustomErrorResponse>(map['customErrorResponses'], (value) => MultitenantDistributionCustomErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultCacheBehavior: (MultitenantDistributionDefaultCacheBehavior.fromMap((map['defaultCacheBehavior'] as Map).cast<String, dynamic>())).input(),
-      defaultRootObject: map['defaultRootObject'] == null ? null : (map['defaultRootObject'] as String).input(),
+      customErrorResponses: map['customErrorResponses'] == null ? null : ((pulumi.Input.decodeList<MultitenantDistributionCustomErrorResponse>(map['customErrorResponses']!, (value) => MultitenantDistributionCustomErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      defaultCacheBehavior: (MultitenantDistributionDefaultCacheBehavior.fromMap((map['defaultCacheBehavior']! as Map).cast<String, dynamic>())).input(),
+      defaultRootObject: map['defaultRootObject'] == null ? null : ((map['defaultRootObject'] as String).input()).input(),
       enabled: (map['enabled'] as bool).input(),
-      httpVersion: map['httpVersion'] == null ? null : (map['httpVersion'] as String).input(),
-      originGroups: map['originGroups'] == null ? null : (pulumi.Input.decodeList<MultitenantDistributionOriginGroup>(map['originGroups'], (value) => MultitenantDistributionOriginGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      origins: map['origins'] == null ? null : (pulumi.Input.decodeList<MultitenantDistributionOrigin>(map['origins'], (value) => MultitenantDistributionOrigin.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      restrictions: map['restrictions'] == null ? null : (MultitenantDistributionRestrictions.fromMap((map['restrictions'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tenantConfig: (MultitenantDistributionTenantConfig.fromMap((map['tenantConfig'] as Map).cast<String, dynamic>())).input(),
-      timeouts: map['timeouts'] == null ? null : (MultitenantDistributionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      viewerCertificate: (MultitenantDistributionViewerCertificate.fromMap((map['viewerCertificate'] as Map).cast<String, dynamic>())).input(),
-      webAclId: map['webAclId'] == null ? null : (map['webAclId'] as String).input(),
+      httpVersion: map['httpVersion'] == null ? null : ((map['httpVersion'] as String).input()).input(),
+      originGroups: map['originGroups'] == null ? null : ((pulumi.Input.decodeList<MultitenantDistributionOriginGroup>(map['originGroups']!, (value) => MultitenantDistributionOriginGroup.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      origins: map['origins'] == null ? null : ((pulumi.Input.decodeList<MultitenantDistributionOrigin>(map['origins']!, (value) => MultitenantDistributionOrigin.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      restrictions: map['restrictions'] == null ? null : ((MultitenantDistributionRestrictions.fromMap((map['restrictions']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tenantConfig: (MultitenantDistributionTenantConfig.fromMap((map['tenantConfig']! as Map).cast<String, dynamic>())).input(),
+      timeouts: map['timeouts'] == null ? null : ((MultitenantDistributionTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      viewerCertificate: (MultitenantDistributionViewerCertificate.fromMap((map['viewerCertificate']! as Map).cast<String, dynamic>())).input(),
+      webAclId: map['webAclId'] == null ? null : ((map['webAclId'] as String).input()).input(),
     );
   }
 }

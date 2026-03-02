@@ -28,7 +28,7 @@ class GetPatchDeploymentOsconfigV1betaArgs {
   factory GetPatchDeploymentOsconfigV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetPatchDeploymentOsconfigV1betaArgs(
       patchDeploymentId: (map['patchDeploymentId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

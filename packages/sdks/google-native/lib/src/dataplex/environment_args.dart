@@ -63,15 +63,15 @@ class EnvironmentArgs {
 
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       environmentId: (map['environmentId'] as String).input(),
       infrastructureSpec: (GoogleCloudDataplexV1EnvironmentInfrastructureSpec.fromMap((map['infrastructureSpec'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       lakeId: (map['lakeId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      sessionSpec: map['sessionSpec'] == null ? null : (GoogleCloudDataplexV1EnvironmentSessionSpec.fromMap((map['sessionSpec'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      sessionSpec: map['sessionSpec'] == null ? null : (GoogleCloudDataplexV1EnvironmentSessionSpec.fromMap((map['sessionSpec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

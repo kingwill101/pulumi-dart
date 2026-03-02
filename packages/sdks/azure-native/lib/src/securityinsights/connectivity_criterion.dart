@@ -28,7 +28,7 @@ class ConnectivityCriterion {
   factory ConnectivityCriterion.fromMap(Map<String, dynamic> map) {
     return ConnectivityCriterion(
       type: (map['type'] as String).input(),
-      value: map['value'] == null ? null : ((map['value'] as List).cast<String>()).input(),
+      value: map['value'] == null ? null : ((map['value']! as List).cast<String>()).input(),
     );
   }
 }

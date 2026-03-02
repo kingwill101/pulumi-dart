@@ -36,8 +36,8 @@ class StrongId {
 
   factory StrongId.fromMap(Map<String, dynamic> map) {
     return StrongId(
-      description: map['description'] == null ? null : ((map['description'] as Map).cast<String, String>()).input(),
-      displayName: map['displayName'] == null ? null : ((map['displayName'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : ((map['description']! as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : ((map['displayName']! as Map).cast<String, String>()).input(),
       keyPropertyNames: ((map['keyPropertyNames'] as List).cast<String>()).input(),
       strongIdName: (map['strongIdName'] as String).input(),
     );

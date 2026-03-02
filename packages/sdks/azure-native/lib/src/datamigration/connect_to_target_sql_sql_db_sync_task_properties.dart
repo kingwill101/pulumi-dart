@@ -33,8 +33,8 @@ class ConnectToTargetSqlSqlDbSyncTaskProperties {
 
   factory ConnectToTargetSqlSqlDbSyncTaskProperties.fromMap(Map<String, dynamic> map) {
     return ConnectToTargetSqlSqlDbSyncTaskProperties(
-      clientData: map['clientData'] == null ? null : ((map['clientData'] as Map).cast<String, String>()).input(),
-      input: map['input'] == null ? null : (ConnectToTargetSqlSqlDbSyncTaskInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
+      clientData: map['clientData'] == null ? null : ((map['clientData']! as Map).cast<String, String>()).input(),
+      input: map['input'] == null ? null : (ConnectToTargetSqlSqlDbSyncTaskInput.fromMap((map['input']! as Map).cast<String, dynamic>())).input(),
       taskType: (map['taskType'] as String).input(),
     );
   }

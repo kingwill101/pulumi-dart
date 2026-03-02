@@ -64,15 +64,15 @@ class OSProfile {
 
   factory OSProfile.fromMap(Map<String, dynamic> map) {
     return OSProfile(
-      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword'] as String).input(),
-      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername'] as String).input(),
-      allowExtensionOperations: map['allowExtensionOperations'] == null ? null : (map['allowExtensionOperations'] as bool).input(),
-      computerName: map['computerName'] == null ? null : (map['computerName'] as String).input(),
-      customData: map['customData'] == null ? null : (map['customData'] as String).input(),
-      linuxConfiguration: map['linuxConfiguration'] == null ? null : (LinuxConfiguration.fromMap((map['linuxConfiguration'] as Map).cast<String, dynamic>())).input(),
-      requireGuestProvisionSignal: map['requireGuestProvisionSignal'] == null ? null : (map['requireGuestProvisionSignal'] as bool).input(),
-      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<VaultSecretGroup>(map['secrets'], (value) => VaultSecretGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      windowsConfiguration: map['windowsConfiguration'] == null ? null : (WindowsConfiguration.fromMap((map['windowsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword']! as String).input(),
+      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername']! as String).input(),
+      allowExtensionOperations: map['allowExtensionOperations'] == null ? null : (map['allowExtensionOperations']! as bool).input(),
+      computerName: map['computerName'] == null ? null : (map['computerName']! as String).input(),
+      customData: map['customData'] == null ? null : (map['customData']! as String).input(),
+      linuxConfiguration: map['linuxConfiguration'] == null ? null : (LinuxConfiguration.fromMap((map['linuxConfiguration']! as Map).cast<String, dynamic>())).input(),
+      requireGuestProvisionSignal: map['requireGuestProvisionSignal'] == null ? null : (map['requireGuestProvisionSignal']! as bool).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<VaultSecretGroup>(map['secrets']!, (value) => VaultSecretGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      windowsConfiguration: map['windowsConfiguration'] == null ? null : (WindowsConfiguration.fromMap((map['windowsConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

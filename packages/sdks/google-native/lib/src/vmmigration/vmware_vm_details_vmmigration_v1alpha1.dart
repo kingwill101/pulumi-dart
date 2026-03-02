@@ -77,18 +77,18 @@ class VmwareVmDetailsVmmigrationV1alpha1 {
 
   factory VmwareVmDetailsVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return VmwareVmDetailsVmmigrationV1alpha1(
-      committedStorage: map['committedStorage'] == null ? null : (map['committedStorage'] as String).input(),
-      committedStorageMb: map['committedStorageMb'] == null ? null : (map['committedStorageMb'] as String).input(),
-      cpuCount: map['cpuCount'] == null ? null : (map['cpuCount'] as int).input(),
-      datacenterDescription: map['datacenterDescription'] == null ? null : (map['datacenterDescription'] as String).input(),
-      datacenterId: map['datacenterId'] == null ? null : (map['datacenterId'] as String).input(),
-      diskCount: map['diskCount'] == null ? null : (map['diskCount'] as int).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      guestDescription: map['guestDescription'] == null ? null : (map['guestDescription'] as String).input(),
-      memoryMb: map['memoryMb'] == null ? null : (map['memoryMb'] as int).input(),
-      powerState: map['powerState'] == null ? null : (VmwareVmDetailsPowerStateVmmigrationV1alpha1.fromValue(map['powerState'] as String)).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
-      vmId: map['vmId'] == null ? null : (map['vmId'] as String).input(),
+      committedStorage: map['committedStorage'] == null ? null : (map['committedStorage']! as String).input(),
+      committedStorageMb: map['committedStorageMb'] == null ? null : (map['committedStorageMb']! as String).input(),
+      cpuCount: map['cpuCount'] == null ? null : (map['cpuCount']! as int).input(),
+      datacenterDescription: map['datacenterDescription'] == null ? null : (map['datacenterDescription']! as String).input(),
+      datacenterId: map['datacenterId'] == null ? null : (map['datacenterId']! as String).input(),
+      diskCount: map['diskCount'] == null ? null : (map['diskCount']! as int).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      guestDescription: map['guestDescription'] == null ? null : (map['guestDescription']! as String).input(),
+      memoryMb: map['memoryMb'] == null ? null : (map['memoryMb']! as int).input(),
+      powerState: map['powerState'] == null ? null : (VmwareVmDetailsPowerStateVmmigrationV1alpha1.fromValue(map['powerState']! as String)).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
+      vmId: map['vmId'] == null ? null : (map['vmId']! as String).input(),
     );
   }
 }

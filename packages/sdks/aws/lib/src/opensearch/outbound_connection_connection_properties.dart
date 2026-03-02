@@ -26,8 +26,8 @@ class OutboundConnectionConnectionProperties {
 
   factory OutboundConnectionConnectionProperties.fromMap(Map<String, dynamic> map) {
     return OutboundConnectionConnectionProperties(
-      crossClusterSearch: map['crossClusterSearch'] == null ? null : (OutboundConnectionConnectionPropertiesCrossClusterSearch.fromMap((map['crossClusterSearch'] as Map).cast<String, dynamic>())).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      crossClusterSearch: map['crossClusterSearch'] == null ? null : ((OutboundConnectionConnectionPropertiesCrossClusterSearch.fromMap((map['crossClusterSearch']! as Map).cast<String, dynamic>())).input()).input(),
+      endpoint: map['endpoint'] == null ? null : ((map['endpoint'] as String).input()).input(),
     );
   }
 }

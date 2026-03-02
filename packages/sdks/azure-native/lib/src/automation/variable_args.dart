@@ -55,12 +55,12 @@ class VariableArgs {
   factory VariableArgs.fromMap(Map<String, dynamic> map) {
     return VariableArgs(
       automationAccountName: (map['automationAccountName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      isEncrypted: map['isEncrypted'] == null ? null : (map['isEncrypted'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      isEncrypted: map['isEncrypted'] == null ? null : (map['isEncrypted']! as bool).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
-      variableName: map['variableName'] == null ? null : (map['variableName'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
+      variableName: map['variableName'] == null ? null : (map['variableName']! as String).input(),
     );
   }
 }

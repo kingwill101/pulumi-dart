@@ -56,14 +56,14 @@ class DedicatedHostState {
 
   factory DedicatedHostState.fromMap(Map<String, dynamic> map) {
     return DedicatedHostState(
-      autoReplaceOnFailure: map['autoReplaceOnFailure'] == null ? null : (map['autoReplaceOnFailure'] as bool).input(),
-      dedicatedHostGroupId: map['dedicatedHostGroupId'] == null ? null : (map['dedicatedHostGroupId'] as String).input(),
-      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      platformFaultDomain: map['platformFaultDomain'] == null ? null : (map['platformFaultDomain'] as int).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      autoReplaceOnFailure: map['autoReplaceOnFailure'] == null ? null : (map['autoReplaceOnFailure']! as bool).input(),
+      dedicatedHostGroupId: map['dedicatedHostGroupId'] == null ? null : (map['dedicatedHostGroupId']! as String).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      platformFaultDomain: map['platformFaultDomain'] == null ? null : (map['platformFaultDomain']! as int).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

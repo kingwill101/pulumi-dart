@@ -43,11 +43,11 @@ class NfsExportOptions {
 
   factory NfsExportOptions.fromMap(Map<String, dynamic> map) {
     return NfsExportOptions(
-      accessMode: map['accessMode'] == null ? null : (NfsExportOptionsAccessMode.fromValue(map['accessMode'] as String)).input(),
-      anonGid: map['anonGid'] == null ? null : (map['anonGid'] as String).input(),
-      anonUid: map['anonUid'] == null ? null : (map['anonUid'] as String).input(),
-      ipRanges: map['ipRanges'] == null ? null : ((map['ipRanges'] as List).cast<String>()).input(),
-      squashMode: map['squashMode'] == null ? null : (NfsExportOptionsSquashMode.fromValue(map['squashMode'] as String)).input(),
+      accessMode: map['accessMode'] == null ? null : (NfsExportOptionsAccessMode.fromValue(map['accessMode']! as String)).input(),
+      anonGid: map['anonGid'] == null ? null : (map['anonGid']! as String).input(),
+      anonUid: map['anonUid'] == null ? null : (map['anonUid']! as String).input(),
+      ipRanges: map['ipRanges'] == null ? null : ((map['ipRanges']! as List).cast<String>()).input(),
+      squashMode: map['squashMode'] == null ? null : (NfsExportOptionsSquashMode.fromValue(map['squashMode']! as String)).input(),
     );
   }
 }

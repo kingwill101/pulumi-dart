@@ -47,7 +47,7 @@ class GetGroupResult {
   factory GetGroupResult.fromMap(Map<String, dynamic> map) {
     return GetGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      eTag: map['eTag'] == null ? null : map['eTag'] as String,
+      eTag: map['eTag'] == null ? null : map['eTag']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       properties: GroupPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),

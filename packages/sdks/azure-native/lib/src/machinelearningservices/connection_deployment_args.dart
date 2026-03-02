@@ -50,9 +50,9 @@ class ConnectionDeploymentArgs {
   factory ConnectionDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionDeploymentArgs(
       connectionName: (map['connectionName'] as String).input(),
-      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName'] as String).input(),
+      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName']! as String).input(),
       properties: (ContentSafetyEndpointDeploymentResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      proxyApiVersion: map['proxyApiVersion'] == null ? null : (map['proxyApiVersion'] as String).input(),
+      proxyApiVersion: map['proxyApiVersion'] == null ? null : (map['proxyApiVersion']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );

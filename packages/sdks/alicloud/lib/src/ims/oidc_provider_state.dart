@@ -57,14 +57,14 @@ class OidcProviderState {
 
   factory OidcProviderState.fromMap(Map<String, dynamic> map) {
     return OidcProviderState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      clientIds: map['clientIds'] == null ? null : ((map['clientIds'] as List).cast<String>()).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fingerprints: map['fingerprints'] == null ? null : ((map['fingerprints'] as List).cast<String>()).input(),
-      issuanceLimitTime: map['issuanceLimitTime'] == null ? null : (map['issuanceLimitTime'] as int).input(),
-      issuerUrl: map['issuerUrl'] == null ? null : (map['issuerUrl'] as String).input(),
-      oidcProviderName: map['oidcProviderName'] == null ? null : (map['oidcProviderName'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      clientIds: map['clientIds'] == null ? null : ((map['clientIds']! as List).cast<String>()).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      fingerprints: map['fingerprints'] == null ? null : ((map['fingerprints']! as List).cast<String>()).input(),
+      issuanceLimitTime: map['issuanceLimitTime'] == null ? null : (map['issuanceLimitTime']! as int).input(),
+      issuerUrl: map['issuerUrl'] == null ? null : (map['issuerUrl']! as String).input(),
+      oidcProviderName: map['oidcProviderName'] == null ? null : (map['oidcProviderName']! as String).input(),
     );
   }
 }

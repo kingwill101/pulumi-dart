@@ -61,14 +61,14 @@ class BlueprintArgs {
 
   factory BlueprintArgs.fromMap(Map<String, dynamic> map) {
     return BlueprintArgs(
-      blueprintName: map['blueprintName'] == null ? null : (map['blueprintName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterDefinition>(map['parameters'], (value) => ParameterDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroups: map['resourceGroups'] == null ? null : (pulumi.Input.decodeMapValues<ResourceGroupDefinition>(map['resourceGroups'], (value) => ResourceGroupDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      blueprintName: map['blueprintName'] == null ? null : (map['blueprintName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterDefinition>(map['parameters']!, (value) => ParameterDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroups: map['resourceGroups'] == null ? null : (pulumi.Input.decodeMapValues<ResourceGroupDefinition>(map['resourceGroups']!, (value) => ResourceGroupDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceScope: (map['resourceScope'] as String).input(),
       targetScope: (map['targetScope'] as String).input(),
-      versions: map['versions'] == null ? null : (map['versions']).input(),
+      versions: map['versions'] == null ? null : (map['versions']!).input(),
     );
   }
 }

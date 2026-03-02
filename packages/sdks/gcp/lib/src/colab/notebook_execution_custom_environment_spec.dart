@@ -36,9 +36,9 @@ class NotebookExecutionCustomEnvironmentSpec {
 
   factory NotebookExecutionCustomEnvironmentSpec.fromMap(Map<String, dynamic> map) {
     return NotebookExecutionCustomEnvironmentSpec(
-      machineSpec: map['machineSpec'] == null ? null : (NotebookExecutionCustomEnvironmentSpecMachineSpec.fromMap((map['machineSpec'] as Map).cast<String, dynamic>())).input(),
-      networkSpec: map['networkSpec'] == null ? null : (NotebookExecutionCustomEnvironmentSpecNetworkSpec.fromMap((map['networkSpec'] as Map).cast<String, dynamic>())).input(),
-      persistentDiskSpec: map['persistentDiskSpec'] == null ? null : (NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec.fromMap((map['persistentDiskSpec'] as Map).cast<String, dynamic>())).input(),
+      machineSpec: map['machineSpec'] == null ? null : (NotebookExecutionCustomEnvironmentSpecMachineSpec.fromMap((map['machineSpec']! as Map).cast<String, dynamic>())).input(),
+      networkSpec: map['networkSpec'] == null ? null : (NotebookExecutionCustomEnvironmentSpecNetworkSpec.fromMap((map['networkSpec']! as Map).cast<String, dynamic>())).input(),
+      persistentDiskSpec: map['persistentDiskSpec'] == null ? null : (NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec.fromMap((map['persistentDiskSpec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

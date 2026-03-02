@@ -41,7 +41,7 @@ class FeaturestoreEntityContainerEntityArgs {
   factory FeaturestoreEntityContainerEntityArgs.fromMap(Map<String, dynamic> map) {
     return FeaturestoreEntityContainerEntityArgs(
       featurestoreEntityContainerProperties: (FeaturestoreEntityContainer.fromMap((map['featurestoreEntityContainerProperties'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );

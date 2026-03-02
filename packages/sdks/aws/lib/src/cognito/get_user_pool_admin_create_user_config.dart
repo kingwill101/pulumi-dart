@@ -32,7 +32,7 @@ class GetUserPoolAdminCreateUserConfig {
   factory GetUserPoolAdminCreateUserConfig.fromMap(Map<String, dynamic> map) {
     return GetUserPoolAdminCreateUserConfig(
       allowAdminCreateUserOnly: (map['allowAdminCreateUserOnly'] as bool).input(),
-      inviteMessageTemplates: (pulumi.Input.decodeList<GetUserPoolAdminCreateUserConfigInviteMessageTemplate>(map['inviteMessageTemplates'], (value) => GetUserPoolAdminCreateUserConfigInviteMessageTemplate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inviteMessageTemplates: (pulumi.Input.decodeList<GetUserPoolAdminCreateUserConfigInviteMessageTemplate>(map['inviteMessageTemplates']!, (value) => GetUserPoolAdminCreateUserConfigInviteMessageTemplate.fromMap((value as Map).cast<String, dynamic>()))).input(),
       unusedAccountValidityDays: (map['unusedAccountValidityDays'] as int).input(),
     );
   }

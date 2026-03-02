@@ -51,8 +51,8 @@ class GetApplicationResult {
   factory GetApplicationResult.fromMap(Map<String, dynamic> map) {
     return GetApplicationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       sourceResourceType: map['sourceResourceType'] as String,

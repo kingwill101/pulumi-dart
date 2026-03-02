@@ -106,23 +106,23 @@ class DatabaseMigrationPropertiesSqlVmResponse {
 
   factory DatabaseMigrationPropertiesSqlVmResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseMigrationPropertiesSqlVmResponse(
-      backupConfiguration: map['backupConfiguration'] == null ? null : (BackupConfigurationResponse.fromMap((map['backupConfiguration'] as Map).cast<String, dynamic>())).input(),
+      backupConfiguration: map['backupConfiguration'] == null ? null : (BackupConfigurationResponse.fromMap((map['backupConfiguration']! as Map).cast<String, dynamic>())).input(),
       endedOn: (map['endedOn'] as String).input(),
       kind: (map['kind'] as String).input(),
       migrationFailureError: (ErrorInfoResponse.fromMap((map['migrationFailureError'] as Map).cast<String, dynamic>())).input(),
-      migrationOperationId: map['migrationOperationId'] == null ? null : (map['migrationOperationId'] as String).input(),
-      migrationService: map['migrationService'] == null ? null : (map['migrationService'] as String).input(),
+      migrationOperationId: map['migrationOperationId'] == null ? null : (map['migrationOperationId']! as String).input(),
+      migrationService: map['migrationService'] == null ? null : (map['migrationService']! as String).input(),
       migrationStatus: (map['migrationStatus'] as String).input(),
       migrationStatusDetails: (MigrationStatusDetailsResponse.fromMap((map['migrationStatusDetails'] as Map).cast<String, dynamic>())).input(),
-      offlineConfiguration: map['offlineConfiguration'] == null ? null : (OfflineConfigurationResponse.fromMap((map['offlineConfiguration'] as Map).cast<String, dynamic>())).input(),
-      provisioningError: map['provisioningError'] == null ? null : (map['provisioningError'] as String).input(),
+      offlineConfiguration: map['offlineConfiguration'] == null ? null : (OfflineConfigurationResponse.fromMap((map['offlineConfiguration']! as Map).cast<String, dynamic>())).input(),
+      provisioningError: map['provisioningError'] == null ? null : (map['provisioningError']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      sourceDatabaseName: map['sourceDatabaseName'] == null ? null : (map['sourceDatabaseName'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      sourceDatabaseName: map['sourceDatabaseName'] == null ? null : (map['sourceDatabaseName']! as String).input(),
       sourceServerName: (map['sourceServerName'] as String).input(),
-      sourceSqlConnection: map['sourceSqlConnection'] == null ? null : (SqlConnectionInformationResponse.fromMap((map['sourceSqlConnection'] as Map).cast<String, dynamic>())).input(),
+      sourceSqlConnection: map['sourceSqlConnection'] == null ? null : (SqlConnectionInformationResponse.fromMap((map['sourceSqlConnection']! as Map).cast<String, dynamic>())).input(),
       startedOn: (map['startedOn'] as String).input(),
-      targetDatabaseCollation: map['targetDatabaseCollation'] == null ? null : (map['targetDatabaseCollation'] as String).input(),
+      targetDatabaseCollation: map['targetDatabaseCollation'] == null ? null : (map['targetDatabaseCollation']! as String).input(),
     );
   }
 }

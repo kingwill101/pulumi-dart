@@ -57,15 +57,15 @@ class GetFoldersResult {
 
   factory GetFoldersResult.fromMap(Map<String, dynamic> map) {
     return GetFoldersResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       folders: pulumi.Input.decodeList<GetFoldersFolder>(map['folders'], (value) => GetFoldersFolder.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      parentFolderId: map['parentFolderId'] == null ? null : map['parentFolderId'] as String,
-      queryKeyword: map['queryKeyword'] == null ? null : map['queryKeyword'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      parentFolderId: map['parentFolderId'] == null ? null : map['parentFolderId']! as String,
+      queryKeyword: map['queryKeyword'] == null ? null : map['queryKeyword']! as String,
     );
   }
 }

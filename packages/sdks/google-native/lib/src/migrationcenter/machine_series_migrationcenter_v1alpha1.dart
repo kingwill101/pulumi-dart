@@ -21,7 +21,7 @@ class MachineSeriesMigrationcenterV1alpha1 {
 
   factory MachineSeriesMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return MachineSeriesMigrationcenterV1alpha1(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
     );
   }
 }

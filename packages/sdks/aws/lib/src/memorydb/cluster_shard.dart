@@ -36,10 +36,10 @@ class ClusterShard {
 
   factory ClusterShard.fromMap(Map<String, dynamic> map) {
     return ClusterShard(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodes: map['nodes'] == null ? null : (pulumi.Input.decodeList<ClusterShardNode>(map['nodes'], (value) => ClusterShardNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      numNodes: map['numNodes'] == null ? null : (map['numNodes'] as int).input(),
-      slots: map['slots'] == null ? null : (map['slots'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      nodes: map['nodes'] == null ? null : ((pulumi.Input.decodeList<ClusterShardNode>(map['nodes']!, (value) => ClusterShardNode.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      numNodes: map['numNodes'] == null ? null : ((map['numNodes'] as int).input()).input(),
+      slots: map['slots'] == null ? null : ((map['slots'] as String).input()).input(),
     );
   }
 }

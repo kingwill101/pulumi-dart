@@ -123,21 +123,21 @@ class MulticastGroupConsumerActivationNetworkservicesState {
 
   factory MulticastGroupConsumerActivationNetworkservicesState.fromMap(Map<String, dynamic> map) {
     return MulticastGroupConsumerActivationNetworkservicesState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      logConfig: map['logConfig'] == null ? null : (MulticastGroupConsumerActivationLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())).input(),
-      multicastConsumerAssociation: map['multicastConsumerAssociation'] == null ? null : (map['multicastConsumerAssociation'] as String).input(),
-      multicastGroupConsumerActivationId: map['multicastGroupConsumerActivationId'] == null ? null : (map['multicastGroupConsumerActivationId'] as String).input(),
-      multicastGroupRangeActivation: map['multicastGroupRangeActivation'] == null ? null : (map['multicastGroupRangeActivation'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      states: map['states'] == null ? null : (pulumi.Input.decodeList<MulticastGroupConsumerActivationState>(map['states'], (value) => MulticastGroupConsumerActivationState.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      uniqueId: map['uniqueId'] == null ? null : (map['uniqueId'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      logConfig: map['logConfig'] == null ? null : (MulticastGroupConsumerActivationLogConfig.fromMap((map['logConfig']! as Map).cast<String, dynamic>())).input(),
+      multicastConsumerAssociation: map['multicastConsumerAssociation'] == null ? null : (map['multicastConsumerAssociation']! as String).input(),
+      multicastGroupConsumerActivationId: map['multicastGroupConsumerActivationId'] == null ? null : (map['multicastGroupConsumerActivationId']! as String).input(),
+      multicastGroupRangeActivation: map['multicastGroupRangeActivation'] == null ? null : (map['multicastGroupRangeActivation']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      states: map['states'] == null ? null : (pulumi.Input.decodeList<MulticastGroupConsumerActivationState>(map['states']!, (value) => MulticastGroupConsumerActivationState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uniqueId: map['uniqueId'] == null ? null : (map['uniqueId']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

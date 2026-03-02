@@ -25,7 +25,7 @@ class WorkgroupConfigurationMonitoringConfigurationManagedLoggingConfiguration {
   factory WorkgroupConfigurationMonitoringConfigurationManagedLoggingConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkgroupConfigurationMonitoringConfigurationManagedLoggingConfiguration(
       enabled: (map['enabled'] as bool).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : ((map['kmsKey'] as String).input()).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class LabelSelectorRequirement {
 
   factory LabelSelectorRequirement.fromMap(Map<String, dynamic> map) {
     return LabelSelectorRequirement(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class DeploymentWebApplicationFirewall {
   factory DeploymentWebApplicationFirewall.fromMap(Map<String, dynamic> map) {
     return DeploymentWebApplicationFirewall(
       activationStateEnabled: (map['activationStateEnabled'] as bool).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<DeploymentWebApplicationFirewallStatus>(map['statuses'], (value) => DeploymentWebApplicationFirewallStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<DeploymentWebApplicationFirewallStatus>(map['statuses']!, (value) => DeploymentWebApplicationFirewallStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

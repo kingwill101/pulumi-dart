@@ -43,7 +43,7 @@ class CostAllocationRulePropertiesResponse {
   factory CostAllocationRulePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CostAllocationRulePropertiesResponse(
       createdDate: (map['createdDate'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       details: (CostAllocationRuleDetailsResponse.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
       status: (map['status'] as String).input(),
       updatedDate: (map['updatedDate'] as String).input(),

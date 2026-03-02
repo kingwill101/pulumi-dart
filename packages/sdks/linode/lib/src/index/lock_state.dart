@@ -41,11 +41,11 @@ class LockState {
 
   factory LockState.fromMap(Map<String, dynamic> map) {
     return LockState(
-      entityId: map['entityId'] == null ? null : (map['entityId'] as int).input(),
-      entityLabel: map['entityLabel'] == null ? null : (map['entityLabel'] as String).input(),
-      entityType: map['entityType'] == null ? null : (map['entityType'] as String).input(),
-      entityUrl: map['entityUrl'] == null ? null : (map['entityUrl'] as String).input(),
-      lockType: map['lockType'] == null ? null : (map['lockType'] as String).input(),
+      entityId: map['entityId'] == null ? null : (map['entityId']! as int).input(),
+      entityLabel: map['entityLabel'] == null ? null : (map['entityLabel']! as String).input(),
+      entityType: map['entityType'] == null ? null : (map['entityType']! as String).input(),
+      entityUrl: map['entityUrl'] == null ? null : (map['entityUrl']! as String).input(),
+      lockType: map['lockType'] == null ? null : (map['lockType']! as String).input(),
     );
   }
 }

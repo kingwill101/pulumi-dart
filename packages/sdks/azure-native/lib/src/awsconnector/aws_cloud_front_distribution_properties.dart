@@ -38,10 +38,10 @@ class AwsCloudFrontDistributionProperties {
 
   factory AwsCloudFrontDistributionProperties.fromMap(Map<String, dynamic> map) {
     return AwsCloudFrontDistributionProperties(
-      distributionConfig: map['distributionConfig'] == null ? null : (DistributionConfig.fromMap((map['distributionConfig'] as Map).cast<String, dynamic>())).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      distributionConfig: map['distributionConfig'] == null ? null : (DistributionConfig.fromMap((map['distributionConfig']! as Map).cast<String, dynamic>())).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags']!, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -34,7 +34,7 @@ class EnvPodMonitorArgs {
 
   factory EnvPodMonitorArgs.fromMap(Map<String, dynamic> map) {
     return EnvPodMonitorArgs(
-      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang'] as String).input(),
+      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang']! as String).input(),
       configYaml: (map['configYaml'] as String).input(),
       environmentId: (map['environmentId'] as String).input(),
     );

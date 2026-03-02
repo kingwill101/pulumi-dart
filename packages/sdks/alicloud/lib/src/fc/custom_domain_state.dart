@@ -58,14 +58,14 @@ class CustomDomainState {
 
   factory CustomDomainState.fromMap(Map<String, dynamic> map) {
     return CustomDomainState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      certConfig: map['certConfig'] == null ? null : (CustomDomainCertConfig.fromMap((map['certConfig'] as Map).cast<String, dynamic>())).input(),
-      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      routeConfigs: map['routeConfigs'] == null ? null : (pulumi.Input.decodeList<CustomDomainRouteConfig>(map['routeConfigs'], (value) => CustomDomainRouteConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      certConfig: map['certConfig'] == null ? null : (CustomDomainCertConfig.fromMap((map['certConfig']! as Map).cast<String, dynamic>())).input(),
+      createdTime: map['createdTime'] == null ? null : (map['createdTime']! as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      routeConfigs: map['routeConfigs'] == null ? null : (pulumi.Input.decodeList<CustomDomainRouteConfig>(map['routeConfigs']!, (value) => CustomDomainRouteConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

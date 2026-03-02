@@ -34,9 +34,9 @@ class BackendAddressPoolPropertiesResponse {
 
   factory BackendAddressPoolPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BackendAddressPoolPropertiesResponse(
-      loadBalancerBackendAddresses: map['loadBalancerBackendAddresses'] == null ? null : (pulumi.Input.decodeList<LoadBalancerBackendAddressResponse>(map['loadBalancerBackendAddresses'], (value) => LoadBalancerBackendAddressResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      logicalNetwork: map['logicalNetwork'] == null ? null : (LogicalNetworkArmReferenceResponse.fromMap((map['logicalNetwork'] as Map).cast<String, dynamic>())).input(),
-      virtualNetwork: map['virtualNetwork'] == null ? null : (VirtualNetworkArmReferenceResponse.fromMap((map['virtualNetwork'] as Map).cast<String, dynamic>())).input(),
+      loadBalancerBackendAddresses: map['loadBalancerBackendAddresses'] == null ? null : (pulumi.Input.decodeList<LoadBalancerBackendAddressResponse>(map['loadBalancerBackendAddresses']!, (value) => LoadBalancerBackendAddressResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logicalNetwork: map['logicalNetwork'] == null ? null : (LogicalNetworkArmReferenceResponse.fromMap((map['logicalNetwork']! as Map).cast<String, dynamic>())).input(),
+      virtualNetwork: map['virtualNetwork'] == null ? null : (VirtualNetworkArmReferenceResponse.fromMap((map['virtualNetwork']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

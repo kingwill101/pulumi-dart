@@ -32,9 +32,9 @@ class VmwareIpBlock {
 
   factory VmwareIpBlock.fromMap(Map<String, dynamic> map) {
     return VmwareIpBlock(
-      gateway: map['gateway'] == null ? null : (map['gateway'] as String).input(),
-      ips: map['ips'] == null ? null : (pulumi.Input.decodeList<VmwareHostIp>(map['ips'], (value) => VmwareHostIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      netmask: map['netmask'] == null ? null : (map['netmask'] as String).input(),
+      gateway: map['gateway'] == null ? null : (map['gateway']! as String).input(),
+      ips: map['ips'] == null ? null : (pulumi.Input.decodeList<VmwareHostIp>(map['ips']!, (value) => VmwareHostIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      netmask: map['netmask'] == null ? null : (map['netmask']! as String).input(),
     );
   }
 }

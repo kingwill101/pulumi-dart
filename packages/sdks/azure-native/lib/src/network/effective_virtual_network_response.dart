@@ -31,9 +31,9 @@ class EffectiveVirtualNetworkResponse {
 
   factory EffectiveVirtualNetworkResponse.fromMap(Map<String, dynamic> map) {
     return EffectiveVirtualNetworkResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      membershipType: map['membershipType'] == null ? null : (map['membershipType'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      membershipType: map['membershipType'] == null ? null : (map['membershipType']! as String).input(),
     );
   }
 }

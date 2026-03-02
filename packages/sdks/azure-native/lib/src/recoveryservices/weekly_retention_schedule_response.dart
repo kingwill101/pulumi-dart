@@ -32,9 +32,9 @@ class WeeklyRetentionScheduleResponse {
 
   factory WeeklyRetentionScheduleResponse.fromMap(Map<String, dynamic> map) {
     return WeeklyRetentionScheduleResponse(
-      daysOfTheWeek: map['daysOfTheWeek'] == null ? null : ((map['daysOfTheWeek'] as List).cast<String>()).input(),
-      retentionDuration: map['retentionDuration'] == null ? null : (RetentionDurationResponse.fromMap((map['retentionDuration'] as Map).cast<String, dynamic>())).input(),
-      retentionTimes: map['retentionTimes'] == null ? null : ((map['retentionTimes'] as List).cast<String>()).input(),
+      daysOfTheWeek: map['daysOfTheWeek'] == null ? null : ((map['daysOfTheWeek']! as List).cast<String>()).input(),
+      retentionDuration: map['retentionDuration'] == null ? null : (RetentionDurationResponse.fromMap((map['retentionDuration']! as Map).cast<String, dynamic>())).input(),
+      retentionTimes: map['retentionTimes'] == null ? null : ((map['retentionTimes']! as List).cast<String>()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class JsonFieldResponse {
 
   factory JsonFieldResponse.fromMap(Map<String, dynamic> map) {
     return JsonFieldResponse(
-      sourceField: map['sourceField'] == null ? null : (map['sourceField'] as String).input(),
+      sourceField: map['sourceField'] == null ? null : (map['sourceField']! as String).input(),
     );
   }
 }

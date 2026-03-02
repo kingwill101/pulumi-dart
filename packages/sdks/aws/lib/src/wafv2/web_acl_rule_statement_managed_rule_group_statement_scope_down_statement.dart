@@ -93,19 +93,19 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatement {
 
   factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementScopeDownStatement(
-      andStatement: map['andStatement'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatement.fromMap((map['andStatement'] as Map).cast<String, dynamic>())).input(),
-      asnMatchStatement: map['asnMatchStatement'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementAsnMatchStatement.fromMap((map['asnMatchStatement'] as Map).cast<String, dynamic>())).input(),
-      byteMatchStatement: map['byteMatchStatement'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatement.fromMap((map['byteMatchStatement'] as Map).cast<String, dynamic>())).input(),
-      geoMatchStatement: map['geoMatchStatement'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatement.fromMap((map['geoMatchStatement'] as Map).cast<String, dynamic>())).input(),
-      ipSetReferenceStatement: map['ipSetReferenceStatement'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementIpSetReferenceStatement.fromMap((map['ipSetReferenceStatement'] as Map).cast<String, dynamic>())).input(),
-      labelMatchStatement: map['labelMatchStatement'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementLabelMatchStatement.fromMap((map['labelMatchStatement'] as Map).cast<String, dynamic>())).input(),
-      notStatement: map['notStatement'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatement.fromMap((map['notStatement'] as Map).cast<String, dynamic>())).input(),
-      orStatement: map['orStatement'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatement.fromMap((map['orStatement'] as Map).cast<String, dynamic>())).input(),
-      regexMatchStatement: map['regexMatchStatement'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexMatchStatement.fromMap((map['regexMatchStatement'] as Map).cast<String, dynamic>())).input(),
-      regexPatternSetReferenceStatement: map['regexPatternSetReferenceStatement'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatement.fromMap((map['regexPatternSetReferenceStatement'] as Map).cast<String, dynamic>())).input(),
-      sizeConstraintStatement: map['sizeConstraintStatement'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatement.fromMap((map['sizeConstraintStatement'] as Map).cast<String, dynamic>())).input(),
-      sqliMatchStatement: map['sqliMatchStatement'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatement.fromMap((map['sqliMatchStatement'] as Map).cast<String, dynamic>())).input(),
-      xssMatchStatement: map['xssMatchStatement'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatement.fromMap((map['xssMatchStatement'] as Map).cast<String, dynamic>())).input(),
+      andStatement: map['andStatement'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatement.fromMap((map['andStatement']! as Map).cast<String, dynamic>())).input()).input(),
+      asnMatchStatement: map['asnMatchStatement'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementAsnMatchStatement.fromMap((map['asnMatchStatement']! as Map).cast<String, dynamic>())).input()).input(),
+      byteMatchStatement: map['byteMatchStatement'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatement.fromMap((map['byteMatchStatement']! as Map).cast<String, dynamic>())).input()).input(),
+      geoMatchStatement: map['geoMatchStatement'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatement.fromMap((map['geoMatchStatement']! as Map).cast<String, dynamic>())).input()).input(),
+      ipSetReferenceStatement: map['ipSetReferenceStatement'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementIpSetReferenceStatement.fromMap((map['ipSetReferenceStatement']! as Map).cast<String, dynamic>())).input()).input(),
+      labelMatchStatement: map['labelMatchStatement'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementLabelMatchStatement.fromMap((map['labelMatchStatement']! as Map).cast<String, dynamic>())).input()).input(),
+      notStatement: map['notStatement'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatement.fromMap((map['notStatement']! as Map).cast<String, dynamic>())).input()).input(),
+      orStatement: map['orStatement'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatement.fromMap((map['orStatement']! as Map).cast<String, dynamic>())).input()).input(),
+      regexMatchStatement: map['regexMatchStatement'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexMatchStatement.fromMap((map['regexMatchStatement']! as Map).cast<String, dynamic>())).input()).input(),
+      regexPatternSetReferenceStatement: map['regexPatternSetReferenceStatement'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatement.fromMap((map['regexPatternSetReferenceStatement']! as Map).cast<String, dynamic>())).input()).input(),
+      sizeConstraintStatement: map['sizeConstraintStatement'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatement.fromMap((map['sizeConstraintStatement']! as Map).cast<String, dynamic>())).input()).input(),
+      sqliMatchStatement: map['sqliMatchStatement'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatement.fromMap((map['sqliMatchStatement']! as Map).cast<String, dynamic>())).input()).input(),
+      xssMatchStatement: map['xssMatchStatement'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatement.fromMap((map['xssMatchStatement']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

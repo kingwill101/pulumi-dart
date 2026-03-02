@@ -33,9 +33,9 @@ class PreventionDiscoveryConfigActionTagResources {
 
   factory PreventionDiscoveryConfigActionTagResources.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigActionTagResources(
-      lowerDataRiskToLow: map['lowerDataRiskToLow'] == null ? null : (map['lowerDataRiskToLow'] as bool).input(),
-      profileGenerationsToTags: map['profileGenerationsToTags'] == null ? null : ((map['profileGenerationsToTags'] as List).cast<String>()).input(),
-      tagConditions: map['tagConditions'] == null ? null : (pulumi.Input.decodeList<PreventionDiscoveryConfigActionTagResourcesTagCondition>(map['tagConditions'], (value) => PreventionDiscoveryConfigActionTagResourcesTagCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lowerDataRiskToLow: map['lowerDataRiskToLow'] == null ? null : (map['lowerDataRiskToLow']! as bool).input(),
+      profileGenerationsToTags: map['profileGenerationsToTags'] == null ? null : ((map['profileGenerationsToTags']! as List).cast<String>()).input(),
+      tagConditions: map['tagConditions'] == null ? null : (pulumi.Input.decodeList<PreventionDiscoveryConfigActionTagResourcesTagCondition>(map['tagConditions']!, (value) => PreventionDiscoveryConfigActionTagResourcesTagCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class UserPoolSmsConfiguration {
     return UserPoolSmsConfiguration(
       externalId: (map['externalId'] as String).input(),
       snsCallerArn: (map['snsCallerArn'] as String).input(),
-      snsRegion: map['snsRegion'] == null ? null : (map['snsRegion'] as String).input(),
+      snsRegion: map['snsRegion'] == null ? null : ((map['snsRegion'] as String).input()).input(),
     );
   }
 }

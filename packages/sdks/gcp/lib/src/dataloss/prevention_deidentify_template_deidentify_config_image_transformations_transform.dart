@@ -39,10 +39,10 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform 
 
   factory PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform(
-      allInfoTypes: map['allInfoTypes'] == null ? null : ((map['allInfoTypes'] as Map).cast<String, dynamic>()).input(),
-      allText: map['allText'] == null ? null : ((map['allText'] as Map).cast<String, dynamic>()).input(),
-      redactionColor: map['redactionColor'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColor.fromMap((map['redactionColor'] as Map).cast<String, dynamic>())).input(),
-      selectedInfoTypes: map['selectedInfoTypes'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypes.fromMap((map['selectedInfoTypes'] as Map).cast<String, dynamic>())).input(),
+      allInfoTypes: map['allInfoTypes'] == null ? null : ((map['allInfoTypes']! as Map).cast<String, dynamic>()).input(),
+      allText: map['allText'] == null ? null : ((map['allText']! as Map).cast<String, dynamic>()).input(),
+      redactionColor: map['redactionColor'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColor.fromMap((map['redactionColor']! as Map).cast<String, dynamic>())).input(),
+      selectedInfoTypes: map['selectedInfoTypes'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypes.fromMap((map['selectedInfoTypes']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

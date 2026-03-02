@@ -22,7 +22,7 @@ class TemplateServiceState {
 
   factory TemplateServiceState.fromMap(Map<String, dynamic> map) {
     return TemplateServiceState(
-      serviceStatus: map['serviceStatus'] == null ? null : (map['serviceStatus'] as int).input(),
+      serviceStatus: map['serviceStatus'] == null ? null : (map['serviceStatus']! as int).input(),
     );
   }
 }

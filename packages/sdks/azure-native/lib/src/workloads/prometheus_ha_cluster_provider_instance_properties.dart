@@ -52,13 +52,13 @@ class PrometheusHaClusterProviderInstanceProperties {
 
   factory PrometheusHaClusterProviderInstanceProperties.fromMap(Map<String, dynamic> map) {
     return PrometheusHaClusterProviderInstanceProperties(
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      prometheusUrl: map['prometheusUrl'] == null ? null : (map['prometheusUrl'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      prometheusUrl: map['prometheusUrl'] == null ? null : (map['prometheusUrl']! as String).input(),
       providerType: (map['providerType'] as String).input(),
-      sid: map['sid'] == null ? null : (map['sid'] as String).input(),
-      sslCertificateUri: map['sslCertificateUri'] == null ? null : (map['sslCertificateUri'] as String).input(),
-      sslPreference: map['sslPreference'] == null ? null : (map['sslPreference'] as String).input(),
+      sid: map['sid'] == null ? null : (map['sid']! as String).input(),
+      sslCertificateUri: map['sslCertificateUri'] == null ? null : (map['sslCertificateUri']! as String).input(),
+      sslPreference: map['sslPreference'] == null ? null : (map['sslPreference']! as String).input(),
     );
   }
 }

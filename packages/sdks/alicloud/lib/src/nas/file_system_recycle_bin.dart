@@ -40,11 +40,11 @@ class FileSystemRecycleBin {
 
   factory FileSystemRecycleBin.fromMap(Map<String, dynamic> map) {
     return FileSystemRecycleBin(
-      enableTime: map['enableTime'] == null ? null : (map['enableTime'] as String).input(),
-      reservedDays: map['reservedDays'] == null ? null : (map['reservedDays'] as int).input(),
-      secondarySize: map['secondarySize'] == null ? null : (map['secondarySize'] as int).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      enableTime: map['enableTime'] == null ? null : (map['enableTime']! as String).input(),
+      reservedDays: map['reservedDays'] == null ? null : (map['reservedDays']! as int).input(),
+      secondarySize: map['secondarySize'] == null ? null : (map['secondarySize']! as int).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

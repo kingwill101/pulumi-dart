@@ -50,12 +50,12 @@ class ChainArgs {
 
   factory ChainArgs.fromMap(Map<String, dynamic> map) {
     return ChainArgs(
-      chainConfigs: map['chainConfigs'] == null ? null : (pulumi.Input.decodeList<ChainChainConfig>(map['chainConfigs'], (value) => ChainChainConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      chainConfigs: map['chainConfigs'] == null ? null : (pulumi.Input.decodeList<ChainChainConfig>(map['chainConfigs']!, (value) => ChainChainConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       chainName: (map['chainName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      repoName: map['repoName'] == null ? null : (map['repoName'] as String).input(),
-      repoNamespaceName: map['repoNamespaceName'] == null ? null : (map['repoNamespaceName'] as String).input(),
+      repoName: map['repoName'] == null ? null : (map['repoName']! as String).input(),
+      repoNamespaceName: map['repoNamespaceName'] == null ? null : (map['repoNamespaceName']! as String).input(),
     );
   }
 }

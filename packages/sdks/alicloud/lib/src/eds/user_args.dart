@@ -46,9 +46,9 @@ class UserArgs {
     return UserArgs(
       email: (map['email'] as String).input(),
       endUserId: (map['endUserId'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      phone: map['phone'] == null ? null : (map['phone'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      phone: map['phone'] == null ? null : (map['phone']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

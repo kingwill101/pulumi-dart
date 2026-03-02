@@ -28,8 +28,8 @@ class DatabaseType {
 
   factory DatabaseType.fromMap(Map<String, dynamic> map) {
     return DatabaseType(
-      engine: map['engine'] == null ? null : (DatabaseTypeEngine.fromValue(map['engine'] as String)).input(),
-      provider: map['provider'] == null ? null : (DatabaseTypeProvider.fromValue(map['provider'] as String)).input(),
+      engine: map['engine'] == null ? null : (DatabaseTypeEngine.fromValue(map['engine']! as String)).input(),
+      provider: map['provider'] == null ? null : (DatabaseTypeProvider.fromValue(map['provider']! as String)).input(),
     );
   }
 }

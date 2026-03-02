@@ -33,8 +33,8 @@ class GetSshKeysArgs {
 
   factory GetSshKeysArgs.fromMap(Map<String, dynamic> map) {
     return GetSshKeysArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetSshKeysFilter>(map['filters'], (value) => GetSshKeysFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetSshKeysSort>(map['sorts'], (value) => GetSshKeysSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetSshKeysFilter>(map['filters']!, (value) => GetSshKeysFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetSshKeysSort>(map['sorts']!, (value) => GetSshKeysSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

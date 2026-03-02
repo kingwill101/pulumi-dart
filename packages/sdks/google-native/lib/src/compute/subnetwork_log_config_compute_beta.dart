@@ -48,12 +48,12 @@ class SubnetworkLogConfigComputeBeta {
 
   factory SubnetworkLogConfigComputeBeta.fromMap(Map<String, dynamic> map) {
     return SubnetworkLogConfigComputeBeta(
-      aggregationInterval: map['aggregationInterval'] == null ? null : (SubnetworkLogConfigAggregationIntervalComputeBeta.fromValue(map['aggregationInterval'] as String)).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      filterExpr: map['filterExpr'] == null ? null : (map['filterExpr'] as String).input(),
-      flowSampling: map['flowSampling'] == null ? null : (map['flowSampling'] as double).input(),
-      metadata: map['metadata'] == null ? null : (SubnetworkLogConfigMetadataComputeBeta.fromValue(map['metadata'] as String)).input(),
-      metadataFields: map['metadataFields'] == null ? null : ((map['metadataFields'] as List).cast<String>()).input(),
+      aggregationInterval: map['aggregationInterval'] == null ? null : (SubnetworkLogConfigAggregationIntervalComputeBeta.fromValue(map['aggregationInterval']! as String)).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      filterExpr: map['filterExpr'] == null ? null : (map['filterExpr']! as String).input(),
+      flowSampling: map['flowSampling'] == null ? null : (map['flowSampling']! as double).input(),
+      metadata: map['metadata'] == null ? null : (SubnetworkLogConfigMetadataComputeBeta.fromValue(map['metadata']! as String)).input(),
+      metadataFields: map['metadataFields'] == null ? null : ((map['metadataFields']! as List).cast<String>()).input(),
     );
   }
 }

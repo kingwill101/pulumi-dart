@@ -68,15 +68,15 @@ class OrchestratedVirtualMachineScaleSetOsProfileLinuxConfiguration {
 
   factory OrchestratedVirtualMachineScaleSetOsProfileLinuxConfiguration.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetOsProfileLinuxConfiguration(
-      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword'] as String).input(),
-      adminSshKeys: map['adminSshKeys'] == null ? null : (pulumi.Input.decodeList<OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationAdminSshKey>(map['adminSshKeys'], (value) => OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationAdminSshKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword']! as String).input(),
+      adminSshKeys: map['adminSshKeys'] == null ? null : (pulumi.Input.decodeList<OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationAdminSshKey>(map['adminSshKeys']!, (value) => OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationAdminSshKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
       adminUsername: (map['adminUsername'] as String).input(),
-      computerNamePrefix: map['computerNamePrefix'] == null ? null : (map['computerNamePrefix'] as String).input(),
-      disablePasswordAuthentication: map['disablePasswordAuthentication'] == null ? null : (map['disablePasswordAuthentication'] as bool).input(),
-      patchAssessmentMode: map['patchAssessmentMode'] == null ? null : (map['patchAssessmentMode'] as String).input(),
-      patchMode: map['patchMode'] == null ? null : (map['patchMode'] as String).input(),
-      provisionVmAgent: map['provisionVmAgent'] == null ? null : (map['provisionVmAgent'] as bool).input(),
-      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecret>(map['secrets'], (value) => OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      computerNamePrefix: map['computerNamePrefix'] == null ? null : (map['computerNamePrefix']! as String).input(),
+      disablePasswordAuthentication: map['disablePasswordAuthentication'] == null ? null : (map['disablePasswordAuthentication']! as bool).input(),
+      patchAssessmentMode: map['patchAssessmentMode'] == null ? null : (map['patchAssessmentMode']! as String).input(),
+      patchMode: map['patchMode'] == null ? null : (map['patchMode']! as String).input(),
+      provisionVmAgent: map['provisionVmAgent'] == null ? null : (map['provisionVmAgent']! as bool).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecret>(map['secrets']!, (value) => OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

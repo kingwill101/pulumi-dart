@@ -21,7 +21,7 @@ class VirtualNetworksPropertiesVmware {
 
   factory VirtualNetworksPropertiesVmware.fromMap(Map<String, dynamic> map) {
     return VirtualNetworksPropertiesVmware(
-      segmentName: map['segmentName'] == null ? null : (map['segmentName'] as String).input(),
+      segmentName: map['segmentName'] == null ? null : (map['segmentName']! as String).input(),
     );
   }
 }

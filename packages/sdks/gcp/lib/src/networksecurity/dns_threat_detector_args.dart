@@ -54,12 +54,12 @@ class DnsThreatDetectorArgs {
 
   factory DnsThreatDetectorArgs.fromMap(Map<String, dynamic> map) {
     return DnsThreatDetectorArgs(
-      excludedNetworks: map['excludedNetworks'] == null ? null : ((map['excludedNetworks'] as List).cast<String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      threatDetectorProvider: map['threatDetectorProvider'] == null ? null : (map['threatDetectorProvider'] as String).input(),
+      excludedNetworks: map['excludedNetworks'] == null ? null : ((map['excludedNetworks']! as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      threatDetectorProvider: map['threatDetectorProvider'] == null ? null : (map['threatDetectorProvider']! as String).input(),
     );
   }
 }

@@ -43,11 +43,11 @@ class GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings {
 
   factory GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings(
-      dataStoreConnections: map['dataStoreConnections'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1DataStoreConnection>(map['dataStoreConnections'], (value) => GoogleCloudDialogflowCxV3beta1DataStoreConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      targetFlow: map['targetFlow'] == null ? null : (map['targetFlow'] as String).input(),
-      targetPage: map['targetPage'] == null ? null : (map['targetPage'] as String).input(),
-      triggerFulfillment: map['triggerFulfillment'] == null ? null : (GoogleCloudDialogflowCxV3beta1Fulfillment.fromMap((map['triggerFulfillment'] as Map).cast<String, dynamic>())).input(),
+      dataStoreConnections: map['dataStoreConnections'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1DataStoreConnection>(map['dataStoreConnections']!, (value) => GoogleCloudDialogflowCxV3beta1DataStoreConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      targetFlow: map['targetFlow'] == null ? null : (map['targetFlow']! as String).input(),
+      targetPage: map['targetPage'] == null ? null : (map['targetPage']! as String).input(),
+      triggerFulfillment: map['triggerFulfillment'] == null ? null : (GoogleCloudDialogflowCxV3beta1Fulfillment.fromMap((map['triggerFulfillment']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -61,15 +61,15 @@ class TemplateState {
 
   factory TemplateState.fromMap(Map<String, dynamic> map) {
     return TemplateState(
-      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion'] as String).input(),
-      globalQuota: map['globalQuota'] == null ? null : (map['globalQuota'] as bool).input(),
-      quotaCode: map['quotaCode'] == null ? null : (map['quotaCode'] as String).input(),
-      quotaName: map['quotaName'] == null ? null : (map['quotaName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceCode: map['serviceCode'] == null ? null : (map['serviceCode'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as double).input(),
+      awsRegion: map['awsRegion'] == null ? null : ((map['awsRegion'] as String).input()).input(),
+      globalQuota: map['globalQuota'] == null ? null : ((map['globalQuota'] as bool).input()).input(),
+      quotaCode: map['quotaCode'] == null ? null : ((map['quotaCode'] as String).input()).input(),
+      quotaName: map['quotaName'] == null ? null : ((map['quotaName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serviceCode: map['serviceCode'] == null ? null : ((map['serviceCode'] as String).input()).input(),
+      serviceName: map['serviceName'] == null ? null : ((map['serviceName'] as String).input()).input(),
+      unit: map['unit'] == null ? null : ((map['unit'] as String).input()).input(),
+      value: map['value'] == null ? null : ((map['value'] as double).input()).input(),
     );
   }
 }

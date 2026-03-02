@@ -38,9 +38,9 @@ class DbServerMetadataResponse {
   factory DbServerMetadataResponse.fromMap(Map<String, dynamic> map) {
     return DbServerMetadataResponse(
       location: (map['location'] as String).input(),
-      sku: map['sku'] == null ? null : (ServerSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      storageMb: map['storageMb'] == null ? null : (map['storageMb'] as int).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      sku: map['sku'] == null ? null : (ServerSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      storageMb: map['storageMb'] == null ? null : (map['storageMb']! as int).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig {
 
   factory GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig(
-      permissions: map['permissions'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2ClientPermissions.fromMap((map['permissions'] as Map).cast<String, dynamic>())).input(),
+      permissions: map['permissions'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2ClientPermissions.fromMap((map['permissions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

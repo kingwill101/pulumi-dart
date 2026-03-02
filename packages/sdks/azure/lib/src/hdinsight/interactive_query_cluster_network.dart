@@ -27,8 +27,8 @@ class InteractiveQueryClusterNetwork {
 
   factory InteractiveQueryClusterNetwork.fromMap(Map<String, dynamic> map) {
     return InteractiveQueryClusterNetwork(
-      connectionDirection: map['connectionDirection'] == null ? null : (map['connectionDirection'] as String).input(),
-      privateLinkEnabled: map['privateLinkEnabled'] == null ? null : (map['privateLinkEnabled'] as bool).input(),
+      connectionDirection: map['connectionDirection'] == null ? null : (map['connectionDirection']! as String).input(),
+      privateLinkEnabled: map['privateLinkEnabled'] == null ? null : (map['privateLinkEnabled']! as bool).input(),
     );
   }
 }

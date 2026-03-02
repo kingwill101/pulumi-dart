@@ -55,14 +55,14 @@ class ContainerNetworkData {
 
   factory ContainerNetworkData.fromMap(Map<String, dynamic> map) {
     return ContainerNetworkData(
-      gateway: map['gateway'] == null ? null : (map['gateway'] as String).input(),
-      globalIpv6Address: map['globalIpv6Address'] == null ? null : (map['globalIpv6Address'] as String).input(),
-      globalIpv6PrefixLength: map['globalIpv6PrefixLength'] == null ? null : (map['globalIpv6PrefixLength'] as int).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      ipPrefixLength: map['ipPrefixLength'] == null ? null : (map['ipPrefixLength'] as int).input(),
-      ipv6Gateway: map['ipv6Gateway'] == null ? null : (map['ipv6Gateway'] as String).input(),
-      macAddress: map['macAddress'] == null ? null : (map['macAddress'] as String).input(),
-      networkName: map['networkName'] == null ? null : (map['networkName'] as String).input(),
+      gateway: map['gateway'] == null ? null : (map['gateway']! as String).input(),
+      globalIpv6Address: map['globalIpv6Address'] == null ? null : (map['globalIpv6Address']! as String).input(),
+      globalIpv6PrefixLength: map['globalIpv6PrefixLength'] == null ? null : (map['globalIpv6PrefixLength']! as int).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      ipPrefixLength: map['ipPrefixLength'] == null ? null : (map['ipPrefixLength']! as int).input(),
+      ipv6Gateway: map['ipv6Gateway'] == null ? null : (map['ipv6Gateway']! as String).input(),
+      macAddress: map['macAddress'] == null ? null : (map['macAddress']! as String).input(),
+      networkName: map['networkName'] == null ? null : (map['networkName']! as String).input(),
     );
   }
 }

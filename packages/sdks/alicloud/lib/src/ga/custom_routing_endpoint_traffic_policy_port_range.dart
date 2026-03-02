@@ -25,8 +25,8 @@ class CustomRoutingEndpointTrafficPolicyPortRange {
 
   factory CustomRoutingEndpointTrafficPolicyPortRange.fromMap(Map<String, dynamic> map) {
     return CustomRoutingEndpointTrafficPolicyPortRange(
-      fromPort: map['fromPort'] == null ? null : (map['fromPort'] as int).input(),
-      toPort: map['toPort'] == null ? null : (map['toPort'] as int).input(),
+      fromPort: map['fromPort'] == null ? null : (map['fromPort']! as int).input(),
+      toPort: map['toPort'] == null ? null : (map['toPort']! as int).input(),
     );
   }
 }

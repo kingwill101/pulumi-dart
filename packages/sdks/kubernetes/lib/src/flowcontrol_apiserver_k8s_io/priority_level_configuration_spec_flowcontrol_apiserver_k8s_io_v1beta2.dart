@@ -33,8 +33,8 @@ class PriorityLevelConfigurationSpecFlowcontrolApiserverK8sIoV1beta2 {
 
   factory PriorityLevelConfigurationSpecFlowcontrolApiserverK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return PriorityLevelConfigurationSpecFlowcontrolApiserverK8sIoV1beta2(
-      exempt: map['exempt'] == null ? null : (ExemptPriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta2.fromMap((map['exempt'] as Map).cast<String, dynamic>())).input(),
-      limited: map['limited'] == null ? null : (LimitedPriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta2.fromMap((map['limited'] as Map).cast<String, dynamic>())).input(),
+      exempt: map['exempt'] == null ? null : (ExemptPriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta2.fromMap((map['exempt']! as Map).cast<String, dynamic>())).input(),
+      limited: map['limited'] == null ? null : (LimitedPriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta2.fromMap((map['limited']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

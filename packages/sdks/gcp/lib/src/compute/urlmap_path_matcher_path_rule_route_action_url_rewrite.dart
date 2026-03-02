@@ -29,8 +29,8 @@ class URLMapPathMatcherPathRuleRouteActionUrlRewrite {
 
   factory URLMapPathMatcherPathRuleRouteActionUrlRewrite.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherPathRuleRouteActionUrlRewrite(
-      hostRewrite: map['hostRewrite'] == null ? null : (map['hostRewrite'] as String).input(),
-      pathPrefixRewrite: map['pathPrefixRewrite'] == null ? null : (map['pathPrefixRewrite'] as String).input(),
+      hostRewrite: map['hostRewrite'] == null ? null : (map['hostRewrite']! as String).input(),
+      pathPrefixRewrite: map['pathPrefixRewrite'] == null ? null : (map['pathPrefixRewrite']! as String).input(),
     );
   }
 }

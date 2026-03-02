@@ -47,12 +47,12 @@ class HttpRetryPolicy {
 
   factory HttpRetryPolicy.fromMap(Map<String, dynamic> map) {
     return HttpRetryPolicy(
-      errors: map['errors'] == null ? null : ((map['errors'] as List).cast<String>()).input(),
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<HeaderMatch>(map['headers'], (value) => HeaderMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      httpStatusCodes: map['httpStatusCodes'] == null ? null : ((map['httpStatusCodes'] as List).cast<int>()).input(),
-      initialDelayInMilliseconds: map['initialDelayInMilliseconds'] == null ? null : (map['initialDelayInMilliseconds'] as double).input(),
-      maxIntervalInMilliseconds: map['maxIntervalInMilliseconds'] == null ? null : (map['maxIntervalInMilliseconds'] as double).input(),
-      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries'] as int).input(),
+      errors: map['errors'] == null ? null : ((map['errors']! as List).cast<String>()).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<HeaderMatch>(map['headers']!, (value) => HeaderMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      httpStatusCodes: map['httpStatusCodes'] == null ? null : ((map['httpStatusCodes']! as List).cast<int>()).input(),
+      initialDelayInMilliseconds: map['initialDelayInMilliseconds'] == null ? null : (map['initialDelayInMilliseconds']! as double).input(),
+      maxIntervalInMilliseconds: map['maxIntervalInMilliseconds'] == null ? null : (map['maxIntervalInMilliseconds']! as double).input(),
+      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries']! as int).input(),
     );
   }
 }

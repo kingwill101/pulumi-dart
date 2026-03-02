@@ -61,15 +61,15 @@ class SubscriptionPolicyRemediationState {
 
   factory SubscriptionPolicyRemediationState.fromMap(Map<String, dynamic> map) {
     return SubscriptionPolicyRemediationState(
-      failurePercentage: map['failurePercentage'] == null ? null : (map['failurePercentage'] as double).input(),
-      locationFilters: map['locationFilters'] == null ? null : ((map['locationFilters'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parallelDeployments: map['parallelDeployments'] == null ? null : (map['parallelDeployments'] as int).input(),
-      policyAssignmentId: map['policyAssignmentId'] == null ? null : (map['policyAssignmentId'] as String).input(),
-      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : (map['policyDefinitionReferenceId'] as String).input(),
-      resourceCount: map['resourceCount'] == null ? null : (map['resourceCount'] as int).input(),
-      resourceDiscoveryMode: map['resourceDiscoveryMode'] == null ? null : (map['resourceDiscoveryMode'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      failurePercentage: map['failurePercentage'] == null ? null : (map['failurePercentage']! as double).input(),
+      locationFilters: map['locationFilters'] == null ? null : ((map['locationFilters']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parallelDeployments: map['parallelDeployments'] == null ? null : (map['parallelDeployments']! as int).input(),
+      policyAssignmentId: map['policyAssignmentId'] == null ? null : (map['policyAssignmentId']! as String).input(),
+      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : (map['policyDefinitionReferenceId']! as String).input(),
+      resourceCount: map['resourceCount'] == null ? null : (map['resourceCount']! as int).input(),
+      resourceDiscoveryMode: map['resourceDiscoveryMode'] == null ? null : (map['resourceDiscoveryMode']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

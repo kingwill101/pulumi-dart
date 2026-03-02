@@ -102,22 +102,22 @@ class LkeClusterState {
 
   factory LkeClusterState.fromMap(Map<String, dynamic> map) {
     return LkeClusterState(
-      apiEndpoints: map['apiEndpoints'] == null ? null : ((map['apiEndpoints'] as List).cast<String>()).input(),
-      aplEnabled: map['aplEnabled'] == null ? null : (map['aplEnabled'] as bool).input(),
-      controlPlane: map['controlPlane'] == null ? null : (LkeClusterControlPlane.fromMap((map['controlPlane'] as Map).cast<String, dynamic>())).input(),
-      dashboardUrl: map['dashboardUrl'] == null ? null : (map['dashboardUrl'] as String).input(),
-      externalPoolTags: map['externalPoolTags'] == null ? null : ((map['externalPoolTags'] as List).cast<String>()).input(),
-      k8sVersion: map['k8sVersion'] == null ? null : (map['k8sVersion'] as String).input(),
-      kubeconfig: map['kubeconfig'] == null ? null : (map['kubeconfig'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      pools: map['pools'] == null ? null : (pulumi.Input.decodeList<LkeClusterPool>(map['pools'], (value) => LkeClusterPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      stackType: map['stackType'] == null ? null : (map['stackType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as int).input(),
+      apiEndpoints: map['apiEndpoints'] == null ? null : ((map['apiEndpoints']! as List).cast<String>()).input(),
+      aplEnabled: map['aplEnabled'] == null ? null : (map['aplEnabled']! as bool).input(),
+      controlPlane: map['controlPlane'] == null ? null : (LkeClusterControlPlane.fromMap((map['controlPlane']! as Map).cast<String, dynamic>())).input(),
+      dashboardUrl: map['dashboardUrl'] == null ? null : (map['dashboardUrl']! as String).input(),
+      externalPoolTags: map['externalPoolTags'] == null ? null : ((map['externalPoolTags']! as List).cast<String>()).input(),
+      k8sVersion: map['k8sVersion'] == null ? null : (map['k8sVersion']! as String).input(),
+      kubeconfig: map['kubeconfig'] == null ? null : (map['kubeconfig']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      pools: map['pools'] == null ? null : (pulumi.Input.decodeList<LkeClusterPool>(map['pools']!, (value) => LkeClusterPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      stackType: map['stackType'] == null ? null : (map['stackType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as int).input(),
     );
   }
 }

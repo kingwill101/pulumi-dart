@@ -64,15 +64,15 @@ class TransitRouterRouteEntryState {
 
   factory TransitRouterRouteEntryState.fromMap(Map<String, dynamic> map) {
     return TransitRouterRouteEntryState(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      transitRouterRouteEntryDescription: map['transitRouterRouteEntryDescription'] == null ? null : (map['transitRouterRouteEntryDescription'] as String).input(),
-      transitRouterRouteEntryDestinationCidrBlock: map['transitRouterRouteEntryDestinationCidrBlock'] == null ? null : (map['transitRouterRouteEntryDestinationCidrBlock'] as String).input(),
-      transitRouterRouteEntryId: map['transitRouterRouteEntryId'] == null ? null : (map['transitRouterRouteEntryId'] as String).input(),
-      transitRouterRouteEntryName: map['transitRouterRouteEntryName'] == null ? null : (map['transitRouterRouteEntryName'] as String).input(),
-      transitRouterRouteEntryNextHopId: map['transitRouterRouteEntryNextHopId'] == null ? null : (map['transitRouterRouteEntryNextHopId'] as String).input(),
-      transitRouterRouteEntryNextHopType: map['transitRouterRouteEntryNextHopType'] == null ? null : (map['transitRouterRouteEntryNextHopType'] as String).input(),
-      transitRouterRouteTableId: map['transitRouterRouteTableId'] == null ? null : (map['transitRouterRouteTableId'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      transitRouterRouteEntryDescription: map['transitRouterRouteEntryDescription'] == null ? null : (map['transitRouterRouteEntryDescription']! as String).input(),
+      transitRouterRouteEntryDestinationCidrBlock: map['transitRouterRouteEntryDestinationCidrBlock'] == null ? null : (map['transitRouterRouteEntryDestinationCidrBlock']! as String).input(),
+      transitRouterRouteEntryId: map['transitRouterRouteEntryId'] == null ? null : (map['transitRouterRouteEntryId']! as String).input(),
+      transitRouterRouteEntryName: map['transitRouterRouteEntryName'] == null ? null : (map['transitRouterRouteEntryName']! as String).input(),
+      transitRouterRouteEntryNextHopId: map['transitRouterRouteEntryNextHopId'] == null ? null : (map['transitRouterRouteEntryNextHopId']! as String).input(),
+      transitRouterRouteEntryNextHopType: map['transitRouterRouteEntryNextHopType'] == null ? null : (map['transitRouterRouteEntryNextHopType']! as String).input(),
+      transitRouterRouteTableId: map['transitRouterRouteTableId'] == null ? null : (map['transitRouterRouteTableId']! as String).input(),
     );
   }
 }

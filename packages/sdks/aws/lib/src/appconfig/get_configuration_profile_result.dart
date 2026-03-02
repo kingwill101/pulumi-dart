@@ -90,7 +90,7 @@ class GetConfigurationProfileResult {
       retrievalRoleArn: map['retrievalRoleArn'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       type: map['type'] as String,
-      validators: pulumi.Input.decodeList<GetConfigurationProfileValidator>(map['validators'], (value) => GetConfigurationProfileValidator.fromMap((value as Map).cast<String, dynamic>())),
+      validators: pulumi.Input.decodeList<GetConfigurationProfileValidator>(map['validators']!, (value) => GetConfigurationProfileValidator.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

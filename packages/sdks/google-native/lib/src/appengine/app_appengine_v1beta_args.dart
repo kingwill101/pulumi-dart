@@ -78,17 +78,17 @@ class AppAppengineV1betaArgs {
 
   factory AppAppengineV1betaArgs.fromMap(Map<String, dynamic> map) {
     return AppAppengineV1betaArgs(
-      authDomain: map['authDomain'] == null ? null : (map['authDomain'] as String).input(),
-      databaseType: map['databaseType'] == null ? null : (AppDatabaseTypeAppengineV1beta.fromValue(map['databaseType'] as String)).input(),
-      defaultCookieExpiration: map['defaultCookieExpiration'] == null ? null : (map['defaultCookieExpiration'] as String).input(),
-      dispatchRules: map['dispatchRules'] == null ? null : (pulumi.Input.decodeList<UrlDispatchRuleAppengineV1beta>(map['dispatchRules'], (value) => UrlDispatchRuleAppengineV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      featureSettings: map['featureSettings'] == null ? null : (FeatureSettingsAppengineV1beta.fromMap((map['featureSettings'] as Map).cast<String, dynamic>())).input(),
-      generatedCustomerMetadata: map['generatedCustomerMetadata'] == null ? null : ((map['generatedCustomerMetadata'] as Map).cast<String, String>()).input(),
-      iap: map['iap'] == null ? null : (IdentityAwareProxyAppengineV1beta.fromMap((map['iap'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      servingStatus: map['servingStatus'] == null ? null : (AppServingStatusAppengineV1beta.fromValue(map['servingStatus'] as String)).input(),
+      authDomain: map['authDomain'] == null ? null : (map['authDomain']! as String).input(),
+      databaseType: map['databaseType'] == null ? null : (AppDatabaseTypeAppengineV1beta.fromValue(map['databaseType']! as String)).input(),
+      defaultCookieExpiration: map['defaultCookieExpiration'] == null ? null : (map['defaultCookieExpiration']! as String).input(),
+      dispatchRules: map['dispatchRules'] == null ? null : (pulumi.Input.decodeList<UrlDispatchRuleAppengineV1beta>(map['dispatchRules']!, (value) => UrlDispatchRuleAppengineV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      featureSettings: map['featureSettings'] == null ? null : (FeatureSettingsAppengineV1beta.fromMap((map['featureSettings']! as Map).cast<String, dynamic>())).input(),
+      generatedCustomerMetadata: map['generatedCustomerMetadata'] == null ? null : ((map['generatedCustomerMetadata']! as Map).cast<String, String>()).input(),
+      iap: map['iap'] == null ? null : (IdentityAwareProxyAppengineV1beta.fromMap((map['iap']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      servingStatus: map['servingStatus'] == null ? null : (AppServingStatusAppengineV1beta.fromValue(map['servingStatus']! as String)).input(),
     );
   }
 }

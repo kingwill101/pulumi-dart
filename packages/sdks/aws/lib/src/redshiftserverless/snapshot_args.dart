@@ -40,8 +40,8 @@ class SnapshotArgs {
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
       namespaceName: (map['namespaceName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as int).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : ((map['retentionPeriod'] as int).input()).input(),
       snapshotName: (map['snapshotName'] as String).input(),
     );
   }

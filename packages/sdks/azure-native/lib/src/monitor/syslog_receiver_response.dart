@@ -27,7 +27,7 @@ class SyslogReceiverResponse {
   factory SyslogReceiverResponse.fromMap(Map<String, dynamic> map) {
     return SyslogReceiverResponse(
       endpoint: (map['endpoint'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
     );
   }
 }

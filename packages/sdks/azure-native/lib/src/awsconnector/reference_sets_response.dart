@@ -22,7 +22,7 @@ class ReferenceSetsResponse {
 
   factory ReferenceSetsResponse.fromMap(Map<String, dynamic> map) {
     return ReferenceSetsResponse(
-      ipSetReferences: map['ipSetReferences'] == null ? null : (pulumi.Input.decodeMapValues<IPSetReferenceResponse>(map['ipSetReferences'], (value) => IPSetReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipSetReferences: map['ipSetReferences'] == null ? null : (pulumi.Input.decodeMapValues<IPSetReferenceResponse>(map['ipSetReferences']!, (value) => IPSetReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

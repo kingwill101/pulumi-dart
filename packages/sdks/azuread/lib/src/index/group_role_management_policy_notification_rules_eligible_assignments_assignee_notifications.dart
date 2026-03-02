@@ -30,7 +30,7 @@ class GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotif
 
   factory GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications.fromMap(Map<String, dynamic> map) {
     return GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications(
-      additionalRecipients: map['additionalRecipients'] == null ? null : ((map['additionalRecipients'] as List).cast<String>()).input(),
+      additionalRecipients: map['additionalRecipients'] == null ? null : ((map['additionalRecipients']! as List).cast<String>()).input(),
       defaultRecipients: (map['defaultRecipients'] as bool).input(),
       notificationLevel: (map['notificationLevel'] as String).input(),
     );

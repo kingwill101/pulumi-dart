@@ -27,8 +27,8 @@ class NodeSelectorTerm {
 
   factory NodeSelectorTerm.fromMap(Map<String, dynamic> map) {
     return NodeSelectorTerm(
-      matchExpressions: map['matchExpressions'] == null ? null : (pulumi.Input.decodeList<NodeSelectorRequirement>(map['matchExpressions'], (value) => NodeSelectorRequirement.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matchFields: map['matchFields'] == null ? null : (pulumi.Input.decodeList<NodeSelectorRequirement>(map['matchFields'], (value) => NodeSelectorRequirement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchExpressions: map['matchExpressions'] == null ? null : (pulumi.Input.decodeList<NodeSelectorRequirement>(map['matchExpressions']!, (value) => NodeSelectorRequirement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchFields: map['matchFields'] == null ? null : (pulumi.Input.decodeList<NodeSelectorRequirement>(map['matchFields']!, (value) => NodeSelectorRequirement.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

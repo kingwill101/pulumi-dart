@@ -28,7 +28,7 @@ class GetConnectivityTestNetworkmanagementV1beta1Args {
   factory GetConnectivityTestNetworkmanagementV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetConnectivityTestNetworkmanagementV1beta1Args(
       connectivityTestId: (map['connectivityTestId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

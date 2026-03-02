@@ -21,7 +21,7 @@ class ContentLink {
 
   factory ContentLink.fromMap(Map<String, dynamic> map) {
     return ContentLink(
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class FleetspaceProperties {
 
   factory FleetspaceProperties.fromMap(Map<String, dynamic> map) {
     return FleetspaceProperties(
-      capacityMax: map['capacityMax'] == null ? null : (map['capacityMax'] as int).input(),
-      mainPrincipal: map['mainPrincipal'] == null ? null : (MainPrincipal.fromMap((map['mainPrincipal'] as Map).cast<String, dynamic>())).input(),
+      capacityMax: map['capacityMax'] == null ? null : (map['capacityMax']! as int).input(),
+      mainPrincipal: map['mainPrincipal'] == null ? null : (MainPrincipal.fromMap((map['mainPrincipal']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

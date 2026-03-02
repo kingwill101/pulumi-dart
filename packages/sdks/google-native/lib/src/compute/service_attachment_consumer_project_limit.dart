@@ -30,9 +30,9 @@ class ServiceAttachmentConsumerProjectLimit {
 
   factory ServiceAttachmentConsumerProjectLimit.fromMap(Map<String, dynamic> map) {
     return ServiceAttachmentConsumerProjectLimit(
-      connectionLimit: map['connectionLimit'] == null ? null : (map['connectionLimit'] as int).input(),
-      networkUrl: map['networkUrl'] == null ? null : (map['networkUrl'] as String).input(),
-      projectIdOrNum: map['projectIdOrNum'] == null ? null : (map['projectIdOrNum'] as String).input(),
+      connectionLimit: map['connectionLimit'] == null ? null : (map['connectionLimit']! as int).input(),
+      networkUrl: map['networkUrl'] == null ? null : (map['networkUrl']! as String).input(),
+      projectIdOrNum: map['projectIdOrNum'] == null ? null : (map['projectIdOrNum']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class RemoteAccessResponse {
 
   factory RemoteAccessResponse.fromMap(Map<String, dynamic> map) {
     return RemoteAccessResponse(
-      ec2SshKey: map['ec2SshKey'] == null ? null : (map['ec2SshKey'] as String).input(),
-      sourceSecurityGroups: map['sourceSecurityGroups'] == null ? null : ((map['sourceSecurityGroups'] as List).cast<String>()).input(),
+      ec2SshKey: map['ec2SshKey'] == null ? null : (map['ec2SshKey']! as String).input(),
+      sourceSecurityGroups: map['sourceSecurityGroups'] == null ? null : ((map['sourceSecurityGroups']! as List).cast<String>()).input(),
     );
   }
 }

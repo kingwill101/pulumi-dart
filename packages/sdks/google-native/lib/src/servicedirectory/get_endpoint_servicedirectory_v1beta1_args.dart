@@ -42,7 +42,7 @@ class GetEndpointServicedirectoryV1beta1Args {
       endpointId: (map['endpointId'] as String).input(),
       location: (map['location'] as String).input(),
       namespaceId: (map['namespaceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serviceId: (map['serviceId'] as String).input(),
     );
   }

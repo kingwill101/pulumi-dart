@@ -36,10 +36,10 @@ class GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec 
 
   factory GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      linkedResource: map['linkedResource'] == null ? null : (map['linkedResource'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      linkedResource: map['linkedResource'] == null ? null : (map['linkedResource']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

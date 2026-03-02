@@ -38,8 +38,8 @@ class GetForwardingRulesResult {
   factory GetForwardingRulesResult.fromMap(Map<String, dynamic> map) {
     return GetForwardingRulesResult(
       id: map['id'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
+      region: map['region'] == null ? null : map['region']! as String,
       rules: pulumi.Input.decodeList<GetForwardingRulesRule>(map['rules'], (value) => GetForwardingRulesRule.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

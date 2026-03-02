@@ -27,8 +27,8 @@ class CustomResourceSubresourcesPatch {
 
   factory CustomResourceSubresourcesPatch.fromMap(Map<String, dynamic> map) {
     return CustomResourceSubresourcesPatch(
-      scale: map['scale'] == null ? null : (CustomResourceSubresourceScalePatch.fromMap((map['scale'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status']).input(),
+      scale: map['scale'] == null ? null : (CustomResourceSubresourceScalePatch.fromMap((map['scale']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']!).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class OrchestratedVirtualMachineScaleSetPriorityMix {
 
   factory OrchestratedVirtualMachineScaleSetPriorityMix.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetPriorityMix(
-      baseRegularCount: map['baseRegularCount'] == null ? null : (map['baseRegularCount'] as int).input(),
-      regularPercentageAboveBase: map['regularPercentageAboveBase'] == null ? null : (map['regularPercentageAboveBase'] as int).input(),
+      baseRegularCount: map['baseRegularCount'] == null ? null : (map['baseRegularCount']! as int).input(),
+      regularPercentageAboveBase: map['regularPercentageAboveBase'] == null ? null : (map['regularPercentageAboveBase']! as int).input(),
     );
   }
 }

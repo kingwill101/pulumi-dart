@@ -50,7 +50,7 @@ class ProjectCustomModuleArgs {
       customConfig: (ProjectCustomModuleCustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())).input(),
       displayName: (map['displayName'] as String).input(),
       enablementState: (map['enablementState'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

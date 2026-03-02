@@ -32,9 +32,9 @@ class InstanceGceSetupVmImage {
 
   factory InstanceGceSetupVmImage.fromMap(Map<String, dynamic> map) {
     return InstanceGceSetupVmImage(
-      family: map['family'] == null ? null : (map['family'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      family: map['family'] == null ? null : (map['family']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class AccessLogSetting {
 
   factory AccessLogSetting.fromMap(Map<String, dynamic> map) {
     return AccessLogSetting(
-      destinationArn: map['destinationArn'] == null ? null : (map['destinationArn'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
+      destinationArn: map['destinationArn'] == null ? null : (map['destinationArn']! as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
     );
   }
 }

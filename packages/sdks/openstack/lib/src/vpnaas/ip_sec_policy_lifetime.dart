@@ -25,8 +25,8 @@ class IpSecPolicyLifetime {
 
   factory IpSecPolicyLifetime.fromMap(Map<String, dynamic> map) {
     return IpSecPolicyLifetime(
-      units: map['units'] == null ? null : (map['units'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as int).input(),
+      units: map['units'] == null ? null : (map['units']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as int).input(),
     );
   }
 }

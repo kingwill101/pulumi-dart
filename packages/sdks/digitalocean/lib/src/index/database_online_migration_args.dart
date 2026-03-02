@@ -41,8 +41,8 @@ class DatabaseOnlineMigrationArgs {
   factory DatabaseOnlineMigrationArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseOnlineMigrationArgs(
       clusterId: (map['clusterId'] as String).input(),
-      disableSsl: map['disableSsl'] == null ? null : (map['disableSsl'] as bool).input(),
-      ignoreDbs: map['ignoreDbs'] == null ? null : ((map['ignoreDbs'] as List).cast<String>()).input(),
+      disableSsl: map['disableSsl'] == null ? null : (map['disableSsl']! as bool).input(),
+      ignoreDbs: map['ignoreDbs'] == null ? null : ((map['ignoreDbs']! as List).cast<String>()).input(),
       source: (DatabaseOnlineMigrationSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }

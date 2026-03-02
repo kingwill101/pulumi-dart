@@ -66,14 +66,14 @@ class DefinitionArgs {
 
   factory DefinitionArgs.fromMap(Map<String, dynamic> map) {
     return DefinitionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
+      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId']! as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']! as String).input(),
       mode: (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
-      policyRule: map['policyRule'] == null ? null : (map['policyRule'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']! as String).input(),
+      policyRule: map['policyRule'] == null ? null : (map['policyRule']! as String).input(),
       policyType: (map['policyType'] as String).input(),
     );
   }

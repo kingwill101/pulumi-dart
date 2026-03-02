@@ -51,12 +51,12 @@ class GetGroupArgs {
 
   factory GetGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      includeTransitiveMembers: map['includeTransitiveMembers'] == null ? null : (map['includeTransitiveMembers'] as bool).input(),
-      mailEnabled: map['mailEnabled'] == null ? null : (map['mailEnabled'] as bool).input(),
-      mailNickname: map['mailNickname'] == null ? null : (map['mailNickname'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      securityEnabled: map['securityEnabled'] == null ? null : (map['securityEnabled'] as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      includeTransitiveMembers: map['includeTransitiveMembers'] == null ? null : (map['includeTransitiveMembers']! as bool).input(),
+      mailEnabled: map['mailEnabled'] == null ? null : (map['mailEnabled']! as bool).input(),
+      mailNickname: map['mailNickname'] == null ? null : (map['mailNickname']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      securityEnabled: map['securityEnabled'] == null ? null : (map['securityEnabled']! as bool).input(),
     );
   }
 }

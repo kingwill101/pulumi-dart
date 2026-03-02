@@ -42,11 +42,11 @@ class PlanWorkflowStepParallelConfigStepCustomActionLambdaConfig {
 
   factory PlanWorkflowStepParallelConfigStepCustomActionLambdaConfig.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepParallelConfigStepCustomActionLambdaConfig(
-      lambdas: map['lambdas'] == null ? null : (pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigLambda>(map['lambdas'], (value) => PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigLambda.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lambdas: map['lambdas'] == null ? null : ((pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigLambda>(map['lambdas']!, (value) => PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigLambda.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       regionToRun: (map['regionToRun'] as String).input(),
       retryIntervalMinutes: (map['retryIntervalMinutes'] as double).input(),
-      timeoutMinutes: map['timeoutMinutes'] == null ? null : (map['timeoutMinutes'] as int).input(),
-      ungracefuls: map['ungracefuls'] == null ? null : (pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigUngraceful>(map['ungracefuls'], (value) => PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigUngraceful.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeoutMinutes: map['timeoutMinutes'] == null ? null : ((map['timeoutMinutes'] as int).input()).input(),
+      ungracefuls: map['ungracefuls'] == null ? null : ((pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigUngraceful>(map['ungracefuls']!, (value) => PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigUngraceful.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

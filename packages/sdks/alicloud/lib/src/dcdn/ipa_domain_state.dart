@@ -42,11 +42,11 @@ class IpaDomainState {
 
   factory IpaDomainState.fromMap(Map<String, dynamic> map) {
     return IpaDomainState(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<IpaDomainSource>(map['sources'], (value) => IpaDomainSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<IpaDomainSource>(map['sources']!, (value) => IpaDomainSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

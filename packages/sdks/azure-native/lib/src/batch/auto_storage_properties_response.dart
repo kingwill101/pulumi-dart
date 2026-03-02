@@ -37,9 +37,9 @@ class AutoStoragePropertiesResponse {
 
   factory AutoStoragePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AutoStoragePropertiesResponse(
-      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode']! as String).input(),
       lastKeySync: (map['lastKeySync'] as String).input(),
-      nodeIdentityReference: map['nodeIdentityReference'] == null ? null : (ComputeNodeIdentityReferenceResponse.fromMap((map['nodeIdentityReference'] as Map).cast<String, dynamic>())).input(),
+      nodeIdentityReference: map['nodeIdentityReference'] == null ? null : (ComputeNodeIdentityReferenceResponse.fromMap((map['nodeIdentityReference']! as Map).cast<String, dynamic>())).input(),
       storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }

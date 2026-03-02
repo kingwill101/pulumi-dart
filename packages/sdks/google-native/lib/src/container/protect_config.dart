@@ -28,8 +28,8 @@ class ProtectConfig {
 
   factory ProtectConfig.fromMap(Map<String, dynamic> map) {
     return ProtectConfig(
-      workloadConfig: map['workloadConfig'] == null ? null : (WorkloadConfig.fromMap((map['workloadConfig'] as Map).cast<String, dynamic>())).input(),
-      workloadVulnerabilityMode: map['workloadVulnerabilityMode'] == null ? null : (ProtectConfigWorkloadVulnerabilityMode.fromValue(map['workloadVulnerabilityMode'] as String)).input(),
+      workloadConfig: map['workloadConfig'] == null ? null : (WorkloadConfig.fromMap((map['workloadConfig']! as Map).cast<String, dynamic>())).input(),
+      workloadVulnerabilityMode: map['workloadVulnerabilityMode'] == null ? null : (ProtectConfigWorkloadVulnerabilityMode.fromValue(map['workloadVulnerabilityMode']! as String)).input(),
     );
   }
 }

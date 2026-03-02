@@ -32,9 +32,9 @@ class APIGroupList {
 
   factory APIGroupList.fromMap(Map<String, dynamic> map) {
     return APIGroupList(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
       groups: (pulumi.Input.decodeList<APIGroup>(map['groups'], (value) => APIGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
     );
   }
 }

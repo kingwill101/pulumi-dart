@@ -21,7 +21,7 @@ class EdgeCluster {
 
   factory EdgeCluster.fromMap(Map<String, dynamic> map) {
     return EdgeCluster(
-      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink'] as String).input(),
+      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink']! as String).input(),
     );
   }
 }

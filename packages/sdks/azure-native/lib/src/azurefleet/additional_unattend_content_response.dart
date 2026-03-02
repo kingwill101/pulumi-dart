@@ -35,9 +35,9 @@ class AdditionalUnattendContentResponse {
 
   factory AdditionalUnattendContentResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalUnattendContentResponse(
-      componentName: map['componentName'] == null ? null : (map['componentName'] as String).input(),
-      passName: map['passName'] == null ? null : (map['passName'] as String).input(),
-      settingName: map['settingName'] == null ? null : (map['settingName'] as String).input(),
+      componentName: map['componentName'] == null ? null : (map['componentName']! as String).input(),
+      passName: map['passName'] == null ? null : (map['passName']! as String).input(),
+      settingName: map['settingName'] == null ? null : (map['settingName']! as String).input(),
     );
   }
 }

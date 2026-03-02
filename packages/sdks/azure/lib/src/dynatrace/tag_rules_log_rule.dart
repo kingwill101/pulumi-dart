@@ -36,10 +36,10 @@ class TagRulesLogRule {
 
   factory TagRulesLogRule.fromMap(Map<String, dynamic> map) {
     return TagRulesLogRule(
-      filteringTags: map['filteringTags'] == null ? null : (pulumi.Input.decodeList<TagRulesLogRuleFilteringTag>(map['filteringTags'], (value) => TagRulesLogRuleFilteringTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sendActivityLogsEnabled: map['sendActivityLogsEnabled'] == null ? null : (map['sendActivityLogsEnabled'] as bool).input(),
-      sendAzureActiveDirectoryLogsEnabled: map['sendAzureActiveDirectoryLogsEnabled'] == null ? null : (map['sendAzureActiveDirectoryLogsEnabled'] as bool).input(),
-      sendSubscriptionLogsEnabled: map['sendSubscriptionLogsEnabled'] == null ? null : (map['sendSubscriptionLogsEnabled'] as bool).input(),
+      filteringTags: map['filteringTags'] == null ? null : (pulumi.Input.decodeList<TagRulesLogRuleFilteringTag>(map['filteringTags']!, (value) => TagRulesLogRuleFilteringTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sendActivityLogsEnabled: map['sendActivityLogsEnabled'] == null ? null : (map['sendActivityLogsEnabled']! as bool).input(),
+      sendAzureActiveDirectoryLogsEnabled: map['sendAzureActiveDirectoryLogsEnabled'] == null ? null : (map['sendAzureActiveDirectoryLogsEnabled']! as bool).input(),
+      sendSubscriptionLogsEnabled: map['sendSubscriptionLogsEnabled'] == null ? null : (map['sendSubscriptionLogsEnabled']! as bool).input(),
     );
   }
 }

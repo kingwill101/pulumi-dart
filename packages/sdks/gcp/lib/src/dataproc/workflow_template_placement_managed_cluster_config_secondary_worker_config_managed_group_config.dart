@@ -25,8 +25,8 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedG
 
   factory WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig(
-      instanceGroupManagerName: map['instanceGroupManagerName'] == null ? null : (map['instanceGroupManagerName'] as String).input(),
-      instanceTemplateName: map['instanceTemplateName'] == null ? null : (map['instanceTemplateName'] as String).input(),
+      instanceGroupManagerName: map['instanceGroupManagerName'] == null ? null : (map['instanceGroupManagerName']! as String).input(),
+      instanceTemplateName: map['instanceTemplateName'] == null ? null : (map['instanceTemplateName']! as String).input(),
     );
   }
 }

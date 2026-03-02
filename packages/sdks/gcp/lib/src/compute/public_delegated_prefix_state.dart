@@ -105,19 +105,19 @@ class PublicDelegatedPrefixState {
 
   factory PublicDelegatedPrefixState.fromMap(Map<String, dynamic> map) {
     return PublicDelegatedPrefixState(
-      allocatablePrefixLength: map['allocatablePrefixLength'] == null ? null : (map['allocatablePrefixLength'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enableEnhancedIpv4Allocation: map['enableEnhancedIpv4Allocation'] == null ? null : (map['enableEnhancedIpv4Allocation'] as bool).input(),
-      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange'] as String).input(),
-      ipv6AccessType: map['ipv6AccessType'] == null ? null : (map['ipv6AccessType'] as String).input(),
-      isLiveMigration: map['isLiveMigration'] == null ? null : (map['isLiveMigration'] as bool).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentPrefix: map['parentPrefix'] == null ? null : (map['parentPrefix'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      publicDelegatedSubPrefixs: map['publicDelegatedSubPrefixs'] == null ? null : (pulumi.Input.decodeList<PublicDelegatedPrefixPublicDelegatedSubPrefix>(map['publicDelegatedSubPrefixs'], (value) => PublicDelegatedPrefixPublicDelegatedSubPrefix.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      allocatablePrefixLength: map['allocatablePrefixLength'] == null ? null : (map['allocatablePrefixLength']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enableEnhancedIpv4Allocation: map['enableEnhancedIpv4Allocation'] == null ? null : (map['enableEnhancedIpv4Allocation']! as bool).input(),
+      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange']! as String).input(),
+      ipv6AccessType: map['ipv6AccessType'] == null ? null : (map['ipv6AccessType']! as String).input(),
+      isLiveMigration: map['isLiveMigration'] == null ? null : (map['isLiveMigration']! as bool).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parentPrefix: map['parentPrefix'] == null ? null : (map['parentPrefix']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      publicDelegatedSubPrefixs: map['publicDelegatedSubPrefixs'] == null ? null : (pulumi.Input.decodeList<PublicDelegatedPrefixPublicDelegatedSubPrefix>(map['publicDelegatedSubPrefixs']!, (value) => PublicDelegatedPrefixPublicDelegatedSubPrefix.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
     );
   }
 }

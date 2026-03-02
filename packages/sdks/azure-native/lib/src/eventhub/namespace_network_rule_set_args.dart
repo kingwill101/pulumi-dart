@@ -56,13 +56,13 @@ class NamespaceNetworkRuleSetArgs {
 
   factory NamespaceNetworkRuleSetArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceNetworkRuleSetArgs(
-      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction'] as String).input(),
-      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<NWRuleSetIpRules>(map['ipRules'], (value) => NWRuleSetIpRules.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction']! as String).input(),
+      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<NWRuleSetIpRules>(map['ipRules']!, (value) => NWRuleSetIpRules.fromMap((value as Map).cast<String, dynamic>()))).input(),
       namespaceName: (map['namespaceName'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      trustedServiceAccessEnabled: map['trustedServiceAccessEnabled'] == null ? null : (map['trustedServiceAccessEnabled'] as bool).input(),
-      virtualNetworkRules: map['virtualNetworkRules'] == null ? null : (pulumi.Input.decodeList<NWRuleSetVirtualNetworkRules>(map['virtualNetworkRules'], (value) => NWRuleSetVirtualNetworkRules.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      trustedServiceAccessEnabled: map['trustedServiceAccessEnabled'] == null ? null : (map['trustedServiceAccessEnabled']! as bool).input(),
+      virtualNetworkRules: map['virtualNetworkRules'] == null ? null : (pulumi.Input.decodeList<NWRuleSetVirtualNetworkRules>(map['virtualNetworkRules']!, (value) => NWRuleSetVirtualNetworkRules.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

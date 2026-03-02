@@ -34,9 +34,9 @@ class BlockPublicAccessConfigurationState {
 
   factory BlockPublicAccessConfigurationState.fromMap(Map<String, dynamic> map) {
     return BlockPublicAccessConfigurationState(
-      blockPublicSecurityGroupRules: map['blockPublicSecurityGroupRules'] == null ? null : (map['blockPublicSecurityGroupRules'] as bool).input(),
-      permittedPublicSecurityGroupRuleRanges: map['permittedPublicSecurityGroupRuleRanges'] == null ? null : (pulumi.Input.decodeList<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>(map['permittedPublicSecurityGroupRuleRanges'], (value) => BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      blockPublicSecurityGroupRules: map['blockPublicSecurityGroupRules'] == null ? null : ((map['blockPublicSecurityGroupRules'] as bool).input()).input(),
+      permittedPublicSecurityGroupRuleRanges: map['permittedPublicSecurityGroupRuleRanges'] == null ? null : ((pulumi.Input.decodeList<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>(map['permittedPublicSecurityGroupRuleRanges']!, (value) => BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

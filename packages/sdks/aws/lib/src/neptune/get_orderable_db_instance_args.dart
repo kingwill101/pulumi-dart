@@ -54,13 +54,13 @@ class GetOrderableDbInstanceArgs {
 
   factory GetOrderableDbInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetOrderableDbInstanceArgs(
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
-      instanceClass: map['instanceClass'] == null ? null : (map['instanceClass'] as String).input(),
-      licenseModel: map['licenseModel'] == null ? null : (map['licenseModel'] as String).input(),
-      preferredInstanceClasses: map['preferredInstanceClasses'] == null ? null : ((map['preferredInstanceClasses'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      vpc: map['vpc'] == null ? null : (map['vpc'] as bool).input(),
+      engine: map['engine'] == null ? null : ((map['engine'] as String).input()).input(),
+      engineVersion: map['engineVersion'] == null ? null : ((map['engineVersion'] as String).input()).input(),
+      instanceClass: map['instanceClass'] == null ? null : ((map['instanceClass'] as String).input()).input(),
+      licenseModel: map['licenseModel'] == null ? null : ((map['licenseModel'] as String).input()).input(),
+      preferredInstanceClasses: map['preferredInstanceClasses'] == null ? null : (((map['preferredInstanceClasses'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      vpc: map['vpc'] == null ? null : ((map['vpc'] as bool).input()).input(),
     );
   }
 }

@@ -49,8 +49,8 @@ class SyncPropertiesResponse {
       gatewayEndpoint: (map['gatewayEndpoint'] as String).input(),
       lastSyncTime: (map['lastSyncTime'] as String).input(),
       messageTtl: (map['messageTtl'] as String).input(),
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
-      syncWindow: map['syncWindow'] == null ? null : (map['syncWindow'] as String).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule']! as String).input(),
+      syncWindow: map['syncWindow'] == null ? null : (map['syncWindow']! as String).input(),
       tokenId: (map['tokenId'] as String).input(),
     );
   }

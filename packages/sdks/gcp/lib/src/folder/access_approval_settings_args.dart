@@ -48,10 +48,10 @@ class AccessApprovalSettingsArgs {
 
   factory AccessApprovalSettingsArgs.fromMap(Map<String, dynamic> map) {
     return AccessApprovalSettingsArgs(
-      activeKeyVersion: map['activeKeyVersion'] == null ? null : (map['activeKeyVersion'] as String).input(),
+      activeKeyVersion: map['activeKeyVersion'] == null ? null : (map['activeKeyVersion']! as String).input(),
       enrolledServices: (pulumi.Input.decodeList<AccessApprovalSettingsEnrolledService>(map['enrolledServices'], (value) => AccessApprovalSettingsEnrolledService.fromMap((value as Map).cast<String, dynamic>()))).input(),
       folderId: (map['folderId'] as String).input(),
-      notificationEmails: map['notificationEmails'] == null ? null : ((map['notificationEmails'] as List).cast<String>()).input(),
+      notificationEmails: map['notificationEmails'] == null ? null : ((map['notificationEmails']! as List).cast<String>()).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class GalleryImageVersionResponse {
 
   factory GalleryImageVersionResponse.fromMap(Map<String, dynamic> map) {
     return GalleryImageVersionResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       storageProfile: (GalleryImageVersionStorageProfileResponse.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
     );
   }

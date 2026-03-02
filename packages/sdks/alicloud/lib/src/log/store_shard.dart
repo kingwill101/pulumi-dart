@@ -35,10 +35,10 @@ class StoreShard {
 
   factory StoreShard.fromMap(Map<String, dynamic> map) {
     return StoreShard(
-      beginKey: map['beginKey'] == null ? null : (map['beginKey'] as String).input(),
-      endKey: map['endKey'] == null ? null : (map['endKey'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      beginKey: map['beginKey'] == null ? null : (map['beginKey']! as String).input(),
+      endKey: map['endKey'] == null ? null : (map['endKey']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

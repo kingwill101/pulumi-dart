@@ -41,11 +41,11 @@ class ResolverOutboundEndpointState {
 
   factory ResolverOutboundEndpointState.fromMap(Map<String, dynamic> map) {
     return ResolverOutboundEndpointState(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateDnsResolverId: map['privateDnsResolverId'] == null ? null : (map['privateDnsResolverId'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateDnsResolverId: map['privateDnsResolverId'] == null ? null : (map['privateDnsResolverId']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

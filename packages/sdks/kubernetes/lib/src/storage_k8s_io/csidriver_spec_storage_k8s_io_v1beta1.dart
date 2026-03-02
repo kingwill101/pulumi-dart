@@ -75,13 +75,13 @@ class CSIDriverSpecStorageK8sIoV1beta1 {
 
   factory CSIDriverSpecStorageK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CSIDriverSpecStorageK8sIoV1beta1(
-      attachRequired: map['attachRequired'] == null ? null : (map['attachRequired'] as bool).input(),
-      fsGroupPolicy: map['fsGroupPolicy'] == null ? null : (map['fsGroupPolicy'] as String).input(),
-      podInfoOnMount: map['podInfoOnMount'] == null ? null : (map['podInfoOnMount'] as bool).input(),
-      requiresRepublish: map['requiresRepublish'] == null ? null : (map['requiresRepublish'] as bool).input(),
-      storageCapacity: map['storageCapacity'] == null ? null : (map['storageCapacity'] as bool).input(),
-      tokenRequests: map['tokenRequests'] == null ? null : (pulumi.Input.decodeList<TokenRequestStorageK8sIoV1beta1>(map['tokenRequests'], (value) => TokenRequestStorageK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volumeLifecycleModes: map['volumeLifecycleModes'] == null ? null : ((map['volumeLifecycleModes'] as List).cast<String>()).input(),
+      attachRequired: map['attachRequired'] == null ? null : (map['attachRequired']! as bool).input(),
+      fsGroupPolicy: map['fsGroupPolicy'] == null ? null : (map['fsGroupPolicy']! as String).input(),
+      podInfoOnMount: map['podInfoOnMount'] == null ? null : (map['podInfoOnMount']! as bool).input(),
+      requiresRepublish: map['requiresRepublish'] == null ? null : (map['requiresRepublish']! as bool).input(),
+      storageCapacity: map['storageCapacity'] == null ? null : (map['storageCapacity']! as bool).input(),
+      tokenRequests: map['tokenRequests'] == null ? null : (pulumi.Input.decodeList<TokenRequestStorageK8sIoV1beta1>(map['tokenRequests']!, (value) => TokenRequestStorageK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumeLifecycleModes: map['volumeLifecycleModes'] == null ? null : ((map['volumeLifecycleModes']! as List).cast<String>()).input(),
     );
   }
 }

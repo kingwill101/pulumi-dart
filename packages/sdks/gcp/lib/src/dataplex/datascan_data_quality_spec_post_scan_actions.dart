@@ -29,8 +29,8 @@ class DatascanDataQualitySpecPostScanActions {
 
   factory DatascanDataQualitySpecPostScanActions.fromMap(Map<String, dynamic> map) {
     return DatascanDataQualitySpecPostScanActions(
-      bigqueryExport: map['bigqueryExport'] == null ? null : (DatascanDataQualitySpecPostScanActionsBigqueryExport.fromMap((map['bigqueryExport'] as Map).cast<String, dynamic>())).input(),
-      notificationReport: map['notificationReport'] == null ? null : (DatascanDataQualitySpecPostScanActionsNotificationReport.fromMap((map['notificationReport'] as Map).cast<String, dynamic>())).input(),
+      bigqueryExport: map['bigqueryExport'] == null ? null : (DatascanDataQualitySpecPostScanActionsBigqueryExport.fromMap((map['bigqueryExport']! as Map).cast<String, dynamic>())).input(),
+      notificationReport: map['notificationReport'] == null ? null : (DatascanDataQualitySpecPostScanActionsNotificationReport.fromMap((map['notificationReport']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

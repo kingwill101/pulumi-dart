@@ -32,9 +32,9 @@ class CxToolVersionToolDataStoreSpecDataStoreConnection {
 
   factory CxToolVersionToolDataStoreSpecDataStoreConnection.fromMap(Map<String, dynamic> map) {
     return CxToolVersionToolDataStoreSpecDataStoreConnection(
-      dataStore: map['dataStore'] == null ? null : (map['dataStore'] as String).input(),
-      dataStoreType: map['dataStoreType'] == null ? null : (map['dataStoreType'] as String).input(),
-      documentProcessingMode: map['documentProcessingMode'] == null ? null : (map['documentProcessingMode'] as String).input(),
+      dataStore: map['dataStore'] == null ? null : (map['dataStore']! as String).input(),
+      dataStoreType: map['dataStoreType'] == null ? null : (map['dataStoreType']! as String).input(),
+      documentProcessingMode: map['documentProcessingMode'] == null ? null : (map['documentProcessingMode']! as String).input(),
     );
   }
 }

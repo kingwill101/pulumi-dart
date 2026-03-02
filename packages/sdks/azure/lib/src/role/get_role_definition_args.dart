@@ -38,9 +38,9 @@ class GetRoleDefinitionArgs {
 
   factory GetRoleDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetRoleDefinitionArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
     );
   }
 }

@@ -72,17 +72,17 @@ class SqlPoolState {
 
   factory SqlPoolState.fromMap(Map<String, dynamic> map) {
     return SqlPoolState(
-      collation: map['collation'] == null ? null : (map['collation'] as String).input(),
-      createMode: map['createMode'] == null ? null : (map['createMode'] as String).input(),
-      dataEncrypted: map['dataEncrypted'] == null ? null : (map['dataEncrypted'] as bool).input(),
-      geoBackupPolicyEnabled: map['geoBackupPolicyEnabled'] == null ? null : (map['geoBackupPolicyEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recoveryDatabaseId: map['recoveryDatabaseId'] == null ? null : (map['recoveryDatabaseId'] as String).input(),
-      restore: map['restore'] == null ? null : (SqlPoolRestore.fromMap((map['restore'] as Map).cast<String, dynamic>())).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
-      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : (map['synapseWorkspaceId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      collation: map['collation'] == null ? null : (map['collation']! as String).input(),
+      createMode: map['createMode'] == null ? null : (map['createMode']! as String).input(),
+      dataEncrypted: map['dataEncrypted'] == null ? null : (map['dataEncrypted']! as bool).input(),
+      geoBackupPolicyEnabled: map['geoBackupPolicyEnabled'] == null ? null : (map['geoBackupPolicyEnabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      recoveryDatabaseId: map['recoveryDatabaseId'] == null ? null : (map['recoveryDatabaseId']! as String).input(),
+      restore: map['restore'] == null ? null : (SqlPoolRestore.fromMap((map['restore']! as Map).cast<String, dynamic>())).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType']! as String).input(),
+      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : (map['synapseWorkspaceId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

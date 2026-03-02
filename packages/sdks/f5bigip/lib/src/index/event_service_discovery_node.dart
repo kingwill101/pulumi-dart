@@ -30,9 +30,9 @@ class EventServiceDiscoveryNode {
 
   factory EventServiceDiscoveryNode.fromMap(Map<String, dynamic> map) {
     return EventServiceDiscoveryNode(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

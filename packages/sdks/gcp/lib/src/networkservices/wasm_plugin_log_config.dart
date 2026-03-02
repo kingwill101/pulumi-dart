@@ -36,9 +36,9 @@ class WasmPluginLogConfig {
 
   factory WasmPluginLogConfig.fromMap(Map<String, dynamic> map) {
     return WasmPluginLogConfig(
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      minLogLevel: map['minLogLevel'] == null ? null : (map['minLogLevel'] as String).input(),
-      sampleRate: map['sampleRate'] == null ? null : (map['sampleRate'] as double).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      minLogLevel: map['minLogLevel'] == null ? null : (map['minLogLevel']! as String).input(),
+      sampleRate: map['sampleRate'] == null ? null : (map['sampleRate']! as double).input(),
     );
   }
 }

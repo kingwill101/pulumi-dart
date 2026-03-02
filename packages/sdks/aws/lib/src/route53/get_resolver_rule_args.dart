@@ -54,13 +54,13 @@ class GetResolverRuleArgs {
 
   factory GetResolverRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverRuleArgs(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resolverEndpointId: map['resolverEndpointId'] == null ? null : (map['resolverEndpointId'] as String).input(),
-      resolverRuleId: map['resolverRuleId'] == null ? null : (map['resolverRuleId'] as String).input(),
-      ruleType: map['ruleType'] == null ? null : (map['ruleType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resolverEndpointId: map['resolverEndpointId'] == null ? null : ((map['resolverEndpointId'] as String).input()).input(),
+      resolverRuleId: map['resolverRuleId'] == null ? null : ((map['resolverRuleId'] as String).input()).input(),
+      ruleType: map['ruleType'] == null ? null : ((map['ruleType'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

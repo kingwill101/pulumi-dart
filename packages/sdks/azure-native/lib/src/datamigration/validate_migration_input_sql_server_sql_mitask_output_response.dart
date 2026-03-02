@@ -61,7 +61,7 @@ class ValidateMigrationInputSqlServerSqlMITaskOutputResponse {
       backupFolderErrors: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['backupFolderErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       backupShareCredentialsErrors: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['backupShareCredentialsErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       backupStorageAccountErrors: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['backupStorageAccountErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      databaseBackupInfo: map['databaseBackupInfo'] == null ? null : (DatabaseBackupInfoResponse.fromMap((map['databaseBackupInfo'] as Map).cast<String, dynamic>())).input(),
+      databaseBackupInfo: map['databaseBackupInfo'] == null ? null : (DatabaseBackupInfoResponse.fromMap((map['databaseBackupInfo']! as Map).cast<String, dynamic>())).input(),
       existingBackupErrors: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['existingBackupErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       id: (map['id'] as String).input(),
       name: (map['name'] as String).input(),

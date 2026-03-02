@@ -87,20 +87,20 @@ class WorkflowState {
 
   factory WorkflowState.fromMap(Map<String, dynamic> map) {
     return WorkflowState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      changeDescription: map['changeDescription'] == null ? null : (map['changeDescription'] as String).input(),
-      data: map['data'] == null ? null : (map['data'] as String).input(),
-      dateCreated: map['dateCreated'] == null ? null : (map['dateCreated'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      changeDescription: map['changeDescription'] == null ? null : ((map['changeDescription'] as String).input()).input(),
+      data: map['data'] == null ? null : ((map['data'] as String).input()).input(),
+      dateCreated: map['dateCreated'] == null ? null : ((map['dateCreated'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      owner: map['owner'] == null ? null : ((map['owner'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      uri: map['uri'] == null ? null : ((map['uri'] as String).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

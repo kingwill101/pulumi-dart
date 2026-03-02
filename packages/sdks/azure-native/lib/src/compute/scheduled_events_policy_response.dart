@@ -34,9 +34,9 @@ class ScheduledEventsPolicyResponse {
 
   factory ScheduledEventsPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ScheduledEventsPolicyResponse(
-      scheduledEventsAdditionalPublishingTargets: map['scheduledEventsAdditionalPublishingTargets'] == null ? null : (ScheduledEventsAdditionalPublishingTargetsResponse.fromMap((map['scheduledEventsAdditionalPublishingTargets'] as Map).cast<String, dynamic>())).input(),
-      userInitiatedReboot: map['userInitiatedReboot'] == null ? null : (UserInitiatedRebootResponse.fromMap((map['userInitiatedReboot'] as Map).cast<String, dynamic>())).input(),
-      userInitiatedRedeploy: map['userInitiatedRedeploy'] == null ? null : (UserInitiatedRedeployResponse.fromMap((map['userInitiatedRedeploy'] as Map).cast<String, dynamic>())).input(),
+      scheduledEventsAdditionalPublishingTargets: map['scheduledEventsAdditionalPublishingTargets'] == null ? null : (ScheduledEventsAdditionalPublishingTargetsResponse.fromMap((map['scheduledEventsAdditionalPublishingTargets']! as Map).cast<String, dynamic>())).input(),
+      userInitiatedReboot: map['userInitiatedReboot'] == null ? null : (UserInitiatedRebootResponse.fromMap((map['userInitiatedReboot']! as Map).cast<String, dynamic>())).input(),
+      userInitiatedRedeploy: map['userInitiatedRedeploy'] == null ? null : (UserInitiatedRedeployResponse.fromMap((map['userInitiatedRedeploy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class InteractiveQueryClusterMetastores {
 
   factory InteractiveQueryClusterMetastores.fromMap(Map<String, dynamic> map) {
     return InteractiveQueryClusterMetastores(
-      ambari: map['ambari'] == null ? null : (InteractiveQueryClusterMetastoresAmbari.fromMap((map['ambari'] as Map).cast<String, dynamic>())).input(),
-      hive: map['hive'] == null ? null : (InteractiveQueryClusterMetastoresHive.fromMap((map['hive'] as Map).cast<String, dynamic>())).input(),
-      oozie: map['oozie'] == null ? null : (InteractiveQueryClusterMetastoresOozie.fromMap((map['oozie'] as Map).cast<String, dynamic>())).input(),
+      ambari: map['ambari'] == null ? null : (InteractiveQueryClusterMetastoresAmbari.fromMap((map['ambari']! as Map).cast<String, dynamic>())).input(),
+      hive: map['hive'] == null ? null : (InteractiveQueryClusterMetastoresHive.fromMap((map['hive']! as Map).cast<String, dynamic>())).input(),
+      oozie: map['oozie'] == null ? null : (InteractiveQueryClusterMetastoresOozie.fromMap((map['oozie']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

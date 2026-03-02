@@ -56,14 +56,14 @@ class GetUserArgs {
 
   factory GetUserArgs.fromMap(Map<String, dynamic> map) {
     return GetUserArgs(
-      accessString: map['accessString'] == null ? null : (map['accessString'] as String).input(),
-      authenticationModes: map['authenticationModes'] == null ? null : (pulumi.Input.decodeList<GetUserAuthenticationMode>(map['authenticationModes'], (value) => GetUserAuthenticationMode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      noPasswordRequired: map['noPasswordRequired'] == null ? null : (map['noPasswordRequired'] as bool).input(),
-      passwords: map['passwords'] == null ? null : ((map['passwords'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      accessString: map['accessString'] == null ? null : ((map['accessString'] as String).input()).input(),
+      authenticationModes: map['authenticationModes'] == null ? null : ((pulumi.Input.decodeList<GetUserAuthenticationMode>(map['authenticationModes']!, (value) => GetUserAuthenticationMode.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      engine: map['engine'] == null ? null : ((map['engine'] as String).input()).input(),
+      noPasswordRequired: map['noPasswordRequired'] == null ? null : ((map['noPasswordRequired'] as bool).input()).input(),
+      passwords: map['passwords'] == null ? null : (((map['passwords'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       userId: (map['userId'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      userName: map['userName'] == null ? null : ((map['userName'] as String).input()).input(),
     );
   }
 }

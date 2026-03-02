@@ -71,17 +71,17 @@ class ProfileFastHttpState {
 
   factory ProfileFastHttpState.fromMap(Map<String, dynamic> map) {
     return ProfileFastHttpState(
-      connpoolMaxreuse: map['connpoolMaxreuse'] == null ? null : (map['connpoolMaxreuse'] as int).input(),
-      connpoolMaxsize: map['connpoolMaxsize'] == null ? null : (map['connpoolMaxsize'] as int).input(),
-      connpoolMinsize: map['connpoolMinsize'] == null ? null : (map['connpoolMinsize'] as int).input(),
-      connpoolReplenish: map['connpoolReplenish'] == null ? null : (map['connpoolReplenish'] as String).input(),
-      connpoolStep: map['connpoolStep'] == null ? null : (map['connpoolStep'] as int).input(),
-      connpoolidleTimeoutoverride: map['connpoolidleTimeoutoverride'] == null ? null : (map['connpoolidleTimeoutoverride'] as int).input(),
-      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom'] as String).input(),
-      forcehttp10response: map['forcehttp10response'] == null ? null : (map['forcehttp10response'] as String).input(),
-      idleTimeout: map['idleTimeout'] == null ? null : (map['idleTimeout'] as int).input(),
-      maxheaderSize: map['maxheaderSize'] == null ? null : (map['maxheaderSize'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      connpoolMaxreuse: map['connpoolMaxreuse'] == null ? null : (map['connpoolMaxreuse']! as int).input(),
+      connpoolMaxsize: map['connpoolMaxsize'] == null ? null : (map['connpoolMaxsize']! as int).input(),
+      connpoolMinsize: map['connpoolMinsize'] == null ? null : (map['connpoolMinsize']! as int).input(),
+      connpoolReplenish: map['connpoolReplenish'] == null ? null : (map['connpoolReplenish']! as String).input(),
+      connpoolStep: map['connpoolStep'] == null ? null : (map['connpoolStep']! as int).input(),
+      connpoolidleTimeoutoverride: map['connpoolidleTimeoutoverride'] == null ? null : (map['connpoolidleTimeoutoverride']! as int).input(),
+      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom']! as String).input(),
+      forcehttp10response: map['forcehttp10response'] == null ? null : (map['forcehttp10response']! as String).input(),
+      idleTimeout: map['idleTimeout'] == null ? null : (map['idleTimeout']! as int).input(),
+      maxheaderSize: map['maxheaderSize'] == null ? null : (map['maxheaderSize']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

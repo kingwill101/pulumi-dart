@@ -63,15 +63,15 @@ class ManagedInstanceFailoverGroupState {
 
   factory ManagedInstanceFailoverGroupState.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceFailoverGroupState(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedInstanceId: map['managedInstanceId'] == null ? null : (map['managedInstanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      partnerManagedInstanceId: map['partnerManagedInstanceId'] == null ? null : (map['partnerManagedInstanceId'] as String).input(),
-      partnerRegions: map['partnerRegions'] == null ? null : (pulumi.Input.decodeList<ManagedInstanceFailoverGroupPartnerRegion>(map['partnerRegions'], (value) => ManagedInstanceFailoverGroupPartnerRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      readWriteEndpointFailoverPolicy: map['readWriteEndpointFailoverPolicy'] == null ? null : (ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy.fromMap((map['readWriteEndpointFailoverPolicy'] as Map).cast<String, dynamic>())).input(),
-      readonlyEndpointFailoverPolicyEnabled: map['readonlyEndpointFailoverPolicyEnabled'] == null ? null : (map['readonlyEndpointFailoverPolicyEnabled'] as bool).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      secondaryType: map['secondaryType'] == null ? null : (map['secondaryType'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedInstanceId: map['managedInstanceId'] == null ? null : (map['managedInstanceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      partnerManagedInstanceId: map['partnerManagedInstanceId'] == null ? null : (map['partnerManagedInstanceId']! as String).input(),
+      partnerRegions: map['partnerRegions'] == null ? null : (pulumi.Input.decodeList<ManagedInstanceFailoverGroupPartnerRegion>(map['partnerRegions']!, (value) => ManagedInstanceFailoverGroupPartnerRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      readWriteEndpointFailoverPolicy: map['readWriteEndpointFailoverPolicy'] == null ? null : (ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy.fromMap((map['readWriteEndpointFailoverPolicy']! as Map).cast<String, dynamic>())).input(),
+      readonlyEndpointFailoverPolicyEnabled: map['readonlyEndpointFailoverPolicyEnabled'] == null ? null : (map['readonlyEndpointFailoverPolicyEnabled']! as bool).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      secondaryType: map['secondaryType'] == null ? null : (map['secondaryType']! as String).input(),
     );
   }
 }

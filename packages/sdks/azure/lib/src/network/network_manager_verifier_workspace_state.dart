@@ -41,11 +41,11 @@ class NetworkManagerVerifierWorkspaceState {
 
   factory NetworkManagerVerifierWorkspaceState.fromMap(Map<String, dynamic> map) {
     return NetworkManagerVerifierWorkspaceState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkManagerId: map['networkManagerId'] == null ? null : (map['networkManagerId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkManagerId: map['networkManagerId'] == null ? null : (map['networkManagerId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

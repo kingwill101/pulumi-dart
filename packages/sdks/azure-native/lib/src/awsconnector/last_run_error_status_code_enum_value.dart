@@ -21,7 +21,7 @@ class LastRunErrorStatusCodeEnumValue {
 
   factory LastRunErrorStatusCodeEnumValue.fromMap(Map<String, dynamic> map) {
     return LastRunErrorStatusCodeEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

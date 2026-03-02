@@ -35,11 +35,11 @@ class EciScalingConfigurationInitContainerVolumeMount {
 
   factory EciScalingConfigurationInitContainerVolumeMount.fromMap(Map<String, dynamic> map) {
     return EciScalingConfigurationInitContainerVolumeMount(
-      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
-      mountPropagation: map['mountPropagation'] == null ? null : (map['mountPropagation'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      subPath: map['subPath'] == null ? null : (map['subPath'] as String).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
+      mountPropagation: map['mountPropagation'] == null ? null : (map['mountPropagation']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      subPath: map['subPath'] == null ? null : (map['subPath']! as String).input(),
     );
   }
 }

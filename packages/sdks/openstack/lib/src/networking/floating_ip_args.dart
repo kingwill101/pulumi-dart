@@ -107,19 +107,19 @@ class FloatingIpArgs {
 
   factory FloatingIpArgs.fromMap(Map<String, dynamic> map) {
     return FloatingIpArgs(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dnsDomain: map['dnsDomain'] == null ? null : (map['dnsDomain'] as String).input(),
-      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
-      fixedIp: map['fixedIp'] == null ? null : (map['fixedIp'] as String).input(),
-      pool: map['pool'] == null ? null : (map['pool'] as String).input(),
-      portId: map['portId'] == null ? null : (map['portId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dnsDomain: map['dnsDomain'] == null ? null : (map['dnsDomain']! as String).input(),
+      dnsName: map['dnsName'] == null ? null : (map['dnsName']! as String).input(),
+      fixedIp: map['fixedIp'] == null ? null : (map['fixedIp']! as String).input(),
+      pool: map['pool'] == null ? null : (map['pool']! as String).input(),
+      portId: map['portId'] == null ? null : (map['portId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs']! as Map).cast<String, String>()).input(),
     );
   }
 }

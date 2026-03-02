@@ -28,8 +28,8 @@ class PackageOccurrence {
 
   factory PackageOccurrence.fromMap(Map<String, dynamic> map) {
     return PackageOccurrence(
-      license: map['license'] == null ? null : (License.fromMap((map['license'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (pulumi.Input.decodeList<Location>(map['location'], (value) => Location.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      license: map['license'] == null ? null : (License.fromMap((map['license']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (pulumi.Input.decodeList<Location>(map['location']!, (value) => Location.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

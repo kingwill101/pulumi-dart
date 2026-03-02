@@ -56,11 +56,11 @@ class GatewayRouteArgs {
   factory GatewayRouteArgs.fromMap(Map<String, dynamic> map) {
     return GatewayRouteArgs(
       meshName: (map['meshName'] as String).input(),
-      meshOwner: map['meshOwner'] == null ? null : (map['meshOwner'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      spec: (GatewayRouteSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      meshOwner: map['meshOwner'] == null ? null : ((map['meshOwner'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      spec: (GatewayRouteSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       virtualGatewayName: (map['virtualGatewayName'] as String).input(),
     );
   }

@@ -57,14 +57,14 @@ class AccessGrantsLocationState {
 
   factory AccessGrantsLocationState.fromMap(Map<String, dynamic> map) {
     return AccessGrantsLocationState(
-      accessGrantsLocationArn: map['accessGrantsLocationArn'] == null ? null : (map['accessGrantsLocationArn'] as String).input(),
-      accessGrantsLocationId: map['accessGrantsLocationId'] == null ? null : (map['accessGrantsLocationId'] as String).input(),
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      iamRoleArn: map['iamRoleArn'] == null ? null : (map['iamRoleArn'] as String).input(),
-      locationScope: map['locationScope'] == null ? null : (map['locationScope'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      accessGrantsLocationArn: map['accessGrantsLocationArn'] == null ? null : ((map['accessGrantsLocationArn'] as String).input()).input(),
+      accessGrantsLocationId: map['accessGrantsLocationId'] == null ? null : ((map['accessGrantsLocationId'] as String).input()).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      iamRoleArn: map['iamRoleArn'] == null ? null : ((map['iamRoleArn'] as String).input()).input(),
+      locationScope: map['locationScope'] == null ? null : ((map['locationScope'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class DomainDevicesTpmBackendEmulatorSourceDir {
 
   factory DomainDevicesTpmBackendEmulatorSourceDir.fromMap(Map<String, dynamic> map) {
     return DomainDevicesTpmBackendEmulatorSourceDir(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

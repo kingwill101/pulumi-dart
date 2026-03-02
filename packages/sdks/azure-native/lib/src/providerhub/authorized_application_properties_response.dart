@@ -31,8 +31,8 @@ class AuthorizedApplicationPropertiesResponse {
 
   factory AuthorizedApplicationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AuthorizedApplicationPropertiesResponse(
-      dataAuthorizations: map['dataAuthorizations'] == null ? null : (pulumi.Input.decodeList<ApplicationDataAuthorizationResponse>(map['dataAuthorizations'], (value) => ApplicationDataAuthorizationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      providerAuthorization: map['providerAuthorization'] == null ? null : (ApplicationProviderAuthorizationResponse.fromMap((map['providerAuthorization'] as Map).cast<String, dynamic>())).input(),
+      dataAuthorizations: map['dataAuthorizations'] == null ? null : (pulumi.Input.decodeList<ApplicationDataAuthorizationResponse>(map['dataAuthorizations']!, (value) => ApplicationDataAuthorizationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      providerAuthorization: map['providerAuthorization'] == null ? null : (ApplicationProviderAuthorizationResponse.fromMap((map['providerAuthorization']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

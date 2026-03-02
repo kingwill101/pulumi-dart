@@ -92,18 +92,18 @@ class GetProximityPlacementGroupResult {
     return GetProximityPlacementGroupResult(
       availabilitySets: pulumi.Input.decodeList<SubResourceWithColocationStatusResponse>(map['availabilitySets'], (value) => SubResourceWithColocationStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
       azureApiVersion: map['azureApiVersion'] as String,
-      colocationStatus: map['colocationStatus'] == null ? null : InstanceViewStatusResponse.fromMap((map['colocationStatus'] as Map).cast<String, dynamic>()),
+      colocationStatus: map['colocationStatus'] == null ? null : InstanceViewStatusResponse.fromMap((map['colocationStatus']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      intent: map['intent'] == null ? null : ProximityPlacementGroupPropertiesIntentResponse.fromMap((map['intent'] as Map).cast<String, dynamic>()),
+      intent: map['intent'] == null ? null : ProximityPlacementGroupPropertiesIntentResponse.fromMap((map['intent']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
       name: map['name'] as String,
-      proximityPlacementGroupType: map['proximityPlacementGroupType'] == null ? null : map['proximityPlacementGroupType'] as String,
+      proximityPlacementGroupType: map['proximityPlacementGroupType'] == null ? null : map['proximityPlacementGroupType']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
       virtualMachineScaleSets: pulumi.Input.decodeList<SubResourceWithColocationStatusResponse>(map['virtualMachineScaleSets'], (value) => SubResourceWithColocationStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
       virtualMachines: pulumi.Input.decodeList<SubResourceWithColocationStatusResponse>(map['virtualMachines'], (value) => SubResourceWithColocationStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
-      zones: map['zones'] == null ? null : (map['zones'] as List).cast<String>(),
+      zones: map['zones'] == null ? null : (map['zones']! as List).cast<String>(),
     );
   }
 }

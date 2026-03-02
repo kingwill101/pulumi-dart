@@ -26,8 +26,8 @@ class CommitmentPeriod {
 
   factory CommitmentPeriod.fromMap(Map<String, dynamic> map) {
     return CommitmentPeriod(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

@@ -53,7 +53,7 @@ class PostureArgs {
 
   factory PostureArgs.fromMap(Map<String, dynamic> map) {
     return PostureArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       location: (map['location'] as String).input(),
       parent: (map['parent'] as String).input(),
       policySets: (pulumi.Input.decodeList<PosturePolicySet>(map['policySets'], (value) => PosturePolicySet.fromMap((value as Map).cast<String, dynamic>()))).input(),

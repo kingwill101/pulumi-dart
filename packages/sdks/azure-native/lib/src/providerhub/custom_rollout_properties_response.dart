@@ -34,7 +34,7 @@ class CustomRolloutPropertiesResponse {
     return CustomRolloutPropertiesResponse(
       provisioningState: (map['provisioningState'] as String).input(),
       specification: (CustomRolloutPropertiesSpecificationResponse.fromMap((map['specification'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (CustomRolloutPropertiesStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (CustomRolloutPropertiesStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

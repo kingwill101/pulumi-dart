@@ -83,19 +83,19 @@ class AccessPointState {
 
   factory AccessPointState.fromMap(Map<String, dynamic> map) {
     return AccessPointState(
-      accessGroup: map['accessGroup'] == null ? null : (map['accessGroup'] as String).input(),
-      accessPointId: map['accessPointId'] == null ? null : (map['accessPointId'] as String).input(),
-      accessPointName: map['accessPointName'] == null ? null : (map['accessPointName'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      enabledRam: map['enabledRam'] == null ? null : (map['enabledRam'] as bool).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      posixUser: map['posixUser'] == null ? null : (AccessPointPosixUser.fromMap((map['posixUser'] as Map).cast<String, dynamic>())).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      rootPath: map['rootPath'] == null ? null : (map['rootPath'] as String).input(),
-      rootPathPermission: map['rootPathPermission'] == null ? null : (AccessPointRootPathPermission.fromMap((map['rootPathPermission'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      accessGroup: map['accessGroup'] == null ? null : (map['accessGroup']! as String).input(),
+      accessPointId: map['accessPointId'] == null ? null : (map['accessPointId']! as String).input(),
+      accessPointName: map['accessPointName'] == null ? null : (map['accessPointName']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      enabledRam: map['enabledRam'] == null ? null : (map['enabledRam']! as bool).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId']! as String).input(),
+      posixUser: map['posixUser'] == null ? null : (AccessPointPosixUser.fromMap((map['posixUser']! as Map).cast<String, dynamic>())).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      rootPath: map['rootPath'] == null ? null : (map['rootPath']! as String).input(),
+      rootPathPermission: map['rootPathPermission'] == null ? null : (AccessPointRootPathPermission.fromMap((map['rootPathPermission']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

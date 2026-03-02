@@ -27,8 +27,8 @@ class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec {
 
   factory AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec.fromMap(Map<String, dynamic> map) {
     return AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec(
-      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as int).input(),
+      metricName: map['metricName'] == null ? null : (map['metricName']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as int).input(),
     );
   }
 }

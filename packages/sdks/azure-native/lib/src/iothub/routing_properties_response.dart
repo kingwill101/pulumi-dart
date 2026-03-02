@@ -40,10 +40,10 @@ class RoutingPropertiesResponse {
 
   factory RoutingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RoutingPropertiesResponse(
-      endpoints: map['endpoints'] == null ? null : (RoutingEndpointsResponse.fromMap((map['endpoints'] as Map).cast<String, dynamic>())).input(),
-      enrichments: map['enrichments'] == null ? null : (pulumi.Input.decodeList<EnrichmentPropertiesResponse>(map['enrichments'], (value) => EnrichmentPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fallbackRoute: map['fallbackRoute'] == null ? null : (FallbackRoutePropertiesResponse.fromMap((map['fallbackRoute'] as Map).cast<String, dynamic>())).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<RoutePropertiesResponse>(map['routes'], (value) => RoutePropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endpoints: map['endpoints'] == null ? null : (RoutingEndpointsResponse.fromMap((map['endpoints']! as Map).cast<String, dynamic>())).input(),
+      enrichments: map['enrichments'] == null ? null : (pulumi.Input.decodeList<EnrichmentPropertiesResponse>(map['enrichments']!, (value) => EnrichmentPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fallbackRoute: map['fallbackRoute'] == null ? null : (FallbackRoutePropertiesResponse.fromMap((map['fallbackRoute']! as Map).cast<String, dynamic>())).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<RoutePropertiesResponse>(map['routes']!, (value) => RoutePropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

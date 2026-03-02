@@ -21,7 +21,7 @@ class CapabilityConfiguration {
 
   factory CapabilityConfiguration.fromMap(Map<String, dynamic> map) {
     return CapabilityConfiguration(
-      argoCd: map['argoCd'] == null ? null : (CapabilityConfigurationArgoCd.fromMap((map['argoCd'] as Map).cast<String, dynamic>())).input(),
+      argoCd: map['argoCd'] == null ? null : ((CapabilityConfigurationArgoCd.fromMap((map['argoCd']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

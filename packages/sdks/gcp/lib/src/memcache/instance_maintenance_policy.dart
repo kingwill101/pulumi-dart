@@ -47,9 +47,9 @@ class InstanceMaintenancePolicy {
 
   factory InstanceMaintenancePolicy.fromMap(Map<String, dynamic> map) {
     return InstanceMaintenancePolicy(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
       weeklyMaintenanceWindows: (pulumi.Input.decodeList<InstanceMaintenancePolicyWeeklyMaintenanceWindow>(map['weeklyMaintenanceWindows'], (value) => InstanceMaintenancePolicyWeeklyMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

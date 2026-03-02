@@ -72,15 +72,15 @@ class GetImportSitesControllerResult {
   factory GetImportSitesControllerResult.fromMap(Map<String, dynamic> map) {
     return GetImportSitesControllerResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      discoverySolutionId: map['discoverySolutionId'] == null ? null : map['discoverySolutionId'] as String,
+      discoverySolutionId: map['discoverySolutionId'] == null ? null : map['discoverySolutionId']! as String,
       id: map['id'] as String,
       location: map['location'] as String,
       masterSiteId: map['masterSiteId'] as String,
       name: map['name'] as String,
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
+      provisioningState: map['provisioningState'] == null ? null : map['provisioningState']! as String,
       serviceEndpoint: map['serviceEndpoint'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

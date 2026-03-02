@@ -30,9 +30,9 @@ class MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings {
 
   factory MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings.fromMap(Map<String, dynamic> map) {
     return MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings(
-      maximumBitrate: map['maximumBitrate'] == null ? null : (map['maximumBitrate'] as int).input(),
-      minimumBitrate: map['minimumBitrate'] == null ? null : (map['minimumBitrate'] as int).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      maximumBitrate: map['maximumBitrate'] == null ? null : ((map['maximumBitrate'] as int).input()).input(),
+      minimumBitrate: map['minimumBitrate'] == null ? null : ((map['minimumBitrate'] as int).input()).input(),
+      priority: map['priority'] == null ? null : ((map['priority'] as int).input()).input(),
     );
   }
 }

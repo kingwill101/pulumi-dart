@@ -38,9 +38,9 @@ class GetUserTablesSqlTaskProperties {
 
   factory GetUserTablesSqlTaskProperties.fromMap(Map<String, dynamic> map) {
     return GetUserTablesSqlTaskProperties(
-      clientData: map['clientData'] == null ? null : ((map['clientData'] as Map).cast<String, String>()).input(),
-      input: map['input'] == null ? null : (GetUserTablesSqlTaskInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
-      taskId: map['taskId'] == null ? null : (map['taskId'] as String).input(),
+      clientData: map['clientData'] == null ? null : ((map['clientData']! as Map).cast<String, String>()).input(),
+      input: map['input'] == null ? null : (GetUserTablesSqlTaskInput.fromMap((map['input']! as Map).cast<String, dynamic>())).input(),
+      taskId: map['taskId'] == null ? null : (map['taskId']! as String).input(),
       taskType: (map['taskType'] as String).input(),
     );
   }

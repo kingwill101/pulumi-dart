@@ -56,14 +56,14 @@ class ProvisioningDetails {
 
   factory ProvisioningDetails.fromMap(Map<String, dynamic> map) {
     return ProvisioningDetails(
-      autoProvisioningStatus: map['autoProvisioningStatus'] == null ? null : (map['autoProvisioningStatus'] as String).input(),
-      managementResourceArmId: map['managementResourceArmId'] == null ? null : (map['managementResourceArmId'] as String).input(),
-      provisioningArmId: map['provisioningArmId'] == null ? null : (map['provisioningArmId'] as String).input(),
-      provisioningEndPoint: map['provisioningEndPoint'] == null ? null : (map['provisioningEndPoint'] as String).input(),
-      quantity: map['quantity'] == null ? null : (map['quantity'] as int).input(),
-      readyToConnectArmId: map['readyToConnectArmId'] == null ? null : (map['readyToConnectArmId'] as String).input(),
-      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
-      vendorName: map['vendorName'] == null ? null : (map['vendorName'] as String).input(),
+      autoProvisioningStatus: map['autoProvisioningStatus'] == null ? null : (map['autoProvisioningStatus']! as String).input(),
+      managementResourceArmId: map['managementResourceArmId'] == null ? null : (map['managementResourceArmId']! as String).input(),
+      provisioningArmId: map['provisioningArmId'] == null ? null : (map['provisioningArmId']! as String).input(),
+      provisioningEndPoint: map['provisioningEndPoint'] == null ? null : (map['provisioningEndPoint']! as String).input(),
+      quantity: map['quantity'] == null ? null : (map['quantity']! as int).input(),
+      readyToConnectArmId: map['readyToConnectArmId'] == null ? null : (map['readyToConnectArmId']! as String).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber']! as String).input(),
+      vendorName: map['vendorName'] == null ? null : (map['vendorName']! as String).input(),
     );
   }
 }

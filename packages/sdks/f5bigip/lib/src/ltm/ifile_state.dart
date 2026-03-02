@@ -41,11 +41,11 @@ class IfileState {
 
   factory IfileState.fromMap(Map<String, dynamic> map) {
     return IfileState(
-      fileName: map['fileName'] == null ? null : (map['fileName'] as String).input(),
-      fullPath: map['fullPath'] == null ? null : (map['fullPath'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
-      subPath: map['subPath'] == null ? null : (map['subPath'] as String).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName']! as String).input(),
+      fullPath: map['fullPath'] == null ? null : (map['fullPath']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      partition: map['partition'] == null ? null : (map['partition']! as String).input(),
+      subPath: map['subPath'] == null ? null : (map['subPath']! as String).input(),
     );
   }
 }

@@ -34,9 +34,9 @@ class ImageArgs {
 
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       desktopId: (map['desktopId'] as String).input(),
-      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName']! as String).input(),
     );
   }
 }

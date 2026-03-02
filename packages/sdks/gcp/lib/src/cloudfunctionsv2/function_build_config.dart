@@ -77,16 +77,16 @@ class FunctionBuildConfig {
 
   factory FunctionBuildConfig.fromMap(Map<String, dynamic> map) {
     return FunctionBuildConfig(
-      automaticUpdatePolicy: map['automaticUpdatePolicy'] == null ? null : ((map['automaticUpdatePolicy'] as Map).cast<String, dynamic>()).input(),
-      build: map['build'] == null ? null : (map['build'] as String).input(),
-      dockerRepository: map['dockerRepository'] == null ? null : (map['dockerRepository'] as String).input(),
-      entryPoint: map['entryPoint'] == null ? null : (map['entryPoint'] as String).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables'] as Map).cast<String, String>()).input(),
-      onDeployUpdatePolicy: map['onDeployUpdatePolicy'] == null ? null : (FunctionBuildConfigOnDeployUpdatePolicy.fromMap((map['onDeployUpdatePolicy'] as Map).cast<String, dynamic>())).input(),
-      runtime: map['runtime'] == null ? null : (map['runtime'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      source: map['source'] == null ? null : (FunctionBuildConfigSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      workerPool: map['workerPool'] == null ? null : (map['workerPool'] as String).input(),
+      automaticUpdatePolicy: map['automaticUpdatePolicy'] == null ? null : ((map['automaticUpdatePolicy']! as Map).cast<String, dynamic>()).input(),
+      build: map['build'] == null ? null : (map['build']! as String).input(),
+      dockerRepository: map['dockerRepository'] == null ? null : (map['dockerRepository']! as String).input(),
+      entryPoint: map['entryPoint'] == null ? null : (map['entryPoint']! as String).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables']! as Map).cast<String, String>()).input(),
+      onDeployUpdatePolicy: map['onDeployUpdatePolicy'] == null ? null : (FunctionBuildConfigOnDeployUpdatePolicy.fromMap((map['onDeployUpdatePolicy']! as Map).cast<String, dynamic>())).input(),
+      runtime: map['runtime'] == null ? null : (map['runtime']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      source: map['source'] == null ? null : (FunctionBuildConfigSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      workerPool: map['workerPool'] == null ? null : (map['workerPool']! as String).input(),
     );
   }
 }

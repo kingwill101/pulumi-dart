@@ -24,7 +24,7 @@ class GetEncryptionByDefaultArgs {
 
   factory GetEncryptionByDefaultArgs.fromMap(Map<String, dynamic> map) {
     return GetEncryptionByDefaultArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

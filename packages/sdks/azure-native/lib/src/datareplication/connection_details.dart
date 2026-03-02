@@ -41,11 +41,11 @@ class ConnectionDetails {
 
   factory ConnectionDetails.fromMap(Map<String, dynamic> map) {
     return ConnectionDetails(
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      linkIdentifier: map['linkIdentifier'] == null ? null : (map['linkIdentifier'] as String).input(),
-      memberName: map['memberName'] == null ? null : (map['memberName'] as String).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      linkIdentifier: map['linkIdentifier'] == null ? null : (map['linkIdentifier']! as String).input(),
+      memberName: map['memberName'] == null ? null : (map['memberName']! as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
     );
   }
 }

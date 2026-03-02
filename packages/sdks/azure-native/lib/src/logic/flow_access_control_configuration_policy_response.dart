@@ -28,8 +28,8 @@ class FlowAccessControlConfigurationPolicyResponse {
 
   factory FlowAccessControlConfigurationPolicyResponse.fromMap(Map<String, dynamic> map) {
     return FlowAccessControlConfigurationPolicyResponse(
-      allowedCallerIpAddresses: map['allowedCallerIpAddresses'] == null ? null : (pulumi.Input.decodeList<IpAddressRangeResponse>(map['allowedCallerIpAddresses'], (value) => IpAddressRangeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      openAuthenticationPolicies: map['openAuthenticationPolicies'] == null ? null : (OpenAuthenticationAccessPoliciesResponse.fromMap((map['openAuthenticationPolicies'] as Map).cast<String, dynamic>())).input(),
+      allowedCallerIpAddresses: map['allowedCallerIpAddresses'] == null ? null : (pulumi.Input.decodeList<IpAddressRangeResponse>(map['allowedCallerIpAddresses']!, (value) => IpAddressRangeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      openAuthenticationPolicies: map['openAuthenticationPolicies'] == null ? null : (OpenAuthenticationAccessPoliciesResponse.fromMap((map['openAuthenticationPolicies']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

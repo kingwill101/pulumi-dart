@@ -46,12 +46,12 @@ class AwsLogsSubscriptionFilterPropertiesResponse {
 
   factory AwsLogsSubscriptionFilterPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsLogsSubscriptionFilterPropertiesResponse(
-      destinationArn: map['destinationArn'] == null ? null : (map['destinationArn'] as String).input(),
-      distribution: map['distribution'] == null ? null : (map['distribution'] as String).input(),
-      filterName: map['filterName'] == null ? null : (map['filterName'] as String).input(),
-      filterPattern: map['filterPattern'] == null ? null : (map['filterPattern'] as String).input(),
-      logGroupName: map['logGroupName'] == null ? null : (map['logGroupName'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      destinationArn: map['destinationArn'] == null ? null : (map['destinationArn']! as String).input(),
+      distribution: map['distribution'] == null ? null : (map['distribution']! as String).input(),
+      filterName: map['filterName'] == null ? null : (map['filterName']! as String).input(),
+      filterPattern: map['filterPattern'] == null ? null : (map['filterPattern']! as String).input(),
+      logGroupName: map['logGroupName'] == null ? null : (map['logGroupName']! as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
     );
   }
 }

@@ -117,18 +117,18 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
 
   factory RuntimeVirtualMachineVirtualMachineConfigDataDisk.fromMap(Map<String, dynamic> map) {
     return RuntimeVirtualMachineVirtualMachineConfigDataDisk(
-      autoDelete: map['autoDelete'] == null ? null : (map['autoDelete'] as bool).input(),
-      boot: map['boot'] == null ? null : (map['boot'] as bool).input(),
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
-      guestOsFeatures: map['guestOsFeatures'] == null ? null : ((map['guestOsFeatures'] as List).cast<String>()).input(),
-      index: map['index'] == null ? null : (map['index'] as int).input(),
-      initializeParams: map['initializeParams'] == null ? null : (RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams.fromMap((map['initializeParams'] as Map).cast<String, dynamic>())).input(),
-      interface: map['interface'] == null ? null : (map['interface'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      licenses: map['licenses'] == null ? null : ((map['licenses'] as List).cast<String>()).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      autoDelete: map['autoDelete'] == null ? null : (map['autoDelete']! as bool).input(),
+      boot: map['boot'] == null ? null : (map['boot']! as bool).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName']! as String).input(),
+      guestOsFeatures: map['guestOsFeatures'] == null ? null : ((map['guestOsFeatures']! as List).cast<String>()).input(),
+      index: map['index'] == null ? null : (map['index']! as int).input(),
+      initializeParams: map['initializeParams'] == null ? null : (RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams.fromMap((map['initializeParams']! as Map).cast<String, dynamic>())).input(),
+      interface: map['interface'] == null ? null : (map['interface']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      licenses: map['licenses'] == null ? null : ((map['licenses']! as List).cast<String>()).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

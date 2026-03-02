@@ -48,9 +48,9 @@ class CapacityRequestPolicy {
 
   factory CapacityRequestPolicy.fromMap(Map<String, dynamic> map) {
     return CapacityRequestPolicy(
-      default_: map['default'] == null ? null : (map['default'] as String).input(),
-      validRange: map['validRange'] == null ? null : (CapacityRequestPolicyRange.fromMap((map['validRange'] as Map).cast<String, dynamic>())).input(),
-      validValues: map['validValues'] == null ? null : ((map['validValues'] as List).cast<String>()).input(),
+      default_: map['default'] == null ? null : (map['default']! as String).input(),
+      validRange: map['validRange'] == null ? null : (CapacityRequestPolicyRange.fromMap((map['validRange']! as Map).cast<String, dynamic>())).input(),
+      validValues: map['validValues'] == null ? null : ((map['validValues']! as List).cast<String>()).input(),
     );
   }
 }

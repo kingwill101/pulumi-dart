@@ -27,8 +27,8 @@ class RuntimeJava {
 
   factory RuntimeJava.fromMap(Map<String, dynamic> map) {
     return RuntimeJava(
-      enableMetrics: map['enableMetrics'] == null ? null : (map['enableMetrics'] as bool).input(),
-      javaAgent: map['javaAgent'] == null ? null : (RuntimeJavaAgent.fromMap((map['javaAgent'] as Map).cast<String, dynamic>())).input(),
+      enableMetrics: map['enableMetrics'] == null ? null : (map['enableMetrics']! as bool).input(),
+      javaAgent: map['javaAgent'] == null ? null : (RuntimeJavaAgent.fromMap((map['javaAgent']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

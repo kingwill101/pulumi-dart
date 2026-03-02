@@ -34,9 +34,9 @@ class NGroupContainerGroupProperties {
 
   factory NGroupContainerGroupProperties.fromMap(Map<String, dynamic> map) {
     return NGroupContainerGroupProperties(
-      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<NGroupCGPropertyContainer>(map['containers'], (value) => NGroupCGPropertyContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subnetIds: map['subnetIds'] == null ? null : (pulumi.Input.decodeList<ContainerGroupSubnetId>(map['subnetIds'], (value) => ContainerGroupSubnetId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<NGroupCGPropertyVolume>(map['volumes'], (value) => NGroupCGPropertyVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<NGroupCGPropertyContainer>(map['containers']!, (value) => NGroupCGPropertyContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subnetIds: map['subnetIds'] == null ? null : (pulumi.Input.decodeList<ContainerGroupSubnetId>(map['subnetIds']!, (value) => ContainerGroupSubnetId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<NGroupCGPropertyVolume>(map['volumes']!, (value) => NGroupCGPropertyVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

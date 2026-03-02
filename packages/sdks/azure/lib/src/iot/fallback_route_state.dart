@@ -46,12 +46,12 @@ class FallbackRouteState {
 
   factory FallbackRouteState.fromMap(Map<String, dynamic> map) {
     return FallbackRouteState(
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      endpointNames: map['endpointNames'] == null ? null : (map['endpointNames'] as String).input(),
-      iothubName: map['iothubName'] == null ? null : (map['iothubName'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      endpointNames: map['endpointNames'] == null ? null : (map['endpointNames']! as String).input(),
+      iothubName: map['iothubName'] == null ? null : (map['iothubName']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

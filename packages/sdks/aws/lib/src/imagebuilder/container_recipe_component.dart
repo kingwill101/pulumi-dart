@@ -27,7 +27,7 @@ class ContainerRecipeComponent {
   factory ContainerRecipeComponent.fromMap(Map<String, dynamic> map) {
     return ContainerRecipeComponent(
       componentArn: (map['componentArn'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ContainerRecipeComponentParameter>(map['parameters'], (value) => ContainerRecipeComponentParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : ((pulumi.Input.decodeList<ContainerRecipeComponentParameter>(map['parameters']!, (value) => ContainerRecipeComponentParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

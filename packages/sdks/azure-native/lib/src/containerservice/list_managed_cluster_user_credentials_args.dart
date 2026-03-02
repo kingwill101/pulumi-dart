@@ -39,10 +39,10 @@ class ListManagedClusterUserCredentialsArgs {
 
   factory ListManagedClusterUserCredentialsArgs.fromMap(Map<String, dynamic> map) {
     return ListManagedClusterUserCredentialsArgs(
-      format: map['format'] == null ? null : (map['format'] as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
-      serverFqdn: map['serverFqdn'] == null ? null : (map['serverFqdn'] as String).input(),
+      serverFqdn: map['serverFqdn'] == null ? null : (map['serverFqdn']! as String).input(),
     );
   }
 }

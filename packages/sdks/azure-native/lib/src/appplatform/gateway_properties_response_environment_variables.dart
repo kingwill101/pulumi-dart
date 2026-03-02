@@ -26,8 +26,8 @@ class GatewayPropertiesResponseEnvironmentVariables {
 
   factory GatewayPropertiesResponseEnvironmentVariables.fromMap(Map<String, dynamic> map) {
     return GatewayPropertiesResponseEnvironmentVariables(
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      secrets: map['secrets'] == null ? null : ((map['secrets'] as Map).cast<String, String>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      secrets: map['secrets'] == null ? null : ((map['secrets']! as Map).cast<String, String>()).input(),
     );
   }
 }

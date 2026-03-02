@@ -36,10 +36,10 @@ class LicationLoadBalancerFrontendState {
 
   factory LicationLoadBalancerFrontendState.fromMap(Map<String, dynamic> map) {
     return LicationLoadBalancerFrontendState(
-      applicationLoadBalancerId: map['applicationLoadBalancerId'] == null ? null : (map['applicationLoadBalancerId'] as String).input(),
-      fullyQualifiedDomainName: map['fullyQualifiedDomainName'] == null ? null : (map['fullyQualifiedDomainName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      applicationLoadBalancerId: map['applicationLoadBalancerId'] == null ? null : (map['applicationLoadBalancerId']! as String).input(),
+      fullyQualifiedDomainName: map['fullyQualifiedDomainName'] == null ? null : (map['fullyQualifiedDomainName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

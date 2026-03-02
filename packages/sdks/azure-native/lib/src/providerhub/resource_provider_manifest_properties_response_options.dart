@@ -20,7 +20,7 @@ class ResourceProviderManifestPropertiesResponseOptions {
 
   factory ResourceProviderManifestPropertiesResponseOptions.fromMap(Map<String, dynamic> map) {
     return ResourceProviderManifestPropertiesResponseOptions(
-      serviceClientOptionsType: map['serviceClientOptionsType'] == null ? null : (map['serviceClientOptionsType'] as String).input(),
+      serviceClientOptionsType: map['serviceClientOptionsType'] == null ? null : (map['serviceClientOptionsType']! as String).input(),
     );
   }
 }

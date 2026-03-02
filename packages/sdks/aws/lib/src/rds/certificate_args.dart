@@ -30,7 +30,7 @@ class CertificateArgs {
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
       certificateIdentifier: (map['certificateIdentifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

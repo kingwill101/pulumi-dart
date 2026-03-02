@@ -50,7 +50,7 @@ class ErrorDetailResponse {
       additionalInfo: (pulumi.Input.decodeList<ErrorAdditionalInfoResponse>(map['additionalInfo'], (value) => ErrorAdditionalInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       code: (map['code'] as String).input(),
       details: (pulumi.Input.decodeList<ErrorDetailResponse>(map['details'], (value) => ErrorDetailResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      exception: map['exception'] == null ? null : (map['exception'] as String).input(),
+      exception: map['exception'] == null ? null : (map['exception']! as String).input(),
       message: (map['message'] as String).input(),
       target: (map['target'] as String).input(),
     );

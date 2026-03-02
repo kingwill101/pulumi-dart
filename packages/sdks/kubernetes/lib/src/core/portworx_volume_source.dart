@@ -31,8 +31,8 @@ class PortworxVolumeSource {
 
   factory PortworxVolumeSource.fromMap(Map<String, dynamic> map) {
     return PortworxVolumeSource(
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
       volumeID: (map['volumeID'] as String).input(),
     );
   }

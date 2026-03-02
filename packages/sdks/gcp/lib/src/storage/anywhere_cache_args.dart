@@ -41,9 +41,9 @@ class AnywhereCacheArgs {
 
   factory AnywhereCacheArgs.fromMap(Map<String, dynamic> map) {
     return AnywhereCacheArgs(
-      admissionPolicy: map['admissionPolicy'] == null ? null : (map['admissionPolicy'] as String).input(),
+      admissionPolicy: map['admissionPolicy'] == null ? null : (map['admissionPolicy']! as String).input(),
       bucket: (map['bucket'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as String).input(),
       zone: (map['zone'] as String).input(),
     );
   }

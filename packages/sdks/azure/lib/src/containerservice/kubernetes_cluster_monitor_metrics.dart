@@ -27,8 +27,8 @@ class KubernetesClusterMonitorMetrics {
 
   factory KubernetesClusterMonitorMetrics.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterMonitorMetrics(
-      annotationsAllowed: map['annotationsAllowed'] == null ? null : (map['annotationsAllowed'] as String).input(),
-      labelsAllowed: map['labelsAllowed'] == null ? null : (map['labelsAllowed'] as String).input(),
+      annotationsAllowed: map['annotationsAllowed'] == null ? null : (map['annotationsAllowed']! as String).input(),
+      labelsAllowed: map['labelsAllowed'] == null ? null : (map['labelsAllowed']! as String).input(),
     );
   }
 }

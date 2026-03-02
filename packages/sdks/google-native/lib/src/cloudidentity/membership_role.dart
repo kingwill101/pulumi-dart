@@ -33,9 +33,9 @@ class MembershipRole {
 
   factory MembershipRole.fromMap(Map<String, dynamic> map) {
     return MembershipRole(
-      expiryDetail: map['expiryDetail'] == null ? null : (ExpiryDetail.fromMap((map['expiryDetail'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      restrictionEvaluations: map['restrictionEvaluations'] == null ? null : (RestrictionEvaluations.fromMap((map['restrictionEvaluations'] as Map).cast<String, dynamic>())).input(),
+      expiryDetail: map['expiryDetail'] == null ? null : (ExpiryDetail.fromMap((map['expiryDetail']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      restrictionEvaluations: map['restrictionEvaluations'] == null ? null : (RestrictionEvaluations.fromMap((map['restrictionEvaluations']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -40,11 +40,11 @@ class WorkspaceWorkspaceProperties {
 
   factory WorkspaceWorkspaceProperties.fromMap(Map<String, dynamic> map) {
     return WorkspaceWorkspaceProperties(
-      computeTypeName: map['computeTypeName'] == null ? null : (map['computeTypeName'] as String).input(),
-      rootVolumeSizeGib: map['rootVolumeSizeGib'] == null ? null : (map['rootVolumeSizeGib'] as int).input(),
-      runningMode: map['runningMode'] == null ? null : (map['runningMode'] as String).input(),
-      runningModeAutoStopTimeoutInMinutes: map['runningModeAutoStopTimeoutInMinutes'] == null ? null : (map['runningModeAutoStopTimeoutInMinutes'] as int).input(),
-      userVolumeSizeGib: map['userVolumeSizeGib'] == null ? null : (map['userVolumeSizeGib'] as int).input(),
+      computeTypeName: map['computeTypeName'] == null ? null : ((map['computeTypeName'] as String).input()).input(),
+      rootVolumeSizeGib: map['rootVolumeSizeGib'] == null ? null : ((map['rootVolumeSizeGib'] as int).input()).input(),
+      runningMode: map['runningMode'] == null ? null : ((map['runningMode'] as String).input()).input(),
+      runningModeAutoStopTimeoutInMinutes: map['runningModeAutoStopTimeoutInMinutes'] == null ? null : ((map['runningModeAutoStopTimeoutInMinutes'] as int).input()).input(),
+      userVolumeSizeGib: map['userVolumeSizeGib'] == null ? null : ((map['userVolumeSizeGib'] as int).input()).input(),
     );
   }
 }

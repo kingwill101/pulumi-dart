@@ -27,8 +27,8 @@ class RecurrenceScheduleOccurrence {
 
   factory RecurrenceScheduleOccurrence.fromMap(Map<String, dynamic> map) {
     return RecurrenceScheduleOccurrence(
-      day: map['day'] == null ? null : (DayOfWeek.fromValue(map['day'] as String)).input(),
-      occurrence: map['occurrence'] == null ? null : (map['occurrence'] as int).input(),
+      day: map['day'] == null ? null : (DayOfWeek.fromValue(map['day']! as String)).input(),
+      occurrence: map['occurrence'] == null ? null : (map['occurrence']! as int).input(),
     );
   }
 }

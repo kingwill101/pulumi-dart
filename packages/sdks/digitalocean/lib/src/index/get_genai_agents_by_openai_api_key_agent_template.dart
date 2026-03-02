@@ -78,17 +78,17 @@ class GetGenaiAgentsByOpenaiApiKeyAgentTemplate {
   factory GetGenaiAgentsByOpenaiApiKeyAgentTemplate.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentsByOpenaiApiKeyAgentTemplate(
       createdAt: (map['createdAt'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      instruction: map['instruction'] == null ? null : (map['instruction'] as String).input(),
-      k: map['k'] == null ? null : (map['k'] as int).input(),
-      knowledgeBases: map['knowledgeBases'] == null ? null : (pulumi.Input.decodeList<GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase>(map['knowledgeBases'], (value) => GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maxTokens: map['maxTokens'] == null ? null : (map['maxTokens'] as int).input(),
-      models: map['models'] == null ? null : (pulumi.Input.decodeList<GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel>(map['models'], (value) => GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      temperature: map['temperature'] == null ? null : (map['temperature'] as double).input(),
-      topP: map['topP'] == null ? null : (map['topP'] as double).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      instruction: map['instruction'] == null ? null : (map['instruction']! as String).input(),
+      k: map['k'] == null ? null : (map['k']! as int).input(),
+      knowledgeBases: map['knowledgeBases'] == null ? null : (pulumi.Input.decodeList<GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase>(map['knowledgeBases']!, (value) => GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxTokens: map['maxTokens'] == null ? null : (map['maxTokens']! as int).input(),
+      models: map['models'] == null ? null : (pulumi.Input.decodeList<GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel>(map['models']!, (value) => GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      temperature: map['temperature'] == null ? null : (map['temperature']! as double).input(),
+      topP: map['topP'] == null ? null : (map['topP']! as double).input(),
       updatedAt: (map['updatedAt'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

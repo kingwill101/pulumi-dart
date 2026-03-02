@@ -45,7 +45,7 @@ class PlanResponse {
 
   factory PlanResponse.fromMap(Map<String, dynamic> map) {
     return PlanResponse(
-      accessibility: map['accessibility'] == null ? null : (map['accessibility'] as String).input(),
+      accessibility: map['accessibility'] == null ? null : (map['accessibility']! as String).input(),
       altStackReference: (map['altStackReference'] as String).input(),
       planDisplayName: (map['planDisplayName'] as String).input(),
       planId: (map['planId'] as String).input(),

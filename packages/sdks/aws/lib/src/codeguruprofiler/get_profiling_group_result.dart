@@ -65,13 +65,13 @@ class GetProfilingGroupResult {
 
   factory GetProfilingGroupResult.fromMap(Map<String, dynamic> map) {
     return GetProfilingGroupResult(
-      agentOrchestrationConfigs: pulumi.Input.decodeList<GetProfilingGroupAgentOrchestrationConfig>(map['agentOrchestrationConfigs'], (value) => GetProfilingGroupAgentOrchestrationConfig.fromMap((value as Map).cast<String, dynamic>())),
+      agentOrchestrationConfigs: pulumi.Input.decodeList<GetProfilingGroupAgentOrchestrationConfig>(map['agentOrchestrationConfigs']!, (value) => GetProfilingGroupAgentOrchestrationConfig.fromMap((value as Map).cast<String, dynamic>())),
       arn: map['arn'] as String,
       computePlatform: map['computePlatform'] as String,
       createdAt: map['createdAt'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      profilingStatuses: pulumi.Input.decodeList<GetProfilingGroupProfilingStatus>(map['profilingStatuses'], (value) => GetProfilingGroupProfilingStatus.fromMap((value as Map).cast<String, dynamic>())),
+      profilingStatuses: pulumi.Input.decodeList<GetProfilingGroupProfilingStatus>(map['profilingStatuses']!, (value) => GetProfilingGroupProfilingStatus.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       updatedAt: map['updatedAt'] as String,

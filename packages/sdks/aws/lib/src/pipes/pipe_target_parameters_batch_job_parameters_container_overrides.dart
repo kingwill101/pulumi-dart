@@ -37,10 +37,10 @@ class PipeTargetParametersBatchJobParametersContainerOverrides {
 
   factory PipeTargetParametersBatchJobParametersContainerOverrides.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersBatchJobParametersContainerOverrides(
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      environments: map['environments'] == null ? null : (pulumi.Input.decodeList<PipeTargetParametersBatchJobParametersContainerOverridesEnvironment>(map['environments'], (value) => PipeTargetParametersBatchJobParametersContainerOverridesEnvironment.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      resourceRequirements: map['resourceRequirements'] == null ? null : (pulumi.Input.decodeList<PipeTargetParametersBatchJobParametersContainerOverridesResourceRequirement>(map['resourceRequirements'], (value) => PipeTargetParametersBatchJobParametersContainerOverridesResourceRequirement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      commands: map['commands'] == null ? null : (((map['commands'] as List).cast<String>()).input()).input(),
+      environments: map['environments'] == null ? null : ((pulumi.Input.decodeList<PipeTargetParametersBatchJobParametersContainerOverridesEnvironment>(map['environments']!, (value) => PipeTargetParametersBatchJobParametersContainerOverridesEnvironment.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      instanceType: map['instanceType'] == null ? null : ((map['instanceType'] as String).input()).input(),
+      resourceRequirements: map['resourceRequirements'] == null ? null : ((pulumi.Input.decodeList<PipeTargetParametersBatchJobParametersContainerOverridesResourceRequirement>(map['resourceRequirements']!, (value) => PipeTargetParametersBatchJobParametersContainerOverridesResourceRequirement.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

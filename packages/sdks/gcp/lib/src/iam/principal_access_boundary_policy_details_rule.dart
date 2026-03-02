@@ -38,7 +38,7 @@ class PrincipalAccessBoundaryPolicyDetailsRule {
 
   factory PrincipalAccessBoundaryPolicyDetailsRule.fromMap(Map<String, dynamic> map) {
     return PrincipalAccessBoundaryPolicyDetailsRule(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       effect: (map['effect'] as String).input(),
       resources: ((map['resources'] as List).cast<String>()).input(),
     );

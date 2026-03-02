@@ -72,14 +72,14 @@ class BmcKeySetArgs {
   factory BmcKeySetArgs.fromMap(Map<String, dynamic> map) {
     return BmcKeySetArgs(
       azureGroupId: (map['azureGroupId'] as String).input(),
-      bmcKeySetName: map['bmcKeySetName'] == null ? null : (map['bmcKeySetName'] as String).input(),
+      bmcKeySetName: map['bmcKeySetName'] == null ? null : (map['bmcKeySetName']! as String).input(),
       clusterName: (map['clusterName'] as String).input(),
       expiration: (map['expiration'] as String).input(),
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       privilegeLevel: (map['privilegeLevel'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       userList: (pulumi.Input.decodeList<KeySetUser>(map['userList'], (value) => KeySetUser.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

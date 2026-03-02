@@ -40,10 +40,10 @@ class WorkloadsConfig {
 
   factory WorkloadsConfig.fromMap(Map<String, dynamic> map) {
     return WorkloadsConfig(
-      scheduler: map['scheduler'] == null ? null : (SchedulerResource.fromMap((map['scheduler'] as Map).cast<String, dynamic>())).input(),
-      triggerer: map['triggerer'] == null ? null : (TriggererResource.fromMap((map['triggerer'] as Map).cast<String, dynamic>())).input(),
-      webServer: map['webServer'] == null ? null : (WebServerResource.fromMap((map['webServer'] as Map).cast<String, dynamic>())).input(),
-      worker: map['worker'] == null ? null : (WorkerResource.fromMap((map['worker'] as Map).cast<String, dynamic>())).input(),
+      scheduler: map['scheduler'] == null ? null : (SchedulerResource.fromMap((map['scheduler']! as Map).cast<String, dynamic>())).input(),
+      triggerer: map['triggerer'] == null ? null : (TriggererResource.fromMap((map['triggerer']! as Map).cast<String, dynamic>())).input(),
+      webServer: map['webServer'] == null ? null : (WebServerResource.fromMap((map['webServer']! as Map).cast<String, dynamic>())).input(),
+      worker: map['worker'] == null ? null : (WorkerResource.fromMap((map['worker']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

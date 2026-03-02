@@ -22,7 +22,7 @@ class CustomRuleList {
 
   factory CustomRuleList.fromMap(Map<String, dynamic> map) {
     return CustomRuleList(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<CustomRule>(map['rules'], (value) => CustomRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<CustomRule>(map['rules']!, (value) => CustomRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

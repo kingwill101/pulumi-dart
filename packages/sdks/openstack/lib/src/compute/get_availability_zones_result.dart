@@ -36,7 +36,7 @@ class GetAvailabilityZonesResult {
       id: map['id'] as String,
       names: (map['names'] as List).cast<String>(),
       region: map['region'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      state: map['state'] == null ? null : map['state']! as String,
     );
   }
 }

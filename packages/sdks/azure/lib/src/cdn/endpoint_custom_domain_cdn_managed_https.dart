@@ -34,7 +34,7 @@ class EndpointCustomDomainCdnManagedHttps {
     return EndpointCustomDomainCdnManagedHttps(
       certificateType: (map['certificateType'] as String).input(),
       protocolType: (map['protocolType'] as String).input(),
-      tlsVersion: map['tlsVersion'] == null ? null : (map['tlsVersion'] as String).input(),
+      tlsVersion: map['tlsVersion'] == null ? null : (map['tlsVersion']! as String).input(),
     );
   }
 }

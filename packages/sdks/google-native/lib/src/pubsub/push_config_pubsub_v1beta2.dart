@@ -32,9 +32,9 @@ class PushConfigPubsubV1beta2 {
 
   factory PushConfigPubsubV1beta2.fromMap(Map<String, dynamic> map) {
     return PushConfigPubsubV1beta2(
-      attributes: map['attributes'] == null ? null : ((map['attributes'] as Map).cast<String, String>()).input(),
-      oidcToken: map['oidcToken'] == null ? null : (OidcTokenPubsubV1beta2.fromMap((map['oidcToken'] as Map).cast<String, dynamic>())).input(),
-      pushEndpoint: map['pushEndpoint'] == null ? null : (map['pushEndpoint'] as String).input(),
+      attributes: map['attributes'] == null ? null : ((map['attributes']! as Map).cast<String, String>()).input(),
+      oidcToken: map['oidcToken'] == null ? null : (OidcTokenPubsubV1beta2.fromMap((map['oidcToken']! as Map).cast<String, dynamic>())).input(),
+      pushEndpoint: map['pushEndpoint'] == null ? null : (map['pushEndpoint']! as String).input(),
     );
   }
 }

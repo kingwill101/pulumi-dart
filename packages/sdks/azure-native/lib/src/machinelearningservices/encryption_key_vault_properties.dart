@@ -30,7 +30,7 @@ class EncryptionKeyVaultProperties {
 
   factory EncryptionKeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return EncryptionKeyVaultProperties(
-      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId']! as String).input(),
       keyIdentifier: (map['keyIdentifier'] as String).input(),
       keyVaultArmId: (map['keyVaultArmId'] as String).input(),
     );

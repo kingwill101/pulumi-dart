@@ -37,10 +37,10 @@ class ConnectionProfile {
 
   factory ConnectionProfile.fromMap(Map<String, dynamic> map) {
     return ConnectionProfile(
-      clientRdpAccess: map['clientRdpAccess'] == null ? null : (ConnectionType.fromValue(map['clientRdpAccess'] as String)).input(),
-      clientSshAccess: map['clientSshAccess'] == null ? null : (ConnectionType.fromValue(map['clientSshAccess'] as String)).input(),
-      webRdpAccess: map['webRdpAccess'] == null ? null : (ConnectionType.fromValue(map['webRdpAccess'] as String)).input(),
-      webSshAccess: map['webSshAccess'] == null ? null : (ConnectionType.fromValue(map['webSshAccess'] as String)).input(),
+      clientRdpAccess: map['clientRdpAccess'] == null ? null : (ConnectionType.fromValue(map['clientRdpAccess']! as String)).input(),
+      clientSshAccess: map['clientSshAccess'] == null ? null : (ConnectionType.fromValue(map['clientSshAccess']! as String)).input(),
+      webRdpAccess: map['webRdpAccess'] == null ? null : (ConnectionType.fromValue(map['webRdpAccess']! as String)).input(),
+      webSshAccess: map['webSshAccess'] == null ? null : (ConnectionType.fromValue(map['webSshAccess']! as String)).input(),
     );
   }
 }

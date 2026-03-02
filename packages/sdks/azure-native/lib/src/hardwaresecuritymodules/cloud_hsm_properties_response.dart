@@ -31,9 +31,9 @@ class CloudHsmPropertiesResponse {
 
   factory CloudHsmPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CloudHsmPropertiesResponse(
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      stateMessage: map['stateMessage'] == null ? null : (map['stateMessage'] as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      stateMessage: map['stateMessage'] == null ? null : (map['stateMessage']! as String).input(),
     );
   }
 }

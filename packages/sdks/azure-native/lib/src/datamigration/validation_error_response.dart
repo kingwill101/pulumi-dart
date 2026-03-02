@@ -26,8 +26,8 @@ class ValidationErrorResponse {
 
   factory ValidationErrorResponse.fromMap(Map<String, dynamic> map) {
     return ValidationErrorResponse(
-      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
     );
   }
 }

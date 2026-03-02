@@ -27,7 +27,7 @@ class OSPolicyResourcePackageResourceDeb {
 
   factory OSPolicyResourcePackageResourceDeb.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourcePackageResourceDeb(
-      pullDeps: map['pullDeps'] == null ? null : (map['pullDeps'] as bool).input(),
+      pullDeps: map['pullDeps'] == null ? null : (map['pullDeps']! as bool).input(),
       source: (OSPolicyResourceFile.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }

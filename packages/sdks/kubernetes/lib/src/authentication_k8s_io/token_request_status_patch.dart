@@ -26,8 +26,8 @@ class TokenRequestStatusPatch {
 
   factory TokenRequestStatusPatch.fromMap(Map<String, dynamic> map) {
     return TokenRequestStatusPatch(
-      expirationTimestamp: map['expirationTimestamp'] == null ? null : (map['expirationTimestamp'] as String).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
+      expirationTimestamp: map['expirationTimestamp'] == null ? null : (map['expirationTimestamp']! as String).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
     );
   }
 }

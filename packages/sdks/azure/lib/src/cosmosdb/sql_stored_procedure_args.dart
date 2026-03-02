@@ -53,7 +53,7 @@ class SqlStoredProcedureArgs {
       body: (map['body'] as String).input(),
       containerName: (map['containerName'] as String).input(),
       databaseName: (map['databaseName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

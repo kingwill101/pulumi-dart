@@ -19,7 +19,7 @@ class FeaturesCognitiveAccount {
 
   factory FeaturesCognitiveAccount.fromMap(Map<String, dynamic> map) {
     return FeaturesCognitiveAccount(
-      purgeSoftDeleteOnDestroy: map['purgeSoftDeleteOnDestroy'] == null ? null : (map['purgeSoftDeleteOnDestroy'] as bool).input(),
+      purgeSoftDeleteOnDestroy: map['purgeSoftDeleteOnDestroy'] == null ? null : (map['purgeSoftDeleteOnDestroy']! as bool).input(),
     );
   }
 }

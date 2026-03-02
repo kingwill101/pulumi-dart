@@ -35,9 +35,9 @@ class FunctionArg {
 
   factory FunctionArg.fromMap(Map<String, dynamic> map) {
     return FunctionArg(
-      default_: map['default'] == null ? null : (map['default'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      default_: map['default'] == null ? null : (map['default']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

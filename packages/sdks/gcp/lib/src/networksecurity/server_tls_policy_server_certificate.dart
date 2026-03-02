@@ -30,8 +30,8 @@ class ServerTlsPolicyServerCertificate {
 
   factory ServerTlsPolicyServerCertificate.fromMap(Map<String, dynamic> map) {
     return ServerTlsPolicyServerCertificate(
-      certificateProviderInstance: map['certificateProviderInstance'] == null ? null : (ServerTlsPolicyServerCertificateCertificateProviderInstance.fromMap((map['certificateProviderInstance'] as Map).cast<String, dynamic>())).input(),
-      grpcEndpoint: map['grpcEndpoint'] == null ? null : (ServerTlsPolicyServerCertificateGrpcEndpoint.fromMap((map['grpcEndpoint'] as Map).cast<String, dynamic>())).input(),
+      certificateProviderInstance: map['certificateProviderInstance'] == null ? null : (ServerTlsPolicyServerCertificateCertificateProviderInstance.fromMap((map['certificateProviderInstance']! as Map).cast<String, dynamic>())).input(),
+      grpcEndpoint: map['grpcEndpoint'] == null ? null : (ServerTlsPolicyServerCertificateGrpcEndpoint.fromMap((map['grpcEndpoint']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

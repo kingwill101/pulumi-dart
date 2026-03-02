@@ -60,14 +60,14 @@ class Discovered {
 
   factory Discovered.fromMap(Map<String, dynamic> map) {
     return Discovered(
-      analysisCompleted: map['analysisCompleted'] == null ? null : (AnalysisCompletedContaineranalysisV1alpha1.fromMap((map['analysisCompleted'] as Map).cast<String, dynamic>())).input(),
-      analysisError: map['analysisError'] == null ? null : (pulumi.Input.decodeList<StatusContaineranalysisV1alpha1>(map['analysisError'], (value) => StatusContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      analysisStatus: map['analysisStatus'] == null ? null : (DiscoveredAnalysisStatus.fromValue(map['analysisStatus'] as String)).input(),
-      analysisStatusError: map['analysisStatusError'] == null ? null : (StatusContaineranalysisV1alpha1.fromMap((map['analysisStatusError'] as Map).cast<String, dynamic>())).input(),
-      archiveTime: map['archiveTime'] == null ? null : (map['archiveTime'] as String).input(),
-      continuousAnalysis: map['continuousAnalysis'] == null ? null : (DiscoveredContinuousAnalysis.fromValue(map['continuousAnalysis'] as String)).input(),
-      cpe: map['cpe'] == null ? null : (map['cpe'] as String).input(),
-      lastScanTime: map['lastScanTime'] == null ? null : (map['lastScanTime'] as String).input(),
+      analysisCompleted: map['analysisCompleted'] == null ? null : (AnalysisCompletedContaineranalysisV1alpha1.fromMap((map['analysisCompleted']! as Map).cast<String, dynamic>())).input(),
+      analysisError: map['analysisError'] == null ? null : (pulumi.Input.decodeList<StatusContaineranalysisV1alpha1>(map['analysisError']!, (value) => StatusContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      analysisStatus: map['analysisStatus'] == null ? null : (DiscoveredAnalysisStatus.fromValue(map['analysisStatus']! as String)).input(),
+      analysisStatusError: map['analysisStatusError'] == null ? null : (StatusContaineranalysisV1alpha1.fromMap((map['analysisStatusError']! as Map).cast<String, dynamic>())).input(),
+      archiveTime: map['archiveTime'] == null ? null : (map['archiveTime']! as String).input(),
+      continuousAnalysis: map['continuousAnalysis'] == null ? null : (DiscoveredContinuousAnalysis.fromValue(map['continuousAnalysis']! as String)).input(),
+      cpe: map['cpe'] == null ? null : (map['cpe']! as String).input(),
+      lastScanTime: map['lastScanTime'] == null ? null : (map['lastScanTime']! as String).input(),
     );
   }
 }

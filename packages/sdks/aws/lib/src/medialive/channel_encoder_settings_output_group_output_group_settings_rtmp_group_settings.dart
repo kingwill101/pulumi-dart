@@ -50,13 +50,13 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsRtmpGroupSettings {
 
   factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsRtmpGroupSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsRtmpGroupSettings(
-      adMarkers: map['adMarkers'] == null ? null : ((map['adMarkers'] as List).cast<String>()).input(),
-      authenticationScheme: map['authenticationScheme'] == null ? null : (map['authenticationScheme'] as String).input(),
-      cacheFullBehavior: map['cacheFullBehavior'] == null ? null : (map['cacheFullBehavior'] as String).input(),
-      cacheLength: map['cacheLength'] == null ? null : (map['cacheLength'] as int).input(),
-      captionData: map['captionData'] == null ? null : (map['captionData'] as String).input(),
-      inputLossAction: map['inputLossAction'] == null ? null : (map['inputLossAction'] as String).input(),
-      restartDelay: map['restartDelay'] == null ? null : (map['restartDelay'] as int).input(),
+      adMarkers: map['adMarkers'] == null ? null : (((map['adMarkers'] as List).cast<String>()).input()).input(),
+      authenticationScheme: map['authenticationScheme'] == null ? null : ((map['authenticationScheme'] as String).input()).input(),
+      cacheFullBehavior: map['cacheFullBehavior'] == null ? null : ((map['cacheFullBehavior'] as String).input()).input(),
+      cacheLength: map['cacheLength'] == null ? null : ((map['cacheLength'] as int).input()).input(),
+      captionData: map['captionData'] == null ? null : ((map['captionData'] as String).input()).input(),
+      inputLossAction: map['inputLossAction'] == null ? null : ((map['inputLossAction'] as String).input()).input(),
+      restartDelay: map['restartDelay'] == null ? null : ((map['restartDelay'] as int).input()).input(),
     );
   }
 }

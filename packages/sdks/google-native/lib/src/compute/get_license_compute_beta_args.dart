@@ -28,7 +28,7 @@ class GetLicenseComputeBetaArgs {
   factory GetLicenseComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetLicenseComputeBetaArgs(
       license: (map['license'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -51,13 +51,13 @@ class PoolSourceAdapter {
 
   factory PoolSourceAdapter.fromMap(Map<String, dynamic> map) {
     return PoolSourceAdapter(
-      managed: map['managed'] == null ? null : (map['managed'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      parentAddr: map['parentAddr'] == null ? null : (PoolSourceAdapterParentAddr.fromMap((map['parentAddr'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      wwnn: map['wwnn'] == null ? null : (map['wwnn'] as String).input(),
-      wwpn: map['wwpn'] == null ? null : (map['wwpn'] as String).input(),
+      managed: map['managed'] == null ? null : (map['managed']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      parentAddr: map['parentAddr'] == null ? null : (PoolSourceAdapterParentAddr.fromMap((map['parentAddr']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      wwnn: map['wwnn'] == null ? null : (map['wwnn']! as String).input(),
+      wwpn: map['wwpn'] == null ? null : (map['wwpn']! as String).input(),
     );
   }
 }

@@ -40,8 +40,8 @@ class ServiceLevelEvents {
   factory ServiceLevelEvents.fromMap(Map<String, dynamic> map) {
     return ServiceLevelEvents(
       accountId: (map['accountId'] as String).input(),
-      badEvents: map['badEvents'] == null ? null : (ServiceLevelEventsBadEvents.fromMap((map['badEvents'] as Map).cast<String, dynamic>())).input(),
-      goodEvents: map['goodEvents'] == null ? null : (ServiceLevelEventsGoodEvents.fromMap((map['goodEvents'] as Map).cast<String, dynamic>())).input(),
+      badEvents: map['badEvents'] == null ? null : (ServiceLevelEventsBadEvents.fromMap((map['badEvents']! as Map).cast<String, dynamic>())).input(),
+      goodEvents: map['goodEvents'] == null ? null : (ServiceLevelEventsGoodEvents.fromMap((map['goodEvents']! as Map).cast<String, dynamic>())).input(),
       validEvents: (ServiceLevelEventsValidEvents.fromMap((map['validEvents'] as Map).cast<String, dynamic>())).input(),
     );
   }

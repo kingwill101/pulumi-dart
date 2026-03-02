@@ -39,7 +39,7 @@ class DynamicDetectionRuleResponse {
       dynamicThresholdDirection: (map['dynamicThresholdDirection'] as String).input(),
       dynamicThresholdModel: (map['dynamicThresholdModel'] as String).input(),
       modelSensitivity: (map['modelSensitivity'] as double).input(),
-      trainingStartTime: map['trainingStartTime'] == null ? null : (map['trainingStartTime'] as String).input(),
+      trainingStartTime: map['trainingStartTime'] == null ? null : (map['trainingStartTime']! as String).input(),
     );
   }
 }

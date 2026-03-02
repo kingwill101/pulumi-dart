@@ -58,11 +58,11 @@ class JitRequestArgs {
     return JitRequestArgs(
       applicationResourceId: (map['applicationResourceId'] as String).input(),
       jitAuthorizationPolicies: (pulumi.Input.decodeList<JitAuthorizationPolicies>(map['jitAuthorizationPolicies'], (value) => JitAuthorizationPolicies.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      jitRequestName: map['jitRequestName'] == null ? null : (map['jitRequestName'] as String).input(),
+      jitRequestName: map['jitRequestName'] == null ? null : (map['jitRequestName']! as String).input(),
       jitSchedulingPolicy: (JitSchedulingPolicy.fromMap((map['jitSchedulingPolicy'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

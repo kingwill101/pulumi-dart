@@ -54,15 +54,15 @@ class GetListenersResult {
 
   factory GetListenersResult.fromMap(Map<String, dynamic> map) {
     return GetListenersResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      listenerIds: map['listenerIds'] == null ? null : (map['listenerIds'] as List).cast<String>(),
-      listenerProtocol: map['listenerProtocol'] == null ? null : map['listenerProtocol'] as String,
+      listenerIds: map['listenerIds'] == null ? null : (map['listenerIds']! as List).cast<String>(),
+      listenerProtocol: map['listenerProtocol'] == null ? null : map['listenerProtocol']! as String,
       listeners: pulumi.Input.decodeList<GetListenersListener>(map['listeners'], (value) => GetListenersListener.fromMap((value as Map).cast<String, dynamic>())),
-      loadBalancerIds: map['loadBalancerIds'] == null ? null : (map['loadBalancerIds'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      loadBalancerIds: map['loadBalancerIds'] == null ? null : (map['loadBalancerIds']! as List).cast<String>(),
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

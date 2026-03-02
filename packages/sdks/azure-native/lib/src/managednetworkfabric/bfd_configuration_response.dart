@@ -32,8 +32,8 @@ class BfdConfigurationResponse {
   factory BfdConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return BfdConfigurationResponse(
       administrativeState: (map['administrativeState'] as String).input(),
-      intervalInMilliSeconds: map['intervalInMilliSeconds'] == null ? null : (map['intervalInMilliSeconds'] as int).input(),
-      multiplier: map['multiplier'] == null ? null : (map['multiplier'] as int).input(),
+      intervalInMilliSeconds: map['intervalInMilliSeconds'] == null ? null : (map['intervalInMilliSeconds']! as int).input(),
+      multiplier: map['multiplier'] == null ? null : (map['multiplier']! as int).input(),
     );
   }
 }

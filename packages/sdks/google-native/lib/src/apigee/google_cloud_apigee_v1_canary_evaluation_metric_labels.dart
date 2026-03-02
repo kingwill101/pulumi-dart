@@ -31,7 +31,7 @@ class GoogleCloudApigeeV1CanaryEvaluationMetricLabels {
 
   factory GoogleCloudApigeeV1CanaryEvaluationMetricLabels.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1CanaryEvaluationMetricLabels(
-      env: map['env'] == null ? null : (map['env'] as String).input(),
+      env: map['env'] == null ? null : (map['env']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
       location: (map['location'] as String).input(),
     );

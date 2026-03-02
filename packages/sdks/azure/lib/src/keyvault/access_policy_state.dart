@@ -56,14 +56,14 @@ class AccessPolicyState {
 
   factory AccessPolicyState.fromMap(Map<String, dynamic> map) {
     return AccessPolicyState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      certificatePermissions: map['certificatePermissions'] == null ? null : ((map['certificatePermissions'] as List).cast<String>()).input(),
-      keyPermissions: map['keyPermissions'] == null ? null : ((map['keyPermissions'] as List).cast<String>()).input(),
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      secretPermissions: map['secretPermissions'] == null ? null : ((map['secretPermissions'] as List).cast<String>()).input(),
-      storagePermissions: map['storagePermissions'] == null ? null : ((map['storagePermissions'] as List).cast<String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      certificatePermissions: map['certificatePermissions'] == null ? null : ((map['certificatePermissions']! as List).cast<String>()).input(),
+      keyPermissions: map['keyPermissions'] == null ? null : ((map['keyPermissions']! as List).cast<String>()).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      secretPermissions: map['secretPermissions'] == null ? null : ((map['secretPermissions']! as List).cast<String>()).input(),
+      storagePermissions: map['storagePermissions'] == null ? null : ((map['storagePermissions']! as List).cast<String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class GroupMetricRuleTarget {
 
   factory GroupMetricRuleTarget.fromMap(Map<String, dynamic> map) {
     return GroupMetricRuleTarget(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      jsonParams: map['jsonParams'] == null ? null : (map['jsonParams'] as String).input(),
-      level: map['level'] == null ? null : (map['level'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      jsonParams: map['jsonParams'] == null ? null : (map['jsonParams']! as String).input(),
+      level: map['level'] == null ? null : (map['level']! as String).input(),
     );
   }
 }

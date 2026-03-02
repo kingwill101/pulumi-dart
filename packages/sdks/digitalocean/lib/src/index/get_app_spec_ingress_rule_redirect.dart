@@ -35,11 +35,11 @@ class GetAppSpecIngressRuleRedirect {
 
   factory GetAppSpecIngressRuleRedirect.fromMap(Map<String, dynamic> map) {
     return GetAppSpecIngressRuleRedirect(
-      authority: map['authority'] == null ? null : (map['authority'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      redirectCode: map['redirectCode'] == null ? null : (map['redirectCode'] as int).input(),
-      scheme: map['scheme'] == null ? null : (map['scheme'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      authority: map['authority'] == null ? null : (map['authority']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      redirectCode: map['redirectCode'] == null ? null : (map['redirectCode']! as int).input(),
+      scheme: map['scheme'] == null ? null : (map['scheme']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

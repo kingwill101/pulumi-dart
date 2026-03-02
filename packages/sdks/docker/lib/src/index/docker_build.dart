@@ -63,15 +63,15 @@ class DockerBuild {
 
   factory DockerBuild.fromMap(Map<String, dynamic> map) {
     return DockerBuild(
-      addHosts: map['addHosts'] == null ? null : ((map['addHosts'] as List).cast<String>()).input(),
-      args: map['args'] == null ? null : ((map['args'] as Map).cast<String, String>()).input(),
-      builderVersion: map['builderVersion'] == null ? null : (BuilderVersion.fromValue(map['builderVersion'] as String)).input(),
-      cacheFrom: map['cacheFrom'] == null ? null : (CacheFrom.fromMap((map['cacheFrom'] as Map).cast<String, dynamic>())).input(),
-      context: map['context'] == null ? null : (map['context'] as String).input(),
-      dockerfile: map['dockerfile'] == null ? null : (map['dockerfile'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      addHosts: map['addHosts'] == null ? null : ((map['addHosts']! as List).cast<String>()).input(),
+      args: map['args'] == null ? null : ((map['args']! as Map).cast<String, String>()).input(),
+      builderVersion: map['builderVersion'] == null ? null : (BuilderVersion.fromValue(map['builderVersion']! as String)).input(),
+      cacheFrom: map['cacheFrom'] == null ? null : (CacheFrom.fromMap((map['cacheFrom']! as Map).cast<String, dynamic>())).input(),
+      context: map['context'] == null ? null : (map['context']! as String).input(),
+      dockerfile: map['dockerfile'] == null ? null : (map['dockerfile']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      platform: map['platform'] == null ? null : (map['platform']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
     );
   }
 }

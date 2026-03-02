@@ -32,9 +32,9 @@ class BoolEqualsAdvancedFilter {
 
   factory BoolEqualsAdvancedFilter.fromMap(Map<String, dynamic> map) {
     return BoolEqualsAdvancedFilter(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
       operatorType: (map['operatorType'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as bool).input(),
+      value: map['value'] == null ? null : (map['value']! as bool).input(),
     );
   }
 }

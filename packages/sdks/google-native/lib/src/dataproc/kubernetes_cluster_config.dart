@@ -34,8 +34,8 @@ class KubernetesClusterConfig {
   factory KubernetesClusterConfig.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterConfig(
       gkeClusterConfig: (GkeClusterConfig.fromMap((map['gkeClusterConfig'] as Map).cast<String, dynamic>())).input(),
-      kubernetesNamespace: map['kubernetesNamespace'] == null ? null : (map['kubernetesNamespace'] as String).input(),
-      kubernetesSoftwareConfig: map['kubernetesSoftwareConfig'] == null ? null : (KubernetesSoftwareConfig.fromMap((map['kubernetesSoftwareConfig'] as Map).cast<String, dynamic>())).input(),
+      kubernetesNamespace: map['kubernetesNamespace'] == null ? null : (map['kubernetesNamespace']! as String).input(),
+      kubernetesSoftwareConfig: map['kubernetesSoftwareConfig'] == null ? null : (KubernetesSoftwareConfig.fromMap((map['kubernetesSoftwareConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

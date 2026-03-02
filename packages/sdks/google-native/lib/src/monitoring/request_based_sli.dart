@@ -28,8 +28,8 @@ class RequestBasedSli {
 
   factory RequestBasedSli.fromMap(Map<String, dynamic> map) {
     return RequestBasedSli(
-      distributionCut: map['distributionCut'] == null ? null : (DistributionCut.fromMap((map['distributionCut'] as Map).cast<String, dynamic>())).input(),
-      goodTotalRatio: map['goodTotalRatio'] == null ? null : (TimeSeriesRatio.fromMap((map['goodTotalRatio'] as Map).cast<String, dynamic>())).input(),
+      distributionCut: map['distributionCut'] == null ? null : (DistributionCut.fromMap((map['distributionCut']! as Map).cast<String, dynamic>())).input(),
+      goodTotalRatio: map['goodTotalRatio'] == null ? null : (TimeSeriesRatio.fromMap((map['goodTotalRatio']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

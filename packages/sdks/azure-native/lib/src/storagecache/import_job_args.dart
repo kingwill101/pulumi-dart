@@ -60,13 +60,13 @@ class ImportJobArgs {
   factory ImportJobArgs.fromMap(Map<String, dynamic> map) {
     return ImportJobArgs(
       amlFilesystemName: (map['amlFilesystemName'] as String).input(),
-      conflictResolutionMode: map['conflictResolutionMode'] == null ? null : (map['conflictResolutionMode'] as String).input(),
-      importJobName: map['importJobName'] == null ? null : (map['importJobName'] as String).input(),
-      importPrefixes: map['importPrefixes'] == null ? null : ((map['importPrefixes'] as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maximumErrors: map['maximumErrors'] == null ? null : (map['maximumErrors'] as int).input(),
+      conflictResolutionMode: map['conflictResolutionMode'] == null ? null : (map['conflictResolutionMode']! as String).input(),
+      importJobName: map['importJobName'] == null ? null : (map['importJobName']! as String).input(),
+      importPrefixes: map['importPrefixes'] == null ? null : ((map['importPrefixes']! as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maximumErrors: map['maximumErrors'] == null ? null : (map['maximumErrors']! as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class PipeTargetParametersSqsQueueParameters {
 
   factory PipeTargetParametersSqsQueueParameters.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersSqsQueueParameters(
-      messageDeduplicationId: map['messageDeduplicationId'] == null ? null : (map['messageDeduplicationId'] as String).input(),
-      messageGroupId: map['messageGroupId'] == null ? null : (map['messageGroupId'] as String).input(),
+      messageDeduplicationId: map['messageDeduplicationId'] == null ? null : ((map['messageDeduplicationId'] as String).input()).input(),
+      messageGroupId: map['messageGroupId'] == null ? null : ((map['messageGroupId'] as String).input()).input(),
     );
   }
 }

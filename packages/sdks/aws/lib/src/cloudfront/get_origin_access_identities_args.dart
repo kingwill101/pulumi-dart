@@ -24,7 +24,7 @@ class GetOriginAccessIdentitiesArgs {
 
   factory GetOriginAccessIdentitiesArgs.fromMap(Map<String, dynamic> map) {
     return GetOriginAccessIdentitiesArgs(
-      comments: map['comments'] == null ? null : ((map['comments'] as List).cast<String>()).input(),
+      comments: map['comments'] == null ? null : (((map['comments'] as List).cast<String>()).input()).input(),
     );
   }
 }

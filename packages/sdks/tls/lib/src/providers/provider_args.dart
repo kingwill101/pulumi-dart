@@ -25,7 +25,7 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      proxy: map['proxy'] == null ? null : (ProviderProxy.fromMap((map['proxy'] as Map).cast<String, dynamic>())).input(),
+      proxy: map['proxy'] == null ? null : (ProviderProxy.fromMap((map['proxy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

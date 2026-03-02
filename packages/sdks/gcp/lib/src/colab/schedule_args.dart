@@ -77,17 +77,17 @@ class ScheduleArgs {
 
   factory ScheduleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleArgs(
-      allowQueueing: map['allowQueueing'] == null ? null : (map['allowQueueing'] as bool).input(),
+      allowQueueing: map['allowQueueing'] == null ? null : (map['allowQueueing']! as bool).input(),
       createNotebookExecutionJobRequest: (ScheduleCreateNotebookExecutionJobRequest.fromMap((map['createNotebookExecutionJobRequest'] as Map).cast<String, dynamic>())).input(),
       cron: (map['cron'] as String).input(),
-      desiredState: map['desiredState'] == null ? null : (map['desiredState'] as String).input(),
+      desiredState: map['desiredState'] == null ? null : (map['desiredState']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
       location: (map['location'] as String).input(),
       maxConcurrentRunCount: (map['maxConcurrentRunCount'] as String).input(),
-      maxRunCount: map['maxRunCount'] == null ? null : (map['maxRunCount'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      maxRunCount: map['maxRunCount'] == null ? null : (map['maxRunCount']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

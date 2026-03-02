@@ -20,7 +20,7 @@ class GetRouteSpecTcpRouteTimeout {
 
   factory GetRouteSpecTcpRouteTimeout.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecTcpRouteTimeout(
-      idles: (pulumi.Input.decodeList<GetRouteSpecTcpRouteTimeoutIdle>(map['idles'], (value) => GetRouteSpecTcpRouteTimeoutIdle.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      idles: (pulumi.Input.decodeList<GetRouteSpecTcpRouteTimeoutIdle>(map['idles']!, (value) => GetRouteSpecTcpRouteTimeoutIdle.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

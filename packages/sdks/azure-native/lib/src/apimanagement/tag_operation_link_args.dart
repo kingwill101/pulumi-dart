@@ -45,7 +45,7 @@ class TagOperationLinkArgs {
   factory TagOperationLinkArgs.fromMap(Map<String, dynamic> map) {
     return TagOperationLinkArgs(
       operationId: (map['operationId'] as String).input(),
-      operationLinkId: map['operationLinkId'] == null ? null : (map['operationLinkId'] as String).input(),
+      operationLinkId: map['operationLinkId'] == null ? null : (map['operationLinkId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
       tagId: (map['tagId'] as String).input(),

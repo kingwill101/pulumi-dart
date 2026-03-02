@@ -44,9 +44,9 @@ class RamDirectoryArgs {
 
   factory RamDirectoryArgs.fromMap(Map<String, dynamic> map) {
     return RamDirectoryArgs(
-      desktopAccessType: map['desktopAccessType'] == null ? null : (map['desktopAccessType'] as String).input(),
-      enableAdminAccess: map['enableAdminAccess'] == null ? null : (map['enableAdminAccess'] as bool).input(),
-      enableInternetAccess: map['enableInternetAccess'] == null ? null : (map['enableInternetAccess'] as bool).input(),
+      desktopAccessType: map['desktopAccessType'] == null ? null : (map['desktopAccessType']! as String).input(),
+      enableAdminAccess: map['enableAdminAccess'] == null ? null : (map['enableAdminAccess']! as bool).input(),
+      enableInternetAccess: map['enableInternetAccess'] == null ? null : (map['enableInternetAccess']! as bool).input(),
       ramDirectoryName: (map['ramDirectoryName'] as String).input(),
       vswitchIds: ((map['vswitchIds'] as List).cast<String>()).input(),
     );

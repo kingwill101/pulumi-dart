@@ -35,8 +35,8 @@ class WorkspaceTableCustomLogColumn {
 
   factory WorkspaceTableCustomLogColumn.fromMap(Map<String, dynamic> map) {
     return WorkspaceTableCustomLogColumn(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       name: (map['name'] as String).input(),
       type: (map['type'] as String).input(),
     );

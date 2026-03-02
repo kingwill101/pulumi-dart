@@ -26,8 +26,8 @@ class VolumeClaimResourceRequirements {
 
   factory VolumeClaimResourceRequirements.fromMap(Map<String, dynamic> map) {
     return VolumeClaimResourceRequirements(
-      limits: map['limits'] == null ? null : ((map['limits'] as Map).cast<String, String>()).input(),
-      requests: map['requests'] == null ? null : ((map['requests'] as Map).cast<String, String>()).input(),
+      limits: map['limits'] == null ? null : ((map['limits']! as Map).cast<String, String>()).input(),
+      requests: map['requests'] == null ? null : ((map['requests']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -50,10 +50,10 @@ class GetSpacesBucketObjectsArgs {
   factory GetSpacesBucketObjectsArgs.fromMap(Map<String, dynamic> map) {
     return GetSpacesBucketObjectsArgs(
       bucket: (map['bucket'] as String).input(),
-      delimiter: map['delimiter'] == null ? null : (map['delimiter'] as String).input(),
-      encodingType: map['encodingType'] == null ? null : (map['encodingType'] as String).input(),
-      maxKeys: map['maxKeys'] == null ? null : (map['maxKeys'] as int).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      delimiter: map['delimiter'] == null ? null : (map['delimiter']! as String).input(),
+      encodingType: map['encodingType'] == null ? null : (map['encodingType']! as String).input(),
+      maxKeys: map['maxKeys'] == null ? null : (map['maxKeys']! as int).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
       region: (map['region'] as String).input(),
     );
   }

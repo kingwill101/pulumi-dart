@@ -47,12 +47,12 @@ class AuthProvider {
 
   factory AuthProvider.fromMap(Map<String, dynamic> map) {
     return AuthProvider(
-      audiences: map['audiences'] == null ? null : (map['audiences'] as String).input(),
-      authorizationUrl: map['authorizationUrl'] == null ? null : (map['authorizationUrl'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
-      jwksUri: map['jwksUri'] == null ? null : (map['jwksUri'] as String).input(),
-      jwtLocations: map['jwtLocations'] == null ? null : (pulumi.Input.decodeList<JwtLocation>(map['jwtLocations'], (value) => JwtLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      audiences: map['audiences'] == null ? null : (map['audiences']! as String).input(),
+      authorizationUrl: map['authorizationUrl'] == null ? null : (map['authorizationUrl']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer']! as String).input(),
+      jwksUri: map['jwksUri'] == null ? null : (map['jwksUri']! as String).input(),
+      jwtLocations: map['jwtLocations'] == null ? null : (pulumi.Input.decodeList<JwtLocation>(map['jwtLocations']!, (value) => JwtLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class OrganizationState {
 
   factory OrganizationState.fromMap(Map<String, dynamic> map) {
     return OrganizationState(
-      desiredMemberCount: map['desiredMemberCount'] == null ? null : (map['desiredMemberCount'] as int).input(),
-      organizationName: map['organizationName'] == null ? null : (map['organizationName'] as String).input(),
-      realPk: map['realPk'] == null ? null : (map['realPk'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      desiredMemberCount: map['desiredMemberCount'] == null ? null : (map['desiredMemberCount']! as int).input(),
+      organizationName: map['organizationName'] == null ? null : (map['organizationName']! as String).input(),
+      realPk: map['realPk'] == null ? null : (map['realPk']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

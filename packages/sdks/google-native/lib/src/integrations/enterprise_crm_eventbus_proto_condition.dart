@@ -33,9 +33,9 @@ class EnterpriseCrmEventbusProtoCondition {
 
   factory EnterpriseCrmEventbusProtoCondition.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoCondition(
-      eventPropertyKey: map['eventPropertyKey'] == null ? null : (map['eventPropertyKey'] as String).input(),
-      operator: map['operator'] == null ? null : (EnterpriseCrmEventbusProtoConditionOperator.fromValue(map['operator'] as String)).input(),
-      value: map['value'] == null ? null : (EnterpriseCrmEventbusProtoValueType.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
+      eventPropertyKey: map['eventPropertyKey'] == null ? null : (map['eventPropertyKey']! as String).input(),
+      operator: map['operator'] == null ? null : (EnterpriseCrmEventbusProtoConditionOperator.fromValue(map['operator']! as String)).input(),
+      value: map['value'] == null ? null : (EnterpriseCrmEventbusProtoValueType.fromMap((map['value']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

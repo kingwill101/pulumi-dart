@@ -36,9 +36,9 @@ class GetNfsSnapshotArgs {
 
   factory GetNfsSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetNfsSnapshotArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       shareId: (map['shareId'] as String).input(),
     );
   }

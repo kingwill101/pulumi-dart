@@ -94,18 +94,18 @@ class PolicyVMArgs {
   factory PolicyVMArgs.fromMap(Map<String, dynamic> map) {
     return PolicyVMArgs(
       backup: (PolicyVMBackup.fromMap((map['backup'] as Map).cast<String, dynamic>())).input(),
-      instantRestoreResourceGroup: map['instantRestoreResourceGroup'] == null ? null : (PolicyVMInstantRestoreResourceGroup.fromMap((map['instantRestoreResourceGroup'] as Map).cast<String, dynamic>())).input(),
-      instantRestoreRetentionDays: map['instantRestoreRetentionDays'] == null ? null : (map['instantRestoreRetentionDays'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
+      instantRestoreResourceGroup: map['instantRestoreResourceGroup'] == null ? null : (PolicyVMInstantRestoreResourceGroup.fromMap((map['instantRestoreResourceGroup']! as Map).cast<String, dynamic>())).input(),
+      instantRestoreRetentionDays: map['instantRestoreRetentionDays'] == null ? null : (map['instantRestoreRetentionDays']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType']! as String).input(),
       recoveryVaultName: (map['recoveryVaultName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      retentionDaily: map['retentionDaily'] == null ? null : (PolicyVMRetentionDaily.fromMap((map['retentionDaily'] as Map).cast<String, dynamic>())).input(),
-      retentionMonthly: map['retentionMonthly'] == null ? null : (PolicyVMRetentionMonthly.fromMap((map['retentionMonthly'] as Map).cast<String, dynamic>())).input(),
-      retentionWeekly: map['retentionWeekly'] == null ? null : (PolicyVMRetentionWeekly.fromMap((map['retentionWeekly'] as Map).cast<String, dynamic>())).input(),
-      retentionYearly: map['retentionYearly'] == null ? null : (PolicyVMRetentionYearly.fromMap((map['retentionYearly'] as Map).cast<String, dynamic>())).input(),
-      tieringPolicy: map['tieringPolicy'] == null ? null : (PolicyVMTieringPolicy.fromMap((map['tieringPolicy'] as Map).cast<String, dynamic>())).input(),
-      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
+      retentionDaily: map['retentionDaily'] == null ? null : (PolicyVMRetentionDaily.fromMap((map['retentionDaily']! as Map).cast<String, dynamic>())).input(),
+      retentionMonthly: map['retentionMonthly'] == null ? null : (PolicyVMRetentionMonthly.fromMap((map['retentionMonthly']! as Map).cast<String, dynamic>())).input(),
+      retentionWeekly: map['retentionWeekly'] == null ? null : (PolicyVMRetentionWeekly.fromMap((map['retentionWeekly']! as Map).cast<String, dynamic>())).input(),
+      retentionYearly: map['retentionYearly'] == null ? null : (PolicyVMRetentionYearly.fromMap((map['retentionYearly']! as Map).cast<String, dynamic>())).input(),
+      tieringPolicy: map['tieringPolicy'] == null ? null : (PolicyVMTieringPolicy.fromMap((map['tieringPolicy']! as Map).cast<String, dynamic>())).input(),
+      timezone: map['timezone'] == null ? null : (map['timezone']! as String).input(),
     );
   }
 }

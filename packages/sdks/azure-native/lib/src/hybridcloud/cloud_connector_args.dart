@@ -49,12 +49,12 @@ class CloudConnectorArgs {
 
   factory CloudConnectorArgs.fromMap(Map<String, dynamic> map) {
     return CloudConnectorArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      cloudConnectorName: map['cloudConnectorName'] == null ? null : (map['cloudConnectorName'] as String).input(),
-      cloudType: map['cloudType'] == null ? null : (map['cloudType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      cloudConnectorName: map['cloudConnectorName'] == null ? null : (map['cloudConnectorName']! as String).input(),
+      cloudType: map['cloudType'] == null ? null : (map['cloudType']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

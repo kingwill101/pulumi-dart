@@ -37,7 +37,7 @@ class AuthorityConfig {
   factory AuthorityConfig.fromMap(Map<String, dynamic> map) {
     return AuthorityConfig(
       subjectConfig: (AuthorityConfigSubjectConfig.fromMap((map['subjectConfig'] as Map).cast<String, dynamic>())).input(),
-      subjectKeyId: map['subjectKeyId'] == null ? null : (AuthorityConfigSubjectKeyId.fromMap((map['subjectKeyId'] as Map).cast<String, dynamic>())).input(),
+      subjectKeyId: map['subjectKeyId'] == null ? null : (AuthorityConfigSubjectKeyId.fromMap((map['subjectKeyId']! as Map).cast<String, dynamic>())).input(),
       x509Config: (AuthorityConfigX509Config.fromMap((map['x509Config'] as Map).cast<String, dynamic>())).input(),
     );
   }

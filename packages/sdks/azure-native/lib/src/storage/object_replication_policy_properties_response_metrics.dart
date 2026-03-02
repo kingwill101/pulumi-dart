@@ -21,7 +21,7 @@ class ObjectReplicationPolicyPropertiesResponseMetrics {
 
   factory ObjectReplicationPolicyPropertiesResponseMetrics.fromMap(Map<String, dynamic> map) {
     return ObjectReplicationPolicyPropertiesResponseMetrics(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

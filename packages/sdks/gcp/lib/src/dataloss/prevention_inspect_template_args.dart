@@ -52,11 +52,11 @@ class PreventionInspectTemplateArgs {
 
   factory PreventionInspectTemplateArgs.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      inspectConfig: map['inspectConfig'] == null ? null : (PreventionInspectTemplateInspectConfig.fromMap((map['inspectConfig'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      inspectConfig: map['inspectConfig'] == null ? null : (PreventionInspectTemplateInspectConfig.fromMap((map['inspectConfig']! as Map).cast<String, dynamic>())).input(),
       parent: (map['parent'] as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
     );
   }
 }

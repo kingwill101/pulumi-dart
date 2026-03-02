@@ -25,7 +25,7 @@ class CxIntentTrainingPhrasePart {
 
   factory CxIntentTrainingPhrasePart.fromMap(Map<String, dynamic> map) {
     return CxIntentTrainingPhrasePart(
-      parameterId: map['parameterId'] == null ? null : (map['parameterId'] as String).input(),
+      parameterId: map['parameterId'] == null ? null : (map['parameterId']! as String).input(),
       text: (map['text'] as String).input(),
     );
   }

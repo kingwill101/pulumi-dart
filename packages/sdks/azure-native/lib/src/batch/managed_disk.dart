@@ -27,8 +27,8 @@ class ManagedDisk {
 
   factory ManagedDisk.fromMap(Map<String, dynamic> map) {
     return ManagedDisk(
-      securityProfile: map['securityProfile'] == null ? null : (VMDiskSecurityProfile.fromMap((map['securityProfile'] as Map).cast<String, dynamic>())).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (StorageAccountType.fromValue(map['storageAccountType'] as String)).input(),
+      securityProfile: map['securityProfile'] == null ? null : (VMDiskSecurityProfile.fromMap((map['securityProfile']! as Map).cast<String, dynamic>())).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (StorageAccountType.fromValue(map['storageAccountType']! as String)).input(),
     );
   }
 }

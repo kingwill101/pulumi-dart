@@ -51,13 +51,13 @@ class IntegrationResponseState {
 
   factory IntegrationResponseState.fromMap(Map<String, dynamic> map) {
     return IntegrationResponseState(
-      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
-      contentHandlingStrategy: map['contentHandlingStrategy'] == null ? null : (map['contentHandlingStrategy'] as String).input(),
-      integrationId: map['integrationId'] == null ? null : (map['integrationId'] as String).input(),
-      integrationResponseKey: map['integrationResponseKey'] == null ? null : (map['integrationResponseKey'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      responseTemplates: map['responseTemplates'] == null ? null : ((map['responseTemplates'] as Map).cast<String, String>()).input(),
-      templateSelectionExpression: map['templateSelectionExpression'] == null ? null : (map['templateSelectionExpression'] as String).input(),
+      apiId: map['apiId'] == null ? null : ((map['apiId'] as String).input()).input(),
+      contentHandlingStrategy: map['contentHandlingStrategy'] == null ? null : ((map['contentHandlingStrategy'] as String).input()).input(),
+      integrationId: map['integrationId'] == null ? null : ((map['integrationId'] as String).input()).input(),
+      integrationResponseKey: map['integrationResponseKey'] == null ? null : ((map['integrationResponseKey'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      responseTemplates: map['responseTemplates'] == null ? null : (((map['responseTemplates'] as Map).cast<String, String>()).input()).input(),
+      templateSelectionExpression: map['templateSelectionExpression'] == null ? null : ((map['templateSelectionExpression'] as String).input()).input(),
     );
   }
 }

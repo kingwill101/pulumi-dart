@@ -37,8 +37,8 @@ class APIVersions {
 
   factory APIVersions.fromMap(Map<String, dynamic> map) {
     return APIVersions(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       serverAddressByClientCIDRs: (pulumi.Input.decodeList<ServerAddressByClientCIDR>(map['serverAddressByClientCIDRs'], (value) => ServerAddressByClientCIDR.fromMap((value as Map).cast<String, dynamic>()))).input(),
       versions: ((map['versions'] as List).cast<String>()).input(),
     );

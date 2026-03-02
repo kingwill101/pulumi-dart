@@ -32,9 +32,9 @@ class DeploymentExtensionConfigItemResponse {
 
   factory DeploymentExtensionConfigItemResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentExtensionConfigItemResponse(
-      keyVaultReference: map['keyVaultReference'] == null ? null : (KeyVaultParameterReferenceResponse.fromMap((map['keyVaultReference'] as Map).cast<String, dynamic>())).input(),
+      keyVaultReference: map['keyVaultReference'] == null ? null : (KeyVaultParameterReferenceResponse.fromMap((map['keyVaultReference']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value']).input(),
+      value: map['value'] == null ? null : (map['value']!).input(),
     );
   }
 }

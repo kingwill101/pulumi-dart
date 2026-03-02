@@ -32,9 +32,9 @@ class RouterNatSubnetworkToNatComputeV1 {
 
   factory RouterNatSubnetworkToNatComputeV1.fromMap(Map<String, dynamic> map) {
     return RouterNatSubnetworkToNatComputeV1(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      secondaryIpRangeNames: map['secondaryIpRangeNames'] == null ? null : ((map['secondaryIpRangeNames'] as List).cast<String>()).input(),
-      sourceIpRangesToNat: map['sourceIpRangesToNat'] == null ? null : (pulumi.Input.decodeList<RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeV1>(map['sourceIpRangesToNat'], (value) => RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeV1.fromValue(value as String))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      secondaryIpRangeNames: map['secondaryIpRangeNames'] == null ? null : ((map['secondaryIpRangeNames']! as List).cast<String>()).input(),
+      sourceIpRangesToNat: map['sourceIpRangesToNat'] == null ? null : (pulumi.Input.decodeList<RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeV1>(map['sourceIpRangesToNat']!, (value) => RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeV1.fromValue(value as String))).input(),
     );
   }
 }

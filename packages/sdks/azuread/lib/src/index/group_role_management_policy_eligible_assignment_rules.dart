@@ -27,8 +27,8 @@ class GroupRoleManagementPolicyEligibleAssignmentRules {
 
   factory GroupRoleManagementPolicyEligibleAssignmentRules.fromMap(Map<String, dynamic> map) {
     return GroupRoleManagementPolicyEligibleAssignmentRules(
-      expirationRequired: map['expirationRequired'] == null ? null : (map['expirationRequired'] as bool).input(),
-      expireAfter: map['expireAfter'] == null ? null : (map['expireAfter'] as String).input(),
+      expirationRequired: map['expirationRequired'] == null ? null : (map['expirationRequired']! as bool).input(),
+      expireAfter: map['expireAfter'] == null ? null : (map['expireAfter']! as String).input(),
     );
   }
 }

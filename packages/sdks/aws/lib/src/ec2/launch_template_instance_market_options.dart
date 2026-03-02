@@ -26,8 +26,8 @@ class LaunchTemplateInstanceMarketOptions {
 
   factory LaunchTemplateInstanceMarketOptions.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateInstanceMarketOptions(
-      marketType: map['marketType'] == null ? null : (map['marketType'] as String).input(),
-      spotOptions: map['spotOptions'] == null ? null : (LaunchTemplateInstanceMarketOptionsSpotOptions.fromMap((map['spotOptions'] as Map).cast<String, dynamic>())).input(),
+      marketType: map['marketType'] == null ? null : ((map['marketType'] as String).input()).input(),
+      spotOptions: map['spotOptions'] == null ? null : ((LaunchTemplateInstanceMarketOptionsSpotOptions.fromMap((map['spotOptions']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

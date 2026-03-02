@@ -25,8 +25,8 @@ class GatewayRouteSpecHttpRouteActionRewritePrefix {
 
   factory GatewayRouteSpecHttpRouteActionRewritePrefix.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecHttpRouteActionRewritePrefix(
-      defaultPrefix: map['defaultPrefix'] == null ? null : (map['defaultPrefix'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      defaultPrefix: map['defaultPrefix'] == null ? null : ((map['defaultPrefix'] as String).input()).input(),
+      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
     );
   }
 }

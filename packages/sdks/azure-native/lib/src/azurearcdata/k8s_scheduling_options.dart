@@ -22,7 +22,7 @@ class K8sSchedulingOptions {
 
   factory K8sSchedulingOptions.fromMap(Map<String, dynamic> map) {
     return K8sSchedulingOptions(
-      resources: map['resources'] == null ? null : (K8sResourceRequirements.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
+      resources: map['resources'] == null ? null : (K8sResourceRequirements.fromMap((map['resources']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

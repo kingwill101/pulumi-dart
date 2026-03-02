@@ -69,12 +69,12 @@ class GetPrivateLinkServicePrivateEndpointConnectionResult {
     return GetPrivateLinkServicePrivateEndpointConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
       linkIdentifier: map['linkIdentifier'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
       privateEndpoint: PrivateEndpointResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>()),
       privateEndpointLocation: map['privateEndpointLocation'] as String,
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : PrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>()),
+      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : PrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState']! as Map).cast<String, dynamic>()),
       provisioningState: map['provisioningState'] as String,
       type: map['type'] as String,
     );

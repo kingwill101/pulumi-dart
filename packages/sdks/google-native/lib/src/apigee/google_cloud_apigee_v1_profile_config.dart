@@ -22,7 +22,7 @@ class GoogleCloudApigeeV1ProfileConfig {
 
   factory GoogleCloudApigeeV1ProfileConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1ProfileConfig(
-      categories: map['categories'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1ProfileConfigCategory>(map['categories'], (value) => GoogleCloudApigeeV1ProfileConfigCategory.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      categories: map['categories'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1ProfileConfigCategory>(map['categories']!, (value) => GoogleCloudApigeeV1ProfileConfigCategory.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

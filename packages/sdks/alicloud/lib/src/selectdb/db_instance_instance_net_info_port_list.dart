@@ -25,8 +25,8 @@ class DbInstanceInstanceNetInfoPortList {
 
   factory DbInstanceInstanceNetInfoPortList.fromMap(Map<String, dynamic> map) {
     return DbInstanceInstanceNetInfoPortList(
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
     );
   }
 }

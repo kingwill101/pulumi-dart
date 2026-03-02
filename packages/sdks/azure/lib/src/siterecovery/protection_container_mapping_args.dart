@@ -60,8 +60,8 @@ class ProtectionContainerMappingArgs {
 
   factory ProtectionContainerMappingArgs.fromMap(Map<String, dynamic> map) {
     return ProtectionContainerMappingArgs(
-      automaticUpdate: map['automaticUpdate'] == null ? null : (ProtectionContainerMappingAutomaticUpdate.fromMap((map['automaticUpdate'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      automaticUpdate: map['automaticUpdate'] == null ? null : (ProtectionContainerMappingAutomaticUpdate.fromMap((map['automaticUpdate']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       recoveryFabricName: (map['recoveryFabricName'] as String).input(),
       recoveryReplicationPolicyId: (map['recoveryReplicationPolicyId'] as String).input(),
       recoverySourceProtectionContainerName: (map['recoverySourceProtectionContainerName'] as String).input(),

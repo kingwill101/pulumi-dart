@@ -80,18 +80,18 @@ class GceClusterConfigDataprocV1beta2 {
 
   factory GceClusterConfigDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return GceClusterConfigDataprocV1beta2(
-      internalIpOnly: map['internalIpOnly'] == null ? null : (map['internalIpOnly'] as bool).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      networkUri: map['networkUri'] == null ? null : (map['networkUri'] as String).input(),
-      nodeGroupAffinity: map['nodeGroupAffinity'] == null ? null : (NodeGroupAffinityDataprocV1beta2.fromMap((map['nodeGroupAffinity'] as Map).cast<String, dynamic>())).input(),
-      privateIpv6GoogleAccess: map['privateIpv6GoogleAccess'] == null ? null : (GceClusterConfigPrivateIpv6GoogleAccessDataprocV1beta2.fromValue(map['privateIpv6GoogleAccess'] as String)).input(),
-      reservationAffinity: map['reservationAffinity'] == null ? null : (ReservationAffinityDataprocV1beta2.fromMap((map['reservationAffinity'] as Map).cast<String, dynamic>())).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      serviceAccountScopes: map['serviceAccountScopes'] == null ? null : ((map['serviceAccountScopes'] as List).cast<String>()).input(),
-      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : (ShieldedInstanceConfigDataprocV1beta2.fromMap((map['shieldedInstanceConfig'] as Map).cast<String, dynamic>())).input(),
-      subnetworkUri: map['subnetworkUri'] == null ? null : (map['subnetworkUri'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      zoneUri: map['zoneUri'] == null ? null : (map['zoneUri'] as String).input(),
+      internalIpOnly: map['internalIpOnly'] == null ? null : (map['internalIpOnly']! as bool).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      networkUri: map['networkUri'] == null ? null : (map['networkUri']! as String).input(),
+      nodeGroupAffinity: map['nodeGroupAffinity'] == null ? null : (NodeGroupAffinityDataprocV1beta2.fromMap((map['nodeGroupAffinity']! as Map).cast<String, dynamic>())).input(),
+      privateIpv6GoogleAccess: map['privateIpv6GoogleAccess'] == null ? null : (GceClusterConfigPrivateIpv6GoogleAccessDataprocV1beta2.fromValue(map['privateIpv6GoogleAccess']! as String)).input(),
+      reservationAffinity: map['reservationAffinity'] == null ? null : (ReservationAffinityDataprocV1beta2.fromMap((map['reservationAffinity']! as Map).cast<String, dynamic>())).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      serviceAccountScopes: map['serviceAccountScopes'] == null ? null : ((map['serviceAccountScopes']! as List).cast<String>()).input(),
+      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : (ShieldedInstanceConfigDataprocV1beta2.fromMap((map['shieldedInstanceConfig']! as Map).cast<String, dynamic>())).input(),
+      subnetworkUri: map['subnetworkUri'] == null ? null : (map['subnetworkUri']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      zoneUri: map['zoneUri'] == null ? null : (map['zoneUri']! as String).input(),
     );
   }
 }

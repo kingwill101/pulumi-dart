@@ -72,16 +72,16 @@ class ExperienceState {
 
   factory ExperienceState.fromMap(Map<String, dynamic> map) {
     return ExperienceState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      configuration: map['configuration'] == null ? null : (ExperienceConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<ExperienceEndpoint>(map['endpoints'], (value) => ExperienceEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      experienceId: map['experienceId'] == null ? null : (map['experienceId'] as String).input(),
-      indexId: map['indexId'] == null ? null : (map['indexId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      configuration: map['configuration'] == null ? null : ((ExperienceConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      endpoints: map['endpoints'] == null ? null : ((pulumi.Input.decodeList<ExperienceEndpoint>(map['endpoints']!, (value) => ExperienceEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      experienceId: map['experienceId'] == null ? null : ((map['experienceId'] as String).input()).input(),
+      indexId: map['indexId'] == null ? null : ((map['indexId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

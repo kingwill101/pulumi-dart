@@ -102,22 +102,22 @@ class HDInsightLinkedServiceResponse {
 
   factory HDInsightLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return HDInsightLinkedServiceResponse(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      clusterAuthType: map['clusterAuthType'] == null ? null : (map['clusterAuthType'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      clusterAuthType: map['clusterAuthType'] == null ? null : (map['clusterAuthType']! as String).input(),
       clusterUri: (map['clusterUri']).input(),
-      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
-      credential: map['credential'] == null ? null : (CredentialReferenceResponse.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
-      fileSystem: map['fileSystem'] == null ? null : (map['fileSystem']).input(),
-      hcatalogLinkedServiceName: map['hcatalogLinkedServiceName'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['hcatalogLinkedServiceName'] as Map).cast<String, dynamic>())).input(),
-      isEspEnabled: map['isEspEnabled'] == null ? null : (map['isEspEnabled']).input(),
-      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      password: map['password'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia']! as Map).cast<String, dynamic>())).input(),
+      credential: map['credential'] == null ? null : (CredentialReferenceResponse.fromMap((map['credential']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential']! as String).input(),
+      fileSystem: map['fileSystem'] == null ? null : (map['fileSystem']!).input(),
+      hcatalogLinkedServiceName: map['hcatalogLinkedServiceName'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['hcatalogLinkedServiceName']! as Map).cast<String, dynamic>())).input(),
+      isEspEnabled: map['isEspEnabled'] == null ? null : (map['isEspEnabled']!).input(),
+      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters']!, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      password: map['password'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['password']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName']).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']!).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

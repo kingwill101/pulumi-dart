@@ -101,21 +101,21 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      adminContact: (DomainAdminContact.fromMap((map['adminContact'] as Map).cast<String, dynamic>())).input(),
-      adminPrivacy: map['adminPrivacy'] == null ? null : (map['adminPrivacy'] as bool).input(),
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      billingContacts: map['billingContacts'] == null ? null : (pulumi.Input.decodeList<DomainBillingContact>(map['billingContacts'], (value) => DomainBillingContact.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      billingPrivacy: map['billingPrivacy'] == null ? null : (map['billingPrivacy'] as bool).input(),
+      adminContact: (DomainAdminContact.fromMap((map['adminContact']! as Map).cast<String, dynamic>())).input(),
+      adminPrivacy: map['adminPrivacy'] == null ? null : ((map['adminPrivacy'] as bool).input()).input(),
+      autoRenew: map['autoRenew'] == null ? null : ((map['autoRenew'] as bool).input()).input(),
+      billingContacts: map['billingContacts'] == null ? null : ((pulumi.Input.decodeList<DomainBillingContact>(map['billingContacts']!, (value) => DomainBillingContact.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      billingPrivacy: map['billingPrivacy'] == null ? null : ((map['billingPrivacy'] as bool).input()).input(),
       domainName: (map['domainName'] as String).input(),
-      durationInYears: map['durationInYears'] == null ? null : (map['durationInYears'] as int).input(),
-      nameServers: map['nameServers'] == null ? null : (pulumi.Input.decodeList<DomainNameServer>(map['nameServers'], (value) => DomainNameServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      registrantContact: (DomainRegistrantContact.fromMap((map['registrantContact'] as Map).cast<String, dynamic>())).input(),
-      registrantPrivacy: map['registrantPrivacy'] == null ? null : (map['registrantPrivacy'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      techContact: (DomainTechContact.fromMap((map['techContact'] as Map).cast<String, dynamic>())).input(),
-      techPrivacy: map['techPrivacy'] == null ? null : (map['techPrivacy'] as bool).input(),
-      timeouts: map['timeouts'] == null ? null : (DomainTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      transferLock: map['transferLock'] == null ? null : (map['transferLock'] as bool).input(),
+      durationInYears: map['durationInYears'] == null ? null : ((map['durationInYears'] as int).input()).input(),
+      nameServers: map['nameServers'] == null ? null : ((pulumi.Input.decodeList<DomainNameServer>(map['nameServers']!, (value) => DomainNameServer.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      registrantContact: (DomainRegistrantContact.fromMap((map['registrantContact']! as Map).cast<String, dynamic>())).input(),
+      registrantPrivacy: map['registrantPrivacy'] == null ? null : ((map['registrantPrivacy'] as bool).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      techContact: (DomainTechContact.fromMap((map['techContact']! as Map).cast<String, dynamic>())).input(),
+      techPrivacy: map['techPrivacy'] == null ? null : ((map['techPrivacy'] as bool).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((DomainTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      transferLock: map['transferLock'] == null ? null : ((map['transferLock'] as bool).input()).input(),
     );
   }
 }

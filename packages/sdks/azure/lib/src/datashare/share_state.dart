@@ -47,12 +47,12 @@ class ShareState {
 
   factory ShareState.fromMap(Map<String, dynamic> map) {
     return ShareState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      snapshotSchedule: map['snapshotSchedule'] == null ? null : (ShareSnapshotSchedule.fromMap((map['snapshotSchedule'] as Map).cast<String, dynamic>())).input(),
-      terms: map['terms'] == null ? null : (map['terms'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      snapshotSchedule: map['snapshotSchedule'] == null ? null : (ShareSnapshotSchedule.fromMap((map['snapshotSchedule']! as Map).cast<String, dynamic>())).input(),
+      terms: map['terms'] == null ? null : (map['terms']! as String).input(),
     );
   }
 }

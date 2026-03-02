@@ -81,19 +81,19 @@ class AdConnectorDirectoryState {
 
   factory AdConnectorDirectoryState.fromMap(Map<String, dynamic> map) {
     return AdConnectorDirectoryState(
-      desktopAccessType: map['desktopAccessType'] == null ? null : (map['desktopAccessType'] as String).input(),
-      directoryName: map['directoryName'] == null ? null : (map['directoryName'] as String).input(),
-      dnsAddresses: map['dnsAddresses'] == null ? null : ((map['dnsAddresses'] as List).cast<String>()).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      domainPassword: map['domainPassword'] == null ? null : (map['domainPassword'] as String).input(),
-      domainUserName: map['domainUserName'] == null ? null : (map['domainUserName'] as String).input(),
-      enableAdminAccess: map['enableAdminAccess'] == null ? null : (map['enableAdminAccess'] as bool).input(),
-      mfaEnabled: map['mfaEnabled'] == null ? null : (map['mfaEnabled'] as bool).input(),
-      specification: map['specification'] == null ? null : (map['specification'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      subDomainDnsAddresses: map['subDomainDnsAddresses'] == null ? null : ((map['subDomainDnsAddresses'] as List).cast<String>()).input(),
-      subDomainName: map['subDomainName'] == null ? null : (map['subDomainName'] as String).input(),
-      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds'] as List).cast<String>()).input(),
+      desktopAccessType: map['desktopAccessType'] == null ? null : (map['desktopAccessType']! as String).input(),
+      directoryName: map['directoryName'] == null ? null : (map['directoryName']! as String).input(),
+      dnsAddresses: map['dnsAddresses'] == null ? null : ((map['dnsAddresses']! as List).cast<String>()).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      domainPassword: map['domainPassword'] == null ? null : (map['domainPassword']! as String).input(),
+      domainUserName: map['domainUserName'] == null ? null : (map['domainUserName']! as String).input(),
+      enableAdminAccess: map['enableAdminAccess'] == null ? null : (map['enableAdminAccess']! as bool).input(),
+      mfaEnabled: map['mfaEnabled'] == null ? null : (map['mfaEnabled']! as bool).input(),
+      specification: map['specification'] == null ? null : (map['specification']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      subDomainDnsAddresses: map['subDomainDnsAddresses'] == null ? null : ((map['subDomainDnsAddresses']! as List).cast<String>()).input(),
+      subDomainName: map['subDomainName'] == null ? null : (map['subDomainName']! as String).input(),
+      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds']! as List).cast<String>()).input(),
     );
   }
 }

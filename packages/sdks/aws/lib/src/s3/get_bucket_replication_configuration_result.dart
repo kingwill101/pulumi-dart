@@ -44,7 +44,7 @@ class GetBucketReplicationConfigurationResult {
       id: map['id'] as String,
       region: map['region'] as String,
       role: map['role'] as String,
-      rules: pulumi.Input.decodeList<GetBucketReplicationConfigurationRule>(map['rules'], (value) => GetBucketReplicationConfigurationRule.fromMap((value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<GetBucketReplicationConfigurationRule>(map['rules']!, (value) => GetBucketReplicationConfigurationRule.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

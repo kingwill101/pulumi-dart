@@ -74,17 +74,17 @@ class DomainDevicesMemorydevTarget {
 
   factory DomainDevicesMemorydevTarget.fromMap(Map<String, dynamic> map) {
     return DomainDevicesMemorydevTarget(
-      address: map['address'] == null ? null : (DomainDevicesMemorydevTargetAddress.fromMap((map['address'] as Map).cast<String, dynamic>())).input(),
-      block: map['block'] == null ? null : (map['block'] as double).input(),
-      blockUnit: map['blockUnit'] == null ? null : (map['blockUnit'] as String).input(),
-      dynamicMemslots: map['dynamicMemslots'] == null ? null : (map['dynamicMemslots'] as String).input(),
-      label: map['label'] == null ? null : (DomainDevicesMemorydevTargetLabel.fromMap((map['label'] as Map).cast<String, dynamic>())).input(),
-      node: map['node'] == null ? null : (map['node'] as double).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      requested: map['requested'] == null ? null : (map['requested'] as double).input(),
-      requestedUnit: map['requestedUnit'] == null ? null : (map['requestedUnit'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as double).input(),
-      sizeUnit: map['sizeUnit'] == null ? null : (map['sizeUnit'] as String).input(),
+      address: map['address'] == null ? null : (DomainDevicesMemorydevTargetAddress.fromMap((map['address']! as Map).cast<String, dynamic>())).input(),
+      block: map['block'] == null ? null : (map['block']! as double).input(),
+      blockUnit: map['blockUnit'] == null ? null : (map['blockUnit']! as String).input(),
+      dynamicMemslots: map['dynamicMemslots'] == null ? null : (map['dynamicMemslots']! as String).input(),
+      label: map['label'] == null ? null : (DomainDevicesMemorydevTargetLabel.fromMap((map['label']! as Map).cast<String, dynamic>())).input(),
+      node: map['node'] == null ? null : (map['node']! as double).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      requested: map['requested'] == null ? null : (map['requested']! as double).input(),
+      requestedUnit: map['requestedUnit'] == null ? null : (map['requestedUnit']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as double).input(),
+      sizeUnit: map['sizeUnit'] == null ? null : (map['sizeUnit']! as String).input(),
     );
   }
 }

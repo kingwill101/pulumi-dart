@@ -34,8 +34,8 @@ class IntegrationRuntimeSelfHostedArgs {
 
   factory IntegrationRuntimeSelfHostedArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSelfHostedArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       synapseWorkspaceId: (map['synapseWorkspaceId'] as String).input(),
     );
   }

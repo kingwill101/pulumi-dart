@@ -65,15 +65,15 @@ class DomainDevicesSound {
 
   factory DomainDevicesSound.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSound(
-      acpi: map['acpi'] == null ? null : (DomainDevicesSoundAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
-      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
-      alias: map['alias'] == null ? null : (DomainDevicesSoundAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
-      audio: map['audio'] == null ? null : (DomainDevicesSoundAudio.fromMap((map['audio'] as Map).cast<String, dynamic>())).input(),
-      codecs: map['codecs'] == null ? null : (pulumi.Input.decodeList<DomainDevicesSoundCodec>(map['codecs'], (value) => DomainDevicesSoundCodec.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      driver: map['driver'] == null ? null : (DomainDevicesSoundDriver.fromMap((map['driver'] as Map).cast<String, dynamic>())).input(),
+      acpi: map['acpi'] == null ? null : (DomainDevicesSoundAcpi.fromMap((map['acpi']! as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : ((map['address']! as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesSoundAlias.fromMap((map['alias']! as Map).cast<String, dynamic>())).input(),
+      audio: map['audio'] == null ? null : (DomainDevicesSoundAudio.fromMap((map['audio']! as Map).cast<String, dynamic>())).input(),
+      codecs: map['codecs'] == null ? null : (pulumi.Input.decodeList<DomainDevicesSoundCodec>(map['codecs']!, (value) => DomainDevicesSoundCodec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      driver: map['driver'] == null ? null : (DomainDevicesSoundDriver.fromMap((map['driver']! as Map).cast<String, dynamic>())).input(),
       model: (map['model'] as String).input(),
-      multiChannel: map['multiChannel'] == null ? null : (map['multiChannel'] as String).input(),
-      streams: map['streams'] == null ? null : (map['streams'] as double).input(),
+      multiChannel: map['multiChannel'] == null ? null : (map['multiChannel']! as String).input(),
+      streams: map['streams'] == null ? null : (map['streams']! as double).input(),
     );
   }
 }

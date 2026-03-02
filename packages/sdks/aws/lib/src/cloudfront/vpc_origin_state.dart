@@ -49,12 +49,12 @@ class VpcOriginState {
 
   factory VpcOriginState.fromMap(Map<String, dynamic> map) {
     return VpcOriginState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (VpcOriginTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      vpcOriginEndpointConfig: map['vpcOriginEndpointConfig'] == null ? null : (VpcOriginVpcOriginEndpointConfig.fromMap((map['vpcOriginEndpointConfig'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      etag: map['etag'] == null ? null : ((map['etag'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((VpcOriginTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      vpcOriginEndpointConfig: map['vpcOriginEndpointConfig'] == null ? null : ((VpcOriginVpcOriginEndpointConfig.fromMap((map['vpcOriginEndpointConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

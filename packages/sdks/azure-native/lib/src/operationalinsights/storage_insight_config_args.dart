@@ -60,13 +60,13 @@ class StorageInsightConfigArgs {
 
   factory StorageInsightConfigArgs.fromMap(Map<String, dynamic> map) {
     return StorageInsightConfigArgs(
-      containers: map['containers'] == null ? null : ((map['containers'] as List).cast<String>()).input(),
-      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
+      containers: map['containers'] == null ? null : ((map['containers']! as List).cast<String>()).input(),
+      eTag: map['eTag'] == null ? null : (map['eTag']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       storageAccount: (StorageAccount.fromMap((map['storageAccount'] as Map).cast<String, dynamic>())).input(),
-      storageInsightName: map['storageInsightName'] == null ? null : (map['storageInsightName'] as String).input(),
-      tables: map['tables'] == null ? null : ((map['tables'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      storageInsightName: map['storageInsightName'] == null ? null : (map['storageInsightName']! as String).input(),
+      tables: map['tables'] == null ? null : ((map['tables']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

@@ -47,12 +47,12 @@ class VirtualHubRouteTableV2Response {
 
   factory VirtualHubRouteTableV2Response.fromMap(Map<String, dynamic> map) {
     return VirtualHubRouteTableV2Response(
-      attachedConnections: map['attachedConnections'] == null ? null : ((map['attachedConnections'] as List).cast<String>()).input(),
+      attachedConnections: map['attachedConnections'] == null ? null : ((map['attachedConnections']! as List).cast<String>()).input(),
       etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<VirtualHubRouteV2Response>(map['routes'], (value) => VirtualHubRouteV2Response.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<VirtualHubRouteV2Response>(map['routes']!, (value) => VirtualHubRouteV2Response.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

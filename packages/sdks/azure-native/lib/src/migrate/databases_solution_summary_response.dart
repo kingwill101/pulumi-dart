@@ -37,10 +37,10 @@ class DatabasesSolutionSummaryResponse {
 
   factory DatabasesSolutionSummaryResponse.fromMap(Map<String, dynamic> map) {
     return DatabasesSolutionSummaryResponse(
-      databaseInstancesAssessedCount: map['databaseInstancesAssessedCount'] == null ? null : (map['databaseInstancesAssessedCount'] as int).input(),
-      databasesAssessedCount: map['databasesAssessedCount'] == null ? null : (map['databasesAssessedCount'] as int).input(),
+      databaseInstancesAssessedCount: map['databaseInstancesAssessedCount'] == null ? null : (map['databaseInstancesAssessedCount']! as int).input(),
+      databasesAssessedCount: map['databasesAssessedCount'] == null ? null : (map['databasesAssessedCount']! as int).input(),
       instanceType: (map['instanceType'] as String).input(),
-      migrationReadyCount: map['migrationReadyCount'] == null ? null : (map['migrationReadyCount'] as int).input(),
+      migrationReadyCount: map['migrationReadyCount'] == null ? null : (map['migrationReadyCount']! as int).input(),
     );
   }
 }

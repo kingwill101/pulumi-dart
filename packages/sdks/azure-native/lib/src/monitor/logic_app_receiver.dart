@@ -42,10 +42,10 @@ class LogicAppReceiver {
   factory LogicAppReceiver.fromMap(Map<String, dynamic> map) {
     return LogicAppReceiver(
       callbackUrl: (map['callbackUrl'] as String).input(),
-      managedIdentity: map['managedIdentity'] == null ? null : (map['managedIdentity'] as String).input(),
+      managedIdentity: map['managedIdentity'] == null ? null : (map['managedIdentity']! as String).input(),
       name: (map['name'] as String).input(),
       resourceId: (map['resourceId'] as String).input(),
-      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema'] as bool).input(),
+      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema']! as bool).input(),
     );
   }
 }

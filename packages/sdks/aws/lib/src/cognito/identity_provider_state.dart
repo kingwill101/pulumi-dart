@@ -51,13 +51,13 @@ class IdentityProviderState {
 
   factory IdentityProviderState.fromMap(Map<String, dynamic> map) {
     return IdentityProviderState(
-      attributeMapping: map['attributeMapping'] == null ? null : ((map['attributeMapping'] as Map).cast<String, String>()).input(),
-      idpIdentifiers: map['idpIdentifiers'] == null ? null : ((map['idpIdentifiers'] as List).cast<String>()).input(),
-      providerDetails: map['providerDetails'] == null ? null : ((map['providerDetails'] as Map).cast<String, String>()).input(),
-      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
-      providerType: map['providerType'] == null ? null : (map['providerType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      userPoolId: map['userPoolId'] == null ? null : (map['userPoolId'] as String).input(),
+      attributeMapping: map['attributeMapping'] == null ? null : (((map['attributeMapping'] as Map).cast<String, String>()).input()).input(),
+      idpIdentifiers: map['idpIdentifiers'] == null ? null : (((map['idpIdentifiers'] as List).cast<String>()).input()).input(),
+      providerDetails: map['providerDetails'] == null ? null : (((map['providerDetails'] as Map).cast<String, String>()).input()).input(),
+      providerName: map['providerName'] == null ? null : ((map['providerName'] as String).input()).input(),
+      providerType: map['providerType'] == null ? null : ((map['providerType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      userPoolId: map['userPoolId'] == null ? null : ((map['userPoolId'] as String).input()).input(),
     );
   }
 }

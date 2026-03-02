@@ -38,10 +38,10 @@ class DeploymentSettingsOperationContext {
 
   factory DeploymentSettingsOperationContext.fromMap(Map<String, dynamic> map) {
     return DeploymentSettingsOperationContext(
-      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables'] as Map).cast<String, String>()).input(),
-      oidc: map['oidc'] == null ? null : (OperationContextOIDC.fromMap((map['oidc'] as Map).cast<String, dynamic>())).input(),
-      options: map['options'] == null ? null : (OperationContextOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
-      preRunCommands: map['preRunCommands'] == null ? null : ((map['preRunCommands'] as List).cast<String>()).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables']! as Map).cast<String, String>()).input(),
+      oidc: map['oidc'] == null ? null : (OperationContextOIDC.fromMap((map['oidc']! as Map).cast<String, dynamic>())).input(),
+      options: map['options'] == null ? null : (OperationContextOptions.fromMap((map['options']! as Map).cast<String, dynamic>())).input(),
+      preRunCommands: map['preRunCommands'] == null ? null : ((map['preRunCommands']! as List).cast<String>()).input(),
     );
   }
 }

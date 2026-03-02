@@ -57,8 +57,8 @@ class GetPublicKeyResult {
     return GetPublicKeyResult(
       algorithm: map['algorithm'] as String,
       id: map['id'] as String,
-      privateKeyOpenssh: map['privateKeyOpenssh'] == null ? null : map['privateKeyOpenssh'] as String,
-      privateKeyPem: map['privateKeyPem'] == null ? null : map['privateKeyPem'] as String,
+      privateKeyOpenssh: map['privateKeyOpenssh'] == null ? null : map['privateKeyOpenssh']! as String,
+      privateKeyPem: map['privateKeyPem'] == null ? null : map['privateKeyPem']! as String,
       publicKeyFingerprintMd5: map['publicKeyFingerprintMd5'] as String,
       publicKeyFingerprintSha256: map['publicKeyFingerprintSha256'] as String,
       publicKeyOpenssh: map['publicKeyOpenssh'] as String,

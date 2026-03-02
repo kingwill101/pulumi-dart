@@ -20,7 +20,7 @@ class GetUserSharedAccessTokenResult {
 
   factory GetUserSharedAccessTokenResult.fromMap(Map<String, dynamic> map) {
     return GetUserSharedAccessTokenResult(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : map['value']! as String,
     );
   }
 }

@@ -34,7 +34,7 @@ class KeyVaultKeyReferenceResponse {
     return KeyVaultKeyReferenceResponse(
       keyName: (map['keyName'] as String).input(),
       keyVault: (KeyVaultKeyReferenceResponseKeyVault.fromMap((map['keyVault'] as Map).cast<String, dynamic>())).input(),
-      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion']! as String).input(),
     );
   }
 }

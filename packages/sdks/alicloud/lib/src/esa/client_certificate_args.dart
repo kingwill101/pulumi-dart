@@ -50,10 +50,10 @@ class ClientCertificateArgs {
 
   factory ClientCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ClientCertificateArgs(
-      csr: map['csr'] == null ? null : (map['csr'] as String).input(),
-      pkeyType: map['pkeyType'] == null ? null : (map['pkeyType'] as String).input(),
+      csr: map['csr'] == null ? null : (map['csr']! as String).input(),
+      pkeyType: map['pkeyType'] == null ? null : (map['pkeyType']! as String).input(),
       siteId: (map['siteId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       validityDays: (map['validityDays'] as String).input(),
     );
   }

@@ -31,7 +31,7 @@ class ConnectionPropertiesResponsePrivateLinkServiceConnectionState {
 
   factory ConnectionPropertiesResponsePrivateLinkServiceConnectionState.fromMap(Map<String, dynamic> map) {
     return ConnectionPropertiesResponsePrivateLinkServiceConnectionState(
-      actionsRequired: map['actionsRequired'] == null ? null : (map['actionsRequired'] as String).input(),
+      actionsRequired: map['actionsRequired'] == null ? null : (map['actionsRequired']! as String).input(),
       description: (map['description'] as String).input(),
       status: (map['status'] as String).input(),
     );

@@ -26,8 +26,8 @@ class SubnetNatGatewayAssociationState {
 
   factory SubnetNatGatewayAssociationState.fromMap(Map<String, dynamic> map) {
     return SubnetNatGatewayAssociationState(
-      natGatewayId: map['natGatewayId'] == null ? null : (map['natGatewayId'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      natGatewayId: map['natGatewayId'] == null ? null : (map['natGatewayId']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

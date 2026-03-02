@@ -28,7 +28,7 @@ class TriggerWebhookConfig {
   factory TriggerWebhookConfig.fromMap(Map<String, dynamic> map) {
     return TriggerWebhookConfig(
       secret: (map['secret'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class HttpRouteURLRewriteNetworkservicesV1beta1 {
 
   factory HttpRouteURLRewriteNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpRouteURLRewriteNetworkservicesV1beta1(
-      hostRewrite: map['hostRewrite'] == null ? null : (map['hostRewrite'] as String).input(),
-      pathPrefixRewrite: map['pathPrefixRewrite'] == null ? null : (map['pathPrefixRewrite'] as String).input(),
+      hostRewrite: map['hostRewrite'] == null ? null : (map['hostRewrite']! as String).input(),
+      pathPrefixRewrite: map['pathPrefixRewrite'] == null ? null : (map['pathPrefixRewrite']! as String).input(),
     );
   }
 }

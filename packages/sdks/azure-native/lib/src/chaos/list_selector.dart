@@ -39,7 +39,7 @@ class ListSelector {
 
   factory ListSelector.fromMap(Map<String, dynamic> map) {
     return ListSelector(
-      filter: map['filter'] == null ? null : (SimpleFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      filter: map['filter'] == null ? null : (SimpleFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
       id: (map['id'] as String).input(),
       targets: (pulumi.Input.decodeList<TargetReference>(map['targets'], (value) => TargetReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),

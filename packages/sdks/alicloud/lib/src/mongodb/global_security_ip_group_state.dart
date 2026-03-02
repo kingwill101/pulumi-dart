@@ -33,9 +33,9 @@ class GlobalSecurityIpGroupState {
 
   factory GlobalSecurityIpGroupState.fromMap(Map<String, dynamic> map) {
     return GlobalSecurityIpGroupState(
-      globalIgName: map['globalIgName'] == null ? null : (map['globalIgName'] as String).input(),
-      globalSecurityIpList: map['globalSecurityIpList'] == null ? null : (map['globalSecurityIpList'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      globalIgName: map['globalIgName'] == null ? null : (map['globalIgName']! as String).input(),
+      globalSecurityIpList: map['globalSecurityIpList'] == null ? null : (map['globalSecurityIpList']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
     );
   }
 }

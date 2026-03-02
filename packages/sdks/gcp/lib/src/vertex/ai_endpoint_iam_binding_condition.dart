@@ -27,7 +27,7 @@ class AiEndpointIamBindingCondition {
 
   factory AiEndpointIamBindingCondition.fromMap(Map<String, dynamic> map) {
     return AiEndpointIamBindingCondition(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       expression: (map['expression'] as String).input(),
       title: (map['title'] as String).input(),
     );

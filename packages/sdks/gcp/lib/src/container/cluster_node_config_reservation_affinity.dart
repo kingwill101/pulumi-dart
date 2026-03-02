@@ -37,8 +37,8 @@ class ClusterNodeConfigReservationAffinity {
   factory ClusterNodeConfigReservationAffinity.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigReservationAffinity(
       consumeReservationType: (map['consumeReservationType'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

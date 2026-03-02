@@ -74,17 +74,17 @@ class LocationObjectStorageArgs {
 
   factory LocationObjectStorageArgs.fromMap(Map<String, dynamic> map) {
     return LocationObjectStorageArgs(
-      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
-      agentArns: map['agentArns'] == null ? null : ((map['agentArns'] as List).cast<String>()).input(),
+      accessKey: map['accessKey'] == null ? null : ((map['accessKey'] as String).input()).input(),
+      agentArns: map['agentArns'] == null ? null : (((map['agentArns'] as List).cast<String>()).input()).input(),
       bucketName: (map['bucketName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      secretKey: map['secretKey'] == null ? null : (map['secretKey'] as String).input(),
-      serverCertificate: map['serverCertificate'] == null ? null : (map['serverCertificate'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      secretKey: map['secretKey'] == null ? null : ((map['secretKey'] as String).input()).input(),
+      serverCertificate: map['serverCertificate'] == null ? null : ((map['serverCertificate'] as String).input()).input(),
       serverHostname: (map['serverHostname'] as String).input(),
-      serverPort: map['serverPort'] == null ? null : (map['serverPort'] as int).input(),
-      serverProtocol: map['serverProtocol'] == null ? null : (map['serverProtocol'] as String).input(),
-      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      serverPort: map['serverPort'] == null ? null : ((map['serverPort'] as int).input()).input(),
+      serverProtocol: map['serverProtocol'] == null ? null : ((map['serverProtocol'] as String).input()).input(),
+      subdirectory: map['subdirectory'] == null ? null : ((map['subdirectory'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

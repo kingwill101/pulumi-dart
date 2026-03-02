@@ -29,8 +29,8 @@ class MultiRegionAccessPointDetailsRegion {
   factory MultiRegionAccessPointDetailsRegion.fromMap(Map<String, dynamic> map) {
     return MultiRegionAccessPointDetailsRegion(
       bucket: (map['bucket'] as String).input(),
-      bucketAccountId: map['bucketAccountId'] == null ? null : (map['bucketAccountId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      bucketAccountId: map['bucketAccountId'] == null ? null : ((map['bucketAccountId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -41,11 +41,11 @@ class HybridConnectionState {
 
   factory HybridConnectionState.fromMap(Map<String, dynamic> map) {
     return HybridConnectionState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      relayNamespaceName: map['relayNamespaceName'] == null ? null : (map['relayNamespaceName'] as String).input(),
-      requiresClientAuthorization: map['requiresClientAuthorization'] == null ? null : (map['requiresClientAuthorization'] as bool).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      userMetadata: map['userMetadata'] == null ? null : (map['userMetadata'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      relayNamespaceName: map['relayNamespaceName'] == null ? null : (map['relayNamespaceName']! as String).input(),
+      requiresClientAuthorization: map['requiresClientAuthorization'] == null ? null : (map['requiresClientAuthorization']! as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      userMetadata: map['userMetadata'] == null ? null : (map['userMetadata']! as String).input(),
     );
   }
 }

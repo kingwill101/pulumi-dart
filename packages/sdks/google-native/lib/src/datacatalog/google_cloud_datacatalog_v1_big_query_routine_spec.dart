@@ -21,7 +21,7 @@ class GoogleCloudDatacatalogV1BigQueryRoutineSpec {
 
   factory GoogleCloudDatacatalogV1BigQueryRoutineSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1BigQueryRoutineSpec(
-      importedLibraries: map['importedLibraries'] == null ? null : ((map['importedLibraries'] as List).cast<String>()).input(),
+      importedLibraries: map['importedLibraries'] == null ? null : ((map['importedLibraries']! as List).cast<String>()).input(),
     );
   }
 }

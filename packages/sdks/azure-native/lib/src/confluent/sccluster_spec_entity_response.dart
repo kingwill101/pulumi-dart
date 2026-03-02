@@ -84,19 +84,19 @@ class SCClusterSpecEntityResponse {
 
   factory SCClusterSpecEntityResponse.fromMap(Map<String, dynamic> map) {
     return SCClusterSpecEntityResponse(
-      apiEndpoint: map['apiEndpoint'] == null ? null : (map['apiEndpoint'] as String).input(),
-      availability: map['availability'] == null ? null : (map['availability'] as String).input(),
-      byok: map['byok'] == null ? null : (SCClusterByokEntityResponse.fromMap((map['byok'] as Map).cast<String, dynamic>())).input(),
-      cloud: map['cloud'] == null ? null : (map['cloud'] as String).input(),
-      config: map['config'] == null ? null : (ClusterConfigEntityResponse.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      environment: map['environment'] == null ? null : (SCClusterNetworkEnvironmentEntityResponse.fromMap((map['environment'] as Map).cast<String, dynamic>())).input(),
-      httpEndpoint: map['httpEndpoint'] == null ? null : (map['httpEndpoint'] as String).input(),
-      kafkaBootstrapEndpoint: map['kafkaBootstrapEndpoint'] == null ? null : (map['kafkaBootstrapEndpoint'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (SCClusterNetworkEnvironmentEntityResponse.fromMap((map['network'] as Map).cast<String, dynamic>())).input(),
-      package: map['package'] == null ? null : (map['package'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      apiEndpoint: map['apiEndpoint'] == null ? null : (map['apiEndpoint']! as String).input(),
+      availability: map['availability'] == null ? null : (map['availability']! as String).input(),
+      byok: map['byok'] == null ? null : (SCClusterByokEntityResponse.fromMap((map['byok']! as Map).cast<String, dynamic>())).input(),
+      cloud: map['cloud'] == null ? null : (map['cloud']! as String).input(),
+      config: map['config'] == null ? null : (ClusterConfigEntityResponse.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      environment: map['environment'] == null ? null : (SCClusterNetworkEnvironmentEntityResponse.fromMap((map['environment']! as Map).cast<String, dynamic>())).input(),
+      httpEndpoint: map['httpEndpoint'] == null ? null : (map['httpEndpoint']! as String).input(),
+      kafkaBootstrapEndpoint: map['kafkaBootstrapEndpoint'] == null ? null : (map['kafkaBootstrapEndpoint']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (SCClusterNetworkEnvironmentEntityResponse.fromMap((map['network']! as Map).cast<String, dynamic>())).input(),
+      package: map['package'] == null ? null : (map['package']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

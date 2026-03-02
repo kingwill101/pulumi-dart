@@ -48,11 +48,11 @@ class AlertConditionArgs {
 
   factory AlertConditionArgs.fromMap(Map<String, dynamic> map) {
     return AlertConditionArgs(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       monitorId: (map['monitorId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       policyId: (map['policyId'] as String).input(),
-      runbookUrl: map['runbookUrl'] == null ? null : (map['runbookUrl'] as String).input(),
+      runbookUrl: map['runbookUrl'] == null ? null : (map['runbookUrl']! as String).input(),
     );
   }
 }

@@ -44,11 +44,11 @@ class PathRuleComputeBeta {
 
   factory PathRuleComputeBeta.fromMap(Map<String, dynamic> map) {
     return PathRuleComputeBeta(
-      customErrorResponsePolicy: map['customErrorResponsePolicy'] == null ? null : (CustomErrorResponsePolicyComputeBeta.fromMap((map['customErrorResponsePolicy'] as Map).cast<String, dynamic>())).input(),
-      paths: map['paths'] == null ? null : ((map['paths'] as List).cast<String>()).input(),
-      routeAction: map['routeAction'] == null ? null : (HttpRouteActionComputeBeta.fromMap((map['routeAction'] as Map).cast<String, dynamic>())).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      urlRedirect: map['urlRedirect'] == null ? null : (HttpRedirectActionComputeBeta.fromMap((map['urlRedirect'] as Map).cast<String, dynamic>())).input(),
+      customErrorResponsePolicy: map['customErrorResponsePolicy'] == null ? null : (CustomErrorResponsePolicyComputeBeta.fromMap((map['customErrorResponsePolicy']! as Map).cast<String, dynamic>())).input(),
+      paths: map['paths'] == null ? null : ((map['paths']! as List).cast<String>()).input(),
+      routeAction: map['routeAction'] == null ? null : (HttpRouteActionComputeBeta.fromMap((map['routeAction']! as Map).cast<String, dynamic>())).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      urlRedirect: map['urlRedirect'] == null ? null : (HttpRedirectActionComputeBeta.fromMap((map['urlRedirect']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

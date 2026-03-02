@@ -36,11 +36,11 @@ class TrustAnchorNotificationSetting {
 
   factory TrustAnchorNotificationSetting.fromMap(Map<String, dynamic> map) {
     return TrustAnchorNotificationSetting(
-      channel: map['channel'] == null ? null : (map['channel'] as String).input(),
-      configuredBy: map['configuredBy'] == null ? null : (map['configuredBy'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      event: map['event'] == null ? null : (map['event'] as String).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold'] as int).input(),
+      channel: map['channel'] == null ? null : ((map['channel'] as String).input()).input(),
+      configuredBy: map['configuredBy'] == null ? null : ((map['configuredBy'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      event: map['event'] == null ? null : ((map['event'] as String).input()).input(),
+      threshold: map['threshold'] == null ? null : ((map['threshold'] as int).input()).input(),
     );
   }
 }

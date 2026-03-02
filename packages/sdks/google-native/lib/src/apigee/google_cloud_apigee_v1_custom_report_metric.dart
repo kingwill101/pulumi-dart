@@ -26,8 +26,8 @@ class GoogleCloudApigeeV1CustomReportMetric {
 
   factory GoogleCloudApigeeV1CustomReportMetric.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1CustomReportMetric(
-      function: map['function'] == null ? null : (map['function'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      function: map['function'] == null ? null : (map['function']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

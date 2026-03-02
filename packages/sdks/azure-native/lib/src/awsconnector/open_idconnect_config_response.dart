@@ -36,10 +36,10 @@ class OpenIDConnectConfigResponse {
 
   factory OpenIDConnectConfigResponse.fromMap(Map<String, dynamic> map) {
     return OpenIDConnectConfigResponse(
-      authTTL: map['authTTL'] == null ? null : (map['authTTL'] as double).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      iatTTL: map['iatTTL'] == null ? null : (map['iatTTL'] as double).input(),
-      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
+      authTTL: map['authTTL'] == null ? null : (map['authTTL']! as double).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      iatTTL: map['iatTTL'] == null ? null : (map['iatTTL']! as double).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer']! as String).input(),
     );
   }
 }

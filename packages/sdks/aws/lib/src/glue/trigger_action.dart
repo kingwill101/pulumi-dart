@@ -46,12 +46,12 @@ class TriggerAction {
 
   factory TriggerAction.fromMap(Map<String, dynamic> map) {
     return TriggerAction(
-      arguments: map['arguments'] == null ? null : ((map['arguments'] as Map).cast<String, String>()).input(),
-      crawlerName: map['crawlerName'] == null ? null : (map['crawlerName'] as String).input(),
-      jobName: map['jobName'] == null ? null : (map['jobName'] as String).input(),
-      notificationProperty: map['notificationProperty'] == null ? null : (TriggerActionNotificationProperty.fromMap((map['notificationProperty'] as Map).cast<String, dynamic>())).input(),
-      securityConfiguration: map['securityConfiguration'] == null ? null : (map['securityConfiguration'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      arguments: map['arguments'] == null ? null : (((map['arguments'] as Map).cast<String, String>()).input()).input(),
+      crawlerName: map['crawlerName'] == null ? null : ((map['crawlerName'] as String).input()).input(),
+      jobName: map['jobName'] == null ? null : ((map['jobName'] as String).input()).input(),
+      notificationProperty: map['notificationProperty'] == null ? null : ((TriggerActionNotificationProperty.fromMap((map['notificationProperty']! as Map).cast<String, dynamic>())).input()).input(),
+      securityConfiguration: map['securityConfiguration'] == null ? null : ((map['securityConfiguration'] as String).input()).input(),
+      timeout: map['timeout'] == null ? null : ((map['timeout'] as int).input()).input(),
     );
   }
 }

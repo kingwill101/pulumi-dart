@@ -27,7 +27,7 @@ class NspAccessRuleResponse {
 
   factory NspAccessRuleResponse.fromMap(Map<String, dynamic> map) {
     return NspAccessRuleResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       properties: (NspAccessRulePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }

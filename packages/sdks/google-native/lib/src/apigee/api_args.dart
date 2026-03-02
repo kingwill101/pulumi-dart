@@ -58,14 +58,14 @@ class ApiArgs {
 
   factory ApiArgs.fromMap(Map<String, dynamic> map) {
     return ApiArgs(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      data: map['data'] == null ? null : (map['data'] as String).input(),
-      extensions: map['extensions'] == null ? null : ((map['extensions'] as List).cast<Map<String, String>>()).input(),
-      file: map['file'] == null ? null : (map['file']).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
+      extensions: map['extensions'] == null ? null : ((map['extensions']! as List).cast<Map<String, String>>()).input(),
+      file: map['file'] == null ? null : (map['file']!).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
-      validate: map['validate'] == null ? null : (map['validate'] as bool).input(),
+      validate: map['validate'] == null ? null : (map['validate']! as bool).input(),
     );
   }
 }

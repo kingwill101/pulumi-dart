@@ -45,10 +45,10 @@ class AgentPoolArgs {
   factory AgentPoolArgs.fromMap(Map<String, dynamic> map) {
     return AgentPoolArgs(
       agentPoolId: (map['agentPoolId'] as String).input(),
-      bandwidthLimit: map['bandwidthLimit'] == null ? null : (BandwidthLimit.fromMap((map['bandwidthLimit'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      bandwidthLimit: map['bandwidthLimit'] == null ? null : (BandwidthLimit.fromMap((map['bandwidthLimit']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

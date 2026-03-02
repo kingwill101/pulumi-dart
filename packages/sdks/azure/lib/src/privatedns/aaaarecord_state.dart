@@ -51,13 +51,13 @@ class AAAARecordState {
 
   factory AAAARecordState.fromMap(Map<String, dynamic> map) {
     return AAAARecordState(
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      records: map['records'] == null ? null : ((map['records'] as List).cast<String>()).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
-      zoneName: map['zoneName'] == null ? null : (map['zoneName'] as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      records: map['records'] == null ? null : ((map['records']! as List).cast<String>()).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
+      zoneName: map['zoneName'] == null ? null : (map['zoneName']! as String).input(),
     );
   }
 }

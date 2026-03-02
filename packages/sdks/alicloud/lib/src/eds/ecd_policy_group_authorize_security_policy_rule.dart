@@ -50,13 +50,13 @@ class EcdPolicyGroupAuthorizeSecurityPolicyRule {
 
   factory EcdPolicyGroupAuthorizeSecurityPolicyRule.fromMap(Map<String, dynamic> map) {
     return EcdPolicyGroupAuthorizeSecurityPolicyRule(
-      cidrIp: map['cidrIp'] == null ? null : (map['cidrIp'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      portRange: map['portRange'] == null ? null : (map['portRange'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      cidrIp: map['cidrIp'] == null ? null : (map['cidrIp']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol']! as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
+      portRange: map['portRange'] == null ? null : (map['portRange']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

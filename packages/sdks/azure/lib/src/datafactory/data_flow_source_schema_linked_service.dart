@@ -26,7 +26,7 @@ class DataFlowSourceSchemaLinkedService {
   factory DataFlowSourceSchemaLinkedService.fromMap(Map<String, dynamic> map) {
     return DataFlowSourceSchemaLinkedService(
       name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
     );
   }
 }

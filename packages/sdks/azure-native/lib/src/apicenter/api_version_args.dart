@@ -59,7 +59,7 @@ class ApiVersionArgs {
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
       title: (map['title'] as String).input(),
-      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

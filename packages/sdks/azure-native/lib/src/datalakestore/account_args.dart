@@ -104,21 +104,21 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      defaultGroup: map['defaultGroup'] == null ? null : (map['defaultGroup'] as String).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
-      encryptionState: map['encryptionState'] == null ? null : (EncryptionState.fromValue(map['encryptionState'] as String)).input(),
-      firewallAllowAzureIps: map['firewallAllowAzureIps'] == null ? null : (FirewallAllowAzureIpsState.fromValue(map['firewallAllowAzureIps'] as String)).input(),
-      firewallRules: map['firewallRules'] == null ? null : (pulumi.Input.decodeList<CreateFirewallRuleWithAccountParameters>(map['firewallRules'], (value) => CreateFirewallRuleWithAccountParameters.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      firewallState: map['firewallState'] == null ? null : (FirewallState.fromValue(map['firewallState'] as String)).input(),
-      identity: map['identity'] == null ? null : (EncryptionIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      newTier: map['newTier'] == null ? null : (TierType.fromValue(map['newTier'] as String)).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      defaultGroup: map['defaultGroup'] == null ? null : (map['defaultGroup']! as String).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfig.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
+      encryptionState: map['encryptionState'] == null ? null : (EncryptionState.fromValue(map['encryptionState']! as String)).input(),
+      firewallAllowAzureIps: map['firewallAllowAzureIps'] == null ? null : (FirewallAllowAzureIpsState.fromValue(map['firewallAllowAzureIps']! as String)).input(),
+      firewallRules: map['firewallRules'] == null ? null : (pulumi.Input.decodeList<CreateFirewallRuleWithAccountParameters>(map['firewallRules']!, (value) => CreateFirewallRuleWithAccountParameters.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      firewallState: map['firewallState'] == null ? null : (FirewallState.fromValue(map['firewallState']! as String)).input(),
+      identity: map['identity'] == null ? null : (EncryptionIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      newTier: map['newTier'] == null ? null : (TierType.fromValue(map['newTier']! as String)).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      trustedIdProviderState: map['trustedIdProviderState'] == null ? null : (TrustedIdProviderState.fromValue(map['trustedIdProviderState'] as String)).input(),
-      trustedIdProviders: map['trustedIdProviders'] == null ? null : (pulumi.Input.decodeList<CreateTrustedIdProviderWithAccountParameters>(map['trustedIdProviders'], (value) => CreateTrustedIdProviderWithAccountParameters.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      virtualNetworkRules: map['virtualNetworkRules'] == null ? null : (pulumi.Input.decodeList<CreateVirtualNetworkRuleWithAccountParameters>(map['virtualNetworkRules'], (value) => CreateVirtualNetworkRuleWithAccountParameters.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      trustedIdProviderState: map['trustedIdProviderState'] == null ? null : (TrustedIdProviderState.fromValue(map['trustedIdProviderState']! as String)).input(),
+      trustedIdProviders: map['trustedIdProviders'] == null ? null : (pulumi.Input.decodeList<CreateTrustedIdProviderWithAccountParameters>(map['trustedIdProviders']!, (value) => CreateTrustedIdProviderWithAccountParameters.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualNetworkRules: map['virtualNetworkRules'] == null ? null : (pulumi.Input.decodeList<CreateVirtualNetworkRuleWithAccountParameters>(map['virtualNetworkRules']!, (value) => CreateVirtualNetworkRuleWithAccountParameters.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

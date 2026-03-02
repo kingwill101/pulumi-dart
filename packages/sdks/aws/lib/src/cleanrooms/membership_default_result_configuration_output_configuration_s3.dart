@@ -28,7 +28,7 @@ class MembershipDefaultResultConfigurationOutputConfigurationS3 {
   factory MembershipDefaultResultConfigurationOutputConfigurationS3.fromMap(Map<String, dynamic> map) {
     return MembershipDefaultResultConfigurationOutputConfigurationS3(
       bucket: (map['bucket'] as String).input(),
-      keyPrefix: map['keyPrefix'] == null ? null : (map['keyPrefix'] as String).input(),
+      keyPrefix: map['keyPrefix'] == null ? null : ((map['keyPrefix'] as String).input()).input(),
       resultFormat: (map['resultFormat'] as String).input(),
     );
   }

@@ -30,9 +30,9 @@ class StoreEncryptConfUserCmkInfo {
 
   factory StoreEncryptConfUserCmkInfo.fromMap(Map<String, dynamic> map) {
     return StoreEncryptConfUserCmkInfo(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      cmkKeyId: map['cmkKeyId'] == null ? null : (map['cmkKeyId'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      cmkKeyId: map['cmkKeyId'] == null ? null : (map['cmkKeyId']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
     );
   }
 }

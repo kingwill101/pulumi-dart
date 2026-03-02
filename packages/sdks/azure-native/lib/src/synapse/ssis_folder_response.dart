@@ -37,9 +37,9 @@ class SsisFolderResponse {
 
   factory SsisFolderResponse.fromMap(Map<String, dynamic> map) {
     return SsisFolderResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as double).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as double).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -56,14 +56,14 @@ class ProfileMonitorConfig {
 
   factory ProfileMonitorConfig.fromMap(Map<String, dynamic> map) {
     return ProfileMonitorConfig(
-      customHeaders: map['customHeaders'] == null ? null : (pulumi.Input.decodeList<ProfileMonitorConfigCustomHeader>(map['customHeaders'], (value) => ProfileMonitorConfigCustomHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      expectedStatusCodeRanges: map['expectedStatusCodeRanges'] == null ? null : ((map['expectedStatusCodeRanges'] as List).cast<String>()).input(),
-      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds'] as int).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      customHeaders: map['customHeaders'] == null ? null : (pulumi.Input.decodeList<ProfileMonitorConfigCustomHeader>(map['customHeaders']!, (value) => ProfileMonitorConfigCustomHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expectedStatusCodeRanges: map['expectedStatusCodeRanges'] == null ? null : ((map['expectedStatusCodeRanges']! as List).cast<String>()).input(),
+      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds']! as int).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
       port: (map['port'] as int).input(),
       protocol: (map['protocol'] as String).input(),
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as int).input(),
-      toleratedNumberOfFailures: map['toleratedNumberOfFailures'] == null ? null : (map['toleratedNumberOfFailures'] as int).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds']! as int).input(),
+      toleratedNumberOfFailures: map['toleratedNumberOfFailures'] == null ? null : (map['toleratedNumberOfFailures']! as int).input(),
     );
   }
 }

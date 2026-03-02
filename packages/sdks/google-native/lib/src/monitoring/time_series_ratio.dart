@@ -31,9 +31,9 @@ class TimeSeriesRatio {
 
   factory TimeSeriesRatio.fromMap(Map<String, dynamic> map) {
     return TimeSeriesRatio(
-      badServiceFilter: map['badServiceFilter'] == null ? null : (map['badServiceFilter'] as String).input(),
-      goodServiceFilter: map['goodServiceFilter'] == null ? null : (map['goodServiceFilter'] as String).input(),
-      totalServiceFilter: map['totalServiceFilter'] == null ? null : (map['totalServiceFilter'] as String).input(),
+      badServiceFilter: map['badServiceFilter'] == null ? null : (map['badServiceFilter']! as String).input(),
+      goodServiceFilter: map['goodServiceFilter'] == null ? null : (map['goodServiceFilter']! as String).input(),
+      totalServiceFilter: map['totalServiceFilter'] == null ? null : (map['totalServiceFilter']! as String).input(),
     );
   }
 }

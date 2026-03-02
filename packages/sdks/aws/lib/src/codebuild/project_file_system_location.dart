@@ -43,11 +43,11 @@ class ProjectFileSystemLocation {
 
   factory ProjectFileSystemLocation.fromMap(Map<String, dynamic> map) {
     return ProjectFileSystemLocation(
-      identifier: map['identifier'] == null ? null : (map['identifier'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mountOptions: map['mountOptions'] == null ? null : (map['mountOptions'] as String).input(),
-      mountPoint: map['mountPoint'] == null ? null : (map['mountPoint'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      identifier: map['identifier'] == null ? null : ((map['identifier'] as String).input()).input(),
+      location: map['location'] == null ? null : ((map['location'] as String).input()).input(),
+      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions'] as String).input()).input(),
+      mountPoint: map['mountPoint'] == null ? null : ((map['mountPoint'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

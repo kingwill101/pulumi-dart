@@ -55,13 +55,13 @@ class ImageOsDisk {
 
   factory ImageOsDisk.fromMap(Map<String, dynamic> map) {
     return ImageOsDisk(
-      blobUri: map['blobUri'] == null ? null : (map['blobUri'] as String).input(),
-      caching: map['caching'] == null ? null : (map['caching'] as String).input(),
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
-      managedDiskId: map['managedDiskId'] == null ? null : (map['managedDiskId'] as String).input(),
-      osState: map['osState'] == null ? null : (map['osState'] as String).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb'] as int).input(),
+      blobUri: map['blobUri'] == null ? null : (map['blobUri']! as String).input(),
+      caching: map['caching'] == null ? null : (map['caching']! as String).input(),
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId']! as String).input(),
+      managedDiskId: map['managedDiskId'] == null ? null : (map['managedDiskId']! as String).input(),
+      osState: map['osState'] == null ? null : (map['osState']! as String).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb']! as int).input(),
       storageType: (map['storageType'] as String).input(),
     );
   }

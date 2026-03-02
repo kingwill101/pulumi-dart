@@ -30,9 +30,9 @@ class StaticCidrProperties {
 
   factory StaticCidrProperties.fromMap(Map<String, dynamic> map) {
     return StaticCidrProperties(
-      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      numberOfIPAddressesToAllocate: map['numberOfIPAddressesToAllocate'] == null ? null : (map['numberOfIPAddressesToAllocate'] as String).input(),
+      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      numberOfIPAddressesToAllocate: map['numberOfIPAddressesToAllocate'] == null ? null : (map['numberOfIPAddressesToAllocate']! as String).input(),
     );
   }
 }

@@ -57,7 +57,7 @@ class SynapseWorkspaceSqlPoolTableDataSetMappingArgs {
     return SynapseWorkspaceSqlPoolTableDataSetMappingArgs(
       accountName: (map['accountName'] as String).input(),
       dataSetId: (map['dataSetId'] as String).input(),
-      dataSetMappingName: map['dataSetMappingName'] == null ? null : (map['dataSetMappingName'] as String).input(),
+      dataSetMappingName: map['dataSetMappingName'] == null ? null : (map['dataSetMappingName']! as String).input(),
       kind: (map['kind'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       shareSubscriptionName: (map['shareSubscriptionName'] as String).input(),

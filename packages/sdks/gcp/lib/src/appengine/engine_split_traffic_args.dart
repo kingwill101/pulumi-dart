@@ -42,8 +42,8 @@ class EngineSplitTrafficArgs {
 
   factory EngineSplitTrafficArgs.fromMap(Map<String, dynamic> map) {
     return EngineSplitTrafficArgs(
-      migrateTraffic: map['migrateTraffic'] == null ? null : (map['migrateTraffic'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      migrateTraffic: map['migrateTraffic'] == null ? null : (map['migrateTraffic']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       service: (map['service'] as String).input(),
       split: (EngineSplitTrafficSplit.fromMap((map['split'] as Map).cast<String, dynamic>())).input(),
     );

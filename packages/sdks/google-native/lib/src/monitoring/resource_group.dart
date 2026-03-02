@@ -27,8 +27,8 @@ class ResourceGroup {
 
   factory ResourceGroup.fromMap(Map<String, dynamic> map) {
     return ResourceGroup(
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (ResourceGroupResourceType.fromValue(map['resourceType'] as String)).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (ResourceGroupResourceType.fromValue(map['resourceType']! as String)).input(),
     );
   }
 }

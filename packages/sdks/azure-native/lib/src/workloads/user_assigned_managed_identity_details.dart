@@ -30,9 +30,9 @@ class UserAssignedManagedIdentityDetails {
 
   factory UserAssignedManagedIdentityDetails.fromMap(Map<String, dynamic> map) {
     return UserAssignedManagedIdentityDetails(
-      identityArmId: map['identityArmId'] == null ? null : (map['identityArmId'] as String).input(),
-      identityName: map['identityName'] == null ? null : (map['identityName'] as String).input(),
-      userAssignedIdentityProperties: map['userAssignedIdentityProperties'] == null ? null : (UserAssignedIdentityProperties.fromMap((map['userAssignedIdentityProperties'] as Map).cast<String, dynamic>())).input(),
+      identityArmId: map['identityArmId'] == null ? null : (map['identityArmId']! as String).input(),
+      identityName: map['identityName'] == null ? null : (map['identityName']! as String).input(),
+      userAssignedIdentityProperties: map['userAssignedIdentityProperties'] == null ? null : (UserAssignedIdentityProperties.fromMap((map['userAssignedIdentityProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

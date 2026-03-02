@@ -33,7 +33,7 @@ class GetNetworkPolicyArgs {
     return GetNetworkPolicyArgs(
       location: (map['location'] as String).input(),
       networkPolicyId: (map['networkPolicyId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

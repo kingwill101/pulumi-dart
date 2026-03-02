@@ -34,8 +34,8 @@ class ProjectKajPolicyConfigArgs {
 
   factory ProjectKajPolicyConfigArgs.fromMap(Map<String, dynamic> map) {
     return ProjectKajPolicyConfigArgs(
-      defaultKeyAccessJustificationPolicy: map['defaultKeyAccessJustificationPolicy'] == null ? null : (ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap((map['defaultKeyAccessJustificationPolicy'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      defaultKeyAccessJustificationPolicy: map['defaultKeyAccessJustificationPolicy'] == null ? null : (ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap((map['defaultKeyAccessJustificationPolicy']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

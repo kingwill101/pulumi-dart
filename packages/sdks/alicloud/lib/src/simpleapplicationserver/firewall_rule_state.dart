@@ -41,11 +41,11 @@ class FirewallRuleState {
 
   factory FirewallRuleState.fromMap(Map<String, dynamic> map) {
     return FirewallRuleState(
-      firewallRuleId: map['firewallRuleId'] == null ? null : (map['firewallRuleId'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
-      ruleProtocol: map['ruleProtocol'] == null ? null : (map['ruleProtocol'] as String).input(),
+      firewallRuleId: map['firewallRuleId'] == null ? null : (map['firewallRuleId']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
+      ruleProtocol: map['ruleProtocol'] == null ? null : (map['ruleProtocol']! as String).input(),
     );
   }
 }

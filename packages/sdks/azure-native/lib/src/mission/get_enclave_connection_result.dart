@@ -94,11 +94,11 @@ class GetEnclaveConnectionResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceCollection: (map['resourceCollection'] as List).cast<String>(),
-      sourceCidr: map['sourceCidr'] == null ? null : map['sourceCidr'] as String,
+      sourceCidr: map['sourceCidr'] == null ? null : map['sourceCidr']! as String,
       sourceResourceId: map['sourceResourceId'] as String,
       state: map['state'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

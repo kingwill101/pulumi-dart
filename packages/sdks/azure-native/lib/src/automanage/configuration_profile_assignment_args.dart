@@ -40,8 +40,8 @@ class ConfigurationProfileAssignmentArgs {
 
   factory ConfigurationProfileAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationProfileAssignmentArgs(
-      configurationProfileAssignmentName: map['configurationProfileAssignmentName'] == null ? null : (map['configurationProfileAssignmentName'] as String).input(),
-      properties: map['properties'] == null ? null : (ConfigurationProfileAssignmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      configurationProfileAssignmentName: map['configurationProfileAssignmentName'] == null ? null : (map['configurationProfileAssignmentName']! as String).input(),
+      properties: map['properties'] == null ? null : (ConfigurationProfileAssignmentProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       vmName: (map['vmName'] as String).input(),
     );

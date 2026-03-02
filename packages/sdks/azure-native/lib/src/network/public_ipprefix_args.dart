@@ -89,19 +89,19 @@ class PublicIPPrefixArgs {
 
   factory PublicIPPrefixArgs.fromMap(Map<String, dynamic> map) {
     return PublicIPPrefixArgs(
-      customIPPrefix: map['customIPPrefix'] == null ? null : (SubResource.fromMap((map['customIPPrefix'] as Map).cast<String, dynamic>())).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      ipTags: map['ipTags'] == null ? null : (pulumi.Input.decodeList<IpTag>(map['ipTags'], (value) => IpTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      natGateway: map['natGateway'] == null ? null : (map['natGateway'] as NatGatewayNetwork).input(),
-      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength'] as int).input(),
-      publicIPAddressVersion: map['publicIPAddressVersion'] == null ? null : (map['publicIPAddressVersion'] as String).input(),
-      publicIpPrefixName: map['publicIpPrefixName'] == null ? null : (map['publicIpPrefixName'] as String).input(),
+      customIPPrefix: map['customIPPrefix'] == null ? null : (SubResource.fromMap((map['customIPPrefix']! as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      ipTags: map['ipTags'] == null ? null : (pulumi.Input.decodeList<IpTag>(map['ipTags']!, (value) => IpTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      natGateway: map['natGateway'] == null ? null : (map['natGateway']! as NatGatewayNetwork).input(),
+      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength']! as int).input(),
+      publicIPAddressVersion: map['publicIPAddressVersion'] == null ? null : (map['publicIPAddressVersion']! as String).input(),
+      publicIpPrefixName: map['publicIpPrefixName'] == null ? null : (map['publicIpPrefixName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (PublicIPPrefixSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      sku: map['sku'] == null ? null : (PublicIPPrefixSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

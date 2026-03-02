@@ -21,7 +21,7 @@ class RemediationPropertiesFailureThreshold {
 
   factory RemediationPropertiesFailureThreshold.fromMap(Map<String, dynamic> map) {
     return RemediationPropertiesFailureThreshold(
-      percentage: map['percentage'] == null ? null : (map['percentage'] as double).input(),
+      percentage: map['percentage'] == null ? null : (map['percentage']! as double).input(),
     );
   }
 }

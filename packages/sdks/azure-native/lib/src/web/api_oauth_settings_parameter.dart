@@ -31,9 +31,9 @@ class ApiOAuthSettingsParameter {
 
   factory ApiOAuthSettingsParameter.fromMap(Map<String, dynamic> map) {
     return ApiOAuthSettingsParameter(
-      options: map['options'] == null ? null : (map['options']).input(),
-      uiDefinition: map['uiDefinition'] == null ? null : (map['uiDefinition']).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      options: map['options'] == null ? null : (map['options']!).input(),
+      uiDefinition: map['uiDefinition'] == null ? null : (map['uiDefinition']!).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

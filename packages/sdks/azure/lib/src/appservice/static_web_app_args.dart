@@ -98,21 +98,21 @@ class StaticWebAppArgs {
 
   factory StaticWebAppArgs.fromMap(Map<String, dynamic> map) {
     return StaticWebAppArgs(
-      appSettings: map['appSettings'] == null ? null : ((map['appSettings'] as Map).cast<String, String>()).input(),
-      basicAuth: map['basicAuth'] == null ? null : (StaticWebAppBasicAuth.fromMap((map['basicAuth'] as Map).cast<String, dynamic>())).input(),
-      configurationFileChangesEnabled: map['configurationFileChangesEnabled'] == null ? null : (map['configurationFileChangesEnabled'] as bool).input(),
-      identity: map['identity'] == null ? null : (StaticWebAppIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      previewEnvironmentsEnabled: map['previewEnvironmentsEnabled'] == null ? null : (map['previewEnvironmentsEnabled'] as bool).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
-      repositoryBranch: map['repositoryBranch'] == null ? null : (map['repositoryBranch'] as String).input(),
-      repositoryToken: map['repositoryToken'] == null ? null : (map['repositoryToken'] as String).input(),
-      repositoryUrl: map['repositoryUrl'] == null ? null : (map['repositoryUrl'] as String).input(),
+      appSettings: map['appSettings'] == null ? null : ((map['appSettings']! as Map).cast<String, String>()).input(),
+      basicAuth: map['basicAuth'] == null ? null : (StaticWebAppBasicAuth.fromMap((map['basicAuth']! as Map).cast<String, dynamic>())).input(),
+      configurationFileChangesEnabled: map['configurationFileChangesEnabled'] == null ? null : (map['configurationFileChangesEnabled']! as bool).input(),
+      identity: map['identity'] == null ? null : (StaticWebAppIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      previewEnvironmentsEnabled: map['previewEnvironmentsEnabled'] == null ? null : (map['previewEnvironmentsEnabled']! as bool).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
+      repositoryBranch: map['repositoryBranch'] == null ? null : (map['repositoryBranch']! as String).input(),
+      repositoryToken: map['repositoryToken'] == null ? null : (map['repositoryToken']! as String).input(),
+      repositoryUrl: map['repositoryUrl'] == null ? null : (map['repositoryUrl']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skuSize: map['skuSize'] == null ? null : (map['skuSize'] as String).input(),
-      skuTier: map['skuTier'] == null ? null : (map['skuTier'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      skuSize: map['skuSize'] == null ? null : (map['skuSize']! as String).input(),
+      skuTier: map['skuTier'] == null ? null : (map['skuTier']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

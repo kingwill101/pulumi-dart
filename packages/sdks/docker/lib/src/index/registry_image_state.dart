@@ -52,13 +52,13 @@ class RegistryImageState {
 
   factory RegistryImageState.fromMap(Map<String, dynamic> map) {
     return RegistryImageState(
-      authConfig: map['authConfig'] == null ? null : (RegistryImageAuthConfig.fromMap((map['authConfig'] as Map).cast<String, dynamic>())).input(),
-      build: map['build'] == null ? null : (RegistryImageBuild.fromMap((map['build'] as Map).cast<String, dynamic>())).input(),
-      insecureSkipVerify: map['insecureSkipVerify'] == null ? null : (map['insecureSkipVerify'] as bool).input(),
-      keepRemotely: map['keepRemotely'] == null ? null : (map['keepRemotely'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sha256Digest: map['sha256Digest'] == null ? null : (map['sha256Digest'] as String).input(),
-      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
+      authConfig: map['authConfig'] == null ? null : (RegistryImageAuthConfig.fromMap((map['authConfig']! as Map).cast<String, dynamic>())).input(),
+      build: map['build'] == null ? null : (RegistryImageBuild.fromMap((map['build']! as Map).cast<String, dynamic>())).input(),
+      insecureSkipVerify: map['insecureSkipVerify'] == null ? null : (map['insecureSkipVerify']! as bool).input(),
+      keepRemotely: map['keepRemotely'] == null ? null : (map['keepRemotely']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sha256Digest: map['sha256Digest'] == null ? null : (map['sha256Digest']! as String).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers']! as Map).cast<String, String>()).input(),
     );
   }
 }

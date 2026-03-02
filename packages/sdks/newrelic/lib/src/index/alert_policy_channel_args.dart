@@ -34,7 +34,7 @@ class AlertPolicyChannelArgs {
 
   factory AlertPolicyChannelArgs.fromMap(Map<String, dynamic> map) {
     return AlertPolicyChannelArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
       channelIds: ((map['channelIds'] as List).cast<String>()).input(),
       policyId: (map['policyId'] as String).input(),
     );

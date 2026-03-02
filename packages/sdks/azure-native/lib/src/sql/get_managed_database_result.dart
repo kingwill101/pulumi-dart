@@ -86,18 +86,18 @@ class GetManagedDatabaseResult {
   factory GetManagedDatabaseResult.fromMap(Map<String, dynamic> map) {
     return GetManagedDatabaseResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      catalogCollation: map['catalogCollation'] == null ? null : map['catalogCollation'] as String,
-      collation: map['collation'] == null ? null : map['collation'] as String,
+      catalogCollation: map['catalogCollation'] == null ? null : map['catalogCollation']! as String,
+      collation: map['collation'] == null ? null : map['collation']! as String,
       creationDate: map['creationDate'] as String,
       defaultSecondaryLocation: map['defaultSecondaryLocation'] as String,
       earliestRestorePoint: map['earliestRestorePoint'] as String,
       failoverGroupId: map['failoverGroupId'] as String,
       id: map['id'] as String,
-      isLedgerOn: map['isLedgerOn'] == null ? null : map['isLedgerOn'] as bool,
+      isLedgerOn: map['isLedgerOn'] == null ? null : map['isLedgerOn']! as bool,
       location: map['location'] as String,
       name: map['name'] as String,
       status: map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

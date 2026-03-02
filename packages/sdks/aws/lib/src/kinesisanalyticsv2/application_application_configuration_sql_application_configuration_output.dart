@@ -48,12 +48,12 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationOutput {
 
   factory ApplicationApplicationConfigurationSqlApplicationConfigurationOutput.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationOutput(
-      destinationSchema: (ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema.fromMap((map['destinationSchema'] as Map).cast<String, dynamic>())).input(),
-      kinesisFirehoseOutput: map['kinesisFirehoseOutput'] == null ? null : (ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutput.fromMap((map['kinesisFirehoseOutput'] as Map).cast<String, dynamic>())).input(),
-      kinesisStreamsOutput: map['kinesisStreamsOutput'] == null ? null : (ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput.fromMap((map['kinesisStreamsOutput'] as Map).cast<String, dynamic>())).input(),
-      lambdaOutput: map['lambdaOutput'] == null ? null : (ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput.fromMap((map['lambdaOutput'] as Map).cast<String, dynamic>())).input(),
+      destinationSchema: (ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema.fromMap((map['destinationSchema']! as Map).cast<String, dynamic>())).input(),
+      kinesisFirehoseOutput: map['kinesisFirehoseOutput'] == null ? null : ((ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutput.fromMap((map['kinesisFirehoseOutput']! as Map).cast<String, dynamic>())).input()).input(),
+      kinesisStreamsOutput: map['kinesisStreamsOutput'] == null ? null : ((ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput.fromMap((map['kinesisStreamsOutput']! as Map).cast<String, dynamic>())).input()).input(),
+      lambdaOutput: map['lambdaOutput'] == null ? null : ((ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput.fromMap((map['lambdaOutput']! as Map).cast<String, dynamic>())).input()).input(),
       name: (map['name'] as String).input(),
-      outputId: map['outputId'] == null ? null : (map['outputId'] as String).input(),
+      outputId: map['outputId'] == null ? null : ((map['outputId'] as String).input()).input(),
     );
   }
 }

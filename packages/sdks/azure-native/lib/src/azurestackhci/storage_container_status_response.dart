@@ -42,11 +42,11 @@ class StorageContainerStatusResponse {
 
   factory StorageContainerStatusResponse.fromMap(Map<String, dynamic> map) {
     return StorageContainerStatusResponse(
-      availableSizeMB: map['availableSizeMB'] == null ? null : (map['availableSizeMB'] as double).input(),
-      containerSizeMB: map['containerSizeMB'] == null ? null : (map['containerSizeMB'] as double).input(),
-      errorCode: map['errorCode'] == null ? null : (map['errorCode'] as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
-      provisioningStatus: map['provisioningStatus'] == null ? null : (StorageContainerStatusProvisioningStatusResponse.fromMap((map['provisioningStatus'] as Map).cast<String, dynamic>())).input(),
+      availableSizeMB: map['availableSizeMB'] == null ? null : (map['availableSizeMB']! as double).input(),
+      containerSizeMB: map['containerSizeMB'] == null ? null : (map['containerSizeMB']! as double).input(),
+      errorCode: map['errorCode'] == null ? null : (map['errorCode']! as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      provisioningStatus: map['provisioningStatus'] == null ? null : (StorageContainerStatusProvisioningStatusResponse.fromMap((map['provisioningStatus']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

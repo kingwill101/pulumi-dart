@@ -99,22 +99,22 @@ class GetFlowlogsArgs {
 
   factory GetFlowlogsArgs.fromMap(Map<String, dynamic> map) {
     return GetFlowlogsArgs(
-      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      flowLogId: map['flowLogId'] == null ? null : (map['flowLogId'] as String).input(),
-      flowLogName: map['flowLogName'] == null ? null : (map['flowLogName'] as String).input(),
-      flowLogVersion: map['flowLogVersion'] == null ? null : (map['flowLogVersion'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      logStoreName: map['logStoreName'] == null ? null : (map['logStoreName'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      flowLogId: map['flowLogId'] == null ? null : (map['flowLogId']! as String).input(),
+      flowLogName: map['flowLogName'] == null ? null : (map['flowLogName']! as String).input(),
+      flowLogVersion: map['flowLogVersion'] == null ? null : (map['flowLogVersion']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      logStoreName: map['logStoreName'] == null ? null : (map['logStoreName']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber']! as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId']! as String).input(),
     );
   }
 }

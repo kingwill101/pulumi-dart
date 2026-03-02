@@ -28,8 +28,8 @@ class AuthorityKeySpec {
 
   factory AuthorityKeySpec.fromMap(Map<String, dynamic> map) {
     return AuthorityKeySpec(
-      algorithm: map['algorithm'] == null ? null : (map['algorithm'] as String).input(),
-      cloudKmsKeyVersion: map['cloudKmsKeyVersion'] == null ? null : (map['cloudKmsKeyVersion'] as String).input(),
+      algorithm: map['algorithm'] == null ? null : (map['algorithm']! as String).input(),
+      cloudKmsKeyVersion: map['cloudKmsKeyVersion'] == null ? null : (map['cloudKmsKeyVersion']! as String).input(),
     );
   }
 }

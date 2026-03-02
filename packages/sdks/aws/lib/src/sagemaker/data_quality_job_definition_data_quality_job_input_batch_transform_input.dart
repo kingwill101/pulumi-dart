@@ -42,10 +42,10 @@ class DataQualityJobDefinitionDataQualityJobInputBatchTransformInput {
   factory DataQualityJobDefinitionDataQualityJobInputBatchTransformInput.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionDataQualityJobInputBatchTransformInput(
       dataCapturedDestinationS3Uri: (map['dataCapturedDestinationS3Uri'] as String).input(),
-      datasetFormat: (DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormat.fromMap((map['datasetFormat'] as Map).cast<String, dynamic>())).input(),
-      localPath: map['localPath'] == null ? null : (map['localPath'] as String).input(),
-      s3DataDistributionType: map['s3DataDistributionType'] == null ? null : (map['s3DataDistributionType'] as String).input(),
-      s3InputMode: map['s3InputMode'] == null ? null : (map['s3InputMode'] as String).input(),
+      datasetFormat: (DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormat.fromMap((map['datasetFormat']! as Map).cast<String, dynamic>())).input(),
+      localPath: map['localPath'] == null ? null : ((map['localPath'] as String).input()).input(),
+      s3DataDistributionType: map['s3DataDistributionType'] == null ? null : ((map['s3DataDistributionType'] as String).input()).input(),
+      s3InputMode: map['s3InputMode'] == null ? null : ((map['s3InputMode'] as String).input()).input(),
     );
   }
 }

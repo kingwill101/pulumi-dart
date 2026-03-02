@@ -60,13 +60,13 @@ class ImageEventOperationArgs {
   factory ImageEventOperationArgs.fromMap(Map<String, dynamic> map) {
     return ImageEventOperationArgs(
       conditions: (map['conditions'] as String).input(),
-      eventKey: map['eventKey'] == null ? null : (map['eventKey'] as String).input(),
-      eventName: map['eventName'] == null ? null : (map['eventName'] as String).input(),
+      eventKey: map['eventKey'] == null ? null : (map['eventKey']! as String).input(),
+      eventName: map['eventName'] == null ? null : (map['eventName']! as String).input(),
       eventType: (map['eventType'] as String).input(),
-      note: map['note'] == null ? null : (map['note'] as String).input(),
+      note: map['note'] == null ? null : (map['note']! as String).input(),
       operationCode: (map['operationCode'] as String).input(),
-      scenarios: map['scenarios'] == null ? null : (map['scenarios'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      scenarios: map['scenarios'] == null ? null : (map['scenarios']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

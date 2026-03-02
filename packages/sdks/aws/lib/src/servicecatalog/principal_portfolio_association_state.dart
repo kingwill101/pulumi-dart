@@ -43,11 +43,11 @@ class PrincipalPortfolioAssociationState {
 
   factory PrincipalPortfolioAssociationState.fromMap(Map<String, dynamic> map) {
     return PrincipalPortfolioAssociationState(
-      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
-      portfolioId: map['portfolioId'] == null ? null : (map['portfolioId'] as String).input(),
-      principalArn: map['principalArn'] == null ? null : (map['principalArn'] as String).input(),
-      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      acceptLanguage: map['acceptLanguage'] == null ? null : ((map['acceptLanguage'] as String).input()).input(),
+      portfolioId: map['portfolioId'] == null ? null : ((map['portfolioId'] as String).input()).input(),
+      principalArn: map['principalArn'] == null ? null : ((map['principalArn'] as String).input()).input(),
+      principalType: map['principalType'] == null ? null : ((map['principalType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

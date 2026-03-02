@@ -31,9 +31,9 @@ class NetworkAclAssociationState {
 
   factory NetworkAclAssociationState.fromMap(Map<String, dynamic> map) {
     return NetworkAclAssociationState(
-      networkAclId: map['networkAclId'] == null ? null : (map['networkAclId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      networkAclId: map['networkAclId'] == null ? null : ((map['networkAclId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
     );
   }
 }

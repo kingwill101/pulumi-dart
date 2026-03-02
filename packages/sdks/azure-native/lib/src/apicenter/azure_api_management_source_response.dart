@@ -26,7 +26,7 @@ class AzureApiManagementSourceResponse {
 
   factory AzureApiManagementSourceResponse.fromMap(Map<String, dynamic> map) {
     return AzureApiManagementSourceResponse(
-      msiResourceId: map['msiResourceId'] == null ? null : (map['msiResourceId'] as String).input(),
+      msiResourceId: map['msiResourceId'] == null ? null : (map['msiResourceId']! as String).input(),
       resourceId: (map['resourceId'] as String).input(),
     );
   }

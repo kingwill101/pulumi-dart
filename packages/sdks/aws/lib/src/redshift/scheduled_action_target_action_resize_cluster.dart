@@ -40,11 +40,11 @@ class ScheduledActionTargetActionResizeCluster {
 
   factory ScheduledActionTargetActionResizeCluster.fromMap(Map<String, dynamic> map) {
     return ScheduledActionTargetActionResizeCluster(
-      classic: map['classic'] == null ? null : (map['classic'] as bool).input(),
+      classic: map['classic'] == null ? null : ((map['classic'] as bool).input()).input(),
       clusterIdentifier: (map['clusterIdentifier'] as String).input(),
-      clusterType: map['clusterType'] == null ? null : (map['clusterType'] as String).input(),
-      nodeType: map['nodeType'] == null ? null : (map['nodeType'] as String).input(),
-      numberOfNodes: map['numberOfNodes'] == null ? null : (map['numberOfNodes'] as int).input(),
+      clusterType: map['clusterType'] == null ? null : ((map['clusterType'] as String).input()).input(),
+      nodeType: map['nodeType'] == null ? null : ((map['nodeType'] as String).input()).input(),
+      numberOfNodes: map['numberOfNodes'] == null ? null : ((map['numberOfNodes'] as int).input()).input(),
     );
   }
 }

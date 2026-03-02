@@ -27,8 +27,8 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
 
   factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInputDatasetFormat.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInputDatasetFormat(
-      csv: map['csv'] == null ? null : (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInputDatasetFormatCsv.fromMap((map['csv'] as Map).cast<String, dynamic>())).input(),
-      json: map['json'] == null ? null : (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInputDatasetFormatJson.fromMap((map['json'] as Map).cast<String, dynamic>())).input(),
+      csv: map['csv'] == null ? null : ((MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInputDatasetFormatCsv.fromMap((map['csv']! as Map).cast<String, dynamic>())).input()).input(),
+      json: map['json'] == null ? null : ((MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInputDatasetFormatJson.fromMap((map['json']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

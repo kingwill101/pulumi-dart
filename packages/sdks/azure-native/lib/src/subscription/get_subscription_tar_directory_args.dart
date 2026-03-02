@@ -24,7 +24,7 @@ class GetSubscriptionTarDirectoryArgs {
 
   factory GetSubscriptionTarDirectoryArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionTarDirectoryArgs(
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

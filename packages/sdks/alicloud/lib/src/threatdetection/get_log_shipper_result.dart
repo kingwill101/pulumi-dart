@@ -56,7 +56,7 @@ class GetLogShipperResult {
     return GetLogShipperResult(
       authStatus: map['authStatus'] as String,
       buyStatus: map['buyStatus'] as String,
-      enable: map['enable'] == null ? null : map['enable'] as String,
+      enable: map['enable'] == null ? null : map['enable']! as String,
       id: map['id'] as String,
       openStatus: map['openStatus'] as String,
       slsProjectStatus: map['slsProjectStatus'] as String,

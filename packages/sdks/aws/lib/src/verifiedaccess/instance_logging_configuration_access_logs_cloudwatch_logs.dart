@@ -26,7 +26,7 @@ class InstanceLoggingConfigurationAccessLogsCloudwatchLogs {
   factory InstanceLoggingConfigurationAccessLogsCloudwatchLogs.fromMap(Map<String, dynamic> map) {
     return InstanceLoggingConfigurationAccessLogsCloudwatchLogs(
       enabled: (map['enabled'] as bool).input(),
-      logGroup: map['logGroup'] == null ? null : (map['logGroup'] as String).input(),
+      logGroup: map['logGroup'] == null ? null : ((map['logGroup'] as String).input()).input(),
     );
   }
 }

@@ -36,8 +36,8 @@ class AuditAnnotationPatch {
 
   factory AuditAnnotationPatch.fromMap(Map<String, dynamic> map) {
     return AuditAnnotationPatch(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      valueExpression: map['valueExpression'] == null ? null : (map['valueExpression'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      valueExpression: map['valueExpression'] == null ? null : (map['valueExpression']! as String).input(),
     );
   }
 }

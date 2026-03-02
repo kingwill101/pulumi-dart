@@ -41,11 +41,11 @@ class VirtualHardDiskUploadStatusResponse {
 
   factory VirtualHardDiskUploadStatusResponse.fromMap(Map<String, dynamic> map) {
     return VirtualHardDiskUploadStatusResponse(
-      errorCode: map['errorCode'] == null ? null : (map['errorCode'] as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
-      progressPercentage: map['progressPercentage'] == null ? null : (map['progressPercentage'] as double).input(),
+      errorCode: map['errorCode'] == null ? null : (map['errorCode']! as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      progressPercentage: map['progressPercentage'] == null ? null : (map['progressPercentage']! as double).input(),
       status: (map['status'] as String).input(),
-      uploadedSizeInMB: map['uploadedSizeInMB'] == null ? null : (map['uploadedSizeInMB'] as double).input(),
+      uploadedSizeInMB: map['uploadedSizeInMB'] == null ? null : (map['uploadedSizeInMB']! as double).input(),
     );
   }
 }

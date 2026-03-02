@@ -37,10 +37,10 @@ class OtlpConfiguration {
 
   factory OtlpConfiguration.fromMap(Map<String, dynamic> map) {
     return OtlpConfiguration(
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<Header>(map['headers'], (value) => Header.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      insecure: map['insecure'] == null ? null : (map['insecure'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<Header>(map['headers']!, (value) => Header.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      insecure: map['insecure'] == null ? null : (map['insecure']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

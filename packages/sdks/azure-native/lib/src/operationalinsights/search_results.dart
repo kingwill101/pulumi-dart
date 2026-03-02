@@ -41,11 +41,11 @@ class SearchResults {
 
   factory SearchResults.fromMap(Map<String, dynamic> map) {
     return SearchResults(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      endSearchTime: map['endSearchTime'] == null ? null : (map['endSearchTime'] as String).input(),
-      limit: map['limit'] == null ? null : (map['limit'] as int).input(),
-      query: map['query'] == null ? null : (map['query'] as String).input(),
-      startSearchTime: map['startSearchTime'] == null ? null : (map['startSearchTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      endSearchTime: map['endSearchTime'] == null ? null : (map['endSearchTime']! as String).input(),
+      limit: map['limit'] == null ? null : (map['limit']! as int).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
+      startSearchTime: map['startSearchTime'] == null ? null : (map['startSearchTime']! as String).input(),
     );
   }
 }

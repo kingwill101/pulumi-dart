@@ -73,7 +73,7 @@ class GetPrimaryIpsPrimaryIp {
       ipNetwork: (map['ipNetwork'] as String).input(),
       labels: ((map['labels'] as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -26,8 +26,8 @@ class CxPlaybookInstructionStep {
 
   factory CxPlaybookInstructionStep.fromMap(Map<String, dynamic> map) {
     return CxPlaybookInstructionStep(
-      steps: map['steps'] == null ? null : (map['steps'] as String).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      steps: map['steps'] == null ? null : (map['steps']! as String).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class NetworkIpDhcp {
 
   factory NetworkIpDhcp.fromMap(Map<String, dynamic> map) {
     return NetworkIpDhcp(
-      bootps: map['bootps'] == null ? null : (pulumi.Input.decodeList<NetworkIpDhcpBootp>(map['bootps'], (value) => NetworkIpDhcpBootp.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<NetworkIpDhcpHost>(map['hosts'], (value) => NetworkIpDhcpHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ranges: map['ranges'] == null ? null : (pulumi.Input.decodeList<NetworkIpDhcpRange>(map['ranges'], (value) => NetworkIpDhcpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bootps: map['bootps'] == null ? null : (pulumi.Input.decodeList<NetworkIpDhcpBootp>(map['bootps']!, (value) => NetworkIpDhcpBootp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<NetworkIpDhcpHost>(map['hosts']!, (value) => NetworkIpDhcpHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ranges: map['ranges'] == null ? null : (pulumi.Input.decodeList<NetworkIpDhcpRange>(map['ranges']!, (value) => NetworkIpDhcpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

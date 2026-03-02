@@ -21,7 +21,7 @@ class VmManagedIdentityResponse {
 
   factory VmManagedIdentityResponse.fromMap(Map<String, dynamic> map) {
     return VmManagedIdentityResponse(
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities'] as List).cast<String>()).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities']! as List).cast<String>()).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class ComputeInstanceLastOperationResponse {
 
   factory ComputeInstanceLastOperationResponse.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceLastOperationResponse(
-      operationName: map['operationName'] == null ? null : (map['operationName'] as String).input(),
-      operationStatus: map['operationStatus'] == null ? null : (map['operationStatus'] as String).input(),
-      operationTime: map['operationTime'] == null ? null : (map['operationTime'] as String).input(),
-      operationTrigger: map['operationTrigger'] == null ? null : (map['operationTrigger'] as String).input(),
+      operationName: map['operationName'] == null ? null : (map['operationName']! as String).input(),
+      operationStatus: map['operationStatus'] == null ? null : (map['operationStatus']! as String).input(),
+      operationTime: map['operationTime'] == null ? null : (map['operationTime']! as String).input(),
+      operationTrigger: map['operationTrigger'] == null ? null : (map['operationTrigger']! as String).input(),
     );
   }
 }

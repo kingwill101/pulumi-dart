@@ -29,8 +29,8 @@ class DeviceClaimConfigurationPatch {
 
   factory DeviceClaimConfigurationPatch.fromMap(Map<String, dynamic> map) {
     return DeviceClaimConfigurationPatch(
-      opaque: map['opaque'] == null ? null : (OpaqueDeviceConfigurationPatch.fromMap((map['opaque'] as Map).cast<String, dynamic>())).input(),
-      requests: map['requests'] == null ? null : ((map['requests'] as List).cast<String>()).input(),
+      opaque: map['opaque'] == null ? null : (OpaqueDeviceConfigurationPatch.fromMap((map['opaque']! as Map).cast<String, dynamic>())).input(),
+      requests: map['requests'] == null ? null : ((map['requests']! as List).cast<String>()).input(),
     );
   }
 }

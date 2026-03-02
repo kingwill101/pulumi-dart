@@ -35,8 +35,8 @@ class PolicyArgs {
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
       apiManagementId: (map['apiManagementId'] as String).input(),
-      xmlContent: map['xmlContent'] == null ? null : (map['xmlContent'] as String).input(),
-      xmlLink: map['xmlLink'] == null ? null : (map['xmlLink'] as String).input(),
+      xmlContent: map['xmlContent'] == null ? null : (map['xmlContent']! as String).input(),
+      xmlLink: map['xmlLink'] == null ? null : (map['xmlLink']! as String).input(),
     );
   }
 }

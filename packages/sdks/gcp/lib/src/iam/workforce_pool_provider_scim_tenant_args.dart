@@ -59,10 +59,10 @@ class WorkforcePoolProviderScimTenantArgs {
 
   factory WorkforcePoolProviderScimTenantArgs.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderScimTenantArgs(
-      claimMapping: map['claimMapping'] == null ? null : ((map['claimMapping'] as Map).cast<String, String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      hardDelete: map['hardDelete'] == null ? null : (map['hardDelete'] as bool).input(),
+      claimMapping: map['claimMapping'] == null ? null : ((map['claimMapping']! as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      hardDelete: map['hardDelete'] == null ? null : (map['hardDelete']! as bool).input(),
       location: (map['location'] as String).input(),
       providerId: (map['providerId'] as String).input(),
       scimTenantId: (map['scimTenantId'] as String).input(),

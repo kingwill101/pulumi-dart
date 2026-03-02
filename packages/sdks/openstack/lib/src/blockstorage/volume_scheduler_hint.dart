@@ -53,11 +53,11 @@ class VolumeSchedulerHint {
 
   factory VolumeSchedulerHint.fromMap(Map<String, dynamic> map) {
     return VolumeSchedulerHint(
-      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
-      differentHosts: map['differentHosts'] == null ? null : ((map['differentHosts'] as List).cast<String>()).input(),
-      localToInstance: map['localToInstance'] == null ? null : (map['localToInstance'] as String).input(),
-      query: map['query'] == null ? null : (map['query'] as String).input(),
-      sameHosts: map['sameHosts'] == null ? null : ((map['sameHosts'] as List).cast<String>()).input(),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties']! as Map).cast<String, String>()).input(),
+      differentHosts: map['differentHosts'] == null ? null : ((map['differentHosts']! as List).cast<String>()).input(),
+      localToInstance: map['localToInstance'] == null ? null : (map['localToInstance']! as String).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
+      sameHosts: map['sameHosts'] == null ? null : ((map['sameHosts']! as List).cast<String>()).input(),
     );
   }
 }

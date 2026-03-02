@@ -27,7 +27,7 @@ class CustomDomainResponse {
   factory CustomDomainResponse.fromMap(Map<String, dynamic> map) {
     return CustomDomainResponse(
       name: (map['name'] as String).input(),
-      useSubDomainName: map['useSubDomainName'] == null ? null : (map['useSubDomainName'] as bool).input(),
+      useSubDomainName: map['useSubDomainName'] == null ? null : (map['useSubDomainName']! as bool).input(),
     );
   }
 }

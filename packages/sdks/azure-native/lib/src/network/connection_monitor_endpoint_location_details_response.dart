@@ -21,7 +21,7 @@ class ConnectionMonitorEndpointLocationDetailsResponse {
 
   factory ConnectionMonitorEndpointLocationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorEndpointLocationDetailsResponse(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

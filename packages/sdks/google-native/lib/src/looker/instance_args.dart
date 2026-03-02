@@ -105,22 +105,22 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      adminSettings: map['adminSettings'] == null ? null : (AdminSettings.fromMap((map['adminSettings'] as Map).cast<String, dynamic>())).input(),
-      consumerNetwork: map['consumerNetwork'] == null ? null : (map['consumerNetwork'] as String).input(),
-      customDomain: map['customDomain'] == null ? null : (CustomDomain.fromMap((map['customDomain'] as Map).cast<String, dynamic>())).input(),
-      denyMaintenancePeriod: map['denyMaintenancePeriod'] == null ? null : (DenyMaintenancePeriod.fromMap((map['denyMaintenancePeriod'] as Map).cast<String, dynamic>())).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
+      adminSettings: map['adminSettings'] == null ? null : (AdminSettings.fromMap((map['adminSettings']! as Map).cast<String, dynamic>())).input(),
+      consumerNetwork: map['consumerNetwork'] == null ? null : (map['consumerNetwork']! as String).input(),
+      customDomain: map['customDomain'] == null ? null : (CustomDomain.fromMap((map['customDomain']! as Map).cast<String, dynamic>())).input(),
+      denyMaintenancePeriod: map['denyMaintenancePeriod'] == null ? null : (DenyMaintenancePeriod.fromMap((map['denyMaintenancePeriod']! as Map).cast<String, dynamic>())).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfig.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
       instanceId: (map['instanceId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maintenanceSchedule: map['maintenanceSchedule'] == null ? null : (MaintenanceSchedule.fromMap((map['maintenanceSchedule'] as Map).cast<String, dynamic>())).input(),
-      maintenanceWindow: map['maintenanceWindow'] == null ? null : (MaintenanceWindow.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>())).input(),
-      oauthConfig: map['oauthConfig'] == null ? null : (OAuthConfig.fromMap((map['oauthConfig'] as Map).cast<String, dynamic>())).input(),
-      platformEdition: map['platformEdition'] == null ? null : (InstancePlatformEdition.fromValue(map['platformEdition'] as String)).input(),
-      privateIpEnabled: map['privateIpEnabled'] == null ? null : (map['privateIpEnabled'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      publicIpEnabled: map['publicIpEnabled'] == null ? null : (map['publicIpEnabled'] as bool).input(),
-      reservedRange: map['reservedRange'] == null ? null : (map['reservedRange'] as String).input(),
-      userMetadata: map['userMetadata'] == null ? null : (UserMetadata.fromMap((map['userMetadata'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maintenanceSchedule: map['maintenanceSchedule'] == null ? null : (MaintenanceSchedule.fromMap((map['maintenanceSchedule']! as Map).cast<String, dynamic>())).input(),
+      maintenanceWindow: map['maintenanceWindow'] == null ? null : (MaintenanceWindow.fromMap((map['maintenanceWindow']! as Map).cast<String, dynamic>())).input(),
+      oauthConfig: map['oauthConfig'] == null ? null : (OAuthConfig.fromMap((map['oauthConfig']! as Map).cast<String, dynamic>())).input(),
+      platformEdition: map['platformEdition'] == null ? null : (InstancePlatformEdition.fromValue(map['platformEdition']! as String)).input(),
+      privateIpEnabled: map['privateIpEnabled'] == null ? null : (map['privateIpEnabled']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      publicIpEnabled: map['publicIpEnabled'] == null ? null : (map['publicIpEnabled']! as bool).input(),
+      reservedRange: map['reservedRange'] == null ? null : (map['reservedRange']! as String).input(),
+      userMetadata: map['userMetadata'] == null ? null : (UserMetadata.fromMap((map['userMetadata']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

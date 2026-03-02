@@ -28,8 +28,8 @@ class BackendBucketCdnPolicyCacheKeyPolicy {
 
   factory BackendBucketCdnPolicyCacheKeyPolicy.fromMap(Map<String, dynamic> map) {
     return BackendBucketCdnPolicyCacheKeyPolicy(
-      includeHttpHeaders: map['includeHttpHeaders'] == null ? null : ((map['includeHttpHeaders'] as List).cast<String>()).input(),
-      queryStringWhitelists: map['queryStringWhitelists'] == null ? null : ((map['queryStringWhitelists'] as List).cast<String>()).input(),
+      includeHttpHeaders: map['includeHttpHeaders'] == null ? null : ((map['includeHttpHeaders']! as List).cast<String>()).input(),
+      queryStringWhitelists: map['queryStringWhitelists'] == null ? null : ((map['queryStringWhitelists']! as List).cast<String>()).input(),
     );
   }
 }

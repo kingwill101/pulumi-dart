@@ -42,11 +42,11 @@ class ManagementPolicyVersionResponse {
 
   factory ManagementPolicyVersionResponse.fromMap(Map<String, dynamic> map) {
     return ManagementPolicyVersionResponse(
-      delete: map['delete'] == null ? null : (DateAfterCreationResponse.fromMap((map['delete'] as Map).cast<String, dynamic>())).input(),
-      tierToArchive: map['tierToArchive'] == null ? null : (DateAfterCreationResponse.fromMap((map['tierToArchive'] as Map).cast<String, dynamic>())).input(),
-      tierToCold: map['tierToCold'] == null ? null : (DateAfterCreationResponse.fromMap((map['tierToCold'] as Map).cast<String, dynamic>())).input(),
-      tierToCool: map['tierToCool'] == null ? null : (DateAfterCreationResponse.fromMap((map['tierToCool'] as Map).cast<String, dynamic>())).input(),
-      tierToHot: map['tierToHot'] == null ? null : (DateAfterCreationResponse.fromMap((map['tierToHot'] as Map).cast<String, dynamic>())).input(),
+      delete: map['delete'] == null ? null : (DateAfterCreationResponse.fromMap((map['delete']! as Map).cast<String, dynamic>())).input(),
+      tierToArchive: map['tierToArchive'] == null ? null : (DateAfterCreationResponse.fromMap((map['tierToArchive']! as Map).cast<String, dynamic>())).input(),
+      tierToCold: map['tierToCold'] == null ? null : (DateAfterCreationResponse.fromMap((map['tierToCold']! as Map).cast<String, dynamic>())).input(),
+      tierToCool: map['tierToCool'] == null ? null : (DateAfterCreationResponse.fromMap((map['tierToCool']! as Map).cast<String, dynamic>())).input(),
+      tierToHot: map['tierToHot'] == null ? null : (DateAfterCreationResponse.fromMap((map['tierToHot']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationProces
 
   factory FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationProcessor.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationProcessor(
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationProcessorParameter>(map['parameters'], (value) => FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationProcessorParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : ((pulumi.Input.decodeList<FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationProcessorParameter>(map['parameters']!, (value) => FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationProcessorParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

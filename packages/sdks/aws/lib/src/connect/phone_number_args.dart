@@ -55,10 +55,10 @@ class PhoneNumberArgs {
   factory PhoneNumberArgs.fromMap(Map<String, dynamic> map) {
     return PhoneNumberArgs(
       countryCode: (map['countryCode'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       targetArn: (map['targetArn'] as String).input(),
       type: (map['type'] as String).input(),
     );

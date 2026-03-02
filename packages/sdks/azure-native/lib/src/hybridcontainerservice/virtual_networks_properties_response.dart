@@ -69,15 +69,15 @@ class VirtualNetworksPropertiesResponse {
   factory VirtualNetworksPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworksPropertiesResponse(
       dhcpServers: ((map['dhcpServers'] as List).cast<String>()).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      gateway: map['gateway'] == null ? null : (map['gateway'] as String).input(),
-      infraVnetProfile: map['infraVnetProfile'] == null ? null : (VirtualNetworksPropertiesResponseInfraVnetProfile.fromMap((map['infraVnetProfile'] as Map).cast<String, dynamic>())).input(),
-      ipAddressPrefix: map['ipAddressPrefix'] == null ? null : (map['ipAddressPrefix'] as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      gateway: map['gateway'] == null ? null : (map['gateway']! as String).input(),
+      infraVnetProfile: map['infraVnetProfile'] == null ? null : (VirtualNetworksPropertiesResponseInfraVnetProfile.fromMap((map['infraVnetProfile']! as Map).cast<String, dynamic>())).input(),
+      ipAddressPrefix: map['ipAddressPrefix'] == null ? null : (map['ipAddressPrefix']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       status: (VirtualNetworksPropertiesResponseStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
-      vipPool: map['vipPool'] == null ? null : (pulumi.Input.decodeList<VirtualNetworksPropertiesResponseVipPool>(map['vipPool'], (value) => VirtualNetworksPropertiesResponseVipPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vipPool: map['vipPool'] == null ? null : (pulumi.Input.decodeList<VirtualNetworksPropertiesResponseVipPool>(map['vipPool']!, (value) => VirtualNetworksPropertiesResponseVipPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
       vlanID: (map['vlanID'] as String).input(),
-      vmipPool: map['vmipPool'] == null ? null : (pulumi.Input.decodeList<VirtualNetworksPropertiesResponseVmipPool>(map['vmipPool'], (value) => VirtualNetworksPropertiesResponseVmipPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmipPool: map['vmipPool'] == null ? null : (pulumi.Input.decodeList<VirtualNetworksPropertiesResponseVmipPool>(map['vmipPool']!, (value) => VirtualNetworksPropertiesResponseVmipPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

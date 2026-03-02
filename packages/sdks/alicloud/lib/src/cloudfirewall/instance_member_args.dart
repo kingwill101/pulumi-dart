@@ -29,7 +29,7 @@ class InstanceMemberArgs {
 
   factory InstanceMemberArgs.fromMap(Map<String, dynamic> map) {
     return InstanceMemberArgs(
-      memberDesc: map['memberDesc'] == null ? null : (map['memberDesc'] as String).input(),
+      memberDesc: map['memberDesc'] == null ? null : (map['memberDesc']! as String).input(),
       memberUid: (map['memberUid'] as String).input(),
     );
   }

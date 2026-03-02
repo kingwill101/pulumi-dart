@@ -40,10 +40,10 @@ class ServiceGroupArgs {
 
   factory ServiceGroupArgs.fromMap(Map<String, dynamic> map) {
     return ServiceGroupArgs(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      properties: map['properties'] == null ? null : (ServiceGroupProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      serviceGroupName: map['serviceGroupName'] == null ? null : (map['serviceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      properties: map['properties'] == null ? null : (ServiceGroupProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      serviceGroupName: map['serviceGroupName'] == null ? null : (map['serviceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

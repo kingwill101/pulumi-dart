@@ -34,7 +34,7 @@ class ApplicationGatewaySku {
 
   factory ApplicationGatewaySku.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewaySku(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
       name: (map['name'] as String).input(),
       tier: (map['tier'] as String).input(),
     );

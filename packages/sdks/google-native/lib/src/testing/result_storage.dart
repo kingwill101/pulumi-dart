@@ -29,7 +29,7 @@ class ResultStorage {
   factory ResultStorage.fromMap(Map<String, dynamic> map) {
     return ResultStorage(
       googleCloudStorage: (GoogleCloudStorage.fromMap((map['googleCloudStorage'] as Map).cast<String, dynamic>())).input(),
-      toolResultsHistory: map['toolResultsHistory'] == null ? null : (ToolResultsHistory.fromMap((map['toolResultsHistory'] as Map).cast<String, dynamic>())).input(),
+      toolResultsHistory: map['toolResultsHistory'] == null ? null : (ToolResultsHistory.fromMap((map['toolResultsHistory']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

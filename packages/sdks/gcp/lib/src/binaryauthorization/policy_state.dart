@@ -67,12 +67,12 @@ class PolicyState {
 
   factory PolicyState.fromMap(Map<String, dynamic> map) {
     return PolicyState(
-      admissionWhitelistPatterns: map['admissionWhitelistPatterns'] == null ? null : (pulumi.Input.decodeList<PolicyAdmissionWhitelistPattern>(map['admissionWhitelistPatterns'], (value) => PolicyAdmissionWhitelistPattern.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      clusterAdmissionRules: map['clusterAdmissionRules'] == null ? null : (pulumi.Input.decodeList<PolicyClusterAdmissionRule>(map['clusterAdmissionRules'], (value) => PolicyClusterAdmissionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultAdmissionRule: map['defaultAdmissionRule'] == null ? null : (PolicyDefaultAdmissionRule.fromMap((map['defaultAdmissionRule'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      globalPolicyEvaluationMode: map['globalPolicyEvaluationMode'] == null ? null : (map['globalPolicyEvaluationMode'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      admissionWhitelistPatterns: map['admissionWhitelistPatterns'] == null ? null : (pulumi.Input.decodeList<PolicyAdmissionWhitelistPattern>(map['admissionWhitelistPatterns']!, (value) => PolicyAdmissionWhitelistPattern.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clusterAdmissionRules: map['clusterAdmissionRules'] == null ? null : (pulumi.Input.decodeList<PolicyClusterAdmissionRule>(map['clusterAdmissionRules']!, (value) => PolicyClusterAdmissionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultAdmissionRule: map['defaultAdmissionRule'] == null ? null : (PolicyDefaultAdmissionRule.fromMap((map['defaultAdmissionRule']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      globalPolicyEvaluationMode: map['globalPolicyEvaluationMode'] == null ? null : (map['globalPolicyEvaluationMode']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

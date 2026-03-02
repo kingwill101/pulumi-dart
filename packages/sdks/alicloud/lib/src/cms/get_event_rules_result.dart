@@ -60,14 +60,14 @@ class GetEventRulesResult {
     return GetEventRulesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      namePrefix: map['namePrefix'] == null ? null : map['namePrefix'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      namePrefix: map['namePrefix'] == null ? null : map['namePrefix']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
       rules: pulumi.Input.decodeList<GetEventRulesRule>(map['rules'], (value) => GetEventRulesRule.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

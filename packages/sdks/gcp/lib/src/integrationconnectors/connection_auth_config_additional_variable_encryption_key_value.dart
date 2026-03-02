@@ -28,7 +28,7 @@ class ConnectionAuthConfigAdditionalVariableEncryptionKeyValue {
 
   factory ConnectionAuthConfigAdditionalVariableEncryptionKeyValue.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthConfigAdditionalVariableEncryptionKeyValue(
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

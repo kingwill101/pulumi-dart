@@ -68,12 +68,12 @@ class ProvisionState {
 
   factory ProvisionState.fromMap(Map<String, dynamic> map) {
     return ProvisionState(
-      cpuRatio: map['cpuRatio'] == null ? null : (map['cpuRatio'] as int).input(),
-      diskRatio: map['diskRatio'] == null ? null : (map['diskRatio'] as int).input(),
-      fullPath: map['fullPath'] == null ? null : (map['fullPath'] as String).input(),
-      level: map['level'] == null ? null : (map['level'] as String).input(),
-      memoryRatio: map['memoryRatio'] == null ? null : (map['memoryRatio'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      cpuRatio: map['cpuRatio'] == null ? null : (map['cpuRatio']! as int).input(),
+      diskRatio: map['diskRatio'] == null ? null : (map['diskRatio']! as int).input(),
+      fullPath: map['fullPath'] == null ? null : (map['fullPath']! as String).input(),
+      level: map['level'] == null ? null : (map['level']! as String).input(),
+      memoryRatio: map['memoryRatio'] == null ? null : (map['memoryRatio']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

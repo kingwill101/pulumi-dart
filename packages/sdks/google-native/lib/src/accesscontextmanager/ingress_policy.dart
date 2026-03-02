@@ -28,8 +28,8 @@ class IngressPolicy {
 
   factory IngressPolicy.fromMap(Map<String, dynamic> map) {
     return IngressPolicy(
-      ingressFrom: map['ingressFrom'] == null ? null : (IngressFrom.fromMap((map['ingressFrom'] as Map).cast<String, dynamic>())).input(),
-      ingressTo: map['ingressTo'] == null ? null : (IngressTo.fromMap((map['ingressTo'] as Map).cast<String, dynamic>())).input(),
+      ingressFrom: map['ingressFrom'] == null ? null : (IngressFrom.fromMap((map['ingressFrom']! as Map).cast<String, dynamic>())).input(),
+      ingressTo: map['ingressTo'] == null ? null : (IngressTo.fromMap((map['ingressTo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

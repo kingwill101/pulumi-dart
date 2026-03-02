@@ -52,13 +52,13 @@ class VirtualMachineSqlInstance {
 
   factory VirtualMachineSqlInstance.fromMap(Map<String, dynamic> map) {
     return VirtualMachineSqlInstance(
-      adhocWorkloadsOptimizationEnabled: map['adhocWorkloadsOptimizationEnabled'] == null ? null : (map['adhocWorkloadsOptimizationEnabled'] as bool).input(),
-      collation: map['collation'] == null ? null : (map['collation'] as String).input(),
-      instantFileInitializationEnabled: map['instantFileInitializationEnabled'] == null ? null : (map['instantFileInitializationEnabled'] as bool).input(),
-      lockPagesInMemoryEnabled: map['lockPagesInMemoryEnabled'] == null ? null : (map['lockPagesInMemoryEnabled'] as bool).input(),
-      maxDop: map['maxDop'] == null ? null : (map['maxDop'] as int).input(),
-      maxServerMemoryMb: map['maxServerMemoryMb'] == null ? null : (map['maxServerMemoryMb'] as int).input(),
-      minServerMemoryMb: map['minServerMemoryMb'] == null ? null : (map['minServerMemoryMb'] as int).input(),
+      adhocWorkloadsOptimizationEnabled: map['adhocWorkloadsOptimizationEnabled'] == null ? null : (map['adhocWorkloadsOptimizationEnabled']! as bool).input(),
+      collation: map['collation'] == null ? null : (map['collation']! as String).input(),
+      instantFileInitializationEnabled: map['instantFileInitializationEnabled'] == null ? null : (map['instantFileInitializationEnabled']! as bool).input(),
+      lockPagesInMemoryEnabled: map['lockPagesInMemoryEnabled'] == null ? null : (map['lockPagesInMemoryEnabled']! as bool).input(),
+      maxDop: map['maxDop'] == null ? null : (map['maxDop']! as int).input(),
+      maxServerMemoryMb: map['maxServerMemoryMb'] == null ? null : (map['maxServerMemoryMb']! as int).input(),
+      minServerMemoryMb: map['minServerMemoryMb'] == null ? null : (map['minServerMemoryMb']! as int).input(),
     );
   }
 }

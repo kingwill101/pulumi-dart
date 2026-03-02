@@ -21,7 +21,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifie
 
   factory PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence(
-      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency']! as String).input(),
     );
   }
 }

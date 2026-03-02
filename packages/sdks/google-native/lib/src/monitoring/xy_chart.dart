@@ -55,13 +55,13 @@ class XyChart {
 
   factory XyChart.fromMap(Map<String, dynamic> map) {
     return XyChart(
-      chartOptions: map['chartOptions'] == null ? null : (ChartOptions.fromMap((map['chartOptions'] as Map).cast<String, dynamic>())).input(),
+      chartOptions: map['chartOptions'] == null ? null : (ChartOptions.fromMap((map['chartOptions']! as Map).cast<String, dynamic>())).input(),
       dataSets: (pulumi.Input.decodeList<DataSet>(map['dataSets'], (value) => DataSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      thresholds: map['thresholds'] == null ? null : (pulumi.Input.decodeList<Threshold>(map['thresholds'], (value) => Threshold.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeshiftDuration: map['timeshiftDuration'] == null ? null : (map['timeshiftDuration'] as String).input(),
-      xAxis: map['xAxis'] == null ? null : (Axis.fromMap((map['xAxis'] as Map).cast<String, dynamic>())).input(),
-      y2Axis: map['y2Axis'] == null ? null : (Axis.fromMap((map['y2Axis'] as Map).cast<String, dynamic>())).input(),
-      yAxis: map['yAxis'] == null ? null : (Axis.fromMap((map['yAxis'] as Map).cast<String, dynamic>())).input(),
+      thresholds: map['thresholds'] == null ? null : (pulumi.Input.decodeList<Threshold>(map['thresholds']!, (value) => Threshold.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeshiftDuration: map['timeshiftDuration'] == null ? null : (map['timeshiftDuration']! as String).input(),
+      xAxis: map['xAxis'] == null ? null : (Axis.fromMap((map['xAxis']! as Map).cast<String, dynamic>())).input(),
+      y2Axis: map['y2Axis'] == null ? null : (Axis.fromMap((map['y2Axis']! as Map).cast<String, dynamic>())).input(),
+      yAxis: map['yAxis'] == null ? null : (Axis.fromMap((map['yAxis']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

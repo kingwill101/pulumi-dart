@@ -37,8 +37,8 @@ class NextGenerationFirewallVirtualNetworkPanoramaDestinationNat {
 
   factory NextGenerationFirewallVirtualNetworkPanoramaDestinationNat.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualNetworkPanoramaDestinationNat(
-      backendConfig: map['backendConfig'] == null ? null : (NextGenerationFirewallVirtualNetworkPanoramaDestinationNatBackendConfig.fromMap((map['backendConfig'] as Map).cast<String, dynamic>())).input(),
-      frontendConfig: map['frontendConfig'] == null ? null : (NextGenerationFirewallVirtualNetworkPanoramaDestinationNatFrontendConfig.fromMap((map['frontendConfig'] as Map).cast<String, dynamic>())).input(),
+      backendConfig: map['backendConfig'] == null ? null : (NextGenerationFirewallVirtualNetworkPanoramaDestinationNatBackendConfig.fromMap((map['backendConfig']! as Map).cast<String, dynamic>())).input(),
+      frontendConfig: map['frontendConfig'] == null ? null : (NextGenerationFirewallVirtualNetworkPanoramaDestinationNatFrontendConfig.fromMap((map['frontendConfig']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
       protocol: (map['protocol'] as String).input(),
     );

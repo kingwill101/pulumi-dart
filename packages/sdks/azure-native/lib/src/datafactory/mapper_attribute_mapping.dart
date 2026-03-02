@@ -47,12 +47,12 @@ class MapperAttributeMapping {
 
   factory MapperAttributeMapping.fromMap(Map<String, dynamic> map) {
     return MapperAttributeMapping(
-      attributeReference: map['attributeReference'] == null ? null : (MapperAttributeReference.fromMap((map['attributeReference'] as Map).cast<String, dynamic>())).input(),
-      attributeReferences: map['attributeReferences'] == null ? null : (pulumi.Input.decodeList<MapperAttributeReference>(map['attributeReferences'], (value) => MapperAttributeReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
-      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      attributeReference: map['attributeReference'] == null ? null : (MapperAttributeReference.fromMap((map['attributeReference']! as Map).cast<String, dynamic>())).input(),
+      attributeReferences: map['attributeReferences'] == null ? null : (pulumi.Input.decodeList<MapperAttributeReference>(map['attributeReferences']!, (value) => MapperAttributeReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expression: map['expression'] == null ? null : (map['expression']! as String).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

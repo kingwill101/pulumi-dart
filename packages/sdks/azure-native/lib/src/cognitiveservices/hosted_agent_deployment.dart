@@ -69,16 +69,16 @@ class HostedAgentDeployment {
 
   factory HostedAgentDeployment.fromMap(Map<String, dynamic> map) {
     return HostedAgentDeployment(
-      agents: map['agents'] == null ? null : (pulumi.Input.decodeList<VersionedAgentReference>(map['agents'], (value) => VersionedAgentReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId'] as String).input(),
+      agents: map['agents'] == null ? null : (pulumi.Input.decodeList<VersionedAgentReference>(map['agents']!, (value) => VersionedAgentReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId']! as String).input(),
       deploymentType: (map['deploymentType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      maxReplicas: map['maxReplicas'] == null ? null : (map['maxReplicas'] as int).input(),
-      minReplicas: map['minReplicas'] == null ? null : (map['minReplicas'] as int).input(),
-      protocols: map['protocols'] == null ? null : (pulumi.Input.decodeList<AgentProtocolVersion>(map['protocols'], (value) => AgentProtocolVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      maxReplicas: map['maxReplicas'] == null ? null : (map['maxReplicas']! as int).input(),
+      minReplicas: map['minReplicas'] == null ? null : (map['minReplicas']! as int).input(),
+      protocols: map['protocols'] == null ? null : (pulumi.Input.decodeList<AgentProtocolVersion>(map['protocols']!, (value) => AgentProtocolVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

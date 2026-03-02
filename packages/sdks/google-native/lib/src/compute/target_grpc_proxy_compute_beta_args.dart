@@ -48,12 +48,12 @@ class TargetGrpcProxyComputeBetaArgs {
 
   factory TargetGrpcProxyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return TargetGrpcProxyComputeBetaArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      urlMap: map['urlMap'] == null ? null : (map['urlMap'] as String).input(),
-      validateForProxyless: map['validateForProxyless'] == null ? null : (map['validateForProxyless'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      urlMap: map['urlMap'] == null ? null : (map['urlMap']! as String).input(),
+      validateForProxyless: map['validateForProxyless'] == null ? null : (map['validateForProxyless']! as bool).input(),
     );
   }
 }

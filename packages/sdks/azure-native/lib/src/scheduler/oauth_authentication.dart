@@ -41,10 +41,10 @@ class OAuthAuthentication {
 
   factory OAuthAuthentication.fromMap(Map<String, dynamic> map) {
     return OAuthAuthentication(
-      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
-      tenant: map['tenant'] == null ? null : (map['tenant'] as String).input(),
+      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      secret: map['secret'] == null ? null : (map['secret']! as String).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

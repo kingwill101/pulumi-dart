@@ -33,9 +33,9 @@ class VirtualMachineAgentInstanceViewResponse {
 
   factory VirtualMachineAgentInstanceViewResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineAgentInstanceViewResponse(
-      extensionHandlers: map['extensionHandlers'] == null ? null : (pulumi.Input.decodeList<VirtualMachineExtensionHandlerInstanceViewResponse>(map['extensionHandlers'], (value) => VirtualMachineExtensionHandlerInstanceViewResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatusResponse>(map['statuses'], (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vmAgentVersion: map['vmAgentVersion'] == null ? null : (map['vmAgentVersion'] as String).input(),
+      extensionHandlers: map['extensionHandlers'] == null ? null : (pulumi.Input.decodeList<VirtualMachineExtensionHandlerInstanceViewResponse>(map['extensionHandlers']!, (value) => VirtualMachineExtensionHandlerInstanceViewResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatusResponse>(map['statuses']!, (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmAgentVersion: map['vmAgentVersion'] == null ? null : (map['vmAgentVersion']! as String).input(),
     );
   }
 }

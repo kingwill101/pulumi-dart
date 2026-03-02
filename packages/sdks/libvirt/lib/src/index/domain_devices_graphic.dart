@@ -63,14 +63,14 @@ class DomainDevicesGraphic {
 
   factory DomainDevicesGraphic.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphic(
-      audio: map['audio'] == null ? null : (DomainDevicesGraphicAudio.fromMap((map['audio'] as Map).cast<String, dynamic>())).input(),
-      dbus: map['dbus'] == null ? null : (DomainDevicesGraphicDbus.fromMap((map['dbus'] as Map).cast<String, dynamic>())).input(),
-      desktop: map['desktop'] == null ? null : (DomainDevicesGraphicDesktop.fromMap((map['desktop'] as Map).cast<String, dynamic>())).input(),
-      eglHeadless: map['eglHeadless'] == null ? null : (DomainDevicesGraphicEglHeadless.fromMap((map['eglHeadless'] as Map).cast<String, dynamic>())).input(),
-      rdp: map['rdp'] == null ? null : (DomainDevicesGraphicRdp.fromMap((map['rdp'] as Map).cast<String, dynamic>())).input(),
-      sdl: map['sdl'] == null ? null : (DomainDevicesGraphicSdl.fromMap((map['sdl'] as Map).cast<String, dynamic>())).input(),
-      spice: map['spice'] == null ? null : (DomainDevicesGraphicSpice.fromMap((map['spice'] as Map).cast<String, dynamic>())).input(),
-      vnc: map['vnc'] == null ? null : (DomainDevicesGraphicVnc.fromMap((map['vnc'] as Map).cast<String, dynamic>())).input(),
+      audio: map['audio'] == null ? null : (DomainDevicesGraphicAudio.fromMap((map['audio']! as Map).cast<String, dynamic>())).input(),
+      dbus: map['dbus'] == null ? null : (DomainDevicesGraphicDbus.fromMap((map['dbus']! as Map).cast<String, dynamic>())).input(),
+      desktop: map['desktop'] == null ? null : (DomainDevicesGraphicDesktop.fromMap((map['desktop']! as Map).cast<String, dynamic>())).input(),
+      eglHeadless: map['eglHeadless'] == null ? null : (DomainDevicesGraphicEglHeadless.fromMap((map['eglHeadless']! as Map).cast<String, dynamic>())).input(),
+      rdp: map['rdp'] == null ? null : (DomainDevicesGraphicRdp.fromMap((map['rdp']! as Map).cast<String, dynamic>())).input(),
+      sdl: map['sdl'] == null ? null : (DomainDevicesGraphicSdl.fromMap((map['sdl']! as Map).cast<String, dynamic>())).input(),
+      spice: map['spice'] == null ? null : (DomainDevicesGraphicSpice.fromMap((map['spice']! as Map).cast<String, dynamic>())).input(),
+      vnc: map['vnc'] == null ? null : (DomainDevicesGraphicVnc.fromMap((map['vnc']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

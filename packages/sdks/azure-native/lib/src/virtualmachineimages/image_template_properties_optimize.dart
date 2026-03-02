@@ -22,7 +22,7 @@ class ImageTemplatePropertiesOptimize {
 
   factory ImageTemplatePropertiesOptimize.fromMap(Map<String, dynamic> map) {
     return ImageTemplatePropertiesOptimize(
-      vmBoot: map['vmBoot'] == null ? null : (ImageTemplatePropertiesVmBoot.fromMap((map['vmBoot'] as Map).cast<String, dynamic>())).input(),
+      vmBoot: map['vmBoot'] == null ? null : (ImageTemplatePropertiesVmBoot.fromMap((map['vmBoot']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

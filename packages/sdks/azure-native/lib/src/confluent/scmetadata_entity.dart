@@ -41,11 +41,11 @@ class SCMetadataEntity {
 
   factory SCMetadataEntity.fromMap(Map<String, dynamic> map) {
     return SCMetadataEntity(
-      createdTimestamp: map['createdTimestamp'] == null ? null : (map['createdTimestamp'] as String).input(),
-      deletedTimestamp: map['deletedTimestamp'] == null ? null : (map['deletedTimestamp'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
-      self: map['self'] == null ? null : (map['self'] as String).input(),
-      updatedTimestamp: map['updatedTimestamp'] == null ? null : (map['updatedTimestamp'] as String).input(),
+      createdTimestamp: map['createdTimestamp'] == null ? null : (map['createdTimestamp']! as String).input(),
+      deletedTimestamp: map['deletedTimestamp'] == null ? null : (map['deletedTimestamp']! as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
+      self: map['self'] == null ? null : (map['self']! as String).input(),
+      updatedTimestamp: map['updatedTimestamp'] == null ? null : (map['updatedTimestamp']! as String).input(),
     );
   }
 }

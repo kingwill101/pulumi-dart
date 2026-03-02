@@ -37,10 +37,10 @@ class GoogleCloudDialogflowCxV3ConversationTurnUserInput {
 
   factory GoogleCloudDialogflowCxV3ConversationTurnUserInput.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3ConversationTurnUserInput(
-      enableSentimentAnalysis: map['enableSentimentAnalysis'] == null ? null : (map['enableSentimentAnalysis'] as bool).input(),
-      injectedParameters: map['injectedParameters'] == null ? null : ((map['injectedParameters'] as Map).cast<String, String>()).input(),
-      input: map['input'] == null ? null : (GoogleCloudDialogflowCxV3QueryInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
-      isWebhookEnabled: map['isWebhookEnabled'] == null ? null : (map['isWebhookEnabled'] as bool).input(),
+      enableSentimentAnalysis: map['enableSentimentAnalysis'] == null ? null : (map['enableSentimentAnalysis']! as bool).input(),
+      injectedParameters: map['injectedParameters'] == null ? null : ((map['injectedParameters']! as Map).cast<String, String>()).input(),
+      input: map['input'] == null ? null : (GoogleCloudDialogflowCxV3QueryInput.fromMap((map['input']! as Map).cast<String, dynamic>())).input(),
+      isWebhookEnabled: map['isWebhookEnabled'] == null ? null : (map['isWebhookEnabled']! as bool).input(),
     );
   }
 }

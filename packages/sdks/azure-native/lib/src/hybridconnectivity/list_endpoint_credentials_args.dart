@@ -40,9 +40,9 @@ class ListEndpointCredentialsArgs {
   factory ListEndpointCredentialsArgs.fromMap(Map<String, dynamic> map) {
     return ListEndpointCredentialsArgs(
       endpointName: (map['endpointName'] as String).input(),
-      expiresin: map['expiresin'] == null ? null : (map['expiresin'] as int).input(),
+      expiresin: map['expiresin'] == null ? null : (map['expiresin']! as int).input(),
       resourceUri: (map['resourceUri'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
     );
   }
 }

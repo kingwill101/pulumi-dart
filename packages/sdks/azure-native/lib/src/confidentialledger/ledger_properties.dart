@@ -43,11 +43,11 @@ class LedgerProperties {
 
   factory LedgerProperties.fromMap(Map<String, dynamic> map) {
     return LedgerProperties(
-      aadBasedSecurityPrincipals: map['aadBasedSecurityPrincipals'] == null ? null : (pulumi.Input.decodeList<AADBasedSecurityPrincipal>(map['aadBasedSecurityPrincipals'], (value) => AADBasedSecurityPrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      certBasedSecurityPrincipals: map['certBasedSecurityPrincipals'] == null ? null : (pulumi.Input.decodeList<CertBasedSecurityPrincipal>(map['certBasedSecurityPrincipals'], (value) => CertBasedSecurityPrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ledgerSku: map['ledgerSku'] == null ? null : (map['ledgerSku'] as String).input(),
-      ledgerType: map['ledgerType'] == null ? null : (map['ledgerType'] as String).input(),
-      runningState: map['runningState'] == null ? null : (map['runningState'] as String).input(),
+      aadBasedSecurityPrincipals: map['aadBasedSecurityPrincipals'] == null ? null : (pulumi.Input.decodeList<AADBasedSecurityPrincipal>(map['aadBasedSecurityPrincipals']!, (value) => AADBasedSecurityPrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      certBasedSecurityPrincipals: map['certBasedSecurityPrincipals'] == null ? null : (pulumi.Input.decodeList<CertBasedSecurityPrincipal>(map['certBasedSecurityPrincipals']!, (value) => CertBasedSecurityPrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ledgerSku: map['ledgerSku'] == null ? null : (map['ledgerSku']! as String).input(),
+      ledgerType: map['ledgerType'] == null ? null : (map['ledgerType']! as String).input(),
+      runningState: map['runningState'] == null ? null : (map['runningState']! as String).input(),
     );
   }
 }

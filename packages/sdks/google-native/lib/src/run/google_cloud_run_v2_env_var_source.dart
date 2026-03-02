@@ -22,7 +22,7 @@ class GoogleCloudRunV2EnvVarSource {
 
   factory GoogleCloudRunV2EnvVarSource.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2EnvVarSource(
-      secretKeyRef: map['secretKeyRef'] == null ? null : (GoogleCloudRunV2SecretKeySelector.fromMap((map['secretKeyRef'] as Map).cast<String, dynamic>())).input(),
+      secretKeyRef: map['secretKeyRef'] == null ? null : (GoogleCloudRunV2SecretKeySelector.fromMap((map['secretKeyRef']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

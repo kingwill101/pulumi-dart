@@ -32,7 +32,7 @@ class ManagedClusterAddonProfileResponse {
 
   factory ManagedClusterAddonProfileResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterAddonProfileResponse(
-      config: map['config'] == null ? null : ((map['config'] as Map).cast<String, String>()).input(),
+      config: map['config'] == null ? null : ((map['config']! as Map).cast<String, String>()).input(),
       enabled: (map['enabled'] as bool).input(),
       identity: (ManagedClusterAddonProfileResponseIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
     );

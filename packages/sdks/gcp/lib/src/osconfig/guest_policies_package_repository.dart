@@ -43,10 +43,10 @@ class GuestPoliciesPackageRepository {
 
   factory GuestPoliciesPackageRepository.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesPackageRepository(
-      apt: map['apt'] == null ? null : (GuestPoliciesPackageRepositoryApt.fromMap((map['apt'] as Map).cast<String, dynamic>())).input(),
-      goo: map['goo'] == null ? null : (GuestPoliciesPackageRepositoryGoo.fromMap((map['goo'] as Map).cast<String, dynamic>())).input(),
-      yum: map['yum'] == null ? null : (GuestPoliciesPackageRepositoryYum.fromMap((map['yum'] as Map).cast<String, dynamic>())).input(),
-      zypper: map['zypper'] == null ? null : (GuestPoliciesPackageRepositoryZypper.fromMap((map['zypper'] as Map).cast<String, dynamic>())).input(),
+      apt: map['apt'] == null ? null : (GuestPoliciesPackageRepositoryApt.fromMap((map['apt']! as Map).cast<String, dynamic>())).input(),
+      goo: map['goo'] == null ? null : (GuestPoliciesPackageRepositoryGoo.fromMap((map['goo']! as Map).cast<String, dynamic>())).input(),
+      yum: map['yum'] == null ? null : (GuestPoliciesPackageRepositoryYum.fromMap((map['yum']! as Map).cast<String, dynamic>())).input(),
+      zypper: map['zypper'] == null ? null : (GuestPoliciesPackageRepositoryZypper.fromMap((map['zypper']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

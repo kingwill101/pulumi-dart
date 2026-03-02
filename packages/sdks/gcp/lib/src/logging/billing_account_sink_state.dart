@@ -74,15 +74,15 @@ class BillingAccountSinkState {
 
   factory BillingAccountSinkState.fromMap(Map<String, dynamic> map) {
     return BillingAccountSinkState(
-      bigqueryOptions: map['bigqueryOptions'] == null ? null : (BillingAccountSinkBigqueryOptions.fromMap((map['bigqueryOptions'] as Map).cast<String, dynamic>())).input(),
-      billingAccount: map['billingAccount'] == null ? null : (map['billingAccount'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<BillingAccountSinkExclusion>(map['exclusions'], (value) => BillingAccountSinkExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      writerIdentity: map['writerIdentity'] == null ? null : (map['writerIdentity'] as String).input(),
+      bigqueryOptions: map['bigqueryOptions'] == null ? null : (BillingAccountSinkBigqueryOptions.fromMap((map['bigqueryOptions']! as Map).cast<String, dynamic>())).input(),
+      billingAccount: map['billingAccount'] == null ? null : (map['billingAccount']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<BillingAccountSinkExclusion>(map['exclusions']!, (value) => BillingAccountSinkExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      writerIdentity: map['writerIdentity'] == null ? null : (map['writerIdentity']! as String).input(),
     );
   }
 }

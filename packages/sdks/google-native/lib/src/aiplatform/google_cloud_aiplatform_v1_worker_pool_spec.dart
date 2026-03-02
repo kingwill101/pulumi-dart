@@ -51,12 +51,12 @@ class GoogleCloudAiplatformV1WorkerPoolSpec {
 
   factory GoogleCloudAiplatformV1WorkerPoolSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1WorkerPoolSpec(
-      containerSpec: map['containerSpec'] == null ? null : (GoogleCloudAiplatformV1ContainerSpec.fromMap((map['containerSpec'] as Map).cast<String, dynamic>())).input(),
-      diskSpec: map['diskSpec'] == null ? null : (GoogleCloudAiplatformV1DiskSpec.fromMap((map['diskSpec'] as Map).cast<String, dynamic>())).input(),
-      machineSpec: map['machineSpec'] == null ? null : (GoogleCloudAiplatformV1MachineSpec.fromMap((map['machineSpec'] as Map).cast<String, dynamic>())).input(),
-      nfsMounts: map['nfsMounts'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1NfsMount>(map['nfsMounts'], (value) => GoogleCloudAiplatformV1NfsMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pythonPackageSpec: map['pythonPackageSpec'] == null ? null : (GoogleCloudAiplatformV1PythonPackageSpec.fromMap((map['pythonPackageSpec'] as Map).cast<String, dynamic>())).input(),
-      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount'] as String).input(),
+      containerSpec: map['containerSpec'] == null ? null : (GoogleCloudAiplatformV1ContainerSpec.fromMap((map['containerSpec']! as Map).cast<String, dynamic>())).input(),
+      diskSpec: map['diskSpec'] == null ? null : (GoogleCloudAiplatformV1DiskSpec.fromMap((map['diskSpec']! as Map).cast<String, dynamic>())).input(),
+      machineSpec: map['machineSpec'] == null ? null : (GoogleCloudAiplatformV1MachineSpec.fromMap((map['machineSpec']! as Map).cast<String, dynamic>())).input(),
+      nfsMounts: map['nfsMounts'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1NfsMount>(map['nfsMounts']!, (value) => GoogleCloudAiplatformV1NfsMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pythonPackageSpec: map['pythonPackageSpec'] == null ? null : (GoogleCloudAiplatformV1PythonPackageSpec.fromMap((map['pythonPackageSpec']! as Map).cast<String, dynamic>())).input(),
+      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount']! as String).input(),
     );
   }
 }

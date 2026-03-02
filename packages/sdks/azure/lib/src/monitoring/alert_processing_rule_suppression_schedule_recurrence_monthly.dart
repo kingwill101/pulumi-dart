@@ -31,8 +31,8 @@ class AlertProcessingRuleSuppressionScheduleRecurrenceMonthly {
   factory AlertProcessingRuleSuppressionScheduleRecurrenceMonthly.fromMap(Map<String, dynamic> map) {
     return AlertProcessingRuleSuppressionScheduleRecurrenceMonthly(
       daysOfMonths: ((map['daysOfMonths'] as List).cast<int>()).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

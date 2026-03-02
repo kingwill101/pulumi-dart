@@ -26,8 +26,8 @@ class RequestsBasedTrigger {
 
   factory RequestsBasedTrigger.fromMap(Map<String, dynamic> map) {
     return RequestsBasedTrigger(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      timeInterval: map['timeInterval'] == null ? null : (map['timeInterval'] as String).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      timeInterval: map['timeInterval'] == null ? null : (map['timeInterval']! as String).input(),
     );
   }
 }

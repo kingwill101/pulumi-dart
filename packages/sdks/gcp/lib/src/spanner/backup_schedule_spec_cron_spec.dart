@@ -30,7 +30,7 @@ class BackupScheduleSpecCronSpec {
 
   factory BackupScheduleSpecCronSpec.fromMap(Map<String, dynamic> map) {
     return BackupScheduleSpecCronSpec(
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
     );
   }
 }

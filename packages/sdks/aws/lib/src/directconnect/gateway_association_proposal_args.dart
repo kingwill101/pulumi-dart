@@ -44,11 +44,11 @@ class GatewayAssociationProposalArgs {
 
   factory GatewayAssociationProposalArgs.fromMap(Map<String, dynamic> map) {
     return GatewayAssociationProposalArgs(
-      allowedPrefixes: map['allowedPrefixes'] == null ? null : ((map['allowedPrefixes'] as List).cast<String>()).input(),
+      allowedPrefixes: map['allowedPrefixes'] == null ? null : (((map['allowedPrefixes'] as List).cast<String>()).input()).input(),
       associatedGatewayId: (map['associatedGatewayId'] as String).input(),
       dxGatewayId: (map['dxGatewayId'] as String).input(),
       dxGatewayOwnerAccountId: (map['dxGatewayOwnerAccountId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -43,10 +43,10 @@ class JobPropertiesResponse {
 
   factory JobPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return JobPropertiesResponse(
-      action: map['action'] == null ? null : (JobActionResponse.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      recurrence: map['recurrence'] == null ? null : (JobRecurrenceResponse.fromMap((map['recurrence'] as Map).cast<String, dynamic>())).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      action: map['action'] == null ? null : (JobActionResponse.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      recurrence: map['recurrence'] == null ? null : (JobRecurrenceResponse.fromMap((map['recurrence']! as Map).cast<String, dynamic>())).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
       status: (JobStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }

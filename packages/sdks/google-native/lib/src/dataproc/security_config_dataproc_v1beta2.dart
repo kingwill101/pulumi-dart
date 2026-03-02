@@ -22,7 +22,7 @@ class SecurityConfigDataprocV1beta2 {
 
   factory SecurityConfigDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return SecurityConfigDataprocV1beta2(
-      kerberosConfig: map['kerberosConfig'] == null ? null : (KerberosConfigDataprocV1beta2.fromMap((map['kerberosConfig'] as Map).cast<String, dynamic>())).input(),
+      kerberosConfig: map['kerberosConfig'] == null ? null : (KerberosConfigDataprocV1beta2.fromMap((map['kerberosConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

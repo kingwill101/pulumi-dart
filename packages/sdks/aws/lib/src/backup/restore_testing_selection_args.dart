@@ -66,14 +66,14 @@ class RestoreTestingSelectionArgs {
   factory RestoreTestingSelectionArgs.fromMap(Map<String, dynamic> map) {
     return RestoreTestingSelectionArgs(
       iamRoleArn: (map['iamRoleArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protectedResourceArns: map['protectedResourceArns'] == null ? null : ((map['protectedResourceArns'] as List).cast<String>()).input(),
-      protectedResourceConditions: map['protectedResourceConditions'] == null ? null : (RestoreTestingSelectionProtectedResourceConditions.fromMap((map['protectedResourceConditions'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      protectedResourceArns: map['protectedResourceArns'] == null ? null : (((map['protectedResourceArns'] as List).cast<String>()).input()).input(),
+      protectedResourceConditions: map['protectedResourceConditions'] == null ? null : ((RestoreTestingSelectionProtectedResourceConditions.fromMap((map['protectedResourceConditions']! as Map).cast<String, dynamic>())).input()).input(),
       protectedResourceType: (map['protectedResourceType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      restoreMetadataOverrides: map['restoreMetadataOverrides'] == null ? null : ((map['restoreMetadataOverrides'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      restoreMetadataOverrides: map['restoreMetadataOverrides'] == null ? null : (((map['restoreMetadataOverrides'] as Map).cast<String, String>()).input()).input(),
       restoreTestingPlanName: (map['restoreTestingPlanName'] as String).input(),
-      validationWindowHours: map['validationWindowHours'] == null ? null : (map['validationWindowHours'] as int).input(),
+      validationWindowHours: map['validationWindowHours'] == null ? null : ((map['validationWindowHours'] as int).input()).input(),
     );
   }
 }

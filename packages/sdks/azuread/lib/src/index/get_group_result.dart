@@ -181,7 +181,7 @@ class GetGroupResult {
       hideFromAddressLists: map['hideFromAddressLists'] as bool,
       hideFromOutlookClients: map['hideFromOutlookClients'] as bool,
       id: map['id'] as String,
-      includeTransitiveMembers: map['includeTransitiveMembers'] == null ? null : map['includeTransitiveMembers'] as bool,
+      includeTransitiveMembers: map['includeTransitiveMembers'] == null ? null : map['includeTransitiveMembers']! as bool,
       mail: map['mail'] as String,
       mailEnabled: map['mailEnabled'] as bool,
       mailNickname: map['mailNickname'] as String,

@@ -27,8 +27,8 @@ class GetClusterRemoteNetworkConfig {
 
   factory GetClusterRemoteNetworkConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterRemoteNetworkConfig(
-      remoteNodeNetworks: (pulumi.Input.decodeList<GetClusterRemoteNetworkConfigRemoteNodeNetwork>(map['remoteNodeNetworks'], (value) => GetClusterRemoteNetworkConfigRemoteNodeNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      remotePodNetworks: (pulumi.Input.decodeList<GetClusterRemoteNetworkConfigRemotePodNetwork>(map['remotePodNetworks'], (value) => GetClusterRemoteNetworkConfigRemotePodNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      remoteNodeNetworks: (pulumi.Input.decodeList<GetClusterRemoteNetworkConfigRemoteNodeNetwork>(map['remoteNodeNetworks']!, (value) => GetClusterRemoteNetworkConfigRemoteNodeNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      remotePodNetworks: (pulumi.Input.decodeList<GetClusterRemoteNetworkConfigRemotePodNetwork>(map['remotePodNetworks']!, (value) => GetClusterRemoteNetworkConfigRemotePodNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

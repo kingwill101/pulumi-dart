@@ -30,7 +30,7 @@ class SnapshotSettingsStorageLocation {
 
   factory SnapshotSettingsStorageLocation.fromMap(Map<String, dynamic> map) {
     return SnapshotSettingsStorageLocation(
-      locations: map['locations'] == null ? null : (pulumi.Input.decodeList<SnapshotSettingsStorageLocationLocation>(map['locations'], (value) => SnapshotSettingsStorageLocationLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      locations: map['locations'] == null ? null : (pulumi.Input.decodeList<SnapshotSettingsStorageLocationLocation>(map['locations']!, (value) => SnapshotSettingsStorageLocationLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
       policy: (map['policy'] as String).input(),
     );
   }

@@ -40,9 +40,9 @@ class BucketRequestPaymentConfigurationV2Args {
   factory BucketRequestPaymentConfigurationV2Args.fromMap(Map<String, dynamic> map) {
     return BucketRequestPaymentConfigurationV2Args(
       bucket: (map['bucket'] as String).input(),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : ((map['expectedBucketOwner'] as String).input()).input(),
       payer: (map['payer'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

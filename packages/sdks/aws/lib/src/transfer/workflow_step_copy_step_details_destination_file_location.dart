@@ -27,8 +27,8 @@ class WorkflowStepCopyStepDetailsDestinationFileLocation {
 
   factory WorkflowStepCopyStepDetailsDestinationFileLocation.fromMap(Map<String, dynamic> map) {
     return WorkflowStepCopyStepDetailsDestinationFileLocation(
-      efsFileLocation: map['efsFileLocation'] == null ? null : (WorkflowStepCopyStepDetailsDestinationFileLocationEfsFileLocation.fromMap((map['efsFileLocation'] as Map).cast<String, dynamic>())).input(),
-      s3FileLocation: map['s3FileLocation'] == null ? null : (WorkflowStepCopyStepDetailsDestinationFileLocationS3FileLocation.fromMap((map['s3FileLocation'] as Map).cast<String, dynamic>())).input(),
+      efsFileLocation: map['efsFileLocation'] == null ? null : ((WorkflowStepCopyStepDetailsDestinationFileLocationEfsFileLocation.fromMap((map['efsFileLocation']! as Map).cast<String, dynamic>())).input()).input(),
+      s3FileLocation: map['s3FileLocation'] == null ? null : ((WorkflowStepCopyStepDetailsDestinationFileLocationS3FileLocation.fromMap((map['s3FileLocation']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -54,13 +54,13 @@ class GetEnterpriseUsersArgs {
 
   factory GetEnterpriseUsersArgs.fromMap(Map<String, dynamic> map) {
     return GetEnterpriseUsersArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      searchKey: map['searchKey'] == null ? null : (map['searchKey'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tid: map['tid'] == null ? null : (map['tid'] as int).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      searchKey: map['searchKey'] == null ? null : (map['searchKey']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tid: map['tid'] == null ? null : (map['tid']! as int).input(),
     );
   }
 }

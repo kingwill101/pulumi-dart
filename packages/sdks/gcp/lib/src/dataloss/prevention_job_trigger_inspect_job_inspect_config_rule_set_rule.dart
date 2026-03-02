@@ -29,8 +29,8 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRule {
 
   factory PreventionJobTriggerInspectJobInspectConfigRuleSetRule.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigRuleSetRule(
-      exclusionRule: map['exclusionRule'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule.fromMap((map['exclusionRule'] as Map).cast<String, dynamic>())).input(),
-      hotwordRule: map['hotwordRule'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule.fromMap((map['hotwordRule'] as Map).cast<String, dynamic>())).input(),
+      exclusionRule: map['exclusionRule'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule.fromMap((map['exclusionRule']! as Map).cast<String, dynamic>())).input(),
+      hotwordRule: map['hotwordRule'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule.fromMap((map['hotwordRule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

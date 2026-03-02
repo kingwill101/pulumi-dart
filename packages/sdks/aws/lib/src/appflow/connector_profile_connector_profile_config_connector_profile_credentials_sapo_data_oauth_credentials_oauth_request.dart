@@ -25,8 +25,8 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataO
 
   factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentialsOauthRequest.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentialsOauthRequest(
-      authCode: map['authCode'] == null ? null : (map['authCode'] as String).input(),
-      redirectUri: map['redirectUri'] == null ? null : (map['redirectUri'] as String).input(),
+      authCode: map['authCode'] == null ? null : ((map['authCode'] as String).input()).input(),
+      redirectUri: map['redirectUri'] == null ? null : ((map['redirectUri'] as String).input()).input(),
     );
   }
 }

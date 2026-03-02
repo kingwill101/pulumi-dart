@@ -36,9 +36,9 @@ class DatasetSnowflakeSchemaColumn {
   factory DatasetSnowflakeSchemaColumn.fromMap(Map<String, dynamic> map) {
     return DatasetSnowflakeSchemaColumn(
       name: (map['name'] as String).input(),
-      precision: map['precision'] == null ? null : (map['precision'] as int).input(),
-      scale: map['scale'] == null ? null : (map['scale'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      precision: map['precision'] == null ? null : (map['precision']! as int).input(),
+      scale: map['scale'] == null ? null : (map['scale']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

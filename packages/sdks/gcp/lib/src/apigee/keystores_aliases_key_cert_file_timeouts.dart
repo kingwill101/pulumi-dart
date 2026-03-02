@@ -35,10 +35,10 @@ class KeystoresAliasesKeyCertFileTimeouts {
 
   factory KeystoresAliasesKeyCertFileTimeouts.fromMap(Map<String, dynamic> map) {
     return KeystoresAliasesKeyCertFileTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
-      delete: map['delete'] == null ? null : (map['delete'] as String).input(),
-      read: map['read'] == null ? null : (map['read'] as String).input(),
-      update: map['update'] == null ? null : (map['update'] as String).input(),
+      create: map['create'] == null ? null : (map['create']! as String).input(),
+      delete: map['delete'] == null ? null : (map['delete']! as String).input(),
+      read: map['read'] == null ? null : (map['read']! as String).input(),
+      update: map['update'] == null ? null : (map['update']! as String).input(),
     );
   }
 }

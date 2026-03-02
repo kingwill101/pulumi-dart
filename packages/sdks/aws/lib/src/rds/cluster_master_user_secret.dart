@@ -30,9 +30,9 @@ class ClusterMasterUserSecret {
 
   factory ClusterMasterUserSecret.fromMap(Map<String, dynamic> map) {
     return ClusterMasterUserSecret(
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      secretArn: map['secretArn'] == null ? null : (map['secretArn'] as String).input(),
-      secretStatus: map['secretStatus'] == null ? null : (map['secretStatus'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      secretArn: map['secretArn'] == null ? null : ((map['secretArn'] as String).input()).input(),
+      secretStatus: map['secretStatus'] == null ? null : ((map['secretStatus'] as String).input()).input(),
     );
   }
 }

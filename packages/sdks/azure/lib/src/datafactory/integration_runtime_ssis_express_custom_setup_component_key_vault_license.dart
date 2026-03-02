@@ -35,9 +35,9 @@ class IntegrationRuntimeSsisExpressCustomSetupComponentKeyVaultLicense {
   factory IntegrationRuntimeSsisExpressCustomSetupComponentKeyVaultLicense.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSsisExpressCustomSetupComponentKeyVaultLicense(
       linkedServiceName: (map['linkedServiceName'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
       secretName: (map['secretName'] as String).input(),
-      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion'] as String).input(),
+      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion']! as String).input(),
     );
   }
 }

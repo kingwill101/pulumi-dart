@@ -33,9 +33,9 @@ class RolePolicyAttachmentState {
 
   factory RolePolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return RolePolicyAttachmentState(
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType']! as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName']! as String).input(),
     );
   }
 }

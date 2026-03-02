@@ -28,7 +28,7 @@ class ChannelInputAttachmentInputSettingsAudioSelector {
   factory ChannelInputAttachmentInputSettingsAudioSelector.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsAudioSelector(
       name: (map['name'] as String).input(),
-      selectorSettings: map['selectorSettings'] == null ? null : (ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings.fromMap((map['selectorSettings'] as Map).cast<String, dynamic>())).input(),
+      selectorSettings: map['selectorSettings'] == null ? null : ((ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings.fromMap((map['selectorSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

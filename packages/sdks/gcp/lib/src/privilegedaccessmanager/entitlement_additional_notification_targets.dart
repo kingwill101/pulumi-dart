@@ -25,8 +25,8 @@ class EntitlementAdditionalNotificationTargets {
 
   factory EntitlementAdditionalNotificationTargets.fromMap(Map<String, dynamic> map) {
     return EntitlementAdditionalNotificationTargets(
-      adminEmailRecipients: map['adminEmailRecipients'] == null ? null : ((map['adminEmailRecipients'] as List).cast<String>()).input(),
-      requesterEmailRecipients: map['requesterEmailRecipients'] == null ? null : ((map['requesterEmailRecipients'] as List).cast<String>()).input(),
+      adminEmailRecipients: map['adminEmailRecipients'] == null ? null : ((map['adminEmailRecipients']! as List).cast<String>()).input(),
+      requesterEmailRecipients: map['requesterEmailRecipients'] == null ? null : ((map['requesterEmailRecipients']! as List).cast<String>()).input(),
     );
   }
 }

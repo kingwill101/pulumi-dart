@@ -36,9 +36,9 @@ class GetAccessPackageArgs {
 
   factory GetAccessPackageArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPackageArgs(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
     );
   }
 }

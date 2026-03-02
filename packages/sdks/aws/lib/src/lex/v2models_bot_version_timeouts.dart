@@ -25,8 +25,8 @@ class V2modelsBotVersionTimeouts {
 
   factory V2modelsBotVersionTimeouts.fromMap(Map<String, dynamic> map) {
     return V2modelsBotVersionTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
-      delete: map['delete'] == null ? null : (map['delete'] as String).input(),
+      create: map['create'] == null ? null : ((map['create'] as String).input()).input(),
+      delete: map['delete'] == null ? null : ((map['delete'] as String).input()).input(),
     );
   }
 }

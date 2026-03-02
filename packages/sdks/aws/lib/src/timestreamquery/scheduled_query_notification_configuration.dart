@@ -21,7 +21,7 @@ class ScheduledQueryNotificationConfiguration {
 
   factory ScheduledQueryNotificationConfiguration.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryNotificationConfiguration(
-      snsConfiguration: (ScheduledQueryNotificationConfigurationSnsConfiguration.fromMap((map['snsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      snsConfiguration: (ScheduledQueryNotificationConfigurationSnsConfiguration.fromMap((map['snsConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

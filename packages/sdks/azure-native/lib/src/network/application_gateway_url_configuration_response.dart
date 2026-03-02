@@ -31,9 +31,9 @@ class ApplicationGatewayUrlConfigurationResponse {
 
   factory ApplicationGatewayUrlConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayUrlConfigurationResponse(
-      modifiedPath: map['modifiedPath'] == null ? null : (map['modifiedPath'] as String).input(),
-      modifiedQueryString: map['modifiedQueryString'] == null ? null : (map['modifiedQueryString'] as String).input(),
-      reroute: map['reroute'] == null ? null : (map['reroute'] as bool).input(),
+      modifiedPath: map['modifiedPath'] == null ? null : (map['modifiedPath']! as String).input(),
+      modifiedQueryString: map['modifiedQueryString'] == null ? null : (map['modifiedQueryString']! as String).input(),
+      reroute: map['reroute'] == null ? null : (map['reroute']! as bool).input(),
     );
   }
 }

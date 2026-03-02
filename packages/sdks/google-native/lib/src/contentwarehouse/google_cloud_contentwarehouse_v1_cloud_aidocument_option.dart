@@ -26,8 +26,8 @@ class GoogleCloudContentwarehouseV1CloudAIDocumentOption {
 
   factory GoogleCloudContentwarehouseV1CloudAIDocumentOption.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1CloudAIDocumentOption(
-      customizedEntitiesPropertiesConversions: map['customizedEntitiesPropertiesConversions'] == null ? null : ((map['customizedEntitiesPropertiesConversions'] as Map).cast<String, String>()).input(),
-      enableEntitiesConversions: map['enableEntitiesConversions'] == null ? null : (map['enableEntitiesConversions'] as bool).input(),
+      customizedEntitiesPropertiesConversions: map['customizedEntitiesPropertiesConversions'] == null ? null : ((map['customizedEntitiesPropertiesConversions']! as Map).cast<String, String>()).input(),
+      enableEntitiesConversions: map['enableEntitiesConversions'] == null ? null : (map['enableEntitiesConversions']! as bool).input(),
     );
   }
 }

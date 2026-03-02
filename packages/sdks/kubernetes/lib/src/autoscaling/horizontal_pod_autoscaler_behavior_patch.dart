@@ -30,8 +30,8 @@ class HorizontalPodAutoscalerBehaviorPatch {
 
   factory HorizontalPodAutoscalerBehaviorPatch.fromMap(Map<String, dynamic> map) {
     return HorizontalPodAutoscalerBehaviorPatch(
-      scaleDown: map['scaleDown'] == null ? null : (HPAScalingRulesPatch.fromMap((map['scaleDown'] as Map).cast<String, dynamic>())).input(),
-      scaleUp: map['scaleUp'] == null ? null : (HPAScalingRulesPatch.fromMap((map['scaleUp'] as Map).cast<String, dynamic>())).input(),
+      scaleDown: map['scaleDown'] == null ? null : (HPAScalingRulesPatch.fromMap((map['scaleDown']! as Map).cast<String, dynamic>())).input(),
+      scaleUp: map['scaleUp'] == null ? null : (HPAScalingRulesPatch.fromMap((map['scaleUp']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

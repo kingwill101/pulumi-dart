@@ -43,11 +43,11 @@ class AnalyticsConfigurationState {
 
   factory AnalyticsConfigurationState.fromMap(Map<String, dynamic> map) {
     return AnalyticsConfigurationState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      filter: map['filter'] == null ? null : (AnalyticsConfigurationFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      storageClassAnalysis: map['storageClassAnalysis'] == null ? null : (AnalyticsConfigurationStorageClassAnalysis.fromMap((map['storageClassAnalysis'] as Map).cast<String, dynamic>())).input(),
+      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
+      filter: map['filter'] == null ? null : ((AnalyticsConfigurationFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      storageClassAnalysis: map['storageClassAnalysis'] == null ? null : ((AnalyticsConfigurationStorageClassAnalysis.fromMap((map['storageClassAnalysis']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

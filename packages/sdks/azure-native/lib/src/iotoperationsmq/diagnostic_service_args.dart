@@ -91,20 +91,20 @@ class DiagnosticServiceArgs {
 
   factory DiagnosticServiceArgs.fromMap(Map<String, dynamic> map) {
     return DiagnosticServiceArgs(
-      dataExportFrequencySeconds: map['dataExportFrequencySeconds'] == null ? null : (map['dataExportFrequencySeconds'] as int).input(),
-      diagnosticServiceName: map['diagnosticServiceName'] == null ? null : (map['diagnosticServiceName'] as String).input(),
+      dataExportFrequencySeconds: map['dataExportFrequencySeconds'] == null ? null : (map['dataExportFrequencySeconds']! as int).input(),
+      diagnosticServiceName: map['diagnosticServiceName'] == null ? null : (map['diagnosticServiceName']! as String).input(),
       extendedLocation: (ExtendedLocationProperty.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
       image: (ContainerImage.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      logFormat: map['logFormat'] == null ? null : (map['logFormat'] as String).input(),
-      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
-      maxDataStorageSize: map['maxDataStorageSize'] == null ? null : (map['maxDataStorageSize'] as double).input(),
-      metricsPort: map['metricsPort'] == null ? null : (map['metricsPort'] as int).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      logFormat: map['logFormat'] == null ? null : (map['logFormat']! as String).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel']! as String).input(),
+      maxDataStorageSize: map['maxDataStorageSize'] == null ? null : (map['maxDataStorageSize']! as double).input(),
+      metricsPort: map['metricsPort'] == null ? null : (map['metricsPort']! as int).input(),
       mqName: (map['mqName'] as String).input(),
-      openTelemetryTracesCollectorAddr: map['openTelemetryTracesCollectorAddr'] == null ? null : (map['openTelemetryTracesCollectorAddr'] as String).input(),
+      openTelemetryTracesCollectorAddr: map['openTelemetryTracesCollectorAddr'] == null ? null : (map['openTelemetryTracesCollectorAddr']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      staleDataTimeoutSeconds: map['staleDataTimeoutSeconds'] == null ? null : (map['staleDataTimeoutSeconds'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      staleDataTimeoutSeconds: map['staleDataTimeoutSeconds'] == null ? null : (map['staleDataTimeoutSeconds']! as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

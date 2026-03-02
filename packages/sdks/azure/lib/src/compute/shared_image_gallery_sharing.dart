@@ -30,7 +30,7 @@ class SharedImageGallerySharing {
 
   factory SharedImageGallerySharing.fromMap(Map<String, dynamic> map) {
     return SharedImageGallerySharing(
-      communityGallery: map['communityGallery'] == null ? null : (SharedImageGallerySharingCommunityGallery.fromMap((map['communityGallery'] as Map).cast<String, dynamic>())).input(),
+      communityGallery: map['communityGallery'] == null ? null : (SharedImageGallerySharingCommunityGallery.fromMap((map['communityGallery']! as Map).cast<String, dynamic>())).input(),
       permission: (map['permission'] as String).input(),
     );
   }

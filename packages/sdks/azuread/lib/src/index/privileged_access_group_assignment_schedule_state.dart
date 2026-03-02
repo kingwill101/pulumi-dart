@@ -73,17 +73,17 @@ class PrivilegedAccessGroupAssignmentScheduleState {
 
   factory PrivilegedAccessGroupAssignmentScheduleState.fromMap(Map<String, dynamic> map) {
     return PrivilegedAccessGroupAssignmentScheduleState(
-      assignmentType: map['assignmentType'] == null ? null : (map['assignmentType'] as String).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
-      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      justification: map['justification'] == null ? null : (map['justification'] as String).input(),
-      permanentAssignment: map['permanentAssignment'] == null ? null : (map['permanentAssignment'] as bool).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      ticketNumber: map['ticketNumber'] == null ? null : (map['ticketNumber'] as String).input(),
-      ticketSystem: map['ticketSystem'] == null ? null : (map['ticketSystem'] as String).input(),
+      assignmentType: map['assignmentType'] == null ? null : (map['assignmentType']! as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate']! as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      justification: map['justification'] == null ? null : (map['justification']! as String).input(),
+      permanentAssignment: map['permanentAssignment'] == null ? null : (map['permanentAssignment']! as bool).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      startDate: map['startDate'] == null ? null : (map['startDate']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      ticketNumber: map['ticketNumber'] == null ? null : (map['ticketNumber']! as String).input(),
+      ticketSystem: map['ticketSystem'] == null ? null : (map['ticketSystem']! as String).input(),
     );
   }
 }

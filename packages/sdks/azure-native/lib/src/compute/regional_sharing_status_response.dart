@@ -31,8 +31,8 @@ class RegionalSharingStatusResponse {
 
   factory RegionalSharingStatusResponse.fromMap(Map<String, dynamic> map) {
     return RegionalSharingStatusResponse(
-      details: map['details'] == null ? null : (map['details'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      details: map['details'] == null ? null : (map['details']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       state: (map['state'] as String).input(),
     );
   }

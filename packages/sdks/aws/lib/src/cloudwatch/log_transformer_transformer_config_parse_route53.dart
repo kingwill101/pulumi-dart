@@ -20,7 +20,7 @@ class LogTransformerTransformerConfigParseRoute53 {
 
   factory LogTransformerTransformerConfigParseRoute53.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigParseRoute53(
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      source: map['source'] == null ? null : ((map['source'] as String).input()).input(),
     );
   }
 }

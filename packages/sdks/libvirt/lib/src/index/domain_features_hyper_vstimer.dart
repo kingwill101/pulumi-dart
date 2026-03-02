@@ -21,7 +21,7 @@ class DomainFeaturesHyperVStimer {
 
   factory DomainFeaturesHyperVStimer.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesHyperVStimer(
-      direct: map['direct'] == null ? null : (DomainFeaturesHyperVStimerDirect.fromMap((map['direct'] as Map).cast<String, dynamic>())).input(),
+      direct: map['direct'] == null ? null : (DomainFeaturesHyperVStimerDirect.fromMap((map['direct']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

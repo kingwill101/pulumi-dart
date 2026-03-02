@@ -42,10 +42,10 @@ class BrokerUser {
 
   factory BrokerUser.fromMap(Map<String, dynamic> map) {
     return BrokerUser(
-      consoleAccess: map['consoleAccess'] == null ? null : (map['consoleAccess'] as bool).input(),
-      groups: map['groups'] == null ? null : ((map['groups'] as List).cast<String>()).input(),
+      consoleAccess: map['consoleAccess'] == null ? null : ((map['consoleAccess'] as bool).input()).input(),
+      groups: map['groups'] == null ? null : (((map['groups'] as List).cast<String>()).input()).input(),
       password: (map['password'] as String).input(),
-      replicationUser: map['replicationUser'] == null ? null : (map['replicationUser'] as bool).input(),
+      replicationUser: map['replicationUser'] == null ? null : ((map['replicationUser'] as bool).input()).input(),
       username: (map['username'] as String).input(),
     );
   }

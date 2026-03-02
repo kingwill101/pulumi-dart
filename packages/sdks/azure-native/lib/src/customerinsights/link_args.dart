@@ -88,14 +88,14 @@ class LinkArgs {
 
   factory LinkArgs.fromMap(Map<String, dynamic> map) {
     return LinkArgs(
-      description: map['description'] == null ? null : ((map['description'] as Map).cast<String, String>()).input(),
-      displayName: map['displayName'] == null ? null : ((map['displayName'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : ((map['description']! as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : ((map['displayName']! as Map).cast<String, String>()).input(),
       hubName: (map['hubName'] as String).input(),
-      linkName: map['linkName'] == null ? null : (map['linkName'] as String).input(),
-      mappings: map['mappings'] == null ? null : (pulumi.Input.decodeList<TypePropertiesMapping>(map['mappings'], (value) => TypePropertiesMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      operationType: map['operationType'] == null ? null : (InstanceOperationType.fromValue(map['operationType'] as String)).input(),
+      linkName: map['linkName'] == null ? null : (map['linkName']! as String).input(),
+      mappings: map['mappings'] == null ? null : (pulumi.Input.decodeList<TypePropertiesMapping>(map['mappings']!, (value) => TypePropertiesMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      operationType: map['operationType'] == null ? null : (InstanceOperationType.fromValue(map['operationType']! as String)).input(),
       participantPropertyReferences: (pulumi.Input.decodeList<ParticipantPropertyReference>(map['participantPropertyReferences'], (value) => ParticipantPropertyReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      referenceOnly: map['referenceOnly'] == null ? null : (map['referenceOnly'] as bool).input(),
+      referenceOnly: map['referenceOnly'] == null ? null : (map['referenceOnly']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sourceEntityType: (EntityType.fromValue(map['sourceEntityType'] as String)).input(),
       sourceEntityTypeName: (map['sourceEntityTypeName'] as String).input(),

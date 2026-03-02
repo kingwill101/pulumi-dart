@@ -31,7 +31,7 @@ class GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfig {
 
   factory GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfig.fromMap(Map<String, dynamic> map) {
     return GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfig(
-      encryptionConfigs: (pulumi.Input.decodeList<GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig>(map['encryptionConfigs'], (value) => GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encryptionConfigs: (pulumi.Input.decodeList<GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig>(map['encryptionConfigs']!, (value) => GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       prefix: (map['prefix'] as String).input(),
       retentionPeriodHours: (map['retentionPeriodHours'] as int).input(),
     );

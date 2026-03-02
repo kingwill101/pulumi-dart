@@ -25,8 +25,8 @@ class MLTransformSchema {
 
   factory MLTransformSchema.fromMap(Map<String, dynamic> map) {
     return MLTransformSchema(
-      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      dataType: map['dataType'] == null ? null : ((map['dataType'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
     );
   }
 }

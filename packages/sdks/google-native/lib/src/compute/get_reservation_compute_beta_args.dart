@@ -31,7 +31,7 @@ class GetReservationComputeBetaArgs {
 
   factory GetReservationComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetReservationComputeBetaArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       reservation: (map['reservation'] as String).input(),
       zone: (map['zone'] as String).input(),
     );

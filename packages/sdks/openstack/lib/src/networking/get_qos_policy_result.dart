@@ -83,7 +83,7 @@ class GetQosPolicyResult {
       region: map['region'] as String,
       revisionNumber: map['revisionNumber'] as int,
       shared: map['shared'] as bool,
-      tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as List).cast<String>(),
       updatedAt: map['updatedAt'] as String,
     );
   }

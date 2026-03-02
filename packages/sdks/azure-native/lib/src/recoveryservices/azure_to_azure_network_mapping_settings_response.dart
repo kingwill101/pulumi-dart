@@ -33,8 +33,8 @@ class AzureToAzureNetworkMappingSettingsResponse {
   factory AzureToAzureNetworkMappingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AzureToAzureNetworkMappingSettingsResponse(
       instanceType: (map['instanceType'] as String).input(),
-      primaryFabricLocation: map['primaryFabricLocation'] == null ? null : (map['primaryFabricLocation'] as String).input(),
-      recoveryFabricLocation: map['recoveryFabricLocation'] == null ? null : (map['recoveryFabricLocation'] as String).input(),
+      primaryFabricLocation: map['primaryFabricLocation'] == null ? null : (map['primaryFabricLocation']! as String).input(),
+      recoveryFabricLocation: map['recoveryFabricLocation'] == null ? null : (map['recoveryFabricLocation']! as String).input(),
     );
   }
 }

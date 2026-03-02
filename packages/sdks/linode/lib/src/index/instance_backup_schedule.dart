@@ -25,8 +25,8 @@ class InstanceBackupSchedule {
 
   factory InstanceBackupSchedule.fromMap(Map<String, dynamic> map) {
     return InstanceBackupSchedule(
-      day: map['day'] == null ? null : (map['day'] as String).input(),
-      window: map['window'] == null ? null : (map['window'] as String).input(),
+      day: map['day'] == null ? null : (map['day']! as String).input(),
+      window: map['window'] == null ? null : (map['window']! as String).input(),
     );
   }
 }

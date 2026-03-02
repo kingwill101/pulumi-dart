@@ -51,9 +51,9 @@ class ConnectionTypeArgs {
   factory ConnectionTypeArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionTypeArgs(
       automationAccountName: (map['automationAccountName'] as String).input(),
-      connectionTypeName: map['connectionTypeName'] == null ? null : (map['connectionTypeName'] as String).input(),
+      connectionTypeName: map['connectionTypeName'] == null ? null : (map['connectionTypeName']! as String).input(),
       fieldDefinitions: (pulumi.Input.decodeMapValues<FieldDefinition>(map['fieldDefinitions'], (value) => FieldDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      isGlobal: map['isGlobal'] == null ? null : (map['isGlobal'] as bool).input(),
+      isGlobal: map['isGlobal'] == null ? null : (map['isGlobal']! as bool).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

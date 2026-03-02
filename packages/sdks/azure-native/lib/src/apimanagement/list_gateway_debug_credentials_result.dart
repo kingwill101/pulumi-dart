@@ -20,7 +20,7 @@ class ListGatewayDebugCredentialsResult {
 
   factory ListGatewayDebugCredentialsResult.fromMap(Map<String, dynamic> map) {
     return ListGatewayDebugCredentialsResult(
-      token: map['token'] == null ? null : map['token'] as String,
+      token: map['token'] == null ? null : map['token']! as String,
     );
   }
 }

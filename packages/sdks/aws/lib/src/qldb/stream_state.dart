@@ -67,16 +67,16 @@ class StreamState {
 
   factory StreamState.fromMap(Map<String, dynamic> map) {
     return StreamState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      exclusiveEndTime: map['exclusiveEndTime'] == null ? null : (map['exclusiveEndTime'] as String).input(),
-      inclusiveStartTime: map['inclusiveStartTime'] == null ? null : (map['inclusiveStartTime'] as String).input(),
-      kinesisConfiguration: map['kinesisConfiguration'] == null ? null : (StreamKinesisConfiguration.fromMap((map['kinesisConfiguration'] as Map).cast<String, dynamic>())).input(),
-      ledgerName: map['ledgerName'] == null ? null : (map['ledgerName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      streamName: map['streamName'] == null ? null : (map['streamName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      exclusiveEndTime: map['exclusiveEndTime'] == null ? null : ((map['exclusiveEndTime'] as String).input()).input(),
+      inclusiveStartTime: map['inclusiveStartTime'] == null ? null : ((map['inclusiveStartTime'] as String).input()).input(),
+      kinesisConfiguration: map['kinesisConfiguration'] == null ? null : ((StreamKinesisConfiguration.fromMap((map['kinesisConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      ledgerName: map['ledgerName'] == null ? null : ((map['ledgerName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      streamName: map['streamName'] == null ? null : ((map['streamName'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

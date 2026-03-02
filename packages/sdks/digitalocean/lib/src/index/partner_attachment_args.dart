@@ -59,12 +59,12 @@ class PartnerAttachmentArgs {
 
   factory PartnerAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return PartnerAttachmentArgs(
-      bgp: map['bgp'] == null ? null : (PartnerAttachmentBgp.fromMap((map['bgp'] as Map).cast<String, dynamic>())).input(),
+      bgp: map['bgp'] == null ? null : (PartnerAttachmentBgp.fromMap((map['bgp']! as Map).cast<String, dynamic>())).input(),
       connectionBandwidthInMbps: (map['connectionBandwidthInMbps'] as int).input(),
       naasProvider: (map['naasProvider'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentUuid: map['parentUuid'] == null ? null : (map['parentUuid'] as String).input(),
-      redundancyZone: map['redundancyZone'] == null ? null : (map['redundancyZone'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parentUuid: map['parentUuid'] == null ? null : (map['parentUuid']! as String).input(),
+      redundancyZone: map['redundancyZone'] == null ? null : (map['redundancyZone']! as String).input(),
       region: (map['region'] as String).input(),
       vpcIds: ((map['vpcIds'] as List).cast<String>()).input(),
     );

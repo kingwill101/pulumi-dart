@@ -45,7 +45,7 @@ class AccessRuleArgs {
   factory AccessRuleArgs.fromMap(Map<String, dynamic> map) {
     return AccessRuleArgs(
       accessGroupId: (map['accessGroupId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       networkSegment: (map['networkSegment'] as String).input(),
       priority: (map['priority'] as int).input(),
       rwAccessType: (map['rwAccessType'] as String).input(),

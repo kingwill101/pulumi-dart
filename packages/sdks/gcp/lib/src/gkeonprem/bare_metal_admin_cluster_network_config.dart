@@ -34,9 +34,9 @@ class BareMetalAdminClusterNetworkConfig {
 
   factory BareMetalAdminClusterNetworkConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterNetworkConfig(
-      advancedNetworking: map['advancedNetworking'] == null ? null : (map['advancedNetworking'] as bool).input(),
-      islandModeCidr: map['islandModeCidr'] == null ? null : (BareMetalAdminClusterNetworkConfigIslandModeCidr.fromMap((map['islandModeCidr'] as Map).cast<String, dynamic>())).input(),
-      multipleNetworkInterfacesConfig: map['multipleNetworkInterfacesConfig'] == null ? null : (BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig.fromMap((map['multipleNetworkInterfacesConfig'] as Map).cast<String, dynamic>())).input(),
+      advancedNetworking: map['advancedNetworking'] == null ? null : (map['advancedNetworking']! as bool).input(),
+      islandModeCidr: map['islandModeCidr'] == null ? null : (BareMetalAdminClusterNetworkConfigIslandModeCidr.fromMap((map['islandModeCidr']! as Map).cast<String, dynamic>())).input(),
+      multipleNetworkInterfacesConfig: map['multipleNetworkInterfacesConfig'] == null ? null : (BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig.fromMap((map['multipleNetworkInterfacesConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

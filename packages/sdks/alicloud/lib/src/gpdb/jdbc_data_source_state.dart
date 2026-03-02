@@ -66,16 +66,16 @@ class JdbcDataSourceState {
 
   factory JdbcDataSourceState.fromMap(Map<String, dynamic> map) {
     return JdbcDataSourceState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dataSourceDescription: map['dataSourceDescription'] == null ? null : (map['dataSourceDescription'] as String).input(),
-      dataSourceId: map['dataSourceId'] == null ? null : (map['dataSourceId'] as String).input(),
-      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName'] as String).input(),
-      dataSourceType: map['dataSourceType'] == null ? null : (map['dataSourceType'] as String).input(),
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      jdbcConnectionString: map['jdbcConnectionString'] == null ? null : (map['jdbcConnectionString'] as String).input(),
-      jdbcPassword: map['jdbcPassword'] == null ? null : (map['jdbcPassword'] as String).input(),
-      jdbcUserName: map['jdbcUserName'] == null ? null : (map['jdbcUserName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dataSourceDescription: map['dataSourceDescription'] == null ? null : (map['dataSourceDescription']! as String).input(),
+      dataSourceId: map['dataSourceId'] == null ? null : (map['dataSourceId']! as String).input(),
+      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName']! as String).input(),
+      dataSourceType: map['dataSourceType'] == null ? null : (map['dataSourceType']! as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      jdbcConnectionString: map['jdbcConnectionString'] == null ? null : (map['jdbcConnectionString']! as String).input(),
+      jdbcPassword: map['jdbcPassword'] == null ? null : (map['jdbcPassword']! as String).input(),
+      jdbcUserName: map['jdbcUserName'] == null ? null : (map['jdbcUserName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

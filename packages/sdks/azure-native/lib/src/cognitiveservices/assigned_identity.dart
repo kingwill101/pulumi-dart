@@ -49,7 +49,7 @@ class AssignedIdentity {
       clientId: (map['clientId'] as String).input(),
       kind: (map['kind'] as String).input(),
       principalId: (map['principalId'] as String).input(),
-      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
+      subject: map['subject'] == null ? null : (map['subject']! as String).input(),
       tenantId: (map['tenantId'] as String).input(),
       type: (map['type'] as String).input(),
     );

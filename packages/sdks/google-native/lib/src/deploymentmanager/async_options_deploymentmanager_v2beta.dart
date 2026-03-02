@@ -27,8 +27,8 @@ class AsyncOptionsDeploymentmanagerV2beta {
 
   factory AsyncOptionsDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return AsyncOptionsDeploymentmanagerV2beta(
-      methodMatch: map['methodMatch'] == null ? null : (map['methodMatch'] as String).input(),
-      pollingOptions: map['pollingOptions'] == null ? null : (PollingOptionsDeploymentmanagerV2beta.fromMap((map['pollingOptions'] as Map).cast<String, dynamic>())).input(),
+      methodMatch: map['methodMatch'] == null ? null : (map['methodMatch']! as String).input(),
+      pollingOptions: map['pollingOptions'] == null ? null : (PollingOptionsDeploymentmanagerV2beta.fromMap((map['pollingOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

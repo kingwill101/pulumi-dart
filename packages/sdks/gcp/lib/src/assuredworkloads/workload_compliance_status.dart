@@ -25,8 +25,8 @@ class WorkloadComplianceStatus {
 
   factory WorkloadComplianceStatus.fromMap(Map<String, dynamic> map) {
     return WorkloadComplianceStatus(
-      acknowledgedViolationCounts: map['acknowledgedViolationCounts'] == null ? null : ((map['acknowledgedViolationCounts'] as List).cast<int>()).input(),
-      activeViolationCounts: map['activeViolationCounts'] == null ? null : ((map['activeViolationCounts'] as List).cast<int>()).input(),
+      acknowledgedViolationCounts: map['acknowledgedViolationCounts'] == null ? null : ((map['acknowledgedViolationCounts']! as List).cast<int>()).input(),
+      activeViolationCounts: map['activeViolationCounts'] == null ? null : ((map['activeViolationCounts']! as List).cast<int>()).input(),
     );
   }
 }

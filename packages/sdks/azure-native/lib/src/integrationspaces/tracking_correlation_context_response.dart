@@ -36,10 +36,10 @@ class TrackingCorrelationContextResponse {
 
   factory TrackingCorrelationContextResponse.fromMap(Map<String, dynamic> map) {
     return TrackingCorrelationContextResponse(
-      operationName: map['operationName'] == null ? null : (map['operationName'] as String).input(),
-      operationType: map['operationType'] == null ? null : (map['operationType'] as String).input(),
-      propertyName: map['propertyName'] == null ? null : (map['propertyName'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      operationName: map['operationName'] == null ? null : (map['operationName']! as String).input(),
+      operationType: map['operationType'] == null ? null : (map['operationType']! as String).input(),
+      propertyName: map['propertyName'] == null ? null : (map['propertyName']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

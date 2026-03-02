@@ -34,7 +34,7 @@ class ManagedClusterDataprocV1beta2 {
     return ManagedClusterDataprocV1beta2(
       clusterName: (map['clusterName'] as String).input(),
       config: (ClusterConfigDataprocV1beta2.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
     );
   }
 }

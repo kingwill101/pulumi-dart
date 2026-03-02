@@ -31,9 +31,9 @@ class DeployGroupState {
 
   factory DeployGroupState.fromMap(Map<String, dynamic> map) {
     return DeployGroupState(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      groupType: map['groupType'] == null ? null : (map['groupType'] as int).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      groupType: map['groupType'] == null ? null : (map['groupType']! as int).input(),
     );
   }
 }

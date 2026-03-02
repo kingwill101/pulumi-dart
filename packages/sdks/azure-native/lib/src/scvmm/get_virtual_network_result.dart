@@ -85,16 +85,16 @@ class GetVirtualNetworkResult {
       azureApiVersion: map['azureApiVersion'] as String,
       extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      inventoryItemId: map['inventoryItemId'] == null ? null : map['inventoryItemId'] as String,
+      inventoryItemId: map['inventoryItemId'] == null ? null : map['inventoryItemId']! as String,
       location: map['location'] as String,
       name: map['name'] as String,
       networkName: map['networkName'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      uuid: map['uuid'] == null ? null : map['uuid'] as String,
-      vmmServerId: map['vmmServerId'] == null ? null : map['vmmServerId'] as String,
+      uuid: map['uuid'] == null ? null : map['uuid']! as String,
+      vmmServerId: map['vmmServerId'] == null ? null : map['vmmServerId']! as String,
     );
   }
 }

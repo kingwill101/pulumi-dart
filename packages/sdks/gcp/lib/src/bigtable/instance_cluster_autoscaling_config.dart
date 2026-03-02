@@ -40,7 +40,7 @@ class InstanceClusterAutoscalingConfig {
       cpuTarget: (map['cpuTarget'] as int).input(),
       maxNodes: (map['maxNodes'] as int).input(),
       minNodes: (map['minNodes'] as int).input(),
-      storageTarget: map['storageTarget'] == null ? null : (map['storageTarget'] as int).input(),
+      storageTarget: map['storageTarget'] == null ? null : (map['storageTarget']! as int).input(),
     );
   }
 }

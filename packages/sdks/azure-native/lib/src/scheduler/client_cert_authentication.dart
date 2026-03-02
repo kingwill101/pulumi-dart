@@ -46,11 +46,11 @@ class ClientCertAuthentication {
 
   factory ClientCertAuthentication.fromMap(Map<String, dynamic> map) {
     return ClientCertAuthentication(
-      certificateExpirationDate: map['certificateExpirationDate'] == null ? null : (map['certificateExpirationDate'] as String).input(),
-      certificateSubjectName: map['certificateSubjectName'] == null ? null : (map['certificateSubjectName'] as String).input(),
-      certificateThumbprint: map['certificateThumbprint'] == null ? null : (map['certificateThumbprint'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      pfx: map['pfx'] == null ? null : (map['pfx'] as String).input(),
+      certificateExpirationDate: map['certificateExpirationDate'] == null ? null : (map['certificateExpirationDate']! as String).input(),
+      certificateSubjectName: map['certificateSubjectName'] == null ? null : (map['certificateSubjectName']! as String).input(),
+      certificateThumbprint: map['certificateThumbprint'] == null ? null : (map['certificateThumbprint']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      pfx: map['pfx'] == null ? null : (map['pfx']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -67,12 +67,12 @@ class GetPlanRule {
   factory GetPlanRule.fromMap(Map<String, dynamic> map) {
     return GetPlanRule(
       completionWindow: (map['completionWindow'] as int).input(),
-      copyActions: (pulumi.Input.decodeList<GetPlanRuleCopyAction>(map['copyActions'], (value) => GetPlanRuleCopyAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      copyActions: (pulumi.Input.decodeList<GetPlanRuleCopyAction>(map['copyActions']!, (value) => GetPlanRuleCopyAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
       enableContinuousBackup: (map['enableContinuousBackup'] as bool).input(),
-      lifecycles: (pulumi.Input.decodeList<GetPlanRuleLifecycle>(map['lifecycles'], (value) => GetPlanRuleLifecycle.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      recoveryPointTags: map['recoveryPointTags'] == null ? null : ((map['recoveryPointTags'] as Map).cast<String, String>()).input(),
+      lifecycles: (pulumi.Input.decodeList<GetPlanRuleLifecycle>(map['lifecycles']!, (value) => GetPlanRuleLifecycle.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      recoveryPointTags: map['recoveryPointTags'] == null ? null : (((map['recoveryPointTags'] as Map).cast<String, String>()).input()).input(),
       ruleName: (map['ruleName'] as String).input(),
-      scanActions: (pulumi.Input.decodeList<GetPlanRuleScanAction>(map['scanActions'], (value) => GetPlanRuleScanAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scanActions: (pulumi.Input.decodeList<GetPlanRuleScanAction>(map['scanActions']!, (value) => GetPlanRuleScanAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
       schedule: (map['schedule'] as String).input(),
       scheduleExpressionTimezone: (map['scheduleExpressionTimezone'] as String).input(),
       startWindow: (map['startWindow'] as int).input(),

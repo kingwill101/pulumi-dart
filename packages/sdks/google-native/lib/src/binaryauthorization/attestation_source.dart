@@ -21,7 +21,7 @@ class AttestationSource {
 
   factory AttestationSource.fromMap(Map<String, dynamic> map) {
     return AttestationSource(
-      containerAnalysisAttestationProjects: map['containerAnalysisAttestationProjects'] == null ? null : ((map['containerAnalysisAttestationProjects'] as List).cast<String>()).input(),
+      containerAnalysisAttestationProjects: map['containerAnalysisAttestationProjects'] == null ? null : ((map['containerAnalysisAttestationProjects']! as List).cast<String>()).input(),
     );
   }
 }

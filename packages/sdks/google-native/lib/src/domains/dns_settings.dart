@@ -34,9 +34,9 @@ class DnsSettings {
 
   factory DnsSettings.fromMap(Map<String, dynamic> map) {
     return DnsSettings(
-      customDns: map['customDns'] == null ? null : (CustomDns.fromMap((map['customDns'] as Map).cast<String, dynamic>())).input(),
-      glueRecords: map['glueRecords'] == null ? null : (pulumi.Input.decodeList<GlueRecord>(map['glueRecords'], (value) => GlueRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      googleDomainsDns: map['googleDomainsDns'] == null ? null : (GoogleDomainsDns.fromMap((map['googleDomainsDns'] as Map).cast<String, dynamic>())).input(),
+      customDns: map['customDns'] == null ? null : (CustomDns.fromMap((map['customDns']! as Map).cast<String, dynamic>())).input(),
+      glueRecords: map['glueRecords'] == null ? null : (pulumi.Input.decodeList<GlueRecord>(map['glueRecords']!, (value) => GlueRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      googleDomainsDns: map['googleDomainsDns'] == null ? null : (GoogleDomainsDns.fromMap((map['googleDomainsDns']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

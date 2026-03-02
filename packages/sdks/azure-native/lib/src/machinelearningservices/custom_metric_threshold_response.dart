@@ -27,7 +27,7 @@ class CustomMetricThresholdResponse {
   factory CustomMetricThresholdResponse.fromMap(Map<String, dynamic> map) {
     return CustomMetricThresholdResponse(
       metric: (map['metric'] as String).input(),
-      threshold: map['threshold'] == null ? null : (MonitoringThresholdResponse.fromMap((map['threshold'] as Map).cast<String, dynamic>())).input(),
+      threshold: map['threshold'] == null ? null : (MonitoringThresholdResponse.fromMap((map['threshold']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

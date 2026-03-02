@@ -25,8 +25,8 @@ class GetNestServiceInstancesFilter {
 
   factory GetNestServiceInstancesFilter.fromMap(Map<String, dynamic> map) {
     return GetNestServiceInstancesFilter(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class RuleRuleConditionResponseStatusCodeConfig {
 
   factory RuleRuleConditionResponseStatusCodeConfig.fromMap(Map<String, dynamic> map) {
     return RuleRuleConditionResponseStatusCodeConfig(
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

@@ -28,7 +28,7 @@ class AwsOrganizationalDataMember {
   factory AwsOrganizationalDataMember.fromMap(Map<String, dynamic> map) {
     return AwsOrganizationalDataMember(
       organizationMembershipType: (map['organizationMembershipType'] as String).input(),
-      parentHierarchyId: map['parentHierarchyId'] == null ? null : (map['parentHierarchyId'] as String).input(),
+      parentHierarchyId: map['parentHierarchyId'] == null ? null : (map['parentHierarchyId']! as String).input(),
     );
   }
 }

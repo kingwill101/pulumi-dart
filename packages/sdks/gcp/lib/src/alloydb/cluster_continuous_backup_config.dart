@@ -33,9 +33,9 @@ class ClusterContinuousBackupConfig {
 
   factory ClusterContinuousBackupConfig.fromMap(Map<String, dynamic> map) {
     return ClusterContinuousBackupConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (ClusterContinuousBackupConfigEncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
-      recoveryWindowDays: map['recoveryWindowDays'] == null ? null : (map['recoveryWindowDays'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (ClusterContinuousBackupConfigEncryptionConfig.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
+      recoveryWindowDays: map['recoveryWindowDays'] == null ? null : (map['recoveryWindowDays']! as int).input(),
     );
   }
 }

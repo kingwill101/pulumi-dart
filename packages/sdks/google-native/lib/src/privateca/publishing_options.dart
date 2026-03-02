@@ -32,9 +32,9 @@ class PublishingOptions {
 
   factory PublishingOptions.fromMap(Map<String, dynamic> map) {
     return PublishingOptions(
-      encodingFormat: map['encodingFormat'] == null ? null : (PublishingOptionsEncodingFormat.fromValue(map['encodingFormat'] as String)).input(),
-      publishCaCert: map['publishCaCert'] == null ? null : (map['publishCaCert'] as bool).input(),
-      publishCrl: map['publishCrl'] == null ? null : (map['publishCrl'] as bool).input(),
+      encodingFormat: map['encodingFormat'] == null ? null : (PublishingOptionsEncodingFormat.fromValue(map['encodingFormat']! as String)).input(),
+      publishCaCert: map['publishCaCert'] == null ? null : (map['publishCaCert']! as bool).input(),
+      publishCrl: map['publishCrl'] == null ? null : (map['publishCrl']! as bool).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class UserProfileUserSettingsJupyterLabAppSettingsEmrSettings {
 
   factory UserProfileUserSettingsJupyterLabAppSettingsEmrSettings.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsJupyterLabAppSettingsEmrSettings(
-      assumableRoleArns: map['assumableRoleArns'] == null ? null : ((map['assumableRoleArns'] as List).cast<String>()).input(),
-      executionRoleArns: map['executionRoleArns'] == null ? null : ((map['executionRoleArns'] as List).cast<String>()).input(),
+      assumableRoleArns: map['assumableRoleArns'] == null ? null : (((map['assumableRoleArns'] as List).cast<String>()).input()).input(),
+      executionRoleArns: map['executionRoleArns'] == null ? null : (((map['executionRoleArns'] as List).cast<String>()).input()).input(),
     );
   }
 }

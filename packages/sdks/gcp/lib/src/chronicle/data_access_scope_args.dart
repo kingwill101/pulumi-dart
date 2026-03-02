@@ -82,14 +82,14 @@ class DataAccessScopeArgs {
 
   factory DataAccessScopeArgs.fromMap(Map<String, dynamic> map) {
     return DataAccessScopeArgs(
-      allowAll: map['allowAll'] == null ? null : (map['allowAll'] as bool).input(),
-      allowedDataAccessLabels: map['allowedDataAccessLabels'] == null ? null : (pulumi.Input.decodeList<DataAccessScopeAllowedDataAccessLabel>(map['allowedDataAccessLabels'], (value) => DataAccessScopeAllowedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowAll: map['allowAll'] == null ? null : (map['allowAll']! as bool).input(),
+      allowedDataAccessLabels: map['allowedDataAccessLabels'] == null ? null : (pulumi.Input.decodeList<DataAccessScopeAllowedDataAccessLabel>(map['allowedDataAccessLabels']!, (value) => DataAccessScopeAllowedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
       dataAccessScopeId: (map['dataAccessScopeId'] as String).input(),
-      deniedDataAccessLabels: map['deniedDataAccessLabels'] == null ? null : (pulumi.Input.decodeList<DataAccessScopeDeniedDataAccessLabel>(map['deniedDataAccessLabels'], (value) => DataAccessScopeDeniedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      deniedDataAccessLabels: map['deniedDataAccessLabels'] == null ? null : (pulumi.Input.decodeList<DataAccessScopeDeniedDataAccessLabel>(map['deniedDataAccessLabels']!, (value) => DataAccessScopeDeniedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       instance: (map['instance'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

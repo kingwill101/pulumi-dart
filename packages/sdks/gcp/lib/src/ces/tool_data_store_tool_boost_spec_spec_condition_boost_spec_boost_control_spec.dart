@@ -50,10 +50,10 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec {
 
   factory ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec(
-      attributeType: map['attributeType'] == null ? null : (map['attributeType'] as String).input(),
-      controlPoints: map['controlPoints'] == null ? null : (pulumi.Input.decodeList<ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint>(map['controlPoints'], (value) => ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fieldName: map['fieldName'] == null ? null : (map['fieldName'] as String).input(),
-      interpolationType: map['interpolationType'] == null ? null : (map['interpolationType'] as String).input(),
+      attributeType: map['attributeType'] == null ? null : (map['attributeType']! as String).input(),
+      controlPoints: map['controlPoints'] == null ? null : (pulumi.Input.decodeList<ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint>(map['controlPoints']!, (value) => ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fieldName: map['fieldName'] == null ? null : (map['fieldName']! as String).input(),
+      interpolationType: map['interpolationType'] == null ? null : (map['interpolationType']! as String).input(),
     );
   }
 }

@@ -37,9 +37,9 @@ class GetResolverEndpointArgs {
 
   factory GetResolverEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverEndpointArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetResolverEndpointFilter>(map['filters'], (value) => GetResolverEndpointFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resolverEndpointId: map['resolverEndpointId'] == null ? null : (map['resolverEndpointId'] as String).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetResolverEndpointFilter>(map['filters']!, (value) => GetResolverEndpointFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resolverEndpointId: map['resolverEndpointId'] == null ? null : ((map['resolverEndpointId'] as String).input()).input(),
     );
   }
 }

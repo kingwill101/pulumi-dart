@@ -76,17 +76,17 @@ class ConfigurationSetState {
 
   factory ConfigurationSetState.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      configurationSetName: map['configurationSetName'] == null ? null : (map['configurationSetName'] as String).input(),
-      deliveryOptions: map['deliveryOptions'] == null ? null : (ConfigurationSetDeliveryOptions.fromMap((map['deliveryOptions'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      reputationOptions: map['reputationOptions'] == null ? null : (ConfigurationSetReputationOptions.fromMap((map['reputationOptions'] as Map).cast<String, dynamic>())).input(),
-      sendingOptions: map['sendingOptions'] == null ? null : (ConfigurationSetSendingOptions.fromMap((map['sendingOptions'] as Map).cast<String, dynamic>())).input(),
-      suppressionOptions: map['suppressionOptions'] == null ? null : (ConfigurationSetSuppressionOptions.fromMap((map['suppressionOptions'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      trackingOptions: map['trackingOptions'] == null ? null : (ConfigurationSetTrackingOptions.fromMap((map['trackingOptions'] as Map).cast<String, dynamic>())).input(),
-      vdmOptions: map['vdmOptions'] == null ? null : (ConfigurationSetVdmOptions.fromMap((map['vdmOptions'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      configurationSetName: map['configurationSetName'] == null ? null : ((map['configurationSetName'] as String).input()).input(),
+      deliveryOptions: map['deliveryOptions'] == null ? null : ((ConfigurationSetDeliveryOptions.fromMap((map['deliveryOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      reputationOptions: map['reputationOptions'] == null ? null : ((ConfigurationSetReputationOptions.fromMap((map['reputationOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      sendingOptions: map['sendingOptions'] == null ? null : ((ConfigurationSetSendingOptions.fromMap((map['sendingOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      suppressionOptions: map['suppressionOptions'] == null ? null : ((ConfigurationSetSuppressionOptions.fromMap((map['suppressionOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      trackingOptions: map['trackingOptions'] == null ? null : ((ConfigurationSetTrackingOptions.fromMap((map['trackingOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      vdmOptions: map['vdmOptions'] == null ? null : ((ConfigurationSetVdmOptions.fromMap((map['vdmOptions']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

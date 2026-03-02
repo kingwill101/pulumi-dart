@@ -47,12 +47,12 @@ class LocalGatewayRouteTableVpcAssociationState {
 
   factory LocalGatewayRouteTableVpcAssociationState.fromMap(Map<String, dynamic> map) {
     return LocalGatewayRouteTableVpcAssociationState(
-      localGatewayId: map['localGatewayId'] == null ? null : (map['localGatewayId'] as String).input(),
-      localGatewayRouteTableId: map['localGatewayRouteTableId'] == null ? null : (map['localGatewayRouteTableId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      localGatewayId: map['localGatewayId'] == null ? null : ((map['localGatewayId'] as String).input()).input(),
+      localGatewayRouteTableId: map['localGatewayRouteTableId'] == null ? null : ((map['localGatewayRouteTableId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

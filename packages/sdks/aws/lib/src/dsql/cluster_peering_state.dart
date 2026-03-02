@@ -41,11 +41,11 @@ class ClusterPeeringState {
 
   factory ClusterPeeringState.fromMap(Map<String, dynamic> map) {
     return ClusterPeeringState(
-      clusters: map['clusters'] == null ? null : ((map['clusters'] as List).cast<String>()).input(),
-      identifier: map['identifier'] == null ? null : (map['identifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (ClusterPeeringTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      witnessRegion: map['witnessRegion'] == null ? null : (map['witnessRegion'] as String).input(),
+      clusters: map['clusters'] == null ? null : (((map['clusters'] as List).cast<String>()).input()).input(),
+      identifier: map['identifier'] == null ? null : ((map['identifier'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ClusterPeeringTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      witnessRegion: map['witnessRegion'] == null ? null : ((map['witnessRegion'] as String).input()).input(),
     );
   }
 }

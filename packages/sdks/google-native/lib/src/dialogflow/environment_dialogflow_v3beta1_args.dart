@@ -65,14 +65,14 @@ class EnvironmentDialogflowV3beta1Args {
   factory EnvironmentDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
     return EnvironmentDialogflowV3beta1Args(
       agentId: (map['agentId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      testCasesConfig: map['testCasesConfig'] == null ? null : (GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig.fromMap((map['testCasesConfig'] as Map).cast<String, dynamic>())).input(),
-      versionConfigs: map['versionConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig>(map['versionConfigs'], (value) => GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      webhookConfig: map['webhookConfig'] == null ? null : (GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig.fromMap((map['webhookConfig'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      testCasesConfig: map['testCasesConfig'] == null ? null : (GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig.fromMap((map['testCasesConfig']! as Map).cast<String, dynamic>())).input(),
+      versionConfigs: map['versionConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig>(map['versionConfigs']!, (value) => GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      webhookConfig: map['webhookConfig'] == null ? null : (GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig.fromMap((map['webhookConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

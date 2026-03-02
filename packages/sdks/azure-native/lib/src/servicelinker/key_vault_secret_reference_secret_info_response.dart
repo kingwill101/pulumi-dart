@@ -32,9 +32,9 @@ class KeyVaultSecretReferenceSecretInfoResponse {
 
   factory KeyVaultSecretReferenceSecretInfoResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultSecretReferenceSecretInfoResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       secretType: (map['secretType'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

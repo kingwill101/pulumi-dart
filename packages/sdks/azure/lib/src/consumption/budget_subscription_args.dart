@@ -65,12 +65,12 @@ class BudgetSubscriptionArgs {
   factory BudgetSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return BudgetSubscriptionArgs(
       amount: (map['amount'] as double).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      filter: map['filter'] == null ? null : (BudgetSubscriptionFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      filter: map['filter'] == null ? null : (BudgetSubscriptionFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       notifications: (pulumi.Input.decodeList<BudgetSubscriptionNotification>(map['notifications'], (value) => BudgetSubscriptionNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
       subscriptionId: (map['subscriptionId'] as String).input(),
-      timeGrain: map['timeGrain'] == null ? null : (map['timeGrain'] as String).input(),
+      timeGrain: map['timeGrain'] == null ? null : (map['timeGrain']! as String).input(),
       timePeriod: (BudgetSubscriptionTimePeriod.fromMap((map['timePeriod'] as Map).cast<String, dynamic>())).input(),
     );
   }

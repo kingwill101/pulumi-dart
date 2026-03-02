@@ -32,9 +32,9 @@ class FutureReservationCommitmentInfo {
 
   factory FutureReservationCommitmentInfo.fromMap(Map<String, dynamic> map) {
     return FutureReservationCommitmentInfo(
-      commitmentName: map['commitmentName'] == null ? null : (map['commitmentName'] as String).input(),
-      commitmentPlan: map['commitmentPlan'] == null ? null : (map['commitmentPlan'] as String).input(),
-      previousCommitmentTerms: map['previousCommitmentTerms'] == null ? null : (map['previousCommitmentTerms'] as String).input(),
+      commitmentName: map['commitmentName'] == null ? null : (map['commitmentName']! as String).input(),
+      commitmentPlan: map['commitmentPlan'] == null ? null : (map['commitmentPlan']! as String).input(),
+      previousCommitmentTerms: map['previousCommitmentTerms'] == null ? null : (map['previousCommitmentTerms']! as String).input(),
     );
   }
 }

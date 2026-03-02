@@ -56,14 +56,14 @@ class MigrateOracleAzureDbPostgreSqlSyncDatabaseInputResponse {
 
   factory MigrateOracleAzureDbPostgreSqlSyncDatabaseInputResponse.fromMap(Map<String, dynamic> map) {
     return MigrateOracleAzureDbPostgreSqlSyncDatabaseInputResponse(
-      caseManipulation: map['caseManipulation'] == null ? null : (map['caseManipulation'] as String).input(),
-      migrationSetting: map['migrationSetting'] == null ? null : ((map['migrationSetting'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      schemaName: map['schemaName'] == null ? null : (map['schemaName'] as String).input(),
-      sourceSetting: map['sourceSetting'] == null ? null : ((map['sourceSetting'] as Map).cast<String, String>()).input(),
-      tableMap: map['tableMap'] == null ? null : ((map['tableMap'] as Map).cast<String, String>()).input(),
-      targetDatabaseName: map['targetDatabaseName'] == null ? null : (map['targetDatabaseName'] as String).input(),
-      targetSetting: map['targetSetting'] == null ? null : ((map['targetSetting'] as Map).cast<String, String>()).input(),
+      caseManipulation: map['caseManipulation'] == null ? null : (map['caseManipulation']! as String).input(),
+      migrationSetting: map['migrationSetting'] == null ? null : ((map['migrationSetting']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      schemaName: map['schemaName'] == null ? null : (map['schemaName']! as String).input(),
+      sourceSetting: map['sourceSetting'] == null ? null : ((map['sourceSetting']! as Map).cast<String, String>()).input(),
+      tableMap: map['tableMap'] == null ? null : ((map['tableMap']! as Map).cast<String, String>()).input(),
+      targetDatabaseName: map['targetDatabaseName'] == null ? null : (map['targetDatabaseName']! as String).input(),
+      targetSetting: map['targetSetting'] == null ? null : ((map['targetSetting']! as Map).cast<String, String>()).input(),
     );
   }
 }

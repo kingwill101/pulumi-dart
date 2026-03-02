@@ -32,9 +32,9 @@ class ResourceCommitment {
 
   factory ResourceCommitment.fromMap(Map<String, dynamic> map) {
     return ResourceCommitment(
-      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType'] as String).input(),
-      amount: map['amount'] == null ? null : (map['amount'] as String).input(),
-      type: map['type'] == null ? null : (ResourceCommitmentType.fromValue(map['type'] as String)).input(),
+      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType']! as String).input(),
+      amount: map['amount'] == null ? null : (map['amount']! as String).input(),
+      type: map['type'] == null ? null : (ResourceCommitmentType.fromValue(map['type']! as String)).input(),
     );
   }
 }

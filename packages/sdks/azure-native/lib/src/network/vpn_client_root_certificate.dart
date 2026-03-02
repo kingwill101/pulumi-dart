@@ -31,8 +31,8 @@ class VpnClientRootCertificate {
 
   factory VpnClientRootCertificate.fromMap(Map<String, dynamic> map) {
     return VpnClientRootCertificate(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       publicCertData: (map['publicCertData'] as String).input(),
     );
   }

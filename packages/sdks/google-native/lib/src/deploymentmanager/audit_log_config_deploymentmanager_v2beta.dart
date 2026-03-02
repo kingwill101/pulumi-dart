@@ -27,8 +27,8 @@ class AuditLogConfigDeploymentmanagerV2beta {
 
   factory AuditLogConfigDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return AuditLogConfigDeploymentmanagerV2beta(
-      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers'] as List).cast<String>()).input(),
-      logType: map['logType'] == null ? null : (AuditLogConfigLogTypeDeploymentmanagerV2beta.fromValue(map['logType'] as String)).input(),
+      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers']! as List).cast<String>()).input(),
+      logType: map['logType'] == null ? null : (AuditLogConfigLogTypeDeploymentmanagerV2beta.fromValue(map['logType']! as String)).input(),
     );
   }
 }

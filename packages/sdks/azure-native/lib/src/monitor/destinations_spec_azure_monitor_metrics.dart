@@ -22,7 +22,7 @@ class DestinationsSpecAzureMonitorMetrics {
 
   factory DestinationsSpecAzureMonitorMetrics.fromMap(Map<String, dynamic> map) {
     return DestinationsSpecAzureMonitorMetrics(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

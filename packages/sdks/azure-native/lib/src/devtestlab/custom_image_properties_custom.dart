@@ -31,9 +31,9 @@ class CustomImagePropertiesCustom {
 
   factory CustomImagePropertiesCustom.fromMap(Map<String, dynamic> map) {
     return CustomImagePropertiesCustom(
-      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName']! as String).input(),
       osType: (map['osType'] as String).input(),
-      sysPrep: map['sysPrep'] == null ? null : (map['sysPrep'] as bool).input(),
+      sysPrep: map['sysPrep'] == null ? null : (map['sysPrep']! as bool).input(),
     );
   }
 }

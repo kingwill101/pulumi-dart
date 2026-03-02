@@ -25,8 +25,8 @@ class ListEASubscriptionListMigrationDatePostResult {
 
   factory ListEASubscriptionListMigrationDatePostResult.fromMap(Map<String, dynamic> map) {
     return ListEASubscriptionListMigrationDatePostResult(
-      isGrandFatherableSubscription: map['isGrandFatherableSubscription'] == null ? null : map['isGrandFatherableSubscription'] as bool,
-      optedInDate: map['optedInDate'] == null ? null : map['optedInDate'] as String,
+      isGrandFatherableSubscription: map['isGrandFatherableSubscription'] == null ? null : map['isGrandFatherableSubscription']! as bool,
+      optedInDate: map['optedInDate'] == null ? null : map['optedInDate']! as String,
     );
   }
 }

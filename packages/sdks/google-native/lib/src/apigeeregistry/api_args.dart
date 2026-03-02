@@ -72,17 +72,17 @@ class ApiArgs {
 
   factory ApiArgs.fromMap(Map<String, dynamic> map) {
     return ApiArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
       apiId: (map['apiId'] as String).input(),
-      availability: map['availability'] == null ? null : (map['availability'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      recommendedDeployment: map['recommendedDeployment'] == null ? null : (map['recommendedDeployment'] as String).input(),
-      recommendedVersion: map['recommendedVersion'] == null ? null : (map['recommendedVersion'] as String).input(),
+      availability: map['availability'] == null ? null : (map['availability']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      recommendedDeployment: map['recommendedDeployment'] == null ? null : (map['recommendedDeployment']! as String).input(),
+      recommendedVersion: map['recommendedVersion'] == null ? null : (map['recommendedVersion']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class DomainMemoryBackingMemoryAllocation {
 
   factory DomainMemoryBackingMemoryAllocation.fromMap(Map<String, dynamic> map) {
     return DomainMemoryBackingMemoryAllocation(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      threads: map['threads'] == null ? null : (map['threads'] as double).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      threads: map['threads'] == null ? null : (map['threads']! as double).input(),
     );
   }
 }

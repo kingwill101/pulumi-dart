@@ -50,10 +50,10 @@ class ManagementServerArgs {
   factory ManagementServerArgs.fromMap(Map<String, dynamic> map) {
     return ManagementServerArgs(
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<ManagementServerNetwork>(map['networks'], (value) => ManagementServerNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<ManagementServerNetwork>(map['networks']!, (value) => ManagementServerNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

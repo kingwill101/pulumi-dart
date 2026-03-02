@@ -52,12 +52,12 @@ class GetVpcEndpointServiceArgs {
 
   factory GetVpcEndpointServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointServiceArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpcEndpointServiceFilter>(map['filters'], (value) => GetVpcEndpointServiceFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      serviceRegions: map['serviceRegions'] == null ? null : ((map['serviceRegions'] as List).cast<String>()).input(),
-      serviceType: map['serviceType'] == null ? null : (map['serviceType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetVpcEndpointServiceFilter>(map['filters']!, (value) => GetVpcEndpointServiceFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      service: map['service'] == null ? null : ((map['service'] as String).input()).input(),
+      serviceName: map['serviceName'] == null ? null : ((map['serviceName'] as String).input()).input(),
+      serviceRegions: map['serviceRegions'] == null ? null : (((map['serviceRegions'] as List).cast<String>()).input()).input(),
+      serviceType: map['serviceType'] == null ? null : ((map['serviceType'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

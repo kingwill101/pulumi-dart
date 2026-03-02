@@ -61,15 +61,15 @@ class MulticastDomainState {
 
   factory MulticastDomainState.fromMap(Map<String, dynamic> map) {
     return MulticastDomainState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      autoAcceptSharedAssociations: map['autoAcceptSharedAssociations'] == null ? null : (map['autoAcceptSharedAssociations'] as String).input(),
-      igmpv2Support: map['igmpv2Support'] == null ? null : (map['igmpv2Support'] as String).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      staticSourcesSupport: map['staticSourcesSupport'] == null ? null : (map['staticSourcesSupport'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      transitGatewayId: map['transitGatewayId'] == null ? null : (map['transitGatewayId'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      autoAcceptSharedAssociations: map['autoAcceptSharedAssociations'] == null ? null : ((map['autoAcceptSharedAssociations'] as String).input()).input(),
+      igmpv2Support: map['igmpv2Support'] == null ? null : ((map['igmpv2Support'] as String).input()).input(),
+      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      staticSourcesSupport: map['staticSourcesSupport'] == null ? null : ((map['staticSourcesSupport'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      transitGatewayId: map['transitGatewayId'] == null ? null : ((map['transitGatewayId'] as String).input()).input(),
     );
   }
 }

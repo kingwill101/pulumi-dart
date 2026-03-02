@@ -75,14 +75,14 @@ class EffectiveConnectivityConfigurationResponse {
   factory EffectiveConnectivityConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return EffectiveConnectivityConfigurationResponse(
       appliesToGroups: (pulumi.Input.decodeList<ConnectivityGroupItemResponse>(map['appliesToGroups'], (value) => ConnectivityGroupItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      configurationGroups: map['configurationGroups'] == null ? null : (pulumi.Input.decodeList<ConfigurationGroupResponse>(map['configurationGroups'], (value) => ConfigurationGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configurationGroups: map['configurationGroups'] == null ? null : (pulumi.Input.decodeList<ConfigurationGroupResponse>(map['configurationGroups']!, (value) => ConfigurationGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       connectivityTopology: (map['connectivityTopology'] as String).input(),
-      deleteExistingPeering: map['deleteExistingPeering'] == null ? null : (map['deleteExistingPeering'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      hubs: map['hubs'] == null ? null : (pulumi.Input.decodeList<HubResponse>(map['hubs'], (value) => HubResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      isGlobal: map['isGlobal'] == null ? null : (map['isGlobal'] as String).input(),
+      deleteExistingPeering: map['deleteExistingPeering'] == null ? null : (map['deleteExistingPeering']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      hubs: map['hubs'] == null ? null : (pulumi.Input.decodeList<HubResponse>(map['hubs']!, (value) => HubResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      isGlobal: map['isGlobal'] == null ? null : (map['isGlobal']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       resourceGuid: (map['resourceGuid'] as String).input(),
     );

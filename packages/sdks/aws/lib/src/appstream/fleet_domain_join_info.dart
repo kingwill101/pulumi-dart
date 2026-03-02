@@ -25,8 +25,8 @@ class FleetDomainJoinInfo {
 
   factory FleetDomainJoinInfo.fromMap(Map<String, dynamic> map) {
     return FleetDomainJoinInfo(
-      directoryName: map['directoryName'] == null ? null : (map['directoryName'] as String).input(),
-      organizationalUnitDistinguishedName: map['organizationalUnitDistinguishedName'] == null ? null : (map['organizationalUnitDistinguishedName'] as String).input(),
+      directoryName: map['directoryName'] == null ? null : ((map['directoryName'] as String).input()).input(),
+      organizationalUnitDistinguishedName: map['organizationalUnitDistinguishedName'] == null ? null : ((map['organizationalUnitDistinguishedName'] as String).input()).input(),
     );
   }
 }

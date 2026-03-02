@@ -79,18 +79,18 @@ class BackupAlloydbV1betaArgs {
 
   factory BackupAlloydbV1betaArgs.fromMap(Map<String, dynamic> map) {
     return BackupAlloydbV1betaArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
       backupId: (map['backupId'] as String).input(),
       clusterName: (map['clusterName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfigAlloydbV1beta.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      type: map['type'] == null ? null : (BackupTypeAlloydbV1beta.fromValue(map['type'] as String)).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfigAlloydbV1beta.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      type: map['type'] == null ? null : (BackupTypeAlloydbV1beta.fromValue(map['type']! as String)).input(),
     );
   }
 }

@@ -31,8 +31,8 @@ class GetV2AcceleratorTypesArgs {
 
   factory GetV2AcceleratorTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetV2AcceleratorTypesArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

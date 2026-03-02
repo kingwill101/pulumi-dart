@@ -37,10 +37,10 @@ class ImageTemplateVmProfile {
 
   factory ImageTemplateVmProfile.fromMap(Map<String, dynamic> map) {
     return ImageTemplateVmProfile(
-      osDiskSizeGB: map['osDiskSizeGB'] == null ? null : (map['osDiskSizeGB'] as int).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities'] as List).cast<String>()).input(),
-      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
-      vnetConfig: map['vnetConfig'] == null ? null : (VirtualNetworkConfig.fromMap((map['vnetConfig'] as Map).cast<String, dynamic>())).input(),
+      osDiskSizeGB: map['osDiskSizeGB'] == null ? null : (map['osDiskSizeGB']! as int).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities']! as List).cast<String>()).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize']! as String).input(),
+      vnetConfig: map['vnetConfig'] == null ? null : (VirtualNetworkConfig.fromMap((map['vnetConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

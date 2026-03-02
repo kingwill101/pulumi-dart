@@ -31,9 +31,9 @@ class WorkflowOnExceptionStepTagStepDetails {
 
   factory WorkflowOnExceptionStepTagStepDetails.fromMap(Map<String, dynamic> map) {
     return WorkflowOnExceptionStepTagStepDetails(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sourceFileLocation: map['sourceFileLocation'] == null ? null : (map['sourceFileLocation'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<WorkflowOnExceptionStepTagStepDetailsTag>(map['tags'], (value) => WorkflowOnExceptionStepTagStepDetailsTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      sourceFileLocation: map['sourceFileLocation'] == null ? null : ((map['sourceFileLocation'] as String).input()).input(),
+      tags: map['tags'] == null ? null : ((pulumi.Input.decodeList<WorkflowOnExceptionStepTagStepDetailsTag>(map['tags']!, (value) => WorkflowOnExceptionStepTagStepDetailsTag.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

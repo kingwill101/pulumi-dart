@@ -36,10 +36,10 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool {
 
   factory BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool(
-      addresses: map['addresses'] == null ? null : ((map['addresses'] as List).cast<String>()).input(),
-      avoidBuggyIps: map['avoidBuggyIps'] == null ? null : (map['avoidBuggyIps'] as bool).input(),
-      manualAssign: map['manualAssign'] == null ? null : (map['manualAssign'] as bool).input(),
-      pool: map['pool'] == null ? null : (map['pool'] as String).input(),
+      addresses: map['addresses'] == null ? null : ((map['addresses']! as List).cast<String>()).input(),
+      avoidBuggyIps: map['avoidBuggyIps'] == null ? null : (map['avoidBuggyIps']! as bool).input(),
+      manualAssign: map['manualAssign'] == null ? null : (map['manualAssign']! as bool).input(),
+      pool: map['pool'] == null ? null : (map['pool']! as String).input(),
     );
   }
 }

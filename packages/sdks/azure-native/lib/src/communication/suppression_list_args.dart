@@ -46,9 +46,9 @@ class SuppressionListArgs {
     return SuppressionListArgs(
       domainName: (map['domainName'] as String).input(),
       emailServiceName: (map['emailServiceName'] as String).input(),
-      listName: map['listName'] == null ? null : (map['listName'] as String).input(),
+      listName: map['listName'] == null ? null : (map['listName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      suppressionListName: map['suppressionListName'] == null ? null : (map['suppressionListName'] as String).input(),
+      suppressionListName: map['suppressionListName'] == null ? null : (map['suppressionListName']! as String).input(),
     );
   }
 }

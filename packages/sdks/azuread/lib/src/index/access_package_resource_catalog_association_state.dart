@@ -31,9 +31,9 @@ class AccessPackageResourceCatalogAssociationState {
 
   factory AccessPackageResourceCatalogAssociationState.fromMap(Map<String, dynamic> map) {
     return AccessPackageResourceCatalogAssociationState(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
-      resourceOriginId: map['resourceOriginId'] == null ? null : (map['resourceOriginId'] as String).input(),
-      resourceOriginSystem: map['resourceOriginSystem'] == null ? null : (map['resourceOriginSystem'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId']! as String).input(),
+      resourceOriginId: map['resourceOriginId'] == null ? null : (map['resourceOriginId']! as String).input(),
+      resourceOriginSystem: map['resourceOriginSystem'] == null ? null : (map['resourceOriginSystem']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class DomainIdMap {
 
   factory DomainIdMap.fromMap(Map<String, dynamic> map) {
     return DomainIdMap(
-      giDs: map['giDs'] == null ? null : (pulumi.Input.decodeList<DomainIdMapGiD>(map['giDs'], (value) => DomainIdMapGiD.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      uiDs: map['uiDs'] == null ? null : (pulumi.Input.decodeList<DomainIdMapUiD>(map['uiDs'], (value) => DomainIdMapUiD.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      giDs: map['giDs'] == null ? null : (pulumi.Input.decodeList<DomainIdMapGiD>(map['giDs']!, (value) => DomainIdMapGiD.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uiDs: map['uiDs'] == null ? null : (pulumi.Input.decodeList<DomainIdMapUiD>(map['uiDs']!, (value) => DomainIdMapUiD.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

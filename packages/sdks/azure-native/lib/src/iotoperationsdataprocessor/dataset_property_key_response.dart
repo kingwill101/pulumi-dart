@@ -27,7 +27,7 @@ class DatasetPropertyKeyResponse {
   factory DatasetPropertyKeyResponse.fromMap(Map<String, dynamic> map) {
     return DatasetPropertyKeyResponse(
       path: (map['path'] as String).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as bool).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as bool).input(),
     );
   }
 }

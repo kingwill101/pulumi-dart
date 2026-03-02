@@ -27,8 +27,8 @@ class DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetForma
 
   factory DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormat.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormat(
-      csv: map['csv'] == null ? null : (DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatCsv.fromMap((map['csv'] as Map).cast<String, dynamic>())).input(),
-      json: map['json'] == null ? null : (DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatJson.fromMap((map['json'] as Map).cast<String, dynamic>())).input(),
+      csv: map['csv'] == null ? null : ((DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatCsv.fromMap((map['csv']! as Map).cast<String, dynamic>())).input()).input(),
+      json: map['json'] == null ? null : ((DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatJson.fromMap((map['json']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

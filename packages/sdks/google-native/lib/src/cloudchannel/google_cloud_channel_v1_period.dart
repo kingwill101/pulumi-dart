@@ -27,8 +27,8 @@ class GoogleCloudChannelV1Period {
 
   factory GoogleCloudChannelV1Period.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1Period(
-      duration: map['duration'] == null ? null : (map['duration'] as int).input(),
-      periodType: map['periodType'] == null ? null : (GoogleCloudChannelV1PeriodPeriodType.fromValue(map['periodType'] as String)).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as int).input(),
+      periodType: map['periodType'] == null ? null : (GoogleCloudChannelV1PeriodPeriodType.fromValue(map['periodType']! as String)).input(),
     );
   }
 }

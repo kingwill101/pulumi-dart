@@ -31,9 +31,9 @@ class AuthenticationProfileState {
 
   factory AuthenticationProfileState.fromMap(Map<String, dynamic> map) {
     return AuthenticationProfileState(
-      authenticationProfileContent: map['authenticationProfileContent'] == null ? null : (map['authenticationProfileContent'] as String).input(),
-      authenticationProfileName: map['authenticationProfileName'] == null ? null : (map['authenticationProfileName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      authenticationProfileContent: map['authenticationProfileContent'] == null ? null : ((map['authenticationProfileContent'] as String).input()).input(),
+      authenticationProfileName: map['authenticationProfileName'] == null ? null : ((map['authenticationProfileName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

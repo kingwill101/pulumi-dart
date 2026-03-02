@@ -34,7 +34,7 @@ class TargetArgs {
 
   factory TargetArgs.fromMap(Map<String, dynamic> map) {
     return TargetArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       targetResourceId: (map['targetResourceId'] as String).input(),
       targetType: (map['targetType'] as String).input(),
     );

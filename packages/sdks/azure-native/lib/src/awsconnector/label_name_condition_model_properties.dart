@@ -21,7 +21,7 @@ class LabelNameConditionModelProperties {
 
   factory LabelNameConditionModelProperties.fromMap(Map<String, dynamic> map) {
     return LabelNameConditionModelProperties(
-      labelName: map['labelName'] == null ? null : (map['labelName'] as String).input(),
+      labelName: map['labelName'] == null ? null : (map['labelName']! as String).input(),
     );
   }
 }

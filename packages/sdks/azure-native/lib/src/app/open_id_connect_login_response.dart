@@ -26,8 +26,8 @@ class OpenIdConnectLoginResponse {
 
   factory OpenIdConnectLoginResponse.fromMap(Map<String, dynamic> map) {
     return OpenIdConnectLoginResponse(
-      nameClaimType: map['nameClaimType'] == null ? null : (map['nameClaimType'] as String).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
+      nameClaimType: map['nameClaimType'] == null ? null : (map['nameClaimType']! as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
     );
   }
 }

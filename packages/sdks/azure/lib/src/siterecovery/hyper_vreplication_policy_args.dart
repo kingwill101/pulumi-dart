@@ -45,7 +45,7 @@ class HyperVReplicationPolicyArgs {
   factory HyperVReplicationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return HyperVReplicationPolicyArgs(
       applicationConsistentSnapshotFrequencyInHours: (map['applicationConsistentSnapshotFrequencyInHours'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       recoveryPointRetentionInHours: (map['recoveryPointRetentionInHours'] as int).input(),
       recoveryVaultId: (map['recoveryVaultId'] as String).input(),
       replicationIntervalInSeconds: (map['replicationIntervalInSeconds'] as int).input(),

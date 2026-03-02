@@ -27,8 +27,8 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent {
 
   factory FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent(
-      bundles: map['bundles'] == null ? null : (pulumi.Input.decodeList<FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle>(map['bundles'], (value) => FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      templateLibrary: map['templateLibrary'] == null ? null : (FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary.fromMap((map['templateLibrary'] as Map).cast<String, dynamic>())).input(),
+      bundles: map['bundles'] == null ? null : (pulumi.Input.decodeList<FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle>(map['bundles']!, (value) => FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      templateLibrary: map['templateLibrary'] == null ? null : (FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary.fromMap((map['templateLibrary']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class WorkerPoolTemplateContainerLivenessProbeTcpSocket {
 
   factory WorkerPoolTemplateContainerLivenessProbeTcpSocket.fromMap(Map<String, dynamic> map) {
     return WorkerPoolTemplateContainerLivenessProbeTcpSocket(
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

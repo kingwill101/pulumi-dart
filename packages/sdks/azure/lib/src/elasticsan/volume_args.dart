@@ -42,8 +42,8 @@ class VolumeArgs {
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      createSource: map['createSource'] == null ? null : (VolumeCreateSource.fromMap((map['createSource'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      createSource: map['createSource'] == null ? null : (VolumeCreateSource.fromMap((map['createSource']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       sizeInGib: (map['sizeInGib'] as int).input(),
       volumeGroupId: (map['volumeGroupId'] as String).input(),
     );

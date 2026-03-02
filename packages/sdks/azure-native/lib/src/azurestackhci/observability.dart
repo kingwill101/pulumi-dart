@@ -31,9 +31,9 @@ class Observability {
 
   factory Observability.fromMap(Map<String, dynamic> map) {
     return Observability(
-      episodicDataUpload: map['episodicDataUpload'] == null ? null : (map['episodicDataUpload'] as bool).input(),
-      euLocation: map['euLocation'] == null ? null : (map['euLocation'] as bool).input(),
-      streamingDataClient: map['streamingDataClient'] == null ? null : (map['streamingDataClient'] as bool).input(),
+      episodicDataUpload: map['episodicDataUpload'] == null ? null : (map['episodicDataUpload']! as bool).input(),
+      euLocation: map['euLocation'] == null ? null : (map['euLocation']! as bool).input(),
+      streamingDataClient: map['streamingDataClient'] == null ? null : (map['streamingDataClient']! as bool).input(),
     );
   }
 }

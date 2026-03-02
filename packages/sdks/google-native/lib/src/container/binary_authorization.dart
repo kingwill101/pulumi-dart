@@ -27,8 +27,8 @@ class BinaryAuthorization {
 
   factory BinaryAuthorization.fromMap(Map<String, dynamic> map) {
     return BinaryAuthorization(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      evaluationMode: map['evaluationMode'] == null ? null : (BinaryAuthorizationEvaluationMode.fromValue(map['evaluationMode'] as String)).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      evaluationMode: map['evaluationMode'] == null ? null : (BinaryAuthorizationEvaluationMode.fromValue(map['evaluationMode']! as String)).input(),
     );
   }
 }

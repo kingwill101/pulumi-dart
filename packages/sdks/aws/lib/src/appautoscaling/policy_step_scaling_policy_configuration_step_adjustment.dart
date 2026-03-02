@@ -30,8 +30,8 @@ class PolicyStepScalingPolicyConfigurationStepAdjustment {
 
   factory PolicyStepScalingPolicyConfigurationStepAdjustment.fromMap(Map<String, dynamic> map) {
     return PolicyStepScalingPolicyConfigurationStepAdjustment(
-      metricIntervalLowerBound: map['metricIntervalLowerBound'] == null ? null : (map['metricIntervalLowerBound'] as String).input(),
-      metricIntervalUpperBound: map['metricIntervalUpperBound'] == null ? null : (map['metricIntervalUpperBound'] as String).input(),
+      metricIntervalLowerBound: map['metricIntervalLowerBound'] == null ? null : ((map['metricIntervalLowerBound'] as String).input()).input(),
+      metricIntervalUpperBound: map['metricIntervalUpperBound'] == null ? null : ((map['metricIntervalUpperBound'] as String).input()).input(),
       scalingAdjustment: (map['scalingAdjustment'] as int).input(),
     );
   }

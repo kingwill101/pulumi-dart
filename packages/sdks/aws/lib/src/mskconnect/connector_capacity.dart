@@ -27,8 +27,8 @@ class ConnectorCapacity {
 
   factory ConnectorCapacity.fromMap(Map<String, dynamic> map) {
     return ConnectorCapacity(
-      autoscaling: map['autoscaling'] == null ? null : (ConnectorCapacityAutoscaling.fromMap((map['autoscaling'] as Map).cast<String, dynamic>())).input(),
-      provisionedCapacity: map['provisionedCapacity'] == null ? null : (ConnectorCapacityProvisionedCapacity.fromMap((map['provisionedCapacity'] as Map).cast<String, dynamic>())).input(),
+      autoscaling: map['autoscaling'] == null ? null : ((ConnectorCapacityAutoscaling.fromMap((map['autoscaling']! as Map).cast<String, dynamic>())).input()).input(),
+      provisionedCapacity: map['provisionedCapacity'] == null ? null : ((ConnectorCapacityProvisionedCapacity.fromMap((map['provisionedCapacity']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

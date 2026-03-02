@@ -29,7 +29,7 @@ class FunctionSourceRepository {
 
   factory FunctionSourceRepository.fromMap(Map<String, dynamic> map) {
     return FunctionSourceRepository(
-      deployedUrl: map['deployedUrl'] == null ? null : (map['deployedUrl'] as String).input(),
+      deployedUrl: map['deployedUrl'] == null ? null : (map['deployedUrl']! as String).input(),
       url: (map['url'] as String).input(),
     );
   }

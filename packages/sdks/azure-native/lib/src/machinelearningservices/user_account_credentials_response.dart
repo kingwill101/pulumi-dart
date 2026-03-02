@@ -32,8 +32,8 @@ class UserAccountCredentialsResponse {
   factory UserAccountCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return UserAccountCredentialsResponse(
       adminUserName: (map['adminUserName'] as String).input(),
-      adminUserPassword: map['adminUserPassword'] == null ? null : (map['adminUserPassword'] as String).input(),
-      adminUserSshPublicKey: map['adminUserSshPublicKey'] == null ? null : (map['adminUserSshPublicKey'] as String).input(),
+      adminUserPassword: map['adminUserPassword'] == null ? null : (map['adminUserPassword']! as String).input(),
+      adminUserSshPublicKey: map['adminUserSshPublicKey'] == null ? null : (map['adminUserSshPublicKey']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class DomainServiceAccessPolicyState {
 
   factory DomainServiceAccessPolicyState.fromMap(Map<String, dynamic> map) {
     return DomainServiceAccessPolicyState(
-      accessPolicy: map['accessPolicy'] == null ? null : (map['accessPolicy'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      accessPolicy: map['accessPolicy'] == null ? null : ((map['accessPolicy'] as String).input()).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

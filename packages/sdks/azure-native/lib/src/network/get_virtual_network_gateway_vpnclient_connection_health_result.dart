@@ -22,7 +22,7 @@ class GetVirtualNetworkGatewayVpnclientConnectionHealthResult {
 
   factory GetVirtualNetworkGatewayVpnclientConnectionHealthResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkGatewayVpnclientConnectionHealthResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<VpnClientConnectionHealthDetailResponse>(map['value'], (value) => VpnClientConnectionHealthDetailResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<VpnClientConnectionHealthDetailResponse>(map['value']!, (value) => VpnClientConnectionHealthDetailResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -34,7 +34,7 @@ class GetManagedInstanceArgs {
 
   factory GetManagedInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedInstanceArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       managedInstanceName: (map['managedInstanceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

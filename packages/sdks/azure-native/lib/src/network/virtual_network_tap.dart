@@ -48,12 +48,12 @@ class VirtualNetworkTap {
 
   factory VirtualNetworkTap.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkTap(
-      destinationLoadBalancerFrontEndIPConfiguration: map['destinationLoadBalancerFrontEndIPConfiguration'] == null ? null : (FrontendIPConfiguration.fromMap((map['destinationLoadBalancerFrontEndIPConfiguration'] as Map).cast<String, dynamic>())).input(),
-      destinationNetworkInterfaceIPConfiguration: map['destinationNetworkInterfaceIPConfiguration'] == null ? null : (NetworkInterfaceIPConfiguration.fromMap((map['destinationNetworkInterfaceIPConfiguration'] as Map).cast<String, dynamic>())).input(),
-      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as int).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      destinationLoadBalancerFrontEndIPConfiguration: map['destinationLoadBalancerFrontEndIPConfiguration'] == null ? null : (FrontendIPConfiguration.fromMap((map['destinationLoadBalancerFrontEndIPConfiguration']! as Map).cast<String, dynamic>())).input(),
+      destinationNetworkInterfaceIPConfiguration: map['destinationNetworkInterfaceIPConfiguration'] == null ? null : (NetworkInterfaceIPConfiguration.fromMap((map['destinationNetworkInterfaceIPConfiguration']! as Map).cast<String, dynamic>())).input(),
+      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort']! as int).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

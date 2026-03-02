@@ -30,8 +30,8 @@ class ClusterNodePoolAutoConfigLinuxNodeConfig {
 
   factory ClusterNodePoolAutoConfigLinuxNodeConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolAutoConfigLinuxNodeConfig(
-      cgroupMode: map['cgroupMode'] == null ? null : (map['cgroupMode'] as String).input(),
-      nodeKernelModuleLoading: map['nodeKernelModuleLoading'] == null ? null : (ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading.fromMap((map['nodeKernelModuleLoading'] as Map).cast<String, dynamic>())).input(),
+      cgroupMode: map['cgroupMode'] == null ? null : (map['cgroupMode']! as String).input(),
+      nodeKernelModuleLoading: map['nodeKernelModuleLoading'] == null ? null : (ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading.fromMap((map['nodeKernelModuleLoading']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

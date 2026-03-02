@@ -20,7 +20,7 @@ class DomainDevicesSoundAudio {
 
   factory DomainDevicesSoundAudio.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSoundAudio(
-      id: map['id'] == null ? null : (map['id'] as double).input(),
+      id: map['id'] == null ? null : (map['id']! as double).input(),
     );
   }
 }

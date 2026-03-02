@@ -21,7 +21,7 @@ class AgentcoreGatewayAuthorizerConfiguration {
 
   factory AgentcoreGatewayAuthorizerConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayAuthorizerConfiguration(
-      customJwtAuthorizer: map['customJwtAuthorizer'] == null ? null : (AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizer.fromMap((map['customJwtAuthorizer'] as Map).cast<String, dynamic>())).input(),
+      customJwtAuthorizer: map['customJwtAuthorizer'] == null ? null : ((AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizer.fromMap((map['customJwtAuthorizer']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class VmAttachmentDetailsVmmigrationV1alpha1 {
 
   factory VmAttachmentDetailsVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return VmAttachmentDetailsVmmigrationV1alpha1(
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName']! as String).input(),
     );
   }
 }

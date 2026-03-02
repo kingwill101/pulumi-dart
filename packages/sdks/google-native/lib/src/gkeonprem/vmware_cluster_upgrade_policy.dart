@@ -21,7 +21,7 @@ class VmwareClusterUpgradePolicy {
 
   factory VmwareClusterUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return VmwareClusterUpgradePolicy(
-      controlPlaneOnly: map['controlPlaneOnly'] == null ? null : (map['controlPlaneOnly'] as bool).input(),
+      controlPlaneOnly: map['controlPlaneOnly'] == null ? null : (map['controlPlaneOnly']! as bool).input(),
     );
   }
 }

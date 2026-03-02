@@ -46,12 +46,12 @@ class NaptrRecord {
 
   factory NaptrRecord.fromMap(Map<String, dynamic> map) {
     return NaptrRecord(
-      flags: map['flags'] == null ? null : (map['flags'] as String).input(),
-      order: map['order'] == null ? null : (map['order'] as int).input(),
-      preference: map['preference'] == null ? null : (map['preference'] as int).input(),
-      regexp: map['regexp'] == null ? null : (map['regexp'] as String).input(),
-      replacement: map['replacement'] == null ? null : (map['replacement'] as String).input(),
-      services: map['services'] == null ? null : (map['services'] as String).input(),
+      flags: map['flags'] == null ? null : (map['flags']! as String).input(),
+      order: map['order'] == null ? null : (map['order']! as int).input(),
+      preference: map['preference'] == null ? null : (map['preference']! as int).input(),
+      regexp: map['regexp'] == null ? null : (map['regexp']! as String).input(),
+      replacement: map['replacement'] == null ? null : (map['replacement']! as String).input(),
+      services: map['services'] == null ? null : (map['services']! as String).input(),
     );
   }
 }

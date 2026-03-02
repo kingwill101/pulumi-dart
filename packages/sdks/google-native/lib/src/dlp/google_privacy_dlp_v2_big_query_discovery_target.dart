@@ -39,9 +39,9 @@ class GooglePrivacyDlpV2BigQueryDiscoveryTarget {
 
   factory GooglePrivacyDlpV2BigQueryDiscoveryTarget.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2BigQueryDiscoveryTarget(
-      cadence: map['cadence'] == null ? null : (GooglePrivacyDlpV2DiscoveryGenerationCadence.fromMap((map['cadence'] as Map).cast<String, dynamic>())).input(),
-      conditions: map['conditions'] == null ? null : (GooglePrivacyDlpV2DiscoveryBigQueryConditions.fromMap((map['conditions'] as Map).cast<String, dynamic>())).input(),
-      disabled: map['disabled'] == null ? null : ((map['disabled'] as Map).cast<String, dynamic>()).input(),
+      cadence: map['cadence'] == null ? null : (GooglePrivacyDlpV2DiscoveryGenerationCadence.fromMap((map['cadence']! as Map).cast<String, dynamic>())).input(),
+      conditions: map['conditions'] == null ? null : (GooglePrivacyDlpV2DiscoveryBigQueryConditions.fromMap((map['conditions']! as Map).cast<String, dynamic>())).input(),
+      disabled: map['disabled'] == null ? null : ((map['disabled']! as Map).cast<String, dynamic>()).input(),
       filter: (GooglePrivacyDlpV2DiscoveryBigQueryFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
     );
   }

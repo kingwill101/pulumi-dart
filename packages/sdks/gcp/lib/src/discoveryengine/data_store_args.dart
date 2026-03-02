@@ -102,18 +102,18 @@ class DataStoreArgs {
 
   factory DataStoreArgs.fromMap(Map<String, dynamic> map) {
     return DataStoreArgs(
-      advancedSiteSearchConfig: map['advancedSiteSearchConfig'] == null ? null : (DataStoreAdvancedSiteSearchConfig.fromMap((map['advancedSiteSearchConfig'] as Map).cast<String, dynamic>())).input(),
+      advancedSiteSearchConfig: map['advancedSiteSearchConfig'] == null ? null : (DataStoreAdvancedSiteSearchConfig.fromMap((map['advancedSiteSearchConfig']! as Map).cast<String, dynamic>())).input(),
       contentConfig: (map['contentConfig'] as String).input(),
-      createAdvancedSiteSearch: map['createAdvancedSiteSearch'] == null ? null : (map['createAdvancedSiteSearch'] as bool).input(),
+      createAdvancedSiteSearch: map['createAdvancedSiteSearch'] == null ? null : (map['createAdvancedSiteSearch']! as bool).input(),
       dataStoreId: (map['dataStoreId'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      documentProcessingConfig: map['documentProcessingConfig'] == null ? null : (DataStoreDocumentProcessingConfig.fromMap((map['documentProcessingConfig'] as Map).cast<String, dynamic>())).input(),
+      documentProcessingConfig: map['documentProcessingConfig'] == null ? null : (DataStoreDocumentProcessingConfig.fromMap((map['documentProcessingConfig']! as Map).cast<String, dynamic>())).input(),
       industryVertical: (map['industryVertical'] as String).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      skipDefaultSchemaCreation: map['skipDefaultSchemaCreation'] == null ? null : (map['skipDefaultSchemaCreation'] as bool).input(),
-      solutionTypes: map['solutionTypes'] == null ? null : ((map['solutionTypes'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      skipDefaultSchemaCreation: map['skipDefaultSchemaCreation'] == null ? null : (map['skipDefaultSchemaCreation']! as bool).input(),
+      solutionTypes: map['solutionTypes'] == null ? null : ((map['solutionTypes']! as List).cast<String>()).input(),
     );
   }
 }

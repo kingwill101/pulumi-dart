@@ -42,11 +42,11 @@ class RdsParameterGroupState {
 
   factory RdsParameterGroupState.fromMap(Map<String, dynamic> map) {
     return RdsParameterGroupState(
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
-      paramDetails: map['paramDetails'] == null ? null : (pulumi.Input.decodeList<RdsParameterGroupParamDetail>(map['paramDetails'], (value) => RdsParameterGroupParamDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parameterGroupDesc: map['parameterGroupDesc'] == null ? null : (map['parameterGroupDesc'] as String).input(),
-      parameterGroupName: map['parameterGroupName'] == null ? null : (map['parameterGroupName'] as String).input(),
+      engine: map['engine'] == null ? null : (map['engine']! as String).input(),
+      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion']! as String).input(),
+      paramDetails: map['paramDetails'] == null ? null : (pulumi.Input.decodeList<RdsParameterGroupParamDetail>(map['paramDetails']!, (value) => RdsParameterGroupParamDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameterGroupDesc: map['parameterGroupDesc'] == null ? null : (map['parameterGroupDesc']! as String).input(),
+      parameterGroupName: map['parameterGroupName'] == null ? null : (map['parameterGroupName']! as String).input(),
     );
   }
 }

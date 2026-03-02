@@ -41,11 +41,11 @@ class AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration
 
   factory AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration(
-      crawlerLimits: map['crawlerLimits'] == null ? null : (AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfigurationCrawlerLimits.fromMap((map['crawlerLimits'] as Map).cast<String, dynamic>())).input(),
-      exclusionFilters: map['exclusionFilters'] == null ? null : ((map['exclusionFilters'] as List).cast<String>()).input(),
-      inclusionFilters: map['inclusionFilters'] == null ? null : ((map['inclusionFilters'] as List).cast<String>()).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      userAgent: map['userAgent'] == null ? null : (map['userAgent'] as String).input(),
+      crawlerLimits: map['crawlerLimits'] == null ? null : ((AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfigurationCrawlerLimits.fromMap((map['crawlerLimits']! as Map).cast<String, dynamic>())).input()).input(),
+      exclusionFilters: map['exclusionFilters'] == null ? null : (((map['exclusionFilters'] as List).cast<String>()).input()).input(),
+      inclusionFilters: map['inclusionFilters'] == null ? null : (((map['inclusionFilters'] as List).cast<String>()).input()).input(),
+      scope: map['scope'] == null ? null : ((map['scope'] as String).input()).input(),
+      userAgent: map['userAgent'] == null ? null : ((map['userAgent'] as String).input()).input(),
     );
   }
 }

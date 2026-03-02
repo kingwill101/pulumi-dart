@@ -74,17 +74,17 @@ class ImageVersionArgs {
 
   factory ImageVersionArgs.fromMap(Map<String, dynamic> map) {
     return ImageVersionArgs(
-      aliases: map['aliases'] == null ? null : ((map['aliases'] as List).cast<String>()).input(),
+      aliases: map['aliases'] == null ? null : (((map['aliases'] as List).cast<String>()).input()).input(),
       baseImage: (map['baseImage'] as String).input(),
-      horovod: map['horovod'] == null ? null : (map['horovod'] as bool).input(),
+      horovod: map['horovod'] == null ? null : ((map['horovod'] as bool).input()).input(),
       imageName: (map['imageName'] as String).input(),
-      jobType: map['jobType'] == null ? null : (map['jobType'] as String).input(),
-      mlFramework: map['mlFramework'] == null ? null : (map['mlFramework'] as String).input(),
-      processor: map['processor'] == null ? null : (map['processor'] as String).input(),
-      programmingLang: map['programmingLang'] == null ? null : (map['programmingLang'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      releaseNotes: map['releaseNotes'] == null ? null : (map['releaseNotes'] as String).input(),
-      vendorGuidance: map['vendorGuidance'] == null ? null : (map['vendorGuidance'] as String).input(),
+      jobType: map['jobType'] == null ? null : ((map['jobType'] as String).input()).input(),
+      mlFramework: map['mlFramework'] == null ? null : ((map['mlFramework'] as String).input()).input(),
+      processor: map['processor'] == null ? null : ((map['processor'] as String).input()).input(),
+      programmingLang: map['programmingLang'] == null ? null : ((map['programmingLang'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      releaseNotes: map['releaseNotes'] == null ? null : ((map['releaseNotes'] as String).input()).input(),
+      vendorGuidance: map['vendorGuidance'] == null ? null : ((map['vendorGuidance'] as String).input()).input(),
     );
   }
 }

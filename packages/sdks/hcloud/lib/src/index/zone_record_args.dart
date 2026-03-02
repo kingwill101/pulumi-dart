@@ -44,8 +44,8 @@ class ZoneRecordArgs {
 
   factory ZoneRecordArgs.fromMap(Map<String, dynamic> map) {
     return ZoneRecordArgs(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       type: (map['type'] as String).input(),
       value: (map['value'] as String).input(),
       zone: (map['zone'] as String).input(),

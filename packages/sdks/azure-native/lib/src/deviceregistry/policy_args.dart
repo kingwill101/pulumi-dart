@@ -50,12 +50,12 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      certificate: map['certificate'] == null ? null : (CertificateConfiguration.fromMap((map['certificate'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      certificate: map['certificate'] == null ? null : (CertificateConfiguration.fromMap((map['certificate']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

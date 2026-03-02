@@ -37,10 +37,10 @@ class IntegrationRuntimeSsisVnetIntegration {
 
   factory IntegrationRuntimeSsisVnetIntegration.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSsisVnetIntegration(
-      publicIps: map['publicIps'] == null ? null : ((map['publicIps'] as List).cast<String>()).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      subnetName: map['subnetName'] == null ? null : (map['subnetName'] as String).input(),
-      vnetId: map['vnetId'] == null ? null : (map['vnetId'] as String).input(),
+      publicIps: map['publicIps'] == null ? null : ((map['publicIps']! as List).cast<String>()).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      subnetName: map['subnetName'] == null ? null : (map['subnetName']! as String).input(),
+      vnetId: map['vnetId'] == null ? null : (map['vnetId']! as String).input(),
     );
   }
 }

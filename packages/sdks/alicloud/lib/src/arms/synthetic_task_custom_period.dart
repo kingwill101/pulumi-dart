@@ -25,8 +25,8 @@ class SyntheticTaskCustomPeriod {
 
   factory SyntheticTaskCustomPeriod.fromMap(Map<String, dynamic> map) {
     return SyntheticTaskCustomPeriod(
-      endHour: map['endHour'] == null ? null : (map['endHour'] as int).input(),
-      startHour: map['startHour'] == null ? null : (map['startHour'] as int).input(),
+      endHour: map['endHour'] == null ? null : (map['endHour']! as int).input(),
+      startHour: map['startHour'] == null ? null : (map['startHour']! as int).input(),
     );
   }
 }

@@ -46,12 +46,12 @@ class VpcNetworkPerformanceMetricSubscriptionState {
 
   factory VpcNetworkPerformanceMetricSubscriptionState.fromMap(Map<String, dynamic> map) {
     return VpcNetworkPerformanceMetricSubscriptionState(
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
-      metric: map['metric'] == null ? null : (map['metric'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      statistic: map['statistic'] == null ? null : (map['statistic'] as String).input(),
+      destination: map['destination'] == null ? null : ((map['destination'] as String).input()).input(),
+      metric: map['metric'] == null ? null : ((map['metric'] as String).input()).input(),
+      period: map['period'] == null ? null : ((map['period'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      source: map['source'] == null ? null : ((map['source'] as String).input()).input(),
+      statistic: map['statistic'] == null ? null : ((map['statistic'] as String).input()).input(),
     );
   }
 }

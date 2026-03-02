@@ -27,7 +27,7 @@ class GetSearchApplicationArgs {
 
   factory GetSearchApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetSearchApplicationArgs(
-      debugOptionsEnableDebugging: map['debugOptionsEnableDebugging'] == null ? null : (map['debugOptionsEnableDebugging'] as bool).input(),
+      debugOptionsEnableDebugging: map['debugOptionsEnableDebugging'] == null ? null : (map['debugOptionsEnableDebugging']! as bool).input(),
       searchapplicationId: (map['searchapplicationId'] as String).input(),
     );
   }

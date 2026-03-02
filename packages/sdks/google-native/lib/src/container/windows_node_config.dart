@@ -22,7 +22,7 @@ class WindowsNodeConfig {
 
   factory WindowsNodeConfig.fromMap(Map<String, dynamic> map) {
     return WindowsNodeConfig(
-      osVersion: map['osVersion'] == null ? null : (WindowsNodeConfigOsVersion.fromValue(map['osVersion'] as String)).input(),
+      osVersion: map['osVersion'] == null ? null : (WindowsNodeConfigOsVersion.fromValue(map['osVersion']! as String)).input(),
     );
   }
 }

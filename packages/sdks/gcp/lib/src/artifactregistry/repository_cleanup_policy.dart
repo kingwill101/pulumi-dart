@@ -41,10 +41,10 @@ class RepositoryCleanupPolicy {
 
   factory RepositoryCleanupPolicy.fromMap(Map<String, dynamic> map) {
     return RepositoryCleanupPolicy(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      condition: map['condition'] == null ? null : (RepositoryCleanupPolicyCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      condition: map['condition'] == null ? null : (RepositoryCleanupPolicyCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       id: (map['id'] as String).input(),
-      mostRecentVersions: map['mostRecentVersions'] == null ? null : (RepositoryCleanupPolicyMostRecentVersions.fromMap((map['mostRecentVersions'] as Map).cast<String, dynamic>())).input(),
+      mostRecentVersions: map['mostRecentVersions'] == null ? null : (RepositoryCleanupPolicyMostRecentVersions.fromMap((map['mostRecentVersions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

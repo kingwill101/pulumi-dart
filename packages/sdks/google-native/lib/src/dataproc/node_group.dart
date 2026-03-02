@@ -38,9 +38,9 @@ class NodeGroup {
 
   factory NodeGroup.fromMap(Map<String, dynamic> map) {
     return NodeGroup(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodeGroupConfig: map['nodeGroupConfig'] == null ? null : (InstanceGroupConfig.fromMap((map['nodeGroupConfig'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodeGroupConfig: map['nodeGroupConfig'] == null ? null : (InstanceGroupConfig.fromMap((map['nodeGroupConfig']! as Map).cast<String, dynamic>())).input(),
       roles: (pulumi.Input.decodeList<NodeGroupRolesItem>(map['roles'], (value) => NodeGroupRolesItem.fromValue(value as String))).input(),
     );
   }

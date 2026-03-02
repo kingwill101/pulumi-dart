@@ -30,8 +30,8 @@ class IPGroupCIDRState {
 
   factory IPGroupCIDRState.fromMap(Map<String, dynamic> map) {
     return IPGroupCIDRState(
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
-      ipGroupId: map['ipGroupId'] == null ? null : (map['ipGroupId'] as String).input(),
+      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
+      ipGroupId: map['ipGroupId'] == null ? null : (map['ipGroupId']! as String).input(),
     );
   }
 }

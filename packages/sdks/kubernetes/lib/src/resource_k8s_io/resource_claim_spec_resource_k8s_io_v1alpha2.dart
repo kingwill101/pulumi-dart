@@ -34,8 +34,8 @@ class ResourceClaimSpecResourceK8sIoV1alpha2 {
 
   factory ResourceClaimSpecResourceK8sIoV1alpha2.fromMap(Map<String, dynamic> map) {
     return ResourceClaimSpecResourceK8sIoV1alpha2(
-      allocationMode: map['allocationMode'] == null ? null : (map['allocationMode'] as String).input(),
-      parametersRef: map['parametersRef'] == null ? null : (ResourceClaimParametersReferenceResourceK8sIoV1alpha2.fromMap((map['parametersRef'] as Map).cast<String, dynamic>())).input(),
+      allocationMode: map['allocationMode'] == null ? null : (map['allocationMode']! as String).input(),
+      parametersRef: map['parametersRef'] == null ? null : (ResourceClaimParametersReferenceResourceK8sIoV1alpha2.fromMap((map['parametersRef']! as Map).cast<String, dynamic>())).input(),
       resourceClassName: (map['resourceClassName'] as String).input(),
     );
   }

@@ -77,17 +77,17 @@ class PacketMirroringArgs {
 
   factory PacketMirroringArgs.fromMap(Map<String, dynamic> map) {
     return PacketMirroringArgs(
-      collectorIlb: map['collectorIlb'] == null ? null : (PacketMirroringForwardingRuleInfo.fromMap((map['collectorIlb'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enable: map['enable'] == null ? null : (PacketMirroringEnable.fromValue(map['enable'] as String)).input(),
-      filter: map['filter'] == null ? null : (PacketMirroringFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      mirroredResources: map['mirroredResources'] == null ? null : (PacketMirroringMirroredResourceInfo.fromMap((map['mirroredResources'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (PacketMirroringNetworkInfo.fromMap((map['network'] as Map).cast<String, dynamic>())).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      collectorIlb: map['collectorIlb'] == null ? null : (PacketMirroringForwardingRuleInfo.fromMap((map['collectorIlb']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enable: map['enable'] == null ? null : (PacketMirroringEnable.fromValue(map['enable']! as String)).input(),
+      filter: map['filter'] == null ? null : (PacketMirroringFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      mirroredResources: map['mirroredResources'] == null ? null : (PacketMirroringMirroredResourceInfo.fromMap((map['mirroredResources']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (PacketMirroringNetworkInfo.fromMap((map['network']! as Map).cast<String, dynamic>())).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

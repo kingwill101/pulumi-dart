@@ -34,9 +34,9 @@ class LogConfigComputeBeta {
 
   factory LogConfigComputeBeta.fromMap(Map<String, dynamic> map) {
     return LogConfigComputeBeta(
-      cloudAudit: map['cloudAudit'] == null ? null : (LogConfigCloudAuditOptionsComputeBeta.fromMap((map['cloudAudit'] as Map).cast<String, dynamic>())).input(),
-      counter: map['counter'] == null ? null : (LogConfigCounterOptionsComputeBeta.fromMap((map['counter'] as Map).cast<String, dynamic>())).input(),
-      dataAccess: map['dataAccess'] == null ? null : (LogConfigDataAccessOptionsComputeBeta.fromMap((map['dataAccess'] as Map).cast<String, dynamic>())).input(),
+      cloudAudit: map['cloudAudit'] == null ? null : (LogConfigCloudAuditOptionsComputeBeta.fromMap((map['cloudAudit']! as Map).cast<String, dynamic>())).input(),
+      counter: map['counter'] == null ? null : (LogConfigCounterOptionsComputeBeta.fromMap((map['counter']! as Map).cast<String, dynamic>())).input(),
+      dataAccess: map['dataAccess'] == null ? null : (LogConfigDataAccessOptionsComputeBeta.fromMap((map['dataAccess']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

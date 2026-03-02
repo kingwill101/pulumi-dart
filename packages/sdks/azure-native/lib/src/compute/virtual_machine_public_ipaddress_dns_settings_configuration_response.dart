@@ -27,7 +27,7 @@ class VirtualMachinePublicIPAddressDnsSettingsConfigurationResponse {
   factory VirtualMachinePublicIPAddressDnsSettingsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePublicIPAddressDnsSettingsConfigurationResponse(
       domainNameLabel: (map['domainNameLabel'] as String).input(),
-      domainNameLabelScope: map['domainNameLabelScope'] == null ? null : (map['domainNameLabelScope'] as String).input(),
+      domainNameLabelScope: map['domainNameLabelScope'] == null ? null : (map['domainNameLabelScope']! as String).input(),
     );
   }
 }

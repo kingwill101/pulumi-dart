@@ -22,7 +22,7 @@ class APIServiceStatus {
 
   factory APIServiceStatus.fromMap(Map<String, dynamic> map) {
     return APIServiceStatus(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<APIServiceCondition>(map['conditions'], (value) => APIServiceCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<APIServiceCondition>(map['conditions']!, (value) => APIServiceCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

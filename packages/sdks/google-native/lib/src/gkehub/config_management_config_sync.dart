@@ -53,13 +53,13 @@ class ConfigManagementConfigSync {
 
   factory ConfigManagementConfigSync.fromMap(Map<String, dynamic> map) {
     return ConfigManagementConfigSync(
-      allowVerticalScale: map['allowVerticalScale'] == null ? null : (map['allowVerticalScale'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      git: map['git'] == null ? null : (ConfigManagementGitConfig.fromMap((map['git'] as Map).cast<String, dynamic>())).input(),
-      metricsGcpServiceAccountEmail: map['metricsGcpServiceAccountEmail'] == null ? null : (map['metricsGcpServiceAccountEmail'] as String).input(),
-      oci: map['oci'] == null ? null : (ConfigManagementOciConfig.fromMap((map['oci'] as Map).cast<String, dynamic>())).input(),
-      preventDrift: map['preventDrift'] == null ? null : (map['preventDrift'] as bool).input(),
-      sourceFormat: map['sourceFormat'] == null ? null : (map['sourceFormat'] as String).input(),
+      allowVerticalScale: map['allowVerticalScale'] == null ? null : (map['allowVerticalScale']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      git: map['git'] == null ? null : (ConfigManagementGitConfig.fromMap((map['git']! as Map).cast<String, dynamic>())).input(),
+      metricsGcpServiceAccountEmail: map['metricsGcpServiceAccountEmail'] == null ? null : (map['metricsGcpServiceAccountEmail']! as String).input(),
+      oci: map['oci'] == null ? null : (ConfigManagementOciConfig.fromMap((map['oci']! as Map).cast<String, dynamic>())).input(),
+      preventDrift: map['preventDrift'] == null ? null : (map['preventDrift']! as bool).input(),
+      sourceFormat: map['sourceFormat'] == null ? null : (map['sourceFormat']! as String).input(),
     );
   }
 }

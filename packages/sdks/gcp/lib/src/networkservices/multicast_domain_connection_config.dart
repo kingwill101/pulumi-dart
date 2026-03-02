@@ -32,7 +32,7 @@ class MulticastDomainConnectionConfig {
   factory MulticastDomainConnectionConfig.fromMap(Map<String, dynamic> map) {
     return MulticastDomainConnectionConfig(
       connectionType: (map['connectionType'] as String).input(),
-      nccHub: map['nccHub'] == null ? null : (map['nccHub'] as String).input(),
+      nccHub: map['nccHub'] == null ? null : (map['nccHub']! as String).input(),
     );
   }
 }

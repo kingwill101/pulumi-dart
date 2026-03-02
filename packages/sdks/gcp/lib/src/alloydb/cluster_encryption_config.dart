@@ -20,7 +20,7 @@ class ClusterEncryptionConfig {
 
   factory ClusterEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return ClusterEncryptionConfig(
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
     );
   }
 }

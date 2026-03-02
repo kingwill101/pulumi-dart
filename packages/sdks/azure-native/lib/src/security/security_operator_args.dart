@@ -30,7 +30,7 @@ class SecurityOperatorArgs {
   factory SecurityOperatorArgs.fromMap(Map<String, dynamic> map) {
     return SecurityOperatorArgs(
       pricingName: (map['pricingName'] as String).input(),
-      securityOperatorName: map['securityOperatorName'] == null ? null : (map['securityOperatorName'] as String).input(),
+      securityOperatorName: map['securityOperatorName'] == null ? null : (map['securityOperatorName']! as String).input(),
     );
   }
 }

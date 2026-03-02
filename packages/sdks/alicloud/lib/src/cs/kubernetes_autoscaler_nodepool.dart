@@ -30,9 +30,9 @@ class KubernetesAutoscalerNodepool {
 
   factory KubernetesAutoscalerNodepool.fromMap(Map<String, dynamic> map) {
     return KubernetesAutoscalerNodepool(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      labels: map['labels'] == null ? null : (map['labels'] as String).input(),
-      taints: map['taints'] == null ? null : (map['taints'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      labels: map['labels'] == null ? null : (map['labels']! as String).input(),
+      taints: map['taints'] == null ? null : (map['taints']! as String).input(),
     );
   }
 }

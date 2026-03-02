@@ -81,16 +81,16 @@ class DiskEncryptionSetArgs {
 
   factory DiskEncryptionSetArgs.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionSetArgs(
-      autoKeyRotationEnabled: map['autoKeyRotationEnabled'] == null ? null : (map['autoKeyRotationEnabled'] as bool).input(),
-      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType'] as String).input(),
-      federatedClientId: map['federatedClientId'] == null ? null : (map['federatedClientId'] as String).input(),
+      autoKeyRotationEnabled: map['autoKeyRotationEnabled'] == null ? null : (map['autoKeyRotationEnabled']! as bool).input(),
+      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType']! as String).input(),
+      federatedClientId: map['federatedClientId'] == null ? null : (map['federatedClientId']! as String).input(),
       identity: (DiskEncryptionSetIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : (map['managedHsmKeyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : (map['managedHsmKeyId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

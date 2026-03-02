@@ -41,11 +41,11 @@ class ListenerPolicyState {
 
   factory ListenerPolicyState.fromMap(Map<String, dynamic> map) {
     return ListenerPolicyState(
-      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName'] as String).input(),
-      loadBalancerPort: map['loadBalancerPort'] == null ? null : (map['loadBalancerPort'] as int).input(),
-      policyNames: map['policyNames'] == null ? null : ((map['policyNames'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
+      loadBalancerName: map['loadBalancerName'] == null ? null : ((map['loadBalancerName'] as String).input()).input(),
+      loadBalancerPort: map['loadBalancerPort'] == null ? null : ((map['loadBalancerPort'] as int).input()).input(),
+      policyNames: map['policyNames'] == null ? null : (((map['policyNames'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      triggers: map['triggers'] == null ? null : (((map['triggers'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

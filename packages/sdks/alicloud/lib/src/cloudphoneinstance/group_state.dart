@@ -99,21 +99,21 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      amount: map['amount'] == null ? null : (map['amount'] as int).input(),
-      autoPay: map['autoPay'] == null ? null : (map['autoPay'] as bool).input(),
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      chargeType: map['chargeType'] == null ? null : (map['chargeType'] as String).input(),
-      gpuAcceleration: map['gpuAcceleration'] == null ? null : (map['gpuAcceleration'] as bool).input(),
-      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
-      instanceGroupName: map['instanceGroupName'] == null ? null : (map['instanceGroupName'] as String).input(),
-      instanceGroupSpec: map['instanceGroupSpec'] == null ? null : (map['instanceGroupSpec'] as String).input(),
-      numberOfInstances: map['numberOfInstances'] == null ? null : (map['numberOfInstances'] as int).input(),
-      officeSiteId: map['officeSiteId'] == null ? null : (map['officeSiteId'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit'] as String).input(),
-      policyGroupId: map['policyGroupId'] == null ? null : (map['policyGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      amount: map['amount'] == null ? null : (map['amount']! as int).input(),
+      autoPay: map['autoPay'] == null ? null : (map['autoPay']! as bool).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      chargeType: map['chargeType'] == null ? null : (map['chargeType']! as String).input(),
+      gpuAcceleration: map['gpuAcceleration'] == null ? null : (map['gpuAcceleration']! as bool).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId']! as String).input(),
+      instanceGroupName: map['instanceGroupName'] == null ? null : (map['instanceGroupName']! as String).input(),
+      instanceGroupSpec: map['instanceGroupSpec'] == null ? null : (map['instanceGroupSpec']! as String).input(),
+      numberOfInstances: map['numberOfInstances'] == null ? null : (map['numberOfInstances']! as int).input(),
+      officeSiteId: map['officeSiteId'] == null ? null : (map['officeSiteId']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit']! as String).input(),
+      policyGroupId: map['policyGroupId'] == null ? null : (map['policyGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

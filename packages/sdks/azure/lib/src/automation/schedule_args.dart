@@ -81,17 +81,17 @@ class ScheduleArgs {
   factory ScheduleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleArgs(
       automationAccountName: (map['automationAccountName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime']! as String).input(),
       frequency: (map['frequency'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      monthDays: map['monthDays'] == null ? null : ((map['monthDays'] as List).cast<int>()).input(),
-      monthlyOccurrence: map['monthlyOccurrence'] == null ? null : (ScheduleMonthlyOccurrence.fromMap((map['monthlyOccurrence'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      monthDays: map['monthDays'] == null ? null : ((map['monthDays']! as List).cast<int>()).input(),
+      monthlyOccurrence: map['monthlyOccurrence'] == null ? null : (ScheduleMonthlyOccurrence.fromMap((map['monthlyOccurrence']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
-      weekDays: map['weekDays'] == null ? null : ((map['weekDays'] as List).cast<String>()).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      timezone: map['timezone'] == null ? null : (map['timezone']! as String).input(),
+      weekDays: map['weekDays'] == null ? null : ((map['weekDays']! as List).cast<String>()).input(),
     );
   }
 }

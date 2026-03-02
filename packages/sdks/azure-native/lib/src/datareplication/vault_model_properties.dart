@@ -21,7 +21,7 @@ class VaultModelProperties {
 
   factory VaultModelProperties.fromMap(Map<String, dynamic> map) {
     return VaultModelProperties(
-      vaultType: map['vaultType'] == null ? null : (map['vaultType'] as String).input(),
+      vaultType: map['vaultType'] == null ? null : (map['vaultType']! as String).input(),
     );
   }
 }

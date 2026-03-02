@@ -28,8 +28,8 @@ class GooglePrivacyDlpV2ExcludeByHotword {
 
   factory GooglePrivacyDlpV2ExcludeByHotword.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ExcludeByHotword(
-      hotwordRegex: map['hotwordRegex'] == null ? null : (GooglePrivacyDlpV2Regex.fromMap((map['hotwordRegex'] as Map).cast<String, dynamic>())).input(),
-      proximity: map['proximity'] == null ? null : (GooglePrivacyDlpV2Proximity.fromMap((map['proximity'] as Map).cast<String, dynamic>())).input(),
+      hotwordRegex: map['hotwordRegex'] == null ? null : (GooglePrivacyDlpV2Regex.fromMap((map['hotwordRegex']! as Map).cast<String, dynamic>())).input(),
+      proximity: map['proximity'] == null ? null : (GooglePrivacyDlpV2Proximity.fromMap((map['proximity']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

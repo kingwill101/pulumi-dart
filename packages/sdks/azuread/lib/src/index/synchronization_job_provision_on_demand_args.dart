@@ -43,7 +43,7 @@ class SynchronizationJobProvisionOnDemandArgs {
       parameters: (pulumi.Input.decodeList<SynchronizationJobProvisionOnDemandParameter>(map['parameters'], (value) => SynchronizationJobProvisionOnDemandParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       servicePrincipalId: (map['servicePrincipalId'] as String).input(),
       synchronizationJobId: (map['synchronizationJobId'] as String).input(),
-      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers']! as Map).cast<String, String>()).input(),
     );
   }
 }

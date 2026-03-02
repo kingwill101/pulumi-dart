@@ -51,13 +51,13 @@ class InterRegionTrafficQosQueueState {
 
   factory InterRegionTrafficQosQueueState.fromMap(Map<String, dynamic> map) {
     return InterRegionTrafficQosQueueState(
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as String).input(),
-      dscps: map['dscps'] == null ? null : ((map['dscps'] as List).cast<int>()).input(),
-      interRegionTrafficQosQueueDescription: map['interRegionTrafficQosQueueDescription'] == null ? null : (map['interRegionTrafficQosQueueDescription'] as String).input(),
-      interRegionTrafficQosQueueName: map['interRegionTrafficQosQueueName'] == null ? null : (map['interRegionTrafficQosQueueName'] as String).input(),
-      remainBandwidthPercent: map['remainBandwidthPercent'] == null ? null : (map['remainBandwidthPercent'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      trafficQosPolicyId: map['trafficQosPolicyId'] == null ? null : (map['trafficQosPolicyId'] as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as String).input(),
+      dscps: map['dscps'] == null ? null : ((map['dscps']! as List).cast<int>()).input(),
+      interRegionTrafficQosQueueDescription: map['interRegionTrafficQosQueueDescription'] == null ? null : (map['interRegionTrafficQosQueueDescription']! as String).input(),
+      interRegionTrafficQosQueueName: map['interRegionTrafficQosQueueName'] == null ? null : (map['interRegionTrafficQosQueueName']! as String).input(),
+      remainBandwidthPercent: map['remainBandwidthPercent'] == null ? null : (map['remainBandwidthPercent']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      trafficQosPolicyId: map['trafficQosPolicyId'] == null ? null : (map['trafficQosPolicyId']! as String).input(),
     );
   }
 }

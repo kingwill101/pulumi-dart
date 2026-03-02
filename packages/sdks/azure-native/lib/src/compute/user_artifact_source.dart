@@ -26,7 +26,7 @@ class UserArtifactSource {
 
   factory UserArtifactSource.fromMap(Map<String, dynamic> map) {
     return UserArtifactSource(
-      defaultConfigurationLink: map['defaultConfigurationLink'] == null ? null : (map['defaultConfigurationLink'] as String).input(),
+      defaultConfigurationLink: map['defaultConfigurationLink'] == null ? null : (map['defaultConfigurationLink']! as String).input(),
       mediaLink: (map['mediaLink'] as String).input(),
     );
   }

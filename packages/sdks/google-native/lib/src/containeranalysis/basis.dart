@@ -27,8 +27,8 @@ class Basis {
 
   factory Basis.fromMap(Map<String, dynamic> map) {
     return Basis(
-      fingerprint: map['fingerprint'] == null ? null : (FingerprintContaineranalysisV1alpha1.fromMap((map['fingerprint'] as Map).cast<String, dynamic>())).input(),
-      resourceUrl: map['resourceUrl'] == null ? null : (map['resourceUrl'] as String).input(),
+      fingerprint: map['fingerprint'] == null ? null : (FingerprintContaineranalysisV1alpha1.fromMap((map['fingerprint']! as Map).cast<String, dynamic>())).input(),
+      resourceUrl: map['resourceUrl'] == null ? null : (map['resourceUrl']! as String).input(),
     );
   }
 }

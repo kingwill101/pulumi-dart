@@ -91,21 +91,21 @@ class EdifactEnvelopeOverrideResponse {
 
   factory EdifactEnvelopeOverrideResponse.fromMap(Map<String, dynamic> map) {
     return EdifactEnvelopeOverrideResponse(
-      applicationPassword: map['applicationPassword'] == null ? null : (map['applicationPassword'] as String).input(),
-      associationAssignedCode: map['associationAssignedCode'] == null ? null : (map['associationAssignedCode'] as String).input(),
-      controllingAgencyCode: map['controllingAgencyCode'] == null ? null : (map['controllingAgencyCode'] as String).input(),
-      functionalGroupId: map['functionalGroupId'] == null ? null : (map['functionalGroupId'] as String).input(),
-      groupHeaderMessageRelease: map['groupHeaderMessageRelease'] == null ? null : (map['groupHeaderMessageRelease'] as String).input(),
-      groupHeaderMessageVersion: map['groupHeaderMessageVersion'] == null ? null : (map['groupHeaderMessageVersion'] as String).input(),
-      messageAssociationAssignedCode: map['messageAssociationAssignedCode'] == null ? null : (map['messageAssociationAssignedCode'] as String).input(),
-      messageId: map['messageId'] == null ? null : (map['messageId'] as String).input(),
-      messageRelease: map['messageRelease'] == null ? null : (map['messageRelease'] as String).input(),
-      messageVersion: map['messageVersion'] == null ? null : (map['messageVersion'] as String).input(),
-      receiverApplicationId: map['receiverApplicationId'] == null ? null : (map['receiverApplicationId'] as String).input(),
-      receiverApplicationQualifier: map['receiverApplicationQualifier'] == null ? null : (map['receiverApplicationQualifier'] as String).input(),
-      senderApplicationId: map['senderApplicationId'] == null ? null : (map['senderApplicationId'] as String).input(),
-      senderApplicationQualifier: map['senderApplicationQualifier'] == null ? null : (map['senderApplicationQualifier'] as String).input(),
-      targetNamespace: map['targetNamespace'] == null ? null : (map['targetNamespace'] as String).input(),
+      applicationPassword: map['applicationPassword'] == null ? null : (map['applicationPassword']! as String).input(),
+      associationAssignedCode: map['associationAssignedCode'] == null ? null : (map['associationAssignedCode']! as String).input(),
+      controllingAgencyCode: map['controllingAgencyCode'] == null ? null : (map['controllingAgencyCode']! as String).input(),
+      functionalGroupId: map['functionalGroupId'] == null ? null : (map['functionalGroupId']! as String).input(),
+      groupHeaderMessageRelease: map['groupHeaderMessageRelease'] == null ? null : (map['groupHeaderMessageRelease']! as String).input(),
+      groupHeaderMessageVersion: map['groupHeaderMessageVersion'] == null ? null : (map['groupHeaderMessageVersion']! as String).input(),
+      messageAssociationAssignedCode: map['messageAssociationAssignedCode'] == null ? null : (map['messageAssociationAssignedCode']! as String).input(),
+      messageId: map['messageId'] == null ? null : (map['messageId']! as String).input(),
+      messageRelease: map['messageRelease'] == null ? null : (map['messageRelease']! as String).input(),
+      messageVersion: map['messageVersion'] == null ? null : (map['messageVersion']! as String).input(),
+      receiverApplicationId: map['receiverApplicationId'] == null ? null : (map['receiverApplicationId']! as String).input(),
+      receiverApplicationQualifier: map['receiverApplicationQualifier'] == null ? null : (map['receiverApplicationQualifier']! as String).input(),
+      senderApplicationId: map['senderApplicationId'] == null ? null : (map['senderApplicationId']! as String).input(),
+      senderApplicationQualifier: map['senderApplicationQualifier'] == null ? null : (map['senderApplicationQualifier']! as String).input(),
+      targetNamespace: map['targetNamespace'] == null ? null : (map['targetNamespace']! as String).input(),
     );
   }
 }

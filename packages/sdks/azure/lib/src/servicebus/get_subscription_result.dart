@@ -106,11 +106,11 @@ class GetSubscriptionResult {
       lockDuration: map['lockDuration'] as String,
       maxDeliveryCount: map['maxDeliveryCount'] as int,
       name: map['name'] as String,
-      namespaceName: map['namespaceName'] == null ? null : map['namespaceName'] as String,
+      namespaceName: map['namespaceName'] == null ? null : map['namespaceName']! as String,
       requiresSession: map['requiresSession'] as bool,
-      resourceGroupName: map['resourceGroupName'] == null ? null : map['resourceGroupName'] as String,
-      topicId: map['topicId'] == null ? null : map['topicId'] as String,
-      topicName: map['topicName'] == null ? null : map['topicName'] as String,
+      resourceGroupName: map['resourceGroupName'] == null ? null : map['resourceGroupName']! as String,
+      topicId: map['topicId'] == null ? null : map['topicId']! as String,
+      topicName: map['topicName'] == null ? null : map['topicName']! as String,
     );
   }
 }

@@ -57,13 +57,13 @@ class PrivateLinkServicesForM365SecurityCenterArgs {
 
   factory PrivateLinkServicesForM365SecurityCenterArgs.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServicesForM365SecurityCenterArgs(
-      identity: map['identity'] == null ? null : (ServicesResourceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ServicesResourceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
       kind: (Kind.fromValue(map['kind'] as String)).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (ServicesProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (ServicesProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

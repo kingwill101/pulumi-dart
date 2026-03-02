@@ -21,7 +21,7 @@ class KalmConfig {
 
   factory KalmConfig.fromMap(Map<String, dynamic> map) {
     return KalmConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

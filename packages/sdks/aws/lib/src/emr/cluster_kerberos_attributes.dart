@@ -40,9 +40,9 @@ class ClusterKerberosAttributes {
 
   factory ClusterKerberosAttributes.fromMap(Map<String, dynamic> map) {
     return ClusterKerberosAttributes(
-      adDomainJoinPassword: map['adDomainJoinPassword'] == null ? null : (map['adDomainJoinPassword'] as String).input(),
-      adDomainJoinUser: map['adDomainJoinUser'] == null ? null : (map['adDomainJoinUser'] as String).input(),
-      crossRealmTrustPrincipalPassword: map['crossRealmTrustPrincipalPassword'] == null ? null : (map['crossRealmTrustPrincipalPassword'] as String).input(),
+      adDomainJoinPassword: map['adDomainJoinPassword'] == null ? null : ((map['adDomainJoinPassword'] as String).input()).input(),
+      adDomainJoinUser: map['adDomainJoinUser'] == null ? null : ((map['adDomainJoinUser'] as String).input()).input(),
+      crossRealmTrustPrincipalPassword: map['crossRealmTrustPrincipalPassword'] == null ? null : ((map['crossRealmTrustPrincipalPassword'] as String).input()).input(),
       kdcAdminPassword: (map['kdcAdminPassword'] as String).input(),
       realm: (map['realm'] as String).input(),
     );

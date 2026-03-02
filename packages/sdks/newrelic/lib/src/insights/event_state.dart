@@ -22,7 +22,7 @@ class EventState {
 
   factory EventState.fromMap(Map<String, dynamic> map) {
     return EventState(
-      events: map['events'] == null ? null : (pulumi.Input.decodeList<EventEvent>(map['events'], (value) => EventEvent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      events: map['events'] == null ? null : (pulumi.Input.decodeList<EventEvent>(map['events']!, (value) => EventEvent.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

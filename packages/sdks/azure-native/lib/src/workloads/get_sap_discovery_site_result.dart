@@ -80,15 +80,15 @@ class GetSapDiscoverySiteResult {
     return GetSapDiscoverySiteResult(
       azureApiVersion: map['azureApiVersion'] as String,
       errors: SAPMigrateErrorResponse.fromMap((map['errors'] as Map).cast<String, dynamic>()),
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
+      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       location: map['location'] as String,
-      masterSiteId: map['masterSiteId'] == null ? null : map['masterSiteId'] as String,
-      migrateProjectId: map['migrateProjectId'] == null ? null : map['migrateProjectId'] as String,
+      masterSiteId: map['masterSiteId'] == null ? null : map['masterSiteId']! as String,
+      migrateProjectId: map['migrateProjectId'] == null ? null : map['migrateProjectId']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

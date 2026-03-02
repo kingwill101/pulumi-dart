@@ -40,11 +40,11 @@ class ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext {
 
   factory ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext(
-      disable: map['disable'] == null ? null : (map['disable'] as bool).input(),
-      level: map['level'] == null ? null : (map['level'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      disable: map['disable'] == null ? null : (map['disable']! as bool).input(),
+      level: map['level'] == null ? null : (map['level']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

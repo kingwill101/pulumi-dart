@@ -22,7 +22,7 @@ class ContainerUser {
 
   factory ContainerUser.fromMap(Map<String, dynamic> map) {
     return ContainerUser(
-      linux: map['linux'] == null ? null : (LinuxContainerUser.fromMap((map['linux'] as Map).cast<String, dynamic>())).input(),
+      linux: map['linux'] == null ? null : (LinuxContainerUser.fromMap((map['linux']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

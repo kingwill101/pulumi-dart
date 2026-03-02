@@ -27,8 +27,8 @@ class DomainCpuNumaInterconnects {
 
   factory DomainCpuNumaInterconnects.fromMap(Map<String, dynamic> map) {
     return DomainCpuNumaInterconnects(
-      bandwidths: map['bandwidths'] == null ? null : (pulumi.Input.decodeList<DomainCpuNumaInterconnectsBandwidth>(map['bandwidths'], (value) => DomainCpuNumaInterconnectsBandwidth.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      latencies: map['latencies'] == null ? null : (pulumi.Input.decodeList<DomainCpuNumaInterconnectsLatency>(map['latencies'], (value) => DomainCpuNumaInterconnectsLatency.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bandwidths: map['bandwidths'] == null ? null : (pulumi.Input.decodeList<DomainCpuNumaInterconnectsBandwidth>(map['bandwidths']!, (value) => DomainCpuNumaInterconnectsBandwidth.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      latencies: map['latencies'] == null ? null : (pulumi.Input.decodeList<DomainCpuNumaInterconnectsLatency>(map['latencies']!, (value) => DomainCpuNumaInterconnectsLatency.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -46,10 +46,10 @@ class GetDiskReplicaPairsResult {
     return GetDiskReplicaPairsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       pairs: pulumi.Input.decodeList<GetDiskReplicaPairsPair>(map['pairs'], (value) => GetDiskReplicaPairsPair.fromMap((value as Map).cast<String, dynamic>())),
-      replicaGroupId: map['replicaGroupId'] == null ? null : map['replicaGroupId'] as String,
-      site: map['site'] == null ? null : map['site'] as String,
+      replicaGroupId: map['replicaGroupId'] == null ? null : map['replicaGroupId']! as String,
+      site: map['site'] == null ? null : map['site']! as String,
     );
   }
 }

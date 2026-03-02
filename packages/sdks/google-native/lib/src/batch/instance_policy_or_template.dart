@@ -32,9 +32,9 @@ class InstancePolicyOrTemplate {
 
   factory InstancePolicyOrTemplate.fromMap(Map<String, dynamic> map) {
     return InstancePolicyOrTemplate(
-      installGpuDrivers: map['installGpuDrivers'] == null ? null : (map['installGpuDrivers'] as bool).input(),
-      instanceTemplate: map['instanceTemplate'] == null ? null : (map['instanceTemplate'] as String).input(),
-      policy: map['policy'] == null ? null : (InstancePolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
+      installGpuDrivers: map['installGpuDrivers'] == null ? null : (map['installGpuDrivers']! as bool).input(),
+      instanceTemplate: map['instanceTemplate'] == null ? null : (map['instanceTemplate']! as String).input(),
+      policy: map['policy'] == null ? null : (InstancePolicy.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

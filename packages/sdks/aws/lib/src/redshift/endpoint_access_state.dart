@@ -62,15 +62,15 @@ class EndpointAccessState {
 
   factory EndpointAccessState.fromMap(Map<String, dynamic> map) {
     return EndpointAccessState(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : (map['clusterIdentifier'] as String).input(),
-      endpointName: map['endpointName'] == null ? null : (map['endpointName'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceOwner: map['resourceOwner'] == null ? null : (map['resourceOwner'] as String).input(),
-      subnetGroupName: map['subnetGroupName'] == null ? null : (map['subnetGroupName'] as String).input(),
-      vpcEndpoints: map['vpcEndpoints'] == null ? null : (pulumi.Input.decodeList<EndpointAccessVpcEndpoint>(map['vpcEndpoints'], (value) => EndpointAccessVpcEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : ((map['vpcSecurityGroupIds'] as List).cast<String>()).input(),
+      address: map['address'] == null ? null : ((map['address'] as String).input()).input(),
+      clusterIdentifier: map['clusterIdentifier'] == null ? null : ((map['clusterIdentifier'] as String).input()).input(),
+      endpointName: map['endpointName'] == null ? null : ((map['endpointName'] as String).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceOwner: map['resourceOwner'] == null ? null : ((map['resourceOwner'] as String).input()).input(),
+      subnetGroupName: map['subnetGroupName'] == null ? null : ((map['subnetGroupName'] as String).input()).input(),
+      vpcEndpoints: map['vpcEndpoints'] == null ? null : ((pulumi.Input.decodeList<EndpointAccessVpcEndpoint>(map['vpcEndpoints']!, (value) => EndpointAccessVpcEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : (((map['vpcSecurityGroupIds'] as List).cast<String>()).input()).input(),
     );
   }
 }

@@ -37,10 +37,10 @@ class DomainDevicesSmartcardPassthroughUnix {
 
   factory DomainDevicesSmartcardPassthroughUnix.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSmartcardPassthroughUnix(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      reconnect: map['reconnect'] == null ? null : (DomainDevicesSmartcardPassthroughUnixReconnect.fromMap((map['reconnect'] as Map).cast<String, dynamic>())).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesSmartcardPassthroughUnixSecLabel>(map['secLabels'], (value) => DomainDevicesSmartcardPassthroughUnixSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      reconnect: map['reconnect'] == null ? null : (DomainDevicesSmartcardPassthroughUnixReconnect.fromMap((map['reconnect']! as Map).cast<String, dynamic>())).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesSmartcardPassthroughUnixSecLabel>(map['secLabels']!, (value) => DomainDevicesSmartcardPassthroughUnixSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

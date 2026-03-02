@@ -82,19 +82,19 @@ class ConfigurationProfileState {
 
   factory ConfigurationProfileState.fromMap(Map<String, dynamic> map) {
     return ConfigurationProfileState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      configurationProfileId: map['configurationProfileId'] == null ? null : (map['configurationProfileId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : (map['kmsKeyIdentifier'] as String).input(),
-      locationUri: map['locationUri'] == null ? null : (map['locationUri'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      retrievalRoleArn: map['retrievalRoleArn'] == null ? null : (map['retrievalRoleArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      validators: map['validators'] == null ? null : (pulumi.Input.decodeList<ConfigurationProfileValidator>(map['validators'], (value) => ConfigurationProfileValidator.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applicationId: map['applicationId'] == null ? null : ((map['applicationId'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      configurationProfileId: map['configurationProfileId'] == null ? null : ((map['configurationProfileId'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : ((map['kmsKeyIdentifier'] as String).input()).input(),
+      locationUri: map['locationUri'] == null ? null : ((map['locationUri'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      retrievalRoleArn: map['retrievalRoleArn'] == null ? null : ((map['retrievalRoleArn'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      validators: map['validators'] == null ? null : ((pulumi.Input.decodeList<ConfigurationProfileValidator>(map['validators']!, (value) => ConfigurationProfileValidator.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

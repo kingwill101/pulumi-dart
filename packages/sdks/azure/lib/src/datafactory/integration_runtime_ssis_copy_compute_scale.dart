@@ -25,8 +25,8 @@ class IntegrationRuntimeSsisCopyComputeScale {
 
   factory IntegrationRuntimeSsisCopyComputeScale.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSsisCopyComputeScale(
-      dataIntegrationUnit: map['dataIntegrationUnit'] == null ? null : (map['dataIntegrationUnit'] as int).input(),
-      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive'] as int).input(),
+      dataIntegrationUnit: map['dataIntegrationUnit'] == null ? null : (map['dataIntegrationUnit']! as int).input(),
+      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive']! as int).input(),
     );
   }
 }

@@ -60,10 +60,10 @@ class BackendServiceIamMemberArgs {
 
   factory BackendServiceIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return BackendServiceIamMemberArgs(
-      condition: map['condition'] == null ? null : (BackendServiceIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (BackendServiceIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       member: (map['member'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

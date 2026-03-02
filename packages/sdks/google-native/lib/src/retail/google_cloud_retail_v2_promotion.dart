@@ -21,7 +21,7 @@ class GoogleCloudRetailV2Promotion {
 
   factory GoogleCloudRetailV2Promotion.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2Promotion(
-      promotionId: map['promotionId'] == null ? null : (map['promotionId'] as String).input(),
+      promotionId: map['promotionId'] == null ? null : (map['promotionId']! as String).input(),
     );
   }
 }

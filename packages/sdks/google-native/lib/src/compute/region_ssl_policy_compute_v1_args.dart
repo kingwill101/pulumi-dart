@@ -59,14 +59,14 @@ class RegionSslPolicyComputeV1Args {
 
   factory RegionSslPolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return RegionSslPolicyComputeV1Args(
-      customFeatures: map['customFeatures'] == null ? null : ((map['customFeatures'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      minTlsVersion: map['minTlsVersion'] == null ? null : (RegionSslPolicyMinTlsVersionComputeV1.fromValue(map['minTlsVersion'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      profile: map['profile'] == null ? null : (RegionSslPolicyProfileComputeV1.fromValue(map['profile'] as String)).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      customFeatures: map['customFeatures'] == null ? null : ((map['customFeatures']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      minTlsVersion: map['minTlsVersion'] == null ? null : (RegionSslPolicyMinTlsVersionComputeV1.fromValue(map['minTlsVersion']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      profile: map['profile'] == null ? null : (RegionSslPolicyProfileComputeV1.fromValue(map['profile']! as String)).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

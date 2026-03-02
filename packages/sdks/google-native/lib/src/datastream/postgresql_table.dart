@@ -27,8 +27,8 @@ class PostgresqlTable {
 
   factory PostgresqlTable.fromMap(Map<String, dynamic> map) {
     return PostgresqlTable(
-      postgresqlColumns: map['postgresqlColumns'] == null ? null : (pulumi.Input.decodeList<PostgresqlColumn>(map['postgresqlColumns'], (value) => PostgresqlColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      table: map['table'] == null ? null : (map['table'] as String).input(),
+      postgresqlColumns: map['postgresqlColumns'] == null ? null : (pulumi.Input.decodeList<PostgresqlColumn>(map['postgresqlColumns']!, (value) => PostgresqlColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      table: map['table'] == null ? null : (map['table']! as String).input(),
     );
   }
 }

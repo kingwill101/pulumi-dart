@@ -41,11 +41,11 @@ class ServiceSettingState {
 
   factory ServiceSettingState.fromMap(Map<String, dynamic> map) {
     return ServiceSettingState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      settingId: map['settingId'] == null ? null : (map['settingId'] as String).input(),
-      settingValue: map['settingValue'] == null ? null : (map['settingValue'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      settingId: map['settingId'] == null ? null : ((map['settingId'] as String).input()).input(),
+      settingValue: map['settingValue'] == null ? null : ((map['settingValue'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

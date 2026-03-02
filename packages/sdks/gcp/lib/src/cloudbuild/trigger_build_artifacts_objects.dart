@@ -38,9 +38,9 @@ class TriggerBuildArtifactsObjects {
 
   factory TriggerBuildArtifactsObjects.fromMap(Map<String, dynamic> map) {
     return TriggerBuildArtifactsObjects(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      paths: map['paths'] == null ? null : ((map['paths'] as List).cast<String>()).input(),
-      timings: map['timings'] == null ? null : (pulumi.Input.decodeList<TriggerBuildArtifactsObjectsTiming>(map['timings'], (value) => TriggerBuildArtifactsObjectsTiming.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      paths: map['paths'] == null ? null : ((map['paths']! as List).cast<String>()).input(),
+      timings: map['timings'] == null ? null : (pulumi.Input.decodeList<TriggerBuildArtifactsObjectsTiming>(map['timings']!, (value) => TriggerBuildArtifactsObjectsTiming.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

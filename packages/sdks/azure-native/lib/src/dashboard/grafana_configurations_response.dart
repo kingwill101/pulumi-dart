@@ -41,10 +41,10 @@ class GrafanaConfigurationsResponse {
 
   factory GrafanaConfigurationsResponse.fromMap(Map<String, dynamic> map) {
     return GrafanaConfigurationsResponse(
-      security: map['security'] == null ? null : (SecurityResponse.fromMap((map['security'] as Map).cast<String, dynamic>())).input(),
-      smtp: map['smtp'] == null ? null : (SmtpResponse.fromMap((map['smtp'] as Map).cast<String, dynamic>())).input(),
-      snapshots: map['snapshots'] == null ? null : (SnapshotsResponse.fromMap((map['snapshots'] as Map).cast<String, dynamic>())).input(),
-      users: map['users'] == null ? null : (UsersResponse.fromMap((map['users'] as Map).cast<String, dynamic>())).input(),
+      security: map['security'] == null ? null : (SecurityResponse.fromMap((map['security']! as Map).cast<String, dynamic>())).input(),
+      smtp: map['smtp'] == null ? null : (SmtpResponse.fromMap((map['smtp']! as Map).cast<String, dynamic>())).input(),
+      snapshots: map['snapshots'] == null ? null : (SnapshotsResponse.fromMap((map['snapshots']! as Map).cast<String, dynamic>())).input(),
+      users: map['users'] == null ? null : (UsersResponse.fromMap((map['users']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

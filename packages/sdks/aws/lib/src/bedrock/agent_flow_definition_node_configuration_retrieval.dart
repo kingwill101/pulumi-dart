@@ -20,7 +20,7 @@ class AgentFlowDefinitionNodeConfigurationRetrieval {
 
   factory AgentFlowDefinitionNodeConfigurationRetrieval.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationRetrieval(
-      serviceConfiguration: map['serviceConfiguration'] == null ? null : (AgentFlowDefinitionNodeConfigurationRetrievalServiceConfiguration.fromMap((map['serviceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      serviceConfiguration: map['serviceConfiguration'] == null ? null : ((AgentFlowDefinitionNodeConfigurationRetrievalServiceConfiguration.fromMap((map['serviceConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

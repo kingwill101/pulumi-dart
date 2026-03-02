@@ -65,15 +65,15 @@ class DeploymentSpecPatch {
 
   factory DeploymentSpecPatch.fromMap(Map<String, dynamic> map) {
     return DeploymentSpecPatch(
-      minReadySeconds: map['minReadySeconds'] == null ? null : (map['minReadySeconds'] as int).input(),
-      paused: map['paused'] == null ? null : (map['paused'] as bool).input(),
-      progressDeadlineSeconds: map['progressDeadlineSeconds'] == null ? null : (map['progressDeadlineSeconds'] as int).input(),
-      replicas: map['replicas'] == null ? null : (map['replicas'] as int).input(),
-      revisionHistoryLimit: map['revisionHistoryLimit'] == null ? null : (map['revisionHistoryLimit'] as int).input(),
-      rollbackTo: map['rollbackTo'] == null ? null : (RollbackConfigPatch.fromMap((map['rollbackTo'] as Map).cast<String, dynamic>())).input(),
-      selector: map['selector'] == null ? null : (LabelSelectorPatch.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
-      strategy: map['strategy'] == null ? null : (DeploymentStrategyPatch.fromMap((map['strategy'] as Map).cast<String, dynamic>())).input(),
-      template: map['template'] == null ? null : (PodTemplateSpecPatch.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
+      minReadySeconds: map['minReadySeconds'] == null ? null : (map['minReadySeconds']! as int).input(),
+      paused: map['paused'] == null ? null : (map['paused']! as bool).input(),
+      progressDeadlineSeconds: map['progressDeadlineSeconds'] == null ? null : (map['progressDeadlineSeconds']! as int).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas']! as int).input(),
+      revisionHistoryLimit: map['revisionHistoryLimit'] == null ? null : (map['revisionHistoryLimit']! as int).input(),
+      rollbackTo: map['rollbackTo'] == null ? null : (RollbackConfigPatch.fromMap((map['rollbackTo']! as Map).cast<String, dynamic>())).input(),
+      selector: map['selector'] == null ? null : (LabelSelectorPatch.fromMap((map['selector']! as Map).cast<String, dynamic>())).input(),
+      strategy: map['strategy'] == null ? null : (DeploymentStrategyPatch.fromMap((map['strategy']! as Map).cast<String, dynamic>())).input(),
+      template: map['template'] == null ? null : (PodTemplateSpecPatch.fromMap((map['template']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

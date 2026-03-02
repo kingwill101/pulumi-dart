@@ -20,7 +20,7 @@ class DistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfig
 
   factory DistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration.fromMap(Map<String, dynamic> map) {
     return DistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration(
-      targetResourceCount: map['targetResourceCount'] == null ? null : (map['targetResourceCount'] as int).input(),
+      targetResourceCount: map['targetResourceCount'] == null ? null : ((map['targetResourceCount'] as int).input()).input(),
     );
   }
 }

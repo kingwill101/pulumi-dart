@@ -70,7 +70,7 @@ class GetIncidentCommentResult {
       author: ClientInfoResponse.fromMap((map['author'] as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
       createdTimeUtc: map['createdTimeUtc'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       lastModifiedTimeUtc: map['lastModifiedTimeUtc'] as String,
       message: map['message'] as String,

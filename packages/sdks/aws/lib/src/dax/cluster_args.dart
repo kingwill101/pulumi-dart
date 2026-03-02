@@ -112,21 +112,21 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones'] as List).cast<String>()).input(),
-      clusterEndpointEncryptionType: map['clusterEndpointEncryptionType'] == null ? null : (map['clusterEndpointEncryptionType'] as String).input(),
+      availabilityZones: map['availabilityZones'] == null ? null : (((map['availabilityZones'] as List).cast<String>()).input()).input(),
+      clusterEndpointEncryptionType: map['clusterEndpointEncryptionType'] == null ? null : ((map['clusterEndpointEncryptionType'] as String).input()).input(),
       clusterName: (map['clusterName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       iamRoleArn: (map['iamRoleArn'] as String).input(),
-      maintenanceWindow: map['maintenanceWindow'] == null ? null : (map['maintenanceWindow'] as String).input(),
+      maintenanceWindow: map['maintenanceWindow'] == null ? null : ((map['maintenanceWindow'] as String).input()).input(),
       nodeType: (map['nodeType'] as String).input(),
-      notificationTopicArn: map['notificationTopicArn'] == null ? null : (map['notificationTopicArn'] as String).input(),
-      parameterGroupName: map['parameterGroupName'] == null ? null : (map['parameterGroupName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      notificationTopicArn: map['notificationTopicArn'] == null ? null : ((map['notificationTopicArn'] as String).input()).input(),
+      parameterGroupName: map['parameterGroupName'] == null ? null : ((map['parameterGroupName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       replicationFactor: (map['replicationFactor'] as int).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
-      serverSideEncryption: map['serverSideEncryption'] == null ? null : (ClusterServerSideEncryption.fromMap((map['serverSideEncryption'] as Map).cast<String, dynamic>())).input(),
-      subnetGroupName: map['subnetGroupName'] == null ? null : (map['subnetGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
+      serverSideEncryption: map['serverSideEncryption'] == null ? null : ((ClusterServerSideEncryption.fromMap((map['serverSideEncryption']! as Map).cast<String, dynamic>())).input()).input(),
+      subnetGroupName: map['subnetGroupName'] == null ? null : ((map['subnetGroupName'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

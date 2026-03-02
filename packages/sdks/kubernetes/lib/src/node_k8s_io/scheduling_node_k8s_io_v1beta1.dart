@@ -27,8 +27,8 @@ class SchedulingNodeK8sIoV1beta1 {
 
   factory SchedulingNodeK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return SchedulingNodeK8sIoV1beta1(
-      nodeSelector: map['nodeSelector'] == null ? null : ((map['nodeSelector'] as Map).cast<String, String>()).input(),
-      tolerations: map['tolerations'] == null ? null : (pulumi.Input.decodeList<Toleration>(map['tolerations'], (value) => Toleration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeSelector: map['nodeSelector'] == null ? null : ((map['nodeSelector']! as Map).cast<String, String>()).input(),
+      tolerations: map['tolerations'] == null ? null : (pulumi.Input.decodeList<Toleration>(map['tolerations']!, (value) => Toleration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

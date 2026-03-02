@@ -94,21 +94,21 @@ class OriginArgs {
 
   factory OriginArgs.fromMap(Map<String, dynamic> map) {
     return OriginArgs(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       endpointName: (map['endpointName'] as String).input(),
       hostName: (map['hostName'] as String).input(),
-      httpPort: map['httpPort'] == null ? null : (map['httpPort'] as int).input(),
-      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort'] as int).input(),
-      originHostHeader: map['originHostHeader'] == null ? null : (map['originHostHeader'] as String).input(),
-      originName: map['originName'] == null ? null : (map['originName'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      privateLinkAlias: map['privateLinkAlias'] == null ? null : (map['privateLinkAlias'] as String).input(),
-      privateLinkApprovalMessage: map['privateLinkApprovalMessage'] == null ? null : (map['privateLinkApprovalMessage'] as String).input(),
-      privateLinkLocation: map['privateLinkLocation'] == null ? null : (map['privateLinkLocation'] as String).input(),
-      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : (map['privateLinkResourceId'] as String).input(),
+      httpPort: map['httpPort'] == null ? null : (map['httpPort']! as int).input(),
+      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort']! as int).input(),
+      originHostHeader: map['originHostHeader'] == null ? null : (map['originHostHeader']! as String).input(),
+      originName: map['originName'] == null ? null : (map['originName']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      privateLinkAlias: map['privateLinkAlias'] == null ? null : (map['privateLinkAlias']! as String).input(),
+      privateLinkApprovalMessage: map['privateLinkApprovalMessage'] == null ? null : (map['privateLinkApprovalMessage']! as String).input(),
+      privateLinkLocation: map['privateLinkLocation'] == null ? null : (map['privateLinkLocation']! as String).input(),
+      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : (map['privateLinkResourceId']! as String).input(),
       profileName: (map['profileName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

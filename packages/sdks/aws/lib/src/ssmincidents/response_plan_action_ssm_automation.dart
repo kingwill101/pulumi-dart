@@ -47,11 +47,11 @@ class ResponsePlanActionSsmAutomation {
   factory ResponsePlanActionSsmAutomation.fromMap(Map<String, dynamic> map) {
     return ResponsePlanActionSsmAutomation(
       documentName: (map['documentName'] as String).input(),
-      documentVersion: map['documentVersion'] == null ? null : (map['documentVersion'] as String).input(),
-      dynamicParameters: map['dynamicParameters'] == null ? null : ((map['dynamicParameters'] as Map).cast<String, String>()).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ResponsePlanActionSsmAutomationParameter>(map['parameters'], (value) => ResponsePlanActionSsmAutomationParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      documentVersion: map['documentVersion'] == null ? null : ((map['documentVersion'] as String).input()).input(),
+      dynamicParameters: map['dynamicParameters'] == null ? null : (((map['dynamicParameters'] as Map).cast<String, String>()).input()).input(),
+      parameters: map['parameters'] == null ? null : ((pulumi.Input.decodeList<ResponsePlanActionSsmAutomationParameter>(map['parameters']!, (value) => ResponsePlanActionSsmAutomationParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      targetAccount: map['targetAccount'] == null ? null : (map['targetAccount'] as String).input(),
+      targetAccount: map['targetAccount'] == null ? null : ((map['targetAccount'] as String).input()).input(),
     );
   }
 }

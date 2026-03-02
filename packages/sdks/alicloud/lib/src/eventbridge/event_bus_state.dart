@@ -26,8 +26,8 @@ class EventBusState {
 
   factory EventBusState.fromMap(Map<String, dynamic> map) {
     return EventBusState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      eventBusName: map['eventBusName'] == null ? null : (map['eventBusName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      eventBusName: map['eventBusName'] == null ? null : (map['eventBusName']! as String).input(),
     );
   }
 }

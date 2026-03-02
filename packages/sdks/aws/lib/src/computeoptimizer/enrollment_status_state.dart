@@ -41,11 +41,11 @@ class EnrollmentStatusState {
 
   factory EnrollmentStatusState.fromMap(Map<String, dynamic> map) {
     return EnrollmentStatusState(
-      includeMemberAccounts: map['includeMemberAccounts'] == null ? null : (map['includeMemberAccounts'] as bool).input(),
-      numberOfMemberAccountsOptedIn: map['numberOfMemberAccountsOptedIn'] == null ? null : (map['numberOfMemberAccountsOptedIn'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (EnrollmentStatusTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      includeMemberAccounts: map['includeMemberAccounts'] == null ? null : ((map['includeMemberAccounts'] as bool).input()).input(),
+      numberOfMemberAccountsOptedIn: map['numberOfMemberAccountsOptedIn'] == null ? null : ((map['numberOfMemberAccountsOptedIn'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((EnrollmentStatusTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

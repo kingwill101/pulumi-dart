@@ -36,10 +36,10 @@ class EncryptionKeyEncryptionKeyIdentity {
 
   factory EncryptionKeyEncryptionKeyIdentity.fromMap(Map<String, dynamic> map) {
     return EncryptionKeyEncryptionKeyIdentity(
-      delegatedIdentityClientId: map['delegatedIdentityClientId'] == null ? null : (map['delegatedIdentityClientId'] as String).input(),
-      federatedClientId: map['federatedClientId'] == null ? null : (map['federatedClientId'] as String).input(),
-      identityType: map['identityType'] == null ? null : (map['identityType'] as String).input(),
-      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : (map['userAssignedIdentityResourceId'] as String).input(),
+      delegatedIdentityClientId: map['delegatedIdentityClientId'] == null ? null : (map['delegatedIdentityClientId']! as String).input(),
+      federatedClientId: map['federatedClientId'] == null ? null : (map['federatedClientId']! as String).input(),
+      identityType: map['identityType'] == null ? null : (map['identityType']! as String).input(),
+      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : (map['userAssignedIdentityResourceId']! as String).input(),
     );
   }
 }

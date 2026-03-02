@@ -83,19 +83,19 @@ class KeyState {
 
   factory KeyState.fromMap(Map<String, dynamic> map) {
     return KeyState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      deletionWindowInDays: map['deletionWindowInDays'] == null ? null : (map['deletionWindowInDays'] as int).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      exportable: map['exportable'] == null ? null : (map['exportable'] as bool).input(),
-      keyAttributes: map['keyAttributes'] == null ? null : (pulumi.Input.decodeList<KeyKeyAttribute>(map['keyAttributes'], (value) => KeyKeyAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      keyCheckValue: map['keyCheckValue'] == null ? null : (map['keyCheckValue'] as String).input(),
-      keyCheckValueAlgorithm: map['keyCheckValueAlgorithm'] == null ? null : (map['keyCheckValueAlgorithm'] as String).input(),
-      keyOrigin: map['keyOrigin'] == null ? null : (map['keyOrigin'] as String).input(),
-      keyState: map['keyState'] == null ? null : (map['keyState'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (KeyTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      deletionWindowInDays: map['deletionWindowInDays'] == null ? null : ((map['deletionWindowInDays'] as int).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      exportable: map['exportable'] == null ? null : ((map['exportable'] as bool).input()).input(),
+      keyAttributes: map['keyAttributes'] == null ? null : ((pulumi.Input.decodeList<KeyKeyAttribute>(map['keyAttributes']!, (value) => KeyKeyAttribute.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      keyCheckValue: map['keyCheckValue'] == null ? null : ((map['keyCheckValue'] as String).input()).input(),
+      keyCheckValueAlgorithm: map['keyCheckValueAlgorithm'] == null ? null : ((map['keyCheckValueAlgorithm'] as String).input()).input(),
+      keyOrigin: map['keyOrigin'] == null ? null : ((map['keyOrigin'] as String).input()).input(),
+      keyState: map['keyState'] == null ? null : ((map['keyState'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((KeyTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

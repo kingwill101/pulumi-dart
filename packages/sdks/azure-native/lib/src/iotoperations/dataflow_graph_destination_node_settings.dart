@@ -34,7 +34,7 @@ class DataflowGraphDestinationNodeSettings {
     return DataflowGraphDestinationNodeSettings(
       dataDestination: (map['dataDestination'] as String).input(),
       endpointRef: (map['endpointRef'] as String).input(),
-      outputSchemaSettings: map['outputSchemaSettings'] == null ? null : (DataflowGraphDestinationSchemaSettings.fromMap((map['outputSchemaSettings'] as Map).cast<String, dynamic>())).input(),
+      outputSchemaSettings: map['outputSchemaSettings'] == null ? null : (DataflowGraphDestinationSchemaSettings.fromMap((map['outputSchemaSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

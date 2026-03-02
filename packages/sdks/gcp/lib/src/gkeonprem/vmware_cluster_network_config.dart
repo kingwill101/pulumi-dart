@@ -61,13 +61,13 @@ class VMwareClusterNetworkConfig {
 
   factory VMwareClusterNetworkConfig.fromMap(Map<String, dynamic> map) {
     return VMwareClusterNetworkConfig(
-      controlPlaneV2Config: map['controlPlaneV2Config'] == null ? null : (VMwareClusterNetworkConfigControlPlaneV2Config.fromMap((map['controlPlaneV2Config'] as Map).cast<String, dynamic>())).input(),
-      dhcpIpConfig: map['dhcpIpConfig'] == null ? null : (VMwareClusterNetworkConfigDhcpIpConfig.fromMap((map['dhcpIpConfig'] as Map).cast<String, dynamic>())).input(),
-      hostConfig: map['hostConfig'] == null ? null : (VMwareClusterNetworkConfigHostConfig.fromMap((map['hostConfig'] as Map).cast<String, dynamic>())).input(),
+      controlPlaneV2Config: map['controlPlaneV2Config'] == null ? null : (VMwareClusterNetworkConfigControlPlaneV2Config.fromMap((map['controlPlaneV2Config']! as Map).cast<String, dynamic>())).input(),
+      dhcpIpConfig: map['dhcpIpConfig'] == null ? null : (VMwareClusterNetworkConfigDhcpIpConfig.fromMap((map['dhcpIpConfig']! as Map).cast<String, dynamic>())).input(),
+      hostConfig: map['hostConfig'] == null ? null : (VMwareClusterNetworkConfigHostConfig.fromMap((map['hostConfig']! as Map).cast<String, dynamic>())).input(),
       podAddressCidrBlocks: ((map['podAddressCidrBlocks'] as List).cast<String>()).input(),
       serviceAddressCidrBlocks: ((map['serviceAddressCidrBlocks'] as List).cast<String>()).input(),
-      staticIpConfig: map['staticIpConfig'] == null ? null : (VMwareClusterNetworkConfigStaticIpConfig.fromMap((map['staticIpConfig'] as Map).cast<String, dynamic>())).input(),
-      vcenterNetwork: map['vcenterNetwork'] == null ? null : (map['vcenterNetwork'] as String).input(),
+      staticIpConfig: map['staticIpConfig'] == null ? null : (VMwareClusterNetworkConfigStaticIpConfig.fromMap((map['staticIpConfig']! as Map).cast<String, dynamic>())).input(),
+      vcenterNetwork: map['vcenterNetwork'] == null ? null : (map['vcenterNetwork']! as String).input(),
     );
   }
 }

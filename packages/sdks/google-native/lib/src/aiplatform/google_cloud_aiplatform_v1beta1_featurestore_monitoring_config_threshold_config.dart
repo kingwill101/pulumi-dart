@@ -21,7 +21,7 @@ class GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfig {
 
   factory GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfig(
-      value: map['value'] == null ? null : (map['value'] as double).input(),
+      value: map['value'] == null ? null : (map['value']! as double).input(),
     );
   }
 }

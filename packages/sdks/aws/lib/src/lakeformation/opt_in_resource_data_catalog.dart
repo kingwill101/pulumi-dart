@@ -20,7 +20,7 @@ class OptInResourceDataCatalog {
 
   factory OptInResourceDataCatalog.fromMap(Map<String, dynamic> map) {
     return OptInResourceDataCatalog(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
     );
   }
 }

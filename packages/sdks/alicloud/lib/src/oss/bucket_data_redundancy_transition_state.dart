@@ -36,10 +36,10 @@ class BucketDataRedundancyTransitionState {
 
   factory BucketDataRedundancyTransitionState.fromMap(Map<String, dynamic> map) {
     return BucketDataRedundancyTransitionState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      taskId: map['taskId'] == null ? null : (map['taskId'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      taskId: map['taskId'] == null ? null : (map['taskId']! as String).input(),
     );
   }
 }

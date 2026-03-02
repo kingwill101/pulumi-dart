@@ -21,7 +21,7 @@ class ComputeNodeIdentityReferenceResponse {
 
   factory ComputeNodeIdentityReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ComputeNodeIdentityReferenceResponse(
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

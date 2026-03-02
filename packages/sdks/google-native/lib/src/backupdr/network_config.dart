@@ -27,8 +27,8 @@ class NetworkConfig {
 
   factory NetworkConfig.fromMap(Map<String, dynamic> map) {
     return NetworkConfig(
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      peeringMode: map['peeringMode'] == null ? null : (NetworkConfigPeeringMode.fromValue(map['peeringMode'] as String)).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      peeringMode: map['peeringMode'] == null ? null : (NetworkConfigPeeringMode.fromValue(map['peeringMode']! as String)).input(),
     );
   }
 }

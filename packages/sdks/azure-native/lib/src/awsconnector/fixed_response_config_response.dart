@@ -31,9 +31,9 @@ class FixedResponseConfigResponse {
 
   factory FixedResponseConfigResponse.fromMap(Map<String, dynamic> map) {
     return FixedResponseConfigResponse(
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      messageBody: map['messageBody'] == null ? null : (map['messageBody'] as String).input(),
-      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      messageBody: map['messageBody'] == null ? null : (map['messageBody']! as String).input(),
+      statusCode: map['statusCode'] == null ? null : (map['statusCode']! as String).input(),
     );
   }
 }

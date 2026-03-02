@@ -32,8 +32,8 @@ class ResourceContaineranalysisV1beta1 {
 
   factory ResourceContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return ResourceContaineranalysisV1beta1(
-      contentHash: map['contentHash'] == null ? null : (HashContaineranalysisV1beta1.fromMap((map['contentHash'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      contentHash: map['contentHash'] == null ? null : (HashContaineranalysisV1beta1.fromMap((map['contentHash']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       uri: (map['uri'] as String).input(),
     );
   }

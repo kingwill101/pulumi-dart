@@ -27,8 +27,8 @@ class ListenerRuleActionForward {
 
   factory ListenerRuleActionForward.fromMap(Map<String, dynamic> map) {
     return ListenerRuleActionForward(
-      stickiness: map['stickiness'] == null ? null : (ListenerRuleActionForwardStickiness.fromMap((map['stickiness'] as Map).cast<String, dynamic>())).input(),
-      targetGroups: (pulumi.Input.decodeList<ListenerRuleActionForwardTargetGroup>(map['targetGroups'], (value) => ListenerRuleActionForwardTargetGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stickiness: map['stickiness'] == null ? null : ((ListenerRuleActionForwardStickiness.fromMap((map['stickiness']! as Map).cast<String, dynamic>())).input()).input(),
+      targetGroups: (pulumi.Input.decodeList<ListenerRuleActionForwardTargetGroup>(map['targetGroups']!, (value) => ListenerRuleActionForwardTargetGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class StorageAccountConfigurationResponse {
 
   factory StorageAccountConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return StorageAccountConfigurationResponse(
-      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey'] as String).input(),
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
+      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey']! as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
     );
   }
 }

@@ -55,13 +55,13 @@ class ProjectCatalogArgs {
 
   factory ProjectCatalogArgs.fromMap(Map<String, dynamic> map) {
     return ProjectCatalogArgs(
-      adoGit: map['adoGit'] == null ? null : (GitCatalog.fromMap((map['adoGit'] as Map).cast<String, dynamic>())).input(),
-      catalogName: map['catalogName'] == null ? null : (map['catalogName'] as String).input(),
-      gitHub: map['gitHub'] == null ? null : (GitCatalog.fromMap((map['gitHub'] as Map).cast<String, dynamic>())).input(),
+      adoGit: map['adoGit'] == null ? null : (GitCatalog.fromMap((map['adoGit']! as Map).cast<String, dynamic>())).input(),
+      catalogName: map['catalogName'] == null ? null : (map['catalogName']! as String).input(),
+      gitHub: map['gitHub'] == null ? null : (GitCatalog.fromMap((map['gitHub']! as Map).cast<String, dynamic>())).input(),
       projectName: (map['projectName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      syncType: map['syncType'] == null ? null : (map['syncType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      syncType: map['syncType'] == null ? null : (map['syncType']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

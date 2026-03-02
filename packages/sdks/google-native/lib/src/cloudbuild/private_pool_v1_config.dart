@@ -28,8 +28,8 @@ class PrivatePoolV1Config {
 
   factory PrivatePoolV1Config.fromMap(Map<String, dynamic> map) {
     return PrivatePoolV1Config(
-      networkConfig: map['networkConfig'] == null ? null : (NetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
-      workerConfig: map['workerConfig'] == null ? null : (WorkerConfig.fromMap((map['workerConfig'] as Map).cast<String, dynamic>())).input(),
+      networkConfig: map['networkConfig'] == null ? null : (NetworkConfig.fromMap((map['networkConfig']! as Map).cast<String, dynamic>())).input(),
+      workerConfig: map['workerConfig'] == null ? null : (WorkerConfig.fromMap((map['workerConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

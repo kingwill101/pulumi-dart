@@ -79,18 +79,18 @@ class RuleState {
 
   factory RuleState.fromMap(Map<String, dynamic> map) {
     return RuleState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      evaluationModes: map['evaluationModes'] == null ? null : (pulumi.Input.decodeList<RuleEvaluationMode>(map['evaluationModes'], (value) => RuleEvaluationMode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inputParameters: map['inputParameters'] == null ? null : (map['inputParameters'] as String).input(),
-      maximumExecutionFrequency: map['maximumExecutionFrequency'] == null ? null : (map['maximumExecutionFrequency'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
-      scope: map['scope'] == null ? null : (RuleScope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
-      source: map['source'] == null ? null : (RuleSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      evaluationModes: map['evaluationModes'] == null ? null : ((pulumi.Input.decodeList<RuleEvaluationMode>(map['evaluationModes']!, (value) => RuleEvaluationMode.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      inputParameters: map['inputParameters'] == null ? null : ((map['inputParameters'] as String).input()).input(),
+      maximumExecutionFrequency: map['maximumExecutionFrequency'] == null ? null : ((map['maximumExecutionFrequency'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      ruleId: map['ruleId'] == null ? null : ((map['ruleId'] as String).input()).input(),
+      scope: map['scope'] == null ? null : ((RuleScope.fromMap((map['scope']! as Map).cast<String, dynamic>())).input()).input(),
+      source: map['source'] == null ? null : ((RuleSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

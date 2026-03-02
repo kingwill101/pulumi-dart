@@ -20,7 +20,7 @@ class ListServiceGloballyEnabledApmsResult {
 
   factory ListServiceGloballyEnabledApmsResult.fromMap(Map<String, dynamic> map) {
     return ListServiceGloballyEnabledApmsResult(
-      value: map['value'] == null ? null : (map['value'] as List).cast<String>(),
+      value: map['value'] == null ? null : (map['value']! as List).cast<String>(),
     );
   }
 }

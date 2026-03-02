@@ -66,11 +66,11 @@ class TargetHttpProxyArgs {
 
   factory TargetHttpProxyArgs.fromMap(Map<String, dynamic> map) {
     return TargetHttpProxyArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : (map['httpKeepAliveTimeoutSec'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      proxyBind: map['proxyBind'] == null ? null : (map['proxyBind'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : (map['httpKeepAliveTimeoutSec']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      proxyBind: map['proxyBind'] == null ? null : (map['proxyBind']! as bool).input(),
       urlMap: (map['urlMap'] as String).input(),
     );
   }

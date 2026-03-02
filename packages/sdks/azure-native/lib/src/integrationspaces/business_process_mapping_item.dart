@@ -36,10 +36,10 @@ class BusinessProcessMappingItem {
 
   factory BusinessProcessMappingItem.fromMap(Map<String, dynamic> map) {
     return BusinessProcessMappingItem(
-      logicAppResourceId: map['logicAppResourceId'] == null ? null : (map['logicAppResourceId'] as String).input(),
-      operationName: map['operationName'] == null ? null : (map['operationName'] as String).input(),
-      operationType: map['operationType'] == null ? null : (map['operationType'] as String).input(),
-      workflowName: map['workflowName'] == null ? null : (map['workflowName'] as String).input(),
+      logicAppResourceId: map['logicAppResourceId'] == null ? null : (map['logicAppResourceId']! as String).input(),
+      operationName: map['operationName'] == null ? null : (map['operationName']! as String).input(),
+      operationType: map['operationType'] == null ? null : (map['operationType']! as String).input(),
+      workflowName: map['workflowName'] == null ? null : (map['workflowName']! as String).input(),
     );
   }
 }

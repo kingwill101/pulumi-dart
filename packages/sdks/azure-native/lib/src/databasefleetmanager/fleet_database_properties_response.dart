@@ -99,21 +99,21 @@ class FleetDatabasePropertiesResponse {
   factory FleetDatabasePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FleetDatabasePropertiesResponse(
       backupRetentionDays: (map['backupRetentionDays'] as int).input(),
-      collation: map['collation'] == null ? null : (map['collation'] as String).input(),
+      collation: map['collation'] == null ? null : (map['collation']! as String).input(),
       connectionString: (map['connectionString'] as String).input(),
-      createMode: map['createMode'] == null ? null : (map['createMode'] as String).input(),
+      createMode: map['createMode'] == null ? null : (map['createMode']! as String).input(),
       databaseSizeGbMax: (map['databaseSizeGbMax'] as int).input(),
       earliestRestoreTime: (map['earliestRestoreTime'] as String).input(),
-      identity: map['identity'] == null ? null : (IdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (IdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
       latestRestoreTime: (map['latestRestoreTime'] as String).input(),
       originalDatabaseId: (map['originalDatabaseId'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       recoverable: (map['recoverable'] as bool).input(),
-      resourceTags: map['resourceTags'] == null ? null : ((map['resourceTags'] as Map).cast<String, String>()).input(),
-      restoreFromTime: map['restoreFromTime'] == null ? null : (map['restoreFromTime'] as String).input(),
-      sourceDatabaseName: map['sourceDatabaseName'] == null ? null : (map['sourceDatabaseName'] as String).input(),
-      tierName: map['tierName'] == null ? null : (map['tierName'] as String).input(),
-      transparentDataEncryption: map['transparentDataEncryption'] == null ? null : (TransparentDataEncryptionResponse.fromMap((map['transparentDataEncryption'] as Map).cast<String, dynamic>())).input(),
+      resourceTags: map['resourceTags'] == null ? null : ((map['resourceTags']! as Map).cast<String, String>()).input(),
+      restoreFromTime: map['restoreFromTime'] == null ? null : (map['restoreFromTime']! as String).input(),
+      sourceDatabaseName: map['sourceDatabaseName'] == null ? null : (map['sourceDatabaseName']! as String).input(),
+      tierName: map['tierName'] == null ? null : (map['tierName']! as String).input(),
+      transparentDataEncryption: map['transparentDataEncryption'] == null ? null : (TransparentDataEncryptionResponse.fromMap((map['transparentDataEncryption']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class EnterpriseWorkspaceState {
 
   factory EnterpriseWorkspaceState.fromMap(Map<String, dynamic> map) {
     return EnterpriseWorkspaceState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ProductCodeValuesEnumValue {
 
   factory ProductCodeValuesEnumValue.fromMap(Map<String, dynamic> map) {
     return ProductCodeValuesEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

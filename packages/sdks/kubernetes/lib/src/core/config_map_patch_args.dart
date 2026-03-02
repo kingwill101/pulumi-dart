@@ -50,12 +50,12 @@ class ConfigMapPatchArgs {
 
   factory ConfigMapPatchArgs.fromMap(Map<String, dynamic> map) {
     return ConfigMapPatchArgs(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      binaryData: map['binaryData'] == null ? null : ((map['binaryData'] as Map).cast<String, String>()).input(),
-      data: map['data'] == null ? null : ((map['data'] as Map).cast<String, String>()).input(),
-      immutable: map['immutable'] == null ? null : (map['immutable'] as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      binaryData: map['binaryData'] == null ? null : ((map['binaryData']! as Map).cast<String, String>()).input(),
+      data: map['data'] == null ? null : ((map['data']! as Map).cast<String, String>()).input(),
+      immutable: map['immutable'] == null ? null : (map['immutable']! as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

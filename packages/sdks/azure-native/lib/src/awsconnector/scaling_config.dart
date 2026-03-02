@@ -31,9 +31,9 @@ class ScalingConfig {
 
   factory ScalingConfig.fromMap(Map<String, dynamic> map) {
     return ScalingConfig(
-      desiredSize: map['desiredSize'] == null ? null : (map['desiredSize'] as int).input(),
-      maxSize: map['maxSize'] == null ? null : (map['maxSize'] as int).input(),
-      minSize: map['minSize'] == null ? null : (map['minSize'] as int).input(),
+      desiredSize: map['desiredSize'] == null ? null : (map['desiredSize']! as int).input(),
+      maxSize: map['maxSize'] == null ? null : (map['maxSize']! as int).input(),
+      minSize: map['minSize'] == null ? null : (map['minSize']! as int).input(),
     );
   }
 }

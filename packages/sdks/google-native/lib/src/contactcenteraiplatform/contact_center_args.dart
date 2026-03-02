@@ -90,20 +90,20 @@ class ContactCenterArgs {
 
   factory ContactCenterArgs.fromMap(Map<String, dynamic> map) {
     return ContactCenterArgs(
-      adminUser: map['adminUser'] == null ? null : (AdminUser.fromMap((map['adminUser'] as Map).cast<String, dynamic>())).input(),
-      ccaipManagedUsers: map['ccaipManagedUsers'] == null ? null : (map['ccaipManagedUsers'] as bool).input(),
+      adminUser: map['adminUser'] == null ? null : (AdminUser.fromMap((map['adminUser']! as Map).cast<String, dynamic>())).input(),
+      ccaipManagedUsers: map['ccaipManagedUsers'] == null ? null : (map['ccaipManagedUsers']! as bool).input(),
       contactCenterId: (map['contactCenterId'] as String).input(),
       customerDomainPrefix: (map['customerDomainPrefix'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      instanceConfig: map['instanceConfig'] == null ? null : (InstanceConfig.fromMap((map['instanceConfig'] as Map).cast<String, dynamic>())).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      samlParams: map['samlParams'] == null ? null : (SAMLParams.fromMap((map['samlParams'] as Map).cast<String, dynamic>())).input(),
-      userEmail: map['userEmail'] == null ? null : (map['userEmail'] as String).input(),
+      instanceConfig: map['instanceConfig'] == null ? null : (InstanceConfig.fromMap((map['instanceConfig']! as Map).cast<String, dynamic>())).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      samlParams: map['samlParams'] == null ? null : (SAMLParams.fromMap((map['samlParams']! as Map).cast<String, dynamic>())).input(),
+      userEmail: map['userEmail'] == null ? null : (map['userEmail']! as String).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class RouteTargetAddressPropertiesFormat {
 
   factory RouteTargetAddressPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return RouteTargetAddressPropertiesFormat(
-      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod'] as String).input(),
-      subnet: map['subnet'] == null ? null : (Subnet.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress']! as String).input(),
+      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod']! as String).input(),
+      subnet: map['subnet'] == null ? null : (Subnet.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

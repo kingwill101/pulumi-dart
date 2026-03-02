@@ -22,7 +22,7 @@ class PreventionDiscoveryConfigOtherCloudStartingLocation {
 
   factory PreventionDiscoveryConfigOtherCloudStartingLocation.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigOtherCloudStartingLocation(
-      awsLocation: map['awsLocation'] == null ? null : (PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocation.fromMap((map['awsLocation'] as Map).cast<String, dynamic>())).input(),
+      awsLocation: map['awsLocation'] == null ? null : (PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocation.fromMap((map['awsLocation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

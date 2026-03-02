@@ -21,7 +21,7 @@ class SensorIntegration {
 
   factory SensorIntegration.fromMap(Map<String, dynamic> map) {
     return SensorIntegration(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as String).input(),
     );
   }
 }

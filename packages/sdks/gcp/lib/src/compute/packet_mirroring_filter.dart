@@ -33,9 +33,9 @@ class PacketMirroringFilter {
 
   factory PacketMirroringFilter.fromMap(Map<String, dynamic> map) {
     return PacketMirroringFilter(
-      cidrRanges: map['cidrRanges'] == null ? null : ((map['cidrRanges'] as List).cast<String>()).input(),
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
-      ipProtocols: map['ipProtocols'] == null ? null : ((map['ipProtocols'] as List).cast<String>()).input(),
+      cidrRanges: map['cidrRanges'] == null ? null : ((map['cidrRanges']! as List).cast<String>()).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
+      ipProtocols: map['ipProtocols'] == null ? null : ((map['ipProtocols']! as List).cast<String>()).input(),
     );
   }
 }

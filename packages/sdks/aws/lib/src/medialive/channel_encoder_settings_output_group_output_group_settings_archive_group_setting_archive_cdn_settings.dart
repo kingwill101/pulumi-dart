@@ -21,7 +21,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArc
 
   factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings(
-      archiveS3Settings: map['archiveS3Settings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettingsArchiveS3Settings.fromMap((map['archiveS3Settings'] as Map).cast<String, dynamic>())).input(),
+      archiveS3Settings: map['archiveS3Settings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettingsArchiveS3Settings.fromMap((map['archiveS3Settings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

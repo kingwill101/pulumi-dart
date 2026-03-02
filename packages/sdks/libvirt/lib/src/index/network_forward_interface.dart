@@ -20,7 +20,7 @@ class NetworkForwardInterface {
 
   factory NetworkForwardInterface.fromMap(Map<String, dynamic> map) {
     return NetworkForwardInterface(
-      dev: map['dev'] == null ? null : (map['dev'] as String).input(),
+      dev: map['dev'] == null ? null : (map['dev']! as String).input(),
     );
   }
 }

@@ -41,11 +41,11 @@ class AwsEfsMountTargetPropertiesResponse {
 
   factory AwsEfsMountTargetPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsEfsMountTargetPropertiesResponse(
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      securityGroups: map['securityGroups'] == null ? null : ((map['securityGroups'] as List).cast<String>()).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      securityGroups: map['securityGroups'] == null ? null : ((map['securityGroups']! as List).cast<String>()).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

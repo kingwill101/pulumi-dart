@@ -60,7 +60,7 @@ class GetKeyGroupResult {
       azureApiVersion: map['azureApiVersion'] as String,
       deploymentStatus: map['deploymentStatus'] as String,
       id: map['id'] as String,
-      keyReferences: map['keyReferences'] == null ? null : pulumi.Input.decodeList<ResourceReferenceResponse>(map['keyReferences'], (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      keyReferences: map['keyReferences'] == null ? null : pulumi.Input.decodeList<ResourceReferenceResponse>(map['keyReferences']!, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),

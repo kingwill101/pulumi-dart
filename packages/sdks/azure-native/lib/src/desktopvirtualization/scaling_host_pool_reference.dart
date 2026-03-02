@@ -26,8 +26,8 @@ class ScalingHostPoolReference {
 
   factory ScalingHostPoolReference.fromMap(Map<String, dynamic> map) {
     return ScalingHostPoolReference(
-      hostPoolArmPath: map['hostPoolArmPath'] == null ? null : (map['hostPoolArmPath'] as String).input(),
-      scalingPlanEnabled: map['scalingPlanEnabled'] == null ? null : (map['scalingPlanEnabled'] as bool).input(),
+      hostPoolArmPath: map['hostPoolArmPath'] == null ? null : (map['hostPoolArmPath']! as String).input(),
+      scalingPlanEnabled: map['scalingPlanEnabled'] == null ? null : (map['scalingPlanEnabled']! as bool).input(),
     );
   }
 }

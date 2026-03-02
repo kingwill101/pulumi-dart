@@ -50,12 +50,12 @@ class PackageArgs {
 
   factory PackageArgs.fromMap(Map<String, dynamic> map) {
     return PackageArgs(
-      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
-      packageDescription: map['packageDescription'] == null ? null : (map['packageDescription'] as String).input(),
+      engineVersion: map['engineVersion'] == null ? null : ((map['engineVersion'] as String).input()).input(),
+      packageDescription: map['packageDescription'] == null ? null : ((map['packageDescription'] as String).input()).input(),
       packageName: (map['packageName'] as String).input(),
-      packageSource: (PackagePackageSource.fromMap((map['packageSource'] as Map).cast<String, dynamic>())).input(),
+      packageSource: (PackagePackageSource.fromMap((map['packageSource']! as Map).cast<String, dynamic>())).input(),
       packageType: (map['packageType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

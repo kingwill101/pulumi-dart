@@ -36,9 +36,9 @@ class VpnGatewayBgpSettingsInstance1BgpPeeringAddress {
   factory VpnGatewayBgpSettingsInstance1BgpPeeringAddress.fromMap(Map<String, dynamic> map) {
     return VpnGatewayBgpSettingsInstance1BgpPeeringAddress(
       customIps: ((map['customIps'] as List).cast<String>()).input(),
-      defaultIps: map['defaultIps'] == null ? null : ((map['defaultIps'] as List).cast<String>()).input(),
-      ipConfigurationId: map['ipConfigurationId'] == null ? null : (map['ipConfigurationId'] as String).input(),
-      tunnelIps: map['tunnelIps'] == null ? null : ((map['tunnelIps'] as List).cast<String>()).input(),
+      defaultIps: map['defaultIps'] == null ? null : ((map['defaultIps']! as List).cast<String>()).input(),
+      ipConfigurationId: map['ipConfigurationId'] == null ? null : (map['ipConfigurationId']! as String).input(),
+      tunnelIps: map['tunnelIps'] == null ? null : ((map['tunnelIps']! as List).cast<String>()).input(),
     );
   }
 }

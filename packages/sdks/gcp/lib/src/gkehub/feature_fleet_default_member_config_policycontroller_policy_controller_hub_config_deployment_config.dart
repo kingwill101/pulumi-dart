@@ -46,10 +46,10 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
   factory FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig.fromMap(Map<String, dynamic> map) {
     return FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig(
       component: (map['component'] as String).input(),
-      containerResources: map['containerResources'] == null ? null : (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources.fromMap((map['containerResources'] as Map).cast<String, dynamic>())).input(),
-      podAffinity: map['podAffinity'] == null ? null : (map['podAffinity'] as String).input(),
-      podTolerations: map['podTolerations'] == null ? null : (pulumi.Input.decodeList<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration>(map['podTolerations'], (value) => FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount'] as int).input(),
+      containerResources: map['containerResources'] == null ? null : (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources.fromMap((map['containerResources']! as Map).cast<String, dynamic>())).input(),
+      podAffinity: map['podAffinity'] == null ? null : (map['podAffinity']! as String).input(),
+      podTolerations: map['podTolerations'] == null ? null : (pulumi.Input.decodeList<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration>(map['podTolerations']!, (value) => FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount']! as int).input(),
     );
   }
 }

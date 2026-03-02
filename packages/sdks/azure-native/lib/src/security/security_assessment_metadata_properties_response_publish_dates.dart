@@ -23,7 +23,7 @@ class SecurityAssessmentMetadataPropertiesResponsePublishDates {
 
   factory SecurityAssessmentMetadataPropertiesResponsePublishDates.fromMap(Map<String, dynamic> map) {
     return SecurityAssessmentMetadataPropertiesResponsePublishDates(
-      gA: map['gA'] == null ? null : (map['gA'] as String).input(),
+      gA: map['gA'] == null ? null : (map['gA']! as String).input(),
       public: (map['public'] as String).input(),
     );
   }

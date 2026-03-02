@@ -31,9 +31,9 @@ class RegistryEnterpriseInstanceInstanceEndpoint {
 
   factory RegistryEnterpriseInstanceInstanceEndpoint.fromMap(Map<String, dynamic> map) {
     return RegistryEnterpriseInstanceInstanceEndpoint(
-      domains: map['domains'] == null ? null : (pulumi.Input.decodeList<RegistryEnterpriseInstanceInstanceEndpointDomain>(map['domains'], (value) => RegistryEnterpriseInstanceInstanceEndpointDomain.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
+      domains: map['domains'] == null ? null : (pulumi.Input.decodeList<RegistryEnterpriseInstanceInstanceEndpointDomain>(map['domains']!, (value) => RegistryEnterpriseInstanceInstanceEndpointDomain.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
     );
   }
 }

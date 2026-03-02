@@ -26,8 +26,8 @@ class IngestionSourcesPropertiesFormat {
 
   factory IngestionSourcesPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return IngestionSourcesPropertiesFormat(
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType']! as String).input(),
     );
   }
 }

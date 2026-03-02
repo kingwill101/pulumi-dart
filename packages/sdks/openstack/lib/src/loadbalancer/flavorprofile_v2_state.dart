@@ -44,10 +44,10 @@ class FlavorprofileV2State {
 
   factory FlavorprofileV2State.fromMap(Map<String, dynamic> map) {
     return FlavorprofileV2State(
-      flavorData: map['flavorData'] == null ? null : (map['flavorData'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      flavorData: map['flavorData'] == null ? null : (map['flavorData']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      providerName: map['providerName'] == null ? null : (map['providerName']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

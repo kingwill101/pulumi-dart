@@ -31,7 +31,7 @@ class GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpec {
 
   factory GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpec(
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']! as String).input(),
       maxValue: (map['maxValue'] as String).input(),
       minValue: (map['minValue'] as String).input(),
     );

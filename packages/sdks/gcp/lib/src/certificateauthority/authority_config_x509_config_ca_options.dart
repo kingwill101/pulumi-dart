@@ -41,9 +41,9 @@ class AuthorityConfigX509ConfigCaOptions {
   factory AuthorityConfigX509ConfigCaOptions.fromMap(Map<String, dynamic> map) {
     return AuthorityConfigX509ConfigCaOptions(
       isCa: (map['isCa'] as bool).input(),
-      maxIssuerPathLength: map['maxIssuerPathLength'] == null ? null : (map['maxIssuerPathLength'] as int).input(),
-      nonCa: map['nonCa'] == null ? null : (map['nonCa'] as bool).input(),
-      zeroMaxIssuerPathLength: map['zeroMaxIssuerPathLength'] == null ? null : (map['zeroMaxIssuerPathLength'] as bool).input(),
+      maxIssuerPathLength: map['maxIssuerPathLength'] == null ? null : (map['maxIssuerPathLength']! as int).input(),
+      nonCa: map['nonCa'] == null ? null : (map['nonCa']! as bool).input(),
+      zeroMaxIssuerPathLength: map['zeroMaxIssuerPathLength'] == null ? null : (map['zeroMaxIssuerPathLength']! as bool).input(),
     );
   }
 }

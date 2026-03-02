@@ -59,13 +59,13 @@ class ListSourceControlRepositoriesArgs {
 
   factory ListSourceControlRepositoriesArgs.fromMap(Map<String, dynamic> map) {
     return ListSourceControlRepositoriesArgs(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      installationId: map['installationId'] == null ? null : (map['installationId'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      installationId: map['installationId'] == null ? null : (map['installationId']! as String).input(),
       kind: (map['kind'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

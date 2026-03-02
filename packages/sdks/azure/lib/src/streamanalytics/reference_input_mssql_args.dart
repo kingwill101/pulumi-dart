@@ -80,16 +80,16 @@ class ReferenceInputMssqlArgs {
   factory ReferenceInputMssqlArgs.fromMap(Map<String, dynamic> map) {
     return ReferenceInputMssqlArgs(
       database: (map['database'] as String).input(),
-      deltaSnapshotQuery: map['deltaSnapshotQuery'] == null ? null : (map['deltaSnapshotQuery'] as String).input(),
+      deltaSnapshotQuery: map['deltaSnapshotQuery'] == null ? null : (map['deltaSnapshotQuery']! as String).input(),
       fullSnapshotQuery: (map['fullSnapshotQuery'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       password: (map['password'] as String).input(),
-      refreshIntervalDuration: map['refreshIntervalDuration'] == null ? null : (map['refreshIntervalDuration'] as String).input(),
+      refreshIntervalDuration: map['refreshIntervalDuration'] == null ? null : (map['refreshIntervalDuration']! as String).input(),
       refreshType: (map['refreshType'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       server: (map['server'] as String).input(),
       streamAnalyticsJobName: (map['streamAnalyticsJobName'] as String).input(),
-      table: map['table'] == null ? null : (map['table'] as String).input(),
+      table: map['table'] == null ? null : (map['table']! as String).input(),
       username: (map['username'] as String).input(),
     );
   }

@@ -30,7 +30,7 @@ class WindowsWebAppSlotSiteConfigHandlerMapping {
 
   factory WindowsWebAppSlotSiteConfigHandlerMapping.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSlotSiteConfigHandlerMapping(
-      arguments: map['arguments'] == null ? null : (map['arguments'] as String).input(),
+      arguments: map['arguments'] == null ? null : (map['arguments']! as String).input(),
       extension: (map['extension'] as String).input(),
       scriptProcessorPath: (map['scriptProcessorPath'] as String).input(),
     );

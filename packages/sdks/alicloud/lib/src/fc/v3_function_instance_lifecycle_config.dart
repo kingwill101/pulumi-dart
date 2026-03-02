@@ -27,8 +27,8 @@ class V3FunctionInstanceLifecycleConfig {
 
   factory V3FunctionInstanceLifecycleConfig.fromMap(Map<String, dynamic> map) {
     return V3FunctionInstanceLifecycleConfig(
-      initializer: map['initializer'] == null ? null : (V3FunctionInstanceLifecycleConfigInitializer.fromMap((map['initializer'] as Map).cast<String, dynamic>())).input(),
-      preStop: map['preStop'] == null ? null : (V3FunctionInstanceLifecycleConfigPreStop.fromMap((map['preStop'] as Map).cast<String, dynamic>())).input(),
+      initializer: map['initializer'] == null ? null : (V3FunctionInstanceLifecycleConfigInitializer.fromMap((map['initializer']! as Map).cast<String, dynamic>())).input(),
+      preStop: map['preStop'] == null ? null : (V3FunctionInstanceLifecycleConfigPreStop.fromMap((map['preStop']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

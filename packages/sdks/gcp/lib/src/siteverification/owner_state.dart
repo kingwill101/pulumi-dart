@@ -29,8 +29,8 @@ class OwnerState {
 
   factory OwnerState.fromMap(Map<String, dynamic> map) {
     return OwnerState(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      webResourceId: map['webResourceId'] == null ? null : (map['webResourceId'] as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      webResourceId: map['webResourceId'] == null ? null : (map['webResourceId']! as String).input(),
     );
   }
 }

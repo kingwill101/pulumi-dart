@@ -48,10 +48,10 @@ class ConnectionFunctionArgs {
   factory ConnectionFunctionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionFunctionArgs(
       connectionFunctionCode: (map['connectionFunctionCode'] as String).input(),
-      connectionFunctionConfig: (ConnectionFunctionConnectionFunctionConfig.fromMap((map['connectionFunctionConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publish: map['publish'] == null ? null : (map['publish'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      connectionFunctionConfig: (ConnectionFunctionConnectionFunctionConfig.fromMap((map['connectionFunctionConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      publish: map['publish'] == null ? null : ((map['publish'] as bool).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

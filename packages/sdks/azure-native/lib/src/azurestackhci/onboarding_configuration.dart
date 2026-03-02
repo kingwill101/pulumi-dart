@@ -41,11 +41,11 @@ class OnboardingConfiguration {
 
   factory OnboardingConfiguration.fromMap(Map<String, dynamic> map) {
     return OnboardingConfiguration(
-      arcVirtualMachineId: map['arcVirtualMachineId'] == null ? null : (map['arcVirtualMachineId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      arcVirtualMachineId: map['arcVirtualMachineId'] == null ? null : (map['arcVirtualMachineId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class DataSourceElasticsearchConfig {
   factory DataSourceElasticsearchConfig.fromMap(Map<String, dynamic> map) {
     return DataSourceElasticsearchConfig(
       endpoint: (map['endpoint'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

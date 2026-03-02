@@ -56,11 +56,11 @@ class MachineImageArgs {
 
   factory MachineImageArgs.fromMap(Map<String, dynamic> map) {
     return MachineImageArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      guestFlush: map['guestFlush'] == null ? null : (map['guestFlush'] as bool).input(),
-      machineImageEncryptionKey: map['machineImageEncryptionKey'] == null ? null : (MachineImageMachineImageEncryptionKey.fromMap((map['machineImageEncryptionKey'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      guestFlush: map['guestFlush'] == null ? null : (map['guestFlush']! as bool).input(),
+      machineImageEncryptionKey: map['machineImageEncryptionKey'] == null ? null : (MachineImageMachineImageEncryptionKey.fromMap((map['machineImageEncryptionKey']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       sourceInstance: (map['sourceInstance'] as String).input(),
     );
   }

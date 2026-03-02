@@ -27,8 +27,8 @@ class InstanceFleetLaunchSpecifications {
 
   factory InstanceFleetLaunchSpecifications.fromMap(Map<String, dynamic> map) {
     return InstanceFleetLaunchSpecifications(
-      onDemandSpecifications: map['onDemandSpecifications'] == null ? null : (pulumi.Input.decodeList<InstanceFleetLaunchSpecificationsOnDemandSpecification>(map['onDemandSpecifications'], (value) => InstanceFleetLaunchSpecificationsOnDemandSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      spotSpecifications: map['spotSpecifications'] == null ? null : (pulumi.Input.decodeList<InstanceFleetLaunchSpecificationsSpotSpecification>(map['spotSpecifications'], (value) => InstanceFleetLaunchSpecificationsSpotSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      onDemandSpecifications: map['onDemandSpecifications'] == null ? null : ((pulumi.Input.decodeList<InstanceFleetLaunchSpecificationsOnDemandSpecification>(map['onDemandSpecifications']!, (value) => InstanceFleetLaunchSpecificationsOnDemandSpecification.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      spotSpecifications: map['spotSpecifications'] == null ? null : ((pulumi.Input.decodeList<InstanceFleetLaunchSpecificationsSpotSpecification>(map['spotSpecifications']!, (value) => InstanceFleetLaunchSpecificationsSpotSpecification.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

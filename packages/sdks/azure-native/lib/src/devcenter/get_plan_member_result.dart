@@ -74,14 +74,14 @@ class GetPlanMemberResult {
     return GetPlanMemberResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      memberId: map['memberId'] == null ? null : map['memberId'] as String,
-      memberType: map['memberType'] == null ? null : map['memberType'] as String,
+      memberId: map['memberId'] == null ? null : map['memberId']! as String,
+      memberType: map['memberType'] == null ? null : map['memberType']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       syncStatus: PlanMemberSyncStatusResponse.fromMap((map['syncStatus'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tier: map['tier'] == null ? null : map['tier']! as String,
       type: map['type'] as String,
     );
   }

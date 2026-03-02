@@ -20,7 +20,7 @@ class GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlte
 
   factory GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlternativeName.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlternativeName(
-      matches: (pulumi.Input.decodeList<GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlternativeNameMatch>(map['matches'], (value) => GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlternativeNameMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matches: (pulumi.Input.decodeList<GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlternativeNameMatch>(map['matches']!, (value) => GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlternativeNameMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

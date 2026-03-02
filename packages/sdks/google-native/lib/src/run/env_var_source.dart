@@ -28,8 +28,8 @@ class EnvVarSource {
 
   factory EnvVarSource.fromMap(Map<String, dynamic> map) {
     return EnvVarSource(
-      configMapKeyRef: map['configMapKeyRef'] == null ? null : (ConfigMapKeySelector.fromMap((map['configMapKeyRef'] as Map).cast<String, dynamic>())).input(),
-      secretKeyRef: map['secretKeyRef'] == null ? null : (SecretKeySelector.fromMap((map['secretKeyRef'] as Map).cast<String, dynamic>())).input(),
+      configMapKeyRef: map['configMapKeyRef'] == null ? null : (ConfigMapKeySelector.fromMap((map['configMapKeyRef']! as Map).cast<String, dynamic>())).input(),
+      secretKeyRef: map['secretKeyRef'] == null ? null : (SecretKeySelector.fromMap((map['secretKeyRef']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -32,8 +32,8 @@ class FtpServerLocationResponse {
 
   factory FtpServerLocationResponse.fromMap(Map<String, dynamic> map) {
     return FtpServerLocationResponse(
-      fileName: map['fileName'] == null ? null : (map['fileName']).input(),
-      folderPath: map['folderPath'] == null ? null : (map['folderPath']).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName']!).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath']!).input(),
       type: (map['type'] as String).input(),
     );
   }

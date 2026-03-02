@@ -42,10 +42,10 @@ class GetDedicatedHostArgs {
 
   factory GetDedicatedHostArgs.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetDedicatedHostFilter>(map['filters'], (value) => GetDedicatedHostFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      hostId: map['hostId'] == null ? null : (map['hostId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetDedicatedHostFilter>(map['filters']!, (value) => GetDedicatedHostFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      hostId: map['hostId'] == null ? null : ((map['hostId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -42,11 +42,11 @@ class IPPoolResponse {
 
   factory IPPoolResponse.fromMap(Map<String, dynamic> map) {
     return IPPoolResponse(
-      end: map['end'] == null ? null : (map['end'] as String).input(),
-      info: map['info'] == null ? null : (IPPoolInfoResponse.fromMap((map['info'] as Map).cast<String, dynamic>())).input(),
-      ipPoolType: map['ipPoolType'] == null ? null : (map['ipPoolType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      start: map['start'] == null ? null : (map['start'] as String).input(),
+      end: map['end'] == null ? null : (map['end']! as String).input(),
+      info: map['info'] == null ? null : (IPPoolInfoResponse.fromMap((map['info']! as Map).cast<String, dynamic>())).input(),
+      ipPoolType: map['ipPoolType'] == null ? null : (map['ipPoolType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      start: map['start'] == null ? null : (map['start']! as String).input(),
     );
   }
 }

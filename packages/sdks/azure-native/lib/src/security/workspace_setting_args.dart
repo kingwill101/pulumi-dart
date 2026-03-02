@@ -36,7 +36,7 @@ class WorkspaceSettingArgs {
     return WorkspaceSettingArgs(
       scope: (map['scope'] as String).input(),
       workspaceId: (map['workspaceId'] as String).input(),
-      workspaceSettingName: map['workspaceSettingName'] == null ? null : (map['workspaceSettingName'] as String).input(),
+      workspaceSettingName: map['workspaceSettingName'] == null ? null : (map['workspaceSettingName']! as String).input(),
     );
   }
 }

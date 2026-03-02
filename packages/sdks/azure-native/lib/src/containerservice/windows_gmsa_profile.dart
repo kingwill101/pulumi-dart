@@ -31,9 +31,9 @@ class WindowsGmsaProfile {
 
   factory WindowsGmsaProfile.fromMap(Map<String, dynamic> map) {
     return WindowsGmsaProfile(
-      dnsServer: map['dnsServer'] == null ? null : (map['dnsServer'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      rootDomainName: map['rootDomainName'] == null ? null : (map['rootDomainName'] as String).input(),
+      dnsServer: map['dnsServer'] == null ? null : (map['dnsServer']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      rootDomainName: map['rootDomainName'] == null ? null : (map['rootDomainName']! as String).input(),
     );
   }
 }

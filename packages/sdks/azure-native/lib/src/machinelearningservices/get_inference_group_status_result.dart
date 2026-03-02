@@ -31,9 +31,9 @@ class GetInferenceGroupStatusResult {
 
   factory GetInferenceGroupStatusResult.fromMap(Map<String, dynamic> map) {
     return GetInferenceGroupStatusResult(
-      actualCapacityInfo: map['actualCapacityInfo'] == null ? null : ActualCapacityInfoResponse.fromMap((map['actualCapacityInfo'] as Map).cast<String, dynamic>()),
-      endpointCount: map['endpointCount'] == null ? null : map['endpointCount'] as int,
-      requestedCapacity: map['requestedCapacity'] == null ? null : map['requestedCapacity'] as int,
+      actualCapacityInfo: map['actualCapacityInfo'] == null ? null : ActualCapacityInfoResponse.fromMap((map['actualCapacityInfo']! as Map).cast<String, dynamic>()),
+      endpointCount: map['endpointCount'] == null ? null : map['endpointCount']! as int,
+      requestedCapacity: map['requestedCapacity'] == null ? null : map['requestedCapacity']! as int,
     );
   }
 }

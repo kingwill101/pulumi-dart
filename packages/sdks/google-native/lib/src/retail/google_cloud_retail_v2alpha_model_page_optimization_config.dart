@@ -35,7 +35,7 @@ class GoogleCloudRetailV2alphaModelPageOptimizationConfig {
     return GoogleCloudRetailV2alphaModelPageOptimizationConfig(
       pageOptimizationEventType: (map['pageOptimizationEventType'] as String).input(),
       panels: (pulumi.Input.decodeList<GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel>(map['panels'], (value) => GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      restriction: map['restriction'] == null ? null : (GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction.fromValue(map['restriction'] as String)).input(),
+      restriction: map['restriction'] == null ? null : (GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction.fromValue(map['restriction']! as String)).input(),
     );
   }
 }

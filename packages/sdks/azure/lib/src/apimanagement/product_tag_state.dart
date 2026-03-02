@@ -36,10 +36,10 @@ class ProductTagState {
 
   factory ProductTagState.fromMap(Map<String, dynamic> map) {
     return ProductTagState(
-      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
-      apiManagementProductId: map['apiManagementProductId'] == null ? null : (map['apiManagementProductId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName']! as String).input(),
+      apiManagementProductId: map['apiManagementProductId'] == null ? null : (map['apiManagementProductId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

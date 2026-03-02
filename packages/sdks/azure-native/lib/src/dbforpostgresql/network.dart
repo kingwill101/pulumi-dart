@@ -31,9 +31,9 @@ class Network {
 
   factory Network.fromMap(Map<String, dynamic> map) {
     return Network(
-      delegatedSubnetResourceId: map['delegatedSubnetResourceId'] == null ? null : (map['delegatedSubnetResourceId'] as String).input(),
-      privateDnsZoneArmResourceId: map['privateDnsZoneArmResourceId'] == null ? null : (map['privateDnsZoneArmResourceId'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      delegatedSubnetResourceId: map['delegatedSubnetResourceId'] == null ? null : (map['delegatedSubnetResourceId']! as String).input(),
+      privateDnsZoneArmResourceId: map['privateDnsZoneArmResourceId'] == null ? null : (map['privateDnsZoneArmResourceId']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
     );
   }
 }

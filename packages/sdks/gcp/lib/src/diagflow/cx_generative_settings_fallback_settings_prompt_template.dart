@@ -30,9 +30,9 @@ class CxGenerativeSettingsFallbackSettingsPromptTemplate {
 
   factory CxGenerativeSettingsFallbackSettingsPromptTemplate.fromMap(Map<String, dynamic> map) {
     return CxGenerativeSettingsFallbackSettingsPromptTemplate(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      frozen: map['frozen'] == null ? null : (map['frozen'] as bool).input(),
-      promptText: map['promptText'] == null ? null : (map['promptText'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      frozen: map['frozen'] == null ? null : (map['frozen']! as bool).input(),
+      promptText: map['promptText'] == null ? null : (map['promptText']! as String).input(),
     );
   }
 }

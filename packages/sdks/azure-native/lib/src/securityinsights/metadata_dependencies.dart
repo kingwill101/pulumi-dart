@@ -46,12 +46,12 @@ class MetadataDependencies {
 
   factory MetadataDependencies.fromMap(Map<String, dynamic> map) {
     return MetadataDependencies(
-      contentId: map['contentId'] == null ? null : (map['contentId'] as String).input(),
-      criteria: map['criteria'] == null ? null : (pulumi.Input.decodeList<MetadataDependencies>(map['criteria'], (value) => MetadataDependencies.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      contentId: map['contentId'] == null ? null : (map['contentId']! as String).input(),
+      criteria: map['criteria'] == null ? null : (pulumi.Input.decodeList<MetadataDependencies>(map['criteria']!, (value) => MetadataDependencies.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

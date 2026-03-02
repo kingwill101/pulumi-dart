@@ -61,14 +61,14 @@ class EthereumDetails {
 
   factory EthereumDetails.fromMap(Map<String, dynamic> map) {
     return EthereumDetails(
-      apiEnableAdmin: map['apiEnableAdmin'] == null ? null : (map['apiEnableAdmin'] as bool).input(),
-      apiEnableDebug: map['apiEnableDebug'] == null ? null : (map['apiEnableDebug'] as bool).input(),
-      beaconFeeRecipient: map['beaconFeeRecipient'] == null ? null : (map['beaconFeeRecipient'] as String).input(),
-      consensusClient: map['consensusClient'] == null ? null : (EthereumDetailsConsensusClient.fromValue(map['consensusClient'] as String)).input(),
-      executionClient: map['executionClient'] == null ? null : (EthereumDetailsExecutionClient.fromValue(map['executionClient'] as String)).input(),
-      gethDetails: map['gethDetails'] == null ? null : (GethDetails.fromMap((map['gethDetails'] as Map).cast<String, dynamic>())).input(),
-      network: map['network'] == null ? null : (EthereumDetailsNetwork.fromValue(map['network'] as String)).input(),
-      nodeType: map['nodeType'] == null ? null : (EthereumDetailsNodeType.fromValue(map['nodeType'] as String)).input(),
+      apiEnableAdmin: map['apiEnableAdmin'] == null ? null : (map['apiEnableAdmin']! as bool).input(),
+      apiEnableDebug: map['apiEnableDebug'] == null ? null : (map['apiEnableDebug']! as bool).input(),
+      beaconFeeRecipient: map['beaconFeeRecipient'] == null ? null : (map['beaconFeeRecipient']! as String).input(),
+      consensusClient: map['consensusClient'] == null ? null : (EthereumDetailsConsensusClient.fromValue(map['consensusClient']! as String)).input(),
+      executionClient: map['executionClient'] == null ? null : (EthereumDetailsExecutionClient.fromValue(map['executionClient']! as String)).input(),
+      gethDetails: map['gethDetails'] == null ? null : (GethDetails.fromMap((map['gethDetails']! as Map).cast<String, dynamic>())).input(),
+      network: map['network'] == null ? null : (EthereumDetailsNetwork.fromValue(map['network']! as String)).input(),
+      nodeType: map['nodeType'] == null ? null : (EthereumDetailsNodeType.fromValue(map['nodeType']! as String)).input(),
     );
   }
 }

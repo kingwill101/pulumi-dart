@@ -25,8 +25,8 @@ class AgentDataSourceDataSourceConfigurationSharePointConfiguration {
 
   factory AgentDataSourceDataSourceConfigurationSharePointConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceDataSourceConfigurationSharePointConfiguration(
-      crawlerConfiguration: map['crawlerConfiguration'] == null ? null : (AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfiguration.fromMap((map['crawlerConfiguration'] as Map).cast<String, dynamic>())).input(),
-      sourceConfiguration: map['sourceConfiguration'] == null ? null : (AgentDataSourceDataSourceConfigurationSharePointConfigurationSourceConfiguration.fromMap((map['sourceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      crawlerConfiguration: map['crawlerConfiguration'] == null ? null : ((AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfiguration.fromMap((map['crawlerConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      sourceConfiguration: map['sourceConfiguration'] == null ? null : ((AgentDataSourceDataSourceConfigurationSharePointConfigurationSourceConfiguration.fromMap((map['sourceConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -31,7 +31,7 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
   factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfigMonitoringOutputsS3Output.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfigMonitoringOutputsS3Output(
       localPath: (map['localPath'] as String).input(),
-      s3UploadMode: map['s3UploadMode'] == null ? null : (map['s3UploadMode'] as String).input(),
+      s3UploadMode: map['s3UploadMode'] == null ? null : ((map['s3UploadMode'] as String).input()).input(),
       s3Uri: (map['s3Uri'] as String).input(),
     );
   }

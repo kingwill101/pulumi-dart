@@ -43,7 +43,7 @@ class FrontdoorBackendPool {
     return FrontdoorBackendPool(
       backends: (pulumi.Input.decodeList<FrontdoorBackendPoolBackend>(map['backends'], (value) => FrontdoorBackendPoolBackend.fromMap((value as Map).cast<String, dynamic>()))).input(),
       healthProbeName: (map['healthProbeName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       loadBalancingName: (map['loadBalancingName'] as String).input(),
       name: (map['name'] as String).input(),
     );

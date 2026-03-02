@@ -30,7 +30,7 @@ class GetStorageBoxSubaccountsArgs {
   factory GetStorageBoxSubaccountsArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxSubaccountsArgs(
       storageBoxId: (map['storageBoxId'] as int).input(),
-      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
     );
   }
 }

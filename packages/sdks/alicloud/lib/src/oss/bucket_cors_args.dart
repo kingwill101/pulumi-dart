@@ -37,7 +37,7 @@ class BucketCorsArgs {
     return BucketCorsArgs(
       bucket: (map['bucket'] as String).input(),
       corsRules: (pulumi.Input.decodeList<BucketCorsCorsRule>(map['corsRules'], (value) => BucketCorsCorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      responseVary: map['responseVary'] == null ? null : (map['responseVary'] as bool).input(),
+      responseVary: map['responseVary'] == null ? null : (map['responseVary']! as bool).input(),
     );
   }
 }

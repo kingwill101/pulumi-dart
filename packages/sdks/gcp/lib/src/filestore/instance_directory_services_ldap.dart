@@ -45,9 +45,9 @@ class InstanceDirectoryServicesLdap {
   factory InstanceDirectoryServicesLdap.fromMap(Map<String, dynamic> map) {
     return InstanceDirectoryServicesLdap(
       domain: (map['domain'] as String).input(),
-      groupsOu: map['groupsOu'] == null ? null : (map['groupsOu'] as String).input(),
+      groupsOu: map['groupsOu'] == null ? null : (map['groupsOu']! as String).input(),
       servers: ((map['servers'] as List).cast<String>()).input(),
-      usersOu: map['usersOu'] == null ? null : (map['usersOu'] as String).input(),
+      usersOu: map['usersOu'] == null ? null : (map['usersOu']! as String).input(),
     );
   }
 }

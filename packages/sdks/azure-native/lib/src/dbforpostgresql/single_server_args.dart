@@ -57,13 +57,13 @@ class SingleServerArgs {
 
   factory SingleServerArgs.fromMap(Map<String, dynamic> map) {
     return SingleServerArgs(
-      identity: map['identity'] == null ? null : (ResourceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      identity: map['identity'] == null ? null : (ResourceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       properties: (ServerPropertiesForDefaultCreate.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
-      sku: map['sku'] == null ? null : (SingleServerSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName']! as String).input(),
+      sku: map['sku'] == null ? null : (SingleServerSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse {
 
   factory DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse.fromMap(Map<String, dynamic> map) {
     return DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse(
-      ultraSSDEnabled: map['ultraSSDEnabled'] == null ? null : (map['ultraSSDEnabled'] as bool).input(),
+      ultraSSDEnabled: map['ultraSSDEnabled'] == null ? null : (map['ultraSSDEnabled']! as bool).input(),
     );
   }
 }

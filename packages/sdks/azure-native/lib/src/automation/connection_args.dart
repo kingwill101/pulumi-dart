@@ -56,10 +56,10 @@ class ConnectionArgs {
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
       automationAccountName: (map['automationAccountName'] as String).input(),
-      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
+      connectionName: map['connectionName'] == null ? null : (map['connectionName']! as String).input(),
       connectionType: (ConnectionTypeAssociationProperty.fromMap((map['connectionType'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fieldDefinitionValues: map['fieldDefinitionValues'] == null ? null : ((map['fieldDefinitionValues'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      fieldDefinitionValues: map['fieldDefinitionValues'] == null ? null : ((map['fieldDefinitionValues']! as Map).cast<String, String>()).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

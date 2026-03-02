@@ -20,7 +20,7 @@ class AgentFlowDefinitionNodeConfigurationCondition {
 
   factory AgentFlowDefinitionNodeConfigurationCondition.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationCondition(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<AgentFlowDefinitionNodeConfigurationConditionCondition>(map['conditions'], (value) => AgentFlowDefinitionNodeConfigurationConditionCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: map['conditions'] == null ? null : ((pulumi.Input.decodeList<AgentFlowDefinitionNodeConfigurationConditionCondition>(map['conditions']!, (value) => AgentFlowDefinitionNodeConfigurationConditionCondition.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

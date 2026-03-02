@@ -22,7 +22,7 @@ class ErrorResponseResponse {
 
   factory ErrorResponseResponse.fromMap(Map<String, dynamic> map) {
     return ErrorResponseResponse(
-      error: map['error'] == null ? null : (ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      error: map['error'] == null ? null : (ErrorDetailResponse.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

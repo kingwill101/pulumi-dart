@@ -51,7 +51,7 @@ class FhirStoreIamBindingArgs {
 
   factory FhirStoreIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return FhirStoreIamBindingArgs(
-      condition: map['condition'] == null ? null : (FhirStoreIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (FhirStoreIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       fhirStoreId: (map['fhirStoreId'] as String).input(),
       members: ((map['members'] as List).cast<String>()).input(),
       role: (map['role'] as String).input(),

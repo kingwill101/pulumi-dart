@@ -33,9 +33,9 @@ class CredentialDeploymentmanagerV2beta {
 
   factory CredentialDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return CredentialDeploymentmanagerV2beta(
-      basicAuth: map['basicAuth'] == null ? null : (BasicAuthDeploymentmanagerV2beta.fromMap((map['basicAuth'] as Map).cast<String, dynamic>())).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (ServiceAccountDeploymentmanagerV2beta.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>())).input(),
-      useProjectDefault: map['useProjectDefault'] == null ? null : (map['useProjectDefault'] as bool).input(),
+      basicAuth: map['basicAuth'] == null ? null : (BasicAuthDeploymentmanagerV2beta.fromMap((map['basicAuth']! as Map).cast<String, dynamic>())).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (ServiceAccountDeploymentmanagerV2beta.fromMap((map['serviceAccount']! as Map).cast<String, dynamic>())).input(),
+      useProjectDefault: map['useProjectDefault'] == null ? null : (map['useProjectDefault']! as bool).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class GitRepoVolume {
 
   factory GitRepoVolume.fromMap(Map<String, dynamic> map) {
     return GitRepoVolume(
-      directory: map['directory'] == null ? null : (map['directory'] as String).input(),
+      directory: map['directory'] == null ? null : (map['directory']! as String).input(),
       repository: (map['repository'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as String).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as String).input(),
     );
   }
 }

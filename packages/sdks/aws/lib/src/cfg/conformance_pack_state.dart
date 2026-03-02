@@ -59,14 +59,14 @@ class ConformancePackState {
 
   factory ConformancePackState.fromMap(Map<String, dynamic> map) {
     return ConformancePackState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      deliveryS3Bucket: map['deliveryS3Bucket'] == null ? null : (map['deliveryS3Bucket'] as String).input(),
-      deliveryS3KeyPrefix: map['deliveryS3KeyPrefix'] == null ? null : (map['deliveryS3KeyPrefix'] as String).input(),
-      inputParameters: map['inputParameters'] == null ? null : (pulumi.Input.decodeList<ConformancePackInputParameter>(map['inputParameters'], (value) => ConformancePackInputParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      templateBody: map['templateBody'] == null ? null : (map['templateBody'] as String).input(),
-      templateS3Uri: map['templateS3Uri'] == null ? null : (map['templateS3Uri'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      deliveryS3Bucket: map['deliveryS3Bucket'] == null ? null : ((map['deliveryS3Bucket'] as String).input()).input(),
+      deliveryS3KeyPrefix: map['deliveryS3KeyPrefix'] == null ? null : ((map['deliveryS3KeyPrefix'] as String).input()).input(),
+      inputParameters: map['inputParameters'] == null ? null : ((pulumi.Input.decodeList<ConformancePackInputParameter>(map['inputParameters']!, (value) => ConformancePackInputParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      templateBody: map['templateBody'] == null ? null : ((map['templateBody'] as String).input()).input(),
+      templateS3Uri: map['templateS3Uri'] == null ? null : ((map['templateS3Uri'] as String).input()).input(),
     );
   }
 }

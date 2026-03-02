@@ -35,10 +35,10 @@ class EventSourceV2SourceRabbitMqParameters {
 
   factory EventSourceV2SourceRabbitMqParameters.fromMap(Map<String, dynamic> map) {
     return EventSourceV2SourceRabbitMqParameters(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      queueName: map['queueName'] == null ? null : (map['queueName'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      virtualHostName: map['virtualHostName'] == null ? null : (map['virtualHostName'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      queueName: map['queueName'] == null ? null : (map['queueName']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      virtualHostName: map['virtualHostName'] == null ? null : (map['virtualHostName']! as String).input(),
     );
   }
 }

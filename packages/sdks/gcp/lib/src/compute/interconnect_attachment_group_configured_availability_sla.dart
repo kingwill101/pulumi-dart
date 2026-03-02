@@ -32,8 +32,8 @@ class InterconnectAttachmentGroupConfiguredAvailabilitySla {
 
   factory InterconnectAttachmentGroupConfiguredAvailabilitySla.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentGroupConfiguredAvailabilitySla(
-      effectiveSla: map['effectiveSla'] == null ? null : (map['effectiveSla'] as String).input(),
-      intendedSlaBlockers: map['intendedSlaBlockers'] == null ? null : (pulumi.Input.decodeList<InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlocker>(map['intendedSlaBlockers'], (value) => InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlocker.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      effectiveSla: map['effectiveSla'] == null ? null : (map['effectiveSla']! as String).input(),
+      intendedSlaBlockers: map['intendedSlaBlockers'] == null ? null : (pulumi.Input.decodeList<InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlocker>(map['intendedSlaBlockers']!, (value) => InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlocker.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

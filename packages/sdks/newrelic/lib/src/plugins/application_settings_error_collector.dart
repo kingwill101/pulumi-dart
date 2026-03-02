@@ -35,10 +35,10 @@ class ApplicationSettingsErrorCollector {
 
   factory ApplicationSettingsErrorCollector.fromMap(Map<String, dynamic> map) {
     return ApplicationSettingsErrorCollector(
-      expectedErrorClasses: map['expectedErrorClasses'] == null ? null : ((map['expectedErrorClasses'] as List).cast<String>()).input(),
-      expectedErrorCodes: map['expectedErrorCodes'] == null ? null : ((map['expectedErrorCodes'] as List).cast<String>()).input(),
-      ignoredErrorClasses: map['ignoredErrorClasses'] == null ? null : ((map['ignoredErrorClasses'] as List).cast<String>()).input(),
-      ignoredErrorCodes: map['ignoredErrorCodes'] == null ? null : ((map['ignoredErrorCodes'] as List).cast<String>()).input(),
+      expectedErrorClasses: map['expectedErrorClasses'] == null ? null : ((map['expectedErrorClasses']! as List).cast<String>()).input(),
+      expectedErrorCodes: map['expectedErrorCodes'] == null ? null : ((map['expectedErrorCodes']! as List).cast<String>()).input(),
+      ignoredErrorClasses: map['ignoredErrorClasses'] == null ? null : ((map['ignoredErrorClasses']! as List).cast<String>()).input(),
+      ignoredErrorCodes: map['ignoredErrorCodes'] == null ? null : ((map['ignoredErrorCodes']! as List).cast<String>()).input(),
     );
   }
 }

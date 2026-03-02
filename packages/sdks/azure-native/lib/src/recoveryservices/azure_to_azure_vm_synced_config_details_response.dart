@@ -27,8 +27,8 @@ class AzureToAzureVmSyncedConfigDetailsResponse {
 
   factory AzureToAzureVmSyncedConfigDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AzureToAzureVmSyncedConfigDetailsResponse(
-      inputEndpoints: map['inputEndpoints'] == null ? null : (pulumi.Input.decodeList<InputEndpointResponse>(map['inputEndpoints'], (value) => InputEndpointResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      inputEndpoints: map['inputEndpoints'] == null ? null : (pulumi.Input.decodeList<InputEndpointResponse>(map['inputEndpoints']!, (value) => InputEndpointResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -45,10 +45,10 @@ class PeeredDnsDomainArgs {
   factory PeeredDnsDomainArgs.fromMap(Map<String, dynamic> map) {
     return PeeredDnsDomainArgs(
       dnsSuffix: (map['dnsSuffix'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       network: (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

@@ -91,20 +91,20 @@ class StageArgs {
 
   factory StageArgs.fromMap(Map<String, dynamic> map) {
     return StageArgs(
-      accessLogSettings: map['accessLogSettings'] == null ? null : (StageAccessLogSettings.fromMap((map['accessLogSettings'] as Map).cast<String, dynamic>())).input(),
-      cacheClusterEnabled: map['cacheClusterEnabled'] == null ? null : (map['cacheClusterEnabled'] as bool).input(),
-      cacheClusterSize: map['cacheClusterSize'] == null ? null : (map['cacheClusterSize'] as String).input(),
-      canarySettings: map['canarySettings'] == null ? null : (StageCanarySettings.fromMap((map['canarySettings'] as Map).cast<String, dynamic>())).input(),
-      clientCertificateId: map['clientCertificateId'] == null ? null : (map['clientCertificateId'] as String).input(),
+      accessLogSettings: map['accessLogSettings'] == null ? null : ((StageAccessLogSettings.fromMap((map['accessLogSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      cacheClusterEnabled: map['cacheClusterEnabled'] == null ? null : ((map['cacheClusterEnabled'] as bool).input()).input(),
+      cacheClusterSize: map['cacheClusterSize'] == null ? null : ((map['cacheClusterSize'] as String).input()).input(),
+      canarySettings: map['canarySettings'] == null ? null : ((StageCanarySettings.fromMap((map['canarySettings']! as Map).cast<String, dynamic>())).input()).input(),
+      clientCertificateId: map['clientCertificateId'] == null ? null : ((map['clientCertificateId'] as String).input()).input(),
       deployment: (map['deployment'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      documentationVersion: map['documentationVersion'] == null ? null : (map['documentationVersion'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      documentationVersion: map['documentationVersion'] == null ? null : ((map['documentationVersion'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       restApi: (map['restApi'] as String).input(),
       stageName: (map['stageName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      variables: map['variables'] == null ? null : ((map['variables'] as Map).cast<String, String>()).input(),
-      xrayTracingEnabled: map['xrayTracingEnabled'] == null ? null : (map['xrayTracingEnabled'] as bool).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      variables: map['variables'] == null ? null : (((map['variables'] as Map).cast<String, String>()).input()).input(),
+      xrayTracingEnabled: map['xrayTracingEnabled'] == null ? null : ((map['xrayTracingEnabled'] as bool).input()).input(),
     );
   }
 }

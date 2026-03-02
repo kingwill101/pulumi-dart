@@ -69,12 +69,12 @@ class DataExportArgs {
 
   factory DataExportArgs.fromMap(Map<String, dynamic> map) {
     return DataExportArgs(
-      createdDate: map['createdDate'] == null ? null : (map['createdDate'] as String).input(),
-      dataExportId: map['dataExportId'] == null ? null : (map['dataExportId'] as String).input(),
-      dataExportName: map['dataExportName'] == null ? null : (map['dataExportName'] as String).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      eventHubName: map['eventHubName'] == null ? null : (map['eventHubName'] as String).input(),
-      lastModifiedDate: map['lastModifiedDate'] == null ? null : (map['lastModifiedDate'] as String).input(),
+      createdDate: map['createdDate'] == null ? null : (map['createdDate']! as String).input(),
+      dataExportId: map['dataExportId'] == null ? null : (map['dataExportId']! as String).input(),
+      dataExportName: map['dataExportName'] == null ? null : (map['dataExportName']! as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      eventHubName: map['eventHubName'] == null ? null : (map['eventHubName']! as String).input(),
+      lastModifiedDate: map['lastModifiedDate'] == null ? null : (map['lastModifiedDate']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceId: (map['resourceId'] as String).input(),
       tableNames: ((map['tableNames'] as List).cast<String>()).input(),

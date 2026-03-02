@@ -29,8 +29,8 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType {
 
   factory PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType(
-      infoType: map['infoType'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoType.fromMap((map['infoType'] as Map).cast<String, dynamic>())).input(),
-      maxFindings: map['maxFindings'] == null ? null : (map['maxFindings'] as int).input(),
+      infoType: map['infoType'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoType.fromMap((map['infoType']! as Map).cast<String, dynamic>())).input(),
+      maxFindings: map['maxFindings'] == null ? null : (map['maxFindings']! as int).input(),
     );
   }
 }

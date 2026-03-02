@@ -36,10 +36,10 @@ class LoadBalancerResourceNames {
 
   factory LoadBalancerResourceNames.fromMap(Map<String, dynamic> map) {
     return LoadBalancerResourceNames(
-      backendPoolNames: map['backendPoolNames'] == null ? null : ((map['backendPoolNames'] as List).cast<String>()).input(),
-      frontendIpConfigurationNames: map['frontendIpConfigurationNames'] == null ? null : ((map['frontendIpConfigurationNames'] as List).cast<String>()).input(),
-      healthProbeNames: map['healthProbeNames'] == null ? null : ((map['healthProbeNames'] as List).cast<String>()).input(),
-      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName'] as String).input(),
+      backendPoolNames: map['backendPoolNames'] == null ? null : ((map['backendPoolNames']! as List).cast<String>()).input(),
+      frontendIpConfigurationNames: map['frontendIpConfigurationNames'] == null ? null : ((map['frontendIpConfigurationNames']! as List).cast<String>()).input(),
+      healthProbeNames: map['healthProbeNames'] == null ? null : ((map['healthProbeNames']! as List).cast<String>()).input(),
+      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName']! as String).input(),
     );
   }
 }

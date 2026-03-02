@@ -35,10 +35,10 @@ class ShareDirectoryState {
 
   factory ShareDirectoryState.fromMap(Map<String, dynamic> map) {
     return ShareDirectoryState(
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      storageShareId: map['storageShareId'] == null ? null : (map['storageShareId'] as String).input(),
-      storageShareUrl: map['storageShareUrl'] == null ? null : (map['storageShareUrl'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      storageShareId: map['storageShareId'] == null ? null : (map['storageShareId']! as String).input(),
+      storageShareUrl: map['storageShareUrl'] == null ? null : (map['storageShareUrl']! as String).input(),
     );
   }
 }

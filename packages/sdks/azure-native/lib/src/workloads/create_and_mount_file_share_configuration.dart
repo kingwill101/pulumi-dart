@@ -33,8 +33,8 @@ class CreateAndMountFileShareConfiguration {
   factory CreateAndMountFileShareConfiguration.fromMap(Map<String, dynamic> map) {
     return CreateAndMountFileShareConfiguration(
       configurationType: (map['configurationType'] as String).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
     );
   }
 }

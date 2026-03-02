@@ -27,8 +27,8 @@ class RepoIdContaineranalysisV1beta1 {
 
   factory RepoIdContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return RepoIdContaineranalysisV1beta1(
-      projectRepoId: map['projectRepoId'] == null ? null : (ProjectRepoIdContaineranalysisV1beta1.fromMap((map['projectRepoId'] as Map).cast<String, dynamic>())).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      projectRepoId: map['projectRepoId'] == null ? null : (ProjectRepoIdContaineranalysisV1beta1.fromMap((map['projectRepoId']! as Map).cast<String, dynamic>())).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
     );
   }
 }

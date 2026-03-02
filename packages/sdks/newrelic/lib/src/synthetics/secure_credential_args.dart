@@ -44,10 +44,10 @@ class SecureCredentialArgs {
 
   factory SecureCredentialArgs.fromMap(Map<String, dynamic> map) {
     return SecureCredentialArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       key: (map['key'] as String).input(),
-      lastUpdated: map['lastUpdated'] == null ? null : (map['lastUpdated'] as String).input(),
+      lastUpdated: map['lastUpdated'] == null ? null : (map['lastUpdated']! as String).input(),
       value: (map['value'] as String).input(),
     );
   }

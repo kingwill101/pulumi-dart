@@ -27,7 +27,7 @@ class VirtualMachineOsProfileSecret {
   factory VirtualMachineOsProfileSecret.fromMap(Map<String, dynamic> map) {
     return VirtualMachineOsProfileSecret(
       sourceVaultId: (map['sourceVaultId'] as String).input(),
-      vaultCertificates: map['vaultCertificates'] == null ? null : (pulumi.Input.decodeList<VirtualMachineOsProfileSecretVaultCertificate>(map['vaultCertificates'], (value) => VirtualMachineOsProfileSecretVaultCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vaultCertificates: map['vaultCertificates'] == null ? null : (pulumi.Input.decodeList<VirtualMachineOsProfileSecretVaultCertificate>(map['vaultCertificates']!, (value) => VirtualMachineOsProfileSecretVaultCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

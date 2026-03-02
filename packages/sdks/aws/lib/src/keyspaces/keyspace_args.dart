@@ -40,10 +40,10 @@ class KeyspaceArgs {
 
   factory KeyspaceArgs.fromMap(Map<String, dynamic> map) {
     return KeyspaceArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      replicationSpecification: map['replicationSpecification'] == null ? null : (KeyspaceReplicationSpecification.fromMap((map['replicationSpecification'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      replicationSpecification: map['replicationSpecification'] == null ? null : ((KeyspaceReplicationSpecification.fromMap((map['replicationSpecification']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

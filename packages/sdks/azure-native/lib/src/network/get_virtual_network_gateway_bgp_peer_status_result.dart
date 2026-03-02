@@ -22,7 +22,7 @@ class GetVirtualNetworkGatewayBgpPeerStatusResult {
 
   factory GetVirtualNetworkGatewayBgpPeerStatusResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkGatewayBgpPeerStatusResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<BgpPeerStatusResponse>(map['value'], (value) => BgpPeerStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<BgpPeerStatusResponse>(map['value']!, (value) => BgpPeerStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

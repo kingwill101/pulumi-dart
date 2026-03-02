@@ -73,12 +73,12 @@ class ControlRetailV2betaArgs {
       catalogId: (map['catalogId'] as String).input(),
       controlId: (map['controlId'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      facetSpec: map['facetSpec'] == null ? null : (GoogleCloudRetailV2betaSearchRequestFacetSpec.fromMap((map['facetSpec'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rule: map['rule'] == null ? null : (GoogleCloudRetailV2betaRule.fromMap((map['rule'] as Map).cast<String, dynamic>())).input(),
-      searchSolutionUseCase: map['searchSolutionUseCase'] == null ? null : (pulumi.Input.decodeList<ControlSearchSolutionUseCaseItemRetailV2beta>(map['searchSolutionUseCase'], (value) => ControlSearchSolutionUseCaseItemRetailV2beta.fromValue(value as String))).input(),
+      facetSpec: map['facetSpec'] == null ? null : (GoogleCloudRetailV2betaSearchRequestFacetSpec.fromMap((map['facetSpec']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rule: map['rule'] == null ? null : (GoogleCloudRetailV2betaRule.fromMap((map['rule']! as Map).cast<String, dynamic>())).input(),
+      searchSolutionUseCase: map['searchSolutionUseCase'] == null ? null : (pulumi.Input.decodeList<ControlSearchSolutionUseCaseItemRetailV2beta>(map['searchSolutionUseCase']!, (value) => ControlSearchSolutionUseCaseItemRetailV2beta.fromValue(value as String))).input(),
       solutionTypes: (pulumi.Input.decodeList<ControlSolutionTypesItemRetailV2beta>(map['solutionTypes'], (value) => ControlSolutionTypesItemRetailV2beta.fromValue(value as String))).input(),
     );
   }

@@ -28,7 +28,7 @@ class AutomationActionWorkspaceResponse {
   factory AutomationActionWorkspaceResponse.fromMap(Map<String, dynamic> map) {
     return AutomationActionWorkspaceResponse(
       actionType: (map['actionType'] as String).input(),
-      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId'] as String).input(),
+      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId']! as String).input(),
     );
   }
 }

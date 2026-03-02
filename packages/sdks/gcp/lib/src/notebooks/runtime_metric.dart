@@ -22,7 +22,7 @@ class RuntimeMetric {
 
   factory RuntimeMetric.fromMap(Map<String, dynamic> map) {
     return RuntimeMetric(
-      systemMetrics: map['systemMetrics'] == null ? null : ((map['systemMetrics'] as Map).cast<String, String>()).input(),
+      systemMetrics: map['systemMetrics'] == null ? null : ((map['systemMetrics']! as Map).cast<String, String>()).input(),
     );
   }
 }

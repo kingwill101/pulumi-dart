@@ -32,8 +32,8 @@ class AppVersionSnapshotGuardrailLlmPromptSecurity {
 
   factory AppVersionSnapshotGuardrailLlmPromptSecurity.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrailLlmPromptSecurity(
-      customPolicies: map['customPolicies'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicy>(map['customPolicies'], (value) => AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultSettings: map['defaultSettings'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting>(map['defaultSettings'], (value) => AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customPolicies: map['customPolicies'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicy>(map['customPolicies']!, (value) => AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultSettings: map['defaultSettings'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting>(map['defaultSettings']!, (value) => AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

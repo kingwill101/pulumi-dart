@@ -31,8 +31,8 @@ class ResourceFieldSelector {
 
   factory ResourceFieldSelector.fromMap(Map<String, dynamic> map) {
     return ResourceFieldSelector(
-      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
-      divisor: map['divisor'] == null ? null : (map['divisor'] as String).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
+      divisor: map['divisor'] == null ? null : (map['divisor']! as String).input(),
       resource: (map['resource'] as String).input(),
     );
   }

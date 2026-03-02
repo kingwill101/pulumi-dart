@@ -94,18 +94,18 @@ class GetIotHubDataConnectionResult {
     return GetIotHubDataConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       consumerGroup: map['consumerGroup'] as String,
-      dataFormat: map['dataFormat'] == null ? null : map['dataFormat'] as String,
-      eventSystemProperties: map['eventSystemProperties'] == null ? null : (map['eventSystemProperties'] as List).cast<String>(),
+      dataFormat: map['dataFormat'] == null ? null : map['dataFormat']! as String,
+      eventSystemProperties: map['eventSystemProperties'] == null ? null : (map['eventSystemProperties']! as List).cast<String>(),
       id: map['id'] as String,
       iotHubResourceId: map['iotHubResourceId'] as String,
       kind: map['kind'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      mappingRuleName: map['mappingRuleName'] == null ? null : map['mappingRuleName'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
+      mappingRuleName: map['mappingRuleName'] == null ? null : map['mappingRuleName']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       sharedAccessPolicyName: map['sharedAccessPolicyName'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tableName: map['tableName'] == null ? null : map['tableName'] as String,
+      tableName: map['tableName'] == null ? null : map['tableName']! as String,
       type: map['type'] as String,
     );
   }

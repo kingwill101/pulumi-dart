@@ -21,7 +21,7 @@ class WebAclRuleChallengeConfig {
 
   factory WebAclRuleChallengeConfig.fromMap(Map<String, dynamic> map) {
     return WebAclRuleChallengeConfig(
-      immunityTimeProperty: map['immunityTimeProperty'] == null ? null : (WebAclRuleChallengeConfigImmunityTimeProperty.fromMap((map['immunityTimeProperty'] as Map).cast<String, dynamic>())).input(),
+      immunityTimeProperty: map['immunityTimeProperty'] == null ? null : ((WebAclRuleChallengeConfigImmunityTimeProperty.fromMap((map['immunityTimeProperty']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

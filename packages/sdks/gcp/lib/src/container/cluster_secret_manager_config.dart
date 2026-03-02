@@ -27,7 +27,7 @@ class ClusterSecretManagerConfig {
   factory ClusterSecretManagerConfig.fromMap(Map<String, dynamic> map) {
     return ClusterSecretManagerConfig(
       enabled: (map['enabled'] as bool).input(),
-      rotationConfig: map['rotationConfig'] == null ? null : (ClusterSecretManagerConfigRotationConfig.fromMap((map['rotationConfig'] as Map).cast<String, dynamic>())).input(),
+      rotationConfig: map['rotationConfig'] == null ? null : (ClusterSecretManagerConfigRotationConfig.fromMap((map['rotationConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

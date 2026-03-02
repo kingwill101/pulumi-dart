@@ -52,7 +52,7 @@ class GetVirtualNetworkRuleResult {
     return GetVirtualNetworkRuleResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : map['ignoreMissingVnetServiceEndpoint'] as bool,
+      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : map['ignoreMissingVnetServiceEndpoint']! as bool,
       name: map['name'] as String,
       state: map['state'] as String,
       type: map['type'] as String,

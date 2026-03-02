@@ -51,10 +51,10 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs {
 
   factory ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs(
-      customConfig: map['customConfig'] == null ? null : (ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enablementState: map['enablementState'] == null ? null : (map['enablementState'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      customConfig: map['customConfig'] == null ? null : (ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((map['customConfig']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enablementState: map['enablementState'] == null ? null : (map['enablementState']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       organization: (map['organization'] as String).input(),
     );
   }

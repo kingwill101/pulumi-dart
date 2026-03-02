@@ -51,11 +51,11 @@ class GalleryScriptArgs {
   factory GalleryScriptArgs.fromMap(Map<String, dynamic> map) {
     return GalleryScriptArgs(
       galleryName: (map['galleryName'] as String).input(),
-      galleryScriptName: map['galleryScriptName'] == null ? null : (map['galleryScriptName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (GalleryScriptProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      galleryScriptName: map['galleryScriptName'] == null ? null : (map['galleryScriptName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (GalleryScriptProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -70,15 +70,15 @@ class ExchangeState {
 
   factory ExchangeState.fromMap(Map<String, dynamic> map) {
     return ExchangeState(
-      alternateExchange: map['alternateExchange'] == null ? null : (map['alternateExchange'] as String).input(),
-      autoDeleteState: map['autoDeleteState'] == null ? null : (map['autoDeleteState'] as bool).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
-      exchangeName: map['exchangeName'] == null ? null : (map['exchangeName'] as String).input(),
-      exchangeType: map['exchangeType'] == null ? null : (map['exchangeType'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      internal: map['internal'] == null ? null : (map['internal'] as bool).input(),
-      virtualHostName: map['virtualHostName'] == null ? null : (map['virtualHostName'] as String).input(),
-      xDelayedType: map['xDelayedType'] == null ? null : (map['xDelayedType'] as String).input(),
+      alternateExchange: map['alternateExchange'] == null ? null : (map['alternateExchange']! as String).input(),
+      autoDeleteState: map['autoDeleteState'] == null ? null : (map['autoDeleteState']! as bool).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
+      exchangeName: map['exchangeName'] == null ? null : (map['exchangeName']! as String).input(),
+      exchangeType: map['exchangeType'] == null ? null : (map['exchangeType']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      internal: map['internal'] == null ? null : (map['internal']! as bool).input(),
+      virtualHostName: map['virtualHostName'] == null ? null : (map['virtualHostName']! as String).input(),
+      xDelayedType: map['xDelayedType'] == null ? null : (map['xDelayedType']! as String).input(),
     );
   }
 }

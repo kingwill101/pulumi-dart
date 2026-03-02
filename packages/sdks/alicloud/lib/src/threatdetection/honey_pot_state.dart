@@ -56,14 +56,14 @@ class HoneyPotState {
 
   factory HoneyPotState.fromMap(Map<String, dynamic> map) {
     return HoneyPotState(
-      honeypotId: map['honeypotId'] == null ? null : (map['honeypotId'] as String).input(),
-      honeypotImageId: map['honeypotImageId'] == null ? null : (map['honeypotImageId'] as String).input(),
-      honeypotImageName: map['honeypotImageName'] == null ? null : (map['honeypotImageName'] as String).input(),
-      honeypotName: map['honeypotName'] == null ? null : (map['honeypotName'] as String).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
-      presetId: map['presetId'] == null ? null : (map['presetId'] as String).input(),
-      states: map['states'] == null ? null : ((map['states'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      honeypotId: map['honeypotId'] == null ? null : (map['honeypotId']! as String).input(),
+      honeypotImageId: map['honeypotImageId'] == null ? null : (map['honeypotImageId']! as String).input(),
+      honeypotImageName: map['honeypotImageName'] == null ? null : (map['honeypotImageName']! as String).input(),
+      honeypotName: map['honeypotName'] == null ? null : (map['honeypotName']! as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
+      presetId: map['presetId'] == null ? null : (map['presetId']! as String).input(),
+      states: map['states'] == null ? null : ((map['states']! as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

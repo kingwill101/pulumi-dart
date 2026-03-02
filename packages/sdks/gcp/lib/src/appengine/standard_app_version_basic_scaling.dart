@@ -26,7 +26,7 @@ class StandardAppVersionBasicScaling {
 
   factory StandardAppVersionBasicScaling.fromMap(Map<String, dynamic> map) {
     return StandardAppVersionBasicScaling(
-      idleTimeout: map['idleTimeout'] == null ? null : (map['idleTimeout'] as String).input(),
+      idleTimeout: map['idleTimeout'] == null ? null : (map['idleTimeout']! as String).input(),
       maxInstances: (map['maxInstances'] as int).input(),
     );
   }

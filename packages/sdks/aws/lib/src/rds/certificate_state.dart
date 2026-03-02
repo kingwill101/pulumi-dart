@@ -26,8 +26,8 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      certificateIdentifier: map['certificateIdentifier'] == null ? null : (map['certificateIdentifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      certificateIdentifier: map['certificateIdentifier'] == null ? null : ((map['certificateIdentifier'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

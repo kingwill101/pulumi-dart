@@ -54,7 +54,7 @@ class GetDiscoveredServiceResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       serviceProperties: pulumi.Input.decodeList<GetDiscoveredServiceServiceProperty>(map['serviceProperties'], (value) => GetDiscoveredServiceServiceProperty.fromMap((value as Map).cast<String, dynamic>())),
       serviceReferences: pulumi.Input.decodeList<GetDiscoveredServiceServiceReference>(map['serviceReferences'], (value) => GetDiscoveredServiceServiceReference.fromMap((value as Map).cast<String, dynamic>())),
       serviceUri: map['serviceUri'] as String,

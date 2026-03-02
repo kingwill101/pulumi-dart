@@ -63,12 +63,12 @@ class ListWebAppBackupConfigurationResult {
 
   factory ListWebAppBackupConfigurationResult.fromMap(Map<String, dynamic> map) {
     return ListWebAppBackupConfigurationResult(
-      backupName: map['backupName'] == null ? null : map['backupName'] as String,
-      backupSchedule: map['backupSchedule'] == null ? null : BackupScheduleResponse.fromMap((map['backupSchedule'] as Map).cast<String, dynamic>()),
-      databases: map['databases'] == null ? null : pulumi.Input.decodeList<DatabaseBackupSettingResponse>(map['databases'], (value) => DatabaseBackupSettingResponse.fromMap((value as Map).cast<String, dynamic>())),
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      backupName: map['backupName'] == null ? null : map['backupName']! as String,
+      backupSchedule: map['backupSchedule'] == null ? null : BackupScheduleResponse.fromMap((map['backupSchedule']! as Map).cast<String, dynamic>()),
+      databases: map['databases'] == null ? null : pulumi.Input.decodeList<DatabaseBackupSettingResponse>(map['databases']!, (value) => DatabaseBackupSettingResponse.fromMap((value as Map).cast<String, dynamic>())),
+      enabled: map['enabled'] == null ? null : map['enabled']! as bool,
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
       storageAccountUrl: map['storageAccountUrl'] as String,
       type: map['type'] as String,

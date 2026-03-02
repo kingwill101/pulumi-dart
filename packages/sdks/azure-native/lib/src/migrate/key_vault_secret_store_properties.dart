@@ -40,12 +40,12 @@ class KeyVaultSecretStoreProperties {
 
   factory KeyVaultSecretStoreProperties.fromMap(Map<String, dynamic> map) {
     return KeyVaultSecretStoreProperties(
-      keyvaultName: map['keyvaultName'] == null ? null : (map['keyvaultName'] as String).input(),
-      managedIdentityProperties: map['managedIdentityProperties'] == null ? null : (ManagedIdentityProperties.fromMap((map['managedIdentityProperties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
-      secretStoreId: map['secretStoreId'] == null ? null : (map['secretStoreId'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      keyvaultName: map['keyvaultName'] == null ? null : (map['keyvaultName']! as String).input(),
+      managedIdentityProperties: map['managedIdentityProperties'] == null ? null : (ManagedIdentityProperties.fromMap((map['managedIdentityProperties']! as Map).cast<String, dynamic>())).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
+      secretStoreId: map['secretStoreId'] == null ? null : (map['secretStoreId']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

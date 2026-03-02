@@ -41,9 +41,9 @@ class PreventionJobTriggerInspectJob {
 
   factory PreventionJobTriggerInspectJob.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJob(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<PreventionJobTriggerInspectJobAction>(map['actions'], (value) => PreventionJobTriggerInspectJobAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inspectConfig: map['inspectConfig'] == null ? null : (PreventionJobTriggerInspectJobInspectConfig.fromMap((map['inspectConfig'] as Map).cast<String, dynamic>())).input(),
-      inspectTemplateName: map['inspectTemplateName'] == null ? null : (map['inspectTemplateName'] as String).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<PreventionJobTriggerInspectJobAction>(map['actions']!, (value) => PreventionJobTriggerInspectJobAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inspectConfig: map['inspectConfig'] == null ? null : (PreventionJobTriggerInspectJobInspectConfig.fromMap((map['inspectConfig']! as Map).cast<String, dynamic>())).input(),
+      inspectTemplateName: map['inspectTemplateName'] == null ? null : (map['inspectTemplateName']! as String).input(),
       storageConfig: (PreventionJobTriggerInspectJobStorageConfig.fromMap((map['storageConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }

@@ -47,7 +47,7 @@ class EventThreatDetectionCustomModuleArgs {
   factory EventThreatDetectionCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return EventThreatDetectionCustomModuleArgs(
       config: (map['config'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       enablementState: (map['enablementState'] as String).input(),
       organization: (map['organization'] as String).input(),
       type: (map['type'] as String).input(),

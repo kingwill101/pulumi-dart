@@ -27,8 +27,8 @@ class GoogleCloudBillingBudgetsV1beta1BudgetAmount {
 
   factory GoogleCloudBillingBudgetsV1beta1BudgetAmount.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBillingBudgetsV1beta1BudgetAmount(
-      lastPeriodAmount: map['lastPeriodAmount'] == null ? null : ((map['lastPeriodAmount'] as Map).cast<String, dynamic>()).input(),
-      specifiedAmount: map['specifiedAmount'] == null ? null : (GoogleTypeMoneyBillingbudgetsV1beta1.fromMap((map['specifiedAmount'] as Map).cast<String, dynamic>())).input(),
+      lastPeriodAmount: map['lastPeriodAmount'] == null ? null : ((map['lastPeriodAmount']! as Map).cast<String, dynamic>()).input(),
+      specifiedAmount: map['specifiedAmount'] == null ? null : (GoogleTypeMoneyBillingbudgetsV1beta1.fromMap((map['specifiedAmount']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

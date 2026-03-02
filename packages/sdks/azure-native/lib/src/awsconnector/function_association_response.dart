@@ -26,8 +26,8 @@ class FunctionAssociationResponse {
 
   factory FunctionAssociationResponse.fromMap(Map<String, dynamic> map) {
     return FunctionAssociationResponse(
-      eventType: map['eventType'] == null ? null : (map['eventType'] as String).input(),
-      functionARN: map['functionARN'] == null ? null : (map['functionARN'] as String).input(),
+      eventType: map['eventType'] == null ? null : (map['eventType']! as String).input(),
+      functionARN: map['functionARN'] == null ? null : (map['functionARN']! as String).input(),
     );
   }
 }

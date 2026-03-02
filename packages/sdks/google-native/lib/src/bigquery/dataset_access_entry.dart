@@ -26,8 +26,8 @@ class DatasetAccessEntry {
 
   factory DatasetAccessEntry.fromMap(Map<String, dynamic> map) {
     return DatasetAccessEntry(
-      dataset: map['dataset'] == null ? null : (DatasetReference.fromMap((map['dataset'] as Map).cast<String, dynamic>())).input(),
-      targetTypes: map['targetTypes'] == null ? null : (pulumi.Input.decodeList<DatasetAccessEntryTargetTypesItem>(map['targetTypes'], (value) => DatasetAccessEntryTargetTypesItem.fromValue(value as String))).input(),
+      dataset: map['dataset'] == null ? null : (DatasetReference.fromMap((map['dataset']! as Map).cast<String, dynamic>())).input(),
+      targetTypes: map['targetTypes'] == null ? null : (pulumi.Input.decodeList<DatasetAccessEntryTargetTypesItem>(map['targetTypes']!, (value) => DatasetAccessEntryTargetTypesItem.fromValue(value as String))).input(),
     );
   }
 }

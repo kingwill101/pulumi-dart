@@ -26,7 +26,7 @@ class VirtualNetworkGatewayConnectionCustomBgpAddresses {
   factory VirtualNetworkGatewayConnectionCustomBgpAddresses.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayConnectionCustomBgpAddresses(
       primary: (map['primary'] as String).input(),
-      secondary: map['secondary'] == null ? null : (map['secondary'] as String).input(),
+      secondary: map['secondary'] == null ? null : (map['secondary']! as String).input(),
     );
   }
 }

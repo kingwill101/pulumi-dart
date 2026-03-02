@@ -24,7 +24,7 @@ class GetEnhancedNatAvailableZonesArgs {
 
   factory GetEnhancedNatAvailableZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetEnhancedNatAvailableZonesArgs(
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

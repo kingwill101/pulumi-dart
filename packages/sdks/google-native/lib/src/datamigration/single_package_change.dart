@@ -26,8 +26,8 @@ class SinglePackageChange {
 
   factory SinglePackageChange.fromMap(Map<String, dynamic> map) {
     return SinglePackageChange(
-      packageBody: map['packageBody'] == null ? null : (map['packageBody'] as String).input(),
-      packageDescription: map['packageDescription'] == null ? null : (map['packageDescription'] as String).input(),
+      packageBody: map['packageBody'] == null ? null : (map['packageBody']! as String).input(),
+      packageDescription: map['packageDescription'] == null ? null : (map['packageDescription']! as String).input(),
     );
   }
 }

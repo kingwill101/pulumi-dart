@@ -37,10 +37,10 @@ class KeyEncryptionKey {
 
   factory KeyEncryptionKey.fromMap(Map<String, dynamic> map) {
     return KeyEncryptionKey(
-      identityProperties: map['identityProperties'] == null ? null : (IdentityProperties.fromMap((map['identityProperties'] as Map).cast<String, dynamic>())).input(),
+      identityProperties: map['identityProperties'] == null ? null : (IdentityProperties.fromMap((map['identityProperties']! as Map).cast<String, dynamic>())).input(),
       kekType: (map['kekType'] as String).input(),
-      kekUrl: map['kekUrl'] == null ? null : (map['kekUrl'] as String).input(),
-      kekVaultResourceID: map['kekVaultResourceID'] == null ? null : (map['kekVaultResourceID'] as String).input(),
+      kekUrl: map['kekUrl'] == null ? null : (map['kekUrl']! as String).input(),
+      kekVaultResourceID: map['kekVaultResourceID'] == null ? null : (map['kekVaultResourceID']! as String).input(),
     );
   }
 }

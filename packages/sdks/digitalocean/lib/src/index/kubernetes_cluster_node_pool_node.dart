@@ -45,12 +45,12 @@ class KubernetesClusterNodePoolNode {
 
   factory KubernetesClusterNodePoolNode.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterNodePoolNode(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      dropletId: map['dropletId'] == null ? null : (map['dropletId'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      dropletId: map['dropletId'] == null ? null : (map['dropletId']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt']! as String).input(),
     );
   }
 }

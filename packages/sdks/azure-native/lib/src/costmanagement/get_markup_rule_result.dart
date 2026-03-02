@@ -68,9 +68,9 @@ class GetMarkupRuleResult {
     return GetMarkupRuleResult(
       azureApiVersion: map['azureApiVersion'] as String,
       customerDetails: CustomerMetadataResponse.fromMap((map['customerDetails'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      eTag: map['eTag'] == null ? null : map['eTag'] as String,
-      endDate: map['endDate'] == null ? null : map['endDate'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      eTag: map['eTag'] == null ? null : map['eTag']! as String,
+      endDate: map['endDate'] == null ? null : map['endDate']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       percentage: map['percentage'] as double,

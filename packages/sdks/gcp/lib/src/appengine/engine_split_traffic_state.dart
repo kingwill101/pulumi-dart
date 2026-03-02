@@ -39,10 +39,10 @@ class EngineSplitTrafficState {
 
   factory EngineSplitTrafficState.fromMap(Map<String, dynamic> map) {
     return EngineSplitTrafficState(
-      migrateTraffic: map['migrateTraffic'] == null ? null : (map['migrateTraffic'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      split: map['split'] == null ? null : (EngineSplitTrafficSplit.fromMap((map['split'] as Map).cast<String, dynamic>())).input(),
+      migrateTraffic: map['migrateTraffic'] == null ? null : (map['migrateTraffic']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      split: map['split'] == null ? null : (EngineSplitTrafficSplit.fromMap((map['split']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

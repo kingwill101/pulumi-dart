@@ -24,7 +24,7 @@ class InstancePerformanceConfigIopsPerTb {
 
   factory InstancePerformanceConfigIopsPerTb.fromMap(Map<String, dynamic> map) {
     return InstancePerformanceConfigIopsPerTb(
-      maxIopsPerTb: map['maxIopsPerTb'] == null ? null : (map['maxIopsPerTb'] as int).input(),
+      maxIopsPerTb: map['maxIopsPerTb'] == null ? null : (map['maxIopsPerTb']! as int).input(),
     );
   }
 }

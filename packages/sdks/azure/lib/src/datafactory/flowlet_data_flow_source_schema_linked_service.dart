@@ -26,7 +26,7 @@ class FlowletDataFlowSourceSchemaLinkedService {
   factory FlowletDataFlowSourceSchemaLinkedService.fromMap(Map<String, dynamic> map) {
     return FlowletDataFlowSourceSchemaLinkedService(
       name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class RoleInlinePolicy {
 
   factory RoleInlinePolicy.fromMap(Map<String, dynamic> map) {
     return RoleInlinePolicy(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
     );
   }
 }

@@ -51,12 +51,12 @@ class InstanceMetadataOptionsResponse {
 
   factory InstanceMetadataOptionsResponse.fromMap(Map<String, dynamic> map) {
     return InstanceMetadataOptionsResponse(
-      httpEndpoint: map['httpEndpoint'] == null ? null : (InstanceMetadataEndpointStateEnumValue.fromMap((map['httpEndpoint'] as Map).cast<String, dynamic>())).input(),
-      httpProtocolIpv6: map['httpProtocolIpv6'] == null ? null : (InstanceMetadataProtocolStateEnumValue.fromMap((map['httpProtocolIpv6'] as Map).cast<String, dynamic>())).input(),
-      httpPutResponseHopLimit: map['httpPutResponseHopLimit'] == null ? null : (map['httpPutResponseHopLimit'] as int).input(),
-      httpTokens: map['httpTokens'] == null ? null : (HttpTokensStateEnumValue.fromMap((map['httpTokens'] as Map).cast<String, dynamic>())).input(),
-      instanceMetadataTags: map['instanceMetadataTags'] == null ? null : (InstanceMetadataTagsStateEnumValue.fromMap((map['instanceMetadataTags'] as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (InstanceMetadataOptionsStateEnumValue.fromMap((map['state'] as Map).cast<String, dynamic>())).input(),
+      httpEndpoint: map['httpEndpoint'] == null ? null : (InstanceMetadataEndpointStateEnumValue.fromMap((map['httpEndpoint']! as Map).cast<String, dynamic>())).input(),
+      httpProtocolIpv6: map['httpProtocolIpv6'] == null ? null : (InstanceMetadataProtocolStateEnumValue.fromMap((map['httpProtocolIpv6']! as Map).cast<String, dynamic>())).input(),
+      httpPutResponseHopLimit: map['httpPutResponseHopLimit'] == null ? null : (map['httpPutResponseHopLimit']! as int).input(),
+      httpTokens: map['httpTokens'] == null ? null : (HttpTokensStateEnumValue.fromMap((map['httpTokens']! as Map).cast<String, dynamic>())).input(),
+      instanceMetadataTags: map['instanceMetadataTags'] == null ? null : (InstanceMetadataTagsStateEnumValue.fromMap((map['instanceMetadataTags']! as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (InstanceMetadataOptionsStateEnumValue.fromMap((map['state']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

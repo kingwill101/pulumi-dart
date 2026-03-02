@@ -26,8 +26,8 @@ class CustomErrorRule {
 
   factory CustomErrorRule.fromMap(Map<String, dynamic> map) {
     return CustomErrorRule(
-      isErrorType: map['isErrorType'] == null ? null : (map['isErrorType'] as bool).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
+      isErrorType: map['isErrorType'] == null ? null : (map['isErrorType']! as bool).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
     );
   }
 }

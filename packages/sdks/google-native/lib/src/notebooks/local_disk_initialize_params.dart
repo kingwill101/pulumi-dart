@@ -42,11 +42,11 @@ class LocalDiskInitializeParams {
 
   factory LocalDiskInitializeParams.fromMap(Map<String, dynamic> map) {
     return LocalDiskInitializeParams(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      diskName: map['diskName'] == null ? null : (map['diskName'] as String).input(),
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as String).input(),
-      diskType: map['diskType'] == null ? null : (LocalDiskInitializeParamsDiskType.fromValue(map['diskType'] as String)).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      diskName: map['diskName'] == null ? null : (map['diskName']! as String).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as String).input(),
+      diskType: map['diskType'] == null ? null : (LocalDiskInitializeParamsDiskType.fromValue(map['diskType']! as String)).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -50,11 +50,11 @@ class JobArgs {
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
       batchPoolId: (map['batchPoolId'] as String).input(),
-      commonEnvironmentProperties: map['commonEnvironmentProperties'] == null ? null : ((map['commonEnvironmentProperties'] as Map).cast<String, String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      taskRetryMaximum: map['taskRetryMaximum'] == null ? null : (map['taskRetryMaximum'] as int).input(),
+      commonEnvironmentProperties: map['commonEnvironmentProperties'] == null ? null : ((map['commonEnvironmentProperties']! as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      taskRetryMaximum: map['taskRetryMaximum'] == null ? null : (map['taskRetryMaximum']! as int).input(),
     );
   }
 }

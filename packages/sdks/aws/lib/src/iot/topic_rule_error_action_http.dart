@@ -31,8 +31,8 @@ class TopicRuleErrorActionHttp {
 
   factory TopicRuleErrorActionHttp.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorActionHttp(
-      confirmationUrl: map['confirmationUrl'] == null ? null : (map['confirmationUrl'] as String).input(),
-      httpHeaders: map['httpHeaders'] == null ? null : (pulumi.Input.decodeList<TopicRuleErrorActionHttpHttpHeader>(map['httpHeaders'], (value) => TopicRuleErrorActionHttpHttpHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      confirmationUrl: map['confirmationUrl'] == null ? null : ((map['confirmationUrl'] as String).input()).input(),
+      httpHeaders: map['httpHeaders'] == null ? null : ((pulumi.Input.decodeList<TopicRuleErrorActionHttpHttpHeader>(map['httpHeaders']!, (value) => TopicRuleErrorActionHttpHttpHeader.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       url: (map['url'] as String).input(),
     );
   }

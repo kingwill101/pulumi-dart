@@ -31,9 +31,9 @@ class ListingRestrictedExportConfig {
 
   factory ListingRestrictedExportConfig.fromMap(Map<String, dynamic> map) {
     return ListingRestrictedExportConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      restrictDirectTableAccess: map['restrictDirectTableAccess'] == null ? null : (map['restrictDirectTableAccess'] as bool).input(),
-      restrictQueryResult: map['restrictQueryResult'] == null ? null : (map['restrictQueryResult'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      restrictDirectTableAccess: map['restrictDirectTableAccess'] == null ? null : (map['restrictDirectTableAccess']! as bool).input(),
+      restrictQueryResult: map['restrictQueryResult'] == null ? null : (map['restrictQueryResult']! as bool).input(),
     );
   }
 }

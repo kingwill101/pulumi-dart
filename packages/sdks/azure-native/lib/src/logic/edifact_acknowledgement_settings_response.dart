@@ -72,8 +72,8 @@ class EdifactAcknowledgementSettingsResponse {
   factory EdifactAcknowledgementSettingsResponse.fromMap(Map<String, dynamic> map) {
     return EdifactAcknowledgementSettingsResponse(
       acknowledgementControlNumberLowerBound: (map['acknowledgementControlNumberLowerBound'] as int).input(),
-      acknowledgementControlNumberPrefix: map['acknowledgementControlNumberPrefix'] == null ? null : (map['acknowledgementControlNumberPrefix'] as String).input(),
-      acknowledgementControlNumberSuffix: map['acknowledgementControlNumberSuffix'] == null ? null : (map['acknowledgementControlNumberSuffix'] as String).input(),
+      acknowledgementControlNumberPrefix: map['acknowledgementControlNumberPrefix'] == null ? null : (map['acknowledgementControlNumberPrefix']! as String).input(),
+      acknowledgementControlNumberSuffix: map['acknowledgementControlNumberSuffix'] == null ? null : (map['acknowledgementControlNumberSuffix']! as String).input(),
       acknowledgementControlNumberUpperBound: (map['acknowledgementControlNumberUpperBound'] as int).input(),
       batchFunctionalAcknowledgements: (map['batchFunctionalAcknowledgements'] as bool).input(),
       batchTechnicalAcknowledgements: (map['batchTechnicalAcknowledgements'] as bool).input(),

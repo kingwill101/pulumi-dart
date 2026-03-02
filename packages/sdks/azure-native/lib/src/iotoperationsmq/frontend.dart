@@ -33,8 +33,8 @@ class Frontend {
   factory Frontend.fromMap(Map<String, dynamic> map) {
     return Frontend(
       replicas: (map['replicas'] as int).input(),
-      temporaryResourceLimits: map['temporaryResourceLimits'] == null ? null : (TemporaryResourceLimitsConfig.fromMap((map['temporaryResourceLimits'] as Map).cast<String, dynamic>())).input(),
-      workers: map['workers'] == null ? null : (map['workers'] as int).input(),
+      temporaryResourceLimits: map['temporaryResourceLimits'] == null ? null : (TemporaryResourceLimitsConfig.fromMap((map['temporaryResourceLimits']! as Map).cast<String, dynamic>())).input(),
+      workers: map['workers'] == null ? null : (map['workers']! as int).input(),
     );
   }
 }

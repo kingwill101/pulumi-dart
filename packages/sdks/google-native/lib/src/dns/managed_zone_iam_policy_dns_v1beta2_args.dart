@@ -54,13 +54,13 @@ class ManagedZoneIamPolicyDnsV1beta2Args {
 
   factory ManagedZoneIamPolicyDnsV1beta2Args.fromMap(Map<String, dynamic> map) {
     return ManagedZoneIamPolicyDnsV1beta2Args(
-      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1AuditConfigDnsV1beta2>(map['auditConfigs'], (value) => GoogleIamV1AuditConfigDnsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1BindingDnsV1beta2>(map['bindings'], (value) => GoogleIamV1BindingDnsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1AuditConfigDnsV1beta2>(map['auditConfigs']!, (value) => GoogleIamV1AuditConfigDnsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1BindingDnsV1beta2>(map['bindings']!, (value) => GoogleIamV1BindingDnsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       managedZone: (map['managedZone'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      updateMask: map['updateMask'] == null ? null : (map['updateMask'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      updateMask: map['updateMask'] == null ? null : (map['updateMask']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

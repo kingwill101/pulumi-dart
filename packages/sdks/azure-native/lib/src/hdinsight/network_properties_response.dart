@@ -37,10 +37,10 @@ class NetworkPropertiesResponse {
 
   factory NetworkPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NetworkPropertiesResponse(
-      outboundDependenciesManagedType: map['outboundDependenciesManagedType'] == null ? null : (map['outboundDependenciesManagedType'] as String).input(),
-      privateLink: map['privateLink'] == null ? null : (map['privateLink'] as String).input(),
-      publicIpTag: map['publicIpTag'] == null ? null : (IpTagResponse.fromMap((map['publicIpTag'] as Map).cast<String, dynamic>())).input(),
-      resourceProviderConnection: map['resourceProviderConnection'] == null ? null : (map['resourceProviderConnection'] as String).input(),
+      outboundDependenciesManagedType: map['outboundDependenciesManagedType'] == null ? null : (map['outboundDependenciesManagedType']! as String).input(),
+      privateLink: map['privateLink'] == null ? null : (map['privateLink']! as String).input(),
+      publicIpTag: map['publicIpTag'] == null ? null : (IpTagResponse.fromMap((map['publicIpTag']! as Map).cast<String, dynamic>())).input(),
+      resourceProviderConnection: map['resourceProviderConnection'] == null ? null : (map['resourceProviderConnection']! as String).input(),
     );
   }
 }

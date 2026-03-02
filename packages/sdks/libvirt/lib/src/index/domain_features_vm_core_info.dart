@@ -20,7 +20,7 @@ class DomainFeaturesVmCoreInfo {
 
   factory DomainFeaturesVmCoreInfo.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesVmCoreInfo(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

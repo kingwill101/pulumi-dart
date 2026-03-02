@@ -71,12 +71,12 @@ class ListingIamMemberArgs {
 
   factory ListingIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return ListingIamMemberArgs(
-      condition: map['condition'] == null ? null : (ListingIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (ListingIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       dataExchangeId: (map['dataExchangeId'] as String).input(),
       listingId: (map['listingId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       member: (map['member'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

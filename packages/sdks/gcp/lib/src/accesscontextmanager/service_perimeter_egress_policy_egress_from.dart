@@ -45,10 +45,10 @@ class ServicePerimeterEgressPolicyEgressFrom {
 
   factory ServicePerimeterEgressPolicyEgressFrom.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterEgressPolicyEgressFrom(
-      identities: map['identities'] == null ? null : ((map['identities'] as List).cast<String>()).input(),
-      identityType: map['identityType'] == null ? null : (map['identityType'] as String).input(),
-      sourceRestriction: map['sourceRestriction'] == null ? null : (map['sourceRestriction'] as String).input(),
-      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<ServicePerimeterEgressPolicyEgressFromSource>(map['sources'], (value) => ServicePerimeterEgressPolicyEgressFromSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identities: map['identities'] == null ? null : ((map['identities']! as List).cast<String>()).input(),
+      identityType: map['identityType'] == null ? null : (map['identityType']! as String).input(),
+      sourceRestriction: map['sourceRestriction'] == null ? null : (map['sourceRestriction']! as String).input(),
+      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<ServicePerimeterEgressPolicyEgressFromSource>(map['sources']!, (value) => ServicePerimeterEgressPolicyEgressFromSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

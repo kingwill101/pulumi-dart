@@ -30,9 +30,9 @@ class DomainScalingParameters {
 
   factory DomainScalingParameters.fromMap(Map<String, dynamic> map) {
     return DomainScalingParameters(
-      desiredInstanceType: map['desiredInstanceType'] == null ? null : (map['desiredInstanceType'] as String).input(),
-      desiredPartitionCount: map['desiredPartitionCount'] == null ? null : (map['desiredPartitionCount'] as int).input(),
-      desiredReplicationCount: map['desiredReplicationCount'] == null ? null : (map['desiredReplicationCount'] as int).input(),
+      desiredInstanceType: map['desiredInstanceType'] == null ? null : ((map['desiredInstanceType'] as String).input()).input(),
+      desiredPartitionCount: map['desiredPartitionCount'] == null ? null : ((map['desiredPartitionCount'] as int).input()).input(),
+      desiredReplicationCount: map['desiredReplicationCount'] == null ? null : ((map['desiredReplicationCount'] as int).input()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ScopeClusterResponse {
 
   factory ScopeClusterResponse.fromMap(Map<String, dynamic> map) {
     return ScopeClusterResponse(
-      releaseNamespace: map['releaseNamespace'] == null ? null : (map['releaseNamespace'] as String).input(),
+      releaseNamespace: map['releaseNamespace'] == null ? null : (map['releaseNamespace']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class BestEffortProvisioning {
 
   factory BestEffortProvisioning.fromMap(Map<String, dynamic> map) {
     return BestEffortProvisioning(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      minProvisionNodes: map['minProvisionNodes'] == null ? null : (map['minProvisionNodes'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      minProvisionNodes: map['minProvisionNodes'] == null ? null : (map['minProvisionNodes']! as int).input(),
     );
   }
 }

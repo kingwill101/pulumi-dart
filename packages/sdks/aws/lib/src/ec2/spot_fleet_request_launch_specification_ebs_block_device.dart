@@ -51,15 +51,15 @@ class SpotFleetRequestLaunchSpecificationEbsBlockDevice {
 
   factory SpotFleetRequestLaunchSpecificationEbsBlockDevice.fromMap(Map<String, dynamic> map) {
     return SpotFleetRequestLaunchSpecificationEbsBlockDevice(
-      deleteOnTermination: map['deleteOnTermination'] == null ? null : (map['deleteOnTermination'] as bool).input(),
+      deleteOnTermination: map['deleteOnTermination'] == null ? null : ((map['deleteOnTermination'] as bool).input()).input(),
       deviceName: (map['deviceName'] as String).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
-      iops: map['iops'] == null ? null : (map['iops'] as int).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
-      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
-      volumeSize: map['volumeSize'] == null ? null : (map['volumeSize'] as int).input(),
-      volumeType: map['volumeType'] == null ? null : (map['volumeType'] as String).input(),
+      encrypted: map['encrypted'] == null ? null : ((map['encrypted'] as bool).input()).input(),
+      iops: map['iops'] == null ? null : ((map['iops'] as int).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      snapshotId: map['snapshotId'] == null ? null : ((map['snapshotId'] as String).input()).input(),
+      throughput: map['throughput'] == null ? null : ((map['throughput'] as int).input()).input(),
+      volumeSize: map['volumeSize'] == null ? null : ((map['volumeSize'] as int).input()).input(),
+      volumeType: map['volumeType'] == null ? null : ((map['volumeType'] as String).input()).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class ContentLinkResponse {
 
   factory ContentLinkResponse.fromMap(Map<String, dynamic> map) {
     return ContentLinkResponse(
-      contentHash: map['contentHash'] == null ? null : (ContentHashResponse.fromMap((map['contentHash'] as Map).cast<String, dynamic>())).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      contentHash: map['contentHash'] == null ? null : (ContentHashResponse.fromMap((map['contentHash']! as Map).cast<String, dynamic>())).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

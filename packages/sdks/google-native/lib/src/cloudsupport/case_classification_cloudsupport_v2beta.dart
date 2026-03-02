@@ -26,8 +26,8 @@ class CaseClassificationCloudsupportV2beta {
 
   factory CaseClassificationCloudsupportV2beta.fromMap(Map<String, dynamic> map) {
     return CaseClassificationCloudsupportV2beta(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

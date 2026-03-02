@@ -24,7 +24,7 @@ class LinkedDatasetBigqueryDataset {
 
   factory LinkedDatasetBigqueryDataset.fromMap(Map<String, dynamic> map) {
     return LinkedDatasetBigqueryDataset(
-      datasetId: map['datasetId'] == null ? null : (map['datasetId'] as String).input(),
+      datasetId: map['datasetId'] == null ? null : (map['datasetId']! as String).input(),
     );
   }
 }

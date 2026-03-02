@@ -80,15 +80,15 @@ class GetWorkspaceApiOperationResult {
   factory GetWorkspaceApiOperationResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceApiOperationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
       method: map['method'] as String,
       name: map['name'] as String,
-      policies: map['policies'] == null ? null : map['policies'] as String,
-      request: map['request'] == null ? null : RequestContractResponse.fromMap((map['request'] as Map).cast<String, dynamic>()),
-      responses: map['responses'] == null ? null : pulumi.Input.decodeList<ResponseContractResponse>(map['responses'], (value) => ResponseContractResponse.fromMap((value as Map).cast<String, dynamic>())),
-      templateParameters: map['templateParameters'] == null ? null : pulumi.Input.decodeList<ParameterContractResponse>(map['templateParameters'], (value) => ParameterContractResponse.fromMap((value as Map).cast<String, dynamic>())),
+      policies: map['policies'] == null ? null : map['policies']! as String,
+      request: map['request'] == null ? null : RequestContractResponse.fromMap((map['request']! as Map).cast<String, dynamic>()),
+      responses: map['responses'] == null ? null : pulumi.Input.decodeList<ResponseContractResponse>(map['responses']!, (value) => ResponseContractResponse.fromMap((value as Map).cast<String, dynamic>())),
+      templateParameters: map['templateParameters'] == null ? null : pulumi.Input.decodeList<ParameterContractResponse>(map['templateParameters']!, (value) => ParameterContractResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
       urlTemplate: map['urlTemplate'] as String,
     );

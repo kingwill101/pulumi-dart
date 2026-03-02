@@ -25,8 +25,8 @@ class WindowsVirtualMachineAdditionalCapabilities {
 
   factory WindowsVirtualMachineAdditionalCapabilities.fromMap(Map<String, dynamic> map) {
     return WindowsVirtualMachineAdditionalCapabilities(
-      hibernationEnabled: map['hibernationEnabled'] == null ? null : (map['hibernationEnabled'] as bool).input(),
-      ultraSsdEnabled: map['ultraSsdEnabled'] == null ? null : (map['ultraSsdEnabled'] as bool).input(),
+      hibernationEnabled: map['hibernationEnabled'] == null ? null : (map['hibernationEnabled']! as bool).input(),
+      ultraSsdEnabled: map['ultraSsdEnabled'] == null ? null : (map['ultraSsdEnabled']! as bool).input(),
     );
   }
 }

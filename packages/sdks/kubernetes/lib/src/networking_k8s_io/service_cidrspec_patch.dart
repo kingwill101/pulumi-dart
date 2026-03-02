@@ -21,7 +21,7 @@ class ServiceCIDRSpecPatch {
 
   factory ServiceCIDRSpecPatch.fromMap(Map<String, dynamic> map) {
     return ServiceCIDRSpecPatch(
-      cidrs: map['cidrs'] == null ? null : ((map['cidrs'] as List).cast<String>()).input(),
+      cidrs: map['cidrs'] == null ? null : ((map['cidrs']! as List).cast<String>()).input(),
     );
   }
 }

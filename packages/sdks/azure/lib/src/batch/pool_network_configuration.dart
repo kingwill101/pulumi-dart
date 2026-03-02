@@ -46,12 +46,12 @@ class PoolNetworkConfiguration {
 
   factory PoolNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return PoolNetworkConfiguration(
-      acceleratedNetworkingEnabled: map['acceleratedNetworkingEnabled'] == null ? null : (map['acceleratedNetworkingEnabled'] as bool).input(),
-      dynamicVnetAssignmentScope: map['dynamicVnetAssignmentScope'] == null ? null : (map['dynamicVnetAssignmentScope'] as String).input(),
-      endpointConfigurations: map['endpointConfigurations'] == null ? null : (pulumi.Input.decodeList<PoolNetworkConfigurationEndpointConfiguration>(map['endpointConfigurations'], (value) => PoolNetworkConfigurationEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      publicAddressProvisioningType: map['publicAddressProvisioningType'] == null ? null : (map['publicAddressProvisioningType'] as String).input(),
-      publicIps: map['publicIps'] == null ? null : ((map['publicIps'] as List).cast<String>()).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      acceleratedNetworkingEnabled: map['acceleratedNetworkingEnabled'] == null ? null : (map['acceleratedNetworkingEnabled']! as bool).input(),
+      dynamicVnetAssignmentScope: map['dynamicVnetAssignmentScope'] == null ? null : (map['dynamicVnetAssignmentScope']! as String).input(),
+      endpointConfigurations: map['endpointConfigurations'] == null ? null : (pulumi.Input.decodeList<PoolNetworkConfigurationEndpointConfiguration>(map['endpointConfigurations']!, (value) => PoolNetworkConfigurationEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicAddressProvisioningType: map['publicAddressProvisioningType'] == null ? null : (map['publicAddressProvisioningType']! as String).input(),
+      publicIps: map['publicIps'] == null ? null : ((map['publicIps']! as List).cast<String>()).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

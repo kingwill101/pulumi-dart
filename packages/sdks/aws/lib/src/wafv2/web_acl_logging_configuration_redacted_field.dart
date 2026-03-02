@@ -36,10 +36,10 @@ class WebAclLoggingConfigurationRedactedField {
 
   factory WebAclLoggingConfigurationRedactedField.fromMap(Map<String, dynamic> map) {
     return WebAclLoggingConfigurationRedactedField(
-      method: map['method'] == null ? null : ((map['method'] as Map).cast<String, dynamic>()).input(),
-      queryString: map['queryString'] == null ? null : ((map['queryString'] as Map).cast<String, dynamic>()).input(),
-      singleHeader: map['singleHeader'] == null ? null : (WebAclLoggingConfigurationRedactedFieldSingleHeader.fromMap((map['singleHeader'] as Map).cast<String, dynamic>())).input(),
-      uriPath: map['uriPath'] == null ? null : ((map['uriPath'] as Map).cast<String, dynamic>()).input(),
+      method: map['method'] == null ? null : (((map['method'] as Map).cast<String, dynamic>()).input()).input(),
+      queryString: map['queryString'] == null ? null : (((map['queryString'] as Map).cast<String, dynamic>()).input()).input(),
+      singleHeader: map['singleHeader'] == null ? null : ((WebAclLoggingConfigurationRedactedFieldSingleHeader.fromMap((map['singleHeader']! as Map).cast<String, dynamic>())).input()).input(),
+      uriPath: map['uriPath'] == null ? null : (((map['uriPath'] as Map).cast<String, dynamic>()).input()).input(),
     );
   }
 }

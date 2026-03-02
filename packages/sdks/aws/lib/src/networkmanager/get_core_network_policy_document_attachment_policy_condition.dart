@@ -35,10 +35,10 @@ class GetCoreNetworkPolicyDocumentAttachmentPolicyCondition {
 
   factory GetCoreNetworkPolicyDocumentAttachmentPolicyCondition.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentAttachmentPolicyCondition(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
+      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
+      operator: map['operator'] == null ? null : ((map['operator'] as String).input()).input(),
       type: (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
     );
   }
 }

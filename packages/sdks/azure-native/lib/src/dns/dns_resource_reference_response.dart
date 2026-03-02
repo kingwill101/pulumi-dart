@@ -27,8 +27,8 @@ class DnsResourceReferenceResponse {
 
   factory DnsResourceReferenceResponse.fromMap(Map<String, dynamic> map) {
     return DnsResourceReferenceResponse(
-      dnsResources: map['dnsResources'] == null ? null : (pulumi.Input.decodeList<SubResourceResponse>(map['dnsResources'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetResource: map['targetResource'] == null ? null : (SubResourceResponse.fromMap((map['targetResource'] as Map).cast<String, dynamic>())).input(),
+      dnsResources: map['dnsResources'] == null ? null : (pulumi.Input.decodeList<SubResourceResponse>(map['dnsResources']!, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetResource: map['targetResource'] == null ? null : (SubResourceResponse.fromMap((map['targetResource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

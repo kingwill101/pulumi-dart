@@ -82,16 +82,16 @@ class GetAccountBlobContainerSASArgs {
 
   factory GetAccountBlobContainerSASArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountBlobContainerSASArgs(
-      cacheControl: map['cacheControl'] == null ? null : (map['cacheControl'] as String).input(),
+      cacheControl: map['cacheControl'] == null ? null : (map['cacheControl']! as String).input(),
       connectionString: (map['connectionString'] as String).input(),
       containerName: (map['containerName'] as String).input(),
-      contentDisposition: map['contentDisposition'] == null ? null : (map['contentDisposition'] as String).input(),
-      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding'] as String).input(),
-      contentLanguage: map['contentLanguage'] == null ? null : (map['contentLanguage'] as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      contentDisposition: map['contentDisposition'] == null ? null : (map['contentDisposition']! as String).input(),
+      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding']! as String).input(),
+      contentLanguage: map['contentLanguage'] == null ? null : (map['contentLanguage']! as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
       expiry: (map['expiry'] as String).input(),
-      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly'] as bool).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly']! as bool).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
       permissions: (GetAccountBlobContainerSASPermissions.fromMap((map['permissions'] as Map).cast<String, dynamic>())).input(),
       start: (map['start'] as String).input(),
     );

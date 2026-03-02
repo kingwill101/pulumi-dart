@@ -41,7 +41,7 @@ class EnvironmentMembershipArgs {
     return EnvironmentMembershipArgs(
       environmentId: (map['environmentId'] as String).input(),
       permissions: (map['permissions'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       userArn: (map['userArn'] as String).input(),
     );
   }

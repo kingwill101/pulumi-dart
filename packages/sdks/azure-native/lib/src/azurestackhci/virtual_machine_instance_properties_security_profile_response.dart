@@ -32,9 +32,9 @@ class VirtualMachineInstancePropertiesSecurityProfileResponse {
 
   factory VirtualMachineInstancePropertiesSecurityProfileResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstancePropertiesSecurityProfileResponse(
-      enableTPM: map['enableTPM'] == null ? null : (map['enableTPM'] as bool).input(),
-      securityType: map['securityType'] == null ? null : (map['securityType'] as String).input(),
-      uefiSettings: map['uefiSettings'] == null ? null : (VirtualMachineInstancePropertiesSecurityProfileUefiSettingsResponse.fromMap((map['uefiSettings'] as Map).cast<String, dynamic>())).input(),
+      enableTPM: map['enableTPM'] == null ? null : (map['enableTPM']! as bool).input(),
+      securityType: map['securityType'] == null ? null : (map['securityType']! as String).input(),
+      uefiSettings: map['uefiSettings'] == null ? null : (VirtualMachineInstancePropertiesSecurityProfileUefiSettingsResponse.fromMap((map['uefiSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

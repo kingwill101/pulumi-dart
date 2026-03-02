@@ -53,13 +53,13 @@ class UserGroupState {
 
   factory UserGroupState.fromMap(Map<String, dynamic> map) {
     return UserGroupState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      userGroupId: map['userGroupId'] == null ? null : (map['userGroupId'] as String).input(),
-      userIds: map['userIds'] == null ? null : ((map['userIds'] as List).cast<String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      engine: map['engine'] == null ? null : ((map['engine'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      userGroupId: map['userGroupId'] == null ? null : ((map['userGroupId'] as String).input()).input(),
+      userIds: map['userIds'] == null ? null : (((map['userIds'] as List).cast<String>()).input()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class AccessPointRootDirectory {
 
   factory AccessPointRootDirectory.fromMap(Map<String, dynamic> map) {
     return AccessPointRootDirectory(
-      creationInfo: map['creationInfo'] == null ? null : (AccessPointRootDirectoryCreationInfo.fromMap((map['creationInfo'] as Map).cast<String, dynamic>())).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      creationInfo: map['creationInfo'] == null ? null : ((AccessPointRootDirectoryCreationInfo.fromMap((map['creationInfo']! as Map).cast<String, dynamic>())).input()).input(),
+      path: map['path'] == null ? null : ((map['path'] as String).input()).input(),
     );
   }
 }

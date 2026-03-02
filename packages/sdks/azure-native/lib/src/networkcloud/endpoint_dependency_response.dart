@@ -26,7 +26,7 @@ class EndpointDependencyResponse {
   factory EndpointDependencyResponse.fromMap(Map<String, dynamic> map) {
     return EndpointDependencyResponse(
       domainName: (map['domainName'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as double).input(),
+      port: map['port'] == null ? null : (map['port']! as double).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseB
 
   factory WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseBlock.fromMap(Map<String, dynamic> map) {
     return WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseBlock(
-      customResponse: map['customResponse'] == null ? null : (WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseBlockCustomResponse.fromMap((map['customResponse'] as Map).cast<String, dynamic>())).input(),
+      customResponse: map['customResponse'] == null ? null : ((WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseBlockCustomResponse.fromMap((map['customResponse']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

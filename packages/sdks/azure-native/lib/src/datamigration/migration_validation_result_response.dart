@@ -40,7 +40,7 @@ class MigrationValidationResultResponse {
       id: (map['id'] as String).input(),
       migrationId: (map['migrationId'] as String).input(),
       status: (map['status'] as String).input(),
-      summaryResults: map['summaryResults'] == null ? null : (pulumi.Input.decodeMapValues<MigrationValidationDatabaseSummaryResultResponse>(map['summaryResults'], (value) => MigrationValidationDatabaseSummaryResultResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      summaryResults: map['summaryResults'] == null ? null : (pulumi.Input.decodeMapValues<MigrationValidationDatabaseSummaryResultResponse>(map['summaryResults']!, (value) => MigrationValidationDatabaseSummaryResultResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

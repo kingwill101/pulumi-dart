@@ -28,7 +28,7 @@ class GetNotificationConfigArgs {
   factory GetNotificationConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetNotificationConfigArgs(
       notificationConfigId: (map['notificationConfigId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

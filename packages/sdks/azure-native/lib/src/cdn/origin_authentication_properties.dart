@@ -32,9 +32,9 @@ class OriginAuthenticationProperties {
 
   factory OriginAuthenticationProperties.fromMap(Map<String, dynamic> map) {
     return OriginAuthenticationProperties(
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (ResourceReference.fromMap((map['userAssignedIdentity'] as Map).cast<String, dynamic>())).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (ResourceReference.fromMap((map['userAssignedIdentity']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

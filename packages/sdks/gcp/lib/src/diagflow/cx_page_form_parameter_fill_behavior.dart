@@ -39,8 +39,8 @@ class CxPageFormParameterFillBehavior {
 
   factory CxPageFormParameterFillBehavior.fromMap(Map<String, dynamic> map) {
     return CxPageFormParameterFillBehavior(
-      initialPromptFulfillment: map['initialPromptFulfillment'] == null ? null : (CxPageFormParameterFillBehaviorInitialPromptFulfillment.fromMap((map['initialPromptFulfillment'] as Map).cast<String, dynamic>())).input(),
-      repromptEventHandlers: map['repromptEventHandlers'] == null ? null : (pulumi.Input.decodeList<CxPageFormParameterFillBehaviorRepromptEventHandler>(map['repromptEventHandlers'], (value) => CxPageFormParameterFillBehaviorRepromptEventHandler.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      initialPromptFulfillment: map['initialPromptFulfillment'] == null ? null : (CxPageFormParameterFillBehaviorInitialPromptFulfillment.fromMap((map['initialPromptFulfillment']! as Map).cast<String, dynamic>())).input(),
+      repromptEventHandlers: map['repromptEventHandlers'] == null ? null : (pulumi.Input.decodeList<CxPageFormParameterFillBehaviorRepromptEventHandler>(map['repromptEventHandlers']!, (value) => CxPageFormParameterFillBehaviorRepromptEventHandler.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -40,9 +40,9 @@ class ClusterMaintenancePolicy {
 
   factory ClusterMaintenancePolicy.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenancePolicy(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      weeklyMaintenanceWindows: map['weeklyMaintenanceWindows'] == null ? null : (pulumi.Input.decodeList<ClusterMaintenancePolicyWeeklyMaintenanceWindow>(map['weeklyMaintenanceWindows'], (value) => ClusterMaintenancePolicyWeeklyMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      weeklyMaintenanceWindows: map['weeklyMaintenanceWindows'] == null ? null : (pulumi.Input.decodeList<ClusterMaintenancePolicyWeeklyMaintenanceWindow>(map['weeklyMaintenanceWindows']!, (value) => ClusterMaintenancePolicyWeeklyMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class DomainCpuNuma {
 
   factory DomainCpuNuma.fromMap(Map<String, dynamic> map) {
     return DomainCpuNuma(
-      cells: map['cells'] == null ? null : (pulumi.Input.decodeList<DomainCpuNumaCell>(map['cells'], (value) => DomainCpuNumaCell.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      interconnects: map['interconnects'] == null ? null : (DomainCpuNumaInterconnects.fromMap((map['interconnects'] as Map).cast<String, dynamic>())).input(),
+      cells: map['cells'] == null ? null : (pulumi.Input.decodeList<DomainCpuNumaCell>(map['cells']!, (value) => DomainCpuNumaCell.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      interconnects: map['interconnects'] == null ? null : (DomainCpuNumaInterconnects.fromMap((map['interconnects']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

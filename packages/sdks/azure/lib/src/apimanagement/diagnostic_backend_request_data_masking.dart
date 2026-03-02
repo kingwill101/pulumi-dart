@@ -27,8 +27,8 @@ class DiagnosticBackendRequestDataMasking {
 
   factory DiagnosticBackendRequestDataMasking.fromMap(Map<String, dynamic> map) {
     return DiagnosticBackendRequestDataMasking(
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<DiagnosticBackendRequestDataMaskingHeader>(map['headers'], (value) => DiagnosticBackendRequestDataMaskingHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      queryParams: map['queryParams'] == null ? null : (pulumi.Input.decodeList<DiagnosticBackendRequestDataMaskingQueryParam>(map['queryParams'], (value) => DiagnosticBackendRequestDataMaskingQueryParam.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<DiagnosticBackendRequestDataMaskingHeader>(map['headers']!, (value) => DiagnosticBackendRequestDataMaskingHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      queryParams: map['queryParams'] == null ? null : (pulumi.Input.decodeList<DiagnosticBackendRequestDataMaskingQueryParam>(map['queryParams']!, (value) => DiagnosticBackendRequestDataMaskingQueryParam.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

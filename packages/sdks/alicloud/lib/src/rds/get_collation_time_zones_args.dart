@@ -31,8 +31,8 @@ class GetCollationTimeZonesArgs {
 
   factory GetCollationTimeZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetCollationTimeZonesArgs(
-      collationTimeZones: map['collationTimeZones'] == null ? null : (pulumi.Input.decodeList<GetCollationTimeZonesCollationTimeZone>(map['collationTimeZones'], (value) => GetCollationTimeZonesCollationTimeZone.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      collationTimeZones: map['collationTimeZones'] == null ? null : (pulumi.Input.decodeList<GetCollationTimeZonesCollationTimeZone>(map['collationTimeZones']!, (value) => GetCollationTimeZonesCollationTimeZone.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

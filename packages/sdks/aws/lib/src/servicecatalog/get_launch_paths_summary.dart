@@ -36,7 +36,7 @@ class GetLaunchPathsSummary {
 
   factory GetLaunchPathsSummary.fromMap(Map<String, dynamic> map) {
     return GetLaunchPathsSummary(
-      constraintSummaries: (pulumi.Input.decodeList<GetLaunchPathsSummaryConstraintSummary>(map['constraintSummaries'], (value) => GetLaunchPathsSummaryConstraintSummary.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      constraintSummaries: (pulumi.Input.decodeList<GetLaunchPathsSummaryConstraintSummary>(map['constraintSummaries']!, (value) => GetLaunchPathsSummaryConstraintSummary.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
       pathId: (map['pathId'] as String).input(),
       tags: ((map['tags'] as Map).cast<String, String>()).input(),

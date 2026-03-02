@@ -39,8 +39,8 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       storageMoverName: (map['storageMoverName'] as String).input(),
     );

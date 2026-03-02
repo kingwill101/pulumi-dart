@@ -32,7 +32,7 @@ class GetProjectServiceArgs {
 
   factory GetProjectServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectServiceArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       service: (map['service'] as String).input(),
     );
   }

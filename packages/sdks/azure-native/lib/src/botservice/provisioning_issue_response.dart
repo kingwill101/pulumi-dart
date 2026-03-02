@@ -27,7 +27,7 @@ class ProvisioningIssueResponse {
 
   factory ProvisioningIssueResponse.fromMap(Map<String, dynamic> map) {
     return ProvisioningIssueResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       properties: (ProvisioningIssuePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }

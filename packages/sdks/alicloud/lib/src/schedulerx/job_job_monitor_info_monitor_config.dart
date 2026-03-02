@@ -49,12 +49,12 @@ class JobJobMonitorInfoMonitorConfig {
 
   factory JobJobMonitorInfoMonitorConfig.fromMap(Map<String, dynamic> map) {
     return JobJobMonitorInfoMonitorConfig(
-      failEnable: map['failEnable'] == null ? null : (map['failEnable'] as bool).input(),
-      missWorkerEnable: map['missWorkerEnable'] == null ? null : (map['missWorkerEnable'] as bool).input(),
-      sendChannel: map['sendChannel'] == null ? null : (map['sendChannel'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
-      timeoutEnable: map['timeoutEnable'] == null ? null : (map['timeoutEnable'] as bool).input(),
-      timeoutKillEnable: map['timeoutKillEnable'] == null ? null : (map['timeoutKillEnable'] as bool).input(),
+      failEnable: map['failEnable'] == null ? null : (map['failEnable']! as bool).input(),
+      missWorkerEnable: map['missWorkerEnable'] == null ? null : (map['missWorkerEnable']! as bool).input(),
+      sendChannel: map['sendChannel'] == null ? null : (map['sendChannel']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
+      timeoutEnable: map['timeoutEnable'] == null ? null : (map['timeoutEnable']! as bool).input(),
+      timeoutKillEnable: map['timeoutKillEnable'] == null ? null : (map['timeoutKillEnable']! as bool).input(),
     );
   }
 }

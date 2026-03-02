@@ -38,7 +38,7 @@ class CaPoolPublishingOptions {
 
   factory CaPoolPublishingOptions.fromMap(Map<String, dynamic> map) {
     return CaPoolPublishingOptions(
-      encodingFormat: map['encodingFormat'] == null ? null : (map['encodingFormat'] as String).input(),
+      encodingFormat: map['encodingFormat'] == null ? null : (map['encodingFormat']! as String).input(),
       publishCaCert: (map['publishCaCert'] as bool).input(),
       publishCrl: (map['publishCrl'] as bool).input(),
     );

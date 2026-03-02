@@ -31,9 +31,9 @@ class AzureFileFilterDetails {
 
   factory AzureFileFilterDetails.fromMap(Map<String, dynamic> map) {
     return AzureFileFilterDetails(
-      filePathList: map['filePathList'] == null ? null : ((map['filePathList'] as List).cast<String>()).input(),
-      filePrefixList: map['filePrefixList'] == null ? null : ((map['filePrefixList'] as List).cast<String>()).input(),
-      fileShareList: map['fileShareList'] == null ? null : ((map['fileShareList'] as List).cast<String>()).input(),
+      filePathList: map['filePathList'] == null ? null : ((map['filePathList']! as List).cast<String>()).input(),
+      filePrefixList: map['filePrefixList'] == null ? null : ((map['filePrefixList']! as List).cast<String>()).input(),
+      fileShareList: map['fileShareList'] == null ? null : ((map['fileShareList']! as List).cast<String>()).input(),
     );
   }
 }

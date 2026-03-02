@@ -29,7 +29,7 @@ class GetStandardsControlAssociationsArgs {
 
   factory GetStandardsControlAssociationsArgs.fromMap(Map<String, dynamic> map) {
     return GetStandardsControlAssociationsArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       securityControlId: (map['securityControlId'] as String).input(),
     );
   }

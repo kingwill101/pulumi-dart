@@ -26,8 +26,8 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSett
 
   factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings(
-      noSmallTalk: map['noSmallTalk'] == null ? null : (map['noSmallTalk'] as bool).input(),
-      onlyEndUser: map['onlyEndUser'] == null ? null : (map['onlyEndUser'] as bool).input(),
+      noSmallTalk: map['noSmallTalk'] == null ? null : (map['noSmallTalk']! as bool).input(),
+      onlyEndUser: map['onlyEndUser'] == null ? null : (map['onlyEndUser']! as bool).input(),
     );
   }
 }

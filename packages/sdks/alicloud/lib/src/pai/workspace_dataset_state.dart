@@ -121,20 +121,20 @@ class WorkspaceDatasetState {
 
   factory WorkspaceDatasetState.fromMap(Map<String, dynamic> map) {
     return WorkspaceDatasetState(
-      accessibility: map['accessibility'] == null ? null : (map['accessibility'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dataSourceType: map['dataSourceType'] == null ? null : (map['dataSourceType'] as String).input(),
-      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
-      datasetName: map['datasetName'] == null ? null : (map['datasetName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<WorkspaceDatasetLabel>(map['labels'], (value) => WorkspaceDatasetLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      options: map['options'] == null ? null : (map['options'] as String).input(),
-      property: map['property'] == null ? null : (map['property'] as String).input(),
-      sourceId: map['sourceId'] == null ? null : (map['sourceId'] as String).input(),
-      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      accessibility: map['accessibility'] == null ? null : (map['accessibility']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dataSourceType: map['dataSourceType'] == null ? null : (map['dataSourceType']! as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
+      datasetName: map['datasetName'] == null ? null : (map['datasetName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<WorkspaceDatasetLabel>(map['labels']!, (value) => WorkspaceDatasetLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      options: map['options'] == null ? null : (map['options']! as String).input(),
+      property: map['property'] == null ? null : (map['property']! as String).input(),
+      sourceId: map['sourceId'] == null ? null : (map['sourceId']! as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

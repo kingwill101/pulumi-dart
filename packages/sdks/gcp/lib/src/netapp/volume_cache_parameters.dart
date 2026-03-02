@@ -76,17 +76,17 @@ class VolumeCacheParameters {
 
   factory VolumeCacheParameters.fromMap(Map<String, dynamic> map) {
     return VolumeCacheParameters(
-      cacheConfig: map['cacheConfig'] == null ? null : (VolumeCacheParametersCacheConfig.fromMap((map['cacheConfig'] as Map).cast<String, dynamic>())).input(),
-      cacheState: map['cacheState'] == null ? null : (map['cacheState'] as String).input(),
-      command: map['command'] == null ? null : (map['command'] as String).input(),
-      enableGlobalFileLock: map['enableGlobalFileLock'] == null ? null : (map['enableGlobalFileLock'] as bool).input(),
-      passphrase: map['passphrase'] == null ? null : (map['passphrase'] as String).input(),
-      peerClusterName: map['peerClusterName'] == null ? null : (map['peerClusterName'] as String).input(),
-      peerIpAddresses: map['peerIpAddresses'] == null ? null : ((map['peerIpAddresses'] as List).cast<String>()).input(),
-      peerSvmName: map['peerSvmName'] == null ? null : (map['peerSvmName'] as String).input(),
-      peerVolumeName: map['peerVolumeName'] == null ? null : (map['peerVolumeName'] as String).input(),
-      peeringCommandExpiryTime: map['peeringCommandExpiryTime'] == null ? null : (map['peeringCommandExpiryTime'] as String).input(),
-      stateDetails: map['stateDetails'] == null ? null : (map['stateDetails'] as String).input(),
+      cacheConfig: map['cacheConfig'] == null ? null : (VolumeCacheParametersCacheConfig.fromMap((map['cacheConfig']! as Map).cast<String, dynamic>())).input(),
+      cacheState: map['cacheState'] == null ? null : (map['cacheState']! as String).input(),
+      command: map['command'] == null ? null : (map['command']! as String).input(),
+      enableGlobalFileLock: map['enableGlobalFileLock'] == null ? null : (map['enableGlobalFileLock']! as bool).input(),
+      passphrase: map['passphrase'] == null ? null : (map['passphrase']! as String).input(),
+      peerClusterName: map['peerClusterName'] == null ? null : (map['peerClusterName']! as String).input(),
+      peerIpAddresses: map['peerIpAddresses'] == null ? null : ((map['peerIpAddresses']! as List).cast<String>()).input(),
+      peerSvmName: map['peerSvmName'] == null ? null : (map['peerSvmName']! as String).input(),
+      peerVolumeName: map['peerVolumeName'] == null ? null : (map['peerVolumeName']! as String).input(),
+      peeringCommandExpiryTime: map['peeringCommandExpiryTime'] == null ? null : (map['peeringCommandExpiryTime']! as String).input(),
+      stateDetails: map['stateDetails'] == null ? null : (map['stateDetails']! as String).input(),
     );
   }
 }

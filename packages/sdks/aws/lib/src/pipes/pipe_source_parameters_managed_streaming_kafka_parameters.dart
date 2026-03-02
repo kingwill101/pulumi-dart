@@ -46,11 +46,11 @@ class PipeSourceParametersManagedStreamingKafkaParameters {
 
   factory PipeSourceParametersManagedStreamingKafkaParameters.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersManagedStreamingKafkaParameters(
-      batchSize: map['batchSize'] == null ? null : (map['batchSize'] as int).input(),
-      consumerGroupId: map['consumerGroupId'] == null ? null : (map['consumerGroupId'] as String).input(),
-      credentials: map['credentials'] == null ? null : (PipeSourceParametersManagedStreamingKafkaParametersCredentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
-      maximumBatchingWindowInSeconds: map['maximumBatchingWindowInSeconds'] == null ? null : (map['maximumBatchingWindowInSeconds'] as int).input(),
-      startingPosition: map['startingPosition'] == null ? null : (map['startingPosition'] as String).input(),
+      batchSize: map['batchSize'] == null ? null : ((map['batchSize'] as int).input()).input(),
+      consumerGroupId: map['consumerGroupId'] == null ? null : ((map['consumerGroupId'] as String).input()).input(),
+      credentials: map['credentials'] == null ? null : ((PipeSourceParametersManagedStreamingKafkaParametersCredentials.fromMap((map['credentials']! as Map).cast<String, dynamic>())).input()).input(),
+      maximumBatchingWindowInSeconds: map['maximumBatchingWindowInSeconds'] == null ? null : ((map['maximumBatchingWindowInSeconds'] as int).input()).input(),
+      startingPosition: map['startingPosition'] == null ? null : ((map['startingPosition'] as String).input()).input(),
       topicName: (map['topicName'] as String).input(),
     );
   }

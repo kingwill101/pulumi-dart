@@ -43,11 +43,11 @@ class WorkspaceCollectionArgs {
 
   factory WorkspaceCollectionArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceCollectionArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (AzureSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workspaceCollectionName: map['workspaceCollectionName'] == null ? null : (map['workspaceCollectionName'] as String).input(),
+      sku: map['sku'] == null ? null : (AzureSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      workspaceCollectionName: map['workspaceCollectionName'] == null ? null : (map['workspaceCollectionName']! as String).input(),
     );
   }
 }

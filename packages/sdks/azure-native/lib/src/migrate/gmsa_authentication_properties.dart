@@ -61,15 +61,15 @@ class GmsaAuthenticationProperties {
 
   factory GmsaAuthenticationProperties.fromMap(Map<String, dynamic> map) {
     return GmsaAuthenticationProperties(
-      adDomainControllerDns: map['adDomainControllerDns'] == null ? null : (map['adDomainControllerDns'] as String).input(),
-      adDomainFqdn: map['adDomainFqdn'] == null ? null : (map['adDomainFqdn'] as String).input(),
-      akvProperties: map['akvProperties'] == null ? null : (KeyVaultSecretStoreProperties.fromMap((map['akvProperties'] as Map).cast<String, dynamic>())).input(),
-      domainAdminPassword: map['domainAdminPassword'] == null ? null : (map['domainAdminPassword'] as String).input(),
-      domainAdminUsername: map['domainAdminUsername'] == null ? null : (map['domainAdminUsername'] as String).input(),
-      domainControllerAddress: map['domainControllerAddress'] == null ? null : (map['domainControllerAddress'] as String).input(),
-      gmsaAccountName: map['gmsaAccountName'] == null ? null : (map['gmsaAccountName'] as String).input(),
-      gmsaUserPassword: map['gmsaUserPassword'] == null ? null : (map['gmsaUserPassword'] as String).input(),
-      gmsaUsername: map['gmsaUsername'] == null ? null : (map['gmsaUsername'] as String).input(),
+      adDomainControllerDns: map['adDomainControllerDns'] == null ? null : (map['adDomainControllerDns']! as String).input(),
+      adDomainFqdn: map['adDomainFqdn'] == null ? null : (map['adDomainFqdn']! as String).input(),
+      akvProperties: map['akvProperties'] == null ? null : (KeyVaultSecretStoreProperties.fromMap((map['akvProperties']! as Map).cast<String, dynamic>())).input(),
+      domainAdminPassword: map['domainAdminPassword'] == null ? null : (map['domainAdminPassword']! as String).input(),
+      domainAdminUsername: map['domainAdminUsername'] == null ? null : (map['domainAdminUsername']! as String).input(),
+      domainControllerAddress: map['domainControllerAddress'] == null ? null : (map['domainControllerAddress']! as String).input(),
+      gmsaAccountName: map['gmsaAccountName'] == null ? null : (map['gmsaAccountName']! as String).input(),
+      gmsaUserPassword: map['gmsaUserPassword'] == null ? null : (map['gmsaUserPassword']! as String).input(),
+      gmsaUsername: map['gmsaUsername'] == null ? null : (map['gmsaUsername']! as String).input(),
     );
   }
 }

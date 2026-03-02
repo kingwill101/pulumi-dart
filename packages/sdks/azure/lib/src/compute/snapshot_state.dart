@@ -96,21 +96,21 @@ class SnapshotState {
 
   factory SnapshotState.fromMap(Map<String, dynamic> map) {
     return SnapshotState(
-      createOption: map['createOption'] == null ? null : (map['createOption'] as String).input(),
-      diskAccessId: map['diskAccessId'] == null ? null : (map['diskAccessId'] as String).input(),
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as int).input(),
-      encryptionSettings: map['encryptionSettings'] == null ? null : (SnapshotEncryptionSettings.fromMap((map['encryptionSettings'] as Map).cast<String, dynamic>())).input(),
-      incrementalEnabled: map['incrementalEnabled'] == null ? null : (map['incrementalEnabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkAccessPolicy: map['networkAccessPolicy'] == null ? null : (map['networkAccessPolicy'] as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
-      sourceUri: map['sourceUri'] == null ? null : (map['sourceUri'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      trustedLaunchEnabled: map['trustedLaunchEnabled'] == null ? null : (map['trustedLaunchEnabled'] as bool).input(),
+      createOption: map['createOption'] == null ? null : (map['createOption']! as String).input(),
+      diskAccessId: map['diskAccessId'] == null ? null : (map['diskAccessId']! as String).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as int).input(),
+      encryptionSettings: map['encryptionSettings'] == null ? null : (SnapshotEncryptionSettings.fromMap((map['encryptionSettings']! as Map).cast<String, dynamic>())).input(),
+      incrementalEnabled: map['incrementalEnabled'] == null ? null : (map['incrementalEnabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkAccessPolicy: map['networkAccessPolicy'] == null ? null : (map['networkAccessPolicy']! as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId']! as String).input(),
+      sourceUri: map['sourceUri'] == null ? null : (map['sourceUri']! as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      trustedLaunchEnabled: map['trustedLaunchEnabled'] == null ? null : (map['trustedLaunchEnabled']! as bool).input(),
     );
   }
 }

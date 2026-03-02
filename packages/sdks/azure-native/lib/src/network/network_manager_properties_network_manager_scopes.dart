@@ -26,8 +26,8 @@ class NetworkManagerPropertiesNetworkManagerScopes {
 
   factory NetworkManagerPropertiesNetworkManagerScopes.fromMap(Map<String, dynamic> map) {
     return NetworkManagerPropertiesNetworkManagerScopes(
-      managementGroups: map['managementGroups'] == null ? null : ((map['managementGroups'] as List).cast<String>()).input(),
-      subscriptions: map['subscriptions'] == null ? null : ((map['subscriptions'] as List).cast<String>()).input(),
+      managementGroups: map['managementGroups'] == null ? null : ((map['managementGroups']! as List).cast<String>()).input(),
+      subscriptions: map['subscriptions'] == null ? null : ((map['subscriptions']! as List).cast<String>()).input(),
     );
   }
 }

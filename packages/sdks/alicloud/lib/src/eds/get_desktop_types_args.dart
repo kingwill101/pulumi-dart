@@ -54,13 +54,13 @@ class GetDesktopTypesArgs {
 
   factory GetDesktopTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetDesktopTypesArgs(
-      cpuCount: map['cpuCount'] == null ? null : (map['cpuCount'] as int).input(),
-      gpuCount: map['gpuCount'] == null ? null : (map['gpuCount'] as double).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      instanceTypeFamily: map['instanceTypeFamily'] == null ? null : (map['instanceTypeFamily'] as String).input(),
-      memorySize: map['memorySize'] == null ? null : (map['memorySize'] as int).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      cpuCount: map['cpuCount'] == null ? null : (map['cpuCount']! as int).input(),
+      gpuCount: map['gpuCount'] == null ? null : (map['gpuCount']! as double).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      instanceTypeFamily: map['instanceTypeFamily'] == null ? null : (map['instanceTypeFamily']! as String).input(),
+      memorySize: map['memorySize'] == null ? null : (map['memorySize']! as int).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

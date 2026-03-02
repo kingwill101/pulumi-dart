@@ -46,11 +46,11 @@ class Restrictions {
 
   factory Restrictions.fromMap(Map<String, dynamic> map) {
     return Restrictions(
-      androidKeyRestrictions: map['androidKeyRestrictions'] == null ? null : (AndroidKeyRestrictions.fromMap((map['androidKeyRestrictions'] as Map).cast<String, dynamic>())).input(),
-      apiTargets: map['apiTargets'] == null ? null : (pulumi.Input.decodeList<ApiTarget>(map['apiTargets'], (value) => ApiTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      browserKeyRestrictions: map['browserKeyRestrictions'] == null ? null : (BrowserKeyRestrictions.fromMap((map['browserKeyRestrictions'] as Map).cast<String, dynamic>())).input(),
-      iosKeyRestrictions: map['iosKeyRestrictions'] == null ? null : (IosKeyRestrictions.fromMap((map['iosKeyRestrictions'] as Map).cast<String, dynamic>())).input(),
-      serverKeyRestrictions: map['serverKeyRestrictions'] == null ? null : (ServerKeyRestrictions.fromMap((map['serverKeyRestrictions'] as Map).cast<String, dynamic>())).input(),
+      androidKeyRestrictions: map['androidKeyRestrictions'] == null ? null : (AndroidKeyRestrictions.fromMap((map['androidKeyRestrictions']! as Map).cast<String, dynamic>())).input(),
+      apiTargets: map['apiTargets'] == null ? null : (pulumi.Input.decodeList<ApiTarget>(map['apiTargets']!, (value) => ApiTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      browserKeyRestrictions: map['browserKeyRestrictions'] == null ? null : (BrowserKeyRestrictions.fromMap((map['browserKeyRestrictions']! as Map).cast<String, dynamic>())).input(),
+      iosKeyRestrictions: map['iosKeyRestrictions'] == null ? null : (IosKeyRestrictions.fromMap((map['iosKeyRestrictions']! as Map).cast<String, dynamic>())).input(),
+      serverKeyRestrictions: map['serverKeyRestrictions'] == null ? null : (ServerKeyRestrictions.fromMap((map['serverKeyRestrictions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

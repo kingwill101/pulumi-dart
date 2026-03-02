@@ -41,9 +41,9 @@ class AuthInfoResponse {
 
   factory AuthInfoResponse.fromMap(Map<String, dynamic> map) {
     return AuthInfoResponse(
-      expiresIn: map['expiresIn'] == null ? null : (map['expiresIn'] as int).input(),
-      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      expiresIn: map['expiresIn'] == null ? null : (map['expiresIn']! as int).input(),
+      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
       token: (map['token'] as String).input(),
       tokenType: (map['tokenType'] as String).input(),
     );

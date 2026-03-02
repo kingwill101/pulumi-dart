@@ -64,14 +64,14 @@ class SchemaBundleState {
 
   factory SchemaBundleState.fromMap(Map<String, dynamic> map) {
     return SchemaBundleState(
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      ignoreWarnings: map['ignoreWarnings'] == null ? null : (map['ignoreWarnings'] as bool).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      protoSchema: map['protoSchema'] == null ? null : (SchemaBundleProtoSchema.fromMap((map['protoSchema'] as Map).cast<String, dynamic>())).input(),
-      schemaBundleId: map['schemaBundleId'] == null ? null : (map['schemaBundleId'] as String).input(),
-      table: map['table'] == null ? null : (map['table'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      ignoreWarnings: map['ignoreWarnings'] == null ? null : (map['ignoreWarnings']! as bool).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      protoSchema: map['protoSchema'] == null ? null : (SchemaBundleProtoSchema.fromMap((map['protoSchema']! as Map).cast<String, dynamic>())).input(),
+      schemaBundleId: map['schemaBundleId'] == null ? null : (map['schemaBundleId']! as String).input(),
+      table: map['table'] == null ? null : (map['table']! as String).input(),
     );
   }
 }

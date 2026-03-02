@@ -86,9 +86,9 @@ class GetJobQueueResult {
   factory GetJobQueueResult.fromMap(Map<String, dynamic> map) {
     return GetJobQueueResult(
       arn: map['arn'] as String,
-      computeEnvironmentOrders: pulumi.Input.decodeList<GetJobQueueComputeEnvironmentOrder>(map['computeEnvironmentOrders'], (value) => GetJobQueueComputeEnvironmentOrder.fromMap((value as Map).cast<String, dynamic>())),
+      computeEnvironmentOrders: pulumi.Input.decodeList<GetJobQueueComputeEnvironmentOrder>(map['computeEnvironmentOrders']!, (value) => GetJobQueueComputeEnvironmentOrder.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      jobStateTimeLimitActions: pulumi.Input.decodeList<GetJobQueueJobStateTimeLimitAction>(map['jobStateTimeLimitActions'], (value) => GetJobQueueJobStateTimeLimitAction.fromMap((value as Map).cast<String, dynamic>())),
+      jobStateTimeLimitActions: pulumi.Input.decodeList<GetJobQueueJobStateTimeLimitAction>(map['jobStateTimeLimitActions']!, (value) => GetJobQueueJobStateTimeLimitAction.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       priority: map['priority'] as int,
       region: map['region'] as String,

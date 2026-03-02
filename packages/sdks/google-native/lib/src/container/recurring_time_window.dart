@@ -27,8 +27,8 @@ class RecurringTimeWindow {
 
   factory RecurringTimeWindow.fromMap(Map<String, dynamic> map) {
     return RecurringTimeWindow(
-      recurrence: map['recurrence'] == null ? null : (map['recurrence'] as String).input(),
-      window: map['window'] == null ? null : (TimeWindow.fromMap((map['window'] as Map).cast<String, dynamic>())).input(),
+      recurrence: map['recurrence'] == null ? null : (map['recurrence']! as String).input(),
+      window: map['window'] == null ? null : (TimeWindow.fromMap((map['window']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

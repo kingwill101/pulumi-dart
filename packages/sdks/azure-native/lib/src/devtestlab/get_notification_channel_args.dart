@@ -39,7 +39,7 @@ class GetNotificationChannelArgs {
 
   factory GetNotificationChannelArgs.fromMap(Map<String, dynamic> map) {
     return GetNotificationChannelArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       labName: (map['labName'] as String).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

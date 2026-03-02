@@ -53,12 +53,12 @@ class CustomDomainArgs {
 
   factory CustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return CustomDomainArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      certPreference: map['certPreference'] == null ? null : (CustomDomainCertPreference.fromValue(map['certPreference'] as String)).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      certPreference: map['certPreference'] == null ? null : (CustomDomainCertPreference.fromValue(map['certPreference']! as String)).input(),
       customDomainId: (map['customDomainId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      redirectTarget: map['redirectTarget'] == null ? null : (map['redirectTarget'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      redirectTarget: map['redirectTarget'] == null ? null : (map['redirectTarget']! as String).input(),
       siteId: (map['siteId'] as String).input(),
     );
   }

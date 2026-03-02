@@ -24,7 +24,7 @@ class PhysicalReplicationSlotArgs {
 
   factory PhysicalReplicationSlotArgs.fromMap(Map<String, dynamic> map) {
     return PhysicalReplicationSlotArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

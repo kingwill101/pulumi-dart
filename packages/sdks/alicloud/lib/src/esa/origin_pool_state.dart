@@ -42,11 +42,11 @@ class OriginPoolState {
 
   factory OriginPoolState.fromMap(Map<String, dynamic> map) {
     return OriginPoolState(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      originPoolId: map['originPoolId'] == null ? null : (map['originPoolId'] as int).input(),
-      originPoolName: map['originPoolName'] == null ? null : (map['originPoolName'] as String).input(),
-      origins: map['origins'] == null ? null : (pulumi.Input.decodeList<OriginPoolOrigin>(map['origins'], (value) => OriginPoolOrigin.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      originPoolId: map['originPoolId'] == null ? null : (map['originPoolId']! as int).input(),
+      originPoolName: map['originPoolName'] == null ? null : (map['originPoolName']! as String).input(),
+      origins: map['origins'] == null ? null : (pulumi.Input.decodeList<OriginPoolOrigin>(map['origins']!, (value) => OriginPoolOrigin.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
     );
   }
 }

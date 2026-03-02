@@ -83,19 +83,19 @@ class SpokeNetworkconnectivityV1alpha1Args {
 
   factory SpokeNetworkconnectivityV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return SpokeNetworkconnectivityV1alpha1Args(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      hub: map['hub'] == null ? null : (map['hub'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      linkedInterconnectAttachments: map['linkedInterconnectAttachments'] == null ? null : ((map['linkedInterconnectAttachments'] as List).cast<String>()).input(),
-      linkedRouterApplianceInstances: map['linkedRouterApplianceInstances'] == null ? null : (pulumi.Input.decodeList<RouterApplianceInstanceNetworkconnectivityV1alpha1>(map['linkedRouterApplianceInstances'], (value) => RouterApplianceInstanceNetworkconnectivityV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      linkedVpnTunnels: map['linkedVpnTunnels'] == null ? null : ((map['linkedVpnTunnels'] as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      spokeId: map['spokeId'] == null ? null : (map['spokeId'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      hub: map['hub'] == null ? null : (map['hub']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      linkedInterconnectAttachments: map['linkedInterconnectAttachments'] == null ? null : ((map['linkedInterconnectAttachments']! as List).cast<String>()).input(),
+      linkedRouterApplianceInstances: map['linkedRouterApplianceInstances'] == null ? null : (pulumi.Input.decodeList<RouterApplianceInstanceNetworkconnectivityV1alpha1>(map['linkedRouterApplianceInstances']!, (value) => RouterApplianceInstanceNetworkconnectivityV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      linkedVpnTunnels: map['linkedVpnTunnels'] == null ? null : ((map['linkedVpnTunnels']! as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      spokeId: map['spokeId'] == null ? null : (map['spokeId']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

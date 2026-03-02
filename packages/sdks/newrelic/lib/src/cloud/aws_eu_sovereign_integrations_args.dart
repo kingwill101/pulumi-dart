@@ -47,11 +47,11 @@ class AwsEuSovereignIntegrationsArgs {
 
   factory AwsEuSovereignIntegrationsArgs.fromMap(Map<String, dynamic> map) {
     return AwsEuSovereignIntegrationsArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      billing: map['billing'] == null ? null : (AwsEuSovereignIntegrationsBilling.fromMap((map['billing'] as Map).cast<String, dynamic>())).input(),
-      cloudtrail: map['cloudtrail'] == null ? null : (AwsEuSovereignIntegrationsCloudtrail.fromMap((map['cloudtrail'] as Map).cast<String, dynamic>())).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      billing: map['billing'] == null ? null : (AwsEuSovereignIntegrationsBilling.fromMap((map['billing']! as Map).cast<String, dynamic>())).input(),
+      cloudtrail: map['cloudtrail'] == null ? null : (AwsEuSovereignIntegrationsCloudtrail.fromMap((map['cloudtrail']! as Map).cast<String, dynamic>())).input(),
       linkedAccountId: (map['linkedAccountId'] as String).input(),
-      xRay: map['xRay'] == null ? null : (AwsEuSovereignIntegrationsXRay.fromMap((map['xRay'] as Map).cast<String, dynamic>())).input(),
+      xRay: map['xRay'] == null ? null : (AwsEuSovereignIntegrationsXRay.fromMap((map['xRay']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

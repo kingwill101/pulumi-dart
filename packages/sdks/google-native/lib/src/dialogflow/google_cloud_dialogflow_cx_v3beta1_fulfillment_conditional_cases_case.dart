@@ -27,8 +27,8 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase {
 
   factory GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase(
-      caseContent: map['caseContent'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent>(map['caseContent'], (value) => GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
+      caseContent: map['caseContent'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent>(map['caseContent']!, (value) => GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
     );
   }
 }

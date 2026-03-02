@@ -81,14 +81,14 @@ class PoolArgs {
       agentProfile: (Stateful.fromMap((map['agentProfile'] as Map).cast<String, dynamic>())).input(),
       devCenterProjectResourceId: (map['devCenterProjectResourceId'] as String).input(),
       fabricProfile: (VmssFabricProfile.fromMap((map['fabricProfile'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       maximumConcurrency: (map['maximumConcurrency'] as int).input(),
       organizationProfile: (AzureDevOpsOrganizationProfile.fromMap((map['organizationProfile'] as Map).cast<String, dynamic>())).input(),
-      poolName: map['poolName'] == null ? null : (map['poolName'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      poolName: map['poolName'] == null ? null : (map['poolName']! as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

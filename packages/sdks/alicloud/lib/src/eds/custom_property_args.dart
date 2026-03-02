@@ -31,7 +31,7 @@ class CustomPropertyArgs {
   factory CustomPropertyArgs.fromMap(Map<String, dynamic> map) {
     return CustomPropertyArgs(
       propertyKey: (map['propertyKey'] as String).input(),
-      propertyValues: map['propertyValues'] == null ? null : (pulumi.Input.decodeList<CustomPropertyPropertyValue>(map['propertyValues'], (value) => CustomPropertyPropertyValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      propertyValues: map['propertyValues'] == null ? null : (pulumi.Input.decodeList<CustomPropertyPropertyValue>(map['propertyValues']!, (value) => CustomPropertyPropertyValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

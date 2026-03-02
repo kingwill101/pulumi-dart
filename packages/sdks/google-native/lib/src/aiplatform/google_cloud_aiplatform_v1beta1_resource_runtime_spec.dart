@@ -28,8 +28,8 @@ class GoogleCloudAiplatformV1beta1ResourceRuntimeSpec {
 
   factory GoogleCloudAiplatformV1beta1ResourceRuntimeSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ResourceRuntimeSpec(
-      raySpec: map['raySpec'] == null ? null : (GoogleCloudAiplatformV1beta1RaySpec.fromMap((map['raySpec'] as Map).cast<String, dynamic>())).input(),
-      serviceAccountSpec: map['serviceAccountSpec'] == null ? null : (GoogleCloudAiplatformV1beta1ServiceAccountSpec.fromMap((map['serviceAccountSpec'] as Map).cast<String, dynamic>())).input(),
+      raySpec: map['raySpec'] == null ? null : (GoogleCloudAiplatformV1beta1RaySpec.fromMap((map['raySpec']! as Map).cast<String, dynamic>())).input(),
+      serviceAccountSpec: map['serviceAccountSpec'] == null ? null : (GoogleCloudAiplatformV1beta1ServiceAccountSpec.fromMap((map['serviceAccountSpec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

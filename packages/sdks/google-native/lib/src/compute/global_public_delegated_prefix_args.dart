@@ -70,16 +70,16 @@ class GlobalPublicDelegatedPrefixArgs {
 
   factory GlobalPublicDelegatedPrefixArgs.fromMap(Map<String, dynamic> map) {
     return GlobalPublicDelegatedPrefixArgs(
-      allocatablePrefixLength: map['allocatablePrefixLength'] == null ? null : (map['allocatablePrefixLength'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange'] as String).input(),
-      isLiveMigration: map['isLiveMigration'] == null ? null : (map['isLiveMigration'] as bool).input(),
-      mode: map['mode'] == null ? null : (GlobalPublicDelegatedPrefixMode.fromValue(map['mode'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentPrefix: map['parentPrefix'] == null ? null : (map['parentPrefix'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      publicDelegatedSubPrefixs: map['publicDelegatedSubPrefixs'] == null ? null : (pulumi.Input.decodeList<PublicDelegatedPrefixPublicDelegatedSubPrefix>(map['publicDelegatedSubPrefixs'], (value) => PublicDelegatedPrefixPublicDelegatedSubPrefix.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      allocatablePrefixLength: map['allocatablePrefixLength'] == null ? null : (map['allocatablePrefixLength']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange']! as String).input(),
+      isLiveMigration: map['isLiveMigration'] == null ? null : (map['isLiveMigration']! as bool).input(),
+      mode: map['mode'] == null ? null : (GlobalPublicDelegatedPrefixMode.fromValue(map['mode']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parentPrefix: map['parentPrefix'] == null ? null : (map['parentPrefix']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      publicDelegatedSubPrefixs: map['publicDelegatedSubPrefixs'] == null ? null : (pulumi.Input.decodeList<PublicDelegatedPrefixPublicDelegatedSubPrefix>(map['publicDelegatedSubPrefixs']!, (value) => PublicDelegatedPrefixPublicDelegatedSubPrefix.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

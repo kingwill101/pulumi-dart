@@ -20,7 +20,7 @@ class GetAppSpecServiceImageDeployOnPush {
 
   factory GetAppSpecServiceImageDeployOnPush.fromMap(Map<String, dynamic> map) {
     return GetAppSpecServiceImageDeployOnPush(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

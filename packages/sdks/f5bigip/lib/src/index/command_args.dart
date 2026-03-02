@@ -33,9 +33,9 @@ class CommandArgs {
 
   factory CommandArgs.fromMap(Map<String, dynamic> map) {
     return CommandArgs(
-      commandResults: map['commandResults'] == null ? null : ((map['commandResults'] as List).cast<String>()).input(),
+      commandResults: map['commandResults'] == null ? null : ((map['commandResults']! as List).cast<String>()).input(),
       commands: ((map['commands'] as List).cast<String>()).input(),
-      when: map['when'] == null ? null : (map['when'] as String).input(),
+      when: map['when'] == null ? null : (map['when']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class RoutingRuleConditionResponse {
 
   factory RoutingRuleConditionResponse.fromMap(Map<String, dynamic> map) {
     return RoutingRuleConditionResponse(
-      httpErrorCodeReturnedEquals: map['httpErrorCodeReturnedEquals'] == null ? null : (map['httpErrorCodeReturnedEquals'] as String).input(),
-      keyPrefixEquals: map['keyPrefixEquals'] == null ? null : (map['keyPrefixEquals'] as String).input(),
+      httpErrorCodeReturnedEquals: map['httpErrorCodeReturnedEquals'] == null ? null : (map['httpErrorCodeReturnedEquals']! as String).input(),
+      keyPrefixEquals: map['keyPrefixEquals'] == null ? null : (map['keyPrefixEquals']! as String).input(),
     );
   }
 }

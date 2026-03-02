@@ -105,21 +105,21 @@ class ServicePrincipalArgs {
 
   factory ServicePrincipalArgs.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalArgs(
-      accountEnabled: map['accountEnabled'] == null ? null : (map['accountEnabled'] as bool).input(),
-      alternativeNames: map['alternativeNames'] == null ? null : ((map['alternativeNames'] as List).cast<String>()).input(),
-      appRoleAssignmentRequired: map['appRoleAssignmentRequired'] == null ? null : (map['appRoleAssignmentRequired'] as bool).input(),
+      accountEnabled: map['accountEnabled'] == null ? null : (map['accountEnabled']! as bool).input(),
+      alternativeNames: map['alternativeNames'] == null ? null : ((map['alternativeNames']! as List).cast<String>()).input(),
+      appRoleAssignmentRequired: map['appRoleAssignmentRequired'] == null ? null : (map['appRoleAssignmentRequired']! as bool).input(),
       clientId: (map['clientId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      featureTags: map['featureTags'] == null ? null : (pulumi.Input.decodeList<ServicePrincipalFeatureTag>(map['featureTags'], (value) => ServicePrincipalFeatureTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      features: map['features'] == null ? null : (pulumi.Input.decodeList<ServicePrincipalFeature>(map['features'], (value) => ServicePrincipalFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      loginUrl: map['loginUrl'] == null ? null : (map['loginUrl'] as String).input(),
-      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
-      notificationEmailAddresses: map['notificationEmailAddresses'] == null ? null : ((map['notificationEmailAddresses'] as List).cast<String>()).input(),
-      owners: map['owners'] == null ? null : ((map['owners'] as List).cast<String>()).input(),
-      preferredSingleSignOnMode: map['preferredSingleSignOnMode'] == null ? null : (map['preferredSingleSignOnMode'] as String).input(),
-      samlSingleSignOn: map['samlSingleSignOn'] == null ? null : (ServicePrincipalSamlSingleSignOn.fromMap((map['samlSingleSignOn'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      useExisting: map['useExisting'] == null ? null : (map['useExisting'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      featureTags: map['featureTags'] == null ? null : (pulumi.Input.decodeList<ServicePrincipalFeatureTag>(map['featureTags']!, (value) => ServicePrincipalFeatureTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      features: map['features'] == null ? null : (pulumi.Input.decodeList<ServicePrincipalFeature>(map['features']!, (value) => ServicePrincipalFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loginUrl: map['loginUrl'] == null ? null : (map['loginUrl']! as String).input(),
+      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
+      notificationEmailAddresses: map['notificationEmailAddresses'] == null ? null : ((map['notificationEmailAddresses']! as List).cast<String>()).input(),
+      owners: map['owners'] == null ? null : ((map['owners']! as List).cast<String>()).input(),
+      preferredSingleSignOnMode: map['preferredSingleSignOnMode'] == null ? null : (map['preferredSingleSignOnMode']! as String).input(),
+      samlSingleSignOn: map['samlSingleSignOn'] == null ? null : (ServicePrincipalSamlSingleSignOn.fromMap((map['samlSingleSignOn']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      useExisting: map['useExisting'] == null ? null : (map['useExisting']! as bool).input(),
     );
   }
 }

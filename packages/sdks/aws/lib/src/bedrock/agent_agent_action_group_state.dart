@@ -93,20 +93,20 @@ class AgentAgentActionGroupState {
 
   factory AgentAgentActionGroupState.fromMap(Map<String, dynamic> map) {
     return AgentAgentActionGroupState(
-      actionGroupExecutor: map['actionGroupExecutor'] == null ? null : (AgentAgentActionGroupActionGroupExecutor.fromMap((map['actionGroupExecutor'] as Map).cast<String, dynamic>())).input(),
-      actionGroupId: map['actionGroupId'] == null ? null : (map['actionGroupId'] as String).input(),
-      actionGroupName: map['actionGroupName'] == null ? null : (map['actionGroupName'] as String).input(),
-      actionGroupState: map['actionGroupState'] == null ? null : (map['actionGroupState'] as String).input(),
-      agentId: map['agentId'] == null ? null : (map['agentId'] as String).input(),
-      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
-      apiSchema: map['apiSchema'] == null ? null : (AgentAgentActionGroupApiSchema.fromMap((map['apiSchema'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      functionSchema: map['functionSchema'] == null ? null : (AgentAgentActionGroupFunctionSchema.fromMap((map['functionSchema'] as Map).cast<String, dynamic>())).input(),
-      parentActionGroupSignature: map['parentActionGroupSignature'] == null ? null : (map['parentActionGroupSignature'] as String).input(),
-      prepareAgent: map['prepareAgent'] == null ? null : (map['prepareAgent'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      skipResourceInUseCheck: map['skipResourceInUseCheck'] == null ? null : (map['skipResourceInUseCheck'] as bool).input(),
-      timeouts: map['timeouts'] == null ? null : (AgentAgentActionGroupTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      actionGroupExecutor: map['actionGroupExecutor'] == null ? null : ((AgentAgentActionGroupActionGroupExecutor.fromMap((map['actionGroupExecutor']! as Map).cast<String, dynamic>())).input()).input(),
+      actionGroupId: map['actionGroupId'] == null ? null : ((map['actionGroupId'] as String).input()).input(),
+      actionGroupName: map['actionGroupName'] == null ? null : ((map['actionGroupName'] as String).input()).input(),
+      actionGroupState: map['actionGroupState'] == null ? null : ((map['actionGroupState'] as String).input()).input(),
+      agentId: map['agentId'] == null ? null : ((map['agentId'] as String).input()).input(),
+      agentVersion: map['agentVersion'] == null ? null : ((map['agentVersion'] as String).input()).input(),
+      apiSchema: map['apiSchema'] == null ? null : ((AgentAgentActionGroupApiSchema.fromMap((map['apiSchema']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      functionSchema: map['functionSchema'] == null ? null : ((AgentAgentActionGroupFunctionSchema.fromMap((map['functionSchema']! as Map).cast<String, dynamic>())).input()).input(),
+      parentActionGroupSignature: map['parentActionGroupSignature'] == null ? null : ((map['parentActionGroupSignature'] as String).input()).input(),
+      prepareAgent: map['prepareAgent'] == null ? null : ((map['prepareAgent'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      skipResourceInUseCheck: map['skipResourceInUseCheck'] == null ? null : ((map['skipResourceInUseCheck'] as bool).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((AgentAgentActionGroupTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

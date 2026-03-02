@@ -38,10 +38,10 @@ class CustomDomainState {
 
   factory CustomDomainState.fromMap(Map<String, dynamic> map) {
     return CustomDomainState(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      webPubsubCustomCertificateId: map['webPubsubCustomCertificateId'] == null ? null : (map['webPubsubCustomCertificateId'] as String).input(),
-      webPubsubId: map['webPubsubId'] == null ? null : (map['webPubsubId'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      webPubsubCustomCertificateId: map['webPubsubCustomCertificateId'] == null ? null : (map['webPubsubCustomCertificateId']! as String).input(),
+      webPubsubId: map['webPubsubId'] == null ? null : (map['webPubsubId']! as String).input(),
     );
   }
 }

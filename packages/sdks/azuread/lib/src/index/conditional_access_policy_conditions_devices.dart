@@ -23,7 +23,7 @@ class ConditionalAccessPolicyConditionsDevices {
 
   factory ConditionalAccessPolicyConditionsDevices.fromMap(Map<String, dynamic> map) {
     return ConditionalAccessPolicyConditionsDevices(
-      filter: map['filter'] == null ? null : (ConditionalAccessPolicyConditionsDevicesFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      filter: map['filter'] == null ? null : (ConditionalAccessPolicyConditionsDevicesFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

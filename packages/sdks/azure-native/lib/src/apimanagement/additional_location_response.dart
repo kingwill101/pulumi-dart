@@ -78,18 +78,18 @@ class AdditionalLocationResponse {
 
   factory AdditionalLocationResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalLocationResponse(
-      disableGateway: map['disableGateway'] == null ? null : (map['disableGateway'] as bool).input(),
+      disableGateway: map['disableGateway'] == null ? null : (map['disableGateway']! as bool).input(),
       gatewayRegionalUrl: (map['gatewayRegionalUrl'] as String).input(),
       location: (map['location'] as String).input(),
-      natGatewayState: map['natGatewayState'] == null ? null : (map['natGatewayState'] as String).input(),
+      natGatewayState: map['natGatewayState'] == null ? null : (map['natGatewayState']! as String).input(),
       outboundPublicIPAddresses: ((map['outboundPublicIPAddresses'] as List).cast<String>()).input(),
       platformVersion: (map['platformVersion'] as String).input(),
       privateIPAddresses: ((map['privateIPAddresses'] as List).cast<String>()).input(),
       publicIPAddresses: ((map['publicIPAddresses'] as List).cast<String>()).input(),
-      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId'] as String).input(),
+      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId']! as String).input(),
       sku: (ApiManagementServiceSkuPropertiesResponse.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      virtualNetworkConfiguration: map['virtualNetworkConfiguration'] == null ? null : (VirtualNetworkConfigurationResponse.fromMap((map['virtualNetworkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      virtualNetworkConfiguration: map['virtualNetworkConfiguration'] == null ? null : (VirtualNetworkConfigurationResponse.fromMap((map['virtualNetworkConfiguration']! as Map).cast<String, dynamic>())).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

@@ -66,15 +66,15 @@ class AppTemplateContainerReadinessProbe {
 
   factory AppTemplateContainerReadinessProbe.fromMap(Map<String, dynamic> map) {
     return AppTemplateContainerReadinessProbe(
-      failureCountThreshold: map['failureCountThreshold'] == null ? null : (map['failureCountThreshold'] as int).input(),
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<AppTemplateContainerReadinessProbeHeader>(map['headers'], (value) => AppTemplateContainerReadinessProbeHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      initialDelay: map['initialDelay'] == null ? null : (map['initialDelay'] as int).input(),
-      intervalSeconds: map['intervalSeconds'] == null ? null : (map['intervalSeconds'] as int).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      failureCountThreshold: map['failureCountThreshold'] == null ? null : (map['failureCountThreshold']! as int).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<AppTemplateContainerReadinessProbeHeader>(map['headers']!, (value) => AppTemplateContainerReadinessProbeHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      initialDelay: map['initialDelay'] == null ? null : (map['initialDelay']! as int).input(),
+      intervalSeconds: map['intervalSeconds'] == null ? null : (map['intervalSeconds']! as int).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
       port: (map['port'] as int).input(),
-      successCountThreshold: map['successCountThreshold'] == null ? null : (map['successCountThreshold'] as int).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      successCountThreshold: map['successCountThreshold'] == null ? null : (map['successCountThreshold']! as int).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
       transport: (map['transport'] as String).input(),
     );
   }

@@ -83,17 +83,17 @@ class SmartDetectorAlertRuleArgs {
   factory SmartDetectorAlertRuleArgs.fromMap(Map<String, dynamic> map) {
     return SmartDetectorAlertRuleArgs(
       actionGroups: (ActionGroupsInformation.fromMap((map['actionGroups'] as Map).cast<String, dynamic>())).input(),
-      alertRuleName: map['alertRuleName'] == null ? null : (map['alertRuleName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      alertRuleName: map['alertRuleName'] == null ? null : (map['alertRuleName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       detector: (Detector.fromMap((map['detector'] as Map).cast<String, dynamic>())).input(),
       frequency: (map['frequency'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       scope: ((map['scope'] as List).cast<String>()).input(),
       severity: (map['severity'] as String).input(),
       state: (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      throttling: map['throttling'] == null ? null : (ThrottlingInformation.fromMap((map['throttling'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      throttling: map['throttling'] == null ? null : (ThrottlingInformation.fromMap((map['throttling']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

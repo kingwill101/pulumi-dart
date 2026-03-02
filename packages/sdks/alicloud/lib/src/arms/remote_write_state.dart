@@ -31,9 +31,9 @@ class RemoteWriteState {
 
   factory RemoteWriteState.fromMap(Map<String, dynamic> map) {
     return RemoteWriteState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      remoteWriteName: map['remoteWriteName'] == null ? null : (map['remoteWriteName'] as String).input(),
-      remoteWriteYaml: map['remoteWriteYaml'] == null ? null : (map['remoteWriteYaml'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      remoteWriteName: map['remoteWriteName'] == null ? null : (map['remoteWriteName']! as String).input(),
+      remoteWriteYaml: map['remoteWriteYaml'] == null ? null : (map['remoteWriteYaml']! as String).input(),
     );
   }
 }

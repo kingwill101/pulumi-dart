@@ -75,18 +75,18 @@ class MediaInsightsPipelineConfigurationElementAmazonTranscribeProcessorConfigur
 
   factory MediaInsightsPipelineConfigurationElementAmazonTranscribeProcessorConfiguration.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationElementAmazonTranscribeProcessorConfiguration(
-      contentIdentificationType: map['contentIdentificationType'] == null ? null : (map['contentIdentificationType'] as String).input(),
-      contentRedactionType: map['contentRedactionType'] == null ? null : (map['contentRedactionType'] as String).input(),
-      enablePartialResultsStabilization: map['enablePartialResultsStabilization'] == null ? null : (map['enablePartialResultsStabilization'] as bool).input(),
-      filterPartialResults: map['filterPartialResults'] == null ? null : (map['filterPartialResults'] as bool).input(),
+      contentIdentificationType: map['contentIdentificationType'] == null ? null : ((map['contentIdentificationType'] as String).input()).input(),
+      contentRedactionType: map['contentRedactionType'] == null ? null : ((map['contentRedactionType'] as String).input()).input(),
+      enablePartialResultsStabilization: map['enablePartialResultsStabilization'] == null ? null : ((map['enablePartialResultsStabilization'] as bool).input()).input(),
+      filterPartialResults: map['filterPartialResults'] == null ? null : ((map['filterPartialResults'] as bool).input()).input(),
       languageCode: (map['languageCode'] as String).input(),
-      languageModelName: map['languageModelName'] == null ? null : (map['languageModelName'] as String).input(),
-      partialResultsStability: map['partialResultsStability'] == null ? null : (map['partialResultsStability'] as String).input(),
-      piiEntityTypes: map['piiEntityTypes'] == null ? null : (map['piiEntityTypes'] as String).input(),
-      showSpeakerLabel: map['showSpeakerLabel'] == null ? null : (map['showSpeakerLabel'] as bool).input(),
-      vocabularyFilterMethod: map['vocabularyFilterMethod'] == null ? null : (map['vocabularyFilterMethod'] as String).input(),
-      vocabularyFilterName: map['vocabularyFilterName'] == null ? null : (map['vocabularyFilterName'] as String).input(),
-      vocabularyName: map['vocabularyName'] == null ? null : (map['vocabularyName'] as String).input(),
+      languageModelName: map['languageModelName'] == null ? null : ((map['languageModelName'] as String).input()).input(),
+      partialResultsStability: map['partialResultsStability'] == null ? null : ((map['partialResultsStability'] as String).input()).input(),
+      piiEntityTypes: map['piiEntityTypes'] == null ? null : ((map['piiEntityTypes'] as String).input()).input(),
+      showSpeakerLabel: map['showSpeakerLabel'] == null ? null : ((map['showSpeakerLabel'] as bool).input()).input(),
+      vocabularyFilterMethod: map['vocabularyFilterMethod'] == null ? null : ((map['vocabularyFilterMethod'] as String).input()).input(),
+      vocabularyFilterName: map['vocabularyFilterName'] == null ? null : ((map['vocabularyFilterName'] as String).input()).input(),
+      vocabularyName: map['vocabularyName'] == null ? null : ((map['vocabularyName'] as String).input()).input(),
     );
   }
 }

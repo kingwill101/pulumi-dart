@@ -26,8 +26,8 @@ class ResourceMoveDetailsResponse {
 
   factory ResourceMoveDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceMoveDetailsResponse(
-      operationInProgress: map['operationInProgress'] == null ? null : (map['operationInProgress'] as String).input(),
-      operationInProgressLockTimeoutInUTC: map['operationInProgressLockTimeoutInUTC'] == null ? null : (map['operationInProgressLockTimeoutInUTC'] as String).input(),
+      operationInProgress: map['operationInProgress'] == null ? null : (map['operationInProgress']! as String).input(),
+      operationInProgressLockTimeoutInUTC: map['operationInProgressLockTimeoutInUTC'] == null ? null : (map['operationInProgressLockTimeoutInUTC']! as String).input(),
     );
   }
 }

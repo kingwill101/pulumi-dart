@@ -30,7 +30,7 @@ class IntegrationRuntimeSsisProxy {
 
   factory IntegrationRuntimeSsisProxy.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSsisProxy(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
       selfHostedIntegrationRuntimeName: (map['selfHostedIntegrationRuntimeName'] as String).input(),
       stagingStorageLinkedServiceName: (map['stagingStorageLinkedServiceName'] as String).input(),
     );

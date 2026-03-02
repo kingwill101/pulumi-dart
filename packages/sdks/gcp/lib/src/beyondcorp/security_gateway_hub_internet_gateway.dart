@@ -21,7 +21,7 @@ class SecurityGatewayHubInternetGateway {
 
   factory SecurityGatewayHubInternetGateway.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayHubInternetGateway(
-      assignedIps: map['assignedIps'] == null ? null : ((map['assignedIps'] as List).cast<String>()).input(),
+      assignedIps: map['assignedIps'] == null ? null : ((map['assignedIps']! as List).cast<String>()).input(),
     );
   }
 }

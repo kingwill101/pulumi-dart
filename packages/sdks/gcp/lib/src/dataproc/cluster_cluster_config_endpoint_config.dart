@@ -28,7 +28,7 @@ class ClusterClusterConfigEndpointConfig {
   factory ClusterClusterConfigEndpointConfig.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigEndpointConfig(
       enableHttpPortAccess: (map['enableHttpPortAccess'] as bool).input(),
-      httpPorts: map['httpPorts'] == null ? null : ((map['httpPorts'] as Map).cast<String, String>()).input(),
+      httpPorts: map['httpPorts'] == null ? null : ((map['httpPorts']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class PortMappingResponse {
 
   factory PortMappingResponse.fromMap(Map<String, dynamic> map) {
     return PortMappingResponse(
-      externalPort: map['externalPort'] == null ? null : (map['externalPort'] as int).input(),
-      internalPort: map['internalPort'] == null ? null : (map['internalPort'] as int).input(),
+      externalPort: map['externalPort'] == null ? null : (map['externalPort']! as int).input(),
+      internalPort: map['internalPort'] == null ? null : (map['internalPort']! as int).input(),
     );
   }
 }

@@ -35,8 +35,8 @@ class RegistryScanningConfigurationArgs {
 
   factory RegistryScanningConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return RegistryScanningConfigurationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RegistryScanningConfigurationRule>(map['rules'], (value) => RegistryScanningConfigurationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      rules: map['rules'] == null ? null : ((pulumi.Input.decodeList<RegistryScanningConfigurationRule>(map['rules']!, (value) => RegistryScanningConfigurationRule.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       scanType: (map['scanType'] as String).input(),
     );
   }

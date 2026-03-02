@@ -26,8 +26,8 @@ class ServiceEndpointSpec {
 
   factory ServiceEndpointSpec.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointSpec(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<ServiceEndpointSpecPort>(map['ports'], (value) => ServiceEndpointSpecPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<ServiceEndpointSpecPort>(map['ports']!, (value) => ServiceEndpointSpecPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

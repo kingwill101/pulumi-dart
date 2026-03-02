@@ -20,7 +20,7 @@ class GetVirtualNodeSpecListenerTimeoutTcp {
 
   factory GetVirtualNodeSpecListenerTimeoutTcp.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerTimeoutTcp(
-      idles: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutTcpIdle>(map['idles'], (value) => GetVirtualNodeSpecListenerTimeoutTcpIdle.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      idles: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutTcpIdle>(map['idles']!, (value) => GetVirtualNodeSpecListenerTimeoutTcpIdle.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

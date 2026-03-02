@@ -28,8 +28,8 @@ class URLMapDefaultRouteActionFaultInjectionPolicyDelay {
 
   factory URLMapDefaultRouteActionFaultInjectionPolicyDelay.fromMap(Map<String, dynamic> map) {
     return URLMapDefaultRouteActionFaultInjectionPolicyDelay(
-      fixedDelay: map['fixedDelay'] == null ? null : (URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay.fromMap((map['fixedDelay'] as Map).cast<String, dynamic>())).input(),
-      percentage: map['percentage'] == null ? null : (map['percentage'] as double).input(),
+      fixedDelay: map['fixedDelay'] == null ? null : (URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay.fromMap((map['fixedDelay']! as Map).cast<String, dynamic>())).input(),
+      percentage: map['percentage'] == null ? null : (map['percentage']! as double).input(),
     );
   }
 }

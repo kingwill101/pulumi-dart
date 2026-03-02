@@ -63,12 +63,12 @@ class RegistrationContactSettingsAdminContactPostalAddress {
 
   factory RegistrationContactSettingsAdminContactPostalAddress.fromMap(Map<String, dynamic> map) {
     return RegistrationContactSettingsAdminContactPostalAddress(
-      addressLines: map['addressLines'] == null ? null : ((map['addressLines'] as List).cast<String>()).input(),
-      administrativeArea: map['administrativeArea'] == null ? null : (map['administrativeArea'] as String).input(),
-      locality: map['locality'] == null ? null : (map['locality'] as String).input(),
-      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
-      postalCode: map['postalCode'] == null ? null : (map['postalCode'] as String).input(),
-      recipients: map['recipients'] == null ? null : ((map['recipients'] as List).cast<String>()).input(),
+      addressLines: map['addressLines'] == null ? null : ((map['addressLines']! as List).cast<String>()).input(),
+      administrativeArea: map['administrativeArea'] == null ? null : (map['administrativeArea']! as String).input(),
+      locality: map['locality'] == null ? null : (map['locality']! as String).input(),
+      organization: map['organization'] == null ? null : (map['organization']! as String).input(),
+      postalCode: map['postalCode'] == null ? null : (map['postalCode']! as String).input(),
+      recipients: map['recipients'] == null ? null : ((map['recipients']! as List).cast<String>()).input(),
       regionCode: (map['regionCode'] as String).input(),
     );
   }

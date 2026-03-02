@@ -20,7 +20,7 @@ class GetOnlineDeploymentLogsResult {
 
   factory GetOnlineDeploymentLogsResult.fromMap(Map<String, dynamic> map) {
     return GetOnlineDeploymentLogsResult(
-      content: map['content'] == null ? null : map['content'] as String,
+      content: map['content'] == null ? null : map['content']! as String,
     );
   }
 }

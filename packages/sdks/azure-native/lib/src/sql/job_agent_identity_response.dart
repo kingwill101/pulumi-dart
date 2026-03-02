@@ -32,9 +32,9 @@ class JobAgentIdentityResponse {
 
   factory JobAgentIdentityResponse.fromMap(Map<String, dynamic> map) {
     return JobAgentIdentityResponse(
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
       type: (map['type'] as String).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<JobAgentUserAssignedIdentityResponse>(map['userAssignedIdentities'], (value) => JobAgentUserAssignedIdentityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<JobAgentUserAssignedIdentityResponse>(map['userAssignedIdentities']!, (value) => JobAgentUserAssignedIdentityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

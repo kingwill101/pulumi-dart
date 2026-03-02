@@ -100,21 +100,21 @@ class LinuxWebAppAuthSettings {
 
   factory LinuxWebAppAuthSettings.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppAuthSettings(
-      activeDirectory: map['activeDirectory'] == null ? null : (LinuxWebAppAuthSettingsActiveDirectory.fromMap((map['activeDirectory'] as Map).cast<String, dynamic>())).input(),
-      additionalLoginParameters: map['additionalLoginParameters'] == null ? null : ((map['additionalLoginParameters'] as Map).cast<String, String>()).input(),
-      allowedExternalRedirectUrls: map['allowedExternalRedirectUrls'] == null ? null : ((map['allowedExternalRedirectUrls'] as List).cast<String>()).input(),
-      defaultProvider: map['defaultProvider'] == null ? null : (map['defaultProvider'] as String).input(),
+      activeDirectory: map['activeDirectory'] == null ? null : (LinuxWebAppAuthSettingsActiveDirectory.fromMap((map['activeDirectory']! as Map).cast<String, dynamic>())).input(),
+      additionalLoginParameters: map['additionalLoginParameters'] == null ? null : ((map['additionalLoginParameters']! as Map).cast<String, String>()).input(),
+      allowedExternalRedirectUrls: map['allowedExternalRedirectUrls'] == null ? null : ((map['allowedExternalRedirectUrls']! as List).cast<String>()).input(),
+      defaultProvider: map['defaultProvider'] == null ? null : (map['defaultProvider']! as String).input(),
       enabled: (map['enabled'] as bool).input(),
-      facebook: map['facebook'] == null ? null : (LinuxWebAppAuthSettingsFacebook.fromMap((map['facebook'] as Map).cast<String, dynamic>())).input(),
-      github: map['github'] == null ? null : (LinuxWebAppAuthSettingsGithub.fromMap((map['github'] as Map).cast<String, dynamic>())).input(),
-      google: map['google'] == null ? null : (LinuxWebAppAuthSettingsGoogle.fromMap((map['google'] as Map).cast<String, dynamic>())).input(),
-      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
-      microsoft: map['microsoft'] == null ? null : (LinuxWebAppAuthSettingsMicrosoft.fromMap((map['microsoft'] as Map).cast<String, dynamic>())).input(),
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
-      tokenRefreshExtensionHours: map['tokenRefreshExtensionHours'] == null ? null : (map['tokenRefreshExtensionHours'] as double).input(),
-      tokenStoreEnabled: map['tokenStoreEnabled'] == null ? null : (map['tokenStoreEnabled'] as bool).input(),
-      twitter: map['twitter'] == null ? null : (LinuxWebAppAuthSettingsTwitter.fromMap((map['twitter'] as Map).cast<String, dynamic>())).input(),
-      unauthenticatedClientAction: map['unauthenticatedClientAction'] == null ? null : (map['unauthenticatedClientAction'] as String).input(),
+      facebook: map['facebook'] == null ? null : (LinuxWebAppAuthSettingsFacebook.fromMap((map['facebook']! as Map).cast<String, dynamic>())).input(),
+      github: map['github'] == null ? null : (LinuxWebAppAuthSettingsGithub.fromMap((map['github']! as Map).cast<String, dynamic>())).input(),
+      google: map['google'] == null ? null : (LinuxWebAppAuthSettingsGoogle.fromMap((map['google']! as Map).cast<String, dynamic>())).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer']! as String).input(),
+      microsoft: map['microsoft'] == null ? null : (LinuxWebAppAuthSettingsMicrosoft.fromMap((map['microsoft']! as Map).cast<String, dynamic>())).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']! as String).input(),
+      tokenRefreshExtensionHours: map['tokenRefreshExtensionHours'] == null ? null : (map['tokenRefreshExtensionHours']! as double).input(),
+      tokenStoreEnabled: map['tokenStoreEnabled'] == null ? null : (map['tokenStoreEnabled']! as bool).input(),
+      twitter: map['twitter'] == null ? null : (LinuxWebAppAuthSettingsTwitter.fromMap((map['twitter']! as Map).cast<String, dynamic>())).input(),
+      unauthenticatedClientAction: map['unauthenticatedClientAction'] == null ? null : (map['unauthenticatedClientAction']! as String).input(),
     );
   }
 }

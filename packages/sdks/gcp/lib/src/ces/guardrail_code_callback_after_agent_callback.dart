@@ -31,8 +31,8 @@ class GuardrailCodeCallbackAfterAgentCallback {
 
   factory GuardrailCodeCallbackAfterAgentCallback.fromMap(Map<String, dynamic> map) {
     return GuardrailCodeCallbackAfterAgentCallback(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
       pythonCode: (map['pythonCode'] as String).input(),
     );
   }

@@ -28,8 +28,8 @@ class ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutpu
 
   factory ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty.fromMap(Map<String, dynamic> map) {
     return ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      valueExpression: map['valueExpression'] == null ? null : (ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpression.fromMap((map['valueExpression'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      valueExpression: map['valueExpression'] == null ? null : (ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpression.fromMap((map['valueExpression']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

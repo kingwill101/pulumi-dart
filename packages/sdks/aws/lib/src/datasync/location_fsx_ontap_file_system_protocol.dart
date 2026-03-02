@@ -27,8 +27,8 @@ class LocationFsxOntapFileSystemProtocol {
 
   factory LocationFsxOntapFileSystemProtocol.fromMap(Map<String, dynamic> map) {
     return LocationFsxOntapFileSystemProtocol(
-      nfs: map['nfs'] == null ? null : (LocationFsxOntapFileSystemProtocolNfs.fromMap((map['nfs'] as Map).cast<String, dynamic>())).input(),
-      smb: map['smb'] == null ? null : (LocationFsxOntapFileSystemProtocolSmb.fromMap((map['smb'] as Map).cast<String, dynamic>())).input(),
+      nfs: map['nfs'] == null ? null : ((LocationFsxOntapFileSystemProtocolNfs.fromMap((map['nfs']! as Map).cast<String, dynamic>())).input()).input(),
+      smb: map['smb'] == null ? null : ((LocationFsxOntapFileSystemProtocolSmb.fromMap((map['smb']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

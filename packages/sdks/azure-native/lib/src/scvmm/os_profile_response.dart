@@ -31,7 +31,7 @@ class OsProfileResponse {
 
   factory OsProfileResponse.fromMap(Map<String, dynamic> map) {
     return OsProfileResponse(
-      computerName: map['computerName'] == null ? null : (map['computerName'] as String).input(),
+      computerName: map['computerName'] == null ? null : (map['computerName']! as String).input(),
       osName: (map['osName'] as String).input(),
       osType: (map['osType'] as String).input(),
     );

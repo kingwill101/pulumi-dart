@@ -27,8 +27,8 @@ class ChannelNamespaceHandlerConfigs {
 
   factory ChannelNamespaceHandlerConfigs.fromMap(Map<String, dynamic> map) {
     return ChannelNamespaceHandlerConfigs(
-      onPublish: map['onPublish'] == null ? null : (ChannelNamespaceHandlerConfigsOnPublish.fromMap((map['onPublish'] as Map).cast<String, dynamic>())).input(),
-      onSubscribe: map['onSubscribe'] == null ? null : (ChannelNamespaceHandlerConfigsOnSubscribe.fromMap((map['onSubscribe'] as Map).cast<String, dynamic>())).input(),
+      onPublish: map['onPublish'] == null ? null : ((ChannelNamespaceHandlerConfigsOnPublish.fromMap((map['onPublish']! as Map).cast<String, dynamic>())).input()).input(),
+      onSubscribe: map['onSubscribe'] == null ? null : ((ChannelNamespaceHandlerConfigsOnSubscribe.fromMap((map['onSubscribe']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class AggregateCompliancePackConfigRuleConfigRuleParameter {
 
   factory AggregateCompliancePackConfigRuleConfigRuleParameter.fromMap(Map<String, dynamic> map) {
     return AggregateCompliancePackConfigRuleConfigRuleParameter(
-      parameterName: map['parameterName'] == null ? null : (map['parameterName'] as String).input(),
-      parameterValue: map['parameterValue'] == null ? null : (map['parameterValue'] as String).input(),
+      parameterName: map['parameterName'] == null ? null : (map['parameterName']! as String).input(),
+      parameterValue: map['parameterValue'] == null ? null : (map['parameterValue']! as String).input(),
     );
   }
 }

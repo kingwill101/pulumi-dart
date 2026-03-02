@@ -32,7 +32,7 @@ class GetNetworksResult {
   factory GetNetworksResult.fromMap(Map<String, dynamic> map) {
     return GetNetworksResult(
       id: map['id'] as String,
-      odbNetworks: pulumi.Input.decodeList<GetNetworksOdbNetwork>(map['odbNetworks'], (value) => GetNetworksOdbNetwork.fromMap((value as Map).cast<String, dynamic>())),
+      odbNetworks: pulumi.Input.decodeList<GetNetworksOdbNetwork>(map['odbNetworks']!, (value) => GetNetworksOdbNetwork.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
     );
   }

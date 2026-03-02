@@ -43,7 +43,7 @@ class GetApiKeysResult {
       customerId: map['customerId'] == null ? null : map['customerId'] as String,
       id: map['id'] as String,
       includeValues: map['includeValues'] == null ? null : map['includeValues'] as bool,
-      items: pulumi.Input.decodeList<GetApiKeysItem>(map['items'], (value) => GetApiKeysItem.fromMap((value as Map).cast<String, dynamic>())),
+      items: pulumi.Input.decodeList<GetApiKeysItem>(map['items']!, (value) => GetApiKeysItem.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
     );
   }

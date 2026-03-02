@@ -39,10 +39,10 @@ class ElementaryStream {
 
   factory ElementaryStream.fromMap(Map<String, dynamic> map) {
     return ElementaryStream(
-      audioStream: map['audioStream'] == null ? null : (AudioStream.fromMap((map['audioStream'] as Map).cast<String, dynamic>())).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      textStream: map['textStream'] == null ? null : (TextStream.fromMap((map['textStream'] as Map).cast<String, dynamic>())).input(),
-      videoStream: map['videoStream'] == null ? null : (VideoStream.fromMap((map['videoStream'] as Map).cast<String, dynamic>())).input(),
+      audioStream: map['audioStream'] == null ? null : (AudioStream.fromMap((map['audioStream']! as Map).cast<String, dynamic>())).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      textStream: map['textStream'] == null ? null : (TextStream.fromMap((map['textStream']! as Map).cast<String, dynamic>())).input(),
+      videoStream: map['videoStream'] == null ? null : (VideoStream.fromMap((map['videoStream']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

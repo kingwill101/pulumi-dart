@@ -91,19 +91,19 @@ class SubnetState {
 
   factory SubnetState.fromMap(Map<String, dynamic> map) {
     return SubnetState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dhcpAddressRanges: map['dhcpAddressRanges'] == null ? null : (pulumi.Input.decodeList<SubnetDhcpAddressRange>(map['dhcpAddressRanges'], (value) => SubnetDhcpAddressRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId'] as String).input(),
-      gatewayIp: map['gatewayIp'] == null ? null : (map['gatewayIp'] as String).input(),
-      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      standardConfig: map['standardConfig'] == null ? null : (map['standardConfig'] as bool).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      vlanId: map['vlanId'] == null ? null : (map['vlanId'] as int).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dhcpAddressRanges: map['dhcpAddressRanges'] == null ? null : (pulumi.Input.decodeList<SubnetDhcpAddressRange>(map['dhcpAddressRanges']!, (value) => SubnetDhcpAddressRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId']! as String).input(),
+      gatewayIp: map['gatewayIp'] == null ? null : (map['gatewayIp']! as String).input(),
+      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      standardConfig: map['standardConfig'] == null ? null : (map['standardConfig']! as bool).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      vlanId: map['vlanId'] == null ? null : (map['vlanId']! as int).input(),
     );
   }
 }

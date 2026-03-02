@@ -35,8 +35,8 @@ class FolderArgs {
   factory FolderArgs.fromMap(Map<String, dynamic> map) {
     return FolderArgs(
       folderName: (map['folderName'] as String).input(),
-      parentFolderId: map['parentFolderId'] == null ? null : (map['parentFolderId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      parentFolderId: map['parentFolderId'] == null ? null : (map['parentFolderId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

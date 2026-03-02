@@ -56,14 +56,14 @@ class GalleryScriptParameterResponse {
 
   factory GalleryScriptParameterResponse.fromMap(Map<String, dynamic> map) {
     return GalleryScriptParameterResponse(
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enumValues: map['enumValues'] == null ? null : ((map['enumValues'] as List).cast<String>()).input(),
-      maxValue: map['maxValue'] == null ? null : (map['maxValue'] as String).input(),
-      minValue: map['minValue'] == null ? null : (map['minValue'] as String).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enumValues: map['enumValues'] == null ? null : ((map['enumValues']! as List).cast<String>()).input(),
+      maxValue: map['maxValue'] == null ? null : (map['maxValue']! as String).input(),
+      minValue: map['minValue'] == null ? null : (map['minValue']! as String).input(),
       name: (map['name'] as String).input(),
-      required: map['required'] == null ? null : (map['required'] as bool).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      required: map['required'] == null ? null : (map['required']! as bool).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

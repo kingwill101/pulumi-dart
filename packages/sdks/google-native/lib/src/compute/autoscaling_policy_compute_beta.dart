@@ -70,16 +70,16 @@ class AutoscalingPolicyComputeBeta {
 
   factory AutoscalingPolicyComputeBeta.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyComputeBeta(
-      coolDownPeriodSec: map['coolDownPeriodSec'] == null ? null : (map['coolDownPeriodSec'] as int).input(),
-      cpuUtilization: map['cpuUtilization'] == null ? null : (AutoscalingPolicyCpuUtilizationComputeBeta.fromMap((map['cpuUtilization'] as Map).cast<String, dynamic>())).input(),
-      customMetricUtilizations: map['customMetricUtilizations'] == null ? null : (pulumi.Input.decodeList<AutoscalingPolicyCustomMetricUtilizationComputeBeta>(map['customMetricUtilizations'], (value) => AutoscalingPolicyCustomMetricUtilizationComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      loadBalancingUtilization: map['loadBalancingUtilization'] == null ? null : (AutoscalingPolicyLoadBalancingUtilizationComputeBeta.fromMap((map['loadBalancingUtilization'] as Map).cast<String, dynamic>())).input(),
-      maxNumReplicas: map['maxNumReplicas'] == null ? null : (map['maxNumReplicas'] as int).input(),
-      minNumReplicas: map['minNumReplicas'] == null ? null : (map['minNumReplicas'] as int).input(),
-      mode: map['mode'] == null ? null : (AutoscalingPolicyModeComputeBeta.fromValue(map['mode'] as String)).input(),
-      scaleDownControl: map['scaleDownControl'] == null ? null : (AutoscalingPolicyScaleDownControlComputeBeta.fromMap((map['scaleDownControl'] as Map).cast<String, dynamic>())).input(),
-      scaleInControl: map['scaleInControl'] == null ? null : (AutoscalingPolicyScaleInControlComputeBeta.fromMap((map['scaleInControl'] as Map).cast<String, dynamic>())).input(),
-      scalingSchedules: map['scalingSchedules'] == null ? null : ((map['scalingSchedules'] as Map).cast<String, String>()).input(),
+      coolDownPeriodSec: map['coolDownPeriodSec'] == null ? null : (map['coolDownPeriodSec']! as int).input(),
+      cpuUtilization: map['cpuUtilization'] == null ? null : (AutoscalingPolicyCpuUtilizationComputeBeta.fromMap((map['cpuUtilization']! as Map).cast<String, dynamic>())).input(),
+      customMetricUtilizations: map['customMetricUtilizations'] == null ? null : (pulumi.Input.decodeList<AutoscalingPolicyCustomMetricUtilizationComputeBeta>(map['customMetricUtilizations']!, (value) => AutoscalingPolicyCustomMetricUtilizationComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loadBalancingUtilization: map['loadBalancingUtilization'] == null ? null : (AutoscalingPolicyLoadBalancingUtilizationComputeBeta.fromMap((map['loadBalancingUtilization']! as Map).cast<String, dynamic>())).input(),
+      maxNumReplicas: map['maxNumReplicas'] == null ? null : (map['maxNumReplicas']! as int).input(),
+      minNumReplicas: map['minNumReplicas'] == null ? null : (map['minNumReplicas']! as int).input(),
+      mode: map['mode'] == null ? null : (AutoscalingPolicyModeComputeBeta.fromValue(map['mode']! as String)).input(),
+      scaleDownControl: map['scaleDownControl'] == null ? null : (AutoscalingPolicyScaleDownControlComputeBeta.fromMap((map['scaleDownControl']! as Map).cast<String, dynamic>())).input(),
+      scaleInControl: map['scaleInControl'] == null ? null : (AutoscalingPolicyScaleInControlComputeBeta.fromMap((map['scaleInControl']! as Map).cast<String, dynamic>())).input(),
+      scalingSchedules: map['scalingSchedules'] == null ? null : ((map['scalingSchedules']! as Map).cast<String, String>()).input(),
     );
   }
 }

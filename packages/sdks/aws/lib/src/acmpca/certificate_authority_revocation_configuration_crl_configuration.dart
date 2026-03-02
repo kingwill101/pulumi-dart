@@ -45,12 +45,12 @@ class CertificateAuthorityRevocationConfigurationCrlConfiguration {
 
   factory CertificateAuthorityRevocationConfigurationCrlConfiguration.fromMap(Map<String, dynamic> map) {
     return CertificateAuthorityRevocationConfigurationCrlConfiguration(
-      customCname: map['customCname'] == null ? null : (map['customCname'] as String).input(),
-      customPath: map['customPath'] == null ? null : (map['customPath'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      expirationInDays: map['expirationInDays'] == null ? null : (map['expirationInDays'] as int).input(),
-      s3BucketName: map['s3BucketName'] == null ? null : (map['s3BucketName'] as String).input(),
-      s3ObjectAcl: map['s3ObjectAcl'] == null ? null : (map['s3ObjectAcl'] as String).input(),
+      customCname: map['customCname'] == null ? null : ((map['customCname'] as String).input()).input(),
+      customPath: map['customPath'] == null ? null : ((map['customPath'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      expirationInDays: map['expirationInDays'] == null ? null : ((map['expirationInDays'] as int).input()).input(),
+      s3BucketName: map['s3BucketName'] == null ? null : ((map['s3BucketName'] as String).input()).input(),
+      s3ObjectAcl: map['s3ObjectAcl'] == null ? null : ((map['s3ObjectAcl'] as String).input()).input(),
     );
   }
 }

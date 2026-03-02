@@ -49,10 +49,10 @@ class PrefixListLocalRulestackArgs {
 
   factory PrefixListLocalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return PrefixListLocalRulestackArgs(
-      auditComment: map['auditComment'] == null ? null : (map['auditComment'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      auditComment: map['auditComment'] == null ? null : (map['auditComment']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       localRulestackName: (map['localRulestackName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       prefixList: ((map['prefixList'] as List).cast<String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

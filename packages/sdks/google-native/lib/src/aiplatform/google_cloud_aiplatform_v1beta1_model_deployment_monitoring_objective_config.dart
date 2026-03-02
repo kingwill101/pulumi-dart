@@ -27,8 +27,8 @@ class GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfig {
 
   factory GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfig(
-      deployedModelId: map['deployedModelId'] == null ? null : (map['deployedModelId'] as String).input(),
-      objectiveConfig: map['objectiveConfig'] == null ? null : (GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig.fromMap((map['objectiveConfig'] as Map).cast<String, dynamic>())).input(),
+      deployedModelId: map['deployedModelId'] == null ? null : (map['deployedModelId']! as String).input(),
+      objectiveConfig: map['objectiveConfig'] == null ? null : (GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig.fromMap((map['objectiveConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

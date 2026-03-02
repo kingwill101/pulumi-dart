@@ -73,18 +73,18 @@ class GetAccessGroupsResult {
 
   factory GetAccessGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetAccessGroupsResult(
-      accessGroupName: map['accessGroupName'] == null ? null : map['accessGroupName'] as String,
-      accessGroupType: map['accessGroupType'] == null ? null : map['accessGroupType'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      fileSystemType: map['fileSystemType'] == null ? null : map['fileSystemType'] as String,
+      accessGroupName: map['accessGroupName'] == null ? null : map['accessGroupName']! as String,
+      accessGroupType: map['accessGroupType'] == null ? null : map['accessGroupType']! as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      fileSystemType: map['fileSystemType'] == null ? null : map['fileSystemType']! as String,
       groups: pulumi.Input.decodeList<GetAccessGroupsGroup>(map['groups'], (value) => GetAccessGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      useutcDateTime: map['useutcDateTime'] == null ? null : map['useutcDateTime'] as bool,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      type: map['type'] == null ? null : map['type']! as String,
+      useutcDateTime: map['useutcDateTime'] == null ? null : map['useutcDateTime']! as bool,
     );
   }
 }

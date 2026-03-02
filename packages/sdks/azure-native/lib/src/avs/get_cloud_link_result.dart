@@ -58,7 +58,7 @@ class GetCloudLinkResult {
     return GetCloudLinkResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      linkedCloud: map['linkedCloud'] == null ? null : map['linkedCloud'] as String,
+      linkedCloud: map['linkedCloud'] == null ? null : map['linkedCloud']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       status: map['status'] as String,

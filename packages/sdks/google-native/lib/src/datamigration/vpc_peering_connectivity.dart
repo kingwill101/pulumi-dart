@@ -21,7 +21,7 @@ class VpcPeeringConnectivity {
 
   factory VpcPeeringConnectivity.fromMap(Map<String, dynamic> map) {
     return VpcPeeringConnectivity(
-      vpc: map['vpc'] == null ? null : (map['vpc'] as String).input(),
+      vpc: map['vpc'] == null ? null : (map['vpc']! as String).input(),
     );
   }
 }

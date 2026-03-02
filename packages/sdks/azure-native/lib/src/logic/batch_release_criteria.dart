@@ -32,9 +32,9 @@ class BatchReleaseCriteria {
 
   factory BatchReleaseCriteria.fromMap(Map<String, dynamic> map) {
     return BatchReleaseCriteria(
-      batchSize: map['batchSize'] == null ? null : (map['batchSize'] as int).input(),
-      messageCount: map['messageCount'] == null ? null : (map['messageCount'] as int).input(),
-      recurrence: map['recurrence'] == null ? null : (WorkflowTriggerRecurrence.fromMap((map['recurrence'] as Map).cast<String, dynamic>())).input(),
+      batchSize: map['batchSize'] == null ? null : (map['batchSize']! as int).input(),
+      messageCount: map['messageCount'] == null ? null : (map['messageCount']! as int).input(),
+      recurrence: map['recurrence'] == null ? null : (WorkflowTriggerRecurrence.fromMap((map['recurrence']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

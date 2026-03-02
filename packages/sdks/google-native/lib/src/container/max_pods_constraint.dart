@@ -21,7 +21,7 @@ class MaxPodsConstraint {
 
   factory MaxPodsConstraint.fromMap(Map<String, dynamic> map) {
     return MaxPodsConstraint(
-      maxPodsPerNode: map['maxPodsPerNode'] == null ? null : (map['maxPodsPerNode'] as String).input(),
+      maxPodsPerNode: map['maxPodsPerNode'] == null ? null : (map['maxPodsPerNode']! as String).input(),
     );
   }
 }

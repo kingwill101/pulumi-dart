@@ -78,7 +78,7 @@ class BlobFolderDataSetMappingArgs {
       accountName: (map['accountName'] as String).input(),
       containerName: (map['containerName'] as String).input(),
       dataSetId: (map['dataSetId'] as String).input(),
-      dataSetMappingName: map['dataSetMappingName'] == null ? null : (map['dataSetMappingName'] as String).input(),
+      dataSetMappingName: map['dataSetMappingName'] == null ? null : (map['dataSetMappingName']! as String).input(),
       kind: (map['kind'] as String).input(),
       prefix: (map['prefix'] as String).input(),
       resourceGroup: (map['resourceGroup'] as String).input(),

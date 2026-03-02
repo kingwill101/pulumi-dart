@@ -65,7 +65,7 @@ class GetDistributionConfigurationResult {
       dateCreated: map['dateCreated'] as String,
       dateUpdated: map['dateUpdated'] as String,
       description: map['description'] as String,
-      distributions: pulumi.Input.decodeList<GetDistributionConfigurationDistribution>(map['distributions'], (value) => GetDistributionConfigurationDistribution.fromMap((value as Map).cast<String, dynamic>())),
+      distributions: pulumi.Input.decodeList<GetDistributionConfigurationDistribution>(map['distributions']!, (value) => GetDistributionConfigurationDistribution.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
       region: map['region'] as String,

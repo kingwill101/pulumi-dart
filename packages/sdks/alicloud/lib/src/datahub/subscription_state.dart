@@ -46,12 +46,12 @@ class SubscriptionState {
 
   factory SubscriptionState.fromMap(Map<String, dynamic> map) {
     return SubscriptionState(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      lastModifyTime: map['lastModifyTime'] == null ? null : (map['lastModifyTime'] as String).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
-      subId: map['subId'] == null ? null : (map['subId'] as String).input(),
-      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      lastModifyTime: map['lastModifyTime'] == null ? null : (map['lastModifyTime']! as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName']! as String).input(),
+      subId: map['subId'] == null ? null : (map['subId']! as String).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName']! as String).input(),
     );
   }
 }

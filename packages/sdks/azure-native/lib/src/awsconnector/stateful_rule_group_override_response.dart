@@ -21,7 +21,7 @@ class StatefulRuleGroupOverrideResponse {
 
   factory StatefulRuleGroupOverrideResponse.fromMap(Map<String, dynamic> map) {
     return StatefulRuleGroupOverrideResponse(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
     );
   }
 }

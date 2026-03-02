@@ -20,7 +20,7 @@ class ListServerGatewayStatusResult {
 
   factory ListServerGatewayStatusResult.fromMap(Map<String, dynamic> map) {
     return ListServerGatewayStatusResult(
-      status: map['status'] == null ? null : map['status'] as int,
+      status: map['status'] == null ? null : map['status']! as int,
     );
   }
 }

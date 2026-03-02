@@ -28,8 +28,8 @@ class DataSourceRestriction {
 
   factory DataSourceRestriction.fromMap(Map<String, dynamic> map) {
     return DataSourceRestriction(
-      filterOptions: map['filterOptions'] == null ? null : (pulumi.Input.decodeList<FilterOptions>(map['filterOptions'], (value) => FilterOptions.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      source: map['source'] == null ? null : (Source.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      filterOptions: map['filterOptions'] == null ? null : (pulumi.Input.decodeList<FilterOptions>(map['filterOptions']!, (value) => FilterOptions.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      source: map['source'] == null ? null : (Source.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -75,8 +75,8 @@ class GetRoutingRuleCollectionResult {
     return GetRoutingRuleCollectionResult(
       appliesTo: pulumi.Input.decodeList<NetworkManagerRoutingGroupItemResponse>(map['appliesTo'], (value) => NetworkManagerRoutingGroupItemResponse.fromMap((value as Map).cast<String, dynamic>())),
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      disableBgpRoutePropagation: map['disableBgpRoutePropagation'] == null ? null : map['disableBgpRoutePropagation'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      disableBgpRoutePropagation: map['disableBgpRoutePropagation'] == null ? null : map['disableBgpRoutePropagation']! as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,

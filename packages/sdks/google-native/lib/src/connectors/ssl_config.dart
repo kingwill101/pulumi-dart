@@ -72,16 +72,16 @@ class SslConfig {
 
   factory SslConfig.fromMap(Map<String, dynamic> map) {
     return SslConfig(
-      additionalVariables: map['additionalVariables'] == null ? null : (pulumi.Input.decodeList<ConfigVariable>(map['additionalVariables'], (value) => ConfigVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      clientCertType: map['clientCertType'] == null ? null : (SslConfigClientCertType.fromValue(map['clientCertType'] as String)).input(),
-      clientCertificate: map['clientCertificate'] == null ? null : (Secret.fromMap((map['clientCertificate'] as Map).cast<String, dynamic>())).input(),
-      clientPrivateKey: map['clientPrivateKey'] == null ? null : (Secret.fromMap((map['clientPrivateKey'] as Map).cast<String, dynamic>())).input(),
-      clientPrivateKeyPass: map['clientPrivateKeyPass'] == null ? null : (Secret.fromMap((map['clientPrivateKeyPass'] as Map).cast<String, dynamic>())).input(),
-      privateServerCertificate: map['privateServerCertificate'] == null ? null : (Secret.fromMap((map['privateServerCertificate'] as Map).cast<String, dynamic>())).input(),
-      serverCertType: map['serverCertType'] == null ? null : (SslConfigServerCertType.fromValue(map['serverCertType'] as String)).input(),
-      trustModel: map['trustModel'] == null ? null : (SslConfigTrustModel.fromValue(map['trustModel'] as String)).input(),
-      type: map['type'] == null ? null : (SslConfigType.fromValue(map['type'] as String)).input(),
-      useSsl: map['useSsl'] == null ? null : (map['useSsl'] as bool).input(),
+      additionalVariables: map['additionalVariables'] == null ? null : (pulumi.Input.decodeList<ConfigVariable>(map['additionalVariables']!, (value) => ConfigVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientCertType: map['clientCertType'] == null ? null : (SslConfigClientCertType.fromValue(map['clientCertType']! as String)).input(),
+      clientCertificate: map['clientCertificate'] == null ? null : (Secret.fromMap((map['clientCertificate']! as Map).cast<String, dynamic>())).input(),
+      clientPrivateKey: map['clientPrivateKey'] == null ? null : (Secret.fromMap((map['clientPrivateKey']! as Map).cast<String, dynamic>())).input(),
+      clientPrivateKeyPass: map['clientPrivateKeyPass'] == null ? null : (Secret.fromMap((map['clientPrivateKeyPass']! as Map).cast<String, dynamic>())).input(),
+      privateServerCertificate: map['privateServerCertificate'] == null ? null : (Secret.fromMap((map['privateServerCertificate']! as Map).cast<String, dynamic>())).input(),
+      serverCertType: map['serverCertType'] == null ? null : (SslConfigServerCertType.fromValue(map['serverCertType']! as String)).input(),
+      trustModel: map['trustModel'] == null ? null : (SslConfigTrustModel.fromValue(map['trustModel']! as String)).input(),
+      type: map['type'] == null ? null : (SslConfigType.fromValue(map['type']! as String)).input(),
+      useSsl: map['useSsl'] == null ? null : (map['useSsl']! as bool).input(),
     );
   }
 }

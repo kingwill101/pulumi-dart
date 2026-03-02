@@ -33,7 +33,7 @@ class GetUserTablesSqlTaskInput {
   factory GetUserTablesSqlTaskInput.fromMap(Map<String, dynamic> map) {
     return GetUserTablesSqlTaskInput(
       connectionInfo: (SqlConnectionInfo.fromMap((map['connectionInfo'] as Map).cast<String, dynamic>())).input(),
-      encryptedKeyForSecureFields: map['encryptedKeyForSecureFields'] == null ? null : (map['encryptedKeyForSecureFields'] as String).input(),
+      encryptedKeyForSecureFields: map['encryptedKeyForSecureFields'] == null ? null : (map['encryptedKeyForSecureFields']! as String).input(),
       selectedDatabases: ((map['selectedDatabases'] as List).cast<String>()).input(),
     );
   }

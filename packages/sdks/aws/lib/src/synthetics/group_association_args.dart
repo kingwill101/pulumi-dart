@@ -36,7 +36,7 @@ class GroupAssociationArgs {
     return GroupAssociationArgs(
       canaryArn: (map['canaryArn'] as String).input(),
       groupName: (map['groupName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

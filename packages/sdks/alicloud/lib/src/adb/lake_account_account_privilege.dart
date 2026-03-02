@@ -31,9 +31,9 @@ class LakeAccountAccountPrivilege {
 
   factory LakeAccountAccountPrivilege.fromMap(Map<String, dynamic> map) {
     return LakeAccountAccountPrivilege(
-      privilegeObject: map['privilegeObject'] == null ? null : (LakeAccountAccountPrivilegePrivilegeObject.fromMap((map['privilegeObject'] as Map).cast<String, dynamic>())).input(),
-      privilegeType: map['privilegeType'] == null ? null : (map['privilegeType'] as String).input(),
-      privileges: map['privileges'] == null ? null : ((map['privileges'] as List).cast<String>()).input(),
+      privilegeObject: map['privilegeObject'] == null ? null : (LakeAccountAccountPrivilegePrivilegeObject.fromMap((map['privilegeObject']! as Map).cast<String, dynamic>())).input(),
+      privilegeType: map['privilegeType'] == null ? null : (map['privilegeType']! as String).input(),
+      privileges: map['privileges'] == null ? null : ((map['privileges']! as List).cast<String>()).input(),
     );
   }
 }

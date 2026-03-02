@@ -30,8 +30,8 @@ class GetPeeringAttachmentsArgs {
 
   factory GetPeeringAttachmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetPeeringAttachmentsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetPeeringAttachmentsFilter>(map['filters'], (value) => GetPeeringAttachmentsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetPeeringAttachmentsFilter>(map['filters']!, (value) => GetPeeringAttachmentsFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

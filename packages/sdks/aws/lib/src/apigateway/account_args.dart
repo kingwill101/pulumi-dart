@@ -29,8 +29,8 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      cloudwatchRoleArn: map['cloudwatchRoleArn'] == null ? null : (map['cloudwatchRoleArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      cloudwatchRoleArn: map['cloudwatchRoleArn'] == null ? null : ((map['cloudwatchRoleArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

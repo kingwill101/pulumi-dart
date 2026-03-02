@@ -71,14 +71,14 @@ class EdgeCacheServiceRoutingPathMatcherRouteRule {
 
   factory EdgeCacheServiceRoutingPathMatcherRouteRule.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceRoutingPathMatcherRouteRule(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      headerAction: map['headerAction'] == null ? null : (EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction.fromMap((map['headerAction'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      headerAction: map['headerAction'] == null ? null : (EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction.fromMap((map['headerAction']! as Map).cast<String, dynamic>())).input(),
       matchRules: (pulumi.Input.decodeList<EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule>(map['matchRules'], (value) => EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      origin: map['origin'] == null ? null : (map['origin'] as String).input(),
+      origin: map['origin'] == null ? null : (map['origin']! as String).input(),
       priority: (map['priority'] as String).input(),
-      routeAction: map['routeAction'] == null ? null : (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction.fromMap((map['routeAction'] as Map).cast<String, dynamic>())).input(),
-      routeMethods: map['routeMethods'] == null ? null : (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods.fromMap((map['routeMethods'] as Map).cast<String, dynamic>())).input(),
-      urlRedirect: map['urlRedirect'] == null ? null : (EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect.fromMap((map['urlRedirect'] as Map).cast<String, dynamic>())).input(),
+      routeAction: map['routeAction'] == null ? null : (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction.fromMap((map['routeAction']! as Map).cast<String, dynamic>())).input(),
+      routeMethods: map['routeMethods'] == null ? null : (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods.fromMap((map['routeMethods']! as Map).cast<String, dynamic>())).input(),
+      urlRedirect: map['urlRedirect'] == null ? null : (EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect.fromMap((map['urlRedirect']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

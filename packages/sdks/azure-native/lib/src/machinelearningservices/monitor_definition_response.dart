@@ -39,9 +39,9 @@ class MonitorDefinitionResponse {
 
   factory MonitorDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return MonitorDefinitionResponse(
-      alertNotificationSettings: map['alertNotificationSettings'] == null ? null : (MonitorNotificationSettingsResponse.fromMap((map['alertNotificationSettings'] as Map).cast<String, dynamic>())).input(),
+      alertNotificationSettings: map['alertNotificationSettings'] == null ? null : (MonitorNotificationSettingsResponse.fromMap((map['alertNotificationSettings']! as Map).cast<String, dynamic>())).input(),
       computeConfiguration: (MonitorServerlessSparkComputeResponse.fromMap((map['computeConfiguration'] as Map).cast<String, dynamic>())).input(),
-      monitoringTarget: map['monitoringTarget'] == null ? null : (MonitoringTargetResponse.fromMap((map['monitoringTarget'] as Map).cast<String, dynamic>())).input(),
+      monitoringTarget: map['monitoringTarget'] == null ? null : (MonitoringTargetResponse.fromMap((map['monitoringTarget']! as Map).cast<String, dynamic>())).input(),
       signals: (pulumi.Input.decodeMapValues<CustomMonitoringSignalResponse>(map['signals'], (value) => CustomMonitoringSignalResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

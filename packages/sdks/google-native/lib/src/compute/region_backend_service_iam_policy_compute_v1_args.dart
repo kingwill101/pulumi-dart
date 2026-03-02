@@ -59,14 +59,14 @@ class RegionBackendServiceIamPolicyComputeV1Args {
 
   factory RegionBackendServiceIamPolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceIamPolicyComputeV1Args(
-      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfigComputeV1>(map['auditConfigs'], (value) => AuditConfigComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingComputeV1>(map['bindings'], (value) => BindingComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfigComputeV1>(map['auditConfigs']!, (value) => AuditConfigComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingComputeV1>(map['bindings']!, (value) => BindingComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
       resource: (map['resource'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RuleComputeV1>(map['rules'], (value) => RuleComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RuleComputeV1>(map['rules']!, (value) => RuleComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

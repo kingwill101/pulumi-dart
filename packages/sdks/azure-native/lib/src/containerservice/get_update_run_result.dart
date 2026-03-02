@@ -94,10 +94,10 @@ class GetUpdateRunResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       status: UpdateRunStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
-      strategy: map['strategy'] == null ? null : UpdateRunStrategyResponse.fromMap((map['strategy'] as Map).cast<String, dynamic>()),
+      strategy: map['strategy'] == null ? null : UpdateRunStrategyResponse.fromMap((map['strategy']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      updateStrategyId: map['updateStrategyId'] == null ? null : map['updateStrategyId'] as String,
+      updateStrategyId: map['updateStrategyId'] == null ? null : map['updateStrategyId']! as String,
     );
   }
 }

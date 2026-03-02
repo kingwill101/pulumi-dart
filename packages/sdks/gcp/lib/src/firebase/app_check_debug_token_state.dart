@@ -51,11 +51,11 @@ class AppCheckDebugTokenState {
 
   factory AppCheckDebugTokenState.fromMap(Map<String, dynamic> map) {
     return AppCheckDebugTokenState(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      debugTokenId: map['debugTokenId'] == null ? null : (map['debugTokenId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      debugTokenId: map['debugTokenId'] == null ? null : (map['debugTokenId']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class StatefulEngineOptionsResponse {
 
   factory StatefulEngineOptionsResponse.fromMap(Map<String, dynamic> map) {
     return StatefulEngineOptionsResponse(
-      ruleOrder: map['ruleOrder'] == null ? null : (map['ruleOrder'] as String).input(),
-      streamExceptionPolicy: map['streamExceptionPolicy'] == null ? null : (map['streamExceptionPolicy'] as String).input(),
+      ruleOrder: map['ruleOrder'] == null ? null : (map['ruleOrder']! as String).input(),
+      streamExceptionPolicy: map['streamExceptionPolicy'] == null ? null : (map['streamExceptionPolicy']! as String).input(),
     );
   }
 }

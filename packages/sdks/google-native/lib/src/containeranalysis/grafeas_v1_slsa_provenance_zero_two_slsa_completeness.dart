@@ -28,9 +28,9 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness {
 
   factory GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness.fromMap(Map<String, dynamic> map) {
     return GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness(
-      environment: map['environment'] == null ? null : (map['environment'] as bool).input(),
-      materials: map['materials'] == null ? null : (map['materials'] as bool).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as bool).input(),
+      environment: map['environment'] == null ? null : (map['environment']! as bool).input(),
+      materials: map['materials'] == null ? null : (map['materials']! as bool).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']! as bool).input(),
     );
   }
 }

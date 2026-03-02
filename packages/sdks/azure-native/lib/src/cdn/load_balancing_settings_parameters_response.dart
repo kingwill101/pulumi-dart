@@ -31,9 +31,9 @@ class LoadBalancingSettingsParametersResponse {
 
   factory LoadBalancingSettingsParametersResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancingSettingsParametersResponse(
-      additionalLatencyInMilliseconds: map['additionalLatencyInMilliseconds'] == null ? null : (map['additionalLatencyInMilliseconds'] as int).input(),
-      sampleSize: map['sampleSize'] == null ? null : (map['sampleSize'] as int).input(),
-      successfulSamplesRequired: map['successfulSamplesRequired'] == null ? null : (map['successfulSamplesRequired'] as int).input(),
+      additionalLatencyInMilliseconds: map['additionalLatencyInMilliseconds'] == null ? null : (map['additionalLatencyInMilliseconds']! as int).input(),
+      sampleSize: map['sampleSize'] == null ? null : (map['sampleSize']! as int).input(),
+      successfulSamplesRequired: map['successfulSamplesRequired'] == null ? null : (map['successfulSamplesRequired']! as int).input(),
     );
   }
 }

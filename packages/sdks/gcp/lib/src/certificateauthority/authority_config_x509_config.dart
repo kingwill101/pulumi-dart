@@ -51,12 +51,12 @@ class AuthorityConfigX509Config {
 
   factory AuthorityConfigX509Config.fromMap(Map<String, dynamic> map) {
     return AuthorityConfigX509Config(
-      additionalExtensions: map['additionalExtensions'] == null ? null : (pulumi.Input.decodeList<AuthorityConfigX509ConfigAdditionalExtension>(map['additionalExtensions'], (value) => AuthorityConfigX509ConfigAdditionalExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      aiaOcspServers: map['aiaOcspServers'] == null ? null : ((map['aiaOcspServers'] as List).cast<String>()).input(),
+      additionalExtensions: map['additionalExtensions'] == null ? null : (pulumi.Input.decodeList<AuthorityConfigX509ConfigAdditionalExtension>(map['additionalExtensions']!, (value) => AuthorityConfigX509ConfigAdditionalExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aiaOcspServers: map['aiaOcspServers'] == null ? null : ((map['aiaOcspServers']! as List).cast<String>()).input(),
       caOptions: (AuthorityConfigX509ConfigCaOptions.fromMap((map['caOptions'] as Map).cast<String, dynamic>())).input(),
       keyUsage: (AuthorityConfigX509ConfigKeyUsage.fromMap((map['keyUsage'] as Map).cast<String, dynamic>())).input(),
-      nameConstraints: map['nameConstraints'] == null ? null : (AuthorityConfigX509ConfigNameConstraints.fromMap((map['nameConstraints'] as Map).cast<String, dynamic>())).input(),
-      policyIds: map['policyIds'] == null ? null : (pulumi.Input.decodeList<AuthorityConfigX509ConfigPolicyId>(map['policyIds'], (value) => AuthorityConfigX509ConfigPolicyId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nameConstraints: map['nameConstraints'] == null ? null : (AuthorityConfigX509ConfigNameConstraints.fromMap((map['nameConstraints']! as Map).cast<String, dynamic>())).input(),
+      policyIds: map['policyIds'] == null ? null : (pulumi.Input.decodeList<AuthorityConfigX509ConfigPolicyId>(map['policyIds']!, (value) => AuthorityConfigX509ConfigPolicyId.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

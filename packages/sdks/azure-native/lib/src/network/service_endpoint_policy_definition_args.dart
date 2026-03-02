@@ -64,15 +64,15 @@ class ServiceEndpointPolicyDefinitionArgs {
 
   factory ServiceEndpointPolicyDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointPolicyDefinitionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      serviceEndpointPolicyDefinitionName: map['serviceEndpointPolicyDefinitionName'] == null ? null : (map['serviceEndpointPolicyDefinitionName'] as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      serviceEndpointPolicyDefinitionName: map['serviceEndpointPolicyDefinitionName'] == null ? null : (map['serviceEndpointPolicyDefinitionName']! as String).input(),
       serviceEndpointPolicyName: (map['serviceEndpointPolicyName'] as String).input(),
-      serviceResources: map['serviceResources'] == null ? null : ((map['serviceResources'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      serviceResources: map['serviceResources'] == null ? null : ((map['serviceResources']! as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

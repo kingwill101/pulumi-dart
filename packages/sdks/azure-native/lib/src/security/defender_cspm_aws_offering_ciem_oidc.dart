@@ -26,8 +26,8 @@ class DefenderCspmAwsOfferingCiemOidc {
 
   factory DefenderCspmAwsOfferingCiemOidc.fromMap(Map<String, dynamic> map) {
     return DefenderCspmAwsOfferingCiemOidc(
-      azureActiveDirectoryAppName: map['azureActiveDirectoryAppName'] == null ? null : (map['azureActiveDirectoryAppName'] as String).input(),
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn'] as String).input(),
+      azureActiveDirectoryAppName: map['azureActiveDirectoryAppName'] == null ? null : (map['azureActiveDirectoryAppName']! as String).input(),
+      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn']! as String).input(),
     );
   }
 }

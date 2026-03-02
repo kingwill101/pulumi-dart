@@ -31,9 +31,9 @@ class S3BucketSourceResponse {
 
   factory S3BucketSourceResponse.fromMap(Map<String, dynamic> map) {
     return S3BucketSourceResponse(
-      s3Bucket: map['s3Bucket'] == null ? null : (map['s3Bucket'] as String).input(),
-      s3BucketOwner: map['s3BucketOwner'] == null ? null : (map['s3BucketOwner'] as String).input(),
-      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : (map['s3KeyPrefix'] as String).input(),
+      s3Bucket: map['s3Bucket'] == null ? null : (map['s3Bucket']! as String).input(),
+      s3BucketOwner: map['s3BucketOwner'] == null ? null : (map['s3BucketOwner']! as String).input(),
+      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : (map['s3KeyPrefix']! as String).input(),
     );
   }
 }

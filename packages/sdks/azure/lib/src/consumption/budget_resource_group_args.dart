@@ -63,12 +63,12 @@ class BudgetResourceGroupArgs {
   factory BudgetResourceGroupArgs.fromMap(Map<String, dynamic> map) {
     return BudgetResourceGroupArgs(
       amount: (map['amount'] as double).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      filter: map['filter'] == null ? null : (BudgetResourceGroupFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      filter: map['filter'] == null ? null : (BudgetResourceGroupFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       notifications: (pulumi.Input.decodeList<BudgetResourceGroupNotification>(map['notifications'], (value) => BudgetResourceGroupNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupId: (map['resourceGroupId'] as String).input(),
-      timeGrain: map['timeGrain'] == null ? null : (map['timeGrain'] as String).input(),
+      timeGrain: map['timeGrain'] == null ? null : (map['timeGrain']! as String).input(),
       timePeriod: (BudgetResourceGroupTimePeriod.fromMap((map['timePeriod'] as Map).cast<String, dynamic>())).input(),
     );
   }

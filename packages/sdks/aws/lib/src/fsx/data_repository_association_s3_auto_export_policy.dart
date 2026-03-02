@@ -20,7 +20,7 @@ class DataRepositoryAssociationS3AutoExportPolicy {
 
   factory DataRepositoryAssociationS3AutoExportPolicy.fromMap(Map<String, dynamic> map) {
     return DataRepositoryAssociationS3AutoExportPolicy(
-      events: map['events'] == null ? null : ((map['events'] as List).cast<String>()).input(),
+      events: map['events'] == null ? null : (((map['events'] as List).cast<String>()).input()).input(),
     );
   }
 }

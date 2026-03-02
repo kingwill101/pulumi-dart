@@ -48,12 +48,12 @@ class HyperNodeDataDisk {
 
   factory HyperNodeDataDisk.fromMap(Map<String, dynamic> map) {
     return HyperNodeDataDisk(
-      burstingEnabled: map['burstingEnabled'] == null ? null : (map['burstingEnabled'] as bool).input(),
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      deleteWithNode: map['deleteWithNode'] == null ? null : (map['deleteWithNode'] as bool).input(),
-      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel'] as String).input(),
-      provisionedIops: map['provisionedIops'] == null ? null : (map['provisionedIops'] as int).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
+      burstingEnabled: map['burstingEnabled'] == null ? null : (map['burstingEnabled']! as bool).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      deleteWithNode: map['deleteWithNode'] == null ? null : (map['deleteWithNode']! as bool).input(),
+      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel']! as String).input(),
+      provisionedIops: map['provisionedIops'] == null ? null : (map['provisionedIops']! as int).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
     );
   }
 }

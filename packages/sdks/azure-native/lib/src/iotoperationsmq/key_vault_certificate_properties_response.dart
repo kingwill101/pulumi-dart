@@ -34,7 +34,7 @@ class KeyVaultCertificatePropertiesResponse {
   factory KeyVaultCertificatePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultCertificatePropertiesResponse(
       vault: (KeyVaultConnectionPropertiesResponse.fromMap((map['vault'] as Map).cast<String, dynamic>())).input(),
-      vaultCaChainSecret: map['vaultCaChainSecret'] == null ? null : (KeyVaultSecretObjectResponse.fromMap((map['vaultCaChainSecret'] as Map).cast<String, dynamic>())).input(),
+      vaultCaChainSecret: map['vaultCaChainSecret'] == null ? null : (KeyVaultSecretObjectResponse.fromMap((map['vaultCaChainSecret']! as Map).cast<String, dynamic>())).input(),
       vaultCert: (KeyVaultSecretObjectResponse.fromMap((map['vaultCert'] as Map).cast<String, dynamic>())).input(),
     );
   }

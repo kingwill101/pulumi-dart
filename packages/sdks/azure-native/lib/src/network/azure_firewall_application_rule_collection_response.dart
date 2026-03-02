@@ -53,13 +53,13 @@ class AzureFirewallApplicationRuleCollectionResponse {
 
   factory AzureFirewallApplicationRuleCollectionResponse.fromMap(Map<String, dynamic> map) {
     return AzureFirewallApplicationRuleCollectionResponse(
-      action: map['action'] == null ? null : (AzureFirewallRCActionResponse.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      action: map['action'] == null ? null : (AzureFirewallRCActionResponse.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
       etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<AzureFirewallApplicationRuleResponse>(map['rules'], (value) => AzureFirewallApplicationRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<AzureFirewallApplicationRuleResponse>(map['rules']!, (value) => AzureFirewallApplicationRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

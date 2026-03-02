@@ -32,9 +32,9 @@ class XssMatchSetState {
 
   factory XssMatchSetState.fromMap(Map<String, dynamic> map) {
     return XssMatchSetState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      xssMatchTuples: map['xssMatchTuples'] == null ? null : (pulumi.Input.decodeList<XssMatchSetXssMatchTuple>(map['xssMatchTuples'], (value) => XssMatchSetXssMatchTuple.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      xssMatchTuples: map['xssMatchTuples'] == null ? null : ((pulumi.Input.decodeList<XssMatchSetXssMatchTuple>(map['xssMatchTuples']!, (value) => XssMatchSetXssMatchTuple.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

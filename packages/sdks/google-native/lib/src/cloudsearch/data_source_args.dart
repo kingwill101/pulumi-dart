@@ -65,15 +65,15 @@ class DataSourceArgs {
 
   factory DataSourceArgs.fromMap(Map<String, dynamic> map) {
     return DataSourceArgs(
-      disableModifications: map['disableModifications'] == null ? null : (map['disableModifications'] as bool).input(),
-      disableServing: map['disableServing'] == null ? null : (map['disableServing'] as bool).input(),
+      disableModifications: map['disableModifications'] == null ? null : (map['disableModifications']! as bool).input(),
+      disableServing: map['disableServing'] == null ? null : (map['disableServing']! as bool).input(),
       displayName: (map['displayName'] as String).input(),
-      indexingServiceAccounts: map['indexingServiceAccounts'] == null ? null : ((map['indexingServiceAccounts'] as List).cast<String>()).input(),
-      itemsVisibility: map['itemsVisibility'] == null ? null : (pulumi.Input.decodeList<GSuitePrincipal>(map['itemsVisibility'], (value) => GSuitePrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      operationIds: map['operationIds'] == null ? null : ((map['operationIds'] as List).cast<String>()).input(),
-      returnThumbnailUrls: map['returnThumbnailUrls'] == null ? null : (map['returnThumbnailUrls'] as bool).input(),
-      shortName: map['shortName'] == null ? null : (map['shortName'] as String).input(),
+      indexingServiceAccounts: map['indexingServiceAccounts'] == null ? null : ((map['indexingServiceAccounts']! as List).cast<String>()).input(),
+      itemsVisibility: map['itemsVisibility'] == null ? null : (pulumi.Input.decodeList<GSuitePrincipal>(map['itemsVisibility']!, (value) => GSuitePrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      operationIds: map['operationIds'] == null ? null : ((map['operationIds']! as List).cast<String>()).input(),
+      returnThumbnailUrls: map['returnThumbnailUrls'] == null ? null : (map['returnThumbnailUrls']! as bool).input(),
+      shortName: map['shortName'] == null ? null : (map['shortName']! as String).input(),
     );
   }
 }

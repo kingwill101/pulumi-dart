@@ -24,7 +24,7 @@ class GetSubscriptionArgs {
 
   factory GetSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionArgs(
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

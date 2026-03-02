@@ -39,10 +39,10 @@ class BucketHttpsConfigCipherSuit {
 
   factory BucketHttpsConfigCipherSuit.fromMap(Map<String, dynamic> map) {
     return BucketHttpsConfigCipherSuit(
-      customCipherSuites: map['customCipherSuites'] == null ? null : ((map['customCipherSuites'] as List).cast<String>()).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      strongCipherSuite: map['strongCipherSuite'] == null ? null : (map['strongCipherSuite'] as bool).input(),
-      tls13CustomCipherSuites: map['tls13CustomCipherSuites'] == null ? null : ((map['tls13CustomCipherSuites'] as List).cast<String>()).input(),
+      customCipherSuites: map['customCipherSuites'] == null ? null : ((map['customCipherSuites']! as List).cast<String>()).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      strongCipherSuite: map['strongCipherSuite'] == null ? null : (map['strongCipherSuite']! as bool).input(),
+      tls13CustomCipherSuites: map['tls13CustomCipherSuites'] == null ? null : ((map['tls13CustomCipherSuites']! as List).cast<String>()).input(),
     );
   }
 }

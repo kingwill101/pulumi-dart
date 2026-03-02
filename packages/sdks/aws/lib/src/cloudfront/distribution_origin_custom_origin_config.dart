@@ -50,10 +50,10 @@ class DistributionOriginCustomOriginConfig {
     return DistributionOriginCustomOriginConfig(
       httpPort: (map['httpPort'] as int).input(),
       httpsPort: (map['httpsPort'] as int).input(),
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
-      originKeepaliveTimeout: map['originKeepaliveTimeout'] == null ? null : (map['originKeepaliveTimeout'] as int).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : ((map['ipAddressType'] as String).input()).input(),
+      originKeepaliveTimeout: map['originKeepaliveTimeout'] == null ? null : ((map['originKeepaliveTimeout'] as int).input()).input(),
       originProtocolPolicy: (map['originProtocolPolicy'] as String).input(),
-      originReadTimeout: map['originReadTimeout'] == null ? null : (map['originReadTimeout'] as int).input(),
+      originReadTimeout: map['originReadTimeout'] == null ? null : ((map['originReadTimeout'] as int).input()).input(),
       originSslProtocols: ((map['originSslProtocols'] as List).cast<String>()).input(),
     );
   }

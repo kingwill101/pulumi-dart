@@ -22,7 +22,7 @@ class IntegrationServiceEnvironmentManagedApiDeploymentParametersResponse {
 
   factory IntegrationServiceEnvironmentManagedApiDeploymentParametersResponse.fromMap(Map<String, dynamic> map) {
     return IntegrationServiceEnvironmentManagedApiDeploymentParametersResponse(
-      contentLinkDefinition: map['contentLinkDefinition'] == null ? null : (ContentLinkResponse.fromMap((map['contentLinkDefinition'] as Map).cast<String, dynamic>())).input(),
+      contentLinkDefinition: map['contentLinkDefinition'] == null ? null : (ContentLinkResponse.fromMap((map['contentLinkDefinition']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

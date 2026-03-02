@@ -122,7 +122,7 @@ class GetDbServersDbServer {
       cpuCoreCount: (map['cpuCoreCount'] as int).input(),
       createdAt: (map['createdAt'] as String).input(),
       dbNodeStorageSizeInGbs: (map['dbNodeStorageSizeInGbs'] as int).input(),
-      dbServerPatchingDetails: (pulumi.Input.decodeList<GetDbServersDbServerDbServerPatchingDetail>(map['dbServerPatchingDetails'], (value) => GetDbServersDbServerDbServerPatchingDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dbServerPatchingDetails: (pulumi.Input.decodeList<GetDbServersDbServerDbServerPatchingDetail>(map['dbServerPatchingDetails']!, (value) => GetDbServersDbServerDbServerPatchingDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
       displayName: (map['displayName'] as String).input(),
       exadataInfrastructureId: (map['exadataInfrastructureId'] as String).input(),
       id: (map['id'] as String).input(),

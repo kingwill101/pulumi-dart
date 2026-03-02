@@ -33,10 +33,10 @@ class ApplicationScalingRuleScalingRuleTimerSchedule {
 
   factory ApplicationScalingRuleScalingRuleTimerSchedule.fromMap(Map<String, dynamic> map) {
     return ApplicationScalingRuleScalingRuleTimerSchedule(
-      atTime: map['atTime'] == null ? null : (map['atTime'] as String).input(),
-      maxReplicas: map['maxReplicas'] == null ? null : (map['maxReplicas'] as int).input(),
-      minReplicas: map['minReplicas'] == null ? null : (map['minReplicas'] as int).input(),
-      targetReplicas: map['targetReplicas'] == null ? null : (map['targetReplicas'] as int).input(),
+      atTime: map['atTime'] == null ? null : (map['atTime']! as String).input(),
+      maxReplicas: map['maxReplicas'] == null ? null : (map['maxReplicas']! as int).input(),
+      minReplicas: map['minReplicas'] == null ? null : (map['minReplicas']! as int).input(),
+      targetReplicas: map['targetReplicas'] == null ? null : (map['targetReplicas']! as int).input(),
     );
   }
 }

@@ -50,12 +50,12 @@ class MachineExtensionArgs {
 
   factory MachineExtensionArgs.fromMap(Map<String, dynamic> map) {
     return MachineExtensionArgs(
-      extensionName: map['extensionName'] == null ? null : (map['extensionName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      extensionName: map['extensionName'] == null ? null : (map['extensionName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       machineName: (map['machineName'] as String).input(),
-      properties: map['properties'] == null ? null : (MachineExtensionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (MachineExtensionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class RuleGroupRuleStatementRateBasedStatementCustomKeyHeader {
   factory RuleGroupRuleStatementRateBasedStatementCustomKeyHeader.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatementCustomKeyHeader(
       name: (map['name'] as String).input(),
-      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation>(map['textTransformations'], (value) => RuleGroupRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation>(map['textTransformations']!, (value) => RuleGroupRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

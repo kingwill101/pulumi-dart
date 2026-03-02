@@ -21,7 +21,7 @@ class ApiPropertiesResponse {
 
   factory ApiPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ApiPropertiesResponse(
-      apiFreshnessTimeInMinutes: map['apiFreshnessTimeInMinutes'] == null ? null : (map['apiFreshnessTimeInMinutes'] as int).input(),
+      apiFreshnessTimeInMinutes: map['apiFreshnessTimeInMinutes'] == null ? null : (map['apiFreshnessTimeInMinutes']! as int).input(),
     );
   }
 }

@@ -40,9 +40,9 @@ class WebAppConnectionStringsArgs {
 
   factory WebAppConnectionStringsArgs.fromMap(Map<String, dynamic> map) {
     return WebAppConnectionStringsArgs(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (pulumi.Input.decodeMapValues<ConnStringValueTypePair>(map['properties'], (value) => ConnStringValueTypePair.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeMapValues<ConnStringValueTypePair>(map['properties']!, (value) => ConnStringValueTypePair.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

@@ -46,11 +46,11 @@ class FileCacheLustreConfiguration {
   factory FileCacheLustreConfiguration.fromMap(Map<String, dynamic> map) {
     return FileCacheLustreConfiguration(
       deploymentType: (map['deploymentType'] as String).input(),
-      logConfigurations: map['logConfigurations'] == null ? null : (pulumi.Input.decodeList<FileCacheLustreConfigurationLogConfiguration>(map['logConfigurations'], (value) => FileCacheLustreConfigurationLogConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metadataConfigurations: (pulumi.Input.decodeList<FileCacheLustreConfigurationMetadataConfiguration>(map['metadataConfigurations'], (value) => FileCacheLustreConfigurationMetadataConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mountName: map['mountName'] == null ? null : (map['mountName'] as String).input(),
+      logConfigurations: map['logConfigurations'] == null ? null : ((pulumi.Input.decodeList<FileCacheLustreConfigurationLogConfiguration>(map['logConfigurations']!, (value) => FileCacheLustreConfigurationLogConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      metadataConfigurations: (pulumi.Input.decodeList<FileCacheLustreConfigurationMetadataConfiguration>(map['metadataConfigurations']!, (value) => FileCacheLustreConfigurationMetadataConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mountName: map['mountName'] == null ? null : ((map['mountName'] as String).input()).input(),
       perUnitStorageThroughput: (map['perUnitStorageThroughput'] as int).input(),
-      weeklyMaintenanceStartTime: map['weeklyMaintenanceStartTime'] == null ? null : (map['weeklyMaintenanceStartTime'] as String).input(),
+      weeklyMaintenanceStartTime: map['weeklyMaintenanceStartTime'] == null ? null : ((map['weeklyMaintenanceStartTime'] as String).input()).input(),
     );
   }
 }

@@ -51,13 +51,13 @@ class VpcConfigResponseResponse {
 
   factory VpcConfigResponseResponse.fromMap(Map<String, dynamic> map) {
     return VpcConfigResponseResponse(
-      clusterSecurityGroupId: map['clusterSecurityGroupId'] == null ? null : (map['clusterSecurityGroupId'] as String).input(),
-      endpointPrivateAccess: map['endpointPrivateAccess'] == null ? null : (map['endpointPrivateAccess'] as bool).input(),
-      endpointPublicAccess: map['endpointPublicAccess'] == null ? null : (map['endpointPublicAccess'] as bool).input(),
-      publicAccessCidrs: map['publicAccessCidrs'] == null ? null : ((map['publicAccessCidrs'] as List).cast<String>()).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
-      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      clusterSecurityGroupId: map['clusterSecurityGroupId'] == null ? null : (map['clusterSecurityGroupId']! as String).input(),
+      endpointPrivateAccess: map['endpointPrivateAccess'] == null ? null : (map['endpointPrivateAccess']! as bool).input(),
+      endpointPublicAccess: map['endpointPublicAccess'] == null ? null : (map['endpointPublicAccess']! as bool).input(),
+      publicAccessCidrs: map['publicAccessCidrs'] == null ? null : ((map['publicAccessCidrs']! as List).cast<String>()).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds']! as List).cast<String>()).input(),
+      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds']! as List).cast<String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

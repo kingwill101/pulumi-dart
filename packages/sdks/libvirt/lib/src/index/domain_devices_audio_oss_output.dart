@@ -30,9 +30,9 @@ class DomainDevicesAudioOssOutput {
 
   factory DomainDevicesAudioOssOutput.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioOssOutput(
-      bufferCount: map['bufferCount'] == null ? null : (map['bufferCount'] as double).input(),
-      dev: map['dev'] == null ? null : (map['dev'] as String).input(),
-      tryPoll: map['tryPoll'] == null ? null : (map['tryPoll'] as String).input(),
+      bufferCount: map['bufferCount'] == null ? null : (map['bufferCount']! as double).input(),
+      dev: map['dev'] == null ? null : (map['dev']! as String).input(),
+      tryPoll: map['tryPoll'] == null ? null : (map['tryPoll']! as String).input(),
     );
   }
 }

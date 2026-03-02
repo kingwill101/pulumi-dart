@@ -27,8 +27,8 @@ class BrokerAuthenticatorCustomAuthX509 {
 
   factory BrokerAuthenticatorCustomAuthX509.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticatorCustomAuthX509(
-      keyVault: map['keyVault'] == null ? null : (KeyVaultCertificateProperties.fromMap((map['keyVault'] as Map).cast<String, dynamic>())).input(),
-      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
+      keyVault: map['keyVault'] == null ? null : (KeyVaultCertificateProperties.fromMap((map['keyVault']! as Map).cast<String, dynamic>())).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName']! as String).input(),
     );
   }
 }

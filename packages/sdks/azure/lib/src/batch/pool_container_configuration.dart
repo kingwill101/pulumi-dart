@@ -31,9 +31,9 @@ class PoolContainerConfiguration {
 
   factory PoolContainerConfiguration.fromMap(Map<String, dynamic> map) {
     return PoolContainerConfiguration(
-      containerImageNames: map['containerImageNames'] == null ? null : ((map['containerImageNames'] as List).cast<String>()).input(),
-      containerRegistries: map['containerRegistries'] == null ? null : (pulumi.Input.decodeList<PoolContainerConfigurationContainerRegistry>(map['containerRegistries'], (value) => PoolContainerConfigurationContainerRegistry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      containerImageNames: map['containerImageNames'] == null ? null : ((map['containerImageNames']! as List).cast<String>()).input(),
+      containerRegistries: map['containerRegistries'] == null ? null : (pulumi.Input.decodeList<PoolContainerConfigurationContainerRegistry>(map['containerRegistries']!, (value) => PoolContainerConfigurationContainerRegistry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

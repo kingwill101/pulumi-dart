@@ -41,9 +41,9 @@ class GetServiceQuotaArgs {
 
   factory GetServiceQuotaArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceQuotaArgs(
-      quotaCode: map['quotaCode'] == null ? null : (map['quotaCode'] as String).input(),
-      quotaName: map['quotaName'] == null ? null : (map['quotaName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      quotaCode: map['quotaCode'] == null ? null : ((map['quotaCode'] as String).input()).input(),
+      quotaName: map['quotaName'] == null ? null : ((map['quotaName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       serviceCode: (map['serviceCode'] as String).input(),
     );
   }

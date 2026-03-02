@@ -27,8 +27,8 @@ class PreferredSchedulingTermPatch {
 
   factory PreferredSchedulingTermPatch.fromMap(Map<String, dynamic> map) {
     return PreferredSchedulingTermPatch(
-      preference: map['preference'] == null ? null : (NodeSelectorTermPatch.fromMap((map['preference'] as Map).cast<String, dynamic>())).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      preference: map['preference'] == null ? null : (NodeSelectorTermPatch.fromMap((map['preference']! as Map).cast<String, dynamic>())).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class ContactsRotationRecurrenceWeeklySetting {
   factory ContactsRotationRecurrenceWeeklySetting.fromMap(Map<String, dynamic> map) {
     return ContactsRotationRecurrenceWeeklySetting(
       dayOfWeek: (map['dayOfWeek'] as String).input(),
-      handOffTime: map['handOffTime'] == null ? null : (ContactsRotationRecurrenceWeeklySettingHandOffTime.fromMap((map['handOffTime'] as Map).cast<String, dynamic>())).input(),
+      handOffTime: map['handOffTime'] == null ? null : ((ContactsRotationRecurrenceWeeklySettingHandOffTime.fromMap((map['handOffTime']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

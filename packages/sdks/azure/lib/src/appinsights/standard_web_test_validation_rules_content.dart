@@ -31,8 +31,8 @@ class StandardWebTestValidationRulesContent {
   factory StandardWebTestValidationRulesContent.fromMap(Map<String, dynamic> map) {
     return StandardWebTestValidationRulesContent(
       contentMatch: (map['contentMatch'] as String).input(),
-      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase'] as bool).input(),
-      passIfTextFound: map['passIfTextFound'] == null ? null : (map['passIfTextFound'] as bool).input(),
+      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase']! as bool).input(),
+      passIfTextFound: map['passIfTextFound'] == null ? null : (map['passIfTextFound']! as bool).input(),
     );
   }
 }

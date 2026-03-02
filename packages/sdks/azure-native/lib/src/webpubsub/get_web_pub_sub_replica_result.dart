@@ -80,11 +80,11 @@ class GetWebPubSubReplicaResult {
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      regionEndpointEnabled: map['regionEndpointEnabled'] == null ? null : map['regionEndpointEnabled'] as String,
-      resourceStopped: map['resourceStopped'] == null ? null : map['resourceStopped'] as String,
-      sku: map['sku'] == null ? null : ResourceSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
+      regionEndpointEnabled: map['regionEndpointEnabled'] == null ? null : map['regionEndpointEnabled']! as String,
+      resourceStopped: map['resourceStopped'] == null ? null : map['resourceStopped']! as String,
+      sku: map['sku'] == null ? null : ResourceSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

@@ -35,7 +35,7 @@ class AlertManagerDefinitionArgs {
   factory AlertManagerDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return AlertManagerDefinitionArgs(
       definition: (map['definition'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );
   }

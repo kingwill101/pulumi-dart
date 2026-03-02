@@ -20,7 +20,7 @@ class InterfaceVpcIpv6Slaac {
 
   factory InterfaceVpcIpv6Slaac.fromMap(Map<String, dynamic> map) {
     return InterfaceVpcIpv6Slaac(
-      range: map['range'] == null ? null : (map['range'] as String).input(),
+      range: map['range'] == null ? null : (map['range']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class EventBusLogConfig {
 
   factory EventBusLogConfig.fromMap(Map<String, dynamic> map) {
     return EventBusLogConfig(
-      includeDetail: map['includeDetail'] == null ? null : (map['includeDetail'] as String).input(),
-      level: map['level'] == null ? null : (map['level'] as String).input(),
+      includeDetail: map['includeDetail'] == null ? null : ((map['includeDetail'] as String).input()).input(),
+      level: map['level'] == null ? null : ((map['level'] as String).input()).input(),
     );
   }
 }

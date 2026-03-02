@@ -62,10 +62,10 @@ class GetWorkloadNetworkPublicIPResult {
   factory GetWorkloadNetworkPublicIPResult.fromMap(Map<String, dynamic> map) {
     return GetWorkloadNetworkPublicIPResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      numberOfPublicIPs: map['numberOfPublicIPs'] == null ? null : map['numberOfPublicIPs'] as double,
+      numberOfPublicIPs: map['numberOfPublicIPs'] == null ? null : map['numberOfPublicIPs']! as double,
       provisioningState: map['provisioningState'] as String,
       publicIPBlock: map['publicIPBlock'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),

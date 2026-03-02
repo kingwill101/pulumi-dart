@@ -59,11 +59,11 @@ class CustomDnsSuffixConfigurationResponse {
 
   factory CustomDnsSuffixConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return CustomDnsSuffixConfigurationResponse(
-      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl'] as String).input(),
-      dnsSuffix: map['dnsSuffix'] == null ? null : (map['dnsSuffix'] as String).input(),
+      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl']! as String).input(),
+      dnsSuffix: map['dnsSuffix'] == null ? null : (map['dnsSuffix']! as String).input(),
       id: (map['id'] as String).input(),
-      keyVaultReferenceIdentity: map['keyVaultReferenceIdentity'] == null ? null : (map['keyVaultReferenceIdentity'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      keyVaultReferenceIdentity: map['keyVaultReferenceIdentity'] == null ? null : (map['keyVaultReferenceIdentity']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
       provisioningDetails: (map['provisioningDetails'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),

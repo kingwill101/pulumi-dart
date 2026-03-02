@@ -23,7 +23,7 @@ class CxAgentPersonalizationSettings {
 
   factory CxAgentPersonalizationSettings.fromMap(Map<String, dynamic> map) {
     return CxAgentPersonalizationSettings(
-      defaultEndUserMetadata: map['defaultEndUserMetadata'] == null ? null : (map['defaultEndUserMetadata'] as String).input(),
+      defaultEndUserMetadata: map['defaultEndUserMetadata'] == null ? null : (map['defaultEndUserMetadata']! as String).input(),
     );
   }
 }

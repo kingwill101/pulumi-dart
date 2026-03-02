@@ -53,13 +53,13 @@ class ScheduledQueryLastRunSummary {
 
   factory ScheduledQueryLastRunSummary.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryLastRunSummary(
-      errorReportLocations: map['errorReportLocations'] == null ? null : (pulumi.Input.decodeList<ScheduledQueryLastRunSummaryErrorReportLocation>(map['errorReportLocations'], (value) => ScheduledQueryLastRunSummaryErrorReportLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      executionStats: map['executionStats'] == null ? null : (pulumi.Input.decodeList<ScheduledQueryLastRunSummaryExecutionStat>(map['executionStats'], (value) => ScheduledQueryLastRunSummaryExecutionStat.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      failureReason: map['failureReason'] == null ? null : (map['failureReason'] as String).input(),
-      invocationTime: map['invocationTime'] == null ? null : (map['invocationTime'] as String).input(),
-      queryInsightsResponses: map['queryInsightsResponses'] == null ? null : (pulumi.Input.decodeList<ScheduledQueryLastRunSummaryQueryInsightsResponse>(map['queryInsightsResponses'], (value) => ScheduledQueryLastRunSummaryQueryInsightsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      runStatus: map['runStatus'] == null ? null : (map['runStatus'] as String).input(),
-      triggerTime: map['triggerTime'] == null ? null : (map['triggerTime'] as String).input(),
+      errorReportLocations: map['errorReportLocations'] == null ? null : ((pulumi.Input.decodeList<ScheduledQueryLastRunSummaryErrorReportLocation>(map['errorReportLocations']!, (value) => ScheduledQueryLastRunSummaryErrorReportLocation.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      executionStats: map['executionStats'] == null ? null : ((pulumi.Input.decodeList<ScheduledQueryLastRunSummaryExecutionStat>(map['executionStats']!, (value) => ScheduledQueryLastRunSummaryExecutionStat.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      failureReason: map['failureReason'] == null ? null : ((map['failureReason'] as String).input()).input(),
+      invocationTime: map['invocationTime'] == null ? null : ((map['invocationTime'] as String).input()).input(),
+      queryInsightsResponses: map['queryInsightsResponses'] == null ? null : ((pulumi.Input.decodeList<ScheduledQueryLastRunSummaryQueryInsightsResponse>(map['queryInsightsResponses']!, (value) => ScheduledQueryLastRunSummaryQueryInsightsResponse.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      runStatus: map['runStatus'] == null ? null : ((map['runStatus'] as String).input()).input(),
+      triggerTime: map['triggerTime'] == null ? null : ((map['triggerTime'] as String).input()).input(),
     );
   }
 }

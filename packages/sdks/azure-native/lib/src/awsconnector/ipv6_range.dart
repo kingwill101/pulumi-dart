@@ -26,8 +26,8 @@ class Ipv6Range {
 
   factory Ipv6Range.fromMap(Map<String, dynamic> map) {
     return Ipv6Range(
-      cidrIpv6: map['cidrIpv6'] == null ? null : (map['cidrIpv6'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      cidrIpv6: map['cidrIpv6'] == null ? null : (map['cidrIpv6']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
     );
   }
 }

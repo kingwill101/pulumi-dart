@@ -44,11 +44,11 @@ class V3AliasArgs {
 
   factory V3AliasArgs.fromMap(Map<String, dynamic> map) {
     return V3AliasArgs(
-      additionalVersionWeight: map['additionalVersionWeight'] == null ? null : ((map['additionalVersionWeight'] as Map).cast<String, double>()).input(),
-      aliasName: map['aliasName'] == null ? null : (map['aliasName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      additionalVersionWeight: map['additionalVersionWeight'] == null ? null : ((map['additionalVersionWeight']! as Map).cast<String, double>()).input(),
+      aliasName: map['aliasName'] == null ? null : (map['aliasName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       functionName: (map['functionName'] as String).input(),
-      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId']! as String).input(),
     );
   }
 }

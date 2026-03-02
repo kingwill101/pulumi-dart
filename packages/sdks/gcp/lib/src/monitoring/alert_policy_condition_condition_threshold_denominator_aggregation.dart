@@ -106,10 +106,10 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregation {
 
   factory AlertPolicyConditionConditionThresholdDenominatorAggregation.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionThresholdDenominatorAggregation(
-      alignmentPeriod: map['alignmentPeriod'] == null ? null : (map['alignmentPeriod'] as String).input(),
-      crossSeriesReducer: map['crossSeriesReducer'] == null ? null : (map['crossSeriesReducer'] as String).input(),
-      groupByFields: map['groupByFields'] == null ? null : ((map['groupByFields'] as List).cast<String>()).input(),
-      perSeriesAligner: map['perSeriesAligner'] == null ? null : (map['perSeriesAligner'] as String).input(),
+      alignmentPeriod: map['alignmentPeriod'] == null ? null : (map['alignmentPeriod']! as String).input(),
+      crossSeriesReducer: map['crossSeriesReducer'] == null ? null : (map['crossSeriesReducer']! as String).input(),
+      groupByFields: map['groupByFields'] == null ? null : ((map['groupByFields']! as List).cast<String>()).input(),
+      perSeriesAligner: map['perSeriesAligner'] == null ? null : (map['perSeriesAligner']! as String).input(),
     );
   }
 }

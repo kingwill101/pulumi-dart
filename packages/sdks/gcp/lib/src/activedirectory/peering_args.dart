@@ -59,11 +59,11 @@ class PeeringArgs {
     return PeeringArgs(
       authorizedNetwork: (map['authorizedNetwork'] as String).input(),
       domainResource: (map['domainResource'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       peeringId: (map['peeringId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      statusMessage: map['statusMessage'] == null ? null : (map['statusMessage'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      statusMessage: map['statusMessage'] == null ? null : (map['statusMessage']! as String).input(),
     );
   }
 }

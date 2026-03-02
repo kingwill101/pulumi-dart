@@ -31,9 +31,9 @@ class HelmUpgradeOptionsResponse {
 
   factory HelmUpgradeOptionsResponse.fromMap(Map<String, dynamic> map) {
     return HelmUpgradeOptionsResponse(
-      atomic: map['atomic'] == null ? null : (map['atomic'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
-      wait: map['wait'] == null ? null : (map['wait'] as String).input(),
+      atomic: map['atomic'] == null ? null : (map['atomic']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
+      wait: map['wait'] == null ? null : (map['wait']! as String).input(),
     );
   }
 }

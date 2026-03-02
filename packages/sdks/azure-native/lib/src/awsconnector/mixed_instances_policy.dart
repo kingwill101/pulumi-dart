@@ -28,8 +28,8 @@ class MixedInstancesPolicy {
 
   factory MixedInstancesPolicy.fromMap(Map<String, dynamic> map) {
     return MixedInstancesPolicy(
-      instancesDistribution: map['instancesDistribution'] == null ? null : (InstancesDistribution.fromMap((map['instancesDistribution'] as Map).cast<String, dynamic>())).input(),
-      launchTemplate: map['launchTemplate'] == null ? null : (LaunchTemplate.fromMap((map['launchTemplate'] as Map).cast<String, dynamic>())).input(),
+      instancesDistribution: map['instancesDistribution'] == null ? null : (InstancesDistribution.fromMap((map['instancesDistribution']! as Map).cast<String, dynamic>())).input(),
+      launchTemplate: map['launchTemplate'] == null ? null : (LaunchTemplate.fromMap((map['launchTemplate']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

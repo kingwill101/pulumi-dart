@@ -25,8 +25,8 @@ class TableAutomatedBackupPolicy {
 
   factory TableAutomatedBackupPolicy.fromMap(Map<String, dynamic> map) {
     return TableAutomatedBackupPolicy(
-      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
-      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as String).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency']! as String).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class FeaturesetSpecificationResponse {
 
   factory FeaturesetSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return FeaturesetSpecificationResponse(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

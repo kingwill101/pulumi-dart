@@ -39,10 +39,10 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfig {
 
   factory GoogleCloudDialogflowV2HumanAgentAssistantConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2HumanAgentAssistantConfig(
-      endUserSuggestionConfig: map['endUserSuggestionConfig'] == null ? null : (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig.fromMap((map['endUserSuggestionConfig'] as Map).cast<String, dynamic>())).input(),
-      humanAgentSuggestionConfig: map['humanAgentSuggestionConfig'] == null ? null : (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig.fromMap((map['humanAgentSuggestionConfig'] as Map).cast<String, dynamic>())).input(),
-      messageAnalysisConfig: map['messageAnalysisConfig'] == null ? null : (GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig.fromMap((map['messageAnalysisConfig'] as Map).cast<String, dynamic>())).input(),
-      notificationConfig: map['notificationConfig'] == null ? null : (GoogleCloudDialogflowV2NotificationConfig.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>())).input(),
+      endUserSuggestionConfig: map['endUserSuggestionConfig'] == null ? null : (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig.fromMap((map['endUserSuggestionConfig']! as Map).cast<String, dynamic>())).input(),
+      humanAgentSuggestionConfig: map['humanAgentSuggestionConfig'] == null ? null : (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig.fromMap((map['humanAgentSuggestionConfig']! as Map).cast<String, dynamic>())).input(),
+      messageAnalysisConfig: map['messageAnalysisConfig'] == null ? null : (GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig.fromMap((map['messageAnalysisConfig']! as Map).cast<String, dynamic>())).input(),
+      notificationConfig: map['notificationConfig'] == null ? null : (GoogleCloudDialogflowV2NotificationConfig.fromMap((map['notificationConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

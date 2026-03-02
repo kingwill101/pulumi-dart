@@ -23,8 +23,8 @@ class DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettin
 
   factory DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec.fromMap(Map<String, dynamic> map) {
     return DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec(
-      cpu: map['cpu'] == null ? null : (map['cpu'] as double).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as String).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as double).input(),
+      memory: map['memory'] == null ? null : (map['memory']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class FlowSchemaStatusPatch {
 
   factory FlowSchemaStatusPatch.fromMap(Map<String, dynamic> map) {
     return FlowSchemaStatusPatch(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<FlowSchemaConditionPatch>(map['conditions'], (value) => FlowSchemaConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<FlowSchemaConditionPatch>(map['conditions']!, (value) => FlowSchemaConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ReferencedResourceResponse {
 
   factory ReferencedResourceResponse.fromMap(Map<String, dynamic> map) {
     return ReferencedResourceResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

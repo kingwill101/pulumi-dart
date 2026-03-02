@@ -25,7 +25,7 @@ class DomainDevicesSerialLog {
 
   factory DomainDevicesSerialLog.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSerialLog(
-      append: map['append'] == null ? null : (map['append'] as String).input(),
+      append: map['append'] == null ? null : (map['append']! as String).input(),
       file: (map['file'] as String).input(),
     );
   }

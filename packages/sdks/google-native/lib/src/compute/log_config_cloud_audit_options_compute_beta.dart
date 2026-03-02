@@ -28,8 +28,8 @@ class LogConfigCloudAuditOptionsComputeBeta {
 
   factory LogConfigCloudAuditOptionsComputeBeta.fromMap(Map<String, dynamic> map) {
     return LogConfigCloudAuditOptionsComputeBeta(
-      authorizationLoggingOptions: map['authorizationLoggingOptions'] == null ? null : (AuthorizationLoggingOptionsComputeBeta.fromMap((map['authorizationLoggingOptions'] as Map).cast<String, dynamic>())).input(),
-      logName: map['logName'] == null ? null : (LogConfigCloudAuditOptionsLogNameComputeBeta.fromValue(map['logName'] as String)).input(),
+      authorizationLoggingOptions: map['authorizationLoggingOptions'] == null ? null : (AuthorizationLoggingOptionsComputeBeta.fromMap((map['authorizationLoggingOptions']! as Map).cast<String, dynamic>())).input(),
+      logName: map['logName'] == null ? null : (LogConfigCloudAuditOptionsLogNameComputeBeta.fromValue(map['logName']! as String)).input(),
     );
   }
 }

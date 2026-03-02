@@ -25,7 +25,7 @@ class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRe
 
   factory DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolder.fromMap(Map<String, dynamic> map) {
     return DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolder(
-      redactionPlaceHolderText: map['redactionPlaceHolderText'] == null ? null : (map['redactionPlaceHolderText'] as String).input(),
+      redactionPlaceHolderText: map['redactionPlaceHolderText'] == null ? null : ((map['redactionPlaceHolderText'] as String).input()).input(),
       redactionPlaceHolderType: (map['redactionPlaceHolderType'] as String).input(),
     );
   }

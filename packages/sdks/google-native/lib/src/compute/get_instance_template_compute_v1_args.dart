@@ -28,7 +28,7 @@ class GetInstanceTemplateComputeV1Args {
   factory GetInstanceTemplateComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetInstanceTemplateComputeV1Args(
       instanceTemplate: (map['instanceTemplate'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

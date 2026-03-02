@@ -78,18 +78,18 @@ class GetGceServiceDiscoveryArgs {
 
   factory GetGceServiceDiscoveryArgs.fromMap(Map<String, dynamic> map) {
     return GetGceServiceDiscoveryArgs(
-      addressRealm: map['addressRealm'] == null ? null : (map['addressRealm'] as String).input(),
-      credentialUpdate: map['credentialUpdate'] == null ? null : (map['credentialUpdate'] as bool).input(),
-      encodedCredentials: map['encodedCredentials'] == null ? null : (map['encodedCredentials'] as String).input(),
-      minimumMonitors: map['minimumMonitors'] == null ? null : (map['minimumMonitors'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      addressRealm: map['addressRealm'] == null ? null : (map['addressRealm']! as String).input(),
+      credentialUpdate: map['credentialUpdate'] == null ? null : (map['credentialUpdate']! as bool).input(),
+      encodedCredentials: map['encodedCredentials'] == null ? null : (map['encodedCredentials']! as String).input(),
+      minimumMonitors: map['minimumMonitors'] == null ? null : (map['minimumMonitors']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
       region: (map['region'] as String).input(),
       tagKey: (map['tagKey'] as String).input(),
       tagValue: (map['tagValue'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      undetectableAction: map['undetectableAction'] == null ? null : (map['undetectableAction'] as String).input(),
-      updateInterval: map['updateInterval'] == null ? null : (map['updateInterval'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      undetectableAction: map['undetectableAction'] == null ? null : (map['undetectableAction']! as String).input(),
+      updateInterval: map['updateInterval'] == null ? null : (map['updateInterval']! as String).input(),
     );
   }
 }

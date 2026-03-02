@@ -36,7 +36,7 @@ class WebAppSiteExtensionArgs {
     return WebAppSiteExtensionArgs(
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      siteExtensionId: map['siteExtensionId'] == null ? null : (map['siteExtensionId'] as String).input(),
+      siteExtensionId: map['siteExtensionId'] == null ? null : (map['siteExtensionId']! as String).input(),
     );
   }
 }

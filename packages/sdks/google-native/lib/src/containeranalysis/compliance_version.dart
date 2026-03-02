@@ -31,9 +31,9 @@ class ComplianceVersion {
 
   factory ComplianceVersion.fromMap(Map<String, dynamic> map) {
     return ComplianceVersion(
-      benchmarkDocument: map['benchmarkDocument'] == null ? null : (map['benchmarkDocument'] as String).input(),
-      cpeUri: map['cpeUri'] == null ? null : (map['cpeUri'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      benchmarkDocument: map['benchmarkDocument'] == null ? null : (map['benchmarkDocument']! as String).input(),
+      cpeUri: map['cpeUri'] == null ? null : (map['cpeUri']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

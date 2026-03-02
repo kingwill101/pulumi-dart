@@ -88,19 +88,19 @@ class SecuritySettingArgs {
 
   factory SecuritySettingArgs.fromMap(Map<String, dynamic> map) {
     return SecuritySettingArgs(
-      audioExportSettings: map['audioExportSettings'] == null ? null : (GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings.fromMap((map['audioExportSettings'] as Map).cast<String, dynamic>())).input(),
-      deidentifyTemplate: map['deidentifyTemplate'] == null ? null : (map['deidentifyTemplate'] as String).input(),
+      audioExportSettings: map['audioExportSettings'] == null ? null : (GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings.fromMap((map['audioExportSettings']! as Map).cast<String, dynamic>())).input(),
+      deidentifyTemplate: map['deidentifyTemplate'] == null ? null : (map['deidentifyTemplate']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      insightsExportSettings: map['insightsExportSettings'] == null ? null : (GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings.fromMap((map['insightsExportSettings'] as Map).cast<String, dynamic>())).input(),
-      inspectTemplate: map['inspectTemplate'] == null ? null : (map['inspectTemplate'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      purgeDataTypes: map['purgeDataTypes'] == null ? null : (pulumi.Input.decodeList<SecuritySettingPurgeDataTypesItem>(map['purgeDataTypes'], (value) => SecuritySettingPurgeDataTypesItem.fromValue(value as String))).input(),
-      redactionScope: map['redactionScope'] == null ? null : (SecuritySettingRedactionScope.fromValue(map['redactionScope'] as String)).input(),
-      redactionStrategy: map['redactionStrategy'] == null ? null : (SecuritySettingRedactionStrategy.fromValue(map['redactionStrategy'] as String)).input(),
-      retentionStrategy: map['retentionStrategy'] == null ? null : (SecuritySettingRetentionStrategy.fromValue(map['retentionStrategy'] as String)).input(),
-      retentionWindowDays: map['retentionWindowDays'] == null ? null : (map['retentionWindowDays'] as int).input(),
+      insightsExportSettings: map['insightsExportSettings'] == null ? null : (GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings.fromMap((map['insightsExportSettings']! as Map).cast<String, dynamic>())).input(),
+      inspectTemplate: map['inspectTemplate'] == null ? null : (map['inspectTemplate']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      purgeDataTypes: map['purgeDataTypes'] == null ? null : (pulumi.Input.decodeList<SecuritySettingPurgeDataTypesItem>(map['purgeDataTypes']!, (value) => SecuritySettingPurgeDataTypesItem.fromValue(value as String))).input(),
+      redactionScope: map['redactionScope'] == null ? null : (SecuritySettingRedactionScope.fromValue(map['redactionScope']! as String)).input(),
+      redactionStrategy: map['redactionStrategy'] == null ? null : (SecuritySettingRedactionStrategy.fromValue(map['redactionStrategy']! as String)).input(),
+      retentionStrategy: map['retentionStrategy'] == null ? null : (SecuritySettingRetentionStrategy.fromValue(map['retentionStrategy']! as String)).input(),
+      retentionWindowDays: map['retentionWindowDays'] == null ? null : (map['retentionWindowDays']! as int).input(),
     );
   }
 }

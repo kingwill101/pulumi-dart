@@ -54,12 +54,12 @@ class IdentityProviderArgs {
 
   factory IdentityProviderArgs.fromMap(Map<String, dynamic> map) {
     return IdentityProviderArgs(
-      attributeMapping: map['attributeMapping'] == null ? null : ((map['attributeMapping'] as Map).cast<String, String>()).input(),
-      idpIdentifiers: map['idpIdentifiers'] == null ? null : ((map['idpIdentifiers'] as List).cast<String>()).input(),
+      attributeMapping: map['attributeMapping'] == null ? null : (((map['attributeMapping'] as Map).cast<String, String>()).input()).input(),
+      idpIdentifiers: map['idpIdentifiers'] == null ? null : (((map['idpIdentifiers'] as List).cast<String>()).input()).input(),
       providerDetails: ((map['providerDetails'] as Map).cast<String, String>()).input(),
       providerName: (map['providerName'] as String).input(),
       providerType: (map['providerType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       userPoolId: (map['userPoolId'] as String).input(),
     );
   }

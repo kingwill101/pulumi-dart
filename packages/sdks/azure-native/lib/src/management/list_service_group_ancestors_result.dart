@@ -27,8 +27,8 @@ class ListServiceGroupAncestorsResult {
 
   factory ListServiceGroupAncestorsResult.fromMap(Map<String, dynamic> map) {
     return ListServiceGroupAncestorsResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<ServiceGroupResponse>(map['value'], (value) => ServiceGroupResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<ServiceGroupResponse>(map['value']!, (value) => ServiceGroupResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

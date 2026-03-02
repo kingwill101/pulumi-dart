@@ -87,19 +87,19 @@ class Ingress {
 
   factory Ingress.fromMap(Map<String, dynamic> map) {
     return Ingress(
-      additionalPortMappings: map['additionalPortMappings'] == null ? null : (pulumi.Input.decodeList<IngressPortMapping>(map['additionalPortMappings'], (value) => IngressPortMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      allowInsecure: map['allowInsecure'] == null ? null : (map['allowInsecure'] as bool).input(),
-      clientCertificateMode: map['clientCertificateMode'] == null ? null : (map['clientCertificateMode'] as String).input(),
-      corsPolicy: map['corsPolicy'] == null ? null : (CorsPolicy.fromMap((map['corsPolicy'] as Map).cast<String, dynamic>())).input(),
-      customDomains: map['customDomains'] == null ? null : (pulumi.Input.decodeList<CustomDomain>(map['customDomains'], (value) => CustomDomain.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      exposedPort: map['exposedPort'] == null ? null : (map['exposedPort'] as int).input(),
-      external: map['external'] == null ? null : (map['external'] as bool).input(),
-      ipSecurityRestrictions: map['ipSecurityRestrictions'] == null ? null : (pulumi.Input.decodeList<IpSecurityRestrictionRule>(map['ipSecurityRestrictions'], (value) => IpSecurityRestrictionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      stickySessions: map['stickySessions'] == null ? null : (IngressStickySessions.fromMap((map['stickySessions'] as Map).cast<String, dynamic>())).input(),
-      targetPort: map['targetPort'] == null ? null : (map['targetPort'] as int).input(),
-      targetPortHttpScheme: map['targetPortHttpScheme'] == null ? null : (map['targetPortHttpScheme'] as String).input(),
-      traffic: map['traffic'] == null ? null : (pulumi.Input.decodeList<TrafficWeight>(map['traffic'], (value) => TrafficWeight.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      transport: map['transport'] == null ? null : (map['transport'] as String).input(),
+      additionalPortMappings: map['additionalPortMappings'] == null ? null : (pulumi.Input.decodeList<IngressPortMapping>(map['additionalPortMappings']!, (value) => IngressPortMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowInsecure: map['allowInsecure'] == null ? null : (map['allowInsecure']! as bool).input(),
+      clientCertificateMode: map['clientCertificateMode'] == null ? null : (map['clientCertificateMode']! as String).input(),
+      corsPolicy: map['corsPolicy'] == null ? null : (CorsPolicy.fromMap((map['corsPolicy']! as Map).cast<String, dynamic>())).input(),
+      customDomains: map['customDomains'] == null ? null : (pulumi.Input.decodeList<CustomDomain>(map['customDomains']!, (value) => CustomDomain.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      exposedPort: map['exposedPort'] == null ? null : (map['exposedPort']! as int).input(),
+      external: map['external'] == null ? null : (map['external']! as bool).input(),
+      ipSecurityRestrictions: map['ipSecurityRestrictions'] == null ? null : (pulumi.Input.decodeList<IpSecurityRestrictionRule>(map['ipSecurityRestrictions']!, (value) => IpSecurityRestrictionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stickySessions: map['stickySessions'] == null ? null : (IngressStickySessions.fromMap((map['stickySessions']! as Map).cast<String, dynamic>())).input(),
+      targetPort: map['targetPort'] == null ? null : (map['targetPort']! as int).input(),
+      targetPortHttpScheme: map['targetPortHttpScheme'] == null ? null : (map['targetPortHttpScheme']! as String).input(),
+      traffic: map['traffic'] == null ? null : (pulumi.Input.decodeList<TrafficWeight>(map['traffic']!, (value) => TrafficWeight.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      transport: map['transport'] == null ? null : (map['transport']! as String).input(),
     );
   }
 }

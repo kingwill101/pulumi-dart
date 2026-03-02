@@ -30,7 +30,7 @@ class GetSamlProviderArgs {
   factory GetSamlProviderArgs.fromMap(Map<String, dynamic> map) {
     return GetSamlProviderArgs(
       arn: (map['arn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

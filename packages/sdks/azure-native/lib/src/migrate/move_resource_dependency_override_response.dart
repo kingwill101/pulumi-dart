@@ -27,8 +27,8 @@ class MoveResourceDependencyOverrideResponse {
 
   factory MoveResourceDependencyOverrideResponse.fromMap(Map<String, dynamic> map) {
     return MoveResourceDependencyOverrideResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      targetId: map['targetId'] == null ? null : (map['targetId']! as String).input(),
     );
   }
 }

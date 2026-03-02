@@ -81,17 +81,17 @@ class EipArgs {
 
   factory EipArgs.fromMap(Map<String, dynamic> map) {
     return EipArgs(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      associateWithPrivateIp: map['associateWithPrivateIp'] == null ? null : (map['associateWithPrivateIp'] as String).input(),
-      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] == null ? null : (map['customerOwnedIpv4Pool'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      ipamPoolId: map['ipamPoolId'] == null ? null : (map['ipamPoolId'] as String).input(),
-      networkBorderGroup: map['networkBorderGroup'] == null ? null : (map['networkBorderGroup'] as String).input(),
-      networkInterface: map['networkInterface'] == null ? null : (map['networkInterface'] as String).input(),
-      publicIpv4Pool: map['publicIpv4Pool'] == null ? null : (map['publicIpv4Pool'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      address: map['address'] == null ? null : ((map['address'] as String).input()).input(),
+      associateWithPrivateIp: map['associateWithPrivateIp'] == null ? null : ((map['associateWithPrivateIp'] as String).input()).input(),
+      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] == null ? null : ((map['customerOwnedIpv4Pool'] as String).input()).input(),
+      domain: map['domain'] == null ? null : ((map['domain'] as String).input()).input(),
+      instance: map['instance'] == null ? null : ((map['instance'] as String).input()).input(),
+      ipamPoolId: map['ipamPoolId'] == null ? null : ((map['ipamPoolId'] as String).input()).input(),
+      networkBorderGroup: map['networkBorderGroup'] == null ? null : ((map['networkBorderGroup'] as String).input()).input(),
+      networkInterface: map['networkInterface'] == null ? null : ((map['networkInterface'] as String).input()).input(),
+      publicIpv4Pool: map['publicIpv4Pool'] == null ? null : ((map['publicIpv4Pool'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

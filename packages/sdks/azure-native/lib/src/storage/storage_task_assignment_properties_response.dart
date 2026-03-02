@@ -59,7 +59,7 @@ class StorageTaskAssignmentPropertiesResponse {
       executionContext: (StorageTaskAssignmentExecutionContextResponse.fromMap((map['executionContext'] as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       report: (StorageTaskAssignmentReportResponse.fromMap((map['report'] as Map).cast<String, dynamic>())).input(),
-      runStatus: map['runStatus'] == null ? null : (StorageTaskReportPropertiesResponse.fromMap((map['runStatus'] as Map).cast<String, dynamic>())).input(),
+      runStatus: map['runStatus'] == null ? null : (StorageTaskReportPropertiesResponse.fromMap((map['runStatus']! as Map).cast<String, dynamic>())).input(),
       taskId: (map['taskId'] as String).input(),
     );
   }

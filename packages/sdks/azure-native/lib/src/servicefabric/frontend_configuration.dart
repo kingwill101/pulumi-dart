@@ -36,10 +36,10 @@ class FrontendConfiguration {
 
   factory FrontendConfiguration.fromMap(Map<String, dynamic> map) {
     return FrontendConfiguration(
-      applicationGatewayBackendAddressPoolId: map['applicationGatewayBackendAddressPoolId'] == null ? null : (map['applicationGatewayBackendAddressPoolId'] as String).input(),
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
-      loadBalancerBackendAddressPoolId: map['loadBalancerBackendAddressPoolId'] == null ? null : (map['loadBalancerBackendAddressPoolId'] as String).input(),
-      loadBalancerInboundNatPoolId: map['loadBalancerInboundNatPoolId'] == null ? null : (map['loadBalancerInboundNatPoolId'] as String).input(),
+      applicationGatewayBackendAddressPoolId: map['applicationGatewayBackendAddressPoolId'] == null ? null : (map['applicationGatewayBackendAddressPoolId']! as String).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType']! as String).input(),
+      loadBalancerBackendAddressPoolId: map['loadBalancerBackendAddressPoolId'] == null ? null : (map['loadBalancerBackendAddressPoolId']! as String).input(),
+      loadBalancerInboundNatPoolId: map['loadBalancerInboundNatPoolId'] == null ? null : (map['loadBalancerInboundNatPoolId']! as String).input(),
     );
   }
 }

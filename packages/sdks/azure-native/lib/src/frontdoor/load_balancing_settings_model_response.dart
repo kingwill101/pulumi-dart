@@ -51,12 +51,12 @@ class LoadBalancingSettingsModelResponse {
 
   factory LoadBalancingSettingsModelResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancingSettingsModelResponse(
-      additionalLatencyMilliseconds: map['additionalLatencyMilliseconds'] == null ? null : (map['additionalLatencyMilliseconds'] as int).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      additionalLatencyMilliseconds: map['additionalLatencyMilliseconds'] == null ? null : (map['additionalLatencyMilliseconds']! as int).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceState: (map['resourceState'] as String).input(),
-      sampleSize: map['sampleSize'] == null ? null : (map['sampleSize'] as int).input(),
-      successfulSamplesRequired: map['successfulSamplesRequired'] == null ? null : (map['successfulSamplesRequired'] as int).input(),
+      sampleSize: map['sampleSize'] == null ? null : (map['sampleSize']! as int).input(),
+      successfulSamplesRequired: map['successfulSamplesRequired'] == null ? null : (map['successfulSamplesRequired']! as int).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -59,11 +59,11 @@ class BaselineArgs {
     return BaselineArgs(
       baselineIdentifier: (map['baselineIdentifier'] as String).input(),
       baselineVersion: (map['baselineVersion'] as String).input(),
-      parameters: map['parameters'] == null ? null : (BaselineParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      parameters: map['parameters'] == null ? null : ((BaselineParameters.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       targetIdentifier: (map['targetIdentifier'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (BaselineTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      timeouts: map['timeouts'] == null ? null : ((BaselineTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

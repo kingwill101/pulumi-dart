@@ -61,12 +61,12 @@ class MemberArgs {
     return MemberArgs(
       accountId: (map['accountId'] as String).input(),
       email: (map['email'] as String).input(),
-      invitationDisableEmailNotification: map['invitationDisableEmailNotification'] == null ? null : (map['invitationDisableEmailNotification'] as bool).input(),
-      invitationMessage: map['invitationMessage'] == null ? null : (map['invitationMessage'] as String).input(),
-      invite: map['invite'] == null ? null : (map['invite'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      invitationDisableEmailNotification: map['invitationDisableEmailNotification'] == null ? null : ((map['invitationDisableEmailNotification'] as bool).input()).input(),
+      invitationMessage: map['invitationMessage'] == null ? null : ((map['invitationMessage'] as String).input()).input(),
+      invite: map['invite'] == null ? null : ((map['invite'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

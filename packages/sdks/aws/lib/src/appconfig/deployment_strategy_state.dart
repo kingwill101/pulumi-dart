@@ -71,17 +71,17 @@ class DeploymentStrategyState {
 
   factory DeploymentStrategyState.fromMap(Map<String, dynamic> map) {
     return DeploymentStrategyState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      deploymentDurationInMinutes: map['deploymentDurationInMinutes'] == null ? null : (map['deploymentDurationInMinutes'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      finalBakeTimeInMinutes: map['finalBakeTimeInMinutes'] == null ? null : (map['finalBakeTimeInMinutes'] as int).input(),
-      growthFactor: map['growthFactor'] == null ? null : (map['growthFactor'] as double).input(),
-      growthType: map['growthType'] == null ? null : (map['growthType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      replicateTo: map['replicateTo'] == null ? null : (map['replicateTo'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      deploymentDurationInMinutes: map['deploymentDurationInMinutes'] == null ? null : ((map['deploymentDurationInMinutes'] as int).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      finalBakeTimeInMinutes: map['finalBakeTimeInMinutes'] == null ? null : ((map['finalBakeTimeInMinutes'] as int).input()).input(),
+      growthFactor: map['growthFactor'] == null ? null : ((map['growthFactor'] as double).input()).input(),
+      growthType: map['growthType'] == null ? null : ((map['growthType'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      replicateTo: map['replicateTo'] == null ? null : ((map['replicateTo'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

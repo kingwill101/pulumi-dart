@@ -27,8 +27,8 @@ class ClusterNodePoolManagement {
 
   factory ClusterNodePoolManagement.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolManagement(
-      autoRepair: map['autoRepair'] == null ? null : (map['autoRepair'] as bool).input(),
-      autoUpgrade: map['autoUpgrade'] == null ? null : (map['autoUpgrade'] as bool).input(),
+      autoRepair: map['autoRepair'] == null ? null : (map['autoRepair']! as bool).input(),
+      autoUpgrade: map['autoUpgrade'] == null ? null : (map['autoUpgrade']! as bool).input(),
     );
   }
 }

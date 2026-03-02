@@ -77,16 +77,16 @@ class NodeArgs {
   factory NodeArgs.fromMap(Map<String, dynamic> map) {
     return NodeArgs(
       address: (map['address'] as String).input(),
-      connectionLimit: map['connectionLimit'] == null ? null : (map['connectionLimit'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dynamicRatio: map['dynamicRatio'] == null ? null : (map['dynamicRatio'] as int).input(),
-      fqdn: map['fqdn'] == null ? null : (NodeFqdn.fromMap((map['fqdn'] as Map).cast<String, dynamic>())).input(),
-      monitor: map['monitor'] == null ? null : (map['monitor'] as String).input(),
+      connectionLimit: map['connectionLimit'] == null ? null : (map['connectionLimit']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dynamicRatio: map['dynamicRatio'] == null ? null : (map['dynamicRatio']! as int).input(),
+      fqdn: map['fqdn'] == null ? null : (NodeFqdn.fromMap((map['fqdn']! as Map).cast<String, dynamic>())).input(),
+      monitor: map['monitor'] == null ? null : (map['monitor']! as String).input(),
       name: (map['name'] as String).input(),
-      rateLimit: map['rateLimit'] == null ? null : (map['rateLimit'] as String).input(),
-      ratio: map['ratio'] == null ? null : (map['ratio'] as int).input(),
-      session: map['session'] == null ? null : (map['session'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      rateLimit: map['rateLimit'] == null ? null : (map['rateLimit']! as String).input(),
+      ratio: map['ratio'] == null ? null : (map['ratio']! as int).input(),
+      session: map['session'] == null ? null : (map['session']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

@@ -28,7 +28,7 @@ class GetAppAppengineV1betaArgs {
   factory GetAppAppengineV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetAppAppengineV1betaArgs(
       appId: (map['appId'] as String).input(),
-      includeExtraData: map['includeExtraData'] == null ? null : (map['includeExtraData'] as String).input(),
+      includeExtraData: map['includeExtraData'] == null ? null : (map['includeExtraData']! as String).input(),
     );
   }
 }

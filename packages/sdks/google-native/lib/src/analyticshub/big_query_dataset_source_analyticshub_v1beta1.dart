@@ -21,7 +21,7 @@ class BigQueryDatasetSourceAnalyticshubV1beta1 {
 
   factory BigQueryDatasetSourceAnalyticshubV1beta1.fromMap(Map<String, dynamic> map) {
     return BigQueryDatasetSourceAnalyticshubV1beta1(
-      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
+      dataset: map['dataset'] == null ? null : (map['dataset']! as String).input(),
     );
   }
 }

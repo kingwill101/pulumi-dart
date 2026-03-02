@@ -62,15 +62,15 @@ class V3FunctionCustomContainerConfig {
 
   factory V3FunctionCustomContainerConfig.fromMap(Map<String, dynamic> map) {
     return V3FunctionCustomContainerConfig(
-      accelerationInfo: map['accelerationInfo'] == null ? null : (V3FunctionCustomContainerConfigAccelerationInfo.fromMap((map['accelerationInfo'] as Map).cast<String, dynamic>())).input(),
-      accelerationType: map['accelerationType'] == null ? null : (map['accelerationType'] as String).input(),
-      acrInstanceId: map['acrInstanceId'] == null ? null : (map['acrInstanceId'] as String).input(),
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      entrypoints: map['entrypoints'] == null ? null : ((map['entrypoints'] as List).cast<String>()).input(),
-      healthCheckConfig: map['healthCheckConfig'] == null ? null : (V3FunctionCustomContainerConfigHealthCheckConfig.fromMap((map['healthCheckConfig'] as Map).cast<String, dynamic>())).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      resolvedImageUri: map['resolvedImageUri'] == null ? null : (map['resolvedImageUri'] as String).input(),
+      accelerationInfo: map['accelerationInfo'] == null ? null : (V3FunctionCustomContainerConfigAccelerationInfo.fromMap((map['accelerationInfo']! as Map).cast<String, dynamic>())).input(),
+      accelerationType: map['accelerationType'] == null ? null : (map['accelerationType']! as String).input(),
+      acrInstanceId: map['acrInstanceId'] == null ? null : (map['acrInstanceId']! as String).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
+      entrypoints: map['entrypoints'] == null ? null : ((map['entrypoints']! as List).cast<String>()).input(),
+      healthCheckConfig: map['healthCheckConfig'] == null ? null : (V3FunctionCustomContainerConfigHealthCheckConfig.fromMap((map['healthCheckConfig']! as Map).cast<String, dynamic>())).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      resolvedImageUri: map['resolvedImageUri'] == null ? null : (map['resolvedImageUri']! as String).input(),
     );
   }
 }

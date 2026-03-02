@@ -26,7 +26,7 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag {
   factory ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag(
       key: (map['key'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

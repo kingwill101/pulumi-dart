@@ -21,7 +21,7 @@ class SecurityPolicyCloudArmorConfig {
 
   factory SecurityPolicyCloudArmorConfig.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyCloudArmorConfig(
-      enableMl: map['enableMl'] == null ? null : (map['enableMl'] as bool).input(),
+      enableMl: map['enableMl'] == null ? null : (map['enableMl']! as bool).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class PodReadinessGatePatch {
 
   factory PodReadinessGatePatch.fromMap(Map<String, dynamic> map) {
     return PodReadinessGatePatch(
-      conditionType: map['conditionType'] == null ? null : (map['conditionType'] as String).input(),
+      conditionType: map['conditionType'] == null ? null : (map['conditionType']! as String).input(),
     );
   }
 }

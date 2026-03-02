@@ -23,7 +23,7 @@ class RegionResizeRequestStatusErrorErrorErrorDetailHelp {
 
   factory RegionResizeRequestStatusErrorErrorErrorDetailHelp.fromMap(Map<String, dynamic> map) {
     return RegionResizeRequestStatusErrorErrorErrorDetailHelp(
-      links: map['links'] == null ? null : (pulumi.Input.decodeList<RegionResizeRequestStatusErrorErrorErrorDetailHelpLink>(map['links'], (value) => RegionResizeRequestStatusErrorErrorErrorDetailHelpLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      links: map['links'] == null ? null : (pulumi.Input.decodeList<RegionResizeRequestStatusErrorErrorErrorDetailHelpLink>(map['links']!, (value) => RegionResizeRequestStatusErrorErrorErrorDetailHelpLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

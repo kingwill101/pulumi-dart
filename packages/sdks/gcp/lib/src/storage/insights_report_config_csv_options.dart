@@ -30,9 +30,9 @@ class InsightsReportConfigCsvOptions {
 
   factory InsightsReportConfigCsvOptions.fromMap(Map<String, dynamic> map) {
     return InsightsReportConfigCsvOptions(
-      delimiter: map['delimiter'] == null ? null : (map['delimiter'] as String).input(),
-      headerRequired: map['headerRequired'] == null ? null : (map['headerRequired'] as bool).input(),
-      recordSeparator: map['recordSeparator'] == null ? null : (map['recordSeparator'] as String).input(),
+      delimiter: map['delimiter'] == null ? null : (map['delimiter']! as String).input(),
+      headerRequired: map['headerRequired'] == null ? null : (map['headerRequired']! as bool).input(),
+      recordSeparator: map['recordSeparator'] == null ? null : (map['recordSeparator']! as String).input(),
     );
   }
 }

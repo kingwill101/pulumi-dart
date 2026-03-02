@@ -31,7 +31,7 @@ class GetSubnetworkComputeV1Args {
 
   factory GetSubnetworkComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetSubnetworkComputeV1Args(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
       subnetwork: (map['subnetwork'] as String).input(),
     );

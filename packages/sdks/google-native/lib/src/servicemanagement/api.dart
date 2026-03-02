@@ -56,13 +56,13 @@ class Api {
 
   factory Api.fromMap(Map<String, dynamic> map) {
     return Api(
-      methods: map['methods'] == null ? null : (pulumi.Input.decodeList<Method>(map['methods'], (value) => Method.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mixins: map['mixins'] == null ? null : (pulumi.Input.decodeList<Mixin>(map['mixins'], (value) => Mixin.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      options: map['options'] == null ? null : (pulumi.Input.decodeList<Option>(map['options'], (value) => Option.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceContext: map['sourceContext'] == null ? null : (SourceContext.fromMap((map['sourceContext'] as Map).cast<String, dynamic>())).input(),
-      syntax: map['syntax'] == null ? null : (ApiSyntax.fromValue(map['syntax'] as String)).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      methods: map['methods'] == null ? null : (pulumi.Input.decodeList<Method>(map['methods']!, (value) => Method.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mixins: map['mixins'] == null ? null : (pulumi.Input.decodeList<Mixin>(map['mixins']!, (value) => Mixin.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      options: map['options'] == null ? null : (pulumi.Input.decodeList<Option>(map['options']!, (value) => Option.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceContext: map['sourceContext'] == null ? null : (SourceContext.fromMap((map['sourceContext']! as Map).cast<String, dynamic>())).input(),
+      syntax: map['syntax'] == null ? null : (ApiSyntax.fromValue(map['syntax']! as String)).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

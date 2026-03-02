@@ -37,9 +37,9 @@ class VirtualMachineScaleSetNetworkProfileResponse {
 
   factory VirtualMachineScaleSetNetworkProfileResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetNetworkProfileResponse(
-      healthProbe: map['healthProbe'] == null ? null : (ApiEntityReferenceResponse.fromMap((map['healthProbe'] as Map).cast<String, dynamic>())).input(),
-      networkApiVersion: map['networkApiVersion'] == null ? null : (map['networkApiVersion'] as String).input(),
-      networkInterfaceConfigurations: map['networkInterfaceConfigurations'] == null ? null : (pulumi.Input.decodeList<VirtualMachineScaleSetNetworkConfigurationResponse>(map['networkInterfaceConfigurations'], (value) => VirtualMachineScaleSetNetworkConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      healthProbe: map['healthProbe'] == null ? null : (ApiEntityReferenceResponse.fromMap((map['healthProbe']! as Map).cast<String, dynamic>())).input(),
+      networkApiVersion: map['networkApiVersion'] == null ? null : (map['networkApiVersion']! as String).input(),
+      networkInterfaceConfigurations: map['networkInterfaceConfigurations'] == null ? null : (pulumi.Input.decodeList<VirtualMachineScaleSetNetworkConfigurationResponse>(map['networkInterfaceConfigurations']!, (value) => VirtualMachineScaleSetNetworkConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

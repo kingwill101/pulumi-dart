@@ -48,10 +48,10 @@ class AzurermPortalDashboardResult {
   factory AzurermPortalDashboardResult.fromMap(Map<String, dynamic> map) {
     return AzurermPortalDashboardResult(
       dashboardProperties: map['dashboardProperties'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       id: map['id'] as String,
       location: map['location'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
       resourceGroupName: map['resourceGroupName'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );

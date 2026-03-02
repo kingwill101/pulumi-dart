@@ -26,8 +26,8 @@ class GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfig {
 
   factory GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfig(
-      desiredMinSafeTrialsFraction: map['desiredMinSafeTrialsFraction'] == null ? null : (map['desiredMinSafeTrialsFraction'] as double).input(),
-      safetyThreshold: map['safetyThreshold'] == null ? null : (map['safetyThreshold'] as double).input(),
+      desiredMinSafeTrialsFraction: map['desiredMinSafeTrialsFraction'] == null ? null : (map['desiredMinSafeTrialsFraction']! as double).input(),
+      safetyThreshold: map['safetyThreshold'] == null ? null : (map['safetyThreshold']! as double).input(),
     );
   }
 }

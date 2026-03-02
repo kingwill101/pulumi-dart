@@ -43,11 +43,11 @@ class RegistryCredentialSetState {
 
   factory RegistryCredentialSetState.fromMap(Map<String, dynamic> map) {
     return RegistryCredentialSetState(
-      authenticationCredentials: map['authenticationCredentials'] == null ? null : (RegistryCredentialSetAuthenticationCredentials.fromMap((map['authenticationCredentials'] as Map).cast<String, dynamic>())).input(),
-      containerRegistryId: map['containerRegistryId'] == null ? null : (map['containerRegistryId'] as String).input(),
-      identity: map['identity'] == null ? null : (RegistryCredentialSetIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      loginServer: map['loginServer'] == null ? null : (map['loginServer'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      authenticationCredentials: map['authenticationCredentials'] == null ? null : (RegistryCredentialSetAuthenticationCredentials.fromMap((map['authenticationCredentials']! as Map).cast<String, dynamic>())).input(),
+      containerRegistryId: map['containerRegistryId'] == null ? null : (map['containerRegistryId']! as String).input(),
+      identity: map['identity'] == null ? null : (RegistryCredentialSetIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      loginServer: map['loginServer'] == null ? null : (map['loginServer']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

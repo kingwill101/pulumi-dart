@@ -26,8 +26,8 @@ class ClusterCustomerManagedKeyState {
 
   factory ClusterCustomerManagedKeyState.fromMap(Map<String, dynamic> map) {
     return ClusterCustomerManagedKeyState(
-      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId'] as String).input(),
-      logAnalyticsClusterId: map['logAnalyticsClusterId'] == null ? null : (map['logAnalyticsClusterId'] as String).input(),
+      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId']! as String).input(),
+      logAnalyticsClusterId: map['logAnalyticsClusterId'] == null ? null : (map['logAnalyticsClusterId']! as String).input(),
     );
   }
 }

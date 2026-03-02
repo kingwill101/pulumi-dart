@@ -34,8 +34,8 @@ class PeriodicModeBackupPolicyResponse {
 
   factory PeriodicModeBackupPolicyResponse.fromMap(Map<String, dynamic> map) {
     return PeriodicModeBackupPolicyResponse(
-      migrationState: map['migrationState'] == null ? null : (BackupPolicyMigrationStateResponse.fromMap((map['migrationState'] as Map).cast<String, dynamic>())).input(),
-      periodicModeProperties: map['periodicModeProperties'] == null ? null : (PeriodicModePropertiesResponse.fromMap((map['periodicModeProperties'] as Map).cast<String, dynamic>())).input(),
+      migrationState: map['migrationState'] == null ? null : (BackupPolicyMigrationStateResponse.fromMap((map['migrationState']! as Map).cast<String, dynamic>())).input(),
+      periodicModeProperties: map['periodicModeProperties'] == null ? null : (PeriodicModePropertiesResponse.fromMap((map['periodicModeProperties']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

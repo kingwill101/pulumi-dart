@@ -48,8 +48,8 @@ class TableItemArgs {
     return TableItemArgs(
       hashKey: (map['hashKey'] as String).input(),
       item: (map['item'] as String).input(),
-      rangeKey: map['rangeKey'] == null ? null : (map['rangeKey'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rangeKey: map['rangeKey'] == null ? null : ((map['rangeKey'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       tableName: (map['tableName'] as String).input(),
     );
   }

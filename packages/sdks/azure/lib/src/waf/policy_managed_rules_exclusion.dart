@@ -36,7 +36,7 @@ class PolicyManagedRulesExclusion {
 
   factory PolicyManagedRulesExclusion.fromMap(Map<String, dynamic> map) {
     return PolicyManagedRulesExclusion(
-      excludedRuleSet: map['excludedRuleSet'] == null ? null : (PolicyManagedRulesExclusionExcludedRuleSet.fromMap((map['excludedRuleSet'] as Map).cast<String, dynamic>())).input(),
+      excludedRuleSet: map['excludedRuleSet'] == null ? null : (PolicyManagedRulesExclusionExcludedRuleSet.fromMap((map['excludedRuleSet']! as Map).cast<String, dynamic>())).input(),
       matchVariable: (map['matchVariable'] as String).input(),
       selector: (map['selector'] as String).input(),
       selectorMatchOperator: (map['selectorMatchOperator'] as String).input(),

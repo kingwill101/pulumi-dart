@@ -63,15 +63,15 @@ class ObjectIamPolicyArgs {
 
   factory ObjectIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ObjectIamPolicyArgs(
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<ObjectIamPolicyBindingsItem>(map['bindings'], (value) => ObjectIamPolicyBindingsItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<ObjectIamPolicyBindingsItem>(map['bindings']!, (value) => ObjectIamPolicyBindingsItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
       bucket: (map['bucket'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      generation: map['generation'] == null ? null : (map['generation']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       object: (map['object'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      userProject: map['userProject'] == null ? null : (map['userProject'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      userProject: map['userProject'] == null ? null : (map['userProject']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

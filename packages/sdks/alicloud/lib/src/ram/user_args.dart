@@ -49,12 +49,12 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      comments: map['comments'] == null ? null : (map['comments'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      mobile: map['mobile'] == null ? null : (map['mobile'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      comments: map['comments'] == null ? null : (map['comments']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
+      mobile: map['mobile'] == null ? null : (map['mobile']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

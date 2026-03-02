@@ -39,11 +39,11 @@ class ManagedLoginBrandingAsset {
 
   factory ManagedLoginBrandingAsset.fromMap(Map<String, dynamic> map) {
     return ManagedLoginBrandingAsset(
-      bytes: map['bytes'] == null ? null : (map['bytes'] as String).input(),
+      bytes: map['bytes'] == null ? null : ((map['bytes'] as String).input()).input(),
       category: (map['category'] as String).input(),
       colorMode: (map['colorMode'] as String).input(),
       extension: (map['extension'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : ((map['resourceId'] as String).input()).input(),
     );
   }
 }

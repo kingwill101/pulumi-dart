@@ -31,9 +31,9 @@ class GoogleCloudDialogflowCxV3RolloutConfigRolloutStep {
 
   factory GoogleCloudDialogflowCxV3RolloutConfigRolloutStep.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3RolloutConfigRolloutStep(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      minDuration: map['minDuration'] == null ? null : (map['minDuration'] as String).input(),
-      trafficPercent: map['trafficPercent'] == null ? null : (map['trafficPercent'] as int).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      minDuration: map['minDuration'] == null ? null : (map['minDuration']! as String).input(),
+      trafficPercent: map['trafficPercent'] == null ? null : (map['trafficPercent']! as int).input(),
     );
   }
 }

@@ -47,11 +47,11 @@ class RegisteredLimitV3State {
 
   factory RegisteredLimitV3State.fromMap(Map<String, dynamic> map) {
     return RegisteredLimitV3State(
-      defaultLimit: map['defaultLimit'] == null ? null : (map['defaultLimit'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
+      defaultLimit: map['defaultLimit'] == null ? null : (map['defaultLimit']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
     );
   }
 }

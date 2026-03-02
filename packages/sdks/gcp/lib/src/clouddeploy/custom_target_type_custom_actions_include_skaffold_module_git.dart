@@ -30,8 +30,8 @@ class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit {
 
   factory CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit.fromMap(Map<String, dynamic> map) {
     return CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      ref: map['ref'] == null ? null : (map['ref'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      ref: map['ref'] == null ? null : (map['ref']! as String).input(),
       repo: (map['repo'] as String).input(),
     );
   }

@@ -20,7 +20,7 @@ class TriggerActionNotificationProperty {
 
   factory TriggerActionNotificationProperty.fromMap(Map<String, dynamic> map) {
     return TriggerActionNotificationProperty(
-      notifyDelayAfter: map['notifyDelayAfter'] == null ? null : (map['notifyDelayAfter'] as int).input(),
+      notifyDelayAfter: map['notifyDelayAfter'] == null ? null : ((map['notifyDelayAfter'] as int).input()).input(),
     );
   }
 }

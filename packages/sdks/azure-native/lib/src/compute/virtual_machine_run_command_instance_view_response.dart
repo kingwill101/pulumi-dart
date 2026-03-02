@@ -57,14 +57,14 @@ class VirtualMachineRunCommandInstanceViewResponse {
 
   factory VirtualMachineRunCommandInstanceViewResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineRunCommandInstanceViewResponse(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      error: map['error'] == null ? null : (map['error'] as String).input(),
-      executionMessage: map['executionMessage'] == null ? null : (map['executionMessage'] as String).input(),
-      executionState: map['executionState'] == null ? null : (map['executionState'] as String).input(),
-      exitCode: map['exitCode'] == null ? null : (map['exitCode'] as int).input(),
-      output: map['output'] == null ? null : (map['output'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatusResponse>(map['statuses'], (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      error: map['error'] == null ? null : (map['error']! as String).input(),
+      executionMessage: map['executionMessage'] == null ? null : (map['executionMessage']! as String).input(),
+      executionState: map['executionState'] == null ? null : (map['executionState']! as String).input(),
+      exitCode: map['exitCode'] == null ? null : (map['exitCode']! as int).input(),
+      output: map['output'] == null ? null : (map['output']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatusResponse>(map['statuses']!, (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -97,10 +97,10 @@ class GetPrivateZoneResult {
   factory GetPrivateZoneResult.fromMap(Map<String, dynamic> map) {
     return GetPrivateZoneResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       internalId: map['internalId'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       maxNumberOfRecordSets: map['maxNumberOfRecordSets'] as double,
       maxNumberOfVirtualNetworkLinks: map['maxNumberOfVirtualNetworkLinks'] as double,
       maxNumberOfVirtualNetworkLinksWithRegistration: map['maxNumberOfVirtualNetworkLinksWithRegistration'] as double,
@@ -110,7 +110,7 @@ class GetPrivateZoneResult {
       numberOfVirtualNetworkLinksWithRegistration: map['numberOfVirtualNetworkLinksWithRegistration'] as double,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

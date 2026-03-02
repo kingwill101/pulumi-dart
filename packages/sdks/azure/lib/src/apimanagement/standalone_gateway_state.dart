@@ -52,13 +52,13 @@ class StandaloneGatewayState {
 
   factory StandaloneGatewayState.fromMap(Map<String, dynamic> map) {
     return StandaloneGatewayState(
-      backendSubnetId: map['backendSubnetId'] == null ? null : (map['backendSubnetId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (StandaloneGatewaySku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      virtualNetworkType: map['virtualNetworkType'] == null ? null : (map['virtualNetworkType'] as String).input(),
+      backendSubnetId: map['backendSubnetId'] == null ? null : (map['backendSubnetId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      sku: map['sku'] == null ? null : (StandaloneGatewaySku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      virtualNetworkType: map['virtualNetworkType'] == null ? null : (map['virtualNetworkType']! as String).input(),
     );
   }
 }

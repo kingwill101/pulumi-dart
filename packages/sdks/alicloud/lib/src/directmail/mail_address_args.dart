@@ -40,8 +40,8 @@ class MailAddressArgs {
   factory MailAddressArgs.fromMap(Map<String, dynamic> map) {
     return MailAddressArgs(
       accountName: (map['accountName'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      replyAddress: map['replyAddress'] == null ? null : (map['replyAddress'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      replyAddress: map['replyAddress'] == null ? null : (map['replyAddress']! as String).input(),
       sendtype: (map['sendtype'] as String).input(),
     );
   }

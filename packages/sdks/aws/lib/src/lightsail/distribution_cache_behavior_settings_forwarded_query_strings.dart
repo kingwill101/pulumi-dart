@@ -25,8 +25,8 @@ class DistributionCacheBehaviorSettingsForwardedQueryStrings {
 
   factory DistributionCacheBehaviorSettingsForwardedQueryStrings.fromMap(Map<String, dynamic> map) {
     return DistributionCacheBehaviorSettingsForwardedQueryStrings(
-      option: map['option'] == null ? null : (map['option'] as bool).input(),
-      queryStringsAllowedLists: map['queryStringsAllowedLists'] == null ? null : ((map['queryStringsAllowedLists'] as List).cast<String>()).input(),
+      option: map['option'] == null ? null : ((map['option'] as bool).input()).input(),
+      queryStringsAllowedLists: map['queryStringsAllowedLists'] == null ? null : (((map['queryStringsAllowedLists'] as List).cast<String>()).input()).input(),
     );
   }
 }

@@ -59,13 +59,13 @@ class ResponseHeadersPolicyArgs {
 
   factory ResponseHeadersPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ResponseHeadersPolicyArgs(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      corsConfig: map['corsConfig'] == null ? null : (ResponseHeadersPolicyCorsConfig.fromMap((map['corsConfig'] as Map).cast<String, dynamic>())).input(),
-      customHeadersConfig: map['customHeadersConfig'] == null ? null : (ResponseHeadersPolicyCustomHeadersConfig.fromMap((map['customHeadersConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      removeHeadersConfig: map['removeHeadersConfig'] == null ? null : (ResponseHeadersPolicyRemoveHeadersConfig.fromMap((map['removeHeadersConfig'] as Map).cast<String, dynamic>())).input(),
-      securityHeadersConfig: map['securityHeadersConfig'] == null ? null : (ResponseHeadersPolicySecurityHeadersConfig.fromMap((map['securityHeadersConfig'] as Map).cast<String, dynamic>())).input(),
-      serverTimingHeadersConfig: map['serverTimingHeadersConfig'] == null ? null : (ResponseHeadersPolicyServerTimingHeadersConfig.fromMap((map['serverTimingHeadersConfig'] as Map).cast<String, dynamic>())).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
+      corsConfig: map['corsConfig'] == null ? null : ((ResponseHeadersPolicyCorsConfig.fromMap((map['corsConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      customHeadersConfig: map['customHeadersConfig'] == null ? null : ((ResponseHeadersPolicyCustomHeadersConfig.fromMap((map['customHeadersConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      removeHeadersConfig: map['removeHeadersConfig'] == null ? null : ((ResponseHeadersPolicyRemoveHeadersConfig.fromMap((map['removeHeadersConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      securityHeadersConfig: map['securityHeadersConfig'] == null ? null : ((ResponseHeadersPolicySecurityHeadersConfig.fromMap((map['securityHeadersConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      serverTimingHeadersConfig: map['serverTimingHeadersConfig'] == null ? null : ((ResponseHeadersPolicyServerTimingHeadersConfig.fromMap((map['serverTimingHeadersConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

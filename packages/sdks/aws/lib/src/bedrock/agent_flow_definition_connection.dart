@@ -41,7 +41,7 @@ class AgentFlowDefinitionConnection {
 
   factory AgentFlowDefinitionConnection.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionConnection(
-      configuration: map['configuration'] == null ? null : (AgentFlowDefinitionConnectionConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      configuration: map['configuration'] == null ? null : ((AgentFlowDefinitionConnectionConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input()).input(),
       name: (map['name'] as String).input(),
       source: (map['source'] as String).input(),
       target: (map['target'] as String).input(),

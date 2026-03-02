@@ -30,9 +30,9 @@ class SettingsApplicationSettingsAccessDeniedPageSettings {
 
   factory SettingsApplicationSettingsAccessDeniedPageSettings.fromMap(Map<String, dynamic> map) {
     return SettingsApplicationSettingsAccessDeniedPageSettings(
-      accessDeniedPageUri: map['accessDeniedPageUri'] == null ? null : (map['accessDeniedPageUri'] as String).input(),
-      generateTroubleshootingUri: map['generateTroubleshootingUri'] == null ? null : (map['generateTroubleshootingUri'] as bool).input(),
-      remediationTokenGenerationEnabled: map['remediationTokenGenerationEnabled'] == null ? null : (map['remediationTokenGenerationEnabled'] as bool).input(),
+      accessDeniedPageUri: map['accessDeniedPageUri'] == null ? null : (map['accessDeniedPageUri']! as String).input(),
+      generateTroubleshootingUri: map['generateTroubleshootingUri'] == null ? null : (map['generateTroubleshootingUri']! as bool).input(),
+      remediationTokenGenerationEnabled: map['remediationTokenGenerationEnabled'] == null ? null : (map['remediationTokenGenerationEnabled']! as bool).input(),
     );
   }
 }

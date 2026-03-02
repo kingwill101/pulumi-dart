@@ -41,11 +41,11 @@ class CipherRuleState {
 
   factory CipherRuleState.fromMap(Map<String, dynamic> map) {
     return CipherRuleState(
-      cipher: map['cipher'] == null ? null : (map['cipher'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dhGroups: map['dhGroups'] == null ? null : (map['dhGroups'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      signatureAlgorithms: map['signatureAlgorithms'] == null ? null : (map['signatureAlgorithms'] as String).input(),
+      cipher: map['cipher'] == null ? null : (map['cipher']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dhGroups: map['dhGroups'] == null ? null : (map['dhGroups']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      signatureAlgorithms: map['signatureAlgorithms'] == null ? null : (map['signatureAlgorithms']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class ArtifactObjects {
 
   factory ArtifactObjects.fromMap(Map<String, dynamic> map) {
     return ArtifactObjects(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      paths: map['paths'] == null ? null : ((map['paths'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      paths: map['paths'] == null ? null : ((map['paths']! as List).cast<String>()).input(),
     );
   }
 }

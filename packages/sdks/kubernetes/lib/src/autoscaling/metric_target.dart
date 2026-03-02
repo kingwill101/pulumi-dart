@@ -36,10 +36,10 @@ class MetricTarget {
 
   factory MetricTarget.fromMap(Map<String, dynamic> map) {
     return MetricTarget(
-      averageUtilization: map['averageUtilization'] == null ? null : (map['averageUtilization'] as int).input(),
-      averageValue: map['averageValue'] == null ? null : (map['averageValue'] as String).input(),
+      averageUtilization: map['averageUtilization'] == null ? null : (map['averageUtilization']! as int).input(),
+      averageValue: map['averageValue'] == null ? null : (map['averageValue']! as String).input(),
       type: (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

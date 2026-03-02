@@ -47,12 +47,12 @@ class PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificatio
 
   factory PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification.fromMap(Map<String, dynamic> map) {
     return PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification(
-      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension>(map['dimensions'], (value) => PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
-      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetric>(map['metrics'], (value) => PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      statistic: map['statistic'] == null ? null : (map['statistic'] as String).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      dimensions: map['dimensions'] == null ? null : ((pulumi.Input.decodeList<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension>(map['dimensions']!, (value) => PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      metricName: map['metricName'] == null ? null : ((map['metricName'] as String).input()).input(),
+      metrics: map['metrics'] == null ? null : ((pulumi.Input.decodeList<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetric>(map['metrics']!, (value) => PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetric.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      namespace: map['namespace'] == null ? null : ((map['namespace'] as String).input()).input(),
+      statistic: map['statistic'] == null ? null : ((map['statistic'] as String).input()).input(),
+      unit: map['unit'] == null ? null : ((map['unit'] as String).input()).input(),
     );
   }
 }

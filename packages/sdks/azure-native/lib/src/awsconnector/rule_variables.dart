@@ -28,8 +28,8 @@ class RuleVariables {
 
   factory RuleVariables.fromMap(Map<String, dynamic> map) {
     return RuleVariables(
-      ipSets: map['ipSets'] == null ? null : (pulumi.Input.decodeMapValues<IPSet>(map['ipSets'], (value) => IPSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      portSets: map['portSets'] == null ? null : (pulumi.Input.decodeMapValues<PortSet>(map['portSets'], (value) => PortSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipSets: map['ipSets'] == null ? null : (pulumi.Input.decodeMapValues<IPSet>(map['ipSets']!, (value) => IPSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      portSets: map['portSets'] == null ? null : (pulumi.Input.decodeMapValues<PortSet>(map['portSets']!, (value) => PortSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

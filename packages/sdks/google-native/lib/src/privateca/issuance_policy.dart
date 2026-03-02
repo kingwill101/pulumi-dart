@@ -51,12 +51,12 @@ class IssuancePolicy {
 
   factory IssuancePolicy.fromMap(Map<String, dynamic> map) {
     return IssuancePolicy(
-      allowedIssuanceModes: map['allowedIssuanceModes'] == null ? null : (IssuanceModes.fromMap((map['allowedIssuanceModes'] as Map).cast<String, dynamic>())).input(),
-      allowedKeyTypes: map['allowedKeyTypes'] == null ? null : (pulumi.Input.decodeList<AllowedKeyType>(map['allowedKeyTypes'], (value) => AllowedKeyType.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      baselineValues: map['baselineValues'] == null ? null : (X509Parameters.fromMap((map['baselineValues'] as Map).cast<String, dynamic>())).input(),
-      identityConstraints: map['identityConstraints'] == null ? null : (CertificateIdentityConstraints.fromMap((map['identityConstraints'] as Map).cast<String, dynamic>())).input(),
-      maximumLifetime: map['maximumLifetime'] == null ? null : (map['maximumLifetime'] as String).input(),
-      passthroughExtensions: map['passthroughExtensions'] == null ? null : (CertificateExtensionConstraints.fromMap((map['passthroughExtensions'] as Map).cast<String, dynamic>())).input(),
+      allowedIssuanceModes: map['allowedIssuanceModes'] == null ? null : (IssuanceModes.fromMap((map['allowedIssuanceModes']! as Map).cast<String, dynamic>())).input(),
+      allowedKeyTypes: map['allowedKeyTypes'] == null ? null : (pulumi.Input.decodeList<AllowedKeyType>(map['allowedKeyTypes']!, (value) => AllowedKeyType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      baselineValues: map['baselineValues'] == null ? null : (X509Parameters.fromMap((map['baselineValues']! as Map).cast<String, dynamic>())).input(),
+      identityConstraints: map['identityConstraints'] == null ? null : (CertificateIdentityConstraints.fromMap((map['identityConstraints']! as Map).cast<String, dynamic>())).input(),
+      maximumLifetime: map['maximumLifetime'] == null ? null : (map['maximumLifetime']! as String).input(),
+      passthroughExtensions: map['passthroughExtensions'] == null ? null : (CertificateExtensionConstraints.fromMap((map['passthroughExtensions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

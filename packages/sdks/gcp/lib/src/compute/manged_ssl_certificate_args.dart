@@ -58,11 +58,11 @@ class MangedSslCertificateArgs {
 
   factory MangedSslCertificateArgs.fromMap(Map<String, dynamic> map) {
     return MangedSslCertificateArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      managed: map['managed'] == null ? null : (MangedSslCertificateManaged.fromMap((map['managed'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      managed: map['managed'] == null ? null : (MangedSslCertificateManaged.fromMap((map['managed']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

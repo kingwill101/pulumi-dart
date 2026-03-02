@@ -90,18 +90,18 @@ class GetPackageResult {
     return GetPackageResult(
       allOf: SystemDataResponse.fromMap((map['allOf'] as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
-      contentLink: map['contentLink'] == null ? null : ContentLinkResponse.fromMap((map['contentLink'] as Map).cast<String, dynamic>()),
-      default_: map['default'] == null ? null : map['default'] as bool,
-      error: map['error'] == null ? null : PackageErrorInfoResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
+      contentLink: map['contentLink'] == null ? null : ContentLinkResponse.fromMap((map['contentLink']! as Map).cast<String, dynamic>()),
+      default_: map['default'] == null ? null : map['default']! as bool,
+      error: map['error'] == null ? null : PackageErrorInfoResponse.fromMap((map['error']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      sizeInBytes: map['sizeInBytes'] == null ? null : map['sizeInBytes'] as double,
+      sizeInBytes: map['sizeInBytes'] == null ? null : map['sizeInBytes']! as double,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      version: map['version'] == null ? null : map['version']! as String,
     );
   }
 }

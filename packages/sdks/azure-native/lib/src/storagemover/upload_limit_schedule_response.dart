@@ -22,7 +22,7 @@ class UploadLimitScheduleResponse {
 
   factory UploadLimitScheduleResponse.fromMap(Map<String, dynamic> map) {
     return UploadLimitScheduleResponse(
-      weeklyRecurrences: map['weeklyRecurrences'] == null ? null : (pulumi.Input.decodeList<UploadLimitWeeklyRecurrenceResponse>(map['weeklyRecurrences'], (value) => UploadLimitWeeklyRecurrenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      weeklyRecurrences: map['weeklyRecurrences'] == null ? null : (pulumi.Input.decodeList<UploadLimitWeeklyRecurrenceResponse>(map['weeklyRecurrences']!, (value) => UploadLimitWeeklyRecurrenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -36,8 +36,8 @@ class OrganizationSecurityPolicyRuleMatch {
   factory OrganizationSecurityPolicyRuleMatch.fromMap(Map<String, dynamic> map) {
     return OrganizationSecurityPolicyRuleMatch(
       config: (OrganizationSecurityPolicyRuleMatchConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      versionedExpr: map['versionedExpr'] == null ? null : (map['versionedExpr'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      versionedExpr: map['versionedExpr'] == null ? null : (map['versionedExpr']! as String).input(),
     );
   }
 }

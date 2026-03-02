@@ -61,15 +61,15 @@ class DatadogOrganizationProperties {
 
   factory DatadogOrganizationProperties.fromMap(Map<String, dynamic> map) {
     return DatadogOrganizationProperties(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
-      applicationKey: map['applicationKey'] == null ? null : (map['applicationKey'] as String).input(),
-      cspm: map['cspm'] == null ? null : (map['cspm'] as bool).input(),
-      enterpriseAppId: map['enterpriseAppId'] == null ? null : (map['enterpriseAppId'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      linkingAuthCode: map['linkingAuthCode'] == null ? null : (map['linkingAuthCode'] as String).input(),
-      linkingClientId: map['linkingClientId'] == null ? null : (map['linkingClientId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      redirectUri: map['redirectUri'] == null ? null : (map['redirectUri'] as String).input(),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey']! as String).input(),
+      applicationKey: map['applicationKey'] == null ? null : (map['applicationKey']! as String).input(),
+      cspm: map['cspm'] == null ? null : (map['cspm']! as bool).input(),
+      enterpriseAppId: map['enterpriseAppId'] == null ? null : (map['enterpriseAppId']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      linkingAuthCode: map['linkingAuthCode'] == null ? null : (map['linkingAuthCode']! as String).input(),
+      linkingClientId: map['linkingClientId'] == null ? null : (map['linkingClientId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      redirectUri: map['redirectUri'] == null ? null : (map['redirectUri']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions {
 
   factory GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions(
-      iouThreshold: map['iouThreshold'] == null ? null : (map['iouThreshold'] as double).input(),
+      iouThreshold: map['iouThreshold'] == null ? null : (map['iouThreshold']! as double).input(),
     );
   }
 }

@@ -41,7 +41,7 @@ class GetNpmPackageArgs {
     return GetNpmPackageArgs(
       location: (map['location'] as String).input(),
       packageName: (map['packageName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       repositoryId: (map['repositoryId'] as String).input(),
     );
   }

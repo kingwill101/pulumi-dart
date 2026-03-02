@@ -40,10 +40,10 @@ class ApplicationNetworkRuleSetArgs {
 
   factory ApplicationNetworkRuleSetArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationNetworkRuleSetArgs(
-      applyToDevice: map['applyToDevice'] == null ? null : (map['applyToDevice'] as bool).input(),
-      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction'] as String).input(),
+      applyToDevice: map['applyToDevice'] == null ? null : (map['applyToDevice']! as bool).input(),
+      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction']! as String).input(),
       iotcentralApplicationId: (map['iotcentralApplicationId'] as String).input(),
-      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<ApplicationNetworkRuleSetIpRule>(map['ipRules'], (value) => ApplicationNetworkRuleSetIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<ApplicationNetworkRuleSetIpRule>(map['ipRules']!, (value) => ApplicationNetworkRuleSetIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

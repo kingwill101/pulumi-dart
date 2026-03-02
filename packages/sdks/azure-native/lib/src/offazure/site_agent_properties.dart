@@ -26,8 +26,8 @@ class SiteAgentProperties {
 
   factory SiteAgentProperties.fromMap(Map<String, dynamic> map) {
     return SiteAgentProperties(
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
-      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri'] as String).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
+      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri']! as String).input(),
     );
   }
 }

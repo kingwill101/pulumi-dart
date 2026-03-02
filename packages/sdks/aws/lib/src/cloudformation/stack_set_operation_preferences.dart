@@ -45,12 +45,12 @@ class StackSetOperationPreferences {
 
   factory StackSetOperationPreferences.fromMap(Map<String, dynamic> map) {
     return StackSetOperationPreferences(
-      failureToleranceCount: map['failureToleranceCount'] == null ? null : (map['failureToleranceCount'] as int).input(),
-      failureTolerancePercentage: map['failureTolerancePercentage'] == null ? null : (map['failureTolerancePercentage'] as int).input(),
-      maxConcurrentCount: map['maxConcurrentCount'] == null ? null : (map['maxConcurrentCount'] as int).input(),
-      maxConcurrentPercentage: map['maxConcurrentPercentage'] == null ? null : (map['maxConcurrentPercentage'] as int).input(),
-      regionConcurrencyType: map['regionConcurrencyType'] == null ? null : (map['regionConcurrencyType'] as String).input(),
-      regionOrders: map['regionOrders'] == null ? null : ((map['regionOrders'] as List).cast<String>()).input(),
+      failureToleranceCount: map['failureToleranceCount'] == null ? null : ((map['failureToleranceCount'] as int).input()).input(),
+      failureTolerancePercentage: map['failureTolerancePercentage'] == null ? null : ((map['failureTolerancePercentage'] as int).input()).input(),
+      maxConcurrentCount: map['maxConcurrentCount'] == null ? null : ((map['maxConcurrentCount'] as int).input()).input(),
+      maxConcurrentPercentage: map['maxConcurrentPercentage'] == null ? null : ((map['maxConcurrentPercentage'] as int).input()).input(),
+      regionConcurrencyType: map['regionConcurrencyType'] == null ? null : ((map['regionConcurrencyType'] as String).input()).input(),
+      regionOrders: map['regionOrders'] == null ? null : (((map['regionOrders'] as List).cast<String>()).input()).input(),
     );
   }
 }

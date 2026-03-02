@@ -49,12 +49,12 @@ class OrganizationsDeidentifyTemplateArgs {
 
   factory OrganizationsDeidentifyTemplateArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationsDeidentifyTemplateArgs(
-      deidentifyConfig: map['deidentifyConfig'] == null ? null : (GooglePrivacyDlpV2DeidentifyConfig.fromMap((map['deidentifyConfig'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      deidentifyConfig: map['deidentifyConfig'] == null ? null : (GooglePrivacyDlpV2DeidentifyConfig.fromMap((map['deidentifyConfig']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
     );
   }
 }

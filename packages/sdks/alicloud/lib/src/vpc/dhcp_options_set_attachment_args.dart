@@ -35,7 +35,7 @@ class DhcpOptionsSetAttachmentArgs {
   factory DhcpOptionsSetAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return DhcpOptionsSetAttachmentArgs(
       dhcpOptionsSetId: (map['dhcpOptionsSetId'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

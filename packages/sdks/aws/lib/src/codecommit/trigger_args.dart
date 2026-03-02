@@ -35,9 +35,9 @@ class TriggerArgs {
 
   factory TriggerArgs.fromMap(Map<String, dynamic> map) {
     return TriggerArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       repositoryName: (map['repositoryName'] as String).input(),
-      triggers: (pulumi.Input.decodeList<TriggerTrigger>(map['triggers'], (value) => TriggerTrigger.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      triggers: (pulumi.Input.decodeList<TriggerTrigger>(map['triggers']!, (value) => TriggerTrigger.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

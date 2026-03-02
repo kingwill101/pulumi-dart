@@ -27,8 +27,8 @@ class CentralizationRuleForOrganizationRule {
 
   factory CentralizationRuleForOrganizationRule.fromMap(Map<String, dynamic> map) {
     return CentralizationRuleForOrganizationRule(
-      destination: (CentralizationRuleForOrganizationRuleDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      source: (CentralizationRuleForOrganizationRuleSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      destination: (CentralizationRuleForOrganizationRuleDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
+      source: (CentralizationRuleForOrganizationRuleSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -46,11 +46,11 @@ class FrameworkShareArgs {
 
   factory FrameworkShareArgs.fromMap(Map<String, dynamic> map) {
     return FrameworkShareArgs(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
       destinationAccount: (map['destinationAccount'] as String).input(),
       destinationRegion: (map['destinationRegion'] as String).input(),
       frameworkId: (map['frameworkId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

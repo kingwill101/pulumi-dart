@@ -27,7 +27,7 @@ class ConnectorMappingAvailability {
 
   factory ConnectorMappingAvailability.fromMap(Map<String, dynamic> map) {
     return ConnectorMappingAvailability(
-      frequency: map['frequency'] == null ? null : (FrequencyTypes.fromValue(map['frequency'] as String)).input(),
+      frequency: map['frequency'] == null ? null : (FrequencyTypes.fromValue(map['frequency']! as String)).input(),
       interval: (map['interval'] as int).input(),
     );
   }

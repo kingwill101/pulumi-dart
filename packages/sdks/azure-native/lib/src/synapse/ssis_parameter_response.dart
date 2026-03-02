@@ -76,18 +76,18 @@ class SsisParameterResponse {
 
   factory SsisParameterResponse.fromMap(Map<String, dynamic> map) {
     return SsisParameterResponse(
-      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      designDefaultValue: map['designDefaultValue'] == null ? null : (map['designDefaultValue'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as double).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      required: map['required'] == null ? null : (map['required'] as bool).input(),
-      sensitive: map['sensitive'] == null ? null : (map['sensitive'] as bool).input(),
-      sensitiveDefaultValue: map['sensitiveDefaultValue'] == null ? null : (map['sensitiveDefaultValue'] as String).input(),
-      valueSet: map['valueSet'] == null ? null : (map['valueSet'] as bool).input(),
-      valueType: map['valueType'] == null ? null : (map['valueType'] as String).input(),
-      variable: map['variable'] == null ? null : (map['variable'] as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      designDefaultValue: map['designDefaultValue'] == null ? null : (map['designDefaultValue']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as double).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      required: map['required'] == null ? null : (map['required']! as bool).input(),
+      sensitive: map['sensitive'] == null ? null : (map['sensitive']! as bool).input(),
+      sensitiveDefaultValue: map['sensitiveDefaultValue'] == null ? null : (map['sensitiveDefaultValue']! as String).input(),
+      valueSet: map['valueSet'] == null ? null : (map['valueSet']! as bool).input(),
+      valueType: map['valueType'] == null ? null : (map['valueType']! as String).input(),
+      variable: map['variable'] == null ? null : (map['variable']! as String).input(),
     );
   }
 }

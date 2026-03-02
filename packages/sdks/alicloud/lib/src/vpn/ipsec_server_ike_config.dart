@@ -55,14 +55,14 @@ class IpsecServerIkeConfig {
 
   factory IpsecServerIkeConfig.fromMap(Map<String, dynamic> map) {
     return IpsecServerIkeConfig(
-      ikeAuthAlg: map['ikeAuthAlg'] == null ? null : (map['ikeAuthAlg'] as String).input(),
-      ikeEncAlg: map['ikeEncAlg'] == null ? null : (map['ikeEncAlg'] as String).input(),
-      ikeLifetime: map['ikeLifetime'] == null ? null : (map['ikeLifetime'] as int).input(),
-      ikeMode: map['ikeMode'] == null ? null : (map['ikeMode'] as String).input(),
-      ikePfs: map['ikePfs'] == null ? null : (map['ikePfs'] as String).input(),
-      ikeVersion: map['ikeVersion'] == null ? null : (map['ikeVersion'] as String).input(),
-      localId: map['localId'] == null ? null : (map['localId'] as String).input(),
-      remoteId: map['remoteId'] == null ? null : (map['remoteId'] as String).input(),
+      ikeAuthAlg: map['ikeAuthAlg'] == null ? null : (map['ikeAuthAlg']! as String).input(),
+      ikeEncAlg: map['ikeEncAlg'] == null ? null : (map['ikeEncAlg']! as String).input(),
+      ikeLifetime: map['ikeLifetime'] == null ? null : (map['ikeLifetime']! as int).input(),
+      ikeMode: map['ikeMode'] == null ? null : (map['ikeMode']! as String).input(),
+      ikePfs: map['ikePfs'] == null ? null : (map['ikePfs']! as String).input(),
+      ikeVersion: map['ikeVersion'] == null ? null : (map['ikeVersion']! as String).input(),
+      localId: map['localId'] == null ? null : (map['localId']! as String).input(),
+      remoteId: map['remoteId'] == null ? null : (map['remoteId']! as String).input(),
     );
   }
 }

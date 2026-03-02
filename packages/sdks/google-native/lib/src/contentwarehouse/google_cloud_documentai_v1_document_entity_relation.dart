@@ -31,9 +31,9 @@ class GoogleCloudDocumentaiV1DocumentEntityRelation {
 
   factory GoogleCloudDocumentaiV1DocumentEntityRelation.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentEntityRelation(
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      relation: map['relation'] == null ? null : (map['relation'] as String).input(),
-      subjectId: map['subjectId'] == null ? null : (map['subjectId'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      relation: map['relation'] == null ? null : (map['relation']! as String).input(),
+      subjectId: map['subjectId'] == null ? null : (map['subjectId']! as String).input(),
     );
   }
 }

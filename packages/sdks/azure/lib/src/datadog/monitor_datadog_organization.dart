@@ -57,12 +57,12 @@ class MonitorDatadogOrganization {
     return MonitorDatadogOrganization(
       apiKey: (map['apiKey'] as String).input(),
       applicationKey: (map['applicationKey'] as String).input(),
-      enterpriseAppId: map['enterpriseAppId'] == null ? null : (map['enterpriseAppId'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      linkingAuthCode: map['linkingAuthCode'] == null ? null : (map['linkingAuthCode'] as String).input(),
-      linkingClientId: map['linkingClientId'] == null ? null : (map['linkingClientId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      redirectUri: map['redirectUri'] == null ? null : (map['redirectUri'] as String).input(),
+      enterpriseAppId: map['enterpriseAppId'] == null ? null : (map['enterpriseAppId']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      linkingAuthCode: map['linkingAuthCode'] == null ? null : (map['linkingAuthCode']! as String).input(),
+      linkingClientId: map['linkingClientId'] == null ? null : (map['linkingClientId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      redirectUri: map['redirectUri'] == null ? null : (map['redirectUri']! as String).input(),
     );
   }
 }

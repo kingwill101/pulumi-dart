@@ -40,11 +40,11 @@ class MaterializedViewDefinition {
 
   factory MaterializedViewDefinition.fromMap(Map<String, dynamic> map) {
     return MaterializedViewDefinition(
-      allowNonIncrementalDefinition: map['allowNonIncrementalDefinition'] == null ? null : (map['allowNonIncrementalDefinition'] as bool).input(),
-      enableRefresh: map['enableRefresh'] == null ? null : (map['enableRefresh'] as bool).input(),
-      maxStaleness: map['maxStaleness'] == null ? null : (map['maxStaleness'] as String).input(),
-      query: map['query'] == null ? null : (map['query'] as String).input(),
-      refreshIntervalMs: map['refreshIntervalMs'] == null ? null : (map['refreshIntervalMs'] as String).input(),
+      allowNonIncrementalDefinition: map['allowNonIncrementalDefinition'] == null ? null : (map['allowNonIncrementalDefinition']! as bool).input(),
+      enableRefresh: map['enableRefresh'] == null ? null : (map['enableRefresh']! as bool).input(),
+      maxStaleness: map['maxStaleness'] == null ? null : (map['maxStaleness']! as String).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
+      refreshIntervalMs: map['refreshIntervalMs'] == null ? null : (map['refreshIntervalMs']! as String).input(),
     );
   }
 }

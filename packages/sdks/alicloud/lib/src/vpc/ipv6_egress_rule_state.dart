@@ -51,13 +51,13 @@ class Ipv6EgressRuleState {
 
   factory Ipv6EgressRuleState.fromMap(Map<String, dynamic> map) {
     return Ipv6EgressRuleState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      ipv6EgressRuleId: map['ipv6EgressRuleId'] == null ? null : (map['ipv6EgressRuleId'] as String).input(),
-      ipv6EgressRuleName: map['ipv6EgressRuleName'] == null ? null : (map['ipv6EgressRuleName'] as String).input(),
-      ipv6GatewayId: map['ipv6GatewayId'] == null ? null : (map['ipv6GatewayId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      ipv6EgressRuleId: map['ipv6EgressRuleId'] == null ? null : (map['ipv6EgressRuleId']! as String).input(),
+      ipv6EgressRuleName: map['ipv6EgressRuleName'] == null ? null : (map['ipv6EgressRuleName']! as String).input(),
+      ipv6GatewayId: map['ipv6GatewayId'] == null ? null : (map['ipv6GatewayId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

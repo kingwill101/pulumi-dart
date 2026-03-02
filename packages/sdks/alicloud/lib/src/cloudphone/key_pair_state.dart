@@ -26,8 +26,8 @@ class KeyPairState {
 
   factory KeyPairState.fromMap(Map<String, dynamic> map) {
     return KeyPairState(
-      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName'] as String).input(),
-      publicKeyBody: map['publicKeyBody'] == null ? null : (map['publicKeyBody'] as String).input(),
+      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName']! as String).input(),
+      publicKeyBody: map['publicKeyBody'] == null ? null : (map['publicKeyBody']! as String).input(),
     );
   }
 }

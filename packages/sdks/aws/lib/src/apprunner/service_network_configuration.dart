@@ -32,9 +32,9 @@ class ServiceNetworkConfiguration {
 
   factory ServiceNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkConfiguration(
-      egressConfiguration: map['egressConfiguration'] == null ? null : (ServiceNetworkConfigurationEgressConfiguration.fromMap((map['egressConfiguration'] as Map).cast<String, dynamic>())).input(),
-      ingressConfiguration: map['ingressConfiguration'] == null ? null : (ServiceNetworkConfigurationIngressConfiguration.fromMap((map['ingressConfiguration'] as Map).cast<String, dynamic>())).input(),
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
+      egressConfiguration: map['egressConfiguration'] == null ? null : ((ServiceNetworkConfigurationEgressConfiguration.fromMap((map['egressConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      ingressConfiguration: map['ingressConfiguration'] == null ? null : ((ServiceNetworkConfigurationIngressConfiguration.fromMap((map['ingressConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : ((map['ipAddressType'] as String).input()).input(),
     );
   }
 }

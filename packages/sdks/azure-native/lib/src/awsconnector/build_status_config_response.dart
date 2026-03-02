@@ -26,8 +26,8 @@ class BuildStatusConfigResponse {
 
   factory BuildStatusConfigResponse.fromMap(Map<String, dynamic> map) {
     return BuildStatusConfigResponse(
-      context: map['context'] == null ? null : (map['context'] as String).input(),
-      targetUrl: map['targetUrl'] == null ? null : (map['targetUrl'] as String).input(),
+      context: map['context'] == null ? null : (map['context']! as String).input(),
+      targetUrl: map['targetUrl'] == null ? null : (map['targetUrl']! as String).input(),
     );
   }
 }

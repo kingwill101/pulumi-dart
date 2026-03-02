@@ -26,8 +26,8 @@ class PipelineStageBeforeEntryCondition {
 
   factory PipelineStageBeforeEntryCondition.fromMap(Map<String, dynamic> map) {
     return PipelineStageBeforeEntryCondition(
-      result: map['result'] == null ? null : (map['result'] as String).input(),
-      rules: (pulumi.Input.decodeList<PipelineStageBeforeEntryConditionRule>(map['rules'], (value) => PipelineStageBeforeEntryConditionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      result: map['result'] == null ? null : ((map['result'] as String).input()).input(),
+      rules: (pulumi.Input.decodeList<PipelineStageBeforeEntryConditionRule>(map['rules']!, (value) => PipelineStageBeforeEntryConditionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

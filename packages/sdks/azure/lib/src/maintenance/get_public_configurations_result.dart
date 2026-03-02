@@ -43,9 +43,9 @@ class GetPublicConfigurationsResult {
     return GetPublicConfigurationsResult(
       configs: pulumi.Input.decodeList<GetPublicConfigurationsConfig>(map['configs'], (value) => GetPublicConfigurationsConfig.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      recurEvery: map['recurEvery'] == null ? null : map['recurEvery'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
+      recurEvery: map['recurEvery'] == null ? null : map['recurEvery']! as String,
+      scope: map['scope'] == null ? null : map['scope']! as String,
     );
   }
 }

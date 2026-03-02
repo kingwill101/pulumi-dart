@@ -36,10 +36,10 @@ class ExpressRouteAuthorizationState {
 
   factory ExpressRouteAuthorizationState.fromMap(Map<String, dynamic> map) {
     return ExpressRouteAuthorizationState(
-      expressRouteAuthorizationId: map['expressRouteAuthorizationId'] == null ? null : (map['expressRouteAuthorizationId'] as String).input(),
-      expressRouteAuthorizationKey: map['expressRouteAuthorizationKey'] == null ? null : (map['expressRouteAuthorizationKey'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateCloudId: map['privateCloudId'] == null ? null : (map['privateCloudId'] as String).input(),
+      expressRouteAuthorizationId: map['expressRouteAuthorizationId'] == null ? null : (map['expressRouteAuthorizationId']! as String).input(),
+      expressRouteAuthorizationKey: map['expressRouteAuthorizationKey'] == null ? null : (map['expressRouteAuthorizationKey']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateCloudId: map['privateCloudId'] == null ? null : (map['privateCloudId']! as String).input(),
     );
   }
 }

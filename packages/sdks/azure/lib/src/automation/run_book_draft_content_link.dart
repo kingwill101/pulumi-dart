@@ -31,9 +31,9 @@ class RunBookDraftContentLink {
 
   factory RunBookDraftContentLink.fromMap(Map<String, dynamic> map) {
     return RunBookDraftContentLink(
-      hash: map['hash'] == null ? null : (RunBookDraftContentLinkHash.fromMap((map['hash'] as Map).cast<String, dynamic>())).input(),
+      hash: map['hash'] == null ? null : (RunBookDraftContentLinkHash.fromMap((map['hash']! as Map).cast<String, dynamic>())).input(),
       uri: (map['uri'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

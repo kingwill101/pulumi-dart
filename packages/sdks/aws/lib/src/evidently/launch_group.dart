@@ -35,7 +35,7 @@ class LaunchGroup {
 
   factory LaunchGroup.fromMap(Map<String, dynamic> map) {
     return LaunchGroup(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       feature: (map['feature'] as String).input(),
       name: (map['name'] as String).input(),
       variation: (map['variation'] as String).input(),

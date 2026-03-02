@@ -71,17 +71,17 @@ class AuthorizerState {
 
   factory AuthorizerState.fromMap(Map<String, dynamic> map) {
     return AuthorizerState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      authorizerFunctionArn: map['authorizerFunctionArn'] == null ? null : (map['authorizerFunctionArn'] as String).input(),
-      enableCachingForHttp: map['enableCachingForHttp'] == null ? null : (map['enableCachingForHttp'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      signingDisabled: map['signingDisabled'] == null ? null : (map['signingDisabled'] as bool).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      tokenKeyName: map['tokenKeyName'] == null ? null : (map['tokenKeyName'] as String).input(),
-      tokenSigningPublicKeys: map['tokenSigningPublicKeys'] == null ? null : ((map['tokenSigningPublicKeys'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      authorizerFunctionArn: map['authorizerFunctionArn'] == null ? null : ((map['authorizerFunctionArn'] as String).input()).input(),
+      enableCachingForHttp: map['enableCachingForHttp'] == null ? null : ((map['enableCachingForHttp'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      signingDisabled: map['signingDisabled'] == null ? null : ((map['signingDisabled'] as bool).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      tokenKeyName: map['tokenKeyName'] == null ? null : ((map['tokenKeyName'] as String).input()).input(),
+      tokenSigningPublicKeys: map['tokenSigningPublicKeys'] == null ? null : (((map['tokenSigningPublicKeys'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

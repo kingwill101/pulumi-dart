@@ -33,9 +33,9 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
 
   factory GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig(
-      emailPasswordEnforcementState: map['emailPasswordEnforcementState'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState.fromValue(map['emailPasswordEnforcementState'] as String)).input(),
-      managedRules: map['managedRules'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule>(map['managedRules'], (value) => GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      useAccountDefender: map['useAccountDefender'] == null ? null : (map['useAccountDefender'] as bool).input(),
+      emailPasswordEnforcementState: map['emailPasswordEnforcementState'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState.fromValue(map['emailPasswordEnforcementState']! as String)).input(),
+      managedRules: map['managedRules'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule>(map['managedRules']!, (value) => GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      useAccountDefender: map['useAccountDefender'] == null ? null : (map['useAccountDefender']! as bool).input(),
     );
   }
 }

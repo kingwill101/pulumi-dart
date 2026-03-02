@@ -36,9 +36,9 @@ class TunnelQuotaTimerState {
 
   factory TunnelQuotaTimerState.fromMap(Map<String, dynamic> map) {
     return TunnelQuotaTimerState(
-      nickname: map['nickname'] == null ? null : (map['nickname'] as String).input(),
-      quotaTimers: map['quotaTimers'] == null ? null : (pulumi.Input.decodeList<TunnelQuotaTimerQuotaTimer>(map['quotaTimers'], (value) => TunnelQuotaTimerQuotaTimer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      nickname: map['nickname'] == null ? null : (map['nickname']! as String).input(),
+      quotaTimers: map['quotaTimers'] == null ? null : (pulumi.Input.decodeList<TunnelQuotaTimerQuotaTimer>(map['quotaTimers']!, (value) => TunnelQuotaTimerQuotaTimer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class DatabaseBackupSetting {
 
   factory DatabaseBackupSetting.fromMap(Map<String, dynamic> map) {
     return DatabaseBackupSetting(
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      connectionStringName: map['connectionStringName'] == null ? null : (map['connectionStringName'] as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      connectionStringName: map['connectionStringName'] == null ? null : (map['connectionStringName']! as String).input(),
       databaseType: (map['databaseType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class Condition {
 
   factory Condition.fromMap(Map<String, dynamic> map) {
     return Condition(
-      field: map['field'] == null ? null : (map['field'] as String).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      field: map['field'] == null ? null : (map['field']! as String).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse
 
   factory EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse.fromMap(Map<String, dynamic> map) {
     return EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

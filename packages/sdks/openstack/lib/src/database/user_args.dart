@@ -49,12 +49,12 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      databases: map['databases'] == null ? null : ((map['databases'] as List).cast<String>()).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
+      databases: map['databases'] == null ? null : ((map['databases']! as List).cast<String>()).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       password: (map['password'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

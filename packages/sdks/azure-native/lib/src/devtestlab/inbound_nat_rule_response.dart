@@ -31,9 +31,9 @@ class InboundNatRuleResponse {
 
   factory InboundNatRuleResponse.fromMap(Map<String, dynamic> map) {
     return InboundNatRuleResponse(
-      backendPort: map['backendPort'] == null ? null : (map['backendPort'] as int).input(),
-      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort'] as int).input(),
-      transportProtocol: map['transportProtocol'] == null ? null : (map['transportProtocol'] as String).input(),
+      backendPort: map['backendPort'] == null ? null : (map['backendPort']! as int).input(),
+      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort']! as int).input(),
+      transportProtocol: map['transportProtocol'] == null ? null : (map['transportProtocol']! as String).input(),
     );
   }
 }

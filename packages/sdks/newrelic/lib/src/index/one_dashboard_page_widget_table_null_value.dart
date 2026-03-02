@@ -26,8 +26,8 @@ class OneDashboardPageWidgetTableNullValue {
 
   factory OneDashboardPageWidgetTableNullValue.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetTableNullValue(
-      nullValue: map['nullValue'] == null ? null : (map['nullValue'] as String).input(),
-      seriesOverrides: map['seriesOverrides'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetTableNullValueSeriesOverride>(map['seriesOverrides'], (value) => OneDashboardPageWidgetTableNullValueSeriesOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nullValue: map['nullValue'] == null ? null : (map['nullValue']! as String).input(),
+      seriesOverrides: map['seriesOverrides'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetTableNullValueSeriesOverride>(map['seriesOverrides']!, (value) => OneDashboardPageWidgetTableNullValueSeriesOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

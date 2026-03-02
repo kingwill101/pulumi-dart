@@ -44,11 +44,11 @@ class GoogleCloudDialogflowCxV3beta1ExperimentResultMetric {
 
   factory GoogleCloudDialogflowCxV3beta1ExperimentResultMetric.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1ExperimentResultMetric(
-      confidenceInterval: map['confidenceInterval'] == null ? null : (GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval.fromMap((map['confidenceInterval'] as Map).cast<String, dynamic>())).input(),
-      count: map['count'] == null ? null : (map['count'] as double).input(),
-      countType: map['countType'] == null ? null : (GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountType.fromValue(map['countType'] as String)).input(),
-      ratio: map['ratio'] == null ? null : (map['ratio'] as double).input(),
-      type: map['type'] == null ? null : (GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType.fromValue(map['type'] as String)).input(),
+      confidenceInterval: map['confidenceInterval'] == null ? null : (GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval.fromMap((map['confidenceInterval']! as Map).cast<String, dynamic>())).input(),
+      count: map['count'] == null ? null : (map['count']! as double).input(),
+      countType: map['countType'] == null ? null : (GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountType.fromValue(map['countType']! as String)).input(),
+      ratio: map['ratio'] == null ? null : (map['ratio']! as double).input(),
+      type: map['type'] == null ? null : (GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType.fromValue(map['type']! as String)).input(),
     );
   }
 }

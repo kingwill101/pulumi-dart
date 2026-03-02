@@ -103,21 +103,21 @@ class AcceleratorArgs {
 
   factory AcceleratorArgs.fromMap(Map<String, dynamic> map) {
     return AcceleratorArgs(
-      acceleratorName: map['acceleratorName'] == null ? null : (map['acceleratorName'] as String).input(),
-      autoRenewDuration: map['autoRenewDuration'] == null ? null : (map['autoRenewDuration'] as int).input(),
-      autoUseCoupon: map['autoUseCoupon'] == null ? null : (map['autoUseCoupon'] as bool).input(),
-      bandwidthBillingType: map['bandwidthBillingType'] == null ? null : (map['bandwidthBillingType'] as String).input(),
-      crossBorderMode: map['crossBorderMode'] == null ? null : (map['crossBorderMode'] as String).input(),
-      crossBorderStatus: map['crossBorderStatus'] == null ? null : (map['crossBorderStatus'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as int).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      pricingCycle: map['pricingCycle'] == null ? null : (map['pricingCycle'] as String).input(),
-      promotionOptionNo: map['promotionOptionNo'] == null ? null : (map['promotionOptionNo'] as String).input(),
-      renewalStatus: map['renewalStatus'] == null ? null : (map['renewalStatus'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      spec: map['spec'] == null ? null : (map['spec'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      acceleratorName: map['acceleratorName'] == null ? null : (map['acceleratorName']! as String).input(),
+      autoRenewDuration: map['autoRenewDuration'] == null ? null : (map['autoRenewDuration']! as int).input(),
+      autoUseCoupon: map['autoUseCoupon'] == null ? null : (map['autoUseCoupon']! as bool).input(),
+      bandwidthBillingType: map['bandwidthBillingType'] == null ? null : (map['bandwidthBillingType']! as String).input(),
+      crossBorderMode: map['crossBorderMode'] == null ? null : (map['crossBorderMode']! as String).input(),
+      crossBorderStatus: map['crossBorderStatus'] == null ? null : (map['crossBorderStatus']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as int).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      pricingCycle: map['pricingCycle'] == null ? null : (map['pricingCycle']! as String).input(),
+      promotionOptionNo: map['promotionOptionNo'] == null ? null : (map['promotionOptionNo']! as String).input(),
+      renewalStatus: map['renewalStatus'] == null ? null : (map['renewalStatus']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      spec: map['spec'] == null ? null : (map['spec']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

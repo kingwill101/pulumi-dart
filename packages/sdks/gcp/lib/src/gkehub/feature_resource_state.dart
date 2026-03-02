@@ -28,8 +28,8 @@ class FeatureResourceState {
 
   factory FeatureResourceState.fromMap(Map<String, dynamic> map) {
     return FeatureResourceState(
-      hasResources: map['hasResources'] == null ? null : (map['hasResources'] as bool).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      hasResources: map['hasResources'] == null ? null : (map['hasResources']! as bool).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

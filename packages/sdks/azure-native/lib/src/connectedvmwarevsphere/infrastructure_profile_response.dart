@@ -67,15 +67,15 @@ class InfrastructureProfileResponse {
   factory InfrastructureProfileResponse.fromMap(Map<String, dynamic> map) {
     return InfrastructureProfileResponse(
       customResourceName: (map['customResourceName'] as String).input(),
-      firmwareType: map['firmwareType'] == null ? null : (map['firmwareType'] as String).input(),
+      firmwareType: map['firmwareType'] == null ? null : (map['firmwareType']! as String).input(),
       folderPath: (map['folderPath'] as String).input(),
       instanceUuid: (map['instanceUuid'] as String).input(),
-      inventoryItemId: map['inventoryItemId'] == null ? null : (map['inventoryItemId'] as String).input(),
+      inventoryItemId: map['inventoryItemId'] == null ? null : (map['inventoryItemId']! as String).input(),
       moName: (map['moName'] as String).input(),
       moRefId: (map['moRefId'] as String).input(),
-      smbiosUuid: map['smbiosUuid'] == null ? null : (map['smbiosUuid'] as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
-      vCenterId: map['vCenterId'] == null ? null : (map['vCenterId'] as String).input(),
+      smbiosUuid: map['smbiosUuid'] == null ? null : (map['smbiosUuid']! as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
+      vCenterId: map['vCenterId'] == null ? null : (map['vCenterId']! as String).input(),
     );
   }
 }

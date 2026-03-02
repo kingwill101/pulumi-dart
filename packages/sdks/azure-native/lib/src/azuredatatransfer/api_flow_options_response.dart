@@ -51,13 +51,13 @@ class ApiFlowOptionsResponse {
 
   factory ApiFlowOptionsResponse.fromMap(Map<String, dynamic> map) {
     return ApiFlowOptionsResponse(
-      apiMode: map['apiMode'] == null ? null : (map['apiMode'] as String).input(),
-      audienceOverride: map['audienceOverride'] == null ? null : (map['audienceOverride'] as String).input(),
-      cname: map['cname'] == null ? null : (map['cname'] as String).input(),
-      identityTranslation: map['identityTranslation'] == null ? null : (map['identityTranslation'] as String).input(),
-      remoteCallingModeClientId: map['remoteCallingModeClientId'] == null ? null : (map['remoteCallingModeClientId'] as String).input(),
-      remoteEndpoint: map['remoteEndpoint'] == null ? null : (map['remoteEndpoint'] as String).input(),
-      senderClientId: map['senderClientId'] == null ? null : (map['senderClientId'] as String).input(),
+      apiMode: map['apiMode'] == null ? null : (map['apiMode']! as String).input(),
+      audienceOverride: map['audienceOverride'] == null ? null : (map['audienceOverride']! as String).input(),
+      cname: map['cname'] == null ? null : (map['cname']! as String).input(),
+      identityTranslation: map['identityTranslation'] == null ? null : (map['identityTranslation']! as String).input(),
+      remoteCallingModeClientId: map['remoteCallingModeClientId'] == null ? null : (map['remoteCallingModeClientId']! as String).input(),
+      remoteEndpoint: map['remoteEndpoint'] == null ? null : (map['remoteEndpoint']! as String).input(),
+      senderClientId: map['senderClientId'] == null ? null : (map['senderClientId']! as String).input(),
     );
   }
 }

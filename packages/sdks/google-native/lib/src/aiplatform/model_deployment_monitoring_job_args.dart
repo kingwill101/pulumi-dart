@@ -103,22 +103,22 @@ class ModelDeploymentMonitoringJobArgs {
 
   factory ModelDeploymentMonitoringJobArgs.fromMap(Map<String, dynamic> map) {
     return ModelDeploymentMonitoringJobArgs(
-      analysisInstanceSchemaUri: map['analysisInstanceSchemaUri'] == null ? null : (map['analysisInstanceSchemaUri'] as String).input(),
+      analysisInstanceSchemaUri: map['analysisInstanceSchemaUri'] == null ? null : (map['analysisInstanceSchemaUri']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      enableMonitoringPipelineLogs: map['enableMonitoringPipelineLogs'] == null ? null : (map['enableMonitoringPipelineLogs'] as bool).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      enableMonitoringPipelineLogs: map['enableMonitoringPipelineLogs'] == null ? null : (map['enableMonitoringPipelineLogs']! as bool).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
       endpoint: (map['endpoint'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      logTtl: map['logTtl'] == null ? null : (map['logTtl'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      logTtl: map['logTtl'] == null ? null : (map['logTtl']! as String).input(),
       loggingSamplingStrategy: (GoogleCloudAiplatformV1SamplingStrategy.fromMap((map['loggingSamplingStrategy'] as Map).cast<String, dynamic>())).input(),
       modelDeploymentMonitoringObjectiveConfigs: (pulumi.Input.decodeList<GoogleCloudAiplatformV1ModelDeploymentMonitoringObjectiveConfig>(map['modelDeploymentMonitoringObjectiveConfigs'], (value) => GoogleCloudAiplatformV1ModelDeploymentMonitoringObjectiveConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       modelDeploymentMonitoringScheduleConfig: (GoogleCloudAiplatformV1ModelDeploymentMonitoringScheduleConfig.fromMap((map['modelDeploymentMonitoringScheduleConfig'] as Map).cast<String, dynamic>())).input(),
-      modelMonitoringAlertConfig: map['modelMonitoringAlertConfig'] == null ? null : (GoogleCloudAiplatformV1ModelMonitoringAlertConfig.fromMap((map['modelMonitoringAlertConfig'] as Map).cast<String, dynamic>())).input(),
-      predictInstanceSchemaUri: map['predictInstanceSchemaUri'] == null ? null : (map['predictInstanceSchemaUri'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      samplePredictInstance: map['samplePredictInstance'] == null ? null : (map['samplePredictInstance']).input(),
-      statsAnomaliesBaseDirectory: map['statsAnomaliesBaseDirectory'] == null ? null : (GoogleCloudAiplatformV1GcsDestination.fromMap((map['statsAnomaliesBaseDirectory'] as Map).cast<String, dynamic>())).input(),
+      modelMonitoringAlertConfig: map['modelMonitoringAlertConfig'] == null ? null : (GoogleCloudAiplatformV1ModelMonitoringAlertConfig.fromMap((map['modelMonitoringAlertConfig']! as Map).cast<String, dynamic>())).input(),
+      predictInstanceSchemaUri: map['predictInstanceSchemaUri'] == null ? null : (map['predictInstanceSchemaUri']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      samplePredictInstance: map['samplePredictInstance'] == null ? null : (map['samplePredictInstance']!).input(),
+      statsAnomaliesBaseDirectory: map['statsAnomaliesBaseDirectory'] == null ? null : (GoogleCloudAiplatformV1GcsDestination.fromMap((map['statsAnomaliesBaseDirectory']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

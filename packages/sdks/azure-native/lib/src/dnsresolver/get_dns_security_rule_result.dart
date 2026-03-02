@@ -87,7 +87,7 @@ class GetDnsSecurityRuleResult {
       action: DnsSecurityRuleActionResponse.fromMap((map['action'] as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
       dnsResolverDomainLists: pulumi.Input.decodeList<SubResourceResponse>(map['dnsResolverDomainLists'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      dnsSecurityRuleState: map['dnsSecurityRuleState'] == null ? null : map['dnsSecurityRuleState'] as String,
+      dnsSecurityRuleState: map['dnsSecurityRuleState'] == null ? null : map['dnsSecurityRuleState']! as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
@@ -95,7 +95,7 @@ class GetDnsSecurityRuleResult {
       priority: map['priority'] as int,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

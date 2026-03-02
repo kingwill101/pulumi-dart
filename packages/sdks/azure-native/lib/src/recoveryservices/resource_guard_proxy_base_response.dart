@@ -32,9 +32,9 @@ class ResourceGuardProxyBaseResponse {
 
   factory ResourceGuardProxyBaseResponse.fromMap(Map<String, dynamic> map) {
     return ResourceGuardProxyBaseResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : (map['lastUpdatedTime'] as String).input(),
-      resourceGuardOperationDetails: map['resourceGuardOperationDetails'] == null ? null : (pulumi.Input.decodeList<ResourceGuardOperationDetailResponse>(map['resourceGuardOperationDetails'], (value) => ResourceGuardOperationDetailResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : (map['lastUpdatedTime']! as String).input(),
+      resourceGuardOperationDetails: map['resourceGuardOperationDetails'] == null ? null : (pulumi.Input.decodeList<ResourceGuardOperationDetailResponse>(map['resourceGuardOperationDetails']!, (value) => ResourceGuardOperationDetailResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGuardResourceId: (map['resourceGuardResourceId'] as String).input(),
     );
   }

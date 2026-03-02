@@ -26,8 +26,8 @@ class DomainDevicesControllerUsb {
 
   factory DomainDevicesControllerUsb.fromMap(Map<String, dynamic> map) {
     return DomainDevicesControllerUsb(
-      master: map['master'] == null ? null : (DomainDevicesControllerUsbMaster.fromMap((map['master'] as Map).cast<String, dynamic>())).input(),
-      port: map['port'] == null ? null : (map['port'] as double).input(),
+      master: map['master'] == null ? null : (DomainDevicesControllerUsbMaster.fromMap((map['master']! as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port']! as double).input(),
     );
   }
 }

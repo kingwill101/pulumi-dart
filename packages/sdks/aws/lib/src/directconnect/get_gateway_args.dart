@@ -30,7 +30,7 @@ class GetGatewayArgs {
   factory GetGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewayArgs(
       name: (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class SecretArgs {
 
   factory SecretArgs.fromMap(Map<String, dynamic> map) {
     return SecretArgs(
-      childResourceName: map['childResourceName'] == null ? null : (map['childResourceName'] as String).input(),
+      childResourceName: map['childResourceName'] == null ? null : (map['childResourceName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
-      secretResources: map['secretResources'] == null ? null : (map['secretResources'] as String).input(),
+      secretResources: map['secretResources'] == null ? null : (map['secretResources']! as String).input(),
     );
   }
 }

@@ -53,15 +53,15 @@ class FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule {
 
   factory FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationAddresses: map['destinationAddresses'] == null ? null : ((map['destinationAddresses'] as List).cast<String>()).input(),
-      destinationFqdns: map['destinationFqdns'] == null ? null : ((map['destinationFqdns'] as List).cast<String>()).input(),
-      destinationIpGroups: map['destinationIpGroups'] == null ? null : ((map['destinationIpGroups'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationAddresses: map['destinationAddresses'] == null ? null : ((map['destinationAddresses']! as List).cast<String>()).input(),
+      destinationFqdns: map['destinationFqdns'] == null ? null : ((map['destinationFqdns']! as List).cast<String>()).input(),
+      destinationIpGroups: map['destinationIpGroups'] == null ? null : ((map['destinationIpGroups']! as List).cast<String>()).input(),
       destinationPorts: ((map['destinationPorts'] as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
       protocols: ((map['protocols'] as List).cast<String>()).input(),
-      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses'] as List).cast<String>()).input(),
-      sourceIpGroups: map['sourceIpGroups'] == null ? null : ((map['sourceIpGroups'] as List).cast<String>()).input(),
+      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses']! as List).cast<String>()).input(),
+      sourceIpGroups: map['sourceIpGroups'] == null ? null : ((map['sourceIpGroups']! as List).cast<String>()).input(),
     );
   }
 }

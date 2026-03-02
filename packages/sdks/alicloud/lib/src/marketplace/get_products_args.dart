@@ -69,16 +69,16 @@ class GetProductsArgs {
 
   factory GetProductsArgs.fromMap(Map<String, dynamic> map) {
     return GetProductsArgs(
-      categoryId: map['categoryId'] == null ? null : (map['categoryId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      productType: map['productType'] == null ? null : (map['productType'] as String).input(),
-      searchTerm: map['searchTerm'] == null ? null : (map['searchTerm'] as String).input(),
-      sort: map['sort'] == null ? null : (map['sort'] as String).input(),
-      suggestedPrice: map['suggestedPrice'] == null ? null : (map['suggestedPrice'] as double).input(),
-      supplierId: map['supplierId'] == null ? null : (map['supplierId'] as String).input(),
-      supplierNameKeyword: map['supplierNameKeyword'] == null ? null : (map['supplierNameKeyword'] as String).input(),
+      categoryId: map['categoryId'] == null ? null : (map['categoryId']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      productType: map['productType'] == null ? null : (map['productType']! as String).input(),
+      searchTerm: map['searchTerm'] == null ? null : (map['searchTerm']! as String).input(),
+      sort: map['sort'] == null ? null : (map['sort']! as String).input(),
+      suggestedPrice: map['suggestedPrice'] == null ? null : (map['suggestedPrice']! as double).input(),
+      supplierId: map['supplierId'] == null ? null : (map['supplierId']! as String).input(),
+      supplierNameKeyword: map['supplierNameKeyword'] == null ? null : (map['supplierNameKeyword']! as String).input(),
     );
   }
 }

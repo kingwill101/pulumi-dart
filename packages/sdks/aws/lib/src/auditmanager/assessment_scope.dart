@@ -27,8 +27,8 @@ class AssessmentScope {
 
   factory AssessmentScope.fromMap(Map<String, dynamic> map) {
     return AssessmentScope(
-      awsAccounts: map['awsAccounts'] == null ? null : (pulumi.Input.decodeList<AssessmentScopeAwsAccount>(map['awsAccounts'], (value) => AssessmentScopeAwsAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      awsServices: map['awsServices'] == null ? null : (pulumi.Input.decodeList<AssessmentScopeAwsService>(map['awsServices'], (value) => AssessmentScopeAwsService.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      awsAccounts: map['awsAccounts'] == null ? null : ((pulumi.Input.decodeList<AssessmentScopeAwsAccount>(map['awsAccounts']!, (value) => AssessmentScopeAwsAccount.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      awsServices: map['awsServices'] == null ? null : ((pulumi.Input.decodeList<AssessmentScopeAwsService>(map['awsServices']!, (value) => AssessmentScopeAwsService.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

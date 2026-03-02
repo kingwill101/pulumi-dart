@@ -31,9 +31,9 @@ class ProviderExtendedLocationResponse {
 
   factory ProviderExtendedLocationResponse.fromMap(Map<String, dynamic> map) {
     return ProviderExtendedLocationResponse(
-      extendedLocations: map['extendedLocations'] == null ? null : ((map['extendedLocations'] as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      extendedLocations: map['extendedLocations'] == null ? null : ((map['extendedLocations']! as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

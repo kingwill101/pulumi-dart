@@ -59,12 +59,12 @@ class EventSourceState {
 
   factory EventSourceState.fromMap(Map<String, dynamic> map) {
     return EventSourceState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      eventBusName: map['eventBusName'] == null ? null : (map['eventBusName'] as String).input(),
-      eventSourceName: map['eventSourceName'] == null ? null : (map['eventSourceName'] as String).input(),
-      externalSourceConfig: map['externalSourceConfig'] == null ? null : ((map['externalSourceConfig'] as Map).cast<String, String>()).input(),
-      externalSourceType: map['externalSourceType'] == null ? null : (map['externalSourceType'] as String).input(),
-      linkedExternalSource: map['linkedExternalSource'] == null ? null : (map['linkedExternalSource'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      eventBusName: map['eventBusName'] == null ? null : (map['eventBusName']! as String).input(),
+      eventSourceName: map['eventSourceName'] == null ? null : (map['eventSourceName']! as String).input(),
+      externalSourceConfig: map['externalSourceConfig'] == null ? null : ((map['externalSourceConfig']! as Map).cast<String, String>()).input(),
+      externalSourceType: map['externalSourceType'] == null ? null : (map['externalSourceType']! as String).input(),
+      linkedExternalSource: map['linkedExternalSource'] == null ? null : (map['linkedExternalSource']! as bool).input(),
     );
   }
 }

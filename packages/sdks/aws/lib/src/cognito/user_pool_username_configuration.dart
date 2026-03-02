@@ -20,7 +20,7 @@ class UserPoolUsernameConfiguration {
 
   factory UserPoolUsernameConfiguration.fromMap(Map<String, dynamic> map) {
     return UserPoolUsernameConfiguration(
-      caseSensitive: map['caseSensitive'] == null ? null : (map['caseSensitive'] as bool).input(),
+      caseSensitive: map['caseSensitive'] == null ? null : ((map['caseSensitive'] as bool).input()).input(),
     );
   }
 }

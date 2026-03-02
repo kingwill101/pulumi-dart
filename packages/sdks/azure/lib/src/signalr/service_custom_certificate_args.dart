@@ -39,7 +39,7 @@ class ServiceCustomCertificateArgs {
   factory ServiceCustomCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ServiceCustomCertificateArgs(
       customCertificateId: (map['customCertificateId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       signalrServiceId: (map['signalrServiceId'] as String).input(),
     );
   }

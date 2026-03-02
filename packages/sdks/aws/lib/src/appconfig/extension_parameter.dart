@@ -30,9 +30,9 @@ class ExtensionParameter {
 
   factory ExtensionParameter.fromMap(Map<String, dynamic> map) {
     return ExtensionParameter(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       name: (map['name'] as String).input(),
-      required: map['required'] == null ? null : (map['required'] as bool).input(),
+      required: map['required'] == null ? null : ((map['required'] as bool).input()).input(),
     );
   }
 }

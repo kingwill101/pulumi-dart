@@ -37,10 +37,10 @@ class GooglePrivacyDlpV2CharacterMaskConfig {
 
   factory GooglePrivacyDlpV2CharacterMaskConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CharacterMaskConfig(
-      charactersToIgnore: map['charactersToIgnore'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2CharsToIgnore>(map['charactersToIgnore'], (value) => GooglePrivacyDlpV2CharsToIgnore.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maskingCharacter: map['maskingCharacter'] == null ? null : (map['maskingCharacter'] as String).input(),
-      numberToMask: map['numberToMask'] == null ? null : (map['numberToMask'] as int).input(),
-      reverseOrder: map['reverseOrder'] == null ? null : (map['reverseOrder'] as bool).input(),
+      charactersToIgnore: map['charactersToIgnore'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2CharsToIgnore>(map['charactersToIgnore']!, (value) => GooglePrivacyDlpV2CharsToIgnore.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maskingCharacter: map['maskingCharacter'] == null ? null : (map['maskingCharacter']! as String).input(),
+      numberToMask: map['numberToMask'] == null ? null : (map['numberToMask']! as int).input(),
+      reverseOrder: map['reverseOrder'] == null ? null : (map['reverseOrder']! as bool).input(),
     );
   }
 }

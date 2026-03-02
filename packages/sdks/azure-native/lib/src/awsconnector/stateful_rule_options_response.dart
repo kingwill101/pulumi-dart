@@ -21,7 +21,7 @@ class StatefulRuleOptionsResponse {
 
   factory StatefulRuleOptionsResponse.fromMap(Map<String, dynamic> map) {
     return StatefulRuleOptionsResponse(
-      ruleOrder: map['ruleOrder'] == null ? null : (map['ruleOrder'] as String).input(),
+      ruleOrder: map['ruleOrder'] == null ? null : (map['ruleOrder']! as String).input(),
     );
   }
 }

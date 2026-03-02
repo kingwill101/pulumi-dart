@@ -25,8 +25,8 @@ class ListUpgradableVersionDetailsResult {
 
   factory ListUpgradableVersionDetailsResult.fromMap(Map<String, dynamic> map) {
     return ListUpgradableVersionDetailsResult(
-      currentVersion: map['currentVersion'] == null ? null : map['currentVersion'] as String,
-      upgradableVersions: map['upgradableVersions'] == null ? null : (map['upgradableVersions'] as List).cast<String>(),
+      currentVersion: map['currentVersion'] == null ? null : map['currentVersion']! as String,
+      upgradableVersions: map['upgradableVersions'] == null ? null : (map['upgradableVersions']! as List).cast<String>(),
     );
   }
 }

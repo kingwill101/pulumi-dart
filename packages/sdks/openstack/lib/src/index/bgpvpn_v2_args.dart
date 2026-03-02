@@ -82,16 +82,16 @@ class BgpvpnV2Args {
 
   factory BgpvpnV2Args.fromMap(Map<String, dynamic> map) {
     return BgpvpnV2Args(
-      exportTargets: map['exportTargets'] == null ? null : ((map['exportTargets'] as List).cast<String>()).input(),
-      importTargets: map['importTargets'] == null ? null : ((map['importTargets'] as List).cast<String>()).input(),
-      localPref: map['localPref'] == null ? null : (map['localPref'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routeDistinguishers: map['routeDistinguishers'] == null ? null : ((map['routeDistinguishers'] as List).cast<String>()).input(),
-      routeTargets: map['routeTargets'] == null ? null : ((map['routeTargets'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      vni: map['vni'] == null ? null : (map['vni'] as int).input(),
+      exportTargets: map['exportTargets'] == null ? null : ((map['exportTargets']! as List).cast<String>()).input(),
+      importTargets: map['importTargets'] == null ? null : ((map['importTargets']! as List).cast<String>()).input(),
+      localPref: map['localPref'] == null ? null : (map['localPref']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      routeDistinguishers: map['routeDistinguishers'] == null ? null : ((map['routeDistinguishers']! as List).cast<String>()).input(),
+      routeTargets: map['routeTargets'] == null ? null : ((map['routeTargets']! as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      vni: map['vni'] == null ? null : (map['vni']! as int).input(),
     );
   }
 }

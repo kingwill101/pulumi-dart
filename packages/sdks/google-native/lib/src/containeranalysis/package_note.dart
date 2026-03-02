@@ -76,17 +76,17 @@ class PackageNote {
 
   factory PackageNote.fromMap(Map<String, dynamic> map) {
     return PackageNote(
-      architecture: map['architecture'] == null ? null : (PackageNoteArchitecture.fromValue(map['architecture'] as String)).input(),
-      cpeUri: map['cpeUri'] == null ? null : (map['cpeUri'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      digest: map['digest'] == null ? null : (pulumi.Input.decodeList<Digest>(map['digest'], (value) => Digest.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      distribution: map['distribution'] == null ? null : (pulumi.Input.decodeList<Distribution>(map['distribution'], (value) => Distribution.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      license: map['license'] == null ? null : (License.fromMap((map['license'] as Map).cast<String, dynamic>())).input(),
-      maintainer: map['maintainer'] == null ? null : (map['maintainer'] as String).input(),
+      architecture: map['architecture'] == null ? null : (PackageNoteArchitecture.fromValue(map['architecture']! as String)).input(),
+      cpeUri: map['cpeUri'] == null ? null : (map['cpeUri']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      digest: map['digest'] == null ? null : (pulumi.Input.decodeList<Digest>(map['digest']!, (value) => Digest.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      distribution: map['distribution'] == null ? null : (pulumi.Input.decodeList<Distribution>(map['distribution']!, (value) => Distribution.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      license: map['license'] == null ? null : (License.fromMap((map['license']! as Map).cast<String, dynamic>())).input(),
+      maintainer: map['maintainer'] == null ? null : (map['maintainer']! as String).input(),
       name: (map['name'] as String).input(),
-      packageType: map['packageType'] == null ? null : (map['packageType'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
-      version: map['version'] == null ? null : (Version.fromMap((map['version'] as Map).cast<String, dynamic>())).input(),
+      packageType: map['packageType'] == null ? null : (map['packageType']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
+      version: map['version'] == null ? null : (Version.fromMap((map['version']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

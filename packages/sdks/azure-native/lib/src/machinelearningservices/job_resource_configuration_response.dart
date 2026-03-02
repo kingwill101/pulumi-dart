@@ -40,11 +40,11 @@ class JobResourceConfigurationResponse {
 
   factory JobResourceConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return JobResourceConfigurationResponse(
-      dockerArgs: map['dockerArgs'] == null ? null : (map['dockerArgs'] as String).input(),
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, dynamic>()).input(),
-      shmSize: map['shmSize'] == null ? null : (map['shmSize'] as String).input(),
+      dockerArgs: map['dockerArgs'] == null ? null : (map['dockerArgs']! as String).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, dynamic>()).input(),
+      shmSize: map['shmSize'] == null ? null : (map['shmSize']! as String).input(),
     );
   }
 }

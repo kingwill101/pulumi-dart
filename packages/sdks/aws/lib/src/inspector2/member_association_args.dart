@@ -30,7 +30,7 @@ class MemberAssociationArgs {
   factory MemberAssociationArgs.fromMap(Map<String, dynamic> map) {
     return MemberAssociationArgs(
       accountId: (map['accountId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

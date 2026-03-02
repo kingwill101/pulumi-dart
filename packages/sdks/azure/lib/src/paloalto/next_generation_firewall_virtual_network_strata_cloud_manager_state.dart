@@ -75,17 +75,17 @@ class NextGenerationFirewallVirtualNetworkStrataCloudManagerState {
 
   factory NextGenerationFirewallVirtualNetworkStrataCloudManagerState.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualNetworkStrataCloudManagerState(
-      destinationNats: map['destinationNats'] == null ? null : (pulumi.Input.decodeList<NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNat>(map['destinationNats'], (value) => NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNat.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dnsSettings: map['dnsSettings'] == null ? null : (NextGenerationFirewallVirtualNetworkStrataCloudManagerDnsSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (NextGenerationFirewallVirtualNetworkStrataCloudManagerIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      marketplaceOfferId: map['marketplaceOfferId'] == null ? null : (map['marketplaceOfferId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkProfile: map['networkProfile'] == null ? null : (NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
-      planId: map['planId'] == null ? null : (map['planId'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      strataCloudManagerTenantName: map['strataCloudManagerTenantName'] == null ? null : (map['strataCloudManagerTenantName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      destinationNats: map['destinationNats'] == null ? null : (pulumi.Input.decodeList<NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNat>(map['destinationNats']!, (value) => NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNat.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsSettings: map['dnsSettings'] == null ? null : (NextGenerationFirewallVirtualNetworkStrataCloudManagerDnsSettings.fromMap((map['dnsSettings']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (NextGenerationFirewallVirtualNetworkStrataCloudManagerIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      marketplaceOfferId: map['marketplaceOfferId'] == null ? null : (map['marketplaceOfferId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkProfile: map['networkProfile'] == null ? null : (NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())).input(),
+      planId: map['planId'] == null ? null : (map['planId']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      strataCloudManagerTenantName: map['strataCloudManagerTenantName'] == null ? null : (map['strataCloudManagerTenantName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

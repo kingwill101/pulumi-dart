@@ -21,7 +21,7 @@ class PolicyBindingGkehubV1alpha {
 
   factory PolicyBindingGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return PolicyBindingGkehubV1alpha(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

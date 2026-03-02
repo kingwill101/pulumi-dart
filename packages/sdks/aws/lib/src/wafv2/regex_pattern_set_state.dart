@@ -66,16 +66,16 @@ class RegexPatternSetState {
 
   factory RegexPatternSetState.fromMap(Map<String, dynamic> map) {
     return RegexPatternSetState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      lockToken: map['lockToken'] == null ? null : (map['lockToken'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      regularExpressions: map['regularExpressions'] == null ? null : (pulumi.Input.decodeList<RegexPatternSetRegularExpression>(map['regularExpressions'], (value) => RegexPatternSetRegularExpression.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      lockToken: map['lockToken'] == null ? null : ((map['lockToken'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      regularExpressions: map['regularExpressions'] == null ? null : ((pulumi.Input.decodeList<RegexPatternSetRegularExpression>(map['regularExpressions']!, (value) => RegexPatternSetRegularExpression.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      scope: map['scope'] == null ? null : ((map['scope'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

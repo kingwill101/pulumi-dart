@@ -32,8 +32,8 @@ class SecretStoreResource {
   factory SecretStoreResource.fromMap(Map<String, dynamic> map) {
     return SecretStoreResource(
       secretStoreType: (map['secretStoreType'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

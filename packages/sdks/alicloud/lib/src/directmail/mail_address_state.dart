@@ -41,11 +41,11 @@ class MailAddressState {
 
   factory MailAddressState.fromMap(Map<String, dynamic> map) {
     return MailAddressState(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      replyAddress: map['replyAddress'] == null ? null : (map['replyAddress'] as String).input(),
-      sendtype: map['sendtype'] == null ? null : (map['sendtype'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      replyAddress: map['replyAddress'] == null ? null : (map['replyAddress']! as String).input(),
+      sendtype: map['sendtype'] == null ? null : (map['sendtype']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

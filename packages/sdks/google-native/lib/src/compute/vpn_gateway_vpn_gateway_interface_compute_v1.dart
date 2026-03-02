@@ -21,7 +21,7 @@ class VpnGatewayVpnGatewayInterfaceComputeV1 {
 
   factory VpnGatewayVpnGatewayInterfaceComputeV1.fromMap(Map<String, dynamic> map) {
     return VpnGatewayVpnGatewayInterfaceComputeV1(
-      interconnectAttachment: map['interconnectAttachment'] == null ? null : (map['interconnectAttachment'] as String).input(),
+      interconnectAttachment: map['interconnectAttachment'] == null ? null : (map['interconnectAttachment']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class LineRegistration {
 
   factory LineRegistration.fromMap(Map<String, dynamic> map) {
     return LineRegistration(
-      channelAccessToken: map['channelAccessToken'] == null ? null : (map['channelAccessToken'] as String).input(),
-      channelSecret: map['channelSecret'] == null ? null : (map['channelSecret'] as String).input(),
+      channelAccessToken: map['channelAccessToken'] == null ? null : (map['channelAccessToken']! as String).input(),
+      channelSecret: map['channelSecret'] == null ? null : (map['channelSecret']! as String).input(),
     );
   }
 }

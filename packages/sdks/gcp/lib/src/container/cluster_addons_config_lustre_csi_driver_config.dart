@@ -26,7 +26,7 @@ class ClusterAddonsConfigLustreCsiDriverConfig {
 
   factory ClusterAddonsConfigLustreCsiDriverConfig.fromMap(Map<String, dynamic> map) {
     return ClusterAddonsConfigLustreCsiDriverConfig(
-      enableLegacyLustrePort: map['enableLegacyLustrePort'] == null ? null : (map['enableLegacyLustrePort'] as bool).input(),
+      enableLegacyLustrePort: map['enableLegacyLustrePort'] == null ? null : (map['enableLegacyLustrePort']! as bool).input(),
       enabled: (map['enabled'] as bool).input(),
     );
   }

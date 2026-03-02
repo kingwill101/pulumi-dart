@@ -47,7 +47,7 @@ class DocumentAiWarehouseDocumentSchemaArgs {
   factory DocumentAiWarehouseDocumentSchemaArgs.fromMap(Map<String, dynamic> map) {
     return DocumentAiWarehouseDocumentSchemaArgs(
       displayName: (map['displayName'] as String).input(),
-      documentIsFolder: map['documentIsFolder'] == null ? null : (map['documentIsFolder'] as bool).input(),
+      documentIsFolder: map['documentIsFolder'] == null ? null : (map['documentIsFolder']! as bool).input(),
       location: (map['location'] as String).input(),
       projectNumber: (map['projectNumber'] as String).input(),
       propertyDefinitions: (pulumi.Input.decodeList<DocumentAiWarehouseDocumentSchemaPropertyDefinition>(map['propertyDefinitions'], (value) => DocumentAiWarehouseDocumentSchemaPropertyDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),

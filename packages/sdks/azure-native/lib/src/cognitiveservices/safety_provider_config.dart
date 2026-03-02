@@ -31,9 +31,9 @@ class SafetyProviderConfig {
 
   factory SafetyProviderConfig.fromMap(Map<String, dynamic> map) {
     return SafetyProviderConfig(
-      blocking: map['blocking'] == null ? null : (map['blocking'] as bool).input(),
-      safetyProviderName: map['safetyProviderName'] == null ? null : (map['safetyProviderName'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      blocking: map['blocking'] == null ? null : (map['blocking']! as bool).input(),
+      safetyProviderName: map['safetyProviderName'] == null ? null : (map['safetyProviderName']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

@@ -60,9 +60,9 @@ class SubscriptionPushConfig {
 
   factory SubscriptionPushConfig.fromMap(Map<String, dynamic> map) {
     return SubscriptionPushConfig(
-      attributes: map['attributes'] == null ? null : ((map['attributes'] as Map).cast<String, String>()).input(),
-      noWrapper: map['noWrapper'] == null ? null : (SubscriptionPushConfigNoWrapper.fromMap((map['noWrapper'] as Map).cast<String, dynamic>())).input(),
-      oidcToken: map['oidcToken'] == null ? null : (SubscriptionPushConfigOidcToken.fromMap((map['oidcToken'] as Map).cast<String, dynamic>())).input(),
+      attributes: map['attributes'] == null ? null : ((map['attributes']! as Map).cast<String, String>()).input(),
+      noWrapper: map['noWrapper'] == null ? null : (SubscriptionPushConfigNoWrapper.fromMap((map['noWrapper']! as Map).cast<String, dynamic>())).input(),
+      oidcToken: map['oidcToken'] == null ? null : (SubscriptionPushConfigOidcToken.fromMap((map['oidcToken']! as Map).cast<String, dynamic>())).input(),
       pushEndpoint: (map['pushEndpoint'] as String).input(),
     );
   }

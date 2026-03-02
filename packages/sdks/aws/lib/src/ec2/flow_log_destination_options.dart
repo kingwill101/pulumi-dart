@@ -30,9 +30,9 @@ class FlowLogDestinationOptions {
 
   factory FlowLogDestinationOptions.fromMap(Map<String, dynamic> map) {
     return FlowLogDestinationOptions(
-      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat'] as String).input(),
-      hiveCompatiblePartitions: map['hiveCompatiblePartitions'] == null ? null : (map['hiveCompatiblePartitions'] as bool).input(),
-      perHourPartition: map['perHourPartition'] == null ? null : (map['perHourPartition'] as bool).input(),
+      fileFormat: map['fileFormat'] == null ? null : ((map['fileFormat'] as String).input()).input(),
+      hiveCompatiblePartitions: map['hiveCompatiblePartitions'] == null ? null : ((map['hiveCompatiblePartitions'] as bool).input()).input(),
+      perHourPartition: map['perHourPartition'] == null ? null : ((map['perHourPartition'] as bool).input()).input(),
     );
   }
 }

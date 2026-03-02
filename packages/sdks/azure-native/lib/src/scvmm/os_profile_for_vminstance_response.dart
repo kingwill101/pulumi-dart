@@ -36,7 +36,7 @@ class OsProfileForVMInstanceResponse {
 
   factory OsProfileForVMInstanceResponse.fromMap(Map<String, dynamic> map) {
     return OsProfileForVMInstanceResponse(
-      computerName: map['computerName'] == null ? null : (map['computerName'] as String).input(),
+      computerName: map['computerName'] == null ? null : (map['computerName']! as String).input(),
       osSku: (map['osSku'] as String).input(),
       osType: (map['osType'] as String).input(),
       osVersion: (map['osVersion'] as String).input(),

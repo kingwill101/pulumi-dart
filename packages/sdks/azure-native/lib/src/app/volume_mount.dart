@@ -31,9 +31,9 @@ class VolumeMount {
 
   factory VolumeMount.fromMap(Map<String, dynamic> map) {
     return VolumeMount(
-      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
-      subPath: map['subPath'] == null ? null : (map['subPath'] as String).input(),
-      volumeName: map['volumeName'] == null ? null : (map['volumeName'] as String).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
+      subPath: map['subPath'] == null ? null : (map['subPath']! as String).input(),
+      volumeName: map['volumeName'] == null ? null : (map['volumeName']! as String).input(),
     );
   }
 }

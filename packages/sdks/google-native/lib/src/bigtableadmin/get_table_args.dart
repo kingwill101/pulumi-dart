@@ -36,9 +36,9 @@ class GetTableArgs {
   factory GetTableArgs.fromMap(Map<String, dynamic> map) {
     return GetTableArgs(
       instanceId: (map['instanceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       tableId: (map['tableId'] as String).input(),
-      view: map['view'] == null ? null : (map['view'] as String).input(),
+      view: map['view'] == null ? null : (map['view']! as String).input(),
     );
   }
 }

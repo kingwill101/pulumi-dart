@@ -38,10 +38,10 @@ class ServicePerimeterResourceState {
 
   factory ServicePerimeterResourceState.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterResourceState(
-      accessPolicyId: map['accessPolicyId'] == null ? null : (map['accessPolicyId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      perimeterName: map['perimeterName'] == null ? null : (map['perimeterName'] as String).input(),
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
+      accessPolicyId: map['accessPolicyId'] == null ? null : (map['accessPolicyId']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      perimeterName: map['perimeterName'] == null ? null : (map['perimeterName']! as String).input(),
+      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
     );
   }
 }

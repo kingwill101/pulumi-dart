@@ -22,7 +22,7 @@ class VirtualHubRouteTableResponse {
 
   factory VirtualHubRouteTableResponse.fromMap(Map<String, dynamic> map) {
     return VirtualHubRouteTableResponse(
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<VirtualHubRouteResponse>(map['routes'], (value) => VirtualHubRouteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<VirtualHubRouteResponse>(map['routes']!, (value) => VirtualHubRouteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

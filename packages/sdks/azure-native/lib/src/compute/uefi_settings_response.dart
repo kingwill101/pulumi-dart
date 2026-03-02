@@ -26,8 +26,8 @@ class UefiSettingsResponse {
 
   factory UefiSettingsResponse.fromMap(Map<String, dynamic> map) {
     return UefiSettingsResponse(
-      secureBootEnabled: map['secureBootEnabled'] == null ? null : (map['secureBootEnabled'] as bool).input(),
-      vTpmEnabled: map['vTpmEnabled'] == null ? null : (map['vTpmEnabled'] as bool).input(),
+      secureBootEnabled: map['secureBootEnabled'] == null ? null : (map['secureBootEnabled']! as bool).input(),
+      vTpmEnabled: map['vTpmEnabled'] == null ? null : (map['vTpmEnabled']! as bool).input(),
     );
   }
 }

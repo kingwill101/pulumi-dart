@@ -39,10 +39,10 @@ class EnrollmentStatusArgs {
 
   factory EnrollmentStatusArgs.fromMap(Map<String, dynamic> map) {
     return EnrollmentStatusArgs(
-      includeMemberAccounts: map['includeMemberAccounts'] == null ? null : (map['includeMemberAccounts'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      includeMemberAccounts: map['includeMemberAccounts'] == null ? null : ((map['includeMemberAccounts'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       status: (map['status'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (EnrollmentStatusTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      timeouts: map['timeouts'] == null ? null : ((EnrollmentStatusTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

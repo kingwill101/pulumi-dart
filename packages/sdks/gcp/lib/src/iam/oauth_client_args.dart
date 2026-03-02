@@ -92,13 +92,13 @@ class OauthClientArgs {
       allowedGrantTypes: ((map['allowedGrantTypes'] as List).cast<String>()).input(),
       allowedRedirectUris: ((map['allowedRedirectUris'] as List).cast<String>()).input(),
       allowedScopes: ((map['allowedScopes'] as List).cast<String>()).input(),
-      clientType: map['clientType'] == null ? null : (map['clientType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      clientType: map['clientType'] == null ? null : (map['clientType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       location: (map['location'] as String).input(),
       oauthClientId: (map['oauthClientId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

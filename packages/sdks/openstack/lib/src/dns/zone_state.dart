@@ -82,17 +82,17 @@ class ZoneState {
 
   factory ZoneState.fromMap(Map<String, dynamic> map) {
     return ZoneState(
-      attributes: map['attributes'] == null ? null : ((map['attributes'] as Map).cast<String, String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disableStatusCheck: map['disableStatusCheck'] == null ? null : (map['disableStatusCheck'] as bool).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      masters: map['masters'] == null ? null : ((map['masters'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
+      attributes: map['attributes'] == null ? null : ((map['attributes']! as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disableStatusCheck: map['disableStatusCheck'] == null ? null : (map['disableStatusCheck']! as bool).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      masters: map['masters'] == null ? null : ((map['masters']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs']! as Map).cast<String, String>()).input(),
     );
   }
 }

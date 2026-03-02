@@ -64,15 +64,15 @@ class ConnectorArgs {
 
   factory ConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorArgs(
-      connectorId: map['connectorId'] == null ? null : (map['connectorId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      connectorId: map['connectorId'] == null ? null : (map['connectorId']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       principalInfo: (PrincipalInfo.fromMap((map['principalInfo'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      resourceInfo: map['resourceInfo'] == null ? null : (ResourceInfo.fromMap((map['resourceInfo'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      resourceInfo: map['resourceInfo'] == null ? null : (ResourceInfo.fromMap((map['resourceInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

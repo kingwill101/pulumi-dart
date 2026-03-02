@@ -31,8 +31,8 @@ class SettingsAccessSettingsWorkforceIdentitySettings {
 
   factory SettingsAccessSettingsWorkforceIdentitySettings.fromMap(Map<String, dynamic> map) {
     return SettingsAccessSettingsWorkforceIdentitySettings(
-      oauth2: map['oauth2'] == null ? null : (SettingsAccessSettingsWorkforceIdentitySettingsOauth2.fromMap((map['oauth2'] as Map).cast<String, dynamic>())).input(),
-      workforcePools: map['workforcePools'] == null ? null : (map['workforcePools'] as String).input(),
+      oauth2: map['oauth2'] == null ? null : (SettingsAccessSettingsWorkforceIdentitySettingsOauth2.fromMap((map['oauth2']! as Map).cast<String, dynamic>())).input(),
+      workforcePools: map['workforcePools'] == null ? null : (map['workforcePools']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class WorkflowTemplateParameter {
 
   factory WorkflowTemplateParameter.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplateParameter(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       fields: ((map['fields'] as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
-      validation: map['validation'] == null ? null : (WorkflowTemplateParameterValidation.fromMap((map['validation'] as Map).cast<String, dynamic>())).input(),
+      validation: map['validation'] == null ? null : (WorkflowTemplateParameterValidation.fromMap((map['validation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

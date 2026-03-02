@@ -38,9 +38,9 @@ class GetSpacesBucketsResult {
   factory GetSpacesBucketsResult.fromMap(Map<String, dynamic> map) {
     return GetSpacesBucketsResult(
       buckets: pulumi.Input.decodeList<GetSpacesBucketsBucket>(map['buckets'], (value) => GetSpacesBucketsBucket.fromMap((value as Map).cast<String, dynamic>())),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetSpacesBucketsFilter>(map['filters'], (value) => GetSpacesBucketsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetSpacesBucketsFilter>(map['filters']!, (value) => GetSpacesBucketsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      sorts: map['sorts'] == null ? null : pulumi.Input.decodeList<GetSpacesBucketsSort>(map['sorts'], (value) => GetSpacesBucketsSort.fromMap((value as Map).cast<String, dynamic>())),
+      sorts: map['sorts'] == null ? null : pulumi.Input.decodeList<GetSpacesBucketsSort>(map['sorts']!, (value) => GetSpacesBucketsSort.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

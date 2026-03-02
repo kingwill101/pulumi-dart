@@ -72,16 +72,16 @@ class SecurityPolicyRuleComputeV1 {
 
   factory SecurityPolicyRuleComputeV1.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleComputeV1(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      headerAction: map['headerAction'] == null ? null : (SecurityPolicyRuleHttpHeaderActionComputeV1.fromMap((map['headerAction'] as Map).cast<String, dynamic>())).input(),
-      match: map['match'] == null ? null : (SecurityPolicyRuleMatcherComputeV1.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
-      networkMatch: map['networkMatch'] == null ? null : (SecurityPolicyRuleNetworkMatcherComputeV1.fromMap((map['networkMatch'] as Map).cast<String, dynamic>())).input(),
-      preconfiguredWafConfig: map['preconfiguredWafConfig'] == null ? null : (SecurityPolicyRulePreconfiguredWafConfigComputeV1.fromMap((map['preconfiguredWafConfig'] as Map).cast<String, dynamic>())).input(),
-      preview: map['preview'] == null ? null : (map['preview'] as bool).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      rateLimitOptions: map['rateLimitOptions'] == null ? null : (SecurityPolicyRuleRateLimitOptionsComputeV1.fromMap((map['rateLimitOptions'] as Map).cast<String, dynamic>())).input(),
-      redirectOptions: map['redirectOptions'] == null ? null : (SecurityPolicyRuleRedirectOptionsComputeV1.fromMap((map['redirectOptions'] as Map).cast<String, dynamic>())).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      headerAction: map['headerAction'] == null ? null : (SecurityPolicyRuleHttpHeaderActionComputeV1.fromMap((map['headerAction']! as Map).cast<String, dynamic>())).input(),
+      match: map['match'] == null ? null : (SecurityPolicyRuleMatcherComputeV1.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
+      networkMatch: map['networkMatch'] == null ? null : (SecurityPolicyRuleNetworkMatcherComputeV1.fromMap((map['networkMatch']! as Map).cast<String, dynamic>())).input(),
+      preconfiguredWafConfig: map['preconfiguredWafConfig'] == null ? null : (SecurityPolicyRulePreconfiguredWafConfigComputeV1.fromMap((map['preconfiguredWafConfig']! as Map).cast<String, dynamic>())).input(),
+      preview: map['preview'] == null ? null : (map['preview']! as bool).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      rateLimitOptions: map['rateLimitOptions'] == null ? null : (SecurityPolicyRuleRateLimitOptionsComputeV1.fromMap((map['rateLimitOptions']! as Map).cast<String, dynamic>())).input(),
+      redirectOptions: map['redirectOptions'] == null ? null : (SecurityPolicyRuleRedirectOptionsComputeV1.fromMap((map['redirectOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

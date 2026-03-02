@@ -40,11 +40,11 @@ class EventRuleSlsParameter {
 
   factory EventRuleSlsParameter.fromMap(Map<String, dynamic> map) {
     return EventRuleSlsParameter(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      logStore: map['logStore'] == null ? null : (map['logStore'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      slsParametersId: map['slsParametersId'] == null ? null : (map['slsParametersId'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      logStore: map['logStore'] == null ? null : (map['logStore']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      slsParametersId: map['slsParametersId'] == null ? null : (map['slsParametersId']! as String).input(),
     );
   }
 }

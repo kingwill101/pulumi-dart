@@ -35,7 +35,7 @@ class GetGiVersionsResult {
 
   factory GetGiVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetGiVersionsResult(
-      giVersions: pulumi.Input.decodeList<GetGiVersionsGiVersion>(map['giVersions'], (value) => GetGiVersionsGiVersion.fromMap((value as Map).cast<String, dynamic>())),
+      giVersions: pulumi.Input.decodeList<GetGiVersionsGiVersion>(map['giVersions']!, (value) => GetGiVersionsGiVersion.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
       shape: map['shape'] == null ? null : map['shape'] as String,

@@ -32,9 +32,9 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettings {
 
   factory ClusterNodePoolUpgradeSettingsBlueGreenSettings.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolUpgradeSettingsBlueGreenSettings(
-      autoscaledRolloutPolicy: map['autoscaledRolloutPolicy'] == null ? null : (ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy.fromMap((map['autoscaledRolloutPolicy'] as Map).cast<String, dynamic>())).input(),
-      nodePoolSoakDuration: map['nodePoolSoakDuration'] == null ? null : (map['nodePoolSoakDuration'] as String).input(),
-      standardRolloutPolicy: map['standardRolloutPolicy'] == null ? null : (ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy.fromMap((map['standardRolloutPolicy'] as Map).cast<String, dynamic>())).input(),
+      autoscaledRolloutPolicy: map['autoscaledRolloutPolicy'] == null ? null : (ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy.fromMap((map['autoscaledRolloutPolicy']! as Map).cast<String, dynamic>())).input(),
+      nodePoolSoakDuration: map['nodePoolSoakDuration'] == null ? null : (map['nodePoolSoakDuration']! as String).input(),
+      standardRolloutPolicy: map['standardRolloutPolicy'] == null ? null : (ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy.fromMap((map['standardRolloutPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

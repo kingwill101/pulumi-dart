@@ -45,10 +45,10 @@ class Scorecard {
 
   factory Scorecard.fromMap(Map<String, dynamic> map) {
     return Scorecard(
-      blankView: map['blankView'] == null ? null : ((map['blankView'] as Map).cast<String, dynamic>()).input(),
-      gaugeView: map['gaugeView'] == null ? null : (GaugeView.fromMap((map['gaugeView'] as Map).cast<String, dynamic>())).input(),
-      sparkChartView: map['sparkChartView'] == null ? null : (SparkChartView.fromMap((map['sparkChartView'] as Map).cast<String, dynamic>())).input(),
-      thresholds: map['thresholds'] == null ? null : (pulumi.Input.decodeList<Threshold>(map['thresholds'], (value) => Threshold.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      blankView: map['blankView'] == null ? null : ((map['blankView']! as Map).cast<String, dynamic>()).input(),
+      gaugeView: map['gaugeView'] == null ? null : (GaugeView.fromMap((map['gaugeView']! as Map).cast<String, dynamic>())).input(),
+      sparkChartView: map['sparkChartView'] == null ? null : (SparkChartView.fromMap((map['sparkChartView']! as Map).cast<String, dynamic>())).input(),
+      thresholds: map['thresholds'] == null ? null : (pulumi.Input.decodeList<Threshold>(map['thresholds']!, (value) => Threshold.fromMap((value as Map).cast<String, dynamic>()))).input(),
       timeSeriesQuery: (TimeSeriesQuery.fromMap((map['timeSeriesQuery'] as Map).cast<String, dynamic>())).input(),
     );
   }

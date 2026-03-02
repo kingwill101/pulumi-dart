@@ -41,8 +41,8 @@ class NamespaceVirtualNetworkRuleArgs {
     return NamespaceVirtualNetworkRuleArgs(
       namespaceName: (map['namespaceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      virtualNetworkRuleName: map['virtualNetworkRuleName'] == null ? null : (map['virtualNetworkRuleName'] as String).input(),
-      virtualNetworkSubnetId: map['virtualNetworkSubnetId'] == null ? null : (map['virtualNetworkSubnetId'] as String).input(),
+      virtualNetworkRuleName: map['virtualNetworkRuleName'] == null ? null : (map['virtualNetworkRuleName']! as String).input(),
+      virtualNetworkSubnetId: map['virtualNetworkSubnetId'] == null ? null : (map['virtualNetworkSubnetId']! as String).input(),
     );
   }
 }

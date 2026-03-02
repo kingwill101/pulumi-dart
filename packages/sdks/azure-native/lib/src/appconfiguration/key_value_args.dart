@@ -51,11 +51,11 @@ class KeyValueArgs {
   factory KeyValueArgs.fromMap(Map<String, dynamic> map) {
     return KeyValueArgs(
       configStoreName: (map['configStoreName'] as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      keyValueName: map['keyValueName'] == null ? null : (map['keyValueName'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      keyValueName: map['keyValueName'] == null ? null : (map['keyValueName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

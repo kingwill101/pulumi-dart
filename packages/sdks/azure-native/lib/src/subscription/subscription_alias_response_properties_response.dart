@@ -81,16 +81,16 @@ class SubscriptionAliasResponsePropertiesResponse {
     return SubscriptionAliasResponsePropertiesResponse(
       acceptOwnershipState: (map['acceptOwnershipState'] as String).input(),
       acceptOwnershipUrl: (map['acceptOwnershipUrl'] as String).input(),
-      billingScope: map['billingScope'] == null ? null : (map['billingScope'] as String).input(),
-      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId'] as String).input(),
+      billingScope: map['billingScope'] == null ? null : (map['billingScope']! as String).input(),
+      createdTime: map['createdTime'] == null ? null : (map['createdTime']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      resellerId: map['resellerId'] == null ? null : (map['resellerId'] as String).input(),
+      resellerId: map['resellerId'] == null ? null : (map['resellerId']! as String).input(),
       subscriptionId: (map['subscriptionId'] as String).input(),
-      subscriptionOwnerId: map['subscriptionOwnerId'] == null ? null : (map['subscriptionOwnerId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workload: map['workload'] == null ? null : (map['workload'] as String).input(),
+      subscriptionOwnerId: map['subscriptionOwnerId'] == null ? null : (map['subscriptionOwnerId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      workload: map['workload'] == null ? null : (map['workload']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class OntapStorageVirtualMachineActiveDirectoryConfiguration {
 
   factory OntapStorageVirtualMachineActiveDirectoryConfiguration.fromMap(Map<String, dynamic> map) {
     return OntapStorageVirtualMachineActiveDirectoryConfiguration(
-      netbiosName: map['netbiosName'] == null ? null : (map['netbiosName'] as String).input(),
-      selfManagedActiveDirectoryConfiguration: map['selfManagedActiveDirectoryConfiguration'] == null ? null : (OntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration.fromMap((map['selfManagedActiveDirectoryConfiguration'] as Map).cast<String, dynamic>())).input(),
+      netbiosName: map['netbiosName'] == null ? null : ((map['netbiosName'] as String).input()).input(),
+      selfManagedActiveDirectoryConfiguration: map['selfManagedActiveDirectoryConfiguration'] == null ? null : ((OntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration.fromMap((map['selfManagedActiveDirectoryConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

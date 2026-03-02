@@ -59,11 +59,11 @@ class AttachmentArgs {
 
   factory AttachmentArgs.fromMap(Map<String, dynamic> map) {
     return AttachmentArgs(
-      entrusted: map['entrusted'] == null ? null : (map['entrusted'] as bool).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      entrusted: map['entrusted'] == null ? null : (map['entrusted']! as bool).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
       instanceIds: ((map['instanceIds'] as List).cast<String>()).input(),
-      lifecycleHook: map['lifecycleHook'] == null ? null : (map['lifecycleHook'] as bool).input(),
-      loadBalancerWeights: map['loadBalancerWeights'] == null ? null : ((map['loadBalancerWeights'] as List).cast<int>()).input(),
+      lifecycleHook: map['lifecycleHook'] == null ? null : (map['lifecycleHook']! as bool).input(),
+      loadBalancerWeights: map['loadBalancerWeights'] == null ? null : ((map['loadBalancerWeights']! as List).cast<int>()).input(),
       scalingGroupId: (map['scalingGroupId'] as String).input(),
     );
   }

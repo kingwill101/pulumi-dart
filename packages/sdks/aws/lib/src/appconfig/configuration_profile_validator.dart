@@ -25,7 +25,7 @@ class ConfigurationProfileValidator {
 
   factory ConfigurationProfileValidator.fromMap(Map<String, dynamic> map) {
     return ConfigurationProfileValidator(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
+      content: map['content'] == null ? null : ((map['content'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

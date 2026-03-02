@@ -56,12 +56,12 @@ class ReferenceInputPropertiesResponse {
 
   factory ReferenceInputPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ReferenceInputPropertiesResponse(
-      compression: map['compression'] == null ? null : (CompressionResponse.fromMap((map['compression'] as Map).cast<String, dynamic>())).input(),
-      datasource: map['datasource'] == null ? null : (AzureSqlReferenceInputDataSourceResponse.fromMap((map['datasource'] as Map).cast<String, dynamic>())).input(),
+      compression: map['compression'] == null ? null : (CompressionResponse.fromMap((map['compression']! as Map).cast<String, dynamic>())).input(),
+      datasource: map['datasource'] == null ? null : (AzureSqlReferenceInputDataSourceResponse.fromMap((map['datasource']! as Map).cast<String, dynamic>())).input(),
       diagnostics: (DiagnosticsResponse.fromMap((map['diagnostics'] as Map).cast<String, dynamic>())).input(),
       etag: (map['etag'] as String).input(),
-      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey'] as String).input(),
-      serialization: map['serialization'] == null ? null : (AvroSerializationResponse.fromMap((map['serialization'] as Map).cast<String, dynamic>())).input(),
+      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey']! as String).input(),
+      serialization: map['serialization'] == null ? null : (AvroSerializationResponse.fromMap((map['serialization']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

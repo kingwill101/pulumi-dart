@@ -21,7 +21,7 @@ class LoadBalancerBackendAddressPool {
 
   factory LoadBalancerBackendAddressPool.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendAddressPool(
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
+      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
     );
   }
 }

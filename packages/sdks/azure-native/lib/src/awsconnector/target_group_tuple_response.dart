@@ -26,8 +26,8 @@ class TargetGroupTupleResponse {
 
   factory TargetGroupTupleResponse.fromMap(Map<String, dynamic> map) {
     return TargetGroupTupleResponse(
-      targetGroupArn: map['targetGroupArn'] == null ? null : (map['targetGroupArn'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      targetGroupArn: map['targetGroupArn'] == null ? null : (map['targetGroupArn']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

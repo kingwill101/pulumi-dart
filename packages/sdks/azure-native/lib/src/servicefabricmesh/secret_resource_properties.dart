@@ -32,8 +32,8 @@ class SecretResourceProperties {
 
   factory SecretResourceProperties.fromMap(Map<String, dynamic> map) {
     return SecretResourceProperties(
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       kind: (map['kind'] as String).input(),
     );
   }

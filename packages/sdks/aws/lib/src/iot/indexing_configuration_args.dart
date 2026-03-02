@@ -36,9 +36,9 @@ class IndexingConfigurationArgs {
 
   factory IndexingConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return IndexingConfigurationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      thingGroupIndexingConfiguration: map['thingGroupIndexingConfiguration'] == null ? null : (IndexingConfigurationThingGroupIndexingConfiguration.fromMap((map['thingGroupIndexingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      thingIndexingConfiguration: map['thingIndexingConfiguration'] == null ? null : (IndexingConfigurationThingIndexingConfiguration.fromMap((map['thingIndexingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      thingGroupIndexingConfiguration: map['thingGroupIndexingConfiguration'] == null ? null : ((IndexingConfigurationThingGroupIndexingConfiguration.fromMap((map['thingGroupIndexingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      thingIndexingConfiguration: map['thingIndexingConfiguration'] == null ? null : ((IndexingConfigurationThingIndexingConfiguration.fromMap((map['thingIndexingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

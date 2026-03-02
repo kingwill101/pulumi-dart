@@ -31,9 +31,9 @@ class GetHostPoolRegistrationInfoState {
 
   factory GetHostPoolRegistrationInfoState.fromMap(Map<String, dynamic> map) {
     return GetHostPoolRegistrationInfoState(
-      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
-      hostpoolId: map['hostpoolId'] == null ? null : (map['hostpoolId'] as String).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate']! as String).input(),
+      hostpoolId: map['hostpoolId'] == null ? null : (map['hostpoolId']! as String).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
     );
   }
 }

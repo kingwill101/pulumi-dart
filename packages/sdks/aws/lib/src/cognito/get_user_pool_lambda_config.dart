@@ -75,9 +75,9 @@ class GetUserPoolLambdaConfig {
   factory GetUserPoolLambdaConfig.fromMap(Map<String, dynamic> map) {
     return GetUserPoolLambdaConfig(
       createAuthChallenge: (map['createAuthChallenge'] as String).input(),
-      customEmailSenders: (pulumi.Input.decodeList<GetUserPoolLambdaConfigCustomEmailSender>(map['customEmailSenders'], (value) => GetUserPoolLambdaConfigCustomEmailSender.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customEmailSenders: (pulumi.Input.decodeList<GetUserPoolLambdaConfigCustomEmailSender>(map['customEmailSenders']!, (value) => GetUserPoolLambdaConfigCustomEmailSender.fromMap((value as Map).cast<String, dynamic>()))).input(),
       customMessage: (map['customMessage'] as String).input(),
-      customSmsSenders: (pulumi.Input.decodeList<GetUserPoolLambdaConfigCustomSmsSender>(map['customSmsSenders'], (value) => GetUserPoolLambdaConfigCustomSmsSender.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customSmsSenders: (pulumi.Input.decodeList<GetUserPoolLambdaConfigCustomSmsSender>(map['customSmsSenders']!, (value) => GetUserPoolLambdaConfigCustomSmsSender.fromMap((value as Map).cast<String, dynamic>()))).input(),
       defineAuthChallenge: (map['defineAuthChallenge'] as String).input(),
       kmsKeyId: (map['kmsKeyId'] as String).input(),
       postAuthentication: (map['postAuthentication'] as String).input(),
@@ -85,7 +85,7 @@ class GetUserPoolLambdaConfig {
       preAuthentication: (map['preAuthentication'] as String).input(),
       preSignUp: (map['preSignUp'] as String).input(),
       preTokenGeneration: (map['preTokenGeneration'] as String).input(),
-      preTokenGenerationConfigs: (pulumi.Input.decodeList<GetUserPoolLambdaConfigPreTokenGenerationConfig>(map['preTokenGenerationConfigs'], (value) => GetUserPoolLambdaConfigPreTokenGenerationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      preTokenGenerationConfigs: (pulumi.Input.decodeList<GetUserPoolLambdaConfigPreTokenGenerationConfig>(map['preTokenGenerationConfigs']!, (value) => GetUserPoolLambdaConfigPreTokenGenerationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       userMigration: (map['userMigration'] as String).input(),
       verifyAuthChallengeResponse: (map['verifyAuthChallengeResponse'] as String).input(),
     );

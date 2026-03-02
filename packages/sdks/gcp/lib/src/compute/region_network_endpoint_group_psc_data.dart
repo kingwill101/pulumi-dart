@@ -23,7 +23,7 @@ class RegionNetworkEndpointGroupPscData {
 
   factory RegionNetworkEndpointGroupPscData.fromMap(Map<String, dynamic> map) {
     return RegionNetworkEndpointGroupPscData(
-      producerPort: map['producerPort'] == null ? null : (map['producerPort'] as String).input(),
+      producerPort: map['producerPort'] == null ? null : (map['producerPort']! as String).input(),
     );
   }
 }

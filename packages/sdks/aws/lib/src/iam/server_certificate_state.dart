@@ -80,17 +80,17 @@ class ServerCertificateState {
 
   factory ServerCertificateState.fromMap(Map<String, dynamic> map) {
     return ServerCertificateState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      certificateBody: map['certificateBody'] == null ? null : (map['certificateBody'] as String).input(),
-      certificateChain: map['certificateChain'] == null ? null : (map['certificateChain'] as String).input(),
-      expiration: map['expiration'] == null ? null : (map['expiration'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      uploadDate: map['uploadDate'] == null ? null : (map['uploadDate'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      certificateBody: map['certificateBody'] == null ? null : ((map['certificateBody'] as String).input()).input(),
+      certificateChain: map['certificateChain'] == null ? null : ((map['certificateChain'] as String).input()).input(),
+      expiration: map['expiration'] == null ? null : ((map['expiration'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      path: map['path'] == null ? null : ((map['path'] as String).input()).input(),
+      privateKey: map['privateKey'] == null ? null : ((map['privateKey'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      uploadDate: map['uploadDate'] == null ? null : ((map['uploadDate'] as String).input()).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class AuthConfigDecryptedCredentialServiceAccountCredentials {
 
   factory AuthConfigDecryptedCredentialServiceAccountCredentials.fromMap(Map<String, dynamic> map) {
     return AuthConfigDecryptedCredentialServiceAccountCredentials(
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
     );
   }
 }

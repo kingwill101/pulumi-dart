@@ -36,9 +36,9 @@ class LinuxWebAppAuthSettingsFacebook {
   factory LinuxWebAppAuthSettingsFacebook.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppAuthSettingsFacebook(
       appId: (map['appId'] as String).input(),
-      appSecret: map['appSecret'] == null ? null : (map['appSecret'] as String).input(),
-      appSecretSettingName: map['appSecretSettingName'] == null ? null : (map['appSecretSettingName'] as String).input(),
-      oauthScopes: map['oauthScopes'] == null ? null : ((map['oauthScopes'] as List).cast<String>()).input(),
+      appSecret: map['appSecret'] == null ? null : (map['appSecret']! as String).input(),
+      appSecretSettingName: map['appSecretSettingName'] == null ? null : (map['appSecretSettingName']! as String).input(),
+      oauthScopes: map['oauthScopes'] == null ? null : ((map['oauthScopes']! as List).cast<String>()).input(),
     );
   }
 }

@@ -43,11 +43,11 @@ class RoleMembershipState {
 
   factory RoleMembershipState.fromMap(Map<String, dynamic> map) {
     return RoleMembershipState(
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      memberName: map['memberName'] == null ? null : (map['memberName'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      memberName: map['memberName'] == null ? null : ((map['memberName'] as String).input()).input(),
+      namespace: map['namespace'] == null ? null : ((map['namespace'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      role: map['role'] == null ? null : ((map['role'] as String).input()).input(),
     );
   }
 }

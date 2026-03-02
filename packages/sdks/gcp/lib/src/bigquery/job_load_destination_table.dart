@@ -31,8 +31,8 @@ class JobLoadDestinationTable {
 
   factory JobLoadDestinationTable.fromMap(Map<String, dynamic> map) {
     return JobLoadDestinationTable(
-      datasetId: map['datasetId'] == null ? null : (map['datasetId'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      datasetId: map['datasetId'] == null ? null : (map['datasetId']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
       tableId: (map['tableId'] as String).input(),
     );
   }

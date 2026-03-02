@@ -36,9 +36,9 @@ class CertificateMapGclbTarget {
 
   factory CertificateMapGclbTarget.fromMap(Map<String, dynamic> map) {
     return CertificateMapGclbTarget(
-      ipConfigs: map['ipConfigs'] == null ? null : (pulumi.Input.decodeList<CertificateMapGclbTargetIpConfig>(map['ipConfigs'], (value) => CertificateMapGclbTargetIpConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetHttpsProxy: map['targetHttpsProxy'] == null ? null : (map['targetHttpsProxy'] as String).input(),
-      targetSslProxy: map['targetSslProxy'] == null ? null : (map['targetSslProxy'] as String).input(),
+      ipConfigs: map['ipConfigs'] == null ? null : (pulumi.Input.decodeList<CertificateMapGclbTargetIpConfig>(map['ipConfigs']!, (value) => CertificateMapGclbTargetIpConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetHttpsProxy: map['targetHttpsProxy'] == null ? null : (map['targetHttpsProxy']! as String).input(),
+      targetSslProxy: map['targetSslProxy'] == null ? null : (map['targetSslProxy']! as String).input(),
     );
   }
 }

@@ -40,8 +40,8 @@ class RoleArgs {
   factory RoleArgs.fromMap(Map<String, dynamic> map) {
     return RoleArgs(
       assumeRolePolicyDocument: (map['assumeRolePolicyDocument'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      maxSessionDuration: map['maxSessionDuration'] == null ? null : (map['maxSessionDuration'] as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      maxSessionDuration: map['maxSessionDuration'] == null ? null : (map['maxSessionDuration']! as int).input(),
       roleName: (map['roleName'] as String).input(),
     );
   }

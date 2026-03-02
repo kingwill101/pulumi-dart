@@ -28,7 +28,7 @@ class WorkspaceEncryptionParameterResponse {
   factory WorkspaceEncryptionParameterResponse.fromMap(Map<String, dynamic> map) {
     return WorkspaceEncryptionParameterResponse(
       type: (map['type'] as String).input(),
-      value: map['value'] == null ? null : (EncryptionResponse.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
+      value: map['value'] == null ? null : (EncryptionResponse.fromMap((map['value']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

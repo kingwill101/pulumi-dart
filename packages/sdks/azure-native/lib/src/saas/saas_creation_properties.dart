@@ -76,18 +76,18 @@ class SaasCreationProperties {
 
   factory SaasCreationProperties.fromMap(Map<String, dynamic> map) {
     return SaasCreationProperties(
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      offerId: map['offerId'] == null ? null : (map['offerId'] as String).input(),
-      paymentChannelMetadata: map['paymentChannelMetadata'] == null ? null : ((map['paymentChannelMetadata'] as Map).cast<String, String>()).input(),
-      paymentChannelType: map['paymentChannelType'] == null ? null : (map['paymentChannelType'] as String).input(),
-      publisherId: map['publisherId'] == null ? null : (map['publisherId'] as String).input(),
-      publisherTestEnvironment: map['publisherTestEnvironment'] == null ? null : (map['publisherTestEnvironment'] as String).input(),
-      quantity: map['quantity'] == null ? null : (map['quantity'] as double).input(),
-      saasResourceName: map['saasResourceName'] == null ? null : (map['saasResourceName'] as String).input(),
-      saasSessionId: map['saasSessionId'] == null ? null : (map['saasSessionId'] as String).input(),
-      saasSubscriptionId: map['saasSubscriptionId'] == null ? null : (map['saasSubscriptionId'] as String).input(),
-      skuId: map['skuId'] == null ? null : (map['skuId'] as String).input(),
-      termId: map['termId'] == null ? null : (map['termId'] as String).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      offerId: map['offerId'] == null ? null : (map['offerId']! as String).input(),
+      paymentChannelMetadata: map['paymentChannelMetadata'] == null ? null : ((map['paymentChannelMetadata']! as Map).cast<String, String>()).input(),
+      paymentChannelType: map['paymentChannelType'] == null ? null : (map['paymentChannelType']! as String).input(),
+      publisherId: map['publisherId'] == null ? null : (map['publisherId']! as String).input(),
+      publisherTestEnvironment: map['publisherTestEnvironment'] == null ? null : (map['publisherTestEnvironment']! as String).input(),
+      quantity: map['quantity'] == null ? null : (map['quantity']! as double).input(),
+      saasResourceName: map['saasResourceName'] == null ? null : (map['saasResourceName']! as String).input(),
+      saasSessionId: map['saasSessionId'] == null ? null : (map['saasSessionId']! as String).input(),
+      saasSubscriptionId: map['saasSubscriptionId'] == null ? null : (map['saasSubscriptionId']! as String).input(),
+      skuId: map['skuId'] == null ? null : (map['skuId']! as String).input(),
+      termId: map['termId'] == null ? null : (map['termId']! as String).input(),
     );
   }
 }

@@ -56,14 +56,14 @@ class HostAccountState {
 
   factory HostAccountState.fromMap(Map<String, dynamic> map) {
     return HostAccountState(
-      hostAccountId: map['hostAccountId'] == null ? null : (map['hostAccountId'] as String).input(),
-      hostAccountName: map['hostAccountName'] == null ? null : (map['hostAccountName'] as String).input(),
-      hostId: map['hostId'] == null ? null : (map['hostId'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      passPhrase: map['passPhrase'] == null ? null : (map['passPhrase'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      protocolName: map['protocolName'] == null ? null : (map['protocolName'] as String).input(),
+      hostAccountId: map['hostAccountId'] == null ? null : (map['hostAccountId']! as String).input(),
+      hostAccountName: map['hostAccountName'] == null ? null : (map['hostAccountName']! as String).input(),
+      hostId: map['hostId'] == null ? null : (map['hostId']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      passPhrase: map['passPhrase'] == null ? null : (map['passPhrase']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
+      protocolName: map['protocolName'] == null ? null : (map['protocolName']! as String).input(),
     );
   }
 }

@@ -75,17 +75,17 @@ class BackendServiceCdnPolicyComputeBeta {
 
   factory BackendServiceCdnPolicyComputeBeta.fromMap(Map<String, dynamic> map) {
     return BackendServiceCdnPolicyComputeBeta(
-      bypassCacheOnRequestHeaders: map['bypassCacheOnRequestHeaders'] == null ? null : (pulumi.Input.decodeList<BackendServiceCdnPolicyBypassCacheOnRequestHeaderComputeBeta>(map['bypassCacheOnRequestHeaders'], (value) => BackendServiceCdnPolicyBypassCacheOnRequestHeaderComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cacheKeyPolicy: map['cacheKeyPolicy'] == null ? null : (CacheKeyPolicyComputeBeta.fromMap((map['cacheKeyPolicy'] as Map).cast<String, dynamic>())).input(),
-      cacheMode: map['cacheMode'] == null ? null : (BackendServiceCdnPolicyCacheModeComputeBeta.fromValue(map['cacheMode'] as String)).input(),
-      clientTtl: map['clientTtl'] == null ? null : (map['clientTtl'] as int).input(),
-      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl'] as int).input(),
-      maxTtl: map['maxTtl'] == null ? null : (map['maxTtl'] as int).input(),
-      negativeCaching: map['negativeCaching'] == null ? null : (map['negativeCaching'] as bool).input(),
-      negativeCachingPolicy: map['negativeCachingPolicy'] == null ? null : (pulumi.Input.decodeList<BackendServiceCdnPolicyNegativeCachingPolicyComputeBeta>(map['negativeCachingPolicy'], (value) => BackendServiceCdnPolicyNegativeCachingPolicyComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requestCoalescing: map['requestCoalescing'] == null ? null : (map['requestCoalescing'] as bool).input(),
-      serveWhileStale: map['serveWhileStale'] == null ? null : (map['serveWhileStale'] as int).input(),
-      signedUrlCacheMaxAgeSec: map['signedUrlCacheMaxAgeSec'] == null ? null : (map['signedUrlCacheMaxAgeSec'] as String).input(),
+      bypassCacheOnRequestHeaders: map['bypassCacheOnRequestHeaders'] == null ? null : (pulumi.Input.decodeList<BackendServiceCdnPolicyBypassCacheOnRequestHeaderComputeBeta>(map['bypassCacheOnRequestHeaders']!, (value) => BackendServiceCdnPolicyBypassCacheOnRequestHeaderComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cacheKeyPolicy: map['cacheKeyPolicy'] == null ? null : (CacheKeyPolicyComputeBeta.fromMap((map['cacheKeyPolicy']! as Map).cast<String, dynamic>())).input(),
+      cacheMode: map['cacheMode'] == null ? null : (BackendServiceCdnPolicyCacheModeComputeBeta.fromValue(map['cacheMode']! as String)).input(),
+      clientTtl: map['clientTtl'] == null ? null : (map['clientTtl']! as int).input(),
+      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl']! as int).input(),
+      maxTtl: map['maxTtl'] == null ? null : (map['maxTtl']! as int).input(),
+      negativeCaching: map['negativeCaching'] == null ? null : (map['negativeCaching']! as bool).input(),
+      negativeCachingPolicy: map['negativeCachingPolicy'] == null ? null : (pulumi.Input.decodeList<BackendServiceCdnPolicyNegativeCachingPolicyComputeBeta>(map['negativeCachingPolicy']!, (value) => BackendServiceCdnPolicyNegativeCachingPolicyComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestCoalescing: map['requestCoalescing'] == null ? null : (map['requestCoalescing']! as bool).input(),
+      serveWhileStale: map['serveWhileStale'] == null ? null : (map['serveWhileStale']! as int).input(),
+      signedUrlCacheMaxAgeSec: map['signedUrlCacheMaxAgeSec'] == null ? null : (map['signedUrlCacheMaxAgeSec']! as String).input(),
     );
   }
 }

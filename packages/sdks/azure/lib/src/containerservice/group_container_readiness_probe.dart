@@ -51,13 +51,13 @@ class GroupContainerReadinessProbe {
 
   factory GroupContainerReadinessProbe.fromMap(Map<String, dynamic> map) {
     return GroupContainerReadinessProbe(
-      execs: map['execs'] == null ? null : ((map['execs'] as List).cast<String>()).input(),
-      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as int).input(),
-      httpGets: map['httpGets'] == null ? null : (pulumi.Input.decodeList<GroupContainerReadinessProbeHttpGet>(map['httpGets'], (value) => GroupContainerReadinessProbeHttpGet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds'] as int).input(),
-      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds'] as int).input(),
-      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold'] as int).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      execs: map['execs'] == null ? null : ((map['execs']! as List).cast<String>()).input(),
+      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold']! as int).input(),
+      httpGets: map['httpGets'] == null ? null : (pulumi.Input.decodeList<GroupContainerReadinessProbeHttpGet>(map['httpGets']!, (value) => GroupContainerReadinessProbeHttpGet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds']! as int).input(),
+      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds']! as int).input(),
+      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold']! as int).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
     );
   }
 }

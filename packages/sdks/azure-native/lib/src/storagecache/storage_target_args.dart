@@ -74,16 +74,16 @@ class StorageTargetArgs {
 
   factory StorageTargetArgs.fromMap(Map<String, dynamic> map) {
     return StorageTargetArgs(
-      blobNfs: map['blobNfs'] == null ? null : (BlobNfsTarget.fromMap((map['blobNfs'] as Map).cast<String, dynamic>())).input(),
+      blobNfs: map['blobNfs'] == null ? null : (BlobNfsTarget.fromMap((map['blobNfs']! as Map).cast<String, dynamic>())).input(),
       cacheName: (map['cacheName'] as String).input(),
-      clfs: map['clfs'] == null ? null : (ClfsTarget.fromMap((map['clfs'] as Map).cast<String, dynamic>())).input(),
-      junctions: map['junctions'] == null ? null : (pulumi.Input.decodeList<NamespaceJunction>(map['junctions'], (value) => NamespaceJunction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nfs3: map['nfs3'] == null ? null : (Nfs3Target.fromMap((map['nfs3'] as Map).cast<String, dynamic>())).input(),
+      clfs: map['clfs'] == null ? null : (ClfsTarget.fromMap((map['clfs']! as Map).cast<String, dynamic>())).input(),
+      junctions: map['junctions'] == null ? null : (pulumi.Input.decodeList<NamespaceJunction>(map['junctions']!, (value) => NamespaceJunction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nfs3: map['nfs3'] == null ? null : (Nfs3Target.fromMap((map['nfs3']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      storageTargetName: map['storageTargetName'] == null ? null : (map['storageTargetName'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      storageTargetName: map['storageTargetName'] == null ? null : (map['storageTargetName']! as String).input(),
       targetType: (map['targetType'] as String).input(),
-      unknown: map['unknown'] == null ? null : (UnknownTarget.fromMap((map['unknown'] as Map).cast<String, dynamic>())).input(),
+      unknown: map['unknown'] == null ? null : (UnknownTarget.fromMap((map['unknown']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

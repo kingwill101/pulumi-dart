@@ -20,7 +20,7 @@ class V3AsyncInvokeConfigDestinationConfigOnFailure {
 
   factory V3AsyncInvokeConfigDestinationConfigOnFailure.fromMap(Map<String, dynamic> map) {
     return V3AsyncInvokeConfigDestinationConfigOnFailure(
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
     );
   }
 }

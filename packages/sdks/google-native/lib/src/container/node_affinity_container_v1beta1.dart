@@ -32,9 +32,9 @@ class NodeAffinityContainerV1beta1 {
 
   factory NodeAffinityContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NodeAffinityContainerV1beta1(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      operator: map['operator'] == null ? null : (NodeAffinityOperatorContainerV1beta1.fromValue(map['operator'] as String)).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      operator: map['operator'] == null ? null : (NodeAffinityOperatorContainerV1beta1.fromValue(map['operator']! as String)).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

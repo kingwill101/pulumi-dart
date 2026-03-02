@@ -21,7 +21,7 @@ class EncryptionResponseCustomerManagedKeyEncryption {
 
   factory EncryptionResponseCustomerManagedKeyEncryption.fromMap(Map<String, dynamic> map) {
     return EncryptionResponseCustomerManagedKeyEncryption(
-      keyEncryptionKeyUrl: map['keyEncryptionKeyUrl'] == null ? null : (map['keyEncryptionKeyUrl'] as String).input(),
+      keyEncryptionKeyUrl: map['keyEncryptionKeyUrl'] == null ? null : (map['keyEncryptionKeyUrl']! as String).input(),
     );
   }
 }

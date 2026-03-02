@@ -30,7 +30,7 @@ class DefaultAutoScalingConfigurationVersionArgs {
   factory DefaultAutoScalingConfigurationVersionArgs.fromMap(Map<String, dynamic> map) {
     return DefaultAutoScalingConfigurationVersionArgs(
       autoScalingConfigurationArn: (map['autoScalingConfigurationArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -49,7 +49,7 @@ class GetSecretResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      secretResources: map['secretResources'] == null ? null : map['secretResources'] as String,
+      secretResources: map['secretResources'] == null ? null : map['secretResources']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

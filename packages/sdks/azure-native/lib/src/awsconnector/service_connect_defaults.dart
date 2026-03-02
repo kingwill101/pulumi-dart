@@ -21,7 +21,7 @@ class ServiceConnectDefaults {
 
   factory ServiceConnectDefaults.fromMap(Map<String, dynamic> map) {
     return ServiceConnectDefaults(
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
     );
   }
 }

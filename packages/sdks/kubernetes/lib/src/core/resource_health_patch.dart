@@ -34,8 +34,8 @@ class ResourceHealthPatch {
 
   factory ResourceHealthPatch.fromMap(Map<String, dynamic> map) {
     return ResourceHealthPatch(
-      health: map['health'] == null ? null : (map['health'] as String).input(),
-      resourceID: map['resourceID'] == null ? null : (map['resourceID'] as String).input(),
+      health: map['health'] == null ? null : (map['health']! as String).input(),
+      resourceID: map['resourceID'] == null ? null : (map['resourceID']! as String).input(),
     );
   }
 }

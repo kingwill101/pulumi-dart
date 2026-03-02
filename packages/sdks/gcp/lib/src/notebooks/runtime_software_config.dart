@@ -75,16 +75,16 @@ class RuntimeSoftwareConfig {
 
   factory RuntimeSoftwareConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeSoftwareConfig(
-      customGpuDriverPath: map['customGpuDriverPath'] == null ? null : (map['customGpuDriverPath'] as String).input(),
-      enableHealthMonitoring: map['enableHealthMonitoring'] == null ? null : (map['enableHealthMonitoring'] as bool).input(),
-      idleShutdown: map['idleShutdown'] == null ? null : (map['idleShutdown'] as bool).input(),
-      idleShutdownTimeout: map['idleShutdownTimeout'] == null ? null : (map['idleShutdownTimeout'] as int).input(),
-      installGpuDriver: map['installGpuDriver'] == null ? null : (map['installGpuDriver'] as bool).input(),
-      kernels: map['kernels'] == null ? null : (pulumi.Input.decodeList<RuntimeSoftwareConfigKernel>(map['kernels'], (value) => RuntimeSoftwareConfigKernel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      notebookUpgradeSchedule: map['notebookUpgradeSchedule'] == null ? null : (map['notebookUpgradeSchedule'] as String).input(),
-      postStartupScript: map['postStartupScript'] == null ? null : (map['postStartupScript'] as String).input(),
-      postStartupScriptBehavior: map['postStartupScriptBehavior'] == null ? null : (map['postStartupScriptBehavior'] as String).input(),
-      upgradeable: map['upgradeable'] == null ? null : (map['upgradeable'] as bool).input(),
+      customGpuDriverPath: map['customGpuDriverPath'] == null ? null : (map['customGpuDriverPath']! as String).input(),
+      enableHealthMonitoring: map['enableHealthMonitoring'] == null ? null : (map['enableHealthMonitoring']! as bool).input(),
+      idleShutdown: map['idleShutdown'] == null ? null : (map['idleShutdown']! as bool).input(),
+      idleShutdownTimeout: map['idleShutdownTimeout'] == null ? null : (map['idleShutdownTimeout']! as int).input(),
+      installGpuDriver: map['installGpuDriver'] == null ? null : (map['installGpuDriver']! as bool).input(),
+      kernels: map['kernels'] == null ? null : (pulumi.Input.decodeList<RuntimeSoftwareConfigKernel>(map['kernels']!, (value) => RuntimeSoftwareConfigKernel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notebookUpgradeSchedule: map['notebookUpgradeSchedule'] == null ? null : (map['notebookUpgradeSchedule']! as String).input(),
+      postStartupScript: map['postStartupScript'] == null ? null : (map['postStartupScript']! as String).input(),
+      postStartupScriptBehavior: map['postStartupScriptBehavior'] == null ? null : (map['postStartupScriptBehavior']! as String).input(),
+      upgradeable: map['upgradeable'] == null ? null : (map['upgradeable']! as bool).input(),
     );
   }
 }

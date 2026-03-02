@@ -38,7 +38,7 @@ class AssistantCustomerPolicyModelArmorConfig {
 
   factory AssistantCustomerPolicyModelArmorConfig.fromMap(Map<String, dynamic> map) {
     return AssistantCustomerPolicyModelArmorConfig(
-      failureMode: map['failureMode'] == null ? null : (map['failureMode'] as String).input(),
+      failureMode: map['failureMode'] == null ? null : (map['failureMode']! as String).input(),
       responseTemplate: (map['responseTemplate'] as String).input(),
       userPromptTemplate: (map['userPromptTemplate'] as String).input(),
     );

@@ -21,7 +21,7 @@ class NodeFeaturesPatch {
 
   factory NodeFeaturesPatch.fromMap(Map<String, dynamic> map) {
     return NodeFeaturesPatch(
-      supplementalGroupsPolicy: map['supplementalGroupsPolicy'] == null ? null : (map['supplementalGroupsPolicy'] as bool).input(),
+      supplementalGroupsPolicy: map['supplementalGroupsPolicy'] == null ? null : (map['supplementalGroupsPolicy']! as bool).input(),
     );
   }
 }

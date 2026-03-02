@@ -31,7 +31,7 @@ class PipelineDefinitionPipelineObject {
 
   factory PipelineDefinitionPipelineObject.fromMap(Map<String, dynamic> map) {
     return PipelineDefinitionPipelineObject(
-      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<PipelineDefinitionPipelineObjectField>(map['fields'], (value) => PipelineDefinitionPipelineObjectField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fields: map['fields'] == null ? null : ((pulumi.Input.decodeList<PipelineDefinitionPipelineObjectField>(map['fields']!, (value) => PipelineDefinitionPipelineObjectField.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       id: (map['id'] as String).input(),
       name: (map['name'] as String).input(),
     );

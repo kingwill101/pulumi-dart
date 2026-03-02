@@ -30,7 +30,7 @@ class TunnelIamBindingCondition {
 
   factory TunnelIamBindingCondition.fromMap(Map<String, dynamic> map) {
     return TunnelIamBindingCondition(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       expression: (map['expression'] as String).input(),
       title: (map['title'] as String).input(),
     );

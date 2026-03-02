@@ -21,7 +21,7 @@ class GoogleCloudDialogflowV2beta1LoggingConfig {
 
   factory GoogleCloudDialogflowV2beta1LoggingConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1LoggingConfig(
-      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : (map['enableStackdriverLogging'] as bool).input(),
+      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : (map['enableStackdriverLogging']! as bool).input(),
     );
   }
 }

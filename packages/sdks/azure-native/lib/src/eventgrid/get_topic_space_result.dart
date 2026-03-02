@@ -61,12 +61,12 @@ class GetTopicSpaceResult {
   factory GetTopicSpaceResult.fromMap(Map<String, dynamic> map) {
     return GetTopicSpaceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      topicTemplates: map['topicTemplates'] == null ? null : (map['topicTemplates'] as List).cast<String>(),
+      topicTemplates: map['topicTemplates'] == null ? null : (map['topicTemplates']! as List).cast<String>(),
       type: map['type'] as String,
     );
   }

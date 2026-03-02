@@ -21,7 +21,7 @@ class DedicatedCapacityAdministrators {
 
   factory DedicatedCapacityAdministrators.fromMap(Map<String, dynamic> map) {
     return DedicatedCapacityAdministrators(
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
     );
   }
 }

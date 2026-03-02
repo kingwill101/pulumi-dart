@@ -38,9 +38,9 @@ class VirtualNetworkFunctionNetworkFunctionDefinitionVersion {
 
   factory VirtualNetworkFunctionNetworkFunctionDefinitionVersion.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkFunctionNetworkFunctionDefinitionVersion(
-      deployParameters: map['deployParameters'] == null ? null : (map['deployParameters'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      networkFunctionTemplate: map['networkFunctionTemplate'] == null ? null : (AzureCoreNetworkFunctionTemplate.fromMap((map['networkFunctionTemplate'] as Map).cast<String, dynamic>())).input(),
+      deployParameters: map['deployParameters'] == null ? null : (map['deployParameters']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      networkFunctionTemplate: map['networkFunctionTemplate'] == null ? null : (AzureCoreNetworkFunctionTemplate.fromMap((map['networkFunctionTemplate']! as Map).cast<String, dynamic>())).input(),
       networkFunctionType: (map['networkFunctionType'] as String).input(),
     );
   }

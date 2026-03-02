@@ -95,21 +95,21 @@ class GoogleCloudAiplatformV1Model {
 
   factory GoogleCloudAiplatformV1Model.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1Model(
-      artifactUri: map['artifactUri'] == null ? null : (map['artifactUri'] as String).input(),
-      containerSpec: map['containerSpec'] == null ? null : (GoogleCloudAiplatformV1ModelContainerSpec.fromMap((map['containerSpec'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      artifactUri: map['artifactUri'] == null ? null : (map['artifactUri']! as String).input(),
+      containerSpec: map['containerSpec'] == null ? null : (GoogleCloudAiplatformV1ModelContainerSpec.fromMap((map['containerSpec']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      explanationSpec: map['explanationSpec'] == null ? null : (GoogleCloudAiplatformV1ExplanationSpec.fromMap((map['explanationSpec'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
-      metadataSchemaUri: map['metadataSchemaUri'] == null ? null : (map['metadataSchemaUri'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pipelineJob: map['pipelineJob'] == null ? null : (map['pipelineJob'] as String).input(),
-      predictSchemata: map['predictSchemata'] == null ? null : (GoogleCloudAiplatformV1PredictSchemata.fromMap((map['predictSchemata'] as Map).cast<String, dynamic>())).input(),
-      versionAliases: map['versionAliases'] == null ? null : ((map['versionAliases'] as List).cast<String>()).input(),
-      versionDescription: map['versionDescription'] == null ? null : (map['versionDescription'] as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      explanationSpec: map['explanationSpec'] == null ? null : (GoogleCloudAiplatformV1ExplanationSpec.fromMap((map['explanationSpec']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
+      metadataSchemaUri: map['metadataSchemaUri'] == null ? null : (map['metadataSchemaUri']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pipelineJob: map['pipelineJob'] == null ? null : (map['pipelineJob']! as String).input(),
+      predictSchemata: map['predictSchemata'] == null ? null : (GoogleCloudAiplatformV1PredictSchemata.fromMap((map['predictSchemata']! as Map).cast<String, dynamic>())).input(),
+      versionAliases: map['versionAliases'] == null ? null : ((map['versionAliases']! as List).cast<String>()).input(),
+      versionDescription: map['versionDescription'] == null ? null : (map['versionDescription']! as String).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class PublicNetworkSolution {
 
   factory PublicNetworkSolution.fromMap(Map<String, dynamic> map) {
     return PublicNetworkSolution(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      deleteOrUpdateBehavior: map['deleteOrUpdateBehavior'] == null ? null : (map['deleteOrUpdateBehavior'] as String).input(),
-      firewallRules: map['firewallRules'] == null ? null : (FirewallRules.fromMap((map['firewallRules'] as Map).cast<String, dynamic>())).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      deleteOrUpdateBehavior: map['deleteOrUpdateBehavior'] == null ? null : (map['deleteOrUpdateBehavior']! as String).input(),
+      firewallRules: map['firewallRules'] == null ? null : (FirewallRules.fromMap((map['firewallRules']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

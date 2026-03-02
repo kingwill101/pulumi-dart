@@ -23,8 +23,8 @@ class PipeSourceParametersSelfManagedKafkaParametersVpc {
 
   factory PipeSourceParametersSelfManagedKafkaParametersVpc.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersSelfManagedKafkaParametersVpc(
-      securityGroups: map['securityGroups'] == null ? null : ((map['securityGroups'] as List).cast<String>()).input(),
-      subnets: map['subnets'] == null ? null : ((map['subnets'] as List).cast<String>()).input(),
+      securityGroups: map['securityGroups'] == null ? null : (((map['securityGroups'] as List).cast<String>()).input()).input(),
+      subnets: map['subnets'] == null ? null : (((map['subnets'] as List).cast<String>()).input()).input(),
     );
   }
 }

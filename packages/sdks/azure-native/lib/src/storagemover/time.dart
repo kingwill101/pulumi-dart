@@ -27,7 +27,7 @@ class Time {
   factory Time.fromMap(Map<String, dynamic> map) {
     return Time(
       hour: (map['hour'] as int).input(),
-      minute: map['minute'] == null ? null : (map['minute'] as double).input(),
+      minute: map['minute'] == null ? null : (map['minute']! as double).input(),
     );
   }
 }

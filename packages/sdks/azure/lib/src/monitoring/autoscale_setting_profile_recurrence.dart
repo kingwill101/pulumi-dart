@@ -38,7 +38,7 @@ class AutoscaleSettingProfileRecurrence {
       days: ((map['days'] as List).cast<String>()).input(),
       hours: (map['hours'] as int).input(),
       minutes: (map['minutes'] as int).input(),
-      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
+      timezone: map['timezone'] == null ? null : (map['timezone']! as String).input(),
     );
   }
 }

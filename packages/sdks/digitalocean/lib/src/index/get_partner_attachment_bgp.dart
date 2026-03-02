@@ -27,9 +27,9 @@ class GetPartnerAttachmentBgp {
 
   factory GetPartnerAttachmentBgp.fromMap(Map<String, dynamic> map) {
     return GetPartnerAttachmentBgp(
-      localRouterIp: map['localRouterIp'] == null ? null : (map['localRouterIp'] as String).input(),
-      peerRouterAsn: map['peerRouterAsn'] == null ? null : (map['peerRouterAsn'] as int).input(),
-      peerRouterIp: map['peerRouterIp'] == null ? null : (map['peerRouterIp'] as String).input(),
+      localRouterIp: map['localRouterIp'] == null ? null : (map['localRouterIp']! as String).input(),
+      peerRouterAsn: map['peerRouterAsn'] == null ? null : (map['peerRouterAsn']! as int).input(),
+      peerRouterIp: map['peerRouterIp'] == null ? null : (map['peerRouterIp']! as String).input(),
     );
   }
 }

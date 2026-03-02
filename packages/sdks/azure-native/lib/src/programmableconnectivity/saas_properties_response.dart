@@ -26,8 +26,8 @@ class SaasPropertiesResponse {
 
   factory SaasPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SaasPropertiesResponse(
-      saasResourceId: map['saasResourceId'] == null ? null : (map['saasResourceId'] as String).input(),
-      saasSubscriptionId: map['saasSubscriptionId'] == null ? null : (map['saasSubscriptionId'] as String).input(),
+      saasResourceId: map['saasResourceId'] == null ? null : (map['saasResourceId']! as String).input(),
+      saasSubscriptionId: map['saasSubscriptionId'] == null ? null : (map['saasSubscriptionId']! as String).input(),
     );
   }
 }

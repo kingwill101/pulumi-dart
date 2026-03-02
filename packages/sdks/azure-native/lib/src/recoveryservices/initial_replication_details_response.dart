@@ -26,8 +26,8 @@ class InitialReplicationDetailsResponse {
 
   factory InitialReplicationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InitialReplicationDetailsResponse(
-      initialReplicationProgressPercentage: map['initialReplicationProgressPercentage'] == null ? null : (map['initialReplicationProgressPercentage'] as String).input(),
-      initialReplicationType: map['initialReplicationType'] == null ? null : (map['initialReplicationType'] as String).input(),
+      initialReplicationProgressPercentage: map['initialReplicationProgressPercentage'] == null ? null : (map['initialReplicationProgressPercentage']! as String).input(),
+      initialReplicationType: map['initialReplicationType'] == null ? null : (map['initialReplicationType']! as String).input(),
     );
   }
 }

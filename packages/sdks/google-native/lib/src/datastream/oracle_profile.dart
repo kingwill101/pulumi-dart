@@ -52,12 +52,12 @@ class OracleProfile {
 
   factory OracleProfile.fromMap(Map<String, dynamic> map) {
     return OracleProfile(
-      connectionAttributes: map['connectionAttributes'] == null ? null : ((map['connectionAttributes'] as Map).cast<String, String>()).input(),
+      connectionAttributes: map['connectionAttributes'] == null ? null : ((map['connectionAttributes']! as Map).cast<String, String>()).input(),
       databaseService: (map['databaseService'] as String).input(),
       hostname: (map['hostname'] as String).input(),
-      oracleSslConfig: map['oracleSslConfig'] == null ? null : (OracleSslConfig.fromMap((map['oracleSslConfig'] as Map).cast<String, dynamic>())).input(),
+      oracleSslConfig: map['oracleSslConfig'] == null ? null : (OracleSslConfig.fromMap((map['oracleSslConfig']! as Map).cast<String, dynamic>())).input(),
       password: (map['password'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
       username: (map['username'] as String).input(),
     );
   }

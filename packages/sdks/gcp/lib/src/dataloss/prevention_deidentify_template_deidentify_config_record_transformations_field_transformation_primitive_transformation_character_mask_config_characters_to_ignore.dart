@@ -26,8 +26,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
   factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore(
-      charactersToSkip: map['charactersToSkip'] == null ? null : (map['charactersToSkip'] as String).input(),
-      commonCharactersToIgnore: map['commonCharactersToIgnore'] == null ? null : (map['commonCharactersToIgnore'] as String).input(),
+      charactersToSkip: map['charactersToSkip'] == null ? null : (map['charactersToSkip']! as String).input(),
+      commonCharactersToIgnore: map['commonCharactersToIgnore'] == null ? null : (map['commonCharactersToIgnore']! as String).input(),
     );
   }
 }

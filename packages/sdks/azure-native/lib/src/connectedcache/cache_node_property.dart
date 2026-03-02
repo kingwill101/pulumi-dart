@@ -43,11 +43,11 @@ class CacheNodeProperty {
 
   factory CacheNodeProperty.fromMap(Map<String, dynamic> map) {
     return CacheNodeProperty(
-      additionalCacheNodeProperties: map['additionalCacheNodeProperties'] == null ? null : (AdditionalCacheNodeProperties.fromMap((map['additionalCacheNodeProperties'] as Map).cast<String, dynamic>())).input(),
-      cacheNode: map['cacheNode'] == null ? null : (CacheNodeEntity.fromMap((map['cacheNode'] as Map).cast<String, dynamic>())).input(),
-      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as String).input(),
-      statusDetails: map['statusDetails'] == null ? null : (map['statusDetails'] as String).input(),
-      statusText: map['statusText'] == null ? null : (map['statusText'] as String).input(),
+      additionalCacheNodeProperties: map['additionalCacheNodeProperties'] == null ? null : (AdditionalCacheNodeProperties.fromMap((map['additionalCacheNodeProperties']! as Map).cast<String, dynamic>())).input(),
+      cacheNode: map['cacheNode'] == null ? null : (CacheNodeEntity.fromMap((map['cacheNode']! as Map).cast<String, dynamic>())).input(),
+      statusCode: map['statusCode'] == null ? null : (map['statusCode']! as String).input(),
+      statusDetails: map['statusDetails'] == null ? null : (map['statusDetails']! as String).input(),
+      statusText: map['statusText'] == null ? null : (map['statusText']! as String).input(),
     );
   }
 }

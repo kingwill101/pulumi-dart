@@ -58,14 +58,14 @@ class VbrHealthCheckState {
 
   factory VbrHealthCheckState.fromMap(Map<String, dynamic> map) {
     return VbrHealthCheckState(
-      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
-      healthCheckInterval: map['healthCheckInterval'] == null ? null : (map['healthCheckInterval'] as int).input(),
-      healthCheckSourceIp: map['healthCheckSourceIp'] == null ? null : (map['healthCheckSourceIp'] as String).input(),
-      healthCheckTargetIp: map['healthCheckTargetIp'] == null ? null : (map['healthCheckTargetIp'] as String).input(),
-      healthyThreshold: map['healthyThreshold'] == null ? null : (map['healthyThreshold'] as int).input(),
-      vbrInstanceId: map['vbrInstanceId'] == null ? null : (map['vbrInstanceId'] as String).input(),
-      vbrInstanceOwnerId: map['vbrInstanceOwnerId'] == null ? null : (map['vbrInstanceOwnerId'] as int).input(),
-      vbrInstanceRegionId: map['vbrInstanceRegionId'] == null ? null : (map['vbrInstanceRegionId'] as String).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
+      healthCheckInterval: map['healthCheckInterval'] == null ? null : (map['healthCheckInterval']! as int).input(),
+      healthCheckSourceIp: map['healthCheckSourceIp'] == null ? null : (map['healthCheckSourceIp']! as String).input(),
+      healthCheckTargetIp: map['healthCheckTargetIp'] == null ? null : (map['healthCheckTargetIp']! as String).input(),
+      healthyThreshold: map['healthyThreshold'] == null ? null : (map['healthyThreshold']! as int).input(),
+      vbrInstanceId: map['vbrInstanceId'] == null ? null : (map['vbrInstanceId']! as String).input(),
+      vbrInstanceOwnerId: map['vbrInstanceOwnerId'] == null ? null : (map['vbrInstanceOwnerId']! as int).input(),
+      vbrInstanceRegionId: map['vbrInstanceRegionId'] == null ? null : (map['vbrInstanceRegionId']! as String).input(),
     );
   }
 }

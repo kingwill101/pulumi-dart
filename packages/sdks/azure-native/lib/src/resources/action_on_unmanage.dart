@@ -36,10 +36,10 @@ class ActionOnUnmanage {
 
   factory ActionOnUnmanage.fromMap(Map<String, dynamic> map) {
     return ActionOnUnmanage(
-      managementGroups: map['managementGroups'] == null ? null : (map['managementGroups'] as String).input(),
-      resourceGroups: map['resourceGroups'] == null ? null : (map['resourceGroups'] as String).input(),
+      managementGroups: map['managementGroups'] == null ? null : (map['managementGroups']! as String).input(),
+      resourceGroups: map['resourceGroups'] == null ? null : (map['resourceGroups']! as String).input(),
       resources: (map['resources'] as String).input(),
-      resourcesWithoutDeleteSupport: map['resourcesWithoutDeleteSupport'] == null ? null : (map['resourcesWithoutDeleteSupport'] as String).input(),
+      resourcesWithoutDeleteSupport: map['resourcesWithoutDeleteSupport'] == null ? null : (map['resourcesWithoutDeleteSupport']! as String).input(),
     );
   }
 }

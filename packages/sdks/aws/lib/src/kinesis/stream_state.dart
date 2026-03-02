@@ -83,19 +83,19 @@ class StreamState {
 
   factory StreamState.fromMap(Map<String, dynamic> map) {
     return StreamState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType'] as String).input(),
-      enforceConsumerDeletion: map['enforceConsumerDeletion'] == null ? null : (map['enforceConsumerDeletion'] as bool).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      maxRecordSizeInKib: map['maxRecordSizeInKib'] == null ? null : (map['maxRecordSizeInKib'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as int).input(),
-      shardCount: map['shardCount'] == null ? null : (map['shardCount'] as int).input(),
-      shardLevelMetrics: map['shardLevelMetrics'] == null ? null : ((map['shardLevelMetrics'] as List).cast<String>()).input(),
-      streamModeDetails: map['streamModeDetails'] == null ? null : (StreamStreamModeDetails.fromMap((map['streamModeDetails'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      encryptionType: map['encryptionType'] == null ? null : ((map['encryptionType'] as String).input()).input(),
+      enforceConsumerDeletion: map['enforceConsumerDeletion'] == null ? null : ((map['enforceConsumerDeletion'] as bool).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      maxRecordSizeInKib: map['maxRecordSizeInKib'] == null ? null : ((map['maxRecordSizeInKib'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : ((map['retentionPeriod'] as int).input()).input(),
+      shardCount: map['shardCount'] == null ? null : ((map['shardCount'] as int).input()).input(),
+      shardLevelMetrics: map['shardLevelMetrics'] == null ? null : (((map['shardLevelMetrics'] as List).cast<String>()).input()).input(),
+      streamModeDetails: map['streamModeDetails'] == null ? null : ((StreamStreamModeDetails.fromMap((map['streamModeDetails']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

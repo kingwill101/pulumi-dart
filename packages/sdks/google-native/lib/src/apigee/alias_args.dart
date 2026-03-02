@@ -76,18 +76,18 @@ class AliasArgs {
 
   factory AliasArgs.fromMap(Map<String, dynamic> map) {
     return AliasArgs(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      data: map['data'] == null ? null : (map['data'] as String).input(),
+      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
       environmentId: (map['environmentId'] as String).input(),
-      extensions: map['extensions'] == null ? null : ((map['extensions'] as List).cast<Map<String, String>>()).input(),
-      file: map['file'] == null ? null : (map['file']).input(),
+      extensions: map['extensions'] == null ? null : ((map['extensions']! as List).cast<Map<String, String>>()).input(),
+      file: map['file'] == null ? null : (map['file']!).input(),
       format: (map['format'] as String).input(),
-      ignoreExpiryValidation: map['ignoreExpiryValidation'] == null ? null : (map['ignoreExpiryValidation'] as bool).input(),
-      ignoreNewlineValidation: map['ignoreNewlineValidation'] == null ? null : (map['ignoreNewlineValidation'] as bool).input(),
+      ignoreExpiryValidation: map['ignoreExpiryValidation'] == null ? null : (map['ignoreExpiryValidation']! as bool).input(),
+      ignoreNewlineValidation: map['ignoreNewlineValidation'] == null ? null : (map['ignoreNewlineValidation']! as bool).input(),
       keystoreId: (map['keystoreId'] as String).input(),
       organizationId: (map['organizationId'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
     );
   }
 }

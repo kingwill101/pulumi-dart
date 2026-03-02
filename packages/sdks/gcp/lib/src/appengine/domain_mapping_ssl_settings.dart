@@ -42,8 +42,8 @@ class DomainMappingSslSettings {
 
   factory DomainMappingSslSettings.fromMap(Map<String, dynamic> map) {
     return DomainMappingSslSettings(
-      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
-      pendingManagedCertificateId: map['pendingManagedCertificateId'] == null ? null : (map['pendingManagedCertificateId'] as String).input(),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as String).input(),
+      pendingManagedCertificateId: map['pendingManagedCertificateId'] == null ? null : (map['pendingManagedCertificateId']! as String).input(),
       sslManagementType: (map['sslManagementType'] as String).input(),
     );
   }

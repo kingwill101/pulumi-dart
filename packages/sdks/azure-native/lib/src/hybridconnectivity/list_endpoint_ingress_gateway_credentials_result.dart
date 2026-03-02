@@ -61,13 +61,13 @@ class ListEndpointIngressGatewayCredentialsResult {
   factory ListEndpointIngressGatewayCredentialsResult.fromMap(Map<String, dynamic> map) {
     return ListEndpointIngressGatewayCredentialsResult(
       accessKey: map['accessKey'] as String,
-      expiresOn: map['expiresOn'] == null ? null : map['expiresOn'] as double,
+      expiresOn: map['expiresOn'] == null ? null : map['expiresOn']! as double,
       hostname: map['hostname'] as String,
       hybridConnectionName: map['hybridConnectionName'] as String,
       namespaceName: map['namespaceName'] as String,
       namespaceNameSuffix: map['namespaceNameSuffix'] as String,
       serverId: map['serverId'] as String,
-      serviceConfigurationToken: map['serviceConfigurationToken'] == null ? null : map['serviceConfigurationToken'] as String,
+      serviceConfigurationToken: map['serviceConfigurationToken'] == null ? null : map['serviceConfigurationToken']! as String,
       tenantId: map['tenantId'] as String,
     );
   }

@@ -36,10 +36,10 @@ class YumSettingsOsconfigV1beta {
 
   factory YumSettingsOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return YumSettingsOsconfigV1beta(
-      excludes: map['excludes'] == null ? null : ((map['excludes'] as List).cast<String>()).input(),
-      exclusivePackages: map['exclusivePackages'] == null ? null : ((map['exclusivePackages'] as List).cast<String>()).input(),
-      minimal: map['minimal'] == null ? null : (map['minimal'] as bool).input(),
-      security: map['security'] == null ? null : (map['security'] as bool).input(),
+      excludes: map['excludes'] == null ? null : ((map['excludes']! as List).cast<String>()).input(),
+      exclusivePackages: map['exclusivePackages'] == null ? null : ((map['exclusivePackages']! as List).cast<String>()).input(),
+      minimal: map['minimal'] == null ? null : (map['minimal']! as bool).input(),
+      security: map['security'] == null ? null : (map['security']! as bool).input(),
     );
   }
 }

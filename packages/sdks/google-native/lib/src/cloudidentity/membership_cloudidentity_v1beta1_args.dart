@@ -41,9 +41,9 @@ class MembershipCloudidentityV1beta1Args {
   factory MembershipCloudidentityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return MembershipCloudidentityV1beta1Args(
       groupId: (map['groupId'] as String).input(),
-      memberKey: map['memberKey'] == null ? null : (EntityKeyCloudidentityV1beta1.fromMap((map['memberKey'] as Map).cast<String, dynamic>())).input(),
+      memberKey: map['memberKey'] == null ? null : (EntityKeyCloudidentityV1beta1.fromMap((map['memberKey']! as Map).cast<String, dynamic>())).input(),
       preferredMemberKey: (EntityKeyCloudidentityV1beta1.fromMap((map['preferredMemberKey'] as Map).cast<String, dynamic>())).input(),
-      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<MembershipRoleCloudidentityV1beta1>(map['roles'], (value) => MembershipRoleCloudidentityV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<MembershipRoleCloudidentityV1beta1>(map['roles']!, (value) => MembershipRoleCloudidentityV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -71,18 +71,18 @@ class InstanceSecondaryNetworkInterface {
 
   factory InstanceSecondaryNetworkInterface.fromMap(Map<String, dynamic> map) {
     return InstanceSecondaryNetworkInterface(
-      deleteOnTermination: map['deleteOnTermination'] == null ? null : (map['deleteOnTermination'] as bool).input(),
-      deviceIndex: map['deviceIndex'] == null ? null : (map['deviceIndex'] as int).input(),
-      interfaceType: map['interfaceType'] == null ? null : (map['interfaceType'] as String).input(),
-      macAddress: map['macAddress'] == null ? null : (map['macAddress'] as String).input(),
+      deleteOnTermination: map['deleteOnTermination'] == null ? null : ((map['deleteOnTermination'] as bool).input()).input(),
+      deviceIndex: map['deviceIndex'] == null ? null : ((map['deviceIndex'] as int).input()).input(),
+      interfaceType: map['interfaceType'] == null ? null : ((map['interfaceType'] as String).input()).input(),
+      macAddress: map['macAddress'] == null ? null : ((map['macAddress'] as String).input()).input(),
       networkCardIndex: (map['networkCardIndex'] as int).input(),
-      privateIpAddressCount: map['privateIpAddressCount'] == null ? null : (map['privateIpAddressCount'] as int).input(),
-      privateIpAddresses: map['privateIpAddresses'] == null ? null : ((map['privateIpAddresses'] as List).cast<String>()).input(),
-      secondaryInterfaceId: map['secondaryInterfaceId'] == null ? null : (map['secondaryInterfaceId'] as String).input(),
-      secondaryNetworkId: map['secondaryNetworkId'] == null ? null : (map['secondaryNetworkId'] as String).input(),
+      privateIpAddressCount: map['privateIpAddressCount'] == null ? null : ((map['privateIpAddressCount'] as int).input()).input(),
+      privateIpAddresses: map['privateIpAddresses'] == null ? null : (((map['privateIpAddresses'] as List).cast<String>()).input()).input(),
+      secondaryInterfaceId: map['secondaryInterfaceId'] == null ? null : ((map['secondaryInterfaceId'] as String).input()).input(),
+      secondaryNetworkId: map['secondaryNetworkId'] == null ? null : ((map['secondaryNetworkId'] as String).input()).input(),
       secondarySubnetId: (map['secondarySubnetId'] as String).input(),
-      sourceDestCheck: map['sourceDestCheck'] == null ? null : (map['sourceDestCheck'] as bool).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      sourceDestCheck: map['sourceDestCheck'] == null ? null : ((map['sourceDestCheck'] as bool).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

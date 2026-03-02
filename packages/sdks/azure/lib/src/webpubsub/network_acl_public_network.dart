@@ -27,8 +27,8 @@ class NetworkAclPublicNetwork {
 
   factory NetworkAclPublicNetwork.fromMap(Map<String, dynamic> map) {
     return NetworkAclPublicNetwork(
-      allowedRequestTypes: map['allowedRequestTypes'] == null ? null : ((map['allowedRequestTypes'] as List).cast<String>()).input(),
-      deniedRequestTypes: map['deniedRequestTypes'] == null ? null : ((map['deniedRequestTypes'] as List).cast<String>()).input(),
+      allowedRequestTypes: map['allowedRequestTypes'] == null ? null : ((map['allowedRequestTypes']! as List).cast<String>()).input(),
+      deniedRequestTypes: map['deniedRequestTypes'] == null ? null : ((map['deniedRequestTypes']! as List).cast<String>()).input(),
     );
   }
 }

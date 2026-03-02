@@ -38,10 +38,10 @@ class ApplicationAccessScopeState {
 
   factory ApplicationAccessScopeState.fromMap(Map<String, dynamic> map) {
     return ApplicationAccessScopeState(
-      applicationArn: map['applicationArn'] == null ? null : (map['applicationArn'] as String).input(),
-      authorizedTargets: map['authorizedTargets'] == null ? null : ((map['authorizedTargets'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      applicationArn: map['applicationArn'] == null ? null : ((map['applicationArn'] as String).input()).input(),
+      authorizedTargets: map['authorizedTargets'] == null ? null : (((map['authorizedTargets'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scope: map['scope'] == null ? null : ((map['scope'] as String).input()).input(),
     );
   }
 }

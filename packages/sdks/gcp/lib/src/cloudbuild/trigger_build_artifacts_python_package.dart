@@ -26,8 +26,8 @@ class TriggerBuildArtifactsPythonPackage {
 
   factory TriggerBuildArtifactsPythonPackage.fromMap(Map<String, dynamic> map) {
     return TriggerBuildArtifactsPythonPackage(
-      paths: map['paths'] == null ? null : ((map['paths'] as List).cast<String>()).input(),
-      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
+      paths: map['paths'] == null ? null : ((map['paths']! as List).cast<String>()).input(),
+      repository: map['repository'] == null ? null : (map['repository']! as String).input(),
     );
   }
 }

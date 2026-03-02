@@ -31,9 +31,9 @@ class Disk {
 
   factory Disk.fromMap(Map<String, dynamic> map) {
     return Disk(
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
-      mountPoint: map['mountPoint'] == null ? null : (map['mountPoint'] as String).input(),
-      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb'] as int).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
+      mountPoint: map['mountPoint'] == null ? null : (map['mountPoint']! as String).input(),
+      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb']! as int).input(),
     );
   }
 }

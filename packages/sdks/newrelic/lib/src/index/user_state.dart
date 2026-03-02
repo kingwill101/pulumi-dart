@@ -40,10 +40,10 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      authenticationDomainId: map['authenticationDomainId'] == null ? null : (map['authenticationDomainId'] as String).input(),
-      emailId: map['emailId'] == null ? null : (map['emailId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      userType: map['userType'] == null ? null : (map['userType'] as String).input(),
+      authenticationDomainId: map['authenticationDomainId'] == null ? null : (map['authenticationDomainId']! as String).input(),
+      emailId: map['emailId'] == null ? null : (map['emailId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      userType: map['userType'] == null ? null : (map['userType']! as String).input(),
     );
   }
 }

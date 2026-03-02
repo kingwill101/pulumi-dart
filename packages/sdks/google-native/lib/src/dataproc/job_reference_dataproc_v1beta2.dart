@@ -26,8 +26,8 @@ class JobReferenceDataprocV1beta2 {
 
   factory JobReferenceDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return JobReferenceDataprocV1beta2(
-      jobId: map['jobId'] == null ? null : (map['jobId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      jobId: map['jobId'] == null ? null : (map['jobId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

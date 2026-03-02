@@ -30,9 +30,9 @@ class SecretRotationRotationRules {
 
   factory SecretRotationRotationRules.fromMap(Map<String, dynamic> map) {
     return SecretRotationRotationRules(
-      automaticallyAfterDays: map['automaticallyAfterDays'] == null ? null : (map['automaticallyAfterDays'] as int).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
-      scheduleExpression: map['scheduleExpression'] == null ? null : (map['scheduleExpression'] as String).input(),
+      automaticallyAfterDays: map['automaticallyAfterDays'] == null ? null : ((map['automaticallyAfterDays'] as int).input()).input(),
+      duration: map['duration'] == null ? null : ((map['duration'] as String).input()).input(),
+      scheduleExpression: map['scheduleExpression'] == null ? null : ((map['scheduleExpression'] as String).input()).input(),
     );
   }
 }

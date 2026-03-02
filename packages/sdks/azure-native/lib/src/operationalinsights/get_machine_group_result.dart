@@ -69,13 +69,13 @@ class GetMachineGroupResult {
   factory GetMachineGroupResult.fromMap(Map<String, dynamic> map) {
     return GetMachineGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      count: map['count'] == null ? null : map['count'] as int,
+      count: map['count'] == null ? null : map['count']! as int,
       displayName: map['displayName'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
-      groupType: map['groupType'] == null ? null : map['groupType'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
+      groupType: map['groupType'] == null ? null : map['groupType']! as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
-      machines: map['machines'] == null ? null : pulumi.Input.decodeList<MachineReferenceWithHintsResponse>(map['machines'], (value) => MachineReferenceWithHintsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      machines: map['machines'] == null ? null : pulumi.Input.decodeList<MachineReferenceWithHintsResponse>(map['machines']!, (value) => MachineReferenceWithHintsResponse.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       type: map['type'] as String,
     );

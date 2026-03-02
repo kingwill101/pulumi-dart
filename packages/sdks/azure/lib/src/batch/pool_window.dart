@@ -20,7 +20,7 @@ class PoolWindow {
 
   factory PoolWindow.fromMap(Map<String, dynamic> map) {
     return PoolWindow(
-      enableAutomaticUpdates: map['enableAutomaticUpdates'] == null ? null : (map['enableAutomaticUpdates'] as bool).input(),
+      enableAutomaticUpdates: map['enableAutomaticUpdates'] == null ? null : (map['enableAutomaticUpdates']! as bool).input(),
     );
   }
 }

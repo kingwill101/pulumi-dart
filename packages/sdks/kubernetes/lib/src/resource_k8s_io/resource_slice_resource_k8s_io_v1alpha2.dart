@@ -50,12 +50,12 @@ class ResourceSliceResourceK8sIoV1alpha2 {
 
   factory ResourceSliceResourceK8sIoV1alpha2.fromMap(Map<String, dynamic> map) {
     return ResourceSliceResourceK8sIoV1alpha2(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
       driverName: (map['driverName'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      namedResources: map['namedResources'] == null ? null : (NamedResourcesResources.fromMap((map['namedResources'] as Map).cast<String, dynamic>())).input(),
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      namedResources: map['namedResources'] == null ? null : (NamedResourcesResources.fromMap((map['namedResources']! as Map).cast<String, dynamic>())).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
     );
   }
 }

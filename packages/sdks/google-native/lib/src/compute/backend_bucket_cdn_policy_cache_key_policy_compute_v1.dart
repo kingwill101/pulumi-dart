@@ -26,8 +26,8 @@ class BackendBucketCdnPolicyCacheKeyPolicyComputeV1 {
 
   factory BackendBucketCdnPolicyCacheKeyPolicyComputeV1.fromMap(Map<String, dynamic> map) {
     return BackendBucketCdnPolicyCacheKeyPolicyComputeV1(
-      includeHttpHeaders: map['includeHttpHeaders'] == null ? null : ((map['includeHttpHeaders'] as List).cast<String>()).input(),
-      queryStringWhitelist: map['queryStringWhitelist'] == null ? null : ((map['queryStringWhitelist'] as List).cast<String>()).input(),
+      includeHttpHeaders: map['includeHttpHeaders'] == null ? null : ((map['includeHttpHeaders']! as List).cast<String>()).input(),
+      queryStringWhitelist: map['queryStringWhitelist'] == null ? null : ((map['queryStringWhitelist']! as List).cast<String>()).input(),
     );
   }
 }

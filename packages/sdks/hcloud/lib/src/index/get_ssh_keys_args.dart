@@ -29,8 +29,8 @@ class GetSshKeysArgs {
 
   factory GetSshKeysArgs.fromMap(Map<String, dynamic> map) {
     return GetSshKeysArgs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
     );
   }
 }

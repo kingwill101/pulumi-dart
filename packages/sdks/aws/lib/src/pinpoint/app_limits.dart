@@ -35,10 +35,10 @@ class AppLimits {
 
   factory AppLimits.fromMap(Map<String, dynamic> map) {
     return AppLimits(
-      daily: map['daily'] == null ? null : (map['daily'] as int).input(),
-      maximumDuration: map['maximumDuration'] == null ? null : (map['maximumDuration'] as int).input(),
-      messagesPerSecond: map['messagesPerSecond'] == null ? null : (map['messagesPerSecond'] as int).input(),
-      total: map['total'] == null ? null : (map['total'] as int).input(),
+      daily: map['daily'] == null ? null : ((map['daily'] as int).input()).input(),
+      maximumDuration: map['maximumDuration'] == null ? null : ((map['maximumDuration'] as int).input()).input(),
+      messagesPerSecond: map['messagesPerSecond'] == null ? null : ((map['messagesPerSecond'] as int).input()).input(),
+      total: map['total'] == null ? null : ((map['total'] as int).input()).input(),
     );
   }
 }

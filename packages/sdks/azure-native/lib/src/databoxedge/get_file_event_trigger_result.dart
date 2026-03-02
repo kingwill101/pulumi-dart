@@ -65,7 +65,7 @@ class GetFileEventTriggerResult {
   factory GetFileEventTriggerResult.fromMap(Map<String, dynamic> map) {
     return GetFileEventTriggerResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      customContextTag: map['customContextTag'] == null ? null : map['customContextTag'] as String,
+      customContextTag: map['customContextTag'] == null ? null : map['customContextTag']! as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,

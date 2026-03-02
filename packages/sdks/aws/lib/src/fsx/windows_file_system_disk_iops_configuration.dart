@@ -25,8 +25,8 @@ class WindowsFileSystemDiskIopsConfiguration {
 
   factory WindowsFileSystemDiskIopsConfiguration.fromMap(Map<String, dynamic> map) {
     return WindowsFileSystemDiskIopsConfiguration(
-      iops: map['iops'] == null ? null : (map['iops'] as int).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      iops: map['iops'] == null ? null : ((map['iops'] as int).input()).input(),
+      mode: map['mode'] == null ? null : ((map['mode'] as String).input()).input(),
     );
   }
 }

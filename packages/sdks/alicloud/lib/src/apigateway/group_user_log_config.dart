@@ -45,12 +45,12 @@ class GroupUserLogConfig {
 
   factory GroupUserLogConfig.fromMap(Map<String, dynamic> map) {
     return GroupUserLogConfig(
-      jwtClaims: map['jwtClaims'] == null ? null : (map['jwtClaims'] as String).input(),
-      queryString: map['queryString'] == null ? null : (map['queryString'] as String).input(),
-      requestBody: map['requestBody'] == null ? null : (map['requestBody'] as bool).input(),
-      requestHeaders: map['requestHeaders'] == null ? null : (map['requestHeaders'] as String).input(),
-      responseBody: map['responseBody'] == null ? null : (map['responseBody'] as bool).input(),
-      responseHeaders: map['responseHeaders'] == null ? null : (map['responseHeaders'] as String).input(),
+      jwtClaims: map['jwtClaims'] == null ? null : (map['jwtClaims']! as String).input(),
+      queryString: map['queryString'] == null ? null : (map['queryString']! as String).input(),
+      requestBody: map['requestBody'] == null ? null : (map['requestBody']! as bool).input(),
+      requestHeaders: map['requestHeaders'] == null ? null : (map['requestHeaders']! as String).input(),
+      responseBody: map['responseBody'] == null ? null : (map['responseBody']! as bool).input(),
+      responseHeaders: map['responseHeaders'] == null ? null : (map['responseHeaders']! as String).input(),
     );
   }
 }

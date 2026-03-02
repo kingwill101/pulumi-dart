@@ -33,8 +33,8 @@ class ServerlessEndpoint {
   factory ServerlessEndpoint.fromMap(Map<String, dynamic> map) {
     return ServerlessEndpoint(
       authMode: (map['authMode'] as String).input(),
-      contentSafety: map['contentSafety'] == null ? null : (ContentSafety.fromMap((map['contentSafety'] as Map).cast<String, dynamic>())).input(),
-      modelSettings: map['modelSettings'] == null ? null : (ModelSettings.fromMap((map['modelSettings'] as Map).cast<String, dynamic>())).input(),
+      contentSafety: map['contentSafety'] == null ? null : (ContentSafety.fromMap((map['contentSafety']! as Map).cast<String, dynamic>())).input(),
+      modelSettings: map['modelSettings'] == null ? null : (ModelSettings.fromMap((map['modelSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -86,18 +86,18 @@ class ElasticVolumePropertiesResponse {
   factory ElasticVolumePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticVolumePropertiesResponse(
       availabilityStatus: (map['availabilityStatus'] as String).input(),
-      backupResourceId: map['backupResourceId'] == null ? null : (map['backupResourceId'] as String).input(),
-      dataProtection: map['dataProtection'] == null ? null : (ElasticVolumeDataProtectionPropertiesResponse.fromMap((map['dataProtection'] as Map).cast<String, dynamic>())).input(),
-      exportPolicy: map['exportPolicy'] == null ? null : (ElasticExportPolicyResponse.fromMap((map['exportPolicy'] as Map).cast<String, dynamic>())).input(),
+      backupResourceId: map['backupResourceId'] == null ? null : (map['backupResourceId']! as String).input(),
+      dataProtection: map['dataProtection'] == null ? null : (ElasticVolumeDataProtectionPropertiesResponse.fromMap((map['dataProtection']! as Map).cast<String, dynamic>())).input(),
+      exportPolicy: map['exportPolicy'] == null ? null : (ElasticExportPolicyResponse.fromMap((map['exportPolicy']! as Map).cast<String, dynamic>())).input(),
       filePath: (map['filePath'] as String).input(),
       mountTargets: (pulumi.Input.decodeList<ElasticMountTargetPropertiesResponse>(map['mountTargets'], (value) => ElasticMountTargetPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       protocolTypes: ((map['protocolTypes'] as List).cast<String>()).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       restorationState: (map['restorationState'] as String).input(),
       size: (map['size'] as double).input(),
-      smbProperties: map['smbProperties'] == null ? null : (ElasticSmbPropertiesResponse.fromMap((map['smbProperties'] as Map).cast<String, dynamic>())).input(),
-      snapshotDirectoryVisibility: map['snapshotDirectoryVisibility'] == null ? null : (map['snapshotDirectoryVisibility'] as String).input(),
-      snapshotResourceId: map['snapshotResourceId'] == null ? null : (map['snapshotResourceId'] as String).input(),
+      smbProperties: map['smbProperties'] == null ? null : (ElasticSmbPropertiesResponse.fromMap((map['smbProperties']! as Map).cast<String, dynamic>())).input(),
+      snapshotDirectoryVisibility: map['snapshotDirectoryVisibility'] == null ? null : (map['snapshotDirectoryVisibility']! as String).input(),
+      snapshotResourceId: map['snapshotResourceId'] == null ? null : (map['snapshotResourceId']! as String).input(),
     );
   }
 }

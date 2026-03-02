@@ -22,7 +22,7 @@ class SymmetricKeyResponse {
 
   factory SymmetricKeyResponse.fromMap(Map<String, dynamic> map) {
     return SymmetricKeyResponse(
-      connectionString: map['connectionString'] == null ? null : (AsymmetricEncryptedSecretResponse.fromMap((map['connectionString'] as Map).cast<String, dynamic>())).input(),
+      connectionString: map['connectionString'] == null ? null : (AsymmetricEncryptedSecretResponse.fromMap((map['connectionString']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

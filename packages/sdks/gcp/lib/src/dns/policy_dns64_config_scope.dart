@@ -20,7 +20,7 @@ class PolicyDns64ConfigScope {
 
   factory PolicyDns64ConfigScope.fromMap(Map<String, dynamic> map) {
     return PolicyDns64ConfigScope(
-      allQueries: map['allQueries'] == null ? null : (map['allQueries'] as bool).input(),
+      allQueries: map['allQueries'] == null ? null : (map['allQueries']! as bool).input(),
     );
   }
 }

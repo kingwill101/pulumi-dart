@@ -52,8 +52,8 @@ class IntegrationAccountBatchConfigurationArgs {
     return IntegrationAccountBatchConfigurationArgs(
       batchGroupName: (map['batchGroupName'] as String).input(),
       integrationAccountName: (map['integrationAccountName'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       releaseCriteria: (IntegrationAccountBatchConfigurationReleaseCriteria.fromMap((map['releaseCriteria'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

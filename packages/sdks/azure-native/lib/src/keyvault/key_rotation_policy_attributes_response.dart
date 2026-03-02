@@ -31,7 +31,7 @@ class KeyRotationPolicyAttributesResponse {
   factory KeyRotationPolicyAttributesResponse.fromMap(Map<String, dynamic> map) {
     return KeyRotationPolicyAttributesResponse(
       created: (map['created'] as double).input(),
-      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime'] as String).input(),
+      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime']! as String).input(),
       updated: (map['updated'] as double).input(),
     );
   }

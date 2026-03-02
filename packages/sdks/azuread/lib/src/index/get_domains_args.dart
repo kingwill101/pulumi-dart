@@ -51,12 +51,12 @@ class GetDomainsArgs {
 
   factory GetDomainsArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainsArgs(
-      adminManaged: map['adminManaged'] == null ? null : (map['adminManaged'] as bool).input(),
-      includeUnverified: map['includeUnverified'] == null ? null : (map['includeUnverified'] as bool).input(),
-      onlyDefault: map['onlyDefault'] == null ? null : (map['onlyDefault'] as bool).input(),
-      onlyInitial: map['onlyInitial'] == null ? null : (map['onlyInitial'] as bool).input(),
-      onlyRoot: map['onlyRoot'] == null ? null : (map['onlyRoot'] as bool).input(),
-      supportsServices: map['supportsServices'] == null ? null : ((map['supportsServices'] as List).cast<String>()).input(),
+      adminManaged: map['adminManaged'] == null ? null : (map['adminManaged']! as bool).input(),
+      includeUnverified: map['includeUnverified'] == null ? null : (map['includeUnverified']! as bool).input(),
+      onlyDefault: map['onlyDefault'] == null ? null : (map['onlyDefault']! as bool).input(),
+      onlyInitial: map['onlyInitial'] == null ? null : (map['onlyInitial']! as bool).input(),
+      onlyRoot: map['onlyRoot'] == null ? null : (map['onlyRoot']! as bool).input(),
+      supportsServices: map['supportsServices'] == null ? null : ((map['supportsServices']! as List).cast<String>()).input(),
     );
   }
 }

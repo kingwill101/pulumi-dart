@@ -28,7 +28,7 @@ class SELinuxStrategyOptions {
   factory SELinuxStrategyOptions.fromMap(Map<String, dynamic> map) {
     return SELinuxStrategyOptions(
       rule: (map['rule'] as String).input(),
-      seLinuxOptions: map['seLinuxOptions'] == null ? null : (SELinuxOptions.fromMap((map['seLinuxOptions'] as Map).cast<String, dynamic>())).input(),
+      seLinuxOptions: map['seLinuxOptions'] == null ? null : (SELinuxOptions.fromMap((map['seLinuxOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

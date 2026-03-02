@@ -60,16 +60,16 @@ class OpenApiImageCacheArgs {
 
   factory OpenApiImageCacheArgs.fromMap(Map<String, dynamic> map) {
     return OpenApiImageCacheArgs(
-      eipInstanceId: map['eipInstanceId'] == null ? null : (map['eipInstanceId'] as String).input(),
+      eipInstanceId: map['eipInstanceId'] == null ? null : (map['eipInstanceId']! as String).input(),
       imageCacheName: (map['imageCacheName'] as String).input(),
-      imageCacheSize: map['imageCacheSize'] == null ? null : (map['imageCacheSize'] as int).input(),
-      imageRegistryCredentials: map['imageRegistryCredentials'] == null ? null : (pulumi.Input.decodeList<OpenApiImageCacheImageRegistryCredential>(map['imageRegistryCredentials'], (value) => OpenApiImageCacheImageRegistryCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      imageCacheSize: map['imageCacheSize'] == null ? null : (map['imageCacheSize']! as int).input(),
+      imageRegistryCredentials: map['imageRegistryCredentials'] == null ? null : (pulumi.Input.decodeList<OpenApiImageCacheImageRegistryCredential>(map['imageRegistryCredentials']!, (value) => OpenApiImageCacheImageRegistryCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
       images: ((map['images'] as List).cast<String>()).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
       securityGroupId: (map['securityGroupId'] as String).input(),
       vswitchId: (map['vswitchId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

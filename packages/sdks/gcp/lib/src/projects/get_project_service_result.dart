@@ -44,7 +44,7 @@ class GetProjectServiceResult {
       disableDependentServices: map['disableDependentServices'] as bool,
       disableOnDestroy: map['disableOnDestroy'] as bool,
       id: map['id'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       service: map['service'] as String,
     );
   }

@@ -24,7 +24,7 @@ class VirtualMachineScaleSetHardwareProfile {
 
   factory VirtualMachineScaleSetHardwareProfile.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetHardwareProfile(
-      vmSizeProperties: map['vmSizeProperties'] == null ? null : (VMSizeProperties.fromMap((map['vmSizeProperties'] as Map).cast<String, dynamic>())).input(),
+      vmSizeProperties: map['vmSizeProperties'] == null ? null : (VMSizeProperties.fromMap((map['vmSizeProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

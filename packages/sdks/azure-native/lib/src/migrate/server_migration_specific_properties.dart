@@ -32,8 +32,8 @@ class ServerMigrationSpecificProperties {
 
   factory ServerMigrationSpecificProperties.fromMap(Map<String, dynamic> map) {
     return ServerMigrationSpecificProperties(
-      currentJobId: map['currentJobId'] == null ? null : (map['currentJobId'] as String).input(),
-      drApplianceInventoryId: map['drApplianceInventoryId'] == null ? null : (map['drApplianceInventoryId'] as String).input(),
+      currentJobId: map['currentJobId'] == null ? null : (map['currentJobId']! as String).input(),
+      drApplianceInventoryId: map['drApplianceInventoryId'] == null ? null : (map['drApplianceInventoryId']! as String).input(),
       instanceType: (map['instanceType'] as String).input(),
     );
   }

@@ -27,8 +27,8 @@ class RestoreTestingSelectionProtectedResourceConditions {
 
   factory RestoreTestingSelectionProtectedResourceConditions.fromMap(Map<String, dynamic> map) {
     return RestoreTestingSelectionProtectedResourceConditions(
-      stringEquals: map['stringEquals'] == null ? null : (pulumi.Input.decodeList<RestoreTestingSelectionProtectedResourceConditionsStringEqual>(map['stringEquals'], (value) => RestoreTestingSelectionProtectedResourceConditionsStringEqual.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      stringNotEquals: map['stringNotEquals'] == null ? null : (pulumi.Input.decodeList<RestoreTestingSelectionProtectedResourceConditionsStringNotEqual>(map['stringNotEquals'], (value) => RestoreTestingSelectionProtectedResourceConditionsStringNotEqual.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stringEquals: map['stringEquals'] == null ? null : ((pulumi.Input.decodeList<RestoreTestingSelectionProtectedResourceConditionsStringEqual>(map['stringEquals']!, (value) => RestoreTestingSelectionProtectedResourceConditionsStringEqual.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      stringNotEquals: map['stringNotEquals'] == null ? null : ((pulumi.Input.decodeList<RestoreTestingSelectionProtectedResourceConditionsStringNotEqual>(map['stringNotEquals']!, (value) => RestoreTestingSelectionProtectedResourceConditionsStringNotEqual.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

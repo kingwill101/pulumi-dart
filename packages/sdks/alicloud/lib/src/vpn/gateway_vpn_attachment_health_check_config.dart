@@ -50,13 +50,13 @@ class GatewayVpnAttachmentHealthCheckConfig {
 
   factory GatewayVpnAttachmentHealthCheckConfig.fromMap(Map<String, dynamic> map) {
     return GatewayVpnAttachmentHealthCheckConfig(
-      dip: map['dip'] == null ? null : (map['dip'] as String).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      retry: map['retry'] == null ? null : (map['retry'] as int).input(),
-      sip: map['sip'] == null ? null : (map['sip'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      dip: map['dip'] == null ? null : (map['dip']! as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
+      retry: map['retry'] == null ? null : (map['retry']! as int).input(),
+      sip: map['sip'] == null ? null : (map['sip']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

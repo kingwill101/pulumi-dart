@@ -26,7 +26,7 @@ class AgentcoreTokenVaultCmkKmsConfiguration {
   factory AgentcoreTokenVaultCmkKmsConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreTokenVaultCmkKmsConfiguration(
       keyType: (map['keyType'] as String).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
     );
   }
 }

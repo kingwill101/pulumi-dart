@@ -73,13 +73,13 @@ class GetHubResult {
     return GetHubResult(
       apiEndpoint: map['apiEndpoint'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      hubBillingInfo: map['hubBillingInfo'] == null ? null : HubBillingInfoFormatResponse.fromMap((map['hubBillingInfo'] as Map).cast<String, dynamic>()),
+      hubBillingInfo: map['hubBillingInfo'] == null ? null : HubBillingInfoFormatResponse.fromMap((map['hubBillingInfo']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      tenantFeatures: map['tenantFeatures'] == null ? null : map['tenantFeatures'] as int,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tenantFeatures: map['tenantFeatures'] == null ? null : map['tenantFeatures']! as int,
       type: map['type'] as String,
       webEndpoint: map['webEndpoint'] as String,
     );

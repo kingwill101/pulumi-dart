@@ -28,8 +28,8 @@ class EgressPolicy {
 
   factory EgressPolicy.fromMap(Map<String, dynamic> map) {
     return EgressPolicy(
-      egressFrom: map['egressFrom'] == null ? null : (EgressFrom.fromMap((map['egressFrom'] as Map).cast<String, dynamic>())).input(),
-      egressTo: map['egressTo'] == null ? null : (EgressTo.fromMap((map['egressTo'] as Map).cast<String, dynamic>())).input(),
+      egressFrom: map['egressFrom'] == null ? null : (EgressFrom.fromMap((map['egressFrom']! as Map).cast<String, dynamic>())).input(),
+      egressTo: map['egressTo'] == null ? null : (EgressTo.fromMap((map['egressTo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

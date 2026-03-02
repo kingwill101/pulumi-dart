@@ -64,14 +64,14 @@ class AKSSchemaResponseProperties {
 
   factory AKSSchemaResponseProperties.fromMap(Map<String, dynamic> map) {
     return AKSSchemaResponseProperties(
-      agentCount: map['agentCount'] == null ? null : (map['agentCount'] as int).input(),
-      agentVmSize: map['agentVmSize'] == null ? null : (map['agentVmSize'] as String).input(),
-      aksNetworkingConfiguration: map['aksNetworkingConfiguration'] == null ? null : (AksNetworkingConfigurationResponse.fromMap((map['aksNetworkingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      clusterFqdn: map['clusterFqdn'] == null ? null : (map['clusterFqdn'] as String).input(),
-      clusterPurpose: map['clusterPurpose'] == null ? null : (map['clusterPurpose'] as String).input(),
-      loadBalancerSubnet: map['loadBalancerSubnet'] == null ? null : (map['loadBalancerSubnet'] as String).input(),
-      loadBalancerType: map['loadBalancerType'] == null ? null : (map['loadBalancerType'] as String).input(),
-      sslConfiguration: map['sslConfiguration'] == null ? null : (SslConfigurationResponse.fromMap((map['sslConfiguration'] as Map).cast<String, dynamic>())).input(),
+      agentCount: map['agentCount'] == null ? null : (map['agentCount']! as int).input(),
+      agentVmSize: map['agentVmSize'] == null ? null : (map['agentVmSize']! as String).input(),
+      aksNetworkingConfiguration: map['aksNetworkingConfiguration'] == null ? null : (AksNetworkingConfigurationResponse.fromMap((map['aksNetworkingConfiguration']! as Map).cast<String, dynamic>())).input(),
+      clusterFqdn: map['clusterFqdn'] == null ? null : (map['clusterFqdn']! as String).input(),
+      clusterPurpose: map['clusterPurpose'] == null ? null : (map['clusterPurpose']! as String).input(),
+      loadBalancerSubnet: map['loadBalancerSubnet'] == null ? null : (map['loadBalancerSubnet']! as String).input(),
+      loadBalancerType: map['loadBalancerType'] == null ? null : (map['loadBalancerType']! as String).input(),
+      sslConfiguration: map['sslConfiguration'] == null ? null : (SslConfigurationResponse.fromMap((map['sslConfiguration']! as Map).cast<String, dynamic>())).input(),
       systemServices: (pulumi.Input.decodeList<SystemServiceResponse>(map['systemServices'], (value) => SystemServiceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

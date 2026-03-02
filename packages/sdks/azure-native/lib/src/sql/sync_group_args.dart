@@ -91,20 +91,20 @@ class SyncGroupArgs {
 
   factory SyncGroupArgs.fromMap(Map<String, dynamic> map) {
     return SyncGroupArgs(
-      conflictLoggingRetentionInDays: map['conflictLoggingRetentionInDays'] == null ? null : (map['conflictLoggingRetentionInDays'] as int).input(),
-      conflictResolutionPolicy: map['conflictResolutionPolicy'] == null ? null : (map['conflictResolutionPolicy'] as String).input(),
+      conflictLoggingRetentionInDays: map['conflictLoggingRetentionInDays'] == null ? null : (map['conflictLoggingRetentionInDays']! as int).input(),
+      conflictResolutionPolicy: map['conflictResolutionPolicy'] == null ? null : (map['conflictResolutionPolicy']! as String).input(),
       databaseName: (map['databaseName'] as String).input(),
-      enableConflictLogging: map['enableConflictLogging'] == null ? null : (map['enableConflictLogging'] as bool).input(),
-      hubDatabasePassword: map['hubDatabasePassword'] == null ? null : (map['hubDatabasePassword'] as String).input(),
-      hubDatabaseUserName: map['hubDatabaseUserName'] == null ? null : (map['hubDatabaseUserName'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
+      enableConflictLogging: map['enableConflictLogging'] == null ? null : (map['enableConflictLogging']! as bool).input(),
+      hubDatabasePassword: map['hubDatabasePassword'] == null ? null : (map['hubDatabasePassword']! as String).input(),
+      hubDatabaseUserName: map['hubDatabaseUserName'] == null ? null : (map['hubDatabaseUserName']! as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      schema: map['schema'] == null ? null : (SyncGroupSchema.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
+      schema: map['schema'] == null ? null : (SyncGroupSchema.fromMap((map['schema']! as Map).cast<String, dynamic>())).input(),
       serverName: (map['serverName'] as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      syncDatabaseId: map['syncDatabaseId'] == null ? null : (map['syncDatabaseId'] as String).input(),
-      syncGroupName: map['syncGroupName'] == null ? null : (map['syncGroupName'] as String).input(),
-      usePrivateLinkConnection: map['usePrivateLinkConnection'] == null ? null : (map['usePrivateLinkConnection'] as bool).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      syncDatabaseId: map['syncDatabaseId'] == null ? null : (map['syncDatabaseId']! as String).input(),
+      syncGroupName: map['syncGroupName'] == null ? null : (map['syncGroupName']! as String).input(),
+      usePrivateLinkConnection: map['usePrivateLinkConnection'] == null ? null : (map['usePrivateLinkConnection']! as bool).input(),
     );
   }
 }

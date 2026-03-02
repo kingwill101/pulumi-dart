@@ -35,7 +35,7 @@ class NotebookWorkspaceArgs {
   factory NotebookWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return NotebookWorkspaceArgs(
       accountName: (map['accountName'] as String).input(),
-      notebookWorkspaceName: map['notebookWorkspaceName'] == null ? null : (map['notebookWorkspaceName'] as String).input(),
+      notebookWorkspaceName: map['notebookWorkspaceName'] == null ? null : (map['notebookWorkspaceName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

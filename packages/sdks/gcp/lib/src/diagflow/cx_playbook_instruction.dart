@@ -27,8 +27,8 @@ class CxPlaybookInstruction {
 
   factory CxPlaybookInstruction.fromMap(Map<String, dynamic> map) {
     return CxPlaybookInstruction(
-      guidelines: map['guidelines'] == null ? null : (map['guidelines'] as String).input(),
-      steps: map['steps'] == null ? null : (pulumi.Input.decodeList<CxPlaybookInstructionStep>(map['steps'], (value) => CxPlaybookInstructionStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      guidelines: map['guidelines'] == null ? null : (map['guidelines']! as String).input(),
+      steps: map['steps'] == null ? null : (pulumi.Input.decodeList<CxPlaybookInstructionStep>(map['steps']!, (value) => CxPlaybookInstructionStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

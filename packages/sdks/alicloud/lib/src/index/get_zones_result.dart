@@ -77,19 +77,19 @@ class GetZonesResult {
 
   factory GetZonesResult.fromMap(Map<String, dynamic> map) {
     return GetZonesResult(
-      availableDiskCategory: map['availableDiskCategory'] == null ? null : map['availableDiskCategory'] as String,
-      availableInstanceType: map['availableInstanceType'] == null ? null : map['availableInstanceType'] as String,
-      availableResourceCreation: map['availableResourceCreation'] == null ? null : map['availableResourceCreation'] as String,
-      availableSlbAddressIpVersion: map['availableSlbAddressIpVersion'] == null ? null : map['availableSlbAddressIpVersion'] as String,
-      availableSlbAddressType: map['availableSlbAddressType'] == null ? null : map['availableSlbAddressType'] as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      availableDiskCategory: map['availableDiskCategory'] == null ? null : map['availableDiskCategory']! as String,
+      availableInstanceType: map['availableInstanceType'] == null ? null : map['availableInstanceType']! as String,
+      availableResourceCreation: map['availableResourceCreation'] == null ? null : map['availableResourceCreation']! as String,
+      availableSlbAddressIpVersion: map['availableSlbAddressIpVersion'] == null ? null : map['availableSlbAddressIpVersion']! as String,
+      availableSlbAddressType: map['availableSlbAddressType'] == null ? null : map['availableSlbAddressType']! as String,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceChargeType: map['instanceChargeType'] == null ? null : map['instanceChargeType'] as String,
-      multi: map['multi'] == null ? null : map['multi'] as bool,
-      networkType: map['networkType'] == null ? null : map['networkType'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      spotStrategy: map['spotStrategy'] == null ? null : map['spotStrategy'] as String,
+      instanceChargeType: map['instanceChargeType'] == null ? null : map['instanceChargeType']! as String,
+      multi: map['multi'] == null ? null : map['multi']! as bool,
+      networkType: map['networkType'] == null ? null : map['networkType']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      spotStrategy: map['spotStrategy'] == null ? null : map['spotStrategy']! as String,
       zones: pulumi.Input.decodeList<GetZonesZone>(map['zones'], (value) => GetZonesZone.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

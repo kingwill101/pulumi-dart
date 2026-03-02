@@ -30,9 +30,9 @@ class FeatureGroupOfflineStoreConfigDataCatalogConfig {
 
   factory FeatureGroupOfflineStoreConfigDataCatalogConfig.fromMap(Map<String, dynamic> map) {
     return FeatureGroupOfflineStoreConfigDataCatalogConfig(
-      catalog: map['catalog'] == null ? null : (map['catalog'] as String).input(),
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      catalog: map['catalog'] == null ? null : ((map['catalog'] as String).input()).input(),
+      database: map['database'] == null ? null : ((map['database'] as String).input()).input(),
+      tableName: map['tableName'] == null ? null : ((map['tableName'] as String).input()).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class MachineImageMachineImageEncryptionKey {
 
   factory MachineImageMachineImageEncryptionKey.fromMap(Map<String, dynamic> map) {
     return MachineImageMachineImageEncryptionKey(
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : (map['kmsKeyServiceAccount'] as String).input(),
-      rawKey: map['rawKey'] == null ? null : (map['rawKey'] as String).input(),
-      sha256: map['sha256'] == null ? null : (map['sha256'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : (map['kmsKeyServiceAccount']! as String).input(),
+      rawKey: map['rawKey'] == null ? null : (map['rawKey']! as String).input(),
+      sha256: map['sha256'] == null ? null : (map['sha256']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class FeatureSettingsResponse {
 
   factory FeatureSettingsResponse.fromMap(Map<String, dynamic> map) {
     return FeatureSettingsResponse(
-      crossRegionRestoreSettings: map['crossRegionRestoreSettings'] == null ? null : (CrossRegionRestoreSettingsResponse.fromMap((map['crossRegionRestoreSettings'] as Map).cast<String, dynamic>())).input(),
-      crossSubscriptionRestoreSettings: map['crossSubscriptionRestoreSettings'] == null ? null : (CrossSubscriptionRestoreSettingsResponse.fromMap((map['crossSubscriptionRestoreSettings'] as Map).cast<String, dynamic>())).input(),
+      crossRegionRestoreSettings: map['crossRegionRestoreSettings'] == null ? null : (CrossRegionRestoreSettingsResponse.fromMap((map['crossRegionRestoreSettings']! as Map).cast<String, dynamic>())).input(),
+      crossSubscriptionRestoreSettings: map['crossSubscriptionRestoreSettings'] == null ? null : (CrossSubscriptionRestoreSettingsResponse.fromMap((map['crossSubscriptionRestoreSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

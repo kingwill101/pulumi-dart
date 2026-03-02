@@ -52,13 +52,13 @@ class CredentialServicePrincipalState {
 
   factory CredentialServicePrincipalState.fromMap(Map<String, dynamic> map) {
     return CredentialServicePrincipalState(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
-      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId'] as String).input(),
-      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (CredentialServicePrincipalServicePrincipalKey.fromMap((map['servicePrincipalKey'] as Map).cast<String, dynamic>())).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId']! as String).input(),
+      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (CredentialServicePrincipalServicePrincipalKey.fromMap((map['servicePrincipalKey']! as Map).cast<String, dynamic>())).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

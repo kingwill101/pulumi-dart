@@ -36,9 +36,9 @@ class WafPolicyGraphqlProfile {
 
   factory WafPolicyGraphqlProfile.fromMap(Map<String, dynamic> map) {
     return WafPolicyGraphqlProfile(
-      attackSignaturesCheck: map['attackSignaturesCheck'] == null ? null : (map['attackSignaturesCheck'] as bool).input(),
-      defenseAttributes: map['defenseAttributes'] == null ? null : (pulumi.Input.decodeList<WafPolicyGraphqlProfileDefenseAttribute>(map['defenseAttributes'], (value) => WafPolicyGraphqlProfileDefenseAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metacharElementcheck: map['metacharElementcheck'] == null ? null : (map['metacharElementcheck'] as bool).input(),
+      attackSignaturesCheck: map['attackSignaturesCheck'] == null ? null : (map['attackSignaturesCheck']! as bool).input(),
+      defenseAttributes: map['defenseAttributes'] == null ? null : (pulumi.Input.decodeList<WafPolicyGraphqlProfileDefenseAttribute>(map['defenseAttributes']!, (value) => WafPolicyGraphqlProfileDefenseAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metacharElementcheck: map['metacharElementcheck'] == null ? null : (map['metacharElementcheck']! as bool).input(),
       name: (map['name'] as String).input(),
     );
   }

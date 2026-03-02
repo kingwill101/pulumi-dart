@@ -21,7 +21,7 @@ class PrivateLinkServicePropertiesResponseVisibility {
 
   factory PrivateLinkServicePropertiesResponseVisibility.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServicePropertiesResponseVisibility(
-      subscriptions: map['subscriptions'] == null ? null : ((map['subscriptions'] as List).cast<String>()).input(),
+      subscriptions: map['subscriptions'] == null ? null : ((map['subscriptions']! as List).cast<String>()).input(),
     );
   }
 }

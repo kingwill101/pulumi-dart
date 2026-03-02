@@ -48,12 +48,12 @@ class GitHubEventsConfig {
 
   factory GitHubEventsConfig.fromMap(Map<String, dynamic> map) {
     return GitHubEventsConfig(
-      enterpriseConfigResourceName: map['enterpriseConfigResourceName'] == null ? null : (map['enterpriseConfigResourceName'] as String).input(),
-      installationId: map['installationId'] == null ? null : (map['installationId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
-      pullRequest: map['pullRequest'] == null ? null : (PullRequestFilter.fromMap((map['pullRequest'] as Map).cast<String, dynamic>())).input(),
-      push: map['push'] == null ? null : (PushFilter.fromMap((map['push'] as Map).cast<String, dynamic>())).input(),
+      enterpriseConfigResourceName: map['enterpriseConfigResourceName'] == null ? null : (map['enterpriseConfigResourceName']! as String).input(),
+      installationId: map['installationId'] == null ? null : (map['installationId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
+      pullRequest: map['pullRequest'] == null ? null : (PullRequestFilter.fromMap((map['pullRequest']! as Map).cast<String, dynamic>())).input(),
+      push: map['push'] == null ? null : (PushFilter.fromMap((map['push']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

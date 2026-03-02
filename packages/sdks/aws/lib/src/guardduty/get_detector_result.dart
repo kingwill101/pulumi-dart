@@ -56,7 +56,7 @@ class GetDetectorResult {
   factory GetDetectorResult.fromMap(Map<String, dynamic> map) {
     return GetDetectorResult(
       arn: map['arn'] as String,
-      features: pulumi.Input.decodeList<GetDetectorFeature>(map['features'], (value) => GetDetectorFeature.fromMap((value as Map).cast<String, dynamic>())),
+      features: pulumi.Input.decodeList<GetDetectorFeature>(map['features']!, (value) => GetDetectorFeature.fromMap((value as Map).cast<String, dynamic>())),
       findingPublishingFrequency: map['findingPublishingFrequency'] as String,
       id: map['id'] as String,
       region: map['region'] as String,

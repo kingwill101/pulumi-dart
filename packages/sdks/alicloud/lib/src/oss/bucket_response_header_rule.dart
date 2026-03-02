@@ -32,9 +32,9 @@ class BucketResponseHeaderRule {
 
   factory BucketResponseHeaderRule.fromMap(Map<String, dynamic> map) {
     return BucketResponseHeaderRule(
-      filters: map['filters'] == null ? null : (BucketResponseHeaderRuleFilters.fromMap((map['filters'] as Map).cast<String, dynamic>())).input(),
-      hideHeaders: map['hideHeaders'] == null ? null : (BucketResponseHeaderRuleHideHeaders.fromMap((map['hideHeaders'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      filters: map['filters'] == null ? null : (BucketResponseHeaderRuleFilters.fromMap((map['filters']! as Map).cast<String, dynamic>())).input(),
+      hideHeaders: map['hideHeaders'] == null ? null : (BucketResponseHeaderRuleHideHeaders.fromMap((map['hideHeaders']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

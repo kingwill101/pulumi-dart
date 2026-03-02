@@ -65,15 +65,15 @@ class ElasticSanArgs {
 
   factory ElasticSanArgs.fromMap(Map<String, dynamic> map) {
     return ElasticSanArgs(
-      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones'] as List).cast<String>()).input(),
+      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones']! as List).cast<String>()).input(),
       baseSizeTiB: (map['baseSizeTiB'] as double).input(),
-      elasticSanName: map['elasticSanName'] == null ? null : (map['elasticSanName'] as String).input(),
+      elasticSanName: map['elasticSanName'] == null ? null : (map['elasticSanName']! as String).input(),
       extendedCapacitySizeTiB: (map['extendedCapacitySizeTiB'] as double).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

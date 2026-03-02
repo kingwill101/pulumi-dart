@@ -32,7 +32,7 @@ class AuthConfigClientCertificate {
   factory AuthConfigClientCertificate.fromMap(Map<String, dynamic> map) {
     return AuthConfigClientCertificate(
       encryptedPrivateKey: (map['encryptedPrivateKey'] as String).input(),
-      passphrase: map['passphrase'] == null ? null : (map['passphrase'] as String).input(),
+      passphrase: map['passphrase'] == null ? null : (map['passphrase']! as String).input(),
       sslCertificate: (map['sslCertificate'] as String).input(),
     );
   }

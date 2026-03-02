@@ -70,16 +70,16 @@ class StorageClassPatch {
 
   factory StorageClassPatch.fromMap(Map<String, dynamic> map) {
     return StorageClassPatch(
-      allowVolumeExpansion: map['allowVolumeExpansion'] == null ? null : (map['allowVolumeExpansion'] as bool).input(),
-      allowedTopologies: map['allowedTopologies'] == null ? null : (pulumi.Input.decodeList<TopologySelectorTermPatch>(map['allowedTopologies'], (value) => TopologySelectorTermPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions'] as List).cast<String>()).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      provisioner: map['provisioner'] == null ? null : (map['provisioner'] as String).input(),
-      reclaimPolicy: map['reclaimPolicy'] == null ? null : (map['reclaimPolicy'] as String).input(),
-      volumeBindingMode: map['volumeBindingMode'] == null ? null : (map['volumeBindingMode'] as String).input(),
+      allowVolumeExpansion: map['allowVolumeExpansion'] == null ? null : (map['allowVolumeExpansion']! as bool).input(),
+      allowedTopologies: map['allowedTopologies'] == null ? null : (pulumi.Input.decodeList<TopologySelectorTermPatch>(map['allowedTopologies']!, (value) => TopologySelectorTermPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions']! as List).cast<String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      provisioner: map['provisioner'] == null ? null : (map['provisioner']! as String).input(),
+      reclaimPolicy: map['reclaimPolicy'] == null ? null : (map['reclaimPolicy']! as String).input(),
+      volumeBindingMode: map['volumeBindingMode'] == null ? null : (map['volumeBindingMode']! as String).input(),
     );
   }
 }

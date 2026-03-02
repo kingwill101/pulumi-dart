@@ -81,17 +81,17 @@ class DataQualityJobDefinitionArgs {
 
   factory DataQualityJobDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionArgs(
-      dataQualityAppSpecification: (DataQualityJobDefinitionDataQualityAppSpecification.fromMap((map['dataQualityAppSpecification'] as Map).cast<String, dynamic>())).input(),
-      dataQualityBaselineConfig: map['dataQualityBaselineConfig'] == null ? null : (DataQualityJobDefinitionDataQualityBaselineConfig.fromMap((map['dataQualityBaselineConfig'] as Map).cast<String, dynamic>())).input(),
-      dataQualityJobInput: (DataQualityJobDefinitionDataQualityJobInput.fromMap((map['dataQualityJobInput'] as Map).cast<String, dynamic>())).input(),
-      dataQualityJobOutputConfig: (DataQualityJobDefinitionDataQualityJobOutputConfig.fromMap((map['dataQualityJobOutputConfig'] as Map).cast<String, dynamic>())).input(),
-      jobResources: (DataQualityJobDefinitionJobResources.fromMap((map['jobResources'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkConfig: map['networkConfig'] == null ? null : (DataQualityJobDefinitionNetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      dataQualityAppSpecification: (DataQualityJobDefinitionDataQualityAppSpecification.fromMap((map['dataQualityAppSpecification']! as Map).cast<String, dynamic>())).input(),
+      dataQualityBaselineConfig: map['dataQualityBaselineConfig'] == null ? null : ((DataQualityJobDefinitionDataQualityBaselineConfig.fromMap((map['dataQualityBaselineConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      dataQualityJobInput: (DataQualityJobDefinitionDataQualityJobInput.fromMap((map['dataQualityJobInput']! as Map).cast<String, dynamic>())).input(),
+      dataQualityJobOutputConfig: (DataQualityJobDefinitionDataQualityJobOutputConfig.fromMap((map['dataQualityJobOutputConfig']! as Map).cast<String, dynamic>())).input(),
+      jobResources: (DataQualityJobDefinitionJobResources.fromMap((map['jobResources']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      networkConfig: map['networkConfig'] == null ? null : ((DataQualityJobDefinitionNetworkConfig.fromMap((map['networkConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      stoppingCondition: map['stoppingCondition'] == null ? null : (DataQualityJobDefinitionStoppingCondition.fromMap((map['stoppingCondition'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      stoppingCondition: map['stoppingCondition'] == null ? null : ((DataQualityJobDefinitionStoppingCondition.fromMap((map['stoppingCondition']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

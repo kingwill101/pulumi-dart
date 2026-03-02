@@ -27,8 +27,8 @@ class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpression
 
   factory PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition(
-      minimumRiskScore: map['minimumRiskScore'] == null ? null : (map['minimumRiskScore'] as String).input(),
-      minimumSensitivityScore: map['minimumSensitivityScore'] == null ? null : (map['minimumSensitivityScore'] as String).input(),
+      minimumRiskScore: map['minimumRiskScore'] == null ? null : (map['minimumRiskScore']! as String).input(),
+      minimumSensitivityScore: map['minimumSensitivityScore'] == null ? null : (map['minimumSensitivityScore']! as String).input(),
     );
   }
 }

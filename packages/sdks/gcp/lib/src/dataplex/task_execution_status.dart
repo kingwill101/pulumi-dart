@@ -29,8 +29,8 @@ class TaskExecutionStatus {
 
   factory TaskExecutionStatus.fromMap(Map<String, dynamic> map) {
     return TaskExecutionStatus(
-      latestJobs: map['latestJobs'] == null ? null : (pulumi.Input.decodeList<TaskExecutionStatusLatestJob>(map['latestJobs'], (value) => TaskExecutionStatusLatestJob.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      latestJobs: map['latestJobs'] == null ? null : (pulumi.Input.decodeList<TaskExecutionStatusLatestJob>(map['latestJobs']!, (value) => TaskExecutionStatusLatestJob.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

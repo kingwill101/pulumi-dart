@@ -28,8 +28,8 @@ class CustomerManagedKeyDetails {
 
   factory CustomerManagedKeyDetails.fromMap(Map<String, dynamic> map) {
     return CustomerManagedKeyDetails(
-      kekIdentity: map['kekIdentity'] == null ? null : (KekIdentityProperties.fromMap((map['kekIdentity'] as Map).cast<String, dynamic>())).input(),
-      key: map['key'] == null ? null : (WorkspaceKeyDetails.fromMap((map['key'] as Map).cast<String, dynamic>())).input(),
+      kekIdentity: map['kekIdentity'] == null ? null : (KekIdentityProperties.fromMap((map['kekIdentity']! as Map).cast<String, dynamic>())).input(),
+      key: map['key'] == null ? null : (WorkspaceKeyDetails.fromMap((map['key']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

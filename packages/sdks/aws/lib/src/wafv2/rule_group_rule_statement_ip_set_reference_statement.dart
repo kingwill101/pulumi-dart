@@ -27,7 +27,7 @@ class RuleGroupRuleStatementIpSetReferenceStatement {
   factory RuleGroupRuleStatementIpSetReferenceStatement.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementIpSetReferenceStatement(
       arn: (map['arn'] as String).input(),
-      ipSetForwardedIpConfig: map['ipSetForwardedIpConfig'] == null ? null : (RuleGroupRuleStatementIpSetReferenceStatementIpSetForwardedIpConfig.fromMap((map['ipSetForwardedIpConfig'] as Map).cast<String, dynamic>())).input(),
+      ipSetForwardedIpConfig: map['ipSetForwardedIpConfig'] == null ? null : ((RuleGroupRuleStatementIpSetReferenceStatementIpSetForwardedIpConfig.fromMap((map['ipSetForwardedIpConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

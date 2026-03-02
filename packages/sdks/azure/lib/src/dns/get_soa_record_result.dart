@@ -89,7 +89,7 @@ class GetSoaRecordResult {
       hostName: map['hostName'] as String,
       id: map['id'] as String,
       minimumTtl: map['minimumTtl'] as int,
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
       refreshTime: map['refreshTime'] as int,
       resourceGroupName: map['resourceGroupName'] as String,
       retryTime: map['retryTime'] as int,

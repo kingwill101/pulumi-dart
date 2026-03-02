@@ -26,7 +26,7 @@ class ConnectorMappingAvailabilityResponse {
 
   factory ConnectorMappingAvailabilityResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorMappingAvailabilityResponse(
-      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency']! as String).input(),
       interval: (map['interval'] as int).input(),
     );
   }

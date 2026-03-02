@@ -36,10 +36,10 @@ class AclEntryAttachmentState {
 
   factory AclEntryAttachmentState.fromMap(Map<String, dynamic> map) {
     return AclEntryAttachmentState(
-      aclId: map['aclId'] == null ? null : (map['aclId'] as String).input(),
-      entry: map['entry'] == null ? null : (map['entry'] as String).input(),
-      entryDescription: map['entryDescription'] == null ? null : (map['entryDescription'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      aclId: map['aclId'] == null ? null : (map['aclId']! as String).input(),
+      entry: map['entry'] == null ? null : (map['entry']! as String).input(),
+      entryDescription: map['entryDescription'] == null ? null : (map['entryDescription']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

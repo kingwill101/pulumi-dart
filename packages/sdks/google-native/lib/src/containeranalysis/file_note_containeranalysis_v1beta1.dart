@@ -32,9 +32,9 @@ class FileNoteContaineranalysisV1beta1 {
 
   factory FileNoteContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return FileNoteContaineranalysisV1beta1(
-      checksum: map['checksum'] == null ? null : ((map['checksum'] as List).cast<String>()).input(),
-      fileType: map['fileType'] == null ? null : (FileNoteFileTypeContaineranalysisV1beta1.fromValue(map['fileType'] as String)).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      checksum: map['checksum'] == null ? null : ((map['checksum']! as List).cast<String>()).input(),
+      fileType: map['fileType'] == null ? null : (FileNoteFileTypeContaineranalysisV1beta1.fromValue(map['fileType']! as String)).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

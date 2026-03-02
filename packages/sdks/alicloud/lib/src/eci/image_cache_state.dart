@@ -77,18 +77,18 @@ class ImageCacheState {
 
   factory ImageCacheState.fromMap(Map<String, dynamic> map) {
     return ImageCacheState(
-      containerGroupId: map['containerGroupId'] == null ? null : (map['containerGroupId'] as String).input(),
-      eipInstanceId: map['eipInstanceId'] == null ? null : (map['eipInstanceId'] as String).input(),
-      imageCacheName: map['imageCacheName'] == null ? null : (map['imageCacheName'] as String).input(),
-      imageCacheSize: map['imageCacheSize'] == null ? null : (map['imageCacheSize'] as int).input(),
-      imageRegistryCredentials: map['imageRegistryCredentials'] == null ? null : (pulumi.Input.decodeList<ImageCacheImageRegistryCredential>(map['imageRegistryCredentials'], (value) => ImageCacheImageRegistryCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      images: map['images'] == null ? null : ((map['images'] as List).cast<String>()).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      containerGroupId: map['containerGroupId'] == null ? null : (map['containerGroupId']! as String).input(),
+      eipInstanceId: map['eipInstanceId'] == null ? null : (map['eipInstanceId']! as String).input(),
+      imageCacheName: map['imageCacheName'] == null ? null : (map['imageCacheName']! as String).input(),
+      imageCacheSize: map['imageCacheSize'] == null ? null : (map['imageCacheSize']! as int).input(),
+      imageRegistryCredentials: map['imageRegistryCredentials'] == null ? null : (pulumi.Input.decodeList<ImageCacheImageRegistryCredential>(map['imageRegistryCredentials']!, (value) => ImageCacheImageRegistryCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      images: map['images'] == null ? null : ((map['images']! as List).cast<String>()).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

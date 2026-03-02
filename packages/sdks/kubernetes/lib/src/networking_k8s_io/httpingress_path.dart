@@ -43,7 +43,7 @@ class HTTPIngressPath {
   factory HTTPIngressPath.fromMap(Map<String, dynamic> map) {
     return HTTPIngressPath(
       backend: (IngressBackend.fromMap((map['backend'] as Map).cast<String, dynamic>())).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
       pathType: (map['pathType'] as String).input(),
     );
   }

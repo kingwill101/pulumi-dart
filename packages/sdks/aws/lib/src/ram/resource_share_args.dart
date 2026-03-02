@@ -44,11 +44,11 @@ class ResourceShareArgs {
 
   factory ResourceShareArgs.fromMap(Map<String, dynamic> map) {
     return ResourceShareArgs(
-      allowExternalPrincipals: map['allowExternalPrincipals'] == null ? null : (map['allowExternalPrincipals'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      permissionArns: map['permissionArns'] == null ? null : ((map['permissionArns'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      allowExternalPrincipals: map['allowExternalPrincipals'] == null ? null : ((map['allowExternalPrincipals'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      permissionArns: map['permissionArns'] == null ? null : (((map['permissionArns'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

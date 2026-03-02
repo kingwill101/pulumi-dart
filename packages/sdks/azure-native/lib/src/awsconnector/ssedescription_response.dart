@@ -22,7 +22,7 @@ class SSEDescriptionResponse {
 
   factory SSEDescriptionResponse.fromMap(Map<String, dynamic> map) {
     return SSEDescriptionResponse(
-      status: map['status'] == null ? null : (SSEStatusEnumValueResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (SSEStatusEnumValueResponse.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

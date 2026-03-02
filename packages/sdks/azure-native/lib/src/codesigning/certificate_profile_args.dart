@@ -71,12 +71,12 @@ class CertificateProfileArgs {
     return CertificateProfileArgs(
       accountName: (map['accountName'] as String).input(),
       identityValidationId: (map['identityValidationId'] as String).input(),
-      includeCity: map['includeCity'] == null ? null : (map['includeCity'] as bool).input(),
-      includeCountry: map['includeCountry'] == null ? null : (map['includeCountry'] as bool).input(),
-      includePostalCode: map['includePostalCode'] == null ? null : (map['includePostalCode'] as bool).input(),
-      includeState: map['includeState'] == null ? null : (map['includeState'] as bool).input(),
-      includeStreetAddress: map['includeStreetAddress'] == null ? null : (map['includeStreetAddress'] as bool).input(),
-      profileName: map['profileName'] == null ? null : (map['profileName'] as String).input(),
+      includeCity: map['includeCity'] == null ? null : (map['includeCity']! as bool).input(),
+      includeCountry: map['includeCountry'] == null ? null : (map['includeCountry']! as bool).input(),
+      includePostalCode: map['includePostalCode'] == null ? null : (map['includePostalCode']! as bool).input(),
+      includeState: map['includeState'] == null ? null : (map['includeState']! as bool).input(),
+      includeStreetAddress: map['includeStreetAddress'] == null ? null : (map['includeStreetAddress']! as bool).input(),
+      profileName: map['profileName'] == null ? null : (map['profileName']! as String).input(),
       profileType: (map['profileType'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

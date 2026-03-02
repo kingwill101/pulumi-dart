@@ -31,9 +31,9 @@ class InviteAccepterState {
 
   factory InviteAccepterState.fromMap(Map<String, dynamic> map) {
     return InviteAccepterState(
-      detectorId: map['detectorId'] == null ? null : (map['detectorId'] as String).input(),
-      masterAccountId: map['masterAccountId'] == null ? null : (map['masterAccountId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      detectorId: map['detectorId'] == null ? null : ((map['detectorId'] as String).input()).input(),
+      masterAccountId: map['masterAccountId'] == null ? null : ((map['masterAccountId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

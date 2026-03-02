@@ -35,8 +35,8 @@ class URLMapDefaultCustomErrorResponsePolicy {
 
   factory URLMapDefaultCustomErrorResponsePolicy.fromMap(Map<String, dynamic> map) {
     return URLMapDefaultCustomErrorResponsePolicy(
-      errorResponseRules: map['errorResponseRules'] == null ? null : (pulumi.Input.decodeList<URLMapDefaultCustomErrorResponsePolicyErrorResponseRule>(map['errorResponseRules'], (value) => URLMapDefaultCustomErrorResponsePolicyErrorResponseRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      errorService: map['errorService'] == null ? null : (map['errorService'] as String).input(),
+      errorResponseRules: map['errorResponseRules'] == null ? null : (pulumi.Input.decodeList<URLMapDefaultCustomErrorResponsePolicyErrorResponseRule>(map['errorResponseRules']!, (value) => URLMapDefaultCustomErrorResponsePolicyErrorResponseRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errorService: map['errorService'] == null ? null : (map['errorService']! as String).input(),
     );
   }
 }

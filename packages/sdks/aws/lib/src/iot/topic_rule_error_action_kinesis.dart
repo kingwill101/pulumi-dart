@@ -30,7 +30,7 @@ class TopicRuleErrorActionKinesis {
 
   factory TopicRuleErrorActionKinesis.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorActionKinesis(
-      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey'] as String).input(),
+      partitionKey: map['partitionKey'] == null ? null : ((map['partitionKey'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
       streamName: (map['streamName'] as String).input(),
     );

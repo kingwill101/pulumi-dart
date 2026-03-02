@@ -60,8 +60,8 @@ class OccurenceArgs {
     return OccurenceArgs(
       attestation: (OccurenceAttestation.fromMap((map['attestation'] as Map).cast<String, dynamic>())).input(),
       noteName: (map['noteName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      remediation: map['remediation'] == null ? null : (map['remediation'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      remediation: map['remediation'] == null ? null : (map['remediation']! as String).input(),
       resourceUri: (map['resourceUri'] as String).input(),
     );
   }

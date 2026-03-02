@@ -90,20 +90,20 @@ class DataCenterArgs {
 
   factory DataCenterArgs.fromMap(Map<String, dynamic> map) {
     return DataCenterArgs(
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      autoRenewPeriod: map['autoRenewPeriod'] == null ? null : (map['autoRenewPeriod'] as int).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      autoRenewPeriod: map['autoRenewPeriod'] == null ? null : (map['autoRenewPeriod']! as int).input(),
       clusterId: (map['clusterId'] as String).input(),
-      dataCenterName: map['dataCenterName'] == null ? null : (map['dataCenterName'] as String).input(),
-      diskSize: map['diskSize'] == null ? null : (map['diskSize'] as int).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
-      enablePublic: map['enablePublic'] == null ? null : (map['enablePublic'] as bool).input(),
+      dataCenterName: map['dataCenterName'] == null ? null : (map['dataCenterName']! as String).input(),
+      diskSize: map['diskSize'] == null ? null : (map['diskSize']! as int).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
+      enablePublic: map['enablePublic'] == null ? null : (map['enablePublic']! as bool).input(),
       instanceType: (map['instanceType'] as String).input(),
       nodeCount: (map['nodeCount'] as int).input(),
       payType: (map['payType'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit'] as String).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit']! as String).input(),
       vswitchId: (map['vswitchId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

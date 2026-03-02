@@ -37,10 +37,10 @@ class SlotLogs {
 
   factory SlotLogs.fromMap(Map<String, dynamic> map) {
     return SlotLogs(
-      applicationLogs: map['applicationLogs'] == null ? null : (SlotLogsApplicationLogs.fromMap((map['applicationLogs'] as Map).cast<String, dynamic>())).input(),
-      detailedErrorMessagesEnabled: map['detailedErrorMessagesEnabled'] == null ? null : (map['detailedErrorMessagesEnabled'] as bool).input(),
-      failedRequestTracingEnabled: map['failedRequestTracingEnabled'] == null ? null : (map['failedRequestTracingEnabled'] as bool).input(),
-      httpLogs: map['httpLogs'] == null ? null : (SlotLogsHttpLogs.fromMap((map['httpLogs'] as Map).cast<String, dynamic>())).input(),
+      applicationLogs: map['applicationLogs'] == null ? null : (SlotLogsApplicationLogs.fromMap((map['applicationLogs']! as Map).cast<String, dynamic>())).input(),
+      detailedErrorMessagesEnabled: map['detailedErrorMessagesEnabled'] == null ? null : (map['detailedErrorMessagesEnabled']! as bool).input(),
+      failedRequestTracingEnabled: map['failedRequestTracingEnabled'] == null ? null : (map['failedRequestTracingEnabled']! as bool).input(),
+      httpLogs: map['httpLogs'] == null ? null : (SlotLogsHttpLogs.fromMap((map['httpLogs']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

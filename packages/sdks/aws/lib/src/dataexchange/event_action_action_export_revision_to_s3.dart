@@ -29,8 +29,8 @@ class EventActionActionExportRevisionToS3 {
 
   factory EventActionActionExportRevisionToS3.fromMap(Map<String, dynamic> map) {
     return EventActionActionExportRevisionToS3(
-      encryption: map['encryption'] == null ? null : (EventActionActionExportRevisionToS3Encryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      revisionDestination: (EventActionActionExportRevisionToS3RevisionDestination.fromMap((map['revisionDestination'] as Map).cast<String, dynamic>())).input(),
+      encryption: map['encryption'] == null ? null : ((EventActionActionExportRevisionToS3Encryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input()).input(),
+      revisionDestination: (EventActionActionExportRevisionToS3RevisionDestination.fromMap((map['revisionDestination']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

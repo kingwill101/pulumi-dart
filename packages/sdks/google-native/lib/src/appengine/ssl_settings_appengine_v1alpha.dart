@@ -21,7 +21,7 @@ class SslSettingsAppengineV1alpha {
 
   factory SslSettingsAppengineV1alpha.fromMap(Map<String, dynamic> map) {
     return SslSettingsAppengineV1alpha(
-      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as String).input(),
     );
   }
 }

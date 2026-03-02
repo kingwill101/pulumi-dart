@@ -40,11 +40,11 @@ class ApplicationTomcatConfigV2 {
 
   factory ApplicationTomcatConfigV2.fromMap(Map<String, dynamic> map) {
     return ApplicationTomcatConfigV2(
-      contextPath: map['contextPath'] == null ? null : (map['contextPath'] as String).input(),
-      maxThreads: map['maxThreads'] == null ? null : (map['maxThreads'] as int).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      uriEncoding: map['uriEncoding'] == null ? null : (map['uriEncoding'] as String).input(),
-      useBodyEncodingForUri: map['useBodyEncodingForUri'] == null ? null : (map['useBodyEncodingForUri'] as String).input(),
+      contextPath: map['contextPath'] == null ? null : (map['contextPath']! as String).input(),
+      maxThreads: map['maxThreads'] == null ? null : (map['maxThreads']! as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      uriEncoding: map['uriEncoding'] == null ? null : (map['uriEncoding']! as String).input(),
+      useBodyEncodingForUri: map['useBodyEncodingForUri'] == null ? null : (map['useBodyEncodingForUri']! as String).input(),
     );
   }
 }

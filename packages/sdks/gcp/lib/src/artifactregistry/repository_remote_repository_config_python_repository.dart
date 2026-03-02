@@ -28,8 +28,8 @@ class RepositoryRemoteRepositoryConfigPythonRepository {
 
   factory RepositoryRemoteRepositoryConfigPythonRepository.fromMap(Map<String, dynamic> map) {
     return RepositoryRemoteRepositoryConfigPythonRepository(
-      customRepository: map['customRepository'] == null ? null : (RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository.fromMap((map['customRepository'] as Map).cast<String, dynamic>())).input(),
-      publicRepository: map['publicRepository'] == null ? null : (map['publicRepository'] as String).input(),
+      customRepository: map['customRepository'] == null ? null : (RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository.fromMap((map['customRepository']! as Map).cast<String, dynamic>())).input(),
+      publicRepository: map['publicRepository'] == null ? null : (map['publicRepository']! as String).input(),
     );
   }
 }

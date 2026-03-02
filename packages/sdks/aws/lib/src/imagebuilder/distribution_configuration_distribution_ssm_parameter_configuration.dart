@@ -30,8 +30,8 @@ class DistributionConfigurationDistributionSsmParameterConfiguration {
 
   factory DistributionConfigurationDistributionSsmParameterConfiguration.fromMap(Map<String, dynamic> map) {
     return DistributionConfigurationDistributionSsmParameterConfiguration(
-      amiAccountId: map['amiAccountId'] == null ? null : (map['amiAccountId'] as String).input(),
-      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
+      amiAccountId: map['amiAccountId'] == null ? null : ((map['amiAccountId'] as String).input()).input(),
+      dataType: map['dataType'] == null ? null : ((map['dataType'] as String).input()).input(),
       parameterName: (map['parameterName'] as String).input(),
     );
   }

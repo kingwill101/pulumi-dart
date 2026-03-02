@@ -30,9 +30,9 @@ class ServerGroupClusterDataEncryptionResponse {
 
   factory ServerGroupClusterDataEncryptionResponse.fromMap(Map<String, dynamic> map) {
     return ServerGroupClusterDataEncryptionResponse(
-      primaryKeyUri: map['primaryKeyUri'] == null ? null : (map['primaryKeyUri'] as String).input(),
-      primaryUserAssignedIdentityId: map['primaryUserAssignedIdentityId'] == null ? null : (map['primaryUserAssignedIdentityId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      primaryKeyUri: map['primaryKeyUri'] == null ? null : (map['primaryKeyUri']! as String).input(),
+      primaryUserAssignedIdentityId: map['primaryUserAssignedIdentityId'] == null ? null : (map['primaryUserAssignedIdentityId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

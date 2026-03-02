@@ -50,12 +50,12 @@ class PutAliasRequestProperties {
 
   factory PutAliasRequestProperties.fromMap(Map<String, dynamic> map) {
     return PutAliasRequestProperties(
-      additionalProperties: map['additionalProperties'] == null ? null : (PutAliasRequestAdditionalProperties.fromMap((map['additionalProperties'] as Map).cast<String, dynamic>())).input(),
-      billingScope: map['billingScope'] == null ? null : (map['billingScope'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      resellerId: map['resellerId'] == null ? null : (map['resellerId'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
-      workload: map['workload'] == null ? null : (map['workload'] as String).input(),
+      additionalProperties: map['additionalProperties'] == null ? null : (PutAliasRequestAdditionalProperties.fromMap((map['additionalProperties']! as Map).cast<String, dynamic>())).input(),
+      billingScope: map['billingScope'] == null ? null : (map['billingScope']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      resellerId: map['resellerId'] == null ? null : (map['resellerId']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      workload: map['workload'] == null ? null : (map['workload']! as String).input(),
     );
   }
 }

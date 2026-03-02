@@ -22,7 +22,7 @@ class TestTiming {
 
   factory TestTiming.fromMap(Map<String, dynamic> map) {
     return TestTiming(
-      testProcessDuration: map['testProcessDuration'] == null ? null : (Duration.fromMap((map['testProcessDuration'] as Map).cast<String, dynamic>())).input(),
+      testProcessDuration: map['testProcessDuration'] == null ? null : (Duration.fromMap((map['testProcessDuration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

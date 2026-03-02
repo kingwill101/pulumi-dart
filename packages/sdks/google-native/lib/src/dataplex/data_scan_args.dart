@@ -72,15 +72,15 @@ class DataScanArgs {
   factory DataScanArgs.fromMap(Map<String, dynamic> map) {
     return DataScanArgs(
       data: (GoogleCloudDataplexV1DataSource.fromMap((map['data'] as Map).cast<String, dynamic>())).input(),
-      dataProfileSpec: map['dataProfileSpec'] == null ? null : (GoogleCloudDataplexV1DataProfileSpec.fromMap((map['dataProfileSpec'] as Map).cast<String, dynamic>())).input(),
-      dataQualitySpec: map['dataQualitySpec'] == null ? null : (GoogleCloudDataplexV1DataQualitySpec.fromMap((map['dataQualitySpec'] as Map).cast<String, dynamic>())).input(),
+      dataProfileSpec: map['dataProfileSpec'] == null ? null : (GoogleCloudDataplexV1DataProfileSpec.fromMap((map['dataProfileSpec']! as Map).cast<String, dynamic>())).input(),
+      dataQualitySpec: map['dataQualitySpec'] == null ? null : (GoogleCloudDataplexV1DataQualitySpec.fromMap((map['dataQualitySpec']! as Map).cast<String, dynamic>())).input(),
       dataScanId: (map['dataScanId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      executionSpec: map['executionSpec'] == null ? null : (GoogleCloudDataplexV1DataScanExecutionSpec.fromMap((map['executionSpec'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      executionSpec: map['executionSpec'] == null ? null : (GoogleCloudDataplexV1DataScanExecutionSpec.fromMap((map['executionSpec']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

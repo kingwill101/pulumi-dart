@@ -46,12 +46,12 @@ class AttachmentState {
 
   factory AttachmentState.fromMap(Map<String, dynamic> map) {
     return AttachmentState(
-      backendServers: map['backendServers'] == null ? null : (map['backendServers'] as String).input(),
-      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : (map['deleteProtectionValidation'] as bool).input(),
-      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds'] as List).cast<String>()).input(),
-      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId'] as String).input(),
-      serverType: map['serverType'] == null ? null : (map['serverType'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      backendServers: map['backendServers'] == null ? null : (map['backendServers']! as String).input(),
+      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : (map['deleteProtectionValidation']! as bool).input(),
+      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds']! as List).cast<String>()).input(),
+      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId']! as String).input(),
+      serverType: map['serverType'] == null ? null : (map['serverType']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class ManagedClusterPodIdentityProvisioningErrorBodyResponse {
 
   factory ManagedClusterPodIdentityProvisioningErrorBodyResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterPodIdentityProvisioningErrorBodyResponse(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      details: map['details'] == null ? null : (pulumi.Input.decodeList<ManagedClusterPodIdentityProvisioningErrorBodyResponse>(map['details'], (value) => ManagedClusterPodIdentityProvisioningErrorBodyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      details: map['details'] == null ? null : (pulumi.Input.decodeList<ManagedClusterPodIdentityProvisioningErrorBodyResponse>(map['details']!, (value) => ManagedClusterPodIdentityProvisioningErrorBodyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
     );
   }
 }

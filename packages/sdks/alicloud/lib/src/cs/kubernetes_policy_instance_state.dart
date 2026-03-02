@@ -46,12 +46,12 @@ class KubernetesPolicyInstanceState {
 
   factory KubernetesPolicyInstanceState.fromMap(Map<String, dynamic> map) {
     return KubernetesPolicyInstanceState(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      namespaces: map['namespaces'] == null ? null : ((map['namespaces'] as List).cast<String>()).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
+      namespaces: map['namespaces'] == null ? null : ((map['namespaces']! as List).cast<String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
     );
   }
 }

@@ -46,11 +46,11 @@ class HttpTargetCloudtasksV2beta3 {
 
   factory HttpTargetCloudtasksV2beta3.fromMap(Map<String, dynamic> map) {
     return HttpTargetCloudtasksV2beta3(
-      headerOverrides: map['headerOverrides'] == null ? null : (pulumi.Input.decodeList<HeaderOverrideCloudtasksV2beta3>(map['headerOverrides'], (value) => HeaderOverrideCloudtasksV2beta3.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      httpMethod: map['httpMethod'] == null ? null : (HttpTargetHttpMethodCloudtasksV2beta3.fromValue(map['httpMethod'] as String)).input(),
-      oauthToken: map['oauthToken'] == null ? null : (OAuthTokenCloudtasksV2beta3.fromMap((map['oauthToken'] as Map).cast<String, dynamic>())).input(),
-      oidcToken: map['oidcToken'] == null ? null : (OidcTokenCloudtasksV2beta3.fromMap((map['oidcToken'] as Map).cast<String, dynamic>())).input(),
-      uriOverride: map['uriOverride'] == null ? null : (UriOverrideCloudtasksV2beta3.fromMap((map['uriOverride'] as Map).cast<String, dynamic>())).input(),
+      headerOverrides: map['headerOverrides'] == null ? null : (pulumi.Input.decodeList<HeaderOverrideCloudtasksV2beta3>(map['headerOverrides']!, (value) => HeaderOverrideCloudtasksV2beta3.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      httpMethod: map['httpMethod'] == null ? null : (HttpTargetHttpMethodCloudtasksV2beta3.fromValue(map['httpMethod']! as String)).input(),
+      oauthToken: map['oauthToken'] == null ? null : (OAuthTokenCloudtasksV2beta3.fromMap((map['oauthToken']! as Map).cast<String, dynamic>())).input(),
+      oidcToken: map['oidcToken'] == null ? null : (OidcTokenCloudtasksV2beta3.fromMap((map['oidcToken']! as Map).cast<String, dynamic>())).input(),
+      uriOverride: map['uriOverride'] == null ? null : (UriOverrideCloudtasksV2beta3.fromMap((map['uriOverride']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

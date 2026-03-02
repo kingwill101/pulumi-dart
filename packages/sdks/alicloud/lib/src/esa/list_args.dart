@@ -39,10 +39,10 @@ class ListArgs {
 
   factory ListArgs.fromMap(Map<String, dynamic> map) {
     return ListArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      items: map['items'] == null ? null : ((map['items'] as List).cast<String>()).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      items: map['items'] == null ? null : ((map['items']! as List).cast<String>()).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

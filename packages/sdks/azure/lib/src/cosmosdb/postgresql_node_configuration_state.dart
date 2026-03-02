@@ -31,9 +31,9 @@ class PostgresqlNodeConfigurationState {
 
   factory PostgresqlNodeConfigurationState.fromMap(Map<String, dynamic> map) {
     return PostgresqlNodeConfigurationState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

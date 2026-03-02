@@ -74,14 +74,14 @@ class AttributeDefinitionArgs {
       allowedValues: ((map['allowedValues'] as List).cast<String>()).input(),
       attributeDefinitionId: (map['attributeDefinitionId'] as String).input(),
       category: (AttributeDefinitionCategory.fromValue(map['category'] as String)).input(),
-      consentDefaultValues: map['consentDefaultValues'] == null ? null : ((map['consentDefaultValues'] as List).cast<String>()).input(),
+      consentDefaultValues: map['consentDefaultValues'] == null ? null : ((map['consentDefaultValues']! as List).cast<String>()).input(),
       consentStoreId: (map['consentStoreId'] as String).input(),
-      dataMappingDefaultValue: map['dataMappingDefaultValue'] == null ? null : (map['dataMappingDefaultValue'] as String).input(),
+      dataMappingDefaultValue: map['dataMappingDefaultValue'] == null ? null : (map['dataMappingDefaultValue']! as String).input(),
       datasetId: (map['datasetId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

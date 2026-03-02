@@ -31,7 +31,7 @@ class LinkedServiceReferenceResponse {
 
   factory LinkedServiceReferenceResponse.fromMap(Map<String, dynamic> map) {
     return LinkedServiceReferenceResponse(
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, dynamic>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, dynamic>()).input(),
       referenceName: (map['referenceName'] as String).input(),
       type: (map['type'] as String).input(),
     );

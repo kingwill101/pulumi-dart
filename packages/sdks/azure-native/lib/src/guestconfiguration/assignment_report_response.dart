@@ -63,15 +63,15 @@ class AssignmentReportResponse {
 
   factory AssignmentReportResponse.fromMap(Map<String, dynamic> map) {
     return AssignmentReportResponse(
-      assignment: map['assignment'] == null ? null : (AssignmentInfoResponse.fromMap((map['assignment'] as Map).cast<String, dynamic>())).input(),
+      assignment: map['assignment'] == null ? null : (AssignmentInfoResponse.fromMap((map['assignment']! as Map).cast<String, dynamic>())).input(),
       complianceStatus: (map['complianceStatus'] as String).input(),
       endTime: (map['endTime'] as String).input(),
       id: (map['id'] as String).input(),
       operationType: (map['operationType'] as String).input(),
       reportId: (map['reportId'] as String).input(),
-      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<AssignmentReportResourceResponse>(map['resources'], (value) => AssignmentReportResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<AssignmentReportResourceResponse>(map['resources']!, (value) => AssignmentReportResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       startTime: (map['startTime'] as String).input(),
-      vm: map['vm'] == null ? null : (VMInfoResponse.fromMap((map['vm'] as Map).cast<String, dynamic>())).input(),
+      vm: map['vm'] == null ? null : (VMInfoResponse.fromMap((map['vm']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

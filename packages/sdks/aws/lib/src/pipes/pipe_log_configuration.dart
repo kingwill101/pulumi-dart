@@ -43,11 +43,11 @@ class PipeLogConfiguration {
 
   factory PipeLogConfiguration.fromMap(Map<String, dynamic> map) {
     return PipeLogConfiguration(
-      cloudwatchLogsLogDestination: map['cloudwatchLogsLogDestination'] == null ? null : (PipeLogConfigurationCloudwatchLogsLogDestination.fromMap((map['cloudwatchLogsLogDestination'] as Map).cast<String, dynamic>())).input(),
-      firehoseLogDestination: map['firehoseLogDestination'] == null ? null : (PipeLogConfigurationFirehoseLogDestination.fromMap((map['firehoseLogDestination'] as Map).cast<String, dynamic>())).input(),
-      includeExecutionDatas: map['includeExecutionDatas'] == null ? null : ((map['includeExecutionDatas'] as List).cast<String>()).input(),
+      cloudwatchLogsLogDestination: map['cloudwatchLogsLogDestination'] == null ? null : ((PipeLogConfigurationCloudwatchLogsLogDestination.fromMap((map['cloudwatchLogsLogDestination']! as Map).cast<String, dynamic>())).input()).input(),
+      firehoseLogDestination: map['firehoseLogDestination'] == null ? null : ((PipeLogConfigurationFirehoseLogDestination.fromMap((map['firehoseLogDestination']! as Map).cast<String, dynamic>())).input()).input(),
+      includeExecutionDatas: map['includeExecutionDatas'] == null ? null : (((map['includeExecutionDatas'] as List).cast<String>()).input()).input(),
       level: (map['level'] as String).input(),
-      s3LogDestination: map['s3LogDestination'] == null ? null : (PipeLogConfigurationS3LogDestination.fromMap((map['s3LogDestination'] as Map).cast<String, dynamic>())).input(),
+      s3LogDestination: map['s3LogDestination'] == null ? null : ((PipeLogConfigurationS3LogDestination.fromMap((map['s3LogDestination']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

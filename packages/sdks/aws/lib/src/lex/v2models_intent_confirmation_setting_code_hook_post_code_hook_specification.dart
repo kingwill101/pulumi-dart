@@ -69,15 +69,15 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecification {
 
   factory V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecification(
-      failureConditional: map['failureConditional'] == null ? null : (V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditional.fromMap((map['failureConditional'] as Map).cast<String, dynamic>())).input(),
-      failureNextStep: map['failureNextStep'] == null ? null : (V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStep.fromMap((map['failureNextStep'] as Map).cast<String, dynamic>())).input(),
-      failureResponse: map['failureResponse'] == null ? null : (V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureResponse.fromMap((map['failureResponse'] as Map).cast<String, dynamic>())).input(),
-      successConditional: map['successConditional'] == null ? null : (V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditional.fromMap((map['successConditional'] as Map).cast<String, dynamic>())).input(),
-      successNextStep: map['successNextStep'] == null ? null : (V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessNextStep.fromMap((map['successNextStep'] as Map).cast<String, dynamic>())).input(),
-      successResponse: map['successResponse'] == null ? null : (V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessResponse.fromMap((map['successResponse'] as Map).cast<String, dynamic>())).input(),
-      timeoutConditional: map['timeoutConditional'] == null ? null : (V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditional.fromMap((map['timeoutConditional'] as Map).cast<String, dynamic>())).input(),
-      timeoutNextStep: map['timeoutNextStep'] == null ? null : (V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutNextStep.fromMap((map['timeoutNextStep'] as Map).cast<String, dynamic>())).input(),
-      timeoutResponse: map['timeoutResponse'] == null ? null : (V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutResponse.fromMap((map['timeoutResponse'] as Map).cast<String, dynamic>())).input(),
+      failureConditional: map['failureConditional'] == null ? null : ((V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditional.fromMap((map['failureConditional']! as Map).cast<String, dynamic>())).input()).input(),
+      failureNextStep: map['failureNextStep'] == null ? null : ((V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStep.fromMap((map['failureNextStep']! as Map).cast<String, dynamic>())).input()).input(),
+      failureResponse: map['failureResponse'] == null ? null : ((V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureResponse.fromMap((map['failureResponse']! as Map).cast<String, dynamic>())).input()).input(),
+      successConditional: map['successConditional'] == null ? null : ((V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditional.fromMap((map['successConditional']! as Map).cast<String, dynamic>())).input()).input(),
+      successNextStep: map['successNextStep'] == null ? null : ((V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessNextStep.fromMap((map['successNextStep']! as Map).cast<String, dynamic>())).input()).input(),
+      successResponse: map['successResponse'] == null ? null : ((V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessResponse.fromMap((map['successResponse']! as Map).cast<String, dynamic>())).input()).input(),
+      timeoutConditional: map['timeoutConditional'] == null ? null : ((V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditional.fromMap((map['timeoutConditional']! as Map).cast<String, dynamic>())).input()).input(),
+      timeoutNextStep: map['timeoutNextStep'] == null ? null : ((V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutNextStep.fromMap((map['timeoutNextStep']! as Map).cast<String, dynamic>())).input()).input(),
+      timeoutResponse: map['timeoutResponse'] == null ? null : ((V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutResponse.fromMap((map['timeoutResponse']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class DefenderForContainersAwsOfferingKubernetesService {
 
   factory DefenderForContainersAwsOfferingKubernetesService.fromMap(Map<String, dynamic> map) {
     return DefenderForContainersAwsOfferingKubernetesService(
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn'] as String).input(),
+      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn']! as String).input(),
     );
   }
 }

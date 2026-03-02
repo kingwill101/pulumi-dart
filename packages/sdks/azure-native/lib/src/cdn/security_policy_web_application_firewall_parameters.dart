@@ -34,9 +34,9 @@ class SecurityPolicyWebApplicationFirewallParameters {
 
   factory SecurityPolicyWebApplicationFirewallParameters.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyWebApplicationFirewallParameters(
-      associations: map['associations'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyWebApplicationFirewallAssociation>(map['associations'], (value) => SecurityPolicyWebApplicationFirewallAssociation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      associations: map['associations'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyWebApplicationFirewallAssociation>(map['associations']!, (value) => SecurityPolicyWebApplicationFirewallAssociation.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
-      wafPolicy: map['wafPolicy'] == null ? null : (ResourceReference.fromMap((map['wafPolicy'] as Map).cast<String, dynamic>())).input(),
+      wafPolicy: map['wafPolicy'] == null ? null : (ResourceReference.fromMap((map['wafPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

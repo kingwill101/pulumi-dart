@@ -36,10 +36,10 @@ class FirewallRuleState {
 
   factory FirewallRuleState.fromMap(Map<String, dynamic> map) {
     return FirewallRuleState(
-      endIpAddress: map['endIpAddress'] == null ? null : (map['endIpAddress'] as String).input(),
-      mongoClusterId: map['mongoClusterId'] == null ? null : (map['mongoClusterId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      startIpAddress: map['startIpAddress'] == null ? null : (map['startIpAddress'] as String).input(),
+      endIpAddress: map['endIpAddress'] == null ? null : (map['endIpAddress']! as String).input(),
+      mongoClusterId: map['mongoClusterId'] == null ? null : (map['mongoClusterId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      startIpAddress: map['startIpAddress'] == null ? null : (map['startIpAddress']! as String).input(),
     );
   }
 }

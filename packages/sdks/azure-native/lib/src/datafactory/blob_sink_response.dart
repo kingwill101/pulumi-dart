@@ -78,18 +78,18 @@ class BlobSinkResponse {
 
   factory BlobSinkResponse.fromMap(Map<String, dynamic> map) {
     return BlobSinkResponse(
-      blobWriterAddHeader: map['blobWriterAddHeader'] == null ? null : (map['blobWriterAddHeader']).input(),
-      blobWriterDateTimeFormat: map['blobWriterDateTimeFormat'] == null ? null : (map['blobWriterDateTimeFormat']).input(),
-      blobWriterOverwriteFiles: map['blobWriterOverwriteFiles'] == null ? null : (map['blobWriterOverwriteFiles']).input(),
-      copyBehavior: map['copyBehavior'] == null ? null : (map['copyBehavior']).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      metadata: map['metadata'] == null ? null : (pulumi.Input.decodeList<MetadataItemResponse>(map['metadata'], (value) => MetadataItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sinkRetryCount: map['sinkRetryCount'] == null ? null : (map['sinkRetryCount']).input(),
-      sinkRetryWait: map['sinkRetryWait'] == null ? null : (map['sinkRetryWait']).input(),
+      blobWriterAddHeader: map['blobWriterAddHeader'] == null ? null : (map['blobWriterAddHeader']!).input(),
+      blobWriterDateTimeFormat: map['blobWriterDateTimeFormat'] == null ? null : (map['blobWriterDateTimeFormat']!).input(),
+      blobWriterOverwriteFiles: map['blobWriterOverwriteFiles'] == null ? null : (map['blobWriterOverwriteFiles']!).input(),
+      copyBehavior: map['copyBehavior'] == null ? null : (map['copyBehavior']!).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      metadata: map['metadata'] == null ? null : (pulumi.Input.decodeList<MetadataItemResponse>(map['metadata']!, (value) => MetadataItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sinkRetryCount: map['sinkRetryCount'] == null ? null : (map['sinkRetryCount']!).input(),
+      sinkRetryWait: map['sinkRetryWait'] == null ? null : (map['sinkRetryWait']!).input(),
       type: (map['type'] as String).input(),
-      writeBatchSize: map['writeBatchSize'] == null ? null : (map['writeBatchSize']).input(),
-      writeBatchTimeout: map['writeBatchTimeout'] == null ? null : (map['writeBatchTimeout']).input(),
+      writeBatchSize: map['writeBatchSize'] == null ? null : (map['writeBatchSize']!).input(),
+      writeBatchTimeout: map['writeBatchTimeout'] == null ? null : (map['writeBatchTimeout']!).input(),
     );
   }
 }

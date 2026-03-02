@@ -44,11 +44,11 @@ class ServerNetworkArgs {
 
   factory ServerNetworkArgs.fromMap(Map<String, dynamic> map) {
     return ServerNetworkArgs(
-      aliasIps: map['aliasIps'] == null ? null : ((map['aliasIps'] as List).cast<String>()).input(),
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
-      networkId: map['networkId'] == null ? null : (map['networkId'] as int).input(),
+      aliasIps: map['aliasIps'] == null ? null : ((map['aliasIps']! as List).cast<String>()).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId']! as int).input(),
       serverId: (map['serverId'] as int).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

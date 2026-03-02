@@ -39,7 +39,7 @@ class GetCoipPoolsResult {
 
   factory GetCoipPoolsResult.fromMap(Map<String, dynamic> map) {
     return GetCoipPoolsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetCoipPoolsFilter>(map['filters'], (value) => GetCoipPoolsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetCoipPoolsFilter>(map['filters']!, (value) => GetCoipPoolsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       poolIds: (map['poolIds'] as List).cast<String>(),
       region: map['region'] as String,

@@ -55,13 +55,13 @@ class CommunicationServiceArgs {
 
   factory CommunicationServiceArgs.fromMap(Map<String, dynamic> map) {
     return CommunicationServiceArgs(
-      communicationServiceName: map['communicationServiceName'] == null ? null : (map['communicationServiceName'] as String).input(),
+      communicationServiceName: map['communicationServiceName'] == null ? null : (map['communicationServiceName']! as String).input(),
       dataLocation: (map['dataLocation'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      linkedDomains: map['linkedDomains'] == null ? null : ((map['linkedDomains'] as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      linkedDomains: map['linkedDomains'] == null ? null : ((map['linkedDomains']! as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

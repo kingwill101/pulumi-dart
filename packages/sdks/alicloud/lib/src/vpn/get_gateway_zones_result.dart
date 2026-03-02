@@ -42,7 +42,7 @@ class GetGatewayZonesResult {
     return GetGatewayZonesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       spec: map['spec'] as String,
       zones: pulumi.Input.decodeList<GetGatewayZonesZone>(map['zones'], (value) => GetGatewayZonesZone.fromMap((value as Map).cast<String, dynamic>())),
     );

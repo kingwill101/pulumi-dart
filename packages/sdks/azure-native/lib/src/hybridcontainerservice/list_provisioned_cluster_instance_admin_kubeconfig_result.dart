@@ -45,7 +45,7 @@ class ListProvisionedClusterInstanceAdminKubeconfigResult {
 
   factory ListProvisionedClusterInstanceAdminKubeconfigResult.fromMap(Map<String, dynamic> map) {
     return ListProvisionedClusterInstanceAdminKubeconfigResult(
-      error: map['error'] == null ? null : ListCredentialResponseResponseError.fromMap((map['error'] as Map).cast<String, dynamic>()),
+      error: map['error'] == null ? null : ListCredentialResponseResponseError.fromMap((map['error']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
       properties: ListCredentialResponseResponseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>()),

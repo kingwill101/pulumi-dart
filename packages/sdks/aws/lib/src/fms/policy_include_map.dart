@@ -27,8 +27,8 @@ class PolicyIncludeMap {
 
   factory PolicyIncludeMap.fromMap(Map<String, dynamic> map) {
     return PolicyIncludeMap(
-      accounts: map['accounts'] == null ? null : ((map['accounts'] as List).cast<String>()).input(),
-      orgunits: map['orgunits'] == null ? null : ((map['orgunits'] as List).cast<String>()).input(),
+      accounts: map['accounts'] == null ? null : (((map['accounts'] as List).cast<String>()).input()).input(),
+      orgunits: map['orgunits'] == null ? null : (((map['orgunits'] as List).cast<String>()).input()).input(),
     );
   }
 }

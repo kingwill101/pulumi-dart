@@ -22,7 +22,7 @@ class RecoveryConfigComposerV1beta1 {
 
   factory RecoveryConfigComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return RecoveryConfigComposerV1beta1(
-      scheduledSnapshotsConfig: map['scheduledSnapshotsConfig'] == null ? null : (ScheduledSnapshotsConfigComposerV1beta1.fromMap((map['scheduledSnapshotsConfig'] as Map).cast<String, dynamic>())).input(),
+      scheduledSnapshotsConfig: map['scheduledSnapshotsConfig'] == null ? null : (ScheduledSnapshotsConfigComposerV1beta1.fromMap((map['scheduledSnapshotsConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

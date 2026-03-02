@@ -28,8 +28,8 @@ class OsPolicyAssignmentRolloutDisruptionBudget {
 
   factory OsPolicyAssignmentRolloutDisruptionBudget.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentRolloutDisruptionBudget(
-      fixed: map['fixed'] == null ? null : (map['fixed'] as int).input(),
-      percent: map['percent'] == null ? null : (map['percent'] as int).input(),
+      fixed: map['fixed'] == null ? null : (map['fixed']! as int).input(),
+      percent: map['percent'] == null ? null : (map['percent']! as int).input(),
     );
   }
 }

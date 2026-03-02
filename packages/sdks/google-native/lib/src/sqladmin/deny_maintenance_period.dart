@@ -31,9 +31,9 @@ class DenyMaintenancePeriod {
 
   factory DenyMaintenancePeriod.fromMap(Map<String, dynamic> map) {
     return DenyMaintenancePeriod(
-      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
-      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
-      time: map['time'] == null ? null : (map['time'] as String).input(),
+      endDate: map['endDate'] == null ? null : (map['endDate']! as String).input(),
+      startDate: map['startDate'] == null ? null : (map['startDate']! as String).input(),
+      time: map['time'] == null ? null : (map['time']! as String).input(),
     );
   }
 }

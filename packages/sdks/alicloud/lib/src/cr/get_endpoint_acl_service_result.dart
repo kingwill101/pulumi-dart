@@ -44,7 +44,7 @@ class GetEndpointAclServiceResult {
       endpointType: map['endpointType'] as String,
       id: map['id'] as String,
       instanceId: map['instanceId'] as String,
-      moduleName: map['moduleName'] == null ? null : map['moduleName'] as String,
+      moduleName: map['moduleName'] == null ? null : map['moduleName']! as String,
       status: map['status'] as String,
     );
   }

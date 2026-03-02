@@ -26,8 +26,8 @@ class RoleAttachmentState {
 
   factory RoleAttachmentState.fromMap(Map<String, dynamic> map) {
     return RoleAttachmentState(
-      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds'] as List).cast<String>()).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
+      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds']! as List).cast<String>()).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName']! as String).input(),
     );
   }
 }

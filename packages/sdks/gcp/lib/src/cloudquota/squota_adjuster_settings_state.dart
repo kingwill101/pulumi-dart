@@ -53,12 +53,12 @@ class SQuotaAdjusterSettingsState {
 
   factory SQuotaAdjusterSettingsState.fromMap(Map<String, dynamic> map) {
     return SQuotaAdjusterSettingsState(
-      effectiveContainer: map['effectiveContainer'] == null ? null : (map['effectiveContainer'] as String).input(),
-      effectiveEnablement: map['effectiveEnablement'] == null ? null : (map['effectiveEnablement'] as String).input(),
-      enablement: map['enablement'] == null ? null : (map['enablement'] as String).input(),
-      inherited: map['inherited'] == null ? null : (map['inherited'] as bool).input(),
-      inheritedFrom: map['inheritedFrom'] == null ? null : (map['inheritedFrom'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      effectiveContainer: map['effectiveContainer'] == null ? null : (map['effectiveContainer']! as String).input(),
+      effectiveEnablement: map['effectiveEnablement'] == null ? null : (map['effectiveEnablement']! as String).input(),
+      enablement: map['enablement'] == null ? null : (map['enablement']! as String).input(),
+      inherited: map['inherited'] == null ? null : (map['inherited']! as bool).input(),
+      inheritedFrom: map['inheritedFrom'] == null ? null : (map['inheritedFrom']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
     );
   }
 }

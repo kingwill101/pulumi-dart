@@ -20,7 +20,7 @@ class ClusterBrokerCapacityConfig {
 
   factory ClusterBrokerCapacityConfig.fromMap(Map<String, dynamic> map) {
     return ClusterBrokerCapacityConfig(
-      diskSizeGib: map['diskSizeGib'] == null ? null : (map['diskSizeGib'] as String).input(),
+      diskSizeGib: map['diskSizeGib'] == null ? null : (map['diskSizeGib']! as String).input(),
     );
   }
 }

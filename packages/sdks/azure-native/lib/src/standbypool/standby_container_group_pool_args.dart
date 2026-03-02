@@ -53,10 +53,10 @@ class StandbyContainerGroupPoolArgs {
     return StandbyContainerGroupPoolArgs(
       containerGroupProperties: (ContainerGroupProperties.fromMap((map['containerGroupProperties'] as Map).cast<String, dynamic>())).input(),
       elasticityProfile: (StandbyContainerGroupPoolElasticityProfile.fromMap((map['elasticityProfile'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      standbyContainerGroupPoolName: map['standbyContainerGroupPoolName'] == null ? null : (map['standbyContainerGroupPoolName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      standbyContainerGroupPoolName: map['standbyContainerGroupPoolName'] == null ? null : (map['standbyContainerGroupPoolName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

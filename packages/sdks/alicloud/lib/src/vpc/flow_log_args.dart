@@ -92,18 +92,18 @@ class FlowLogArgs {
 
   factory FlowLogArgs.fromMap(Map<String, dynamic> map) {
     return FlowLogArgs(
-      aggregationInterval: map['aggregationInterval'] == null ? null : (map['aggregationInterval'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      flowLogName: map['flowLogName'] == null ? null : (map['flowLogName'] as String).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
+      aggregationInterval: map['aggregationInterval'] == null ? null : (map['aggregationInterval']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      flowLogName: map['flowLogName'] == null ? null : (map['flowLogName']! as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as String).input(),
       logStoreName: (map['logStoreName'] as String).input(),
       projectName: (map['projectName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
       resourceId: (map['resourceId'] as String).input(),
       resourceType: (map['resourceType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      trafficPaths: map['trafficPaths'] == null ? null : ((map['trafficPaths'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      trafficPaths: map['trafficPaths'] == null ? null : ((map['trafficPaths']! as List).cast<String>()).input(),
       trafficType: (map['trafficType'] as String).input(),
     );
   }

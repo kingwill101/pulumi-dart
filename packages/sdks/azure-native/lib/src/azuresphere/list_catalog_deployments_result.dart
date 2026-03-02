@@ -27,7 +27,7 @@ class ListCatalogDeploymentsResult {
 
   factory ListCatalogDeploymentsResult.fromMap(Map<String, dynamic> map) {
     return ListCatalogDeploymentsResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
       value: pulumi.Input.decodeList<DeploymentResponse>(map['value'], (value) => DeploymentResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

@@ -68,16 +68,16 @@ class VpnGatewayState {
 
   factory VpnGatewayState.fromMap(Map<String, dynamic> map) {
     return VpnGatewayState(
-      bgpRouteTranslationForNatEnabled: map['bgpRouteTranslationForNatEnabled'] == null ? null : (map['bgpRouteTranslationForNatEnabled'] as bool).input(),
-      bgpSettings: map['bgpSettings'] == null ? null : (VpnGatewayBgpSettings.fromMap((map['bgpSettings'] as Map).cast<String, dynamic>())).input(),
-      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<VpnGatewayIpConfiguration>(map['ipConfigurations'], (value) => VpnGatewayIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      routingPreference: map['routingPreference'] == null ? null : (map['routingPreference'] as String).input(),
-      scaleUnit: map['scaleUnit'] == null ? null : (map['scaleUnit'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      virtualHubId: map['virtualHubId'] == null ? null : (map['virtualHubId'] as String).input(),
+      bgpRouteTranslationForNatEnabled: map['bgpRouteTranslationForNatEnabled'] == null ? null : (map['bgpRouteTranslationForNatEnabled']! as bool).input(),
+      bgpSettings: map['bgpSettings'] == null ? null : (VpnGatewayBgpSettings.fromMap((map['bgpSettings']! as Map).cast<String, dynamic>())).input(),
+      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<VpnGatewayIpConfiguration>(map['ipConfigurations']!, (value) => VpnGatewayIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      routingPreference: map['routingPreference'] == null ? null : (map['routingPreference']! as String).input(),
+      scaleUnit: map['scaleUnit'] == null ? null : (map['scaleUnit']! as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      virtualHubId: map['virtualHubId'] == null ? null : (map['virtualHubId']! as String).input(),
     );
   }
 }

@@ -34,8 +34,8 @@ class QuotaSubQuotaInfoList {
   factory QuotaSubQuotaInfoList.fromMap(Map<String, dynamic> map) {
     return QuotaSubQuotaInfoList(
       nickName: (map['nickName'] as String).input(),
-      parameter: map['parameter'] == null ? null : (QuotaSubQuotaInfoListParameter.fromMap((map['parameter'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      parameter: map['parameter'] == null ? null : (QuotaSubQuotaInfoListParameter.fromMap((map['parameter']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

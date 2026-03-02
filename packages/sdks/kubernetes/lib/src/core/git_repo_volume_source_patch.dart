@@ -33,9 +33,9 @@ class GitRepoVolumeSourcePatch {
 
   factory GitRepoVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return GitRepoVolumeSourcePatch(
-      directory: map['directory'] == null ? null : (map['directory'] as String).input(),
-      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as String).input(),
+      directory: map['directory'] == null ? null : (map['directory']! as String).input(),
+      repository: map['repository'] == null ? null : (map['repository']! as String).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as String).input(),
     );
   }
 }

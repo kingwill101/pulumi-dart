@@ -87,20 +87,20 @@ class AzureDataLakeStoreReadSettings {
 
   factory AzureDataLakeStoreReadSettings.fromMap(Map<String, dynamic> map) {
     return AzureDataLakeStoreReadSettings(
-      deleteFilesAfterCompletion: map['deleteFilesAfterCompletion'] == null ? null : (map['deleteFilesAfterCompletion']).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      enablePartitionDiscovery: map['enablePartitionDiscovery'] == null ? null : (map['enablePartitionDiscovery']).input(),
-      fileListPath: map['fileListPath'] == null ? null : (map['fileListPath']).input(),
-      listAfter: map['listAfter'] == null ? null : (map['listAfter']).input(),
-      listBefore: map['listBefore'] == null ? null : (map['listBefore']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      modifiedDatetimeEnd: map['modifiedDatetimeEnd'] == null ? null : (map['modifiedDatetimeEnd']).input(),
-      modifiedDatetimeStart: map['modifiedDatetimeStart'] == null ? null : (map['modifiedDatetimeStart']).input(),
-      partitionRootPath: map['partitionRootPath'] == null ? null : (map['partitionRootPath']).input(),
-      recursive: map['recursive'] == null ? null : (map['recursive']).input(),
+      deleteFilesAfterCompletion: map['deleteFilesAfterCompletion'] == null ? null : (map['deleteFilesAfterCompletion']!).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      enablePartitionDiscovery: map['enablePartitionDiscovery'] == null ? null : (map['enablePartitionDiscovery']!).input(),
+      fileListPath: map['fileListPath'] == null ? null : (map['fileListPath']!).input(),
+      listAfter: map['listAfter'] == null ? null : (map['listAfter']!).input(),
+      listBefore: map['listBefore'] == null ? null : (map['listBefore']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      modifiedDatetimeEnd: map['modifiedDatetimeEnd'] == null ? null : (map['modifiedDatetimeEnd']!).input(),
+      modifiedDatetimeStart: map['modifiedDatetimeStart'] == null ? null : (map['modifiedDatetimeStart']!).input(),
+      partitionRootPath: map['partitionRootPath'] == null ? null : (map['partitionRootPath']!).input(),
+      recursive: map['recursive'] == null ? null : (map['recursive']!).input(),
       type: (map['type'] as String).input(),
-      wildcardFileName: map['wildcardFileName'] == null ? null : (map['wildcardFileName']).input(),
-      wildcardFolderPath: map['wildcardFolderPath'] == null ? null : (map['wildcardFolderPath']).input(),
+      wildcardFileName: map['wildcardFileName'] == null ? null : (map['wildcardFileName']!).input(),
+      wildcardFolderPath: map['wildcardFolderPath'] == null ? null : (map['wildcardFolderPath']!).input(),
     );
   }
 }

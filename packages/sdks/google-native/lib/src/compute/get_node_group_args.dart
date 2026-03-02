@@ -32,7 +32,7 @@ class GetNodeGroupArgs {
   factory GetNodeGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeGroupArgs(
       nodeGroup: (map['nodeGroup'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       zone: (map['zone'] as String).input(),
     );
   }

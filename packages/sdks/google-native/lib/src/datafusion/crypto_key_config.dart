@@ -21,7 +21,7 @@ class CryptoKeyConfig {
 
   factory CryptoKeyConfig.fromMap(Map<String, dynamic> map) {
     return CryptoKeyConfig(
-      keyReference: map['keyReference'] == null ? null : (map['keyReference'] as String).input(),
+      keyReference: map['keyReference'] == null ? null : (map['keyReference']! as String).input(),
     );
   }
 }

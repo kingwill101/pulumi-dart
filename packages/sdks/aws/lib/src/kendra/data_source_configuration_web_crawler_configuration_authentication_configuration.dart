@@ -21,7 +21,7 @@ class DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfiguration 
 
   factory DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfiguration.fromMap(Map<String, dynamic> map) {
     return DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfiguration(
-      basicAuthentications: map['basicAuthentications'] == null ? null : (pulumi.Input.decodeList<DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationBasicAuthentication>(map['basicAuthentications'], (value) => DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationBasicAuthentication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      basicAuthentications: map['basicAuthentications'] == null ? null : ((pulumi.Input.decodeList<DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationBasicAuthentication>(map['basicAuthentications']!, (value) => DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationBasicAuthentication.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

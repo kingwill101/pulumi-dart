@@ -31,9 +31,9 @@ class WorkloadIdentityConfigContainerV1beta1 {
 
   factory WorkloadIdentityConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityConfigContainerV1beta1(
-      identityNamespace: map['identityNamespace'] == null ? null : (map['identityNamespace'] as String).input(),
-      identityProvider: map['identityProvider'] == null ? null : (map['identityProvider'] as String).input(),
-      workloadPool: map['workloadPool'] == null ? null : (map['workloadPool'] as String).input(),
+      identityNamespace: map['identityNamespace'] == null ? null : (map['identityNamespace']! as String).input(),
+      identityProvider: map['identityProvider'] == null ? null : (map['identityProvider']! as String).input(),
+      workloadPool: map['workloadPool'] == null ? null : (map['workloadPool']! as String).input(),
     );
   }
 }

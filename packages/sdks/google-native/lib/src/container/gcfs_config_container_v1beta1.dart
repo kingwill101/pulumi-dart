@@ -21,7 +21,7 @@ class GcfsConfigContainerV1beta1 {
 
   factory GcfsConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return GcfsConfigContainerV1beta1(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

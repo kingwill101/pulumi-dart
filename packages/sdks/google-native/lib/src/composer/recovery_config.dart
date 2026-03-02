@@ -22,7 +22,7 @@ class RecoveryConfig {
 
   factory RecoveryConfig.fromMap(Map<String, dynamic> map) {
     return RecoveryConfig(
-      scheduledSnapshotsConfig: map['scheduledSnapshotsConfig'] == null ? null : (ScheduledSnapshotsConfig.fromMap((map['scheduledSnapshotsConfig'] as Map).cast<String, dynamic>())).input(),
+      scheduledSnapshotsConfig: map['scheduledSnapshotsConfig'] == null ? null : (ScheduledSnapshotsConfig.fromMap((map['scheduledSnapshotsConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

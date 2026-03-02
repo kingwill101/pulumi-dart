@@ -67,16 +67,16 @@ class SynapseSparkProperties {
 
   factory SynapseSparkProperties.fromMap(Map<String, dynamic> map) {
     return SynapseSparkProperties(
-      autoPauseProperties: map['autoPauseProperties'] == null ? null : (AutoPauseProperties.fromMap((map['autoPauseProperties'] as Map).cast<String, dynamic>())).input(),
-      autoScaleProperties: map['autoScaleProperties'] == null ? null : (AutoScaleProperties.fromMap((map['autoScaleProperties'] as Map).cast<String, dynamic>())).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
-      nodeSize: map['nodeSize'] == null ? null : (map['nodeSize'] as String).input(),
-      nodeSizeFamily: map['nodeSizeFamily'] == null ? null : (map['nodeSizeFamily'] as String).input(),
-      poolName: map['poolName'] == null ? null : (map['poolName'] as String).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
-      sparkVersion: map['sparkVersion'] == null ? null : (map['sparkVersion'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
-      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName'] as String).input(),
+      autoPauseProperties: map['autoPauseProperties'] == null ? null : (AutoPauseProperties.fromMap((map['autoPauseProperties']! as Map).cast<String, dynamic>())).input(),
+      autoScaleProperties: map['autoScaleProperties'] == null ? null : (AutoScaleProperties.fromMap((map['autoScaleProperties']! as Map).cast<String, dynamic>())).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
+      nodeSize: map['nodeSize'] == null ? null : (map['nodeSize']! as String).input(),
+      nodeSizeFamily: map['nodeSizeFamily'] == null ? null : (map['nodeSizeFamily']! as String).input(),
+      poolName: map['poolName'] == null ? null : (map['poolName']! as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
+      sparkVersion: map['sparkVersion'] == null ? null : (map['sparkVersion']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName']! as String).input(),
     );
   }
 }

@@ -62,14 +62,14 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      appConfigs: map['appConfigs'] == null ? null : (pulumi.Input.decodeList<ApplicationAppConfig>(map['appConfigs'], (value) => ApplicationAppConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dataSources: map['dataSources'] == null ? null : (pulumi.Input.decodeList<ApplicationDataSource>(map['dataSources'], (value) => ApplicationDataSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      iamIdentityCenterOptions: map['iamIdentityCenterOptions'] == null ? null : (ApplicationIamIdentityCenterOptions.fromMap((map['iamIdentityCenterOptions'] as Map).cast<String, dynamic>())).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ApplicationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      appConfigs: map['appConfigs'] == null ? null : ((pulumi.Input.decodeList<ApplicationAppConfig>(map['appConfigs']!, (value) => ApplicationAppConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      dataSources: map['dataSources'] == null ? null : ((pulumi.Input.decodeList<ApplicationDataSource>(map['dataSources']!, (value) => ApplicationDataSource.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      iamIdentityCenterOptions: map['iamIdentityCenterOptions'] == null ? null : ((ApplicationIamIdentityCenterOptions.fromMap((map['iamIdentityCenterOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ApplicationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -29,7 +29,7 @@ class GetServerlessVpcEndpointArgs {
 
   factory GetServerlessVpcEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetServerlessVpcEndpointArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       vpcEndpointId: (map['vpcEndpointId'] as String).input(),
     );
   }

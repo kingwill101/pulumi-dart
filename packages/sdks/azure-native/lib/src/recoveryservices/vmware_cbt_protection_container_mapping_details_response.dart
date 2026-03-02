@@ -62,7 +62,7 @@ class VMwareCbtProtectionContainerMappingDetailsResponse {
 
   factory VMwareCbtProtectionContainerMappingDetailsResponse.fromMap(Map<String, dynamic> map) {
     return VMwareCbtProtectionContainerMappingDetailsResponse(
-      excludedSkus: map['excludedSkus'] == null ? null : ((map['excludedSkus'] as List).cast<String>()).input(),
+      excludedSkus: map['excludedSkus'] == null ? null : ((map['excludedSkus']! as List).cast<String>()).input(),
       instanceType: (map['instanceType'] as String).input(),
       keyVaultId: (map['keyVaultId'] as String).input(),
       keyVaultUri: (map['keyVaultUri'] as String).input(),

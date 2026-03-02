@@ -41,11 +41,11 @@ class TableBucketReplicationState {
 
   factory TableBucketReplicationState.fromMap(Map<String, dynamic> map) {
     return TableBucketReplicationState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      rule: map['rule'] == null ? null : (TableBucketReplicationRule.fromMap((map['rule'] as Map).cast<String, dynamic>())).input(),
-      tableBucketArn: map['tableBucketArn'] == null ? null : (map['tableBucketArn'] as String).input(),
-      versionToken: map['versionToken'] == null ? null : (map['versionToken'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      role: map['role'] == null ? null : ((map['role'] as String).input()).input(),
+      rule: map['rule'] == null ? null : ((TableBucketReplicationRule.fromMap((map['rule']! as Map).cast<String, dynamic>())).input()).input(),
+      tableBucketArn: map['tableBucketArn'] == null ? null : ((map['tableBucketArn'] as String).input()).input(),
+      versionToken: map['versionToken'] == null ? null : ((map['versionToken'] as String).input()).input(),
     );
   }
 }

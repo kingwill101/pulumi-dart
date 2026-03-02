@@ -36,10 +36,10 @@ class UserPolicyState {
 
   factory UserPolicyState.fromMap(Map<String, dynamic> map) {
     return UserPolicyState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      user: map['user'] == null ? null : ((map['user'] as String).input()).input(),
     );
   }
 }

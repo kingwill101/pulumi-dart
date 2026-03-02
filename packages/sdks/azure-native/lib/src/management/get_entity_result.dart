@@ -32,8 +32,8 @@ class GetEntityResult {
 
   factory GetEntityResult.fromMap(Map<String, dynamic> map) {
     return GetEntityResult(
-      count: map['count'] == null ? null : map['count'] as int,
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
+      count: map['count'] == null ? null : map['count']! as int,
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
       value: pulumi.Input.decodeList<EntityInfoResponse>(map['value'], (value) => EntityInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

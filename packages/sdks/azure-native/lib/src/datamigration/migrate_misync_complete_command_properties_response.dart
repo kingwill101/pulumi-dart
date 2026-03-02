@@ -47,7 +47,7 @@ class MigrateMISyncCompleteCommandPropertiesResponse {
     return MigrateMISyncCompleteCommandPropertiesResponse(
       commandType: (map['commandType'] as String).input(),
       errors: (pulumi.Input.decodeList<ODataErrorResponse>(map['errors'], (value) => ODataErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      input: map['input'] == null ? null : (MigrateMISyncCompleteCommandInputResponse.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
+      input: map['input'] == null ? null : (MigrateMISyncCompleteCommandInputResponse.fromMap((map['input']! as Map).cast<String, dynamic>())).input(),
       output: (MigrateMISyncCompleteCommandOutputResponse.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
       state: (map['state'] as String).input(),
     );

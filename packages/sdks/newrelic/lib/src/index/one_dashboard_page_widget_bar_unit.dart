@@ -26,8 +26,8 @@ class OneDashboardPageWidgetBarUnit {
 
   factory OneDashboardPageWidgetBarUnit.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetBarUnit(
-      seriesOverrides: map['seriesOverrides'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetBarUnitSeriesOverride>(map['seriesOverrides'], (value) => OneDashboardPageWidgetBarUnitSeriesOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      seriesOverrides: map['seriesOverrides'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetBarUnitSeriesOverride>(map['seriesOverrides']!, (value) => OneDashboardPageWidgetBarUnitSeriesOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      unit: map['unit'] == null ? null : (map['unit']! as String).input(),
     );
   }
 }

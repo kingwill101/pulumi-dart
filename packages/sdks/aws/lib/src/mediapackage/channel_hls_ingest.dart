@@ -21,7 +21,7 @@ class ChannelHlsIngest {
 
   factory ChannelHlsIngest.fromMap(Map<String, dynamic> map) {
     return ChannelHlsIngest(
-      ingestEndpoints: map['ingestEndpoints'] == null ? null : (pulumi.Input.decodeList<ChannelHlsIngestIngestEndpoint>(map['ingestEndpoints'], (value) => ChannelHlsIngestIngestEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ingestEndpoints: map['ingestEndpoints'] == null ? null : ((pulumi.Input.decodeList<ChannelHlsIngestIngestEndpoint>(map['ingestEndpoints']!, (value) => ChannelHlsIngestIngestEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

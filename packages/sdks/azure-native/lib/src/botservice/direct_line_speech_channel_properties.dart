@@ -51,13 +51,13 @@ class DirectLineSpeechChannelProperties {
 
   factory DirectLineSpeechChannelProperties.fromMap(Map<String, dynamic> map) {
     return DirectLineSpeechChannelProperties(
-      cognitiveServiceRegion: map['cognitiveServiceRegion'] == null ? null : (map['cognitiveServiceRegion'] as String).input(),
-      cognitiveServiceResourceId: map['cognitiveServiceResourceId'] == null ? null : (map['cognitiveServiceResourceId'] as String).input(),
-      cognitiveServiceSubscriptionKey: map['cognitiveServiceSubscriptionKey'] == null ? null : (map['cognitiveServiceSubscriptionKey'] as String).input(),
-      customSpeechModelId: map['customSpeechModelId'] == null ? null : (map['customSpeechModelId'] as String).input(),
-      customVoiceDeploymentId: map['customVoiceDeploymentId'] == null ? null : (map['customVoiceDeploymentId'] as String).input(),
-      isDefaultBotForCogSvcAccount: map['isDefaultBotForCogSvcAccount'] == null ? null : (map['isDefaultBotForCogSvcAccount'] as bool).input(),
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
+      cognitiveServiceRegion: map['cognitiveServiceRegion'] == null ? null : (map['cognitiveServiceRegion']! as String).input(),
+      cognitiveServiceResourceId: map['cognitiveServiceResourceId'] == null ? null : (map['cognitiveServiceResourceId']! as String).input(),
+      cognitiveServiceSubscriptionKey: map['cognitiveServiceSubscriptionKey'] == null ? null : (map['cognitiveServiceSubscriptionKey']! as String).input(),
+      customSpeechModelId: map['customSpeechModelId'] == null ? null : (map['customSpeechModelId']! as String).input(),
+      customVoiceDeploymentId: map['customVoiceDeploymentId'] == null ? null : (map['customVoiceDeploymentId']! as String).input(),
+      isDefaultBotForCogSvcAccount: map['isDefaultBotForCogSvcAccount'] == null ? null : (map['isDefaultBotForCogSvcAccount']! as bool).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as bool).input(),
     );
   }
 }

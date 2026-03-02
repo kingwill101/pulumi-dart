@@ -50,10 +50,10 @@ class NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentArgs {
 
   factory NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentArgs.fromMap(Map<String, dynamic> map) {
     return NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       destinationResourceId: (map['destinationResourceId'] as String).input(),
       ipTraffic: (NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic.fromMap((map['ipTraffic'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       sourceResourceId: (map['sourceResourceId'] as String).input(),
       verifierWorkspaceId: (map['verifierWorkspaceId'] as String).input(),
     );

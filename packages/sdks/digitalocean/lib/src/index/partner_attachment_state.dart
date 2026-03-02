@@ -71,17 +71,17 @@ class PartnerAttachmentState {
 
   factory PartnerAttachmentState.fromMap(Map<String, dynamic> map) {
     return PartnerAttachmentState(
-      bgp: map['bgp'] == null ? null : (PartnerAttachmentBgp.fromMap((map['bgp'] as Map).cast<String, dynamic>())).input(),
-      childrens: map['childrens'] == null ? null : ((map['childrens'] as List).cast<String>()).input(),
-      connectionBandwidthInMbps: map['connectionBandwidthInMbps'] == null ? null : (map['connectionBandwidthInMbps'] as int).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      naasProvider: map['naasProvider'] == null ? null : (map['naasProvider'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentUuid: map['parentUuid'] == null ? null : (map['parentUuid'] as String).input(),
-      redundancyZone: map['redundancyZone'] == null ? null : (map['redundancyZone'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      vpcIds: map['vpcIds'] == null ? null : ((map['vpcIds'] as List).cast<String>()).input(),
+      bgp: map['bgp'] == null ? null : (PartnerAttachmentBgp.fromMap((map['bgp']! as Map).cast<String, dynamic>())).input(),
+      childrens: map['childrens'] == null ? null : ((map['childrens']! as List).cast<String>()).input(),
+      connectionBandwidthInMbps: map['connectionBandwidthInMbps'] == null ? null : (map['connectionBandwidthInMbps']! as int).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      naasProvider: map['naasProvider'] == null ? null : (map['naasProvider']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parentUuid: map['parentUuid'] == null ? null : (map['parentUuid']! as String).input(),
+      redundancyZone: map['redundancyZone'] == null ? null : (map['redundancyZone']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      vpcIds: map['vpcIds'] == null ? null : ((map['vpcIds']! as List).cast<String>()).input(),
     );
   }
 }

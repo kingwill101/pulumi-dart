@@ -66,13 +66,13 @@ class ReportTemplateState {
 
   factory ReportTemplateState.fromMap(Map<String, dynamic> map) {
     return ReportTemplateState(
-      reportFileFormats: map['reportFileFormats'] == null ? null : (map['reportFileFormats'] as String).input(),
-      reportGranularity: map['reportGranularity'] == null ? null : (map['reportGranularity'] as String).input(),
-      reportLanguage: map['reportLanguage'] == null ? null : (map['reportLanguage'] as String).input(),
-      reportScopes: map['reportScopes'] == null ? null : (pulumi.Input.decodeList<ReportTemplateReportScope>(map['reportScopes'], (value) => ReportTemplateReportScope.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      reportTemplateDescription: map['reportTemplateDescription'] == null ? null : (map['reportTemplateDescription'] as String).input(),
-      reportTemplateName: map['reportTemplateName'] == null ? null : (map['reportTemplateName'] as String).input(),
-      subscriptionFrequency: map['subscriptionFrequency'] == null ? null : (map['subscriptionFrequency'] as String).input(),
+      reportFileFormats: map['reportFileFormats'] == null ? null : (map['reportFileFormats']! as String).input(),
+      reportGranularity: map['reportGranularity'] == null ? null : (map['reportGranularity']! as String).input(),
+      reportLanguage: map['reportLanguage'] == null ? null : (map['reportLanguage']! as String).input(),
+      reportScopes: map['reportScopes'] == null ? null : (pulumi.Input.decodeList<ReportTemplateReportScope>(map['reportScopes']!, (value) => ReportTemplateReportScope.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      reportTemplateDescription: map['reportTemplateDescription'] == null ? null : (map['reportTemplateDescription']! as String).input(),
+      reportTemplateName: map['reportTemplateName'] == null ? null : (map['reportTemplateName']! as String).input(),
+      subscriptionFrequency: map['subscriptionFrequency'] == null ? null : (map['subscriptionFrequency']! as String).input(),
     );
   }
 }

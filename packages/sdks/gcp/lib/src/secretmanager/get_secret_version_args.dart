@@ -48,11 +48,11 @@ class GetSecretVersionArgs {
 
   factory GetSecretVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretVersionArgs(
-      fetchSecretData: map['fetchSecretData'] == null ? null : (map['fetchSecretData'] as bool).input(),
-      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : (map['isSecretDataBase64'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      fetchSecretData: map['fetchSecretData'] == null ? null : (map['fetchSecretData']! as bool).input(),
+      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : (map['isSecretDataBase64']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       secret: (map['secret'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -52,10 +52,10 @@ class RouterNatAddressArgs {
 
   factory RouterNatAddressArgs.fromMap(Map<String, dynamic> map) {
     return RouterNatAddressArgs(
-      drainNatIps: map['drainNatIps'] == null ? null : ((map['drainNatIps'] as List).cast<String>()).input(),
+      drainNatIps: map['drainNatIps'] == null ? null : ((map['drainNatIps']! as List).cast<String>()).input(),
       natIps: ((map['natIps'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       router: (map['router'] as String).input(),
       routerNat: (map['routerNat'] as String).input(),
     );

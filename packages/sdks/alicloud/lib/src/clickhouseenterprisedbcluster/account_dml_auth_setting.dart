@@ -35,8 +35,8 @@ class AccountDmlAuthSetting {
 
   factory AccountDmlAuthSetting.fromMap(Map<String, dynamic> map) {
     return AccountDmlAuthSetting(
-      allowDatabases: map['allowDatabases'] == null ? null : ((map['allowDatabases'] as List).cast<String>()).input(),
-      allowDictionaries: map['allowDictionaries'] == null ? null : ((map['allowDictionaries'] as List).cast<String>()).input(),
+      allowDatabases: map['allowDatabases'] == null ? null : ((map['allowDatabases']! as List).cast<String>()).input(),
+      allowDictionaries: map['allowDictionaries'] == null ? null : ((map['allowDictionaries']! as List).cast<String>()).input(),
       ddlAuthority: (map['ddlAuthority'] as bool).input(),
       dmlAuthority: (map['dmlAuthority'] as int).input(),
     );

@@ -31,9 +31,9 @@ class SQLStorageSettingsResponse {
 
   factory SQLStorageSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SQLStorageSettingsResponse(
-      defaultFilePath: map['defaultFilePath'] == null ? null : (map['defaultFilePath'] as String).input(),
-      luns: map['luns'] == null ? null : ((map['luns'] as List).cast<int>()).input(),
-      useStoragePool: map['useStoragePool'] == null ? null : (map['useStoragePool'] as bool).input(),
+      defaultFilePath: map['defaultFilePath'] == null ? null : (map['defaultFilePath']! as String).input(),
+      luns: map['luns'] == null ? null : ((map['luns']! as List).cast<int>()).input(),
+      useStoragePool: map['useStoragePool'] == null ? null : (map['useStoragePool']! as bool).input(),
     );
   }
 }

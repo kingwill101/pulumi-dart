@@ -84,17 +84,17 @@ class WorkflowTemplateJob {
 
   factory WorkflowTemplateJob.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplateJob(
-      hadoopJob: map['hadoopJob'] == null ? null : (WorkflowTemplateJobHadoopJob.fromMap((map['hadoopJob'] as Map).cast<String, dynamic>())).input(),
-      hiveJob: map['hiveJob'] == null ? null : (WorkflowTemplateJobHiveJob.fromMap((map['hiveJob'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      pigJob: map['pigJob'] == null ? null : (WorkflowTemplateJobPigJob.fromMap((map['pigJob'] as Map).cast<String, dynamic>())).input(),
-      prerequisiteStepIds: map['prerequisiteStepIds'] == null ? null : ((map['prerequisiteStepIds'] as List).cast<String>()).input(),
-      prestoJob: map['prestoJob'] == null ? null : (WorkflowTemplateJobPrestoJob.fromMap((map['prestoJob'] as Map).cast<String, dynamic>())).input(),
-      pysparkJob: map['pysparkJob'] == null ? null : (WorkflowTemplateJobPysparkJob.fromMap((map['pysparkJob'] as Map).cast<String, dynamic>())).input(),
-      scheduling: map['scheduling'] == null ? null : (WorkflowTemplateJobScheduling.fromMap((map['scheduling'] as Map).cast<String, dynamic>())).input(),
-      sparkJob: map['sparkJob'] == null ? null : (WorkflowTemplateJobSparkJob.fromMap((map['sparkJob'] as Map).cast<String, dynamic>())).input(),
-      sparkRJob: map['sparkRJob'] == null ? null : (WorkflowTemplateJobSparkRJob.fromMap((map['sparkRJob'] as Map).cast<String, dynamic>())).input(),
-      sparkSqlJob: map['sparkSqlJob'] == null ? null : (WorkflowTemplateJobSparkSqlJob.fromMap((map['sparkSqlJob'] as Map).cast<String, dynamic>())).input(),
+      hadoopJob: map['hadoopJob'] == null ? null : (WorkflowTemplateJobHadoopJob.fromMap((map['hadoopJob']! as Map).cast<String, dynamic>())).input(),
+      hiveJob: map['hiveJob'] == null ? null : (WorkflowTemplateJobHiveJob.fromMap((map['hiveJob']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      pigJob: map['pigJob'] == null ? null : (WorkflowTemplateJobPigJob.fromMap((map['pigJob']! as Map).cast<String, dynamic>())).input(),
+      prerequisiteStepIds: map['prerequisiteStepIds'] == null ? null : ((map['prerequisiteStepIds']! as List).cast<String>()).input(),
+      prestoJob: map['prestoJob'] == null ? null : (WorkflowTemplateJobPrestoJob.fromMap((map['prestoJob']! as Map).cast<String, dynamic>())).input(),
+      pysparkJob: map['pysparkJob'] == null ? null : (WorkflowTemplateJobPysparkJob.fromMap((map['pysparkJob']! as Map).cast<String, dynamic>())).input(),
+      scheduling: map['scheduling'] == null ? null : (WorkflowTemplateJobScheduling.fromMap((map['scheduling']! as Map).cast<String, dynamic>())).input(),
+      sparkJob: map['sparkJob'] == null ? null : (WorkflowTemplateJobSparkJob.fromMap((map['sparkJob']! as Map).cast<String, dynamic>())).input(),
+      sparkRJob: map['sparkRJob'] == null ? null : (WorkflowTemplateJobSparkRJob.fromMap((map['sparkRJob']! as Map).cast<String, dynamic>())).input(),
+      sparkSqlJob: map['sparkSqlJob'] == null ? null : (WorkflowTemplateJobSparkSqlJob.fromMap((map['sparkSqlJob']! as Map).cast<String, dynamic>())).input(),
       stepId: (map['stepId'] as String).input(),
     );
   }

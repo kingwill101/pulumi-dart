@@ -27,8 +27,8 @@ class LinkedRouterApplianceInstances {
 
   factory LinkedRouterApplianceInstances.fromMap(Map<String, dynamic> map) {
     return LinkedRouterApplianceInstances(
-      instances: map['instances'] == null ? null : (pulumi.Input.decodeList<RouterApplianceInstance>(map['instances'], (value) => RouterApplianceInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      siteToSiteDataTransfer: map['siteToSiteDataTransfer'] == null ? null : (map['siteToSiteDataTransfer'] as bool).input(),
+      instances: map['instances'] == null ? null : (pulumi.Input.decodeList<RouterApplianceInstance>(map['instances']!, (value) => RouterApplianceInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      siteToSiteDataTransfer: map['siteToSiteDataTransfer'] == null ? null : (map['siteToSiteDataTransfer']! as bool).input(),
     );
   }
 }

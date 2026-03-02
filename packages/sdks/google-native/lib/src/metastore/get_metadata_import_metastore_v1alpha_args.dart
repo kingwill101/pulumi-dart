@@ -37,7 +37,7 @@ class GetMetadataImportMetastoreV1alphaArgs {
     return GetMetadataImportMetastoreV1alphaArgs(
       location: (map['location'] as String).input(),
       metadataImportId: (map['metadataImportId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serviceId: (map['serviceId'] as String).input(),
     );
   }

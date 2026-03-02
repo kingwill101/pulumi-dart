@@ -49,12 +49,12 @@ class InfoTypeTransformation {
 
   factory InfoTypeTransformation.fromMap(Map<String, dynamic> map) {
     return InfoTypeTransformation(
-      characterMaskConfig: map['characterMaskConfig'] == null ? null : (CharacterMaskConfig.fromMap((map['characterMaskConfig'] as Map).cast<String, dynamic>())).input(),
-      cryptoHashConfig: map['cryptoHashConfig'] == null ? null : (CryptoHashConfig.fromMap((map['cryptoHashConfig'] as Map).cast<String, dynamic>())).input(),
-      dateShiftConfig: map['dateShiftConfig'] == null ? null : (DateShiftConfig.fromMap((map['dateShiftConfig'] as Map).cast<String, dynamic>())).input(),
-      infoTypes: map['infoTypes'] == null ? null : ((map['infoTypes'] as List).cast<String>()).input(),
-      redactConfig: map['redactConfig'] == null ? null : ((map['redactConfig'] as Map).cast<String, dynamic>()).input(),
-      replaceWithInfoTypeConfig: map['replaceWithInfoTypeConfig'] == null ? null : ((map['replaceWithInfoTypeConfig'] as Map).cast<String, dynamic>()).input(),
+      characterMaskConfig: map['characterMaskConfig'] == null ? null : (CharacterMaskConfig.fromMap((map['characterMaskConfig']! as Map).cast<String, dynamic>())).input(),
+      cryptoHashConfig: map['cryptoHashConfig'] == null ? null : (CryptoHashConfig.fromMap((map['cryptoHashConfig']! as Map).cast<String, dynamic>())).input(),
+      dateShiftConfig: map['dateShiftConfig'] == null ? null : (DateShiftConfig.fromMap((map['dateShiftConfig']! as Map).cast<String, dynamic>())).input(),
+      infoTypes: map['infoTypes'] == null ? null : ((map['infoTypes']! as List).cast<String>()).input(),
+      redactConfig: map['redactConfig'] == null ? null : ((map['redactConfig']! as Map).cast<String, dynamic>()).input(),
+      replaceWithInfoTypeConfig: map['replaceWithInfoTypeConfig'] == null ? null : ((map['replaceWithInfoTypeConfig']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

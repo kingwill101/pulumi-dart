@@ -27,7 +27,7 @@ class LogMatch {
   factory LogMatch.fromMap(Map<String, dynamic> map) {
     return LogMatch(
       filter: (map['filter'] as String).input(),
-      labelExtractors: map['labelExtractors'] == null ? null : ((map['labelExtractors'] as Map).cast<String, String>()).input(),
+      labelExtractors: map['labelExtractors'] == null ? null : ((map['labelExtractors']! as Map).cast<String, String>()).input(),
     );
   }
 }

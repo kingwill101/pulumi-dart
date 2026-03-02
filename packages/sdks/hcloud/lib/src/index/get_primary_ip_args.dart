@@ -44,11 +44,11 @@ class GetPrimaryIpArgs {
 
   factory GetPrimaryIpArgs.fromMap(Map<String, dynamic> map) {
     return GetPrimaryIpArgs(
-      assigneeId: map['assigneeId'] == null ? null : (map['assigneeId'] as int).input(),
-      id: map['id'] == null ? null : (map['id'] as int).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
+      assigneeId: map['assigneeId'] == null ? null : (map['assigneeId']! as int).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
     );
   }
 }

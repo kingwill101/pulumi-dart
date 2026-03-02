@@ -123,18 +123,18 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy {
 
   factory EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy(
-      addSignatures: map['addSignatures'] == null ? null : (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures.fromMap((map['addSignatures'] as Map).cast<String, dynamic>())).input(),
-      cacheKeyPolicy: map['cacheKeyPolicy'] == null ? null : (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy.fromMap((map['cacheKeyPolicy'] as Map).cast<String, dynamic>())).input(),
-      cacheMode: map['cacheMode'] == null ? null : (map['cacheMode'] as String).input(),
-      clientTtl: map['clientTtl'] == null ? null : (map['clientTtl'] as String).input(),
-      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl'] as String).input(),
-      maxTtl: map['maxTtl'] == null ? null : (map['maxTtl'] as String).input(),
-      negativeCaching: map['negativeCaching'] == null ? null : (map['negativeCaching'] as bool).input(),
-      negativeCachingPolicy: map['negativeCachingPolicy'] == null ? null : ((map['negativeCachingPolicy'] as Map).cast<String, String>()).input(),
-      signedRequestKeyset: map['signedRequestKeyset'] == null ? null : (map['signedRequestKeyset'] as String).input(),
-      signedRequestMaximumExpirationTtl: map['signedRequestMaximumExpirationTtl'] == null ? null : (map['signedRequestMaximumExpirationTtl'] as String).input(),
-      signedRequestMode: map['signedRequestMode'] == null ? null : (map['signedRequestMode'] as String).input(),
-      signedTokenOptions: map['signedTokenOptions'] == null ? null : (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions.fromMap((map['signedTokenOptions'] as Map).cast<String, dynamic>())).input(),
+      addSignatures: map['addSignatures'] == null ? null : (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures.fromMap((map['addSignatures']! as Map).cast<String, dynamic>())).input(),
+      cacheKeyPolicy: map['cacheKeyPolicy'] == null ? null : (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy.fromMap((map['cacheKeyPolicy']! as Map).cast<String, dynamic>())).input(),
+      cacheMode: map['cacheMode'] == null ? null : (map['cacheMode']! as String).input(),
+      clientTtl: map['clientTtl'] == null ? null : (map['clientTtl']! as String).input(),
+      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl']! as String).input(),
+      maxTtl: map['maxTtl'] == null ? null : (map['maxTtl']! as String).input(),
+      negativeCaching: map['negativeCaching'] == null ? null : (map['negativeCaching']! as bool).input(),
+      negativeCachingPolicy: map['negativeCachingPolicy'] == null ? null : ((map['negativeCachingPolicy']! as Map).cast<String, String>()).input(),
+      signedRequestKeyset: map['signedRequestKeyset'] == null ? null : (map['signedRequestKeyset']! as String).input(),
+      signedRequestMaximumExpirationTtl: map['signedRequestMaximumExpirationTtl'] == null ? null : (map['signedRequestMaximumExpirationTtl']! as String).input(),
+      signedRequestMode: map['signedRequestMode'] == null ? null : (map['signedRequestMode']! as String).input(),
+      signedTokenOptions: map['signedTokenOptions'] == null ? null : (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions.fromMap((map['signedTokenOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

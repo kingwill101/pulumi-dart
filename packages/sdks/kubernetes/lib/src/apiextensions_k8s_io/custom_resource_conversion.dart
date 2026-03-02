@@ -29,7 +29,7 @@ class CustomResourceConversion {
   factory CustomResourceConversion.fromMap(Map<String, dynamic> map) {
     return CustomResourceConversion(
       strategy: (map['strategy'] as String).input(),
-      webhook: map['webhook'] == null ? null : (WebhookConversion.fromMap((map['webhook'] as Map).cast<String, dynamic>())).input(),
+      webhook: map['webhook'] == null ? null : (WebhookConversion.fromMap((map['webhook']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

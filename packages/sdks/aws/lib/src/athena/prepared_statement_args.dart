@@ -44,10 +44,10 @@ class PreparedStatementArgs {
 
   factory PreparedStatementArgs.fromMap(Map<String, dynamic> map) {
     return PreparedStatementArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       queryStatement: (map['queryStatement'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       workgroup: (map['workgroup'] as String).input(),
     );
   }

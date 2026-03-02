@@ -37,7 +37,7 @@ class GetContainerRecipeInstanceConfigurationBlockDeviceMapping {
   factory GetContainerRecipeInstanceConfigurationBlockDeviceMapping.fromMap(Map<String, dynamic> map) {
     return GetContainerRecipeInstanceConfigurationBlockDeviceMapping(
       deviceName: (map['deviceName'] as String).input(),
-      ebs: (pulumi.Input.decodeList<GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb>(map['ebs'], (value) => GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ebs: (pulumi.Input.decodeList<GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb>(map['ebs']!, (value) => GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb.fromMap((value as Map).cast<String, dynamic>()))).input(),
       noDevice: (map['noDevice'] as String).input(),
       virtualName: (map['virtualName'] as String).input(),
     );

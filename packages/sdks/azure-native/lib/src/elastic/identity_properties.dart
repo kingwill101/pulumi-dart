@@ -21,7 +21,7 @@ class IdentityProperties {
 
   factory IdentityProperties.fromMap(Map<String, dynamic> map) {
     return IdentityProperties(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

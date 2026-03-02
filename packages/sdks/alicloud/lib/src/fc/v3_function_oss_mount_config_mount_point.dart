@@ -39,11 +39,11 @@ class V3FunctionOssMountConfigMountPoint {
 
   factory V3FunctionOssMountConfigMountPoint.fromMap(Map<String, dynamic> map) {
     return V3FunctionOssMountConfigMountPoint(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      bucketPath: map['bucketPath'] == null ? null : (map['bucketPath'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      mountDir: map['mountDir'] == null ? null : (map['mountDir'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
+      bucketPath: map['bucketPath'] == null ? null : (map['bucketPath']! as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      mountDir: map['mountDir'] == null ? null : (map['mountDir']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
     );
   }
 }

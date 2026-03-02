@@ -20,7 +20,7 @@ class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig {
 
   factory ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig(
-      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : (map['enableConfidentialCompute'] as bool).input(),
+      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : (map['enableConfidentialCompute']! as bool).input(),
     );
   }
 }

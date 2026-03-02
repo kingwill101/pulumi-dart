@@ -48,11 +48,11 @@ class SpringCloudServiceConfigServerGitSetting {
 
   factory SpringCloudServiceConfigServerGitSetting.fromMap(Map<String, dynamic> map) {
     return SpringCloudServiceConfigServerGitSetting(
-      httpBasicAuth: map['httpBasicAuth'] == null ? null : (SpringCloudServiceConfigServerGitSettingHttpBasicAuth.fromMap((map['httpBasicAuth'] as Map).cast<String, dynamic>())).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      repositories: map['repositories'] == null ? null : (pulumi.Input.decodeList<SpringCloudServiceConfigServerGitSettingRepository>(map['repositories'], (value) => SpringCloudServiceConfigServerGitSettingRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      searchPaths: map['searchPaths'] == null ? null : ((map['searchPaths'] as List).cast<String>()).input(),
-      sshAuth: map['sshAuth'] == null ? null : (SpringCloudServiceConfigServerGitSettingSshAuth.fromMap((map['sshAuth'] as Map).cast<String, dynamic>())).input(),
+      httpBasicAuth: map['httpBasicAuth'] == null ? null : (SpringCloudServiceConfigServerGitSettingHttpBasicAuth.fromMap((map['httpBasicAuth']! as Map).cast<String, dynamic>())).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      repositories: map['repositories'] == null ? null : (pulumi.Input.decodeList<SpringCloudServiceConfigServerGitSettingRepository>(map['repositories']!, (value) => SpringCloudServiceConfigServerGitSettingRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      searchPaths: map['searchPaths'] == null ? null : ((map['searchPaths']! as List).cast<String>()).input(),
+      sshAuth: map['sshAuth'] == null ? null : (SpringCloudServiceConfigServerGitSettingSshAuth.fromMap((map['sshAuth']! as Map).cast<String, dynamic>())).input(),
       uri: (map['uri'] as String).input(),
     );
   }

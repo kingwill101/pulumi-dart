@@ -40,7 +40,7 @@ class WebAppFtpAllowedArgs {
   factory WebAppFtpAllowedArgs.fromMap(Map<String, dynamic> map) {
     return WebAppFtpAllowedArgs(
       allow: (map['allow'] as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

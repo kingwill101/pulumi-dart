@@ -60,14 +60,14 @@ class RouteTableState {
 
   factory RouteTableState.fromMap(Map<String, dynamic> map) {
     return RouteTableState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
-      propagatingVgws: map['propagatingVgws'] == null ? null : ((map['propagatingVgws'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<RouteTableRoute>(map['routes'], (value) => RouteTableRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
+      propagatingVgws: map['propagatingVgws'] == null ? null : (((map['propagatingVgws'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      routes: map['routes'] == null ? null : ((pulumi.Input.decodeList<RouteTableRoute>(map['routes']!, (value) => RouteTableRoute.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

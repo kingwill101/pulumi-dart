@@ -51,7 +51,7 @@ class GetControlControlMappingSource {
       sourceDescription: (map['sourceDescription'] as String).input(),
       sourceFrequency: (map['sourceFrequency'] as String).input(),
       sourceId: (map['sourceId'] as String).input(),
-      sourceKeywords: (pulumi.Input.decodeList<GetControlControlMappingSourceSourceKeyword>(map['sourceKeywords'], (value) => GetControlControlMappingSourceSourceKeyword.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceKeywords: (pulumi.Input.decodeList<GetControlControlMappingSourceSourceKeyword>(map['sourceKeywords']!, (value) => GetControlControlMappingSourceSourceKeyword.fromMap((value as Map).cast<String, dynamic>()))).input(),
       sourceName: (map['sourceName'] as String).input(),
       sourceSetUpOption: (map['sourceSetUpOption'] as String).input(),
       sourceType: (map['sourceType'] as String).input(),

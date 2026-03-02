@@ -59,14 +59,14 @@ class HciNetworkInterfaceState {
 
   factory HciNetworkInterfaceState.fromMap(Map<String, dynamic> map) {
     return HciNetworkInterfaceState(
-      customLocationId: map['customLocationId'] == null ? null : (map['customLocationId'] as String).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      ipConfiguration: map['ipConfiguration'] == null ? null : (HciNetworkInterfaceIpConfiguration.fromMap((map['ipConfiguration'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      macAddress: map['macAddress'] == null ? null : (map['macAddress'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      customLocationId: map['customLocationId'] == null ? null : (map['customLocationId']! as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      ipConfiguration: map['ipConfiguration'] == null ? null : (HciNetworkInterfaceIpConfiguration.fromMap((map['ipConfiguration']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      macAddress: map['macAddress'] == null ? null : (map['macAddress']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

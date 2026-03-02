@@ -31,9 +31,9 @@ class LabelingJobLabelingJobAlgorithmsConfig {
 
   factory LabelingJobLabelingJobAlgorithmsConfig.fromMap(Map<String, dynamic> map) {
     return LabelingJobLabelingJobAlgorithmsConfig(
-      initialActiveLearningModelArn: map['initialActiveLearningModelArn'] == null ? null : (map['initialActiveLearningModelArn'] as String).input(),
+      initialActiveLearningModelArn: map['initialActiveLearningModelArn'] == null ? null : ((map['initialActiveLearningModelArn'] as String).input()).input(),
       labelingJobAlgorithmSpecificationArn: (map['labelingJobAlgorithmSpecificationArn'] as String).input(),
-      labelingJobResourceConfig: map['labelingJobResourceConfig'] == null ? null : (LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfig.fromMap((map['labelingJobResourceConfig'] as Map).cast<String, dynamic>())).input(),
+      labelingJobResourceConfig: map['labelingJobResourceConfig'] == null ? null : ((LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfig.fromMap((map['labelingJobResourceConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

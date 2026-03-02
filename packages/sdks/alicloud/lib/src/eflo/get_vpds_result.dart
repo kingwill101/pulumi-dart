@@ -77,18 +77,18 @@ class GetVpdsResult {
 
   factory GetVpdsResult.fromMap(Map<String, dynamic> map) {
     return GetVpdsResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      vpdId: map['vpdId'] == null ? null : map['vpdId'] as String,
-      vpdName: map['vpdName'] == null ? null : map['vpdName'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      vpdId: map['vpdId'] == null ? null : map['vpdId']! as String,
+      vpdName: map['vpdName'] == null ? null : map['vpdName']! as String,
       vpds: pulumi.Input.decodeList<GetVpdsVpd>(map['vpds'], (value) => GetVpdsVpd.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

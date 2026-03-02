@@ -39,10 +39,10 @@ class OptionsDeploymentmanagerV2beta {
 
   factory OptionsDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return OptionsDeploymentmanagerV2beta(
-      asyncOptions: map['asyncOptions'] == null ? null : (pulumi.Input.decodeList<AsyncOptionsDeploymentmanagerV2beta>(map['asyncOptions'], (value) => AsyncOptionsDeploymentmanagerV2beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inputMappings: map['inputMappings'] == null ? null : (pulumi.Input.decodeList<InputMappingDeploymentmanagerV2beta>(map['inputMappings'], (value) => InputMappingDeploymentmanagerV2beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      validationOptions: map['validationOptions'] == null ? null : (ValidationOptionsDeploymentmanagerV2beta.fromMap((map['validationOptions'] as Map).cast<String, dynamic>())).input(),
-      virtualProperties: map['virtualProperties'] == null ? null : (map['virtualProperties'] as String).input(),
+      asyncOptions: map['asyncOptions'] == null ? null : (pulumi.Input.decodeList<AsyncOptionsDeploymentmanagerV2beta>(map['asyncOptions']!, (value) => AsyncOptionsDeploymentmanagerV2beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputMappings: map['inputMappings'] == null ? null : (pulumi.Input.decodeList<InputMappingDeploymentmanagerV2beta>(map['inputMappings']!, (value) => InputMappingDeploymentmanagerV2beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      validationOptions: map['validationOptions'] == null ? null : (ValidationOptionsDeploymentmanagerV2beta.fromMap((map['validationOptions']! as Map).cast<String, dynamic>())).input(),
+      virtualProperties: map['virtualProperties'] == null ? null : (map['virtualProperties']! as String).input(),
     );
   }
 }

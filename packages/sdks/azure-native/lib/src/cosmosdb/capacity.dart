@@ -21,7 +21,7 @@ class Capacity {
 
   factory Capacity.fromMap(Map<String, dynamic> map) {
     return Capacity(
-      totalThroughputLimit: map['totalThroughputLimit'] == null ? null : (map['totalThroughputLimit'] as int).input(),
+      totalThroughputLimit: map['totalThroughputLimit'] == null ? null : (map['totalThroughputLimit']! as int).input(),
     );
   }
 }

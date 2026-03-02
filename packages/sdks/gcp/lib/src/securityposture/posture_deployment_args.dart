@@ -58,7 +58,7 @@ class PostureDeploymentArgs {
 
   factory PostureDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return PostureDeploymentArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       location: (map['location'] as String).input(),
       parent: (map['parent'] as String).input(),
       postureDeploymentId: (map['postureDeploymentId'] as String).input(),

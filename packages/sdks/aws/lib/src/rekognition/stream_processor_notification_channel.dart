@@ -20,7 +20,7 @@ class StreamProcessorNotificationChannel {
 
   factory StreamProcessorNotificationChannel.fromMap(Map<String, dynamic> map) {
     return StreamProcessorNotificationChannel(
-      snsTopicArn: map['snsTopicArn'] == null ? null : (map['snsTopicArn'] as String).input(),
+      snsTopicArn: map['snsTopicArn'] == null ? null : ((map['snsTopicArn'] as String).input()).input(),
     );
   }
 }

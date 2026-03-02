@@ -26,7 +26,7 @@ class ManagedPrefixListEntry {
   factory ManagedPrefixListEntry.fromMap(Map<String, dynamic> map) {
     return ManagedPrefixListEntry(
       cidr: (map['cidr'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
     );
   }
 }

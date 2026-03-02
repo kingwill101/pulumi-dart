@@ -32,9 +32,9 @@ class ResourceFilter {
 
   factory ResourceFilter.fromMap(Map<String, dynamic> map) {
     return ResourceFilter(
-      groupKinds: map['groupKinds'] == null ? null : (pulumi.Input.decodeList<GroupKind>(map['groupKinds'], (value) => GroupKind.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      jsonPath: map['jsonPath'] == null ? null : (map['jsonPath'] as String).input(),
-      namespaces: map['namespaces'] == null ? null : ((map['namespaces'] as List).cast<String>()).input(),
+      groupKinds: map['groupKinds'] == null ? null : (pulumi.Input.decodeList<GroupKind>(map['groupKinds']!, (value) => GroupKind.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      jsonPath: map['jsonPath'] == null ? null : (map['jsonPath']! as String).input(),
+      namespaces: map['namespaces'] == null ? null : ((map['namespaces']! as List).cast<String>()).input(),
     );
   }
 }

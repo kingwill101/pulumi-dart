@@ -22,7 +22,7 @@ class RateLimitRuleList {
 
   factory RateLimitRuleList.fromMap(Map<String, dynamic> map) {
     return RateLimitRuleList(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RateLimitRule>(map['rules'], (value) => RateLimitRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RateLimitRule>(map['rules']!, (value) => RateLimitRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

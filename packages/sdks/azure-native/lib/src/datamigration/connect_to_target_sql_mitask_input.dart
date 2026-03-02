@@ -37,10 +37,10 @@ class ConnectToTargetSqlMITaskInput {
 
   factory ConnectToTargetSqlMITaskInput.fromMap(Map<String, dynamic> map) {
     return ConnectToTargetSqlMITaskInput(
-      collectAgentJobs: map['collectAgentJobs'] == null ? null : (map['collectAgentJobs'] as bool).input(),
-      collectLogins: map['collectLogins'] == null ? null : (map['collectLogins'] as bool).input(),
+      collectAgentJobs: map['collectAgentJobs'] == null ? null : (map['collectAgentJobs']! as bool).input(),
+      collectLogins: map['collectLogins'] == null ? null : (map['collectLogins']! as bool).input(),
       targetConnectionInfo: (SqlConnectionInfo.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
-      validateSsisCatalogOnly: map['validateSsisCatalogOnly'] == null ? null : (map['validateSsisCatalogOnly'] as bool).input(),
+      validateSsisCatalogOnly: map['validateSsisCatalogOnly'] == null ? null : (map['validateSsisCatalogOnly']! as bool).input(),
     );
   }
 }

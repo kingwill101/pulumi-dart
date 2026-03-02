@@ -35,10 +35,10 @@ class OperationContextOptions {
 
   factory OperationContextOptions.fromMap(Map<String, dynamic> map) {
     return OperationContextOptions(
-      deleteAfterDestroy: map['deleteAfterDestroy'] == null ? null : (map['deleteAfterDestroy'] as bool).input(),
-      shell: map['shell'] == null ? null : (map['shell'] as String).input(),
-      skipInstallDependencies: map['skipInstallDependencies'] == null ? null : (map['skipInstallDependencies'] as bool).input(),
-      skipIntermediateDeployments: map['skipIntermediateDeployments'] == null ? null : (map['skipIntermediateDeployments'] as bool).input(),
+      deleteAfterDestroy: map['deleteAfterDestroy'] == null ? null : (map['deleteAfterDestroy']! as bool).input(),
+      shell: map['shell'] == null ? null : (map['shell']! as String).input(),
+      skipInstallDependencies: map['skipInstallDependencies'] == null ? null : (map['skipInstallDependencies']! as bool).input(),
+      skipIntermediateDeployments: map['skipIntermediateDeployments'] == null ? null : (map['skipIntermediateDeployments']! as bool).input(),
     );
   }
 }

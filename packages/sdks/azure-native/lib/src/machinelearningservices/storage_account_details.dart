@@ -22,7 +22,7 @@ class StorageAccountDetails {
 
   factory StorageAccountDetails.fromMap(Map<String, dynamic> map) {
     return StorageAccountDetails(
-      systemCreatedStorageAccount: map['systemCreatedStorageAccount'] == null ? null : (SystemCreatedStorageAccount.fromMap((map['systemCreatedStorageAccount'] as Map).cast<String, dynamic>())).input(),
+      systemCreatedStorageAccount: map['systemCreatedStorageAccount'] == null ? null : (SystemCreatedStorageAccount.fromMap((map['systemCreatedStorageAccount']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

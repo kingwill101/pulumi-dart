@@ -20,7 +20,7 @@ class CertificateCertificateDescriptionX509DescriptionPolicyId {
 
   factory CertificateCertificateDescriptionX509DescriptionPolicyId.fromMap(Map<String, dynamic> map) {
     return CertificateCertificateDescriptionX509DescriptionPolicyId(
-      objectIdPaths: map['objectIdPaths'] == null ? null : ((map['objectIdPaths'] as List).cast<int>()).input(),
+      objectIdPaths: map['objectIdPaths'] == null ? null : ((map['objectIdPaths']! as List).cast<int>()).input(),
     );
   }
 }

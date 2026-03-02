@@ -26,8 +26,8 @@ class FileSystemConfigResponse {
 
   factory FileSystemConfigResponse.fromMap(Map<String, dynamic> map) {
     return FileSystemConfigResponse(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      localMountPath: map['localMountPath'] == null ? null : (map['localMountPath'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      localMountPath: map['localMountPath'] == null ? null : (map['localMountPath']! as String).input(),
     );
   }
 }

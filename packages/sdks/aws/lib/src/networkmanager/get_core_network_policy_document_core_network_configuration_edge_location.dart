@@ -29,8 +29,8 @@ class GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocation {
 
   factory GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocation.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocation(
-      asn: map['asn'] == null ? null : (map['asn'] as String).input(),
-      insideCidrBlocks: map['insideCidrBlocks'] == null ? null : ((map['insideCidrBlocks'] as List).cast<String>()).input(),
+      asn: map['asn'] == null ? null : ((map['asn'] as String).input()).input(),
+      insideCidrBlocks: map['insideCidrBlocks'] == null ? null : (((map['insideCidrBlocks'] as List).cast<String>()).input()).input(),
       location: (map['location'] as String).input(),
     );
   }

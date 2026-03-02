@@ -66,11 +66,11 @@ class RegionCompositeHealthCheckArgs {
 
   factory RegionCompositeHealthCheckArgs.fromMap(Map<String, dynamic> map) {
     return RegionCompositeHealthCheckArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       healthDestination: (map['healthDestination'] as String).input(),
-      healthSources: map['healthSources'] == null ? null : ((map['healthSources'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      healthSources: map['healthSources'] == null ? null : ((map['healthSources']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
     );
   }

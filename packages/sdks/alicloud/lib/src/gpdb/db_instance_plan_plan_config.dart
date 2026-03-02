@@ -51,12 +51,12 @@ class DbInstancePlanPlanConfig {
 
   factory DbInstancePlanPlanConfig.fromMap(Map<String, dynamic> map) {
     return DbInstancePlanPlanConfig(
-      pause: map['pause'] == null ? null : (DbInstancePlanPlanConfigPause.fromMap((map['pause'] as Map).cast<String, dynamic>())).input(),
-      resume: map['resume'] == null ? null : (DbInstancePlanPlanConfigResume.fromMap((map['resume'] as Map).cast<String, dynamic>())).input(),
-      scaleDown: map['scaleDown'] == null ? null : (DbInstancePlanPlanConfigScaleDown.fromMap((map['scaleDown'] as Map).cast<String, dynamic>())).input(),
-      scaleIn: map['scaleIn'] == null ? null : (DbInstancePlanPlanConfigScaleIn.fromMap((map['scaleIn'] as Map).cast<String, dynamic>())).input(),
-      scaleOut: map['scaleOut'] == null ? null : (DbInstancePlanPlanConfigScaleOut.fromMap((map['scaleOut'] as Map).cast<String, dynamic>())).input(),
-      scaleUp: map['scaleUp'] == null ? null : (DbInstancePlanPlanConfigScaleUp.fromMap((map['scaleUp'] as Map).cast<String, dynamic>())).input(),
+      pause: map['pause'] == null ? null : (DbInstancePlanPlanConfigPause.fromMap((map['pause']! as Map).cast<String, dynamic>())).input(),
+      resume: map['resume'] == null ? null : (DbInstancePlanPlanConfigResume.fromMap((map['resume']! as Map).cast<String, dynamic>())).input(),
+      scaleDown: map['scaleDown'] == null ? null : (DbInstancePlanPlanConfigScaleDown.fromMap((map['scaleDown']! as Map).cast<String, dynamic>())).input(),
+      scaleIn: map['scaleIn'] == null ? null : (DbInstancePlanPlanConfigScaleIn.fromMap((map['scaleIn']! as Map).cast<String, dynamic>())).input(),
+      scaleOut: map['scaleOut'] == null ? null : (DbInstancePlanPlanConfigScaleOut.fromMap((map['scaleOut']! as Map).cast<String, dynamic>())).input(),
+      scaleUp: map['scaleUp'] == null ? null : (DbInstancePlanPlanConfigScaleUp.fromMap((map['scaleUp']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

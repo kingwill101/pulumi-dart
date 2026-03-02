@@ -28,7 +28,7 @@ class EndpointCustomDomainUserManagedHttps {
   factory EndpointCustomDomainUserManagedHttps.fromMap(Map<String, dynamic> map) {
     return EndpointCustomDomainUserManagedHttps(
       keyVaultSecretId: (map['keyVaultSecretId'] as String).input(),
-      tlsVersion: map['tlsVersion'] == null ? null : (map['tlsVersion'] as String).input(),
+      tlsVersion: map['tlsVersion'] == null ? null : (map['tlsVersion']! as String).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class AiDeploymentResourcePoolDedicatedResourcesMachineSpec {
 
   factory AiDeploymentResourcePoolDedicatedResourcesMachineSpec.fromMap(Map<String, dynamic> map) {
     return AiDeploymentResourcePoolDedicatedResourcesMachineSpec(
-      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount'] as int).input(),
-      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType'] as String).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
+      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount']! as int).input(),
+      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType']! as String).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
     );
   }
 }

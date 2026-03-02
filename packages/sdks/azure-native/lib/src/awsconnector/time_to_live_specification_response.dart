@@ -26,8 +26,8 @@ class TimeToLiveSpecificationResponse {
 
   factory TimeToLiveSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return TimeToLiveSpecificationResponse(
-      attributeName: map['attributeName'] == null ? null : (map['attributeName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      attributeName: map['attributeName'] == null ? null : (map['attributeName']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

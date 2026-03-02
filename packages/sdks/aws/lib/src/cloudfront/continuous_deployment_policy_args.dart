@@ -37,8 +37,8 @@ class ContinuousDeploymentPolicyArgs {
   factory ContinuousDeploymentPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ContinuousDeploymentPolicyArgs(
       enabled: (map['enabled'] as bool).input(),
-      stagingDistributionDnsNames: (ContinuousDeploymentPolicyStagingDistributionDnsNames.fromMap((map['stagingDistributionDnsNames'] as Map).cast<String, dynamic>())).input(),
-      trafficConfig: map['trafficConfig'] == null ? null : (ContinuousDeploymentPolicyTrafficConfig.fromMap((map['trafficConfig'] as Map).cast<String, dynamic>())).input(),
+      stagingDistributionDnsNames: (ContinuousDeploymentPolicyStagingDistributionDnsNames.fromMap((map['stagingDistributionDnsNames']! as Map).cast<String, dynamic>())).input(),
+      trafficConfig: map['trafficConfig'] == null ? null : ((ContinuousDeploymentPolicyTrafficConfig.fromMap((map['trafficConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

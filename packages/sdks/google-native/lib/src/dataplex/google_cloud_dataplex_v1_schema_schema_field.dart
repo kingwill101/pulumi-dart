@@ -43,8 +43,8 @@ class GoogleCloudDataplexV1SchemaSchemaField {
 
   factory GoogleCloudDataplexV1SchemaSchemaField.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1SchemaSchemaField(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDataplexV1SchemaSchemaField>(map['fields'], (value) => GoogleCloudDataplexV1SchemaSchemaField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDataplexV1SchemaSchemaField>(map['fields']!, (value) => GoogleCloudDataplexV1SchemaSchemaField.fromMap((value as Map).cast<String, dynamic>()))).input(),
       mode: (GoogleCloudDataplexV1SchemaSchemaFieldMode.fromValue(map['mode'] as String)).input(),
       name: (map['name'] as String).input(),
       type: (GoogleCloudDataplexV1SchemaSchemaFieldType.fromValue(map['type'] as String)).input(),

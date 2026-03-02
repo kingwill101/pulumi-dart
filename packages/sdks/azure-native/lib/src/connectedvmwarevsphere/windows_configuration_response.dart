@@ -66,16 +66,16 @@ class WindowsConfigurationResponse {
 
   factory WindowsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return WindowsConfigurationResponse(
-      autoLogon: map['autoLogon'] == null ? null : (map['autoLogon'] as bool).input(),
-      autoLogonCount: map['autoLogonCount'] == null ? null : (map['autoLogonCount'] as int).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      domainUsername: map['domainUsername'] == null ? null : (map['domainUsername'] as String).input(),
-      firstLogonCommands: map['firstLogonCommands'] == null ? null : ((map['firstLogonCommands'] as List).cast<String>()).input(),
-      fullName: map['fullName'] == null ? null : (map['fullName'] as String).input(),
-      orgName: map['orgName'] == null ? null : (map['orgName'] as String).input(),
-      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
-      workGroupName: map['workGroupName'] == null ? null : (map['workGroupName'] as String).input(),
+      autoLogon: map['autoLogon'] == null ? null : (map['autoLogon']! as bool).input(),
+      autoLogonCount: map['autoLogonCount'] == null ? null : (map['autoLogonCount']! as int).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      domainUsername: map['domainUsername'] == null ? null : (map['domainUsername']! as String).input(),
+      firstLogonCommands: map['firstLogonCommands'] == null ? null : ((map['firstLogonCommands']! as List).cast<String>()).input(),
+      fullName: map['fullName'] == null ? null : (map['fullName']! as String).input(),
+      orgName: map['orgName'] == null ? null : (map['orgName']! as String).input(),
+      productId: map['productId'] == null ? null : (map['productId']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      workGroupName: map['workGroupName'] == null ? null : (map['workGroupName']! as String).input(),
     );
   }
 }

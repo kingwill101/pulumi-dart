@@ -31,7 +31,7 @@ class ClusterCertificate {
   factory ClusterCertificate.fromMap(Map<String, dynamic> map) {
     return ClusterCertificate(
       thumbprint: (map['thumbprint'] as String).input(),
-      thumbprintSecondary: map['thumbprintSecondary'] == null ? null : (map['thumbprintSecondary'] as String).input(),
+      thumbprintSecondary: map['thumbprintSecondary'] == null ? null : (map['thumbprintSecondary']! as String).input(),
       x509StoreName: (map['x509StoreName'] as String).input(),
     );
   }

@@ -30,9 +30,9 @@ class CacheFromAzureBlob {
 
   factory CacheFromAzureBlob.fromMap(Map<String, dynamic> map) {
     return CacheFromAzureBlob(
-      accountUrl: map['accountUrl'] == null ? null : (map['accountUrl'] as String).input(),
+      accountUrl: map['accountUrl'] == null ? null : (map['accountUrl']! as String).input(),
       name: (map['name'] as String).input(),
-      secretAccessKey: map['secretAccessKey'] == null ? null : (map['secretAccessKey'] as String).input(),
+      secretAccessKey: map['secretAccessKey'] == null ? null : (map['secretAccessKey']! as String).input(),
     );
   }
 }

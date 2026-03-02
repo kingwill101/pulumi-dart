@@ -29,7 +29,7 @@ class KubernetesClusterUpgradeOverride {
 
   factory KubernetesClusterUpgradeOverride.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterUpgradeOverride(
-      effectiveUntil: map['effectiveUntil'] == null ? null : (map['effectiveUntil'] as String).input(),
+      effectiveUntil: map['effectiveUntil'] == null ? null : (map['effectiveUntil']! as String).input(),
       forceUpgradeEnabled: (map['forceUpgradeEnabled'] as bool).input(),
     );
   }

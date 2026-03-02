@@ -46,11 +46,11 @@ class GetGenaiAgentsAgentParentAgentApiKeyInfo {
   factory GetGenaiAgentsAgentParentAgentApiKeyInfo.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentsAgentParentAgentApiKeyInfo(
       createdAt: (map['createdAt'] as String).input(),
-      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
+      createdBy: map['createdBy'] == null ? null : (map['createdBy']! as String).input(),
       deletedAt: (map['deletedAt'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      secretKey: map['secretKey'] == null ? null : (map['secretKey'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      secretKey: map['secretKey'] == null ? null : (map['secretKey']! as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

@@ -42,11 +42,11 @@ class InstanceViewStatus {
 
   factory InstanceViewStatus.fromMap(Map<String, dynamic> map) {
     return InstanceViewStatus(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      displayStatus: map['displayStatus'] == null ? null : (map['displayStatus'] as String).input(),
-      level: map['level'] == null ? null : (StatusLevelTypes.fromValue(map['level'] as String)).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      time: map['time'] == null ? null : (map['time'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      displayStatus: map['displayStatus'] == null ? null : (map['displayStatus']! as String).input(),
+      level: map['level'] == null ? null : (StatusLevelTypes.fromValue(map['level']! as String)).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      time: map['time'] == null ? null : (map['time']! as String).input(),
     );
   }
 }

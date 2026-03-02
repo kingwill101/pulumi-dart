@@ -91,21 +91,21 @@ class ResolverFirewallRuleState {
 
   factory ResolverFirewallRuleState.fromMap(Map<String, dynamic> map) {
     return ResolverFirewallRuleState(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      blockOverrideDnsType: map['blockOverrideDnsType'] == null ? null : (map['blockOverrideDnsType'] as String).input(),
-      blockOverrideDomain: map['blockOverrideDomain'] == null ? null : (map['blockOverrideDomain'] as String).input(),
-      blockOverrideTtl: map['blockOverrideTtl'] == null ? null : (map['blockOverrideTtl'] as int).input(),
-      blockResponse: map['blockResponse'] == null ? null : (map['blockResponse'] as String).input(),
-      confidenceThreshold: map['confidenceThreshold'] == null ? null : (map['confidenceThreshold'] as String).input(),
-      dnsThreatProtection: map['dnsThreatProtection'] == null ? null : (map['dnsThreatProtection'] as String).input(),
-      firewallDomainListId: map['firewallDomainListId'] == null ? null : (map['firewallDomainListId'] as String).input(),
-      firewallDomainRedirectionAction: map['firewallDomainRedirectionAction'] == null ? null : (map['firewallDomainRedirectionAction'] as String).input(),
-      firewallRuleGroupId: map['firewallRuleGroupId'] == null ? null : (map['firewallRuleGroupId'] as String).input(),
-      firewallThreatProtectionId: map['firewallThreatProtectionId'] == null ? null : (map['firewallThreatProtectionId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      qType: map['qType'] == null ? null : (map['qType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      action: map['action'] == null ? null : ((map['action'] as String).input()).input(),
+      blockOverrideDnsType: map['blockOverrideDnsType'] == null ? null : ((map['blockOverrideDnsType'] as String).input()).input(),
+      blockOverrideDomain: map['blockOverrideDomain'] == null ? null : ((map['blockOverrideDomain'] as String).input()).input(),
+      blockOverrideTtl: map['blockOverrideTtl'] == null ? null : ((map['blockOverrideTtl'] as int).input()).input(),
+      blockResponse: map['blockResponse'] == null ? null : ((map['blockResponse'] as String).input()).input(),
+      confidenceThreshold: map['confidenceThreshold'] == null ? null : ((map['confidenceThreshold'] as String).input()).input(),
+      dnsThreatProtection: map['dnsThreatProtection'] == null ? null : ((map['dnsThreatProtection'] as String).input()).input(),
+      firewallDomainListId: map['firewallDomainListId'] == null ? null : ((map['firewallDomainListId'] as String).input()).input(),
+      firewallDomainRedirectionAction: map['firewallDomainRedirectionAction'] == null ? null : ((map['firewallDomainRedirectionAction'] as String).input()).input(),
+      firewallRuleGroupId: map['firewallRuleGroupId'] == null ? null : ((map['firewallRuleGroupId'] as String).input()).input(),
+      firewallThreatProtectionId: map['firewallThreatProtectionId'] == null ? null : ((map['firewallThreatProtectionId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      priority: map['priority'] == null ? null : ((map['priority'] as int).input()).input(),
+      qType: map['qType'] == null ? null : ((map['qType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

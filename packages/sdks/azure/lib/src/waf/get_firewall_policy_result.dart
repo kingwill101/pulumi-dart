@@ -40,7 +40,7 @@ class GetFirewallPolicyResult {
       location: map['location'] as String,
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

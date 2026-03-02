@@ -21,7 +21,7 @@ class ScheduledEventsAdditionalPublishingTargets {
 
   factory ScheduledEventsAdditionalPublishingTargets.fromMap(Map<String, dynamic> map) {
     return ScheduledEventsAdditionalPublishingTargets(
-      eventGridAndResourceGraph: map['eventGridAndResourceGraph'] == null ? null : (EventGridAndResourceGraph.fromMap((map['eventGridAndResourceGraph'] as Map).cast<String, dynamic>())).input(),
+      eventGridAndResourceGraph: map['eventGridAndResourceGraph'] == null ? null : (EventGridAndResourceGraph.fromMap((map['eventGridAndResourceGraph']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

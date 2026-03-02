@@ -21,7 +21,7 @@ class NfsProtocolProperties {
 
   factory NfsProtocolProperties.fromMap(Map<String, dynamic> map) {
     return NfsProtocolProperties(
-      rootSquash: map['rootSquash'] == null ? null : (map['rootSquash'] as String).input(),
+      rootSquash: map['rootSquash'] == null ? null : (map['rootSquash']! as String).input(),
     );
   }
 }

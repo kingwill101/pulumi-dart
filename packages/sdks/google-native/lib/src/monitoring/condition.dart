@@ -56,13 +56,13 @@ class Condition {
 
   factory Condition.fromMap(Map<String, dynamic> map) {
     return Condition(
-      conditionAbsent: map['conditionAbsent'] == null ? null : (MetricAbsence.fromMap((map['conditionAbsent'] as Map).cast<String, dynamic>())).input(),
-      conditionMatchedLog: map['conditionMatchedLog'] == null ? null : (LogMatch.fromMap((map['conditionMatchedLog'] as Map).cast<String, dynamic>())).input(),
-      conditionMonitoringQueryLanguage: map['conditionMonitoringQueryLanguage'] == null ? null : (MonitoringQueryLanguageCondition.fromMap((map['conditionMonitoringQueryLanguage'] as Map).cast<String, dynamic>())).input(),
-      conditionPrometheusQueryLanguage: map['conditionPrometheusQueryLanguage'] == null ? null : (PrometheusQueryLanguageCondition.fromMap((map['conditionPrometheusQueryLanguage'] as Map).cast<String, dynamic>())).input(),
-      conditionThreshold: map['conditionThreshold'] == null ? null : (MetricThreshold.fromMap((map['conditionThreshold'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      conditionAbsent: map['conditionAbsent'] == null ? null : (MetricAbsence.fromMap((map['conditionAbsent']! as Map).cast<String, dynamic>())).input(),
+      conditionMatchedLog: map['conditionMatchedLog'] == null ? null : (LogMatch.fromMap((map['conditionMatchedLog']! as Map).cast<String, dynamic>())).input(),
+      conditionMonitoringQueryLanguage: map['conditionMonitoringQueryLanguage'] == null ? null : (MonitoringQueryLanguageCondition.fromMap((map['conditionMonitoringQueryLanguage']! as Map).cast<String, dynamic>())).input(),
+      conditionPrometheusQueryLanguage: map['conditionPrometheusQueryLanguage'] == null ? null : (PrometheusQueryLanguageCondition.fromMap((map['conditionPrometheusQueryLanguage']! as Map).cast<String, dynamic>())).input(),
+      conditionThreshold: map['conditionThreshold'] == null ? null : (MetricThreshold.fromMap((map['conditionThreshold']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

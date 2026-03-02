@@ -25,7 +25,7 @@ class VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp {
 
   factory VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp(
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
       ip: (map['ip'] as String).input(),
     );
   }

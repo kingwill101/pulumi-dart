@@ -57,12 +57,12 @@ class LayerVersionArgs {
   factory LayerVersionArgs.fromMap(Map<String, dynamic> map) {
     return LayerVersionArgs(
       compatibleRuntimes: ((map['compatibleRuntimes'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       layerName: (map['layerName'] as String).input(),
-      ossBucketName: map['ossBucketName'] == null ? null : (map['ossBucketName'] as String).input(),
-      ossObjectName: map['ossObjectName'] == null ? null : (map['ossObjectName'] as String).input(),
-      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
-      zipFile: map['zipFile'] == null ? null : (map['zipFile'] as String).input(),
+      ossBucketName: map['ossBucketName'] == null ? null : (map['ossBucketName']! as String).input(),
+      ossObjectName: map['ossObjectName'] == null ? null : (map['ossObjectName']! as String).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy']! as bool).input(),
+      zipFile: map['zipFile'] == null ? null : (map['zipFile']! as String).input(),
     );
   }
 }

@@ -23,8 +23,8 @@ class ShareExportLocation {
 
   factory ShareExportLocation.fromMap(Map<String, dynamic> map) {
     return ShareExportLocation(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      preferred: map['preferred'] == null ? null : (map['preferred'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      preferred: map['preferred'] == null ? null : (map['preferred']! as String).input(),
     );
   }
 }

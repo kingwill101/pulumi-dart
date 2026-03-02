@@ -49,11 +49,11 @@ class ServicesCommunicationsGatewayTestLineArgs {
 
   factory ServicesCommunicationsGatewayTestLineArgs.fromMap(Map<String, dynamic> map) {
     return ServicesCommunicationsGatewayTestLineArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       phoneNumber: (map['phoneNumber'] as String).input(),
       purpose: (map['purpose'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       voiceServicesCommunicationsGatewayId: (map['voiceServicesCommunicationsGatewayId'] as String).input(),
     );
   }

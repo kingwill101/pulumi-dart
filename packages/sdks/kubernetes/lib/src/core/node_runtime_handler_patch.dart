@@ -27,8 +27,8 @@ class NodeRuntimeHandlerPatch {
 
   factory NodeRuntimeHandlerPatch.fromMap(Map<String, dynamic> map) {
     return NodeRuntimeHandlerPatch(
-      features: map['features'] == null ? null : (NodeRuntimeHandlerFeaturesPatch.fromMap((map['features'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      features: map['features'] == null ? null : (NodeRuntimeHandlerFeaturesPatch.fromMap((map['features']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

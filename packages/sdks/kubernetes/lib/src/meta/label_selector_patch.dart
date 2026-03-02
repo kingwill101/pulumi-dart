@@ -27,8 +27,8 @@ class LabelSelectorPatch {
 
   factory LabelSelectorPatch.fromMap(Map<String, dynamic> map) {
     return LabelSelectorPatch(
-      matchExpressions: map['matchExpressions'] == null ? null : (pulumi.Input.decodeList<LabelSelectorRequirementPatch>(map['matchExpressions'], (value) => LabelSelectorRequirementPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matchLabels: map['matchLabels'] == null ? null : ((map['matchLabels'] as Map).cast<String, String>()).input(),
+      matchExpressions: map['matchExpressions'] == null ? null : (pulumi.Input.decodeList<LabelSelectorRequirementPatch>(map['matchExpressions']!, (value) => LabelSelectorRequirementPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchLabels: map['matchLabels'] == null ? null : ((map['matchLabels']! as Map).cast<String, String>()).input(),
     );
   }
 }

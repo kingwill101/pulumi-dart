@@ -27,8 +27,8 @@ class CryptoHashConfigHealthcareV1beta1 {
 
   factory CryptoHashConfigHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return CryptoHashConfigHealthcareV1beta1(
-      cryptoKey: map['cryptoKey'] == null ? null : (map['cryptoKey'] as String).input(),
-      kmsWrapped: map['kmsWrapped'] == null ? null : (KmsWrappedCryptoKeyHealthcareV1beta1.fromMap((map['kmsWrapped'] as Map).cast<String, dynamic>())).input(),
+      cryptoKey: map['cryptoKey'] == null ? null : (map['cryptoKey']! as String).input(),
+      kmsWrapped: map['kmsWrapped'] == null ? null : (KmsWrappedCryptoKeyHealthcareV1beta1.fromMap((map['kmsWrapped']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

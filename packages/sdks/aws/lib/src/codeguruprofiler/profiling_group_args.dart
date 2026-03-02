@@ -47,11 +47,11 @@ class ProfilingGroupArgs {
 
   factory ProfilingGroupArgs.fromMap(Map<String, dynamic> map) {
     return ProfilingGroupArgs(
-      agentOrchestrationConfig: (ProfilingGroupAgentOrchestrationConfig.fromMap((map['agentOrchestrationConfig'] as Map).cast<String, dynamic>())).input(),
-      computePlatform: map['computePlatform'] == null ? null : (map['computePlatform'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      agentOrchestrationConfig: (ProfilingGroupAgentOrchestrationConfig.fromMap((map['agentOrchestrationConfig']! as Map).cast<String, dynamic>())).input(),
+      computePlatform: map['computePlatform'] == null ? null : ((map['computePlatform'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

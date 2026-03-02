@@ -87,7 +87,7 @@ class GetFhirServiceResult {
       kind: map['kind'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       workspaceId: map['workspaceId'] as String,
     );
   }

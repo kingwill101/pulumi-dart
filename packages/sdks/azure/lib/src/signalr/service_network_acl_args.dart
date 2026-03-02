@@ -42,7 +42,7 @@ class ServiceNetworkAclArgs {
   factory ServiceNetworkAclArgs.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkAclArgs(
       defaultAction: (map['defaultAction'] as String).input(),
-      privateEndpoints: map['privateEndpoints'] == null ? null : (pulumi.Input.decodeList<ServiceNetworkAclPrivateEndpoint>(map['privateEndpoints'], (value) => ServiceNetworkAclPrivateEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateEndpoints: map['privateEndpoints'] == null ? null : (pulumi.Input.decodeList<ServiceNetworkAclPrivateEndpoint>(map['privateEndpoints']!, (value) => ServiceNetworkAclPrivateEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
       publicNetwork: (ServiceNetworkAclPublicNetwork.fromMap((map['publicNetwork'] as Map).cast<String, dynamic>())).input(),
       signalrServiceId: (map['signalrServiceId'] as String).input(),
     );

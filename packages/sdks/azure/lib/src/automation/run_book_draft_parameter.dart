@@ -40,10 +40,10 @@ class RunBookDraftParameter {
 
   factory RunBookDraftParameter.fromMap(Map<String, dynamic> map) {
     return RunBookDraftParameter(
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']! as String).input(),
       key: (map['key'] as String).input(),
-      mandatory: map['mandatory'] == null ? null : (map['mandatory'] as bool).input(),
-      position: map['position'] == null ? null : (map['position'] as int).input(),
+      mandatory: map['mandatory'] == null ? null : (map['mandatory']! as bool).input(),
+      position: map['position'] == null ? null : (map['position']! as int).input(),
       type: (map['type'] as String).input(),
     );
   }

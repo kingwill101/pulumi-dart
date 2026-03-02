@@ -24,7 +24,7 @@ class GetManagedZonesArgs {
 
   factory GetManagedZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedZonesArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

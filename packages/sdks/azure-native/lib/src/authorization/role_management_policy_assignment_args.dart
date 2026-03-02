@@ -39,9 +39,9 @@ class RoleManagementPolicyAssignmentArgs {
 
   factory RoleManagementPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyAssignmentArgs(
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
-      roleManagementPolicyAssignmentName: map['roleManagementPolicyAssignmentName'] == null ? null : (map['roleManagementPolicyAssignmentName'] as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId']! as String).input(),
+      roleManagementPolicyAssignmentName: map['roleManagementPolicyAssignmentName'] == null ? null : (map['roleManagementPolicyAssignmentName']! as String).input(),
       scope: (map['scope'] as String).input(),
     );
   }

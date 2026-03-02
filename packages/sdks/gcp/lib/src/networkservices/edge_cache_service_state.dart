@@ -112,22 +112,22 @@ class EdgeCacheServiceState {
 
   factory EdgeCacheServiceState.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disableHttp2: map['disableHttp2'] == null ? null : (map['disableHttp2'] as bool).input(),
-      disableQuic: map['disableQuic'] == null ? null : (map['disableQuic'] as bool).input(),
-      edgeSecurityPolicy: map['edgeSecurityPolicy'] == null ? null : (map['edgeSecurityPolicy'] as String).input(),
-      edgeSslCertificates: map['edgeSslCertificates'] == null ? null : ((map['edgeSslCertificates'] as List).cast<String>()).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      ipv4Addresses: map['ipv4Addresses'] == null ? null : ((map['ipv4Addresses'] as List).cast<String>()).input(),
-      ipv6Addresses: map['ipv6Addresses'] == null ? null : ((map['ipv6Addresses'] as List).cast<String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      logConfig: map['logConfig'] == null ? null : (EdgeCacheServiceLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      requireTls: map['requireTls'] == null ? null : (map['requireTls'] as bool).input(),
-      routing: map['routing'] == null ? null : (EdgeCacheServiceRouting.fromMap((map['routing'] as Map).cast<String, dynamic>())).input(),
-      sslPolicy: map['sslPolicy'] == null ? null : (map['sslPolicy'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disableHttp2: map['disableHttp2'] == null ? null : (map['disableHttp2']! as bool).input(),
+      disableQuic: map['disableQuic'] == null ? null : (map['disableQuic']! as bool).input(),
+      edgeSecurityPolicy: map['edgeSecurityPolicy'] == null ? null : (map['edgeSecurityPolicy']! as String).input(),
+      edgeSslCertificates: map['edgeSslCertificates'] == null ? null : ((map['edgeSslCertificates']! as List).cast<String>()).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      ipv4Addresses: map['ipv4Addresses'] == null ? null : ((map['ipv4Addresses']! as List).cast<String>()).input(),
+      ipv6Addresses: map['ipv6Addresses'] == null ? null : ((map['ipv6Addresses']! as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      logConfig: map['logConfig'] == null ? null : (EdgeCacheServiceLogConfig.fromMap((map['logConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      requireTls: map['requireTls'] == null ? null : (map['requireTls']! as bool).input(),
+      routing: map['routing'] == null ? null : (EdgeCacheServiceRouting.fromMap((map['routing']! as Map).cast<String, dynamic>())).input(),
+      sslPolicy: map['sslPolicy'] == null ? null : (map['sslPolicy']! as String).input(),
     );
   }
 }

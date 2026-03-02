@@ -30,9 +30,9 @@ class CryptoKeyVersionAttestationCertChains {
 
   factory CryptoKeyVersionAttestationCertChains.fromMap(Map<String, dynamic> map) {
     return CryptoKeyVersionAttestationCertChains(
-      caviumCerts: map['caviumCerts'] == null ? null : ((map['caviumCerts'] as List).cast<String>()).input(),
-      googleCardCerts: map['googleCardCerts'] == null ? null : ((map['googleCardCerts'] as List).cast<String>()).input(),
-      googlePartitionCerts: map['googlePartitionCerts'] == null ? null : ((map['googlePartitionCerts'] as List).cast<String>()).input(),
+      caviumCerts: map['caviumCerts'] == null ? null : ((map['caviumCerts']! as List).cast<String>()).input(),
+      googleCardCerts: map['googleCardCerts'] == null ? null : ((map['googleCardCerts']! as List).cast<String>()).input(),
+      googlePartitionCerts: map['googlePartitionCerts'] == null ? null : ((map['googlePartitionCerts']! as List).cast<String>()).input(),
     );
   }
 }

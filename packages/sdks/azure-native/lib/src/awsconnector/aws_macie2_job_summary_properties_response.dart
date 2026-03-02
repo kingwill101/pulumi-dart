@@ -67,15 +67,15 @@ class AwsMacie2JobSummaryPropertiesResponse {
 
   factory AwsMacie2JobSummaryPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsMacie2JobSummaryPropertiesResponse(
-      bucketCriteria: map['bucketCriteria'] == null ? null : (S3BucketCriteriaForJobResponse.fromMap((map['bucketCriteria'] as Map).cast<String, dynamic>())).input(),
-      bucketDefinitions: map['bucketDefinitions'] == null ? null : (pulumi.Input.decodeList<S3BucketDefinitionForJobResponse>(map['bucketDefinitions'], (value) => S3BucketDefinitionForJobResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      jobId: map['jobId'] == null ? null : (map['jobId'] as String).input(),
-      jobStatus: map['jobStatus'] == null ? null : (JobStatusEnumValueResponse.fromMap((map['jobStatus'] as Map).cast<String, dynamic>())).input(),
-      jobType: map['jobType'] == null ? null : (JobTypeEnumValueResponse.fromMap((map['jobType'] as Map).cast<String, dynamic>())).input(),
-      lastRunErrorStatus: map['lastRunErrorStatus'] == null ? null : (LastRunErrorStatusResponse.fromMap((map['lastRunErrorStatus'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      userPausedDetails: map['userPausedDetails'] == null ? null : (UserPausedDetailsResponse.fromMap((map['userPausedDetails'] as Map).cast<String, dynamic>())).input(),
+      bucketCriteria: map['bucketCriteria'] == null ? null : (S3BucketCriteriaForJobResponse.fromMap((map['bucketCriteria']! as Map).cast<String, dynamic>())).input(),
+      bucketDefinitions: map['bucketDefinitions'] == null ? null : (pulumi.Input.decodeList<S3BucketDefinitionForJobResponse>(map['bucketDefinitions']!, (value) => S3BucketDefinitionForJobResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      jobId: map['jobId'] == null ? null : (map['jobId']! as String).input(),
+      jobStatus: map['jobStatus'] == null ? null : (JobStatusEnumValueResponse.fromMap((map['jobStatus']! as Map).cast<String, dynamic>())).input(),
+      jobType: map['jobType'] == null ? null : (JobTypeEnumValueResponse.fromMap((map['jobType']! as Map).cast<String, dynamic>())).input(),
+      lastRunErrorStatus: map['lastRunErrorStatus'] == null ? null : (LastRunErrorStatusResponse.fromMap((map['lastRunErrorStatus']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      userPausedDetails: map['userPausedDetails'] == null ? null : (UserPausedDetailsResponse.fromMap((map['userPausedDetails']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

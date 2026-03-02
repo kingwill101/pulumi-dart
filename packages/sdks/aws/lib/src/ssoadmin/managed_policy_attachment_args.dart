@@ -42,7 +42,7 @@ class ManagedPolicyAttachmentArgs {
       instanceArn: (map['instanceArn'] as String).input(),
       managedPolicyArn: (map['managedPolicyArn'] as String).input(),
       permissionSetArn: (map['permissionSetArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

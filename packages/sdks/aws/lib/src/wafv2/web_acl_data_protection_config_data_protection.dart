@@ -37,9 +37,9 @@ class WebAclDataProtectionConfigDataProtection {
   factory WebAclDataProtectionConfigDataProtection.fromMap(Map<String, dynamic> map) {
     return WebAclDataProtectionConfigDataProtection(
       action: (map['action'] as String).input(),
-      excludeRateBasedDetails: map['excludeRateBasedDetails'] == null ? null : (map['excludeRateBasedDetails'] as bool).input(),
-      excludeRuleMatchDetails: map['excludeRuleMatchDetails'] == null ? null : (map['excludeRuleMatchDetails'] as bool).input(),
-      field: (WebAclDataProtectionConfigDataProtectionField.fromMap((map['field'] as Map).cast<String, dynamic>())).input(),
+      excludeRateBasedDetails: map['excludeRateBasedDetails'] == null ? null : ((map['excludeRateBasedDetails'] as bool).input()).input(),
+      excludeRuleMatchDetails: map['excludeRuleMatchDetails'] == null ? null : ((map['excludeRuleMatchDetails'] as bool).input()).input(),
+      field: (WebAclDataProtectionConfigDataProtectionField.fromMap((map['field']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -72,11 +72,11 @@ class TaskIamMemberArgs {
 
   factory TaskIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return TaskIamMemberArgs(
-      condition: map['condition'] == null ? null : (TaskIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (TaskIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       lake: (map['lake'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       member: (map['member'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
       taskId: (map['taskId'] as String).input(),
     );

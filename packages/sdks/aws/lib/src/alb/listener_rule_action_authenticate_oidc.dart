@@ -70,15 +70,15 @@ class ListenerRuleActionAuthenticateOidc {
 
   factory ListenerRuleActionAuthenticateOidc.fromMap(Map<String, dynamic> map) {
     return ListenerRuleActionAuthenticateOidc(
-      authenticationRequestExtraParams: map['authenticationRequestExtraParams'] == null ? null : ((map['authenticationRequestExtraParams'] as Map).cast<String, String>()).input(),
+      authenticationRequestExtraParams: map['authenticationRequestExtraParams'] == null ? null : (((map['authenticationRequestExtraParams'] as Map).cast<String, String>()).input()).input(),
       authorizationEndpoint: (map['authorizationEndpoint'] as String).input(),
       clientId: (map['clientId'] as String).input(),
       clientSecret: (map['clientSecret'] as String).input(),
       issuer: (map['issuer'] as String).input(),
-      onUnauthenticatedRequest: map['onUnauthenticatedRequest'] == null ? null : (map['onUnauthenticatedRequest'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      sessionCookieName: map['sessionCookieName'] == null ? null : (map['sessionCookieName'] as String).input(),
-      sessionTimeout: map['sessionTimeout'] == null ? null : (map['sessionTimeout'] as int).input(),
+      onUnauthenticatedRequest: map['onUnauthenticatedRequest'] == null ? null : ((map['onUnauthenticatedRequest'] as String).input()).input(),
+      scope: map['scope'] == null ? null : ((map['scope'] as String).input()).input(),
+      sessionCookieName: map['sessionCookieName'] == null ? null : ((map['sessionCookieName'] as String).input()).input(),
+      sessionTimeout: map['sessionTimeout'] == null ? null : ((map['sessionTimeout'] as int).input()).input(),
       tokenEndpoint: (map['tokenEndpoint'] as String).input(),
       userInfoEndpoint: (map['userInfoEndpoint'] as String).input(),
     );

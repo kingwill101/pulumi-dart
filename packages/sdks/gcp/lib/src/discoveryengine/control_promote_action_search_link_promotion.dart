@@ -45,12 +45,12 @@ class ControlPromoteActionSearchLinkPromotion {
 
   factory ControlPromoteActionSearchLinkPromotion.fromMap(Map<String, dynamic> map) {
     return ControlPromoteActionSearchLinkPromotion(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      document: map['document'] == null ? null : (map['document'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      imageUri: map['imageUri'] == null ? null : (map['imageUri'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      document: map['document'] == null ? null : (map['document']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      imageUri: map['imageUri'] == null ? null : (map['imageUri']! as String).input(),
       title: (map['title'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class SchedulingPatch {
 
   factory SchedulingPatch.fromMap(Map<String, dynamic> map) {
     return SchedulingPatch(
-      nodeSelector: map['nodeSelector'] == null ? null : ((map['nodeSelector'] as Map).cast<String, String>()).input(),
-      tolerations: map['tolerations'] == null ? null : (pulumi.Input.decodeList<TolerationPatch>(map['tolerations'], (value) => TolerationPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeSelector: map['nodeSelector'] == null ? null : ((map['nodeSelector']! as Map).cast<String, String>()).input(),
+      tolerations: map['tolerations'] == null ? null : (pulumi.Input.decodeList<TolerationPatch>(map['tolerations']!, (value) => TolerationPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

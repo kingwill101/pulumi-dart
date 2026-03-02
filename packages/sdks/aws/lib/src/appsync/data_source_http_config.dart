@@ -26,7 +26,7 @@ class DataSourceHttpConfig {
 
   factory DataSourceHttpConfig.fromMap(Map<String, dynamic> map) {
     return DataSourceHttpConfig(
-      authorizationConfig: map['authorizationConfig'] == null ? null : (DataSourceHttpConfigAuthorizationConfig.fromMap((map['authorizationConfig'] as Map).cast<String, dynamic>())).input(),
+      authorizationConfig: map['authorizationConfig'] == null ? null : ((DataSourceHttpConfigAuthorizationConfig.fromMap((map['authorizationConfig']! as Map).cast<String, dynamic>())).input()).input(),
       endpoint: (map['endpoint'] as String).input(),
     );
   }

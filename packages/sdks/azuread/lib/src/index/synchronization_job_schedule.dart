@@ -30,9 +30,9 @@ class SynchronizationJobSchedule {
 
   factory SynchronizationJobSchedule.fromMap(Map<String, dynamic> map) {
     return SynchronizationJobSchedule(
-      expiration: map['expiration'] == null ? null : (map['expiration'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      expiration: map['expiration'] == null ? null : (map['expiration']! as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

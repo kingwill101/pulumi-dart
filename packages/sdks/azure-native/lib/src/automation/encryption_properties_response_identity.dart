@@ -21,7 +21,7 @@ class EncryptionPropertiesResponseIdentity {
 
   factory EncryptionPropertiesResponseIdentity.fromMap(Map<String, dynamic> map) {
     return EncryptionPropertiesResponseIdentity(
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']).input(),
+      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']!).input(),
     );
   }
 }

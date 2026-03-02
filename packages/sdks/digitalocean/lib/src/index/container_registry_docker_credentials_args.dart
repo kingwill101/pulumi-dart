@@ -34,9 +34,9 @@ class ContainerRegistryDockerCredentialsArgs {
 
   factory ContainerRegistryDockerCredentialsArgs.fromMap(Map<String, dynamic> map) {
     return ContainerRegistryDockerCredentialsArgs(
-      expirySeconds: map['expirySeconds'] == null ? null : (map['expirySeconds'] as int).input(),
+      expirySeconds: map['expirySeconds'] == null ? null : (map['expirySeconds']! as int).input(),
       registryName: (map['registryName'] as String).input(),
-      write: map['write'] == null ? null : (map['write'] as bool).input(),
+      write: map['write'] == null ? null : (map['write']! as bool).input(),
     );
   }
 }

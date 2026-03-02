@@ -29,8 +29,8 @@ class GrpcRouteRule {
 
   factory GrpcRouteRule.fromMap(Map<String, dynamic> map) {
     return GrpcRouteRule(
-      action: map['action'] == null ? null : (GrpcRouteRuleAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      matches: map['matches'] == null ? null : (pulumi.Input.decodeList<GrpcRouteRuleMatch>(map['matches'], (value) => GrpcRouteRuleMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      action: map['action'] == null ? null : (GrpcRouteRuleAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      matches: map['matches'] == null ? null : (pulumi.Input.decodeList<GrpcRouteRuleMatch>(map['matches']!, (value) => GrpcRouteRuleMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

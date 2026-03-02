@@ -62,14 +62,14 @@ class RaiExternalSafetyProviderSchemaPropertiesResponse {
   factory RaiExternalSafetyProviderSchemaPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RaiExternalSafetyProviderSchemaPropertiesResponse(
       createdAt: (map['createdAt'] as String).input(),
-      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri'] as String).input(),
+      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri']! as String).input(),
       lastModifiedAt: (map['lastModifiedAt'] as String).input(),
-      managedIdentity: map['managedIdentity'] == null ? null : (map['managedIdentity'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      providerId: map['providerId'] == null ? null : (map['providerId'] as String).input(),
-      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
-      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      managedIdentity: map['managedIdentity'] == null ? null : (map['managedIdentity']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      providerId: map['providerId'] == null ? null : (map['providerId']! as String).input(),
+      providerName: map['providerName'] == null ? null : (map['providerName']! as String).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

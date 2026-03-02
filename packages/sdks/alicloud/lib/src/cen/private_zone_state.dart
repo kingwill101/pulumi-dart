@@ -43,11 +43,11 @@ class PrivateZoneState {
 
   factory PrivateZoneState.fromMap(Map<String, dynamic> map) {
     return PrivateZoneState(
-      accessRegionId: map['accessRegionId'] == null ? null : (map['accessRegionId'] as String).input(),
-      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
-      hostRegionId: map['hostRegionId'] == null ? null : (map['hostRegionId'] as String).input(),
-      hostVpcId: map['hostVpcId'] == null ? null : (map['hostVpcId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      accessRegionId: map['accessRegionId'] == null ? null : (map['accessRegionId']! as String).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
+      hostRegionId: map['hostRegionId'] == null ? null : (map['hostRegionId']! as String).input(),
+      hostVpcId: map['hostVpcId'] == null ? null : (map['hostVpcId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

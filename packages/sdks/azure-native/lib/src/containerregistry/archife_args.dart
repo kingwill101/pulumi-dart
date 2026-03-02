@@ -54,12 +54,12 @@ class ArchifeArgs {
 
   factory ArchifeArgs.fromMap(Map<String, dynamic> map) {
     return ArchifeArgs(
-      archiveName: map['archiveName'] == null ? null : (map['archiveName'] as String).input(),
-      packageSource: map['packageSource'] == null ? null : (ArchivePackageSourceProperties.fromMap((map['packageSource'] as Map).cast<String, dynamic>())).input(),
+      archiveName: map['archiveName'] == null ? null : (map['archiveName']! as String).input(),
+      packageSource: map['packageSource'] == null ? null : (ArchivePackageSourceProperties.fromMap((map['packageSource']! as Map).cast<String, dynamic>())).input(),
       packageType: (map['packageType'] as String).input(),
-      publishedVersion: map['publishedVersion'] == null ? null : (map['publishedVersion'] as String).input(),
+      publishedVersion: map['publishedVersion'] == null ? null : (map['publishedVersion']! as String).input(),
       registryName: (map['registryName'] as String).input(),
-      repositoryEndpointPrefix: map['repositoryEndpointPrefix'] == null ? null : (map['repositoryEndpointPrefix'] as String).input(),
+      repositoryEndpointPrefix: map['repositoryEndpointPrefix'] == null ? null : (map['repositoryEndpointPrefix']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

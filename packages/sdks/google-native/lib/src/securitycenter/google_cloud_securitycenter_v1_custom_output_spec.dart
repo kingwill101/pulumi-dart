@@ -22,7 +22,7 @@ class GoogleCloudSecuritycenterV1CustomOutputSpec {
 
   factory GoogleCloudSecuritycenterV1CustomOutputSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudSecuritycenterV1CustomOutputSpec(
-      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<GoogleCloudSecuritycenterV1Property>(map['properties'], (value) => GoogleCloudSecuritycenterV1Property.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<GoogleCloudSecuritycenterV1Property>(map['properties']!, (value) => GoogleCloudSecuritycenterV1Property.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

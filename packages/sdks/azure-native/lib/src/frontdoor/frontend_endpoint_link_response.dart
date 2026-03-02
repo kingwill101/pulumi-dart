@@ -21,7 +21,7 @@ class FrontendEndpointLinkResponse {
 
   factory FrontendEndpointLinkResponse.fromMap(Map<String, dynamic> map) {
     return FrontendEndpointLinkResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

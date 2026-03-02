@@ -37,10 +37,10 @@ class LocalDNSProfileResponse {
 
   factory LocalDNSProfileResponse.fromMap(Map<String, dynamic> map) {
     return LocalDNSProfileResponse(
-      kubeDNSOverrides: map['kubeDNSOverrides'] == null ? null : (pulumi.Input.decodeMapValues<LocalDNSOverrideResponse>(map['kubeDNSOverrides'], (value) => LocalDNSOverrideResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      kubeDNSOverrides: map['kubeDNSOverrides'] == null ? null : (pulumi.Input.decodeMapValues<LocalDNSOverrideResponse>(map['kubeDNSOverrides']!, (value) => LocalDNSOverrideResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
       state: (map['state'] as String).input(),
-      vnetDNSOverrides: map['vnetDNSOverrides'] == null ? null : (pulumi.Input.decodeMapValues<LocalDNSOverrideResponse>(map['vnetDNSOverrides'], (value) => LocalDNSOverrideResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vnetDNSOverrides: map['vnetDNSOverrides'] == null ? null : (pulumi.Input.decodeMapValues<LocalDNSOverrideResponse>(map['vnetDNSOverrides']!, (value) => LocalDNSOverrideResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

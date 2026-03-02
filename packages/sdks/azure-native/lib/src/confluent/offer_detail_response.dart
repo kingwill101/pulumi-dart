@@ -64,11 +64,11 @@ class OfferDetailResponse {
       id: (map['id'] as String).input(),
       planId: (map['planId'] as String).input(),
       planName: (map['planName'] as String).input(),
-      privateOfferId: map['privateOfferId'] == null ? null : (map['privateOfferId'] as String).input(),
-      privateOfferIds: map['privateOfferIds'] == null ? null : ((map['privateOfferIds'] as List).cast<String>()).input(),
+      privateOfferId: map['privateOfferId'] == null ? null : (map['privateOfferId']! as String).input(),
+      privateOfferIds: map['privateOfferIds'] == null ? null : ((map['privateOfferIds']! as List).cast<String>()).input(),
       publisherId: (map['publisherId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      termId: map['termId'] == null ? null : (map['termId'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      termId: map['termId'] == null ? null : (map['termId']! as String).input(),
       termUnit: (map['termUnit'] as String).input(),
     );
   }

@@ -21,7 +21,7 @@ class ILBSubsettingConfig {
 
   factory ILBSubsettingConfig.fromMap(Map<String, dynamic> map) {
     return ILBSubsettingConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

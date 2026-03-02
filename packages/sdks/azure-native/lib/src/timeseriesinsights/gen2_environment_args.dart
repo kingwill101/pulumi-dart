@@ -69,15 +69,15 @@ class Gen2EnvironmentArgs {
 
   factory Gen2EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return Gen2EnvironmentArgs(
-      environmentName: map['environmentName'] == null ? null : (map['environmentName'] as String).input(),
+      environmentName: map['environmentName'] == null ? null : (map['environmentName']! as String).input(),
       kind: (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
       storageConfiguration: (Gen2StorageConfigurationInput.fromMap((map['storageConfiguration'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       timeSeriesIdProperties: (pulumi.Input.decodeList<TimeSeriesIdProperty>(map['timeSeriesIdProperties'], (value) => TimeSeriesIdProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      warmStoreConfiguration: map['warmStoreConfiguration'] == null ? null : (WarmStoreConfigurationProperties.fromMap((map['warmStoreConfiguration'] as Map).cast<String, dynamic>())).input(),
+      warmStoreConfiguration: map['warmStoreConfiguration'] == null ? null : (WarmStoreConfigurationProperties.fromMap((map['warmStoreConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

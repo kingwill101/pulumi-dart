@@ -44,11 +44,11 @@ class KeyPairArgs {
 
   factory KeyPairArgs.fromMap(Map<String, dynamic> map) {
     return KeyPairArgs(
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      keyNamePrefix: map['keyNamePrefix'] == null ? null : (map['keyNamePrefix'] as String).input(),
+      keyName: map['keyName'] == null ? null : ((map['keyName'] as String).input()).input(),
+      keyNamePrefix: map['keyNamePrefix'] == null ? null : ((map['keyNamePrefix'] as String).input()).input(),
       publicKey: (map['publicKey'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

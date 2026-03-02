@@ -61,15 +61,15 @@ class RemoteImageState {
 
   factory RemoteImageState.fromMap(Map<String, dynamic> map) {
     return RemoteImageState(
-      build: map['build'] == null ? null : (RemoteImageBuild.fromMap((map['build'] as Map).cast<String, dynamic>())).input(),
-      forceRemove: map['forceRemove'] == null ? null : (map['forceRemove'] as bool).input(),
-      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
-      keepLocally: map['keepLocally'] == null ? null : (map['keepLocally'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
-      pullTriggers: map['pullTriggers'] == null ? null : ((map['pullTriggers'] as List).cast<String>()).input(),
-      repoDigest: map['repoDigest'] == null ? null : (map['repoDigest'] as String).input(),
-      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
+      build: map['build'] == null ? null : (RemoteImageBuild.fromMap((map['build']! as Map).cast<String, dynamic>())).input(),
+      forceRemove: map['forceRemove'] == null ? null : (map['forceRemove']! as bool).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId']! as String).input(),
+      keepLocally: map['keepLocally'] == null ? null : (map['keepLocally']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      platform: map['platform'] == null ? null : (map['platform']! as String).input(),
+      pullTriggers: map['pullTriggers'] == null ? null : ((map['pullTriggers']! as List).cast<String>()).input(),
+      repoDigest: map['repoDigest'] == null ? null : (map['repoDigest']! as String).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers']! as Map).cast<String, String>()).input(),
     );
   }
 }

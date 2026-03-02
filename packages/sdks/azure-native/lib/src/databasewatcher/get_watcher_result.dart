@@ -79,16 +79,16 @@ class GetWatcherResult {
   factory GetWatcherResult.fromMap(Map<String, dynamic> map) {
     return GetWatcherResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      datastore: map['datastore'] == null ? null : DatastoreResponse.fromMap((map['datastore'] as Map).cast<String, dynamic>()),
-      defaultAlertRuleIdentityResourceId: map['defaultAlertRuleIdentityResourceId'] == null ? null : map['defaultAlertRuleIdentityResourceId'] as String,
+      datastore: map['datastore'] == null ? null : DatastoreResponse.fromMap((map['datastore']! as Map).cast<String, dynamic>()),
+      defaultAlertRuleIdentityResourceId: map['defaultAlertRuleIdentityResourceId'] == null ? null : map['defaultAlertRuleIdentityResourceId']! as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       status: map['status'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

@@ -48,12 +48,12 @@ class GuardrailVersionState {
 
   factory GuardrailVersionState.fromMap(Map<String, dynamic> map) {
     return GuardrailVersionState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      guardrailArn: map['guardrailArn'] == null ? null : (map['guardrailArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
-      timeouts: map['timeouts'] == null ? null : (GuardrailVersionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      guardrailArn: map['guardrailArn'] == null ? null : ((map['guardrailArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : ((map['skipDestroy'] as bool).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((GuardrailVersionTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

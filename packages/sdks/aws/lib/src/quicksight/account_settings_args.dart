@@ -44,11 +44,11 @@ class AccountSettingsArgs {
 
   factory AccountSettingsArgs.fromMap(Map<String, dynamic> map) {
     return AccountSettingsArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      defaultNamespace: map['defaultNamespace'] == null ? null : (map['defaultNamespace'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      terminationProtectionEnabled: map['terminationProtectionEnabled'] == null ? null : (map['terminationProtectionEnabled'] as bool).input(),
-      timeouts: map['timeouts'] == null ? null : (AccountSettingsTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      defaultNamespace: map['defaultNamespace'] == null ? null : ((map['defaultNamespace'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      terminationProtectionEnabled: map['terminationProtectionEnabled'] == null ? null : ((map['terminationProtectionEnabled'] as bool).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((AccountSettingsTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

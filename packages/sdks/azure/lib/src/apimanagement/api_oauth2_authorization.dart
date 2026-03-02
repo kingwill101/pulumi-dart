@@ -26,7 +26,7 @@ class ApiOauth2Authorization {
   factory ApiOauth2Authorization.fromMap(Map<String, dynamic> map) {
     return ApiOauth2Authorization(
       authorizationServerName: (map['authorizationServerName'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
     );
   }
 }

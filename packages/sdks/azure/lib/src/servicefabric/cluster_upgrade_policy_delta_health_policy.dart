@@ -30,9 +30,9 @@ class ClusterUpgradePolicyDeltaHealthPolicy {
 
   factory ClusterUpgradePolicyDeltaHealthPolicy.fromMap(Map<String, dynamic> map) {
     return ClusterUpgradePolicyDeltaHealthPolicy(
-      maxDeltaUnhealthyApplicationsPercent: map['maxDeltaUnhealthyApplicationsPercent'] == null ? null : (map['maxDeltaUnhealthyApplicationsPercent'] as int).input(),
-      maxDeltaUnhealthyNodesPercent: map['maxDeltaUnhealthyNodesPercent'] == null ? null : (map['maxDeltaUnhealthyNodesPercent'] as int).input(),
-      maxUpgradeDomainDeltaUnhealthyNodesPercent: map['maxUpgradeDomainDeltaUnhealthyNodesPercent'] == null ? null : (map['maxUpgradeDomainDeltaUnhealthyNodesPercent'] as int).input(),
+      maxDeltaUnhealthyApplicationsPercent: map['maxDeltaUnhealthyApplicationsPercent'] == null ? null : (map['maxDeltaUnhealthyApplicationsPercent']! as int).input(),
+      maxDeltaUnhealthyNodesPercent: map['maxDeltaUnhealthyNodesPercent'] == null ? null : (map['maxDeltaUnhealthyNodesPercent']! as int).input(),
+      maxUpgradeDomainDeltaUnhealthyNodesPercent: map['maxUpgradeDomainDeltaUnhealthyNodesPercent'] == null ? null : (map['maxUpgradeDomainDeltaUnhealthyNodesPercent']! as int).input(),
     );
   }
 }

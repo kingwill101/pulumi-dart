@@ -26,7 +26,7 @@ class ApplicationGatewayAutoscaleConfiguration {
 
   factory ApplicationGatewayAutoscaleConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayAutoscaleConfiguration(
-      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity'] as int).input(),
+      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity']! as int).input(),
       minCapacity: (map['minCapacity'] as int).input(),
     );
   }

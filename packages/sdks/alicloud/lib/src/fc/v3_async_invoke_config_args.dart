@@ -50,12 +50,12 @@ class V3AsyncInvokeConfigArgs {
 
   factory V3AsyncInvokeConfigArgs.fromMap(Map<String, dynamic> map) {
     return V3AsyncInvokeConfigArgs(
-      asyncTask: map['asyncTask'] == null ? null : (map['asyncTask'] as bool).input(),
-      destinationConfig: map['destinationConfig'] == null ? null : (V3AsyncInvokeConfigDestinationConfig.fromMap((map['destinationConfig'] as Map).cast<String, dynamic>())).input(),
+      asyncTask: map['asyncTask'] == null ? null : (map['asyncTask']! as bool).input(),
+      destinationConfig: map['destinationConfig'] == null ? null : (V3AsyncInvokeConfigDestinationConfig.fromMap((map['destinationConfig']! as Map).cast<String, dynamic>())).input(),
       functionName: (map['functionName'] as String).input(),
-      maxAsyncEventAgeInSeconds: map['maxAsyncEventAgeInSeconds'] == null ? null : (map['maxAsyncEventAgeInSeconds'] as int).input(),
-      maxAsyncRetryAttempts: map['maxAsyncRetryAttempts'] == null ? null : (map['maxAsyncRetryAttempts'] as int).input(),
-      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
+      maxAsyncEventAgeInSeconds: map['maxAsyncEventAgeInSeconds'] == null ? null : (map['maxAsyncEventAgeInSeconds']! as int).input(),
+      maxAsyncRetryAttempts: map['maxAsyncRetryAttempts'] == null ? null : (map['maxAsyncRetryAttempts']! as int).input(),
+      qualifier: map['qualifier'] == null ? null : (map['qualifier']! as String).input(),
     );
   }
 }

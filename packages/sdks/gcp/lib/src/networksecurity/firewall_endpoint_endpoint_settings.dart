@@ -20,7 +20,7 @@ class FirewallEndpointEndpointSettings {
 
   factory FirewallEndpointEndpointSettings.fromMap(Map<String, dynamic> map) {
     return FirewallEndpointEndpointSettings(
-      jumboFramesEnabled: map['jumboFramesEnabled'] == null ? null : (map['jumboFramesEnabled'] as bool).input(),
+      jumboFramesEnabled: map['jumboFramesEnabled'] == null ? null : (map['jumboFramesEnabled']! as bool).input(),
     );
   }
 }

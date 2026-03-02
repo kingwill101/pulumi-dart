@@ -72,15 +72,15 @@ class SQuotaPreferenceArgs {
 
   factory SQuotaPreferenceArgs.fromMap(Map<String, dynamic> map) {
     return SQuotaPreferenceArgs(
-      contactEmail: map['contactEmail'] == null ? null : (map['contactEmail'] as String).input(),
-      dimensions: map['dimensions'] == null ? null : ((map['dimensions'] as Map).cast<String, String>()).input(),
-      ignoreSafetyChecks: map['ignoreSafetyChecks'] == null ? null : (map['ignoreSafetyChecks'] as String).input(),
-      justification: map['justification'] == null ? null : (map['justification'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      contactEmail: map['contactEmail'] == null ? null : (map['contactEmail']! as String).input(),
+      dimensions: map['dimensions'] == null ? null : ((map['dimensions']! as Map).cast<String, String>()).input(),
+      ignoreSafetyChecks: map['ignoreSafetyChecks'] == null ? null : (map['ignoreSafetyChecks']! as String).input(),
+      justification: map['justification'] == null ? null : (map['justification']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
       quotaConfig: (SQuotaPreferenceQuotaConfig.fromMap((map['quotaConfig'] as Map).cast<String, dynamic>())).input(),
-      quotaId: map['quotaId'] == null ? null : (map['quotaId'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      quotaId: map['quotaId'] == null ? null : (map['quotaId']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

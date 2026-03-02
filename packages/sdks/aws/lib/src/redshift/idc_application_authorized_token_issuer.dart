@@ -25,8 +25,8 @@ class IdcApplicationAuthorizedTokenIssuer {
 
   factory IdcApplicationAuthorizedTokenIssuer.fromMap(Map<String, dynamic> map) {
     return IdcApplicationAuthorizedTokenIssuer(
-      authorizedAudiencesLists: map['authorizedAudiencesLists'] == null ? null : ((map['authorizedAudiencesLists'] as List).cast<String>()).input(),
-      trustedTokenIssuerArn: map['trustedTokenIssuerArn'] == null ? null : (map['trustedTokenIssuerArn'] as String).input(),
+      authorizedAudiencesLists: map['authorizedAudiencesLists'] == null ? null : (((map['authorizedAudiencesLists'] as List).cast<String>()).input()).input(),
+      trustedTokenIssuerArn: map['trustedTokenIssuerArn'] == null ? null : ((map['trustedTokenIssuerArn'] as String).input()).input(),
     );
   }
 }

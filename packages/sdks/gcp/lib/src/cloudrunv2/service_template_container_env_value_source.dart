@@ -22,7 +22,7 @@ class ServiceTemplateContainerEnvValueSource {
 
   factory ServiceTemplateContainerEnvValueSource.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateContainerEnvValueSource(
-      secretKeyRef: map['secretKeyRef'] == null ? null : (ServiceTemplateContainerEnvValueSourceSecretKeyRef.fromMap((map['secretKeyRef'] as Map).cast<String, dynamic>())).input(),
+      secretKeyRef: map['secretKeyRef'] == null ? null : (ServiceTemplateContainerEnvValueSourceSecretKeyRef.fromMap((map['secretKeyRef']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

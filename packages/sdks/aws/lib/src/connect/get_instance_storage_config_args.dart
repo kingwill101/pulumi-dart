@@ -41,7 +41,7 @@ class GetInstanceStorageConfigArgs {
     return GetInstanceStorageConfigArgs(
       associationId: (map['associationId'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceType: (map['resourceType'] as String).input(),
     );
   }

@@ -26,8 +26,8 @@ class RuleOptionResponse {
 
   factory RuleOptionResponse.fromMap(Map<String, dynamic> map) {
     return RuleOptionResponse(
-      keyword: map['keyword'] == null ? null : (map['keyword'] as String).input(),
-      settings: map['settings'] == null ? null : ((map['settings'] as List).cast<String>()).input(),
+      keyword: map['keyword'] == null ? null : (map['keyword']! as String).input(),
+      settings: map['settings'] == null ? null : ((map['settings']! as List).cast<String>()).input(),
     );
   }
 }

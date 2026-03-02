@@ -41,11 +41,11 @@ class ClusterState {
 
   factory ClusterState.fromMap(Map<String, dynamic> map) {
     return ClusterState(
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      clusterType: map['clusterType'] == null ? null : (map['clusterType'] as int).input(),
-      logicalRegionId: map['logicalRegionId'] == null ? null : (map['logicalRegionId'] as String).input(),
-      networkMode: map['networkMode'] == null ? null : (map['networkMode'] as int).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      clusterType: map['clusterType'] == null ? null : (map['clusterType']! as int).input(),
+      logicalRegionId: map['logicalRegionId'] == null ? null : (map['logicalRegionId']! as String).input(),
+      networkMode: map['networkMode'] == null ? null : (map['networkMode']! as int).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

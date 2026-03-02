@@ -41,10 +41,10 @@ class WebResourceState {
 
   factory WebResourceState.fromMap(Map<String, dynamic> map) {
     return WebResourceState(
-      owners: map['owners'] == null ? null : ((map['owners'] as List).cast<String>()).input(),
-      site: map['site'] == null ? null : (WebResourceSite.fromMap((map['site'] as Map).cast<String, dynamic>())).input(),
-      verificationMethod: map['verificationMethod'] == null ? null : (map['verificationMethod'] as String).input(),
-      webResourceId: map['webResourceId'] == null ? null : (map['webResourceId'] as String).input(),
+      owners: map['owners'] == null ? null : ((map['owners']! as List).cast<String>()).input(),
+      site: map['site'] == null ? null : (WebResourceSite.fromMap((map['site']! as Map).cast<String, dynamic>())).input(),
+      verificationMethod: map['verificationMethod'] == null ? null : (map['verificationMethod']! as String).input(),
+      webResourceId: map['webResourceId'] == null ? null : (map['webResourceId']! as String).input(),
     );
   }
 }

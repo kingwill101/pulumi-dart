@@ -70,15 +70,15 @@ class CapacityPoolArgs {
   factory CapacityPoolArgs.fromMap(Map<String, dynamic> map) {
     return CapacityPoolArgs(
       accountName: (map['accountName'] as String).input(),
-      coolAccess: map['coolAccess'] == null ? null : (map['coolAccess'] as bool).input(),
-      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      poolName: map['poolName'] == null ? null : (map['poolName'] as String).input(),
-      qosType: map['qosType'] == null ? null : (map['qosType'] as String).input(),
+      coolAccess: map['coolAccess'] == null ? null : (map['coolAccess']! as bool).input(),
+      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      poolName: map['poolName'] == null ? null : (map['poolName']! as String).input(),
+      qosType: map['qosType'] == null ? null : (map['qosType']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceLevel: (map['serviceLevel'] as String).input(),
       size: (map['size'] as double).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

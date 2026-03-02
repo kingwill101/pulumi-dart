@@ -75,16 +75,16 @@ class HuntArgs {
 
   factory HuntArgs.fromMap(Map<String, dynamic> map) {
     return HuntArgs(
-      attackTactics: map['attackTactics'] == null ? null : ((map['attackTactics'] as List).cast<String>()).input(),
-      attackTechniques: map['attackTechniques'] == null ? null : ((map['attackTechniques'] as List).cast<String>()).input(),
+      attackTactics: map['attackTactics'] == null ? null : ((map['attackTactics']! as List).cast<String>()).input(),
+      attackTechniques: map['attackTechniques'] == null ? null : ((map['attackTechniques']! as List).cast<String>()).input(),
       description: (map['description'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      huntId: map['huntId'] == null ? null : (map['huntId'] as String).input(),
-      hypothesisStatus: map['hypothesisStatus'] == null ? null : (map['hypothesisStatus'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
-      owner: map['owner'] == null ? null : (HuntOwner.fromMap((map['owner'] as Map).cast<String, dynamic>())).input(),
+      huntId: map['huntId'] == null ? null : (map['huntId']! as String).input(),
+      hypothesisStatus: map['hypothesisStatus'] == null ? null : (map['hypothesisStatus']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as List).cast<String>()).input(),
+      owner: map['owner'] == null ? null : (HuntOwner.fromMap((map['owner']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

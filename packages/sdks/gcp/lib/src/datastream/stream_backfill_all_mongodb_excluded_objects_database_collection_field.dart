@@ -20,7 +20,7 @@ class StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionField {
 
   factory StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionField.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionField(
-      field: map['field'] == null ? null : (map['field'] as String).input(),
+      field: map['field'] == null ? null : (map['field']! as String).input(),
     );
   }
 }

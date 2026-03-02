@@ -47,12 +47,12 @@ class SSLHealthCheck {
 
   factory SSLHealthCheck.fromMap(Map<String, dynamic> map) {
     return SSLHealthCheck(
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      portName: map['portName'] == null ? null : (map['portName'] as String).input(),
-      portSpecification: map['portSpecification'] == null ? null : (SSLHealthCheckPortSpecification.fromValue(map['portSpecification'] as String)).input(),
-      proxyHeader: map['proxyHeader'] == null ? null : (SSLHealthCheckProxyHeader.fromValue(map['proxyHeader'] as String)).input(),
-      request: map['request'] == null ? null : (map['request'] as String).input(),
-      response: map['response'] == null ? null : (map['response'] as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      portName: map['portName'] == null ? null : (map['portName']! as String).input(),
+      portSpecification: map['portSpecification'] == null ? null : (SSLHealthCheckPortSpecification.fromValue(map['portSpecification']! as String)).input(),
+      proxyHeader: map['proxyHeader'] == null ? null : (SSLHealthCheckProxyHeader.fromValue(map['proxyHeader']! as String)).input(),
+      request: map['request'] == null ? null : (map['request']! as String).input(),
+      response: map['response'] == null ? null : (map['response']! as String).input(),
     );
   }
 }

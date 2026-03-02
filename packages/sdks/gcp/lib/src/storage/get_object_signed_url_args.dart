@@ -67,12 +67,12 @@ class GetObjectSignedUrlArgs {
   factory GetObjectSignedUrlArgs.fromMap(Map<String, dynamic> map) {
     return GetObjectSignedUrlArgs(
       bucket: (map['bucket'] as String).input(),
-      contentMd5: map['contentMd5'] == null ? null : (map['contentMd5'] as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      credentials: map['credentials'] == null ? null : (map['credentials'] as String).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
-      extensionHeaders: map['extensionHeaders'] == null ? null : ((map['extensionHeaders'] as Map).cast<String, String>()).input(),
-      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod'] as String).input(),
+      contentMd5: map['contentMd5'] == null ? null : (map['contentMd5']! as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      credentials: map['credentials'] == null ? null : (map['credentials']! as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
+      extensionHeaders: map['extensionHeaders'] == null ? null : ((map['extensionHeaders']! as Map).cast<String, String>()).input(),
+      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod']! as String).input(),
       path: (map['path'] as String).input(),
     );
   }

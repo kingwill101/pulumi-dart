@@ -51,12 +51,12 @@ class GetResolverRulesArgs {
 
   factory GetResolverRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverRulesArgs(
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resolverEndpointId: map['resolverEndpointId'] == null ? null : (map['resolverEndpointId'] as String).input(),
-      ruleType: map['ruleType'] == null ? null : (map['ruleType'] as String).input(),
-      shareStatus: map['shareStatus'] == null ? null : (map['shareStatus'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : ((map['nameRegex'] as String).input()).input(),
+      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resolverEndpointId: map['resolverEndpointId'] == null ? null : ((map['resolverEndpointId'] as String).input()).input(),
+      ruleType: map['ruleType'] == null ? null : ((map['ruleType'] as String).input()).input(),
+      shareStatus: map['shareStatus'] == null ? null : ((map['shareStatus'] as String).input()).input(),
     );
   }
 }

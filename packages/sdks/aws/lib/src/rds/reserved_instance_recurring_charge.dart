@@ -23,8 +23,8 @@ class ReservedInstanceRecurringCharge {
 
   factory ReservedInstanceRecurringCharge.fromMap(Map<String, dynamic> map) {
     return ReservedInstanceRecurringCharge(
-      recurringChargeAmount: map['recurringChargeAmount'] == null ? null : (map['recurringChargeAmount'] as int).input(),
-      recurringChargeFrequency: map['recurringChargeFrequency'] == null ? null : (map['recurringChargeFrequency'] as String).input(),
+      recurringChargeAmount: map['recurringChargeAmount'] == null ? null : ((map['recurringChargeAmount'] as int).input()).input(),
+      recurringChargeFrequency: map['recurringChargeFrequency'] == null ? null : ((map['recurringChargeFrequency'] as String).input()).input(),
     );
   }
 }

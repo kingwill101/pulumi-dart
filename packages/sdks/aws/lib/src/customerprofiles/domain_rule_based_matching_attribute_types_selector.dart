@@ -35,10 +35,10 @@ class DomainRuleBasedMatchingAttributeTypesSelector {
 
   factory DomainRuleBasedMatchingAttributeTypesSelector.fromMap(Map<String, dynamic> map) {
     return DomainRuleBasedMatchingAttributeTypesSelector(
-      addresses: map['addresses'] == null ? null : ((map['addresses'] as List).cast<String>()).input(),
+      addresses: map['addresses'] == null ? null : (((map['addresses'] as List).cast<String>()).input()).input(),
       attributeMatchingModel: (map['attributeMatchingModel'] as String).input(),
-      emailAddresses: map['emailAddresses'] == null ? null : ((map['emailAddresses'] as List).cast<String>()).input(),
-      phoneNumbers: map['phoneNumbers'] == null ? null : ((map['phoneNumbers'] as List).cast<String>()).input(),
+      emailAddresses: map['emailAddresses'] == null ? null : (((map['emailAddresses'] as List).cast<String>()).input()).input(),
+      phoneNumbers: map['phoneNumbers'] == null ? null : (((map['phoneNumbers'] as List).cast<String>()).input()).input(),
     );
   }
 }

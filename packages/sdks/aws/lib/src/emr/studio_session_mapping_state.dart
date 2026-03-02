@@ -46,12 +46,12 @@ class StudioSessionMappingState {
 
   factory StudioSessionMappingState.fromMap(Map<String, dynamic> map) {
     return StudioSessionMappingState(
-      identityId: map['identityId'] == null ? null : (map['identityId'] as String).input(),
-      identityName: map['identityName'] == null ? null : (map['identityName'] as String).input(),
-      identityType: map['identityType'] == null ? null : (map['identityType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sessionPolicyArn: map['sessionPolicyArn'] == null ? null : (map['sessionPolicyArn'] as String).input(),
-      studioId: map['studioId'] == null ? null : (map['studioId'] as String).input(),
+      identityId: map['identityId'] == null ? null : ((map['identityId'] as String).input()).input(),
+      identityName: map['identityName'] == null ? null : ((map['identityName'] as String).input()).input(),
+      identityType: map['identityType'] == null ? null : ((map['identityType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sessionPolicyArn: map['sessionPolicyArn'] == null ? null : ((map['sessionPolicyArn'] as String).input()).input(),
+      studioId: map['studioId'] == null ? null : ((map['studioId'] as String).input()).input(),
     );
   }
 }

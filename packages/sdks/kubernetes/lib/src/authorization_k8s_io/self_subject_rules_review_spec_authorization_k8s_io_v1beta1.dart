@@ -20,7 +20,7 @@ class SelfSubjectRulesReviewSpecAuthorizationK8sIoV1beta1 {
 
   factory SelfSubjectRulesReviewSpecAuthorizationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return SelfSubjectRulesReviewSpecAuthorizationK8sIoV1beta1(
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
     );
   }
 }

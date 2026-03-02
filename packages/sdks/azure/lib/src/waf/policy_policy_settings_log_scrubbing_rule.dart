@@ -33,10 +33,10 @@ class PolicyPolicySettingsLogScrubbingRule {
 
   factory PolicyPolicySettingsLogScrubbingRule.fromMap(Map<String, dynamic> map) {
     return PolicyPolicySettingsLogScrubbingRule(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       matchVariable: (map['matchVariable'] as String).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
-      selectorMatchOperator: map['selectorMatchOperator'] == null ? null : (map['selectorMatchOperator'] as String).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
+      selectorMatchOperator: map['selectorMatchOperator'] == null ? null : (map['selectorMatchOperator']! as String).input(),
     );
   }
 }

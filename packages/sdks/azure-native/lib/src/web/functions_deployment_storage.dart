@@ -32,9 +32,9 @@ class FunctionsDeploymentStorage {
 
   factory FunctionsDeploymentStorage.fromMap(Map<String, dynamic> map) {
     return FunctionsDeploymentStorage(
-      authentication: map['authentication'] == null ? null : (FunctionsDeploymentAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      authentication: map['authentication'] == null ? null : (FunctionsDeploymentAuthentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class LinuxOsInfoResponse {
 
   factory LinuxOsInfoResponse.fromMap(Map<String, dynamic> map) {
     return LinuxOsInfoResponse(
-      linuxOsState: map['linuxOsState'] == null ? null : (map['linuxOsState'] as String).input(),
+      linuxOsState: map['linuxOsState'] == null ? null : (map['linuxOsState']! as String).input(),
     );
   }
 }

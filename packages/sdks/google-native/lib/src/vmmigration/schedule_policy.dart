@@ -26,8 +26,8 @@ class SchedulePolicy {
 
   factory SchedulePolicy.fromMap(Map<String, dynamic> map) {
     return SchedulePolicy(
-      idleDuration: map['idleDuration'] == null ? null : (map['idleDuration'] as String).input(),
-      skipOsAdaptation: map['skipOsAdaptation'] == null ? null : (map['skipOsAdaptation'] as bool).input(),
+      idleDuration: map['idleDuration'] == null ? null : (map['idleDuration']! as String).input(),
+      skipOsAdaptation: map['skipOsAdaptation'] == null ? null : (map['skipOsAdaptation']! as bool).input(),
     );
   }
 }

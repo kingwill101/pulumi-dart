@@ -95,14 +95,14 @@ class GetPoolResult {
       devCenterProjectResourceId: map['devCenterProjectResourceId'] as String,
       fabricProfile: VmssFabricProfileResponse.fromMap((map['fabricProfile'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
       maximumConcurrency: map['maximumConcurrency'] as int,
       name: map['name'] as String,
       organizationProfile: AzureDevOpsOrganizationProfileResponse.fromMap((map['organizationProfile'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
+      provisioningState: map['provisioningState'] == null ? null : map['provisioningState']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

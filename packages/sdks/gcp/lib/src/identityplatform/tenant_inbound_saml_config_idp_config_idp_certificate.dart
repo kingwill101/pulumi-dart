@@ -20,7 +20,7 @@ class TenantInboundSamlConfigIdpConfigIdpCertificate {
 
   factory TenantInboundSamlConfigIdpConfigIdpCertificate.fromMap(Map<String, dynamic> map) {
     return TenantInboundSamlConfigIdpConfigIdpCertificate(
-      x509Certificate: map['x509Certificate'] == null ? null : (map['x509Certificate'] as String).input(),
+      x509Certificate: map['x509Certificate'] == null ? null : (map['x509Certificate']! as String).input(),
     );
   }
 }

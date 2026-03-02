@@ -26,7 +26,7 @@ class AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration {
 
   factory AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration(
-      fieldMapping: (AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfigurationFieldMapping.fromMap((map['fieldMapping'] as Map).cast<String, dynamic>())).input(),
+      fieldMapping: (AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfigurationFieldMapping.fromMap((map['fieldMapping']! as Map).cast<String, dynamic>())).input(),
       graphArn: (map['graphArn'] as String).input(),
     );
   }

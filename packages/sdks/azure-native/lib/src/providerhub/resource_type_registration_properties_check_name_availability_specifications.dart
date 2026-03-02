@@ -26,8 +26,8 @@ class ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecifications {
 
   factory ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecifications.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecifications(
-      enableDefaultValidation: map['enableDefaultValidation'] == null ? null : (map['enableDefaultValidation'] as bool).input(),
-      resourceTypesWithCustomValidation: map['resourceTypesWithCustomValidation'] == null ? null : ((map['resourceTypesWithCustomValidation'] as List).cast<String>()).input(),
+      enableDefaultValidation: map['enableDefaultValidation'] == null ? null : (map['enableDefaultValidation']! as bool).input(),
+      resourceTypesWithCustomValidation: map['resourceTypesWithCustomValidation'] == null ? null : ((map['resourceTypesWithCustomValidation']! as List).cast<String>()).input(),
     );
   }
 }

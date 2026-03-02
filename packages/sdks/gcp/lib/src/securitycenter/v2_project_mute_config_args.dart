@@ -54,11 +54,11 @@ class V2ProjectMuteConfigArgs {
 
   factory V2ProjectMuteConfigArgs.fromMap(Map<String, dynamic> map) {
     return V2ProjectMuteConfigArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       filter: (map['filter'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       muteConfigId: (map['muteConfigId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

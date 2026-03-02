@@ -42,11 +42,11 @@ class VscMountPointState {
 
   factory VscMountPointState.fromMap(Map<String, dynamic> map) {
     return VscMountPointState(
-      aliasPrefix: map['aliasPrefix'] == null ? null : (map['aliasPrefix'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      instances: map['instances'] == null ? null : (pulumi.Input.decodeList<VscMountPointInstance>(map['instances'], (value) => VscMountPointInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mountPointId: map['mountPointId'] == null ? null : (map['mountPointId'] as String).input(),
+      aliasPrefix: map['aliasPrefix'] == null ? null : (map['aliasPrefix']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId']! as String).input(),
+      instances: map['instances'] == null ? null : (pulumi.Input.decodeList<VscMountPointInstance>(map['instances']!, (value) => VscMountPointInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mountPointId: map['mountPointId'] == null ? null : (map['mountPointId']! as String).input(),
     );
   }
 }

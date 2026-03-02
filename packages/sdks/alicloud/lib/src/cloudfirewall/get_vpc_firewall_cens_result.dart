@@ -78,19 +78,19 @@ class GetVpcFirewallCensResult {
 
   factory GetVpcFirewallCensResult.fromMap(Map<String, dynamic> map) {
     return GetVpcFirewallCensResult(
-      cenId: map['cenId'] == null ? null : map['cenId'] as String,
+      cenId: map['cenId'] == null ? null : map['cenId']! as String,
       cens: pulumi.Input.decodeList<GetVpcFirewallCensCen>(map['cens'], (value) => GetVpcFirewallCensCen.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      lang: map['lang'] == null ? null : map['lang'] as String,
-      memberUid: map['memberUid'] == null ? null : map['memberUid'] as String,
-      networkInstanceId: map['networkInstanceId'] == null ? null : map['networkInstanceId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      status: map['status'] == null ? null : map['status'] as String,
-      vpcFirewallId: map['vpcFirewallId'] == null ? null : map['vpcFirewallId'] as String,
-      vpcFirewallName: map['vpcFirewallName'] == null ? null : map['vpcFirewallName'] as String,
+      lang: map['lang'] == null ? null : map['lang']! as String,
+      memberUid: map['memberUid'] == null ? null : map['memberUid']! as String,
+      networkInstanceId: map['networkInstanceId'] == null ? null : map['networkInstanceId']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      status: map['status'] == null ? null : map['status']! as String,
+      vpcFirewallId: map['vpcFirewallId'] == null ? null : map['vpcFirewallId']! as String,
+      vpcFirewallName: map['vpcFirewallName'] == null ? null : map['vpcFirewallName']! as String,
     );
   }
 }

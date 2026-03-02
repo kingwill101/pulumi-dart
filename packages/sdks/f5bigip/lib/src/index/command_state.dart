@@ -30,9 +30,9 @@ class CommandState {
 
   factory CommandState.fromMap(Map<String, dynamic> map) {
     return CommandState(
-      commandResults: map['commandResults'] == null ? null : ((map['commandResults'] as List).cast<String>()).input(),
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      when: map['when'] == null ? null : (map['when'] as String).input(),
+      commandResults: map['commandResults'] == null ? null : ((map['commandResults']! as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
+      when: map['when'] == null ? null : (map['when']! as String).input(),
     );
   }
 }

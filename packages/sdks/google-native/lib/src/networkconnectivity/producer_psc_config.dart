@@ -21,7 +21,7 @@ class ProducerPscConfig {
 
   factory ProducerPscConfig.fromMap(Map<String, dynamic> map) {
     return ProducerPscConfig(
-      serviceAttachmentUri: map['serviceAttachmentUri'] == null ? null : (map['serviceAttachmentUri'] as String).input(),
+      serviceAttachmentUri: map['serviceAttachmentUri'] == null ? null : (map['serviceAttachmentUri']! as String).input(),
     );
   }
 }

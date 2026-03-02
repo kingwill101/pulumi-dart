@@ -30,7 +30,7 @@ class EnvironmentAddonsConfigArgs {
 
   factory EnvironmentAddonsConfigArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentAddonsConfigArgs(
-      analyticsEnabled: map['analyticsEnabled'] == null ? null : (map['analyticsEnabled'] as bool).input(),
+      analyticsEnabled: map['analyticsEnabled'] == null ? null : (map['analyticsEnabled']! as bool).input(),
       envId: (map['envId'] as String).input(),
     );
   }

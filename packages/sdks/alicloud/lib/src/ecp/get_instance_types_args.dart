@@ -24,7 +24,7 @@ class GetInstanceTypesArgs {
 
   factory GetInstanceTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypesArgs(
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

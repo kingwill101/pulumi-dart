@@ -26,8 +26,8 @@ class HelmOperatorProperties {
 
   factory HelmOperatorProperties.fromMap(Map<String, dynamic> map) {
     return HelmOperatorProperties(
-      chartValues: map['chartValues'] == null ? null : (map['chartValues'] as String).input(),
-      chartVersion: map['chartVersion'] == null ? null : (map['chartVersion'] as String).input(),
+      chartValues: map['chartValues'] == null ? null : (map['chartValues']! as String).input(),
+      chartVersion: map['chartVersion'] == null ? null : (map['chartVersion']! as String).input(),
     );
   }
 }

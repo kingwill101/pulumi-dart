@@ -21,7 +21,7 @@ class TpmSupportValuesEnumValue {
 
   factory TpmSupportValuesEnumValue.fromMap(Map<String, dynamic> map) {
     return TpmSupportValuesEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

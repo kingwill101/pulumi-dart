@@ -26,8 +26,8 @@ class InnerErrorResponse {
 
   factory InnerErrorResponse.fromMap(Map<String, dynamic> map) {
     return InnerErrorResponse(
-      errordetail: map['errordetail'] == null ? null : (map['errordetail'] as String).input(),
-      exceptiontype: map['exceptiontype'] == null ? null : (map['exceptiontype'] as String).input(),
+      errordetail: map['errordetail'] == null ? null : (map['errordetail']! as String).input(),
+      exceptiontype: map['exceptiontype'] == null ? null : (map['exceptiontype']! as String).input(),
     );
   }
 }

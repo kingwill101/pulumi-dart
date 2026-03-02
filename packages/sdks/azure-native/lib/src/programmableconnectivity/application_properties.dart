@@ -51,13 +51,13 @@ class ApplicationProperties {
 
   factory ApplicationProperties.fromMap(Map<String, dynamic> map) {
     return ApplicationProperties(
-      applicationDescription: map['applicationDescription'] == null ? null : (map['applicationDescription'] as String).input(),
-      applicationType: map['applicationType'] == null ? null : (map['applicationType'] as String).input(),
-      legalName: map['legalName'] == null ? null : (map['legalName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      organizationDescription: map['organizationDescription'] == null ? null : (map['organizationDescription'] as String).input(),
-      privacyContactEmailAddress: map['privacyContactEmailAddress'] == null ? null : (map['privacyContactEmailAddress'] as String).input(),
-      taxNumber: map['taxNumber'] == null ? null : (map['taxNumber'] as String).input(),
+      applicationDescription: map['applicationDescription'] == null ? null : (map['applicationDescription']! as String).input(),
+      applicationType: map['applicationType'] == null ? null : (map['applicationType']! as String).input(),
+      legalName: map['legalName'] == null ? null : (map['legalName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      organizationDescription: map['organizationDescription'] == null ? null : (map['organizationDescription']! as String).input(),
+      privacyContactEmailAddress: map['privacyContactEmailAddress'] == null ? null : (map['privacyContactEmailAddress']! as String).input(),
+      taxNumber: map['taxNumber'] == null ? null : (map['taxNumber']! as String).input(),
     );
   }
 }

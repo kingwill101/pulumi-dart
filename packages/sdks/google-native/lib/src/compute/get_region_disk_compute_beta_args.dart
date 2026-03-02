@@ -32,7 +32,7 @@ class GetRegionDiskComputeBetaArgs {
   factory GetRegionDiskComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionDiskComputeBetaArgs(
       disk: (map['disk'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
     );
   }

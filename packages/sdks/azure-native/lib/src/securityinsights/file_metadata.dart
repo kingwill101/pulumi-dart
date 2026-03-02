@@ -31,9 +31,9 @@ class FileMetadata {
 
   factory FileMetadata.fromMap(Map<String, dynamic> map) {
     return FileMetadata(
-      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat'] as String).input(),
-      fileName: map['fileName'] == null ? null : (map['fileName'] as String).input(),
-      fileSize: map['fileSize'] == null ? null : (map['fileSize'] as int).input(),
+      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat']! as String).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName']! as String).input(),
+      fileSize: map['fileSize'] == null ? null : (map['fileSize']! as int).input(),
     );
   }
 }

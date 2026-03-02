@@ -30,9 +30,9 @@ class OntapVolumeAggregateConfiguration {
 
   factory OntapVolumeAggregateConfiguration.fromMap(Map<String, dynamic> map) {
     return OntapVolumeAggregateConfiguration(
-      aggregates: map['aggregates'] == null ? null : ((map['aggregates'] as List).cast<String>()).input(),
-      constituentsPerAggregate: map['constituentsPerAggregate'] == null ? null : (map['constituentsPerAggregate'] as int).input(),
-      totalConstituents: map['totalConstituents'] == null ? null : (map['totalConstituents'] as int).input(),
+      aggregates: map['aggregates'] == null ? null : (((map['aggregates'] as List).cast<String>()).input()).input(),
+      constituentsPerAggregate: map['constituentsPerAggregate'] == null ? null : ((map['constituentsPerAggregate'] as int).input()).input(),
+      totalConstituents: map['totalConstituents'] == null ? null : ((map['totalConstituents'] as int).input()).input(),
     );
   }
 }

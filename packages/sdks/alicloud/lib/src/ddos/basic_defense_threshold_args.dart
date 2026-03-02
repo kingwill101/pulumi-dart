@@ -54,13 +54,13 @@ class BasicDefenseThresholdArgs {
 
   factory BasicDefenseThresholdArgs.fromMap(Map<String, dynamic> map) {
     return BasicDefenseThresholdArgs(
-      bps: map['bps'] == null ? null : (map['bps'] as int).input(),
+      bps: map['bps'] == null ? null : (map['bps']! as int).input(),
       ddosType: (map['ddosType'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
       instanceType: (map['instanceType'] as String).input(),
-      internetIp: map['internetIp'] == null ? null : (map['internetIp'] as String).input(),
-      isAuto: map['isAuto'] == null ? null : (map['isAuto'] as bool).input(),
-      pps: map['pps'] == null ? null : (map['pps'] as int).input(),
+      internetIp: map['internetIp'] == null ? null : (map['internetIp']! as String).input(),
+      isAuto: map['isAuto'] == null ? null : (map['isAuto']! as bool).input(),
+      pps: map['pps'] == null ? null : (map['pps']! as int).input(),
     );
   }
 }

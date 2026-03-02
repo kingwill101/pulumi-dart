@@ -31,8 +31,8 @@ class GetOrganizationArgs {
 
   factory GetOrganizationArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationArgs(
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      organization: map['organization'] == null ? null : (map['organization']! as String).input(),
     );
   }
 }

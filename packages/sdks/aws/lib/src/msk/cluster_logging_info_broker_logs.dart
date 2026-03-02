@@ -33,9 +33,9 @@ class ClusterLoggingInfoBrokerLogs {
 
   factory ClusterLoggingInfoBrokerLogs.fromMap(Map<String, dynamic> map) {
     return ClusterLoggingInfoBrokerLogs(
-      cloudwatchLogs: map['cloudwatchLogs'] == null ? null : (ClusterLoggingInfoBrokerLogsCloudwatchLogs.fromMap((map['cloudwatchLogs'] as Map).cast<String, dynamic>())).input(),
-      firehose: map['firehose'] == null ? null : (ClusterLoggingInfoBrokerLogsFirehose.fromMap((map['firehose'] as Map).cast<String, dynamic>())).input(),
-      s3: map['s3'] == null ? null : (ClusterLoggingInfoBrokerLogsS3.fromMap((map['s3'] as Map).cast<String, dynamic>())).input(),
+      cloudwatchLogs: map['cloudwatchLogs'] == null ? null : ((ClusterLoggingInfoBrokerLogsCloudwatchLogs.fromMap((map['cloudwatchLogs']! as Map).cast<String, dynamic>())).input()).input(),
+      firehose: map['firehose'] == null ? null : ((ClusterLoggingInfoBrokerLogsFirehose.fromMap((map['firehose']! as Map).cast<String, dynamic>())).input()).input(),
+      s3: map['s3'] == null ? null : ((ClusterLoggingInfoBrokerLogsS3.fromMap((map['s3']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

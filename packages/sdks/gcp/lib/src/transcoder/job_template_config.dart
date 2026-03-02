@@ -85,16 +85,16 @@ class JobTemplateConfig {
 
   factory JobTemplateConfig.fromMap(Map<String, dynamic> map) {
     return JobTemplateConfig(
-      adBreaks: map['adBreaks'] == null ? null : (pulumi.Input.decodeList<JobTemplateConfigAdBreak>(map['adBreaks'], (value) => JobTemplateConfigAdBreak.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      editLists: map['editLists'] == null ? null : (pulumi.Input.decodeList<JobTemplateConfigEditList>(map['editLists'], (value) => JobTemplateConfigEditList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      elementaryStreams: map['elementaryStreams'] == null ? null : (pulumi.Input.decodeList<JobTemplateConfigElementaryStream>(map['elementaryStreams'], (value) => JobTemplateConfigElementaryStream.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      encryptions: map['encryptions'] == null ? null : (pulumi.Input.decodeList<JobTemplateConfigEncryption>(map['encryptions'], (value) => JobTemplateConfigEncryption.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inputs: map['inputs'] == null ? null : (pulumi.Input.decodeList<JobTemplateConfigInput>(map['inputs'], (value) => JobTemplateConfigInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      manifests: map['manifests'] == null ? null : (pulumi.Input.decodeList<JobTemplateConfigManifest>(map['manifests'], (value) => JobTemplateConfigManifest.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      muxStreams: map['muxStreams'] == null ? null : (pulumi.Input.decodeList<JobTemplateConfigMuxStream>(map['muxStreams'], (value) => JobTemplateConfigMuxStream.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      output: map['output'] == null ? null : (JobTemplateConfigOutput.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
-      overlays: map['overlays'] == null ? null : (pulumi.Input.decodeList<JobTemplateConfigOverlay>(map['overlays'], (value) => JobTemplateConfigOverlay.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pubsubDestination: map['pubsubDestination'] == null ? null : (JobTemplateConfigPubsubDestination.fromMap((map['pubsubDestination'] as Map).cast<String, dynamic>())).input(),
+      adBreaks: map['adBreaks'] == null ? null : (pulumi.Input.decodeList<JobTemplateConfigAdBreak>(map['adBreaks']!, (value) => JobTemplateConfigAdBreak.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      editLists: map['editLists'] == null ? null : (pulumi.Input.decodeList<JobTemplateConfigEditList>(map['editLists']!, (value) => JobTemplateConfigEditList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      elementaryStreams: map['elementaryStreams'] == null ? null : (pulumi.Input.decodeList<JobTemplateConfigElementaryStream>(map['elementaryStreams']!, (value) => JobTemplateConfigElementaryStream.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encryptions: map['encryptions'] == null ? null : (pulumi.Input.decodeList<JobTemplateConfigEncryption>(map['encryptions']!, (value) => JobTemplateConfigEncryption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputs: map['inputs'] == null ? null : (pulumi.Input.decodeList<JobTemplateConfigInput>(map['inputs']!, (value) => JobTemplateConfigInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      manifests: map['manifests'] == null ? null : (pulumi.Input.decodeList<JobTemplateConfigManifest>(map['manifests']!, (value) => JobTemplateConfigManifest.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      muxStreams: map['muxStreams'] == null ? null : (pulumi.Input.decodeList<JobTemplateConfigMuxStream>(map['muxStreams']!, (value) => JobTemplateConfigMuxStream.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      output: map['output'] == null ? null : (JobTemplateConfigOutput.fromMap((map['output']! as Map).cast<String, dynamic>())).input(),
+      overlays: map['overlays'] == null ? null : (pulumi.Input.decodeList<JobTemplateConfigOverlay>(map['overlays']!, (value) => JobTemplateConfigOverlay.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pubsubDestination: map['pubsubDestination'] == null ? null : (JobTemplateConfigPubsubDestination.fromMap((map['pubsubDestination']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

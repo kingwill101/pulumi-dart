@@ -51,9 +51,9 @@ class GetChannelResult {
   factory GetChannelResult.fromMap(Map<String, dynamic> map) {
     return GetChannelResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      channelFunctions: map['channelFunctions'] == null ? null : (map['channelFunctions'] as List).cast<String>(),
+      channelFunctions: map['channelFunctions'] == null ? null : (map['channelFunctions']! as List).cast<String>(),
       channelType: map['channelType'] as String,
-      credentials: map['credentials'] == null ? null : (map['credentials'] as Map).cast<String, String>(),
+      credentials: map['credentials'] == null ? null : (map['credentials']! as Map).cast<String, String>(),
       id: map['id'] as String,
       name: map['name'] as String,
       type: map['type'] as String,

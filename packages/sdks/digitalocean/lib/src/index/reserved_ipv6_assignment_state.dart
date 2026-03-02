@@ -26,8 +26,8 @@ class ReservedIpv6AssignmentState {
 
   factory ReservedIpv6AssignmentState.fromMap(Map<String, dynamic> map) {
     return ReservedIpv6AssignmentState(
-      dropletId: map['dropletId'] == null ? null : (map['dropletId'] as int).input(),
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
+      dropletId: map['dropletId'] == null ? null : (map['dropletId']! as int).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
     );
   }
 }

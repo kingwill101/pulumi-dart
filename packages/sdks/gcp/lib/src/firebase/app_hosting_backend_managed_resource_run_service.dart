@@ -24,7 +24,7 @@ class AppHostingBackendManagedResourceRunService {
 
   factory AppHostingBackendManagedResourceRunService.fromMap(Map<String, dynamic> map) {
     return AppHostingBackendManagedResourceRunService(
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

@@ -72,17 +72,17 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelector {
 
   factory GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1AnnotatorSelector(
-      issueModels: map['issueModels'] == null ? null : ((map['issueModels'] as List).cast<String>()).input(),
-      phraseMatchers: map['phraseMatchers'] == null ? null : ((map['phraseMatchers'] as List).cast<String>()).input(),
-      runEntityAnnotator: map['runEntityAnnotator'] == null ? null : (map['runEntityAnnotator'] as bool).input(),
-      runIntentAnnotator: map['runIntentAnnotator'] == null ? null : (map['runIntentAnnotator'] as bool).input(),
-      runInterruptionAnnotator: map['runInterruptionAnnotator'] == null ? null : (map['runInterruptionAnnotator'] as bool).input(),
-      runIssueModelAnnotator: map['runIssueModelAnnotator'] == null ? null : (map['runIssueModelAnnotator'] as bool).input(),
-      runPhraseMatcherAnnotator: map['runPhraseMatcherAnnotator'] == null ? null : (map['runPhraseMatcherAnnotator'] as bool).input(),
-      runSentimentAnnotator: map['runSentimentAnnotator'] == null ? null : (map['runSentimentAnnotator'] as bool).input(),
-      runSilenceAnnotator: map['runSilenceAnnotator'] == null ? null : (map['runSilenceAnnotator'] as bool).input(),
-      runSummarizationAnnotator: map['runSummarizationAnnotator'] == null ? null : (map['runSummarizationAnnotator'] as bool).input(),
-      summarizationConfig: map['summarizationConfig'] == null ? null : (GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig.fromMap((map['summarizationConfig'] as Map).cast<String, dynamic>())).input(),
+      issueModels: map['issueModels'] == null ? null : ((map['issueModels']! as List).cast<String>()).input(),
+      phraseMatchers: map['phraseMatchers'] == null ? null : ((map['phraseMatchers']! as List).cast<String>()).input(),
+      runEntityAnnotator: map['runEntityAnnotator'] == null ? null : (map['runEntityAnnotator']! as bool).input(),
+      runIntentAnnotator: map['runIntentAnnotator'] == null ? null : (map['runIntentAnnotator']! as bool).input(),
+      runInterruptionAnnotator: map['runInterruptionAnnotator'] == null ? null : (map['runInterruptionAnnotator']! as bool).input(),
+      runIssueModelAnnotator: map['runIssueModelAnnotator'] == null ? null : (map['runIssueModelAnnotator']! as bool).input(),
+      runPhraseMatcherAnnotator: map['runPhraseMatcherAnnotator'] == null ? null : (map['runPhraseMatcherAnnotator']! as bool).input(),
+      runSentimentAnnotator: map['runSentimentAnnotator'] == null ? null : (map['runSentimentAnnotator']! as bool).input(),
+      runSilenceAnnotator: map['runSilenceAnnotator'] == null ? null : (map['runSilenceAnnotator']! as bool).input(),
+      runSummarizationAnnotator: map['runSummarizationAnnotator'] == null ? null : (map['runSummarizationAnnotator']! as bool).input(),
+      summarizationConfig: map['summarizationConfig'] == null ? null : (GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig.fromMap((map['summarizationConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

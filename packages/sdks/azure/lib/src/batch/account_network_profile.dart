@@ -29,8 +29,8 @@ class AccountNetworkProfile {
 
   factory AccountNetworkProfile.fromMap(Map<String, dynamic> map) {
     return AccountNetworkProfile(
-      accountAccess: map['accountAccess'] == null ? null : (AccountNetworkProfileAccountAccess.fromMap((map['accountAccess'] as Map).cast<String, dynamic>())).input(),
-      nodeManagementAccess: map['nodeManagementAccess'] == null ? null : (AccountNetworkProfileNodeManagementAccess.fromMap((map['nodeManagementAccess'] as Map).cast<String, dynamic>())).input(),
+      accountAccess: map['accountAccess'] == null ? null : (AccountNetworkProfileAccountAccess.fromMap((map['accountAccess']! as Map).cast<String, dynamic>())).input(),
+      nodeManagementAccess: map['nodeManagementAccess'] == null ? null : (AccountNetworkProfileNodeManagementAccess.fromMap((map['nodeManagementAccess']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

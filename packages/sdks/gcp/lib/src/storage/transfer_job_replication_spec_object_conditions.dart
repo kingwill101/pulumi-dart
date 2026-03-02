@@ -45,12 +45,12 @@ class TransferJobReplicationSpecObjectConditions {
 
   factory TransferJobReplicationSpecObjectConditions.fromMap(Map<String, dynamic> map) {
     return TransferJobReplicationSpecObjectConditions(
-      excludePrefixes: map['excludePrefixes'] == null ? null : ((map['excludePrefixes'] as List).cast<String>()).input(),
-      includePrefixes: map['includePrefixes'] == null ? null : ((map['includePrefixes'] as List).cast<String>()).input(),
-      lastModifiedBefore: map['lastModifiedBefore'] == null ? null : (map['lastModifiedBefore'] as String).input(),
-      lastModifiedSince: map['lastModifiedSince'] == null ? null : (map['lastModifiedSince'] as String).input(),
-      maxTimeElapsedSinceLastModification: map['maxTimeElapsedSinceLastModification'] == null ? null : (map['maxTimeElapsedSinceLastModification'] as String).input(),
-      minTimeElapsedSinceLastModification: map['minTimeElapsedSinceLastModification'] == null ? null : (map['minTimeElapsedSinceLastModification'] as String).input(),
+      excludePrefixes: map['excludePrefixes'] == null ? null : ((map['excludePrefixes']! as List).cast<String>()).input(),
+      includePrefixes: map['includePrefixes'] == null ? null : ((map['includePrefixes']! as List).cast<String>()).input(),
+      lastModifiedBefore: map['lastModifiedBefore'] == null ? null : (map['lastModifiedBefore']! as String).input(),
+      lastModifiedSince: map['lastModifiedSince'] == null ? null : (map['lastModifiedSince']! as String).input(),
+      maxTimeElapsedSinceLastModification: map['maxTimeElapsedSinceLastModification'] == null ? null : (map['maxTimeElapsedSinceLastModification']! as String).input(),
+      minTimeElapsedSinceLastModification: map['minTimeElapsedSinceLastModification'] == null ? null : (map['minTimeElapsedSinceLastModification']! as String).input(),
     );
   }
 }

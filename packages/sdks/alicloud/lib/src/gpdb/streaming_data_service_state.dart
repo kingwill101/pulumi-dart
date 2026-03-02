@@ -51,13 +51,13 @@ class StreamingDataServiceState {
 
   factory StreamingDataServiceState.fromMap(Map<String, dynamic> map) {
     return StreamingDataServiceState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      serviceDescription: map['serviceDescription'] == null ? null : (map['serviceDescription'] as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      serviceSpec: map['serviceSpec'] == null ? null : (map['serviceSpec'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      serviceDescription: map['serviceDescription'] == null ? null : (map['serviceDescription']! as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
+      serviceSpec: map['serviceSpec'] == null ? null : (map['serviceSpec']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

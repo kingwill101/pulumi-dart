@@ -28,8 +28,8 @@ class FileSystemUserResponse {
 
   factory FileSystemUserResponse.fromMap(Map<String, dynamic> map) {
     return FileSystemUserResponse(
-      cifsUser: map['cifsUser'] == null ? null : (CifsUserResponse.fromMap((map['cifsUser'] as Map).cast<String, dynamic>())).input(),
-      nfsUser: map['nfsUser'] == null ? null : (NfsUserResponse.fromMap((map['nfsUser'] as Map).cast<String, dynamic>())).input(),
+      cifsUser: map['cifsUser'] == null ? null : (CifsUserResponse.fromMap((map['cifsUser']! as Map).cast<String, dynamic>())).input(),
+      nfsUser: map['nfsUser'] == null ? null : (NfsUserResponse.fromMap((map['nfsUser']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

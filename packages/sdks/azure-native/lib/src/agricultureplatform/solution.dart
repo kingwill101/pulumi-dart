@@ -46,12 +46,12 @@ class Solution {
 
   factory Solution.fromMap(Map<String, dynamic> map) {
     return Solution(
-      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
-      marketPlacePublisherId: map['marketPlacePublisherId'] == null ? null : (map['marketPlacePublisherId'] as String).input(),
-      partnerId: map['partnerId'] == null ? null : (map['partnerId'] as String).input(),
-      planId: map['planId'] == null ? null : (map['planId'] as String).input(),
-      saasSubscriptionId: map['saasSubscriptionId'] == null ? null : (map['saasSubscriptionId'] as String).input(),
-      saasSubscriptionName: map['saasSubscriptionName'] == null ? null : (map['saasSubscriptionName'] as String).input(),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName']! as String).input(),
+      marketPlacePublisherId: map['marketPlacePublisherId'] == null ? null : (map['marketPlacePublisherId']! as String).input(),
+      partnerId: map['partnerId'] == null ? null : (map['partnerId']! as String).input(),
+      planId: map['planId'] == null ? null : (map['planId']! as String).input(),
+      saasSubscriptionId: map['saasSubscriptionId'] == null ? null : (map['saasSubscriptionId']! as String).input(),
+      saasSubscriptionName: map['saasSubscriptionName'] == null ? null : (map['saasSubscriptionName']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class GCSPayloadInfo {
 
   factory GCSPayloadInfo.fromMap(Map<String, dynamic> map) {
     return GCSPayloadInfo(
-      format: map['format'] == null ? null : (GCSPayloadInfoFormat.fromValue(map['format'] as String)).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      format: map['format'] == null ? null : (GCSPayloadInfoFormat.fromValue(map['format']! as String)).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

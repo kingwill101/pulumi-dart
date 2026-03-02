@@ -44,9 +44,9 @@ class EnterpriseProxyAccessArgs {
 
   factory EnterpriseProxyAccessArgs.fromMap(Map<String, dynamic> map) {
     return EnterpriseProxyAccessArgs(
-      indepAccount: map['indepAccount'] == null ? null : (map['indepAccount'] as String).input(),
-      indepPassword: map['indepPassword'] == null ? null : (map['indepPassword'] as String).input(),
-      proxyAccessId: map['proxyAccessId'] == null ? null : (map['proxyAccessId'] as String).input(),
+      indepAccount: map['indepAccount'] == null ? null : (map['indepAccount']! as String).input(),
+      indepPassword: map['indepPassword'] == null ? null : (map['indepPassword']! as String).input(),
+      proxyAccessId: map['proxyAccessId'] == null ? null : (map['proxyAccessId']! as String).input(),
       proxyId: (map['proxyId'] as String).input(),
       userId: (map['userId'] as String).input(),
     );

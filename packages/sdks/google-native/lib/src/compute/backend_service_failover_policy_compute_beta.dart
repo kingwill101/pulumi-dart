@@ -31,9 +31,9 @@ class BackendServiceFailoverPolicyComputeBeta {
 
   factory BackendServiceFailoverPolicyComputeBeta.fromMap(Map<String, dynamic> map) {
     return BackendServiceFailoverPolicyComputeBeta(
-      disableConnectionDrainOnFailover: map['disableConnectionDrainOnFailover'] == null ? null : (map['disableConnectionDrainOnFailover'] as bool).input(),
-      dropTrafficIfUnhealthy: map['dropTrafficIfUnhealthy'] == null ? null : (map['dropTrafficIfUnhealthy'] as bool).input(),
-      failoverRatio: map['failoverRatio'] == null ? null : (map['failoverRatio'] as double).input(),
+      disableConnectionDrainOnFailover: map['disableConnectionDrainOnFailover'] == null ? null : (map['disableConnectionDrainOnFailover']! as bool).input(),
+      dropTrafficIfUnhealthy: map['dropTrafficIfUnhealthy'] == null ? null : (map['dropTrafficIfUnhealthy']! as bool).input(),
+      failoverRatio: map['failoverRatio'] == null ? null : (map['failoverRatio']! as double).input(),
     );
   }
 }

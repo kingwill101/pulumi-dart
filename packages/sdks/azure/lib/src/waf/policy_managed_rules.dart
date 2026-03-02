@@ -27,7 +27,7 @@ class PolicyManagedRules {
 
   factory PolicyManagedRules.fromMap(Map<String, dynamic> map) {
     return PolicyManagedRules(
-      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<PolicyManagedRulesExclusion>(map['exclusions'], (value) => PolicyManagedRulesExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<PolicyManagedRulesExclusion>(map['exclusions']!, (value) => PolicyManagedRulesExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
       managedRuleSets: (pulumi.Input.decodeList<PolicyManagedRulesManagedRuleSet>(map['managedRuleSets'], (value) => PolicyManagedRulesManagedRuleSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

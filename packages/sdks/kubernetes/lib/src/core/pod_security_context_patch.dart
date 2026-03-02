@@ -100,19 +100,19 @@ class PodSecurityContextPatch {
 
   factory PodSecurityContextPatch.fromMap(Map<String, dynamic> map) {
     return PodSecurityContextPatch(
-      appArmorProfile: map['appArmorProfile'] == null ? null : (AppArmorProfilePatch.fromMap((map['appArmorProfile'] as Map).cast<String, dynamic>())).input(),
-      fsGroup: map['fsGroup'] == null ? null : (map['fsGroup'] as int).input(),
-      fsGroupChangePolicy: map['fsGroupChangePolicy'] == null ? null : (map['fsGroupChangePolicy'] as String).input(),
-      runAsGroup: map['runAsGroup'] == null ? null : (map['runAsGroup'] as int).input(),
-      runAsNonRoot: map['runAsNonRoot'] == null ? null : (map['runAsNonRoot'] as bool).input(),
-      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser'] as int).input(),
-      seLinuxChangePolicy: map['seLinuxChangePolicy'] == null ? null : (map['seLinuxChangePolicy'] as String).input(),
-      seLinuxOptions: map['seLinuxOptions'] == null ? null : (SELinuxOptionsPatch.fromMap((map['seLinuxOptions'] as Map).cast<String, dynamic>())).input(),
-      seccompProfile: map['seccompProfile'] == null ? null : (SeccompProfilePatch.fromMap((map['seccompProfile'] as Map).cast<String, dynamic>())).input(),
-      supplementalGroups: map['supplementalGroups'] == null ? null : ((map['supplementalGroups'] as List).cast<int>()).input(),
-      supplementalGroupsPolicy: map['supplementalGroupsPolicy'] == null ? null : (map['supplementalGroupsPolicy'] as String).input(),
-      sysctls: map['sysctls'] == null ? null : (pulumi.Input.decodeList<SysctlPatch>(map['sysctls'], (value) => SysctlPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      windowsOptions: map['windowsOptions'] == null ? null : (WindowsSecurityContextOptionsPatch.fromMap((map['windowsOptions'] as Map).cast<String, dynamic>())).input(),
+      appArmorProfile: map['appArmorProfile'] == null ? null : (AppArmorProfilePatch.fromMap((map['appArmorProfile']! as Map).cast<String, dynamic>())).input(),
+      fsGroup: map['fsGroup'] == null ? null : (map['fsGroup']! as int).input(),
+      fsGroupChangePolicy: map['fsGroupChangePolicy'] == null ? null : (map['fsGroupChangePolicy']! as String).input(),
+      runAsGroup: map['runAsGroup'] == null ? null : (map['runAsGroup']! as int).input(),
+      runAsNonRoot: map['runAsNonRoot'] == null ? null : (map['runAsNonRoot']! as bool).input(),
+      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser']! as int).input(),
+      seLinuxChangePolicy: map['seLinuxChangePolicy'] == null ? null : (map['seLinuxChangePolicy']! as String).input(),
+      seLinuxOptions: map['seLinuxOptions'] == null ? null : (SELinuxOptionsPatch.fromMap((map['seLinuxOptions']! as Map).cast<String, dynamic>())).input(),
+      seccompProfile: map['seccompProfile'] == null ? null : (SeccompProfilePatch.fromMap((map['seccompProfile']! as Map).cast<String, dynamic>())).input(),
+      supplementalGroups: map['supplementalGroups'] == null ? null : ((map['supplementalGroups']! as List).cast<int>()).input(),
+      supplementalGroupsPolicy: map['supplementalGroupsPolicy'] == null ? null : (map['supplementalGroupsPolicy']! as String).input(),
+      sysctls: map['sysctls'] == null ? null : (pulumi.Input.decodeList<SysctlPatch>(map['sysctls']!, (value) => SysctlPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      windowsOptions: map['windowsOptions'] == null ? null : (WindowsSecurityContextOptionsPatch.fromMap((map['windowsOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

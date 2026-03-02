@@ -77,10 +77,10 @@ class GetWebhookResult {
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      scope: map['scope'] == null ? null : map['scope']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

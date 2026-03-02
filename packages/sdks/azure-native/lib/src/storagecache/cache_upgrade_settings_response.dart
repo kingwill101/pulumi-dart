@@ -26,8 +26,8 @@ class CacheUpgradeSettingsResponse {
 
   factory CacheUpgradeSettingsResponse.fromMap(Map<String, dynamic> map) {
     return CacheUpgradeSettingsResponse(
-      scheduledTime: map['scheduledTime'] == null ? null : (map['scheduledTime'] as String).input(),
-      upgradeScheduleEnabled: map['upgradeScheduleEnabled'] == null ? null : (map['upgradeScheduleEnabled'] as bool).input(),
+      scheduledTime: map['scheduledTime'] == null ? null : (map['scheduledTime']! as String).input(),
+      upgradeScheduleEnabled: map['upgradeScheduleEnabled'] == null ? null : (map['upgradeScheduleEnabled']! as bool).input(),
     );
   }
 }

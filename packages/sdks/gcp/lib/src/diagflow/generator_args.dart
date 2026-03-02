@@ -65,14 +65,14 @@ class GeneratorArgs {
 
   factory GeneratorArgs.fromMap(Map<String, dynamic> map) {
     return GeneratorArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      generatorId: map['generatorId'] == null ? null : (map['generatorId'] as String).input(),
-      inferenceParameter: map['inferenceParameter'] == null ? null : (GeneratorInferenceParameter.fromMap((map['inferenceParameter'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      generatorId: map['generatorId'] == null ? null : (map['generatorId']! as String).input(),
+      inferenceParameter: map['inferenceParameter'] == null ? null : (GeneratorInferenceParameter.fromMap((map['inferenceParameter']! as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      publishedModel: map['publishedModel'] == null ? null : (map['publishedModel'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      publishedModel: map['publishedModel'] == null ? null : (map['publishedModel']! as String).input(),
       summarizationContext: (GeneratorSummarizationContext.fromMap((map['summarizationContext'] as Map).cast<String, dynamic>())).input(),
-      triggerEvent: map['triggerEvent'] == null ? null : (map['triggerEvent'] as String).input(),
+      triggerEvent: map['triggerEvent'] == null ? null : (map['triggerEvent']! as String).input(),
     );
   }
 }

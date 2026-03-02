@@ -22,7 +22,7 @@ class ListCapacityPoolVolumeReplicationsResult {
 
   factory ListCapacityPoolVolumeReplicationsResult.fromMap(Map<String, dynamic> map) {
     return ListCapacityPoolVolumeReplicationsResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<ReplicationResponse>(map['value'], (value) => ReplicationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<ReplicationResponse>(map['value']!, (value) => ReplicationResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

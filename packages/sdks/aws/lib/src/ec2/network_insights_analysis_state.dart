@@ -102,22 +102,22 @@ class NetworkInsightsAnalysisState {
 
   factory NetworkInsightsAnalysisState.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisState(
-      alternatePathHints: map['alternatePathHints'] == null ? null : (pulumi.Input.decodeList<NetworkInsightsAnalysisAlternatePathHint>(map['alternatePathHints'], (value) => NetworkInsightsAnalysisAlternatePathHint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      explanations: map['explanations'] == null ? null : (pulumi.Input.decodeList<NetworkInsightsAnalysisExplanation>(map['explanations'], (value) => NetworkInsightsAnalysisExplanation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      filterInArns: map['filterInArns'] == null ? null : ((map['filterInArns'] as List).cast<String>()).input(),
-      forwardPathComponents: map['forwardPathComponents'] == null ? null : (pulumi.Input.decodeList<NetworkInsightsAnalysisForwardPathComponent>(map['forwardPathComponents'], (value) => NetworkInsightsAnalysisForwardPathComponent.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      networkInsightsPathId: map['networkInsightsPathId'] == null ? null : (map['networkInsightsPathId'] as String).input(),
-      pathFound: map['pathFound'] == null ? null : (map['pathFound'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      returnPathComponents: map['returnPathComponents'] == null ? null : (pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponent>(map['returnPathComponents'], (value) => NetworkInsightsAnalysisReturnPathComponent.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      statusMessage: map['statusMessage'] == null ? null : (map['statusMessage'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      waitForCompletion: map['waitForCompletion'] == null ? null : (map['waitForCompletion'] as bool).input(),
-      warningMessage: map['warningMessage'] == null ? null : (map['warningMessage'] as String).input(),
+      alternatePathHints: map['alternatePathHints'] == null ? null : ((pulumi.Input.decodeList<NetworkInsightsAnalysisAlternatePathHint>(map['alternatePathHints']!, (value) => NetworkInsightsAnalysisAlternatePathHint.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      explanations: map['explanations'] == null ? null : ((pulumi.Input.decodeList<NetworkInsightsAnalysisExplanation>(map['explanations']!, (value) => NetworkInsightsAnalysisExplanation.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      filterInArns: map['filterInArns'] == null ? null : (((map['filterInArns'] as List).cast<String>()).input()).input(),
+      forwardPathComponents: map['forwardPathComponents'] == null ? null : ((pulumi.Input.decodeList<NetworkInsightsAnalysisForwardPathComponent>(map['forwardPathComponents']!, (value) => NetworkInsightsAnalysisForwardPathComponent.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      networkInsightsPathId: map['networkInsightsPathId'] == null ? null : ((map['networkInsightsPathId'] as String).input()).input(),
+      pathFound: map['pathFound'] == null ? null : ((map['pathFound'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      returnPathComponents: map['returnPathComponents'] == null ? null : ((pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponent>(map['returnPathComponents']!, (value) => NetworkInsightsAnalysisReturnPathComponent.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      startDate: map['startDate'] == null ? null : ((map['startDate'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      statusMessage: map['statusMessage'] == null ? null : ((map['statusMessage'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      waitForCompletion: map['waitForCompletion'] == null ? null : ((map['waitForCompletion'] as bool).input()).input(),
+      warningMessage: map['warningMessage'] == null ? null : ((map['warningMessage'] as String).input()).input(),
     );
   }
 }

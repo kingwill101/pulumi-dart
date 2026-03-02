@@ -21,7 +21,7 @@ class FunctionsScaleAndConcurrencyResponseHttp {
 
   factory FunctionsScaleAndConcurrencyResponseHttp.fromMap(Map<String, dynamic> map) {
     return FunctionsScaleAndConcurrencyResponseHttp(
-      perInstanceConcurrency: map['perInstanceConcurrency'] == null ? null : (map['perInstanceConcurrency'] as int).input(),
+      perInstanceConcurrency: map['perInstanceConcurrency'] == null ? null : (map['perInstanceConcurrency']! as int).input(),
     );
   }
 }

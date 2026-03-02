@@ -63,14 +63,14 @@ class TextClassificationMultilabelResponse {
 
   factory TextClassificationMultilabelResponse.fromMap(Map<String, dynamic> map) {
     return TextClassificationMultilabelResponse(
-      featurizationSettings: map['featurizationSettings'] == null ? null : (NlpVerticalFeaturizationSettingsResponse.fromMap((map['featurizationSettings'] as Map).cast<String, dynamic>())).input(),
-      limitSettings: map['limitSettings'] == null ? null : (NlpVerticalLimitSettingsResponse.fromMap((map['limitSettings'] as Map).cast<String, dynamic>())).input(),
-      logVerbosity: map['logVerbosity'] == null ? null : (map['logVerbosity'] as String).input(),
+      featurizationSettings: map['featurizationSettings'] == null ? null : (NlpVerticalFeaturizationSettingsResponse.fromMap((map['featurizationSettings']! as Map).cast<String, dynamic>())).input(),
+      limitSettings: map['limitSettings'] == null ? null : (NlpVerticalLimitSettingsResponse.fromMap((map['limitSettings']! as Map).cast<String, dynamic>())).input(),
+      logVerbosity: map['logVerbosity'] == null ? null : (map['logVerbosity']! as String).input(),
       primaryMetric: (map['primaryMetric'] as String).input(),
-      targetColumnName: map['targetColumnName'] == null ? null : (map['targetColumnName'] as String).input(),
+      targetColumnName: map['targetColumnName'] == null ? null : (map['targetColumnName']! as String).input(),
       taskType: (map['taskType'] as String).input(),
       trainingData: (MLTableJobInputResponse.fromMap((map['trainingData'] as Map).cast<String, dynamic>())).input(),
-      validationData: map['validationData'] == null ? null : (MLTableJobInputResponse.fromMap((map['validationData'] as Map).cast<String, dynamic>())).input(),
+      validationData: map['validationData'] == null ? null : (MLTableJobInputResponse.fromMap((map['validationData']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

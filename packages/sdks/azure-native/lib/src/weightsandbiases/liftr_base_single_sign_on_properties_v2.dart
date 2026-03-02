@@ -41,11 +41,11 @@ class LiftrBaseSingleSignOnPropertiesV2 {
 
   factory LiftrBaseSingleSignOnPropertiesV2.fromMap(Map<String, dynamic> map) {
     return LiftrBaseSingleSignOnPropertiesV2(
-      aadDomains: map['aadDomains'] == null ? null : ((map['aadDomains'] as List).cast<String>()).input(),
-      enterpriseAppId: map['enterpriseAppId'] == null ? null : (map['enterpriseAppId'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      aadDomains: map['aadDomains'] == null ? null : ((map['aadDomains']! as List).cast<String>()).input(),
+      enterpriseAppId: map['enterpriseAppId'] == null ? null : (map['enterpriseAppId']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
       type: (map['type'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

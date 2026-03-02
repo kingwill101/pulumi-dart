@@ -36,7 +36,7 @@ class RedrivePolicyArgs {
     return RedrivePolicyArgs(
       queueUrl: (map['queueUrl'] as String).input(),
       redrivePolicy: (map['redrivePolicy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

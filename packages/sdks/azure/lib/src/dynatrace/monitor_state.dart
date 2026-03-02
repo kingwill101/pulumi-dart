@@ -70,16 +70,16 @@ class MonitorState {
 
   factory MonitorState.fromMap(Map<String, dynamic> map) {
     return MonitorState(
-      environmentProperties: map['environmentProperties'] == null ? null : (pulumi.Input.decodeList<MonitorEnvironmentProperty>(map['environmentProperties'], (value) => MonitorEnvironmentProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      identity: map['identity'] == null ? null : (MonitorIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      marketplaceSubscription: map['marketplaceSubscription'] == null ? null : (map['marketplaceSubscription'] as String).input(),
-      monitoringEnabled: map['monitoringEnabled'] == null ? null : (map['monitoringEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      plan: map['plan'] == null ? null : (MonitorPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      user: map['user'] == null ? null : (MonitorUser.fromMap((map['user'] as Map).cast<String, dynamic>())).input(),
+      environmentProperties: map['environmentProperties'] == null ? null : (pulumi.Input.decodeList<MonitorEnvironmentProperty>(map['environmentProperties']!, (value) => MonitorEnvironmentProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identity: map['identity'] == null ? null : (MonitorIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      marketplaceSubscription: map['marketplaceSubscription'] == null ? null : (map['marketplaceSubscription']! as String).input(),
+      monitoringEnabled: map['monitoringEnabled'] == null ? null : (map['monitoringEnabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      plan: map['plan'] == null ? null : (MonitorPlan.fromMap((map['plan']! as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      user: map['user'] == null ? null : (MonitorUser.fromMap((map['user']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

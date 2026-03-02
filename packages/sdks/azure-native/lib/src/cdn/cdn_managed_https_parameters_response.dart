@@ -40,7 +40,7 @@ class CdnManagedHttpsParametersResponse {
     return CdnManagedHttpsParametersResponse(
       certificateSource: (map['certificateSource'] as String).input(),
       certificateSourceParameters: (CdnCertificateSourceParametersResponse.fromMap((map['certificateSourceParameters'] as Map).cast<String, dynamic>())).input(),
-      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : (map['minimumTlsVersion'] as String).input(),
+      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : (map['minimumTlsVersion']! as String).input(),
       protocolType: (map['protocolType'] as String).input(),
     );
   }

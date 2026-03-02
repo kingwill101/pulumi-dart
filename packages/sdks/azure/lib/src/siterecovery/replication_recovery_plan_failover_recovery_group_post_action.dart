@@ -63,13 +63,13 @@ class ReplicationRecoveryPlanFailoverRecoveryGroupPostAction {
 
   factory ReplicationRecoveryPlanFailoverRecoveryGroupPostAction.fromMap(Map<String, dynamic> map) {
     return ReplicationRecoveryPlanFailoverRecoveryGroupPostAction(
-      fabricLocation: map['fabricLocation'] == null ? null : (map['fabricLocation'] as String).input(),
+      fabricLocation: map['fabricLocation'] == null ? null : (map['fabricLocation']! as String).input(),
       failOverDirections: ((map['failOverDirections'] as List).cast<String>()).input(),
       failOverTypes: ((map['failOverTypes'] as List).cast<String>()).input(),
-      manualActionInstruction: map['manualActionInstruction'] == null ? null : (map['manualActionInstruction'] as String).input(),
+      manualActionInstruction: map['manualActionInstruction'] == null ? null : (map['manualActionInstruction']! as String).input(),
       name: (map['name'] as String).input(),
-      runbookId: map['runbookId'] == null ? null : (map['runbookId'] as String).input(),
-      scriptPath: map['scriptPath'] == null ? null : (map['scriptPath'] as String).input(),
+      runbookId: map['runbookId'] == null ? null : (map['runbookId']! as String).input(),
+      scriptPath: map['scriptPath'] == null ? null : (map['scriptPath']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -33,8 +33,8 @@ class ConfigurationAggregatorAccountAggregationSource {
   factory ConfigurationAggregatorAccountAggregationSource.fromMap(Map<String, dynamic> map) {
     return ConfigurationAggregatorAccountAggregationSource(
       accountIds: ((map['accountIds'] as List).cast<String>()).input(),
-      allRegions: map['allRegions'] == null ? null : (map['allRegions'] as bool).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      allRegions: map['allRegions'] == null ? null : ((map['allRegions'] as bool).input()).input(),
+      regions: map['regions'] == null ? null : (((map['regions'] as List).cast<String>()).input()).input(),
     );
   }
 }

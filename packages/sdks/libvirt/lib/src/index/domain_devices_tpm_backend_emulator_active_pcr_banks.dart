@@ -35,10 +35,10 @@ class DomainDevicesTpmBackendEmulatorActivePcrBanks {
 
   factory DomainDevicesTpmBackendEmulatorActivePcrBanks.fromMap(Map<String, dynamic> map) {
     return DomainDevicesTpmBackendEmulatorActivePcrBanks(
-      sha1: map['sha1'] == null ? null : (map['sha1'] as bool).input(),
-      sha256: map['sha256'] == null ? null : (map['sha256'] as bool).input(),
-      sha384: map['sha384'] == null ? null : (map['sha384'] as bool).input(),
-      sha512: map['sha512'] == null ? null : (map['sha512'] as bool).input(),
+      sha1: map['sha1'] == null ? null : (map['sha1']! as bool).input(),
+      sha256: map['sha256'] == null ? null : (map['sha256']! as bool).input(),
+      sha384: map['sha384'] == null ? null : (map['sha384']! as bool).input(),
+      sha512: map['sha512'] == null ? null : (map['sha512']! as bool).input(),
     );
   }
 }

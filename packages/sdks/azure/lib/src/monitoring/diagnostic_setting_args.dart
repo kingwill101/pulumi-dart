@@ -96,16 +96,16 @@ class DiagnosticSettingArgs {
 
   factory DiagnosticSettingArgs.fromMap(Map<String, dynamic> map) {
     return DiagnosticSettingArgs(
-      enabledLogs: map['enabledLogs'] == null ? null : (pulumi.Input.decodeList<DiagnosticSettingEnabledLog>(map['enabledLogs'], (value) => DiagnosticSettingEnabledLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enabledMetrics: map['enabledMetrics'] == null ? null : (pulumi.Input.decodeList<DiagnosticSettingEnabledMetric>(map['enabledMetrics'], (value) => DiagnosticSettingEnabledMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      eventhubAuthorizationRuleId: map['eventhubAuthorizationRuleId'] == null ? null : (map['eventhubAuthorizationRuleId'] as String).input(),
-      eventhubName: map['eventhubName'] == null ? null : (map['eventhubName'] as String).input(),
-      logAnalyticsDestinationType: map['logAnalyticsDestinationType'] == null ? null : (map['logAnalyticsDestinationType'] as String).input(),
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId'] as String).input(),
-      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<DiagnosticSettingMetric>(map['metrics'], (value) => DiagnosticSettingMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      partnerSolutionId: map['partnerSolutionId'] == null ? null : (map['partnerSolutionId'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      enabledLogs: map['enabledLogs'] == null ? null : (pulumi.Input.decodeList<DiagnosticSettingEnabledLog>(map['enabledLogs']!, (value) => DiagnosticSettingEnabledLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabledMetrics: map['enabledMetrics'] == null ? null : (pulumi.Input.decodeList<DiagnosticSettingEnabledMetric>(map['enabledMetrics']!, (value) => DiagnosticSettingEnabledMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eventhubAuthorizationRuleId: map['eventhubAuthorizationRuleId'] == null ? null : (map['eventhubAuthorizationRuleId']! as String).input(),
+      eventhubName: map['eventhubName'] == null ? null : (map['eventhubName']! as String).input(),
+      logAnalyticsDestinationType: map['logAnalyticsDestinationType'] == null ? null : (map['logAnalyticsDestinationType']! as String).input(),
+      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId']! as String).input(),
+      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<DiagnosticSettingMetric>(map['metrics']!, (value) => DiagnosticSettingMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      partnerSolutionId: map['partnerSolutionId'] == null ? null : (map['partnerSolutionId']! as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
       targetResourceId: (map['targetResourceId'] as String).input(),
     );
   }

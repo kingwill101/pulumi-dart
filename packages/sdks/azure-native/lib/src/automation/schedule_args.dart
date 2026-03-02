@@ -75,17 +75,17 @@ class ScheduleArgs {
 
   factory ScheduleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleArgs(
-      advancedSchedule: map['advancedSchedule'] == null ? null : (AdvancedSchedule.fromMap((map['advancedSchedule'] as Map).cast<String, dynamic>())).input(),
+      advancedSchedule: map['advancedSchedule'] == null ? null : (AdvancedSchedule.fromMap((map['advancedSchedule']! as Map).cast<String, dynamic>())).input(),
       automationAccountName: (map['automationAccountName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime']! as String).input(),
       frequency: (map['frequency'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval']).input(),
+      interval: map['interval'] == null ? null : (map['interval']!).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scheduleName: map['scheduleName'] == null ? null : (map['scheduleName'] as String).input(),
+      scheduleName: map['scheduleName'] == null ? null : (map['scheduleName']! as String).input(),
       startTime: (map['startTime'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

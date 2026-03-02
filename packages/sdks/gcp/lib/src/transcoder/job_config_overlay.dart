@@ -29,8 +29,8 @@ class JobConfigOverlay {
 
   factory JobConfigOverlay.fromMap(Map<String, dynamic> map) {
     return JobConfigOverlay(
-      animations: map['animations'] == null ? null : (pulumi.Input.decodeList<JobConfigOverlayAnimation>(map['animations'], (value) => JobConfigOverlayAnimation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      image: map['image'] == null ? null : (JobConfigOverlayImage.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
+      animations: map['animations'] == null ? null : (pulumi.Input.decodeList<JobConfigOverlayAnimation>(map['animations']!, (value) => JobConfigOverlayAnimation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      image: map['image'] == null ? null : (JobConfigOverlayImage.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

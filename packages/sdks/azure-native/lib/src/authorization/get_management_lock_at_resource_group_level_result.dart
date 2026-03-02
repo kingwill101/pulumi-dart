@@ -62,8 +62,8 @@ class GetManagementLockAtResourceGroupLevelResult {
       id: map['id'] as String,
       level: map['level'] as String,
       name: map['name'] as String,
-      notes: map['notes'] == null ? null : map['notes'] as String,
-      owners: map['owners'] == null ? null : pulumi.Input.decodeList<ManagementLockOwnerResponse>(map['owners'], (value) => ManagementLockOwnerResponse.fromMap((value as Map).cast<String, dynamic>())),
+      notes: map['notes'] == null ? null : map['notes']! as String,
+      owners: map['owners'] == null ? null : pulumi.Input.decodeList<ManagementLockOwnerResponse>(map['owners']!, (value) => ManagementLockOwnerResponse.fromMap((value as Map).cast<String, dynamic>())),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

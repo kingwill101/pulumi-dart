@@ -31,9 +31,9 @@ class BackupPolicyMigrationStateResponse {
 
   factory BackupPolicyMigrationStateResponse.fromMap(Map<String, dynamic> map) {
     return BackupPolicyMigrationStateResponse(
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType']! as String).input(),
     );
   }
 }

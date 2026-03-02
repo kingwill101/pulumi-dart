@@ -39,7 +39,7 @@ class GetStandardsControlAssociationsResult {
       id: map['id'] as String,
       region: map['region'] as String,
       securityControlId: map['securityControlId'] as String,
-      standardsControlAssociations: pulumi.Input.decodeList<GetStandardsControlAssociationsStandardsControlAssociation>(map['standardsControlAssociations'], (value) => GetStandardsControlAssociationsStandardsControlAssociation.fromMap((value as Map).cast<String, dynamic>())),
+      standardsControlAssociations: pulumi.Input.decodeList<GetStandardsControlAssociationsStandardsControlAssociation>(map['standardsControlAssociations']!, (value) => GetStandardsControlAssociationsStandardsControlAssociation.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

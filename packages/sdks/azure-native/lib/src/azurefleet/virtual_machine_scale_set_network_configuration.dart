@@ -28,7 +28,7 @@ class VirtualMachineScaleSetNetworkConfiguration {
   factory VirtualMachineScaleSetNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetNetworkConfiguration(
       name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (VirtualMachineScaleSetNetworkConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (VirtualMachineScaleSetNetworkConfigurationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

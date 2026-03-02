@@ -45,8 +45,8 @@ class GetHostEcsLevelInfosArgs {
   factory GetHostEcsLevelInfosArgs.fromMap(Map<String, dynamic> map) {
     return GetHostEcsLevelInfosArgs(
       dbType: (map['dbType'] as String).input(),
-      imageCategory: map['imageCategory'] == null ? null : (map['imageCategory'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      imageCategory: map['imageCategory'] == null ? null : (map['imageCategory']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
       storageType: (map['storageType'] as String).input(),
       zoneId: (map['zoneId'] as String).input(),
     );

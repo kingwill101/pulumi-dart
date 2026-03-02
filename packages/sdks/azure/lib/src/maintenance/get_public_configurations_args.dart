@@ -34,9 +34,9 @@ class GetPublicConfigurationsArgs {
 
   factory GetPublicConfigurationsArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicConfigurationsArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      recurEvery: map['recurEvery'] == null ? null : (map['recurEvery'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      recurEvery: map['recurEvery'] == null ? null : (map['recurEvery']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
     );
   }
 }

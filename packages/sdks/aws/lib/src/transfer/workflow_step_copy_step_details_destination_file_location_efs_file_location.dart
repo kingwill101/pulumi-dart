@@ -25,8 +25,8 @@ class WorkflowStepCopyStepDetailsDestinationFileLocationEfsFileLocation {
 
   factory WorkflowStepCopyStepDetailsDestinationFileLocationEfsFileLocation.fromMap(Map<String, dynamic> map) {
     return WorkflowStepCopyStepDetailsDestinationFileLocationEfsFileLocation(
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : ((map['fileSystemId'] as String).input()).input(),
+      path: map['path'] == null ? null : ((map['path'] as String).input()).input(),
     );
   }
 }

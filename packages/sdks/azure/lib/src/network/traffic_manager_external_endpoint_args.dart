@@ -76,17 +76,17 @@ class TrafficManagerExternalEndpointArgs {
 
   factory TrafficManagerExternalEndpointArgs.fromMap(Map<String, dynamic> map) {
     return TrafficManagerExternalEndpointArgs(
-      alwaysServeEnabled: map['alwaysServeEnabled'] == null ? null : (map['alwaysServeEnabled'] as bool).input(),
-      customHeaders: map['customHeaders'] == null ? null : (pulumi.Input.decodeList<TrafficManagerExternalEndpointCustomHeader>(map['customHeaders'], (value) => TrafficManagerExternalEndpointCustomHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      endpointLocation: map['endpointLocation'] == null ? null : (map['endpointLocation'] as String).input(),
-      geoMappings: map['geoMappings'] == null ? null : ((map['geoMappings'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      alwaysServeEnabled: map['alwaysServeEnabled'] == null ? null : (map['alwaysServeEnabled']! as bool).input(),
+      customHeaders: map['customHeaders'] == null ? null : (pulumi.Input.decodeList<TrafficManagerExternalEndpointCustomHeader>(map['customHeaders']!, (value) => TrafficManagerExternalEndpointCustomHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      endpointLocation: map['endpointLocation'] == null ? null : (map['endpointLocation']! as String).input(),
+      geoMappings: map['geoMappings'] == null ? null : ((map['geoMappings']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
       profileId: (map['profileId'] as String).input(),
-      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<TrafficManagerExternalEndpointSubnet>(map['subnets'], (value) => TrafficManagerExternalEndpointSubnet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<TrafficManagerExternalEndpointSubnet>(map['subnets']!, (value) => TrafficManagerExternalEndpointSubnet.fromMap((value as Map).cast<String, dynamic>()))).input(),
       target: (map['target'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

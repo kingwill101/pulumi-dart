@@ -38,10 +38,10 @@ class GCEPersistentDiskVolumeSource {
 
   factory GCEPersistentDiskVolumeSource.fromMap(Map<String, dynamic> map) {
     return GCEPersistentDiskVolumeSource(
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
-      partition: map['partition'] == null ? null : (map['partition'] as int).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
+      partition: map['partition'] == null ? null : (map['partition']! as int).input(),
       pdName: (map['pdName'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
     );
   }
 }

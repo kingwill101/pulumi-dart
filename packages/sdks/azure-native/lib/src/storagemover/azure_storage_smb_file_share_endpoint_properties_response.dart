@@ -42,7 +42,7 @@ class AzureStorageSmbFileShareEndpointPropertiesResponse {
 
   factory AzureStorageSmbFileShareEndpointPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AzureStorageSmbFileShareEndpointPropertiesResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       endpointType: (map['endpointType'] as String).input(),
       fileShareName: (map['fileShareName'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),

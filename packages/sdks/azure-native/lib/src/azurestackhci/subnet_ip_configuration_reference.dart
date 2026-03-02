@@ -21,7 +21,7 @@ class SubnetIpConfigurationReference {
 
   factory SubnetIpConfigurationReference.fromMap(Map<String, dynamic> map) {
     return SubnetIpConfigurationReference(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

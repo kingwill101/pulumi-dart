@@ -74,17 +74,17 @@ class A2ASharedDiskReplicationDetails {
 
   factory A2ASharedDiskReplicationDetails.fromMap(Map<String, dynamic> map) {
     return A2ASharedDiskReplicationDetails(
-      failoverRecoveryPointId: map['failoverRecoveryPointId'] == null ? null : (map['failoverRecoveryPointId'] as String).input(),
+      failoverRecoveryPointId: map['failoverRecoveryPointId'] == null ? null : (map['failoverRecoveryPointId']! as String).input(),
       instanceType: (map['instanceType'] as String).input(),
-      lastRpoCalculatedTime: map['lastRpoCalculatedTime'] == null ? null : (map['lastRpoCalculatedTime'] as String).input(),
-      managementId: map['managementId'] == null ? null : (map['managementId'] as String).input(),
-      monitoringJobType: map['monitoringJobType'] == null ? null : (map['monitoringJobType'] as String).input(),
-      monitoringPercentageCompletion: map['monitoringPercentageCompletion'] == null ? null : (map['monitoringPercentageCompletion'] as int).input(),
-      primaryFabricLocation: map['primaryFabricLocation'] == null ? null : (map['primaryFabricLocation'] as String).input(),
-      protectedManagedDisks: map['protectedManagedDisks'] == null ? null : (pulumi.Input.decodeList<A2AProtectedManagedDiskDetails>(map['protectedManagedDisks'], (value) => A2AProtectedManagedDiskDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      recoveryFabricLocation: map['recoveryFabricLocation'] == null ? null : (map['recoveryFabricLocation'] as String).input(),
-      rpoInSeconds: map['rpoInSeconds'] == null ? null : (map['rpoInSeconds'] as double).input(),
-      unprotectedDisks: map['unprotectedDisks'] == null ? null : (pulumi.Input.decodeList<A2AUnprotectedDiskDetails>(map['unprotectedDisks'], (value) => A2AUnprotectedDiskDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastRpoCalculatedTime: map['lastRpoCalculatedTime'] == null ? null : (map['lastRpoCalculatedTime']! as String).input(),
+      managementId: map['managementId'] == null ? null : (map['managementId']! as String).input(),
+      monitoringJobType: map['monitoringJobType'] == null ? null : (map['monitoringJobType']! as String).input(),
+      monitoringPercentageCompletion: map['monitoringPercentageCompletion'] == null ? null : (map['monitoringPercentageCompletion']! as int).input(),
+      primaryFabricLocation: map['primaryFabricLocation'] == null ? null : (map['primaryFabricLocation']! as String).input(),
+      protectedManagedDisks: map['protectedManagedDisks'] == null ? null : (pulumi.Input.decodeList<A2AProtectedManagedDiskDetails>(map['protectedManagedDisks']!, (value) => A2AProtectedManagedDiskDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      recoveryFabricLocation: map['recoveryFabricLocation'] == null ? null : (map['recoveryFabricLocation']! as String).input(),
+      rpoInSeconds: map['rpoInSeconds'] == null ? null : (map['rpoInSeconds']! as double).input(),
+      unprotectedDisks: map['unprotectedDisks'] == null ? null : (pulumi.Input.decodeList<A2AUnprotectedDiskDetails>(map['unprotectedDisks']!, (value) => A2AUnprotectedDiskDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

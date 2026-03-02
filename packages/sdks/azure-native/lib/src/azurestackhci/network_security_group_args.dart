@@ -45,11 +45,11 @@ class NetworkSecurityGroupArgs {
 
   factory NetworkSecurityGroupArgs.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityGroupArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      networkSecurityGroupName: map['networkSecurityGroupName'] == null ? null : (map['networkSecurityGroupName'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      networkSecurityGroupName: map['networkSecurityGroupName'] == null ? null : (map['networkSecurityGroupName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

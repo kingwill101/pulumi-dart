@@ -30,7 +30,7 @@ class EventConfigurationsArgs {
   factory EventConfigurationsArgs.fromMap(Map<String, dynamic> map) {
     return EventConfigurationsArgs(
       eventConfigurations: ((map['eventConfigurations'] as Map).cast<String, bool>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

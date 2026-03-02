@@ -25,8 +25,8 @@ class GlobalReplicationGroupGlobalNodeGroup {
 
   factory GlobalReplicationGroupGlobalNodeGroup.fromMap(Map<String, dynamic> map) {
     return GlobalReplicationGroupGlobalNodeGroup(
-      globalNodeGroupId: map['globalNodeGroupId'] == null ? null : (map['globalNodeGroupId'] as String).input(),
-      slots: map['slots'] == null ? null : (map['slots'] as String).input(),
+      globalNodeGroupId: map['globalNodeGroupId'] == null ? null : ((map['globalNodeGroupId'] as String).input()).input(),
+      slots: map['slots'] == null ? null : ((map['slots'] as String).input()).input(),
     );
   }
 }

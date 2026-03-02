@@ -42,8 +42,8 @@ class AutomationRuleTimedPromoteReleaseRule {
 
   factory AutomationRuleTimedPromoteReleaseRule.fromMap(Map<String, dynamic> map) {
     return AutomationRuleTimedPromoteReleaseRule(
-      destinationPhase: map['destinationPhase'] == null ? null : (map['destinationPhase'] as String).input(),
-      destinationTargetId: map['destinationTargetId'] == null ? null : (map['destinationTargetId'] as String).input(),
+      destinationPhase: map['destinationPhase'] == null ? null : (map['destinationPhase']! as String).input(),
+      destinationTargetId: map['destinationTargetId'] == null ? null : (map['destinationTargetId']! as String).input(),
       id: (map['id'] as String).input(),
       schedule: (map['schedule'] as String).input(),
       timeZone: (map['timeZone'] as String).input(),

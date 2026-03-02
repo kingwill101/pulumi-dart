@@ -83,18 +83,18 @@ class MonitorState {
 
   factory MonitorState.fromMap(Map<String, dynamic> map) {
     return MonitorState(
-      accountCreationSource: map['accountCreationSource'] == null ? null : (map['accountCreationSource'] as String).input(),
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      identity: map['identity'] == null ? null : (MonitorIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      ingestionKey: map['ingestionKey'] == null ? null : (map['ingestionKey'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      orgCreationSource: map['orgCreationSource'] == null ? null : (map['orgCreationSource'] as String).input(),
-      organizationId: map['organizationId'] == null ? null : (map['organizationId'] as String).input(),
-      plan: map['plan'] == null ? null : (MonitorPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      user: map['user'] == null ? null : (MonitorUser.fromMap((map['user'] as Map).cast<String, dynamic>())).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      accountCreationSource: map['accountCreationSource'] == null ? null : (map['accountCreationSource']! as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      identity: map['identity'] == null ? null : (MonitorIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      ingestionKey: map['ingestionKey'] == null ? null : (map['ingestionKey']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      orgCreationSource: map['orgCreationSource'] == null ? null : (map['orgCreationSource']! as String).input(),
+      organizationId: map['organizationId'] == null ? null : (map['organizationId']! as String).input(),
+      plan: map['plan'] == null ? null : (MonitorPlan.fromMap((map['plan']! as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      user: map['user'] == null ? null : (MonitorUser.fromMap((map['user']! as Map).cast<String, dynamic>())).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
     );
   }
 }

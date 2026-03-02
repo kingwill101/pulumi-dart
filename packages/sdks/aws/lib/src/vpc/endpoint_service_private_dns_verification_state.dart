@@ -38,10 +38,10 @@ class EndpointServicePrivateDnsVerificationState {
 
   factory EndpointServicePrivateDnsVerificationState.fromMap(Map<String, dynamic> map) {
     return EndpointServicePrivateDnsVerificationState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (EndpointServicePrivateDnsVerificationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      waitForVerification: map['waitForVerification'] == null ? null : (map['waitForVerification'] as bool).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serviceId: map['serviceId'] == null ? null : ((map['serviceId'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((EndpointServicePrivateDnsVerificationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      waitForVerification: map['waitForVerification'] == null ? null : ((map['waitForVerification'] as bool).input()).input(),
     );
   }
 }

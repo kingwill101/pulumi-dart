@@ -49,10 +49,10 @@ class GetExportArgs {
 
   factory GetExportArgs.fromMap(Map<String, dynamic> map) {
     return GetExportArgs(
-      accepts: map['accepts'] == null ? null : (map['accepts'] as String).input(),
+      accepts: map['accepts'] == null ? null : ((map['accepts'] as String).input()).input(),
       exportType: (map['exportType'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      parameters: map['parameters'] == null ? null : (((map['parameters'] as Map).cast<String, String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       restApiId: (map['restApiId'] as String).input(),
       stageName: (map['stageName'] as String).input(),
     );

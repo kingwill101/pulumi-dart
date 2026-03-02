@@ -69,14 +69,14 @@ class CertificateMapEntryArgs {
     return CertificateMapEntryArgs(
       certificateMapEntryId: (map['certificateMapEntryId'] as String).input(),
       certificateMapId: (map['certificateMapId'] as String).input(),
-      certificates: map['certificates'] == null ? null : ((map['certificates'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      matcher: map['matcher'] == null ? null : (CertificateMapEntryMatcher.fromValue(map['matcher'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      certificates: map['certificates'] == null ? null : ((map['certificates']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      matcher: map['matcher'] == null ? null : (CertificateMapEntryMatcher.fromValue(map['matcher']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

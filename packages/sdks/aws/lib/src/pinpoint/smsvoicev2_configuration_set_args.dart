@@ -44,11 +44,11 @@ class Smsvoicev2ConfigurationSetArgs {
 
   factory Smsvoicev2ConfigurationSetArgs.fromMap(Map<String, dynamic> map) {
     return Smsvoicev2ConfigurationSetArgs(
-      defaultMessageType: map['defaultMessageType'] == null ? null : (map['defaultMessageType'] as String).input(),
-      defaultSenderId: map['defaultSenderId'] == null ? null : (map['defaultSenderId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      defaultMessageType: map['defaultMessageType'] == null ? null : ((map['defaultMessageType'] as String).input()).input(),
+      defaultSenderId: map['defaultSenderId'] == null ? null : ((map['defaultSenderId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

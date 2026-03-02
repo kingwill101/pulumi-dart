@@ -25,8 +25,8 @@ class ApplicationWebImplicitGrant {
 
   factory ApplicationWebImplicitGrant.fromMap(Map<String, dynamic> map) {
     return ApplicationWebImplicitGrant(
-      accessTokenIssuanceEnabled: map['accessTokenIssuanceEnabled'] == null ? null : (map['accessTokenIssuanceEnabled'] as bool).input(),
-      idTokenIssuanceEnabled: map['idTokenIssuanceEnabled'] == null ? null : (map['idTokenIssuanceEnabled'] as bool).input(),
+      accessTokenIssuanceEnabled: map['accessTokenIssuanceEnabled'] == null ? null : (map['accessTokenIssuanceEnabled']! as bool).input(),
+      idTokenIssuanceEnabled: map['idTokenIssuanceEnabled'] == null ? null : (map['idTokenIssuanceEnabled']! as bool).input(),
     );
   }
 }

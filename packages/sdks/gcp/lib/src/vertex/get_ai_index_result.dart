@@ -107,7 +107,7 @@ class GetAiIndexResult {
       metadataSchemaUri: map['metadataSchemaUri'] as String,
       metadatas: pulumi.Input.decodeList<GetAiIndexMetadata>(map['metadatas'], (value) => GetAiIndexMetadata.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       region: map['region'] as String,
       updateTime: map['updateTime'] as String,

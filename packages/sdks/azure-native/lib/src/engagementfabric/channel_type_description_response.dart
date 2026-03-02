@@ -31,9 +31,9 @@ class ChannelTypeDescriptionResponse {
 
   factory ChannelTypeDescriptionResponse.fromMap(Map<String, dynamic> map) {
     return ChannelTypeDescriptionResponse(
-      channelDescription: map['channelDescription'] == null ? null : (map['channelDescription'] as String).input(),
-      channelFunctions: map['channelFunctions'] == null ? null : ((map['channelFunctions'] as List).cast<String>()).input(),
-      channelType: map['channelType'] == null ? null : (map['channelType'] as String).input(),
+      channelDescription: map['channelDescription'] == null ? null : (map['channelDescription']! as String).input(),
+      channelFunctions: map['channelFunctions'] == null ? null : ((map['channelFunctions']! as List).cast<String>()).input(),
+      channelType: map['channelType'] == null ? null : (map['channelType']! as String).input(),
     );
   }
 }

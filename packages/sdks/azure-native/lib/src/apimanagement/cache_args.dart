@@ -54,11 +54,11 @@ class CacheArgs {
 
   factory CacheArgs.fromMap(Map<String, dynamic> map) {
     return CacheArgs(
-      cacheId: map['cacheId'] == null ? null : (map['cacheId'] as String).input(),
+      cacheId: map['cacheId'] == null ? null : (map['cacheId']! as String).input(),
       connectionString: (map['connectionString'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
       serviceName: (map['serviceName'] as String).input(),
       useFromLocation: (map['useFromLocation'] as String).input(),
     );

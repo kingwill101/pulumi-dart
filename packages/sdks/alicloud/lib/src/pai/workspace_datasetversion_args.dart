@@ -91,16 +91,16 @@ class WorkspaceDatasetversionArgs {
 
   factory WorkspaceDatasetversionArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceDatasetversionArgs(
-      dataCount: map['dataCount'] == null ? null : (map['dataCount'] as int).input(),
-      dataSize: map['dataSize'] == null ? null : (map['dataSize'] as int).input(),
+      dataCount: map['dataCount'] == null ? null : (map['dataCount']! as int).input(),
+      dataSize: map['dataSize'] == null ? null : (map['dataSize']! as int).input(),
       dataSourceType: (map['dataSourceType'] as String).input(),
       datasetId: (map['datasetId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<WorkspaceDatasetversionLabel>(map['labels'], (value) => WorkspaceDatasetversionLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      options: map['options'] == null ? null : (map['options'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<WorkspaceDatasetversionLabel>(map['labels']!, (value) => WorkspaceDatasetversionLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      options: map['options'] == null ? null : (map['options']! as String).input(),
       property: (map['property'] as String).input(),
-      sourceId: map['sourceId'] == null ? null : (map['sourceId'] as String).input(),
-      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
+      sourceId: map['sourceId'] == null ? null : (map['sourceId']! as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType']! as String).input(),
       uri: (map['uri'] as String).input(),
     );
   }

@@ -65,14 +65,14 @@ class DeploymentSpec {
 
   factory DeploymentSpec.fromMap(Map<String, dynamic> map) {
     return DeploymentSpec(
-      minReadySeconds: map['minReadySeconds'] == null ? null : (map['minReadySeconds'] as int).input(),
-      paused: map['paused'] == null ? null : (map['paused'] as bool).input(),
-      progressDeadlineSeconds: map['progressDeadlineSeconds'] == null ? null : (map['progressDeadlineSeconds'] as int).input(),
-      replicas: map['replicas'] == null ? null : (map['replicas'] as int).input(),
-      revisionHistoryLimit: map['revisionHistoryLimit'] == null ? null : (map['revisionHistoryLimit'] as int).input(),
-      rollbackTo: map['rollbackTo'] == null ? null : (RollbackConfig.fromMap((map['rollbackTo'] as Map).cast<String, dynamic>())).input(),
-      selector: map['selector'] == null ? null : (LabelSelector.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
-      strategy: map['strategy'] == null ? null : (DeploymentStrategy.fromMap((map['strategy'] as Map).cast<String, dynamic>())).input(),
+      minReadySeconds: map['minReadySeconds'] == null ? null : (map['minReadySeconds']! as int).input(),
+      paused: map['paused'] == null ? null : (map['paused']! as bool).input(),
+      progressDeadlineSeconds: map['progressDeadlineSeconds'] == null ? null : (map['progressDeadlineSeconds']! as int).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas']! as int).input(),
+      revisionHistoryLimit: map['revisionHistoryLimit'] == null ? null : (map['revisionHistoryLimit']! as int).input(),
+      rollbackTo: map['rollbackTo'] == null ? null : (RollbackConfig.fromMap((map['rollbackTo']! as Map).cast<String, dynamic>())).input(),
+      selector: map['selector'] == null ? null : (LabelSelector.fromMap((map['selector']! as Map).cast<String, dynamic>())).input(),
+      strategy: map['strategy'] == null ? null : (DeploymentStrategy.fromMap((map['strategy']! as Map).cast<String, dynamic>())).input(),
       template: (PodTemplateSpec.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
     );
   }

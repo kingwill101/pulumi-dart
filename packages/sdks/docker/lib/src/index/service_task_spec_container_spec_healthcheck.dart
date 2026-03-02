@@ -40,11 +40,11 @@ class ServiceTaskSpecContainerSpecHealthcheck {
 
   factory ServiceTaskSpecContainerSpecHealthcheck.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecContainerSpecHealthcheck(
-      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
-      retries: map['retries'] == null ? null : (map['retries'] as int).input(),
-      startPeriod: map['startPeriod'] == null ? null : (map['startPeriod'] as String).input(),
-      tests: map['tests'] == null ? null : ((map['tests'] as List).cast<String>()).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as String).input(),
+      retries: map['retries'] == null ? null : (map['retries']! as int).input(),
+      startPeriod: map['startPeriod'] == null ? null : (map['startPeriod']! as String).input(),
+      tests: map['tests'] == null ? null : ((map['tests']! as List).cast<String>()).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

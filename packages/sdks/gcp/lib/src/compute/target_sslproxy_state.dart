@@ -87,17 +87,17 @@ class TargetSSLProxyState {
 
   factory TargetSSLProxyState.fromMap(Map<String, dynamic> map) {
     return TargetSSLProxyState(
-      backendService: map['backendService'] == null ? null : (map['backendService'] as String).input(),
-      certificateMap: map['certificateMap'] == null ? null : (map['certificateMap'] as String).input(),
-      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      proxyHeader: map['proxyHeader'] == null ? null : (map['proxyHeader'] as String).input(),
-      proxyId: map['proxyId'] == null ? null : (map['proxyId'] as int).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      sslCertificates: map['sslCertificates'] == null ? null : ((map['sslCertificates'] as List).cast<String>()).input(),
-      sslPolicy: map['sslPolicy'] == null ? null : (map['sslPolicy'] as String).input(),
+      backendService: map['backendService'] == null ? null : (map['backendService']! as String).input(),
+      certificateMap: map['certificateMap'] == null ? null : (map['certificateMap']! as String).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      proxyHeader: map['proxyHeader'] == null ? null : (map['proxyHeader']! as String).input(),
+      proxyId: map['proxyId'] == null ? null : (map['proxyId']! as int).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      sslCertificates: map['sslCertificates'] == null ? null : ((map['sslCertificates']! as List).cast<String>()).input(),
+      sslPolicy: map['sslPolicy'] == null ? null : (map['sslPolicy']! as String).input(),
     );
   }
 }

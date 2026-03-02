@@ -48,12 +48,12 @@ class DefaultRolloutPropertiesStatusResponse {
 
   factory DefaultRolloutPropertiesStatusResponse.fromMap(Map<String, dynamic> map) {
     return DefaultRolloutPropertiesStatusResponse(
-      completedRegions: map['completedRegions'] == null ? null : ((map['completedRegions'] as List).cast<String>()).input(),
-      failedOrSkippedRegions: map['failedOrSkippedRegions'] == null ? null : (pulumi.Input.decodeMapValues<ExtendedErrorInfoResponse>(map['failedOrSkippedRegions'], (value) => ExtendedErrorInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      manifestCheckinStatus: map['manifestCheckinStatus'] == null ? null : (DefaultRolloutStatusManifestCheckinStatusResponse.fromMap((map['manifestCheckinStatus'] as Map).cast<String, dynamic>())).input(),
-      nextTrafficRegion: map['nextTrafficRegion'] == null ? null : (map['nextTrafficRegion'] as String).input(),
-      nextTrafficRegionScheduledTime: map['nextTrafficRegionScheduledTime'] == null ? null : (map['nextTrafficRegionScheduledTime'] as String).input(),
-      subscriptionReregistrationResult: map['subscriptionReregistrationResult'] == null ? null : (map['subscriptionReregistrationResult'] as String).input(),
+      completedRegions: map['completedRegions'] == null ? null : ((map['completedRegions']! as List).cast<String>()).input(),
+      failedOrSkippedRegions: map['failedOrSkippedRegions'] == null ? null : (pulumi.Input.decodeMapValues<ExtendedErrorInfoResponse>(map['failedOrSkippedRegions']!, (value) => ExtendedErrorInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      manifestCheckinStatus: map['manifestCheckinStatus'] == null ? null : (DefaultRolloutStatusManifestCheckinStatusResponse.fromMap((map['manifestCheckinStatus']! as Map).cast<String, dynamic>())).input(),
+      nextTrafficRegion: map['nextTrafficRegion'] == null ? null : (map['nextTrafficRegion']! as String).input(),
+      nextTrafficRegionScheduledTime: map['nextTrafficRegionScheduledTime'] == null ? null : (map['nextTrafficRegionScheduledTime']! as String).input(),
+      subscriptionReregistrationResult: map['subscriptionReregistrationResult'] == null ? null : (map['subscriptionReregistrationResult']! as String).input(),
     );
   }
 }

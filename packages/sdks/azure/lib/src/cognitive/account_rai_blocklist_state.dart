@@ -31,9 +31,9 @@ class AccountRaiBlocklistState {
 
   factory AccountRaiBlocklistState.fromMap(Map<String, dynamic> map) {
     return AccountRaiBlocklistState(
-      cognitiveAccountId: map['cognitiveAccountId'] == null ? null : (map['cognitiveAccountId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      cognitiveAccountId: map['cognitiveAccountId'] == null ? null : (map['cognitiveAccountId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

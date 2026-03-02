@@ -95,21 +95,21 @@ class VirtualHardDiskArgs {
 
   factory VirtualHardDiskArgs.fromMap(Map<String, dynamic> map) {
     return VirtualHardDiskArgs(
-      blockSizeBytes: map['blockSizeBytes'] == null ? null : (map['blockSizeBytes'] as int).input(),
-      containerId: map['containerId'] == null ? null : (map['containerId'] as String).input(),
-      createFromLocal: map['createFromLocal'] == null ? null : (map['createFromLocal'] as bool).input(),
-      diskFileFormat: map['diskFileFormat'] == null ? null : (map['diskFileFormat'] as String).input(),
-      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as double).input(),
-      downloadUrl: map['downloadUrl'] == null ? null : (map['downloadUrl'] as String).input(),
-      dynamic: map['dynamic'] == null ? null : (map['dynamic'] as bool).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      hyperVGeneration: map['hyperVGeneration'] == null ? null : (map['hyperVGeneration'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      logicalSectorBytes: map['logicalSectorBytes'] == null ? null : (map['logicalSectorBytes'] as int).input(),
-      physicalSectorBytes: map['physicalSectorBytes'] == null ? null : (map['physicalSectorBytes'] as int).input(),
+      blockSizeBytes: map['blockSizeBytes'] == null ? null : (map['blockSizeBytes']! as int).input(),
+      containerId: map['containerId'] == null ? null : (map['containerId']! as String).input(),
+      createFromLocal: map['createFromLocal'] == null ? null : (map['createFromLocal']! as bool).input(),
+      diskFileFormat: map['diskFileFormat'] == null ? null : (map['diskFileFormat']! as String).input(),
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB']! as double).input(),
+      downloadUrl: map['downloadUrl'] == null ? null : (map['downloadUrl']! as String).input(),
+      dynamic: map['dynamic'] == null ? null : (map['dynamic']! as bool).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      hyperVGeneration: map['hyperVGeneration'] == null ? null : (map['hyperVGeneration']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      logicalSectorBytes: map['logicalSectorBytes'] == null ? null : (map['logicalSectorBytes']! as int).input(),
+      physicalSectorBytes: map['physicalSectorBytes'] == null ? null : (map['physicalSectorBytes']! as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      virtualHardDiskName: map['virtualHardDiskName'] == null ? null : (map['virtualHardDiskName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      virtualHardDiskName: map['virtualHardDiskName'] == null ? null : (map['virtualHardDiskName']! as String).input(),
     );
   }
 }

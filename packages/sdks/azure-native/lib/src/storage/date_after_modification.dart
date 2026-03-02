@@ -36,10 +36,10 @@ class DateAfterModification {
 
   factory DateAfterModification.fromMap(Map<String, dynamic> map) {
     return DateAfterModification(
-      daysAfterCreationGreaterThan: map['daysAfterCreationGreaterThan'] == null ? null : (map['daysAfterCreationGreaterThan'] as double).input(),
-      daysAfterLastAccessTimeGreaterThan: map['daysAfterLastAccessTimeGreaterThan'] == null ? null : (map['daysAfterLastAccessTimeGreaterThan'] as double).input(),
-      daysAfterLastTierChangeGreaterThan: map['daysAfterLastTierChangeGreaterThan'] == null ? null : (map['daysAfterLastTierChangeGreaterThan'] as double).input(),
-      daysAfterModificationGreaterThan: map['daysAfterModificationGreaterThan'] == null ? null : (map['daysAfterModificationGreaterThan'] as double).input(),
+      daysAfterCreationGreaterThan: map['daysAfterCreationGreaterThan'] == null ? null : (map['daysAfterCreationGreaterThan']! as double).input(),
+      daysAfterLastAccessTimeGreaterThan: map['daysAfterLastAccessTimeGreaterThan'] == null ? null : (map['daysAfterLastAccessTimeGreaterThan']! as double).input(),
+      daysAfterLastTierChangeGreaterThan: map['daysAfterLastTierChangeGreaterThan'] == null ? null : (map['daysAfterLastTierChangeGreaterThan']! as double).input(),
+      daysAfterModificationGreaterThan: map['daysAfterModificationGreaterThan'] == null ? null : (map['daysAfterModificationGreaterThan']! as double).input(),
     );
   }
 }

@@ -59,13 +59,13 @@ class InternetGatewayArgs {
 
   factory InternetGatewayArgs.fromMap(Map<String, dynamic> map) {
     return InternetGatewayArgs(
-      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
-      internetGatewayName: map['internetGatewayName'] == null ? null : (map['internetGatewayName'] as String).input(),
-      internetGatewayRuleId: map['internetGatewayRuleId'] == null ? null : (map['internetGatewayRuleId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
+      internetGatewayName: map['internetGatewayName'] == null ? null : (map['internetGatewayName']! as String).input(),
+      internetGatewayRuleId: map['internetGatewayRuleId'] == null ? null : (map['internetGatewayRuleId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       networkFabricControllerId: (map['networkFabricControllerId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       type: (map['type'] as String).input(),
     );
   }

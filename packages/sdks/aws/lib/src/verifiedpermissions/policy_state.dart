@@ -42,11 +42,11 @@ class PolicyState {
 
   factory PolicyState.fromMap(Map<String, dynamic> map) {
     return PolicyState(
-      createdDate: map['createdDate'] == null ? null : (map['createdDate'] as String).input(),
-      definition: map['definition'] == null ? null : (PolicyDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
-      policyStoreId: map['policyStoreId'] == null ? null : (map['policyStoreId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      createdDate: map['createdDate'] == null ? null : ((map['createdDate'] as String).input()).input(),
+      definition: map['definition'] == null ? null : ((PolicyDefinition.fromMap((map['definition']! as Map).cast<String, dynamic>())).input()).input(),
+      policyId: map['policyId'] == null ? null : ((map['policyId'] as String).input()).input(),
+      policyStoreId: map['policyStoreId'] == null ? null : ((map['policyStoreId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

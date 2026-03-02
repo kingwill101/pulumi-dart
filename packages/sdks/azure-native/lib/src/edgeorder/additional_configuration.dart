@@ -34,7 +34,7 @@ class AdditionalConfiguration {
   factory AdditionalConfiguration.fromMap(Map<String, dynamic> map) {
     return AdditionalConfiguration(
       hierarchyInformation: (HierarchyInformation.fromMap((map['hierarchyInformation'] as Map).cast<String, dynamic>())).input(),
-      provisioningDetails: map['provisioningDetails'] == null ? null : (pulumi.Input.decodeList<ProvisioningDetails>(map['provisioningDetails'], (value) => ProvisioningDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningDetails: map['provisioningDetails'] == null ? null : (pulumi.Input.decodeList<ProvisioningDetails>(map['provisioningDetails']!, (value) => ProvisioningDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
       quantity: (map['quantity'] as int).input(),
     );
   }

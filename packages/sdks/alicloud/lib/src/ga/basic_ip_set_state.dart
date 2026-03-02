@@ -41,11 +41,11 @@ class BasicIpSetState {
 
   factory BasicIpSetState.fromMap(Map<String, dynamic> map) {
     return BasicIpSetState(
-      accelerateRegionId: map['accelerateRegionId'] == null ? null : (map['accelerateRegionId'] as String).input(),
-      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
-      ispType: map['ispType'] == null ? null : (map['ispType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      accelerateRegionId: map['accelerateRegionId'] == null ? null : (map['accelerateRegionId']! as String).input(),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId']! as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
+      ispType: map['ispType'] == null ? null : (map['ispType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

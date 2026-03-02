@@ -59,15 +59,15 @@ class GetAscriptsResult {
 
   factory GetAscriptsResult.fromMap(Map<String, dynamic> map) {
     return GetAscriptsResult(
-      ascriptName: map['ascriptName'] == null ? null : map['ascriptName'] as String,
+      ascriptName: map['ascriptName'] == null ? null : map['ascriptName']! as String,
       ascripts: pulumi.Input.decodeList<GetAscriptsAscript>(map['ascripts'], (value) => GetAscriptsAscript.fromMap((value as Map).cast<String, dynamic>())),
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      listenerId: map['listenerId'] == null ? null : map['listenerId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      listenerId: map['listenerId'] == null ? null : map['listenerId']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

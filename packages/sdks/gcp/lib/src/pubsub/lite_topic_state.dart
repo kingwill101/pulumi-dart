@@ -58,13 +58,13 @@ class LiteTopicState {
 
   factory LiteTopicState.fromMap(Map<String, dynamic> map) {
     return LiteTopicState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      partitionConfig: map['partitionConfig'] == null ? null : (LiteTopicPartitionConfig.fromMap((map['partitionConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      reservationConfig: map['reservationConfig'] == null ? null : (LiteTopicReservationConfig.fromMap((map['reservationConfig'] as Map).cast<String, dynamic>())).input(),
-      retentionConfig: map['retentionConfig'] == null ? null : (LiteTopicRetentionConfig.fromMap((map['retentionConfig'] as Map).cast<String, dynamic>())).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      partitionConfig: map['partitionConfig'] == null ? null : (LiteTopicPartitionConfig.fromMap((map['partitionConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      reservationConfig: map['reservationConfig'] == null ? null : (LiteTopicReservationConfig.fromMap((map['reservationConfig']! as Map).cast<String, dynamic>())).input(),
+      retentionConfig: map['retentionConfig'] == null ? null : (LiteTopicRetentionConfig.fromMap((map['retentionConfig']! as Map).cast<String, dynamic>())).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

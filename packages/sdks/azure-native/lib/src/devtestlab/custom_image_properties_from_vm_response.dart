@@ -33,9 +33,9 @@ class CustomImagePropertiesFromVmResponse {
 
   factory CustomImagePropertiesFromVmResponse.fromMap(Map<String, dynamic> map) {
     return CustomImagePropertiesFromVmResponse(
-      linuxOsInfo: map['linuxOsInfo'] == null ? null : (LinuxOsInfoResponse.fromMap((map['linuxOsInfo'] as Map).cast<String, dynamic>())).input(),
-      sourceVmId: map['sourceVmId'] == null ? null : (map['sourceVmId'] as String).input(),
-      windowsOsInfo: map['windowsOsInfo'] == null ? null : (WindowsOsInfoResponse.fromMap((map['windowsOsInfo'] as Map).cast<String, dynamic>())).input(),
+      linuxOsInfo: map['linuxOsInfo'] == null ? null : (LinuxOsInfoResponse.fromMap((map['linuxOsInfo']! as Map).cast<String, dynamic>())).input(),
+      sourceVmId: map['sourceVmId'] == null ? null : (map['sourceVmId']! as String).input(),
+      windowsOsInfo: map['windowsOsInfo'] == null ? null : (WindowsOsInfoResponse.fromMap((map['windowsOsInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

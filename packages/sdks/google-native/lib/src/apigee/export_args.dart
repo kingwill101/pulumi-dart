@@ -58,14 +58,14 @@ class ExportArgs {
 
   factory ExportArgs.fromMap(Map<String, dynamic> map) {
     return ExportArgs(
-      csvDelimiter: map['csvDelimiter'] == null ? null : (map['csvDelimiter'] as String).input(),
+      csvDelimiter: map['csvDelimiter'] == null ? null : (map['csvDelimiter']! as String).input(),
       datastoreName: (map['datastoreName'] as String).input(),
       dateRange: (GoogleCloudApigeeV1DateRange.fromMap((map['dateRange'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       environmentId: (map['environmentId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
-      outputFormat: map['outputFormat'] == null ? null : (map['outputFormat'] as String).input(),
+      outputFormat: map['outputFormat'] == null ? null : (map['outputFormat']! as String).input(),
     );
   }
 }

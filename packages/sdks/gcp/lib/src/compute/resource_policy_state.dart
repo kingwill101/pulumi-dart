@@ -83,16 +83,16 @@ class ResourcePolicyState {
 
   factory ResourcePolicyState.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      diskConsistencyGroupPolicy: map['diskConsistencyGroupPolicy'] == null ? null : (ResourcePolicyDiskConsistencyGroupPolicy.fromMap((map['diskConsistencyGroupPolicy'] as Map).cast<String, dynamic>())).input(),
-      groupPlacementPolicy: map['groupPlacementPolicy'] == null ? null : (ResourcePolicyGroupPlacementPolicy.fromMap((map['groupPlacementPolicy'] as Map).cast<String, dynamic>())).input(),
-      instanceSchedulePolicy: map['instanceSchedulePolicy'] == null ? null : (ResourcePolicyInstanceSchedulePolicy.fromMap((map['instanceSchedulePolicy'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      snapshotSchedulePolicy: map['snapshotSchedulePolicy'] == null ? null : (ResourcePolicySnapshotSchedulePolicy.fromMap((map['snapshotSchedulePolicy'] as Map).cast<String, dynamic>())).input(),
-      workloadPolicy: map['workloadPolicy'] == null ? null : (ResourcePolicyWorkloadPolicy.fromMap((map['workloadPolicy'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      diskConsistencyGroupPolicy: map['diskConsistencyGroupPolicy'] == null ? null : (ResourcePolicyDiskConsistencyGroupPolicy.fromMap((map['diskConsistencyGroupPolicy']! as Map).cast<String, dynamic>())).input(),
+      groupPlacementPolicy: map['groupPlacementPolicy'] == null ? null : (ResourcePolicyGroupPlacementPolicy.fromMap((map['groupPlacementPolicy']! as Map).cast<String, dynamic>())).input(),
+      instanceSchedulePolicy: map['instanceSchedulePolicy'] == null ? null : (ResourcePolicyInstanceSchedulePolicy.fromMap((map['instanceSchedulePolicy']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      snapshotSchedulePolicy: map['snapshotSchedulePolicy'] == null ? null : (ResourcePolicySnapshotSchedulePolicy.fromMap((map['snapshotSchedulePolicy']! as Map).cast<String, dynamic>())).input(),
+      workloadPolicy: map['workloadPolicy'] == null ? null : (ResourcePolicyWorkloadPolicy.fromMap((map['workloadPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

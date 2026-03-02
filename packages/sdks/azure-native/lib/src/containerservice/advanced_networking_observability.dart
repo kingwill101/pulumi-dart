@@ -21,7 +21,7 @@ class AdvancedNetworkingObservability {
 
   factory AdvancedNetworkingObservability.fromMap(Map<String, dynamic> map) {
     return AdvancedNetworkingObservability(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

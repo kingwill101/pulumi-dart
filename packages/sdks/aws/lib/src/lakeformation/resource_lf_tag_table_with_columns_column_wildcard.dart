@@ -20,7 +20,7 @@ class ResourceLfTagTableWithColumnsColumnWildcard {
 
   factory ResourceLfTagTableWithColumnsColumnWildcard.fromMap(Map<String, dynamic> map) {
     return ResourceLfTagTableWithColumnsColumnWildcard(
-      excludedColumnNames: map['excludedColumnNames'] == null ? null : ((map['excludedColumnNames'] as List).cast<String>()).input(),
+      excludedColumnNames: map['excludedColumnNames'] == null ? null : (((map['excludedColumnNames'] as List).cast<String>()).input()).input(),
     );
   }
 }

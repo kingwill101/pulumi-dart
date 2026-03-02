@@ -27,8 +27,8 @@ class TableTtl {
 
   factory TableTtl.fromMap(Map<String, dynamic> map) {
     return TableTtl(
-      attributeName: map['attributeName'] == null ? null : (map['attributeName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      attributeName: map['attributeName'] == null ? null : ((map['attributeName'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
     );
   }
 }

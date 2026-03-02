@@ -21,7 +21,7 @@ class GoogleCloudDatalabelingV1beta1SentimentConfig {
 
   factory GoogleCloudDatalabelingV1beta1SentimentConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1SentimentConfig(
-      enableLabelSentimentSelection: map['enableLabelSentimentSelection'] == null ? null : (map['enableLabelSentimentSelection'] as bool).input(),
+      enableLabelSentimentSelection: map['enableLabelSentimentSelection'] == null ? null : (map['enableLabelSentimentSelection']! as bool).input(),
     );
   }
 }

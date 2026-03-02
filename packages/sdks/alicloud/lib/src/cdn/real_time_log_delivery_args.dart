@@ -54,7 +54,7 @@ class RealTimeLogDeliveryArgs {
       logstore: (map['logstore'] as String).input(),
       project: (map['project'] as String).input(),
       slsRegion: (map['slsRegion'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

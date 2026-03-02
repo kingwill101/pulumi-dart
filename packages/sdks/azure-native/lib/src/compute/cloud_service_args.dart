@@ -50,12 +50,12 @@ class CloudServiceArgs {
 
   factory CloudServiceArgs.fromMap(Map<String, dynamic> map) {
     return CloudServiceArgs(
-      cloudServiceName: map['cloudServiceName'] == null ? null : (map['cloudServiceName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (CloudServiceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      cloudServiceName: map['cloudServiceName'] == null ? null : (map['cloudServiceName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (CloudServiceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

@@ -23,8 +23,8 @@ class EnvironmentLastUpdatedError {
 
   factory EnvironmentLastUpdatedError.fromMap(Map<String, dynamic> map) {
     return EnvironmentLastUpdatedError(
-      errorCode: map['errorCode'] == null ? null : (map['errorCode'] as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
+      errorCode: map['errorCode'] == null ? null : ((map['errorCode'] as String).input()).input(),
+      errorMessage: map['errorMessage'] == null ? null : ((map['errorMessage'] as String).input()).input(),
     );
   }
 }

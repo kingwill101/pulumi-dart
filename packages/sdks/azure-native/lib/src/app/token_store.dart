@@ -34,9 +34,9 @@ class TokenStore {
 
   factory TokenStore.fromMap(Map<String, dynamic> map) {
     return TokenStore(
-      azureBlobStorage: map['azureBlobStorage'] == null ? null : (BlobStorageTokenStore.fromMap((map['azureBlobStorage'] as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      tokenRefreshExtensionHours: map['tokenRefreshExtensionHours'] == null ? null : (map['tokenRefreshExtensionHours'] as double).input(),
+      azureBlobStorage: map['azureBlobStorage'] == null ? null : (BlobStorageTokenStore.fromMap((map['azureBlobStorage']! as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      tokenRefreshExtensionHours: map['tokenRefreshExtensionHours'] == null ? null : (map['tokenRefreshExtensionHours']! as double).input(),
     );
   }
 }

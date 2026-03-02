@@ -65,15 +65,15 @@ class ReplicationConfigComputeConfig {
 
   factory ReplicationConfigComputeConfig.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigComputeConfig(
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      dnsNameServers: map['dnsNameServers'] == null ? null : (map['dnsNameServers'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      maxCapacityUnits: map['maxCapacityUnits'] == null ? null : (map['maxCapacityUnits'] as int).input(),
-      minCapacityUnits: map['minCapacityUnits'] == null ? null : (map['minCapacityUnits'] as int).input(),
-      multiAz: map['multiAz'] == null ? null : (map['multiAz'] as bool).input(),
-      preferredMaintenanceWindow: map['preferredMaintenanceWindow'] == null ? null : (map['preferredMaintenanceWindow'] as String).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
+      dnsNameServers: map['dnsNameServers'] == null ? null : ((map['dnsNameServers'] as String).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      maxCapacityUnits: map['maxCapacityUnits'] == null ? null : ((map['maxCapacityUnits'] as int).input()).input(),
+      minCapacityUnits: map['minCapacityUnits'] == null ? null : ((map['minCapacityUnits'] as int).input()).input(),
+      multiAz: map['multiAz'] == null ? null : ((map['multiAz'] as bool).input()).input(),
+      preferredMaintenanceWindow: map['preferredMaintenanceWindow'] == null ? null : ((map['preferredMaintenanceWindow'] as String).input()).input(),
       replicationSubnetGroupId: (map['replicationSubnetGroupId'] as String).input(),
-      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : ((map['vpcSecurityGroupIds'] as List).cast<String>()).input(),
+      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : (((map['vpcSecurityGroupIds'] as List).cast<String>()).input()).input(),
     );
   }
 }

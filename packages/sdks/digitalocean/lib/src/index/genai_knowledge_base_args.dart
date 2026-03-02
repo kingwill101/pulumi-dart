@@ -74,17 +74,17 @@ class GenaiKnowledgeBaseArgs {
 
   factory GenaiKnowledgeBaseArgs.fromMap(Map<String, dynamic> map) {
     return GenaiKnowledgeBaseArgs(
-      addedToAgentAt: map['addedToAgentAt'] == null ? null : (map['addedToAgentAt'] as String).input(),
-      databaseId: map['databaseId'] == null ? null : (map['databaseId'] as String).input(),
+      addedToAgentAt: map['addedToAgentAt'] == null ? null : (map['addedToAgentAt']! as String).input(),
+      databaseId: map['databaseId'] == null ? null : (map['databaseId']! as String).input(),
       datasources: (pulumi.Input.decodeList<GradientaiKnowledgeBaseDataSource>(map['datasources'], (value) => GradientaiKnowledgeBaseDataSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
       embeddingModelUuid: (map['embeddingModelUuid'] as String).input(),
-      isPublic: map['isPublic'] == null ? null : (map['isPublic'] as bool).input(),
-      lastIndexingJobs: map['lastIndexingJobs'] == null ? null : (pulumi.Input.decodeList<GenaiKnowledgeBaseLastIndexingJob>(map['lastIndexingJobs'], (value) => GenaiKnowledgeBaseLastIndexingJob.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      isPublic: map['isPublic'] == null ? null : (map['isPublic']! as bool).input(),
+      lastIndexingJobs: map['lastIndexingJobs'] == null ? null : (pulumi.Input.decodeList<GenaiKnowledgeBaseLastIndexingJob>(map['lastIndexingJobs']!, (value) => GenaiKnowledgeBaseLastIndexingJob.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       projectId: (map['projectId'] as String).input(),
       region: (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      vpcUuid: map['vpcUuid'] == null ? null : (map['vpcUuid'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      vpcUuid: map['vpcUuid'] == null ? null : (map['vpcUuid']! as String).input(),
     );
   }
 }

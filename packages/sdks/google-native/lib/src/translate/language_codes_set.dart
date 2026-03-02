@@ -21,7 +21,7 @@ class LanguageCodesSet {
 
   factory LanguageCodesSet.fromMap(Map<String, dynamic> map) {
     return LanguageCodesSet(
-      languageCodes: map['languageCodes'] == null ? null : ((map['languageCodes'] as List).cast<String>()).input(),
+      languageCodes: map['languageCodes'] == null ? null : ((map['languageCodes']! as List).cast<String>()).input(),
     );
   }
 }

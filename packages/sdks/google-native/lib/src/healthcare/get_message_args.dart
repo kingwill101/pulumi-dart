@@ -47,8 +47,8 @@ class GetMessageArgs {
       hl7V2StoreId: (map['hl7V2StoreId'] as String).input(),
       location: (map['location'] as String).input(),
       messageId: (map['messageId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      view: map['view'] == null ? null : (map['view'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      view: map['view'] == null ? null : (map['view']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class EventSourcesConfigEventSource {
 
   factory EventSourcesConfigEventSource.fromMap(Map<String, dynamic> map) {
     return EventSourcesConfigEventSource(
-      amazonCodeGuruProfilers: (pulumi.Input.decodeList<EventSourcesConfigEventSourceAmazonCodeGuruProfiler>(map['amazonCodeGuruProfilers'], (value) => EventSourcesConfigEventSourceAmazonCodeGuruProfiler.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      amazonCodeGuruProfilers: (pulumi.Input.decodeList<EventSourcesConfigEventSourceAmazonCodeGuruProfiler>(map['amazonCodeGuruProfilers']!, (value) => EventSourcesConfigEventSourceAmazonCodeGuruProfiler.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

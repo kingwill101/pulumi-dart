@@ -41,11 +41,11 @@ class EventResponseMessageResponse {
 
   factory EventResponseMessageResponse.fromMap(Map<String, dynamic> map) {
     return EventResponseMessageResponse(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, String>()).input(),
-      reasonPhrase: map['reasonPhrase'] == null ? null : (map['reasonPhrase'] as String).input(),
-      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      headers: map['headers'] == null ? null : ((map['headers']! as Map).cast<String, String>()).input(),
+      reasonPhrase: map['reasonPhrase'] == null ? null : (map['reasonPhrase']! as String).input(),
+      statusCode: map['statusCode'] == null ? null : (map['statusCode']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -65,9 +65,9 @@ class ConnectClusterArgs {
       connectClusterId: (map['connectClusterId'] as String).input(),
       gcpConfig: (ConnectClusterGcpConfig.fromMap((map['gcpConfig'] as Map).cast<String, dynamic>())).input(),
       kafkaCluster: (map['kafkaCluster'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

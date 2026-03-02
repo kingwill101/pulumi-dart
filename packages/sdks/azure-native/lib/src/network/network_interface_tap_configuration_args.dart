@@ -50,12 +50,12 @@ class NetworkInterfaceTapConfigurationArgs {
 
   factory NetworkInterfaceTapConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceTapConfigurationArgs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networkInterfaceName: (map['networkInterfaceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tapConfigurationName: map['tapConfigurationName'] == null ? null : (map['tapConfigurationName'] as String).input(),
-      virtualNetworkTap: map['virtualNetworkTap'] == null ? null : (map['virtualNetworkTap'] as VirtualNetworkTapNetwork).input(),
+      tapConfigurationName: map['tapConfigurationName'] == null ? null : (map['tapConfigurationName']! as String).input(),
+      virtualNetworkTap: map['virtualNetworkTap'] == null ? null : (map['virtualNetworkTap']! as VirtualNetworkTapNetwork).input(),
     );
   }
 }

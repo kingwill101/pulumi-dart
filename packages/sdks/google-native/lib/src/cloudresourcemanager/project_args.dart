@@ -56,13 +56,13 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      lifecycleState: map['lifecycleState'] == null ? null : (ProjectLifecycleState.fromValue(map['lifecycleState'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (ResourceId.fromMap((map['parent'] as Map).cast<String, dynamic>())).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      lifecycleState: map['lifecycleState'] == null ? null : (ProjectLifecycleState.fromValue(map['lifecycleState']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (ResourceId.fromMap((map['parent']! as Map).cast<String, dynamic>())).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber']! as String).input(),
     );
   }
 }

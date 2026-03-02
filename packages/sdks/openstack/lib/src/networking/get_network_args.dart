@@ -78,17 +78,17 @@ class GetNetworkArgs {
 
   factory GetNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      external: map['external'] == null ? null : (map['external'] as bool).input(),
-      matchingSubnetCidr: map['matchingSubnetCidr'] == null ? null : (map['matchingSubnetCidr'] as String).input(),
-      mtu: map['mtu'] == null ? null : (map['mtu'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkId: map['networkId'] == null ? null : (map['networkId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      transparentVlan: map['transparentVlan'] == null ? null : (map['transparentVlan'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      external: map['external'] == null ? null : (map['external']! as bool).input(),
+      matchingSubnetCidr: map['matchingSubnetCidr'] == null ? null : (map['matchingSubnetCidr']! as String).input(),
+      mtu: map['mtu'] == null ? null : (map['mtu']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      transparentVlan: map['transparentVlan'] == null ? null : (map['transparentVlan']! as bool).input(),
     );
   }
 }

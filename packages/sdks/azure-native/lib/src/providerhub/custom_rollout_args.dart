@@ -37,7 +37,7 @@ class CustomRolloutArgs {
     return CustomRolloutArgs(
       properties: (CustomRolloutProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       providerNamespace: (map['providerNamespace'] as String).input(),
-      rolloutName: map['rolloutName'] == null ? null : (map['rolloutName'] as String).input(),
+      rolloutName: map['rolloutName'] == null ? null : (map['rolloutName']! as String).input(),
     );
   }
 }

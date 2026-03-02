@@ -21,7 +21,7 @@ class NetworkTagsContainerV1beta1 {
 
   factory NetworkTagsContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NetworkTagsContainerV1beta1(
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
     );
   }
 }

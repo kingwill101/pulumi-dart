@@ -59,14 +59,14 @@ class NfsShareArgs {
 
   factory NfsShareArgs.fromMap(Map<String, dynamic> map) {
     return NfsShareArgs(
-      allowedClients: map['allowedClients'] == null ? null : (pulumi.Input.decodeList<AllowedClient>(map['allowedClients'], (value) => AllowedClient.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pod: map['pod'] == null ? null : (map['pod'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestedSizeGib: map['requestedSizeGib'] == null ? null : (map['requestedSizeGib'] as String).input(),
-      storageType: map['storageType'] == null ? null : (NfsShareStorageType.fromValue(map['storageType'] as String)).input(),
+      allowedClients: map['allowedClients'] == null ? null : (pulumi.Input.decodeList<AllowedClient>(map['allowedClients']!, (value) => AllowedClient.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pod: map['pod'] == null ? null : (map['pod']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestedSizeGib: map['requestedSizeGib'] == null ? null : (map['requestedSizeGib']! as String).input(),
+      storageType: map['storageType'] == null ? null : (NfsShareStorageType.fromValue(map['storageType']! as String)).input(),
     );
   }
 }

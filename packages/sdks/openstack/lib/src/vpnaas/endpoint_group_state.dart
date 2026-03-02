@@ -59,13 +59,13 @@ class EndpointGroupState {
 
   factory EndpointGroupState.fromMap(Map<String, dynamic> map) {
     return EndpointGroupState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      endpoints: map['endpoints'] == null ? null : ((map['endpoints'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      endpoints: map['endpoints'] == null ? null : ((map['endpoints']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs']! as Map).cast<String, String>()).input(),
     );
   }
 }

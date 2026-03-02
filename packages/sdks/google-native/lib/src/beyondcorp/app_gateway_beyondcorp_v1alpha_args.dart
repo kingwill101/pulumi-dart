@@ -64,14 +64,14 @@ class AppGatewayBeyondcorpV1alphaArgs {
 
   factory AppGatewayBeyondcorpV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return AppGatewayBeyondcorpV1alphaArgs(
-      appGatewayId: map['appGatewayId'] == null ? null : (map['appGatewayId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      appGatewayId: map['appGatewayId'] == null ? null : (map['appGatewayId']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       hostType: (AppGatewayHostTypeBeyondcorpV1alpha.fromValue(map['hostType'] as String)).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       type: (AppGatewayTypeBeyondcorpV1alpha.fromValue(map['type'] as String)).input(),
     );
   }

@@ -75,20 +75,20 @@ class GetQuotasResult {
 
   factory GetQuotasResult.fromMap(Map<String, dynamic> map) {
     return GetQuotasResult(
-      dimensions: map['dimensions'] == null ? null : pulumi.Input.decodeList<GetQuotasDimension>(map['dimensions'], (value) => GetQuotasDimension.fromMap((value as Map).cast<String, dynamic>())),
-      groupCode: map['groupCode'] == null ? null : map['groupCode'] as String,
+      dimensions: map['dimensions'] == null ? null : pulumi.Input.decodeList<GetQuotasDimension>(map['dimensions']!, (value) => GetQuotasDimension.fromMap((value as Map).cast<String, dynamic>())),
+      groupCode: map['groupCode'] == null ? null : map['groupCode']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keyWord: map['keyWord'] == null ? null : map['keyWord'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      keyWord: map['keyWord'] == null ? null : map['keyWord']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       productCode: map['productCode'] as String,
-      quotaActionCode: map['quotaActionCode'] == null ? null : map['quotaActionCode'] as String,
-      quotaCategory: map['quotaCategory'] == null ? null : map['quotaCategory'] as String,
+      quotaActionCode: map['quotaActionCode'] == null ? null : map['quotaActionCode']! as String,
+      quotaCategory: map['quotaCategory'] == null ? null : map['quotaCategory']! as String,
       quotas: pulumi.Input.decodeList<GetQuotasQuota>(map['quotas'], (value) => GetQuotasQuota.fromMap((value as Map).cast<String, dynamic>())),
-      sortField: map['sortField'] == null ? null : map['sortField'] as String,
-      sortOrder: map['sortOrder'] == null ? null : map['sortOrder'] as String,
+      sortField: map['sortField'] == null ? null : map['sortField']! as String,
+      sortOrder: map['sortOrder'] == null ? null : map['sortOrder']! as String,
     );
   }
 }

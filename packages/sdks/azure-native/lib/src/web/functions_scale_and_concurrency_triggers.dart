@@ -22,7 +22,7 @@ class FunctionsScaleAndConcurrencyTriggers {
 
   factory FunctionsScaleAndConcurrencyTriggers.fromMap(Map<String, dynamic> map) {
     return FunctionsScaleAndConcurrencyTriggers(
-      http: map['http'] == null ? null : (FunctionsScaleAndConcurrencyHttp.fromMap((map['http'] as Map).cast<String, dynamic>())).input(),
+      http: map['http'] == null ? null : (FunctionsScaleAndConcurrencyHttp.fromMap((map['http']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

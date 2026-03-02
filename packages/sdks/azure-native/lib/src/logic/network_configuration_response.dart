@@ -33,9 +33,9 @@ class NetworkConfigurationResponse {
 
   factory NetworkConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return NetworkConfigurationResponse(
-      accessEndpoint: map['accessEndpoint'] == null ? null : (IntegrationServiceEnvironmentAccessEndpointResponse.fromMap((map['accessEndpoint'] as Map).cast<String, dynamic>())).input(),
-      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<ResourceReferenceResponse>(map['subnets'], (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      virtualNetworkAddressSpace: map['virtualNetworkAddressSpace'] == null ? null : (map['virtualNetworkAddressSpace'] as String).input(),
+      accessEndpoint: map['accessEndpoint'] == null ? null : (IntegrationServiceEnvironmentAccessEndpointResponse.fromMap((map['accessEndpoint']! as Map).cast<String, dynamic>())).input(),
+      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<ResourceReferenceResponse>(map['subnets']!, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualNetworkAddressSpace: map['virtualNetworkAddressSpace'] == null ? null : (map['virtualNetworkAddressSpace']! as String).input(),
     );
   }
 }

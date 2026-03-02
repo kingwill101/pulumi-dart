@@ -25,8 +25,8 @@ class ServiceEventRuleEndpoint {
 
   factory ServiceEventRuleEndpoint.fromMap(Map<String, dynamic> map) {
     return ServiceEventRuleEndpoint(
-      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
-      endpointValue: map['endpointValue'] == null ? null : (map['endpointValue'] as String).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
+      endpointValue: map['endpointValue'] == null ? null : (map['endpointValue']! as String).input(),
     );
   }
 }

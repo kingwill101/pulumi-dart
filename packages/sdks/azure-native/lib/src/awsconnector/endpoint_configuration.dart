@@ -26,8 +26,8 @@ class EndpointConfiguration {
 
   factory EndpointConfiguration.fromMap(Map<String, dynamic> map) {
     return EndpointConfiguration(
-      types: map['types'] == null ? null : ((map['types'] as List).cast<String>()).input(),
-      vpcEndpointIds: map['vpcEndpointIds'] == null ? null : ((map['vpcEndpointIds'] as List).cast<String>()).input(),
+      types: map['types'] == null ? null : ((map['types']! as List).cast<String>()).input(),
+      vpcEndpointIds: map['vpcEndpointIds'] == null ? null : ((map['vpcEndpointIds']! as List).cast<String>()).input(),
     );
   }
 }

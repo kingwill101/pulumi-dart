@@ -66,16 +66,16 @@ class MethodSettingResponse {
 
   factory MethodSettingResponse.fromMap(Map<String, dynamic> map) {
     return MethodSettingResponse(
-      cacheDataEncrypted: map['cacheDataEncrypted'] == null ? null : (map['cacheDataEncrypted'] as bool).input(),
-      cacheTtlInSeconds: map['cacheTtlInSeconds'] == null ? null : (map['cacheTtlInSeconds'] as int).input(),
-      cachingEnabled: map['cachingEnabled'] == null ? null : (map['cachingEnabled'] as bool).input(),
-      dataTraceEnabled: map['dataTraceEnabled'] == null ? null : (map['dataTraceEnabled'] as bool).input(),
-      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod'] as String).input(),
-      loggingLevel: map['loggingLevel'] == null ? null : (map['loggingLevel'] as String).input(),
-      metricsEnabled: map['metricsEnabled'] == null ? null : (map['metricsEnabled'] as bool).input(),
-      resourcePath: map['resourcePath'] == null ? null : (map['resourcePath'] as String).input(),
-      throttlingBurstLimit: map['throttlingBurstLimit'] == null ? null : (map['throttlingBurstLimit'] as int).input(),
-      throttlingRateLimit: map['throttlingRateLimit'] == null ? null : (map['throttlingRateLimit'] as int).input(),
+      cacheDataEncrypted: map['cacheDataEncrypted'] == null ? null : (map['cacheDataEncrypted']! as bool).input(),
+      cacheTtlInSeconds: map['cacheTtlInSeconds'] == null ? null : (map['cacheTtlInSeconds']! as int).input(),
+      cachingEnabled: map['cachingEnabled'] == null ? null : (map['cachingEnabled']! as bool).input(),
+      dataTraceEnabled: map['dataTraceEnabled'] == null ? null : (map['dataTraceEnabled']! as bool).input(),
+      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod']! as String).input(),
+      loggingLevel: map['loggingLevel'] == null ? null : (map['loggingLevel']! as String).input(),
+      metricsEnabled: map['metricsEnabled'] == null ? null : (map['metricsEnabled']! as bool).input(),
+      resourcePath: map['resourcePath'] == null ? null : (map['resourcePath']! as String).input(),
+      throttlingBurstLimit: map['throttlingBurstLimit'] == null ? null : (map['throttlingBurstLimit']! as int).input(),
+      throttlingRateLimit: map['throttlingRateLimit'] == null ? null : (map['throttlingRateLimit']! as int).input(),
     );
   }
 }

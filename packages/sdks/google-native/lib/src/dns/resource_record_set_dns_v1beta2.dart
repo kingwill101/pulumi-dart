@@ -51,13 +51,13 @@ class ResourceRecordSetDnsV1beta2 {
 
   factory ResourceRecordSetDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return ResourceRecordSetDnsV1beta2(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      routingPolicy: map['routingPolicy'] == null ? null : (RRSetRoutingPolicyDnsV1beta2.fromMap((map['routingPolicy'] as Map).cast<String, dynamic>())).input(),
-      rrdatas: map['rrdatas'] == null ? null : ((map['rrdatas'] as List).cast<String>()).input(),
-      signatureRrdatas: map['signatureRrdatas'] == null ? null : ((map['signatureRrdatas'] as List).cast<String>()).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      routingPolicy: map['routingPolicy'] == null ? null : (RRSetRoutingPolicyDnsV1beta2.fromMap((map['routingPolicy']! as Map).cast<String, dynamic>())).input(),
+      rrdatas: map['rrdatas'] == null ? null : ((map['rrdatas']! as List).cast<String>()).input(),
+      signatureRrdatas: map['signatureRrdatas'] == null ? null : ((map['signatureRrdatas']! as List).cast<String>()).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

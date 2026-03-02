@@ -38,10 +38,10 @@ class FanoutLinkedNotificationRule {
 
   factory FanoutLinkedNotificationRule.fromMap(Map<String, dynamic> map) {
     return FanoutLinkedNotificationRule(
-      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
-      dstsConfiguration: map['dstsConfiguration'] == null ? null : (FanoutLinkedNotificationRuleDstsConfiguration.fromMap((map['dstsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<ResourceProviderEndpoint>(map['endpoints'], (value) => ResourceProviderEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tokenAuthConfiguration: map['tokenAuthConfiguration'] == null ? null : (TokenAuthConfiguration.fromMap((map['tokenAuthConfiguration'] as Map).cast<String, dynamic>())).input(),
+      actions: map['actions'] == null ? null : ((map['actions']! as List).cast<String>()).input(),
+      dstsConfiguration: map['dstsConfiguration'] == null ? null : (FanoutLinkedNotificationRuleDstsConfiguration.fromMap((map['dstsConfiguration']! as Map).cast<String, dynamic>())).input(),
+      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<ResourceProviderEndpoint>(map['endpoints']!, (value) => ResourceProviderEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tokenAuthConfiguration: map['tokenAuthConfiguration'] == null ? null : (TokenAuthConfiguration.fromMap((map['tokenAuthConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

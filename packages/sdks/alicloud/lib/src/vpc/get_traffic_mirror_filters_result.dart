@@ -57,11 +57,11 @@ class GetTrafficMirrorFiltersResult {
       filters: pulumi.Input.decodeList<GetTrafficMirrorFiltersFilter>(map['filters'], (value) => GetTrafficMirrorFiltersFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      trafficMirrorFilterName: map['trafficMirrorFilterName'] == null ? null : map['trafficMirrorFilterName'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      trafficMirrorFilterName: map['trafficMirrorFilterName'] == null ? null : map['trafficMirrorFilterName']! as String,
     );
   }
 }

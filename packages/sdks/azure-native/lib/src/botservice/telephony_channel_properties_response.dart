@@ -53,13 +53,13 @@ class TelephonyChannelPropertiesResponse {
 
   factory TelephonyChannelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return TelephonyChannelPropertiesResponse(
-      apiConfigurations: map['apiConfigurations'] == null ? null : (pulumi.Input.decodeList<TelephonyChannelResourceApiConfigurationResponse>(map['apiConfigurations'], (value) => TelephonyChannelResourceApiConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cognitiveServiceRegion: map['cognitiveServiceRegion'] == null ? null : (map['cognitiveServiceRegion'] as String).input(),
-      cognitiveServiceSubscriptionKey: map['cognitiveServiceSubscriptionKey'] == null ? null : (map['cognitiveServiceSubscriptionKey'] as String).input(),
-      defaultLocale: map['defaultLocale'] == null ? null : (map['defaultLocale'] as String).input(),
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
-      phoneNumbers: map['phoneNumbers'] == null ? null : (pulumi.Input.decodeList<TelephonyPhoneNumbersResponse>(map['phoneNumbers'], (value) => TelephonyPhoneNumbersResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      premiumSKU: map['premiumSKU'] == null ? null : (map['premiumSKU'] as String).input(),
+      apiConfigurations: map['apiConfigurations'] == null ? null : (pulumi.Input.decodeList<TelephonyChannelResourceApiConfigurationResponse>(map['apiConfigurations']!, (value) => TelephonyChannelResourceApiConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cognitiveServiceRegion: map['cognitiveServiceRegion'] == null ? null : (map['cognitiveServiceRegion']! as String).input(),
+      cognitiveServiceSubscriptionKey: map['cognitiveServiceSubscriptionKey'] == null ? null : (map['cognitiveServiceSubscriptionKey']! as String).input(),
+      defaultLocale: map['defaultLocale'] == null ? null : (map['defaultLocale']! as String).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as bool).input(),
+      phoneNumbers: map['phoneNumbers'] == null ? null : (pulumi.Input.decodeList<TelephonyPhoneNumbersResponse>(map['phoneNumbers']!, (value) => TelephonyPhoneNumbersResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      premiumSKU: map['premiumSKU'] == null ? null : (map['premiumSKU']! as String).input(),
     );
   }
 }

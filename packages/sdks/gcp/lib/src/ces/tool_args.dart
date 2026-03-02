@@ -86,13 +86,13 @@ class ToolArgs {
   factory ToolArgs.fromMap(Map<String, dynamic> map) {
     return ToolArgs(
       app: (map['app'] as String).input(),
-      clientFunction: map['clientFunction'] == null ? null : (ToolClientFunction.fromMap((map['clientFunction'] as Map).cast<String, dynamic>())).input(),
-      dataStoreTool: map['dataStoreTool'] == null ? null : (ToolDataStoreTool.fromMap((map['dataStoreTool'] as Map).cast<String, dynamic>())).input(),
-      executionType: map['executionType'] == null ? null : (map['executionType'] as String).input(),
-      googleSearchTool: map['googleSearchTool'] == null ? null : (ToolGoogleSearchTool.fromMap((map['googleSearchTool'] as Map).cast<String, dynamic>())).input(),
+      clientFunction: map['clientFunction'] == null ? null : (ToolClientFunction.fromMap((map['clientFunction']! as Map).cast<String, dynamic>())).input(),
+      dataStoreTool: map['dataStoreTool'] == null ? null : (ToolDataStoreTool.fromMap((map['dataStoreTool']! as Map).cast<String, dynamic>())).input(),
+      executionType: map['executionType'] == null ? null : (map['executionType']! as String).input(),
+      googleSearchTool: map['googleSearchTool'] == null ? null : (ToolGoogleSearchTool.fromMap((map['googleSearchTool']! as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pythonFunction: map['pythonFunction'] == null ? null : (ToolPythonFunction.fromMap((map['pythonFunction'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pythonFunction: map['pythonFunction'] == null ? null : (ToolPythonFunction.fromMap((map['pythonFunction']! as Map).cast<String, dynamic>())).input(),
       toolId: (map['toolId'] as String).input(),
     );
   }

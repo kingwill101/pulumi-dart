@@ -26,8 +26,8 @@ class Endpoint {
 
   factory Endpoint.fromMap(Map<String, dynamic> map) {
     return Endpoint(
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -51,12 +51,12 @@ class ExtensionArgs {
 
   factory ExtensionArgs.fromMap(Map<String, dynamic> map) {
     return ExtensionArgs(
-      actionPoints: (pulumi.Input.decodeList<ExtensionActionPoint>(map['actionPoints'], (value) => ExtensionActionPoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ExtensionParameter>(map['parameters'], (value) => ExtensionParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      actionPoints: (pulumi.Input.decodeList<ExtensionActionPoint>(map['actionPoints']!, (value) => ExtensionActionPoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      parameters: map['parameters'] == null ? null : ((pulumi.Input.decodeList<ExtensionParameter>(map['parameters']!, (value) => ExtensionParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

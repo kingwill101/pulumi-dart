@@ -41,11 +41,11 @@ class ActivityPolicy {
 
   factory ActivityPolicy.fromMap(Map<String, dynamic> map) {
     return ActivityPolicy(
-      retry: map['retry'] == null ? null : (map['retry']).input(),
-      retryIntervalInSeconds: map['retryIntervalInSeconds'] == null ? null : (map['retryIntervalInSeconds'] as int).input(),
-      secureInput: map['secureInput'] == null ? null : (map['secureInput'] as bool).input(),
-      secureOutput: map['secureOutput'] == null ? null : (map['secureOutput'] as bool).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']).input(),
+      retry: map['retry'] == null ? null : (map['retry']!).input(),
+      retryIntervalInSeconds: map['retryIntervalInSeconds'] == null ? null : (map['retryIntervalInSeconds']! as int).input(),
+      secureInput: map['secureInput'] == null ? null : (map['secureInput']! as bool).input(),
+      secureOutput: map['secureOutput'] == null ? null : (map['secureOutput']! as bool).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']!).input(),
     );
   }
 }

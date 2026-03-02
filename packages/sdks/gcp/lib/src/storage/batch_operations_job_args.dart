@@ -70,14 +70,14 @@ class BatchOperationsJobArgs {
 
   factory BatchOperationsJobArgs.fromMap(Map<String, dynamic> map) {
     return BatchOperationsJobArgs(
-      bucketList: map['bucketList'] == null ? null : (BatchOperationsJobBucketList.fromMap((map['bucketList'] as Map).cast<String, dynamic>())).input(),
-      deleteObject: map['deleteObject'] == null ? null : (BatchOperationsJobDeleteObject.fromMap((map['deleteObject'] as Map).cast<String, dynamic>())).input(),
-      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
-      jobId: map['jobId'] == null ? null : (map['jobId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      putMetadata: map['putMetadata'] == null ? null : (BatchOperationsJobPutMetadata.fromMap((map['putMetadata'] as Map).cast<String, dynamic>())).input(),
-      putObjectHold: map['putObjectHold'] == null ? null : (BatchOperationsJobPutObjectHold.fromMap((map['putObjectHold'] as Map).cast<String, dynamic>())).input(),
-      rewriteObject: map['rewriteObject'] == null ? null : (BatchOperationsJobRewriteObject.fromMap((map['rewriteObject'] as Map).cast<String, dynamic>())).input(),
+      bucketList: map['bucketList'] == null ? null : (BatchOperationsJobBucketList.fromMap((map['bucketList']! as Map).cast<String, dynamic>())).input(),
+      deleteObject: map['deleteObject'] == null ? null : (BatchOperationsJobDeleteObject.fromMap((map['deleteObject']! as Map).cast<String, dynamic>())).input(),
+      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection']! as bool).input(),
+      jobId: map['jobId'] == null ? null : (map['jobId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      putMetadata: map['putMetadata'] == null ? null : (BatchOperationsJobPutMetadata.fromMap((map['putMetadata']! as Map).cast<String, dynamic>())).input(),
+      putObjectHold: map['putObjectHold'] == null ? null : (BatchOperationsJobPutObjectHold.fromMap((map['putObjectHold']! as Map).cast<String, dynamic>())).input(),
+      rewriteObject: map['rewriteObject'] == null ? null : (BatchOperationsJobRewriteObject.fromMap((map['rewriteObject']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class LinuxConfigurationResponse {
 
   factory LinuxConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return LinuxConfigurationResponse(
-      ssh: map['ssh'] == null ? null : (SshConfigurationResponse.fromMap((map['ssh'] as Map).cast<String, dynamic>())).input(),
+      ssh: map['ssh'] == null ? null : (SshConfigurationResponse.fromMap((map['ssh']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

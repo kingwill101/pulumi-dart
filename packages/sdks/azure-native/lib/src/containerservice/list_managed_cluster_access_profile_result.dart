@@ -46,10 +46,10 @@ class ListManagedClusterAccessProfileResult {
   factory ListManagedClusterAccessProfileResult.fromMap(Map<String, dynamic> map) {
     return ListManagedClusterAccessProfileResult(
       id: map['id'] as String,
-      kubeConfig: map['kubeConfig'] == null ? null : map['kubeConfig'] as String,
+      kubeConfig: map['kubeConfig'] == null ? null : map['kubeConfig']! as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

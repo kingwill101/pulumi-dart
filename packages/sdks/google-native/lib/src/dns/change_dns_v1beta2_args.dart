@@ -52,13 +52,13 @@ class ChangeDnsV1beta2Args {
 
   factory ChangeDnsV1beta2Args.fromMap(Map<String, dynamic> map) {
     return ChangeDnsV1beta2Args(
-      additions: map['additions'] == null ? null : ((map['additions'] as List).cast<ResourceRecordSetResource>()).input(),
-      clientOperationId: map['clientOperationId'] == null ? null : (map['clientOperationId'] as String).input(),
-      deletions: map['deletions'] == null ? null : ((map['deletions'] as List).cast<ResourceRecordSetResource>()).input(),
-      isServing: map['isServing'] == null ? null : (map['isServing'] as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      additions: map['additions'] == null ? null : ((map['additions']! as List).cast<ResourceRecordSetResource>()).input(),
+      clientOperationId: map['clientOperationId'] == null ? null : (map['clientOperationId']! as String).input(),
+      deletions: map['deletions'] == null ? null : ((map['deletions']! as List).cast<ResourceRecordSetResource>()).input(),
+      isServing: map['isServing'] == null ? null : (map['isServing']! as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       managedZone: (map['managedZone'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

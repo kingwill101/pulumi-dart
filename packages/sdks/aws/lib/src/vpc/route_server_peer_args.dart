@@ -52,12 +52,12 @@ class RouteServerPeerArgs {
 
   factory RouteServerPeerArgs.fromMap(Map<String, dynamic> map) {
     return RouteServerPeerArgs(
-      bgpOptions: (RouteServerPeerBgpOptions.fromMap((map['bgpOptions'] as Map).cast<String, dynamic>())).input(),
+      bgpOptions: (RouteServerPeerBgpOptions.fromMap((map['bgpOptions']! as Map).cast<String, dynamic>())).input(),
       peerAddress: (map['peerAddress'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       routeServerEndpointId: (map['routeServerEndpointId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (RouteServerPeerTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((RouteServerPeerTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

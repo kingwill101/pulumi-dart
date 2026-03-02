@@ -27,8 +27,8 @@ class RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort {
 
   factory RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort(
-      httpStatus: map['httpStatus'] == null ? null : (map['httpStatus'] as int).input(),
-      percentage: map['percentage'] == null ? null : (map['percentage'] as double).input(),
+      httpStatus: map['httpStatus'] == null ? null : (map['httpStatus']! as int).input(),
+      percentage: map['percentage'] == null ? null : (map['percentage']! as double).input(),
     );
   }
 }

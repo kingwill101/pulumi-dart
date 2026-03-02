@@ -28,8 +28,8 @@ class GkePolicy {
 
   factory GkePolicy.fromMap(Map<String, dynamic> map) {
     return GkePolicy(
-      checkSets: map['checkSets'] == null ? null : (pulumi.Input.decodeList<CheckSet>(map['checkSets'], (value) => CheckSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      imageAllowlist: map['imageAllowlist'] == null ? null : (ImageAllowlist.fromMap((map['imageAllowlist'] as Map).cast<String, dynamic>())).input(),
+      checkSets: map['checkSets'] == null ? null : (pulumi.Input.decodeList<CheckSet>(map['checkSets']!, (value) => CheckSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      imageAllowlist: map['imageAllowlist'] == null ? null : (ImageAllowlist.fromMap((map['imageAllowlist']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

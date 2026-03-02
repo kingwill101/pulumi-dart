@@ -65,15 +65,15 @@ class InstanceFleetState {
 
   factory InstanceFleetState.fromMap(Map<String, dynamic> map) {
     return InstanceFleetState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      instanceTypeConfigs: map['instanceTypeConfigs'] == null ? null : (pulumi.Input.decodeList<InstanceFleetInstanceTypeConfig>(map['instanceTypeConfigs'], (value) => InstanceFleetInstanceTypeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      launchSpecifications: map['launchSpecifications'] == null ? null : (InstanceFleetLaunchSpecifications.fromMap((map['launchSpecifications'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      provisionedOnDemandCapacity: map['provisionedOnDemandCapacity'] == null ? null : (map['provisionedOnDemandCapacity'] as int).input(),
-      provisionedSpotCapacity: map['provisionedSpotCapacity'] == null ? null : (map['provisionedSpotCapacity'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      targetOnDemandCapacity: map['targetOnDemandCapacity'] == null ? null : (map['targetOnDemandCapacity'] as int).input(),
-      targetSpotCapacity: map['targetSpotCapacity'] == null ? null : (map['targetSpotCapacity'] as int).input(),
+      clusterId: map['clusterId'] == null ? null : ((map['clusterId'] as String).input()).input(),
+      instanceTypeConfigs: map['instanceTypeConfigs'] == null ? null : ((pulumi.Input.decodeList<InstanceFleetInstanceTypeConfig>(map['instanceTypeConfigs']!, (value) => InstanceFleetInstanceTypeConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      launchSpecifications: map['launchSpecifications'] == null ? null : ((InstanceFleetLaunchSpecifications.fromMap((map['launchSpecifications']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      provisionedOnDemandCapacity: map['provisionedOnDemandCapacity'] == null ? null : ((map['provisionedOnDemandCapacity'] as int).input()).input(),
+      provisionedSpotCapacity: map['provisionedSpotCapacity'] == null ? null : ((map['provisionedSpotCapacity'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      targetOnDemandCapacity: map['targetOnDemandCapacity'] == null ? null : ((map['targetOnDemandCapacity'] as int).input()).input(),
+      targetSpotCapacity: map['targetSpotCapacity'] == null ? null : ((map['targetSpotCapacity'] as int).input()).input(),
     );
   }
 }

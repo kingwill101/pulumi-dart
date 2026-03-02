@@ -32,7 +32,7 @@ class GetQueuedResourceArgs {
   factory GetQueuedResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetQueuedResourceArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       queuedResourceId: (map['queuedResourceId'] as String).input(),
     );
   }

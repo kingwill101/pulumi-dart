@@ -46,7 +46,7 @@ class AlbServerGroupAttachmentArgs {
   factory AlbServerGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return AlbServerGroupAttachmentArgs(
       albServerGroupId: (map['albServerGroupId'] as String).input(),
-      forceAttach: map['forceAttach'] == null ? null : (map['forceAttach'] as bool).input(),
+      forceAttach: map['forceAttach'] == null ? null : (map['forceAttach']! as bool).input(),
       port: (map['port'] as int).input(),
       scalingGroupId: (map['scalingGroupId'] as String).input(),
       weight: (map['weight'] as int).input(),

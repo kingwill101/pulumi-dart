@@ -119,22 +119,22 @@ class HttpsBasicConfigurationState {
 
   factory HttpsBasicConfigurationState.fromMap(Map<String, dynamic> map) {
     return HttpsBasicConfigurationState(
-      ciphersuite: map['ciphersuite'] == null ? null : (map['ciphersuite'] as String).input(),
-      ciphersuiteGroup: map['ciphersuiteGroup'] == null ? null : (map['ciphersuiteGroup'] as String).input(),
-      configId: map['configId'] == null ? null : (map['configId'] as int).input(),
-      http2: map['http2'] == null ? null : (map['http2'] as String).input(),
-      http3: map['http3'] == null ? null : (map['http3'] as String).input(),
-      https: map['https'] == null ? null : (map['https'] as String).input(),
-      ocspStapling: map['ocspStapling'] == null ? null : (map['ocspStapling'] as String).input(),
-      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
-      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      sequence: map['sequence'] == null ? null : (map['sequence'] as int).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      tls10: map['tls10'] == null ? null : (map['tls10'] as String).input(),
-      tls11: map['tls11'] == null ? null : (map['tls11'] as String).input(),
-      tls12: map['tls12'] == null ? null : (map['tls12'] as String).input(),
-      tls13: map['tls13'] == null ? null : (map['tls13'] as String).input(),
+      ciphersuite: map['ciphersuite'] == null ? null : (map['ciphersuite']! as String).input(),
+      ciphersuiteGroup: map['ciphersuiteGroup'] == null ? null : (map['ciphersuiteGroup']! as String).input(),
+      configId: map['configId'] == null ? null : (map['configId']! as int).input(),
+      http2: map['http2'] == null ? null : (map['http2']! as String).input(),
+      http3: map['http3'] == null ? null : (map['http3']! as String).input(),
+      https: map['https'] == null ? null : (map['https']! as String).input(),
+      ocspStapling: map['ocspStapling'] == null ? null : (map['ocspStapling']! as String).input(),
+      rule: map['rule'] == null ? null : (map['rule']! as String).input(),
+      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      sequence: map['sequence'] == null ? null : (map['sequence']! as int).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      tls10: map['tls10'] == null ? null : (map['tls10']! as String).input(),
+      tls11: map['tls11'] == null ? null : (map['tls11']! as String).input(),
+      tls12: map['tls12'] == null ? null : (map['tls12']! as String).input(),
+      tls13: map['tls13'] == null ? null : (map['tls13']! as String).input(),
     );
   }
 }

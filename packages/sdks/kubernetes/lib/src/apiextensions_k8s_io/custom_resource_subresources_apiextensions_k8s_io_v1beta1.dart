@@ -27,8 +27,8 @@ class CustomResourceSubresourcesApiextensionsK8sIoV1beta1 {
 
   factory CustomResourceSubresourcesApiextensionsK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CustomResourceSubresourcesApiextensionsK8sIoV1beta1(
-      scale: map['scale'] == null ? null : (CustomResourceSubresourceScaleApiextensionsK8sIoV1beta1.fromMap((map['scale'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status']).input(),
+      scale: map['scale'] == null ? null : (CustomResourceSubresourceScaleApiextensionsK8sIoV1beta1.fromMap((map['scale']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']!).input(),
     );
   }
 }

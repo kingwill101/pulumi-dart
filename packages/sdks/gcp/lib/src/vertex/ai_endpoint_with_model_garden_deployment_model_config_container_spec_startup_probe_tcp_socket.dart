@@ -27,8 +27,8 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcp
 
   factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocket.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocket(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

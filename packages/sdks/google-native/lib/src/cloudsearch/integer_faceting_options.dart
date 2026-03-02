@@ -21,7 +21,7 @@ class IntegerFacetingOptions {
 
   factory IntegerFacetingOptions.fromMap(Map<String, dynamic> map) {
     return IntegerFacetingOptions(
-      integerBuckets: map['integerBuckets'] == null ? null : ((map['integerBuckets'] as List).cast<String>()).input(),
+      integerBuckets: map['integerBuckets'] == null ? null : ((map['integerBuckets']! as List).cast<String>()).input(),
     );
   }
 }

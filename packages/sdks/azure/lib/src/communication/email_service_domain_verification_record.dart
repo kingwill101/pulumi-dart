@@ -45,11 +45,11 @@ class EmailServiceDomainVerificationRecord {
 
   factory EmailServiceDomainVerificationRecord.fromMap(Map<String, dynamic> map) {
     return EmailServiceDomainVerificationRecord(
-      dkim2s: map['dkim2s'] == null ? null : (pulumi.Input.decodeList<EmailServiceDomainVerificationRecordDkim2>(map['dkim2s'], (value) => EmailServiceDomainVerificationRecordDkim2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dkims: map['dkims'] == null ? null : (pulumi.Input.decodeList<EmailServiceDomainVerificationRecordDkim>(map['dkims'], (value) => EmailServiceDomainVerificationRecordDkim.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dmarcs: map['dmarcs'] == null ? null : (pulumi.Input.decodeList<EmailServiceDomainVerificationRecordDmarc>(map['dmarcs'], (value) => EmailServiceDomainVerificationRecordDmarc.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      domains: map['domains'] == null ? null : (pulumi.Input.decodeList<EmailServiceDomainVerificationRecordDomain>(map['domains'], (value) => EmailServiceDomainVerificationRecordDomain.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      spfs: map['spfs'] == null ? null : (pulumi.Input.decodeList<EmailServiceDomainVerificationRecordSpf>(map['spfs'], (value) => EmailServiceDomainVerificationRecordSpf.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dkim2s: map['dkim2s'] == null ? null : (pulumi.Input.decodeList<EmailServiceDomainVerificationRecordDkim2>(map['dkim2s']!, (value) => EmailServiceDomainVerificationRecordDkim2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dkims: map['dkims'] == null ? null : (pulumi.Input.decodeList<EmailServiceDomainVerificationRecordDkim>(map['dkims']!, (value) => EmailServiceDomainVerificationRecordDkim.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dmarcs: map['dmarcs'] == null ? null : (pulumi.Input.decodeList<EmailServiceDomainVerificationRecordDmarc>(map['dmarcs']!, (value) => EmailServiceDomainVerificationRecordDmarc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      domains: map['domains'] == null ? null : (pulumi.Input.decodeList<EmailServiceDomainVerificationRecordDomain>(map['domains']!, (value) => EmailServiceDomainVerificationRecordDomain.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      spfs: map['spfs'] == null ? null : (pulumi.Input.decodeList<EmailServiceDomainVerificationRecordSpf>(map['spfs']!, (value) => EmailServiceDomainVerificationRecordSpf.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

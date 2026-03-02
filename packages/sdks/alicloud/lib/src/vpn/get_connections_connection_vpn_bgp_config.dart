@@ -50,13 +50,13 @@ class GetConnectionsConnectionVpnBgpConfig {
 
   factory GetConnectionsConnectionVpnBgpConfig.fromMap(Map<String, dynamic> map) {
     return GetConnectionsConnectionVpnBgpConfig(
-      authKey: map['authKey'] == null ? null : (map['authKey'] as String).input(),
-      localAsn: map['localAsn'] == null ? null : (map['localAsn'] as int).input(),
-      localBgpIp: map['localBgpIp'] == null ? null : (map['localBgpIp'] as String).input(),
-      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn'] as int).input(),
-      peerBgpIp: map['peerBgpIp'] == null ? null : (map['peerBgpIp'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tunnelCidr: map['tunnelCidr'] == null ? null : (map['tunnelCidr'] as String).input(),
+      authKey: map['authKey'] == null ? null : (map['authKey']! as String).input(),
+      localAsn: map['localAsn'] == null ? null : (map['localAsn']! as int).input(),
+      localBgpIp: map['localBgpIp'] == null ? null : (map['localBgpIp']! as String).input(),
+      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn']! as int).input(),
+      peerBgpIp: map['peerBgpIp'] == null ? null : (map['peerBgpIp']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tunnelCidr: map['tunnelCidr'] == null ? null : (map['tunnelCidr']! as String).input(),
     );
   }
 }

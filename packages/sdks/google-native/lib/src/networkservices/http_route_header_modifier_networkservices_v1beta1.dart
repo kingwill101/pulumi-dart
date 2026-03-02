@@ -31,9 +31,9 @@ class HttpRouteHeaderModifierNetworkservicesV1beta1 {
 
   factory HttpRouteHeaderModifierNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpRouteHeaderModifierNetworkservicesV1beta1(
-      add: map['add'] == null ? null : ((map['add'] as Map).cast<String, String>()).input(),
-      remove: map['remove'] == null ? null : ((map['remove'] as List).cast<String>()).input(),
-      set: map['set'] == null ? null : ((map['set'] as Map).cast<String, String>()).input(),
+      add: map['add'] == null ? null : ((map['add']! as Map).cast<String, String>()).input(),
+      remove: map['remove'] == null ? null : ((map['remove']! as List).cast<String>()).input(),
+      set: map['set'] == null ? null : ((map['set']! as Map).cast<String, String>()).input(),
     );
   }
 }

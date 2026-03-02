@@ -21,7 +21,7 @@ class ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagementRes
 
   factory ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagementResponse.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagementResponse(
-      commonApiVersionsMergeMode: map['commonApiVersionsMergeMode'] == null ? null : (map['commonApiVersionsMergeMode'] as String).input(),
+      commonApiVersionsMergeMode: map['commonApiVersionsMergeMode'] == null ? null : (map['commonApiVersionsMergeMode']! as String).input(),
     );
   }
 }

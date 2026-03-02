@@ -41,10 +41,10 @@ class DeviceClassListResourceK8sIoV1alpha3Args {
 
   factory DeviceClassListResourceK8sIoV1alpha3Args.fromMap(Map<String, dynamic> map) {
     return DeviceClassListResourceK8sIoV1alpha3Args(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
       items: ((map['items'] as List).cast<DeviceClassResource>()).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

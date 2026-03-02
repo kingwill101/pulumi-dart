@@ -66,7 +66,7 @@ class GetInferenceProfilesInferenceProfileSummary {
       inferenceProfileArn: (map['inferenceProfileArn'] as String).input(),
       inferenceProfileId: (map['inferenceProfileId'] as String).input(),
       inferenceProfileName: (map['inferenceProfileName'] as String).input(),
-      models: (pulumi.Input.decodeList<GetInferenceProfilesInferenceProfileSummaryModel>(map['models'], (value) => GetInferenceProfilesInferenceProfileSummaryModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      models: (pulumi.Input.decodeList<GetInferenceProfilesInferenceProfileSummaryModel>(map['models']!, (value) => GetInferenceProfilesInferenceProfileSummaryModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
       status: (map['status'] as String).input(),
       type: (map['type'] as String).input(),
       updatedAt: (map['updatedAt'] as String).input(),

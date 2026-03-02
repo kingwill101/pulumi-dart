@@ -47,12 +47,12 @@ class ResolverForwardingRuleState {
 
   factory ResolverForwardingRuleState.fromMap(Map<String, dynamic> map) {
     return ResolverForwardingRuleState(
-      dnsForwardingRulesetId: map['dnsForwardingRulesetId'] == null ? null : (map['dnsForwardingRulesetId'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      targetDnsServers: map['targetDnsServers'] == null ? null : (pulumi.Input.decodeList<ResolverForwardingRuleTargetDnsServer>(map['targetDnsServers'], (value) => ResolverForwardingRuleTargetDnsServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsForwardingRulesetId: map['dnsForwardingRulesetId'] == null ? null : (map['dnsForwardingRulesetId']! as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      targetDnsServers: map['targetDnsServers'] == null ? null : (pulumi.Input.decodeList<ResolverForwardingRuleTargetDnsServer>(map['targetDnsServers']!, (value) => ResolverForwardingRuleTargetDnsServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

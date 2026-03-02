@@ -37,10 +37,10 @@ class DeploymentLogging {
 
   factory DeploymentLogging.fromMap(Map<String, dynamic> map) {
     return DeploymentLogging(
-      log4j2ConfigurationTemplate: map['log4j2ConfigurationTemplate'] == null ? null : (map['log4j2ConfigurationTemplate'] as String).input(),
-      log4jLoggers: map['log4jLoggers'] == null ? null : (pulumi.Input.decodeList<DeploymentLoggingLog4jLogger>(map['log4jLoggers'], (value) => DeploymentLoggingLog4jLogger.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      logReservePolicy: map['logReservePolicy'] == null ? null : (DeploymentLoggingLogReservePolicy.fromMap((map['logReservePolicy'] as Map).cast<String, dynamic>())).input(),
-      loggingProfile: map['loggingProfile'] == null ? null : (map['loggingProfile'] as String).input(),
+      log4j2ConfigurationTemplate: map['log4j2ConfigurationTemplate'] == null ? null : (map['log4j2ConfigurationTemplate']! as String).input(),
+      log4jLoggers: map['log4jLoggers'] == null ? null : (pulumi.Input.decodeList<DeploymentLoggingLog4jLogger>(map['log4jLoggers']!, (value) => DeploymentLoggingLog4jLogger.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logReservePolicy: map['logReservePolicy'] == null ? null : (DeploymentLoggingLogReservePolicy.fromMap((map['logReservePolicy']! as Map).cast<String, dynamic>())).input(),
+      loggingProfile: map['loggingProfile'] == null ? null : (map['loggingProfile']! as String).input(),
     );
   }
 }

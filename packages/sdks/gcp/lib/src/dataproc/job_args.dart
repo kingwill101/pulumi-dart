@@ -105,20 +105,20 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
-      hadoopConfig: map['hadoopConfig'] == null ? null : (JobHadoopConfig.fromMap((map['hadoopConfig'] as Map).cast<String, dynamic>())).input(),
-      hiveConfig: map['hiveConfig'] == null ? null : (JobHiveConfig.fromMap((map['hiveConfig'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      pigConfig: map['pigConfig'] == null ? null : (JobPigConfig.fromMap((map['pigConfig'] as Map).cast<String, dynamic>())).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete']! as bool).input(),
+      hadoopConfig: map['hadoopConfig'] == null ? null : (JobHadoopConfig.fromMap((map['hadoopConfig']! as Map).cast<String, dynamic>())).input(),
+      hiveConfig: map['hiveConfig'] == null ? null : (JobHiveConfig.fromMap((map['hiveConfig']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      pigConfig: map['pigConfig'] == null ? null : (JobPigConfig.fromMap((map['pigConfig']! as Map).cast<String, dynamic>())).input(),
       placement: (JobPlacement.fromMap((map['placement'] as Map).cast<String, dynamic>())).input(),
-      prestoConfig: map['prestoConfig'] == null ? null : (JobPrestoConfig.fromMap((map['prestoConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pysparkConfig: map['pysparkConfig'] == null ? null : (JobPysparkConfig.fromMap((map['pysparkConfig'] as Map).cast<String, dynamic>())).input(),
-      reference: map['reference'] == null ? null : (JobReference.fromMap((map['reference'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scheduling: map['scheduling'] == null ? null : (JobScheduling.fromMap((map['scheduling'] as Map).cast<String, dynamic>())).input(),
-      sparkConfig: map['sparkConfig'] == null ? null : (JobSparkConfig.fromMap((map['sparkConfig'] as Map).cast<String, dynamic>())).input(),
-      sparksqlConfig: map['sparksqlConfig'] == null ? null : (JobSparksqlConfig.fromMap((map['sparksqlConfig'] as Map).cast<String, dynamic>())).input(),
+      prestoConfig: map['prestoConfig'] == null ? null : (JobPrestoConfig.fromMap((map['prestoConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pysparkConfig: map['pysparkConfig'] == null ? null : (JobPysparkConfig.fromMap((map['pysparkConfig']! as Map).cast<String, dynamic>())).input(),
+      reference: map['reference'] == null ? null : (JobReference.fromMap((map['reference']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      scheduling: map['scheduling'] == null ? null : (JobScheduling.fromMap((map['scheduling']! as Map).cast<String, dynamic>())).input(),
+      sparkConfig: map['sparkConfig'] == null ? null : (JobSparkConfig.fromMap((map['sparkConfig']! as Map).cast<String, dynamic>())).input(),
+      sparksqlConfig: map['sparksqlConfig'] == null ? null : (JobSparksqlConfig.fromMap((map['sparksqlConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

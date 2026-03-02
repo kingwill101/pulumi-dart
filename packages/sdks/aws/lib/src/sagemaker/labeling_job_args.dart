@@ -79,17 +79,17 @@ class LabelingJobArgs {
 
   factory LabelingJobArgs.fromMap(Map<String, dynamic> map) {
     return LabelingJobArgs(
-      humanTaskConfig: (LabelingJobHumanTaskConfig.fromMap((map['humanTaskConfig'] as Map).cast<String, dynamic>())).input(),
-      inputConfig: (LabelingJobInputConfig.fromMap((map['inputConfig'] as Map).cast<String, dynamic>())).input(),
+      humanTaskConfig: (LabelingJobHumanTaskConfig.fromMap((map['humanTaskConfig']! as Map).cast<String, dynamic>())).input(),
+      inputConfig: (LabelingJobInputConfig.fromMap((map['inputConfig']! as Map).cast<String, dynamic>())).input(),
       labelAttributeName: (map['labelAttributeName'] as String).input(),
-      labelCategoryConfigS3Uri: map['labelCategoryConfigS3Uri'] == null ? null : (map['labelCategoryConfigS3Uri'] as String).input(),
-      labelingJobAlgorithmsConfig: map['labelingJobAlgorithmsConfig'] == null ? null : (LabelingJobLabelingJobAlgorithmsConfig.fromMap((map['labelingJobAlgorithmsConfig'] as Map).cast<String, dynamic>())).input(),
+      labelCategoryConfigS3Uri: map['labelCategoryConfigS3Uri'] == null ? null : ((map['labelCategoryConfigS3Uri'] as String).input()).input(),
+      labelingJobAlgorithmsConfig: map['labelingJobAlgorithmsConfig'] == null ? null : ((LabelingJobLabelingJobAlgorithmsConfig.fromMap((map['labelingJobAlgorithmsConfig']! as Map).cast<String, dynamic>())).input()).input(),
       labelingJobName: (map['labelingJobName'] as String).input(),
-      outputConfig: (LabelingJobOutputConfig.fromMap((map['outputConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      outputConfig: (LabelingJobOutputConfig.fromMap((map['outputConfig']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      stoppingConditions: map['stoppingConditions'] == null ? null : (pulumi.Input.decodeList<LabelingJobStoppingCondition>(map['stoppingConditions'], (value) => LabelingJobStoppingCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      stoppingConditions: map['stoppingConditions'] == null ? null : ((pulumi.Input.decodeList<LabelingJobStoppingCondition>(map['stoppingConditions']!, (value) => LabelingJobStoppingCondition.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

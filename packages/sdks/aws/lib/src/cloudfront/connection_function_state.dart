@@ -69,16 +69,16 @@ class ConnectionFunctionState {
 
   factory ConnectionFunctionState.fromMap(Map<String, dynamic> map) {
     return ConnectionFunctionState(
-      connectionFunctionArn: map['connectionFunctionArn'] == null ? null : (map['connectionFunctionArn'] as String).input(),
-      connectionFunctionCode: map['connectionFunctionCode'] == null ? null : (map['connectionFunctionCode'] as String).input(),
-      connectionFunctionConfig: map['connectionFunctionConfig'] == null ? null : (ConnectionFunctionConnectionFunctionConfig.fromMap((map['connectionFunctionConfig'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      liveStageEtag: map['liveStageEtag'] == null ? null : (map['liveStageEtag'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publish: map['publish'] == null ? null : (map['publish'] as bool).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      connectionFunctionArn: map['connectionFunctionArn'] == null ? null : ((map['connectionFunctionArn'] as String).input()).input(),
+      connectionFunctionCode: map['connectionFunctionCode'] == null ? null : ((map['connectionFunctionCode'] as String).input()).input(),
+      connectionFunctionConfig: map['connectionFunctionConfig'] == null ? null : ((ConnectionFunctionConnectionFunctionConfig.fromMap((map['connectionFunctionConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      etag: map['etag'] == null ? null : ((map['etag'] as String).input()).input(),
+      liveStageEtag: map['liveStageEtag'] == null ? null : ((map['liveStageEtag'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      publish: map['publish'] == null ? null : ((map['publish'] as bool).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

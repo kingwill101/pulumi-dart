@@ -78,18 +78,18 @@ class ApplicationGatewayHttpListener {
 
   factory ApplicationGatewayHttpListener.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayHttpListener(
-      customErrorConfigurations: map['customErrorConfigurations'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayCustomError>(map['customErrorConfigurations'], (value) => ApplicationGatewayCustomError.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      firewallPolicy: map['firewallPolicy'] == null ? null : (SubResource.fromMap((map['firewallPolicy'] as Map).cast<String, dynamic>())).input(),
-      frontendIPConfiguration: map['frontendIPConfiguration'] == null ? null : (SubResource.fromMap((map['frontendIPConfiguration'] as Map).cast<String, dynamic>())).input(),
-      frontendPort: map['frontendPort'] == null ? null : (SubResource.fromMap((map['frontendPort'] as Map).cast<String, dynamic>())).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      hostNames: map['hostNames'] == null ? null : ((map['hostNames'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      requireServerNameIndication: map['requireServerNameIndication'] == null ? null : (map['requireServerNameIndication'] as bool).input(),
-      sslCertificate: map['sslCertificate'] == null ? null : (SubResource.fromMap((map['sslCertificate'] as Map).cast<String, dynamic>())).input(),
-      sslProfile: map['sslProfile'] == null ? null : (SubResource.fromMap((map['sslProfile'] as Map).cast<String, dynamic>())).input(),
+      customErrorConfigurations: map['customErrorConfigurations'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayCustomError>(map['customErrorConfigurations']!, (value) => ApplicationGatewayCustomError.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      firewallPolicy: map['firewallPolicy'] == null ? null : (SubResource.fromMap((map['firewallPolicy']! as Map).cast<String, dynamic>())).input(),
+      frontendIPConfiguration: map['frontendIPConfiguration'] == null ? null : (SubResource.fromMap((map['frontendIPConfiguration']! as Map).cast<String, dynamic>())).input(),
+      frontendPort: map['frontendPort'] == null ? null : (SubResource.fromMap((map['frontendPort']! as Map).cast<String, dynamic>())).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      hostNames: map['hostNames'] == null ? null : ((map['hostNames']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      requireServerNameIndication: map['requireServerNameIndication'] == null ? null : (map['requireServerNameIndication']! as bool).input(),
+      sslCertificate: map['sslCertificate'] == null ? null : (SubResource.fromMap((map['sslCertificate']! as Map).cast<String, dynamic>())).input(),
+      sslProfile: map['sslProfile'] == null ? null : (SubResource.fromMap((map['sslProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

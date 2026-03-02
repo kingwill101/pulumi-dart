@@ -51,10 +51,10 @@ class HubArgs {
 
   factory HubArgs.fromMap(Map<String, dynamic> map) {
     return HubArgs(
-      anonymousConnectionsEnabled: map['anonymousConnectionsEnabled'] == null ? null : (map['anonymousConnectionsEnabled'] as bool).input(),
-      eventHandlers: map['eventHandlers'] == null ? null : (pulumi.Input.decodeList<HubEventHandler>(map['eventHandlers'], (value) => HubEventHandler.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      eventListeners: map['eventListeners'] == null ? null : (pulumi.Input.decodeList<HubEventListener>(map['eventListeners'], (value) => HubEventListener.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      anonymousConnectionsEnabled: map['anonymousConnectionsEnabled'] == null ? null : (map['anonymousConnectionsEnabled']! as bool).input(),
+      eventHandlers: map['eventHandlers'] == null ? null : (pulumi.Input.decodeList<HubEventHandler>(map['eventHandlers']!, (value) => HubEventHandler.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eventListeners: map['eventListeners'] == null ? null : (pulumi.Input.decodeList<HubEventListener>(map['eventListeners']!, (value) => HubEventListener.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       webPubsubId: (map['webPubsubId'] as String).input(),
     );
   }

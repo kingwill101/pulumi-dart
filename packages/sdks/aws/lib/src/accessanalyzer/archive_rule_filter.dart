@@ -40,11 +40,11 @@ class ArchiveRuleFilter {
 
   factory ArchiveRuleFilter.fromMap(Map<String, dynamic> map) {
     return ArchiveRuleFilter(
-      contains: map['contains'] == null ? null : ((map['contains'] as List).cast<String>()).input(),
+      contains: map['contains'] == null ? null : (((map['contains'] as List).cast<String>()).input()).input(),
       criteria: (map['criteria'] as String).input(),
-      eqs: map['eqs'] == null ? null : ((map['eqs'] as List).cast<String>()).input(),
-      exists: map['exists'] == null ? null : (map['exists'] as String).input(),
-      neqs: map['neqs'] == null ? null : ((map['neqs'] as List).cast<String>()).input(),
+      eqs: map['eqs'] == null ? null : (((map['eqs'] as List).cast<String>()).input()).input(),
+      exists: map['exists'] == null ? null : ((map['exists'] as String).input()).input(),
+      neqs: map['neqs'] == null ? null : (((map['neqs'] as List).cast<String>()).input()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class FirewallPolicySku {
 
   factory FirewallPolicySku.fromMap(Map<String, dynamic> map) {
     return FirewallPolicySku(
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

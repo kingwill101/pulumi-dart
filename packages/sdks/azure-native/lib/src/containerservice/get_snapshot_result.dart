@@ -93,7 +93,7 @@ class GetSnapshotResult {
   factory GetSnapshotResult.fromMap(Map<String, dynamic> map) {
     return GetSnapshotResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      creationData: map['creationData'] == null ? null : CreationDataResponse.fromMap((map['creationData'] as Map).cast<String, dynamic>()),
+      creationData: map['creationData'] == null ? null : CreationDataResponse.fromMap((map['creationData']! as Map).cast<String, dynamic>()),
       enableFIPS: map['enableFIPS'] as bool,
       id: map['id'] as String,
       kubernetesVersion: map['kubernetesVersion'] as String,
@@ -102,9 +102,9 @@ class GetSnapshotResult {
       nodeImageVersion: map['nodeImageVersion'] as String,
       osSku: map['osSku'] as String,
       osType: map['osType'] as String,
-      snapshotType: map['snapshotType'] == null ? null : map['snapshotType'] as String,
+      snapshotType: map['snapshotType'] == null ? null : map['snapshotType']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
       vmSize: map['vmSize'] as String,
     );

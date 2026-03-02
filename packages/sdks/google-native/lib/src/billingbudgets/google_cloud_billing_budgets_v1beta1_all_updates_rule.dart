@@ -41,11 +41,11 @@ class GoogleCloudBillingBudgetsV1beta1AllUpdatesRule {
 
   factory GoogleCloudBillingBudgetsV1beta1AllUpdatesRule.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBillingBudgetsV1beta1AllUpdatesRule(
-      disableDefaultIamRecipients: map['disableDefaultIamRecipients'] == null ? null : (map['disableDefaultIamRecipients'] as bool).input(),
-      enableProjectLevelRecipients: map['enableProjectLevelRecipients'] == null ? null : (map['enableProjectLevelRecipients'] as bool).input(),
-      monitoringNotificationChannels: map['monitoringNotificationChannels'] == null ? null : ((map['monitoringNotificationChannels'] as List).cast<String>()).input(),
-      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic'] as String).input(),
-      schemaVersion: map['schemaVersion'] == null ? null : (map['schemaVersion'] as String).input(),
+      disableDefaultIamRecipients: map['disableDefaultIamRecipients'] == null ? null : (map['disableDefaultIamRecipients']! as bool).input(),
+      enableProjectLevelRecipients: map['enableProjectLevelRecipients'] == null ? null : (map['enableProjectLevelRecipients']! as bool).input(),
+      monitoringNotificationChannels: map['monitoringNotificationChannels'] == null ? null : ((map['monitoringNotificationChannels']! as List).cast<String>()).input(),
+      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic']! as String).input(),
+      schemaVersion: map['schemaVersion'] == null ? null : (map['schemaVersion']! as String).input(),
     );
   }
 }

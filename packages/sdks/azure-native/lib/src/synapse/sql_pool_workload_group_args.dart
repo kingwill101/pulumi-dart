@@ -69,15 +69,15 @@ class SqlPoolWorkloadGroupArgs {
 
   factory SqlPoolWorkloadGroupArgs.fromMap(Map<String, dynamic> map) {
     return SqlPoolWorkloadGroupArgs(
-      importance: map['importance'] == null ? null : (map['importance'] as String).input(),
+      importance: map['importance'] == null ? null : (map['importance']! as String).input(),
       maxResourcePercent: (map['maxResourcePercent'] as int).input(),
-      maxResourcePercentPerRequest: map['maxResourcePercentPerRequest'] == null ? null : (map['maxResourcePercentPerRequest'] as double).input(),
+      maxResourcePercentPerRequest: map['maxResourcePercentPerRequest'] == null ? null : (map['maxResourcePercentPerRequest']! as double).input(),
       minResourcePercent: (map['minResourcePercent'] as int).input(),
       minResourcePercentPerRequest: (map['minResourcePercentPerRequest'] as double).input(),
-      queryExecutionTimeout: map['queryExecutionTimeout'] == null ? null : (map['queryExecutionTimeout'] as int).input(),
+      queryExecutionTimeout: map['queryExecutionTimeout'] == null ? null : (map['queryExecutionTimeout']! as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sqlPoolName: (map['sqlPoolName'] as String).input(),
-      workloadGroupName: map['workloadGroupName'] == null ? null : (map['workloadGroupName'] as String).input(),
+      workloadGroupName: map['workloadGroupName'] == null ? null : (map['workloadGroupName']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

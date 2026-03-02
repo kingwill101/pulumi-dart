@@ -29,8 +29,8 @@ class GetBucketObjectArgs {
 
   factory GetBucketObjectArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectArgs(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

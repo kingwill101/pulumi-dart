@@ -32,9 +32,9 @@ class LogicalNetworkStatusResponse {
 
   factory LogicalNetworkStatusResponse.fromMap(Map<String, dynamic> map) {
     return LogicalNetworkStatusResponse(
-      errorCode: map['errorCode'] == null ? null : (map['errorCode'] as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
-      provisioningStatus: map['provisioningStatus'] == null ? null : (LogicalNetworkStatusProvisioningStatusResponse.fromMap((map['provisioningStatus'] as Map).cast<String, dynamic>())).input(),
+      errorCode: map['errorCode'] == null ? null : (map['errorCode']! as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      provisioningStatus: map['provisioningStatus'] == null ? null : (LogicalNetworkStatusProvisioningStatusResponse.fromMap((map['provisioningStatus']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

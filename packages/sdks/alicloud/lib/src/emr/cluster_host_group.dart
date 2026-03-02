@@ -94,22 +94,22 @@ class ClusterHostGroup {
 
   factory ClusterHostGroup.fromMap(Map<String, dynamic> map) {
     return ClusterHostGroup(
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      chargeType: map['chargeType'] == null ? null : (map['chargeType'] as String).input(),
-      decommissionTimeout: map['decommissionTimeout'] == null ? null : (map['decommissionTimeout'] as int).input(),
-      diskCapacity: map['diskCapacity'] == null ? null : (map['diskCapacity'] as String).input(),
-      diskCount: map['diskCount'] == null ? null : (map['diskCount'] as String).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
-      enableGracefulDecommission: map['enableGracefulDecommission'] == null ? null : (map['enableGracefulDecommission'] as bool).input(),
-      gpuDriver: map['gpuDriver'] == null ? null : (map['gpuDriver'] as String).input(),
-      hostGroupName: map['hostGroupName'] == null ? null : (map['hostGroupName'] as String).input(),
-      hostGroupType: map['hostGroupType'] == null ? null : (map['hostGroupType'] as String).input(),
-      instanceList: map['instanceList'] == null ? null : (map['instanceList'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      sysDiskCapacity: map['sysDiskCapacity'] == null ? null : (map['sysDiskCapacity'] as String).input(),
-      sysDiskType: map['sysDiskType'] == null ? null : (map['sysDiskType'] as String).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      chargeType: map['chargeType'] == null ? null : (map['chargeType']! as String).input(),
+      decommissionTimeout: map['decommissionTimeout'] == null ? null : (map['decommissionTimeout']! as int).input(),
+      diskCapacity: map['diskCapacity'] == null ? null : (map['diskCapacity']! as String).input(),
+      diskCount: map['diskCount'] == null ? null : (map['diskCount']! as String).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
+      enableGracefulDecommission: map['enableGracefulDecommission'] == null ? null : (map['enableGracefulDecommission']! as bool).input(),
+      gpuDriver: map['gpuDriver'] == null ? null : (map['gpuDriver']! as String).input(),
+      hostGroupName: map['hostGroupName'] == null ? null : (map['hostGroupName']! as String).input(),
+      hostGroupType: map['hostGroupType'] == null ? null : (map['hostGroupType']! as String).input(),
+      instanceList: map['instanceList'] == null ? null : (map['instanceList']! as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      sysDiskCapacity: map['sysDiskCapacity'] == null ? null : (map['sysDiskCapacity']! as String).input(),
+      sysDiskType: map['sysDiskType'] == null ? null : (map['sysDiskType']! as String).input(),
     );
   }
 }

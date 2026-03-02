@@ -20,7 +20,7 @@ class ConnectAttachmentOptions {
 
   factory ConnectAttachmentOptions.fromMap(Map<String, dynamic> map) {
     return ConnectAttachmentOptions(
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      protocol: map['protocol'] == null ? null : ((map['protocol'] as String).input()).input(),
     );
   }
 }

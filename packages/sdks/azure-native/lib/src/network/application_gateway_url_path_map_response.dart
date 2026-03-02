@@ -73,15 +73,15 @@ class ApplicationGatewayUrlPathMapResponse {
 
   factory ApplicationGatewayUrlPathMapResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayUrlPathMapResponse(
-      defaultBackendAddressPool: map['defaultBackendAddressPool'] == null ? null : (SubResourceResponse.fromMap((map['defaultBackendAddressPool'] as Map).cast<String, dynamic>())).input(),
-      defaultBackendHttpSettings: map['defaultBackendHttpSettings'] == null ? null : (SubResourceResponse.fromMap((map['defaultBackendHttpSettings'] as Map).cast<String, dynamic>())).input(),
-      defaultLoadDistributionPolicy: map['defaultLoadDistributionPolicy'] == null ? null : (SubResourceResponse.fromMap((map['defaultLoadDistributionPolicy'] as Map).cast<String, dynamic>())).input(),
-      defaultRedirectConfiguration: map['defaultRedirectConfiguration'] == null ? null : (SubResourceResponse.fromMap((map['defaultRedirectConfiguration'] as Map).cast<String, dynamic>())).input(),
-      defaultRewriteRuleSet: map['defaultRewriteRuleSet'] == null ? null : (SubResourceResponse.fromMap((map['defaultRewriteRuleSet'] as Map).cast<String, dynamic>())).input(),
+      defaultBackendAddressPool: map['defaultBackendAddressPool'] == null ? null : (SubResourceResponse.fromMap((map['defaultBackendAddressPool']! as Map).cast<String, dynamic>())).input(),
+      defaultBackendHttpSettings: map['defaultBackendHttpSettings'] == null ? null : (SubResourceResponse.fromMap((map['defaultBackendHttpSettings']! as Map).cast<String, dynamic>())).input(),
+      defaultLoadDistributionPolicy: map['defaultLoadDistributionPolicy'] == null ? null : (SubResourceResponse.fromMap((map['defaultLoadDistributionPolicy']! as Map).cast<String, dynamic>())).input(),
+      defaultRedirectConfiguration: map['defaultRedirectConfiguration'] == null ? null : (SubResourceResponse.fromMap((map['defaultRedirectConfiguration']! as Map).cast<String, dynamic>())).input(),
+      defaultRewriteRuleSet: map['defaultRewriteRuleSet'] == null ? null : (SubResourceResponse.fromMap((map['defaultRewriteRuleSet']! as Map).cast<String, dynamic>())).input(),
       etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pathRules: map['pathRules'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayPathRuleResponse>(map['pathRules'], (value) => ApplicationGatewayPathRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pathRules: map['pathRules'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayPathRuleResponse>(map['pathRules']!, (value) => ApplicationGatewayPathRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       type: (map['type'] as String).input(),
     );

@@ -36,10 +36,10 @@ class ConsentLinkParameterDefinition {
 
   factory ConsentLinkParameterDefinition.fromMap(Map<String, dynamic> map) {
     return ConsentLinkParameterDefinition(
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      parameterName: map['parameterName'] == null ? null : (map['parameterName'] as String).input(),
-      redirectUrl: map['redirectUrl'] == null ? null : (map['redirectUrl'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      parameterName: map['parameterName'] == null ? null : (map['parameterName']! as String).input(),
+      redirectUrl: map['redirectUrl'] == null ? null : (map['redirectUrl']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class ClusterEncryptionInfoEncryptionInTransit {
 
   factory ClusterEncryptionInfoEncryptionInTransit.fromMap(Map<String, dynamic> map) {
     return ClusterEncryptionInfoEncryptionInTransit(
-      clientBroker: map['clientBroker'] == null ? null : (map['clientBroker'] as String).input(),
-      inCluster: map['inCluster'] == null ? null : (map['inCluster'] as bool).input(),
+      clientBroker: map['clientBroker'] == null ? null : ((map['clientBroker'] as String).input()).input(),
+      inCluster: map['inCluster'] == null ? null : ((map['inCluster'] as bool).input()).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class AwsDynamoDBContinuousBackupsDescriptionProperties {
 
   factory AwsDynamoDBContinuousBackupsDescriptionProperties.fromMap(Map<String, dynamic> map) {
     return AwsDynamoDBContinuousBackupsDescriptionProperties(
-      continuousBackupsStatus: map['continuousBackupsStatus'] == null ? null : (ContinuousBackupsStatusEnumValue.fromMap((map['continuousBackupsStatus'] as Map).cast<String, dynamic>())).input(),
-      pointInTimeRecoveryDescription: map['pointInTimeRecoveryDescription'] == null ? null : (PointInTimeRecoveryDescription.fromMap((map['pointInTimeRecoveryDescription'] as Map).cast<String, dynamic>())).input(),
+      continuousBackupsStatus: map['continuousBackupsStatus'] == null ? null : (ContinuousBackupsStatusEnumValue.fromMap((map['continuousBackupsStatus']! as Map).cast<String, dynamic>())).input(),
+      pointInTimeRecoveryDescription: map['pointInTimeRecoveryDescription'] == null ? null : (PointInTimeRecoveryDescription.fromMap((map['pointInTimeRecoveryDescription']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

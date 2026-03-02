@@ -65,13 +65,13 @@ class WorkspaceLoggerArgs {
 
   factory WorkspaceLoggerArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceLoggerArgs(
-      credentials: map['credentials'] == null ? null : ((map['credentials'] as Map).cast<String, String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      isBuffered: map['isBuffered'] == null ? null : (map['isBuffered'] as bool).input(),
-      loggerId: map['loggerId'] == null ? null : (map['loggerId'] as String).input(),
+      credentials: map['credentials'] == null ? null : ((map['credentials']! as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      isBuffered: map['isBuffered'] == null ? null : (map['isBuffered']! as bool).input(),
+      loggerId: map['loggerId'] == null ? null : (map['loggerId']! as String).input(),
       loggerType: (map['loggerType'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
       serviceName: (map['serviceName'] as String).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );

@@ -94,16 +94,16 @@ class MetricArgs {
 
   factory MetricArgs.fromMap(Map<String, dynamic> map) {
     return MetricArgs(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      bucketOptions: map['bucketOptions'] == null ? null : (MetricBucketOptions.fromMap((map['bucketOptions'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
+      bucketOptions: map['bucketOptions'] == null ? null : (MetricBucketOptions.fromMap((map['bucketOptions']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
       filter: (map['filter'] as String).input(),
-      labelExtractors: map['labelExtractors'] == null ? null : ((map['labelExtractors'] as Map).cast<String, String>()).input(),
-      metricDescriptor: map['metricDescriptor'] == null ? null : (MetricMetricDescriptor.fromMap((map['metricDescriptor'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      valueExtractor: map['valueExtractor'] == null ? null : (map['valueExtractor'] as String).input(),
+      labelExtractors: map['labelExtractors'] == null ? null : ((map['labelExtractors']! as Map).cast<String, String>()).input(),
+      metricDescriptor: map['metricDescriptor'] == null ? null : (MetricMetricDescriptor.fromMap((map['metricDescriptor']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      valueExtractor: map['valueExtractor'] == null ? null : (map['valueExtractor']! as String).input(),
     );
   }
 }

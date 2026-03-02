@@ -21,7 +21,7 @@ class ApplicationManagementPolicyResponse {
 
   factory ApplicationManagementPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationManagementPolicyResponse(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
     );
   }
 }

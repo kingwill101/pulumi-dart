@@ -33,9 +33,9 @@ class DistributionOriginVpcOriginConfig {
 
   factory DistributionOriginVpcOriginConfig.fromMap(Map<String, dynamic> map) {
     return DistributionOriginVpcOriginConfig(
-      originKeepaliveTimeout: map['originKeepaliveTimeout'] == null ? null : (map['originKeepaliveTimeout'] as int).input(),
-      originReadTimeout: map['originReadTimeout'] == null ? null : (map['originReadTimeout'] as int).input(),
-      ownerAccountId: map['ownerAccountId'] == null ? null : (map['ownerAccountId'] as String).input(),
+      originKeepaliveTimeout: map['originKeepaliveTimeout'] == null ? null : ((map['originKeepaliveTimeout'] as int).input()).input(),
+      originReadTimeout: map['originReadTimeout'] == null ? null : ((map['originReadTimeout'] as int).input()).input(),
+      ownerAccountId: map['ownerAccountId'] == null ? null : ((map['ownerAccountId'] as String).input()).input(),
       vpcOriginId: (map['vpcOriginId'] as String).input(),
     );
   }

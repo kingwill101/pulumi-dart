@@ -79,15 +79,15 @@ class ServerGroupServer {
 
   factory ServerGroupServer.fromMap(Map<String, dynamic> map) {
     return ServerGroupServer(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      remoteIpEnabled: map['remoteIpEnabled'] == null ? null : (map['remoteIpEnabled'] as bool).input(),
-      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      remoteIpEnabled: map['remoteIpEnabled'] == null ? null : (map['remoteIpEnabled']! as bool).input(),
+      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId']! as String).input(),
       serverId: (map['serverId'] as String).input(),
-      serverIp: map['serverIp'] == null ? null : (map['serverIp'] as String).input(),
+      serverIp: map['serverIp'] == null ? null : (map['serverIp']! as String).input(),
       serverType: (map['serverType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

@@ -41,7 +41,7 @@ class WorkspaceManagerConfigurationArgs {
     return WorkspaceManagerConfigurationArgs(
       mode: (map['mode'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceManagerConfigurationName: map['workspaceManagerConfigurationName'] == null ? null : (map['workspaceManagerConfigurationName'] as String).input(),
+      workspaceManagerConfigurationName: map['workspaceManagerConfigurationName'] == null ? null : (map['workspaceManagerConfigurationName']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

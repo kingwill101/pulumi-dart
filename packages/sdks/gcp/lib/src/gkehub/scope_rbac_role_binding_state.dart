@@ -21,7 +21,7 @@ class ScopeRbacRoleBindingState {
 
   factory ScopeRbacRoleBindingState.fromMap(Map<String, dynamic> map) {
     return ScopeRbacRoleBindingState(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
     );
   }
 }

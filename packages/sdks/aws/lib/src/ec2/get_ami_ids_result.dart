@@ -56,7 +56,7 @@ class GetAmiIdsResult {
   factory GetAmiIdsResult.fromMap(Map<String, dynamic> map) {
     return GetAmiIdsResult(
       executableUsers: map['executableUsers'] == null ? null : (map['executableUsers'] as List).cast<String>(),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetAmiIdsFilter>(map['filters'], (value) => GetAmiIdsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetAmiIdsFilter>(map['filters']!, (value) => GetAmiIdsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       includeDeprecated: map['includeDeprecated'] == null ? null : map['includeDeprecated'] as bool,

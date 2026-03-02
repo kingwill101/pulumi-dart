@@ -27,7 +27,7 @@ class VirtualMachineOsProfileWindowsConfigWinrm {
 
   factory VirtualMachineOsProfileWindowsConfigWinrm.fromMap(Map<String, dynamic> map) {
     return VirtualMachineOsProfileWindowsConfigWinrm(
-      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl'] as String).input(),
+      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl']! as String).input(),
       protocol: (map['protocol'] as String).input(),
     );
   }

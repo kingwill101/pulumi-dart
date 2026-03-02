@@ -41,9 +41,9 @@ class BucketNotificationQueue {
   factory BucketNotificationQueue.fromMap(Map<String, dynamic> map) {
     return BucketNotificationQueue(
       events: ((map['events'] as List).cast<String>()).input(),
-      filterPrefix: map['filterPrefix'] == null ? null : (map['filterPrefix'] as String).input(),
-      filterSuffix: map['filterSuffix'] == null ? null : (map['filterSuffix'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      filterPrefix: map['filterPrefix'] == null ? null : ((map['filterPrefix'] as String).input()).input(),
+      filterSuffix: map['filterSuffix'] == null ? null : ((map['filterSuffix'] as String).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
       queueArn: (map['queueArn'] as String).input(),
     );
   }

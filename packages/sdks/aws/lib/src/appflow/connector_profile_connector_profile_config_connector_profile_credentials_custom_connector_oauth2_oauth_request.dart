@@ -25,8 +25,8 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomCon
 
   factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2OauthRequest.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2OauthRequest(
-      authCode: map['authCode'] == null ? null : (map['authCode'] as String).input(),
-      redirectUri: map['redirectUri'] == null ? null : (map['redirectUri'] as String).input(),
+      authCode: map['authCode'] == null ? null : ((map['authCode'] as String).input()).input(),
+      redirectUri: map['redirectUri'] == null ? null : ((map['redirectUri'] as String).input()).input(),
     );
   }
 }

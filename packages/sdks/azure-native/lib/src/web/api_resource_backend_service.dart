@@ -21,7 +21,7 @@ class ApiResourceBackendService {
 
   factory ApiResourceBackendService.fromMap(Map<String, dynamic> map) {
     return ApiResourceBackendService(
-      serviceUrl: map['serviceUrl'] == null ? null : (map['serviceUrl'] as String).input(),
+      serviceUrl: map['serviceUrl'] == null ? null : (map['serviceUrl']! as String).input(),
     );
   }
 }

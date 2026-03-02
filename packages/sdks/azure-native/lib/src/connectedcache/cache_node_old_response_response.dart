@@ -47,12 +47,12 @@ class CacheNodeOldResponseResponse {
 
   factory CacheNodeOldResponseResponse.fromMap(Map<String, dynamic> map) {
     return CacheNodeOldResponseResponse(
-      error: map['error'] == null ? null : (ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      error: map['error'] == null ? null : (ErrorDetailResponse.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       status: (map['status'] as String).input(),
-      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as String).input(),
-      statusDetails: map['statusDetails'] == null ? null : (map['statusDetails'] as String).input(),
-      statusText: map['statusText'] == null ? null : (map['statusText'] as String).input(),
+      statusCode: map['statusCode'] == null ? null : (map['statusCode']! as String).input(),
+      statusDetails: map['statusDetails'] == null ? null : (map['statusDetails']! as String).input(),
+      statusText: map['statusText'] == null ? null : (map['statusText']! as String).input(),
     );
   }
 }

@@ -92,20 +92,20 @@ class IngressResponse {
 
   factory IngressResponse.fromMap(Map<String, dynamic> map) {
     return IngressResponse(
-      additionalPortMappings: map['additionalPortMappings'] == null ? null : (pulumi.Input.decodeList<IngressPortMappingResponse>(map['additionalPortMappings'], (value) => IngressPortMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      allowInsecure: map['allowInsecure'] == null ? null : (map['allowInsecure'] as bool).input(),
-      clientCertificateMode: map['clientCertificateMode'] == null ? null : (map['clientCertificateMode'] as String).input(),
-      corsPolicy: map['corsPolicy'] == null ? null : (CorsPolicyResponse.fromMap((map['corsPolicy'] as Map).cast<String, dynamic>())).input(),
-      customDomains: map['customDomains'] == null ? null : (pulumi.Input.decodeList<CustomDomainResponse>(map['customDomains'], (value) => CustomDomainResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      exposedPort: map['exposedPort'] == null ? null : (map['exposedPort'] as int).input(),
-      external: map['external'] == null ? null : (map['external'] as bool).input(),
+      additionalPortMappings: map['additionalPortMappings'] == null ? null : (pulumi.Input.decodeList<IngressPortMappingResponse>(map['additionalPortMappings']!, (value) => IngressPortMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowInsecure: map['allowInsecure'] == null ? null : (map['allowInsecure']! as bool).input(),
+      clientCertificateMode: map['clientCertificateMode'] == null ? null : (map['clientCertificateMode']! as String).input(),
+      corsPolicy: map['corsPolicy'] == null ? null : (CorsPolicyResponse.fromMap((map['corsPolicy']! as Map).cast<String, dynamic>())).input(),
+      customDomains: map['customDomains'] == null ? null : (pulumi.Input.decodeList<CustomDomainResponse>(map['customDomains']!, (value) => CustomDomainResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      exposedPort: map['exposedPort'] == null ? null : (map['exposedPort']! as int).input(),
+      external: map['external'] == null ? null : (map['external']! as bool).input(),
       fqdn: (map['fqdn'] as String).input(),
-      ipSecurityRestrictions: map['ipSecurityRestrictions'] == null ? null : (pulumi.Input.decodeList<IpSecurityRestrictionRuleResponse>(map['ipSecurityRestrictions'], (value) => IpSecurityRestrictionRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      stickySessions: map['stickySessions'] == null ? null : (IngressResponseStickySessions.fromMap((map['stickySessions'] as Map).cast<String, dynamic>())).input(),
-      targetPort: map['targetPort'] == null ? null : (map['targetPort'] as int).input(),
-      targetPortHttpScheme: map['targetPortHttpScheme'] == null ? null : (map['targetPortHttpScheme'] as String).input(),
-      traffic: map['traffic'] == null ? null : (pulumi.Input.decodeList<TrafficWeightResponse>(map['traffic'], (value) => TrafficWeightResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      transport: map['transport'] == null ? null : (map['transport'] as String).input(),
+      ipSecurityRestrictions: map['ipSecurityRestrictions'] == null ? null : (pulumi.Input.decodeList<IpSecurityRestrictionRuleResponse>(map['ipSecurityRestrictions']!, (value) => IpSecurityRestrictionRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stickySessions: map['stickySessions'] == null ? null : (IngressResponseStickySessions.fromMap((map['stickySessions']! as Map).cast<String, dynamic>())).input(),
+      targetPort: map['targetPort'] == null ? null : (map['targetPort']! as int).input(),
+      targetPortHttpScheme: map['targetPortHttpScheme'] == null ? null : (map['targetPortHttpScheme']! as String).input(),
+      traffic: map['traffic'] == null ? null : (pulumi.Input.decodeList<TrafficWeightResponse>(map['traffic']!, (value) => TrafficWeightResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      transport: map['transport'] == null ? null : (map['transport']! as String).input(),
     );
   }
 }

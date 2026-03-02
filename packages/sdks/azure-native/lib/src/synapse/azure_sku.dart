@@ -31,7 +31,7 @@ class AzureSku {
 
   factory AzureSku.fromMap(Map<String, dynamic> map) {
     return AzureSku(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
       name: (map['name'] as String).input(),
       size: (map['size'] as String).input(),
     );

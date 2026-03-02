@@ -30,7 +30,7 @@ class V3ConcurrencyConfigArgs {
   factory V3ConcurrencyConfigArgs.fromMap(Map<String, dynamic> map) {
     return V3ConcurrencyConfigArgs(
       functionName: (map['functionName'] as String).input(),
-      reservedConcurrency: map['reservedConcurrency'] == null ? null : (map['reservedConcurrency'] as int).input(),
+      reservedConcurrency: map['reservedConcurrency'] == null ? null : (map['reservedConcurrency']! as int).input(),
     );
   }
 }

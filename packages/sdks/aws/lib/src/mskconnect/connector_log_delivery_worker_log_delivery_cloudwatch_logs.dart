@@ -26,7 +26,7 @@ class ConnectorLogDeliveryWorkerLogDeliveryCloudwatchLogs {
   factory ConnectorLogDeliveryWorkerLogDeliveryCloudwatchLogs.fromMap(Map<String, dynamic> map) {
     return ConnectorLogDeliveryWorkerLogDeliveryCloudwatchLogs(
       enabled: (map['enabled'] as bool).input(),
-      logGroup: map['logGroup'] == null ? null : (map['logGroup'] as String).input(),
+      logGroup: map['logGroup'] == null ? null : ((map['logGroup'] as String).input()).input(),
     );
   }
 }

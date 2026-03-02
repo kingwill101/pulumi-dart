@@ -31,7 +31,7 @@ class BucketResponseHeaderArgs {
   factory BucketResponseHeaderArgs.fromMap(Map<String, dynamic> map) {
     return BucketResponseHeaderArgs(
       bucket: (map['bucket'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<BucketResponseHeaderRule>(map['rules'], (value) => BucketResponseHeaderRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<BucketResponseHeaderRule>(map['rules']!, (value) => BucketResponseHeaderRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

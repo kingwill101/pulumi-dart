@@ -32,9 +32,9 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
 
   factory GoogleCloudDialogflowV2SpeechToTextConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2SpeechToTextConfig(
-      model: map['model'] == null ? null : (map['model'] as String).input(),
-      speechModelVariant: map['speechModelVariant'] == null ? null : (GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant.fromValue(map['speechModelVariant'] as String)).input(),
-      useTimeoutBasedEndpointing: map['useTimeoutBasedEndpointing'] == null ? null : (map['useTimeoutBasedEndpointing'] as bool).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
+      speechModelVariant: map['speechModelVariant'] == null ? null : (GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant.fromValue(map['speechModelVariant']! as String)).input(),
+      useTimeoutBasedEndpointing: map['useTimeoutBasedEndpointing'] == null ? null : (map['useTimeoutBasedEndpointing']! as bool).input(),
     );
   }
 }

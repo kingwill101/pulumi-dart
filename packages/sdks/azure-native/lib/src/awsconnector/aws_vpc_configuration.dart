@@ -31,9 +31,9 @@ class AwsVpcConfiguration {
 
   factory AwsVpcConfiguration.fromMap(Map<String, dynamic> map) {
     return AwsVpcConfiguration(
-      assignPublicIp: map['assignPublicIp'] == null ? null : (map['assignPublicIp'] as String).input(),
-      securityGroups: map['securityGroups'] == null ? null : ((map['securityGroups'] as List).cast<String>()).input(),
-      subnets: map['subnets'] == null ? null : ((map['subnets'] as List).cast<String>()).input(),
+      assignPublicIp: map['assignPublicIp'] == null ? null : (map['assignPublicIp']! as String).input(),
+      securityGroups: map['securityGroups'] == null ? null : ((map['securityGroups']! as List).cast<String>()).input(),
+      subnets: map['subnets'] == null ? null : ((map['subnets']! as List).cast<String>()).input(),
     );
   }
 }

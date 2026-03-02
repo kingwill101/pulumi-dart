@@ -30,7 +30,7 @@ class V3VpcBindingArgs {
   factory V3VpcBindingArgs.fromMap(Map<String, dynamic> map) {
     return V3VpcBindingArgs(
       functionName: (map['functionName'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

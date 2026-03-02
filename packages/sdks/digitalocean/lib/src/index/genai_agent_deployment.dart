@@ -50,13 +50,13 @@ class GenaiAgentDeployment {
 
   factory GenaiAgentDeployment.fromMap(Map<String, dynamic> map) {
     return GenaiAgentDeployment(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
-      visibility: map['visibility'] == null ? null : (map['visibility'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
+      visibility: map['visibility'] == null ? null : (map['visibility']! as String).input(),
     );
   }
 }

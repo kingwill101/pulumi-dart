@@ -29,7 +29,7 @@ class ClusterSku {
 
   factory ClusterSku.fromMap(Map<String, dynamic> map) {
     return ClusterSku(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
       name: (map['name'] as String).input(),
     );
   }

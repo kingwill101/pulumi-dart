@@ -31,8 +31,8 @@ class GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigScaling {
 
   factory GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigScaling.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigScaling(
-      cpuUtilizationTarget: map['cpuUtilizationTarget'] == null ? null : (map['cpuUtilizationTarget'] as int).input(),
-      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount'] as int).input(),
+      cpuUtilizationTarget: map['cpuUtilizationTarget'] == null ? null : (map['cpuUtilizationTarget']! as int).input(),
+      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount']! as int).input(),
       minNodeCount: (map['minNodeCount'] as int).input(),
     );
   }

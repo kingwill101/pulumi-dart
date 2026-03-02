@@ -20,7 +20,7 @@ class LakeMetastore {
 
   factory LakeMetastore.fromMap(Map<String, dynamic> map) {
     return LakeMetastore(
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

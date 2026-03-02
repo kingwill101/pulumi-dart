@@ -64,15 +64,15 @@ class GetGatewaysArgs {
 
   factory GetGatewaysArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewaysArgs(
-      businessStatus: map['businessStatus'] == null ? null : (map['businessStatus'] as String).input(),
-      enableIpsec: map['enableIpsec'] == null ? null : (map['enableIpsec'] as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      includeReservationData: map['includeReservationData'] == null ? null : (map['includeReservationData'] as bool).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      sslVpn: map['sslVpn'] == null ? null : (map['sslVpn'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      businessStatus: map['businessStatus'] == null ? null : (map['businessStatus']! as String).input(),
+      enableIpsec: map['enableIpsec'] == null ? null : (map['enableIpsec']! as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      includeReservationData: map['includeReservationData'] == null ? null : (map['includeReservationData']! as bool).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      sslVpn: map['sslVpn'] == null ? null : (map['sslVpn']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

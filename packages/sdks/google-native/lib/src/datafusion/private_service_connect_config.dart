@@ -27,7 +27,7 @@ class PrivateServiceConnectConfig {
   factory PrivateServiceConnectConfig.fromMap(Map<String, dynamic> map) {
     return PrivateServiceConnectConfig(
       networkAttachment: (map['networkAttachment'] as String).input(),
-      unreachableCidrBlock: map['unreachableCidrBlock'] == null ? null : (map['unreachableCidrBlock'] as String).input(),
+      unreachableCidrBlock: map['unreachableCidrBlock'] == null ? null : (map['unreachableCidrBlock']! as String).input(),
     );
   }
 }

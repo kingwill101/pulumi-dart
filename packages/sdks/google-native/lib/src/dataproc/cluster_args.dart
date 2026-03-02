@@ -60,14 +60,14 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      actionOnFailedPrimaryWorkers: map['actionOnFailedPrimaryWorkers'] == null ? null : (map['actionOnFailedPrimaryWorkers'] as String).input(),
+      actionOnFailedPrimaryWorkers: map['actionOnFailedPrimaryWorkers'] == null ? null : (map['actionOnFailedPrimaryWorkers']! as String).input(),
       clusterName: (map['clusterName'] as String).input(),
-      config: map['config'] == null ? null : (ClusterConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      config: map['config'] == null ? null : (ClusterConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      virtualClusterConfig: map['virtualClusterConfig'] == null ? null : (VirtualClusterConfig.fromMap((map['virtualClusterConfig'] as Map).cast<String, dynamic>())).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      virtualClusterConfig: map['virtualClusterConfig'] == null ? null : (VirtualClusterConfig.fromMap((map['virtualClusterConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -67,13 +67,13 @@ class AiFeatureGroupIamMemberState {
 
   factory AiFeatureGroupIamMemberState.fromMap(Map<String, dynamic> map) {
     return AiFeatureGroupIamMemberState(
-      condition: map['condition'] == null ? null : (AiFeatureGroupIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      featureGroup: map['featureGroup'] == null ? null : (map['featureGroup'] as String).input(),
-      member: map['member'] == null ? null : (map['member'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      condition: map['condition'] == null ? null : (AiFeatureGroupIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      featureGroup: map['featureGroup'] == null ? null : (map['featureGroup']! as String).input(),
+      member: map['member'] == null ? null : (map['member']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

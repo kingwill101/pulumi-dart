@@ -62,9 +62,9 @@ class WorkloadIdentityPoolProviderOidc {
 
   factory WorkloadIdentityPoolProviderOidc.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolProviderOidc(
-      allowedAudiences: map['allowedAudiences'] == null ? null : ((map['allowedAudiences'] as List).cast<String>()).input(),
+      allowedAudiences: map['allowedAudiences'] == null ? null : ((map['allowedAudiences']! as List).cast<String>()).input(),
       issuerUri: (map['issuerUri'] as String).input(),
-      jwksJson: map['jwksJson'] == null ? null : (map['jwksJson'] as String).input(),
+      jwksJson: map['jwksJson'] == null ? null : (map['jwksJson']! as String).input(),
     );
   }
 }

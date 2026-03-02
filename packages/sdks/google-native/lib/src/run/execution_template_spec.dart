@@ -28,7 +28,7 @@ class ExecutionTemplateSpec {
 
   factory ExecutionTemplateSpec.fromMap(Map<String, dynamic> map) {
     return ExecutionTemplateSpec(
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
       spec: (ExecutionSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }

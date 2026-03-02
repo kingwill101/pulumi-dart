@@ -27,8 +27,8 @@ class ConnectionMonitorOutput {
 
   factory ConnectionMonitorOutput.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorOutput(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      workspaceSettings: map['workspaceSettings'] == null ? null : (ConnectionMonitorWorkspaceSettings.fromMap((map['workspaceSettings'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      workspaceSettings: map['workspaceSettings'] == null ? null : (ConnectionMonitorWorkspaceSettings.fromMap((map['workspaceSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

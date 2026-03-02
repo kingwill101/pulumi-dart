@@ -27,8 +27,8 @@ class SecretConfigurationResponse {
 
   factory SecretConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return SecretConfigurationResponse(
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
-      workspaceSecretName: map['workspaceSecretName'] == null ? null : (map['workspaceSecretName'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      workspaceSecretName: map['workspaceSecretName'] == null ? null : (map['workspaceSecretName']! as String).input(),
     );
   }
 }

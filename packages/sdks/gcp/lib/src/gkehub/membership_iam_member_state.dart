@@ -69,13 +69,13 @@ class MembershipIamMemberState {
 
   factory MembershipIamMemberState.fromMap(Map<String, dynamic> map) {
     return MembershipIamMemberState(
-      condition: map['condition'] == null ? null : (MembershipIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      member: map['member'] == null ? null : (map['member'] as String).input(),
-      membershipId: map['membershipId'] == null ? null : (map['membershipId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      condition: map['condition'] == null ? null : (MembershipIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      member: map['member'] == null ? null : (map['member']! as String).input(),
+      membershipId: map['membershipId'] == null ? null : (map['membershipId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ConnectionMonitorEndpointScopeItemResponse {
 
   factory ConnectionMonitorEndpointScopeItemResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorEndpointScopeItemResponse(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
     );
   }
 }

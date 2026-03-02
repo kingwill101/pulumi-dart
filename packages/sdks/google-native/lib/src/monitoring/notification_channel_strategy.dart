@@ -26,8 +26,8 @@ class NotificationChannelStrategy {
 
   factory NotificationChannelStrategy.fromMap(Map<String, dynamic> map) {
     return NotificationChannelStrategy(
-      notificationChannelNames: map['notificationChannelNames'] == null ? null : ((map['notificationChannelNames'] as List).cast<String>()).input(),
-      renotifyInterval: map['renotifyInterval'] == null ? null : (map['renotifyInterval'] as String).input(),
+      notificationChannelNames: map['notificationChannelNames'] == null ? null : ((map['notificationChannelNames']! as List).cast<String>()).input(),
+      renotifyInterval: map['renotifyInterval'] == null ? null : (map['renotifyInterval']! as String).input(),
     );
   }
 }

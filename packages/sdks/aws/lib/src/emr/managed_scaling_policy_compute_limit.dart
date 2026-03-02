@@ -41,8 +41,8 @@ class ManagedScalingPolicyComputeLimit {
   factory ManagedScalingPolicyComputeLimit.fromMap(Map<String, dynamic> map) {
     return ManagedScalingPolicyComputeLimit(
       maximumCapacityUnits: (map['maximumCapacityUnits'] as int).input(),
-      maximumCoreCapacityUnits: map['maximumCoreCapacityUnits'] == null ? null : (map['maximumCoreCapacityUnits'] as int).input(),
-      maximumOndemandCapacityUnits: map['maximumOndemandCapacityUnits'] == null ? null : (map['maximumOndemandCapacityUnits'] as int).input(),
+      maximumCoreCapacityUnits: map['maximumCoreCapacityUnits'] == null ? null : ((map['maximumCoreCapacityUnits'] as int).input()).input(),
+      maximumOndemandCapacityUnits: map['maximumOndemandCapacityUnits'] == null ? null : ((map['maximumOndemandCapacityUnits'] as int).input()).input(),
       minimumCapacityUnits: (map['minimumCapacityUnits'] as int).input(),
       unitType: (map['unitType'] as String).input(),
     );

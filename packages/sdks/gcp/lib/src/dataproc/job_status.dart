@@ -35,10 +35,10 @@ class JobStatus {
 
   factory JobStatus.fromMap(Map<String, dynamic> map) {
     return JobStatus(
-      details: map['details'] == null ? null : (map['details'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      stateStartTime: map['stateStartTime'] == null ? null : (map['stateStartTime'] as String).input(),
-      substate: map['substate'] == null ? null : (map['substate'] as String).input(),
+      details: map['details'] == null ? null : (map['details']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      stateStartTime: map['stateStartTime'] == null ? null : (map['stateStartTime']! as String).input(),
+      substate: map['substate'] == null ? null : (map['substate']! as String).input(),
     );
   }
 }

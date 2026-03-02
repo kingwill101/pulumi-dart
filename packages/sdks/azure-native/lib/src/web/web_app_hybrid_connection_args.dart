@@ -80,18 +80,18 @@ class WebAppHybridConnectionArgs {
 
   factory WebAppHybridConnectionArgs.fromMap(Map<String, dynamic> map) {
     return WebAppHybridConnectionArgs(
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      relayArmUri: map['relayArmUri'] == null ? null : (map['relayArmUri'] as String).input(),
-      relayName: map['relayName'] == null ? null : (map['relayName'] as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      relayArmUri: map['relayArmUri'] == null ? null : (map['relayArmUri']! as String).input(),
+      relayName: map['relayName'] == null ? null : (map['relayName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sendKeyName: map['sendKeyName'] == null ? null : (map['sendKeyName'] as String).input(),
-      sendKeyValue: map['sendKeyValue'] == null ? null : (map['sendKeyValue'] as String).input(),
-      serviceBusNamespace: map['serviceBusNamespace'] == null ? null : (map['serviceBusNamespace'] as String).input(),
-      serviceBusSuffix: map['serviceBusSuffix'] == null ? null : (map['serviceBusSuffix'] as String).input(),
+      sendKeyName: map['sendKeyName'] == null ? null : (map['sendKeyName']! as String).input(),
+      sendKeyValue: map['sendKeyValue'] == null ? null : (map['sendKeyValue']! as String).input(),
+      serviceBusNamespace: map['serviceBusNamespace'] == null ? null : (map['serviceBusNamespace']! as String).input(),
+      serviceBusSuffix: map['serviceBusSuffix'] == null ? null : (map['serviceBusSuffix']! as String).input(),
     );
   }
 }

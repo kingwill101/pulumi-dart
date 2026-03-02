@@ -33,9 +33,9 @@ class NetworkProfile {
 
   factory NetworkProfile.fromMap(Map<String, dynamic> map) {
     return NetworkProfile(
-      networkApiVersion: map['networkApiVersion'] == null ? null : (map['networkApiVersion'] as String).input(),
-      networkInterfaceConfigurations: map['networkInterfaceConfigurations'] == null ? null : (pulumi.Input.decodeList<VirtualMachineNetworkInterfaceConfiguration>(map['networkInterfaceConfigurations'], (value) => VirtualMachineNetworkInterfaceConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<NetworkInterfaceReference>(map['networkInterfaces'], (value) => NetworkInterfaceReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkApiVersion: map['networkApiVersion'] == null ? null : (map['networkApiVersion']! as String).input(),
+      networkInterfaceConfigurations: map['networkInterfaceConfigurations'] == null ? null : (pulumi.Input.decodeList<VirtualMachineNetworkInterfaceConfiguration>(map['networkInterfaceConfigurations']!, (value) => VirtualMachineNetworkInterfaceConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<NetworkInterfaceReference>(map['networkInterfaces']!, (value) => NetworkInterfaceReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -30,7 +30,7 @@ class EventSubscriptionStorageQueueEndpoint {
 
   factory EventSubscriptionStorageQueueEndpoint.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionStorageQueueEndpoint(
-      queueMessageTimeToLiveInSeconds: map['queueMessageTimeToLiveInSeconds'] == null ? null : (map['queueMessageTimeToLiveInSeconds'] as int).input(),
+      queueMessageTimeToLiveInSeconds: map['queueMessageTimeToLiveInSeconds'] == null ? null : (map['queueMessageTimeToLiveInSeconds']! as int).input(),
       queueName: (map['queueName'] as String).input(),
       storageAccountId: (map['storageAccountId'] as String).input(),
     );

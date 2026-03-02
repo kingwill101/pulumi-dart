@@ -28,7 +28,7 @@ class GetBillingAccountIamPolicyArgs {
   factory GetBillingAccountIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingAccountIamPolicyArgs(
       billingAccountId: (map['billingAccountId'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
     );
   }
 }

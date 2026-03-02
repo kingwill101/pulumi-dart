@@ -39,7 +39,7 @@ class ScaleActionResponse {
       cooldown: (map['cooldown'] as String).input(),
       direction: (map['direction'] as String).input(),
       type: (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

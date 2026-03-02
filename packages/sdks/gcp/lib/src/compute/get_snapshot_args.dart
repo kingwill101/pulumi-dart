@@ -45,10 +45,10 @@ class GetSnapshotArgs {
 
   factory GetSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetSnapshotArgs(
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

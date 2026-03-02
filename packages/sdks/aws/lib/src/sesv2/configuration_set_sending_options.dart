@@ -20,7 +20,7 @@ class ConfigurationSetSendingOptions {
 
   factory ConfigurationSetSendingOptions.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetSendingOptions(
-      sendingEnabled: map['sendingEnabled'] == null ? null : (map['sendingEnabled'] as bool).input(),
+      sendingEnabled: map['sendingEnabled'] == null ? null : ((map['sendingEnabled'] as bool).input()).input(),
     );
   }
 }

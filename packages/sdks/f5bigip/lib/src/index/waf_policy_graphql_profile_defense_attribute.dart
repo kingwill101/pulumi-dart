@@ -46,12 +46,12 @@ class WafPolicyGraphqlProfileDefenseAttribute {
 
   factory WafPolicyGraphqlProfileDefenseAttribute.fromMap(Map<String, dynamic> map) {
     return WafPolicyGraphqlProfileDefenseAttribute(
-      allowIntrospectionQueries: map['allowIntrospectionQueries'] == null ? null : (map['allowIntrospectionQueries'] as bool).input(),
-      maximumBatchedQueries: map['maximumBatchedQueries'] == null ? null : (map['maximumBatchedQueries'] as String).input(),
-      maximumStructureDepth: map['maximumStructureDepth'] == null ? null : (map['maximumStructureDepth'] as String).input(),
-      maximumTotalLength: map['maximumTotalLength'] == null ? null : (map['maximumTotalLength'] as String).input(),
-      maximumValueLength: map['maximumValueLength'] == null ? null : (map['maximumValueLength'] as String).input(),
-      tolerateParsingWarnings: map['tolerateParsingWarnings'] == null ? null : (map['tolerateParsingWarnings'] as bool).input(),
+      allowIntrospectionQueries: map['allowIntrospectionQueries'] == null ? null : (map['allowIntrospectionQueries']! as bool).input(),
+      maximumBatchedQueries: map['maximumBatchedQueries'] == null ? null : (map['maximumBatchedQueries']! as String).input(),
+      maximumStructureDepth: map['maximumStructureDepth'] == null ? null : (map['maximumStructureDepth']! as String).input(),
+      maximumTotalLength: map['maximumTotalLength'] == null ? null : (map['maximumTotalLength']! as String).input(),
+      maximumValueLength: map['maximumValueLength'] == null ? null : (map['maximumValueLength']! as String).input(),
+      tolerateParsingWarnings: map['tolerateParsingWarnings'] == null ? null : (map['tolerateParsingWarnings']! as bool).input(),
     );
   }
 }

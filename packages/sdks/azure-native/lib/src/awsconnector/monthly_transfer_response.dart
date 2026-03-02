@@ -21,7 +21,7 @@ class MonthlyTransferResponse {
 
   factory MonthlyTransferResponse.fromMap(Map<String, dynamic> map) {
     return MonthlyTransferResponse(
-      gbPerMonthAllocated: map['gbPerMonthAllocated'] == null ? null : (map['gbPerMonthAllocated'] as String).input(),
+      gbPerMonthAllocated: map['gbPerMonthAllocated'] == null ? null : (map['gbPerMonthAllocated']! as String).input(),
     );
   }
 }

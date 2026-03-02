@@ -36,10 +36,10 @@ class VpcEndpointConnectionAccepterState {
 
   factory VpcEndpointConnectionAccepterState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointConnectionAccepterState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : (map['vpcEndpointId'] as String).input(),
-      vpcEndpointServiceId: map['vpcEndpointServiceId'] == null ? null : (map['vpcEndpointServiceId'] as String).input(),
-      vpcEndpointState: map['vpcEndpointState'] == null ? null : (map['vpcEndpointState'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      vpcEndpointId: map['vpcEndpointId'] == null ? null : ((map['vpcEndpointId'] as String).input()).input(),
+      vpcEndpointServiceId: map['vpcEndpointServiceId'] == null ? null : ((map['vpcEndpointServiceId'] as String).input()).input(),
+      vpcEndpointState: map['vpcEndpointState'] == null ? null : ((map['vpcEndpointState'] as String).input()).input(),
     );
   }
 }

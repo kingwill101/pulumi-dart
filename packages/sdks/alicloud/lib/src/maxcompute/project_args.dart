@@ -79,17 +79,17 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      defaultQuota: map['defaultQuota'] == null ? null : (map['defaultQuota'] as String).input(),
-      ipWhiteList: map['ipWhiteList'] == null ? null : (ProjectIpWhiteList.fromMap((map['ipWhiteList'] as Map).cast<String, dynamic>())).input(),
-      isLogical: map['isLogical'] == null ? null : (map['isLogical'] as String).input(),
-      productType: map['productType'] == null ? null : (map['productType'] as String).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
-      properties: map['properties'] == null ? null : (ProjectProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      securityProperties: map['securityProperties'] == null ? null : (ProjectSecurityProperties.fromMap((map['securityProperties'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      threeTierModel: map['threeTierModel'] == null ? null : (map['threeTierModel'] as bool).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      defaultQuota: map['defaultQuota'] == null ? null : (map['defaultQuota']! as String).input(),
+      ipWhiteList: map['ipWhiteList'] == null ? null : (ProjectIpWhiteList.fromMap((map['ipWhiteList']! as Map).cast<String, dynamic>())).input(),
+      isLogical: map['isLogical'] == null ? null : (map['isLogical']! as String).input(),
+      productType: map['productType'] == null ? null : (map['productType']! as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName']! as String).input(),
+      properties: map['properties'] == null ? null : (ProjectProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      securityProperties: map['securityProperties'] == null ? null : (ProjectSecurityProperties.fromMap((map['securityProperties']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      threeTierModel: map['threeTierModel'] == null ? null : (map['threeTierModel']! as bool).input(),
     );
   }
 }

@@ -24,7 +24,7 @@ class GetLocationsArgs {
 
   factory GetLocationsArgs.fromMap(Map<String, dynamic> map) {
     return GetLocationsArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

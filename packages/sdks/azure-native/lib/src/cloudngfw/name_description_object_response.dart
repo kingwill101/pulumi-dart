@@ -26,7 +26,7 @@ class NameDescriptionObjectResponse {
 
   factory NameDescriptionObjectResponse.fromMap(Map<String, dynamic> map) {
     return NameDescriptionObjectResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

@@ -38,10 +38,10 @@ class MonitorTagRuleLog {
 
   factory MonitorTagRuleLog.fromMap(Map<String, dynamic> map) {
     return MonitorTagRuleLog(
-      aadLogEnabled: map['aadLogEnabled'] == null ? null : (map['aadLogEnabled'] as bool).input(),
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<MonitorTagRuleLogFilter>(map['filters'], (value) => MonitorTagRuleLogFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceLogEnabled: map['resourceLogEnabled'] == null ? null : (map['resourceLogEnabled'] as bool).input(),
-      subscriptionLogEnabled: map['subscriptionLogEnabled'] == null ? null : (map['subscriptionLogEnabled'] as bool).input(),
+      aadLogEnabled: map['aadLogEnabled'] == null ? null : (map['aadLogEnabled']! as bool).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<MonitorTagRuleLogFilter>(map['filters']!, (value) => MonitorTagRuleLogFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceLogEnabled: map['resourceLogEnabled'] == null ? null : (map['resourceLogEnabled']! as bool).input(),
+      subscriptionLogEnabled: map['subscriptionLogEnabled'] == null ? null : (map['subscriptionLogEnabled']! as bool).input(),
     );
   }
 }

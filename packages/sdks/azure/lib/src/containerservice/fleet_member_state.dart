@@ -36,10 +36,10 @@ class FleetMemberState {
 
   factory FleetMemberState.fromMap(Map<String, dynamic> map) {
     return FleetMemberState(
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      kubernetesClusterId: map['kubernetesClusterId'] == null ? null : (map['kubernetesClusterId'] as String).input(),
-      kubernetesFleetId: map['kubernetesFleetId'] == null ? null : (map['kubernetesFleetId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      kubernetesClusterId: map['kubernetesClusterId'] == null ? null : (map['kubernetesClusterId']! as String).input(),
+      kubernetesFleetId: map['kubernetesFleetId'] == null ? null : (map['kubernetesFleetId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

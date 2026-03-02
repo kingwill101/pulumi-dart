@@ -27,9 +27,9 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsS
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings(
-      audioRenditionSets: map['audioRenditionSets'] == null ? null : (map['audioRenditionSets'] as String).input(),
-      nielsenId3Behavior: map['nielsenId3Behavior'] == null ? null : (map['nielsenId3Behavior'] as String).input(),
-      timedMetadataBehavior: map['timedMetadataBehavior'] == null ? null : (map['timedMetadataBehavior'] as String).input(),
+      audioRenditionSets: map['audioRenditionSets'] == null ? null : ((map['audioRenditionSets'] as String).input()).input(),
+      nielsenId3Behavior: map['nielsenId3Behavior'] == null ? null : ((map['nielsenId3Behavior'] as String).input()).input(),
+      timedMetadataBehavior: map['timedMetadataBehavior'] == null ? null : ((map['timedMetadataBehavior'] as String).input()).input(),
     );
   }
 }

@@ -36,8 +36,8 @@ class GradientaiOpenaiApiKeyArgs {
   factory GradientaiOpenaiApiKeyArgs.fromMap(Map<String, dynamic> map) {
     return GradientaiOpenaiApiKeyArgs(
       apiKey: (map['apiKey'] as String).input(),
-      models: map['models'] == null ? null : (pulumi.Input.decodeList<GradientaiOpenaiApiKeyModel>(map['models'], (value) => GradientaiOpenaiApiKeyModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      models: map['models'] == null ? null : (pulumi.Input.decodeList<GradientaiOpenaiApiKeyModel>(map['models']!, (value) => GradientaiOpenaiApiKeyModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

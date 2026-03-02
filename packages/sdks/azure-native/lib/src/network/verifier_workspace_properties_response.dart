@@ -25,7 +25,7 @@ class VerifierWorkspacePropertiesResponse {
 
   factory VerifierWorkspacePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VerifierWorkspacePropertiesResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

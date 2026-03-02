@@ -45,10 +45,10 @@ class AppArgs {
 
   factory AppArgs.fromMap(Map<String, dynamic> map) {
     return AppArgs(
-      dedicatedIps: map['dedicatedIps'] == null ? null : (pulumi.Input.decodeList<AppDedicatedIp>(map['dedicatedIps'], (value) => AppDedicatedIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deploymentPerPage: map['deploymentPerPage'] == null ? null : (map['deploymentPerPage'] as int).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      spec: map['spec'] == null ? null : (AppSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      dedicatedIps: map['dedicatedIps'] == null ? null : (pulumi.Input.decodeList<AppDedicatedIp>(map['dedicatedIps']!, (value) => AppDedicatedIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deploymentPerPage: map['deploymentPerPage'] == null ? null : (map['deploymentPerPage']! as int).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      spec: map['spec'] == null ? null : (AppSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

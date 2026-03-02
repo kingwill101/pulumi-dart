@@ -66,16 +66,16 @@ class DirectoryState {
 
   factory DirectoryState.fromMap(Map<String, dynamic> map) {
     return DirectoryState(
-      billingType: map['billingType'] == null ? null : (map['billingType'] as String).input(),
-      countryCode: map['countryCode'] == null ? null : (map['countryCode'] as String).input(),
-      dataResidencyLocation: map['dataResidencyLocation'] == null ? null : (map['dataResidencyLocation'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      effectiveStartDate: map['effectiveStartDate'] == null ? null : (map['effectiveStartDate'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      billingType: map['billingType'] == null ? null : (map['billingType']! as String).input(),
+      countryCode: map['countryCode'] == null ? null : (map['countryCode']! as String).input(),
+      dataResidencyLocation: map['dataResidencyLocation'] == null ? null : (map['dataResidencyLocation']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      effectiveStartDate: map['effectiveStartDate'] == null ? null : (map['effectiveStartDate']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

@@ -42,10 +42,10 @@ class InstanceGceSetupDataDisks {
 
   factory InstanceGceSetupDataDisks.fromMap(Map<String, dynamic> map) {
     return InstanceGceSetupDataDisks(
-      diskEncryption: map['diskEncryption'] == null ? null : (map['diskEncryption'] as String).input(),
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as String).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      diskEncryption: map['diskEncryption'] == null ? null : (map['diskEncryption']! as String).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as String).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
     );
   }
 }

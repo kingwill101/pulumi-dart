@@ -26,8 +26,8 @@ class LogSetupResponse {
 
   factory LogSetupResponse.fromMap(Map<String, dynamic> map) {
     return LogSetupResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      types: map['types'] == null ? null : ((map['types'] as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      types: map['types'] == null ? null : ((map['types']! as List).cast<String>()).input(),
     );
   }
 }

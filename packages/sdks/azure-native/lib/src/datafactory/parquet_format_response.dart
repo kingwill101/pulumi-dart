@@ -32,8 +32,8 @@ class ParquetFormatResponse {
 
   factory ParquetFormatResponse.fromMap(Map<String, dynamic> map) {
     return ParquetFormatResponse(
-      deserializer: map['deserializer'] == null ? null : (map['deserializer']).input(),
-      serializer: map['serializer'] == null ? null : (map['serializer']).input(),
+      deserializer: map['deserializer'] == null ? null : (map['deserializer']!).input(),
+      serializer: map['serializer'] == null ? null : (map['serializer']!).input(),
       type: (map['type'] as String).input(),
     );
   }

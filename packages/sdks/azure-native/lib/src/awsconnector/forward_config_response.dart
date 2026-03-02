@@ -28,8 +28,8 @@ class ForwardConfigResponse {
 
   factory ForwardConfigResponse.fromMap(Map<String, dynamic> map) {
     return ForwardConfigResponse(
-      targetGroupStickinessConfig: map['targetGroupStickinessConfig'] == null ? null : (TargetGroupStickinessConfigResponse.fromMap((map['targetGroupStickinessConfig'] as Map).cast<String, dynamic>())).input(),
-      targetGroups: map['targetGroups'] == null ? null : (pulumi.Input.decodeList<TargetGroupTupleResponse>(map['targetGroups'], (value) => TargetGroupTupleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetGroupStickinessConfig: map['targetGroupStickinessConfig'] == null ? null : (TargetGroupStickinessConfigResponse.fromMap((map['targetGroupStickinessConfig']! as Map).cast<String, dynamic>())).input(),
+      targetGroups: map['targetGroups'] == null ? null : (pulumi.Input.decodeList<TargetGroupTupleResponse>(map['targetGroups']!, (value) => TargetGroupTupleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

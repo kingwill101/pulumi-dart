@@ -45,11 +45,11 @@ class AiFeatureGroupIamPolicyState {
 
   factory AiFeatureGroupIamPolicyState.fromMap(Map<String, dynamic> map) {
     return AiFeatureGroupIamPolicyState(
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      featureGroup: map['featureGroup'] == null ? null : (map['featureGroup'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      featureGroup: map['featureGroup'] == null ? null : (map['featureGroup']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

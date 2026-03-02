@@ -42,10 +42,10 @@ class TableImportTable {
 
   factory TableImportTable.fromMap(Map<String, dynamic> map) {
     return TableImportTable(
-      inputCompressionType: map['inputCompressionType'] == null ? null : (map['inputCompressionType'] as String).input(),
+      inputCompressionType: map['inputCompressionType'] == null ? null : ((map['inputCompressionType'] as String).input()).input(),
       inputFormat: (map['inputFormat'] as String).input(),
-      inputFormatOptions: map['inputFormatOptions'] == null ? null : (TableImportTableInputFormatOptions.fromMap((map['inputFormatOptions'] as Map).cast<String, dynamic>())).input(),
-      s3BucketSource: (TableImportTableS3BucketSource.fromMap((map['s3BucketSource'] as Map).cast<String, dynamic>())).input(),
+      inputFormatOptions: map['inputFormatOptions'] == null ? null : ((TableImportTableInputFormatOptions.fromMap((map['inputFormatOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      s3BucketSource: (TableImportTableS3BucketSource.fromMap((map['s3BucketSource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

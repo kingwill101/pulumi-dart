@@ -52,13 +52,13 @@ class AwsEc2VPCPeeringConnectionPropertiesResponse {
 
   factory AwsEc2VPCPeeringConnectionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsEc2VPCPeeringConnectionPropertiesResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      peerOwnerId: map['peerOwnerId'] == null ? null : (map['peerOwnerId'] as String).input(),
-      peerRegion: map['peerRegion'] == null ? null : (map['peerRegion'] as String).input(),
-      peerRoleArn: map['peerRoleArn'] == null ? null : (map['peerRoleArn'] as String).input(),
-      peerVpcId: map['peerVpcId'] == null ? null : (map['peerVpcId'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      peerOwnerId: map['peerOwnerId'] == null ? null : (map['peerOwnerId']! as String).input(),
+      peerRegion: map['peerRegion'] == null ? null : (map['peerRegion']! as String).input(),
+      peerRoleArn: map['peerRoleArn'] == null ? null : (map['peerRoleArn']! as String).input(),
+      peerVpcId: map['peerVpcId'] == null ? null : (map['peerVpcId']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

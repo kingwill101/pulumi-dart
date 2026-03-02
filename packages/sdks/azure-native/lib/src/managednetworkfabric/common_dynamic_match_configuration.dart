@@ -34,9 +34,9 @@ class CommonDynamicMatchConfiguration {
 
   factory CommonDynamicMatchConfiguration.fromMap(Map<String, dynamic> map) {
     return CommonDynamicMatchConfiguration(
-      ipGroups: map['ipGroups'] == null ? null : (pulumi.Input.decodeList<IpGroupProperties>(map['ipGroups'], (value) => IpGroupProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      portGroups: map['portGroups'] == null ? null : (pulumi.Input.decodeList<PortGroupProperties>(map['portGroups'], (value) => PortGroupProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vlanGroups: map['vlanGroups'] == null ? null : (pulumi.Input.decodeList<VlanGroupProperties>(map['vlanGroups'], (value) => VlanGroupProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipGroups: map['ipGroups'] == null ? null : (pulumi.Input.decodeList<IpGroupProperties>(map['ipGroups']!, (value) => IpGroupProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      portGroups: map['portGroups'] == null ? null : (pulumi.Input.decodeList<PortGroupProperties>(map['portGroups']!, (value) => PortGroupProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vlanGroups: map['vlanGroups'] == null ? null : (pulumi.Input.decodeList<VlanGroupProperties>(map['vlanGroups']!, (value) => VlanGroupProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class CloudRunRewrite {
 
   factory CloudRunRewrite.fromMap(Map<String, dynamic> map) {
     return CloudRunRewrite(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       serviceId: (map['serviceId'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
     );
   }
 }

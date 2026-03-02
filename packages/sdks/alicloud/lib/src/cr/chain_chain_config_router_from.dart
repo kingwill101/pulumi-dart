@@ -20,7 +20,7 @@ class ChainChainConfigRouterFrom {
 
   factory ChainChainConfigRouterFrom.fromMap(Map<String, dynamic> map) {
     return ChainChainConfigRouterFrom(
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
     );
   }
 }

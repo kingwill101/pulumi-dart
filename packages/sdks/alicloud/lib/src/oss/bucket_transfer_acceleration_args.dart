@@ -30,7 +30,7 @@ class BucketTransferAccelerationArgs {
   factory BucketTransferAccelerationArgs.fromMap(Map<String, dynamic> map) {
     return BucketTransferAccelerationArgs(
       bucket: (map['bucket'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ScaleDownBehaviorEnumValueResponse {
 
   factory ScaleDownBehaviorEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return ScaleDownBehaviorEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

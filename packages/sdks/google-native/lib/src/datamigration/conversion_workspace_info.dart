@@ -26,8 +26,8 @@ class ConversionWorkspaceInfo {
 
   factory ConversionWorkspaceInfo.fromMap(Map<String, dynamic> map) {
     return ConversionWorkspaceInfo(
-      commitId: map['commitId'] == null ? null : (map['commitId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      commitId: map['commitId'] == null ? null : (map['commitId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

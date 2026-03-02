@@ -20,7 +20,7 @@ class ClusterNodePoolAutoConfigNodeKubeletConfig {
 
   factory ClusterNodePoolAutoConfigNodeKubeletConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolAutoConfigNodeKubeletConfig(
-      insecureKubeletReadonlyPortEnabled: map['insecureKubeletReadonlyPortEnabled'] == null ? null : (map['insecureKubeletReadonlyPortEnabled'] as String).input(),
+      insecureKubeletReadonlyPortEnabled: map['insecureKubeletReadonlyPortEnabled'] == null ? null : (map['insecureKubeletReadonlyPortEnabled']! as String).input(),
     );
   }
 }

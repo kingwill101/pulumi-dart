@@ -27,8 +27,8 @@ class InsightsDatasetConfigLink {
 
   factory InsightsDatasetConfigLink.fromMap(Map<String, dynamic> map) {
     return InsightsDatasetConfigLink(
-      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
-      linked: map['linked'] == null ? null : (map['linked'] as bool).input(),
+      dataset: map['dataset'] == null ? null : (map['dataset']! as String).input(),
+      linked: map['linked'] == null ? null : (map['linked']! as bool).input(),
     );
   }
 }

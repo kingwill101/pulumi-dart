@@ -36,10 +36,10 @@ class GoogleCloudMlV1PredictionOutput {
 
   factory GoogleCloudMlV1PredictionOutput.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1PredictionOutput(
-      errorCount: map['errorCount'] == null ? null : (map['errorCount'] as String).input(),
-      nodeHours: map['nodeHours'] == null ? null : (map['nodeHours'] as double).input(),
-      outputPath: map['outputPath'] == null ? null : (map['outputPath'] as String).input(),
-      predictionCount: map['predictionCount'] == null ? null : (map['predictionCount'] as String).input(),
+      errorCount: map['errorCount'] == null ? null : (map['errorCount']! as String).input(),
+      nodeHours: map['nodeHours'] == null ? null : (map['nodeHours']! as double).input(),
+      outputPath: map['outputPath'] == null ? null : (map['outputPath']! as String).input(),
+      predictionCount: map['predictionCount'] == null ? null : (map['predictionCount']! as String).input(),
     );
   }
 }

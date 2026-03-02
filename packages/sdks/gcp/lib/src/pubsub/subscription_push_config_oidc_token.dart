@@ -33,7 +33,7 @@ class SubscriptionPushConfigOidcToken {
 
   factory SubscriptionPushConfigOidcToken.fromMap(Map<String, dynamic> map) {
     return SubscriptionPushConfigOidcToken(
-      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
+      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
       serviceAccountEmail: (map['serviceAccountEmail'] as String).input(),
     );
   }

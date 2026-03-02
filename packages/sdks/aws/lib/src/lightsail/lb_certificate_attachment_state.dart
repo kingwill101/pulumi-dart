@@ -33,9 +33,9 @@ class LbCertificateAttachmentState {
 
   factory LbCertificateAttachmentState.fromMap(Map<String, dynamic> map) {
     return LbCertificateAttachmentState(
-      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
-      lbName: map['lbName'] == null ? null : (map['lbName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      certificateName: map['certificateName'] == null ? null : ((map['certificateName'] as String).input()).input(),
+      lbName: map['lbName'] == null ? null : ((map['lbName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

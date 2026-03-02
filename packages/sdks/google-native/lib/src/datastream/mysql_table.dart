@@ -27,8 +27,8 @@ class MysqlTable {
 
   factory MysqlTable.fromMap(Map<String, dynamic> map) {
     return MysqlTable(
-      mysqlColumns: map['mysqlColumns'] == null ? null : (pulumi.Input.decodeList<MysqlColumn>(map['mysqlColumns'], (value) => MysqlColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      table: map['table'] == null ? null : (map['table'] as String).input(),
+      mysqlColumns: map['mysqlColumns'] == null ? null : (pulumi.Input.decodeList<MysqlColumn>(map['mysqlColumns']!, (value) => MysqlColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      table: map['table'] == null ? null : (map['table']! as String).input(),
     );
   }
 }

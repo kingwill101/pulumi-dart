@@ -30,9 +30,9 @@ class EnterpriseSnapshotPolicyRetainRule {
 
   factory EnterpriseSnapshotPolicyRetainRule.fromMap(Map<String, dynamic> map) {
     return EnterpriseSnapshotPolicyRetainRule(
-      number: map['number'] == null ? null : (map['number'] as int).input(),
-      timeInterval: map['timeInterval'] == null ? null : (map['timeInterval'] as int).input(),
-      timeUnit: map['timeUnit'] == null ? null : (map['timeUnit'] as String).input(),
+      number: map['number'] == null ? null : (map['number']! as int).input(),
+      timeInterval: map['timeInterval'] == null ? null : (map['timeInterval']! as int).input(),
+      timeUnit: map['timeUnit'] == null ? null : (map['timeUnit']! as String).input(),
     );
   }
 }

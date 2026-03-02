@@ -22,7 +22,7 @@ class GoogleCloudRetailV2alphaSearchRequestPersonalizationSpec {
 
   factory GoogleCloudRetailV2alphaSearchRequestPersonalizationSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaSearchRequestPersonalizationSpec(
-      mode: map['mode'] == null ? null : (GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode.fromValue(map['mode'] as String)).input(),
+      mode: map['mode'] == null ? null : (GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode.fromValue(map['mode']! as String)).input(),
     );
   }
 }

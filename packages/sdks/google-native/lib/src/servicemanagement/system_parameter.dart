@@ -31,9 +31,9 @@ class SystemParameter {
 
   factory SystemParameter.fromMap(Map<String, dynamic> map) {
     return SystemParameter(
-      httpHeader: map['httpHeader'] == null ? null : (map['httpHeader'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      urlQueryParameter: map['urlQueryParameter'] == null ? null : (map['urlQueryParameter'] as String).input(),
+      httpHeader: map['httpHeader'] == null ? null : (map['httpHeader']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      urlQueryParameter: map['urlQueryParameter'] == null ? null : (map['urlQueryParameter']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class WorkstationConfigPersistentDirectory {
 
   factory WorkstationConfigPersistentDirectory.fromMap(Map<String, dynamic> map) {
     return WorkstationConfigPersistentDirectory(
-      gcePd: map['gcePd'] == null ? null : (WorkstationConfigPersistentDirectoryGcePd.fromMap((map['gcePd'] as Map).cast<String, dynamic>())).input(),
-      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
+      gcePd: map['gcePd'] == null ? null : (WorkstationConfigPersistentDirectoryGcePd.fromMap((map['gcePd']! as Map).cast<String, dynamic>())).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
     );
   }
 }

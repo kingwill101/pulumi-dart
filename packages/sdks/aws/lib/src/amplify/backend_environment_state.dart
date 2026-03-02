@@ -46,12 +46,12 @@ class BackendEnvironmentState {
 
   factory BackendEnvironmentState.fromMap(Map<String, dynamic> map) {
     return BackendEnvironmentState(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      deploymentArtifacts: map['deploymentArtifacts'] == null ? null : (map['deploymentArtifacts'] as String).input(),
-      environmentName: map['environmentName'] == null ? null : (map['environmentName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      stackName: map['stackName'] == null ? null : (map['stackName'] as String).input(),
+      appId: map['appId'] == null ? null : ((map['appId'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      deploymentArtifacts: map['deploymentArtifacts'] == null ? null : ((map['deploymentArtifacts'] as String).input()).input(),
+      environmentName: map['environmentName'] == null ? null : ((map['environmentName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      stackName: map['stackName'] == null ? null : ((map['stackName'] as String).input()).input(),
     );
   }
 }

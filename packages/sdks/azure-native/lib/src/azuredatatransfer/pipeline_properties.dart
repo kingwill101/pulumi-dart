@@ -42,11 +42,11 @@ class PipelineProperties {
 
   factory PipelineProperties.fromMap(Map<String, dynamic> map) {
     return PipelineProperties(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      flowTypes: map['flowTypes'] == null ? null : ((map['flowTypes'] as List).cast<String>()).input(),
-      policies: map['policies'] == null ? null : ((map['policies'] as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      flowTypes: map['flowTypes'] == null ? null : ((map['flowTypes']! as List).cast<String>()).input(),
+      policies: map['policies'] == null ? null : ((map['policies']! as List).cast<String>()).input(),
       remoteCloud: (map['remoteCloud'] as String).input(),
-      subscribers: map['subscribers'] == null ? null : (pulumi.Input.decodeList<Subscriber>(map['subscribers'], (value) => Subscriber.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subscribers: map['subscribers'] == null ? null : (pulumi.Input.decodeList<Subscriber>(map['subscribers']!, (value) => Subscriber.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

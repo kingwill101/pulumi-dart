@@ -31,9 +31,9 @@ class SshKeyState {
 
   factory SshKeyState.fromMap(Map<String, dynamic> map) {
     return SshKeyState(
-      created: map['created'] == null ? null : (map['created'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      sshKey: map['sshKey'] == null ? null : (map['sshKey'] as String).input(),
+      created: map['created'] == null ? null : (map['created']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      sshKey: map['sshKey'] == null ? null : (map['sshKey']! as String).input(),
     );
   }
 }

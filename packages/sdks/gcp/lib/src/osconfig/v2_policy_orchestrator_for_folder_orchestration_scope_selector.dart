@@ -29,8 +29,8 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeSelector {
 
   factory V2PolicyOrchestratorForFolderOrchestrationScopeSelector.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForFolderOrchestrationScopeSelector(
-      locationSelector: map['locationSelector'] == null ? null : (V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector.fromMap((map['locationSelector'] as Map).cast<String, dynamic>())).input(),
-      resourceHierarchySelector: map['resourceHierarchySelector'] == null ? null : (V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector.fromMap((map['resourceHierarchySelector'] as Map).cast<String, dynamic>())).input(),
+      locationSelector: map['locationSelector'] == null ? null : (V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector.fromMap((map['locationSelector']! as Map).cast<String, dynamic>())).input(),
+      resourceHierarchySelector: map['resourceHierarchySelector'] == null ? null : (V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector.fromMap((map['resourceHierarchySelector']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

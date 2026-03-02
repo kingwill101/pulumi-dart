@@ -65,14 +65,14 @@ class ArcSettingArgs {
 
   factory ArcSettingArgs.fromMap(Map<String, dynamic> map) {
     return ArcSettingArgs(
-      arcApplicationClientId: map['arcApplicationClientId'] == null ? null : (map['arcApplicationClientId'] as String).input(),
-      arcApplicationObjectId: map['arcApplicationObjectId'] == null ? null : (map['arcApplicationObjectId'] as String).input(),
-      arcApplicationTenantId: map['arcApplicationTenantId'] == null ? null : (map['arcApplicationTenantId'] as String).input(),
-      arcInstanceResourceGroup: map['arcInstanceResourceGroup'] == null ? null : (map['arcInstanceResourceGroup'] as String).input(),
-      arcServicePrincipalObjectId: map['arcServicePrincipalObjectId'] == null ? null : (map['arcServicePrincipalObjectId'] as String).input(),
-      arcSettingName: map['arcSettingName'] == null ? null : (map['arcSettingName'] as String).input(),
+      arcApplicationClientId: map['arcApplicationClientId'] == null ? null : (map['arcApplicationClientId']! as String).input(),
+      arcApplicationObjectId: map['arcApplicationObjectId'] == null ? null : (map['arcApplicationObjectId']! as String).input(),
+      arcApplicationTenantId: map['arcApplicationTenantId'] == null ? null : (map['arcApplicationTenantId']! as String).input(),
+      arcInstanceResourceGroup: map['arcInstanceResourceGroup'] == null ? null : (map['arcInstanceResourceGroup']! as String).input(),
+      arcServicePrincipalObjectId: map['arcServicePrincipalObjectId'] == null ? null : (map['arcServicePrincipalObjectId']! as String).input(),
+      arcSettingName: map['arcSettingName'] == null ? null : (map['arcSettingName']! as String).input(),
       clusterName: (map['clusterName'] as String).input(),
-      connectivityProperties: map['connectivityProperties'] == null ? null : (pulumi.Input.decodeList<ArcConnectivityProperties>(map['connectivityProperties'], (value) => ArcConnectivityProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connectivityProperties: map['connectivityProperties'] == null ? null : (pulumi.Input.decodeList<ArcConnectivityProperties>(map['connectivityProperties']!, (value) => ArcConnectivityProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

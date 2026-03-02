@@ -105,17 +105,17 @@ class InstanceV2EngineListNodeGroup {
 
   factory InstanceV2EngineListNodeGroup.fromMap(Map<String, dynamic> map) {
     return InstanceV2EngineListNodeGroup(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      cpuCoreCount: map['cpuCoreCount'] == null ? null : (map['cpuCoreCount'] as int).input(),
-      enableAttachLocalDisk: map['enableAttachLocalDisk'] == null ? null : (map['enableAttachLocalDisk'] as bool).input(),
-      memorySizeGiB: map['memorySizeGiB'] == null ? null : (map['memorySizeGiB'] as int).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      cpuCoreCount: map['cpuCoreCount'] == null ? null : (map['cpuCoreCount']! as int).input(),
+      enableAttachLocalDisk: map['enableAttachLocalDisk'] == null ? null : (map['enableAttachLocalDisk']! as bool).input(),
+      memorySizeGiB: map['memorySizeGiB'] == null ? null : (map['memorySizeGiB']! as int).input(),
       nodeCount: (map['nodeCount'] as int).input(),
-      nodeDiskSize: map['nodeDiskSize'] == null ? null : (map['nodeDiskSize'] as int).input(),
-      nodeDiskType: map['nodeDiskType'] == null ? null : (map['nodeDiskType'] as String).input(),
+      nodeDiskSize: map['nodeDiskSize'] == null ? null : (map['nodeDiskSize']! as int).input(),
+      nodeDiskType: map['nodeDiskType'] == null ? null : (map['nodeDiskType']! as String).input(),
       nodeSpec: (map['nodeSpec'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      specId: map['specId'] == null ? null : (map['specId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      specId: map['specId'] == null ? null : (map['specId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

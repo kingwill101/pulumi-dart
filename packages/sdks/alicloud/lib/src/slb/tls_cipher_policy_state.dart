@@ -36,10 +36,10 @@ class TlsCipherPolicyState {
 
   factory TlsCipherPolicyState.fromMap(Map<String, dynamic> map) {
     return TlsCipherPolicyState(
-      ciphers: map['ciphers'] == null ? null : ((map['ciphers'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tlsCipherPolicyName: map['tlsCipherPolicyName'] == null ? null : (map['tlsCipherPolicyName'] as String).input(),
-      tlsVersions: map['tlsVersions'] == null ? null : ((map['tlsVersions'] as List).cast<String>()).input(),
+      ciphers: map['ciphers'] == null ? null : ((map['ciphers']! as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tlsCipherPolicyName: map['tlsCipherPolicyName'] == null ? null : (map['tlsCipherPolicyName']! as String).input(),
+      tlsVersions: map['tlsVersions'] == null ? null : ((map['tlsVersions']! as List).cast<String>()).input(),
     );
   }
 }

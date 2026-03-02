@@ -25,8 +25,8 @@ class AccessStrategyFailoverAddrPool {
 
   factory AccessStrategyFailoverAddrPool.fromMap(Map<String, dynamic> map) {
     return AccessStrategyFailoverAddrPool(
-      addrPoolId: map['addrPoolId'] == null ? null : (map['addrPoolId'] as String).input(),
-      lbaWeight: map['lbaWeight'] == null ? null : (map['lbaWeight'] as int).input(),
+      addrPoolId: map['addrPoolId'] == null ? null : (map['addrPoolId']! as String).input(),
+      lbaWeight: map['lbaWeight'] == null ? null : (map['lbaWeight']! as int).input(),
     );
   }
 }

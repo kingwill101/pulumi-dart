@@ -88,16 +88,16 @@ class WorkstationClusterArgs {
 
   factory WorkstationClusterArgs.fromMap(Map<String, dynamic> map) {
     return WorkstationClusterArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      domainConfig: map['domainConfig'] == null ? null : (WorkstationClusterDomainConfig.fromMap((map['domainConfig'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      domainConfig: map['domainConfig'] == null ? null : (WorkstationClusterDomainConfig.fromMap((map['domainConfig']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       network: (map['network'] as String).input(),
-      privateClusterConfig: map['privateClusterConfig'] == null ? null : (WorkstationClusterPrivateClusterConfig.fromMap((map['privateClusterConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      privateClusterConfig: map['privateClusterConfig'] == null ? null : (WorkstationClusterPrivateClusterConfig.fromMap((map['privateClusterConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       subnetwork: (map['subnetwork'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       workstationClusterId: (map['workstationClusterId'] as String).input(),
     );
   }

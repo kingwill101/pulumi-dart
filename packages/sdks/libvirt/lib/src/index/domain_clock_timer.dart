@@ -51,13 +51,13 @@ class DomainClockTimer {
 
   factory DomainClockTimer.fromMap(Map<String, dynamic> map) {
     return DomainClockTimer(
-      catchUp: map['catchUp'] == null ? null : (DomainClockTimerCatchUp.fromMap((map['catchUp'] as Map).cast<String, dynamic>())).input(),
-      frequency: map['frequency'] == null ? null : (map['frequency'] as double).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      catchUp: map['catchUp'] == null ? null : (DomainClockTimerCatchUp.fromMap((map['catchUp']! as Map).cast<String, dynamic>())).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency']! as double).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
       name: (map['name'] as String).input(),
-      present: map['present'] == null ? null : (map['present'] as String).input(),
-      tickPolicy: map['tickPolicy'] == null ? null : (map['tickPolicy'] as String).input(),
-      track: map['track'] == null ? null : (map['track'] as String).input(),
+      present: map['present'] == null ? null : (map['present']! as String).input(),
+      tickPolicy: map['tickPolicy'] == null ? null : (map['tickPolicy']! as String).input(),
+      track: map['track'] == null ? null : (map['track']! as String).input(),
     );
   }
 }

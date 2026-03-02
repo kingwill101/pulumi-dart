@@ -37,11 +37,11 @@ class GreyTagRouteDubboRuleItem {
 
   factory GreyTagRouteDubboRuleItem.fromMap(Map<String, dynamic> map) {
     return GreyTagRouteDubboRuleItem(
-      cond: map['cond'] == null ? null : (map['cond'] as String).input(),
-      expr: map['expr'] == null ? null : (map['expr'] as String).input(),
-      index: map['index'] == null ? null : (map['index'] as int).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      cond: map['cond'] == null ? null : (map['cond']! as String).input(),
+      expr: map['expr'] == null ? null : (map['expr']! as String).input(),
+      index: map['index'] == null ? null : (map['index']! as int).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

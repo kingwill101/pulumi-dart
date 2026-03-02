@@ -77,11 +77,11 @@ class GetHybridConnectionResult {
       listenerCount: map['listenerCount'] as int,
       location: map['location'] as String,
       name: map['name'] as String,
-      requiresClientAuthorization: map['requiresClientAuthorization'] == null ? null : map['requiresClientAuthorization'] as bool,
+      requiresClientAuthorization: map['requiresClientAuthorization'] == null ? null : map['requiresClientAuthorization']! as bool,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       updatedAt: map['updatedAt'] as String,
-      userMetadata: map['userMetadata'] == null ? null : map['userMetadata'] as String,
+      userMetadata: map['userMetadata'] == null ? null : map['userMetadata']! as String,
     );
   }
 }

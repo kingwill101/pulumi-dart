@@ -33,9 +33,9 @@ class PatchDeploymentPatchConfigApt {
 
   factory PatchDeploymentPatchConfigApt.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentPatchConfigApt(
-      excludes: map['excludes'] == null ? null : ((map['excludes'] as List).cast<String>()).input(),
-      exclusivePackages: map['exclusivePackages'] == null ? null : ((map['exclusivePackages'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      excludes: map['excludes'] == null ? null : ((map['excludes']! as List).cast<String>()).input(),
+      exclusivePackages: map['exclusivePackages'] == null ? null : ((map['exclusivePackages']! as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

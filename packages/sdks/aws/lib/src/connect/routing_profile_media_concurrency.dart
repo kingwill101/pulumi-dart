@@ -33,7 +33,7 @@ class RoutingProfileMediaConcurrency {
     return RoutingProfileMediaConcurrency(
       channel: (map['channel'] as String).input(),
       concurrency: (map['concurrency'] as int).input(),
-      crossChannelBehavior: map['crossChannelBehavior'] == null ? null : (RoutingProfileMediaConcurrencyCrossChannelBehavior.fromMap((map['crossChannelBehavior'] as Map).cast<String, dynamic>())).input(),
+      crossChannelBehavior: map['crossChannelBehavior'] == null ? null : ((RoutingProfileMediaConcurrencyCrossChannelBehavior.fromMap((map['crossChannelBehavior']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

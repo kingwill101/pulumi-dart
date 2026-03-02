@@ -31,9 +31,9 @@ class ScaleInPolicyResponse {
 
   factory ScaleInPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ScaleInPolicyResponse(
-      forceDeletion: map['forceDeletion'] == null ? null : (map['forceDeletion'] as bool).input(),
-      prioritizeUnhealthyVMs: map['prioritizeUnhealthyVMs'] == null ? null : (map['prioritizeUnhealthyVMs'] as bool).input(),
-      rules: map['rules'] == null ? null : ((map['rules'] as List).cast<String>()).input(),
+      forceDeletion: map['forceDeletion'] == null ? null : (map['forceDeletion']! as bool).input(),
+      prioritizeUnhealthyVMs: map['prioritizeUnhealthyVMs'] == null ? null : (map['prioritizeUnhealthyVMs']! as bool).input(),
+      rules: map['rules'] == null ? null : ((map['rules']! as List).cast<String>()).input(),
     );
   }
 }

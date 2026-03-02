@@ -26,8 +26,8 @@ class GoogleCloudMlV1RouteMap {
 
   factory GoogleCloudMlV1RouteMap.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1RouteMap(
-      health: map['health'] == null ? null : (map['health'] as String).input(),
-      predict: map['predict'] == null ? null : (map['predict'] as String).input(),
+      health: map['health'] == null ? null : (map['health']! as String).input(),
+      predict: map['predict'] == null ? null : (map['predict']! as String).input(),
     );
   }
 }

@@ -58,11 +58,11 @@ class AutomationRunbookReceiver {
     return AutomationRunbookReceiver(
       automationAccountId: (map['automationAccountId'] as String).input(),
       isGlobalRunbook: (map['isGlobalRunbook'] as bool).input(),
-      managedIdentity: map['managedIdentity'] == null ? null : (map['managedIdentity'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      managedIdentity: map['managedIdentity'] == null ? null : (map['managedIdentity']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       runbookName: (map['runbookName'] as String).input(),
-      serviceUri: map['serviceUri'] == null ? null : (map['serviceUri'] as String).input(),
-      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema'] as bool).input(),
+      serviceUri: map['serviceUri'] == null ? null : (map['serviceUri']! as String).input(),
+      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema']! as bool).input(),
       webhookResourceId: (map['webhookResourceId'] as String).input(),
     );
   }

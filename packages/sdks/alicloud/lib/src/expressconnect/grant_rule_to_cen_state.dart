@@ -36,10 +36,10 @@ class GrantRuleToCenState {
 
   factory GrantRuleToCenState.fromMap(Map<String, dynamic> map) {
     return GrantRuleToCenState(
-      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
-      cenOwnerId: map['cenOwnerId'] == null ? null : (map['cenOwnerId'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
+      cenOwnerId: map['cenOwnerId'] == null ? null : (map['cenOwnerId']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
     );
   }
 }

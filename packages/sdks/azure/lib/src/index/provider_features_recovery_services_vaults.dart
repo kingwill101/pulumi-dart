@@ -19,7 +19,7 @@ class ProviderFeaturesRecoveryServicesVaults {
 
   factory ProviderFeaturesRecoveryServicesVaults.fromMap(Map<String, dynamic> map) {
     return ProviderFeaturesRecoveryServicesVaults(
-      recoverSoftDeletedBackupProtectedVm: map['recoverSoftDeletedBackupProtectedVm'] == null ? null : (map['recoverSoftDeletedBackupProtectedVm'] as bool).input(),
+      recoverSoftDeletedBackupProtectedVm: map['recoverSoftDeletedBackupProtectedVm'] == null ? null : (map['recoverSoftDeletedBackupProtectedVm']! as bool).input(),
     );
   }
 }

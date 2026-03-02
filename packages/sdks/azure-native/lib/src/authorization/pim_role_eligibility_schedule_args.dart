@@ -71,16 +71,16 @@ class PimRoleEligibilityScheduleArgs {
 
   factory PimRoleEligibilityScheduleArgs.fromMap(Map<String, dynamic> map) {
     return PimRoleEligibilityScheduleArgs(
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
-      conditionVersion: map['conditionVersion'] == null ? null : (map['conditionVersion'] as String).input(),
-      justification: map['justification'] == null ? null : (map['justification'] as String).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
+      conditionVersion: map['conditionVersion'] == null ? null : (map['conditionVersion']! as String).input(),
+      justification: map['justification'] == null ? null : (map['justification']! as String).input(),
       principalId: (map['principalId'] as String).input(),
       roleDefinitionId: (map['roleDefinitionId'] as String).input(),
-      scheduleInfo: map['scheduleInfo'] == null ? null : (RoleEligibilityScheduleRequestPropertiesScheduleInfo.fromMap((map['scheduleInfo'] as Map).cast<String, dynamic>())).input(),
+      scheduleInfo: map['scheduleInfo'] == null ? null : (RoleEligibilityScheduleRequestPropertiesScheduleInfo.fromMap((map['scheduleInfo']! as Map).cast<String, dynamic>())).input(),
       scope: (map['scope'] as String).input(),
-      targetRoleEligibilityScheduleId: map['targetRoleEligibilityScheduleId'] == null ? null : (map['targetRoleEligibilityScheduleId'] as String).input(),
-      targetRoleEligibilityScheduleInstanceId: map['targetRoleEligibilityScheduleInstanceId'] == null ? null : (map['targetRoleEligibilityScheduleInstanceId'] as String).input(),
-      ticketInfo: map['ticketInfo'] == null ? null : (RoleEligibilityScheduleRequestPropertiesTicketInfo.fromMap((map['ticketInfo'] as Map).cast<String, dynamic>())).input(),
+      targetRoleEligibilityScheduleId: map['targetRoleEligibilityScheduleId'] == null ? null : (map['targetRoleEligibilityScheduleId']! as String).input(),
+      targetRoleEligibilityScheduleInstanceId: map['targetRoleEligibilityScheduleInstanceId'] == null ? null : (map['targetRoleEligibilityScheduleInstanceId']! as String).input(),
+      ticketInfo: map['ticketInfo'] == null ? null : (RoleEligibilityScheduleRequestPropertiesTicketInfo.fromMap((map['ticketInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

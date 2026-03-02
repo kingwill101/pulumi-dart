@@ -47,12 +47,12 @@ class ManagementPolicyBaseBlobResponse {
 
   factory ManagementPolicyBaseBlobResponse.fromMap(Map<String, dynamic> map) {
     return ManagementPolicyBaseBlobResponse(
-      delete: map['delete'] == null ? null : (DateAfterModificationResponse.fromMap((map['delete'] as Map).cast<String, dynamic>())).input(),
-      enableAutoTierToHotFromCool: map['enableAutoTierToHotFromCool'] == null ? null : (map['enableAutoTierToHotFromCool'] as bool).input(),
-      tierToArchive: map['tierToArchive'] == null ? null : (DateAfterModificationResponse.fromMap((map['tierToArchive'] as Map).cast<String, dynamic>())).input(),
-      tierToCold: map['tierToCold'] == null ? null : (DateAfterModificationResponse.fromMap((map['tierToCold'] as Map).cast<String, dynamic>())).input(),
-      tierToCool: map['tierToCool'] == null ? null : (DateAfterModificationResponse.fromMap((map['tierToCool'] as Map).cast<String, dynamic>())).input(),
-      tierToHot: map['tierToHot'] == null ? null : (DateAfterModificationResponse.fromMap((map['tierToHot'] as Map).cast<String, dynamic>())).input(),
+      delete: map['delete'] == null ? null : (DateAfterModificationResponse.fromMap((map['delete']! as Map).cast<String, dynamic>())).input(),
+      enableAutoTierToHotFromCool: map['enableAutoTierToHotFromCool'] == null ? null : (map['enableAutoTierToHotFromCool']! as bool).input(),
+      tierToArchive: map['tierToArchive'] == null ? null : (DateAfterModificationResponse.fromMap((map['tierToArchive']! as Map).cast<String, dynamic>())).input(),
+      tierToCold: map['tierToCold'] == null ? null : (DateAfterModificationResponse.fromMap((map['tierToCold']! as Map).cast<String, dynamic>())).input(),
+      tierToCool: map['tierToCool'] == null ? null : (DateAfterModificationResponse.fromMap((map['tierToCool']! as Map).cast<String, dynamic>())).input(),
+      tierToHot: map['tierToHot'] == null ? null : (DateAfterModificationResponse.fromMap((map['tierToHot']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

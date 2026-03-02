@@ -26,7 +26,7 @@ class ResourcePolicyAssignmentResourceSelector {
 
   factory ResourcePolicyAssignmentResourceSelector.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyAssignmentResourceSelector(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       selectors: (pulumi.Input.decodeList<ResourcePolicyAssignmentResourceSelectorSelector>(map['selectors'], (value) => ResourcePolicyAssignmentResourceSelectorSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

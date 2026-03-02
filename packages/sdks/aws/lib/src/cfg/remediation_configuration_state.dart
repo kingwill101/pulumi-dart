@@ -80,18 +80,18 @@ class RemediationConfigurationState {
 
   factory RemediationConfigurationState.fromMap(Map<String, dynamic> map) {
     return RemediationConfigurationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      automatic: map['automatic'] == null ? null : (map['automatic'] as bool).input(),
-      configRuleName: map['configRuleName'] == null ? null : (map['configRuleName'] as String).input(),
-      executionControls: map['executionControls'] == null ? null : (RemediationConfigurationExecutionControls.fromMap((map['executionControls'] as Map).cast<String, dynamic>())).input(),
-      maximumAutomaticAttempts: map['maximumAutomaticAttempts'] == null ? null : (map['maximumAutomaticAttempts'] as int).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<RemediationConfigurationParameter>(map['parameters'], (value) => RemediationConfigurationParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      retryAttemptSeconds: map['retryAttemptSeconds'] == null ? null : (map['retryAttemptSeconds'] as int).input(),
-      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
-      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
-      targetVersion: map['targetVersion'] == null ? null : (map['targetVersion'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      automatic: map['automatic'] == null ? null : ((map['automatic'] as bool).input()).input(),
+      configRuleName: map['configRuleName'] == null ? null : ((map['configRuleName'] as String).input()).input(),
+      executionControls: map['executionControls'] == null ? null : ((RemediationConfigurationExecutionControls.fromMap((map['executionControls']! as Map).cast<String, dynamic>())).input()).input(),
+      maximumAutomaticAttempts: map['maximumAutomaticAttempts'] == null ? null : ((map['maximumAutomaticAttempts'] as int).input()).input(),
+      parameters: map['parameters'] == null ? null : ((pulumi.Input.decodeList<RemediationConfigurationParameter>(map['parameters']!, (value) => RemediationConfigurationParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceType: map['resourceType'] == null ? null : ((map['resourceType'] as String).input()).input(),
+      retryAttemptSeconds: map['retryAttemptSeconds'] == null ? null : ((map['retryAttemptSeconds'] as int).input()).input(),
+      targetId: map['targetId'] == null ? null : ((map['targetId'] as String).input()).input(),
+      targetType: map['targetType'] == null ? null : ((map['targetType'] as String).input()).input(),
+      targetVersion: map['targetVersion'] == null ? null : ((map['targetVersion'] as String).input()).input(),
     );
   }
 }

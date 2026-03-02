@@ -20,7 +20,7 @@ class DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetForma
 
   factory DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatJson.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatJson(
-      line: map['line'] == null ? null : (map['line'] as bool).input(),
+      line: map['line'] == null ? null : ((map['line'] as bool).input()).input(),
     );
   }
 }

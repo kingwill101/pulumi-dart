@@ -21,7 +21,7 @@ class NetworkVirtualAppliancePropertiesFormatNetworkProfile {
 
   factory NetworkVirtualAppliancePropertiesFormatNetworkProfile.fromMap(Map<String, dynamic> map) {
     return NetworkVirtualAppliancePropertiesFormatNetworkProfile(
-      networkInterfaceConfigurations: map['networkInterfaceConfigurations'] == null ? null : (pulumi.Input.decodeList<VirtualApplianceNetworkInterfaceConfiguration>(map['networkInterfaceConfigurations'], (value) => VirtualApplianceNetworkInterfaceConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkInterfaceConfigurations: map['networkInterfaceConfigurations'] == null ? null : (pulumi.Input.decodeList<VirtualApplianceNetworkInterfaceConfiguration>(map['networkInterfaceConfigurations']!, (value) => VirtualApplianceNetworkInterfaceConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

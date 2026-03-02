@@ -20,7 +20,7 @@ class GetProviderActionCollectionCountResult {
 
   factory GetProviderActionCollectionCountResult.fromMap(Map<String, dynamic> map) {
     return GetProviderActionCollectionCountResult(
-      count: map['count'] == null ? null : map['count'] as int,
+      count: map['count'] == null ? null : map['count']! as int,
     );
   }
 }

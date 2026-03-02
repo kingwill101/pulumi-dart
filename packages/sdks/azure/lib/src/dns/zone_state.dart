@@ -52,13 +52,13 @@ class ZoneState {
 
   factory ZoneState.fromMap(Map<String, dynamic> map) {
     return ZoneState(
-      maxNumberOfRecordSets: map['maxNumberOfRecordSets'] == null ? null : (map['maxNumberOfRecordSets'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nameServers: map['nameServers'] == null ? null : ((map['nameServers'] as List).cast<String>()).input(),
-      numberOfRecordSets: map['numberOfRecordSets'] == null ? null : (map['numberOfRecordSets'] as int).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      soaRecord: map['soaRecord'] == null ? null : (ZoneSoaRecord.fromMap((map['soaRecord'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      maxNumberOfRecordSets: map['maxNumberOfRecordSets'] == null ? null : (map['maxNumberOfRecordSets']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nameServers: map['nameServers'] == null ? null : ((map['nameServers']! as List).cast<String>()).input(),
+      numberOfRecordSets: map['numberOfRecordSets'] == null ? null : (map['numberOfRecordSets']! as int).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      soaRecord: map['soaRecord'] == null ? null : (ZoneSoaRecord.fromMap((map['soaRecord']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

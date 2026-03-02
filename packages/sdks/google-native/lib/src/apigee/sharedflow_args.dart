@@ -49,10 +49,10 @@ class SharedflowArgs {
   factory SharedflowArgs.fromMap(Map<String, dynamic> map) {
     return SharedflowArgs(
       action: (map['action'] as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      data: map['data'] == null ? null : (map['data'] as String).input(),
-      extensions: map['extensions'] == null ? null : ((map['extensions'] as List).cast<Map<String, String>>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
+      extensions: map['extensions'] == null ? null : ((map['extensions']! as List).cast<Map<String, String>>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
     );
   }

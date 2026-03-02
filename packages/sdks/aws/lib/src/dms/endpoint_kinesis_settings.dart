@@ -65,16 +65,16 @@ class EndpointKinesisSettings {
 
   factory EndpointKinesisSettings.fromMap(Map<String, dynamic> map) {
     return EndpointKinesisSettings(
-      includeControlDetails: map['includeControlDetails'] == null ? null : (map['includeControlDetails'] as bool).input(),
-      includeNullAndEmpty: map['includeNullAndEmpty'] == null ? null : (map['includeNullAndEmpty'] as bool).input(),
-      includePartitionValue: map['includePartitionValue'] == null ? null : (map['includePartitionValue'] as bool).input(),
-      includeTableAlterOperations: map['includeTableAlterOperations'] == null ? null : (map['includeTableAlterOperations'] as bool).input(),
-      includeTransactionDetails: map['includeTransactionDetails'] == null ? null : (map['includeTransactionDetails'] as bool).input(),
-      messageFormat: map['messageFormat'] == null ? null : (map['messageFormat'] as String).input(),
-      partitionIncludeSchemaTable: map['partitionIncludeSchemaTable'] == null ? null : (map['partitionIncludeSchemaTable'] as bool).input(),
-      serviceAccessRoleArn: map['serviceAccessRoleArn'] == null ? null : (map['serviceAccessRoleArn'] as String).input(),
-      streamArn: map['streamArn'] == null ? null : (map['streamArn'] as String).input(),
-      useLargeIntegerValue: map['useLargeIntegerValue'] == null ? null : (map['useLargeIntegerValue'] as bool).input(),
+      includeControlDetails: map['includeControlDetails'] == null ? null : ((map['includeControlDetails'] as bool).input()).input(),
+      includeNullAndEmpty: map['includeNullAndEmpty'] == null ? null : ((map['includeNullAndEmpty'] as bool).input()).input(),
+      includePartitionValue: map['includePartitionValue'] == null ? null : ((map['includePartitionValue'] as bool).input()).input(),
+      includeTableAlterOperations: map['includeTableAlterOperations'] == null ? null : ((map['includeTableAlterOperations'] as bool).input()).input(),
+      includeTransactionDetails: map['includeTransactionDetails'] == null ? null : ((map['includeTransactionDetails'] as bool).input()).input(),
+      messageFormat: map['messageFormat'] == null ? null : ((map['messageFormat'] as String).input()).input(),
+      partitionIncludeSchemaTable: map['partitionIncludeSchemaTable'] == null ? null : ((map['partitionIncludeSchemaTable'] as bool).input()).input(),
+      serviceAccessRoleArn: map['serviceAccessRoleArn'] == null ? null : ((map['serviceAccessRoleArn'] as String).input()).input(),
+      streamArn: map['streamArn'] == null ? null : ((map['streamArn'] as String).input()).input(),
+      useLargeIntegerValue: map['useLargeIntegerValue'] == null ? null : ((map['useLargeIntegerValue'] as bool).input()).input(),
     );
   }
 }

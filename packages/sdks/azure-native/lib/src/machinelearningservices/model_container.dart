@@ -35,10 +35,10 @@ class ModelContainer {
 
   factory ModelContainer.fromMap(Map<String, dynamic> map) {
     return ModelContainer(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      isArchived: map['isArchived'] == null ? null : (map['isArchived'] as bool).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      isArchived: map['isArchived'] == null ? null : (map['isArchived']! as bool).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

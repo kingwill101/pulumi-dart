@@ -34,9 +34,9 @@ class TlsCertificateContext {
 
   factory TlsCertificateContext.fromMap(Map<String, dynamic> map) {
     return TlsCertificateContext(
-      certificatePaths: map['certificatePaths'] == null ? null : (TlsCertificatePaths.fromMap((map['certificatePaths'] as Map).cast<String, dynamic>())).input(),
-      certificateSource: map['certificateSource'] == null ? null : (TlsCertificateContextCertificateSource.fromValue(map['certificateSource'] as String)).input(),
-      sdsConfig: map['sdsConfig'] == null ? null : (SdsConfig.fromMap((map['sdsConfig'] as Map).cast<String, dynamic>())).input(),
+      certificatePaths: map['certificatePaths'] == null ? null : (TlsCertificatePaths.fromMap((map['certificatePaths']! as Map).cast<String, dynamic>())).input(),
+      certificateSource: map['certificateSource'] == null ? null : (TlsCertificateContextCertificateSource.fromValue(map['certificateSource']! as String)).input(),
+      sdsConfig: map['sdsConfig'] == null ? null : (SdsConfig.fromMap((map['sdsConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

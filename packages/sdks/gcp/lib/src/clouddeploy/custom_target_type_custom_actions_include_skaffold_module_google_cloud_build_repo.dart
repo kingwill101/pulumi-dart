@@ -30,8 +30,8 @@ class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepo {
 
   factory CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepo.fromMap(Map<String, dynamic> map) {
     return CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepo(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      ref: map['ref'] == null ? null : (map['ref'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      ref: map['ref'] == null ? null : (map['ref']! as String).input(),
       repository: (map['repository'] as String).input(),
     );
   }

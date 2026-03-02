@@ -59,11 +59,11 @@ class InstanceConfigArgs {
 
   factory InstanceConfigArgs.fromMap(Map<String, dynamic> map) {
     return InstanceConfigArgs(
-      baseConfig: map['baseConfig'] == null ? null : (map['baseConfig'] as String).input(),
+      baseConfig: map['baseConfig'] == null ? null : (map['baseConfig']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       replicas: (pulumi.Input.decodeList<InstanceConfigReplica>(map['replicas'], (value) => InstanceConfigReplica.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

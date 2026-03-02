@@ -73,16 +73,16 @@ class EnterprisePolicyArgs {
 
   factory EnterprisePolicyArgs.fromMap(Map<String, dynamic> map) {
     return EnterprisePolicyArgs(
-      encryption: map['encryption'] == null ? null : (PropertiesEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      enterprisePolicyName: map['enterprisePolicyName'] == null ? null : (map['enterprisePolicyName'] as String).input(),
-      healthStatus: map['healthStatus'] == null ? null : (map['healthStatus'] as String).input(),
-      identity: map['identity'] == null ? null : (EnterprisePolicyIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      encryption: map['encryption'] == null ? null : (PropertiesEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      enterprisePolicyName: map['enterprisePolicyName'] == null ? null : (map['enterprisePolicyName']! as String).input(),
+      healthStatus: map['healthStatus'] == null ? null : (map['healthStatus']! as String).input(),
+      identity: map['identity'] == null ? null : (EnterprisePolicyIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
       kind: (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      lockbox: map['lockbox'] == null ? null : (PropertiesLockbox.fromMap((map['lockbox'] as Map).cast<String, dynamic>())).input(),
-      networkInjection: map['networkInjection'] == null ? null : (PropertiesNetworkInjection.fromMap((map['networkInjection'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      lockbox: map['lockbox'] == null ? null : (PropertiesLockbox.fromMap((map['lockbox']! as Map).cast<String, dynamic>())).input(),
+      networkInjection: map['networkInjection'] == null ? null : (PropertiesNetworkInjection.fromMap((map['networkInjection']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

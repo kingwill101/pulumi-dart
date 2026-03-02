@@ -24,7 +24,7 @@ class GetProviderActionOverviewStatusArgs {
 
   factory GetProviderActionOverviewStatusArgs.fromMap(Map<String, dynamic> map) {
     return GetProviderActionOverviewStatusArgs(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

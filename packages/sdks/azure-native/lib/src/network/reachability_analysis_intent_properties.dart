@@ -36,7 +36,7 @@ class ReachabilityAnalysisIntentProperties {
 
   factory ReachabilityAnalysisIntentProperties.fromMap(Map<String, dynamic> map) {
     return ReachabilityAnalysisIntentProperties(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       destinationResourceId: (map['destinationResourceId'] as String).input(),
       ipTraffic: (IPTraffic.fromMap((map['ipTraffic'] as Map).cast<String, dynamic>())).input(),
       sourceResourceId: (map['sourceResourceId'] as String).input(),

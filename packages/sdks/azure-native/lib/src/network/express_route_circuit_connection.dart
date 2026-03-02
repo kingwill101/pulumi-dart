@@ -53,13 +53,13 @@ class ExpressRouteCircuitConnection {
 
   factory ExpressRouteCircuitConnection.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitConnection(
-      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix'] as String).input(),
-      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey'] as String).input(),
-      expressRouteCircuitPeering: map['expressRouteCircuitPeering'] == null ? null : (SubResource.fromMap((map['expressRouteCircuitPeering'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      ipv6CircuitConnectionConfig: map['ipv6CircuitConnectionConfig'] == null ? null : (Ipv6CircuitConnectionConfig.fromMap((map['ipv6CircuitConnectionConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      peerExpressRouteCircuitPeering: map['peerExpressRouteCircuitPeering'] == null ? null : (SubResource.fromMap((map['peerExpressRouteCircuitPeering'] as Map).cast<String, dynamic>())).input(),
+      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix']! as String).input(),
+      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey']! as String).input(),
+      expressRouteCircuitPeering: map['expressRouteCircuitPeering'] == null ? null : (SubResource.fromMap((map['expressRouteCircuitPeering']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      ipv6CircuitConnectionConfig: map['ipv6CircuitConnectionConfig'] == null ? null : (Ipv6CircuitConnectionConfig.fromMap((map['ipv6CircuitConnectionConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      peerExpressRouteCircuitPeering: map['peerExpressRouteCircuitPeering'] == null ? null : (SubResource.fromMap((map['peerExpressRouteCircuitPeering']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -84,15 +84,15 @@ class GetAzureKeyVaultSecretProviderClassResult {
     return GetAzureKeyVaultSecretProviderClassResult(
       azureApiVersion: map['azureApiVersion'] as String,
       clientId: map['clientId'] as String,
-      extendedLocation: map['extendedLocation'] == null ? null : AzureResourceManagerCommonTypesExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
+      extendedLocation: map['extendedLocation'] == null ? null : AzureResourceManagerCommonTypesExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       keyvaultName: map['keyvaultName'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      objects: map['objects'] == null ? null : map['objects'] as String,
+      objects: map['objects'] == null ? null : map['objects']! as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       tenantId: map['tenantId'] as String,
       type: map['type'] as String,
     );

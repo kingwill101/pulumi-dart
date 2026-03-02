@@ -26,8 +26,8 @@ class AccountNetworkProfileNodeManagementAccess {
 
   factory AccountNetworkProfileNodeManagementAccess.fromMap(Map<String, dynamic> map) {
     return AccountNetworkProfileNodeManagementAccess(
-      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction'] as String).input(),
-      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<AccountNetworkProfileNodeManagementAccessIpRule>(map['ipRules'], (value) => AccountNetworkProfileNodeManagementAccessIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction']! as String).input(),
+      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<AccountNetworkProfileNodeManagementAccessIpRule>(map['ipRules']!, (value) => AccountNetworkProfileNodeManagementAccessIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

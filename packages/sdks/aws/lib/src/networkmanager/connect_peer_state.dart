@@ -95,21 +95,21 @@ class ConnectPeerState {
 
   factory ConnectPeerState.fromMap(Map<String, dynamic> map) {
     return ConnectPeerState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      bgpOptions: map['bgpOptions'] == null ? null : (ConnectPeerBgpOptions.fromMap((map['bgpOptions'] as Map).cast<String, dynamic>())).input(),
-      configurations: map['configurations'] == null ? null : (pulumi.Input.decodeList<ConnectPeerConfiguration>(map['configurations'], (value) => ConnectPeerConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      connectAttachmentId: map['connectAttachmentId'] == null ? null : (map['connectAttachmentId'] as String).input(),
-      connectPeerId: map['connectPeerId'] == null ? null : (map['connectPeerId'] as String).input(),
-      coreNetworkAddress: map['coreNetworkAddress'] == null ? null : (map['coreNetworkAddress'] as String).input(),
-      coreNetworkId: map['coreNetworkId'] == null ? null : (map['coreNetworkId'] as String).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      edgeLocation: map['edgeLocation'] == null ? null : (map['edgeLocation'] as String).input(),
-      insideCidrBlocks: map['insideCidrBlocks'] == null ? null : ((map['insideCidrBlocks'] as List).cast<String>()).input(),
-      peerAddress: map['peerAddress'] == null ? null : (map['peerAddress'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      subnetArn: map['subnetArn'] == null ? null : (map['subnetArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      bgpOptions: map['bgpOptions'] == null ? null : ((ConnectPeerBgpOptions.fromMap((map['bgpOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      configurations: map['configurations'] == null ? null : ((pulumi.Input.decodeList<ConnectPeerConfiguration>(map['configurations']!, (value) => ConnectPeerConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      connectAttachmentId: map['connectAttachmentId'] == null ? null : ((map['connectAttachmentId'] as String).input()).input(),
+      connectPeerId: map['connectPeerId'] == null ? null : ((map['connectPeerId'] as String).input()).input(),
+      coreNetworkAddress: map['coreNetworkAddress'] == null ? null : ((map['coreNetworkAddress'] as String).input()).input(),
+      coreNetworkId: map['coreNetworkId'] == null ? null : ((map['coreNetworkId'] as String).input()).input(),
+      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
+      edgeLocation: map['edgeLocation'] == null ? null : ((map['edgeLocation'] as String).input()).input(),
+      insideCidrBlocks: map['insideCidrBlocks'] == null ? null : (((map['insideCidrBlocks'] as List).cast<String>()).input()).input(),
+      peerAddress: map['peerAddress'] == null ? null : ((map['peerAddress'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      subnetArn: map['subnetArn'] == null ? null : ((map['subnetArn'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

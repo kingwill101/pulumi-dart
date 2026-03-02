@@ -54,13 +54,13 @@ class ZoneQueuedResourceArgs {
 
   factory ZoneQueuedResourceArgs.fromMap(Map<String, dynamic> map) {
     return ZoneQueuedResourceArgs(
-      bulkInsertInstanceResource: map['bulkInsertInstanceResource'] == null ? null : (BulkInsertInstanceResource.fromMap((map['bulkInsertInstanceResource'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      queuingPolicy: map['queuingPolicy'] == null ? null : (QueuingPolicy.fromMap((map['queuingPolicy'] as Map).cast<String, dynamic>())).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      bulkInsertInstanceResource: map['bulkInsertInstanceResource'] == null ? null : (BulkInsertInstanceResource.fromMap((map['bulkInsertInstanceResource']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      queuingPolicy: map['queuingPolicy'] == null ? null : (QueuingPolicy.fromMap((map['queuingPolicy']! as Map).cast<String, dynamic>())).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

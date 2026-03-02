@@ -108,21 +108,21 @@ class EnvironmentArgs {
 
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
-      daprApplicationInsightsConnectionString: map['daprApplicationInsightsConnectionString'] == null ? null : (map['daprApplicationInsightsConnectionString'] as String).input(),
-      identity: map['identity'] == null ? null : (EnvironmentIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      infrastructureResourceGroupName: map['infrastructureResourceGroupName'] == null ? null : (map['infrastructureResourceGroupName'] as String).input(),
-      infrastructureSubnetId: map['infrastructureSubnetId'] == null ? null : (map['infrastructureSubnetId'] as String).input(),
-      internalLoadBalancerEnabled: map['internalLoadBalancerEnabled'] == null ? null : (map['internalLoadBalancerEnabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId'] as String).input(),
-      logsDestination: map['logsDestination'] == null ? null : (map['logsDestination'] as String).input(),
-      mutualTlsEnabled: map['mutualTlsEnabled'] == null ? null : (map['mutualTlsEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      daprApplicationInsightsConnectionString: map['daprApplicationInsightsConnectionString'] == null ? null : (map['daprApplicationInsightsConnectionString']! as String).input(),
+      identity: map['identity'] == null ? null : (EnvironmentIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      infrastructureResourceGroupName: map['infrastructureResourceGroupName'] == null ? null : (map['infrastructureResourceGroupName']! as String).input(),
+      infrastructureSubnetId: map['infrastructureSubnetId'] == null ? null : (map['infrastructureSubnetId']! as String).input(),
+      internalLoadBalancerEnabled: map['internalLoadBalancerEnabled'] == null ? null : (map['internalLoadBalancerEnabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId']! as String).input(),
+      logsDestination: map['logsDestination'] == null ? null : (map['logsDestination']! as String).input(),
+      mutualTlsEnabled: map['mutualTlsEnabled'] == null ? null : (map['mutualTlsEnabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workloadProfiles: map['workloadProfiles'] == null ? null : (pulumi.Input.decodeList<EnvironmentWorkloadProfile>(map['workloadProfiles'], (value) => EnvironmentWorkloadProfile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      zoneRedundancyEnabled: map['zoneRedundancyEnabled'] == null ? null : (map['zoneRedundancyEnabled'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      workloadProfiles: map['workloadProfiles'] == null ? null : (pulumi.Input.decodeList<EnvironmentWorkloadProfile>(map['workloadProfiles']!, (value) => EnvironmentWorkloadProfile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      zoneRedundancyEnabled: map['zoneRedundancyEnabled'] == null ? null : (map['zoneRedundancyEnabled']! as bool).input(),
     );
   }
 }

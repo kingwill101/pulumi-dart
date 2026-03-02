@@ -21,7 +21,7 @@ class RuleGroupRuleStatementRateBasedStatementCustomKeyUriPath {
 
   factory RuleGroupRuleStatementRateBasedStatementCustomKeyUriPath.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatementCustomKeyUriPath(
-      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementRateBasedStatementCustomKeyUriPathTextTransformation>(map['textTransformations'], (value) => RuleGroupRuleStatementRateBasedStatementCustomKeyUriPathTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementRateBasedStatementCustomKeyUriPathTextTransformation>(map['textTransformations']!, (value) => RuleGroupRuleStatementRateBasedStatementCustomKeyUriPathTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

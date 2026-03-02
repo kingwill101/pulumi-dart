@@ -51,12 +51,12 @@ class ResizeRequestStatusErrorErrorErrorDetailQuotaInfo {
 
   factory ResizeRequestStatusErrorErrorErrorDetailQuotaInfo.fromMap(Map<String, dynamic> map) {
     return ResizeRequestStatusErrorErrorErrorDetailQuotaInfo(
-      dimensions: map['dimensions'] == null ? null : ((map['dimensions'] as Map).cast<String, String>()).input(),
-      futureLimit: map['futureLimit'] == null ? null : (map['futureLimit'] as int).input(),
-      limit: map['limit'] == null ? null : (map['limit'] as int).input(),
-      limitName: map['limitName'] == null ? null : (map['limitName'] as String).input(),
-      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
-      rolloutStatus: map['rolloutStatus'] == null ? null : (map['rolloutStatus'] as String).input(),
+      dimensions: map['dimensions'] == null ? null : ((map['dimensions']! as Map).cast<String, String>()).input(),
+      futureLimit: map['futureLimit'] == null ? null : (map['futureLimit']! as int).input(),
+      limit: map['limit'] == null ? null : (map['limit']! as int).input(),
+      limitName: map['limitName'] == null ? null : (map['limitName']! as String).input(),
+      metricName: map['metricName'] == null ? null : (map['metricName']! as String).input(),
+      rolloutStatus: map['rolloutStatus'] == null ? null : (map['rolloutStatus']! as String).input(),
     );
   }
 }

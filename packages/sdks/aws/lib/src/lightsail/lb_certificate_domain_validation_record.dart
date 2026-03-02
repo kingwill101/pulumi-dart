@@ -32,10 +32,10 @@ class LbCertificateDomainValidationRecord {
 
   factory LbCertificateDomainValidationRecord.fromMap(Map<String, dynamic> map) {
     return LbCertificateDomainValidationRecord(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      resourceRecordName: map['resourceRecordName'] == null ? null : (map['resourceRecordName'] as String).input(),
-      resourceRecordType: map['resourceRecordType'] == null ? null : (map['resourceRecordType'] as String).input(),
-      resourceRecordValue: map['resourceRecordValue'] == null ? null : (map['resourceRecordValue'] as String).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      resourceRecordName: map['resourceRecordName'] == null ? null : ((map['resourceRecordName'] as String).input()).input(),
+      resourceRecordType: map['resourceRecordType'] == null ? null : ((map['resourceRecordType'] as String).input()).input(),
+      resourceRecordValue: map['resourceRecordValue'] == null ? null : ((map['resourceRecordValue'] as String).input()).input(),
     );
   }
 }

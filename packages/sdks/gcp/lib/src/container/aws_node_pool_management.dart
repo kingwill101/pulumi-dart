@@ -20,7 +20,7 @@ class AwsNodePoolManagement {
 
   factory AwsNodePoolManagement.fromMap(Map<String, dynamic> map) {
     return AwsNodePoolManagement(
-      autoRepair: map['autoRepair'] == null ? null : (map['autoRepair'] as bool).input(),
+      autoRepair: map['autoRepair'] == null ? null : (map['autoRepair']! as bool).input(),
     );
   }
 }

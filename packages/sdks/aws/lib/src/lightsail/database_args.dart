@@ -101,22 +101,22 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      applyImmediately: map['applyImmediately'] == null ? null : (map['applyImmediately'] as bool).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      backupRetentionEnabled: map['backupRetentionEnabled'] == null ? null : (map['backupRetentionEnabled'] as bool).input(),
+      applyImmediately: map['applyImmediately'] == null ? null : ((map['applyImmediately'] as bool).input()).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
+      backupRetentionEnabled: map['backupRetentionEnabled'] == null ? null : ((map['backupRetentionEnabled'] as bool).input()).input(),
       blueprintId: (map['blueprintId'] as String).input(),
       bundleId: (map['bundleId'] as String).input(),
-      finalSnapshotName: map['finalSnapshotName'] == null ? null : (map['finalSnapshotName'] as String).input(),
+      finalSnapshotName: map['finalSnapshotName'] == null ? null : ((map['finalSnapshotName'] as String).input()).input(),
       masterDatabaseName: (map['masterDatabaseName'] as String).input(),
       masterPassword: (map['masterPassword'] as String).input(),
       masterUsername: (map['masterUsername'] as String).input(),
-      preferredBackupWindow: map['preferredBackupWindow'] == null ? null : (map['preferredBackupWindow'] as String).input(),
-      preferredMaintenanceWindow: map['preferredMaintenanceWindow'] == null ? null : (map['preferredMaintenanceWindow'] as String).input(),
-      publiclyAccessible: map['publiclyAccessible'] == null ? null : (map['publiclyAccessible'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      preferredBackupWindow: map['preferredBackupWindow'] == null ? null : ((map['preferredBackupWindow'] as String).input()).input(),
+      preferredMaintenanceWindow: map['preferredMaintenanceWindow'] == null ? null : ((map['preferredMaintenanceWindow'] as String).input()).input(),
+      publiclyAccessible: map['publiclyAccessible'] == null ? null : ((map['publiclyAccessible'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       relationalDatabaseName: (map['relationalDatabaseName'] as String).input(),
-      skipFinalSnapshot: map['skipFinalSnapshot'] == null ? null : (map['skipFinalSnapshot'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      skipFinalSnapshot: map['skipFinalSnapshot'] == null ? null : ((map['skipFinalSnapshot'] as bool).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

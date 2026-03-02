@@ -21,7 +21,7 @@ class ServiceServicePropertyIdentity {
 
   factory ServiceServicePropertyIdentity.fromMap(Map<String, dynamic> map) {
     return ServiceServicePropertyIdentity(
-      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
+      principal: map['principal'] == null ? null : (map['principal']! as String).input(),
     );
   }
 }

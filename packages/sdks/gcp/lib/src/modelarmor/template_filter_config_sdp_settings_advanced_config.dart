@@ -38,8 +38,8 @@ class TemplateFilterConfigSdpSettingsAdvancedConfig {
 
   factory TemplateFilterConfigSdpSettingsAdvancedConfig.fromMap(Map<String, dynamic> map) {
     return TemplateFilterConfigSdpSettingsAdvancedConfig(
-      deidentifyTemplate: map['deidentifyTemplate'] == null ? null : (map['deidentifyTemplate'] as String).input(),
-      inspectTemplate: map['inspectTemplate'] == null ? null : (map['inspectTemplate'] as String).input(),
+      deidentifyTemplate: map['deidentifyTemplate'] == null ? null : (map['deidentifyTemplate']! as String).input(),
+      inspectTemplate: map['inspectTemplate'] == null ? null : (map['inspectTemplate']! as String).input(),
     );
   }
 }

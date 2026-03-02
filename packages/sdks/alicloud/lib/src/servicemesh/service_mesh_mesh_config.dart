@@ -99,21 +99,21 @@ class ServiceMeshMeshConfig {
 
   factory ServiceMeshMeshConfig.fromMap(Map<String, dynamic> map) {
     return ServiceMeshMeshConfig(
-      accessLog: map['accessLog'] == null ? null : (ServiceMeshMeshConfigAccessLog.fromMap((map['accessLog'] as Map).cast<String, dynamic>())).input(),
-      audit: map['audit'] == null ? null : (ServiceMeshMeshConfigAudit.fromMap((map['audit'] as Map).cast<String, dynamic>())).input(),
-      controlPlaneLog: map['controlPlaneLog'] == null ? null : (ServiceMeshMeshConfigControlPlaneLog.fromMap((map['controlPlaneLog'] as Map).cast<String, dynamic>())).input(),
-      customizedZipkin: map['customizedZipkin'] == null ? null : (map['customizedZipkin'] as bool).input(),
-      enableLocalityLb: map['enableLocalityLb'] == null ? null : (map['enableLocalityLb'] as bool).input(),
-      includeIpRanges: map['includeIpRanges'] == null ? null : (map['includeIpRanges'] as String).input(),
-      kiali: map['kiali'] == null ? null : (ServiceMeshMeshConfigKiali.fromMap((map['kiali'] as Map).cast<String, dynamic>())).input(),
-      opa: map['opa'] == null ? null : (ServiceMeshMeshConfigOpa.fromMap((map['opa'] as Map).cast<String, dynamic>())).input(),
-      outboundTrafficPolicy: map['outboundTrafficPolicy'] == null ? null : (map['outboundTrafficPolicy'] as String).input(),
-      pilot: map['pilot'] == null ? null : (ServiceMeshMeshConfigPilot.fromMap((map['pilot'] as Map).cast<String, dynamic>())).input(),
-      prometheus: map['prometheus'] == null ? null : (ServiceMeshMeshConfigPrometheus.fromMap((map['prometheus'] as Map).cast<String, dynamic>())).input(),
-      proxy: map['proxy'] == null ? null : (ServiceMeshMeshConfigProxy.fromMap((map['proxy'] as Map).cast<String, dynamic>())).input(),
-      sidecarInjector: map['sidecarInjector'] == null ? null : (ServiceMeshMeshConfigSidecarInjector.fromMap((map['sidecarInjector'] as Map).cast<String, dynamic>())).input(),
-      telemetry: map['telemetry'] == null ? null : (map['telemetry'] as bool).input(),
-      tracing: map['tracing'] == null ? null : (map['tracing'] as bool).input(),
+      accessLog: map['accessLog'] == null ? null : (ServiceMeshMeshConfigAccessLog.fromMap((map['accessLog']! as Map).cast<String, dynamic>())).input(),
+      audit: map['audit'] == null ? null : (ServiceMeshMeshConfigAudit.fromMap((map['audit']! as Map).cast<String, dynamic>())).input(),
+      controlPlaneLog: map['controlPlaneLog'] == null ? null : (ServiceMeshMeshConfigControlPlaneLog.fromMap((map['controlPlaneLog']! as Map).cast<String, dynamic>())).input(),
+      customizedZipkin: map['customizedZipkin'] == null ? null : (map['customizedZipkin']! as bool).input(),
+      enableLocalityLb: map['enableLocalityLb'] == null ? null : (map['enableLocalityLb']! as bool).input(),
+      includeIpRanges: map['includeIpRanges'] == null ? null : (map['includeIpRanges']! as String).input(),
+      kiali: map['kiali'] == null ? null : (ServiceMeshMeshConfigKiali.fromMap((map['kiali']! as Map).cast<String, dynamic>())).input(),
+      opa: map['opa'] == null ? null : (ServiceMeshMeshConfigOpa.fromMap((map['opa']! as Map).cast<String, dynamic>())).input(),
+      outboundTrafficPolicy: map['outboundTrafficPolicy'] == null ? null : (map['outboundTrafficPolicy']! as String).input(),
+      pilot: map['pilot'] == null ? null : (ServiceMeshMeshConfigPilot.fromMap((map['pilot']! as Map).cast<String, dynamic>())).input(),
+      prometheus: map['prometheus'] == null ? null : (ServiceMeshMeshConfigPrometheus.fromMap((map['prometheus']! as Map).cast<String, dynamic>())).input(),
+      proxy: map['proxy'] == null ? null : (ServiceMeshMeshConfigProxy.fromMap((map['proxy']! as Map).cast<String, dynamic>())).input(),
+      sidecarInjector: map['sidecarInjector'] == null ? null : (ServiceMeshMeshConfigSidecarInjector.fromMap((map['sidecarInjector']! as Map).cast<String, dynamic>())).input(),
+      telemetry: map['telemetry'] == null ? null : (map['telemetry']! as bool).input(),
+      tracing: map['tracing'] == null ? null : (map['tracing']! as bool).input(),
     );
   }
 }

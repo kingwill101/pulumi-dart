@@ -58,14 +58,14 @@ class FleetDatabaseProperties {
 
   factory FleetDatabaseProperties.fromMap(Map<String, dynamic> map) {
     return FleetDatabaseProperties(
-      collation: map['collation'] == null ? null : (map['collation'] as String).input(),
-      createMode: map['createMode'] == null ? null : (map['createMode'] as String).input(),
-      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      resourceTags: map['resourceTags'] == null ? null : ((map['resourceTags'] as Map).cast<String, String>()).input(),
-      restoreFromTime: map['restoreFromTime'] == null ? null : (map['restoreFromTime'] as String).input(),
-      sourceDatabaseName: map['sourceDatabaseName'] == null ? null : (map['sourceDatabaseName'] as String).input(),
-      tierName: map['tierName'] == null ? null : (map['tierName'] as String).input(),
-      transparentDataEncryption: map['transparentDataEncryption'] == null ? null : (TransparentDataEncryption.fromMap((map['transparentDataEncryption'] as Map).cast<String, dynamic>())).input(),
+      collation: map['collation'] == null ? null : (map['collation']! as String).input(),
+      createMode: map['createMode'] == null ? null : (map['createMode']! as String).input(),
+      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      resourceTags: map['resourceTags'] == null ? null : ((map['resourceTags']! as Map).cast<String, String>()).input(),
+      restoreFromTime: map['restoreFromTime'] == null ? null : (map['restoreFromTime']! as String).input(),
+      sourceDatabaseName: map['sourceDatabaseName'] == null ? null : (map['sourceDatabaseName']! as String).input(),
+      tierName: map['tierName'] == null ? null : (map['tierName']! as String).input(),
+      transparentDataEncryption: map['transparentDataEncryption'] == null ? null : (TransparentDataEncryption.fromMap((map['transparentDataEncryption']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

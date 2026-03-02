@@ -40,9 +40,9 @@ class GetEnterpriseProxiesResult {
     return GetEnterpriseProxiesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       proxies: pulumi.Input.decodeList<GetEnterpriseProxiesProxy>(map['proxies'], (value) => GetEnterpriseProxiesProxy.fromMap((value as Map).cast<String, dynamic>())),
-      tid: map['tid'] == null ? null : map['tid'] as String,
+      tid: map['tid'] == null ? null : map['tid']! as String,
     );
   }
 }

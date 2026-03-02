@@ -32,7 +32,7 @@ class GetUrlListArgs {
   factory GetUrlListArgs.fromMap(Map<String, dynamic> map) {
     return GetUrlListArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       urlListId: (map['urlListId'] as String).input(),
     );
   }

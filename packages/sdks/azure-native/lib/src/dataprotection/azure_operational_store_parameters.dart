@@ -34,7 +34,7 @@ class AzureOperationalStoreParameters {
     return AzureOperationalStoreParameters(
       dataStoreType: (map['dataStoreType'] as String).input(),
       objectType: (map['objectType'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
     );
   }
 }

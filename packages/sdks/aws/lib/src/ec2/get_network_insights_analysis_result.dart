@@ -102,18 +102,18 @@ class GetNetworkInsightsAnalysisResult {
 
   factory GetNetworkInsightsAnalysisResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisResult(
-      alternatePathHints: pulumi.Input.decodeList<GetNetworkInsightsAnalysisAlternatePathHint>(map['alternatePathHints'], (value) => GetNetworkInsightsAnalysisAlternatePathHint.fromMap((value as Map).cast<String, dynamic>())),
+      alternatePathHints: pulumi.Input.decodeList<GetNetworkInsightsAnalysisAlternatePathHint>(map['alternatePathHints']!, (value) => GetNetworkInsightsAnalysisAlternatePathHint.fromMap((value as Map).cast<String, dynamic>())),
       arn: map['arn'] as String,
-      explanations: pulumi.Input.decodeList<GetNetworkInsightsAnalysisExplanation>(map['explanations'], (value) => GetNetworkInsightsAnalysisExplanation.fromMap((value as Map).cast<String, dynamic>())),
+      explanations: pulumi.Input.decodeList<GetNetworkInsightsAnalysisExplanation>(map['explanations']!, (value) => GetNetworkInsightsAnalysisExplanation.fromMap((value as Map).cast<String, dynamic>())),
       filterInArns: (map['filterInArns'] as List).cast<String>(),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetNetworkInsightsAnalysisFilter>(map['filters'], (value) => GetNetworkInsightsAnalysisFilter.fromMap((value as Map).cast<String, dynamic>())),
-      forwardPathComponents: pulumi.Input.decodeList<GetNetworkInsightsAnalysisForwardPathComponent>(map['forwardPathComponents'], (value) => GetNetworkInsightsAnalysisForwardPathComponent.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetNetworkInsightsAnalysisFilter>(map['filters']!, (value) => GetNetworkInsightsAnalysisFilter.fromMap((value as Map).cast<String, dynamic>())),
+      forwardPathComponents: pulumi.Input.decodeList<GetNetworkInsightsAnalysisForwardPathComponent>(map['forwardPathComponents']!, (value) => GetNetworkInsightsAnalysisForwardPathComponent.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       networkInsightsAnalysisId: map['networkInsightsAnalysisId'] as String,
       networkInsightsPathId: map['networkInsightsPathId'] as String,
       pathFound: map['pathFound'] as bool,
       region: map['region'] as String,
-      returnPathComponents: pulumi.Input.decodeList<GetNetworkInsightsAnalysisReturnPathComponent>(map['returnPathComponents'], (value) => GetNetworkInsightsAnalysisReturnPathComponent.fromMap((value as Map).cast<String, dynamic>())),
+      returnPathComponents: pulumi.Input.decodeList<GetNetworkInsightsAnalysisReturnPathComponent>(map['returnPathComponents']!, (value) => GetNetworkInsightsAnalysisReturnPathComponent.fromMap((value as Map).cast<String, dynamic>())),
       startDate: map['startDate'] as String,
       status: map['status'] as String,
       statusMessage: map['statusMessage'] as String,

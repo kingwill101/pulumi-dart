@@ -36,10 +36,10 @@ class AwsIamInstanceProfilePropertiesResponse {
 
   factory AwsIamInstanceProfilePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsIamInstanceProfilePropertiesResponse(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      instanceProfileName: map['instanceProfileName'] == null ? null : (map['instanceProfileName'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      roles: map['roles'] == null ? null : ((map['roles'] as List).cast<String>()).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      instanceProfileName: map['instanceProfileName'] == null ? null : (map['instanceProfileName']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      roles: map['roles'] == null ? null : ((map['roles']! as List).cast<String>()).input(),
     );
   }
 }

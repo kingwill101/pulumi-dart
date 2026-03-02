@@ -51,13 +51,13 @@ class RedirectConfiguration {
 
   factory RedirectConfiguration.fromMap(Map<String, dynamic> map) {
     return RedirectConfiguration(
-      customFragment: map['customFragment'] == null ? null : (map['customFragment'] as String).input(),
-      customHost: map['customHost'] == null ? null : (map['customHost'] as String).input(),
-      customPath: map['customPath'] == null ? null : (map['customPath'] as String).input(),
-      customQueryString: map['customQueryString'] == null ? null : (map['customQueryString'] as String).input(),
+      customFragment: map['customFragment'] == null ? null : (map['customFragment']! as String).input(),
+      customHost: map['customHost'] == null ? null : (map['customHost']! as String).input(),
+      customPath: map['customPath'] == null ? null : (map['customPath']! as String).input(),
+      customQueryString: map['customQueryString'] == null ? null : (map['customQueryString']! as String).input(),
       odataType: (map['odataType'] as String).input(),
-      redirectProtocol: map['redirectProtocol'] == null ? null : (map['redirectProtocol'] as String).input(),
-      redirectType: map['redirectType'] == null ? null : (map['redirectType'] as String).input(),
+      redirectProtocol: map['redirectProtocol'] == null ? null : (map['redirectProtocol']! as String).input(),
+      redirectType: map['redirectType'] == null ? null : (map['redirectType']! as String).input(),
     );
   }
 }

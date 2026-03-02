@@ -42,11 +42,11 @@ class PrometheusOsProviderInstancePropertiesResponse {
 
   factory PrometheusOsProviderInstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PrometheusOsProviderInstancePropertiesResponse(
-      prometheusUrl: map['prometheusUrl'] == null ? null : (map['prometheusUrl'] as String).input(),
+      prometheusUrl: map['prometheusUrl'] == null ? null : (map['prometheusUrl']! as String).input(),
       providerType: (map['providerType'] as String).input(),
-      sapSid: map['sapSid'] == null ? null : (map['sapSid'] as String).input(),
-      sslCertificateUri: map['sslCertificateUri'] == null ? null : (map['sslCertificateUri'] as String).input(),
-      sslPreference: map['sslPreference'] == null ? null : (map['sslPreference'] as String).input(),
+      sapSid: map['sapSid'] == null ? null : (map['sapSid']! as String).input(),
+      sslCertificateUri: map['sslCertificateUri'] == null ? null : (map['sslCertificateUri']! as String).input(),
+      sslPreference: map['sslPreference'] == null ? null : (map['sslPreference']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class DomainControllerProperties {
 
   factory DomainControllerProperties.fromMap(Map<String, dynamic> map) {
     return DomainControllerProperties(
-      dnsServer: map['dnsServer'] == null ? null : (map['dnsServer'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      ouPath: map['ouPath'] == null ? null : (map['ouPath'] as String).input(),
+      dnsServer: map['dnsServer'] == null ? null : (map['dnsServer']! as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      ouPath: map['ouPath'] == null ? null : (map['ouPath']! as String).input(),
     );
   }
 }

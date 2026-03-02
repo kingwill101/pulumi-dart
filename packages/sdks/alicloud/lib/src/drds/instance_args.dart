@@ -71,11 +71,11 @@ class InstanceArgs {
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
       description: (map['description'] as String).input(),
-      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType'] as String).input(),
+      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType']! as String).input(),
       instanceSeries: (map['instanceSeries'] as String).input(),
-      mysqlVersion: map['mysqlVersion'] == null ? null : (map['mysqlVersion'] as int).input(),
+      mysqlVersion: map['mysqlVersion'] == null ? null : (map['mysqlVersion']! as int).input(),
       specification: (map['specification'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
       vswitchId: (map['vswitchId'] as String).input(),
       zoneId: (map['zoneId'] as String).input(),
     );

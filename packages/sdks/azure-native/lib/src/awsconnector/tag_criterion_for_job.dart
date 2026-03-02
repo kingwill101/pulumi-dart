@@ -28,8 +28,8 @@ class TagCriterionForJob {
 
   factory TagCriterionForJob.fromMap(Map<String, dynamic> map) {
     return TagCriterionForJob(
-      comparator: map['comparator'] == null ? null : (JobComparatorEnumValue.fromMap((map['comparator'] as Map).cast<String, dynamic>())).input(),
-      tagValues: map['tagValues'] == null ? null : (pulumi.Input.decodeList<TagCriterionPairForJob>(map['tagValues'], (value) => TagCriterionPairForJob.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      comparator: map['comparator'] == null ? null : (JobComparatorEnumValue.fromMap((map['comparator']! as Map).cast<String, dynamic>())).input(),
+      tagValues: map['tagValues'] == null ? null : (pulumi.Input.decodeList<TagCriterionPairForJob>(map['tagValues']!, (value) => TagCriterionPairForJob.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class CxGenerativeSettingsFallbackSettings {
 
   factory CxGenerativeSettingsFallbackSettings.fromMap(Map<String, dynamic> map) {
     return CxGenerativeSettingsFallbackSettings(
-      promptTemplates: map['promptTemplates'] == null ? null : (pulumi.Input.decodeList<CxGenerativeSettingsFallbackSettingsPromptTemplate>(map['promptTemplates'], (value) => CxGenerativeSettingsFallbackSettingsPromptTemplate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      selectedPrompt: map['selectedPrompt'] == null ? null : (map['selectedPrompt'] as String).input(),
+      promptTemplates: map['promptTemplates'] == null ? null : (pulumi.Input.decodeList<CxGenerativeSettingsFallbackSettingsPromptTemplate>(map['promptTemplates']!, (value) => CxGenerativeSettingsFallbackSettingsPromptTemplate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selectedPrompt: map['selectedPrompt'] == null ? null : (map['selectedPrompt']! as String).input(),
     );
   }
 }

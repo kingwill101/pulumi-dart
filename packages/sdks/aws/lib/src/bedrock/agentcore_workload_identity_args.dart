@@ -36,9 +36,9 @@ class AgentcoreWorkloadIdentityArgs {
 
   factory AgentcoreWorkloadIdentityArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreWorkloadIdentityArgs(
-      allowedResourceOauth2ReturnUrls: map['allowedResourceOauth2ReturnUrls'] == null ? null : ((map['allowedResourceOauth2ReturnUrls'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      allowedResourceOauth2ReturnUrls: map['allowedResourceOauth2ReturnUrls'] == null ? null : (((map['allowedResourceOauth2ReturnUrls'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

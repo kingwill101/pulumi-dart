@@ -64,15 +64,15 @@ class Intents {
 
   factory Intents.fromMap(Map<String, dynamic> map) {
     return Intents(
-      adapter: map['adapter'] == null ? null : ((map['adapter'] as List).cast<String>()).input(),
-      adapterPropertyOverrides: map['adapterPropertyOverrides'] == null ? null : (AdapterPropertyOverrides.fromMap((map['adapterPropertyOverrides'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      overrideAdapterProperty: map['overrideAdapterProperty'] == null ? null : (map['overrideAdapterProperty'] as bool).input(),
-      overrideQosPolicy: map['overrideQosPolicy'] == null ? null : (map['overrideQosPolicy'] as bool).input(),
-      overrideVirtualSwitchConfiguration: map['overrideVirtualSwitchConfiguration'] == null ? null : (map['overrideVirtualSwitchConfiguration'] as bool).input(),
-      qosPolicyOverrides: map['qosPolicyOverrides'] == null ? null : (QosPolicyOverrides.fromMap((map['qosPolicyOverrides'] as Map).cast<String, dynamic>())).input(),
-      trafficType: map['trafficType'] == null ? null : ((map['trafficType'] as List).cast<String>()).input(),
-      virtualSwitchConfigurationOverrides: map['virtualSwitchConfigurationOverrides'] == null ? null : (VirtualSwitchConfigurationOverrides.fromMap((map['virtualSwitchConfigurationOverrides'] as Map).cast<String, dynamic>())).input(),
+      adapter: map['adapter'] == null ? null : ((map['adapter']! as List).cast<String>()).input(),
+      adapterPropertyOverrides: map['adapterPropertyOverrides'] == null ? null : (AdapterPropertyOverrides.fromMap((map['adapterPropertyOverrides']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      overrideAdapterProperty: map['overrideAdapterProperty'] == null ? null : (map['overrideAdapterProperty']! as bool).input(),
+      overrideQosPolicy: map['overrideQosPolicy'] == null ? null : (map['overrideQosPolicy']! as bool).input(),
+      overrideVirtualSwitchConfiguration: map['overrideVirtualSwitchConfiguration'] == null ? null : (map['overrideVirtualSwitchConfiguration']! as bool).input(),
+      qosPolicyOverrides: map['qosPolicyOverrides'] == null ? null : (QosPolicyOverrides.fromMap((map['qosPolicyOverrides']! as Map).cast<String, dynamic>())).input(),
+      trafficType: map['trafficType'] == null ? null : ((map['trafficType']! as List).cast<String>()).input(),
+      virtualSwitchConfigurationOverrides: map['virtualSwitchConfigurationOverrides'] == null ? null : (VirtualSwitchConfigurationOverrides.fromMap((map['virtualSwitchConfigurationOverrides']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo {
   factory GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo(
       key: (map['key'] as String).input(),
-      synonyms: map['synonyms'] == null ? null : ((map['synonyms'] as List).cast<String>()).input(),
+      synonyms: map['synonyms'] == null ? null : ((map['synonyms']! as List).cast<String>()).input(),
     );
   }
 }

@@ -29,8 +29,8 @@ class SecurityGroupArgs {
 
   factory SecurityGroupArgs.fromMap(Map<String, dynamic> map) {
     return SecurityGroupArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      securityGroupName: map['securityGroupName'] == null ? null : (map['securityGroupName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      securityGroupName: map['securityGroupName'] == null ? null : (map['securityGroupName']! as String).input(),
     );
   }
 }

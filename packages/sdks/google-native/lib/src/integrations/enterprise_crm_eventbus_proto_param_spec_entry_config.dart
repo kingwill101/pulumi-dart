@@ -60,15 +60,15 @@ class EnterpriseCrmEventbusProtoParamSpecEntryConfig {
 
   factory EnterpriseCrmEventbusProtoParamSpecEntryConfig.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoParamSpecEntryConfig(
-      descriptivePhrase: map['descriptivePhrase'] == null ? null : (map['descriptivePhrase'] as String).input(),
-      helpText: map['helpText'] == null ? null : (map['helpText'] as String).input(),
-      hideDefaultValue: map['hideDefaultValue'] == null ? null : (map['hideDefaultValue'] as bool).input(),
-      inputDisplayOption: map['inputDisplayOption'] == null ? null : (EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOption.fromValue(map['inputDisplayOption'] as String)).input(),
-      isHidden: map['isHidden'] == null ? null : (map['isHidden'] as bool).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      parameterNameOption: map['parameterNameOption'] == null ? null : (EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOption.fromValue(map['parameterNameOption'] as String)).input(),
-      subSectionLabel: map['subSectionLabel'] == null ? null : (map['subSectionLabel'] as String).input(),
-      uiPlaceholderText: map['uiPlaceholderText'] == null ? null : (map['uiPlaceholderText'] as String).input(),
+      descriptivePhrase: map['descriptivePhrase'] == null ? null : (map['descriptivePhrase']! as String).input(),
+      helpText: map['helpText'] == null ? null : (map['helpText']! as String).input(),
+      hideDefaultValue: map['hideDefaultValue'] == null ? null : (map['hideDefaultValue']! as bool).input(),
+      inputDisplayOption: map['inputDisplayOption'] == null ? null : (EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOption.fromValue(map['inputDisplayOption']! as String)).input(),
+      isHidden: map['isHidden'] == null ? null : (map['isHidden']! as bool).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      parameterNameOption: map['parameterNameOption'] == null ? null : (EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOption.fromValue(map['parameterNameOption']! as String)).input(),
+      subSectionLabel: map['subSectionLabel'] == null ? null : (map['subSectionLabel']! as String).input(),
+      uiPlaceholderText: map['uiPlaceholderText'] == null ? null : (map['uiPlaceholderText']! as String).input(),
     );
   }
 }

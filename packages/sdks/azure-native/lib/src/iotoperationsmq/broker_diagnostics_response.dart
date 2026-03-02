@@ -86,20 +86,20 @@ class BrokerDiagnosticsResponse {
 
   factory BrokerDiagnosticsResponse.fromMap(Map<String, dynamic> map) {
     return BrokerDiagnosticsResponse(
-      diagnosticServiceEndpoint: map['diagnosticServiceEndpoint'] == null ? null : (map['diagnosticServiceEndpoint'] as String).input(),
-      enableMetrics: map['enableMetrics'] == null ? null : (map['enableMetrics'] as bool).input(),
-      enableSelfCheck: map['enableSelfCheck'] == null ? null : (map['enableSelfCheck'] as bool).input(),
-      enableSelfTracing: map['enableSelfTracing'] == null ? null : (map['enableSelfTracing'] as bool).input(),
-      enableTracing: map['enableTracing'] == null ? null : (map['enableTracing'] as bool).input(),
-      logFormat: map['logFormat'] == null ? null : (map['logFormat'] as String).input(),
-      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
-      maxCellMapLifetime: map['maxCellMapLifetime'] == null ? null : (map['maxCellMapLifetime'] as double).input(),
-      metricUpdateFrequencySeconds: map['metricUpdateFrequencySeconds'] == null ? null : (map['metricUpdateFrequencySeconds'] as double).input(),
-      probeImage: map['probeImage'] == null ? null : (map['probeImage'] as String).input(),
-      selfCheckFrequencySeconds: map['selfCheckFrequencySeconds'] == null ? null : (map['selfCheckFrequencySeconds'] as double).input(),
-      selfCheckTimeoutSeconds: map['selfCheckTimeoutSeconds'] == null ? null : (map['selfCheckTimeoutSeconds'] as double).input(),
-      selfTraceFrequencySeconds: map['selfTraceFrequencySeconds'] == null ? null : (map['selfTraceFrequencySeconds'] as double).input(),
-      spanChannelCapacity: map['spanChannelCapacity'] == null ? null : (map['spanChannelCapacity'] as double).input(),
+      diagnosticServiceEndpoint: map['diagnosticServiceEndpoint'] == null ? null : (map['diagnosticServiceEndpoint']! as String).input(),
+      enableMetrics: map['enableMetrics'] == null ? null : (map['enableMetrics']! as bool).input(),
+      enableSelfCheck: map['enableSelfCheck'] == null ? null : (map['enableSelfCheck']! as bool).input(),
+      enableSelfTracing: map['enableSelfTracing'] == null ? null : (map['enableSelfTracing']! as bool).input(),
+      enableTracing: map['enableTracing'] == null ? null : (map['enableTracing']! as bool).input(),
+      logFormat: map['logFormat'] == null ? null : (map['logFormat']! as String).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel']! as String).input(),
+      maxCellMapLifetime: map['maxCellMapLifetime'] == null ? null : (map['maxCellMapLifetime']! as double).input(),
+      metricUpdateFrequencySeconds: map['metricUpdateFrequencySeconds'] == null ? null : (map['metricUpdateFrequencySeconds']! as double).input(),
+      probeImage: map['probeImage'] == null ? null : (map['probeImage']! as String).input(),
+      selfCheckFrequencySeconds: map['selfCheckFrequencySeconds'] == null ? null : (map['selfCheckFrequencySeconds']! as double).input(),
+      selfCheckTimeoutSeconds: map['selfCheckTimeoutSeconds'] == null ? null : (map['selfCheckTimeoutSeconds']! as double).input(),
+      selfTraceFrequencySeconds: map['selfTraceFrequencySeconds'] == null ? null : (map['selfTraceFrequencySeconds']! as double).input(),
+      spanChannelCapacity: map['spanChannelCapacity'] == null ? null : (map['spanChannelCapacity']! as double).input(),
     );
   }
 }

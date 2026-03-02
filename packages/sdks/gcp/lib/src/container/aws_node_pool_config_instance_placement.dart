@@ -20,7 +20,7 @@ class AwsNodePoolConfigInstancePlacement {
 
   factory AwsNodePoolConfigInstancePlacement.fromMap(Map<String, dynamic> map) {
     return AwsNodePoolConfigInstancePlacement(
-      tenancy: map['tenancy'] == null ? null : (map['tenancy'] as String).input(),
+      tenancy: map['tenancy'] == null ? null : (map['tenancy']! as String).input(),
     );
   }
 }

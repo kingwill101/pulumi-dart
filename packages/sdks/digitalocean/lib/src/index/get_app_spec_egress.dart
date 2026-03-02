@@ -20,7 +20,7 @@ class GetAppSpecEgress {
 
   factory GetAppSpecEgress.fromMap(Map<String, dynamic> map) {
     return GetAppSpecEgress(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames {
 
   factory KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames.fromMap(Map<String, dynamic> map) {
     return KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames(
-      subjectAlternativeName: map['subjectAlternativeName'] == null ? null : (map['subjectAlternativeName'] as String).input(),
+      subjectAlternativeName: map['subjectAlternativeName'] == null ? null : (map['subjectAlternativeName']! as String).input(),
     );
   }
 }

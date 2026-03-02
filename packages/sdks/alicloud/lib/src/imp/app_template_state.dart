@@ -49,12 +49,12 @@ class AppTemplateState {
 
   factory AppTemplateState.fromMap(Map<String, dynamic> map) {
     return AppTemplateState(
-      appTemplateName: map['appTemplateName'] == null ? null : (map['appTemplateName'] as String).input(),
-      componentLists: map['componentLists'] == null ? null : ((map['componentLists'] as List).cast<String>()).input(),
-      configLists: map['configLists'] == null ? null : (pulumi.Input.decodeList<AppTemplateConfigList>(map['configLists'], (value) => AppTemplateConfigList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      integrationMode: map['integrationMode'] == null ? null : (map['integrationMode'] as String).input(),
-      scene: map['scene'] == null ? null : (map['scene'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      appTemplateName: map['appTemplateName'] == null ? null : (map['appTemplateName']! as String).input(),
+      componentLists: map['componentLists'] == null ? null : ((map['componentLists']! as List).cast<String>()).input(),
+      configLists: map['configLists'] == null ? null : (pulumi.Input.decodeList<AppTemplateConfigList>(map['configLists']!, (value) => AppTemplateConfigList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      integrationMode: map['integrationMode'] == null ? null : (map['integrationMode']! as String).input(),
+      scene: map['scene'] == null ? null : (map['scene']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

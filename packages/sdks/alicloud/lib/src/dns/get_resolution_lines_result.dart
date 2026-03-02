@@ -57,15 +57,15 @@ class GetResolutionLinesResult {
 
   factory GetResolutionLinesResult.fromMap(Map<String, dynamic> map) {
     return GetResolutionLinesResult(
-      domainName: map['domainName'] == null ? null : map['domainName'] as String,
+      domainName: map['domainName'] == null ? null : map['domainName']! as String,
       id: map['id'] as String,
-      lang: map['lang'] == null ? null : map['lang'] as String,
+      lang: map['lang'] == null ? null : map['lang']! as String,
       lineCodes: (map['lineCodes'] as List).cast<String>(),
       lineDisplayNames: (map['lineDisplayNames'] as List).cast<String>(),
-      lineNames: map['lineNames'] == null ? null : (map['lineNames'] as List).cast<String>(),
+      lineNames: map['lineNames'] == null ? null : (map['lineNames']! as List).cast<String>(),
       lines: pulumi.Input.decodeList<GetResolutionLinesLine>(map['lines'], (value) => GetResolutionLinesLine.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      userClientIp: map['userClientIp'] == null ? null : map['userClientIp'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      userClientIp: map['userClientIp'] == null ? null : map['userClientIp']! as String,
     );
   }
 }

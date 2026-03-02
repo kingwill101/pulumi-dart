@@ -56,13 +56,13 @@ class PermissionBindingArgs {
 
   factory PermissionBindingArgs.fromMap(Map<String, dynamic> map) {
     return PermissionBindingArgs(
-      clientGroupName: map['clientGroupName'] == null ? null : (map['clientGroupName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      clientGroupName: map['clientGroupName'] == null ? null : (map['clientGroupName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
-      permission: map['permission'] == null ? null : (map['permission'] as String).input(),
-      permissionBindingName: map['permissionBindingName'] == null ? null : (map['permissionBindingName'] as String).input(),
+      permission: map['permission'] == null ? null : (map['permission']! as String).input(),
+      permissionBindingName: map['permissionBindingName'] == null ? null : (map['permissionBindingName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      topicSpaceName: map['topicSpaceName'] == null ? null : (map['topicSpaceName'] as String).input(),
+      topicSpaceName: map['topicSpaceName'] == null ? null : (map['topicSpaceName']! as String).input(),
     );
   }
 }

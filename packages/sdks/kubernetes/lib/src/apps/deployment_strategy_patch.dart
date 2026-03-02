@@ -27,8 +27,8 @@ class DeploymentStrategyPatch {
 
   factory DeploymentStrategyPatch.fromMap(Map<String, dynamic> map) {
     return DeploymentStrategyPatch(
-      rollingUpdate: map['rollingUpdate'] == null ? null : (RollingUpdateDeploymentPatch.fromMap((map['rollingUpdate'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      rollingUpdate: map['rollingUpdate'] == null ? null : (RollingUpdateDeploymentPatch.fromMap((map['rollingUpdate']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -56,10 +56,10 @@ class ValidatingAdmissionPolicyBindingSpecPatch {
 
   factory ValidatingAdmissionPolicyBindingSpecPatch.fromMap(Map<String, dynamic> map) {
     return ValidatingAdmissionPolicyBindingSpecPatch(
-      matchResources: map['matchResources'] == null ? null : (MatchResourcesPatch.fromMap((map['matchResources'] as Map).cast<String, dynamic>())).input(),
-      paramRef: map['paramRef'] == null ? null : (ParamRefPatch.fromMap((map['paramRef'] as Map).cast<String, dynamic>())).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      validationActions: map['validationActions'] == null ? null : ((map['validationActions'] as List).cast<String>()).input(),
+      matchResources: map['matchResources'] == null ? null : (MatchResourcesPatch.fromMap((map['matchResources']! as Map).cast<String, dynamic>())).input(),
+      paramRef: map['paramRef'] == null ? null : (ParamRefPatch.fromMap((map['paramRef']! as Map).cast<String, dynamic>())).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
+      validationActions: map['validationActions'] == null ? null : ((map['validationActions']! as List).cast<String>()).input(),
     );
   }
 }

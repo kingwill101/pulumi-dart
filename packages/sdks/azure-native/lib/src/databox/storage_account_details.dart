@@ -33,7 +33,7 @@ class StorageAccountDetails {
   factory StorageAccountDetails.fromMap(Map<String, dynamic> map) {
     return StorageAccountDetails(
       dataAccountType: (map['dataAccountType'] as String).input(),
-      sharePassword: map['sharePassword'] == null ? null : (map['sharePassword'] as String).input(),
+      sharePassword: map['sharePassword'] == null ? null : (map['sharePassword']! as String).input(),
       storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }

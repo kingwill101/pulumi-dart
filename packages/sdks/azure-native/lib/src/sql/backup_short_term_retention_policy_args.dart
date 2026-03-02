@@ -50,10 +50,10 @@ class BackupShortTermRetentionPolicyArgs {
   factory BackupShortTermRetentionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BackupShortTermRetentionPolicyArgs(
       databaseName: (map['databaseName'] as String).input(),
-      diffBackupIntervalInHours: map['diffBackupIntervalInHours'] == null ? null : (map['diffBackupIntervalInHours'] as int).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      diffBackupIntervalInHours: map['diffBackupIntervalInHours'] == null ? null : (map['diffBackupIntervalInHours']! as int).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
       serverName: (map['serverName'] as String).input(),
     );
   }

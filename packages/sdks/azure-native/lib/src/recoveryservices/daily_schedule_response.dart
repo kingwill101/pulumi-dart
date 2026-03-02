@@ -20,7 +20,7 @@ class DailyScheduleResponse {
 
   factory DailyScheduleResponse.fromMap(Map<String, dynamic> map) {
     return DailyScheduleResponse(
-      scheduleRunTimes: map['scheduleRunTimes'] == null ? null : ((map['scheduleRunTimes'] as List).cast<String>()).input(),
+      scheduleRunTimes: map['scheduleRunTimes'] == null ? null : ((map['scheduleRunTimes']! as List).cast<String>()).input(),
     );
   }
 }

@@ -87,19 +87,19 @@ class LinkedServiceKustoState {
 
   factory LinkedServiceKustoState.fromMap(Map<String, dynamic> map) {
     return LinkedServiceKustoState(
-      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
-      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName'] as String).input(),
-      kustoDatabaseName: map['kustoDatabaseName'] == null ? null : (map['kustoDatabaseName'] as String).input(),
-      kustoEndpoint: map['kustoEndpoint'] == null ? null : (map['kustoEndpoint'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId'] as String).input(),
-      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (map['servicePrincipalKey'] as String).input(),
-      tenant: map['tenant'] == null ? null : (map['tenant'] as String).input(),
-      useManagedIdentity: map['useManagedIdentity'] == null ? null : (map['useManagedIdentity'] as bool).input(),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties']! as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName']! as String).input(),
+      kustoDatabaseName: map['kustoDatabaseName'] == null ? null : (map['kustoDatabaseName']! as String).input(),
+      kustoEndpoint: map['kustoEndpoint'] == null ? null : (map['kustoEndpoint']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId']! as String).input(),
+      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (map['servicePrincipalKey']! as String).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant']! as String).input(),
+      useManagedIdentity: map['useManagedIdentity'] == null ? null : (map['useManagedIdentity']! as bool).input(),
     );
   }
 }

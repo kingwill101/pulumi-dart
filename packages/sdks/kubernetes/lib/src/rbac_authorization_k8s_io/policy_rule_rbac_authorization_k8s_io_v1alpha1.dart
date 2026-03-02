@@ -41,10 +41,10 @@ class PolicyRuleRbacAuthorizationK8sIoV1alpha1 {
 
   factory PolicyRuleRbacAuthorizationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return PolicyRuleRbacAuthorizationK8sIoV1alpha1(
-      apiGroups: map['apiGroups'] == null ? null : ((map['apiGroups'] as List).cast<String>()).input(),
-      nonResourceURLs: map['nonResourceURLs'] == null ? null : ((map['nonResourceURLs'] as List).cast<String>()).input(),
-      resourceNames: map['resourceNames'] == null ? null : ((map['resourceNames'] as List).cast<String>()).input(),
-      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
+      apiGroups: map['apiGroups'] == null ? null : ((map['apiGroups']! as List).cast<String>()).input(),
+      nonResourceURLs: map['nonResourceURLs'] == null ? null : ((map['nonResourceURLs']! as List).cast<String>()).input(),
+      resourceNames: map['resourceNames'] == null ? null : ((map['resourceNames']! as List).cast<String>()).input(),
+      resources: map['resources'] == null ? null : ((map['resources']! as List).cast<String>()).input(),
       verbs: ((map['verbs'] as List).cast<String>()).input(),
     );
   }

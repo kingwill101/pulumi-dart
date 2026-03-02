@@ -59,13 +59,13 @@ class XmlSourceResponse {
 
   factory XmlSourceResponse.fromMap(Map<String, dynamic> map) {
     return XmlSourceResponse(
-      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      formatSettings: map['formatSettings'] == null ? null : (XmlReadSettingsResponse.fromMap((map['formatSettings'] as Map).cast<String, dynamic>())).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
-      storeSettings: map['storeSettings'] == null ? null : (AmazonS3CompatibleReadSettingsResponse.fromMap((map['storeSettings'] as Map).cast<String, dynamic>())).input(),
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']!).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      formatSettings: map['formatSettings'] == null ? null : (XmlReadSettingsResponse.fromMap((map['formatSettings']! as Map).cast<String, dynamic>())).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']!).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']!).input(),
+      storeSettings: map['storeSettings'] == null ? null : (AmazonS3CompatibleReadSettingsResponse.fromMap((map['storeSettings']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

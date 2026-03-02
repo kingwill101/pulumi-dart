@@ -44,7 +44,7 @@ class AzureFileShareConfigurationResponse {
       accountKey: (map['accountKey'] as String).input(),
       accountName: (map['accountName'] as String).input(),
       azureFileUrl: (map['azureFileUrl'] as String).input(),
-      mountOptions: map['mountOptions'] == null ? null : (map['mountOptions'] as String).input(),
+      mountOptions: map['mountOptions'] == null ? null : (map['mountOptions']! as String).input(),
       relativeMountPath: (map['relativeMountPath'] as String).input(),
     );
   }

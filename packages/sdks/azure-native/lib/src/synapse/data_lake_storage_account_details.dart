@@ -36,10 +36,10 @@ class DataLakeStorageAccountDetails {
 
   factory DataLakeStorageAccountDetails.fromMap(Map<String, dynamic> map) {
     return DataLakeStorageAccountDetails(
-      accountUrl: map['accountUrl'] == null ? null : (map['accountUrl'] as String).input(),
-      createManagedPrivateEndpoint: map['createManagedPrivateEndpoint'] == null ? null : (map['createManagedPrivateEndpoint'] as bool).input(),
-      filesystem: map['filesystem'] == null ? null : (map['filesystem'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      accountUrl: map['accountUrl'] == null ? null : (map['accountUrl']! as String).input(),
+      createManagedPrivateEndpoint: map['createManagedPrivateEndpoint'] == null ? null : (map['createManagedPrivateEndpoint']! as bool).input(),
+      filesystem: map['filesystem'] == null ? null : (map['filesystem']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

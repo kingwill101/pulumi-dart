@@ -40,8 +40,8 @@ class LandingZoneArgs {
   factory LandingZoneArgs.fromMap(Map<String, dynamic> map) {
     return LandingZoneArgs(
       manifestJson: (map['manifestJson'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       version: (map['version'] as String).input(),
     );
   }

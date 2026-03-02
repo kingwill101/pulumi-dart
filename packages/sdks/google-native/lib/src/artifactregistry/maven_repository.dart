@@ -22,7 +22,7 @@ class MavenRepository {
 
   factory MavenRepository.fromMap(Map<String, dynamic> map) {
     return MavenRepository(
-      publicRepository: map['publicRepository'] == null ? null : (MavenRepositoryPublicRepository.fromValue(map['publicRepository'] as String)).input(),
+      publicRepository: map['publicRepository'] == null ? null : (MavenRepositoryPublicRepository.fromValue(map['publicRepository']! as String)).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class KeytabInformation {
 
   factory KeytabInformation.fromMap(Map<String, dynamic> map) {
     return KeytabInformation(
-      keytab: map['keytab'] == null ? null : (map['keytab'] as String).input(),
+      keytab: map['keytab'] == null ? null : (map['keytab']! as String).input(),
     );
   }
 }

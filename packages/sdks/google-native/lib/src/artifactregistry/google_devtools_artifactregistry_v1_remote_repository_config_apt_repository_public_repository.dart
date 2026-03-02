@@ -27,8 +27,8 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicR
 
   factory GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository(
-      repositoryBase: map['repositoryBase'] == null ? null : (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase.fromValue(map['repositoryBase'] as String)).input(),
-      repositoryPath: map['repositoryPath'] == null ? null : (map['repositoryPath'] as String).input(),
+      repositoryBase: map['repositoryBase'] == null ? null : (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase.fromValue(map['repositoryBase']! as String)).input(),
+      repositoryPath: map['repositoryPath'] == null ? null : (map['repositoryPath']! as String).input(),
     );
   }
 }

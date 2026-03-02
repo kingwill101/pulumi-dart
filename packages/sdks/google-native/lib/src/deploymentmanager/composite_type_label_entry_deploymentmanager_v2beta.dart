@@ -26,8 +26,8 @@ class CompositeTypeLabelEntryDeploymentmanagerV2beta {
 
   factory CompositeTypeLabelEntryDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return CompositeTypeLabelEntryDeploymentmanagerV2beta(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

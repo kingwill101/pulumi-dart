@@ -27,8 +27,8 @@ class DeviceConfigurationResponse {
 
   factory DeviceConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DeviceConfigurationResponse(
-      deviceMetadata: map['deviceMetadata'] == null ? null : (map['deviceMetadata'] as String).input(),
-      nicDetails: map['nicDetails'] == null ? null : (pulumi.Input.decodeList<NicDetailResponse>(map['nicDetails'], (value) => NicDetailResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deviceMetadata: map['deviceMetadata'] == null ? null : (map['deviceMetadata']! as String).input(),
+      nicDetails: map['nicDetails'] == null ? null : (pulumi.Input.decodeList<NicDetailResponse>(map['nicDetails']!, (value) => NicDetailResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

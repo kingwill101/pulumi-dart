@@ -41,9 +41,9 @@ class GetSolutionStackArgs {
 
   factory GetSolutionStackArgs.fromMap(Map<String, dynamic> map) {
     return GetSolutionStackArgs(
-      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
+      mostRecent: map['mostRecent'] == null ? null : ((map['mostRecent'] as bool).input()).input(),
       nameRegex: (map['nameRegex'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

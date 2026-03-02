@@ -63,14 +63,14 @@ class BackupArgs {
   factory BackupArgs.fromMap(Map<String, dynamic> map) {
     return BackupArgs(
       backupId: (map['backupId'] as String).input(),
-      database: map['database'] == null ? null : (map['database'] as String).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
       encryptionConfigEncryptionType: (map['encryptionConfigEncryptionType'] as String).input(),
-      encryptionConfigKmsKeyName: map['encryptionConfigKmsKeyName'] == null ? null : (map['encryptionConfigKmsKeyName'] as String).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      encryptionConfigKmsKeyName: map['encryptionConfigKmsKeyName'] == null ? null : (map['encryptionConfigKmsKeyName']! as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      versionTime: map['versionTime'] == null ? null : (map['versionTime'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      versionTime: map['versionTime'] == null ? null : (map['versionTime']! as String).input(),
     );
   }
 }

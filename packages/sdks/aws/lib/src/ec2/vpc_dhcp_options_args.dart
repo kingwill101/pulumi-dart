@@ -59,14 +59,14 @@ class VpcDhcpOptionsArgs {
 
   factory VpcDhcpOptionsArgs.fromMap(Map<String, dynamic> map) {
     return VpcDhcpOptionsArgs(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      domainNameServers: map['domainNameServers'] == null ? null : ((map['domainNameServers'] as List).cast<String>()).input(),
-      ipv6AddressPreferredLeaseTime: map['ipv6AddressPreferredLeaseTime'] == null ? null : (map['ipv6AddressPreferredLeaseTime'] as String).input(),
-      netbiosNameServers: map['netbiosNameServers'] == null ? null : ((map['netbiosNameServers'] as List).cast<String>()).input(),
-      netbiosNodeType: map['netbiosNodeType'] == null ? null : (map['netbiosNodeType'] as String).input(),
-      ntpServers: map['ntpServers'] == null ? null : ((map['ntpServers'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      domainNameServers: map['domainNameServers'] == null ? null : (((map['domainNameServers'] as List).cast<String>()).input()).input(),
+      ipv6AddressPreferredLeaseTime: map['ipv6AddressPreferredLeaseTime'] == null ? null : ((map['ipv6AddressPreferredLeaseTime'] as String).input()).input(),
+      netbiosNameServers: map['netbiosNameServers'] == null ? null : (((map['netbiosNameServers'] as List).cast<String>()).input()).input(),
+      netbiosNodeType: map['netbiosNodeType'] == null ? null : ((map['netbiosNodeType'] as String).input()).input(),
+      ntpServers: map['ntpServers'] == null ? null : (((map['ntpServers'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

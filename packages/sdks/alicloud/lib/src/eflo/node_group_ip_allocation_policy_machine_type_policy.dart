@@ -26,8 +26,8 @@ class NodeGroupIpAllocationPolicyMachineTypePolicy {
 
   factory NodeGroupIpAllocationPolicyMachineTypePolicy.fromMap(Map<String, dynamic> map) {
     return NodeGroupIpAllocationPolicyMachineTypePolicy(
-      bonds: map['bonds'] == null ? null : (pulumi.Input.decodeList<NodeGroupIpAllocationPolicyMachineTypePolicyBond>(map['bonds'], (value) => NodeGroupIpAllocationPolicyMachineTypePolicyBond.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
+      bonds: map['bonds'] == null ? null : (pulumi.Input.decodeList<NodeGroupIpAllocationPolicyMachineTypePolicyBond>(map['bonds']!, (value) => NodeGroupIpAllocationPolicyMachineTypePolicyBond.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
     );
   }
 }

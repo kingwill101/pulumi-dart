@@ -22,7 +22,7 @@ class ResourceClaimSpecPatchResourceK8sIoV1beta1 {
 
   factory ResourceClaimSpecPatchResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return ResourceClaimSpecPatchResourceK8sIoV1beta1(
-      devices: map['devices'] == null ? null : (DeviceClaimPatchResourceK8sIoV1beta1.fromMap((map['devices'] as Map).cast<String, dynamic>())).input(),
+      devices: map['devices'] == null ? null : (DeviceClaimPatchResourceK8sIoV1beta1.fromMap((map['devices']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,7 +25,7 @@ class DomainDevicesInterfaceTeaming {
 
   factory DomainDevicesInterfaceTeaming.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceTeaming(
-      persistent: map['persistent'] == null ? null : (map['persistent'] as String).input(),
+      persistent: map['persistent'] == null ? null : (map['persistent']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

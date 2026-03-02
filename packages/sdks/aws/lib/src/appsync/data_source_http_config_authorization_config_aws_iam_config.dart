@@ -25,8 +25,8 @@ class DataSourceHttpConfigAuthorizationConfigAwsIamConfig {
 
   factory DataSourceHttpConfigAuthorizationConfigAwsIamConfig.fromMap(Map<String, dynamic> map) {
     return DataSourceHttpConfigAuthorizationConfigAwsIamConfig(
-      signingRegion: map['signingRegion'] == null ? null : (map['signingRegion'] as String).input(),
-      signingServiceName: map['signingServiceName'] == null ? null : (map['signingServiceName'] as String).input(),
+      signingRegion: map['signingRegion'] == null ? null : ((map['signingRegion'] as String).input()).input(),
+      signingServiceName: map['signingServiceName'] == null ? null : ((map['signingServiceName'] as String).input()).input(),
     );
   }
 }

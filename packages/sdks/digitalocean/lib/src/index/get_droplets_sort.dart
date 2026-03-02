@@ -28,7 +28,7 @@ class GetDropletsSort {
 
   factory GetDropletsSort.fromMap(Map<String, dynamic> map) {
     return GetDropletsSort(
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
       key: (map['key'] as String).input(),
     );
   }

@@ -58,14 +58,14 @@ class LinuxWebAppSlotSiteConfigIpRestriction {
 
   factory LinuxWebAppSlotSiteConfigIpRestriction.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppSlotSiteConfigIpRestriction(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      headers: map['headers'] == null ? null : (LinuxWebAppSlotSiteConfigIpRestrictionHeaders.fromMap((map['headers'] as Map).cast<String, dynamic>())).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      serviceTag: map['serviceTag'] == null ? null : (map['serviceTag'] as String).input(),
-      virtualNetworkSubnetId: map['virtualNetworkSubnetId'] == null ? null : (map['virtualNetworkSubnetId'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      headers: map['headers'] == null ? null : (LinuxWebAppSlotSiteConfigIpRestrictionHeaders.fromMap((map['headers']! as Map).cast<String, dynamic>())).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      serviceTag: map['serviceTag'] == null ? null : (map['serviceTag']! as String).input(),
+      virtualNetworkSubnetId: map['virtualNetworkSubnetId'] == null ? null : (map['virtualNetworkSubnetId']! as String).input(),
     );
   }
 }

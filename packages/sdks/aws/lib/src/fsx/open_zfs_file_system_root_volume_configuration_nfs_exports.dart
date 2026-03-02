@@ -21,7 +21,7 @@ class OpenZfsFileSystemRootVolumeConfigurationNfsExports {
 
   factory OpenZfsFileSystemRootVolumeConfigurationNfsExports.fromMap(Map<String, dynamic> map) {
     return OpenZfsFileSystemRootVolumeConfigurationNfsExports(
-      clientConfigurations: (pulumi.Input.decodeList<OpenZfsFileSystemRootVolumeConfigurationNfsExportsClientConfiguration>(map['clientConfigurations'], (value) => OpenZfsFileSystemRootVolumeConfigurationNfsExportsClientConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientConfigurations: (pulumi.Input.decodeList<OpenZfsFileSystemRootVolumeConfigurationNfsExportsClientConfiguration>(map['clientConfigurations']!, (value) => OpenZfsFileSystemRootVolumeConfigurationNfsExportsClientConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

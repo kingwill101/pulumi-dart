@@ -72,8 +72,8 @@ class GetManagedPrefixListResult {
     return GetManagedPrefixListResult(
       addressFamily: map['addressFamily'] as String,
       arn: map['arn'] as String,
-      entries: pulumi.Input.decodeList<GetManagedPrefixListEntry>(map['entries'], (value) => GetManagedPrefixListEntry.fromMap((value as Map).cast<String, dynamic>())),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetManagedPrefixListFilter>(map['filters'], (value) => GetManagedPrefixListFilter.fromMap((value as Map).cast<String, dynamic>())),
+      entries: pulumi.Input.decodeList<GetManagedPrefixListEntry>(map['entries']!, (value) => GetManagedPrefixListEntry.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetManagedPrefixListFilter>(map['filters']!, (value) => GetManagedPrefixListFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       maxEntries: map['maxEntries'] as int,
       name: map['name'] as String,

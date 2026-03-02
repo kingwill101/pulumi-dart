@@ -25,7 +25,7 @@ class DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswo
 
   factory DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryption.fromMap(Map<String, dynamic> map) {
     return DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryption(
-      awsKmsKeyId: map['awsKmsKeyId'] == null ? null : (map['awsKmsKeyId'] as String).input(),
+      awsKmsKeyId: map['awsKmsKeyId'] == null ? null : ((map['awsKmsKeyId'] as String).input()).input(),
       returnConnectionPasswordEncrypted: (map['returnConnectionPasswordEncrypted'] as bool).input(),
     );
   }

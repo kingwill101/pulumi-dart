@@ -26,8 +26,8 @@ class UpdateProfile {
 
   factory UpdateProfile.fromMap(Map<String, dynamic> map) {
     return UpdateProfile(
-      rollingUpdateProfile: map['rollingUpdateProfile'] == null ? null : (UpdateProfileRollingUpdateProfile.fromMap((map['rollingUpdateProfile'] as Map).cast<String, dynamic>())).input(),
-      updateMode: map['updateMode'] == null ? null : (map['updateMode'] as String).input(),
+      rollingUpdateProfile: map['rollingUpdateProfile'] == null ? null : (UpdateProfileRollingUpdateProfile.fromMap((map['rollingUpdateProfile']! as Map).cast<String, dynamic>())).input(),
+      updateMode: map['updateMode'] == null ? null : (map['updateMode']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class GetEcsDisksOperationLock {
 
   factory GetEcsDisksOperationLock.fromMap(Map<String, dynamic> map) {
     return GetEcsDisksOperationLock(
-      lockReason: map['lockReason'] == null ? null : (map['lockReason'] as String).input(),
+      lockReason: map['lockReason'] == null ? null : (map['lockReason']! as String).input(),
     );
   }
 }

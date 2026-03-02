@@ -77,18 +77,18 @@ class ServerlessCollectionState {
 
   factory ServerlessCollectionState.fromMap(Map<String, dynamic> map) {
     return ServerlessCollectionState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      collectionEndpoint: map['collectionEndpoint'] == null ? null : (map['collectionEndpoint'] as String).input(),
-      dashboardEndpoint: map['dashboardEndpoint'] == null ? null : (map['dashboardEndpoint'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      standbyReplicas: map['standbyReplicas'] == null ? null : (map['standbyReplicas'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ServerlessCollectionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      collectionEndpoint: map['collectionEndpoint'] == null ? null : ((map['collectionEndpoint'] as String).input()).input(),
+      dashboardEndpoint: map['dashboardEndpoint'] == null ? null : ((map['dashboardEndpoint'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      standbyReplicas: map['standbyReplicas'] == null ? null : ((map['standbyReplicas'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ServerlessCollectionTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

@@ -37,10 +37,10 @@ class DomainDevicesPanic {
 
   factory DomainDevicesPanic.fromMap(Map<String, dynamic> map) {
     return DomainDevicesPanic(
-      acpi: map['acpi'] == null ? null : (DomainDevicesPanicAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
-      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
-      alias: map['alias'] == null ? null : (DomainDevicesPanicAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
-      model: map['model'] == null ? null : (map['model'] as String).input(),
+      acpi: map['acpi'] == null ? null : (DomainDevicesPanicAcpi.fromMap((map['acpi']! as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : ((map['address']! as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesPanicAlias.fromMap((map['alias']! as Map).cast<String, dynamic>())).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
     );
   }
 }

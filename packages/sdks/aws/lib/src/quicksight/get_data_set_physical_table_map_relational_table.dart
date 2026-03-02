@@ -38,7 +38,7 @@ class GetDataSetPhysicalTableMapRelationalTable {
     return GetDataSetPhysicalTableMapRelationalTable(
       catalog: (map['catalog'] as String).input(),
       dataSourceArn: (map['dataSourceArn'] as String).input(),
-      inputColumns: (pulumi.Input.decodeList<GetDataSetPhysicalTableMapRelationalTableInputColumn>(map['inputColumns'], (value) => GetDataSetPhysicalTableMapRelationalTableInputColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputColumns: (pulumi.Input.decodeList<GetDataSetPhysicalTableMapRelationalTableInputColumn>(map['inputColumns']!, (value) => GetDataSetPhysicalTableMapRelationalTableInputColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
       schema: (map['schema'] as String).input(),
     );

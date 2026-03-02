@@ -21,7 +21,7 @@ class AiMetadataStoreEncryptionSpec {
 
   factory AiMetadataStoreEncryptionSpec.fromMap(Map<String, dynamic> map) {
     return AiMetadataStoreEncryptionSpec(
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
     );
   }
 }

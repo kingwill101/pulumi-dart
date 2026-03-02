@@ -40,9 +40,9 @@ class AuditLogConfigArgs {
 
   factory AuditLogConfigArgs.fromMap(Map<String, dynamic> map) {
     return AuditLogConfigArgs(
-      dbAudit: map['dbAudit'] == null ? null : (map['dbAudit'] as bool).input(),
+      dbAudit: map['dbAudit'] == null ? null : (map['dbAudit']! as bool).input(),
       instanceId: (map['instanceId'] as String).input(),
-      retention: map['retention'] == null ? null : (map['retention'] as int).input(),
+      retention: map['retention'] == null ? null : (map['retention']! as int).input(),
     );
   }
 }

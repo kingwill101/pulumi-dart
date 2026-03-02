@@ -25,7 +25,7 @@ class GetOriginRequestPolicyQueryStringsConfig {
   factory GetOriginRequestPolicyQueryStringsConfig.fromMap(Map<String, dynamic> map) {
     return GetOriginRequestPolicyQueryStringsConfig(
       queryStringBehavior: (map['queryStringBehavior'] as String).input(),
-      queryStrings: (pulumi.Input.decodeList<GetOriginRequestPolicyQueryStringsConfigQueryString>(map['queryStrings'], (value) => GetOriginRequestPolicyQueryStringsConfigQueryString.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      queryStrings: (pulumi.Input.decodeList<GetOriginRequestPolicyQueryStringsConfigQueryString>(map['queryStrings']!, (value) => GetOriginRequestPolicyQueryStringsConfigQueryString.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

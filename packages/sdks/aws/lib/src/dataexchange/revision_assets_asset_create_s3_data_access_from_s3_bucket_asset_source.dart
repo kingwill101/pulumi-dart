@@ -36,9 +36,9 @@ class RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSource {
   factory RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSource.fromMap(Map<String, dynamic> map) {
     return RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSource(
       bucket: (map['bucket'] as String).input(),
-      keyPrefixes: map['keyPrefixes'] == null ? null : ((map['keyPrefixes'] as List).cast<String>()).input(),
-      keys: map['keys'] == null ? null : ((map['keys'] as List).cast<String>()).input(),
-      kmsKeysToGrants: map['kmsKeysToGrants'] == null ? null : (pulumi.Input.decodeList<RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSourceKmsKeysToGrant>(map['kmsKeysToGrants'], (value) => RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSourceKmsKeysToGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      keyPrefixes: map['keyPrefixes'] == null ? null : (((map['keyPrefixes'] as List).cast<String>()).input()).input(),
+      keys: map['keys'] == null ? null : (((map['keys'] as List).cast<String>()).input()).input(),
+      kmsKeysToGrants: map['kmsKeysToGrants'] == null ? null : ((pulumi.Input.decodeList<RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSourceKmsKeysToGrant>(map['kmsKeysToGrants']!, (value) => RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSourceKmsKeysToGrant.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -50,12 +50,12 @@ class SqlServerDatabaseArgs {
 
   factory SqlServerDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return SqlServerDatabaseArgs(
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       properties: (SqlServerDatabaseResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sqlServerInstanceName: (map['sqlServerInstanceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

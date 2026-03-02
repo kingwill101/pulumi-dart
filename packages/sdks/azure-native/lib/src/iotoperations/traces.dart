@@ -37,10 +37,10 @@ class Traces {
 
   factory Traces.fromMap(Map<String, dynamic> map) {
     return Traces(
-      cacheSizeMegabytes: map['cacheSizeMegabytes'] == null ? null : (map['cacheSizeMegabytes'] as int).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      selfTracing: map['selfTracing'] == null ? null : (SelfTracing.fromMap((map['selfTracing'] as Map).cast<String, dynamic>())).input(),
-      spanChannelCapacity: map['spanChannelCapacity'] == null ? null : (map['spanChannelCapacity'] as int).input(),
+      cacheSizeMegabytes: map['cacheSizeMegabytes'] == null ? null : (map['cacheSizeMegabytes']! as int).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      selfTracing: map['selfTracing'] == null ? null : (SelfTracing.fromMap((map['selfTracing']! as Map).cast<String, dynamic>())).input(),
+      spanChannelCapacity: map['spanChannelCapacity'] == null ? null : (map['spanChannelCapacity']! as int).input(),
     );
   }
 }

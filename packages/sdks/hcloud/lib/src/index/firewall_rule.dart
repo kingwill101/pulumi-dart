@@ -48,12 +48,12 @@ class FirewallRule {
 
   factory FirewallRule.fromMap(Map<String, dynamic> map) {
     return FirewallRule(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationIps: map['destinationIps'] == null ? null : ((map['destinationIps'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationIps: map['destinationIps'] == null ? null : ((map['destinationIps']! as List).cast<String>()).input(),
       direction: (map['direction'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
       protocol: (map['protocol'] as String).input(),
-      sourceIps: map['sourceIps'] == null ? null : ((map['sourceIps'] as List).cast<String>()).input(),
+      sourceIps: map['sourceIps'] == null ? null : ((map['sourceIps']! as List).cast<String>()).input(),
     );
   }
 }

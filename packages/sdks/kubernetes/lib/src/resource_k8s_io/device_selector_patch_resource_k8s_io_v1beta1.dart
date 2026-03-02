@@ -22,7 +22,7 @@ class DeviceSelectorPatchResourceK8sIoV1beta1 {
 
   factory DeviceSelectorPatchResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return DeviceSelectorPatchResourceK8sIoV1beta1(
-      cel: map['cel'] == null ? null : (CELDeviceSelectorPatchResourceK8sIoV1beta1.fromMap((map['cel'] as Map).cast<String, dynamic>())).input(),
+      cel: map['cel'] == null ? null : (CELDeviceSelectorPatchResourceK8sIoV1beta1.fromMap((map['cel']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

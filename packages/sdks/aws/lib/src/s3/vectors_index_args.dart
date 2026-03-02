@@ -71,11 +71,11 @@ class VectorsIndexArgs {
       dataType: (map['dataType'] as String).input(),
       dimension: (map['dimension'] as int).input(),
       distanceMetric: (map['distanceMetric'] as String).input(),
-      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : (pulumi.Input.decodeList<VectorsIndexEncryptionConfiguration>(map['encryptionConfigurations'], (value) => VectorsIndexEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : ((pulumi.Input.decodeList<VectorsIndexEncryptionConfiguration>(map['encryptionConfigurations']!, (value) => VectorsIndexEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       indexName: (map['indexName'] as String).input(),
-      metadataConfiguration: map['metadataConfiguration'] == null ? null : (VectorsIndexMetadataConfiguration.fromMap((map['metadataConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      metadataConfiguration: map['metadataConfiguration'] == null ? null : ((VectorsIndexMetadataConfiguration.fromMap((map['metadataConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       vectorBucketName: (map['vectorBucketName'] as String).input(),
     );
   }

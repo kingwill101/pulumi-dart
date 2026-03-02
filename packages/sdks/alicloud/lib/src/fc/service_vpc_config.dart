@@ -31,7 +31,7 @@ class ServiceVpcConfig {
   factory ServiceVpcConfig.fromMap(Map<String, dynamic> map) {
     return ServiceVpcConfig(
       securityGroupId: (map['securityGroupId'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
       vswitchIds: ((map['vswitchIds'] as List).cast<String>()).input(),
     );
   }

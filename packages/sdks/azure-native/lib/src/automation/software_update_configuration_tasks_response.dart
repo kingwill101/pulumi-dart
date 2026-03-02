@@ -27,8 +27,8 @@ class SoftwareUpdateConfigurationTasksResponse {
 
   factory SoftwareUpdateConfigurationTasksResponse.fromMap(Map<String, dynamic> map) {
     return SoftwareUpdateConfigurationTasksResponse(
-      postTask: map['postTask'] == null ? null : (TaskPropertiesResponse.fromMap((map['postTask'] as Map).cast<String, dynamic>())).input(),
-      preTask: map['preTask'] == null ? null : (TaskPropertiesResponse.fromMap((map['preTask'] as Map).cast<String, dynamic>())).input(),
+      postTask: map['postTask'] == null ? null : (TaskPropertiesResponse.fromMap((map['postTask']! as Map).cast<String, dynamic>())).input(),
+      preTask: map['preTask'] == null ? null : (TaskPropertiesResponse.fromMap((map['preTask']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

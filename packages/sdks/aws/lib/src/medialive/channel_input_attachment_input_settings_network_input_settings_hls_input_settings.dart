@@ -39,11 +39,11 @@ class ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings {
 
   factory ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings(
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
-      bufferSegments: map['bufferSegments'] == null ? null : (map['bufferSegments'] as int).input(),
-      retries: map['retries'] == null ? null : (map['retries'] as int).input(),
-      retryInterval: map['retryInterval'] == null ? null : (map['retryInterval'] as int).input(),
-      scte35Source: map['scte35Source'] == null ? null : (map['scte35Source'] as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : ((map['bandwidth'] as int).input()).input(),
+      bufferSegments: map['bufferSegments'] == null ? null : ((map['bufferSegments'] as int).input()).input(),
+      retries: map['retries'] == null ? null : ((map['retries'] as int).input()).input(),
+      retryInterval: map['retryInterval'] == null ? null : ((map['retryInterval'] as int).input()).input(),
+      scte35Source: map['scte35Source'] == null ? null : ((map['scte35Source'] as String).input()).input(),
     );
   }
 }

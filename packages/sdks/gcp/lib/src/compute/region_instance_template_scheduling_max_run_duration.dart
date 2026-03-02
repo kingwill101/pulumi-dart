@@ -30,7 +30,7 @@ class RegionInstanceTemplateSchedulingMaxRunDuration {
 
   factory RegionInstanceTemplateSchedulingMaxRunDuration.fromMap(Map<String, dynamic> map) {
     return RegionInstanceTemplateSchedulingMaxRunDuration(
-      nanos: map['nanos'] == null ? null : (map['nanos'] as int).input(),
+      nanos: map['nanos'] == null ? null : (map['nanos']! as int).input(),
       seconds: (map['seconds'] as int).input(),
     );
   }

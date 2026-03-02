@@ -41,9 +41,9 @@ class RegionNetworkEndpointGroupCloudRun {
 
   factory RegionNetworkEndpointGroupCloudRun.fromMap(Map<String, dynamic> map) {
     return RegionNetworkEndpointGroupCloudRun(
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
-      urlMask: map['urlMask'] == null ? null : (map['urlMask'] as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      urlMask: map['urlMask'] == null ? null : (map['urlMask']! as String).input(),
     );
   }
 }

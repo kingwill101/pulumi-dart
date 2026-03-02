@@ -25,8 +25,8 @@ class PipelineTriggerGitConfigurationPushBranches {
 
   factory PipelineTriggerGitConfigurationPushBranches.fromMap(Map<String, dynamic> map) {
     return PipelineTriggerGitConfigurationPushBranches(
-      excludes: map['excludes'] == null ? null : ((map['excludes'] as List).cast<String>()).input(),
-      includes: map['includes'] == null ? null : ((map['includes'] as List).cast<String>()).input(),
+      excludes: map['excludes'] == null ? null : (((map['excludes'] as List).cast<String>()).input()).input(),
+      includes: map['includes'] == null ? null : (((map['includes'] as List).cast<String>()).input()).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class ExpressionV2 {
 
   factory ExpressionV2.fromMap(Map<String, dynamic> map) {
     return ExpressionV2(
-      operands: map['operands'] == null ? null : (pulumi.Input.decodeList<ExpressionV2>(map['operands'], (value) => ExpressionV2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      operators: map['operators'] == null ? null : ((map['operators'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value']).input(),
+      operands: map['operands'] == null ? null : (pulumi.Input.decodeList<ExpressionV2>(map['operands']!, (value) => ExpressionV2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      operators: map['operators'] == null ? null : ((map['operators']! as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']!).input(),
     );
   }
 }

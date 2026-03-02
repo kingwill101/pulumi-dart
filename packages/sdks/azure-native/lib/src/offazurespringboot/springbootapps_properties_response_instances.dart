@@ -30,8 +30,8 @@ class SpringbootappsPropertiesResponseInstances {
 
   factory SpringbootappsPropertiesResponseInstances.fromMap(Map<String, dynamic> map) {
     return SpringbootappsPropertiesResponseInstances(
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
-      jvmMemoryInMB: map['jvmMemoryInMB'] == null ? null : (map['jvmMemoryInMB'] as int).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
+      jvmMemoryInMB: map['jvmMemoryInMB'] == null ? null : (map['jvmMemoryInMB']! as int).input(),
       machineArmId: (map['machineArmId'] as String).input(),
     );
   }

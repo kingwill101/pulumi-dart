@@ -93,20 +93,20 @@ class CustomImageArgs {
 
   factory CustomImageArgs.fromMap(Map<String, dynamic> map) {
     return CustomImageArgs(
-      author: map['author'] == null ? null : (map['author'] as String).input(),
-      customImagePlan: map['customImagePlan'] == null ? null : (CustomImagePropertiesFromPlan.fromMap((map['customImagePlan'] as Map).cast<String, dynamic>())).input(),
-      dataDiskStorageInfo: map['dataDiskStorageInfo'] == null ? null : (pulumi.Input.decodeList<DataDiskStorageTypeInfo>(map['dataDiskStorageInfo'], (value) => DataDiskStorageTypeInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      isPlanAuthorized: map['isPlanAuthorized'] == null ? null : (map['isPlanAuthorized'] as bool).input(),
+      author: map['author'] == null ? null : (map['author']! as String).input(),
+      customImagePlan: map['customImagePlan'] == null ? null : (CustomImagePropertiesFromPlan.fromMap((map['customImagePlan']! as Map).cast<String, dynamic>())).input(),
+      dataDiskStorageInfo: map['dataDiskStorageInfo'] == null ? null : (pulumi.Input.decodeList<DataDiskStorageTypeInfo>(map['dataDiskStorageInfo']!, (value) => DataDiskStorageTypeInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      isPlanAuthorized: map['isPlanAuthorized'] == null ? null : (map['isPlanAuthorized']! as bool).input(),
       labName: (map['labName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedImageId: map['managedImageId'] == null ? null : (map['managedImageId'] as String).input(),
-      managedSnapshotId: map['managedSnapshotId'] == null ? null : (map['managedSnapshotId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedImageId: map['managedImageId'] == null ? null : (map['managedImageId']! as String).input(),
+      managedSnapshotId: map['managedSnapshotId'] == null ? null : (map['managedSnapshotId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vhd: map['vhd'] == null ? null : (CustomImagePropertiesCustom.fromMap((map['vhd'] as Map).cast<String, dynamic>())).input(),
-      vm: map['vm'] == null ? null : (CustomImagePropertiesFromVm.fromMap((map['vm'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vhd: map['vhd'] == null ? null : (CustomImagePropertiesCustom.fromMap((map['vhd']! as Map).cast<String, dynamic>())).input(),
+      vm: map['vm'] == null ? null : (CustomImagePropertiesFromVm.fromMap((map['vm']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

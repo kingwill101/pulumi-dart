@@ -32,9 +32,9 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFor
 
   factory FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfig.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfig(
-      aggregationConfig: map['aggregationConfig'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfigAggregationConfig.fromMap((map['aggregationConfig'] as Map).cast<String, dynamic>())).input(),
-      fileType: map['fileType'] == null ? null : (map['fileType'] as String).input(),
-      prefixConfig: (FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfigPrefixConfig.fromMap((map['prefixConfig'] as Map).cast<String, dynamic>())).input(),
+      aggregationConfig: map['aggregationConfig'] == null ? null : ((FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfigAggregationConfig.fromMap((map['aggregationConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      fileType: map['fileType'] == null ? null : ((map['fileType'] as String).input()).input(),
+      prefixConfig: (FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfigPrefixConfig.fromMap((map['prefixConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

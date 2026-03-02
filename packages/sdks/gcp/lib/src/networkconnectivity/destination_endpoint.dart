@@ -39,8 +39,8 @@ class DestinationEndpoint {
     return DestinationEndpoint(
       asn: (map['asn'] as String).input(),
       csp: (map['csp'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

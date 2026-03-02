@@ -49,10 +49,10 @@ class GetIpv6InternetBandwidthsResult {
       bandwidths: pulumi.Input.decodeList<GetIpv6InternetBandwidthsBandwidth>(map['bandwidths'], (value) => GetIpv6InternetBandwidthsBandwidth.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      ipv6AddressId: map['ipv6AddressId'] == null ? null : map['ipv6AddressId'] as String,
-      ipv6InternetBandwidthId: map['ipv6InternetBandwidthId'] == null ? null : map['ipv6InternetBandwidthId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      ipv6AddressId: map['ipv6AddressId'] == null ? null : map['ipv6AddressId']! as String,
+      ipv6InternetBandwidthId: map['ipv6InternetBandwidthId'] == null ? null : map['ipv6InternetBandwidthId']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

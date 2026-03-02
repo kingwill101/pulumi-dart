@@ -26,8 +26,8 @@ class SearchParameter {
 
   factory SearchParameter.fromMap(Map<String, dynamic> map) {
     return SearchParameter(
-      canonicalUrl: map['canonicalUrl'] == null ? null : (map['canonicalUrl'] as String).input(),
-      parameter: map['parameter'] == null ? null : (map['parameter'] as String).input(),
+      canonicalUrl: map['canonicalUrl'] == null ? null : (map['canonicalUrl']! as String).input(),
+      parameter: map['parameter'] == null ? null : (map['parameter']! as String).input(),
     );
   }
 }

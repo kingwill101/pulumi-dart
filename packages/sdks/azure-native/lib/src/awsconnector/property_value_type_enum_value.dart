@@ -21,7 +21,7 @@ class PropertyValueTypeEnumValue {
 
   factory PropertyValueTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return PropertyValueTypeEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

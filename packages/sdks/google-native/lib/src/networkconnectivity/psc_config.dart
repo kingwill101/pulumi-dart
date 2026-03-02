@@ -26,8 +26,8 @@ class PscConfig {
 
   factory PscConfig.fromMap(Map<String, dynamic> map) {
     return PscConfig(
-      limit: map['limit'] == null ? null : (map['limit'] as String).input(),
-      subnetworks: map['subnetworks'] == null ? null : ((map['subnetworks'] as List).cast<String>()).input(),
+      limit: map['limit'] == null ? null : (map['limit']! as String).input(),
+      subnetworks: map['subnetworks'] == null ? null : ((map['subnetworks']! as List).cast<String>()).input(),
     );
   }
 }

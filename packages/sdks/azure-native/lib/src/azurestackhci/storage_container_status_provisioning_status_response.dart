@@ -26,7 +26,7 @@ class StorageContainerStatusProvisioningStatusResponse {
 
   factory StorageContainerStatusProvisioningStatusResponse.fromMap(Map<String, dynamic> map) {
     return StorageContainerStatusProvisioningStatusResponse(
-      operationId: map['operationId'] == null ? null : (map['operationId'] as String).input(),
+      operationId: map['operationId'] == null ? null : (map['operationId']! as String).input(),
       status: (map['status'] as String).input(),
     );
   }

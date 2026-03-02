@@ -39,9 +39,9 @@ class DedicatedHostInstanceViewWithNameResponse {
   factory DedicatedHostInstanceViewWithNameResponse.fromMap(Map<String, dynamic> map) {
     return DedicatedHostInstanceViewWithNameResponse(
       assetId: (map['assetId'] as String).input(),
-      availableCapacity: map['availableCapacity'] == null ? null : (DedicatedHostAvailableCapacityResponse.fromMap((map['availableCapacity'] as Map).cast<String, dynamic>())).input(),
+      availableCapacity: map['availableCapacity'] == null ? null : (DedicatedHostAvailableCapacityResponse.fromMap((map['availableCapacity']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatusResponse>(map['statuses'], (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatusResponse>(map['statuses']!, (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

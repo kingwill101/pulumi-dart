@@ -23,7 +23,7 @@ class VMwareClusterAuthorization {
 
   factory VMwareClusterAuthorization.fromMap(Map<String, dynamic> map) {
     return VMwareClusterAuthorization(
-      adminUsers: map['adminUsers'] == null ? null : (pulumi.Input.decodeList<VMwareClusterAuthorizationAdminUser>(map['adminUsers'], (value) => VMwareClusterAuthorizationAdminUser.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      adminUsers: map['adminUsers'] == null ? null : (pulumi.Input.decodeList<VMwareClusterAuthorizationAdminUser>(map['adminUsers']!, (value) => VMwareClusterAuthorizationAdminUser.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

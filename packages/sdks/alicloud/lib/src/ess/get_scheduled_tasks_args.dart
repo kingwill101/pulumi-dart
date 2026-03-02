@@ -44,11 +44,11 @@ class GetScheduledTasksArgs {
 
   factory GetScheduledTasksArgs.fromMap(Map<String, dynamic> map) {
     return GetScheduledTasksArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      scheduledAction: map['scheduledAction'] == null ? null : (map['scheduledAction'] as String).input(),
-      scheduledTaskId: map['scheduledTaskId'] == null ? null : (map['scheduledTaskId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      scheduledAction: map['scheduledAction'] == null ? null : (map['scheduledAction']! as String).input(),
+      scheduledTaskId: map['scheduledTaskId'] == null ? null : (map['scheduledTaskId']! as String).input(),
     );
   }
 }

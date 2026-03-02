@@ -26,8 +26,8 @@ class ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndTagCriterion {
 
   factory ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndTagCriterion.fromMap(Map<String, dynamic> map) {
     return ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndTagCriterion(
-      comparator: map['comparator'] == null ? null : (map['comparator'] as String).input(),
-      tagValues: map['tagValues'] == null ? null : (pulumi.Input.decodeList<ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndTagCriterionTagValue>(map['tagValues'], (value) => ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndTagCriterionTagValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      comparator: map['comparator'] == null ? null : ((map['comparator'] as String).input()).input(),
+      tagValues: map['tagValues'] == null ? null : ((pulumi.Input.decodeList<ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndTagCriterionTagValue>(map['tagValues']!, (value) => ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndTagCriterionTagValue.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class ManagedEnvironmentStorageProperties {
 
   factory ManagedEnvironmentStorageProperties.fromMap(Map<String, dynamic> map) {
     return ManagedEnvironmentStorageProperties(
-      azureFile: map['azureFile'] == null ? null : (AzureFileProperties.fromMap((map['azureFile'] as Map).cast<String, dynamic>())).input(),
-      nfsAzureFile: map['nfsAzureFile'] == null ? null : (NfsAzureFileProperties.fromMap((map['nfsAzureFile'] as Map).cast<String, dynamic>())).input(),
+      azureFile: map['azureFile'] == null ? null : (AzureFileProperties.fromMap((map['azureFile']! as Map).cast<String, dynamic>())).input(),
+      nfsAzureFile: map['nfsAzureFile'] == null ? null : (NfsAzureFileProperties.fromMap((map['nfsAzureFile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

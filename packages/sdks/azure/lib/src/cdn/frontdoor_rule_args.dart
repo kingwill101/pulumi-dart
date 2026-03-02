@@ -54,10 +54,10 @@ class FrontdoorRuleArgs {
   factory FrontdoorRuleArgs.fromMap(Map<String, dynamic> map) {
     return FrontdoorRuleArgs(
       actions: (FrontdoorRuleActions.fromMap((map['actions'] as Map).cast<String, dynamic>())).input(),
-      behaviorOnMatch: map['behaviorOnMatch'] == null ? null : (map['behaviorOnMatch'] as String).input(),
+      behaviorOnMatch: map['behaviorOnMatch'] == null ? null : (map['behaviorOnMatch']! as String).input(),
       cdnFrontdoorRuleSetId: (map['cdnFrontdoorRuleSetId'] as String).input(),
-      conditions: map['conditions'] == null ? null : (FrontdoorRuleConditions.fromMap((map['conditions'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      conditions: map['conditions'] == null ? null : (FrontdoorRuleConditions.fromMap((map['conditions']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       order: (map['order'] as int).input(),
     );
   }

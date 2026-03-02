@@ -65,15 +65,15 @@ class ProactiveDetectionConfigurationArgs {
 
   factory ProactiveDetectionConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ProactiveDetectionConfigurationArgs(
-      configurationId: map['configurationId'] == null ? null : (map['configurationId'] as String).input(),
-      customEmails: map['customEmails'] == null ? null : ((map['customEmails'] as List).cast<String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      configurationId: map['configurationId'] == null ? null : (map['configurationId']! as String).input(),
+      customEmails: map['customEmails'] == null ? null : ((map['customEmails']! as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
-      ruleDefinitions: map['ruleDefinitions'] == null ? null : (ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitions.fromMap((map['ruleDefinitions'] as Map).cast<String, dynamic>())).input(),
-      sendEmailsToSubscriptionOwners: map['sendEmailsToSubscriptionOwners'] == null ? null : (map['sendEmailsToSubscriptionOwners'] as bool).input(),
+      ruleDefinitions: map['ruleDefinitions'] == null ? null : (ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitions.fromMap((map['ruleDefinitions']! as Map).cast<String, dynamic>())).input(),
+      sendEmailsToSubscriptionOwners: map['sendEmailsToSubscriptionOwners'] == null ? null : (map['sendEmailsToSubscriptionOwners']! as bool).input(),
     );
   }
 }

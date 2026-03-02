@@ -47,12 +47,12 @@ class SolutionProperties {
 
   factory SolutionProperties.fromMap(Map<String, dynamic> map) {
     return SolutionProperties(
-      cleanupState: map['cleanupState'] == null ? null : (map['cleanupState'] as String).input(),
-      details: map['details'] == null ? null : (SolutionDetails.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
-      goal: map['goal'] == null ? null : (map['goal'] as String).input(),
-      purpose: map['purpose'] == null ? null : (map['purpose'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tool: map['tool'] == null ? null : (map['tool'] as String).input(),
+      cleanupState: map['cleanupState'] == null ? null : (map['cleanupState']! as String).input(),
+      details: map['details'] == null ? null : (SolutionDetails.fromMap((map['details']! as Map).cast<String, dynamic>())).input(),
+      goal: map['goal'] == null ? null : (map['goal']! as String).input(),
+      purpose: map['purpose'] == null ? null : (map['purpose']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tool: map['tool'] == null ? null : (map['tool']! as String).input(),
     );
   }
 }

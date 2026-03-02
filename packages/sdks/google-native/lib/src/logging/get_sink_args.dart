@@ -27,7 +27,7 @@ class GetSinkArgs {
 
   factory GetSinkArgs.fromMap(Map<String, dynamic> map) {
     return GetSinkArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       sinkId: (map['sinkId'] as String).input(),
     );
   }

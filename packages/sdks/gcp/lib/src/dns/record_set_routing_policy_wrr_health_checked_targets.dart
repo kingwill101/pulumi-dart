@@ -27,8 +27,8 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargets {
 
   factory RecordSetRoutingPolicyWrrHealthCheckedTargets.fromMap(Map<String, dynamic> map) {
     return RecordSetRoutingPolicyWrrHealthCheckedTargets(
-      externalEndpoints: map['externalEndpoints'] == null ? null : ((map['externalEndpoints'] as List).cast<String>()).input(),
-      internalLoadBalancers: map['internalLoadBalancers'] == null ? null : (pulumi.Input.decodeList<RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer>(map['internalLoadBalancers'], (value) => RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      externalEndpoints: map['externalEndpoints'] == null ? null : ((map['externalEndpoints']! as List).cast<String>()).input(),
+      internalLoadBalancers: map['internalLoadBalancers'] == null ? null : (pulumi.Input.decodeList<RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer>(map['internalLoadBalancers']!, (value) => RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

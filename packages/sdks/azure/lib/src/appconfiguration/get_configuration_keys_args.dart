@@ -35,8 +35,8 @@ class GetConfigurationKeysArgs {
   factory GetConfigurationKeysArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationKeysArgs(
       configurationStoreId: (map['configurationStoreId'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
     );
   }
 }

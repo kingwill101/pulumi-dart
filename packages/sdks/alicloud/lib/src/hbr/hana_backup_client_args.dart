@@ -39,9 +39,9 @@ class HanaBackupClientArgs {
 
   factory HanaBackupClientArgs.fromMap(Map<String, dynamic> map) {
     return HanaBackupClientArgs(
-      alertSetting: map['alertSetting'] == null ? null : (map['alertSetting'] as String).input(),
-      clientInfo: map['clientInfo'] == null ? null : (map['clientInfo'] as String).input(),
-      useHttps: map['useHttps'] == null ? null : (map['useHttps'] as bool).input(),
+      alertSetting: map['alertSetting'] == null ? null : (map['alertSetting']! as String).input(),
+      clientInfo: map['clientInfo'] == null ? null : (map['clientInfo']! as String).input(),
+      useHttps: map['useHttps'] == null ? null : (map['useHttps']! as bool).input(),
       vaultId: (map['vaultId'] as String).input(),
     );
   }

@@ -24,7 +24,7 @@ class GetProfilesProfilesArgs {
 
   factory GetProfilesProfilesArgs.fromMap(Map<String, dynamic> map) {
     return GetProfilesProfilesArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

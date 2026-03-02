@@ -28,7 +28,7 @@ class RuleResourceTag {
   factory RuleResourceTag.fromMap(Map<String, dynamic> map) {
     return RuleResourceTag(
       resourceTagKey: (map['resourceTagKey'] as String).input(),
-      resourceTagValue: map['resourceTagValue'] == null ? null : (map['resourceTagValue'] as String).input(),
+      resourceTagValue: map['resourceTagValue'] == null ? null : ((map['resourceTagValue'] as String).input()).input(),
     );
   }
 }

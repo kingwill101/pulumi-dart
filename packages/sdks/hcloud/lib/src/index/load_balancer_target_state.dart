@@ -53,12 +53,12 @@ class LoadBalancerTargetState {
 
   factory LoadBalancerTargetState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerTargetState(
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
-      labelSelector: map['labelSelector'] == null ? null : (map['labelSelector'] as String).input(),
-      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId'] as int).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      usePrivateIp: map['usePrivateIp'] == null ? null : (map['usePrivateIp'] as bool).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
+      labelSelector: map['labelSelector'] == null ? null : (map['labelSelector']! as String).input(),
+      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId']! as int).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      usePrivateIp: map['usePrivateIp'] == null ? null : (map['usePrivateIp']! as bool).input(),
     );
   }
 }

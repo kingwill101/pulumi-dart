@@ -30,9 +30,9 @@ class ConfigBlockingFunctionsForwardInboundCredentials {
 
   factory ConfigBlockingFunctionsForwardInboundCredentials.fromMap(Map<String, dynamic> map) {
     return ConfigBlockingFunctionsForwardInboundCredentials(
-      accessToken: map['accessToken'] == null ? null : (map['accessToken'] as bool).input(),
-      idToken: map['idToken'] == null ? null : (map['idToken'] as bool).input(),
-      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken'] as bool).input(),
+      accessToken: map['accessToken'] == null ? null : (map['accessToken']! as bool).input(),
+      idToken: map['idToken'] == null ? null : (map['idToken']! as bool).input(),
+      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken']! as bool).input(),
     );
   }
 }

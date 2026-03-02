@@ -49,12 +49,12 @@ class DevicePolicyAccesscontextmanagerV1beta {
 
   factory DevicePolicyAccesscontextmanagerV1beta.fromMap(Map<String, dynamic> map) {
     return DevicePolicyAccesscontextmanagerV1beta(
-      allowedDeviceManagementLevels: map['allowedDeviceManagementLevels'] == null ? null : (pulumi.Input.decodeList<DevicePolicyAllowedDeviceManagementLevelsItemAccesscontextmanagerV1beta>(map['allowedDeviceManagementLevels'], (value) => DevicePolicyAllowedDeviceManagementLevelsItemAccesscontextmanagerV1beta.fromValue(value as String))).input(),
-      allowedEncryptionStatuses: map['allowedEncryptionStatuses'] == null ? null : (pulumi.Input.decodeList<DevicePolicyAllowedEncryptionStatusesItemAccesscontextmanagerV1beta>(map['allowedEncryptionStatuses'], (value) => DevicePolicyAllowedEncryptionStatusesItemAccesscontextmanagerV1beta.fromValue(value as String))).input(),
-      osConstraints: map['osConstraints'] == null ? null : (pulumi.Input.decodeList<OsConstraintAccesscontextmanagerV1beta>(map['osConstraints'], (value) => OsConstraintAccesscontextmanagerV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requireAdminApproval: map['requireAdminApproval'] == null ? null : (map['requireAdminApproval'] as bool).input(),
-      requireCorpOwned: map['requireCorpOwned'] == null ? null : (map['requireCorpOwned'] as bool).input(),
-      requireScreenlock: map['requireScreenlock'] == null ? null : (map['requireScreenlock'] as bool).input(),
+      allowedDeviceManagementLevels: map['allowedDeviceManagementLevels'] == null ? null : (pulumi.Input.decodeList<DevicePolicyAllowedDeviceManagementLevelsItemAccesscontextmanagerV1beta>(map['allowedDeviceManagementLevels']!, (value) => DevicePolicyAllowedDeviceManagementLevelsItemAccesscontextmanagerV1beta.fromValue(value as String))).input(),
+      allowedEncryptionStatuses: map['allowedEncryptionStatuses'] == null ? null : (pulumi.Input.decodeList<DevicePolicyAllowedEncryptionStatusesItemAccesscontextmanagerV1beta>(map['allowedEncryptionStatuses']!, (value) => DevicePolicyAllowedEncryptionStatusesItemAccesscontextmanagerV1beta.fromValue(value as String))).input(),
+      osConstraints: map['osConstraints'] == null ? null : (pulumi.Input.decodeList<OsConstraintAccesscontextmanagerV1beta>(map['osConstraints']!, (value) => OsConstraintAccesscontextmanagerV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requireAdminApproval: map['requireAdminApproval'] == null ? null : (map['requireAdminApproval']! as bool).input(),
+      requireCorpOwned: map['requireCorpOwned'] == null ? null : (map['requireCorpOwned']! as bool).input(),
+      requireScreenlock: map['requireScreenlock'] == null ? null : (map['requireScreenlock']! as bool).input(),
     );
   }
 }

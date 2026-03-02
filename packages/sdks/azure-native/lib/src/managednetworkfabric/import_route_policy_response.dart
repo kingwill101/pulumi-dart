@@ -26,8 +26,8 @@ class ImportRoutePolicyResponse {
 
   factory ImportRoutePolicyResponse.fromMap(Map<String, dynamic> map) {
     return ImportRoutePolicyResponse(
-      importIpv4RoutePolicyId: map['importIpv4RoutePolicyId'] == null ? null : (map['importIpv4RoutePolicyId'] as String).input(),
-      importIpv6RoutePolicyId: map['importIpv6RoutePolicyId'] == null ? null : (map['importIpv6RoutePolicyId'] as String).input(),
+      importIpv4RoutePolicyId: map['importIpv4RoutePolicyId'] == null ? null : (map['importIpv4RoutePolicyId']! as String).input(),
+      importIpv6RoutePolicyId: map['importIpv6RoutePolicyId'] == null ? null : (map['importIpv6RoutePolicyId']! as String).input(),
     );
   }
 }

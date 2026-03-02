@@ -36,10 +36,10 @@ class GoogleCloudDocumentaiV1DocumentPageMatrix {
 
   factory GoogleCloudDocumentaiV1DocumentPageMatrix.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageMatrix(
-      cols: map['cols'] == null ? null : (map['cols'] as int).input(),
-      data: map['data'] == null ? null : (map['data'] as String).input(),
-      rows: map['rows'] == null ? null : (map['rows'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as int).input(),
+      cols: map['cols'] == null ? null : (map['cols']! as int).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
+      rows: map['rows'] == null ? null : (map['rows']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as int).input(),
     );
   }
 }

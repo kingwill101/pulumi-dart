@@ -51,12 +51,12 @@ class CacheReserveInstanceArgs {
 
   factory CacheReserveInstanceArgs.fromMap(Map<String, dynamic> map) {
     return CacheReserveInstanceArgs(
-      autoPay: map['autoPay'] == null ? null : (map['autoPay'] as bool).input(),
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      crRegion: map['crRegion'] == null ? null : (map['crRegion'] as String).input(),
+      autoPay: map['autoPay'] == null ? null : (map['autoPay']! as bool).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      crRegion: map['crRegion'] == null ? null : (map['crRegion']! as String).input(),
       paymentType: (map['paymentType'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      quotaGb: map['quotaGb'] == null ? null : (map['quotaGb'] as int).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      quotaGb: map['quotaGb'] == null ? null : (map['quotaGb']! as int).input(),
     );
   }
 }

@@ -49,7 +49,7 @@ class GetResponsePlanActionSsmAutomation {
       documentName: (map['documentName'] as String).input(),
       documentVersion: (map['documentVersion'] as String).input(),
       dynamicParameters: ((map['dynamicParameters'] as Map).cast<String, String>()).input(),
-      parameters: (pulumi.Input.decodeList<GetResponsePlanActionSsmAutomationParameter>(map['parameters'], (value) => GetResponsePlanActionSsmAutomationParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: (pulumi.Input.decodeList<GetResponsePlanActionSsmAutomationParameter>(map['parameters']!, (value) => GetResponsePlanActionSsmAutomationParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       roleArn: (map['roleArn'] as String).input(),
       targetAccount: (map['targetAccount'] as String).input(),
     );

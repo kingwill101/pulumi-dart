@@ -26,8 +26,8 @@ class DefenderForServersGcpOfferingResponseMdeAutoProvisioning {
 
   factory DefenderForServersGcpOfferingResponseMdeAutoProvisioning.fromMap(Map<String, dynamic> map) {
     return DefenderForServersGcpOfferingResponseMdeAutoProvisioning(
-      configuration: map['configuration'] == null ? null : (map['configuration']).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      configuration: map['configuration'] == null ? null : (map['configuration']!).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

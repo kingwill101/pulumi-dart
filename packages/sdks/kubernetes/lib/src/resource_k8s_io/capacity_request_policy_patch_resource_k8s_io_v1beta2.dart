@@ -48,9 +48,9 @@ class CapacityRequestPolicyPatchResourceK8sIoV1beta2 {
 
   factory CapacityRequestPolicyPatchResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return CapacityRequestPolicyPatchResourceK8sIoV1beta2(
-      default_: map['default'] == null ? null : (map['default'] as String).input(),
-      validRange: map['validRange'] == null ? null : (CapacityRequestPolicyRangePatchResourceK8sIoV1beta2.fromMap((map['validRange'] as Map).cast<String, dynamic>())).input(),
-      validValues: map['validValues'] == null ? null : ((map['validValues'] as List).cast<String>()).input(),
+      default_: map['default'] == null ? null : (map['default']! as String).input(),
+      validRange: map['validRange'] == null ? null : (CapacityRequestPolicyRangePatchResourceK8sIoV1beta2.fromMap((map['validRange']! as Map).cast<String, dynamic>())).input(),
+      validValues: map['validValues'] == null ? null : ((map['validValues']! as List).cast<String>()).input(),
     );
   }
 }

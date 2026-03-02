@@ -26,7 +26,7 @@ class ClusterSecretArchiveResponse {
   factory ClusterSecretArchiveResponse.fromMap(Map<String, dynamic> map) {
     return ClusterSecretArchiveResponse(
       keyVaultId: (map['keyVaultId'] as String).input(),
-      useKeyVault: map['useKeyVault'] == null ? null : (map['useKeyVault'] as String).input(),
+      useKeyVault: map['useKeyVault'] == null ? null : (map['useKeyVault']! as String).input(),
     );
   }
 }

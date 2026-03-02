@@ -21,7 +21,7 @@ class AccessPolicyAssignmentPropertiesUser {
 
   factory AccessPolicyAssignmentPropertiesUser.fromMap(Map<String, dynamic> map) {
     return AccessPolicyAssignmentPropertiesUser(
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
     );
   }
 }

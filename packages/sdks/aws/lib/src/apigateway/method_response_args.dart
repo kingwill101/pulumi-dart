@@ -57,10 +57,10 @@ class MethodResponseArgs {
   factory MethodResponseArgs.fromMap(Map<String, dynamic> map) {
     return MethodResponseArgs(
       httpMethod: (map['httpMethod'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceId: (map['resourceId'] as String).input(),
-      responseModels: map['responseModels'] == null ? null : ((map['responseModels'] as Map).cast<String, String>()).input(),
-      responseParameters: map['responseParameters'] == null ? null : ((map['responseParameters'] as Map).cast<String, bool>()).input(),
+      responseModels: map['responseModels'] == null ? null : (((map['responseModels'] as Map).cast<String, String>()).input()).input(),
+      responseParameters: map['responseParameters'] == null ? null : (((map['responseParameters'] as Map).cast<String, bool>()).input()).input(),
       restApi: (map['restApi'] as String).input(),
       statusCode: (map['statusCode'] as String).input(),
     );

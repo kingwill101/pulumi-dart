@@ -22,7 +22,7 @@ class WorkspaceEncryptionParameter {
 
   factory WorkspaceEncryptionParameter.fromMap(Map<String, dynamic> map) {
     return WorkspaceEncryptionParameter(
-      value: map['value'] == null ? null : (Encryption.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
+      value: map['value'] == null ? null : (Encryption.fromMap((map['value']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

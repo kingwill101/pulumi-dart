@@ -20,7 +20,7 @@ class ThemeConfigurationSheetTileLayoutGutter {
 
   factory ThemeConfigurationSheetTileLayoutGutter.fromMap(Map<String, dynamic> map) {
     return ThemeConfigurationSheetTileLayoutGutter(
-      show: map['show'] == null ? null : (map['show'] as bool).input(),
+      show: map['show'] == null ? null : ((map['show'] as bool).input()).input(),
     );
   }
 }

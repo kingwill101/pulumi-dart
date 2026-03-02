@@ -25,8 +25,8 @@ class ServiceEndpoint {
 
   factory ServiceEndpoint.fromMap(Map<String, dynamic> map) {
     return ServiceEndpoint(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

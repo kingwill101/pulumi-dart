@@ -34,7 +34,7 @@ class DeploymentModel {
     return DeploymentModel(
       format: (map['format'] as String).input(),
       name: (map['name'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

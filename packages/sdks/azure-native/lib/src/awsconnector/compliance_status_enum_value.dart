@@ -21,7 +21,7 @@ class ComplianceStatusEnumValue {
 
   factory ComplianceStatusEnumValue.fromMap(Map<String, dynamic> map) {
     return ComplianceStatusEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

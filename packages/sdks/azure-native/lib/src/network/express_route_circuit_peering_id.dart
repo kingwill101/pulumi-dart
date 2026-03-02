@@ -21,7 +21,7 @@ class ExpressRouteCircuitPeeringId {
 
   factory ExpressRouteCircuitPeeringId.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitPeeringId(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

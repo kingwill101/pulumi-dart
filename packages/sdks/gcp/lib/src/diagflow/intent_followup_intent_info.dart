@@ -27,8 +27,8 @@ class IntentFollowupIntentInfo {
 
   factory IntentFollowupIntentInfo.fromMap(Map<String, dynamic> map) {
     return IntentFollowupIntentInfo(
-      followupIntentName: map['followupIntentName'] == null ? null : (map['followupIntentName'] as String).input(),
-      parentFollowupIntentName: map['parentFollowupIntentName'] == null ? null : (map['parentFollowupIntentName'] as String).input(),
+      followupIntentName: map['followupIntentName'] == null ? null : (map['followupIntentName']! as String).input(),
+      parentFollowupIntentName: map['parentFollowupIntentName'] == null ? null : (map['parentFollowupIntentName']! as String).input(),
     );
   }
 }

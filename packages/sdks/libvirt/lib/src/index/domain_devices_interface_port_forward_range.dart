@@ -35,10 +35,10 @@ class DomainDevicesInterfacePortForwardRange {
 
   factory DomainDevicesInterfacePortForwardRange.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfacePortForwardRange(
-      end: map['end'] == null ? null : (map['end'] as double).input(),
-      exclude: map['exclude'] == null ? null : (map['exclude'] as String).input(),
+      end: map['end'] == null ? null : (map['end']! as double).input(),
+      exclude: map['exclude'] == null ? null : (map['exclude']! as String).input(),
       start: (map['start'] as double).input(),
-      to: map['to'] == null ? null : (map['to'] as double).input(),
+      to: map['to'] == null ? null : (map['to']! as double).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class BigQueryOptions {
 
   factory BigQueryOptions.fromMap(Map<String, dynamic> map) {
     return BigQueryOptions(
-      usePartitionedTables: map['usePartitionedTables'] == null ? null : (map['usePartitionedTables'] as bool).input(),
+      usePartitionedTables: map['usePartitionedTables'] == null ? null : (map['usePartitionedTables']! as bool).input(),
     );
   }
 }

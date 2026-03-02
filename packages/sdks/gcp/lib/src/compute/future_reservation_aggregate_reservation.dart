@@ -35,8 +35,8 @@ class FutureReservationAggregateReservation {
   factory FutureReservationAggregateReservation.fromMap(Map<String, dynamic> map) {
     return FutureReservationAggregateReservation(
       reservedResources: (pulumi.Input.decodeList<FutureReservationAggregateReservationReservedResource>(map['reservedResources'], (value) => FutureReservationAggregateReservationReservedResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vmFamily: map['vmFamily'] == null ? null : (map['vmFamily'] as String).input(),
-      workloadType: map['workloadType'] == null ? null : (map['workloadType'] as String).input(),
+      vmFamily: map['vmFamily'] == null ? null : (map['vmFamily']! as String).input(),
+      workloadType: map['workloadType'] == null ? null : (map['workloadType']! as String).input(),
     );
   }
 }

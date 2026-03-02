@@ -45,7 +45,7 @@ class FavoriteProcessArgs {
   factory FavoriteProcessArgs.fromMap(Map<String, dynamic> map) {
     return FavoriteProcessArgs(
       actualProcessName: (map['actualProcessName'] as String).input(),
-      favoriteProcessResourceName: map['favoriteProcessResourceName'] == null ? null : (map['favoriteProcessResourceName'] as String).input(),
+      favoriteProcessResourceName: map['favoriteProcessResourceName'] == null ? null : (map['favoriteProcessResourceName']! as String).input(),
       packageName: (map['packageName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       testBaseAccountName: (map['testBaseAccountName'] as String).input(),

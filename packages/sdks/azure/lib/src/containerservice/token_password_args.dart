@@ -38,7 +38,7 @@ class TokenPasswordArgs {
     return TokenPasswordArgs(
       containerRegistryTokenId: (map['containerRegistryTokenId'] as String).input(),
       password1: (TokenPasswordPassword1.fromMap((map['password1'] as Map).cast<String, dynamic>())).input(),
-      password2: map['password2'] == null ? null : (TokenPasswordPassword2.fromMap((map['password2'] as Map).cast<String, dynamic>())).input(),
+      password2: map['password2'] == null ? null : (TokenPasswordPassword2.fromMap((map['password2']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

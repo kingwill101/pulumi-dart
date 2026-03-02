@@ -51,12 +51,12 @@ class GetContentTypeResult {
   factory GetContentTypeResult.fromMap(Map<String, dynamic> map) {
     return GetContentTypeResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      schema: map['schema'] == null ? null : map['schema'],
+      schema: map['schema'] == null ? null : map['schema']!,
       type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      version: map['version'] == null ? null : map['version']! as String,
     );
   }
 }

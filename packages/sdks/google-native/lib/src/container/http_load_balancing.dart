@@ -21,7 +21,7 @@ class HttpLoadBalancing {
 
   factory HttpLoadBalancing.fromMap(Map<String, dynamic> map) {
     return HttpLoadBalancing(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
     );
   }
 }

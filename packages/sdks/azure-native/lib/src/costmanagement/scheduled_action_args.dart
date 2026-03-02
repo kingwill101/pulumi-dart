@@ -73,13 +73,13 @@ class ScheduledActionArgs {
   factory ScheduledActionArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledActionArgs(
       displayName: (map['displayName'] as String).input(),
-      fileDestination: map['fileDestination'] == null ? null : (FileDestination.fromMap((map['fileDestination'] as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      fileDestination: map['fileDestination'] == null ? null : (FileDestination.fromMap((map['fileDestination']! as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       notification: (NotificationProperties.fromMap((map['notification'] as Map).cast<String, dynamic>())).input(),
-      notificationEmail: map['notificationEmail'] == null ? null : (map['notificationEmail'] as String).input(),
+      notificationEmail: map['notificationEmail'] == null ? null : (map['notificationEmail']! as String).input(),
       schedule: (ScheduleProperties.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
       status: (map['status'] as String).input(),
       viewId: (map['viewId'] as String).input(),
     );

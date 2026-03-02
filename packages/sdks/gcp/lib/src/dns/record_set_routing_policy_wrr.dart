@@ -32,8 +32,8 @@ class RecordSetRoutingPolicyWrr {
 
   factory RecordSetRoutingPolicyWrr.fromMap(Map<String, dynamic> map) {
     return RecordSetRoutingPolicyWrr(
-      healthCheckedTargets: map['healthCheckedTargets'] == null ? null : (RecordSetRoutingPolicyWrrHealthCheckedTargets.fromMap((map['healthCheckedTargets'] as Map).cast<String, dynamic>())).input(),
-      rrdatas: map['rrdatas'] == null ? null : ((map['rrdatas'] as List).cast<String>()).input(),
+      healthCheckedTargets: map['healthCheckedTargets'] == null ? null : (RecordSetRoutingPolicyWrrHealthCheckedTargets.fromMap((map['healthCheckedTargets']! as Map).cast<String, dynamic>())).input(),
+      rrdatas: map['rrdatas'] == null ? null : ((map['rrdatas']! as List).cast<String>()).input(),
       weight: (map['weight'] as double).input(),
     );
   }

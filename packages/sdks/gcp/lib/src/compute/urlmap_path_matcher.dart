@@ -98,15 +98,15 @@ class URLMapPathMatcher {
 
   factory URLMapPathMatcher.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcher(
-      defaultCustomErrorResponsePolicy: map['defaultCustomErrorResponsePolicy'] == null ? null : (URLMapPathMatcherDefaultCustomErrorResponsePolicy.fromMap((map['defaultCustomErrorResponsePolicy'] as Map).cast<String, dynamic>())).input(),
-      defaultRouteAction: map['defaultRouteAction'] == null ? null : (URLMapPathMatcherDefaultRouteAction.fromMap((map['defaultRouteAction'] as Map).cast<String, dynamic>())).input(),
-      defaultService: map['defaultService'] == null ? null : (map['defaultService'] as String).input(),
-      defaultUrlRedirect: map['defaultUrlRedirect'] == null ? null : (URLMapPathMatcherDefaultUrlRedirect.fromMap((map['defaultUrlRedirect'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      headerAction: map['headerAction'] == null ? null : (URLMapPathMatcherHeaderAction.fromMap((map['headerAction'] as Map).cast<String, dynamic>())).input(),
+      defaultCustomErrorResponsePolicy: map['defaultCustomErrorResponsePolicy'] == null ? null : (URLMapPathMatcherDefaultCustomErrorResponsePolicy.fromMap((map['defaultCustomErrorResponsePolicy']! as Map).cast<String, dynamic>())).input(),
+      defaultRouteAction: map['defaultRouteAction'] == null ? null : (URLMapPathMatcherDefaultRouteAction.fromMap((map['defaultRouteAction']! as Map).cast<String, dynamic>())).input(),
+      defaultService: map['defaultService'] == null ? null : (map['defaultService']! as String).input(),
+      defaultUrlRedirect: map['defaultUrlRedirect'] == null ? null : (URLMapPathMatcherDefaultUrlRedirect.fromMap((map['defaultUrlRedirect']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      headerAction: map['headerAction'] == null ? null : (URLMapPathMatcherHeaderAction.fromMap((map['headerAction']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      pathRules: map['pathRules'] == null ? null : (pulumi.Input.decodeList<URLMapPathMatcherPathRule>(map['pathRules'], (value) => URLMapPathMatcherPathRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      routeRules: map['routeRules'] == null ? null : (pulumi.Input.decodeList<URLMapPathMatcherRouteRule>(map['routeRules'], (value) => URLMapPathMatcherRouteRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pathRules: map['pathRules'] == null ? null : (pulumi.Input.decodeList<URLMapPathMatcherPathRule>(map['pathRules']!, (value) => URLMapPathMatcherPathRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routeRules: map['routeRules'] == null ? null : (pulumi.Input.decodeList<URLMapPathMatcherRouteRule>(map['routeRules']!, (value) => URLMapPathMatcherRouteRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

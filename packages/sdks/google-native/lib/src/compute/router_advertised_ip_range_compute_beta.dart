@@ -26,8 +26,8 @@ class RouterAdvertisedIpRangeComputeBeta {
 
   factory RouterAdvertisedIpRangeComputeBeta.fromMap(Map<String, dynamic> map) {
     return RouterAdvertisedIpRangeComputeBeta(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      range: map['range'] == null ? null : (map['range'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      range: map['range'] == null ? null : (map['range']! as String).input(),
     );
   }
 }

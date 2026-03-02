@@ -63,14 +63,14 @@ class JobMetadata {
 
   factory JobMetadata.fromMap(Map<String, dynamic> map) {
     return JobMetadata(
-      bigTableDetails: map['bigTableDetails'] == null ? null : (pulumi.Input.decodeList<BigTableIODetails>(map['bigTableDetails'], (value) => BigTableIODetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bigqueryDetails: map['bigqueryDetails'] == null ? null : (pulumi.Input.decodeList<BigQueryIODetails>(map['bigqueryDetails'], (value) => BigQueryIODetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      datastoreDetails: map['datastoreDetails'] == null ? null : (pulumi.Input.decodeList<DatastoreIODetails>(map['datastoreDetails'], (value) => DatastoreIODetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fileDetails: map['fileDetails'] == null ? null : (pulumi.Input.decodeList<FileIODetails>(map['fileDetails'], (value) => FileIODetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pubsubDetails: map['pubsubDetails'] == null ? null : (pulumi.Input.decodeList<PubSubIODetails>(map['pubsubDetails'], (value) => PubSubIODetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sdkVersion: map['sdkVersion'] == null ? null : (SdkVersion.fromMap((map['sdkVersion'] as Map).cast<String, dynamic>())).input(),
-      spannerDetails: map['spannerDetails'] == null ? null : (pulumi.Input.decodeList<SpannerIODetails>(map['spannerDetails'], (value) => SpannerIODetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      userDisplayProperties: map['userDisplayProperties'] == null ? null : ((map['userDisplayProperties'] as Map).cast<String, String>()).input(),
+      bigTableDetails: map['bigTableDetails'] == null ? null : (pulumi.Input.decodeList<BigTableIODetails>(map['bigTableDetails']!, (value) => BigTableIODetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bigqueryDetails: map['bigqueryDetails'] == null ? null : (pulumi.Input.decodeList<BigQueryIODetails>(map['bigqueryDetails']!, (value) => BigQueryIODetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      datastoreDetails: map['datastoreDetails'] == null ? null : (pulumi.Input.decodeList<DatastoreIODetails>(map['datastoreDetails']!, (value) => DatastoreIODetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fileDetails: map['fileDetails'] == null ? null : (pulumi.Input.decodeList<FileIODetails>(map['fileDetails']!, (value) => FileIODetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pubsubDetails: map['pubsubDetails'] == null ? null : (pulumi.Input.decodeList<PubSubIODetails>(map['pubsubDetails']!, (value) => PubSubIODetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sdkVersion: map['sdkVersion'] == null ? null : (SdkVersion.fromMap((map['sdkVersion']! as Map).cast<String, dynamic>())).input(),
+      spannerDetails: map['spannerDetails'] == null ? null : (pulumi.Input.decodeList<SpannerIODetails>(map['spannerDetails']!, (value) => SpannerIODetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userDisplayProperties: map['userDisplayProperties'] == null ? null : ((map['userDisplayProperties']! as Map).cast<String, String>()).input(),
     );
   }
 }

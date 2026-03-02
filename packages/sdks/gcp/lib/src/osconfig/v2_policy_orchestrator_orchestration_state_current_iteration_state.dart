@@ -76,14 +76,14 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationState {
 
   factory V2PolicyOrchestratorOrchestrationStateCurrentIterationState.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorOrchestrationStateCurrentIterationState(
-      error: map['error'] == null ? null : (V2PolicyOrchestratorOrchestrationStateCurrentIterationStateError.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
-      failedActions: map['failedActions'] == null ? null : (map['failedActions'] as String).input(),
-      finishTime: map['finishTime'] == null ? null : (map['finishTime'] as String).input(),
-      performedActions: map['performedActions'] == null ? null : (map['performedActions'] as String).input(),
-      progress: map['progress'] == null ? null : (map['progress'] as double).input(),
-      rolloutResource: map['rolloutResource'] == null ? null : (map['rolloutResource'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      error: map['error'] == null ? null : (V2PolicyOrchestratorOrchestrationStateCurrentIterationStateError.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
+      failedActions: map['failedActions'] == null ? null : (map['failedActions']! as String).input(),
+      finishTime: map['finishTime'] == null ? null : (map['finishTime']! as String).input(),
+      performedActions: map['performedActions'] == null ? null : (map['performedActions']! as String).input(),
+      progress: map['progress'] == null ? null : (map['progress']! as double).input(),
+      rolloutResource: map['rolloutResource'] == null ? null : (map['rolloutResource']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

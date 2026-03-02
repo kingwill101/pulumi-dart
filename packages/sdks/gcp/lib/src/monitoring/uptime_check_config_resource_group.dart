@@ -26,8 +26,8 @@ class UptimeCheckConfigResourceGroup {
 
   factory UptimeCheckConfigResourceGroup.fromMap(Map<String, dynamic> map) {
     return UptimeCheckConfigResourceGroup(
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
     );
   }
 }

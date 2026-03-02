@@ -26,8 +26,8 @@ class DefaultPatchBaselineState {
 
   factory DefaultPatchBaselineState.fromMap(Map<String, dynamic> map) {
     return DefaultPatchBaselineState(
-      patchBaselineId: map['patchBaselineId'] == null ? null : (map['patchBaselineId'] as String).input(),
-      patchBaselineName: map['patchBaselineName'] == null ? null : (map['patchBaselineName'] as String).input(),
+      patchBaselineId: map['patchBaselineId'] == null ? null : (map['patchBaselineId']! as String).input(),
+      patchBaselineName: map['patchBaselineName'] == null ? null : (map['patchBaselineName']! as String).input(),
     );
   }
 }

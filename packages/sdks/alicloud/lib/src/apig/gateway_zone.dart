@@ -30,9 +30,9 @@ class GatewayZone {
 
   factory GatewayZone.fromMap(Map<String, dynamic> map) {
     return GatewayZone(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

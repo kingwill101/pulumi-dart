@@ -64,15 +64,15 @@ class FunctionUrlState {
 
   factory FunctionUrlState.fromMap(Map<String, dynamic> map) {
     return FunctionUrlState(
-      authorizationType: map['authorizationType'] == null ? null : (map['authorizationType'] as String).input(),
-      cors: map['cors'] == null ? null : (FunctionUrlCors.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
-      functionArn: map['functionArn'] == null ? null : (map['functionArn'] as String).input(),
-      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
-      functionUrl: map['functionUrl'] == null ? null : (map['functionUrl'] as String).input(),
-      invokeMode: map['invokeMode'] == null ? null : (map['invokeMode'] as String).input(),
-      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      urlId: map['urlId'] == null ? null : (map['urlId'] as String).input(),
+      authorizationType: map['authorizationType'] == null ? null : ((map['authorizationType'] as String).input()).input(),
+      cors: map['cors'] == null ? null : ((FunctionUrlCors.fromMap((map['cors']! as Map).cast<String, dynamic>())).input()).input(),
+      functionArn: map['functionArn'] == null ? null : ((map['functionArn'] as String).input()).input(),
+      functionName: map['functionName'] == null ? null : ((map['functionName'] as String).input()).input(),
+      functionUrl: map['functionUrl'] == null ? null : ((map['functionUrl'] as String).input()).input(),
+      invokeMode: map['invokeMode'] == null ? null : ((map['invokeMode'] as String).input()).input(),
+      qualifier: map['qualifier'] == null ? null : ((map['qualifier'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      urlId: map['urlId'] == null ? null : ((map['urlId'] as String).input()).input(),
     );
   }
 }

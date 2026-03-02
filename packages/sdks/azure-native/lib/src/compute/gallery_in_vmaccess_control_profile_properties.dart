@@ -34,7 +34,7 @@ class GalleryInVMAccessControlProfileProperties {
   factory GalleryInVMAccessControlProfileProperties.fromMap(Map<String, dynamic> map) {
     return GalleryInVMAccessControlProfileProperties(
       applicableHostEndpoint: (EndpointTypes.fromValue(map['applicableHostEndpoint'] as String)).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       osType: (OperatingSystemTypes.fromValue(map['osType'] as String)).input(),
     );
   }

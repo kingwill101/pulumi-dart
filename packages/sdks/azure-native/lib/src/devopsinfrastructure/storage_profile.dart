@@ -27,8 +27,8 @@ class StorageProfile {
 
   factory StorageProfile.fromMap(Map<String, dynamic> map) {
     return StorageProfile(
-      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<DataDisk>(map['dataDisks'], (value) => DataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      osDiskStorageAccountType: map['osDiskStorageAccountType'] == null ? null : (map['osDiskStorageAccountType'] as String).input(),
+      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<DataDisk>(map['dataDisks']!, (value) => DataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      osDiskStorageAccountType: map['osDiskStorageAccountType'] == null ? null : (map['osDiskStorageAccountType']! as String).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class SubnetResourceSettingsResponse {
 
   factory SubnetResourceSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SubnetResourceSettingsResponse(
-      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : (NsgReferenceResponse.fromMap((map['networkSecurityGroup'] as Map).cast<String, dynamic>())).input(),
+      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : (NsgReferenceResponse.fromMap((map['networkSecurityGroup']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

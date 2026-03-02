@@ -21,7 +21,7 @@ class BucketCustomPlacementConfig {
 
   factory BucketCustomPlacementConfig.fromMap(Map<String, dynamic> map) {
     return BucketCustomPlacementConfig(
-      dataLocations: map['dataLocations'] == null ? null : ((map['dataLocations'] as List).cast<String>()).input(),
+      dataLocations: map['dataLocations'] == null ? null : ((map['dataLocations']! as List).cast<String>()).input(),
     );
   }
 }

@@ -128,22 +128,22 @@ class V2PolicyOrchestratorForFolderState {
 
   factory V2PolicyOrchestratorForFolderState.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForFolderState(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      folderId: map['folderId'] == null ? null : (map['folderId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      orchestratedResource: map['orchestratedResource'] == null ? null : (V2PolicyOrchestratorForFolderOrchestratedResource.fromMap((map['orchestratedResource'] as Map).cast<String, dynamic>())).input(),
-      orchestrationScope: map['orchestrationScope'] == null ? null : (V2PolicyOrchestratorForFolderOrchestrationScope.fromMap((map['orchestrationScope'] as Map).cast<String, dynamic>())).input(),
-      orchestrationStates: map['orchestrationStates'] == null ? null : (pulumi.Input.decodeList<V2PolicyOrchestratorForFolderOrchestrationState>(map['orchestrationStates'], (value) => V2PolicyOrchestratorForFolderOrchestrationState.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      policyOrchestratorId: map['policyOrchestratorId'] == null ? null : (map['policyOrchestratorId'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      reconciling: map['reconciling'] == null ? null : (map['reconciling'] as bool).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      folderId: map['folderId'] == null ? null : (map['folderId']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      orchestratedResource: map['orchestratedResource'] == null ? null : (V2PolicyOrchestratorForFolderOrchestratedResource.fromMap((map['orchestratedResource']! as Map).cast<String, dynamic>())).input(),
+      orchestrationScope: map['orchestrationScope'] == null ? null : (V2PolicyOrchestratorForFolderOrchestrationScope.fromMap((map['orchestrationScope']! as Map).cast<String, dynamic>())).input(),
+      orchestrationStates: map['orchestrationStates'] == null ? null : (pulumi.Input.decodeList<V2PolicyOrchestratorForFolderOrchestrationState>(map['orchestrationStates']!, (value) => V2PolicyOrchestratorForFolderOrchestrationState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      policyOrchestratorId: map['policyOrchestratorId'] == null ? null : (map['policyOrchestratorId']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      reconciling: map['reconciling'] == null ? null : (map['reconciling']! as bool).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

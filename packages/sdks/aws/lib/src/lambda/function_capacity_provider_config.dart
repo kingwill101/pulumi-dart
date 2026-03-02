@@ -21,7 +21,7 @@ class FunctionCapacityProviderConfig {
 
   factory FunctionCapacityProviderConfig.fromMap(Map<String, dynamic> map) {
     return FunctionCapacityProviderConfig(
-      lambdaManagedInstancesCapacityProviderConfig: (FunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig.fromMap((map['lambdaManagedInstancesCapacityProviderConfig'] as Map).cast<String, dynamic>())).input(),
+      lambdaManagedInstancesCapacityProviderConfig: (FunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig.fromMap((map['lambdaManagedInstancesCapacityProviderConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

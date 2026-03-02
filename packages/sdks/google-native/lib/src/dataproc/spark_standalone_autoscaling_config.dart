@@ -47,11 +47,11 @@ class SparkStandaloneAutoscalingConfig {
   factory SparkStandaloneAutoscalingConfig.fromMap(Map<String, dynamic> map) {
     return SparkStandaloneAutoscalingConfig(
       gracefulDecommissionTimeout: (map['gracefulDecommissionTimeout'] as String).input(),
-      removeOnlyIdleWorkers: map['removeOnlyIdleWorkers'] == null ? null : (map['removeOnlyIdleWorkers'] as bool).input(),
+      removeOnlyIdleWorkers: map['removeOnlyIdleWorkers'] == null ? null : (map['removeOnlyIdleWorkers']! as bool).input(),
       scaleDownFactor: (map['scaleDownFactor'] as double).input(),
-      scaleDownMinWorkerFraction: map['scaleDownMinWorkerFraction'] == null ? null : (map['scaleDownMinWorkerFraction'] as double).input(),
+      scaleDownMinWorkerFraction: map['scaleDownMinWorkerFraction'] == null ? null : (map['scaleDownMinWorkerFraction']! as double).input(),
       scaleUpFactor: (map['scaleUpFactor'] as double).input(),
-      scaleUpMinWorkerFraction: map['scaleUpMinWorkerFraction'] == null ? null : (map['scaleUpMinWorkerFraction'] as double).input(),
+      scaleUpMinWorkerFraction: map['scaleUpMinWorkerFraction'] == null ? null : (map['scaleUpMinWorkerFraction']! as double).input(),
     );
   }
 }

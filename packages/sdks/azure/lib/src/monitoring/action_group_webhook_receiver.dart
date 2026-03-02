@@ -38,10 +38,10 @@ class ActionGroupWebhookReceiver {
 
   factory ActionGroupWebhookReceiver.fromMap(Map<String, dynamic> map) {
     return ActionGroupWebhookReceiver(
-      aadAuth: map['aadAuth'] == null ? null : (ActionGroupWebhookReceiverAadAuth.fromMap((map['aadAuth'] as Map).cast<String, dynamic>())).input(),
+      aadAuth: map['aadAuth'] == null ? null : (ActionGroupWebhookReceiverAadAuth.fromMap((map['aadAuth']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
       serviceUri: (map['serviceUri'] as String).input(),
-      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema'] as bool).input(),
+      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema']! as bool).input(),
     );
   }
 }

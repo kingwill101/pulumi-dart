@@ -42,11 +42,11 @@ class SpacesKeyState {
 
   factory SpacesKeyState.fromMap(Map<String, dynamic> map) {
     return SpacesKeyState(
-      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      grants: map['grants'] == null ? null : (pulumi.Input.decodeList<SpacesKeyGrant>(map['grants'], (value) => SpacesKeyGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      secretKey: map['secretKey'] == null ? null : (map['secretKey'] as String).input(),
+      accessKey: map['accessKey'] == null ? null : (map['accessKey']! as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      grants: map['grants'] == null ? null : (pulumi.Input.decodeList<SpacesKeyGrant>(map['grants']!, (value) => SpacesKeyGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      secretKey: map['secretKey'] == null ? null : (map['secretKey']! as String).input(),
     );
   }
 }

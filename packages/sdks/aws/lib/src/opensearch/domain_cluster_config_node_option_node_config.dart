@@ -30,9 +30,9 @@ class DomainClusterConfigNodeOptionNodeConfig {
 
   factory DomainClusterConfigNodeOptionNodeConfig.fromMap(Map<String, dynamic> map) {
     return DomainClusterConfigNodeOptionNodeConfig(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      count: map['count'] == null ? null : ((map['count'] as int).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

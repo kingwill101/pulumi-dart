@@ -30,7 +30,7 @@ class ConnectionConfirmationArgs {
   factory ConnectionConfirmationArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionConfirmationArgs(
       connectionId: (map['connectionId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

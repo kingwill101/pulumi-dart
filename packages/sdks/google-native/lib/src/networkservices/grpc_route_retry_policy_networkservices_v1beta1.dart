@@ -26,8 +26,8 @@ class GrpcRouteRetryPolicyNetworkservicesV1beta1 {
 
   factory GrpcRouteRetryPolicyNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return GrpcRouteRetryPolicyNetworkservicesV1beta1(
-      numRetries: map['numRetries'] == null ? null : (map['numRetries'] as int).input(),
-      retryConditions: map['retryConditions'] == null ? null : ((map['retryConditions'] as List).cast<String>()).input(),
+      numRetries: map['numRetries'] == null ? null : (map['numRetries']! as int).input(),
+      retryConditions: map['retryConditions'] == null ? null : ((map['retryConditions']! as List).cast<String>()).input(),
     );
   }
 }

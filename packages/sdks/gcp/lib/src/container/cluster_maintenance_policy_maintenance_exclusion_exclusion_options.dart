@@ -58,7 +58,7 @@ class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions {
 
   factory ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions(
-      endTimeBehavior: map['endTimeBehavior'] == null ? null : (map['endTimeBehavior'] as String).input(),
+      endTimeBehavior: map['endTimeBehavior'] == null ? null : (map['endTimeBehavior']! as String).input(),
       scope: (map['scope'] as String).input(),
     );
   }

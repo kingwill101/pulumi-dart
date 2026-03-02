@@ -26,8 +26,8 @@ class OsProfileResponseLinuxConfiguration {
 
   factory OsProfileResponseLinuxConfiguration.fromMap(Map<String, dynamic> map) {
     return OsProfileResponseLinuxConfiguration(
-      assessmentMode: map['assessmentMode'] == null ? null : (map['assessmentMode'] as String).input(),
-      patchMode: map['patchMode'] == null ? null : (map['patchMode'] as String).input(),
+      assessmentMode: map['assessmentMode'] == null ? null : (map['assessmentMode']! as String).input(),
+      patchMode: map['patchMode'] == null ? null : (map['patchMode']! as String).input(),
     );
   }
 }

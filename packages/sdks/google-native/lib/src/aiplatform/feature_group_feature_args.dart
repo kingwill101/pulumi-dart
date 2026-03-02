@@ -72,17 +72,17 @@ class FeatureGroupFeatureArgs {
 
   factory FeatureGroupFeatureArgs.fromMap(Map<String, dynamic> map) {
     return FeatureGroupFeatureArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disableMonitoring: map['disableMonitoring'] == null ? null : (map['disableMonitoring'] as bool).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disableMonitoring: map['disableMonitoring'] == null ? null : (map['disableMonitoring']! as bool).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       featureGroupId: (map['featureGroupId'] as String).input(),
       featureId: (map['featureId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      valueType: map['valueType'] == null ? null : (FeatureGroupFeatureValueType.fromValue(map['valueType'] as String)).input(),
-      versionColumnName: map['versionColumnName'] == null ? null : (map['versionColumnName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      valueType: map['valueType'] == null ? null : (FeatureGroupFeatureValueType.fromValue(map['valueType']! as String)).input(),
+      versionColumnName: map['versionColumnName'] == null ? null : (map['versionColumnName']! as String).input(),
     );
   }
 }

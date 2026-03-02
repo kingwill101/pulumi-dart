@@ -26,8 +26,8 @@ class VpnNatRuleMappingResponse {
 
   factory VpnNatRuleMappingResponse.fromMap(Map<String, dynamic> map) {
     return VpnNatRuleMappingResponse(
-      addressSpace: map['addressSpace'] == null ? null : (map['addressSpace'] as String).input(),
-      portRange: map['portRange'] == null ? null : (map['portRange'] as String).input(),
+      addressSpace: map['addressSpace'] == null ? null : (map['addressSpace']! as String).input(),
+      portRange: map['portRange'] == null ? null : (map['portRange']! as String).input(),
     );
   }
 }

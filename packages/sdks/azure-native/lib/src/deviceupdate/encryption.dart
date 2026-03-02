@@ -26,8 +26,8 @@ class Encryption {
 
   factory Encryption.fromMap(Map<String, dynamic> map) {
     return Encryption(
-      keyVaultKeyUri: map['keyVaultKeyUri'] == null ? null : (map['keyVaultKeyUri'] as String).input(),
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity'] as String).input(),
+      keyVaultKeyUri: map['keyVaultKeyUri'] == null ? null : (map['keyVaultKeyUri']! as String).input(),
+      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']! as String).input(),
     );
   }
 }

@@ -78,14 +78,14 @@ class ReleaseArgs {
 
   factory ReleaseArgs.fromMap(Map<String, dynamic> map) {
     return ReleaseArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      blueprint: map['blueprint'] == null ? null : (ReleaseBlueprint.fromMap((map['blueprint'] as Map).cast<String, dynamic>())).input(),
-      inputVariableDefaults: map['inputVariableDefaults'] == null ? null : (pulumi.Input.decodeList<ReleaseInputVariableDefault>(map['inputVariableDefaults'], (value) => ReleaseInputVariableDefault.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      blueprint: map['blueprint'] == null ? null : (ReleaseBlueprint.fromMap((map['blueprint']! as Map).cast<String, dynamic>())).input(),
+      inputVariableDefaults: map['inputVariableDefaults'] == null ? null : (pulumi.Input.decodeList<ReleaseInputVariableDefault>(map['inputVariableDefaults']!, (value) => ReleaseInputVariableDefault.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       releaseId: (map['releaseId'] as String).input(),
-      releaseRequirements: map['releaseRequirements'] == null ? null : (ReleaseReleaseRequirements.fromMap((map['releaseRequirements'] as Map).cast<String, dynamic>())).input(),
+      releaseRequirements: map['releaseRequirements'] == null ? null : (ReleaseReleaseRequirements.fromMap((map['releaseRequirements']! as Map).cast<String, dynamic>())).input(),
       unitKind: (map['unitKind'] as String).input(),
     );
   }

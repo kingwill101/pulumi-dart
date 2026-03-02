@@ -50,11 +50,11 @@ class ApplicationGroupArgs {
 
   factory ApplicationGroupArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationGroupArgs(
-      applicationGroupName: map['applicationGroupName'] == null ? null : (map['applicationGroupName'] as String).input(),
+      applicationGroupName: map['applicationGroupName'] == null ? null : (map['applicationGroupName']! as String).input(),
       clientAppGroupIdentifier: (map['clientAppGroupIdentifier'] as String).input(),
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as bool).input(),
       namespaceName: (map['namespaceName'] as String).input(),
-      policies: map['policies'] == null ? null : (pulumi.Input.decodeList<ThrottlingPolicy>(map['policies'], (value) => ThrottlingPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      policies: map['policies'] == null ? null : (pulumi.Input.decodeList<ThrottlingPolicy>(map['policies']!, (value) => ThrottlingPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

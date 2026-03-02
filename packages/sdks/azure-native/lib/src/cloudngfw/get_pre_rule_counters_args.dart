@@ -33,7 +33,7 @@ class GetPreRuleCountersArgs {
 
   factory GetPreRuleCountersArgs.fromMap(Map<String, dynamic> map) {
     return GetPreRuleCountersArgs(
-      firewallName: map['firewallName'] == null ? null : (map['firewallName'] as String).input(),
+      firewallName: map['firewallName'] == null ? null : (map['firewallName']! as String).input(),
       globalRulestackName: (map['globalRulestackName'] as String).input(),
       priority: (map['priority'] as String).input(),
     );

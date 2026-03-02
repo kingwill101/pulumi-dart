@@ -30,7 +30,7 @@ class BudgetBudgetFilterCustomPeriod {
 
   factory BudgetBudgetFilterCustomPeriod.fromMap(Map<String, dynamic> map) {
     return BudgetBudgetFilterCustomPeriod(
-      endDate: map['endDate'] == null ? null : (BudgetBudgetFilterCustomPeriodEndDate.fromMap((map['endDate'] as Map).cast<String, dynamic>())).input(),
+      endDate: map['endDate'] == null ? null : (BudgetBudgetFilterCustomPeriodEndDate.fromMap((map['endDate']! as Map).cast<String, dynamic>())).input(),
       startDate: (BudgetBudgetFilterCustomPeriodStartDate.fromMap((map['startDate'] as Map).cast<String, dynamic>())).input(),
     );
   }

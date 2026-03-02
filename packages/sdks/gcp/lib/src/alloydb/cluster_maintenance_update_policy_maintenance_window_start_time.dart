@@ -36,9 +36,9 @@ class ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime {
   factory ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime(
       hours: (map['hours'] as int).input(),
-      minutes: map['minutes'] == null ? null : (map['minutes'] as int).input(),
-      nanos: map['nanos'] == null ? null : (map['nanos'] as int).input(),
-      seconds: map['seconds'] == null ? null : (map['seconds'] as int).input(),
+      minutes: map['minutes'] == null ? null : (map['minutes']! as int).input(),
+      nanos: map['nanos'] == null ? null : (map['nanos']! as int).input(),
+      seconds: map['seconds'] == null ? null : (map['seconds']! as int).input(),
     );
   }
 }

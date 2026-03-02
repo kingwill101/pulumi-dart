@@ -22,7 +22,7 @@ class MachinePreferencesMigrationcenterV1alpha1 {
 
   factory MachinePreferencesMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return MachinePreferencesMigrationcenterV1alpha1(
-      allowedMachineSeries: map['allowedMachineSeries'] == null ? null : (pulumi.Input.decodeList<MachineSeriesMigrationcenterV1alpha1>(map['allowedMachineSeries'], (value) => MachineSeriesMigrationcenterV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowedMachineSeries: map['allowedMachineSeries'] == null ? null : (pulumi.Input.decodeList<MachineSeriesMigrationcenterV1alpha1>(map['allowedMachineSeries']!, (value) => MachineSeriesMigrationcenterV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

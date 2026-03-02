@@ -56,13 +56,13 @@ class AuthomationRuleActionIncident {
 
   factory AuthomationRuleActionIncident.fromMap(Map<String, dynamic> map) {
     return AuthomationRuleActionIncident(
-      classification: map['classification'] == null ? null : (map['classification'] as String).input(),
-      classificationComment: map['classificationComment'] == null ? null : (map['classificationComment'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
+      classification: map['classification'] == null ? null : (map['classification']! as String).input(),
+      classificationComment: map['classificationComment'] == null ? null : (map['classificationComment']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as List).cast<String>()).input(),
       order: (map['order'] as int).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId']! as String).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

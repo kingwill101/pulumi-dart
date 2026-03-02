@@ -26,8 +26,8 @@ class NetworkVlan {
 
   factory NetworkVlan.fromMap(Map<String, dynamic> map) {
     return NetworkVlan(
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<NetworkVlanTag>(map['tags'], (value) => NetworkVlanTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      trunk: map['trunk'] == null ? null : (map['trunk'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<NetworkVlanTag>(map['tags']!, (value) => NetworkVlanTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      trunk: map['trunk'] == null ? null : (map['trunk']! as String).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class KubernetesConnections {
 
   factory KubernetesConnections.fromMap(Map<String, dynamic> map) {
     return KubernetesConnections(
-      apiServerInternet: map['apiServerInternet'] == null ? null : (map['apiServerInternet'] as String).input(),
-      apiServerIntranet: map['apiServerIntranet'] == null ? null : (map['apiServerIntranet'] as String).input(),
-      masterPublicIp: map['masterPublicIp'] == null ? null : (map['masterPublicIp'] as String).input(),
-      serviceDomain: map['serviceDomain'] == null ? null : (map['serviceDomain'] as String).input(),
+      apiServerInternet: map['apiServerInternet'] == null ? null : (map['apiServerInternet']! as String).input(),
+      apiServerIntranet: map['apiServerIntranet'] == null ? null : (map['apiServerIntranet']! as String).input(),
+      masterPublicIp: map['masterPublicIp'] == null ? null : (map['masterPublicIp']! as String).input(),
+      serviceDomain: map['serviceDomain'] == null ? null : (map['serviceDomain']! as String).input(),
     );
   }
 }

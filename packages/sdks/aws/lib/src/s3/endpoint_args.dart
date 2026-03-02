@@ -49,10 +49,10 @@ class EndpointArgs {
 
   factory EndpointArgs.fromMap(Map<String, dynamic> map) {
     return EndpointArgs(
-      accessType: map['accessType'] == null ? null : (map['accessType'] as String).input(),
-      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] == null ? null : (map['customerOwnedIpv4Pool'] as String).input(),
+      accessType: map['accessType'] == null ? null : ((map['accessType'] as String).input()).input(),
+      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] == null ? null : ((map['customerOwnedIpv4Pool'] as String).input()).input(),
       outpostId: (map['outpostId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       securityGroupId: (map['securityGroupId'] as String).input(),
       subnetId: (map['subnetId'] as String).input(),
     );

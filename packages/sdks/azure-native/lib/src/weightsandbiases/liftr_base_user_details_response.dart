@@ -41,11 +41,11 @@ class LiftrBaseUserDetailsResponse {
 
   factory LiftrBaseUserDetailsResponse.fromMap(Map<String, dynamic> map) {
     return LiftrBaseUserDetailsResponse(
-      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress'] as String).input(),
-      firstName: map['firstName'] == null ? null : (map['firstName'] as String).input(),
-      lastName: map['lastName'] == null ? null : (map['lastName'] as String).input(),
-      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
-      upn: map['upn'] == null ? null : (map['upn'] as String).input(),
+      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress']! as String).input(),
+      firstName: map['firstName'] == null ? null : (map['firstName']! as String).input(),
+      lastName: map['lastName'] == null ? null : (map['lastName']! as String).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber']! as String).input(),
+      upn: map['upn'] == null ? null : (map['upn']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort {
 
   factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort(
-      containerPort: map['containerPort'] == null ? null : (map['containerPort'] as int).input(),
+      containerPort: map['containerPort'] == null ? null : (map['containerPort']! as int).input(),
     );
   }
 }

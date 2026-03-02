@@ -53,12 +53,12 @@ class LinkedDatasetArgs {
 
   factory LinkedDatasetArgs.fromMap(Map<String, dynamic> map) {
     return LinkedDatasetArgs(
-      bigqueryDatasets: map['bigqueryDatasets'] == null ? null : (pulumi.Input.decodeList<LinkedDatasetBigqueryDataset>(map['bigqueryDatasets'], (value) => LinkedDatasetBigqueryDataset.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bigqueryDatasets: map['bigqueryDatasets'] == null ? null : (pulumi.Input.decodeList<LinkedDatasetBigqueryDataset>(map['bigqueryDatasets']!, (value) => LinkedDatasetBigqueryDataset.fromMap((value as Map).cast<String, dynamic>()))).input(),
       bucket: (map['bucket'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       linkId: (map['linkId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
     );
   }
 }

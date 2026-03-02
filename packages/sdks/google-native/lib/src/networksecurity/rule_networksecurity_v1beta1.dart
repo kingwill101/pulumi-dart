@@ -28,8 +28,8 @@ class RuleNetworksecurityV1beta1 {
 
   factory RuleNetworksecurityV1beta1.fromMap(Map<String, dynamic> map) {
     return RuleNetworksecurityV1beta1(
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<DestinationNetworksecurityV1beta1>(map['destinations'], (value) => DestinationNetworksecurityV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<SourceNetworksecurityV1beta1>(map['sources'], (value) => SourceNetworksecurityV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<DestinationNetworksecurityV1beta1>(map['destinations']!, (value) => DestinationNetworksecurityV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<SourceNetworksecurityV1beta1>(map['sources']!, (value) => SourceNetworksecurityV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

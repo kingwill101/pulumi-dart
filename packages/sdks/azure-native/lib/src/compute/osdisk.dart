@@ -82,18 +82,18 @@ class OSDisk {
 
   factory OSDisk.fromMap(Map<String, dynamic> map) {
     return OSDisk(
-      caching: map['caching'] == null ? null : (CachingTypes.fromValue(map['caching'] as String)).input(),
+      caching: map['caching'] == null ? null : (CachingTypes.fromValue(map['caching']! as String)).input(),
       createOption: (map['createOption'] as String).input(),
-      deleteOption: map['deleteOption'] == null ? null : (map['deleteOption'] as String).input(),
-      diffDiskSettings: map['diffDiskSettings'] == null ? null : (DiffDiskSettings.fromMap((map['diffDiskSettings'] as Map).cast<String, dynamic>())).input(),
-      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as int).input(),
-      encryptionSettings: map['encryptionSettings'] == null ? null : (DiskEncryptionSettings.fromMap((map['encryptionSettings'] as Map).cast<String, dynamic>())).input(),
-      image: map['image'] == null ? null : (VirtualHardDisk.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
-      managedDisk: map['managedDisk'] == null ? null : (ManagedDiskParameters.fromMap((map['managedDisk'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      osType: map['osType'] == null ? null : (OperatingSystemTypes.fromValue(map['osType'] as String)).input(),
-      vhd: map['vhd'] == null ? null : (VirtualHardDisk.fromMap((map['vhd'] as Map).cast<String, dynamic>())).input(),
-      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled'] as bool).input(),
+      deleteOption: map['deleteOption'] == null ? null : (map['deleteOption']! as String).input(),
+      diffDiskSettings: map['diffDiskSettings'] == null ? null : (DiffDiskSettings.fromMap((map['diffDiskSettings']! as Map).cast<String, dynamic>())).input(),
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB']! as int).input(),
+      encryptionSettings: map['encryptionSettings'] == null ? null : (DiskEncryptionSettings.fromMap((map['encryptionSettings']! as Map).cast<String, dynamic>())).input(),
+      image: map['image'] == null ? null : (VirtualHardDisk.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
+      managedDisk: map['managedDisk'] == null ? null : (ManagedDiskParameters.fromMap((map['managedDisk']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      osType: map['osType'] == null ? null : (OperatingSystemTypes.fromValue(map['osType']! as String)).input(),
+      vhd: map['vhd'] == null ? null : (VirtualHardDisk.fromMap((map['vhd']! as Map).cast<String, dynamic>())).input(),
+      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled']! as bool).input(),
     );
   }
 }

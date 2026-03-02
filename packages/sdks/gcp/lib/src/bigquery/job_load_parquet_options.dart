@@ -25,8 +25,8 @@ class JobLoadParquetOptions {
 
   factory JobLoadParquetOptions.fromMap(Map<String, dynamic> map) {
     return JobLoadParquetOptions(
-      enableListInference: map['enableListInference'] == null ? null : (map['enableListInference'] as bool).input(),
-      enumAsString: map['enumAsString'] == null ? null : (map['enumAsString'] as bool).input(),
+      enableListInference: map['enableListInference'] == null ? null : (map['enableListInference']! as bool).input(),
+      enumAsString: map['enumAsString'] == null ? null : (map['enumAsString']! as bool).input(),
     );
   }
 }

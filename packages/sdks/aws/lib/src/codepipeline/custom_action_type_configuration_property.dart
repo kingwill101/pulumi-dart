@@ -50,13 +50,13 @@ class CustomActionTypeConfigurationProperty {
 
   factory CustomActionTypeConfigurationProperty.fromMap(Map<String, dynamic> map) {
     return CustomActionTypeConfigurationProperty(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       key: (map['key'] as bool).input(),
       name: (map['name'] as String).input(),
-      queryable: map['queryable'] == null ? null : (map['queryable'] as bool).input(),
+      queryable: map['queryable'] == null ? null : ((map['queryable'] as bool).input()).input(),
       required: (map['required'] as bool).input(),
       secret: (map['secret'] as bool).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

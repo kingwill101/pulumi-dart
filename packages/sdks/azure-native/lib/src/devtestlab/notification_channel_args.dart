@@ -70,16 +70,16 @@ class NotificationChannelArgs {
 
   factory NotificationChannelArgs.fromMap(Map<String, dynamic> map) {
     return NotificationChannelArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      emailRecipient: map['emailRecipient'] == null ? null : (map['emailRecipient'] as String).input(),
-      events: map['events'] == null ? null : (pulumi.Input.decodeList<Event>(map['events'], (value) => Event.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      emailRecipient: map['emailRecipient'] == null ? null : (map['emailRecipient']! as String).input(),
+      events: map['events'] == null ? null : (pulumi.Input.decodeList<Event>(map['events']!, (value) => Event.fromMap((value as Map).cast<String, dynamic>()))).input(),
       labName: (map['labName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationLocale: map['notificationLocale'] == null ? null : (map['notificationLocale'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notificationLocale: map['notificationLocale'] == null ? null : (map['notificationLocale']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      webHookUrl: map['webHookUrl'] == null ? null : (map['webHookUrl'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      webHookUrl: map['webHookUrl'] == null ? null : (map['webHookUrl']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class KubernetesResourceGkehubV1beta {
 
   factory KubernetesResourceGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return KubernetesResourceGkehubV1beta(
-      membershipCrManifest: map['membershipCrManifest'] == null ? null : (map['membershipCrManifest'] as String).input(),
-      resourceOptions: map['resourceOptions'] == null ? null : (ResourceOptionsGkehubV1beta.fromMap((map['resourceOptions'] as Map).cast<String, dynamic>())).input(),
+      membershipCrManifest: map['membershipCrManifest'] == null ? null : (map['membershipCrManifest']! as String).input(),
+      resourceOptions: map['resourceOptions'] == null ? null : (ResourceOptionsGkehubV1beta.fromMap((map['resourceOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -40,10 +40,10 @@ class OrganizationConfigurationState {
 
   factory OrganizationConfigurationState.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationState(
-      autoEnableOrganizationMembers: map['autoEnableOrganizationMembers'] == null ? null : (map['autoEnableOrganizationMembers'] as String).input(),
-      datasources: map['datasources'] == null ? null : (OrganizationConfigurationDatasources.fromMap((map['datasources'] as Map).cast<String, dynamic>())).input(),
-      detectorId: map['detectorId'] == null ? null : (map['detectorId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      autoEnableOrganizationMembers: map['autoEnableOrganizationMembers'] == null ? null : ((map['autoEnableOrganizationMembers'] as String).input()).input(),
+      datasources: map['datasources'] == null ? null : ((OrganizationConfigurationDatasources.fromMap((map['datasources']! as Map).cast<String, dynamic>())).input()).input(),
+      detectorId: map['detectorId'] == null ? null : ((map['detectorId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

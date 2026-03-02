@@ -62,13 +62,13 @@ class IpsConfigState {
 
   factory IpsConfigState.fromMap(Map<String, dynamic> map) {
     return IpsConfigState(
-      basicRules: map['basicRules'] == null ? null : (map['basicRules'] as int).input(),
-      ctiRules: map['ctiRules'] == null ? null : (map['ctiRules'] as int).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      maxSdl: map['maxSdl'] == null ? null : (map['maxSdl'] as int).input(),
-      patchRules: map['patchRules'] == null ? null : (map['patchRules'] as int).input(),
-      ruleClass: map['ruleClass'] == null ? null : (map['ruleClass'] as int).input(),
-      runMode: map['runMode'] == null ? null : (map['runMode'] as int).input(),
+      basicRules: map['basicRules'] == null ? null : (map['basicRules']! as int).input(),
+      ctiRules: map['ctiRules'] == null ? null : (map['ctiRules']! as int).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      maxSdl: map['maxSdl'] == null ? null : (map['maxSdl']! as int).input(),
+      patchRules: map['patchRules'] == null ? null : (map['patchRules']! as int).input(),
+      ruleClass: map['ruleClass'] == null ? null : (map['ruleClass']! as int).input(),
+      runMode: map['runMode'] == null ? null : (map['runMode']! as int).input(),
     );
   }
 }

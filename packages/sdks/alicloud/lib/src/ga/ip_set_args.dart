@@ -47,9 +47,9 @@ class IpSetArgs {
     return IpSetArgs(
       accelerateRegionId: (map['accelerateRegionId'] as String).input(),
       acceleratorId: (map['acceleratorId'] as String).input(),
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
-      ispType: map['ispType'] == null ? null : (map['ispType'] as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as String).input(),
+      ispType: map['ispType'] == null ? null : (map['ispType']! as String).input(),
     );
   }
 }

@@ -57,13 +57,13 @@ class ConnectPeerArgs {
 
   factory ConnectPeerArgs.fromMap(Map<String, dynamic> map) {
     return ConnectPeerArgs(
-      bgpOptions: map['bgpOptions'] == null ? null : (ConnectPeerBgpOptions.fromMap((map['bgpOptions'] as Map).cast<String, dynamic>())).input(),
+      bgpOptions: map['bgpOptions'] == null ? null : ((ConnectPeerBgpOptions.fromMap((map['bgpOptions']! as Map).cast<String, dynamic>())).input()).input(),
       connectAttachmentId: (map['connectAttachmentId'] as String).input(),
-      coreNetworkAddress: map['coreNetworkAddress'] == null ? null : (map['coreNetworkAddress'] as String).input(),
-      insideCidrBlocks: map['insideCidrBlocks'] == null ? null : ((map['insideCidrBlocks'] as List).cast<String>()).input(),
+      coreNetworkAddress: map['coreNetworkAddress'] == null ? null : ((map['coreNetworkAddress'] as String).input()).input(),
+      insideCidrBlocks: map['insideCidrBlocks'] == null ? null : (((map['insideCidrBlocks'] as List).cast<String>()).input()).input(),
       peerAddress: (map['peerAddress'] as String).input(),
-      subnetArn: map['subnetArn'] == null ? null : (map['subnetArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      subnetArn: map['subnetArn'] == null ? null : ((map['subnetArn'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

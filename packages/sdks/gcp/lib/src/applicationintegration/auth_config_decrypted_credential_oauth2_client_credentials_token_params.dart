@@ -22,7 +22,7 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams {
 
   factory AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams.fromMap(Map<String, dynamic> map) {
     return AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams(
-      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry>(map['entries'], (value) => AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry>(map['entries']!, (value) => AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

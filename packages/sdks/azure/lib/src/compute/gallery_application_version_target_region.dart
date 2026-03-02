@@ -35,10 +35,10 @@ class GalleryApplicationVersionTargetRegion {
 
   factory GalleryApplicationVersionTargetRegion.fromMap(Map<String, dynamic> map) {
     return GalleryApplicationVersionTargetRegion(
-      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest'] as bool).input(),
+      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest']! as bool).input(),
       name: (map['name'] as String).input(),
       regionalReplicaCount: (map['regionalReplicaCount'] as int).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType']! as String).input(),
     );
   }
 }

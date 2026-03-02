@@ -26,8 +26,8 @@ class Location {
 
   factory Location.fromMap(Map<String, dynamic> map) {
     return Location(
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      regionName: map['regionName'] == null ? null : (map['regionName'] as String).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone']! as String).input(),
+      regionName: map['regionName'] == null ? null : (map['regionName']! as String).input(),
     );
   }
 }

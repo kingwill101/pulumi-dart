@@ -40,11 +40,11 @@ class HoneypotProbeHoneypotBindListBindPortList {
 
   factory HoneypotProbeHoneypotBindListBindPortList.fromMap(Map<String, dynamic> map) {
     return HoneypotProbeHoneypotBindListBindPortList(
-      bindPort: map['bindPort'] == null ? null : (map['bindPort'] as bool).input(),
-      endPort: map['endPort'] == null ? null : (map['endPort'] as int).input(),
-      fixed: map['fixed'] == null ? null : (map['fixed'] as bool).input(),
-      startPort: map['startPort'] == null ? null : (map['startPort'] as int).input(),
-      targetPort: map['targetPort'] == null ? null : (map['targetPort'] as int).input(),
+      bindPort: map['bindPort'] == null ? null : (map['bindPort']! as bool).input(),
+      endPort: map['endPort'] == null ? null : (map['endPort']! as int).input(),
+      fixed: map['fixed'] == null ? null : (map['fixed']! as bool).input(),
+      startPort: map['startPort'] == null ? null : (map['startPort']! as int).input(),
+      targetPort: map['targetPort'] == null ? null : (map['targetPort']! as int).input(),
     );
   }
 }

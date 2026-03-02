@@ -27,8 +27,8 @@ class DataFlowStagingInfoResponse {
 
   factory DataFlowStagingInfoResponse.fromMap(Map<String, dynamic> map) {
     return DataFlowStagingInfoResponse(
-      folderPath: map['folderPath'] == null ? null : (map['folderPath']).input(),
-      linkedService: map['linkedService'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['linkedService'] as Map).cast<String, dynamic>())).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath']!).input(),
+      linkedService: map['linkedService'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['linkedService']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -36,7 +36,7 @@ class GetWorkflowConfigArgs {
   factory GetWorkflowConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkflowConfigArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       repositoryId: (map['repositoryId'] as String).input(),
       workflowConfigId: (map['workflowConfigId'] as String).input(),
     );

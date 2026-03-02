@@ -36,10 +36,10 @@ class TrackingDataStoreResponse {
 
   factory TrackingDataStoreResponse.fromMap(Map<String, dynamic> map) {
     return TrackingDataStoreResponse(
-      dataStoreIngestionUri: map['dataStoreIngestionUri'] == null ? null : (map['dataStoreIngestionUri'] as String).input(),
-      dataStoreResourceId: map['dataStoreResourceId'] == null ? null : (map['dataStoreResourceId'] as String).input(),
-      dataStoreUri: map['dataStoreUri'] == null ? null : (map['dataStoreUri'] as String).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      dataStoreIngestionUri: map['dataStoreIngestionUri'] == null ? null : (map['dataStoreIngestionUri']! as String).input(),
+      dataStoreResourceId: map['dataStoreResourceId'] == null ? null : (map['dataStoreResourceId']! as String).input(),
+      dataStoreUri: map['dataStoreUri'] == null ? null : (map['dataStoreUri']! as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
     );
   }
 }

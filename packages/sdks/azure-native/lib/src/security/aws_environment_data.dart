@@ -39,9 +39,9 @@ class AwsEnvironmentData {
   factory AwsEnvironmentData.fromMap(Map<String, dynamic> map) {
     return AwsEnvironmentData(
       environmentType: (map['environmentType'] as String).input(),
-      organizationalData: map['organizationalData'] == null ? null : (AwsOrganizationalDataMaster.fromMap((map['organizationalData'] as Map).cast<String, dynamic>())).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
-      scanInterval: map['scanInterval'] == null ? null : (map['scanInterval'] as double).input(),
+      organizationalData: map['organizationalData'] == null ? null : (AwsOrganizationalDataMaster.fromMap((map['organizationalData']! as Map).cast<String, dynamic>())).input(),
+      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
+      scanInterval: map['scanInterval'] == null ? null : (map['scanInterval']! as double).input(),
     );
   }
 }

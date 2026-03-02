@@ -27,7 +27,7 @@ class PrivateEndpointConnectionProperties {
 
   factory PrivateEndpointConnectionProperties.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionProperties(
-      groupIds: map['groupIds'] == null ? null : ((map['groupIds'] as List).cast<String>()).input(),
+      groupIds: map['groupIds'] == null ? null : ((map['groupIds']! as List).cast<String>()).input(),
       privateLinkServiceConnectionState: (PrivateLinkServiceConnectionState.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
     );
   }

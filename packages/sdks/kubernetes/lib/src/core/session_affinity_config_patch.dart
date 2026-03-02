@@ -22,7 +22,7 @@ class SessionAffinityConfigPatch {
 
   factory SessionAffinityConfigPatch.fromMap(Map<String, dynamic> map) {
     return SessionAffinityConfigPatch(
-      clientIP: map['clientIP'] == null ? null : (ClientIPConfigPatch.fromMap((map['clientIP'] as Map).cast<String, dynamic>())).input(),
+      clientIP: map['clientIP'] == null ? null : (ClientIPConfigPatch.fromMap((map['clientIP']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

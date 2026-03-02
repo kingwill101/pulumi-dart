@@ -32,7 +32,7 @@ class GetContributorManagedInsightRulesManagedRule {
   factory GetContributorManagedInsightRulesManagedRule.fromMap(Map<String, dynamic> map) {
     return GetContributorManagedInsightRulesManagedRule(
       resourceArn: (map['resourceArn'] as String).input(),
-      ruleStates: (pulumi.Input.decodeList<GetContributorManagedInsightRulesManagedRuleRuleState>(map['ruleStates'], (value) => GetContributorManagedInsightRulesManagedRuleRuleState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleStates: (pulumi.Input.decodeList<GetContributorManagedInsightRulesManagedRuleRuleState>(map['ruleStates']!, (value) => GetContributorManagedInsightRulesManagedRuleRuleState.fromMap((value as Map).cast<String, dynamic>()))).input(),
       templateName: (map['templateName'] as String).input(),
     );
   }

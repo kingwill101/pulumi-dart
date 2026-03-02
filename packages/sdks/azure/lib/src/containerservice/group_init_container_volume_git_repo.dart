@@ -30,8 +30,8 @@ class GroupInitContainerVolumeGitRepo {
 
   factory GroupInitContainerVolumeGitRepo.fromMap(Map<String, dynamic> map) {
     return GroupInitContainerVolumeGitRepo(
-      directory: map['directory'] == null ? null : (map['directory'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as String).input(),
+      directory: map['directory'] == null ? null : (map['directory']! as String).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as String).input(),
       url: (map['url'] as String).input(),
     );
   }

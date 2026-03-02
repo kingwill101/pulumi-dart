@@ -40,10 +40,10 @@ class SecretArgs {
 
   factory SecretArgs.fromMap(Map<String, dynamic> map) {
     return SecretArgs(
-      parameters: map['parameters'] == null ? null : (AzureFirstPartyManagedCertificateParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : (AzureFirstPartyManagedCertificateParameters.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input(),
       profileName: (map['profileName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName']! as String).input(),
     );
   }
 }

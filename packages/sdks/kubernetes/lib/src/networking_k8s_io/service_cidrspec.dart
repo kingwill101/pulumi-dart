@@ -21,7 +21,7 @@ class ServiceCIDRSpec {
 
   factory ServiceCIDRSpec.fromMap(Map<String, dynamic> map) {
     return ServiceCIDRSpec(
-      cidrs: map['cidrs'] == null ? null : ((map['cidrs'] as List).cast<String>()).input(),
+      cidrs: map['cidrs'] == null ? null : ((map['cidrs']! as List).cast<String>()).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class DomainDevicesConsoleTarget {
 
   factory DomainDevicesConsoleTarget.fromMap(Map<String, dynamic> map) {
     return DomainDevicesConsoleTarget(
-      port: map['port'] == null ? null : (map['port'] as double).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      port: map['port'] == null ? null : (map['port']! as double).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

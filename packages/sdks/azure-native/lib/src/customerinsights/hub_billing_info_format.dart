@@ -31,9 +31,9 @@ class HubBillingInfoFormat {
 
   factory HubBillingInfoFormat.fromMap(Map<String, dynamic> map) {
     return HubBillingInfoFormat(
-      maxUnits: map['maxUnits'] == null ? null : (map['maxUnits'] as int).input(),
-      minUnits: map['minUnits'] == null ? null : (map['minUnits'] as int).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
+      maxUnits: map['maxUnits'] == null ? null : (map['maxUnits']! as int).input(),
+      minUnits: map['minUnits'] == null ? null : (map['minUnits']! as int).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class CxToolConnectorSpecAction {
 
   factory CxToolConnectorSpecAction.fromMap(Map<String, dynamic> map) {
     return CxToolConnectorSpecAction(
-      connectionActionId: map['connectionActionId'] == null ? null : (map['connectionActionId'] as String).input(),
-      entityOperation: map['entityOperation'] == null ? null : (CxToolConnectorSpecActionEntityOperation.fromMap((map['entityOperation'] as Map).cast<String, dynamic>())).input(),
-      inputFields: map['inputFields'] == null ? null : ((map['inputFields'] as List).cast<String>()).input(),
-      outputFields: map['outputFields'] == null ? null : ((map['outputFields'] as List).cast<String>()).input(),
+      connectionActionId: map['connectionActionId'] == null ? null : (map['connectionActionId']! as String).input(),
+      entityOperation: map['entityOperation'] == null ? null : (CxToolConnectorSpecActionEntityOperation.fromMap((map['entityOperation']! as Map).cast<String, dynamic>())).input(),
+      inputFields: map['inputFields'] == null ? null : ((map['inputFields']! as List).cast<String>()).input(),
+      outputFields: map['outputFields'] == null ? null : ((map['outputFields']! as List).cast<String>()).input(),
     );
   }
 }

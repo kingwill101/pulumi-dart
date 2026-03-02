@@ -27,8 +27,8 @@ class EncryptionConfigResponse {
 
   factory EncryptionConfigResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionConfigResponse(
-      provider: map['provider'] == null ? null : (ProviderResponse.fromMap((map['provider'] as Map).cast<String, dynamic>())).input(),
-      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
+      provider: map['provider'] == null ? null : (ProviderResponse.fromMap((map['provider']! as Map).cast<String, dynamic>())).input(),
+      resources: map['resources'] == null ? null : ((map['resources']! as List).cast<String>()).input(),
     );
   }
 }

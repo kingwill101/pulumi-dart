@@ -21,7 +21,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTem
 
   factory PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTemplateModifiedCadence.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTemplateModifiedCadence(
-      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class DeployPolicyRule {
 
   factory DeployPolicyRule.fromMap(Map<String, dynamic> map) {
     return DeployPolicyRule(
-      rolloutRestriction: map['rolloutRestriction'] == null ? null : (DeployPolicyRuleRolloutRestriction.fromMap((map['rolloutRestriction'] as Map).cast<String, dynamic>())).input(),
+      rolloutRestriction: map['rolloutRestriction'] == null ? null : (DeployPolicyRuleRolloutRestriction.fromMap((map['rolloutRestriction']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

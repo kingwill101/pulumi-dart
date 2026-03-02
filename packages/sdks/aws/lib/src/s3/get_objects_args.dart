@@ -65,14 +65,14 @@ class GetObjectsArgs {
   factory GetObjectsArgs.fromMap(Map<String, dynamic> map) {
     return GetObjectsArgs(
       bucket: (map['bucket'] as String).input(),
-      delimiter: map['delimiter'] == null ? null : (map['delimiter'] as String).input(),
-      encodingType: map['encodingType'] == null ? null : (map['encodingType'] as String).input(),
-      fetchOwner: map['fetchOwner'] == null ? null : (map['fetchOwner'] as bool).input(),
-      maxKeys: map['maxKeys'] == null ? null : (map['maxKeys'] as int).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      requestPayer: map['requestPayer'] == null ? null : (map['requestPayer'] as String).input(),
-      startAfter: map['startAfter'] == null ? null : (map['startAfter'] as String).input(),
+      delimiter: map['delimiter'] == null ? null : ((map['delimiter'] as String).input()).input(),
+      encodingType: map['encodingType'] == null ? null : ((map['encodingType'] as String).input()).input(),
+      fetchOwner: map['fetchOwner'] == null ? null : ((map['fetchOwner'] as bool).input()).input(),
+      maxKeys: map['maxKeys'] == null ? null : ((map['maxKeys'] as int).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      requestPayer: map['requestPayer'] == null ? null : ((map['requestPayer'] as String).input()).input(),
+      startAfter: map['startAfter'] == null ? null : ((map['startAfter'] as String).input()).input(),
     );
   }
 }

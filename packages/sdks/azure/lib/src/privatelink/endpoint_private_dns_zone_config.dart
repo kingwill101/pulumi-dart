@@ -36,10 +36,10 @@ class EndpointPrivateDnsZoneConfig {
 
   factory EndpointPrivateDnsZoneConfig.fromMap(Map<String, dynamic> map) {
     return EndpointPrivateDnsZoneConfig(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateDnsZoneId: map['privateDnsZoneId'] == null ? null : (map['privateDnsZoneId'] as String).input(),
-      recordSets: map['recordSets'] == null ? null : (pulumi.Input.decodeList<EndpointPrivateDnsZoneConfigRecordSet>(map['recordSets'], (value) => EndpointPrivateDnsZoneConfigRecordSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateDnsZoneId: map['privateDnsZoneId'] == null ? null : (map['privateDnsZoneId']! as String).input(),
+      recordSets: map['recordSets'] == null ? null : (pulumi.Input.decodeList<EndpointPrivateDnsZoneConfigRecordSet>(map['recordSets']!, (value) => EndpointPrivateDnsZoneConfigRecordSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -86,18 +86,18 @@ class SecretV1Args {
 
   factory SecretV1Args.fromMap(Map<String, dynamic> map) {
     return SecretV1Args(
-      acl: map['acl'] == null ? null : (SecretV1Acl.fromMap((map['acl'] as Map).cast<String, dynamic>())).input(),
-      algorithm: map['algorithm'] == null ? null : (map['algorithm'] as String).input(),
-      bitLength: map['bitLength'] == null ? null : (map['bitLength'] as int).input(),
-      expiration: map['expiration'] == null ? null : (map['expiration'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      payload: map['payload'] == null ? null : (map['payload'] as String).input(),
-      payloadContentEncoding: map['payloadContentEncoding'] == null ? null : (map['payloadContentEncoding'] as String).input(),
-      payloadContentType: map['payloadContentType'] == null ? null : (map['payloadContentType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      secretType: map['secretType'] == null ? null : (map['secretType'] as String).input(),
+      acl: map['acl'] == null ? null : (SecretV1Acl.fromMap((map['acl']! as Map).cast<String, dynamic>())).input(),
+      algorithm: map['algorithm'] == null ? null : (map['algorithm']! as String).input(),
+      bitLength: map['bitLength'] == null ? null : (map['bitLength']! as int).input(),
+      expiration: map['expiration'] == null ? null : (map['expiration']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      payload: map['payload'] == null ? null : (map['payload']! as String).input(),
+      payloadContentEncoding: map['payloadContentEncoding'] == null ? null : (map['payloadContentEncoding']! as String).input(),
+      payloadContentType: map['payloadContentType'] == null ? null : (map['payloadContentType']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      secretType: map['secretType'] == null ? null : (map['secretType']! as String).input(),
     );
   }
 }

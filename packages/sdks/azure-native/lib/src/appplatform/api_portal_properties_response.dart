@@ -69,15 +69,15 @@ class ApiPortalPropertiesResponse {
 
   factory ApiPortalPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ApiPortalPropertiesResponse(
-      apiTryOutEnabledState: map['apiTryOutEnabledState'] == null ? null : (map['apiTryOutEnabledState'] as String).input(),
-      gatewayIds: map['gatewayIds'] == null ? null : ((map['gatewayIds'] as List).cast<String>()).input(),
-      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly'] as bool).input(),
+      apiTryOutEnabledState: map['apiTryOutEnabledState'] == null ? null : (map['apiTryOutEnabledState']! as String).input(),
+      gatewayIds: map['gatewayIds'] == null ? null : ((map['gatewayIds']! as List).cast<String>()).input(),
+      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly']! as bool).input(),
       instances: (pulumi.Input.decodeList<ApiPortalInstanceResponse>(map['instances'], (value) => ApiPortalInstanceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      public: map['public'] == null ? null : (map['public'] as bool).input(),
+      public: map['public'] == null ? null : (map['public']! as bool).input(),
       resourceRequests: (ApiPortalResourceRequestsResponse.fromMap((map['resourceRequests'] as Map).cast<String, dynamic>())).input(),
-      sourceUrls: map['sourceUrls'] == null ? null : ((map['sourceUrls'] as List).cast<String>()).input(),
-      ssoProperties: map['ssoProperties'] == null ? null : (SsoPropertiesResponse.fromMap((map['ssoProperties'] as Map).cast<String, dynamic>())).input(),
+      sourceUrls: map['sourceUrls'] == null ? null : ((map['sourceUrls']! as List).cast<String>()).input(),
+      ssoProperties: map['ssoProperties'] == null ? null : (SsoPropertiesResponse.fromMap((map['ssoProperties']! as Map).cast<String, dynamic>())).input(),
       url: (map['url'] as String).input(),
     );
   }

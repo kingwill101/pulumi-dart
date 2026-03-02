@@ -36,9 +36,9 @@ class DetectorDatasources {
 
   factory DetectorDatasources.fromMap(Map<String, dynamic> map) {
     return DetectorDatasources(
-      kubernetes: map['kubernetes'] == null ? null : (DetectorDatasourcesKubernetes.fromMap((map['kubernetes'] as Map).cast<String, dynamic>())).input(),
-      malwareProtection: map['malwareProtection'] == null ? null : (DetectorDatasourcesMalwareProtection.fromMap((map['malwareProtection'] as Map).cast<String, dynamic>())).input(),
-      s3Logs: map['s3Logs'] == null ? null : (DetectorDatasourcesS3Logs.fromMap((map['s3Logs'] as Map).cast<String, dynamic>())).input(),
+      kubernetes: map['kubernetes'] == null ? null : ((DetectorDatasourcesKubernetes.fromMap((map['kubernetes']! as Map).cast<String, dynamic>())).input()).input(),
+      malwareProtection: map['malwareProtection'] == null ? null : ((DetectorDatasourcesMalwareProtection.fromMap((map['malwareProtection']! as Map).cast<String, dynamic>())).input()).input(),
+      s3Logs: map['s3Logs'] == null ? null : ((DetectorDatasourcesS3Logs.fromMap((map['s3Logs']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

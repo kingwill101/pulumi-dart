@@ -35,8 +35,8 @@ class BackendServerArgs {
 
   factory BackendServerArgs.fromMap(Map<String, dynamic> map) {
     return BackendServerArgs(
-      backendServers: map['backendServers'] == null ? null : (pulumi.Input.decodeList<BackendServerBackendServer>(map['backendServers'], (value) => BackendServerBackendServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : (map['deleteProtectionValidation'] as bool).input(),
+      backendServers: map['backendServers'] == null ? null : (pulumi.Input.decodeList<BackendServerBackendServer>(map['backendServers']!, (value) => BackendServerBackendServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : (map['deleteProtectionValidation']! as bool).input(),
       loadBalancerId: (map['loadBalancerId'] as String).input(),
     );
   }

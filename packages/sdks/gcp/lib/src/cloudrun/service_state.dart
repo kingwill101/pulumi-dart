@@ -82,14 +82,14 @@ class ServiceState {
 
   factory ServiceState.fromMap(Map<String, dynamic> map) {
     return ServiceState(
-      autogenerateRevisionName: map['autogenerateRevisionName'] == null ? null : (map['autogenerateRevisionName'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ServiceMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<ServiceStatus>(map['statuses'], (value) => ServiceStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      template: map['template'] == null ? null : (ServiceTemplate.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
-      traffics: map['traffics'] == null ? null : (pulumi.Input.decodeList<ServiceTraffic>(map['traffics'], (value) => ServiceTraffic.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autogenerateRevisionName: map['autogenerateRevisionName'] == null ? null : (map['autogenerateRevisionName']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ServiceMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<ServiceStatus>(map['statuses']!, (value) => ServiceStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      template: map['template'] == null ? null : (ServiceTemplate.fromMap((map['template']! as Map).cast<String, dynamic>())).input(),
+      traffics: map['traffics'] == null ? null : (pulumi.Input.decodeList<ServiceTraffic>(map['traffics']!, (value) => ServiceTraffic.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

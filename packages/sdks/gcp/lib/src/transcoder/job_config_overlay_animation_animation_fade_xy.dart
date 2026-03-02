@@ -25,8 +25,8 @@ class JobConfigOverlayAnimationAnimationFadeXy {
 
   factory JobConfigOverlayAnimationAnimationFadeXy.fromMap(Map<String, dynamic> map) {
     return JobConfigOverlayAnimationAnimationFadeXy(
-      x: map['x'] == null ? null : (map['x'] as double).input(),
-      y: map['y'] == null ? null : (map['y'] as double).input(),
+      x: map['x'] == null ? null : (map['x']! as double).input(),
+      y: map['y'] == null ? null : (map['y']! as double).input(),
     );
   }
 }

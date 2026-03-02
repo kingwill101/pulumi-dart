@@ -50,10 +50,10 @@ class PipelineJobMappingPipelineJob {
 
   factory PipelineJobMappingPipelineJob.fromMap(Map<String, dynamic> map) {
     return PipelineJobMappingPipelineJob(
-      fhirStoreDestination: map['fhirStoreDestination'] == null ? null : (map['fhirStoreDestination'] as String).input(),
-      fhirStreamingSource: map['fhirStreamingSource'] == null ? null : (PipelineJobMappingPipelineJobFhirStreamingSource.fromMap((map['fhirStreamingSource'] as Map).cast<String, dynamic>())).input(),
+      fhirStoreDestination: map['fhirStoreDestination'] == null ? null : (map['fhirStoreDestination']! as String).input(),
+      fhirStreamingSource: map['fhirStreamingSource'] == null ? null : (PipelineJobMappingPipelineJobFhirStreamingSource.fromMap((map['fhirStreamingSource']! as Map).cast<String, dynamic>())).input(),
       mappingConfig: (PipelineJobMappingPipelineJobMappingConfig.fromMap((map['mappingConfig'] as Map).cast<String, dynamic>())).input(),
-      reconciliationDestination: map['reconciliationDestination'] == null ? null : (map['reconciliationDestination'] as bool).input(),
+      reconciliationDestination: map['reconciliationDestination'] == null ? null : (map['reconciliationDestination']! as bool).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class GetVirtualGatewaySpecListenerTlValidationTrust {
 
   factory GetVirtualGatewaySpecListenerTlValidationTrust.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecListenerTlValidationTrust(
-      files: (pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTlValidationTrustFile>(map['files'], (value) => GetVirtualGatewaySpecListenerTlValidationTrustFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sds: (pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTlValidationTrustSd>(map['sds'], (value) => GetVirtualGatewaySpecListenerTlValidationTrustSd.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      files: (pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTlValidationTrustFile>(map['files']!, (value) => GetVirtualGatewaySpecListenerTlValidationTrustFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sds: (pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTlValidationTrustSd>(map['sds']!, (value) => GetVirtualGatewaySpecListenerTlValidationTrustSd.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

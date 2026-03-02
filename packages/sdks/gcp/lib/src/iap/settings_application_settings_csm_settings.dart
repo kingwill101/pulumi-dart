@@ -20,7 +20,7 @@ class SettingsApplicationSettingsCsmSettings {
 
   factory SettingsApplicationSettingsCsmSettings.fromMap(Map<String, dynamic> map) {
     return SettingsApplicationSettingsCsmSettings(
-      rctokenAud: map['rctokenAud'] == null ? null : (map['rctokenAud'] as String).input(),
+      rctokenAud: map['rctokenAud'] == null ? null : (map['rctokenAud']! as String).input(),
     );
   }
 }

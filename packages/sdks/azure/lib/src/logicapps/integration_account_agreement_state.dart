@@ -68,16 +68,16 @@ class IntegrationAccountAgreementState {
 
   factory IntegrationAccountAgreementState.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountAgreementState(
-      agreementType: map['agreementType'] == null ? null : (map['agreementType'] as String).input(),
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      guestIdentity: map['guestIdentity'] == null ? null : (IntegrationAccountAgreementGuestIdentity.fromMap((map['guestIdentity'] as Map).cast<String, dynamic>())).input(),
-      guestPartnerName: map['guestPartnerName'] == null ? null : (map['guestPartnerName'] as String).input(),
-      hostIdentity: map['hostIdentity'] == null ? null : (IntegrationAccountAgreementHostIdentity.fromMap((map['hostIdentity'] as Map).cast<String, dynamic>())).input(),
-      hostPartnerName: map['hostPartnerName'] == null ? null : (map['hostPartnerName'] as String).input(),
-      integrationAccountName: map['integrationAccountName'] == null ? null : (map['integrationAccountName'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      agreementType: map['agreementType'] == null ? null : (map['agreementType']! as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      guestIdentity: map['guestIdentity'] == null ? null : (IntegrationAccountAgreementGuestIdentity.fromMap((map['guestIdentity']! as Map).cast<String, dynamic>())).input(),
+      guestPartnerName: map['guestPartnerName'] == null ? null : (map['guestPartnerName']! as String).input(),
+      hostIdentity: map['hostIdentity'] == null ? null : (IntegrationAccountAgreementHostIdentity.fromMap((map['hostIdentity']! as Map).cast<String, dynamic>())).input(),
+      hostPartnerName: map['hostPartnerName'] == null ? null : (map['hostPartnerName']! as String).input(),
+      integrationAccountName: map['integrationAccountName'] == null ? null : (map['integrationAccountName']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

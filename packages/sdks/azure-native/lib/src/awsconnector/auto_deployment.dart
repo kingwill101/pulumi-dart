@@ -26,8 +26,8 @@ class AutoDeployment {
 
   factory AutoDeployment.fromMap(Map<String, dynamic> map) {
     return AutoDeployment(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      retainStacksOnAccountRemoval: map['retainStacksOnAccountRemoval'] == null ? null : (map['retainStacksOnAccountRemoval'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      retainStacksOnAccountRemoval: map['retainStacksOnAccountRemoval'] == null ? null : (map['retainStacksOnAccountRemoval']! as bool).input(),
     );
   }
 }

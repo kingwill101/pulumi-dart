@@ -34,8 +34,8 @@ class SshKeyArgs {
 
   factory SshKeyArgs.fromMap(Map<String, dynamic> map) {
     return SshKeyArgs(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       publicKey: (map['publicKey'] as String).input(),
     );
   }

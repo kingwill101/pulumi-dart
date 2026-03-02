@@ -30,9 +30,9 @@ class BackendAddressPoolAddressInboundNatRulePortMapping {
 
   factory BackendAddressPoolAddressInboundNatRulePortMapping.fromMap(Map<String, dynamic> map) {
     return BackendAddressPoolAddressInboundNatRulePortMapping(
-      backendPort: map['backendPort'] == null ? null : (map['backendPort'] as int).input(),
-      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort'] as int).input(),
-      inboundNatRuleName: map['inboundNatRuleName'] == null ? null : (map['inboundNatRuleName'] as String).input(),
+      backendPort: map['backendPort'] == null ? null : (map['backendPort']! as int).input(),
+      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort']! as int).input(),
+      inboundNatRuleName: map['inboundNatRuleName'] == null ? null : (map['inboundNatRuleName']! as String).input(),
     );
   }
 }

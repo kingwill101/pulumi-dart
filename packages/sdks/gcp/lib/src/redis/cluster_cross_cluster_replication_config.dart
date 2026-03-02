@@ -53,11 +53,11 @@ class ClusterCrossClusterReplicationConfig {
 
   factory ClusterCrossClusterReplicationConfig.fromMap(Map<String, dynamic> map) {
     return ClusterCrossClusterReplicationConfig(
-      clusterRole: map['clusterRole'] == null ? null : (map['clusterRole'] as String).input(),
-      memberships: map['memberships'] == null ? null : (pulumi.Input.decodeList<ClusterCrossClusterReplicationConfigMembership>(map['memberships'], (value) => ClusterCrossClusterReplicationConfigMembership.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      primaryCluster: map['primaryCluster'] == null ? null : (ClusterCrossClusterReplicationConfigPrimaryCluster.fromMap((map['primaryCluster'] as Map).cast<String, dynamic>())).input(),
-      secondaryClusters: map['secondaryClusters'] == null ? null : (pulumi.Input.decodeList<ClusterCrossClusterReplicationConfigSecondaryCluster>(map['secondaryClusters'], (value) => ClusterCrossClusterReplicationConfigSecondaryCluster.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      clusterRole: map['clusterRole'] == null ? null : (map['clusterRole']! as String).input(),
+      memberships: map['memberships'] == null ? null : (pulumi.Input.decodeList<ClusterCrossClusterReplicationConfigMembership>(map['memberships']!, (value) => ClusterCrossClusterReplicationConfigMembership.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      primaryCluster: map['primaryCluster'] == null ? null : (ClusterCrossClusterReplicationConfigPrimaryCluster.fromMap((map['primaryCluster']! as Map).cast<String, dynamic>())).input(),
+      secondaryClusters: map['secondaryClusters'] == null ? null : (pulumi.Input.decodeList<ClusterCrossClusterReplicationConfigSecondaryCluster>(map['secondaryClusters']!, (value) => ClusterCrossClusterReplicationConfigSecondaryCluster.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

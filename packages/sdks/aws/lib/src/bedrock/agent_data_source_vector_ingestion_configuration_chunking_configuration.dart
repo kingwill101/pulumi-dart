@@ -39,9 +39,9 @@ class AgentDataSourceVectorIngestionConfigurationChunkingConfiguration {
   factory AgentDataSourceVectorIngestionConfigurationChunkingConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationChunkingConfiguration(
       chunkingStrategy: (map['chunkingStrategy'] as String).input(),
-      fixedSizeChunkingConfiguration: map['fixedSizeChunkingConfiguration'] == null ? null : (AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration.fromMap((map['fixedSizeChunkingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      hierarchicalChunkingConfiguration: map['hierarchicalChunkingConfiguration'] == null ? null : (AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration.fromMap((map['hierarchicalChunkingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      semanticChunkingConfiguration: map['semanticChunkingConfiguration'] == null ? null : (AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration.fromMap((map['semanticChunkingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      fixedSizeChunkingConfiguration: map['fixedSizeChunkingConfiguration'] == null ? null : ((AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration.fromMap((map['fixedSizeChunkingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      hierarchicalChunkingConfiguration: map['hierarchicalChunkingConfiguration'] == null ? null : ((AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration.fromMap((map['hierarchicalChunkingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      semanticChunkingConfiguration: map['semanticChunkingConfiguration'] == null ? null : ((AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration.fromMap((map['semanticChunkingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

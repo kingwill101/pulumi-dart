@@ -37,10 +37,10 @@ class StoreIndexFieldSearchJsonKey {
 
   factory StoreIndexFieldSearchJsonKey.fromMap(Map<String, dynamic> map) {
     return StoreIndexFieldSearchJsonKey(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      docValue: map['docValue'] == null ? null : (map['docValue'] as bool).input(),
+      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
+      docValue: map['docValue'] == null ? null : (map['docValue']! as bool).input(),
       name: (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

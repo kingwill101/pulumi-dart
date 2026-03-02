@@ -21,7 +21,7 @@ class EventResponse {
 
   factory EventResponse.fromMap(Map<String, dynamic> map) {
     return EventResponse(
-      eventName: map['eventName'] == null ? null : (map['eventName'] as String).input(),
+      eventName: map['eventName'] == null ? null : (map['eventName']! as String).input(),
     );
   }
 }

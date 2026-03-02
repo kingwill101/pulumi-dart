@@ -55,12 +55,12 @@ class CredentialServicePrincipalArgs {
 
   factory CredentialServicePrincipalArgs.fromMap(Map<String, dynamic> map) {
     return CredentialServicePrincipalArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
       dataFactoryId: (map['dataFactoryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       servicePrincipalId: (map['servicePrincipalId'] as String).input(),
-      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (CredentialServicePrincipalServicePrincipalKey.fromMap((map['servicePrincipalKey'] as Map).cast<String, dynamic>())).input(),
+      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (CredentialServicePrincipalServicePrincipalKey.fromMap((map['servicePrincipalKey']! as Map).cast<String, dynamic>())).input(),
       tenantId: (map['tenantId'] as String).input(),
     );
   }

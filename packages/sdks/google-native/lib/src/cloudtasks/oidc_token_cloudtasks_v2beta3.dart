@@ -26,8 +26,8 @@ class OidcTokenCloudtasksV2beta3 {
 
   factory OidcTokenCloudtasksV2beta3.fromMap(Map<String, dynamic> map) {
     return OidcTokenCloudtasksV2beta3(
-      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
+      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
     );
   }
 }

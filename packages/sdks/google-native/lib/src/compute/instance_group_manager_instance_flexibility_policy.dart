@@ -25,8 +25,8 @@ class InstanceGroupManagerInstanceFlexibilityPolicy {
 
   factory InstanceGroupManagerInstanceFlexibilityPolicy.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerInstanceFlexibilityPolicy(
-      instanceSelectionLists: map['instanceSelectionLists'] == null ? null : ((map['instanceSelectionLists'] as Map).cast<String, String>()).input(),
-      instanceSelections: map['instanceSelections'] == null ? null : ((map['instanceSelections'] as Map).cast<String, String>()).input(),
+      instanceSelectionLists: map['instanceSelectionLists'] == null ? null : ((map['instanceSelectionLists']! as Map).cast<String, String>()).input(),
+      instanceSelections: map['instanceSelections'] == null ? null : ((map['instanceSelections']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -97,21 +97,21 @@ class DataProductState {
 
   factory DataProductState.fromMap(Map<String, dynamic> map) {
     return DataProductState(
-      accessGroups: map['accessGroups'] == null ? null : (pulumi.Input.decodeList<DataProductAccessGroup>(map['accessGroups'], (value) => DataProductAccessGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      assetCount: map['assetCount'] == null ? null : (map['assetCount'] as int).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dataProductId: map['dataProductId'] == null ? null : (map['dataProductId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      ownerEmails: map['ownerEmails'] == null ? null : ((map['ownerEmails'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      accessGroups: map['accessGroups'] == null ? null : (pulumi.Input.decodeList<DataProductAccessGroup>(map['accessGroups']!, (value) => DataProductAccessGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      assetCount: map['assetCount'] == null ? null : (map['assetCount']! as int).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dataProductId: map['dataProductId'] == null ? null : (map['dataProductId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      ownerEmails: map['ownerEmails'] == null ? null : ((map['ownerEmails']! as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

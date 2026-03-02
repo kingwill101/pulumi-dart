@@ -26,7 +26,7 @@ class AccessReviewReviewerResponse {
 
   factory AccessReviewReviewerResponse.fromMap(Map<String, dynamic> map) {
     return AccessReviewReviewerResponse(
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
       principalType: (map['principalType'] as String).input(),
     );
   }

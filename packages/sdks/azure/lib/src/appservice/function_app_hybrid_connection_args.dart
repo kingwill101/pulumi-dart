@@ -48,7 +48,7 @@ class FunctionAppHybridConnectionArgs {
       hostname: (map['hostname'] as String).input(),
       port: (map['port'] as int).input(),
       relayId: (map['relayId'] as String).input(),
-      sendKeyName: map['sendKeyName'] == null ? null : (map['sendKeyName'] as String).input(),
+      sendKeyName: map['sendKeyName'] == null ? null : (map['sendKeyName']! as String).input(),
     );
   }
 }

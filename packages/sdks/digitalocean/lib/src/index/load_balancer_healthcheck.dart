@@ -50,13 +50,13 @@ class LoadBalancerHealthcheck {
 
   factory LoadBalancerHealthcheck.fromMap(Map<String, dynamic> map) {
     return LoadBalancerHealthcheck(
-      checkIntervalSeconds: map['checkIntervalSeconds'] == null ? null : (map['checkIntervalSeconds'] as int).input(),
-      healthyThreshold: map['healthyThreshold'] == null ? null : (map['healthyThreshold'] as int).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      checkIntervalSeconds: map['checkIntervalSeconds'] == null ? null : (map['checkIntervalSeconds']! as int).input(),
+      healthyThreshold: map['healthyThreshold'] == null ? null : (map['healthyThreshold']! as int).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
       port: (map['port'] as int).input(),
       protocol: (map['protocol'] as String).input(),
-      responseTimeoutSeconds: map['responseTimeoutSeconds'] == null ? null : (map['responseTimeoutSeconds'] as int).input(),
-      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : (map['unhealthyThreshold'] as int).input(),
+      responseTimeoutSeconds: map['responseTimeoutSeconds'] == null ? null : (map['responseTimeoutSeconds']! as int).input(),
+      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : (map['unhealthyThreshold']! as int).input(),
     );
   }
 }

@@ -29,13 +29,13 @@ containers:
         network: network.selfLink,
         allows: [
           gcp.compute.FirewallAllow(
-            protocol: 'tcp',
-            ports: ['22'],
-          ).output(),
+            protocol: 'tcp'.output(),
+            ports: ['22'].output(),
+          ),
           gcp.compute.FirewallAllow(
-            protocol: 'tcp',
-            ports: ['80'],
-          ).output(),
+            protocol: 'tcp'.output(),
+            ports: ['80'].output(),
+          ),
         ].output(),
       ),
     );
@@ -44,23 +44,23 @@ containers:
     final instance = gcp.compute.Instance(
       'poc',
       args: gcp.compute.InstanceArgs(
-        machineType: 'f1-micro',
+        machineType: 'f1-micro'.output(),
         bootDisk: gcp.compute.InstanceBootDisk(
           initializeParams: gcp.compute.InstanceBootDiskInitializeParams(
-            image: 'ubuntu-os-cloud/ubuntu-1804-bionic-v20200414',
+            image: 'ubuntu-os-cloud/ubuntu-1804-bionic-v20200414'.output(),
           ).output(),
         ).output(),
         networkInterfaces: [
           gcp.compute.InstanceNetworkInterface(
             network: network.id,
-            accessConfigs: [
-              gcp.compute.InstanceNetworkInterfaceAccessConfig(
-                natIp: instanceAddress.address,
-              ).output(),
-            ].output(),
-          ).output(),
+          accessConfigs: [
+            gcp.compute.InstanceNetworkInterfaceAccessConfig(
+              natIp: instanceAddress.address,
+              ),
+          ].output(),
+          ),
         ].output(),
-        metadataStartupScript: script,
+        metadataStartupScript: script.output(),
       ),
     );
 
@@ -68,11 +68,11 @@ containers:
     final containerInstance = gcp.compute.Instance(
       'poc-container-instance',
       args: gcp.compute.InstanceArgs(
-        machineType: 'f1-micro',
+        machineType: 'f1-micro'.output(),
         bootDisk: gcp.compute.InstanceBootDisk(
           initializeParams: gcp.compute.InstanceBootDiskInitializeParams(
-            image: 'cos-cloud/cos-stable-81-12871-69-0',
-          ),
+            image: 'cos-cloud/cos-stable-81-12871-69-0'.output(),
+          ).output(),
         ).output(),
         metadata: {
           'gce-container-declaration': containerInstanceMetadataScript,
@@ -80,15 +80,15 @@ containers:
         networkInterfaces: [
           gcp.compute.InstanceNetworkInterface(
             network: network.id,
-            accessConfigs: [
-              gcp.compute.InstanceNetworkInterfaceAccessConfig(
-                natIp: containerInstanceAddress.address,
-              ).output(),
-            ].output(),
-          ).output(),
+          accessConfigs: [
+            gcp.compute.InstanceNetworkInterfaceAccessConfig(
+              natIp: containerInstanceAddress.address,
+              ),
+          ].output(),
+          ),
         ].output(),
         serviceAccount: gcp.compute.InstanceServiceAccount(
-          email: 'default',
+          email: 'default'.output(),
           scopes: [
             'https://www.googleapis.com/auth/devstorage.read_only',
             'https://www.googleapis.com/auth/logging.write',
@@ -96,7 +96,7 @@ containers:
             'https://www.googleapis.com/auth/service.management.readonly',
             'https://www.googleapis.com/auth/servicecontrol',
             'https://www.googleapis.com/auth/trace.append',
-          ],
+          ].output(),
         ).output(),
       ),
     );

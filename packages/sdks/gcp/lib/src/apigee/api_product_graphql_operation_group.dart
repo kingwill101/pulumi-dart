@@ -28,8 +28,8 @@ class ApiProductGraphqlOperationGroup {
 
   factory ApiProductGraphqlOperationGroup.fromMap(Map<String, dynamic> map) {
     return ApiProductGraphqlOperationGroup(
-      operationConfigType: map['operationConfigType'] == null ? null : (map['operationConfigType'] as String).input(),
-      operationConfigs: map['operationConfigs'] == null ? null : (pulumi.Input.decodeList<ApiProductGraphqlOperationGroupOperationConfig>(map['operationConfigs'], (value) => ApiProductGraphqlOperationGroupOperationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      operationConfigType: map['operationConfigType'] == null ? null : (map['operationConfigType']! as String).input(),
+      operationConfigs: map['operationConfigs'] == null ? null : (pulumi.Input.decodeList<ApiProductGraphqlOperationGroupOperationConfig>(map['operationConfigs']!, (value) => ApiProductGraphqlOperationGroupOperationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

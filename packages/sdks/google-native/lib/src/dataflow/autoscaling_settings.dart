@@ -27,8 +27,8 @@ class AutoscalingSettings {
 
   factory AutoscalingSettings.fromMap(Map<String, dynamic> map) {
     return AutoscalingSettings(
-      algorithm: map['algorithm'] == null ? null : (AutoscalingSettingsAlgorithm.fromValue(map['algorithm'] as String)).input(),
-      maxNumWorkers: map['maxNumWorkers'] == null ? null : (map['maxNumWorkers'] as int).input(),
+      algorithm: map['algorithm'] == null ? null : (AutoscalingSettingsAlgorithm.fromValue(map['algorithm']! as String)).input(),
+      maxNumWorkers: map['maxNumWorkers'] == null ? null : (map['maxNumWorkers']! as int).input(),
     );
   }
 }

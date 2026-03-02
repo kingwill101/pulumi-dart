@@ -21,7 +21,7 @@ class VirtualApplianceNetworkInterfaceConfigurationPropertiesResponse {
 
   factory VirtualApplianceNetworkInterfaceConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VirtualApplianceNetworkInterfaceConfigurationPropertiesResponse(
-      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<VirtualApplianceIPConfigurationResponse>(map['ipConfigurations'], (value) => VirtualApplianceIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<VirtualApplianceIPConfigurationResponse>(map['ipConfigurations']!, (value) => VirtualApplianceIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

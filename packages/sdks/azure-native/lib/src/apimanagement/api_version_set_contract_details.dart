@@ -46,12 +46,12 @@ class ApiVersionSetContractDetails {
 
   factory ApiVersionSetContractDetails.fromMap(Map<String, dynamic> map) {
     return ApiVersionSetContractDetails(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      versionHeaderName: map['versionHeaderName'] == null ? null : (map['versionHeaderName'] as String).input(),
-      versionQueryName: map['versionQueryName'] == null ? null : (map['versionQueryName'] as String).input(),
-      versioningScheme: map['versioningScheme'] == null ? null : (map['versioningScheme'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      versionHeaderName: map['versionHeaderName'] == null ? null : (map['versionHeaderName']! as String).input(),
+      versionQueryName: map['versionQueryName'] == null ? null : (map['versionQueryName']! as String).input(),
+      versioningScheme: map['versioningScheme'] == null ? null : (map['versioningScheme']! as String).input(),
     );
   }
 }

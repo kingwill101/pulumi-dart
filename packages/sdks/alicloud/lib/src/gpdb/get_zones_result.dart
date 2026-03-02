@@ -42,8 +42,8 @@ class GetZonesResult {
     return GetZonesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      multi: map['multi'] == null ? null : map['multi'] as bool,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      multi: map['multi'] == null ? null : map['multi']! as bool,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       zones: pulumi.Input.decodeList<GetZonesZone>(map['zones'], (value) => GetZonesZone.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

@@ -27,8 +27,8 @@ class AuthzPolicyHttpRuleToOperationHeaderSetHeader {
 
   factory AuthzPolicyHttpRuleToOperationHeaderSetHeader.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyHttpRuleToOperationHeaderSetHeader(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      value: map['value'] == null ? null : (AuthzPolicyHttpRuleToOperationHeaderSetHeaderValue.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      value: map['value'] == null ? null : (AuthzPolicyHttpRuleToOperationHeaderSetHeaderValue.fromMap((map['value']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

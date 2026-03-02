@@ -46,12 +46,12 @@ class MedtechServiceFhirDestinationState {
 
   factory MedtechServiceFhirDestinationState.fromMap(Map<String, dynamic> map) {
     return MedtechServiceFhirDestinationState(
-      destinationFhirMappingJson: map['destinationFhirMappingJson'] == null ? null : (map['destinationFhirMappingJson'] as String).input(),
-      destinationFhirServiceId: map['destinationFhirServiceId'] == null ? null : (map['destinationFhirServiceId'] as String).input(),
-      destinationIdentityResolutionType: map['destinationIdentityResolutionType'] == null ? null : (map['destinationIdentityResolutionType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      medtechServiceId: map['medtechServiceId'] == null ? null : (map['medtechServiceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      destinationFhirMappingJson: map['destinationFhirMappingJson'] == null ? null : (map['destinationFhirMappingJson']! as String).input(),
+      destinationFhirServiceId: map['destinationFhirServiceId'] == null ? null : (map['destinationFhirServiceId']! as String).input(),
+      destinationIdentityResolutionType: map['destinationIdentityResolutionType'] == null ? null : (map['destinationIdentityResolutionType']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      medtechServiceId: map['medtechServiceId'] == null ? null : (map['medtechServiceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

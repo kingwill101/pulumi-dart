@@ -29,8 +29,8 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig {
 
   factory ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig.fromMap(Map<String, dynamic> map) {
     return ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig(
-      gkeClusterTarget: map['gkeClusterTarget'] == null ? null : (map['gkeClusterTarget'] as String).input(),
-      nodePoolTargets: map['nodePoolTargets'] == null ? null : (pulumi.Input.decodeList<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget>(map['nodePoolTargets'], (value) => ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gkeClusterTarget: map['gkeClusterTarget'] == null ? null : (map['gkeClusterTarget']! as String).input(),
+      nodePoolTargets: map['nodePoolTargets'] == null ? null : (pulumi.Input.decodeList<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget>(map['nodePoolTargets']!, (value) => ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ResponsePolicyRuleLocalData {
 
   factory ResponsePolicyRuleLocalData.fromMap(Map<String, dynamic> map) {
     return ResponsePolicyRuleLocalData(
-      localDatas: map['localDatas'] == null ? null : (pulumi.Input.decodeList<ResourceRecordSet>(map['localDatas'], (value) => ResourceRecordSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      localDatas: map['localDatas'] == null ? null : (pulumi.Input.decodeList<ResourceRecordSet>(map['localDatas']!, (value) => ResourceRecordSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

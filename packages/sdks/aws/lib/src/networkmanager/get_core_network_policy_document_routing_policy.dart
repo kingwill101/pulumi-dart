@@ -41,11 +41,11 @@ class GetCoreNetworkPolicyDocumentRoutingPolicy {
 
   factory GetCoreNetworkPolicyDocumentRoutingPolicy.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentRoutingPolicy(
-      routingPolicyDescription: map['routingPolicyDescription'] == null ? null : (map['routingPolicyDescription'] as String).input(),
+      routingPolicyDescription: map['routingPolicyDescription'] == null ? null : ((map['routingPolicyDescription'] as String).input()).input(),
       routingPolicyDirection: (map['routingPolicyDirection'] as String).input(),
       routingPolicyName: (map['routingPolicyName'] as String).input(),
       routingPolicyNumber: (map['routingPolicyNumber'] as int).input(),
-      routingPolicyRules: (pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule>(map['routingPolicyRules'], (value) => GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routingPolicyRules: (pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule>(map['routingPolicyRules']!, (value) => GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

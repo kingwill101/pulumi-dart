@@ -25,8 +25,8 @@ class VirtualNetworksPropertiesVipPool {
 
   factory VirtualNetworksPropertiesVipPool.fromMap(Map<String, dynamic> map) {
     return VirtualNetworksPropertiesVipPool(
-      endIP: map['endIP'] == null ? null : (map['endIP'] as String).input(),
-      startIP: map['startIP'] == null ? null : (map['startIP'] as String).input(),
+      endIP: map['endIP'] == null ? null : (map['endIP']! as String).input(),
+      startIP: map['startIP'] == null ? null : (map['startIP']! as String).input(),
     );
   }
 }

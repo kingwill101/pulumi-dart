@@ -41,8 +41,8 @@ class AccessBoundaryPolicyArgs {
 
   factory AccessBoundaryPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AccessBoundaryPolicyArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       parent: (map['parent'] as String).input(),
       rules: (pulumi.Input.decodeList<AccessBoundaryPolicyRule>(map['rules'], (value) => AccessBoundaryPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );

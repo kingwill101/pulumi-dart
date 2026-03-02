@@ -27,7 +27,7 @@ class GetTargetTcpProxyArgs {
 
   factory GetTargetTcpProxyArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetTcpProxyArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       targetTcpProxy: (map['targetTcpProxy'] as String).input(),
     );
   }

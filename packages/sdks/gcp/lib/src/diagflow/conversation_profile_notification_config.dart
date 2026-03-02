@@ -26,8 +26,8 @@ class ConversationProfileNotificationConfig {
 
   factory ConversationProfileNotificationConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileNotificationConfig(
-      messageFormat: map['messageFormat'] == null ? null : (map['messageFormat'] as String).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      messageFormat: map['messageFormat'] == null ? null : (map['messageFormat']! as String).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

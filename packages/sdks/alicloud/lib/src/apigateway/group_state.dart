@@ -57,14 +57,14 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      basePath: map['basePath'] == null ? null : (map['basePath'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      subDomain: map['subDomain'] == null ? null : (map['subDomain'] as String).input(),
-      userLogConfig: map['userLogConfig'] == null ? null : (GroupUserLogConfig.fromMap((map['userLogConfig'] as Map).cast<String, dynamic>())).input(),
-      vpcDomain: map['vpcDomain'] == null ? null : (map['vpcDomain'] as String).input(),
-      vpcIntranetEnable: map['vpcIntranetEnable'] == null ? null : (map['vpcIntranetEnable'] as bool).input(),
+      basePath: map['basePath'] == null ? null : (map['basePath']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      subDomain: map['subDomain'] == null ? null : (map['subDomain']! as String).input(),
+      userLogConfig: map['userLogConfig'] == null ? null : (GroupUserLogConfig.fromMap((map['userLogConfig']! as Map).cast<String, dynamic>())).input(),
+      vpcDomain: map['vpcDomain'] == null ? null : (map['vpcDomain']! as String).input(),
+      vpcIntranetEnable: map['vpcIntranetEnable'] == null ? null : (map['vpcIntranetEnable']! as bool).input(),
     );
   }
 }

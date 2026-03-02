@@ -64,15 +64,15 @@ class LbCertificateState {
 
   factory LbCertificateState.fromMap(Map<String, dynamic> map) {
     return LbCertificateState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      domainValidationRecords: map['domainValidationRecords'] == null ? null : (pulumi.Input.decodeList<LbCertificateDomainValidationRecord>(map['domainValidationRecords'], (value) => LbCertificateDomainValidationRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lbName: map['lbName'] == null ? null : (map['lbName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : ((map['subjectAlternativeNames'] as List).cast<String>()).input(),
-      supportCode: map['supportCode'] == null ? null : (map['supportCode'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      domainValidationRecords: map['domainValidationRecords'] == null ? null : ((pulumi.Input.decodeList<LbCertificateDomainValidationRecord>(map['domainValidationRecords']!, (value) => LbCertificateDomainValidationRecord.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      lbName: map['lbName'] == null ? null : ((map['lbName'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : (((map['subjectAlternativeNames'] as List).cast<String>()).input()).input(),
+      supportCode: map['supportCode'] == null ? null : ((map['supportCode'] as String).input()).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class ListLocalRulestackSecurityServicesResult {
 
   factory ListLocalRulestackSecurityServicesResult.fromMap(Map<String, dynamic> map) {
     return ListLocalRulestackSecurityServicesResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
       value: SecurityServicesTypeListResponse.fromMap((map['value'] as Map).cast<String, dynamic>()),
     );
   }

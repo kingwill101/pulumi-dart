@@ -49,7 +49,7 @@ class RegistryComponentVersionArgs {
       componentVersionProperties: (map['componentVersionProperties'] as ComponentVersionMachinelearningservices).input(),
       registryName: (map['registryName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

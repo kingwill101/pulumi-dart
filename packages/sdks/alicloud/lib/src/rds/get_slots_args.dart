@@ -35,8 +35,8 @@ class GetSlotsArgs {
   factory GetSlotsArgs.fromMap(Map<String, dynamic> map) {
     return GetSlotsArgs(
       dbInstanceId: (map['dbInstanceId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
     );
   }
 }

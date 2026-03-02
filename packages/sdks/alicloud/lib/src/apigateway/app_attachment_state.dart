@@ -36,10 +36,10 @@ class AppAttachmentState {
 
   factory AppAttachmentState.fromMap(Map<String, dynamic> map) {
     return AppAttachmentState(
-      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      stageName: map['stageName'] == null ? null : (map['stageName'] as String).input(),
+      apiId: map['apiId'] == null ? null : (map['apiId']! as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      stageName: map['stageName'] == null ? null : (map['stageName']! as String).input(),
     );
   }
 }

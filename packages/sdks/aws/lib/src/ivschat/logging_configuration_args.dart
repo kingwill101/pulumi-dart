@@ -40,10 +40,10 @@ class LoggingConfigurationArgs {
 
   factory LoggingConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return LoggingConfigurationArgs(
-      destinationConfiguration: map['destinationConfiguration'] == null ? null : (LoggingConfigurationDestinationConfiguration.fromMap((map['destinationConfiguration'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      destinationConfiguration: map['destinationConfiguration'] == null ? null : ((LoggingConfigurationDestinationConfiguration.fromMap((map['destinationConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

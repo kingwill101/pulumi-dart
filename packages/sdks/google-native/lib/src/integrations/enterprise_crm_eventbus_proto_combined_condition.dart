@@ -22,7 +22,7 @@ class EnterpriseCrmEventbusProtoCombinedCondition {
 
   factory EnterpriseCrmEventbusProtoCombinedCondition.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoCombinedCondition(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<EnterpriseCrmEventbusProtoCondition>(map['conditions'], (value) => EnterpriseCrmEventbusProtoCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<EnterpriseCrmEventbusProtoCondition>(map['conditions']!, (value) => EnterpriseCrmEventbusProtoCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

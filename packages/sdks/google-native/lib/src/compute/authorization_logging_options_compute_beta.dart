@@ -22,7 +22,7 @@ class AuthorizationLoggingOptionsComputeBeta {
 
   factory AuthorizationLoggingOptionsComputeBeta.fromMap(Map<String, dynamic> map) {
     return AuthorizationLoggingOptionsComputeBeta(
-      permissionType: map['permissionType'] == null ? null : (AuthorizationLoggingOptionsPermissionTypeComputeBeta.fromValue(map['permissionType'] as String)).input(),
+      permissionType: map['permissionType'] == null ? null : (AuthorizationLoggingOptionsPermissionTypeComputeBeta.fromValue(map['permissionType']! as String)).input(),
     );
   }
 }

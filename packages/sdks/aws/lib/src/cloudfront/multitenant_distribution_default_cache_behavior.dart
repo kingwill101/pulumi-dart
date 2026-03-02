@@ -79,17 +79,17 @@ class MultitenantDistributionDefaultCacheBehavior {
 
   factory MultitenantDistributionDefaultCacheBehavior.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionDefaultCacheBehavior(
-      allowedMethods: (MultitenantDistributionDefaultCacheBehaviorAllowedMethods.fromMap((map['allowedMethods'] as Map).cast<String, dynamic>())).input(),
-      cachePolicyId: map['cachePolicyId'] == null ? null : (map['cachePolicyId'] as String).input(),
-      compress: map['compress'] == null ? null : (map['compress'] as bool).input(),
-      fieldLevelEncryptionId: map['fieldLevelEncryptionId'] == null ? null : (map['fieldLevelEncryptionId'] as String).input(),
-      functionAssociations: map['functionAssociations'] == null ? null : (pulumi.Input.decodeList<MultitenantDistributionDefaultCacheBehaviorFunctionAssociation>(map['functionAssociations'], (value) => MultitenantDistributionDefaultCacheBehaviorFunctionAssociation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lambdaFunctionAssociations: map['lambdaFunctionAssociations'] == null ? null : (pulumi.Input.decodeList<MultitenantDistributionDefaultCacheBehaviorLambdaFunctionAssociation>(map['lambdaFunctionAssociations'], (value) => MultitenantDistributionDefaultCacheBehaviorLambdaFunctionAssociation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      originRequestPolicyId: map['originRequestPolicyId'] == null ? null : (map['originRequestPolicyId'] as String).input(),
-      realtimeLogConfigArn: map['realtimeLogConfigArn'] == null ? null : (map['realtimeLogConfigArn'] as String).input(),
-      responseHeadersPolicyId: map['responseHeadersPolicyId'] == null ? null : (map['responseHeadersPolicyId'] as String).input(),
+      allowedMethods: (MultitenantDistributionDefaultCacheBehaviorAllowedMethods.fromMap((map['allowedMethods']! as Map).cast<String, dynamic>())).input(),
+      cachePolicyId: map['cachePolicyId'] == null ? null : ((map['cachePolicyId'] as String).input()).input(),
+      compress: map['compress'] == null ? null : ((map['compress'] as bool).input()).input(),
+      fieldLevelEncryptionId: map['fieldLevelEncryptionId'] == null ? null : ((map['fieldLevelEncryptionId'] as String).input()).input(),
+      functionAssociations: map['functionAssociations'] == null ? null : ((pulumi.Input.decodeList<MultitenantDistributionDefaultCacheBehaviorFunctionAssociation>(map['functionAssociations']!, (value) => MultitenantDistributionDefaultCacheBehaviorFunctionAssociation.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      lambdaFunctionAssociations: map['lambdaFunctionAssociations'] == null ? null : ((pulumi.Input.decodeList<MultitenantDistributionDefaultCacheBehaviorLambdaFunctionAssociation>(map['lambdaFunctionAssociations']!, (value) => MultitenantDistributionDefaultCacheBehaviorLambdaFunctionAssociation.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      originRequestPolicyId: map['originRequestPolicyId'] == null ? null : ((map['originRequestPolicyId'] as String).input()).input(),
+      realtimeLogConfigArn: map['realtimeLogConfigArn'] == null ? null : ((map['realtimeLogConfigArn'] as String).input()).input(),
+      responseHeadersPolicyId: map['responseHeadersPolicyId'] == null ? null : ((map['responseHeadersPolicyId'] as String).input()).input(),
       targetOriginId: (map['targetOriginId'] as String).input(),
-      trustedKeyGroups: map['trustedKeyGroups'] == null ? null : (MultitenantDistributionDefaultCacheBehaviorTrustedKeyGroups.fromMap((map['trustedKeyGroups'] as Map).cast<String, dynamic>())).input(),
+      trustedKeyGroups: map['trustedKeyGroups'] == null ? null : ((MultitenantDistributionDefaultCacheBehaviorTrustedKeyGroups.fromMap((map['trustedKeyGroups']! as Map).cast<String, dynamic>())).input()).input(),
       viewerProtocolPolicy: (map['viewerProtocolPolicy'] as String).input(),
     );
   }

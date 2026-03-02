@@ -71,18 +71,18 @@ class GetProductsResult {
 
   factory GetProductsResult.fromMap(Map<String, dynamic> map) {
     return GetProductsResult(
-      categoryId: map['categoryId'] == null ? null : map['categoryId'] as String,
+      categoryId: map['categoryId'] == null ? null : map['categoryId']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      productType: map['productType'] == null ? null : map['productType'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      productType: map['productType'] == null ? null : map['productType']! as String,
       products: pulumi.Input.decodeList<GetProductsProduct>(map['products'], (value) => GetProductsProduct.fromMap((value as Map).cast<String, dynamic>())),
-      searchTerm: map['searchTerm'] == null ? null : map['searchTerm'] as String,
-      sort: map['sort'] == null ? null : map['sort'] as String,
-      suggestedPrice: map['suggestedPrice'] == null ? null : map['suggestedPrice'] as double,
-      supplierId: map['supplierId'] == null ? null : map['supplierId'] as String,
-      supplierNameKeyword: map['supplierNameKeyword'] == null ? null : map['supplierNameKeyword'] as String,
+      searchTerm: map['searchTerm'] == null ? null : map['searchTerm']! as String,
+      sort: map['sort'] == null ? null : map['sort']! as String,
+      suggestedPrice: map['suggestedPrice'] == null ? null : map['suggestedPrice']! as double,
+      supplierId: map['supplierId'] == null ? null : map['supplierId']! as String,
+      supplierNameKeyword: map['supplierNameKeyword'] == null ? null : map['supplierNameKeyword']! as String,
     );
   }
 }

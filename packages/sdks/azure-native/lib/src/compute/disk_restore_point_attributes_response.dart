@@ -33,9 +33,9 @@ class DiskRestorePointAttributesResponse {
 
   factory DiskRestorePointAttributesResponse.fromMap(Map<String, dynamic> map) {
     return DiskRestorePointAttributesResponse(
-      encryption: map['encryption'] == null ? null : (RestorePointEncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      encryption: map['encryption'] == null ? null : (RestorePointEncryptionResponse.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
       id: (map['id'] as String).input(),
-      sourceDiskRestorePoint: map['sourceDiskRestorePoint'] == null ? null : (ApiEntityReferenceResponse.fromMap((map['sourceDiskRestorePoint'] as Map).cast<String, dynamic>())).input(),
+      sourceDiskRestorePoint: map['sourceDiskRestorePoint'] == null ? null : (ApiEntityReferenceResponse.fromMap((map['sourceDiskRestorePoint']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

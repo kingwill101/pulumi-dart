@@ -62,15 +62,15 @@ class GeofenceCollectionState {
 
   factory GeofenceCollectionState.fromMap(Map<String, dynamic> map) {
     return GeofenceCollectionState(
-      collectionArn: map['collectionArn'] == null ? null : (map['collectionArn'] as String).input(),
-      collectionName: map['collectionName'] == null ? null : (map['collectionName'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      collectionArn: map['collectionArn'] == null ? null : ((map['collectionArn'] as String).input()).input(),
+      collectionName: map['collectionName'] == null ? null : ((map['collectionName'] as String).input()).input(),
+      createTime: map['createTime'] == null ? null : ((map['createTime'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      updateTime: map['updateTime'] == null ? null : ((map['updateTime'] as String).input()).input(),
     );
   }
 }

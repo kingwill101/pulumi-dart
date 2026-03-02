@@ -27,8 +27,8 @@ class PolicyDefinition {
 
   factory PolicyDefinition.fromMap(Map<String, dynamic> map) {
     return PolicyDefinition(
-      static: map['static'] == null ? null : (PolicyDefinitionStatic.fromMap((map['static'] as Map).cast<String, dynamic>())).input(),
-      templateLinked: map['templateLinked'] == null ? null : (PolicyDefinitionTemplateLinked.fromMap((map['templateLinked'] as Map).cast<String, dynamic>())).input(),
+      static: map['static'] == null ? null : ((PolicyDefinitionStatic.fromMap((map['static']! as Map).cast<String, dynamic>())).input()).input(),
+      templateLinked: map['templateLinked'] == null ? null : ((PolicyDefinitionTemplateLinked.fromMap((map['templateLinked']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

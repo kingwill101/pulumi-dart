@@ -19,7 +19,7 @@ class WorkgroupConfigurationCustomerContentEncryptionConfiguration {
 
   factory WorkgroupConfigurationCustomerContentEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkgroupConfigurationCustomerContentEncryptionConfiguration(
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : ((map['kmsKey'] as String).input()).input(),
     );
   }
 }

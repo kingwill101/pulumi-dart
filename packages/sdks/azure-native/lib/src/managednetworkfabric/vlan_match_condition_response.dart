@@ -31,9 +31,9 @@ class VlanMatchConditionResponse {
 
   factory VlanMatchConditionResponse.fromMap(Map<String, dynamic> map) {
     return VlanMatchConditionResponse(
-      innerVlans: map['innerVlans'] == null ? null : ((map['innerVlans'] as List).cast<String>()).input(),
-      vlanGroupNames: map['vlanGroupNames'] == null ? null : ((map['vlanGroupNames'] as List).cast<String>()).input(),
-      vlans: map['vlans'] == null ? null : ((map['vlans'] as List).cast<String>()).input(),
+      innerVlans: map['innerVlans'] == null ? null : ((map['innerVlans']! as List).cast<String>()).input(),
+      vlanGroupNames: map['vlanGroupNames'] == null ? null : ((map['vlanGroupNames']! as List).cast<String>()).input(),
+      vlans: map['vlans'] == null ? null : ((map['vlans']! as List).cast<String>()).input(),
     );
   }
 }

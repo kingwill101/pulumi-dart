@@ -44,9 +44,9 @@ class PreviewFeatureArgs {
   factory PreviewFeatureArgs.fromMap(Map<String, dynamic> map) {
     return PreviewFeatureArgs(
       activationStatus: (map['activationStatus'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rolloutOperation: map['rolloutOperation'] == null ? null : (PreviewFeatureRolloutOperation.fromMap((map['rolloutOperation'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rolloutOperation: map['rolloutOperation'] == null ? null : (PreviewFeatureRolloutOperation.fromMap((map['rolloutOperation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

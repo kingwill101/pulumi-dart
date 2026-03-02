@@ -45,9 +45,9 @@ class LicationLoadBalancerSecurityPolicyArgs {
   factory LicationLoadBalancerSecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return LicationLoadBalancerSecurityPolicyArgs(
       applicationLoadBalancerId: (map['applicationLoadBalancerId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       webApplicationFirewallPolicyId: (map['webApplicationFirewallPolicyId'] as String).input(),
     );
   }

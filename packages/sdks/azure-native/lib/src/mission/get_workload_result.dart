@@ -73,9 +73,9 @@ class GetWorkloadResult {
       managedOnBehalfOfConfiguration: ManagedOnBehalfOfConfigurationResponse.fromMap((map['managedOnBehalfOfConfiguration'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      resourceGroupCollection: map['resourceGroupCollection'] == null ? null : (map['resourceGroupCollection'] as List).cast<String>(),
+      resourceGroupCollection: map['resourceGroupCollection'] == null ? null : (map['resourceGroupCollection']! as List).cast<String>(),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

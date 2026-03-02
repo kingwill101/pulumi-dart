@@ -34,9 +34,9 @@ class SubscriptionNetworkManagerConnectionArgs {
 
   factory SubscriptionNetworkManagerConnectionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionNetworkManagerConnectionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      networkManagerConnectionName: map['networkManagerConnectionName'] == null ? null : (map['networkManagerConnectionName'] as String).input(),
-      networkManagerId: map['networkManagerId'] == null ? null : (map['networkManagerId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      networkManagerConnectionName: map['networkManagerConnectionName'] == null ? null : (map['networkManagerConnectionName']! as String).input(),
+      networkManagerId: map['networkManagerId'] == null ? null : (map['networkManagerId']! as String).input(),
     );
   }
 }

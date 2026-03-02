@@ -141,8 +141,8 @@ class GetAutoExportJobResult {
 
   factory GetAutoExportJobResult.fromMap(Map<String, dynamic> map) {
     return GetAutoExportJobResult(
-      adminStatus: map['adminStatus'] == null ? null : map['adminStatus'] as String,
-      autoExportPrefixes: map['autoExportPrefixes'] == null ? null : (map['autoExportPrefixes'] as List).cast<String>(),
+      adminStatus: map['adminStatus'] == null ? null : map['adminStatus']! as String,
+      autoExportPrefixes: map['autoExportPrefixes'] == null ? null : (map['autoExportPrefixes']! as List).cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
       currentIterationFilesDiscovered: map['currentIterationFilesDiscovered'] as double,
       currentIterationFilesExported: map['currentIterationFilesExported'] as double,
@@ -157,11 +157,11 @@ class GetAutoExportJobResult {
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      state: map['state'] == null ? null : map['state']! as String,
       statusCode: map['statusCode'] as String,
       statusMessage: map['statusMessage'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       totalFilesExported: map['totalFilesExported'] as double,
       totalFilesFailed: map['totalFilesFailed'] as double,
       totalMiBExported: map['totalMiBExported'] as double,

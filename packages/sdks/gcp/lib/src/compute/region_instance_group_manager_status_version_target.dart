@@ -20,7 +20,7 @@ class RegionInstanceGroupManagerStatusVersionTarget {
 
   factory RegionInstanceGroupManagerStatusVersionTarget.fromMap(Map<String, dynamic> map) {
     return RegionInstanceGroupManagerStatusVersionTarget(
-      isReached: map['isReached'] == null ? null : (map['isReached'] as bool).input(),
+      isReached: map['isReached'] == null ? null : (map['isReached']! as bool).input(),
     );
   }
 }

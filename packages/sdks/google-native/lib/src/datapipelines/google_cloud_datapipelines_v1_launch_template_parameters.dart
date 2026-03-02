@@ -42,11 +42,11 @@ class GoogleCloudDatapipelinesV1LaunchTemplateParameters {
 
   factory GoogleCloudDatapipelinesV1LaunchTemplateParameters.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatapipelinesV1LaunchTemplateParameters(
-      environment: map['environment'] == null ? null : (GoogleCloudDatapipelinesV1RuntimeEnvironment.fromMap((map['environment'] as Map).cast<String, dynamic>())).input(),
+      environment: map['environment'] == null ? null : (GoogleCloudDatapipelinesV1RuntimeEnvironment.fromMap((map['environment']! as Map).cast<String, dynamic>())).input(),
       jobName: (map['jobName'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      transformNameMapping: map['transformNameMapping'] == null ? null : ((map['transformNameMapping'] as Map).cast<String, String>()).input(),
-      update: map['update'] == null ? null : (map['update'] as bool).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      transformNameMapping: map['transformNameMapping'] == null ? null : ((map['transformNameMapping']! as Map).cast<String, String>()).input(),
+      update: map['update'] == null ? null : (map['update']! as bool).input(),
     );
   }
 }

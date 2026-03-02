@@ -32,9 +32,9 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureN
 
   factory V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStep.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStep(
-      dialogAction: map['dialogAction'] == null ? null : (V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStepDialogAction.fromMap((map['dialogAction'] as Map).cast<String, dynamic>())).input(),
-      intent: map['intent'] == null ? null : (V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStepIntent.fromMap((map['intent'] as Map).cast<String, dynamic>())).input(),
-      sessionAttributes: map['sessionAttributes'] == null ? null : ((map['sessionAttributes'] as Map).cast<String, String>()).input(),
+      dialogAction: map['dialogAction'] == null ? null : ((V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStepDialogAction.fromMap((map['dialogAction']! as Map).cast<String, dynamic>())).input()).input(),
+      intent: map['intent'] == null ? null : ((V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStepIntent.fromMap((map['intent']! as Map).cast<String, dynamic>())).input()).input(),
+      sessionAttributes: map['sessionAttributes'] == null ? null : (((map['sessionAttributes'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class KpiGroupByMetadataResponse {
 
   factory KpiGroupByMetadataResponse.fromMap(Map<String, dynamic> map) {
     return KpiGroupByMetadataResponse(
-      displayName: map['displayName'] == null ? null : ((map['displayName'] as Map).cast<String, String>()).input(),
-      fieldName: map['fieldName'] == null ? null : (map['fieldName'] as String).input(),
-      fieldType: map['fieldType'] == null ? null : (map['fieldType'] as String).input(),
+      displayName: map['displayName'] == null ? null : ((map['displayName']! as Map).cast<String, String>()).input(),
+      fieldName: map['fieldName'] == null ? null : (map['fieldName']! as String).input(),
+      fieldType: map['fieldType'] == null ? null : (map['fieldType']! as String).input(),
     );
   }
 }

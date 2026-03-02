@@ -49,8 +49,8 @@ class CooDomainPreciseAccessRuleArgs {
       action: (map['action'] as String).input(),
       conditions: (pulumi.Input.decodeList<CooDomainPreciseAccessRuleCondition>(map['conditions'], (value) => CooDomainPreciseAccessRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
       domain: (map['domain'] as String).input(),
-      expires: map['expires'] == null ? null : (map['expires'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      expires: map['expires'] == null ? null : (map['expires']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

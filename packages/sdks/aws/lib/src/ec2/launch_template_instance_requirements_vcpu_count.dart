@@ -25,7 +25,7 @@ class LaunchTemplateInstanceRequirementsVcpuCount {
 
   factory LaunchTemplateInstanceRequirementsVcpuCount.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateInstanceRequirementsVcpuCount(
-      max: map['max'] == null ? null : (map['max'] as int).input(),
+      max: map['max'] == null ? null : ((map['max'] as int).input()).input(),
       min: (map['min'] as int).input(),
     );
   }

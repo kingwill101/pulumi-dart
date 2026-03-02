@@ -72,16 +72,16 @@ class SapOdpSourceResponse {
 
   factory SapOdpSourceResponse.fromMap(Map<String, dynamic> map) {
     return SapOdpSourceResponse(
-      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      extractionMode: map['extractionMode'] == null ? null : (map['extractionMode']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      projection: map['projection'] == null ? null : (map['projection']).input(),
-      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']).input(),
-      selection: map['selection'] == null ? null : (map['selection']).input(),
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
-      subscriberProcess: map['subscriberProcess'] == null ? null : (map['subscriberProcess']).input(),
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']!).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      extractionMode: map['extractionMode'] == null ? null : (map['extractionMode']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      projection: map['projection'] == null ? null : (map['projection']!).input(),
+      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']!).input(),
+      selection: map['selection'] == null ? null : (map['selection']!).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']!).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']!).input(),
+      subscriberProcess: map['subscriberProcess'] == null ? null : (map['subscriberProcess']!).input(),
       type: (map['type'] as String).input(),
     );
   }

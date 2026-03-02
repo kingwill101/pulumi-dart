@@ -20,7 +20,7 @@ class GetManagedRuleGroupRuleActionAllow {
 
   factory GetManagedRuleGroupRuleActionAllow.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupRuleActionAllow(
-      customRequestHandlings: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionAllowCustomRequestHandling>(map['customRequestHandlings'], (value) => GetManagedRuleGroupRuleActionAllowCustomRequestHandling.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customRequestHandlings: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionAllowCustomRequestHandling>(map['customRequestHandlings']!, (value) => GetManagedRuleGroupRuleActionAllowCustomRequestHandling.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

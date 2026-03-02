@@ -26,8 +26,8 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice {
 
   factory GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice(
-      displayPrice: map['displayPrice'] == null ? null : (map['displayPrice'] as double).input(),
-      originalPrice: map['originalPrice'] == null ? null : (map['originalPrice'] as double).input(),
+      displayPrice: map['displayPrice'] == null ? null : (map['displayPrice']! as double).input(),
+      originalPrice: map['originalPrice'] == null ? null : (map['originalPrice']! as double).input(),
     );
   }
 }

@@ -51,7 +51,7 @@ class BackupScheduleResponse {
       keepAtLeastOneBackup: (map['keepAtLeastOneBackup'] as bool).input(),
       lastExecutionTime: (map['lastExecutionTime'] as String).input(),
       retentionPeriodInDays: (map['retentionPeriodInDays'] as int).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

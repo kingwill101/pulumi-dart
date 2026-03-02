@@ -56,13 +56,13 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConf
 
   factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig(
-      conversationModelConfig: map['conversationModelConfig'] == null ? null : (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig.fromMap((map['conversationModelConfig'] as Map).cast<String, dynamic>())).input(),
-      conversationProcessConfig: map['conversationProcessConfig'] == null ? null : (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfig.fromMap((map['conversationProcessConfig'] as Map).cast<String, dynamic>())).input(),
-      disableAgentQueryLogging: map['disableAgentQueryLogging'] == null ? null : (map['disableAgentQueryLogging'] as bool).input(),
-      enableEventBasedSuggestion: map['enableEventBasedSuggestion'] == null ? null : (map['enableEventBasedSuggestion'] as bool).input(),
-      queryConfig: map['queryConfig'] == null ? null : (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig.fromMap((map['queryConfig'] as Map).cast<String, dynamic>())).input(),
-      suggestionFeature: map['suggestionFeature'] == null ? null : (GoogleCloudDialogflowV2beta1SuggestionFeature.fromMap((map['suggestionFeature'] as Map).cast<String, dynamic>())).input(),
-      suggestionTriggerSettings: map['suggestionTriggerSettings'] == null ? null : (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings.fromMap((map['suggestionTriggerSettings'] as Map).cast<String, dynamic>())).input(),
+      conversationModelConfig: map['conversationModelConfig'] == null ? null : (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig.fromMap((map['conversationModelConfig']! as Map).cast<String, dynamic>())).input(),
+      conversationProcessConfig: map['conversationProcessConfig'] == null ? null : (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfig.fromMap((map['conversationProcessConfig']! as Map).cast<String, dynamic>())).input(),
+      disableAgentQueryLogging: map['disableAgentQueryLogging'] == null ? null : (map['disableAgentQueryLogging']! as bool).input(),
+      enableEventBasedSuggestion: map['enableEventBasedSuggestion'] == null ? null : (map['enableEventBasedSuggestion']! as bool).input(),
+      queryConfig: map['queryConfig'] == null ? null : (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig.fromMap((map['queryConfig']! as Map).cast<String, dynamic>())).input(),
+      suggestionFeature: map['suggestionFeature'] == null ? null : (GoogleCloudDialogflowV2beta1SuggestionFeature.fromMap((map['suggestionFeature']! as Map).cast<String, dynamic>())).input(),
+      suggestionTriggerSettings: map['suggestionTriggerSettings'] == null ? null : (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings.fromMap((map['suggestionTriggerSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

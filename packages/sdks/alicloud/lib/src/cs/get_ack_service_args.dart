@@ -31,7 +31,7 @@ class GetAckServiceArgs {
 
   factory GetAckServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetAckServiceArgs(
-      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -30,9 +30,9 @@ class ProfilesResourceAssociationTimeouts {
 
   factory ProfilesResourceAssociationTimeouts.fromMap(Map<String, dynamic> map) {
     return ProfilesResourceAssociationTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
-      delete: map['delete'] == null ? null : (map['delete'] as String).input(),
-      read: map['read'] == null ? null : (map['read'] as String).input(),
+      create: map['create'] == null ? null : ((map['create'] as String).input()).input(),
+      delete: map['delete'] == null ? null : ((map['delete'] as String).input()).input(),
+      read: map['read'] == null ? null : ((map['read'] as String).input()).input(),
     );
   }
 }

@@ -38,9 +38,9 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload 
   factory AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload(
       description: (map['description'] as String).input(),
-      inputSchema: (AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchema.fromMap((map['inputSchema'] as Map).cast<String, dynamic>())).input(),
+      inputSchema: (AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchema.fromMap((map['inputSchema']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      outputSchema: map['outputSchema'] == null ? null : (AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchema.fromMap((map['outputSchema'] as Map).cast<String, dynamic>())).input(),
+      outputSchema: map['outputSchema'] == null ? null : ((AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchema.fromMap((map['outputSchema']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -60,7 +60,7 @@ class GetInstanceResult {
     return GetInstanceResult(
       azureApiVersion: map['azureApiVersion'] as String,
       eTag: map['eTag'] as String,
-      extendedLocation: map['extendedLocation'] == null ? null : AzureResourceManagerCommonTypesExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
+      extendedLocation: map['extendedLocation'] == null ? null : AzureResourceManagerCommonTypesExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
       properties: InstancePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),

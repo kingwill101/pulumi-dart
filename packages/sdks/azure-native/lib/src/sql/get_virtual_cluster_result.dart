@@ -66,9 +66,9 @@ class GetVirtualClusterResult {
       location: map['location'] as String,
       name: map['name'] as String,
       subnetId: map['subnetId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      version: map['version'] == null ? null : map['version']! as String,
     );
   }
 }

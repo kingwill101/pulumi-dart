@@ -32,9 +32,9 @@ class PipelineTriggerGitConfigurationPullRequest {
 
   factory PipelineTriggerGitConfigurationPullRequest.fromMap(Map<String, dynamic> map) {
     return PipelineTriggerGitConfigurationPullRequest(
-      branches: map['branches'] == null ? null : (PipelineTriggerGitConfigurationPullRequestBranches.fromMap((map['branches'] as Map).cast<String, dynamic>())).input(),
-      events: map['events'] == null ? null : ((map['events'] as List).cast<String>()).input(),
-      filePaths: map['filePaths'] == null ? null : (PipelineTriggerGitConfigurationPullRequestFilePaths.fromMap((map['filePaths'] as Map).cast<String, dynamic>())).input(),
+      branches: map['branches'] == null ? null : ((PipelineTriggerGitConfigurationPullRequestBranches.fromMap((map['branches']! as Map).cast<String, dynamic>())).input()).input(),
+      events: map['events'] == null ? null : (((map['events'] as List).cast<String>()).input()).input(),
+      filePaths: map['filePaths'] == null ? null : ((PipelineTriggerGitConfigurationPullRequestFilePaths.fromMap((map['filePaths']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -63,11 +63,11 @@ class VirtualNetworkGatewayNatRuleArgs {
     return VirtualNetworkGatewayNatRuleArgs(
       externalMappings: (pulumi.Input.decodeList<VirtualNetworkGatewayNatRuleExternalMapping>(map['externalMappings'], (value) => VirtualNetworkGatewayNatRuleExternalMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
       internalMappings: (pulumi.Input.decodeList<VirtualNetworkGatewayNatRuleInternalMapping>(map['internalMappings'], (value) => VirtualNetworkGatewayNatRuleInternalMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipConfigurationId: map['ipConfigurationId'] == null ? null : (map['ipConfigurationId'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ipConfigurationId: map['ipConfigurationId'] == null ? null : (map['ipConfigurationId']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
       virtualNetworkGatewayId: (map['virtualNetworkGatewayId'] as String).input(),
     );
   }

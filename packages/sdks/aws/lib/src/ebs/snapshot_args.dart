@@ -59,13 +59,13 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      outpostArn: map['outpostArn'] == null ? null : (map['outpostArn'] as String).input(),
-      permanentRestore: map['permanentRestore'] == null ? null : (map['permanentRestore'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      storageTier: map['storageTier'] == null ? null : (map['storageTier'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      temporaryRestoreDays: map['temporaryRestoreDays'] == null ? null : (map['temporaryRestoreDays'] as int).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      outpostArn: map['outpostArn'] == null ? null : ((map['outpostArn'] as String).input()).input(),
+      permanentRestore: map['permanentRestore'] == null ? null : ((map['permanentRestore'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      storageTier: map['storageTier'] == null ? null : ((map['storageTier'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      temporaryRestoreDays: map['temporaryRestoreDays'] == null ? null : ((map['temporaryRestoreDays'] as int).input()).input(),
       volumeId: (map['volumeId'] as String).input(),
     );
   }

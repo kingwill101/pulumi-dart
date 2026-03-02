@@ -55,13 +55,13 @@ class GlossaryArgs {
 
   factory GlossaryArgs.fromMap(Map<String, dynamic> map) {
     return GlossaryArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       inputConfig: (GlossaryInputConfig.fromMap((map['inputConfig'] as Map).cast<String, dynamic>())).input(),
-      languageCodesSet: map['languageCodesSet'] == null ? null : (LanguageCodesSet.fromMap((map['languageCodesSet'] as Map).cast<String, dynamic>())).input(),
-      languagePair: map['languagePair'] == null ? null : (LanguageCodePair.fromMap((map['languagePair'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      languageCodesSet: map['languageCodesSet'] == null ? null : (LanguageCodesSet.fromMap((map['languageCodesSet']! as Map).cast<String, dynamic>())).input(),
+      languagePair: map['languagePair'] == null ? null : (LanguageCodePair.fromMap((map['languagePair']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

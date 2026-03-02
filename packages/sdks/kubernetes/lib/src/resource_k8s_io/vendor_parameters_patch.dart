@@ -26,8 +26,8 @@ class VendorParametersPatch {
 
   factory VendorParametersPatch.fromMap(Map<String, dynamic> map) {
     return VendorParametersPatch(
-      driverName: map['driverName'] == null ? null : (map['driverName'] as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters']).input(),
+      driverName: map['driverName'] == null ? null : (map['driverName']! as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']!).input(),
     );
   }
 }

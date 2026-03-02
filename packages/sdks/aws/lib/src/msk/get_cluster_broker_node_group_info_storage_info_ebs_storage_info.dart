@@ -24,7 +24,7 @@ class GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo {
 
   factory GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo.fromMap(Map<String, dynamic> map) {
     return GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo(
-      provisionedThroughputs: (pulumi.Input.decodeList<GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput>(map['provisionedThroughputs'], (value) => GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisionedThroughputs: (pulumi.Input.decodeList<GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput>(map['provisionedThroughputs']!, (value) => GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput.fromMap((value as Map).cast<String, dynamic>()))).input(),
       volumeSize: (map['volumeSize'] as int).input(),
     );
   }

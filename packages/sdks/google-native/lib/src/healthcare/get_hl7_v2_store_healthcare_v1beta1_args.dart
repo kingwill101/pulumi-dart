@@ -38,7 +38,7 @@ class GetHl7V2StoreHealthcareV1beta1Args {
       datasetId: (map['datasetId'] as String).input(),
       hl7V2StoreId: (map['hl7V2StoreId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

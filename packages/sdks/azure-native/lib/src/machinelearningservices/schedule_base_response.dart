@@ -30,9 +30,9 @@ class ScheduleBaseResponse {
 
   factory ScheduleBaseResponse.fromMap(Map<String, dynamic> map) {
     return ScheduleBaseResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      provisioningStatus: map['provisioningStatus'] == null ? null : (map['provisioningStatus'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      provisioningStatus: map['provisioningStatus'] == null ? null : (map['provisioningStatus']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

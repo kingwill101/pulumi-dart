@@ -27,8 +27,8 @@ class OracleTable {
 
   factory OracleTable.fromMap(Map<String, dynamic> map) {
     return OracleTable(
-      oracleColumns: map['oracleColumns'] == null ? null : (pulumi.Input.decodeList<OracleColumn>(map['oracleColumns'], (value) => OracleColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      table: map['table'] == null ? null : (map['table'] as String).input(),
+      oracleColumns: map['oracleColumns'] == null ? null : (pulumi.Input.decodeList<OracleColumn>(map['oracleColumns']!, (value) => OracleColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      table: map['table'] == null ? null : (map['table']! as String).input(),
     );
   }
 }

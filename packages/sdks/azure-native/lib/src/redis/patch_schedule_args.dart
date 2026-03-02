@@ -40,7 +40,7 @@ class PatchScheduleArgs {
 
   factory PatchScheduleArgs.fromMap(Map<String, dynamic> map) {
     return PatchScheduleArgs(
-      default_: map['default'] == null ? null : (map['default'] as String).input(),
+      default_: map['default'] == null ? null : (map['default']! as String).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       scheduleEntries: (pulumi.Input.decodeList<ScheduleEntry>(map['scheduleEntries'], (value) => ScheduleEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),

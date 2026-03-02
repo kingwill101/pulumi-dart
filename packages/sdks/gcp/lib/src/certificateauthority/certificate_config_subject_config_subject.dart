@@ -56,13 +56,13 @@ class CertificateConfigSubjectConfigSubject {
   factory CertificateConfigSubjectConfigSubject.fromMap(Map<String, dynamic> map) {
     return CertificateConfigSubjectConfigSubject(
       commonName: (map['commonName'] as String).input(),
-      countryCode: map['countryCode'] == null ? null : (map['countryCode'] as String).input(),
-      locality: map['locality'] == null ? null : (map['locality'] as String).input(),
+      countryCode: map['countryCode'] == null ? null : (map['countryCode']! as String).input(),
+      locality: map['locality'] == null ? null : (map['locality']! as String).input(),
       organization: (map['organization'] as String).input(),
-      organizationalUnit: map['organizationalUnit'] == null ? null : (map['organizationalUnit'] as String).input(),
-      postalCode: map['postalCode'] == null ? null : (map['postalCode'] as String).input(),
-      province: map['province'] == null ? null : (map['province'] as String).input(),
-      streetAddress: map['streetAddress'] == null ? null : (map['streetAddress'] as String).input(),
+      organizationalUnit: map['organizationalUnit'] == null ? null : (map['organizationalUnit']! as String).input(),
+      postalCode: map['postalCode'] == null ? null : (map['postalCode']! as String).input(),
+      province: map['province'] == null ? null : (map['province']! as String).input(),
+      streetAddress: map['streetAddress'] == null ? null : (map['streetAddress']! as String).input(),
     );
   }
 }

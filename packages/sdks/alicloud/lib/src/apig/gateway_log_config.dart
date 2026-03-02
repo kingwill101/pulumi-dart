@@ -21,7 +21,7 @@ class GatewayLogConfig {
 
   factory GatewayLogConfig.fromMap(Map<String, dynamic> map) {
     return GatewayLogConfig(
-      sls: map['sls'] == null ? null : (GatewayLogConfigSls.fromMap((map['sls'] as Map).cast<String, dynamic>())).input(),
+      sls: map['sls'] == null ? null : (GatewayLogConfigSls.fromMap((map['sls']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

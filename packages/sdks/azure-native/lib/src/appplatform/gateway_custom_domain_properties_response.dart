@@ -21,7 +21,7 @@ class GatewayCustomDomainPropertiesResponse {
 
   factory GatewayCustomDomainPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return GatewayCustomDomainPropertiesResponse(
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

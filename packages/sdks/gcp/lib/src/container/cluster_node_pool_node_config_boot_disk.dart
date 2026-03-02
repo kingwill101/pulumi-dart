@@ -37,10 +37,10 @@ class ClusterNodePoolNodeConfigBootDisk {
 
   factory ClusterNodePoolNodeConfigBootDisk.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeConfigBootDisk(
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
-      provisionedIops: map['provisionedIops'] == null ? null : (map['provisionedIops'] as int).input(),
-      provisionedThroughput: map['provisionedThroughput'] == null ? null : (map['provisionedThroughput'] as int).input(),
-      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb'] as int).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
+      provisionedIops: map['provisionedIops'] == null ? null : (map['provisionedIops']! as int).input(),
+      provisionedThroughput: map['provisionedThroughput'] == null ? null : (map['provisionedThroughput']! as int).input(),
+      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb']! as int).input(),
     );
   }
 }

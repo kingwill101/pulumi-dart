@@ -22,7 +22,7 @@ class GoogleCloudDocumentaiV1DocumentPageTableTableRow {
 
   factory GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageTableTableRow(
-      cells: map['cells'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageTableTableCell>(map['cells'], (value) => GoogleCloudDocumentaiV1DocumentPageTableTableCell.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cells: map['cells'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageTableTableCell>(map['cells']!, (value) => GoogleCloudDocumentaiV1DocumentPageTableTableCell.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

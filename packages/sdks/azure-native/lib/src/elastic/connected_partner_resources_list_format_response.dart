@@ -22,7 +22,7 @@ class ConnectedPartnerResourcesListFormatResponse {
 
   factory ConnectedPartnerResourcesListFormatResponse.fromMap(Map<String, dynamic> map) {
     return ConnectedPartnerResourcesListFormatResponse(
-      properties: map['properties'] == null ? null : (ConnectedPartnerResourcePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (ConnectedPartnerResourcePropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

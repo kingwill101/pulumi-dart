@@ -25,7 +25,7 @@ class BucketWebsite {
 
   factory BucketWebsite.fromMap(Map<String, dynamic> map) {
     return BucketWebsite(
-      errorDocument: map['errorDocument'] == null ? null : (map['errorDocument'] as String).input(),
+      errorDocument: map['errorDocument'] == null ? null : (map['errorDocument']! as String).input(),
       indexDocument: (map['indexDocument'] as String).input(),
     );
   }

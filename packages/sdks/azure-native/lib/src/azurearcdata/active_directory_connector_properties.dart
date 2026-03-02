@@ -34,9 +34,9 @@ class ActiveDirectoryConnectorProperties {
 
   factory ActiveDirectoryConnectorProperties.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryConnectorProperties(
-      domainServiceAccountLoginInformation: map['domainServiceAccountLoginInformation'] == null ? null : (BasicLoginInformation.fromMap((map['domainServiceAccountLoginInformation'] as Map).cast<String, dynamic>())).input(),
+      domainServiceAccountLoginInformation: map['domainServiceAccountLoginInformation'] == null ? null : (BasicLoginInformation.fromMap((map['domainServiceAccountLoginInformation']! as Map).cast<String, dynamic>())).input(),
       spec: (ActiveDirectoryConnectorSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (ActiveDirectoryConnectorStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (ActiveDirectoryConnectorStatus.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

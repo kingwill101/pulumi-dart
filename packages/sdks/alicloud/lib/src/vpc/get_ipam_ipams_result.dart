@@ -67,14 +67,14 @@ class GetIpamIpamsResult {
     return GetIpamIpamsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      ipamId: map['ipamId'] == null ? null : map['ipamId'] as String,
-      ipamName: map['ipamName'] == null ? null : map['ipamName'] as String,
+      ipamId: map['ipamId'] == null ? null : map['ipamId']! as String,
+      ipamName: map['ipamName'] == null ? null : map['ipamName']! as String,
       ipams: pulumi.Input.decodeList<GetIpamIpamsIpam>(map['ipams'], (value) => GetIpamIpamsIpam.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

@@ -21,7 +21,7 @@ class CxAgentAnswerFeedbackSettings {
 
   factory CxAgentAnswerFeedbackSettings.fromMap(Map<String, dynamic> map) {
     return CxAgentAnswerFeedbackSettings(
-      enableAnswerFeedback: map['enableAnswerFeedback'] == null ? null : (map['enableAnswerFeedback'] as bool).input(),
+      enableAnswerFeedback: map['enableAnswerFeedback'] == null ? null : (map['enableAnswerFeedback']! as bool).input(),
     );
   }
 }

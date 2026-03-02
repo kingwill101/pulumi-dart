@@ -56,13 +56,13 @@ class BuilderArgs {
 
   factory BuilderArgs.fromMap(Map<String, dynamic> map) {
     return BuilderArgs(
-      builderName: map['builderName'] == null ? null : (map['builderName'] as String).input(),
-      containerRegistries: map['containerRegistries'] == null ? null : (pulumi.Input.decodeList<ContainerRegistry>(map['containerRegistries'], (value) => ContainerRegistry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      builderName: map['builderName'] == null ? null : (map['builderName']! as String).input(),
+      containerRegistries: map['containerRegistries'] == null ? null : (pulumi.Input.decodeList<ContainerRegistry>(map['containerRegistries']!, (value) => ContainerRegistry.fromMap((value as Map).cast<String, dynamic>()))).input(),
       environmentId: (map['environmentId'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

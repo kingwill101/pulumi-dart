@@ -56,14 +56,14 @@ class ProfessionalServiceCreationProperties {
 
   factory ProfessionalServiceCreationProperties.fromMap(Map<String, dynamic> map) {
     return ProfessionalServiceCreationProperties(
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      billingPeriod: map['billingPeriod'] == null ? null : (map['billingPeriod'] as String).input(),
-      offerId: map['offerId'] == null ? null : (map['offerId'] as String).input(),
-      publisherId: map['publisherId'] == null ? null : (map['publisherId'] as String).input(),
-      quoteId: map['quoteId'] == null ? null : (map['quoteId'] as String).input(),
-      skuId: map['skuId'] == null ? null : (map['skuId'] as String).input(),
-      storeFront: map['storeFront'] == null ? null : (map['storeFront'] as String).input(),
-      termUnit: map['termUnit'] == null ? null : (map['termUnit'] as String).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      billingPeriod: map['billingPeriod'] == null ? null : (map['billingPeriod']! as String).input(),
+      offerId: map['offerId'] == null ? null : (map['offerId']! as String).input(),
+      publisherId: map['publisherId'] == null ? null : (map['publisherId']! as String).input(),
+      quoteId: map['quoteId'] == null ? null : (map['quoteId']! as String).input(),
+      skuId: map['skuId'] == null ? null : (map['skuId']! as String).input(),
+      storeFront: map['storeFront'] == null ? null : (map['storeFront']! as String).input(),
+      termUnit: map['termUnit'] == null ? null : (map['termUnit']! as String).input(),
     );
   }
 }

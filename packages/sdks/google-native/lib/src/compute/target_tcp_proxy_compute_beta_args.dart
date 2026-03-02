@@ -54,13 +54,13 @@ class TargetTcpProxyComputeBetaArgs {
 
   factory TargetTcpProxyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return TargetTcpProxyComputeBetaArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      proxyBind: map['proxyBind'] == null ? null : (map['proxyBind'] as bool).input(),
-      proxyHeader: map['proxyHeader'] == null ? null : (TargetTcpProxyProxyHeaderComputeBeta.fromValue(map['proxyHeader'] as String)).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      proxyBind: map['proxyBind'] == null ? null : (map['proxyBind']! as bool).input(),
+      proxyHeader: map['proxyHeader'] == null ? null : (TargetTcpProxyProxyHeaderComputeBeta.fromValue(map['proxyHeader']! as String)).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

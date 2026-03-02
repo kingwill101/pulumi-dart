@@ -73,12 +73,12 @@ class GetCapacityPoolBucketResult {
   factory GetCapacityPoolBucketResult.fromMap(Map<String, dynamic> map) {
     return GetCapacityPoolBucketResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      fileSystemUser: map['fileSystemUser'] == null ? null : FileSystemUserResponse.fromMap((map['fileSystemUser'] as Map).cast<String, dynamic>()),
+      fileSystemUser: map['fileSystemUser'] == null ? null : FileSystemUserResponse.fromMap((map['fileSystemUser']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
+      path: map['path'] == null ? null : map['path']! as String,
       provisioningState: map['provisioningState'] as String,
-      server: map['server'] == null ? null : BucketServerPropertiesResponse.fromMap((map['server'] as Map).cast<String, dynamic>()),
+      server: map['server'] == null ? null : BucketServerPropertiesResponse.fromMap((map['server']! as Map).cast<String, dynamic>()),
       status: map['status'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,

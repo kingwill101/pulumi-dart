@@ -31,9 +31,9 @@ class SCClusterByokEntity {
 
   factory SCClusterByokEntity.fromMap(Map<String, dynamic> map) {
     return SCClusterByokEntity(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      related: map['related'] == null ? null : (map['related'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      related: map['related'] == null ? null : (map['related']! as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
     );
   }
 }

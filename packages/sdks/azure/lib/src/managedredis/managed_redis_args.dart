@@ -80,16 +80,16 @@ class ManagedRedisArgs {
 
   factory ManagedRedisArgs.fromMap(Map<String, dynamic> map) {
     return ManagedRedisArgs(
-      customerManagedKey: map['customerManagedKey'] == null ? null : (ManagedRedisCustomerManagedKey.fromMap((map['customerManagedKey'] as Map).cast<String, dynamic>())).input(),
-      defaultDatabase: map['defaultDatabase'] == null ? null : (ManagedRedisDefaultDatabase.fromMap((map['defaultDatabase'] as Map).cast<String, dynamic>())).input(),
-      highAvailabilityEnabled: map['highAvailabilityEnabled'] == null ? null : (map['highAvailabilityEnabled'] as bool).input(),
-      identity: map['identity'] == null ? null : (ManagedRedisIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      customerManagedKey: map['customerManagedKey'] == null ? null : (ManagedRedisCustomerManagedKey.fromMap((map['customerManagedKey']! as Map).cast<String, dynamic>())).input(),
+      defaultDatabase: map['defaultDatabase'] == null ? null : (ManagedRedisDefaultDatabase.fromMap((map['defaultDatabase']! as Map).cast<String, dynamic>())).input(),
+      highAvailabilityEnabled: map['highAvailabilityEnabled'] == null ? null : (map['highAvailabilityEnabled']! as bool).input(),
+      identity: map['identity'] == null ? null : (ManagedRedisIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       skuName: (map['skuName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

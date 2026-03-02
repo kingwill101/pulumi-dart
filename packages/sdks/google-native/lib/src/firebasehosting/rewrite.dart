@@ -52,13 +52,13 @@ class Rewrite {
 
   factory Rewrite.fromMap(Map<String, dynamic> map) {
     return Rewrite(
-      dynamicLinks: map['dynamicLinks'] == null ? null : (map['dynamicLinks'] as bool).input(),
-      function: map['function'] == null ? null : (map['function'] as String).input(),
-      functionRegion: map['functionRegion'] == null ? null : (map['functionRegion'] as String).input(),
-      glob: map['glob'] == null ? null : (map['glob'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      regex: map['regex'] == null ? null : (map['regex'] as String).input(),
-      run: map['run'] == null ? null : (CloudRunRewrite.fromMap((map['run'] as Map).cast<String, dynamic>())).input(),
+      dynamicLinks: map['dynamicLinks'] == null ? null : (map['dynamicLinks']! as bool).input(),
+      function: map['function'] == null ? null : (map['function']! as String).input(),
+      functionRegion: map['functionRegion'] == null ? null : (map['functionRegion']! as String).input(),
+      glob: map['glob'] == null ? null : (map['glob']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      regex: map['regex'] == null ? null : (map['regex']! as String).input(),
+      run: map['run'] == null ? null : (CloudRunRewrite.fromMap((map['run']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

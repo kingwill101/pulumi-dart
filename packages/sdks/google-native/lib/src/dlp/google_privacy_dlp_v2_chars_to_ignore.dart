@@ -27,8 +27,8 @@ class GooglePrivacyDlpV2CharsToIgnore {
 
   factory GooglePrivacyDlpV2CharsToIgnore.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CharsToIgnore(
-      charactersToSkip: map['charactersToSkip'] == null ? null : (map['charactersToSkip'] as String).input(),
-      commonCharactersToIgnore: map['commonCharactersToIgnore'] == null ? null : (GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore.fromValue(map['commonCharactersToIgnore'] as String)).input(),
+      charactersToSkip: map['charactersToSkip'] == null ? null : (map['charactersToSkip']! as String).input(),
+      commonCharactersToIgnore: map['commonCharactersToIgnore'] == null ? null : (GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore.fromValue(map['commonCharactersToIgnore']! as String)).input(),
     );
   }
 }

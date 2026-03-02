@@ -30,8 +30,8 @@ class AccessPackageAssignmentPolicyRequestorSettingsRequestor {
 
   factory AccessPackageAssignmentPolicyRequestorSettingsRequestor.fromMap(Map<String, dynamic> map) {
     return AccessPackageAssignmentPolicyRequestorSettingsRequestor(
-      backup: map['backup'] == null ? null : (map['backup'] as bool).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      backup: map['backup'] == null ? null : (map['backup']! as bool).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
       subjectType: (map['subjectType'] as String).input(),
     );
   }

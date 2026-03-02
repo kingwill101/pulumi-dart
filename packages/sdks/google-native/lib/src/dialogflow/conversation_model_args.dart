@@ -60,14 +60,14 @@ class ConversationModelArgs {
 
   factory ConversationModelArgs.fromMap(Map<String, dynamic> map) {
     return ConversationModelArgs(
-      articleSuggestionModelMetadata: map['articleSuggestionModelMetadata'] == null ? null : (GoogleCloudDialogflowV2ArticleSuggestionModelMetadata.fromMap((map['articleSuggestionModelMetadata'] as Map).cast<String, dynamic>())).input(),
+      articleSuggestionModelMetadata: map['articleSuggestionModelMetadata'] == null ? null : (GoogleCloudDialogflowV2ArticleSuggestionModelMetadata.fromMap((map['articleSuggestionModelMetadata']! as Map).cast<String, dynamic>())).input(),
       datasets: (pulumi.Input.decodeList<GoogleCloudDialogflowV2InputDataset>(map['datasets'], (value) => GoogleCloudDialogflowV2InputDataset.fromMap((value as Map).cast<String, dynamic>()))).input(),
       displayName: (map['displayName'] as String).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      smartReplyModelMetadata: map['smartReplyModelMetadata'] == null ? null : (GoogleCloudDialogflowV2SmartReplyModelMetadata.fromMap((map['smartReplyModelMetadata'] as Map).cast<String, dynamic>())).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      smartReplyModelMetadata: map['smartReplyModelMetadata'] == null ? null : (GoogleCloudDialogflowV2SmartReplyModelMetadata.fromMap((map['smartReplyModelMetadata']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class SSESpecification {
 
   factory SSESpecification.fromMap(Map<String, dynamic> map) {
     return SSESpecification(
-      kmsMasterKeyId: map['kmsMasterKeyId'] == null ? null : (map['kmsMasterKeyId'] as String).input(),
-      sseEnabled: map['sseEnabled'] == null ? null : (map['sseEnabled'] as bool).input(),
-      sseType: map['sseType'] == null ? null : (map['sseType'] as String).input(),
+      kmsMasterKeyId: map['kmsMasterKeyId'] == null ? null : (map['kmsMasterKeyId']! as String).input(),
+      sseEnabled: map['sseEnabled'] == null ? null : (map['sseEnabled']! as bool).input(),
+      sseType: map['sseType'] == null ? null : (map['sseType']! as String).input(),
     );
   }
 }

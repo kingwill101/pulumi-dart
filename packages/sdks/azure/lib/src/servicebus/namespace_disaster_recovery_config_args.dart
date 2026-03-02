@@ -39,8 +39,8 @@ class NamespaceDisasterRecoveryConfigArgs {
 
   factory NamespaceDisasterRecoveryConfigArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceDisasterRecoveryConfigArgs(
-      aliasAuthorizationRuleId: map['aliasAuthorizationRuleId'] == null ? null : (map['aliasAuthorizationRuleId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      aliasAuthorizationRuleId: map['aliasAuthorizationRuleId'] == null ? null : (map['aliasAuthorizationRuleId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       partnerNamespaceId: (map['partnerNamespaceId'] as String).input(),
       primaryNamespaceId: (map['primaryNamespaceId'] as String).input(),
     );

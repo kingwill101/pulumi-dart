@@ -36,8 +36,8 @@ class GetRoutineArgs {
   factory GetRoutineArgs.fromMap(Map<String, dynamic> map) {
     return GetRoutineArgs(
       datasetId: (map['datasetId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      readMask: map['readMask'] == null ? null : (map['readMask'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      readMask: map['readMask'] == null ? null : (map['readMask']! as String).input(),
       routineId: (map['routineId'] as String).input(),
     );
   }

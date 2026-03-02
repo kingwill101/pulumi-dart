@@ -57,13 +57,13 @@ class GetTransitRouterRouteEntriesArgs {
 
   factory GetTransitRouterRouteEntriesArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterRouteEntriesArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      transitRouterRouteEntryIds: map['transitRouterRouteEntryIds'] == null ? null : ((map['transitRouterRouteEntryIds'] as List).cast<String>()).input(),
-      transitRouterRouteEntryNames: map['transitRouterRouteEntryNames'] == null ? null : ((map['transitRouterRouteEntryNames'] as List).cast<String>()).input(),
-      transitRouterRouteEntryStatus: map['transitRouterRouteEntryStatus'] == null ? null : (map['transitRouterRouteEntryStatus'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      transitRouterRouteEntryIds: map['transitRouterRouteEntryIds'] == null ? null : ((map['transitRouterRouteEntryIds']! as List).cast<String>()).input(),
+      transitRouterRouteEntryNames: map['transitRouterRouteEntryNames'] == null ? null : ((map['transitRouterRouteEntryNames']! as List).cast<String>()).input(),
+      transitRouterRouteEntryStatus: map['transitRouterRouteEntryStatus'] == null ? null : (map['transitRouterRouteEntryStatus']! as String).input(),
       transitRouterRouteTableId: (map['transitRouterRouteTableId'] as String).input(),
     );
   }

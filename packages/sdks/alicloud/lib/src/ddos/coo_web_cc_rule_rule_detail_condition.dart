@@ -37,7 +37,7 @@ class CooWebCcRuleRuleDetailCondition {
     return CooWebCcRuleRuleDetailCondition(
       content: (map['content'] as String).input(),
       field: (map['field'] as String).input(),
-      headerName: map['headerName'] == null ? null : (map['headerName'] as String).input(),
+      headerName: map['headerName'] == null ? null : (map['headerName']! as String).input(),
       matchMethod: (map['matchMethod'] as String).input(),
     );
   }

@@ -51,8 +51,8 @@ class Datastore {
 
   factory Datastore.fromMap(Map<String, dynamic> map) {
     return Datastore(
-      adxClusterResourceId: map['adxClusterResourceId'] == null ? null : (map['adxClusterResourceId'] as String).input(),
-      kustoClusterDisplayName: map['kustoClusterDisplayName'] == null ? null : (map['kustoClusterDisplayName'] as String).input(),
+      adxClusterResourceId: map['adxClusterResourceId'] == null ? null : (map['adxClusterResourceId']! as String).input(),
+      kustoClusterDisplayName: map['kustoClusterDisplayName'] == null ? null : (map['kustoClusterDisplayName']! as String).input(),
       kustoClusterUri: (map['kustoClusterUri'] as String).input(),
       kustoDataIngestionUri: (map['kustoDataIngestionUri'] as String).input(),
       kustoDatabaseName: (map['kustoDatabaseName'] as String).input(),

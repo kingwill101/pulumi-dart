@@ -36,10 +36,10 @@ class GetGenaiModelsResult {
 
   factory GetGenaiModelsResult.fromMap(Map<String, dynamic> map) {
     return GetGenaiModelsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetGenaiModelsFilter>(map['filters'], (value) => GetGenaiModelsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetGenaiModelsFilter>(map['filters']!, (value) => GetGenaiModelsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       models: pulumi.Input.decodeList<GetGenaiModelsModel>(map['models'], (value) => GetGenaiModelsModel.fromMap((value as Map).cast<String, dynamic>())),
-      sorts: map['sorts'] == null ? null : pulumi.Input.decodeList<GetGenaiModelsSort>(map['sorts'], (value) => GetGenaiModelsSort.fromMap((value as Map).cast<String, dynamic>())),
+      sorts: map['sorts'] == null ? null : pulumi.Input.decodeList<GetGenaiModelsSort>(map['sorts']!, (value) => GetGenaiModelsSort.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -71,15 +71,15 @@ class ExtensionsInstanceConfig {
 
   factory ExtensionsInstanceConfig.fromMap(Map<String, dynamic> map) {
     return ExtensionsInstanceConfig(
-      allowedEventTypes: map['allowedEventTypes'] == null ? null : ((map['allowedEventTypes'] as List).cast<String>()).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      eventarcChannel: map['eventarcChannel'] == null ? null : (map['eventarcChannel'] as String).input(),
+      allowedEventTypes: map['allowedEventTypes'] == null ? null : ((map['allowedEventTypes']! as List).cast<String>()).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      eventarcChannel: map['eventarcChannel'] == null ? null : (map['eventarcChannel']! as String).input(),
       extensionRef: (map['extensionRef'] as String).input(),
-      extensionVersion: map['extensionVersion'] == null ? null : (map['extensionVersion'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      extensionVersion: map['extensionVersion'] == null ? null : (map['extensionVersion']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       params: ((map['params'] as Map).cast<String, String>()).input(),
-      populatedPostinstallContent: map['populatedPostinstallContent'] == null ? null : (map['populatedPostinstallContent'] as String).input(),
-      systemParams: map['systemParams'] == null ? null : ((map['systemParams'] as Map).cast<String, String>()).input(),
+      populatedPostinstallContent: map['populatedPostinstallContent'] == null ? null : (map['populatedPostinstallContent']! as String).input(),
+      systemParams: map['systemParams'] == null ? null : ((map['systemParams']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -33,8 +33,8 @@ class WebAclRuleStatementRegexPatternSetReferenceStatement {
   factory WebAclRuleStatementRegexPatternSetReferenceStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRegexPatternSetReferenceStatement(
       arn: (map['arn'] as String).input(),
-      fieldToMatch: map['fieldToMatch'] == null ? null : (WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>())).input(),
-      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementRegexPatternSetReferenceStatementTextTransformation>(map['textTransformations'], (value) => WebAclRuleStatementRegexPatternSetReferenceStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fieldToMatch: map['fieldToMatch'] == null ? null : ((WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input()).input(),
+      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementRegexPatternSetReferenceStatementTextTransformation>(map['textTransformations']!, (value) => WebAclRuleStatementRegexPatternSetReferenceStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

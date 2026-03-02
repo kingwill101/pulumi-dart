@@ -21,7 +21,7 @@ class UserProfileUserSettingsCustomFileSystemConfig {
 
   factory UserProfileUserSettingsCustomFileSystemConfig.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsCustomFileSystemConfig(
-      efsFileSystemConfigs: map['efsFileSystemConfigs'] == null ? null : (pulumi.Input.decodeList<UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig>(map['efsFileSystemConfigs'], (value) => UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      efsFileSystemConfigs: map['efsFileSystemConfigs'] == null ? null : ((pulumi.Input.decodeList<UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig>(map['efsFileSystemConfigs']!, (value) => UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

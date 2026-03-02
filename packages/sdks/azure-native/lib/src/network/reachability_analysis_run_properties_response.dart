@@ -45,7 +45,7 @@ class ReachabilityAnalysisRunPropertiesResponse {
   factory ReachabilityAnalysisRunPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ReachabilityAnalysisRunPropertiesResponse(
       analysisResult: (map['analysisResult'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       errorMessage: (map['errorMessage'] as String).input(),
       intentContent: (IntentContentResponse.fromMap((map['intentContent'] as Map).cast<String, dynamic>())).input(),
       intentId: (map['intentId'] as String).input(),

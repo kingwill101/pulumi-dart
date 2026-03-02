@@ -61,11 +61,11 @@ class NamespaceTopicEventSubscriptionArgs {
 
   factory NamespaceTopicEventSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceTopicEventSubscriptionArgs(
-      deliveryConfiguration: map['deliveryConfiguration'] == null ? null : (DeliveryConfiguration.fromMap((map['deliveryConfiguration'] as Map).cast<String, dynamic>())).input(),
-      eventDeliverySchema: map['eventDeliverySchema'] == null ? null : (map['eventDeliverySchema'] as String).input(),
-      eventSubscriptionName: map['eventSubscriptionName'] == null ? null : (map['eventSubscriptionName'] as String).input(),
-      expirationTimeUtc: map['expirationTimeUtc'] == null ? null : (map['expirationTimeUtc'] as String).input(),
-      filtersConfiguration: map['filtersConfiguration'] == null ? null : (FiltersConfiguration.fromMap((map['filtersConfiguration'] as Map).cast<String, dynamic>())).input(),
+      deliveryConfiguration: map['deliveryConfiguration'] == null ? null : (DeliveryConfiguration.fromMap((map['deliveryConfiguration']! as Map).cast<String, dynamic>())).input(),
+      eventDeliverySchema: map['eventDeliverySchema'] == null ? null : (map['eventDeliverySchema']! as String).input(),
+      eventSubscriptionName: map['eventSubscriptionName'] == null ? null : (map['eventSubscriptionName']! as String).input(),
+      expirationTimeUtc: map['expirationTimeUtc'] == null ? null : (map['expirationTimeUtc']! as String).input(),
+      filtersConfiguration: map['filtersConfiguration'] == null ? null : (FiltersConfiguration.fromMap((map['filtersConfiguration']! as Map).cast<String, dynamic>())).input(),
       namespaceName: (map['namespaceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       topicName: (map['topicName'] as String).input(),

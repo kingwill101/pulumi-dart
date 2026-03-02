@@ -41,11 +41,11 @@ class SpokeLinkedProducerVpcNetwork {
 
   factory SpokeLinkedProducerVpcNetwork.fromMap(Map<String, dynamic> map) {
     return SpokeLinkedProducerVpcNetwork(
-      excludeExportRanges: map['excludeExportRanges'] == null ? null : ((map['excludeExportRanges'] as List).cast<String>()).input(),
-      includeExportRanges: map['includeExportRanges'] == null ? null : ((map['includeExportRanges'] as List).cast<String>()).input(),
+      excludeExportRanges: map['excludeExportRanges'] == null ? null : ((map['excludeExportRanges']! as List).cast<String>()).input(),
+      includeExportRanges: map['includeExportRanges'] == null ? null : ((map['includeExportRanges']! as List).cast<String>()).input(),
       network: (map['network'] as String).input(),
       peering: (map['peering'] as String).input(),
-      producerNetwork: map['producerNetwork'] == null ? null : (map['producerNetwork'] as String).input(),
+      producerNetwork: map['producerNetwork'] == null ? null : (map['producerNetwork']! as String).input(),
     );
   }
 }

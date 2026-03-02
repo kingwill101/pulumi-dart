@@ -26,8 +26,8 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderC
 
   factory AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscovery.fromMap(Map<String, dynamic> map) {
     return AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscovery(
-      authorizationServerMetadata: map['authorizationServerMetadata'] == null ? null : (AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata.fromMap((map['authorizationServerMetadata'] as Map).cast<String, dynamic>())).input(),
-      discoveryUrl: map['discoveryUrl'] == null ? null : (map['discoveryUrl'] as String).input(),
+      authorizationServerMetadata: map['authorizationServerMetadata'] == null ? null : ((AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata.fromMap((map['authorizationServerMetadata']! as Map).cast<String, dynamic>())).input()).input(),
+      discoveryUrl: map['discoveryUrl'] == null ? null : ((map['discoveryUrl'] as String).input()).input(),
     );
   }
 }

@@ -51,13 +51,13 @@ class VswitchState {
 
   factory VswitchState.fromMap(Map<String, dynamic> map) {
     return VswitchState(
-      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ensRegionId: map['ensRegionId'] == null ? null : (map['ensRegionId'] as String).input(),
-      networkId: map['networkId'] == null ? null : (map['networkId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vswitchName: map['vswitchName'] == null ? null : (map['vswitchName'] as String).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ensRegionId: map['ensRegionId'] == null ? null : (map['ensRegionId']! as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vswitchName: map['vswitchName'] == null ? null : (map['vswitchName']! as String).input(),
     );
   }
 }

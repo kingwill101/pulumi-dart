@@ -28,7 +28,7 @@ class TableMaintenanceConfigurationIcebergSnapshotManagement {
 
   factory TableMaintenanceConfigurationIcebergSnapshotManagement.fromMap(Map<String, dynamic> map) {
     return TableMaintenanceConfigurationIcebergSnapshotManagement(
-      settings: (TableMaintenanceConfigurationIcebergSnapshotManagementSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      settings: (TableMaintenanceConfigurationIcebergSnapshotManagementSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
       status: (map['status'] as String).input(),
     );
   }

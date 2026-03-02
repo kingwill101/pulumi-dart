@@ -90,18 +90,18 @@ class GetDatasetResult {
   factory GetDatasetResult.fromMap(Map<String, dynamic> map) {
     return GetDatasetResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      keys: map['keys'] == null ? null : pulumi.Input.decodeMapValues<DatasetPropertyKeyResponse>(map['keys'], (value) => DatasetPropertyKeyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      keys: map['keys'] == null ? null : pulumi.Input.decodeMapValues<DatasetPropertyKeyResponse>(map['keys']!, (value) => DatasetPropertyKeyResponse.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
       name: map['name'] as String,
-      payload: map['payload'] == null ? null : map['payload'] as String,
+      payload: map['payload'] == null ? null : map['payload']! as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      timestamp: map['timestamp'] == null ? null : map['timestamp'] as String,
-      ttl: map['ttl'] == null ? null : map['ttl'] as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      timestamp: map['timestamp'] == null ? null : map['timestamp']! as String,
+      ttl: map['ttl'] == null ? null : map['ttl']! as String,
       type: map['type'] as String,
     );
   }

@@ -35,10 +35,10 @@ class CollectionPolicyCentralizeConfig {
 
   factory CollectionPolicyCentralizeConfig.fromMap(Map<String, dynamic> map) {
     return CollectionPolicyCentralizeConfig(
-      destLogstore: map['destLogstore'] == null ? null : (map['destLogstore'] as String).input(),
-      destProject: map['destProject'] == null ? null : (map['destProject'] as String).input(),
-      destRegion: map['destRegion'] == null ? null : (map['destRegion'] as String).input(),
-      destTtl: map['destTtl'] == null ? null : (map['destTtl'] as int).input(),
+      destLogstore: map['destLogstore'] == null ? null : (map['destLogstore']! as String).input(),
+      destProject: map['destProject'] == null ? null : (map['destProject']! as String).input(),
+      destRegion: map['destRegion'] == null ? null : (map['destRegion']! as String).input(),
+      destTtl: map['destTtl'] == null ? null : (map['destTtl']! as int).input(),
     );
   }
 }

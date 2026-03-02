@@ -22,7 +22,7 @@ class BackupScheduleSpec {
 
   factory BackupScheduleSpec.fromMap(Map<String, dynamic> map) {
     return BackupScheduleSpec(
-      cronSpec: map['cronSpec'] == null ? null : (BackupScheduleSpecCronSpec.fromMap((map['cronSpec'] as Map).cast<String, dynamic>())).input(),
+      cronSpec: map['cronSpec'] == null ? null : (BackupScheduleSpecCronSpec.fromMap((map['cronSpec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

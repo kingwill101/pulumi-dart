@@ -33,9 +33,9 @@ class RoleManagementPolicyNotificationRulesEligibleActivations {
 
   factory RoleManagementPolicyNotificationRulesEligibleActivations.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyNotificationRulesEligibleActivations(
-      adminNotifications: map['adminNotifications'] == null ? null : (RoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications.fromMap((map['adminNotifications'] as Map).cast<String, dynamic>())).input(),
-      approverNotifications: map['approverNotifications'] == null ? null : (RoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications.fromMap((map['approverNotifications'] as Map).cast<String, dynamic>())).input(),
-      assigneeNotifications: map['assigneeNotifications'] == null ? null : (RoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications.fromMap((map['assigneeNotifications'] as Map).cast<String, dynamic>())).input(),
+      adminNotifications: map['adminNotifications'] == null ? null : (RoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications.fromMap((map['adminNotifications']! as Map).cast<String, dynamic>())).input(),
+      approverNotifications: map['approverNotifications'] == null ? null : (RoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications.fromMap((map['approverNotifications']! as Map).cast<String, dynamic>())).input(),
+      assigneeNotifications: map['assigneeNotifications'] == null ? null : (RoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications.fromMap((map['assigneeNotifications']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

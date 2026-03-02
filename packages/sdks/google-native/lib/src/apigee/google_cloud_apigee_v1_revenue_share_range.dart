@@ -31,9 +31,9 @@ class GoogleCloudApigeeV1RevenueShareRange {
 
   factory GoogleCloudApigeeV1RevenueShareRange.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1RevenueShareRange(
-      end: map['end'] == null ? null : (map['end'] as String).input(),
-      sharePercentage: map['sharePercentage'] == null ? null : (map['sharePercentage'] as double).input(),
-      start: map['start'] == null ? null : (map['start'] as String).input(),
+      end: map['end'] == null ? null : (map['end']! as String).input(),
+      sharePercentage: map['sharePercentage'] == null ? null : (map['sharePercentage']! as double).input(),
+      start: map['start'] == null ? null : (map['start']! as String).input(),
     );
   }
 }

@@ -130,21 +130,21 @@ class URLMapState {
 
   factory URLMapState.fromMap(Map<String, dynamic> map) {
     return URLMapState(
-      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
-      defaultCustomErrorResponsePolicy: map['defaultCustomErrorResponsePolicy'] == null ? null : (URLMapDefaultCustomErrorResponsePolicy.fromMap((map['defaultCustomErrorResponsePolicy'] as Map).cast<String, dynamic>())).input(),
-      defaultRouteAction: map['defaultRouteAction'] == null ? null : (URLMapDefaultRouteAction.fromMap((map['defaultRouteAction'] as Map).cast<String, dynamic>())).input(),
-      defaultService: map['defaultService'] == null ? null : (map['defaultService'] as String).input(),
-      defaultUrlRedirect: map['defaultUrlRedirect'] == null ? null : (URLMapDefaultUrlRedirect.fromMap((map['defaultUrlRedirect'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
-      headerAction: map['headerAction'] == null ? null : (URLMapHeaderAction.fromMap((map['headerAction'] as Map).cast<String, dynamic>())).input(),
-      hostRules: map['hostRules'] == null ? null : (pulumi.Input.decodeList<URLMapHostRule>(map['hostRules'], (value) => URLMapHostRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mapId: map['mapId'] == null ? null : (map['mapId'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pathMatchers: map['pathMatchers'] == null ? null : (pulumi.Input.decodeList<URLMapPathMatcher>(map['pathMatchers'], (value) => URLMapPathMatcher.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      tests: map['tests'] == null ? null : (pulumi.Input.decodeList<URLMapTest>(map['tests'], (value) => URLMapTest.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp']! as String).input(),
+      defaultCustomErrorResponsePolicy: map['defaultCustomErrorResponsePolicy'] == null ? null : (URLMapDefaultCustomErrorResponsePolicy.fromMap((map['defaultCustomErrorResponsePolicy']! as Map).cast<String, dynamic>())).input(),
+      defaultRouteAction: map['defaultRouteAction'] == null ? null : (URLMapDefaultRouteAction.fromMap((map['defaultRouteAction']! as Map).cast<String, dynamic>())).input(),
+      defaultService: map['defaultService'] == null ? null : (map['defaultService']! as String).input(),
+      defaultUrlRedirect: map['defaultUrlRedirect'] == null ? null : (URLMapDefaultUrlRedirect.fromMap((map['defaultUrlRedirect']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint']! as String).input(),
+      headerAction: map['headerAction'] == null ? null : (URLMapHeaderAction.fromMap((map['headerAction']! as Map).cast<String, dynamic>())).input(),
+      hostRules: map['hostRules'] == null ? null : (pulumi.Input.decodeList<URLMapHostRule>(map['hostRules']!, (value) => URLMapHostRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mapId: map['mapId'] == null ? null : (map['mapId']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pathMatchers: map['pathMatchers'] == null ? null : (pulumi.Input.decodeList<URLMapPathMatcher>(map['pathMatchers']!, (value) => URLMapPathMatcher.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      tests: map['tests'] == null ? null : (pulumi.Input.decodeList<URLMapTest>(map['tests']!, (value) => URLMapTest.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

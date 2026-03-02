@@ -27,8 +27,8 @@ class GoogleCloudDialogflowCxV3ExperimentResult {
 
   factory GoogleCloudDialogflowCxV3ExperimentResult.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3ExperimentResult(
-      lastUpdateTime: map['lastUpdateTime'] == null ? null : (map['lastUpdateTime'] as String).input(),
-      versionMetrics: map['versionMetrics'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics>(map['versionMetrics'], (value) => GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastUpdateTime: map['lastUpdateTime'] == null ? null : (map['lastUpdateTime']! as String).input(),
+      versionMetrics: map['versionMetrics'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics>(map['versionMetrics']!, (value) => GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

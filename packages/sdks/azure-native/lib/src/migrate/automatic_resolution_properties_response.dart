@@ -22,7 +22,7 @@ class AutomaticResolutionPropertiesResponse {
 
   factory AutomaticResolutionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AutomaticResolutionPropertiesResponse(
-      moveResourceId: map['moveResourceId'] == null ? null : (map['moveResourceId'] as String).input(),
+      moveResourceId: map['moveResourceId'] == null ? null : (map['moveResourceId']! as String).input(),
     );
   }
 }

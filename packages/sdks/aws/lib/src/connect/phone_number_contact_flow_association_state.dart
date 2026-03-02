@@ -36,10 +36,10 @@ class PhoneNumberContactFlowAssociationState {
 
   factory PhoneNumberContactFlowAssociationState.fromMap(Map<String, dynamic> map) {
     return PhoneNumberContactFlowAssociationState(
-      contactFlowId: map['contactFlowId'] == null ? null : (map['contactFlowId'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      phoneNumberId: map['phoneNumberId'] == null ? null : (map['phoneNumberId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      contactFlowId: map['contactFlowId'] == null ? null : ((map['contactFlowId'] as String).input()).input(),
+      instanceId: map['instanceId'] == null ? null : ((map['instanceId'] as String).input()).input(),
+      phoneNumberId: map['phoneNumberId'] == null ? null : ((map['phoneNumberId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

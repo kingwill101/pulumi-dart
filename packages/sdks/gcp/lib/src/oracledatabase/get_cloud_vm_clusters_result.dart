@@ -37,7 +37,7 @@ class GetCloudVmClustersResult {
       cloudVmClusters: pulumi.Input.decodeList<GetCloudVmClustersCloudVmCluster>(map['cloudVmClusters'], (value) => GetCloudVmClustersCloudVmCluster.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       location: map['location'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
     );
   }
 }

@@ -52,10 +52,10 @@ class RestoreArgs {
   factory RestoreArgs.fromMap(Map<String, dynamic> map) {
     return RestoreArgs(
       backup: (map['backup'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       restoreId: (map['restoreId'] as String).input(),
       restorePlanId: (map['restorePlanId'] as String).input(),
     );

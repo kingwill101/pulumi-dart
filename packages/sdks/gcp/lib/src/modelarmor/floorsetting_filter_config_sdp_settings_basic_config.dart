@@ -24,7 +24,7 @@ class FloorsettingFilterConfigSdpSettingsBasicConfig {
 
   factory FloorsettingFilterConfigSdpSettingsBasicConfig.fromMap(Map<String, dynamic> map) {
     return FloorsettingFilterConfigSdpSettingsBasicConfig(
-      filterEnforcement: map['filterEnforcement'] == null ? null : (map['filterEnforcement'] as String).input(),
+      filterEnforcement: map['filterEnforcement'] == null ? null : (map['filterEnforcement']! as String).input(),
     );
   }
 }

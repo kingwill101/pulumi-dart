@@ -43,10 +43,10 @@ class SqlDatabaseResourceSettings {
   factory SqlDatabaseResourceSettings.fromMap(Map<String, dynamic> map) {
     return SqlDatabaseResourceSettings(
       resourceType: (map['resourceType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : (map['targetResourceGroupName'] as String).input(),
-      targetResourceName: map['targetResourceName'] == null ? null : (map['targetResourceName'] as String).input(),
-      zoneRedundant: map['zoneRedundant'] == null ? null : (map['zoneRedundant'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : (map['targetResourceGroupName']! as String).input(),
+      targetResourceName: map['targetResourceName'] == null ? null : (map['targetResourceName']! as String).input(),
+      zoneRedundant: map['zoneRedundant'] == null ? null : (map['zoneRedundant']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class DataLakeServiceStorageAuthentication {
 
   factory DataLakeServiceStorageAuthentication.fromMap(Map<String, dynamic> map) {
     return DataLakeServiceStorageAuthentication(
-      accessTokenSecretName: map['accessTokenSecretName'] == null ? null : (map['accessTokenSecretName'] as String).input(),
-      systemAssignedManagedIdentity: map['systemAssignedManagedIdentity'] == null ? null : (ManagedIdentityAuthentication.fromMap((map['systemAssignedManagedIdentity'] as Map).cast<String, dynamic>())).input(),
+      accessTokenSecretName: map['accessTokenSecretName'] == null ? null : (map['accessTokenSecretName']! as String).input(),
+      systemAssignedManagedIdentity: map['systemAssignedManagedIdentity'] == null ? null : (ManagedIdentityAuthentication.fromMap((map['systemAssignedManagedIdentity']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

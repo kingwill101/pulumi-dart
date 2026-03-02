@@ -37,9 +37,9 @@ class CxPageKnowledgeConnectorSettingsDataStoreConnection {
 
   factory CxPageKnowledgeConnectorSettingsDataStoreConnection.fromMap(Map<String, dynamic> map) {
     return CxPageKnowledgeConnectorSettingsDataStoreConnection(
-      dataStore: map['dataStore'] == null ? null : (map['dataStore'] as String).input(),
-      dataStoreType: map['dataStoreType'] == null ? null : (map['dataStoreType'] as String).input(),
-      documentProcessingMode: map['documentProcessingMode'] == null ? null : (map['documentProcessingMode'] as String).input(),
+      dataStore: map['dataStore'] == null ? null : (map['dataStore']! as String).input(),
+      dataStoreType: map['dataStoreType'] == null ? null : (map['dataStoreType']! as String).input(),
+      documentProcessingMode: map['documentProcessingMode'] == null ? null : (map['documentProcessingMode']! as String).input(),
     );
   }
 }

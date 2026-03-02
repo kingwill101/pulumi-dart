@@ -33,10 +33,10 @@ class PrivateEndpointDestination {
 
   factory PrivateEndpointDestination.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointDestination(
-      serviceResourceId: map['serviceResourceId'] == null ? null : (map['serviceResourceId'] as String).input(),
-      sparkEnabled: map['sparkEnabled'] == null ? null : (map['sparkEnabled'] as bool).input(),
-      sparkStatus: map['sparkStatus'] == null ? null : (map['sparkStatus'] as String).input(),
-      subresourceTarget: map['subresourceTarget'] == null ? null : (map['subresourceTarget'] as String).input(),
+      serviceResourceId: map['serviceResourceId'] == null ? null : (map['serviceResourceId']! as String).input(),
+      sparkEnabled: map['sparkEnabled'] == null ? null : (map['sparkEnabled']! as bool).input(),
+      sparkStatus: map['sparkStatus'] == null ? null : (map['sparkStatus']! as String).input(),
+      subresourceTarget: map['subresourceTarget'] == null ? null : (map['subresourceTarget']! as String).input(),
     );
   }
 }

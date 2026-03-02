@@ -37,10 +37,10 @@ class Scope {
 
   factory Scope.fromMap(Map<String, dynamic> map) {
     return Scope(
-      managementGroups: map['managementGroups'] == null ? null : (pulumi.Input.decodeList<ResourceId>(map['managementGroups'], (value) => ResourceId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<ResourceId>(map['subnets'], (value) => ResourceId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subscriptions: map['subscriptions'] == null ? null : (pulumi.Input.decodeList<ResourceId>(map['subscriptions'], (value) => ResourceId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      virtualNetworks: map['virtualNetworks'] == null ? null : (pulumi.Input.decodeList<ResourceId>(map['virtualNetworks'], (value) => ResourceId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managementGroups: map['managementGroups'] == null ? null : (pulumi.Input.decodeList<ResourceId>(map['managementGroups']!, (value) => ResourceId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<ResourceId>(map['subnets']!, (value) => ResourceId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subscriptions: map['subscriptions'] == null ? null : (pulumi.Input.decodeList<ResourceId>(map['subscriptions']!, (value) => ResourceId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualNetworks: map['virtualNetworks'] == null ? null : (pulumi.Input.decodeList<ResourceId>(map['virtualNetworks']!, (value) => ResourceId.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

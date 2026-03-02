@@ -47,12 +47,12 @@ class GremlinGraphIndexPolicy {
 
   factory GremlinGraphIndexPolicy.fromMap(Map<String, dynamic> map) {
     return GremlinGraphIndexPolicy(
-      automatic: map['automatic'] == null ? null : (map['automatic'] as bool).input(),
-      compositeIndices: map['compositeIndices'] == null ? null : (pulumi.Input.decodeList<GremlinGraphIndexPolicyCompositeIndex>(map['compositeIndices'], (value) => GremlinGraphIndexPolicyCompositeIndex.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      excludedPaths: map['excludedPaths'] == null ? null : ((map['excludedPaths'] as List).cast<String>()).input(),
-      includedPaths: map['includedPaths'] == null ? null : ((map['includedPaths'] as List).cast<String>()).input(),
+      automatic: map['automatic'] == null ? null : (map['automatic']! as bool).input(),
+      compositeIndices: map['compositeIndices'] == null ? null : (pulumi.Input.decodeList<GremlinGraphIndexPolicyCompositeIndex>(map['compositeIndices']!, (value) => GremlinGraphIndexPolicyCompositeIndex.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      excludedPaths: map['excludedPaths'] == null ? null : ((map['excludedPaths']! as List).cast<String>()).input(),
+      includedPaths: map['includedPaths'] == null ? null : ((map['includedPaths']! as List).cast<String>()).input(),
       indexingMode: (map['indexingMode'] as String).input(),
-      spatialIndices: map['spatialIndices'] == null ? null : (pulumi.Input.decodeList<GremlinGraphIndexPolicySpatialIndex>(map['spatialIndices'], (value) => GremlinGraphIndexPolicySpatialIndex.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      spatialIndices: map['spatialIndices'] == null ? null : (pulumi.Input.decodeList<GremlinGraphIndexPolicySpatialIndex>(map['spatialIndices']!, (value) => GremlinGraphIndexPolicySpatialIndex.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

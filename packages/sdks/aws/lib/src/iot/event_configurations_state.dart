@@ -26,8 +26,8 @@ class EventConfigurationsState {
 
   factory EventConfigurationsState.fromMap(Map<String, dynamic> map) {
     return EventConfigurationsState(
-      eventConfigurations: map['eventConfigurations'] == null ? null : ((map['eventConfigurations'] as Map).cast<String, bool>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      eventConfigurations: map['eventConfigurations'] == null ? null : (((map['eventConfigurations'] as Map).cast<String, bool>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

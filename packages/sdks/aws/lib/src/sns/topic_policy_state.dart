@@ -36,10 +36,10 @@ class TopicPolicyState {
 
   factory TopicPolicyState.fromMap(Map<String, dynamic> map) {
     return TopicPolicyState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      owner: map['owner'] == null ? null : ((map['owner'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

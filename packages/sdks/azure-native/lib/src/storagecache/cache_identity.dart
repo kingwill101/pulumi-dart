@@ -27,8 +27,8 @@ class CacheIdentity {
 
   factory CacheIdentity.fromMap(Map<String, dynamic> map) {
     return CacheIdentity(
-      type: map['type'] == null ? null : (CacheIdentityType.fromValue(map['type'] as String)).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities'] as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (CacheIdentityType.fromValue(map['type']! as String)).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities']! as List).cast<String>()).input(),
     );
   }
 }

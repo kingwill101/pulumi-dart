@@ -36,10 +36,10 @@ class StandardSchedulerSettingsAppengineV1beta {
 
   factory StandardSchedulerSettingsAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return StandardSchedulerSettingsAppengineV1beta(
-      maxInstances: map['maxInstances'] == null ? null : (map['maxInstances'] as int).input(),
-      minInstances: map['minInstances'] == null ? null : (map['minInstances'] as int).input(),
-      targetCpuUtilization: map['targetCpuUtilization'] == null ? null : (map['targetCpuUtilization'] as double).input(),
-      targetThroughputUtilization: map['targetThroughputUtilization'] == null ? null : (map['targetThroughputUtilization'] as double).input(),
+      maxInstances: map['maxInstances'] == null ? null : (map['maxInstances']! as int).input(),
+      minInstances: map['minInstances'] == null ? null : (map['minInstances']! as int).input(),
+      targetCpuUtilization: map['targetCpuUtilization'] == null ? null : (map['targetCpuUtilization']! as double).input(),
+      targetThroughputUtilization: map['targetThroughputUtilization'] == null ? null : (map['targetThroughputUtilization']! as double).input(),
     );
   }
 }

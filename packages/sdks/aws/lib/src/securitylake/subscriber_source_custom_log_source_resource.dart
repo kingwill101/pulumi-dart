@@ -37,10 +37,10 @@ class SubscriberSourceCustomLogSourceResource {
 
   factory SubscriberSourceCustomLogSourceResource.fromMap(Map<String, dynamic> map) {
     return SubscriberSourceCustomLogSourceResource(
-      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<SubscriberSourceCustomLogSourceResourceAttribute>(map['attributes'], (value) => SubscriberSourceCustomLogSourceResourceAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      providers: map['providers'] == null ? null : (pulumi.Input.decodeList<SubscriberSourceCustomLogSourceResourceProvider>(map['providers'], (value) => SubscriberSourceCustomLogSourceResourceProvider.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      attributes: map['attributes'] == null ? null : ((pulumi.Input.decodeList<SubscriberSourceCustomLogSourceResourceAttribute>(map['attributes']!, (value) => SubscriberSourceCustomLogSourceResourceAttribute.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      providers: map['providers'] == null ? null : ((pulumi.Input.decodeList<SubscriberSourceCustomLogSourceResourceProvider>(map['providers']!, (value) => SubscriberSourceCustomLogSourceResourceProvider.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       sourceName: (map['sourceName'] as String).input(),
-      sourceVersion: map['sourceVersion'] == null ? null : (map['sourceVersion'] as String).input(),
+      sourceVersion: map['sourceVersion'] == null ? null : ((map['sourceVersion'] as String).input()).input(),
     );
   }
 }

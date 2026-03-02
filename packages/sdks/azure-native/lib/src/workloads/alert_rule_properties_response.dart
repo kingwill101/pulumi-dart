@@ -82,19 +82,19 @@ class AlertRulePropertiesResponse {
 
   factory AlertRulePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AlertRulePropertiesResponse(
-      actionGroups: map['actionGroups'] == null ? null : ((map['actionGroups'] as List).cast<String>()).input(),
-      alertQueryParameters: map['alertQueryParameters'] == null ? null : (pulumi.Input.decodeList<AlertQueryParameterResponse>(map['alertQueryParameters'], (value) => AlertQueryParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      autoMitigate: map['autoMitigate'] == null ? null : (map['autoMitigate'] as String).input(),
-      dimension: map['dimension'] == null ? null : (map['dimension'] as String).input(),
-      evaluationFrequency: map['evaluationFrequency'] == null ? null : (map['evaluationFrequency'] as int).input(),
-      failingPeriodsOperator: map['failingPeriodsOperator'] == null ? null : (map['failingPeriodsOperator'] as String).input(),
-      failingPeriodsToAlert: map['failingPeriodsToAlert'] == null ? null : (map['failingPeriodsToAlert'] as int).input(),
-      muteActionsDuration: map['muteActionsDuration'] == null ? null : (map['muteActionsDuration'] as int).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold'] as int).input(),
-      thresholdOperator: map['thresholdOperator'] == null ? null : (map['thresholdOperator'] as String).input(),
-      windowSize: map['windowSize'] == null ? null : (map['windowSize'] as int).input(),
+      actionGroups: map['actionGroups'] == null ? null : ((map['actionGroups']! as List).cast<String>()).input(),
+      alertQueryParameters: map['alertQueryParameters'] == null ? null : (pulumi.Input.decodeList<AlertQueryParameterResponse>(map['alertQueryParameters']!, (value) => AlertQueryParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoMitigate: map['autoMitigate'] == null ? null : (map['autoMitigate']! as String).input(),
+      dimension: map['dimension'] == null ? null : (map['dimension']! as String).input(),
+      evaluationFrequency: map['evaluationFrequency'] == null ? null : (map['evaluationFrequency']! as int).input(),
+      failingPeriodsOperator: map['failingPeriodsOperator'] == null ? null : (map['failingPeriodsOperator']! as String).input(),
+      failingPeriodsToAlert: map['failingPeriodsToAlert'] == null ? null : (map['failingPeriodsToAlert']! as int).input(),
+      muteActionsDuration: map['muteActionsDuration'] == null ? null : (map['muteActionsDuration']! as int).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold']! as int).input(),
+      thresholdOperator: map['thresholdOperator'] == null ? null : (map['thresholdOperator']! as String).input(),
+      windowSize: map['windowSize'] == null ? null : (map['windowSize']! as int).input(),
     );
   }
 }

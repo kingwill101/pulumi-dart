@@ -48,9 +48,9 @@ class VpcEndpointConnectionNotificationArgs {
     return VpcEndpointConnectionNotificationArgs(
       connectionEvents: ((map['connectionEvents'] as List).cast<String>()).input(),
       connectionNotificationArn: (map['connectionNotificationArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : (map['vpcEndpointId'] as String).input(),
-      vpcEndpointServiceId: map['vpcEndpointServiceId'] == null ? null : (map['vpcEndpointServiceId'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      vpcEndpointId: map['vpcEndpointId'] == null ? null : ((map['vpcEndpointId'] as String).input()).input(),
+      vpcEndpointServiceId: map['vpcEndpointServiceId'] == null ? null : ((map['vpcEndpointServiceId'] as String).input()).input(),
     );
   }
 }

@@ -36,7 +36,7 @@ class GetBrokerNodesResult {
     return GetBrokerNodesResult(
       clusterArn: map['clusterArn'] as String,
       id: map['id'] as String,
-      nodeInfoLists: pulumi.Input.decodeList<GetBrokerNodesNodeInfoList>(map['nodeInfoLists'], (value) => GetBrokerNodesNodeInfoList.fromMap((value as Map).cast<String, dynamic>())),
+      nodeInfoLists: pulumi.Input.decodeList<GetBrokerNodesNodeInfoList>(map['nodeInfoLists']!, (value) => GetBrokerNodesNodeInfoList.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
     );
   }

@@ -29,7 +29,7 @@ class GetSshKeyArgs {
 
   factory GetSshKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetSshKeyArgs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       label: (map['label'] as String).input(),
     );
   }

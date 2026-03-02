@@ -25,8 +25,8 @@ class OntapVolumeSnaplockConfigurationRetentionPeriodMinimumRetention {
 
   factory OntapVolumeSnaplockConfigurationRetentionPeriodMinimumRetention.fromMap(Map<String, dynamic> map) {
     return OntapVolumeSnaplockConfigurationRetentionPeriodMinimumRetention(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as int).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      value: map['value'] == null ? null : ((map['value'] as int).input()).input(),
     );
   }
 }

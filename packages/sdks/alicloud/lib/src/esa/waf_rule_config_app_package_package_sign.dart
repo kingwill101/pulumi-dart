@@ -24,8 +24,8 @@ class WafRuleConfigAppPackagePackageSign {
 
   factory WafRuleConfigAppPackagePackageSign.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigAppPackagePackageSign(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sign: map['sign'] == null ? null : (map['sign'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sign: map['sign'] == null ? null : (map['sign']! as String).input(),
     );
   }
 }

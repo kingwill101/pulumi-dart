@@ -31,9 +31,9 @@ class EndpointAccessVpcEndpoint {
 
   factory EndpointAccessVpcEndpoint.fromMap(Map<String, dynamic> map) {
     return EndpointAccessVpcEndpoint(
-      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<EndpointAccessVpcEndpointNetworkInterface>(map['networkInterfaces'], (value) => EndpointAccessVpcEndpointNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : (map['vpcEndpointId'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      networkInterfaces: map['networkInterfaces'] == null ? null : ((pulumi.Input.decodeList<EndpointAccessVpcEndpointNetworkInterface>(map['networkInterfaces']!, (value) => EndpointAccessVpcEndpointNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      vpcEndpointId: map['vpcEndpointId'] == null ? null : ((map['vpcEndpointId'] as String).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

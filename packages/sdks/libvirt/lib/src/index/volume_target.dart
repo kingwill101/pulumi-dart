@@ -64,15 +64,15 @@ class VolumeTarget {
 
   factory VolumeTarget.fromMap(Map<String, dynamic> map) {
     return VolumeTarget(
-      clusterSize: map['clusterSize'] == null ? null : (map['clusterSize'] as double).input(),
-      clusterSizeUnit: map['clusterSizeUnit'] == null ? null : (map['clusterSizeUnit'] as String).input(),
-      compat: map['compat'] == null ? null : (map['compat'] as String).input(),
-      encryption: map['encryption'] == null ? null : (VolumeTargetEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      features: map['features'] == null ? null : ((map['features'] as List).cast<Map<String, dynamic>>()).input(),
-      format: map['format'] == null ? null : (VolumeTargetFormat.fromMap((map['format'] as Map).cast<String, dynamic>())).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      permissions: map['permissions'] == null ? null : (VolumeTargetPermissions.fromMap((map['permissions'] as Map).cast<String, dynamic>())).input(),
-      timestamps: map['timestamps'] == null ? null : (VolumeTargetTimestamps.fromMap((map['timestamps'] as Map).cast<String, dynamic>())).input(),
+      clusterSize: map['clusterSize'] == null ? null : (map['clusterSize']! as double).input(),
+      clusterSizeUnit: map['clusterSizeUnit'] == null ? null : (map['clusterSizeUnit']! as String).input(),
+      compat: map['compat'] == null ? null : (map['compat']! as String).input(),
+      encryption: map['encryption'] == null ? null : (VolumeTargetEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      features: map['features'] == null ? null : ((map['features']! as List).cast<Map<String, dynamic>>()).input(),
+      format: map['format'] == null ? null : (VolumeTargetFormat.fromMap((map['format']! as Map).cast<String, dynamic>())).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      permissions: map['permissions'] == null ? null : (VolumeTargetPermissions.fromMap((map['permissions']! as Map).cast<String, dynamic>())).input(),
+      timestamps: map['timestamps'] == null ? null : (VolumeTargetTimestamps.fromMap((map['timestamps']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

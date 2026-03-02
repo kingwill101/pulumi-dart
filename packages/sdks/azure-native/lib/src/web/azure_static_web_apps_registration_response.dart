@@ -21,7 +21,7 @@ class AzureStaticWebAppsRegistrationResponse {
 
   factory AzureStaticWebAppsRegistrationResponse.fromMap(Map<String, dynamic> map) {
     return AzureStaticWebAppsRegistrationResponse(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
     );
   }
 }

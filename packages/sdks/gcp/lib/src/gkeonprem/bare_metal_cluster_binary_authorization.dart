@@ -22,7 +22,7 @@ class BareMetalClusterBinaryAuthorization {
 
   factory BareMetalClusterBinaryAuthorization.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterBinaryAuthorization(
-      evaluationMode: map['evaluationMode'] == null ? null : (map['evaluationMode'] as String).input(),
+      evaluationMode: map['evaluationMode'] == null ? null : (map['evaluationMode']! as String).input(),
     );
   }
 }

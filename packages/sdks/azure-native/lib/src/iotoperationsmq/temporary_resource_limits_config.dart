@@ -54,7 +54,7 @@ class TemporaryResourceLimitsConfig {
       maxInflightMessages: (map['maxInflightMessages'] as int).input(),
       maxInflightPatches: (map['maxInflightPatches'] as int).input(),
       maxInflightPatchesPerClient: (map['maxInflightPatchesPerClient'] as int).input(),
-      maxMessageExpirySecs: map['maxMessageExpirySecs'] == null ? null : (map['maxMessageExpirySecs'] as double).input(),
+      maxMessageExpirySecs: map['maxMessageExpirySecs'] == null ? null : (map['maxMessageExpirySecs']! as double).input(),
       maxQueuedMessages: (map['maxQueuedMessages'] as double).input(),
       maxQueuedQos0Messages: (map['maxQueuedQos0Messages'] as double).input(),
       maxSessionExpirySecs: (map['maxSessionExpirySecs'] as double).input(),

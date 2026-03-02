@@ -63,15 +63,15 @@ class GetEcsLaunchTemplatesResult {
 
   factory GetEcsLaunchTemplatesResult.fromMap(Map<String, dynamic> map) {
     return GetEcsLaunchTemplatesResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      launchTemplateName: map['launchTemplateName'] == null ? null : map['launchTemplateName'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      launchTemplateName: map['launchTemplateName'] == null ? null : map['launchTemplateName']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      templateResourceGroupId: map['templateResourceGroupId'] == null ? null : map['templateResourceGroupId'] as String,
-      templateTags: map['templateTags'] == null ? null : (map['templateTags'] as Map).cast<String, String>(),
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      templateResourceGroupId: map['templateResourceGroupId'] == null ? null : map['templateResourceGroupId']! as String,
+      templateTags: map['templateTags'] == null ? null : (map['templateTags']! as Map).cast<String, String>(),
       templates: pulumi.Input.decodeList<GetEcsLaunchTemplatesTemplate>(map['templates'], (value) => GetEcsLaunchTemplatesTemplate.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

@@ -26,7 +26,7 @@ class ProjectsPolicyBindingTarget {
 
   factory ProjectsPolicyBindingTarget.fromMap(Map<String, dynamic> map) {
     return ProjectsPolicyBindingTarget(
-      principalSet: map['principalSet'] == null ? null : (map['principalSet'] as String).input(),
+      principalSet: map['principalSet'] == null ? null : (map['principalSet']! as String).input(),
     );
   }
 }

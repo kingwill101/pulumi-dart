@@ -31,9 +31,9 @@ class Taint {
 
   factory Taint.fromMap(Map<String, dynamic> map) {
     return Taint(
-      effect: map['effect'] == null ? null : (map['effect'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      effect: map['effect'] == null ? null : (map['effect']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -49,11 +49,11 @@ class LinuxConfiguration {
 
   factory LinuxConfiguration.fromMap(Map<String, dynamic> map) {
     return LinuxConfiguration(
-      disablePasswordAuthentication: map['disablePasswordAuthentication'] == null ? null : (map['disablePasswordAuthentication'] as bool).input(),
-      enableVMAgentPlatformUpdates: map['enableVMAgentPlatformUpdates'] == null ? null : (map['enableVMAgentPlatformUpdates'] as bool).input(),
-      patchSettings: map['patchSettings'] == null ? null : (LinuxPatchSettings.fromMap((map['patchSettings'] as Map).cast<String, dynamic>())).input(),
-      provisionVMAgent: map['provisionVMAgent'] == null ? null : (map['provisionVMAgent'] as bool).input(),
-      ssh: map['ssh'] == null ? null : (SshConfiguration.fromMap((map['ssh'] as Map).cast<String, dynamic>())).input(),
+      disablePasswordAuthentication: map['disablePasswordAuthentication'] == null ? null : (map['disablePasswordAuthentication']! as bool).input(),
+      enableVMAgentPlatformUpdates: map['enableVMAgentPlatformUpdates'] == null ? null : (map['enableVMAgentPlatformUpdates']! as bool).input(),
+      patchSettings: map['patchSettings'] == null ? null : (LinuxPatchSettings.fromMap((map['patchSettings']! as Map).cast<String, dynamic>())).input(),
+      provisionVMAgent: map['provisionVMAgent'] == null ? null : (map['provisionVMAgent']! as bool).input(),
+      ssh: map['ssh'] == null ? null : (SshConfiguration.fromMap((map['ssh']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

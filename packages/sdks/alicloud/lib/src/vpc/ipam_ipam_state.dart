@@ -62,15 +62,15 @@ class IpamIpamState {
 
   factory IpamIpamState.fromMap(Map<String, dynamic> map) {
     return IpamIpamState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      ipamDescription: map['ipamDescription'] == null ? null : (map['ipamDescription'] as String).input(),
-      ipamName: map['ipamName'] == null ? null : (map['ipamName'] as String).input(),
-      operatingRegionLists: map['operatingRegionLists'] == null ? null : ((map['operatingRegionLists'] as List).cast<String>()).input(),
-      privateDefaultScopeId: map['privateDefaultScopeId'] == null ? null : (map['privateDefaultScopeId'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      ipamDescription: map['ipamDescription'] == null ? null : (map['ipamDescription']! as String).input(),
+      ipamName: map['ipamName'] == null ? null : (map['ipamName']! as String).input(),
+      operatingRegionLists: map['operatingRegionLists'] == null ? null : ((map['operatingRegionLists']! as List).cast<String>()).input(),
+      privateDefaultScopeId: map['privateDefaultScopeId'] == null ? null : (map['privateDefaultScopeId']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -30,7 +30,7 @@ class GetServerlessCacheArgs {
   factory GetServerlessCacheArgs.fromMap(Map<String, dynamic> map) {
     return GetServerlessCacheArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

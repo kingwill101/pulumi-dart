@@ -31,9 +31,9 @@ class IngressPolicyState {
 
   factory IngressPolicyState.fromMap(Map<String, dynamic> map) {
     return IngressPolicyState(
-      accessPolicyId: map['accessPolicyId'] == null ? null : (map['accessPolicyId'] as String).input(),
-      ingressPolicyName: map['ingressPolicyName'] == null ? null : (map['ingressPolicyName'] as String).input(),
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
+      accessPolicyId: map['accessPolicyId'] == null ? null : (map['accessPolicyId']! as String).input(),
+      ingressPolicyName: map['ingressPolicyName'] == null ? null : (map['ingressPolicyName']! as String).input(),
+      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
     );
   }
 }

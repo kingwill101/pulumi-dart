@@ -49,18 +49,18 @@ class ExampleStack extends pulumi.Stack {
         initialNodeCount: 2.output(),
         nodeConfig: gcp.container
             .NodePoolNodeConfig(
-              preemptible: true,
-              machineType: 'n1-standard-1',
+              preemptible: true.output(),
+              machineType: 'n1-standard-1'.output(),
               oauthScopes: const [
                 'https://www.googleapis.com/auth/compute',
                 'https://www.googleapis.com/auth/devstorage.read_only',
                 'https://www.googleapis.com/auth/logging.write',
                 'https://www.googleapis.com/auth/monitoring',
-              ],
+              ].output(),
             )
             .output(),
         version: masterVersion,
-        management: gcp.container.NodePoolManagement(autoRepair: true).output(),
+        management: gcp.container.NodePoolManagement(autoRepair: true.output()).output(),
       ),
       options: pulumi.CustomResourceOptions(dependsOn: [cluster]),
     );
@@ -123,25 +123,31 @@ users:
       name,
       args: k8sapps.DeploymentArgs(
         metadata: namespaceName.apply(
-          (ns) => k8smeta.ObjectMeta(namespace: ns, labels: appLabels),
+          (ns) =>
+              k8smeta.ObjectMeta(namespace: ns, labels: appLabels.output()).output(),
         ),
         spec: k8sapps.DeploymentSpec(
-          replicas: 1,
-          selector: k8smeta.LabelSelector(matchLabels: appLabels),
+          replicas: 1.output(),
+          selector: k8smeta.LabelSelector(
+            matchLabels: appLabels.output(),
+          ).output(),
           template: k8score.PodTemplateSpec(
-            metadata: k8smeta.ObjectMeta(labels: appLabels),
+            metadata: k8smeta.ObjectMeta(labels: appLabels.output()).output(),
             spec: k8score.PodSpec(
               containers: [
                 k8score.Container(
-                  name: name,
-                  image: 'nginx:latest',
+                  name: name.output(),
+                  image: 'nginx:latest'.output(),
                   ports: [
-                    k8score.ContainerPort(name: 'http', containerPort: 80),
-                  ],
+                    k8score.ContainerPort(
+                      name: 'http'.output(),
+                      containerPort: 80.output(),
+                    ),
+                  ].output(),
                 ),
-              ],
-            ),
-          ),
+              ].output(),
+            ).output(),
+          ).output(),
         ).output(),
       ),
       options: pulumi.CustomResourceOptions(provider: clusterProvider),
@@ -151,24 +157,28 @@ users:
       name,
       args: k8score.ServiceArgs(
         metadata: namespaceName.apply(
-          (ns) => k8smeta.ObjectMeta(namespace: ns, labels: appLabels),
+          (ns) =>
+              k8smeta.ObjectMeta(namespace: ns, labels: appLabels.output()).output(),
         ),
         spec: k8score.ServiceSpec(
-          type: 'LoadBalancer',
-          ports: [k8score.ServicePort(port: 80, targetPort: 80)],
-          selector: appLabels,
+          type: 'LoadBalancer'.output(),
+          ports: [k8score.ServicePort(port: 80.output(), targetPort: 80.output())]
+              .output(),
+          selector: appLabels.output(),
         ).output(),
       ),
       options: pulumi.CustomResourceOptions(provider: clusterProvider),
     );
 
-    final servicePublicIp = service.status.apply((status) {
-      final ingress = status?.loadBalancer?.ingress;
-      if (ingress == null || ingress.isEmpty) {
-        return '';
-      }
-      return ingress.first.ip ?? '';
-    });
+    final servicePublicIp = service.status
+        .apply((status) => status?.loadBalancer)
+        .apply((loadBalancer) => loadBalancer?.ingress)
+        .apply((ingress) {
+          if (ingress == null || ingress.isEmpty) {
+            return '';
+          }
+          return ingress.first.ip ?? '';
+        });
 
     registerOutputs({
       'masterVersion': masterVersion,

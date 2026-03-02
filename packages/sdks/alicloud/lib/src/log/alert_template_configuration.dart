@@ -40,10 +40,10 @@ class AlertTemplateConfiguration {
 
   factory AlertTemplateConfiguration.fromMap(Map<String, dynamic> map) {
     return AlertTemplateConfiguration(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
       id: (map['id'] as String).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      tokens: map['tokens'] == null ? null : ((map['tokens'] as Map).cast<String, String>()).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      tokens: map['tokens'] == null ? null : ((map['tokens']! as Map).cast<String, String>()).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -64,9 +64,9 @@ class GetRouteFilterRuleResult {
       azureApiVersion: map['azureApiVersion'] as String,
       communities: (map['communities'] as List).cast<String>(),
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      location: map['location'] == null ? null : map['location']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
       provisioningState: map['provisioningState'] as String,
       routeFilterRuleType: map['routeFilterRuleType'] as String,
     );

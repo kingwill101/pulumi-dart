@@ -50,9 +50,9 @@ class DomainMappingArgs {
   factory DomainMappingArgs.fromMap(Map<String, dynamic> map) {
     return DomainMappingArgs(
       location: (map['location'] as String).input(),
-      metadata: map['metadata'] == null ? null : (DomainMappingMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      metadata: map['metadata'] == null ? null : (DomainMappingMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       spec: (DomainMappingSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }

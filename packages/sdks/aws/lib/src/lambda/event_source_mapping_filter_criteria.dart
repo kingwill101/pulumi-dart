@@ -21,7 +21,7 @@ class EventSourceMappingFilterCriteria {
 
   factory EventSourceMappingFilterCriteria.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingFilterCriteria(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<EventSourceMappingFilterCriteriaFilter>(map['filters'], (value) => EventSourceMappingFilterCriteriaFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<EventSourceMappingFilterCriteriaFilter>(map['filters']!, (value) => EventSourceMappingFilterCriteriaFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

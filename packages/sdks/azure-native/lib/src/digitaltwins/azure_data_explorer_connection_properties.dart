@@ -85,17 +85,17 @@ class AzureDataExplorerConnectionProperties {
     return AzureDataExplorerConnectionProperties(
       adxDatabaseName: (map['adxDatabaseName'] as String).input(),
       adxEndpointUri: (map['adxEndpointUri'] as String).input(),
-      adxRelationshipLifecycleEventsTableName: map['adxRelationshipLifecycleEventsTableName'] == null ? null : (map['adxRelationshipLifecycleEventsTableName'] as String).input(),
+      adxRelationshipLifecycleEventsTableName: map['adxRelationshipLifecycleEventsTableName'] == null ? null : (map['adxRelationshipLifecycleEventsTableName']! as String).input(),
       adxResourceId: (map['adxResourceId'] as String).input(),
-      adxTableName: map['adxTableName'] == null ? null : (map['adxTableName'] as String).input(),
-      adxTwinLifecycleEventsTableName: map['adxTwinLifecycleEventsTableName'] == null ? null : (map['adxTwinLifecycleEventsTableName'] as String).input(),
+      adxTableName: map['adxTableName'] == null ? null : (map['adxTableName']! as String).input(),
+      adxTwinLifecycleEventsTableName: map['adxTwinLifecycleEventsTableName'] == null ? null : (map['adxTwinLifecycleEventsTableName']! as String).input(),
       connectionType: (map['connectionType'] as String).input(),
-      eventHubConsumerGroup: map['eventHubConsumerGroup'] == null ? null : (map['eventHubConsumerGroup'] as String).input(),
+      eventHubConsumerGroup: map['eventHubConsumerGroup'] == null ? null : (map['eventHubConsumerGroup']! as String).input(),
       eventHubEndpointUri: (map['eventHubEndpointUri'] as String).input(),
       eventHubEntityPath: (map['eventHubEntityPath'] as String).input(),
       eventHubNamespaceResourceId: (map['eventHubNamespaceResourceId'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedIdentityReference.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      recordPropertyAndItemRemovals: map['recordPropertyAndItemRemovals'] == null ? null : (map['recordPropertyAndItemRemovals'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedIdentityReference.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      recordPropertyAndItemRemovals: map['recordPropertyAndItemRemovals'] == null ? null : (map['recordPropertyAndItemRemovals']! as String).input(),
     );
   }
 }

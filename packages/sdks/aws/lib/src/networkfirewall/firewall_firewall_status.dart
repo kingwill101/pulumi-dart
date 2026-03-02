@@ -27,8 +27,8 @@ class FirewallFirewallStatus {
 
   factory FirewallFirewallStatus.fromMap(Map<String, dynamic> map) {
     return FirewallFirewallStatus(
-      syncStates: map['syncStates'] == null ? null : (pulumi.Input.decodeList<FirewallFirewallStatusSyncState>(map['syncStates'], (value) => FirewallFirewallStatusSyncState.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      transitGatewayAttachmentSyncStates: map['transitGatewayAttachmentSyncStates'] == null ? null : (pulumi.Input.decodeList<FirewallFirewallStatusTransitGatewayAttachmentSyncState>(map['transitGatewayAttachmentSyncStates'], (value) => FirewallFirewallStatusTransitGatewayAttachmentSyncState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      syncStates: map['syncStates'] == null ? null : ((pulumi.Input.decodeList<FirewallFirewallStatusSyncState>(map['syncStates']!, (value) => FirewallFirewallStatusSyncState.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      transitGatewayAttachmentSyncStates: map['transitGatewayAttachmentSyncStates'] == null ? null : ((pulumi.Input.decodeList<FirewallFirewallStatusTransitGatewayAttachmentSyncState>(map['transitGatewayAttachmentSyncStates']!, (value) => FirewallFirewallStatusTransitGatewayAttachmentSyncState.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

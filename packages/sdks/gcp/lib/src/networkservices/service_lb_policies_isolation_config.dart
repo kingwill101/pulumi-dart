@@ -28,8 +28,8 @@ class ServiceLbPoliciesIsolationConfig {
 
   factory ServiceLbPoliciesIsolationConfig.fromMap(Map<String, dynamic> map) {
     return ServiceLbPoliciesIsolationConfig(
-      isolationGranularity: map['isolationGranularity'] == null ? null : (map['isolationGranularity'] as String).input(),
-      isolationMode: map['isolationMode'] == null ? null : (map['isolationMode'] as String).input(),
+      isolationGranularity: map['isolationGranularity'] == null ? null : (map['isolationGranularity']! as String).input(),
+      isolationMode: map['isolationMode'] == null ? null : (map['isolationMode']! as String).input(),
     );
   }
 }

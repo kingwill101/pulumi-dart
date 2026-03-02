@@ -21,7 +21,7 @@ class SourceOrTarget {
 
   factory SourceOrTarget.fromMap(Map<String, dynamic> map) {
     return SourceOrTarget(
-      azureResourceId: map['azureResourceId'] == null ? null : (map['azureResourceId'] as String).input(),
+      azureResourceId: map['azureResourceId'] == null ? null : (map['azureResourceId']! as String).input(),
     );
   }
 }

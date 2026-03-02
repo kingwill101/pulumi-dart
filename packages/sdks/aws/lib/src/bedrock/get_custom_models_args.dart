@@ -24,7 +24,7 @@ class GetCustomModelsArgs {
 
   factory GetCustomModelsArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomModelsArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

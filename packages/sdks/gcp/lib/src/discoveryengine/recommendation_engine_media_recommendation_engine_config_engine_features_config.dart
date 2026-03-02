@@ -29,8 +29,8 @@ class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig {
 
   factory RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig.fromMap(Map<String, dynamic> map) {
     return RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig(
-      mostPopularConfig: map['mostPopularConfig'] == null ? null : (RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig.fromMap((map['mostPopularConfig'] as Map).cast<String, dynamic>())).input(),
-      recommendedForYouConfig: map['recommendedForYouConfig'] == null ? null : (RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig.fromMap((map['recommendedForYouConfig'] as Map).cast<String, dynamic>())).input(),
+      mostPopularConfig: map['mostPopularConfig'] == null ? null : (RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig.fromMap((map['mostPopularConfig']! as Map).cast<String, dynamic>())).input(),
+      recommendedForYouConfig: map['recommendedForYouConfig'] == null ? null : (RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig.fromMap((map['recommendedForYouConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

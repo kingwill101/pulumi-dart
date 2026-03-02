@@ -22,7 +22,7 @@ class ListDatabaseAccountConnectionStringsResult {
 
   factory ListDatabaseAccountConnectionStringsResult.fromMap(Map<String, dynamic> map) {
     return ListDatabaseAccountConnectionStringsResult(
-      connectionStrings: map['connectionStrings'] == null ? null : pulumi.Input.decodeList<DatabaseAccountConnectionStringResponse>(map['connectionStrings'], (value) => DatabaseAccountConnectionStringResponse.fromMap((value as Map).cast<String, dynamic>())),
+      connectionStrings: map['connectionStrings'] == null ? null : pulumi.Input.decodeList<DatabaseAccountConnectionStringResponse>(map['connectionStrings']!, (value) => DatabaseAccountConnectionStringResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -41,10 +41,10 @@ class PreventionDiscoveryConfigTargetCloudSqlTarget {
 
   factory PreventionDiscoveryConfigTargetCloudSqlTarget.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetCloudSqlTarget(
-      conditions: map['conditions'] == null ? null : (PreventionDiscoveryConfigTargetCloudSqlTargetConditions.fromMap((map['conditions'] as Map).cast<String, dynamic>())).input(),
-      disabled: map['disabled'] == null ? null : ((map['disabled'] as Map).cast<String, dynamic>()).input(),
+      conditions: map['conditions'] == null ? null : (PreventionDiscoveryConfigTargetCloudSqlTargetConditions.fromMap((map['conditions']! as Map).cast<String, dynamic>())).input(),
+      disabled: map['disabled'] == null ? null : ((map['disabled']! as Map).cast<String, dynamic>()).input(),
       filter: (PreventionDiscoveryConfigTargetCloudSqlTargetFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      generationCadence: map['generationCadence'] == null ? null : (PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence.fromMap((map['generationCadence'] as Map).cast<String, dynamic>())).input(),
+      generationCadence: map['generationCadence'] == null ? null : (PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence.fromMap((map['generationCadence']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

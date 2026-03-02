@@ -93,22 +93,22 @@ class SoftwareUpdateConfigurationSchedule {
 
   factory SoftwareUpdateConfigurationSchedule.fromMap(Map<String, dynamic> map) {
     return SoftwareUpdateConfigurationSchedule(
-      advancedMonthDays: map['advancedMonthDays'] == null ? null : ((map['advancedMonthDays'] as List).cast<int>()).input(),
-      advancedWeekDays: map['advancedWeekDays'] == null ? null : ((map['advancedWeekDays'] as List).cast<String>()).input(),
-      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime'] as String).input(),
-      expiryTimeOffsetMinutes: map['expiryTimeOffsetMinutes'] == null ? null : (map['expiryTimeOffsetMinutes'] as double).input(),
+      advancedMonthDays: map['advancedMonthDays'] == null ? null : ((map['advancedMonthDays']! as List).cast<int>()).input(),
+      advancedWeekDays: map['advancedWeekDays'] == null ? null : ((map['advancedWeekDays']! as List).cast<String>()).input(),
+      creationTime: map['creationTime'] == null ? null : (map['creationTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime']! as String).input(),
+      expiryTimeOffsetMinutes: map['expiryTimeOffsetMinutes'] == null ? null : (map['expiryTimeOffsetMinutes']! as double).input(),
       frequency: (map['frequency'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
-      monthlyOccurrence: map['monthlyOccurrence'] == null ? null : (SoftwareUpdateConfigurationScheduleMonthlyOccurrence.fromMap((map['monthlyOccurrence'] as Map).cast<String, dynamic>())).input(),
-      nextRun: map['nextRun'] == null ? null : (map['nextRun'] as String).input(),
-      nextRunOffsetMinutes: map['nextRunOffsetMinutes'] == null ? null : (map['nextRunOffsetMinutes'] as double).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      startTimeOffsetMinutes: map['startTimeOffsetMinutes'] == null ? null : (map['startTimeOffsetMinutes'] as double).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as bool).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime']! as String).input(),
+      monthlyOccurrence: map['monthlyOccurrence'] == null ? null : (SoftwareUpdateConfigurationScheduleMonthlyOccurrence.fromMap((map['monthlyOccurrence']! as Map).cast<String, dynamic>())).input(),
+      nextRun: map['nextRun'] == null ? null : (map['nextRun']! as String).input(),
+      nextRunOffsetMinutes: map['nextRunOffsetMinutes'] == null ? null : (map['nextRunOffsetMinutes']! as double).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      startTimeOffsetMinutes: map['startTimeOffsetMinutes'] == null ? null : (map['startTimeOffsetMinutes']! as double).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

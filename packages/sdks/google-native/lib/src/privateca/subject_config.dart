@@ -28,8 +28,8 @@ class SubjectConfig {
 
   factory SubjectConfig.fromMap(Map<String, dynamic> map) {
     return SubjectConfig(
-      subject: map['subject'] == null ? null : (Subject.fromMap((map['subject'] as Map).cast<String, dynamic>())).input(),
-      subjectAltName: map['subjectAltName'] == null ? null : (SubjectAltNames.fromMap((map['subjectAltName'] as Map).cast<String, dynamic>())).input(),
+      subject: map['subject'] == null ? null : (Subject.fromMap((map['subject']! as Map).cast<String, dynamic>())).input(),
+      subjectAltName: map['subjectAltName'] == null ? null : (SubjectAltNames.fromMap((map['subjectAltName']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -51,12 +51,12 @@ class RoleAssignmentArgs {
 
   factory RoleAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return RoleAssignmentArgs(
-      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId']! as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       roleId: (map['roleId'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
     );
   }
 }

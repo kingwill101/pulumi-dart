@@ -56,12 +56,12 @@ class GatewayAssociationArgs {
 
   factory GatewayAssociationArgs.fromMap(Map<String, dynamic> map) {
     return GatewayAssociationArgs(
-      allowedPrefixes: map['allowedPrefixes'] == null ? null : ((map['allowedPrefixes'] as List).cast<String>()).input(),
-      associatedGatewayId: map['associatedGatewayId'] == null ? null : (map['associatedGatewayId'] as String).input(),
-      associatedGatewayOwnerAccountId: map['associatedGatewayOwnerAccountId'] == null ? null : (map['associatedGatewayOwnerAccountId'] as String).input(),
+      allowedPrefixes: map['allowedPrefixes'] == null ? null : (((map['allowedPrefixes'] as List).cast<String>()).input()).input(),
+      associatedGatewayId: map['associatedGatewayId'] == null ? null : ((map['associatedGatewayId'] as String).input()).input(),
+      associatedGatewayOwnerAccountId: map['associatedGatewayOwnerAccountId'] == null ? null : ((map['associatedGatewayOwnerAccountId'] as String).input()).input(),
       dxGatewayId: (map['dxGatewayId'] as String).input(),
-      proposalId: map['proposalId'] == null ? null : (map['proposalId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      proposalId: map['proposalId'] == null ? null : ((map['proposalId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class AnalyzerConfiguration {
 
   factory AnalyzerConfiguration.fromMap(Map<String, dynamic> map) {
     return AnalyzerConfiguration(
-      internalAccess: map['internalAccess'] == null ? null : (AnalyzerConfigurationInternalAccess.fromMap((map['internalAccess'] as Map).cast<String, dynamic>())).input(),
-      unusedAccess: map['unusedAccess'] == null ? null : (AnalyzerConfigurationUnusedAccess.fromMap((map['unusedAccess'] as Map).cast<String, dynamic>())).input(),
+      internalAccess: map['internalAccess'] == null ? null : ((AnalyzerConfigurationInternalAccess.fromMap((map['internalAccess']! as Map).cast<String, dynamic>())).input()).input(),
+      unusedAccess: map['unusedAccess'] == null ? null : ((AnalyzerConfigurationUnusedAccess.fromMap((map['unusedAccess']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

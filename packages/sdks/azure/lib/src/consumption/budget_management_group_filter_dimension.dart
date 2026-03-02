@@ -31,7 +31,7 @@ class BudgetManagementGroupFilterDimension {
   factory BudgetManagementGroupFilterDimension.fromMap(Map<String, dynamic> map) {
     return BudgetManagementGroupFilterDimension(
       name: (map['name'] as String).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
       values: ((map['values'] as List).cast<String>()).input(),
     );
   }

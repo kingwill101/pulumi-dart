@@ -67,16 +67,16 @@ class HttpRule {
 
   factory HttpRule.fromMap(Map<String, dynamic> map) {
     return HttpRule(
-      additionalBindings: map['additionalBindings'] == null ? null : (pulumi.Input.decodeList<HttpRule>(map['additionalBindings'], (value) => HttpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      body: map['body'] == null ? null : (map['body'] as String).input(),
-      custom: map['custom'] == null ? null : (CustomHttpPattern.fromMap((map['custom'] as Map).cast<String, dynamic>())).input(),
-      delete: map['delete'] == null ? null : (map['delete'] as String).input(),
-      get: map['get'] == null ? null : (map['get'] as String).input(),
-      patch: map['patch'] == null ? null : (map['patch'] as String).input(),
-      post: map['post'] == null ? null : (map['post'] as String).input(),
-      put: map['put'] == null ? null : (map['put'] as String).input(),
-      responseBody: map['responseBody'] == null ? null : (map['responseBody'] as String).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
+      additionalBindings: map['additionalBindings'] == null ? null : (pulumi.Input.decodeList<HttpRule>(map['additionalBindings']!, (value) => HttpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
+      custom: map['custom'] == null ? null : (CustomHttpPattern.fromMap((map['custom']! as Map).cast<String, dynamic>())).input(),
+      delete: map['delete'] == null ? null : (map['delete']! as String).input(),
+      get: map['get'] == null ? null : (map['get']! as String).input(),
+      patch: map['patch'] == null ? null : (map['patch']! as String).input(),
+      post: map['post'] == null ? null : (map['post']! as String).input(),
+      put: map['put'] == null ? null : (map['put']! as String).input(),
+      responseBody: map['responseBody'] == null ? null : (map['responseBody']! as String).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
     );
   }
 }

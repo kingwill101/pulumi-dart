@@ -36,7 +36,7 @@ class GetConnectionArgs {
     return GetConnectionArgs(
       connectionId: (map['connectionId'] as String).input(),
       globalNetworkId: (map['globalNetworkId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

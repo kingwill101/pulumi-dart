@@ -34,9 +34,9 @@ class GetGatewayRouteSpec {
 
   factory GetGatewayRouteSpec.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpec(
-      grpcRoutes: (pulumi.Input.decodeList<GetGatewayRouteSpecGrpcRoute>(map['grpcRoutes'], (value) => GetGatewayRouteSpecGrpcRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      http2Routes: (pulumi.Input.decodeList<GetGatewayRouteSpecHttp2Route>(map['http2Routes'], (value) => GetGatewayRouteSpecHttp2Route.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      httpRoutes: (pulumi.Input.decodeList<GetGatewayRouteSpecHttpRoute>(map['httpRoutes'], (value) => GetGatewayRouteSpecHttpRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      grpcRoutes: (pulumi.Input.decodeList<GetGatewayRouteSpecGrpcRoute>(map['grpcRoutes']!, (value) => GetGatewayRouteSpecGrpcRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      http2Routes: (pulumi.Input.decodeList<GetGatewayRouteSpecHttp2Route>(map['http2Routes']!, (value) => GetGatewayRouteSpecHttp2Route.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      httpRoutes: (pulumi.Input.decodeList<GetGatewayRouteSpecHttpRoute>(map['httpRoutes']!, (value) => GetGatewayRouteSpecHttpRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
       priority: (map['priority'] as int).input(),
     );
   }

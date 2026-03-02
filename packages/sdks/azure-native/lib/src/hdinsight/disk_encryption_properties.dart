@@ -46,12 +46,12 @@ class DiskEncryptionProperties {
 
   factory DiskEncryptionProperties.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionProperties(
-      encryptionAlgorithm: map['encryptionAlgorithm'] == null ? null : (map['encryptionAlgorithm'] as String).input(),
-      encryptionAtHost: map['encryptionAtHost'] == null ? null : (map['encryptionAtHost'] as bool).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
-      msiResourceId: map['msiResourceId'] == null ? null : (map['msiResourceId'] as String).input(),
-      vaultUri: map['vaultUri'] == null ? null : (map['vaultUri'] as String).input(),
+      encryptionAlgorithm: map['encryptionAlgorithm'] == null ? null : (map['encryptionAlgorithm']! as String).input(),
+      encryptionAtHost: map['encryptionAtHost'] == null ? null : (map['encryptionAtHost']! as bool).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion']! as String).input(),
+      msiResourceId: map['msiResourceId'] == null ? null : (map['msiResourceId']! as String).input(),
+      vaultUri: map['vaultUri'] == null ? null : (map['vaultUri']! as String).input(),
     );
   }
 }

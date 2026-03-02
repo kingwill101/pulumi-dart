@@ -25,8 +25,8 @@ class FeatureImportanceSettingsResponse {
 
   factory FeatureImportanceSettingsResponse.fromMap(Map<String, dynamic> map) {
     return FeatureImportanceSettingsResponse(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      targetColumn: map['targetColumn'] == null ? null : (map['targetColumn'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      targetColumn: map['targetColumn'] == null ? null : (map['targetColumn']! as String).input(),
     );
   }
 }

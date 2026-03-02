@@ -32,9 +32,9 @@ class CpuOptions {
 
   factory CpuOptions.fromMap(Map<String, dynamic> map) {
     return CpuOptions(
-      amdSevSnp: map['amdSevSnp'] == null ? null : (AmdSevSnpSpecificationEnumValue.fromMap((map['amdSevSnp'] as Map).cast<String, dynamic>())).input(),
-      coreCount: map['coreCount'] == null ? null : (map['coreCount'] as int).input(),
-      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore'] as int).input(),
+      amdSevSnp: map['amdSevSnp'] == null ? null : (AmdSevSnpSpecificationEnumValue.fromMap((map['amdSevSnp']! as Map).cast<String, dynamic>())).input(),
+      coreCount: map['coreCount'] == null ? null : (map['coreCount']! as int).input(),
+      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore']! as int).input(),
     );
   }
 }

@@ -116,23 +116,23 @@ class GetKustoPoolResult {
     return GetKustoPoolResult(
       azureApiVersion: map['azureApiVersion'] as String,
       dataIngestionUri: map['dataIngestionUri'] as String,
-      enablePurge: map['enablePurge'] == null ? null : map['enablePurge'] as bool,
-      enableStreamingIngest: map['enableStreamingIngest'] == null ? null : map['enableStreamingIngest'] as bool,
+      enablePurge: map['enablePurge'] == null ? null : map['enablePurge']! as bool,
+      enableStreamingIngest: map['enableStreamingIngest'] == null ? null : map['enableStreamingIngest']! as bool,
       etag: map['etag'] as String,
       id: map['id'] as String,
       languageExtensions: LanguageExtensionsListResponse.fromMap((map['languageExtensions'] as Map).cast<String, dynamic>()),
       location: map['location'] as String,
       name: map['name'] as String,
-      optimizedAutoscale: map['optimizedAutoscale'] == null ? null : OptimizedAutoscaleResponse.fromMap((map['optimizedAutoscale'] as Map).cast<String, dynamic>()),
+      optimizedAutoscale: map['optimizedAutoscale'] == null ? null : OptimizedAutoscaleResponse.fromMap((map['optimizedAutoscale']! as Map).cast<String, dynamic>()),
       provisioningState: map['provisioningState'] as String,
       sku: AzureSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
       state: map['state'] as String,
       stateReason: map['stateReason'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
       uri: map['uri'] as String,
-      workspaceUID: map['workspaceUID'] == null ? null : map['workspaceUID'] as String,
+      workspaceUID: map['workspaceUID'] == null ? null : map['workspaceUID']! as String,
     );
   }
 }

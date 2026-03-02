@@ -51,13 +51,13 @@ class AddressResponse {
 
   factory AddressResponse.fromMap(Map<String, dynamic> map) {
     return AddressResponse(
-      addressLine1: map['addressLine1'] == null ? null : (map['addressLine1'] as String).input(),
-      addressLine2: map['addressLine2'] == null ? null : (map['addressLine2'] as String).input(),
-      addressLine3: map['addressLine3'] == null ? null : (map['addressLine3'] as String).input(),
-      city: map['city'] == null ? null : (map['city'] as String).input(),
+      addressLine1: map['addressLine1'] == null ? null : (map['addressLine1']! as String).input(),
+      addressLine2: map['addressLine2'] == null ? null : (map['addressLine2']! as String).input(),
+      addressLine3: map['addressLine3'] == null ? null : (map['addressLine3']! as String).input(),
+      city: map['city'] == null ? null : (map['city']! as String).input(),
       country: (map['country'] as String).input(),
-      postalCode: map['postalCode'] == null ? null : (map['postalCode'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      postalCode: map['postalCode'] == null ? null : (map['postalCode']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

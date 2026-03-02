@@ -57,13 +57,13 @@ class ServerState {
 
   factory ServerState.fromMap(Map<String, dynamic> map) {
     return ServerState(
-      dropCascade: map['dropCascade'] == null ? null : (map['dropCascade'] as bool).input(),
-      fdwName: map['fdwName'] == null ? null : (map['fdwName'] as String).input(),
-      options: map['options'] == null ? null : ((map['options'] as Map).cast<String, String>()).input(),
-      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
-      serverOwner: map['serverOwner'] == null ? null : (map['serverOwner'] as String).input(),
-      serverType: map['serverType'] == null ? null : (map['serverType'] as String).input(),
-      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion'] as String).input(),
+      dropCascade: map['dropCascade'] == null ? null : (map['dropCascade']! as bool).input(),
+      fdwName: map['fdwName'] == null ? null : (map['fdwName']! as String).input(),
+      options: map['options'] == null ? null : ((map['options']! as Map).cast<String, String>()).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName']! as String).input(),
+      serverOwner: map['serverOwner'] == null ? null : (map['serverOwner']! as String).input(),
+      serverType: map['serverType'] == null ? null : (map['serverType']! as String).input(),
+      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion']! as String).input(),
     );
   }
 }

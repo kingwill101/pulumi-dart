@@ -55,14 +55,14 @@ class ReplicationSubnetGroupState {
 
   factory ReplicationSubnetGroupState.fromMap(Map<String, dynamic> map) {
     return ReplicationSubnetGroupState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      replicationSubnetGroupArn: map['replicationSubnetGroupArn'] == null ? null : (map['replicationSubnetGroupArn'] as String).input(),
-      replicationSubnetGroupDescription: map['replicationSubnetGroupDescription'] == null ? null : (map['replicationSubnetGroupDescription'] as String).input(),
-      replicationSubnetGroupId: map['replicationSubnetGroupId'] == null ? null : (map['replicationSubnetGroupId'] as String).input(),
-      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      replicationSubnetGroupArn: map['replicationSubnetGroupArn'] == null ? null : ((map['replicationSubnetGroupArn'] as String).input()).input(),
+      replicationSubnetGroupDescription: map['replicationSubnetGroupDescription'] == null ? null : ((map['replicationSubnetGroupDescription'] as String).input()).input(),
+      replicationSubnetGroupId: map['replicationSubnetGroupId'] == null ? null : ((map['replicationSubnetGroupId'] as String).input()).input(),
+      subnetIds: map['subnetIds'] == null ? null : (((map['subnetIds'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

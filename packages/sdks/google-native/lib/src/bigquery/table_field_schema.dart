@@ -87,20 +87,20 @@ class TableFieldSchema {
 
   factory TableFieldSchema.fromMap(Map<String, dynamic> map) {
     return TableFieldSchema(
-      categories: map['categories'] == null ? null : (TableFieldSchemaCategories.fromMap((map['categories'] as Map).cast<String, dynamic>())).input(),
-      collation: map['collation'] == null ? null : (map['collation'] as String).input(),
-      defaultValueExpression: map['defaultValueExpression'] == null ? null : (map['defaultValueExpression'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<TableFieldSchema>(map['fields'], (value) => TableFieldSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maxLength: map['maxLength'] == null ? null : (map['maxLength'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyTags: map['policyTags'] == null ? null : (TableFieldSchemaPolicyTags.fromMap((map['policyTags'] as Map).cast<String, dynamic>())).input(),
-      precision: map['precision'] == null ? null : (map['precision'] as String).input(),
-      rangeElementType: map['rangeElementType'] == null ? null : (TableFieldSchemaRangeElementType.fromMap((map['rangeElementType'] as Map).cast<String, dynamic>())).input(),
-      roundingMode: map['roundingMode'] == null ? null : (map['roundingMode'] as String).input(),
-      scale: map['scale'] == null ? null : (map['scale'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      categories: map['categories'] == null ? null : (TableFieldSchemaCategories.fromMap((map['categories']! as Map).cast<String, dynamic>())).input(),
+      collation: map['collation'] == null ? null : (map['collation']! as String).input(),
+      defaultValueExpression: map['defaultValueExpression'] == null ? null : (map['defaultValueExpression']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<TableFieldSchema>(map['fields']!, (value) => TableFieldSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxLength: map['maxLength'] == null ? null : (map['maxLength']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policyTags: map['policyTags'] == null ? null : (TableFieldSchemaPolicyTags.fromMap((map['policyTags']! as Map).cast<String, dynamic>())).input(),
+      precision: map['precision'] == null ? null : (map['precision']! as String).input(),
+      rangeElementType: map['rangeElementType'] == null ? null : (TableFieldSchemaRangeElementType.fromMap((map['rangeElementType']! as Map).cast<String, dynamic>())).input(),
+      roundingMode: map['roundingMode'] == null ? null : (map['roundingMode']! as String).input(),
+      scale: map['scale'] == null ? null : (map['scale']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

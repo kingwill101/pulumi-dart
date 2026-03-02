@@ -30,9 +30,9 @@ class StateMachineLoggingConfiguration {
 
   factory StateMachineLoggingConfiguration.fromMap(Map<String, dynamic> map) {
     return StateMachineLoggingConfiguration(
-      includeExecutionData: map['includeExecutionData'] == null ? null : (map['includeExecutionData'] as bool).input(),
-      level: map['level'] == null ? null : (map['level'] as String).input(),
-      logDestination: map['logDestination'] == null ? null : (map['logDestination'] as String).input(),
+      includeExecutionData: map['includeExecutionData'] == null ? null : ((map['includeExecutionData'] as bool).input()).input(),
+      level: map['level'] == null ? null : ((map['level'] as String).input()).input(),
+      logDestination: map['logDestination'] == null ? null : ((map['logDestination'] as String).input()).input(),
     );
   }
 }

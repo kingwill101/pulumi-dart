@@ -62,15 +62,15 @@ class AccountProjectState {
 
   factory AccountProjectState.fromMap(Map<String, dynamic> map) {
     return AccountProjectState(
-      cognitiveAccountId: map['cognitiveAccountId'] == null ? null : (map['cognitiveAccountId'] as String).input(),
-      default_: map['default'] == null ? null : (map['default'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      endpoints: map['endpoints'] == null ? null : ((map['endpoints'] as Map).cast<String, String>()).input(),
-      identity: map['identity'] == null ? null : (AccountProjectIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      cognitiveAccountId: map['cognitiveAccountId'] == null ? null : (map['cognitiveAccountId']! as String).input(),
+      default_: map['default'] == null ? null : (map['default']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      endpoints: map['endpoints'] == null ? null : ((map['endpoints']! as Map).cast<String, String>()).input(),
+      identity: map['identity'] == null ? null : (AccountProjectIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

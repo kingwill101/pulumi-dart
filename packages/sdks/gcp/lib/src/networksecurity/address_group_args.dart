@@ -72,13 +72,13 @@ class AddressGroupArgs {
   factory AddressGroupArgs.fromMap(Map<String, dynamic> map) {
     return AddressGroupArgs(
       capacity: (map['capacity'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      items: map['items'] == null ? null : ((map['items'] as List).cast<String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      items: map['items'] == null ? null : ((map['items']! as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      purposes: map['purposes'] == null ? null : ((map['purposes'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      purposes: map['purposes'] == null ? null : ((map['purposes']! as List).cast<String>()).input(),
       type: (map['type'] as String).input(),
     );
   }

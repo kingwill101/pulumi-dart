@@ -54,12 +54,12 @@ class ClusterNodeConfigLinuxNodeConfig {
 
   factory ClusterNodeConfigLinuxNodeConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigLinuxNodeConfig(
-      cgroupMode: map['cgroupMode'] == null ? null : (map['cgroupMode'] as String).input(),
-      hugepagesConfig: map['hugepagesConfig'] == null ? null : (ClusterNodeConfigLinuxNodeConfigHugepagesConfig.fromMap((map['hugepagesConfig'] as Map).cast<String, dynamic>())).input(),
-      nodeKernelModuleLoading: map['nodeKernelModuleLoading'] == null ? null : (ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading.fromMap((map['nodeKernelModuleLoading'] as Map).cast<String, dynamic>())).input(),
-      sysctls: map['sysctls'] == null ? null : ((map['sysctls'] as Map).cast<String, String>()).input(),
-      transparentHugepageDefrag: map['transparentHugepageDefrag'] == null ? null : (map['transparentHugepageDefrag'] as String).input(),
-      transparentHugepageEnabled: map['transparentHugepageEnabled'] == null ? null : (map['transparentHugepageEnabled'] as String).input(),
+      cgroupMode: map['cgroupMode'] == null ? null : (map['cgroupMode']! as String).input(),
+      hugepagesConfig: map['hugepagesConfig'] == null ? null : (ClusterNodeConfigLinuxNodeConfigHugepagesConfig.fromMap((map['hugepagesConfig']! as Map).cast<String, dynamic>())).input(),
+      nodeKernelModuleLoading: map['nodeKernelModuleLoading'] == null ? null : (ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading.fromMap((map['nodeKernelModuleLoading']! as Map).cast<String, dynamic>())).input(),
+      sysctls: map['sysctls'] == null ? null : ((map['sysctls']! as Map).cast<String, String>()).input(),
+      transparentHugepageDefrag: map['transparentHugepageDefrag'] == null ? null : (map['transparentHugepageDefrag']! as String).input(),
+      transparentHugepageEnabled: map['transparentHugepageEnabled'] == null ? null : (map['transparentHugepageEnabled']! as String).input(),
     );
   }
 }

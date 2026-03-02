@@ -31,9 +31,9 @@ class DeploymentConfigZonalConfig {
 
   factory DeploymentConfigZonalConfig.fromMap(Map<String, dynamic> map) {
     return DeploymentConfigZonalConfig(
-      firstZoneMonitorDurationInSeconds: map['firstZoneMonitorDurationInSeconds'] == null ? null : (map['firstZoneMonitorDurationInSeconds'] as int).input(),
-      minimumHealthyHostsPerZone: map['minimumHealthyHostsPerZone'] == null ? null : (DeploymentConfigZonalConfigMinimumHealthyHostsPerZone.fromMap((map['minimumHealthyHostsPerZone'] as Map).cast<String, dynamic>())).input(),
-      monitorDurationInSeconds: map['monitorDurationInSeconds'] == null ? null : (map['monitorDurationInSeconds'] as int).input(),
+      firstZoneMonitorDurationInSeconds: map['firstZoneMonitorDurationInSeconds'] == null ? null : ((map['firstZoneMonitorDurationInSeconds'] as int).input()).input(),
+      minimumHealthyHostsPerZone: map['minimumHealthyHostsPerZone'] == null ? null : ((DeploymentConfigZonalConfigMinimumHealthyHostsPerZone.fromMap((map['minimumHealthyHostsPerZone']! as Map).cast<String, dynamic>())).input()).input(),
+      monitorDurationInSeconds: map['monitorDurationInSeconds'] == null ? null : ((map['monitorDurationInSeconds'] as int).input()).input(),
     );
   }
 }

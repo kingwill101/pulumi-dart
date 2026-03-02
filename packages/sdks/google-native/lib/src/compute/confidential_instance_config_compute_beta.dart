@@ -27,8 +27,8 @@ class ConfidentialInstanceConfigComputeBeta {
 
   factory ConfidentialInstanceConfigComputeBeta.fromMap(Map<String, dynamic> map) {
     return ConfidentialInstanceConfigComputeBeta(
-      confidentialInstanceType: map['confidentialInstanceType'] == null ? null : (ConfidentialInstanceConfigConfidentialInstanceTypeComputeBeta.fromValue(map['confidentialInstanceType'] as String)).input(),
-      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : (map['enableConfidentialCompute'] as bool).input(),
+      confidentialInstanceType: map['confidentialInstanceType'] == null ? null : (ConfidentialInstanceConfigConfidentialInstanceTypeComputeBeta.fromValue(map['confidentialInstanceType']! as String)).input(),
+      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : (map['enableConfidentialCompute']! as bool).input(),
     );
   }
 }

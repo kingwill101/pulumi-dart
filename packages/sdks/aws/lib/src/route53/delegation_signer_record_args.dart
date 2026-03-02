@@ -36,8 +36,8 @@ class DelegationSignerRecordArgs {
   factory DelegationSignerRecordArgs.fromMap(Map<String, dynamic> map) {
     return DelegationSignerRecordArgs(
       domainName: (map['domainName'] as String).input(),
-      signingAttributes: map['signingAttributes'] == null ? null : (DelegationSignerRecordSigningAttributes.fromMap((map['signingAttributes'] as Map).cast<String, dynamic>())).input(),
-      timeouts: map['timeouts'] == null ? null : (DelegationSignerRecordTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      signingAttributes: map['signingAttributes'] == null ? null : ((DelegationSignerRecordSigningAttributes.fromMap((map['signingAttributes']! as Map).cast<String, dynamic>())).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((DelegationSignerRecordTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

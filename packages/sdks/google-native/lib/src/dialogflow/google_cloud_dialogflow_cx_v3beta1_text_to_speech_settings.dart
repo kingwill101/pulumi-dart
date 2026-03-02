@@ -21,7 +21,7 @@ class GoogleCloudDialogflowCxV3beta1TextToSpeechSettings {
 
   factory GoogleCloudDialogflowCxV3beta1TextToSpeechSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1TextToSpeechSettings(
-      synthesizeSpeechConfigs: map['synthesizeSpeechConfigs'] == null ? null : ((map['synthesizeSpeechConfigs'] as Map).cast<String, String>()).input(),
+      synthesizeSpeechConfigs: map['synthesizeSpeechConfigs'] == null ? null : ((map['synthesizeSpeechConfigs']! as Map).cast<String, String>()).input(),
     );
   }
 }

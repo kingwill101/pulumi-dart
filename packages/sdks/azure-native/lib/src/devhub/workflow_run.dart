@@ -20,7 +20,7 @@ class WorkflowRun {
 
   factory WorkflowRun.fromMap(Map<String, dynamic> map) {
     return WorkflowRun(
-      workflowRunStatus: map['workflowRunStatus'] == null ? null : (map['workflowRunStatus'] as String).input(),
+      workflowRunStatus: map['workflowRunStatus'] == null ? null : (map['workflowRunStatus']! as String).input(),
     );
   }
 }

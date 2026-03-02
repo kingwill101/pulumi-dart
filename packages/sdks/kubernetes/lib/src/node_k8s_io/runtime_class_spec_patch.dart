@@ -33,9 +33,9 @@ class RuntimeClassSpecPatch {
 
   factory RuntimeClassSpecPatch.fromMap(Map<String, dynamic> map) {
     return RuntimeClassSpecPatch(
-      overhead: map['overhead'] == null ? null : (OverheadPatchNodeK8sIoV1alpha1.fromMap((map['overhead'] as Map).cast<String, dynamic>())).input(),
-      runtimeHandler: map['runtimeHandler'] == null ? null : (map['runtimeHandler'] as String).input(),
-      scheduling: map['scheduling'] == null ? null : (SchedulingPatchNodeK8sIoV1alpha1.fromMap((map['scheduling'] as Map).cast<String, dynamic>())).input(),
+      overhead: map['overhead'] == null ? null : (OverheadPatchNodeK8sIoV1alpha1.fromMap((map['overhead']! as Map).cast<String, dynamic>())).input(),
+      runtimeHandler: map['runtimeHandler'] == null ? null : (map['runtimeHandler']! as String).input(),
+      scheduling: map['scheduling'] == null ? null : (SchedulingPatchNodeK8sIoV1alpha1.fromMap((map['scheduling']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

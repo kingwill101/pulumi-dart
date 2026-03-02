@@ -35,10 +35,10 @@ class GatewayMaintenanceStartTime {
 
   factory GatewayMaintenanceStartTime.fromMap(Map<String, dynamic> map) {
     return GatewayMaintenanceStartTime(
-      dayOfMonth: map['dayOfMonth'] == null ? null : (map['dayOfMonth'] as String).input(),
-      dayOfWeek: map['dayOfWeek'] == null ? null : (map['dayOfWeek'] as String).input(),
+      dayOfMonth: map['dayOfMonth'] == null ? null : ((map['dayOfMonth'] as String).input()).input(),
+      dayOfWeek: map['dayOfWeek'] == null ? null : ((map['dayOfWeek'] as String).input()).input(),
       hourOfDay: (map['hourOfDay'] as int).input(),
-      minuteOfHour: map['minuteOfHour'] == null ? null : (map['minuteOfHour'] as int).input(),
+      minuteOfHour: map['minuteOfHour'] == null ? null : ((map['minuteOfHour'] as int).input()).input(),
     );
   }
 }

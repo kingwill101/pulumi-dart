@@ -41,11 +41,11 @@ class ClusterUpdateStrategy {
 
   factory ClusterUpdateStrategy.fromMap(Map<String, dynamic> map) {
     return ClusterUpdateStrategy(
-      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable'] as double).input(),
+      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable']! as double).input(),
       strategyType: (map['strategyType'] as String).input(),
       thresholdType: (map['thresholdType'] as String).input(),
       thresholdValue: (map['thresholdValue'] as double).input(),
-      waitTimeMinutes: map['waitTimeMinutes'] == null ? null : (map['waitTimeMinutes'] as double).input(),
+      waitTimeMinutes: map['waitTimeMinutes'] == null ? null : (map['waitTimeMinutes']! as double).input(),
     );
   }
 }

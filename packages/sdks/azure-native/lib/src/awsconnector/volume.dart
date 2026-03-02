@@ -50,12 +50,12 @@ class Volume {
 
   factory Volume.fromMap(Map<String, dynamic> map) {
     return Volume(
-      configuredAtLaunch: map['configuredAtLaunch'] == null ? null : (map['configuredAtLaunch'] as bool).input(),
-      dockerVolumeConfiguration: map['dockerVolumeConfiguration'] == null ? null : (DockerVolumeConfiguration.fromMap((map['dockerVolumeConfiguration'] as Map).cast<String, dynamic>())).input(),
-      efsVolumeConfiguration: map['efsVolumeConfiguration'] == null ? null : (EFSVolumeConfiguration.fromMap((map['efsVolumeConfiguration'] as Map).cast<String, dynamic>())).input(),
-      fSxWindowsFileServerVolumeConfiguration: map['fSxWindowsFileServerVolumeConfiguration'] == null ? null : (FSxWindowsFileServerVolumeConfiguration.fromMap((map['fSxWindowsFileServerVolumeConfiguration'] as Map).cast<String, dynamic>())).input(),
-      host: map['host'] == null ? null : (HostVolumeProperties.fromMap((map['host'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      configuredAtLaunch: map['configuredAtLaunch'] == null ? null : (map['configuredAtLaunch']! as bool).input(),
+      dockerVolumeConfiguration: map['dockerVolumeConfiguration'] == null ? null : (DockerVolumeConfiguration.fromMap((map['dockerVolumeConfiguration']! as Map).cast<String, dynamic>())).input(),
+      efsVolumeConfiguration: map['efsVolumeConfiguration'] == null ? null : (EFSVolumeConfiguration.fromMap((map['efsVolumeConfiguration']! as Map).cast<String, dynamic>())).input(),
+      fSxWindowsFileServerVolumeConfiguration: map['fSxWindowsFileServerVolumeConfiguration'] == null ? null : (FSxWindowsFileServerVolumeConfiguration.fromMap((map['fSxWindowsFileServerVolumeConfiguration']! as Map).cast<String, dynamic>())).input(),
+      host: map['host'] == null ? null : (HostVolumeProperties.fromMap((map['host']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

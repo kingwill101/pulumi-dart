@@ -26,8 +26,8 @@ class MongoIndexOptionsResponse {
 
   factory MongoIndexOptionsResponse.fromMap(Map<String, dynamic> map) {
     return MongoIndexOptionsResponse(
-      expireAfterSeconds: map['expireAfterSeconds'] == null ? null : (map['expireAfterSeconds'] as int).input(),
-      unique: map['unique'] == null ? null : (map['unique'] as bool).input(),
+      expireAfterSeconds: map['expireAfterSeconds'] == null ? null : (map['expireAfterSeconds']! as int).input(),
+      unique: map['unique'] == null ? null : (map['unique']! as bool).input(),
     );
   }
 }

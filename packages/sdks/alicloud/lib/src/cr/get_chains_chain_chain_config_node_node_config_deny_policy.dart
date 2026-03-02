@@ -35,7 +35,7 @@ class GetChainsChainChainConfigNodeNodeConfigDenyPolicy {
 
   factory GetChainsChainChainConfigNodeNodeConfigDenyPolicy.fromMap(Map<String, dynamic> map) {
     return GetChainsChainChainConfigNodeNodeConfigDenyPolicy(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
       issueCount: (map['issueCount'] as String).input(),
       issueLevel: (map['issueLevel'] as String).input(),
       logic: (map['logic'] as String).input(),

@@ -77,17 +77,17 @@ class ApplicationGatewayPathRuleResponse {
 
   factory ApplicationGatewayPathRuleResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayPathRuleResponse(
-      backendAddressPool: map['backendAddressPool'] == null ? null : (SubResourceResponse.fromMap((map['backendAddressPool'] as Map).cast<String, dynamic>())).input(),
-      backendHttpSettings: map['backendHttpSettings'] == null ? null : (SubResourceResponse.fromMap((map['backendHttpSettings'] as Map).cast<String, dynamic>())).input(),
+      backendAddressPool: map['backendAddressPool'] == null ? null : (SubResourceResponse.fromMap((map['backendAddressPool']! as Map).cast<String, dynamic>())).input(),
+      backendHttpSettings: map['backendHttpSettings'] == null ? null : (SubResourceResponse.fromMap((map['backendHttpSettings']! as Map).cast<String, dynamic>())).input(),
       etag: (map['etag'] as String).input(),
-      firewallPolicy: map['firewallPolicy'] == null ? null : (SubResourceResponse.fromMap((map['firewallPolicy'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      loadDistributionPolicy: map['loadDistributionPolicy'] == null ? null : (SubResourceResponse.fromMap((map['loadDistributionPolicy'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      paths: map['paths'] == null ? null : ((map['paths'] as List).cast<String>()).input(),
+      firewallPolicy: map['firewallPolicy'] == null ? null : (SubResourceResponse.fromMap((map['firewallPolicy']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      loadDistributionPolicy: map['loadDistributionPolicy'] == null ? null : (SubResourceResponse.fromMap((map['loadDistributionPolicy']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      paths: map['paths'] == null ? null : ((map['paths']! as List).cast<String>()).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      redirectConfiguration: map['redirectConfiguration'] == null ? null : (SubResourceResponse.fromMap((map['redirectConfiguration'] as Map).cast<String, dynamic>())).input(),
-      rewriteRuleSet: map['rewriteRuleSet'] == null ? null : (SubResourceResponse.fromMap((map['rewriteRuleSet'] as Map).cast<String, dynamic>())).input(),
+      redirectConfiguration: map['redirectConfiguration'] == null ? null : (SubResourceResponse.fromMap((map['redirectConfiguration']! as Map).cast<String, dynamic>())).input(),
+      rewriteRuleSet: map['rewriteRuleSet'] == null ? null : (SubResourceResponse.fromMap((map['rewriteRuleSet']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

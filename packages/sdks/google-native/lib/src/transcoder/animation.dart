@@ -34,9 +34,9 @@ class Animation {
 
   factory Animation.fromMap(Map<String, dynamic> map) {
     return Animation(
-      animationEnd: map['animationEnd'] == null ? null : (AnimationEnd.fromMap((map['animationEnd'] as Map).cast<String, dynamic>())).input(),
-      animationFade: map['animationFade'] == null ? null : (AnimationFade.fromMap((map['animationFade'] as Map).cast<String, dynamic>())).input(),
-      animationStatic: map['animationStatic'] == null ? null : (AnimationStatic.fromMap((map['animationStatic'] as Map).cast<String, dynamic>())).input(),
+      animationEnd: map['animationEnd'] == null ? null : (AnimationEnd.fromMap((map['animationEnd']! as Map).cast<String, dynamic>())).input(),
+      animationFade: map['animationFade'] == null ? null : (AnimationFade.fromMap((map['animationFade']! as Map).cast<String, dynamic>())).input(),
+      animationStatic: map['animationStatic'] == null ? null : (AnimationStatic.fromMap((map['animationStatic']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

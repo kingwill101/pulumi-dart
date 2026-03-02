@@ -31,8 +31,8 @@ class SolutionProperties {
 
   factory SolutionProperties.fromMap(Map<String, dynamic> map) {
     return SolutionProperties(
-      containedResources: map['containedResources'] == null ? null : ((map['containedResources'] as List).cast<String>()).input(),
-      referencedResources: map['referencedResources'] == null ? null : ((map['referencedResources'] as List).cast<String>()).input(),
+      containedResources: map['containedResources'] == null ? null : ((map['containedResources']! as List).cast<String>()).input(),
+      referencedResources: map['referencedResources'] == null ? null : ((map['referencedResources']! as List).cast<String>()).input(),
       workspaceResourceId: (map['workspaceResourceId'] as String).input(),
     );
   }

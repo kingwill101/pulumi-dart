@@ -30,8 +30,8 @@ class ManagedOpArgs {
 
   factory ManagedOpArgs.fromMap(Map<String, dynamic> map) {
     return ManagedOpArgs(
-      managedOpsName: map['managedOpsName'] == null ? null : (map['managedOpsName'] as String).input(),
-      properties: map['properties'] == null ? null : (ManagedOpsProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      managedOpsName: map['managedOpsName'] == null ? null : (map['managedOpsName']! as String).input(),
+      properties: map['properties'] == null ? null : (ManagedOpsProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

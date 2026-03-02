@@ -21,7 +21,7 @@ class AbortIncompleteMultipartUploadResponse {
 
   factory AbortIncompleteMultipartUploadResponse.fromMap(Map<String, dynamic> map) {
     return AbortIncompleteMultipartUploadResponse(
-      daysAfterInitiation: map['daysAfterInitiation'] == null ? null : (map['daysAfterInitiation'] as int).input(),
+      daysAfterInitiation: map['daysAfterInitiation'] == null ? null : (map['daysAfterInitiation']! as int).input(),
     );
   }
 }

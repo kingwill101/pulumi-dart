@@ -31,9 +31,9 @@ class DomainOsNvRamSourceReservations {
 
   factory DomainOsNvRamSourceReservations.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceReservations(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as String).input(),
-      managed: map['managed'] == null ? null : (map['managed'] as bool).input(),
-      source: map['source'] == null ? null : (DomainOsNvRamSourceReservationsSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as String).input(),
+      managed: map['managed'] == null ? null : (map['managed']! as bool).input(),
+      source: map['source'] == null ? null : (DomainOsNvRamSourceReservationsSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

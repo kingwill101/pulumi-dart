@@ -86,18 +86,18 @@ class TopicSubscriptionArgs {
 
   factory TopicSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return TopicSubscriptionArgs(
-      confirmationTimeoutInMinutes: map['confirmationTimeoutInMinutes'] == null ? null : (map['confirmationTimeoutInMinutes'] as int).input(),
-      deliveryPolicy: map['deliveryPolicy'] == null ? null : (map['deliveryPolicy'] as String).input(),
+      confirmationTimeoutInMinutes: map['confirmationTimeoutInMinutes'] == null ? null : ((map['confirmationTimeoutInMinutes'] as int).input()).input(),
+      deliveryPolicy: map['deliveryPolicy'] == null ? null : ((map['deliveryPolicy'] as String).input()).input(),
       endpoint: (map['endpoint'] as String).input(),
-      endpointAutoConfirms: map['endpointAutoConfirms'] == null ? null : (map['endpointAutoConfirms'] as bool).input(),
-      filterPolicy: map['filterPolicy'] == null ? null : (map['filterPolicy'] as String).input(),
-      filterPolicyScope: map['filterPolicyScope'] == null ? null : (map['filterPolicyScope'] as String).input(),
+      endpointAutoConfirms: map['endpointAutoConfirms'] == null ? null : ((map['endpointAutoConfirms'] as bool).input()).input(),
+      filterPolicy: map['filterPolicy'] == null ? null : ((map['filterPolicy'] as String).input()).input(),
+      filterPolicyScope: map['filterPolicyScope'] == null ? null : ((map['filterPolicyScope'] as String).input()).input(),
       protocol: (map['protocol'] as String).input(),
-      rawMessageDelivery: map['rawMessageDelivery'] == null ? null : (map['rawMessageDelivery'] as bool).input(),
-      redrivePolicy: map['redrivePolicy'] == null ? null : (map['redrivePolicy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      replayPolicy: map['replayPolicy'] == null ? null : (map['replayPolicy'] as String).input(),
-      subscriptionRoleArn: map['subscriptionRoleArn'] == null ? null : (map['subscriptionRoleArn'] as String).input(),
+      rawMessageDelivery: map['rawMessageDelivery'] == null ? null : ((map['rawMessageDelivery'] as bool).input()).input(),
+      redrivePolicy: map['redrivePolicy'] == null ? null : ((map['redrivePolicy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      replayPolicy: map['replayPolicy'] == null ? null : ((map['replayPolicy'] as String).input()).input(),
+      subscriptionRoleArn: map['subscriptionRoleArn'] == null ? null : ((map['subscriptionRoleArn'] as String).input()).input(),
       topic: (map['topic'] as String).input(),
     );
   }

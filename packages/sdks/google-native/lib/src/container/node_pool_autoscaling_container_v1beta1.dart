@@ -52,13 +52,13 @@ class NodePoolAutoscalingContainerV1beta1 {
 
   factory NodePoolAutoscalingContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NodePoolAutoscalingContainerV1beta1(
-      autoprovisioned: map['autoprovisioned'] == null ? null : (map['autoprovisioned'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      locationPolicy: map['locationPolicy'] == null ? null : (NodePoolAutoscalingLocationPolicyContainerV1beta1.fromValue(map['locationPolicy'] as String)).input(),
-      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount'] as int).input(),
-      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount'] as int).input(),
-      totalMaxNodeCount: map['totalMaxNodeCount'] == null ? null : (map['totalMaxNodeCount'] as int).input(),
-      totalMinNodeCount: map['totalMinNodeCount'] == null ? null : (map['totalMinNodeCount'] as int).input(),
+      autoprovisioned: map['autoprovisioned'] == null ? null : (map['autoprovisioned']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      locationPolicy: map['locationPolicy'] == null ? null : (NodePoolAutoscalingLocationPolicyContainerV1beta1.fromValue(map['locationPolicy']! as String)).input(),
+      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount']! as int).input(),
+      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount']! as int).input(),
+      totalMaxNodeCount: map['totalMaxNodeCount'] == null ? null : (map['totalMaxNodeCount']! as int).input(),
+      totalMinNodeCount: map['totalMinNodeCount'] == null ? null : (map['totalMinNodeCount']! as int).input(),
     );
   }
 }

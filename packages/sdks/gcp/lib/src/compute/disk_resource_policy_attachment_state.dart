@@ -38,10 +38,10 @@ class DiskResourcePolicyAttachmentState {
 
   factory DiskResourcePolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return DiskResourcePolicyAttachmentState(
-      disk: map['disk'] == null ? null : (map['disk'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      disk: map['disk'] == null ? null : (map['disk']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

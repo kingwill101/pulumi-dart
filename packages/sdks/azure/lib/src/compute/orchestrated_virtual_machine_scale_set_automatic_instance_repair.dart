@@ -36,9 +36,9 @@ class OrchestratedVirtualMachineScaleSetAutomaticInstanceRepair {
 
   factory OrchestratedVirtualMachineScaleSetAutomaticInstanceRepair.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetAutomaticInstanceRepair(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
       enabled: (map['enabled'] as bool).input(),
-      gracePeriod: map['gracePeriod'] == null ? null : (map['gracePeriod'] as String).input(),
+      gracePeriod: map['gracePeriod'] == null ? null : (map['gracePeriod']! as String).input(),
     );
   }
 }

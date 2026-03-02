@@ -48,9 +48,9 @@ class RoutingProfileQueueConfig {
       channel: (map['channel'] as String).input(),
       delay: (map['delay'] as int).input(),
       priority: (map['priority'] as int).input(),
-      queueArn: map['queueArn'] == null ? null : (map['queueArn'] as String).input(),
+      queueArn: map['queueArn'] == null ? null : ((map['queueArn'] as String).input()).input(),
       queueId: (map['queueId'] as String).input(),
-      queueName: map['queueName'] == null ? null : (map['queueName'] as String).input(),
+      queueName: map['queueName'] == null ? null : ((map['queueName'] as String).input()).input(),
     );
   }
 }

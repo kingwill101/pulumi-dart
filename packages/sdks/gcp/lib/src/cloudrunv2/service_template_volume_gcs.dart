@@ -32,8 +32,8 @@ class ServiceTemplateVolumeGcs {
   factory ServiceTemplateVolumeGcs.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateVolumeGcs(
       bucket: (map['bucket'] as String).input(),
-      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions'] as List).cast<String>()).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions']! as List).cast<String>()).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
     );
   }
 }

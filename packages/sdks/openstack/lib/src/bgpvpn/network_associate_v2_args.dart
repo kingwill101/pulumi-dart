@@ -49,8 +49,8 @@ class NetworkAssociateV2Args {
     return NetworkAssociateV2Args(
       bgpvpnId: (map['bgpvpnId'] as String).input(),
       networkId: (map['networkId'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

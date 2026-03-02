@@ -55,7 +55,7 @@ class GetClusterIstioServiceArgs {
     return GetClusterIstioServiceArgs(
       clusterName: (map['clusterName'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serviceName: (map['serviceName'] as String).input(),
       serviceNamespace: (map['serviceNamespace'] as String).input(),
     );

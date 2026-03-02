@@ -56,12 +56,12 @@ class DefaultAdminRuleArgs {
   factory DefaultAdminRuleArgs.fromMap(Map<String, dynamic> map) {
     return DefaultAdminRuleArgs(
       configurationName: (map['configurationName'] as String).input(),
-      flag: map['flag'] == null ? null : (map['flag'] as String).input(),
+      flag: map['flag'] == null ? null : (map['flag']! as String).input(),
       kind: (map['kind'] as String).input(),
       networkManagerName: (map['networkManagerName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       ruleCollectionName: (map['ruleCollectionName'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
     );
   }
 }

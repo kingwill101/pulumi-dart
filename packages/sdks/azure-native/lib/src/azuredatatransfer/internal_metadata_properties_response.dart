@@ -27,7 +27,7 @@ class InternalMetadataPropertiesResponse {
 
   factory InternalMetadataPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return InternalMetadataPropertiesResponse(
-      operationStatus: map['operationStatus'] == null ? null : (OperationStatusPropertiesResponse.fromMap((map['operationStatus'] as Map).cast<String, dynamic>())).input(),
+      operationStatus: map['operationStatus'] == null ? null : (OperationStatusPropertiesResponse.fromMap((map['operationStatus']! as Map).cast<String, dynamic>())).input(),
       statusSetBy: (map['statusSetBy'] as String).input(),
     );
   }

@@ -22,7 +22,7 @@ class RuleVariablesModelResponse {
 
   factory RuleVariablesModelResponse.fromMap(Map<String, dynamic> map) {
     return RuleVariablesModelResponse(
-      ruleVariables: map['ruleVariables'] == null ? null : (pulumi.Input.decodeMapValues<IPSetResponse>(map['ruleVariables'], (value) => IPSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleVariables: map['ruleVariables'] == null ? null : (pulumi.Input.decodeMapValues<IPSetResponse>(map['ruleVariables']!, (value) => IPSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

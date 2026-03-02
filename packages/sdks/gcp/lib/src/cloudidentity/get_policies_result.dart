@@ -31,7 +31,7 @@ class GetPoliciesResult {
 
   factory GetPoliciesResult.fromMap(Map<String, dynamic> map) {
     return GetPoliciesResult(
-      filter: map['filter'] == null ? null : map['filter'] as String,
+      filter: map['filter'] == null ? null : map['filter']! as String,
       id: map['id'] as String,
       policies: pulumi.Input.decodeList<GetPoliciesPolicy>(map['policies'], (value) => GetPoliciesPolicy.fromMap((value as Map).cast<String, dynamic>())),
     );

@@ -31,8 +31,8 @@ class IngressRulePatchNetworkingK8sIoV1beta1 {
 
   factory IngressRulePatchNetworkingK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return IngressRulePatchNetworkingK8sIoV1beta1(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      http: map['http'] == null ? null : (HTTPIngressRuleValuePatchNetworkingK8sIoV1beta1.fromMap((map['http'] as Map).cast<String, dynamic>())).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      http: map['http'] == null ? null : (HTTPIngressRuleValuePatchNetworkingK8sIoV1beta1.fromMap((map['http']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

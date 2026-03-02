@@ -20,7 +20,7 @@ class EventEndpointReplicationConfig {
 
   factory EventEndpointReplicationConfig.fromMap(Map<String, dynamic> map) {
     return EventEndpointReplicationConfig(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
     );
   }
 }

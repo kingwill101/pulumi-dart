@@ -57,14 +57,14 @@ class GetGlobalDatabaseNetworksArgs {
 
   factory GetGlobalDatabaseNetworksArgs.fromMap(Map<String, dynamic> map) {
     return GetGlobalDatabaseNetworksArgs(
-      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      gdnId: map['gdnId'] == null ? null : (map['gdnId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      gdnId: map['gdnId'] == null ? null : (map['gdnId']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber']! as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

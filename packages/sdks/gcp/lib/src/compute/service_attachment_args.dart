@@ -127,21 +127,21 @@ class ServiceAttachmentArgs {
   factory ServiceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ServiceAttachmentArgs(
       connectionPreference: (map['connectionPreference'] as String).input(),
-      consumerAcceptLists: map['consumerAcceptLists'] == null ? null : (pulumi.Input.decodeList<ServiceAttachmentConsumerAcceptList>(map['consumerAcceptLists'], (value) => ServiceAttachmentConsumerAcceptList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      consumerRejectLists: map['consumerRejectLists'] == null ? null : ((map['consumerRejectLists'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      domainNames: map['domainNames'] == null ? null : ((map['domainNames'] as List).cast<String>()).input(),
+      consumerAcceptLists: map['consumerAcceptLists'] == null ? null : (pulumi.Input.decodeList<ServiceAttachmentConsumerAcceptList>(map['consumerAcceptLists']!, (value) => ServiceAttachmentConsumerAcceptList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      consumerRejectLists: map['consumerRejectLists'] == null ? null : ((map['consumerRejectLists']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      domainNames: map['domainNames'] == null ? null : ((map['domainNames']! as List).cast<String>()).input(),
       enableProxyProtocol: (map['enableProxyProtocol'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       natSubnets: ((map['natSubnets'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      propagatedConnectionLimit: map['propagatedConnectionLimit'] == null ? null : (map['propagatedConnectionLimit'] as int).input(),
-      reconcileConnections: map['reconcileConnections'] == null ? null : (map['reconcileConnections'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sendPropagatedConnectionLimitIfZero: map['sendPropagatedConnectionLimitIfZero'] == null ? null : (map['sendPropagatedConnectionLimitIfZero'] as bool).input(),
-      showNatIps: map['showNatIps'] == null ? null : (map['showNatIps'] as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      propagatedConnectionLimit: map['propagatedConnectionLimit'] == null ? null : (map['propagatedConnectionLimit']! as int).input(),
+      reconcileConnections: map['reconcileConnections'] == null ? null : (map['reconcileConnections']! as bool).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      sendPropagatedConnectionLimitIfZero: map['sendPropagatedConnectionLimitIfZero'] == null ? null : (map['sendPropagatedConnectionLimitIfZero']! as bool).input(),
+      showNatIps: map['showNatIps'] == null ? null : (map['showNatIps']! as bool).input(),
       targetService: (map['targetService'] as String).input(),
-      tunnelingConfig: map['tunnelingConfig'] == null ? null : (ServiceAttachmentTunnelingConfig.fromMap((map['tunnelingConfig'] as Map).cast<String, dynamic>())).input(),
+      tunnelingConfig: map['tunnelingConfig'] == null ? null : (ServiceAttachmentTunnelingConfig.fromMap((map['tunnelingConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -32,8 +32,8 @@ class IisLogsDataSource {
 
   factory IisLogsDataSource.fromMap(Map<String, dynamic> map) {
     return IisLogsDataSource(
-      logDirectories: map['logDirectories'] == null ? null : ((map['logDirectories'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      logDirectories: map['logDirectories'] == null ? null : ((map['logDirectories']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       streams: ((map['streams'] as List).cast<String>()).input(),
     );
   }

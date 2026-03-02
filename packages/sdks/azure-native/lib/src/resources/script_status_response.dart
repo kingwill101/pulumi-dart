@@ -49,7 +49,7 @@ class ScriptStatusResponse {
     return ScriptStatusResponse(
       containerInstanceId: (map['containerInstanceId'] as String).input(),
       endTime: (map['endTime'] as String).input(),
-      error: map['error'] == null ? null : (ErrorResponseResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      error: map['error'] == null ? null : (ErrorResponseResponse.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
       expirationTime: (map['expirationTime'] as String).input(),
       startTime: (map['startTime'] as String).input(),
       storageAccountId: (map['storageAccountId'] as String).input(),

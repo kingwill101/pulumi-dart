@@ -41,10 +41,10 @@ class QuotaPlanArgs {
 
   factory QuotaPlanArgs.fromMap(Map<String, dynamic> map) {
     return QuotaPlanArgs(
-      isEffective: map['isEffective'] == null ? null : (map['isEffective'] as bool).input(),
+      isEffective: map['isEffective'] == null ? null : (map['isEffective']! as bool).input(),
       nickname: (map['nickname'] as String).input(),
       planName: (map['planName'] as String).input(),
-      quota: map['quota'] == null ? null : (QuotaPlanQuota.fromMap((map['quota'] as Map).cast<String, dynamic>())).input(),
+      quota: map['quota'] == null ? null : (QuotaPlanQuota.fromMap((map['quota']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

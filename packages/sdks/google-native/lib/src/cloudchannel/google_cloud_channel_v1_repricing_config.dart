@@ -52,10 +52,10 @@ class GoogleCloudChannelV1RepricingConfig {
   factory GoogleCloudChannelV1RepricingConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1RepricingConfig(
       adjustment: (GoogleCloudChannelV1RepricingAdjustment.fromMap((map['adjustment'] as Map).cast<String, dynamic>())).input(),
-      channelPartnerGranularity: map['channelPartnerGranularity'] == null ? null : ((map['channelPartnerGranularity'] as Map).cast<String, dynamic>()).input(),
-      conditionalOverrides: map['conditionalOverrides'] == null ? null : (pulumi.Input.decodeList<GoogleCloudChannelV1ConditionalOverride>(map['conditionalOverrides'], (value) => GoogleCloudChannelV1ConditionalOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      channelPartnerGranularity: map['channelPartnerGranularity'] == null ? null : ((map['channelPartnerGranularity']! as Map).cast<String, dynamic>()).input(),
+      conditionalOverrides: map['conditionalOverrides'] == null ? null : (pulumi.Input.decodeList<GoogleCloudChannelV1ConditionalOverride>(map['conditionalOverrides']!, (value) => GoogleCloudChannelV1ConditionalOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
       effectiveInvoiceMonth: (GoogleTypeDate.fromMap((map['effectiveInvoiceMonth'] as Map).cast<String, dynamic>())).input(),
-      entitlementGranularity: map['entitlementGranularity'] == null ? null : (GoogleCloudChannelV1RepricingConfigEntitlementGranularity.fromMap((map['entitlementGranularity'] as Map).cast<String, dynamic>())).input(),
+      entitlementGranularity: map['entitlementGranularity'] == null ? null : (GoogleCloudChannelV1RepricingConfigEntitlementGranularity.fromMap((map['entitlementGranularity']! as Map).cast<String, dynamic>())).input(),
       rebillingBasis: (GoogleCloudChannelV1RepricingConfigRebillingBasis.fromValue(map['rebillingBasis'] as String)).input(),
     );
   }

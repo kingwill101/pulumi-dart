@@ -30,9 +30,9 @@ class UserPhoneNumbers {
 
   factory UserPhoneNumbers.fromMap(Map<String, dynamic> map) {
     return UserPhoneNumbers(
-      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      primary: map['primary'] == null ? null : ((map['primary'] as bool).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
     );
   }
 }

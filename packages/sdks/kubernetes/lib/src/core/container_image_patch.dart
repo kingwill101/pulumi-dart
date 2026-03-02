@@ -26,8 +26,8 @@ class ContainerImagePatch {
 
   factory ContainerImagePatch.fromMap(Map<String, dynamic> map) {
     return ContainerImagePatch(
-      names: map['names'] == null ? null : ((map['names'] as List).cast<String>()).input(),
-      sizeBytes: map['sizeBytes'] == null ? null : (map['sizeBytes'] as int).input(),
+      names: map['names'] == null ? null : ((map['names']! as List).cast<String>()).input(),
+      sizeBytes: map['sizeBytes'] == null ? null : (map['sizeBytes']! as int).input(),
     );
   }
 }

@@ -53,12 +53,12 @@ class AccessLevelConditionDevicePolicy {
 
   factory AccessLevelConditionDevicePolicy.fromMap(Map<String, dynamic> map) {
     return AccessLevelConditionDevicePolicy(
-      allowedDeviceManagementLevels: map['allowedDeviceManagementLevels'] == null ? null : ((map['allowedDeviceManagementLevels'] as List).cast<String>()).input(),
-      allowedEncryptionStatuses: map['allowedEncryptionStatuses'] == null ? null : ((map['allowedEncryptionStatuses'] as List).cast<String>()).input(),
-      osConstraints: map['osConstraints'] == null ? null : (pulumi.Input.decodeList<AccessLevelConditionDevicePolicyOsConstraint>(map['osConstraints'], (value) => AccessLevelConditionDevicePolicyOsConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requireAdminApproval: map['requireAdminApproval'] == null ? null : (map['requireAdminApproval'] as bool).input(),
-      requireCorpOwned: map['requireCorpOwned'] == null ? null : (map['requireCorpOwned'] as bool).input(),
-      requireScreenLock: map['requireScreenLock'] == null ? null : (map['requireScreenLock'] as bool).input(),
+      allowedDeviceManagementLevels: map['allowedDeviceManagementLevels'] == null ? null : ((map['allowedDeviceManagementLevels']! as List).cast<String>()).input(),
+      allowedEncryptionStatuses: map['allowedEncryptionStatuses'] == null ? null : ((map['allowedEncryptionStatuses']! as List).cast<String>()).input(),
+      osConstraints: map['osConstraints'] == null ? null : (pulumi.Input.decodeList<AccessLevelConditionDevicePolicyOsConstraint>(map['osConstraints']!, (value) => AccessLevelConditionDevicePolicyOsConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requireAdminApproval: map['requireAdminApproval'] == null ? null : (map['requireAdminApproval']! as bool).input(),
+      requireCorpOwned: map['requireCorpOwned'] == null ? null : (map['requireCorpOwned']! as bool).input(),
+      requireScreenLock: map['requireScreenLock'] == null ? null : (map['requireScreenLock']! as bool).input(),
     );
   }
 }

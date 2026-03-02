@@ -22,7 +22,7 @@ class ProjectCustomModuleCustomConfigCustomOutput {
 
   factory ProjectCustomModuleCustomConfigCustomOutput.fromMap(Map<String, dynamic> map) {
     return ProjectCustomModuleCustomConfigCustomOutput(
-      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<ProjectCustomModuleCustomConfigCustomOutputProperty>(map['properties'], (value) => ProjectCustomModuleCustomConfigCustomOutputProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<ProjectCustomModuleCustomConfigCustomOutputProperty>(map['properties']!, (value) => ProjectCustomModuleCustomConfigCustomOutputProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

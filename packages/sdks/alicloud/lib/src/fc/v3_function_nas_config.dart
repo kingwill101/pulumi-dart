@@ -31,9 +31,9 @@ class V3FunctionNasConfig {
 
   factory V3FunctionNasConfig.fromMap(Map<String, dynamic> map) {
     return V3FunctionNasConfig(
-      groupId: map['groupId'] == null ? null : (map['groupId'] as int).input(),
-      mountPoints: map['mountPoints'] == null ? null : (pulumi.Input.decodeList<V3FunctionNasConfigMountPoint>(map['mountPoints'], (value) => V3FunctionNasConfigMountPoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as int).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as int).input(),
+      mountPoints: map['mountPoints'] == null ? null : (pulumi.Input.decodeList<V3FunctionNasConfigMountPoint>(map['mountPoints']!, (value) => V3FunctionNasConfigMountPoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as int).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class EventTargetDeadLetterConfig {
 
   factory EventTargetDeadLetterConfig.fromMap(Map<String, dynamic> map) {
     return EventTargetDeadLetterConfig(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
     );
   }
 }

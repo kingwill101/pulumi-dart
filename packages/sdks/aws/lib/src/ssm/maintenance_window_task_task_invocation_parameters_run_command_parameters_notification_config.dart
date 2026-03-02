@@ -30,9 +30,9 @@ class MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificat
 
   factory MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfig.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfig(
-      notificationArn: map['notificationArn'] == null ? null : (map['notificationArn'] as String).input(),
-      notificationEvents: map['notificationEvents'] == null ? null : ((map['notificationEvents'] as List).cast<String>()).input(),
-      notificationType: map['notificationType'] == null ? null : (map['notificationType'] as String).input(),
+      notificationArn: map['notificationArn'] == null ? null : ((map['notificationArn'] as String).input()).input(),
+      notificationEvents: map['notificationEvents'] == null ? null : (((map['notificationEvents'] as List).cast<String>()).input()).input(),
+      notificationType: map['notificationType'] == null ? null : ((map['notificationType'] as String).input()).input(),
     );
   }
 }

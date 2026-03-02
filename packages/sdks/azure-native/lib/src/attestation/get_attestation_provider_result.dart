@@ -83,18 +83,18 @@ class GetAttestationProviderResult {
 
   factory GetAttestationProviderResult.fromMap(Map<String, dynamic> map) {
     return GetAttestationProviderResult(
-      attestUri: map['attestUri'] == null ? null : map['attestUri'] as String,
+      attestUri: map['attestUri'] == null ? null : map['attestUri']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      tpmAttestationAuthentication: map['tpmAttestationAuthentication'] == null ? null : map['tpmAttestationAuthentication'] as String,
-      trustModel: map['trustModel'] == null ? null : map['trustModel'] as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tpmAttestationAuthentication: map['tpmAttestationAuthentication'] == null ? null : map['tpmAttestationAuthentication']! as String,
+      trustModel: map['trustModel'] == null ? null : map['trustModel']! as String,
       type: map['type'] as String,
     );
   }

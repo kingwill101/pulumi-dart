@@ -26,8 +26,8 @@ class FilterTableColumns {
 
   factory FilterTableColumns.fromMap(Map<String, dynamic> map) {
     return FilterTableColumns(
-      excludeColumns: map['excludeColumns'] == null ? null : ((map['excludeColumns'] as List).cast<String>()).input(),
-      includeColumns: map['includeColumns'] == null ? null : ((map['includeColumns'] as List).cast<String>()).input(),
+      excludeColumns: map['excludeColumns'] == null ? null : ((map['excludeColumns']! as List).cast<String>()).input(),
+      includeColumns: map['includeColumns'] == null ? null : ((map['includeColumns']! as List).cast<String>()).input(),
     );
   }
 }

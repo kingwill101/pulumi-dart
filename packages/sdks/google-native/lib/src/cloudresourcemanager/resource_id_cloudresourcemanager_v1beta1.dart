@@ -26,8 +26,8 @@ class ResourceIdCloudresourcemanagerV1beta1 {
 
   factory ResourceIdCloudresourcemanagerV1beta1.fromMap(Map<String, dynamic> map) {
     return ResourceIdCloudresourcemanagerV1beta1(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

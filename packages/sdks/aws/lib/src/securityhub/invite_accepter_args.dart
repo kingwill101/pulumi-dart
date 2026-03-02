@@ -30,7 +30,7 @@ class InviteAccepterArgs {
   factory InviteAccepterArgs.fromMap(Map<String, dynamic> map) {
     return InviteAccepterArgs(
       masterId: (map['masterId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -40,10 +40,10 @@ class KeyvaluestoreKeysExclusiveState {
 
   factory KeyvaluestoreKeysExclusiveState.fromMap(Map<String, dynamic> map) {
     return KeyvaluestoreKeysExclusiveState(
-      keyValueStoreArn: map['keyValueStoreArn'] == null ? null : (map['keyValueStoreArn'] as String).input(),
-      maxBatchSize: map['maxBatchSize'] == null ? null : (map['maxBatchSize'] as int).input(),
-      resourceKeyValuePairs: map['resourceKeyValuePairs'] == null ? null : (pulumi.Input.decodeList<KeyvaluestoreKeysExclusiveResourceKeyValuePair>(map['resourceKeyValuePairs'], (value) => KeyvaluestoreKeysExclusiveResourceKeyValuePair.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      totalSizeInBytes: map['totalSizeInBytes'] == null ? null : (map['totalSizeInBytes'] as int).input(),
+      keyValueStoreArn: map['keyValueStoreArn'] == null ? null : ((map['keyValueStoreArn'] as String).input()).input(),
+      maxBatchSize: map['maxBatchSize'] == null ? null : ((map['maxBatchSize'] as int).input()).input(),
+      resourceKeyValuePairs: map['resourceKeyValuePairs'] == null ? null : ((pulumi.Input.decodeList<KeyvaluestoreKeysExclusiveResourceKeyValuePair>(map['resourceKeyValuePairs']!, (value) => KeyvaluestoreKeysExclusiveResourceKeyValuePair.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      totalSizeInBytes: map['totalSizeInBytes'] == null ? null : ((map['totalSizeInBytes'] as int).input()).input(),
     );
   }
 }

@@ -57,12 +57,12 @@ class AccessEntryArgs {
   factory AccessEntryArgs.fromMap(Map<String, dynamic> map) {
     return AccessEntryArgs(
       clusterName: (map['clusterName'] as String).input(),
-      kubernetesGroups: map['kubernetesGroups'] == null ? null : ((map['kubernetesGroups'] as List).cast<String>()).input(),
+      kubernetesGroups: map['kubernetesGroups'] == null ? null : (((map['kubernetesGroups'] as List).cast<String>()).input()).input(),
       principalArn: (map['principalArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      userName: map['userName'] == null ? null : ((map['userName'] as String).input()).input(),
     );
   }
 }

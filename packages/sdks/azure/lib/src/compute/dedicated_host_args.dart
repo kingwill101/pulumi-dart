@@ -59,14 +59,14 @@ class DedicatedHostArgs {
 
   factory DedicatedHostArgs.fromMap(Map<String, dynamic> map) {
     return DedicatedHostArgs(
-      autoReplaceOnFailure: map['autoReplaceOnFailure'] == null ? null : (map['autoReplaceOnFailure'] as bool).input(),
+      autoReplaceOnFailure: map['autoReplaceOnFailure'] == null ? null : (map['autoReplaceOnFailure']! as bool).input(),
       dedicatedHostGroupId: (map['dedicatedHostGroupId'] as String).input(),
-      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       platformFaultDomain: (map['platformFaultDomain'] as int).input(),
       skuName: (map['skuName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

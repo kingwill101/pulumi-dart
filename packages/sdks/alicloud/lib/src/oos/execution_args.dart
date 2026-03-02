@@ -64,15 +64,15 @@ class ExecutionArgs {
 
   factory ExecutionArgs.fromMap(Map<String, dynamic> map) {
     return ExecutionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      loopMode: map['loopMode'] == null ? null : (map['loopMode'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
-      parentExecutionId: map['parentExecutionId'] == null ? null : (map['parentExecutionId'] as String).input(),
-      safetyCheck: map['safetyCheck'] == null ? null : (map['safetyCheck'] as String).input(),
-      templateContent: map['templateContent'] == null ? null : (map['templateContent'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      loopMode: map['loopMode'] == null ? null : (map['loopMode']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']! as String).input(),
+      parentExecutionId: map['parentExecutionId'] == null ? null : (map['parentExecutionId']! as String).input(),
+      safetyCheck: map['safetyCheck'] == null ? null : (map['safetyCheck']! as String).input(),
+      templateContent: map['templateContent'] == null ? null : (map['templateContent']! as String).input(),
       templateName: (map['templateName'] as String).input(),
-      templateVersion: map['templateVersion'] == null ? null : (map['templateVersion'] as String).input(),
+      templateVersion: map['templateVersion'] == null ? null : (map['templateVersion']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class DevEnvironmentIdes {
 
   factory DevEnvironmentIdes.fromMap(Map<String, dynamic> map) {
     return DevEnvironmentIdes(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      runtime: map['runtime'] == null ? null : (map['runtime'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      runtime: map['runtime'] == null ? null : ((map['runtime'] as String).input()).input(),
     );
   }
 }

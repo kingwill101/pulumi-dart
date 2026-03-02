@@ -30,7 +30,7 @@ class GetCoreNetworkPolicyDocumentNetworkFunctionGroup {
 
   factory GetCoreNetworkPolicyDocumentNetworkFunctionGroup.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentNetworkFunctionGroup(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       name: (map['name'] as String).input(),
       requireAttachmentAcceptance: (map['requireAttachmentAcceptance'] as bool).input(),
     );

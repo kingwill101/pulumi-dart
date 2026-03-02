@@ -26,8 +26,8 @@ class MapperPolicyRecurrence {
 
   factory MapperPolicyRecurrence.fromMap(Map<String, dynamic> map) {
     return MapperPolicyRecurrence(
-      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency']! as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
     );
   }
 }

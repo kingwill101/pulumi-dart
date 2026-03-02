@@ -22,7 +22,7 @@ class MetricRules {
 
   factory MetricRules.fromMap(Map<String, dynamic> map) {
     return MetricRules(
-      filteringTags: map['filteringTags'] == null ? null : (pulumi.Input.decodeList<FilteringTag>(map['filteringTags'], (value) => FilteringTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filteringTags: map['filteringTags'] == null ? null : (pulumi.Input.decodeList<FilteringTag>(map['filteringTags']!, (value) => FilteringTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

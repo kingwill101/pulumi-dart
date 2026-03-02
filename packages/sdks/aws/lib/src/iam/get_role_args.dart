@@ -30,7 +30,7 @@ class GetRoleArgs {
   factory GetRoleArgs.fromMap(Map<String, dynamic> map) {
     return GetRoleArgs(
       name: (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

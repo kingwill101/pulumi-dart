@@ -26,8 +26,8 @@ class KeyVaultProperties {
 
   factory KeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return KeyVaultProperties(
-      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
-      keyIdentifier: map['keyIdentifier'] == null ? null : (map['keyIdentifier'] as String).input(),
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId']! as String).input(),
+      keyIdentifier: map['keyIdentifier'] == null ? null : (map['keyIdentifier']! as String).input(),
     );
   }
 }

@@ -66,14 +66,14 @@ class GetAccountSASResult {
     return GetAccountSASResult(
       connectionString: map['connectionString'] as String,
       expiry: map['expiry'] as String,
-      httpsOnly: map['httpsOnly'] == null ? null : map['httpsOnly'] as bool,
+      httpsOnly: map['httpsOnly'] == null ? null : map['httpsOnly']! as bool,
       id: map['id'] as String,
-      ipAddresses: map['ipAddresses'] == null ? null : map['ipAddresses'] as String,
+      ipAddresses: map['ipAddresses'] == null ? null : map['ipAddresses']! as String,
       permissions: GetAccountSASPermissions.fromMap((map['permissions'] as Map).cast<String, dynamic>()),
       resourceTypes: GetAccountSASResourceTypes.fromMap((map['resourceTypes'] as Map).cast<String, dynamic>()),
       sas: map['sas'] as String,
       services: GetAccountSASServices.fromMap((map['services'] as Map).cast<String, dynamic>()),
-      signedVersion: map['signedVersion'] == null ? null : map['signedVersion'] as String,
+      signedVersion: map['signedVersion'] == null ? null : map['signedVersion']! as String,
       start: map['start'] as String,
     );
   }

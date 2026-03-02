@@ -39,7 +39,7 @@ class TransitRouterMulticastDomainPeerMemberArgs {
 
   factory TransitRouterMulticastDomainPeerMemberArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterMulticastDomainPeerMemberArgs(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
       groupIpAddress: (map['groupIpAddress'] as String).input(),
       peerTransitRouterMulticastDomainId: (map['peerTransitRouterMulticastDomainId'] as String).input(),
       transitRouterMulticastDomainId: (map['transitRouterMulticastDomainId'] as String).input(),

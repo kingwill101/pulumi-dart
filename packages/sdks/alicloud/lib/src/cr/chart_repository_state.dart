@@ -41,11 +41,11 @@ class ChartRepositoryState {
 
   factory ChartRepositoryState.fromMap(Map<String, dynamic> map) {
     return ChartRepositoryState(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      repoName: map['repoName'] == null ? null : (map['repoName'] as String).input(),
-      repoNamespaceName: map['repoNamespaceName'] == null ? null : (map['repoNamespaceName'] as String).input(),
-      repoType: map['repoType'] == null ? null : (map['repoType'] as String).input(),
-      summary: map['summary'] == null ? null : (map['summary'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      repoName: map['repoName'] == null ? null : (map['repoName']! as String).input(),
+      repoNamespaceName: map['repoNamespaceName'] == null ? null : (map['repoNamespaceName']! as String).input(),
+      repoType: map['repoType'] == null ? null : (map['repoType']! as String).input(),
+      summary: map['summary'] == null ? null : (map['summary']! as String).input(),
     );
   }
 }

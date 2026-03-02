@@ -52,11 +52,11 @@ class ManagementProjectSecurityHealthAnalyticsCustomModuleArgs {
 
   factory ManagementProjectSecurityHealthAnalyticsCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return ManagementProjectSecurityHealthAnalyticsCustomModuleArgs(
-      customConfig: map['customConfig'] == null ? null : (ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enablementState: map['enablementState'] == null ? null : (map['enablementState'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      customConfig: map['customConfig'] == null ? null : (ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((map['customConfig']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enablementState: map['enablementState'] == null ? null : (map['enablementState']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -76,18 +76,18 @@ class DatabaseLogsinkRsyslogState {
 
   factory DatabaseLogsinkRsyslogState.fromMap(Map<String, dynamic> map) {
     return DatabaseLogsinkRsyslogState(
-      caCert: map['caCert'] == null ? null : (map['caCert'] as String).input(),
-      clientCert: map['clientCert'] == null ? null : (map['clientCert'] as String).input(),
-      clientKey: map['clientKey'] == null ? null : (map['clientKey'] as String).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      logline: map['logline'] == null ? null : (map['logline'] as String).input(),
-      logsinkId: map['logsinkId'] == null ? null : (map['logsinkId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      server: map['server'] == null ? null : (map['server'] as String).input(),
-      structuredData: map['structuredData'] == null ? null : (map['structuredData'] as String).input(),
-      tls: map['tls'] == null ? null : (map['tls'] as bool).input(),
+      caCert: map['caCert'] == null ? null : (map['caCert']! as String).input(),
+      clientCert: map['clientCert'] == null ? null : (map['clientCert']! as String).input(),
+      clientKey: map['clientKey'] == null ? null : (map['clientKey']! as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      logline: map['logline'] == null ? null : (map['logline']! as String).input(),
+      logsinkId: map['logsinkId'] == null ? null : (map['logsinkId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      server: map['server'] == null ? null : (map['server']! as String).input(),
+      structuredData: map['structuredData'] == null ? null : (map['structuredData']! as String).input(),
+      tls: map['tls'] == null ? null : (map['tls']! as bool).input(),
     );
   }
 }

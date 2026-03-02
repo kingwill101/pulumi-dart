@@ -45,8 +45,8 @@ class AlertRobotArgs {
   factory AlertRobotArgs.fromMap(Map<String, dynamic> map) {
     return AlertRobotArgs(
       alertRobotName: (map['alertRobotName'] as String).input(),
-      dailyNoc: map['dailyNoc'] == null ? null : (map['dailyNoc'] as bool).input(),
-      dailyNocTime: map['dailyNocTime'] == null ? null : (map['dailyNocTime'] as String).input(),
+      dailyNoc: map['dailyNoc'] == null ? null : (map['dailyNoc']! as bool).input(),
+      dailyNocTime: map['dailyNocTime'] == null ? null : (map['dailyNocTime']! as String).input(),
       robotAddr: (map['robotAddr'] as String).input(),
       robotType: (map['robotType'] as String).input(),
     );

@@ -55,13 +55,13 @@ class ConfigurationSetEventDestinationEventDestination {
 
   factory ConfigurationSetEventDestinationEventDestination.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetEventDestinationEventDestination(
-      cloudWatchDestination: map['cloudWatchDestination'] == null ? null : (ConfigurationSetEventDestinationEventDestinationCloudWatchDestination.fromMap((map['cloudWatchDestination'] as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      eventBridgeDestination: map['eventBridgeDestination'] == null ? null : (ConfigurationSetEventDestinationEventDestinationEventBridgeDestination.fromMap((map['eventBridgeDestination'] as Map).cast<String, dynamic>())).input(),
-      kinesisFirehoseDestination: map['kinesisFirehoseDestination'] == null ? null : (ConfigurationSetEventDestinationEventDestinationKinesisFirehoseDestination.fromMap((map['kinesisFirehoseDestination'] as Map).cast<String, dynamic>())).input(),
+      cloudWatchDestination: map['cloudWatchDestination'] == null ? null : ((ConfigurationSetEventDestinationEventDestinationCloudWatchDestination.fromMap((map['cloudWatchDestination']! as Map).cast<String, dynamic>())).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      eventBridgeDestination: map['eventBridgeDestination'] == null ? null : ((ConfigurationSetEventDestinationEventDestinationEventBridgeDestination.fromMap((map['eventBridgeDestination']! as Map).cast<String, dynamic>())).input()).input(),
+      kinesisFirehoseDestination: map['kinesisFirehoseDestination'] == null ? null : ((ConfigurationSetEventDestinationEventDestinationKinesisFirehoseDestination.fromMap((map['kinesisFirehoseDestination']! as Map).cast<String, dynamic>())).input()).input(),
       matchingEventTypes: ((map['matchingEventTypes'] as List).cast<String>()).input(),
-      pinpointDestination: map['pinpointDestination'] == null ? null : (ConfigurationSetEventDestinationEventDestinationPinpointDestination.fromMap((map['pinpointDestination'] as Map).cast<String, dynamic>())).input(),
-      snsDestination: map['snsDestination'] == null ? null : (ConfigurationSetEventDestinationEventDestinationSnsDestination.fromMap((map['snsDestination'] as Map).cast<String, dynamic>())).input(),
+      pinpointDestination: map['pinpointDestination'] == null ? null : ((ConfigurationSetEventDestinationEventDestinationPinpointDestination.fromMap((map['pinpointDestination']! as Map).cast<String, dynamic>())).input()).input(),
+      snsDestination: map['snsDestination'] == null ? null : ((ConfigurationSetEventDestinationEventDestinationSnsDestination.fromMap((map['snsDestination']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

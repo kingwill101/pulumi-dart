@@ -113,14 +113,14 @@ class GetContainerRecipeResult {
   factory GetContainerRecipeResult.fromMap(Map<String, dynamic> map) {
     return GetContainerRecipeResult(
       arn: map['arn'] as String,
-      components: pulumi.Input.decodeList<GetContainerRecipeComponent>(map['components'], (value) => GetContainerRecipeComponent.fromMap((value as Map).cast<String, dynamic>())),
+      components: pulumi.Input.decodeList<GetContainerRecipeComponent>(map['components']!, (value) => GetContainerRecipeComponent.fromMap((value as Map).cast<String, dynamic>())),
       containerType: map['containerType'] as String,
       dateCreated: map['dateCreated'] as String,
       description: map['description'] as String,
       dockerfileTemplateData: map['dockerfileTemplateData'] as String,
       encrypted: map['encrypted'] as bool,
       id: map['id'] as String,
-      instanceConfigurations: pulumi.Input.decodeList<GetContainerRecipeInstanceConfiguration>(map['instanceConfigurations'], (value) => GetContainerRecipeInstanceConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      instanceConfigurations: pulumi.Input.decodeList<GetContainerRecipeInstanceConfiguration>(map['instanceConfigurations']!, (value) => GetContainerRecipeInstanceConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       kmsKeyId: map['kmsKeyId'] as String,
       name: map['name'] as String,
       owner: map['owner'] as String,
@@ -128,7 +128,7 @@ class GetContainerRecipeResult {
       platform: map['platform'] as String,
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
-      targetRepositories: pulumi.Input.decodeList<GetContainerRecipeTargetRepository>(map['targetRepositories'], (value) => GetContainerRecipeTargetRepository.fromMap((value as Map).cast<String, dynamic>())),
+      targetRepositories: pulumi.Input.decodeList<GetContainerRecipeTargetRepository>(map['targetRepositories']!, (value) => GetContainerRecipeTargetRepository.fromMap((value as Map).cast<String, dynamic>())),
       version: map['version'] as String,
       workingDirectory: map['workingDirectory'] as String,
     );

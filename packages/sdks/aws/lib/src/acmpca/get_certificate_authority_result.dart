@@ -98,7 +98,7 @@ class GetCertificateAuthorityResult {
       notAfter: map['notAfter'] as String,
       notBefore: map['notBefore'] as String,
       region: map['region'] as String,
-      revocationConfigurations: pulumi.Input.decodeList<GetCertificateAuthorityRevocationConfiguration>(map['revocationConfigurations'], (value) => GetCertificateAuthorityRevocationConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      revocationConfigurations: pulumi.Input.decodeList<GetCertificateAuthorityRevocationConfiguration>(map['revocationConfigurations']!, (value) => GetCertificateAuthorityRevocationConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       serial: map['serial'] as String,
       status: map['status'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),

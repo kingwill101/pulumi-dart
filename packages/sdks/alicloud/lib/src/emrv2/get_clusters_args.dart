@@ -74,17 +74,17 @@ class GetClustersArgs {
 
   factory GetClustersArgs.fromMap(Map<String, dynamic> map) {
     return GetClustersArgs(
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      clusterStates: map['clusterStates'] == null ? null : ((map['clusterStates'] as List).cast<String>()).input(),
-      clusterTypes: map['clusterTypes'] == null ? null : ((map['clusterTypes'] as List).cast<String>()).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      maxResults: map['maxResults'] == null ? null : (map['maxResults'] as int).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      nextToken: map['nextToken'] == null ? null : (map['nextToken'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      paymentTypes: map['paymentTypes'] == null ? null : ((map['paymentTypes'] as List).cast<String>()).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      clusterStates: map['clusterStates'] == null ? null : ((map['clusterStates']! as List).cast<String>()).input(),
+      clusterTypes: map['clusterTypes'] == null ? null : ((map['clusterTypes']! as List).cast<String>()).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      maxResults: map['maxResults'] == null ? null : (map['maxResults']! as int).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      nextToken: map['nextToken'] == null ? null : (map['nextToken']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      paymentTypes: map['paymentTypes'] == null ? null : ((map['paymentTypes']! as List).cast<String>()).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

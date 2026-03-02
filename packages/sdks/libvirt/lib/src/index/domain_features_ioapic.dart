@@ -20,7 +20,7 @@ class DomainFeaturesIoapic {
 
   factory DomainFeaturesIoapic.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesIoapic(
-      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
+      driver: map['driver'] == null ? null : (map['driver']! as String).input(),
     );
   }
 }

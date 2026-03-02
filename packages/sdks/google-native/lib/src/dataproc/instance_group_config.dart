@@ -71,16 +71,16 @@ class InstanceGroupConfig {
 
   factory InstanceGroupConfig.fromMap(Map<String, dynamic> map) {
     return InstanceGroupConfig(
-      accelerators: map['accelerators'] == null ? null : (pulumi.Input.decodeList<AcceleratorConfig>(map['accelerators'], (value) => AcceleratorConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      diskConfig: map['diskConfig'] == null ? null : (DiskConfig.fromMap((map['diskConfig'] as Map).cast<String, dynamic>())).input(),
-      imageUri: map['imageUri'] == null ? null : (map['imageUri'] as String).input(),
-      instanceFlexibilityPolicy: map['instanceFlexibilityPolicy'] == null ? null : (InstanceFlexibilityPolicy.fromMap((map['instanceFlexibilityPolicy'] as Map).cast<String, dynamic>())).input(),
-      machineTypeUri: map['machineTypeUri'] == null ? null : (map['machineTypeUri'] as String).input(),
-      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform'] as String).input(),
-      minNumInstances: map['minNumInstances'] == null ? null : (map['minNumInstances'] as int).input(),
-      numInstances: map['numInstances'] == null ? null : (map['numInstances'] as int).input(),
-      preemptibility: map['preemptibility'] == null ? null : (InstanceGroupConfigPreemptibility.fromValue(map['preemptibility'] as String)).input(),
-      startupConfig: map['startupConfig'] == null ? null : (StartupConfig.fromMap((map['startupConfig'] as Map).cast<String, dynamic>())).input(),
+      accelerators: map['accelerators'] == null ? null : (pulumi.Input.decodeList<AcceleratorConfig>(map['accelerators']!, (value) => AcceleratorConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      diskConfig: map['diskConfig'] == null ? null : (DiskConfig.fromMap((map['diskConfig']! as Map).cast<String, dynamic>())).input(),
+      imageUri: map['imageUri'] == null ? null : (map['imageUri']! as String).input(),
+      instanceFlexibilityPolicy: map['instanceFlexibilityPolicy'] == null ? null : (InstanceFlexibilityPolicy.fromMap((map['instanceFlexibilityPolicy']! as Map).cast<String, dynamic>())).input(),
+      machineTypeUri: map['machineTypeUri'] == null ? null : (map['machineTypeUri']! as String).input(),
+      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform']! as String).input(),
+      minNumInstances: map['minNumInstances'] == null ? null : (map['minNumInstances']! as int).input(),
+      numInstances: map['numInstances'] == null ? null : (map['numInstances']! as int).input(),
+      preemptibility: map['preemptibility'] == null ? null : (InstanceGroupConfigPreemptibility.fromValue(map['preemptibility']! as String)).input(),
+      startupConfig: map['startupConfig'] == null ? null : (StartupConfig.fromMap((map['startupConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -103,20 +103,20 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      allowedAuthenticationModes: map['allowedAuthenticationModes'] == null ? null : ((map['allowedAuthenticationModes'] as List).cast<String>()).input(),
-      encryption: map['encryption'] == null ? null : (AccountEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (AccountIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      keyVaultReference: map['keyVaultReference'] == null ? null : (AccountKeyVaultReference.fromMap((map['keyVaultReference'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkProfile: map['networkProfile'] == null ? null : (AccountNetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
-      poolAllocationMode: map['poolAllocationMode'] == null ? null : (map['poolAllocationMode'] as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      allowedAuthenticationModes: map['allowedAuthenticationModes'] == null ? null : ((map['allowedAuthenticationModes']! as List).cast<String>()).input(),
+      encryption: map['encryption'] == null ? null : (AccountEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (AccountIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      keyVaultReference: map['keyVaultReference'] == null ? null : (AccountKeyVaultReference.fromMap((map['keyVaultReference']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkProfile: map['networkProfile'] == null ? null : (AccountNetworkProfile.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())).input(),
+      poolAllocationMode: map['poolAllocationMode'] == null ? null : (map['poolAllocationMode']! as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageAccountAuthenticationMode: map['storageAccountAuthenticationMode'] == null ? null : (map['storageAccountAuthenticationMode'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
-      storageAccountNodeIdentity: map['storageAccountNodeIdentity'] == null ? null : (map['storageAccountNodeIdentity'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      storageAccountAuthenticationMode: map['storageAccountAuthenticationMode'] == null ? null : (map['storageAccountAuthenticationMode']! as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
+      storageAccountNodeIdentity: map['storageAccountNodeIdentity'] == null ? null : (map['storageAccountNodeIdentity']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

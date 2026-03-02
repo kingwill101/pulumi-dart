@@ -43,11 +43,11 @@ class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecific
 
   factory V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification(
-      allowInterrupt: map['allowInterrupt'] == null ? null : (map['allowInterrupt'] as bool).input(),
-      allowedInputTypes: map['allowedInputTypes'] == null ? null : (V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes.fromMap((map['allowedInputTypes'] as Map).cast<String, dynamic>())).input(),
-      audioAndDtmfInputSpecification: map['audioAndDtmfInputSpecification'] == null ? null : (V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification.fromMap((map['audioAndDtmfInputSpecification'] as Map).cast<String, dynamic>())).input(),
+      allowInterrupt: map['allowInterrupt'] == null ? null : ((map['allowInterrupt'] as bool).input()).input(),
+      allowedInputTypes: map['allowedInputTypes'] == null ? null : ((V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes.fromMap((map['allowedInputTypes']! as Map).cast<String, dynamic>())).input()).input(),
+      audioAndDtmfInputSpecification: map['audioAndDtmfInputSpecification'] == null ? null : ((V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification.fromMap((map['audioAndDtmfInputSpecification']! as Map).cast<String, dynamic>())).input()).input(),
       mapBlockKey: (map['mapBlockKey'] as String).input(),
-      textInputSpecification: map['textInputSpecification'] == null ? null : (V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification.fromMap((map['textInputSpecification'] as Map).cast<String, dynamic>())).input(),
+      textInputSpecification: map['textInputSpecification'] == null ? null : ((V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification.fromMap((map['textInputSpecification']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

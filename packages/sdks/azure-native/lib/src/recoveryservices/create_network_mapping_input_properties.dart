@@ -32,8 +32,8 @@ class CreateNetworkMappingInputProperties {
 
   factory CreateNetworkMappingInputProperties.fromMap(Map<String, dynamic> map) {
     return CreateNetworkMappingInputProperties(
-      fabricSpecificDetails: map['fabricSpecificDetails'] == null ? null : (AzureToAzureCreateNetworkMappingInput.fromMap((map['fabricSpecificDetails'] as Map).cast<String, dynamic>())).input(),
-      recoveryFabricName: map['recoveryFabricName'] == null ? null : (map['recoveryFabricName'] as String).input(),
+      fabricSpecificDetails: map['fabricSpecificDetails'] == null ? null : (AzureToAzureCreateNetworkMappingInput.fromMap((map['fabricSpecificDetails']! as Map).cast<String, dynamic>())).input(),
+      recoveryFabricName: map['recoveryFabricName'] == null ? null : (map['recoveryFabricName']! as String).input(),
       recoveryNetworkId: (map['recoveryNetworkId'] as String).input(),
     );
   }

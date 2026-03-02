@@ -60,12 +60,12 @@ class CapacityPoolSubvolumeArgs {
   factory CapacityPoolSubvolumeArgs.fromMap(Map<String, dynamic> map) {
     return CapacityPoolSubvolumeArgs(
       accountName: (map['accountName'] as String).input(),
-      parentPath: map['parentPath'] == null ? null : (map['parentPath'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      parentPath: map['parentPath'] == null ? null : (map['parentPath']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
       poolName: (map['poolName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as double).input(),
-      subvolumeName: map['subvolumeName'] == null ? null : (map['subvolumeName'] as String).input(),
+      size: map['size'] == null ? null : (map['size']! as double).input(),
+      subvolumeName: map['subvolumeName'] == null ? null : (map['subvolumeName']! as String).input(),
       volumeName: (map['volumeName'] as String).input(),
     );
   }

@@ -32,10 +32,10 @@ class ResourceIdentity {
 
   factory ResourceIdentity.fromMap(Map<String, dynamic> map) {
     return ResourceIdentity(
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<UserAssignedIdentity>(map['userAssignedIdentities'], (value) => UserAssignedIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<UserAssignedIdentity>(map['userAssignedIdentities']!, (value) => UserAssignedIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -33,7 +33,7 @@ class JitNetworkAccessPolicyVirtualMachineResponse {
     return JitNetworkAccessPolicyVirtualMachineResponse(
       id: (map['id'] as String).input(),
       ports: (pulumi.Input.decodeList<JitNetworkAccessPortRuleResponse>(map['ports'], (value) => JitNetworkAccessPortRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      publicIpAddress: map['publicIpAddress'] == null ? null : (map['publicIpAddress'] as String).input(),
+      publicIpAddress: map['publicIpAddress'] == null ? null : (map['publicIpAddress']! as String).input(),
     );
   }
 }

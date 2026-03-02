@@ -25,7 +25,7 @@ class SpringCloudBuilderBuildPackGroup {
 
   factory SpringCloudBuilderBuildPackGroup.fromMap(Map<String, dynamic> map) {
     return SpringCloudBuilderBuildPackGroup(
-      buildPackIds: map['buildPackIds'] == null ? null : ((map['buildPackIds'] as List).cast<String>()).input(),
+      buildPackIds: map['buildPackIds'] == null ? null : ((map['buildPackIds']! as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
     );
   }

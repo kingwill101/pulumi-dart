@@ -32,9 +32,9 @@ class SecurityConfigurationState {
 
   factory SecurityConfigurationState.fromMap(Map<String, dynamic> map) {
     return SecurityConfigurationState(
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (SecurityConfigurationEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : ((SecurityConfigurationEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

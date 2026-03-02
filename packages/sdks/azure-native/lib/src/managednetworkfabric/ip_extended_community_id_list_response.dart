@@ -21,7 +21,7 @@ class IpExtendedCommunityIdListResponse {
 
   factory IpExtendedCommunityIdListResponse.fromMap(Map<String, dynamic> map) {
     return IpExtendedCommunityIdListResponse(
-      ipExtendedCommunityIds: map['ipExtendedCommunityIds'] == null ? null : ((map['ipExtendedCommunityIds'] as List).cast<String>()).input(),
+      ipExtendedCommunityIds: map['ipExtendedCommunityIds'] == null ? null : ((map['ipExtendedCommunityIds']! as List).cast<String>()).input(),
     );
   }
 }

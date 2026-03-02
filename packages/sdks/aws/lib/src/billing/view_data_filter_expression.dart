@@ -33,9 +33,9 @@ class ViewDataFilterExpression {
 
   factory ViewDataFilterExpression.fromMap(Map<String, dynamic> map) {
     return ViewDataFilterExpression(
-      dimensions: map['dimensions'] == null ? null : (ViewDataFilterExpressionDimensions.fromMap((map['dimensions'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<ViewDataFilterExpressionTag>(map['tags'], (value) => ViewDataFilterExpressionTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeRange: map['timeRange'] == null ? null : (ViewDataFilterExpressionTimeRange.fromMap((map['timeRange'] as Map).cast<String, dynamic>())).input(),
+      dimensions: map['dimensions'] == null ? null : ((ViewDataFilterExpressionDimensions.fromMap((map['dimensions']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : ((pulumi.Input.decodeList<ViewDataFilterExpressionTag>(map['tags']!, (value) => ViewDataFilterExpressionTag.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      timeRange: map['timeRange'] == null ? null : ((ViewDataFilterExpressionTimeRange.fromMap((map['timeRange']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

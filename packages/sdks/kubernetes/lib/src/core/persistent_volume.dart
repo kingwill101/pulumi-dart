@@ -44,11 +44,11 @@ class PersistentVolume {
 
   factory PersistentVolume.fromMap(Map<String, dynamic> map) {
     return PersistentVolume(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      spec: map['spec'] == null ? null : (PersistentVolumeSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (PersistentVolumeStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (PersistentVolumeSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (PersistentVolumeStatus.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

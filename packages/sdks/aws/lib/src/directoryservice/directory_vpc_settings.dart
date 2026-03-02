@@ -29,7 +29,7 @@ class DirectoryVpcSettings {
 
   factory DirectoryVpcSettings.fromMap(Map<String, dynamic> map) {
     return DirectoryVpcSettings(
-      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones'] as List).cast<String>()).input(),
+      availabilityZones: map['availabilityZones'] == null ? null : (((map['availabilityZones'] as List).cast<String>()).input()).input(),
       subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );

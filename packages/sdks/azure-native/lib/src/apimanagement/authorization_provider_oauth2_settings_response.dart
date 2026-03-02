@@ -27,8 +27,8 @@ class AuthorizationProviderOAuth2SettingsResponse {
 
   factory AuthorizationProviderOAuth2SettingsResponse.fromMap(Map<String, dynamic> map) {
     return AuthorizationProviderOAuth2SettingsResponse(
-      grantTypes: map['grantTypes'] == null ? null : (AuthorizationProviderOAuth2GrantTypesResponse.fromMap((map['grantTypes'] as Map).cast<String, dynamic>())).input(),
-      redirectUrl: map['redirectUrl'] == null ? null : (map['redirectUrl'] as String).input(),
+      grantTypes: map['grantTypes'] == null ? null : (AuthorizationProviderOAuth2GrantTypesResponse.fromMap((map['grantTypes']! as Map).cast<String, dynamic>())).input(),
+      redirectUrl: map['redirectUrl'] == null ? null : (map['redirectUrl']! as String).input(),
     );
   }
 }

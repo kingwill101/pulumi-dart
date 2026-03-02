@@ -32,9 +32,9 @@ class GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics {
 
   factory GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics(
-      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1ExperimentResultMetric>(map['metrics'], (value) => GoogleCloudDialogflowCxV3beta1ExperimentResultMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sessionCount: map['sessionCount'] == null ? null : (map['sessionCount'] as int).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1ExperimentResultMetric>(map['metrics']!, (value) => GoogleCloudDialogflowCxV3beta1ExperimentResultMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sessionCount: map['sessionCount'] == null ? null : (map['sessionCount']! as int).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

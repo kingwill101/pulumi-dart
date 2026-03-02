@@ -72,7 +72,7 @@ class BlobDataSetArgs {
     return BlobDataSetArgs(
       accountName: (map['accountName'] as String).input(),
       containerName: (map['containerName'] as String).input(),
-      dataSetName: map['dataSetName'] == null ? null : (map['dataSetName'] as String).input(),
+      dataSetName: map['dataSetName'] == null ? null : (map['dataSetName']! as String).input(),
       filePath: (map['filePath'] as String).input(),
       kind: (map['kind'] as String).input(),
       resourceGroup: (map['resourceGroup'] as String).input(),

@@ -36,9 +36,9 @@ class FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfiguration {
   factory FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfiguration(
       databaseName: (map['databaseName'] as String).input(),
-      s3ErrorOutputPrefix: map['s3ErrorOutputPrefix'] == null ? null : (map['s3ErrorOutputPrefix'] as String).input(),
+      s3ErrorOutputPrefix: map['s3ErrorOutputPrefix'] == null ? null : ((map['s3ErrorOutputPrefix'] as String).input()).input(),
       tableName: (map['tableName'] as String).input(),
-      uniqueKeys: map['uniqueKeys'] == null ? null : ((map['uniqueKeys'] as List).cast<String>()).input(),
+      uniqueKeys: map['uniqueKeys'] == null ? null : (((map['uniqueKeys'] as List).cast<String>()).input()).input(),
     );
   }
 }

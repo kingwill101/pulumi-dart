@@ -47,12 +47,12 @@ class RunbookDraft {
 
   factory RunbookDraft.fromMap(Map<String, dynamic> map) {
     return RunbookDraft(
-      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
-      draftContentLink: map['draftContentLink'] == null ? null : (ContentLink.fromMap((map['draftContentLink'] as Map).cast<String, dynamic>())).input(),
-      inEdit: map['inEdit'] == null ? null : (map['inEdit'] as bool).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
-      outputTypes: map['outputTypes'] == null ? null : ((map['outputTypes'] as List).cast<String>()).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<RunbookParameter>(map['parameters'], (value) => RunbookParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      creationTime: map['creationTime'] == null ? null : (map['creationTime']! as String).input(),
+      draftContentLink: map['draftContentLink'] == null ? null : (ContentLink.fromMap((map['draftContentLink']! as Map).cast<String, dynamic>())).input(),
+      inEdit: map['inEdit'] == null ? null : (map['inEdit']! as bool).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime']! as String).input(),
+      outputTypes: map['outputTypes'] == null ? null : ((map['outputTypes']! as List).cast<String>()).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<RunbookParameter>(map['parameters']!, (value) => RunbookParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

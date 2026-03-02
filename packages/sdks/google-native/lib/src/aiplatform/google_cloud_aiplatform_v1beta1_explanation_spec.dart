@@ -28,7 +28,7 @@ class GoogleCloudAiplatformV1beta1ExplanationSpec {
 
   factory GoogleCloudAiplatformV1beta1ExplanationSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ExplanationSpec(
-      metadata: map['metadata'] == null ? null : (GoogleCloudAiplatformV1beta1ExplanationMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      metadata: map['metadata'] == null ? null : (GoogleCloudAiplatformV1beta1ExplanationMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
       parameters: (GoogleCloudAiplatformV1beta1ExplanationParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
     );
   }

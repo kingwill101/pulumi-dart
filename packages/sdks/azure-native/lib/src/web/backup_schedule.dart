@@ -46,7 +46,7 @@ class BackupSchedule {
       frequencyUnit: (FrequencyUnit.fromValue(map['frequencyUnit'] as String)).input(),
       keepAtLeastOneBackup: (map['keepAtLeastOneBackup'] as bool).input(),
       retentionPeriodInDays: (map['retentionPeriodInDays'] as int).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

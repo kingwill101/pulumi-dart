@@ -59,8 +59,8 @@ class ConnectorAs2Config {
       encryptionAlgorithm: (map['encryptionAlgorithm'] as String).input(),
       localProfileId: (map['localProfileId'] as String).input(),
       mdnResponse: (map['mdnResponse'] as String).input(),
-      mdnSigningAlgorithm: map['mdnSigningAlgorithm'] == null ? null : (map['mdnSigningAlgorithm'] as String).input(),
-      messageSubject: map['messageSubject'] == null ? null : (map['messageSubject'] as String).input(),
+      mdnSigningAlgorithm: map['mdnSigningAlgorithm'] == null ? null : ((map['mdnSigningAlgorithm'] as String).input()).input(),
+      messageSubject: map['messageSubject'] == null ? null : ((map['messageSubject'] as String).input()).input(),
       partnerProfileId: (map['partnerProfileId'] as String).input(),
       signingAlgorithm: (map['signingAlgorithm'] as String).input(),
     );

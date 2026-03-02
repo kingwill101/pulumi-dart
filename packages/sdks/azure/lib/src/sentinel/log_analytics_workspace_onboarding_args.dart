@@ -33,7 +33,7 @@ class LogAnalyticsWorkspaceOnboardingArgs {
 
   factory LogAnalyticsWorkspaceOnboardingArgs.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsWorkspaceOnboardingArgs(
-      customerManagedKeyEnabled: map['customerManagedKeyEnabled'] == null ? null : (map['customerManagedKeyEnabled'] as bool).input(),
+      customerManagedKeyEnabled: map['customerManagedKeyEnabled'] == null ? null : (map['customerManagedKeyEnabled']! as bool).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );
   }

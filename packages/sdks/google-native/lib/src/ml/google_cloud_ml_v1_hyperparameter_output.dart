@@ -53,13 +53,13 @@ class GoogleCloudMlV1HyperparameterOutput {
 
   factory GoogleCloudMlV1HyperparameterOutput.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1HyperparameterOutput(
-      allMetrics: map['allMetrics'] == null ? null : (pulumi.Input.decodeList<GoogleCloudMlV1HyperparameterOutputHyperparameterMetric>(map['allMetrics'], (value) => GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      builtInAlgorithmOutput: map['builtInAlgorithmOutput'] == null ? null : (GoogleCloudMlV1BuiltInAlgorithmOutput.fromMap((map['builtInAlgorithmOutput'] as Map).cast<String, dynamic>())).input(),
-      finalMetric: map['finalMetric'] == null ? null : (GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromMap((map['finalMetric'] as Map).cast<String, dynamic>())).input(),
-      hyperparameters: map['hyperparameters'] == null ? null : ((map['hyperparameters'] as Map).cast<String, String>()).input(),
-      isTrialStoppedEarly: map['isTrialStoppedEarly'] == null ? null : (map['isTrialStoppedEarly'] as bool).input(),
-      trialId: map['trialId'] == null ? null : (map['trialId'] as String).input(),
-      webAccessUris: map['webAccessUris'] == null ? null : ((map['webAccessUris'] as Map).cast<String, String>()).input(),
+      allMetrics: map['allMetrics'] == null ? null : (pulumi.Input.decodeList<GoogleCloudMlV1HyperparameterOutputHyperparameterMetric>(map['allMetrics']!, (value) => GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      builtInAlgorithmOutput: map['builtInAlgorithmOutput'] == null ? null : (GoogleCloudMlV1BuiltInAlgorithmOutput.fromMap((map['builtInAlgorithmOutput']! as Map).cast<String, dynamic>())).input(),
+      finalMetric: map['finalMetric'] == null ? null : (GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromMap((map['finalMetric']! as Map).cast<String, dynamic>())).input(),
+      hyperparameters: map['hyperparameters'] == null ? null : ((map['hyperparameters']! as Map).cast<String, String>()).input(),
+      isTrialStoppedEarly: map['isTrialStoppedEarly'] == null ? null : (map['isTrialStoppedEarly']! as bool).input(),
+      trialId: map['trialId'] == null ? null : (map['trialId']! as String).input(),
+      webAccessUris: map['webAccessUris'] == null ? null : ((map['webAccessUris']! as Map).cast<String, String>()).input(),
     );
   }
 }

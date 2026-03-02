@@ -66,12 +66,12 @@ class AccountCostManagementExportArgs {
 
   factory AccountCostManagementExportArgs.fromMap(Map<String, dynamic> map) {
     return AccountCostManagementExportArgs(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      active: map['active'] == null ? null : (map['active']! as bool).input(),
       billingAccountId: (map['billingAccountId'] as String).input(),
       exportDataOptions: (AccountCostManagementExportExportDataOptions.fromMap((map['exportDataOptions'] as Map).cast<String, dynamic>())).input(),
       exportDataStorageLocation: (AccountCostManagementExportExportDataStorageLocation.fromMap((map['exportDataStorageLocation'] as Map).cast<String, dynamic>())).input(),
-      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       recurrencePeriodEndDate: (map['recurrencePeriodEndDate'] as String).input(),
       recurrencePeriodStartDate: (map['recurrencePeriodStartDate'] as String).input(),
       recurrenceType: (map['recurrenceType'] as String).input(),

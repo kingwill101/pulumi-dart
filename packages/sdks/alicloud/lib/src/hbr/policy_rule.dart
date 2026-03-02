@@ -78,18 +78,18 @@ class PolicyRule {
 
   factory PolicyRule.fromMap(Map<String, dynamic> map) {
     return PolicyRule(
-      archiveDays: map['archiveDays'] == null ? null : (map['archiveDays'] as int).input(),
-      backupType: map['backupType'] == null ? null : (map['backupType'] as String).input(),
-      dataSourceFilters: map['dataSourceFilters'] == null ? null : (pulumi.Input.decodeList<PolicyRuleDataSourceFilter>(map['dataSourceFilters'], (value) => PolicyRuleDataSourceFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      keepLatestSnapshots: map['keepLatestSnapshots'] == null ? null : (map['keepLatestSnapshots'] as int).input(),
-      replicationRegionId: map['replicationRegionId'] == null ? null : (map['replicationRegionId'] as String).input(),
-      retention: map['retention'] == null ? null : (map['retention'] as int).input(),
-      retentionRules: map['retentionRules'] == null ? null : (pulumi.Input.decodeList<PolicyRuleRetentionRule>(map['retentionRules'], (value) => PolicyRuleRetentionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
+      archiveDays: map['archiveDays'] == null ? null : (map['archiveDays']! as int).input(),
+      backupType: map['backupType'] == null ? null : (map['backupType']! as String).input(),
+      dataSourceFilters: map['dataSourceFilters'] == null ? null : (pulumi.Input.decodeList<PolicyRuleDataSourceFilter>(map['dataSourceFilters']!, (value) => PolicyRuleDataSourceFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      keepLatestSnapshots: map['keepLatestSnapshots'] == null ? null : (map['keepLatestSnapshots']! as int).input(),
+      replicationRegionId: map['replicationRegionId'] == null ? null : (map['replicationRegionId']! as String).input(),
+      retention: map['retention'] == null ? null : (map['retention']! as int).input(),
+      retentionRules: map['retentionRules'] == null ? null : (pulumi.Input.decodeList<PolicyRuleRetentionRule>(map['retentionRules']!, (value) => PolicyRuleRetentionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId']! as String).input(),
       ruleType: (map['ruleType'] as String).input(),
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
-      tagFilters: map['tagFilters'] == null ? null : (pulumi.Input.decodeList<PolicyRuleTagFilter>(map['tagFilters'], (value) => PolicyRuleTagFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule']! as String).input(),
+      tagFilters: map['tagFilters'] == null ? null : (pulumi.Input.decodeList<PolicyRuleTagFilter>(map['tagFilters']!, (value) => PolicyRuleTagFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId']! as String).input(),
     );
   }
 }

@@ -46,11 +46,11 @@ class GetUserArgs {
 
   factory GetUserArgs.fromMap(Map<String, dynamic> map) {
     return GetUserArgs(
-      employeeId: map['employeeId'] == null ? null : (map['employeeId'] as String).input(),
-      mail: map['mail'] == null ? null : (map['mail'] as String).input(),
-      mailNickname: map['mailNickname'] == null ? null : (map['mailNickname'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      userPrincipalName: map['userPrincipalName'] == null ? null : (map['userPrincipalName'] as String).input(),
+      employeeId: map['employeeId'] == null ? null : (map['employeeId']! as String).input(),
+      mail: map['mail'] == null ? null : (map['mail']! as String).input(),
+      mailNickname: map['mailNickname'] == null ? null : (map['mailNickname']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      userPrincipalName: map['userPrincipalName'] == null ? null : (map['userPrincipalName']! as String).input(),
     );
   }
 }

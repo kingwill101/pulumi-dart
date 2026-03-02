@@ -21,7 +21,7 @@ class CxPageEntryFulfillmentConditionalCase {
 
   factory CxPageEntryFulfillmentConditionalCase.fromMap(Map<String, dynamic> map) {
     return CxPageEntryFulfillmentConditionalCase(
-      cases: map['cases'] == null ? null : (map['cases'] as String).input(),
+      cases: map['cases'] == null ? null : (map['cases']! as String).input(),
     );
   }
 }

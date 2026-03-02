@@ -31,9 +31,9 @@ class DeleteRetentionPolicy {
 
   factory DeleteRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return DeleteRetentionPolicy(
-      allowPermanentDelete: map['allowPermanentDelete'] == null ? null : (map['allowPermanentDelete'] as bool).input(),
-      days: map['days'] == null ? null : (map['days'] as int).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      allowPermanentDelete: map['allowPermanentDelete'] == null ? null : (map['allowPermanentDelete']! as bool).input(),
+      days: map['days'] == null ? null : (map['days']! as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

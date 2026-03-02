@@ -45,11 +45,11 @@ class TunnelDestGroupArgs {
 
   factory TunnelDestGroupArgs.fromMap(Map<String, dynamic> map) {
     return TunnelDestGroupArgs(
-      cidrs: map['cidrs'] == null ? null : ((map['cidrs'] as List).cast<String>()).input(),
-      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
+      cidrs: map['cidrs'] == null ? null : ((map['cidrs']! as List).cast<String>()).input(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns']! as List).cast<String>()).input(),
       groupName: (map['groupName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

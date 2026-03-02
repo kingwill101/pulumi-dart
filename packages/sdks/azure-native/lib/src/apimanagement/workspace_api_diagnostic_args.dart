@@ -102,21 +102,21 @@ class WorkspaceApiDiagnosticArgs {
 
   factory WorkspaceApiDiagnosticArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceApiDiagnosticArgs(
-      alwaysLog: map['alwaysLog'] == null ? null : (map['alwaysLog'] as String).input(),
+      alwaysLog: map['alwaysLog'] == null ? null : (map['alwaysLog']! as String).input(),
       apiId: (map['apiId'] as String).input(),
-      backend: map['backend'] == null ? null : (PipelineDiagnosticSettings.fromMap((map['backend'] as Map).cast<String, dynamic>())).input(),
-      diagnosticId: map['diagnosticId'] == null ? null : (map['diagnosticId'] as String).input(),
-      frontend: map['frontend'] == null ? null : (PipelineDiagnosticSettings.fromMap((map['frontend'] as Map).cast<String, dynamic>())).input(),
-      httpCorrelationProtocol: map['httpCorrelationProtocol'] == null ? null : (map['httpCorrelationProtocol'] as String).input(),
-      largeLanguageModel: map['largeLanguageModel'] == null ? null : (LLMDiagnosticSettings.fromMap((map['largeLanguageModel'] as Map).cast<String, dynamic>())).input(),
-      logClientIp: map['logClientIp'] == null ? null : (map['logClientIp'] as bool).input(),
+      backend: map['backend'] == null ? null : (PipelineDiagnosticSettings.fromMap((map['backend']! as Map).cast<String, dynamic>())).input(),
+      diagnosticId: map['diagnosticId'] == null ? null : (map['diagnosticId']! as String).input(),
+      frontend: map['frontend'] == null ? null : (PipelineDiagnosticSettings.fromMap((map['frontend']! as Map).cast<String, dynamic>())).input(),
+      httpCorrelationProtocol: map['httpCorrelationProtocol'] == null ? null : (map['httpCorrelationProtocol']! as String).input(),
+      largeLanguageModel: map['largeLanguageModel'] == null ? null : (LLMDiagnosticSettings.fromMap((map['largeLanguageModel']! as Map).cast<String, dynamic>())).input(),
+      logClientIp: map['logClientIp'] == null ? null : (map['logClientIp']! as bool).input(),
       loggerId: (map['loggerId'] as String).input(),
-      metrics: map['metrics'] == null ? null : (map['metrics'] as bool).input(),
-      operationNameFormat: map['operationNameFormat'] == null ? null : (map['operationNameFormat'] as String).input(),
+      metrics: map['metrics'] == null ? null : (map['metrics']! as bool).input(),
+      operationNameFormat: map['operationNameFormat'] == null ? null : (map['operationNameFormat']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sampling: map['sampling'] == null ? null : (SamplingSettings.fromMap((map['sampling'] as Map).cast<String, dynamic>())).input(),
+      sampling: map['sampling'] == null ? null : (SamplingSettings.fromMap((map['sampling']! as Map).cast<String, dynamic>())).input(),
       serviceName: (map['serviceName'] as String).input(),
-      verbosity: map['verbosity'] == null ? null : (map['verbosity'] as String).input(),
+      verbosity: map['verbosity'] == null ? null : (map['verbosity']! as String).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );
   }

@@ -27,7 +27,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambda {
   factory AgentcoreGatewayTargetTargetConfigurationMcpLambda.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcpLambda(
       lambdaArn: (map['lambdaArn'] as String).input(),
-      toolSchema: (AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema.fromMap((map['toolSchema'] as Map).cast<String, dynamic>())).input(),
+      toolSchema: (AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema.fromMap((map['toolSchema']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -61,15 +61,15 @@ class NatIpState {
 
   factory NatIpState.fromMap(Map<String, dynamic> map) {
     return NatIpState(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      natGatewayId: map['natGatewayId'] == null ? null : (map['natGatewayId'] as String).input(),
-      natIp: map['natIp'] == null ? null : (map['natIp'] as String).input(),
-      natIpCidr: map['natIpCidr'] == null ? null : (map['natIpCidr'] as String).input(),
-      natIpCidrId: map['natIpCidrId'] == null ? null : (map['natIpCidrId'] as String).input(),
-      natIpDescription: map['natIpDescription'] == null ? null : (map['natIpDescription'] as String).input(),
-      natIpId: map['natIpId'] == null ? null : (map['natIpId'] as String).input(),
-      natIpName: map['natIpName'] == null ? null : (map['natIpName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      natGatewayId: map['natGatewayId'] == null ? null : (map['natGatewayId']! as String).input(),
+      natIp: map['natIp'] == null ? null : (map['natIp']! as String).input(),
+      natIpCidr: map['natIpCidr'] == null ? null : (map['natIpCidr']! as String).input(),
+      natIpCidrId: map['natIpCidrId'] == null ? null : (map['natIpCidrId']! as String).input(),
+      natIpDescription: map['natIpDescription'] == null ? null : (map['natIpDescription']! as String).input(),
+      natIpId: map['natIpId'] == null ? null : (map['natIpId']! as String).input(),
+      natIpName: map['natIpName'] == null ? null : (map['natIpName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

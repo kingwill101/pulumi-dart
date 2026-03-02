@@ -51,10 +51,10 @@ class PackageArgs {
 
   factory PackageArgs.fromMap(Map<String, dynamic> map) {
     return PackageArgs(
-      allOf: map['allOf'] == null ? null : (TrackedResource.fromMap((map['allOf'] as Map).cast<String, dynamic>())).input(),
+      allOf: map['allOf'] == null ? null : (TrackedResource.fromMap((map['allOf']! as Map).cast<String, dynamic>())).input(),
       automationAccountName: (map['automationAccountName'] as String).input(),
       contentLink: (ContentLink.fromMap((map['contentLink'] as Map).cast<String, dynamic>())).input(),
-      packageName: map['packageName'] == null ? null : (map['packageName'] as String).input(),
+      packageName: map['packageName'] == null ? null : (map['packageName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       runtimeEnvironmentName: (map['runtimeEnvironmentName'] as String).input(),
     );

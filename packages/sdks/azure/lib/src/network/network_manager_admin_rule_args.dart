@@ -78,15 +78,15 @@ class NetworkManagerAdminRuleArgs {
     return NetworkManagerAdminRuleArgs(
       action: (map['action'] as String).input(),
       adminRuleCollectionId: (map['adminRuleCollectionId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationPortRanges: map['destinationPortRanges'] == null ? null : ((map['destinationPortRanges'] as List).cast<String>()).input(),
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<NetworkManagerAdminRuleDestination>(map['destinations'], (value) => NetworkManagerAdminRuleDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationPortRanges: map['destinationPortRanges'] == null ? null : ((map['destinationPortRanges']! as List).cast<String>()).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<NetworkManagerAdminRuleDestination>(map['destinations']!, (value) => NetworkManagerAdminRuleDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
       direction: (map['direction'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       priority: (map['priority'] as int).input(),
       protocol: (map['protocol'] as String).input(),
-      sourcePortRanges: map['sourcePortRanges'] == null ? null : ((map['sourcePortRanges'] as List).cast<String>()).input(),
-      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<NetworkManagerAdminRuleSource>(map['sources'], (value) => NetworkManagerAdminRuleSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourcePortRanges: map['sourcePortRanges'] == null ? null : ((map['sourcePortRanges']! as List).cast<String>()).input(),
+      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<NetworkManagerAdminRuleSource>(map['sources']!, (value) => NetworkManagerAdminRuleSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

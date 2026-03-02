@@ -62,14 +62,14 @@ class OrganizationClusterByIdArgs {
 
   factory OrganizationClusterByIdArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationClusterByIdArgs(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
       environmentId: (map['environmentId'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (SCMetadataEntity.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (SCMetadataEntity.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
       organizationName: (map['organizationName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      spec: map['spec'] == null ? null : (SCClusterSpecEntity.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (ClusterStatusEntity.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (SCClusterSpecEntity.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (ClusterStatusEntity.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

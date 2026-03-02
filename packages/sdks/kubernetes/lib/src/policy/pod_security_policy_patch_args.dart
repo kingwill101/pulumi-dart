@@ -41,10 +41,10 @@ class PodSecurityPolicyPatchArgs {
 
   factory PodSecurityPolicyPatchArgs.fromMap(Map<String, dynamic> map) {
     return PodSecurityPolicyPatchArgs(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      spec: map['spec'] == null ? null : (PodSecurityPolicySpecPatch.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (PodSecurityPolicySpecPatch.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

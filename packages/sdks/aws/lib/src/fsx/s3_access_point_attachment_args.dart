@@ -53,11 +53,11 @@ class S3AccessPointAttachmentArgs {
 
   factory S3AccessPointAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return S3AccessPointAttachmentArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      openzfsConfiguration: (S3AccessPointAttachmentOpenzfsConfiguration.fromMap((map['openzfsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      s3AccessPoint: map['s3AccessPoint'] == null ? null : (S3AccessPointAttachmentS3AccessPoint.fromMap((map['s3AccessPoint'] as Map).cast<String, dynamic>())).input(),
-      timeouts: map['timeouts'] == null ? null : (S3AccessPointAttachmentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      openzfsConfiguration: (S3AccessPointAttachmentOpenzfsConfiguration.fromMap((map['openzfsConfiguration']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      s3AccessPoint: map['s3AccessPoint'] == null ? null : ((S3AccessPointAttachmentS3AccessPoint.fromMap((map['s3AccessPoint']! as Map).cast<String, dynamic>())).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((S3AccessPointAttachmentTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

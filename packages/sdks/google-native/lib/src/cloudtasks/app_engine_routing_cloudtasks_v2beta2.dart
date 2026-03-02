@@ -31,9 +31,9 @@ class AppEngineRoutingCloudtasksV2beta2 {
 
   factory AppEngineRoutingCloudtasksV2beta2.fromMap(Map<String, dynamic> map) {
     return AppEngineRoutingCloudtasksV2beta2(
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

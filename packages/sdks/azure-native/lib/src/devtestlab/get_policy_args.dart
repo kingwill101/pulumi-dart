@@ -44,7 +44,7 @@ class GetPolicyArgs {
 
   factory GetPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       labName: (map['labName'] as String).input(),
       name: (map['name'] as String).input(),
       policySetName: (map['policySetName'] as String).input(),

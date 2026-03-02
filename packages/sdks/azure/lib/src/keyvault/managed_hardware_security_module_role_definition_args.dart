@@ -45,11 +45,11 @@ class ManagedHardwareSecurityModuleRoleDefinitionArgs {
 
   factory ManagedHardwareSecurityModuleRoleDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return ManagedHardwareSecurityModuleRoleDefinitionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       managedHsmId: (map['managedHsmId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<ManagedHardwareSecurityModuleRoleDefinitionPermission>(map['permissions'], (value) => ManagedHardwareSecurityModuleRoleDefinitionPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<ManagedHardwareSecurityModuleRoleDefinitionPermission>(map['permissions']!, (value) => ManagedHardwareSecurityModuleRoleDefinitionPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName']! as String).input(),
     );
   }
 }

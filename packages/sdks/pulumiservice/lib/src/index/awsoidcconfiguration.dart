@@ -35,8 +35,8 @@ class AWSOIDCConfiguration {
 
   factory AWSOIDCConfiguration.fromMap(Map<String, dynamic> map) {
     return AWSOIDCConfiguration(
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
-      policyARNs: map['policyARNs'] == null ? null : ((map['policyARNs'] as List).cast<String>()).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
+      policyARNs: map['policyARNs'] == null ? null : ((map['policyARNs']! as List).cast<String>()).input(),
       roleARN: (map['roleARN'] as String).input(),
       sessionName: (map['sessionName'] as String).input(),
     );

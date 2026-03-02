@@ -26,8 +26,8 @@ class HardwareProfile {
 
   factory HardwareProfile.fromMap(Map<String, dynamic> map) {
     return HardwareProfile(
-      azureLargeInstanceSize: map['azureLargeInstanceSize'] == null ? null : (map['azureLargeInstanceSize'] as String).input(),
-      hardwareType: map['hardwareType'] == null ? null : (map['hardwareType'] as String).input(),
+      azureLargeInstanceSize: map['azureLargeInstanceSize'] == null ? null : (map['azureLargeInstanceSize']! as String).input(),
+      hardwareType: map['hardwareType'] == null ? null : (map['hardwareType']! as String).input(),
     );
   }
 }

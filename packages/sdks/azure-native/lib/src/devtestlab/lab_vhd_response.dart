@@ -21,7 +21,7 @@ class LabVhdResponse {
 
   factory LabVhdResponse.fromMap(Map<String, dynamic> map) {
     return LabVhdResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

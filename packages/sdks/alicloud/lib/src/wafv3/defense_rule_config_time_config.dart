@@ -37,10 +37,10 @@ class DefenseRuleConfigTimeConfig {
 
   factory DefenseRuleConfigTimeConfig.fromMap(Map<String, dynamic> map) {
     return DefenseRuleConfigTimeConfig(
-      timePeriods: map['timePeriods'] == null ? null : (pulumi.Input.decodeList<DefenseRuleConfigTimeConfigTimePeriod>(map['timePeriods'], (value) => DefenseRuleConfigTimeConfigTimePeriod.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeScope: map['timeScope'] == null ? null : (map['timeScope'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as int).input(),
-      weekTimePeriods: map['weekTimePeriods'] == null ? null : (pulumi.Input.decodeList<DefenseRuleConfigTimeConfigWeekTimePeriod>(map['weekTimePeriods'], (value) => DefenseRuleConfigTimeConfigWeekTimePeriod.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timePeriods: map['timePeriods'] == null ? null : (pulumi.Input.decodeList<DefenseRuleConfigTimeConfigTimePeriod>(map['timePeriods']!, (value) => DefenseRuleConfigTimeConfigTimePeriod.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeScope: map['timeScope'] == null ? null : (map['timeScope']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as int).input(),
+      weekTimePeriods: map['weekTimePeriods'] == null ? null : (pulumi.Input.decodeList<DefenseRuleConfigTimeConfigWeekTimePeriod>(map['weekTimePeriods']!, (value) => DefenseRuleConfigTimeConfigWeekTimePeriod.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

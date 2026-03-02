@@ -39,10 +39,10 @@ class LoadBalancerSubnetMapping {
 
   factory LoadBalancerSubnetMapping.fromMap(Map<String, dynamic> map) {
     return LoadBalancerSubnetMapping(
-      allocationId: map['allocationId'] == null ? null : (map['allocationId'] as String).input(),
-      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address'] as String).input(),
-      outpostId: map['outpostId'] == null ? null : (map['outpostId'] as String).input(),
-      privateIpv4Address: map['privateIpv4Address'] == null ? null : (map['privateIpv4Address'] as String).input(),
+      allocationId: map['allocationId'] == null ? null : ((map['allocationId'] as String).input()).input(),
+      ipv6Address: map['ipv6Address'] == null ? null : ((map['ipv6Address'] as String).input()).input(),
+      outpostId: map['outpostId'] == null ? null : ((map['outpostId'] as String).input()).input(),
+      privateIpv4Address: map['privateIpv4Address'] == null ? null : ((map['privateIpv4Address'] as String).input()).input(),
       subnetId: (map['subnetId'] as String).input(),
     );
   }

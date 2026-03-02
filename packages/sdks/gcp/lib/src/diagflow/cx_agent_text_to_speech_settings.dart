@@ -23,7 +23,7 @@ class CxAgentTextToSpeechSettings {
 
   factory CxAgentTextToSpeechSettings.fromMap(Map<String, dynamic> map) {
     return CxAgentTextToSpeechSettings(
-      synthesizeSpeechConfigs: map['synthesizeSpeechConfigs'] == null ? null : (map['synthesizeSpeechConfigs'] as String).input(),
+      synthesizeSpeechConfigs: map['synthesizeSpeechConfigs'] == null ? null : (map['synthesizeSpeechConfigs']! as String).input(),
     );
   }
 }

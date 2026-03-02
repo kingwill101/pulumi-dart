@@ -38,9 +38,9 @@ class InquiryValidationResponse {
   factory InquiryValidationResponse.fromMap(Map<String, dynamic> map) {
     return InquiryValidationResponse(
       additionalDetail: (map['additionalDetail'] as String).input(),
-      errorDetail: map['errorDetail'] == null ? null : (ErrorDetailResponse.fromMap((map['errorDetail'] as Map).cast<String, dynamic>())).input(),
+      errorDetail: map['errorDetail'] == null ? null : (ErrorDetailResponse.fromMap((map['errorDetail']! as Map).cast<String, dynamic>())).input(),
       protectableItemCount: (map['protectableItemCount']).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

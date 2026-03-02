@@ -43,11 +43,11 @@ class CustomImageState {
 
   factory CustomImageState.fromMap(Map<String, dynamic> map) {
     return CustomImageState(
-      customImageName: map['customImageName'] == null ? null : (map['customImageName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      systemSnapshotId: map['systemSnapshotId'] == null ? null : (map['systemSnapshotId'] as String).input(),
+      customImageName: map['customImageName'] == null ? null : (map['customImageName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      systemSnapshotId: map['systemSnapshotId'] == null ? null : (map['systemSnapshotId']! as String).input(),
     );
   }
 }

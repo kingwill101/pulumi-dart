@@ -30,9 +30,9 @@ class WorkloadEkmProvisioningResponse {
 
   factory WorkloadEkmProvisioningResponse.fromMap(Map<String, dynamic> map) {
     return WorkloadEkmProvisioningResponse(
-      ekmProvisioningErrorDomain: map['ekmProvisioningErrorDomain'] == null ? null : (map['ekmProvisioningErrorDomain'] as String).input(),
-      ekmProvisioningErrorMapping: map['ekmProvisioningErrorMapping'] == null ? null : (map['ekmProvisioningErrorMapping'] as String).input(),
-      ekmProvisioningState: map['ekmProvisioningState'] == null ? null : (map['ekmProvisioningState'] as String).input(),
+      ekmProvisioningErrorDomain: map['ekmProvisioningErrorDomain'] == null ? null : (map['ekmProvisioningErrorDomain']! as String).input(),
+      ekmProvisioningErrorMapping: map['ekmProvisioningErrorMapping'] == null ? null : (map['ekmProvisioningErrorMapping']! as String).input(),
+      ekmProvisioningState: map['ekmProvisioningState'] == null ? null : (map['ekmProvisioningState']! as String).input(),
     );
   }
 }

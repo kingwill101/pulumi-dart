@@ -58,12 +58,12 @@ class ClusterNodeGroupAutoScalingPolicyScalingRule {
   factory ClusterNodeGroupAutoScalingPolicyScalingRule.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroupAutoScalingPolicyScalingRule(
       activityType: (map['activityType'] as String).input(),
-      adjustmentType: map['adjustmentType'] == null ? null : (map['adjustmentType'] as String).input(),
+      adjustmentType: map['adjustmentType'] == null ? null : (map['adjustmentType']! as String).input(),
       adjustmentValue: (map['adjustmentValue'] as int).input(),
-      metricsTrigger: map['metricsTrigger'] == null ? null : (ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger.fromMap((map['metricsTrigger'] as Map).cast<String, dynamic>())).input(),
-      minAdjustmentValue: map['minAdjustmentValue'] == null ? null : (map['minAdjustmentValue'] as int).input(),
+      metricsTrigger: map['metricsTrigger'] == null ? null : (ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger.fromMap((map['metricsTrigger']! as Map).cast<String, dynamic>())).input(),
+      minAdjustmentValue: map['minAdjustmentValue'] == null ? null : (map['minAdjustmentValue']! as int).input(),
       ruleName: (map['ruleName'] as String).input(),
-      timeTrigger: map['timeTrigger'] == null ? null : (ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger.fromMap((map['timeTrigger'] as Map).cast<String, dynamic>())).input(),
+      timeTrigger: map['timeTrigger'] == null ? null : (ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger.fromMap((map['timeTrigger']! as Map).cast<String, dynamic>())).input(),
       triggerType: (map['triggerType'] as String).input(),
     );
   }

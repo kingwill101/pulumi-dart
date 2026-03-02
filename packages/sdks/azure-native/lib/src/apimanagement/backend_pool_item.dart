@@ -32,8 +32,8 @@ class BackendPoolItem {
   factory BackendPoolItem.fromMap(Map<String, dynamic> map) {
     return BackendPoolItem(
       id: (map['id'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

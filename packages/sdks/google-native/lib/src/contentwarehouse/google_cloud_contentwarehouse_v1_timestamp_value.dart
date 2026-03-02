@@ -26,8 +26,8 @@ class GoogleCloudContentwarehouseV1TimestampValue {
 
   factory GoogleCloudContentwarehouseV1TimestampValue.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1TimestampValue(
-      textValue: map['textValue'] == null ? null : (map['textValue'] as String).input(),
-      timestampValue: map['timestampValue'] == null ? null : (map['timestampValue'] as String).input(),
+      textValue: map['textValue'] == null ? null : (map['textValue']! as String).input(),
+      timestampValue: map['timestampValue'] == null ? null : (map['timestampValue']! as String).input(),
     );
   }
 }

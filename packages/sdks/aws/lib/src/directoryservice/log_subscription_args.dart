@@ -36,7 +36,7 @@ class LogSubscriptionArgs {
     return LogSubscriptionArgs(
       directoryId: (map['directoryId'] as String).input(),
       logGroupName: (map['logGroupName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

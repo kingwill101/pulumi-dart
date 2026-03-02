@@ -47,11 +47,11 @@ class ReplicaSetStatusAppsV1beta2 {
 
   factory ReplicaSetStatusAppsV1beta2.fromMap(Map<String, dynamic> map) {
     return ReplicaSetStatusAppsV1beta2(
-      availableReplicas: map['availableReplicas'] == null ? null : (map['availableReplicas'] as int).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ReplicaSetConditionAppsV1beta2>(map['conditions'], (value) => ReplicaSetConditionAppsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fullyLabeledReplicas: map['fullyLabeledReplicas'] == null ? null : (map['fullyLabeledReplicas'] as int).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
-      readyReplicas: map['readyReplicas'] == null ? null : (map['readyReplicas'] as int).input(),
+      availableReplicas: map['availableReplicas'] == null ? null : (map['availableReplicas']! as int).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ReplicaSetConditionAppsV1beta2>(map['conditions']!, (value) => ReplicaSetConditionAppsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fullyLabeledReplicas: map['fullyLabeledReplicas'] == null ? null : (map['fullyLabeledReplicas']! as int).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
+      readyReplicas: map['readyReplicas'] == null ? null : (map['readyReplicas']! as int).input(),
       replicas: (map['replicas'] as int).input(),
     );
   }

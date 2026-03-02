@@ -45,11 +45,11 @@ class EndpointCustomDomainState {
 
   factory EndpointCustomDomainState.fromMap(Map<String, dynamic> map) {
     return EndpointCustomDomainState(
-      cdnEndpointId: map['cdnEndpointId'] == null ? null : (map['cdnEndpointId'] as String).input(),
-      cdnManagedHttps: map['cdnManagedHttps'] == null ? null : (EndpointCustomDomainCdnManagedHttps.fromMap((map['cdnManagedHttps'] as Map).cast<String, dynamic>())).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      userManagedHttps: map['userManagedHttps'] == null ? null : (EndpointCustomDomainUserManagedHttps.fromMap((map['userManagedHttps'] as Map).cast<String, dynamic>())).input(),
+      cdnEndpointId: map['cdnEndpointId'] == null ? null : (map['cdnEndpointId']! as String).input(),
+      cdnManagedHttps: map['cdnManagedHttps'] == null ? null : (EndpointCustomDomainCdnManagedHttps.fromMap((map['cdnManagedHttps']! as Map).cast<String, dynamic>())).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      userManagedHttps: map['userManagedHttps'] == null ? null : (EndpointCustomDomainUserManagedHttps.fromMap((map['userManagedHttps']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

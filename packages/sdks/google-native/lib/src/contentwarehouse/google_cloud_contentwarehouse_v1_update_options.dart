@@ -33,9 +33,9 @@ class GoogleCloudContentwarehouseV1UpdateOptions {
 
   factory GoogleCloudContentwarehouseV1UpdateOptions.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1UpdateOptions(
-      mergeFieldsOptions: map['mergeFieldsOptions'] == null ? null : (GoogleCloudContentwarehouseV1MergeFieldsOptions.fromMap((map['mergeFieldsOptions'] as Map).cast<String, dynamic>())).input(),
-      updateMask: map['updateMask'] == null ? null : (map['updateMask'] as String).input(),
-      updateType: map['updateType'] == null ? null : (GoogleCloudContentwarehouseV1UpdateOptionsUpdateType.fromValue(map['updateType'] as String)).input(),
+      mergeFieldsOptions: map['mergeFieldsOptions'] == null ? null : (GoogleCloudContentwarehouseV1MergeFieldsOptions.fromMap((map['mergeFieldsOptions']! as Map).cast<String, dynamic>())).input(),
+      updateMask: map['updateMask'] == null ? null : (map['updateMask']! as String).input(),
+      updateType: map['updateType'] == null ? null : (GoogleCloudContentwarehouseV1UpdateOptionsUpdateType.fromValue(map['updateType']! as String)).input(),
     );
   }
 }

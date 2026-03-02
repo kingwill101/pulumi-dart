@@ -27,8 +27,8 @@ class AdvancedDatapathObservabilityConfig {
 
   factory AdvancedDatapathObservabilityConfig.fromMap(Map<String, dynamic> map) {
     return AdvancedDatapathObservabilityConfig(
-      enableMetrics: map['enableMetrics'] == null ? null : (map['enableMetrics'] as bool).input(),
-      relayMode: map['relayMode'] == null ? null : (AdvancedDatapathObservabilityConfigRelayMode.fromValue(map['relayMode'] as String)).input(),
+      enableMetrics: map['enableMetrics'] == null ? null : (map['enableMetrics']! as bool).input(),
+      relayMode: map['relayMode'] == null ? null : (AdvancedDatapathObservabilityConfigRelayMode.fromValue(map['relayMode']! as String)).input(),
     );
   }
 }

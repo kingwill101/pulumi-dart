@@ -26,8 +26,8 @@ class GatewayRouteSpecHttpRouteActionTarget {
 
   factory GatewayRouteSpecHttpRouteActionTarget.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecHttpRouteActionTarget(
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      virtualService: (GatewayRouteSpecHttpRouteActionTargetVirtualService.fromMap((map['virtualService'] as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
+      virtualService: (GatewayRouteSpecHttpRouteActionTargetVirtualService.fromMap((map['virtualService']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

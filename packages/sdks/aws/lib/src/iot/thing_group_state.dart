@@ -61,15 +61,15 @@ class ThingGroupState {
 
   factory ThingGroupState.fromMap(Map<String, dynamic> map) {
     return ThingGroupState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      metadatas: map['metadatas'] == null ? null : (pulumi.Input.decodeList<ThingGroupMetadata>(map['metadatas'], (value) => ThingGroupMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentGroupName: map['parentGroupName'] == null ? null : (map['parentGroupName'] as String).input(),
-      properties: map['properties'] == null ? null : (ThingGroupProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      metadatas: map['metadatas'] == null ? null : ((pulumi.Input.decodeList<ThingGroupMetadata>(map['metadatas']!, (value) => ThingGroupMetadata.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      parentGroupName: map['parentGroupName'] == null ? null : ((map['parentGroupName'] as String).input()).input(),
+      properties: map['properties'] == null ? null : ((ThingGroupProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as int).input()).input(),
     );
   }
 }

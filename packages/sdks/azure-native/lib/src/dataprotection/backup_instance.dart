@@ -67,14 +67,14 @@ class BackupInstance {
   factory BackupInstance.fromMap(Map<String, dynamic> map) {
     return BackupInstance(
       dataSourceInfo: (Datasource.fromMap((map['dataSourceInfo'] as Map).cast<String, dynamic>())).input(),
-      dataSourceSetInfo: map['dataSourceSetInfo'] == null ? null : (DatasourceSet.fromMap((map['dataSourceSetInfo'] as Map).cast<String, dynamic>())).input(),
-      datasourceAuthCredentials: map['datasourceAuthCredentials'] == null ? null : (SecretStoreBasedAuthCredentials.fromMap((map['datasourceAuthCredentials'] as Map).cast<String, dynamic>())).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      identityDetails: map['identityDetails'] == null ? null : (IdentityDetails.fromMap((map['identityDetails'] as Map).cast<String, dynamic>())).input(),
+      dataSourceSetInfo: map['dataSourceSetInfo'] == null ? null : (DatasourceSet.fromMap((map['dataSourceSetInfo']! as Map).cast<String, dynamic>())).input(),
+      datasourceAuthCredentials: map['datasourceAuthCredentials'] == null ? null : (SecretStoreBasedAuthCredentials.fromMap((map['datasourceAuthCredentials']! as Map).cast<String, dynamic>())).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      identityDetails: map['identityDetails'] == null ? null : (IdentityDetails.fromMap((map['identityDetails']! as Map).cast<String, dynamic>())).input(),
       objectType: (map['objectType'] as String).input(),
       policyInfo: (PolicyInfo.fromMap((map['policyInfo'] as Map).cast<String, dynamic>())).input(),
-      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : ((map['resourceGuardOperationRequests'] as List).cast<String>()).input(),
-      validationType: map['validationType'] == null ? null : (map['validationType'] as String).input(),
+      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : ((map['resourceGuardOperationRequests']! as List).cast<String>()).input(),
+      validationType: map['validationType'] == null ? null : (map['validationType']! as String).input(),
     );
   }
 }

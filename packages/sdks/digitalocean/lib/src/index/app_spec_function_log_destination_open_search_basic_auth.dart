@@ -25,8 +25,8 @@ class AppSpecFunctionLogDestinationOpenSearchBasicAuth {
 
   factory AppSpecFunctionLogDestinationOpenSearchBasicAuth.fromMap(Map<String, dynamic> map) {
     return AppSpecFunctionLogDestinationOpenSearchBasicAuth(
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

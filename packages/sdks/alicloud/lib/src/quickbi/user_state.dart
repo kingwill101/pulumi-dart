@@ -46,12 +46,12 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      adminUser: map['adminUser'] == null ? null : (map['adminUser'] as bool).input(),
-      authAdminUser: map['authAdminUser'] == null ? null : (map['authAdminUser'] as bool).input(),
-      nickName: map['nickName'] == null ? null : (map['nickName'] as String).input(),
-      userType: map['userType'] == null ? null : (map['userType'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      adminUser: map['adminUser'] == null ? null : (map['adminUser']! as bool).input(),
+      authAdminUser: map['authAdminUser'] == null ? null : (map['authAdminUser']! as bool).input(),
+      nickName: map['nickName'] == null ? null : (map['nickName']! as String).input(),
+      userType: map['userType'] == null ? null : (map['userType']! as String).input(),
     );
   }
 }

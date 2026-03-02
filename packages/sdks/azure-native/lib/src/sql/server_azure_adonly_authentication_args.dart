@@ -39,7 +39,7 @@ class ServerAzureADOnlyAuthenticationArgs {
 
   factory ServerAzureADOnlyAuthenticationArgs.fromMap(Map<String, dynamic> map) {
     return ServerAzureADOnlyAuthenticationArgs(
-      authenticationName: map['authenticationName'] == null ? null : (map['authenticationName'] as String).input(),
+      authenticationName: map['authenticationName'] == null ? null : (map['authenticationName']! as String).input(),
       azureADOnlyAuthentication: (map['azureADOnlyAuthentication'] as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),

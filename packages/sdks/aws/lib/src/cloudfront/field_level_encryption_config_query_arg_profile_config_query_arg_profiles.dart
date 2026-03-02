@@ -20,7 +20,7 @@ class FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfiles {
 
   factory FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfiles.fromMap(Map<String, dynamic> map) {
     return FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfiles(
-      items: map['items'] == null ? null : (pulumi.Input.decodeList<FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItem>(map['items'], (value) => FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      items: map['items'] == null ? null : ((pulumi.Input.decodeList<FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItem>(map['items']!, (value) => FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItem.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -102,21 +102,21 @@ class AiInstanceState {
 
   factory AiInstanceState.fromMap(Map<String, dynamic> map) {
     return AiInstanceState(
-      appName: map['appName'] == null ? null : (map['appName'] as String).input(),
-      appType: map['appType'] == null ? null : (map['appType'] as String).input(),
-      authConfigLists: map['authConfigLists'] == null ? null : (pulumi.Input.decodeList<AiInstanceAuthConfigList>(map['authConfigLists'], (value) => AiInstanceAuthConfigList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      caType: map['caType'] == null ? null : (map['caType'] as String).input(),
-      dashboardPassword: map['dashboardPassword'] == null ? null : (map['dashboardPassword'] as String).input(),
-      databasePassword: map['databasePassword'] == null ? null : (map['databasePassword'] as String).input(),
-      dbInstanceName: map['dbInstanceName'] == null ? null : (map['dbInstanceName'] as String).input(),
-      initializeWithExistingData: map['initializeWithExistingData'] == null ? null : (map['initializeWithExistingData'] as bool).input(),
-      publicEndpointEnabled: map['publicEndpointEnabled'] == null ? null : (map['publicEndpointEnabled'] as bool).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
-      serverCert: map['serverCert'] == null ? null : (map['serverCert'] as String).input(),
-      serverKey: map['serverKey'] == null ? null : (map['serverKey'] as String).input(),
-      sslEnabled: map['sslEnabled'] == null ? null : (map['sslEnabled'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      storageConfigLists: map['storageConfigLists'] == null ? null : (pulumi.Input.decodeList<AiInstanceStorageConfigList>(map['storageConfigLists'], (value) => AiInstanceStorageConfigList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      appName: map['appName'] == null ? null : (map['appName']! as String).input(),
+      appType: map['appType'] == null ? null : (map['appType']! as String).input(),
+      authConfigLists: map['authConfigLists'] == null ? null : (pulumi.Input.decodeList<AiInstanceAuthConfigList>(map['authConfigLists']!, (value) => AiInstanceAuthConfigList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      caType: map['caType'] == null ? null : (map['caType']! as String).input(),
+      dashboardPassword: map['dashboardPassword'] == null ? null : (map['dashboardPassword']! as String).input(),
+      databasePassword: map['databasePassword'] == null ? null : (map['databasePassword']! as String).input(),
+      dbInstanceName: map['dbInstanceName'] == null ? null : (map['dbInstanceName']! as String).input(),
+      initializeWithExistingData: map['initializeWithExistingData'] == null ? null : (map['initializeWithExistingData']! as bool).input(),
+      publicEndpointEnabled: map['publicEndpointEnabled'] == null ? null : (map['publicEndpointEnabled']! as bool).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
+      serverCert: map['serverCert'] == null ? null : (map['serverCert']! as String).input(),
+      serverKey: map['serverKey'] == null ? null : (map['serverKey']! as String).input(),
+      sslEnabled: map['sslEnabled'] == null ? null : (map['sslEnabled']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      storageConfigLists: map['storageConfigLists'] == null ? null : (pulumi.Input.decodeList<AiInstanceStorageConfigList>(map['storageConfigLists']!, (value) => AiInstanceStorageConfigList.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

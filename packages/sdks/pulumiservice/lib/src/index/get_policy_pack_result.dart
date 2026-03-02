@@ -45,12 +45,12 @@ class GetPolicyPackResult {
 
   factory GetPolicyPackResult.fromMap(Map<String, dynamic> map) {
     return GetPolicyPackResult(
-      config: map['config'] == null ? null : (map['config'] as Map).cast<String, dynamic>(),
+      config: map['config'] == null ? null : (map['config']! as Map).cast<String, dynamic>(),
       displayName: map['displayName'] as String,
       name: map['name'] as String,
-      policies: map['policies'] == null ? null : (map['policies'] as List).cast<Map<String, String>>(),
+      policies: map['policies'] == null ? null : (map['policies']! as List).cast<Map<String, String>>(),
       version: map['version'] as int,
-      versionTag: map['versionTag'] == null ? null : map['versionTag'] as String,
+      versionTag: map['versionTag'] == null ? null : map['versionTag']! as String,
     );
   }
 }

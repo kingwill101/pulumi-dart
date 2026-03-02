@@ -26,8 +26,8 @@ class MetricsConfigurationResponse {
 
   factory MetricsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return MetricsConfigurationResponse(
-      destinations: map['destinations'] == null ? null : ((map['destinations'] as List).cast<String>()).input(),
-      includeKeda: map['includeKeda'] == null ? null : (map['includeKeda'] as bool).input(),
+      destinations: map['destinations'] == null ? null : ((map['destinations']! as List).cast<String>()).input(),
+      includeKeda: map['includeKeda'] == null ? null : (map['includeKeda']! as bool).input(),
     );
   }
 }

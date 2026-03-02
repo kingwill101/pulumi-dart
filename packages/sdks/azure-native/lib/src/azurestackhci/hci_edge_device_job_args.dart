@@ -47,7 +47,7 @@ class HciEdgeDeviceJobArgs {
   factory HciEdgeDeviceJobArgs.fromMap(Map<String, dynamic> map) {
     return HciEdgeDeviceJobArgs(
       edgeDeviceName: (map['edgeDeviceName'] as String).input(),
-      jobsName: map['jobsName'] == null ? null : (map['jobsName'] as String).input(),
+      jobsName: map['jobsName'] == null ? null : (map['jobsName']! as String).input(),
       kind: (map['kind'] as String).input(),
       properties: (HciCollectLogJobProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceUri: (map['resourceUri'] as String).input(),

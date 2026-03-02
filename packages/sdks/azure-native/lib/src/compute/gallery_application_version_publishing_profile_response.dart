@@ -91,20 +91,20 @@ class GalleryApplicationVersionPublishingProfileResponse {
 
   factory GalleryApplicationVersionPublishingProfileResponse.fromMap(Map<String, dynamic> map) {
     return GalleryApplicationVersionPublishingProfileResponse(
-      advancedSettings: map['advancedSettings'] == null ? null : ((map['advancedSettings'] as Map).cast<String, String>()).input(),
-      customActions: map['customActions'] == null ? null : (pulumi.Input.decodeList<GalleryApplicationCustomActionResponse>(map['customActions'], (value) => GalleryApplicationCustomActionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableHealthCheck: map['enableHealthCheck'] == null ? null : (map['enableHealthCheck'] as bool).input(),
-      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate'] as String).input(),
-      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest'] as bool).input(),
-      manageActions: map['manageActions'] == null ? null : (UserArtifactManageResponse.fromMap((map['manageActions'] as Map).cast<String, dynamic>())).input(),
+      advancedSettings: map['advancedSettings'] == null ? null : ((map['advancedSettings']! as Map).cast<String, String>()).input(),
+      customActions: map['customActions'] == null ? null : (pulumi.Input.decodeList<GalleryApplicationCustomActionResponse>(map['customActions']!, (value) => GalleryApplicationCustomActionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableHealthCheck: map['enableHealthCheck'] == null ? null : (map['enableHealthCheck']! as bool).input(),
+      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate']! as String).input(),
+      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest']! as bool).input(),
+      manageActions: map['manageActions'] == null ? null : (UserArtifactManageResponse.fromMap((map['manageActions']! as Map).cast<String, dynamic>())).input(),
       publishedDate: (map['publishedDate'] as String).input(),
-      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount'] as int).input(),
-      replicationMode: map['replicationMode'] == null ? null : (map['replicationMode'] as String).input(),
-      settings: map['settings'] == null ? null : (UserArtifactSettingsResponse.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount']! as int).input(),
+      replicationMode: map['replicationMode'] == null ? null : (map['replicationMode']! as String).input(),
+      settings: map['settings'] == null ? null : (UserArtifactSettingsResponse.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
       source: (UserArtifactSourceResponse.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
-      targetExtendedLocations: map['targetExtendedLocations'] == null ? null : (pulumi.Input.decodeList<GalleryTargetExtendedLocationResponse>(map['targetExtendedLocations'], (value) => GalleryTargetExtendedLocationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetRegions: map['targetRegions'] == null ? null : (pulumi.Input.decodeList<TargetRegionResponse>(map['targetRegions'], (value) => TargetRegionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType']! as String).input(),
+      targetExtendedLocations: map['targetExtendedLocations'] == null ? null : (pulumi.Input.decodeList<GalleryTargetExtendedLocationResponse>(map['targetExtendedLocations']!, (value) => GalleryTargetExtendedLocationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetRegions: map['targetRegions'] == null ? null : (pulumi.Input.decodeList<TargetRegionResponse>(map['targetRegions']!, (value) => TargetRegionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

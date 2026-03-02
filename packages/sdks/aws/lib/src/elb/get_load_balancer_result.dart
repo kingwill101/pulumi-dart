@@ -108,7 +108,7 @@ class GetLoadBalancerResult {
 
   factory GetLoadBalancerResult.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerResult(
-      accessLogs: GetLoadBalancerAccessLogs.fromMap((map['accessLogs'] as Map).cast<String, dynamic>()),
+      accessLogs: GetLoadBalancerAccessLogs.fromMap((map['accessLogs']! as Map).cast<String, dynamic>()),
       arn: map['arn'] as String,
       availabilityZones: (map['availabilityZones'] as List).cast<String>(),
       connectionDraining: map['connectionDraining'] as bool,
@@ -116,12 +116,12 @@ class GetLoadBalancerResult {
       crossZoneLoadBalancing: map['crossZoneLoadBalancing'] as bool,
       desyncMitigationMode: map['desyncMitigationMode'] as String,
       dnsName: map['dnsName'] as String,
-      healthCheck: GetLoadBalancerHealthCheck.fromMap((map['healthCheck'] as Map).cast<String, dynamic>()),
+      healthCheck: GetLoadBalancerHealthCheck.fromMap((map['healthCheck']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       idleTimeout: map['idleTimeout'] as int,
       instances: (map['instances'] as List).cast<String>(),
       internal: map['internal'] as bool,
-      listeners: pulumi.Input.decodeList<GetLoadBalancerListener>(map['listeners'], (value) => GetLoadBalancerListener.fromMap((value as Map).cast<String, dynamic>())),
+      listeners: pulumi.Input.decodeList<GetLoadBalancerListener>(map['listeners']!, (value) => GetLoadBalancerListener.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       region: map['region'] as String,
       securityGroups: (map['securityGroups'] as List).cast<String>(),

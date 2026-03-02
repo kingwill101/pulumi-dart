@@ -65,13 +65,13 @@ class WorkspaceApiSchemaArgs {
   factory WorkspaceApiSchemaArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceApiSchemaArgs(
       apiId: (map['apiId'] as String).input(),
-      components: map['components'] == null ? null : (map['components']).input(),
+      components: map['components'] == null ? null : (map['components']!).input(),
       contentType: (map['contentType'] as String).input(),
-      definitions: map['definitions'] == null ? null : (map['definitions']).input(),
+      definitions: map['definitions'] == null ? null : (map['definitions']!).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      schemaId: map['schemaId'] == null ? null : (map['schemaId'] as String).input(),
+      schemaId: map['schemaId'] == null ? null : (map['schemaId']! as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );
   }

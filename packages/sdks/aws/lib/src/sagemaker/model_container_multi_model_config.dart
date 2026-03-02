@@ -20,7 +20,7 @@ class ModelContainerMultiModelConfig {
 
   factory ModelContainerMultiModelConfig.fromMap(Map<String, dynamic> map) {
     return ModelContainerMultiModelConfig(
-      modelCacheSetting: map['modelCacheSetting'] == null ? null : (map['modelCacheSetting'] as String).input(),
+      modelCacheSetting: map['modelCacheSetting'] == null ? null : ((map['modelCacheSetting'] as String).input()).input(),
     );
   }
 }

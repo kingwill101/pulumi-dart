@@ -21,7 +21,7 @@ class DomainOsAcpi {
 
   factory DomainOsAcpi.fromMap(Map<String, dynamic> map) {
     return DomainOsAcpi(
-      tables: map['tables'] == null ? null : (pulumi.Input.decodeList<DomainOsAcpiTable>(map['tables'], (value) => DomainOsAcpiTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tables: map['tables'] == null ? null : (pulumi.Input.decodeList<DomainOsAcpiTable>(map['tables']!, (value) => DomainOsAcpiTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

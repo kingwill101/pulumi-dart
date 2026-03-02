@@ -36,10 +36,10 @@ class ObfuscationExpressionState {
 
   factory ObfuscationExpressionState.fromMap(Map<String, dynamic> map) {
     return ObfuscationExpressionState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      regex: map['regex'] == null ? null : (map['regex'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      regex: map['regex'] == null ? null : (map['regex']! as String).input(),
     );
   }
 }

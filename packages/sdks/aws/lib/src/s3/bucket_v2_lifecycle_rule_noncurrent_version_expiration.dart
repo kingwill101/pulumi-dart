@@ -20,7 +20,7 @@ class BucketV2LifecycleRuleNoncurrentVersionExpiration {
 
   factory BucketV2LifecycleRuleNoncurrentVersionExpiration.fromMap(Map<String, dynamic> map) {
     return BucketV2LifecycleRuleNoncurrentVersionExpiration(
-      days: map['days'] == null ? null : (map['days'] as int).input(),
+      days: map['days'] == null ? null : ((map['days'] as int).input()).input(),
     );
   }
 }

@@ -53,12 +53,12 @@ class WorkloadNetworkDhcpServerResponse {
   factory WorkloadNetworkDhcpServerResponse.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkDhcpServerResponse(
       dhcpType: (map['dhcpType'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      leaseTime: map['leaseTime'] == null ? null : (map['leaseTime'] as double).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      leaseTime: map['leaseTime'] == null ? null : (map['leaseTime']! as double).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as double).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as double).input(),
       segments: ((map['segments'] as List).cast<String>()).input(),
-      serverAddress: map['serverAddress'] == null ? null : (map['serverAddress'] as String).input(),
+      serverAddress: map['serverAddress'] == null ? null : (map['serverAddress']! as String).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class AwsS3ControlMultiRegionAccessPointPolicyDocumentPropertiesResponse {
 
   factory AwsS3ControlMultiRegionAccessPointPolicyDocumentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsS3ControlMultiRegionAccessPointPolicyDocumentPropertiesResponse(
-      established: map['established'] == null ? null : (EstablishedMultiRegionAccessPointPolicyResponse.fromMap((map['established'] as Map).cast<String, dynamic>())).input(),
-      proposed: map['proposed'] == null ? null : (ProposedMultiRegionAccessPointPolicyResponse.fromMap((map['proposed'] as Map).cast<String, dynamic>())).input(),
+      established: map['established'] == null ? null : (EstablishedMultiRegionAccessPointPolicyResponse.fromMap((map['established']! as Map).cast<String, dynamic>())).input(),
+      proposed: map['proposed'] == null ? null : (ProposedMultiRegionAccessPointPolicyResponse.fromMap((map['proposed']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

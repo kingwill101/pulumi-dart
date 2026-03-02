@@ -35,10 +35,10 @@ class TokenCertificate {
 
   factory TokenCertificate.fromMap(Map<String, dynamic> map) {
     return TokenCertificate(
-      encodedPemCertificate: map['encodedPemCertificate'] == null ? null : (map['encodedPemCertificate'] as String).input(),
-      expiry: map['expiry'] == null ? null : (map['expiry'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      encodedPemCertificate: map['encodedPemCertificate'] == null ? null : (map['encodedPemCertificate']! as String).input(),
+      expiry: map['expiry'] == null ? null : (map['expiry']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

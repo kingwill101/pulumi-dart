@@ -28,7 +28,7 @@ class HttpRouteMatchRule {
 
   factory HttpRouteMatchRule.fromMap(Map<String, dynamic> map) {
     return HttpRouteMatchRule(
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<HttpRouteMatchHeader>(map['headers'], (value) => HttpRouteMatchHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<HttpRouteMatchHeader>(map['headers']!, (value) => HttpRouteMatchHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
       path: (HttpRouteMatchPath.fromMap((map['path'] as Map).cast<String, dynamic>())).input(),
     );
   }

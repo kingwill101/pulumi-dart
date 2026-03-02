@@ -28,7 +28,7 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema {
   factory StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema(
       schema: (map['schema'] as String).input(),
-      tables: map['tables'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable>(map['tables'], (value) => StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tables: map['tables'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable>(map['tables']!, (value) => StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

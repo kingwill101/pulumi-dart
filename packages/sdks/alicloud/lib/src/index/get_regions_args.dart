@@ -37,9 +37,9 @@ class GetRegionsArgs {
 
   factory GetRegionsArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionsArgs(
-      current: map['current'] == null ? null : (map['current'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      current: map['current'] == null ? null : (map['current']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

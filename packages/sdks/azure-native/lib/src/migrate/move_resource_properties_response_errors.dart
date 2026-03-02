@@ -22,7 +22,7 @@ class MoveResourcePropertiesResponseErrors {
 
   factory MoveResourcePropertiesResponseErrors.fromMap(Map<String, dynamic> map) {
     return MoveResourcePropertiesResponseErrors(
-      properties: map['properties'] == null ? null : (MoveResourceErrorBodyResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (MoveResourceErrorBodyResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

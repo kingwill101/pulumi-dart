@@ -21,7 +21,7 @@ class L2ServiceLoadBalancerConfigurationResponse {
 
   factory L2ServiceLoadBalancerConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return L2ServiceLoadBalancerConfigurationResponse(
-      ipAddressPools: map['ipAddressPools'] == null ? null : (pulumi.Input.decodeList<IpAddressPoolResponse>(map['ipAddressPools'], (value) => IpAddressPoolResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipAddressPools: map['ipAddressPools'] == null ? null : (pulumi.Input.decodeList<IpAddressPoolResponse>(map['ipAddressPools']!, (value) => IpAddressPoolResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

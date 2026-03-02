@@ -21,7 +21,7 @@ class LogsConfigurationResponse {
 
   factory LogsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return LogsConfigurationResponse(
-      destinations: map['destinations'] == null ? null : ((map['destinations'] as List).cast<String>()).input(),
+      destinations: map['destinations'] == null ? null : ((map['destinations']! as List).cast<String>()).input(),
     );
   }
 }

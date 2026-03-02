@@ -36,7 +36,7 @@ class GrantRoleArgs {
     return GrantRoleArgs(
       grantRole: (map['grantRole'] as String).input(),
       role: (map['role'] as String).input(),
-      withAdminOption: map['withAdminOption'] == null ? null : (map['withAdminOption'] as bool).input(),
+      withAdminOption: map['withAdminOption'] == null ? null : (map['withAdminOption']! as bool).input(),
     );
   }
 }

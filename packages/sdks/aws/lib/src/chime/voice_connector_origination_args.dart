@@ -40,9 +40,9 @@ class VoiceConnectorOriginationArgs {
 
   factory VoiceConnectorOriginationArgs.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorOriginationArgs(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routes: (pulumi.Input.decodeList<VoiceConnectorOriginationRoute>(map['routes'], (value) => VoiceConnectorOriginationRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disabled: map['disabled'] == null ? null : ((map['disabled'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      routes: (pulumi.Input.decodeList<VoiceConnectorOriginationRoute>(map['routes']!, (value) => VoiceConnectorOriginationRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
       voiceConnectorId: (map['voiceConnectorId'] as String).input(),
     );
   }

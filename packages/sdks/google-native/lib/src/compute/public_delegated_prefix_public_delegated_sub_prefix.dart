@@ -52,13 +52,13 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefix {
 
   factory PublicDelegatedPrefixPublicDelegatedSubPrefix.fromMap(Map<String, dynamic> map) {
     return PublicDelegatedPrefixPublicDelegatedSubPrefix(
-      allocatablePrefixLength: map['allocatablePrefixLength'] == null ? null : (map['allocatablePrefixLength'] as int).input(),
-      delegateeProject: map['delegateeProject'] == null ? null : (map['delegateeProject'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange'] as String).input(),
-      isAddress: map['isAddress'] == null ? null : (map['isAddress'] as bool).input(),
-      mode: map['mode'] == null ? null : (PublicDelegatedPrefixPublicDelegatedSubPrefixMode.fromValue(map['mode'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      allocatablePrefixLength: map['allocatablePrefixLength'] == null ? null : (map['allocatablePrefixLength']! as int).input(),
+      delegateeProject: map['delegateeProject'] == null ? null : (map['delegateeProject']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange']! as String).input(),
+      isAddress: map['isAddress'] == null ? null : (map['isAddress']! as bool).input(),
+      mode: map['mode'] == null ? null : (PublicDelegatedPrefixPublicDelegatedSubPrefixMode.fromValue(map['mode']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class TrustStoreCaCertificatesBundleSource {
 
   factory TrustStoreCaCertificatesBundleSource.fromMap(Map<String, dynamic> map) {
     return TrustStoreCaCertificatesBundleSource(
-      caCertificatesBundleS3Location: (TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location.fromMap((map['caCertificatesBundleS3Location'] as Map).cast<String, dynamic>())).input(),
+      caCertificatesBundleS3Location: (TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location.fromMap((map['caCertificatesBundleS3Location']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

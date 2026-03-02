@@ -27,8 +27,8 @@ class StorageLensConfigurationStorageLensConfigurationDataExport {
 
   factory StorageLensConfigurationStorageLensConfigurationDataExport.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationDataExport(
-      cloudWatchMetrics: map['cloudWatchMetrics'] == null ? null : (StorageLensConfigurationStorageLensConfigurationDataExportCloudWatchMetrics.fromMap((map['cloudWatchMetrics'] as Map).cast<String, dynamic>())).input(),
-      s3BucketDestination: map['s3BucketDestination'] == null ? null : (StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestination.fromMap((map['s3BucketDestination'] as Map).cast<String, dynamic>())).input(),
+      cloudWatchMetrics: map['cloudWatchMetrics'] == null ? null : ((StorageLensConfigurationStorageLensConfigurationDataExportCloudWatchMetrics.fromMap((map['cloudWatchMetrics']! as Map).cast<String, dynamic>())).input()).input(),
+      s3BucketDestination: map['s3BucketDestination'] == null ? null : ((StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestination.fromMap((map['s3BucketDestination']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -58,14 +58,14 @@ class HsmState {
 
   factory HsmState.fromMap(Map<String, dynamic> map) {
     return HsmState(
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      hsmEniId: map['hsmEniId'] == null ? null : (map['hsmEniId'] as String).input(),
-      hsmId: map['hsmId'] == null ? null : (map['hsmId'] as String).input(),
-      hsmState: map['hsmState'] == null ? null : (map['hsmState'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
+      clusterId: map['clusterId'] == null ? null : ((map['clusterId'] as String).input()).input(),
+      hsmEniId: map['hsmEniId'] == null ? null : ((map['hsmEniId'] as String).input()).input(),
+      hsmId: map['hsmId'] == null ? null : ((map['hsmId'] as String).input()).input(),
+      hsmState: map['hsmState'] == null ? null : ((map['hsmState'] as String).input()).input(),
+      ipAddress: map['ipAddress'] == null ? null : ((map['ipAddress'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
     );
   }
 }

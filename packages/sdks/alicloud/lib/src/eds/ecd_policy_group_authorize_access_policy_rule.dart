@@ -25,8 +25,8 @@ class EcdPolicyGroupAuthorizeAccessPolicyRule {
 
   factory EcdPolicyGroupAuthorizeAccessPolicyRule.fromMap(Map<String, dynamic> map) {
     return EcdPolicyGroupAuthorizeAccessPolicyRule(
-      cidrIp: map['cidrIp'] == null ? null : (map['cidrIp'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      cidrIp: map['cidrIp'] == null ? null : (map['cidrIp']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
     );
   }
 }

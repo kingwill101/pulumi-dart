@@ -28,7 +28,7 @@ class PyTorch {
   factory PyTorch.fromMap(Map<String, dynamic> map) {
     return PyTorch(
       distributionType: (map['distributionType'] as String).input(),
-      processCountPerInstance: map['processCountPerInstance'] == null ? null : (map['processCountPerInstance'] as int).input(),
+      processCountPerInstance: map['processCountPerInstance'] == null ? null : (map['processCountPerInstance']! as int).input(),
     );
   }
 }

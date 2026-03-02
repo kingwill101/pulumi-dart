@@ -28,8 +28,8 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrp
 
   factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc(
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

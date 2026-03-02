@@ -44,11 +44,11 @@ class GetInstanceAttachmentsArgs {
 
   factory GetInstanceAttachmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceAttachmentsArgs(
-      childInstanceRegionId: map['childInstanceRegionId'] == null ? null : (map['childInstanceRegionId'] as String).input(),
-      childInstanceType: map['childInstanceType'] == null ? null : (map['childInstanceType'] as String).input(),
+      childInstanceRegionId: map['childInstanceRegionId'] == null ? null : (map['childInstanceRegionId']! as String).input(),
+      childInstanceType: map['childInstanceType'] == null ? null : (map['childInstanceType']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -30,7 +30,7 @@ class GetAppregistryApplicationArgs {
   factory GetAppregistryApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetAppregistryApplicationArgs(
       id: (map['id'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

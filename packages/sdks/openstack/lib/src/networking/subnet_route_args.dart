@@ -47,7 +47,7 @@ class SubnetRouteArgs {
     return SubnetRouteArgs(
       destinationCidr: (map['destinationCidr'] as String).input(),
       nextHop: (map['nextHop'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       subnetId: (map['subnetId'] as String).input(),
     );
   }

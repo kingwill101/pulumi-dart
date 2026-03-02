@@ -21,7 +21,7 @@ class GetConnectorEgressConfig {
 
   factory GetConnectorEgressConfig.fromMap(Map<String, dynamic> map) {
     return GetConnectorEgressConfig(
-      vpcLattices: (pulumi.Input.decodeList<GetConnectorEgressConfigVpcLattice>(map['vpcLattices'], (value) => GetConnectorEgressConfigVpcLattice.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcLattices: (pulumi.Input.decodeList<GetConnectorEgressConfigVpcLattice>(map['vpcLattices']!, (value) => GetConnectorEgressConfigVpcLattice.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

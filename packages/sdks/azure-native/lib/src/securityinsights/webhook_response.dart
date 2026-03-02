@@ -36,10 +36,10 @@ class WebhookResponse {
 
   factory WebhookResponse.fromMap(Map<String, dynamic> map) {
     return WebhookResponse(
-      rotateWebhookSecret: map['rotateWebhookSecret'] == null ? null : (map['rotateWebhookSecret'] as bool).input(),
-      webhookId: map['webhookId'] == null ? null : (map['webhookId'] as String).input(),
-      webhookSecretUpdateTime: map['webhookSecretUpdateTime'] == null ? null : (map['webhookSecretUpdateTime'] as String).input(),
-      webhookUrl: map['webhookUrl'] == null ? null : (map['webhookUrl'] as String).input(),
+      rotateWebhookSecret: map['rotateWebhookSecret'] == null ? null : (map['rotateWebhookSecret']! as bool).input(),
+      webhookId: map['webhookId'] == null ? null : (map['webhookId']! as String).input(),
+      webhookSecretUpdateTime: map['webhookSecretUpdateTime'] == null ? null : (map['webhookSecretUpdateTime']! as String).input(),
+      webhookUrl: map['webhookUrl'] == null ? null : (map['webhookUrl']! as String).input(),
     );
   }
 }

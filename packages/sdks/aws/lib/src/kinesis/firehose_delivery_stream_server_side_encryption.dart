@@ -30,9 +30,9 @@ class FirehoseDeliveryStreamServerSideEncryption {
 
   factory FirehoseDeliveryStreamServerSideEncryption.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamServerSideEncryption(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      keyArn: map['keyArn'] == null ? null : (map['keyArn'] as String).input(),
-      keyType: map['keyType'] == null ? null : (map['keyType'] as String).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      keyArn: map['keyArn'] == null ? null : ((map['keyArn'] as String).input()).input(),
+      keyType: map['keyType'] == null ? null : ((map['keyType'] as String).input()).input(),
     );
   }
 }

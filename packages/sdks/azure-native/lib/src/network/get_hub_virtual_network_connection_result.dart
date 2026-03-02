@@ -67,16 +67,16 @@ class GetHubVirtualNetworkConnectionResult {
 
   factory GetHubVirtualNetworkConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetHubVirtualNetworkConnectionResult(
-      allowHubToRemoteVnetTransit: map['allowHubToRemoteVnetTransit'] == null ? null : map['allowHubToRemoteVnetTransit'] as bool,
-      allowRemoteVnetToUseHubVnetGateways: map['allowRemoteVnetToUseHubVnetGateways'] == null ? null : map['allowRemoteVnetToUseHubVnetGateways'] as bool,
+      allowHubToRemoteVnetTransit: map['allowHubToRemoteVnetTransit'] == null ? null : map['allowHubToRemoteVnetTransit']! as bool,
+      allowRemoteVnetToUseHubVnetGateways: map['allowRemoteVnetToUseHubVnetGateways'] == null ? null : map['allowRemoteVnetToUseHubVnetGateways']! as bool,
       azureApiVersion: map['azureApiVersion'] as String,
-      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : map['enableInternetSecurity'] as bool,
+      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : map['enableInternetSecurity']! as bool,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
       provisioningState: map['provisioningState'] as String,
-      remoteVirtualNetwork: map['remoteVirtualNetwork'] == null ? null : SubResourceResponse.fromMap((map['remoteVirtualNetwork'] as Map).cast<String, dynamic>()),
-      routingConfiguration: map['routingConfiguration'] == null ? null : RoutingConfigurationResponse.fromMap((map['routingConfiguration'] as Map).cast<String, dynamic>()),
+      remoteVirtualNetwork: map['remoteVirtualNetwork'] == null ? null : SubResourceResponse.fromMap((map['remoteVirtualNetwork']! as Map).cast<String, dynamic>()),
+      routingConfiguration: map['routingConfiguration'] == null ? null : RoutingConfigurationResponse.fromMap((map['routingConfiguration']! as Map).cast<String, dynamic>()),
     );
   }
 }

@@ -64,15 +64,15 @@ class AppConnectorArgs {
 
   factory AppConnectorArgs.fromMap(Map<String, dynamic> map) {
     return AppConnectorArgs(
-      appConnectorId: map['appConnectorId'] == null ? null : (map['appConnectorId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      appConnectorId: map['appConnectorId'] == null ? null : (map['appConnectorId']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       principalInfo: (GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo.fromMap((map['principalInfo'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      resourceInfo: map['resourceInfo'] == null ? null : (GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromMap((map['resourceInfo'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      resourceInfo: map['resourceInfo'] == null ? null : (GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromMap((map['resourceInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

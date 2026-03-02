@@ -90,19 +90,19 @@ class GetContactProfileResult {
 
   factory GetContactProfileResult.fromMap(Map<String, dynamic> map) {
     return GetContactProfileResult(
-      autoTrackingConfiguration: map['autoTrackingConfiguration'] == null ? null : map['autoTrackingConfiguration'] as String,
+      autoTrackingConfiguration: map['autoTrackingConfiguration'] == null ? null : map['autoTrackingConfiguration']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      eventHubUri: map['eventHubUri'] == null ? null : map['eventHubUri'] as String,
+      eventHubUri: map['eventHubUri'] == null ? null : map['eventHubUri']! as String,
       id: map['id'] as String,
       links: pulumi.Input.decodeList<ContactProfileLinkResponse>(map['links'], (value) => ContactProfileLinkResponse.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
-      minimumElevationDegrees: map['minimumElevationDegrees'] == null ? null : map['minimumElevationDegrees'] as double,
-      minimumViableContactDuration: map['minimumViableContactDuration'] == null ? null : map['minimumViableContactDuration'] as String,
+      minimumElevationDegrees: map['minimumElevationDegrees'] == null ? null : map['minimumElevationDegrees']! as double,
+      minimumViableContactDuration: map['minimumViableContactDuration'] == null ? null : map['minimumViableContactDuration']! as String,
       name: map['name'] as String,
       networkConfiguration: ContactProfilesPropertiesResponseNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      thirdPartyConfigurations: map['thirdPartyConfigurations'] == null ? null : pulumi.Input.decodeList<ContactProfileThirdPartyConfigurationResponse>(map['thirdPartyConfigurations'], (value) => ContactProfileThirdPartyConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      thirdPartyConfigurations: map['thirdPartyConfigurations'] == null ? null : pulumi.Input.decodeList<ContactProfileThirdPartyConfigurationResponse>(map['thirdPartyConfigurations']!, (value) => ContactProfileThirdPartyConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }

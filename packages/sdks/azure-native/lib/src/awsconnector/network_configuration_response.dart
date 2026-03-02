@@ -22,7 +22,7 @@ class NetworkConfigurationResponse {
 
   factory NetworkConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return NetworkConfigurationResponse(
-      awsvpcConfiguration: map['awsvpcConfiguration'] == null ? null : (AwsVpcConfigurationResponse.fromMap((map['awsvpcConfiguration'] as Map).cast<String, dynamic>())).input(),
+      awsvpcConfiguration: map['awsvpcConfiguration'] == null ? null : (AwsVpcConfigurationResponse.fromMap((map['awsvpcConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

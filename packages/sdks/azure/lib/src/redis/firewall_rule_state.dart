@@ -41,11 +41,11 @@ class FirewallRuleState {
 
   factory FirewallRuleState.fromMap(Map<String, dynamic> map) {
     return FirewallRuleState(
-      endIp: map['endIp'] == null ? null : (map['endIp'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      redisCacheName: map['redisCacheName'] == null ? null : (map['redisCacheName'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      startIp: map['startIp'] == null ? null : (map['startIp'] as String).input(),
+      endIp: map['endIp'] == null ? null : (map['endIp']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      redisCacheName: map['redisCacheName'] == null ? null : (map['redisCacheName']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      startIp: map['startIp'] == null ? null : (map['startIp']! as String).input(),
     );
   }
 }

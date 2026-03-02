@@ -36,10 +36,10 @@ class StatementConditionProperties {
 
   factory StatementConditionProperties.fromMap(Map<String, dynamic> map) {
     return StatementConditionProperties(
-      ipCommunityIds: map['ipCommunityIds'] == null ? null : ((map['ipCommunityIds'] as List).cast<String>()).input(),
-      ipExtendedCommunityIds: map['ipExtendedCommunityIds'] == null ? null : ((map['ipExtendedCommunityIds'] as List).cast<String>()).input(),
-      ipPrefixId: map['ipPrefixId'] == null ? null : (map['ipPrefixId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      ipCommunityIds: map['ipCommunityIds'] == null ? null : ((map['ipCommunityIds']! as List).cast<String>()).input(),
+      ipExtendedCommunityIds: map['ipExtendedCommunityIds'] == null ? null : ((map['ipExtendedCommunityIds']! as List).cast<String>()).input(),
+      ipPrefixId: map['ipPrefixId'] == null ? null : (map['ipPrefixId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

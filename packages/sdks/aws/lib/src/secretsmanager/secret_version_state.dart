@@ -68,16 +68,16 @@ class SecretVersionState {
 
   factory SecretVersionState.fromMap(Map<String, dynamic> map) {
     return SecretVersionState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      hasSecretStringWo: map['hasSecretStringWo'] == null ? null : (map['hasSecretStringWo'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      secretBinary: map['secretBinary'] == null ? null : (map['secretBinary'] as String).input(),
-      secretId: map['secretId'] == null ? null : (map['secretId'] as String).input(),
-      secretString: map['secretString'] == null ? null : (map['secretString'] as String).input(),
-      secretStringWo: map['secretStringWo'] == null ? null : (map['secretStringWo'] as String).input(),
-      secretStringWoVersion: map['secretStringWoVersion'] == null ? null : (map['secretStringWoVersion'] as int).input(),
-      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
-      versionStages: map['versionStages'] == null ? null : ((map['versionStages'] as List).cast<String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      hasSecretStringWo: map['hasSecretStringWo'] == null ? null : ((map['hasSecretStringWo'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      secretBinary: map['secretBinary'] == null ? null : ((map['secretBinary'] as String).input()).input(),
+      secretId: map['secretId'] == null ? null : ((map['secretId'] as String).input()).input(),
+      secretString: map['secretString'] == null ? null : ((map['secretString'] as String).input()).input(),
+      secretStringWo: map['secretStringWo'] == null ? null : ((map['secretStringWo'] as String).input()).input(),
+      secretStringWoVersion: map['secretStringWoVersion'] == null ? null : ((map['secretStringWoVersion'] as int).input()).input(),
+      versionId: map['versionId'] == null ? null : ((map['versionId'] as String).input()).input(),
+      versionStages: map['versionStages'] == null ? null : (((map['versionStages'] as List).cast<String>()).input()).input(),
     );
   }
 }

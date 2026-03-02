@@ -39,7 +39,7 @@ class ServerCommunicationLinkArgs {
 
   factory ServerCommunicationLinkArgs.fromMap(Map<String, dynamic> map) {
     return ServerCommunicationLinkArgs(
-      communicationLinkName: map['communicationLinkName'] == null ? null : (map['communicationLinkName'] as String).input(),
+      communicationLinkName: map['communicationLinkName'] == null ? null : (map['communicationLinkName']! as String).input(),
       partnerServer: (map['partnerServer'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),

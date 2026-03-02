@@ -26,8 +26,8 @@ class AutoScalingGroupNotificationConfigurationResponse {
 
   factory AutoScalingGroupNotificationConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AutoScalingGroupNotificationConfigurationResponse(
-      notificationTypes: map['notificationTypes'] == null ? null : ((map['notificationTypes'] as List).cast<String>()).input(),
-      topicARN: map['topicARN'] == null ? null : (map['topicARN'] as String).input(),
+      notificationTypes: map['notificationTypes'] == null ? null : ((map['notificationTypes']! as List).cast<String>()).input(),
+      topicARN: map['topicARN'] == null ? null : (map['topicARN']! as String).input(),
     );
   }
 }

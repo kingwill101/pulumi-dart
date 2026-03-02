@@ -47,12 +47,12 @@ class AwsConfigServiceDeliveryChannelProperties {
 
   factory AwsConfigServiceDeliveryChannelProperties.fromMap(Map<String, dynamic> map) {
     return AwsConfigServiceDeliveryChannelProperties(
-      configSnapshotDeliveryProperties: map['configSnapshotDeliveryProperties'] == null ? null : (ConfigSnapshotDeliveryProperties.fromMap((map['configSnapshotDeliveryProperties'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      s3BucketName: map['s3BucketName'] == null ? null : (map['s3BucketName'] as String).input(),
-      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : (map['s3KeyPrefix'] as String).input(),
-      s3KmsKeyArn: map['s3KmsKeyArn'] == null ? null : (map['s3KmsKeyArn'] as String).input(),
-      snsTopicARN: map['snsTopicARN'] == null ? null : (map['snsTopicARN'] as String).input(),
+      configSnapshotDeliveryProperties: map['configSnapshotDeliveryProperties'] == null ? null : (ConfigSnapshotDeliveryProperties.fromMap((map['configSnapshotDeliveryProperties']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      s3BucketName: map['s3BucketName'] == null ? null : (map['s3BucketName']! as String).input(),
+      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : (map['s3KeyPrefix']! as String).input(),
+      s3KmsKeyArn: map['s3KmsKeyArn'] == null ? null : (map['s3KmsKeyArn']! as String).input(),
+      snsTopicARN: map['snsTopicARN'] == null ? null : (map['snsTopicARN']! as String).input(),
     );
   }
 }

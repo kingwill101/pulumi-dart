@@ -25,8 +25,8 @@ class ImportFile {
 
   factory ImportFile.fromMap(Map<String, dynamic> map) {
     return ImportFile(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

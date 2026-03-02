@@ -54,12 +54,12 @@ class PartitionArgs {
 
   factory PartitionArgs.fromMap(Map<String, dynamic> map) {
     return PartitionArgs(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
       databaseName: (map['databaseName'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      parameters: map['parameters'] == null ? null : (((map['parameters'] as Map).cast<String, String>()).input()).input(),
       partitionValues: ((map['partitionValues'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      storageDescriptor: map['storageDescriptor'] == null ? null : (PartitionStorageDescriptor.fromMap((map['storageDescriptor'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      storageDescriptor: map['storageDescriptor'] == null ? null : ((PartitionStorageDescriptor.fromMap((map['storageDescriptor']! as Map).cast<String, dynamic>())).input()).input(),
       tableName: (map['tableName'] as String).input(),
     );
   }

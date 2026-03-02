@@ -20,7 +20,7 @@ class PreferenceSetVirtualMachinePreferencesRegionPreferences {
 
   factory PreferenceSetVirtualMachinePreferencesRegionPreferences.fromMap(Map<String, dynamic> map) {
     return PreferenceSetVirtualMachinePreferencesRegionPreferences(
-      preferredRegions: map['preferredRegions'] == null ? null : ((map['preferredRegions'] as List).cast<String>()).input(),
+      preferredRegions: map['preferredRegions'] == null ? null : ((map['preferredRegions']! as List).cast<String>()).input(),
     );
   }
 }

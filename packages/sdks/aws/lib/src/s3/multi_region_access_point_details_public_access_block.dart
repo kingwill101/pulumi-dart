@@ -31,10 +31,10 @@ class MultiRegionAccessPointDetailsPublicAccessBlock {
 
   factory MultiRegionAccessPointDetailsPublicAccessBlock.fromMap(Map<String, dynamic> map) {
     return MultiRegionAccessPointDetailsPublicAccessBlock(
-      blockPublicAcls: map['blockPublicAcls'] == null ? null : (map['blockPublicAcls'] as bool).input(),
-      blockPublicPolicy: map['blockPublicPolicy'] == null ? null : (map['blockPublicPolicy'] as bool).input(),
-      ignorePublicAcls: map['ignorePublicAcls'] == null ? null : (map['ignorePublicAcls'] as bool).input(),
-      restrictPublicBuckets: map['restrictPublicBuckets'] == null ? null : (map['restrictPublicBuckets'] as bool).input(),
+      blockPublicAcls: map['blockPublicAcls'] == null ? null : ((map['blockPublicAcls'] as bool).input()).input(),
+      blockPublicPolicy: map['blockPublicPolicy'] == null ? null : ((map['blockPublicPolicy'] as bool).input()).input(),
+      ignorePublicAcls: map['ignorePublicAcls'] == null ? null : ((map['ignorePublicAcls'] as bool).input()).input(),
+      restrictPublicBuckets: map['restrictPublicBuckets'] == null ? null : ((map['restrictPublicBuckets'] as bool).input()).input(),
     );
   }
 }

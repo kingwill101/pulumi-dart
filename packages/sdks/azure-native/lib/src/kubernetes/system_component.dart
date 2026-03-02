@@ -31,9 +31,9 @@ class SystemComponent {
 
   factory SystemComponent.fromMap(Map<String, dynamic> map) {
     return SystemComponent(
-      majorVersion: map['majorVersion'] == null ? null : (map['majorVersion'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      userSpecifiedVersion: map['userSpecifiedVersion'] == null ? null : (map['userSpecifiedVersion'] as String).input(),
+      majorVersion: map['majorVersion'] == null ? null : (map['majorVersion']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      userSpecifiedVersion: map['userSpecifiedVersion'] == null ? null : (map['userSpecifiedVersion']! as String).input(),
     );
   }
 }

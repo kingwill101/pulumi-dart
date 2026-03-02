@@ -75,16 +75,16 @@ class ApnsVoipChannelState {
 
   factory ApnsVoipChannelState.fromMap(Map<String, dynamic> map) {
     return ApnsVoipChannelState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      bundleId: map['bundleId'] == null ? null : (map['bundleId'] as String).input(),
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
-      defaultAuthenticationMethod: map['defaultAuthenticationMethod'] == null ? null : (map['defaultAuthenticationMethod'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      teamId: map['teamId'] == null ? null : (map['teamId'] as String).input(),
-      tokenKey: map['tokenKey'] == null ? null : (map['tokenKey'] as String).input(),
-      tokenKeyId: map['tokenKeyId'] == null ? null : (map['tokenKeyId'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : ((map['applicationId'] as String).input()).input(),
+      bundleId: map['bundleId'] == null ? null : ((map['bundleId'] as String).input()).input(),
+      certificate: map['certificate'] == null ? null : ((map['certificate'] as String).input()).input(),
+      defaultAuthenticationMethod: map['defaultAuthenticationMethod'] == null ? null : ((map['defaultAuthenticationMethod'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      privateKey: map['privateKey'] == null ? null : ((map['privateKey'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      teamId: map['teamId'] == null ? null : ((map['teamId'] as String).input()).input(),
+      tokenKey: map['tokenKey'] == null ? null : ((map['tokenKey'] as String).input()).input(),
+      tokenKeyId: map['tokenKeyId'] == null ? null : ((map['tokenKeyId'] as String).input()).input(),
     );
   }
 }

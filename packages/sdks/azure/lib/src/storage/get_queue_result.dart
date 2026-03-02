@@ -51,8 +51,8 @@ class GetQueueResult {
       metadata: (map['metadata'] as Map).cast<String, String>(),
       name: map['name'] as String,
       resourceManagerId: map['resourceManagerId'] as String,
-      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId'] as String,
-      storageAccountName: map['storageAccountName'] == null ? null : map['storageAccountName'] as String,
+      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId']! as String,
+      storageAccountName: map['storageAccountName'] == null ? null : map['storageAccountName']! as String,
       url: map['url'] as String,
     );
   }

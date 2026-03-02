@@ -39,10 +39,10 @@ class HybridMonitorSlsTaskSlsProcessConfig {
 
   factory HybridMonitorSlsTaskSlsProcessConfig.fromMap(Map<String, dynamic> map) {
     return HybridMonitorSlsTaskSlsProcessConfig(
-      expresses: map['expresses'] == null ? null : (pulumi.Input.decodeList<HybridMonitorSlsTaskSlsProcessConfigExpress>(map['expresses'], (value) => HybridMonitorSlsTaskSlsProcessConfigExpress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      filter: map['filter'] == null ? null : (HybridMonitorSlsTaskSlsProcessConfigFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      groupBies: map['groupBies'] == null ? null : (pulumi.Input.decodeList<HybridMonitorSlsTaskSlsProcessConfigGroupBy>(map['groupBies'], (value) => HybridMonitorSlsTaskSlsProcessConfigGroupBy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      statistics: map['statistics'] == null ? null : (pulumi.Input.decodeList<HybridMonitorSlsTaskSlsProcessConfigStatistic>(map['statistics'], (value) => HybridMonitorSlsTaskSlsProcessConfigStatistic.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expresses: map['expresses'] == null ? null : (pulumi.Input.decodeList<HybridMonitorSlsTaskSlsProcessConfigExpress>(map['expresses']!, (value) => HybridMonitorSlsTaskSlsProcessConfigExpress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filter: map['filter'] == null ? null : (HybridMonitorSlsTaskSlsProcessConfigFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      groupBies: map['groupBies'] == null ? null : (pulumi.Input.decodeList<HybridMonitorSlsTaskSlsProcessConfigGroupBy>(map['groupBies']!, (value) => HybridMonitorSlsTaskSlsProcessConfigGroupBy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      statistics: map['statistics'] == null ? null : (pulumi.Input.decodeList<HybridMonitorSlsTaskSlsProcessConfigStatistic>(map['statistics']!, (value) => HybridMonitorSlsTaskSlsProcessConfigStatistic.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

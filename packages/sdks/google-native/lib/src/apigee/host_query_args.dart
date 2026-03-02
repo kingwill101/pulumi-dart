@@ -79,17 +79,17 @@ class HostQueryArgs {
 
   factory HostQueryArgs.fromMap(Map<String, dynamic> map) {
     return HostQueryArgs(
-      csvDelimiter: map['csvDelimiter'] == null ? null : (map['csvDelimiter'] as String).input(),
-      dimensions: map['dimensions'] == null ? null : ((map['dimensions'] as List).cast<String>()).input(),
-      envgroupHostname: map['envgroupHostname'] == null ? null : (map['envgroupHostname'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      groupByTimeUnit: map['groupByTimeUnit'] == null ? null : (map['groupByTimeUnit'] as String).input(),
-      limit: map['limit'] == null ? null : (map['limit'] as int).input(),
-      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1QueryMetric>(map['metrics'], (value) => GoogleCloudApigeeV1QueryMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      csvDelimiter: map['csvDelimiter'] == null ? null : (map['csvDelimiter']! as String).input(),
+      dimensions: map['dimensions'] == null ? null : ((map['dimensions']! as List).cast<String>()).input(),
+      envgroupHostname: map['envgroupHostname'] == null ? null : (map['envgroupHostname']! as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      groupByTimeUnit: map['groupByTimeUnit'] == null ? null : (map['groupByTimeUnit']! as String).input(),
+      limit: map['limit'] == null ? null : (map['limit']! as int).input(),
+      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1QueryMetric>(map['metrics']!, (value) => GoogleCloudApigeeV1QueryMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
-      outputFormat: map['outputFormat'] == null ? null : (map['outputFormat'] as String).input(),
-      reportDefinitionId: map['reportDefinitionId'] == null ? null : (map['reportDefinitionId'] as String).input(),
+      outputFormat: map['outputFormat'] == null ? null : (map['outputFormat']! as String).input(),
+      reportDefinitionId: map['reportDefinitionId'] == null ? null : (map['reportDefinitionId']! as String).input(),
       timeRange: (map['timeRange']).input(),
     );
   }

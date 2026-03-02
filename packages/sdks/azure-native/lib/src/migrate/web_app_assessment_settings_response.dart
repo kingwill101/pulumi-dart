@@ -84,16 +84,16 @@ class WebAppAssessmentSettingsResponse {
     return WebAppAssessmentSettingsResponse(
       appSvcContainerSettings: (AppSvcContainerSettingsResponse.fromMap((map['appSvcContainerSettings'] as Map).cast<String, dynamic>())).input(),
       appSvcNativeSettings: (AppSvcNativeSettingsResponse.fromMap((map['appSvcNativeSettings'] as Map).cast<String, dynamic>())).input(),
-      azureLocation: map['azureLocation'] == null ? null : (map['azureLocation'] as String).input(),
+      azureLocation: map['azureLocation'] == null ? null : (map['azureLocation']! as String).input(),
       azureSecurityOfferingType: (map['azureSecurityOfferingType'] as String).input(),
-      billingSettings: map['billingSettings'] == null ? null : (BillingSettingsResponse.fromMap((map['billingSettings'] as Map).cast<String, dynamic>())).input(),
-      currency: map['currency'] == null ? null : (map['currency'] as String).input(),
-      discountPercentage: map['discountPercentage'] == null ? null : (map['discountPercentage'] as double).input(),
-      environmentType: map['environmentType'] == null ? null : (map['environmentType'] as String).input(),
-      performanceData: map['performanceData'] == null ? null : (PerformanceDataResponse.fromMap((map['performanceData'] as Map).cast<String, dynamic>())).input(),
-      savingsSettings: map['savingsSettings'] == null ? null : (SavingsSettingsResponse.fromMap((map['savingsSettings'] as Map).cast<String, dynamic>())).input(),
-      scalingFactor: map['scalingFactor'] == null ? null : (map['scalingFactor'] as double).input(),
-      sizingCriterion: map['sizingCriterion'] == null ? null : (map['sizingCriterion'] as String).input(),
+      billingSettings: map['billingSettings'] == null ? null : (BillingSettingsResponse.fromMap((map['billingSettings']! as Map).cast<String, dynamic>())).input(),
+      currency: map['currency'] == null ? null : (map['currency']! as String).input(),
+      discountPercentage: map['discountPercentage'] == null ? null : (map['discountPercentage']! as double).input(),
+      environmentType: map['environmentType'] == null ? null : (map['environmentType']! as String).input(),
+      performanceData: map['performanceData'] == null ? null : (PerformanceDataResponse.fromMap((map['performanceData']! as Map).cast<String, dynamic>())).input(),
+      savingsSettings: map['savingsSettings'] == null ? null : (SavingsSettingsResponse.fromMap((map['savingsSettings']! as Map).cast<String, dynamic>())).input(),
+      scalingFactor: map['scalingFactor'] == null ? null : (map['scalingFactor']! as double).input(),
+      sizingCriterion: map['sizingCriterion'] == null ? null : (map['sizingCriterion']! as String).input(),
     );
   }
 }

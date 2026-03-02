@@ -67,7 +67,7 @@ class SharedPrivateLinkResourceResponse {
       name: (map['name'] as String).input(),
       privateLinkResourceId: (map['privateLinkResourceId'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage']! as String).input(),
       status: (map['status'] as String).input(),
       systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),

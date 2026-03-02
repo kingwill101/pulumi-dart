@@ -36,8 +36,8 @@ class IntentFollowUpPromptPrompt {
   factory IntentFollowUpPromptPrompt.fromMap(Map<String, dynamic> map) {
     return IntentFollowUpPromptPrompt(
       maxAttempts: (map['maxAttempts'] as int).input(),
-      messages: (pulumi.Input.decodeList<IntentFollowUpPromptPromptMessage>(map['messages'], (value) => IntentFollowUpPromptPromptMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      responseCard: map['responseCard'] == null ? null : (map['responseCard'] as String).input(),
+      messages: (pulumi.Input.decodeList<IntentFollowUpPromptPromptMessage>(map['messages']!, (value) => IntentFollowUpPromptPromptMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responseCard: map['responseCard'] == null ? null : ((map['responseCard'] as String).input()).input(),
     );
   }
 }

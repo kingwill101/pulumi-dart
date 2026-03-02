@@ -35,10 +35,10 @@ class BucketCor {
 
   factory BucketCor.fromMap(Map<String, dynamic> map) {
     return BucketCor(
-      maxAgeSeconds: map['maxAgeSeconds'] == null ? null : (map['maxAgeSeconds'] as int).input(),
-      methods: map['methods'] == null ? null : ((map['methods'] as List).cast<String>()).input(),
-      origins: map['origins'] == null ? null : ((map['origins'] as List).cast<String>()).input(),
-      responseHeaders: map['responseHeaders'] == null ? null : ((map['responseHeaders'] as List).cast<String>()).input(),
+      maxAgeSeconds: map['maxAgeSeconds'] == null ? null : (map['maxAgeSeconds']! as int).input(),
+      methods: map['methods'] == null ? null : ((map['methods']! as List).cast<String>()).input(),
+      origins: map['origins'] == null ? null : ((map['origins']! as List).cast<String>()).input(),
+      responseHeaders: map['responseHeaders'] == null ? null : ((map['responseHeaders']! as List).cast<String>()).input(),
     );
   }
 }

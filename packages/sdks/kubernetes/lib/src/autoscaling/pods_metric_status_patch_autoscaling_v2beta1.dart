@@ -32,9 +32,9 @@ class PodsMetricStatusPatchAutoscalingV2beta1 {
 
   factory PodsMetricStatusPatchAutoscalingV2beta1.fromMap(Map<String, dynamic> map) {
     return PodsMetricStatusPatchAutoscalingV2beta1(
-      currentAverageValue: map['currentAverageValue'] == null ? null : (map['currentAverageValue'] as String).input(),
-      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
-      selector: map['selector'] == null ? null : (LabelSelectorPatch.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
+      currentAverageValue: map['currentAverageValue'] == null ? null : (map['currentAverageValue']! as String).input(),
+      metricName: map['metricName'] == null ? null : (map['metricName']! as String).input(),
+      selector: map['selector'] == null ? null : (LabelSelectorPatch.fromMap((map['selector']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

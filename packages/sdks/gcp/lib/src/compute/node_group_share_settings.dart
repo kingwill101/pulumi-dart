@@ -28,7 +28,7 @@ class NodeGroupShareSettings {
 
   factory NodeGroupShareSettings.fromMap(Map<String, dynamic> map) {
     return NodeGroupShareSettings(
-      projectMaps: map['projectMaps'] == null ? null : (pulumi.Input.decodeList<NodeGroupShareSettingsProjectMap>(map['projectMaps'], (value) => NodeGroupShareSettingsProjectMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      projectMaps: map['projectMaps'] == null ? null : (pulumi.Input.decodeList<NodeGroupShareSettingsProjectMap>(map['projectMaps']!, (value) => NodeGroupShareSettingsProjectMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
       shareType: (map['shareType'] as String).input(),
     );
   }

@@ -43,11 +43,11 @@ class RoleCustomPermissionState {
 
   factory RoleCustomPermissionState.fromMap(Map<String, dynamic> map) {
     return RoleCustomPermissionState(
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      customPermissionsName: map['customPermissionsName'] == null ? null : (map['customPermissionsName'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      customPermissionsName: map['customPermissionsName'] == null ? null : ((map['customPermissionsName'] as String).input()).input(),
+      namespace: map['namespace'] == null ? null : ((map['namespace'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      role: map['role'] == null ? null : ((map['role'] as String).input()).input(),
     );
   }
 }

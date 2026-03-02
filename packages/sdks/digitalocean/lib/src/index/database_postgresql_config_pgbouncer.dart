@@ -51,15 +51,15 @@ class DatabasePostgresqlConfigPgbouncer {
 
   factory DatabasePostgresqlConfigPgbouncer.fromMap(Map<String, dynamic> map) {
     return DatabasePostgresqlConfigPgbouncer(
-      autodbIdleTimeout: map['autodbIdleTimeout'] == null ? null : (map['autodbIdleTimeout'] as int).input(),
-      autodbMaxDbConnections: map['autodbMaxDbConnections'] == null ? null : (map['autodbMaxDbConnections'] as int).input(),
-      autodbPoolMode: map['autodbPoolMode'] == null ? null : (map['autodbPoolMode'] as String).input(),
-      autodbPoolSize: map['autodbPoolSize'] == null ? null : (map['autodbPoolSize'] as int).input(),
-      ignoreStartupParameters: map['ignoreStartupParameters'] == null ? null : ((map['ignoreStartupParameters'] as List).cast<String>()).input(),
-      minPoolSize: map['minPoolSize'] == null ? null : (map['minPoolSize'] as int).input(),
-      serverIdleTimeout: map['serverIdleTimeout'] == null ? null : (map['serverIdleTimeout'] as int).input(),
-      serverLifetime: map['serverLifetime'] == null ? null : (map['serverLifetime'] as int).input(),
-      serverResetQueryAlways: map['serverResetQueryAlways'] == null ? null : (map['serverResetQueryAlways'] as bool).input(),
+      autodbIdleTimeout: map['autodbIdleTimeout'] == null ? null : (map['autodbIdleTimeout']! as int).input(),
+      autodbMaxDbConnections: map['autodbMaxDbConnections'] == null ? null : (map['autodbMaxDbConnections']! as int).input(),
+      autodbPoolMode: map['autodbPoolMode'] == null ? null : (map['autodbPoolMode']! as String).input(),
+      autodbPoolSize: map['autodbPoolSize'] == null ? null : (map['autodbPoolSize']! as int).input(),
+      ignoreStartupParameters: map['ignoreStartupParameters'] == null ? null : ((map['ignoreStartupParameters']! as List).cast<String>()).input(),
+      minPoolSize: map['minPoolSize'] == null ? null : (map['minPoolSize']! as int).input(),
+      serverIdleTimeout: map['serverIdleTimeout'] == null ? null : (map['serverIdleTimeout']! as int).input(),
+      serverLifetime: map['serverLifetime'] == null ? null : (map['serverLifetime']! as int).input(),
+      serverResetQueryAlways: map['serverResetQueryAlways'] == null ? null : (map['serverResetQueryAlways']! as bool).input(),
     );
   }
 }

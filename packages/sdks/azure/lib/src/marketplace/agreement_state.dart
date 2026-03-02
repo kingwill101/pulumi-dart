@@ -39,11 +39,11 @@ class AgreementState {
 
   factory AgreementState.fromMap(Map<String, dynamic> map) {
     return AgreementState(
-      licenseTextLink: map['licenseTextLink'] == null ? null : (map['licenseTextLink'] as String).input(),
-      offer: map['offer'] == null ? null : (map['offer'] as String).input(),
-      plan: map['plan'] == null ? null : (map['plan'] as String).input(),
-      privacyPolicyLink: map['privacyPolicyLink'] == null ? null : (map['privacyPolicyLink'] as String).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
+      licenseTextLink: map['licenseTextLink'] == null ? null : (map['licenseTextLink']! as String).input(),
+      offer: map['offer'] == null ? null : (map['offer']! as String).input(),
+      plan: map['plan'] == null ? null : (map['plan']! as String).input(),
+      privacyPolicyLink: map['privacyPolicyLink'] == null ? null : (map['privacyPolicyLink']! as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
     );
   }
 }

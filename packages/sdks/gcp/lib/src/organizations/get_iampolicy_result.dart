@@ -37,8 +37,8 @@ class GetIAMPolicyResult {
 
   factory GetIAMPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetIAMPolicyResult(
-      auditConfigs: map['auditConfigs'] == null ? null : pulumi.Input.decodeList<GetIAMPolicyAuditConfig>(map['auditConfigs'], (value) => GetIAMPolicyAuditConfig.fromMap((value as Map).cast<String, dynamic>())),
-      bindings: map['bindings'] == null ? null : pulumi.Input.decodeList<GetIAMPolicyBinding>(map['bindings'], (value) => GetIAMPolicyBinding.fromMap((value as Map).cast<String, dynamic>())),
+      auditConfigs: map['auditConfigs'] == null ? null : pulumi.Input.decodeList<GetIAMPolicyAuditConfig>(map['auditConfigs']!, (value) => GetIAMPolicyAuditConfig.fromMap((value as Map).cast<String, dynamic>())),
+      bindings: map['bindings'] == null ? null : pulumi.Input.decodeList<GetIAMPolicyBinding>(map['bindings']!, (value) => GetIAMPolicyBinding.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       policyData: map['policyData'] as String,
     );

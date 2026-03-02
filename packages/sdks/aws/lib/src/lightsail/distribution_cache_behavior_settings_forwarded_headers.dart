@@ -25,8 +25,8 @@ class DistributionCacheBehaviorSettingsForwardedHeaders {
 
   factory DistributionCacheBehaviorSettingsForwardedHeaders.fromMap(Map<String, dynamic> map) {
     return DistributionCacheBehaviorSettingsForwardedHeaders(
-      headersAllowLists: map['headersAllowLists'] == null ? null : ((map['headersAllowLists'] as List).cast<String>()).input(),
-      option: map['option'] == null ? null : (map['option'] as String).input(),
+      headersAllowLists: map['headersAllowLists'] == null ? null : (((map['headersAllowLists'] as List).cast<String>()).input()).input(),
+      option: map['option'] == null ? null : ((map['option'] as String).input()).input(),
     );
   }
 }

@@ -55,11 +55,11 @@ class BlobContainerImmutabilityPolicyArgs {
   factory BlobContainerImmutabilityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BlobContainerImmutabilityPolicyArgs(
       accountName: (map['accountName'] as String).input(),
-      allowProtectedAppendWrites: map['allowProtectedAppendWrites'] == null ? null : (map['allowProtectedAppendWrites'] as bool).input(),
-      allowProtectedAppendWritesAll: map['allowProtectedAppendWritesAll'] == null ? null : (map['allowProtectedAppendWritesAll'] as bool).input(),
+      allowProtectedAppendWrites: map['allowProtectedAppendWrites'] == null ? null : (map['allowProtectedAppendWrites']! as bool).input(),
+      allowProtectedAppendWritesAll: map['allowProtectedAppendWritesAll'] == null ? null : (map['allowProtectedAppendWritesAll']! as bool).input(),
       containerName: (map['containerName'] as String).input(),
-      immutabilityPeriodSinceCreationInDays: map['immutabilityPeriodSinceCreationInDays'] == null ? null : (map['immutabilityPeriodSinceCreationInDays'] as int).input(),
-      immutabilityPolicyName: map['immutabilityPolicyName'] == null ? null : (map['immutabilityPolicyName'] as String).input(),
+      immutabilityPeriodSinceCreationInDays: map['immutabilityPeriodSinceCreationInDays'] == null ? null : (map['immutabilityPeriodSinceCreationInDays']! as int).input(),
+      immutabilityPolicyName: map['immutabilityPolicyName'] == null ? null : (map['immutabilityPolicyName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

@@ -34,8 +34,8 @@ class GetTrackerArgs {
 
   factory GetTrackerArgs.fromMap(Map<String, dynamic> map) {
     return GetTrackerArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       trackerName: (map['trackerName'] as String).input(),
     );
   }

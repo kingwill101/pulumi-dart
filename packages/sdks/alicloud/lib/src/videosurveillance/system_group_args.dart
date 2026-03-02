@@ -59,9 +59,9 @@ class SystemGroupArgs {
 
   factory SystemGroupArgs.fromMap(Map<String, dynamic> map) {
     return SystemGroupArgs(
-      callback: map['callback'] == null ? null : (map['callback'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      callback: map['callback'] == null ? null : (map['callback']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       groupName: (map['groupName'] as String).input(),
       inProtocol: (map['inProtocol'] as String).input(),
       outProtocol: (map['outProtocol'] as String).input(),

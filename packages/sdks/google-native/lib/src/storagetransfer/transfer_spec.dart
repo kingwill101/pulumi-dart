@@ -95,20 +95,20 @@ class TransferSpec {
 
   factory TransferSpec.fromMap(Map<String, dynamic> map) {
     return TransferSpec(
-      awsS3CompatibleDataSource: map['awsS3CompatibleDataSource'] == null ? null : (AwsS3CompatibleData.fromMap((map['awsS3CompatibleDataSource'] as Map).cast<String, dynamic>())).input(),
-      awsS3DataSource: map['awsS3DataSource'] == null ? null : (AwsS3Data.fromMap((map['awsS3DataSource'] as Map).cast<String, dynamic>())).input(),
-      azureBlobStorageDataSource: map['azureBlobStorageDataSource'] == null ? null : (AzureBlobStorageData.fromMap((map['azureBlobStorageDataSource'] as Map).cast<String, dynamic>())).input(),
-      gcsDataSink: map['gcsDataSink'] == null ? null : (GcsData.fromMap((map['gcsDataSink'] as Map).cast<String, dynamic>())).input(),
-      gcsDataSource: map['gcsDataSource'] == null ? null : (GcsData.fromMap((map['gcsDataSource'] as Map).cast<String, dynamic>())).input(),
-      gcsIntermediateDataLocation: map['gcsIntermediateDataLocation'] == null ? null : (GcsData.fromMap((map['gcsIntermediateDataLocation'] as Map).cast<String, dynamic>())).input(),
-      httpDataSource: map['httpDataSource'] == null ? null : (HttpData.fromMap((map['httpDataSource'] as Map).cast<String, dynamic>())).input(),
-      objectConditions: map['objectConditions'] == null ? null : (ObjectConditions.fromMap((map['objectConditions'] as Map).cast<String, dynamic>())).input(),
-      posixDataSink: map['posixDataSink'] == null ? null : (PosixFilesystem.fromMap((map['posixDataSink'] as Map).cast<String, dynamic>())).input(),
-      posixDataSource: map['posixDataSource'] == null ? null : (PosixFilesystem.fromMap((map['posixDataSource'] as Map).cast<String, dynamic>())).input(),
-      sinkAgentPoolName: map['sinkAgentPoolName'] == null ? null : (map['sinkAgentPoolName'] as String).input(),
-      sourceAgentPoolName: map['sourceAgentPoolName'] == null ? null : (map['sourceAgentPoolName'] as String).input(),
-      transferManifest: map['transferManifest'] == null ? null : (TransferManifest.fromMap((map['transferManifest'] as Map).cast<String, dynamic>())).input(),
-      transferOptions: map['transferOptions'] == null ? null : (TransferOptions.fromMap((map['transferOptions'] as Map).cast<String, dynamic>())).input(),
+      awsS3CompatibleDataSource: map['awsS3CompatibleDataSource'] == null ? null : (AwsS3CompatibleData.fromMap((map['awsS3CompatibleDataSource']! as Map).cast<String, dynamic>())).input(),
+      awsS3DataSource: map['awsS3DataSource'] == null ? null : (AwsS3Data.fromMap((map['awsS3DataSource']! as Map).cast<String, dynamic>())).input(),
+      azureBlobStorageDataSource: map['azureBlobStorageDataSource'] == null ? null : (AzureBlobStorageData.fromMap((map['azureBlobStorageDataSource']! as Map).cast<String, dynamic>())).input(),
+      gcsDataSink: map['gcsDataSink'] == null ? null : (GcsData.fromMap((map['gcsDataSink']! as Map).cast<String, dynamic>())).input(),
+      gcsDataSource: map['gcsDataSource'] == null ? null : (GcsData.fromMap((map['gcsDataSource']! as Map).cast<String, dynamic>())).input(),
+      gcsIntermediateDataLocation: map['gcsIntermediateDataLocation'] == null ? null : (GcsData.fromMap((map['gcsIntermediateDataLocation']! as Map).cast<String, dynamic>())).input(),
+      httpDataSource: map['httpDataSource'] == null ? null : (HttpData.fromMap((map['httpDataSource']! as Map).cast<String, dynamic>())).input(),
+      objectConditions: map['objectConditions'] == null ? null : (ObjectConditions.fromMap((map['objectConditions']! as Map).cast<String, dynamic>())).input(),
+      posixDataSink: map['posixDataSink'] == null ? null : (PosixFilesystem.fromMap((map['posixDataSink']! as Map).cast<String, dynamic>())).input(),
+      posixDataSource: map['posixDataSource'] == null ? null : (PosixFilesystem.fromMap((map['posixDataSource']! as Map).cast<String, dynamic>())).input(),
+      sinkAgentPoolName: map['sinkAgentPoolName'] == null ? null : (map['sinkAgentPoolName']! as String).input(),
+      sourceAgentPoolName: map['sourceAgentPoolName'] == null ? null : (map['sourceAgentPoolName']! as String).input(),
+      transferManifest: map['transferManifest'] == null ? null : (TransferManifest.fromMap((map['transferManifest']! as Map).cast<String, dynamic>())).input(),
+      transferOptions: map['transferOptions'] == null ? null : (TransferOptions.fromMap((map['transferOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

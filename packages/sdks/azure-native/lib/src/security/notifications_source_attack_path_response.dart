@@ -27,7 +27,7 @@ class NotificationsSourceAttackPathResponse {
 
   factory NotificationsSourceAttackPathResponse.fromMap(Map<String, dynamic> map) {
     return NotificationsSourceAttackPathResponse(
-      minimalRiskLevel: map['minimalRiskLevel'] == null ? null : (map['minimalRiskLevel'] as String).input(),
+      minimalRiskLevel: map['minimalRiskLevel'] == null ? null : (map['minimalRiskLevel']! as String).input(),
       sourceType: (map['sourceType'] as String).input(),
     );
   }

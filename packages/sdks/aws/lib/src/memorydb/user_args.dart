@@ -48,9 +48,9 @@ class UserArgs {
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
       accessString: (map['accessString'] as String).input(),
-      authenticationMode: (UserAuthenticationMode.fromMap((map['authenticationMode'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      authenticationMode: (UserAuthenticationMode.fromMap((map['authenticationMode']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       userName: (map['userName'] as String).input(),
     );
   }

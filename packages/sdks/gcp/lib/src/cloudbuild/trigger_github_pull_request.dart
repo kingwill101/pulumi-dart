@@ -32,8 +32,8 @@ class TriggerGithubPullRequest {
   factory TriggerGithubPullRequest.fromMap(Map<String, dynamic> map) {
     return TriggerGithubPullRequest(
       branch: (map['branch'] as String).input(),
-      commentControl: map['commentControl'] == null ? null : (map['commentControl'] as String).input(),
-      invertRegex: map['invertRegex'] == null ? null : (map['invertRegex'] as bool).input(),
+      commentControl: map['commentControl'] == null ? null : (map['commentControl']! as String).input(),
+      invertRegex: map['invertRegex'] == null ? null : (map['invertRegex']! as bool).input(),
     );
   }
 }

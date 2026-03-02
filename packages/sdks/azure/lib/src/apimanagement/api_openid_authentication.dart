@@ -25,7 +25,7 @@ class ApiOpenidAuthentication {
 
   factory ApiOpenidAuthentication.fromMap(Map<String, dynamic> map) {
     return ApiOpenidAuthentication(
-      bearerTokenSendingMethods: map['bearerTokenSendingMethods'] == null ? null : ((map['bearerTokenSendingMethods'] as List).cast<String>()).input(),
+      bearerTokenSendingMethods: map['bearerTokenSendingMethods'] == null ? null : ((map['bearerTokenSendingMethods']! as List).cast<String>()).input(),
       openidProviderName: (map['openidProviderName'] as String).input(),
     );
   }

@@ -21,7 +21,7 @@ class ReportDatasetConfigurationResponse {
 
   factory ReportDatasetConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ReportDatasetConfigurationResponse(
-      columns: map['columns'] == null ? null : ((map['columns'] as List).cast<String>()).input(),
+      columns: map['columns'] == null ? null : ((map['columns']! as List).cast<String>()).input(),
     );
   }
 }

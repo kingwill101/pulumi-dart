@@ -64,14 +64,14 @@ class ServerTlsPolicyNetworksecurityV1beta1Args {
 
   factory ServerTlsPolicyNetworksecurityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ServerTlsPolicyNetworksecurityV1beta1Args(
-      allowOpen: map['allowOpen'] == null ? null : (map['allowOpen'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mtlsPolicy: map['mtlsPolicy'] == null ? null : (MTLSPolicyNetworksecurityV1beta1.fromMap((map['mtlsPolicy'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serverCertificate: map['serverCertificate'] == null ? null : (GoogleCloudNetworksecurityV1beta1CertificateProvider.fromMap((map['serverCertificate'] as Map).cast<String, dynamic>())).input(),
+      allowOpen: map['allowOpen'] == null ? null : (map['allowOpen']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mtlsPolicy: map['mtlsPolicy'] == null ? null : (MTLSPolicyNetworksecurityV1beta1.fromMap((map['mtlsPolicy']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serverCertificate: map['serverCertificate'] == null ? null : (GoogleCloudNetworksecurityV1beta1CertificateProvider.fromMap((map['serverCertificate']! as Map).cast<String, dynamic>())).input(),
       serverTlsPolicyId: (map['serverTlsPolicyId'] as String).input(),
     );
   }

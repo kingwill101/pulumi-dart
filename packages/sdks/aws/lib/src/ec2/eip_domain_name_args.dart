@@ -41,8 +41,8 @@ class EipDomainNameArgs {
     return EipDomainNameArgs(
       allocationId: (map['allocationId'] as String).input(),
       domainName: (map['domainName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (EipDomainNameTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((EipDomainNameTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

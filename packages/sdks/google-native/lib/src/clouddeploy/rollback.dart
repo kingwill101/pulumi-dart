@@ -21,7 +21,7 @@ class Rollback {
 
   factory Rollback.fromMap(Map<String, dynamic> map) {
     return Rollback(
-      destinationPhase: map['destinationPhase'] == null ? null : (map['destinationPhase'] as String).input(),
+      destinationPhase: map['destinationPhase'] == null ? null : (map['destinationPhase']! as String).input(),
     );
   }
 }

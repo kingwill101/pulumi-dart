@@ -36,10 +36,10 @@ class SchedulerResourceComposerV1beta1 {
 
   factory SchedulerResourceComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return SchedulerResourceComposerV1beta1(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      cpu: map['cpu'] == null ? null : (map['cpu'] as double).input(),
-      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb'] as double).input(),
-      storageGb: map['storageGb'] == null ? null : (map['storageGb'] as double).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as double).input(),
+      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb']! as double).input(),
+      storageGb: map['storageGb'] == null ? null : (map['storageGb']! as double).input(),
     );
   }
 }

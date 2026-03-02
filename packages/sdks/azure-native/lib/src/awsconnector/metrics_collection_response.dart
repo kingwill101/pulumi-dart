@@ -26,8 +26,8 @@ class MetricsCollectionResponse {
 
   factory MetricsCollectionResponse.fromMap(Map<String, dynamic> map) {
     return MetricsCollectionResponse(
-      granularity: map['granularity'] == null ? null : (map['granularity'] as String).input(),
-      metrics: map['metrics'] == null ? null : ((map['metrics'] as List).cast<String>()).input(),
+      granularity: map['granularity'] == null ? null : (map['granularity']! as String).input(),
+      metrics: map['metrics'] == null ? null : ((map['metrics']! as List).cast<String>()).input(),
     );
   }
 }

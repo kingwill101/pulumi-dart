@@ -46,10 +46,10 @@ class DataConnectorEntity {
 
   factory DataConnectorEntity.fromMap(Map<String, dynamic> map) {
     return DataConnectorEntity(
-      dataStore: map['dataStore'] == null ? null : (map['dataStore'] as String).input(),
-      entityName: map['entityName'] == null ? null : (map['entityName'] as String).input(),
-      keyPropertyMappings: map['keyPropertyMappings'] == null ? null : ((map['keyPropertyMappings'] as Map).cast<String, String>()).input(),
-      params: map['params'] == null ? null : (map['params'] as String).input(),
+      dataStore: map['dataStore'] == null ? null : (map['dataStore']! as String).input(),
+      entityName: map['entityName'] == null ? null : (map['entityName']! as String).input(),
+      keyPropertyMappings: map['keyPropertyMappings'] == null ? null : ((map['keyPropertyMappings']! as Map).cast<String, String>()).input(),
+      params: map['params'] == null ? null : (map['params']! as String).input(),
     );
   }
 }

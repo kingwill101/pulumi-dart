@@ -38,8 +38,8 @@ class InstancePublicPortsArgs {
   factory InstancePublicPortsArgs.fromMap(Map<String, dynamic> map) {
     return InstancePublicPortsArgs(
       instanceName: (map['instanceName'] as String).input(),
-      portInfos: (pulumi.Input.decodeList<InstancePublicPortsPortInfo>(map['portInfos'], (value) => InstancePublicPortsPortInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      portInfos: (pulumi.Input.decodeList<InstancePublicPortsPortInfo>(map['portInfos']!, (value) => InstancePublicPortsPortInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

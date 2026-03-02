@@ -27,8 +27,8 @@ class ListIntegrationAccountKeyVaultKeysResult {
 
   factory ListIntegrationAccountKeyVaultKeysResult.fromMap(Map<String, dynamic> map) {
     return ListIntegrationAccountKeyVaultKeysResult(
-      skipToken: map['skipToken'] == null ? null : map['skipToken'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<KeyVaultKeyResponse>(map['value'], (value) => KeyVaultKeyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      skipToken: map['skipToken'] == null ? null : map['skipToken']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<KeyVaultKeyResponse>(map['value']!, (value) => KeyVaultKeyResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

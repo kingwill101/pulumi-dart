@@ -93,20 +93,20 @@ class AwsNodePoolConfig {
 
   factory AwsNodePoolConfig.fromMap(Map<String, dynamic> map) {
     return AwsNodePoolConfig(
-      autoscalingMetricsCollection: map['autoscalingMetricsCollection'] == null ? null : (AwsNodePoolConfigAutoscalingMetricsCollection.fromMap((map['autoscalingMetricsCollection'] as Map).cast<String, dynamic>())).input(),
+      autoscalingMetricsCollection: map['autoscalingMetricsCollection'] == null ? null : (AwsNodePoolConfigAutoscalingMetricsCollection.fromMap((map['autoscalingMetricsCollection']! as Map).cast<String, dynamic>())).input(),
       configEncryption: (AwsNodePoolConfigConfigEncryption.fromMap((map['configEncryption'] as Map).cast<String, dynamic>())).input(),
       iamInstanceProfile: (map['iamInstanceProfile'] as String).input(),
-      imageType: map['imageType'] == null ? null : (map['imageType'] as String).input(),
-      instancePlacement: map['instancePlacement'] == null ? null : (AwsNodePoolConfigInstancePlacement.fromMap((map['instancePlacement'] as Map).cast<String, dynamic>())).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      proxyConfig: map['proxyConfig'] == null ? null : (AwsNodePoolConfigProxyConfig.fromMap((map['proxyConfig'] as Map).cast<String, dynamic>())).input(),
-      rootVolume: map['rootVolume'] == null ? null : (AwsNodePoolConfigRootVolume.fromMap((map['rootVolume'] as Map).cast<String, dynamic>())).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
-      spotConfig: map['spotConfig'] == null ? null : (AwsNodePoolConfigSpotConfig.fromMap((map['spotConfig'] as Map).cast<String, dynamic>())).input(),
-      sshConfig: map['sshConfig'] == null ? null : (AwsNodePoolConfigSshConfig.fromMap((map['sshConfig'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<AwsNodePoolConfigTaint>(map['taints'], (value) => AwsNodePoolConfigTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      imageType: map['imageType'] == null ? null : (map['imageType']! as String).input(),
+      instancePlacement: map['instancePlacement'] == null ? null : (AwsNodePoolConfigInstancePlacement.fromMap((map['instancePlacement']! as Map).cast<String, dynamic>())).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      proxyConfig: map['proxyConfig'] == null ? null : (AwsNodePoolConfigProxyConfig.fromMap((map['proxyConfig']! as Map).cast<String, dynamic>())).input(),
+      rootVolume: map['rootVolume'] == null ? null : (AwsNodePoolConfigRootVolume.fromMap((map['rootVolume']! as Map).cast<String, dynamic>())).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds']! as List).cast<String>()).input(),
+      spotConfig: map['spotConfig'] == null ? null : (AwsNodePoolConfigSpotConfig.fromMap((map['spotConfig']! as Map).cast<String, dynamic>())).input(),
+      sshConfig: map['sshConfig'] == null ? null : (AwsNodePoolConfigSshConfig.fromMap((map['sshConfig']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<AwsNodePoolConfigTaint>(map['taints']!, (value) => AwsNodePoolConfigTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

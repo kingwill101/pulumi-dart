@@ -58,13 +58,13 @@ class BucketReplicationConfigurationRule {
 
   factory BucketReplicationConfigurationRule.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigurationRule(
-      deleteMarkerReplicationStatus: map['deleteMarkerReplicationStatus'] == null ? null : (map['deleteMarkerReplicationStatus'] as String).input(),
-      destination: (BucketReplicationConfigurationRuleDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      filter: map['filter'] == null ? null : (BucketReplicationConfigurationRuleFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      sourceSelectionCriteria: map['sourceSelectionCriteria'] == null ? null : (BucketReplicationConfigurationRuleSourceSelectionCriteria.fromMap((map['sourceSelectionCriteria'] as Map).cast<String, dynamic>())).input(),
+      deleteMarkerReplicationStatus: map['deleteMarkerReplicationStatus'] == null ? null : ((map['deleteMarkerReplicationStatus'] as String).input()).input(),
+      destination: (BucketReplicationConfigurationRuleDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
+      filter: map['filter'] == null ? null : ((BucketReplicationConfigurationRuleFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
+      priority: map['priority'] == null ? null : ((map['priority'] as int).input()).input(),
+      sourceSelectionCriteria: map['sourceSelectionCriteria'] == null ? null : ((BucketReplicationConfigurationRuleSourceSelectionCriteria.fromMap((map['sourceSelectionCriteria']! as Map).cast<String, dynamic>())).input()).input(),
       status: (map['status'] as String).input(),
     );
   }

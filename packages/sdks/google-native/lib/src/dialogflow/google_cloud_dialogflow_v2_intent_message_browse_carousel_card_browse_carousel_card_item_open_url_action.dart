@@ -28,7 +28,7 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
   factory GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction(
       url: (map['url'] as String).input(),
-      urlTypeHint: map['urlTypeHint'] == null ? null : (GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint.fromValue(map['urlTypeHint'] as String)).input(),
+      urlTypeHint: map['urlTypeHint'] == null ? null : (GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint.fromValue(map['urlTypeHint']! as String)).input(),
     );
   }
 }

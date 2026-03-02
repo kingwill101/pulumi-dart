@@ -31,9 +31,9 @@ class FlowPipelineState {
 
   factory FlowPipelineState.fromMap(Map<String, dynamic> map) {
     return FlowPipelineState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      manifest: map['manifest'] == null ? null : (map['manifest'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      manifest: map['manifest'] == null ? null : (map['manifest']! as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

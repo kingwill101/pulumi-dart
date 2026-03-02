@@ -21,7 +21,7 @@ class OptionalServicesResponse {
 
   factory OptionalServicesResponse.fromMap(Map<String, dynamic> map) {
     return OptionalServicesResponse(
-      customLocation: map['customLocation'] == null ? null : (map['customLocation'] as String).input(),
+      customLocation: map['customLocation'] == null ? null : (map['customLocation']! as String).input(),
     );
   }
 }

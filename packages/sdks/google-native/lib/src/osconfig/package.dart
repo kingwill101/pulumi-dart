@@ -33,8 +33,8 @@ class Package {
 
   factory Package.fromMap(Map<String, dynamic> map) {
     return Package(
-      desiredState: map['desiredState'] == null ? null : (PackageDesiredState.fromValue(map['desiredState'] as String)).input(),
-      manager: map['manager'] == null ? null : (PackageManager.fromValue(map['manager'] as String)).input(),
+      desiredState: map['desiredState'] == null ? null : (PackageDesiredState.fromValue(map['desiredState']! as String)).input(),
+      manager: map['manager'] == null ? null : (PackageManager.fromValue(map['manager']! as String)).input(),
       name: (map['name'] as String).input(),
     );
   }

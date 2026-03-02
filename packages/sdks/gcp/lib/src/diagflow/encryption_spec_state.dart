@@ -34,9 +34,9 @@ class EncryptionSpecState {
 
   factory EncryptionSpecState.fromMap(Map<String, dynamic> map) {
     return EncryptionSpecState(
-      encryptionSpec: map['encryptionSpec'] == null ? null : (EncryptionSpecEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (EncryptionSpecEncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

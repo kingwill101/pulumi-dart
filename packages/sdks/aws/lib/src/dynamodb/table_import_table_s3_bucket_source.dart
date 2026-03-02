@@ -31,8 +31,8 @@ class TableImportTableS3BucketSource {
   factory TableImportTableS3BucketSource.fromMap(Map<String, dynamic> map) {
     return TableImportTableS3BucketSource(
       bucket: (map['bucket'] as String).input(),
-      bucketOwner: map['bucketOwner'] == null ? null : (map['bucketOwner'] as String).input(),
-      keyPrefix: map['keyPrefix'] == null ? null : (map['keyPrefix'] as String).input(),
+      bucketOwner: map['bucketOwner'] == null ? null : ((map['bucketOwner'] as String).input()).input(),
+      keyPrefix: map['keyPrefix'] == null ? null : ((map['keyPrefix'] as String).input()).input(),
     );
   }
 }

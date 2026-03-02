@@ -21,7 +21,7 @@ class MongoIndexKeys {
 
   factory MongoIndexKeys.fromMap(Map<String, dynamic> map) {
     return MongoIndexKeys(
-      keys: map['keys'] == null ? null : ((map['keys'] as List).cast<String>()).input(),
+      keys: map['keys'] == null ? null : ((map['keys']! as List).cast<String>()).input(),
     );
   }
 }

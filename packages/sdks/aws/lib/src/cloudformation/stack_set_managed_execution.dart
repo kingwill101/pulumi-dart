@@ -20,7 +20,7 @@ class StackSetManagedExecution {
 
   factory StackSetManagedExecution.fromMap(Map<String, dynamic> map) {
     return StackSetManagedExecution(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      active: map['active'] == null ? null : ((map['active'] as bool).input()).input(),
     );
   }
 }

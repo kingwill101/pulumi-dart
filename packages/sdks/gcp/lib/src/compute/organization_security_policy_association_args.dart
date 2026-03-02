@@ -35,7 +35,7 @@ class OrganizationSecurityPolicyAssociationArgs {
   factory OrganizationSecurityPolicyAssociationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationSecurityPolicyAssociationArgs(
       attachmentId: (map['attachmentId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       policyId: (map['policyId'] as String).input(),
     );
   }

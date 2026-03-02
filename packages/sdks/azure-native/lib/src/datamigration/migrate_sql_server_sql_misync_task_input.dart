@@ -57,8 +57,8 @@ class MigrateSqlServerSqlMISyncTaskInput {
   factory MigrateSqlServerSqlMISyncTaskInput.fromMap(Map<String, dynamic> map) {
     return MigrateSqlServerSqlMISyncTaskInput(
       azureApp: (AzureActiveDirectoryApp.fromMap((map['azureApp'] as Map).cast<String, dynamic>())).input(),
-      backupFileShare: map['backupFileShare'] == null ? null : (FileShare.fromMap((map['backupFileShare'] as Map).cast<String, dynamic>())).input(),
-      numberOfParallelDatabaseMigrations: map['numberOfParallelDatabaseMigrations'] == null ? null : (map['numberOfParallelDatabaseMigrations'] as double).input(),
+      backupFileShare: map['backupFileShare'] == null ? null : (FileShare.fromMap((map['backupFileShare']! as Map).cast<String, dynamic>())).input(),
+      numberOfParallelDatabaseMigrations: map['numberOfParallelDatabaseMigrations'] == null ? null : (map['numberOfParallelDatabaseMigrations']! as double).input(),
       selectedDatabases: (pulumi.Input.decodeList<MigrateSqlServerSqlMIDatabaseInput>(map['selectedDatabases'], (value) => MigrateSqlServerSqlMIDatabaseInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
       sourceConnectionInfo: (SqlConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
       storageResourceId: (map['storageResourceId'] as String).input(),

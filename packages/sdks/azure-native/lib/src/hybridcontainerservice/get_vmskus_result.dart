@@ -53,7 +53,7 @@ class GetVMSkusResult {
   factory GetVMSkusResult.fromMap(Map<String, dynamic> map) {
     return GetVMSkusResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
+      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
       properties: VmSkuProfileResponseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>()),

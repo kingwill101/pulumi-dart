@@ -36,10 +36,10 @@ class PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetric
 
   factory PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStat.fromMap(Map<String, dynamic> map) {
     return PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStat(
-      metric: (PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetric.fromMap((map['metric'] as Map).cast<String, dynamic>())).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
+      metric: (PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetric.fromMap((map['metric']! as Map).cast<String, dynamic>())).input(),
+      period: map['period'] == null ? null : ((map['period'] as int).input()).input(),
       stat: (map['stat'] as String).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      unit: map['unit'] == null ? null : ((map['unit'] as String).input()).input(),
     );
   }
 }

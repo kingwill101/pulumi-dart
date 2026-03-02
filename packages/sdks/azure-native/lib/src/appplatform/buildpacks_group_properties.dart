@@ -27,8 +27,8 @@ class BuildpacksGroupProperties {
 
   factory BuildpacksGroupProperties.fromMap(Map<String, dynamic> map) {
     return BuildpacksGroupProperties(
-      buildpacks: map['buildpacks'] == null ? null : (pulumi.Input.decodeList<BuildpackProperties>(map['buildpacks'], (value) => BuildpackProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      buildpacks: map['buildpacks'] == null ? null : (pulumi.Input.decodeList<BuildpackProperties>(map['buildpacks']!, (value) => BuildpackProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

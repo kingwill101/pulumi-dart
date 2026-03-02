@@ -26,8 +26,8 @@ class ServerAddressByClientCIDRPatch {
 
   factory ServerAddressByClientCIDRPatch.fromMap(Map<String, dynamic> map) {
     return ServerAddressByClientCIDRPatch(
-      clientCIDR: map['clientCIDR'] == null ? null : (map['clientCIDR'] as String).input(),
-      serverAddress: map['serverAddress'] == null ? null : (map['serverAddress'] as String).input(),
+      clientCIDR: map['clientCIDR'] == null ? null : (map['clientCIDR']! as String).input(),
+      serverAddress: map['serverAddress'] == null ? null : (map['serverAddress']! as String).input(),
     );
   }
 }

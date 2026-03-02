@@ -35,10 +35,10 @@ class ResourceHydrationAccountResponse {
 
   factory ResourceHydrationAccountResponse.fromMap(Map<String, dynamic> map) {
     return ResourceHydrationAccountResponse(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      encryptedKey: map['encryptedKey'] == null ? null : (map['encryptedKey'] as String).input(),
-      maxChildResourceConsistencyJobLimit: map['maxChildResourceConsistencyJobLimit'] == null ? null : (map['maxChildResourceConsistencyJobLimit'] as double).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      encryptedKey: map['encryptedKey'] == null ? null : (map['encryptedKey']! as String).input(),
+      maxChildResourceConsistencyJobLimit: map['maxChildResourceConsistencyJobLimit'] == null ? null : (map['maxChildResourceConsistencyJobLimit']! as double).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

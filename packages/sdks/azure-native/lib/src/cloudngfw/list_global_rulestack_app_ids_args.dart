@@ -40,11 +40,11 @@ class ListGlobalRulestackAppIdsArgs {
 
   factory ListGlobalRulestackAppIdsArgs.fromMap(Map<String, dynamic> map) {
     return ListGlobalRulestackAppIdsArgs(
-      appIdVersion: map['appIdVersion'] == null ? null : (map['appIdVersion'] as String).input(),
-      appPrefix: map['appPrefix'] == null ? null : (map['appPrefix'] as String).input(),
+      appIdVersion: map['appIdVersion'] == null ? null : (map['appIdVersion']! as String).input(),
+      appPrefix: map['appPrefix'] == null ? null : (map['appPrefix']! as String).input(),
       globalRulestackName: (map['globalRulestackName'] as String).input(),
-      skip: map['skip'] == null ? null : (map['skip'] as String).input(),
-      top: map['top'] == null ? null : (map['top'] as int).input(),
+      skip: map['skip'] == null ? null : (map['skip']! as String).input(),
+      top: map['top'] == null ? null : (map['top']! as int).input(),
     );
   }
 }

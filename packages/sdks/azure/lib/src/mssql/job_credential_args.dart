@@ -45,9 +45,9 @@ class JobCredentialArgs {
   factory JobCredentialArgs.fromMap(Map<String, dynamic> map) {
     return JobCredentialArgs(
       jobAgentId: (map['jobAgentId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      passwordWoVersion: map['passwordWoVersion'] == null ? null : (map['passwordWoVersion'] as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      passwordWoVersion: map['passwordWoVersion'] == null ? null : (map['passwordWoVersion']! as int).input(),
       username: (map['username'] as String).input(),
     );
   }

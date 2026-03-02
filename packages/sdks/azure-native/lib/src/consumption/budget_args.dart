@@ -68,11 +68,11 @@ class BudgetArgs {
   factory BudgetArgs.fromMap(Map<String, dynamic> map) {
     return BudgetArgs(
       amount: (map['amount'] as double).input(),
-      budgetName: map['budgetName'] == null ? null : (map['budgetName'] as String).input(),
+      budgetName: map['budgetName'] == null ? null : (map['budgetName']! as String).input(),
       category: (map['category'] as String).input(),
-      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
-      filter: map['filter'] == null ? null : (BudgetFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeMapValues<Notification>(map['notifications'], (value) => Notification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eTag: map['eTag'] == null ? null : (map['eTag']! as String).input(),
+      filter: map['filter'] == null ? null : (BudgetFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeMapValues<Notification>(map['notifications']!, (value) => Notification.fromMap((value as Map).cast<String, dynamic>()))).input(),
       scope: (map['scope'] as String).input(),
       timeGrain: (map['timeGrain'] as String).input(),
       timePeriod: (BudgetTimePeriod.fromMap((map['timePeriod'] as Map).cast<String, dynamic>())).input(),

@@ -32,7 +32,7 @@ class GetCodeSigningConfigArgs {
   factory GetCodeSigningConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetCodeSigningConfigArgs(
       arn: (map['arn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

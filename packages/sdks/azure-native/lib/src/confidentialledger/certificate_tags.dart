@@ -21,7 +21,7 @@ class CertificateTags {
 
   factory CertificateTags.fromMap(Map<String, dynamic> map) {
     return CertificateTags(
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

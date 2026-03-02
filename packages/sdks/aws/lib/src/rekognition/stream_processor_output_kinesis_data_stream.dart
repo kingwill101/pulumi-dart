@@ -20,7 +20,7 @@ class StreamProcessorOutputKinesisDataStream {
 
   factory StreamProcessorOutputKinesisDataStream.fromMap(Map<String, dynamic> map) {
     return StreamProcessorOutputKinesisDataStream(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class UpgradeNoteContaineranalysisV1alpha1 {
 
   factory UpgradeNoteContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return UpgradeNoteContaineranalysisV1alpha1(
-      distributions: map['distributions'] == null ? null : (pulumi.Input.decodeList<UpgradeDistributionContaineranalysisV1alpha1>(map['distributions'], (value) => UpgradeDistributionContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      package: map['package'] == null ? null : (map['package'] as String).input(),
-      version: map['version'] == null ? null : (VersionContaineranalysisV1alpha1.fromMap((map['version'] as Map).cast<String, dynamic>())).input(),
+      distributions: map['distributions'] == null ? null : (pulumi.Input.decodeList<UpgradeDistributionContaineranalysisV1alpha1>(map['distributions']!, (value) => UpgradeDistributionContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      package: map['package'] == null ? null : (map['package']! as String).input(),
+      version: map['version'] == null ? null : (VersionContaineranalysisV1alpha1.fromMap((map['version']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

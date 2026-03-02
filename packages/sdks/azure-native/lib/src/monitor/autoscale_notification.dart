@@ -34,9 +34,9 @@ class AutoscaleNotification {
 
   factory AutoscaleNotification.fromMap(Map<String, dynamic> map) {
     return AutoscaleNotification(
-      email: map['email'] == null ? null : (EmailNotification.fromMap((map['email'] as Map).cast<String, dynamic>())).input(),
+      email: map['email'] == null ? null : (EmailNotification.fromMap((map['email']! as Map).cast<String, dynamic>())).input(),
       operation: (OperationType.fromValue(map['operation'] as String)).input(),
-      webhooks: map['webhooks'] == null ? null : (pulumi.Input.decodeList<WebhookNotification>(map['webhooks'], (value) => WebhookNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      webhooks: map['webhooks'] == null ? null : (pulumi.Input.decodeList<WebhookNotification>(map['webhooks']!, (value) => WebhookNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

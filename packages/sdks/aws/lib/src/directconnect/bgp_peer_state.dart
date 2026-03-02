@@ -68,16 +68,16 @@ class BgpPeerState {
 
   factory BgpPeerState.fromMap(Map<String, dynamic> map) {
     return BgpPeerState(
-      addressFamily: map['addressFamily'] == null ? null : (map['addressFamily'] as String).input(),
-      amazonAddress: map['amazonAddress'] == null ? null : (map['amazonAddress'] as String).input(),
-      awsDevice: map['awsDevice'] == null ? null : (map['awsDevice'] as String).input(),
-      bgpAsn: map['bgpAsn'] == null ? null : (map['bgpAsn'] as int).input(),
-      bgpAuthKey: map['bgpAuthKey'] == null ? null : (map['bgpAuthKey'] as String).input(),
-      bgpPeerId: map['bgpPeerId'] == null ? null : (map['bgpPeerId'] as String).input(),
-      bgpStatus: map['bgpStatus'] == null ? null : (map['bgpStatus'] as String).input(),
-      customerAddress: map['customerAddress'] == null ? null : (map['customerAddress'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      virtualInterfaceId: map['virtualInterfaceId'] == null ? null : (map['virtualInterfaceId'] as String).input(),
+      addressFamily: map['addressFamily'] == null ? null : ((map['addressFamily'] as String).input()).input(),
+      amazonAddress: map['amazonAddress'] == null ? null : ((map['amazonAddress'] as String).input()).input(),
+      awsDevice: map['awsDevice'] == null ? null : ((map['awsDevice'] as String).input()).input(),
+      bgpAsn: map['bgpAsn'] == null ? null : ((map['bgpAsn'] as int).input()).input(),
+      bgpAuthKey: map['bgpAuthKey'] == null ? null : ((map['bgpAuthKey'] as String).input()).input(),
+      bgpPeerId: map['bgpPeerId'] == null ? null : ((map['bgpPeerId'] as String).input()).input(),
+      bgpStatus: map['bgpStatus'] == null ? null : ((map['bgpStatus'] as String).input()).input(),
+      customerAddress: map['customerAddress'] == null ? null : ((map['customerAddress'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      virtualInterfaceId: map['virtualInterfaceId'] == null ? null : ((map['virtualInterfaceId'] as String).input()).input(),
     );
   }
 }

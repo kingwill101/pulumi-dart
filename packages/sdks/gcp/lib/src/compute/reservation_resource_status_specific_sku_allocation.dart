@@ -27,8 +27,8 @@ class ReservationResourceStatusSpecificSkuAllocation {
 
   factory ReservationResourceStatusSpecificSkuAllocation.fromMap(Map<String, dynamic> map) {
     return ReservationResourceStatusSpecificSkuAllocation(
-      sourceInstanceTemplateId: map['sourceInstanceTemplateId'] == null ? null : (map['sourceInstanceTemplateId'] as String).input(),
-      utilizations: map['utilizations'] == null ? null : ((map['utilizations'] as Map).cast<String, String>()).input(),
+      sourceInstanceTemplateId: map['sourceInstanceTemplateId'] == null ? null : (map['sourceInstanceTemplateId']! as String).input(),
+      utilizations: map['utilizations'] == null ? null : ((map['utilizations']! as Map).cast<String, String>()).input(),
     );
   }
 }

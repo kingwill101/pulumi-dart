@@ -49,11 +49,11 @@ class AggregatorArgs {
 
   factory AggregatorArgs.fromMap(Map<String, dynamic> map) {
     return AggregatorArgs(
-      aggregatorAccounts: map['aggregatorAccounts'] == null ? null : (pulumi.Input.decodeList<AggregatorAggregatorAccount>(map['aggregatorAccounts'], (value) => AggregatorAggregatorAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aggregatorAccounts: map['aggregatorAccounts'] == null ? null : (pulumi.Input.decodeList<AggregatorAggregatorAccount>(map['aggregatorAccounts']!, (value) => AggregatorAggregatorAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
       aggregatorName: (map['aggregatorName'] as String).input(),
-      aggregatorType: map['aggregatorType'] == null ? null : (map['aggregatorType'] as String).input(),
+      aggregatorType: map['aggregatorType'] == null ? null : (map['aggregatorType']! as String).input(),
       description: (map['description'] as String).input(),
-      folderId: map['folderId'] == null ? null : (map['folderId'] as String).input(),
+      folderId: map['folderId'] == null ? null : (map['folderId']! as String).input(),
     );
   }
 }

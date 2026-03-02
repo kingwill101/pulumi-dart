@@ -34,8 +34,8 @@ class AuthorizedApplicationArgs {
 
   factory AuthorizedApplicationArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizedApplicationArgs(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      properties: map['properties'] == null ? null : (AuthorizedApplicationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      properties: map['properties'] == null ? null : (AuthorizedApplicationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       providerNamespace: (map['providerNamespace'] as String).input(),
     );
   }

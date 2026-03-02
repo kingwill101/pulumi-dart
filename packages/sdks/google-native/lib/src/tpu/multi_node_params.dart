@@ -27,7 +27,7 @@ class MultiNodeParams {
   factory MultiNodeParams.fromMap(Map<String, dynamic> map) {
     return MultiNodeParams(
       nodeCount: (map['nodeCount'] as int).input(),
-      nodeIdPrefix: map['nodeIdPrefix'] == null ? null : (map['nodeIdPrefix'] as String).input(),
+      nodeIdPrefix: map['nodeIdPrefix'] == null ? null : (map['nodeIdPrefix']! as String).input(),
     );
   }
 }

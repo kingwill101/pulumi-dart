@@ -50,14 +50,14 @@ class GetEcsDeploymentSetsResult {
 
   factory GetEcsDeploymentSetsResult.fromMap(Map<String, dynamic> map) {
     return GetEcsDeploymentSetsResult(
-      deploymentSetName: map['deploymentSetName'] == null ? null : map['deploymentSetName'] as String,
+      deploymentSetName: map['deploymentSetName'] == null ? null : map['deploymentSetName']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       sets: pulumi.Input.decodeList<GetEcsDeploymentSetsSet>(map['sets'], (value) => GetEcsDeploymentSetsSet.fromMap((value as Map).cast<String, dynamic>())),
-      strategy: map['strategy'] == null ? null : map['strategy'] as String,
+      strategy: map['strategy'] == null ? null : map['strategy']! as String,
     );
   }
 }

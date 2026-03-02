@@ -71,17 +71,17 @@ class VpcIpamResourceDiscoveryAssociationState {
 
   factory VpcIpamResourceDiscoveryAssociationState.fromMap(Map<String, dynamic> map) {
     return VpcIpamResourceDiscoveryAssociationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      ipamArn: map['ipamArn'] == null ? null : (map['ipamArn'] as String).input(),
-      ipamId: map['ipamId'] == null ? null : (map['ipamId'] as String).input(),
-      ipamRegion: map['ipamRegion'] == null ? null : (map['ipamRegion'] as String).input(),
-      ipamResourceDiscoveryId: map['ipamResourceDiscoveryId'] == null ? null : (map['ipamResourceDiscoveryId'] as String).input(),
-      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      ipamArn: map['ipamArn'] == null ? null : ((map['ipamArn'] as String).input()).input(),
+      ipamId: map['ipamId'] == null ? null : ((map['ipamId'] as String).input()).input(),
+      ipamRegion: map['ipamRegion'] == null ? null : ((map['ipamRegion'] as String).input()).input(),
+      ipamResourceDiscoveryId: map['ipamResourceDiscoveryId'] == null ? null : ((map['ipamResourceDiscoveryId'] as String).input()).input(),
+      isDefault: map['isDefault'] == null ? null : ((map['isDefault'] as bool).input()).input(),
+      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

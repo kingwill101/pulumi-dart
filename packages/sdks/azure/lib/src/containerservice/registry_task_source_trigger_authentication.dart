@@ -40,9 +40,9 @@ class RegistryTaskSourceTriggerAuthentication {
 
   factory RegistryTaskSourceTriggerAuthentication.fromMap(Map<String, dynamic> map) {
     return RegistryTaskSourceTriggerAuthentication(
-      expireInSeconds: map['expireInSeconds'] == null ? null : (map['expireInSeconds'] as int).input(),
-      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      expireInSeconds: map['expireInSeconds'] == null ? null : (map['expireInSeconds']! as int).input(),
+      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
       token: (map['token'] as String).input(),
       tokenType: (map['tokenType'] as String).input(),
     );

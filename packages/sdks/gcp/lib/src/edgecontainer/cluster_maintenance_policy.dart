@@ -31,7 +31,7 @@ class ClusterMaintenancePolicy {
 
   factory ClusterMaintenancePolicy.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenancePolicy(
-      maintenanceExclusions: map['maintenanceExclusions'] == null ? null : (pulumi.Input.decodeList<ClusterMaintenancePolicyMaintenanceExclusion>(map['maintenanceExclusions'], (value) => ClusterMaintenancePolicyMaintenanceExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maintenanceExclusions: map['maintenanceExclusions'] == null ? null : (pulumi.Input.decodeList<ClusterMaintenancePolicyMaintenanceExclusion>(map['maintenanceExclusions']!, (value) => ClusterMaintenancePolicyMaintenanceExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
       window: (ClusterMaintenancePolicyWindow.fromMap((map['window'] as Map).cast<String, dynamic>())).input(),
     );
   }

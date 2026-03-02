@@ -37,10 +37,10 @@ class ConfigurationSetEventDestinationState {
 
   factory ConfigurationSetEventDestinationState.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetEventDestinationState(
-      configurationSetName: map['configurationSetName'] == null ? null : (map['configurationSetName'] as String).input(),
-      eventDestination: map['eventDestination'] == null ? null : (ConfigurationSetEventDestinationEventDestination.fromMap((map['eventDestination'] as Map).cast<String, dynamic>())).input(),
-      eventDestinationName: map['eventDestinationName'] == null ? null : (map['eventDestinationName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      configurationSetName: map['configurationSetName'] == null ? null : ((map['configurationSetName'] as String).input()).input(),
+      eventDestination: map['eventDestination'] == null ? null : ((ConfigurationSetEventDestinationEventDestination.fromMap((map['eventDestination']! as Map).cast<String, dynamic>())).input()).input(),
+      eventDestinationName: map['eventDestinationName'] == null ? null : ((map['eventDestinationName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

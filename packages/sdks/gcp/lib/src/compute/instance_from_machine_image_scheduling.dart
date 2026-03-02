@@ -104,22 +104,22 @@ class InstanceFromMachineImageScheduling {
 
   factory InstanceFromMachineImageScheduling.fromMap(Map<String, dynamic> map) {
     return InstanceFromMachineImageScheduling(
-      automaticRestart: map['automaticRestart'] == null ? null : (map['automaticRestart'] as bool).input(),
-      availabilityDomain: map['availabilityDomain'] == null ? null : (map['availabilityDomain'] as int).input(),
-      gracefulShutdown: map['gracefulShutdown'] == null ? null : (InstanceFromMachineImageSchedulingGracefulShutdown.fromMap((map['gracefulShutdown'] as Map).cast<String, dynamic>())).input(),
-      hostErrorTimeoutSeconds: map['hostErrorTimeoutSeconds'] == null ? null : (map['hostErrorTimeoutSeconds'] as int).input(),
-      instanceTerminationAction: map['instanceTerminationAction'] == null ? null : (map['instanceTerminationAction'] as String).input(),
-      localSsdRecoveryTimeout: map['localSsdRecoveryTimeout'] == null ? null : (InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout.fromMap((map['localSsdRecoveryTimeout'] as Map).cast<String, dynamic>())).input(),
-      maintenanceInterval: map['maintenanceInterval'] == null ? null : (map['maintenanceInterval'] as String).input(),
-      maxRunDuration: map['maxRunDuration'] == null ? null : (InstanceFromMachineImageSchedulingMaxRunDuration.fromMap((map['maxRunDuration'] as Map).cast<String, dynamic>())).input(),
-      minNodeCpus: map['minNodeCpus'] == null ? null : (map['minNodeCpus'] as int).input(),
-      nodeAffinities: map['nodeAffinities'] == null ? null : (pulumi.Input.decodeList<InstanceFromMachineImageSchedulingNodeAffinity>(map['nodeAffinities'], (value) => InstanceFromMachineImageSchedulingNodeAffinity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      onHostMaintenance: map['onHostMaintenance'] == null ? null : (map['onHostMaintenance'] as String).input(),
-      onInstanceStopAction: map['onInstanceStopAction'] == null ? null : (InstanceFromMachineImageSchedulingOnInstanceStopAction.fromMap((map['onInstanceStopAction'] as Map).cast<String, dynamic>())).input(),
-      preemptible: map['preemptible'] == null ? null : (map['preemptible'] as bool).input(),
-      provisioningModel: map['provisioningModel'] == null ? null : (map['provisioningModel'] as String).input(),
-      skipGuestOsShutdown: map['skipGuestOsShutdown'] == null ? null : (map['skipGuestOsShutdown'] as bool).input(),
-      terminationTime: map['terminationTime'] == null ? null : (map['terminationTime'] as String).input(),
+      automaticRestart: map['automaticRestart'] == null ? null : (map['automaticRestart']! as bool).input(),
+      availabilityDomain: map['availabilityDomain'] == null ? null : (map['availabilityDomain']! as int).input(),
+      gracefulShutdown: map['gracefulShutdown'] == null ? null : (InstanceFromMachineImageSchedulingGracefulShutdown.fromMap((map['gracefulShutdown']! as Map).cast<String, dynamic>())).input(),
+      hostErrorTimeoutSeconds: map['hostErrorTimeoutSeconds'] == null ? null : (map['hostErrorTimeoutSeconds']! as int).input(),
+      instanceTerminationAction: map['instanceTerminationAction'] == null ? null : (map['instanceTerminationAction']! as String).input(),
+      localSsdRecoveryTimeout: map['localSsdRecoveryTimeout'] == null ? null : (InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout.fromMap((map['localSsdRecoveryTimeout']! as Map).cast<String, dynamic>())).input(),
+      maintenanceInterval: map['maintenanceInterval'] == null ? null : (map['maintenanceInterval']! as String).input(),
+      maxRunDuration: map['maxRunDuration'] == null ? null : (InstanceFromMachineImageSchedulingMaxRunDuration.fromMap((map['maxRunDuration']! as Map).cast<String, dynamic>())).input(),
+      minNodeCpus: map['minNodeCpus'] == null ? null : (map['minNodeCpus']! as int).input(),
+      nodeAffinities: map['nodeAffinities'] == null ? null : (pulumi.Input.decodeList<InstanceFromMachineImageSchedulingNodeAffinity>(map['nodeAffinities']!, (value) => InstanceFromMachineImageSchedulingNodeAffinity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      onHostMaintenance: map['onHostMaintenance'] == null ? null : (map['onHostMaintenance']! as String).input(),
+      onInstanceStopAction: map['onInstanceStopAction'] == null ? null : (InstanceFromMachineImageSchedulingOnInstanceStopAction.fromMap((map['onInstanceStopAction']! as Map).cast<String, dynamic>())).input(),
+      preemptible: map['preemptible'] == null ? null : (map['preemptible']! as bool).input(),
+      provisioningModel: map['provisioningModel'] == null ? null : (map['provisioningModel']! as String).input(),
+      skipGuestOsShutdown: map['skipGuestOsShutdown'] == null ? null : (map['skipGuestOsShutdown']! as bool).input(),
+      terminationTime: map['terminationTime'] == null ? null : (map['terminationTime']! as String).input(),
     );
   }
 }

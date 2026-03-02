@@ -36,10 +36,10 @@ class ContainerResourcesResponse {
 
   factory ContainerResourcesResponse.fromMap(Map<String, dynamic> map) {
     return ContainerResourcesResponse(
-      cpu: map['cpu'] == null ? null : (map['cpu'] as double).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as double).input(),
       ephemeralStorage: (map['ephemeralStorage'] as String).input(),
-      gpu: map['gpu'] == null ? null : (map['gpu'] as double).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as String).input(),
+      gpu: map['gpu'] == null ? null : (map['gpu']! as double).input(),
+      memory: map['memory'] == null ? null : (map['memory']! as String).input(),
     );
   }
 }

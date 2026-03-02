@@ -82,17 +82,17 @@ class GalleryApplicationVersionArgs {
 
   factory GalleryApplicationVersionArgs.fromMap(Map<String, dynamic> map) {
     return GalleryApplicationVersionArgs(
-      configFile: map['configFile'] == null ? null : (map['configFile'] as String).input(),
-      enableHealthCheck: map['enableHealthCheck'] == null ? null : (map['enableHealthCheck'] as bool).input(),
-      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate'] as String).input(),
-      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest'] as bool).input(),
+      configFile: map['configFile'] == null ? null : (map['configFile']! as String).input(),
+      enableHealthCheck: map['enableHealthCheck'] == null ? null : (map['enableHealthCheck']! as bool).input(),
+      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate']! as String).input(),
+      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest']! as bool).input(),
       galleryApplicationId: (map['galleryApplicationId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       manageAction: (GalleryApplicationVersionManageAction.fromMap((map['manageAction'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      packageFile: map['packageFile'] == null ? null : (map['packageFile'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      packageFile: map['packageFile'] == null ? null : (map['packageFile']! as String).input(),
       source: (GalleryApplicationVersionSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       targetRegions: (pulumi.Input.decodeList<GalleryApplicationVersionTargetRegion>(map['targetRegions'], (value) => GalleryApplicationVersionTargetRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

@@ -38,10 +38,10 @@ class DefenderForStorageSettingProperties {
 
   factory DefenderForStorageSettingProperties.fromMap(Map<String, dynamic> map) {
     return DefenderForStorageSettingProperties(
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
-      malwareScanning: map['malwareScanning'] == null ? null : (MalwareScanningProperties.fromMap((map['malwareScanning'] as Map).cast<String, dynamic>())).input(),
-      overrideSubscriptionLevelSettings: map['overrideSubscriptionLevelSettings'] == null ? null : (map['overrideSubscriptionLevelSettings'] as bool).input(),
-      sensitiveDataDiscovery: map['sensitiveDataDiscovery'] == null ? null : (SensitiveDataDiscoveryProperties.fromMap((map['sensitiveDataDiscovery'] as Map).cast<String, dynamic>())).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as bool).input(),
+      malwareScanning: map['malwareScanning'] == null ? null : (MalwareScanningProperties.fromMap((map['malwareScanning']! as Map).cast<String, dynamic>())).input(),
+      overrideSubscriptionLevelSettings: map['overrideSubscriptionLevelSettings'] == null ? null : (map['overrideSubscriptionLevelSettings']! as bool).input(),
+      sensitiveDataDiscovery: map['sensitiveDataDiscovery'] == null ? null : (SensitiveDataDiscoveryProperties.fromMap((map['sensitiveDataDiscovery']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -36,8 +36,8 @@ class GetRepositoryIamPolicyArtifactregistryV1beta1Args {
   factory GetRepositoryIamPolicyArtifactregistryV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetRepositoryIamPolicyArtifactregistryV1beta1Args(
       location: (map['location'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       repositoryId: (map['repositoryId'] as String).input(),
     );
   }

@@ -21,7 +21,7 @@ class WebAclRuleStatementRateBasedStatementCustomKeyUriPath {
 
   factory WebAclRuleStatementRateBasedStatementCustomKeyUriPath.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatementCustomKeyUriPath(
-      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementCustomKeyUriPathTextTransformation>(map['textTransformations'], (value) => WebAclRuleStatementRateBasedStatementCustomKeyUriPathTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementCustomKeyUriPathTextTransformation>(map['textTransformations']!, (value) => WebAclRuleStatementRateBasedStatementCustomKeyUriPathTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

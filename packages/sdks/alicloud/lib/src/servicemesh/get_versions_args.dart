@@ -36,9 +36,9 @@ class GetVersionsArgs {
 
   factory GetVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetVersionsArgs(
-      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      edition: map['edition'] == null ? null : (map['edition']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

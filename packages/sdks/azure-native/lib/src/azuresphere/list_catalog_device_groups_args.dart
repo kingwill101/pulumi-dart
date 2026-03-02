@@ -55,12 +55,12 @@ class ListCatalogDeviceGroupsArgs {
   factory ListCatalogDeviceGroupsArgs.fromMap(Map<String, dynamic> map) {
     return ListCatalogDeviceGroupsArgs(
       catalogName: (map['catalogName'] as String).input(),
-      deviceGroupName: map['deviceGroupName'] == null ? null : (map['deviceGroupName'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      maxpagesize: map['maxpagesize'] == null ? null : (map['maxpagesize'] as int).input(),
+      deviceGroupName: map['deviceGroupName'] == null ? null : (map['deviceGroupName']! as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      maxpagesize: map['maxpagesize'] == null ? null : (map['maxpagesize']! as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skip: map['skip'] == null ? null : (map['skip'] as int).input(),
-      top: map['top'] == null ? null : (map['top'] as int).input(),
+      skip: map['skip'] == null ? null : (map['skip']! as int).input(),
+      top: map['top'] == null ? null : (map['top']! as int).input(),
     );
   }
 }

@@ -35,8 +35,8 @@ class RouteMapArgs {
 
   factory RouteMapArgs.fromMap(Map<String, dynamic> map) {
     return RouteMapArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RouteMapRule>(map['rules'], (value) => RouteMapRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RouteMapRule>(map['rules']!, (value) => RouteMapRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       virtualHubId: (map['virtualHubId'] as String).input(),
     );
   }

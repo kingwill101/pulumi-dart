@@ -45,7 +45,7 @@ class DedicatedBlockStorageClusterArgs {
   factory DedicatedBlockStorageClusterArgs.fromMap(Map<String, dynamic> map) {
     return DedicatedBlockStorageClusterArgs(
       dedicatedBlockStorageClusterName: (map['dedicatedBlockStorageClusterName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       totalCapacity: (map['totalCapacity'] as String).input(),
       type: (map['type'] as String).input(),
       zoneId: (map['zoneId'] as String).input(),

@@ -26,8 +26,8 @@ class CertificateProperties {
 
   factory CertificateProperties.fromMap(Map<String, dynamic> map) {
     return CertificateProperties(
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
-      isVerified: map['isVerified'] == null ? null : (map['isVerified'] as bool).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
+      isVerified: map['isVerified'] == null ? null : (map['isVerified']! as bool).input(),
     );
   }
 }

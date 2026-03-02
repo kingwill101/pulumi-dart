@@ -24,7 +24,7 @@ class AppVersionSnapshotGuardrailActionRespondImmediately {
 
   factory AppVersionSnapshotGuardrailActionRespondImmediately.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrailActionRespondImmediately(
-      responses: map['responses'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailActionRespondImmediatelyResponse>(map['responses'], (value) => AppVersionSnapshotGuardrailActionRespondImmediatelyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responses: map['responses'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailActionRespondImmediatelyResponse>(map['responses']!, (value) => AppVersionSnapshotGuardrailActionRespondImmediatelyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

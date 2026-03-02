@@ -32,9 +32,9 @@ class VirtualMachineInstancePropertiesStorageProfileOsDiskResponse {
 
   factory VirtualMachineInstancePropertiesStorageProfileOsDiskResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstancePropertiesStorageProfileOsDiskResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      managedDisk: map['managedDisk'] == null ? null : (VirtualMachineInstanceManagedDiskParametersResponse.fromMap((map['managedDisk'] as Map).cast<String, dynamic>())).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      managedDisk: map['managedDisk'] == null ? null : (VirtualMachineInstanceManagedDiskParametersResponse.fromMap((map['managedDisk']! as Map).cast<String, dynamic>())).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
     );
   }
 }

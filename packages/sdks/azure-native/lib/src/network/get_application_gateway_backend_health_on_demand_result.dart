@@ -27,8 +27,8 @@ class GetApplicationGatewayBackendHealthOnDemandResult {
 
   factory GetApplicationGatewayBackendHealthOnDemandResult.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayBackendHealthOnDemandResult(
-      backendAddressPool: map['backendAddressPool'] == null ? null : ApplicationGatewayBackendAddressPoolResponse.fromMap((map['backendAddressPool'] as Map).cast<String, dynamic>()),
-      backendHealthHttpSettings: map['backendHealthHttpSettings'] == null ? null : ApplicationGatewayBackendHealthHttpSettingsResponse.fromMap((map['backendHealthHttpSettings'] as Map).cast<String, dynamic>()),
+      backendAddressPool: map['backendAddressPool'] == null ? null : ApplicationGatewayBackendAddressPoolResponse.fromMap((map['backendAddressPool']! as Map).cast<String, dynamic>()),
+      backendHealthHttpSettings: map['backendHealthHttpSettings'] == null ? null : ApplicationGatewayBackendHealthHttpSettingsResponse.fromMap((map['backendHealthHttpSettings']! as Map).cast<String, dynamic>()),
     );
   }
 }

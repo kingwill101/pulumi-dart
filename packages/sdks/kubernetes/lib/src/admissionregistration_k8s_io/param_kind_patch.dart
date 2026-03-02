@@ -26,8 +26,8 @@ class ParamKindPatch {
 
   factory ParamKindPatch.fromMap(Map<String, dynamic> map) {
     return ParamKindPatch(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
     );
   }
 }

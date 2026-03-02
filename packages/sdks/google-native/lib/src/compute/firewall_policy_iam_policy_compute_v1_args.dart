@@ -51,12 +51,12 @@ class FirewallPolicyIamPolicyComputeV1Args {
 
   factory FirewallPolicyIamPolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyIamPolicyComputeV1Args(
-      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfigComputeV1>(map['auditConfigs'], (value) => AuditConfigComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingComputeV1>(map['bindings'], (value) => BindingComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfigComputeV1>(map['auditConfigs']!, (value) => AuditConfigComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingComputeV1>(map['bindings']!, (value) => BindingComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       resource: (map['resource'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RuleComputeV1>(map['rules'], (value) => RuleComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RuleComputeV1>(map['rules']!, (value) => RuleComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

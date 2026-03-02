@@ -43,11 +43,11 @@ class DomainDomainSettings {
 
   factory DomainDomainSettings.fromMap(Map<String, dynamic> map) {
     return DomainDomainSettings(
-      dockerSettings: map['dockerSettings'] == null ? null : (DomainDomainSettingsDockerSettings.fromMap((map['dockerSettings'] as Map).cast<String, dynamic>())).input(),
-      executionRoleIdentityConfig: map['executionRoleIdentityConfig'] == null ? null : (map['executionRoleIdentityConfig'] as String).input(),
-      rStudioServerProDomainSettings: map['rStudioServerProDomainSettings'] == null ? null : (DomainDomainSettingsRStudioServerProDomainSettings.fromMap((map['rStudioServerProDomainSettings'] as Map).cast<String, dynamic>())).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
-      trustedIdentityPropagationSettings: map['trustedIdentityPropagationSettings'] == null ? null : (DomainDomainSettingsTrustedIdentityPropagationSettings.fromMap((map['trustedIdentityPropagationSettings'] as Map).cast<String, dynamic>())).input(),
+      dockerSettings: map['dockerSettings'] == null ? null : ((DomainDomainSettingsDockerSettings.fromMap((map['dockerSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      executionRoleIdentityConfig: map['executionRoleIdentityConfig'] == null ? null : ((map['executionRoleIdentityConfig'] as String).input()).input(),
+      rStudioServerProDomainSettings: map['rStudioServerProDomainSettings'] == null ? null : ((DomainDomainSettingsRStudioServerProDomainSettings.fromMap((map['rStudioServerProDomainSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
+      trustedIdentityPropagationSettings: map['trustedIdentityPropagationSettings'] == null ? null : ((DomainDomainSettingsTrustedIdentityPropagationSettings.fromMap((map['trustedIdentityPropagationSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

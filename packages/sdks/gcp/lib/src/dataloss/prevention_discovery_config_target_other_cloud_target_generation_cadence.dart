@@ -28,8 +28,8 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadence {
 
   factory PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadence.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadence(
-      inspectTemplateModifiedCadence: map['inspectTemplateModifiedCadence'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTemplateModifiedCadence.fromMap((map['inspectTemplateModifiedCadence'] as Map).cast<String, dynamic>())).input(),
-      refreshFrequency: map['refreshFrequency'] == null ? null : (map['refreshFrequency'] as String).input(),
+      inspectTemplateModifiedCadence: map['inspectTemplateModifiedCadence'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTemplateModifiedCadence.fromMap((map['inspectTemplateModifiedCadence']! as Map).cast<String, dynamic>())).input(),
+      refreshFrequency: map['refreshFrequency'] == null ? null : (map['refreshFrequency']! as String).input(),
     );
   }
 }

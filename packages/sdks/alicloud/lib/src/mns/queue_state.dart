@@ -46,12 +46,12 @@ class QueueState {
 
   factory QueueState.fromMap(Map<String, dynamic> map) {
     return QueueState(
-      delaySeconds: map['delaySeconds'] == null ? null : (map['delaySeconds'] as int).input(),
-      maximumMessageSize: map['maximumMessageSize'] == null ? null : (map['maximumMessageSize'] as int).input(),
-      messageRetentionPeriod: map['messageRetentionPeriod'] == null ? null : (map['messageRetentionPeriod'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pollingWaitSeconds: map['pollingWaitSeconds'] == null ? null : (map['pollingWaitSeconds'] as int).input(),
-      visibilityTimeout: map['visibilityTimeout'] == null ? null : (map['visibilityTimeout'] as int).input(),
+      delaySeconds: map['delaySeconds'] == null ? null : (map['delaySeconds']! as int).input(),
+      maximumMessageSize: map['maximumMessageSize'] == null ? null : (map['maximumMessageSize']! as int).input(),
+      messageRetentionPeriod: map['messageRetentionPeriod'] == null ? null : (map['messageRetentionPeriod']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pollingWaitSeconds: map['pollingWaitSeconds'] == null ? null : (map['pollingWaitSeconds']! as int).input(),
+      visibilityTimeout: map['visibilityTimeout'] == null ? null : (map['visibilityTimeout']! as int).input(),
     );
   }
 }

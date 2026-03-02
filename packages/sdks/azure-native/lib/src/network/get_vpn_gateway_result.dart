@@ -102,21 +102,21 @@ class GetVpnGatewayResult {
   factory GetVpnGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetVpnGatewayResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      bgpSettings: map['bgpSettings'] == null ? null : BgpSettingsResponse.fromMap((map['bgpSettings'] as Map).cast<String, dynamic>()),
-      connections: map['connections'] == null ? null : pulumi.Input.decodeList<VpnConnectionResponse>(map['connections'], (value) => VpnConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      enableBgpRouteTranslationForNat: map['enableBgpRouteTranslationForNat'] == null ? null : map['enableBgpRouteTranslationForNat'] as bool,
+      bgpSettings: map['bgpSettings'] == null ? null : BgpSettingsResponse.fromMap((map['bgpSettings']! as Map).cast<String, dynamic>()),
+      connections: map['connections'] == null ? null : pulumi.Input.decodeList<VpnConnectionResponse>(map['connections']!, (value) => VpnConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      enableBgpRouteTranslationForNat: map['enableBgpRouteTranslationForNat'] == null ? null : map['enableBgpRouteTranslationForNat']! as bool,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
       ipConfigurations: pulumi.Input.decodeList<VpnGatewayIpConfigurationResponse>(map['ipConfigurations'], (value) => VpnGatewayIpConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      isRoutingPreferenceInternet: map['isRoutingPreferenceInternet'] == null ? null : map['isRoutingPreferenceInternet'] as bool,
+      isRoutingPreferenceInternet: map['isRoutingPreferenceInternet'] == null ? null : map['isRoutingPreferenceInternet']! as bool,
       location: map['location'] as String,
       name: map['name'] as String,
-      natRules: map['natRules'] == null ? null : pulumi.Input.decodeList<VpnGatewayNatRuleResponse>(map['natRules'], (value) => VpnGatewayNatRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      natRules: map['natRules'] == null ? null : pulumi.Input.decodeList<VpnGatewayNatRuleResponse>(map['natRules']!, (value) => VpnGatewayNatRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      virtualHub: map['virtualHub'] == null ? null : SubResourceResponse.fromMap((map['virtualHub'] as Map).cast<String, dynamic>()),
-      vpnGatewayScaleUnit: map['vpnGatewayScaleUnit'] == null ? null : map['vpnGatewayScaleUnit'] as int,
+      virtualHub: map['virtualHub'] == null ? null : SubResourceResponse.fromMap((map['virtualHub']! as Map).cast<String, dynamic>()),
+      vpnGatewayScaleUnit: map['vpnGatewayScaleUnit'] == null ? null : map['vpnGatewayScaleUnit']! as int,
     );
   }
 }

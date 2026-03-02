@@ -27,8 +27,8 @@ class SELinuxStrategyOptionsPatch {
 
   factory SELinuxStrategyOptionsPatch.fromMap(Map<String, dynamic> map) {
     return SELinuxStrategyOptionsPatch(
-      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
-      seLinuxOptions: map['seLinuxOptions'] == null ? null : (SELinuxOptionsPatch.fromMap((map['seLinuxOptions'] as Map).cast<String, dynamic>())).input(),
+      rule: map['rule'] == null ? null : (map['rule']! as String).input(),
+      seLinuxOptions: map['seLinuxOptions'] == null ? null : (SELinuxOptionsPatch.fromMap((map['seLinuxOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

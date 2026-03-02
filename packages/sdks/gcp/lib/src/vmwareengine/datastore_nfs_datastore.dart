@@ -29,8 +29,8 @@ class DatastoreNfsDatastore {
 
   factory DatastoreNfsDatastore.fromMap(Map<String, dynamic> map) {
     return DatastoreNfsDatastore(
-      googleFileService: map['googleFileService'] == null ? null : (DatastoreNfsDatastoreGoogleFileService.fromMap((map['googleFileService'] as Map).cast<String, dynamic>())).input(),
-      thirdPartyFileService: map['thirdPartyFileService'] == null ? null : (DatastoreNfsDatastoreThirdPartyFileService.fromMap((map['thirdPartyFileService'] as Map).cast<String, dynamic>())).input(),
+      googleFileService: map['googleFileService'] == null ? null : (DatastoreNfsDatastoreGoogleFileService.fromMap((map['googleFileService']! as Map).cast<String, dynamic>())).input(),
+      thirdPartyFileService: map['thirdPartyFileService'] == null ? null : (DatastoreNfsDatastoreThirdPartyFileService.fromMap((map['thirdPartyFileService']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

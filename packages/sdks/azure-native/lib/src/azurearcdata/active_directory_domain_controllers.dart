@@ -27,8 +27,8 @@ class ActiveDirectoryDomainControllers {
 
   factory ActiveDirectoryDomainControllers.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryDomainControllers(
-      primaryDomainController: map['primaryDomainController'] == null ? null : (ActiveDirectoryDomainController.fromMap((map['primaryDomainController'] as Map).cast<String, dynamic>())).input(),
-      secondaryDomainControllers: map['secondaryDomainControllers'] == null ? null : (pulumi.Input.decodeList<ActiveDirectoryDomainController>(map['secondaryDomainControllers'], (value) => ActiveDirectoryDomainController.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      primaryDomainController: map['primaryDomainController'] == null ? null : (ActiveDirectoryDomainController.fromMap((map['primaryDomainController']! as Map).cast<String, dynamic>())).input(),
+      secondaryDomainControllers: map['secondaryDomainControllers'] == null ? null : (pulumi.Input.decodeList<ActiveDirectoryDomainController>(map['secondaryDomainControllers']!, (value) => ActiveDirectoryDomainController.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

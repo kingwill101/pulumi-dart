@@ -26,8 +26,8 @@ class ConnectionEventingRuntimeDataStatus {
 
   factory ConnectionEventingRuntimeDataStatus.fromMap(Map<String, dynamic> map) {
     return ConnectionEventingRuntimeDataStatus(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

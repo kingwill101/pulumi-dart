@@ -97,17 +97,17 @@ class RestoreWorkloadArgs {
     return RestoreWorkloadArgs(
       backupId: (map['backupId'] as String).input(),
       backupVaultId: (map['backupVaultId'] as String).input(),
-      clearOverridesFieldMask: map['clearOverridesFieldMask'] == null ? null : (map['clearOverridesFieldMask'] as String).input(),
-      computeInstanceRestoreProperties: map['computeInstanceRestoreProperties'] == null ? null : (RestoreWorkloadComputeInstanceRestoreProperties.fromMap((map['computeInstanceRestoreProperties'] as Map).cast<String, dynamic>())).input(),
-      computeInstanceTargetEnvironment: map['computeInstanceTargetEnvironment'] == null ? null : (RestoreWorkloadComputeInstanceTargetEnvironment.fromMap((map['computeInstanceTargetEnvironment'] as Map).cast<String, dynamic>())).input(),
+      clearOverridesFieldMask: map['clearOverridesFieldMask'] == null ? null : (map['clearOverridesFieldMask']! as String).input(),
+      computeInstanceRestoreProperties: map['computeInstanceRestoreProperties'] == null ? null : (RestoreWorkloadComputeInstanceRestoreProperties.fromMap((map['computeInstanceRestoreProperties']! as Map).cast<String, dynamic>())).input(),
+      computeInstanceTargetEnvironment: map['computeInstanceTargetEnvironment'] == null ? null : (RestoreWorkloadComputeInstanceTargetEnvironment.fromMap((map['computeInstanceTargetEnvironment']! as Map).cast<String, dynamic>())).input(),
       dataSourceId: (map['dataSourceId'] as String).input(),
-      deleteRestoredInstance: map['deleteRestoredInstance'] == null ? null : (map['deleteRestoredInstance'] as bool).input(),
-      diskRestoreProperties: map['diskRestoreProperties'] == null ? null : (RestoreWorkloadDiskRestoreProperties.fromMap((map['diskRestoreProperties'] as Map).cast<String, dynamic>())).input(),
-      diskTargetEnvironment: map['diskTargetEnvironment'] == null ? null : (RestoreWorkloadDiskTargetEnvironment.fromMap((map['diskTargetEnvironment'] as Map).cast<String, dynamic>())).input(),
+      deleteRestoredInstance: map['deleteRestoredInstance'] == null ? null : (map['deleteRestoredInstance']! as bool).input(),
+      diskRestoreProperties: map['diskRestoreProperties'] == null ? null : (RestoreWorkloadDiskRestoreProperties.fromMap((map['diskRestoreProperties']! as Map).cast<String, dynamic>())).input(),
+      diskTargetEnvironment: map['diskTargetEnvironment'] == null ? null : (RestoreWorkloadDiskTargetEnvironment.fromMap((map['diskTargetEnvironment']! as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      regionDiskTargetEnvironment: map['regionDiskTargetEnvironment'] == null ? null : (RestoreWorkloadRegionDiskTargetEnvironment.fromMap((map['regionDiskTargetEnvironment'] as Map).cast<String, dynamic>())).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      regionDiskTargetEnvironment: map['regionDiskTargetEnvironment'] == null ? null : (RestoreWorkloadRegionDiskTargetEnvironment.fromMap((map['regionDiskTargetEnvironment']! as Map).cast<String, dynamic>())).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

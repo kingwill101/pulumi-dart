@@ -21,7 +21,7 @@ class ImplementationGuidesConfiguration {
 
   factory ImplementationGuidesConfiguration.fromMap(Map<String, dynamic> map) {
     return ImplementationGuidesConfiguration(
-      usCoreMissingData: map['usCoreMissingData'] == null ? null : (map['usCoreMissingData'] as bool).input(),
+      usCoreMissingData: map['usCoreMissingData'] == null ? null : (map['usCoreMissingData']! as bool).input(),
     );
   }
 }

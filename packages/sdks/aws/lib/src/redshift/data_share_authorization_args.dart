@@ -41,10 +41,10 @@ class DataShareAuthorizationArgs {
 
   factory DataShareAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return DataShareAuthorizationArgs(
-      allowWrites: map['allowWrites'] == null ? null : (map['allowWrites'] as bool).input(),
+      allowWrites: map['allowWrites'] == null ? null : ((map['allowWrites'] as bool).input()).input(),
       consumerIdentifier: (map['consumerIdentifier'] as String).input(),
       dataShareArn: (map['dataShareArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -38,11 +38,11 @@ class GetAccountsResult {
 
   factory GetAccountsResult.fromMap(Map<String, dynamic> map) {
     return GetAccountsResult(
-      accountName: map['accountName'] == null ? null : map['accountName'] as String,
+      accountName: map['accountName'] == null ? null : map['accountName']! as String,
       accounts: pulumi.Input.decodeList<GetAccountsAccount>(map['accounts'], (value) => GetAccountsAccount.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       instanceId: map['instanceId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

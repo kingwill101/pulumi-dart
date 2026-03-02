@@ -41,7 +41,7 @@ class NetworkWatcherFlowLogTrafficAnalytics {
   factory NetworkWatcherFlowLogTrafficAnalytics.fromMap(Map<String, dynamic> map) {
     return NetworkWatcherFlowLogTrafficAnalytics(
       enabled: (map['enabled'] as bool).input(),
-      intervalInMinutes: map['intervalInMinutes'] == null ? null : (map['intervalInMinutes'] as int).input(),
+      intervalInMinutes: map['intervalInMinutes'] == null ? null : (map['intervalInMinutes']! as int).input(),
       workspaceId: (map['workspaceId'] as String).input(),
       workspaceRegion: (map['workspaceRegion'] as String).input(),
       workspaceResourceId: (map['workspaceResourceId'] as String).input(),

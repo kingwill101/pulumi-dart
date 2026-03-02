@@ -39,10 +39,10 @@ class AppIngressTrafficWeight {
 
   factory AppIngressTrafficWeight.fromMap(Map<String, dynamic> map) {
     return AppIngressTrafficWeight(
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      latestRevision: map['latestRevision'] == null ? null : (map['latestRevision'] as bool).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      latestRevision: map['latestRevision'] == null ? null : (map['latestRevision']! as bool).input(),
       percentage: (map['percentage'] as int).input(),
-      revisionSuffix: map['revisionSuffix'] == null ? null : (map['revisionSuffix'] as String).input(),
+      revisionSuffix: map['revisionSuffix'] == null ? null : (map['revisionSuffix']! as String).input(),
     );
   }
 }

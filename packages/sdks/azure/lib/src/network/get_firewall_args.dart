@@ -34,7 +34,7 @@ class GetFirewallArgs {
 
   factory GetFirewallArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallArgs(
-      dnsProxyEnabled: map['dnsProxyEnabled'] == null ? null : (map['dnsProxyEnabled'] as bool).input(),
+      dnsProxyEnabled: map['dnsProxyEnabled'] == null ? null : (map['dnsProxyEnabled']! as bool).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

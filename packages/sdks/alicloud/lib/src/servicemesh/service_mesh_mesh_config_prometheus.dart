@@ -25,8 +25,8 @@ class ServiceMeshMeshConfigPrometheus {
 
   factory ServiceMeshMeshConfigPrometheus.fromMap(Map<String, dynamic> map) {
     return ServiceMeshMeshConfigPrometheus(
-      externalUrl: map['externalUrl'] == null ? null : (map['externalUrl'] as String).input(),
-      useExternal: map['useExternal'] == null ? null : (map['useExternal'] as bool).input(),
+      externalUrl: map['externalUrl'] == null ? null : (map['externalUrl']! as String).input(),
+      useExternal: map['useExternal'] == null ? null : (map['useExternal']! as bool).input(),
     );
   }
 }

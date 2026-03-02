@@ -75,16 +75,16 @@ class EntryTypeArgs {
 
   factory EntryTypeArgs.fromMap(Map<String, dynamic> map) {
     return EntryTypeArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      entryTypeId: map['entryTypeId'] == null ? null : (map['entryTypeId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requiredAspects: map['requiredAspects'] == null ? null : (pulumi.Input.decodeList<EntryTypeRequiredAspect>(map['requiredAspects'], (value) => EntryTypeRequiredAspect.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      system: map['system'] == null ? null : (map['system'] as String).input(),
-      typeAliases: map['typeAliases'] == null ? null : ((map['typeAliases'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      entryTypeId: map['entryTypeId'] == null ? null : (map['entryTypeId']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      platform: map['platform'] == null ? null : (map['platform']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requiredAspects: map['requiredAspects'] == null ? null : (pulumi.Input.decodeList<EntryTypeRequiredAspect>(map['requiredAspects']!, (value) => EntryTypeRequiredAspect.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      system: map['system'] == null ? null : (map['system']! as String).input(),
+      typeAliases: map['typeAliases'] == null ? null : ((map['typeAliases']! as List).cast<String>()).input(),
     );
   }
 }

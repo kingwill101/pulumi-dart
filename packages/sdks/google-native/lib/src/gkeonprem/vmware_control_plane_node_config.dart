@@ -43,11 +43,11 @@ class VmwareControlPlaneNodeConfig {
 
   factory VmwareControlPlaneNodeConfig.fromMap(Map<String, dynamic> map) {
     return VmwareControlPlaneNodeConfig(
-      autoResizeConfig: map['autoResizeConfig'] == null ? null : (VmwareAutoResizeConfig.fromMap((map['autoResizeConfig'] as Map).cast<String, dynamic>())).input(),
-      cpus: map['cpus'] == null ? null : (map['cpus'] as String).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as String).input(),
-      replicas: map['replicas'] == null ? null : (map['replicas'] as String).input(),
-      vsphereConfig: map['vsphereConfig'] == null ? null : (VmwareControlPlaneVsphereConfig.fromMap((map['vsphereConfig'] as Map).cast<String, dynamic>())).input(),
+      autoResizeConfig: map['autoResizeConfig'] == null ? null : (VmwareAutoResizeConfig.fromMap((map['autoResizeConfig']! as Map).cast<String, dynamic>())).input(),
+      cpus: map['cpus'] == null ? null : (map['cpus']! as String).input(),
+      memory: map['memory'] == null ? null : (map['memory']! as String).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas']! as String).input(),
+      vsphereConfig: map['vsphereConfig'] == null ? null : (VmwareControlPlaneVsphereConfig.fromMap((map['vsphereConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

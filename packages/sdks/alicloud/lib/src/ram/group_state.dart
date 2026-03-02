@@ -44,11 +44,11 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      comments: map['comments'] == null ? null : (map['comments'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      comments: map['comments'] == null ? null : (map['comments']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

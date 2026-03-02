@@ -48,7 +48,7 @@ class GetReplicationStorageClassificationMappingResult {
     return GetReplicationStorageClassificationMappingResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       properties: StorageClassificationMappingPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,

@@ -27,8 +27,8 @@ class StreamDestinationConfigGcsDestinationConfigJsonFileFormat {
 
   factory StreamDestinationConfigGcsDestinationConfigJsonFileFormat.fromMap(Map<String, dynamic> map) {
     return StreamDestinationConfigGcsDestinationConfigJsonFileFormat(
-      compression: map['compression'] == null ? null : (map['compression'] as String).input(),
-      schemaFileFormat: map['schemaFileFormat'] == null ? null : (map['schemaFileFormat'] as String).input(),
+      compression: map['compression'] == null ? null : (map['compression']! as String).input(),
+      schemaFileFormat: map['schemaFileFormat'] == null ? null : (map['schemaFileFormat']! as String).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class GetDedicatedHostGroupsArgs {
 
   factory GetDedicatedHostGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostGroupsArgs(
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      engine: map['engine'] == null ? null : (map['engine']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

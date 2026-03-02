@@ -29,8 +29,8 @@ class CloudControlParameterSpecSubParameterSubstitutionRule {
 
   factory CloudControlParameterSpecSubParameterSubstitutionRule.fromMap(Map<String, dynamic> map) {
     return CloudControlParameterSpecSubParameterSubstitutionRule(
-      attributeSubstitutionRule: map['attributeSubstitutionRule'] == null ? null : (CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule.fromMap((map['attributeSubstitutionRule'] as Map).cast<String, dynamic>())).input(),
-      placeholderSubstitutionRule: map['placeholderSubstitutionRule'] == null ? null : (CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule.fromMap((map['placeholderSubstitutionRule'] as Map).cast<String, dynamic>())).input(),
+      attributeSubstitutionRule: map['attributeSubstitutionRule'] == null ? null : (CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule.fromMap((map['attributeSubstitutionRule']! as Map).cast<String, dynamic>())).input(),
+      placeholderSubstitutionRule: map['placeholderSubstitutionRule'] == null ? null : (CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule.fromMap((map['placeholderSubstitutionRule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

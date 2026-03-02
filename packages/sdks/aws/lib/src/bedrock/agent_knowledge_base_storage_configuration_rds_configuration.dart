@@ -43,7 +43,7 @@ class AgentKnowledgeBaseStorageConfigurationRdsConfiguration {
     return AgentKnowledgeBaseStorageConfigurationRdsConfiguration(
       credentialsSecretArn: (map['credentialsSecretArn'] as String).input(),
       databaseName: (map['databaseName'] as String).input(),
-      fieldMapping: (AgentKnowledgeBaseStorageConfigurationRdsConfigurationFieldMapping.fromMap((map['fieldMapping'] as Map).cast<String, dynamic>())).input(),
+      fieldMapping: (AgentKnowledgeBaseStorageConfigurationRdsConfigurationFieldMapping.fromMap((map['fieldMapping']! as Map).cast<String, dynamic>())).input(),
       resourceArn: (map['resourceArn'] as String).input(),
       tableName: (map['tableName'] as String).input(),
     );

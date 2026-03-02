@@ -49,8 +49,8 @@ class SearchResult {
       id: map['id'] as String,
       queryString: map['queryString'] as String,
       region: map['region'] as String,
-      resourceCounts: pulumi.Input.decodeList<SearchResourceCount>(map['resourceCounts'], (value) => SearchResourceCount.fromMap((value as Map).cast<String, dynamic>())),
-      resources: pulumi.Input.decodeList<SearchResource>(map['resources'], (value) => SearchResource.fromMap((value as Map).cast<String, dynamic>())),
+      resourceCounts: pulumi.Input.decodeList<SearchResourceCount>(map['resourceCounts']!, (value) => SearchResourceCount.fromMap((value as Map).cast<String, dynamic>())),
+      resources: pulumi.Input.decodeList<SearchResource>(map['resources']!, (value) => SearchResource.fromMap((value as Map).cast<String, dynamic>())),
       viewArn: map['viewArn'] as String,
     );
   }

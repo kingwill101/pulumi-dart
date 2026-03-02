@@ -53,7 +53,7 @@ class GetTaskResult {
   factory GetTaskResult.fromMap(Map<String, dynamic> map) {
     return GetTaskResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       properties: ConnectToMongoDbTaskPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),

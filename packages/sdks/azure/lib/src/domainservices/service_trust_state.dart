@@ -41,11 +41,11 @@ class ServiceTrustState {
 
   factory ServiceTrustState.fromMap(Map<String, dynamic> map) {
     return ServiceTrustState(
-      domainServiceId: map['domainServiceId'] == null ? null : (map['domainServiceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      trustedDomainDnsIps: map['trustedDomainDnsIps'] == null ? null : ((map['trustedDomainDnsIps'] as List).cast<String>()).input(),
-      trustedDomainFqdn: map['trustedDomainFqdn'] == null ? null : (map['trustedDomainFqdn'] as String).input(),
+      domainServiceId: map['domainServiceId'] == null ? null : (map['domainServiceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      trustedDomainDnsIps: map['trustedDomainDnsIps'] == null ? null : ((map['trustedDomainDnsIps']! as List).cast<String>()).input(),
+      trustedDomainFqdn: map['trustedDomainFqdn'] == null ? null : (map['trustedDomainFqdn']! as String).input(),
     );
   }
 }

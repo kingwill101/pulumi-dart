@@ -25,8 +25,8 @@ class V3FunctionTracingConfig {
 
   factory V3FunctionTracingConfig.fromMap(Map<String, dynamic> map) {
     return V3FunctionTracingConfig(
-      params: map['params'] == null ? null : ((map['params'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      params: map['params'] == null ? null : ((map['params']! as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

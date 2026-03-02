@@ -26,8 +26,8 @@ class EcsSessionManagerStatusState {
 
   factory EcsSessionManagerStatusState.fromMap(Map<String, dynamic> map) {
     return EcsSessionManagerStatusState(
-      sessionManagerStatusName: map['sessionManagerStatusName'] == null ? null : (map['sessionManagerStatusName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      sessionManagerStatusName: map['sessionManagerStatusName'] == null ? null : (map['sessionManagerStatusName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

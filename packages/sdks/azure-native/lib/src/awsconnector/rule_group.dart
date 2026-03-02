@@ -40,10 +40,10 @@ class RuleGroup {
 
   factory RuleGroup.fromMap(Map<String, dynamic> map) {
     return RuleGroup(
-      referenceSets: map['referenceSets'] == null ? null : (ReferenceSets.fromMap((map['referenceSets'] as Map).cast<String, dynamic>())).input(),
-      ruleVariables: map['ruleVariables'] == null ? null : (RuleVariables.fromMap((map['ruleVariables'] as Map).cast<String, dynamic>())).input(),
-      rulesSource: map['rulesSource'] == null ? null : (RulesSource.fromMap((map['rulesSource'] as Map).cast<String, dynamic>())).input(),
-      statefulRuleOptions: map['statefulRuleOptions'] == null ? null : (StatefulRuleOptions.fromMap((map['statefulRuleOptions'] as Map).cast<String, dynamic>())).input(),
+      referenceSets: map['referenceSets'] == null ? null : (ReferenceSets.fromMap((map['referenceSets']! as Map).cast<String, dynamic>())).input(),
+      ruleVariables: map['ruleVariables'] == null ? null : (RuleVariables.fromMap((map['ruleVariables']! as Map).cast<String, dynamic>())).input(),
+      rulesSource: map['rulesSource'] == null ? null : (RulesSource.fromMap((map['rulesSource']! as Map).cast<String, dynamic>())).input(),
+      statefulRuleOptions: map['statefulRuleOptions'] == null ? null : (StatefulRuleOptions.fromMap((map['statefulRuleOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

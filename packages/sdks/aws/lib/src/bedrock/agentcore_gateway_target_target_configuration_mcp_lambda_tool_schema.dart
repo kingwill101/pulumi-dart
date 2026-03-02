@@ -27,8 +27,8 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema {
 
   factory AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema(
-      inlinePayloads: map['inlinePayloads'] == null ? null : (pulumi.Input.decodeList<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload>(map['inlinePayloads'], (value) => AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      s3: map['s3'] == null ? null : (AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaS3.fromMap((map['s3'] as Map).cast<String, dynamic>())).input(),
+      inlinePayloads: map['inlinePayloads'] == null ? null : ((pulumi.Input.decodeList<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload>(map['inlinePayloads']!, (value) => AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      s3: map['s3'] == null ? null : ((AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaS3.fromMap((map['s3']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

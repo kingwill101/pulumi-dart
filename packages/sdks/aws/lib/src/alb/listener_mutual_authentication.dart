@@ -36,10 +36,10 @@ class ListenerMutualAuthentication {
 
   factory ListenerMutualAuthentication.fromMap(Map<String, dynamic> map) {
     return ListenerMutualAuthentication(
-      advertiseTrustStoreCaNames: map['advertiseTrustStoreCaNames'] == null ? null : (map['advertiseTrustStoreCaNames'] as String).input(),
-      ignoreClientCertificateExpiry: map['ignoreClientCertificateExpiry'] == null ? null : (map['ignoreClientCertificateExpiry'] as bool).input(),
+      advertiseTrustStoreCaNames: map['advertiseTrustStoreCaNames'] == null ? null : ((map['advertiseTrustStoreCaNames'] as String).input()).input(),
+      ignoreClientCertificateExpiry: map['ignoreClientCertificateExpiry'] == null ? null : ((map['ignoreClientCertificateExpiry'] as bool).input()).input(),
       mode: (map['mode'] as String).input(),
-      trustStoreArn: map['trustStoreArn'] == null ? null : (map['trustStoreArn'] as String).input(),
+      trustStoreArn: map['trustStoreArn'] == null ? null : ((map['trustStoreArn'] as String).input()).input(),
     );
   }
 }

@@ -59,12 +59,12 @@ class ListFeaturesetVersionMaterializationJobsArgs {
 
   factory ListFeaturesetVersionMaterializationJobsArgs.fromMap(Map<String, dynamic> map) {
     return ListFeaturesetVersionMaterializationJobsArgs(
-      featureWindowEnd: map['featureWindowEnd'] == null ? null : (map['featureWindowEnd'] as String).input(),
-      featureWindowStart: map['featureWindowStart'] == null ? null : (map['featureWindowStart'] as String).input(),
-      filters: map['filters'] == null ? null : (map['filters'] as String).input(),
+      featureWindowEnd: map['featureWindowEnd'] == null ? null : (map['featureWindowEnd']! as String).input(),
+      featureWindowStart: map['featureWindowStart'] == null ? null : (map['featureWindowStart']! as String).input(),
+      filters: map['filters'] == null ? null : (map['filters']! as String).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skip: map['skip'] == null ? null : (map['skip'] as String).input(),
+      skip: map['skip'] == null ? null : (map['skip']! as String).input(),
       version: (map['version'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );

@@ -62,17 +62,17 @@ class GetDesktopsResult {
 
   factory GetDesktopsResult.fromMap(Map<String, dynamic> map) {
     return GetDesktopsResult(
-      desktopName: map['desktopName'] == null ? null : map['desktopName'] as String,
+      desktopName: map['desktopName'] == null ? null : map['desktopName']! as String,
       desktops: pulumi.Input.decodeList<GetDesktopsDesktop>(map['desktops'], (value) => GetDesktopsDesktop.fromMap((value as Map).cast<String, dynamic>())),
-      endUserIds: map['endUserIds'] == null ? null : (map['endUserIds'] as List).cast<String>(),
+      endUserIds: map['endUserIds'] == null ? null : (map['endUserIds']! as List).cast<String>(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      officeSiteId: map['officeSiteId'] == null ? null : map['officeSiteId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      policyGroupId: map['policyGroupId'] == null ? null : map['policyGroupId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      officeSiteId: map['officeSiteId'] == null ? null : map['officeSiteId']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      policyGroupId: map['policyGroupId'] == null ? null : map['policyGroupId']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

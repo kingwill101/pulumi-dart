@@ -87,16 +87,16 @@ class DeviceRequestAllocationResultPatchResourceK8sIoV1beta2 {
 
   factory DeviceRequestAllocationResultPatchResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return DeviceRequestAllocationResultPatchResourceK8sIoV1beta2(
-      adminAccess: map['adminAccess'] == null ? null : (map['adminAccess'] as bool).input(),
-      bindingConditions: map['bindingConditions'] == null ? null : ((map['bindingConditions'] as List).cast<String>()).input(),
-      bindingFailureConditions: map['bindingFailureConditions'] == null ? null : ((map['bindingFailureConditions'] as List).cast<String>()).input(),
-      consumedCapacity: map['consumedCapacity'] == null ? null : ((map['consumedCapacity'] as Map).cast<String, String>()).input(),
-      device: map['device'] == null ? null : (map['device'] as String).input(),
-      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
-      pool: map['pool'] == null ? null : (map['pool'] as String).input(),
-      request: map['request'] == null ? null : (map['request'] as String).input(),
-      shareID: map['shareID'] == null ? null : (map['shareID'] as String).input(),
-      tolerations: map['tolerations'] == null ? null : (pulumi.Input.decodeList<DeviceTolerationPatchResourceK8sIoV1beta2>(map['tolerations'], (value) => DeviceTolerationPatchResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      adminAccess: map['adminAccess'] == null ? null : (map['adminAccess']! as bool).input(),
+      bindingConditions: map['bindingConditions'] == null ? null : ((map['bindingConditions']! as List).cast<String>()).input(),
+      bindingFailureConditions: map['bindingFailureConditions'] == null ? null : ((map['bindingFailureConditions']! as List).cast<String>()).input(),
+      consumedCapacity: map['consumedCapacity'] == null ? null : ((map['consumedCapacity']! as Map).cast<String, String>()).input(),
+      device: map['device'] == null ? null : (map['device']! as String).input(),
+      driver: map['driver'] == null ? null : (map['driver']! as String).input(),
+      pool: map['pool'] == null ? null : (map['pool']! as String).input(),
+      request: map['request'] == null ? null : (map['request']! as String).input(),
+      shareID: map['shareID'] == null ? null : (map['shareID']! as String).input(),
+      tolerations: map['tolerations'] == null ? null : (pulumi.Input.decodeList<DeviceTolerationPatchResourceK8sIoV1beta2>(map['tolerations']!, (value) => DeviceTolerationPatchResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

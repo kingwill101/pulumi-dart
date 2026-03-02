@@ -100,15 +100,15 @@ class RegionTargetHttpsProxyArgs {
 
   factory RegionTargetHttpsProxyArgs.fromMap(Map<String, dynamic> map) {
     return RegionTargetHttpsProxyArgs(
-      certificateManagerCertificates: map['certificateManagerCertificates'] == null ? null : ((map['certificateManagerCertificates'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : (map['httpKeepAliveTimeoutSec'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serverTlsPolicy: map['serverTlsPolicy'] == null ? null : (map['serverTlsPolicy'] as String).input(),
-      sslCertificates: map['sslCertificates'] == null ? null : ((map['sslCertificates'] as List).cast<String>()).input(),
-      sslPolicy: map['sslPolicy'] == null ? null : (map['sslPolicy'] as String).input(),
+      certificateManagerCertificates: map['certificateManagerCertificates'] == null ? null : ((map['certificateManagerCertificates']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : (map['httpKeepAliveTimeoutSec']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      serverTlsPolicy: map['serverTlsPolicy'] == null ? null : (map['serverTlsPolicy']! as String).input(),
+      sslCertificates: map['sslCertificates'] == null ? null : ((map['sslCertificates']! as List).cast<String>()).input(),
+      sslPolicy: map['sslPolicy'] == null ? null : (map['sslPolicy']! as String).input(),
       urlMap: (map['urlMap'] as String).input(),
     );
   }

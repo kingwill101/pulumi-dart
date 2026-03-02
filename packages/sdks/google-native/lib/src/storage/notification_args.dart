@@ -74,16 +74,16 @@ class NotificationArgs {
   factory NotificationArgs.fromMap(Map<String, dynamic> map) {
     return NotificationArgs(
       bucket: (map['bucket'] as String).input(),
-      customAttributes: map['customAttributes'] == null ? null : ((map['customAttributes'] as Map).cast<String, String>()).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      eventTypes: map['eventTypes'] == null ? null : ((map['eventTypes'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      objectNamePrefix: map['objectNamePrefix'] == null ? null : (map['objectNamePrefix'] as String).input(),
-      payloadFormat: map['payloadFormat'] == null ? null : (map['payloadFormat'] as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
-      userProject: map['userProject'] == null ? null : (map['userProject'] as String).input(),
+      customAttributes: map['customAttributes'] == null ? null : ((map['customAttributes']! as Map).cast<String, String>()).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      eventTypes: map['eventTypes'] == null ? null : ((map['eventTypes']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      objectNamePrefix: map['objectNamePrefix'] == null ? null : (map['objectNamePrefix']! as String).input(),
+      payloadFormat: map['payloadFormat'] == null ? null : (map['payloadFormat']! as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
+      userProject: map['userProject'] == null ? null : (map['userProject']! as String).input(),
     );
   }
 }

@@ -92,20 +92,20 @@ class AutomaticScalingAppengineV1beta {
 
   factory AutomaticScalingAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return AutomaticScalingAppengineV1beta(
-      coolDownPeriod: map['coolDownPeriod'] == null ? null : (map['coolDownPeriod'] as String).input(),
-      cpuUtilization: map['cpuUtilization'] == null ? null : (CpuUtilizationAppengineV1beta.fromMap((map['cpuUtilization'] as Map).cast<String, dynamic>())).input(),
-      customMetrics: map['customMetrics'] == null ? null : (pulumi.Input.decodeList<CustomMetric>(map['customMetrics'], (value) => CustomMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      diskUtilization: map['diskUtilization'] == null ? null : (DiskUtilizationAppengineV1beta.fromMap((map['diskUtilization'] as Map).cast<String, dynamic>())).input(),
-      maxConcurrentRequests: map['maxConcurrentRequests'] == null ? null : (map['maxConcurrentRequests'] as int).input(),
-      maxIdleInstances: map['maxIdleInstances'] == null ? null : (map['maxIdleInstances'] as int).input(),
-      maxPendingLatency: map['maxPendingLatency'] == null ? null : (map['maxPendingLatency'] as String).input(),
-      maxTotalInstances: map['maxTotalInstances'] == null ? null : (map['maxTotalInstances'] as int).input(),
-      minIdleInstances: map['minIdleInstances'] == null ? null : (map['minIdleInstances'] as int).input(),
-      minPendingLatency: map['minPendingLatency'] == null ? null : (map['minPendingLatency'] as String).input(),
-      minTotalInstances: map['minTotalInstances'] == null ? null : (map['minTotalInstances'] as int).input(),
-      networkUtilization: map['networkUtilization'] == null ? null : (NetworkUtilizationAppengineV1beta.fromMap((map['networkUtilization'] as Map).cast<String, dynamic>())).input(),
-      requestUtilization: map['requestUtilization'] == null ? null : (RequestUtilizationAppengineV1beta.fromMap((map['requestUtilization'] as Map).cast<String, dynamic>())).input(),
-      standardSchedulerSettings: map['standardSchedulerSettings'] == null ? null : (StandardSchedulerSettingsAppengineV1beta.fromMap((map['standardSchedulerSettings'] as Map).cast<String, dynamic>())).input(),
+      coolDownPeriod: map['coolDownPeriod'] == null ? null : (map['coolDownPeriod']! as String).input(),
+      cpuUtilization: map['cpuUtilization'] == null ? null : (CpuUtilizationAppengineV1beta.fromMap((map['cpuUtilization']! as Map).cast<String, dynamic>())).input(),
+      customMetrics: map['customMetrics'] == null ? null : (pulumi.Input.decodeList<CustomMetric>(map['customMetrics']!, (value) => CustomMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      diskUtilization: map['diskUtilization'] == null ? null : (DiskUtilizationAppengineV1beta.fromMap((map['diskUtilization']! as Map).cast<String, dynamic>())).input(),
+      maxConcurrentRequests: map['maxConcurrentRequests'] == null ? null : (map['maxConcurrentRequests']! as int).input(),
+      maxIdleInstances: map['maxIdleInstances'] == null ? null : (map['maxIdleInstances']! as int).input(),
+      maxPendingLatency: map['maxPendingLatency'] == null ? null : (map['maxPendingLatency']! as String).input(),
+      maxTotalInstances: map['maxTotalInstances'] == null ? null : (map['maxTotalInstances']! as int).input(),
+      minIdleInstances: map['minIdleInstances'] == null ? null : (map['minIdleInstances']! as int).input(),
+      minPendingLatency: map['minPendingLatency'] == null ? null : (map['minPendingLatency']! as String).input(),
+      minTotalInstances: map['minTotalInstances'] == null ? null : (map['minTotalInstances']! as int).input(),
+      networkUtilization: map['networkUtilization'] == null ? null : (NetworkUtilizationAppengineV1beta.fromMap((map['networkUtilization']! as Map).cast<String, dynamic>())).input(),
+      requestUtilization: map['requestUtilization'] == null ? null : (RequestUtilizationAppengineV1beta.fromMap((map['requestUtilization']! as Map).cast<String, dynamic>())).input(),
+      standardSchedulerSettings: map['standardSchedulerSettings'] == null ? null : (StandardSchedulerSettingsAppengineV1beta.fromMap((map['standardSchedulerSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

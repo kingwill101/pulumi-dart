@@ -46,12 +46,12 @@ class ChannelSmsState {
 
   factory ChannelSmsState.fromMap(Map<String, dynamic> map) {
     return ChannelSmsState(
-      botName: map['botName'] == null ? null : (map['botName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      smsChannelAccountSecurityId: map['smsChannelAccountSecurityId'] == null ? null : (map['smsChannelAccountSecurityId'] as String).input(),
-      smsChannelAuthToken: map['smsChannelAuthToken'] == null ? null : (map['smsChannelAuthToken'] as String).input(),
+      botName: map['botName'] == null ? null : (map['botName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      smsChannelAccountSecurityId: map['smsChannelAccountSecurityId'] == null ? null : (map['smsChannelAccountSecurityId']! as String).input(),
+      smsChannelAuthToken: map['smsChannelAuthToken'] == null ? null : (map['smsChannelAuthToken']! as String).input(),
     );
   }
 }

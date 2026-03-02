@@ -60,14 +60,14 @@ class WorkspaceArgs {
 
   factory WorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceArgs(
-      keyVaultIdentifierId: map['keyVaultIdentifierId'] == null ? null : (map['keyVaultIdentifierId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      keyVaultIdentifierId: map['keyVaultIdentifierId'] == null ? null : (map['keyVaultIdentifierId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       ownerEmail: (map['ownerEmail'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       userStorageAccountId: (map['userStorageAccountId'] as String).input(),
-      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName'] as String).input(),
+      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName']! as String).input(),
     );
   }
 }

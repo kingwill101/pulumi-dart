@@ -25,7 +25,7 @@ class DomainCpuCache {
 
   factory DomainCpuCache.fromMap(Map<String, dynamic> map) {
     return DomainCpuCache(
-      level: map['level'] == null ? null : (map['level'] as double).input(),
+      level: map['level'] == null ? null : (map['level']! as double).input(),
       mode: (map['mode'] as String).input(),
     );
   }

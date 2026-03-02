@@ -32,9 +32,9 @@ class GrafeasV1beta1BuildDetails {
 
   factory GrafeasV1beta1BuildDetails.fromMap(Map<String, dynamic> map) {
     return GrafeasV1beta1BuildDetails(
-      inTotoSlsaProvenanceV1: map['inTotoSlsaProvenanceV1'] == null ? null : (InTotoSlsaProvenanceV1ContaineranalysisV1beta1.fromMap((map['inTotoSlsaProvenanceV1'] as Map).cast<String, dynamic>())).input(),
+      inTotoSlsaProvenanceV1: map['inTotoSlsaProvenanceV1'] == null ? null : (InTotoSlsaProvenanceV1ContaineranalysisV1beta1.fromMap((map['inTotoSlsaProvenanceV1']! as Map).cast<String, dynamic>())).input(),
       provenance: (BuildProvenanceContaineranalysisV1beta1.fromMap((map['provenance'] as Map).cast<String, dynamic>())).input(),
-      provenanceBytes: map['provenanceBytes'] == null ? null : (map['provenanceBytes'] as String).input(),
+      provenanceBytes: map['provenanceBytes'] == null ? null : (map['provenanceBytes']! as String).input(),
     );
   }
 }

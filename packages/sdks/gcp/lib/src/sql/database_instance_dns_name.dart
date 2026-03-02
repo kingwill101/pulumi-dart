@@ -33,9 +33,9 @@ class DatabaseInstanceDnsName {
 
   factory DatabaseInstanceDnsName.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceDnsName(
-      connectionType: map['connectionType'] == null ? null : (map['connectionType'] as String).input(),
-      dnsScope: map['dnsScope'] == null ? null : (map['dnsScope'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      connectionType: map['connectionType'] == null ? null : (map['connectionType']! as String).input(),
+      dnsScope: map['dnsScope'] == null ? null : (map['dnsScope']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

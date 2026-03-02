@@ -25,8 +25,8 @@ class TableImportTableInputFormatOptionsCsv {
 
   factory TableImportTableInputFormatOptionsCsv.fromMap(Map<String, dynamic> map) {
     return TableImportTableInputFormatOptionsCsv(
-      delimiter: map['delimiter'] == null ? null : (map['delimiter'] as String).input(),
-      headerLists: map['headerLists'] == null ? null : ((map['headerLists'] as List).cast<String>()).input(),
+      delimiter: map['delimiter'] == null ? null : ((map['delimiter'] as String).input()).input(),
+      headerLists: map['headerLists'] == null ? null : (((map['headerLists'] as List).cast<String>()).input()).input(),
     );
   }
 }

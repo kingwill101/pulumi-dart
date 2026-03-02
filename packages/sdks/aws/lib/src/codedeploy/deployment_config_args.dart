@@ -52,12 +52,12 @@ class DeploymentConfigArgs {
 
   factory DeploymentConfigArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentConfigArgs(
-      computePlatform: map['computePlatform'] == null ? null : (map['computePlatform'] as String).input(),
-      deploymentConfigName: map['deploymentConfigName'] == null ? null : (map['deploymentConfigName'] as String).input(),
-      minimumHealthyHosts: map['minimumHealthyHosts'] == null ? null : (DeploymentConfigMinimumHealthyHosts.fromMap((map['minimumHealthyHosts'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      trafficRoutingConfig: map['trafficRoutingConfig'] == null ? null : (DeploymentConfigTrafficRoutingConfig.fromMap((map['trafficRoutingConfig'] as Map).cast<String, dynamic>())).input(),
-      zonalConfig: map['zonalConfig'] == null ? null : (DeploymentConfigZonalConfig.fromMap((map['zonalConfig'] as Map).cast<String, dynamic>())).input(),
+      computePlatform: map['computePlatform'] == null ? null : ((map['computePlatform'] as String).input()).input(),
+      deploymentConfigName: map['deploymentConfigName'] == null ? null : ((map['deploymentConfigName'] as String).input()).input(),
+      minimumHealthyHosts: map['minimumHealthyHosts'] == null ? null : ((DeploymentConfigMinimumHealthyHosts.fromMap((map['minimumHealthyHosts']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      trafficRoutingConfig: map['trafficRoutingConfig'] == null ? null : ((DeploymentConfigTrafficRoutingConfig.fromMap((map['trafficRoutingConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      zonalConfig: map['zonalConfig'] == null ? null : ((DeploymentConfigZonalConfig.fromMap((map['zonalConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

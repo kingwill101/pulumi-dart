@@ -68,14 +68,14 @@ class InventoryArgs {
   factory InventoryArgs.fromMap(Map<String, dynamic> map) {
     return InventoryArgs(
       bucket: (map['bucket'] as String).input(),
-      destination: (InventoryDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      filter: map['filter'] == null ? null : (InventoryFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      destination: (InventoryDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      filter: map['filter'] == null ? null : ((InventoryFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input()).input(),
       includedObjectVersions: (map['includedObjectVersions'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      optionalFields: map['optionalFields'] == null ? null : ((map['optionalFields'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      schedule: (InventorySchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      optionalFields: map['optionalFields'] == null ? null : (((map['optionalFields'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      schedule: (InventorySchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

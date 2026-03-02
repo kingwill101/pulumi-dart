@@ -45,10 +45,10 @@ class CertificateArgs {
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
       certificateId: (map['certificateId'] as String).input(),
-      certificatePem: map['certificatePem'] == null ? null : (map['certificatePem'] as String).input(),
-      certificateWallet: map['certificateWallet'] == null ? null : (map['certificateWallet'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      certificatePem: map['certificatePem'] == null ? null : ((map['certificatePem'] as String).input()).input(),
+      certificateWallet: map['certificateWallet'] == null ? null : ((map['certificateWallet'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

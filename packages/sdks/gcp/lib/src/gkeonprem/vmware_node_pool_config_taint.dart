@@ -31,7 +31,7 @@ class VMwareNodePoolConfigTaint {
 
   factory VMwareNodePoolConfigTaint.fromMap(Map<String, dynamic> map) {
     return VMwareNodePoolConfigTaint(
-      effect: map['effect'] == null ? null : (map['effect'] as String).input(),
+      effect: map['effect'] == null ? null : (map['effect']! as String).input(),
       key: (map['key'] as String).input(),
       value: (map['value'] as String).input(),
     );

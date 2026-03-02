@@ -36,10 +36,10 @@ class DeviceState {
 
   factory DeviceState.fromMap(Map<String, dynamic> map) {
     return DeviceState(
-      configsyncIp: map['configsyncIp'] == null ? null : (map['configsyncIp'] as String).input(),
-      mirrorIp: map['mirrorIp'] == null ? null : (map['mirrorIp'] as String).input(),
-      mirrorSecondaryIp: map['mirrorSecondaryIp'] == null ? null : (map['mirrorSecondaryIp'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      configsyncIp: map['configsyncIp'] == null ? null : (map['configsyncIp']! as String).input(),
+      mirrorIp: map['mirrorIp'] == null ? null : (map['mirrorIp']! as String).input(),
+      mirrorSecondaryIp: map['mirrorSecondaryIp'] == null ? null : (map['mirrorSecondaryIp']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

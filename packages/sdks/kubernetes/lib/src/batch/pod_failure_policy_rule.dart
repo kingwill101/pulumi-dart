@@ -44,8 +44,8 @@ class PodFailurePolicyRule {
   factory PodFailurePolicyRule.fromMap(Map<String, dynamic> map) {
     return PodFailurePolicyRule(
       action: (map['action'] as String).input(),
-      onExitCodes: map['onExitCodes'] == null ? null : (PodFailurePolicyOnExitCodesRequirement.fromMap((map['onExitCodes'] as Map).cast<String, dynamic>())).input(),
-      onPodConditions: map['onPodConditions'] == null ? null : (pulumi.Input.decodeList<PodFailurePolicyOnPodConditionsPattern>(map['onPodConditions'], (value) => PodFailurePolicyOnPodConditionsPattern.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      onExitCodes: map['onExitCodes'] == null ? null : (PodFailurePolicyOnExitCodesRequirement.fromMap((map['onExitCodes']! as Map).cast<String, dynamic>())).input(),
+      onPodConditions: map['onPodConditions'] == null ? null : (pulumi.Input.decodeList<PodFailurePolicyOnPodConditionsPattern>(map['onPodConditions']!, (value) => PodFailurePolicyOnPodConditionsPattern.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

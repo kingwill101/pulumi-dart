@@ -105,22 +105,22 @@ class CacheProperties {
   factory CacheProperties.fromMap(Map<String, dynamic> map) {
     return CacheProperties(
       cacheSubnetResourceId: (map['cacheSubnetResourceId'] as String).input(),
-      cifsChangeNotifications: map['cifsChangeNotifications'] == null ? null : (map['cifsChangeNotifications'] as String).input(),
+      cifsChangeNotifications: map['cifsChangeNotifications'] == null ? null : (map['cifsChangeNotifications']! as String).input(),
       encryptionKeySource: (map['encryptionKeySource'] as String).input(),
-      exportPolicy: map['exportPolicy'] == null ? null : (CachePropertiesExportPolicy.fromMap((map['exportPolicy'] as Map).cast<String, dynamic>())).input(),
+      exportPolicy: map['exportPolicy'] == null ? null : (CachePropertiesExportPolicy.fromMap((map['exportPolicy']! as Map).cast<String, dynamic>())).input(),
       filepath: (map['filepath'] as String).input(),
-      globalFileLocking: map['globalFileLocking'] == null ? null : (map['globalFileLocking'] as String).input(),
-      kerberos: map['kerberos'] == null ? null : (map['kerberos'] as String).input(),
-      keyVaultPrivateEndpointResourceId: map['keyVaultPrivateEndpointResourceId'] == null ? null : (map['keyVaultPrivateEndpointResourceId'] as String).input(),
-      ldap: map['ldap'] == null ? null : (map['ldap'] as String).input(),
-      ldapServerType: map['ldapServerType'] == null ? null : (map['ldapServerType'] as String).input(),
+      globalFileLocking: map['globalFileLocking'] == null ? null : (map['globalFileLocking']! as String).input(),
+      kerberos: map['kerberos'] == null ? null : (map['kerberos']! as String).input(),
+      keyVaultPrivateEndpointResourceId: map['keyVaultPrivateEndpointResourceId'] == null ? null : (map['keyVaultPrivateEndpointResourceId']! as String).input(),
+      ldap: map['ldap'] == null ? null : (map['ldap']! as String).input(),
+      ldapServerType: map['ldapServerType'] == null ? null : (map['ldapServerType']! as String).input(),
       originClusterInformation: (OriginClusterInformation.fromMap((map['originClusterInformation'] as Map).cast<String, dynamic>())).input(),
       peeringSubnetResourceId: (map['peeringSubnetResourceId'] as String).input(),
-      protocolTypes: map['protocolTypes'] == null ? null : ((map['protocolTypes'] as List).cast<String>()).input(),
+      protocolTypes: map['protocolTypes'] == null ? null : ((map['protocolTypes']! as List).cast<String>()).input(),
       size: (map['size'] as double).input(),
-      smbSettings: map['smbSettings'] == null ? null : (SmbSettings.fromMap((map['smbSettings'] as Map).cast<String, dynamic>())).input(),
-      throughputMibps: map['throughputMibps'] == null ? null : (map['throughputMibps'] as double).input(),
-      writeBack: map['writeBack'] == null ? null : (map['writeBack'] as String).input(),
+      smbSettings: map['smbSettings'] == null ? null : (SmbSettings.fromMap((map['smbSettings']! as Map).cast<String, dynamic>())).input(),
+      throughputMibps: map['throughputMibps'] == null ? null : (map['throughputMibps']! as double).input(),
+      writeBack: map['writeBack'] == null ? null : (map['writeBack']! as String).input(),
     );
   }
 }

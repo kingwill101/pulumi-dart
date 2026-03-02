@@ -21,7 +21,7 @@ class CifsUserResponse {
 
   factory CifsUserResponse.fromMap(Map<String, dynamic> map) {
     return CifsUserResponse(
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

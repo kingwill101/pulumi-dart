@@ -55,13 +55,13 @@ class SystemTopicArgs {
 
   factory SystemTopicArgs.fromMap(Map<String, dynamic> map) {
     return SystemTopicArgs(
-      identity: map['identity'] == null ? null : (IdentityInfo.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      identity: map['identity'] == null ? null : (IdentityInfo.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      systemTopicName: map['systemTopicName'] == null ? null : (map['systemTopicName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      topicType: map['topicType'] == null ? null : (map['topicType'] as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      systemTopicName: map['systemTopicName'] == null ? null : (map['systemTopicName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      topicType: map['topicType'] == null ? null : (map['topicType']! as String).input(),
     );
   }
 }

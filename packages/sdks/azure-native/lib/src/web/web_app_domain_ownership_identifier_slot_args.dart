@@ -49,12 +49,12 @@ class WebAppDomainOwnershipIdentifierSlotArgs {
 
   factory WebAppDomainOwnershipIdentifierSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppDomainOwnershipIdentifierSlotArgs(
-      domainOwnershipIdentifierName: map['domainOwnershipIdentifierName'] == null ? null : (map['domainOwnershipIdentifierName'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      domainOwnershipIdentifierName: map['domainOwnershipIdentifierName'] == null ? null : (map['domainOwnershipIdentifierName']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       slot: (map['slot'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

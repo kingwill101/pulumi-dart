@@ -21,7 +21,7 @@ class ContainerInfo {
 
   factory ContainerInfo.fromMap(Map<String, dynamic> map) {
     return ContainerInfo(
-      image: map['image'] == null ? null : (map['image'] as String).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
     );
   }
 }

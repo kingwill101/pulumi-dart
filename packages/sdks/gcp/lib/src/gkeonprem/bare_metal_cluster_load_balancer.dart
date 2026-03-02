@@ -50,9 +50,9 @@ class BareMetalClusterLoadBalancer {
 
   factory BareMetalClusterLoadBalancer.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterLoadBalancer(
-      bgpLbConfig: map['bgpLbConfig'] == null ? null : (BareMetalClusterLoadBalancerBgpLbConfig.fromMap((map['bgpLbConfig'] as Map).cast<String, dynamic>())).input(),
-      manualLbConfig: map['manualLbConfig'] == null ? null : (BareMetalClusterLoadBalancerManualLbConfig.fromMap((map['manualLbConfig'] as Map).cast<String, dynamic>())).input(),
-      metalLbConfig: map['metalLbConfig'] == null ? null : (BareMetalClusterLoadBalancerMetalLbConfig.fromMap((map['metalLbConfig'] as Map).cast<String, dynamic>())).input(),
+      bgpLbConfig: map['bgpLbConfig'] == null ? null : (BareMetalClusterLoadBalancerBgpLbConfig.fromMap((map['bgpLbConfig']! as Map).cast<String, dynamic>())).input(),
+      manualLbConfig: map['manualLbConfig'] == null ? null : (BareMetalClusterLoadBalancerManualLbConfig.fromMap((map['manualLbConfig']! as Map).cast<String, dynamic>())).input(),
+      metalLbConfig: map['metalLbConfig'] == null ? null : (BareMetalClusterLoadBalancerMetalLbConfig.fromMap((map['metalLbConfig']! as Map).cast<String, dynamic>())).input(),
       portConfig: (BareMetalClusterLoadBalancerPortConfig.fromMap((map['portConfig'] as Map).cast<String, dynamic>())).input(),
       vipConfig: (BareMetalClusterLoadBalancerVipConfig.fromMap((map['vipConfig'] as Map).cast<String, dynamic>())).input(),
     );

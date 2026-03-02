@@ -59,13 +59,13 @@ class BindingState {
 
   factory BindingState.fromMap(Map<String, dynamic> map) {
     return BindingState(
-      argument: map['argument'] == null ? null : (map['argument'] as String).input(),
-      bindingKey: map['bindingKey'] == null ? null : (map['bindingKey'] as String).input(),
-      bindingType: map['bindingType'] == null ? null : (map['bindingType'] as String).input(),
-      destinationName: map['destinationName'] == null ? null : (map['destinationName'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      sourceExchange: map['sourceExchange'] == null ? null : (map['sourceExchange'] as String).input(),
-      virtualHostName: map['virtualHostName'] == null ? null : (map['virtualHostName'] as String).input(),
+      argument: map['argument'] == null ? null : (map['argument']! as String).input(),
+      bindingKey: map['bindingKey'] == null ? null : (map['bindingKey']! as String).input(),
+      bindingType: map['bindingType'] == null ? null : (map['bindingType']! as String).input(),
+      destinationName: map['destinationName'] == null ? null : (map['destinationName']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      sourceExchange: map['sourceExchange'] == null ? null : (map['sourceExchange']! as String).input(),
+      virtualHostName: map['virtualHostName'] == null ? null : (map['virtualHostName']! as String).input(),
     );
   }
 }

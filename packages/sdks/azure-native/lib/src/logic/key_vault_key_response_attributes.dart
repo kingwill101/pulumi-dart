@@ -31,9 +31,9 @@ class KeyVaultKeyResponseAttributes {
 
   factory KeyVaultKeyResponseAttributes.fromMap(Map<String, dynamic> map) {
     return KeyVaultKeyResponseAttributes(
-      created: map['created'] == null ? null : (map['created'] as double).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      updated: map['updated'] == null ? null : (map['updated'] as double).input(),
+      created: map['created'] == null ? null : (map['created']! as double).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      updated: map['updated'] == null ? null : (map['updated']! as double).input(),
     );
   }
 }

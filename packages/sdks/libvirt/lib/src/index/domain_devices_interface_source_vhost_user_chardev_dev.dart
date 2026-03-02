@@ -27,7 +27,7 @@ class DomainDevicesInterfaceSourceVhostUserChardevDev {
   factory DomainDevicesInterfaceSourceVhostUserChardevDev.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceVhostUserChardevDev(
       path: (map['path'] as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesInterfaceSourceVhostUserChardevDevSecLabel>(map['secLabels'], (value) => DomainDevicesInterfaceSourceVhostUserChardevDevSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesInterfaceSourceVhostUserChardevDevSecLabel>(map['secLabels']!, (value) => DomainDevicesInterfaceSourceVhostUserChardevDevSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

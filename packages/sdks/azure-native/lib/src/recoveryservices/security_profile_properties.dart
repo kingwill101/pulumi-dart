@@ -41,11 +41,11 @@ class SecurityProfileProperties {
 
   factory SecurityProfileProperties.fromMap(Map<String, dynamic> map) {
     return SecurityProfileProperties(
-      targetVmConfidentialEncryption: map['targetVmConfidentialEncryption'] == null ? null : (map['targetVmConfidentialEncryption'] as String).input(),
-      targetVmMonitoring: map['targetVmMonitoring'] == null ? null : (map['targetVmMonitoring'] as String).input(),
-      targetVmSecureBoot: map['targetVmSecureBoot'] == null ? null : (map['targetVmSecureBoot'] as String).input(),
-      targetVmSecurityType: map['targetVmSecurityType'] == null ? null : (map['targetVmSecurityType'] as String).input(),
-      targetVmTpm: map['targetVmTpm'] == null ? null : (map['targetVmTpm'] as String).input(),
+      targetVmConfidentialEncryption: map['targetVmConfidentialEncryption'] == null ? null : (map['targetVmConfidentialEncryption']! as String).input(),
+      targetVmMonitoring: map['targetVmMonitoring'] == null ? null : (map['targetVmMonitoring']! as String).input(),
+      targetVmSecureBoot: map['targetVmSecureBoot'] == null ? null : (map['targetVmSecureBoot']! as String).input(),
+      targetVmSecurityType: map['targetVmSecurityType'] == null ? null : (map['targetVmSecurityType']! as String).input(),
+      targetVmTpm: map['targetVmTpm'] == null ? null : (map['targetVmTpm']! as String).input(),
     );
   }
 }

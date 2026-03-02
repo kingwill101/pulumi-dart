@@ -55,14 +55,14 @@ class GetTrafficPolicyDocumentRuleLocation {
 
   factory GetTrafficPolicyDocumentRuleLocation.fromMap(Map<String, dynamic> map) {
     return GetTrafficPolicyDocumentRuleLocation(
-      continent: map['continent'] == null ? null : (map['continent'] as String).input(),
-      country: map['country'] == null ? null : (map['country'] as String).input(),
-      endpointReference: map['endpointReference'] == null ? null : (map['endpointReference'] as String).input(),
-      evaluateTargetHealth: map['evaluateTargetHealth'] == null ? null : (map['evaluateTargetHealth'] as bool).input(),
-      healthCheck: map['healthCheck'] == null ? null : (map['healthCheck'] as String).input(),
-      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
-      ruleReference: map['ruleReference'] == null ? null : (map['ruleReference'] as String).input(),
-      subdivision: map['subdivision'] == null ? null : (map['subdivision'] as String).input(),
+      continent: map['continent'] == null ? null : ((map['continent'] as String).input()).input(),
+      country: map['country'] == null ? null : ((map['country'] as String).input()).input(),
+      endpointReference: map['endpointReference'] == null ? null : ((map['endpointReference'] as String).input()).input(),
+      evaluateTargetHealth: map['evaluateTargetHealth'] == null ? null : ((map['evaluateTargetHealth'] as bool).input()).input(),
+      healthCheck: map['healthCheck'] == null ? null : ((map['healthCheck'] as String).input()).input(),
+      isDefault: map['isDefault'] == null ? null : ((map['isDefault'] as bool).input()).input(),
+      ruleReference: map['ruleReference'] == null ? null : ((map['ruleReference'] as String).input()).input(),
+      subdivision: map['subdivision'] == null ? null : ((map['subdivision'] as String).input()).input(),
     );
   }
 }

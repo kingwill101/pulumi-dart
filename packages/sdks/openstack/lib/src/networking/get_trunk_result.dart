@@ -70,18 +70,18 @@ class GetTrunkResult {
 
   factory GetTrunkResult.fromMap(Map<String, dynamic> map) {
     return GetTrunkResult(
-      adminStateUp: map['adminStateUp'] == null ? null : map['adminStateUp'] as bool,
+      adminStateUp: map['adminStateUp'] == null ? null : map['adminStateUp']! as bool,
       allTags: (map['allTags'] as List).cast<String>(),
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      portId: map['portId'] == null ? null : map['portId'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
+      portId: map['portId'] == null ? null : map['portId']! as String,
       projectId: map['projectId'] as String,
       region: map['region'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
       subPorts: pulumi.Input.decodeList<GetTrunkSubPort>(map['subPorts'], (value) => GetTrunkSubPort.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>(),
-      trunkId: map['trunkId'] == null ? null : map['trunkId'] as String,
+      tags: map['tags'] == null ? null : (map['tags']! as List).cast<String>(),
+      trunkId: map['trunkId'] == null ? null : map['trunkId']! as String,
     );
   }
 }

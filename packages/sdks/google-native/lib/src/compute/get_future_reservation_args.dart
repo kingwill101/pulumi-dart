@@ -32,7 +32,7 @@ class GetFutureReservationArgs {
   factory GetFutureReservationArgs.fromMap(Map<String, dynamic> map) {
     return GetFutureReservationArgs(
       futureReservation: (map['futureReservation'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       zone: (map['zone'] as String).input(),
     );
   }

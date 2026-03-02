@@ -23,7 +23,7 @@ class Authorization {
 
   factory Authorization.fromMap(Map<String, dynamic> map) {
     return Authorization(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
     );
   }
 }

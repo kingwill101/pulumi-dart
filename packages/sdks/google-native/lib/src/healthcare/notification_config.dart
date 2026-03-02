@@ -26,8 +26,8 @@ class NotificationConfig {
 
   factory NotificationConfig.fromMap(Map<String, dynamic> map) {
     return NotificationConfig(
-      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic'] as String).input(),
-      sendForBulkImport: map['sendForBulkImport'] == null ? null : (map['sendForBulkImport'] as bool).input(),
+      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic']! as String).input(),
+      sendForBulkImport: map['sendForBulkImport'] == null ? null : (map['sendForBulkImport']! as bool).input(),
     );
   }
 }

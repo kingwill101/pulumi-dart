@@ -30,9 +30,9 @@ class ModelPackageGroupPolicyState {
 
   factory ModelPackageGroupPolicyState.fromMap(Map<String, dynamic> map) {
     return ModelPackageGroupPolicyState(
-      modelPackageGroupName: map['modelPackageGroupName'] == null ? null : (map['modelPackageGroupName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourcePolicy: map['resourcePolicy'] == null ? null : (map['resourcePolicy'] as String).input(),
+      modelPackageGroupName: map['modelPackageGroupName'] == null ? null : ((map['modelPackageGroupName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourcePolicy: map['resourcePolicy'] == null ? null : ((map['resourcePolicy'] as String).input()).input(),
     );
   }
 }

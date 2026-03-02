@@ -50,11 +50,11 @@ class SubscriptionRuleArgs {
 
   factory SubscriptionRuleArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionRuleArgs(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      correlationFilter: map['correlationFilter'] == null ? null : (SubscriptionRuleCorrelationFilter.fromMap((map['correlationFilter'] as Map).cast<String, dynamic>())).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      correlationFilter: map['correlationFilter'] == null ? null : (SubscriptionRuleCorrelationFilter.fromMap((map['correlationFilter']! as Map).cast<String, dynamic>())).input(),
       filterType: (map['filterType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sqlFilter: map['sqlFilter'] == null ? null : (map['sqlFilter'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sqlFilter: map['sqlFilter'] == null ? null : (map['sqlFilter']! as String).input(),
       subscriptionId: (map['subscriptionId'] as String).input(),
     );
   }

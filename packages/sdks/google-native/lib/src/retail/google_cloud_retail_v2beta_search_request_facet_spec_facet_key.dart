@@ -62,15 +62,15 @@ class GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey {
 
   factory GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey(
-      caseInsensitive: map['caseInsensitive'] == null ? null : (map['caseInsensitive'] as bool).input(),
-      contains: map['contains'] == null ? null : ((map['contains'] as List).cast<String>()).input(),
-      intervals: map['intervals'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRetailV2betaInterval>(map['intervals'], (value) => GoogleCloudRetailV2betaInterval.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      caseInsensitive: map['caseInsensitive'] == null ? null : (map['caseInsensitive']! as bool).input(),
+      contains: map['contains'] == null ? null : ((map['contains']! as List).cast<String>()).input(),
+      intervals: map['intervals'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRetailV2betaInterval>(map['intervals']!, (value) => GoogleCloudRetailV2betaInterval.fromMap((value as Map).cast<String, dynamic>()))).input(),
       key: (map['key'] as String).input(),
-      orderBy: map['orderBy'] == null ? null : (map['orderBy'] as String).input(),
-      prefixes: map['prefixes'] == null ? null : ((map['prefixes'] as List).cast<String>()).input(),
-      query: map['query'] == null ? null : (map['query'] as String).input(),
-      restrictedValues: map['restrictedValues'] == null ? null : ((map['restrictedValues'] as List).cast<String>()).input(),
-      returnMinMax: map['returnMinMax'] == null ? null : (map['returnMinMax'] as bool).input(),
+      orderBy: map['orderBy'] == null ? null : (map['orderBy']! as String).input(),
+      prefixes: map['prefixes'] == null ? null : ((map['prefixes']! as List).cast<String>()).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
+      restrictedValues: map['restrictedValues'] == null ? null : ((map['restrictedValues']! as List).cast<String>()).input(),
+      returnMinMax: map['returnMinMax'] == null ? null : (map['returnMinMax']! as bool).input(),
     );
   }
 }

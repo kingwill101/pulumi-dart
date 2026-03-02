@@ -25,8 +25,8 @@ class EndpointModelDeprecationPropertiesResponse {
 
   factory EndpointModelDeprecationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EndpointModelDeprecationPropertiesResponse(
-      fineTune: map['fineTune'] == null ? null : (map['fineTune'] as String).input(),
-      inference: map['inference'] == null ? null : (map['inference'] as String).input(),
+      fineTune: map['fineTune'] == null ? null : (map['fineTune']! as String).input(),
+      inference: map['inference'] == null ? null : (map['inference']! as String).input(),
     );
   }
 }

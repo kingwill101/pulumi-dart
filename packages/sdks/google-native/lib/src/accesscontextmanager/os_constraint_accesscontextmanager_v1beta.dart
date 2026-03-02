@@ -32,9 +32,9 @@ class OsConstraintAccesscontextmanagerV1beta {
 
   factory OsConstraintAccesscontextmanagerV1beta.fromMap(Map<String, dynamic> map) {
     return OsConstraintAccesscontextmanagerV1beta(
-      minimumVersion: map['minimumVersion'] == null ? null : (map['minimumVersion'] as String).input(),
+      minimumVersion: map['minimumVersion'] == null ? null : (map['minimumVersion']! as String).input(),
       osType: (OsConstraintOsTypeAccesscontextmanagerV1beta.fromValue(map['osType'] as String)).input(),
-      requireVerifiedChromeOs: map['requireVerifiedChromeOs'] == null ? null : (map['requireVerifiedChromeOs'] as bool).input(),
+      requireVerifiedChromeOs: map['requireVerifiedChromeOs'] == null ? null : (map['requireVerifiedChromeOs']! as bool).input(),
     );
   }
 }

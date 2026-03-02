@@ -31,7 +31,7 @@ class GetRegionWorkflowTemplateIamPolicyArgs {
 
   factory GetRegionWorkflowTemplateIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionWorkflowTemplateIamPolicyArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       regionId: (map['regionId'] as String).input(),
       workflowTemplateId: (map['workflowTemplateId'] as String).input(),
     );

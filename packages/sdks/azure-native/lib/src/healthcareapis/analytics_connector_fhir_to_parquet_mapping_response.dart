@@ -32,8 +32,8 @@ class AnalyticsConnectorFhirToParquetMappingResponse {
 
   factory AnalyticsConnectorFhirToParquetMappingResponse.fromMap(Map<String, dynamic> map) {
     return AnalyticsConnectorFhirToParquetMappingResponse(
-      extensionSchemaReference: map['extensionSchemaReference'] == null ? null : (map['extensionSchemaReference'] as String).input(),
-      filterConfigurationReference: map['filterConfigurationReference'] == null ? null : (map['filterConfigurationReference'] as String).input(),
+      extensionSchemaReference: map['extensionSchemaReference'] == null ? null : (map['extensionSchemaReference']! as String).input(),
+      filterConfigurationReference: map['filterConfigurationReference'] == null ? null : (map['filterConfigurationReference']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -34,9 +34,9 @@ class EnhancedSecurityComplianceDefinition {
 
   factory EnhancedSecurityComplianceDefinition.fromMap(Map<String, dynamic> map) {
     return EnhancedSecurityComplianceDefinition(
-      automaticClusterUpdate: map['automaticClusterUpdate'] == null ? null : (AutomaticClusterUpdateDefinition.fromMap((map['automaticClusterUpdate'] as Map).cast<String, dynamic>())).input(),
-      complianceSecurityProfile: map['complianceSecurityProfile'] == null ? null : (ComplianceSecurityProfileDefinition.fromMap((map['complianceSecurityProfile'] as Map).cast<String, dynamic>())).input(),
-      enhancedSecurityMonitoring: map['enhancedSecurityMonitoring'] == null ? null : (EnhancedSecurityMonitoringDefinition.fromMap((map['enhancedSecurityMonitoring'] as Map).cast<String, dynamic>())).input(),
+      automaticClusterUpdate: map['automaticClusterUpdate'] == null ? null : (AutomaticClusterUpdateDefinition.fromMap((map['automaticClusterUpdate']! as Map).cast<String, dynamic>())).input(),
+      complianceSecurityProfile: map['complianceSecurityProfile'] == null ? null : (ComplianceSecurityProfileDefinition.fromMap((map['complianceSecurityProfile']! as Map).cast<String, dynamic>())).input(),
+      enhancedSecurityMonitoring: map['enhancedSecurityMonitoring'] == null ? null : (EnhancedSecurityMonitoringDefinition.fromMap((map['enhancedSecurityMonitoring']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

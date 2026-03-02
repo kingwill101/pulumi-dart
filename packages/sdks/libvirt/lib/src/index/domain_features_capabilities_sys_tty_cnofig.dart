@@ -20,7 +20,7 @@ class DomainFeaturesCapabilitiesSysTtyCnofig {
 
   factory DomainFeaturesCapabilitiesSysTtyCnofig.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesSysTtyCnofig(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

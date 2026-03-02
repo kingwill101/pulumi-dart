@@ -59,14 +59,14 @@ class GetServerPlansArgs {
 
   factory GetServerPlansArgs.fromMap(Map<String, dynamic> map) {
     return GetServerPlansArgs(
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
-      core: map['core'] == null ? null : (map['core'] as int).input(),
-      diskSize: map['diskSize'] == null ? null : (map['diskSize'] as int).input(),
-      flow: map['flow'] == null ? null : (map['flow'] as int).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as double).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
+      core: map['core'] == null ? null : (map['core']! as int).input(),
+      diskSize: map['diskSize'] == null ? null : (map['diskSize']! as int).input(),
+      flow: map['flow'] == null ? null : (map['flow']! as int).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      memory: map['memory'] == null ? null : (map['memory']! as double).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      platform: map['platform'] == null ? null : (map['platform']! as String).input(),
     );
   }
 }

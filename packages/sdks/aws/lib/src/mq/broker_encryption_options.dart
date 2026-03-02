@@ -25,8 +25,8 @@ class BrokerEncryptionOptions {
 
   factory BrokerEncryptionOptions.fromMap(Map<String, dynamic> map) {
     return BrokerEncryptionOptions(
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      useAwsOwnedKey: map['useAwsOwnedKey'] == null ? null : (map['useAwsOwnedKey'] as bool).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      useAwsOwnedKey: map['useAwsOwnedKey'] == null ? null : ((map['useAwsOwnedKey'] as bool).input()).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class DeploymentSettingsGitAuthSSHAuth {
 
   factory DeploymentSettingsGitAuthSSHAuth.fromMap(Map<String, dynamic> map) {
     return DeploymentSettingsGitAuthSSHAuth(
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       sshPrivateKey: (map['sshPrivateKey'] as String).input(),
     );
   }

@@ -31,8 +31,8 @@ class LiveTraceConfiguration {
 
   factory LiveTraceConfiguration.fromMap(Map<String, dynamic> map) {
     return LiveTraceConfiguration(
-      categories: map['categories'] == null ? null : (pulumi.Input.decodeList<LiveTraceCategory>(map['categories'], (value) => LiveTraceCategory.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as String).input(),
+      categories: map['categories'] == null ? null : (pulumi.Input.decodeList<LiveTraceCategory>(map['categories']!, (value) => LiveTraceCategory.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as String).input(),
     );
   }
 }

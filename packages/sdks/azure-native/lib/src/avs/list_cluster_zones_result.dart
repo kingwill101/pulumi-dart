@@ -22,7 +22,7 @@ class ListClusterZonesResult {
 
   factory ListClusterZonesResult.fromMap(Map<String, dynamic> map) {
     return ListClusterZonesResult(
-      zones: map['zones'] == null ? null : pulumi.Input.decodeList<ClusterZoneResponse>(map['zones'], (value) => ClusterZoneResponse.fromMap((value as Map).cast<String, dynamic>())),
+      zones: map['zones'] == null ? null : pulumi.Input.decodeList<ClusterZoneResponse>(map['zones']!, (value) => ClusterZoneResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

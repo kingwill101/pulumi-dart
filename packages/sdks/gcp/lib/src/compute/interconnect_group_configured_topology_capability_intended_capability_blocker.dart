@@ -71,13 +71,13 @@ class InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker {
 
   factory InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker.fromMap(Map<String, dynamic> map) {
     return InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker(
-      blockerType: map['blockerType'] == null ? null : (map['blockerType'] as String).input(),
-      documentationLink: map['documentationLink'] == null ? null : (map['documentationLink'] as String).input(),
-      explanation: map['explanation'] == null ? null : (map['explanation'] as String).input(),
-      facilities: map['facilities'] == null ? null : ((map['facilities'] as List).cast<String>()).input(),
-      interconnects: map['interconnects'] == null ? null : ((map['interconnects'] as List).cast<String>()).input(),
-      metros: map['metros'] == null ? null : ((map['metros'] as List).cast<String>()).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      blockerType: map['blockerType'] == null ? null : (map['blockerType']! as String).input(),
+      documentationLink: map['documentationLink'] == null ? null : (map['documentationLink']! as String).input(),
+      explanation: map['explanation'] == null ? null : (map['explanation']! as String).input(),
+      facilities: map['facilities'] == null ? null : ((map['facilities']! as List).cast<String>()).input(),
+      interconnects: map['interconnects'] == null ? null : ((map['interconnects']! as List).cast<String>()).input(),
+      metros: map['metros'] == null ? null : ((map['metros']! as List).cast<String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

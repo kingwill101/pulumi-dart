@@ -37,8 +37,8 @@ class GetDatasetAiplatformV1beta1Args {
     return GetDatasetAiplatformV1beta1Args(
       datasetId: (map['datasetId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      readMask: map['readMask'] == null ? null : (map['readMask'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      readMask: map['readMask'] == null ? null : (map['readMask']! as String).input(),
     );
   }
 }

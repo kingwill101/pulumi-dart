@@ -28,8 +28,8 @@ class GoogleCloudDatapipelinesV1Workload {
 
   factory GoogleCloudDatapipelinesV1Workload.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatapipelinesV1Workload(
-      dataflowFlexTemplateRequest: map['dataflowFlexTemplateRequest'] == null ? null : (GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest.fromMap((map['dataflowFlexTemplateRequest'] as Map).cast<String, dynamic>())).input(),
-      dataflowLaunchTemplateRequest: map['dataflowLaunchTemplateRequest'] == null ? null : (GoogleCloudDatapipelinesV1LaunchTemplateRequest.fromMap((map['dataflowLaunchTemplateRequest'] as Map).cast<String, dynamic>())).input(),
+      dataflowFlexTemplateRequest: map['dataflowFlexTemplateRequest'] == null ? null : (GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest.fromMap((map['dataflowFlexTemplateRequest']! as Map).cast<String, dynamic>())).input(),
+      dataflowLaunchTemplateRequest: map['dataflowLaunchTemplateRequest'] == null ? null : (GoogleCloudDatapipelinesV1LaunchTemplateRequest.fromMap((map['dataflowLaunchTemplateRequest']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class GeneratorSummarizationContextFewShotExampleSummarizationSectionList {
 
   factory GeneratorSummarizationContextFewShotExampleSummarizationSectionList.fromMap(Map<String, dynamic> map) {
     return GeneratorSummarizationContextFewShotExampleSummarizationSectionList(
-      summarizationSections: map['summarizationSections'] == null ? null : (pulumi.Input.decodeList<GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection>(map['summarizationSections'], (value) => GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      summarizationSections: map['summarizationSections'] == null ? null : (pulumi.Input.decodeList<GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection>(map['summarizationSections']!, (value) => GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

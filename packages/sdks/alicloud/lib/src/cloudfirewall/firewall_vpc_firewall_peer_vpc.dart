@@ -51,13 +51,13 @@ class FirewallVpcFirewallPeerVpc {
 
   factory FirewallVpcFirewallPeerVpc.fromMap(Map<String, dynamic> map) {
     return FirewallVpcFirewallPeerVpc(
-      eniId: map['eniId'] == null ? null : (map['eniId'] as String).input(),
-      eniPrivateIpAddress: map['eniPrivateIpAddress'] == null ? null : (map['eniPrivateIpAddress'] as String).input(),
+      eniId: map['eniId'] == null ? null : (map['eniId']! as String).input(),
+      eniPrivateIpAddress: map['eniPrivateIpAddress'] == null ? null : (map['eniPrivateIpAddress']! as String).input(),
       peerVpcCidrTableLists: (pulumi.Input.decodeList<FirewallVpcFirewallPeerVpcPeerVpcCidrTableList>(map['peerVpcCidrTableLists'], (value) => FirewallVpcFirewallPeerVpcPeerVpcCidrTableList.fromMap((value as Map).cast<String, dynamic>()))).input(),
       regionNo: (map['regionNo'] as String).input(),
-      routerInterfaceId: map['routerInterfaceId'] == null ? null : (map['routerInterfaceId'] as String).input(),
+      routerInterfaceId: map['routerInterfaceId'] == null ? null : (map['routerInterfaceId']! as String).input(),
       vpcId: (map['vpcId'] as String).input(),
-      vpcName: map['vpcName'] == null ? null : (map['vpcName'] as String).input(),
+      vpcName: map['vpcName'] == null ? null : (map['vpcName']! as String).input(),
     );
   }
 }

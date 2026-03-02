@@ -21,7 +21,7 @@ class EndpointService {
 
   factory EndpointService.fromMap(Map<String, dynamic> map) {
     return EndpointService(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

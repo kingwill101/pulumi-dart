@@ -59,14 +59,14 @@ class VirtualAddressArgs {
 
   factory VirtualAddressArgs.fromMap(Map<String, dynamic> map) {
     return VirtualAddressArgs(
-      advertizeRoute: map['advertizeRoute'] == null ? null : (map['advertizeRoute'] as String).input(),
-      arp: map['arp'] == null ? null : (map['arp'] as bool).input(),
-      autoDelete: map['autoDelete'] == null ? null : (map['autoDelete'] as bool).input(),
-      connLimit: map['connLimit'] == null ? null : (map['connLimit'] as int).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      icmpEcho: map['icmpEcho'] == null ? null : (map['icmpEcho'] as String).input(),
+      advertizeRoute: map['advertizeRoute'] == null ? null : (map['advertizeRoute']! as String).input(),
+      arp: map['arp'] == null ? null : (map['arp']! as bool).input(),
+      autoDelete: map['autoDelete'] == null ? null : (map['autoDelete']! as bool).input(),
+      connLimit: map['connLimit'] == null ? null : (map['connLimit']! as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      icmpEcho: map['icmpEcho'] == null ? null : (map['icmpEcho']! as String).input(),
       name: (map['name'] as String).input(),
-      trafficGroup: map['trafficGroup'] == null ? null : (map['trafficGroup'] as String).input(),
+      trafficGroup: map['trafficGroup'] == null ? null : (map['trafficGroup']! as String).input(),
     );
   }
 }

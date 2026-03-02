@@ -42,7 +42,7 @@ class VirtualNetworkRuleArgs {
       accountName: (map['accountName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       subnetId: (map['subnetId'] as String).input(),
-      virtualNetworkRuleName: map['virtualNetworkRuleName'] == null ? null : (map['virtualNetworkRuleName'] as String).input(),
+      virtualNetworkRuleName: map['virtualNetworkRuleName'] == null ? null : (map['virtualNetworkRuleName']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment {
 
   factory DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment.fromMap(Map<String, dynamic> map) {
     return DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

@@ -24,8 +24,8 @@ class GrafeasV1beta1IntotoArtifact {
 
   factory GrafeasV1beta1IntotoArtifact.fromMap(Map<String, dynamic> map) {
     return GrafeasV1beta1IntotoArtifact(
-      hashes: map['hashes'] == null ? null : (ArtifactHashes.fromMap((map['hashes'] as Map).cast<String, dynamic>())).input(),
-      resourceUri: map['resourceUri'] == null ? null : (map['resourceUri'] as String).input(),
+      hashes: map['hashes'] == null ? null : (ArtifactHashes.fromMap((map['hashes']! as Map).cast<String, dynamic>())).input(),
+      resourceUri: map['resourceUri'] == null ? null : (map['resourceUri']! as String).input(),
     );
   }
 }

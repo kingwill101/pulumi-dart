@@ -48,9 +48,9 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec {
 
   factory AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec(
-      boost: map['boost'] == null ? null : (map['boost'] as double).input(),
-      boostControlSpecs: map['boostControlSpecs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec>(map['boostControlSpecs'], (value) => AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
+      boost: map['boost'] == null ? null : (map['boost']! as double).input(),
+      boostControlSpecs: map['boostControlSpecs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec>(map['boostControlSpecs']!, (value) => AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
     );
   }
 }

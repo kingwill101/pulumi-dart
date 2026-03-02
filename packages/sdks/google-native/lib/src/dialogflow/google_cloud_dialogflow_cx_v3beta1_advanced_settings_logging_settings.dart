@@ -26,8 +26,8 @@ class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings {
 
   factory GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings(
-      enableInteractionLogging: map['enableInteractionLogging'] == null ? null : (map['enableInteractionLogging'] as bool).input(),
-      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : (map['enableStackdriverLogging'] as bool).input(),
+      enableInteractionLogging: map['enableInteractionLogging'] == null ? null : (map['enableInteractionLogging']! as bool).input(),
+      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : (map['enableStackdriverLogging']! as bool).input(),
     );
   }
 }

@@ -56,7 +56,7 @@ class IoTAddonArgs {
 
   factory IoTAddonArgs.fromMap(Map<String, dynamic> map) {
     return IoTAddonArgs(
-      addonName: map['addonName'] == null ? null : (map['addonName'] as String).input(),
+      addonName: map['addonName'] == null ? null : (map['addonName']! as String).input(),
       deviceName: (map['deviceName'] as String).input(),
       ioTDeviceDetails: (IoTDeviceInfo.fromMap((map['ioTDeviceDetails'] as Map).cast<String, dynamic>())).input(),
       ioTEdgeDeviceDetails: (IoTDeviceInfo.fromMap((map['ioTEdgeDeviceDetails'] as Map).cast<String, dynamic>())).input(),

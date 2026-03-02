@@ -34,7 +34,7 @@ class GetJobArgs {
 
   factory GetJobArgs.fromMap(Map<String, dynamic> map) {
     return GetJobArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       jobName: (map['jobName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

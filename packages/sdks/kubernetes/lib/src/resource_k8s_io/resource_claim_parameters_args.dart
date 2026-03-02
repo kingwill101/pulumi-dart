@@ -54,12 +54,12 @@ class ResourceClaimParametersArgs {
 
   factory ResourceClaimParametersArgs.fromMap(Map<String, dynamic> map) {
     return ResourceClaimParametersArgs(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      driverRequests: map['driverRequests'] == null ? null : (pulumi.Input.decodeList<DriverRequests>(map['driverRequests'], (value) => DriverRequests.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      generatedFrom: map['generatedFrom'] == null ? null : (ResourceClaimParametersReferenceResourceK8sIoV1alpha2.fromMap((map['generatedFrom'] as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      shareable: map['shareable'] == null ? null : (map['shareable'] as bool).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      driverRequests: map['driverRequests'] == null ? null : (pulumi.Input.decodeList<DriverRequests>(map['driverRequests']!, (value) => DriverRequests.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      generatedFrom: map['generatedFrom'] == null ? null : (ResourceClaimParametersReferenceResourceK8sIoV1alpha2.fromMap((map['generatedFrom']! as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      shareable: map['shareable'] == null ? null : (map['shareable']! as bool).input(),
     );
   }
 }

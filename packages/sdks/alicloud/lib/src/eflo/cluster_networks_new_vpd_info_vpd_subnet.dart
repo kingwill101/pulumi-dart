@@ -29,9 +29,9 @@ class ClusterNetworksNewVpdInfoVpdSubnet {
 
   factory ClusterNetworksNewVpdInfoVpdSubnet.fromMap(Map<String, dynamic> map) {
     return ClusterNetworksNewVpdInfoVpdSubnet(
-      subnetCidr: map['subnetCidr'] == null ? null : (map['subnetCidr'] as String).input(),
-      subnetType: map['subnetType'] == null ? null : (map['subnetType'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      subnetCidr: map['subnetCidr'] == null ? null : (map['subnetCidr']! as String).input(),
+      subnetType: map['subnetType'] == null ? null : (map['subnetType']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

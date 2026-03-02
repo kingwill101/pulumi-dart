@@ -31,9 +31,9 @@ class SnmpState {
 
   factory SnmpState.fromMap(Map<String, dynamic> map) {
     return SnmpState(
-      allowedaddresses: map['allowedaddresses'] == null ? null : ((map['allowedaddresses'] as List).cast<String>()).input(),
-      sysContact: map['sysContact'] == null ? null : (map['sysContact'] as String).input(),
-      sysLocation: map['sysLocation'] == null ? null : (map['sysLocation'] as String).input(),
+      allowedaddresses: map['allowedaddresses'] == null ? null : ((map['allowedaddresses']! as List).cast<String>()).input(),
+      sysContact: map['sysContact'] == null ? null : (map['sysContact']! as String).input(),
+      sysLocation: map['sysLocation'] == null ? null : (map['sysLocation']! as String).input(),
     );
   }
 }

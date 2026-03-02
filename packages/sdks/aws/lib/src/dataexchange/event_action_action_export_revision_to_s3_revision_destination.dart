@@ -27,7 +27,7 @@ class EventActionActionExportRevisionToS3RevisionDestination {
   factory EventActionActionExportRevisionToS3RevisionDestination.fromMap(Map<String, dynamic> map) {
     return EventActionActionExportRevisionToS3RevisionDestination(
       bucket: (map['bucket'] as String).input(),
-      keyPattern: map['keyPattern'] == null ? null : (map['keyPattern'] as String).input(),
+      keyPattern: map['keyPattern'] == null ? null : ((map['keyPattern'] as String).input()).input(),
     );
   }
 }

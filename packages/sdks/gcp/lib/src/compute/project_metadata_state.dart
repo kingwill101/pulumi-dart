@@ -29,8 +29,8 @@ class ProjectMetadataState {
 
   factory ProjectMetadataState.fromMap(Map<String, dynamic> map) {
     return ProjectMetadataState(
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

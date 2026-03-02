@@ -27,8 +27,8 @@ class StorageVersionMigrationStatus {
 
   factory StorageVersionMigrationStatus.fromMap(Map<String, dynamic> map) {
     return StorageVersionMigrationStatus(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<MigrationCondition>(map['conditions'], (value) => MigrationCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceVersion: map['resourceVersion'] == null ? null : (map['resourceVersion'] as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<MigrationCondition>(map['conditions']!, (value) => MigrationCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceVersion: map['resourceVersion'] == null ? null : (map['resourceVersion']! as String).input(),
     );
   }
 }

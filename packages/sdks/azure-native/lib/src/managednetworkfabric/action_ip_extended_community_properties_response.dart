@@ -32,9 +32,9 @@ class ActionIpExtendedCommunityPropertiesResponse {
 
   factory ActionIpExtendedCommunityPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ActionIpExtendedCommunityPropertiesResponse(
-      add: map['add'] == null ? null : (IpExtendedCommunityIdListResponse.fromMap((map['add'] as Map).cast<String, dynamic>())).input(),
-      delete: map['delete'] == null ? null : (IpExtendedCommunityIdListResponse.fromMap((map['delete'] as Map).cast<String, dynamic>())).input(),
-      set: map['set'] == null ? null : (IpExtendedCommunityIdListResponse.fromMap((map['set'] as Map).cast<String, dynamic>())).input(),
+      add: map['add'] == null ? null : (IpExtendedCommunityIdListResponse.fromMap((map['add']! as Map).cast<String, dynamic>())).input(),
+      delete: map['delete'] == null ? null : (IpExtendedCommunityIdListResponse.fromMap((map['delete']! as Map).cast<String, dynamic>())).input(),
+      set: map['set'] == null ? null : (IpExtendedCommunityIdListResponse.fromMap((map['set']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

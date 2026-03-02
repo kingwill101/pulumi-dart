@@ -29,8 +29,8 @@ class GetQueuesArgs {
 
   factory GetQueuesArgs.fromMap(Map<String, dynamic> map) {
     return GetQueuesArgs(
-      queueNamePrefix: map['queueNamePrefix'] == null ? null : (map['queueNamePrefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      queueNamePrefix: map['queueNamePrefix'] == null ? null : ((map['queueNamePrefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -51,13 +51,13 @@ class RouteTableState {
 
   factory RouteTableState.fromMap(Map<String, dynamic> map) {
     return RouteTableState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      defaultAssociationRouteTable: map['defaultAssociationRouteTable'] == null ? null : (map['defaultAssociationRouteTable'] as bool).input(),
-      defaultPropagationRouteTable: map['defaultPropagationRouteTable'] == null ? null : (map['defaultPropagationRouteTable'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      transitGatewayId: map['transitGatewayId'] == null ? null : (map['transitGatewayId'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      defaultAssociationRouteTable: map['defaultAssociationRouteTable'] == null ? null : ((map['defaultAssociationRouteTable'] as bool).input()).input(),
+      defaultPropagationRouteTable: map['defaultPropagationRouteTable'] == null ? null : ((map['defaultPropagationRouteTable'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      transitGatewayId: map['transitGatewayId'] == null ? null : ((map['transitGatewayId'] as String).input()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class DomainDevicesDiskTransient {
 
   factory DomainDevicesDiskTransient.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskTransient(
-      shareBacking: map['shareBacking'] == null ? null : (map['shareBacking'] as String).input(),
+      shareBacking: map['shareBacking'] == null ? null : (map['shareBacking']! as String).input(),
     );
   }
 }

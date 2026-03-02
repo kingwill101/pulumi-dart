@@ -20,7 +20,7 @@ class DatascanExecutionSpecTriggerOneTime {
 
   factory DatascanExecutionSpecTriggerOneTime.fromMap(Map<String, dynamic> map) {
     return DatascanExecutionSpecTriggerOneTime(
-      ttlAfterScanCompletion: map['ttlAfterScanCompletion'] == null ? null : (map['ttlAfterScanCompletion'] as String).input(),
+      ttlAfterScanCompletion: map['ttlAfterScanCompletion'] == null ? null : (map['ttlAfterScanCompletion']! as String).input(),
     );
   }
 }

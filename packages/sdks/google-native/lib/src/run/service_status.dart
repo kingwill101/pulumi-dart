@@ -54,13 +54,13 @@ class ServiceStatus {
 
   factory ServiceStatus.fromMap(Map<String, dynamic> map) {
     return ServiceStatus(
-      address: map['address'] == null ? null : (Addressable.fromMap((map['address'] as Map).cast<String, dynamic>())).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV1Condition>(map['conditions'], (value) => GoogleCloudRunV1Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      latestCreatedRevisionName: map['latestCreatedRevisionName'] == null ? null : (map['latestCreatedRevisionName'] as String).input(),
-      latestReadyRevisionName: map['latestReadyRevisionName'] == null ? null : (map['latestReadyRevisionName'] as String).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
-      traffic: map['traffic'] == null ? null : (pulumi.Input.decodeList<TrafficTarget>(map['traffic'], (value) => TrafficTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      address: map['address'] == null ? null : (Addressable.fromMap((map['address']! as Map).cast<String, dynamic>())).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV1Condition>(map['conditions']!, (value) => GoogleCloudRunV1Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      latestCreatedRevisionName: map['latestCreatedRevisionName'] == null ? null : (map['latestCreatedRevisionName']! as String).input(),
+      latestReadyRevisionName: map['latestReadyRevisionName'] == null ? null : (map['latestReadyRevisionName']! as String).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
+      traffic: map['traffic'] == null ? null : (pulumi.Input.decodeList<TrafficTarget>(map['traffic']!, (value) => TrafficTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

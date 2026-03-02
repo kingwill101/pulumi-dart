@@ -46,12 +46,12 @@ class TrafficPolicyInstanceState {
 
   factory TrafficPolicyInstanceState.fromMap(Map<String, dynamic> map) {
     return TrafficPolicyInstanceState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      hostedZoneId: map['hostedZoneId'] == null ? null : (map['hostedZoneId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      trafficPolicyId: map['trafficPolicyId'] == null ? null : (map['trafficPolicyId'] as String).input(),
-      trafficPolicyVersion: map['trafficPolicyVersion'] == null ? null : (map['trafficPolicyVersion'] as int).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      hostedZoneId: map['hostedZoneId'] == null ? null : ((map['hostedZoneId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      trafficPolicyId: map['trafficPolicyId'] == null ? null : ((map['trafficPolicyId'] as String).input()).input(),
+      trafficPolicyVersion: map['trafficPolicyVersion'] == null ? null : ((map['trafficPolicyVersion'] as int).input()).input(),
+      ttl: map['ttl'] == null ? null : ((map['ttl'] as int).input()).input(),
     );
   }
 }

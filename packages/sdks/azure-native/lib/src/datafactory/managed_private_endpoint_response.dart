@@ -47,11 +47,11 @@ class ManagedPrivateEndpointResponse {
 
   factory ManagedPrivateEndpointResponse.fromMap(Map<String, dynamic> map) {
     return ManagedPrivateEndpointResponse(
-      connectionState: map['connectionState'] == null ? null : (ConnectionStatePropertiesResponse.fromMap((map['connectionState'] as Map).cast<String, dynamic>())).input(),
-      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      connectionState: map['connectionState'] == null ? null : (ConnectionStatePropertiesResponse.fromMap((map['connectionState']! as Map).cast<String, dynamic>())).input(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns']! as List).cast<String>()).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
       isReserved: (map['isReserved'] as bool).input(),
-      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : (map['privateLinkResourceId'] as String).input(),
+      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : (map['privateLinkResourceId']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

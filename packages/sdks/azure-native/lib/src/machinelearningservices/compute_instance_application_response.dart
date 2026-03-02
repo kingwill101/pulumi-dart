@@ -26,8 +26,8 @@ class ComputeInstanceApplicationResponse {
 
   factory ComputeInstanceApplicationResponse.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceApplicationResponse(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri']! as String).input(),
     );
   }
 }

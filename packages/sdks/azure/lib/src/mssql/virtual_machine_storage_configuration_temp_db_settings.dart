@@ -50,12 +50,12 @@ class VirtualMachineStorageConfigurationTempDbSettings {
 
   factory VirtualMachineStorageConfigurationTempDbSettings.fromMap(Map<String, dynamic> map) {
     return VirtualMachineStorageConfigurationTempDbSettings(
-      dataFileCount: map['dataFileCount'] == null ? null : (map['dataFileCount'] as int).input(),
-      dataFileGrowthInMb: map['dataFileGrowthInMb'] == null ? null : (map['dataFileGrowthInMb'] as int).input(),
-      dataFileSizeMb: map['dataFileSizeMb'] == null ? null : (map['dataFileSizeMb'] as int).input(),
+      dataFileCount: map['dataFileCount'] == null ? null : (map['dataFileCount']! as int).input(),
+      dataFileGrowthInMb: map['dataFileGrowthInMb'] == null ? null : (map['dataFileGrowthInMb']! as int).input(),
+      dataFileSizeMb: map['dataFileSizeMb'] == null ? null : (map['dataFileSizeMb']! as int).input(),
       defaultFilePath: (map['defaultFilePath'] as String).input(),
-      logFileGrowthMb: map['logFileGrowthMb'] == null ? null : (map['logFileGrowthMb'] as int).input(),
-      logFileSizeMb: map['logFileSizeMb'] == null ? null : (map['logFileSizeMb'] as int).input(),
+      logFileGrowthMb: map['logFileGrowthMb'] == null ? null : (map['logFileGrowthMb']! as int).input(),
+      logFileSizeMb: map['logFileSizeMb'] == null ? null : (map['logFileSizeMb']! as int).input(),
       luns: ((map['luns'] as List).cast<int>()).input(),
     );
   }

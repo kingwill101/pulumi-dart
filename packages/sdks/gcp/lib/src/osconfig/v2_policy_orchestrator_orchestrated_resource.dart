@@ -50,8 +50,8 @@ class V2PolicyOrchestratorOrchestratedResource {
 
   factory V2PolicyOrchestratorOrchestratedResource.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorOrchestratedResource(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      osPolicyAssignmentV1Payload: map['osPolicyAssignmentV1Payload'] == null ? null : (V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1Payload.fromMap((map['osPolicyAssignmentV1Payload'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      osPolicyAssignmentV1Payload: map['osPolicyAssignmentV1Payload'] == null ? null : (V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1Payload.fromMap((map['osPolicyAssignmentV1Payload']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class PoolSourceAuthSecret {
 
   factory PoolSourceAuthSecret.fromMap(Map<String, dynamic> map) {
     return PoolSourceAuthSecret(
-      usage: map['usage'] == null ? null : (map['usage'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      usage: map['usage'] == null ? null : (map['usage']! as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

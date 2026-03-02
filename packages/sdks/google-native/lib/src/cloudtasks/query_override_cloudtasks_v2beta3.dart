@@ -21,7 +21,7 @@ class QueryOverrideCloudtasksV2beta3 {
 
   factory QueryOverrideCloudtasksV2beta3.fromMap(Map<String, dynamic> map) {
     return QueryOverrideCloudtasksV2beta3(
-      queryParams: map['queryParams'] == null ? null : (map['queryParams'] as String).input(),
+      queryParams: map['queryParams'] == null ? null : (map['queryParams']! as String).input(),
     );
   }
 }

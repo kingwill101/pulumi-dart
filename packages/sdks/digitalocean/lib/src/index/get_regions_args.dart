@@ -33,8 +33,8 @@ class GetRegionsArgs {
 
   factory GetRegionsArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetRegionsFilter>(map['filters'], (value) => GetRegionsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetRegionsSort>(map['sorts'], (value) => GetRegionsSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetRegionsFilter>(map['filters']!, (value) => GetRegionsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetRegionsSort>(map['sorts']!, (value) => GetRegionsSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

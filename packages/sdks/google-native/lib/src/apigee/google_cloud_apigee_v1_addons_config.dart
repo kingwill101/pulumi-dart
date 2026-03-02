@@ -52,12 +52,12 @@ class GoogleCloudApigeeV1AddonsConfig {
 
   factory GoogleCloudApigeeV1AddonsConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1AddonsConfig(
-      advancedApiOpsConfig: map['advancedApiOpsConfig'] == null ? null : (GoogleCloudApigeeV1AdvancedApiOpsConfig.fromMap((map['advancedApiOpsConfig'] as Map).cast<String, dynamic>())).input(),
-      analyticsConfig: map['analyticsConfig'] == null ? null : (GoogleCloudApigeeV1AnalyticsConfig.fromMap((map['analyticsConfig'] as Map).cast<String, dynamic>())).input(),
-      apiSecurityConfig: map['apiSecurityConfig'] == null ? null : (GoogleCloudApigeeV1ApiSecurityConfig.fromMap((map['apiSecurityConfig'] as Map).cast<String, dynamic>())).input(),
-      connectorsPlatformConfig: map['connectorsPlatformConfig'] == null ? null : (GoogleCloudApigeeV1ConnectorsPlatformConfig.fromMap((map['connectorsPlatformConfig'] as Map).cast<String, dynamic>())).input(),
-      integrationConfig: map['integrationConfig'] == null ? null : (GoogleCloudApigeeV1IntegrationConfig.fromMap((map['integrationConfig'] as Map).cast<String, dynamic>())).input(),
-      monetizationConfig: map['monetizationConfig'] == null ? null : (GoogleCloudApigeeV1MonetizationConfig.fromMap((map['monetizationConfig'] as Map).cast<String, dynamic>())).input(),
+      advancedApiOpsConfig: map['advancedApiOpsConfig'] == null ? null : (GoogleCloudApigeeV1AdvancedApiOpsConfig.fromMap((map['advancedApiOpsConfig']! as Map).cast<String, dynamic>())).input(),
+      analyticsConfig: map['analyticsConfig'] == null ? null : (GoogleCloudApigeeV1AnalyticsConfig.fromMap((map['analyticsConfig']! as Map).cast<String, dynamic>())).input(),
+      apiSecurityConfig: map['apiSecurityConfig'] == null ? null : (GoogleCloudApigeeV1ApiSecurityConfig.fromMap((map['apiSecurityConfig']! as Map).cast<String, dynamic>())).input(),
+      connectorsPlatformConfig: map['connectorsPlatformConfig'] == null ? null : (GoogleCloudApigeeV1ConnectorsPlatformConfig.fromMap((map['connectorsPlatformConfig']! as Map).cast<String, dynamic>())).input(),
+      integrationConfig: map['integrationConfig'] == null ? null : (GoogleCloudApigeeV1IntegrationConfig.fromMap((map['integrationConfig']! as Map).cast<String, dynamic>())).input(),
+      monetizationConfig: map['monetizationConfig'] == null ? null : (GoogleCloudApigeeV1MonetizationConfig.fromMap((map['monetizationConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

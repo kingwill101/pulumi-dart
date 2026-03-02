@@ -51,9 +51,9 @@ class AgentUpgradeResponse {
 
   factory AgentUpgradeResponse.fromMap(Map<String, dynamic> map) {
     return AgentUpgradeResponse(
-      correlationId: map['correlationId'] == null ? null : (map['correlationId'] as String).input(),
-      desiredVersion: map['desiredVersion'] == null ? null : (map['desiredVersion'] as String).input(),
-      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : (map['enableAutomaticUpgrade'] as bool).input(),
+      correlationId: map['correlationId'] == null ? null : (map['correlationId']! as String).input(),
+      desiredVersion: map['desiredVersion'] == null ? null : (map['desiredVersion']! as String).input(),
+      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : (map['enableAutomaticUpgrade']! as bool).input(),
       lastAttemptDesiredVersion: (map['lastAttemptDesiredVersion'] as String).input(),
       lastAttemptMessage: (map['lastAttemptMessage'] as String).input(),
       lastAttemptStatus: (map['lastAttemptStatus'] as String).input(),

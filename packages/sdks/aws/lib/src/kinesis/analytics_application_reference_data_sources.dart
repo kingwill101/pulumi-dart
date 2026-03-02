@@ -37,9 +37,9 @@ class AnalyticsApplicationReferenceDataSources {
 
   factory AnalyticsApplicationReferenceDataSources.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationReferenceDataSources(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      s3: (AnalyticsApplicationReferenceDataSourcesS3.fromMap((map['s3'] as Map).cast<String, dynamic>())).input(),
-      schema: (AnalyticsApplicationReferenceDataSourcesSchema.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      s3: (AnalyticsApplicationReferenceDataSourcesS3.fromMap((map['s3']! as Map).cast<String, dynamic>())).input(),
+      schema: (AnalyticsApplicationReferenceDataSourcesSchema.fromMap((map['schema']! as Map).cast<String, dynamic>())).input(),
       tableName: (map['tableName'] as String).input(),
     );
   }

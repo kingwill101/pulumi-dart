@@ -27,8 +27,8 @@ class KubernetesResource {
 
   factory KubernetesResource.fromMap(Map<String, dynamic> map) {
     return KubernetesResource(
-      membershipCrManifest: map['membershipCrManifest'] == null ? null : (map['membershipCrManifest'] as String).input(),
-      resourceOptions: map['resourceOptions'] == null ? null : (ResourceOptionsType.fromMap((map['resourceOptions'] as Map).cast<String, dynamic>())).input(),
+      membershipCrManifest: map['membershipCrManifest'] == null ? null : (map['membershipCrManifest']! as String).input(),
+      resourceOptions: map['resourceOptions'] == null ? null : (ResourceOptionsType.fromMap((map['resourceOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

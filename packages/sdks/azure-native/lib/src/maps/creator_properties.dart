@@ -31,9 +31,9 @@ class CreatorProperties {
 
   factory CreatorProperties.fromMap(Map<String, dynamic> map) {
     return CreatorProperties(
-      consumedStorageUnitSizeInBytes: map['consumedStorageUnitSizeInBytes'] == null ? null : (map['consumedStorageUnitSizeInBytes'] as int).input(),
+      consumedStorageUnitSizeInBytes: map['consumedStorageUnitSizeInBytes'] == null ? null : (map['consumedStorageUnitSizeInBytes']! as int).input(),
       storageUnits: (map['storageUnits'] as int).input(),
-      totalStorageUnitSizeInBytes: map['totalStorageUnitSizeInBytes'] == null ? null : (map['totalStorageUnitSizeInBytes'] as int).input(),
+      totalStorageUnitSizeInBytes: map['totalStorageUnitSizeInBytes'] == null ? null : (map['totalStorageUnitSizeInBytes']! as int).input(),
     );
   }
 }

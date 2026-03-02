@@ -49,12 +49,12 @@ class StreamSourceConfigSqlServerSourceConfig {
 
   factory StreamSourceConfigSqlServerSourceConfig.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigSqlServerSourceConfig(
-      changeTables: map['changeTables'] == null ? null : ((map['changeTables'] as Map).cast<String, dynamic>()).input(),
-      excludeObjects: map['excludeObjects'] == null ? null : (StreamSourceConfigSqlServerSourceConfigExcludeObjects.fromMap((map['excludeObjects'] as Map).cast<String, dynamic>())).input(),
-      includeObjects: map['includeObjects'] == null ? null : (StreamSourceConfigSqlServerSourceConfigIncludeObjects.fromMap((map['includeObjects'] as Map).cast<String, dynamic>())).input(),
-      maxConcurrentBackfillTasks: map['maxConcurrentBackfillTasks'] == null ? null : (map['maxConcurrentBackfillTasks'] as int).input(),
-      maxConcurrentCdcTasks: map['maxConcurrentCdcTasks'] == null ? null : (map['maxConcurrentCdcTasks'] as int).input(),
-      transactionLogs: map['transactionLogs'] == null ? null : ((map['transactionLogs'] as Map).cast<String, dynamic>()).input(),
+      changeTables: map['changeTables'] == null ? null : ((map['changeTables']! as Map).cast<String, dynamic>()).input(),
+      excludeObjects: map['excludeObjects'] == null ? null : (StreamSourceConfigSqlServerSourceConfigExcludeObjects.fromMap((map['excludeObjects']! as Map).cast<String, dynamic>())).input(),
+      includeObjects: map['includeObjects'] == null ? null : (StreamSourceConfigSqlServerSourceConfigIncludeObjects.fromMap((map['includeObjects']! as Map).cast<String, dynamic>())).input(),
+      maxConcurrentBackfillTasks: map['maxConcurrentBackfillTasks'] == null ? null : (map['maxConcurrentBackfillTasks']! as int).input(),
+      maxConcurrentCdcTasks: map['maxConcurrentCdcTasks'] == null ? null : (map['maxConcurrentCdcTasks']! as int).input(),
+      transactionLogs: map['transactionLogs'] == null ? null : ((map['transactionLogs']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

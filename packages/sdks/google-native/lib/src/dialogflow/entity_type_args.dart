@@ -65,15 +65,15 @@ class EntityTypeArgs {
 
   factory EntityTypeArgs.fromMap(Map<String, dynamic> map) {
     return EntityTypeArgs(
-      autoExpansionMode: map['autoExpansionMode'] == null ? null : (EntityTypeAutoExpansionMode.fromValue(map['autoExpansionMode'] as String)).input(),
+      autoExpansionMode: map['autoExpansionMode'] == null ? null : (EntityTypeAutoExpansionMode.fromValue(map['autoExpansionMode']! as String)).input(),
       displayName: (map['displayName'] as String).input(),
-      enableFuzzyExtraction: map['enableFuzzyExtraction'] == null ? null : (map['enableFuzzyExtraction'] as bool).input(),
-      entities: map['entities'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2EntityTypeEntity>(map['entities'], (value) => GoogleCloudDialogflowV2EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableFuzzyExtraction: map['enableFuzzyExtraction'] == null ? null : (map['enableFuzzyExtraction']! as bool).input(),
+      entities: map['entities'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2EntityTypeEntity>(map['entities']!, (value) => GoogleCloudDialogflowV2EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
       kind: (EntityTypeKind.fromValue(map['kind'] as String)).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

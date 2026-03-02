@@ -53,13 +53,13 @@ class IPGroupState {
 
   factory IPGroupState.fromMap(Map<String, dynamic> map) {
     return IPGroupState(
-      cidrs: map['cidrs'] == null ? null : ((map['cidrs'] as List).cast<String>()).input(),
-      firewallIds: map['firewallIds'] == null ? null : ((map['firewallIds'] as List).cast<String>()).input(),
-      firewallPolicyIds: map['firewallPolicyIds'] == null ? null : ((map['firewallPolicyIds'] as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      cidrs: map['cidrs'] == null ? null : ((map['cidrs']! as List).cast<String>()).input(),
+      firewallIds: map['firewallIds'] == null ? null : ((map['firewallIds']! as List).cast<String>()).input(),
+      firewallPolicyIds: map['firewallPolicyIds'] == null ? null : ((map['firewallPolicyIds']! as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

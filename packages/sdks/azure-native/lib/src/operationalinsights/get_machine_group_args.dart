@@ -44,10 +44,10 @@ class GetMachineGroupArgs {
 
   factory GetMachineGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetMachineGroupArgs(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
       machineGroupName: (map['machineGroupName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

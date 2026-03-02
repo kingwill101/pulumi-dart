@@ -76,16 +76,16 @@ class DatabaseMigrationsMongoToCosmosDbRUMongoArgs {
 
   factory DatabaseMigrationsMongoToCosmosDbRUMongoArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseMigrationsMongoToCosmosDbRUMongoArgs(
-      collectionList: map['collectionList'] == null ? null : (pulumi.Input.decodeList<MongoMigrationCollection>(map['collectionList'], (value) => MongoMigrationCollection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      collectionList: map['collectionList'] == null ? null : (pulumi.Input.decodeList<MongoMigrationCollection>(map['collectionList']!, (value) => MongoMigrationCollection.fromMap((value as Map).cast<String, dynamic>()))).input(),
       kind: (map['kind'] as String).input(),
-      migrationName: map['migrationName'] == null ? null : (map['migrationName'] as String).input(),
-      migrationOperationId: map['migrationOperationId'] == null ? null : (map['migrationOperationId'] as String).input(),
-      migrationService: map['migrationService'] == null ? null : (map['migrationService'] as String).input(),
-      provisioningError: map['provisioningError'] == null ? null : (map['provisioningError'] as String).input(),
+      migrationName: map['migrationName'] == null ? null : (map['migrationName']! as String).input(),
+      migrationOperationId: map['migrationOperationId'] == null ? null : (map['migrationOperationId']! as String).input(),
+      migrationService: map['migrationService'] == null ? null : (map['migrationService']! as String).input(),
+      provisioningError: map['provisioningError'] == null ? null : (map['provisioningError']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      sourceMongoConnection: map['sourceMongoConnection'] == null ? null : (MongoConnectionInformation.fromMap((map['sourceMongoConnection'] as Map).cast<String, dynamic>())).input(),
-      targetMongoConnection: map['targetMongoConnection'] == null ? null : (MongoConnectionInformation.fromMap((map['targetMongoConnection'] as Map).cast<String, dynamic>())).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      sourceMongoConnection: map['sourceMongoConnection'] == null ? null : (MongoConnectionInformation.fromMap((map['sourceMongoConnection']! as Map).cast<String, dynamic>())).input(),
+      targetMongoConnection: map['targetMongoConnection'] == null ? null : (MongoConnectionInformation.fromMap((map['targetMongoConnection']! as Map).cast<String, dynamic>())).input(),
       targetResourceName: (map['targetResourceName'] as String).input(),
     );
   }

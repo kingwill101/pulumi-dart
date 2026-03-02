@@ -29,7 +29,7 @@ class TriggerBuildSecret {
   factory TriggerBuildSecret.fromMap(Map<String, dynamic> map) {
     return TriggerBuildSecret(
       kmsKeyName: (map['kmsKeyName'] as String).input(),
-      secretEnv: map['secretEnv'] == null ? null : ((map['secretEnv'] as Map).cast<String, String>()).input(),
+      secretEnv: map['secretEnv'] == null ? null : ((map['secretEnv']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class AzureTableStorageApplicationLogsConfig {
 
   factory AzureTableStorageApplicationLogsConfig.fromMap(Map<String, dynamic> map) {
     return AzureTableStorageApplicationLogsConfig(
-      level: map['level'] == null ? null : (LogLevel.fromValue(map['level'] as String)).input(),
+      level: map['level'] == null ? null : (LogLevel.fromValue(map['level']! as String)).input(),
       sasUrl: (map['sasUrl'] as String).input(),
     );
   }

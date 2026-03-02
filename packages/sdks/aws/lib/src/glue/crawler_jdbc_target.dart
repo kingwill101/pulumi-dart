@@ -36,8 +36,8 @@ class CrawlerJdbcTarget {
   factory CrawlerJdbcTarget.fromMap(Map<String, dynamic> map) {
     return CrawlerJdbcTarget(
       connectionName: (map['connectionName'] as String).input(),
-      enableAdditionalMetadatas: map['enableAdditionalMetadatas'] == null ? null : ((map['enableAdditionalMetadatas'] as List).cast<String>()).input(),
-      exclusions: map['exclusions'] == null ? null : ((map['exclusions'] as List).cast<String>()).input(),
+      enableAdditionalMetadatas: map['enableAdditionalMetadatas'] == null ? null : (((map['enableAdditionalMetadatas'] as List).cast<String>()).input()).input(),
+      exclusions: map['exclusions'] == null ? null : (((map['exclusions'] as List).cast<String>()).input()).input(),
       path: (map['path'] as String).input(),
     );
   }

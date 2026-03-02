@@ -31,7 +31,7 @@ class GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpec {
 
   factory GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpec(
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as double).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']! as double).input(),
       maxValue: (map['maxValue'] as double).input(),
       minValue: (map['minValue'] as double).input(),
     );

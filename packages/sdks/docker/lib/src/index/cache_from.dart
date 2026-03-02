@@ -21,7 +21,7 @@ class CacheFrom {
 
   factory CacheFrom.fromMap(Map<String, dynamic> map) {
     return CacheFrom(
-      images: map['images'] == null ? null : ((map['images'] as List).cast<String>()).input(),
+      images: map['images'] == null ? null : ((map['images']! as List).cast<String>()).input(),
     );
   }
 }

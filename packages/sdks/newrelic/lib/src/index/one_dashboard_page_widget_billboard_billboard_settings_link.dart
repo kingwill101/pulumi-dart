@@ -30,9 +30,9 @@ class OneDashboardPageWidgetBillboardBillboardSettingsLink {
 
   factory OneDashboardPageWidgetBillboardBillboardSettingsLink.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetBillboardBillboardSettingsLink(
-      newTab: map['newTab'] == null ? null : (map['newTab'] as bool).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      newTab: map['newTab'] == null ? null : (map['newTab']! as bool).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class GoogleCloudDataplexV1DataQualityRuleRegexExpectation {
 
   factory GoogleCloudDataplexV1DataQualityRuleRegexExpectation.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataQualityRuleRegexExpectation(
-      regex: map['regex'] == null ? null : (map['regex'] as String).input(),
+      regex: map['regex'] == null ? null : (map['regex']! as String).input(),
     );
   }
 }

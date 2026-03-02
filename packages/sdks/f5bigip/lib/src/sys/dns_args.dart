@@ -41,8 +41,8 @@ class DnsArgs {
     return DnsArgs(
       description: (map['description'] as String).input(),
       nameServers: ((map['nameServers'] as List).cast<String>()).input(),
-      numberOfDots: map['numberOfDots'] == null ? null : (map['numberOfDots'] as int).input(),
-      searches: map['searches'] == null ? null : ((map['searches'] as List).cast<String>()).input(),
+      numberOfDots: map['numberOfDots'] == null ? null : (map['numberOfDots']! as int).input(),
+      searches: map['searches'] == null ? null : ((map['searches']! as List).cast<String>()).input(),
     );
   }
 }

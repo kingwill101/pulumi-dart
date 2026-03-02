@@ -21,7 +21,7 @@ class DomainDevicesHostdevSubsysUsb {
 
   factory DomainDevicesHostdevSubsysUsb.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevSubsysUsb(
-      source: map['source'] == null ? null : (DomainDevicesHostdevSubsysUsbSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      source: map['source'] == null ? null : (DomainDevicesHostdevSubsysUsbSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

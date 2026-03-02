@@ -37,7 +37,7 @@ class GetUserAlloydbV1alphaArgs {
     return GetUserAlloydbV1alphaArgs(
       clusterId: (map['clusterId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       userId: (map['userId'] as String).input(),
     );
   }

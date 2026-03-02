@@ -114,17 +114,17 @@ class GetUserResult {
 
   factory GetUserResult.fromMap(Map<String, dynamic> map) {
     return GetUserResult(
-      addresses: pulumi.Input.decodeList<GetUserAddress>(map['addresses'], (value) => GetUserAddress.fromMap((value as Map).cast<String, dynamic>())),
-      alternateIdentifier: map['alternateIdentifier'] == null ? null : GetUserAlternateIdentifier.fromMap((map['alternateIdentifier'] as Map).cast<String, dynamic>()),
+      addresses: pulumi.Input.decodeList<GetUserAddress>(map['addresses']!, (value) => GetUserAddress.fromMap((value as Map).cast<String, dynamic>())),
+      alternateIdentifier: map['alternateIdentifier'] == null ? null : GetUserAlternateIdentifier.fromMap((map['alternateIdentifier']! as Map).cast<String, dynamic>()),
       displayName: map['displayName'] as String,
-      emails: pulumi.Input.decodeList<GetUserEmail>(map['emails'], (value) => GetUserEmail.fromMap((value as Map).cast<String, dynamic>())),
-      externalIds: pulumi.Input.decodeList<GetUserExternalId>(map['externalIds'], (value) => GetUserExternalId.fromMap((value as Map).cast<String, dynamic>())),
+      emails: pulumi.Input.decodeList<GetUserEmail>(map['emails']!, (value) => GetUserEmail.fromMap((value as Map).cast<String, dynamic>())),
+      externalIds: pulumi.Input.decodeList<GetUserExternalId>(map['externalIds']!, (value) => GetUserExternalId.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       identityStoreId: map['identityStoreId'] as String,
       locale: map['locale'] as String,
-      names: pulumi.Input.decodeList<GetUserName>(map['names'], (value) => GetUserName.fromMap((value as Map).cast<String, dynamic>())),
+      names: pulumi.Input.decodeList<GetUserName>(map['names']!, (value) => GetUserName.fromMap((value as Map).cast<String, dynamic>())),
       nickname: map['nickname'] as String,
-      phoneNumbers: pulumi.Input.decodeList<GetUserPhoneNumber>(map['phoneNumbers'], (value) => GetUserPhoneNumber.fromMap((value as Map).cast<String, dynamic>())),
+      phoneNumbers: pulumi.Input.decodeList<GetUserPhoneNumber>(map['phoneNumbers']!, (value) => GetUserPhoneNumber.fromMap((value as Map).cast<String, dynamic>())),
       preferredLanguage: map['preferredLanguage'] as String,
       profileUrl: map['profileUrl'] as String,
       region: map['region'] as String,

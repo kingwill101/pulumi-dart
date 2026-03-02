@@ -73,16 +73,16 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      appEngineIntegrationMode: map['appEngineIntegrationMode'] == null ? null : (DatabaseAppEngineIntegrationMode.fromValue(map['appEngineIntegrationMode'] as String)).input(),
-      concurrencyMode: map['concurrencyMode'] == null ? null : (DatabaseConcurrencyMode.fromValue(map['concurrencyMode'] as String)).input(),
+      appEngineIntegrationMode: map['appEngineIntegrationMode'] == null ? null : (DatabaseAppEngineIntegrationMode.fromValue(map['appEngineIntegrationMode']! as String)).input(),
+      concurrencyMode: map['concurrencyMode'] == null ? null : (DatabaseConcurrencyMode.fromValue(map['concurrencyMode']! as String)).input(),
       databaseId: (map['databaseId'] as String).input(),
-      deleteProtectionState: map['deleteProtectionState'] == null ? null : (DatabaseDeleteProtectionState.fromValue(map['deleteProtectionState'] as String)).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pointInTimeRecoveryEnablement: map['pointInTimeRecoveryEnablement'] == null ? null : (DatabasePointInTimeRecoveryEnablement.fromValue(map['pointInTimeRecoveryEnablement'] as String)).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      type: map['type'] == null ? null : (DatabaseType.fromValue(map['type'] as String)).input(),
+      deleteProtectionState: map['deleteProtectionState'] == null ? null : (DatabaseDeleteProtectionState.fromValue(map['deleteProtectionState']! as String)).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pointInTimeRecoveryEnablement: map['pointInTimeRecoveryEnablement'] == null ? null : (DatabasePointInTimeRecoveryEnablement.fromValue(map['pointInTimeRecoveryEnablement']! as String)).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      type: map['type'] == null ? null : (DatabaseType.fromValue(map['type']! as String)).input(),
     );
   }
 }

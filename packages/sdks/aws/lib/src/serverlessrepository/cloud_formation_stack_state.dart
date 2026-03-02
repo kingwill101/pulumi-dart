@@ -61,15 +61,15 @@ class CloudFormationStackState {
 
   factory CloudFormationStackState.fromMap(Map<String, dynamic> map) {
     return CloudFormationStackState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      capabilities: map['capabilities'] == null ? null : ((map['capabilities'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      outputs: map['outputs'] == null ? null : ((map['outputs'] as Map).cast<String, String>()).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      semanticVersion: map['semanticVersion'] == null ? null : (map['semanticVersion'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      applicationId: map['applicationId'] == null ? null : ((map['applicationId'] as String).input()).input(),
+      capabilities: map['capabilities'] == null ? null : (((map['capabilities'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      outputs: map['outputs'] == null ? null : (((map['outputs'] as Map).cast<String, String>()).input()).input(),
+      parameters: map['parameters'] == null ? null : (((map['parameters'] as Map).cast<String, String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      semanticVersion: map['semanticVersion'] == null ? null : ((map['semanticVersion'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

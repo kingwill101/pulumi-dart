@@ -64,17 +64,17 @@ class GetWafEntityUrlResult {
 
   factory GetWafEntityUrlResult.fromMap(Map<String, dynamic> map) {
     return GetWafEntityUrlResult(
-      crossOriginRequestsEnforcements: map['crossOriginRequestsEnforcements'] == null ? null : pulumi.Input.decodeList<GetWafEntityUrlCrossOriginRequestsEnforcement>(map['crossOriginRequestsEnforcements'], (value) => GetWafEntityUrlCrossOriginRequestsEnforcement.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
+      crossOriginRequestsEnforcements: map['crossOriginRequestsEnforcements'] == null ? null : pulumi.Input.decodeList<GetWafEntityUrlCrossOriginRequestsEnforcement>(map['crossOriginRequestsEnforcements']!, (value) => GetWafEntityUrlCrossOriginRequestsEnforcement.fromMap((value as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       json: map['json'] as String,
-      method: map['method'] == null ? null : map['method'] as String,
-      methodOverrides: map['methodOverrides'] == null ? null : pulumi.Input.decodeList<GetWafEntityUrlMethodOverride>(map['methodOverrides'], (value) => GetWafEntityUrlMethodOverride.fromMap((value as Map).cast<String, dynamic>())),
+      method: map['method'] == null ? null : map['method']! as String,
+      methodOverrides: map['methodOverrides'] == null ? null : pulumi.Input.decodeList<GetWafEntityUrlMethodOverride>(map['methodOverrides']!, (value) => GetWafEntityUrlMethodOverride.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      performStaging: map['performStaging'] == null ? null : map['performStaging'] as bool,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      signatureOverridesDisables: map['signatureOverridesDisables'] == null ? null : (map['signatureOverridesDisables'] as List).cast<int>(),
-      type: map['type'] == null ? null : map['type'] as String,
+      performStaging: map['performStaging'] == null ? null : map['performStaging']! as bool,
+      protocol: map['protocol'] == null ? null : map['protocol']! as String,
+      signatureOverridesDisables: map['signatureOverridesDisables'] == null ? null : (map['signatureOverridesDisables']! as List).cast<int>(),
+      type: map['type'] == null ? null : map['type']! as String,
     );
   }
 }

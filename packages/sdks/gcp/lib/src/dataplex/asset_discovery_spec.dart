@@ -47,12 +47,12 @@ class AssetDiscoverySpec {
 
   factory AssetDiscoverySpec.fromMap(Map<String, dynamic> map) {
     return AssetDiscoverySpec(
-      csvOptions: map['csvOptions'] == null ? null : (AssetDiscoverySpecCsvOptions.fromMap((map['csvOptions'] as Map).cast<String, dynamic>())).input(),
+      csvOptions: map['csvOptions'] == null ? null : (AssetDiscoverySpecCsvOptions.fromMap((map['csvOptions']! as Map).cast<String, dynamic>())).input(),
       enabled: (map['enabled'] as bool).input(),
-      excludePatterns: map['excludePatterns'] == null ? null : ((map['excludePatterns'] as List).cast<String>()).input(),
-      includePatterns: map['includePatterns'] == null ? null : ((map['includePatterns'] as List).cast<String>()).input(),
-      jsonOptions: map['jsonOptions'] == null ? null : (AssetDiscoverySpecJsonOptions.fromMap((map['jsonOptions'] as Map).cast<String, dynamic>())).input(),
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
+      excludePatterns: map['excludePatterns'] == null ? null : ((map['excludePatterns']! as List).cast<String>()).input(),
+      includePatterns: map['includePatterns'] == null ? null : ((map['includePatterns']! as List).cast<String>()).input(),
+      jsonOptions: map['jsonOptions'] == null ? null : (AssetDiscoverySpecJsonOptions.fromMap((map['jsonOptions']! as Map).cast<String, dynamic>())).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule']! as String).input(),
     );
   }
 }

@@ -76,16 +76,16 @@ class DedicatedCloudNodeArgs {
   factory DedicatedCloudNodeArgs.fromMap(Map<String, dynamic> map) {
     return DedicatedCloudNodeArgs(
       availabilityZoneId: (map['availabilityZoneId'] as String).input(),
-      dedicatedCloudNodeName: map['dedicatedCloudNodeName'] == null ? null : (map['dedicatedCloudNodeName'] as String).input(),
+      dedicatedCloudNodeName: map['dedicatedCloudNodeName'] == null ? null : (map['dedicatedCloudNodeName']! as String).input(),
       id: (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       name: (map['name'] as String).input(),
       nodesCount: (map['nodesCount'] as int).input(),
       placementGroupId: (map['placementGroupId'] as String).input(),
       purchaseId: (map['purchaseId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

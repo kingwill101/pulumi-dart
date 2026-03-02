@@ -36,10 +36,10 @@ class SoftwareUpdateConfigurationTargetAzureQuery {
 
   factory SoftwareUpdateConfigurationTargetAzureQuery.fromMap(Map<String, dynamic> map) {
     return SoftwareUpdateConfigurationTargetAzureQuery(
-      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
-      tagFilter: map['tagFilter'] == null ? null : (map['tagFilter'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<SoftwareUpdateConfigurationTargetAzureQueryTag>(map['tags'], (value) => SoftwareUpdateConfigurationTargetAzureQueryTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      locations: map['locations'] == null ? null : ((map['locations']! as List).cast<String>()).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
+      tagFilter: map['tagFilter'] == null ? null : (map['tagFilter']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<SoftwareUpdateConfigurationTargetAzureQueryTag>(map['tags']!, (value) => SoftwareUpdateConfigurationTargetAzureQueryTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

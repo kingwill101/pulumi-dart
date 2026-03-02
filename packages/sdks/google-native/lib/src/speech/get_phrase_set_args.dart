@@ -33,7 +33,7 @@ class GetPhraseSetArgs {
     return GetPhraseSetArgs(
       location: (map['location'] as String).input(),
       phraseSetId: (map['phraseSetId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

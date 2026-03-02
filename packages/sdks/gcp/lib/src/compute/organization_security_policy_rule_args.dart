@@ -82,15 +82,15 @@ class OrganizationSecurityPolicyRuleArgs {
   factory OrganizationSecurityPolicyRuleArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationSecurityPolicyRuleArgs(
       action: (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
-      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
+      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging']! as bool).input(),
       match: (OrganizationSecurityPolicyRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
       policyId: (map['policyId'] as String).input(),
-      preview: map['preview'] == null ? null : (map['preview'] as bool).input(),
+      preview: map['preview'] == null ? null : (map['preview']! as bool).input(),
       priority: (map['priority'] as int).input(),
-      targetResources: map['targetResources'] == null ? null : ((map['targetResources'] as List).cast<String>()).input(),
-      targetServiceAccounts: map['targetServiceAccounts'] == null ? null : ((map['targetServiceAccounts'] as List).cast<String>()).input(),
+      targetResources: map['targetResources'] == null ? null : ((map['targetResources']! as List).cast<String>()).input(),
+      targetServiceAccounts: map['targetServiceAccounts'] == null ? null : ((map['targetServiceAccounts']! as List).cast<String>()).input(),
     );
   }
 }

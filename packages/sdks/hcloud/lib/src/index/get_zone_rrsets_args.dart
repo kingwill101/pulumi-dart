@@ -29,7 +29,7 @@ class GetZoneRrsetsArgs {
 
   factory GetZoneRrsetsArgs.fromMap(Map<String, dynamic> map) {
     return GetZoneRrsetsArgs(
-      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
       zone: (map['zone'] as String).input(),
     );
   }

@@ -39,7 +39,7 @@ class GetPrivateLinkServicePrivateEndpointConnectionArgs {
 
   factory GetPrivateLinkServicePrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateLinkServicePrivateEndpointConnectionArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       peConnectionName: (map['peConnectionName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),

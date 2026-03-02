@@ -36,10 +36,10 @@ class PersistentVolumeStatusPatch {
 
   factory PersistentVolumeStatusPatch.fromMap(Map<String, dynamic> map) {
     return PersistentVolumeStatusPatch(
-      lastPhaseTransitionTime: map['lastPhaseTransitionTime'] == null ? null : (map['lastPhaseTransitionTime'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      phase: map['phase'] == null ? null : (map['phase'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      lastPhaseTransitionTime: map['lastPhaseTransitionTime'] == null ? null : (map['lastPhaseTransitionTime']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      phase: map['phase'] == null ? null : (map['phase']! as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
     );
   }
 }

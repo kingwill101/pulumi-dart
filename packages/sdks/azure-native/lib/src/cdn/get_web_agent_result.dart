@@ -80,16 +80,16 @@ class GetWebAgentResult {
   factory GetWebAgentResult.fromMap(Map<String, dynamic> map) {
     return GetWebAgentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      paths: map['paths'] == null ? null : pulumi.Input.decodeList<AgentPathResponse>(map['paths'], (value) => AgentPathResponse.fromMap((value as Map).cast<String, dynamic>())),
+      paths: map['paths'] == null ? null : pulumi.Input.decodeList<AgentPathResponse>(map['paths']!, (value) => AgentPathResponse.fromMap((value as Map).cast<String, dynamic>())),
       profileAgentLinks: pulumi.Input.decodeList<ResourceReferenceResponse>(map['profileAgentLinks'], (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      systemPrompt: map['systemPrompt'] == null ? null : map['systemPrompt'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      systemPrompt: map['systemPrompt'] == null ? null : map['systemPrompt']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

@@ -76,17 +76,17 @@ class VpcEndpointServiceArgs {
 
   factory VpcEndpointServiceArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointServiceArgs(
-      addressIpVersion: map['addressIpVersion'] == null ? null : (map['addressIpVersion'] as String).input(),
-      autoAcceptConnection: map['autoAcceptConnection'] == null ? null : (map['autoAcceptConnection'] as bool).input(),
-      connectBandwidth: map['connectBandwidth'] == null ? null : (map['connectBandwidth'] as int).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      payer: map['payer'] == null ? null : (map['payer'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      serviceDescription: map['serviceDescription'] == null ? null : (map['serviceDescription'] as String).input(),
-      serviceResourceType: map['serviceResourceType'] == null ? null : (map['serviceResourceType'] as String).input(),
-      serviceSupportIpv6: map['serviceSupportIpv6'] == null ? null : (map['serviceSupportIpv6'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zoneAffinityEnabled: map['zoneAffinityEnabled'] == null ? null : (map['zoneAffinityEnabled'] as bool).input(),
+      addressIpVersion: map['addressIpVersion'] == null ? null : (map['addressIpVersion']! as String).input(),
+      autoAcceptConnection: map['autoAcceptConnection'] == null ? null : (map['autoAcceptConnection']! as bool).input(),
+      connectBandwidth: map['connectBandwidth'] == null ? null : (map['connectBandwidth']! as int).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      payer: map['payer'] == null ? null : (map['payer']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      serviceDescription: map['serviceDescription'] == null ? null : (map['serviceDescription']! as String).input(),
+      serviceResourceType: map['serviceResourceType'] == null ? null : (map['serviceResourceType']! as String).input(),
+      serviceSupportIpv6: map['serviceSupportIpv6'] == null ? null : (map['serviceSupportIpv6']! as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zoneAffinityEnabled: map['zoneAffinityEnabled'] == null ? null : (map['zoneAffinityEnabled']! as bool).input(),
     );
   }
 }

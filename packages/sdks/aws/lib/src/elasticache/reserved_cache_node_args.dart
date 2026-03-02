@@ -48,11 +48,11 @@ class ReservedCacheNodeArgs {
 
   factory ReservedCacheNodeArgs.fromMap(Map<String, dynamic> map) {
     return ReservedCacheNodeArgs(
-      cacheNodeCount: map['cacheNodeCount'] == null ? null : (map['cacheNodeCount'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      cacheNodeCount: map['cacheNodeCount'] == null ? null : ((map['cacheNodeCount'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       reservedCacheNodesOfferingId: (map['reservedCacheNodesOfferingId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ReservedCacheNodeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ReservedCacheNodeTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

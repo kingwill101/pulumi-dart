@@ -28,8 +28,8 @@ class PullTimeUpdateExclusionState {
 
   factory PullTimeUpdateExclusionState.fromMap(Map<String, dynamic> map) {
     return PullTimeUpdateExclusionState(
-      principalArn: map['principalArn'] == null ? null : (map['principalArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      principalArn: map['principalArn'] == null ? null : ((map['principalArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

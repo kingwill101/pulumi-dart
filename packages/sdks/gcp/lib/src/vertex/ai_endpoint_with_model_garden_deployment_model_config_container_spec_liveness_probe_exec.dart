@@ -25,7 +25,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeEx
 
   factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExec.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExec(
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
     );
   }
 }

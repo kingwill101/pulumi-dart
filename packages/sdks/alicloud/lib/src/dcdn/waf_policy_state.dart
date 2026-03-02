@@ -36,10 +36,10 @@ class WafPolicyState {
 
   factory WafPolicyState.fromMap(Map<String, dynamic> map) {
     return WafPolicyState(
-      defenseScene: map['defenseScene'] == null ? null : (map['defenseScene'] as String).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      defenseScene: map['defenseScene'] == null ? null : (map['defenseScene']! as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

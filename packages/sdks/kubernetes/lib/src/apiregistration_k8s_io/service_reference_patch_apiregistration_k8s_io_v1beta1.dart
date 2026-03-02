@@ -31,9 +31,9 @@ class ServiceReferencePatchApiregistrationK8sIoV1beta1 {
 
   factory ServiceReferencePatchApiregistrationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return ServiceReferencePatchApiregistrationK8sIoV1beta1(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

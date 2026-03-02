@@ -47,9 +47,9 @@ class StreamSourceConfigPostgresqlSourceConfig {
 
   factory StreamSourceConfigPostgresqlSourceConfig.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigPostgresqlSourceConfig(
-      excludeObjects: map['excludeObjects'] == null ? null : (StreamSourceConfigPostgresqlSourceConfigExcludeObjects.fromMap((map['excludeObjects'] as Map).cast<String, dynamic>())).input(),
-      includeObjects: map['includeObjects'] == null ? null : (StreamSourceConfigPostgresqlSourceConfigIncludeObjects.fromMap((map['includeObjects'] as Map).cast<String, dynamic>())).input(),
-      maxConcurrentBackfillTasks: map['maxConcurrentBackfillTasks'] == null ? null : (map['maxConcurrentBackfillTasks'] as int).input(),
+      excludeObjects: map['excludeObjects'] == null ? null : (StreamSourceConfigPostgresqlSourceConfigExcludeObjects.fromMap((map['excludeObjects']! as Map).cast<String, dynamic>())).input(),
+      includeObjects: map['includeObjects'] == null ? null : (StreamSourceConfigPostgresqlSourceConfigIncludeObjects.fromMap((map['includeObjects']! as Map).cast<String, dynamic>())).input(),
+      maxConcurrentBackfillTasks: map['maxConcurrentBackfillTasks'] == null ? null : (map['maxConcurrentBackfillTasks']! as int).input(),
       publication: (map['publication'] as String).input(),
       replicationSlot: (map['replicationSlot'] as String).input(),
     );

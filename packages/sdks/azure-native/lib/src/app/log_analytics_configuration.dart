@@ -31,9 +31,9 @@ class LogAnalyticsConfiguration {
 
   factory LogAnalyticsConfiguration.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsConfiguration(
-      customerId: map['customerId'] == null ? null : (map['customerId'] as String).input(),
-      dynamicJsonColumns: map['dynamicJsonColumns'] == null ? null : (map['dynamicJsonColumns'] as bool).input(),
-      sharedKey: map['sharedKey'] == null ? null : (map['sharedKey'] as String).input(),
+      customerId: map['customerId'] == null ? null : (map['customerId']! as String).input(),
+      dynamicJsonColumns: map['dynamicJsonColumns'] == null ? null : (map['dynamicJsonColumns']! as bool).input(),
+      sharedKey: map['sharedKey'] == null ? null : (map['sharedKey']! as String).input(),
     );
   }
 }

@@ -43,11 +43,11 @@ class GetVirtualNetworkGatewayRoutesInformationResult {
 
   factory GetVirtualNetworkGatewayRoutesInformationResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkGatewayRoutesInformationResult(
-      circuitsMetadataMap: map['circuitsMetadataMap'] == null ? null : pulumi.Input.decodeMapValues<CircuitMetadataMapResponse>(map['circuitsMetadataMap'], (value) => CircuitMetadataMapResponse.fromMap((value as Map).cast<String, dynamic>())),
-      lastComputedTime: map['lastComputedTime'] == null ? null : map['lastComputedTime'] as String,
-      nextEligibleComputeTime: map['nextEligibleComputeTime'] == null ? null : map['nextEligibleComputeTime'] as String,
-      routeSetVersion: map['routeSetVersion'] == null ? null : map['routeSetVersion'] as String,
-      routeSets: map['routeSets'] == null ? null : pulumi.Input.decodeList<GatewayRouteSetResponse>(map['routeSets'], (value) => GatewayRouteSetResponse.fromMap((value as Map).cast<String, dynamic>())),
+      circuitsMetadataMap: map['circuitsMetadataMap'] == null ? null : pulumi.Input.decodeMapValues<CircuitMetadataMapResponse>(map['circuitsMetadataMap']!, (value) => CircuitMetadataMapResponse.fromMap((value as Map).cast<String, dynamic>())),
+      lastComputedTime: map['lastComputedTime'] == null ? null : map['lastComputedTime']! as String,
+      nextEligibleComputeTime: map['nextEligibleComputeTime'] == null ? null : map['nextEligibleComputeTime']! as String,
+      routeSetVersion: map['routeSetVersion'] == null ? null : map['routeSetVersion']! as String,
+      routeSets: map['routeSets'] == null ? null : pulumi.Input.decodeList<GatewayRouteSetResponse>(map['routeSets']!, (value) => GatewayRouteSetResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

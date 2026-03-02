@@ -76,17 +76,17 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      appEngineHttpTarget: map['appEngineHttpTarget'] == null ? null : (AppEngineHttpTarget.fromMap((map['appEngineHttpTarget'] as Map).cast<String, dynamic>())).input(),
-      attemptDeadline: map['attemptDeadline'] == null ? null : (map['attemptDeadline'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      httpTarget: map['httpTarget'] == null ? null : (HttpTarget.fromMap((map['httpTarget'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pubsubTarget: map['pubsubTarget'] == null ? null : (PubsubTarget.fromMap((map['pubsubTarget'] as Map).cast<String, dynamic>())).input(),
-      retryConfig: map['retryConfig'] == null ? null : (RetryConfig.fromMap((map['retryConfig'] as Map).cast<String, dynamic>())).input(),
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      appEngineHttpTarget: map['appEngineHttpTarget'] == null ? null : (AppEngineHttpTarget.fromMap((map['appEngineHttpTarget']! as Map).cast<String, dynamic>())).input(),
+      attemptDeadline: map['attemptDeadline'] == null ? null : (map['attemptDeadline']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      httpTarget: map['httpTarget'] == null ? null : (HttpTarget.fromMap((map['httpTarget']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pubsubTarget: map['pubsubTarget'] == null ? null : (PubsubTarget.fromMap((map['pubsubTarget']! as Map).cast<String, dynamic>())).input(),
+      retryConfig: map['retryConfig'] == null ? null : (RetryConfig.fromMap((map['retryConfig']! as Map).cast<String, dynamic>())).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

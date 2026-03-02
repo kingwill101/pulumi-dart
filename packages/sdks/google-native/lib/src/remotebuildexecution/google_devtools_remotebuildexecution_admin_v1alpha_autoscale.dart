@@ -26,8 +26,8 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale {
 
   factory GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale(
-      maxSize: map['maxSize'] == null ? null : (map['maxSize'] as String).input(),
-      minSize: map['minSize'] == null ? null : (map['minSize'] as String).input(),
+      maxSize: map['maxSize'] == null ? null : (map['maxSize']! as String).input(),
+      minSize: map['minSize'] == null ? null : (map['minSize']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class NotificationRecipientEmailState {
 
   factory NotificationRecipientEmailState.fromMap(Map<String, dynamic> map) {
     return NotificationRecipientEmailState(
-      apiManagementId: map['apiManagementId'] == null ? null : (map['apiManagementId'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      notificationType: map['notificationType'] == null ? null : (map['notificationType'] as String).input(),
+      apiManagementId: map['apiManagementId'] == null ? null : (map['apiManagementId']! as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      notificationType: map['notificationType'] == null ? null : (map['notificationType']! as String).input(),
     );
   }
 }

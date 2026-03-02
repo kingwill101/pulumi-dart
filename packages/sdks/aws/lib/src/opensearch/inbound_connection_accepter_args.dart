@@ -30,7 +30,7 @@ class InboundConnectionAccepterArgs {
   factory InboundConnectionAccepterArgs.fromMap(Map<String, dynamic> map) {
     return InboundConnectionAccepterArgs(
       connectionId: (map['connectionId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

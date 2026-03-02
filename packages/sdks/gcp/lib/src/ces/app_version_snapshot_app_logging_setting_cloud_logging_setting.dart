@@ -21,7 +21,7 @@ class AppVersionSnapshotAppLoggingSettingCloudLoggingSetting {
 
   factory AppVersionSnapshotAppLoggingSettingCloudLoggingSetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppLoggingSettingCloudLoggingSetting(
-      enableCloudLogging: map['enableCloudLogging'] == null ? null : (map['enableCloudLogging'] as bool).input(),
+      enableCloudLogging: map['enableCloudLogging'] == null ? null : (map['enableCloudLogging']! as bool).input(),
     );
   }
 }

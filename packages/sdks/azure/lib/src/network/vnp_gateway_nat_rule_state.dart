@@ -53,13 +53,13 @@ class VnpGatewayNatRuleState {
 
   factory VnpGatewayNatRuleState.fromMap(Map<String, dynamic> map) {
     return VnpGatewayNatRuleState(
-      externalMappings: map['externalMappings'] == null ? null : (pulumi.Input.decodeList<VnpGatewayNatRuleExternalMapping>(map['externalMappings'], (value) => VnpGatewayNatRuleExternalMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      internalMappings: map['internalMappings'] == null ? null : (pulumi.Input.decodeList<VnpGatewayNatRuleInternalMapping>(map['internalMappings'], (value) => VnpGatewayNatRuleInternalMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipConfigurationId: map['ipConfigurationId'] == null ? null : (map['ipConfigurationId'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      vpnGatewayId: map['vpnGatewayId'] == null ? null : (map['vpnGatewayId'] as String).input(),
+      externalMappings: map['externalMappings'] == null ? null : (pulumi.Input.decodeList<VnpGatewayNatRuleExternalMapping>(map['externalMappings']!, (value) => VnpGatewayNatRuleExternalMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      internalMappings: map['internalMappings'] == null ? null : (pulumi.Input.decodeList<VnpGatewayNatRuleInternalMapping>(map['internalMappings']!, (value) => VnpGatewayNatRuleInternalMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipConfigurationId: map['ipConfigurationId'] == null ? null : (map['ipConfigurationId']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      vpnGatewayId: map['vpnGatewayId'] == null ? null : (map['vpnGatewayId']! as String).input(),
     );
   }
 }

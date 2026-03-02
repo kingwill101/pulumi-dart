@@ -22,7 +22,7 @@ class InterconnectParams {
 
   factory InterconnectParams.fromMap(Map<String, dynamic> map) {
     return InterconnectParams(
-      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags'] as Map).cast<String, String>()).input(),
+      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags']! as Map).cast<String, String>()).input(),
     );
   }
 }

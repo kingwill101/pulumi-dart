@@ -25,8 +25,8 @@ class ParquetOptions {
 
   factory ParquetOptions.fromMap(Map<String, dynamic> map) {
     return ParquetOptions(
-      enableListInference: map['enableListInference'] == null ? null : (map['enableListInference'] as bool).input(),
-      enumAsString: map['enumAsString'] == null ? null : (map['enumAsString'] as bool).input(),
+      enableListInference: map['enableListInference'] == null ? null : (map['enableListInference']! as bool).input(),
+      enumAsString: map['enumAsString'] == null ? null : (map['enumAsString']! as bool).input(),
     );
   }
 }

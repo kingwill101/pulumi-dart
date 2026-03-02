@@ -31,8 +31,8 @@ class AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis {
 
   factory AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis(
-      anomalyDetectionBaseline: map['anomalyDetectionBaseline'] == null ? null : (map['anomalyDetectionBaseline'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      anomalyDetectionBaseline: map['anomalyDetectionBaseline'] == null ? null : (map['anomalyDetectionBaseline']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

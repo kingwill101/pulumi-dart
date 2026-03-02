@@ -25,8 +25,8 @@ class ListAccountKeysResult {
 
   factory ListAccountKeysResult.fromMap(Map<String, dynamic> map) {
     return ListAccountKeysResult(
-      atlasKafkaPrimaryEndpoint: map['atlasKafkaPrimaryEndpoint'] == null ? null : map['atlasKafkaPrimaryEndpoint'] as String,
-      atlasKafkaSecondaryEndpoint: map['atlasKafkaSecondaryEndpoint'] == null ? null : map['atlasKafkaSecondaryEndpoint'] as String,
+      atlasKafkaPrimaryEndpoint: map['atlasKafkaPrimaryEndpoint'] == null ? null : map['atlasKafkaPrimaryEndpoint']! as String,
+      atlasKafkaSecondaryEndpoint: map['atlasKafkaSecondaryEndpoint'] == null ? null : map['atlasKafkaSecondaryEndpoint']! as String,
     );
   }
 }

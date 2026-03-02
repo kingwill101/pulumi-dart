@@ -54,13 +54,13 @@ class FirewallPolicyNatRule {
 
   factory FirewallPolicyNatRule.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyNatRule(
-      action: map['action'] == null ? null : (FirewallPolicyNatRuleAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      ruleCondition: map['ruleCondition'] == null ? null : (ApplicationRuleCondition.fromMap((map['ruleCondition'] as Map).cast<String, dynamic>())).input(),
+      action: map['action'] == null ? null : (FirewallPolicyNatRuleAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      ruleCondition: map['ruleCondition'] == null ? null : (ApplicationRuleCondition.fromMap((map['ruleCondition']! as Map).cast<String, dynamic>())).input(),
       ruleType: (map['ruleType'] as String).input(),
-      translatedAddress: map['translatedAddress'] == null ? null : (map['translatedAddress'] as String).input(),
-      translatedPort: map['translatedPort'] == null ? null : (map['translatedPort'] as String).input(),
+      translatedAddress: map['translatedAddress'] == null ? null : (map['translatedAddress']! as String).input(),
+      translatedPort: map['translatedPort'] == null ? null : (map['translatedPort']! as String).input(),
     );
   }
 }

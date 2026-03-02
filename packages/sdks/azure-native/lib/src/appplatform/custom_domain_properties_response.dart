@@ -37,9 +37,9 @@ class CustomDomainPropertiesResponse {
   factory CustomDomainPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CustomDomainPropertiesResponse(
       appName: (map['appName'] as String).input(),
-      certName: map['certName'] == null ? null : (map['certName'] as String).input(),
+      certName: map['certName'] == null ? null : (map['certName']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

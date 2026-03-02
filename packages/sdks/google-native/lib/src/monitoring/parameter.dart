@@ -26,8 +26,8 @@ class Parameter {
 
   factory Parameter.fromMap(Map<String, dynamic> map) {
     return Parameter(
-      doubleValue: map['doubleValue'] == null ? null : (map['doubleValue'] as double).input(),
-      intValue: map['intValue'] == null ? null : (map['intValue'] as String).input(),
+      doubleValue: map['doubleValue'] == null ? null : (map['doubleValue']! as double).input(),
+      intValue: map['intValue'] == null ? null : (map['intValue']! as String).input(),
     );
   }
 }

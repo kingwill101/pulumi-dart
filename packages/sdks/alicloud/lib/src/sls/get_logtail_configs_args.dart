@@ -59,12 +59,12 @@ class GetLogtailConfigsArgs {
 
   factory GetLogtailConfigsArgs.fromMap(Map<String, dynamic> map) {
     return GetLogtailConfigsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
       logstoreName: (map['logstoreName'] as String).input(),
-      logtailConfigName: map['logtailConfigName'] == null ? null : (map['logtailConfigName'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      logtailConfigName: map['logtailConfigName'] == null ? null : (map['logtailConfigName']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
       offset: (map['offset'] as int).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
       projectName: (map['projectName'] as String).input(),
       size: (map['size'] as int).input(),
     );

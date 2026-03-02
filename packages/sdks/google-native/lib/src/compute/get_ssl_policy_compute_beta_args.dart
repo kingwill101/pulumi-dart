@@ -27,7 +27,7 @@ class GetSslPolicyComputeBetaArgs {
 
   factory GetSslPolicyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetSslPolicyComputeBetaArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       sslPolicy: (map['sslPolicy'] as String).input(),
     );
   }

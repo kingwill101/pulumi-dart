@@ -31,8 +31,8 @@ class SettingsAccessSettingsGcipSettings {
 
   factory SettingsAccessSettingsGcipSettings.fromMap(Map<String, dynamic> map) {
     return SettingsAccessSettingsGcipSettings(
-      loginPageUri: map['loginPageUri'] == null ? null : (map['loginPageUri'] as String).input(),
-      tenantIds: map['tenantIds'] == null ? null : ((map['tenantIds'] as List).cast<String>()).input(),
+      loginPageUri: map['loginPageUri'] == null ? null : (map['loginPageUri']! as String).input(),
+      tenantIds: map['tenantIds'] == null ? null : ((map['tenantIds']! as List).cast<String>()).input(),
     );
   }
 }

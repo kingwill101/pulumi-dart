@@ -108,22 +108,22 @@ class ClusterNodeGroupAckConfig {
   factory ClusterNodeGroupAckConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroupAckConfig(
       ackInstanceId: (map['ackInstanceId'] as String).input(),
-      customAnnotations: map['customAnnotations'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAckConfigCustomAnnotation>(map['customAnnotations'], (value) => ClusterNodeGroupAckConfigCustomAnnotation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      customLabels: map['customLabels'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAckConfigCustomLabel>(map['customLabels'], (value) => ClusterNodeGroupAckConfigCustomLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customAnnotations: map['customAnnotations'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAckConfigCustomAnnotation>(map['customAnnotations']!, (value) => ClusterNodeGroupAckConfigCustomAnnotation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customLabels: map['customLabels'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAckConfigCustomLabel>(map['customLabels']!, (value) => ClusterNodeGroupAckConfigCustomLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
       limitCpu: (map['limitCpu'] as double).input(),
       limitMemory: (map['limitMemory'] as double).input(),
       namespace: (map['namespace'] as String).input(),
-      nodeAffinity: map['nodeAffinity'] == null ? null : (map['nodeAffinity'] as String).input(),
-      nodeSelectors: map['nodeSelectors'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAckConfigNodeSelector>(map['nodeSelectors'], (value) => ClusterNodeGroupAckConfigNodeSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      podAffinity: map['podAffinity'] == null ? null : (map['podAffinity'] as String).input(),
-      podAntiAffinity: map['podAntiAffinity'] == null ? null : (map['podAntiAffinity'] as String).input(),
-      preStartCommands: map['preStartCommands'] == null ? null : ((map['preStartCommands'] as List).cast<String>()).input(),
-      pvcs: map['pvcs'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAckConfigPvc>(map['pvcs'], (value) => ClusterNodeGroupAckConfigPvc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeAffinity: map['nodeAffinity'] == null ? null : (map['nodeAffinity']! as String).input(),
+      nodeSelectors: map['nodeSelectors'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAckConfigNodeSelector>(map['nodeSelectors']!, (value) => ClusterNodeGroupAckConfigNodeSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      podAffinity: map['podAffinity'] == null ? null : (map['podAffinity']! as String).input(),
+      podAntiAffinity: map['podAntiAffinity'] == null ? null : (map['podAntiAffinity']! as String).input(),
+      preStartCommands: map['preStartCommands'] == null ? null : ((map['preStartCommands']! as List).cast<String>()).input(),
+      pvcs: map['pvcs'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAckConfigPvc>(map['pvcs']!, (value) => ClusterNodeGroupAckConfigPvc.fromMap((value as Map).cast<String, dynamic>()))).input(),
       requestCpu: (map['requestCpu'] as double).input(),
       requestMemory: (map['requestMemory'] as double).input(),
-      tolerations: map['tolerations'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAckConfigToleration>(map['tolerations'], (value) => ClusterNodeGroupAckConfigToleration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAckConfigVolumeMount>(map['volumeMounts'], (value) => ClusterNodeGroupAckConfigVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAckConfigVolume>(map['volumes'], (value) => ClusterNodeGroupAckConfigVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tolerations: map['tolerations'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAckConfigToleration>(map['tolerations']!, (value) => ClusterNodeGroupAckConfigToleration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAckConfigVolumeMount>(map['volumeMounts']!, (value) => ClusterNodeGroupAckConfigVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAckConfigVolume>(map['volumes']!, (value) => ClusterNodeGroupAckConfigVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

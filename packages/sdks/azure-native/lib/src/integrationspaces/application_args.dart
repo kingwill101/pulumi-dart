@@ -55,13 +55,13 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       spaceName: (map['spaceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      trackingDataStores: map['trackingDataStores'] == null ? null : (pulumi.Input.decodeMapValues<TrackingDataStore>(map['trackingDataStores'], (value) => TrackingDataStore.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      trackingDataStores: map['trackingDataStores'] == null ? null : (pulumi.Input.decodeMapValues<TrackingDataStore>(map['trackingDataStores']!, (value) => TrackingDataStore.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -49,9 +49,9 @@ class GetSiteMonitorsResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       monitors: pulumi.Input.decodeList<GetSiteMonitorsMonitor>(map['monitors'], (value) => GetSiteMonitorsMonitor.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      taskId: map['taskId'] == null ? null : map['taskId'] as String,
-      taskType: map['taskType'] == null ? null : map['taskType'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      taskId: map['taskId'] == null ? null : map['taskId']! as String,
+      taskType: map['taskType'] == null ? null : map['taskType']! as String,
     );
   }
 }

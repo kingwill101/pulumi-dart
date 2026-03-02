@@ -59,14 +59,14 @@ class NetworkProfileResponse {
 
   factory NetworkProfileResponse.fromMap(Map<String, dynamic> map) {
     return NetworkProfileResponse(
-      egressNatIp: map['egressNatIp'] == null ? null : (pulumi.Input.decodeList<IPAddressResponse>(map['egressNatIp'], (value) => IPAddressResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      egressNatIp: map['egressNatIp'] == null ? null : (pulumi.Input.decodeList<IPAddressResponse>(map['egressNatIp']!, (value) => IPAddressResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       enableEgressNat: (map['enableEgressNat'] as String).input(),
       networkType: (map['networkType'] as String).input(),
-      privateSourceNatRulesDestination: map['privateSourceNatRulesDestination'] == null ? null : ((map['privateSourceNatRulesDestination'] as List).cast<String>()).input(),
+      privateSourceNatRulesDestination: map['privateSourceNatRulesDestination'] == null ? null : ((map['privateSourceNatRulesDestination']! as List).cast<String>()).input(),
       publicIps: (pulumi.Input.decodeList<IPAddressResponse>(map['publicIps'], (value) => IPAddressResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      trustedRanges: map['trustedRanges'] == null ? null : ((map['trustedRanges'] as List).cast<String>()).input(),
-      vnetConfiguration: map['vnetConfiguration'] == null ? null : (VnetConfigurationResponse.fromMap((map['vnetConfiguration'] as Map).cast<String, dynamic>())).input(),
-      vwanConfiguration: map['vwanConfiguration'] == null ? null : (VwanConfigurationResponse.fromMap((map['vwanConfiguration'] as Map).cast<String, dynamic>())).input(),
+      trustedRanges: map['trustedRanges'] == null ? null : ((map['trustedRanges']! as List).cast<String>()).input(),
+      vnetConfiguration: map['vnetConfiguration'] == null ? null : (VnetConfigurationResponse.fromMap((map['vnetConfiguration']! as Map).cast<String, dynamic>())).input(),
+      vwanConfiguration: map['vwanConfiguration'] == null ? null : (VwanConfigurationResponse.fromMap((map['vwanConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

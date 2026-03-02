@@ -36,10 +36,10 @@ class ClientInfo {
 
   factory ClientInfo.fromMap(Map<String, dynamic> map) {
     return ClientInfo(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      userPrincipalName: map['userPrincipalName'] == null ? null : (map['userPrincipalName'] as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      userPrincipalName: map['userPrincipalName'] == null ? null : (map['userPrincipalName']! as String).input(),
     );
   }
 }

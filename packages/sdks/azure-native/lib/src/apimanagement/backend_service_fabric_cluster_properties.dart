@@ -47,12 +47,12 @@ class BackendServiceFabricClusterProperties {
 
   factory BackendServiceFabricClusterProperties.fromMap(Map<String, dynamic> map) {
     return BackendServiceFabricClusterProperties(
-      clientCertificateId: map['clientCertificateId'] == null ? null : (map['clientCertificateId'] as String).input(),
-      clientCertificatethumbprint: map['clientCertificatethumbprint'] == null ? null : (map['clientCertificatethumbprint'] as String).input(),
+      clientCertificateId: map['clientCertificateId'] == null ? null : (map['clientCertificateId']! as String).input(),
+      clientCertificatethumbprint: map['clientCertificatethumbprint'] == null ? null : (map['clientCertificatethumbprint']! as String).input(),
       managementEndpoints: ((map['managementEndpoints'] as List).cast<String>()).input(),
-      maxPartitionResolutionRetries: map['maxPartitionResolutionRetries'] == null ? null : (map['maxPartitionResolutionRetries'] as int).input(),
-      serverCertificateThumbprints: map['serverCertificateThumbprints'] == null ? null : ((map['serverCertificateThumbprints'] as List).cast<String>()).input(),
-      serverX509Names: map['serverX509Names'] == null ? null : (pulumi.Input.decodeList<X509CertificateName>(map['serverX509Names'], (value) => X509CertificateName.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxPartitionResolutionRetries: map['maxPartitionResolutionRetries'] == null ? null : (map['maxPartitionResolutionRetries']! as int).input(),
+      serverCertificateThumbprints: map['serverCertificateThumbprints'] == null ? null : ((map['serverCertificateThumbprints']! as List).cast<String>()).input(),
+      serverX509Names: map['serverX509Names'] == null ? null : (pulumi.Input.decodeList<X509CertificateName>(map['serverX509Names']!, (value) => X509CertificateName.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

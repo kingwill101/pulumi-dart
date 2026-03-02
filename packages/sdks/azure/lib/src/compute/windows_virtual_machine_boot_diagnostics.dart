@@ -22,7 +22,7 @@ class WindowsVirtualMachineBootDiagnostics {
 
   factory WindowsVirtualMachineBootDiagnostics.fromMap(Map<String, dynamic> map) {
     return WindowsVirtualMachineBootDiagnostics(
-      storageAccountUri: map['storageAccountUri'] == null ? null : (map['storageAccountUri'] as String).input(),
+      storageAccountUri: map['storageAccountUri'] == null ? null : (map['storageAccountUri']! as String).input(),
     );
   }
 }

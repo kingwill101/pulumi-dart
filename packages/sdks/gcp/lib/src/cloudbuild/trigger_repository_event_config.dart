@@ -34,9 +34,9 @@ class TriggerRepositoryEventConfig {
 
   factory TriggerRepositoryEventConfig.fromMap(Map<String, dynamic> map) {
     return TriggerRepositoryEventConfig(
-      pullRequest: map['pullRequest'] == null ? null : (TriggerRepositoryEventConfigPullRequest.fromMap((map['pullRequest'] as Map).cast<String, dynamic>())).input(),
-      push: map['push'] == null ? null : (TriggerRepositoryEventConfigPush.fromMap((map['push'] as Map).cast<String, dynamic>())).input(),
-      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
+      pullRequest: map['pullRequest'] == null ? null : (TriggerRepositoryEventConfigPullRequest.fromMap((map['pullRequest']! as Map).cast<String, dynamic>())).input(),
+      push: map['push'] == null ? null : (TriggerRepositoryEventConfigPush.fromMap((map['push']! as Map).cast<String, dynamic>())).input(),
+      repository: map['repository'] == null ? null : (map['repository']! as String).input(),
     );
   }
 }

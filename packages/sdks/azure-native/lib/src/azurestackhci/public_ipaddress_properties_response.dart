@@ -48,12 +48,12 @@ class PublicIPAddressPropertiesResponse {
 
   factory PublicIPAddressPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PublicIPAddressPropertiesResponse(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      ipAllocationScope: map['ipAllocationScope'] == null ? null : (map['ipAllocationScope'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      ipAllocationScope: map['ipAllocationScope'] == null ? null : (map['ipAllocationScope']! as String).input(),
       ipConfiguration: (IPConfigurationArmReferenceResponse.fromMap((map['ipConfiguration'] as Map).cast<String, dynamic>())).input(),
       natGateway: (NatGatewayArmReferenceResponse.fromMap((map['natGateway'] as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      publicIPAddressVersion: map['publicIPAddressVersion'] == null ? null : (map['publicIPAddressVersion'] as String).input(),
+      publicIPAddressVersion: map['publicIPAddressVersion'] == null ? null : (map['publicIPAddressVersion']! as String).input(),
     );
   }
 }

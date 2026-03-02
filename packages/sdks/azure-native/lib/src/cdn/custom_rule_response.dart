@@ -43,7 +43,7 @@ class CustomRuleResponse {
   factory CustomRuleResponse.fromMap(Map<String, dynamic> map) {
     return CustomRuleResponse(
       action: (map['action'] as String).input(),
-      enabledState: map['enabledState'] == null ? null : (map['enabledState'] as String).input(),
+      enabledState: map['enabledState'] == null ? null : (map['enabledState']! as String).input(),
       matchConditions: (pulumi.Input.decodeList<MatchConditionResponse>(map['matchConditions'], (value) => MatchConditionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
       priority: (map['priority'] as int).input(),

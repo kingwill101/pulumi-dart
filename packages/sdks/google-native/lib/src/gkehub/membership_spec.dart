@@ -22,7 +22,7 @@ class MembershipSpec {
 
   factory MembershipSpec.fromMap(Map<String, dynamic> map) {
     return MembershipSpec(
-      certificateManagement: map['certificateManagement'] == null ? null : (MembershipSpecCertificateManagement.fromValue(map['certificateManagement'] as String)).input(),
+      certificateManagement: map['certificateManagement'] == null ? null : (MembershipSpecCertificateManagement.fromValue(map['certificateManagement']! as String)).input(),
     );
   }
 }

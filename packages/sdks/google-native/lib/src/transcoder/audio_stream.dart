@@ -58,13 +58,13 @@ class AudioStream {
   factory AudioStream.fromMap(Map<String, dynamic> map) {
     return AudioStream(
       bitrateBps: (map['bitrateBps'] as int).input(),
-      channelCount: map['channelCount'] == null ? null : (map['channelCount'] as int).input(),
-      channelLayout: map['channelLayout'] == null ? null : ((map['channelLayout'] as List).cast<String>()).input(),
-      codec: map['codec'] == null ? null : (map['codec'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      mapping: map['mapping'] == null ? null : (pulumi.Input.decodeList<AudioMapping>(map['mapping'], (value) => AudioMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sampleRateHertz: map['sampleRateHertz'] == null ? null : (map['sampleRateHertz'] as int).input(),
+      channelCount: map['channelCount'] == null ? null : (map['channelCount']! as int).input(),
+      channelLayout: map['channelLayout'] == null ? null : ((map['channelLayout']! as List).cast<String>()).input(),
+      codec: map['codec'] == null ? null : (map['codec']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      mapping: map['mapping'] == null ? null : (pulumi.Input.decodeList<AudioMapping>(map['mapping']!, (value) => AudioMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sampleRateHertz: map['sampleRateHertz'] == null ? null : (map['sampleRateHertz']! as int).input(),
     );
   }
 }

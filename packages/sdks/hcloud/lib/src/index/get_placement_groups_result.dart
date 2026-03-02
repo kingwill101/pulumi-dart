@@ -36,9 +36,9 @@ class GetPlacementGroupsResult {
   factory GetPlacementGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetPlacementGroupsResult(
       id: map['id'] as String,
-      mostRecent: map['mostRecent'] == null ? null : map['mostRecent'] as bool,
+      mostRecent: map['mostRecent'] == null ? null : map['mostRecent']! as bool,
       placementGroups: pulumi.Input.decodeList<GetPlacementGroupsPlacementGroup>(map['placementGroups'], (value) => GetPlacementGroupsPlacementGroup.fromMap((value as Map).cast<String, dynamic>())),
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
     );
   }
 }

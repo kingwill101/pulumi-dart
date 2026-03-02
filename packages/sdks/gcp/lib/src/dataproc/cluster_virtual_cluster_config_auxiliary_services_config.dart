@@ -27,8 +27,8 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfig {
 
   factory ClusterVirtualClusterConfigAuxiliaryServicesConfig.fromMap(Map<String, dynamic> map) {
     return ClusterVirtualClusterConfigAuxiliaryServicesConfig(
-      metastoreConfig: map['metastoreConfig'] == null ? null : (ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig.fromMap((map['metastoreConfig'] as Map).cast<String, dynamic>())).input(),
-      sparkHistoryServerConfig: map['sparkHistoryServerConfig'] == null ? null : (ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig.fromMap((map['sparkHistoryServerConfig'] as Map).cast<String, dynamic>())).input(),
+      metastoreConfig: map['metastoreConfig'] == null ? null : (ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig.fromMap((map['metastoreConfig']! as Map).cast<String, dynamic>())).input(),
+      sparkHistoryServerConfig: map['sparkHistoryServerConfig'] == null ? null : (ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig.fromMap((map['sparkHistoryServerConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

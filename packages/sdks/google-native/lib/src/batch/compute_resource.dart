@@ -31,9 +31,9 @@ class ComputeResource {
 
   factory ComputeResource.fromMap(Map<String, dynamic> map) {
     return ComputeResource(
-      bootDiskMib: map['bootDiskMib'] == null ? null : (map['bootDiskMib'] as String).input(),
-      cpuMilli: map['cpuMilli'] == null ? null : (map['cpuMilli'] as String).input(),
-      memoryMib: map['memoryMib'] == null ? null : (map['memoryMib'] as String).input(),
+      bootDiskMib: map['bootDiskMib'] == null ? null : (map['bootDiskMib']! as String).input(),
+      cpuMilli: map['cpuMilli'] == null ? null : (map['cpuMilli']! as String).input(),
+      memoryMib: map['memoryMib'] == null ? null : (map['memoryMib']! as String).input(),
     );
   }
 }

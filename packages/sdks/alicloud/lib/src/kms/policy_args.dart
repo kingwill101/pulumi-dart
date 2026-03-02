@@ -50,7 +50,7 @@ class PolicyArgs {
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
       accessControlRules: (map['accessControlRules'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       kmsInstanceId: (map['kmsInstanceId'] as String).input(),
       permissions: ((map['permissions'] as List).cast<String>()).input(),
       policyName: (map['policyName'] as String).input(),

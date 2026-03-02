@@ -35,9 +35,9 @@ class ExtensionActionPointAction {
 
   factory ExtensionActionPointAction.fromMap(Map<String, dynamic> map) {
     return ExtensionActionPointAction(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       name: (map['name'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
       uri: (map['uri'] as String).input(),
     );
   }

@@ -28,8 +28,8 @@ class TargetPropertiesResponse {
 
   factory TargetPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return TargetPropertiesResponse(
-      azureQueries: map['azureQueries'] == null ? null : (pulumi.Input.decodeList<AzureQueryPropertiesResponse>(map['azureQueries'], (value) => AzureQueryPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nonAzureQueries: map['nonAzureQueries'] == null ? null : (pulumi.Input.decodeList<NonAzureQueryPropertiesResponse>(map['nonAzureQueries'], (value) => NonAzureQueryPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      azureQueries: map['azureQueries'] == null ? null : (pulumi.Input.decodeList<AzureQueryPropertiesResponse>(map['azureQueries']!, (value) => AzureQueryPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nonAzureQueries: map['nonAzureQueries'] == null ? null : (pulumi.Input.decodeList<NonAzureQueryPropertiesResponse>(map['nonAzureQueries']!, (value) => NonAzureQueryPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

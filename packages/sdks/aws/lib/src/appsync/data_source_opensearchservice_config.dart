@@ -26,7 +26,7 @@ class DataSourceOpensearchserviceConfig {
   factory DataSourceOpensearchserviceConfig.fromMap(Map<String, dynamic> map) {
     return DataSourceOpensearchserviceConfig(
       endpoint: (map['endpoint'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

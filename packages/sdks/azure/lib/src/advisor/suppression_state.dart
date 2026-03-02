@@ -41,11 +41,11 @@ class SuppressionState {
 
   factory SuppressionState.fromMap(Map<String, dynamic> map) {
     return SuppressionState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recommendationId: map['recommendationId'] == null ? null : (map['recommendationId'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      suppressionId: map['suppressionId'] == null ? null : (map['suppressionId'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      recommendationId: map['recommendationId'] == null ? null : (map['recommendationId']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      suppressionId: map['suppressionId'] == null ? null : (map['suppressionId']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as String).input(),
     );
   }
 }

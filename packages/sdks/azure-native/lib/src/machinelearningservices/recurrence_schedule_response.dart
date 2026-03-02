@@ -37,8 +37,8 @@ class RecurrenceScheduleResponse {
     return RecurrenceScheduleResponse(
       hours: ((map['hours'] as List).cast<int>()).input(),
       minutes: ((map['minutes'] as List).cast<int>()).input(),
-      monthDays: map['monthDays'] == null ? null : ((map['monthDays'] as List).cast<int>()).input(),
-      weekDays: map['weekDays'] == null ? null : ((map['weekDays'] as List).cast<String>()).input(),
+      monthDays: map['monthDays'] == null ? null : ((map['monthDays']! as List).cast<int>()).input(),
+      weekDays: map['weekDays'] == null ? null : ((map['weekDays']! as List).cast<String>()).input(),
     );
   }
 }

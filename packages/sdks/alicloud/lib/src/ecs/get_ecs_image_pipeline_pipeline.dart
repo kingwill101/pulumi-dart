@@ -120,7 +120,7 @@ class GetEcsImagePipelinePipeline {
       name: (map['name'] as String).input(),
       resourceGroupId: (map['resourceGroupId'] as String).input(),
       systemDiskSize: (map['systemDiskSize'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       toRegionIds: ((map['toRegionIds'] as List).cast<String>()).input(),
       vswitchId: (map['vswitchId'] as String).input(),
     );

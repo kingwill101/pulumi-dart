@@ -34,9 +34,9 @@ class GetEndpointGroupIpAddressCidrBlocksArgs {
 
   factory GetEndpointGroupIpAddressCidrBlocksArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointGroupIpAddressCidrBlocksArgs(
-      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId']! as String).input(),
       endpointGroupRegion: (map['endpointGroupRegion'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

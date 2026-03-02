@@ -53,11 +53,11 @@ class FunctionUrlArgs {
   factory FunctionUrlArgs.fromMap(Map<String, dynamic> map) {
     return FunctionUrlArgs(
       authorizationType: (map['authorizationType'] as String).input(),
-      cors: map['cors'] == null ? null : (FunctionUrlCors.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
+      cors: map['cors'] == null ? null : ((FunctionUrlCors.fromMap((map['cors']! as Map).cast<String, dynamic>())).input()).input(),
       functionName: (map['functionName'] as String).input(),
-      invokeMode: map['invokeMode'] == null ? null : (map['invokeMode'] as String).input(),
-      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      invokeMode: map['invokeMode'] == null ? null : ((map['invokeMode'] as String).input()).input(),
+      qualifier: map['qualifier'] == null ? null : ((map['qualifier'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

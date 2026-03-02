@@ -85,17 +85,17 @@ class PolicyBasedRouteArgs {
 
   factory PolicyBasedRouteArgs.fromMap(Map<String, dynamic> map) {
     return PolicyBasedRouteArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       filter: (PolicyBasedRouteFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      interconnectAttachment: map['interconnectAttachment'] == null ? null : (PolicyBasedRouteInterconnectAttachment.fromMap((map['interconnectAttachment'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      interconnectAttachment: map['interconnectAttachment'] == null ? null : (PolicyBasedRouteInterconnectAttachment.fromMap((map['interconnectAttachment']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       network: (map['network'] as String).input(),
-      nextHopIlbIp: map['nextHopIlbIp'] == null ? null : (map['nextHopIlbIp'] as String).input(),
-      nextHopOtherRoutes: map['nextHopOtherRoutes'] == null ? null : (map['nextHopOtherRoutes'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      virtualMachine: map['virtualMachine'] == null ? null : (PolicyBasedRouteVirtualMachine.fromMap((map['virtualMachine'] as Map).cast<String, dynamic>())).input(),
+      nextHopIlbIp: map['nextHopIlbIp'] == null ? null : (map['nextHopIlbIp']! as String).input(),
+      nextHopOtherRoutes: map['nextHopOtherRoutes'] == null ? null : (map['nextHopOtherRoutes']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      virtualMachine: map['virtualMachine'] == null ? null : (PolicyBasedRouteVirtualMachine.fromMap((map['virtualMachine']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

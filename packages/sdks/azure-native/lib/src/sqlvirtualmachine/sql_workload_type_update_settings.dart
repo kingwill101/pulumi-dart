@@ -21,7 +21,7 @@ class SqlWorkloadTypeUpdateSettings {
 
   factory SqlWorkloadTypeUpdateSettings.fromMap(Map<String, dynamic> map) {
     return SqlWorkloadTypeUpdateSettings(
-      sqlWorkloadType: map['sqlWorkloadType'] == null ? null : (map['sqlWorkloadType'] as String).input(),
+      sqlWorkloadType: map['sqlWorkloadType'] == null ? null : (map['sqlWorkloadType']! as String).input(),
     );
   }
 }

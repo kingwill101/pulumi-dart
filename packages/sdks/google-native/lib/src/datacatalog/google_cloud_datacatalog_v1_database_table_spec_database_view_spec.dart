@@ -32,9 +32,9 @@ class GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec {
 
   factory GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec(
-      baseTable: map['baseTable'] == null ? null : (map['baseTable'] as String).input(),
-      sqlQuery: map['sqlQuery'] == null ? null : (map['sqlQuery'] as String).input(),
-      viewType: map['viewType'] == null ? null : (GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType.fromValue(map['viewType'] as String)).input(),
+      baseTable: map['baseTable'] == null ? null : (map['baseTable']! as String).input(),
+      sqlQuery: map['sqlQuery'] == null ? null : (map['sqlQuery']! as String).input(),
+      viewType: map['viewType'] == null ? null : (GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType.fromValue(map['viewType']! as String)).input(),
     );
   }
 }

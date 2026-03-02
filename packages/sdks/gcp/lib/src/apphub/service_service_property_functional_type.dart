@@ -21,7 +21,7 @@ class ServiceServicePropertyFunctionalType {
 
   factory ServiceServicePropertyFunctionalType.fromMap(Map<String, dynamic> map) {
     return ServiceServicePropertyFunctionalType(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

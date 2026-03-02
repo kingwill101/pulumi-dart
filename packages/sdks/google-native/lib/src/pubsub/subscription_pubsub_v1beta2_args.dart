@@ -48,12 +48,12 @@ class SubscriptionPubsubV1beta2Args {
 
   factory SubscriptionPubsubV1beta2Args.fromMap(Map<String, dynamic> map) {
     return SubscriptionPubsubV1beta2Args(
-      ackDeadlineSeconds: map['ackDeadlineSeconds'] == null ? null : (map['ackDeadlineSeconds'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pushConfig: map['pushConfig'] == null ? null : (PushConfigPubsubV1beta2.fromMap((map['pushConfig'] as Map).cast<String, dynamic>())).input(),
+      ackDeadlineSeconds: map['ackDeadlineSeconds'] == null ? null : (map['ackDeadlineSeconds']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pushConfig: map['pushConfig'] == null ? null : (PushConfigPubsubV1beta2.fromMap((map['pushConfig']! as Map).cast<String, dynamic>())).input(),
       subscriptionId: (map['subscriptionId'] as String).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

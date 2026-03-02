@@ -42,10 +42,10 @@ class InstanceAccessRulesOptions {
 
   factory InstanceAccessRulesOptions.fromMap(Map<String, dynamic> map) {
     return InstanceAccessRulesOptions(
-      accessRules: map['accessRules'] == null ? null : (pulumi.Input.decodeList<InstanceAccessRulesOptionsAccessRule>(map['accessRules'], (value) => InstanceAccessRulesOptionsAccessRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultSquashGid: map['defaultSquashGid'] == null ? null : (map['defaultSquashGid'] as int).input(),
+      accessRules: map['accessRules'] == null ? null : (pulumi.Input.decodeList<InstanceAccessRulesOptionsAccessRule>(map['accessRules']!, (value) => InstanceAccessRulesOptionsAccessRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultSquashGid: map['defaultSquashGid'] == null ? null : (map['defaultSquashGid']! as int).input(),
       defaultSquashMode: (map['defaultSquashMode'] as String).input(),
-      defaultSquashUid: map['defaultSquashUid'] == null ? null : (map['defaultSquashUid'] as int).input(),
+      defaultSquashUid: map['defaultSquashUid'] == null ? null : (map['defaultSquashUid']! as int).input(),
     );
   }
 }

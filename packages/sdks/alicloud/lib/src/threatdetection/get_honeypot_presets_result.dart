@@ -75,18 +75,18 @@ class GetHoneypotPresetsResult {
 
   factory GetHoneypotPresetsResult.fromMap(Map<String, dynamic> map) {
     return GetHoneypotPresetsResult(
-      currentPage: map['currentPage'] == null ? null : map['currentPage'] as int,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
-      honeypotImageName: map['honeypotImageName'] == null ? null : map['honeypotImageName'] as String,
+      currentPage: map['currentPage'] == null ? null : map['currentPage']! as int,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      honeypotImageName: map['honeypotImageName'] == null ? null : map['honeypotImageName']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      lang: map['lang'] == null ? null : map['lang'] as String,
-      nodeId: map['nodeId'] == null ? null : map['nodeId'] as String,
-      nodeName: map['nodeName'] == null ? null : map['nodeName'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      presetName: map['presetName'] == null ? null : map['presetName'] as String,
+      lang: map['lang'] == null ? null : map['lang']! as String,
+      nodeId: map['nodeId'] == null ? null : map['nodeId']! as String,
+      nodeName: map['nodeName'] == null ? null : map['nodeName']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      presetName: map['presetName'] == null ? null : map['presetName']! as String,
       presets: pulumi.Input.decodeList<GetHoneypotPresetsPreset>(map['presets'], (value) => GetHoneypotPresetsPreset.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

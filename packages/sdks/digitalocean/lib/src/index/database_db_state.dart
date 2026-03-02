@@ -26,8 +26,8 @@ class DatabaseDbState {
 
   factory DatabaseDbState.fromMap(Map<String, dynamic> map) {
     return DatabaseDbState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

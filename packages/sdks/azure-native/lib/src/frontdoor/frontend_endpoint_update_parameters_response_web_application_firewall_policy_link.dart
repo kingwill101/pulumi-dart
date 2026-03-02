@@ -21,7 +21,7 @@ class FrontendEndpointUpdateParametersResponseWebApplicationFirewallPolicyLink {
 
   factory FrontendEndpointUpdateParametersResponseWebApplicationFirewallPolicyLink.fromMap(Map<String, dynamic> map) {
     return FrontendEndpointUpdateParametersResponseWebApplicationFirewallPolicyLink(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

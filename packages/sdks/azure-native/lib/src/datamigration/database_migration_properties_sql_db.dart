@@ -68,15 +68,15 @@ class DatabaseMigrationPropertiesSqlDb {
   factory DatabaseMigrationPropertiesSqlDb.fromMap(Map<String, dynamic> map) {
     return DatabaseMigrationPropertiesSqlDb(
       kind: (map['kind'] as String).input(),
-      migrationOperationId: map['migrationOperationId'] == null ? null : (map['migrationOperationId'] as String).input(),
-      migrationService: map['migrationService'] == null ? null : (map['migrationService'] as String).input(),
-      provisioningError: map['provisioningError'] == null ? null : (map['provisioningError'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      sourceDatabaseName: map['sourceDatabaseName'] == null ? null : (map['sourceDatabaseName'] as String).input(),
-      sourceSqlConnection: map['sourceSqlConnection'] == null ? null : (SqlConnectionInformation.fromMap((map['sourceSqlConnection'] as Map).cast<String, dynamic>())).input(),
-      tableList: map['tableList'] == null ? null : ((map['tableList'] as List).cast<String>()).input(),
-      targetDatabaseCollation: map['targetDatabaseCollation'] == null ? null : (map['targetDatabaseCollation'] as String).input(),
-      targetSqlConnection: map['targetSqlConnection'] == null ? null : (SqlConnectionInformation.fromMap((map['targetSqlConnection'] as Map).cast<String, dynamic>())).input(),
+      migrationOperationId: map['migrationOperationId'] == null ? null : (map['migrationOperationId']! as String).input(),
+      migrationService: map['migrationService'] == null ? null : (map['migrationService']! as String).input(),
+      provisioningError: map['provisioningError'] == null ? null : (map['provisioningError']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      sourceDatabaseName: map['sourceDatabaseName'] == null ? null : (map['sourceDatabaseName']! as String).input(),
+      sourceSqlConnection: map['sourceSqlConnection'] == null ? null : (SqlConnectionInformation.fromMap((map['sourceSqlConnection']! as Map).cast<String, dynamic>())).input(),
+      tableList: map['tableList'] == null ? null : ((map['tableList']! as List).cast<String>()).input(),
+      targetDatabaseCollation: map['targetDatabaseCollation'] == null ? null : (map['targetDatabaseCollation']! as String).input(),
+      targetSqlConnection: map['targetSqlConnection'] == null ? null : (SqlConnectionInformation.fromMap((map['targetSqlConnection']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

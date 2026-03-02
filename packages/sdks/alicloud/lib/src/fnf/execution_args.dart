@@ -41,8 +41,8 @@ class ExecutionArgs {
     return ExecutionArgs(
       executionName: (map['executionName'] as String).input(),
       flowName: (map['flowName'] as String).input(),
-      input: map['input'] == null ? null : (map['input'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      input: map['input'] == null ? null : (map['input']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

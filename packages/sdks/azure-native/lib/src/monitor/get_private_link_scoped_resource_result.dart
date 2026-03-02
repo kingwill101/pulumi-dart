@@ -63,11 +63,11 @@ class GetPrivateLinkScopedResourceResult {
     return GetPrivateLinkScopedResourceResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      linkedResourceId: map['linkedResourceId'] == null ? null : map['linkedResourceId'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
+      linkedResourceId: map['linkedResourceId'] == null ? null : map['linkedResourceId']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      subscriptionLocation: map['subscriptionLocation'] == null ? null : map['subscriptionLocation'] as String,
+      subscriptionLocation: map['subscriptionLocation'] == null ? null : map['subscriptionLocation']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

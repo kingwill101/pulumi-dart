@@ -34,9 +34,9 @@ class Ipv6RangeArgs {
 
   factory Ipv6RangeArgs.fromMap(Map<String, dynamic> map) {
     return Ipv6RangeArgs(
-      linodeId: map['linodeId'] == null ? null : (map['linodeId'] as int).input(),
+      linodeId: map['linodeId'] == null ? null : (map['linodeId']! as int).input(),
       prefixLength: (map['prefixLength'] as int).input(),
-      routeTarget: map['routeTarget'] == null ? null : (map['routeTarget'] as String).input(),
+      routeTarget: map['routeTarget'] == null ? null : (map['routeTarget']! as String).input(),
     );
   }
 }

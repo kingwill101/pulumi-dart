@@ -79,17 +79,17 @@ class GoogleCloudAiplatformV1CustomJobSpec {
 
   factory GoogleCloudAiplatformV1CustomJobSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1CustomJobSpec(
-      baseOutputDirectory: map['baseOutputDirectory'] == null ? null : (GoogleCloudAiplatformV1GcsDestination.fromMap((map['baseOutputDirectory'] as Map).cast<String, dynamic>())).input(),
-      enableDashboardAccess: map['enableDashboardAccess'] == null ? null : (map['enableDashboardAccess'] as bool).input(),
-      enableWebAccess: map['enableWebAccess'] == null ? null : (map['enableWebAccess'] as bool).input(),
-      experiment: map['experiment'] == null ? null : (map['experiment'] as String).input(),
-      experimentRun: map['experimentRun'] == null ? null : (map['experimentRun'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      protectedArtifactLocationId: map['protectedArtifactLocationId'] == null ? null : (map['protectedArtifactLocationId'] as String).input(),
-      reservedIpRanges: map['reservedIpRanges'] == null ? null : ((map['reservedIpRanges'] as List).cast<String>()).input(),
-      scheduling: map['scheduling'] == null ? null : (GoogleCloudAiplatformV1Scheduling.fromMap((map['scheduling'] as Map).cast<String, dynamic>())).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      tensorboard: map['tensorboard'] == null ? null : (map['tensorboard'] as String).input(),
+      baseOutputDirectory: map['baseOutputDirectory'] == null ? null : (GoogleCloudAiplatformV1GcsDestination.fromMap((map['baseOutputDirectory']! as Map).cast<String, dynamic>())).input(),
+      enableDashboardAccess: map['enableDashboardAccess'] == null ? null : (map['enableDashboardAccess']! as bool).input(),
+      enableWebAccess: map['enableWebAccess'] == null ? null : (map['enableWebAccess']! as bool).input(),
+      experiment: map['experiment'] == null ? null : (map['experiment']! as String).input(),
+      experimentRun: map['experimentRun'] == null ? null : (map['experimentRun']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      protectedArtifactLocationId: map['protectedArtifactLocationId'] == null ? null : (map['protectedArtifactLocationId']! as String).input(),
+      reservedIpRanges: map['reservedIpRanges'] == null ? null : ((map['reservedIpRanges']! as List).cast<String>()).input(),
+      scheduling: map['scheduling'] == null ? null : (GoogleCloudAiplatformV1Scheduling.fromMap((map['scheduling']! as Map).cast<String, dynamic>())).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      tensorboard: map['tensorboard'] == null ? null : (map['tensorboard']! as String).input(),
       workerPoolSpecs: (pulumi.Input.decodeList<GoogleCloudAiplatformV1WorkerPoolSpec>(map['workerPoolSpecs'], (value) => GoogleCloudAiplatformV1WorkerPoolSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

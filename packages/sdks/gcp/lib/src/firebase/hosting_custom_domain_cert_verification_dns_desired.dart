@@ -27,8 +27,8 @@ class HostingCustomDomainCertVerificationDnsDesired {
 
   factory HostingCustomDomainCertVerificationDnsDesired.fromMap(Map<String, dynamic> map) {
     return HostingCustomDomainCertVerificationDnsDesired(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      records: map['records'] == null ? null : (pulumi.Input.decodeList<HostingCustomDomainCertVerificationDnsDesiredRecord>(map['records'], (value) => HostingCustomDomainCertVerificationDnsDesiredRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      records: map['records'] == null ? null : (pulumi.Input.decodeList<HostingCustomDomainCertVerificationDnsDesiredRecord>(map['records']!, (value) => HostingCustomDomainCertVerificationDnsDesiredRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -106,21 +106,21 @@ class FunctionState {
 
   factory FunctionState.fromMap(Map<String, dynamic> map) {
     return FunctionState(
-      buildConfig: map['buildConfig'] == null ? null : (FunctionBuildConfig.fromMap((map['buildConfig'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
-      eventTrigger: map['eventTrigger'] == null ? null : (FunctionEventTrigger.fromMap((map['eventTrigger'] as Map).cast<String, dynamic>())).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      serviceConfig: map['serviceConfig'] == null ? null : (FunctionServiceConfig.fromMap((map['serviceConfig'] as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      buildConfig: map['buildConfig'] == null ? null : (FunctionBuildConfig.fromMap((map['buildConfig']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      environment: map['environment'] == null ? null : (map['environment']! as String).input(),
+      eventTrigger: map['eventTrigger'] == null ? null : (FunctionEventTrigger.fromMap((map['eventTrigger']! as Map).cast<String, dynamic>())).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      serviceConfig: map['serviceConfig'] == null ? null : (FunctionServiceConfig.fromMap((map['serviceConfig']! as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class LinuxWebAppSiteConfigAutoHealSetting {
 
   factory LinuxWebAppSiteConfigAutoHealSetting.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppSiteConfigAutoHealSetting(
-      action: map['action'] == null ? null : (LinuxWebAppSiteConfigAutoHealSettingAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      trigger: map['trigger'] == null ? null : (LinuxWebAppSiteConfigAutoHealSettingTrigger.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
+      action: map['action'] == null ? null : (LinuxWebAppSiteConfigAutoHealSettingAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      trigger: map['trigger'] == null ? null : (LinuxWebAppSiteConfigAutoHealSettingTrigger.fromMap((map['trigger']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

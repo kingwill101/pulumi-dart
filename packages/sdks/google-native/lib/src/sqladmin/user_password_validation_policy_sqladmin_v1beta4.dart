@@ -36,10 +36,10 @@ class UserPasswordValidationPolicySqladminV1beta4 {
 
   factory UserPasswordValidationPolicySqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return UserPasswordValidationPolicySqladminV1beta4(
-      allowedFailedAttempts: map['allowedFailedAttempts'] == null ? null : (map['allowedFailedAttempts'] as int).input(),
-      enableFailedAttemptsCheck: map['enableFailedAttemptsCheck'] == null ? null : (map['enableFailedAttemptsCheck'] as bool).input(),
-      enablePasswordVerification: map['enablePasswordVerification'] == null ? null : (map['enablePasswordVerification'] as bool).input(),
-      passwordExpirationDuration: map['passwordExpirationDuration'] == null ? null : (map['passwordExpirationDuration'] as String).input(),
+      allowedFailedAttempts: map['allowedFailedAttempts'] == null ? null : (map['allowedFailedAttempts']! as int).input(),
+      enableFailedAttemptsCheck: map['enableFailedAttemptsCheck'] == null ? null : (map['enableFailedAttemptsCheck']! as bool).input(),
+      enablePasswordVerification: map['enablePasswordVerification'] == null ? null : (map['enablePasswordVerification']! as bool).input(),
+      passwordExpirationDuration: map['passwordExpirationDuration'] == null ? null : (map['passwordExpirationDuration']! as String).input(),
     );
   }
 }

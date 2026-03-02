@@ -76,15 +76,15 @@ class ApplicationGatewayProbe {
 
   factory ApplicationGatewayProbe.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayProbe(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       interval: (map['interval'] as int).input(),
-      match: map['match'] == null ? null : (ApplicationGatewayProbeMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
-      minimumServers: map['minimumServers'] == null ? null : (map['minimumServers'] as int).input(),
+      match: map['match'] == null ? null : (ApplicationGatewayProbeMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
+      minimumServers: map['minimumServers'] == null ? null : (map['minimumServers']! as int).input(),
       name: (map['name'] as String).input(),
       path: (map['path'] as String).input(),
-      pickHostNameFromBackendHttpSettings: map['pickHostNameFromBackendHttpSettings'] == null ? null : (map['pickHostNameFromBackendHttpSettings'] as bool).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      pickHostNameFromBackendHttpSettings: map['pickHostNameFromBackendHttpSettings'] == null ? null : (map['pickHostNameFromBackendHttpSettings']! as bool).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
       protocol: (map['protocol'] as String).input(),
       timeout: (map['timeout'] as int).input(),
       unhealthyThreshold: (map['unhealthyThreshold'] as int).input(),

@@ -30,9 +30,9 @@ class SiteMonitorIspCity {
 
   factory SiteMonitorIspCity.fromMap(Map<String, dynamic> map) {
     return SiteMonitorIspCity(
-      city: map['city'] == null ? null : (map['city'] as String).input(),
-      isp: map['isp'] == null ? null : (map['isp'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      city: map['city'] == null ? null : (map['city']! as String).input(),
+      isp: map['isp'] == null ? null : (map['isp']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class BudgetActionDefinition {
 
   factory BudgetActionDefinition.fromMap(Map<String, dynamic> map) {
     return BudgetActionDefinition(
-      iamActionDefinition: map['iamActionDefinition'] == null ? null : (BudgetActionDefinitionIamActionDefinition.fromMap((map['iamActionDefinition'] as Map).cast<String, dynamic>())).input(),
-      scpActionDefinition: map['scpActionDefinition'] == null ? null : (BudgetActionDefinitionScpActionDefinition.fromMap((map['scpActionDefinition'] as Map).cast<String, dynamic>())).input(),
-      ssmActionDefinition: map['ssmActionDefinition'] == null ? null : (BudgetActionDefinitionSsmActionDefinition.fromMap((map['ssmActionDefinition'] as Map).cast<String, dynamic>())).input(),
+      iamActionDefinition: map['iamActionDefinition'] == null ? null : ((BudgetActionDefinitionIamActionDefinition.fromMap((map['iamActionDefinition']! as Map).cast<String, dynamic>())).input()).input(),
+      scpActionDefinition: map['scpActionDefinition'] == null ? null : ((BudgetActionDefinitionScpActionDefinition.fromMap((map['scpActionDefinition']! as Map).cast<String, dynamic>())).input()).input(),
+      ssmActionDefinition: map['ssmActionDefinition'] == null ? null : ((BudgetActionDefinitionSsmActionDefinition.fromMap((map['ssmActionDefinition']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

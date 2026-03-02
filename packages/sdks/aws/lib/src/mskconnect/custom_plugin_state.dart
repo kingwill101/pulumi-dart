@@ -67,16 +67,16 @@ class CustomPluginState {
 
   factory CustomPluginState.fromMap(Map<String, dynamic> map) {
     return CustomPluginState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      latestRevision: map['latestRevision'] == null ? null : (map['latestRevision'] as int).input(),
-      location: map['location'] == null ? null : (CustomPluginLocation.fromMap((map['location'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      contentType: map['contentType'] == null ? null : ((map['contentType'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      latestRevision: map['latestRevision'] == null ? null : ((map['latestRevision'] as int).input()).input(),
+      location: map['location'] == null ? null : ((CustomPluginLocation.fromMap((map['location']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

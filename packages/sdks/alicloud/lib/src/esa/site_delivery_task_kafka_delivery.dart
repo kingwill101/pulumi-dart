@@ -48,14 +48,14 @@ class SiteDeliveryTaskKafkaDelivery {
 
   factory SiteDeliveryTaskKafkaDelivery.fromMap(Map<String, dynamic> map) {
     return SiteDeliveryTaskKafkaDelivery(
-      balancer: map['balancer'] == null ? null : (map['balancer'] as String).input(),
-      brokers: map['brokers'] == null ? null : ((map['brokers'] as List).cast<String>()).input(),
-      compress: map['compress'] == null ? null : (map['compress'] as String).input(),
-      machanismType: map['machanismType'] == null ? null : (map['machanismType'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
-      userAuth: map['userAuth'] == null ? null : (map['userAuth'] as bool).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      balancer: map['balancer'] == null ? null : (map['balancer']! as String).input(),
+      brokers: map['brokers'] == null ? null : ((map['brokers']! as List).cast<String>()).input(),
+      compress: map['compress'] == null ? null : (map['compress']! as String).input(),
+      machanismType: map['machanismType'] == null ? null : (map['machanismType']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
+      userAuth: map['userAuth'] == null ? null : (map['userAuth']! as bool).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

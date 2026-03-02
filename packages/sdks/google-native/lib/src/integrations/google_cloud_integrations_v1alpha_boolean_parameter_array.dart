@@ -21,7 +21,7 @@ class GoogleCloudIntegrationsV1alphaBooleanParameterArray {
 
   factory GoogleCloudIntegrationsV1alphaBooleanParameterArray.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaBooleanParameterArray(
-      booleanValues: map['booleanValues'] == null ? null : ((map['booleanValues'] as List).cast<bool>()).input(),
+      booleanValues: map['booleanValues'] == null ? null : ((map['booleanValues']! as List).cast<bool>()).input(),
     );
   }
 }

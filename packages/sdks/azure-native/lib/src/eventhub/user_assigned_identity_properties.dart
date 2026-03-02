@@ -20,7 +20,7 @@ class UserAssignedIdentityProperties {
 
   factory UserAssignedIdentityProperties.fromMap(Map<String, dynamic> map) {
     return UserAssignedIdentityProperties(
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity'] as String).input(),
+      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']! as String).input(),
     );
   }
 }

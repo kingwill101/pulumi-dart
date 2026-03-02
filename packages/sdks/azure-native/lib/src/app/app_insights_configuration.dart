@@ -21,7 +21,7 @@ class AppInsightsConfiguration {
 
   factory AppInsightsConfiguration.fromMap(Map<String, dynamic> map) {
     return AppInsightsConfiguration(
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
     );
   }
 }

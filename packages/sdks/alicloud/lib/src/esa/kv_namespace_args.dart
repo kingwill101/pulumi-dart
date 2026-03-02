@@ -29,7 +29,7 @@ class KvNamespaceArgs {
 
   factory KvNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return KvNamespaceArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       kvNamespace: (map['kvNamespace'] as String).input(),
     );
   }

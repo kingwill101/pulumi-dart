@@ -31,9 +31,9 @@ class GoogleCloudRecommendationengineV1beta1Image {
 
   factory GoogleCloudRecommendationengineV1beta1Image.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecommendationengineV1beta1Image(
-      height: map['height'] == null ? null : (map['height'] as int).input(),
+      height: map['height'] == null ? null : (map['height']! as int).input(),
       uri: (map['uri'] as String).input(),
-      width: map['width'] == null ? null : (map['width'] as int).input(),
+      width: map['width'] == null ? null : (map['width']! as int).input(),
     );
   }
 }

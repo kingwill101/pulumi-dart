@@ -26,8 +26,8 @@ class ServerKeyState {
 
   factory ServerKeyState.fromMap(Map<String, dynamic> map) {
     return ServerKeyState(
-      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId'] as String).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
+      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId']! as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId']! as String).input(),
     );
   }
 }

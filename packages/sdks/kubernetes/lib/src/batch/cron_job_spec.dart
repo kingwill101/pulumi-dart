@@ -59,14 +59,14 @@ class CronJobSpec {
 
   factory CronJobSpec.fromMap(Map<String, dynamic> map) {
     return CronJobSpec(
-      concurrencyPolicy: map['concurrencyPolicy'] == null ? null : (map['concurrencyPolicy'] as String).input(),
-      failedJobsHistoryLimit: map['failedJobsHistoryLimit'] == null ? null : (map['failedJobsHistoryLimit'] as int).input(),
+      concurrencyPolicy: map['concurrencyPolicy'] == null ? null : (map['concurrencyPolicy']! as String).input(),
+      failedJobsHistoryLimit: map['failedJobsHistoryLimit'] == null ? null : (map['failedJobsHistoryLimit']! as int).input(),
       jobTemplate: (JobTemplateSpec.fromMap((map['jobTemplate'] as Map).cast<String, dynamic>())).input(),
       schedule: (map['schedule'] as String).input(),
-      startingDeadlineSeconds: map['startingDeadlineSeconds'] == null ? null : (map['startingDeadlineSeconds'] as int).input(),
-      successfulJobsHistoryLimit: map['successfulJobsHistoryLimit'] == null ? null : (map['successfulJobsHistoryLimit'] as int).input(),
-      suspend: map['suspend'] == null ? null : (map['suspend'] as bool).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      startingDeadlineSeconds: map['startingDeadlineSeconds'] == null ? null : (map['startingDeadlineSeconds']! as int).input(),
+      successfulJobsHistoryLimit: map['successfulJobsHistoryLimit'] == null ? null : (map['successfulJobsHistoryLimit']! as int).input(),
+      suspend: map['suspend'] == null ? null : (map['suspend']! as bool).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

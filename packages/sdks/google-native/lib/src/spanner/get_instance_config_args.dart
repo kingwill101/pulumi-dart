@@ -28,7 +28,7 @@ class GetInstanceConfigArgs {
   factory GetInstanceConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceConfigArgs(
       instanceConfigId: (map['instanceConfigId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

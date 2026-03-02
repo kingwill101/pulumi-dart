@@ -46,11 +46,11 @@ class GetPatchBaselineArgs {
 
   factory GetPatchBaselineArgs.fromMap(Map<String, dynamic> map) {
     return GetPatchBaselineArgs(
-      defaultBaseline: map['defaultBaseline'] == null ? null : (map['defaultBaseline'] as bool).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem'] as String).input(),
+      defaultBaseline: map['defaultBaseline'] == null ? null : ((map['defaultBaseline'] as bool).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      operatingSystem: map['operatingSystem'] == null ? null : ((map['operatingSystem'] as String).input()).input(),
       owner: (map['owner'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

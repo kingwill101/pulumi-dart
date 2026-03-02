@@ -21,7 +21,7 @@ class ContainerServicePublicDomainNames {
 
   factory ContainerServicePublicDomainNames.fromMap(Map<String, dynamic> map) {
     return ContainerServicePublicDomainNames(
-      certificates: (pulumi.Input.decodeList<ContainerServicePublicDomainNamesCertificate>(map['certificates'], (value) => ContainerServicePublicDomainNamesCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      certificates: (pulumi.Input.decodeList<ContainerServicePublicDomainNamesCertificate>(map['certificates']!, (value) => ContainerServicePublicDomainNamesCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -107,12 +107,12 @@ class Target {
 
   factory Target.fromMap(Map<String, dynamic> map) {
     return Target(
-      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
-      connectionType: map['connectionType'] == null ? null : (IntegrationConnectionType.fromValue(map['connectionType'] as String)).input(),
-      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod'] as String).input(),
-      passthroughBehaviour: map['passthroughBehaviour'] == null ? null : (IntegrationPassthroughBehavior.fromValue(map['passthroughBehaviour'] as String)).input(),
+      connectionId: map['connectionId'] == null ? null : (map['connectionId']! as String).input(),
+      connectionType: map['connectionType'] == null ? null : (IntegrationConnectionType.fromValue(map['connectionType']! as String)).input(),
+      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod']! as String).input(),
+      passthroughBehaviour: map['passthroughBehaviour'] == null ? null : (IntegrationPassthroughBehavior.fromValue(map['passthroughBehaviour']! as String)).input(),
       type: (IntegrationType.fromValue(map['type'] as String)).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

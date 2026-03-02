@@ -30,9 +30,9 @@ class AppSpecJobGithub {
 
   factory AppSpecJobGithub.fromMap(Map<String, dynamic> map) {
     return AppSpecJobGithub(
-      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
-      deployOnPush: map['deployOnPush'] == null ? null : (map['deployOnPush'] as bool).input(),
-      repo: map['repo'] == null ? null : (map['repo'] as String).input(),
+      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
+      deployOnPush: map['deployOnPush'] == null ? null : (map['deployOnPush']! as bool).input(),
+      repo: map['repo'] == null ? null : (map['repo']! as String).input(),
     );
   }
 }

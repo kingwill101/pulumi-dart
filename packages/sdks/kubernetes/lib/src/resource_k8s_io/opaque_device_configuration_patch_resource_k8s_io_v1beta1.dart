@@ -32,8 +32,8 @@ class OpaqueDeviceConfigurationPatchResourceK8sIoV1beta1 {
 
   factory OpaqueDeviceConfigurationPatchResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return OpaqueDeviceConfigurationPatchResourceK8sIoV1beta1(
-      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters']).input(),
+      driver: map['driver'] == null ? null : (map['driver']! as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']!).input(),
     );
   }
 }

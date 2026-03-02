@@ -54,13 +54,13 @@ class GetServerArgs {
 
   factory GetServerArgs.fromMap(Map<String, dynamic> map) {
     return GetServerArgs(
-      id: map['id'] == null ? null : (map['id'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<GetServerNetwork>(map['networks'], (value) => GetServerNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      placementGroupId: map['placementGroupId'] == null ? null : (map['placementGroupId'] as int).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
-      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
-      withStatuses: map['withStatuses'] == null ? null : ((map['withStatuses'] as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<GetServerNetwork>(map['networks']!, (value) => GetServerNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      placementGroupId: map['placementGroupId'] == null ? null : (map['placementGroupId']! as int).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
+      withStatuses: map['withStatuses'] == null ? null : ((map['withStatuses']! as List).cast<String>()).input(),
     );
   }
 }

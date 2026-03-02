@@ -27,7 +27,7 @@ class GetTargetSslProxyArgs {
 
   factory GetTargetSslProxyArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetSslProxyArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       targetSslProxy: (map['targetSslProxy'] as String).input(),
     );
   }

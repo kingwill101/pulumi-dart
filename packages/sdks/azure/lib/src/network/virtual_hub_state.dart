@@ -87,20 +87,20 @@ class VirtualHubState {
 
   factory VirtualHubState.fromMap(Map<String, dynamic> map) {
     return VirtualHubState(
-      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix'] as String).input(),
-      branchToBranchTrafficEnabled: map['branchToBranchTrafficEnabled'] == null ? null : (map['branchToBranchTrafficEnabled'] as bool).input(),
-      defaultRouteTableId: map['defaultRouteTableId'] == null ? null : (map['defaultRouteTableId'] as String).input(),
-      hubRoutingPreference: map['hubRoutingPreference'] == null ? null : (map['hubRoutingPreference'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<VirtualHubRoute>(map['routes'], (value) => VirtualHubRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      virtualRouterAsn: map['virtualRouterAsn'] == null ? null : (map['virtualRouterAsn'] as int).input(),
-      virtualRouterAutoScaleMinCapacity: map['virtualRouterAutoScaleMinCapacity'] == null ? null : (map['virtualRouterAutoScaleMinCapacity'] as int).input(),
-      virtualRouterIps: map['virtualRouterIps'] == null ? null : ((map['virtualRouterIps'] as List).cast<String>()).input(),
-      virtualWanId: map['virtualWanId'] == null ? null : (map['virtualWanId'] as String).input(),
+      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix']! as String).input(),
+      branchToBranchTrafficEnabled: map['branchToBranchTrafficEnabled'] == null ? null : (map['branchToBranchTrafficEnabled']! as bool).input(),
+      defaultRouteTableId: map['defaultRouteTableId'] == null ? null : (map['defaultRouteTableId']! as String).input(),
+      hubRoutingPreference: map['hubRoutingPreference'] == null ? null : (map['hubRoutingPreference']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<VirtualHubRoute>(map['routes']!, (value) => VirtualHubRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      virtualRouterAsn: map['virtualRouterAsn'] == null ? null : (map['virtualRouterAsn']! as int).input(),
+      virtualRouterAutoScaleMinCapacity: map['virtualRouterAutoScaleMinCapacity'] == null ? null : (map['virtualRouterAutoScaleMinCapacity']! as int).input(),
+      virtualRouterIps: map['virtualRouterIps'] == null ? null : ((map['virtualRouterIps']! as List).cast<String>()).input(),
+      virtualWanId: map['virtualWanId'] == null ? null : (map['virtualWanId']! as String).input(),
     );
   }
 }

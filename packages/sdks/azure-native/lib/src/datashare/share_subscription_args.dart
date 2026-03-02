@@ -50,10 +50,10 @@ class ShareSubscriptionArgs {
   factory ShareSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return ShareSubscriptionArgs(
       accountName: (map['accountName'] as String).input(),
-      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate']! as String).input(),
       invitationId: (map['invitationId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      shareSubscriptionName: map['shareSubscriptionName'] == null ? null : (map['shareSubscriptionName'] as String).input(),
+      shareSubscriptionName: map['shareSubscriptionName'] == null ? null : (map['shareSubscriptionName']! as String).input(),
       sourceShareLocation: (map['sourceShareLocation'] as String).input(),
     );
   }

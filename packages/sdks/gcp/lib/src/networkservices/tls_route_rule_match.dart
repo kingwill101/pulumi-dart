@@ -26,8 +26,8 @@ class TlsRouteRuleMatch {
 
   factory TlsRouteRuleMatch.fromMap(Map<String, dynamic> map) {
     return TlsRouteRuleMatch(
-      alpns: map['alpns'] == null ? null : ((map['alpns'] as List).cast<String>()).input(),
-      sniHosts: map['sniHosts'] == null ? null : ((map['sniHosts'] as List).cast<String>()).input(),
+      alpns: map['alpns'] == null ? null : ((map['alpns']! as List).cast<String>()).input(),
+      sniHosts: map['sniHosts'] == null ? null : ((map['sniHosts']! as List).cast<String>()).input(),
     );
   }
 }

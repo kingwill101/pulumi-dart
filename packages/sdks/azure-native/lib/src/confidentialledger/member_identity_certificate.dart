@@ -31,9 +31,9 @@ class MemberIdentityCertificate {
 
   factory MemberIdentityCertificate.fromMap(Map<String, dynamic> map) {
     return MemberIdentityCertificate(
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
-      encryptionkey: map['encryptionkey'] == null ? null : (map['encryptionkey'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<CertificateTags>(map['tags'], (value) => CertificateTags.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
+      encryptionkey: map['encryptionkey'] == null ? null : (map['encryptionkey']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<CertificateTags>(map['tags']!, (value) => CertificateTags.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

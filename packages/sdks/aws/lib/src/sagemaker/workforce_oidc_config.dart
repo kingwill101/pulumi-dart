@@ -65,14 +65,14 @@ class WorkforceOidcConfig {
 
   factory WorkforceOidcConfig.fromMap(Map<String, dynamic> map) {
     return WorkforceOidcConfig(
-      authenticationRequestExtraParams: map['authenticationRequestExtraParams'] == null ? null : ((map['authenticationRequestExtraParams'] as Map).cast<String, String>()).input(),
+      authenticationRequestExtraParams: map['authenticationRequestExtraParams'] == null ? null : (((map['authenticationRequestExtraParams'] as Map).cast<String, String>()).input()).input(),
       authorizationEndpoint: (map['authorizationEndpoint'] as String).input(),
       clientId: (map['clientId'] as String).input(),
       clientSecret: (map['clientSecret'] as String).input(),
       issuer: (map['issuer'] as String).input(),
       jwksUri: (map['jwksUri'] as String).input(),
       logoutEndpoint: (map['logoutEndpoint'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      scope: map['scope'] == null ? null : ((map['scope'] as String).input()).input(),
       tokenEndpoint: (map['tokenEndpoint'] as String).input(),
       userInfoEndpoint: (map['userInfoEndpoint'] as String).input(),
     );

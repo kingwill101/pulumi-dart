@@ -28,7 +28,7 @@ class ConnectionProfileAlloydb {
   factory ConnectionProfileAlloydb.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileAlloydb(
       clusterId: (map['clusterId'] as String).input(),
-      settings: map['settings'] == null ? null : (ConnectionProfileAlloydbSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      settings: map['settings'] == null ? null : (ConnectionProfileAlloydbSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

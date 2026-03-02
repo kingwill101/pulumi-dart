@@ -68,14 +68,14 @@ class GuestPolicyArgs {
   factory GuestPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GuestPolicyArgs(
       assignment: (Assignment.fromMap((map['assignment'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       guestPolicyId: (map['guestPolicyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      packageRepositories: map['packageRepositories'] == null ? null : (pulumi.Input.decodeList<PackageRepository>(map['packageRepositories'], (value) => PackageRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      packages: map['packages'] == null ? null : (pulumi.Input.decodeList<Package>(map['packages'], (value) => Package.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      recipes: map['recipes'] == null ? null : (pulumi.Input.decodeList<SoftwareRecipe>(map['recipes'], (value) => SoftwareRecipe.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      packageRepositories: map['packageRepositories'] == null ? null : (pulumi.Input.decodeList<PackageRepository>(map['packageRepositories']!, (value) => PackageRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      packages: map['packages'] == null ? null : (pulumi.Input.decodeList<Package>(map['packages']!, (value) => Package.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      recipes: map['recipes'] == null ? null : (pulumi.Input.decodeList<SoftwareRecipe>(map['recipes']!, (value) => SoftwareRecipe.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

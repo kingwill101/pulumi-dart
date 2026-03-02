@@ -21,7 +21,7 @@ class GetFunctionCapacityProviderConfig {
 
   factory GetFunctionCapacityProviderConfig.fromMap(Map<String, dynamic> map) {
     return GetFunctionCapacityProviderConfig(
-      lambdaManagedInstancesCapacityProviderConfigs: (pulumi.Input.decodeList<GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig>(map['lambdaManagedInstancesCapacityProviderConfigs'], (value) => GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lambdaManagedInstancesCapacityProviderConfigs: (pulumi.Input.decodeList<GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig>(map['lambdaManagedInstancesCapacityProviderConfigs']!, (value) => GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

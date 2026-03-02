@@ -20,7 +20,7 @@ class ExcludedPath {
 
   factory ExcludedPath.fromMap(Map<String, dynamic> map) {
     return ExcludedPath(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

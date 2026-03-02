@@ -51,12 +51,12 @@ class CustomServiceResponse {
 
   factory CustomServiceResponse.fromMap(Map<String, dynamic> map) {
     return CustomServiceResponse(
-      docker: map['docker'] == null ? null : (DockerResponse.fromMap((map['docker'] as Map).cast<String, dynamic>())).input(),
-      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<EndpointResponse>(map['endpoints'], (value) => EndpointResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeMapValues<EnvironmentVariableResponse>(map['environmentVariables'], (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      image: map['image'] == null ? null : (ImageResponse.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<VolumeDefinitionResponse>(map['volumes'], (value) => VolumeDefinitionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      docker: map['docker'] == null ? null : (DockerResponse.fromMap((map['docker']! as Map).cast<String, dynamic>())).input(),
+      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<EndpointResponse>(map['endpoints']!, (value) => EndpointResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeMapValues<EnvironmentVariableResponse>(map['environmentVariables']!, (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      image: map['image'] == null ? null : (ImageResponse.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<VolumeDefinitionResponse>(map['volumes']!, (value) => VolumeDefinitionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

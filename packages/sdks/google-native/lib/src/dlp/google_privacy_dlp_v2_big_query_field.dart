@@ -28,8 +28,8 @@ class GooglePrivacyDlpV2BigQueryField {
 
   factory GooglePrivacyDlpV2BigQueryField.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2BigQueryField(
-      field: map['field'] == null ? null : (GooglePrivacyDlpV2FieldId.fromMap((map['field'] as Map).cast<String, dynamic>())).input(),
-      table: map['table'] == null ? null : (GooglePrivacyDlpV2BigQueryTable.fromMap((map['table'] as Map).cast<String, dynamic>())).input(),
+      field: map['field'] == null ? null : (GooglePrivacyDlpV2FieldId.fromMap((map['field']! as Map).cast<String, dynamic>())).input(),
+      table: map['table'] == null ? null : (GooglePrivacyDlpV2BigQueryTable.fromMap((map['table']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

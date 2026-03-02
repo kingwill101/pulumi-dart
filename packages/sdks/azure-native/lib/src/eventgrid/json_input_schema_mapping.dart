@@ -54,13 +54,13 @@ class JsonInputSchemaMapping {
 
   factory JsonInputSchemaMapping.fromMap(Map<String, dynamic> map) {
     return JsonInputSchemaMapping(
-      dataVersion: map['dataVersion'] == null ? null : (JsonFieldWithDefault.fromMap((map['dataVersion'] as Map).cast<String, dynamic>())).input(),
-      eventTime: map['eventTime'] == null ? null : (JsonField.fromMap((map['eventTime'] as Map).cast<String, dynamic>())).input(),
-      eventType: map['eventType'] == null ? null : (JsonFieldWithDefault.fromMap((map['eventType'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (JsonField.fromMap((map['id'] as Map).cast<String, dynamic>())).input(),
+      dataVersion: map['dataVersion'] == null ? null : (JsonFieldWithDefault.fromMap((map['dataVersion']! as Map).cast<String, dynamic>())).input(),
+      eventTime: map['eventTime'] == null ? null : (JsonField.fromMap((map['eventTime']! as Map).cast<String, dynamic>())).input(),
+      eventType: map['eventType'] == null ? null : (JsonFieldWithDefault.fromMap((map['eventType']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (JsonField.fromMap((map['id']! as Map).cast<String, dynamic>())).input(),
       inputSchemaMappingType: (map['inputSchemaMappingType'] as String).input(),
-      subject: map['subject'] == null ? null : (JsonFieldWithDefault.fromMap((map['subject'] as Map).cast<String, dynamic>())).input(),
-      topic: map['topic'] == null ? null : (JsonField.fromMap((map['topic'] as Map).cast<String, dynamic>())).input(),
+      subject: map['subject'] == null ? null : (JsonFieldWithDefault.fromMap((map['subject']! as Map).cast<String, dynamic>())).input(),
+      topic: map['topic'] == null ? null : (JsonField.fromMap((map['topic']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

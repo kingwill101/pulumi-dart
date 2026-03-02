@@ -106,21 +106,21 @@ class NetworkFirewallPolicyPacketMirroringRuleState {
 
   factory NetworkFirewallPolicyPacketMirroringRuleState.fromMap(Map<String, dynamic> map) {
     return NetworkFirewallPolicyPacketMirroringRuleState(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      firewallPolicy: map['firewallPolicy'] == null ? null : (map['firewallPolicy'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      match: map['match'] == null ? null : (NetworkFirewallPolicyPacketMirroringRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      ruleTupleCount: map['ruleTupleCount'] == null ? null : (map['ruleTupleCount'] as int).input(),
-      securityProfileGroup: map['securityProfileGroup'] == null ? null : (map['securityProfileGroup'] as String).input(),
-      targetSecureTags: map['targetSecureTags'] == null ? null : (pulumi.Input.decodeList<NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag>(map['targetSecureTags'], (value) => NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tlsInspect: map['tlsInspect'] == null ? null : (map['tlsInspect'] as bool).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      firewallPolicy: map['firewallPolicy'] == null ? null : (map['firewallPolicy']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      match: map['match'] == null ? null : (NetworkFirewallPolicyPacketMirroringRuleMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      ruleTupleCount: map['ruleTupleCount'] == null ? null : (map['ruleTupleCount']! as int).input(),
+      securityProfileGroup: map['securityProfileGroup'] == null ? null : (map['securityProfileGroup']! as String).input(),
+      targetSecureTags: map['targetSecureTags'] == null ? null : (pulumi.Input.decodeList<NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag>(map['targetSecureTags']!, (value) => NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tlsInspect: map['tlsInspect'] == null ? null : (map['tlsInspect']! as bool).input(),
     );
   }
 }

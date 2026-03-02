@@ -75,18 +75,18 @@ class GetLocalRulestackSupportInfoResult {
 
   factory GetLocalRulestackSupportInfoResult.fromMap(Map<String, dynamic> map) {
     return GetLocalRulestackSupportInfoResult(
-      accountId: map['accountId'] == null ? null : map['accountId'] as String,
-      accountRegistered: map['accountRegistered'] == null ? null : map['accountRegistered'] as String,
-      freeTrial: map['freeTrial'] == null ? null : map['freeTrial'] as String,
-      freeTrialCreditLeft: map['freeTrialCreditLeft'] == null ? null : map['freeTrialCreditLeft'] as int,
-      freeTrialDaysLeft: map['freeTrialDaysLeft'] == null ? null : map['freeTrialDaysLeft'] as int,
-      helpURL: map['helpURL'] == null ? null : map['helpURL'] as String,
-      productSerial: map['productSerial'] == null ? null : map['productSerial'] as String,
-      productSku: map['productSku'] == null ? null : map['productSku'] as String,
-      registerURL: map['registerURL'] == null ? null : map['registerURL'] as String,
-      supportURL: map['supportURL'] == null ? null : map['supportURL'] as String,
-      userDomainSupported: map['userDomainSupported'] == null ? null : map['userDomainSupported'] as String,
-      userRegistered: map['userRegistered'] == null ? null : map['userRegistered'] as String,
+      accountId: map['accountId'] == null ? null : map['accountId']! as String,
+      accountRegistered: map['accountRegistered'] == null ? null : map['accountRegistered']! as String,
+      freeTrial: map['freeTrial'] == null ? null : map['freeTrial']! as String,
+      freeTrialCreditLeft: map['freeTrialCreditLeft'] == null ? null : map['freeTrialCreditLeft']! as int,
+      freeTrialDaysLeft: map['freeTrialDaysLeft'] == null ? null : map['freeTrialDaysLeft']! as int,
+      helpURL: map['helpURL'] == null ? null : map['helpURL']! as String,
+      productSerial: map['productSerial'] == null ? null : map['productSerial']! as String,
+      productSku: map['productSku'] == null ? null : map['productSku']! as String,
+      registerURL: map['registerURL'] == null ? null : map['registerURL']! as String,
+      supportURL: map['supportURL'] == null ? null : map['supportURL']! as String,
+      userDomainSupported: map['userDomainSupported'] == null ? null : map['userDomainSupported']! as String,
+      userRegistered: map['userRegistered'] == null ? null : map['userRegistered']! as String,
     );
   }
 }

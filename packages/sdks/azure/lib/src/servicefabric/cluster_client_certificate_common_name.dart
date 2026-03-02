@@ -34,7 +34,7 @@ class ClusterClientCertificateCommonName {
     return ClusterClientCertificateCommonName(
       commonName: (map['commonName'] as String).input(),
       isAdmin: (map['isAdmin'] as bool).input(),
-      issuerThumbprint: map['issuerThumbprint'] == null ? null : (map['issuerThumbprint'] as String).input(),
+      issuerThumbprint: map['issuerThumbprint'] == null ? null : (map['issuerThumbprint']! as String).input(),
     );
   }
 }

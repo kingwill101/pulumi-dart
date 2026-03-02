@@ -78,17 +78,17 @@ class GlobalClusterArgs {
 
   factory GlobalClusterArgs.fromMap(Map<String, dynamic> map) {
     return GlobalClusterArgs(
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      engineLifecycleSupport: map['engineLifecycleSupport'] == null ? null : (map['engineLifecycleSupport'] as String).input(),
-      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      databaseName: map['databaseName'] == null ? null : ((map['databaseName'] as String).input()).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : ((map['deletionProtection'] as bool).input()).input(),
+      engine: map['engine'] == null ? null : ((map['engine'] as String).input()).input(),
+      engineLifecycleSupport: map['engineLifecycleSupport'] == null ? null : ((map['engineLifecycleSupport'] as String).input()).input(),
+      engineVersion: map['engineVersion'] == null ? null : ((map['engineVersion'] as String).input()).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : ((map['forceDestroy'] as bool).input()).input(),
       globalClusterIdentifier: (map['globalClusterIdentifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sourceDbClusterIdentifier: map['sourceDbClusterIdentifier'] == null ? null : (map['sourceDbClusterIdentifier'] as String).input(),
-      storageEncrypted: map['storageEncrypted'] == null ? null : (map['storageEncrypted'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sourceDbClusterIdentifier: map['sourceDbClusterIdentifier'] == null ? null : ((map['sourceDbClusterIdentifier'] as String).input()).input(),
+      storageEncrypted: map['storageEncrypted'] == null ? null : ((map['storageEncrypted'] as bool).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

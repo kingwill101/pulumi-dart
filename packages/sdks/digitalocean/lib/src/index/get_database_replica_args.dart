@@ -36,7 +36,7 @@ class GetDatabaseReplicaArgs {
     return GetDatabaseReplicaArgs(
       clusterId: (map['clusterId'] as String).input(),
       name: (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
     );
   }
 }

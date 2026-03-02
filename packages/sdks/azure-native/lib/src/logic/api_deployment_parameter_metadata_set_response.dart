@@ -27,8 +27,8 @@ class ApiDeploymentParameterMetadataSetResponse {
 
   factory ApiDeploymentParameterMetadataSetResponse.fromMap(Map<String, dynamic> map) {
     return ApiDeploymentParameterMetadataSetResponse(
-      packageContentLink: map['packageContentLink'] == null ? null : (ApiDeploymentParameterMetadataResponse.fromMap((map['packageContentLink'] as Map).cast<String, dynamic>())).input(),
-      redisCacheConnectionString: map['redisCacheConnectionString'] == null ? null : (ApiDeploymentParameterMetadataResponse.fromMap((map['redisCacheConnectionString'] as Map).cast<String, dynamic>())).input(),
+      packageContentLink: map['packageContentLink'] == null ? null : (ApiDeploymentParameterMetadataResponse.fromMap((map['packageContentLink']! as Map).cast<String, dynamic>())).input(),
+      redisCacheConnectionString: map['redisCacheConnectionString'] == null ? null : (ApiDeploymentParameterMetadataResponse.fromMap((map['redisCacheConnectionString']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

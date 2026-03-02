@@ -40,7 +40,7 @@ class MqttBridgeRemoteBrokerConnectionSpec {
     return MqttBridgeRemoteBrokerConnectionSpec(
       authentication: (MqttBridgeRemoteBrokerAuthenticationMethods.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
       endpoint: (map['endpoint'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
       tls: (MqttBridgeRemoteBrokerConnectionTls.fromMap((map['tls'] as Map).cast<String, dynamic>())).input(),
     );
   }

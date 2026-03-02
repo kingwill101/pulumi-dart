@@ -27,8 +27,8 @@ class GatewayRouteSpecHttpRouteAction {
 
   factory GatewayRouteSpecHttpRouteAction.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecHttpRouteAction(
-      rewrite: map['rewrite'] == null ? null : (GatewayRouteSpecHttpRouteActionRewrite.fromMap((map['rewrite'] as Map).cast<String, dynamic>())).input(),
-      target: (GatewayRouteSpecHttpRouteActionTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      rewrite: map['rewrite'] == null ? null : ((GatewayRouteSpecHttpRouteActionRewrite.fromMap((map['rewrite']! as Map).cast<String, dynamic>())).input()).input(),
+      target: (GatewayRouteSpecHttpRouteActionTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

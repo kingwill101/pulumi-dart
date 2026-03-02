@@ -36,10 +36,10 @@ class DomainDevicesDiskMirrorSourceVolume {
 
   factory DomainDevicesDiskMirrorSourceVolume.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorSourceVolume(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      pool: map['pool'] == null ? null : (map['pool'] as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskMirrorSourceVolumeSecLabel>(map['secLabels'], (value) => DomainDevicesDiskMirrorSourceVolumeSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volume: map['volume'] == null ? null : (map['volume'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      pool: map['pool'] == null ? null : (map['pool']! as String).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskMirrorSourceVolumeSecLabel>(map['secLabels']!, (value) => DomainDevicesDiskMirrorSourceVolumeSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volume: map['volume'] == null ? null : (map['volume']! as String).input(),
     );
   }
 }

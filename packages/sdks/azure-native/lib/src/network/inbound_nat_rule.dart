@@ -77,18 +77,18 @@ class InboundNatRule {
 
   factory InboundNatRule.fromMap(Map<String, dynamic> map) {
     return InboundNatRule(
-      backendAddressPool: map['backendAddressPool'] == null ? null : (SubResource.fromMap((map['backendAddressPool'] as Map).cast<String, dynamic>())).input(),
-      backendPort: map['backendPort'] == null ? null : (map['backendPort'] as int).input(),
-      enableFloatingIP: map['enableFloatingIP'] == null ? null : (map['enableFloatingIP'] as bool).input(),
-      enableTcpReset: map['enableTcpReset'] == null ? null : (map['enableTcpReset'] as bool).input(),
-      frontendIPConfiguration: map['frontendIPConfiguration'] == null ? null : (SubResource.fromMap((map['frontendIPConfiguration'] as Map).cast<String, dynamic>())).input(),
-      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort'] as int).input(),
-      frontendPortRangeEnd: map['frontendPortRangeEnd'] == null ? null : (map['frontendPortRangeEnd'] as int).input(),
-      frontendPortRangeStart: map['frontendPortRangeStart'] == null ? null : (map['frontendPortRangeStart'] as int).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      backendAddressPool: map['backendAddressPool'] == null ? null : (SubResource.fromMap((map['backendAddressPool']! as Map).cast<String, dynamic>())).input(),
+      backendPort: map['backendPort'] == null ? null : (map['backendPort']! as int).input(),
+      enableFloatingIP: map['enableFloatingIP'] == null ? null : (map['enableFloatingIP']! as bool).input(),
+      enableTcpReset: map['enableTcpReset'] == null ? null : (map['enableTcpReset']! as bool).input(),
+      frontendIPConfiguration: map['frontendIPConfiguration'] == null ? null : (SubResource.fromMap((map['frontendIPConfiguration']! as Map).cast<String, dynamic>())).input(),
+      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort']! as int).input(),
+      frontendPortRangeEnd: map['frontendPortRangeEnd'] == null ? null : (map['frontendPortRangeEnd']! as int).input(),
+      frontendPortRangeStart: map['frontendPortRangeStart'] == null ? null : (map['frontendPortRangeStart']! as int).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
     );
   }
 }

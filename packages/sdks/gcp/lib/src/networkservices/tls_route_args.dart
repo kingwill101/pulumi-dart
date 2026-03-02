@@ -55,11 +55,11 @@ class TlsRouteArgs {
 
   factory TlsRouteArgs.fromMap(Map<String, dynamic> map) {
     return TlsRouteArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      gateways: map['gateways'] == null ? null : ((map['gateways'] as List).cast<String>()).input(),
-      meshes: map['meshes'] == null ? null : ((map['meshes'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      gateways: map['gateways'] == null ? null : ((map['gateways']! as List).cast<String>()).input(),
+      meshes: map['meshes'] == null ? null : ((map['meshes']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       rules: (pulumi.Input.decodeList<TlsRouteRule>(map['rules'], (value) => TlsRouteRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

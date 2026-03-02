@@ -34,8 +34,8 @@ class PolicyRulesWithSubjectsFlowcontrolApiserverK8sIoV1beta1 {
 
   factory PolicyRulesWithSubjectsFlowcontrolApiserverK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return PolicyRulesWithSubjectsFlowcontrolApiserverK8sIoV1beta1(
-      nonResourceRules: map['nonResourceRules'] == null ? null : (pulumi.Input.decodeList<NonResourcePolicyRuleFlowcontrolApiserverK8sIoV1beta1>(map['nonResourceRules'], (value) => NonResourcePolicyRuleFlowcontrolApiserverK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceRules: map['resourceRules'] == null ? null : (pulumi.Input.decodeList<ResourcePolicyRuleFlowcontrolApiserverK8sIoV1beta1>(map['resourceRules'], (value) => ResourcePolicyRuleFlowcontrolApiserverK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nonResourceRules: map['nonResourceRules'] == null ? null : (pulumi.Input.decodeList<NonResourcePolicyRuleFlowcontrolApiserverK8sIoV1beta1>(map['nonResourceRules']!, (value) => NonResourcePolicyRuleFlowcontrolApiserverK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceRules: map['resourceRules'] == null ? null : (pulumi.Input.decodeList<ResourcePolicyRuleFlowcontrolApiserverK8sIoV1beta1>(map['resourceRules']!, (value) => ResourcePolicyRuleFlowcontrolApiserverK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
       subjects: (pulumi.Input.decodeList<SubjectFlowcontrolApiserverK8sIoV1beta1>(map['subjects'], (value) => SubjectFlowcontrolApiserverK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

@@ -22,7 +22,7 @@ class TroubleshootingAdditionalPropertiesResponse {
 
   factory TroubleshootingAdditionalPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return TroubleshootingAdditionalPropertiesResponse(
-      unhealthyReplicaInfo: map['unhealthyReplicaInfo'] == null ? null : (UnhealthyReplicaInfoResponse.fromMap((map['unhealthyReplicaInfo'] as Map).cast<String, dynamic>())).input(),
+      unhealthyReplicaInfo: map['unhealthyReplicaInfo'] == null ? null : (UnhealthyReplicaInfoResponse.fromMap((map['unhealthyReplicaInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

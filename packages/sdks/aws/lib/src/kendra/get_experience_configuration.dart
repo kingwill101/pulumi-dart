@@ -27,8 +27,8 @@ class GetExperienceConfiguration {
 
   factory GetExperienceConfiguration.fromMap(Map<String, dynamic> map) {
     return GetExperienceConfiguration(
-      contentSourceConfigurations: (pulumi.Input.decodeList<GetExperienceConfigurationContentSourceConfiguration>(map['contentSourceConfigurations'], (value) => GetExperienceConfigurationContentSourceConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      userIdentityConfigurations: (pulumi.Input.decodeList<GetExperienceConfigurationUserIdentityConfiguration>(map['userIdentityConfigurations'], (value) => GetExperienceConfigurationUserIdentityConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      contentSourceConfigurations: (pulumi.Input.decodeList<GetExperienceConfigurationContentSourceConfiguration>(map['contentSourceConfigurations']!, (value) => GetExperienceConfigurationContentSourceConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userIdentityConfigurations: (pulumi.Input.decodeList<GetExperienceConfigurationUserIdentityConfiguration>(map['userIdentityConfigurations']!, (value) => GetExperienceConfigurationUserIdentityConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

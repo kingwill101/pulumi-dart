@@ -61,13 +61,13 @@ class GetSpacesBucketObjectsResult {
     return GetSpacesBucketObjectsResult(
       bucket: map['bucket'] as String,
       commonPrefixes: (map['commonPrefixes'] as List).cast<String>(),
-      delimiter: map['delimiter'] == null ? null : map['delimiter'] as String,
-      encodingType: map['encodingType'] == null ? null : map['encodingType'] as String,
+      delimiter: map['delimiter'] == null ? null : map['delimiter']! as String,
+      encodingType: map['encodingType'] == null ? null : map['encodingType']! as String,
       id: map['id'] as String,
       keys: (map['keys'] as List).cast<String>(),
-      maxKeys: map['maxKeys'] == null ? null : map['maxKeys'] as int,
+      maxKeys: map['maxKeys'] == null ? null : map['maxKeys']! as int,
       owners: (map['owners'] as List).cast<String>(),
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
+      prefix: map['prefix'] == null ? null : map['prefix']! as String,
       region: map['region'] as String,
     );
   }

@@ -25,8 +25,8 @@ class FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo {
 
   factory FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo.fromMap(Map<String, dynamic> map) {
     return FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo(
-      count: map['count'] == null ? null : (map['count'] as String).input(),
-      timeStamp: map['timeStamp'] == null ? null : (map['timeStamp'] as String).input(),
+      count: map['count'] == null ? null : (map['count']! as String).input(),
+      timeStamp: map['timeStamp'] == null ? null : (map['timeStamp']! as String).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class NatGatewayAvailabilityZoneAddress {
 
   factory NatGatewayAvailabilityZoneAddress.fromMap(Map<String, dynamic> map) {
     return NatGatewayAvailabilityZoneAddress(
-      allocationIds: map['allocationIds'] == null ? null : ((map['allocationIds'] as List).cast<String>()).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      availabilityZoneId: map['availabilityZoneId'] == null ? null : (map['availabilityZoneId'] as String).input(),
+      allocationIds: map['allocationIds'] == null ? null : (((map['allocationIds'] as List).cast<String>()).input()).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
+      availabilityZoneId: map['availabilityZoneId'] == null ? null : ((map['availabilityZoneId'] as String).input()).input(),
     );
   }
 }

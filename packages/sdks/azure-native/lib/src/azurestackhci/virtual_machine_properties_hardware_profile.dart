@@ -35,10 +35,10 @@ class VirtualMachinePropertiesHardwareProfile {
 
   factory VirtualMachinePropertiesHardwareProfile.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePropertiesHardwareProfile(
-      dynamicMemoryConfig: map['dynamicMemoryConfig'] == null ? null : (VirtualMachinePropertiesDynamicMemoryConfig.fromMap((map['dynamicMemoryConfig'] as Map).cast<String, dynamic>())).input(),
-      memoryMB: map['memoryMB'] == null ? null : (map['memoryMB'] as double).input(),
-      processors: map['processors'] == null ? null : (map['processors'] as int).input(),
-      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
+      dynamicMemoryConfig: map['dynamicMemoryConfig'] == null ? null : (VirtualMachinePropertiesDynamicMemoryConfig.fromMap((map['dynamicMemoryConfig']! as Map).cast<String, dynamic>())).input(),
+      memoryMB: map['memoryMB'] == null ? null : (map['memoryMB']! as double).input(),
+      processors: map['processors'] == null ? null : (map['processors']! as int).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize']! as String).input(),
     );
   }
 }

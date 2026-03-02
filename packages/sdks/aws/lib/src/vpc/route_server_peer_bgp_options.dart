@@ -26,7 +26,7 @@ class RouteServerPeerBgpOptions {
   factory RouteServerPeerBgpOptions.fromMap(Map<String, dynamic> map) {
     return RouteServerPeerBgpOptions(
       peerAsn: (map['peerAsn'] as int).input(),
-      peerLivenessDetection: map['peerLivenessDetection'] == null ? null : (map['peerLivenessDetection'] as String).input(),
+      peerLivenessDetection: map['peerLivenessDetection'] == null ? null : ((map['peerLivenessDetection'] as String).input()).input(),
     );
   }
 }

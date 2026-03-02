@@ -36,10 +36,10 @@ class RouterBgpPeerBfdComputeV1 {
 
   factory RouterBgpPeerBfdComputeV1.fromMap(Map<String, dynamic> map) {
     return RouterBgpPeerBfdComputeV1(
-      minReceiveInterval: map['minReceiveInterval'] == null ? null : (map['minReceiveInterval'] as int).input(),
-      minTransmitInterval: map['minTransmitInterval'] == null ? null : (map['minTransmitInterval'] as int).input(),
-      multiplier: map['multiplier'] == null ? null : (map['multiplier'] as int).input(),
-      sessionInitializationMode: map['sessionInitializationMode'] == null ? null : (RouterBgpPeerBfdSessionInitializationModeComputeV1.fromValue(map['sessionInitializationMode'] as String)).input(),
+      minReceiveInterval: map['minReceiveInterval'] == null ? null : (map['minReceiveInterval']! as int).input(),
+      minTransmitInterval: map['minTransmitInterval'] == null ? null : (map['minTransmitInterval']! as int).input(),
+      multiplier: map['multiplier'] == null ? null : (map['multiplier']! as int).input(),
+      sessionInitializationMode: map['sessionInitializationMode'] == null ? null : (RouterBgpPeerBfdSessionInitializationModeComputeV1.fromValue(map['sessionInitializationMode']! as String)).input(),
     );
   }
 }

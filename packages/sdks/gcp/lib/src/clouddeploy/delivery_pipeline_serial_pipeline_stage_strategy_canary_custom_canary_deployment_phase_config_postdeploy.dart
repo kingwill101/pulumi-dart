@@ -20,7 +20,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
 
   factory DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy(
-      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
+      actions: map['actions'] == null ? null : ((map['actions']! as List).cast<String>()).input(),
     );
   }
 }

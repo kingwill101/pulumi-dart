@@ -61,7 +61,7 @@ class GetParameterGroupResult {
       family: map['family'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      parameters: pulumi.Input.decodeList<GetParameterGroupParameter>(map['parameters'], (value) => GetParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>())),
+      parameters: pulumi.Input.decodeList<GetParameterGroupParameter>(map['parameters']!, (value) => GetParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );

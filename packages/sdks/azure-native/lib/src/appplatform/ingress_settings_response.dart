@@ -47,12 +47,12 @@ class IngressSettingsResponse {
 
   factory IngressSettingsResponse.fromMap(Map<String, dynamic> map) {
     return IngressSettingsResponse(
-      backendProtocol: map['backendProtocol'] == null ? null : (map['backendProtocol'] as String).input(),
-      clientAuth: map['clientAuth'] == null ? null : (IngressSettingsResponseClientAuth.fromMap((map['clientAuth'] as Map).cast<String, dynamic>())).input(),
-      readTimeoutInSeconds: map['readTimeoutInSeconds'] == null ? null : (map['readTimeoutInSeconds'] as int).input(),
-      sendTimeoutInSeconds: map['sendTimeoutInSeconds'] == null ? null : (map['sendTimeoutInSeconds'] as int).input(),
-      sessionAffinity: map['sessionAffinity'] == null ? null : (map['sessionAffinity'] as String).input(),
-      sessionCookieMaxAge: map['sessionCookieMaxAge'] == null ? null : (map['sessionCookieMaxAge'] as int).input(),
+      backendProtocol: map['backendProtocol'] == null ? null : (map['backendProtocol']! as String).input(),
+      clientAuth: map['clientAuth'] == null ? null : (IngressSettingsResponseClientAuth.fromMap((map['clientAuth']! as Map).cast<String, dynamic>())).input(),
+      readTimeoutInSeconds: map['readTimeoutInSeconds'] == null ? null : (map['readTimeoutInSeconds']! as int).input(),
+      sendTimeoutInSeconds: map['sendTimeoutInSeconds'] == null ? null : (map['sendTimeoutInSeconds']! as int).input(),
+      sessionAffinity: map['sessionAffinity'] == null ? null : (map['sessionAffinity']! as String).input(),
+      sessionCookieMaxAge: map['sessionCookieMaxAge'] == null ? null : (map['sessionCookieMaxAge']! as int).input(),
     );
   }
 }

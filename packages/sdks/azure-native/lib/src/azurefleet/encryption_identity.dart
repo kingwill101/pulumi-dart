@@ -22,7 +22,7 @@ class EncryptionIdentity {
 
   factory EncryptionIdentity.fromMap(Map<String, dynamic> map) {
     return EncryptionIdentity(
-      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : (map['userAssignedIdentityResourceId'] as String).input(),
+      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : (map['userAssignedIdentityResourceId']! as String).input(),
     );
   }
 }

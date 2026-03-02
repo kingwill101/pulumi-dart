@@ -36,10 +36,10 @@ class ProductApiState {
 
   factory ProductApiState.fromMap(Map<String, dynamic> map) {
     return ProductApiState(
-      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
-      apiName: map['apiName'] == null ? null : (map['apiName'] as String).input(),
-      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName']! as String).input(),
+      apiName: map['apiName'] == null ? null : (map['apiName']! as String).input(),
+      productId: map['productId'] == null ? null : (map['productId']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

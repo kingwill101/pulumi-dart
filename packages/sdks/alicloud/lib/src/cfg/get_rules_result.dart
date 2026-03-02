@@ -69,17 +69,17 @@ class GetRulesResult {
 
   factory GetRulesResult.fromMap(Map<String, dynamic> map) {
     return GetRulesResult(
-      configRuleState: map['configRuleState'] == null ? null : map['configRuleState'] as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      configRuleState: map['configRuleState'] == null ? null : map['configRuleState']! as String,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      riskLevel: map['riskLevel'] == null ? null : map['riskLevel'] as int,
-      ruleName: map['ruleName'] == null ? null : map['ruleName'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      riskLevel: map['riskLevel'] == null ? null : map['riskLevel']! as int,
+      ruleName: map['ruleName'] == null ? null : map['ruleName']! as String,
       rules: pulumi.Input.decodeList<GetRulesRule>(map['rules'], (value) => GetRulesRule.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

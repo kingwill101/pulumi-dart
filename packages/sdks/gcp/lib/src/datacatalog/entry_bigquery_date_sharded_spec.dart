@@ -35,9 +35,9 @@ class EntryBigqueryDateShardedSpec {
 
   factory EntryBigqueryDateShardedSpec.fromMap(Map<String, dynamic> map) {
     return EntryBigqueryDateShardedSpec(
-      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
-      shardCount: map['shardCount'] == null ? null : (map['shardCount'] as int).input(),
-      tablePrefix: map['tablePrefix'] == null ? null : (map['tablePrefix'] as String).input(),
+      dataset: map['dataset'] == null ? null : (map['dataset']! as String).input(),
+      shardCount: map['shardCount'] == null ? null : (map['shardCount']! as int).input(),
+      tablePrefix: map['tablePrefix'] == null ? null : (map['tablePrefix']! as String).input(),
     );
   }
 }

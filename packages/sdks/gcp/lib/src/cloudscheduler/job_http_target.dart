@@ -55,11 +55,11 @@ class JobHttpTarget {
 
   factory JobHttpTarget.fromMap(Map<String, dynamic> map) {
     return JobHttpTarget(
-      body: map['body'] == null ? null : (map['body'] as String).input(),
-      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, String>()).input(),
-      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod'] as String).input(),
-      oauthToken: map['oauthToken'] == null ? null : (JobHttpTargetOauthToken.fromMap((map['oauthToken'] as Map).cast<String, dynamic>())).input(),
-      oidcToken: map['oidcToken'] == null ? null : (JobHttpTargetOidcToken.fromMap((map['oidcToken'] as Map).cast<String, dynamic>())).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
+      headers: map['headers'] == null ? null : ((map['headers']! as Map).cast<String, String>()).input(),
+      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod']! as String).input(),
+      oauthToken: map['oauthToken'] == null ? null : (JobHttpTargetOauthToken.fromMap((map['oauthToken']! as Map).cast<String, dynamic>())).input(),
+      oidcToken: map['oidcToken'] == null ? null : (JobHttpTargetOidcToken.fromMap((map['oidcToken']! as Map).cast<String, dynamic>())).input(),
       uri: (map['uri'] as String).input(),
     );
   }

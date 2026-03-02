@@ -25,8 +25,8 @@ class ResourceSetResourceDnsTargetResourceTargetResourceR53Resource {
 
   factory ResourceSetResourceDnsTargetResourceTargetResourceR53Resource.fromMap(Map<String, dynamic> map) {
     return ResourceSetResourceDnsTargetResourceTargetResourceR53Resource(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      recordSetId: map['recordSetId'] == null ? null : (map['recordSetId'] as String).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      recordSetId: map['recordSetId'] == null ? null : ((map['recordSetId'] as String).input()).input(),
     );
   }
 }

@@ -75,7 +75,7 @@ class GetMavenArtifactResult {
       location: map['location'] as String,
       name: map['name'] as String,
       pomUri: map['pomUri'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       repositoryId: map['repositoryId'] as String,
       updateTime: map['updateTime'] as String,
       version: map['version'] as String,

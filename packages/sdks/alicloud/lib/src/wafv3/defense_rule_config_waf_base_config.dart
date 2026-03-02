@@ -31,9 +31,9 @@ class DefenseRuleConfigWafBaseConfig {
 
   factory DefenseRuleConfigWafBaseConfig.fromMap(Map<String, dynamic> map) {
     return DefenseRuleConfigWafBaseConfig(
-      ruleBatchOperationConfig: map['ruleBatchOperationConfig'] == null ? null : (map['ruleBatchOperationConfig'] as String).input(),
-      ruleDetails: map['ruleDetails'] == null ? null : (pulumi.Input.decodeList<DefenseRuleConfigWafBaseConfigRuleDetail>(map['ruleDetails'], (value) => DefenseRuleConfigWafBaseConfigRuleDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ruleType: map['ruleType'] == null ? null : (map['ruleType'] as String).input(),
+      ruleBatchOperationConfig: map['ruleBatchOperationConfig'] == null ? null : (map['ruleBatchOperationConfig']! as String).input(),
+      ruleDetails: map['ruleDetails'] == null ? null : (pulumi.Input.decodeList<DefenseRuleConfigWafBaseConfigRuleDetail>(map['ruleDetails']!, (value) => DefenseRuleConfigWafBaseConfigRuleDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleType: map['ruleType'] == null ? null : (map['ruleType']! as String).input(),
     );
   }
 }

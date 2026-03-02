@@ -46,12 +46,12 @@ class ImageState {
 
   factory ImageState.fromMap(Map<String, dynamic> map) {
     return ImageState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      deleteAfterImageUpload: map['deleteAfterImageUpload'] == null ? null : (map['deleteAfterImageUpload'] as String).input(),
-      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      targetOssRegionId: map['targetOssRegionId'] == null ? null : (map['targetOssRegionId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      deleteAfterImageUpload: map['deleteAfterImageUpload'] == null ? null : (map['deleteAfterImageUpload']! as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      targetOssRegionId: map['targetOssRegionId'] == null ? null : (map['targetOssRegionId']! as String).input(),
     );
   }
 }

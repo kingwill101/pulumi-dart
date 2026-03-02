@@ -40,7 +40,7 @@ class GetIntegrationRuntimeObjectMetadatumArgs {
   factory GetIntegrationRuntimeObjectMetadatumArgs.fromMap(Map<String, dynamic> map) {
     return GetIntegrationRuntimeObjectMetadatumArgs(
       integrationRuntimeName: (map['integrationRuntimeName'] as String).input(),
-      metadataPath: map['metadataPath'] == null ? null : (map['metadataPath'] as String).input(),
+      metadataPath: map['metadataPath'] == null ? null : (map['metadataPath']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );

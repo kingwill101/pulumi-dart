@@ -27,9 +27,9 @@ class ResourcePolicyAssignmentOverrideSelector {
 
   factory ResourcePolicyAssignmentOverrideSelector.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyAssignmentOverrideSelector(
-      ins: map['ins'] == null ? null : ((map['ins'] as List).cast<String>()).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      notIns: map['notIns'] == null ? null : ((map['notIns'] as List).cast<String>()).input(),
+      ins: map['ins'] == null ? null : ((map['ins']! as List).cast<String>()).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      notIns: map['notIns'] == null ? null : ((map['notIns']! as List).cast<String>()).input(),
     );
   }
 }

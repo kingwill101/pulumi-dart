@@ -30,9 +30,9 @@ class DomainDevicesHostdevCapsNetIp {
 
   factory DomainDevicesHostdevCapsNetIp.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevCapsNetIp(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      family: map['family'] == null ? null : (map['family'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as double).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      family: map['family'] == null ? null : (map['family']! as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as double).input(),
     );
   }
 }

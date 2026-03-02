@@ -80,17 +80,17 @@ class MicrosoftSecurityIncidentCreationAlertRuleArgs {
 
   factory MicrosoftSecurityIncidentCreationAlertRuleArgs.fromMap(Map<String, dynamic> map) {
     return MicrosoftSecurityIncidentCreationAlertRuleArgs(
-      alertRuleTemplateName: map['alertRuleTemplateName'] == null ? null : (map['alertRuleTemplateName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      alertRuleTemplateName: map['alertRuleTemplateName'] == null ? null : (map['alertRuleTemplateName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      displayNamesExcludeFilter: map['displayNamesExcludeFilter'] == null ? null : ((map['displayNamesExcludeFilter'] as List).cast<String>()).input(),
-      displayNamesFilter: map['displayNamesFilter'] == null ? null : ((map['displayNamesFilter'] as List).cast<String>()).input(),
+      displayNamesExcludeFilter: map['displayNamesExcludeFilter'] == null ? null : ((map['displayNamesExcludeFilter']! as List).cast<String>()).input(),
+      displayNamesFilter: map['displayNamesFilter'] == null ? null : ((map['displayNamesFilter']! as List).cast<String>()).input(),
       enabled: (map['enabled'] as bool).input(),
       kind: (map['kind'] as String).input(),
       productFilter: (map['productFilter'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
-      severitiesFilter: map['severitiesFilter'] == null ? null : ((map['severitiesFilter'] as List).cast<String>()).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId']! as String).input(),
+      severitiesFilter: map['severitiesFilter'] == null ? null : ((map['severitiesFilter']! as List).cast<String>()).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

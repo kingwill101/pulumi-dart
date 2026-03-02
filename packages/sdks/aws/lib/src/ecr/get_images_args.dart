@@ -34,8 +34,8 @@ class GetImagesArgs {
 
   factory GetImagesArgs.fromMap(Map<String, dynamic> map) {
     return GetImagesArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      registryId: map['registryId'] == null ? null : (map['registryId'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      registryId: map['registryId'] == null ? null : ((map['registryId'] as String).input()).input(),
       repositoryName: (map['repositoryName'] as String).input(),
     );
   }

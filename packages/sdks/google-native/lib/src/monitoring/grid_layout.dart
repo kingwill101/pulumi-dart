@@ -27,8 +27,8 @@ class GridLayout {
 
   factory GridLayout.fromMap(Map<String, dynamic> map) {
     return GridLayout(
-      columns: map['columns'] == null ? null : (map['columns'] as String).input(),
-      widgets: map['widgets'] == null ? null : (pulumi.Input.decodeList<Widget>(map['widgets'], (value) => Widget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      columns: map['columns'] == null ? null : (map['columns']! as String).input(),
+      widgets: map['widgets'] == null ? null : (pulumi.Input.decodeList<Widget>(map['widgets']!, (value) => Widget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

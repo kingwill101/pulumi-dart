@@ -34,9 +34,9 @@ class PoolTypeResponse {
 
   factory PoolTypeResponse.fromMap(Map<String, dynamic> map) {
     return PoolTypeResponse(
-      azureDisk: map['azureDisk'] == null ? null : (AzureDiskResponse.fromMap((map['azureDisk'] as Map).cast<String, dynamic>())).input(),
-      elasticSan: map['elasticSan'] == null ? null : (ElasticSanResponse.fromMap((map['elasticSan'] as Map).cast<String, dynamic>())).input(),
-      ephemeralDisk: map['ephemeralDisk'] == null ? null : (EphemeralDiskResponse.fromMap((map['ephemeralDisk'] as Map).cast<String, dynamic>())).input(),
+      azureDisk: map['azureDisk'] == null ? null : (AzureDiskResponse.fromMap((map['azureDisk']! as Map).cast<String, dynamic>())).input(),
+      elasticSan: map['elasticSan'] == null ? null : (ElasticSanResponse.fromMap((map['elasticSan']! as Map).cast<String, dynamic>())).input(),
+      ephemeralDisk: map['ephemeralDisk'] == null ? null : (EphemeralDiskResponse.fromMap((map['ephemeralDisk']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class ScheduleTargetRetryPolicy {
 
   factory ScheduleTargetRetryPolicy.fromMap(Map<String, dynamic> map) {
     return ScheduleTargetRetryPolicy(
-      maximumEventAgeInSeconds: map['maximumEventAgeInSeconds'] == null ? null : (map['maximumEventAgeInSeconds'] as int).input(),
-      maximumRetryAttempts: map['maximumRetryAttempts'] == null ? null : (map['maximumRetryAttempts'] as int).input(),
+      maximumEventAgeInSeconds: map['maximumEventAgeInSeconds'] == null ? null : ((map['maximumEventAgeInSeconds'] as int).input()).input(),
+      maximumRetryAttempts: map['maximumRetryAttempts'] == null ? null : ((map['maximumRetryAttempts'] as int).input()).input(),
     );
   }
 }

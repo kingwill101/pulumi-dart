@@ -32,7 +32,7 @@ class CredentialServicePrincipalServicePrincipalKey {
     return CredentialServicePrincipalServicePrincipalKey(
       linkedServiceName: (map['linkedServiceName'] as String).input(),
       secretName: (map['secretName'] as String).input(),
-      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion'] as String).input(),
+      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion']! as String).input(),
     );
   }
 }

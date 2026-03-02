@@ -47,7 +47,7 @@ class WorkspaceGroupUserArgs {
       groupId: (map['groupId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );
   }

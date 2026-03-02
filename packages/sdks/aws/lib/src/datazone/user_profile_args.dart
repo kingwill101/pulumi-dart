@@ -52,11 +52,11 @@ class UserProfileArgs {
   factory UserProfileArgs.fromMap(Map<String, dynamic> map) {
     return UserProfileArgs(
       domainIdentifier: (map['domainIdentifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (UserProfileTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((UserProfileTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
       userIdentifier: (map['userIdentifier'] as String).input(),
-      userType: map['userType'] == null ? null : (map['userType'] as String).input(),
+      userType: map['userType'] == null ? null : ((map['userType'] as String).input()).input(),
     );
   }
 }

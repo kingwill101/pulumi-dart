@@ -21,7 +21,7 @@ class WebAclRuleActionChallengeCustomRequestHandling {
 
   factory WebAclRuleActionChallengeCustomRequestHandling.fromMap(Map<String, dynamic> map) {
     return WebAclRuleActionChallengeCustomRequestHandling(
-      insertHeaders: (pulumi.Input.decodeList<WebAclRuleActionChallengeCustomRequestHandlingInsertHeader>(map['insertHeaders'], (value) => WebAclRuleActionChallengeCustomRequestHandlingInsertHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      insertHeaders: (pulumi.Input.decodeList<WebAclRuleActionChallengeCustomRequestHandlingInsertHeader>(map['insertHeaders']!, (value) => WebAclRuleActionChallengeCustomRequestHandlingInsertHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

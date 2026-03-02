@@ -26,8 +26,8 @@ class PrivateClusterConfigComposerV1beta1 {
 
   factory PrivateClusterConfigComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return PrivateClusterConfigComposerV1beta1(
-      enablePrivateEndpoint: map['enablePrivateEndpoint'] == null ? null : (map['enablePrivateEndpoint'] as bool).input(),
-      masterIpv4CidrBlock: map['masterIpv4CidrBlock'] == null ? null : (map['masterIpv4CidrBlock'] as String).input(),
+      enablePrivateEndpoint: map['enablePrivateEndpoint'] == null ? null : (map['enablePrivateEndpoint']! as bool).input(),
+      masterIpv4CidrBlock: map['masterIpv4CidrBlock'] == null ? null : (map['masterIpv4CidrBlock']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class BrokerAuthenticatorMethodUsernamePasswordResponse {
 
   factory BrokerAuthenticatorMethodUsernamePasswordResponse.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticatorMethodUsernamePasswordResponse(
-      keyVault: map['keyVault'] == null ? null : (KeyVaultSecretPropertiesResponse.fromMap((map['keyVault'] as Map).cast<String, dynamic>())).input(),
-      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
+      keyVault: map['keyVault'] == null ? null : (KeyVaultSecretPropertiesResponse.fromMap((map['keyVault']! as Map).cast<String, dynamic>())).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName']! as String).input(),
     );
   }
 }

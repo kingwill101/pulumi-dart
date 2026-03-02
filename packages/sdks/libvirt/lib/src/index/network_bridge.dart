@@ -40,11 +40,11 @@ class NetworkBridge {
 
   factory NetworkBridge.fromMap(Map<String, dynamic> map) {
     return NetworkBridge(
-      delay: map['delay'] == null ? null : (map['delay'] as String).input(),
-      macTableManager: map['macTableManager'] == null ? null : (map['macTableManager'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      stp: map['stp'] == null ? null : (map['stp'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      delay: map['delay'] == null ? null : (map['delay']! as String).input(),
+      macTableManager: map['macTableManager'] == null ? null : (map['macTableManager']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      stp: map['stp'] == null ? null : (map['stp']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

@@ -79,8 +79,8 @@ class EntitlementArgs {
 
   factory EntitlementArgs.fromMap(Map<String, dynamic> map) {
     return EntitlementArgs(
-      additionalNotificationTargets: map['additionalNotificationTargets'] == null ? null : (EntitlementAdditionalNotificationTargets.fromMap((map['additionalNotificationTargets'] as Map).cast<String, dynamic>())).input(),
-      approvalWorkflow: map['approvalWorkflow'] == null ? null : (EntitlementApprovalWorkflow.fromMap((map['approvalWorkflow'] as Map).cast<String, dynamic>())).input(),
+      additionalNotificationTargets: map['additionalNotificationTargets'] == null ? null : (EntitlementAdditionalNotificationTargets.fromMap((map['additionalNotificationTargets']! as Map).cast<String, dynamic>())).input(),
+      approvalWorkflow: map['approvalWorkflow'] == null ? null : (EntitlementApprovalWorkflow.fromMap((map['approvalWorkflow']! as Map).cast<String, dynamic>())).input(),
       eligibleUsers: (pulumi.Input.decodeList<EntitlementEligibleUser>(map['eligibleUsers'], (value) => EntitlementEligibleUser.fromMap((value as Map).cast<String, dynamic>()))).input(),
       entitlementId: (map['entitlementId'] as String).input(),
       location: (map['location'] as String).input(),

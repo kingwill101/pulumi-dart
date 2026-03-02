@@ -57,7 +57,7 @@ class GetIamCustomRoleResult {
       id: map['id'] as String,
       name: map['name'] as String,
       permissions: (map['permissions'] as List).cast<String>(),
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       roleId: map['roleId'] as String,
       stage: map['stage'] as String,
       title: map['title'] as String,

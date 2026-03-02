@@ -101,21 +101,21 @@ class NodePool {
 
   factory NodePool.fromMap(Map<String, dynamic> map) {
     return NodePool(
-      autoscaling: map['autoscaling'] == null ? null : (NodePoolAutoscaling.fromMap((map['autoscaling'] as Map).cast<String, dynamic>())).input(),
-      bestEffortProvisioning: map['bestEffortProvisioning'] == null ? null : (BestEffortProvisioning.fromMap((map['bestEffortProvisioning'] as Map).cast<String, dynamic>())).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<StatusCondition>(map['conditions'], (value) => StatusCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      config: map['config'] == null ? null : (NodeConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      initialNodeCount: map['initialNodeCount'] == null ? null : (map['initialNodeCount'] as int).input(),
-      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
-      management: map['management'] == null ? null : (NodeManagement.fromMap((map['management'] as Map).cast<String, dynamic>())).input(),
-      maxPodsConstraint: map['maxPodsConstraint'] == null ? null : (MaxPodsConstraint.fromMap((map['maxPodsConstraint'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkConfig: map['networkConfig'] == null ? null : (NodeNetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
-      placementPolicy: map['placementPolicy'] == null ? null : (PlacementPolicy.fromMap((map['placementPolicy'] as Map).cast<String, dynamic>())).input(),
-      queuedProvisioning: map['queuedProvisioning'] == null ? null : (QueuedProvisioning.fromMap((map['queuedProvisioning'] as Map).cast<String, dynamic>())).input(),
-      upgradeSettings: map['upgradeSettings'] == null ? null : (UpgradeSettings.fromMap((map['upgradeSettings'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      autoscaling: map['autoscaling'] == null ? null : (NodePoolAutoscaling.fromMap((map['autoscaling']! as Map).cast<String, dynamic>())).input(),
+      bestEffortProvisioning: map['bestEffortProvisioning'] == null ? null : (BestEffortProvisioning.fromMap((map['bestEffortProvisioning']! as Map).cast<String, dynamic>())).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<StatusCondition>(map['conditions']!, (value) => StatusCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      config: map['config'] == null ? null : (NodeConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      initialNodeCount: map['initialNodeCount'] == null ? null : (map['initialNodeCount']! as int).input(),
+      locations: map['locations'] == null ? null : ((map['locations']! as List).cast<String>()).input(),
+      management: map['management'] == null ? null : (NodeManagement.fromMap((map['management']! as Map).cast<String, dynamic>())).input(),
+      maxPodsConstraint: map['maxPodsConstraint'] == null ? null : (MaxPodsConstraint.fromMap((map['maxPodsConstraint']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkConfig: map['networkConfig'] == null ? null : (NodeNetworkConfig.fromMap((map['networkConfig']! as Map).cast<String, dynamic>())).input(),
+      placementPolicy: map['placementPolicy'] == null ? null : (PlacementPolicy.fromMap((map['placementPolicy']! as Map).cast<String, dynamic>())).input(),
+      queuedProvisioning: map['queuedProvisioning'] == null ? null : (QueuedProvisioning.fromMap((map['queuedProvisioning']! as Map).cast<String, dynamic>())).input(),
+      upgradeSettings: map['upgradeSettings'] == null ? null : (UpgradeSettings.fromMap((map['upgradeSettings']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

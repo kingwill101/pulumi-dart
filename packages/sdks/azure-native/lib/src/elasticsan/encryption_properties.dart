@@ -28,8 +28,8 @@ class EncryptionProperties {
 
   factory EncryptionProperties.fromMap(Map<String, dynamic> map) {
     return EncryptionProperties(
-      encryptionIdentity: map['encryptionIdentity'] == null ? null : (EncryptionIdentity.fromMap((map['encryptionIdentity'] as Map).cast<String, dynamic>())).input(),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : (KeyVaultProperties.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
+      encryptionIdentity: map['encryptionIdentity'] == null ? null : (EncryptionIdentity.fromMap((map['encryptionIdentity']! as Map).cast<String, dynamic>())).input(),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (KeyVaultProperties.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

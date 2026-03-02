@@ -41,8 +41,8 @@ class RelationshipArgs {
   factory RelationshipArgs.fromMap(Map<String, dynamic> map) {
     return RelationshipArgs(
       healthModelName: (map['healthModelName'] as String).input(),
-      properties: map['properties'] == null ? null : (RelationshipProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      relationshipName: map['relationshipName'] == null ? null : (map['relationshipName'] as String).input(),
+      properties: map['properties'] == null ? null : (RelationshipProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      relationshipName: map['relationshipName'] == null ? null : (map['relationshipName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

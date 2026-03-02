@@ -21,7 +21,7 @@ class LanguageExtensionResponse {
 
   factory LanguageExtensionResponse.fromMap(Map<String, dynamic> map) {
     return LanguageExtensionResponse(
-      languageExtensionName: map['languageExtensionName'] == null ? null : (map['languageExtensionName'] as String).input(),
+      languageExtensionName: map['languageExtensionName'] == null ? null : (map['languageExtensionName']! as String).input(),
     );
   }
 }

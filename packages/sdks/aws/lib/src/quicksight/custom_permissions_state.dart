@@ -54,13 +54,13 @@ class CustomPermissionsState {
 
   factory CustomPermissionsState.fromMap(Map<String, dynamic> map) {
     return CustomPermissionsState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      capabilities: map['capabilities'] == null ? null : (CustomPermissionsCapabilities.fromMap((map['capabilities'] as Map).cast<String, dynamic>())).input(),
-      customPermissionsName: map['customPermissionsName'] == null ? null : (map['customPermissionsName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      capabilities: map['capabilities'] == null ? null : ((CustomPermissionsCapabilities.fromMap((map['capabilities']! as Map).cast<String, dynamic>())).input()).input(),
+      customPermissionsName: map['customPermissionsName'] == null ? null : ((map['customPermissionsName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -23,7 +23,7 @@ class AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec {
 
   factory AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec.fromMap(Map<String, dynamic> map) {
     return AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec(
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
     );
   }
 }

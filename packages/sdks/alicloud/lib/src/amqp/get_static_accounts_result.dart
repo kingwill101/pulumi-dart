@@ -43,8 +43,8 @@ class GetStaticAccountsResult {
       accounts: pulumi.Input.decodeList<GetStaticAccountsAccount>(map['accounts'], (value) => GetStaticAccountsAccount.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      instanceId: map['instanceId'] == null ? null : map['instanceId']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

@@ -27,7 +27,7 @@ class IcebergCatalogIamBindingCondition {
 
   factory IcebergCatalogIamBindingCondition.fromMap(Map<String, dynamic> map) {
     return IcebergCatalogIamBindingCondition(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       expression: (map['expression'] as String).input(),
       title: (map['title'] as String).input(),
     );

@@ -26,8 +26,8 @@ class ManualScaleProfileResponse {
 
   factory ManualScaleProfileResponse.fromMap(Map<String, dynamic> map) {
     return ManualScaleProfileResponse(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      size: map['size'] == null ? null : (map['size'] as String).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      size: map['size'] == null ? null : (map['size']! as String).input(),
     );
   }
 }

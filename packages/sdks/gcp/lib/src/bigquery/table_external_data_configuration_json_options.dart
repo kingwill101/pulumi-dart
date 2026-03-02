@@ -20,7 +20,7 @@ class TableExternalDataConfigurationJsonOptions {
 
   factory TableExternalDataConfigurationJsonOptions.fromMap(Map<String, dynamic> map) {
     return TableExternalDataConfigurationJsonOptions(
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
     );
   }
 }

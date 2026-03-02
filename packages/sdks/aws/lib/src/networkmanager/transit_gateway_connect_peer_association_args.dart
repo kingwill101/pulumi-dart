@@ -43,7 +43,7 @@ class TransitGatewayConnectPeerAssociationArgs {
     return TransitGatewayConnectPeerAssociationArgs(
       deviceId: (map['deviceId'] as String).input(),
       globalNetworkId: (map['globalNetworkId'] as String).input(),
-      linkId: map['linkId'] == null ? null : (map['linkId'] as String).input(),
+      linkId: map['linkId'] == null ? null : ((map['linkId'] as String).input()).input(),
       transitGatewayConnectPeerArn: (map['transitGatewayConnectPeerArn'] as String).input(),
     );
   }

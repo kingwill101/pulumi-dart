@@ -59,12 +59,12 @@ class SqlDedicatedGatewayServiceResourcePropertiesResponse {
   factory SqlDedicatedGatewayServiceResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SqlDedicatedGatewayServiceResourcePropertiesResponse(
       creationTime: (map['creationTime'] as String).input(),
-      dedicatedGatewayType: map['dedicatedGatewayType'] == null ? null : (map['dedicatedGatewayType'] as String).input(),
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
-      instanceSize: map['instanceSize'] == null ? null : (map['instanceSize'] as String).input(),
+      dedicatedGatewayType: map['dedicatedGatewayType'] == null ? null : (map['dedicatedGatewayType']! as String).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
+      instanceSize: map['instanceSize'] == null ? null : (map['instanceSize']! as String).input(),
       locations: (pulumi.Input.decodeList<SqlDedicatedGatewayRegionalServiceResourceResponse>(map['locations'], (value) => SqlDedicatedGatewayRegionalServiceResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       serviceType: (map['serviceType'] as String).input(),
-      sqlDedicatedGatewayEndpoint: map['sqlDedicatedGatewayEndpoint'] == null ? null : (map['sqlDedicatedGatewayEndpoint'] as String).input(),
+      sqlDedicatedGatewayEndpoint: map['sqlDedicatedGatewayEndpoint'] == null ? null : (map['sqlDedicatedGatewayEndpoint']! as String).input(),
       status: (map['status'] as String).input(),
     );
   }

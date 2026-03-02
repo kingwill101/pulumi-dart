@@ -31,9 +31,9 @@ class VolumeAttachmentState {
 
   factory VolumeAttachmentState.fromMap(Map<String, dynamic> map) {
     return VolumeAttachmentState(
-      automount: map['automount'] == null ? null : (map['automount'] as bool).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as int).input(),
-      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as int).input(),
+      automount: map['automount'] == null ? null : (map['automount']! as bool).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId']! as int).input(),
+      volumeId: map['volumeId'] == null ? null : (map['volumeId']! as int).input(),
     );
   }
 }

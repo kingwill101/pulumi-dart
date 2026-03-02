@@ -66,15 +66,15 @@ class CloudServiceExtensionProperties {
 
   factory CloudServiceExtensionProperties.fromMap(Map<String, dynamic> map) {
     return CloudServiceExtensionProperties(
-      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : (map['autoUpgradeMinorVersion'] as bool).input(),
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag'] as String).input(),
-      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings']).input(),
-      protectedSettingsFromKeyVault: map['protectedSettingsFromKeyVault'] == null ? null : (CloudServiceVaultAndSecretReference.fromMap((map['protectedSettingsFromKeyVault'] as Map).cast<String, dynamic>())).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
-      rolesAppliedTo: map['rolesAppliedTo'] == null ? null : ((map['rolesAppliedTo'] as List).cast<String>()).input(),
-      settings: map['settings'] == null ? null : (map['settings']).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion'] as String).input(),
+      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : (map['autoUpgradeMinorVersion']! as bool).input(),
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag']! as String).input(),
+      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings']!).input(),
+      protectedSettingsFromKeyVault: map['protectedSettingsFromKeyVault'] == null ? null : (CloudServiceVaultAndSecretReference.fromMap((map['protectedSettingsFromKeyVault']! as Map).cast<String, dynamic>())).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
+      rolesAppliedTo: map['rolesAppliedTo'] == null ? null : ((map['rolesAppliedTo']! as List).cast<String>()).input(),
+      settings: map['settings'] == null ? null : (map['settings']!).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion']! as String).input(),
     );
   }
 }

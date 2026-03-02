@@ -37,10 +37,10 @@ class BackendServiceIAP {
 
   factory BackendServiceIAP.fromMap(Map<String, dynamic> map) {
     return BackendServiceIAP(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      oauth2ClientId: map['oauth2ClientId'] == null ? null : (map['oauth2ClientId'] as String).input(),
-      oauth2ClientInfo: map['oauth2ClientInfo'] == null ? null : (BackendServiceIAPOAuth2ClientInfo.fromMap((map['oauth2ClientInfo'] as Map).cast<String, dynamic>())).input(),
-      oauth2ClientSecret: map['oauth2ClientSecret'] == null ? null : (map['oauth2ClientSecret'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      oauth2ClientId: map['oauth2ClientId'] == null ? null : (map['oauth2ClientId']! as String).input(),
+      oauth2ClientInfo: map['oauth2ClientInfo'] == null ? null : (BackendServiceIAPOAuth2ClientInfo.fromMap((map['oauth2ClientInfo']! as Map).cast<String, dynamic>())).input(),
+      oauth2ClientSecret: map['oauth2ClientSecret'] == null ? null : (map['oauth2ClientSecret']! as String).input(),
     );
   }
 }

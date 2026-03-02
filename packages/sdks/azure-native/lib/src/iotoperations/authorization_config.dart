@@ -27,8 +27,8 @@ class AuthorizationConfig {
 
   factory AuthorizationConfig.fromMap(Map<String, dynamic> map) {
     return AuthorizationConfig(
-      cache: map['cache'] == null ? null : (map['cache'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<AuthorizationRule>(map['rules'], (value) => AuthorizationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cache: map['cache'] == null ? null : (map['cache']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<AuthorizationRule>(map['rules']!, (value) => AuthorizationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

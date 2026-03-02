@@ -27,8 +27,8 @@ class ThemeConfigurationSheetTileLayout {
 
   factory ThemeConfigurationSheetTileLayout.fromMap(Map<String, dynamic> map) {
     return ThemeConfigurationSheetTileLayout(
-      gutter: map['gutter'] == null ? null : (ThemeConfigurationSheetTileLayoutGutter.fromMap((map['gutter'] as Map).cast<String, dynamic>())).input(),
-      margin: map['margin'] == null ? null : (ThemeConfigurationSheetTileLayoutMargin.fromMap((map['margin'] as Map).cast<String, dynamic>())).input(),
+      gutter: map['gutter'] == null ? null : ((ThemeConfigurationSheetTileLayoutGutter.fromMap((map['gutter']! as Map).cast<String, dynamic>())).input()).input(),
+      margin: map['margin'] == null ? null : ((ThemeConfigurationSheetTileLayoutMargin.fromMap((map['margin']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

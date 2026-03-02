@@ -27,7 +27,7 @@ class ServiceMeshProfileResponse {
 
   factory ServiceMeshProfileResponse.fromMap(Map<String, dynamic> map) {
     return ServiceMeshProfileResponse(
-      istio: map['istio'] == null ? null : (IstioServiceMeshResponse.fromMap((map['istio'] as Map).cast<String, dynamic>())).input(),
+      istio: map['istio'] == null ? null : (IstioServiceMeshResponse.fromMap((map['istio']! as Map).cast<String, dynamic>())).input(),
       mode: (map['mode'] as String).input(),
     );
   }

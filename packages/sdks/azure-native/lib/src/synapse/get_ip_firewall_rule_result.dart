@@ -51,11 +51,11 @@ class GetIpFirewallRuleResult {
   factory GetIpFirewallRuleResult.fromMap(Map<String, dynamic> map) {
     return GetIpFirewallRuleResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      endIpAddress: map['endIpAddress'] == null ? null : map['endIpAddress'] as String,
+      endIpAddress: map['endIpAddress'] == null ? null : map['endIpAddress']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      startIpAddress: map['startIpAddress'] == null ? null : map['startIpAddress'] as String,
+      startIpAddress: map['startIpAddress'] == null ? null : map['startIpAddress']! as String,
       type: map['type'] as String,
     );
   }

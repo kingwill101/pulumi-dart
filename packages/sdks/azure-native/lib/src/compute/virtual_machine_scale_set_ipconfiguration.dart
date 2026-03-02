@@ -64,15 +64,15 @@ class VirtualMachineScaleSetIPConfiguration {
 
   factory VirtualMachineScaleSetIPConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetIPConfiguration(
-      applicationGatewayBackendAddressPools: map['applicationGatewayBackendAddressPools'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['applicationGatewayBackendAddressPools'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      applicationSecurityGroups: map['applicationSecurityGroups'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['applicationSecurityGroups'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      loadBalancerBackendAddressPools: map['loadBalancerBackendAddressPools'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['loadBalancerBackendAddressPools'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      loadBalancerInboundNatPools: map['loadBalancerInboundNatPools'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['loadBalancerInboundNatPools'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applicationGatewayBackendAddressPools: map['applicationGatewayBackendAddressPools'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['applicationGatewayBackendAddressPools']!, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applicationSecurityGroups: map['applicationSecurityGroups'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['applicationSecurityGroups']!, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loadBalancerBackendAddressPools: map['loadBalancerBackendAddressPools'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['loadBalancerBackendAddressPools']!, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loadBalancerInboundNatPools: map['loadBalancerInboundNatPools'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['loadBalancerInboundNatPools']!, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
-      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
-      privateIPAddressVersion: map['privateIPAddressVersion'] == null ? null : (map['privateIPAddressVersion'] as String).input(),
-      publicIPAddressConfiguration: map['publicIPAddressConfiguration'] == null ? null : (VirtualMachineScaleSetPublicIPAddressConfiguration.fromMap((map['publicIPAddressConfiguration'] as Map).cast<String, dynamic>())).input(),
-      subnet: map['subnet'] == null ? null : (ApiEntityReference.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      primary: map['primary'] == null ? null : (map['primary']! as bool).input(),
+      privateIPAddressVersion: map['privateIPAddressVersion'] == null ? null : (map['privateIPAddressVersion']! as String).input(),
+      publicIPAddressConfiguration: map['publicIPAddressConfiguration'] == null ? null : (VirtualMachineScaleSetPublicIPAddressConfiguration.fromMap((map['publicIPAddressConfiguration']! as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (ApiEntityReference.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

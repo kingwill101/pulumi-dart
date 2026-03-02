@@ -22,7 +22,7 @@ class GoogleCloudDataplexV1DataQualitySpecPostScanActions {
 
   factory GoogleCloudDataplexV1DataQualitySpecPostScanActions.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataQualitySpecPostScanActions(
-      bigqueryExport: map['bigqueryExport'] == null ? null : (GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport.fromMap((map['bigqueryExport'] as Map).cast<String, dynamic>())).input(),
+      bigqueryExport: map['bigqueryExport'] == null ? null : (GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport.fromMap((map['bigqueryExport']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

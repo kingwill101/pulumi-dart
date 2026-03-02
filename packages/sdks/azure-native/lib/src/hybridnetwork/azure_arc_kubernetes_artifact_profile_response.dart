@@ -28,8 +28,8 @@ class AzureArcKubernetesArtifactProfileResponse {
 
   factory AzureArcKubernetesArtifactProfileResponse.fromMap(Map<String, dynamic> map) {
     return AzureArcKubernetesArtifactProfileResponse(
-      artifactStore: map['artifactStore'] == null ? null : (ReferencedResourceResponse.fromMap((map['artifactStore'] as Map).cast<String, dynamic>())).input(),
-      helmArtifactProfile: map['helmArtifactProfile'] == null ? null : (HelmArtifactProfileResponse.fromMap((map['helmArtifactProfile'] as Map).cast<String, dynamic>())).input(),
+      artifactStore: map['artifactStore'] == null ? null : (ReferencedResourceResponse.fromMap((map['artifactStore']! as Map).cast<String, dynamic>())).input(),
+      helmArtifactProfile: map['helmArtifactProfile'] == null ? null : (HelmArtifactProfileResponse.fromMap((map['helmArtifactProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

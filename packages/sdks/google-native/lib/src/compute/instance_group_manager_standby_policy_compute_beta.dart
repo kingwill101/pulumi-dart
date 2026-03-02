@@ -25,8 +25,8 @@ class InstanceGroupManagerStandbyPolicyComputeBeta {
 
   factory InstanceGroupManagerStandbyPolicyComputeBeta.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerStandbyPolicyComputeBeta(
-      initialDelaySec: map['initialDelaySec'] == null ? null : (map['initialDelaySec'] as int).input(),
-      mode: map['mode'] == null ? null : (InstanceGroupManagerStandbyPolicyModeComputeBeta.fromValue(map['mode'] as String)).input(),
+      initialDelaySec: map['initialDelaySec'] == null ? null : (map['initialDelaySec']! as int).input(),
+      mode: map['mode'] == null ? null : (InstanceGroupManagerStandbyPolicyModeComputeBeta.fromValue(map['mode']! as String)).input(),
     );
   }
 }

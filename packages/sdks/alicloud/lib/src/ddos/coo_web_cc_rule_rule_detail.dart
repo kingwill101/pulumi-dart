@@ -47,8 +47,8 @@ class CooWebCcRuleRuleDetail {
       action: (map['action'] as String).input(),
       conditions: (pulumi.Input.decodeList<CooWebCcRuleRuleDetailCondition>(map['conditions'], (value) => CooWebCcRuleRuleDetailCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
       rateLimit: (CooWebCcRuleRuleDetailRateLimit.fromMap((map['rateLimit'] as Map).cast<String, dynamic>())).input(),
-      statistics: map['statistics'] == null ? null : (CooWebCcRuleRuleDetailStatistics.fromMap((map['statistics'] as Map).cast<String, dynamic>())).input(),
-      statusCode: map['statusCode'] == null ? null : (CooWebCcRuleRuleDetailStatusCode.fromMap((map['statusCode'] as Map).cast<String, dynamic>())).input(),
+      statistics: map['statistics'] == null ? null : (CooWebCcRuleRuleDetailStatistics.fromMap((map['statistics']! as Map).cast<String, dynamic>())).input(),
+      statusCode: map['statusCode'] == null ? null : (CooWebCcRuleRuleDetailStatusCode.fromMap((map['statusCode']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

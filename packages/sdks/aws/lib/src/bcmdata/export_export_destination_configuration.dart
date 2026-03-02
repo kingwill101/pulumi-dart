@@ -21,7 +21,7 @@ class ExportExportDestinationConfiguration {
 
   factory ExportExportDestinationConfiguration.fromMap(Map<String, dynamic> map) {
     return ExportExportDestinationConfiguration(
-      s3Destinations: map['s3Destinations'] == null ? null : (pulumi.Input.decodeList<ExportExportDestinationConfigurationS3Destination>(map['s3Destinations'], (value) => ExportExportDestinationConfigurationS3Destination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      s3Destinations: map['s3Destinations'] == null ? null : ((pulumi.Input.decodeList<ExportExportDestinationConfigurationS3Destination>(map['s3Destinations']!, (value) => ExportExportDestinationConfigurationS3Destination.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -36,11 +36,11 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomCon
 
   factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2(
-      accessToken: map['accessToken'] == null ? null : (map['accessToken'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      oauthRequest: map['oauthRequest'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2OauthRequest.fromMap((map['oauthRequest'] as Map).cast<String, dynamic>())).input(),
-      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken'] as String).input(),
+      accessToken: map['accessToken'] == null ? null : ((map['accessToken'] as String).input()).input(),
+      clientId: map['clientId'] == null ? null : ((map['clientId'] as String).input()).input(),
+      clientSecret: map['clientSecret'] == null ? null : ((map['clientSecret'] as String).input()).input(),
+      oauthRequest: map['oauthRequest'] == null ? null : ((ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2OauthRequest.fromMap((map['oauthRequest']! as Map).cast<String, dynamic>())).input()).input(),
+      refreshToken: map['refreshToken'] == null ? null : ((map['refreshToken'] as String).input()).input(),
     );
   }
 }

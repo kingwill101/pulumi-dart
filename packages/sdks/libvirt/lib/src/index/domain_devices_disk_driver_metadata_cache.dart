@@ -21,7 +21,7 @@ class DomainDevicesDiskDriverMetadataCache {
 
   factory DomainDevicesDiskDriverMetadataCache.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskDriverMetadataCache(
-      maxSize: map['maxSize'] == null ? null : (DomainDevicesDiskDriverMetadataCacheMaxSize.fromMap((map['maxSize'] as Map).cast<String, dynamic>())).input(),
+      maxSize: map['maxSize'] == null ? null : (DomainDevicesDiskDriverMetadataCacheMaxSize.fromMap((map['maxSize']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

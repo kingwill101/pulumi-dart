@@ -41,9 +41,9 @@ class TriggerDeveloperConnectEventConfig {
   factory TriggerDeveloperConnectEventConfig.fromMap(Map<String, dynamic> map) {
     return TriggerDeveloperConnectEventConfig(
       gitRepositoryLink: (map['gitRepositoryLink'] as String).input(),
-      gitRepositoryLinkType: map['gitRepositoryLinkType'] == null ? null : (map['gitRepositoryLinkType'] as String).input(),
-      pullRequest: map['pullRequest'] == null ? null : (TriggerDeveloperConnectEventConfigPullRequest.fromMap((map['pullRequest'] as Map).cast<String, dynamic>())).input(),
-      push: map['push'] == null ? null : (TriggerDeveloperConnectEventConfigPush.fromMap((map['push'] as Map).cast<String, dynamic>())).input(),
+      gitRepositoryLinkType: map['gitRepositoryLinkType'] == null ? null : (map['gitRepositoryLinkType']! as String).input(),
+      pullRequest: map['pullRequest'] == null ? null : (TriggerDeveloperConnectEventConfigPullRequest.fromMap((map['pullRequest']! as Map).cast<String, dynamic>())).input(),
+      push: map['push'] == null ? null : (TriggerDeveloperConnectEventConfigPush.fromMap((map['push']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

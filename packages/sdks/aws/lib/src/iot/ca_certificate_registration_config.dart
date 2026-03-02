@@ -30,9 +30,9 @@ class CaCertificateRegistrationConfig {
 
   factory CaCertificateRegistrationConfig.fromMap(Map<String, dynamic> map) {
     return CaCertificateRegistrationConfig(
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      templateBody: map['templateBody'] == null ? null : (map['templateBody'] as String).input(),
-      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      templateBody: map['templateBody'] == null ? null : ((map['templateBody'] as String).input()).input(),
+      templateName: map['templateName'] == null ? null : ((map['templateName'] as String).input()).input(),
     );
   }
 }

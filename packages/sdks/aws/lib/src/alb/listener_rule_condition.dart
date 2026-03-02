@@ -53,12 +53,12 @@ class ListenerRuleCondition {
 
   factory ListenerRuleCondition.fromMap(Map<String, dynamic> map) {
     return ListenerRuleCondition(
-      hostHeader: map['hostHeader'] == null ? null : (ListenerRuleConditionHostHeader.fromMap((map['hostHeader'] as Map).cast<String, dynamic>())).input(),
-      httpHeader: map['httpHeader'] == null ? null : (ListenerRuleConditionHttpHeader.fromMap((map['httpHeader'] as Map).cast<String, dynamic>())).input(),
-      httpRequestMethod: map['httpRequestMethod'] == null ? null : (ListenerRuleConditionHttpRequestMethod.fromMap((map['httpRequestMethod'] as Map).cast<String, dynamic>())).input(),
-      pathPattern: map['pathPattern'] == null ? null : (ListenerRuleConditionPathPattern.fromMap((map['pathPattern'] as Map).cast<String, dynamic>())).input(),
-      queryStrings: map['queryStrings'] == null ? null : (pulumi.Input.decodeList<ListenerRuleConditionQueryString>(map['queryStrings'], (value) => ListenerRuleConditionQueryString.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceIp: map['sourceIp'] == null ? null : (ListenerRuleConditionSourceIp.fromMap((map['sourceIp'] as Map).cast<String, dynamic>())).input(),
+      hostHeader: map['hostHeader'] == null ? null : ((ListenerRuleConditionHostHeader.fromMap((map['hostHeader']! as Map).cast<String, dynamic>())).input()).input(),
+      httpHeader: map['httpHeader'] == null ? null : ((ListenerRuleConditionHttpHeader.fromMap((map['httpHeader']! as Map).cast<String, dynamic>())).input()).input(),
+      httpRequestMethod: map['httpRequestMethod'] == null ? null : ((ListenerRuleConditionHttpRequestMethod.fromMap((map['httpRequestMethod']! as Map).cast<String, dynamic>())).input()).input(),
+      pathPattern: map['pathPattern'] == null ? null : ((ListenerRuleConditionPathPattern.fromMap((map['pathPattern']! as Map).cast<String, dynamic>())).input()).input(),
+      queryStrings: map['queryStrings'] == null ? null : ((pulumi.Input.decodeList<ListenerRuleConditionQueryString>(map['queryStrings']!, (value) => ListenerRuleConditionQueryString.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      sourceIp: map['sourceIp'] == null ? null : ((ListenerRuleConditionSourceIp.fromMap((map['sourceIp']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

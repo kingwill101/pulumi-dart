@@ -32,9 +32,9 @@ class IntegrationRuntimeDataProxyProperties {
 
   factory IntegrationRuntimeDataProxyProperties.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeDataProxyProperties(
-      connectVia: map['connectVia'] == null ? null : (EntityReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      stagingLinkedService: map['stagingLinkedService'] == null ? null : (EntityReference.fromMap((map['stagingLinkedService'] as Map).cast<String, dynamic>())).input(),
+      connectVia: map['connectVia'] == null ? null : (EntityReference.fromMap((map['connectVia']! as Map).cast<String, dynamic>())).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      stagingLinkedService: map['stagingLinkedService'] == null ? null : (EntityReference.fromMap((map['stagingLinkedService']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

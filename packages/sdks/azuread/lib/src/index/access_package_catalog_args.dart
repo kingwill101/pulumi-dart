@@ -41,8 +41,8 @@ class AccessPackageCatalogArgs {
     return AccessPackageCatalogArgs(
       description: (map['description'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      externallyVisible: map['externallyVisible'] == null ? null : (map['externallyVisible'] as bool).input(),
-      published: map['published'] == null ? null : (map['published'] as bool).input(),
+      externallyVisible: map['externallyVisible'] == null ? null : (map['externallyVisible']! as bool).input(),
+      published: map['published'] == null ? null : (map['published']! as bool).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class ManagedZonePeeringConfig {
 
   factory ManagedZonePeeringConfig.fromMap(Map<String, dynamic> map) {
     return ManagedZonePeeringConfig(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      targetNetwork: map['targetNetwork'] == null ? null : (ManagedZonePeeringConfigTargetNetwork.fromMap((map['targetNetwork'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      targetNetwork: map['targetNetwork'] == null ? null : (ManagedZonePeeringConfigTargetNetwork.fromMap((map['targetNetwork']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -58,11 +58,11 @@ class InstancePropertiesResponse {
 
   factory InstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return InstancePropertiesResponse(
-      activeState: map['activeState'] == null ? null : (map['activeState'] as String).input(),
+      activeState: map['activeState'] == null ? null : (map['activeState']! as String).input(),
       deploymentTimestampEpoch: (map['deploymentTimestampEpoch'] as double).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      reconciliationPolicy: map['reconciliationPolicy'] == null ? null : (ReconciliationPolicyPropertiesResponse.fromMap((map['reconciliationPolicy'] as Map).cast<String, dynamic>())).input(),
-      solutionScope: map['solutionScope'] == null ? null : (map['solutionScope'] as String).input(),
+      reconciliationPolicy: map['reconciliationPolicy'] == null ? null : (ReconciliationPolicyPropertiesResponse.fromMap((map['reconciliationPolicy']! as Map).cast<String, dynamic>())).input(),
+      solutionScope: map['solutionScope'] == null ? null : (map['solutionScope']! as String).input(),
       solutionVersionId: (map['solutionVersionId'] as String).input(),
       status: (DeploymentStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
       targetId: (map['targetId'] as String).input(),

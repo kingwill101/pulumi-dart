@@ -38,10 +38,10 @@ class ManagedClusterPodIdentityProfile {
 
   factory ManagedClusterPodIdentityProfile.fromMap(Map<String, dynamic> map) {
     return ManagedClusterPodIdentityProfile(
-      allowNetworkPluginKubenet: map['allowNetworkPluginKubenet'] == null ? null : (map['allowNetworkPluginKubenet'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeList<ManagedClusterPodIdentity>(map['userAssignedIdentities'], (value) => ManagedClusterPodIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      userAssignedIdentityExceptions: map['userAssignedIdentityExceptions'] == null ? null : (pulumi.Input.decodeList<ManagedClusterPodIdentityException>(map['userAssignedIdentityExceptions'], (value) => ManagedClusterPodIdentityException.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowNetworkPluginKubenet: map['allowNetworkPluginKubenet'] == null ? null : (map['allowNetworkPluginKubenet']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeList<ManagedClusterPodIdentity>(map['userAssignedIdentities']!, (value) => ManagedClusterPodIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userAssignedIdentityExceptions: map['userAssignedIdentityExceptions'] == null ? null : (pulumi.Input.decodeList<ManagedClusterPodIdentityException>(map['userAssignedIdentityExceptions']!, (value) => ManagedClusterPodIdentityException.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

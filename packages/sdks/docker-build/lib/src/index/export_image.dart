@@ -88,19 +88,19 @@ class ExportImage {
 
   factory ExportImage.fromMap(Map<String, dynamic> map) {
     return ExportImage(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      compression: map['compression'] == null ? null : (CompressionType.fromValue(map['compression'] as String)).input(),
-      compressionLevel: map['compressionLevel'] == null ? null : (map['compressionLevel'] as int).input(),
-      danglingNamePrefix: map['danglingNamePrefix'] == null ? null : (map['danglingNamePrefix'] as String).input(),
-      forceCompression: map['forceCompression'] == null ? null : (map['forceCompression'] as bool).input(),
-      insecure: map['insecure'] == null ? null : (map['insecure'] as bool).input(),
-      nameCanonical: map['nameCanonical'] == null ? null : (map['nameCanonical'] as bool).input(),
-      names: map['names'] == null ? null : ((map['names'] as List).cast<String>()).input(),
-      ociMediaTypes: map['ociMediaTypes'] == null ? null : (map['ociMediaTypes'] as bool).input(),
-      push: map['push'] == null ? null : (map['push'] as bool).input(),
-      pushByDigest: map['pushByDigest'] == null ? null : (map['pushByDigest'] as bool).input(),
-      store: map['store'] == null ? null : (map['store'] as bool).input(),
-      unpack: map['unpack'] == null ? null : (map['unpack'] as bool).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      compression: map['compression'] == null ? null : (CompressionType.fromValue(map['compression']! as String)).input(),
+      compressionLevel: map['compressionLevel'] == null ? null : (map['compressionLevel']! as int).input(),
+      danglingNamePrefix: map['danglingNamePrefix'] == null ? null : (map['danglingNamePrefix']! as String).input(),
+      forceCompression: map['forceCompression'] == null ? null : (map['forceCompression']! as bool).input(),
+      insecure: map['insecure'] == null ? null : (map['insecure']! as bool).input(),
+      nameCanonical: map['nameCanonical'] == null ? null : (map['nameCanonical']! as bool).input(),
+      names: map['names'] == null ? null : ((map['names']! as List).cast<String>()).input(),
+      ociMediaTypes: map['ociMediaTypes'] == null ? null : (map['ociMediaTypes']! as bool).input(),
+      push: map['push'] == null ? null : (map['push']! as bool).input(),
+      pushByDigest: map['pushByDigest'] == null ? null : (map['pushByDigest']! as bool).input(),
+      store: map['store'] == null ? null : (map['store']! as bool).input(),
+      unpack: map['unpack'] == null ? null : (map['unpack']! as bool).input(),
     );
   }
 }

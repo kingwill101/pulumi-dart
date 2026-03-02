@@ -26,7 +26,7 @@ class GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpec {
 
   factory GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpec(
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as double).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']! as double).input(),
       values: ((map['values'] as List).cast<double>()).input(),
     );
   }

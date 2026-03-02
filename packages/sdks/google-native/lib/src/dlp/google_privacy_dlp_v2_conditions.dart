@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2Conditions {
 
   factory GooglePrivacyDlpV2Conditions.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Conditions(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2Condition>(map['conditions'], (value) => GooglePrivacyDlpV2Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2Condition>(map['conditions']!, (value) => GooglePrivacyDlpV2Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

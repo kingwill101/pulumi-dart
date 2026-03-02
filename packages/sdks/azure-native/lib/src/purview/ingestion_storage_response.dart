@@ -33,7 +33,7 @@ class IngestionStorageResponse {
     return IngestionStorageResponse(
       id: (map['id'] as String).input(),
       primaryEndpoint: (map['primaryEndpoint'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
     );
   }
 }

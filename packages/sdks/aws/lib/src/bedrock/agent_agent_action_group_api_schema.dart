@@ -28,8 +28,8 @@ class AgentAgentActionGroupApiSchema {
 
   factory AgentAgentActionGroupApiSchema.fromMap(Map<String, dynamic> map) {
     return AgentAgentActionGroupApiSchema(
-      payload: map['payload'] == null ? null : (map['payload'] as String).input(),
-      s3: map['s3'] == null ? null : (AgentAgentActionGroupApiSchemaS3.fromMap((map['s3'] as Map).cast<String, dynamic>())).input(),
+      payload: map['payload'] == null ? null : ((map['payload'] as String).input()).input(),
+      s3: map['s3'] == null ? null : ((AgentAgentActionGroupApiSchemaS3.fromMap((map['s3']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

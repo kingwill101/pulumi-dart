@@ -21,7 +21,7 @@ class JobComparatorEnumValueResponse {
 
   factory JobComparatorEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return JobComparatorEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -68,14 +68,14 @@ class DatabaseInstanceState {
 
   factory DatabaseInstanceState.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceState(
-      databaseUrl: map['databaseUrl'] == null ? null : (map['databaseUrl'] as String).input(),
-      desiredState: map['desiredState'] == null ? null : (map['desiredState'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      databaseUrl: map['databaseUrl'] == null ? null : (map['databaseUrl']! as String).input(),
+      desiredState: map['desiredState'] == null ? null : (map['desiredState']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

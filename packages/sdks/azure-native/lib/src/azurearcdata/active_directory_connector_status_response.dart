@@ -31,9 +31,9 @@ class ActiveDirectoryConnectorStatusResponse {
 
   factory ActiveDirectoryConnectorStatusResponse.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryConnectorStatusResponse(
-      lastUpdateTime: map['lastUpdateTime'] == null ? null : (map['lastUpdateTime'] as String).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as double).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      lastUpdateTime: map['lastUpdateTime'] == null ? null : (map['lastUpdateTime']! as String).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as double).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

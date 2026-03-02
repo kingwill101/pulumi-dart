@@ -42,11 +42,11 @@ class SlsaMetadataContaineranalysisV1alpha1 {
 
   factory SlsaMetadataContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return SlsaMetadataContaineranalysisV1alpha1(
-      buildFinishedOn: map['buildFinishedOn'] == null ? null : (map['buildFinishedOn'] as String).input(),
-      buildInvocationId: map['buildInvocationId'] == null ? null : (map['buildInvocationId'] as String).input(),
-      buildStartedOn: map['buildStartedOn'] == null ? null : (map['buildStartedOn'] as String).input(),
-      completeness: map['completeness'] == null ? null : (SlsaCompletenessContaineranalysisV1alpha1.fromMap((map['completeness'] as Map).cast<String, dynamic>())).input(),
-      reproducible: map['reproducible'] == null ? null : (map['reproducible'] as bool).input(),
+      buildFinishedOn: map['buildFinishedOn'] == null ? null : (map['buildFinishedOn']! as String).input(),
+      buildInvocationId: map['buildInvocationId'] == null ? null : (map['buildInvocationId']! as String).input(),
+      buildStartedOn: map['buildStartedOn'] == null ? null : (map['buildStartedOn']! as String).input(),
+      completeness: map['completeness'] == null ? null : (SlsaCompletenessContaineranalysisV1alpha1.fromMap((map['completeness']! as Map).cast<String, dynamic>())).input(),
+      reproducible: map['reproducible'] == null ? null : (map['reproducible']! as bool).input(),
     );
   }
 }

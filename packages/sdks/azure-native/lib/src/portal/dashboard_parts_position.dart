@@ -42,7 +42,7 @@ class DashboardPartsPosition {
   factory DashboardPartsPosition.fromMap(Map<String, dynamic> map) {
     return DashboardPartsPosition(
       colSpan: (map['colSpan'] as int).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
       rowSpan: (map['rowSpan'] as int).input(),
       x: (map['x'] as int).input(),
       y: (map['y'] as int).input(),

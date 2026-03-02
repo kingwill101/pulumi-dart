@@ -32,7 +32,7 @@ class AutoScaleRunErrorResponse {
   factory AutoScaleRunErrorResponse.fromMap(Map<String, dynamic> map) {
     return AutoScaleRunErrorResponse(
       code: (map['code'] as String).input(),
-      details: map['details'] == null ? null : (pulumi.Input.decodeList<AutoScaleRunErrorResponse>(map['details'], (value) => AutoScaleRunErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      details: map['details'] == null ? null : (pulumi.Input.decodeList<AutoScaleRunErrorResponse>(map['details']!, (value) => AutoScaleRunErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       message: (map['message'] as String).input(),
     );
   }

@@ -34,10 +34,10 @@ class FeatureGroupFeatureDefinition {
 
   factory FeatureGroupFeatureDefinition.fromMap(Map<String, dynamic> map) {
     return FeatureGroupFeatureDefinition(
-      collectionConfig: map['collectionConfig'] == null ? null : (FeatureGroupFeatureDefinitionCollectionConfig.fromMap((map['collectionConfig'] as Map).cast<String, dynamic>())).input(),
-      collectionType: map['collectionType'] == null ? null : (map['collectionType'] as String).input(),
-      featureName: map['featureName'] == null ? null : (map['featureName'] as String).input(),
-      featureType: map['featureType'] == null ? null : (map['featureType'] as String).input(),
+      collectionConfig: map['collectionConfig'] == null ? null : ((FeatureGroupFeatureDefinitionCollectionConfig.fromMap((map['collectionConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      collectionType: map['collectionType'] == null ? null : ((map['collectionType'] as String).input()).input(),
+      featureName: map['featureName'] == null ? null : ((map['featureName'] as String).input()).input(),
+      featureType: map['featureType'] == null ? null : ((map['featureType'] as String).input()).input(),
     );
   }
 }

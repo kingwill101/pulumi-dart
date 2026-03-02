@@ -44,8 +44,8 @@ class SqlDiscoverySiteDataSourceControllerArgs {
 
   factory SqlDiscoverySiteDataSourceControllerArgs.fromMap(Map<String, dynamic> map) {
     return SqlDiscoverySiteDataSourceControllerArgs(
-      discoverySiteDataSourceName: map['discoverySiteDataSourceName'] == null ? null : (map['discoverySiteDataSourceName'] as String).input(),
-      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId'] as String).input(),
+      discoverySiteDataSourceName: map['discoverySiteDataSourceName'] == null ? null : (map['discoverySiteDataSourceName']! as String).input(),
+      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       siteName: (map['siteName'] as String).input(),
       sqlSiteName: (map['sqlSiteName'] as String).input(),

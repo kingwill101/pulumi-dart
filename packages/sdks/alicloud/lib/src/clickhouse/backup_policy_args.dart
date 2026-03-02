@@ -39,7 +39,7 @@ class BackupPolicyArgs {
 
   factory BackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BackupPolicyArgs(
-      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : (map['backupRetentionPeriod'] as int).input(),
+      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : (map['backupRetentionPeriod']! as int).input(),
       dbClusterId: (map['dbClusterId'] as String).input(),
       preferredBackupPeriods: ((map['preferredBackupPeriods'] as List).cast<String>()).input(),
       preferredBackupTime: (map['preferredBackupTime'] as String).input(),

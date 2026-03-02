@@ -52,12 +52,12 @@ class CustomizedAcceleratorPropertiesResponse {
 
   factory CustomizedAcceleratorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CustomizedAcceleratorPropertiesResponse(
-      acceleratorTags: map['acceleratorTags'] == null ? null : ((map['acceleratorTags'] as List).cast<String>()).input(),
-      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      acceleratorTags: map['acceleratorTags'] == null ? null : ((map['acceleratorTags']! as List).cast<String>()).input(),
+      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       gitRepository: (AcceleratorGitRepositoryResponse.fromMap((map['gitRepository'] as Map).cast<String, dynamic>())).input(),
-      iconUrl: map['iconUrl'] == null ? null : (map['iconUrl'] as String).input(),
+      iconUrl: map['iconUrl'] == null ? null : (map['iconUrl']! as String).input(),
       imports: ((map['imports'] as List).cast<String>()).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );

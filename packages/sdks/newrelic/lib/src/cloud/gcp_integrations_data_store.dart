@@ -20,7 +20,7 @@ class GcpIntegrationsDataStore {
 
   factory GcpIntegrationsDataStore.fromMap(Map<String, dynamic> map) {
     return GcpIntegrationsDataStore(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
     );
   }
 }

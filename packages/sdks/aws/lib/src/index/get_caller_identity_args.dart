@@ -24,7 +24,7 @@ class GetCallerIdentityArgs {
 
   factory GetCallerIdentityArgs.fromMap(Map<String, dynamic> map) {
     return GetCallerIdentityArgs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
     );
   }
 }

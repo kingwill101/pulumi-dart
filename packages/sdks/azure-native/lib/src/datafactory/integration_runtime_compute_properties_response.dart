@@ -60,14 +60,14 @@ class IntegrationRuntimeComputePropertiesResponse {
 
   factory IntegrationRuntimeComputePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeComputePropertiesResponse(
-      copyComputeScaleProperties: map['copyComputeScaleProperties'] == null ? null : (CopyComputeScalePropertiesResponse.fromMap((map['copyComputeScaleProperties'] as Map).cast<String, dynamic>())).input(),
-      dataFlowProperties: map['dataFlowProperties'] == null ? null : (IntegrationRuntimeDataFlowPropertiesResponse.fromMap((map['dataFlowProperties'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maxParallelExecutionsPerNode: map['maxParallelExecutionsPerNode'] == null ? null : (map['maxParallelExecutionsPerNode'] as int).input(),
-      nodeSize: map['nodeSize'] == null ? null : (map['nodeSize'] as String).input(),
-      numberOfNodes: map['numberOfNodes'] == null ? null : (map['numberOfNodes'] as int).input(),
-      pipelineExternalComputeScaleProperties: map['pipelineExternalComputeScaleProperties'] == null ? null : (PipelineExternalComputeScalePropertiesResponse.fromMap((map['pipelineExternalComputeScaleProperties'] as Map).cast<String, dynamic>())).input(),
-      vNetProperties: map['vNetProperties'] == null ? null : (IntegrationRuntimeVNetPropertiesResponse.fromMap((map['vNetProperties'] as Map).cast<String, dynamic>())).input(),
+      copyComputeScaleProperties: map['copyComputeScaleProperties'] == null ? null : (CopyComputeScalePropertiesResponse.fromMap((map['copyComputeScaleProperties']! as Map).cast<String, dynamic>())).input(),
+      dataFlowProperties: map['dataFlowProperties'] == null ? null : (IntegrationRuntimeDataFlowPropertiesResponse.fromMap((map['dataFlowProperties']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maxParallelExecutionsPerNode: map['maxParallelExecutionsPerNode'] == null ? null : (map['maxParallelExecutionsPerNode']! as int).input(),
+      nodeSize: map['nodeSize'] == null ? null : (map['nodeSize']! as String).input(),
+      numberOfNodes: map['numberOfNodes'] == null ? null : (map['numberOfNodes']! as int).input(),
+      pipelineExternalComputeScaleProperties: map['pipelineExternalComputeScaleProperties'] == null ? null : (PipelineExternalComputeScalePropertiesResponse.fromMap((map['pipelineExternalComputeScaleProperties']! as Map).cast<String, dynamic>())).input(),
+      vNetProperties: map['vNetProperties'] == null ? null : (IntegrationRuntimeVNetPropertiesResponse.fromMap((map['vNetProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

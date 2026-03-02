@@ -65,15 +65,15 @@ class EnvironmentProfileArgs {
 
   factory EnvironmentProfileArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentProfileArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
       awsAccountRegion: (map['awsAccountRegion'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       domainIdentifier: (map['domainIdentifier'] as String).input(),
       environmentBlueprintIdentifier: (map['environmentBlueprintIdentifier'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       projectIdentifier: (map['projectIdentifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      userParameters: map['userParameters'] == null ? null : (pulumi.Input.decodeList<EnvironmentProfileUserParameter>(map['userParameters'], (value) => EnvironmentProfileUserParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      userParameters: map['userParameters'] == null ? null : ((pulumi.Input.decodeList<EnvironmentProfileUserParameter>(map['userParameters']!, (value) => EnvironmentProfileUserParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

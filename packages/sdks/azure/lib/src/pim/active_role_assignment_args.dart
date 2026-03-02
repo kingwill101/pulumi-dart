@@ -51,12 +51,12 @@ class ActiveRoleAssignmentArgs {
 
   factory ActiveRoleAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return ActiveRoleAssignmentArgs(
-      justification: map['justification'] == null ? null : (map['justification'] as String).input(),
+      justification: map['justification'] == null ? null : (map['justification']! as String).input(),
       principalId: (map['principalId'] as String).input(),
       roleDefinitionId: (map['roleDefinitionId'] as String).input(),
-      schedule: map['schedule'] == null ? null : (ActiveRoleAssignmentSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      schedule: map['schedule'] == null ? null : (ActiveRoleAssignmentSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
       scope: (map['scope'] as String).input(),
-      ticket: map['ticket'] == null ? null : (ActiveRoleAssignmentTicket.fromMap((map['ticket'] as Map).cast<String, dynamic>())).input(),
+      ticket: map['ticket'] == null ? null : (ActiveRoleAssignmentTicket.fromMap((map['ticket']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

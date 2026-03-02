@@ -60,11 +60,11 @@ class GetConfigurationProfileResult {
     return GetConfigurationProfileResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ResourceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location'] as String,
+      identity: map['identity'] == null ? null : ResourceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       properties: ConfigurationProfileResourcePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      systemData: map['systemData'] == null ? null : SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: map['systemData'] == null ? null : SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }

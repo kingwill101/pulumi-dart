@@ -35,7 +35,7 @@ class EndpointPrivateDnsArgs {
   factory EndpointPrivateDnsArgs.fromMap(Map<String, dynamic> map) {
     return EndpointPrivateDnsArgs(
       privateDnsEnabled: (map['privateDnsEnabled'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       vpcEndpointId: (map['vpcEndpointId'] as String).input(),
     );
   }

@@ -41,7 +41,7 @@ class LinkedServiceArgs {
   factory LinkedServiceArgs.fromMap(Map<String, dynamic> map) {
     return LinkedServiceArgs(
       factoryName: (map['factoryName'] as String).input(),
-      linkedServiceName: map['linkedServiceName'] == null ? null : (map['linkedServiceName'] as String).input(),
+      linkedServiceName: map['linkedServiceName'] == null ? null : (map['linkedServiceName']! as String).input(),
       properties: (AmazonMWSLinkedService.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

@@ -44,7 +44,7 @@ class TtlScheduleArgs {
 
   factory TtlScheduleArgs.fromMap(Map<String, dynamic> map) {
     return TtlScheduleArgs(
-      deleteAfterDestroy: map['deleteAfterDestroy'] == null ? null : (map['deleteAfterDestroy'] as bool).input(),
+      deleteAfterDestroy: map['deleteAfterDestroy'] == null ? null : (map['deleteAfterDestroy']! as bool).input(),
       organization: (map['organization'] as String).input(),
       project: (map['project'] as String).input(),
       stack: (map['stack'] as String).input(),

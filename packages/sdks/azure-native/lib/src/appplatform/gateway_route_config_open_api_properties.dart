@@ -21,7 +21,7 @@ class GatewayRouteConfigOpenApiProperties {
 
   factory GatewayRouteConfigOpenApiProperties.fromMap(Map<String, dynamic> map) {
     return GatewayRouteConfigOpenApiProperties(
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

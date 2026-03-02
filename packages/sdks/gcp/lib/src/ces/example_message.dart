@@ -27,8 +27,8 @@ class ExampleMessage {
 
   factory ExampleMessage.fromMap(Map<String, dynamic> map) {
     return ExampleMessage(
-      chunks: map['chunks'] == null ? null : (pulumi.Input.decodeList<ExampleMessageChunk>(map['chunks'], (value) => ExampleMessageChunk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      chunks: map['chunks'] == null ? null : (pulumi.Input.decodeList<ExampleMessageChunk>(map['chunks']!, (value) => ExampleMessageChunk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

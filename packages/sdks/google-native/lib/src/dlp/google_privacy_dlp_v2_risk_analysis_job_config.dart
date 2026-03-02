@@ -34,9 +34,9 @@ class GooglePrivacyDlpV2RiskAnalysisJobConfig {
 
   factory GooglePrivacyDlpV2RiskAnalysisJobConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2RiskAnalysisJobConfig(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2Action>(map['actions'], (value) => GooglePrivacyDlpV2Action.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      privacyMetric: map['privacyMetric'] == null ? null : (GooglePrivacyDlpV2PrivacyMetric.fromMap((map['privacyMetric'] as Map).cast<String, dynamic>())).input(),
-      sourceTable: map['sourceTable'] == null ? null : (GooglePrivacyDlpV2BigQueryTable.fromMap((map['sourceTable'] as Map).cast<String, dynamic>())).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2Action>(map['actions']!, (value) => GooglePrivacyDlpV2Action.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privacyMetric: map['privacyMetric'] == null ? null : (GooglePrivacyDlpV2PrivacyMetric.fromMap((map['privacyMetric']! as Map).cast<String, dynamic>())).input(),
+      sourceTable: map['sourceTable'] == null ? null : (GooglePrivacyDlpV2BigQueryTable.fromMap((map['sourceTable']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class WindowsNodeConfigContainerV1beta1 {
 
   factory WindowsNodeConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return WindowsNodeConfigContainerV1beta1(
-      osVersion: map['osVersion'] == null ? null : (WindowsNodeConfigOsVersionContainerV1beta1.fromValue(map['osVersion'] as String)).input(),
+      osVersion: map['osVersion'] == null ? null : (WindowsNodeConfigOsVersionContainerV1beta1.fromValue(map['osVersion']! as String)).input(),
     );
   }
 }

@@ -30,7 +30,7 @@ class GetRouteSpecGrpcRouteMatchMetadata {
   factory GetRouteSpecGrpcRouteMatchMetadata.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecGrpcRouteMatchMetadata(
       invert: (map['invert'] as bool).input(),
-      matches: (pulumi.Input.decodeList<GetRouteSpecGrpcRouteMatchMetadataMatch>(map['matches'], (value) => GetRouteSpecGrpcRouteMatchMetadataMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matches: (pulumi.Input.decodeList<GetRouteSpecGrpcRouteMatchMetadataMatch>(map['matches']!, (value) => GetRouteSpecGrpcRouteMatchMetadataMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
     );
   }

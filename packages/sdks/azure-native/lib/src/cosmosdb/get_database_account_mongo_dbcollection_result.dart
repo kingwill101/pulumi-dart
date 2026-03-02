@@ -59,11 +59,11 @@ class GetDatabaseAccountMongoDBCollectionResult {
     return GetDatabaseAccountMongoDBCollectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      indexes: map['indexes'] == null ? null : pulumi.Input.decodeList<MongoIndexResponse>(map['indexes'], (value) => MongoIndexResponse.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : map['location'] as String,
+      indexes: map['indexes'] == null ? null : pulumi.Input.decodeList<MongoIndexResponse>(map['indexes']!, (value) => MongoIndexResponse.fromMap((value as Map).cast<String, dynamic>())),
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      shardKey: map['shardKey'] == null ? null : (map['shardKey'] as Map).cast<String, String>(),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      shardKey: map['shardKey'] == null ? null : (map['shardKey']! as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

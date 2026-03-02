@@ -34,9 +34,9 @@ class MonitoringConfig {
 
   factory MonitoringConfig.fromMap(Map<String, dynamic> map) {
     return MonitoringConfig(
-      advancedDatapathObservabilityConfig: map['advancedDatapathObservabilityConfig'] == null ? null : (AdvancedDatapathObservabilityConfig.fromMap((map['advancedDatapathObservabilityConfig'] as Map).cast<String, dynamic>())).input(),
-      componentConfig: map['componentConfig'] == null ? null : (MonitoringComponentConfig.fromMap((map['componentConfig'] as Map).cast<String, dynamic>())).input(),
-      managedPrometheusConfig: map['managedPrometheusConfig'] == null ? null : (ManagedPrometheusConfig.fromMap((map['managedPrometheusConfig'] as Map).cast<String, dynamic>())).input(),
+      advancedDatapathObservabilityConfig: map['advancedDatapathObservabilityConfig'] == null ? null : (AdvancedDatapathObservabilityConfig.fromMap((map['advancedDatapathObservabilityConfig']! as Map).cast<String, dynamic>())).input(),
+      componentConfig: map['componentConfig'] == null ? null : (MonitoringComponentConfig.fromMap((map['componentConfig']! as Map).cast<String, dynamic>())).input(),
+      managedPrometheusConfig: map['managedPrometheusConfig'] == null ? null : (ManagedPrometheusConfig.fromMap((map['managedPrometheusConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

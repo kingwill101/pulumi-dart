@@ -38,8 +38,8 @@ class DestinationNetworksecurityV1beta1 {
   factory DestinationNetworksecurityV1beta1.fromMap(Map<String, dynamic> map) {
     return DestinationNetworksecurityV1beta1(
       hosts: ((map['hosts'] as List).cast<String>()).input(),
-      httpHeaderMatch: map['httpHeaderMatch'] == null ? null : (HttpHeaderMatchNetworksecurityV1beta1.fromMap((map['httpHeaderMatch'] as Map).cast<String, dynamic>())).input(),
-      methods: map['methods'] == null ? null : ((map['methods'] as List).cast<String>()).input(),
+      httpHeaderMatch: map['httpHeaderMatch'] == null ? null : (HttpHeaderMatchNetworksecurityV1beta1.fromMap((map['httpHeaderMatch']! as Map).cast<String, dynamic>())).input(),
+      methods: map['methods'] == null ? null : ((map['methods']! as List).cast<String>()).input(),
       ports: ((map['ports'] as List).cast<int>()).input(),
     );
   }

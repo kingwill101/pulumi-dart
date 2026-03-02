@@ -26,7 +26,7 @@ class ShareAcl {
 
   factory ShareAcl.fromMap(Map<String, dynamic> map) {
     return ShareAcl(
-      accessPolicies: map['accessPolicies'] == null ? null : (pulumi.Input.decodeList<ShareAclAccessPolicy>(map['accessPolicies'], (value) => ShareAclAccessPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accessPolicies: map['accessPolicies'] == null ? null : (pulumi.Input.decodeList<ShareAclAccessPolicy>(map['accessPolicies']!, (value) => ShareAclAccessPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
       id: (map['id'] as String).input(),
     );
   }

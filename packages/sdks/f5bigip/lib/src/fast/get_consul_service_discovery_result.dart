@@ -72,19 +72,19 @@ class GetConsulServiceDiscoveryResult {
 
   factory GetConsulServiceDiscoveryResult.fromMap(Map<String, dynamic> map) {
     return GetConsulServiceDiscoveryResult(
-      addressRealm: map['addressRealm'] == null ? null : map['addressRealm'] as String,
+      addressRealm: map['addressRealm'] == null ? null : map['addressRealm']! as String,
       consulSdJson: map['consulSdJson'] as String,
-      credentialUpdate: map['credentialUpdate'] == null ? null : map['credentialUpdate'] as bool,
-      encodedToken: map['encodedToken'] == null ? null : map['encodedToken'] as String,
+      credentialUpdate: map['credentialUpdate'] == null ? null : map['credentialUpdate']! as bool,
+      encodedToken: map['encodedToken'] == null ? null : map['encodedToken']! as String,
       id: map['id'] as String,
-      jmesPathQuery: map['jmesPathQuery'] == null ? null : map['jmesPathQuery'] as String,
-      minimumMonitors: map['minimumMonitors'] == null ? null : map['minimumMonitors'] as String,
+      jmesPathQuery: map['jmesPathQuery'] == null ? null : map['jmesPathQuery']! as String,
+      minimumMonitors: map['minimumMonitors'] == null ? null : map['minimumMonitors']! as String,
       port: map['port'] as int,
-      rejectUnauthorized: map['rejectUnauthorized'] == null ? null : map['rejectUnauthorized'] as bool,
-      trustCa: map['trustCa'] == null ? null : map['trustCa'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      undetectableAction: map['undetectableAction'] == null ? null : map['undetectableAction'] as String,
-      updateInterval: map['updateInterval'] == null ? null : map['updateInterval'] as String,
+      rejectUnauthorized: map['rejectUnauthorized'] == null ? null : map['rejectUnauthorized']! as bool,
+      trustCa: map['trustCa'] == null ? null : map['trustCa']! as String,
+      type: map['type'] == null ? null : map['type']! as String,
+      undetectableAction: map['undetectableAction'] == null ? null : map['undetectableAction']! as String,
+      updateInterval: map['updateInterval'] == null ? null : map['updateInterval']! as String,
       uri: map['uri'] as String,
     );
   }

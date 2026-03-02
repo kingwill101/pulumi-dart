@@ -66,14 +66,14 @@ class GetZoneRecordsResult {
     return GetZoneRecordsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keyword: map['keyword'] == null ? null : map['keyword'] as String,
-      lang: map['lang'] == null ? null : map['lang'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      keyword: map['keyword'] == null ? null : map['keyword']! as String,
+      lang: map['lang'] == null ? null : map['lang']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       records: pulumi.Input.decodeList<GetZoneRecordsRecord>(map['records'], (value) => GetZoneRecordsRecord.fromMap((value as Map).cast<String, dynamic>())),
-      searchMode: map['searchMode'] == null ? null : map['searchMode'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tag: map['tag'] == null ? null : map['tag'] as String,
-      userClientIp: map['userClientIp'] == null ? null : map['userClientIp'] as String,
+      searchMode: map['searchMode'] == null ? null : map['searchMode']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      tag: map['tag'] == null ? null : map['tag']! as String,
+      userClientIp: map['userClientIp'] == null ? null : map['userClientIp']! as String,
       zoneId: map['zoneId'] as String,
     );
   }

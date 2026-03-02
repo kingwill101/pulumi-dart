@@ -49,12 +49,12 @@ class GetVersionsArgs {
 
   factory GetVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetVersionsArgs(
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
       location: (map['location'] as String).input(),
       packageName: (map['packageName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       repositoryId: (map['repositoryId'] as String).input(),
-      view: map['view'] == null ? null : (map['view'] as String).input(),
+      view: map['view'] == null ? null : (map['view']! as String).input(),
     );
   }
 }

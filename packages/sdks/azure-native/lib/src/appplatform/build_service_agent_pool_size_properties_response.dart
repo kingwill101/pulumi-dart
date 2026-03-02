@@ -33,7 +33,7 @@ class BuildServiceAgentPoolSizePropertiesResponse {
     return BuildServiceAgentPoolSizePropertiesResponse(
       cpu: (map['cpu'] as String).input(),
       memory: (map['memory'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

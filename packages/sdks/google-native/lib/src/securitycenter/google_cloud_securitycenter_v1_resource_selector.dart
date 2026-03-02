@@ -21,7 +21,7 @@ class GoogleCloudSecuritycenterV1ResourceSelector {
 
   factory GoogleCloudSecuritycenterV1ResourceSelector.fromMap(Map<String, dynamic> map) {
     return GoogleCloudSecuritycenterV1ResourceSelector(
-      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes']! as List).cast<String>()).input(),
     );
   }
 }

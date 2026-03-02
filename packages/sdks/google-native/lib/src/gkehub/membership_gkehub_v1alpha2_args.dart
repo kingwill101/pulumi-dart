@@ -66,15 +66,15 @@ class MembershipGkehubV1alpha2Args {
 
   factory MembershipGkehubV1alpha2Args.fromMap(Map<String, dynamic> map) {
     return MembershipGkehubV1alpha2Args(
-      authority: map['authority'] == null ? null : (AuthorityGkehubV1alpha2.fromMap((map['authority'] as Map).cast<String, dynamic>())).input(),
-      endpoint: map['endpoint'] == null ? null : (MembershipEndpointGkehubV1alpha2.fromMap((map['endpoint'] as Map).cast<String, dynamic>())).input(),
-      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
-      infrastructureType: map['infrastructureType'] == null ? null : (MembershipInfrastructureType.fromValue(map['infrastructureType'] as String)).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      authority: map['authority'] == null ? null : (AuthorityGkehubV1alpha2.fromMap((map['authority']! as Map).cast<String, dynamic>())).input(),
+      endpoint: map['endpoint'] == null ? null : (MembershipEndpointGkehubV1alpha2.fromMap((map['endpoint']! as Map).cast<String, dynamic>())).input(),
+      externalId: map['externalId'] == null ? null : (map['externalId']! as String).input(),
+      infrastructureType: map['infrastructureType'] == null ? null : (MembershipInfrastructureType.fromValue(map['infrastructureType']! as String)).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       membershipId: (map['membershipId'] as String).input(),
-      monitoringConfig: map['monitoringConfig'] == null ? null : (MonitoringConfigGkehubV1alpha2.fromMap((map['monitoringConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      monitoringConfig: map['monitoringConfig'] == null ? null : (MonitoringConfigGkehubV1alpha2.fromMap((map['monitoringConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

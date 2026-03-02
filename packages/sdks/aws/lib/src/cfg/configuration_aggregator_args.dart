@@ -48,11 +48,11 @@ class ConfigurationAggregatorArgs {
 
   factory ConfigurationAggregatorArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationAggregatorArgs(
-      accountAggregationSource: map['accountAggregationSource'] == null ? null : (ConfigurationAggregatorAccountAggregationSource.fromMap((map['accountAggregationSource'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      organizationAggregationSource: map['organizationAggregationSource'] == null ? null : (ConfigurationAggregatorOrganizationAggregationSource.fromMap((map['organizationAggregationSource'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      accountAggregationSource: map['accountAggregationSource'] == null ? null : ((ConfigurationAggregatorAccountAggregationSource.fromMap((map['accountAggregationSource']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      organizationAggregationSource: map['organizationAggregationSource'] == null ? null : ((ConfigurationAggregatorOrganizationAggregationSource.fromMap((map['organizationAggregationSource']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

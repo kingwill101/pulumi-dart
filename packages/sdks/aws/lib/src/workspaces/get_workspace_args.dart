@@ -44,11 +44,11 @@ class GetWorkspaceArgs {
 
   factory GetWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceArgs(
-      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      directoryId: map['directoryId'] == null ? null : ((map['directoryId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      userName: map['userName'] == null ? null : ((map['userName'] as String).input()).input(),
+      workspaceId: map['workspaceId'] == null ? null : ((map['workspaceId'] as String).input()).input(),
     );
   }
 }

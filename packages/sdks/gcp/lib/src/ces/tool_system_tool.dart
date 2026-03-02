@@ -27,8 +27,8 @@ class ToolSystemTool {
 
   factory ToolSystemTool.fromMap(Map<String, dynamic> map) {
     return ToolSystemTool(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

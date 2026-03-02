@@ -27,8 +27,8 @@ class CxToolVersionToolFunctionSpec {
 
   factory CxToolVersionToolFunctionSpec.fromMap(Map<String, dynamic> map) {
     return CxToolVersionToolFunctionSpec(
-      inputSchema: map['inputSchema'] == null ? null : (map['inputSchema'] as String).input(),
-      outputSchema: map['outputSchema'] == null ? null : (map['outputSchema'] as String).input(),
+      inputSchema: map['inputSchema'] == null ? null : (map['inputSchema']! as String).input(),
+      outputSchema: map['outputSchema'] == null ? null : (map['outputSchema']! as String).input(),
     );
   }
 }

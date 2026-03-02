@@ -49,8 +49,8 @@ class ContactProfileLink {
     return ContactProfileLink(
       channels: (pulumi.Input.decodeList<ContactProfileLinkChannel>(map['channels'], (value) => ContactProfileLinkChannel.fromMap((value as Map).cast<String, dynamic>()))).input(),
       direction: (map['direction'] as String).input(),
-      eirpdBW: map['eirpdBW'] == null ? null : (map['eirpdBW'] as double).input(),
-      gainOverTemperature: map['gainOverTemperature'] == null ? null : (map['gainOverTemperature'] as double).input(),
+      eirpdBW: map['eirpdBW'] == null ? null : (map['eirpdBW']! as double).input(),
+      gainOverTemperature: map['gainOverTemperature'] == null ? null : (map['gainOverTemperature']! as double).input(),
       name: (map['name'] as String).input(),
       polarization: (map['polarization'] as String).input(),
     );

@@ -42,10 +42,10 @@ class RouterRouteState {
 
   factory RouterRouteState.fromMap(Map<String, dynamic> map) {
     return RouterRouteState(
-      destinationCidr: map['destinationCidr'] == null ? null : (map['destinationCidr'] as String).input(),
-      nextHop: map['nextHop'] == null ? null : (map['nextHop'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routerId: map['routerId'] == null ? null : (map['routerId'] as String).input(),
+      destinationCidr: map['destinationCidr'] == null ? null : (map['destinationCidr']! as String).input(),
+      nextHop: map['nextHop'] == null ? null : (map['nextHop']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      routerId: map['routerId'] == null ? null : (map['routerId']! as String).input(),
     );
   }
 }

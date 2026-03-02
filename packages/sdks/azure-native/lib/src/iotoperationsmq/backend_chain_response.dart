@@ -59,12 +59,12 @@ class BackendChainResponse {
     return BackendChainResponse(
       partitions: (map['partitions'] as int).input(),
       redundancyFactor: (map['redundancyFactor'] as int).input(),
-      temporaryDiskTransferEnabled: map['temporaryDiskTransferEnabled'] == null ? null : (map['temporaryDiskTransferEnabled'] as bool).input(),
-      temporaryDiskTransferHighWatermarkPercent: map['temporaryDiskTransferHighWatermarkPercent'] == null ? null : (map['temporaryDiskTransferHighWatermarkPercent'] as int).input(),
-      temporaryDiskTransferLowWatermarkPercent: map['temporaryDiskTransferLowWatermarkPercent'] == null ? null : (map['temporaryDiskTransferLowWatermarkPercent'] as int).input(),
-      temporaryMaxBackendMemUsagePercent: map['temporaryMaxBackendMemUsagePercent'] == null ? null : (map['temporaryMaxBackendMemUsagePercent'] as int).input(),
-      temporaryResourceLimits: map['temporaryResourceLimits'] == null ? null : (TemporaryResourceLimitsConfigResponse.fromMap((map['temporaryResourceLimits'] as Map).cast<String, dynamic>())).input(),
-      workers: map['workers'] == null ? null : (map['workers'] as int).input(),
+      temporaryDiskTransferEnabled: map['temporaryDiskTransferEnabled'] == null ? null : (map['temporaryDiskTransferEnabled']! as bool).input(),
+      temporaryDiskTransferHighWatermarkPercent: map['temporaryDiskTransferHighWatermarkPercent'] == null ? null : (map['temporaryDiskTransferHighWatermarkPercent']! as int).input(),
+      temporaryDiskTransferLowWatermarkPercent: map['temporaryDiskTransferLowWatermarkPercent'] == null ? null : (map['temporaryDiskTransferLowWatermarkPercent']! as int).input(),
+      temporaryMaxBackendMemUsagePercent: map['temporaryMaxBackendMemUsagePercent'] == null ? null : (map['temporaryMaxBackendMemUsagePercent']! as int).input(),
+      temporaryResourceLimits: map['temporaryResourceLimits'] == null ? null : (TemporaryResourceLimitsConfigResponse.fromMap((map['temporaryResourceLimits']! as Map).cast<String, dynamic>())).input(),
+      workers: map['workers'] == null ? null : (map['workers']! as int).input(),
     );
   }
 }

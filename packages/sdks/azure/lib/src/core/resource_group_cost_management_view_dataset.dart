@@ -40,8 +40,8 @@ class ResourceGroupCostManagementViewDataset {
     return ResourceGroupCostManagementViewDataset(
       aggregations: (pulumi.Input.decodeList<ResourceGroupCostManagementViewDatasetAggregation>(map['aggregations'], (value) => ResourceGroupCostManagementViewDatasetAggregation.fromMap((value as Map).cast<String, dynamic>()))).input(),
       granularity: (map['granularity'] as String).input(),
-      groupings: map['groupings'] == null ? null : (pulumi.Input.decodeList<ResourceGroupCostManagementViewDatasetGrouping>(map['groupings'], (value) => ResourceGroupCostManagementViewDatasetGrouping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sortings: map['sortings'] == null ? null : (pulumi.Input.decodeList<ResourceGroupCostManagementViewDatasetSorting>(map['sortings'], (value) => ResourceGroupCostManagementViewDatasetSorting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      groupings: map['groupings'] == null ? null : (pulumi.Input.decodeList<ResourceGroupCostManagementViewDatasetGrouping>(map['groupings']!, (value) => ResourceGroupCostManagementViewDatasetGrouping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sortings: map['sortings'] == null ? null : (pulumi.Input.decodeList<ResourceGroupCostManagementViewDatasetSorting>(map['sortings']!, (value) => ResourceGroupCostManagementViewDatasetSorting.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

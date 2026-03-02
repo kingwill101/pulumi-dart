@@ -50,12 +50,12 @@ class EnterpriseMccCacheNodesOperationArgs {
 
   factory EnterpriseMccCacheNodesOperationArgs.fromMap(Map<String, dynamic> map) {
     return EnterpriseMccCacheNodesOperationArgs(
-      cacheNodeResourceName: map['cacheNodeResourceName'] == null ? null : (map['cacheNodeResourceName'] as String).input(),
+      cacheNodeResourceName: map['cacheNodeResourceName'] == null ? null : (map['cacheNodeResourceName']! as String).input(),
       customerResourceName: (map['customerResourceName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (CacheNodeProperty.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (CacheNodeProperty.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

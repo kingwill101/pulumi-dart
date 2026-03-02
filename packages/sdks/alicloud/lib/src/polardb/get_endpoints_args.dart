@@ -30,7 +30,7 @@ class GetEndpointsArgs {
   factory GetEndpointsArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointsArgs(
       dbClusterId: (map['dbClusterId'] as String).input(),
-      dbEndpointId: map['dbEndpointId'] == null ? null : (map['dbEndpointId'] as String).input(),
+      dbEndpointId: map['dbEndpointId'] == null ? null : (map['dbEndpointId']! as String).input(),
     );
   }
 }

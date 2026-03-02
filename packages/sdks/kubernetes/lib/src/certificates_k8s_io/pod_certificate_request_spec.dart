@@ -95,7 +95,7 @@ class PodCertificateRequestSpec {
 
   factory PodCertificateRequestSpec.fromMap(Map<String, dynamic> map) {
     return PodCertificateRequestSpec(
-      maxExpirationSeconds: map['maxExpirationSeconds'] == null ? null : (map['maxExpirationSeconds'] as int).input(),
+      maxExpirationSeconds: map['maxExpirationSeconds'] == null ? null : (map['maxExpirationSeconds']! as int).input(),
       nodeName: (map['nodeName'] as String).input(),
       nodeUID: (map['nodeUID'] as String).input(),
       pkixPublicKey: (map['pkixPublicKey'] as String).input(),
@@ -105,7 +105,7 @@ class PodCertificateRequestSpec {
       serviceAccountName: (map['serviceAccountName'] as String).input(),
       serviceAccountUID: (map['serviceAccountUID'] as String).input(),
       signerName: (map['signerName'] as String).input(),
-      unverifiedUserAnnotations: map['unverifiedUserAnnotations'] == null ? null : ((map['unverifiedUserAnnotations'] as Map).cast<String, String>()).input(),
+      unverifiedUserAnnotations: map['unverifiedUserAnnotations'] == null ? null : ((map['unverifiedUserAnnotations']! as Map).cast<String, String>()).input(),
     );
   }
 }

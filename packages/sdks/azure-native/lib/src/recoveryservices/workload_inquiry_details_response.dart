@@ -32,9 +32,9 @@ class WorkloadInquiryDetailsResponse {
 
   factory WorkloadInquiryDetailsResponse.fromMap(Map<String, dynamic> map) {
     return WorkloadInquiryDetailsResponse(
-      inquiryValidation: map['inquiryValidation'] == null ? null : (InquiryValidationResponse.fromMap((map['inquiryValidation'] as Map).cast<String, dynamic>())).input(),
-      itemCount: map['itemCount'] == null ? null : (map['itemCount'] as double).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      inquiryValidation: map['inquiryValidation'] == null ? null : (InquiryValidationResponse.fromMap((map['inquiryValidation']! as Map).cast<String, dynamic>())).input(),
+      itemCount: map['itemCount'] == null ? null : (map['itemCount']! as double).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

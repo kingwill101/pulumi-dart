@@ -40,10 +40,10 @@ class IotHubDpsLinkedHub {
 
   factory IotHubDpsLinkedHub.fromMap(Map<String, dynamic> map) {
     return IotHubDpsLinkedHub(
-      allocationWeight: map['allocationWeight'] == null ? null : (map['allocationWeight'] as int).input(),
-      applyAllocationPolicy: map['applyAllocationPolicy'] == null ? null : (map['applyAllocationPolicy'] as bool).input(),
+      allocationWeight: map['allocationWeight'] == null ? null : (map['allocationWeight']! as int).input(),
+      applyAllocationPolicy: map['applyAllocationPolicy'] == null ? null : (map['applyAllocationPolicy']! as bool).input(),
       connectionString: (map['connectionString'] as String).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
       location: (map['location'] as String).input(),
     );
   }

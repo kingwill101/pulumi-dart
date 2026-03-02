@@ -90,21 +90,21 @@ class ImageVersionState {
 
   factory ImageVersionState.fromMap(Map<String, dynamic> map) {
     return ImageVersionState(
-      aliases: map['aliases'] == null ? null : ((map['aliases'] as List).cast<String>()).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      baseImage: map['baseImage'] == null ? null : (map['baseImage'] as String).input(),
-      containerImage: map['containerImage'] == null ? null : (map['containerImage'] as String).input(),
-      horovod: map['horovod'] == null ? null : (map['horovod'] as bool).input(),
-      imageArn: map['imageArn'] == null ? null : (map['imageArn'] as String).input(),
-      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
-      jobType: map['jobType'] == null ? null : (map['jobType'] as String).input(),
-      mlFramework: map['mlFramework'] == null ? null : (map['mlFramework'] as String).input(),
-      processor: map['processor'] == null ? null : (map['processor'] as String).input(),
-      programmingLang: map['programmingLang'] == null ? null : (map['programmingLang'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      releaseNotes: map['releaseNotes'] == null ? null : (map['releaseNotes'] as String).input(),
-      vendorGuidance: map['vendorGuidance'] == null ? null : (map['vendorGuidance'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      aliases: map['aliases'] == null ? null : (((map['aliases'] as List).cast<String>()).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      baseImage: map['baseImage'] == null ? null : ((map['baseImage'] as String).input()).input(),
+      containerImage: map['containerImage'] == null ? null : ((map['containerImage'] as String).input()).input(),
+      horovod: map['horovod'] == null ? null : ((map['horovod'] as bool).input()).input(),
+      imageArn: map['imageArn'] == null ? null : ((map['imageArn'] as String).input()).input(),
+      imageName: map['imageName'] == null ? null : ((map['imageName'] as String).input()).input(),
+      jobType: map['jobType'] == null ? null : ((map['jobType'] as String).input()).input(),
+      mlFramework: map['mlFramework'] == null ? null : ((map['mlFramework'] as String).input()).input(),
+      processor: map['processor'] == null ? null : ((map['processor'] as String).input()).input(),
+      programmingLang: map['programmingLang'] == null ? null : ((map['programmingLang'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      releaseNotes: map['releaseNotes'] == null ? null : ((map['releaseNotes'] as String).input()).input(),
+      vendorGuidance: map['vendorGuidance'] == null ? null : ((map['vendorGuidance'] as String).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as int).input()).input(),
     );
   }
 }

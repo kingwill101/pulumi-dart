@@ -37,10 +37,10 @@ class PublicIPAddressDnsSettings {
 
   factory PublicIPAddressDnsSettings.fromMap(Map<String, dynamic> map) {
     return PublicIPAddressDnsSettings(
-      domainNameLabel: map['domainNameLabel'] == null ? null : (map['domainNameLabel'] as String).input(),
-      domainNameLabelScope: map['domainNameLabelScope'] == null ? null : (PublicIpAddressDnsSettingsDomainNameLabelScope.fromValue(map['domainNameLabelScope'] as String)).input(),
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      reverseFqdn: map['reverseFqdn'] == null ? null : (map['reverseFqdn'] as String).input(),
+      domainNameLabel: map['domainNameLabel'] == null ? null : (map['domainNameLabel']! as String).input(),
+      domainNameLabelScope: map['domainNameLabelScope'] == null ? null : (PublicIpAddressDnsSettingsDomainNameLabelScope.fromValue(map['domainNameLabelScope']! as String)).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      reverseFqdn: map['reverseFqdn'] == null ? null : (map['reverseFqdn']! as String).input(),
     );
   }
 }

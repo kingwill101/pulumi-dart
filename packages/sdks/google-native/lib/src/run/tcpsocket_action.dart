@@ -26,8 +26,8 @@ class TCPSocketAction {
 
   factory TCPSocketAction.fromMap(Map<String, dynamic> map) {
     return TCPSocketAction(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

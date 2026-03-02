@@ -58,12 +58,12 @@ class ResolverRuleArgs {
   factory ResolverRuleArgs.fromMap(Map<String, dynamic> map) {
     return ResolverRuleArgs(
       domainName: (map['domainName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resolverEndpointId: map['resolverEndpointId'] == null ? null : (map['resolverEndpointId'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resolverEndpointId: map['resolverEndpointId'] == null ? null : ((map['resolverEndpointId'] as String).input()).input(),
       ruleType: (map['ruleType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetIps: map['targetIps'] == null ? null : (pulumi.Input.decodeList<ResolverRuleTargetIp>(map['targetIps'], (value) => ResolverRuleTargetIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      targetIps: map['targetIps'] == null ? null : ((pulumi.Input.decodeList<ResolverRuleTargetIp>(map['targetIps']!, (value) => ResolverRuleTargetIp.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

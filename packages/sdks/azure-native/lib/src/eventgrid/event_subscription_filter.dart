@@ -51,12 +51,12 @@ class EventSubscriptionFilter {
 
   factory EventSubscriptionFilter.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionFilter(
-      advancedFilters: map['advancedFilters'] == null ? null : (pulumi.Input.decodeList<BoolEqualsAdvancedFilter>(map['advancedFilters'], (value) => BoolEqualsAdvancedFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableAdvancedFilteringOnArrays: map['enableAdvancedFilteringOnArrays'] == null ? null : (map['enableAdvancedFilteringOnArrays'] as bool).input(),
-      includedEventTypes: map['includedEventTypes'] == null ? null : ((map['includedEventTypes'] as List).cast<String>()).input(),
-      isSubjectCaseSensitive: map['isSubjectCaseSensitive'] == null ? null : (map['isSubjectCaseSensitive'] as bool).input(),
-      subjectBeginsWith: map['subjectBeginsWith'] == null ? null : (map['subjectBeginsWith'] as String).input(),
-      subjectEndsWith: map['subjectEndsWith'] == null ? null : (map['subjectEndsWith'] as String).input(),
+      advancedFilters: map['advancedFilters'] == null ? null : (pulumi.Input.decodeList<BoolEqualsAdvancedFilter>(map['advancedFilters']!, (value) => BoolEqualsAdvancedFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableAdvancedFilteringOnArrays: map['enableAdvancedFilteringOnArrays'] == null ? null : (map['enableAdvancedFilteringOnArrays']! as bool).input(),
+      includedEventTypes: map['includedEventTypes'] == null ? null : ((map['includedEventTypes']! as List).cast<String>()).input(),
+      isSubjectCaseSensitive: map['isSubjectCaseSensitive'] == null ? null : (map['isSubjectCaseSensitive']! as bool).input(),
+      subjectBeginsWith: map['subjectBeginsWith'] == null ? null : (map['subjectBeginsWith']! as String).input(),
+      subjectEndsWith: map['subjectEndsWith'] == null ? null : (map['subjectEndsWith']! as String).input(),
     );
   }
 }

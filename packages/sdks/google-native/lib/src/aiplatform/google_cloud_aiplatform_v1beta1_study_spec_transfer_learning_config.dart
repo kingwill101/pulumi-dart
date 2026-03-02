@@ -21,7 +21,7 @@ class GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig {
 
   factory GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig(
-      disableTransferLearning: map['disableTransferLearning'] == null ? null : (map['disableTransferLearning'] as bool).input(),
+      disableTransferLearning: map['disableTransferLearning'] == null ? null : (map['disableTransferLearning']! as bool).input(),
     );
   }
 }

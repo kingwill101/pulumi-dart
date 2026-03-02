@@ -42,11 +42,11 @@ class GalleryTargetExtendedLocationResponse {
 
   factory GalleryTargetExtendedLocationResponse.fromMap(Map<String, dynamic> map) {
     return GalleryTargetExtendedLocationResponse(
-      encryption: map['encryption'] == null ? null : (EncryptionImagesResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (GalleryExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      extendedLocationReplicaCount: map['extendedLocationReplicaCount'] == null ? null : (map['extendedLocationReplicaCount'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
+      encryption: map['encryption'] == null ? null : (EncryptionImagesResponse.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (GalleryExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      extendedLocationReplicaCount: map['extendedLocationReplicaCount'] == null ? null : (map['extendedLocationReplicaCount']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType']! as String).input(),
     );
   }
 }

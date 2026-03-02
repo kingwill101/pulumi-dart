@@ -28,8 +28,8 @@ class MessagingEndpoints {
 
   factory MessagingEndpoints.fromMap(Map<String, dynamic> map) {
     return MessagingEndpoints(
-      inbound: map['inbound'] == null ? null : (pulumi.Input.decodeMapValues<InboundEndpoints>(map['inbound'], (value) => InboundEndpoints.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      outbound: map['outbound'] == null ? null : (OutboundEndpoints.fromMap((map['outbound'] as Map).cast<String, dynamic>())).input(),
+      inbound: map['inbound'] == null ? null : (pulumi.Input.decodeMapValues<InboundEndpoints>(map['inbound']!, (value) => InboundEndpoints.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      outbound: map['outbound'] == null ? null : (OutboundEndpoints.fromMap((map['outbound']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

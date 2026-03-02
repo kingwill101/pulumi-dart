@@ -58,8 +58,8 @@ class AccountArgs {
       account: (map['account'] as String).input(),
       accountType: (map['accountType'] as String).input(),
       dbInstanceId: (map['dbInstanceId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dmlAuthSetting: map['dmlAuthSetting'] == null ? null : (AccountDmlAuthSetting.fromMap((map['dmlAuthSetting'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dmlAuthSetting: map['dmlAuthSetting'] == null ? null : (AccountDmlAuthSetting.fromMap((map['dmlAuthSetting']! as Map).cast<String, dynamic>())).input(),
       password: (map['password'] as String).input(),
     );
   }

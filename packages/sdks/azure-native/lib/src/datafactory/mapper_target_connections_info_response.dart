@@ -39,10 +39,10 @@ class MapperTargetConnectionsInfoResponse {
 
   factory MapperTargetConnectionsInfoResponse.fromMap(Map<String, dynamic> map) {
     return MapperTargetConnectionsInfoResponse(
-      connection: map['connection'] == null ? null : (MapperConnectionResponse.fromMap((map['connection'] as Map).cast<String, dynamic>())).input(),
-      dataMapperMappings: map['dataMapperMappings'] == null ? null : (pulumi.Input.decodeList<DataMapperMappingResponse>(map['dataMapperMappings'], (value) => DataMapperMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      relationships: map['relationships'] == null ? null : ((map['relationships'] as List).cast<dynamic>()).input(),
-      targetEntities: map['targetEntities'] == null ? null : (pulumi.Input.decodeList<MapperTableResponse>(map['targetEntities'], (value) => MapperTableResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connection: map['connection'] == null ? null : (MapperConnectionResponse.fromMap((map['connection']! as Map).cast<String, dynamic>())).input(),
+      dataMapperMappings: map['dataMapperMappings'] == null ? null : (pulumi.Input.decodeList<DataMapperMappingResponse>(map['dataMapperMappings']!, (value) => DataMapperMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      relationships: map['relationships'] == null ? null : ((map['relationships']! as List).cast<dynamic>()).input(),
+      targetEntities: map['targetEntities'] == null ? null : (pulumi.Input.decodeList<MapperTableResponse>(map['targetEntities']!, (value) => MapperTableResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

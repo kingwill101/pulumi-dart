@@ -98,22 +98,22 @@ class SqlServerDatabaseResourceProperties {
 
   factory SqlServerDatabaseResourceProperties.fromMap(Map<String, dynamic> map) {
     return SqlServerDatabaseResourceProperties(
-      backupInformation: map['backupInformation'] == null ? null : (SqlServerDatabaseResourcePropertiesBackupInformation.fromMap((map['backupInformation'] as Map).cast<String, dynamic>())).input(),
-      backupPolicy: map['backupPolicy'] == null ? null : (BackupPolicy.fromMap((map['backupPolicy'] as Map).cast<String, dynamic>())).input(),
-      collationName: map['collationName'] == null ? null : (map['collationName'] as String).input(),
-      compatibilityLevel: map['compatibilityLevel'] == null ? null : (map['compatibilityLevel'] as int).input(),
-      createMode: map['createMode'] == null ? null : (map['createMode'] as String).input(),
-      dataFileSizeMB: map['dataFileSizeMB'] == null ? null : (map['dataFileSizeMB'] as double).input(),
-      databaseCreationDate: map['databaseCreationDate'] == null ? null : (map['databaseCreationDate'] as String).input(),
-      databaseOptions: map['databaseOptions'] == null ? null : (SqlServerDatabaseResourcePropertiesDatabaseOptions.fromMap((map['databaseOptions'] as Map).cast<String, dynamic>())).input(),
-      isReadOnly: map['isReadOnly'] == null ? null : (map['isReadOnly'] as bool).input(),
-      logFileSizeMB: map['logFileSizeMB'] == null ? null : (map['logFileSizeMB'] as double).input(),
-      recoveryMode: map['recoveryMode'] == null ? null : (map['recoveryMode'] as String).input(),
-      restorePointInTime: map['restorePointInTime'] == null ? null : (map['restorePointInTime'] as String).input(),
-      sizeMB: map['sizeMB'] == null ? null : (map['sizeMB'] as double).input(),
-      sourceDatabaseId: map['sourceDatabaseId'] == null ? null : (map['sourceDatabaseId'] as String).input(),
-      spaceAvailableMB: map['spaceAvailableMB'] == null ? null : (map['spaceAvailableMB'] as double).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      backupInformation: map['backupInformation'] == null ? null : (SqlServerDatabaseResourcePropertiesBackupInformation.fromMap((map['backupInformation']! as Map).cast<String, dynamic>())).input(),
+      backupPolicy: map['backupPolicy'] == null ? null : (BackupPolicy.fromMap((map['backupPolicy']! as Map).cast<String, dynamic>())).input(),
+      collationName: map['collationName'] == null ? null : (map['collationName']! as String).input(),
+      compatibilityLevel: map['compatibilityLevel'] == null ? null : (map['compatibilityLevel']! as int).input(),
+      createMode: map['createMode'] == null ? null : (map['createMode']! as String).input(),
+      dataFileSizeMB: map['dataFileSizeMB'] == null ? null : (map['dataFileSizeMB']! as double).input(),
+      databaseCreationDate: map['databaseCreationDate'] == null ? null : (map['databaseCreationDate']! as String).input(),
+      databaseOptions: map['databaseOptions'] == null ? null : (SqlServerDatabaseResourcePropertiesDatabaseOptions.fromMap((map['databaseOptions']! as Map).cast<String, dynamic>())).input(),
+      isReadOnly: map['isReadOnly'] == null ? null : (map['isReadOnly']! as bool).input(),
+      logFileSizeMB: map['logFileSizeMB'] == null ? null : (map['logFileSizeMB']! as double).input(),
+      recoveryMode: map['recoveryMode'] == null ? null : (map['recoveryMode']! as String).input(),
+      restorePointInTime: map['restorePointInTime'] == null ? null : (map['restorePointInTime']! as String).input(),
+      sizeMB: map['sizeMB'] == null ? null : (map['sizeMB']! as double).input(),
+      sourceDatabaseId: map['sourceDatabaseId'] == null ? null : (map['sourceDatabaseId']! as String).input(),
+      spaceAvailableMB: map['spaceAvailableMB'] == null ? null : (map['spaceAvailableMB']! as double).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

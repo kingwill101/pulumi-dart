@@ -30,8 +30,8 @@ class VpcNatGatewayVpc {
 
   factory VpcNatGatewayVpc.fromMap(Map<String, dynamic> map) {
     return VpcNatGatewayVpc(
-      defaultGateway: map['defaultGateway'] == null ? null : (map['defaultGateway'] as bool).input(),
-      gatewayIp: map['gatewayIp'] == null ? null : (map['gatewayIp'] as String).input(),
+      defaultGateway: map['defaultGateway'] == null ? null : (map['defaultGateway']! as bool).input(),
+      gatewayIp: map['gatewayIp'] == null ? null : (map['gatewayIp']! as String).input(),
       vpcUuid: (map['vpcUuid'] as String).input(),
     );
   }

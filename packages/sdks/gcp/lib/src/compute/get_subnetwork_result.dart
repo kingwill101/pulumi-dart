@@ -105,7 +105,7 @@ class GetSubnetworkResult {
       internalIpv6Prefix: map['internalIpv6Prefix'] as String,
       ipCidrRange: map['ipCidrRange'] as String,
       ipv6AccessType: map['ipv6AccessType'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
       network: map['network'] as String,
       privateIpGoogleAccess: map['privateIpGoogleAccess'] as bool,
       project: map['project'] as String,

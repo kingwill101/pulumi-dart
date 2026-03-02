@@ -38,7 +38,7 @@ class SubnetArgs {
   factory SubnetArgs.fromMap(Map<String, dynamic> map) {
     return SubnetArgs(
       ipCidrRange: (map['ipCidrRange'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       parent: (map['parent'] as String).input(),
     );
   }

@@ -58,14 +58,14 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      configurations: map['configurations'] == null ? null : (pulumi.Input.decodeList<GroupConfiguration>(map['configurations'], (value) => GroupConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceQuery: map['resourceQuery'] == null ? null : (GroupResourceQuery.fromMap((map['resourceQuery'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      configurations: map['configurations'] == null ? null : ((pulumi.Input.decodeList<GroupConfiguration>(map['configurations']!, (value) => GroupConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceQuery: map['resourceQuery'] == null ? null : ((GroupResourceQuery.fromMap((map['resourceQuery']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

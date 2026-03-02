@@ -80,18 +80,18 @@ class TrustProviderState {
 
   factory TrustProviderState.fromMap(Map<String, dynamic> map) {
     return TrustProviderState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      deviceOptions: map['deviceOptions'] == null ? null : (TrustProviderDeviceOptions.fromMap((map['deviceOptions'] as Map).cast<String, dynamic>())).input(),
-      deviceTrustProviderType: map['deviceTrustProviderType'] == null ? null : (map['deviceTrustProviderType'] as String).input(),
-      nativeApplicationOidcOptions: map['nativeApplicationOidcOptions'] == null ? null : (TrustProviderNativeApplicationOidcOptions.fromMap((map['nativeApplicationOidcOptions'] as Map).cast<String, dynamic>())).input(),
-      oidcOptions: map['oidcOptions'] == null ? null : (TrustProviderOidcOptions.fromMap((map['oidcOptions'] as Map).cast<String, dynamic>())).input(),
-      policyReferenceName: map['policyReferenceName'] == null ? null : (map['policyReferenceName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sseSpecification: map['sseSpecification'] == null ? null : (TrustProviderSseSpecification.fromMap((map['sseSpecification'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      trustProviderType: map['trustProviderType'] == null ? null : (map['trustProviderType'] as String).input(),
-      userTrustProviderType: map['userTrustProviderType'] == null ? null : (map['userTrustProviderType'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      deviceOptions: map['deviceOptions'] == null ? null : ((TrustProviderDeviceOptions.fromMap((map['deviceOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      deviceTrustProviderType: map['deviceTrustProviderType'] == null ? null : ((map['deviceTrustProviderType'] as String).input()).input(),
+      nativeApplicationOidcOptions: map['nativeApplicationOidcOptions'] == null ? null : ((TrustProviderNativeApplicationOidcOptions.fromMap((map['nativeApplicationOidcOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      oidcOptions: map['oidcOptions'] == null ? null : ((TrustProviderOidcOptions.fromMap((map['oidcOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      policyReferenceName: map['policyReferenceName'] == null ? null : ((map['policyReferenceName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sseSpecification: map['sseSpecification'] == null ? null : ((TrustProviderSseSpecification.fromMap((map['sseSpecification']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      trustProviderType: map['trustProviderType'] == null ? null : ((map['trustProviderType'] as String).input()).input(),
+      userTrustProviderType: map['userTrustProviderType'] == null ? null : ((map['userTrustProviderType'] as String).input()).input(),
     );
   }
 }

@@ -71,15 +71,15 @@ class ScalingPlanArgs {
 
   factory ScalingPlanArgs.fromMap(Map<String, dynamic> map) {
     return ScalingPlanArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      exclusionTag: map['exclusionTag'] == null ? null : (map['exclusionTag'] as String).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      hostPools: map['hostPools'] == null ? null : (pulumi.Input.decodeList<ScalingPlanHostPool>(map['hostPools'], (value) => ScalingPlanHostPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      exclusionTag: map['exclusionTag'] == null ? null : (map['exclusionTag']! as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      hostPools: map['hostPools'] == null ? null : (pulumi.Input.decodeList<ScalingPlanHostPool>(map['hostPools']!, (value) => ScalingPlanHostPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       schedules: (pulumi.Input.decodeList<ScalingPlanSchedule>(map['schedules'], (value) => ScalingPlanSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       timeZone: (map['timeZone'] as String).input(),
     );
   }

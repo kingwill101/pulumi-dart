@@ -36,7 +36,7 @@ class JobEventTriggerConfigScaleRule {
 
   factory JobEventTriggerConfigScaleRule.fromMap(Map<String, dynamic> map) {
     return JobEventTriggerConfigScaleRule(
-      authentications: map['authentications'] == null ? null : (pulumi.Input.decodeList<JobEventTriggerConfigScaleRuleAuthentication>(map['authentications'], (value) => JobEventTriggerConfigScaleRuleAuthentication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authentications: map['authentications'] == null ? null : (pulumi.Input.decodeList<JobEventTriggerConfigScaleRuleAuthentication>(map['authentications']!, (value) => JobEventTriggerConfigScaleRuleAuthentication.fromMap((value as Map).cast<String, dynamic>()))).input(),
       customRuleType: (map['customRuleType'] as String).input(),
       metadata: ((map['metadata'] as Map).cast<String, String>()).input(),
       name: (map['name'] as String).input(),

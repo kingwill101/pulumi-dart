@@ -42,11 +42,11 @@ class PolicyState {
 
   factory PolicyState.fromMap(Map<String, dynamic> map) {
     return PolicyState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      policyDescription: map['policyDescription'] == null ? null : (map['policyDescription'] as String).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PolicyRule>(map['rules'], (value) => PolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      policyDescription: map['policyDescription'] == null ? null : (map['policyDescription']! as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PolicyRule>(map['rules']!, (value) => PolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

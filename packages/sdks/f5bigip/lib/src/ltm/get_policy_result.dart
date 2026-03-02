@@ -51,13 +51,13 @@ class GetPolicyResult {
 
   factory GetPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetPolicyResult(
-      controls: map['controls'] == null ? null : (map['controls'] as List).cast<String>(),
+      controls: map['controls'] == null ? null : (map['controls']! as List).cast<String>(),
       id: map['id'] as String,
       name: map['name'] as String,
-      publishedCopy: map['publishedCopy'] == null ? null : map['publishedCopy'] as String,
-      requires: map['requires'] == null ? null : (map['requires'] as List).cast<String>(),
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<GetPolicyRule>(map['rules'], (value) => GetPolicyRule.fromMap((value as Map).cast<String, dynamic>())),
-      strategy: map['strategy'] == null ? null : map['strategy'] as String,
+      publishedCopy: map['publishedCopy'] == null ? null : map['publishedCopy']! as String,
+      requires: map['requires'] == null ? null : (map['requires']! as List).cast<String>(),
+      rules: map['rules'] == null ? null : pulumi.Input.decodeList<GetPolicyRule>(map['rules']!, (value) => GetPolicyRule.fromMap((value as Map).cast<String, dynamic>())),
+      strategy: map['strategy'] == null ? null : map['strategy']! as String,
     );
   }
 }

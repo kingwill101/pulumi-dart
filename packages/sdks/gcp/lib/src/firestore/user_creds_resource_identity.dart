@@ -22,7 +22,7 @@ class UserCredsResourceIdentity {
 
   factory UserCredsResourceIdentity.fromMap(Map<String, dynamic> map) {
     return UserCredsResourceIdentity(
-      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
+      principal: map['principal'] == null ? null : (map['principal']! as String).input(),
     );
   }
 }

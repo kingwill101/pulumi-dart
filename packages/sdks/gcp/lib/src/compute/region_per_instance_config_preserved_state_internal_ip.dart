@@ -34,9 +34,9 @@ class RegionPerInstanceConfigPreservedStateInternalIp {
 
   factory RegionPerInstanceConfigPreservedStateInternalIp.fromMap(Map<String, dynamic> map) {
     return RegionPerInstanceConfigPreservedStateInternalIp(
-      autoDelete: map['autoDelete'] == null ? null : (map['autoDelete'] as String).input(),
+      autoDelete: map['autoDelete'] == null ? null : (map['autoDelete']! as String).input(),
       interfaceName: (map['interfaceName'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (RegionPerInstanceConfigPreservedStateInternalIpIpAddress.fromMap((map['ipAddress'] as Map).cast<String, dynamic>())).input(),
+      ipAddress: map['ipAddress'] == null ? null : (RegionPerInstanceConfigPreservedStateInternalIpIpAddress.fromMap((map['ipAddress']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

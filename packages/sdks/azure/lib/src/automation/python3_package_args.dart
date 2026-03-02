@@ -61,12 +61,12 @@ class Python3PackageArgs {
     return Python3PackageArgs(
       automationAccountName: (map['automationAccountName'] as String).input(),
       contentUri: (map['contentUri'] as String).input(),
-      contentVersion: map['contentVersion'] == null ? null : (map['contentVersion'] as String).input(),
-      hashAlgorithm: map['hashAlgorithm'] == null ? null : (map['hashAlgorithm'] as String).input(),
-      hashValue: map['hashValue'] == null ? null : (map['hashValue'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      contentVersion: map['contentVersion'] == null ? null : (map['contentVersion']! as String).input(),
+      hashAlgorithm: map['hashAlgorithm'] == null ? null : (map['hashAlgorithm']! as String).input(),
+      hashValue: map['hashValue'] == null ? null : (map['hashValue']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

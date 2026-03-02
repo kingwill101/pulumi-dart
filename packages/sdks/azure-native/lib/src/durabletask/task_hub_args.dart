@@ -36,7 +36,7 @@ class TaskHubArgs {
     return TaskHubArgs(
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       schedulerName: (map['schedulerName'] as String).input(),
-      taskHubName: map['taskHubName'] == null ? null : (map['taskHubName'] as String).input(),
+      taskHubName: map['taskHubName'] == null ? null : (map['taskHubName']! as String).input(),
     );
   }
 }

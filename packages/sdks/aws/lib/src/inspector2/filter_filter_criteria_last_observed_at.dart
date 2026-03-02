@@ -25,8 +25,8 @@ class FilterFilterCriteriaLastObservedAt {
 
   factory FilterFilterCriteriaLastObservedAt.fromMap(Map<String, dynamic> map) {
     return FilterFilterCriteriaLastObservedAt(
-      endInclusive: map['endInclusive'] == null ? null : (map['endInclusive'] as String).input(),
-      startInclusive: map['startInclusive'] == null ? null : (map['startInclusive'] as String).input(),
+      endInclusive: map['endInclusive'] == null ? null : ((map['endInclusive'] as String).input()).input(),
+      startInclusive: map['startInclusive'] == null ? null : ((map['startInclusive'] as String).input()).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class PodGroupPatch {
 
   factory PodGroupPatch.fromMap(Map<String, dynamic> map) {
     return PodGroupPatch(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policy: map['policy'] == null ? null : (PodGroupPolicyPatch.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policy: map['policy'] == null ? null : (PodGroupPolicyPatch.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

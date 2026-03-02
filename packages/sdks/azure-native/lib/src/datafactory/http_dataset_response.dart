@@ -94,19 +94,19 @@ class HttpDatasetResponse {
 
   factory HttpDatasetResponse.fromMap(Map<String, dynamic> map) {
     return HttpDatasetResponse(
-      additionalHeaders: map['additionalHeaders'] == null ? null : (map['additionalHeaders']).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      compression: map['compression'] == null ? null : (DatasetCompressionResponse.fromMap((map['compression'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      folder: map['folder'] == null ? null : (DatasetResponseFolder.fromMap((map['folder'] as Map).cast<String, dynamic>())).input(),
-      format: map['format'] == null ? null : (AvroFormatResponse.fromMap((map['format'] as Map).cast<String, dynamic>())).input(),
+      additionalHeaders: map['additionalHeaders'] == null ? null : (map['additionalHeaders']!).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      compression: map['compression'] == null ? null : (DatasetCompressionResponse.fromMap((map['compression']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      folder: map['folder'] == null ? null : (DatasetResponseFolder.fromMap((map['folder']! as Map).cast<String, dynamic>())).input(),
+      format: map['format'] == null ? null : (AvroFormatResponse.fromMap((map['format']! as Map).cast<String, dynamic>())).input(),
       linkedServiceName: (LinkedServiceReferenceResponse.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      relativeUrl: map['relativeUrl'] == null ? null : (map['relativeUrl']).input(),
-      requestBody: map['requestBody'] == null ? null : (map['requestBody']).input(),
-      requestMethod: map['requestMethod'] == null ? null : (map['requestMethod']).input(),
-      schema: map['schema'] == null ? null : (map['schema']).input(),
-      structure: map['structure'] == null ? null : (map['structure']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters']!, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      relativeUrl: map['relativeUrl'] == null ? null : (map['relativeUrl']!).input(),
+      requestBody: map['requestBody'] == null ? null : (map['requestBody']!).input(),
+      requestMethod: map['requestMethod'] == null ? null : (map['requestMethod']!).input(),
+      schema: map['schema'] == null ? null : (map['schema']!).input(),
+      structure: map['structure'] == null ? null : (map['structure']!).input(),
       type: (map['type'] as String).input(),
     );
   }

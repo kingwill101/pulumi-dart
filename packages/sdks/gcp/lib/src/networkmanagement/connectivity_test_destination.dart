@@ -82,17 +82,17 @@ class ConnectivityTestDestination {
 
   factory ConnectivityTestDestination.fromMap(Map<String, dynamic> map) {
     return ConnectivityTestDestination(
-      cloudSqlInstance: map['cloudSqlInstance'] == null ? null : (map['cloudSqlInstance'] as String).input(),
-      forwardingRule: map['forwardingRule'] == null ? null : (map['forwardingRule'] as String).input(),
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      gkeMasterCluster: map['gkeMasterCluster'] == null ? null : (map['gkeMasterCluster'] as String).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      redisCluster: map['redisCluster'] == null ? null : (map['redisCluster'] as String).input(),
-      redisInstance: map['redisInstance'] == null ? null : (map['redisInstance'] as String).input(),
+      cloudSqlInstance: map['cloudSqlInstance'] == null ? null : (map['cloudSqlInstance']! as String).input(),
+      forwardingRule: map['forwardingRule'] == null ? null : (map['forwardingRule']! as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      gkeMasterCluster: map['gkeMasterCluster'] == null ? null : (map['gkeMasterCluster']! as String).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      redisCluster: map['redisCluster'] == null ? null : (map['redisCluster']! as String).input(),
+      redisInstance: map['redisInstance'] == null ? null : (map['redisInstance']! as String).input(),
     );
   }
 }

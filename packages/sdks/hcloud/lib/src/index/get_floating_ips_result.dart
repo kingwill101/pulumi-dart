@@ -33,7 +33,7 @@ class GetFloatingIpsResult {
     return GetFloatingIpsResult(
       floatingIps: pulumi.Input.decodeList<GetFloatingIpsFloatingIp>(map['floatingIps'], (value) => GetFloatingIpsFloatingIp.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
     );
   }
 }

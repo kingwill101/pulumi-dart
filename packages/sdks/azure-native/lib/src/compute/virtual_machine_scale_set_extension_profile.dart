@@ -27,8 +27,8 @@ class VirtualMachineScaleSetExtensionProfile {
 
   factory VirtualMachineScaleSetExtensionProfile.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetExtensionProfile(
-      extensions: map['extensions'] == null ? null : (pulumi.Input.decodeList<VirtualMachineScaleSetExtension>(map['extensions'], (value) => VirtualMachineScaleSetExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      extensionsTimeBudget: map['extensionsTimeBudget'] == null ? null : (map['extensionsTimeBudget'] as String).input(),
+      extensions: map['extensions'] == null ? null : (pulumi.Input.decodeList<VirtualMachineScaleSetExtension>(map['extensions']!, (value) => VirtualMachineScaleSetExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      extensionsTimeBudget: map['extensionsTimeBudget'] == null ? null : (map['extensionsTimeBudget']! as String).input(),
     );
   }
 }

@@ -51,9 +51,9 @@ class GetVolumesVolume {
       id: (map['id'] as int).input(),
       labels: ((map['labels'] as Map).cast<String, String>()).input(),
       linuxDevice: (map['linuxDevice'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       name: (map['name'] as String).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as int).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId']! as int).input(),
       size: (map['size'] as int).input(),
     );
   }

@@ -66,16 +66,16 @@ class HsmConfigurationState {
 
   factory HsmConfigurationState.fromMap(Map<String, dynamic> map) {
     return HsmConfigurationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      hsmConfigurationIdentifier: map['hsmConfigurationIdentifier'] == null ? null : (map['hsmConfigurationIdentifier'] as String).input(),
-      hsmIpAddress: map['hsmIpAddress'] == null ? null : (map['hsmIpAddress'] as String).input(),
-      hsmPartitionName: map['hsmPartitionName'] == null ? null : (map['hsmPartitionName'] as String).input(),
-      hsmPartitionPassword: map['hsmPartitionPassword'] == null ? null : (map['hsmPartitionPassword'] as String).input(),
-      hsmServerPublicCertificate: map['hsmServerPublicCertificate'] == null ? null : (map['hsmServerPublicCertificate'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      hsmConfigurationIdentifier: map['hsmConfigurationIdentifier'] == null ? null : ((map['hsmConfigurationIdentifier'] as String).input()).input(),
+      hsmIpAddress: map['hsmIpAddress'] == null ? null : ((map['hsmIpAddress'] as String).input()).input(),
+      hsmPartitionName: map['hsmPartitionName'] == null ? null : ((map['hsmPartitionName'] as String).input()).input(),
+      hsmPartitionPassword: map['hsmPartitionPassword'] == null ? null : ((map['hsmPartitionPassword'] as String).input()).input(),
+      hsmServerPublicCertificate: map['hsmServerPublicCertificate'] == null ? null : ((map['hsmServerPublicCertificate'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

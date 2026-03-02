@@ -76,18 +76,18 @@ class Ipv4GatewayState {
 
   factory Ipv4GatewayState.fromMap(Map<String, dynamic> map) {
     return Ipv4GatewayState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      internetMode: map['internetMode'] == null ? null : (map['internetMode'] as String).input(),
-      ipv4GatewayDescription: map['ipv4GatewayDescription'] == null ? null : (map['ipv4GatewayDescription'] as String).input(),
-      ipv4GatewayId: map['ipv4GatewayId'] == null ? null : (map['ipv4GatewayId'] as String).input(),
-      ipv4GatewayName: map['ipv4GatewayName'] == null ? null : (map['ipv4GatewayName'] as String).input(),
-      ipv4GatewayRouteTableId: map['ipv4GatewayRouteTableId'] == null ? null : (map['ipv4GatewayRouteTableId'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      internetMode: map['internetMode'] == null ? null : (map['internetMode']! as String).input(),
+      ipv4GatewayDescription: map['ipv4GatewayDescription'] == null ? null : (map['ipv4GatewayDescription']! as String).input(),
+      ipv4GatewayId: map['ipv4GatewayId'] == null ? null : (map['ipv4GatewayId']! as String).input(),
+      ipv4GatewayName: map['ipv4GatewayName'] == null ? null : (map['ipv4GatewayName']! as String).input(),
+      ipv4GatewayRouteTableId: map['ipv4GatewayRouteTableId'] == null ? null : (map['ipv4GatewayRouteTableId']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

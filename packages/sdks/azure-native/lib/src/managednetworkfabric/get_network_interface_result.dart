@@ -82,7 +82,7 @@ class GetNetworkInterfaceResult {
   factory GetNetworkInterfaceResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfaceResult(
       administrativeState: map['administrativeState'] as String,
-      annotation: map['annotation'] == null ? null : map['annotation'] as String,
+      annotation: map['annotation'] == null ? null : map['annotation']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       connectedTo: map['connectedTo'] as String,
       id: map['id'] as String,

@@ -27,8 +27,8 @@ class BuildpackBindingProperties {
 
   factory BuildpackBindingProperties.fromMap(Map<String, dynamic> map) {
     return BuildpackBindingProperties(
-      bindingType: map['bindingType'] == null ? null : (map['bindingType'] as String).input(),
-      launchProperties: map['launchProperties'] == null ? null : (BuildpackBindingLaunchProperties.fromMap((map['launchProperties'] as Map).cast<String, dynamic>())).input(),
+      bindingType: map['bindingType'] == null ? null : (map['bindingType']! as String).input(),
+      launchProperties: map['launchProperties'] == null ? null : (BuildpackBindingLaunchProperties.fromMap((map['launchProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

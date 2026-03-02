@@ -41,11 +41,11 @@ class GoogleCloudChannelV1Value {
 
   factory GoogleCloudChannelV1Value.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1Value(
-      boolValue: map['boolValue'] == null ? null : (map['boolValue'] as bool).input(),
-      doubleValue: map['doubleValue'] == null ? null : (map['doubleValue'] as double).input(),
-      int64Value: map['int64Value'] == null ? null : (map['int64Value'] as String).input(),
-      protoValue: map['protoValue'] == null ? null : ((map['protoValue'] as Map).cast<String, String>()).input(),
-      stringValue: map['stringValue'] == null ? null : (map['stringValue'] as String).input(),
+      boolValue: map['boolValue'] == null ? null : (map['boolValue']! as bool).input(),
+      doubleValue: map['doubleValue'] == null ? null : (map['doubleValue']! as double).input(),
+      int64Value: map['int64Value'] == null ? null : (map['int64Value']! as String).input(),
+      protoValue: map['protoValue'] == null ? null : ((map['protoValue']! as Map).cast<String, String>()).input(),
+      stringValue: map['stringValue'] == null ? null : (map['stringValue']! as String).input(),
     );
   }
 }

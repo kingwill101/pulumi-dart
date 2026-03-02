@@ -20,7 +20,7 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSucce
 
   factory CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess.fromMap(Map<String, dynamic> map) {
     return CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess(
-      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']! as String).input(),
     );
   }
 }

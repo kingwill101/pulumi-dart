@@ -45,8 +45,8 @@ class GetGatewaySmbUsersResult {
       gatewayId: map['gatewayId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       users: pulumi.Input.decodeList<GetGatewaySmbUsersUser>(map['users'], (value) => GetGatewaySmbUsersUser.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

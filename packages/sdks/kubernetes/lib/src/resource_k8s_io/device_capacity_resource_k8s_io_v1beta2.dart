@@ -33,7 +33,7 @@ class DeviceCapacityResourceK8sIoV1beta2 {
 
   factory DeviceCapacityResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return DeviceCapacityResourceK8sIoV1beta2(
-      requestPolicy: map['requestPolicy'] == null ? null : (CapacityRequestPolicyResourceK8sIoV1beta2.fromMap((map['requestPolicy'] as Map).cast<String, dynamic>())).input(),
+      requestPolicy: map['requestPolicy'] == null ? null : (CapacityRequestPolicyResourceK8sIoV1beta2.fromMap((map['requestPolicy']! as Map).cast<String, dynamic>())).input(),
       value: (map['value'] as String).input(),
     );
   }

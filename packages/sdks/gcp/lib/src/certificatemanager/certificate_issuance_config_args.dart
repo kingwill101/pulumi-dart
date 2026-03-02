@@ -78,13 +78,13 @@ class CertificateIssuanceConfigArgs {
   factory CertificateIssuanceConfigArgs.fromMap(Map<String, dynamic> map) {
     return CertificateIssuanceConfigArgs(
       certificateAuthorityConfig: (CertificateIssuanceConfigCertificateAuthorityConfig.fromMap((map['certificateAuthorityConfig'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       keyAlgorithm: (map['keyAlgorithm'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       lifetime: (map['lifetime'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       rotationWindowPercentage: (map['rotationWindowPercentage'] as int).input(),
     );
   }

@@ -40,9 +40,9 @@ class OriginPoolArgs {
 
   factory OriginPoolArgs.fromMap(Map<String, dynamic> map) {
     return OriginPoolArgs(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       originPoolName: (map['originPoolName'] as String).input(),
-      origins: map['origins'] == null ? null : (pulumi.Input.decodeList<OriginPoolOrigin>(map['origins'], (value) => OriginPoolOrigin.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      origins: map['origins'] == null ? null : (pulumi.Input.decodeList<OriginPoolOrigin>(map['origins']!, (value) => OriginPoolOrigin.fromMap((value as Map).cast<String, dynamic>()))).input(),
       siteId: (map['siteId'] as String).input(),
     );
   }

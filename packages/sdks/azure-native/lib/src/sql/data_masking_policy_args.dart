@@ -50,10 +50,10 @@ class DataMaskingPolicyArgs {
 
   factory DataMaskingPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DataMaskingPolicyArgs(
-      dataMaskingPolicyName: map['dataMaskingPolicyName'] == null ? null : (map['dataMaskingPolicyName'] as String).input(),
+      dataMaskingPolicyName: map['dataMaskingPolicyName'] == null ? null : (map['dataMaskingPolicyName']! as String).input(),
       dataMaskingState: (DataMaskingState.fromValue(map['dataMaskingState'] as String)).input(),
       databaseName: (map['databaseName'] as String).input(),
-      exemptPrincipals: map['exemptPrincipals'] == null ? null : (map['exemptPrincipals'] as String).input(),
+      exemptPrincipals: map['exemptPrincipals'] == null ? null : (map['exemptPrincipals']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
     );

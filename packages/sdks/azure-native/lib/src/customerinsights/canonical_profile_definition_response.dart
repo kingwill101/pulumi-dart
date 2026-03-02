@@ -27,8 +27,8 @@ class CanonicalProfileDefinitionResponse {
 
   factory CanonicalProfileDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return CanonicalProfileDefinitionResponse(
-      canonicalProfileId: map['canonicalProfileId'] == null ? null : (map['canonicalProfileId'] as int).input(),
-      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<CanonicalProfileDefinitionResponseProperties>(map['properties'], (value) => CanonicalProfileDefinitionResponseProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      canonicalProfileId: map['canonicalProfileId'] == null ? null : (map['canonicalProfileId']! as int).input(),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<CanonicalProfileDefinitionResponseProperties>(map['properties']!, (value) => CanonicalProfileDefinitionResponseProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

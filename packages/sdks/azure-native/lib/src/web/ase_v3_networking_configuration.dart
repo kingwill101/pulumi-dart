@@ -41,11 +41,11 @@ class AseV3NetworkingConfiguration {
 
   factory AseV3NetworkingConfiguration.fromMap(Map<String, dynamic> map) {
     return AseV3NetworkingConfiguration(
-      allowNewPrivateEndpointConnections: map['allowNewPrivateEndpointConnections'] == null ? null : (map['allowNewPrivateEndpointConnections'] as bool).input(),
-      ftpEnabled: map['ftpEnabled'] == null ? null : (map['ftpEnabled'] as bool).input(),
-      inboundIpAddressOverride: map['inboundIpAddressOverride'] == null ? null : (map['inboundIpAddressOverride'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      remoteDebugEnabled: map['remoteDebugEnabled'] == null ? null : (map['remoteDebugEnabled'] as bool).input(),
+      allowNewPrivateEndpointConnections: map['allowNewPrivateEndpointConnections'] == null ? null : (map['allowNewPrivateEndpointConnections']! as bool).input(),
+      ftpEnabled: map['ftpEnabled'] == null ? null : (map['ftpEnabled']! as bool).input(),
+      inboundIpAddressOverride: map['inboundIpAddressOverride'] == null ? null : (map['inboundIpAddressOverride']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      remoteDebugEnabled: map['remoteDebugEnabled'] == null ? null : (map['remoteDebugEnabled']! as bool).input(),
     );
   }
 }

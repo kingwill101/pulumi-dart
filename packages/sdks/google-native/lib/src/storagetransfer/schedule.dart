@@ -43,11 +43,11 @@ class Schedule {
 
   factory Schedule.fromMap(Map<String, dynamic> map) {
     return Schedule(
-      endTimeOfDay: map['endTimeOfDay'] == null ? null : (TimeOfDay.fromMap((map['endTimeOfDay'] as Map).cast<String, dynamic>())).input(),
-      repeatInterval: map['repeatInterval'] == null ? null : (map['repeatInterval'] as String).input(),
-      scheduleEndDate: map['scheduleEndDate'] == null ? null : (Date.fromMap((map['scheduleEndDate'] as Map).cast<String, dynamic>())).input(),
+      endTimeOfDay: map['endTimeOfDay'] == null ? null : (TimeOfDay.fromMap((map['endTimeOfDay']! as Map).cast<String, dynamic>())).input(),
+      repeatInterval: map['repeatInterval'] == null ? null : (map['repeatInterval']! as String).input(),
+      scheduleEndDate: map['scheduleEndDate'] == null ? null : (Date.fromMap((map['scheduleEndDate']! as Map).cast<String, dynamic>())).input(),
       scheduleStartDate: (Date.fromMap((map['scheduleStartDate'] as Map).cast<String, dynamic>())).input(),
-      startTimeOfDay: map['startTimeOfDay'] == null ? null : (TimeOfDay.fromMap((map['startTimeOfDay'] as Map).cast<String, dynamic>())).input(),
+      startTimeOfDay: map['startTimeOfDay'] == null ? null : (TimeOfDay.fromMap((map['startTimeOfDay']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

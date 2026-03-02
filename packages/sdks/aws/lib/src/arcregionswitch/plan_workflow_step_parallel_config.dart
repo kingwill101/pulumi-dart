@@ -21,7 +21,7 @@ class PlanWorkflowStepParallelConfig {
 
   factory PlanWorkflowStepParallelConfig.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepParallelConfig(
-      steps: map['steps'] == null ? null : (pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStep>(map['steps'], (value) => PlanWorkflowStepParallelConfigStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      steps: map['steps'] == null ? null : ((pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStep>(map['steps']!, (value) => PlanWorkflowStepParallelConfigStep.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

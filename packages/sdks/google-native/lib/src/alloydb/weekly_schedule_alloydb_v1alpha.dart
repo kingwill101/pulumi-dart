@@ -28,8 +28,8 @@ class WeeklyScheduleAlloydbV1alpha {
 
   factory WeeklyScheduleAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
     return WeeklyScheduleAlloydbV1alpha(
-      daysOfWeek: map['daysOfWeek'] == null ? null : (pulumi.Input.decodeList<WeeklyScheduleDaysOfWeekItemAlloydbV1alpha>(map['daysOfWeek'], (value) => WeeklyScheduleDaysOfWeekItemAlloydbV1alpha.fromValue(value as String))).input(),
-      startTimes: map['startTimes'] == null ? null : (pulumi.Input.decodeList<GoogleTypeTimeOfDayAlloydbV1alpha>(map['startTimes'], (value) => GoogleTypeTimeOfDayAlloydbV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      daysOfWeek: map['daysOfWeek'] == null ? null : (pulumi.Input.decodeList<WeeklyScheduleDaysOfWeekItemAlloydbV1alpha>(map['daysOfWeek']!, (value) => WeeklyScheduleDaysOfWeekItemAlloydbV1alpha.fromValue(value as String))).input(),
+      startTimes: map['startTimes'] == null ? null : (pulumi.Input.decodeList<GoogleTypeTimeOfDayAlloydbV1alpha>(map['startTimes']!, (value) => GoogleTypeTimeOfDayAlloydbV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -31,7 +31,7 @@ class MarketplaceDetails {
 
   factory MarketplaceDetails.fromMap(Map<String, dynamic> map) {
     return MarketplaceDetails(
-      marketplaceSubscriptionStatus: map['marketplaceSubscriptionStatus'] == null ? null : (map['marketplaceSubscriptionStatus'] as String).input(),
+      marketplaceSubscriptionStatus: map['marketplaceSubscriptionStatus'] == null ? null : (map['marketplaceSubscriptionStatus']! as String).input(),
       offerId: (map['offerId'] as String).input(),
       publisherId: (map['publisherId'] as String).input(),
     );

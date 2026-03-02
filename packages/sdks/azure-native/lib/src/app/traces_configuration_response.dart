@@ -26,8 +26,8 @@ class TracesConfigurationResponse {
 
   factory TracesConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return TracesConfigurationResponse(
-      destinations: map['destinations'] == null ? null : ((map['destinations'] as List).cast<String>()).input(),
-      includeDapr: map['includeDapr'] == null ? null : (map['includeDapr'] as bool).input(),
+      destinations: map['destinations'] == null ? null : ((map['destinations']! as List).cast<String>()).input(),
+      includeDapr: map['includeDapr'] == null ? null : (map['includeDapr']! as bool).input(),
     );
   }
 }

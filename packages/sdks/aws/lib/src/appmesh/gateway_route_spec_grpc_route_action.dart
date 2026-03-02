@@ -21,7 +21,7 @@ class GatewayRouteSpecGrpcRouteAction {
 
   factory GatewayRouteSpecGrpcRouteAction.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecGrpcRouteAction(
-      target: (GatewayRouteSpecGrpcRouteActionTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      target: (GatewayRouteSpecGrpcRouteActionTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

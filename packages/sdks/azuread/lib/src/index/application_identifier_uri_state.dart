@@ -26,8 +26,8 @@ class ApplicationIdentifierUriState {
 
   factory ApplicationIdentifierUriState.fromMap(Map<String, dynamic> map) {
     return ApplicationIdentifierUriState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      identifierUri: map['identifierUri'] == null ? null : (map['identifierUri'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      identifierUri: map['identifierUri'] == null ? null : (map['identifierUri']! as String).input(),
     );
   }
 }

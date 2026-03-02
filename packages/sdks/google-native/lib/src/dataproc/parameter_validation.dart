@@ -28,8 +28,8 @@ class ParameterValidation {
 
   factory ParameterValidation.fromMap(Map<String, dynamic> map) {
     return ParameterValidation(
-      regex: map['regex'] == null ? null : (RegexValidation.fromMap((map['regex'] as Map).cast<String, dynamic>())).input(),
-      values: map['values'] == null ? null : (ValueValidation.fromMap((map['values'] as Map).cast<String, dynamic>())).input(),
+      regex: map['regex'] == null ? null : (RegexValidation.fromMap((map['regex']! as Map).cast<String, dynamic>())).input(),
+      values: map['values'] == null ? null : (ValueValidation.fromMap((map['values']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -60,14 +60,14 @@ class DeviceCloudidentityV1beta1Args {
 
   factory DeviceCloudidentityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return DeviceCloudidentityV1beta1Args(
-      assetTag: map['assetTag'] == null ? null : (map['assetTag'] as String).input(),
-      clientTypes: map['clientTypes'] == null ? null : (pulumi.Input.decodeList<DeviceClientTypesItem>(map['clientTypes'], (value) => DeviceClientTypesItem.fromValue(value as String))).input(),
-      customer: map['customer'] == null ? null : (map['customer'] as String).input(),
-      deviceId: map['deviceId'] == null ? null : (map['deviceId'] as String).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      lastSyncTime: map['lastSyncTime'] == null ? null : (map['lastSyncTime'] as String).input(),
-      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
-      wifiMacAddresses: map['wifiMacAddresses'] == null ? null : ((map['wifiMacAddresses'] as List).cast<String>()).input(),
+      assetTag: map['assetTag'] == null ? null : (map['assetTag']! as String).input(),
+      clientTypes: map['clientTypes'] == null ? null : (pulumi.Input.decodeList<DeviceClientTypesItem>(map['clientTypes']!, (value) => DeviceClientTypesItem.fromValue(value as String))).input(),
+      customer: map['customer'] == null ? null : (map['customer']! as String).input(),
+      deviceId: map['deviceId'] == null ? null : (map['deviceId']! as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      lastSyncTime: map['lastSyncTime'] == null ? null : (map['lastSyncTime']! as String).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber']! as String).input(),
+      wifiMacAddresses: map['wifiMacAddresses'] == null ? null : ((map['wifiMacAddresses']! as List).cast<String>()).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class KubernetesClusterStorageProfile {
 
   factory KubernetesClusterStorageProfile.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterStorageProfile(
-      blobDriverEnabled: map['blobDriverEnabled'] == null ? null : (map['blobDriverEnabled'] as bool).input(),
-      diskDriverEnabled: map['diskDriverEnabled'] == null ? null : (map['diskDriverEnabled'] as bool).input(),
-      fileDriverEnabled: map['fileDriverEnabled'] == null ? null : (map['fileDriverEnabled'] as bool).input(),
-      snapshotControllerEnabled: map['snapshotControllerEnabled'] == null ? null : (map['snapshotControllerEnabled'] as bool).input(),
+      blobDriverEnabled: map['blobDriverEnabled'] == null ? null : (map['blobDriverEnabled']! as bool).input(),
+      diskDriverEnabled: map['diskDriverEnabled'] == null ? null : (map['diskDriverEnabled']! as bool).input(),
+      fileDriverEnabled: map['fileDriverEnabled'] == null ? null : (map['fileDriverEnabled']! as bool).input(),
+      snapshotControllerEnabled: map['snapshotControllerEnabled'] == null ? null : (map['snapshotControllerEnabled']! as bool).input(),
     );
   }
 }

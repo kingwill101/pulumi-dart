@@ -41,7 +41,7 @@ class HostShareKeyArgs {
     return HostShareKeyArgs(
       hostShareKeyName: (map['hostShareKeyName'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      passPhrase: map['passPhrase'] == null ? null : (map['passPhrase'] as String).input(),
+      passPhrase: map['passPhrase'] == null ? null : (map['passPhrase']! as String).input(),
       privateKey: (map['privateKey'] as String).input(),
     );
   }

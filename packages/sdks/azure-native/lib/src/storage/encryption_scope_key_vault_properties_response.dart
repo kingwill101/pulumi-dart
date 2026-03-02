@@ -32,7 +32,7 @@ class EncryptionScopeKeyVaultPropertiesResponse {
   factory EncryptionScopeKeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionScopeKeyVaultPropertiesResponse(
       currentVersionedKeyIdentifier: (map['currentVersionedKeyIdentifier'] as String).input(),
-      keyUri: map['keyUri'] == null ? null : (map['keyUri'] as String).input(),
+      keyUri: map['keyUri'] == null ? null : (map['keyUri']! as String).input(),
       lastKeyRotationTimestamp: (map['lastKeyRotationTimestamp'] as String).input(),
     );
   }

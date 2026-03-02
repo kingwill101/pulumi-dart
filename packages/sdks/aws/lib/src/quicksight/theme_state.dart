@@ -95,21 +95,21 @@ class ThemeState {
 
   factory ThemeState.fromMap(Map<String, dynamic> map) {
     return ThemeState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      baseThemeId: map['baseThemeId'] == null ? null : (map['baseThemeId'] as String).input(),
-      configuration: map['configuration'] == null ? null : (ThemeConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
-      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : (map['lastUpdatedTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<ThemePermission>(map['permissions'], (value) => ThemePermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      themeId: map['themeId'] == null ? null : (map['themeId'] as String).input(),
-      versionDescription: map['versionDescription'] == null ? null : (map['versionDescription'] as String).input(),
-      versionNumber: map['versionNumber'] == null ? null : (map['versionNumber'] as int).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      baseThemeId: map['baseThemeId'] == null ? null : ((map['baseThemeId'] as String).input()).input(),
+      configuration: map['configuration'] == null ? null : ((ThemeConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input()).input(),
+      createdTime: map['createdTime'] == null ? null : ((map['createdTime'] as String).input()).input(),
+      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : ((map['lastUpdatedTime'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      permissions: map['permissions'] == null ? null : ((pulumi.Input.decodeList<ThemePermission>(map['permissions']!, (value) => ThemePermission.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      themeId: map['themeId'] == null ? null : ((map['themeId'] as String).input()).input(),
+      versionDescription: map['versionDescription'] == null ? null : ((map['versionDescription'] as String).input()).input(),
+      versionNumber: map['versionNumber'] == null ? null : ((map['versionNumber'] as int).input()).input(),
     );
   }
 }

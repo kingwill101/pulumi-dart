@@ -21,7 +21,7 @@ class OwnershipControlsRule {
 
   factory OwnershipControlsRule.fromMap(Map<String, dynamic> map) {
     return OwnershipControlsRule(
-      objectOwnership: map['objectOwnership'] == null ? null : (map['objectOwnership'] as String).input(),
+      objectOwnership: map['objectOwnership'] == null ? null : (map['objectOwnership']! as String).input(),
     );
   }
 }

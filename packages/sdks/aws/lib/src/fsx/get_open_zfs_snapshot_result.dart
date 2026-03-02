@@ -70,7 +70,7 @@ class GetOpenZfsSnapshotResult {
     return GetOpenZfsSnapshotResult(
       arn: map['arn'] as String,
       creationTime: map['creationTime'] as String,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetOpenZfsSnapshotFilter>(map['filters'], (value) => GetOpenZfsSnapshotFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetOpenZfsSnapshotFilter>(map['filters']!, (value) => GetOpenZfsSnapshotFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       mostRecent: map['mostRecent'] == null ? null : map['mostRecent'] as bool,
       name: map['name'] == null ? null : map['name'] as String,

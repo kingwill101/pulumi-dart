@@ -64,15 +64,15 @@ class ManagedInstanceLongTermRetentionPolicyArgs {
 
   factory ManagedInstanceLongTermRetentionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceLongTermRetentionPolicyArgs(
-      backupStorageAccessTier: map['backupStorageAccessTier'] == null ? null : (map['backupStorageAccessTier'] as String).input(),
+      backupStorageAccessTier: map['backupStorageAccessTier'] == null ? null : (map['backupStorageAccessTier']! as String).input(),
       databaseName: (map['databaseName'] as String).input(),
       managedInstanceName: (map['managedInstanceName'] as String).input(),
-      monthlyRetention: map['monthlyRetention'] == null ? null : (map['monthlyRetention'] as String).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      monthlyRetention: map['monthlyRetention'] == null ? null : (map['monthlyRetention']! as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      weekOfYear: map['weekOfYear'] == null ? null : (map['weekOfYear'] as int).input(),
-      weeklyRetention: map['weeklyRetention'] == null ? null : (map['weeklyRetention'] as String).input(),
-      yearlyRetention: map['yearlyRetention'] == null ? null : (map['yearlyRetention'] as String).input(),
+      weekOfYear: map['weekOfYear'] == null ? null : (map['weekOfYear']! as int).input(),
+      weeklyRetention: map['weeklyRetention'] == null ? null : (map['weeklyRetention']! as String).input(),
+      yearlyRetention: map['yearlyRetention'] == null ? null : (map['yearlyRetention']! as String).input(),
     );
   }
 }

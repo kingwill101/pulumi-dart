@@ -39,7 +39,7 @@ class ProductGroupArgs {
 
   factory ProductGroupArgs.fromMap(Map<String, dynamic> map) {
     return ProductGroupArgs(
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
       productId: (map['productId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),

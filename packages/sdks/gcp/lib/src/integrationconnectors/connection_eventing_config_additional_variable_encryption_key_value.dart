@@ -28,8 +28,8 @@ class ConnectionEventingConfigAdditionalVariableEncryptionKeyValue {
 
   factory ConnectionEventingConfigAdditionalVariableEncryptionKeyValue.fromMap(Map<String, dynamic> map) {
     return ConnectionEventingConfigAdditionalVariableEncryptionKeyValue(
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

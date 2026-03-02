@@ -21,7 +21,7 @@ class BgpConfigurationResponse {
 
   factory BgpConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return BgpConfigurationResponse(
-      asnToIpAddressMapping: map['asnToIpAddressMapping'] == null ? null : (map['asnToIpAddressMapping'] as String).input(),
+      asnToIpAddressMapping: map['asnToIpAddressMapping'] == null ? null : (map['asnToIpAddressMapping']! as String).input(),
     );
   }
 }

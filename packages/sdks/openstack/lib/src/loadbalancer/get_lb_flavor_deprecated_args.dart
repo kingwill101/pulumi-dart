@@ -35,9 +35,9 @@ class GetLbFlavorDeprecatedArgs {
 
   factory GetLbFlavorDeprecatedArgs.fromMap(Map<String, dynamic> map) {
     return GetLbFlavorDeprecatedArgs(
-      flavorId: map['flavorId'] == null ? null : (map['flavorId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      flavorId: map['flavorId'] == null ? null : (map['flavorId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrig
 
   factory DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger.fromMap(Map<String, dynamic> map) {
     return DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger(
-      scoreThreshold: map['scoreThreshold'] == null ? null : (map['scoreThreshold'] as double).input(),
+      scoreThreshold: map['scoreThreshold'] == null ? null : (map['scoreThreshold']! as double).input(),
     );
   }
 }

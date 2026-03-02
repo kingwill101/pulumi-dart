@@ -92,19 +92,19 @@ class V2modelsIntentConfirmationSetting {
 
   factory V2modelsIntentConfirmationSetting.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSetting(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
-      codeHook: map['codeHook'] == null ? null : (V2modelsIntentConfirmationSettingCodeHook.fromMap((map['codeHook'] as Map).cast<String, dynamic>())).input(),
-      confirmationConditional: map['confirmationConditional'] == null ? null : (V2modelsIntentConfirmationSettingConfirmationConditional.fromMap((map['confirmationConditional'] as Map).cast<String, dynamic>())).input(),
-      confirmationNextStep: map['confirmationNextStep'] == null ? null : (V2modelsIntentConfirmationSettingConfirmationNextStep.fromMap((map['confirmationNextStep'] as Map).cast<String, dynamic>())).input(),
-      confirmationResponse: map['confirmationResponse'] == null ? null : (V2modelsIntentConfirmationSettingConfirmationResponse.fromMap((map['confirmationResponse'] as Map).cast<String, dynamic>())).input(),
-      declinationConditional: map['declinationConditional'] == null ? null : (V2modelsIntentConfirmationSettingDeclinationConditional.fromMap((map['declinationConditional'] as Map).cast<String, dynamic>())).input(),
-      declinationNextStep: map['declinationNextStep'] == null ? null : (V2modelsIntentConfirmationSettingDeclinationNextStep.fromMap((map['declinationNextStep'] as Map).cast<String, dynamic>())).input(),
-      declinationResponse: map['declinationResponse'] == null ? null : (V2modelsIntentConfirmationSettingDeclinationResponse.fromMap((map['declinationResponse'] as Map).cast<String, dynamic>())).input(),
-      elicitationCodeHook: map['elicitationCodeHook'] == null ? null : (V2modelsIntentConfirmationSettingElicitationCodeHook.fromMap((map['elicitationCodeHook'] as Map).cast<String, dynamic>())).input(),
-      failureConditional: map['failureConditional'] == null ? null : (V2modelsIntentConfirmationSettingFailureConditional.fromMap((map['failureConditional'] as Map).cast<String, dynamic>())).input(),
-      failureNextStep: map['failureNextStep'] == null ? null : (V2modelsIntentConfirmationSettingFailureNextStep.fromMap((map['failureNextStep'] as Map).cast<String, dynamic>())).input(),
-      failureResponse: map['failureResponse'] == null ? null : (V2modelsIntentConfirmationSettingFailureResponse.fromMap((map['failureResponse'] as Map).cast<String, dynamic>())).input(),
-      promptSpecification: map['promptSpecification'] == null ? null : (V2modelsIntentConfirmationSettingPromptSpecification.fromMap((map['promptSpecification'] as Map).cast<String, dynamic>())).input(),
+      active: map['active'] == null ? null : ((map['active'] as bool).input()).input(),
+      codeHook: map['codeHook'] == null ? null : ((V2modelsIntentConfirmationSettingCodeHook.fromMap((map['codeHook']! as Map).cast<String, dynamic>())).input()).input(),
+      confirmationConditional: map['confirmationConditional'] == null ? null : ((V2modelsIntentConfirmationSettingConfirmationConditional.fromMap((map['confirmationConditional']! as Map).cast<String, dynamic>())).input()).input(),
+      confirmationNextStep: map['confirmationNextStep'] == null ? null : ((V2modelsIntentConfirmationSettingConfirmationNextStep.fromMap((map['confirmationNextStep']! as Map).cast<String, dynamic>())).input()).input(),
+      confirmationResponse: map['confirmationResponse'] == null ? null : ((V2modelsIntentConfirmationSettingConfirmationResponse.fromMap((map['confirmationResponse']! as Map).cast<String, dynamic>())).input()).input(),
+      declinationConditional: map['declinationConditional'] == null ? null : ((V2modelsIntentConfirmationSettingDeclinationConditional.fromMap((map['declinationConditional']! as Map).cast<String, dynamic>())).input()).input(),
+      declinationNextStep: map['declinationNextStep'] == null ? null : ((V2modelsIntentConfirmationSettingDeclinationNextStep.fromMap((map['declinationNextStep']! as Map).cast<String, dynamic>())).input()).input(),
+      declinationResponse: map['declinationResponse'] == null ? null : ((V2modelsIntentConfirmationSettingDeclinationResponse.fromMap((map['declinationResponse']! as Map).cast<String, dynamic>())).input()).input(),
+      elicitationCodeHook: map['elicitationCodeHook'] == null ? null : ((V2modelsIntentConfirmationSettingElicitationCodeHook.fromMap((map['elicitationCodeHook']! as Map).cast<String, dynamic>())).input()).input(),
+      failureConditional: map['failureConditional'] == null ? null : ((V2modelsIntentConfirmationSettingFailureConditional.fromMap((map['failureConditional']! as Map).cast<String, dynamic>())).input()).input(),
+      failureNextStep: map['failureNextStep'] == null ? null : ((V2modelsIntentConfirmationSettingFailureNextStep.fromMap((map['failureNextStep']! as Map).cast<String, dynamic>())).input()).input(),
+      failureResponse: map['failureResponse'] == null ? null : ((V2modelsIntentConfirmationSettingFailureResponse.fromMap((map['failureResponse']! as Map).cast<String, dynamic>())).input()).input(),
+      promptSpecification: map['promptSpecification'] == null ? null : ((V2modelsIntentConfirmationSettingPromptSpecification.fromMap((map['promptSpecification']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

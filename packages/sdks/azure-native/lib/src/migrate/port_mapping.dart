@@ -26,8 +26,8 @@ class PortMapping {
 
   factory PortMapping.fromMap(Map<String, dynamic> map) {
     return PortMapping(
-      externalPort: map['externalPort'] == null ? null : (map['externalPort'] as int).input(),
-      internalPort: map['internalPort'] == null ? null : (map['internalPort'] as int).input(),
+      externalPort: map['externalPort'] == null ? null : (map['externalPort']! as int).input(),
+      internalPort: map['internalPort'] == null ? null : (map['internalPort']! as int).input(),
     );
   }
 }

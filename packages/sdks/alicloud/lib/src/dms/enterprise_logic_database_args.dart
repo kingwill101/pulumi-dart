@@ -36,7 +36,7 @@ class EnterpriseLogicDatabaseArgs {
     return EnterpriseLogicDatabaseArgs(
       alias: (map['alias'] as String).input(),
       databaseIds: ((map['databaseIds'] as List).cast<String>()).input(),
-      logicDatabaseId: map['logicDatabaseId'] == null ? null : (map['logicDatabaseId'] as String).input(),
+      logicDatabaseId: map['logicDatabaseId'] == null ? null : (map['logicDatabaseId']! as String).input(),
     );
   }
 }

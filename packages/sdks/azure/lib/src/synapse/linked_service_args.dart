@@ -73,12 +73,12 @@ class LinkedServiceArgs {
 
   factory LinkedServiceArgs.fromMap(Map<String, dynamic> map) {
     return LinkedServiceArgs(
-      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      integrationRuntime: map['integrationRuntime'] == null ? null : (LinkedServiceIntegrationRuntime.fromMap((map['integrationRuntime'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties']! as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      integrationRuntime: map['integrationRuntime'] == null ? null : (LinkedServiceIntegrationRuntime.fromMap((map['integrationRuntime']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
       synapseWorkspaceId: (map['synapseWorkspaceId'] as String).input(),
       type: (map['type'] as String).input(),
       typePropertiesJson: (map['typePropertiesJson'] as String).input(),

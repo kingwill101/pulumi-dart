@@ -31,9 +31,9 @@ class BindOptions {
 
   factory BindOptions.fromMap(Map<String, dynamic> map) {
     return BindOptions(
-      createHostPath: map['createHostPath'] == null ? null : (map['createHostPath'] as bool).input(),
-      propagation: map['propagation'] == null ? null : (map['propagation'] as String).input(),
-      selinux: map['selinux'] == null ? null : (map['selinux'] as String).input(),
+      createHostPath: map['createHostPath'] == null ? null : (map['createHostPath']! as bool).input(),
+      propagation: map['propagation'] == null ? null : (map['propagation']! as String).input(),
+      selinux: map['selinux'] == null ? null : (map['selinux']! as String).input(),
     );
   }
 }

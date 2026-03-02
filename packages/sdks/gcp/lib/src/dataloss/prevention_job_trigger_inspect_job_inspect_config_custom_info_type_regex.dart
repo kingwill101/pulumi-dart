@@ -26,7 +26,7 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegex {
 
   factory PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegex.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegex(
-      groupIndexes: map['groupIndexes'] == null ? null : ((map['groupIndexes'] as List).cast<int>()).input(),
+      groupIndexes: map['groupIndexes'] == null ? null : ((map['groupIndexes']! as List).cast<int>()).input(),
       pattern: (map['pattern'] as String).input(),
     );
   }

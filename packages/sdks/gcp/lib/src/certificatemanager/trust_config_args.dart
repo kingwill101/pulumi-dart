@@ -63,13 +63,13 @@ class TrustConfigArgs {
 
   factory TrustConfigArgs.fromMap(Map<String, dynamic> map) {
     return TrustConfigArgs(
-      allowlistedCertificates: map['allowlistedCertificates'] == null ? null : (pulumi.Input.decodeList<TrustConfigAllowlistedCertificate>(map['allowlistedCertificates'], (value) => TrustConfigAllowlistedCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      allowlistedCertificates: map['allowlistedCertificates'] == null ? null : (pulumi.Input.decodeList<TrustConfigAllowlistedCertificate>(map['allowlistedCertificates']!, (value) => TrustConfigAllowlistedCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      trustStores: map['trustStores'] == null ? null : (pulumi.Input.decodeList<TrustConfigTrustStore>(map['trustStores'], (value) => TrustConfigTrustStore.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      trustStores: map['trustStores'] == null ? null : (pulumi.Input.decodeList<TrustConfigTrustStore>(map['trustStores']!, (value) => TrustConfigTrustStore.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

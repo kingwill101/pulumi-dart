@@ -27,7 +27,7 @@ class ManagedIdentityAuthenticationResponse {
   factory ManagedIdentityAuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return ManagedIdentityAuthenticationResponse(
       audience: (map['audience'] as String).input(),
-      extensionName: map['extensionName'] == null ? null : (map['extensionName'] as String).input(),
+      extensionName: map['extensionName'] == null ? null : (map['extensionName']! as String).input(),
     );
   }
 }

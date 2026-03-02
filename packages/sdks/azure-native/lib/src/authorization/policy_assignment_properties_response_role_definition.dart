@@ -31,9 +31,9 @@ class PolicyAssignmentPropertiesResponseRoleDefinition {
 
   factory PolicyAssignmentPropertiesResponseRoleDefinition.fromMap(Map<String, dynamic> map) {
     return PolicyAssignmentPropertiesResponseRoleDefinition(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

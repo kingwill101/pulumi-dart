@@ -36,7 +36,7 @@ class GetConfigurationKeyArgs {
     return GetConfigurationKeyArgs(
       configurationStoreId: (map['configurationStoreId'] as String).input(),
       key: (map['key'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
     );
   }
 }

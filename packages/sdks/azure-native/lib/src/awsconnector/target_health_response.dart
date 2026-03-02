@@ -33,9 +33,9 @@ class TargetHealthResponse {
 
   factory TargetHealthResponse.fromMap(Map<String, dynamic> map) {
     return TargetHealthResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      reason: map['reason'] == null ? null : (TargetHealthReasonEnumEnumValueResponse.fromMap((map['reason'] as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (TargetHealthStateEnumEnumValueResponse.fromMap((map['state'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      reason: map['reason'] == null ? null : (TargetHealthReasonEnumEnumValueResponse.fromMap((map['reason']! as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (TargetHealthStateEnumEnumValueResponse.fromMap((map['state']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class GoogleCloudDocumentaiV1DocumentPageDimension {
 
   factory GoogleCloudDocumentaiV1DocumentPageDimension.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageDimension(
-      height: map['height'] == null ? null : (map['height'] as double).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
-      width: map['width'] == null ? null : (map['width'] as double).input(),
+      height: map['height'] == null ? null : (map['height']! as double).input(),
+      unit: map['unit'] == null ? null : (map['unit']! as String).input(),
+      width: map['width'] == null ? null : (map['width']! as double).input(),
     );
   }
 }

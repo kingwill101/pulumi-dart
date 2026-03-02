@@ -32,9 +32,9 @@ class FirewallPolicyInsightsResponse {
 
   factory FirewallPolicyInsightsResponse.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyInsightsResponse(
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
-      logAnalyticsResources: map['logAnalyticsResources'] == null ? null : (FirewallPolicyLogAnalyticsResourcesResponse.fromMap((map['logAnalyticsResources'] as Map).cast<String, dynamic>())).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as bool).input(),
+      logAnalyticsResources: map['logAnalyticsResources'] == null ? null : (FirewallPolicyLogAnalyticsResourcesResponse.fromMap((map['logAnalyticsResources']! as Map).cast<String, dynamic>())).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
     );
   }
 }

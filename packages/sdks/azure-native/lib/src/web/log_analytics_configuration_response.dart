@@ -19,7 +19,7 @@ class LogAnalyticsConfigurationResponse {
 
   factory LogAnalyticsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsConfigurationResponse(
-      customerId: map['customerId'] == null ? null : (map['customerId'] as String).input(),
+      customerId: map['customerId'] == null ? null : (map['customerId']! as String).input(),
     );
   }
 }

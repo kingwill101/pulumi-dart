@@ -26,8 +26,8 @@ class RaiBlocklistItemPropertiesResponse {
 
   factory RaiBlocklistItemPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RaiBlocklistItemPropertiesResponse(
-      isRegex: map['isRegex'] == null ? null : (map['isRegex'] as bool).input(),
-      pattern: map['pattern'] == null ? null : (map['pattern'] as String).input(),
+      isRegex: map['isRegex'] == null ? null : (map['isRegex']! as bool).input(),
+      pattern: map['pattern'] == null ? null : (map['pattern']! as String).input(),
     );
   }
 }

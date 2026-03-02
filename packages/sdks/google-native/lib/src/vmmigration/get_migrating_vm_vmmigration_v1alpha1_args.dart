@@ -41,9 +41,9 @@ class GetMigratingVmVmmigrationV1alpha1Args {
     return GetMigratingVmVmmigrationV1alpha1Args(
       location: (map['location'] as String).input(),
       migratingVmId: (map['migratingVmId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       sourceId: (map['sourceId'] as String).input(),
-      view: map['view'] == null ? null : (map['view'] as String).input(),
+      view: map['view'] == null ? null : (map['view']! as String).input(),
     );
   }
 }

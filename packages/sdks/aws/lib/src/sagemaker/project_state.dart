@@ -57,14 +57,14 @@ class ProjectState {
 
   factory ProjectState.fromMap(Map<String, dynamic> map) {
     return ProjectState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      projectDescription: map['projectDescription'] == null ? null : (map['projectDescription'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceCatalogProvisioningDetails: map['serviceCatalogProvisioningDetails'] == null ? null : (ProjectServiceCatalogProvisioningDetails.fromMap((map['serviceCatalogProvisioningDetails'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      projectDescription: map['projectDescription'] == null ? null : ((map['projectDescription'] as String).input()).input(),
+      projectId: map['projectId'] == null ? null : ((map['projectId'] as String).input()).input(),
+      projectName: map['projectName'] == null ? null : ((map['projectName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serviceCatalogProvisioningDetails: map['serviceCatalogProvisioningDetails'] == null ? null : ((ProjectServiceCatalogProvisioningDetails.fromMap((map['serviceCatalogProvisioningDetails']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

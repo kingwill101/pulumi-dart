@@ -36,10 +36,10 @@ class PrivateLinkScopedServiceState {
 
   factory PrivateLinkScopedServiceState.fromMap(Map<String, dynamic> map) {
     return PrivateLinkScopedServiceState(
-      linkedResourceId: map['linkedResourceId'] == null ? null : (map['linkedResourceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      scopeName: map['scopeName'] == null ? null : (map['scopeName'] as String).input(),
+      linkedResourceId: map['linkedResourceId'] == null ? null : (map['linkedResourceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      scopeName: map['scopeName'] == null ? null : (map['scopeName']! as String).input(),
     );
   }
 }

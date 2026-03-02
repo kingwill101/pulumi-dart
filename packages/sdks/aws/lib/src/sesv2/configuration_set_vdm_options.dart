@@ -27,8 +27,8 @@ class ConfigurationSetVdmOptions {
 
   factory ConfigurationSetVdmOptions.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetVdmOptions(
-      dashboardOptions: map['dashboardOptions'] == null ? null : (ConfigurationSetVdmOptionsDashboardOptions.fromMap((map['dashboardOptions'] as Map).cast<String, dynamic>())).input(),
-      guardianOptions: map['guardianOptions'] == null ? null : (ConfigurationSetVdmOptionsGuardianOptions.fromMap((map['guardianOptions'] as Map).cast<String, dynamic>())).input(),
+      dashboardOptions: map['dashboardOptions'] == null ? null : ((ConfigurationSetVdmOptionsDashboardOptions.fromMap((map['dashboardOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      guardianOptions: map['guardianOptions'] == null ? null : ((ConfigurationSetVdmOptionsGuardianOptions.fromMap((map['guardianOptions']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

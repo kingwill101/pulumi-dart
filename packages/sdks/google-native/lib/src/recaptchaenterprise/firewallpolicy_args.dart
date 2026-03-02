@@ -49,12 +49,12 @@ class FirewallpolicyArgs {
 
   factory FirewallpolicyArgs.fromMap(Map<String, dynamic> map) {
     return FirewallpolicyArgs(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRecaptchaenterpriseV1FirewallAction>(map['actions'], (value) => GoogleCloudRecaptchaenterpriseV1FirewallAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRecaptchaenterpriseV1FirewallAction>(map['actions']!, (value) => GoogleCloudRecaptchaenterpriseV1FirewallAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -51,7 +51,7 @@ class MSTIDataConnectorArgs {
 
   factory MSTIDataConnectorArgs.fromMap(Map<String, dynamic> map) {
     return MSTIDataConnectorArgs(
-      dataConnectorId: map['dataConnectorId'] == null ? null : (map['dataConnectorId'] as String).input(),
+      dataConnectorId: map['dataConnectorId'] == null ? null : (map['dataConnectorId']! as String).input(),
       dataTypes: (MSTIDataConnectorDataTypes.fromMap((map['dataTypes'] as Map).cast<String, dynamic>())).input(),
       kind: (map['kind'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

@@ -36,9 +36,9 @@ class UserDetails {
 
   factory UserDetails.fromMap(Map<String, dynamic> map) {
     return UserDetails(
-      secretLocation: map['secretLocation'] == null ? null : (map['secretLocation'] as String).input(),
+      secretLocation: map['secretLocation'] == null ? null : (map['secretLocation']! as String).input(),
       secretType: (map['secretType'] as String).input(),
-      sshPubKey: map['sshPubKey'] == null ? null : ((map['sshPubKey'] as List).cast<String>()).input(),
+      sshPubKey: map['sshPubKey'] == null ? null : ((map['sshPubKey']! as List).cast<String>()).input(),
       userName: (map['userName'] as String).input(),
     );
   }

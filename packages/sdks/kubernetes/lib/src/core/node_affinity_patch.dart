@@ -28,8 +28,8 @@ class NodeAffinityPatch {
 
   factory NodeAffinityPatch.fromMap(Map<String, dynamic> map) {
     return NodeAffinityPatch(
-      preferredDuringSchedulingIgnoredDuringExecution: map['preferredDuringSchedulingIgnoredDuringExecution'] == null ? null : (pulumi.Input.decodeList<PreferredSchedulingTermPatch>(map['preferredDuringSchedulingIgnoredDuringExecution'], (value) => PreferredSchedulingTermPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requiredDuringSchedulingIgnoredDuringExecution: map['requiredDuringSchedulingIgnoredDuringExecution'] == null ? null : (NodeSelectorPatch.fromMap((map['requiredDuringSchedulingIgnoredDuringExecution'] as Map).cast<String, dynamic>())).input(),
+      preferredDuringSchedulingIgnoredDuringExecution: map['preferredDuringSchedulingIgnoredDuringExecution'] == null ? null : (pulumi.Input.decodeList<PreferredSchedulingTermPatch>(map['preferredDuringSchedulingIgnoredDuringExecution']!, (value) => PreferredSchedulingTermPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requiredDuringSchedulingIgnoredDuringExecution: map['requiredDuringSchedulingIgnoredDuringExecution'] == null ? null : (NodeSelectorPatch.fromMap((map['requiredDuringSchedulingIgnoredDuringExecution']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class WebAclDefaultAction {
 
   factory WebAclDefaultAction.fromMap(Map<String, dynamic> map) {
     return WebAclDefaultAction(
-      allow: map['allow'] == null ? null : (WebAclDefaultActionAllow.fromMap((map['allow'] as Map).cast<String, dynamic>())).input(),
-      block: map['block'] == null ? null : (WebAclDefaultActionBlock.fromMap((map['block'] as Map).cast<String, dynamic>())).input(),
+      allow: map['allow'] == null ? null : ((WebAclDefaultActionAllow.fromMap((map['allow']! as Map).cast<String, dynamic>())).input()).input(),
+      block: map['block'] == null ? null : ((WebAclDefaultActionBlock.fromMap((map['block']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

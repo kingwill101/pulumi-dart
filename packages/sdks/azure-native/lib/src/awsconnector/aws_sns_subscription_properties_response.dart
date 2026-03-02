@@ -41,11 +41,11 @@ class AwsSnsSubscriptionPropertiesResponse {
 
   factory AwsSnsSubscriptionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsSnsSubscriptionPropertiesResponse(
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      subscriptionArn: map['subscriptionArn'] == null ? null : (map['subscriptionArn'] as String).input(),
-      topicArn: map['topicArn'] == null ? null : (map['topicArn'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      subscriptionArn: map['subscriptionArn'] == null ? null : (map['subscriptionArn']! as String).input(),
+      topicArn: map['topicArn'] == null ? null : (map['topicArn']! as String).input(),
     );
   }
 }

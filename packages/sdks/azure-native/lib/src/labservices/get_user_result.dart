@@ -87,7 +87,7 @@ class GetUserResult {
 
   factory GetUserResult.fromMap(Map<String, dynamic> map) {
     return GetUserResult(
-      additionalUsageQuota: map['additionalUsageQuota'] == null ? null : map['additionalUsageQuota'] as String,
+      additionalUsageQuota: map['additionalUsageQuota'] == null ? null : map['additionalUsageQuota']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       displayName: map['displayName'] as String,
       email: map['email'] as String,

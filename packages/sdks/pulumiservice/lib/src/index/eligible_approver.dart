@@ -31,9 +31,9 @@ class EligibleApprover {
 
   factory EligibleApprover.fromMap(Map<String, dynamic> map) {
     return EligibleApprover(
-      rbacPermission: map['rbacPermission'] == null ? null : (RbacPermission.fromValue(map['rbacPermission'] as String)).input(),
-      teamName: map['teamName'] == null ? null : (map['teamName'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      rbacPermission: map['rbacPermission'] == null ? null : (RbacPermission.fromValue(map['rbacPermission']! as String)).input(),
+      teamName: map['teamName'] == null ? null : (map['teamName']! as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

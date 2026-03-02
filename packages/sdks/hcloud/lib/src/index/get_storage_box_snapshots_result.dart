@@ -39,7 +39,7 @@ class GetStorageBoxSnapshotsResult {
       id: map['id'] as String,
       snapshots: pulumi.Input.decodeList<GetStorageBoxSnapshotsSnapshot>(map['snapshots'], (value) => GetStorageBoxSnapshotsSnapshot.fromMap((value as Map).cast<String, dynamic>())),
       storageBoxId: map['storageBoxId'] as int,
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
     );
   }
 }

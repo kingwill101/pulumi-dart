@@ -35,9 +35,9 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow {
 
   factory DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow.fromMap(Map<String, dynamic> map) {
     return DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow(
-      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((map['daysOfWeeks'] as List).cast<String>()).input(),
-      endTime: map['endTime'] == null ? null : (DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime.fromMap((map['endTime'] as Map).cast<String, dynamic>())).input(),
-      startTime: map['startTime'] == null ? null : (DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime.fromMap((map['startTime'] as Map).cast<String, dynamic>())).input(),
+      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((map['daysOfWeeks']! as List).cast<String>()).input(),
+      endTime: map['endTime'] == null ? null : (DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime.fromMap((map['endTime']! as Map).cast<String, dynamic>())).input(),
+      startTime: map['startTime'] == null ? null : (DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime.fromMap((map['startTime']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

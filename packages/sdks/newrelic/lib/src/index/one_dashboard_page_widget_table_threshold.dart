@@ -35,10 +35,10 @@ class OneDashboardPageWidgetTableThreshold {
 
   factory OneDashboardPageWidgetTableThreshold.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetTableThreshold(
-      columnName: map['columnName'] == null ? null : (map['columnName'] as String).input(),
-      from: map['from'] == null ? null : (map['from'] as String).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
-      to: map['to'] == null ? null : (map['to'] as String).input(),
+      columnName: map['columnName'] == null ? null : (map['columnName']! as String).input(),
+      from: map['from'] == null ? null : (map['from']! as String).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
+      to: map['to'] == null ? null : (map['to']! as String).input(),
     );
   }
 }

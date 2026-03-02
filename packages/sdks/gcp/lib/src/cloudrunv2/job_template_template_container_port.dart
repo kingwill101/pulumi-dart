@@ -25,8 +25,8 @@ class JobTemplateTemplateContainerPort {
 
   factory JobTemplateTemplateContainerPort.fromMap(Map<String, dynamic> map) {
     return JobTemplateTemplateContainerPort(
-      containerPort: map['containerPort'] == null ? null : (map['containerPort'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      containerPort: map['containerPort'] == null ? null : (map['containerPort']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

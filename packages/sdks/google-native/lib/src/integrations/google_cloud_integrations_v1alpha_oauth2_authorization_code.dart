@@ -74,17 +74,17 @@ class GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode {
 
   factory GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode(
-      accessToken: map['accessToken'] == null ? null : (GoogleCloudIntegrationsV1alphaAccessToken.fromMap((map['accessToken'] as Map).cast<String, dynamic>())).input(),
-      applyReauthPolicy: map['applyReauthPolicy'] == null ? null : (map['applyReauthPolicy'] as bool).input(),
-      authCode: map['authCode'] == null ? null : (map['authCode'] as String).input(),
-      authEndpoint: map['authEndpoint'] == null ? null : (map['authEndpoint'] as String).input(),
-      authParams: map['authParams'] == null ? null : (GoogleCloudIntegrationsV1alphaParameterMap.fromMap((map['authParams'] as Map).cast<String, dynamic>())).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      requestType: map['requestType'] == null ? null : (GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestType.fromValue(map['requestType'] as String)).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      tokenEndpoint: map['tokenEndpoint'] == null ? null : (map['tokenEndpoint'] as String).input(),
-      tokenParams: map['tokenParams'] == null ? null : (GoogleCloudIntegrationsV1alphaParameterMap.fromMap((map['tokenParams'] as Map).cast<String, dynamic>())).input(),
+      accessToken: map['accessToken'] == null ? null : (GoogleCloudIntegrationsV1alphaAccessToken.fromMap((map['accessToken']! as Map).cast<String, dynamic>())).input(),
+      applyReauthPolicy: map['applyReauthPolicy'] == null ? null : (map['applyReauthPolicy']! as bool).input(),
+      authCode: map['authCode'] == null ? null : (map['authCode']! as String).input(),
+      authEndpoint: map['authEndpoint'] == null ? null : (map['authEndpoint']! as String).input(),
+      authParams: map['authParams'] == null ? null : (GoogleCloudIntegrationsV1alphaParameterMap.fromMap((map['authParams']! as Map).cast<String, dynamic>())).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      requestType: map['requestType'] == null ? null : (GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestType.fromValue(map['requestType']! as String)).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      tokenEndpoint: map['tokenEndpoint'] == null ? null : (map['tokenEndpoint']! as String).input(),
+      tokenParams: map['tokenParams'] == null ? null : (GoogleCloudIntegrationsV1alphaParameterMap.fromMap((map['tokenParams']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

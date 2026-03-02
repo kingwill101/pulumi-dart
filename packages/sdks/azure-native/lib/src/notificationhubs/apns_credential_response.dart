@@ -59,14 +59,14 @@ class ApnsCredentialResponse {
 
   factory ApnsCredentialResponse.fromMap(Map<String, dynamic> map) {
     return ApnsCredentialResponse(
-      apnsCertificate: map['apnsCertificate'] == null ? null : (map['apnsCertificate'] as String).input(),
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      appName: map['appName'] == null ? null : (map['appName'] as String).input(),
-      certificateKey: map['certificateKey'] == null ? null : (map['certificateKey'] as String).input(),
+      apnsCertificate: map['apnsCertificate'] == null ? null : (map['apnsCertificate']! as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      appName: map['appName'] == null ? null : (map['appName']! as String).input(),
+      certificateKey: map['certificateKey'] == null ? null : (map['certificateKey']! as String).input(),
       endpoint: (map['endpoint'] as String).input(),
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
     );
   }
 }

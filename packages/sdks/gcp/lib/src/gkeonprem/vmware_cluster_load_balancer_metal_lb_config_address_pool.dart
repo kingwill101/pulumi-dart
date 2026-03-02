@@ -42,8 +42,8 @@ class VMwareClusterLoadBalancerMetalLbConfigAddressPool {
   factory VMwareClusterLoadBalancerMetalLbConfigAddressPool.fromMap(Map<String, dynamic> map) {
     return VMwareClusterLoadBalancerMetalLbConfigAddressPool(
       addresses: ((map['addresses'] as List).cast<String>()).input(),
-      avoidBuggyIps: map['avoidBuggyIps'] == null ? null : (map['avoidBuggyIps'] as bool).input(),
-      manualAssign: map['manualAssign'] == null ? null : (map['manualAssign'] as bool).input(),
+      avoidBuggyIps: map['avoidBuggyIps'] == null ? null : (map['avoidBuggyIps']! as bool).input(),
+      manualAssign: map['manualAssign'] == null ? null : (map['manualAssign']! as bool).input(),
       pool: (map['pool'] as String).input(),
     );
   }

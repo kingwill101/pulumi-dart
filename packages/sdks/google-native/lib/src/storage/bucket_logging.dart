@@ -26,8 +26,8 @@ class BucketLogging {
 
   factory BucketLogging.fromMap(Map<String, dynamic> map) {
     return BucketLogging(
-      logBucket: map['logBucket'] == null ? null : (map['logBucket'] as String).input(),
-      logObjectPrefix: map['logObjectPrefix'] == null ? null : (map['logObjectPrefix'] as String).input(),
+      logBucket: map['logBucket'] == null ? null : (map['logBucket']! as String).input(),
+      logObjectPrefix: map['logObjectPrefix'] == null ? null : (map['logObjectPrefix']! as String).input(),
     );
   }
 }

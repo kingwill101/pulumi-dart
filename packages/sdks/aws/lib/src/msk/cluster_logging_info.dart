@@ -21,7 +21,7 @@ class ClusterLoggingInfo {
 
   factory ClusterLoggingInfo.fromMap(Map<String, dynamic> map) {
     return ClusterLoggingInfo(
-      brokerLogs: (ClusterLoggingInfoBrokerLogs.fromMap((map['brokerLogs'] as Map).cast<String, dynamic>())).input(),
+      brokerLogs: (ClusterLoggingInfoBrokerLogs.fromMap((map['brokerLogs']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

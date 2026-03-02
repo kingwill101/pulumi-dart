@@ -27,8 +27,8 @@ class DaprSubscriptionRoutesResponse {
 
   factory DaprSubscriptionRoutesResponse.fromMap(Map<String, dynamic> map) {
     return DaprSubscriptionRoutesResponse(
-      default_: map['default'] == null ? null : (map['default'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<DaprSubscriptionRouteRuleResponse>(map['rules'], (value) => DaprSubscriptionRouteRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      default_: map['default'] == null ? null : (map['default']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<DaprSubscriptionRouteRuleResponse>(map['rules']!, (value) => DaprSubscriptionRouteRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

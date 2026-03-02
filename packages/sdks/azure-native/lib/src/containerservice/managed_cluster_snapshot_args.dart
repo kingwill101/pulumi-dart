@@ -50,12 +50,12 @@ class ManagedClusterSnapshotArgs {
 
   factory ManagedClusterSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return ManagedClusterSnapshotArgs(
-      creationData: map['creationData'] == null ? null : (CreationData.fromMap((map['creationData'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      creationData: map['creationData'] == null ? null : (CreationData.fromMap((map['creationData']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
-      snapshotType: map['snapshotType'] == null ? null : (map['snapshotType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
+      snapshotType: map['snapshotType'] == null ? null : (map['snapshotType']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

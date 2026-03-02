@@ -32,8 +32,8 @@ class ContainerConfiguration {
 
   factory ContainerConfiguration.fromMap(Map<String, dynamic> map) {
     return ContainerConfiguration(
-      containerImageNames: map['containerImageNames'] == null ? null : ((map['containerImageNames'] as List).cast<String>()).input(),
-      containerRegistries: map['containerRegistries'] == null ? null : (pulumi.Input.decodeList<ContainerRegistry>(map['containerRegistries'], (value) => ContainerRegistry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containerImageNames: map['containerImageNames'] == null ? null : ((map['containerImageNames']! as List).cast<String>()).input(),
+      containerRegistries: map['containerRegistries'] == null ? null : (pulumi.Input.decodeList<ContainerRegistry>(map['containerRegistries']!, (value) => ContainerRegistry.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
     );
   }

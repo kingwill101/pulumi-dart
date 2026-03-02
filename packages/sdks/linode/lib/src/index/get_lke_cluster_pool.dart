@@ -96,7 +96,7 @@ class GetLkeClusterPool {
       firewallId: (map['firewallId'] as int).input(),
       id: (map['id'] as int).input(),
       k8sVersion: (map['k8sVersion'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
       labels: ((map['labels'] as Map).cast<String, String>()).input(),
       nodes: (pulumi.Input.decodeList<GetLkeClusterPoolNode>(map['nodes'], (value) => GetLkeClusterPoolNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
       tags: ((map['tags'] as List).cast<String>()).input(),

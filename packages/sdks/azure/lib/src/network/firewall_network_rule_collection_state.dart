@@ -47,12 +47,12 @@ class FirewallNetworkRuleCollectionState {
 
   factory FirewallNetworkRuleCollectionState.fromMap(Map<String, dynamic> map) {
     return FirewallNetworkRuleCollectionState(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      azureFirewallName: map['azureFirewallName'] == null ? null : (map['azureFirewallName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<FirewallNetworkRuleCollectionRule>(map['rules'], (value) => FirewallNetworkRuleCollectionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      azureFirewallName: map['azureFirewallName'] == null ? null : (map['azureFirewallName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<FirewallNetworkRuleCollectionRule>(map['rules']!, (value) => FirewallNetworkRuleCollectionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

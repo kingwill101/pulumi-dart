@@ -36,10 +36,10 @@ class Criterion {
 
   factory Criterion.fromMap(Map<String, dynamic> map) {
     return Criterion(
-      asPath: map['asPath'] == null ? null : ((map['asPath'] as List).cast<String>()).input(),
-      community: map['community'] == null ? null : ((map['community'] as List).cast<String>()).input(),
-      matchCondition: map['matchCondition'] == null ? null : (map['matchCondition'] as String).input(),
-      routePrefix: map['routePrefix'] == null ? null : ((map['routePrefix'] as List).cast<String>()).input(),
+      asPath: map['asPath'] == null ? null : ((map['asPath']! as List).cast<String>()).input(),
+      community: map['community'] == null ? null : ((map['community']! as List).cast<String>()).input(),
+      matchCondition: map['matchCondition'] == null ? null : (map['matchCondition']! as String).input(),
+      routePrefix: map['routePrefix'] == null ? null : ((map['routePrefix']! as List).cast<String>()).input(),
     );
   }
 }

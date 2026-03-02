@@ -31,9 +31,9 @@ class RetentionPolicyResponse {
 
   factory RetentionPolicyResponse.fromMap(Map<String, dynamic> map) {
     return RetentionPolicyResponse(
-      days: map['days'] == null ? null : (map['days'] as int).input(),
+      days: map['days'] == null ? null : (map['days']! as int).input(),
       lastUpdatedTime: (map['lastUpdatedTime'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

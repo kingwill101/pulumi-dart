@@ -25,7 +25,7 @@ class InterconnectGroupPhysicalStructure {
 
   factory InterconnectGroupPhysicalStructure.fromMap(Map<String, dynamic> map) {
     return InterconnectGroupPhysicalStructure(
-      metros: map['metros'] == null ? null : (pulumi.Input.decodeList<InterconnectGroupPhysicalStructureMetro>(map['metros'], (value) => InterconnectGroupPhysicalStructureMetro.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metros: map['metros'] == null ? null : (pulumi.Input.decodeList<InterconnectGroupPhysicalStructureMetro>(map['metros']!, (value) => InterconnectGroupPhysicalStructureMetro.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

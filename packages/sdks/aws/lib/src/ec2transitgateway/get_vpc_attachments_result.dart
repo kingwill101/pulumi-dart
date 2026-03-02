@@ -35,7 +35,7 @@ class GetVpcAttachmentsResult {
 
   factory GetVpcAttachmentsResult.fromMap(Map<String, dynamic> map) {
     return GetVpcAttachmentsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVpcAttachmentsFilter>(map['filters'], (value) => GetVpcAttachmentsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVpcAttachmentsFilter>(map['filters']!, (value) => GetVpcAttachmentsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       region: map['region'] as String,

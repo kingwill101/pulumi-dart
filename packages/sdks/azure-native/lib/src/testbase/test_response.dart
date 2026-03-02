@@ -43,7 +43,7 @@ class TestResponse {
   factory TestResponse.fromMap(Map<String, dynamic> map) {
     return TestResponse(
       commands: (pulumi.Input.decodeList<CommandResponse>(map['commands'], (value) => CommandResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      isActive: map['isActive'] == null ? null : (map['isActive'] as bool).input(),
+      isActive: map['isActive'] == null ? null : (map['isActive']! as bool).input(),
       testType: (map['testType'] as String).input(),
       validationResultId: (map['validationResultId'] as String).input(),
       validationRunStatus: (map['validationRunStatus'] as String).input(),

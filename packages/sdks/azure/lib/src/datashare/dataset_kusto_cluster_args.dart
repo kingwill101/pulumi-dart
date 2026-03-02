@@ -35,7 +35,7 @@ class DatasetKustoClusterArgs {
   factory DatasetKustoClusterArgs.fromMap(Map<String, dynamic> map) {
     return DatasetKustoClusterArgs(
       kustoClusterId: (map['kustoClusterId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       shareId: (map['shareId'] as String).input(),
     );
   }

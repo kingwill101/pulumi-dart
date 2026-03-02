@@ -28,8 +28,8 @@ class ScaleSettings {
 
   factory ScaleSettings.fromMap(Map<String, dynamic> map) {
     return ScaleSettings(
-      autoScale: map['autoScale'] == null ? null : (AutoScaleSettings.fromMap((map['autoScale'] as Map).cast<String, dynamic>())).input(),
-      fixedScale: map['fixedScale'] == null ? null : (FixedScaleSettings.fromMap((map['fixedScale'] as Map).cast<String, dynamic>())).input(),
+      autoScale: map['autoScale'] == null ? null : (AutoScaleSettings.fromMap((map['autoScale']! as Map).cast<String, dynamic>())).input(),
+      fixedScale: map['fixedScale'] == null ? null : (FixedScaleSettings.fromMap((map['fixedScale']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -60,7 +60,7 @@ class GetMapResult {
 
   factory GetMapResult.fromMap(Map<String, dynamic> map) {
     return GetMapResult(
-      configurations: pulumi.Input.decodeList<GetMapConfiguration>(map['configurations'], (value) => GetMapConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      configurations: pulumi.Input.decodeList<GetMapConfiguration>(map['configurations']!, (value) => GetMapConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       createTime: map['createTime'] as String,
       description: map['description'] as String,
       id: map['id'] as String,

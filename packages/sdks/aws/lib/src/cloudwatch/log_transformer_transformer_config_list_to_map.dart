@@ -45,12 +45,12 @@ class LogTransformerTransformerConfigListToMap {
 
   factory LogTransformerTransformerConfigListToMap.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigListToMap(
-      flatten: map['flatten'] == null ? null : (map['flatten'] as bool).input(),
-      flattenedElement: map['flattenedElement'] == null ? null : (map['flattenedElement'] as String).input(),
+      flatten: map['flatten'] == null ? null : ((map['flatten'] as bool).input()).input(),
+      flattenedElement: map['flattenedElement'] == null ? null : ((map['flattenedElement'] as String).input()).input(),
       key: (map['key'] as String).input(),
       source: (map['source'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
-      valueKey: map['valueKey'] == null ? null : (map['valueKey'] as String).input(),
+      target: map['target'] == null ? null : ((map['target'] as String).input()).input(),
+      valueKey: map['valueKey'] == null ? null : ((map['valueKey'] as String).input()).input(),
     );
   }
 }

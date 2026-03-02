@@ -54,13 +54,13 @@ class BucketV2ReplicationConfigurationRuleDestination {
 
   factory BucketV2ReplicationConfigurationRuleDestination.fromMap(Map<String, dynamic> map) {
     return BucketV2ReplicationConfigurationRuleDestination(
-      accessControlTranslations: map['accessControlTranslations'] == null ? null : (pulumi.Input.decodeList<BucketV2ReplicationConfigurationRuleDestinationAccessControlTranslation>(map['accessControlTranslations'], (value) => BucketV2ReplicationConfigurationRuleDestinationAccessControlTranslation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accessControlTranslations: map['accessControlTranslations'] == null ? null : ((pulumi.Input.decodeList<BucketV2ReplicationConfigurationRuleDestinationAccessControlTranslation>(map['accessControlTranslations']!, (value) => BucketV2ReplicationConfigurationRuleDestinationAccessControlTranslation.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
       bucket: (map['bucket'] as String).input(),
-      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<BucketV2ReplicationConfigurationRuleDestinationMetric>(map['metrics'], (value) => BucketV2ReplicationConfigurationRuleDestinationMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      replicaKmsKeyId: map['replicaKmsKeyId'] == null ? null : (map['replicaKmsKeyId'] as String).input(),
-      replicationTimes: map['replicationTimes'] == null ? null : (pulumi.Input.decodeList<BucketV2ReplicationConfigurationRuleDestinationReplicationTime>(map['replicationTimes'], (value) => BucketV2ReplicationConfigurationRuleDestinationReplicationTime.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      storageClass: map['storageClass'] == null ? null : (map['storageClass'] as String).input(),
+      metrics: map['metrics'] == null ? null : ((pulumi.Input.decodeList<BucketV2ReplicationConfigurationRuleDestinationMetric>(map['metrics']!, (value) => BucketV2ReplicationConfigurationRuleDestinationMetric.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      replicaKmsKeyId: map['replicaKmsKeyId'] == null ? null : ((map['replicaKmsKeyId'] as String).input()).input(),
+      replicationTimes: map['replicationTimes'] == null ? null : ((pulumi.Input.decodeList<BucketV2ReplicationConfigurationRuleDestinationReplicationTime>(map['replicationTimes']!, (value) => BucketV2ReplicationConfigurationRuleDestinationReplicationTime.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      storageClass: map['storageClass'] == null ? null : ((map['storageClass'] as String).input()).input(),
     );
   }
 }

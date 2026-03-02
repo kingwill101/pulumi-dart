@@ -35,10 +35,10 @@ class DomainDevicesDiskMirrorBackingStoreSourceNetworkHost {
 
   factory DomainDevicesDiskMirrorBackingStoreSourceNetworkHost.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorBackingStoreSourceNetworkHost(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      socket: map['socket'] == null ? null : (map['socket'] as String).input(),
-      transport: map['transport'] == null ? null : (map['transport'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      socket: map['socket'] == null ? null : (map['socket']! as String).input(),
+      transport: map['transport'] == null ? null : (map['transport']! as String).input(),
     );
   }
 }

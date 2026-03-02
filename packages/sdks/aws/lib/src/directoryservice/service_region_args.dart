@@ -50,12 +50,12 @@ class ServiceRegionArgs {
 
   factory ServiceRegionArgs.fromMap(Map<String, dynamic> map) {
     return ServiceRegionArgs(
-      desiredNumberOfDomainControllers: map['desiredNumberOfDomainControllers'] == null ? null : (map['desiredNumberOfDomainControllers'] as int).input(),
+      desiredNumberOfDomainControllers: map['desiredNumberOfDomainControllers'] == null ? null : ((map['desiredNumberOfDomainControllers'] as int).input()).input(),
       directoryId: (map['directoryId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       regionName: (map['regionName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcSettings: (ServiceRegionVpcSettings.fromMap((map['vpcSettings'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      vpcSettings: (ServiceRegionVpcSettings.fromMap((map['vpcSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

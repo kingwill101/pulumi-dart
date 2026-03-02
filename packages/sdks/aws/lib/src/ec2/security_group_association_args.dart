@@ -39,8 +39,8 @@ class SecurityGroupAssociationArgs {
 
   factory SecurityGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
     return SecurityGroupAssociationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      replaceDefaultAssociation: map['replaceDefaultAssociation'] == null ? null : (map['replaceDefaultAssociation'] as bool).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      replaceDefaultAssociation: map['replaceDefaultAssociation'] == null ? null : ((map['replaceDefaultAssociation'] as bool).input()).input(),
       securityGroupId: (map['securityGroupId'] as String).input(),
       vpcEndpointId: (map['vpcEndpointId'] as String).input(),
     );

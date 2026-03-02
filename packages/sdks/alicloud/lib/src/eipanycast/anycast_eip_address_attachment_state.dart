@@ -66,15 +66,15 @@ class AnycastEipAddressAttachmentState {
 
   factory AnycastEipAddressAttachmentState.fromMap(Map<String, dynamic> map) {
     return AnycastEipAddressAttachmentState(
-      anycastId: map['anycastId'] == null ? null : (map['anycastId'] as String).input(),
-      associationMode: map['associationMode'] == null ? null : (map['associationMode'] as String).input(),
-      bindInstanceId: map['bindInstanceId'] == null ? null : (map['bindInstanceId'] as String).input(),
-      bindInstanceRegionId: map['bindInstanceRegionId'] == null ? null : (map['bindInstanceRegionId'] as String).input(),
-      bindInstanceType: map['bindInstanceType'] == null ? null : (map['bindInstanceType'] as String).input(),
-      bindTime: map['bindTime'] == null ? null : (map['bindTime'] as String).input(),
-      popLocations: map['popLocations'] == null ? null : (pulumi.Input.decodeList<AnycastEipAddressAttachmentPopLocation>(map['popLocations'], (value) => AnycastEipAddressAttachmentPopLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      anycastId: map['anycastId'] == null ? null : (map['anycastId']! as String).input(),
+      associationMode: map['associationMode'] == null ? null : (map['associationMode']! as String).input(),
+      bindInstanceId: map['bindInstanceId'] == null ? null : (map['bindInstanceId']! as String).input(),
+      bindInstanceRegionId: map['bindInstanceRegionId'] == null ? null : (map['bindInstanceRegionId']! as String).input(),
+      bindInstanceType: map['bindInstanceType'] == null ? null : (map['bindInstanceType']! as String).input(),
+      bindTime: map['bindTime'] == null ? null : (map['bindTime']! as String).input(),
+      popLocations: map['popLocations'] == null ? null : (pulumi.Input.decodeList<AnycastEipAddressAttachmentPopLocation>(map['popLocations']!, (value) => AnycastEipAddressAttachmentPopLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

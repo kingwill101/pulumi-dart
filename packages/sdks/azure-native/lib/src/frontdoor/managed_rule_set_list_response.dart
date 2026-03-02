@@ -22,7 +22,7 @@ class ManagedRuleSetListResponse {
 
   factory ManagedRuleSetListResponse.fromMap(Map<String, dynamic> map) {
     return ManagedRuleSetListResponse(
-      managedRuleSets: map['managedRuleSets'] == null ? null : (pulumi.Input.decodeList<ManagedRuleSetResponse>(map['managedRuleSets'], (value) => ManagedRuleSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managedRuleSets: map['managedRuleSets'] == null ? null : (pulumi.Input.decodeList<ManagedRuleSetResponse>(map['managedRuleSets']!, (value) => ManagedRuleSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

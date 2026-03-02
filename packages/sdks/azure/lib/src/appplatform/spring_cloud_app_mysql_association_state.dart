@@ -46,12 +46,12 @@ class SpringCloudAppMysqlAssociationState {
 
   factory SpringCloudAppMysqlAssociationState.fromMap(Map<String, dynamic> map) {
     return SpringCloudAppMysqlAssociationState(
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      mysqlServerId: map['mysqlServerId'] == null ? null : (map['mysqlServerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      springCloudAppId: map['springCloudAppId'] == null ? null : (map['springCloudAppId'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
+      mysqlServerId: map['mysqlServerId'] == null ? null : (map['mysqlServerId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      springCloudAppId: map['springCloudAppId'] == null ? null : (map['springCloudAppId']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

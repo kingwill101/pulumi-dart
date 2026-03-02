@@ -97,19 +97,19 @@ class WatchlistState {
 
   factory WatchlistState.fromMap(Map<String, dynamic> map) {
     return WatchlistState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      entityCounts: map['entityCounts'] == null ? null : (pulumi.Input.decodeList<WatchlistEntityCount>(map['entityCounts'], (value) => WatchlistEntityCount.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      entityPopulationMechanism: map['entityPopulationMechanism'] == null ? null : (WatchlistEntityPopulationMechanism.fromMap((map['entityPopulationMechanism'] as Map).cast<String, dynamic>())).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      multiplyingFactor: map['multiplyingFactor'] == null ? null : (map['multiplyingFactor'] as double).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      watchlistId: map['watchlistId'] == null ? null : (map['watchlistId'] as String).input(),
-      watchlistUserPreferences: map['watchlistUserPreferences'] == null ? null : (WatchlistWatchlistUserPreferences.fromMap((map['watchlistUserPreferences'] as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      entityCounts: map['entityCounts'] == null ? null : (pulumi.Input.decodeList<WatchlistEntityCount>(map['entityCounts']!, (value) => WatchlistEntityCount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entityPopulationMechanism: map['entityPopulationMechanism'] == null ? null : (WatchlistEntityPopulationMechanism.fromMap((map['entityPopulationMechanism']! as Map).cast<String, dynamic>())).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      multiplyingFactor: map['multiplyingFactor'] == null ? null : (map['multiplyingFactor']! as double).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      watchlistId: map['watchlistId'] == null ? null : (map['watchlistId']! as String).input(),
+      watchlistUserPreferences: map['watchlistUserPreferences'] == null ? null : (WatchlistWatchlistUserPreferences.fromMap((map['watchlistUserPreferences']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

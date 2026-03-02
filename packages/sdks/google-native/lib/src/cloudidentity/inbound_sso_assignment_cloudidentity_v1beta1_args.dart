@@ -57,13 +57,13 @@ class InboundSsoAssignmentCloudidentityV1beta1Args {
 
   factory InboundSsoAssignmentCloudidentityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return InboundSsoAssignmentCloudidentityV1beta1Args(
-      customer: map['customer'] == null ? null : (map['customer'] as String).input(),
-      rank: map['rank'] == null ? null : (map['rank'] as int).input(),
-      samlSsoInfo: map['samlSsoInfo'] == null ? null : (SamlSsoInfoCloudidentityV1beta1.fromMap((map['samlSsoInfo'] as Map).cast<String, dynamic>())).input(),
-      signInBehavior: map['signInBehavior'] == null ? null : (SignInBehaviorCloudidentityV1beta1.fromMap((map['signInBehavior'] as Map).cast<String, dynamic>())).input(),
-      ssoMode: map['ssoMode'] == null ? null : (InboundSsoAssignmentSsoModeCloudidentityV1beta1.fromValue(map['ssoMode'] as String)).input(),
-      targetGroup: map['targetGroup'] == null ? null : (map['targetGroup'] as String).input(),
-      targetOrgUnit: map['targetOrgUnit'] == null ? null : (map['targetOrgUnit'] as String).input(),
+      customer: map['customer'] == null ? null : (map['customer']! as String).input(),
+      rank: map['rank'] == null ? null : (map['rank']! as int).input(),
+      samlSsoInfo: map['samlSsoInfo'] == null ? null : (SamlSsoInfoCloudidentityV1beta1.fromMap((map['samlSsoInfo']! as Map).cast<String, dynamic>())).input(),
+      signInBehavior: map['signInBehavior'] == null ? null : (SignInBehaviorCloudidentityV1beta1.fromMap((map['signInBehavior']! as Map).cast<String, dynamic>())).input(),
+      ssoMode: map['ssoMode'] == null ? null : (InboundSsoAssignmentSsoModeCloudidentityV1beta1.fromValue(map['ssoMode']! as String)).input(),
+      targetGroup: map['targetGroup'] == null ? null : (map['targetGroup']! as String).input(),
+      targetOrgUnit: map['targetOrgUnit'] == null ? null : (map['targetOrgUnit']! as String).input(),
     );
   }
 }

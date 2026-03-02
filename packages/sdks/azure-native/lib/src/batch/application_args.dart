@@ -55,12 +55,12 @@ class ApplicationArgs {
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
       accountName: (map['accountName'] as String).input(),
-      allowUpdates: map['allowUpdates'] == null ? null : (map['allowUpdates'] as bool).input(),
-      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
-      defaultVersion: map['defaultVersion'] == null ? null : (map['defaultVersion'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      allowUpdates: map['allowUpdates'] == null ? null : (map['allowUpdates']! as bool).input(),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName']! as String).input(),
+      defaultVersion: map['defaultVersion'] == null ? null : (map['defaultVersion']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -64,13 +64,13 @@ class BackendServiceCdnPolicyCacheKeyPolicy {
 
   factory BackendServiceCdnPolicyCacheKeyPolicy.fromMap(Map<String, dynamic> map) {
     return BackendServiceCdnPolicyCacheKeyPolicy(
-      includeHost: map['includeHost'] == null ? null : (map['includeHost'] as bool).input(),
-      includeHttpHeaders: map['includeHttpHeaders'] == null ? null : ((map['includeHttpHeaders'] as List).cast<String>()).input(),
-      includeNamedCookies: map['includeNamedCookies'] == null ? null : ((map['includeNamedCookies'] as List).cast<String>()).input(),
-      includeProtocol: map['includeProtocol'] == null ? null : (map['includeProtocol'] as bool).input(),
-      includeQueryString: map['includeQueryString'] == null ? null : (map['includeQueryString'] as bool).input(),
-      queryStringBlacklists: map['queryStringBlacklists'] == null ? null : ((map['queryStringBlacklists'] as List).cast<String>()).input(),
-      queryStringWhitelists: map['queryStringWhitelists'] == null ? null : ((map['queryStringWhitelists'] as List).cast<String>()).input(),
+      includeHost: map['includeHost'] == null ? null : (map['includeHost']! as bool).input(),
+      includeHttpHeaders: map['includeHttpHeaders'] == null ? null : ((map['includeHttpHeaders']! as List).cast<String>()).input(),
+      includeNamedCookies: map['includeNamedCookies'] == null ? null : ((map['includeNamedCookies']! as List).cast<String>()).input(),
+      includeProtocol: map['includeProtocol'] == null ? null : (map['includeProtocol']! as bool).input(),
+      includeQueryString: map['includeQueryString'] == null ? null : (map['includeQueryString']! as bool).input(),
+      queryStringBlacklists: map['queryStringBlacklists'] == null ? null : ((map['queryStringBlacklists']! as List).cast<String>()).input(),
+      queryStringWhitelists: map['queryStringWhitelists'] == null ? null : ((map['queryStringWhitelists']! as List).cast<String>()).input(),
     );
   }
 }

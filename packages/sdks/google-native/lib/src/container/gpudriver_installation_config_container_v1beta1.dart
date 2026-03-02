@@ -22,7 +22,7 @@ class GPUDriverInstallationConfigContainerV1beta1 {
 
   factory GPUDriverInstallationConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return GPUDriverInstallationConfigContainerV1beta1(
-      gpuDriverVersion: map['gpuDriverVersion'] == null ? null : (GPUDriverInstallationConfigGpuDriverVersionContainerV1beta1.fromValue(map['gpuDriverVersion'] as String)).input(),
+      gpuDriverVersion: map['gpuDriverVersion'] == null ? null : (GPUDriverInstallationConfigGpuDriverVersionContainerV1beta1.fromValue(map['gpuDriverVersion']! as String)).input(),
     );
   }
 }

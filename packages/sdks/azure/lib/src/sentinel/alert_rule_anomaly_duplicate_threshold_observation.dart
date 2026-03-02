@@ -40,9 +40,9 @@ class AlertRuleAnomalyDuplicateThresholdObservation {
 
   factory AlertRuleAnomalyDuplicateThresholdObservation.fromMap(Map<String, dynamic> map) {
     return AlertRuleAnomalyDuplicateThresholdObservation(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      max: map['max'] == null ? null : (map['max'] as String).input(),
-      min: map['min'] == null ? null : (map['min'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      max: map['max'] == null ? null : (map['max']! as String).input(),
+      min: map['min'] == null ? null : (map['min']! as String).input(),
       name: (map['name'] as String).input(),
       value: (map['value'] as String).input(),
     );

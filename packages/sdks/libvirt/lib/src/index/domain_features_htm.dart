@@ -20,7 +20,7 @@ class DomainFeaturesHtm {
 
   factory DomainFeaturesHtm.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesHtm(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

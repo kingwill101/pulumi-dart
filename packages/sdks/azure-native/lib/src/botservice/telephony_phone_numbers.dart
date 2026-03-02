@@ -66,16 +66,16 @@ class TelephonyPhoneNumbers {
 
   factory TelephonyPhoneNumbers.fromMap(Map<String, dynamic> map) {
     return TelephonyPhoneNumbers(
-      acsEndpoint: map['acsEndpoint'] == null ? null : (map['acsEndpoint'] as String).input(),
-      acsResourceId: map['acsResourceId'] == null ? null : (map['acsResourceId'] as String).input(),
-      acsSecret: map['acsSecret'] == null ? null : (map['acsSecret'] as String).input(),
-      cognitiveServiceRegion: map['cognitiveServiceRegion'] == null ? null : (map['cognitiveServiceRegion'] as String).input(),
-      cognitiveServiceResourceId: map['cognitiveServiceResourceId'] == null ? null : (map['cognitiveServiceResourceId'] as String).input(),
-      cognitiveServiceSubscriptionKey: map['cognitiveServiceSubscriptionKey'] == null ? null : (map['cognitiveServiceSubscriptionKey'] as String).input(),
-      defaultLocale: map['defaultLocale'] == null ? null : (map['defaultLocale'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      offerType: map['offerType'] == null ? null : (map['offerType'] as String).input(),
-      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
+      acsEndpoint: map['acsEndpoint'] == null ? null : (map['acsEndpoint']! as String).input(),
+      acsResourceId: map['acsResourceId'] == null ? null : (map['acsResourceId']! as String).input(),
+      acsSecret: map['acsSecret'] == null ? null : (map['acsSecret']! as String).input(),
+      cognitiveServiceRegion: map['cognitiveServiceRegion'] == null ? null : (map['cognitiveServiceRegion']! as String).input(),
+      cognitiveServiceResourceId: map['cognitiveServiceResourceId'] == null ? null : (map['cognitiveServiceResourceId']! as String).input(),
+      cognitiveServiceSubscriptionKey: map['cognitiveServiceSubscriptionKey'] == null ? null : (map['cognitiveServiceSubscriptionKey']! as String).input(),
+      defaultLocale: map['defaultLocale'] == null ? null : (map['defaultLocale']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      offerType: map['offerType'] == null ? null : (map['offerType']! as String).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber']! as String).input(),
     );
   }
 }

@@ -30,8 +30,8 @@ class TableSchemaCompositePartitionKey {
 
   factory TableSchemaCompositePartitionKey.fromMap(Map<String, dynamic> map) {
     return TableSchemaCompositePartitionKey(
-      enforcementInRecord: map['enforcementInRecord'] == null ? null : (map['enforcementInRecord'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      enforcementInRecord: map['enforcementInRecord'] == null ? null : ((map['enforcementInRecord'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

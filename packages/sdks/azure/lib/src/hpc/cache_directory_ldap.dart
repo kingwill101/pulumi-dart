@@ -47,10 +47,10 @@ class CacheDirectoryLdap {
   factory CacheDirectoryLdap.fromMap(Map<String, dynamic> map) {
     return CacheDirectoryLdap(
       baseDn: (map['baseDn'] as String).input(),
-      bind: map['bind'] == null ? null : (CacheDirectoryLdapBind.fromMap((map['bind'] as Map).cast<String, dynamic>())).input(),
-      certificateValidationUri: map['certificateValidationUri'] == null ? null : (map['certificateValidationUri'] as String).input(),
-      downloadCertificateAutomatically: map['downloadCertificateAutomatically'] == null ? null : (map['downloadCertificateAutomatically'] as bool).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
+      bind: map['bind'] == null ? null : (CacheDirectoryLdapBind.fromMap((map['bind']! as Map).cast<String, dynamic>())).input(),
+      certificateValidationUri: map['certificateValidationUri'] == null ? null : (map['certificateValidationUri']! as String).input(),
+      downloadCertificateAutomatically: map['downloadCertificateAutomatically'] == null ? null : (map['downloadCertificateAutomatically']! as bool).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
       server: (map['server'] as String).input(),
     );
   }

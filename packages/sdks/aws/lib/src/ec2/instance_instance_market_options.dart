@@ -26,8 +26,8 @@ class InstanceInstanceMarketOptions {
 
   factory InstanceInstanceMarketOptions.fromMap(Map<String, dynamic> map) {
     return InstanceInstanceMarketOptions(
-      marketType: map['marketType'] == null ? null : (map['marketType'] as String).input(),
-      spotOptions: map['spotOptions'] == null ? null : (InstanceInstanceMarketOptionsSpotOptions.fromMap((map['spotOptions'] as Map).cast<String, dynamic>())).input(),
+      marketType: map['marketType'] == null ? null : ((map['marketType'] as String).input()).input(),
+      spotOptions: map['spotOptions'] == null ? null : ((InstanceInstanceMarketOptionsSpotOptions.fromMap((map['spotOptions']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

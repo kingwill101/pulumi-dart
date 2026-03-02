@@ -27,7 +27,7 @@ class BucketReplicationConfiguration {
   factory BucketReplicationConfiguration.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfiguration(
       role: (map['role'] as String).input(),
-      rules: (pulumi.Input.decodeList<BucketReplicationConfigurationRule>(map['rules'], (value) => BucketReplicationConfigurationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: (pulumi.Input.decodeList<BucketReplicationConfigurationRule>(map['rules']!, (value) => BucketReplicationConfigurationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

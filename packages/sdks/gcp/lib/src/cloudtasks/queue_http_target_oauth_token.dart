@@ -28,7 +28,7 @@ class QueueHttpTargetOauthToken {
 
   factory QueueHttpTargetOauthToken.fromMap(Map<String, dynamic> map) {
     return QueueHttpTargetOauthToken(
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
       serviceAccountEmail: (map['serviceAccountEmail'] as String).input(),
     );
   }

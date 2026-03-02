@@ -41,11 +41,11 @@ class DeploymentState {
 
   factory DeploymentState.fromMap(Map<String, dynamic> map) {
     return DeploymentState(
-      operationId: map['operationId'] == null ? null : (map['operationId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceArn: map['serviceArn'] == null ? null : (map['serviceArn'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (DeploymentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      operationId: map['operationId'] == null ? null : ((map['operationId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serviceArn: map['serviceArn'] == null ? null : ((map['serviceArn'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((DeploymentTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -101,24 +101,24 @@ class GetLoadBalancersResult {
 
   factory GetLoadBalancersResult.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersResult(
-      addressType: map['addressType'] == null ? null : map['addressType'] as String,
+      addressType: map['addressType'] == null ? null : map['addressType']! as String,
       balancers: pulumi.Input.decodeList<GetLoadBalancersBalancer>(map['balancers'], (value) => GetLoadBalancersBalancer.fromMap((value as Map).cast<String, dynamic>())),
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      loadBalancerBusinessStatus: map['loadBalancerBusinessStatus'] == null ? null : map['loadBalancerBusinessStatus'] as String,
-      loadBalancerBussinessStatus: map['loadBalancerBussinessStatus'] == null ? null : map['loadBalancerBussinessStatus'] as String,
-      loadBalancerIds: map['loadBalancerIds'] == null ? null : (map['loadBalancerIds'] as List).cast<String>(),
-      loadBalancerName: map['loadBalancerName'] == null ? null : map['loadBalancerName'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      loadBalancerBusinessStatus: map['loadBalancerBusinessStatus'] == null ? null : map['loadBalancerBusinessStatus']! as String,
+      loadBalancerBussinessStatus: map['loadBalancerBussinessStatus'] == null ? null : map['loadBalancerBussinessStatus']! as String,
+      loadBalancerIds: map['loadBalancerIds'] == null ? null : (map['loadBalancerIds']! as List).cast<String>(),
+      loadBalancerName: map['loadBalancerName'] == null ? null : map['loadBalancerName']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
-      vpcIds: map['vpcIds'] == null ? null : (map['vpcIds'] as List).cast<String>(),
-      zoneId: map['zoneId'] == null ? null : map['zoneId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      vpcId: map['vpcId'] == null ? null : map['vpcId']! as String,
+      vpcIds: map['vpcIds'] == null ? null : (map['vpcIds']! as List).cast<String>(),
+      zoneId: map['zoneId'] == null ? null : map['zoneId']! as String,
     );
   }
 }

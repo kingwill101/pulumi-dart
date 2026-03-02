@@ -39,8 +39,8 @@ class EnvironmentWorkloadProfile {
 
   factory EnvironmentWorkloadProfile.fromMap(Map<String, dynamic> map) {
     return EnvironmentWorkloadProfile(
-      maximumCount: map['maximumCount'] == null ? null : (map['maximumCount'] as int).input(),
-      minimumCount: map['minimumCount'] == null ? null : (map['minimumCount'] as int).input(),
+      maximumCount: map['maximumCount'] == null ? null : (map['maximumCount']! as int).input(),
+      minimumCount: map['minimumCount'] == null ? null : (map['minimumCount']! as int).input(),
       name: (map['name'] as String).input(),
       workloadProfileType: (map['workloadProfileType'] as String).input(),
     );

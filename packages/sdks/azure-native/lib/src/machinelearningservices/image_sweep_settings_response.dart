@@ -27,7 +27,7 @@ class ImageSweepSettingsResponse {
 
   factory ImageSweepSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ImageSweepSettingsResponse(
-      earlyTermination: map['earlyTermination'] == null ? null : (BanditPolicyResponse.fromMap((map['earlyTermination'] as Map).cast<String, dynamic>())).input(),
+      earlyTermination: map['earlyTermination'] == null ? null : (BanditPolicyResponse.fromMap((map['earlyTermination']! as Map).cast<String, dynamic>())).input(),
       samplingAlgorithm: (map['samplingAlgorithm'] as String).input(),
     );
   }

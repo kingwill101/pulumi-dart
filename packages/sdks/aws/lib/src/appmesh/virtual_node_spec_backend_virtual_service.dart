@@ -26,7 +26,7 @@ class VirtualNodeSpecBackendVirtualService {
 
   factory VirtualNodeSpecBackendVirtualService.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecBackendVirtualService(
-      clientPolicy: map['clientPolicy'] == null ? null : (VirtualNodeSpecBackendVirtualServiceClientPolicy.fromMap((map['clientPolicy'] as Map).cast<String, dynamic>())).input(),
+      clientPolicy: map['clientPolicy'] == null ? null : ((VirtualNodeSpecBackendVirtualServiceClientPolicy.fromMap((map['clientPolicy']! as Map).cast<String, dynamic>())).input()).input(),
       virtualServiceName: (map['virtualServiceName'] as String).input(),
     );
   }

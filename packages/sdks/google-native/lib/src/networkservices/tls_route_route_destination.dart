@@ -27,7 +27,7 @@ class TlsRouteRouteDestination {
   factory TlsRouteRouteDestination.fromMap(Map<String, dynamic> map) {
     return TlsRouteRouteDestination(
       serviceName: (map['serviceName'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

@@ -35,9 +35,9 @@ class DeviceTaintSelector {
 
   factory DeviceTaintSelector.fromMap(Map<String, dynamic> map) {
     return DeviceTaintSelector(
-      device: map['device'] == null ? null : (map['device'] as String).input(),
-      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
-      pool: map['pool'] == null ? null : (map['pool'] as String).input(),
+      device: map['device'] == null ? null : (map['device']! as String).input(),
+      driver: map['driver'] == null ? null : (map['driver']! as String).input(),
+      pool: map['pool'] == null ? null : (map['pool']! as String).input(),
     );
   }
 }

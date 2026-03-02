@@ -28,7 +28,7 @@ class SimpleSigningAttestationCheck {
   factory SimpleSigningAttestationCheck.fromMap(Map<String, dynamic> map) {
     return SimpleSigningAttestationCheck(
       attestationAuthenticators: (pulumi.Input.decodeList<AttestationAuthenticator>(map['attestationAuthenticators'], (value) => AttestationAuthenticator.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      containerAnalysisAttestationProjects: map['containerAnalysisAttestationProjects'] == null ? null : ((map['containerAnalysisAttestationProjects'] as List).cast<String>()).input(),
+      containerAnalysisAttestationProjects: map['containerAnalysisAttestationProjects'] == null ? null : ((map['containerAnalysisAttestationProjects']! as List).cast<String>()).input(),
     );
   }
 }

@@ -41,11 +41,11 @@ class RosterProfile {
 
   factory RosterProfile.fromMap(Map<String, dynamic> map) {
     return RosterProfile(
-      activeDirectoryGroupId: map['activeDirectoryGroupId'] == null ? null : (map['activeDirectoryGroupId'] as String).input(),
-      lmsInstance: map['lmsInstance'] == null ? null : (map['lmsInstance'] as String).input(),
-      ltiClientId: map['ltiClientId'] == null ? null : (map['ltiClientId'] as String).input(),
-      ltiContextId: map['ltiContextId'] == null ? null : (map['ltiContextId'] as String).input(),
-      ltiRosterEndpoint: map['ltiRosterEndpoint'] == null ? null : (map['ltiRosterEndpoint'] as String).input(),
+      activeDirectoryGroupId: map['activeDirectoryGroupId'] == null ? null : (map['activeDirectoryGroupId']! as String).input(),
+      lmsInstance: map['lmsInstance'] == null ? null : (map['lmsInstance']! as String).input(),
+      ltiClientId: map['ltiClientId'] == null ? null : (map['ltiClientId']! as String).input(),
+      ltiContextId: map['ltiContextId'] == null ? null : (map['ltiContextId']! as String).input(),
+      ltiRosterEndpoint: map['ltiRosterEndpoint'] == null ? null : (map['ltiRosterEndpoint']! as String).input(),
     );
   }
 }

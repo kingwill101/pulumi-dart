@@ -26,8 +26,8 @@ class RaiMonitorConfigResponse {
 
   factory RaiMonitorConfigResponse.fromMap(Map<String, dynamic> map) {
     return RaiMonitorConfigResponse(
-      adxStorageResourceId: map['adxStorageResourceId'] == null ? null : (map['adxStorageResourceId'] as String).input(),
-      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
+      adxStorageResourceId: map['adxStorageResourceId'] == null ? null : (map['adxStorageResourceId']! as String).input(),
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId']! as String).input(),
     );
   }
 }

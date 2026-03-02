@@ -26,7 +26,7 @@ class GetLogShipperArgs {
 
   factory GetLogShipperArgs.fromMap(Map<String, dynamic> map) {
     return GetLogShipperArgs(
-      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as String).input(),
     );
   }
 }

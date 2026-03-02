@@ -89,18 +89,18 @@ class DomainEventSubscriptionArgs {
 
   factory DomainEventSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return DomainEventSubscriptionArgs(
-      deadLetterDestination: map['deadLetterDestination'] == null ? null : (StorageBlobDeadLetterDestination.fromMap((map['deadLetterDestination'] as Map).cast<String, dynamic>())).input(),
-      deadLetterWithResourceIdentity: map['deadLetterWithResourceIdentity'] == null ? null : (DeadLetterWithResourceIdentity.fromMap((map['deadLetterWithResourceIdentity'] as Map).cast<String, dynamic>())).input(),
-      deliveryWithResourceIdentity: map['deliveryWithResourceIdentity'] == null ? null : (DeliveryWithResourceIdentity.fromMap((map['deliveryWithResourceIdentity'] as Map).cast<String, dynamic>())).input(),
-      destination: map['destination'] == null ? null : (AzureFunctionEventSubscriptionDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      deadLetterDestination: map['deadLetterDestination'] == null ? null : (StorageBlobDeadLetterDestination.fromMap((map['deadLetterDestination']! as Map).cast<String, dynamic>())).input(),
+      deadLetterWithResourceIdentity: map['deadLetterWithResourceIdentity'] == null ? null : (DeadLetterWithResourceIdentity.fromMap((map['deadLetterWithResourceIdentity']! as Map).cast<String, dynamic>())).input(),
+      deliveryWithResourceIdentity: map['deliveryWithResourceIdentity'] == null ? null : (DeliveryWithResourceIdentity.fromMap((map['deliveryWithResourceIdentity']! as Map).cast<String, dynamic>())).input(),
+      destination: map['destination'] == null ? null : (AzureFunctionEventSubscriptionDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
       domainName: (map['domainName'] as String).input(),
-      eventDeliverySchema: map['eventDeliverySchema'] == null ? null : (map['eventDeliverySchema'] as String).input(),
-      eventSubscriptionName: map['eventSubscriptionName'] == null ? null : (map['eventSubscriptionName'] as String).input(),
-      expirationTimeUtc: map['expirationTimeUtc'] == null ? null : (map['expirationTimeUtc'] as String).input(),
-      filter: map['filter'] == null ? null : (EventSubscriptionFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
+      eventDeliverySchema: map['eventDeliverySchema'] == null ? null : (map['eventDeliverySchema']! as String).input(),
+      eventSubscriptionName: map['eventSubscriptionName'] == null ? null : (map['eventSubscriptionName']! as String).input(),
+      expirationTimeUtc: map['expirationTimeUtc'] == null ? null : (map['expirationTimeUtc']! as String).input(),
+      filter: map['filter'] == null ? null : (EventSubscriptionFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as List).cast<String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      retryPolicy: map['retryPolicy'] == null ? null : (RetryPolicy.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (RetryPolicy.fromMap((map['retryPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -72,15 +72,15 @@ class KeyRingImportJobState {
 
   factory KeyRingImportJobState.fromMap(Map<String, dynamic> map) {
     return KeyRingImportJobState(
-      attestations: map['attestations'] == null ? null : (pulumi.Input.decodeList<KeyRingImportJobAttestation>(map['attestations'], (value) => KeyRingImportJobAttestation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
-      importJobId: map['importJobId'] == null ? null : (map['importJobId'] as String).input(),
-      importMethod: map['importMethod'] == null ? null : (map['importMethod'] as String).input(),
-      keyRing: map['keyRing'] == null ? null : (map['keyRing'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protectionLevel: map['protectionLevel'] == null ? null : (map['protectionLevel'] as String).input(),
-      publicKeys: map['publicKeys'] == null ? null : (pulumi.Input.decodeList<KeyRingImportJobPublicKey>(map['publicKeys'], (value) => KeyRingImportJobPublicKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      attestations: map['attestations'] == null ? null : (pulumi.Input.decodeList<KeyRingImportJobAttestation>(map['attestations']!, (value) => KeyRingImportJobAttestation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
+      importJobId: map['importJobId'] == null ? null : (map['importJobId']! as String).input(),
+      importMethod: map['importMethod'] == null ? null : (map['importMethod']! as String).input(),
+      keyRing: map['keyRing'] == null ? null : (map['keyRing']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protectionLevel: map['protectionLevel'] == null ? null : (map['protectionLevel']! as String).input(),
+      publicKeys: map['publicKeys'] == null ? null : (pulumi.Input.decodeList<KeyRingImportJobPublicKey>(map['publicKeys']!, (value) => KeyRingImportJobPublicKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

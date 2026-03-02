@@ -38,7 +38,7 @@ class VaultPrivateEndpointConnectionResponse {
 
   factory VaultPrivateEndpointConnectionResponse.fromMap(Map<String, dynamic> map) {
     return VaultPrivateEndpointConnectionResponse(
-      groupIds: map['groupIds'] == null ? null : ((map['groupIds'] as List).cast<String>()).input(),
+      groupIds: map['groupIds'] == null ? null : ((map['groupIds']! as List).cast<String>()).input(),
       privateEndpoint: (PrivateEndpointResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>())).input(),
       privateLinkServiceConnectionState: (VaultPrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),

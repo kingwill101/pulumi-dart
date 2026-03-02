@@ -37,9 +37,9 @@ class RunBookJobSchedule {
 
   factory RunBookJobSchedule.fromMap(Map<String, dynamic> map) {
     return RunBookJobSchedule(
-      jobScheduleId: map['jobScheduleId'] == null ? null : (map['jobScheduleId'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      runOn: map['runOn'] == null ? null : (map['runOn'] as String).input(),
+      jobScheduleId: map['jobScheduleId'] == null ? null : (map['jobScheduleId']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      runOn: map['runOn'] == null ? null : (map['runOn']! as String).input(),
       scheduleName: (map['scheduleName'] as String).input(),
     );
   }

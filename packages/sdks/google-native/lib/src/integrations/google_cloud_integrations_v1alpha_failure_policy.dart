@@ -32,9 +32,9 @@ class GoogleCloudIntegrationsV1alphaFailurePolicy {
 
   factory GoogleCloudIntegrationsV1alphaFailurePolicy.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaFailurePolicy(
-      intervalTime: map['intervalTime'] == null ? null : (map['intervalTime'] as String).input(),
-      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries'] as int).input(),
-      retryStrategy: map['retryStrategy'] == null ? null : (GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy.fromValue(map['retryStrategy'] as String)).input(),
+      intervalTime: map['intervalTime'] == null ? null : (map['intervalTime']! as String).input(),
+      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries']! as int).input(),
+      retryStrategy: map['retryStrategy'] == null ? null : (GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy.fromValue(map['retryStrategy']! as String)).input(),
     );
   }
 }

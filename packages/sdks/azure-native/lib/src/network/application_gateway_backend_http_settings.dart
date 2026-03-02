@@ -93,21 +93,21 @@ class ApplicationGatewayBackendHttpSettings {
 
   factory ApplicationGatewayBackendHttpSettings.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayBackendHttpSettings(
-      affinityCookieName: map['affinityCookieName'] == null ? null : (map['affinityCookieName'] as String).input(),
-      authenticationCertificates: map['authenticationCertificates'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['authenticationCertificates'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      connectionDraining: map['connectionDraining'] == null ? null : (ApplicationGatewayConnectionDraining.fromMap((map['connectionDraining'] as Map).cast<String, dynamic>())).input(),
-      cookieBasedAffinity: map['cookieBasedAffinity'] == null ? null : (map['cookieBasedAffinity'] as String).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      pickHostNameFromBackendAddress: map['pickHostNameFromBackendAddress'] == null ? null : (map['pickHostNameFromBackendAddress'] as bool).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      probe: map['probe'] == null ? null : (SubResource.fromMap((map['probe'] as Map).cast<String, dynamic>())).input(),
-      probeEnabled: map['probeEnabled'] == null ? null : (map['probeEnabled'] as bool).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      requestTimeout: map['requestTimeout'] == null ? null : (map['requestTimeout'] as int).input(),
-      trustedRootCertificates: map['trustedRootCertificates'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['trustedRootCertificates'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      affinityCookieName: map['affinityCookieName'] == null ? null : (map['affinityCookieName']! as String).input(),
+      authenticationCertificates: map['authenticationCertificates'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['authenticationCertificates']!, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connectionDraining: map['connectionDraining'] == null ? null : (ApplicationGatewayConnectionDraining.fromMap((map['connectionDraining']! as Map).cast<String, dynamic>())).input(),
+      cookieBasedAffinity: map['cookieBasedAffinity'] == null ? null : (map['cookieBasedAffinity']! as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      pickHostNameFromBackendAddress: map['pickHostNameFromBackendAddress'] == null ? null : (map['pickHostNameFromBackendAddress']! as bool).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      probe: map['probe'] == null ? null : (SubResource.fromMap((map['probe']! as Map).cast<String, dynamic>())).input(),
+      probeEnabled: map['probeEnabled'] == null ? null : (map['probeEnabled']! as bool).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      requestTimeout: map['requestTimeout'] == null ? null : (map['requestTimeout']! as int).input(),
+      trustedRootCertificates: map['trustedRootCertificates'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['trustedRootCertificates']!, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

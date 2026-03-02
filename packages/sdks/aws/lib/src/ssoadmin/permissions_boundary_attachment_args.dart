@@ -42,8 +42,8 @@ class PermissionsBoundaryAttachmentArgs {
     return PermissionsBoundaryAttachmentArgs(
       instanceArn: (map['instanceArn'] as String).input(),
       permissionSetArn: (map['permissionSetArn'] as String).input(),
-      permissionsBoundary: (PermissionsBoundaryAttachmentPermissionsBoundary.fromMap((map['permissionsBoundary'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      permissionsBoundary: (PermissionsBoundaryAttachmentPermissionsBoundary.fromMap((map['permissionsBoundary']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

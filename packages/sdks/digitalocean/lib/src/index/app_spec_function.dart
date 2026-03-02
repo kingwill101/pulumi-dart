@@ -79,17 +79,17 @@ class AppSpecFunction {
 
   factory AppSpecFunction.fromMap(Map<String, dynamic> map) {
     return AppSpecFunction(
-      alerts: map['alerts'] == null ? null : (pulumi.Input.decodeList<AppSpecFunctionAlert>(map['alerts'], (value) => AppSpecFunctionAlert.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bitbucket: map['bitbucket'] == null ? null : (AppSpecFunctionBitbucket.fromMap((map['bitbucket'] as Map).cast<String, dynamic>())).input(),
-      cors: map['cors'] == null ? null : (AppSpecFunctionCors.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
-      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<AppSpecFunctionEnv>(map['envs'], (value) => AppSpecFunctionEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      git: map['git'] == null ? null : (AppSpecFunctionGit.fromMap((map['git'] as Map).cast<String, dynamic>())).input(),
-      github: map['github'] == null ? null : (AppSpecFunctionGithub.fromMap((map['github'] as Map).cast<String, dynamic>())).input(),
-      gitlab: map['gitlab'] == null ? null : (AppSpecFunctionGitlab.fromMap((map['gitlab'] as Map).cast<String, dynamic>())).input(),
-      logDestinations: map['logDestinations'] == null ? null : (pulumi.Input.decodeList<AppSpecFunctionLogDestination>(map['logDestinations'], (value) => AppSpecFunctionLogDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      alerts: map['alerts'] == null ? null : (pulumi.Input.decodeList<AppSpecFunctionAlert>(map['alerts']!, (value) => AppSpecFunctionAlert.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bitbucket: map['bitbucket'] == null ? null : (AppSpecFunctionBitbucket.fromMap((map['bitbucket']! as Map).cast<String, dynamic>())).input(),
+      cors: map['cors'] == null ? null : (AppSpecFunctionCors.fromMap((map['cors']! as Map).cast<String, dynamic>())).input(),
+      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<AppSpecFunctionEnv>(map['envs']!, (value) => AppSpecFunctionEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      git: map['git'] == null ? null : (AppSpecFunctionGit.fromMap((map['git']! as Map).cast<String, dynamic>())).input(),
+      github: map['github'] == null ? null : (AppSpecFunctionGithub.fromMap((map['github']! as Map).cast<String, dynamic>())).input(),
+      gitlab: map['gitlab'] == null ? null : (AppSpecFunctionGitlab.fromMap((map['gitlab']! as Map).cast<String, dynamic>())).input(),
+      logDestinations: map['logDestinations'] == null ? null : (pulumi.Input.decodeList<AppSpecFunctionLogDestination>(map['logDestinations']!, (value) => AppSpecFunctionLogDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<AppSpecFunctionRoute>(map['routes'], (value) => AppSpecFunctionRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceDir: map['sourceDir'] == null ? null : (map['sourceDir'] as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<AppSpecFunctionRoute>(map['routes']!, (value) => AppSpecFunctionRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceDir: map['sourceDir'] == null ? null : (map['sourceDir']! as String).input(),
     );
   }
 }

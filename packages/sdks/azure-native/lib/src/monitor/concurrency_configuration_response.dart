@@ -26,8 +26,8 @@ class ConcurrencyConfigurationResponse {
 
   factory ConcurrencyConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ConcurrencyConfigurationResponse(
-      batchQueueSize: map['batchQueueSize'] == null ? null : (map['batchQueueSize'] as int).input(),
-      workerCount: map['workerCount'] == null ? null : (map['workerCount'] as int).input(),
+      batchQueueSize: map['batchQueueSize'] == null ? null : (map['batchQueueSize']! as int).input(),
+      workerCount: map['workerCount'] == null ? null : (map['workerCount']! as int).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpec {
 
   factory GoogleCloudDatalabelingV1beta1AnnotationSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1AnnotationSpec(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
     );
   }

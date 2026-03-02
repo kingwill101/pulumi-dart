@@ -44,11 +44,11 @@ class RoutingConfigurationResponse {
 
   factory RoutingConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return RoutingConfigurationResponse(
-      associatedRouteTable: map['associatedRouteTable'] == null ? null : (SubResourceResponse.fromMap((map['associatedRouteTable'] as Map).cast<String, dynamic>())).input(),
-      inboundRouteMap: map['inboundRouteMap'] == null ? null : (SubResourceResponse.fromMap((map['inboundRouteMap'] as Map).cast<String, dynamic>())).input(),
-      outboundRouteMap: map['outboundRouteMap'] == null ? null : (SubResourceResponse.fromMap((map['outboundRouteMap'] as Map).cast<String, dynamic>())).input(),
-      propagatedRouteTables: map['propagatedRouteTables'] == null ? null : (PropagatedRouteTableResponse.fromMap((map['propagatedRouteTables'] as Map).cast<String, dynamic>())).input(),
-      vnetRoutes: map['vnetRoutes'] == null ? null : (VnetRouteResponse.fromMap((map['vnetRoutes'] as Map).cast<String, dynamic>())).input(),
+      associatedRouteTable: map['associatedRouteTable'] == null ? null : (SubResourceResponse.fromMap((map['associatedRouteTable']! as Map).cast<String, dynamic>())).input(),
+      inboundRouteMap: map['inboundRouteMap'] == null ? null : (SubResourceResponse.fromMap((map['inboundRouteMap']! as Map).cast<String, dynamic>())).input(),
+      outboundRouteMap: map['outboundRouteMap'] == null ? null : (SubResourceResponse.fromMap((map['outboundRouteMap']! as Map).cast<String, dynamic>())).input(),
+      propagatedRouteTables: map['propagatedRouteTables'] == null ? null : (PropagatedRouteTableResponse.fromMap((map['propagatedRouteTables']! as Map).cast<String, dynamic>())).input(),
+      vnetRoutes: map['vnetRoutes'] == null ? null : (VnetRouteResponse.fromMap((map['vnetRoutes']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

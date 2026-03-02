@@ -30,8 +30,8 @@ class ClassificationExportConfigurationArgs {
 
   factory ClassificationExportConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ClassificationExportConfigurationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      s3Destination: (ClassificationExportConfigurationS3Destination.fromMap((map['s3Destination'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      s3Destination: (ClassificationExportConfigurationS3Destination.fromMap((map['s3Destination']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

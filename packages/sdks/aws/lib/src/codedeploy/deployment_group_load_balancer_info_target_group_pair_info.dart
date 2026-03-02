@@ -33,9 +33,9 @@ class DeploymentGroupLoadBalancerInfoTargetGroupPairInfo {
 
   factory DeploymentGroupLoadBalancerInfoTargetGroupPairInfo.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupLoadBalancerInfoTargetGroupPairInfo(
-      prodTrafficRoute: (DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoute.fromMap((map['prodTrafficRoute'] as Map).cast<String, dynamic>())).input(),
-      targetGroups: (pulumi.Input.decodeList<DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup>(map['targetGroups'], (value) => DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      testTrafficRoute: map['testTrafficRoute'] == null ? null : (DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute.fromMap((map['testTrafficRoute'] as Map).cast<String, dynamic>())).input(),
+      prodTrafficRoute: (DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoute.fromMap((map['prodTrafficRoute']! as Map).cast<String, dynamic>())).input(),
+      targetGroups: (pulumi.Input.decodeList<DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup>(map['targetGroups']!, (value) => DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      testTrafficRoute: map['testTrafficRoute'] == null ? null : ((DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute.fromMap((map['testTrafficRoute']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

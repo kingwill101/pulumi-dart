@@ -35,7 +35,7 @@ class GetTableEntitiesArgs {
   factory GetTableEntitiesArgs.fromMap(Map<String, dynamic> map) {
     return GetTableEntitiesArgs(
       filter: (map['filter'] as String).input(),
-      selects: map['selects'] == null ? null : ((map['selects'] as List).cast<String>()).input(),
+      selects: map['selects'] == null ? null : ((map['selects']! as List).cast<String>()).input(),
       storageTableId: (map['storageTableId'] as String).input(),
     );
   }

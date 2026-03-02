@@ -80,18 +80,18 @@ class ClusterState {
 
   factory ClusterState.fromMap(Map<String, dynamic> map) {
     return ClusterState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      deletionProtectionEnabled: map['deletionProtectionEnabled'] == null ? null : (map['deletionProtectionEnabled'] as bool).input(),
-      encryptionDetails: map['encryptionDetails'] == null ? null : (pulumi.Input.decodeList<ClusterEncryptionDetail>(map['encryptionDetails'], (value) => ClusterEncryptionDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      identifier: map['identifier'] == null ? null : (map['identifier'] as String).input(),
-      kmsEncryptionKey: map['kmsEncryptionKey'] == null ? null : (map['kmsEncryptionKey'] as String).input(),
-      multiRegionProperties: map['multiRegionProperties'] == null ? null : (ClusterMultiRegionProperties.fromMap((map['multiRegionProperties'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ClusterTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      vpcEndpointServiceName: map['vpcEndpointServiceName'] == null ? null : (map['vpcEndpointServiceName'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      deletionProtectionEnabled: map['deletionProtectionEnabled'] == null ? null : ((map['deletionProtectionEnabled'] as bool).input()).input(),
+      encryptionDetails: map['encryptionDetails'] == null ? null : ((pulumi.Input.decodeList<ClusterEncryptionDetail>(map['encryptionDetails']!, (value) => ClusterEncryptionDetail.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : ((map['forceDestroy'] as bool).input()).input(),
+      identifier: map['identifier'] == null ? null : ((map['identifier'] as String).input()).input(),
+      kmsEncryptionKey: map['kmsEncryptionKey'] == null ? null : ((map['kmsEncryptionKey'] as String).input()).input(),
+      multiRegionProperties: map['multiRegionProperties'] == null ? null : ((ClusterMultiRegionProperties.fromMap((map['multiRegionProperties']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ClusterTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      vpcEndpointServiceName: map['vpcEndpointServiceName'] == null ? null : ((map['vpcEndpointServiceName'] as String).input()).input(),
     );
   }
 }

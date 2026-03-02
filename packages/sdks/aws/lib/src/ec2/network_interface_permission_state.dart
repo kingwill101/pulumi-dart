@@ -46,12 +46,12 @@ class NetworkInterfacePermissionState {
 
   factory NetworkInterfacePermissionState.fromMap(Map<String, dynamic> map) {
     return NetworkInterfacePermissionState(
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
-      networkInterfacePermissionId: map['networkInterfacePermissionId'] == null ? null : (map['networkInterfacePermissionId'] as String).input(),
-      permission: map['permission'] == null ? null : (map['permission'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (NetworkInterfacePermissionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : ((map['networkInterfaceId'] as String).input()).input(),
+      networkInterfacePermissionId: map['networkInterfacePermissionId'] == null ? null : ((map['networkInterfacePermissionId'] as String).input()).input(),
+      permission: map['permission'] == null ? null : ((map['permission'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((NetworkInterfacePermissionTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

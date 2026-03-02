@@ -26,8 +26,8 @@ class NonResourceRulePatch {
 
   factory NonResourceRulePatch.fromMap(Map<String, dynamic> map) {
     return NonResourceRulePatch(
-      nonResourceURLs: map['nonResourceURLs'] == null ? null : ((map['nonResourceURLs'] as List).cast<String>()).input(),
-      verbs: map['verbs'] == null ? null : ((map['verbs'] as List).cast<String>()).input(),
+      nonResourceURLs: map['nonResourceURLs'] == null ? null : ((map['nonResourceURLs']! as List).cast<String>()).input(),
+      verbs: map['verbs'] == null ? null : ((map['verbs']! as List).cast<String>()).input(),
     );
   }
 }

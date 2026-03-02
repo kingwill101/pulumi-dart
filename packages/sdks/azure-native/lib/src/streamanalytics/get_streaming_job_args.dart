@@ -34,7 +34,7 @@ class GetStreamingJobArgs {
 
   factory GetStreamingJobArgs.fromMap(Map<String, dynamic> map) {
     return GetStreamingJobArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       jobName: (map['jobName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

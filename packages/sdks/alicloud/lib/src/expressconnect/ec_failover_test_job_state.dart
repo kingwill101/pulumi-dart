@@ -51,13 +51,13 @@ class EcFailoverTestJobState {
 
   factory EcFailoverTestJobState.fromMap(Map<String, dynamic> map) {
     return EcFailoverTestJobState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ecFailoverTestJobName: map['ecFailoverTestJobName'] == null ? null : (map['ecFailoverTestJobName'] as String).input(),
-      jobDuration: map['jobDuration'] == null ? null : (map['jobDuration'] as int).input(),
-      jobType: map['jobType'] == null ? null : (map['jobType'] as String).input(),
-      resourceIds: map['resourceIds'] == null ? null : ((map['resourceIds'] as List).cast<String>()).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ecFailoverTestJobName: map['ecFailoverTestJobName'] == null ? null : (map['ecFailoverTestJobName']! as String).input(),
+      jobDuration: map['jobDuration'] == null ? null : (map['jobDuration']! as int).input(),
+      jobType: map['jobType'] == null ? null : (map['jobType']! as String).input(),
+      resourceIds: map['resourceIds'] == null ? null : ((map['resourceIds']! as List).cast<String>()).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -51,13 +51,13 @@ class StorageInsightsState {
 
   factory StorageInsightsState.fromMap(Map<String, dynamic> map) {
     return StorageInsightsState(
-      blobContainerNames: map['blobContainerNames'] == null ? null : ((map['blobContainerNames'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
-      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey'] as String).input(),
-      tableNames: map['tableNames'] == null ? null : ((map['tableNames'] as List).cast<String>()).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      blobContainerNames: map['blobContainerNames'] == null ? null : ((map['blobContainerNames']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
+      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey']! as String).input(),
+      tableNames: map['tableNames'] == null ? null : ((map['tableNames']! as List).cast<String>()).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

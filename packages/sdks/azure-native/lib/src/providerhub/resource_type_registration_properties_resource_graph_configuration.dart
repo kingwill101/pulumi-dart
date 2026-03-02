@@ -26,8 +26,8 @@ class ResourceTypeRegistrationPropertiesResourceGraphConfiguration {
 
   factory ResourceTypeRegistrationPropertiesResourceGraphConfiguration.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesResourceGraphConfiguration(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

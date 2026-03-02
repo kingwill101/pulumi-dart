@@ -34,7 +34,7 @@ class RouterRoutePolicyTerm {
 
   factory RouterRoutePolicyTerm.fromMap(Map<String, dynamic> map) {
     return RouterRoutePolicyTerm(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<RouterRoutePolicyTermAction>(map['actions'], (value) => RouterRoutePolicyTermAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<RouterRoutePolicyTermAction>(map['actions']!, (value) => RouterRoutePolicyTermAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
       match: (RouterRoutePolicyTermMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
       priority: (map['priority'] as int).input(),
     );

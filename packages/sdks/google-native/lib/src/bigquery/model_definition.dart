@@ -27,8 +27,8 @@ class ModelDefinition {
 
   factory ModelDefinition.fromMap(Map<String, dynamic> map) {
     return ModelDefinition(
-      modelOptions: map['modelOptions'] == null ? null : (ModelDefinitionModelOptions.fromMap((map['modelOptions'] as Map).cast<String, dynamic>())).input(),
-      trainingRuns: map['trainingRuns'] == null ? null : (pulumi.Input.decodeList<BqmlTrainingRun>(map['trainingRuns'], (value) => BqmlTrainingRun.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      modelOptions: map['modelOptions'] == null ? null : (ModelDefinitionModelOptions.fromMap((map['modelOptions']! as Map).cast<String, dynamic>())).input(),
+      trainingRuns: map['trainingRuns'] == null ? null : (pulumi.Input.decodeList<BqmlTrainingRun>(map['trainingRuns']!, (value) => BqmlTrainingRun.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

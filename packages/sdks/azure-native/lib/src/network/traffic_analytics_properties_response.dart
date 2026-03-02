@@ -22,7 +22,7 @@ class TrafficAnalyticsPropertiesResponse {
 
   factory TrafficAnalyticsPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return TrafficAnalyticsPropertiesResponse(
-      networkWatcherFlowAnalyticsConfiguration: map['networkWatcherFlowAnalyticsConfiguration'] == null ? null : (TrafficAnalyticsConfigurationPropertiesResponse.fromMap((map['networkWatcherFlowAnalyticsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      networkWatcherFlowAnalyticsConfiguration: map['networkWatcherFlowAnalyticsConfiguration'] == null ? null : (TrafficAnalyticsConfigurationPropertiesResponse.fromMap((map['networkWatcherFlowAnalyticsConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

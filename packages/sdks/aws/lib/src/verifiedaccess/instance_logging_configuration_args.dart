@@ -35,8 +35,8 @@ class InstanceLoggingConfigurationArgs {
 
   factory InstanceLoggingConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return InstanceLoggingConfigurationArgs(
-      accessLogs: (InstanceLoggingConfigurationAccessLogs.fromMap((map['accessLogs'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      accessLogs: (InstanceLoggingConfigurationAccessLogs.fromMap((map['accessLogs']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       verifiedaccessInstanceId: (map['verifiedaccessInstanceId'] as String).input(),
     );
   }

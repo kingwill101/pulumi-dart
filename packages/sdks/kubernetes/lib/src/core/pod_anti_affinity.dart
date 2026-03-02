@@ -28,8 +28,8 @@ class PodAntiAffinity {
 
   factory PodAntiAffinity.fromMap(Map<String, dynamic> map) {
     return PodAntiAffinity(
-      preferredDuringSchedulingIgnoredDuringExecution: map['preferredDuringSchedulingIgnoredDuringExecution'] == null ? null : (pulumi.Input.decodeList<WeightedPodAffinityTerm>(map['preferredDuringSchedulingIgnoredDuringExecution'], (value) => WeightedPodAffinityTerm.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requiredDuringSchedulingIgnoredDuringExecution: map['requiredDuringSchedulingIgnoredDuringExecution'] == null ? null : (pulumi.Input.decodeList<PodAffinityTerm>(map['requiredDuringSchedulingIgnoredDuringExecution'], (value) => PodAffinityTerm.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      preferredDuringSchedulingIgnoredDuringExecution: map['preferredDuringSchedulingIgnoredDuringExecution'] == null ? null : (pulumi.Input.decodeList<WeightedPodAffinityTerm>(map['preferredDuringSchedulingIgnoredDuringExecution']!, (value) => WeightedPodAffinityTerm.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requiredDuringSchedulingIgnoredDuringExecution: map['requiredDuringSchedulingIgnoredDuringExecution'] == null ? null : (pulumi.Input.decodeList<PodAffinityTerm>(map['requiredDuringSchedulingIgnoredDuringExecution']!, (value) => PodAffinityTerm.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -95,7 +95,7 @@ class PipelineMediationTransformation {
 
   factory PipelineMediationTransformation.fromMap(Map<String, dynamic> map) {
     return PipelineMediationTransformation(
-      transformationTemplate: map['transformationTemplate'] == null ? null : (map['transformationTemplate'] as String).input(),
+      transformationTemplate: map['transformationTemplate'] == null ? null : (map['transformationTemplate']! as String).input(),
     );
   }
 }

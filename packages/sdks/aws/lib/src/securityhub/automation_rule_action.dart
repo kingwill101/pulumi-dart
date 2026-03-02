@@ -26,8 +26,8 @@ class AutomationRuleAction {
 
   factory AutomationRuleAction.fromMap(Map<String, dynamic> map) {
     return AutomationRuleAction(
-      findingFieldsUpdate: map['findingFieldsUpdate'] == null ? null : (AutomationRuleActionFindingFieldsUpdate.fromMap((map['findingFieldsUpdate'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      findingFieldsUpdate: map['findingFieldsUpdate'] == null ? null : ((AutomationRuleActionFindingFieldsUpdate.fromMap((map['findingFieldsUpdate']! as Map).cast<String, dynamic>())).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

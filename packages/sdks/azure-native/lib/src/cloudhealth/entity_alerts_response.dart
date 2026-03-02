@@ -27,8 +27,8 @@ class EntityAlertsResponse {
 
   factory EntityAlertsResponse.fromMap(Map<String, dynamic> map) {
     return EntityAlertsResponse(
-      degraded: map['degraded'] == null ? null : (AlertConfigurationResponse.fromMap((map['degraded'] as Map).cast<String, dynamic>())).input(),
-      unhealthy: map['unhealthy'] == null ? null : (AlertConfigurationResponse.fromMap((map['unhealthy'] as Map).cast<String, dynamic>())).input(),
+      degraded: map['degraded'] == null ? null : (AlertConfigurationResponse.fromMap((map['degraded']! as Map).cast<String, dynamic>())).input(),
+      unhealthy: map['unhealthy'] == null ? null : (AlertConfigurationResponse.fromMap((map['unhealthy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

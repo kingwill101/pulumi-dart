@@ -28,8 +28,8 @@ class LifecyclePolicy {
 
   factory LifecyclePolicy.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicy(
-      action: map['action'] == null ? null : (LifecyclePolicyAction.fromValue(map['action'] as String)).input(),
-      actionCondition: map['actionCondition'] == null ? null : (ActionCondition.fromMap((map['actionCondition'] as Map).cast<String, dynamic>())).input(),
+      action: map['action'] == null ? null : (LifecyclePolicyAction.fromValue(map['action']! as String)).input(),
+      actionCondition: map['actionCondition'] == null ? null : (ActionCondition.fromMap((map['actionCondition']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class CustomProviderResourceType {
     return CustomProviderResourceType(
       endpoint: (map['endpoint'] as String).input(),
       name: (map['name'] as String).input(),
-      routingType: map['routingType'] == null ? null : (map['routingType'] as String).input(),
+      routingType: map['routingType'] == null ? null : (map['routingType']! as String).input(),
     );
   }
 }

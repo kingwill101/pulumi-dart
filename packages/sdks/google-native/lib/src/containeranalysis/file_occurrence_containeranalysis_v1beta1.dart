@@ -57,14 +57,14 @@ class FileOccurrenceContaineranalysisV1beta1 {
 
   factory FileOccurrenceContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return FileOccurrenceContaineranalysisV1beta1(
-      attributions: map['attributions'] == null ? null : ((map['attributions'] as List).cast<String>()).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      contributors: map['contributors'] == null ? null : ((map['contributors'] as List).cast<String>()).input(),
-      copyright: map['copyright'] == null ? null : (map['copyright'] as String).input(),
-      filesLicenseInfo: map['filesLicenseInfo'] == null ? null : ((map['filesLicenseInfo'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      licenseConcluded: map['licenseConcluded'] == null ? null : (LicenseContaineranalysisV1beta1.fromMap((map['licenseConcluded'] as Map).cast<String, dynamic>())).input(),
-      notice: map['notice'] == null ? null : (map['notice'] as String).input(),
+      attributions: map['attributions'] == null ? null : ((map['attributions']! as List).cast<String>()).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      contributors: map['contributors'] == null ? null : ((map['contributors']! as List).cast<String>()).input(),
+      copyright: map['copyright'] == null ? null : (map['copyright']! as String).input(),
+      filesLicenseInfo: map['filesLicenseInfo'] == null ? null : ((map['filesLicenseInfo']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      licenseConcluded: map['licenseConcluded'] == null ? null : (LicenseContaineranalysisV1beta1.fromMap((map['licenseConcluded']! as Map).cast<String, dynamic>())).input(),
+      notice: map['notice'] == null ? null : (map['notice']! as String).input(),
     );
   }
 }

@@ -36,9 +36,9 @@ class IPConfigurationBgpPeeringAddressResponse {
 
   factory IPConfigurationBgpPeeringAddressResponse.fromMap(Map<String, dynamic> map) {
     return IPConfigurationBgpPeeringAddressResponse(
-      customBgpIpAddresses: map['customBgpIpAddresses'] == null ? null : ((map['customBgpIpAddresses'] as List).cast<String>()).input(),
+      customBgpIpAddresses: map['customBgpIpAddresses'] == null ? null : ((map['customBgpIpAddresses']! as List).cast<String>()).input(),
       defaultBgpIpAddresses: ((map['defaultBgpIpAddresses'] as List).cast<String>()).input(),
-      ipconfigurationId: map['ipconfigurationId'] == null ? null : (map['ipconfigurationId'] as String).input(),
+      ipconfigurationId: map['ipconfigurationId'] == null ? null : (map['ipconfigurationId']! as String).input(),
       tunnelIpAddresses: ((map['tunnelIpAddresses'] as List).cast<String>()).input(),
     );
   }

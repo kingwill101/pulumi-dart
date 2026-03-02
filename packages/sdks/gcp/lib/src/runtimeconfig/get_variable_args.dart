@@ -39,7 +39,7 @@ class GetVariableArgs {
     return GetVariableArgs(
       name: (map['name'] as String).input(),
       parent: (map['parent'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -86,19 +86,19 @@ class BackendState {
 
   factory BackendState.fromMap(Map<String, dynamic> map) {
     return BackendState(
-      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
-      circuitBreakerRule: map['circuitBreakerRule'] == null ? null : (BackendCircuitBreakerRule.fromMap((map['circuitBreakerRule'] as Map).cast<String, dynamic>())).input(),
-      credentials: map['credentials'] == null ? null : (BackendCredentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      proxy: map['proxy'] == null ? null : (BackendProxy.fromMap((map['proxy'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      serviceFabricCluster: map['serviceFabricCluster'] == null ? null : (BackendServiceFabricCluster.fromMap((map['serviceFabricCluster'] as Map).cast<String, dynamic>())).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
-      tls: map['tls'] == null ? null : (BackendTls.fromMap((map['tls'] as Map).cast<String, dynamic>())).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName']! as String).input(),
+      circuitBreakerRule: map['circuitBreakerRule'] == null ? null : (BackendCircuitBreakerRule.fromMap((map['circuitBreakerRule']! as Map).cast<String, dynamic>())).input(),
+      credentials: map['credentials'] == null ? null : (BackendCredentials.fromMap((map['credentials']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      proxy: map['proxy'] == null ? null : (BackendProxy.fromMap((map['proxy']! as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      serviceFabricCluster: map['serviceFabricCluster'] == null ? null : (BackendServiceFabricCluster.fromMap((map['serviceFabricCluster']! as Map).cast<String, dynamic>())).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
+      tls: map['tls'] == null ? null : (BackendTls.fromMap((map['tls']! as Map).cast<String, dynamic>())).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

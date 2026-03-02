@@ -31,9 +31,9 @@ class GoogleCloudDatacatalogV1UsageSignal {
 
   factory GoogleCloudDatacatalogV1UsageSignal.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1UsageSignal(
-      commonUsageWithinTimeRange: map['commonUsageWithinTimeRange'] == null ? null : ((map['commonUsageWithinTimeRange'] as Map).cast<String, String>()).input(),
-      favoriteCount: map['favoriteCount'] == null ? null : (map['favoriteCount'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      commonUsageWithinTimeRange: map['commonUsageWithinTimeRange'] == null ? null : ((map['commonUsageWithinTimeRange']! as Map).cast<String, String>()).input(),
+      favoriteCount: map['favoriteCount'] == null ? null : (map['favoriteCount']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

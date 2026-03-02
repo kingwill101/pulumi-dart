@@ -26,8 +26,8 @@ class ServiceCosmosDbConfigurationInfoResponse {
 
   factory ServiceCosmosDbConfigurationInfoResponse.fromMap(Map<String, dynamic> map) {
     return ServiceCosmosDbConfigurationInfoResponse(
-      keyVaultKeyUri: map['keyVaultKeyUri'] == null ? null : (map['keyVaultKeyUri'] as String).input(),
-      offerThroughput: map['offerThroughput'] == null ? null : (map['offerThroughput'] as double).input(),
+      keyVaultKeyUri: map['keyVaultKeyUri'] == null ? null : (map['keyVaultKeyUri']! as String).input(),
+      offerThroughput: map['offerThroughput'] == null ? null : (map['offerThroughput']! as double).input(),
     );
   }
 }

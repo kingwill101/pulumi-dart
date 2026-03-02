@@ -30,7 +30,7 @@ class TopicRuleIotAnalytic {
 
   factory TopicRuleIotAnalytic.fromMap(Map<String, dynamic> map) {
     return TopicRuleIotAnalytic(
-      batchMode: map['batchMode'] == null ? null : (map['batchMode'] as bool).input(),
+      batchMode: map['batchMode'] == null ? null : ((map['batchMode'] as bool).input()).input(),
       channelName: (map['channelName'] as String).input(),
       roleArn: (map['roleArn'] as String).input(),
     );

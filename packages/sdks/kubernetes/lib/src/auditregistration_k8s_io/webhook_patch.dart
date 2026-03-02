@@ -28,8 +28,8 @@ class WebhookPatch {
 
   factory WebhookPatch.fromMap(Map<String, dynamic> map) {
     return WebhookPatch(
-      clientConfig: map['clientConfig'] == null ? null : (WebhookClientConfigPatch.fromMap((map['clientConfig'] as Map).cast<String, dynamic>())).input(),
-      throttle: map['throttle'] == null ? null : (WebhookThrottleConfigPatch.fromMap((map['throttle'] as Map).cast<String, dynamic>())).input(),
+      clientConfig: map['clientConfig'] == null ? null : (WebhookClientConfigPatch.fromMap((map['clientConfig']! as Map).cast<String, dynamic>())).input(),
+      throttle: map['throttle'] == null ? null : (WebhookThrottleConfigPatch.fromMap((map['throttle']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

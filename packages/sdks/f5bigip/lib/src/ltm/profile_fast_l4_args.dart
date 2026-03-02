@@ -94,21 +94,21 @@ class ProfileFastL4Args {
 
   factory ProfileFastL4Args.fromMap(Map<String, dynamic> map) {
     return ProfileFastL4Args(
-      clientTimeout: map['clientTimeout'] == null ? null : (map['clientTimeout'] as int).input(),
-      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom'] as String).input(),
-      explicitflowMigration: map['explicitflowMigration'] == null ? null : (map['explicitflowMigration'] as String).input(),
-      hardwareSyncookie: map['hardwareSyncookie'] == null ? null : (map['hardwareSyncookie'] as String).input(),
-      idleTimeout: map['idleTimeout'] == null ? null : (map['idleTimeout'] as String).input(),
-      iptosToclient: map['iptosToclient'] == null ? null : (map['iptosToclient'] as String).input(),
-      iptosToserver: map['iptosToserver'] == null ? null : (map['iptosToserver'] as String).input(),
-      keepaliveInterval: map['keepaliveInterval'] == null ? null : (map['keepaliveInterval'] as String).input(),
-      lateBinding: map['lateBinding'] == null ? null : (map['lateBinding'] as String).input(),
-      looseClose: map['looseClose'] == null ? null : (map['looseClose'] as String).input(),
-      looseInitiation: map['looseInitiation'] == null ? null : (map['looseInitiation'] as String).input(),
+      clientTimeout: map['clientTimeout'] == null ? null : (map['clientTimeout']! as int).input(),
+      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom']! as String).input(),
+      explicitflowMigration: map['explicitflowMigration'] == null ? null : (map['explicitflowMigration']! as String).input(),
+      hardwareSyncookie: map['hardwareSyncookie'] == null ? null : (map['hardwareSyncookie']! as String).input(),
+      idleTimeout: map['idleTimeout'] == null ? null : (map['idleTimeout']! as String).input(),
+      iptosToclient: map['iptosToclient'] == null ? null : (map['iptosToclient']! as String).input(),
+      iptosToserver: map['iptosToserver'] == null ? null : (map['iptosToserver']! as String).input(),
+      keepaliveInterval: map['keepaliveInterval'] == null ? null : (map['keepaliveInterval']! as String).input(),
+      lateBinding: map['lateBinding'] == null ? null : (map['lateBinding']! as String).input(),
+      looseClose: map['looseClose'] == null ? null : (map['looseClose']! as String).input(),
+      looseInitiation: map['looseInitiation'] == null ? null : (map['looseInitiation']! as String).input(),
       name: (map['name'] as String).input(),
-      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
-      receiveWindowsize: map['receiveWindowsize'] == null ? null : (map['receiveWindowsize'] as int).input(),
-      tcpHandshakeTimeout: map['tcpHandshakeTimeout'] == null ? null : (map['tcpHandshakeTimeout'] as String).input(),
+      partition: map['partition'] == null ? null : (map['partition']! as String).input(),
+      receiveWindowsize: map['receiveWindowsize'] == null ? null : (map['receiveWindowsize']! as int).input(),
+      tcpHandshakeTimeout: map['tcpHandshakeTimeout'] == null ? null : (map['tcpHandshakeTimeout']! as String).input(),
     );
   }
 }

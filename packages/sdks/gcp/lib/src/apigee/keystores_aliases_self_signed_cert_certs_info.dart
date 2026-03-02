@@ -23,7 +23,7 @@ class KeystoresAliasesSelfSignedCertCertsInfo {
 
   factory KeystoresAliasesSelfSignedCertCertsInfo.fromMap(Map<String, dynamic> map) {
     return KeystoresAliasesSelfSignedCertCertsInfo(
-      certInfos: map['certInfos'] == null ? null : (pulumi.Input.decodeList<KeystoresAliasesSelfSignedCertCertsInfoCertInfo>(map['certInfos'], (value) => KeystoresAliasesSelfSignedCertCertsInfoCertInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      certInfos: map['certInfos'] == null ? null : (pulumi.Input.decodeList<KeystoresAliasesSelfSignedCertCertsInfoCertInfo>(map['certInfos']!, (value) => KeystoresAliasesSelfSignedCertCertsInfoCertInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

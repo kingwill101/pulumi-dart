@@ -49,12 +49,12 @@ class PolicySpecRule {
 
   factory PolicySpecRule.fromMap(Map<String, dynamic> map) {
     return PolicySpecRule(
-      allowAll: map['allowAll'] == null ? null : (map['allowAll'] as String).input(),
-      condition: map['condition'] == null ? null : (PolicySpecRuleCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      denyAll: map['denyAll'] == null ? null : (map['denyAll'] as String).input(),
-      enforce: map['enforce'] == null ? null : (map['enforce'] as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
-      values: map['values'] == null ? null : (PolicySpecRuleValues.fromMap((map['values'] as Map).cast<String, dynamic>())).input(),
+      allowAll: map['allowAll'] == null ? null : (map['allowAll']! as String).input(),
+      condition: map['condition'] == null ? null : (PolicySpecRuleCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      denyAll: map['denyAll'] == null ? null : (map['denyAll']! as String).input(),
+      enforce: map['enforce'] == null ? null : (map['enforce']! as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']! as String).input(),
+      values: map['values'] == null ? null : (PolicySpecRuleValues.fromMap((map['values']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

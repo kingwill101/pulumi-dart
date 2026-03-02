@@ -83,18 +83,18 @@ class AiFeatureStoreEntityTypeState {
 
   factory AiFeatureStoreEntityTypeState.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreEntityTypeState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      featurestore: map['featurestore'] == null ? null : (map['featurestore'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      monitoringConfig: map['monitoringConfig'] == null ? null : (AiFeatureStoreEntityTypeMonitoringConfig.fromMap((map['monitoringConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      offlineStorageTtlDays: map['offlineStorageTtlDays'] == null ? null : (map['offlineStorageTtlDays'] as int).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      featurestore: map['featurestore'] == null ? null : (map['featurestore']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      monitoringConfig: map['monitoringConfig'] == null ? null : (AiFeatureStoreEntityTypeMonitoringConfig.fromMap((map['monitoringConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      offlineStorageTtlDays: map['offlineStorageTtlDays'] == null ? null : (map['offlineStorageTtlDays']! as int).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

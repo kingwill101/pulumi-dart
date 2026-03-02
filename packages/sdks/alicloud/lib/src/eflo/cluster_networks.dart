@@ -58,14 +58,14 @@ class ClusterNetworks {
 
   factory ClusterNetworks.fromMap(Map<String, dynamic> map) {
     return ClusterNetworks(
-      ipAllocationPolicies: map['ipAllocationPolicies'] == null ? null : (pulumi.Input.decodeList<ClusterNetworksIpAllocationPolicy>(map['ipAllocationPolicies'], (value) => ClusterNetworksIpAllocationPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      newVpdInfo: map['newVpdInfo'] == null ? null : (ClusterNetworksNewVpdInfo.fromMap((map['newVpdInfo'] as Map).cast<String, dynamic>())).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
-      tailIpVersion: map['tailIpVersion'] == null ? null : (map['tailIpVersion'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vpdInfo: map['vpdInfo'] == null ? null : (ClusterNetworksVpdInfo.fromMap((map['vpdInfo'] as Map).cast<String, dynamic>())).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
-      vswitchZoneId: map['vswitchZoneId'] == null ? null : (map['vswitchZoneId'] as String).input(),
+      ipAllocationPolicies: map['ipAllocationPolicies'] == null ? null : (pulumi.Input.decodeList<ClusterNetworksIpAllocationPolicy>(map['ipAllocationPolicies']!, (value) => ClusterNetworksIpAllocationPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      newVpdInfo: map['newVpdInfo'] == null ? null : (ClusterNetworksNewVpdInfo.fromMap((map['newVpdInfo']! as Map).cast<String, dynamic>())).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId']! as String).input(),
+      tailIpVersion: map['tailIpVersion'] == null ? null : (map['tailIpVersion']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vpdInfo: map['vpdInfo'] == null ? null : (ClusterNetworksVpdInfo.fromMap((map['vpdInfo']! as Map).cast<String, dynamic>())).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      vswitchZoneId: map['vswitchZoneId'] == null ? null : (map['vswitchZoneId']! as String).input(),
     );
   }
 }

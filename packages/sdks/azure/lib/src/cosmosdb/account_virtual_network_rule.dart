@@ -26,7 +26,7 @@ class AccountVirtualNetworkRule {
   factory AccountVirtualNetworkRule.fromMap(Map<String, dynamic> map) {
     return AccountVirtualNetworkRule(
       id: (map['id'] as String).input(),
-      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : (map['ignoreMissingVnetServiceEndpoint'] as bool).input(),
+      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : (map['ignoreMissingVnetServiceEndpoint']! as bool).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class VirtualMachinePreferencesNetworkCostParameters {
 
   factory VirtualMachinePreferencesNetworkCostParameters.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePreferencesNetworkCostParameters(
-      estimatedEgressTrafficPercentage: map['estimatedEgressTrafficPercentage'] == null ? null : (map['estimatedEgressTrafficPercentage'] as int).input(),
+      estimatedEgressTrafficPercentage: map['estimatedEgressTrafficPercentage'] == null ? null : (map['estimatedEgressTrafficPercentage']! as int).input(),
     );
   }
 }

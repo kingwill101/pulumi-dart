@@ -77,18 +77,18 @@ class MonitorPropertiesResponse {
 
   factory MonitorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MonitorPropertiesResponse(
-      elasticProperties: map['elasticProperties'] == null ? null : (ElasticPropertiesResponse.fromMap((map['elasticProperties'] as Map).cast<String, dynamic>())).input(),
-      generateApiKey: map['generateApiKey'] == null ? null : (map['generateApiKey'] as bool).input(),
+      elasticProperties: map['elasticProperties'] == null ? null : (ElasticPropertiesResponse.fromMap((map['elasticProperties']! as Map).cast<String, dynamic>())).input(),
+      generateApiKey: map['generateApiKey'] == null ? null : (map['generateApiKey']! as bool).input(),
       liftrResourceCategory: (map['liftrResourceCategory'] as String).input(),
       liftrResourcePreference: (map['liftrResourcePreference'] as int).input(),
-      monitoringStatus: map['monitoringStatus'] == null ? null : (map['monitoringStatus'] as String).input(),
-      planDetails: map['planDetails'] == null ? null : (PlanDetailsResponse.fromMap((map['planDetails'] as Map).cast<String, dynamic>())).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
-      saaSAzureSubscriptionStatus: map['saaSAzureSubscriptionStatus'] == null ? null : (map['saaSAzureSubscriptionStatus'] as String).input(),
-      sourceCampaignId: map['sourceCampaignId'] == null ? null : (map['sourceCampaignId'] as String).input(),
-      sourceCampaignName: map['sourceCampaignName'] == null ? null : (map['sourceCampaignName'] as String).input(),
-      subscriptionState: map['subscriptionState'] == null ? null : (map['subscriptionState'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      monitoringStatus: map['monitoringStatus'] == null ? null : (map['monitoringStatus']! as String).input(),
+      planDetails: map['planDetails'] == null ? null : (PlanDetailsResponse.fromMap((map['planDetails']! as Map).cast<String, dynamic>())).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      saaSAzureSubscriptionStatus: map['saaSAzureSubscriptionStatus'] == null ? null : (map['saaSAzureSubscriptionStatus']! as String).input(),
+      sourceCampaignId: map['sourceCampaignId'] == null ? null : (map['sourceCampaignId']! as String).input(),
+      sourceCampaignName: map['sourceCampaignName'] == null ? null : (map['sourceCampaignName']! as String).input(),
+      subscriptionState: map['subscriptionState'] == null ? null : (map['subscriptionState']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

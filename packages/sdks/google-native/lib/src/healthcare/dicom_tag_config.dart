@@ -34,9 +34,9 @@ class DicomTagConfig {
 
   factory DicomTagConfig.fromMap(Map<String, dynamic> map) {
     return DicomTagConfig(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<Action>(map['actions'], (value) => Action.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      options: map['options'] == null ? null : (Options.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
-      profileType: map['profileType'] == null ? null : (DicomTagConfigProfileType.fromValue(map['profileType'] as String)).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<Action>(map['actions']!, (value) => Action.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      options: map['options'] == null ? null : (Options.fromMap((map['options']! as Map).cast<String, dynamic>())).input(),
+      profileType: map['profileType'] == null ? null : (DicomTagConfigProfileType.fromValue(map['profileType']! as String)).input(),
     );
   }
 }

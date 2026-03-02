@@ -26,7 +26,7 @@ class VnpGatewayNatRuleInternalMapping {
   factory VnpGatewayNatRuleInternalMapping.fromMap(Map<String, dynamic> map) {
     return VnpGatewayNatRuleInternalMapping(
       addressSpace: (map['addressSpace'] as String).input(),
-      portRange: map['portRange'] == null ? null : (map['portRange'] as String).input(),
+      portRange: map['portRange'] == null ? null : (map['portRange']! as String).input(),
     );
   }
 }

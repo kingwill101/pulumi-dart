@@ -31,9 +31,9 @@ class IpRange {
 
   factory IpRange.fromMap(Map<String, dynamic> map) {
     return IpRange(
-      externalAddress: map['externalAddress'] == null ? null : (map['externalAddress'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      ipAddressRange: map['ipAddressRange'] == null ? null : (map['ipAddressRange'] as String).input(),
+      externalAddress: map['externalAddress'] == null ? null : (map['externalAddress']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      ipAddressRange: map['ipAddressRange'] == null ? null : (map['ipAddressRange']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class V2modelsSlotTypeExternalSourceSetting {
 
   factory V2modelsSlotTypeExternalSourceSetting.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotTypeExternalSourceSetting(
-      grammarSlotTypeSettings: map['grammarSlotTypeSettings'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSetting>(map['grammarSlotTypeSettings'], (value) => V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      grammarSlotTypeSettings: map['grammarSlotTypeSettings'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSetting>(map['grammarSlotTypeSettings']!, (value) => V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

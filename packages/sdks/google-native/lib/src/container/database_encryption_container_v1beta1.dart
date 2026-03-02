@@ -27,8 +27,8 @@ class DatabaseEncryptionContainerV1beta1 {
 
   factory DatabaseEncryptionContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return DatabaseEncryptionContainerV1beta1(
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      state: map['state'] == null ? null : (DatabaseEncryptionStateContainerV1beta1.fromValue(map['state'] as String)).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
+      state: map['state'] == null ? null : (DatabaseEncryptionStateContainerV1beta1.fromValue(map['state']! as String)).input(),
     );
   }
 }

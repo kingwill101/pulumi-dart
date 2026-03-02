@@ -45,10 +45,10 @@ class CustomDomainArgs {
 
   factory CustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return CustomDomainArgs(
-      certificateBindingType: map['certificateBindingType'] == null ? null : (map['certificateBindingType'] as String).input(),
-      containerAppEnvironmentCertificateId: map['containerAppEnvironmentCertificateId'] == null ? null : (map['containerAppEnvironmentCertificateId'] as String).input(),
+      certificateBindingType: map['certificateBindingType'] == null ? null : (map['certificateBindingType']! as String).input(),
+      containerAppEnvironmentCertificateId: map['containerAppEnvironmentCertificateId'] == null ? null : (map['containerAppEnvironmentCertificateId']! as String).input(),
       containerAppId: (map['containerAppId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

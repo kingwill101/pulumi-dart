@@ -81,19 +81,19 @@ class ListenerState {
 
   factory ListenerState.fromMap(Map<String, dynamic> map) {
     return ListenerState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      defaultAction: map['defaultAction'] == null ? null : (ListenerDefaultAction.fromMap((map['defaultAction'] as Map).cast<String, dynamic>())).input(),
-      lastUpdatedAt: map['lastUpdatedAt'] == null ? null : (map['lastUpdatedAt'] as String).input(),
-      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceArn: map['serviceArn'] == null ? null : (map['serviceArn'] as String).input(),
-      serviceIdentifier: map['serviceIdentifier'] == null ? null : (map['serviceIdentifier'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
+      defaultAction: map['defaultAction'] == null ? null : ((ListenerDefaultAction.fromMap((map['defaultAction']! as Map).cast<String, dynamic>())).input()).input(),
+      lastUpdatedAt: map['lastUpdatedAt'] == null ? null : ((map['lastUpdatedAt'] as String).input()).input(),
+      listenerId: map['listenerId'] == null ? null : ((map['listenerId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
+      protocol: map['protocol'] == null ? null : ((map['protocol'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serviceArn: map['serviceArn'] == null ? null : ((map['serviceArn'] as String).input()).input(),
+      serviceIdentifier: map['serviceIdentifier'] == null ? null : ((map['serviceIdentifier'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

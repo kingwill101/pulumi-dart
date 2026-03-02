@@ -31,7 +31,7 @@ class HadoopClusterRolesHeadNodeScriptAction {
   factory HadoopClusterRolesHeadNodeScriptAction.fromMap(Map<String, dynamic> map) {
     return HadoopClusterRolesHeadNodeScriptAction(
       name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']! as String).input(),
       uri: (map['uri'] as String).input(),
     );
   }

@@ -41,11 +41,11 @@ class SinkPolicyState {
 
   factory SinkPolicyState.fromMap(Map<String, dynamic> map) {
     return SinkPolicyState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sinkId: map['sinkId'] == null ? null : (map['sinkId'] as String).input(),
-      sinkIdentifier: map['sinkIdentifier'] == null ? null : (map['sinkIdentifier'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sinkId: map['sinkId'] == null ? null : ((map['sinkId'] as String).input()).input(),
+      sinkIdentifier: map['sinkIdentifier'] == null ? null : ((map['sinkIdentifier'] as String).input()).input(),
     );
   }
 }

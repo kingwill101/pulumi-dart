@@ -27,8 +27,8 @@ class GetConfigurationSetVdmOption {
 
   factory GetConfigurationSetVdmOption.fromMap(Map<String, dynamic> map) {
     return GetConfigurationSetVdmOption(
-      dashboardOptions: (pulumi.Input.decodeList<GetConfigurationSetVdmOptionDashboardOption>(map['dashboardOptions'], (value) => GetConfigurationSetVdmOptionDashboardOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      guardianOptions: (pulumi.Input.decodeList<GetConfigurationSetVdmOptionGuardianOption>(map['guardianOptions'], (value) => GetConfigurationSetVdmOptionGuardianOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dashboardOptions: (pulumi.Input.decodeList<GetConfigurationSetVdmOptionDashboardOption>(map['dashboardOptions']!, (value) => GetConfigurationSetVdmOptionDashboardOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      guardianOptions: (pulumi.Input.decodeList<GetConfigurationSetVdmOptionGuardianOption>(map['guardianOptions']!, (value) => GetConfigurationSetVdmOptionGuardianOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class TCPFlagFieldResponse {
 
   factory TCPFlagFieldResponse.fromMap(Map<String, dynamic> map) {
     return TCPFlagFieldResponse(
-      flags: map['flags'] == null ? null : ((map['flags'] as List).cast<String>()).input(),
-      masks: map['masks'] == null ? null : ((map['masks'] as List).cast<String>()).input(),
+      flags: map['flags'] == null ? null : ((map['flags']! as List).cast<String>()).input(),
+      masks: map['masks'] == null ? null : ((map['masks']! as List).cast<String>()).input(),
     );
   }
 }

@@ -79,17 +79,17 @@ class GetWebAppVnetConnectionSlotResult {
   factory GetWebAppVnetConnectionSlotResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppVnetConnectionSlotResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      certBlob: map['certBlob'] == null ? null : map['certBlob'] as String,
+      certBlob: map['certBlob'] == null ? null : map['certBlob']! as String,
       certThumbprint: map['certThumbprint'] as String,
-      dnsServers: map['dnsServers'] == null ? null : map['dnsServers'] as String,
+      dnsServers: map['dnsServers'] == null ? null : map['dnsServers']! as String,
       id: map['id'] as String,
-      isSwift: map['isSwift'] == null ? null : map['isSwift'] as bool,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      isSwift: map['isSwift'] == null ? null : map['isSwift']! as bool,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
       resyncRequired: map['resyncRequired'] as bool,
       routes: pulumi.Input.decodeList<VnetRouteResponse>(map['routes'], (value) => VnetRouteResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
-      vnetResourceId: map['vnetResourceId'] == null ? null : map['vnetResourceId'] as String,
+      vnetResourceId: map['vnetResourceId'] == null ? null : map['vnetResourceId']! as String,
     );
   }
 }

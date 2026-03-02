@@ -63,7 +63,7 @@ class GetSenderUsernameResult {
     return GetSenderUsernameResult(
       azureApiVersion: map['azureApiVersion'] as String,
       dataLocation: map['dataLocation'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,

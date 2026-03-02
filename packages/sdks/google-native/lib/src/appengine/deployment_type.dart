@@ -39,10 +39,10 @@ class DeploymentType {
 
   factory DeploymentType.fromMap(Map<String, dynamic> map) {
     return DeploymentType(
-      cloudBuildOptions: map['cloudBuildOptions'] == null ? null : (CloudBuildOptions.fromMap((map['cloudBuildOptions'] as Map).cast<String, dynamic>())).input(),
-      container: map['container'] == null ? null : (ContainerInfo.fromMap((map['container'] as Map).cast<String, dynamic>())).input(),
-      files: map['files'] == null ? null : ((map['files'] as Map).cast<String, String>()).input(),
-      zip: map['zip'] == null ? null : (ZipInfo.fromMap((map['zip'] as Map).cast<String, dynamic>())).input(),
+      cloudBuildOptions: map['cloudBuildOptions'] == null ? null : (CloudBuildOptions.fromMap((map['cloudBuildOptions']! as Map).cast<String, dynamic>())).input(),
+      container: map['container'] == null ? null : (ContainerInfo.fromMap((map['container']! as Map).cast<String, dynamic>())).input(),
+      files: map['files'] == null ? null : ((map['files']! as Map).cast<String, String>()).input(),
+      zip: map['zip'] == null ? null : (ZipInfo.fromMap((map['zip']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

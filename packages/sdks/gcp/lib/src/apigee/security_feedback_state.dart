@@ -72,16 +72,16 @@ class SecurityFeedbackState {
 
   factory SecurityFeedbackState.fromMap(Map<String, dynamic> map) {
     return SecurityFeedbackState(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      feedbackContexts: map['feedbackContexts'] == null ? null : (pulumi.Input.decodeList<SecurityFeedbackFeedbackContext>(map['feedbackContexts'], (value) => SecurityFeedbackFeedbackContext.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      feedbackId: map['feedbackId'] == null ? null : (map['feedbackId'] as String).input(),
-      feedbackType: map['feedbackType'] == null ? null : (map['feedbackType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      feedbackContexts: map['feedbackContexts'] == null ? null : (pulumi.Input.decodeList<SecurityFeedbackFeedbackContext>(map['feedbackContexts']!, (value) => SecurityFeedbackFeedbackContext.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      feedbackId: map['feedbackId'] == null ? null : (map['feedbackId']! as String).input(),
+      feedbackType: map['feedbackType'] == null ? null : (map['feedbackType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

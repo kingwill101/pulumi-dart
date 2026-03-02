@@ -62,15 +62,15 @@ class Action {
 
   factory Action.fromMap(Map<String, dynamic> map) {
     return Action(
-      cleanImageTag: map['cleanImageTag'] == null ? null : (ImageConfigHealthcareV1beta1.fromMap((map['cleanImageTag'] as Map).cast<String, dynamic>())).input(),
-      cleanTextTag: map['cleanTextTag'] == null ? null : ((map['cleanTextTag'] as Map).cast<String, dynamic>()).input(),
-      deleteTag: map['deleteTag'] == null ? null : ((map['deleteTag'] as Map).cast<String, dynamic>()).input(),
-      keepTag: map['keepTag'] == null ? null : ((map['keepTag'] as Map).cast<String, dynamic>()).input(),
-      queries: map['queries'] == null ? null : ((map['queries'] as List).cast<String>()).input(),
-      recurseTag: map['recurseTag'] == null ? null : ((map['recurseTag'] as Map).cast<String, dynamic>()).input(),
-      regenUidTag: map['regenUidTag'] == null ? null : ((map['regenUidTag'] as Map).cast<String, dynamic>()).input(),
-      removeTag: map['removeTag'] == null ? null : ((map['removeTag'] as Map).cast<String, dynamic>()).input(),
-      resetTag: map['resetTag'] == null ? null : ((map['resetTag'] as Map).cast<String, dynamic>()).input(),
+      cleanImageTag: map['cleanImageTag'] == null ? null : (ImageConfigHealthcareV1beta1.fromMap((map['cleanImageTag']! as Map).cast<String, dynamic>())).input(),
+      cleanTextTag: map['cleanTextTag'] == null ? null : ((map['cleanTextTag']! as Map).cast<String, dynamic>()).input(),
+      deleteTag: map['deleteTag'] == null ? null : ((map['deleteTag']! as Map).cast<String, dynamic>()).input(),
+      keepTag: map['keepTag'] == null ? null : ((map['keepTag']! as Map).cast<String, dynamic>()).input(),
+      queries: map['queries'] == null ? null : ((map['queries']! as List).cast<String>()).input(),
+      recurseTag: map['recurseTag'] == null ? null : ((map['recurseTag']! as Map).cast<String, dynamic>()).input(),
+      regenUidTag: map['regenUidTag'] == null ? null : ((map['regenUidTag']! as Map).cast<String, dynamic>()).input(),
+      removeTag: map['removeTag'] == null ? null : ((map['removeTag']! as Map).cast<String, dynamic>()).input(),
+      resetTag: map['resetTag'] == null ? null : ((map['resetTag']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

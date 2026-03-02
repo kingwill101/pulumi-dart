@@ -21,7 +21,7 @@ class ShieldedNodes {
 
   factory ShieldedNodes.fromMap(Map<String, dynamic> map) {
     return ShieldedNodes(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

@@ -46,10 +46,10 @@ class PrivateLinkScopeArgs {
   factory PrivateLinkScopeArgs.fromMap(Map<String, dynamic> map) {
     return PrivateLinkScopeArgs(
       accessModeSettings: (AccessModeSettings.fromMap((map['accessModeSettings'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scopeName: map['scopeName'] == null ? null : (map['scopeName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      scopeName: map['scopeName'] == null ? null : (map['scopeName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

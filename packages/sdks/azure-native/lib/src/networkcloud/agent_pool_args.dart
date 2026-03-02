@@ -105,21 +105,21 @@ class AgentPoolArgs {
 
   factory AgentPoolArgs.fromMap(Map<String, dynamic> map) {
     return AgentPoolArgs(
-      administratorConfiguration: map['administratorConfiguration'] == null ? null : (AdministratorConfiguration.fromMap((map['administratorConfiguration'] as Map).cast<String, dynamic>())).input(),
-      agentOptions: map['agentOptions'] == null ? null : (AgentOptions.fromMap((map['agentOptions'] as Map).cast<String, dynamic>())).input(),
-      agentPoolName: map['agentPoolName'] == null ? null : (map['agentPoolName'] as String).input(),
-      attachedNetworkConfiguration: map['attachedNetworkConfiguration'] == null ? null : (AttachedNetworkConfiguration.fromMap((map['attachedNetworkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones'] as List).cast<String>()).input(),
+      administratorConfiguration: map['administratorConfiguration'] == null ? null : (AdministratorConfiguration.fromMap((map['administratorConfiguration']! as Map).cast<String, dynamic>())).input(),
+      agentOptions: map['agentOptions'] == null ? null : (AgentOptions.fromMap((map['agentOptions']! as Map).cast<String, dynamic>())).input(),
+      agentPoolName: map['agentPoolName'] == null ? null : (map['agentPoolName']! as String).input(),
+      attachedNetworkConfiguration: map['attachedNetworkConfiguration'] == null ? null : (AttachedNetworkConfiguration.fromMap((map['attachedNetworkConfiguration']! as Map).cast<String, dynamic>())).input(),
+      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones']! as List).cast<String>()).input(),
       count: (map['count'] as double).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
       kubernetesClusterName: (map['kubernetesClusterName'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<KubernetesLabel>(map['labels'], (value) => KubernetesLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<KubernetesLabel>(map['labels']!, (value) => KubernetesLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       mode: (map['mode'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<KubernetesLabel>(map['taints'], (value) => KubernetesLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      upgradeSettings: map['upgradeSettings'] == null ? null : (AgentPoolUpgradeSettings.fromMap((map['upgradeSettings'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<KubernetesLabel>(map['taints']!, (value) => KubernetesLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      upgradeSettings: map['upgradeSettings'] == null ? null : (AgentPoolUpgradeSettings.fromMap((map['upgradeSettings']! as Map).cast<String, dynamic>())).input(),
       vmSkuName: (map['vmSkuName'] as String).input(),
     );
   }

@@ -25,8 +25,8 @@ class NatGatewayAccessMode {
 
   factory NatGatewayAccessMode.fromMap(Map<String, dynamic> map) {
     return NatGatewayAccessMode(
-      modeValue: map['modeValue'] == null ? null : (map['modeValue'] as String).input(),
-      tunnelType: map['tunnelType'] == null ? null : (map['tunnelType'] as String).input(),
+      modeValue: map['modeValue'] == null ? null : (map['modeValue']! as String).input(),
+      tunnelType: map['tunnelType'] == null ? null : (map['tunnelType']! as String).input(),
     );
   }
 }

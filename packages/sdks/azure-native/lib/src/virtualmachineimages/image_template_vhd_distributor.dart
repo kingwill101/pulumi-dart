@@ -37,10 +37,10 @@ class ImageTemplateVhdDistributor {
 
   factory ImageTemplateVhdDistributor.fromMap(Map<String, dynamic> map) {
     return ImageTemplateVhdDistributor(
-      artifactTags: map['artifactTags'] == null ? null : ((map['artifactTags'] as Map).cast<String, String>()).input(),
+      artifactTags: map['artifactTags'] == null ? null : ((map['artifactTags']! as Map).cast<String, String>()).input(),
       runOutputName: (map['runOutputName'] as String).input(),
       type: (map['type'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

@@ -61,15 +61,15 @@ class SecurityProfile {
 
   factory SecurityProfile.fromMap(Map<String, dynamic> map) {
     return SecurityProfile(
-      aaddsResourceId: map['aaddsResourceId'] == null ? null : (map['aaddsResourceId'] as String).input(),
-      clusterUsersGroupDNs: map['clusterUsersGroupDNs'] == null ? null : ((map['clusterUsersGroupDNs'] as List).cast<String>()).input(),
-      directoryType: map['directoryType'] == null ? null : (map['directoryType'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      domainUserPassword: map['domainUserPassword'] == null ? null : (map['domainUserPassword'] as String).input(),
-      domainUsername: map['domainUsername'] == null ? null : (map['domainUsername'] as String).input(),
-      ldapsUrls: map['ldapsUrls'] == null ? null : ((map['ldapsUrls'] as List).cast<String>()).input(),
-      msiResourceId: map['msiResourceId'] == null ? null : (map['msiResourceId'] as String).input(),
-      organizationalUnitDN: map['organizationalUnitDN'] == null ? null : (map['organizationalUnitDN'] as String).input(),
+      aaddsResourceId: map['aaddsResourceId'] == null ? null : (map['aaddsResourceId']! as String).input(),
+      clusterUsersGroupDNs: map['clusterUsersGroupDNs'] == null ? null : ((map['clusterUsersGroupDNs']! as List).cast<String>()).input(),
+      directoryType: map['directoryType'] == null ? null : (map['directoryType']! as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      domainUserPassword: map['domainUserPassword'] == null ? null : (map['domainUserPassword']! as String).input(),
+      domainUsername: map['domainUsername'] == null ? null : (map['domainUsername']! as String).input(),
+      ldapsUrls: map['ldapsUrls'] == null ? null : ((map['ldapsUrls']! as List).cast<String>()).input(),
+      msiResourceId: map['msiResourceId'] == null ? null : (map['msiResourceId']! as String).input(),
+      organizationalUnitDN: map['organizationalUnitDN'] == null ? null : (map['organizationalUnitDN']! as String).input(),
     );
   }
 }

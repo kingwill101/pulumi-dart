@@ -26,8 +26,8 @@ class VirtualMachineNodes {
 
   factory VirtualMachineNodes.fromMap(Map<String, dynamic> map) {
     return VirtualMachineNodes(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      size: map['size'] == null ? null : (map['size'] as String).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      size: map['size'] == null ? null : (map['size']! as String).input(),
     );
   }
 }

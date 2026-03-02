@@ -43,11 +43,11 @@ class LBFrontendIPConfigurationResourceSettings {
 
   factory LBFrontendIPConfigurationResourceSettings.fromMap(Map<String, dynamic> map) {
     return LBFrontendIPConfigurationResourceSettings(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
-      privateIpAllocationMethod: map['privateIpAllocationMethod'] == null ? null : (map['privateIpAllocationMethod'] as String).input(),
-      subnet: map['subnet'] == null ? null : (SubnetReference.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
-      zones: map['zones'] == null ? null : (map['zones'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
+      privateIpAllocationMethod: map['privateIpAllocationMethod'] == null ? null : (map['privateIpAllocationMethod']! as String).input(),
+      subnet: map['subnet'] == null ? null : (SubnetReference.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
+      zones: map['zones'] == null ? null : (map['zones']! as String).input(),
     );
   }
 }

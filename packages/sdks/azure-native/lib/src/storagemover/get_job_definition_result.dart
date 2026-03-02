@@ -111,11 +111,11 @@ class GetJobDefinitionResult {
 
   factory GetJobDefinitionResult.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionResult(
-      agentName: map['agentName'] == null ? null : map['agentName'] as String,
+      agentName: map['agentName'] == null ? null : map['agentName']! as String,
       agentResourceId: map['agentResourceId'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
       copyMode: map['copyMode'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       latestJobRunName: map['latestJobRunName'] as String,
       latestJobRunResourceId: map['latestJobRunResourceId'] as String,
@@ -124,11 +124,11 @@ class GetJobDefinitionResult {
       provisioningState: map['provisioningState'] as String,
       sourceName: map['sourceName'] as String,
       sourceResourceId: map['sourceResourceId'] as String,
-      sourceSubpath: map['sourceSubpath'] == null ? null : map['sourceSubpath'] as String,
+      sourceSubpath: map['sourceSubpath'] == null ? null : map['sourceSubpath']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       targetName: map['targetName'] as String,
       targetResourceId: map['targetResourceId'] as String,
-      targetSubpath: map['targetSubpath'] == null ? null : map['targetSubpath'] as String,
+      targetSubpath: map['targetSubpath'] == null ? null : map['targetSubpath']! as String,
       type: map['type'] as String,
     );
   }

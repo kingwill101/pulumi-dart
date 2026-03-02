@@ -45,12 +45,12 @@ class RuleRuleActionRedirectConfig {
 
   factory RuleRuleActionRedirectConfig.fromMap(Map<String, dynamic> map) {
     return RuleRuleActionRedirectConfig(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      httpCode: map['httpCode'] == null ? null : (map['httpCode'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      query: map['query'] == null ? null : (map['query'] as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      httpCode: map['httpCode'] == null ? null : (map['httpCode']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
     );
   }
 }

@@ -49,11 +49,11 @@ class FeatureMembershipConfigmanagement {
 
   factory FeatureMembershipConfigmanagement.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipConfigmanagement(
-      configSync: map['configSync'] == null ? null : (FeatureMembershipConfigmanagementConfigSync.fromMap((map['configSync'] as Map).cast<String, dynamic>())).input(),
-      hierarchyController: map['hierarchyController'] == null ? null : (FeatureMembershipConfigmanagementHierarchyController.fromMap((map['hierarchyController'] as Map).cast<String, dynamic>())).input(),
-      management: map['management'] == null ? null : (map['management'] as String).input(),
-      policyController: map['policyController'] == null ? null : (FeatureMembershipConfigmanagementPolicyController.fromMap((map['policyController'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      configSync: map['configSync'] == null ? null : (FeatureMembershipConfigmanagementConfigSync.fromMap((map['configSync']! as Map).cast<String, dynamic>())).input(),
+      hierarchyController: map['hierarchyController'] == null ? null : (FeatureMembershipConfigmanagementHierarchyController.fromMap((map['hierarchyController']! as Map).cast<String, dynamic>())).input(),
+      management: map['management'] == null ? null : (map['management']! as String).input(),
+      policyController: map['policyController'] == null ? null : (FeatureMembershipConfigmanagementPolicyController.fromMap((map['policyController']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

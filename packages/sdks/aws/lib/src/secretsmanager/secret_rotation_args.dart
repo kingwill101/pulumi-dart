@@ -45,10 +45,10 @@ class SecretRotationArgs {
 
   factory SecretRotationArgs.fromMap(Map<String, dynamic> map) {
     return SecretRotationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rotateImmediately: map['rotateImmediately'] == null ? null : (map['rotateImmediately'] as bool).input(),
-      rotationLambdaArn: map['rotationLambdaArn'] == null ? null : (map['rotationLambdaArn'] as String).input(),
-      rotationRules: (SecretRotationRotationRules.fromMap((map['rotationRules'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      rotateImmediately: map['rotateImmediately'] == null ? null : ((map['rotateImmediately'] as bool).input()).input(),
+      rotationLambdaArn: map['rotationLambdaArn'] == null ? null : ((map['rotationLambdaArn'] as String).input()).input(),
+      rotationRules: (SecretRotationRotationRules.fromMap((map['rotationRules']! as Map).cast<String, dynamic>())).input(),
       secretId: (map['secretId'] as String).input(),
     );
   }

@@ -23,8 +23,8 @@ class ServiceDnsEntry {
 
   factory ServiceDnsEntry.fromMap(Map<String, dynamic> map) {
     return ServiceDnsEntry(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      hostedZoneId: map['hostedZoneId'] == null ? null : (map['hostedZoneId'] as String).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      hostedZoneId: map['hostedZoneId'] == null ? null : ((map['hostedZoneId'] as String).input()).input(),
     );
   }
 }

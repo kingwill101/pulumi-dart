@@ -116,22 +116,22 @@ class BastionHostArgs {
 
   factory BastionHostArgs.fromMap(Map<String, dynamic> map) {
     return BastionHostArgs(
-      copyPasteEnabled: map['copyPasteEnabled'] == null ? null : (map['copyPasteEnabled'] as bool).input(),
-      fileCopyEnabled: map['fileCopyEnabled'] == null ? null : (map['fileCopyEnabled'] as bool).input(),
-      ipConfiguration: map['ipConfiguration'] == null ? null : (BastionHostIpConfiguration.fromMap((map['ipConfiguration'] as Map).cast<String, dynamic>())).input(),
-      ipConnectEnabled: map['ipConnectEnabled'] == null ? null : (map['ipConnectEnabled'] as bool).input(),
-      kerberosEnabled: map['kerberosEnabled'] == null ? null : (map['kerberosEnabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      copyPasteEnabled: map['copyPasteEnabled'] == null ? null : (map['copyPasteEnabled']! as bool).input(),
+      fileCopyEnabled: map['fileCopyEnabled'] == null ? null : (map['fileCopyEnabled']! as bool).input(),
+      ipConfiguration: map['ipConfiguration'] == null ? null : (BastionHostIpConfiguration.fromMap((map['ipConfiguration']! as Map).cast<String, dynamic>())).input(),
+      ipConnectEnabled: map['ipConnectEnabled'] == null ? null : (map['ipConnectEnabled']! as bool).input(),
+      kerberosEnabled: map['kerberosEnabled'] == null ? null : (map['kerberosEnabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scaleUnits: map['scaleUnits'] == null ? null : (map['scaleUnits'] as int).input(),
-      sessionRecordingEnabled: map['sessionRecordingEnabled'] == null ? null : (map['sessionRecordingEnabled'] as bool).input(),
-      shareableLinkEnabled: map['shareableLinkEnabled'] == null ? null : (map['shareableLinkEnabled'] as bool).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tunnelingEnabled: map['tunnelingEnabled'] == null ? null : (map['tunnelingEnabled'] as bool).input(),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId'] as String).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      scaleUnits: map['scaleUnits'] == null ? null : (map['scaleUnits']! as int).input(),
+      sessionRecordingEnabled: map['sessionRecordingEnabled'] == null ? null : (map['sessionRecordingEnabled']! as bool).input(),
+      shareableLinkEnabled: map['shareableLinkEnabled'] == null ? null : (map['shareableLinkEnabled']! as bool).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tunnelingEnabled: map['tunnelingEnabled'] == null ? null : (map['tunnelingEnabled']! as bool).input(),
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId']! as String).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

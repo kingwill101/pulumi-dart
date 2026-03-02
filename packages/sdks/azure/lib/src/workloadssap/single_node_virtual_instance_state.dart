@@ -78,18 +78,18 @@ class SingleNodeVirtualInstanceState {
 
   factory SingleNodeVirtualInstanceState.fromMap(Map<String, dynamic> map) {
     return SingleNodeVirtualInstanceState(
-      appLocation: map['appLocation'] == null ? null : (map['appLocation'] as String).input(),
-      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
-      identity: map['identity'] == null ? null : (SingleNodeVirtualInstanceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : (map['managedResourceGroupName'] as String).input(),
-      managedResourcesNetworkAccessType: map['managedResourcesNetworkAccessType'] == null ? null : (map['managedResourcesNetworkAccessType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      sapFqdn: map['sapFqdn'] == null ? null : (map['sapFqdn'] as String).input(),
-      sapProduct: map['sapProduct'] == null ? null : (map['sapProduct'] as String).input(),
-      singleServerConfiguration: map['singleServerConfiguration'] == null ? null : (SingleNodeVirtualInstanceSingleServerConfiguration.fromMap((map['singleServerConfiguration'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      appLocation: map['appLocation'] == null ? null : (map['appLocation']! as String).input(),
+      environment: map['environment'] == null ? null : (map['environment']! as String).input(),
+      identity: map['identity'] == null ? null : (SingleNodeVirtualInstanceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : (map['managedResourceGroupName']! as String).input(),
+      managedResourcesNetworkAccessType: map['managedResourcesNetworkAccessType'] == null ? null : (map['managedResourcesNetworkAccessType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      sapFqdn: map['sapFqdn'] == null ? null : (map['sapFqdn']! as String).input(),
+      sapProduct: map['sapProduct'] == null ? null : (map['sapProduct']! as String).input(),
+      singleServerConfiguration: map['singleServerConfiguration'] == null ? null : (SingleNodeVirtualInstanceSingleServerConfiguration.fromMap((map['singleServerConfiguration']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

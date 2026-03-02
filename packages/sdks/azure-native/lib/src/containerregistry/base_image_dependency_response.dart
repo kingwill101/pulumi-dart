@@ -41,11 +41,11 @@ class BaseImageDependencyResponse {
 
   factory BaseImageDependencyResponse.fromMap(Map<String, dynamic> map) {
     return BaseImageDependencyResponse(
-      digest: map['digest'] == null ? null : (map['digest'] as String).input(),
-      registry: map['registry'] == null ? null : (map['registry'] as String).input(),
-      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      digest: map['digest'] == null ? null : (map['digest']! as String).input(),
+      registry: map['registry'] == null ? null : (map['registry']! as String).input(),
+      repository: map['repository'] == null ? null : (map['repository']! as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

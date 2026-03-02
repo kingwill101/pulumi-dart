@@ -55,7 +55,7 @@ class GetSaslAclsResult {
       acls: pulumi.Input.decodeList<GetSaslAclsAcl>(map['acls'], (value) => GetSaslAclsAcl.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       instanceId: map['instanceId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       username: map['username'] as String,
     );
   }

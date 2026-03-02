@@ -53,13 +53,13 @@ class ManagedStorageAccountState {
 
   factory ManagedStorageAccountState.fromMap(Map<String, dynamic> map) {
     return ManagedStorageAccountState(
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      regenerateKeyAutomatically: map['regenerateKeyAutomatically'] == null ? null : (map['regenerateKeyAutomatically'] as bool).input(),
-      regenerationPeriod: map['regenerationPeriod'] == null ? null : (map['regenerationPeriod'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
-      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      regenerateKeyAutomatically: map['regenerateKeyAutomatically'] == null ? null : (map['regenerateKeyAutomatically']! as bool).input(),
+      regenerationPeriod: map['regenerationPeriod'] == null ? null : (map['regenerationPeriod']! as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
+      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

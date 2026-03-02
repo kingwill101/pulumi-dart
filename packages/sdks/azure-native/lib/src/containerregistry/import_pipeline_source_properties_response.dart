@@ -34,8 +34,8 @@ class ImportPipelineSourcePropertiesResponse {
   factory ImportPipelineSourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ImportPipelineSourcePropertiesResponse(
       keyVaultUri: (map['keyVaultUri'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

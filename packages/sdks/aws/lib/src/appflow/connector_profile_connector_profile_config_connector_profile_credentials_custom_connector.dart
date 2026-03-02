@@ -43,11 +43,11 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomCon
 
   factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnector.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnector(
-      apiKey: map['apiKey'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorApiKey.fromMap((map['apiKey'] as Map).cast<String, dynamic>())).input(),
+      apiKey: map['apiKey'] == null ? null : ((ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorApiKey.fromMap((map['apiKey']! as Map).cast<String, dynamic>())).input()).input(),
       authenticationType: (map['authenticationType'] as String).input(),
-      basic: map['basic'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorBasic.fromMap((map['basic'] as Map).cast<String, dynamic>())).input(),
-      custom: map['custom'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorCustom.fromMap((map['custom'] as Map).cast<String, dynamic>())).input(),
-      oauth2: map['oauth2'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2.fromMap((map['oauth2'] as Map).cast<String, dynamic>())).input(),
+      basic: map['basic'] == null ? null : ((ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorBasic.fromMap((map['basic']! as Map).cast<String, dynamic>())).input()).input(),
+      custom: map['custom'] == null ? null : ((ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorCustom.fromMap((map['custom']! as Map).cast<String, dynamic>())).input()).input(),
+      oauth2: map['oauth2'] == null ? null : ((ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2.fromMap((map['oauth2']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

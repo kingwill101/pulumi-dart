@@ -36,10 +36,10 @@ class HostGroupState {
 
   factory HostGroupState.fromMap(Map<String, dynamic> map) {
     return HostGroupState(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      hostGroupId: map['hostGroupId'] == null ? null : (map['hostGroupId'] as String).input(),
-      hostGroupName: map['hostGroupName'] == null ? null : (map['hostGroupName'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      hostGroupId: map['hostGroupId'] == null ? null : (map['hostGroupId']! as String).input(),
+      hostGroupName: map['hostGroupName'] == null ? null : (map['hostGroupName']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
     );
   }
 }

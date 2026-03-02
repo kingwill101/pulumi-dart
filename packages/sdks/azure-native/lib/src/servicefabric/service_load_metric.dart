@@ -41,11 +41,11 @@ class ServiceLoadMetric {
 
   factory ServiceLoadMetric.fromMap(Map<String, dynamic> map) {
     return ServiceLoadMetric(
-      defaultLoad: map['defaultLoad'] == null ? null : (map['defaultLoad'] as int).input(),
+      defaultLoad: map['defaultLoad'] == null ? null : (map['defaultLoad']! as int).input(),
       name: (map['name'] as String).input(),
-      primaryDefaultLoad: map['primaryDefaultLoad'] == null ? null : (map['primaryDefaultLoad'] as int).input(),
-      secondaryDefaultLoad: map['secondaryDefaultLoad'] == null ? null : (map['secondaryDefaultLoad'] as int).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as String).input(),
+      primaryDefaultLoad: map['primaryDefaultLoad'] == null ? null : (map['primaryDefaultLoad']! as int).input(),
+      secondaryDefaultLoad: map['secondaryDefaultLoad'] == null ? null : (map['secondaryDefaultLoad']! as int).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class ResourceTypeExtensionOptionsResourceCreationBeginResponse {
 
   factory ResourceTypeExtensionOptionsResourceCreationBeginResponse.fromMap(Map<String, dynamic> map) {
     return ResourceTypeExtensionOptionsResourceCreationBeginResponse(
-      request: map['request'] == null ? null : ((map['request'] as List).cast<String>()).input(),
-      response: map['response'] == null ? null : ((map['response'] as List).cast<String>()).input(),
+      request: map['request'] == null ? null : ((map['request']! as List).cast<String>()).input(),
+      response: map['response'] == null ? null : ((map['response']! as List).cast<String>()).input(),
     );
   }
 }

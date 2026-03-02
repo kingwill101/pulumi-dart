@@ -89,19 +89,19 @@ class ConfigurationStoreArgs {
 
   factory ConfigurationStoreArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationStoreArgs(
-      configStoreName: map['configStoreName'] == null ? null : (map['configStoreName'] as String).input(),
-      createMode: map['createMode'] == null ? null : (CreateMode.fromValue(map['createMode'] as String)).input(),
-      dataPlaneProxy: map['dataPlaneProxy'] == null ? null : (DataPlaneProxyProperties.fromMap((map['dataPlaneProxy'] as Map).cast<String, dynamic>())).input(),
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth'] as bool).input(),
-      enablePurgeProtection: map['enablePurgeProtection'] == null ? null : (map['enablePurgeProtection'] as bool).input(),
-      encryption: map['encryption'] == null ? null : (EncryptionProperties.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (ResourceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      configStoreName: map['configStoreName'] == null ? null : (map['configStoreName']! as String).input(),
+      createMode: map['createMode'] == null ? null : (CreateMode.fromValue(map['createMode']! as String)).input(),
+      dataPlaneProxy: map['dataPlaneProxy'] == null ? null : (DataPlaneProxyProperties.fromMap((map['dataPlaneProxy']! as Map).cast<String, dynamic>())).input(),
+      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth']! as bool).input(),
+      enablePurgeProtection: map['enablePurgeProtection'] == null ? null : (map['enablePurgeProtection']! as bool).input(),
+      encryption: map['encryption'] == null ? null : (EncryptionProperties.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ResourceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      softDeleteRetentionInDays: map['softDeleteRetentionInDays'] == null ? null : (map['softDeleteRetentionInDays'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      softDeleteRetentionInDays: map['softDeleteRetentionInDays'] == null ? null : (map['softDeleteRetentionInDays']! as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

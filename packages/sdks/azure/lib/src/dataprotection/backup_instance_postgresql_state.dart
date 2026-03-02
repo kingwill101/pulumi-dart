@@ -51,13 +51,13 @@ class BackupInstancePostgresqlState {
 
   factory BackupInstancePostgresqlState.fromMap(Map<String, dynamic> map) {
     return BackupInstancePostgresqlState(
-      backupPolicyId: map['backupPolicyId'] == null ? null : (map['backupPolicyId'] as String).input(),
-      databaseCredentialKeyVaultSecretId: map['databaseCredentialKeyVaultSecretId'] == null ? null : (map['databaseCredentialKeyVaultSecretId'] as String).input(),
-      databaseId: map['databaseId'] == null ? null : (map['databaseId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protectionState: map['protectionState'] == null ? null : (map['protectionState'] as String).input(),
-      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
+      backupPolicyId: map['backupPolicyId'] == null ? null : (map['backupPolicyId']! as String).input(),
+      databaseCredentialKeyVaultSecretId: map['databaseCredentialKeyVaultSecretId'] == null ? null : (map['databaseCredentialKeyVaultSecretId']! as String).input(),
+      databaseId: map['databaseId'] == null ? null : (map['databaseId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protectionState: map['protectionState'] == null ? null : (map['protectionState']! as String).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId']! as String).input(),
     );
   }
 }

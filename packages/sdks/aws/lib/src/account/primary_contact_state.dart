@@ -81,19 +81,19 @@ class PrimaryContactState {
 
   factory PrimaryContactState.fromMap(Map<String, dynamic> map) {
     return PrimaryContactState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      addressLine1: map['addressLine1'] == null ? null : (map['addressLine1'] as String).input(),
-      addressLine2: map['addressLine2'] == null ? null : (map['addressLine2'] as String).input(),
-      addressLine3: map['addressLine3'] == null ? null : (map['addressLine3'] as String).input(),
-      city: map['city'] == null ? null : (map['city'] as String).input(),
-      companyName: map['companyName'] == null ? null : (map['companyName'] as String).input(),
-      countryCode: map['countryCode'] == null ? null : (map['countryCode'] as String).input(),
-      districtOrCounty: map['districtOrCounty'] == null ? null : (map['districtOrCounty'] as String).input(),
-      fullName: map['fullName'] == null ? null : (map['fullName'] as String).input(),
-      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
-      postalCode: map['postalCode'] == null ? null : (map['postalCode'] as String).input(),
-      stateOrRegion: map['stateOrRegion'] == null ? null : (map['stateOrRegion'] as String).input(),
-      websiteUrl: map['websiteUrl'] == null ? null : (map['websiteUrl'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      addressLine1: map['addressLine1'] == null ? null : ((map['addressLine1'] as String).input()).input(),
+      addressLine2: map['addressLine2'] == null ? null : ((map['addressLine2'] as String).input()).input(),
+      addressLine3: map['addressLine3'] == null ? null : ((map['addressLine3'] as String).input()).input(),
+      city: map['city'] == null ? null : ((map['city'] as String).input()).input(),
+      companyName: map['companyName'] == null ? null : ((map['companyName'] as String).input()).input(),
+      countryCode: map['countryCode'] == null ? null : ((map['countryCode'] as String).input()).input(),
+      districtOrCounty: map['districtOrCounty'] == null ? null : ((map['districtOrCounty'] as String).input()).input(),
+      fullName: map['fullName'] == null ? null : ((map['fullName'] as String).input()).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : ((map['phoneNumber'] as String).input()).input(),
+      postalCode: map['postalCode'] == null ? null : ((map['postalCode'] as String).input()).input(),
+      stateOrRegion: map['stateOrRegion'] == null ? null : ((map['stateOrRegion'] as String).input()).input(),
+      websiteUrl: map['websiteUrl'] == null ? null : ((map['websiteUrl'] as String).input()).input(),
     );
   }
 }

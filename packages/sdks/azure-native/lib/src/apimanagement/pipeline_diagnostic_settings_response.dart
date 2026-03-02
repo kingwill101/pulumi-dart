@@ -27,8 +27,8 @@ class PipelineDiagnosticSettingsResponse {
 
   factory PipelineDiagnosticSettingsResponse.fromMap(Map<String, dynamic> map) {
     return PipelineDiagnosticSettingsResponse(
-      request: map['request'] == null ? null : (HttpMessageDiagnosticResponse.fromMap((map['request'] as Map).cast<String, dynamic>())).input(),
-      response: map['response'] == null ? null : (HttpMessageDiagnosticResponse.fromMap((map['response'] as Map).cast<String, dynamic>())).input(),
+      request: map['request'] == null ? null : (HttpMessageDiagnosticResponse.fromMap((map['request']! as Map).cast<String, dynamic>())).input(),
+      response: map['response'] == null ? null : (HttpMessageDiagnosticResponse.fromMap((map['response']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

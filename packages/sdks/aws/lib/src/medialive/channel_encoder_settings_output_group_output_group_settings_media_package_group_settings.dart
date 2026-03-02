@@ -21,7 +21,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSetti
 
   factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettings(
-      destination: (ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettingsDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      destination: (ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettingsDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

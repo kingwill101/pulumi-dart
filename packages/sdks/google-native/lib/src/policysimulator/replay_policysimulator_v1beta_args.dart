@@ -34,8 +34,8 @@ class ReplayPolicysimulatorV1betaArgs {
   factory ReplayPolicysimulatorV1betaArgs.fromMap(Map<String, dynamic> map) {
     return ReplayPolicysimulatorV1betaArgs(
       config: (GoogleCloudPolicysimulatorV1betaReplayConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

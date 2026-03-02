@@ -44,11 +44,11 @@ class ApiConfigHandlerAppengineV1beta {
 
   factory ApiConfigHandlerAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return ApiConfigHandlerAppengineV1beta(
-      authFailAction: map['authFailAction'] == null ? null : (ApiConfigHandlerAuthFailActionAppengineV1beta.fromValue(map['authFailAction'] as String)).input(),
-      login: map['login'] == null ? null : (ApiConfigHandlerLoginAppengineV1beta.fromValue(map['login'] as String)).input(),
-      script: map['script'] == null ? null : (map['script'] as String).input(),
-      securityLevel: map['securityLevel'] == null ? null : (ApiConfigHandlerSecurityLevelAppengineV1beta.fromValue(map['securityLevel'] as String)).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      authFailAction: map['authFailAction'] == null ? null : (ApiConfigHandlerAuthFailActionAppengineV1beta.fromValue(map['authFailAction']! as String)).input(),
+      login: map['login'] == null ? null : (ApiConfigHandlerLoginAppengineV1beta.fromValue(map['login']! as String)).input(),
+      script: map['script'] == null ? null : (map['script']! as String).input(),
+      securityLevel: map['securityLevel'] == null ? null : (ApiConfigHandlerSecurityLevelAppengineV1beta.fromValue(map['securityLevel']! as String)).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

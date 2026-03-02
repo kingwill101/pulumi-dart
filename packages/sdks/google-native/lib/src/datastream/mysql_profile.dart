@@ -44,8 +44,8 @@ class MysqlProfile {
     return MysqlProfile(
       hostname: (map['hostname'] as String).input(),
       password: (map['password'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      sslConfig: map['sslConfig'] == null ? null : (MysqlSslConfig.fromMap((map['sslConfig'] as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      sslConfig: map['sslConfig'] == null ? null : (MysqlSslConfig.fromMap((map['sslConfig']! as Map).cast<String, dynamic>())).input(),
       username: (map['username'] as String).input(),
     );
   }

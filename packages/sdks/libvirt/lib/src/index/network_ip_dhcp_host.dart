@@ -41,11 +41,11 @@ class NetworkIpDhcpHost {
 
   factory NetworkIpDhcpHost.fromMap(Map<String, dynamic> map) {
     return NetworkIpDhcpHost(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
-      lease: map['lease'] == null ? null : (NetworkIpDhcpHostLease.fromMap((map['lease'] as Map).cast<String, dynamic>())).input(),
-      mac: map['mac'] == null ? null : (map['mac'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
+      lease: map['lease'] == null ? null : (NetworkIpDhcpHostLease.fromMap((map['lease']! as Map).cast<String, dynamic>())).input(),
+      mac: map['mac'] == null ? null : (map['mac']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -62,12 +62,12 @@ class GetIntegrationAccountSessionResult {
     return GetIntegrationAccountSessionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       changedTime: map['changedTime'] as String,
-      content: map['content'] == null ? null : map['content'],
+      content: map['content'] == null ? null : map['content']!,
       createdTime: map['createdTime'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

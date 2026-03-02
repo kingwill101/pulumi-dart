@@ -29,8 +29,8 @@ class AppSpecServiceTermination {
 
   factory AppSpecServiceTermination.fromMap(Map<String, dynamic> map) {
     return AppSpecServiceTermination(
-      drainSeconds: map['drainSeconds'] == null ? null : (map['drainSeconds'] as int).input(),
-      gracePeriodSeconds: map['gracePeriodSeconds'] == null ? null : (map['gracePeriodSeconds'] as int).input(),
+      drainSeconds: map['drainSeconds'] == null ? null : (map['drainSeconds']! as int).input(),
+      gracePeriodSeconds: map['gracePeriodSeconds'] == null ? null : (map['gracePeriodSeconds']! as int).input(),
     );
   }
 }

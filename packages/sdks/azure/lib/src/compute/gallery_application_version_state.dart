@@ -79,18 +79,18 @@ class GalleryApplicationVersionState {
 
   factory GalleryApplicationVersionState.fromMap(Map<String, dynamic> map) {
     return GalleryApplicationVersionState(
-      configFile: map['configFile'] == null ? null : (map['configFile'] as String).input(),
-      enableHealthCheck: map['enableHealthCheck'] == null ? null : (map['enableHealthCheck'] as bool).input(),
-      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate'] as String).input(),
-      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest'] as bool).input(),
-      galleryApplicationId: map['galleryApplicationId'] == null ? null : (map['galleryApplicationId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      manageAction: map['manageAction'] == null ? null : (GalleryApplicationVersionManageAction.fromMap((map['manageAction'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      packageFile: map['packageFile'] == null ? null : (map['packageFile'] as String).input(),
-      source: map['source'] == null ? null : (GalleryApplicationVersionSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetRegions: map['targetRegions'] == null ? null : (pulumi.Input.decodeList<GalleryApplicationVersionTargetRegion>(map['targetRegions'], (value) => GalleryApplicationVersionTargetRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configFile: map['configFile'] == null ? null : (map['configFile']! as String).input(),
+      enableHealthCheck: map['enableHealthCheck'] == null ? null : (map['enableHealthCheck']! as bool).input(),
+      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate']! as String).input(),
+      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest']! as bool).input(),
+      galleryApplicationId: map['galleryApplicationId'] == null ? null : (map['galleryApplicationId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      manageAction: map['manageAction'] == null ? null : (GalleryApplicationVersionManageAction.fromMap((map['manageAction']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      packageFile: map['packageFile'] == null ? null : (map['packageFile']! as String).input(),
+      source: map['source'] == null ? null : (GalleryApplicationVersionSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetRegions: map['targetRegions'] == null ? null : (pulumi.Input.decodeList<GalleryApplicationVersionTargetRegion>(map['targetRegions']!, (value) => GalleryApplicationVersionTargetRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

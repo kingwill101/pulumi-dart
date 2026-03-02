@@ -35,7 +35,7 @@ class VpnConnectionRouteArgs {
   factory VpnConnectionRouteArgs.fromMap(Map<String, dynamic> map) {
     return VpnConnectionRouteArgs(
       destinationCidrBlock: (map['destinationCidrBlock'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       vpnConnectionId: (map['vpnConnectionId'] as String).input(),
     );
   }

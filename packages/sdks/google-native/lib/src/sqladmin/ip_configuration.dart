@@ -59,14 +59,14 @@ class IpConfiguration {
 
   factory IpConfiguration.fromMap(Map<String, dynamic> map) {
     return IpConfiguration(
-      allocatedIpRange: map['allocatedIpRange'] == null ? null : (map['allocatedIpRange'] as String).input(),
-      authorizedNetworks: map['authorizedNetworks'] == null ? null : (pulumi.Input.decodeList<AclEntry>(map['authorizedNetworks'], (value) => AclEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enablePrivatePathForGoogleCloudServices: map['enablePrivatePathForGoogleCloudServices'] == null ? null : (map['enablePrivatePathForGoogleCloudServices'] as bool).input(),
-      ipv4Enabled: map['ipv4Enabled'] == null ? null : (map['ipv4Enabled'] as bool).input(),
-      privateNetwork: map['privateNetwork'] == null ? null : (map['privateNetwork'] as String).input(),
-      pscConfig: map['pscConfig'] == null ? null : (PscConfig.fromMap((map['pscConfig'] as Map).cast<String, dynamic>())).input(),
-      requireSsl: map['requireSsl'] == null ? null : (map['requireSsl'] as bool).input(),
-      sslMode: map['sslMode'] == null ? null : (IpConfigurationSslMode.fromValue(map['sslMode'] as String)).input(),
+      allocatedIpRange: map['allocatedIpRange'] == null ? null : (map['allocatedIpRange']! as String).input(),
+      authorizedNetworks: map['authorizedNetworks'] == null ? null : (pulumi.Input.decodeList<AclEntry>(map['authorizedNetworks']!, (value) => AclEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enablePrivatePathForGoogleCloudServices: map['enablePrivatePathForGoogleCloudServices'] == null ? null : (map['enablePrivatePathForGoogleCloudServices']! as bool).input(),
+      ipv4Enabled: map['ipv4Enabled'] == null ? null : (map['ipv4Enabled']! as bool).input(),
+      privateNetwork: map['privateNetwork'] == null ? null : (map['privateNetwork']! as String).input(),
+      pscConfig: map['pscConfig'] == null ? null : (PscConfig.fromMap((map['pscConfig']! as Map).cast<String, dynamic>())).input(),
+      requireSsl: map['requireSsl'] == null ? null : (map['requireSsl']! as bool).input(),
+      sslMode: map['sslMode'] == null ? null : (IpConfigurationSslMode.fromValue(map['sslMode']! as String)).input(),
     );
   }
 }

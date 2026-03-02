@@ -60,10 +60,10 @@ class MachineImageIamBindingArgs {
 
   factory MachineImageIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return MachineImageIamBindingArgs(
-      condition: map['condition'] == null ? null : (MachineImageIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (MachineImageIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       machineImage: (map['machineImage'] as String).input(),
       members: ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

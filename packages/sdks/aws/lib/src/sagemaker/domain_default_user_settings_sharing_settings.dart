@@ -30,9 +30,9 @@ class DomainDefaultUserSettingsSharingSettings {
 
   factory DomainDefaultUserSettingsSharingSettings.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsSharingSettings(
-      notebookOutputOption: map['notebookOutputOption'] == null ? null : (map['notebookOutputOption'] as String).input(),
-      s3KmsKeyId: map['s3KmsKeyId'] == null ? null : (map['s3KmsKeyId'] as String).input(),
-      s3OutputPath: map['s3OutputPath'] == null ? null : (map['s3OutputPath'] as String).input(),
+      notebookOutputOption: map['notebookOutputOption'] == null ? null : ((map['notebookOutputOption'] as String).input()).input(),
+      s3KmsKeyId: map['s3KmsKeyId'] == null ? null : ((map['s3KmsKeyId'] as String).input()).input(),
+      s3OutputPath: map['s3OutputPath'] == null ? null : ((map['s3OutputPath'] as String).input()).input(),
     );
   }
 }

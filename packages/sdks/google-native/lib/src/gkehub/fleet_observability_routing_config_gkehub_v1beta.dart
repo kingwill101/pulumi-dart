@@ -22,7 +22,7 @@ class FleetObservabilityRoutingConfigGkehubV1beta {
 
   factory FleetObservabilityRoutingConfigGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return FleetObservabilityRoutingConfigGkehubV1beta(
-      mode: map['mode'] == null ? null : (FleetObservabilityRoutingConfigModeGkehubV1beta.fromValue(map['mode'] as String)).input(),
+      mode: map['mode'] == null ? null : (FleetObservabilityRoutingConfigModeGkehubV1beta.fromValue(map['mode']! as String)).input(),
     );
   }
 }

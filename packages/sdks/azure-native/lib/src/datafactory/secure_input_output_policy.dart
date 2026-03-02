@@ -26,8 +26,8 @@ class SecureInputOutputPolicy {
 
   factory SecureInputOutputPolicy.fromMap(Map<String, dynamic> map) {
     return SecureInputOutputPolicy(
-      secureInput: map['secureInput'] == null ? null : (map['secureInput'] as bool).input(),
-      secureOutput: map['secureOutput'] == null ? null : (map['secureOutput'] as bool).input(),
+      secureInput: map['secureInput'] == null ? null : (map['secureInput']! as bool).input(),
+      secureOutput: map['secureOutput'] == null ? null : (map['secureOutput']! as bool).input(),
     );
   }
 }

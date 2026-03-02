@@ -24,7 +24,7 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions {
 
   factory PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions(
-      identifyingFields: map['identifyingFields'] == null ? null : (pulumi.Input.decodeList<PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField>(map['identifyingFields'], (value) => PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identifyingFields: map['identifyingFields'] == null ? null : (pulumi.Input.decodeList<PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField>(map['identifyingFields']!, (value) => PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

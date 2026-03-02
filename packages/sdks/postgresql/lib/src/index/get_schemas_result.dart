@@ -51,11 +51,11 @@ class GetSchemasResult {
     return GetSchemasResult(
       database: map['database'] as String,
       id: map['id'] as String,
-      includeSystemSchemas: map['includeSystemSchemas'] == null ? null : map['includeSystemSchemas'] as bool,
-      likeAllPatterns: map['likeAllPatterns'] == null ? null : (map['likeAllPatterns'] as List).cast<String>(),
-      likeAnyPatterns: map['likeAnyPatterns'] == null ? null : (map['likeAnyPatterns'] as List).cast<String>(),
-      notLikeAllPatterns: map['notLikeAllPatterns'] == null ? null : (map['notLikeAllPatterns'] as List).cast<String>(),
-      regexPattern: map['regexPattern'] == null ? null : map['regexPattern'] as String,
+      includeSystemSchemas: map['includeSystemSchemas'] == null ? null : map['includeSystemSchemas']! as bool,
+      likeAllPatterns: map['likeAllPatterns'] == null ? null : (map['likeAllPatterns']! as List).cast<String>(),
+      likeAnyPatterns: map['likeAnyPatterns'] == null ? null : (map['likeAnyPatterns']! as List).cast<String>(),
+      notLikeAllPatterns: map['notLikeAllPatterns'] == null ? null : (map['notLikeAllPatterns']! as List).cast<String>(),
+      regexPattern: map['regexPattern'] == null ? null : map['regexPattern']! as String,
       schemas: (map['schemas'] as List).cast<String>(),
     );
   }

@@ -28,7 +28,7 @@ class AutomaticResourcePredictionsProfileResponse {
   factory AutomaticResourcePredictionsProfileResponse.fromMap(Map<String, dynamic> map) {
     return AutomaticResourcePredictionsProfileResponse(
       kind: (map['kind'] as String).input(),
-      predictionPreference: map['predictionPreference'] == null ? null : (map['predictionPreference'] as String).input(),
+      predictionPreference: map['predictionPreference'] == null ? null : (map['predictionPreference']! as String).input(),
     );
   }
 }

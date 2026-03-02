@@ -31,9 +31,9 @@ class NetworkControllerResponse {
 
   factory NetworkControllerResponse.fromMap(Map<String, dynamic> map) {
     return NetworkControllerResponse(
-      macAddressPoolStart: map['macAddressPoolStart'] == null ? null : (map['macAddressPoolStart'] as String).input(),
-      macAddressPoolStop: map['macAddressPoolStop'] == null ? null : (map['macAddressPoolStop'] as String).input(),
-      networkVirtualizationEnabled: map['networkVirtualizationEnabled'] == null ? null : (map['networkVirtualizationEnabled'] as bool).input(),
+      macAddressPoolStart: map['macAddressPoolStart'] == null ? null : (map['macAddressPoolStart']! as String).input(),
+      macAddressPoolStop: map['macAddressPoolStop'] == null ? null : (map['macAddressPoolStop']! as String).input(),
+      networkVirtualizationEnabled: map['networkVirtualizationEnabled'] == null ? null : (map['networkVirtualizationEnabled']! as bool).input(),
     );
   }
 }

@@ -47,12 +47,12 @@ class ResourcePolicyGroupPlacementPolicyComputeBeta {
 
   factory ResourcePolicyGroupPlacementPolicyComputeBeta.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyGroupPlacementPolicyComputeBeta(
-      availabilityDomainCount: map['availabilityDomainCount'] == null ? null : (map['availabilityDomainCount'] as int).input(),
-      collocation: map['collocation'] == null ? null : (ResourcePolicyGroupPlacementPolicyCollocationComputeBeta.fromValue(map['collocation'] as String)).input(),
-      maxDistance: map['maxDistance'] == null ? null : (map['maxDistance'] as int).input(),
-      sliceCount: map['sliceCount'] == null ? null : (map['sliceCount'] as int).input(),
-      tpuTopology: map['tpuTopology'] == null ? null : (map['tpuTopology'] as String).input(),
-      vmCount: map['vmCount'] == null ? null : (map['vmCount'] as int).input(),
+      availabilityDomainCount: map['availabilityDomainCount'] == null ? null : (map['availabilityDomainCount']! as int).input(),
+      collocation: map['collocation'] == null ? null : (ResourcePolicyGroupPlacementPolicyCollocationComputeBeta.fromValue(map['collocation']! as String)).input(),
+      maxDistance: map['maxDistance'] == null ? null : (map['maxDistance']! as int).input(),
+      sliceCount: map['sliceCount'] == null ? null : (map['sliceCount']! as int).input(),
+      tpuTopology: map['tpuTopology'] == null ? null : (map['tpuTopology']! as String).input(),
+      vmCount: map['vmCount'] == null ? null : (map['vmCount']! as int).input(),
     );
   }
 }

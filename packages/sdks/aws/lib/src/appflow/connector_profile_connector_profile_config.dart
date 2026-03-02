@@ -27,8 +27,8 @@ class ConnectorProfileConnectorProfileConfig {
 
   factory ConnectorProfileConnectorProfileConfig.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfig(
-      connectorProfileCredentials: (ConnectorProfileConnectorProfileConfigConnectorProfileCredentials.fromMap((map['connectorProfileCredentials'] as Map).cast<String, dynamic>())).input(),
-      connectorProfileProperties: (ConnectorProfileConnectorProfileConfigConnectorProfileProperties.fromMap((map['connectorProfileProperties'] as Map).cast<String, dynamic>())).input(),
+      connectorProfileCredentials: (ConnectorProfileConnectorProfileConfigConnectorProfileCredentials.fromMap((map['connectorProfileCredentials']! as Map).cast<String, dynamic>())).input(),
+      connectorProfileProperties: (ConnectorProfileConnectorProfileConfigConnectorProfileProperties.fromMap((map['connectorProfileProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

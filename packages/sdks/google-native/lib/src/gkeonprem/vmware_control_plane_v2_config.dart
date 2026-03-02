@@ -22,7 +22,7 @@ class VmwareControlPlaneV2Config {
 
   factory VmwareControlPlaneV2Config.fromMap(Map<String, dynamic> map) {
     return VmwareControlPlaneV2Config(
-      controlPlaneIpBlock: map['controlPlaneIpBlock'] == null ? null : (VmwareIpBlock.fromMap((map['controlPlaneIpBlock'] as Map).cast<String, dynamic>())).input(),
+      controlPlaneIpBlock: map['controlPlaneIpBlock'] == null ? null : (VmwareIpBlock.fromMap((map['controlPlaneIpBlock']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

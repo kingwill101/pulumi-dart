@@ -45,11 +45,11 @@ class InvitationArgs {
 
   factory InvitationArgs.fromMap(Map<String, dynamic> map) {
     return InvitationArgs(
-      message: map['message'] == null ? null : (InvitationMessage.fromMap((map['message'] as Map).cast<String, dynamic>())).input(),
+      message: map['message'] == null ? null : (InvitationMessage.fromMap((map['message']! as Map).cast<String, dynamic>())).input(),
       redirectUrl: (map['redirectUrl'] as String).input(),
-      userDisplayName: map['userDisplayName'] == null ? null : (map['userDisplayName'] as String).input(),
+      userDisplayName: map['userDisplayName'] == null ? null : (map['userDisplayName']! as String).input(),
       userEmailAddress: (map['userEmailAddress'] as String).input(),
-      userType: map['userType'] == null ? null : (map['userType'] as String).input(),
+      userType: map['userType'] == null ? null : (map['userType']! as String).input(),
     );
   }
 }

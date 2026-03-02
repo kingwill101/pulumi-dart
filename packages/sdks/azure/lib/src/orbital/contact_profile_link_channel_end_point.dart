@@ -36,7 +36,7 @@ class ContactProfileLinkChannelEndPoint {
   factory ContactProfileLinkChannelEndPoint.fromMap(Map<String, dynamic> map) {
     return ContactProfileLinkChannelEndPoint(
       endPointName: (map['endPointName'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
       port: (map['port'] as String).input(),
       protocol: (map['protocol'] as String).input(),
     );

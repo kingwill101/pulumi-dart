@@ -95,21 +95,21 @@ class LifecyclePolicyPolicyDetails {
 
   factory LifecyclePolicyPolicyDetails.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetails(
-      action: map['action'] == null ? null : (LifecyclePolicyPolicyDetailsAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      copyTags: map['copyTags'] == null ? null : (map['copyTags'] as bool).input(),
-      createInterval: map['createInterval'] == null ? null : (map['createInterval'] as int).input(),
-      eventSource: map['eventSource'] == null ? null : (LifecyclePolicyPolicyDetailsEventSource.fromMap((map['eventSource'] as Map).cast<String, dynamic>())).input(),
-      exclusions: map['exclusions'] == null ? null : (LifecyclePolicyPolicyDetailsExclusions.fromMap((map['exclusions'] as Map).cast<String, dynamic>())).input(),
-      extendDeletion: map['extendDeletion'] == null ? null : (map['extendDeletion'] as bool).input(),
-      parameters: map['parameters'] == null ? null : (LifecyclePolicyPolicyDetailsParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
-      policyLanguage: map['policyLanguage'] == null ? null : (map['policyLanguage'] as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
-      resourceLocations: map['resourceLocations'] == null ? null : (map['resourceLocations'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
-      retainInterval: map['retainInterval'] == null ? null : (map['retainInterval'] as int).input(),
-      schedules: map['schedules'] == null ? null : (pulumi.Input.decodeList<LifecyclePolicyPolicyDetailsSchedule>(map['schedules'], (value) => LifecyclePolicyPolicyDetailsSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetTags: map['targetTags'] == null ? null : ((map['targetTags'] as Map).cast<String, String>()).input(),
+      action: map['action'] == null ? null : ((LifecyclePolicyPolicyDetailsAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input()).input(),
+      copyTags: map['copyTags'] == null ? null : ((map['copyTags'] as bool).input()).input(),
+      createInterval: map['createInterval'] == null ? null : ((map['createInterval'] as int).input()).input(),
+      eventSource: map['eventSource'] == null ? null : ((LifecyclePolicyPolicyDetailsEventSource.fromMap((map['eventSource']! as Map).cast<String, dynamic>())).input()).input(),
+      exclusions: map['exclusions'] == null ? null : ((LifecyclePolicyPolicyDetailsExclusions.fromMap((map['exclusions']! as Map).cast<String, dynamic>())).input()).input(),
+      extendDeletion: map['extendDeletion'] == null ? null : ((map['extendDeletion'] as bool).input()).input(),
+      parameters: map['parameters'] == null ? null : ((LifecyclePolicyPolicyDetailsParameters.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input()).input(),
+      policyLanguage: map['policyLanguage'] == null ? null : ((map['policyLanguage'] as String).input()).input(),
+      policyType: map['policyType'] == null ? null : ((map['policyType'] as String).input()).input(),
+      resourceLocations: map['resourceLocations'] == null ? null : ((map['resourceLocations'] as String).input()).input(),
+      resourceType: map['resourceType'] == null ? null : ((map['resourceType'] as String).input()).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : (((map['resourceTypes'] as List).cast<String>()).input()).input(),
+      retainInterval: map['retainInterval'] == null ? null : ((map['retainInterval'] as int).input()).input(),
+      schedules: map['schedules'] == null ? null : ((pulumi.Input.decodeList<LifecyclePolicyPolicyDetailsSchedule>(map['schedules']!, (value) => LifecyclePolicyPolicyDetailsSchedule.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      targetTags: map['targetTags'] == null ? null : (((map['targetTags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

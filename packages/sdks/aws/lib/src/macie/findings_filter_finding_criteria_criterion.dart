@@ -55,14 +55,14 @@ class FindingsFilterFindingCriteriaCriterion {
 
   factory FindingsFilterFindingCriteriaCriterion.fromMap(Map<String, dynamic> map) {
     return FindingsFilterFindingCriteriaCriterion(
-      eqExactMatches: map['eqExactMatches'] == null ? null : ((map['eqExactMatches'] as List).cast<String>()).input(),
-      eqs: map['eqs'] == null ? null : ((map['eqs'] as List).cast<String>()).input(),
+      eqExactMatches: map['eqExactMatches'] == null ? null : (((map['eqExactMatches'] as List).cast<String>()).input()).input(),
+      eqs: map['eqs'] == null ? null : (((map['eqs'] as List).cast<String>()).input()).input(),
       field: (map['field'] as String).input(),
-      gt: map['gt'] == null ? null : (map['gt'] as String).input(),
-      gte: map['gte'] == null ? null : (map['gte'] as String).input(),
-      lt: map['lt'] == null ? null : (map['lt'] as String).input(),
-      lte: map['lte'] == null ? null : (map['lte'] as String).input(),
-      neqs: map['neqs'] == null ? null : ((map['neqs'] as List).cast<String>()).input(),
+      gt: map['gt'] == null ? null : ((map['gt'] as String).input()).input(),
+      gte: map['gte'] == null ? null : ((map['gte'] as String).input()).input(),
+      lt: map['lt'] == null ? null : ((map['lt'] as String).input()).input(),
+      lte: map['lte'] == null ? null : ((map['lte'] as String).input()).input(),
+      neqs: map['neqs'] == null ? null : (((map['neqs'] as List).cast<String>()).input()).input(),
     );
   }
 }

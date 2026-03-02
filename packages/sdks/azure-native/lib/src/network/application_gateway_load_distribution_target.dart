@@ -37,10 +37,10 @@ class ApplicationGatewayLoadDistributionTarget {
 
   factory ApplicationGatewayLoadDistributionTarget.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayLoadDistributionTarget(
-      backendAddressPool: map['backendAddressPool'] == null ? null : (SubResource.fromMap((map['backendAddressPool'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      weightPerServer: map['weightPerServer'] == null ? null : (map['weightPerServer'] as int).input(),
+      backendAddressPool: map['backendAddressPool'] == null ? null : (SubResource.fromMap((map['backendAddressPool']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      weightPerServer: map['weightPerServer'] == null ? null : (map['weightPerServer']! as int).input(),
     );
   }
 }

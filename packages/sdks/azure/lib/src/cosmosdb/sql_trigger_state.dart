@@ -41,11 +41,11 @@ class SqlTriggerState {
 
   factory SqlTriggerState.fromMap(Map<String, dynamic> map) {
     return SqlTriggerState(
-      body: map['body'] == null ? null : (map['body'] as String).input(),
-      containerId: map['containerId'] == null ? null : (map['containerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      operation: map['operation'] == null ? null : (map['operation'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
+      containerId: map['containerId'] == null ? null : (map['containerId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      operation: map['operation'] == null ? null : (map['operation']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

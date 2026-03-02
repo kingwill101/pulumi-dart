@@ -40,10 +40,10 @@ class SlsaProvenanceContaineranalysisV1alpha1 {
 
   factory SlsaProvenanceContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return SlsaProvenanceContaineranalysisV1alpha1(
-      builder: map['builder'] == null ? null : (SlsaBuilderContaineranalysisV1alpha1.fromMap((map['builder'] as Map).cast<String, dynamic>())).input(),
-      materials: map['materials'] == null ? null : (pulumi.Input.decodeList<MaterialContaineranalysisV1alpha1>(map['materials'], (value) => MaterialContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metadata: map['metadata'] == null ? null : (SlsaMetadataContaineranalysisV1alpha1.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      recipe: map['recipe'] == null ? null : (SlsaRecipeContaineranalysisV1alpha1.fromMap((map['recipe'] as Map).cast<String, dynamic>())).input(),
+      builder: map['builder'] == null ? null : (SlsaBuilderContaineranalysisV1alpha1.fromMap((map['builder']! as Map).cast<String, dynamic>())).input(),
+      materials: map['materials'] == null ? null : (pulumi.Input.decodeList<MaterialContaineranalysisV1alpha1>(map['materials']!, (value) => MaterialContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadata: map['metadata'] == null ? null : (SlsaMetadataContaineranalysisV1alpha1.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      recipe: map['recipe'] == null ? null : (SlsaRecipeContaineranalysisV1alpha1.fromMap((map['recipe']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

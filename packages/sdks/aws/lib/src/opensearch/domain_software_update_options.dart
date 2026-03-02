@@ -20,7 +20,7 @@ class DomainSoftwareUpdateOptions {
 
   factory DomainSoftwareUpdateOptions.fromMap(Map<String, dynamic> map) {
     return DomainSoftwareUpdateOptions(
-      autoSoftwareUpdateEnabled: map['autoSoftwareUpdateEnabled'] == null ? null : (map['autoSoftwareUpdateEnabled'] as bool).input(),
+      autoSoftwareUpdateEnabled: map['autoSoftwareUpdateEnabled'] == null ? null : ((map['autoSoftwareUpdateEnabled'] as bool).input()).input(),
     );
   }
 }

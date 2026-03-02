@@ -35,8 +35,8 @@ class GetRepositoryCreationTemplateArgs {
   factory GetRepositoryCreationTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetRepositoryCreationTemplateArgs(
       prefix: (map['prefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceTags: map['resourceTags'] == null ? null : ((map['resourceTags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceTags: map['resourceTags'] == null ? null : (((map['resourceTags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

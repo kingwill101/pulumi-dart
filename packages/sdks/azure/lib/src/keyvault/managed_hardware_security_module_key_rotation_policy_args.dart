@@ -41,8 +41,8 @@ class ManagedHardwareSecurityModuleKeyRotationPolicyArgs {
     return ManagedHardwareSecurityModuleKeyRotationPolicyArgs(
       expireAfter: (map['expireAfter'] as String).input(),
       managedHsmKeyId: (map['managedHsmKeyId'] as String).input(),
-      timeAfterCreation: map['timeAfterCreation'] == null ? null : (map['timeAfterCreation'] as String).input(),
-      timeBeforeExpiry: map['timeBeforeExpiry'] == null ? null : (map['timeBeforeExpiry'] as String).input(),
+      timeAfterCreation: map['timeAfterCreation'] == null ? null : (map['timeAfterCreation']! as String).input(),
+      timeBeforeExpiry: map['timeBeforeExpiry'] == null ? null : (map['timeBeforeExpiry']! as String).input(),
     );
   }
 }

@@ -82,18 +82,18 @@ class EncodedTaskRunRequest {
 
   factory EncodedTaskRunRequest.fromMap(Map<String, dynamic> map) {
     return EncodedTaskRunRequest(
-      agentConfiguration: map['agentConfiguration'] == null ? null : (AgentProperties.fromMap((map['agentConfiguration'] as Map).cast<String, dynamic>())).input(),
-      agentPoolName: map['agentPoolName'] == null ? null : (map['agentPoolName'] as String).input(),
-      credentials: map['credentials'] == null ? null : (Credentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
+      agentConfiguration: map['agentConfiguration'] == null ? null : (AgentProperties.fromMap((map['agentConfiguration']! as Map).cast<String, dynamic>())).input(),
+      agentPoolName: map['agentPoolName'] == null ? null : (map['agentPoolName']! as String).input(),
+      credentials: map['credentials'] == null ? null : (Credentials.fromMap((map['credentials']! as Map).cast<String, dynamic>())).input(),
       encodedTaskContent: (map['encodedTaskContent'] as String).input(),
-      encodedValuesContent: map['encodedValuesContent'] == null ? null : (map['encodedValuesContent'] as String).input(),
-      isArchiveEnabled: map['isArchiveEnabled'] == null ? null : (map['isArchiveEnabled'] as bool).input(),
-      logTemplate: map['logTemplate'] == null ? null : (map['logTemplate'] as String).input(),
+      encodedValuesContent: map['encodedValuesContent'] == null ? null : (map['encodedValuesContent']! as String).input(),
+      isArchiveEnabled: map['isArchiveEnabled'] == null ? null : (map['isArchiveEnabled']! as bool).input(),
+      logTemplate: map['logTemplate'] == null ? null : (map['logTemplate']! as String).input(),
       platform: (PlatformProperties.fromMap((map['platform'] as Map).cast<String, dynamic>())).input(),
-      sourceLocation: map['sourceLocation'] == null ? null : (map['sourceLocation'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      sourceLocation: map['sourceLocation'] == null ? null : (map['sourceLocation']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
       type: (map['type'] as String).input(),
-      values: map['values'] == null ? null : (pulumi.Input.decodeList<SetValue>(map['values'], (value) => SetValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      values: map['values'] == null ? null : (pulumi.Input.decodeList<SetValue>(map['values']!, (value) => SetValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

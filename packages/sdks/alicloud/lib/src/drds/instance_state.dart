@@ -77,16 +77,16 @@ class InstanceState {
 
   factory InstanceState.fromMap(Map<String, dynamic> map) {
     return InstanceState(
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType'] as String).input(),
-      instanceSeries: map['instanceSeries'] == null ? null : (map['instanceSeries'] as String).input(),
-      mysqlVersion: map['mysqlVersion'] == null ? null : (map['mysqlVersion'] as int).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      specification: map['specification'] == null ? null : (map['specification'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType']! as String).input(),
+      instanceSeries: map['instanceSeries'] == null ? null : (map['instanceSeries']! as String).input(),
+      mysqlVersion: map['mysqlVersion'] == null ? null : (map['mysqlVersion']! as int).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      specification: map['specification'] == null ? null : (map['specification']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

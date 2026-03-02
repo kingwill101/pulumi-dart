@@ -53,11 +53,11 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
   factory V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      file: map['file'] == null ? null : (V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      file: map['file'] == null ? null : (V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile.fromMap((map['file']! as Map).cast<String, dynamic>())).input(),
       interpreter: (map['interpreter'] as String).input(),
-      outputFilePath: map['outputFilePath'] == null ? null : (map['outputFilePath'] as String).input(),
-      script: map['script'] == null ? null : (map['script'] as String).input(),
+      outputFilePath: map['outputFilePath'] == null ? null : (map['outputFilePath']! as String).input(),
+      script: map['script'] == null ? null : (map['script']! as String).input(),
     );
   }
 }

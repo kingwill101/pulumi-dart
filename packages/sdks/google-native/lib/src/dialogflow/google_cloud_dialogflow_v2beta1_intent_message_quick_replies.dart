@@ -26,8 +26,8 @@ class GoogleCloudDialogflowV2beta1IntentMessageQuickReplies {
 
   factory GoogleCloudDialogflowV2beta1IntentMessageQuickReplies.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageQuickReplies(
-      quickReplies: map['quickReplies'] == null ? null : ((map['quickReplies'] as List).cast<String>()).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      quickReplies: map['quickReplies'] == null ? null : ((map['quickReplies']! as List).cast<String>()).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

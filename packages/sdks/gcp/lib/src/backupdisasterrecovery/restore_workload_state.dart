@@ -99,20 +99,20 @@ class RestoreWorkloadState {
 
   factory RestoreWorkloadState.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadState(
-      backupId: map['backupId'] == null ? null : (map['backupId'] as String).input(),
-      backupVaultId: map['backupVaultId'] == null ? null : (map['backupVaultId'] as String).input(),
-      clearOverridesFieldMask: map['clearOverridesFieldMask'] == null ? null : (map['clearOverridesFieldMask'] as String).input(),
-      computeInstanceRestoreProperties: map['computeInstanceRestoreProperties'] == null ? null : (RestoreWorkloadComputeInstanceRestoreProperties.fromMap((map['computeInstanceRestoreProperties'] as Map).cast<String, dynamic>())).input(),
-      computeInstanceTargetEnvironment: map['computeInstanceTargetEnvironment'] == null ? null : (RestoreWorkloadComputeInstanceTargetEnvironment.fromMap((map['computeInstanceTargetEnvironment'] as Map).cast<String, dynamic>())).input(),
-      dataSourceId: map['dataSourceId'] == null ? null : (map['dataSourceId'] as String).input(),
-      deleteRestoredInstance: map['deleteRestoredInstance'] == null ? null : (map['deleteRestoredInstance'] as bool).input(),
-      diskRestoreProperties: map['diskRestoreProperties'] == null ? null : (RestoreWorkloadDiskRestoreProperties.fromMap((map['diskRestoreProperties'] as Map).cast<String, dynamic>())).input(),
-      diskTargetEnvironment: map['diskTargetEnvironment'] == null ? null : (RestoreWorkloadDiskTargetEnvironment.fromMap((map['diskTargetEnvironment'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      regionDiskTargetEnvironment: map['regionDiskTargetEnvironment'] == null ? null : (RestoreWorkloadRegionDiskTargetEnvironment.fromMap((map['regionDiskTargetEnvironment'] as Map).cast<String, dynamic>())).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      targetResources: map['targetResources'] == null ? null : (pulumi.Input.decodeList<RestoreWorkloadTargetResource>(map['targetResources'], (value) => RestoreWorkloadTargetResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backupId: map['backupId'] == null ? null : (map['backupId']! as String).input(),
+      backupVaultId: map['backupVaultId'] == null ? null : (map['backupVaultId']! as String).input(),
+      clearOverridesFieldMask: map['clearOverridesFieldMask'] == null ? null : (map['clearOverridesFieldMask']! as String).input(),
+      computeInstanceRestoreProperties: map['computeInstanceRestoreProperties'] == null ? null : (RestoreWorkloadComputeInstanceRestoreProperties.fromMap((map['computeInstanceRestoreProperties']! as Map).cast<String, dynamic>())).input(),
+      computeInstanceTargetEnvironment: map['computeInstanceTargetEnvironment'] == null ? null : (RestoreWorkloadComputeInstanceTargetEnvironment.fromMap((map['computeInstanceTargetEnvironment']! as Map).cast<String, dynamic>())).input(),
+      dataSourceId: map['dataSourceId'] == null ? null : (map['dataSourceId']! as String).input(),
+      deleteRestoredInstance: map['deleteRestoredInstance'] == null ? null : (map['deleteRestoredInstance']! as bool).input(),
+      diskRestoreProperties: map['diskRestoreProperties'] == null ? null : (RestoreWorkloadDiskRestoreProperties.fromMap((map['diskRestoreProperties']! as Map).cast<String, dynamic>())).input(),
+      diskTargetEnvironment: map['diskTargetEnvironment'] == null ? null : (RestoreWorkloadDiskTargetEnvironment.fromMap((map['diskTargetEnvironment']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      regionDiskTargetEnvironment: map['regionDiskTargetEnvironment'] == null ? null : (RestoreWorkloadRegionDiskTargetEnvironment.fromMap((map['regionDiskTargetEnvironment']! as Map).cast<String, dynamic>())).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      targetResources: map['targetResources'] == null ? null : (pulumi.Input.decodeList<RestoreWorkloadTargetResource>(map['targetResources']!, (value) => RestoreWorkloadTargetResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

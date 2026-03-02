@@ -38,10 +38,10 @@ class AgentKnowledgeBaseKnowledgeBaseConfiguration {
 
   factory AgentKnowledgeBaseKnowledgeBaseConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfiguration(
-      kendraKnowledgeBaseConfiguration: map['kendraKnowledgeBaseConfiguration'] == null ? null : (AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfiguration.fromMap((map['kendraKnowledgeBaseConfiguration'] as Map).cast<String, dynamic>())).input(),
-      sqlKnowledgeBaseConfiguration: map['sqlKnowledgeBaseConfiguration'] == null ? null : (AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfiguration.fromMap((map['sqlKnowledgeBaseConfiguration'] as Map).cast<String, dynamic>())).input(),
+      kendraKnowledgeBaseConfiguration: map['kendraKnowledgeBaseConfiguration'] == null ? null : ((AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfiguration.fromMap((map['kendraKnowledgeBaseConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      sqlKnowledgeBaseConfiguration: map['sqlKnowledgeBaseConfiguration'] == null ? null : ((AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfiguration.fromMap((map['sqlKnowledgeBaseConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       type: (map['type'] as String).input(),
-      vectorKnowledgeBaseConfiguration: map['vectorKnowledgeBaseConfiguration'] == null ? null : (AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfiguration.fromMap((map['vectorKnowledgeBaseConfiguration'] as Map).cast<String, dynamic>())).input(),
+      vectorKnowledgeBaseConfiguration: map['vectorKnowledgeBaseConfiguration'] == null ? null : ((AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfiguration.fromMap((map['vectorKnowledgeBaseConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

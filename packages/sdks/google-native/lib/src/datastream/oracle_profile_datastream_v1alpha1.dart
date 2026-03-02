@@ -46,11 +46,11 @@ class OracleProfileDatastreamV1alpha1 {
 
   factory OracleProfileDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return OracleProfileDatastreamV1alpha1(
-      connectionAttributes: map['connectionAttributes'] == null ? null : ((map['connectionAttributes'] as Map).cast<String, String>()).input(),
+      connectionAttributes: map['connectionAttributes'] == null ? null : ((map['connectionAttributes']! as Map).cast<String, String>()).input(),
       databaseService: (map['databaseService'] as String).input(),
       hostname: (map['hostname'] as String).input(),
       password: (map['password'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
       username: (map['username'] as String).input(),
     );
   }

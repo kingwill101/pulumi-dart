@@ -42,7 +42,7 @@ class GalleryScriptVersionPropertiesResponse {
       provisioningState: (map['provisioningState'] as String).input(),
       publishingProfile: (GalleryScriptVersionPublishingProfileResponse.fromMap((map['publishingProfile'] as Map).cast<String, dynamic>())).input(),
       replicationStatus: (ReplicationStatusResponse.fromMap((map['replicationStatus'] as Map).cast<String, dynamic>())).input(),
-      safetyProfile: map['safetyProfile'] == null ? null : (GalleryScriptVersionSafetyProfileResponse.fromMap((map['safetyProfile'] as Map).cast<String, dynamic>())).input(),
+      safetyProfile: map['safetyProfile'] == null ? null : (GalleryScriptVersionSafetyProfileResponse.fromMap((map['safetyProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

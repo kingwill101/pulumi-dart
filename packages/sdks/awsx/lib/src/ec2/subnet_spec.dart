@@ -47,11 +47,11 @@ class SubnetSpec {
 
   factory SubnetSpec.fromMap(Map<String, dynamic> map) {
     return SubnetSpec(
-      cidrBlocks: map['cidrBlocks'] == null ? null : ((map['cidrBlocks'] as List).cast<String>()).input(),
-      cidrMask: map['cidrMask'] == null ? null : (map['cidrMask'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      cidrBlocks: map['cidrBlocks'] == null ? null : ((map['cidrBlocks']! as List).cast<String>()).input(),
+      cidrMask: map['cidrMask'] == null ? null : (map['cidrMask']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       type: (SubnetType.fromValue(map['type'] as String)).input(),
     );
   }

@@ -66,14 +66,14 @@ class EngineModelArgs {
 
   factory EngineModelArgs.fromMap(Map<String, dynamic> map) {
     return EngineModelArgs(
-      defaultVersion: map['defaultVersion'] == null ? null : (EngineModelDefaultVersion.fromMap((map['defaultVersion'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      onlinePredictionConsoleLogging: map['onlinePredictionConsoleLogging'] == null ? null : (map['onlinePredictionConsoleLogging'] as bool).input(),
-      onlinePredictionLogging: map['onlinePredictionLogging'] == null ? null : (map['onlinePredictionLogging'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      regions: map['regions'] == null ? null : (map['regions'] as String).input(),
+      defaultVersion: map['defaultVersion'] == null ? null : (EngineModelDefaultVersion.fromMap((map['defaultVersion']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      onlinePredictionConsoleLogging: map['onlinePredictionConsoleLogging'] == null ? null : (map['onlinePredictionConsoleLogging']! as bool).input(),
+      onlinePredictionLogging: map['onlinePredictionLogging'] == null ? null : (map['onlinePredictionLogging']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      regions: map['regions'] == null ? null : (map['regions']! as String).input(),
     );
   }
 }

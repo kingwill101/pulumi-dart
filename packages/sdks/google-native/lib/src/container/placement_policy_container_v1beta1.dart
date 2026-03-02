@@ -32,9 +32,9 @@ class PlacementPolicyContainerV1beta1 {
 
   factory PlacementPolicyContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return PlacementPolicyContainerV1beta1(
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      tpuTopology: map['tpuTopology'] == null ? null : (map['tpuTopology'] as String).input(),
-      type: map['type'] == null ? null : (PlacementPolicyTypeContainerV1beta1.fromValue(map['type'] as String)).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
+      tpuTopology: map['tpuTopology'] == null ? null : (map['tpuTopology']! as String).input(),
+      type: map['type'] == null ? null : (PlacementPolicyTypeContainerV1beta1.fromValue(map['type']! as String)).input(),
     );
   }
 }

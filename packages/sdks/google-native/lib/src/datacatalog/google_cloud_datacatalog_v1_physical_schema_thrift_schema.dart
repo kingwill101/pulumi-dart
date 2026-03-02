@@ -21,7 +21,7 @@ class GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema {
 
   factory GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema(
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
     );
   }
 }

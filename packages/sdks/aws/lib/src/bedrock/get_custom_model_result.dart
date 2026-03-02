@@ -120,12 +120,12 @@ class GetCustomModelResult {
       modelKmsKeyArn: map['modelKmsKeyArn'] as String,
       modelName: map['modelName'] as String,
       modelTags: (map['modelTags'] as Map).cast<String, String>(),
-      outputDataConfigs: pulumi.Input.decodeList<GetCustomModelOutputDataConfig>(map['outputDataConfigs'], (value) => GetCustomModelOutputDataConfig.fromMap((value as Map).cast<String, dynamic>())),
+      outputDataConfigs: pulumi.Input.decodeList<GetCustomModelOutputDataConfig>(map['outputDataConfigs']!, (value) => GetCustomModelOutputDataConfig.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
-      trainingDataConfigs: pulumi.Input.decodeList<GetCustomModelTrainingDataConfig>(map['trainingDataConfigs'], (value) => GetCustomModelTrainingDataConfig.fromMap((value as Map).cast<String, dynamic>())),
-      trainingMetrics: pulumi.Input.decodeList<GetCustomModelTrainingMetric>(map['trainingMetrics'], (value) => GetCustomModelTrainingMetric.fromMap((value as Map).cast<String, dynamic>())),
-      validationDataConfigs: pulumi.Input.decodeList<GetCustomModelValidationDataConfig>(map['validationDataConfigs'], (value) => GetCustomModelValidationDataConfig.fromMap((value as Map).cast<String, dynamic>())),
-      validationMetrics: pulumi.Input.decodeList<GetCustomModelValidationMetric>(map['validationMetrics'], (value) => GetCustomModelValidationMetric.fromMap((value as Map).cast<String, dynamic>())),
+      trainingDataConfigs: pulumi.Input.decodeList<GetCustomModelTrainingDataConfig>(map['trainingDataConfigs']!, (value) => GetCustomModelTrainingDataConfig.fromMap((value as Map).cast<String, dynamic>())),
+      trainingMetrics: pulumi.Input.decodeList<GetCustomModelTrainingMetric>(map['trainingMetrics']!, (value) => GetCustomModelTrainingMetric.fromMap((value as Map).cast<String, dynamic>())),
+      validationDataConfigs: pulumi.Input.decodeList<GetCustomModelValidationDataConfig>(map['validationDataConfigs']!, (value) => GetCustomModelValidationDataConfig.fromMap((value as Map).cast<String, dynamic>())),
+      validationMetrics: pulumi.Input.decodeList<GetCustomModelValidationMetric>(map['validationMetrics']!, (value) => GetCustomModelValidationMetric.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

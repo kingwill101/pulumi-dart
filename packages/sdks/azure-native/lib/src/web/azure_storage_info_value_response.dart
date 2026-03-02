@@ -51,13 +51,13 @@ class AzureStorageInfoValueResponse {
 
   factory AzureStorageInfoValueResponse.fromMap(Map<String, dynamic> map) {
     return AzureStorageInfoValueResponse(
-      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      shareName: map['shareName'] == null ? null : (map['shareName'] as String).input(),
+      accessKey: map['accessKey'] == null ? null : (map['accessKey']! as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      shareName: map['shareName'] == null ? null : (map['shareName']! as String).input(),
       state: (map['state'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

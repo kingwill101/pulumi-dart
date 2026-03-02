@@ -52,13 +52,13 @@ class StoragePropertiesResponse {
 
   factory StoragePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return StoragePropertiesResponse(
-      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
-      hardwareType: map['hardwareType'] == null ? null : (map['hardwareType'] as String).input(),
-      offeringType: map['offeringType'] == null ? null : (map['offeringType'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
-      storageBillingProperties: map['storageBillingProperties'] == null ? null : (StorageBillingPropertiesResponse.fromMap((map['storageBillingProperties'] as Map).cast<String, dynamic>())).input(),
-      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
-      workloadType: map['workloadType'] == null ? null : (map['workloadType'] as String).input(),
+      generation: map['generation'] == null ? null : (map['generation']! as String).input(),
+      hardwareType: map['hardwareType'] == null ? null : (map['hardwareType']! as String).input(),
+      offeringType: map['offeringType'] == null ? null : (map['offeringType']! as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      storageBillingProperties: map['storageBillingProperties'] == null ? null : (StorageBillingPropertiesResponse.fromMap((map['storageBillingProperties']! as Map).cast<String, dynamic>())).input(),
+      storageType: map['storageType'] == null ? null : (map['storageType']! as String).input(),
+      workloadType: map['workloadType'] == null ? null : (map['workloadType']! as String).input(),
     );
   }
 }

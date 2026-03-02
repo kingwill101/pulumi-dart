@@ -51,13 +51,13 @@ class SmsChannelState {
 
   factory SmsChannelState.fromMap(Map<String, dynamic> map) {
     return SmsChannelState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      promotionalMessagesPerSecond: map['promotionalMessagesPerSecond'] == null ? null : (map['promotionalMessagesPerSecond'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      senderId: map['senderId'] == null ? null : (map['senderId'] as String).input(),
-      shortCode: map['shortCode'] == null ? null : (map['shortCode'] as String).input(),
-      transactionalMessagesPerSecond: map['transactionalMessagesPerSecond'] == null ? null : (map['transactionalMessagesPerSecond'] as int).input(),
+      applicationId: map['applicationId'] == null ? null : ((map['applicationId'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      promotionalMessagesPerSecond: map['promotionalMessagesPerSecond'] == null ? null : ((map['promotionalMessagesPerSecond'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      senderId: map['senderId'] == null ? null : ((map['senderId'] as String).input()).input(),
+      shortCode: map['shortCode'] == null ? null : ((map['shortCode'] as String).input()).input(),
+      transactionalMessagesPerSecond: map['transactionalMessagesPerSecond'] == null ? null : ((map['transactionalMessagesPerSecond'] as int).input()).input(),
     );
   }
 }

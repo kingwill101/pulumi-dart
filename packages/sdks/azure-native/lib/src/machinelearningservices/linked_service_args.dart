@@ -56,11 +56,11 @@ class LinkedServiceArgs {
 
   factory LinkedServiceArgs.fromMap(Map<String, dynamic> map) {
     return LinkedServiceArgs(
-      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      linkName: map['linkName'] == null ? null : (map['linkName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (LinkedServiceProps.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      linkName: map['linkName'] == null ? null : (map['linkName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      properties: map['properties'] == null ? null : (LinkedServiceProps.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );

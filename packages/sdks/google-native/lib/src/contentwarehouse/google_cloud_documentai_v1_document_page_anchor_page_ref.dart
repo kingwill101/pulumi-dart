@@ -43,10 +43,10 @@ class GoogleCloudDocumentaiV1DocumentPageAnchorPageRef {
 
   factory GoogleCloudDocumentaiV1DocumentPageAnchorPageRef.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageAnchorPageRef(
-      boundingPoly: map['boundingPoly'] == null ? null : (GoogleCloudDocumentaiV1BoundingPoly.fromMap((map['boundingPoly'] as Map).cast<String, dynamic>())).input(),
-      confidence: map['confidence'] == null ? null : (map['confidence'] as double).input(),
-      layoutId: map['layoutId'] == null ? null : (map['layoutId'] as String).input(),
-      layoutType: map['layoutType'] == null ? null : (GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType.fromValue(map['layoutType'] as String)).input(),
+      boundingPoly: map['boundingPoly'] == null ? null : (GoogleCloudDocumentaiV1BoundingPoly.fromMap((map['boundingPoly']! as Map).cast<String, dynamic>())).input(),
+      confidence: map['confidence'] == null ? null : (map['confidence']! as double).input(),
+      layoutId: map['layoutId'] == null ? null : (map['layoutId']! as String).input(),
+      layoutType: map['layoutType'] == null ? null : (GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType.fromValue(map['layoutType']! as String)).input(),
       page: (map['page'] as String).input(),
     );
   }

@@ -52,7 +52,7 @@ class GetModelsResult {
       byOutputModality: map['byOutputModality'] == null ? null : map['byOutputModality'] as String,
       byProvider: map['byProvider'] == null ? null : map['byProvider'] as String,
       id: map['id'] as String,
-      modelSummaries: pulumi.Input.decodeList<GetModelsModelSummary>(map['modelSummaries'], (value) => GetModelsModelSummary.fromMap((value as Map).cast<String, dynamic>())),
+      modelSummaries: pulumi.Input.decodeList<GetModelsModelSummary>(map['modelSummaries']!, (value) => GetModelsModelSummary.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
     );
   }

@@ -31,9 +31,9 @@ class GoogleCloudDocumentaiV1Barcode {
 
   factory GoogleCloudDocumentaiV1Barcode.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1Barcode(
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      rawValue: map['rawValue'] == null ? null : (map['rawValue'] as String).input(),
-      valueFormat: map['valueFormat'] == null ? null : (map['valueFormat'] as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      rawValue: map['rawValue'] == null ? null : (map['rawValue']! as String).input(),
+      valueFormat: map['valueFormat'] == null ? null : (map['valueFormat']! as String).input(),
     );
   }
 }

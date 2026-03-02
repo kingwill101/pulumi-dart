@@ -29,8 +29,8 @@ class TriggerBuildSource {
 
   factory TriggerBuildSource.fromMap(Map<String, dynamic> map) {
     return TriggerBuildSource(
-      repoSource: map['repoSource'] == null ? null : (TriggerBuildSourceRepoSource.fromMap((map['repoSource'] as Map).cast<String, dynamic>())).input(),
-      storageSource: map['storageSource'] == null ? null : (TriggerBuildSourceStorageSource.fromMap((map['storageSource'] as Map).cast<String, dynamic>())).input(),
+      repoSource: map['repoSource'] == null ? null : (TriggerBuildSourceRepoSource.fromMap((map['repoSource']! as Map).cast<String, dynamic>())).input(),
+      storageSource: map['storageSource'] == null ? null : (TriggerBuildSourceStorageSource.fromMap((map['storageSource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

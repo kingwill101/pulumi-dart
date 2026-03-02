@@ -37,9 +37,9 @@ class AzureBlobStorageLocationResponse {
 
   factory AzureBlobStorageLocationResponse.fromMap(Map<String, dynamic> map) {
     return AzureBlobStorageLocationResponse(
-      container: map['container'] == null ? null : (map['container']).input(),
-      fileName: map['fileName'] == null ? null : (map['fileName']).input(),
-      folderPath: map['folderPath'] == null ? null : (map['folderPath']).input(),
+      container: map['container'] == null ? null : (map['container']!).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName']!).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath']!).input(),
       type: (map['type'] as String).input(),
     );
   }

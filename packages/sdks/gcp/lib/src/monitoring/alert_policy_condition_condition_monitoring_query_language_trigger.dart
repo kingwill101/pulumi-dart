@@ -29,8 +29,8 @@ class AlertPolicyConditionConditionMonitoringQueryLanguageTrigger {
 
   factory AlertPolicyConditionConditionMonitoringQueryLanguageTrigger.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionMonitoringQueryLanguageTrigger(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      percent: map['percent'] == null ? null : (map['percent'] as double).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      percent: map['percent'] == null ? null : (map['percent']! as double).input(),
     );
   }
 }

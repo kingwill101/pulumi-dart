@@ -26,8 +26,8 @@ class IngressTLS {
 
   factory IngressTLS.fromMap(Map<String, dynamic> map) {
     return IngressTLS(
-      hosts: map['hosts'] == null ? null : ((map['hosts'] as List).cast<String>()).input(),
-      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
+      hosts: map['hosts'] == null ? null : ((map['hosts']! as List).cast<String>()).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName']! as String).input(),
     );
   }
 }

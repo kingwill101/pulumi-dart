@@ -73,17 +73,17 @@ class ApiState {
 
   factory ApiState.fromMap(Map<String, dynamic> map) {
     return ApiState(
-      apiArn: map['apiArn'] == null ? null : (map['apiArn'] as String).input(),
-      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
-      dns: map['dns'] == null ? null : ((map['dns'] as Map).cast<String, String>()).input(),
-      eventConfig: map['eventConfig'] == null ? null : (ApiEventConfig.fromMap((map['eventConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ownerContact: map['ownerContact'] == null ? null : (map['ownerContact'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      wafWebAclArn: map['wafWebAclArn'] == null ? null : (map['wafWebAclArn'] as String).input(),
-      xrayEnabled: map['xrayEnabled'] == null ? null : (map['xrayEnabled'] as bool).input(),
+      apiArn: map['apiArn'] == null ? null : ((map['apiArn'] as String).input()).input(),
+      apiId: map['apiId'] == null ? null : ((map['apiId'] as String).input()).input(),
+      dns: map['dns'] == null ? null : (((map['dns'] as Map).cast<String, String>()).input()).input(),
+      eventConfig: map['eventConfig'] == null ? null : ((ApiEventConfig.fromMap((map['eventConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      ownerContact: map['ownerContact'] == null ? null : ((map['ownerContact'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      wafWebAclArn: map['wafWebAclArn'] == null ? null : ((map['wafWebAclArn'] as String).input()).input(),
+      xrayEnabled: map['xrayEnabled'] == null ? null : ((map['xrayEnabled'] as bool).input()).input(),
     );
   }
 }

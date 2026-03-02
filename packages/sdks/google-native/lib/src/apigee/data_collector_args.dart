@@ -44,11 +44,11 @@ class DataCollectorArgs {
 
   factory DataCollectorArgs.fromMap(Map<String, dynamic> map) {
     return DataCollectorArgs(
-      dataCollectorId: map['dataCollectorId'] == null ? null : (map['dataCollectorId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      dataCollectorId: map['dataCollectorId'] == null ? null : (map['dataCollectorId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
-      type: map['type'] == null ? null : (DataCollectorType.fromValue(map['type'] as String)).input(),
+      type: map['type'] == null ? null : (DataCollectorType.fromValue(map['type']! as String)).input(),
     );
   }
 }

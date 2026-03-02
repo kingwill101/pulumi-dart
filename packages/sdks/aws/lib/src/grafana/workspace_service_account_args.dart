@@ -40,8 +40,8 @@ class WorkspaceServiceAccountArgs {
   factory WorkspaceServiceAccountArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceServiceAccountArgs(
       grafanaRole: (map['grafanaRole'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );
   }

@@ -22,7 +22,7 @@ class DSSEAttestationNoteContaineranalysisV1alpha1 {
 
   factory DSSEAttestationNoteContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return DSSEAttestationNoteContaineranalysisV1alpha1(
-      hint: map['hint'] == null ? null : (DSSEHintContaineranalysisV1alpha1.fromMap((map['hint'] as Map).cast<String, dynamic>())).input(),
+      hint: map['hint'] == null ? null : (DSSEHintContaineranalysisV1alpha1.fromMap((map['hint']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

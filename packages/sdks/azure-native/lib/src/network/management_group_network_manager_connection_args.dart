@@ -39,10 +39,10 @@ class ManagementGroupNetworkManagerConnectionArgs {
 
   factory ManagementGroupNetworkManagerConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ManagementGroupNetworkManagerConnectionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       managementGroupId: (map['managementGroupId'] as String).input(),
-      networkManagerConnectionName: map['networkManagerConnectionName'] == null ? null : (map['networkManagerConnectionName'] as String).input(),
-      networkManagerId: map['networkManagerId'] == null ? null : (map['networkManagerId'] as String).input(),
+      networkManagerConnectionName: map['networkManagerConnectionName'] == null ? null : (map['networkManagerConnectionName']! as String).input(),
+      networkManagerId: map['networkManagerId'] == null ? null : (map['networkManagerId']! as String).input(),
     );
   }
 }

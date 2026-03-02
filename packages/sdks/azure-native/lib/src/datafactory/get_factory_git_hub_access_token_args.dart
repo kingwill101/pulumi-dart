@@ -53,8 +53,8 @@ class GetFactoryGitHubAccessTokenArgs {
       factoryName: (map['factoryName'] as String).input(),
       gitHubAccessCode: (map['gitHubAccessCode'] as String).input(),
       gitHubAccessTokenBaseUrl: (map['gitHubAccessTokenBaseUrl'] as String).input(),
-      gitHubClientId: map['gitHubClientId'] == null ? null : (map['gitHubClientId'] as String).input(),
-      gitHubClientSecret: map['gitHubClientSecret'] == null ? null : (GitHubClientSecret.fromMap((map['gitHubClientSecret'] as Map).cast<String, dynamic>())).input(),
+      gitHubClientId: map['gitHubClientId'] == null ? null : (map['gitHubClientId']! as String).input(),
+      gitHubClientSecret: map['gitHubClientSecret'] == null ? null : (GitHubClientSecret.fromMap((map['gitHubClientSecret']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

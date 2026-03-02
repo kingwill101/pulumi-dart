@@ -31,9 +31,9 @@ class GetPolicyBasedRouteIamPolicyArgs {
 
   factory GetPolicyBasedRouteIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyBasedRouteIamPolicyArgs(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
       policyBasedRouteId: (map['policyBasedRouteId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

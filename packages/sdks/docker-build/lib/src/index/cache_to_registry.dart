@@ -64,13 +64,13 @@ class CacheToRegistry {
 
   factory CacheToRegistry.fromMap(Map<String, dynamic> map) {
     return CacheToRegistry(
-      compression: map['compression'] == null ? null : (CompressionType.fromValue(map['compression'] as String)).input(),
-      compressionLevel: map['compressionLevel'] == null ? null : (map['compressionLevel'] as int).input(),
-      forceCompression: map['forceCompression'] == null ? null : (map['forceCompression'] as bool).input(),
-      ignoreError: map['ignoreError'] == null ? null : (map['ignoreError'] as bool).input(),
-      imageManifest: map['imageManifest'] == null ? null : (map['imageManifest'] as bool).input(),
-      mode: map['mode'] == null ? null : (CacheMode.fromValue(map['mode'] as String)).input(),
-      ociMediaTypes: map['ociMediaTypes'] == null ? null : (map['ociMediaTypes'] as bool).input(),
+      compression: map['compression'] == null ? null : (CompressionType.fromValue(map['compression']! as String)).input(),
+      compressionLevel: map['compressionLevel'] == null ? null : (map['compressionLevel']! as int).input(),
+      forceCompression: map['forceCompression'] == null ? null : (map['forceCompression']! as bool).input(),
+      ignoreError: map['ignoreError'] == null ? null : (map['ignoreError']! as bool).input(),
+      imageManifest: map['imageManifest'] == null ? null : (map['imageManifest']! as bool).input(),
+      mode: map['mode'] == null ? null : (CacheMode.fromValue(map['mode']! as String)).input(),
+      ociMediaTypes: map['ociMediaTypes'] == null ? null : (map['ociMediaTypes']! as bool).input(),
       ref: (map['ref'] as String).input(),
     );
   }

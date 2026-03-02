@@ -55,14 +55,14 @@ class UserAddresses {
 
   factory UserAddresses.fromMap(Map<String, dynamic> map) {
     return UserAddresses(
-      country: map['country'] == null ? null : (map['country'] as String).input(),
-      formatted: map['formatted'] == null ? null : (map['formatted'] as String).input(),
-      locality: map['locality'] == null ? null : (map['locality'] as String).input(),
-      postalCode: map['postalCode'] == null ? null : (map['postalCode'] as String).input(),
-      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      streetAddress: map['streetAddress'] == null ? null : (map['streetAddress'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      country: map['country'] == null ? null : ((map['country'] as String).input()).input(),
+      formatted: map['formatted'] == null ? null : ((map['formatted'] as String).input()).input(),
+      locality: map['locality'] == null ? null : ((map['locality'] as String).input()).input(),
+      postalCode: map['postalCode'] == null ? null : ((map['postalCode'] as String).input()).input(),
+      primary: map['primary'] == null ? null : ((map['primary'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      streetAddress: map['streetAddress'] == null ? null : ((map['streetAddress'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

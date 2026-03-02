@@ -56,13 +56,13 @@ class ReplicatorArgs {
 
   factory ReplicatorArgs.fromMap(Map<String, dynamic> map) {
     return ReplicatorArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      kafkaClusters: (pulumi.Input.decodeList<ReplicatorKafkaCluster>(map['kafkaClusters'], (value) => ReplicatorKafkaCluster.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      replicationInfoList: (ReplicatorReplicationInfoList.fromMap((map['replicationInfoList'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      kafkaClusters: (pulumi.Input.decodeList<ReplicatorKafkaCluster>(map['kafkaClusters']!, (value) => ReplicatorKafkaCluster.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      replicationInfoList: (ReplicatorReplicationInfoList.fromMap((map['replicationInfoList']! as Map).cast<String, dynamic>())).input(),
       replicatorName: (map['replicatorName'] as String).input(),
       serviceExecutionRoleArn: (map['serviceExecutionRoleArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

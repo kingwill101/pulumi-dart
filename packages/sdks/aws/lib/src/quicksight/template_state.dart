@@ -95,21 +95,21 @@ class TemplateState {
 
   factory TemplateState.fromMap(Map<String, dynamic> map) {
     return TemplateState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
-      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : (map['lastUpdatedTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<TemplatePermission>(map['permissions'], (value) => TemplatePermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sourceEntity: map['sourceEntity'] == null ? null : (TemplateSourceEntity.fromMap((map['sourceEntity'] as Map).cast<String, dynamic>())).input(),
-      sourceEntityArn: map['sourceEntityArn'] == null ? null : (map['sourceEntityArn'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
-      versionDescription: map['versionDescription'] == null ? null : (map['versionDescription'] as String).input(),
-      versionNumber: map['versionNumber'] == null ? null : (map['versionNumber'] as int).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      createdTime: map['createdTime'] == null ? null : ((map['createdTime'] as String).input()).input(),
+      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : ((map['lastUpdatedTime'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      permissions: map['permissions'] == null ? null : ((pulumi.Input.decodeList<TemplatePermission>(map['permissions']!, (value) => TemplatePermission.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sourceEntity: map['sourceEntity'] == null ? null : ((TemplateSourceEntity.fromMap((map['sourceEntity']! as Map).cast<String, dynamic>())).input()).input(),
+      sourceEntityArn: map['sourceEntityArn'] == null ? null : ((map['sourceEntityArn'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      templateId: map['templateId'] == null ? null : ((map['templateId'] as String).input()).input(),
+      versionDescription: map['versionDescription'] == null ? null : ((map['versionDescription'] as String).input()).input(),
+      versionNumber: map['versionNumber'] == null ? null : ((map['versionNumber'] as int).input()).input(),
     );
   }
 }

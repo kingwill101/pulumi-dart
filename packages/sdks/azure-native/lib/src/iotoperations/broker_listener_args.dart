@@ -54,8 +54,8 @@ class BrokerListenerArgs {
       brokerName: (map['brokerName'] as String).input(),
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
       instanceName: (map['instanceName'] as String).input(),
-      listenerName: map['listenerName'] == null ? null : (map['listenerName'] as String).input(),
-      properties: map['properties'] == null ? null : (BrokerListenerProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      listenerName: map['listenerName'] == null ? null : (map['listenerName']! as String).input(),
+      properties: map['properties'] == null ? null : (BrokerListenerProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

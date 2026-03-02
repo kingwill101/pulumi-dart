@@ -43,11 +43,11 @@ class AppEngineHttpTarget {
 
   factory AppEngineHttpTarget.fromMap(Map<String, dynamic> map) {
     return AppEngineHttpTarget(
-      appEngineRouting: map['appEngineRouting'] == null ? null : (AppEngineRouting.fromMap((map['appEngineRouting'] as Map).cast<String, dynamic>())).input(),
-      body: map['body'] == null ? null : (map['body'] as String).input(),
-      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, String>()).input(),
-      httpMethod: map['httpMethod'] == null ? null : (AppEngineHttpTargetHttpMethod.fromValue(map['httpMethod'] as String)).input(),
-      relativeUri: map['relativeUri'] == null ? null : (map['relativeUri'] as String).input(),
+      appEngineRouting: map['appEngineRouting'] == null ? null : (AppEngineRouting.fromMap((map['appEngineRouting']! as Map).cast<String, dynamic>())).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
+      headers: map['headers'] == null ? null : ((map['headers']! as Map).cast<String, String>()).input(),
+      httpMethod: map['httpMethod'] == null ? null : (AppEngineHttpTargetHttpMethod.fromValue(map['httpMethod']! as String)).input(),
+      relativeUri: map['relativeUri'] == null ? null : (map['relativeUri']! as String).input(),
     );
   }
 }

@@ -49,10 +49,10 @@ class CustomResourceDefinitionSpec {
 
   factory CustomResourceDefinitionSpec.fromMap(Map<String, dynamic> map) {
     return CustomResourceDefinitionSpec(
-      conversion: map['conversion'] == null ? null : (CustomResourceConversion.fromMap((map['conversion'] as Map).cast<String, dynamic>())).input(),
+      conversion: map['conversion'] == null ? null : (CustomResourceConversion.fromMap((map['conversion']! as Map).cast<String, dynamic>())).input(),
       group: (map['group'] as String).input(),
       names: (CustomResourceDefinitionNames.fromMap((map['names'] as Map).cast<String, dynamic>())).input(),
-      preserveUnknownFields: map['preserveUnknownFields'] == null ? null : (map['preserveUnknownFields'] as bool).input(),
+      preserveUnknownFields: map['preserveUnknownFields'] == null ? null : (map['preserveUnknownFields']! as bool).input(),
       scope: (map['scope'] as String).input(),
       versions: (pulumi.Input.decodeList<CustomResourceDefinitionVersion>(map['versions'], (value) => CustomResourceDefinitionVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );

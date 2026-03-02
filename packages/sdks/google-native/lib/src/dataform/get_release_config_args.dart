@@ -36,7 +36,7 @@ class GetReleaseConfigArgs {
   factory GetReleaseConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetReleaseConfigArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       releaseConfigId: (map['releaseConfigId'] as String).input(),
       repositoryId: (map['repositoryId'] as String).input(),
     );

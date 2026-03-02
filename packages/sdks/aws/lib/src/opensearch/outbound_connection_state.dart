@@ -59,14 +59,14 @@ class OutboundConnectionState {
 
   factory OutboundConnectionState.fromMap(Map<String, dynamic> map) {
     return OutboundConnectionState(
-      acceptConnection: map['acceptConnection'] == null ? null : (map['acceptConnection'] as bool).input(),
-      connectionAlias: map['connectionAlias'] == null ? null : (map['connectionAlias'] as String).input(),
-      connectionMode: map['connectionMode'] == null ? null : (map['connectionMode'] as String).input(),
-      connectionProperties: map['connectionProperties'] == null ? null : (OutboundConnectionConnectionProperties.fromMap((map['connectionProperties'] as Map).cast<String, dynamic>())).input(),
-      connectionStatus: map['connectionStatus'] == null ? null : (map['connectionStatus'] as String).input(),
-      localDomainInfo: map['localDomainInfo'] == null ? null : (OutboundConnectionLocalDomainInfo.fromMap((map['localDomainInfo'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      remoteDomainInfo: map['remoteDomainInfo'] == null ? null : (OutboundConnectionRemoteDomainInfo.fromMap((map['remoteDomainInfo'] as Map).cast<String, dynamic>())).input(),
+      acceptConnection: map['acceptConnection'] == null ? null : ((map['acceptConnection'] as bool).input()).input(),
+      connectionAlias: map['connectionAlias'] == null ? null : ((map['connectionAlias'] as String).input()).input(),
+      connectionMode: map['connectionMode'] == null ? null : ((map['connectionMode'] as String).input()).input(),
+      connectionProperties: map['connectionProperties'] == null ? null : ((OutboundConnectionConnectionProperties.fromMap((map['connectionProperties']! as Map).cast<String, dynamic>())).input()).input(),
+      connectionStatus: map['connectionStatus'] == null ? null : ((map['connectionStatus'] as String).input()).input(),
+      localDomainInfo: map['localDomainInfo'] == null ? null : ((OutboundConnectionLocalDomainInfo.fromMap((map['localDomainInfo']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      remoteDomainInfo: map['remoteDomainInfo'] == null ? null : ((OutboundConnectionRemoteDomainInfo.fromMap((map['remoteDomainInfo']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -95,19 +95,19 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      appNetworkAccessType: map['appNetworkAccessType'] == null ? null : (map['appNetworkAccessType'] as String).input(),
-      appSecurityGroupManagement: map['appSecurityGroupManagement'] == null ? null : (map['appSecurityGroupManagement'] as String).input(),
+      appNetworkAccessType: map['appNetworkAccessType'] == null ? null : ((map['appNetworkAccessType'] as String).input()).input(),
+      appSecurityGroupManagement: map['appSecurityGroupManagement'] == null ? null : ((map['appSecurityGroupManagement'] as String).input()).input(),
       authMode: (map['authMode'] as String).input(),
-      defaultSpaceSettings: map['defaultSpaceSettings'] == null ? null : (DomainDefaultSpaceSettings.fromMap((map['defaultSpaceSettings'] as Map).cast<String, dynamic>())).input(),
-      defaultUserSettings: (DomainDefaultUserSettings.fromMap((map['defaultUserSettings'] as Map).cast<String, dynamic>())).input(),
+      defaultSpaceSettings: map['defaultSpaceSettings'] == null ? null : ((DomainDefaultSpaceSettings.fromMap((map['defaultSpaceSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      defaultUserSettings: (DomainDefaultUserSettings.fromMap((map['defaultUserSettings']! as Map).cast<String, dynamic>())).input(),
       domainName: (map['domainName'] as String).input(),
-      domainSettings: map['domainSettings'] == null ? null : (DomainDomainSettings.fromMap((map['domainSettings'] as Map).cast<String, dynamic>())).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      retentionPolicy: map['retentionPolicy'] == null ? null : (DomainRetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
+      domainSettings: map['domainSettings'] == null ? null : ((DomainDomainSettings.fromMap((map['domainSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : ((DomainRetentionPolicy.fromMap((map['retentionPolicy']! as Map).cast<String, dynamic>())).input()).input(),
       subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
-      tagPropagation: map['tagPropagation'] == null ? null : (map['tagPropagation'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagPropagation: map['tagPropagation'] == null ? null : ((map['tagPropagation'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

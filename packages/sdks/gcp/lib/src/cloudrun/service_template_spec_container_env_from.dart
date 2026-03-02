@@ -34,9 +34,9 @@ class ServiceTemplateSpecContainerEnvFrom {
 
   factory ServiceTemplateSpecContainerEnvFrom.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateSpecContainerEnvFrom(
-      configMapRef: map['configMapRef'] == null ? null : (ServiceTemplateSpecContainerEnvFromConfigMapRef.fromMap((map['configMapRef'] as Map).cast<String, dynamic>())).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      secretRef: map['secretRef'] == null ? null : (ServiceTemplateSpecContainerEnvFromSecretRef.fromMap((map['secretRef'] as Map).cast<String, dynamic>())).input(),
+      configMapRef: map['configMapRef'] == null ? null : (ServiceTemplateSpecContainerEnvFromConfigMapRef.fromMap((map['configMapRef']! as Map).cast<String, dynamic>())).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      secretRef: map['secretRef'] == null ? null : (ServiceTemplateSpecContainerEnvFromSecretRef.fromMap((map['secretRef']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -54,8 +54,8 @@ class RelationshipPropertiesResponse {
       childEntityName: (map['childEntityName'] as String).input(),
       deletionDate: (map['deletionDate'] as String).input(),
       discoveredBy: (map['discoveredBy'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       parentEntityName: (map['parentEntityName'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );

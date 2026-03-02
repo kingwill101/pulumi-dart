@@ -27,8 +27,8 @@ class GetBillingInfoResult {
 
   factory GetBillingInfoResult.fromMap(Map<String, dynamic> map) {
     return GetBillingInfoResult(
-      marketplaceSaasInfo: map['marketplaceSaasInfo'] == null ? null : MarketplaceSaaSInfoResponse.fromMap((map['marketplaceSaasInfo'] as Map).cast<String, dynamic>()),
-      partnerBillingEntity: map['partnerBillingEntity'] == null ? null : PartnerBillingEntityResponse.fromMap((map['partnerBillingEntity'] as Map).cast<String, dynamic>()),
+      marketplaceSaasInfo: map['marketplaceSaasInfo'] == null ? null : MarketplaceSaaSInfoResponse.fromMap((map['marketplaceSaasInfo']! as Map).cast<String, dynamic>()),
+      partnerBillingEntity: map['partnerBillingEntity'] == null ? null : PartnerBillingEntityResponse.fromMap((map['partnerBillingEntity']! as Map).cast<String, dynamic>()),
     );
   }
 }

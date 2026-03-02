@@ -101,21 +101,21 @@ class GetApiGatewayResult {
   factory GetApiGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetApiGatewayResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      backend: map['backend'] == null ? null : BackendConfigurationResponse.fromMap((map['backend'] as Map).cast<String, dynamic>()),
-      configurationApi: map['configurationApi'] == null ? null : GatewayConfigurationApiResponse.fromMap((map['configurationApi'] as Map).cast<String, dynamic>()),
+      backend: map['backend'] == null ? null : BackendConfigurationResponse.fromMap((map['backend']! as Map).cast<String, dynamic>()),
+      configurationApi: map['configurationApi'] == null ? null : GatewayConfigurationApiResponse.fromMap((map['configurationApi']! as Map).cast<String, dynamic>()),
       createdAtUtc: map['createdAtUtc'] as String,
       etag: map['etag'] as String,
-      frontend: map['frontend'] == null ? null : FrontendConfigurationResponse.fromMap((map['frontend'] as Map).cast<String, dynamic>()),
+      frontend: map['frontend'] == null ? null : FrontendConfigurationResponse.fromMap((map['frontend']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       sku: ApiManagementGatewaySkuPropertiesResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       targetProvisioningState: map['targetProvisioningState'] as String,
       type: map['type'] as String,
-      virtualNetworkType: map['virtualNetworkType'] == null ? null : map['virtualNetworkType'] as String,
+      virtualNetworkType: map['virtualNetworkType'] == null ? null : map['virtualNetworkType']! as String,
     );
   }
 }

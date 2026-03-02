@@ -37,7 +37,7 @@ class IpSecurityRestrictionRule {
   factory IpSecurityRestrictionRule.fromMap(Map<String, dynamic> map) {
     return IpSecurityRestrictionRule(
       action: (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       ipAddressRange: (map['ipAddressRange'] as String).input(),
       name: (map['name'] as String).input(),
     );

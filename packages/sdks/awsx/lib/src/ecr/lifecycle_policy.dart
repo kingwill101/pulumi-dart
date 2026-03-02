@@ -27,8 +27,8 @@ class LifecyclePolicy {
 
   factory LifecyclePolicy.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicy(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<LifecyclePolicyRule>(map['rules'], (value) => LifecyclePolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      skip: map['skip'] == null ? null : (map['skip'] as bool).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<LifecyclePolicyRule>(map['rules']!, (value) => LifecyclePolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      skip: map['skip'] == null ? null : (map['skip']! as bool).input(),
     );
   }
 }

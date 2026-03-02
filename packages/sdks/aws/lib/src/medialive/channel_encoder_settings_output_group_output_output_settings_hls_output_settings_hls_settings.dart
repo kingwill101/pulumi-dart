@@ -34,10 +34,10 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsS
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettings(
-      audioOnlyHlsSettings: map['audioOnlyHlsSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettings.fromMap((map['audioOnlyHlsSettings'] as Map).cast<String, dynamic>())).input(),
-      fmp4HlsSettings: map['fmp4HlsSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings.fromMap((map['fmp4HlsSettings'] as Map).cast<String, dynamic>())).input(),
-      frameCaptureHlsSettings: map['frameCaptureHlsSettings'] == null ? null : ((map['frameCaptureHlsSettings'] as Map).cast<String, dynamic>()).input(),
-      standardHlsSettings: map['standardHlsSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings.fromMap((map['standardHlsSettings'] as Map).cast<String, dynamic>())).input(),
+      audioOnlyHlsSettings: map['audioOnlyHlsSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettings.fromMap((map['audioOnlyHlsSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      fmp4HlsSettings: map['fmp4HlsSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings.fromMap((map['fmp4HlsSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      frameCaptureHlsSettings: map['frameCaptureHlsSettings'] == null ? null : (((map['frameCaptureHlsSettings'] as Map).cast<String, dynamic>()).input()).input(),
+      standardHlsSettings: map['standardHlsSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings.fromMap((map['standardHlsSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

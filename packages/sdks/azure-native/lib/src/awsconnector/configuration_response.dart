@@ -31,9 +31,9 @@ class ConfigurationResponse {
 
   factory ConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationResponse(
-      classification: map['classification'] == null ? null : (map['classification'] as String).input(),
-      configurations: map['configurations'] == null ? null : (pulumi.Input.decodeList<ConfigurationResponse>(map['configurations'], (value) => ConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      classification: map['classification'] == null ? null : (map['classification']! as String).input(),
+      configurations: map['configurations'] == null ? null : (pulumi.Input.decodeList<ConfigurationResponse>(map['configurations']!, (value) => ConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
     );
   }
 }

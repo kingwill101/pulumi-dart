@@ -35,7 +35,7 @@ class ServiceDeploymentConfigurationLifecycleHook {
 
   factory ServiceDeploymentConfigurationLifecycleHook.fromMap(Map<String, dynamic> map) {
     return ServiceDeploymentConfigurationLifecycleHook(
-      hookDetails: map['hookDetails'] == null ? null : (map['hookDetails'] as String).input(),
+      hookDetails: map['hookDetails'] == null ? null : ((map['hookDetails'] as String).input()).input(),
       hookTargetArn: (map['hookTargetArn'] as String).input(),
       lifecycleStages: ((map['lifecycleStages'] as List).cast<String>()).input(),
       roleArn: (map['roleArn'] as String).input(),

@@ -39,7 +39,7 @@ class AssignmentReportResourceResponse {
     return AssignmentReportResourceResponse(
       complianceStatus: (map['complianceStatus'] as String).input(),
       properties: (map['properties']).input(),
-      reasons: map['reasons'] == null ? null : (pulumi.Input.decodeList<AssignmentReportResourceComplianceReasonResponse>(map['reasons'], (value) => AssignmentReportResourceComplianceReasonResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      reasons: map['reasons'] == null ? null : (pulumi.Input.decodeList<AssignmentReportResourceComplianceReasonResponse>(map['reasons']!, (value) => AssignmentReportResourceComplianceReasonResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceId: (map['resourceId'] as String).input(),
     );
   }

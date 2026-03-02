@@ -40,11 +40,11 @@ class ClusterClusterCertificate {
 
   factory ClusterClusterCertificate.fromMap(Map<String, dynamic> map) {
     return ClusterClusterCertificate(
-      awsHardwareCertificate: map['awsHardwareCertificate'] == null ? null : (map['awsHardwareCertificate'] as String).input(),
-      clusterCertificate: map['clusterCertificate'] == null ? null : (map['clusterCertificate'] as String).input(),
-      clusterCsr: map['clusterCsr'] == null ? null : (map['clusterCsr'] as String).input(),
-      hsmCertificate: map['hsmCertificate'] == null ? null : (map['hsmCertificate'] as String).input(),
-      manufacturerHardwareCertificate: map['manufacturerHardwareCertificate'] == null ? null : (map['manufacturerHardwareCertificate'] as String).input(),
+      awsHardwareCertificate: map['awsHardwareCertificate'] == null ? null : ((map['awsHardwareCertificate'] as String).input()).input(),
+      clusterCertificate: map['clusterCertificate'] == null ? null : ((map['clusterCertificate'] as String).input()).input(),
+      clusterCsr: map['clusterCsr'] == null ? null : ((map['clusterCsr'] as String).input()).input(),
+      hsmCertificate: map['hsmCertificate'] == null ? null : ((map['hsmCertificate'] as String).input()).input(),
+      manufacturerHardwareCertificate: map['manufacturerHardwareCertificate'] == null ? null : ((map['manufacturerHardwareCertificate'] as String).input()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class ProductPortfolioAssociationState {
 
   factory ProductPortfolioAssociationState.fromMap(Map<String, dynamic> map) {
     return ProductPortfolioAssociationState(
-      portfolioId: map['portfolioId'] == null ? null : (map['portfolioId'] as String).input(),
-      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
+      portfolioId: map['portfolioId'] == null ? null : (map['portfolioId']! as String).input(),
+      productId: map['productId'] == null ? null : (map['productId']! as String).input(),
     );
   }
 }

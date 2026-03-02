@@ -56,14 +56,14 @@ class ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleD
 
   factory ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitions.fromMap(Map<String, dynamic> map) {
     return ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitions(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      helpUrl: map['helpUrl'] == null ? null : (map['helpUrl'] as String).input(),
-      isEnabledByDefault: map['isEnabledByDefault'] == null ? null : (map['isEnabledByDefault'] as bool).input(),
-      isHidden: map['isHidden'] == null ? null : (map['isHidden'] as bool).input(),
-      isInPreview: map['isInPreview'] == null ? null : (map['isInPreview'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      supportsEmailNotifications: map['supportsEmailNotifications'] == null ? null : (map['supportsEmailNotifications'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      helpUrl: map['helpUrl'] == null ? null : (map['helpUrl']! as String).input(),
+      isEnabledByDefault: map['isEnabledByDefault'] == null ? null : (map['isEnabledByDefault']! as bool).input(),
+      isHidden: map['isHidden'] == null ? null : (map['isHidden']! as bool).input(),
+      isInPreview: map['isInPreview'] == null ? null : (map['isInPreview']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      supportsEmailNotifications: map['supportsEmailNotifications'] == null ? null : (map['supportsEmailNotifications']! as bool).input(),
     );
   }
 }

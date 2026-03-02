@@ -80,19 +80,19 @@ class BuildxBuilderDockerContainer {
 
   factory BuildxBuilderDockerContainer.fromMap(Map<String, dynamic> map) {
     return BuildxBuilderDockerContainer(
-      cgroupParent: map['cgroupParent'] == null ? null : (map['cgroupParent'] as String).input(),
-      cpuPeriod: map['cpuPeriod'] == null ? null : (map['cpuPeriod'] as String).input(),
-      cpuQuota: map['cpuQuota'] == null ? null : (map['cpuQuota'] as String).input(),
-      cpuShares: map['cpuShares'] == null ? null : (map['cpuShares'] as String).input(),
-      cpusetCpus: map['cpusetCpus'] == null ? null : (map['cpusetCpus'] as String).input(),
-      cpusetMems: map['cpusetMems'] == null ? null : (map['cpusetMems'] as String).input(),
-      defaultLoad: map['defaultLoad'] == null ? null : (map['defaultLoad'] as bool).input(),
-      env: map['env'] == null ? null : ((map['env'] as Map).cast<String, String>()).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as String).input(),
-      memorySwap: map['memorySwap'] == null ? null : (map['memorySwap'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      restartPolicy: map['restartPolicy'] == null ? null : (map['restartPolicy'] as String).input(),
+      cgroupParent: map['cgroupParent'] == null ? null : (map['cgroupParent']! as String).input(),
+      cpuPeriod: map['cpuPeriod'] == null ? null : (map['cpuPeriod']! as String).input(),
+      cpuQuota: map['cpuQuota'] == null ? null : (map['cpuQuota']! as String).input(),
+      cpuShares: map['cpuShares'] == null ? null : (map['cpuShares']! as String).input(),
+      cpusetCpus: map['cpusetCpus'] == null ? null : (map['cpusetCpus']! as String).input(),
+      cpusetMems: map['cpusetMems'] == null ? null : (map['cpusetMems']! as String).input(),
+      defaultLoad: map['defaultLoad'] == null ? null : (map['defaultLoad']! as bool).input(),
+      env: map['env'] == null ? null : ((map['env']! as Map).cast<String, String>()).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      memory: map['memory'] == null ? null : (map['memory']! as String).input(),
+      memorySwap: map['memorySwap'] == null ? null : (map['memorySwap']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      restartPolicy: map['restartPolicy'] == null ? null : (map['restartPolicy']! as String).input(),
     );
   }
 }

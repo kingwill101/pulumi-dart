@@ -22,7 +22,7 @@ class MapperAttributeMappings {
 
   factory MapperAttributeMappings.fromMap(Map<String, dynamic> map) {
     return MapperAttributeMappings(
-      attributeMappings: map['attributeMappings'] == null ? null : (pulumi.Input.decodeList<MapperAttributeMapping>(map['attributeMappings'], (value) => MapperAttributeMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      attributeMappings: map['attributeMappings'] == null ? null : (pulumi.Input.decodeList<MapperAttributeMapping>(map['attributeMappings']!, (value) => MapperAttributeMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

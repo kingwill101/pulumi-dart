@@ -65,14 +65,14 @@ class GetServerGroupsResult {
       groups: pulumi.Input.decodeList<GetServerGroupsGroup>(map['groups'], (value) => GetServerGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      serverGroupNames: map['serverGroupNames'] == null ? null : (map['serverGroupNames'] as List).cast<String>(),
-      serverGroupType: map['serverGroupType'] == null ? null : map['serverGroupType'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      serverGroupNames: map['serverGroupNames'] == null ? null : (map['serverGroupNames']! as List).cast<String>(),
+      serverGroupType: map['serverGroupType'] == null ? null : map['serverGroupType']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

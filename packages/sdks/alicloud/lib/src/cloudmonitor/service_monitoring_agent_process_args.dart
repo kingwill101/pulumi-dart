@@ -36,7 +36,7 @@ class ServiceMonitoringAgentProcessArgs {
     return ServiceMonitoringAgentProcessArgs(
       instanceId: (map['instanceId'] as String).input(),
       processName: (map['processName'] as String).input(),
-      processUser: map['processUser'] == null ? null : (map['processUser'] as String).input(),
+      processUser: map['processUser'] == null ? null : (map['processUser']! as String).input(),
     );
   }
 }

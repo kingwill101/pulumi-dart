@@ -43,12 +43,12 @@ class GetGatewayRouteSpecHttp2RouteMatch {
 
   factory GetGatewayRouteSpecHttp2RouteMatch.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecHttp2RouteMatch(
-      headers: (pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteMatchHeader>(map['headers'], (value) => GetGatewayRouteSpecHttp2RouteMatchHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      hostnames: (pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteMatchHostname>(map['hostnames'], (value) => GetGatewayRouteSpecHttp2RouteMatchHostname.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      paths: (pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteMatchPath>(map['paths'], (value) => GetGatewayRouteSpecHttp2RouteMatchPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      headers: (pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteMatchHeader>(map['headers']!, (value) => GetGatewayRouteSpecHttp2RouteMatchHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hostnames: (pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteMatchHostname>(map['hostnames']!, (value) => GetGatewayRouteSpecHttp2RouteMatchHostname.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      paths: (pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteMatchPath>(map['paths']!, (value) => GetGatewayRouteSpecHttp2RouteMatchPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
       port: (map['port'] as int).input(),
       prefix: (map['prefix'] as String).input(),
-      queryParameters: (pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteMatchQueryParameter>(map['queryParameters'], (value) => GetGatewayRouteSpecHttp2RouteMatchQueryParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      queryParameters: (pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteMatchQueryParameter>(map['queryParameters']!, (value) => GetGatewayRouteSpecHttp2RouteMatchQueryParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

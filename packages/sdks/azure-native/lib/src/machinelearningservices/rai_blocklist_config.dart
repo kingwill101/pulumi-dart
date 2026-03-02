@@ -26,8 +26,8 @@ class RaiBlocklistConfig {
 
   factory RaiBlocklistConfig.fromMap(Map<String, dynamic> map) {
     return RaiBlocklistConfig(
-      blocking: map['blocking'] == null ? null : (map['blocking'] as bool).input(),
-      blocklistName: map['blocklistName'] == null ? null : (map['blocklistName'] as String).input(),
+      blocking: map['blocking'] == null ? null : (map['blocking']! as bool).input(),
+      blocklistName: map['blocklistName'] == null ? null : (map['blocklistName']! as String).input(),
     );
   }
 }

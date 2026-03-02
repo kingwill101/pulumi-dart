@@ -27,8 +27,8 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSc
 
   factory ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters(
-      csvMappingParameters: map['csvMappingParameters'] == null ? null : (ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersCsvMappingParameters.fromMap((map['csvMappingParameters'] as Map).cast<String, dynamic>())).input(),
-      jsonMappingParameters: map['jsonMappingParameters'] == null ? null : (ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersJsonMappingParameters.fromMap((map['jsonMappingParameters'] as Map).cast<String, dynamic>())).input(),
+      csvMappingParameters: map['csvMappingParameters'] == null ? null : ((ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersCsvMappingParameters.fromMap((map['csvMappingParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      jsonMappingParameters: map['jsonMappingParameters'] == null ? null : ((ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersJsonMappingParameters.fromMap((map['jsonMappingParameters']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

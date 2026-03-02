@@ -65,7 +65,7 @@ class GetSignalRCustomCertificateResult {
       id: map['id'] as String,
       keyVaultBaseUri: map['keyVaultBaseUri'] as String,
       keyVaultSecretName: map['keyVaultSecretName'] as String,
-      keyVaultSecretVersion: map['keyVaultSecretVersion'] == null ? null : map['keyVaultSecretVersion'] as String,
+      keyVaultSecretVersion: map['keyVaultSecretVersion'] == null ? null : map['keyVaultSecretVersion']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),

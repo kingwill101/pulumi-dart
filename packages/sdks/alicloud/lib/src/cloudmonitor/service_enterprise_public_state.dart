@@ -21,7 +21,7 @@ class ServiceEnterprisePublicState {
 
   factory ServiceEnterprisePublicState.fromMap(Map<String, dynamic> map) {
     return ServiceEnterprisePublicState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
     );
   }
 }

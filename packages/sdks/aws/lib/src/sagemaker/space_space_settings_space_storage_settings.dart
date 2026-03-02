@@ -21,7 +21,7 @@ class SpaceSpaceSettingsSpaceStorageSettings {
 
   factory SpaceSpaceSettingsSpaceStorageSettings.fromMap(Map<String, dynamic> map) {
     return SpaceSpaceSettingsSpaceStorageSettings(
-      ebsStorageSettings: (SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings.fromMap((map['ebsStorageSettings'] as Map).cast<String, dynamic>())).input(),
+      ebsStorageSettings: (SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings.fromMap((map['ebsStorageSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

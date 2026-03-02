@@ -30,9 +30,9 @@ class DomainDevicesInterfaceRom {
 
   factory DomainDevicesInterfaceRom.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceRom(
-      bar: map['bar'] == null ? null : (map['bar'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as String).input(),
-      file: map['file'] == null ? null : (map['file'] as String).input(),
+      bar: map['bar'] == null ? null : (map['bar']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as String).input(),
+      file: map['file'] == null ? null : (map['file']! as String).input(),
     );
   }
 }

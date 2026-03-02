@@ -40,8 +40,8 @@ class GetNatGatewayArgs {
   factory GetNatGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetNatGatewayArgs(
       name: (map['name'] as String).input(),
-      publicIpAddressIds: map['publicIpAddressIds'] == null ? null : ((map['publicIpAddressIds'] as List).cast<String>()).input(),
-      publicIpPrefixIds: map['publicIpPrefixIds'] == null ? null : ((map['publicIpPrefixIds'] as List).cast<String>()).input(),
+      publicIpAddressIds: map['publicIpAddressIds'] == null ? null : ((map['publicIpAddressIds']! as List).cast<String>()).input(),
+      publicIpPrefixIds: map['publicIpPrefixIds'] == null ? null : ((map['publicIpPrefixIds']! as List).cast<String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

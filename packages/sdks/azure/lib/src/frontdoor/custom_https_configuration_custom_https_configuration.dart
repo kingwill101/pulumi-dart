@@ -52,13 +52,13 @@ class CustomHttpsConfigurationCustomHttpsConfiguration {
 
   factory CustomHttpsConfigurationCustomHttpsConfiguration.fromMap(Map<String, dynamic> map) {
     return CustomHttpsConfigurationCustomHttpsConfiguration(
-      azureKeyVaultCertificateSecretName: map['azureKeyVaultCertificateSecretName'] == null ? null : (map['azureKeyVaultCertificateSecretName'] as String).input(),
-      azureKeyVaultCertificateSecretVersion: map['azureKeyVaultCertificateSecretVersion'] == null ? null : (map['azureKeyVaultCertificateSecretVersion'] as String).input(),
-      azureKeyVaultCertificateVaultId: map['azureKeyVaultCertificateVaultId'] == null ? null : (map['azureKeyVaultCertificateVaultId'] as String).input(),
-      certificateSource: map['certificateSource'] == null ? null : (map['certificateSource'] as String).input(),
-      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : (map['minimumTlsVersion'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
-      provisioningSubstate: map['provisioningSubstate'] == null ? null : (map['provisioningSubstate'] as String).input(),
+      azureKeyVaultCertificateSecretName: map['azureKeyVaultCertificateSecretName'] == null ? null : (map['azureKeyVaultCertificateSecretName']! as String).input(),
+      azureKeyVaultCertificateSecretVersion: map['azureKeyVaultCertificateSecretVersion'] == null ? null : (map['azureKeyVaultCertificateSecretVersion']! as String).input(),
+      azureKeyVaultCertificateVaultId: map['azureKeyVaultCertificateVaultId'] == null ? null : (map['azureKeyVaultCertificateVaultId']! as String).input(),
+      certificateSource: map['certificateSource'] == null ? null : (map['certificateSource']! as String).input(),
+      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : (map['minimumTlsVersion']! as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      provisioningSubstate: map['provisioningSubstate'] == null ? null : (map['provisioningSubstate']! as String).input(),
     );
   }
 }

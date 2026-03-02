@@ -45,7 +45,7 @@ class ClientApplicationProductLinkArgs {
   factory ClientApplicationProductLinkArgs.fromMap(Map<String, dynamic> map) {
     return ClientApplicationProductLinkArgs(
       clientApplicationId: (map['clientApplicationId'] as String).input(),
-      clientApplicationProductLinkId: map['clientApplicationProductLinkId'] == null ? null : (map['clientApplicationProductLinkId'] as String).input(),
+      clientApplicationProductLinkId: map['clientApplicationProductLinkId'] == null ? null : (map['clientApplicationProductLinkId']! as String).input(),
       productId: (map['productId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),

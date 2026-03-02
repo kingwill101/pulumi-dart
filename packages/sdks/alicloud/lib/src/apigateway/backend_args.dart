@@ -41,8 +41,8 @@ class BackendArgs {
     return BackendArgs(
       backendName: (map['backendName'] as String).input(),
       backendType: (map['backendType'] as String).input(),
-      createEventBridgeServiceLinkedRole: map['createEventBridgeServiceLinkedRole'] == null ? null : (map['createEventBridgeServiceLinkedRole'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      createEventBridgeServiceLinkedRole: map['createEventBridgeServiceLinkedRole'] == null ? null : (map['createEventBridgeServiceLinkedRole']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
     );
   }
 }

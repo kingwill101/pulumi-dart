@@ -100,18 +100,18 @@ class AggregateDeliveryState {
 
   factory AggregateDeliveryState.fromMap(Map<String, dynamic> map) {
     return AggregateDeliveryState(
-      aggregatorId: map['aggregatorId'] == null ? null : (map['aggregatorId'] as String).input(),
-      configurationItemChangeNotification: map['configurationItemChangeNotification'] == null ? null : (map['configurationItemChangeNotification'] as bool).input(),
-      configurationSnapshot: map['configurationSnapshot'] == null ? null : (map['configurationSnapshot'] as bool).input(),
-      deliveryChannelCondition: map['deliveryChannelCondition'] == null ? null : (map['deliveryChannelCondition'] as String).input(),
-      deliveryChannelId: map['deliveryChannelId'] == null ? null : (map['deliveryChannelId'] as String).input(),
-      deliveryChannelName: map['deliveryChannelName'] == null ? null : (map['deliveryChannelName'] as String).input(),
-      deliveryChannelTargetArn: map['deliveryChannelTargetArn'] == null ? null : (map['deliveryChannelTargetArn'] as String).input(),
-      deliveryChannelType: map['deliveryChannelType'] == null ? null : (map['deliveryChannelType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      nonCompliantNotification: map['nonCompliantNotification'] == null ? null : (map['nonCompliantNotification'] as bool).input(),
-      oversizedDataOssTargetArn: map['oversizedDataOssTargetArn'] == null ? null : (map['oversizedDataOssTargetArn'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as int).input(),
+      aggregatorId: map['aggregatorId'] == null ? null : (map['aggregatorId']! as String).input(),
+      configurationItemChangeNotification: map['configurationItemChangeNotification'] == null ? null : (map['configurationItemChangeNotification']! as bool).input(),
+      configurationSnapshot: map['configurationSnapshot'] == null ? null : (map['configurationSnapshot']! as bool).input(),
+      deliveryChannelCondition: map['deliveryChannelCondition'] == null ? null : (map['deliveryChannelCondition']! as String).input(),
+      deliveryChannelId: map['deliveryChannelId'] == null ? null : (map['deliveryChannelId']! as String).input(),
+      deliveryChannelName: map['deliveryChannelName'] == null ? null : (map['deliveryChannelName']! as String).input(),
+      deliveryChannelTargetArn: map['deliveryChannelTargetArn'] == null ? null : (map['deliveryChannelTargetArn']! as String).input(),
+      deliveryChannelType: map['deliveryChannelType'] == null ? null : (map['deliveryChannelType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      nonCompliantNotification: map['nonCompliantNotification'] == null ? null : (map['nonCompliantNotification']! as bool).input(),
+      oversizedDataOssTargetArn: map['oversizedDataOssTargetArn'] == null ? null : (map['oversizedDataOssTargetArn']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as int).input(),
     );
   }
 }

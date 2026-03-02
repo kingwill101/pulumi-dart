@@ -52,10 +52,10 @@ class FunctionArgs {
   factory FunctionArgs.fromMap(Map<String, dynamic> map) {
     return FunctionArgs(
       code: (map['code'] as String).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      keyValueStoreAssociations: map['keyValueStoreAssociations'] == null ? null : ((map['keyValueStoreAssociations'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publish: map['publish'] == null ? null : (map['publish'] as bool).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
+      keyValueStoreAssociations: map['keyValueStoreAssociations'] == null ? null : (((map['keyValueStoreAssociations'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      publish: map['publish'] == null ? null : ((map['publish'] as bool).input()).input(),
       runtime: (map['runtime'] as String).input(),
     );
   }

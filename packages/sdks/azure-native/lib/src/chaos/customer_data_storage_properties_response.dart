@@ -26,8 +26,8 @@ class CustomerDataStoragePropertiesResponse {
 
   factory CustomerDataStoragePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CustomerDataStoragePropertiesResponse(
-      blobContainerName: map['blobContainerName'] == null ? null : (map['blobContainerName'] as String).input(),
-      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId'] as String).input(),
+      blobContainerName: map['blobContainerName'] == null ? null : (map['blobContainerName']! as String).input(),
+      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId']! as String).input(),
     );
   }
 }

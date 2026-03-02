@@ -68,15 +68,15 @@ class MediaInsightsPipelineConfigurationElement {
 
   factory MediaInsightsPipelineConfigurationElement.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationElement(
-      amazonTranscribeCallAnalyticsProcessorConfiguration: map['amazonTranscribeCallAnalyticsProcessorConfiguration'] == null ? null : (MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfiguration.fromMap((map['amazonTranscribeCallAnalyticsProcessorConfiguration'] as Map).cast<String, dynamic>())).input(),
-      amazonTranscribeProcessorConfiguration: map['amazonTranscribeProcessorConfiguration'] == null ? null : (MediaInsightsPipelineConfigurationElementAmazonTranscribeProcessorConfiguration.fromMap((map['amazonTranscribeProcessorConfiguration'] as Map).cast<String, dynamic>())).input(),
-      kinesisDataStreamSinkConfiguration: map['kinesisDataStreamSinkConfiguration'] == null ? null : (MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfiguration.fromMap((map['kinesisDataStreamSinkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      lambdaFunctionSinkConfiguration: map['lambdaFunctionSinkConfiguration'] == null ? null : (MediaInsightsPipelineConfigurationElementLambdaFunctionSinkConfiguration.fromMap((map['lambdaFunctionSinkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      s3RecordingSinkConfiguration: map['s3RecordingSinkConfiguration'] == null ? null : (MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration.fromMap((map['s3RecordingSinkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      snsTopicSinkConfiguration: map['snsTopicSinkConfiguration'] == null ? null : (MediaInsightsPipelineConfigurationElementSnsTopicSinkConfiguration.fromMap((map['snsTopicSinkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      sqsQueueSinkConfiguration: map['sqsQueueSinkConfiguration'] == null ? null : (MediaInsightsPipelineConfigurationElementSqsQueueSinkConfiguration.fromMap((map['sqsQueueSinkConfiguration'] as Map).cast<String, dynamic>())).input(),
+      amazonTranscribeCallAnalyticsProcessorConfiguration: map['amazonTranscribeCallAnalyticsProcessorConfiguration'] == null ? null : ((MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfiguration.fromMap((map['amazonTranscribeCallAnalyticsProcessorConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      amazonTranscribeProcessorConfiguration: map['amazonTranscribeProcessorConfiguration'] == null ? null : ((MediaInsightsPipelineConfigurationElementAmazonTranscribeProcessorConfiguration.fromMap((map['amazonTranscribeProcessorConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      kinesisDataStreamSinkConfiguration: map['kinesisDataStreamSinkConfiguration'] == null ? null : ((MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfiguration.fromMap((map['kinesisDataStreamSinkConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      lambdaFunctionSinkConfiguration: map['lambdaFunctionSinkConfiguration'] == null ? null : ((MediaInsightsPipelineConfigurationElementLambdaFunctionSinkConfiguration.fromMap((map['lambdaFunctionSinkConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      s3RecordingSinkConfiguration: map['s3RecordingSinkConfiguration'] == null ? null : ((MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration.fromMap((map['s3RecordingSinkConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      snsTopicSinkConfiguration: map['snsTopicSinkConfiguration'] == null ? null : ((MediaInsightsPipelineConfigurationElementSnsTopicSinkConfiguration.fromMap((map['snsTopicSinkConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      sqsQueueSinkConfiguration: map['sqsQueueSinkConfiguration'] == null ? null : ((MediaInsightsPipelineConfigurationElementSqsQueueSinkConfiguration.fromMap((map['sqsQueueSinkConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       type: (map['type'] as String).input(),
-      voiceAnalyticsProcessorConfiguration: map['voiceAnalyticsProcessorConfiguration'] == null ? null : (MediaInsightsPipelineConfigurationElementVoiceAnalyticsProcessorConfiguration.fromMap((map['voiceAnalyticsProcessorConfiguration'] as Map).cast<String, dynamic>())).input(),
+      voiceAnalyticsProcessorConfiguration: map['voiceAnalyticsProcessorConfiguration'] == null ? null : ((MediaInsightsPipelineConfigurationElementVoiceAnalyticsProcessorConfiguration.fromMap((map['voiceAnalyticsProcessorConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

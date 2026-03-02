@@ -30,8 +30,8 @@ class PipelineVariable {
 
   factory PipelineVariable.fromMap(Map<String, dynamic> map) {
     return PipelineVariable(
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      defaultValue: map['defaultValue'] == null ? null : ((map['defaultValue'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       name: (map['name'] as String).input(),
     );
   }

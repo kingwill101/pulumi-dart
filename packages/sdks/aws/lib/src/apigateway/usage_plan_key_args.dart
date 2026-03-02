@@ -41,7 +41,7 @@ class UsagePlanKeyArgs {
     return UsagePlanKeyArgs(
       keyId: (map['keyId'] as String).input(),
       keyType: (map['keyType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       usagePlanId: (map['usagePlanId'] as String).input(),
     );
   }

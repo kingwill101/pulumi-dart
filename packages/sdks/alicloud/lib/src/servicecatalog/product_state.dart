@@ -41,11 +41,11 @@ class ProductState {
 
   factory ProductState.fromMap(Map<String, dynamic> map) {
     return ProductState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      productName: map['productName'] == null ? null : (map['productName'] as String).input(),
-      productType: map['productType'] == null ? null : (map['productType'] as String).input(),
-      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      productName: map['productName'] == null ? null : (map['productName']! as String).input(),
+      productType: map['productType'] == null ? null : (map['productType']! as String).input(),
+      providerName: map['providerName'] == null ? null : (map['providerName']! as String).input(),
     );
   }
 }

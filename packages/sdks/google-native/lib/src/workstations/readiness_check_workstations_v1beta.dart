@@ -26,8 +26,8 @@ class ReadinessCheckWorkstationsV1beta {
 
   factory ReadinessCheckWorkstationsV1beta.fromMap(Map<String, dynamic> map) {
     return ReadinessCheckWorkstationsV1beta(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

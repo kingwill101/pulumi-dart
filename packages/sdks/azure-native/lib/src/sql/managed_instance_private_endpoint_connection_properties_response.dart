@@ -33,8 +33,8 @@ class ManagedInstancePrivateEndpointConnectionPropertiesResponse {
 
   factory ManagedInstancePrivateEndpointConnectionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ManagedInstancePrivateEndpointConnectionPropertiesResponse(
-      privateEndpoint: map['privateEndpoint'] == null ? null : (ManagedInstancePrivateEndpointPropertyResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>())).input(),
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
+      privateEndpoint: map['privateEndpoint'] == null ? null : (ManagedInstancePrivateEndpointPropertyResponse.fromMap((map['privateEndpoint']! as Map).cast<String, dynamic>())).input(),
+      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse.fromMap((map['privateLinkServiceConnectionState']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

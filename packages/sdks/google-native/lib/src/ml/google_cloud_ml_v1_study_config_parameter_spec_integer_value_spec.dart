@@ -25,8 +25,8 @@ class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec {
 
   factory GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec(
-      maxValue: map['maxValue'] == null ? null : (map['maxValue'] as String).input(),
-      minValue: map['minValue'] == null ? null : (map['minValue'] as String).input(),
+      maxValue: map['maxValue'] == null ? null : (map['maxValue']! as String).input(),
+      minValue: map['minValue'] == null ? null : (map['minValue']! as String).input(),
     );
   }
 }

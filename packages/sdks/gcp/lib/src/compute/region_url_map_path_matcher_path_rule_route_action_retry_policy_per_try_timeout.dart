@@ -27,7 +27,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout {
 
   factory RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout(
-      nanos: map['nanos'] == null ? null : (map['nanos'] as int).input(),
+      nanos: map['nanos'] == null ? null : (map['nanos']! as int).input(),
       seconds: (map['seconds'] as String).input(),
     );
   }

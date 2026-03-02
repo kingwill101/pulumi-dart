@@ -84,18 +84,18 @@ class RegisteredServerArgs {
 
   factory RegisteredServerArgs.fromMap(Map<String, dynamic> map) {
     return RegisteredServerArgs(
-      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      identity: map['identity'] == null ? null : (map['identity'] as bool).input(),
-      lastHeartBeat: map['lastHeartBeat'] == null ? null : (map['lastHeartBeat'] as String).input(),
+      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion']! as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      identity: map['identity'] == null ? null : (map['identity']! as bool).input(),
+      lastHeartBeat: map['lastHeartBeat'] == null ? null : (map['lastHeartBeat']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverCertificate: map['serverCertificate'] == null ? null : (map['serverCertificate'] as String).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
-      serverOSVersion: map['serverOSVersion'] == null ? null : (map['serverOSVersion'] as String).input(),
-      serverRole: map['serverRole'] == null ? null : (map['serverRole'] as String).input(),
+      serverCertificate: map['serverCertificate'] == null ? null : (map['serverCertificate']! as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId']! as String).input(),
+      serverOSVersion: map['serverOSVersion'] == null ? null : (map['serverOSVersion']! as String).input(),
+      serverRole: map['serverRole'] == null ? null : (map['serverRole']! as String).input(),
       storageSyncServiceName: (map['storageSyncServiceName'] as String).input(),
     );
   }

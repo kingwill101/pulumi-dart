@@ -43,7 +43,7 @@ class CopyFileArgs {
       connection: (Connection.fromMap((map['connection'] as Map).cast<String, dynamic>())).input(),
       localPath: (map['localPath'] as String).input(),
       remotePath: (map['remotePath'] as String).input(),
-      triggers: map['triggers'] == null ? null : ((map['triggers'] as List).cast<dynamic>()).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers']! as List).cast<dynamic>()).input(),
     );
   }
 }

@@ -30,8 +30,8 @@ class DistributionConfigurationDistributionLaunchTemplateConfiguration {
 
   factory DistributionConfigurationDistributionLaunchTemplateConfiguration.fromMap(Map<String, dynamic> map) {
     return DistributionConfigurationDistributionLaunchTemplateConfiguration(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      default_: map['default'] == null ? null : (map['default'] as bool).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      default_: map['default'] == null ? null : ((map['default'] as bool).input()).input(),
       launchTemplateId: (map['launchTemplateId'] as String).input(),
     );
   }

@@ -66,16 +66,16 @@ class InstanceState {
 
   factory InstanceState.fromMap(Map<String, dynamic> map) {
     return InstanceState(
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      autoRenewPeriod: map['autoRenewPeriod'] == null ? null : (map['autoRenewPeriod'] as int).input(),
-      dataDiskSize: map['dataDiskSize'] == null ? null : (map['dataDiskSize'] as int).input(),
-      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      planId: map['planId'] == null ? null : (map['planId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      autoRenewPeriod: map['autoRenewPeriod'] == null ? null : (map['autoRenewPeriod']! as int).input(),
+      dataDiskSize: map['dataDiskSize'] == null ? null : (map['dataDiskSize']! as int).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId']! as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      planId: map['planId'] == null ? null : (map['planId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

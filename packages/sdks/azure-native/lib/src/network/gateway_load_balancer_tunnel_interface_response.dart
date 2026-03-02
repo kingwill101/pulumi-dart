@@ -36,10 +36,10 @@ class GatewayLoadBalancerTunnelInterfaceResponse {
 
   factory GatewayLoadBalancerTunnelInterfaceResponse.fromMap(Map<String, dynamic> map) {
     return GatewayLoadBalancerTunnelInterfaceResponse(
-      identifier: map['identifier'] == null ? null : (map['identifier'] as int).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      identifier: map['identifier'] == null ? null : (map['identifier']! as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

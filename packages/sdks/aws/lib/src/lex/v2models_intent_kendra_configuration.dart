@@ -31,8 +31,8 @@ class V2modelsIntentKendraConfiguration {
   factory V2modelsIntentKendraConfiguration.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentKendraConfiguration(
       kendraIndex: (map['kendraIndex'] as String).input(),
-      queryFilterString: map['queryFilterString'] == null ? null : (map['queryFilterString'] as String).input(),
-      queryFilterStringEnabled: map['queryFilterStringEnabled'] == null ? null : (map['queryFilterStringEnabled'] as bool).input(),
+      queryFilterString: map['queryFilterString'] == null ? null : ((map['queryFilterString'] as String).input()).input(),
+      queryFilterStringEnabled: map['queryFilterStringEnabled'] == null ? null : ((map['queryFilterStringEnabled'] as bool).input()).input(),
     );
   }
 }

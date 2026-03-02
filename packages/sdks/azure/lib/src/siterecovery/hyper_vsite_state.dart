@@ -26,8 +26,8 @@ class HyperVSiteState {
 
   factory HyperVSiteState.fromMap(Map<String, dynamic> map) {
     return HyperVSiteState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recoveryVaultId: map['recoveryVaultId'] == null ? null : (map['recoveryVaultId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      recoveryVaultId: map['recoveryVaultId'] == null ? null : (map['recoveryVaultId']! as String).input(),
     );
   }
 }

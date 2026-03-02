@@ -48,9 +48,9 @@ class DefaultRolloutSpecificationProviderRegistrationResponse {
   factory DefaultRolloutSpecificationProviderRegistrationResponse.fromMap(Map<String, dynamic> map) {
     return DefaultRolloutSpecificationProviderRegistrationResponse(
       id: (map['id'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (ProviderRegistrationPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (ProviderRegistrationPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );

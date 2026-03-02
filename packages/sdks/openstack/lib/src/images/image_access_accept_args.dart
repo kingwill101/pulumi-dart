@@ -45,8 +45,8 @@ class ImageAccessAcceptArgs {
   factory ImageAccessAcceptArgs.fromMap(Map<String, dynamic> map) {
     return ImageAccessAcceptArgs(
       imageId: (map['imageId'] as String).input(),
-      memberId: map['memberId'] == null ? null : (map['memberId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      memberId: map['memberId'] == null ? null : (map['memberId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       status: (map['status'] as String).input(),
     );
   }

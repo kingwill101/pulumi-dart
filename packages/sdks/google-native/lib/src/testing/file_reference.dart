@@ -21,7 +21,7 @@ class FileReference {
 
   factory FileReference.fromMap(Map<String, dynamic> map) {
     return FileReference(
-      gcsPath: map['gcsPath'] == null ? null : (map['gcsPath'] as String).input(),
+      gcsPath: map['gcsPath'] == null ? null : (map['gcsPath']! as String).input(),
     );
   }
 }

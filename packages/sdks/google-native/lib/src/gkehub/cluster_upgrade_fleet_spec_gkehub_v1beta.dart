@@ -33,9 +33,9 @@ class ClusterUpgradeFleetSpecGkehubV1beta {
 
   factory ClusterUpgradeFleetSpecGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return ClusterUpgradeFleetSpecGkehubV1beta(
-      gkeUpgradeOverrides: map['gkeUpgradeOverrides'] == null ? null : (pulumi.Input.decodeList<ClusterUpgradeGKEUpgradeOverrideGkehubV1beta>(map['gkeUpgradeOverrides'], (value) => ClusterUpgradeGKEUpgradeOverrideGkehubV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gkeUpgradeOverrides: map['gkeUpgradeOverrides'] == null ? null : (pulumi.Input.decodeList<ClusterUpgradeGKEUpgradeOverrideGkehubV1beta>(map['gkeUpgradeOverrides']!, (value) => ClusterUpgradeGKEUpgradeOverrideGkehubV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
       postConditions: (ClusterUpgradePostConditionsGkehubV1beta.fromMap((map['postConditions'] as Map).cast<String, dynamic>())).input(),
-      upstreamFleets: map['upstreamFleets'] == null ? null : ((map['upstreamFleets'] as List).cast<String>()).input(),
+      upstreamFleets: map['upstreamFleets'] == null ? null : ((map['upstreamFleets']! as List).cast<String>()).input(),
     );
   }
 }

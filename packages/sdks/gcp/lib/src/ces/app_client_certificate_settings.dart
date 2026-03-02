@@ -34,7 +34,7 @@ class AppClientCertificateSettings {
 
   factory AppClientCertificateSettings.fromMap(Map<String, dynamic> map) {
     return AppClientCertificateSettings(
-      passphrase: map['passphrase'] == null ? null : (map['passphrase'] as String).input(),
+      passphrase: map['passphrase'] == null ? null : (map['passphrase']! as String).input(),
       privateKey: (map['privateKey'] as String).input(),
       tlsCertificate: (map['tlsCertificate'] as String).input(),
     );

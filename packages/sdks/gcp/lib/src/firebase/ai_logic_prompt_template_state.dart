@@ -79,17 +79,17 @@ class AiLogicPromptTemplateState {
 
   factory AiLogicPromptTemplateState.fromMap(Map<String, dynamic> map) {
     return AiLogicPromptTemplateState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      locked: map['locked'] == null ? null : (map['locked'] as bool).input(),
-      model: map['model'] == null ? null : (map['model'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      stateChangeTime: map['stateChangeTime'] == null ? null : (map['stateChangeTime'] as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
-      templateString: map['templateString'] == null ? null : (map['templateString'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      locked: map['locked'] == null ? null : (map['locked']! as bool).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      stateChangeTime: map['stateChangeTime'] == null ? null : (map['stateChangeTime']! as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
+      templateString: map['templateString'] == null ? null : (map['templateString']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

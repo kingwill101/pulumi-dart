@@ -85,20 +85,20 @@ class ConnectionGroupState {
 
   factory ConnectionGroupState.fromMap(Map<String, dynamic> map) {
     return ConnectionGroupState(
-      anycastIpListId: map['anycastIpListId'] == null ? null : (map['anycastIpListId'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      ipv6Enabled: map['ipv6Enabled'] == null ? null : (map['ipv6Enabled'] as bool).input(),
-      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      routingEndpoint: map['routingEndpoint'] == null ? null : (map['routingEndpoint'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ConnectionGroupTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      waitForDeployment: map['waitForDeployment'] == null ? null : (map['waitForDeployment'] as bool).input(),
+      anycastIpListId: map['anycastIpListId'] == null ? null : ((map['anycastIpListId'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      etag: map['etag'] == null ? null : ((map['etag'] as String).input()).input(),
+      ipv6Enabled: map['ipv6Enabled'] == null ? null : ((map['ipv6Enabled'] as bool).input()).input(),
+      isDefault: map['isDefault'] == null ? null : ((map['isDefault'] as bool).input()).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : ((map['lastModifiedTime'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      routingEndpoint: map['routingEndpoint'] == null ? null : ((map['routingEndpoint'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ConnectionGroupTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      waitForDeployment: map['waitForDeployment'] == null ? null : ((map['waitForDeployment'] as bool).input()).input(),
     );
   }
 }

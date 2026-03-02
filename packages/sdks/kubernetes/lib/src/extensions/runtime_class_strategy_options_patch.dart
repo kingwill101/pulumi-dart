@@ -26,8 +26,8 @@ class RuntimeClassStrategyOptionsPatch {
 
   factory RuntimeClassStrategyOptionsPatch.fromMap(Map<String, dynamic> map) {
     return RuntimeClassStrategyOptionsPatch(
-      allowedRuntimeClassNames: map['allowedRuntimeClassNames'] == null ? null : ((map['allowedRuntimeClassNames'] as List).cast<String>()).input(),
-      defaultRuntimeClassName: map['defaultRuntimeClassName'] == null ? null : (map['defaultRuntimeClassName'] as String).input(),
+      allowedRuntimeClassNames: map['allowedRuntimeClassNames'] == null ? null : ((map['allowedRuntimeClassNames']! as List).cast<String>()).input(),
+      defaultRuntimeClassName: map['defaultRuntimeClassName'] == null ? null : (map['defaultRuntimeClassName']! as String).input(),
     );
   }
 }

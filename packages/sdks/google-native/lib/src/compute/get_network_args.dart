@@ -28,7 +28,7 @@ class GetNetworkArgs {
   factory GetNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkArgs(
       network: (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

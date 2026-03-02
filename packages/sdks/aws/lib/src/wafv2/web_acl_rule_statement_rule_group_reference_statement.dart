@@ -27,7 +27,7 @@ class WebAclRuleStatementRuleGroupReferenceStatement {
   factory WebAclRuleStatementRuleGroupReferenceStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRuleGroupReferenceStatement(
       arn: (map['arn'] as String).input(),
-      ruleActionOverrides: map['ruleActionOverrides'] == null ? null : (pulumi.Input.decodeList<WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverride>(map['ruleActionOverrides'], (value) => WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleActionOverrides: map['ruleActionOverrides'] == null ? null : ((pulumi.Input.decodeList<WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverride>(map['ruleActionOverrides']!, (value) => WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverride.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

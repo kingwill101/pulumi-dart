@@ -71,9 +71,9 @@ class AppEngineVersionIamMemberArgs {
   factory AppEngineVersionIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return AppEngineVersionIamMemberArgs(
       appId: (map['appId'] as String).input(),
-      condition: map['condition'] == null ? null : (AppEngineVersionIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (AppEngineVersionIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       member: (map['member'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
       service: (map['service'] as String).input(),
       versionId: (map['versionId'] as String).input(),

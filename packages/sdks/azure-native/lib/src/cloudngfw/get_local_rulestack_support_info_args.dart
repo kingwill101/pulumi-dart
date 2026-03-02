@@ -34,7 +34,7 @@ class GetLocalRulestackSupportInfoArgs {
 
   factory GetLocalRulestackSupportInfoArgs.fromMap(Map<String, dynamic> map) {
     return GetLocalRulestackSupportInfoArgs(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
       localRulestackName: (map['localRulestackName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

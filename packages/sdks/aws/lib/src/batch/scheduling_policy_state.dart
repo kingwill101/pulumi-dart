@@ -46,12 +46,12 @@ class SchedulingPolicyState {
 
   factory SchedulingPolicyState.fromMap(Map<String, dynamic> map) {
     return SchedulingPolicyState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      fairSharePolicy: map['fairSharePolicy'] == null ? null : (SchedulingPolicyFairSharePolicy.fromMap((map['fairSharePolicy'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      fairSharePolicy: map['fairSharePolicy'] == null ? null : ((SchedulingPolicyFairSharePolicy.fromMap((map['fairSharePolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

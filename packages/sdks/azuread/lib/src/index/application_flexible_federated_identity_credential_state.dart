@@ -51,13 +51,13 @@ class ApplicationFlexibleFederatedIdentityCredentialState {
 
   factory ApplicationFlexibleFederatedIdentityCredentialState.fromMap(Map<String, dynamic> map) {
     return ApplicationFlexibleFederatedIdentityCredentialState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
-      claimsMatchingExpression: map['claimsMatchingExpression'] == null ? null : (map['claimsMatchingExpression'] as String).input(),
-      credentialId: map['credentialId'] == null ? null : (map['credentialId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
+      claimsMatchingExpression: map['claimsMatchingExpression'] == null ? null : (map['claimsMatchingExpression']! as String).input(),
+      credentialId: map['credentialId'] == null ? null : (map['credentialId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer']! as String).input(),
     );
   }
 }

@@ -37,9 +37,9 @@ class LifecyclePolicyPolicyDetailFilter {
 
   factory LifecyclePolicyPolicyDetailFilter.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailFilter(
-      retainAtLeast: map['retainAtLeast'] == null ? null : (map['retainAtLeast'] as int).input(),
+      retainAtLeast: map['retainAtLeast'] == null ? null : ((map['retainAtLeast'] as int).input()).input(),
       type: (map['type'] as String).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      unit: map['unit'] == null ? null : ((map['unit'] as String).input()).input(),
       value: (map['value'] as int).input(),
     );
   }

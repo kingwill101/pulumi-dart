@@ -22,7 +22,7 @@ class WindowsVirtualMachineScaleSetBootDiagnostics {
 
   factory WindowsVirtualMachineScaleSetBootDiagnostics.fromMap(Map<String, dynamic> map) {
     return WindowsVirtualMachineScaleSetBootDiagnostics(
-      storageAccountUri: map['storageAccountUri'] == null ? null : (map['storageAccountUri'] as String).input(),
+      storageAccountUri: map['storageAccountUri'] == null ? null : (map['storageAccountUri']! as String).input(),
     );
   }
 }

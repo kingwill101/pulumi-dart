@@ -38,7 +38,7 @@ class TriggerCustomArgs {
     return TriggerCustomArgs(
       body: (map['body'] as String).input(),
       logicAppId: (map['logicAppId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

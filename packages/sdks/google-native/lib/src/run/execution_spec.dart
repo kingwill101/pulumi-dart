@@ -32,9 +32,9 @@ class ExecutionSpec {
 
   factory ExecutionSpec.fromMap(Map<String, dynamic> map) {
     return ExecutionSpec(
-      parallelism: map['parallelism'] == null ? null : (map['parallelism'] as int).input(),
-      taskCount: map['taskCount'] == null ? null : (map['taskCount'] as int).input(),
-      template: map['template'] == null ? null : (TaskTemplateSpec.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
+      parallelism: map['parallelism'] == null ? null : (map['parallelism']! as int).input(),
+      taskCount: map['taskCount'] == null ? null : (map['taskCount']! as int).input(),
+      template: map['template'] == null ? null : (TaskTemplateSpec.fromMap((map['template']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

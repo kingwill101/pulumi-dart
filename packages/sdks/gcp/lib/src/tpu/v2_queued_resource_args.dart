@@ -42,10 +42,10 @@ class V2QueuedResourceArgs {
 
   factory V2QueuedResourceArgs.fromMap(Map<String, dynamic> map) {
     return V2QueuedResourceArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      tpu: map['tpu'] == null ? null : (V2QueuedResourceTpu.fromMap((map['tpu'] as Map).cast<String, dynamic>())).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      tpu: map['tpu'] == null ? null : (V2QueuedResourceTpu.fromMap((map['tpu']! as Map).cast<String, dynamic>())).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

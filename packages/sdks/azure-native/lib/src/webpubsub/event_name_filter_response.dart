@@ -35,9 +35,9 @@ class EventNameFilterResponse {
 
   factory EventNameFilterResponse.fromMap(Map<String, dynamic> map) {
     return EventNameFilterResponse(
-      systemEvents: map['systemEvents'] == null ? null : ((map['systemEvents'] as List).cast<String>()).input(),
+      systemEvents: map['systemEvents'] == null ? null : ((map['systemEvents']! as List).cast<String>()).input(),
       type: (map['type'] as String).input(),
-      userEventPattern: map['userEventPattern'] == null ? null : (map['userEventPattern'] as String).input(),
+      userEventPattern: map['userEventPattern'] == null ? null : (map['userEventPattern']! as String).input(),
     );
   }
 }

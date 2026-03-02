@@ -27,8 +27,8 @@ class RegistryCredentialResponse {
 
   factory RegistryCredentialResponse.fromMap(Map<String, dynamic> map) {
     return RegistryCredentialResponse(
-      credential: map['credential'] == null ? null : (map['credential'] as String).input(),
-      credentialProvider: map['credentialProvider'] == null ? null : (CredentialProviderTypeEnumValueResponse.fromMap((map['credentialProvider'] as Map).cast<String, dynamic>())).input(),
+      credential: map['credential'] == null ? null : (map['credential']! as String).input(),
+      credentialProvider: map['credentialProvider'] == null ? null : (CredentialProviderTypeEnumValueResponse.fromMap((map['credentialProvider']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

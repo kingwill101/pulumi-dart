@@ -41,9 +41,9 @@ class SessionLoggerLogConfigurationS3 {
   factory SessionLoggerLogConfigurationS3.fromMap(Map<String, dynamic> map) {
     return SessionLoggerLogConfigurationS3(
       bucket: (map['bucket'] as String).input(),
-      bucketOwner: map['bucketOwner'] == null ? null : (map['bucketOwner'] as String).input(),
+      bucketOwner: map['bucketOwner'] == null ? null : ((map['bucketOwner'] as String).input()).input(),
       folderStructure: (map['folderStructure'] as String).input(),
-      keyPrefix: map['keyPrefix'] == null ? null : (map['keyPrefix'] as String).input(),
+      keyPrefix: map['keyPrefix'] == null ? null : ((map['keyPrefix'] as String).input()).input(),
       logFileFormat: (map['logFileFormat'] as String).input(),
     );
   }

@@ -40,11 +40,11 @@ class LoadBalancerServiceHealthCheckHttp {
 
   factory LoadBalancerServiceHealthCheckHttp.fromMap(Map<String, dynamic> map) {
     return LoadBalancerServiceHealthCheckHttp(
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      response: map['response'] == null ? null : (map['response'] as String).input(),
-      statusCodes: map['statusCodes'] == null ? null : ((map['statusCodes'] as List).cast<String>()).input(),
-      tls: map['tls'] == null ? null : (map['tls'] as bool).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      response: map['response'] == null ? null : (map['response']! as String).input(),
+      statusCodes: map['statusCodes'] == null ? null : ((map['statusCodes']! as List).cast<String>()).input(),
+      tls: map['tls'] == null ? null : (map['tls']! as bool).input(),
     );
   }
 }

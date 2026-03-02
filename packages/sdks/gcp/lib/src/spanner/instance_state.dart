@@ -112,21 +112,21 @@ class InstanceState {
 
   factory InstanceState.fromMap(Map<String, dynamic> map) {
     return InstanceState(
-      autoscalingConfig: map['autoscalingConfig'] == null ? null : (InstanceAutoscalingConfig.fromMap((map['autoscalingConfig'] as Map).cast<String, dynamic>())).input(),
-      config: map['config'] == null ? null : (map['config'] as String).input(),
-      defaultBackupScheduleType: map['defaultBackupScheduleType'] == null ? null : (map['defaultBackupScheduleType'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      numNodes: map['numNodes'] == null ? null : (map['numNodes'] as int).input(),
-      processingUnits: map['processingUnits'] == null ? null : (map['processingUnits'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      autoscalingConfig: map['autoscalingConfig'] == null ? null : (InstanceAutoscalingConfig.fromMap((map['autoscalingConfig']! as Map).cast<String, dynamic>())).input(),
+      config: map['config'] == null ? null : (map['config']! as String).input(),
+      defaultBackupScheduleType: map['defaultBackupScheduleType'] == null ? null : (map['defaultBackupScheduleType']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      edition: map['edition'] == null ? null : (map['edition']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy']! as bool).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      numNodes: map['numNodes'] == null ? null : (map['numNodes']! as int).input(),
+      processingUnits: map['processingUnits'] == null ? null : (map['processingUnits']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

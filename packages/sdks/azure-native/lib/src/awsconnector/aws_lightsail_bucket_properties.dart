@@ -68,16 +68,16 @@ class AwsLightsailBucketProperties {
 
   factory AwsLightsailBucketProperties.fromMap(Map<String, dynamic> map) {
     return AwsLightsailBucketProperties(
-      ableToUpdateBundle: map['ableToUpdateBundle'] == null ? null : (map['ableToUpdateBundle'] as bool).input(),
-      accessRules: map['accessRules'] == null ? null : (AccessRules.fromMap((map['accessRules'] as Map).cast<String, dynamic>())).input(),
-      bucketArn: map['bucketArn'] == null ? null : (map['bucketArn'] as String).input(),
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      bundleId: map['bundleId'] == null ? null : (map['bundleId'] as String).input(),
-      objectVersioning: map['objectVersioning'] == null ? null : (map['objectVersioning'] as bool).input(),
-      readOnlyAccessAccounts: map['readOnlyAccessAccounts'] == null ? null : ((map['readOnlyAccessAccounts'] as List).cast<String>()).input(),
-      resourcesReceivingAccess: map['resourcesReceivingAccess'] == null ? null : ((map['resourcesReceivingAccess'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      ableToUpdateBundle: map['ableToUpdateBundle'] == null ? null : (map['ableToUpdateBundle']! as bool).input(),
+      accessRules: map['accessRules'] == null ? null : (AccessRules.fromMap((map['accessRules']! as Map).cast<String, dynamic>())).input(),
+      bucketArn: map['bucketArn'] == null ? null : (map['bucketArn']! as String).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
+      bundleId: map['bundleId'] == null ? null : (map['bundleId']! as String).input(),
+      objectVersioning: map['objectVersioning'] == null ? null : (map['objectVersioning']! as bool).input(),
+      readOnlyAccessAccounts: map['readOnlyAccessAccounts'] == null ? null : ((map['readOnlyAccessAccounts']! as List).cast<String>()).input(),
+      resourcesReceivingAccess: map['resourcesReceivingAccess'] == null ? null : ((map['resourcesReceivingAccess']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags']!, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

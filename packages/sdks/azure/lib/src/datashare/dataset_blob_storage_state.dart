@@ -52,13 +52,13 @@ class DatasetBlobStorageState {
 
   factory DatasetBlobStorageState.fromMap(Map<String, dynamic> map) {
     return DatasetBlobStorageState(
-      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
-      dataShareId: map['dataShareId'] == null ? null : (map['dataShareId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      filePath: map['filePath'] == null ? null : (map['filePath'] as String).input(),
-      folderPath: map['folderPath'] == null ? null : (map['folderPath'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      storageAccount: map['storageAccount'] == null ? null : (DatasetBlobStorageStorageAccount.fromMap((map['storageAccount'] as Map).cast<String, dynamic>())).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
+      dataShareId: map['dataShareId'] == null ? null : (map['dataShareId']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      filePath: map['filePath'] == null ? null : (map['filePath']! as String).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      storageAccount: map['storageAccount'] == null ? null : (DatasetBlobStorageStorageAccount.fromMap((map['storageAccount']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

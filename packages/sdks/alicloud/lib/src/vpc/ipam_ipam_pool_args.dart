@@ -90,19 +90,19 @@ class IpamIpamPoolArgs {
 
   factory IpamIpamPoolArgs.fromMap(Map<String, dynamic> map) {
     return IpamIpamPoolArgs(
-      allocationDefaultCidrMask: map['allocationDefaultCidrMask'] == null ? null : (map['allocationDefaultCidrMask'] as int).input(),
-      allocationMaxCidrMask: map['allocationMaxCidrMask'] == null ? null : (map['allocationMaxCidrMask'] as int).input(),
-      allocationMinCidrMask: map['allocationMinCidrMask'] == null ? null : (map['allocationMinCidrMask'] as int).input(),
-      autoImport: map['autoImport'] == null ? null : (map['autoImport'] as bool).input(),
-      clearAllocationDefaultCidrMask: map['clearAllocationDefaultCidrMask'] == null ? null : (map['clearAllocationDefaultCidrMask'] as bool).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
-      ipamPoolDescription: map['ipamPoolDescription'] == null ? null : (map['ipamPoolDescription'] as String).input(),
-      ipamPoolName: map['ipamPoolName'] == null ? null : (map['ipamPoolName'] as String).input(),
+      allocationDefaultCidrMask: map['allocationDefaultCidrMask'] == null ? null : (map['allocationDefaultCidrMask']! as int).input(),
+      allocationMaxCidrMask: map['allocationMaxCidrMask'] == null ? null : (map['allocationMaxCidrMask']! as int).input(),
+      allocationMinCidrMask: map['allocationMinCidrMask'] == null ? null : (map['allocationMinCidrMask']! as int).input(),
+      autoImport: map['autoImport'] == null ? null : (map['autoImport']! as bool).input(),
+      clearAllocationDefaultCidrMask: map['clearAllocationDefaultCidrMask'] == null ? null : (map['clearAllocationDefaultCidrMask']! as bool).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as String).input(),
+      ipamPoolDescription: map['ipamPoolDescription'] == null ? null : (map['ipamPoolDescription']! as String).input(),
+      ipamPoolName: map['ipamPoolName'] == null ? null : (map['ipamPoolName']! as String).input(),
       ipamScopeId: (map['ipamScopeId'] as String).input(),
-      poolRegionId: map['poolRegionId'] == null ? null : (map['poolRegionId'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      sourceIpamPoolId: map['sourceIpamPoolId'] == null ? null : (map['sourceIpamPoolId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      poolRegionId: map['poolRegionId'] == null ? null : (map['poolRegionId']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      sourceIpamPoolId: map['sourceIpamPoolId'] == null ? null : (map['sourceIpamPoolId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

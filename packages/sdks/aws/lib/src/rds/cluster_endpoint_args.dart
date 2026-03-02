@@ -60,10 +60,10 @@ class ClusterEndpointArgs {
       clusterEndpointIdentifier: (map['clusterEndpointIdentifier'] as String).input(),
       clusterIdentifier: (map['clusterIdentifier'] as String).input(),
       customEndpointType: (map['customEndpointType'] as String).input(),
-      excludedMembers: map['excludedMembers'] == null ? null : ((map['excludedMembers'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      staticMembers: map['staticMembers'] == null ? null : ((map['staticMembers'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      excludedMembers: map['excludedMembers'] == null ? null : (((map['excludedMembers'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      staticMembers: map['staticMembers'] == null ? null : (((map['staticMembers'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

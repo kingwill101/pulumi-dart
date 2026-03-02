@@ -30,9 +30,9 @@ class RocketMQInstanceNetworkInfoEndpoint {
 
   factory RocketMQInstanceNetworkInfoEndpoint.fromMap(Map<String, dynamic> map) {
     return RocketMQInstanceNetworkInfoEndpoint(
-      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
-      endpointUrl: map['endpointUrl'] == null ? null : (map['endpointUrl'] as String).input(),
-      ipWhiteLists: map['ipWhiteLists'] == null ? null : ((map['ipWhiteLists'] as List).cast<String>()).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
+      endpointUrl: map['endpointUrl'] == null ? null : (map['endpointUrl']! as String).input(),
+      ipWhiteLists: map['ipWhiteLists'] == null ? null : ((map['ipWhiteLists']! as List).cast<String>()).input(),
     );
   }
 }

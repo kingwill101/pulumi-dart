@@ -30,9 +30,9 @@ class ListAuthorizationServerSecretsResult {
 
   factory ListAuthorizationServerSecretsResult.fromMap(Map<String, dynamic> map) {
     return ListAuthorizationServerSecretsResult(
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      resourceOwnerPassword: map['resourceOwnerPassword'] == null ? null : map['resourceOwnerPassword'] as String,
-      resourceOwnerUsername: map['resourceOwnerUsername'] == null ? null : map['resourceOwnerUsername'] as String,
+      clientSecret: map['clientSecret'] == null ? null : map['clientSecret']! as String,
+      resourceOwnerPassword: map['resourceOwnerPassword'] == null ? null : map['resourceOwnerPassword']! as String,
+      resourceOwnerUsername: map['resourceOwnerUsername'] == null ? null : map['resourceOwnerUsername']! as String,
     );
   }
 }

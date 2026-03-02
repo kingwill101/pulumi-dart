@@ -25,7 +25,7 @@ class DomainNameEndpointConfiguration {
 
   factory DomainNameEndpointConfiguration.fromMap(Map<String, dynamic> map) {
     return DomainNameEndpointConfiguration(
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : ((map['ipAddressType'] as String).input()).input(),
       types: (map['types'] as String).input(),
     );
   }

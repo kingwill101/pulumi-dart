@@ -74,16 +74,16 @@ class DefenseRuleState {
 
   factory DefenseRuleState.fromMap(Map<String, dynamic> map) {
     return DefenseRuleState(
-      config: map['config'] == null ? null : (DefenseRuleConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      defenseOrigin: map['defenseOrigin'] == null ? null : (map['defenseOrigin'] as String).input(),
-      defenseScene: map['defenseScene'] == null ? null : (map['defenseScene'] as String).input(),
-      defenseType: map['defenseType'] == null ? null : (map['defenseType'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
-      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as int).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      ruleStatus: map['ruleStatus'] == null ? null : (map['ruleStatus'] as int).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as int).input(),
+      config: map['config'] == null ? null : (DefenseRuleConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      defenseOrigin: map['defenseOrigin'] == null ? null : (map['defenseOrigin']! as String).input(),
+      defenseScene: map['defenseScene'] == null ? null : (map['defenseScene']! as String).input(),
+      defenseType: map['defenseType'] == null ? null : (map['defenseType']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId']! as int).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      ruleStatus: map['ruleStatus'] == null ? null : (map['ruleStatus']! as int).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as int).input(),
     );
   }
 }

@@ -30,8 +30,8 @@ class GetProjectServiceAccountArgs {
 
   factory GetProjectServiceAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectServiceAccountArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      userProject: map['userProject'] == null ? null : (map['userProject'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      userProject: map['userProject'] == null ? null : (map['userProject']! as String).input(),
     );
   }
 }

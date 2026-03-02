@@ -36,8 +36,8 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesSe
   factory DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking(
       deployment: (map['deployment'] as String).input(),
-      disablePodOverprovisioning: map['disablePodOverprovisioning'] == null ? null : (map['disablePodOverprovisioning'] as bool).input(),
-      podSelectorLabel: map['podSelectorLabel'] == null ? null : (map['podSelectorLabel'] as String).input(),
+      disablePodOverprovisioning: map['disablePodOverprovisioning'] == null ? null : (map['disablePodOverprovisioning']! as bool).input(),
+      podSelectorLabel: map['podSelectorLabel'] == null ? null : (map['podSelectorLabel']! as String).input(),
       service: (map['service'] as String).input(),
     );
   }

@@ -50,11 +50,11 @@ class DataDiskAttachmentArgs {
   factory DataDiskAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return DataDiskAttachmentArgs(
       caching: (map['caching'] as String).input(),
-      createOption: map['createOption'] == null ? null : (map['createOption'] as String).input(),
+      createOption: map['createOption'] == null ? null : (map['createOption']! as String).input(),
       lun: (map['lun'] as int).input(),
       managedDiskId: (map['managedDiskId'] as String).input(),
       virtualMachineId: (map['virtualMachineId'] as String).input(),
-      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled'] as bool).input(),
+      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled']! as bool).input(),
     );
   }
 }

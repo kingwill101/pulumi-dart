@@ -39,10 +39,10 @@ class GetUsersResult {
 
   factory GetUsersResult.fromMap(Map<String, dynamic> map) {
     return GetUsersResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetUsersFilter>(map['filters'], (value) => GetUsersFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetUsersFilter>(map['filters']!, (value) => GetUsersFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      order: map['order'] == null ? null : map['order'] as String,
-      orderBy: map['orderBy'] == null ? null : map['orderBy'] as String,
+      order: map['order'] == null ? null : map['order']! as String,
+      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
       users: pulumi.Input.decodeList<GetUsersUser>(map['users'], (value) => GetUsersUser.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

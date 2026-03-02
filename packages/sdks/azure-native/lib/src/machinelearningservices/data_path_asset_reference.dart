@@ -32,8 +32,8 @@ class DataPathAssetReference {
 
   factory DataPathAssetReference.fromMap(Map<String, dynamic> map) {
     return DataPathAssetReference(
-      datastoreId: map['datastoreId'] == null ? null : (map['datastoreId'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      datastoreId: map['datastoreId'] == null ? null : (map['datastoreId']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
       referenceType: (map['referenceType'] as String).input(),
     );
   }

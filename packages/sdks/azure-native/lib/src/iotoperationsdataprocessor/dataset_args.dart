@@ -76,17 +76,17 @@ class DatasetArgs {
 
   factory DatasetArgs.fromMap(Map<String, dynamic> map) {
     return DatasetArgs(
-      datasetName: map['datasetName'] == null ? null : (map['datasetName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      datasetName: map['datasetName'] == null ? null : (map['datasetName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
       instanceName: (map['instanceName'] as String).input(),
-      keys: map['keys'] == null ? null : (pulumi.Input.decodeMapValues<DatasetPropertyKey>(map['keys'], (value) => DatasetPropertyKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      payload: map['payload'] == null ? null : (map['payload'] as String).input(),
+      keys: map['keys'] == null ? null : (pulumi.Input.decodeMapValues<DatasetPropertyKey>(map['keys']!, (value) => DatasetPropertyKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      payload: map['payload'] == null ? null : (map['payload']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timestamp: map['timestamp'] == null ? null : (map['timestamp'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      timestamp: map['timestamp'] == null ? null : (map['timestamp']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as String).input(),
     );
   }
 }

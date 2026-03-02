@@ -29,7 +29,7 @@ class GatewayArgs {
 
   factory GatewayArgs.fromMap(Map<String, dynamic> map) {
     return GatewayArgs(
-      gatewayDesc: map['gatewayDesc'] == null ? null : (map['gatewayDesc'] as String).input(),
+      gatewayDesc: map['gatewayDesc'] == null ? null : (map['gatewayDesc']! as String).input(),
       gatewayName: (map['gatewayName'] as String).input(),
     );
   }

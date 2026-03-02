@@ -27,8 +27,8 @@ class ThemeConfigurationSheet {
 
   factory ThemeConfigurationSheet.fromMap(Map<String, dynamic> map) {
     return ThemeConfigurationSheet(
-      tile: map['tile'] == null ? null : (ThemeConfigurationSheetTile.fromMap((map['tile'] as Map).cast<String, dynamic>())).input(),
-      tileLayout: map['tileLayout'] == null ? null : (ThemeConfigurationSheetTileLayout.fromMap((map['tileLayout'] as Map).cast<String, dynamic>())).input(),
+      tile: map['tile'] == null ? null : ((ThemeConfigurationSheetTile.fromMap((map['tile']! as Map).cast<String, dynamic>())).input()).input(),
+      tileLayout: map['tileLayout'] == null ? null : ((ThemeConfigurationSheetTileLayout.fromMap((map['tileLayout']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

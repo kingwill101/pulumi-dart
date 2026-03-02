@@ -32,9 +32,9 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock {
 
   factory VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock.fromMap(Map<String, dynamic> map) {
     return VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock(
-      gateway: map['gateway'] == null ? null : (map['gateway'] as String).input(),
-      ips: map['ips'] == null ? null : (pulumi.Input.decodeList<VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp>(map['ips'], (value) => VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      netmask: map['netmask'] == null ? null : (map['netmask'] as String).input(),
+      gateway: map['gateway'] == null ? null : (map['gateway']! as String).input(),
+      ips: map['ips'] == null ? null : (pulumi.Input.decodeList<VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp>(map['ips']!, (value) => VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      netmask: map['netmask'] == null ? null : (map['netmask']! as String).input(),
     );
   }
 }

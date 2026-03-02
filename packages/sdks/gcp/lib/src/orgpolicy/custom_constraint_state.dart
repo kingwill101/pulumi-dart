@@ -62,15 +62,15 @@ class CustomConstraintState {
 
   factory CustomConstraintState.fromMap(Map<String, dynamic> map) {
     return CustomConstraintState(
-      actionType: map['actionType'] == null ? null : (map['actionType'] as String).input(),
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      methodTypes: map['methodTypes'] == null ? null : ((map['methodTypes'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      actionType: map['actionType'] == null ? null : (map['actionType']! as String).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      methodTypes: map['methodTypes'] == null ? null : ((map['methodTypes']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes']! as List).cast<String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

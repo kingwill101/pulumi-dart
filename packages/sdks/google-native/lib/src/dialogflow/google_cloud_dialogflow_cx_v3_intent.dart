@@ -58,14 +58,14 @@ class GoogleCloudDialogflowCxV3Intent {
 
   factory GoogleCloudDialogflowCxV3Intent.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3Intent(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      isFallback: map['isFallback'] == null ? null : (map['isFallback'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3IntentParameter>(map['parameters'], (value) => GoogleCloudDialogflowCxV3IntentParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      trainingPhrases: map['trainingPhrases'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3IntentTrainingPhrase>(map['trainingPhrases'], (value) => GoogleCloudDialogflowCxV3IntentTrainingPhrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isFallback: map['isFallback'] == null ? null : (map['isFallback']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3IntentParameter>(map['parameters']!, (value) => GoogleCloudDialogflowCxV3IntentParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      trainingPhrases: map['trainingPhrases'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3IntentTrainingPhrase>(map['trainingPhrases']!, (value) => GoogleCloudDialogflowCxV3IntentTrainingPhrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

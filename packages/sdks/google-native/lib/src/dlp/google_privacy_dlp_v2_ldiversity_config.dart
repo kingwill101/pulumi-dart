@@ -27,8 +27,8 @@ class GooglePrivacyDlpV2LDiversityConfig {
 
   factory GooglePrivacyDlpV2LDiversityConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2LDiversityConfig(
-      quasiIds: map['quasiIds'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2FieldId>(map['quasiIds'], (value) => GooglePrivacyDlpV2FieldId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sensitiveAttribute: map['sensitiveAttribute'] == null ? null : (GooglePrivacyDlpV2FieldId.fromMap((map['sensitiveAttribute'] as Map).cast<String, dynamic>())).input(),
+      quasiIds: map['quasiIds'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2FieldId>(map['quasiIds']!, (value) => GooglePrivacyDlpV2FieldId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sensitiveAttribute: map['sensitiveAttribute'] == null ? null : (GooglePrivacyDlpV2FieldId.fromMap((map['sensitiveAttribute']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

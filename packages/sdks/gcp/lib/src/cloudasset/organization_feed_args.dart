@@ -77,11 +77,11 @@ class OrganizationFeedArgs {
 
   factory OrganizationFeedArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationFeedArgs(
-      assetNames: map['assetNames'] == null ? null : ((map['assetNames'] as List).cast<String>()).input(),
-      assetTypes: map['assetTypes'] == null ? null : ((map['assetTypes'] as List).cast<String>()).input(),
+      assetNames: map['assetNames'] == null ? null : ((map['assetNames']! as List).cast<String>()).input(),
+      assetTypes: map['assetTypes'] == null ? null : ((map['assetTypes']! as List).cast<String>()).input(),
       billingProject: (map['billingProject'] as String).input(),
-      condition: map['condition'] == null ? null : (OrganizationFeedCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      condition: map['condition'] == null ? null : (OrganizationFeedCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
       feedId: (map['feedId'] as String).input(),
       feedOutputConfig: (OrganizationFeedFeedOutputConfig.fromMap((map['feedOutputConfig'] as Map).cast<String, dynamic>())).input(),
       orgId: (map['orgId'] as String).input(),

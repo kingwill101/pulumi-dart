@@ -71,14 +71,14 @@ class PluginInstanceArgs {
 
   factory PluginInstanceArgs.fromMap(Map<String, dynamic> map) {
     return PluginInstanceArgs(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<PluginInstanceAction>(map['actions'], (value) => PluginInstanceAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      authConfig: map['authConfig'] == null ? null : (PluginInstanceAuthConfig.fromMap((map['authConfig'] as Map).cast<String, dynamic>())).input(),
-      disable: map['disable'] == null ? null : (map['disable'] as bool).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<PluginInstanceAction>(map['actions']!, (value) => PluginInstanceAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authConfig: map['authConfig'] == null ? null : (PluginInstanceAuthConfig.fromMap((map['authConfig']! as Map).cast<String, dynamic>())).input(),
+      disable: map['disable'] == null ? null : (map['disable']! as bool).input(),
       displayName: (map['displayName'] as String).input(),
       location: (map['location'] as String).input(),
       plugin: (map['plugin'] as String).input(),
       pluginInstanceId: (map['pluginInstanceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

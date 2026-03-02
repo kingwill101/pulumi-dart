@@ -31,8 +31,8 @@ class NodeBalancerVpc {
 
   factory NodeBalancerVpc.fromMap(Map<String, dynamic> map) {
     return NodeBalancerVpc(
-      ipv4Range: map['ipv4Range'] == null ? null : (map['ipv4Range'] as String).input(),
-      ipv4RangeAutoAssign: map['ipv4RangeAutoAssign'] == null ? null : (map['ipv4RangeAutoAssign'] as bool).input(),
+      ipv4Range: map['ipv4Range'] == null ? null : (map['ipv4Range']! as String).input(),
+      ipv4RangeAutoAssign: map['ipv4RangeAutoAssign'] == null ? null : (map['ipv4RangeAutoAssign']! as bool).input(),
       subnetId: (map['subnetId'] as int).input(),
     );
   }

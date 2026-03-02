@@ -32,9 +32,9 @@ class AutoScaleRunResponse {
 
   factory AutoScaleRunResponse.fromMap(Map<String, dynamic> map) {
     return AutoScaleRunResponse(
-      error: map['error'] == null ? null : (AutoScaleRunErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      error: map['error'] == null ? null : (AutoScaleRunErrorResponse.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
       evaluationTime: (map['evaluationTime'] as String).input(),
-      results: map['results'] == null ? null : (map['results'] as String).input(),
+      results: map['results'] == null ? null : (map['results']! as String).input(),
     );
   }
 }

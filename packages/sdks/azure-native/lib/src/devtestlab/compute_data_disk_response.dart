@@ -36,10 +36,10 @@ class ComputeDataDiskResponse {
 
   factory ComputeDataDiskResponse.fromMap(Map<String, dynamic> map) {
     return ComputeDataDiskResponse(
-      diskSizeGiB: map['diskSizeGiB'] == null ? null : (map['diskSizeGiB'] as int).input(),
-      diskUri: map['diskUri'] == null ? null : (map['diskUri'] as String).input(),
-      managedDiskId: map['managedDiskId'] == null ? null : (map['managedDiskId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      diskSizeGiB: map['diskSizeGiB'] == null ? null : (map['diskSizeGiB']! as int).input(),
+      diskUri: map['diskUri'] == null ? null : (map['diskUri']! as String).input(),
+      managedDiskId: map['managedDiskId'] == null ? null : (map['managedDiskId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

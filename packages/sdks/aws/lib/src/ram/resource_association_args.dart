@@ -34,7 +34,7 @@ class ResourceAssociationArgs {
 
   factory ResourceAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ResourceAssociationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceArn: (map['resourceArn'] as String).input(),
       resourceShareArn: (map['resourceShareArn'] as String).input(),
     );

@@ -38,9 +38,9 @@ class PackageIssueContaineranalysisV1beta1 {
   factory PackageIssueContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return PackageIssueContaineranalysisV1beta1(
       affectedLocation: (VulnerabilityLocationContaineranalysisV1beta1.fromMap((map['affectedLocation'] as Map).cast<String, dynamic>())).input(),
-      fixedLocation: map['fixedLocation'] == null ? null : (VulnerabilityLocationContaineranalysisV1beta1.fromMap((map['fixedLocation'] as Map).cast<String, dynamic>())).input(),
-      packageType: map['packageType'] == null ? null : (map['packageType'] as String).input(),
-      severityName: map['severityName'] == null ? null : (map['severityName'] as String).input(),
+      fixedLocation: map['fixedLocation'] == null ? null : (VulnerabilityLocationContaineranalysisV1beta1.fromMap((map['fixedLocation']! as Map).cast<String, dynamic>())).input(),
+      packageType: map['packageType'] == null ? null : (map['packageType']! as String).input(),
+      severityName: map['severityName'] == null ? null : (map['severityName']! as String).input(),
     );
   }
 }

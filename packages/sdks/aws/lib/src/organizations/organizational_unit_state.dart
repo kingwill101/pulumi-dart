@@ -47,12 +47,12 @@ class OrganizationalUnitState {
 
   factory OrganizationalUnitState.fromMap(Map<String, dynamic> map) {
     return OrganizationalUnitState(
-      accounts: map['accounts'] == null ? null : (pulumi.Input.decodeList<OrganizationalUnitAccount>(map['accounts'], (value) => OrganizationalUnitAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentId: map['parentId'] == null ? null : (map['parentId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      accounts: map['accounts'] == null ? null : ((pulumi.Input.decodeList<OrganizationalUnitAccount>(map['accounts']!, (value) => OrganizationalUnitAccount.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      parentId: map['parentId'] == null ? null : ((map['parentId'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

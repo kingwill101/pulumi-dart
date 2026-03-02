@@ -26,8 +26,8 @@ class ManagedCertificateProperties {
 
   factory ManagedCertificateProperties.fromMap(Map<String, dynamic> map) {
     return ManagedCertificateProperties(
-      domainControlValidation: map['domainControlValidation'] == null ? null : (map['domainControlValidation'] as String).input(),
-      subjectName: map['subjectName'] == null ? null : (map['subjectName'] as String).input(),
+      domainControlValidation: map['domainControlValidation'] == null ? null : (map['domainControlValidation']! as String).input(),
+      subjectName: map['subjectName'] == null ? null : (map['subjectName']! as String).input(),
     );
   }
 }

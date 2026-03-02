@@ -30,8 +30,8 @@ class AiLogicConfigTelemetryConfig {
 
   factory AiLogicConfigTelemetryConfig.fromMap(Map<String, dynamic> map) {
     return AiLogicConfigTelemetryConfig(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      samplingRate: map['samplingRate'] == null ? null : (map['samplingRate'] as double).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      samplingRate: map['samplingRate'] == null ? null : (map['samplingRate']! as double).input(),
     );
   }
 }

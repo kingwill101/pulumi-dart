@@ -53,13 +53,13 @@ class WindowsUpdate {
 
   factory WindowsUpdate.fromMap(Map<String, dynamic> map) {
     return WindowsUpdate(
-      categories: map['categories'] == null ? null : (pulumi.Input.decodeList<Category>(map['categories'], (value) => Category.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      kbArticleIds: map['kbArticleIds'] == null ? null : ((map['kbArticleIds'] as List).cast<String>()).input(),
-      lastPublishedTimestamp: map['lastPublishedTimestamp'] == null ? null : (map['lastPublishedTimestamp'] as String).input(),
-      supportUrl: map['supportUrl'] == null ? null : (map['supportUrl'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      categories: map['categories'] == null ? null : (pulumi.Input.decodeList<Category>(map['categories']!, (value) => Category.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      kbArticleIds: map['kbArticleIds'] == null ? null : ((map['kbArticleIds']! as List).cast<String>()).input(),
+      lastPublishedTimestamp: map['lastPublishedTimestamp'] == null ? null : (map['lastPublishedTimestamp']! as String).input(),
+      supportUrl: map['supportUrl'] == null ? null : (map['supportUrl']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

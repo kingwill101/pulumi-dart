@@ -20,7 +20,7 @@ class IndexingConfigurationThingIndexingConfigurationFilter {
 
   factory IndexingConfigurationThingIndexingConfigurationFilter.fromMap(Map<String, dynamic> map) {
     return IndexingConfigurationThingIndexingConfigurationFilter(
-      namedShadowNames: map['namedShadowNames'] == null ? null : ((map['namedShadowNames'] as List).cast<String>()).input(),
+      namedShadowNames: map['namedShadowNames'] == null ? null : (((map['namedShadowNames'] as List).cast<String>()).input()).input(),
     );
   }
 }

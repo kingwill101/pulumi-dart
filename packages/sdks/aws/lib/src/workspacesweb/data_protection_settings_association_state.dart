@@ -33,9 +33,9 @@ class DataProtectionSettingsAssociationState {
 
   factory DataProtectionSettingsAssociationState.fromMap(Map<String, dynamic> map) {
     return DataProtectionSettingsAssociationState(
-      dataProtectionSettingsArn: map['dataProtectionSettingsArn'] == null ? null : (map['dataProtectionSettingsArn'] as String).input(),
-      portalArn: map['portalArn'] == null ? null : (map['portalArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      dataProtectionSettingsArn: map['dataProtectionSettingsArn'] == null ? null : ((map['dataProtectionSettingsArn'] as String).input()).input(),
+      portalArn: map['portalArn'] == null ? null : ((map['portalArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

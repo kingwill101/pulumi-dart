@@ -28,9 +28,9 @@ class WafRuleSharedMatchCriteriaCriteria {
 
   factory WafRuleSharedMatchCriteriaCriteria.fromMap(Map<String, dynamic> map) {
     return WafRuleSharedMatchCriteriaCriteria(
-      criterias: map['criterias'] == null ? null : (pulumi.Input.decodeList<WafRuleSharedMatchCriteriaCriteriaCriteria>(map['criterias'], (value) => WafRuleSharedMatchCriteriaCriteriaCriteria.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      logic: map['logic'] == null ? null : (map['logic'] as String).input(),
-      matchType: map['matchType'] == null ? null : (map['matchType'] as String).input(),
+      criterias: map['criterias'] == null ? null : (pulumi.Input.decodeList<WafRuleSharedMatchCriteriaCriteriaCriteria>(map['criterias']!, (value) => WafRuleSharedMatchCriteriaCriteriaCriteria.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logic: map['logic'] == null ? null : (map['logic']! as String).input(),
+      matchType: map['matchType'] == null ? null : (map['matchType']! as String).input(),
     );
   }
 }

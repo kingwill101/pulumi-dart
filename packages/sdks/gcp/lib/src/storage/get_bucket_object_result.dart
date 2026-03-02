@@ -152,7 +152,7 @@ class GetBucketObjectResult {
 
   factory GetBucketObjectResult.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectResult(
-      bucket: map['bucket'] == null ? null : map['bucket'] as String,
+      bucket: map['bucket'] == null ? null : map['bucket']! as String,
       cacheControl: map['cacheControl'] as String,
       content: map['content'] as String,
       contentDisposition: map['contentDisposition'] as String,
@@ -173,7 +173,7 @@ class GetBucketObjectResult {
       md5hexhash: map['md5hexhash'] as String,
       mediaLink: map['mediaLink'] as String,
       metadata: (map['metadata'] as Map).cast<String, String>(),
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
       outputName: map['outputName'] as String,
       retentions: pulumi.Input.decodeList<GetBucketObjectRetention>(map['retentions'], (value) => GetBucketObjectRetention.fromMap((value as Map).cast<String, dynamic>())),
       selfLink: map['selfLink'] as String,

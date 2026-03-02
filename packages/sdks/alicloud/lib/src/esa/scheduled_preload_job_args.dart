@@ -49,10 +49,10 @@ class ScheduledPreloadJobArgs {
   factory ScheduledPreloadJobArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledPreloadJobArgs(
       insertWay: (map['insertWay'] as String).input(),
-      ossUrl: map['ossUrl'] == null ? null : (map['ossUrl'] as String).input(),
+      ossUrl: map['ossUrl'] == null ? null : (map['ossUrl']! as String).input(),
       scheduledPreloadJobName: (map['scheduledPreloadJobName'] as String).input(),
       siteId: (map['siteId'] as String).input(),
-      urlList: map['urlList'] == null ? null : (map['urlList'] as String).input(),
+      urlList: map['urlList'] == null ? null : (map['urlList']! as String).input(),
     );
   }
 }

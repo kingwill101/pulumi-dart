@@ -34,9 +34,9 @@ class QosDscpMarkingRuleState {
 
   factory QosDscpMarkingRuleState.fromMap(Map<String, dynamic> map) {
     return QosDscpMarkingRuleState(
-      dscpMark: map['dscpMark'] == null ? null : (map['dscpMark'] as int).input(),
-      qosPolicyId: map['qosPolicyId'] == null ? null : (map['qosPolicyId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      dscpMark: map['dscpMark'] == null ? null : (map['dscpMark']! as int).input(),
+      qosPolicyId: map['qosPolicyId'] == null ? null : (map['qosPolicyId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

@@ -41,10 +41,10 @@ class AmlFilesystemRootSquashSettingsResponse {
 
   factory AmlFilesystemRootSquashSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AmlFilesystemRootSquashSettingsResponse(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      noSquashNidLists: map['noSquashNidLists'] == null ? null : (map['noSquashNidLists'] as String).input(),
-      squashGID: map['squashGID'] == null ? null : (map['squashGID'] as double).input(),
-      squashUID: map['squashUID'] == null ? null : (map['squashUID'] as double).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      noSquashNidLists: map['noSquashNidLists'] == null ? null : (map['noSquashNidLists']! as String).input(),
+      squashGID: map['squashGID'] == null ? null : (map['squashGID']! as double).input(),
+      squashUID: map['squashUID'] == null ? null : (map['squashUID']! as double).input(),
       status: (map['status'] as String).input(),
     );
   }

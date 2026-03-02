@@ -95,19 +95,19 @@ class NamespaceArgs {
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
-      identity: map['identity'] == null ? null : (IdentityInfo.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      inboundIpRules: map['inboundIpRules'] == null ? null : (pulumi.Input.decodeList<InboundIpRule>(map['inboundIpRules'], (value) => InboundIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      isZoneRedundant: map['isZoneRedundant'] == null ? null : (map['isZoneRedundant'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      minimumTlsVersionAllowed: map['minimumTlsVersionAllowed'] == null ? null : (map['minimumTlsVersionAllowed'] as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
-      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : ((map['privateEndpointConnections'] as List).cast<PrivateEndpointConnectionEventgrid>()).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      identity: map['identity'] == null ? null : (IdentityInfo.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      inboundIpRules: map['inboundIpRules'] == null ? null : (pulumi.Input.decodeList<InboundIpRule>(map['inboundIpRules']!, (value) => InboundIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isZoneRedundant: map['isZoneRedundant'] == null ? null : (map['isZoneRedundant']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      minimumTlsVersionAllowed: map['minimumTlsVersionAllowed'] == null ? null : (map['minimumTlsVersionAllowed']! as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
+      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : ((map['privateEndpointConnections']! as List).cast<PrivateEndpointConnectionEventgrid>()).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (NamespaceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      topicSpacesConfiguration: map['topicSpacesConfiguration'] == null ? null : (TopicSpacesConfiguration.fromMap((map['topicSpacesConfiguration'] as Map).cast<String, dynamic>())).input(),
-      topicsConfiguration: map['topicsConfiguration'] == null ? null : (TopicsConfiguration.fromMap((map['topicsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      sku: map['sku'] == null ? null : (NamespaceSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      topicSpacesConfiguration: map['topicSpacesConfiguration'] == null ? null : (TopicSpacesConfiguration.fromMap((map['topicSpacesConfiguration']! as Map).cast<String, dynamic>())).input(),
+      topicsConfiguration: map['topicsConfiguration'] == null ? null : (TopicsConfiguration.fromMap((map['topicsConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -130,20 +130,20 @@ class RouteArgs {
 
   factory RouteArgs.fromMap(Map<String, dynamic> map) {
     return RouteArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       destRange: (map['destRange'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       network: (map['network'] as String).input(),
-      nextHopGateway: map['nextHopGateway'] == null ? null : (map['nextHopGateway'] as String).input(),
-      nextHopIlb: map['nextHopIlb'] == null ? null : (map['nextHopIlb'] as String).input(),
-      nextHopInstance: map['nextHopInstance'] == null ? null : (map['nextHopInstance'] as String).input(),
-      nextHopInstanceZone: map['nextHopInstanceZone'] == null ? null : (map['nextHopInstanceZone'] as String).input(),
-      nextHopIp: map['nextHopIp'] == null ? null : (map['nextHopIp'] as String).input(),
-      nextHopVpnTunnel: map['nextHopVpnTunnel'] == null ? null : (map['nextHopVpnTunnel'] as String).input(),
-      params: map['params'] == null ? null : (RouteParams.fromMap((map['params'] as Map).cast<String, dynamic>())).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      nextHopGateway: map['nextHopGateway'] == null ? null : (map['nextHopGateway']! as String).input(),
+      nextHopIlb: map['nextHopIlb'] == null ? null : (map['nextHopIlb']! as String).input(),
+      nextHopInstance: map['nextHopInstance'] == null ? null : (map['nextHopInstance']! as String).input(),
+      nextHopInstanceZone: map['nextHopInstanceZone'] == null ? null : (map['nextHopInstanceZone']! as String).input(),
+      nextHopIp: map['nextHopIp'] == null ? null : (map['nextHopIp']! as String).input(),
+      nextHopVpnTunnel: map['nextHopVpnTunnel'] == null ? null : (map['nextHopVpnTunnel']! as String).input(),
+      params: map['params'] == null ? null : (RouteParams.fromMap((map['params']! as Map).cast<String, dynamic>())).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
     );
   }
 }

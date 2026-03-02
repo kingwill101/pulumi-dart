@@ -31,7 +31,7 @@ class WorkspaceCappingResponse {
 
   factory WorkspaceCappingResponse.fromMap(Map<String, dynamic> map) {
     return WorkspaceCappingResponse(
-      dailyQuotaGb: map['dailyQuotaGb'] == null ? null : (map['dailyQuotaGb'] as double).input(),
+      dailyQuotaGb: map['dailyQuotaGb'] == null ? null : (map['dailyQuotaGb']! as double).input(),
       dataIngestionStatus: (map['dataIngestionStatus'] as String).input(),
       quotaNextResetTime: (map['quotaNextResetTime'] as String).input(),
     );

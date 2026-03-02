@@ -30,9 +30,9 @@ class ConditionalAccessPolicyConditionsApplications {
 
   factory ConditionalAccessPolicyConditionsApplications.fromMap(Map<String, dynamic> map) {
     return ConditionalAccessPolicyConditionsApplications(
-      excludedApplications: map['excludedApplications'] == null ? null : ((map['excludedApplications'] as List).cast<String>()).input(),
-      includedApplications: map['includedApplications'] == null ? null : ((map['includedApplications'] as List).cast<String>()).input(),
-      includedUserActions: map['includedUserActions'] == null ? null : ((map['includedUserActions'] as List).cast<String>()).input(),
+      excludedApplications: map['excludedApplications'] == null ? null : ((map['excludedApplications']! as List).cast<String>()).input(),
+      includedApplications: map['includedApplications'] == null ? null : ((map['includedApplications']! as List).cast<String>()).input(),
+      includedUserActions: map['includedUserActions'] == null ? null : ((map['includedUserActions']! as List).cast<String>()).input(),
     );
   }
 }

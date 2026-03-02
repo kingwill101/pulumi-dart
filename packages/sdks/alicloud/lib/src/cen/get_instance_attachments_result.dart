@@ -57,13 +57,13 @@ class GetInstanceAttachmentsResult {
   factory GetInstanceAttachmentsResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceAttachmentsResult(
       attachments: pulumi.Input.decodeList<GetInstanceAttachmentsAttachment>(map['attachments'], (value) => GetInstanceAttachmentsAttachment.fromMap((value as Map).cast<String, dynamic>())),
-      childInstanceRegionId: map['childInstanceRegionId'] == null ? null : map['childInstanceRegionId'] as String,
-      childInstanceType: map['childInstanceType'] == null ? null : map['childInstanceType'] as String,
+      childInstanceRegionId: map['childInstanceRegionId'] == null ? null : map['childInstanceRegionId']! as String,
+      childInstanceType: map['childInstanceType'] == null ? null : map['childInstanceType']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

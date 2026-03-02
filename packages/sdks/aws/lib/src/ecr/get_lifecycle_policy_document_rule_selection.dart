@@ -52,10 +52,10 @@ class GetLifecyclePolicyDocumentRuleSelection {
     return GetLifecyclePolicyDocumentRuleSelection(
       countNumber: (map['countNumber'] as int).input(),
       countType: (map['countType'] as String).input(),
-      countUnit: map['countUnit'] == null ? null : (map['countUnit'] as String).input(),
-      storageClass: map['storageClass'] == null ? null : (map['storageClass'] as String).input(),
-      tagPatternLists: map['tagPatternLists'] == null ? null : ((map['tagPatternLists'] as List).cast<String>()).input(),
-      tagPrefixLists: map['tagPrefixLists'] == null ? null : ((map['tagPrefixLists'] as List).cast<String>()).input(),
+      countUnit: map['countUnit'] == null ? null : ((map['countUnit'] as String).input()).input(),
+      storageClass: map['storageClass'] == null ? null : ((map['storageClass'] as String).input()).input(),
+      tagPatternLists: map['tagPatternLists'] == null ? null : (((map['tagPatternLists'] as List).cast<String>()).input()).input(),
+      tagPrefixLists: map['tagPrefixLists'] == null ? null : (((map['tagPrefixLists'] as List).cast<String>()).input()).input(),
       tagStatus: (map['tagStatus'] as String).input(),
     );
   }

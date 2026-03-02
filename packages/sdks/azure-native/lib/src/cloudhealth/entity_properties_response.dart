@@ -85,19 +85,19 @@ class EntityPropertiesResponse {
 
   factory EntityPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EntityPropertiesResponse(
-      alerts: map['alerts'] == null ? null : (EntityAlertsResponse.fromMap((map['alerts'] as Map).cast<String, dynamic>())).input(),
-      canvasPosition: map['canvasPosition'] == null ? null : (EntityCoordinatesResponse.fromMap((map['canvasPosition'] as Map).cast<String, dynamic>())).input(),
+      alerts: map['alerts'] == null ? null : (EntityAlertsResponse.fromMap((map['alerts']! as Map).cast<String, dynamic>())).input(),
+      canvasPosition: map['canvasPosition'] == null ? null : (EntityCoordinatesResponse.fromMap((map['canvasPosition']! as Map).cast<String, dynamic>())).input(),
       deletionDate: (map['deletionDate'] as String).input(),
       discoveredBy: (map['discoveredBy'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      healthObjective: map['healthObjective'] == null ? null : (map['healthObjective'] as double).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      healthObjective: map['healthObjective'] == null ? null : (map['healthObjective']! as double).input(),
       healthState: (map['healthState'] as String).input(),
-      icon: map['icon'] == null ? null : (IconDefinitionResponse.fromMap((map['icon'] as Map).cast<String, dynamic>())).input(),
-      impact: map['impact'] == null ? null : (map['impact'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      icon: map['icon'] == null ? null : (IconDefinitionResponse.fromMap((map['icon']! as Map).cast<String, dynamic>())).input(),
+      impact: map['impact'] == null ? null : (map['impact']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      signals: map['signals'] == null ? null : (SignalGroupResponse.fromMap((map['signals'] as Map).cast<String, dynamic>())).input(),
+      signals: map['signals'] == null ? null : (SignalGroupResponse.fromMap((map['signals']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

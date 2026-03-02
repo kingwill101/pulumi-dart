@@ -96,21 +96,21 @@ class WafRuleArgs {
 
   factory WafRuleArgs.fromMap(Map<String, dynamic> map) {
     return WafRuleArgs(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      ccStatus: map['ccStatus'] == null ? null : (map['ccStatus'] as String).input(),
-      cnRegionList: map['cnRegionList'] == null ? null : (map['cnRegionList'] as String).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<WafRuleCondition>(map['conditions'], (value) => WafRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      effect: map['effect'] == null ? null : (map['effect'] as String).input(),
-      otherRegionList: map['otherRegionList'] == null ? null : (map['otherRegionList'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      ccStatus: map['ccStatus'] == null ? null : (map['ccStatus']! as String).input(),
+      cnRegionList: map['cnRegionList'] == null ? null : (map['cnRegionList']! as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<WafRuleCondition>(map['conditions']!, (value) => WafRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      effect: map['effect'] == null ? null : (map['effect']! as String).input(),
+      otherRegionList: map['otherRegionList'] == null ? null : (map['otherRegionList']! as String).input(),
       policyId: (map['policyId'] as String).input(),
-      rateLimit: map['rateLimit'] == null ? null : (WafRuleRateLimit.fromMap((map['rateLimit'] as Map).cast<String, dynamic>())).input(),
-      regularRules: map['regularRules'] == null ? null : ((map['regularRules'] as List).cast<String>()).input(),
-      regularTypes: map['regularTypes'] == null ? null : ((map['regularTypes'] as List).cast<String>()).input(),
-      remoteAddrs: map['remoteAddrs'] == null ? null : ((map['remoteAddrs'] as List).cast<String>()).input(),
+      rateLimit: map['rateLimit'] == null ? null : (WafRuleRateLimit.fromMap((map['rateLimit']! as Map).cast<String, dynamic>())).input(),
+      regularRules: map['regularRules'] == null ? null : ((map['regularRules']! as List).cast<String>()).input(),
+      regularTypes: map['regularTypes'] == null ? null : ((map['regularTypes']! as List).cast<String>()).input(),
+      remoteAddrs: map['remoteAddrs'] == null ? null : ((map['remoteAddrs']! as List).cast<String>()).input(),
       ruleName: (map['ruleName'] as String).input(),
-      scenes: map['scenes'] == null ? null : ((map['scenes'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      wafGroupIds: map['wafGroupIds'] == null ? null : (map['wafGroupIds'] as String).input(),
+      scenes: map['scenes'] == null ? null : ((map['scenes']! as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      wafGroupIds: map['wafGroupIds'] == null ? null : (map['wafGroupIds']! as String).input(),
     );
   }
 }

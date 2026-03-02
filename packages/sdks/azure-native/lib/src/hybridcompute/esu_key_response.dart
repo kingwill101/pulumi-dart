@@ -26,8 +26,8 @@ class EsuKeyResponse {
 
   factory EsuKeyResponse.fromMap(Map<String, dynamic> map) {
     return EsuKeyResponse(
-      licenseStatus: map['licenseStatus'] == null ? null : (map['licenseStatus'] as int).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      licenseStatus: map['licenseStatus'] == null ? null : (map['licenseStatus']! as int).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
     );
   }
 }

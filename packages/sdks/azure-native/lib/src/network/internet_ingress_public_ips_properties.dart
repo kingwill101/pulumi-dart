@@ -21,7 +21,7 @@ class InternetIngressPublicIpsProperties {
 
   factory InternetIngressPublicIpsProperties.fromMap(Map<String, dynamic> map) {
     return InternetIngressPublicIpsProperties(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

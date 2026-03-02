@@ -32,8 +32,8 @@ class FutureReservationTimeWindow {
 
   factory FutureReservationTimeWindow.fromMap(Map<String, dynamic> map) {
     return FutureReservationTimeWindow(
-      duration: map['duration'] == null ? null : (FutureReservationTimeWindowDuration.fromMap((map['duration'] as Map).cast<String, dynamic>())).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      duration: map['duration'] == null ? null : (FutureReservationTimeWindowDuration.fromMap((map['duration']! as Map).cast<String, dynamic>())).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
       startTime: (map['startTime'] as String).input(),
     );
   }

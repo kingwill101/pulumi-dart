@@ -29,8 +29,8 @@ class V2modelsSlotTypeSlotTypeValue {
 
   factory V2modelsSlotTypeSlotTypeValue.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotTypeSlotTypeValue(
-      sampleValues: map['sampleValues'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotTypeSlotTypeValueSampleValue>(map['sampleValues'], (value) => V2modelsSlotTypeSlotTypeValueSampleValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      synonyms: map['synonyms'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotTypeSlotTypeValueSynonym>(map['synonyms'], (value) => V2modelsSlotTypeSlotTypeValueSynonym.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sampleValues: map['sampleValues'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotTypeSlotTypeValueSampleValue>(map['sampleValues']!, (value) => V2modelsSlotTypeSlotTypeValueSampleValue.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      synonyms: map['synonyms'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotTypeSlotTypeValueSynonym>(map['synonyms']!, (value) => V2modelsSlotTypeSlotTypeValueSynonym.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -35,7 +35,7 @@ class SnapshotScheduleAssociationArgs {
   factory SnapshotScheduleAssociationArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotScheduleAssociationArgs(
       clusterIdentifier: (map['clusterIdentifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       scheduleIdentifier: (map['scheduleIdentifier'] as String).input(),
     );
   }

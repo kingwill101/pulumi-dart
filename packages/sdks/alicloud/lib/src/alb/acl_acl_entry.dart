@@ -33,9 +33,9 @@ class AclAclEntry {
 
   factory AclAclEntry.fromMap(Map<String, dynamic> map) {
     return AclAclEntry(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      entry: map['entry'] == null ? null : (map['entry'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      entry: map['entry'] == null ? null : (map['entry']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -47,8 +47,8 @@ class DynamicConfigurationVersionArgs {
     return DynamicConfigurationVersionArgs(
       configurationName: (map['configurationName'] as String).input(),
       dynamicConfigurationName: (map['dynamicConfigurationName'] as String).input(),
-      dynamicConfigurationVersionName: map['dynamicConfigurationVersionName'] == null ? null : (map['dynamicConfigurationVersionName'] as String).input(),
-      properties: map['properties'] == null ? null : (DynamicConfigurationVersionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      dynamicConfigurationVersionName: map['dynamicConfigurationVersionName'] == null ? null : (map['dynamicConfigurationVersionName']! as String).input(),
+      properties: map['properties'] == null ? null : (DynamicConfigurationVersionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

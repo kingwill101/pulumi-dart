@@ -80,17 +80,17 @@ class ReplicationConfigArgs {
 
   factory ReplicationConfigArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigArgs(
-      computeConfig: (ReplicationConfigComputeConfig.fromMap((map['computeConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      computeConfig: (ReplicationConfigComputeConfig.fromMap((map['computeConfig']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       replicationConfigIdentifier: (map['replicationConfigIdentifier'] as String).input(),
-      replicationSettings: map['replicationSettings'] == null ? null : (map['replicationSettings'] as String).input(),
+      replicationSettings: map['replicationSettings'] == null ? null : ((map['replicationSettings'] as String).input()).input(),
       replicationType: (map['replicationType'] as String).input(),
-      resourceIdentifier: map['resourceIdentifier'] == null ? null : (map['resourceIdentifier'] as String).input(),
+      resourceIdentifier: map['resourceIdentifier'] == null ? null : ((map['resourceIdentifier'] as String).input()).input(),
       sourceEndpointArn: (map['sourceEndpointArn'] as String).input(),
-      startReplication: map['startReplication'] == null ? null : (map['startReplication'] as bool).input(),
-      supplementalSettings: map['supplementalSettings'] == null ? null : (map['supplementalSettings'] as String).input(),
+      startReplication: map['startReplication'] == null ? null : ((map['startReplication'] as bool).input()).input(),
+      supplementalSettings: map['supplementalSettings'] == null ? null : ((map['supplementalSettings'] as String).input()).input(),
       tableMappings: (map['tableMappings'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       targetEndpointArn: (map['targetEndpointArn'] as String).input(),
     );
   }

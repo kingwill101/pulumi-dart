@@ -61,11 +61,11 @@ class PremiumMicrosoftDefenderForThreatIntelligenceArgs {
 
   factory PremiumMicrosoftDefenderForThreatIntelligenceArgs.fromMap(Map<String, dynamic> map) {
     return PremiumMicrosoftDefenderForThreatIntelligenceArgs(
-      dataConnectorId: map['dataConnectorId'] == null ? null : (map['dataConnectorId'] as String).input(),
+      dataConnectorId: map['dataConnectorId'] == null ? null : (map['dataConnectorId']! as String).input(),
       dataTypes: (PremiumMdtiDataConnectorDataTypes.fromMap((map['dataTypes'] as Map).cast<String, dynamic>())).input(),
       kind: (map['kind'] as String).input(),
       lookbackPeriod: (map['lookbackPeriod'] as String).input(),
-      requiredSKUsPresent: map['requiredSKUsPresent'] == null ? null : (map['requiredSKUsPresent'] as bool).input(),
+      requiredSKUsPresent: map['requiredSKUsPresent'] == null ? null : (map['requiredSKUsPresent']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       tenantId: (map['tenantId'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),

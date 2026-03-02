@@ -33,9 +33,9 @@ class IdcApplicationServiceIntegration {
 
   factory IdcApplicationServiceIntegration.fromMap(Map<String, dynamic> map) {
     return IdcApplicationServiceIntegration(
-      lakeFormation: map['lakeFormation'] == null ? null : (IdcApplicationServiceIntegrationLakeFormation.fromMap((map['lakeFormation'] as Map).cast<String, dynamic>())).input(),
-      redshift: map['redshift'] == null ? null : (IdcApplicationServiceIntegrationRedshift.fromMap((map['redshift'] as Map).cast<String, dynamic>())).input(),
-      s3AccessGrants: map['s3AccessGrants'] == null ? null : (IdcApplicationServiceIntegrationS3AccessGrants.fromMap((map['s3AccessGrants'] as Map).cast<String, dynamic>())).input(),
+      lakeFormation: map['lakeFormation'] == null ? null : ((IdcApplicationServiceIntegrationLakeFormation.fromMap((map['lakeFormation']! as Map).cast<String, dynamic>())).input()).input(),
+      redshift: map['redshift'] == null ? null : ((IdcApplicationServiceIntegrationRedshift.fromMap((map['redshift']! as Map).cast<String, dynamic>())).input()).input(),
+      s3AccessGrants: map['s3AccessGrants'] == null ? null : ((IdcApplicationServiceIntegrationS3AccessGrants.fromMap((map['s3AccessGrants']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

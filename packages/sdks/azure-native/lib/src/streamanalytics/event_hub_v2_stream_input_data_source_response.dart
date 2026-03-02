@@ -52,12 +52,12 @@ class EventHubV2StreamInputDataSourceResponse {
 
   factory EventHubV2StreamInputDataSourceResponse.fromMap(Map<String, dynamic> map) {
     return EventHubV2StreamInputDataSourceResponse(
-      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
-      consumerGroupName: map['consumerGroupName'] == null ? null : (map['consumerGroupName'] as String).input(),
-      eventHubName: map['eventHubName'] == null ? null : (map['eventHubName'] as String).input(),
-      serviceBusNamespace: map['serviceBusNamespace'] == null ? null : (map['serviceBusNamespace'] as String).input(),
-      sharedAccessPolicyKey: map['sharedAccessPolicyKey'] == null ? null : (map['sharedAccessPolicyKey'] as String).input(),
-      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : (map['sharedAccessPolicyName'] as String).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode']! as String).input(),
+      consumerGroupName: map['consumerGroupName'] == null ? null : (map['consumerGroupName']! as String).input(),
+      eventHubName: map['eventHubName'] == null ? null : (map['eventHubName']! as String).input(),
+      serviceBusNamespace: map['serviceBusNamespace'] == null ? null : (map['serviceBusNamespace']! as String).input(),
+      sharedAccessPolicyKey: map['sharedAccessPolicyKey'] == null ? null : (map['sharedAccessPolicyKey']! as String).input(),
+      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : (map['sharedAccessPolicyName']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

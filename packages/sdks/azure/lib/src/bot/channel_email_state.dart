@@ -46,12 +46,12 @@ class ChannelEmailState {
 
   factory ChannelEmailState.fromMap(Map<String, dynamic> map) {
     return ChannelEmailState(
-      botName: map['botName'] == null ? null : (map['botName'] as String).input(),
-      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress'] as String).input(),
-      emailPassword: map['emailPassword'] == null ? null : (map['emailPassword'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      magicCode: map['magicCode'] == null ? null : (map['magicCode'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      botName: map['botName'] == null ? null : (map['botName']! as String).input(),
+      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress']! as String).input(),
+      emailPassword: map['emailPassword'] == null ? null : (map['emailPassword']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      magicCode: map['magicCode'] == null ? null : (map['magicCode']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

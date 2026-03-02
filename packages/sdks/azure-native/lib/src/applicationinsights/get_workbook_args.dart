@@ -34,7 +34,7 @@ class GetWorkbookArgs {
 
   factory GetWorkbookArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkbookArgs(
-      canFetchContent: map['canFetchContent'] == null ? null : (map['canFetchContent'] as bool).input(),
+      canFetchContent: map['canFetchContent'] == null ? null : (map['canFetchContent']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
     );

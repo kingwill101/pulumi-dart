@@ -30,9 +30,9 @@ class ConfigurationStoreSecondaryReadKey {
 
   factory ConfigurationStoreSecondaryReadKey.fromMap(Map<String, dynamic> map) {
     return ConfigurationStoreSecondaryReadKey(
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      secret: map['secret'] == null ? null : (map['secret']! as String).input(),
     );
   }
 }

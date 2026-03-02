@@ -43,8 +43,8 @@ class FhirServiceCors {
       allowedHeaders: ((map['allowedHeaders'] as List).cast<String>()).input(),
       allowedMethods: ((map['allowedMethods'] as List).cast<String>()).input(),
       allowedOrigins: ((map['allowedOrigins'] as List).cast<String>()).input(),
-      credentialsAllowed: map['credentialsAllowed'] == null ? null : (map['credentialsAllowed'] as bool).input(),
-      maxAgeInSeconds: map['maxAgeInSeconds'] == null ? null : (map['maxAgeInSeconds'] as int).input(),
+      credentialsAllowed: map['credentialsAllowed'] == null ? null : (map['credentialsAllowed']! as bool).input(),
+      maxAgeInSeconds: map['maxAgeInSeconds'] == null ? null : (map['maxAgeInSeconds']! as int).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class LaunchTemplate {
 
   factory LaunchTemplate.fromMap(Map<String, dynamic> map) {
     return LaunchTemplate(
-      launchTemplateSpecification: map['launchTemplateSpecification'] == null ? null : (LaunchTemplateSpecification.fromMap((map['launchTemplateSpecification'] as Map).cast<String, dynamic>())).input(),
-      overrides: map['overrides'] == null ? null : (pulumi.Input.decodeList<LaunchTemplateOverrides>(map['overrides'], (value) => LaunchTemplateOverrides.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      launchTemplateSpecification: map['launchTemplateSpecification'] == null ? null : (LaunchTemplateSpecification.fromMap((map['launchTemplateSpecification']! as Map).cast<String, dynamic>())).input(),
+      overrides: map['overrides'] == null ? null : (pulumi.Input.decodeList<LaunchTemplateOverrides>(map['overrides']!, (value) => LaunchTemplateOverrides.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

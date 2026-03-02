@@ -20,7 +20,7 @@ class WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody {
 
   factory WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody(
-      oversizeHandling: map['oversizeHandling'] == null ? null : (map['oversizeHandling'] as String).input(),
+      oversizeHandling: map['oversizeHandling'] == null ? null : ((map['oversizeHandling'] as String).input()).input(),
     );
   }
 }

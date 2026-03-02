@@ -30,7 +30,7 @@ class SqlInjectionMatchSetSqlInjectionMatchTuple {
 
   factory SqlInjectionMatchSetSqlInjectionMatchTuple.fromMap(Map<String, dynamic> map) {
     return SqlInjectionMatchSetSqlInjectionMatchTuple(
-      fieldToMatch: (SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>())).input(),
+      fieldToMatch: (SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input(),
       textTransformation: (map['textTransformation'] as String).input(),
     );
   }

@@ -45,11 +45,11 @@ class ConfigurationProfileArgs {
 
   factory ConfigurationProfileArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationProfileArgs(
-      configurationProfileName: map['configurationProfileName'] == null ? null : (map['configurationProfileName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (ConfigurationProfileProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      configurationProfileName: map['configurationProfileName'] == null ? null : (map['configurationProfileName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (ConfigurationProfileProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

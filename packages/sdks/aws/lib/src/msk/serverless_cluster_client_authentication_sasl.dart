@@ -21,7 +21,7 @@ class ServerlessClusterClientAuthenticationSasl {
 
   factory ServerlessClusterClientAuthenticationSasl.fromMap(Map<String, dynamic> map) {
     return ServerlessClusterClientAuthenticationSasl(
-      iam: (ServerlessClusterClientAuthenticationSaslIam.fromMap((map['iam'] as Map).cast<String, dynamic>())).input(),
+      iam: (ServerlessClusterClientAuthenticationSaslIam.fromMap((map['iam']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

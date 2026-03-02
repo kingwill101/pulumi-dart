@@ -26,8 +26,8 @@ class NFS {
 
   factory NFS.fromMap(Map<String, dynamic> map) {
     return NFS(
-      remotePath: map['remotePath'] == null ? null : (map['remotePath'] as String).input(),
-      server: map['server'] == null ? null : (map['server'] as String).input(),
+      remotePath: map['remotePath'] == null ? null : (map['remotePath']! as String).input(),
+      server: map['server'] == null ? null : (map['server']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class ClusterAutoTerminationPolicy {
 
   factory ClusterAutoTerminationPolicy.fromMap(Map<String, dynamic> map) {
     return ClusterAutoTerminationPolicy(
-      idleTimeout: map['idleTimeout'] == null ? null : (map['idleTimeout'] as int).input(),
+      idleTimeout: map['idleTimeout'] == null ? null : ((map['idleTimeout'] as int).input()).input(),
     );
   }
 }

@@ -76,18 +76,18 @@ class AccountState {
 
   factory AccountState.fromMap(Map<String, dynamic> map) {
     return AccountState(
-      accountDescription: map['accountDescription'] == null ? null : (map['accountDescription'] as String).input(),
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword'] as String).input(),
-      allowDatabases: map['allowDatabases'] == null ? null : (map['allowDatabases'] as String).input(),
-      allowDictionaries: map['allowDictionaries'] == null ? null : (map['allowDictionaries'] as String).input(),
-      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId'] as String).input(),
-      ddlAuthority: map['ddlAuthority'] == null ? null : (map['ddlAuthority'] as bool).input(),
-      dmlAuthority: map['dmlAuthority'] == null ? null : (map['dmlAuthority'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      totalDatabases: map['totalDatabases'] == null ? null : (map['totalDatabases'] as String).input(),
-      totalDictionaries: map['totalDictionaries'] == null ? null : (map['totalDictionaries'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      accountDescription: map['accountDescription'] == null ? null : (map['accountDescription']! as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword']! as String).input(),
+      allowDatabases: map['allowDatabases'] == null ? null : (map['allowDatabases']! as String).input(),
+      allowDictionaries: map['allowDictionaries'] == null ? null : (map['allowDictionaries']! as String).input(),
+      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId']! as String).input(),
+      ddlAuthority: map['ddlAuthority'] == null ? null : (map['ddlAuthority']! as bool).input(),
+      dmlAuthority: map['dmlAuthority'] == null ? null : (map['dmlAuthority']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      totalDatabases: map['totalDatabases'] == null ? null : (map['totalDatabases']! as String).input(),
+      totalDictionaries: map['totalDictionaries'] == null ? null : (map['totalDictionaries']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

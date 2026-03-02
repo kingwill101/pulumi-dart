@@ -50,12 +50,12 @@ class AdministrativeUnitState {
 
   factory AdministrativeUnitState.fromMap(Map<String, dynamic> map) {
     return AdministrativeUnitState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      hiddenMembershipEnabled: map['hiddenMembershipEnabled'] == null ? null : (map['hiddenMembershipEnabled'] as bool).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      preventDuplicateNames: map['preventDuplicateNames'] == null ? null : (map['preventDuplicateNames'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      hiddenMembershipEnabled: map['hiddenMembershipEnabled'] == null ? null : (map['hiddenMembershipEnabled']! as bool).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      preventDuplicateNames: map['preventDuplicateNames'] == null ? null : (map['preventDuplicateNames']! as bool).input(),
     );
   }
 }

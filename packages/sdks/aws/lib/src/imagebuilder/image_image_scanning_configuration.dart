@@ -26,8 +26,8 @@ class ImageImageScanningConfiguration {
 
   factory ImageImageScanningConfiguration.fromMap(Map<String, dynamic> map) {
     return ImageImageScanningConfiguration(
-      ecrConfiguration: map['ecrConfiguration'] == null ? null : (ImageImageScanningConfigurationEcrConfiguration.fromMap((map['ecrConfiguration'] as Map).cast<String, dynamic>())).input(),
-      imageScanningEnabled: map['imageScanningEnabled'] == null ? null : (map['imageScanningEnabled'] as bool).input(),
+      ecrConfiguration: map['ecrConfiguration'] == null ? null : ((ImageImageScanningConfigurationEcrConfiguration.fromMap((map['ecrConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      imageScanningEnabled: map['imageScanningEnabled'] == null ? null : ((map['imageScanningEnabled'] as bool).input()).input(),
     );
   }
 }

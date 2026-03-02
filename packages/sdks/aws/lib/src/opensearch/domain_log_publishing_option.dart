@@ -31,7 +31,7 @@ class DomainLogPublishingOption {
   factory DomainLogPublishingOption.fromMap(Map<String, dynamic> map) {
     return DomainLogPublishingOption(
       cloudwatchLogGroupArn: (map['cloudwatchLogGroupArn'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
       logType: (map['logType'] as String).input(),
     );
   }

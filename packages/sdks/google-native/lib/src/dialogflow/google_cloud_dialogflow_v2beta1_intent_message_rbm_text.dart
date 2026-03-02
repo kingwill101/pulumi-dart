@@ -27,7 +27,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmText {
 
   factory GoogleCloudDialogflowV2beta1IntentMessageRbmText.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageRbmText(
-      rbmSuggestion: map['rbmSuggestion'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>(map['rbmSuggestion'], (value) => GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rbmSuggestion: map['rbmSuggestion'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>(map['rbmSuggestion']!, (value) => GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion.fromMap((value as Map).cast<String, dynamic>()))).input(),
       text: (map['text'] as String).input(),
     );
   }

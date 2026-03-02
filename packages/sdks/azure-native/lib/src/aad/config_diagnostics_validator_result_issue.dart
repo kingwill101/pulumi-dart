@@ -26,8 +26,8 @@ class ConfigDiagnosticsValidatorResultIssue {
 
   factory ConfigDiagnosticsValidatorResultIssue.fromMap(Map<String, dynamic> map) {
     return ConfigDiagnosticsValidatorResultIssue(
-      descriptionParams: map['descriptionParams'] == null ? null : ((map['descriptionParams'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      descriptionParams: map['descriptionParams'] == null ? null : ((map['descriptionParams']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

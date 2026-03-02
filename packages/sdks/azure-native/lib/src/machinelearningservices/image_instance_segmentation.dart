@@ -82,16 +82,16 @@ class ImageInstanceSegmentation {
   factory ImageInstanceSegmentation.fromMap(Map<String, dynamic> map) {
     return ImageInstanceSegmentation(
       limitSettings: (ImageLimitSettings.fromMap((map['limitSettings'] as Map).cast<String, dynamic>())).input(),
-      logVerbosity: map['logVerbosity'] == null ? null : (map['logVerbosity'] as String).input(),
-      modelSettings: map['modelSettings'] == null ? null : (ImageModelSettingsObjectDetection.fromMap((map['modelSettings'] as Map).cast<String, dynamic>())).input(),
-      primaryMetric: map['primaryMetric'] == null ? null : (map['primaryMetric'] as String).input(),
-      searchSpace: map['searchSpace'] == null ? null : (pulumi.Input.decodeList<ImageModelDistributionSettingsObjectDetection>(map['searchSpace'], (value) => ImageModelDistributionSettingsObjectDetection.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sweepSettings: map['sweepSettings'] == null ? null : (ImageSweepSettings.fromMap((map['sweepSettings'] as Map).cast<String, dynamic>())).input(),
-      targetColumnName: map['targetColumnName'] == null ? null : (map['targetColumnName'] as String).input(),
+      logVerbosity: map['logVerbosity'] == null ? null : (map['logVerbosity']! as String).input(),
+      modelSettings: map['modelSettings'] == null ? null : (ImageModelSettingsObjectDetection.fromMap((map['modelSettings']! as Map).cast<String, dynamic>())).input(),
+      primaryMetric: map['primaryMetric'] == null ? null : (map['primaryMetric']! as String).input(),
+      searchSpace: map['searchSpace'] == null ? null : (pulumi.Input.decodeList<ImageModelDistributionSettingsObjectDetection>(map['searchSpace']!, (value) => ImageModelDistributionSettingsObjectDetection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sweepSettings: map['sweepSettings'] == null ? null : (ImageSweepSettings.fromMap((map['sweepSettings']! as Map).cast<String, dynamic>())).input(),
+      targetColumnName: map['targetColumnName'] == null ? null : (map['targetColumnName']! as String).input(),
       taskType: (map['taskType'] as String).input(),
       trainingData: (MLTableJobInput.fromMap((map['trainingData'] as Map).cast<String, dynamic>())).input(),
-      validationData: map['validationData'] == null ? null : (MLTableJobInput.fromMap((map['validationData'] as Map).cast<String, dynamic>())).input(),
-      validationDataSize: map['validationDataSize'] == null ? null : (map['validationDataSize'] as double).input(),
+      validationData: map['validationData'] == null ? null : (MLTableJobInput.fromMap((map['validationData']! as Map).cast<String, dynamic>())).input(),
+      validationDataSize: map['validationDataSize'] == null ? null : (map['validationDataSize']! as double).input(),
     );
   }
 }

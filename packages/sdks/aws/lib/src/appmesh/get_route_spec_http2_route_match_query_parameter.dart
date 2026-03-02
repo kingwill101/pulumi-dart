@@ -25,7 +25,7 @@ class GetRouteSpecHttp2RouteMatchQueryParameter {
 
   factory GetRouteSpecHttp2RouteMatchQueryParameter.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecHttp2RouteMatchQueryParameter(
-      matches: (pulumi.Input.decodeList<GetRouteSpecHttp2RouteMatchQueryParameterMatch>(map['matches'], (value) => GetRouteSpecHttp2RouteMatchQueryParameterMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matches: (pulumi.Input.decodeList<GetRouteSpecHttp2RouteMatchQueryParameterMatch>(map['matches']!, (value) => GetRouteSpecHttp2RouteMatchQueryParameterMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
     );
   }

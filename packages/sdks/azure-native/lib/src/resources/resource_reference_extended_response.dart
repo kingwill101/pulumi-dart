@@ -27,7 +27,7 @@ class ResourceReferenceExtendedResponse {
 
   factory ResourceReferenceExtendedResponse.fromMap(Map<String, dynamic> map) {
     return ResourceReferenceExtendedResponse(
-      error: map['error'] == null ? null : (ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      error: map['error'] == null ? null : (ErrorDetailResponse.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
       id: (map['id'] as String).input(),
     );
   }

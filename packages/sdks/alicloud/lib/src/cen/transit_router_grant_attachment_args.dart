@@ -48,7 +48,7 @@ class TransitRouterGrantAttachmentArgs {
       cenOwnerId: (map['cenOwnerId'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
       instanceType: (map['instanceType'] as String).input(),
-      orderType: map['orderType'] == null ? null : (map['orderType'] as String).input(),
+      orderType: map['orderType'] == null ? null : (map['orderType']! as String).input(),
     );
   }
 }

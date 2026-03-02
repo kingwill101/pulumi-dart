@@ -33,7 +33,7 @@ class GetDataExchangeIamPolicyArgs {
     return GetDataExchangeIamPolicyArgs(
       dataExchangeId: (map['dataExchangeId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -83,19 +83,19 @@ class LbState {
 
   factory LbState.fromMap(Map<String, dynamic> map) {
     return LbState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
-      healthCheckPath: map['healthCheckPath'] == null ? null : (map['healthCheckPath'] as String).input(),
-      instancePort: map['instancePort'] == null ? null : (map['instancePort'] as int).input(),
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      publicPorts: map['publicPorts'] == null ? null : ((map['publicPorts'] as List).cast<int>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      supportCode: map['supportCode'] == null ? null : (map['supportCode'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
+      dnsName: map['dnsName'] == null ? null : ((map['dnsName'] as String).input()).input(),
+      healthCheckPath: map['healthCheckPath'] == null ? null : ((map['healthCheckPath'] as String).input()).input(),
+      instancePort: map['instancePort'] == null ? null : ((map['instancePort'] as int).input()).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : ((map['ipAddressType'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      protocol: map['protocol'] == null ? null : ((map['protocol'] as String).input()).input(),
+      publicPorts: map['publicPorts'] == null ? null : (((map['publicPorts'] as List).cast<int>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      supportCode: map['supportCode'] == null ? null : ((map['supportCode'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

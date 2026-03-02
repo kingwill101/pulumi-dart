@@ -47,12 +47,12 @@ class RepositoryCleanupPolicyCondition {
 
   factory RepositoryCleanupPolicyCondition.fromMap(Map<String, dynamic> map) {
     return RepositoryCleanupPolicyCondition(
-      newerThan: map['newerThan'] == null ? null : (map['newerThan'] as String).input(),
-      olderThan: map['olderThan'] == null ? null : (map['olderThan'] as String).input(),
-      packageNamePrefixes: map['packageNamePrefixes'] == null ? null : ((map['packageNamePrefixes'] as List).cast<String>()).input(),
-      tagPrefixes: map['tagPrefixes'] == null ? null : ((map['tagPrefixes'] as List).cast<String>()).input(),
-      tagState: map['tagState'] == null ? null : (map['tagState'] as String).input(),
-      versionNamePrefixes: map['versionNamePrefixes'] == null ? null : ((map['versionNamePrefixes'] as List).cast<String>()).input(),
+      newerThan: map['newerThan'] == null ? null : (map['newerThan']! as String).input(),
+      olderThan: map['olderThan'] == null ? null : (map['olderThan']! as String).input(),
+      packageNamePrefixes: map['packageNamePrefixes'] == null ? null : ((map['packageNamePrefixes']! as List).cast<String>()).input(),
+      tagPrefixes: map['tagPrefixes'] == null ? null : ((map['tagPrefixes']! as List).cast<String>()).input(),
+      tagState: map['tagState'] == null ? null : (map['tagState']! as String).input(),
+      versionNamePrefixes: map['versionNamePrefixes'] == null ? null : ((map['versionNamePrefixes']! as List).cast<String>()).input(),
     );
   }
 }

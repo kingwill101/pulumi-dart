@@ -27,7 +27,7 @@ class ResourceInfoDefinitionResponse {
   factory ResourceInfoDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return ResourceInfoDefinitionResponse(
       method: (map['method'] as String).input(),
-      topics: map['topics'] == null ? null : ((map['topics'] as List).cast<String>()).input(),
+      topics: map['topics'] == null ? null : ((map['topics']! as List).cast<String>()).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class SourceContext {
 
   factory SourceContext.fromMap(Map<String, dynamic> map) {
     return SourceContext(
-      cloudRepo: map['cloudRepo'] == null ? null : (CloudRepoSourceContext.fromMap((map['cloudRepo'] as Map).cast<String, dynamic>())).input(),
-      gerrit: map['gerrit'] == null ? null : (GerritSourceContext.fromMap((map['gerrit'] as Map).cast<String, dynamic>())).input(),
-      git: map['git'] == null ? null : (GitSourceContext.fromMap((map['git'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      cloudRepo: map['cloudRepo'] == null ? null : (CloudRepoSourceContext.fromMap((map['cloudRepo']! as Map).cast<String, dynamic>())).input(),
+      gerrit: map['gerrit'] == null ? null : (GerritSourceContext.fromMap((map['gerrit']! as Map).cast<String, dynamic>())).input(),
+      git: map['git'] == null ? null : (GitSourceContext.fromMap((map['git']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
     );
   }
 }

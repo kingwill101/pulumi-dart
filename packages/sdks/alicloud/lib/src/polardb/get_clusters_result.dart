@@ -60,14 +60,14 @@ class GetClustersResult {
   factory GetClustersResult.fromMap(Map<String, dynamic> map) {
     return GetClustersResult(
       clusters: pulumi.Input.decodeList<GetClustersCluster>(map['clusters'], (value) => GetClustersCluster.fromMap((value as Map).cast<String, dynamic>())),
-      dbType: map['dbType'] == null ? null : map['dbType'] as String,
-      descriptionRegex: map['descriptionRegex'] == null ? null : map['descriptionRegex'] as String,
+      dbType: map['dbType'] == null ? null : map['dbType']! as String,
+      descriptionRegex: map['descriptionRegex'] == null ? null : map['descriptionRegex']! as String,
       descriptions: (map['descriptions'] as List).cast<String>(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

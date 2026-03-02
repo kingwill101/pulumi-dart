@@ -65,15 +65,15 @@ class AuthorizationArgs {
 
   factory AuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizationArgs(
-      authorizationId: map['authorizationId'] == null ? null : (map['authorizationId'] as String).input(),
+      authorizationId: map['authorizationId'] == null ? null : (map['authorizationId']! as String).input(),
       authorizationProviderId: (map['authorizationProviderId'] as String).input(),
-      authorizationType: map['authorizationType'] == null ? null : (map['authorizationType'] as String).input(),
-      error: map['error'] == null ? null : (AuthorizationError.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
-      oAuth2GrantType: map['oAuth2GrantType'] == null ? null : (map['oAuth2GrantType'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      authorizationType: map['authorizationType'] == null ? null : (map['authorizationType']! as String).input(),
+      error: map['error'] == null ? null : (AuthorizationError.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
+      oAuth2GrantType: map['oAuth2GrantType'] == null ? null : (map['oAuth2GrantType']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

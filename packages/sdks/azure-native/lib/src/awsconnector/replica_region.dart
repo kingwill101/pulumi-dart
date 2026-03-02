@@ -26,8 +26,8 @@ class ReplicaRegion {
 
   factory ReplicaRegion.fromMap(Map<String, dynamic> map) {
     return ReplicaRegion(
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

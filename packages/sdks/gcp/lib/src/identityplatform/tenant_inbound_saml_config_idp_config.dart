@@ -39,7 +39,7 @@ class TenantInboundSamlConfigIdpConfig {
     return TenantInboundSamlConfigIdpConfig(
       idpCertificates: (pulumi.Input.decodeList<TenantInboundSamlConfigIdpConfigIdpCertificate>(map['idpCertificates'], (value) => TenantInboundSamlConfigIdpConfigIdpCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
       idpEntityId: (map['idpEntityId'] as String).input(),
-      signRequest: map['signRequest'] == null ? null : (map['signRequest'] as bool).input(),
+      signRequest: map['signRequest'] == null ? null : (map['signRequest']! as bool).input(),
       ssoUrl: (map['ssoUrl'] as String).input(),
     );
   }

@@ -55,13 +55,13 @@ class HttpRouteRuleComputeV1 {
 
   factory HttpRouteRuleComputeV1.fromMap(Map<String, dynamic> map) {
     return HttpRouteRuleComputeV1(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      headerAction: map['headerAction'] == null ? null : (HttpHeaderActionComputeV1.fromMap((map['headerAction'] as Map).cast<String, dynamic>())).input(),
-      matchRules: map['matchRules'] == null ? null : (pulumi.Input.decodeList<HttpRouteRuleMatchComputeV1>(map['matchRules'], (value) => HttpRouteRuleMatchComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      routeAction: map['routeAction'] == null ? null : (HttpRouteActionComputeV1.fromMap((map['routeAction'] as Map).cast<String, dynamic>())).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      urlRedirect: map['urlRedirect'] == null ? null : (HttpRedirectActionComputeV1.fromMap((map['urlRedirect'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      headerAction: map['headerAction'] == null ? null : (HttpHeaderActionComputeV1.fromMap((map['headerAction']! as Map).cast<String, dynamic>())).input(),
+      matchRules: map['matchRules'] == null ? null : (pulumi.Input.decodeList<HttpRouteRuleMatchComputeV1>(map['matchRules']!, (value) => HttpRouteRuleMatchComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      routeAction: map['routeAction'] == null ? null : (HttpRouteActionComputeV1.fromMap((map['routeAction']! as Map).cast<String, dynamic>())).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      urlRedirect: map['urlRedirect'] == null ? null : (HttpRedirectActionComputeV1.fromMap((map['urlRedirect']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -69,16 +69,16 @@ class WebhookArgs {
 
   factory WebhookArgs.fromMap(Map<String, dynamic> map) {
     return WebhookArgs(
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      enableSslVerification: map['enableSslVerification'] == null ? null : (map['enableSslVerification'] as String).input(),
-      events: map['events'] == null ? null : ((map['events'] as List).cast<String>()).input(),
-      payloadUrl: map['payloadUrl'] == null ? null : (map['payloadUrl'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      enableSslVerification: map['enableSslVerification'] == null ? null : (map['enableSslVerification']! as String).input(),
+      events: map['events'] == null ? null : ((map['events']! as List).cast<String>()).input(),
+      payloadUrl: map['payloadUrl'] == null ? null : (map['payloadUrl']! as String).input(),
       reportName: (map['reportName'] as String).input(),
-      sendAllEvents: map['sendAllEvents'] == null ? null : (map['sendAllEvents'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      updateWebhookKey: map['updateWebhookKey'] == null ? null : (map['updateWebhookKey'] as String).input(),
-      webhookKey: map['webhookKey'] == null ? null : (map['webhookKey'] as String).input(),
-      webhookName: map['webhookName'] == null ? null : (map['webhookName'] as String).input(),
+      sendAllEvents: map['sendAllEvents'] == null ? null : (map['sendAllEvents']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      updateWebhookKey: map['updateWebhookKey'] == null ? null : (map['updateWebhookKey']! as String).input(),
+      webhookKey: map['webhookKey'] == null ? null : (map['webhookKey']! as String).input(),
+      webhookName: map['webhookName'] == null ? null : (map['webhookName']! as String).input(),
     );
   }
 }

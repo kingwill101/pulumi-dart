@@ -31,9 +31,9 @@ class ConfigManagementHierarchyControllerConfigGkehubV1beta {
 
   factory ConfigManagementHierarchyControllerConfigGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return ConfigManagementHierarchyControllerConfigGkehubV1beta(
-      enableHierarchicalResourceQuota: map['enableHierarchicalResourceQuota'] == null ? null : (map['enableHierarchicalResourceQuota'] as bool).input(),
-      enablePodTreeLabels: map['enablePodTreeLabels'] == null ? null : (map['enablePodTreeLabels'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enableHierarchicalResourceQuota: map['enableHierarchicalResourceQuota'] == null ? null : (map['enableHierarchicalResourceQuota']! as bool).input(),
+      enablePodTreeLabels: map['enablePodTreeLabels'] == null ? null : (map['enablePodTreeLabels']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

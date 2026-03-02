@@ -32,8 +32,8 @@ class BillingHubGetUsageRequestResponse {
   factory BillingHubGetUsageRequestResponse.fromMap(Map<String, dynamic> map) {
     return BillingHubGetUsageRequestResponse(
       endTimeStamp: (map['endTimeStamp'] as String).input(),
-      pageIndex: map['pageIndex'] == null ? null : (map['pageIndex'] as int).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
+      pageIndex: map['pageIndex'] == null ? null : (map['pageIndex']! as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
       startTimeStamp: (map['startTimeStamp'] as String).input(),
     );
   }

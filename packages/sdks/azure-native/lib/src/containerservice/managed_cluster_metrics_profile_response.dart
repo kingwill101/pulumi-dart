@@ -22,7 +22,7 @@ class ManagedClusterMetricsProfileResponse {
 
   factory ManagedClusterMetricsProfileResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterMetricsProfileResponse(
-      costAnalysis: map['costAnalysis'] == null ? null : (ManagedClusterCostAnalysisResponse.fromMap((map['costAnalysis'] as Map).cast<String, dynamic>())).input(),
+      costAnalysis: map['costAnalysis'] == null ? null : (ManagedClusterCostAnalysisResponse.fromMap((map['costAnalysis']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

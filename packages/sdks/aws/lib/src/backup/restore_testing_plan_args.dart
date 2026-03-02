@@ -54,13 +54,13 @@ class RestoreTestingPlanArgs {
 
   factory RestoreTestingPlanArgs.fromMap(Map<String, dynamic> map) {
     return RestoreTestingPlanArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recoveryPointSelection: (RestoreTestingPlanRecoveryPointSelection.fromMap((map['recoveryPointSelection'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      recoveryPointSelection: (RestoreTestingPlanRecoveryPointSelection.fromMap((map['recoveryPointSelection']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       scheduleExpression: (map['scheduleExpression'] as String).input(),
-      scheduleExpressionTimezone: map['scheduleExpressionTimezone'] == null ? null : (map['scheduleExpressionTimezone'] as String).input(),
-      startWindowHours: map['startWindowHours'] == null ? null : (map['startWindowHours'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      scheduleExpressionTimezone: map['scheduleExpressionTimezone'] == null ? null : ((map['scheduleExpressionTimezone'] as String).input()).input(),
+      startWindowHours: map['startWindowHours'] == null ? null : ((map['startWindowHours'] as int).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

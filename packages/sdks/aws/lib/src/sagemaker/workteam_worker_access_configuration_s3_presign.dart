@@ -21,7 +21,7 @@ class WorkteamWorkerAccessConfigurationS3Presign {
 
   factory WorkteamWorkerAccessConfigurationS3Presign.fromMap(Map<String, dynamic> map) {
     return WorkteamWorkerAccessConfigurationS3Presign(
-      iamPolicyConstraints: map['iamPolicyConstraints'] == null ? null : (WorkteamWorkerAccessConfigurationS3PresignIamPolicyConstraints.fromMap((map['iamPolicyConstraints'] as Map).cast<String, dynamic>())).input(),
+      iamPolicyConstraints: map['iamPolicyConstraints'] == null ? null : ((WorkteamWorkerAccessConfigurationS3PresignIamPolicyConstraints.fromMap((map['iamPolicyConstraints']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -65,10 +65,10 @@ class ClusterIAMBindingArgs {
   factory ClusterIAMBindingArgs.fromMap(Map<String, dynamic> map) {
     return ClusterIAMBindingArgs(
       cluster: (map['cluster'] as String).input(),
-      condition: map['condition'] == null ? null : (ClusterIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (ClusterIAMBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       members: ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

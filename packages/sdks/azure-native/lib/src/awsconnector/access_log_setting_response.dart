@@ -26,8 +26,8 @@ class AccessLogSettingResponse {
 
   factory AccessLogSettingResponse.fromMap(Map<String, dynamic> map) {
     return AccessLogSettingResponse(
-      destinationArn: map['destinationArn'] == null ? null : (map['destinationArn'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
+      destinationArn: map['destinationArn'] == null ? null : (map['destinationArn']! as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
     );
   }
 }

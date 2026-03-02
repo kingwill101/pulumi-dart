@@ -29,8 +29,8 @@ class GetBrokerEngineTypesArgs {
 
   factory GetBrokerEngineTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetBrokerEngineTypesArgs(
-      engineType: map['engineType'] == null ? null : (map['engineType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      engineType: map['engineType'] == null ? null : ((map['engineType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

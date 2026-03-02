@@ -40,9 +40,9 @@ class AppConnectionGateway {
   factory AppConnectionGateway.fromMap(Map<String, dynamic> map) {
     return AppConnectionGateway(
       appGateway: (map['appGateway'] as String).input(),
-      ingressPort: map['ingressPort'] == null ? null : (map['ingressPort'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      ingressPort: map['ingressPort'] == null ? null : (map['ingressPort']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

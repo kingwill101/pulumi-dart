@@ -36,9 +36,9 @@ class GetSubnetworksArgs {
 
   factory GetSubnetworksArgs.fromMap(Map<String, dynamic> map) {
     return GetSubnetworksArgs(
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

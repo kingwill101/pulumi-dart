@@ -39,8 +39,8 @@ class GetAzureVersionsResult {
   factory GetAzureVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetAzureVersionsResult(
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
+      project: map['project'] == null ? null : map['project']! as String,
       supportedRegions: (map['supportedRegions'] as List).cast<String>(),
       validVersions: (map['validVersions'] as List).cast<String>(),
     );

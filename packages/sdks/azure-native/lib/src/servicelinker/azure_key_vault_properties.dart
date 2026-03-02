@@ -27,7 +27,7 @@ class AzureKeyVaultProperties {
 
   factory AzureKeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return AzureKeyVaultProperties(
-      connectAsKubernetesCsiDriver: map['connectAsKubernetesCsiDriver'] == null ? null : (map['connectAsKubernetesCsiDriver'] as bool).input(),
+      connectAsKubernetesCsiDriver: map['connectAsKubernetesCsiDriver'] == null ? null : (map['connectAsKubernetesCsiDriver']! as bool).input(),
       type: (map['type'] as String).input(),
     );
   }

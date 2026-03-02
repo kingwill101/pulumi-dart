@@ -36,10 +36,10 @@ class ModelState {
 
   factory ModelState.fromMap(Map<String, dynamic> map) {
     return ModelState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      modelName: map['modelName'] == null ? null : (map['modelName'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      modelName: map['modelName'] == null ? null : (map['modelName']! as String).input(),
+      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
     );
   }
 }

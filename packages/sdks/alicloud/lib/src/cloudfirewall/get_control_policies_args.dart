@@ -69,16 +69,16 @@ class GetControlPoliciesArgs {
 
   factory GetControlPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetControlPoliciesArgs(
-      aclAction: map['aclAction'] == null ? null : (map['aclAction'] as String).input(),
-      aclUuid: map['aclUuid'] == null ? null : (map['aclUuid'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      aclAction: map['aclAction'] == null ? null : (map['aclAction']! as String).input(),
+      aclUuid: map['aclUuid'] == null ? null : (map['aclUuid']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
       direction: (map['direction'] as String).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      proto: map['proto'] == null ? null : (map['proto'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as String).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      proto: map['proto'] == null ? null : (map['proto']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

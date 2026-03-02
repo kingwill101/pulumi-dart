@@ -25,8 +25,8 @@ class CaCertificateValidity {
 
   factory CaCertificateValidity.fromMap(Map<String, dynamic> map) {
     return CaCertificateValidity(
-      notAfter: map['notAfter'] == null ? null : (map['notAfter'] as String).input(),
-      notBefore: map['notBefore'] == null ? null : (map['notBefore'] as String).input(),
+      notAfter: map['notAfter'] == null ? null : ((map['notAfter'] as String).input()).input(),
+      notBefore: map['notBefore'] == null ? null : ((map['notBefore'] as String).input()).input(),
     );
   }
 }

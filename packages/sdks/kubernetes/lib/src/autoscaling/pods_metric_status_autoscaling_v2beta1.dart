@@ -34,7 +34,7 @@ class PodsMetricStatusAutoscalingV2beta1 {
     return PodsMetricStatusAutoscalingV2beta1(
       currentAverageValue: (map['currentAverageValue'] as String).input(),
       metricName: (map['metricName'] as String).input(),
-      selector: map['selector'] == null ? null : (LabelSelector.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
+      selector: map['selector'] == null ? null : (LabelSelector.fromMap((map['selector']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

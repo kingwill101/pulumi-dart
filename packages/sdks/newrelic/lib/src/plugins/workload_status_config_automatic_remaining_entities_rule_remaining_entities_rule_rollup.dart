@@ -37,8 +37,8 @@ class WorkloadStatusConfigAutomaticRemainingEntitiesRuleRemainingEntitiesRuleRol
     return WorkloadStatusConfigAutomaticRemainingEntitiesRuleRemainingEntitiesRuleRollup(
       groupBy: (map['groupBy'] as String).input(),
       strategy: (map['strategy'] as String).input(),
-      thresholdType: map['thresholdType'] == null ? null : (map['thresholdType'] as String).input(),
-      thresholdValue: map['thresholdValue'] == null ? null : (map['thresholdValue'] as int).input(),
+      thresholdType: map['thresholdType'] == null ? null : (map['thresholdType']! as String).input(),
+      thresholdValue: map['thresholdValue'] == null ? null : (map['thresholdValue']! as int).input(),
     );
   }
 }

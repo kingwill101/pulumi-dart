@@ -32,9 +32,9 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConf
 
   factory SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig(
-      enableEachUniqueValue: map['enableEachUniqueValue'] == null ? null : (map['enableEachUniqueValue'] as bool).input(),
+      enableEachUniqueValue: map['enableEachUniqueValue'] == null ? null : (map['enableEachUniqueValue']! as bool).input(),
       type: (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

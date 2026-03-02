@@ -37,7 +37,7 @@ class ConnectorCollectionErrorInfoResponse {
   factory ConnectorCollectionErrorInfoResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorCollectionErrorInfoResponse(
       errorCode: (map['errorCode'] as String).input(),
-      errorInnerMessage: map['errorInnerMessage'] == null ? null : (map['errorInnerMessage'] as String).input(),
+      errorInnerMessage: map['errorInnerMessage'] == null ? null : (map['errorInnerMessage']! as String).input(),
       errorMessage: (map['errorMessage'] as String).input(),
       errorStartTime: (map['errorStartTime'] as String).input(),
     );

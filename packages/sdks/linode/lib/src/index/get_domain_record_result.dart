@@ -76,8 +76,8 @@ class GetDomainRecordResult {
   factory GetDomainRecordResult.fromMap(Map<String, dynamic> map) {
     return GetDomainRecordResult(
       domainId: map['domainId'] as int,
-      id: map['id'] == null ? null : map['id'] as int,
-      name: map['name'] == null ? null : map['name'] as String,
+      id: map['id'] == null ? null : map['id']! as int,
+      name: map['name'] == null ? null : map['name']! as String,
       port: map['port'] as int,
       priority: map['priority'] as int,
       protocol: map['protocol'] as String,

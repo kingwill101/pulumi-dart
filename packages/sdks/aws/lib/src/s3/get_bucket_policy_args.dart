@@ -30,7 +30,7 @@ class GetBucketPolicyArgs {
   factory GetBucketPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketPolicyArgs(
       bucket: (map['bucket'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -45,12 +45,12 @@ class RaiPolicyProperties {
 
   factory RaiPolicyProperties.fromMap(Map<String, dynamic> map) {
     return RaiPolicyProperties(
-      basePolicyName: map['basePolicyName'] == null ? null : (map['basePolicyName'] as String).input(),
-      completionBlocklists: map['completionBlocklists'] == null ? null : (pulumi.Input.decodeList<RaiBlocklistConfig>(map['completionBlocklists'], (value) => RaiBlocklistConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      contentFilters: map['contentFilters'] == null ? null : (pulumi.Input.decodeList<RaiPolicyContentFilter>(map['contentFilters'], (value) => RaiPolicyContentFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      promptBlocklists: map['promptBlocklists'] == null ? null : (pulumi.Input.decodeList<RaiBlocklistConfig>(map['promptBlocklists'], (value) => RaiBlocklistConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      basePolicyName: map['basePolicyName'] == null ? null : (map['basePolicyName']! as String).input(),
+      completionBlocklists: map['completionBlocklists'] == null ? null : (pulumi.Input.decodeList<RaiBlocklistConfig>(map['completionBlocklists']!, (value) => RaiBlocklistConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      contentFilters: map['contentFilters'] == null ? null : (pulumi.Input.decodeList<RaiPolicyContentFilter>(map['contentFilters']!, (value) => RaiPolicyContentFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      promptBlocklists: map['promptBlocklists'] == null ? null : (pulumi.Input.decodeList<RaiBlocklistConfig>(map['promptBlocklists']!, (value) => RaiBlocklistConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

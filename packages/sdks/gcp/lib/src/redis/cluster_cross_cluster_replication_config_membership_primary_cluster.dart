@@ -26,8 +26,8 @@ class ClusterCrossClusterReplicationConfigMembershipPrimaryCluster {
 
   factory ClusterCrossClusterReplicationConfigMembershipPrimaryCluster.fromMap(Map<String, dynamic> map) {
     return ClusterCrossClusterReplicationConfigMembershipPrimaryCluster(
-      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      cluster: map['cluster'] == null ? null : (map['cluster']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class ConnectionParameter {
 
   factory ConnectionParameter.fromMap(Map<String, dynamic> map) {
     return ConnectionParameter(
-      oAuthSettings: map['oAuthSettings'] == null ? null : (ApiOAuthSettings.fromMap((map['oAuthSettings'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (ConnectionParameterType.fromValue(map['type'] as String)).input(),
+      oAuthSettings: map['oAuthSettings'] == null ? null : (ApiOAuthSettings.fromMap((map['oAuthSettings']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (ConnectionParameterType.fromValue(map['type']! as String)).input(),
     );
   }
 }

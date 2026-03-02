@@ -27,8 +27,8 @@ class WorkerPoolTemplateVolumeEmptyDir {
 
   factory WorkerPoolTemplateVolumeEmptyDir.fromMap(Map<String, dynamic> map) {
     return WorkerPoolTemplateVolumeEmptyDir(
-      medium: map['medium'] == null ? null : (map['medium'] as String).input(),
-      sizeLimit: map['sizeLimit'] == null ? null : (map['sizeLimit'] as String).input(),
+      medium: map['medium'] == null ? null : (map['medium']! as String).input(),
+      sizeLimit: map['sizeLimit'] == null ? null : (map['sizeLimit']! as String).input(),
     );
   }
 }

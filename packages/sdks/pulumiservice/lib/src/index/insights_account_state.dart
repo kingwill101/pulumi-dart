@@ -67,10 +67,10 @@ class InsightsAccountState {
       insightsAccountId: (map['insightsAccountId'] as String).input(),
       organizationName: (map['organizationName'] as String).input(),
       provider: (CloudProvider.fromValue(map['provider'] as String)).input(),
-      providerConfig: map['providerConfig'] == null ? null : ((map['providerConfig'] as Map).cast<String, dynamic>()).input(),
+      providerConfig: map['providerConfig'] == null ? null : ((map['providerConfig']! as Map).cast<String, dynamic>()).input(),
       scanSchedule: (ScanSchedule.fromValue(map['scanSchedule'] as String)).input(),
       scheduledScanEnabled: (map['scheduledScanEnabled'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class InstanceSchedulingOnInstanceStopAction {
 
   factory InstanceSchedulingOnInstanceStopAction.fromMap(Map<String, dynamic> map) {
     return InstanceSchedulingOnInstanceStopAction(
-      discardLocalSsd: map['discardLocalSsd'] == null ? null : (map['discardLocalSsd'] as bool).input(),
+      discardLocalSsd: map['discardLocalSsd'] == null ? null : (map['discardLocalSsd']! as bool).input(),
     );
   }
 }

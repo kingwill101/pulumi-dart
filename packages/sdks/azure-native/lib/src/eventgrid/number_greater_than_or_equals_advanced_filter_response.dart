@@ -32,9 +32,9 @@ class NumberGreaterThanOrEqualsAdvancedFilterResponse {
 
   factory NumberGreaterThanOrEqualsAdvancedFilterResponse.fromMap(Map<String, dynamic> map) {
     return NumberGreaterThanOrEqualsAdvancedFilterResponse(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
       operatorType: (map['operatorType'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as double).input(),
+      value: map['value'] == null ? null : (map['value']! as double).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class FrontdoorCustomDomainAssociationState {
 
   factory FrontdoorCustomDomainAssociationState.fromMap(Map<String, dynamic> map) {
     return FrontdoorCustomDomainAssociationState(
-      cdnFrontdoorCustomDomainId: map['cdnFrontdoorCustomDomainId'] == null ? null : (map['cdnFrontdoorCustomDomainId'] as String).input(),
-      cdnFrontdoorRouteIds: map['cdnFrontdoorRouteIds'] == null ? null : ((map['cdnFrontdoorRouteIds'] as List).cast<String>()).input(),
+      cdnFrontdoorCustomDomainId: map['cdnFrontdoorCustomDomainId'] == null ? null : (map['cdnFrontdoorCustomDomainId']! as String).input(),
+      cdnFrontdoorRouteIds: map['cdnFrontdoorRouteIds'] == null ? null : ((map['cdnFrontdoorRouteIds']! as List).cast<String>()).input(),
     );
   }
 }

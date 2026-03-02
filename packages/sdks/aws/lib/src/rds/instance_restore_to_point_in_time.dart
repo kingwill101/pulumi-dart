@@ -40,11 +40,11 @@ class InstanceRestoreToPointInTime {
 
   factory InstanceRestoreToPointInTime.fromMap(Map<String, dynamic> map) {
     return InstanceRestoreToPointInTime(
-      restoreTime: map['restoreTime'] == null ? null : (map['restoreTime'] as String).input(),
-      sourceDbInstanceAutomatedBackupsArn: map['sourceDbInstanceAutomatedBackupsArn'] == null ? null : (map['sourceDbInstanceAutomatedBackupsArn'] as String).input(),
-      sourceDbInstanceIdentifier: map['sourceDbInstanceIdentifier'] == null ? null : (map['sourceDbInstanceIdentifier'] as String).input(),
-      sourceDbiResourceId: map['sourceDbiResourceId'] == null ? null : (map['sourceDbiResourceId'] as String).input(),
-      useLatestRestorableTime: map['useLatestRestorableTime'] == null ? null : (map['useLatestRestorableTime'] as bool).input(),
+      restoreTime: map['restoreTime'] == null ? null : ((map['restoreTime'] as String).input()).input(),
+      sourceDbInstanceAutomatedBackupsArn: map['sourceDbInstanceAutomatedBackupsArn'] == null ? null : ((map['sourceDbInstanceAutomatedBackupsArn'] as String).input()).input(),
+      sourceDbInstanceIdentifier: map['sourceDbInstanceIdentifier'] == null ? null : ((map['sourceDbInstanceIdentifier'] as String).input()).input(),
+      sourceDbiResourceId: map['sourceDbiResourceId'] == null ? null : ((map['sourceDbiResourceId'] as String).input()).input(),
+      useLatestRestorableTime: map['useLatestRestorableTime'] == null ? null : ((map['useLatestRestorableTime'] as bool).input()).input(),
     );
   }
 }

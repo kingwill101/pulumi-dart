@@ -22,7 +22,7 @@ class TrustConfigTrustStoreTrustAnchor {
 
   factory TrustConfigTrustStoreTrustAnchor.fromMap(Map<String, dynamic> map) {
     return TrustConfigTrustStoreTrustAnchor(
-      pemCertificate: map['pemCertificate'] == null ? null : (map['pemCertificate'] as String).input(),
+      pemCertificate: map['pemCertificate'] == null ? null : (map['pemCertificate']! as String).input(),
     );
   }
 }

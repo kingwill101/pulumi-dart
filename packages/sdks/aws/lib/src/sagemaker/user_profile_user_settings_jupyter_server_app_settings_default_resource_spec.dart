@@ -40,11 +40,11 @@ class UserProfileUserSettingsJupyterServerAppSettingsDefaultResourceSpec {
 
   factory UserProfileUserSettingsJupyterServerAppSettingsDefaultResourceSpec.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsJupyterServerAppSettingsDefaultResourceSpec(
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      lifecycleConfigArn: map['lifecycleConfigArn'] == null ? null : (map['lifecycleConfigArn'] as String).input(),
-      sagemakerImageArn: map['sagemakerImageArn'] == null ? null : (map['sagemakerImageArn'] as String).input(),
-      sagemakerImageVersionAlias: map['sagemakerImageVersionAlias'] == null ? null : (map['sagemakerImageVersionAlias'] as String).input(),
-      sagemakerImageVersionArn: map['sagemakerImageVersionArn'] == null ? null : (map['sagemakerImageVersionArn'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : ((map['instanceType'] as String).input()).input(),
+      lifecycleConfigArn: map['lifecycleConfigArn'] == null ? null : ((map['lifecycleConfigArn'] as String).input()).input(),
+      sagemakerImageArn: map['sagemakerImageArn'] == null ? null : ((map['sagemakerImageArn'] as String).input()).input(),
+      sagemakerImageVersionAlias: map['sagemakerImageVersionAlias'] == null ? null : ((map['sagemakerImageVersionAlias'] as String).input()).input(),
+      sagemakerImageVersionArn: map['sagemakerImageVersionArn'] == null ? null : ((map['sagemakerImageVersionArn'] as String).input()).input(),
     );
   }
 }

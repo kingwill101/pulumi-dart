@@ -57,11 +57,11 @@ class PipelineGroupPropertiesResponse {
   factory PipelineGroupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PipelineGroupPropertiesResponse(
       exporters: (pulumi.Input.decodeList<ExporterResponse>(map['exporters'], (value) => ExporterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      networkingConfigurations: map['networkingConfigurations'] == null ? null : (pulumi.Input.decodeList<NetworkingConfigurationResponse>(map['networkingConfigurations'], (value) => NetworkingConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkingConfigurations: map['networkingConfigurations'] == null ? null : (pulumi.Input.decodeList<NetworkingConfigurationResponse>(map['networkingConfigurations']!, (value) => NetworkingConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       processors: (pulumi.Input.decodeList<ProcessorResponse>(map['processors'], (value) => ProcessorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       receivers: (pulumi.Input.decodeList<ReceiverResponse>(map['receivers'], (value) => ReceiverResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      replicas: map['replicas'] == null ? null : (map['replicas'] as int).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas']! as int).input(),
       service: (ServiceResponse.fromMap((map['service'] as Map).cast<String, dynamic>())).input(),
     );
   }

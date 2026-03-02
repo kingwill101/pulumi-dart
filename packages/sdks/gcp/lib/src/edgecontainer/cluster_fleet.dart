@@ -30,7 +30,7 @@ class ClusterFleet {
 
   factory ClusterFleet.fromMap(Map<String, dynamic> map) {
     return ClusterFleet(
-      membership: map['membership'] == null ? null : (map['membership'] as String).input(),
+      membership: map['membership'] == null ? null : (map['membership']! as String).input(),
       project: (map['project'] as String).input(),
     );
   }

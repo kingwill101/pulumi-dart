@@ -51,11 +51,11 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      authPlugin: map['authPlugin'] == null ? null : (map['authPlugin'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      plaintextPassword: map['plaintextPassword'] == null ? null : (map['plaintextPassword'] as String).input(),
-      tlsOption: map['tlsOption'] == null ? null : (map['tlsOption'] as String).input(),
+      authPlugin: map['authPlugin'] == null ? null : (map['authPlugin']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      plaintextPassword: map['plaintextPassword'] == null ? null : (map['plaintextPassword']! as String).input(),
+      tlsOption: map['tlsOption'] == null ? null : (map['tlsOption']! as String).input(),
       user: (map['user'] as String).input(),
     );
   }

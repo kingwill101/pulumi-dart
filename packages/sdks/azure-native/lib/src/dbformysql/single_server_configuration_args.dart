@@ -44,11 +44,11 @@ class SingleServerConfigurationArgs {
 
   factory SingleServerConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return SingleServerConfigurationArgs(
-      configurationName: map['configurationName'] == null ? null : (map['configurationName'] as String).input(),
+      configurationName: map['configurationName'] == null ? null : (map['configurationName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

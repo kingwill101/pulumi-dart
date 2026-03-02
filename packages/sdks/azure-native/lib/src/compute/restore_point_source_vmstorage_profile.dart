@@ -28,8 +28,8 @@ class RestorePointSourceVMStorageProfile {
 
   factory RestorePointSourceVMStorageProfile.fromMap(Map<String, dynamic> map) {
     return RestorePointSourceVMStorageProfile(
-      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<RestorePointSourceVMDataDisk>(map['dataDisks'], (value) => RestorePointSourceVMDataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      osDisk: map['osDisk'] == null ? null : (RestorePointSourceVMOSDisk.fromMap((map['osDisk'] as Map).cast<String, dynamic>())).input(),
+      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<RestorePointSourceVMDataDisk>(map['dataDisks']!, (value) => RestorePointSourceVMDataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      osDisk: map['osDisk'] == null ? null : (RestorePointSourceVMOSDisk.fromMap((map['osDisk']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

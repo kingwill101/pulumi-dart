@@ -39,8 +39,8 @@ class MultiplexProgramMultiplexProgramSettings {
     return MultiplexProgramMultiplexProgramSettings(
       preferredChannelPipeline: (map['preferredChannelPipeline'] as String).input(),
       programNumber: (map['programNumber'] as int).input(),
-      serviceDescriptor: map['serviceDescriptor'] == null ? null : (MultiplexProgramMultiplexProgramSettingsServiceDescriptor.fromMap((map['serviceDescriptor'] as Map).cast<String, dynamic>())).input(),
-      videoSettings: map['videoSettings'] == null ? null : (MultiplexProgramMultiplexProgramSettingsVideoSettings.fromMap((map['videoSettings'] as Map).cast<String, dynamic>())).input(),
+      serviceDescriptor: map['serviceDescriptor'] == null ? null : ((MultiplexProgramMultiplexProgramSettingsServiceDescriptor.fromMap((map['serviceDescriptor']! as Map).cast<String, dynamic>())).input()).input(),
+      videoSettings: map['videoSettings'] == null ? null : ((MultiplexProgramMultiplexProgramSettingsVideoSettings.fromMap((map['videoSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

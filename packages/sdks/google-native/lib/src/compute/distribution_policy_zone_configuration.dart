@@ -20,7 +20,7 @@ class DistributionPolicyZoneConfiguration {
 
   factory DistributionPolicyZoneConfiguration.fromMap(Map<String, dynamic> map) {
     return DistributionPolicyZoneConfiguration(
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

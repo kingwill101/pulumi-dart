@@ -22,7 +22,7 @@ class KubernetesClusterNodePoolWindowsProfile {
 
   factory KubernetesClusterNodePoolWindowsProfile.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterNodePoolWindowsProfile(
-      outboundNatEnabled: map['outboundNatEnabled'] == null ? null : (map['outboundNatEnabled'] as bool).input(),
+      outboundNatEnabled: map['outboundNatEnabled'] == null ? null : (map['outboundNatEnabled']! as bool).input(),
     );
   }
 }

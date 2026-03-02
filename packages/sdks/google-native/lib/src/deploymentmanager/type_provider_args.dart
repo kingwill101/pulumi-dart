@@ -67,15 +67,15 @@ class TypeProviderArgs {
 
   factory TypeProviderArgs.fromMap(Map<String, dynamic> map) {
     return TypeProviderArgs(
-      collectionOverrides: map['collectionOverrides'] == null ? null : (pulumi.Input.decodeList<CollectionOverride>(map['collectionOverrides'], (value) => CollectionOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      credential: map['credential'] == null ? null : (Credential.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
-      customCertificateAuthorityRoots: map['customCertificateAuthorityRoots'] == null ? null : ((map['customCertificateAuthorityRoots'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      descriptorUrl: map['descriptorUrl'] == null ? null : (map['descriptorUrl'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<TypeProviderLabelEntry>(map['labels'], (value) => TypeProviderLabelEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      options: map['options'] == null ? null : (Options.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      collectionOverrides: map['collectionOverrides'] == null ? null : (pulumi.Input.decodeList<CollectionOverride>(map['collectionOverrides']!, (value) => CollectionOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      credential: map['credential'] == null ? null : (Credential.fromMap((map['credential']! as Map).cast<String, dynamic>())).input(),
+      customCertificateAuthorityRoots: map['customCertificateAuthorityRoots'] == null ? null : ((map['customCertificateAuthorityRoots']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      descriptorUrl: map['descriptorUrl'] == null ? null : (map['descriptorUrl']! as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<TypeProviderLabelEntry>(map['labels']!, (value) => TypeProviderLabelEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      options: map['options'] == null ? null : (Options.fromMap((map['options']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

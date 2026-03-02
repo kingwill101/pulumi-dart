@@ -21,7 +21,7 @@ class InstanceMetadataTagsStateEnumValue {
 
   factory InstanceMetadataTagsStateEnumValue.fromMap(Map<String, dynamic> map) {
     return InstanceMetadataTagsStateEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

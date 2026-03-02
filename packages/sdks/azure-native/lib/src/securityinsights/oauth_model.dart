@@ -97,21 +97,21 @@ class OAuthModel {
 
   factory OAuthModel.fromMap(Map<String, dynamic> map) {
     return OAuthModel(
-      accessTokenPrepend: map['accessTokenPrepend'] == null ? null : (map['accessTokenPrepend'] as String).input(),
-      authorizationCode: map['authorizationCode'] == null ? null : (map['authorizationCode'] as String).input(),
-      authorizationEndpoint: map['authorizationEndpoint'] == null ? null : (map['authorizationEndpoint'] as String).input(),
-      authorizationEndpointHeaders: map['authorizationEndpointHeaders'] == null ? null : ((map['authorizationEndpointHeaders'] as Map).cast<String, String>()).input(),
-      authorizationEndpointQueryParameters: map['authorizationEndpointQueryParameters'] == null ? null : ((map['authorizationEndpointQueryParameters'] as Map).cast<String, String>()).input(),
+      accessTokenPrepend: map['accessTokenPrepend'] == null ? null : (map['accessTokenPrepend']! as String).input(),
+      authorizationCode: map['authorizationCode'] == null ? null : (map['authorizationCode']! as String).input(),
+      authorizationEndpoint: map['authorizationEndpoint'] == null ? null : (map['authorizationEndpoint']! as String).input(),
+      authorizationEndpointHeaders: map['authorizationEndpointHeaders'] == null ? null : ((map['authorizationEndpointHeaders']! as Map).cast<String, String>()).input(),
+      authorizationEndpointQueryParameters: map['authorizationEndpointQueryParameters'] == null ? null : ((map['authorizationEndpointQueryParameters']! as Map).cast<String, String>()).input(),
       clientId: (map['clientId'] as String).input(),
       clientSecret: (map['clientSecret'] as String).input(),
       grantType: (map['grantType'] as String).input(),
-      isCredentialsInHeaders: map['isCredentialsInHeaders'] == null ? null : (map['isCredentialsInHeaders'] as bool).input(),
-      isJwtBearerFlow: map['isJwtBearerFlow'] == null ? null : (map['isJwtBearerFlow'] as bool).input(),
-      redirectUri: map['redirectUri'] == null ? null : (map['redirectUri'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      isCredentialsInHeaders: map['isCredentialsInHeaders'] == null ? null : (map['isCredentialsInHeaders']! as bool).input(),
+      isJwtBearerFlow: map['isJwtBearerFlow'] == null ? null : (map['isJwtBearerFlow']! as bool).input(),
+      redirectUri: map['redirectUri'] == null ? null : (map['redirectUri']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
       tokenEndpoint: (map['tokenEndpoint'] as String).input(),
-      tokenEndpointHeaders: map['tokenEndpointHeaders'] == null ? null : ((map['tokenEndpointHeaders'] as Map).cast<String, String>()).input(),
-      tokenEndpointQueryParameters: map['tokenEndpointQueryParameters'] == null ? null : ((map['tokenEndpointQueryParameters'] as Map).cast<String, String>()).input(),
+      tokenEndpointHeaders: map['tokenEndpointHeaders'] == null ? null : ((map['tokenEndpointHeaders']! as Map).cast<String, String>()).input(),
+      tokenEndpointQueryParameters: map['tokenEndpointQueryParameters'] == null ? null : ((map['tokenEndpointQueryParameters']! as Map).cast<String, String>()).input(),
       type: (map['type'] as String).input(),
     );
   }

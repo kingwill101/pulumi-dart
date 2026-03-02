@@ -113,20 +113,20 @@ class RuleDeploymentState {
 
   factory RuleDeploymentState.fromMap(Map<String, dynamic> map) {
     return RuleDeploymentState(
-      alerting: map['alerting'] == null ? null : (map['alerting'] as bool).input(),
-      archiveTime: map['archiveTime'] == null ? null : (map['archiveTime'] as String).input(),
-      archived: map['archived'] == null ? null : (map['archived'] as bool).input(),
-      consumerRules: map['consumerRules'] == null ? null : ((map['consumerRules'] as List).cast<String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      executionState: map['executionState'] == null ? null : (map['executionState'] as String).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      lastAlertStatusChangeTime: map['lastAlertStatusChangeTime'] == null ? null : (map['lastAlertStatusChangeTime'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      producerRules: map['producerRules'] == null ? null : ((map['producerRules'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
-      runFrequency: map['runFrequency'] == null ? null : (map['runFrequency'] as String).input(),
+      alerting: map['alerting'] == null ? null : (map['alerting']! as bool).input(),
+      archiveTime: map['archiveTime'] == null ? null : (map['archiveTime']! as String).input(),
+      archived: map['archived'] == null ? null : (map['archived']! as bool).input(),
+      consumerRules: map['consumerRules'] == null ? null : ((map['consumerRules']! as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      executionState: map['executionState'] == null ? null : (map['executionState']! as String).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      lastAlertStatusChangeTime: map['lastAlertStatusChangeTime'] == null ? null : (map['lastAlertStatusChangeTime']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      producerRules: map['producerRules'] == null ? null : ((map['producerRules']! as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rule: map['rule'] == null ? null : (map['rule']! as String).input(),
+      runFrequency: map['runFrequency'] == null ? null : (map['runFrequency']! as String).input(),
     );
   }
 }

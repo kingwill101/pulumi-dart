@@ -66,15 +66,15 @@ class SslCertificateComputeV1Args {
 
   factory SslCertificateComputeV1Args.fromMap(Map<String, dynamic> map) {
     return SslCertificateComputeV1Args(
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      managed: map['managed'] == null ? null : (SslCertificateManagedSslCertificateComputeV1.fromMap((map['managed'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      selfManaged: map['selfManaged'] == null ? null : (SslCertificateSelfManagedSslCertificateComputeV1.fromMap((map['selfManaged'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (SslCertificateTypeComputeV1.fromValue(map['type'] as String)).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      managed: map['managed'] == null ? null : (SslCertificateManagedSslCertificateComputeV1.fromMap((map['managed']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      selfManaged: map['selfManaged'] == null ? null : (SslCertificateSelfManagedSslCertificateComputeV1.fromMap((map['selfManaged']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (SslCertificateTypeComputeV1.fromValue(map['type']! as String)).input(),
     );
   }
 }

@@ -52,10 +52,10 @@ class ValueAddedServiceArgs {
   factory ValueAddedServiceArgs.fromMap(Map<String, dynamic> map) {
     return ValueAddedServiceArgs(
       paymentType: (map['paymentType'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      renewPeriod: map['renewPeriod'] == null ? null : (map['renewPeriod'] as int).input(),
-      renewStatus: map['renewStatus'] == null ? null : (map['renewStatus'] as String).input(),
-      valueAddedService: map['valueAddedService'] == null ? null : (map['valueAddedService'] as String).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      renewPeriod: map['renewPeriod'] == null ? null : (map['renewPeriod']! as int).input(),
+      renewStatus: map['renewStatus'] == null ? null : (map['renewStatus']! as String).input(),
+      valueAddedService: map['valueAddedService'] == null ? null : (map['valueAddedService']! as String).input(),
     );
   }
 }

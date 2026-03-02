@@ -74,14 +74,14 @@ class GetNetworkEndpointGroupResult {
       description: map['description'] as String,
       generatedId: map['generatedId'] as int,
       id: map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
       network: map['network'] as String,
       networkEndpointType: map['networkEndpointType'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
-      selfLink: map['selfLink'] == null ? null : map['selfLink'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
+      selfLink: map['selfLink'] == null ? null : map['selfLink']! as String,
       size: map['size'] as int,
       subnetwork: map['subnetwork'] as String,
-      zone: map['zone'] == null ? null : map['zone'] as String,
+      zone: map['zone'] == null ? null : map['zone']! as String,
     );
   }
 }

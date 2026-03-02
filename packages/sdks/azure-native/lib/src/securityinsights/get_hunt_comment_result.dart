@@ -52,7 +52,7 @@ class GetHuntCommentResult {
   factory GetHuntCommentResult.fromMap(Map<String, dynamic> map) {
     return GetHuntCommentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       message: map['message'] as String,
       name: map['name'] as String,

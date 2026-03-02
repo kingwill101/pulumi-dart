@@ -56,14 +56,14 @@ class GitHubEnterpriseSecrets {
 
   factory GitHubEnterpriseSecrets.fromMap(Map<String, dynamic> map) {
     return GitHubEnterpriseSecrets(
-      oauthClientIdName: map['oauthClientIdName'] == null ? null : (map['oauthClientIdName'] as String).input(),
-      oauthClientIdVersionName: map['oauthClientIdVersionName'] == null ? null : (map['oauthClientIdVersionName'] as String).input(),
-      oauthSecretName: map['oauthSecretName'] == null ? null : (map['oauthSecretName'] as String).input(),
-      oauthSecretVersionName: map['oauthSecretVersionName'] == null ? null : (map['oauthSecretVersionName'] as String).input(),
-      privateKeyName: map['privateKeyName'] == null ? null : (map['privateKeyName'] as String).input(),
-      privateKeyVersionName: map['privateKeyVersionName'] == null ? null : (map['privateKeyVersionName'] as String).input(),
-      webhookSecretName: map['webhookSecretName'] == null ? null : (map['webhookSecretName'] as String).input(),
-      webhookSecretVersionName: map['webhookSecretVersionName'] == null ? null : (map['webhookSecretVersionName'] as String).input(),
+      oauthClientIdName: map['oauthClientIdName'] == null ? null : (map['oauthClientIdName']! as String).input(),
+      oauthClientIdVersionName: map['oauthClientIdVersionName'] == null ? null : (map['oauthClientIdVersionName']! as String).input(),
+      oauthSecretName: map['oauthSecretName'] == null ? null : (map['oauthSecretName']! as String).input(),
+      oauthSecretVersionName: map['oauthSecretVersionName'] == null ? null : (map['oauthSecretVersionName']! as String).input(),
+      privateKeyName: map['privateKeyName'] == null ? null : (map['privateKeyName']! as String).input(),
+      privateKeyVersionName: map['privateKeyVersionName'] == null ? null : (map['privateKeyVersionName']! as String).input(),
+      webhookSecretName: map['webhookSecretName'] == null ? null : (map['webhookSecretName']! as String).input(),
+      webhookSecretVersionName: map['webhookSecretVersionName'] == null ? null : (map['webhookSecretVersionName']! as String).input(),
     );
   }
 }

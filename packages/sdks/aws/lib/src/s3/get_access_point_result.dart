@@ -101,10 +101,10 @@ class GetAccessPointResult {
       id: map['id'] as String,
       name: map['name'] as String,
       networkOrigin: map['networkOrigin'] as String,
-      publicAccessBlockConfigurations: pulumi.Input.decodeList<GetAccessPointPublicAccessBlockConfiguration>(map['publicAccessBlockConfigurations'], (value) => GetAccessPointPublicAccessBlockConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      publicAccessBlockConfigurations: pulumi.Input.decodeList<GetAccessPointPublicAccessBlockConfiguration>(map['publicAccessBlockConfigurations']!, (value) => GetAccessPointPublicAccessBlockConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
-      vpcConfigurations: pulumi.Input.decodeList<GetAccessPointVpcConfiguration>(map['vpcConfigurations'], (value) => GetAccessPointVpcConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      vpcConfigurations: pulumi.Input.decodeList<GetAccessPointVpcConfiguration>(map['vpcConfigurations']!, (value) => GetAccessPointVpcConfiguration.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

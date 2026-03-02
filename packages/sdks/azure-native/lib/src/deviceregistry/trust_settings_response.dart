@@ -21,7 +21,7 @@ class TrustSettingsResponse {
 
   factory TrustSettingsResponse.fromMap(Map<String, dynamic> map) {
     return TrustSettingsResponse(
-      trustList: map['trustList'] == null ? null : (map['trustList'] as String).input(),
+      trustList: map['trustList'] == null ? null : (map['trustList']! as String).input(),
     );
   }
 }

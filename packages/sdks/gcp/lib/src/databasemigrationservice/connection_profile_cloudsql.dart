@@ -40,10 +40,10 @@ class ConnectionProfileCloudsql {
 
   factory ConnectionProfileCloudsql.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileCloudsql(
-      cloudSqlId: map['cloudSqlId'] == null ? null : (map['cloudSqlId'] as String).input(),
-      privateIp: map['privateIp'] == null ? null : (map['privateIp'] as String).input(),
-      publicIp: map['publicIp'] == null ? null : (map['publicIp'] as String).input(),
-      settings: map['settings'] == null ? null : (ConnectionProfileCloudsqlSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      cloudSqlId: map['cloudSqlId'] == null ? null : (map['cloudSqlId']! as String).input(),
+      privateIp: map['privateIp'] == null ? null : (map['privateIp']! as String).input(),
+      publicIp: map['publicIp'] == null ? null : (map['publicIp']! as String).input(),
+      settings: map['settings'] == null ? null : (ConnectionProfileCloudsqlSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

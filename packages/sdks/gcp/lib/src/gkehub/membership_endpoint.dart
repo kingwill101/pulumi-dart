@@ -22,7 +22,7 @@ class MembershipEndpoint {
 
   factory MembershipEndpoint.fromMap(Map<String, dynamic> map) {
     return MembershipEndpoint(
-      gkeCluster: map['gkeCluster'] == null ? null : (MembershipEndpointGkeCluster.fromMap((map['gkeCluster'] as Map).cast<String, dynamic>())).input(),
+      gkeCluster: map['gkeCluster'] == null ? null : (MembershipEndpointGkeCluster.fromMap((map['gkeCluster']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

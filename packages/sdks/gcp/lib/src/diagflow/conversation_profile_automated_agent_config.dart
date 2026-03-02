@@ -27,7 +27,7 @@ class ConversationProfileAutomatedAgentConfig {
   factory ConversationProfileAutomatedAgentConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileAutomatedAgentConfig(
       agent: (map['agent'] as String).input(),
-      sessionTtl: map['sessionTtl'] == null ? null : (map['sessionTtl'] as String).input(),
+      sessionTtl: map['sessionTtl'] == null ? null : (map['sessionTtl']! as String).input(),
     );
   }
 }

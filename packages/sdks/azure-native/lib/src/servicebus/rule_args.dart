@@ -68,13 +68,13 @@ class RuleArgs {
 
   factory RuleArgs.fromMap(Map<String, dynamic> map) {
     return RuleArgs(
-      action: map['action'] == null ? null : (Action.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      correlationFilter: map['correlationFilter'] == null ? null : (CorrelationFilter.fromMap((map['correlationFilter'] as Map).cast<String, dynamic>())).input(),
-      filterType: map['filterType'] == null ? null : (FilterType.fromValue(map['filterType'] as String)).input(),
+      action: map['action'] == null ? null : (Action.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      correlationFilter: map['correlationFilter'] == null ? null : (CorrelationFilter.fromMap((map['correlationFilter']! as Map).cast<String, dynamic>())).input(),
+      filterType: map['filterType'] == null ? null : (FilterType.fromValue(map['filterType']! as String)).input(),
       namespaceName: (map['namespaceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      sqlFilter: map['sqlFilter'] == null ? null : (SqlFilter.fromMap((map['sqlFilter'] as Map).cast<String, dynamic>())).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      sqlFilter: map['sqlFilter'] == null ? null : (SqlFilter.fromMap((map['sqlFilter']! as Map).cast<String, dynamic>())).input(),
       subscriptionName: (map['subscriptionName'] as String).input(),
       topicName: (map['topicName'] as String).input(),
     );

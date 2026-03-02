@@ -35,7 +35,7 @@ class GetAppArgs {
   factory GetAppArgs.fromMap(Map<String, dynamic> map) {
     return GetAppArgs(
       name: (map['name'] as String).input(),
-      readSecrets: map['readSecrets'] == null ? null : (map['readSecrets'] as bool).input(),
+      readSecrets: map['readSecrets'] == null ? null : (map['readSecrets']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

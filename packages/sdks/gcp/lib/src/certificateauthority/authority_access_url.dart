@@ -29,8 +29,8 @@ class AuthorityAccessUrl {
 
   factory AuthorityAccessUrl.fromMap(Map<String, dynamic> map) {
     return AuthorityAccessUrl(
-      caCertificateAccessUrl: map['caCertificateAccessUrl'] == null ? null : (map['caCertificateAccessUrl'] as String).input(),
-      crlAccessUrls: map['crlAccessUrls'] == null ? null : ((map['crlAccessUrls'] as List).cast<String>()).input(),
+      caCertificateAccessUrl: map['caCertificateAccessUrl'] == null ? null : (map['caCertificateAccessUrl']! as String).input(),
+      crlAccessUrls: map['crlAccessUrls'] == null ? null : ((map['crlAccessUrls']! as List).cast<String>()).input(),
     );
   }
 }

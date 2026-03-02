@@ -75,13 +75,13 @@ class AssignmentArgs {
   factory AssignmentArgs.fromMap(Map<String, dynamic> map) {
     return AssignmentArgs(
       identity: (AssignmentIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      lockExcludeActions: map['lockExcludeActions'] == null ? null : ((map['lockExcludeActions'] as List).cast<String>()).input(),
-      lockExcludePrincipals: map['lockExcludePrincipals'] == null ? null : ((map['lockExcludePrincipals'] as List).cast<String>()).input(),
-      lockMode: map['lockMode'] == null ? null : (map['lockMode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameterValues: map['parameterValues'] == null ? null : (map['parameterValues'] as String).input(),
-      resourceGroups: map['resourceGroups'] == null ? null : (map['resourceGroups'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      lockExcludeActions: map['lockExcludeActions'] == null ? null : ((map['lockExcludeActions']! as List).cast<String>()).input(),
+      lockExcludePrincipals: map['lockExcludePrincipals'] == null ? null : ((map['lockExcludePrincipals']! as List).cast<String>()).input(),
+      lockMode: map['lockMode'] == null ? null : (map['lockMode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameterValues: map['parameterValues'] == null ? null : (map['parameterValues']! as String).input(),
+      resourceGroups: map['resourceGroups'] == null ? null : (map['resourceGroups']! as String).input(),
       targetSubscriptionId: (map['targetSubscriptionId'] as String).input(),
       versionId: (map['versionId'] as String).input(),
     );

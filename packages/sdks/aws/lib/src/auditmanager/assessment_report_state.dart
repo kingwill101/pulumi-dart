@@ -48,12 +48,12 @@ class AssessmentReportState {
 
   factory AssessmentReportState.fromMap(Map<String, dynamic> map) {
     return AssessmentReportState(
-      assessmentId: map['assessmentId'] == null ? null : (map['assessmentId'] as String).input(),
-      author: map['author'] == null ? null : (map['author'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      assessmentId: map['assessmentId'] == null ? null : ((map['assessmentId'] as String).input()).input(),
+      author: map['author'] == null ? null : ((map['author'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

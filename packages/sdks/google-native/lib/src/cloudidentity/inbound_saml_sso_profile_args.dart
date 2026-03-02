@@ -40,10 +40,10 @@ class InboundSamlSsoProfileArgs {
 
   factory InboundSamlSsoProfileArgs.fromMap(Map<String, dynamic> map) {
     return InboundSamlSsoProfileArgs(
-      customer: map['customer'] == null ? null : (map['customer'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      idpConfig: map['idpConfig'] == null ? null : (SamlIdpConfig.fromMap((map['idpConfig'] as Map).cast<String, dynamic>())).input(),
-      spConfig: map['spConfig'] == null ? null : ((map['spConfig'] as Map).cast<String, dynamic>()).input(),
+      customer: map['customer'] == null ? null : (map['customer']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      idpConfig: map['idpConfig'] == null ? null : (SamlIdpConfig.fromMap((map['idpConfig']! as Map).cast<String, dynamic>())).input(),
+      spConfig: map['spConfig'] == null ? null : ((map['spConfig']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

@@ -75,13 +75,13 @@ class GetEncryptionProtectorResult {
 
   factory GetEncryptionProtectorResult.fromMap(Map<String, dynamic> map) {
     return GetEncryptionProtectorResult(
-      autoRotationEnabled: map['autoRotationEnabled'] == null ? null : map['autoRotationEnabled'] as bool,
+      autoRotationEnabled: map['autoRotationEnabled'] == null ? null : map['autoRotationEnabled']! as bool,
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      serverKeyName: map['serverKeyName'] == null ? null : map['serverKeyName'] as String,
+      serverKeyName: map['serverKeyName'] == null ? null : map['serverKeyName']! as String,
       serverKeyType: map['serverKeyType'] as String,
       subregion: map['subregion'] as String,
       thumbprint: map['thumbprint'] as String,

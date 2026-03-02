@@ -28,7 +28,7 @@ class RuleExcludeResourceTag {
   factory RuleExcludeResourceTag.fromMap(Map<String, dynamic> map) {
     return RuleExcludeResourceTag(
       resourceTagKey: (map['resourceTagKey'] as String).input(),
-      resourceTagValue: map['resourceTagValue'] == null ? null : (map['resourceTagValue'] as String).input(),
+      resourceTagValue: map['resourceTagValue'] == null ? null : ((map['resourceTagValue'] as String).input()).input(),
     );
   }
 }

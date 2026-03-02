@@ -34,7 +34,7 @@ class RouteTablePropagationArgs {
 
   factory RouteTablePropagationArgs.fromMap(Map<String, dynamic> map) {
     return RouteTablePropagationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       transitGatewayAttachmentId: (map['transitGatewayAttachmentId'] as String).input(),
       transitGatewayRouteTableId: (map['transitGatewayRouteTableId'] as String).input(),
     );

@@ -35,7 +35,7 @@ class GetWafEntityUrlCrossOriginRequestsEnforcement {
 
   factory GetWafEntityUrlCrossOriginRequestsEnforcement.fromMap(Map<String, dynamic> map) {
     return GetWafEntityUrlCrossOriginRequestsEnforcement(
-      includeSubdomains: map['includeSubdomains'] == null ? null : (map['includeSubdomains'] as bool).input(),
+      includeSubdomains: map['includeSubdomains'] == null ? null : (map['includeSubdomains']! as bool).input(),
       originName: (map['originName'] as String).input(),
       originPort: (map['originPort'] as String).input(),
       originProtocol: (map['originProtocol'] as String).input(),

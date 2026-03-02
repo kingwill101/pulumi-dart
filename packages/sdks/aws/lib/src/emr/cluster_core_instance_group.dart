@@ -51,13 +51,13 @@ class ClusterCoreInstanceGroup {
 
   factory ClusterCoreInstanceGroup.fromMap(Map<String, dynamic> map) {
     return ClusterCoreInstanceGroup(
-      autoscalingPolicy: map['autoscalingPolicy'] == null ? null : (map['autoscalingPolicy'] as String).input(),
-      bidPrice: map['bidPrice'] == null ? null : (map['bidPrice'] as String).input(),
-      ebsConfigs: map['ebsConfigs'] == null ? null : (pulumi.Input.decodeList<ClusterCoreInstanceGroupEbsConfig>(map['ebsConfigs'], (value) => ClusterCoreInstanceGroupEbsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
+      autoscalingPolicy: map['autoscalingPolicy'] == null ? null : ((map['autoscalingPolicy'] as String).input()).input(),
+      bidPrice: map['bidPrice'] == null ? null : ((map['bidPrice'] as String).input()).input(),
+      ebsConfigs: map['ebsConfigs'] == null ? null : ((pulumi.Input.decodeList<ClusterCoreInstanceGroupEbsConfig>(map['ebsConfigs']!, (value) => ClusterCoreInstanceGroupEbsConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      instanceCount: map['instanceCount'] == null ? null : ((map['instanceCount'] as int).input()).input(),
       instanceType: (map['instanceType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
     );
   }
 }

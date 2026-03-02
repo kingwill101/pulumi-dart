@@ -36,9 +36,9 @@ class AzureFilePersistentVolumeSource {
 
   factory AzureFilePersistentVolumeSource.fromMap(Map<String, dynamic> map) {
     return AzureFilePersistentVolumeSource(
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
       secretName: (map['secretName'] as String).input(),
-      secretNamespace: map['secretNamespace'] == null ? null : (map['secretNamespace'] as String).input(),
+      secretNamespace: map['secretNamespace'] == null ? null : (map['secretNamespace']! as String).input(),
       shareName: (map['shareName'] as String).input(),
     );
   }

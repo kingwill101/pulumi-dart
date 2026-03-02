@@ -31,9 +31,9 @@ class WorkloadReferencePatch {
 
   factory WorkloadReferencePatch.fromMap(Map<String, dynamic> map) {
     return WorkloadReferencePatch(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      podGroup: map['podGroup'] == null ? null : (map['podGroup'] as String).input(),
-      podGroupReplicaKey: map['podGroupReplicaKey'] == null ? null : (map['podGroupReplicaKey'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      podGroup: map['podGroup'] == null ? null : (map['podGroup']! as String).input(),
+      podGroupReplicaKey: map['podGroupReplicaKey'] == null ? null : (map['podGroupReplicaKey']! as String).input(),
     );
   }
 }

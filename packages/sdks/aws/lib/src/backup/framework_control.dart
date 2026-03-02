@@ -32,9 +32,9 @@ class FrameworkControl {
 
   factory FrameworkControl.fromMap(Map<String, dynamic> map) {
     return FrameworkControl(
-      inputParameters: map['inputParameters'] == null ? null : (pulumi.Input.decodeList<FrameworkControlInputParameter>(map['inputParameters'], (value) => FrameworkControlInputParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputParameters: map['inputParameters'] == null ? null : ((pulumi.Input.decodeList<FrameworkControlInputParameter>(map['inputParameters']!, (value) => FrameworkControlInputParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       name: (map['name'] as String).input(),
-      scope: map['scope'] == null ? null : (FrameworkControlScope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
+      scope: map['scope'] == null ? null : ((FrameworkControlScope.fromMap((map['scope']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

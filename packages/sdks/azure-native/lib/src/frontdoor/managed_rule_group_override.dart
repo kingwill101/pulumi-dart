@@ -33,9 +33,9 @@ class ManagedRuleGroupOverride {
 
   factory ManagedRuleGroupOverride.fromMap(Map<String, dynamic> map) {
     return ManagedRuleGroupOverride(
-      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<ManagedRuleExclusion>(map['exclusions'], (value) => ManagedRuleExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<ManagedRuleExclusion>(map['exclusions']!, (value) => ManagedRuleExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
       ruleGroupName: (map['ruleGroupName'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ManagedRuleOverride>(map['rules'], (value) => ManagedRuleOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ManagedRuleOverride>(map['rules']!, (value) => ManagedRuleOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class AndroidKeyRestrictions {
 
   factory AndroidKeyRestrictions.fromMap(Map<String, dynamic> map) {
     return AndroidKeyRestrictions(
-      allowedApplications: map['allowedApplications'] == null ? null : (pulumi.Input.decodeList<AndroidApplication>(map['allowedApplications'], (value) => AndroidApplication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowedApplications: map['allowedApplications'] == null ? null : (pulumi.Input.decodeList<AndroidApplication>(map['allowedApplications']!, (value) => AndroidApplication.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class TableFieldSchemaPolicyTags {
 
   factory TableFieldSchemaPolicyTags.fromMap(Map<String, dynamic> map) {
     return TableFieldSchemaPolicyTags(
-      names: map['names'] == null ? null : ((map['names'] as List).cast<String>()).input(),
+      names: map['names'] == null ? null : ((map['names']! as List).cast<String>()).input(),
     );
   }
 }

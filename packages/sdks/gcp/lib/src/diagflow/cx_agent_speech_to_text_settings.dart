@@ -20,7 +20,7 @@ class CxAgentSpeechToTextSettings {
 
   factory CxAgentSpeechToTextSettings.fromMap(Map<String, dynamic> map) {
     return CxAgentSpeechToTextSettings(
-      enableSpeechAdaptation: map['enableSpeechAdaptation'] == null ? null : (map['enableSpeechAdaptation'] as bool).input(),
+      enableSpeechAdaptation: map['enableSpeechAdaptation'] == null ? null : (map['enableSpeechAdaptation']! as bool).input(),
     );
   }
 }

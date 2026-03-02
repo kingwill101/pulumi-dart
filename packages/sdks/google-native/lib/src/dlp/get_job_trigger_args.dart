@@ -33,7 +33,7 @@ class GetJobTriggerArgs {
     return GetJobTriggerArgs(
       jobTriggerId: (map['jobTriggerId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class GoogleCloudAiplatformV1NotebookEucConfig {
 
   factory GoogleCloudAiplatformV1NotebookEucConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1NotebookEucConfig(
-      eucDisabled: map['eucDisabled'] == null ? null : (map['eucDisabled'] as bool).input(),
+      eucDisabled: map['eucDisabled'] == null ? null : (map['eucDisabled']! as bool).input(),
     );
   }
 }

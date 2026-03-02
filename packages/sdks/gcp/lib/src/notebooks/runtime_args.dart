@@ -69,13 +69,13 @@ class RuntimeArgs {
 
   factory RuntimeArgs.fromMap(Map<String, dynamic> map) {
     return RuntimeArgs(
-      accessConfig: map['accessConfig'] == null ? null : (RuntimeAccessConfig.fromMap((map['accessConfig'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      accessConfig: map['accessConfig'] == null ? null : (RuntimeAccessConfig.fromMap((map['accessConfig']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      softwareConfig: map['softwareConfig'] == null ? null : (RuntimeSoftwareConfig.fromMap((map['softwareConfig'] as Map).cast<String, dynamic>())).input(),
-      virtualMachine: map['virtualMachine'] == null ? null : (RuntimeVirtualMachine.fromMap((map['virtualMachine'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      softwareConfig: map['softwareConfig'] == null ? null : (RuntimeSoftwareConfig.fromMap((map['softwareConfig']! as Map).cast<String, dynamic>())).input(),
+      virtualMachine: map['virtualMachine'] == null ? null : (RuntimeVirtualMachine.fromMap((map['virtualMachine']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

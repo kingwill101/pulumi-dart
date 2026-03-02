@@ -39,10 +39,10 @@ class MachineAssessmentV2PropertiesResponse {
 
   factory MachineAssessmentV2PropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MachineAssessmentV2PropertiesResponse(
-      details: map['details'] == null ? null : (AssessmentDetailsResponse.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
+      details: map['details'] == null ? null : (AssessmentDetailsResponse.fromMap((map['details']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      scope: map['scope'] == null ? null : (ScopeResponse.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
-      settings: map['settings'] == null ? null : (MachineAssessmentSettingsResponse.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      scope: map['scope'] == null ? null : (ScopeResponse.fromMap((map['scope']! as Map).cast<String, dynamic>())).input(),
+      settings: map['settings'] == null ? null : (MachineAssessmentSettingsResponse.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

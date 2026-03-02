@@ -28,7 +28,7 @@ class ConfigSignInEmail {
   factory ConfigSignInEmail.fromMap(Map<String, dynamic> map) {
     return ConfigSignInEmail(
       enabled: (map['enabled'] as bool).input(),
-      passwordRequired: map['passwordRequired'] == null ? null : (map['passwordRequired'] as bool).input(),
+      passwordRequired: map['passwordRequired'] == null ? null : (map['passwordRequired']! as bool).input(),
     );
   }
 }

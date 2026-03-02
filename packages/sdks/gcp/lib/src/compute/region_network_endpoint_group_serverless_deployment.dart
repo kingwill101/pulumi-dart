@@ -43,9 +43,9 @@ class RegionNetworkEndpointGroupServerlessDeployment {
   factory RegionNetworkEndpointGroupServerlessDeployment.fromMap(Map<String, dynamic> map) {
     return RegionNetworkEndpointGroupServerlessDeployment(
       platform: (map['platform'] as String).input(),
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
-      urlMask: map['urlMask'] == null ? null : (map['urlMask'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
+      urlMask: map['urlMask'] == null ? null : (map['urlMask']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

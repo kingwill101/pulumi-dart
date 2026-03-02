@@ -35,10 +35,10 @@ class DatadogHostResponse {
 
   factory DatadogHostResponse.fromMap(Map<String, dynamic> map) {
     return DatadogHostResponse(
-      aliases: map['aliases'] == null ? null : ((map['aliases'] as List).cast<String>()).input(),
-      apps: map['apps'] == null ? null : ((map['apps'] as List).cast<String>()).input(),
-      meta: map['meta'] == null ? null : (DatadogHostMetadataResponse.fromMap((map['meta'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      aliases: map['aliases'] == null ? null : ((map['aliases']! as List).cast<String>()).input(),
+      apps: map['apps'] == null ? null : ((map['apps']! as List).cast<String>()).input(),
+      meta: map['meta'] == null ? null : (DatadogHostMetadataResponse.fromMap((map['meta']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

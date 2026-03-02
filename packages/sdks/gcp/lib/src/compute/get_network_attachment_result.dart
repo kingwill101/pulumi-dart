@@ -92,7 +92,7 @@ class GetNetworkAttachmentResult {
       network: map['network'] as String,
       producerAcceptLists: (map['producerAcceptLists'] as List).cast<String>(),
       producerRejectLists: (map['producerRejectLists'] as List).cast<String>(),
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       region: map['region'] as String,
       selfLink: map['selfLink'] as String,
       selfLinkWithId: map['selfLinkWithId'] as String,

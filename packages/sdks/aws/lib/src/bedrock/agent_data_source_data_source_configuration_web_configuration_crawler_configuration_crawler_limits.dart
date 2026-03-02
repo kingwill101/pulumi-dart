@@ -25,8 +25,8 @@ class AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration
 
   factory AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfigurationCrawlerLimits.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfigurationCrawlerLimits(
-      maxPages: map['maxPages'] == null ? null : (map['maxPages'] as int).input(),
-      rateLimit: map['rateLimit'] == null ? null : (map['rateLimit'] as int).input(),
+      maxPages: map['maxPages'] == null ? null : ((map['maxPages'] as int).input()).input(),
+      rateLimit: map['rateLimit'] == null ? null : ((map['rateLimit'] as int).input()).input(),
     );
   }
 }

@@ -74,17 +74,17 @@ class SecurityActionConditionConfig {
 
   factory SecurityActionConditionConfig.fromMap(Map<String, dynamic> map) {
     return SecurityActionConditionConfig(
-      accessTokens: map['accessTokens'] == null ? null : ((map['accessTokens'] as List).cast<String>()).input(),
-      apiKeys: map['apiKeys'] == null ? null : ((map['apiKeys'] as List).cast<String>()).input(),
-      apiProducts: map['apiProducts'] == null ? null : ((map['apiProducts'] as List).cast<String>()).input(),
-      asns: map['asns'] == null ? null : ((map['asns'] as List).cast<String>()).input(),
-      botReasons: map['botReasons'] == null ? null : ((map['botReasons'] as List).cast<String>()).input(),
-      developerApps: map['developerApps'] == null ? null : ((map['developerApps'] as List).cast<String>()).input(),
-      developers: map['developers'] == null ? null : ((map['developers'] as List).cast<String>()).input(),
-      httpMethods: map['httpMethods'] == null ? null : ((map['httpMethods'] as List).cast<String>()).input(),
-      ipAddressRanges: map['ipAddressRanges'] == null ? null : ((map['ipAddressRanges'] as List).cast<String>()).input(),
-      regionCodes: map['regionCodes'] == null ? null : ((map['regionCodes'] as List).cast<String>()).input(),
-      userAgents: map['userAgents'] == null ? null : ((map['userAgents'] as List).cast<String>()).input(),
+      accessTokens: map['accessTokens'] == null ? null : ((map['accessTokens']! as List).cast<String>()).input(),
+      apiKeys: map['apiKeys'] == null ? null : ((map['apiKeys']! as List).cast<String>()).input(),
+      apiProducts: map['apiProducts'] == null ? null : ((map['apiProducts']! as List).cast<String>()).input(),
+      asns: map['asns'] == null ? null : ((map['asns']! as List).cast<String>()).input(),
+      botReasons: map['botReasons'] == null ? null : ((map['botReasons']! as List).cast<String>()).input(),
+      developerApps: map['developerApps'] == null ? null : ((map['developerApps']! as List).cast<String>()).input(),
+      developers: map['developers'] == null ? null : ((map['developers']! as List).cast<String>()).input(),
+      httpMethods: map['httpMethods'] == null ? null : ((map['httpMethods']! as List).cast<String>()).input(),
+      ipAddressRanges: map['ipAddressRanges'] == null ? null : ((map['ipAddressRanges']! as List).cast<String>()).input(),
+      regionCodes: map['regionCodes'] == null ? null : ((map['regionCodes']! as List).cast<String>()).input(),
+      userAgents: map['userAgents'] == null ? null : ((map['userAgents']! as List).cast<String>()).input(),
     );
   }
 }

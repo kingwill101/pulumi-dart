@@ -31,8 +31,8 @@ class JobStepActionResponse {
 
   factory JobStepActionResponse.fromMap(Map<String, dynamic> map) {
     return JobStepActionResponse(
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
       value: (map['value'] as String).input(),
     );
   }

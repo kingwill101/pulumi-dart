@@ -26,7 +26,7 @@ class AppTemplateTcpScaleRuleAuthentication {
   factory AppTemplateTcpScaleRuleAuthentication.fromMap(Map<String, dynamic> map) {
     return AppTemplateTcpScaleRuleAuthentication(
       secretName: (map['secretName'] as String).input(),
-      triggerParameter: map['triggerParameter'] == null ? null : (map['triggerParameter'] as String).input(),
+      triggerParameter: map['triggerParameter'] == null ? null : (map['triggerParameter']! as String).input(),
     );
   }
 }

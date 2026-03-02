@@ -33,9 +33,9 @@ class CentralServerFullResourceNamesResponse {
 
   factory CentralServerFullResourceNamesResponse.fromMap(Map<String, dynamic> map) {
     return CentralServerFullResourceNamesResponse(
-      availabilitySetName: map['availabilitySetName'] == null ? null : (map['availabilitySetName'] as String).input(),
-      loadBalancer: map['loadBalancer'] == null ? null : (LoadBalancerResourceNamesResponse.fromMap((map['loadBalancer'] as Map).cast<String, dynamic>())).input(),
-      virtualMachines: map['virtualMachines'] == null ? null : (pulumi.Input.decodeList<VirtualMachineResourceNamesResponse>(map['virtualMachines'], (value) => VirtualMachineResourceNamesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      availabilitySetName: map['availabilitySetName'] == null ? null : (map['availabilitySetName']! as String).input(),
+      loadBalancer: map['loadBalancer'] == null ? null : (LoadBalancerResourceNamesResponse.fromMap((map['loadBalancer']! as Map).cast<String, dynamic>())).input(),
+      virtualMachines: map['virtualMachines'] == null ? null : (pulumi.Input.decodeList<VirtualMachineResourceNamesResponse>(map['virtualMachines']!, (value) => VirtualMachineResourceNamesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

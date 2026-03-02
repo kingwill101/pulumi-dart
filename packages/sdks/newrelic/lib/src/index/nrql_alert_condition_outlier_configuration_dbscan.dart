@@ -31,7 +31,7 @@ class NrqlAlertConditionOutlierConfigurationDbscan {
   factory NrqlAlertConditionOutlierConfigurationDbscan.fromMap(Map<String, dynamic> map) {
     return NrqlAlertConditionOutlierConfigurationDbscan(
       epsilon: (map['epsilon'] as double).input(),
-      evaluationGroupFacet: map['evaluationGroupFacet'] == null ? null : (map['evaluationGroupFacet'] as String).input(),
+      evaluationGroupFacet: map['evaluationGroupFacet'] == null ? null : (map['evaluationGroupFacet']! as String).input(),
       minimumPoints: (map['minimumPoints'] as int).input(),
     );
   }

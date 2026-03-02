@@ -28,8 +28,8 @@ class NetworkProfile {
 
   factory NetworkProfile.fromMap(Map<String, dynamic> map) {
     return NetworkProfile(
-      applicationGateway: map['applicationGateway'] == null ? null : (ApplicationGateway.fromMap((map['applicationGateway'] as Map).cast<String, dynamic>())).input(),
-      loadBalancer: map['loadBalancer'] == null ? null : (LoadBalancer.fromMap((map['loadBalancer'] as Map).cast<String, dynamic>())).input(),
+      applicationGateway: map['applicationGateway'] == null ? null : (ApplicationGateway.fromMap((map['applicationGateway']! as Map).cast<String, dynamic>())).input(),
+      loadBalancer: map['loadBalancer'] == null ? null : (LoadBalancer.fromMap((map['loadBalancer']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

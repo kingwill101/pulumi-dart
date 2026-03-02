@@ -20,7 +20,7 @@ class BareMetalAdminClusterClusterOperations {
 
   factory BareMetalAdminClusterClusterOperations.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterClusterOperations(
-      enableApplicationLogs: map['enableApplicationLogs'] == null ? null : (map['enableApplicationLogs'] as bool).input(),
+      enableApplicationLogs: map['enableApplicationLogs'] == null ? null : (map['enableApplicationLogs']! as bool).input(),
     );
   }
 }

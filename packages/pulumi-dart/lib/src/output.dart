@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'resource/resource.dart';
+import 'input.dart';
 
 /// {@template pulumi.output.summary}
 /// A Pulumi output value with dependency and secrecy metadata.
@@ -31,10 +32,13 @@ import 'resource/resource.dart';
 /// ```
 /// {@endtemplate}
 ///
-class Output<T> {
+class Output<T> implements Input<T> {
   final Future<OutputData<T>> _dataFuture;
 
   Output(this._dataFuture);
+
+  @override
+  Output<T> toOutput() => this;
 
   /// Creates a known, non-secret output from a plain value.
   static Output<T> create<T>(T value) {

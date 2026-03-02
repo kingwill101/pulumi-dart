@@ -54,12 +54,12 @@ class TrialArgs {
 
   factory TrialArgs.fromMap(Map<String, dynamic> map) {
     return TrialArgs(
-      finalMeasurement: map['finalMeasurement'] == null ? null : (GoogleCloudMlV1Measurement.fromMap((map['finalMeasurement'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      measurements: map['measurements'] == null ? null : (pulumi.Input.decodeList<GoogleCloudMlV1Measurement>(map['measurements'], (value) => GoogleCloudMlV1Measurement.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<GoogleCloudMlV1TrialParameter>(map['parameters'], (value) => GoogleCloudMlV1TrialParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      state: map['state'] == null ? null : (TrialState.fromValue(map['state'] as String)).input(),
+      finalMeasurement: map['finalMeasurement'] == null ? null : (GoogleCloudMlV1Measurement.fromMap((map['finalMeasurement']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      measurements: map['measurements'] == null ? null : (pulumi.Input.decodeList<GoogleCloudMlV1Measurement>(map['measurements']!, (value) => GoogleCloudMlV1Measurement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<GoogleCloudMlV1TrialParameter>(map['parameters']!, (value) => GoogleCloudMlV1TrialParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      state: map['state'] == null ? null : (TrialState.fromValue(map['state']! as String)).input(),
       studyId: (map['studyId'] as String).input(),
     );
   }

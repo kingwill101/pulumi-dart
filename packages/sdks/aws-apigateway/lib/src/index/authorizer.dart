@@ -89,17 +89,17 @@ class Authorizer {
 
   factory Authorizer.fromMap(Map<String, dynamic> map) {
     return Authorizer(
-      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
-      authorizerName: map['authorizerName'] == null ? null : (map['authorizerName'] as String).input(),
-      authorizerResultTtlInSeconds: map['authorizerResultTtlInSeconds'] == null ? null : (map['authorizerResultTtlInSeconds'] as double).input(),
-      handler: map['handler'] == null ? null : (map['handler'] as pulumi_aws_lambda.FunctionType).input(),
-      identitySource: map['identitySource'] == null ? null : ((map['identitySource'] as List).cast<String>()).input(),
-      identityValidationExpression: map['identityValidationExpression'] == null ? null : (map['identityValidationExpression'] as String).input(),
-      methodsToAuthorize: map['methodsToAuthorize'] == null ? null : ((map['methodsToAuthorize'] as List).cast<String>()).input(),
-      parameterLocation: map['parameterLocation'] == null ? null : (map['parameterLocation'] as String).input(),
+      authType: map['authType'] == null ? null : (map['authType']! as String).input(),
+      authorizerName: map['authorizerName'] == null ? null : (map['authorizerName']! as String).input(),
+      authorizerResultTtlInSeconds: map['authorizerResultTtlInSeconds'] == null ? null : (map['authorizerResultTtlInSeconds']! as double).input(),
+      handler: map['handler'] == null ? null : (map['handler']! as pulumi_aws_lambda.FunctionType).input(),
+      identitySource: map['identitySource'] == null ? null : ((map['identitySource']! as List).cast<String>()).input(),
+      identityValidationExpression: map['identityValidationExpression'] == null ? null : (map['identityValidationExpression']! as String).input(),
+      methodsToAuthorize: map['methodsToAuthorize'] == null ? null : ((map['methodsToAuthorize']! as List).cast<String>()).input(),
+      parameterLocation: map['parameterLocation'] == null ? null : (map['parameterLocation']! as String).input(),
       parameterName: (map['parameterName'] as String).input(),
-      providerARNs: map['providerARNs'] == null ? null : ((map['providerARNs'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      providerARNs: map['providerARNs'] == null ? null : ((map['providerARNs']! as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class VirtualNetworkPropertiesResponseRoutes {
 
   factory VirtualNetworkPropertiesResponseRoutes.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkPropertiesResponseRoutes(
-      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nextHopIpAddress: map['nextHopIpAddress'] == null ? null : (map['nextHopIpAddress'] as String).input(),
+      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nextHopIpAddress: map['nextHopIpAddress'] == null ? null : (map['nextHopIpAddress']! as String).input(),
     );
   }
 }

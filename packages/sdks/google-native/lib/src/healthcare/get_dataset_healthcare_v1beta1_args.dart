@@ -33,7 +33,7 @@ class GetDatasetHealthcareV1beta1Args {
     return GetDatasetHealthcareV1beta1Args(
       datasetId: (map['datasetId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -43,7 +43,7 @@ class ListWebAppAzureStorageAccountsResult {
   factory ListWebAppAzureStorageAccountsResult.fromMap(Map<String, dynamic> map) {
     return ListWebAppAzureStorageAccountsResult(
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
       properties: pulumi.Input.decodeMapValues<AzureStorageInfoValueResponse>(map['properties'], (value) => AzureStorageInfoValueResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,

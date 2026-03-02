@@ -25,8 +25,8 @@ class InterfacePublicIpv4Shared {
 
   factory InterfacePublicIpv4Shared.fromMap(Map<String, dynamic> map) {
     return InterfacePublicIpv4Shared(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      linodeId: map['linodeId'] == null ? null : (map['linodeId'] as int).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      linodeId: map['linodeId'] == null ? null : (map['linodeId']! as int).input(),
     );
   }
 }

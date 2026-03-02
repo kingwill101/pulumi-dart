@@ -31,9 +31,9 @@ class DistributionConfigurationDistributionContainerDistributionConfiguration {
 
   factory DistributionConfigurationDistributionContainerDistributionConfiguration.fromMap(Map<String, dynamic> map) {
     return DistributionConfigurationDistributionContainerDistributionConfiguration(
-      containerTags: map['containerTags'] == null ? null : ((map['containerTags'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      targetRepository: (DistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository.fromMap((map['targetRepository'] as Map).cast<String, dynamic>())).input(),
+      containerTags: map['containerTags'] == null ? null : (((map['containerTags'] as List).cast<String>()).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      targetRepository: (DistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository.fromMap((map['targetRepository']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

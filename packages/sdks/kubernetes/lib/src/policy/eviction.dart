@@ -38,10 +38,10 @@ class Eviction {
 
   factory Eviction.fromMap(Map<String, dynamic> map) {
     return Eviction(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      deleteOptions: map['deleteOptions'] == null ? null : (DeleteOptions.fromMap((map['deleteOptions'] as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      deleteOptions: map['deleteOptions'] == null ? null : (DeleteOptions.fromMap((map['deleteOptions']! as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

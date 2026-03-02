@@ -40,11 +40,11 @@ class ServiceMeshLoadBalancer {
 
   factory ServiceMeshLoadBalancer.fromMap(Map<String, dynamic> map) {
     return ServiceMeshLoadBalancer(
-      apiServerLoadbalancerId: map['apiServerLoadbalancerId'] == null ? null : (map['apiServerLoadbalancerId'] as String).input(),
-      apiServerPublicEip: map['apiServerPublicEip'] == null ? null : (map['apiServerPublicEip'] as bool).input(),
-      pilotPublicEip: map['pilotPublicEip'] == null ? null : (map['pilotPublicEip'] as bool).input(),
-      pilotPublicEipId: map['pilotPublicEipId'] == null ? null : (map['pilotPublicEipId'] as String).input(),
-      pilotPublicLoadbalancerId: map['pilotPublicLoadbalancerId'] == null ? null : (map['pilotPublicLoadbalancerId'] as String).input(),
+      apiServerLoadbalancerId: map['apiServerLoadbalancerId'] == null ? null : (map['apiServerLoadbalancerId']! as String).input(),
+      apiServerPublicEip: map['apiServerPublicEip'] == null ? null : (map['apiServerPublicEip']! as bool).input(),
+      pilotPublicEip: map['pilotPublicEip'] == null ? null : (map['pilotPublicEip']! as bool).input(),
+      pilotPublicEipId: map['pilotPublicEipId'] == null ? null : (map['pilotPublicEipId']! as String).input(),
+      pilotPublicLoadbalancerId: map['pilotPublicLoadbalancerId'] == null ? null : (map['pilotPublicLoadbalancerId']! as String).input(),
     );
   }
 }

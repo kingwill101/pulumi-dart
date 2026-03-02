@@ -30,7 +30,7 @@ class ServiceSourceConfigurationCodeRepositoryCodeConfiguration {
 
   factory ServiceSourceConfigurationCodeRepositoryCodeConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceSourceConfigurationCodeRepositoryCodeConfiguration(
-      codeConfigurationValues: map['codeConfigurationValues'] == null ? null : (ServiceSourceConfigurationCodeRepositoryCodeConfigurationCodeConfigurationValues.fromMap((map['codeConfigurationValues'] as Map).cast<String, dynamic>())).input(),
+      codeConfigurationValues: map['codeConfigurationValues'] == null ? null : ((ServiceSourceConfigurationCodeRepositoryCodeConfigurationCodeConfigurationValues.fromMap((map['codeConfigurationValues']! as Map).cast<String, dynamic>())).input()).input(),
       configurationSource: (map['configurationSource'] as String).input(),
     );
   }

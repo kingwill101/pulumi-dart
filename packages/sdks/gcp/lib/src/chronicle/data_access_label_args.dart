@@ -54,10 +54,10 @@ class DataAccessLabelArgs {
   factory DataAccessLabelArgs.fromMap(Map<String, dynamic> map) {
     return DataAccessLabelArgs(
       dataAccessLabelId: (map['dataAccessLabelId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       instance: (map['instance'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       udmQuery: (map['udmQuery'] as String).input(),
     );
   }

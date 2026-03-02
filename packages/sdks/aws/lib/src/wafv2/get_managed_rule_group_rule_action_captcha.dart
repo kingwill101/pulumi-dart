@@ -20,7 +20,7 @@ class GetManagedRuleGroupRuleActionCaptcha {
 
   factory GetManagedRuleGroupRuleActionCaptcha.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupRuleActionCaptcha(
-      customRequestHandlings: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionCaptchaCustomRequestHandling>(map['customRequestHandlings'], (value) => GetManagedRuleGroupRuleActionCaptchaCustomRequestHandling.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customRequestHandlings: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionCaptchaCustomRequestHandling>(map['customRequestHandlings']!, (value) => GetManagedRuleGroupRuleActionCaptchaCustomRequestHandling.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

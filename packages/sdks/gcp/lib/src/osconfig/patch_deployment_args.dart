@@ -81,15 +81,15 @@ class PatchDeploymentArgs {
 
   factory PatchDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
       instanceFilter: (PatchDeploymentInstanceFilter.fromMap((map['instanceFilter'] as Map).cast<String, dynamic>())).input(),
-      oneTimeSchedule: map['oneTimeSchedule'] == null ? null : (PatchDeploymentOneTimeSchedule.fromMap((map['oneTimeSchedule'] as Map).cast<String, dynamic>())).input(),
-      patchConfig: map['patchConfig'] == null ? null : (PatchDeploymentPatchConfig.fromMap((map['patchConfig'] as Map).cast<String, dynamic>())).input(),
+      oneTimeSchedule: map['oneTimeSchedule'] == null ? null : (PatchDeploymentOneTimeSchedule.fromMap((map['oneTimeSchedule']! as Map).cast<String, dynamic>())).input(),
+      patchConfig: map['patchConfig'] == null ? null : (PatchDeploymentPatchConfig.fromMap((map['patchConfig']! as Map).cast<String, dynamic>())).input(),
       patchDeploymentId: (map['patchDeploymentId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      recurringSchedule: map['recurringSchedule'] == null ? null : (PatchDeploymentRecurringSchedule.fromMap((map['recurringSchedule'] as Map).cast<String, dynamic>())).input(),
-      rollout: map['rollout'] == null ? null : (PatchDeploymentRollout.fromMap((map['rollout'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      recurringSchedule: map['recurringSchedule'] == null ? null : (PatchDeploymentRecurringSchedule.fromMap((map['recurringSchedule']! as Map).cast<String, dynamic>())).input(),
+      rollout: map['rollout'] == null ? null : (PatchDeploymentRollout.fromMap((map['rollout']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

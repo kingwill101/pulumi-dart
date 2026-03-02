@@ -33,8 +33,8 @@ class RouteConfigurationOverrideActionParametersResponse {
 
   factory RouteConfigurationOverrideActionParametersResponse.fromMap(Map<String, dynamic> map) {
     return RouteConfigurationOverrideActionParametersResponse(
-      cacheConfiguration: map['cacheConfiguration'] == null ? null : (CacheConfigurationResponse.fromMap((map['cacheConfiguration'] as Map).cast<String, dynamic>())).input(),
-      originGroupOverride: map['originGroupOverride'] == null ? null : (OriginGroupOverrideResponse.fromMap((map['originGroupOverride'] as Map).cast<String, dynamic>())).input(),
+      cacheConfiguration: map['cacheConfiguration'] == null ? null : (CacheConfigurationResponse.fromMap((map['cacheConfiguration']! as Map).cast<String, dynamic>())).input(),
+      originGroupOverride: map['originGroupOverride'] == null ? null : (OriginGroupOverrideResponse.fromMap((map['originGroupOverride']! as Map).cast<String, dynamic>())).input(),
       typeName: (map['typeName'] as String).input(),
     );
   }

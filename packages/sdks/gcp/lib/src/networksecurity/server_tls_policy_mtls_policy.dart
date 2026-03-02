@@ -37,9 +37,9 @@ class ServerTlsPolicyMtlsPolicy {
 
   factory ServerTlsPolicyMtlsPolicy.fromMap(Map<String, dynamic> map) {
     return ServerTlsPolicyMtlsPolicy(
-      clientValidationCas: map['clientValidationCas'] == null ? null : (pulumi.Input.decodeList<ServerTlsPolicyMtlsPolicyClientValidationCa>(map['clientValidationCas'], (value) => ServerTlsPolicyMtlsPolicyClientValidationCa.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      clientValidationMode: map['clientValidationMode'] == null ? null : (map['clientValidationMode'] as String).input(),
-      clientValidationTrustConfig: map['clientValidationTrustConfig'] == null ? null : (map['clientValidationTrustConfig'] as String).input(),
+      clientValidationCas: map['clientValidationCas'] == null ? null : (pulumi.Input.decodeList<ServerTlsPolicyMtlsPolicyClientValidationCa>(map['clientValidationCas']!, (value) => ServerTlsPolicyMtlsPolicyClientValidationCa.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientValidationMode: map['clientValidationMode'] == null ? null : (map['clientValidationMode']! as String).input(),
+      clientValidationTrustConfig: map['clientValidationTrustConfig'] == null ? null : (map['clientValidationTrustConfig']! as String).input(),
     );
   }
 }

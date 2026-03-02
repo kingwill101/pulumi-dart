@@ -25,7 +25,7 @@ class InstancePrimaryNetworkInterface {
 
   factory InstancePrimaryNetworkInterface.fromMap(Map<String, dynamic> map) {
     return InstancePrimaryNetworkInterface(
-      deleteOnTermination: map['deleteOnTermination'] == null ? null : (map['deleteOnTermination'] as bool).input(),
+      deleteOnTermination: map['deleteOnTermination'] == null ? null : ((map['deleteOnTermination'] as bool).input()).input(),
       networkInterfaceId: (map['networkInterfaceId'] as String).input(),
     );
   }

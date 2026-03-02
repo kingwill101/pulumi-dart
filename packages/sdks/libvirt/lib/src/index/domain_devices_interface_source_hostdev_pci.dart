@@ -26,8 +26,8 @@ class DomainDevicesInterfaceSourceHostdevPci {
 
   factory DomainDevicesInterfaceSourceHostdevPci.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceHostdevPci(
-      address: map['address'] == null ? null : (DomainDevicesInterfaceSourceHostdevPciAddress.fromMap((map['address'] as Map).cast<String, dynamic>())).input(),
-      writeFiltering: map['writeFiltering'] == null ? null : (map['writeFiltering'] as String).input(),
+      address: map['address'] == null ? null : (DomainDevicesInterfaceSourceHostdevPciAddress.fromMap((map['address']! as Map).cast<String, dynamic>())).input(),
+      writeFiltering: map['writeFiltering'] == null ? null : (map['writeFiltering']! as String).input(),
     );
   }
 }

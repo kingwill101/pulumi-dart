@@ -32,9 +32,9 @@ class AwsEc2NetworkAclPropertiesResponse {
 
   factory AwsEc2NetworkAclPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsEc2NetworkAclPropertiesResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

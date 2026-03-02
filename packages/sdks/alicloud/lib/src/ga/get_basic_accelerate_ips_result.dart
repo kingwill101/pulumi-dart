@@ -55,14 +55,14 @@ class GetBasicAccelerateIpsResult {
 
   factory GetBasicAccelerateIpsResult.fromMap(Map<String, dynamic> map) {
     return GetBasicAccelerateIpsResult(
-      accelerateIpAddress: map['accelerateIpAddress'] == null ? null : map['accelerateIpAddress'] as String,
-      accelerateIpId: map['accelerateIpId'] == null ? null : map['accelerateIpId'] as String,
+      accelerateIpAddress: map['accelerateIpAddress'] == null ? null : map['accelerateIpAddress']! as String,
+      accelerateIpId: map['accelerateIpId'] == null ? null : map['accelerateIpId']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       ipSetId: map['ipSetId'] as String,
       ips: pulumi.Input.decodeList<GetBasicAccelerateIpsIp>(map['ips'], (value) => GetBasicAccelerateIpsIp.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

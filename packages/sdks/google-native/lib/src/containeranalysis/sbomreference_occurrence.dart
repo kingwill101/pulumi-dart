@@ -33,9 +33,9 @@ class SBOMReferenceOccurrence {
 
   factory SBOMReferenceOccurrence.fromMap(Map<String, dynamic> map) {
     return SBOMReferenceOccurrence(
-      payload: map['payload'] == null ? null : (SbomReferenceIntotoPayload.fromMap((map['payload'] as Map).cast<String, dynamic>())).input(),
-      payloadType: map['payloadType'] == null ? null : (map['payloadType'] as String).input(),
-      signatures: map['signatures'] == null ? null : (pulumi.Input.decodeList<EnvelopeSignature>(map['signatures'], (value) => EnvelopeSignature.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      payload: map['payload'] == null ? null : (SbomReferenceIntotoPayload.fromMap((map['payload']! as Map).cast<String, dynamic>())).input(),
+      payloadType: map['payloadType'] == null ? null : (map['payloadType']! as String).input(),
+      signatures: map['signatures'] == null ? null : (pulumi.Input.decodeList<EnvelopeSignature>(map['signatures']!, (value) => EnvelopeSignature.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

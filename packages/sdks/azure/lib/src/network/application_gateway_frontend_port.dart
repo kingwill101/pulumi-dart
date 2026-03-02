@@ -30,7 +30,7 @@ class ApplicationGatewayFrontendPort {
 
   factory ApplicationGatewayFrontendPort.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayFrontendPort(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       name: (map['name'] as String).input(),
       port: (map['port'] as int).input(),
     );

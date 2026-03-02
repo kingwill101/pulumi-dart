@@ -37,7 +37,7 @@ class GetSupportedDatabaseFlagsResult {
     return GetSupportedDatabaseFlagsResult(
       id: map['id'] as String,
       location: map['location'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       supportedDatabaseFlags: pulumi.Input.decodeList<GetSupportedDatabaseFlagsSupportedDatabaseFlag>(map['supportedDatabaseFlags'], (value) => GetSupportedDatabaseFlagsSupportedDatabaseFlag.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

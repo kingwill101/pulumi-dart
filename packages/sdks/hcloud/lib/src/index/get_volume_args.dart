@@ -53,13 +53,13 @@ class GetVolumeArgs {
 
   factory GetVolumeArgs.fromMap(Map<String, dynamic> map) {
     return GetVolumeArgs(
-      id: map['id'] == null ? null : (map['id'] as int).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as int).input(),
-      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
-      withStatuses: map['withStatuses'] == null ? null : ((map['withStatuses'] as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId']! as int).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
+      withStatuses: map['withStatuses'] == null ? null : ((map['withStatuses']! as List).cast<String>()).input(),
     );
   }
 }

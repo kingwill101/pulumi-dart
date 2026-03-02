@@ -27,8 +27,8 @@ class NodeSelectorTermPatch {
 
   factory NodeSelectorTermPatch.fromMap(Map<String, dynamic> map) {
     return NodeSelectorTermPatch(
-      matchExpressions: map['matchExpressions'] == null ? null : (pulumi.Input.decodeList<NodeSelectorRequirementPatch>(map['matchExpressions'], (value) => NodeSelectorRequirementPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matchFields: map['matchFields'] == null ? null : (pulumi.Input.decodeList<NodeSelectorRequirementPatch>(map['matchFields'], (value) => NodeSelectorRequirementPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchExpressions: map['matchExpressions'] == null ? null : (pulumi.Input.decodeList<NodeSelectorRequirementPatch>(map['matchExpressions']!, (value) => NodeSelectorRequirementPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchFields: map['matchFields'] == null ? null : (pulumi.Input.decodeList<NodeSelectorRequirementPatch>(map['matchFields']!, (value) => NodeSelectorRequirementPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

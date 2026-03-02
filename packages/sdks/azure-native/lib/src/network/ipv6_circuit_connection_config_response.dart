@@ -26,7 +26,7 @@ class Ipv6CircuitConnectionConfigResponse {
 
   factory Ipv6CircuitConnectionConfigResponse.fromMap(Map<String, dynamic> map) {
     return Ipv6CircuitConnectionConfigResponse(
-      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix'] as String).input(),
+      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix']! as String).input(),
       circuitConnectionStatus: (map['circuitConnectionStatus'] as String).input(),
     );
   }

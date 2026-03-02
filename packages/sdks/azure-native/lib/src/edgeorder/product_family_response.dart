@@ -83,7 +83,7 @@ class ProductFamilyResponse {
       hierarchyInformation: (HierarchyInformationResponse.fromMap((map['hierarchyInformation'] as Map).cast<String, dynamic>())).input(),
       imageInformation: (pulumi.Input.decodeList<ImageInformationResponse>(map['imageInformation'], (value) => ImageInformationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       productLines: (pulumi.Input.decodeList<ProductLineResponse>(map['productLines'], (value) => ProductLineResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceProviderDetails: map['resourceProviderDetails'] == null ? null : (pulumi.Input.decodeList<ResourceProviderDetailsResponse>(map['resourceProviderDetails'], (value) => ResourceProviderDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceProviderDetails: map['resourceProviderDetails'] == null ? null : (pulumi.Input.decodeList<ResourceProviderDetailsResponse>(map['resourceProviderDetails']!, (value) => ResourceProviderDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

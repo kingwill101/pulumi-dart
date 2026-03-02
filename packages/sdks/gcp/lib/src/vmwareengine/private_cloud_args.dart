@@ -70,15 +70,15 @@ class PrivateCloudArgs {
 
   factory PrivateCloudArgs.fromMap(Map<String, dynamic> map) {
     return PrivateCloudArgs(
-      deletionDelayHours: map['deletionDelayHours'] == null ? null : (map['deletionDelayHours'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      deletionDelayHours: map['deletionDelayHours'] == null ? null : (map['deletionDelayHours']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       location: (map['location'] as String).input(),
       managementCluster: (PrivateCloudManagementCluster.fromMap((map['managementCluster'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networkConfig: (PrivateCloudNetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      sendDeletionDelayHoursIfZero: map['sendDeletionDelayHoursIfZero'] == null ? null : (map['sendDeletionDelayHoursIfZero'] as bool).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      sendDeletionDelayHoursIfZero: map['sendDeletionDelayHoursIfZero'] == null ? null : (map['sendDeletionDelayHoursIfZero']! as bool).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

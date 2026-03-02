@@ -27,8 +27,8 @@ class ClassificationJobS3JobDefinitionScoping {
 
   factory ClassificationJobS3JobDefinitionScoping.fromMap(Map<String, dynamic> map) {
     return ClassificationJobS3JobDefinitionScoping(
-      excludes: map['excludes'] == null ? null : (ClassificationJobS3JobDefinitionScopingExcludes.fromMap((map['excludes'] as Map).cast<String, dynamic>())).input(),
-      includes: map['includes'] == null ? null : (ClassificationJobS3JobDefinitionScopingIncludes.fromMap((map['includes'] as Map).cast<String, dynamic>())).input(),
+      excludes: map['excludes'] == null ? null : ((ClassificationJobS3JobDefinitionScopingExcludes.fromMap((map['excludes']! as Map).cast<String, dynamic>())).input()).input(),
+      includes: map['includes'] == null ? null : ((ClassificationJobS3JobDefinitionScopingIncludes.fromMap((map['includes']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class RegionInstanceGroupManagerInstanceFlexibilityPolicy {
 
   factory RegionInstanceGroupManagerInstanceFlexibilityPolicy.fromMap(Map<String, dynamic> map) {
     return RegionInstanceGroupManagerInstanceFlexibilityPolicy(
-      instanceSelections: map['instanceSelections'] == null ? null : (pulumi.Input.decodeList<RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection>(map['instanceSelections'], (value) => RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceSelections: map['instanceSelections'] == null ? null : (pulumi.Input.decodeList<RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection>(map['instanceSelections']!, (value) => RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

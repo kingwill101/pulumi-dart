@@ -40,10 +40,10 @@ class ActivityArgs {
 
   factory ActivityArgs.fromMap(Map<String, dynamic> map) {
     return ActivityArgs(
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (ActivityEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : ((ActivityEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

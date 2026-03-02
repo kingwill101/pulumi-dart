@@ -26,8 +26,8 @@ class AndroidApplication {
 
   factory AndroidApplication.fromMap(Map<String, dynamic> map) {
     return AndroidApplication(
-      packageName: map['packageName'] == null ? null : (map['packageName'] as String).input(),
-      sha1Fingerprint: map['sha1Fingerprint'] == null ? null : (map['sha1Fingerprint'] as String).input(),
+      packageName: map['packageName'] == null ? null : (map['packageName']! as String).input(),
+      sha1Fingerprint: map['sha1Fingerprint'] == null ? null : (map['sha1Fingerprint']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class FullTextPolicyResponse {
 
   factory FullTextPolicyResponse.fromMap(Map<String, dynamic> map) {
     return FullTextPolicyResponse(
-      defaultLanguage: map['defaultLanguage'] == null ? null : (map['defaultLanguage'] as String).input(),
-      fullTextPaths: map['fullTextPaths'] == null ? null : (pulumi.Input.decodeList<FullTextPathResponse>(map['fullTextPaths'], (value) => FullTextPathResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultLanguage: map['defaultLanguage'] == null ? null : (map['defaultLanguage']! as String).input(),
+      fullTextPaths: map['fullTextPaths'] == null ? null : (pulumi.Input.decodeList<FullTextPathResponse>(map['fullTextPaths']!, (value) => FullTextPathResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

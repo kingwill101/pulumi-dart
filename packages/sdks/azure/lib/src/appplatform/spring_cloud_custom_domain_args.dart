@@ -39,10 +39,10 @@ class SpringCloudCustomDomainArgs {
 
   factory SpringCloudCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudCustomDomainArgs(
-      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       springCloudAppId: (map['springCloudAppId'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

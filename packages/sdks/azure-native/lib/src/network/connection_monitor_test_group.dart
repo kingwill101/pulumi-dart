@@ -42,7 +42,7 @@ class ConnectionMonitorTestGroup {
   factory ConnectionMonitorTestGroup.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorTestGroup(
       destinations: ((map['destinations'] as List).cast<String>()).input(),
-      disable: map['disable'] == null ? null : (map['disable'] as bool).input(),
+      disable: map['disable'] == null ? null : (map['disable']! as bool).input(),
       name: (map['name'] as String).input(),
       sources: ((map['sources'] as List).cast<String>()).input(),
       testConfigurations: ((map['testConfigurations'] as List).cast<String>()).input(),

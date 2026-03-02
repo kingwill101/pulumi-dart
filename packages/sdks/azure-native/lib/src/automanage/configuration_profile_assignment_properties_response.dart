@@ -31,7 +31,7 @@ class ConfigurationProfileAssignmentPropertiesResponse {
 
   factory ConfigurationProfileAssignmentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationProfileAssignmentPropertiesResponse(
-      configurationProfile: map['configurationProfile'] == null ? null : (map['configurationProfile'] as String).input(),
+      configurationProfile: map['configurationProfile'] == null ? null : (map['configurationProfile']! as String).input(),
       status: (map['status'] as String).input(),
       targetId: (map['targetId'] as String).input(),
     );

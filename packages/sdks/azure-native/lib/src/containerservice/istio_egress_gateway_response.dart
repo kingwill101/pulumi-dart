@@ -37,9 +37,9 @@ class IstioEgressGatewayResponse {
   factory IstioEgressGatewayResponse.fromMap(Map<String, dynamic> map) {
     return IstioEgressGatewayResponse(
       enabled: (map['enabled'] as bool).input(),
-      gatewayConfigurationName: map['gatewayConfigurationName'] == null ? null : (map['gatewayConfigurationName'] as String).input(),
+      gatewayConfigurationName: map['gatewayConfigurationName'] == null ? null : (map['gatewayConfigurationName']! as String).input(),
       name: (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
     );
   }
 }

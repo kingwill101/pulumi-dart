@@ -37,8 +37,8 @@ class GoogleCloudAiplatformV1beta1SavedQuery {
   factory GoogleCloudAiplatformV1beta1SavedQuery.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1SavedQuery(
       displayName: (map['displayName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
       problemType: (map['problemType'] as String).input(),
     );
   }

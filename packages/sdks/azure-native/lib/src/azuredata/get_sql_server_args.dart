@@ -39,7 +39,7 @@ class GetSqlServerArgs {
 
   factory GetSqlServerArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlServerArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sqlServerName: (map['sqlServerName'] as String).input(),
       sqlServerRegistrationName: (map['sqlServerRegistrationName'] as String).input(),

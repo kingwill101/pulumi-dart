@@ -41,9 +41,9 @@ class MirroringEndpointGroupAssociation {
 
   factory MirroringEndpointGroupAssociation.fromMap(Map<String, dynamic> map) {
     return MirroringEndpointGroupAssociation(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

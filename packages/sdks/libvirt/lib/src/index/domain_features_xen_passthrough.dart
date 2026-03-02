@@ -25,8 +25,8 @@ class DomainFeaturesXenPassthrough {
 
   factory DomainFeaturesXenPassthrough.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesXenPassthrough(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

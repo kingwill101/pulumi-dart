@@ -40,10 +40,10 @@ class LoggingConfigurationArgs {
 
   factory LoggingConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return LoggingConfigurationArgs(
-      enableMonitoringDashboard: map['enableMonitoringDashboard'] == null ? null : (map['enableMonitoringDashboard'] as bool).input(),
+      enableMonitoringDashboard: map['enableMonitoringDashboard'] == null ? null : ((map['enableMonitoringDashboard'] as bool).input()).input(),
       firewallArn: (map['firewallArn'] as String).input(),
-      loggingConfiguration: (LoggingConfigurationLoggingConfiguration.fromMap((map['loggingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      loggingConfiguration: (LoggingConfigurationLoggingConfiguration.fromMap((map['loggingConfiguration']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

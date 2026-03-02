@@ -35,10 +35,10 @@ class ScaleSetOsProfile {
 
   factory ScaleSetOsProfile.fromMap(Map<String, dynamic> map) {
     return ScaleSetOsProfile(
-      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword'] as String).input(),
+      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword']! as String).input(),
       adminUsername: (map['adminUsername'] as String).input(),
       computerNamePrefix: (map['computerNamePrefix'] as String).input(),
-      customData: map['customData'] == null ? null : (map['customData'] as String).input(),
+      customData: map['customData'] == null ? null : (map['customData']! as String).input(),
     );
   }
 }

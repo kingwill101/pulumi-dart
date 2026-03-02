@@ -65,16 +65,16 @@ class VolumeCluster {
 
   factory VolumeCluster.fromMap(Map<String, dynamic> map) {
     return VolumeCluster(
-      availability: map['availability'] == null ? null : (map['availability'] as String).input(),
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      limitBytes: map['limitBytes'] == null ? null : (map['limitBytes'] as String).input(),
-      requiredBytes: map['requiredBytes'] == null ? null : (map['requiredBytes'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      sharing: map['sharing'] == null ? null : (map['sharing'] as String).input(),
-      topologyPreferred: map['topologyPreferred'] == null ? null : (map['topologyPreferred'] as String).input(),
-      topologyRequired: map['topologyRequired'] == null ? null : (map['topologyRequired'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      availability: map['availability'] == null ? null : (map['availability']! as String).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      limitBytes: map['limitBytes'] == null ? null : (map['limitBytes']! as String).input(),
+      requiredBytes: map['requiredBytes'] == null ? null : (map['requiredBytes']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      sharing: map['sharing'] == null ? null : (map['sharing']! as String).input(),
+      topologyPreferred: map['topologyPreferred'] == null ? null : (map['topologyPreferred']! as String).input(),
+      topologyRequired: map['topologyRequired'] == null ? null : (map['topologyRequired']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

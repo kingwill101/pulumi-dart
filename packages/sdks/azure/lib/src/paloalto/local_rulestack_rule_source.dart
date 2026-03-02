@@ -37,10 +37,10 @@ class LocalRulestackRuleSource {
 
   factory LocalRulestackRuleSource.fromMap(Map<String, dynamic> map) {
     return LocalRulestackRuleSource(
-      cidrs: map['cidrs'] == null ? null : ((map['cidrs'] as List).cast<String>()).input(),
-      countries: map['countries'] == null ? null : ((map['countries'] as List).cast<String>()).input(),
-      feeds: map['feeds'] == null ? null : ((map['feeds'] as List).cast<String>()).input(),
-      localRulestackPrefixListIds: map['localRulestackPrefixListIds'] == null ? null : ((map['localRulestackPrefixListIds'] as List).cast<String>()).input(),
+      cidrs: map['cidrs'] == null ? null : ((map['cidrs']! as List).cast<String>()).input(),
+      countries: map['countries'] == null ? null : ((map['countries']! as List).cast<String>()).input(),
+      feeds: map['feeds'] == null ? null : ((map['feeds']! as List).cast<String>()).input(),
+      localRulestackPrefixListIds: map['localRulestackPrefixListIds'] == null ? null : ((map['localRulestackPrefixListIds']! as List).cast<String>()).input(),
     );
   }
 }

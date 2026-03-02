@@ -30,9 +30,9 @@ class TriggerTumblingWindowTriggerDependency {
 
   factory TriggerTumblingWindowTriggerDependency.fromMap(Map<String, dynamic> map) {
     return TriggerTumblingWindowTriggerDependency(
-      offset: map['offset'] == null ? null : (map['offset'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as String).input(),
-      triggerName: map['triggerName'] == null ? null : (map['triggerName'] as String).input(),
+      offset: map['offset'] == null ? null : (map['offset']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as String).input(),
+      triggerName: map['triggerName'] == null ? null : (map['triggerName']! as String).input(),
     );
   }
 }

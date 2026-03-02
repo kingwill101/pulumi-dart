@@ -40,7 +40,7 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
       properties: (PolicyModelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       vaultName: (map['vaultName'] as String).input(),

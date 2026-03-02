@@ -36,9 +36,9 @@ class CertificateIssuerAdmin {
   factory CertificateIssuerAdmin.fromMap(Map<String, dynamic> map) {
     return CertificateIssuerAdmin(
       emailAddress: (map['emailAddress'] as String).input(),
-      firstName: map['firstName'] == null ? null : (map['firstName'] as String).input(),
-      lastName: map['lastName'] == null ? null : (map['lastName'] as String).input(),
-      phone: map['phone'] == null ? null : (map['phone'] as String).input(),
+      firstName: map['firstName'] == null ? null : (map['firstName']! as String).input(),
+      lastName: map['lastName'] == null ? null : (map['lastName']! as String).input(),
+      phone: map['phone'] == null ? null : (map['phone']! as String).input(),
     );
   }
 }

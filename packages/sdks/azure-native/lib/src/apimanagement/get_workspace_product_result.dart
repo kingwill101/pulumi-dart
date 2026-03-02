@@ -70,16 +70,16 @@ class GetWorkspaceProductResult {
 
   factory GetWorkspaceProductResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceProductResult(
-      approvalRequired: map['approvalRequired'] == null ? null : map['approvalRequired'] as bool,
+      approvalRequired: map['approvalRequired'] == null ? null : map['approvalRequired']! as bool,
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
-      subscriptionRequired: map['subscriptionRequired'] == null ? null : map['subscriptionRequired'] as bool,
-      subscriptionsLimit: map['subscriptionsLimit'] == null ? null : map['subscriptionsLimit'] as int,
-      terms: map['terms'] == null ? null : map['terms'] as String,
+      state: map['state'] == null ? null : map['state']! as String,
+      subscriptionRequired: map['subscriptionRequired'] == null ? null : map['subscriptionRequired']! as bool,
+      subscriptionsLimit: map['subscriptionsLimit'] == null ? null : map['subscriptionsLimit']! as int,
+      terms: map['terms'] == null ? null : map['terms']! as String,
       type: map['type'] as String,
     );
   }

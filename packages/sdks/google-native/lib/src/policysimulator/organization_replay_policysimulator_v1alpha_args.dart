@@ -34,7 +34,7 @@ class OrganizationReplayPolicysimulatorV1alphaArgs {
   factory OrganizationReplayPolicysimulatorV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationReplayPolicysimulatorV1alphaArgs(
       config: (GoogleCloudPolicysimulatorV1alphaReplayConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
     );
   }

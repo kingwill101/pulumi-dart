@@ -26,7 +26,7 @@ class GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfig {
 
   factory GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfig(
-      idleShutdownDisabled: map['idleShutdownDisabled'] == null ? null : (map['idleShutdownDisabled'] as bool).input(),
+      idleShutdownDisabled: map['idleShutdownDisabled'] == null ? null : (map['idleShutdownDisabled']! as bool).input(),
       idleTimeout: (map['idleTimeout'] as String).input(),
     );
   }

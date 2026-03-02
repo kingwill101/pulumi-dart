@@ -26,8 +26,8 @@ class HostEntryResponse {
 
   factory HostEntryResponse.fromMap(Map<String, dynamic> map) {
     return HostEntryResponse(
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
     );
   }
 }

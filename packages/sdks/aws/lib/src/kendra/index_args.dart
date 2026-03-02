@@ -85,18 +85,18 @@ class IndexArgs {
 
   factory IndexArgs.fromMap(Map<String, dynamic> map) {
     return IndexArgs(
-      capacityUnits: map['capacityUnits'] == null ? null : (IndexCapacityUnits.fromMap((map['capacityUnits'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      documentMetadataConfigurationUpdates: map['documentMetadataConfigurationUpdates'] == null ? null : (pulumi.Input.decodeList<IndexDocumentMetadataConfigurationUpdate>(map['documentMetadataConfigurationUpdates'], (value) => IndexDocumentMetadataConfigurationUpdate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      capacityUnits: map['capacityUnits'] == null ? null : ((IndexCapacityUnits.fromMap((map['capacityUnits']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      documentMetadataConfigurationUpdates: map['documentMetadataConfigurationUpdates'] == null ? null : ((pulumi.Input.decodeList<IndexDocumentMetadataConfigurationUpdate>(map['documentMetadataConfigurationUpdates']!, (value) => IndexDocumentMetadataConfigurationUpdate.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      edition: map['edition'] == null ? null : ((map['edition'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      serverSideEncryptionConfiguration: map['serverSideEncryptionConfiguration'] == null ? null : (IndexServerSideEncryptionConfiguration.fromMap((map['serverSideEncryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      userContextPolicy: map['userContextPolicy'] == null ? null : (map['userContextPolicy'] as String).input(),
-      userGroupResolutionConfiguration: map['userGroupResolutionConfiguration'] == null ? null : (IndexUserGroupResolutionConfiguration.fromMap((map['userGroupResolutionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      userTokenConfigurations: map['userTokenConfigurations'] == null ? null : (IndexUserTokenConfigurations.fromMap((map['userTokenConfigurations'] as Map).cast<String, dynamic>())).input(),
+      serverSideEncryptionConfiguration: map['serverSideEncryptionConfiguration'] == null ? null : ((IndexServerSideEncryptionConfiguration.fromMap((map['serverSideEncryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      userContextPolicy: map['userContextPolicy'] == null ? null : ((map['userContextPolicy'] as String).input()).input(),
+      userGroupResolutionConfiguration: map['userGroupResolutionConfiguration'] == null ? null : ((IndexUserGroupResolutionConfiguration.fromMap((map['userGroupResolutionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      userTokenConfigurations: map['userTokenConfigurations'] == null ? null : ((IndexUserTokenConfigurations.fromMap((map['userTokenConfigurations']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

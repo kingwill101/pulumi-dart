@@ -41,8 +41,8 @@ class ArchiveRuleArgs {
   factory ArchiveRuleArgs.fromMap(Map<String, dynamic> map) {
     return ArchiveRuleArgs(
       analyzerName: (map['analyzerName'] as String).input(),
-      filters: (pulumi.Input.decodeList<ArchiveRuleFilter>(map['filters'], (value) => ArchiveRuleFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      filters: (pulumi.Input.decodeList<ArchiveRuleFilter>(map['filters']!, (value) => ArchiveRuleFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       ruleName: (map['ruleName'] as String).input(),
     );
   }

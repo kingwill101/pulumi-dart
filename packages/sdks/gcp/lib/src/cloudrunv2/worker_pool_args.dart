@@ -119,20 +119,20 @@ class WorkerPoolArgs {
 
   factory WorkerPoolArgs.fromMap(Map<String, dynamic> map) {
     return WorkerPoolArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      binaryAuthorization: map['binaryAuthorization'] == null ? null : (WorkerPoolBinaryAuthorization.fromMap((map['binaryAuthorization'] as Map).cast<String, dynamic>())).input(),
-      client: map['client'] == null ? null : (map['client'] as String).input(),
-      clientVersion: map['clientVersion'] == null ? null : (map['clientVersion'] as String).input(),
-      customAudiences: map['customAudiences'] == null ? null : ((map['customAudiences'] as List).cast<String>()).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      instanceSplits: map['instanceSplits'] == null ? null : (pulumi.Input.decodeList<WorkerPoolInstanceSplit>(map['instanceSplits'], (value) => WorkerPoolInstanceSplit.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      launchStage: map['launchStage'] == null ? null : (map['launchStage'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      binaryAuthorization: map['binaryAuthorization'] == null ? null : (WorkerPoolBinaryAuthorization.fromMap((map['binaryAuthorization']! as Map).cast<String, dynamic>())).input(),
+      client: map['client'] == null ? null : (map['client']! as String).input(),
+      clientVersion: map['clientVersion'] == null ? null : (map['clientVersion']! as String).input(),
+      customAudiences: map['customAudiences'] == null ? null : ((map['customAudiences']! as List).cast<String>()).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      instanceSplits: map['instanceSplits'] == null ? null : (pulumi.Input.decodeList<WorkerPoolInstanceSplit>(map['instanceSplits']!, (value) => WorkerPoolInstanceSplit.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      launchStage: map['launchStage'] == null ? null : (map['launchStage']! as String).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      scaling: map['scaling'] == null ? null : (WorkerPoolScaling.fromMap((map['scaling'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      scaling: map['scaling'] == null ? null : (WorkerPoolScaling.fromMap((map['scaling']! as Map).cast<String, dynamic>())).input(),
       template: (WorkerPoolTemplate.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
     );
   }

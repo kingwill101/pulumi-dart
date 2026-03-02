@@ -36,8 +36,8 @@ class HTTPGetAction {
 
   factory HTTPGetAction.fromMap(Map<String, dynamic> map) {
     return HTTPGetAction(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      scheme: map['scheme'] == null ? null : (map['scheme'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      scheme: map['scheme'] == null ? null : (map['scheme']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

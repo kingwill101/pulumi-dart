@@ -29,8 +29,8 @@ class GetGradientaiModelsArgs {
 
   factory GetGradientaiModelsArgs.fromMap(Map<String, dynamic> map) {
     return GetGradientaiModelsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetGradientaiModelsFilter>(map['filters'], (value) => GetGradientaiModelsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetGradientaiModelsSort>(map['sorts'], (value) => GetGradientaiModelsSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetGradientaiModelsFilter>(map['filters']!, (value) => GetGradientaiModelsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetGradientaiModelsSort>(map['sorts']!, (value) => GetGradientaiModelsSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

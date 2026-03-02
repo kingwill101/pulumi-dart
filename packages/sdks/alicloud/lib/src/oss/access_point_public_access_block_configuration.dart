@@ -20,7 +20,7 @@ class AccessPointPublicAccessBlockConfiguration {
 
   factory AccessPointPublicAccessBlockConfiguration.fromMap(Map<String, dynamic> map) {
     return AccessPointPublicAccessBlockConfiguration(
-      blockPublicAccess: map['blockPublicAccess'] == null ? null : (map['blockPublicAccess'] as bool).input(),
+      blockPublicAccess: map['blockPublicAccess'] == null ? null : (map['blockPublicAccess']! as bool).input(),
     );
   }
 }

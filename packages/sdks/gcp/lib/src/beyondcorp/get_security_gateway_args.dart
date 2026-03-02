@@ -32,7 +32,7 @@ class GetSecurityGatewayArgs {
 
   factory GetSecurityGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityGatewayArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       securityGatewayId: (map['securityGatewayId'] as String).input(),
     );
   }

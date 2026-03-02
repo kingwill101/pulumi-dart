@@ -52,13 +52,13 @@ class AwsLogsLogGroupProperties {
 
   factory AwsLogsLogGroupProperties.fromMap(Map<String, dynamic> map) {
     return AwsLogsLogGroupProperties(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      dataProtectionPolicy: map['dataProtectionPolicy'] == null ? null : (map['dataProtectionPolicy']).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      logGroupClass: map['logGroupClass'] == null ? null : (map['logGroupClass'] as String).input(),
-      logGroupName: map['logGroupName'] == null ? null : (map['logGroupName'] as String).input(),
-      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays'] as int).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      dataProtectionPolicy: map['dataProtectionPolicy'] == null ? null : (map['dataProtectionPolicy']!).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
+      logGroupClass: map['logGroupClass'] == null ? null : (map['logGroupClass']! as String).input(),
+      logGroupName: map['logGroupName'] == null ? null : (map['logGroupName']! as String).input(),
+      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays']! as int).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags']!, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

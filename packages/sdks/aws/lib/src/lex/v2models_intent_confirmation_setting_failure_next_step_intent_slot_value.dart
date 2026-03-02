@@ -20,7 +20,7 @@ class V2modelsIntentConfirmationSettingFailureNextStepIntentSlotValue {
 
   factory V2modelsIntentConfirmationSettingFailureNextStepIntentSlotValue.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingFailureNextStepIntentSlotValue(
-      interpretedValue: map['interpretedValue'] == null ? null : (map['interpretedValue'] as String).input(),
+      interpretedValue: map['interpretedValue'] == null ? null : ((map['interpretedValue'] as String).input()).input(),
     );
   }
 }

@@ -54,13 +54,13 @@ class ConnectionMonitorTestArgs {
 
   factory ConnectionMonitorTestArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorTestArgs(
-      connectionMonitorTestName: map['connectionMonitorTestName'] == null ? null : (map['connectionMonitorTestName'] as String).input(),
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
-      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as int).input(),
+      connectionMonitorTestName: map['connectionMonitorTestName'] == null ? null : (map['connectionMonitorTestName']! as String).input(),
+      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
+      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort']! as int).input(),
       peeringServiceName: (map['peeringServiceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sourceAgent: map['sourceAgent'] == null ? null : (map['sourceAgent'] as String).input(),
-      testFrequencyInSec: map['testFrequencyInSec'] == null ? null : (map['testFrequencyInSec'] as int).input(),
+      sourceAgent: map['sourceAgent'] == null ? null : (map['sourceAgent']! as String).input(),
+      testFrequencyInSec: map['testFrequencyInSec'] == null ? null : (map['testFrequencyInSec']! as int).input(),
     );
   }
 }

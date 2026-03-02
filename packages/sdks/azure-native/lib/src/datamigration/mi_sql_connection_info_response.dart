@@ -38,9 +38,9 @@ class MiSqlConnectionInfoResponse {
   factory MiSqlConnectionInfoResponse.fromMap(Map<String, dynamic> map) {
     return MiSqlConnectionInfoResponse(
       managedInstanceResourceId: (map['managedInstanceResourceId'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       type: (map['type'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

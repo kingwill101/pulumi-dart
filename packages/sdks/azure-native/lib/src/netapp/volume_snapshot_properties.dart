@@ -21,7 +21,7 @@ class VolumeSnapshotProperties {
 
   factory VolumeSnapshotProperties.fromMap(Map<String, dynamic> map) {
     return VolumeSnapshotProperties(
-      snapshotPolicyId: map['snapshotPolicyId'] == null ? null : (map['snapshotPolicyId'] as String).input(),
+      snapshotPolicyId: map['snapshotPolicyId'] == null ? null : (map['snapshotPolicyId']! as String).input(),
     );
   }
 }

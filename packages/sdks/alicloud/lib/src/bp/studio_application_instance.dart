@@ -30,9 +30,9 @@ class StudioApplicationInstance {
 
   factory StudioApplicationInstance.fromMap(Map<String, dynamic> map) {
     return StudioApplicationInstance(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
-      nodeType: map['nodeType'] == null ? null : (map['nodeType'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
+      nodeType: map['nodeType'] == null ? null : (map['nodeType']! as String).input(),
     );
   }
 }

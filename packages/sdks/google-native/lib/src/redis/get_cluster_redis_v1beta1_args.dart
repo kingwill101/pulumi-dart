@@ -33,7 +33,7 @@ class GetClusterRedisV1beta1Args {
     return GetClusterRedisV1beta1Args(
       clusterId: (map['clusterId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -54,13 +54,13 @@ class PermissionSetArgs {
 
   factory PermissionSetArgs.fromMap(Map<String, dynamic> map) {
     return PermissionSetArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       instanceArn: (map['instanceArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      relayState: map['relayState'] == null ? null : (map['relayState'] as String).input(),
-      sessionDuration: map['sessionDuration'] == null ? null : (map['sessionDuration'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      relayState: map['relayState'] == null ? null : ((map['relayState'] as String).input()).input(),
+      sessionDuration: map['sessionDuration'] == null ? null : ((map['sessionDuration'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

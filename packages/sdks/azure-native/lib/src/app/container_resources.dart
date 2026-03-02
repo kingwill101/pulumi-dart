@@ -31,9 +31,9 @@ class ContainerResources {
 
   factory ContainerResources.fromMap(Map<String, dynamic> map) {
     return ContainerResources(
-      cpu: map['cpu'] == null ? null : (map['cpu'] as double).input(),
-      gpu: map['gpu'] == null ? null : (map['gpu'] as double).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as String).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as double).input(),
+      gpu: map['gpu'] == null ? null : (map['gpu']! as double).input(),
+      memory: map['memory'] == null ? null : (map['memory']! as String).input(),
     );
   }
 }

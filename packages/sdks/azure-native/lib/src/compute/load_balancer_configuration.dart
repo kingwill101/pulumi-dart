@@ -32,7 +32,7 @@ class LoadBalancerConfiguration {
 
   factory LoadBalancerConfiguration.fromMap(Map<String, dynamic> map) {
     return LoadBalancerConfiguration(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       name: (map['name'] as String).input(),
       properties: (LoadBalancerConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );

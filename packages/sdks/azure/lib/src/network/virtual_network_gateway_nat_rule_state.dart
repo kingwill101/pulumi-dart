@@ -58,14 +58,14 @@ class VirtualNetworkGatewayNatRuleState {
 
   factory VirtualNetworkGatewayNatRuleState.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayNatRuleState(
-      externalMappings: map['externalMappings'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkGatewayNatRuleExternalMapping>(map['externalMappings'], (value) => VirtualNetworkGatewayNatRuleExternalMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      internalMappings: map['internalMappings'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkGatewayNatRuleInternalMapping>(map['internalMappings'], (value) => VirtualNetworkGatewayNatRuleInternalMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipConfigurationId: map['ipConfigurationId'] == null ? null : (map['ipConfigurationId'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      virtualNetworkGatewayId: map['virtualNetworkGatewayId'] == null ? null : (map['virtualNetworkGatewayId'] as String).input(),
+      externalMappings: map['externalMappings'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkGatewayNatRuleExternalMapping>(map['externalMappings']!, (value) => VirtualNetworkGatewayNatRuleExternalMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      internalMappings: map['internalMappings'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkGatewayNatRuleInternalMapping>(map['internalMappings']!, (value) => VirtualNetworkGatewayNatRuleInternalMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipConfigurationId: map['ipConfigurationId'] == null ? null : (map['ipConfigurationId']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      virtualNetworkGatewayId: map['virtualNetworkGatewayId'] == null ? null : (map['virtualNetworkGatewayId']! as String).input(),
     );
   }
 }

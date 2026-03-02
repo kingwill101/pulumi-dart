@@ -27,8 +27,8 @@ class ApplicationResourceLifecycleConfig {
 
   factory ApplicationResourceLifecycleConfig.fromMap(Map<String, dynamic> map) {
     return ApplicationResourceLifecycleConfig(
-      serviceRole: map['serviceRole'] == null ? null : (map['serviceRole'] as String).input(),
-      versionLifecycleConfig: map['versionLifecycleConfig'] == null ? null : (ApplicationVersionLifecycleConfig.fromMap((map['versionLifecycleConfig'] as Map).cast<String, dynamic>())).input(),
+      serviceRole: map['serviceRole'] == null ? null : (map['serviceRole']! as String).input(),
+      versionLifecycleConfig: map['versionLifecycleConfig'] == null ? null : (ApplicationVersionLifecycleConfig.fromMap((map['versionLifecycleConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class PrincipalResponse {
 
   factory PrincipalResponse.fromMap(Map<String, dynamic> map) {
     return PrincipalResponse(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

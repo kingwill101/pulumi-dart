@@ -32,9 +32,9 @@ class ImageUpdateTriggerResponse {
 
   factory ImageUpdateTriggerResponse.fromMap(Map<String, dynamic> map) {
     return ImageUpdateTriggerResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      images: map['images'] == null ? null : (pulumi.Input.decodeList<ImageDescriptorResponse>(map['images'], (value) => ImageDescriptorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timestamp: map['timestamp'] == null ? null : (map['timestamp'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      images: map['images'] == null ? null : (pulumi.Input.decodeList<ImageDescriptorResponse>(map['images']!, (value) => ImageDescriptorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timestamp: map['timestamp'] == null ? null : (map['timestamp']! as String).input(),
     );
   }
 }

@@ -61,12 +61,12 @@ class MachineGroupArgs {
 
   factory MachineGroupArgs.fromMap(Map<String, dynamic> map) {
     return MachineGroupArgs(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
       displayName: (map['displayName'] as String).input(),
-      groupType: map['groupType'] == null ? null : (map['groupType'] as String).input(),
+      groupType: map['groupType'] == null ? null : (map['groupType']! as String).input(),
       kind: (map['kind'] as String).input(),
-      machineGroupName: map['machineGroupName'] == null ? null : (map['machineGroupName'] as String).input(),
-      machines: map['machines'] == null ? null : (pulumi.Input.decodeList<MachineReferenceWithHints>(map['machines'], (value) => MachineReferenceWithHints.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      machineGroupName: map['machineGroupName'] == null ? null : (map['machineGroupName']! as String).input(),
+      machines: map['machines'] == null ? null : (pulumi.Input.decodeList<MachineReferenceWithHints>(map['machines']!, (value) => MachineReferenceWithHints.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );

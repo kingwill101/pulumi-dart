@@ -44,11 +44,11 @@ class SqlAssessmentV3PropertiesResponse {
 
   factory SqlAssessmentV3PropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SqlAssessmentV3PropertiesResponse(
-      details: map['details'] == null ? null : (AssessmentDetailsResponse.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
-      fallbackMachineAssessmentArmId: map['fallbackMachineAssessmentArmId'] == null ? null : (map['fallbackMachineAssessmentArmId'] as String).input(),
+      details: map['details'] == null ? null : (AssessmentDetailsResponse.fromMap((map['details']! as Map).cast<String, dynamic>())).input(),
+      fallbackMachineAssessmentArmId: map['fallbackMachineAssessmentArmId'] == null ? null : (map['fallbackMachineAssessmentArmId']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      scope: map['scope'] == null ? null : (ScopeResponse.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
-      settings: map['settings'] == null ? null : (SqlAssessmentSettingsResponse.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      scope: map['scope'] == null ? null : (ScopeResponse.fromMap((map['scope']! as Map).cast<String, dynamic>())).input(),
+      settings: map['settings'] == null ? null : (SqlAssessmentSettingsResponse.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

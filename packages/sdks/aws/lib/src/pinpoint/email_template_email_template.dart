@@ -49,13 +49,13 @@ class EmailTemplateEmailTemplate {
 
   factory EmailTemplateEmailTemplate.fromMap(Map<String, dynamic> map) {
     return EmailTemplateEmailTemplate(
-      defaultSubstitutions: map['defaultSubstitutions'] == null ? null : (map['defaultSubstitutions'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<EmailTemplateEmailTemplateHeader>(map['headers'], (value) => EmailTemplateEmailTemplateHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      htmlPart: map['htmlPart'] == null ? null : (map['htmlPart'] as String).input(),
-      recommenderId: map['recommenderId'] == null ? null : (map['recommenderId'] as String).input(),
-      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
-      textPart: map['textPart'] == null ? null : (map['textPart'] as String).input(),
+      defaultSubstitutions: map['defaultSubstitutions'] == null ? null : ((map['defaultSubstitutions'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      headers: map['headers'] == null ? null : ((pulumi.Input.decodeList<EmailTemplateEmailTemplateHeader>(map['headers']!, (value) => EmailTemplateEmailTemplateHeader.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      htmlPart: map['htmlPart'] == null ? null : ((map['htmlPart'] as String).input()).input(),
+      recommenderId: map['recommenderId'] == null ? null : ((map['recommenderId'] as String).input()).input(),
+      subject: map['subject'] == null ? null : ((map['subject'] as String).input()).input(),
+      textPart: map['textPart'] == null ? null : ((map['textPart'] as String).input()).input(),
     );
   }
 }

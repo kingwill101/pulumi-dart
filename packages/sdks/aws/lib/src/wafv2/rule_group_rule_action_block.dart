@@ -21,7 +21,7 @@ class RuleGroupRuleActionBlock {
 
   factory RuleGroupRuleActionBlock.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleActionBlock(
-      customResponse: map['customResponse'] == null ? null : (RuleGroupRuleActionBlockCustomResponse.fromMap((map['customResponse'] as Map).cast<String, dynamic>())).input(),
+      customResponse: map['customResponse'] == null ? null : ((RuleGroupRuleActionBlockCustomResponse.fromMap((map['customResponse']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

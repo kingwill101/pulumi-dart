@@ -22,7 +22,7 @@ class ListAccountChannelTypesResult {
 
   factory ListAccountChannelTypesResult.fromMap(Map<String, dynamic> map) {
     return ListAccountChannelTypesResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<ChannelTypeDescriptionResponse>(map['value'], (value) => ChannelTypeDescriptionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<ChannelTypeDescriptionResponse>(map['value']!, (value) => ChannelTypeDescriptionResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

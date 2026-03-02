@@ -27,8 +27,8 @@ class MeshSpec {
 
   factory MeshSpec.fromMap(Map<String, dynamic> map) {
     return MeshSpec(
-      egressFilter: map['egressFilter'] == null ? null : (MeshSpecEgressFilter.fromMap((map['egressFilter'] as Map).cast<String, dynamic>())).input(),
-      serviceDiscovery: map['serviceDiscovery'] == null ? null : (MeshSpecServiceDiscovery.fromMap((map['serviceDiscovery'] as Map).cast<String, dynamic>())).input(),
+      egressFilter: map['egressFilter'] == null ? null : ((MeshSpecEgressFilter.fromMap((map['egressFilter']! as Map).cast<String, dynamic>())).input()).input(),
+      serviceDiscovery: map['serviceDiscovery'] == null ? null : ((MeshSpecServiceDiscovery.fromMap((map['serviceDiscovery']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

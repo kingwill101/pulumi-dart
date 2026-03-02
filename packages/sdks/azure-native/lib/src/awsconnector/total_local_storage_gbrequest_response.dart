@@ -26,8 +26,8 @@ class TotalLocalStorageGBRequestResponse {
 
   factory TotalLocalStorageGBRequestResponse.fromMap(Map<String, dynamic> map) {
     return TotalLocalStorageGBRequestResponse(
-      max: map['max'] == null ? null : (map['max'] as int).input(),
-      min: map['min'] == null ? null : (map['min'] as int).input(),
+      max: map['max'] == null ? null : (map['max']! as int).input(),
+      min: map['min'] == null ? null : (map['min']! as int).input(),
     );
   }
 }

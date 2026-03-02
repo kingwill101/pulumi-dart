@@ -66,16 +66,16 @@ class ApplicationState {
 
   factory ApplicationState.fromMap(Map<String, dynamic> map) {
     return ApplicationState(
-      applicationGroupId: map['applicationGroupId'] == null ? null : (map['applicationGroupId'] as String).input(),
-      commandLineArgumentPolicy: map['commandLineArgumentPolicy'] == null ? null : (map['commandLineArgumentPolicy'] as String).input(),
-      commandLineArguments: map['commandLineArguments'] == null ? null : (map['commandLineArguments'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      iconIndex: map['iconIndex'] == null ? null : (map['iconIndex'] as int).input(),
-      iconPath: map['iconPath'] == null ? null : (map['iconPath'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      showInPortal: map['showInPortal'] == null ? null : (map['showInPortal'] as bool).input(),
+      applicationGroupId: map['applicationGroupId'] == null ? null : (map['applicationGroupId']! as String).input(),
+      commandLineArgumentPolicy: map['commandLineArgumentPolicy'] == null ? null : (map['commandLineArgumentPolicy']! as String).input(),
+      commandLineArguments: map['commandLineArguments'] == null ? null : (map['commandLineArguments']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      iconIndex: map['iconIndex'] == null ? null : (map['iconIndex']! as int).input(),
+      iconPath: map['iconPath'] == null ? null : (map['iconPath']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      showInPortal: map['showInPortal'] == null ? null : (map['showInPortal']! as bool).input(),
     );
   }
 }

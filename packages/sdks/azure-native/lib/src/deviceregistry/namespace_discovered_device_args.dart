@@ -96,20 +96,20 @@ class NamespaceDiscoveredDeviceArgs {
 
   factory NamespaceDiscoveredDeviceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceDiscoveredDeviceArgs(
-      attributes: map['attributes'] == null ? null : (map['attributes']).input(),
-      discoveredDeviceName: map['discoveredDeviceName'] == null ? null : (map['discoveredDeviceName'] as String).input(),
+      attributes: map['attributes'] == null ? null : (map['attributes']!).input(),
+      discoveredDeviceName: map['discoveredDeviceName'] == null ? null : (map['discoveredDeviceName']! as String).input(),
       discoveryId: (map['discoveryId'] as String).input(),
-      endpoints: map['endpoints'] == null ? null : (DiscoveredMessagingEndpoints.fromMap((map['endpoints'] as Map).cast<String, dynamic>())).input(),
+      endpoints: map['endpoints'] == null ? null : (DiscoveredMessagingEndpoints.fromMap((map['endpoints']! as Map).cast<String, dynamic>())).input(),
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      externalDeviceId: map['externalDeviceId'] == null ? null : (map['externalDeviceId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      manufacturer: map['manufacturer'] == null ? null : (map['manufacturer'] as String).input(),
-      model: map['model'] == null ? null : (map['model'] as String).input(),
+      externalDeviceId: map['externalDeviceId'] == null ? null : (map['externalDeviceId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      manufacturer: map['manufacturer'] == null ? null : (map['manufacturer']! as String).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
-      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem'] as String).input(),
-      operatingSystemVersion: map['operatingSystemVersion'] == null ? null : (map['operatingSystemVersion'] as String).input(),
+      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem']! as String).input(),
+      operatingSystemVersion: map['operatingSystemVersion'] == null ? null : (map['operatingSystemVersion']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       version: (map['version'] as double).input(),
     );
   }

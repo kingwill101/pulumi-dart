@@ -52,9 +52,9 @@ class MedtechServiceFhirDestinationArgs {
       destinationFhirMappingJson: (map['destinationFhirMappingJson'] as String).input(),
       destinationFhirServiceId: (map['destinationFhirServiceId'] as String).input(),
       destinationIdentityResolutionType: (map['destinationIdentityResolutionType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       medtechServiceId: (map['medtechServiceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

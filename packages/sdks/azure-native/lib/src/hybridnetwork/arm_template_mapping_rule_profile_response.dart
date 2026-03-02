@@ -21,7 +21,7 @@ class ArmTemplateMappingRuleProfileResponse {
 
   factory ArmTemplateMappingRuleProfileResponse.fromMap(Map<String, dynamic> map) {
     return ArmTemplateMappingRuleProfileResponse(
-      templateParameters: map['templateParameters'] == null ? null : (map['templateParameters'] as String).input(),
+      templateParameters: map['templateParameters'] == null ? null : (map['templateParameters']! as String).input(),
     );
   }
 }

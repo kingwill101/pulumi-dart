@@ -26,8 +26,8 @@ class MaintenanceWindowPropertiesResponse {
 
   factory MaintenanceWindowPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowPropertiesResponse(
-      dayOfWeek: map['dayOfWeek'] == null ? null : (map['dayOfWeek'] as String).input(),
-      hour: map['hour'] == null ? null : (map['hour'] as int).input(),
+      dayOfWeek: map['dayOfWeek'] == null ? null : (map['dayOfWeek']! as String).input(),
+      hour: map['hour'] == null ? null : (map['hour']! as int).input(),
     );
   }
 }

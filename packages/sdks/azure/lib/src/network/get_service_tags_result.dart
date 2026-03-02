@@ -57,7 +57,7 @@ class GetServiceTagsResult {
       ipv4Cidrs: (map['ipv4Cidrs'] as List).cast<String>(),
       ipv6Cidrs: (map['ipv6Cidrs'] as List).cast<String>(),
       location: map['location'] as String,
-      locationFilter: map['locationFilter'] == null ? null : map['locationFilter'] as String,
+      locationFilter: map['locationFilter'] == null ? null : map['locationFilter']! as String,
       name: map['name'] as String,
       service: map['service'] as String,
     );

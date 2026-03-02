@@ -75,16 +75,16 @@ class MigrateSqlServerSqlMITaskInput {
 
   factory MigrateSqlServerSqlMITaskInput.fromMap(Map<String, dynamic> map) {
     return MigrateSqlServerSqlMITaskInput(
-      aadDomainName: map['aadDomainName'] == null ? null : (map['aadDomainName'] as String).input(),
+      aadDomainName: map['aadDomainName'] == null ? null : (map['aadDomainName']! as String).input(),
       backupBlobShare: (BlobShare.fromMap((map['backupBlobShare'] as Map).cast<String, dynamic>())).input(),
-      backupFileShare: map['backupFileShare'] == null ? null : (FileShare.fromMap((map['backupFileShare'] as Map).cast<String, dynamic>())).input(),
-      backupMode: map['backupMode'] == null ? null : (map['backupMode'] as String).input(),
-      encryptedKeyForSecureFields: map['encryptedKeyForSecureFields'] == null ? null : (map['encryptedKeyForSecureFields'] as String).input(),
-      selectedAgentJobs: map['selectedAgentJobs'] == null ? null : ((map['selectedAgentJobs'] as List).cast<String>()).input(),
+      backupFileShare: map['backupFileShare'] == null ? null : (FileShare.fromMap((map['backupFileShare']! as Map).cast<String, dynamic>())).input(),
+      backupMode: map['backupMode'] == null ? null : (map['backupMode']! as String).input(),
+      encryptedKeyForSecureFields: map['encryptedKeyForSecureFields'] == null ? null : (map['encryptedKeyForSecureFields']! as String).input(),
+      selectedAgentJobs: map['selectedAgentJobs'] == null ? null : ((map['selectedAgentJobs']! as List).cast<String>()).input(),
       selectedDatabases: (pulumi.Input.decodeList<MigrateSqlServerSqlMIDatabaseInput>(map['selectedDatabases'], (value) => MigrateSqlServerSqlMIDatabaseInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      selectedLogins: map['selectedLogins'] == null ? null : ((map['selectedLogins'] as List).cast<String>()).input(),
+      selectedLogins: map['selectedLogins'] == null ? null : ((map['selectedLogins']! as List).cast<String>()).input(),
       sourceConnectionInfo: (SqlConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
-      startedOn: map['startedOn'] == null ? null : (map['startedOn'] as String).input(),
+      startedOn: map['startedOn'] == null ? null : (map['startedOn']! as String).input(),
       targetConnectionInfo: (SqlConnectionInfo.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }

@@ -21,7 +21,7 @@ class AutoscalingConfigDataprocV1beta2 {
 
   factory AutoscalingConfigDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return AutoscalingConfigDataprocV1beta2(
-      policyUri: map['policyUri'] == null ? null : (map['policyUri'] as String).input(),
+      policyUri: map['policyUri'] == null ? null : (map['policyUri']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class ClusterResourceResponseEndPoints {
 
   factory ClusterResourceResponseEndPoints.fromMap(Map<String, dynamic> map) {
     return ClusterResourceResponseEndPoints(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

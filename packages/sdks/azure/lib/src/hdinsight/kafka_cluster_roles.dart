@@ -42,7 +42,7 @@ class KafkaClusterRoles {
   factory KafkaClusterRoles.fromMap(Map<String, dynamic> map) {
     return KafkaClusterRoles(
       headNode: (KafkaClusterRolesHeadNode.fromMap((map['headNode'] as Map).cast<String, dynamic>())).input(),
-      kafkaManagementNode: map['kafkaManagementNode'] == null ? null : (KafkaClusterRolesKafkaManagementNode.fromMap((map['kafkaManagementNode'] as Map).cast<String, dynamic>())).input(),
+      kafkaManagementNode: map['kafkaManagementNode'] == null ? null : (KafkaClusterRolesKafkaManagementNode.fromMap((map['kafkaManagementNode']! as Map).cast<String, dynamic>())).input(),
       workerNode: (KafkaClusterRolesWorkerNode.fromMap((map['workerNode'] as Map).cast<String, dynamic>())).input(),
       zookeeperNode: (KafkaClusterRolesZookeeperNode.fromMap((map['zookeeperNode'] as Map).cast<String, dynamic>())).input(),
     );

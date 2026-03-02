@@ -27,8 +27,8 @@ class DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgent {
 
   factory DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgent.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgent(
-      clipBoard: map['clipBoard'] == null ? null : (DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentClipBoard.fromMap((map['clipBoard'] as Map).cast<String, dynamic>())).input(),
-      mouse: map['mouse'] == null ? null : (DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentMouse.fromMap((map['mouse'] as Map).cast<String, dynamic>())).input(),
+      clipBoard: map['clipBoard'] == null ? null : (DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentClipBoard.fromMap((map['clipBoard']! as Map).cast<String, dynamic>())).input(),
+      mouse: map['mouse'] == null ? null : (DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentMouse.fromMap((map['mouse']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -42,11 +42,11 @@ class ObjectCopyGrant {
 
   factory ObjectCopyGrant.fromMap(Map<String, dynamic> map) {
     return ObjectCopyGrant(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      email: map['email'] == null ? null : ((map['email'] as String).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
       permissions: ((map['permissions'] as List).cast<String>()).input(),
       type: (map['type'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      uri: map['uri'] == null ? null : ((map['uri'] as String).input()).input(),
     );
   }
 }

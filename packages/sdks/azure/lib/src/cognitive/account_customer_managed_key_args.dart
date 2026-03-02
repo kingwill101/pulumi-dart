@@ -35,7 +35,7 @@ class AccountCustomerManagedKeyArgs {
   factory AccountCustomerManagedKeyArgs.fromMap(Map<String, dynamic> map) {
     return AccountCustomerManagedKeyArgs(
       cognitiveAccountId: (map['cognitiveAccountId'] as String).input(),
-      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId']! as String).input(),
       keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
     );
   }

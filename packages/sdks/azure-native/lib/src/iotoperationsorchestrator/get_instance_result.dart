@@ -95,14 +95,14 @@ class GetInstanceResult {
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      reconciliationPolicy: map['reconciliationPolicy'] == null ? null : ReconciliationPolicyResponse.fromMap((map['reconciliationPolicy'] as Map).cast<String, dynamic>()),
-      scope: map['scope'] == null ? null : map['scope'] as String,
-      solution: map['solution'] == null ? null : map['solution'] as String,
+      reconciliationPolicy: map['reconciliationPolicy'] == null ? null : ReconciliationPolicyResponse.fromMap((map['reconciliationPolicy']! as Map).cast<String, dynamic>()),
+      scope: map['scope'] == null ? null : map['scope']! as String,
+      solution: map['solution'] == null ? null : map['solution']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      target: map['target'] == null ? null : TargetSelectorPropertiesResponse.fromMap((map['target'] as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      target: map['target'] == null ? null : TargetSelectorPropertiesResponse.fromMap((map['target']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      version: map['version'] == null ? null : map['version']! as String,
     );
   }
 }

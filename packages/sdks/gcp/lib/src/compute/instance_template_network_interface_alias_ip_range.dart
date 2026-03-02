@@ -32,7 +32,7 @@ class InstanceTemplateNetworkInterfaceAliasIpRange {
   factory InstanceTemplateNetworkInterfaceAliasIpRange.fromMap(Map<String, dynamic> map) {
     return InstanceTemplateNetworkInterfaceAliasIpRange(
       ipCidrRange: (map['ipCidrRange'] as String).input(),
-      subnetworkRangeName: map['subnetworkRangeName'] == null ? null : (map['subnetworkRangeName'] as String).input(),
+      subnetworkRangeName: map['subnetworkRangeName'] == null ? null : (map['subnetworkRangeName']! as String).input(),
     );
   }
 }

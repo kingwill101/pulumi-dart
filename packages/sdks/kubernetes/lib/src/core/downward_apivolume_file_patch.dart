@@ -38,10 +38,10 @@ class DownwardAPIVolumeFilePatch {
 
   factory DownwardAPIVolumeFilePatch.fromMap(Map<String, dynamic> map) {
     return DownwardAPIVolumeFilePatch(
-      fieldRef: map['fieldRef'] == null ? null : (ObjectFieldSelectorPatch.fromMap((map['fieldRef'] as Map).cast<String, dynamic>())).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as int).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      resourceFieldRef: map['resourceFieldRef'] == null ? null : (ResourceFieldSelectorPatch.fromMap((map['resourceFieldRef'] as Map).cast<String, dynamic>())).input(),
+      fieldRef: map['fieldRef'] == null ? null : (ObjectFieldSelectorPatch.fromMap((map['fieldRef']! as Map).cast<String, dynamic>())).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as int).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      resourceFieldRef: map['resourceFieldRef'] == null ? null : (ResourceFieldSelectorPatch.fromMap((map['resourceFieldRef']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

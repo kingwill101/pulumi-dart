@@ -27,8 +27,8 @@ class AuditLogConfigSecretmanagerV1beta1 {
 
   factory AuditLogConfigSecretmanagerV1beta1.fromMap(Map<String, dynamic> map) {
     return AuditLogConfigSecretmanagerV1beta1(
-      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers'] as List).cast<String>()).input(),
-      logType: map['logType'] == null ? null : (AuditLogConfigLogTypeSecretmanagerV1beta1.fromValue(map['logType'] as String)).input(),
+      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers']! as List).cast<String>()).input(),
+      logType: map['logType'] == null ? null : (AuditLogConfigLogTypeSecretmanagerV1beta1.fromValue(map['logType']! as String)).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class ServiceLinkedRoleState {
 
   factory ServiceLinkedRoleState.fromMap(Map<String, dynamic> map) {
     return ServiceLinkedRoleState(
-      productName: map['productName'] == null ? null : (map['productName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as bool).input(),
+      productName: map['productName'] == null ? null : (map['productName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as bool).input(),
     );
   }
 }

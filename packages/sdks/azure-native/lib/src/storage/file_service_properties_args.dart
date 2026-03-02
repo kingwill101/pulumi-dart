@@ -53,11 +53,11 @@ class FileServicePropertiesArgs {
   factory FileServicePropertiesArgs.fromMap(Map<String, dynamic> map) {
     return FileServicePropertiesArgs(
       accountName: (map['accountName'] as String).input(),
-      cors: map['cors'] == null ? null : (CorsRules.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
-      fileServicesName: map['fileServicesName'] == null ? null : (map['fileServicesName'] as String).input(),
-      protocolSettings: map['protocolSettings'] == null ? null : (ProtocolSettings.fromMap((map['protocolSettings'] as Map).cast<String, dynamic>())).input(),
+      cors: map['cors'] == null ? null : (CorsRules.fromMap((map['cors']! as Map).cast<String, dynamic>())).input(),
+      fileServicesName: map['fileServicesName'] == null ? null : (map['fileServicesName']! as String).input(),
+      protocolSettings: map['protocolSettings'] == null ? null : (ProtocolSettings.fromMap((map['protocolSettings']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      shareDeleteRetentionPolicy: map['shareDeleteRetentionPolicy'] == null ? null : (DeleteRetentionPolicy.fromMap((map['shareDeleteRetentionPolicy'] as Map).cast<String, dynamic>())).input(),
+      shareDeleteRetentionPolicy: map['shareDeleteRetentionPolicy'] == null ? null : (DeleteRetentionPolicy.fromMap((map['shareDeleteRetentionPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

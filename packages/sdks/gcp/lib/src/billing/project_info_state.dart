@@ -29,8 +29,8 @@ class ProjectInfoState {
 
   factory ProjectInfoState.fromMap(Map<String, dynamic> map) {
     return ProjectInfoState(
-      billingAccount: map['billingAccount'] == null ? null : (map['billingAccount'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      billingAccount: map['billingAccount'] == null ? null : (map['billingAccount']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

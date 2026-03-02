@@ -66,14 +66,14 @@ class ProjectArgs {
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
       aiServicesHubId: (map['aiServicesHubId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      highBusinessImpactEnabled: map['highBusinessImpactEnabled'] == null ? null : (map['highBusinessImpactEnabled'] as bool).input(),
-      identity: map['identity'] == null ? null : (ProjectIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      primaryUserAssignedIdentity: map['primaryUserAssignedIdentity'] == null ? null : (map['primaryUserAssignedIdentity'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      highBusinessImpactEnabled: map['highBusinessImpactEnabled'] == null ? null : (map['highBusinessImpactEnabled']! as bool).input(),
+      identity: map['identity'] == null ? null : (ProjectIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      primaryUserAssignedIdentity: map['primaryUserAssignedIdentity'] == null ? null : (map['primaryUserAssignedIdentity']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class GetVirtualNodeSpecServiceDiscovery {
 
   factory GetVirtualNodeSpecServiceDiscovery.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecServiceDiscovery(
-      awsCloudMaps: (pulumi.Input.decodeList<GetVirtualNodeSpecServiceDiscoveryAwsCloudMap>(map['awsCloudMaps'], (value) => GetVirtualNodeSpecServiceDiscoveryAwsCloudMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dns: (pulumi.Input.decodeList<GetVirtualNodeSpecServiceDiscoveryDn>(map['dns'], (value) => GetVirtualNodeSpecServiceDiscoveryDn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      awsCloudMaps: (pulumi.Input.decodeList<GetVirtualNodeSpecServiceDiscoveryAwsCloudMap>(map['awsCloudMaps']!, (value) => GetVirtualNodeSpecServiceDiscoveryAwsCloudMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dns: (pulumi.Input.decodeList<GetVirtualNodeSpecServiceDiscoveryDn>(map['dns']!, (value) => GetVirtualNodeSpecServiceDiscoveryDn.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

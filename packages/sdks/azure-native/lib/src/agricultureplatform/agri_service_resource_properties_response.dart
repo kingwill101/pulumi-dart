@@ -45,9 +45,9 @@ class AgriServiceResourcePropertiesResponse {
 
   factory AgriServiceResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AgriServiceResourcePropertiesResponse(
-      config: map['config'] == null ? null : (AgriServiceConfigResponse.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      dataConnectorCredentials: map['dataConnectorCredentials'] == null ? null : (pulumi.Input.decodeList<DataConnectorCredentialMapResponse>(map['dataConnectorCredentials'], (value) => DataConnectorCredentialMapResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      installedSolutions: map['installedSolutions'] == null ? null : (pulumi.Input.decodeList<InstalledSolutionMapResponse>(map['installedSolutions'], (value) => InstalledSolutionMapResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      config: map['config'] == null ? null : (AgriServiceConfigResponse.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      dataConnectorCredentials: map['dataConnectorCredentials'] == null ? null : (pulumi.Input.decodeList<DataConnectorCredentialMapResponse>(map['dataConnectorCredentials']!, (value) => DataConnectorCredentialMapResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      installedSolutions: map['installedSolutions'] == null ? null : (pulumi.Input.decodeList<InstalledSolutionMapResponse>(map['installedSolutions']!, (value) => InstalledSolutionMapResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       managedOnBehalfOfConfiguration: (ManagedOnBehalfOfConfigurationResponse.fromMap((map['managedOnBehalfOfConfiguration'] as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );

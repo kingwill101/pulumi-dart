@@ -54,13 +54,13 @@ class RoleDefinitionState {
 
   factory RoleDefinitionState.fromMap(Map<String, dynamic> map) {
     return RoleDefinitionState(
-      assignableScopes: map['assignableScopes'] == null ? null : ((map['assignableScopes'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<RoleDefinitionPermission>(map['permissions'], (value) => RoleDefinitionPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
-      roleDefinitionResourceId: map['roleDefinitionResourceId'] == null ? null : (map['roleDefinitionResourceId'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      assignableScopes: map['assignableScopes'] == null ? null : ((map['assignableScopes']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<RoleDefinitionPermission>(map['permissions']!, (value) => RoleDefinitionPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId']! as String).input(),
+      roleDefinitionResourceId: map['roleDefinitionResourceId'] == null ? null : (map['roleDefinitionResourceId']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
     );
   }
 }

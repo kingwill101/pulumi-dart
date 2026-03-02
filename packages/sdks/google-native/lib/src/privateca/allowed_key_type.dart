@@ -28,8 +28,8 @@ class AllowedKeyType {
 
   factory AllowedKeyType.fromMap(Map<String, dynamic> map) {
     return AllowedKeyType(
-      ellipticCurve: map['ellipticCurve'] == null ? null : (EcKeyType.fromMap((map['ellipticCurve'] as Map).cast<String, dynamic>())).input(),
-      rsa: map['rsa'] == null ? null : (RsaKeyType.fromMap((map['rsa'] as Map).cast<String, dynamic>())).input(),
+      ellipticCurve: map['ellipticCurve'] == null ? null : (EcKeyType.fromMap((map['ellipticCurve']! as Map).cast<String, dynamic>())).input(),
+      rsa: map['rsa'] == null ? null : (RsaKeyType.fromMap((map['rsa']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

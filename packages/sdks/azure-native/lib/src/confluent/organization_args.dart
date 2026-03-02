@@ -57,12 +57,12 @@ class OrganizationArgs {
 
   factory OrganizationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationArgs(
-      linkOrganization: map['linkOrganization'] == null ? null : (LinkOrganization.fromMap((map['linkOrganization'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      linkOrganization: map['linkOrganization'] == null ? null : (LinkOrganization.fromMap((map['linkOrganization']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       offerDetail: (OfferDetail.fromMap((map['offerDetail'] as Map).cast<String, dynamic>())).input(),
-      organizationName: map['organizationName'] == null ? null : (map['organizationName'] as String).input(),
+      organizationName: map['organizationName'] == null ? null : (map['organizationName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       userDetail: (UserDetail.fromMap((map['userDetail'] as Map).cast<String, dynamic>())).input(),
     );
   }

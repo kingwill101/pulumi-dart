@@ -65,15 +65,15 @@ class FeatureArgs {
 
   factory FeatureArgs.fromMap(Map<String, dynamic> map) {
     return FeatureArgs(
-      defaultVariation: map['defaultVariation'] == null ? null : (map['defaultVariation'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      entityOverrides: map['entityOverrides'] == null ? null : ((map['entityOverrides'] as Map).cast<String, String>()).input(),
-      evaluationStrategy: map['evaluationStrategy'] == null ? null : (map['evaluationStrategy'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      defaultVariation: map['defaultVariation'] == null ? null : ((map['defaultVariation'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      entityOverrides: map['entityOverrides'] == null ? null : (((map['entityOverrides'] as Map).cast<String, String>()).input()).input(),
+      evaluationStrategy: map['evaluationStrategy'] == null ? null : ((map['evaluationStrategy'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       project: (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      variations: (pulumi.Input.decodeList<FeatureVariation>(map['variations'], (value) => FeatureVariation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      variations: (pulumi.Input.decodeList<FeatureVariation>(map['variations']!, (value) => FeatureVariation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class PolybaseSettingsResponse {
 
   factory PolybaseSettingsResponse.fromMap(Map<String, dynamic> map) {
     return PolybaseSettingsResponse(
-      rejectSampleValue: map['rejectSampleValue'] == null ? null : (map['rejectSampleValue']).input(),
-      rejectType: map['rejectType'] == null ? null : (map['rejectType'] as String).input(),
-      rejectValue: map['rejectValue'] == null ? null : (map['rejectValue']).input(),
-      useTypeDefault: map['useTypeDefault'] == null ? null : (map['useTypeDefault']).input(),
+      rejectSampleValue: map['rejectSampleValue'] == null ? null : (map['rejectSampleValue']!).input(),
+      rejectType: map['rejectType'] == null ? null : (map['rejectType']! as String).input(),
+      rejectValue: map['rejectValue'] == null ? null : (map['rejectValue']!).input(),
+      useTypeDefault: map['useTypeDefault'] == null ? null : (map['useTypeDefault']!).input(),
     );
   }
 }

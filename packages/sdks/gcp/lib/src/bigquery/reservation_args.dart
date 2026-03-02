@@ -147,16 +147,16 @@ class ReservationArgs {
 
   factory ReservationArgs.fromMap(Map<String, dynamic> map) {
     return ReservationArgs(
-      autoscale: map['autoscale'] == null ? null : (ReservationAutoscale.fromMap((map['autoscale'] as Map).cast<String, dynamic>())).input(),
-      concurrency: map['concurrency'] == null ? null : (map['concurrency'] as int).input(),
-      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
-      ignoreIdleSlots: map['ignoreIdleSlots'] == null ? null : (map['ignoreIdleSlots'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maxSlots: map['maxSlots'] == null ? null : (map['maxSlots'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      scalingMode: map['scalingMode'] == null ? null : (map['scalingMode'] as String).input(),
-      secondaryLocation: map['secondaryLocation'] == null ? null : (map['secondaryLocation'] as String).input(),
+      autoscale: map['autoscale'] == null ? null : (ReservationAutoscale.fromMap((map['autoscale']! as Map).cast<String, dynamic>())).input(),
+      concurrency: map['concurrency'] == null ? null : (map['concurrency']! as int).input(),
+      edition: map['edition'] == null ? null : (map['edition']! as String).input(),
+      ignoreIdleSlots: map['ignoreIdleSlots'] == null ? null : (map['ignoreIdleSlots']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maxSlots: map['maxSlots'] == null ? null : (map['maxSlots']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      scalingMode: map['scalingMode'] == null ? null : (map['scalingMode']! as String).input(),
+      secondaryLocation: map['secondaryLocation'] == null ? null : (map['secondaryLocation']! as String).input(),
       slotCapacity: (map['slotCapacity'] as int).input(),
     );
   }

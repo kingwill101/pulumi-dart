@@ -51,12 +51,12 @@ class ServicePerimeterDryRunEgressPolicyState {
 
   factory ServicePerimeterDryRunEgressPolicyState.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterDryRunEgressPolicyState(
-      accessPolicyId: map['accessPolicyId'] == null ? null : (map['accessPolicyId'] as String).input(),
-      egressFrom: map['egressFrom'] == null ? null : (ServicePerimeterDryRunEgressPolicyEgressFrom.fromMap((map['egressFrom'] as Map).cast<String, dynamic>())).input(),
-      egressTo: map['egressTo'] == null ? null : (ServicePerimeterDryRunEgressPolicyEgressTo.fromMap((map['egressTo'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      perimeter: map['perimeter'] == null ? null : (map['perimeter'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      accessPolicyId: map['accessPolicyId'] == null ? null : (map['accessPolicyId']! as String).input(),
+      egressFrom: map['egressFrom'] == null ? null : (ServicePerimeterDryRunEgressPolicyEgressFrom.fromMap((map['egressFrom']! as Map).cast<String, dynamic>())).input(),
+      egressTo: map['egressTo'] == null ? null : (ServicePerimeterDryRunEgressPolicyEgressTo.fromMap((map['egressTo']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      perimeter: map['perimeter'] == null ? null : (map['perimeter']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

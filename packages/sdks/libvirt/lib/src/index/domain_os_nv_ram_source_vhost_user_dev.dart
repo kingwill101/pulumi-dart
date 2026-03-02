@@ -27,7 +27,7 @@ class DomainOsNvRamSourceVhostUserDev {
   factory DomainOsNvRamSourceVhostUserDev.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceVhostUserDev(
       path: (map['path'] as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceVhostUserDevSecLabel>(map['secLabels'], (value) => DomainOsNvRamSourceVhostUserDevSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceVhostUserDevSecLabel>(map['secLabels']!, (value) => DomainOsNvRamSourceVhostUserDevSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

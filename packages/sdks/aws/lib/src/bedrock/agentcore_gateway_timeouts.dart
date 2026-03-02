@@ -30,9 +30,9 @@ class AgentcoreGatewayTimeouts {
 
   factory AgentcoreGatewayTimeouts.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
-      delete: map['delete'] == null ? null : (map['delete'] as String).input(),
-      update: map['update'] == null ? null : (map['update'] as String).input(),
+      create: map['create'] == null ? null : ((map['create'] as String).input()).input(),
+      delete: map['delete'] == null ? null : ((map['delete'] as String).input()).input(),
+      update: map['update'] == null ? null : ((map['update'] as String).input()).input(),
     );
   }
 }

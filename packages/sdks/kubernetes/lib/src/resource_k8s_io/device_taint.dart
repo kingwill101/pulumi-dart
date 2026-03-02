@@ -40,8 +40,8 @@ class DeviceTaint {
     return DeviceTaint(
       effect: (map['effect'] as String).input(),
       key: (map['key'] as String).input(),
-      timeAdded: map['timeAdded'] == null ? null : (map['timeAdded'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      timeAdded: map['timeAdded'] == null ? null : (map['timeAdded']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

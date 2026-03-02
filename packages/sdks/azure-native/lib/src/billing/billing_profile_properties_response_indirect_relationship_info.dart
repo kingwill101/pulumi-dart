@@ -31,9 +31,9 @@ class BillingProfilePropertiesResponseIndirectRelationshipInfo {
 
   factory BillingProfilePropertiesResponseIndirectRelationshipInfo.fromMap(Map<String, dynamic> map) {
     return BillingProfilePropertiesResponseIndirectRelationshipInfo(
-      billingAccountName: map['billingAccountName'] == null ? null : (map['billingAccountName'] as String).input(),
-      billingProfileName: map['billingProfileName'] == null ? null : (map['billingProfileName'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      billingAccountName: map['billingAccountName'] == null ? null : (map['billingAccountName']! as String).input(),
+      billingProfileName: map['billingProfileName'] == null ? null : (map['billingProfileName']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
     );
   }
 }

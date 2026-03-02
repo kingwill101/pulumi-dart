@@ -31,9 +31,9 @@ class PrivateDnsNameOptionsOnLaunchModelProperties {
 
   factory PrivateDnsNameOptionsOnLaunchModelProperties.fromMap(Map<String, dynamic> map) {
     return PrivateDnsNameOptionsOnLaunchModelProperties(
-      enableResourceNameDnsAAAARecord: map['enableResourceNameDnsAAAARecord'] == null ? null : (map['enableResourceNameDnsAAAARecord'] as bool).input(),
-      enableResourceNameDnsARecord: map['enableResourceNameDnsARecord'] == null ? null : (map['enableResourceNameDnsARecord'] as bool).input(),
-      hostnameType: map['hostnameType'] == null ? null : (map['hostnameType'] as String).input(),
+      enableResourceNameDnsAAAARecord: map['enableResourceNameDnsAAAARecord'] == null ? null : (map['enableResourceNameDnsAAAARecord']! as bool).input(),
+      enableResourceNameDnsARecord: map['enableResourceNameDnsARecord'] == null ? null : (map['enableResourceNameDnsARecord']! as bool).input(),
+      hostnameType: map['hostnameType'] == null ? null : (map['hostnameType']! as String).input(),
     );
   }
 }

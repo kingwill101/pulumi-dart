@@ -26,7 +26,7 @@ class DiagnosticsProfileResponse {
 
   factory DiagnosticsProfileResponse.fromMap(Map<String, dynamic> map) {
     return DiagnosticsProfileResponse(
-      bootDiagnostics: map['bootDiagnostics'] == null ? null : (BootDiagnosticsResponse.fromMap((map['bootDiagnostics'] as Map).cast<String, dynamic>())).input(),
+      bootDiagnostics: map['bootDiagnostics'] == null ? null : (BootDiagnosticsResponse.fromMap((map['bootDiagnostics']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

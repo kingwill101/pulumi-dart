@@ -85,16 +85,16 @@ class MuteConfigState {
 
   factory MuteConfigState.fromMap(Map<String, dynamic> map) {
     return MuteConfigState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      mostRecentEditor: map['mostRecentEditor'] == null ? null : (map['mostRecentEditor'] as String).input(),
-      muteConfigId: map['muteConfigId'] == null ? null : (map['muteConfigId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime']! as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      mostRecentEditor: map['mostRecentEditor'] == null ? null : (map['mostRecentEditor']! as String).input(),
+      muteConfigId: map['muteConfigId'] == null ? null : (map['muteConfigId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

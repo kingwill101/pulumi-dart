@@ -64,16 +64,16 @@ class ServerCertificateState {
 
   factory ServerCertificateState.fromMap(Map<String, dynamic> map) {
     return ServerCertificateState(
-      alicloudCertifacteId: map['alicloudCertifacteId'] == null ? null : (map['alicloudCertifacteId'] as String).input(),
-      alicloudCertifacteName: map['alicloudCertifacteName'] == null ? null : (map['alicloudCertifacteName'] as String).input(),
-      alicloudCertificateId: map['alicloudCertificateId'] == null ? null : (map['alicloudCertificateId'] as String).input(),
-      alicloudCertificateName: map['alicloudCertificateName'] == null ? null : (map['alicloudCertificateName'] as String).input(),
-      alicloudCertificateRegionId: map['alicloudCertificateRegionId'] == null ? null : (map['alicloudCertificateRegionId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      serverCertificate: map['serverCertificate'] == null ? null : (map['serverCertificate'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      alicloudCertifacteId: map['alicloudCertifacteId'] == null ? null : (map['alicloudCertifacteId']! as String).input(),
+      alicloudCertifacteName: map['alicloudCertifacteName'] == null ? null : (map['alicloudCertifacteName']! as String).input(),
+      alicloudCertificateId: map['alicloudCertificateId'] == null ? null : (map['alicloudCertificateId']! as String).input(),
+      alicloudCertificateName: map['alicloudCertificateName'] == null ? null : (map['alicloudCertificateName']! as String).input(),
+      alicloudCertificateRegionId: map['alicloudCertificateRegionId'] == null ? null : (map['alicloudCertificateRegionId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      serverCertificate: map['serverCertificate'] == null ? null : (map['serverCertificate']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

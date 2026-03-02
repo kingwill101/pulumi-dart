@@ -39,10 +39,10 @@ class RoleManagementPolicyApprovalRule {
 
   factory RoleManagementPolicyApprovalRule.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyApprovalRule(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       ruleType: (map['ruleType'] as String).input(),
-      setting: map['setting'] == null ? null : (ApprovalSettings.fromMap((map['setting'] as Map).cast<String, dynamic>())).input(),
-      target: map['target'] == null ? null : (RoleManagementPolicyRuleTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      setting: map['setting'] == null ? null : (ApprovalSettings.fromMap((map['setting']! as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (RoleManagementPolicyRuleTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -36,7 +36,7 @@ class NetworkManagerStaticMemberArgs {
 
   factory NetworkManagerStaticMemberArgs.fromMap(Map<String, dynamic> map) {
     return NetworkManagerStaticMemberArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networkGroupId: (map['networkGroupId'] as String).input(),
       targetVirtualNetworkId: (map['targetVirtualNetworkId'] as String).input(),
     );

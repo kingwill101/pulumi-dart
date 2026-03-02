@@ -40,10 +40,10 @@ class ServiceEndpointSpecPort {
 
   factory ServiceEndpointSpecPort.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointSpecPort(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      publishMode: map['publishMode'] == null ? null : (map['publishMode'] as String).input(),
-      publishedPort: map['publishedPort'] == null ? null : (map['publishedPort'] as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      publishMode: map['publishMode'] == null ? null : (map['publishMode']! as String).input(),
+      publishedPort: map['publishedPort'] == null ? null : (map['publishedPort']! as int).input(),
       targetPort: (map['targetPort'] as int).input(),
     );
   }

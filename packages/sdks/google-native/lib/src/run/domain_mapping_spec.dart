@@ -32,9 +32,9 @@ class DomainMappingSpec {
 
   factory DomainMappingSpec.fromMap(Map<String, dynamic> map) {
     return DomainMappingSpec(
-      certificateMode: map['certificateMode'] == null ? null : (DomainMappingSpecCertificateMode.fromValue(map['certificateMode'] as String)).input(),
-      forceOverride: map['forceOverride'] == null ? null : (map['forceOverride'] as bool).input(),
-      routeName: map['routeName'] == null ? null : (map['routeName'] as String).input(),
+      certificateMode: map['certificateMode'] == null ? null : (DomainMappingSpecCertificateMode.fromValue(map['certificateMode']! as String)).input(),
+      forceOverride: map['forceOverride'] == null ? null : (map['forceOverride']! as bool).input(),
+      routeName: map['routeName'] == null ? null : (map['routeName']! as String).input(),
     );
   }
 }

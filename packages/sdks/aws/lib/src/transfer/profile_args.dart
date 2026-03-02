@@ -45,10 +45,10 @@ class ProfileArgs {
   factory ProfileArgs.fromMap(Map<String, dynamic> map) {
     return ProfileArgs(
       as2Id: (map['as2Id'] as String).input(),
-      certificateIds: map['certificateIds'] == null ? null : ((map['certificateIds'] as List).cast<String>()).input(),
+      certificateIds: map['certificateIds'] == null ? null : (((map['certificateIds'] as List).cast<String>()).input()).input(),
       profileType: (map['profileType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

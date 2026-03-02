@@ -37,7 +37,7 @@ class TrustStoreAssociationArgs {
   factory TrustStoreAssociationArgs.fromMap(Map<String, dynamic> map) {
     return TrustStoreAssociationArgs(
       portalArn: (map['portalArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       trustStoreArn: (map['trustStoreArn'] as String).input(),
     );
   }

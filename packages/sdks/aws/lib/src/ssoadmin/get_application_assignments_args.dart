@@ -30,7 +30,7 @@ class GetApplicationAssignmentsArgs {
   factory GetApplicationAssignmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationAssignmentsArgs(
       applicationArn: (map['applicationArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

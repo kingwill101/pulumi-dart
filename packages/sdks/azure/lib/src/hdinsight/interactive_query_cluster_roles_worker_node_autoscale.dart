@@ -21,7 +21,7 @@ class InteractiveQueryClusterRolesWorkerNodeAutoscale {
 
   factory InteractiveQueryClusterRolesWorkerNodeAutoscale.fromMap(Map<String, dynamic> map) {
     return InteractiveQueryClusterRolesWorkerNodeAutoscale(
-      recurrence: map['recurrence'] == null ? null : (InteractiveQueryClusterRolesWorkerNodeAutoscaleRecurrence.fromMap((map['recurrence'] as Map).cast<String, dynamic>())).input(),
+      recurrence: map['recurrence'] == null ? null : (InteractiveQueryClusterRolesWorkerNodeAutoscaleRecurrence.fromMap((map['recurrence']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

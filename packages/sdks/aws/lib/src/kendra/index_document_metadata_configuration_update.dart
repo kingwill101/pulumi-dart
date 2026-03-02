@@ -38,8 +38,8 @@ class IndexDocumentMetadataConfigurationUpdate {
   factory IndexDocumentMetadataConfigurationUpdate.fromMap(Map<String, dynamic> map) {
     return IndexDocumentMetadataConfigurationUpdate(
       name: (map['name'] as String).input(),
-      relevance: map['relevance'] == null ? null : (IndexDocumentMetadataConfigurationUpdateRelevance.fromMap((map['relevance'] as Map).cast<String, dynamic>())).input(),
-      search: map['search'] == null ? null : (IndexDocumentMetadataConfigurationUpdateSearch.fromMap((map['search'] as Map).cast<String, dynamic>())).input(),
+      relevance: map['relevance'] == null ? null : ((IndexDocumentMetadataConfigurationUpdateRelevance.fromMap((map['relevance']! as Map).cast<String, dynamic>())).input()).input(),
+      search: map['search'] == null ? null : ((IndexDocumentMetadataConfigurationUpdateSearch.fromMap((map['search']! as Map).cast<String, dynamic>())).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

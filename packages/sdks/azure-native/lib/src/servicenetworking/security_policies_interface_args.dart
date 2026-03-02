@@ -50,12 +50,12 @@ class SecurityPoliciesInterfaceArgs {
 
   factory SecurityPoliciesInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return SecurityPoliciesInterfaceArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      securityPolicyName: map['securityPolicyName'] == null ? null : (map['securityPolicyName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      securityPolicyName: map['securityPolicyName'] == null ? null : (map['securityPolicyName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       trafficControllerName: (map['trafficControllerName'] as String).input(),
-      wafPolicy: map['wafPolicy'] == null ? null : (WafPolicy.fromMap((map['wafPolicy'] as Map).cast<String, dynamic>())).input(),
+      wafPolicy: map['wafPolicy'] == null ? null : (WafPolicy.fromMap((map['wafPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

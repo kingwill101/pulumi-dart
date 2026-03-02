@@ -31,9 +31,9 @@ class JobEventTriggerConfig {
 
   factory JobEventTriggerConfig.fromMap(Map<String, dynamic> map) {
     return JobEventTriggerConfig(
-      parallelism: map['parallelism'] == null ? null : (map['parallelism'] as int).input(),
-      replicaCompletionCount: map['replicaCompletionCount'] == null ? null : (map['replicaCompletionCount'] as int).input(),
-      scales: map['scales'] == null ? null : (pulumi.Input.decodeList<JobEventTriggerConfigScale>(map['scales'], (value) => JobEventTriggerConfigScale.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parallelism: map['parallelism'] == null ? null : (map['parallelism']! as int).input(),
+      replicaCompletionCount: map['replicaCompletionCount'] == null ? null : (map['replicaCompletionCount']! as int).input(),
+      scales: map['scales'] == null ? null : (pulumi.Input.decodeList<JobEventTriggerConfigScale>(map['scales']!, (value) => JobEventTriggerConfigScale.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

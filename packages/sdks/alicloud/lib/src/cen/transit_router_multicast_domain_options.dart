@@ -20,7 +20,7 @@ class TransitRouterMulticastDomainOptions {
 
   factory TransitRouterMulticastDomainOptions.fromMap(Map<String, dynamic> map) {
     return TransitRouterMulticastDomainOptions(
-      igmpv2Support: map['igmpv2Support'] == null ? null : (map['igmpv2Support'] as String).input(),
+      igmpv2Support: map['igmpv2Support'] == null ? null : (map['igmpv2Support']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class ExperienceConfiguration {
 
   factory ExperienceConfiguration.fromMap(Map<String, dynamic> map) {
     return ExperienceConfiguration(
-      contentSourceConfiguration: map['contentSourceConfiguration'] == null ? null : (ExperienceConfigurationContentSourceConfiguration.fromMap((map['contentSourceConfiguration'] as Map).cast<String, dynamic>())).input(),
-      userIdentityConfiguration: map['userIdentityConfiguration'] == null ? null : (ExperienceConfigurationUserIdentityConfiguration.fromMap((map['userIdentityConfiguration'] as Map).cast<String, dynamic>())).input(),
+      contentSourceConfiguration: map['contentSourceConfiguration'] == null ? null : ((ExperienceConfigurationContentSourceConfiguration.fromMap((map['contentSourceConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      userIdentityConfiguration: map['userIdentityConfiguration'] == null ? null : ((ExperienceConfigurationUserIdentityConfiguration.fromMap((map['userIdentityConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

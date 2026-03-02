@@ -41,11 +41,11 @@ class RetryConfigCloudschedulerV1beta1 {
 
   factory RetryConfigCloudschedulerV1beta1.fromMap(Map<String, dynamic> map) {
     return RetryConfigCloudschedulerV1beta1(
-      maxBackoffDuration: map['maxBackoffDuration'] == null ? null : (map['maxBackoffDuration'] as String).input(),
-      maxDoublings: map['maxDoublings'] == null ? null : (map['maxDoublings'] as int).input(),
-      maxRetryDuration: map['maxRetryDuration'] == null ? null : (map['maxRetryDuration'] as String).input(),
-      minBackoffDuration: map['minBackoffDuration'] == null ? null : (map['minBackoffDuration'] as String).input(),
-      retryCount: map['retryCount'] == null ? null : (map['retryCount'] as int).input(),
+      maxBackoffDuration: map['maxBackoffDuration'] == null ? null : (map['maxBackoffDuration']! as String).input(),
+      maxDoublings: map['maxDoublings'] == null ? null : (map['maxDoublings']! as int).input(),
+      maxRetryDuration: map['maxRetryDuration'] == null ? null : (map['maxRetryDuration']! as String).input(),
+      minBackoffDuration: map['minBackoffDuration'] == null ? null : (map['minBackoffDuration']! as String).input(),
+      retryCount: map['retryCount'] == null ? null : (map['retryCount']! as int).input(),
     );
   }
 }

@@ -47,12 +47,12 @@ class DBAuditInstanceState {
 
   factory DBAuditInstanceState.fromMap(Map<String, dynamic> map) {
     return DBAuditInstanceState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      planCode: map['planCode'] == null ? null : (map['planCode'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      planCode: map['planCode'] == null ? null : (map['planCode']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

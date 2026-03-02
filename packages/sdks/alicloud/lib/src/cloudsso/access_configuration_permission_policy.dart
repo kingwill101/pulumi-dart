@@ -30,7 +30,7 @@ class AccessConfigurationPermissionPolicy {
 
   factory AccessConfigurationPermissionPolicy.fromMap(Map<String, dynamic> map) {
     return AccessConfigurationPermissionPolicy(
-      permissionPolicyDocument: map['permissionPolicyDocument'] == null ? null : (map['permissionPolicyDocument'] as String).input(),
+      permissionPolicyDocument: map['permissionPolicyDocument'] == null ? null : (map['permissionPolicyDocument']! as String).input(),
       permissionPolicyName: (map['permissionPolicyName'] as String).input(),
       permissionPolicyType: (map['permissionPolicyType'] as String).input(),
     );

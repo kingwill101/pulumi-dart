@@ -27,8 +27,8 @@ class ImmutableStorageAccountResponse {
 
   factory ImmutableStorageAccountResponse.fromMap(Map<String, dynamic> map) {
     return ImmutableStorageAccountResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      immutabilityPolicy: map['immutabilityPolicy'] == null ? null : (AccountImmutabilityPolicyPropertiesResponse.fromMap((map['immutabilityPolicy'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      immutabilityPolicy: map['immutabilityPolicy'] == null ? null : (AccountImmutabilityPolicyPropertiesResponse.fromMap((map['immutabilityPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

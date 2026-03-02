@@ -19,7 +19,7 @@ class SecretStoreProperties {
 
   factory SecretStoreProperties.fromMap(Map<String, dynamic> map) {
     return SecretStoreProperties(
-      secretStoreId: map['secretStoreId'] == null ? null : (map['secretStoreId'] as String).input(),
+      secretStoreId: map['secretStoreId'] == null ? null : (map['secretStoreId']! as String).input(),
     );
   }
 }

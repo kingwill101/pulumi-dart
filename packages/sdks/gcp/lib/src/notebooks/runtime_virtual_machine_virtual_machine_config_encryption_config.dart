@@ -24,7 +24,7 @@ class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig {
 
   factory RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig(
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
     );
   }
 }

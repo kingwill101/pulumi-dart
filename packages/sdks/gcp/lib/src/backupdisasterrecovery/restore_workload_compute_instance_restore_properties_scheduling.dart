@@ -70,16 +70,16 @@ class RestoreWorkloadComputeInstanceRestorePropertiesScheduling {
 
   factory RestoreWorkloadComputeInstanceRestorePropertiesScheduling.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesScheduling(
-      automaticRestart: map['automaticRestart'] == null ? null : (map['automaticRestart'] as bool).input(),
-      instanceTerminationAction: map['instanceTerminationAction'] == null ? null : (map['instanceTerminationAction'] as String).input(),
-      localSsdRecoveryTimeout: map['localSsdRecoveryTimeout'] == null ? null : (RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout.fromMap((map['localSsdRecoveryTimeout'] as Map).cast<String, dynamic>())).input(),
-      maxRunDuration: map['maxRunDuration'] == null ? null : (RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration.fromMap((map['maxRunDuration'] as Map).cast<String, dynamic>())).input(),
-      minNodeCpus: map['minNodeCpus'] == null ? null : (map['minNodeCpus'] as int).input(),
-      nodeAffinities: map['nodeAffinities'] == null ? null : (pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity>(map['nodeAffinities'], (value) => RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      onHostMaintenance: map['onHostMaintenance'] == null ? null : (map['onHostMaintenance'] as String).input(),
-      preemptible: map['preemptible'] == null ? null : (map['preemptible'] as bool).input(),
-      provisioningModel: map['provisioningModel'] == null ? null : (map['provisioningModel'] as String).input(),
-      terminationTime: map['terminationTime'] == null ? null : (map['terminationTime'] as String).input(),
+      automaticRestart: map['automaticRestart'] == null ? null : (map['automaticRestart']! as bool).input(),
+      instanceTerminationAction: map['instanceTerminationAction'] == null ? null : (map['instanceTerminationAction']! as String).input(),
+      localSsdRecoveryTimeout: map['localSsdRecoveryTimeout'] == null ? null : (RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout.fromMap((map['localSsdRecoveryTimeout']! as Map).cast<String, dynamic>())).input(),
+      maxRunDuration: map['maxRunDuration'] == null ? null : (RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration.fromMap((map['maxRunDuration']! as Map).cast<String, dynamic>())).input(),
+      minNodeCpus: map['minNodeCpus'] == null ? null : (map['minNodeCpus']! as int).input(),
+      nodeAffinities: map['nodeAffinities'] == null ? null : (pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity>(map['nodeAffinities']!, (value) => RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      onHostMaintenance: map['onHostMaintenance'] == null ? null : (map['onHostMaintenance']! as String).input(),
+      preemptible: map['preemptible'] == null ? null : (map['preemptible']! as bool).input(),
+      provisioningModel: map['provisioningModel'] == null ? null : (map['provisioningModel']! as String).input(),
+      terminationTime: map['terminationTime'] == null ? null : (map['terminationTime']! as String).input(),
     );
   }
 }

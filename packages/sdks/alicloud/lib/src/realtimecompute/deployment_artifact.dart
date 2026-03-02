@@ -38,10 +38,10 @@ class DeploymentArtifact {
 
   factory DeploymentArtifact.fromMap(Map<String, dynamic> map) {
     return DeploymentArtifact(
-      jarArtifact: map['jarArtifact'] == null ? null : (DeploymentArtifactJarArtifact.fromMap((map['jarArtifact'] as Map).cast<String, dynamic>())).input(),
+      jarArtifact: map['jarArtifact'] == null ? null : (DeploymentArtifactJarArtifact.fromMap((map['jarArtifact']! as Map).cast<String, dynamic>())).input(),
       kind: (map['kind'] as String).input(),
-      pythonArtifact: map['pythonArtifact'] == null ? null : (DeploymentArtifactPythonArtifact.fromMap((map['pythonArtifact'] as Map).cast<String, dynamic>())).input(),
-      sqlArtifact: map['sqlArtifact'] == null ? null : (DeploymentArtifactSqlArtifact.fromMap((map['sqlArtifact'] as Map).cast<String, dynamic>())).input(),
+      pythonArtifact: map['pythonArtifact'] == null ? null : (DeploymentArtifactPythonArtifact.fromMap((map['pythonArtifact']! as Map).cast<String, dynamic>())).input(),
+      sqlArtifact: map['sqlArtifact'] == null ? null : (DeploymentArtifactSqlArtifact.fromMap((map['sqlArtifact']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

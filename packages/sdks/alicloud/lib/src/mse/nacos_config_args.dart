@@ -74,17 +74,17 @@ class NacosConfigArgs {
 
   factory NacosConfigArgs.fromMap(Map<String, dynamic> map) {
     return NacosConfigArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
-      appName: map['appName'] == null ? null : (map['appName'] as String).input(),
-      betaIps: map['betaIps'] == null ? null : (map['betaIps'] as String).input(),
+      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage']! as String).input(),
+      appName: map['appName'] == null ? null : (map['appName']! as String).input(),
+      betaIps: map['betaIps'] == null ? null : (map['betaIps']! as String).input(),
       content: (map['content'] as String).input(),
       dataId: (map['dataId'] as String).input(),
-      desc: map['desc'] == null ? null : (map['desc'] as String).input(),
+      desc: map['desc'] == null ? null : (map['desc']! as String).input(),
       group: (map['group'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
-      tags: map['tags'] == null ? null : (map['tags'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId']! as String).input(),
+      tags: map['tags'] == null ? null : (map['tags']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

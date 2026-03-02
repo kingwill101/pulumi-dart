@@ -60,15 +60,15 @@ class AppMonitorAppMonitorConfiguration {
 
   factory AppMonitorAppMonitorConfiguration.fromMap(Map<String, dynamic> map) {
     return AppMonitorAppMonitorConfiguration(
-      allowCookies: map['allowCookies'] == null ? null : (map['allowCookies'] as bool).input(),
-      enableXray: map['enableXray'] == null ? null : (map['enableXray'] as bool).input(),
-      excludedPages: map['excludedPages'] == null ? null : ((map['excludedPages'] as List).cast<String>()).input(),
-      favoritePages: map['favoritePages'] == null ? null : ((map['favoritePages'] as List).cast<String>()).input(),
-      guestRoleArn: map['guestRoleArn'] == null ? null : (map['guestRoleArn'] as String).input(),
-      identityPoolId: map['identityPoolId'] == null ? null : (map['identityPoolId'] as String).input(),
-      includedPages: map['includedPages'] == null ? null : ((map['includedPages'] as List).cast<String>()).input(),
-      sessionSampleRate: map['sessionSampleRate'] == null ? null : (map['sessionSampleRate'] as double).input(),
-      telemetries: map['telemetries'] == null ? null : ((map['telemetries'] as List).cast<String>()).input(),
+      allowCookies: map['allowCookies'] == null ? null : ((map['allowCookies'] as bool).input()).input(),
+      enableXray: map['enableXray'] == null ? null : ((map['enableXray'] as bool).input()).input(),
+      excludedPages: map['excludedPages'] == null ? null : (((map['excludedPages'] as List).cast<String>()).input()).input(),
+      favoritePages: map['favoritePages'] == null ? null : (((map['favoritePages'] as List).cast<String>()).input()).input(),
+      guestRoleArn: map['guestRoleArn'] == null ? null : ((map['guestRoleArn'] as String).input()).input(),
+      identityPoolId: map['identityPoolId'] == null ? null : ((map['identityPoolId'] as String).input()).input(),
+      includedPages: map['includedPages'] == null ? null : (((map['includedPages'] as List).cast<String>()).input()).input(),
+      sessionSampleRate: map['sessionSampleRate'] == null ? null : ((map['sessionSampleRate'] as double).input()).input(),
+      telemetries: map['telemetries'] == null ? null : (((map['telemetries'] as List).cast<String>()).input()).input(),
     );
   }
 }

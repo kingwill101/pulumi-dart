@@ -84,19 +84,19 @@ class FeatureGroupState {
 
   factory FeatureGroupState.fromMap(Map<String, dynamic> map) {
     return FeatureGroupState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      eventTimeFeatureName: map['eventTimeFeatureName'] == null ? null : (map['eventTimeFeatureName'] as String).input(),
-      featureDefinitions: map['featureDefinitions'] == null ? null : (pulumi.Input.decodeList<FeatureGroupFeatureDefinition>(map['featureDefinitions'], (value) => FeatureGroupFeatureDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      featureGroupName: map['featureGroupName'] == null ? null : (map['featureGroupName'] as String).input(),
-      offlineStoreConfig: map['offlineStoreConfig'] == null ? null : (FeatureGroupOfflineStoreConfig.fromMap((map['offlineStoreConfig'] as Map).cast<String, dynamic>())).input(),
-      onlineStoreConfig: map['onlineStoreConfig'] == null ? null : (FeatureGroupOnlineStoreConfig.fromMap((map['onlineStoreConfig'] as Map).cast<String, dynamic>())).input(),
-      recordIdentifierFeatureName: map['recordIdentifierFeatureName'] == null ? null : (map['recordIdentifierFeatureName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      throughputConfig: map['throughputConfig'] == null ? null : (FeatureGroupThroughputConfig.fromMap((map['throughputConfig'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      eventTimeFeatureName: map['eventTimeFeatureName'] == null ? null : ((map['eventTimeFeatureName'] as String).input()).input(),
+      featureDefinitions: map['featureDefinitions'] == null ? null : ((pulumi.Input.decodeList<FeatureGroupFeatureDefinition>(map['featureDefinitions']!, (value) => FeatureGroupFeatureDefinition.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      featureGroupName: map['featureGroupName'] == null ? null : ((map['featureGroupName'] as String).input()).input(),
+      offlineStoreConfig: map['offlineStoreConfig'] == null ? null : ((FeatureGroupOfflineStoreConfig.fromMap((map['offlineStoreConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      onlineStoreConfig: map['onlineStoreConfig'] == null ? null : ((FeatureGroupOnlineStoreConfig.fromMap((map['onlineStoreConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      recordIdentifierFeatureName: map['recordIdentifierFeatureName'] == null ? null : ((map['recordIdentifierFeatureName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      throughputConfig: map['throughputConfig'] == null ? null : ((FeatureGroupThroughputConfig.fromMap((map['throughputConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

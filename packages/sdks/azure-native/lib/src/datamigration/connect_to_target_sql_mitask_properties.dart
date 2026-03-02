@@ -33,8 +33,8 @@ class ConnectToTargetSqlMITaskProperties {
 
   factory ConnectToTargetSqlMITaskProperties.fromMap(Map<String, dynamic> map) {
     return ConnectToTargetSqlMITaskProperties(
-      clientData: map['clientData'] == null ? null : ((map['clientData'] as Map).cast<String, String>()).input(),
-      input: map['input'] == null ? null : (ConnectToTargetSqlMITaskInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
+      clientData: map['clientData'] == null ? null : ((map['clientData']! as Map).cast<String, String>()).input(),
+      input: map['input'] == null ? null : (ConnectToTargetSqlMITaskInput.fromMap((map['input']! as Map).cast<String, dynamic>())).input(),
       taskType: (map['taskType'] as String).input(),
     );
   }

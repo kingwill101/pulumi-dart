@@ -44,11 +44,11 @@ class InstanceDataDisk {
 
   factory InstanceDataDisk.fromMap(Map<String, dynamic> map) {
     return InstanceDataDisk(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
-      encryptKeyId: map['encryptKeyId'] == null ? null : (map['encryptKeyId'] as String).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId']! as String).input(),
+      encryptKeyId: map['encryptKeyId'] == null ? null : (map['encryptKeyId']! as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
     );
   }
 }

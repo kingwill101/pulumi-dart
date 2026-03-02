@@ -45,11 +45,11 @@ class CredentialUserManagedIdentityState {
 
   factory CredentialUserManagedIdentityState.fromMap(Map<String, dynamic> map) {
     return CredentialUserManagedIdentityState(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
-      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      identityId: map['identityId'] == null ? null : (map['identityId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      identityId: map['identityId'] == null ? null : (map['identityId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

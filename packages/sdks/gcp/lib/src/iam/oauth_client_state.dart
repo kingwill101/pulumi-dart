@@ -112,20 +112,20 @@ class OauthClientState {
 
   factory OauthClientState.fromMap(Map<String, dynamic> map) {
     return OauthClientState(
-      allowedGrantTypes: map['allowedGrantTypes'] == null ? null : ((map['allowedGrantTypes'] as List).cast<String>()).input(),
-      allowedRedirectUris: map['allowedRedirectUris'] == null ? null : ((map['allowedRedirectUris'] as List).cast<String>()).input(),
-      allowedScopes: map['allowedScopes'] == null ? null : ((map['allowedScopes'] as List).cast<String>()).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientType: map['clientType'] == null ? null : (map['clientType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      oauthClientId: map['oauthClientId'] == null ? null : (map['oauthClientId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      allowedGrantTypes: map['allowedGrantTypes'] == null ? null : ((map['allowedGrantTypes']! as List).cast<String>()).input(),
+      allowedRedirectUris: map['allowedRedirectUris'] == null ? null : ((map['allowedRedirectUris']! as List).cast<String>()).input(),
+      allowedScopes: map['allowedScopes'] == null ? null : ((map['allowedScopes']! as List).cast<String>()).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientType: map['clientType'] == null ? null : (map['clientType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      oauthClientId: map['oauthClientId'] == null ? null : (map['oauthClientId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class PickTimeSeriesFilter {
 
   factory PickTimeSeriesFilter.fromMap(Map<String, dynamic> map) {
     return PickTimeSeriesFilter(
-      direction: map['direction'] == null ? null : (PickTimeSeriesFilterDirection.fromValue(map['direction'] as String)).input(),
-      numTimeSeries: map['numTimeSeries'] == null ? null : (map['numTimeSeries'] as int).input(),
-      rankingMethod: map['rankingMethod'] == null ? null : (PickTimeSeriesFilterRankingMethod.fromValue(map['rankingMethod'] as String)).input(),
+      direction: map['direction'] == null ? null : (PickTimeSeriesFilterDirection.fromValue(map['direction']! as String)).input(),
+      numTimeSeries: map['numTimeSeries'] == null ? null : (map['numTimeSeries']! as int).input(),
+      rankingMethod: map['rankingMethod'] == null ? null : (PickTimeSeriesFilterRankingMethod.fromValue(map['rankingMethod']! as String)).input(),
     );
   }
 }

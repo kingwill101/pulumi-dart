@@ -52,13 +52,13 @@ class VolumeGroupOracleState {
 
   factory VolumeGroupOracleState.fromMap(Map<String, dynamic> map) {
     return VolumeGroupOracleState(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      applicationIdentifier: map['applicationIdentifier'] == null ? null : (map['applicationIdentifier'] as String).input(),
-      groupDescription: map['groupDescription'] == null ? null : (map['groupDescription'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<VolumeGroupOracleVolume>(map['volumes'], (value) => VolumeGroupOracleVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      applicationIdentifier: map['applicationIdentifier'] == null ? null : (map['applicationIdentifier']! as String).input(),
+      groupDescription: map['groupDescription'] == null ? null : (map['groupDescription']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<VolumeGroupOracleVolume>(map['volumes']!, (value) => VolumeGroupOracleVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

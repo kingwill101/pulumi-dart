@@ -54,8 +54,8 @@ class TransitRouterPrefixListAssociationArgs {
   factory TransitRouterPrefixListAssociationArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterPrefixListAssociationArgs(
       nextHop: (map['nextHop'] as String).input(),
-      nextHopType: map['nextHopType'] == null ? null : (map['nextHopType'] as String).input(),
-      ownerUid: map['ownerUid'] == null ? null : (map['ownerUid'] as int).input(),
+      nextHopType: map['nextHopType'] == null ? null : (map['nextHopType']! as String).input(),
+      ownerUid: map['ownerUid'] == null ? null : (map['ownerUid']! as int).input(),
       prefixListId: (map['prefixListId'] as String).input(),
       transitRouterId: (map['transitRouterId'] as String).input(),
       transitRouterTableId: (map['transitRouterTableId'] as String).input(),

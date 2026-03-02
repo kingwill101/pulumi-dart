@@ -95,23 +95,23 @@ class GetInstancesResult {
 
   factory GetInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetInstancesResult(
-      connectionMode: map['connectionMode'] == null ? null : map['connectionMode'] as String,
-      dbType: map['dbType'] == null ? null : map['dbType'] as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
-      engine: map['engine'] == null ? null : map['engine'] as String,
+      connectionMode: map['connectionMode'] == null ? null : map['connectionMode']! as String,
+      dbType: map['dbType'] == null ? null : map['dbType']! as String,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      engine: map['engine'] == null ? null : map['engine']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instances: pulumi.Input.decodeList<GetInstancesInstance>(map['instances'], (value) => GetInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      status: map['status'] == null ? null : map['status']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       totalCount: map['totalCount'] as int,
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
-      vswitchId: map['vswitchId'] == null ? null : map['vswitchId'] as String,
+      vpcId: map['vpcId'] == null ? null : map['vpcId']! as String,
+      vswitchId: map['vswitchId'] == null ? null : map['vswitchId']! as String,
     );
   }
 }

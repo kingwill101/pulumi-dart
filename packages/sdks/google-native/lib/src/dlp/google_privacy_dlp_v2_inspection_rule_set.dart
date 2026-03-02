@@ -28,8 +28,8 @@ class GooglePrivacyDlpV2InspectionRuleSet {
 
   factory GooglePrivacyDlpV2InspectionRuleSet.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2InspectionRuleSet(
-      infoTypes: map['infoTypes'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2InfoType>(map['infoTypes'], (value) => GooglePrivacyDlpV2InfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2InspectionRule>(map['rules'], (value) => GooglePrivacyDlpV2InspectionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      infoTypes: map['infoTypes'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2InfoType>(map['infoTypes']!, (value) => GooglePrivacyDlpV2InfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2InspectionRule>(map['rules']!, (value) => GooglePrivacyDlpV2InspectionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

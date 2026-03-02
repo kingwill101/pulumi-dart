@@ -30,9 +30,9 @@ class QueueComputeNodeSystemDisk {
 
   factory QueueComputeNodeSystemDisk.fromMap(Map<String, dynamic> map) {
     return QueueComputeNodeSystemDisk(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      level: map['level'] == null ? null : (map['level'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      level: map['level'] == null ? null : (map['level']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
     );
   }
 }

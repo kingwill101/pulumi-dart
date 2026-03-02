@@ -31,9 +31,9 @@ class CostComponentResponse {
 
   factory CostComponentResponse.fromMap(Map<String, dynamic> map) {
     return CostComponentResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       name: (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as double).input(),
+      value: map['value'] == null ? null : (map['value']! as double).input(),
     );
   }
 }

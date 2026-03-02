@@ -32,7 +32,7 @@ class GetScopeGkehubV1alphaArgs {
   factory GetScopeGkehubV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return GetScopeGkehubV1alphaArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       scopeId: (map['scopeId'] as String).input(),
     );
   }

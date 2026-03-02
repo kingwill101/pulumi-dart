@@ -59,14 +59,14 @@ class CrossAccountAttachmentState {
 
   factory CrossAccountAttachmentState.fromMap(Map<String, dynamic> map) {
     return CrossAccountAttachmentState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      principals: map['principals'] == null ? null : ((map['principals'] as List).cast<String>()).input(),
-      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<CrossAccountAttachmentResource>(map['resources'], (value) => CrossAccountAttachmentResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      createdTime: map['createdTime'] == null ? null : ((map['createdTime'] as String).input()).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : ((map['lastModifiedTime'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      principals: map['principals'] == null ? null : (((map['principals'] as List).cast<String>()).input()).input(),
+      resources: map['resources'] == null ? null : ((pulumi.Input.decodeList<CrossAccountAttachmentResource>(map['resources']!, (value) => CrossAccountAttachmentResource.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

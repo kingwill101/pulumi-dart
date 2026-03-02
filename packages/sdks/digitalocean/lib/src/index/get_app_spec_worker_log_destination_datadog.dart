@@ -26,7 +26,7 @@ class GetAppSpecWorkerLogDestinationDatadog {
   factory GetAppSpecWorkerLogDestinationDatadog.fromMap(Map<String, dynamic> map) {
     return GetAppSpecWorkerLogDestinationDatadog(
       apiKey: (map['apiKey'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
     );
   }
 }

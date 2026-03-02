@@ -40,11 +40,11 @@ class LoadBalancerServiceHttp {
 
   factory LoadBalancerServiceHttp.fromMap(Map<String, dynamic> map) {
     return LoadBalancerServiceHttp(
-      certificates: map['certificates'] == null ? null : ((map['certificates'] as List).cast<int>()).input(),
-      cookieLifetime: map['cookieLifetime'] == null ? null : (map['cookieLifetime'] as int).input(),
-      cookieName: map['cookieName'] == null ? null : (map['cookieName'] as String).input(),
-      redirectHttp: map['redirectHttp'] == null ? null : (map['redirectHttp'] as bool).input(),
-      stickySessions: map['stickySessions'] == null ? null : (map['stickySessions'] as bool).input(),
+      certificates: map['certificates'] == null ? null : ((map['certificates']! as List).cast<int>()).input(),
+      cookieLifetime: map['cookieLifetime'] == null ? null : (map['cookieLifetime']! as int).input(),
+      cookieName: map['cookieName'] == null ? null : (map['cookieName']! as String).input(),
+      redirectHttp: map['redirectHttp'] == null ? null : (map['redirectHttp']! as bool).input(),
+      stickySessions: map['stickySessions'] == null ? null : (map['stickySessions']! as bool).input(),
     );
   }
 }

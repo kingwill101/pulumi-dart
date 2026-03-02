@@ -75,17 +75,17 @@ class TopicState {
 
   factory TopicState.fromMap(Map<String, dynamic> map) {
     return TopicState(
-      compactTopic: map['compactTopic'] == null ? null : (map['compactTopic'] as bool).input(),
-      configs: map['configs'] == null ? null : (map['configs'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      localTopic: map['localTopic'] == null ? null : (map['localTopic'] as bool).input(),
-      partitionNum: map['partitionNum'] == null ? null : (map['partitionNum'] as int).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      compactTopic: map['compactTopic'] == null ? null : (map['compactTopic']! as bool).input(),
+      configs: map['configs'] == null ? null : (map['configs']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      localTopic: map['localTopic'] == null ? null : (map['localTopic']! as bool).input(),
+      partitionNum: map['partitionNum'] == null ? null : (map['partitionNum']! as int).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class SchedulerAcceleratorConfig {
 
   factory SchedulerAcceleratorConfig.fromMap(Map<String, dynamic> map) {
     return SchedulerAcceleratorConfig(
-      coreCount: map['coreCount'] == null ? null : (map['coreCount'] as String).input(),
-      type: map['type'] == null ? null : (SchedulerAcceleratorConfigType.fromValue(map['type'] as String)).input(),
+      coreCount: map['coreCount'] == null ? null : (map['coreCount']! as String).input(),
+      type: map['type'] == null ? null : (SchedulerAcceleratorConfigType.fromValue(map['type']! as String)).input(),
     );
   }
 }

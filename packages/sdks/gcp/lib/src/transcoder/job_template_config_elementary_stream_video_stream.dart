@@ -25,7 +25,7 @@ class JobTemplateConfigElementaryStreamVideoStream {
 
   factory JobTemplateConfigElementaryStreamVideoStream.fromMap(Map<String, dynamic> map) {
     return JobTemplateConfigElementaryStreamVideoStream(
-      h264: map['h264'] == null ? null : (JobTemplateConfigElementaryStreamVideoStreamH264.fromMap((map['h264'] as Map).cast<String, dynamic>())).input(),
+      h264: map['h264'] == null ? null : (JobTemplateConfigElementaryStreamVideoStreamH264.fromMap((map['h264']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

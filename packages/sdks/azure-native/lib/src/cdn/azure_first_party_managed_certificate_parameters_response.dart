@@ -57,7 +57,7 @@ class AzureFirstPartyManagedCertificateParametersResponse {
       expirationDate: (map['expirationDate'] as String).input(),
       secretSource: (ResourceReferenceResponse.fromMap((map['secretSource'] as Map).cast<String, dynamic>())).input(),
       subject: (map['subject'] as String).input(),
-      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : ((map['subjectAlternativeNames'] as List).cast<String>()).input(),
+      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : ((map['subjectAlternativeNames']! as List).cast<String>()).input(),
       thumbprint: (map['thumbprint'] as String).input(),
       type: (map['type'] as String).input(),
     );

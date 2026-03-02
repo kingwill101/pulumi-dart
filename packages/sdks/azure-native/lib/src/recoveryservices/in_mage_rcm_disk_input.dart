@@ -41,11 +41,11 @@ class InMageRcmDiskInput {
 
   factory InMageRcmDiskInput.fromMap(Map<String, dynamic> map) {
     return InMageRcmDiskInput(
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId']! as String).input(),
       diskId: (map['diskId'] as String).input(),
       diskType: (map['diskType'] as String).input(),
       logStorageAccountId: (map['logStorageAccountId'] as String).input(),
-      sectorSizeInBytes: map['sectorSizeInBytes'] == null ? null : (map['sectorSizeInBytes'] as int).input(),
+      sectorSizeInBytes: map['sectorSizeInBytes'] == null ? null : (map['sectorSizeInBytes']! as int).input(),
     );
   }
 }

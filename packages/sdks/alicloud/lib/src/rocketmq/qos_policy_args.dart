@@ -74,17 +74,17 @@ class QosPolicyArgs {
 
   factory QosPolicyArgs.fromMap(Map<String, dynamic> map) {
     return QosPolicyArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       destCidr: (map['destCidr'] as String).input(),
       destPortRange: (map['destPortRange'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
       ipProtocol: (map['ipProtocol'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       priority: (map['priority'] as int).input(),
       qosId: (map['qosId'] as String).input(),
       sourceCidr: (map['sourceCidr'] as String).input(),
       sourcePortRange: (map['sourcePortRange'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

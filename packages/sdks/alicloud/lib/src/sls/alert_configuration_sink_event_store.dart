@@ -40,11 +40,11 @@ class AlertConfigurationSinkEventStore {
 
   factory AlertConfigurationSinkEventStore.fromMap(Map<String, dynamic> map) {
     return AlertConfigurationSinkEventStore(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      eventStore: map['eventStore'] == null ? null : (map['eventStore'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      eventStore: map['eventStore'] == null ? null : (map['eventStore']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
     );
   }
 }

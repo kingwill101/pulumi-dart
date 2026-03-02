@@ -36,10 +36,10 @@ class ApplicationGatewaySkuResponse {
 
   factory ApplicationGatewaySkuResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewaySkuResponse(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
-      family: map['family'] == null ? null : (map['family'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
+      family: map['family'] == null ? null : (map['family']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

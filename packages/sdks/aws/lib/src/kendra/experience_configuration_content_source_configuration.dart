@@ -30,9 +30,9 @@ class ExperienceConfigurationContentSourceConfiguration {
 
   factory ExperienceConfigurationContentSourceConfiguration.fromMap(Map<String, dynamic> map) {
     return ExperienceConfigurationContentSourceConfiguration(
-      dataSourceIds: map['dataSourceIds'] == null ? null : ((map['dataSourceIds'] as List).cast<String>()).input(),
-      directPutContent: map['directPutContent'] == null ? null : (map['directPutContent'] as bool).input(),
-      faqIds: map['faqIds'] == null ? null : ((map['faqIds'] as List).cast<String>()).input(),
+      dataSourceIds: map['dataSourceIds'] == null ? null : (((map['dataSourceIds'] as List).cast<String>()).input()).input(),
+      directPutContent: map['directPutContent'] == null ? null : ((map['directPutContent'] as bool).input()).input(),
+      faqIds: map['faqIds'] == null ? null : (((map['faqIds'] as List).cast<String>()).input()).input(),
     );
   }
 }

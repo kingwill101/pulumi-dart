@@ -44,10 +44,10 @@ class ActionableRemediationResponse {
 
   factory ActionableRemediationResponse.fromMap(Map<String, dynamic> map) {
     return ActionableRemediationResponse(
-      branchConfiguration: map['branchConfiguration'] == null ? null : (TargetBranchConfigurationResponse.fromMap((map['branchConfiguration'] as Map).cast<String, dynamic>())).input(),
-      categoryConfigurations: map['categoryConfigurations'] == null ? null : (pulumi.Input.decodeList<CategoryConfigurationResponse>(map['categoryConfigurations'], (value) => CategoryConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inheritFromParentState: map['inheritFromParentState'] == null ? null : (map['inheritFromParentState'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      branchConfiguration: map['branchConfiguration'] == null ? null : (TargetBranchConfigurationResponse.fromMap((map['branchConfiguration']! as Map).cast<String, dynamic>())).input(),
+      categoryConfigurations: map['categoryConfigurations'] == null ? null : (pulumi.Input.decodeList<CategoryConfigurationResponse>(map['categoryConfigurations']!, (value) => CategoryConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inheritFromParentState: map['inheritFromParentState'] == null ? null : (map['inheritFromParentState']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

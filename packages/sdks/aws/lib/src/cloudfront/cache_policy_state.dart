@@ -57,14 +57,14 @@ class CachePolicyState {
 
   factory CachePolicyState.fromMap(Map<String, dynamic> map) {
     return CachePolicyState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl'] as int).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      maxTtl: map['maxTtl'] == null ? null : (map['maxTtl'] as int).input(),
-      minTtl: map['minTtl'] == null ? null : (map['minTtl'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parametersInCacheKeyAndForwardedToOrigin: map['parametersInCacheKeyAndForwardedToOrigin'] == null ? null : (CachePolicyParametersInCacheKeyAndForwardedToOrigin.fromMap((map['parametersInCacheKeyAndForwardedToOrigin'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
+      defaultTtl: map['defaultTtl'] == null ? null : ((map['defaultTtl'] as int).input()).input(),
+      etag: map['etag'] == null ? null : ((map['etag'] as String).input()).input(),
+      maxTtl: map['maxTtl'] == null ? null : ((map['maxTtl'] as int).input()).input(),
+      minTtl: map['minTtl'] == null ? null : ((map['minTtl'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      parametersInCacheKeyAndForwardedToOrigin: map['parametersInCacheKeyAndForwardedToOrigin'] == null ? null : ((CachePolicyParametersInCacheKeyAndForwardedToOrigin.fromMap((map['parametersInCacheKeyAndForwardedToOrigin']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

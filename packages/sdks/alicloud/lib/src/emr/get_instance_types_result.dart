@@ -70,12 +70,12 @@ class GetInstanceTypesResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceChargeType: map['instanceChargeType'] as String,
-      instanceType: map['instanceType'] == null ? null : map['instanceType'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      supportLocalStorage: map['supportLocalStorage'] == null ? null : map['supportLocalStorage'] as bool,
-      supportNodeTypes: map['supportNodeTypes'] == null ? null : (map['supportNodeTypes'] as List).cast<String>(),
+      instanceType: map['instanceType'] == null ? null : map['instanceType']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      supportLocalStorage: map['supportLocalStorage'] == null ? null : map['supportLocalStorage']! as bool,
+      supportNodeTypes: map['supportNodeTypes'] == null ? null : (map['supportNodeTypes']! as List).cast<String>(),
       types: pulumi.Input.decodeList<GetInstanceTypesType>(map['types'], (value) => GetInstanceTypesType.fromMap((value as Map).cast<String, dynamic>())),
-      zoneId: map['zoneId'] == null ? null : map['zoneId'] as String,
+      zoneId: map['zoneId'] == null ? null : map['zoneId']! as String,
     );
   }
 }

@@ -31,8 +31,8 @@ class LinuxWebAppAuthSettingsTwitter {
   factory LinuxWebAppAuthSettingsTwitter.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppAuthSettingsTwitter(
       consumerKey: (map['consumerKey'] as String).input(),
-      consumerSecret: map['consumerSecret'] == null ? null : (map['consumerSecret'] as String).input(),
-      consumerSecretSettingName: map['consumerSecretSettingName'] == null ? null : (map['consumerSecretSettingName'] as String).input(),
+      consumerSecret: map['consumerSecret'] == null ? null : (map['consumerSecret']! as String).input(),
+      consumerSecretSettingName: map['consumerSecretSettingName'] == null ? null : (map['consumerSecretSettingName']! as String).input(),
     );
   }
 }

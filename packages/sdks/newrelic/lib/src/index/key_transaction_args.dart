@@ -50,7 +50,7 @@ class KeyTransactionArgs {
       applicationGuid: (map['applicationGuid'] as String).input(),
       browserApdexTarget: (map['browserApdexTarget'] as double).input(),
       metricName: (map['metricName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

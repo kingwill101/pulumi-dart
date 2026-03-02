@@ -110,23 +110,23 @@ class KpiArgs {
 
   factory KpiArgs.fromMap(Map<String, dynamic> map) {
     return KpiArgs(
-      aliases: map['aliases'] == null ? null : (pulumi.Input.decodeList<KpiAlias>(map['aliases'], (value) => KpiAlias.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aliases: map['aliases'] == null ? null : (pulumi.Input.decodeList<KpiAlias>(map['aliases']!, (value) => KpiAlias.fromMap((value as Map).cast<String, dynamic>()))).input(),
       calculationWindow: (CalculationWindowTypes.fromValue(map['calculationWindow'] as String)).input(),
-      calculationWindowFieldName: map['calculationWindowFieldName'] == null ? null : (map['calculationWindowFieldName'] as String).input(),
-      description: map['description'] == null ? null : ((map['description'] as Map).cast<String, String>()).input(),
-      displayName: map['displayName'] == null ? null : ((map['displayName'] as Map).cast<String, String>()).input(),
+      calculationWindowFieldName: map['calculationWindowFieldName'] == null ? null : (map['calculationWindowFieldName']! as String).input(),
+      description: map['description'] == null ? null : ((map['description']! as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : ((map['displayName']! as Map).cast<String, String>()).input(),
       entityType: (EntityTypes.fromValue(map['entityType'] as String)).input(),
       entityTypeName: (map['entityTypeName'] as String).input(),
       expression: (map['expression'] as String).input(),
-      extracts: map['extracts'] == null ? null : (pulumi.Input.decodeList<KpiExtract>(map['extracts'], (value) => KpiExtract.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      extracts: map['extracts'] == null ? null : (pulumi.Input.decodeList<KpiExtract>(map['extracts']!, (value) => KpiExtract.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
       function: (KpiFunctions.fromValue(map['function'] as String)).input(),
-      groupBy: map['groupBy'] == null ? null : ((map['groupBy'] as List).cast<String>()).input(),
+      groupBy: map['groupBy'] == null ? null : ((map['groupBy']! as List).cast<String>()).input(),
       hubName: (map['hubName'] as String).input(),
-      kpiName: map['kpiName'] == null ? null : (map['kpiName'] as String).input(),
+      kpiName: map['kpiName'] == null ? null : (map['kpiName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      thresHolds: map['thresHolds'] == null ? null : (KpiThresholds.fromMap((map['thresHolds'] as Map).cast<String, dynamic>())).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      thresHolds: map['thresHolds'] == null ? null : (KpiThresholds.fromMap((map['thresHolds']! as Map).cast<String, dynamic>())).input(),
+      unit: map['unit'] == null ? null : (map['unit']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinat
 
   factory StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryption.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryption(
-      sseKms: map['sseKms'] == null ? null : (StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionSseKms.fromMap((map['sseKms'] as Map).cast<String, dynamic>())).input(),
-      sseS3s: map['sseS3s'] == null ? null : ((map['sseS3s'] as List).cast<Map<String, dynamic>>()).input(),
+      sseKms: map['sseKms'] == null ? null : ((StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionSseKms.fromMap((map['sseKms']! as Map).cast<String, dynamic>())).input()).input(),
+      sseS3s: map['sseS3s'] == null ? null : (((map['sseS3s'] as List).cast<Map<String, dynamic>>()).input()).input(),
     );
   }
 }

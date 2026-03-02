@@ -43,10 +43,10 @@ class FeatureSpec {
 
   factory FeatureSpec.fromMap(Map<String, dynamic> map) {
     return FeatureSpec(
-      clusterupgrade: map['clusterupgrade'] == null ? null : (FeatureSpecClusterupgrade.fromMap((map['clusterupgrade'] as Map).cast<String, dynamic>())).input(),
-      fleetobservability: map['fleetobservability'] == null ? null : (FeatureSpecFleetobservability.fromMap((map['fleetobservability'] as Map).cast<String, dynamic>())).input(),
-      multiclusteringress: map['multiclusteringress'] == null ? null : (FeatureSpecMulticlusteringress.fromMap((map['multiclusteringress'] as Map).cast<String, dynamic>())).input(),
-      rbacrolebindingactuation: map['rbacrolebindingactuation'] == null ? null : (FeatureSpecRbacrolebindingactuation.fromMap((map['rbacrolebindingactuation'] as Map).cast<String, dynamic>())).input(),
+      clusterupgrade: map['clusterupgrade'] == null ? null : (FeatureSpecClusterupgrade.fromMap((map['clusterupgrade']! as Map).cast<String, dynamic>())).input(),
+      fleetobservability: map['fleetobservability'] == null ? null : (FeatureSpecFleetobservability.fromMap((map['fleetobservability']! as Map).cast<String, dynamic>())).input(),
+      multiclusteringress: map['multiclusteringress'] == null ? null : (FeatureSpecMulticlusteringress.fromMap((map['multiclusteringress']! as Map).cast<String, dynamic>())).input(),
+      rbacrolebindingactuation: map['rbacrolebindingactuation'] == null ? null : (FeatureSpecRbacrolebindingactuation.fromMap((map['rbacrolebindingactuation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

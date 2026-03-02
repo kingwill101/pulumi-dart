@@ -54,13 +54,13 @@ class GetPublicIpAddressPoolsArgs {
 
   factory GetPublicIpAddressPoolsArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicIpAddressPoolsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      isp: map['isp'] == null ? null : (map['isp'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      publicIpAddressPoolIds: map['publicIpAddressPoolIds'] == null ? null : ((map['publicIpAddressPoolIds'] as List).cast<String>()).input(),
-      publicIpAddressPoolName: map['publicIpAddressPoolName'] == null ? null : (map['publicIpAddressPoolName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      isp: map['isp'] == null ? null : (map['isp']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      publicIpAddressPoolIds: map['publicIpAddressPoolIds'] == null ? null : ((map['publicIpAddressPoolIds']! as List).cast<String>()).input(),
+      publicIpAddressPoolName: map['publicIpAddressPoolName'] == null ? null : (map['publicIpAddressPoolName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

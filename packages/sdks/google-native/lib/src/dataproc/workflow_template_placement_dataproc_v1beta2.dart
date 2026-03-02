@@ -28,8 +28,8 @@ class WorkflowTemplatePlacementDataprocV1beta2 {
 
   factory WorkflowTemplatePlacementDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementDataprocV1beta2(
-      clusterSelector: map['clusterSelector'] == null ? null : (ClusterSelectorDataprocV1beta2.fromMap((map['clusterSelector'] as Map).cast<String, dynamic>())).input(),
-      managedCluster: map['managedCluster'] == null ? null : (ManagedClusterDataprocV1beta2.fromMap((map['managedCluster'] as Map).cast<String, dynamic>())).input(),
+      clusterSelector: map['clusterSelector'] == null ? null : (ClusterSelectorDataprocV1beta2.fromMap((map['clusterSelector']! as Map).cast<String, dynamic>())).input(),
+      managedCluster: map['managedCluster'] == null ? null : (ManagedClusterDataprocV1beta2.fromMap((map['managedCluster']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

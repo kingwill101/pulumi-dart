@@ -36,7 +36,7 @@ class AzureDevOpsOrganizationProfile {
     return AzureDevOpsOrganizationProfile(
       kind: (map['kind'] as String).input(),
       organizations: (pulumi.Input.decodeList<Organization>(map['organizations'], (value) => Organization.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      permissionProfile: map['permissionProfile'] == null ? null : (AzureDevOpsPermissionProfile.fromMap((map['permissionProfile'] as Map).cast<String, dynamic>())).input(),
+      permissionProfile: map['permissionProfile'] == null ? null : (AzureDevOpsPermissionProfile.fromMap((map['permissionProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

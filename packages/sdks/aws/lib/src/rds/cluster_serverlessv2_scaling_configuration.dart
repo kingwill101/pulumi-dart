@@ -32,7 +32,7 @@ class ClusterServerlessv2ScalingConfiguration {
     return ClusterServerlessv2ScalingConfiguration(
       maxCapacity: (map['maxCapacity'] as double).input(),
       minCapacity: (map['minCapacity'] as double).input(),
-      secondsUntilAutoPause: map['secondsUntilAutoPause'] == null ? null : (map['secondsUntilAutoPause'] as int).input(),
+      secondsUntilAutoPause: map['secondsUntilAutoPause'] == null ? null : ((map['secondsUntilAutoPause'] as int).input()).input(),
     );
   }
 }

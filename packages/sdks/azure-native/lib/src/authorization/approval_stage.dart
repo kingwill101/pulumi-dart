@@ -47,12 +47,12 @@ class ApprovalStage {
 
   factory ApprovalStage.fromMap(Map<String, dynamic> map) {
     return ApprovalStage(
-      approvalStageTimeOutInDays: map['approvalStageTimeOutInDays'] == null ? null : (map['approvalStageTimeOutInDays'] as int).input(),
-      escalationApprovers: map['escalationApprovers'] == null ? null : (pulumi.Input.decodeList<UserSet>(map['escalationApprovers'], (value) => UserSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      escalationTimeInMinutes: map['escalationTimeInMinutes'] == null ? null : (map['escalationTimeInMinutes'] as int).input(),
-      isApproverJustificationRequired: map['isApproverJustificationRequired'] == null ? null : (map['isApproverJustificationRequired'] as bool).input(),
-      isEscalationEnabled: map['isEscalationEnabled'] == null ? null : (map['isEscalationEnabled'] as bool).input(),
-      primaryApprovers: map['primaryApprovers'] == null ? null : (pulumi.Input.decodeList<UserSet>(map['primaryApprovers'], (value) => UserSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      approvalStageTimeOutInDays: map['approvalStageTimeOutInDays'] == null ? null : (map['approvalStageTimeOutInDays']! as int).input(),
+      escalationApprovers: map['escalationApprovers'] == null ? null : (pulumi.Input.decodeList<UserSet>(map['escalationApprovers']!, (value) => UserSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      escalationTimeInMinutes: map['escalationTimeInMinutes'] == null ? null : (map['escalationTimeInMinutes']! as int).input(),
+      isApproverJustificationRequired: map['isApproverJustificationRequired'] == null ? null : (map['isApproverJustificationRequired']! as bool).input(),
+      isEscalationEnabled: map['isEscalationEnabled'] == null ? null : (map['isEscalationEnabled']! as bool).input(),
+      primaryApprovers: map['primaryApprovers'] == null ? null : (pulumi.Input.decodeList<UserSet>(map['primaryApprovers']!, (value) => UserSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -43,11 +43,11 @@ class AccessControlListMatchConfiguration {
 
   factory AccessControlListMatchConfiguration.fromMap(Map<String, dynamic> map) {
     return AccessControlListMatchConfiguration(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<AccessControlListAction>(map['actions'], (value) => AccessControlListAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
-      matchConditions: map['matchConditions'] == null ? null : (pulumi.Input.decodeList<AccessControlListMatchCondition>(map['matchConditions'], (value) => AccessControlListMatchCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matchConfigurationName: map['matchConfigurationName'] == null ? null : (map['matchConfigurationName'] as String).input(),
-      sequenceNumber: map['sequenceNumber'] == null ? null : (map['sequenceNumber'] as double).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<AccessControlListAction>(map['actions']!, (value) => AccessControlListAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType']! as String).input(),
+      matchConditions: map['matchConditions'] == null ? null : (pulumi.Input.decodeList<AccessControlListMatchCondition>(map['matchConditions']!, (value) => AccessControlListMatchCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchConfigurationName: map['matchConfigurationName'] == null ? null : (map['matchConfigurationName']! as String).input(),
+      sequenceNumber: map['sequenceNumber'] == null ? null : (map['sequenceNumber']! as double).input(),
     );
   }
 }

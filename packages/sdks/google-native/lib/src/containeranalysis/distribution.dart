@@ -48,12 +48,12 @@ class Distribution {
 
   factory Distribution.fromMap(Map<String, dynamic> map) {
     return Distribution(
-      architecture: map['architecture'] == null ? null : (DistributionArchitecture.fromValue(map['architecture'] as String)).input(),
+      architecture: map['architecture'] == null ? null : (DistributionArchitecture.fromValue(map['architecture']! as String)).input(),
       cpeUri: (map['cpeUri'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      latestVersion: map['latestVersion'] == null ? null : (Version.fromMap((map['latestVersion'] as Map).cast<String, dynamic>())).input(),
-      maintainer: map['maintainer'] == null ? null : (map['maintainer'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      latestVersion: map['latestVersion'] == null ? null : (Version.fromMap((map['latestVersion']! as Map).cast<String, dynamic>())).input(),
+      maintainer: map['maintainer'] == null ? null : (map['maintainer']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

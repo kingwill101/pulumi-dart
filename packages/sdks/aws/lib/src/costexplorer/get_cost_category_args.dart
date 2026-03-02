@@ -30,7 +30,7 @@ class GetCostCategoryArgs {
   factory GetCostCategoryArgs.fromMap(Map<String, dynamic> map) {
     return GetCostCategoryArgs(
       costCategoryArn: (map['costCategoryArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -41,10 +41,10 @@ class GetApplicationArgs {
 
   factory GetApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationArgs(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      identifierUri: map['identifierUri'] == null ? null : (map['identifierUri'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      identifierUri: map['identifierUri'] == null ? null : (map['identifierUri']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
     );
   }
 }

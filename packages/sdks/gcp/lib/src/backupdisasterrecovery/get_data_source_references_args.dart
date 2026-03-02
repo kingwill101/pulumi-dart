@@ -34,8 +34,8 @@ class GetDataSourceReferencesArgs {
   factory GetDataSourceReferencesArgs.fromMap(Map<String, dynamic> map) {
     return GetDataSourceReferencesArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
     );
   }
 }

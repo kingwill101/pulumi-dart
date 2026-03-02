@@ -38,10 +38,10 @@ class PlacementV1PlacementPolicy {
 
   factory PlacementV1PlacementPolicy.fromMap(Map<String, dynamic> map) {
     return PlacementV1PlacementPolicy(
-      affinity: map['affinity'] == null ? null : (PlacementV1Affinity.fromMap((map['affinity'] as Map).cast<String, dynamic>())).input(),
-      clusterNames: map['clusterNames'] == null ? null : ((map['clusterNames'] as List).cast<String>()).input(),
-      placementType: map['placementType'] == null ? null : (map['placementType'] as String).input(),
-      tolerations: map['tolerations'] == null ? null : (pulumi.Input.decodeList<PlacementV1Toleration>(map['tolerations'], (value) => PlacementV1Toleration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      affinity: map['affinity'] == null ? null : (PlacementV1Affinity.fromMap((map['affinity']! as Map).cast<String, dynamic>())).input(),
+      clusterNames: map['clusterNames'] == null ? null : ((map['clusterNames']! as List).cast<String>()).input(),
+      placementType: map['placementType'] == null ? null : (map['placementType']! as String).input(),
+      tolerations: map['tolerations'] == null ? null : (pulumi.Input.decodeList<PlacementV1Toleration>(map['tolerations']!, (value) => PlacementV1Toleration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

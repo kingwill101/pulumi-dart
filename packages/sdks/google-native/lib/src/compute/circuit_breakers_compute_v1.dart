@@ -41,11 +41,11 @@ class CircuitBreakersComputeV1 {
 
   factory CircuitBreakersComputeV1.fromMap(Map<String, dynamic> map) {
     return CircuitBreakersComputeV1(
-      maxConnections: map['maxConnections'] == null ? null : (map['maxConnections'] as int).input(),
-      maxPendingRequests: map['maxPendingRequests'] == null ? null : (map['maxPendingRequests'] as int).input(),
-      maxRequests: map['maxRequests'] == null ? null : (map['maxRequests'] as int).input(),
-      maxRequestsPerConnection: map['maxRequestsPerConnection'] == null ? null : (map['maxRequestsPerConnection'] as int).input(),
-      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries'] as int).input(),
+      maxConnections: map['maxConnections'] == null ? null : (map['maxConnections']! as int).input(),
+      maxPendingRequests: map['maxPendingRequests'] == null ? null : (map['maxPendingRequests']! as int).input(),
+      maxRequests: map['maxRequests'] == null ? null : (map['maxRequests']! as int).input(),
+      maxRequestsPerConnection: map['maxRequestsPerConnection'] == null ? null : (map['maxRequestsPerConnection']! as int).input(),
+      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries']! as int).input(),
     );
   }
 }

@@ -35,7 +35,7 @@ class GetCharacterSetNamesResult {
       engine: map['engine'] as String,
       id: map['id'] as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

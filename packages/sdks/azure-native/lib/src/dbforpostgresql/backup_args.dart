@@ -34,7 +34,7 @@ class BackupArgs {
 
   factory BackupArgs.fromMap(Map<String, dynamic> map) {
     return BackupArgs(
-      backupName: map['backupName'] == null ? null : (map['backupName'] as String).input(),
+      backupName: map['backupName'] == null ? null : (map['backupName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
     );

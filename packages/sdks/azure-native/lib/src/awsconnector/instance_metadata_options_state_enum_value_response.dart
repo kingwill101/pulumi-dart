@@ -21,7 +21,7 @@ class InstanceMetadataOptionsStateEnumValueResponse {
 
   factory InstanceMetadataOptionsStateEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return InstanceMetadataOptionsStateEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -71,12 +71,12 @@ class GetDisasterRecoveryConfigResult {
 
   factory GetDisasterRecoveryConfigResult.fromMap(Map<String, dynamic> map) {
     return GetDisasterRecoveryConfigResult(
-      alternateName: map['alternateName'] == null ? null : map['alternateName'] as String,
+      alternateName: map['alternateName'] == null ? null : map['alternateName']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      partnerNamespace: map['partnerNamespace'] == null ? null : map['partnerNamespace'] as String,
+      partnerNamespace: map['partnerNamespace'] == null ? null : map['partnerNamespace']! as String,
       pendingReplicationOperationsCount: map['pendingReplicationOperationsCount'] as double,
       provisioningState: map['provisioningState'] as String,
       role: map['role'] as String,

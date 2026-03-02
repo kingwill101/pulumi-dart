@@ -40,8 +40,8 @@ class ApmArgs {
 
   factory ApmArgs.fromMap(Map<String, dynamic> map) {
     return ApmArgs(
-      apmName: map['apmName'] == null ? null : (map['apmName'] as String).input(),
-      properties: map['properties'] == null ? null : (ApmProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      apmName: map['apmName'] == null ? null : (map['apmName']! as String).input(),
+      properties: map['properties'] == null ? null : (ApmProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

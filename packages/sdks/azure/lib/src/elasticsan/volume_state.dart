@@ -59,14 +59,14 @@ class VolumeState {
 
   factory VolumeState.fromMap(Map<String, dynamic> map) {
     return VolumeState(
-      createSource: map['createSource'] == null ? null : (VolumeCreateSource.fromMap((map['createSource'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sizeInGib: map['sizeInGib'] == null ? null : (map['sizeInGib'] as int).input(),
-      targetIqn: map['targetIqn'] == null ? null : (map['targetIqn'] as String).input(),
-      targetPortalHostname: map['targetPortalHostname'] == null ? null : (map['targetPortalHostname'] as String).input(),
-      targetPortalPort: map['targetPortalPort'] == null ? null : (map['targetPortalPort'] as int).input(),
-      volumeGroupId: map['volumeGroupId'] == null ? null : (map['volumeGroupId'] as String).input(),
-      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as String).input(),
+      createSource: map['createSource'] == null ? null : (VolumeCreateSource.fromMap((map['createSource']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sizeInGib: map['sizeInGib'] == null ? null : (map['sizeInGib']! as int).input(),
+      targetIqn: map['targetIqn'] == null ? null : (map['targetIqn']! as String).input(),
+      targetPortalHostname: map['targetPortalHostname'] == null ? null : (map['targetPortalHostname']! as String).input(),
+      targetPortalPort: map['targetPortalPort'] == null ? null : (map['targetPortalPort']! as int).input(),
+      volumeGroupId: map['volumeGroupId'] == null ? null : (map['volumeGroupId']! as String).input(),
+      volumeId: map['volumeId'] == null ? null : (map['volumeId']! as String).input(),
     );
   }
 }

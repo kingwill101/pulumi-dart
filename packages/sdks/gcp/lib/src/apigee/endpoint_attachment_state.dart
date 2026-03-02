@@ -53,13 +53,13 @@ class EndpointAttachmentState {
 
   factory EndpointAttachmentState.fromMap(Map<String, dynamic> map) {
     return EndpointAttachmentState(
-      connectionState: map['connectionState'] == null ? null : (map['connectionState'] as String).input(),
-      endpointAttachmentId: map['endpointAttachmentId'] == null ? null : (map['endpointAttachmentId'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
-      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment'] as String).input(),
+      connectionState: map['connectionState'] == null ? null : (map['connectionState']! as String).input(),
+      endpointAttachmentId: map['endpointAttachmentId'] == null ? null : (map['endpointAttachmentId']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
+      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment']! as String).input(),
     );
   }
 }

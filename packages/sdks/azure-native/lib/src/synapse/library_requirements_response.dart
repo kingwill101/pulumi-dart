@@ -31,8 +31,8 @@ class LibraryRequirementsResponse {
 
   factory LibraryRequirementsResponse.fromMap(Map<String, dynamic> map) {
     return LibraryRequirementsResponse(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      filename: map['filename'] == null ? null : (map['filename'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      filename: map['filename'] == null ? null : (map['filename']! as String).input(),
       time: (map['time'] as String).input(),
     );
   }

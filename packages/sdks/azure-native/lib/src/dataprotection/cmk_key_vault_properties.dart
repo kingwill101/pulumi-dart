@@ -21,7 +21,7 @@ class CmkKeyVaultProperties {
 
   factory CmkKeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return CmkKeyVaultProperties(
-      keyUri: map['keyUri'] == null ? null : (map['keyUri'] as String).input(),
+      keyUri: map['keyUri'] == null ? null : (map['keyUri']! as String).input(),
     );
   }
 }

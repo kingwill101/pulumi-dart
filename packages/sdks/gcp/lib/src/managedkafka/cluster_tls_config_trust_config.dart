@@ -22,7 +22,7 @@ class ClusterTlsConfigTrustConfig {
 
   factory ClusterTlsConfigTrustConfig.fromMap(Map<String, dynamic> map) {
     return ClusterTlsConfigTrustConfig(
-      casConfigs: map['casConfigs'] == null ? null : (pulumi.Input.decodeList<ClusterTlsConfigTrustConfigCasConfig>(map['casConfigs'], (value) => ClusterTlsConfigTrustConfigCasConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      casConfigs: map['casConfigs'] == null ? null : (pulumi.Input.decodeList<ClusterTlsConfigTrustConfigCasConfig>(map['casConfigs']!, (value) => ClusterTlsConfigTrustConfigCasConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

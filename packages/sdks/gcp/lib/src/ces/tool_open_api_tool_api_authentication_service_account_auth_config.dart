@@ -27,7 +27,7 @@ class ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig {
 
   factory ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig.fromMap(Map<String, dynamic> map) {
     return ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig(
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
     );
   }
 }

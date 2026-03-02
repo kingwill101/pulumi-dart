@@ -64,14 +64,14 @@ class RepositoryArtifactregistryV1beta2Args {
 
   factory RepositoryArtifactregistryV1beta2Args.fromMap(Map<String, dynamic> map) {
     return RepositoryArtifactregistryV1beta2Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      format: map['format'] == null ? null : (RepositoryFormatArtifactregistryV1beta2.fromValue(map['format'] as String)).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mavenConfig: map['mavenConfig'] == null ? null : (MavenRepositoryConfigArtifactregistryV1beta2.fromMap((map['mavenConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      format: map['format'] == null ? null : (RepositoryFormatArtifactregistryV1beta2.fromValue(map['format']! as String)).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mavenConfig: map['mavenConfig'] == null ? null : (MavenRepositoryConfigArtifactregistryV1beta2.fromMap((map['mavenConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       repositoryId: (map['repositoryId'] as String).input(),
     );
   }

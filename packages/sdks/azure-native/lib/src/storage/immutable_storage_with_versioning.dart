@@ -21,7 +21,7 @@ class ImmutableStorageWithVersioning {
 
   factory ImmutableStorageWithVersioning.fromMap(Map<String, dynamic> map) {
     return ImmutableStorageWithVersioning(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class JobRecurrenceScheduleMonthlyOccurrenceResponse {
 
   factory JobRecurrenceScheduleMonthlyOccurrenceResponse.fromMap(Map<String, dynamic> map) {
     return JobRecurrenceScheduleMonthlyOccurrenceResponse(
-      day: map['day'] == null ? null : (map['day'] as String).input(),
-      occurrence: map['occurrence'] == null ? null : (map['occurrence'] as int).input(),
+      day: map['day'] == null ? null : (map['day']! as String).input(),
+      occurrence: map['occurrence'] == null ? null : (map['occurrence']! as int).input(),
     );
   }
 }

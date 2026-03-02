@@ -41,11 +41,11 @@ class TriggerScheduleSchedule {
 
   factory TriggerScheduleSchedule.fromMap(Map<String, dynamic> map) {
     return TriggerScheduleSchedule(
-      daysOfMonths: map['daysOfMonths'] == null ? null : ((map['daysOfMonths'] as List).cast<int>()).input(),
-      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((map['daysOfWeeks'] as List).cast<String>()).input(),
-      hours: map['hours'] == null ? null : ((map['hours'] as List).cast<int>()).input(),
-      minutes: map['minutes'] == null ? null : ((map['minutes'] as List).cast<int>()).input(),
-      monthlies: map['monthlies'] == null ? null : (pulumi.Input.decodeList<TriggerScheduleScheduleMonthly>(map['monthlies'], (value) => TriggerScheduleScheduleMonthly.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      daysOfMonths: map['daysOfMonths'] == null ? null : ((map['daysOfMonths']! as List).cast<int>()).input(),
+      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((map['daysOfWeeks']! as List).cast<String>()).input(),
+      hours: map['hours'] == null ? null : ((map['hours']! as List).cast<int>()).input(),
+      minutes: map['minutes'] == null ? null : ((map['minutes']! as List).cast<int>()).input(),
+      monthlies: map['monthlies'] == null ? null : (pulumi.Input.decodeList<TriggerScheduleScheduleMonthly>(map['monthlies']!, (value) => TriggerScheduleScheduleMonthly.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

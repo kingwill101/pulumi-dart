@@ -71,13 +71,13 @@ class HealthCheckHttp2HealthCheck {
 
   factory HealthCheckHttp2HealthCheck.fromMap(Map<String, dynamic> map) {
     return HealthCheckHttp2HealthCheck(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      portName: map['portName'] == null ? null : (map['portName'] as String).input(),
-      portSpecification: map['portSpecification'] == null ? null : (map['portSpecification'] as String).input(),
-      proxyHeader: map['proxyHeader'] == null ? null : (map['proxyHeader'] as String).input(),
-      requestPath: map['requestPath'] == null ? null : (map['requestPath'] as String).input(),
-      response: map['response'] == null ? null : (map['response'] as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      portName: map['portName'] == null ? null : (map['portName']! as String).input(),
+      portSpecification: map['portSpecification'] == null ? null : (map['portSpecification']! as String).input(),
+      proxyHeader: map['proxyHeader'] == null ? null : (map['proxyHeader']! as String).input(),
+      requestPath: map['requestPath'] == null ? null : (map['requestPath']! as String).input(),
+      response: map['response'] == null ? null : (map['response']! as String).input(),
     );
   }
 }

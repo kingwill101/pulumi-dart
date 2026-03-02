@@ -21,7 +21,7 @@ class ClusterEndpointEncryptionTypeEnumValueResponse {
 
   factory ClusterEndpointEncryptionTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return ClusterEndpointEncryptionTypeEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

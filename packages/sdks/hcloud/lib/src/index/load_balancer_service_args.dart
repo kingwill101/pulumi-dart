@@ -56,13 +56,13 @@ class LoadBalancerServiceArgs {
 
   factory LoadBalancerServiceArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerServiceArgs(
-      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as int).input(),
-      healthCheck: map['healthCheck'] == null ? null : (LoadBalancerServiceHealthCheck.fromMap((map['healthCheck'] as Map).cast<String, dynamic>())).input(),
-      http: map['http'] == null ? null : (LoadBalancerServiceHttp.fromMap((map['http'] as Map).cast<String, dynamic>())).input(),
-      listenPort: map['listenPort'] == null ? null : (map['listenPort'] as int).input(),
+      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort']! as int).input(),
+      healthCheck: map['healthCheck'] == null ? null : (LoadBalancerServiceHealthCheck.fromMap((map['healthCheck']! as Map).cast<String, dynamic>())).input(),
+      http: map['http'] == null ? null : (LoadBalancerServiceHttp.fromMap((map['http']! as Map).cast<String, dynamic>())).input(),
+      listenPort: map['listenPort'] == null ? null : (map['listenPort']! as int).input(),
       loadBalancerId: (map['loadBalancerId'] as String).input(),
       protocol: (map['protocol'] as String).input(),
-      proxyprotocol: map['proxyprotocol'] == null ? null : (map['proxyprotocol'] as bool).input(),
+      proxyprotocol: map['proxyprotocol'] == null ? null : (map['proxyprotocol']! as bool).input(),
     );
   }
 }

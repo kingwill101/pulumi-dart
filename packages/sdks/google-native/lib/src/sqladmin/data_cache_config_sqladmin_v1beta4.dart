@@ -21,7 +21,7 @@ class DataCacheConfigSqladminV1beta4 {
 
   factory DataCacheConfigSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return DataCacheConfigSqladminV1beta4(
-      dataCacheEnabled: map['dataCacheEnabled'] == null ? null : (map['dataCacheEnabled'] as bool).input(),
+      dataCacheEnabled: map['dataCacheEnabled'] == null ? null : (map['dataCacheEnabled']! as bool).input(),
     );
   }
 }

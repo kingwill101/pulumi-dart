@@ -64,7 +64,7 @@ class GetDocumentResult {
       id: map['id'] as String,
       name: map['name'] as String,
       path: map['path'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       updateTime: map['updateTime'] as String,
     );
   }

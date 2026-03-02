@@ -27,8 +27,8 @@ class LocationPolicy {
 
   factory LocationPolicy.fromMap(Map<String, dynamic> map) {
     return LocationPolicy(
-      locations: map['locations'] == null ? null : ((map['locations'] as Map).cast<String, String>()).input(),
-      targetShape: map['targetShape'] == null ? null : (LocationPolicyTargetShape.fromValue(map['targetShape'] as String)).input(),
+      locations: map['locations'] == null ? null : ((map['locations']! as Map).cast<String, String>()).input(),
+      targetShape: map['targetShape'] == null ? null : (LocationPolicyTargetShape.fromValue(map['targetShape']! as String)).input(),
     );
   }
 }

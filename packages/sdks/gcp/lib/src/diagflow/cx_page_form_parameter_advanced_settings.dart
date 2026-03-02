@@ -26,7 +26,7 @@ class CxPageFormParameterAdvancedSettings {
 
   factory CxPageFormParameterAdvancedSettings.fromMap(Map<String, dynamic> map) {
     return CxPageFormParameterAdvancedSettings(
-      dtmfSettings: map['dtmfSettings'] == null ? null : (CxPageFormParameterAdvancedSettingsDtmfSettings.fromMap((map['dtmfSettings'] as Map).cast<String, dynamic>())).input(),
+      dtmfSettings: map['dtmfSettings'] == null ? null : (CxPageFormParameterAdvancedSettingsDtmfSettings.fromMap((map['dtmfSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

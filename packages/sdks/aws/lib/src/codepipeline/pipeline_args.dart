@@ -75,16 +75,16 @@ class PipelineArgs {
 
   factory PipelineArgs.fromMap(Map<String, dynamic> map) {
     return PipelineArgs(
-      artifactStores: (pulumi.Input.decodeList<PipelineArtifactStore>(map['artifactStores'], (value) => PipelineArtifactStore.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      executionMode: map['executionMode'] == null ? null : (map['executionMode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pipelineType: map['pipelineType'] == null ? null : (map['pipelineType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      artifactStores: (pulumi.Input.decodeList<PipelineArtifactStore>(map['artifactStores']!, (value) => PipelineArtifactStore.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      executionMode: map['executionMode'] == null ? null : ((map['executionMode'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      pipelineType: map['pipelineType'] == null ? null : ((map['pipelineType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      stages: (pulumi.Input.decodeList<PipelineStage>(map['stages'], (value) => PipelineStage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      triggers: map['triggers'] == null ? null : (pulumi.Input.decodeList<PipelineTrigger>(map['triggers'], (value) => PipelineTrigger.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      variables: map['variables'] == null ? null : (pulumi.Input.decodeList<PipelineVariable>(map['variables'], (value) => PipelineVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stages: (pulumi.Input.decodeList<PipelineStage>(map['stages']!, (value) => PipelineStage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      triggers: map['triggers'] == null ? null : ((pulumi.Input.decodeList<PipelineTrigger>(map['triggers']!, (value) => PipelineTrigger.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      variables: map['variables'] == null ? null : ((pulumi.Input.decodeList<PipelineVariable>(map['variables']!, (value) => PipelineVariable.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

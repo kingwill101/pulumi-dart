@@ -37,10 +37,10 @@ class ForwardingRuleRuleAction {
 
   factory ForwardingRuleRuleAction.fromMap(Map<String, dynamic> map) {
     return ForwardingRuleRuleAction(
-      forwardGroupConfig: map['forwardGroupConfig'] == null ? null : (ForwardingRuleRuleActionForwardGroupConfig.fromMap((map['forwardGroupConfig'] as Map).cast<String, dynamic>())).input(),
+      forwardGroupConfig: map['forwardGroupConfig'] == null ? null : (ForwardingRuleRuleActionForwardGroupConfig.fromMap((map['forwardGroupConfig']! as Map).cast<String, dynamic>())).input(),
       order: (map['order'] as int).input(),
       ruleActionType: (map['ruleActionType'] as String).input(),
-      ruleActionValue: map['ruleActionValue'] == null ? null : (map['ruleActionValue'] as String).input(),
+      ruleActionValue: map['ruleActionValue'] == null ? null : (map['ruleActionValue']! as String).input(),
     );
   }
 }

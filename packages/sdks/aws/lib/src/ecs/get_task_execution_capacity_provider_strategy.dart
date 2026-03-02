@@ -30,9 +30,9 @@ class GetTaskExecutionCapacityProviderStrategy {
 
   factory GetTaskExecutionCapacityProviderStrategy.fromMap(Map<String, dynamic> map) {
     return GetTaskExecutionCapacityProviderStrategy(
-      base: map['base'] == null ? null : (map['base'] as int).input(),
+      base: map['base'] == null ? null : ((map['base'] as int).input()).input(),
       capacityProvider: (map['capacityProvider'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      weight: map['weight'] == null ? null : ((map['weight'] as int).input()).input(),
     );
   }
 }

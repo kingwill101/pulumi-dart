@@ -31,9 +31,9 @@ class CertificateValidationState {
 
   factory CertificateValidationState.fromMap(Map<String, dynamic> map) {
     return CertificateValidationState(
-      certificateArn: map['certificateArn'] == null ? null : (map['certificateArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      validationRecordFqdns: map['validationRecordFqdns'] == null ? null : ((map['validationRecordFqdns'] as List).cast<String>()).input(),
+      certificateArn: map['certificateArn'] == null ? null : ((map['certificateArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      validationRecordFqdns: map['validationRecordFqdns'] == null ? null : (((map['validationRecordFqdns'] as List).cast<String>()).input()).input(),
     );
   }
 }

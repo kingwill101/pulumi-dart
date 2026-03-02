@@ -86,18 +86,18 @@ class AmiCopyArgs {
 
   factory AmiCopyArgs.fromMap(Map<String, dynamic> map) {
     return AmiCopyArgs(
-      deprecationTime: map['deprecationTime'] == null ? null : (map['deprecationTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationOutpostArn: map['destinationOutpostArn'] == null ? null : (map['destinationOutpostArn'] as String).input(),
-      ebsBlockDevices: map['ebsBlockDevices'] == null ? null : (pulumi.Input.decodeList<AmiCopyEbsBlockDevice>(map['ebsBlockDevices'], (value) => AmiCopyEbsBlockDevice.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
-      ephemeralBlockDevices: map['ephemeralBlockDevices'] == null ? null : (pulumi.Input.decodeList<AmiCopyEphemeralBlockDevice>(map['ephemeralBlockDevices'], (value) => AmiCopyEphemeralBlockDevice.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      deprecationTime: map['deprecationTime'] == null ? null : ((map['deprecationTime'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      destinationOutpostArn: map['destinationOutpostArn'] == null ? null : ((map['destinationOutpostArn'] as String).input()).input(),
+      ebsBlockDevices: map['ebsBlockDevices'] == null ? null : ((pulumi.Input.decodeList<AmiCopyEbsBlockDevice>(map['ebsBlockDevices']!, (value) => AmiCopyEbsBlockDevice.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      encrypted: map['encrypted'] == null ? null : ((map['encrypted'] as bool).input()).input(),
+      ephemeralBlockDevices: map['ephemeralBlockDevices'] == null ? null : ((pulumi.Input.decodeList<AmiCopyEphemeralBlockDevice>(map['ephemeralBlockDevices']!, (value) => AmiCopyEphemeralBlockDevice.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       sourceAmiId: (map['sourceAmiId'] as String).input(),
       sourceAmiRegion: (map['sourceAmiRegion'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

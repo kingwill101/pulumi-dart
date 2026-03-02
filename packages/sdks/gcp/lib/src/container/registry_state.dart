@@ -31,9 +31,9 @@ class RegistryState {
 
   factory RegistryState.fromMap(Map<String, dynamic> map) {
     return RegistryState(
-      bucketSelfLink: map['bucketSelfLink'] == null ? null : (map['bucketSelfLink'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      bucketSelfLink: map['bucketSelfLink'] == null ? null : (map['bucketSelfLink']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

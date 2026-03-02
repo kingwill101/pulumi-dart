@@ -54,10 +54,10 @@ class GetRoutingIntentResult {
     return GetRoutingIntentResult(
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
       provisioningState: map['provisioningState'] as String,
-      routingPolicies: map['routingPolicies'] == null ? null : pulumi.Input.decodeList<RoutingPolicyResponse>(map['routingPolicies'], (value) => RoutingPolicyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      routingPolicies: map['routingPolicies'] == null ? null : pulumi.Input.decodeList<RoutingPolicyResponse>(map['routingPolicies']!, (value) => RoutingPolicyResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }

@@ -25,7 +25,7 @@ class GetGatewayRouteSpecHttpRouteActionTarget {
   factory GetGatewayRouteSpecHttpRouteActionTarget.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecHttpRouteActionTarget(
       port: (map['port'] as int).input(),
-      virtualServices: (pulumi.Input.decodeList<GetGatewayRouteSpecHttpRouteActionTargetVirtualService>(map['virtualServices'], (value) => GetGatewayRouteSpecHttpRouteActionTargetVirtualService.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualServices: (pulumi.Input.decodeList<GetGatewayRouteSpecHttpRouteActionTargetVirtualService>(map['virtualServices']!, (value) => GetGatewayRouteSpecHttpRouteActionTargetVirtualService.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

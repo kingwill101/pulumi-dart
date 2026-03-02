@@ -26,8 +26,8 @@ class IngressTLSPatch {
 
   factory IngressTLSPatch.fromMap(Map<String, dynamic> map) {
     return IngressTLSPatch(
-      hosts: map['hosts'] == null ? null : ((map['hosts'] as List).cast<String>()).input(),
-      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
+      hosts: map['hosts'] == null ? null : ((map['hosts']! as List).cast<String>()).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName']! as String).input(),
     );
   }
 }

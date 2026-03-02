@@ -25,8 +25,8 @@ class TaskExcludes {
 
   factory TaskExcludes.fromMap(Map<String, dynamic> map) {
     return TaskExcludes(
-      filterType: map['filterType'] == null ? null : (map['filterType'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      filterType: map['filterType'] == null ? null : ((map['filterType'] as String).input()).input(),
+      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
     );
   }
 }

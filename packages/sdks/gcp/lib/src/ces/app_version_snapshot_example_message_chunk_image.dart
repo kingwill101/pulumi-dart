@@ -31,8 +31,8 @@ class AppVersionSnapshotExampleMessageChunkImage {
 
   factory AppVersionSnapshotExampleMessageChunkImage.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotExampleMessageChunkImage(
-      data: map['data'] == null ? null : (map['data'] as String).input(),
-      mimeType: map['mimeType'] == null ? null : (map['mimeType'] as String).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
+      mimeType: map['mimeType'] == null ? null : (map['mimeType']! as String).input(),
     );
   }
 }

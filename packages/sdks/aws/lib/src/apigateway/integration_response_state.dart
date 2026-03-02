@@ -63,15 +63,15 @@ class IntegrationResponseState {
 
   factory IntegrationResponseState.fromMap(Map<String, dynamic> map) {
     return IntegrationResponseState(
-      contentHandling: map['contentHandling'] == null ? null : (map['contentHandling'] as String).input(),
-      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      responseParameters: map['responseParameters'] == null ? null : ((map['responseParameters'] as Map).cast<String, String>()).input(),
-      responseTemplates: map['responseTemplates'] == null ? null : ((map['responseTemplates'] as Map).cast<String, String>()).input(),
-      restApi: map['restApi'] == null ? null : (map['restApi'] as String).input(),
-      selectionPattern: map['selectionPattern'] == null ? null : (map['selectionPattern'] as String).input(),
-      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as String).input(),
+      contentHandling: map['contentHandling'] == null ? null : ((map['contentHandling'] as String).input()).input(),
+      httpMethod: map['httpMethod'] == null ? null : ((map['httpMethod'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceId: map['resourceId'] == null ? null : ((map['resourceId'] as String).input()).input(),
+      responseParameters: map['responseParameters'] == null ? null : (((map['responseParameters'] as Map).cast<String, String>()).input()).input(),
+      responseTemplates: map['responseTemplates'] == null ? null : (((map['responseTemplates'] as Map).cast<String, String>()).input()).input(),
+      restApi: map['restApi'] == null ? null : ((map['restApi'] as String).input()).input(),
+      selectionPattern: map['selectionPattern'] == null ? null : ((map['selectionPattern'] as String).input()).input(),
+      statusCode: map['statusCode'] == null ? null : ((map['statusCode'] as String).input()).input(),
     );
   }
 }

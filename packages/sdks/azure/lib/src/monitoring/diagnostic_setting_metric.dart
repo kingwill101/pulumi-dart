@@ -29,8 +29,8 @@ class DiagnosticSettingMetric {
   factory DiagnosticSettingMetric.fromMap(Map<String, dynamic> map) {
     return DiagnosticSettingMetric(
       category: (map['category'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      retentionPolicy: map['retentionPolicy'] == null ? null : (DiagnosticSettingMetricRetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (DiagnosticSettingMetricRetentionPolicy.fromMap((map['retentionPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

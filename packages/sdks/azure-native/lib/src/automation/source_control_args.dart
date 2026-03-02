@@ -75,17 +75,17 @@ class SourceControlArgs {
 
   factory SourceControlArgs.fromMap(Map<String, dynamic> map) {
     return SourceControlArgs(
-      autoSync: map['autoSync'] == null ? null : (map['autoSync'] as bool).input(),
+      autoSync: map['autoSync'] == null ? null : (map['autoSync']! as bool).input(),
       automationAccountName: (map['automationAccountName'] as String).input(),
-      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      folderPath: map['folderPath'] == null ? null : (map['folderPath'] as String).input(),
-      publishRunbook: map['publishRunbook'] == null ? null : (map['publishRunbook'] as bool).input(),
-      repoUrl: map['repoUrl'] == null ? null : (map['repoUrl'] as String).input(),
+      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath']! as String).input(),
+      publishRunbook: map['publishRunbook'] == null ? null : (map['publishRunbook']! as bool).input(),
+      repoUrl: map['repoUrl'] == null ? null : (map['repoUrl']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      securityToken: map['securityToken'] == null ? null : (SourceControlSecurityTokenProperties.fromMap((map['securityToken'] as Map).cast<String, dynamic>())).input(),
-      sourceControlName: map['sourceControlName'] == null ? null : (map['sourceControlName'] as String).input(),
-      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
+      securityToken: map['securityToken'] == null ? null : (SourceControlSecurityTokenProperties.fromMap((map['securityToken']! as Map).cast<String, dynamic>())).input(),
+      sourceControlName: map['sourceControlName'] == null ? null : (map['sourceControlName']! as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType']! as String).input(),
     );
   }
 }

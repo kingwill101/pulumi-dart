@@ -38,7 +38,7 @@ class ManagedIdentityAuthenticationSettingPropertiesResponse {
   factory ManagedIdentityAuthenticationSettingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ManagedIdentityAuthenticationSettingPropertiesResponse(
       authenticationKind: (map['authenticationKind'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       managedIdentityName: (map['managedIdentityName'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );

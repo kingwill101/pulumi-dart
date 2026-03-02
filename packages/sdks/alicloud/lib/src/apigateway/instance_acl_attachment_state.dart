@@ -31,9 +31,9 @@ class InstanceAclAttachmentState {
 
   factory InstanceAclAttachmentState.fromMap(Map<String, dynamic> map) {
     return InstanceAclAttachmentState(
-      aclId: map['aclId'] == null ? null : (map['aclId'] as String).input(),
-      aclType: map['aclType'] == null ? null : (map['aclType'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      aclId: map['aclId'] == null ? null : (map['aclId']! as String).input(),
+      aclType: map['aclType'] == null ? null : (map['aclType']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
     );
   }
 }

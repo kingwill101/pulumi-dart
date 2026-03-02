@@ -22,7 +22,7 @@ class AggregationRulePatch {
 
   factory AggregationRulePatch.fromMap(Map<String, dynamic> map) {
     return AggregationRulePatch(
-      clusterRoleSelectors: map['clusterRoleSelectors'] == null ? null : (pulumi.Input.decodeList<LabelSelectorPatch>(map['clusterRoleSelectors'], (value) => LabelSelectorPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clusterRoleSelectors: map['clusterRoleSelectors'] == null ? null : (pulumi.Input.decodeList<LabelSelectorPatch>(map['clusterRoleSelectors']!, (value) => LabelSelectorPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

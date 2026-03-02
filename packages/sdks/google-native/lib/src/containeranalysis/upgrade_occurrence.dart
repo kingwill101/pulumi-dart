@@ -39,10 +39,10 @@ class UpgradeOccurrence {
 
   factory UpgradeOccurrence.fromMap(Map<String, dynamic> map) {
     return UpgradeOccurrence(
-      distribution: map['distribution'] == null ? null : (UpgradeDistribution.fromMap((map['distribution'] as Map).cast<String, dynamic>())).input(),
-      package: map['package'] == null ? null : (map['package'] as String).input(),
-      parsedVersion: map['parsedVersion'] == null ? null : (Version.fromMap((map['parsedVersion'] as Map).cast<String, dynamic>())).input(),
-      windowsUpdate: map['windowsUpdate'] == null ? null : (WindowsUpdate.fromMap((map['windowsUpdate'] as Map).cast<String, dynamic>())).input(),
+      distribution: map['distribution'] == null ? null : (UpgradeDistribution.fromMap((map['distribution']! as Map).cast<String, dynamic>())).input(),
+      package: map['package'] == null ? null : (map['package']! as String).input(),
+      parsedVersion: map['parsedVersion'] == null ? null : (Version.fromMap((map['parsedVersion']! as Map).cast<String, dynamic>())).input(),
+      windowsUpdate: map['windowsUpdate'] == null ? null : (WindowsUpdate.fromMap((map['windowsUpdate']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

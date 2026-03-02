@@ -71,11 +71,11 @@ class DataExchangeSubscriptionArgs {
       dataExchangeId: (map['dataExchangeId'] as String).input(),
       dataExchangeLocation: (map['dataExchangeLocation'] as String).input(),
       dataExchangeProject: (map['dataExchangeProject'] as String).input(),
-      destinationDataset: map['destinationDataset'] == null ? null : (DataExchangeSubscriptionDestinationDataset.fromMap((map['destinationDataset'] as Map).cast<String, dynamic>())).input(),
+      destinationDataset: map['destinationDataset'] == null ? null : (DataExchangeSubscriptionDestinationDataset.fromMap((map['destinationDataset']! as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      refreshPolicy: map['refreshPolicy'] == null ? null : (map['refreshPolicy'] as String).input(),
-      subscriberContact: map['subscriberContact'] == null ? null : (map['subscriberContact'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      refreshPolicy: map['refreshPolicy'] == null ? null : (map['refreshPolicy']! as String).input(),
+      subscriberContact: map['subscriberContact'] == null ? null : (map['subscriberContact']! as String).input(),
       subscriptionId: (map['subscriptionId'] as String).input(),
     );
   }

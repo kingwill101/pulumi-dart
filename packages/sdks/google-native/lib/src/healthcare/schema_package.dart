@@ -45,11 +45,11 @@ class SchemaPackage {
 
   factory SchemaPackage.fromMap(Map<String, dynamic> map) {
     return SchemaPackage(
-      ignoreMinOccurs: map['ignoreMinOccurs'] == null ? null : (map['ignoreMinOccurs'] as bool).input(),
-      schemas: map['schemas'] == null ? null : (pulumi.Input.decodeList<Hl7SchemaConfig>(map['schemas'], (value) => Hl7SchemaConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      schematizedParsingType: map['schematizedParsingType'] == null ? null : (SchemaPackageSchematizedParsingType.fromValue(map['schematizedParsingType'] as String)).input(),
-      types: map['types'] == null ? null : (pulumi.Input.decodeList<Hl7TypesConfig>(map['types'], (value) => Hl7TypesConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      unexpectedSegmentHandling: map['unexpectedSegmentHandling'] == null ? null : (SchemaPackageUnexpectedSegmentHandling.fromValue(map['unexpectedSegmentHandling'] as String)).input(),
+      ignoreMinOccurs: map['ignoreMinOccurs'] == null ? null : (map['ignoreMinOccurs']! as bool).input(),
+      schemas: map['schemas'] == null ? null : (pulumi.Input.decodeList<Hl7SchemaConfig>(map['schemas']!, (value) => Hl7SchemaConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schematizedParsingType: map['schematizedParsingType'] == null ? null : (SchemaPackageSchematizedParsingType.fromValue(map['schematizedParsingType']! as String)).input(),
+      types: map['types'] == null ? null : (pulumi.Input.decodeList<Hl7TypesConfig>(map['types']!, (value) => Hl7TypesConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      unexpectedSegmentHandling: map['unexpectedSegmentHandling'] == null ? null : (SchemaPackageUnexpectedSegmentHandling.fromValue(map['unexpectedSegmentHandling']! as String)).input(),
     );
   }
 }

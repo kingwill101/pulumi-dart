@@ -27,7 +27,7 @@ class OSPolicyResourceExecResourceOsconfigV1alpha {
 
   factory OSPolicyResourceExecResourceOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceExecResourceOsconfigV1alpha(
-      enforce: map['enforce'] == null ? null : (OSPolicyResourceExecResourceExecOsconfigV1alpha.fromMap((map['enforce'] as Map).cast<String, dynamic>())).input(),
+      enforce: map['enforce'] == null ? null : (OSPolicyResourceExecResourceExecOsconfigV1alpha.fromMap((map['enforce']! as Map).cast<String, dynamic>())).input(),
       validate: (OSPolicyResourceExecResourceExecOsconfigV1alpha.fromMap((map['validate'] as Map).cast<String, dynamic>())).input(),
     );
   }

@@ -33,7 +33,7 @@ class GetBackupAlloydbV1alphaArgs {
     return GetBackupAlloydbV1alphaArgs(
       backupId: (map['backupId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

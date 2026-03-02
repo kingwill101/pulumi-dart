@@ -47,12 +47,12 @@ class UserRecordResponse {
 
   factory UserRecordResponse.fromMap(Map<String, dynamic> map) {
     return UserRecordResponse(
-      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      fullName: map['fullName'] == null ? null : (map['fullName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (MetadataEntityResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      authType: map['authType'] == null ? null : (map['authType']! as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      fullName: map['fullName'] == null ? null : (map['fullName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (MetadataEntityResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

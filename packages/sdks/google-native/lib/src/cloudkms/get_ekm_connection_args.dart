@@ -33,7 +33,7 @@ class GetEkmConnectionArgs {
     return GetEkmConnectionArgs(
       ekmConnectionId: (map['ekmConnectionId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

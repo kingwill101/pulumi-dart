@@ -22,7 +22,7 @@ class ResourcePolicyWeeklyCycle {
 
   factory ResourcePolicyWeeklyCycle.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyWeeklyCycle(
-      dayOfWeeks: map['dayOfWeeks'] == null ? null : (pulumi.Input.decodeList<ResourcePolicyWeeklyCycleDayOfWeek>(map['dayOfWeeks'], (value) => ResourcePolicyWeeklyCycleDayOfWeek.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dayOfWeeks: map['dayOfWeeks'] == null ? null : (pulumi.Input.decodeList<ResourcePolicyWeeklyCycleDayOfWeek>(map['dayOfWeeks']!, (value) => ResourcePolicyWeeklyCycleDayOfWeek.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

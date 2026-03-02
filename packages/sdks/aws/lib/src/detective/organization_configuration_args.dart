@@ -36,7 +36,7 @@ class OrganizationConfigurationArgs {
     return OrganizationConfigurationArgs(
       autoEnable: (map['autoEnable'] as bool).input(),
       graphArn: (map['graphArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class ActiveRoleAssignmentScheduleExpiration {
 
   factory ActiveRoleAssignmentScheduleExpiration.fromMap(Map<String, dynamic> map) {
     return ActiveRoleAssignmentScheduleExpiration(
-      durationDays: map['durationDays'] == null ? null : (map['durationDays'] as int).input(),
-      durationHours: map['durationHours'] == null ? null : (map['durationHours'] as int).input(),
-      endDateTime: map['endDateTime'] == null ? null : (map['endDateTime'] as String).input(),
+      durationDays: map['durationDays'] == null ? null : (map['durationDays']! as int).input(),
+      durationHours: map['durationHours'] == null ? null : (map['durationHours']! as int).input(),
+      endDateTime: map['endDateTime'] == null ? null : (map['endDateTime']! as String).input(),
     );
   }
 }

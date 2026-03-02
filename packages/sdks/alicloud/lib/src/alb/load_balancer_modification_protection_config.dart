@@ -25,8 +25,8 @@ class LoadBalancerModificationProtectionConfig {
 
   factory LoadBalancerModificationProtectionConfig.fromMap(Map<String, dynamic> map) {
     return LoadBalancerModificationProtectionConfig(
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

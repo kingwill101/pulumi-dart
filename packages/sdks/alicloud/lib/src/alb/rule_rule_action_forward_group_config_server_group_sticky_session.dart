@@ -25,8 +25,8 @@ class RuleRuleActionForwardGroupConfigServerGroupStickySession {
 
   factory RuleRuleActionForwardGroupConfigServerGroupStickySession.fromMap(Map<String, dynamic> map) {
     return RuleRuleActionForwardGroupConfigServerGroupStickySession(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
     );
   }
 }

@@ -55,14 +55,14 @@ class ProfileState {
 
   factory ProfileState.fromMap(Map<String, dynamic> map) {
     return ProfileState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      as2Id: map['as2Id'] == null ? null : (map['as2Id'] as String).input(),
-      certificateIds: map['certificateIds'] == null ? null : ((map['certificateIds'] as List).cast<String>()).input(),
-      profileId: map['profileId'] == null ? null : (map['profileId'] as String).input(),
-      profileType: map['profileType'] == null ? null : (map['profileType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      as2Id: map['as2Id'] == null ? null : ((map['as2Id'] as String).input()).input(),
+      certificateIds: map['certificateIds'] == null ? null : (((map['certificateIds'] as List).cast<String>()).input()).input(),
+      profileId: map['profileId'] == null ? null : ((map['profileId'] as String).input()).input(),
+      profileType: map['profileType'] == null ? null : ((map['profileType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

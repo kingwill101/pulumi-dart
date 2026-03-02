@@ -41,11 +41,11 @@ class ProbePropertiesResponse {
 
   factory ProbePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ProbePropertiesResponse(
-      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds'] as int).input(),
-      numberOfProbes: map['numberOfProbes'] == null ? null : (map['numberOfProbes'] as int).input(),
+      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds']! as int).input(),
+      numberOfProbes: map['numberOfProbes'] == null ? null : (map['numberOfProbes']! as int).input(),
       port: (map['port'] as int).input(),
       protocol: (map['protocol'] as String).input(),
-      requestPath: map['requestPath'] == null ? null : (map['requestPath'] as String).input(),
+      requestPath: map['requestPath'] == null ? null : (map['requestPath']! as String).input(),
     );
   }
 }

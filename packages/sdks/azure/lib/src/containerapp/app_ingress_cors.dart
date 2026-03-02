@@ -45,12 +45,12 @@ class AppIngressCors {
 
   factory AppIngressCors.fromMap(Map<String, dynamic> map) {
     return AppIngressCors(
-      allowCredentialsEnabled: map['allowCredentialsEnabled'] == null ? null : (map['allowCredentialsEnabled'] as bool).input(),
-      allowedHeaders: map['allowedHeaders'] == null ? null : ((map['allowedHeaders'] as List).cast<String>()).input(),
-      allowedMethods: map['allowedMethods'] == null ? null : ((map['allowedMethods'] as List).cast<String>()).input(),
+      allowCredentialsEnabled: map['allowCredentialsEnabled'] == null ? null : (map['allowCredentialsEnabled']! as bool).input(),
+      allowedHeaders: map['allowedHeaders'] == null ? null : ((map['allowedHeaders']! as List).cast<String>()).input(),
+      allowedMethods: map['allowedMethods'] == null ? null : ((map['allowedMethods']! as List).cast<String>()).input(),
       allowedOrigins: ((map['allowedOrigins'] as List).cast<String>()).input(),
-      exposedHeaders: map['exposedHeaders'] == null ? null : ((map['exposedHeaders'] as List).cast<String>()).input(),
-      maxAgeInSeconds: map['maxAgeInSeconds'] == null ? null : (map['maxAgeInSeconds'] as int).input(),
+      exposedHeaders: map['exposedHeaders'] == null ? null : ((map['exposedHeaders']! as List).cast<String>()).input(),
+      maxAgeInSeconds: map['maxAgeInSeconds'] == null ? null : (map['maxAgeInSeconds']! as int).input(),
     );
   }
 }

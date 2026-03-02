@@ -52,9 +52,9 @@ class ExpressRouteCircuitConnectionArgs {
   factory ExpressRouteCircuitConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitConnectionArgs(
       addressPrefixIpv4: (map['addressPrefixIpv4'] as String).input(),
-      addressPrefixIpv6: map['addressPrefixIpv6'] == null ? null : (map['addressPrefixIpv6'] as String).input(),
-      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      addressPrefixIpv6: map['addressPrefixIpv6'] == null ? null : (map['addressPrefixIpv6']! as String).input(),
+      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       peerPeeringId: (map['peerPeeringId'] as String).input(),
       peeringId: (map['peeringId'] as String).input(),
     );

@@ -70,15 +70,15 @@ class EkmConnectionServiceResolverServerCertificate {
 
   factory EkmConnectionServiceResolverServerCertificate.fromMap(Map<String, dynamic> map) {
     return EkmConnectionServiceResolverServerCertificate(
-      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
-      notAfterTime: map['notAfterTime'] == null ? null : (map['notAfterTime'] as String).input(),
-      notBeforeTime: map['notBeforeTime'] == null ? null : (map['notBeforeTime'] as String).input(),
-      parsed: map['parsed'] == null ? null : (map['parsed'] as bool).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer']! as String).input(),
+      notAfterTime: map['notAfterTime'] == null ? null : (map['notAfterTime']! as String).input(),
+      notBeforeTime: map['notBeforeTime'] == null ? null : (map['notBeforeTime']! as String).input(),
+      parsed: map['parsed'] == null ? null : (map['parsed']! as bool).input(),
       rawDer: (map['rawDer'] as String).input(),
-      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
-      sha256Fingerprint: map['sha256Fingerprint'] == null ? null : (map['sha256Fingerprint'] as String).input(),
-      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
-      subjectAlternativeDnsNames: map['subjectAlternativeDnsNames'] == null ? null : ((map['subjectAlternativeDnsNames'] as List).cast<String>()).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber']! as String).input(),
+      sha256Fingerprint: map['sha256Fingerprint'] == null ? null : (map['sha256Fingerprint']! as String).input(),
+      subject: map['subject'] == null ? null : (map['subject']! as String).input(),
+      subjectAlternativeDnsNames: map['subjectAlternativeDnsNames'] == null ? null : ((map['subjectAlternativeDnsNames']! as List).cast<String>()).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class ResourceMetricStatusPatch {
 
   factory ResourceMetricStatusPatch.fromMap(Map<String, dynamic> map) {
     return ResourceMetricStatusPatch(
-      current: map['current'] == null ? null : (MetricValueStatusPatch.fromMap((map['current'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      current: map['current'] == null ? null : (MetricValueStatusPatch.fromMap((map['current']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

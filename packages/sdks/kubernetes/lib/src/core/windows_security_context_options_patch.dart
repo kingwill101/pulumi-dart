@@ -36,10 +36,10 @@ class WindowsSecurityContextOptionsPatch {
 
   factory WindowsSecurityContextOptionsPatch.fromMap(Map<String, dynamic> map) {
     return WindowsSecurityContextOptionsPatch(
-      gmsaCredentialSpec: map['gmsaCredentialSpec'] == null ? null : (map['gmsaCredentialSpec'] as String).input(),
-      gmsaCredentialSpecName: map['gmsaCredentialSpecName'] == null ? null : (map['gmsaCredentialSpecName'] as String).input(),
-      hostProcess: map['hostProcess'] == null ? null : (map['hostProcess'] as bool).input(),
-      runAsUserName: map['runAsUserName'] == null ? null : (map['runAsUserName'] as String).input(),
+      gmsaCredentialSpec: map['gmsaCredentialSpec'] == null ? null : (map['gmsaCredentialSpec']! as String).input(),
+      gmsaCredentialSpecName: map['gmsaCredentialSpecName'] == null ? null : (map['gmsaCredentialSpecName']! as String).input(),
+      hostProcess: map['hostProcess'] == null ? null : (map['hostProcess']! as bool).input(),
+      runAsUserName: map['runAsUserName'] == null ? null : (map['runAsUserName']! as String).input(),
     );
   }
 }

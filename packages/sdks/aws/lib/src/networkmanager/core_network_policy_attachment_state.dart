@@ -31,9 +31,9 @@ class CoreNetworkPolicyAttachmentState {
 
   factory CoreNetworkPolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return CoreNetworkPolicyAttachmentState(
-      coreNetworkId: map['coreNetworkId'] == null ? null : (map['coreNetworkId'] as String).input(),
-      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      coreNetworkId: map['coreNetworkId'] == null ? null : ((map['coreNetworkId'] as String).input()).input(),
+      policyDocument: map['policyDocument'] == null ? null : ((map['policyDocument'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
     );
   }
 }

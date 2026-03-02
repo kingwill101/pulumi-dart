@@ -44,11 +44,11 @@ class TemplateArgs {
 
   factory TemplateArgs.fromMap(Map<String, dynamic> map) {
     return TemplateArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      templateBody: map['templateBody'] == null ? null : (map['templateBody'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      templateBody: map['templateBody'] == null ? null : (map['templateBody']! as String).input(),
       templateName: (map['templateName'] as String).input(),
-      templateUrl: map['templateUrl'] == null ? null : (map['templateUrl'] as String).input(),
+      templateUrl: map['templateUrl'] == null ? null : (map['templateUrl']! as String).input(),
     );
   }
 }

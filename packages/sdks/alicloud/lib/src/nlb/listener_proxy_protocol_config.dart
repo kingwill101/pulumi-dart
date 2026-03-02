@@ -30,9 +30,9 @@ class ListenerProxyProtocolConfig {
 
   factory ListenerProxyProtocolConfig.fromMap(Map<String, dynamic> map) {
     return ListenerProxyProtocolConfig(
-      proxyProtocolConfigPrivateLinkEpIdEnabled: map['proxyProtocolConfigPrivateLinkEpIdEnabled'] == null ? null : (map['proxyProtocolConfigPrivateLinkEpIdEnabled'] as bool).input(),
-      proxyProtocolConfigPrivateLinkEpsIdEnabled: map['proxyProtocolConfigPrivateLinkEpsIdEnabled'] == null ? null : (map['proxyProtocolConfigPrivateLinkEpsIdEnabled'] as bool).input(),
-      proxyProtocolConfigVpcIdEnabled: map['proxyProtocolConfigVpcIdEnabled'] == null ? null : (map['proxyProtocolConfigVpcIdEnabled'] as bool).input(),
+      proxyProtocolConfigPrivateLinkEpIdEnabled: map['proxyProtocolConfigPrivateLinkEpIdEnabled'] == null ? null : (map['proxyProtocolConfigPrivateLinkEpIdEnabled']! as bool).input(),
+      proxyProtocolConfigPrivateLinkEpsIdEnabled: map['proxyProtocolConfigPrivateLinkEpsIdEnabled'] == null ? null : (map['proxyProtocolConfigPrivateLinkEpsIdEnabled']! as bool).input(),
+      proxyProtocolConfigVpcIdEnabled: map['proxyProtocolConfigVpcIdEnabled'] == null ? null : (map['proxyProtocolConfigVpcIdEnabled']! as bool).input(),
     );
   }
 }

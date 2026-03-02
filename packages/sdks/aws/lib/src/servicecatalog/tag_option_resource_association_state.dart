@@ -51,13 +51,13 @@ class TagOptionResourceAssociationState {
 
   factory TagOptionResourceAssociationState.fromMap(Map<String, dynamic> map) {
     return TagOptionResourceAssociationState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
-      resourceCreatedTime: map['resourceCreatedTime'] == null ? null : (map['resourceCreatedTime'] as String).input(),
-      resourceDescription: map['resourceDescription'] == null ? null : (map['resourceDescription'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
-      tagOptionId: map['tagOptionId'] == null ? null : (map['tagOptionId'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceArn: map['resourceArn'] == null ? null : ((map['resourceArn'] as String).input()).input(),
+      resourceCreatedTime: map['resourceCreatedTime'] == null ? null : ((map['resourceCreatedTime'] as String).input()).input(),
+      resourceDescription: map['resourceDescription'] == null ? null : ((map['resourceDescription'] as String).input()).input(),
+      resourceId: map['resourceId'] == null ? null : ((map['resourceId'] as String).input()).input(),
+      resourceName: map['resourceName'] == null ? null : ((map['resourceName'] as String).input()).input(),
+      tagOptionId: map['tagOptionId'] == null ? null : ((map['tagOptionId'] as String).input()).input(),
     );
   }
 }

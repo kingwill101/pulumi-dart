@@ -45,11 +45,11 @@ class NetworkVirtualPortParams {
 
   factory NetworkVirtualPortParams.fromMap(Map<String, dynamic> map) {
     return NetworkVirtualPortParams(
-      any: map['any'] == null ? null : (NetworkVirtualPortParamsAny.fromMap((map['any'] as Map).cast<String, dynamic>())).input(),
-      midoNet: map['midoNet'] == null ? null : (NetworkVirtualPortParamsMidoNet.fromMap((map['midoNet'] as Map).cast<String, dynamic>())).input(),
-      openVSwitch: map['openVSwitch'] == null ? null : (NetworkVirtualPortParamsOpenVSwitch.fromMap((map['openVSwitch'] as Map).cast<String, dynamic>())).input(),
-      vepa8021qbg: map['vepa8021qbg'] == null ? null : (NetworkVirtualPortParamsVepa8021qbg.fromMap((map['vepa8021qbg'] as Map).cast<String, dynamic>())).input(),
-      vnTag8011qbh: map['vnTag8011qbh'] == null ? null : (NetworkVirtualPortParamsVnTag8011qbh.fromMap((map['vnTag8011qbh'] as Map).cast<String, dynamic>())).input(),
+      any: map['any'] == null ? null : (NetworkVirtualPortParamsAny.fromMap((map['any']! as Map).cast<String, dynamic>())).input(),
+      midoNet: map['midoNet'] == null ? null : (NetworkVirtualPortParamsMidoNet.fromMap((map['midoNet']! as Map).cast<String, dynamic>())).input(),
+      openVSwitch: map['openVSwitch'] == null ? null : (NetworkVirtualPortParamsOpenVSwitch.fromMap((map['openVSwitch']! as Map).cast<String, dynamic>())).input(),
+      vepa8021qbg: map['vepa8021qbg'] == null ? null : (NetworkVirtualPortParamsVepa8021qbg.fromMap((map['vepa8021qbg']! as Map).cast<String, dynamic>())).input(),
+      vnTag8011qbh: map['vnTag8011qbh'] == null ? null : (NetworkVirtualPortParamsVnTag8011qbh.fromMap((map['vnTag8011qbh']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

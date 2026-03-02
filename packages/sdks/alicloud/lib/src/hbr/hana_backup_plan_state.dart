@@ -69,16 +69,16 @@ class HanaBackupPlanState {
 
   factory HanaBackupPlanState.fromMap(Map<String, dynamic> map) {
     return HanaBackupPlanState(
-      backupPrefix: map['backupPrefix'] == null ? null : (map['backupPrefix'] as String).input(),
-      backupType: map['backupType'] == null ? null : (map['backupType'] as String).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      planId: map['planId'] == null ? null : (map['planId'] as String).input(),
-      planName: map['planName'] == null ? null : (map['planName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
+      backupPrefix: map['backupPrefix'] == null ? null : (map['backupPrefix']! as String).input(),
+      backupType: map['backupType'] == null ? null : (map['backupType']! as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
+      planId: map['planId'] == null ? null : (map['planId']! as String).input(),
+      planName: map['planName'] == null ? null : (map['planName']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId']! as String).input(),
     );
   }
 }

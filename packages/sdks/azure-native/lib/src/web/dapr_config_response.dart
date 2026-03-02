@@ -51,13 +51,13 @@ class DaprConfigResponse {
 
   factory DaprConfigResponse.fromMap(Map<String, dynamic> map) {
     return DaprConfigResponse(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      appPort: map['appPort'] == null ? null : (map['appPort'] as int).input(),
-      enableApiLogging: map['enableApiLogging'] == null ? null : (map['enableApiLogging'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      httpMaxRequestSize: map['httpMaxRequestSize'] == null ? null : (map['httpMaxRequestSize'] as int).input(),
-      httpReadBufferSize: map['httpReadBufferSize'] == null ? null : (map['httpReadBufferSize'] as int).input(),
-      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      appPort: map['appPort'] == null ? null : (map['appPort']! as int).input(),
+      enableApiLogging: map['enableApiLogging'] == null ? null : (map['enableApiLogging']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      httpMaxRequestSize: map['httpMaxRequestSize'] == null ? null : (map['httpMaxRequestSize']! as int).input(),
+      httpReadBufferSize: map['httpReadBufferSize'] == null ? null : (map['httpReadBufferSize']! as int).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel']! as String).input(),
     );
   }
 }

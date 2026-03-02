@@ -35,7 +35,7 @@ class OriginCaCertificateArgs {
   factory OriginCaCertificateArgs.fromMap(Map<String, dynamic> map) {
     return OriginCaCertificateArgs(
       certificate: (map['certificate'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       siteId: (map['siteId'] as String).input(),
     );
   }

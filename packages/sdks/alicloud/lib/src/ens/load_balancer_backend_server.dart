@@ -40,11 +40,11 @@ class LoadBalancerBackendServer {
 
   factory LoadBalancerBackendServer.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendServer(
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
       serverId: (map['serverId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

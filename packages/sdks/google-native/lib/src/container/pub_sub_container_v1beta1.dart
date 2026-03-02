@@ -32,9 +32,9 @@ class PubSubContainerV1beta1 {
 
   factory PubSubContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return PubSubContainerV1beta1(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      filter: map['filter'] == null ? null : (FilterContainerV1beta1.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      filter: map['filter'] == null ? null : (FilterContainerV1beta1.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

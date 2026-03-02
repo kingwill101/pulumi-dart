@@ -27,8 +27,8 @@ class AppAuthorizationCredential {
 
   factory AppAuthorizationCredential.fromMap(Map<String, dynamic> map) {
     return AppAuthorizationCredential(
-      apiKeyCredentials: map['apiKeyCredentials'] == null ? null : (pulumi.Input.decodeList<AppAuthorizationCredentialApiKeyCredential>(map['apiKeyCredentials'], (value) => AppAuthorizationCredentialApiKeyCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      oauth2Credential: map['oauth2Credential'] == null ? null : (AppAuthorizationCredentialOauth2Credential.fromMap((map['oauth2Credential'] as Map).cast<String, dynamic>())).input(),
+      apiKeyCredentials: map['apiKeyCredentials'] == null ? null : ((pulumi.Input.decodeList<AppAuthorizationCredentialApiKeyCredential>(map['apiKeyCredentials']!, (value) => AppAuthorizationCredentialApiKeyCredential.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      oauth2Credential: map['oauth2Credential'] == null ? null : ((AppAuthorizationCredentialOauth2Credential.fromMap((map['oauth2Credential']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

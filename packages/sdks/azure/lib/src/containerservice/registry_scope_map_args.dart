@@ -46,8 +46,8 @@ class RegistryScopeMapArgs {
     return RegistryScopeMapArgs(
       actions: ((map['actions'] as List).cast<String>()).input(),
       containerRegistryName: (map['containerRegistryName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

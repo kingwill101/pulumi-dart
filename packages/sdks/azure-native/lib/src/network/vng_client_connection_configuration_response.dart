@@ -49,8 +49,8 @@ class VngClientConnectionConfigurationResponse {
   factory VngClientConnectionConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return VngClientConnectionConfigurationResponse(
       etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       virtualNetworkGatewayPolicyGroups: (pulumi.Input.decodeList<SubResourceResponse>(map['virtualNetworkGatewayPolicyGroups'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       vpnClientAddressPool: (AddressSpaceResponse.fromMap((map['vpnClientAddressPool'] as Map).cast<String, dynamic>())).input(),

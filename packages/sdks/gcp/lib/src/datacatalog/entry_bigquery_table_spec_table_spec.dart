@@ -24,7 +24,7 @@ class EntryBigqueryTableSpecTableSpec {
 
   factory EntryBigqueryTableSpecTableSpec.fromMap(Map<String, dynamic> map) {
     return EntryBigqueryTableSpecTableSpec(
-      groupedEntry: map['groupedEntry'] == null ? null : (map['groupedEntry'] as String).input(),
+      groupedEntry: map['groupedEntry'] == null ? null : (map['groupedEntry']! as String).input(),
     );
   }
 }

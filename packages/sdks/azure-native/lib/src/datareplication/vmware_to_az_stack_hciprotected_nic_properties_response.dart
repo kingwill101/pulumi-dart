@@ -56,7 +56,7 @@ class VMwareToAzStackHCIProtectedNicPropertiesResponse {
 
   factory VMwareToAzStackHCIProtectedNicPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VMwareToAzStackHCIProtectedNicPropertiesResponse(
-      isPrimaryNic: map['isPrimaryNic'] == null ? null : (map['isPrimaryNic'] as bool).input(),
+      isPrimaryNic: map['isPrimaryNic'] == null ? null : (map['isPrimaryNic']! as bool).input(),
       label: (map['label'] as String).input(),
       macAddress: (map['macAddress'] as String).input(),
       networkName: (map['networkName'] as String).input(),

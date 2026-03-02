@@ -42,8 +42,8 @@ class GetGatewayZonesArgs {
 
   factory GetGatewayZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewayZonesArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
       spec: (map['spec'] as String).input(),
     );
   }

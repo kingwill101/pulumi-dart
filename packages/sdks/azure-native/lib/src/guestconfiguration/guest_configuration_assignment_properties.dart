@@ -27,8 +27,8 @@ class GuestConfigurationAssignmentProperties {
 
   factory GuestConfigurationAssignmentProperties.fromMap(Map<String, dynamic> map) {
     return GuestConfigurationAssignmentProperties(
-      context: map['context'] == null ? null : (map['context'] as String).input(),
-      guestConfiguration: map['guestConfiguration'] == null ? null : (GuestConfigurationNavigation.fromMap((map['guestConfiguration'] as Map).cast<String, dynamic>())).input(),
+      context: map['context'] == null ? null : (map['context']! as String).input(),
+      guestConfiguration: map['guestConfiguration'] == null ? null : (GuestConfigurationNavigation.fromMap((map['guestConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -36,7 +36,7 @@ class InviteAccepterArgs {
     return InviteAccepterArgs(
       detectorId: (map['detectorId'] as String).input(),
       masterAccountId: (map['masterAccountId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

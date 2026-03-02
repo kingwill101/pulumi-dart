@@ -25,8 +25,8 @@ class DeviceAwsLocation {
 
   factory DeviceAwsLocation.fromMap(Map<String, dynamic> map) {
     return DeviceAwsLocation(
-      subnetArn: map['subnetArn'] == null ? null : (map['subnetArn'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      subnetArn: map['subnetArn'] == null ? null : ((map['subnetArn'] as String).input()).input(),
+      zone: map['zone'] == null ? null : ((map['zone'] as String).input()).input(),
     );
   }
 }

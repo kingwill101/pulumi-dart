@@ -52,12 +52,12 @@ class EndpointSlicePatchDiscoveryK8sIoV1beta1Args {
 
   factory EndpointSlicePatchDiscoveryK8sIoV1beta1Args.fromMap(Map<String, dynamic> map) {
     return EndpointSlicePatchDiscoveryK8sIoV1beta1Args(
-      addressType: map['addressType'] == null ? null : (map['addressType'] as String).input(),
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<EndpointPatchDiscoveryK8sIoV1beta1>(map['endpoints'], (value) => EndpointPatchDiscoveryK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<EndpointPortPatchDiscoveryK8sIoV1beta1>(map['ports'], (value) => EndpointPortPatchDiscoveryK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      addressType: map['addressType'] == null ? null : (map['addressType']! as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<EndpointPatchDiscoveryK8sIoV1beta1>(map['endpoints']!, (value) => EndpointPatchDiscoveryK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<EndpointPortPatchDiscoveryK8sIoV1beta1>(map['ports']!, (value) => EndpointPortPatchDiscoveryK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

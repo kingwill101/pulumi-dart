@@ -90,17 +90,17 @@ class BackupInstanceResponse {
     return BackupInstanceResponse(
       currentProtectionState: (map['currentProtectionState'] as String).input(),
       dataSourceInfo: (DatasourceResponse.fromMap((map['dataSourceInfo'] as Map).cast<String, dynamic>())).input(),
-      dataSourceSetInfo: map['dataSourceSetInfo'] == null ? null : (DatasourceSetResponse.fromMap((map['dataSourceSetInfo'] as Map).cast<String, dynamic>())).input(),
-      datasourceAuthCredentials: map['datasourceAuthCredentials'] == null ? null : (SecretStoreBasedAuthCredentialsResponse.fromMap((map['datasourceAuthCredentials'] as Map).cast<String, dynamic>())).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      identityDetails: map['identityDetails'] == null ? null : (IdentityDetailsResponse.fromMap((map['identityDetails'] as Map).cast<String, dynamic>())).input(),
+      dataSourceSetInfo: map['dataSourceSetInfo'] == null ? null : (DatasourceSetResponse.fromMap((map['dataSourceSetInfo']! as Map).cast<String, dynamic>())).input(),
+      datasourceAuthCredentials: map['datasourceAuthCredentials'] == null ? null : (SecretStoreBasedAuthCredentialsResponse.fromMap((map['datasourceAuthCredentials']! as Map).cast<String, dynamic>())).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      identityDetails: map['identityDetails'] == null ? null : (IdentityDetailsResponse.fromMap((map['identityDetails']! as Map).cast<String, dynamic>())).input(),
       objectType: (map['objectType'] as String).input(),
       policyInfo: (PolicyInfoResponse.fromMap((map['policyInfo'] as Map).cast<String, dynamic>())).input(),
       protectionErrorDetails: (UserFacingErrorResponse.fromMap((map['protectionErrorDetails'] as Map).cast<String, dynamic>())).input(),
       protectionStatus: (ProtectionStatusDetailsResponse.fromMap((map['protectionStatus'] as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : ((map['resourceGuardOperationRequests'] as List).cast<String>()).input(),
-      validationType: map['validationType'] == null ? null : (map['validationType'] as String).input(),
+      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : ((map['resourceGuardOperationRequests']! as List).cast<String>()).input(),
+      validationType: map['validationType'] == null ? null : (map['validationType']! as String).input(),
     );
   }
 }

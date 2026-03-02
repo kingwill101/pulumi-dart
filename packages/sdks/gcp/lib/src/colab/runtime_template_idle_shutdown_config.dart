@@ -20,7 +20,7 @@ class RuntimeTemplateIdleShutdownConfig {
 
   factory RuntimeTemplateIdleShutdownConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeTemplateIdleShutdownConfig(
-      idleTimeout: map['idleTimeout'] == null ? null : (map['idleTimeout'] as String).input(),
+      idleTimeout: map['idleTimeout'] == null ? null : (map['idleTimeout']! as String).input(),
     );
   }
 }

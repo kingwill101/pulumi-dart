@@ -26,8 +26,8 @@ class GatewayRouteSpecGrpcRouteActionTarget {
 
   factory GatewayRouteSpecGrpcRouteActionTarget.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecGrpcRouteActionTarget(
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      virtualService: (GatewayRouteSpecGrpcRouteActionTargetVirtualService.fromMap((map['virtualService'] as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
+      virtualService: (GatewayRouteSpecGrpcRouteActionTargetVirtualService.fromMap((map['virtualService']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

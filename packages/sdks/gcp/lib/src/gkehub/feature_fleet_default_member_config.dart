@@ -36,9 +36,9 @@ class FeatureFleetDefaultMemberConfig {
 
   factory FeatureFleetDefaultMemberConfig.fromMap(Map<String, dynamic> map) {
     return FeatureFleetDefaultMemberConfig(
-      configmanagement: map['configmanagement'] == null ? null : (FeatureFleetDefaultMemberConfigConfigmanagement.fromMap((map['configmanagement'] as Map).cast<String, dynamic>())).input(),
-      mesh: map['mesh'] == null ? null : (FeatureFleetDefaultMemberConfigMesh.fromMap((map['mesh'] as Map).cast<String, dynamic>())).input(),
-      policycontroller: map['policycontroller'] == null ? null : (FeatureFleetDefaultMemberConfigPolicycontroller.fromMap((map['policycontroller'] as Map).cast<String, dynamic>())).input(),
+      configmanagement: map['configmanagement'] == null ? null : (FeatureFleetDefaultMemberConfigConfigmanagement.fromMap((map['configmanagement']! as Map).cast<String, dynamic>())).input(),
+      mesh: map['mesh'] == null ? null : (FeatureFleetDefaultMemberConfigMesh.fromMap((map['mesh']! as Map).cast<String, dynamic>())).input(),
+      policycontroller: map['policycontroller'] == null ? null : (FeatureFleetDefaultMemberConfigPolicycontroller.fromMap((map['policycontroller']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

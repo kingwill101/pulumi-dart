@@ -22,7 +22,7 @@ class GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig {
 
   factory GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig(
-      webhookOverrides: map['webhookOverrides'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1Webhook>(map['webhookOverrides'], (value) => GoogleCloudDialogflowCxV3beta1Webhook.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      webhookOverrides: map['webhookOverrides'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1Webhook>(map['webhookOverrides']!, (value) => GoogleCloudDialogflowCxV3beta1Webhook.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

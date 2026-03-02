@@ -27,8 +27,8 @@ class ApigatewayApiConfigGrpcServiceDefinitionApigatewayV1beta {
 
   factory ApigatewayApiConfigGrpcServiceDefinitionApigatewayV1beta.fromMap(Map<String, dynamic> map) {
     return ApigatewayApiConfigGrpcServiceDefinitionApigatewayV1beta(
-      fileDescriptorSet: map['fileDescriptorSet'] == null ? null : (ApigatewayApiConfigFileApigatewayV1beta.fromMap((map['fileDescriptorSet'] as Map).cast<String, dynamic>())).input(),
-      source: map['source'] == null ? null : (pulumi.Input.decodeList<ApigatewayApiConfigFileApigatewayV1beta>(map['source'], (value) => ApigatewayApiConfigFileApigatewayV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fileDescriptorSet: map['fileDescriptorSet'] == null ? null : (ApigatewayApiConfigFileApigatewayV1beta.fromMap((map['fileDescriptorSet']! as Map).cast<String, dynamic>())).input(),
+      source: map['source'] == null ? null : (pulumi.Input.decodeList<ApigatewayApiConfigFileApigatewayV1beta>(map['source']!, (value) => ApigatewayApiConfigFileApigatewayV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

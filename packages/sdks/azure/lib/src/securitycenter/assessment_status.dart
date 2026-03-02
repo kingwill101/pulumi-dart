@@ -30,9 +30,9 @@ class AssessmentStatus {
 
   factory AssessmentStatus.fromMap(Map<String, dynamic> map) {
     return AssessmentStatus(
-      cause: map['cause'] == null ? null : (map['cause'] as String).input(),
+      cause: map['cause'] == null ? null : (map['cause']! as String).input(),
       code: (map['code'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
     );
   }
 }

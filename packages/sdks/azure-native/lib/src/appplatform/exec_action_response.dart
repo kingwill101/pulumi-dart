@@ -27,7 +27,7 @@ class ExecActionResponse {
 
   factory ExecActionResponse.fromMap(Map<String, dynamic> map) {
     return ExecActionResponse(
-      command: map['command'] == null ? null : ((map['command'] as List).cast<String>()).input(),
+      command: map['command'] == null ? null : ((map['command']! as List).cast<String>()).input(),
       type: (map['type'] as String).input(),
     );
   }

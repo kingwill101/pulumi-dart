@@ -22,7 +22,7 @@ class VmwareAdminClusterAddonNode {
 
   factory VmwareAdminClusterAddonNode.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterAddonNode(
-      autoResizeConfig: map['autoResizeConfig'] == null ? null : (VmwareAdminClusterAddonNodeAutoResizeConfig.fromMap((map['autoResizeConfig'] as Map).cast<String, dynamic>())).input(),
+      autoResizeConfig: map['autoResizeConfig'] == null ? null : (VmwareAdminClusterAddonNodeAutoResizeConfig.fromMap((map['autoResizeConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

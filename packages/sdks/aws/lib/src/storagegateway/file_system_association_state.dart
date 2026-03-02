@@ -67,16 +67,16 @@ class FileSystemAssociationState {
 
   factory FileSystemAssociationState.fromMap(Map<String, dynamic> map) {
     return FileSystemAssociationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      auditDestinationArn: map['auditDestinationArn'] == null ? null : (map['auditDestinationArn'] as String).input(),
-      cacheAttributes: map['cacheAttributes'] == null ? null : (FileSystemAssociationCacheAttributes.fromMap((map['cacheAttributes'] as Map).cast<String, dynamic>())).input(),
-      gatewayArn: map['gatewayArn'] == null ? null : (map['gatewayArn'] as String).input(),
-      locationArn: map['locationArn'] == null ? null : (map['locationArn'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      auditDestinationArn: map['auditDestinationArn'] == null ? null : ((map['auditDestinationArn'] as String).input()).input(),
+      cacheAttributes: map['cacheAttributes'] == null ? null : ((FileSystemAssociationCacheAttributes.fromMap((map['cacheAttributes']! as Map).cast<String, dynamic>())).input()).input(),
+      gatewayArn: map['gatewayArn'] == null ? null : ((map['gatewayArn'] as String).input()).input(),
+      locationArn: map['locationArn'] == null ? null : ((map['locationArn'] as String).input()).input(),
+      password: map['password'] == null ? null : ((map['password'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      username: map['username'] == null ? null : ((map['username'] as String).input()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class UpgradeOverrideSettingsResponse {
 
   factory UpgradeOverrideSettingsResponse.fromMap(Map<String, dynamic> map) {
     return UpgradeOverrideSettingsResponse(
-      forceUpgrade: map['forceUpgrade'] == null ? null : (map['forceUpgrade'] as bool).input(),
-      until: map['until'] == null ? null : (map['until'] as String).input(),
+      forceUpgrade: map['forceUpgrade'] == null ? null : (map['forceUpgrade']! as bool).input(),
+      until: map['until'] == null ? null : (map['until']! as String).input(),
     );
   }
 }

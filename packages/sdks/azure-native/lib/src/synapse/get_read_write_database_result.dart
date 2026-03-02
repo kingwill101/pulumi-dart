@@ -79,14 +79,14 @@ class GetReadWriteDatabaseResult {
   factory GetReadWriteDatabaseResult.fromMap(Map<String, dynamic> map) {
     return GetReadWriteDatabaseResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      hotCachePeriod: map['hotCachePeriod'] == null ? null : map['hotCachePeriod'] as String,
+      hotCachePeriod: map['hotCachePeriod'] == null ? null : map['hotCachePeriod']! as String,
       id: map['id'] as String,
       isFollowed: map['isFollowed'] as bool,
       kind: map['kind'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      softDeletePeriod: map['softDeletePeriod'] == null ? null : map['softDeletePeriod'] as String,
+      softDeletePeriod: map['softDeletePeriod'] == null ? null : map['softDeletePeriod']! as String,
       statistics: DatabaseStatisticsResponse.fromMap((map['statistics'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,

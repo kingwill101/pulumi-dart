@@ -54,13 +54,13 @@ class LinuxParametersResponse {
 
   factory LinuxParametersResponse.fromMap(Map<String, dynamic> map) {
     return LinuxParametersResponse(
-      capabilities: map['capabilities'] == null ? null : (KernelCapabilitiesResponse.fromMap((map['capabilities'] as Map).cast<String, dynamic>())).input(),
-      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<DeviceResponse>(map['devices'], (value) => DeviceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      initProcessEnabled: map['initProcessEnabled'] == null ? null : (map['initProcessEnabled'] as bool).input(),
-      maxSwap: map['maxSwap'] == null ? null : (map['maxSwap'] as int).input(),
-      sharedMemorySize: map['sharedMemorySize'] == null ? null : (map['sharedMemorySize'] as int).input(),
-      swappiness: map['swappiness'] == null ? null : (map['swappiness'] as int).input(),
-      tmpfs: map['tmpfs'] == null ? null : (pulumi.Input.decodeList<TmpfsResponse>(map['tmpfs'], (value) => TmpfsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      capabilities: map['capabilities'] == null ? null : (KernelCapabilitiesResponse.fromMap((map['capabilities']! as Map).cast<String, dynamic>())).input(),
+      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<DeviceResponse>(map['devices']!, (value) => DeviceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      initProcessEnabled: map['initProcessEnabled'] == null ? null : (map['initProcessEnabled']! as bool).input(),
+      maxSwap: map['maxSwap'] == null ? null : (map['maxSwap']! as int).input(),
+      sharedMemorySize: map['sharedMemorySize'] == null ? null : (map['sharedMemorySize']! as int).input(),
+      swappiness: map['swappiness'] == null ? null : (map['swappiness']! as int).input(),
+      tmpfs: map['tmpfs'] == null ? null : (pulumi.Input.decodeList<TmpfsResponse>(map['tmpfs']!, (value) => TmpfsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

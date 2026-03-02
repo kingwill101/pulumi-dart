@@ -20,7 +20,7 @@ class RestoreJobOtsDetail {
 
   factory RestoreJobOtsDetail.fromMap(Map<String, dynamic> map) {
     return RestoreJobOtsDetail(
-      overwriteExisting: map['overwriteExisting'] == null ? null : (map['overwriteExisting'] as bool).input(),
+      overwriteExisting: map['overwriteExisting'] == null ? null : (map['overwriteExisting']! as bool).input(),
     );
   }
 }

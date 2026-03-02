@@ -118,17 +118,17 @@ class ValidatingWebhookPatch {
 
   factory ValidatingWebhookPatch.fromMap(Map<String, dynamic> map) {
     return ValidatingWebhookPatch(
-      admissionReviewVersions: map['admissionReviewVersions'] == null ? null : ((map['admissionReviewVersions'] as List).cast<String>()).input(),
-      clientConfig: map['clientConfig'] == null ? null : (WebhookClientConfigPatch.fromMap((map['clientConfig'] as Map).cast<String, dynamic>())).input(),
-      failurePolicy: map['failurePolicy'] == null ? null : (map['failurePolicy'] as String).input(),
-      matchConditions: map['matchConditions'] == null ? null : (pulumi.Input.decodeList<MatchConditionPatch>(map['matchConditions'], (value) => MatchConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matchPolicy: map['matchPolicy'] == null ? null : (map['matchPolicy'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespaceSelector: map['namespaceSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['namespaceSelector'] as Map).cast<String, dynamic>())).input(),
-      objectSelector: map['objectSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['objectSelector'] as Map).cast<String, dynamic>())).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RuleWithOperationsPatch>(map['rules'], (value) => RuleWithOperationsPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sideEffects: map['sideEffects'] == null ? null : (map['sideEffects'] as String).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      admissionReviewVersions: map['admissionReviewVersions'] == null ? null : ((map['admissionReviewVersions']! as List).cast<String>()).input(),
+      clientConfig: map['clientConfig'] == null ? null : (WebhookClientConfigPatch.fromMap((map['clientConfig']! as Map).cast<String, dynamic>())).input(),
+      failurePolicy: map['failurePolicy'] == null ? null : (map['failurePolicy']! as String).input(),
+      matchConditions: map['matchConditions'] == null ? null : (pulumi.Input.decodeList<MatchConditionPatch>(map['matchConditions']!, (value) => MatchConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchPolicy: map['matchPolicy'] == null ? null : (map['matchPolicy']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespaceSelector: map['namespaceSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['namespaceSelector']! as Map).cast<String, dynamic>())).input(),
+      objectSelector: map['objectSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['objectSelector']! as Map).cast<String, dynamic>())).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RuleWithOperationsPatch>(map['rules']!, (value) => RuleWithOperationsPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sideEffects: map['sideEffects'] == null ? null : (map['sideEffects']! as String).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
     );
   }
 }

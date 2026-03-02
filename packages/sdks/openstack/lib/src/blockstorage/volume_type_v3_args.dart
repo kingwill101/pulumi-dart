@@ -49,11 +49,11 @@ class VolumeTypeV3Args {
 
   factory VolumeTypeV3Args.fromMap(Map<String, dynamic> map) {
     return VolumeTypeV3Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      extraSpecs: map['extraSpecs'] == null ? null : ((map['extraSpecs'] as Map).cast<String, String>()).input(),
-      isPublic: map['isPublic'] == null ? null : (map['isPublic'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      extraSpecs: map['extraSpecs'] == null ? null : ((map['extraSpecs']! as Map).cast<String, String>()).input(),
+      isPublic: map['isPublic'] == null ? null : (map['isPublic']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

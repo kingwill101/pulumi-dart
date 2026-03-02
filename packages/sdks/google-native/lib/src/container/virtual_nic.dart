@@ -21,7 +21,7 @@ class VirtualNIC {
 
   factory VirtualNIC.fromMap(Map<String, dynamic> map) {
     return VirtualNIC(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

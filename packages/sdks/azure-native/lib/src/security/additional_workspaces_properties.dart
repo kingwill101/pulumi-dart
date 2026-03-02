@@ -31,9 +31,9 @@ class AdditionalWorkspacesProperties {
 
   factory AdditionalWorkspacesProperties.fromMap(Map<String, dynamic> map) {
     return AdditionalWorkspacesProperties(
-      dataTypes: map['dataTypes'] == null ? null : ((map['dataTypes'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      workspace: map['workspace'] == null ? null : (map['workspace'] as String).input(),
+      dataTypes: map['dataTypes'] == null ? null : ((map['dataTypes']! as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      workspace: map['workspace'] == null ? null : (map['workspace']! as String).input(),
     );
   }
 }

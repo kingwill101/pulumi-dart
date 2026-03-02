@@ -61,13 +61,13 @@ class TrafficQosQueueState {
 
   factory TrafficQosQueueState.fromMap(Map<String, dynamic> map) {
     return TrafficQosQueueState(
-      bandwidthPercent: map['bandwidthPercent'] == null ? null : (map['bandwidthPercent'] as String).input(),
-      qosId: map['qosId'] == null ? null : (map['qosId'] as String).input(),
-      queueDescription: map['queueDescription'] == null ? null : (map['queueDescription'] as String).input(),
-      queueId: map['queueId'] == null ? null : (map['queueId'] as String).input(),
-      queueName: map['queueName'] == null ? null : (map['queueName'] as String).input(),
-      queueType: map['queueType'] == null ? null : (map['queueType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      bandwidthPercent: map['bandwidthPercent'] == null ? null : (map['bandwidthPercent']! as String).input(),
+      qosId: map['qosId'] == null ? null : (map['qosId']! as String).input(),
+      queueDescription: map['queueDescription'] == null ? null : (map['queueDescription']! as String).input(),
+      queueId: map['queueId'] == null ? null : (map['queueId']! as String).input(),
+      queueName: map['queueName'] == null ? null : (map['queueName']! as String).input(),
+      queueType: map['queueType'] == null ? null : (map['queueType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

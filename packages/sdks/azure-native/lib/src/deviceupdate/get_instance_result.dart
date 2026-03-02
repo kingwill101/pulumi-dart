@@ -81,15 +81,15 @@ class GetInstanceResult {
     return GetInstanceResult(
       accountName: map['accountName'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      diagnosticStorageProperties: map['diagnosticStorageProperties'] == null ? null : DiagnosticStoragePropertiesResponse.fromMap((map['diagnosticStorageProperties'] as Map).cast<String, dynamic>()),
-      enableDiagnostics: map['enableDiagnostics'] == null ? null : map['enableDiagnostics'] as bool,
+      diagnosticStorageProperties: map['diagnosticStorageProperties'] == null ? null : DiagnosticStoragePropertiesResponse.fromMap((map['diagnosticStorageProperties']! as Map).cast<String, dynamic>()),
+      enableDiagnostics: map['enableDiagnostics'] == null ? null : map['enableDiagnostics']! as bool,
       id: map['id'] as String,
-      iotHubs: map['iotHubs'] == null ? null : pulumi.Input.decodeList<IotHubSettingsResponse>(map['iotHubs'], (value) => IotHubSettingsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      iotHubs: map['iotHubs'] == null ? null : pulumi.Input.decodeList<IotHubSettingsResponse>(map['iotHubs']!, (value) => IotHubSettingsResponse.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

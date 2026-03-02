@@ -56,14 +56,14 @@ class SqlPoolWorkloadClassifierState {
 
   factory SqlPoolWorkloadClassifierState.fromMap(Map<String, dynamic> map) {
     return SqlPoolWorkloadClassifierState(
-      context: map['context'] == null ? null : (map['context'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      importance: map['importance'] == null ? null : (map['importance'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      memberName: map['memberName'] == null ? null : (map['memberName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      workloadGroupId: map['workloadGroupId'] == null ? null : (map['workloadGroupId'] as String).input(),
+      context: map['context'] == null ? null : (map['context']! as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      importance: map['importance'] == null ? null : (map['importance']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      memberName: map['memberName'] == null ? null : (map['memberName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      workloadGroupId: map['workloadGroupId'] == null ? null : (map['workloadGroupId']! as String).input(),
     );
   }
 }

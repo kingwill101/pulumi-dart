@@ -39,9 +39,9 @@ class GetAliasArgs {
 
   factory GetAliasArgs.fromMap(Map<String, dynamic> map) {
     return GetAliasArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       statemachineArn: (map['statemachineArn'] as String).input(),
     );
   }

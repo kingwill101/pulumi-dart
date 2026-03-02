@@ -56,14 +56,14 @@ class TransitRouterRouteTableState {
 
   factory TransitRouterRouteTableState.fromMap(Map<String, dynamic> map) {
     return TransitRouterRouteTableState(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
-      transitRouterRouteTableDescription: map['transitRouterRouteTableDescription'] == null ? null : (map['transitRouterRouteTableDescription'] as String).input(),
-      transitRouterRouteTableId: map['transitRouterRouteTableId'] == null ? null : (map['transitRouterRouteTableId'] as String).input(),
-      transitRouterRouteTableName: map['transitRouterRouteTableName'] == null ? null : (map['transitRouterRouteTableName'] as String).input(),
-      transitRouterRouteTableType: map['transitRouterRouteTableType'] == null ? null : (map['transitRouterRouteTableType'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId']! as String).input(),
+      transitRouterRouteTableDescription: map['transitRouterRouteTableDescription'] == null ? null : (map['transitRouterRouteTableDescription']! as String).input(),
+      transitRouterRouteTableId: map['transitRouterRouteTableId'] == null ? null : (map['transitRouterRouteTableId']! as String).input(),
+      transitRouterRouteTableName: map['transitRouterRouteTableName'] == null ? null : (map['transitRouterRouteTableName']! as String).input(),
+      transitRouterRouteTableType: map['transitRouterRouteTableType'] == null ? null : (map['transitRouterRouteTableType']! as String).input(),
     );
   }
 }

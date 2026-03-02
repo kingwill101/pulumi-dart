@@ -94,19 +94,19 @@ class VolumeArgs {
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
       availabilityZone: (map['availabilityZone'] as String).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
-      finalSnapshot: map['finalSnapshot'] == null ? null : (map['finalSnapshot'] as bool).input(),
-      iops: map['iops'] == null ? null : (map['iops'] as int).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      multiAttachEnabled: map['multiAttachEnabled'] == null ? null : (map['multiAttachEnabled'] as bool).input(),
-      outpostArn: map['outpostArn'] == null ? null : (map['outpostArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
-      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      volumeInitializationRate: map['volumeInitializationRate'] == null ? null : (map['volumeInitializationRate'] as int).input(),
+      encrypted: map['encrypted'] == null ? null : ((map['encrypted'] as bool).input()).input(),
+      finalSnapshot: map['finalSnapshot'] == null ? null : ((map['finalSnapshot'] as bool).input()).input(),
+      iops: map['iops'] == null ? null : ((map['iops'] as int).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      multiAttachEnabled: map['multiAttachEnabled'] == null ? null : ((map['multiAttachEnabled'] as bool).input()).input(),
+      outpostArn: map['outpostArn'] == null ? null : ((map['outpostArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      size: map['size'] == null ? null : ((map['size'] as int).input()).input(),
+      snapshotId: map['snapshotId'] == null ? null : ((map['snapshotId'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      throughput: map['throughput'] == null ? null : ((map['throughput'] as int).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      volumeInitializationRate: map['volumeInitializationRate'] == null ? null : ((map['volumeInitializationRate'] as int).input()).input(),
     );
   }
 }

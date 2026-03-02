@@ -25,7 +25,7 @@ class GroupQuotasEntityResponseProperties {
 
   factory GroupQuotasEntityResponseProperties.fromMap(Map<String, dynamic> map) {
     return GroupQuotasEntityResponseProperties(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

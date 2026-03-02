@@ -62,16 +62,16 @@ class GetSecretsResult {
 
   factory GetSecretsResult.fromMap(Map<String, dynamic> map) {
     return GetSecretsResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
-      fetchTags: map['fetchTags'] == null ? null : map['fetchTags'] as bool,
-      filters: map['filters'] == null ? null : map['filters'] as String,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      fetchTags: map['fetchTags'] == null ? null : map['fetchTags']! as bool,
+      filters: map['filters'] == null ? null : map['filters']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       secrets: pulumi.Input.decodeList<GetSecretsSecret>(map['secrets'], (value) => GetSecretsSecret.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

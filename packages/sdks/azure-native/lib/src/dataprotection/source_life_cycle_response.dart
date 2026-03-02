@@ -35,7 +35,7 @@ class SourceLifeCycleResponse {
     return SourceLifeCycleResponse(
       deleteAfter: (AbsoluteDeleteOptionResponse.fromMap((map['deleteAfter'] as Map).cast<String, dynamic>())).input(),
       sourceDataStore: (DataStoreInfoBaseResponse.fromMap((map['sourceDataStore'] as Map).cast<String, dynamic>())).input(),
-      targetDataStoreCopySettings: map['targetDataStoreCopySettings'] == null ? null : (pulumi.Input.decodeList<TargetCopySettingResponse>(map['targetDataStoreCopySettings'], (value) => TargetCopySettingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetDataStoreCopySettings: map['targetDataStoreCopySettings'] == null ? null : (pulumi.Input.decodeList<TargetCopySettingResponse>(map['targetDataStoreCopySettings']!, (value) => TargetCopySettingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

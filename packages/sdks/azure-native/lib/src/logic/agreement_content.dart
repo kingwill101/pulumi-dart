@@ -34,9 +34,9 @@ class AgreementContent {
 
   factory AgreementContent.fromMap(Map<String, dynamic> map) {
     return AgreementContent(
-      aS2: map['aS2'] == null ? null : (AS2AgreementContent.fromMap((map['aS2'] as Map).cast<String, dynamic>())).input(),
-      edifact: map['edifact'] == null ? null : (EdifactAgreementContent.fromMap((map['edifact'] as Map).cast<String, dynamic>())).input(),
-      x12: map['x12'] == null ? null : (X12AgreementContent.fromMap((map['x12'] as Map).cast<String, dynamic>())).input(),
+      aS2: map['aS2'] == null ? null : (AS2AgreementContent.fromMap((map['aS2']! as Map).cast<String, dynamic>())).input(),
+      edifact: map['edifact'] == null ? null : (EdifactAgreementContent.fromMap((map['edifact']! as Map).cast<String, dynamic>())).input(),
+      x12: map['x12'] == null ? null : (X12AgreementContent.fromMap((map['x12']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

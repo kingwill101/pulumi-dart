@@ -36,9 +36,9 @@ class GetScriptDagNode {
 
   factory GetScriptDagNode.fromMap(Map<String, dynamic> map) {
     return GetScriptDagNode(
-      args: (pulumi.Input.decodeList<GetScriptDagNodeArg>(map['args'], (value) => GetScriptDagNodeArg.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      args: (pulumi.Input.decodeList<GetScriptDagNodeArg>(map['args']!, (value) => GetScriptDagNodeArg.fromMap((value as Map).cast<String, dynamic>()))).input(),
       id: (map['id'] as String).input(),
-      lineNumber: map['lineNumber'] == null ? null : (map['lineNumber'] as int).input(),
+      lineNumber: map['lineNumber'] == null ? null : ((map['lineNumber'] as int).input()).input(),
       nodeType: (map['nodeType'] as String).input(),
     );
   }

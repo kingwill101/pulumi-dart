@@ -30,9 +30,9 @@ class GetVirtualGatewaySpecListenerTlCertificate {
 
   factory GetVirtualGatewaySpecListenerTlCertificate.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecListenerTlCertificate(
-      acms: (pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTlCertificateAcm>(map['acms'], (value) => GetVirtualGatewaySpecListenerTlCertificateAcm.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      files: (pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTlCertificateFile>(map['files'], (value) => GetVirtualGatewaySpecListenerTlCertificateFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sds: (pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTlCertificateSd>(map['sds'], (value) => GetVirtualGatewaySpecListenerTlCertificateSd.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      acms: (pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTlCertificateAcm>(map['acms']!, (value) => GetVirtualGatewaySpecListenerTlCertificateAcm.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      files: (pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTlCertificateFile>(map['files']!, (value) => GetVirtualGatewaySpecListenerTlCertificateFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sds: (pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTlCertificateSd>(map['sds']!, (value) => GetVirtualGatewaySpecListenerTlCertificateSd.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

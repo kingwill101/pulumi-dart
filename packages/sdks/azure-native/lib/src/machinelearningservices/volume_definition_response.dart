@@ -59,14 +59,14 @@ class VolumeDefinitionResponse {
 
   factory VolumeDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return VolumeDefinitionResponse(
-      bind: map['bind'] == null ? null : (BindOptionsResponse.fromMap((map['bind'] as Map).cast<String, dynamic>())).input(),
-      consistency: map['consistency'] == null ? null : (map['consistency'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
-      tmpfs: map['tmpfs'] == null ? null : (TmpfsOptionsResponse.fromMap((map['tmpfs'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      volume: map['volume'] == null ? null : (VolumeOptionsResponse.fromMap((map['volume'] as Map).cast<String, dynamic>())).input(),
+      bind: map['bind'] == null ? null : (BindOptionsResponse.fromMap((map['bind']! as Map).cast<String, dynamic>())).input(),
+      consistency: map['consistency'] == null ? null : (map['consistency']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
+      tmpfs: map['tmpfs'] == null ? null : (TmpfsOptionsResponse.fromMap((map['tmpfs']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      volume: map['volume'] == null ? null : (VolumeOptionsResponse.fromMap((map['volume']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

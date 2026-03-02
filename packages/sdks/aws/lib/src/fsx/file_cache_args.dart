@@ -79,17 +79,17 @@ class FileCacheArgs {
 
   factory FileCacheArgs.fromMap(Map<String, dynamic> map) {
     return FileCacheArgs(
-      copyTagsToDataRepositoryAssociations: map['copyTagsToDataRepositoryAssociations'] == null ? null : (map['copyTagsToDataRepositoryAssociations'] as bool).input(),
-      dataRepositoryAssociations: map['dataRepositoryAssociations'] == null ? null : (pulumi.Input.decodeList<FileCacheDataRepositoryAssociation>(map['dataRepositoryAssociations'], (value) => FileCacheDataRepositoryAssociation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      copyTagsToDataRepositoryAssociations: map['copyTagsToDataRepositoryAssociations'] == null ? null : ((map['copyTagsToDataRepositoryAssociations'] as bool).input()).input(),
+      dataRepositoryAssociations: map['dataRepositoryAssociations'] == null ? null : ((pulumi.Input.decodeList<FileCacheDataRepositoryAssociation>(map['dataRepositoryAssociations']!, (value) => FileCacheDataRepositoryAssociation.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       fileCacheType: (map['fileCacheType'] as String).input(),
       fileCacheTypeVersion: (map['fileCacheTypeVersion'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      lustreConfigurations: map['lustreConfigurations'] == null ? null : (pulumi.Input.decodeList<FileCacheLustreConfiguration>(map['lustreConfigurations'], (value) => FileCacheLustreConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      lustreConfigurations: map['lustreConfigurations'] == null ? null : ((pulumi.Input.decodeList<FileCacheLustreConfiguration>(map['lustreConfigurations']!, (value) => FileCacheLustreConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
       storageCapacity: (map['storageCapacity'] as int).input(),
       subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

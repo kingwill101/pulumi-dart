@@ -33,8 +33,8 @@ class WorkerPoolTemplateContainerEnv {
   factory WorkerPoolTemplateContainerEnv.fromMap(Map<String, dynamic> map) {
     return WorkerPoolTemplateContainerEnv(
       name: (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
-      valueSource: map['valueSource'] == null ? null : (WorkerPoolTemplateContainerEnvValueSource.fromMap((map['valueSource'] as Map).cast<String, dynamic>())).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
+      valueSource: map['valueSource'] == null ? null : (WorkerPoolTemplateContainerEnvValueSource.fromMap((map['valueSource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

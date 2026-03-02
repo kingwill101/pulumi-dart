@@ -68,15 +68,15 @@ class AppTemplateInitContainer {
 
   factory AppTemplateInitContainer.fromMap(Map<String, dynamic> map) {
     return AppTemplateInitContainer(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      cpu: map['cpu'] == null ? null : (map['cpu'] as double).input(),
-      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<AppTemplateInitContainerEnv>(map['envs'], (value) => AppTemplateInitContainerEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ephemeralStorage: map['ephemeralStorage'] == null ? null : (map['ephemeralStorage'] as String).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as double).input(),
+      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<AppTemplateInitContainerEnv>(map['envs']!, (value) => AppTemplateInitContainerEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ephemeralStorage: map['ephemeralStorage'] == null ? null : (map['ephemeralStorage']! as String).input(),
       image: (map['image'] as String).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as String).input(),
+      memory: map['memory'] == null ? null : (map['memory']! as String).input(),
       name: (map['name'] as String).input(),
-      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<AppTemplateInitContainerVolumeMount>(map['volumeMounts'], (value) => AppTemplateInitContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<AppTemplateInitContainerVolumeMount>(map['volumeMounts']!, (value) => AppTemplateInitContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

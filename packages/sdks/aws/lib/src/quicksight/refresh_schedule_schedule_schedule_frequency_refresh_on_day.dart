@@ -25,8 +25,8 @@ class RefreshScheduleScheduleScheduleFrequencyRefreshOnDay {
 
   factory RefreshScheduleScheduleScheduleFrequencyRefreshOnDay.fromMap(Map<String, dynamic> map) {
     return RefreshScheduleScheduleScheduleFrequencyRefreshOnDay(
-      dayOfMonth: map['dayOfMonth'] == null ? null : (map['dayOfMonth'] as String).input(),
-      dayOfWeek: map['dayOfWeek'] == null ? null : (map['dayOfWeek'] as String).input(),
+      dayOfMonth: map['dayOfMonth'] == null ? null : ((map['dayOfMonth'] as String).input()).input(),
+      dayOfWeek: map['dayOfWeek'] == null ? null : ((map['dayOfWeek'] as String).input()).input(),
     );
   }
 }

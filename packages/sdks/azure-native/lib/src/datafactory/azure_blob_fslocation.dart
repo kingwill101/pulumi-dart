@@ -37,9 +37,9 @@ class AzureBlobFSLocation {
 
   factory AzureBlobFSLocation.fromMap(Map<String, dynamic> map) {
     return AzureBlobFSLocation(
-      fileName: map['fileName'] == null ? null : (map['fileName']).input(),
-      fileSystem: map['fileSystem'] == null ? null : (map['fileSystem']).input(),
-      folderPath: map['folderPath'] == null ? null : (map['folderPath']).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName']!).input(),
+      fileSystem: map['fileSystem'] == null ? null : (map['fileSystem']!).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath']!).input(),
       type: (map['type'] as String).input(),
     );
   }

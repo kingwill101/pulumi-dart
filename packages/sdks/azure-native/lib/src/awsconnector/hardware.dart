@@ -32,9 +32,9 @@ class Hardware {
 
   factory Hardware.fromMap(Map<String, dynamic> map) {
     return Hardware(
-      cpuCount: map['cpuCount'] == null ? null : (map['cpuCount'] as int).input(),
-      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<Disk>(map['disks'], (value) => Disk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ramSizeInGb: map['ramSizeInGb'] == null ? null : (map['ramSizeInGb'] as int).input(),
+      cpuCount: map['cpuCount'] == null ? null : (map['cpuCount']! as int).input(),
+      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<Disk>(map['disks']!, (value) => Disk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ramSizeInGb: map['ramSizeInGb'] == null ? null : (map['ramSizeInGb']! as int).input(),
     );
   }
 }

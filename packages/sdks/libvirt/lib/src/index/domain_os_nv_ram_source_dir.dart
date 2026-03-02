@@ -20,7 +20,7 @@ class DomainOsNvRamSourceDir {
 
   factory DomainOsNvRamSourceDir.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceDir(
-      dir: map['dir'] == null ? null : (map['dir'] as String).input(),
+      dir: map['dir'] == null ? null : (map['dir']! as String).input(),
     );
   }
 }

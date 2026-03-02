@@ -30,8 +30,8 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFor
 
   factory FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfigPrefixConfig.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfigPrefixConfig(
-      prefixFormat: map['prefixFormat'] == null ? null : (map['prefixFormat'] as String).input(),
-      prefixHierarchies: map['prefixHierarchies'] == null ? null : ((map['prefixHierarchies'] as List).cast<String>()).input(),
+      prefixFormat: map['prefixFormat'] == null ? null : ((map['prefixFormat'] as String).input()).input(),
+      prefixHierarchies: map['prefixHierarchies'] == null ? null : (((map['prefixHierarchies'] as List).cast<String>()).input()).input(),
       prefixType: (map['prefixType'] as String).input(),
     );
   }

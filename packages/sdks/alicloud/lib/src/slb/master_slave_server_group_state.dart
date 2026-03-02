@@ -37,10 +37,10 @@ class MasterSlaveServerGroupState {
 
   factory MasterSlaveServerGroupState.fromMap(Map<String, dynamic> map) {
     return MasterSlaveServerGroupState(
-      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : (map['deleteProtectionValidation'] as bool).input(),
-      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      servers: map['servers'] == null ? null : (pulumi.Input.decodeList<MasterSlaveServerGroupServer>(map['servers'], (value) => MasterSlaveServerGroupServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : (map['deleteProtectionValidation']! as bool).input(),
+      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      servers: map['servers'] == null ? null : (pulumi.Input.decodeList<MasterSlaveServerGroupServer>(map['servers']!, (value) => MasterSlaveServerGroupServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

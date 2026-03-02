@@ -95,7 +95,7 @@ class GetAutomationRuleResult {
       createdBy: ClientInfoResponse.fromMap((map['createdBy'] as Map).cast<String, dynamic>()),
       createdTimeUtc: map['createdTimeUtc'] as String,
       displayName: map['displayName'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       lastModifiedBy: ClientInfoResponse.fromMap((map['lastModifiedBy'] as Map).cast<String, dynamic>()),
       lastModifiedTimeUtc: map['lastModifiedTimeUtc'] as String,

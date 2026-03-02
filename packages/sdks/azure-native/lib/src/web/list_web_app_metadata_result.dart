@@ -41,7 +41,7 @@ class ListWebAppMetadataResult {
   factory ListWebAppMetadataResult.fromMap(Map<String, dynamic> map) {
     return ListWebAppMetadataResult(
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
       properties: (map['properties'] as Map).cast<String, String>(),
       type: map['type'] as String,

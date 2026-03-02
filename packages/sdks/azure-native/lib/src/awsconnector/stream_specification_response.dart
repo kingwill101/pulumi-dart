@@ -27,8 +27,8 @@ class StreamSpecificationResponse {
 
   factory StreamSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return StreamSpecificationResponse(
-      resourcePolicy: map['resourcePolicy'] == null ? null : (ResourcePolicyResponse.fromMap((map['resourcePolicy'] as Map).cast<String, dynamic>())).input(),
-      streamViewType: map['streamViewType'] == null ? null : (map['streamViewType'] as String).input(),
+      resourcePolicy: map['resourcePolicy'] == null ? null : (ResourcePolicyResponse.fromMap((map['resourcePolicy']! as Map).cast<String, dynamic>())).input(),
+      streamViewType: map['streamViewType'] == null ? null : (map['streamViewType']! as String).input(),
     );
   }
 }

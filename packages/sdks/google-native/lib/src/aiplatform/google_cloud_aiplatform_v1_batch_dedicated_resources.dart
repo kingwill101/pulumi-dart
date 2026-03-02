@@ -33,8 +33,8 @@ class GoogleCloudAiplatformV1BatchDedicatedResources {
   factory GoogleCloudAiplatformV1BatchDedicatedResources.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1BatchDedicatedResources(
       machineSpec: (GoogleCloudAiplatformV1MachineSpec.fromMap((map['machineSpec'] as Map).cast<String, dynamic>())).input(),
-      maxReplicaCount: map['maxReplicaCount'] == null ? null : (map['maxReplicaCount'] as int).input(),
-      startingReplicaCount: map['startingReplicaCount'] == null ? null : (map['startingReplicaCount'] as int).input(),
+      maxReplicaCount: map['maxReplicaCount'] == null ? null : (map['maxReplicaCount']! as int).input(),
+      startingReplicaCount: map['startingReplicaCount'] == null ? null : (map['startingReplicaCount']! as int).input(),
     );
   }
 }

@@ -64,15 +64,15 @@ class MapState {
 
   factory MapState.fromMap(Map<String, dynamic> map) {
     return MapState(
-      configuration: map['configuration'] == null ? null : (MapConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      mapArn: map['mapArn'] == null ? null : (map['mapArn'] as String).input(),
-      mapName: map['mapName'] == null ? null : (map['mapName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      configuration: map['configuration'] == null ? null : ((MapConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input()).input(),
+      createTime: map['createTime'] == null ? null : ((map['createTime'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      mapArn: map['mapArn'] == null ? null : ((map['mapArn'] as String).input()).input(),
+      mapName: map['mapName'] == null ? null : ((map['mapName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      updateTime: map['updateTime'] == null ? null : ((map['updateTime'] as String).input()).input(),
     );
   }
 }

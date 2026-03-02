@@ -62,10 +62,10 @@ class DicomStoreArgs {
   factory DicomStoreArgs.fromMap(Map<String, dynamic> map) {
     return DicomStoreArgs(
       dataset: (map['dataset'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationConfig: map['notificationConfig'] == null ? null : (DicomStoreNotificationConfig.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>())).input(),
-      streamConfigs: map['streamConfigs'] == null ? null : (pulumi.Input.decodeList<DicomStoreStreamConfig>(map['streamConfigs'], (value) => DicomStoreStreamConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notificationConfig: map['notificationConfig'] == null ? null : (DicomStoreNotificationConfig.fromMap((map['notificationConfig']! as Map).cast<String, dynamic>())).input(),
+      streamConfigs: map['streamConfigs'] == null ? null : (pulumi.Input.decodeList<DicomStoreStreamConfig>(map['streamConfigs']!, (value) => DicomStoreStreamConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

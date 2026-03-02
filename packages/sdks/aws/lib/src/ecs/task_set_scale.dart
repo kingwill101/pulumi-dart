@@ -25,8 +25,8 @@ class TaskSetScale {
 
   factory TaskSetScale.fromMap(Map<String, dynamic> map) {
     return TaskSetScale(
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as double).input(),
+      unit: map['unit'] == null ? null : ((map['unit'] as String).input()).input(),
+      value: map['value'] == null ? null : ((map['value'] as double).input()).input(),
     );
   }
 }

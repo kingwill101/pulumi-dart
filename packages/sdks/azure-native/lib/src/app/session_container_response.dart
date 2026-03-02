@@ -54,13 +54,13 @@ class SessionContainerResponse {
 
   factory SessionContainerResponse.fromMap(Map<String, dynamic> map) {
     return SessionContainerResponse(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      command: map['command'] == null ? null : ((map['command'] as List).cast<String>()).input(),
-      env: map['env'] == null ? null : (pulumi.Input.decodeList<EnvironmentVarResponse>(map['env'], (value) => EnvironmentVarResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      probes: map['probes'] == null ? null : (pulumi.Input.decodeList<SessionProbeResponse>(map['probes'], (value) => SessionProbeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resources: map['resources'] == null ? null : (SessionContainerResourcesResponse.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      command: map['command'] == null ? null : ((map['command']! as List).cast<String>()).input(),
+      env: map['env'] == null ? null : (pulumi.Input.decodeList<EnvironmentVarResponse>(map['env']!, (value) => EnvironmentVarResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      probes: map['probes'] == null ? null : (pulumi.Input.decodeList<SessionProbeResponse>(map['probes']!, (value) => SessionProbeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resources: map['resources'] == null ? null : (SessionContainerResourcesResponse.fromMap((map['resources']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

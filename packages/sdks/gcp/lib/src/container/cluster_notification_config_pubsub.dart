@@ -32,8 +32,8 @@ class ClusterNotificationConfigPubsub {
   factory ClusterNotificationConfigPubsub.fromMap(Map<String, dynamic> map) {
     return ClusterNotificationConfigPubsub(
       enabled: (map['enabled'] as bool).input(),
-      filter: map['filter'] == null ? null : (ClusterNotificationConfigPubsubFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      filter: map['filter'] == null ? null : (ClusterNotificationConfigPubsubFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

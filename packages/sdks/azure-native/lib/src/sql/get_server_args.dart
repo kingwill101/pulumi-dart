@@ -34,7 +34,7 @@ class GetServerArgs {
 
   factory GetServerArgs.fromMap(Map<String, dynamic> map) {
     return GetServerArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
     );

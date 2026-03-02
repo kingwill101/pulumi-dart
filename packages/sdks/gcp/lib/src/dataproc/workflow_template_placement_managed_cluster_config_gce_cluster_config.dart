@@ -78,18 +78,18 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig {
 
   factory WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(
-      internalIpOnly: map['internalIpOnly'] == null ? null : (map['internalIpOnly'] as bool).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      nodeGroupAffinity: map['nodeGroupAffinity'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity.fromMap((map['nodeGroupAffinity'] as Map).cast<String, dynamic>())).input(),
-      privateIpv6GoogleAccess: map['privateIpv6GoogleAccess'] == null ? null : (map['privateIpv6GoogleAccess'] as String).input(),
-      reservationAffinity: map['reservationAffinity'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity.fromMap((map['reservationAffinity'] as Map).cast<String, dynamic>())).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      serviceAccountScopes: map['serviceAccountScopes'] == null ? null : ((map['serviceAccountScopes'] as List).cast<String>()).input(),
-      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig.fromMap((map['shieldedInstanceConfig'] as Map).cast<String, dynamic>())).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      internalIpOnly: map['internalIpOnly'] == null ? null : (map['internalIpOnly']! as bool).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      nodeGroupAffinity: map['nodeGroupAffinity'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity.fromMap((map['nodeGroupAffinity']! as Map).cast<String, dynamic>())).input(),
+      privateIpv6GoogleAccess: map['privateIpv6GoogleAccess'] == null ? null : (map['privateIpv6GoogleAccess']! as String).input(),
+      reservationAffinity: map['reservationAffinity'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity.fromMap((map['reservationAffinity']! as Map).cast<String, dynamic>())).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      serviceAccountScopes: map['serviceAccountScopes'] == null ? null : ((map['serviceAccountScopes']! as List).cast<String>()).input(),
+      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig.fromMap((map['shieldedInstanceConfig']! as Map).cast<String, dynamic>())).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

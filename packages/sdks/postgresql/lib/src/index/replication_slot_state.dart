@@ -31,9 +31,9 @@ class ReplicationSlotState {
 
   factory ReplicationSlotState.fromMap(Map<String, dynamic> map) {
     return ReplicationSlotState(
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      plugin: map['plugin'] == null ? null : (map['plugin'] as String).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      plugin: map['plugin'] == null ? null : (map['plugin']! as String).input(),
     );
   }
 }

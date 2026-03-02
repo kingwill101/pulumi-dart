@@ -43,11 +43,11 @@ class TemplateContentsDeploymentmanagerV2beta {
 
   factory TemplateContentsDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return TemplateContentsDeploymentmanagerV2beta(
-      imports: map['imports'] == null ? null : (pulumi.Input.decodeList<ImportFileDeploymentmanagerV2beta>(map['imports'], (value) => ImportFileDeploymentmanagerV2beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      interpreter: map['interpreter'] == null ? null : (TemplateContentsInterpreterDeploymentmanagerV2beta.fromValue(map['interpreter'] as String)).input(),
-      mainTemplate: map['mainTemplate'] == null ? null : (map['mainTemplate'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
-      template: map['template'] == null ? null : (map['template'] as String).input(),
+      imports: map['imports'] == null ? null : (pulumi.Input.decodeList<ImportFileDeploymentmanagerV2beta>(map['imports']!, (value) => ImportFileDeploymentmanagerV2beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      interpreter: map['interpreter'] == null ? null : (TemplateContentsInterpreterDeploymentmanagerV2beta.fromValue(map['interpreter']! as String)).input(),
+      mainTemplate: map['mainTemplate'] == null ? null : (map['mainTemplate']! as String).input(),
+      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
+      template: map['template'] == null ? null : (map['template']! as String).input(),
     );
   }
 }

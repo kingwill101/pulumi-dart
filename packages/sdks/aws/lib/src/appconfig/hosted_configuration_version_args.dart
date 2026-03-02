@@ -53,8 +53,8 @@ class HostedConfigurationVersionArgs {
       configurationProfileId: (map['configurationProfileId'] as String).input(),
       content: (map['content'] as String).input(),
       contentType: (map['contentType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

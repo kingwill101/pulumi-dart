@@ -65,15 +65,15 @@ class DeploymentArgs {
 
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
-      createPolicy: map['createPolicy'] == null ? null : (map['createPolicy'] as String).input(),
-      credential: map['credential'] == null ? null : (Credential.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<DeploymentLabelEntry>(map['labels'], (value) => DeploymentLabelEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      preview: map['preview'] == null ? null : (map['preview'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      target: map['target'] == null ? null : (TargetConfiguration.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      createPolicy: map['createPolicy'] == null ? null : (map['createPolicy']! as String).input(),
+      credential: map['credential'] == null ? null : (Credential.fromMap((map['credential']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<DeploymentLabelEntry>(map['labels']!, (value) => DeploymentLabelEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      preview: map['preview'] == null ? null : (map['preview']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      target: map['target'] == null ? null : (TargetConfiguration.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

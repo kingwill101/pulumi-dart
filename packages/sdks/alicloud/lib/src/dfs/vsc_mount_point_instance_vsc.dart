@@ -30,9 +30,9 @@ class VscMountPointInstanceVsc {
 
   factory VscMountPointInstanceVsc.fromMap(Map<String, dynamic> map) {
     return VscMountPointInstanceVsc(
-      vscId: map['vscId'] == null ? null : (map['vscId'] as String).input(),
-      vscStatus: map['vscStatus'] == null ? null : (map['vscStatus'] as String).input(),
-      vscType: map['vscType'] == null ? null : (map['vscType'] as String).input(),
+      vscId: map['vscId'] == null ? null : (map['vscId']! as String).input(),
+      vscStatus: map['vscStatus'] == null ? null : (map['vscStatus']! as String).input(),
+      vscType: map['vscType'] == null ? null : (map['vscType']! as String).input(),
     );
   }
 }

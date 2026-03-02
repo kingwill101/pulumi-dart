@@ -66,14 +66,14 @@ class VirtualHubIpConfigurationArgs {
 
   factory VirtualHubIpConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return VirtualHubIpConfigurationArgs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      ipConfigName: map['ipConfigName'] == null ? null : (map['ipConfigName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod'] as String).input(),
-      publicIPAddress: map['publicIPAddress'] == null ? null : (map['publicIPAddress'] as PublicIPAddressNetwork).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      ipConfigName: map['ipConfigName'] == null ? null : (map['ipConfigName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress']! as String).input(),
+      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod']! as String).input(),
+      publicIPAddress: map['publicIPAddress'] == null ? null : (map['publicIPAddress']! as PublicIPAddressNetwork).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subnet: map['subnet'] == null ? null : (map['subnet'] as SubnetNetwork).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet']! as SubnetNetwork).input(),
       virtualHubName: (map['virtualHubName'] as String).input(),
     );
   }

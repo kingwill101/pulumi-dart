@@ -36,7 +36,7 @@ class GetCustomApiArgs {
     return GetCustomApiArgs(
       apiName: (map['apiName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

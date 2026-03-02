@@ -26,7 +26,7 @@ class DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationD
 
   factory DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail.fromMap(Map<String, dynamic> map) {
     return DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

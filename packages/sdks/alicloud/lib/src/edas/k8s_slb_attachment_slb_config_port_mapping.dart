@@ -31,7 +31,7 @@ class K8sSlbAttachmentSlbConfigPortMapping {
 
   factory K8sSlbAttachmentSlbConfigPortMapping.fromMap(Map<String, dynamic> map) {
     return K8sSlbAttachmentSlbConfigPortMapping(
-      certId: map['certId'] == null ? null : (map['certId'] as String).input(),
+      certId: map['certId'] == null ? null : (map['certId']! as String).input(),
       loadbalancerProtocol: (map['loadbalancerProtocol'] as String).input(),
       servicePort: (K8sSlbAttachmentSlbConfigPortMappingServicePort.fromMap((map['servicePort'] as Map).cast<String, dynamic>())).input(),
     );

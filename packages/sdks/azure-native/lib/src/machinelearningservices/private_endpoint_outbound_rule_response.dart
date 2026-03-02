@@ -51,12 +51,12 @@ class PrivateEndpointOutboundRuleResponse {
 
   factory PrivateEndpointOutboundRuleResponse.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointOutboundRuleResponse(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      destination: map['destination'] == null ? null : (PrivateEndpointDestinationResponse.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      destination: map['destination'] == null ? null : (PrivateEndpointDestinationResponse.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
       errorInformation: (map['errorInformation'] as String).input(),
-      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns']! as List).cast<String>()).input(),
       parentRuleNames: ((map['parentRuleNames'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

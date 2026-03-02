@@ -44,11 +44,11 @@ class SqlContainerIndexingPolicy {
 
   factory SqlContainerIndexingPolicy.fromMap(Map<String, dynamic> map) {
     return SqlContainerIndexingPolicy(
-      compositeIndices: map['compositeIndices'] == null ? null : (pulumi.Input.decodeList<SqlContainerIndexingPolicyCompositeIndex>(map['compositeIndices'], (value) => SqlContainerIndexingPolicyCompositeIndex.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      excludedPaths: map['excludedPaths'] == null ? null : (pulumi.Input.decodeList<SqlContainerIndexingPolicyExcludedPath>(map['excludedPaths'], (value) => SqlContainerIndexingPolicyExcludedPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      includedPaths: map['includedPaths'] == null ? null : (pulumi.Input.decodeList<SqlContainerIndexingPolicyIncludedPath>(map['includedPaths'], (value) => SqlContainerIndexingPolicyIncludedPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      indexingMode: map['indexingMode'] == null ? null : (map['indexingMode'] as String).input(),
-      spatialIndices: map['spatialIndices'] == null ? null : (pulumi.Input.decodeList<SqlContainerIndexingPolicySpatialIndex>(map['spatialIndices'], (value) => SqlContainerIndexingPolicySpatialIndex.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      compositeIndices: map['compositeIndices'] == null ? null : (pulumi.Input.decodeList<SqlContainerIndexingPolicyCompositeIndex>(map['compositeIndices']!, (value) => SqlContainerIndexingPolicyCompositeIndex.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      excludedPaths: map['excludedPaths'] == null ? null : (pulumi.Input.decodeList<SqlContainerIndexingPolicyExcludedPath>(map['excludedPaths']!, (value) => SqlContainerIndexingPolicyExcludedPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      includedPaths: map['includedPaths'] == null ? null : (pulumi.Input.decodeList<SqlContainerIndexingPolicyIncludedPath>(map['includedPaths']!, (value) => SqlContainerIndexingPolicyIncludedPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      indexingMode: map['indexingMode'] == null ? null : (map['indexingMode']! as String).input(),
+      spatialIndices: map['spatialIndices'] == null ? null : (pulumi.Input.decodeList<SqlContainerIndexingPolicySpatialIndex>(map['spatialIndices']!, (value) => SqlContainerIndexingPolicySpatialIndex.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

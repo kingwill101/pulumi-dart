@@ -26,8 +26,8 @@ class Denoise {
 
   factory Denoise.fromMap(Map<String, dynamic> map) {
     return Denoise(
-      strength: map['strength'] == null ? null : (map['strength'] as double).input(),
-      tune: map['tune'] == null ? null : (map['tune'] as String).input(),
+      strength: map['strength'] == null ? null : (map['strength']! as double).input(),
+      tune: map['tune'] == null ? null : (map['tune']! as String).input(),
     );
   }
 }

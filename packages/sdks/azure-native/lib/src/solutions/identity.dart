@@ -27,8 +27,8 @@ class Identity {
 
   factory Identity.fromMap(Map<String, dynamic> map) {
     return Identity(
-      type: map['type'] == null ? null : (ResourceIdentityType.fromValue(map['type'] as String)).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities'] as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (ResourceIdentityType.fromValue(map['type']! as String)).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities']! as List).cast<String>()).input(),
     );
   }
 }

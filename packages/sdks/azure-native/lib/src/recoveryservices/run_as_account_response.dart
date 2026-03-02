@@ -26,8 +26,8 @@ class RunAsAccountResponse {
 
   factory RunAsAccountResponse.fromMap(Map<String, dynamic> map) {
     return RunAsAccountResponse(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
     );
   }
 }

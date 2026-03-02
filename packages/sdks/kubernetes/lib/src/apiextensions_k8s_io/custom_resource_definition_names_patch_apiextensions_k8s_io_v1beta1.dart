@@ -46,12 +46,12 @@ class CustomResourceDefinitionNamesPatchApiextensionsK8sIoV1beta1 {
 
   factory CustomResourceDefinitionNamesPatchApiextensionsK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CustomResourceDefinitionNamesPatchApiextensionsK8sIoV1beta1(
-      categories: map['categories'] == null ? null : ((map['categories'] as List).cast<String>()).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      listKind: map['listKind'] == null ? null : (map['listKind'] as String).input(),
-      plural: map['plural'] == null ? null : (map['plural'] as String).input(),
-      shortNames: map['shortNames'] == null ? null : ((map['shortNames'] as List).cast<String>()).input(),
-      singular: map['singular'] == null ? null : (map['singular'] as String).input(),
+      categories: map['categories'] == null ? null : ((map['categories']! as List).cast<String>()).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      listKind: map['listKind'] == null ? null : (map['listKind']! as String).input(),
+      plural: map['plural'] == null ? null : (map['plural']! as String).input(),
+      shortNames: map['shortNames'] == null ? null : ((map['shortNames']! as List).cast<String>()).input(),
+      singular: map['singular'] == null ? null : (map['singular']! as String).input(),
     );
   }
 }

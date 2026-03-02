@@ -33,7 +33,7 @@ class GetNotebookRuntimeTemplateArgs {
     return GetNotebookRuntimeTemplateArgs(
       location: (map['location'] as String).input(),
       notebookRuntimeTemplateId: (map['notebookRuntimeTemplateId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

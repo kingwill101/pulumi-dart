@@ -35,10 +35,10 @@ class BudgetActionDefinitionIamActionDefinition {
 
   factory BudgetActionDefinitionIamActionDefinition.fromMap(Map<String, dynamic> map) {
     return BudgetActionDefinitionIamActionDefinition(
-      groups: map['groups'] == null ? null : ((map['groups'] as List).cast<String>()).input(),
+      groups: map['groups'] == null ? null : (((map['groups'] as List).cast<String>()).input()).input(),
       policyArn: (map['policyArn'] as String).input(),
-      roles: map['roles'] == null ? null : ((map['roles'] as List).cast<String>()).input(),
-      users: map['users'] == null ? null : ((map['users'] as List).cast<String>()).input(),
+      roles: map['roles'] == null ? null : (((map['roles'] as List).cast<String>()).input()).input(),
+      users: map['users'] == null ? null : (((map['users'] as List).cast<String>()).input()).input(),
     );
   }
 }

@@ -36,7 +36,7 @@ class DrtAccessLogBucketAssociationArgs {
     return DrtAccessLogBucketAssociationArgs(
       logBucket: (map['logBucket'] as String).input(),
       roleArnAssociationId: (map['roleArnAssociationId'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (DrtAccessLogBucketAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      timeouts: map['timeouts'] == null ? null : ((DrtAccessLogBucketAssociationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

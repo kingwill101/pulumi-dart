@@ -56,14 +56,14 @@ class ScheduleState {
 
   factory ScheduleState.fromMap(Map<String, dynamic> map) {
     return ScheduleState(
-      cronExpression: map['cronExpression'] == null ? null : (map['cronExpression'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      flowName: map['flowName'] == null ? null : (map['flowName'] as String).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
-      payload: map['payload'] == null ? null : (map['payload'] as String).input(),
-      scheduleId: map['scheduleId'] == null ? null : (map['scheduleId'] as String).input(),
-      scheduleName: map['scheduleName'] == null ? null : (map['scheduleName'] as String).input(),
+      cronExpression: map['cronExpression'] == null ? null : (map['cronExpression']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      flowName: map['flowName'] == null ? null : (map['flowName']! as String).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime']! as String).input(),
+      payload: map['payload'] == null ? null : (map['payload']! as String).input(),
+      scheduleId: map['scheduleId'] == null ? null : (map['scheduleId']! as String).input(),
+      scheduleName: map['scheduleName'] == null ? null : (map['scheduleName']! as String).input(),
     );
   }
 }

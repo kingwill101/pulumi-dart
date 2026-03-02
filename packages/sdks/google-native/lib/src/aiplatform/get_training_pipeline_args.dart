@@ -32,7 +32,7 @@ class GetTrainingPipelineArgs {
   factory GetTrainingPipelineArgs.fromMap(Map<String, dynamic> map) {
     return GetTrainingPipelineArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       trainingPipelineId: (map['trainingPipelineId'] as String).input(),
     );
   }

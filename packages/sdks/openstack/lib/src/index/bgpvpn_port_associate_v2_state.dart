@@ -56,12 +56,12 @@ class BgpvpnPortAssociateV2State {
 
   factory BgpvpnPortAssociateV2State.fromMap(Map<String, dynamic> map) {
     return BgpvpnPortAssociateV2State(
-      advertiseFixedIps: map['advertiseFixedIps'] == null ? null : (map['advertiseFixedIps'] as bool).input(),
-      bgpvpnId: map['bgpvpnId'] == null ? null : (map['bgpvpnId'] as String).input(),
-      portId: map['portId'] == null ? null : (map['portId'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<BgpvpnPortAssociateV2Route>(map['routes'], (value) => BgpvpnPortAssociateV2Route.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      advertiseFixedIps: map['advertiseFixedIps'] == null ? null : (map['advertiseFixedIps']! as bool).input(),
+      bgpvpnId: map['bgpvpnId'] == null ? null : (map['bgpvpnId']! as String).input(),
+      portId: map['portId'] == null ? null : (map['portId']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<BgpvpnPortAssociateV2Route>(map['routes']!, (value) => BgpvpnPortAssociateV2Route.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

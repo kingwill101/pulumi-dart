@@ -21,7 +21,7 @@ class Fleet {
 
   factory Fleet.fromMap(Map<String, dynamic> map) {
     return Fleet(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

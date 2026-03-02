@@ -102,19 +102,19 @@ class GrafanaWorkspaceArgs {
 
   factory GrafanaWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return GrafanaWorkspaceArgs(
-      accountNumber: map['accountNumber'] == null ? null : (map['accountNumber'] as String).input(),
-      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang'] as String).input(),
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      customAccountNumber: map['customAccountNumber'] == null ? null : (map['customAccountNumber'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
-      grafanaVersion: map['grafanaVersion'] == null ? null : (map['grafanaVersion'] as String).input(),
-      grafanaWorkspaceEdition: map['grafanaWorkspaceEdition'] == null ? null : (map['grafanaWorkspaceEdition'] as String).input(),
+      accountNumber: map['accountNumber'] == null ? null : (map['accountNumber']! as String).input(),
+      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang']! as String).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      customAccountNumber: map['customAccountNumber'] == null ? null : (map['customAccountNumber']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
+      grafanaVersion: map['grafanaVersion'] == null ? null : (map['grafanaVersion']! as String).input(),
+      grafanaWorkspaceEdition: map['grafanaWorkspaceEdition'] == null ? null : (map['grafanaWorkspaceEdition']! as String).input(),
       grafanaWorkspaceName: (map['grafanaWorkspaceName'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      pricingCycle: map['pricingCycle'] == null ? null : (map['pricingCycle'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      pricingCycle: map['pricingCycle'] == null ? null : (map['pricingCycle']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

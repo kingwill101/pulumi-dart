@@ -83,17 +83,17 @@ class ComponentArgs {
 
   factory ComponentArgs.fromMap(Map<String, dynamic> map) {
     return ComponentArgs(
-      changeDescription: map['changeDescription'] == null ? null : (map['changeDescription'] as String).input(),
-      data: map['data'] == null ? null : (map['data'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      changeDescription: map['changeDescription'] == null ? null : ((map['changeDescription'] as String).input()).input(),
+      data: map['data'] == null ? null : ((map['data'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       platform: (map['platform'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
-      supportedOsVersions: map['supportedOsVersions'] == null ? null : ((map['supportedOsVersions'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : ((map['skipDestroy'] as bool).input()).input(),
+      supportedOsVersions: map['supportedOsVersions'] == null ? null : (((map['supportedOsVersions'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      uri: map['uri'] == null ? null : ((map['uri'] as String).input()).input(),
       version: (map['version'] as String).input(),
     );
   }

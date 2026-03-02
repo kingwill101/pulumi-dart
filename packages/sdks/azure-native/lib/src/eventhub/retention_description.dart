@@ -31,9 +31,9 @@ class RetentionDescription {
 
   factory RetentionDescription.fromMap(Map<String, dynamic> map) {
     return RetentionDescription(
-      cleanupPolicy: map['cleanupPolicy'] == null ? null : (map['cleanupPolicy'] as String).input(),
-      retentionTimeInHours: map['retentionTimeInHours'] == null ? null : (map['retentionTimeInHours'] as double).input(),
-      tombstoneRetentionTimeInHours: map['tombstoneRetentionTimeInHours'] == null ? null : (map['tombstoneRetentionTimeInHours'] as int).input(),
+      cleanupPolicy: map['cleanupPolicy'] == null ? null : (map['cleanupPolicy']! as String).input(),
+      retentionTimeInHours: map['retentionTimeInHours'] == null ? null : (map['retentionTimeInHours']! as double).input(),
+      tombstoneRetentionTimeInHours: map['tombstoneRetentionTimeInHours'] == null ? null : (map['tombstoneRetentionTimeInHours']! as int).input(),
     );
   }
 }

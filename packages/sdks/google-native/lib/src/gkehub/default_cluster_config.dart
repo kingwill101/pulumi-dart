@@ -28,8 +28,8 @@ class DefaultClusterConfig {
 
   factory DefaultClusterConfig.fromMap(Map<String, dynamic> map) {
     return DefaultClusterConfig(
-      binaryAuthorizationConfig: map['binaryAuthorizationConfig'] == null ? null : (BinaryAuthorizationConfig.fromMap((map['binaryAuthorizationConfig'] as Map).cast<String, dynamic>())).input(),
-      securityPostureConfig: map['securityPostureConfig'] == null ? null : (SecurityPostureConfig.fromMap((map['securityPostureConfig'] as Map).cast<String, dynamic>())).input(),
+      binaryAuthorizationConfig: map['binaryAuthorizationConfig'] == null ? null : (BinaryAuthorizationConfig.fromMap((map['binaryAuthorizationConfig']! as Map).cast<String, dynamic>())).input(),
+      securityPostureConfig: map['securityPostureConfig'] == null ? null : (SecurityPostureConfig.fromMap((map['securityPostureConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

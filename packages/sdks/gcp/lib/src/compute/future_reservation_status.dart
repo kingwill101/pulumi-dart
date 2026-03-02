@@ -56,13 +56,13 @@ class FutureReservationStatus {
 
   factory FutureReservationStatus.fromMap(Map<String, dynamic> map) {
     return FutureReservationStatus(
-      amendmentStatus: map['amendmentStatus'] == null ? null : (map['amendmentStatus'] as String).input(),
-      autoCreatedReservations: map['autoCreatedReservations'] == null ? null : ((map['autoCreatedReservations'] as List).cast<String>()).input(),
-      fulfilledCount: map['fulfilledCount'] == null ? null : (map['fulfilledCount'] as String).input(),
-      lastKnownGoodState: map['lastKnownGoodState'] == null ? null : (FutureReservationStatusLastKnownGoodState.fromMap((map['lastKnownGoodState'] as Map).cast<String, dynamic>())).input(),
-      lockTime: map['lockTime'] == null ? null : (map['lockTime'] as String).input(),
-      procurementStatus: map['procurementStatus'] == null ? null : (map['procurementStatus'] as String).input(),
-      specificSkuProperties: map['specificSkuProperties'] == null ? null : (FutureReservationStatusSpecificSkuProperties.fromMap((map['specificSkuProperties'] as Map).cast<String, dynamic>())).input(),
+      amendmentStatus: map['amendmentStatus'] == null ? null : (map['amendmentStatus']! as String).input(),
+      autoCreatedReservations: map['autoCreatedReservations'] == null ? null : ((map['autoCreatedReservations']! as List).cast<String>()).input(),
+      fulfilledCount: map['fulfilledCount'] == null ? null : (map['fulfilledCount']! as String).input(),
+      lastKnownGoodState: map['lastKnownGoodState'] == null ? null : (FutureReservationStatusLastKnownGoodState.fromMap((map['lastKnownGoodState']! as Map).cast<String, dynamic>())).input(),
+      lockTime: map['lockTime'] == null ? null : (map['lockTime']! as String).input(),
+      procurementStatus: map['procurementStatus'] == null ? null : (map['procurementStatus']! as String).input(),
+      specificSkuProperties: map['specificSkuProperties'] == null ? null : (FutureReservationStatusSpecificSkuProperties.fromMap((map['specificSkuProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

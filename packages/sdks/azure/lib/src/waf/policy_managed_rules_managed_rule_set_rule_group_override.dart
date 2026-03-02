@@ -27,7 +27,7 @@ class PolicyManagedRulesManagedRuleSetRuleGroupOverride {
   factory PolicyManagedRulesManagedRuleSetRuleGroupOverride.fromMap(Map<String, dynamic> map) {
     return PolicyManagedRulesManagedRuleSetRuleGroupOverride(
       ruleGroupName: (map['ruleGroupName'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PolicyManagedRulesManagedRuleSetRuleGroupOverrideRule>(map['rules'], (value) => PolicyManagedRulesManagedRuleSetRuleGroupOverrideRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PolicyManagedRulesManagedRuleSetRuleGroupOverrideRule>(map['rules']!, (value) => PolicyManagedRulesManagedRuleSetRuleGroupOverrideRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

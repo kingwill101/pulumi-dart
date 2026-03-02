@@ -72,12 +72,12 @@ class ThreeTierConfiguration {
       appResourceGroup: (map['appResourceGroup'] as String).input(),
       applicationServer: (ApplicationServerConfiguration.fromMap((map['applicationServer'] as Map).cast<String, dynamic>())).input(),
       centralServer: (CentralServerConfiguration.fromMap((map['centralServer'] as Map).cast<String, dynamic>())).input(),
-      customResourceNames: map['customResourceNames'] == null ? null : (ThreeTierFullResourceNames.fromMap((map['customResourceNames'] as Map).cast<String, dynamic>())).input(),
+      customResourceNames: map['customResourceNames'] == null ? null : (ThreeTierFullResourceNames.fromMap((map['customResourceNames']! as Map).cast<String, dynamic>())).input(),
       databaseServer: (DatabaseConfiguration.fromMap((map['databaseServer'] as Map).cast<String, dynamic>())).input(),
       deploymentType: (map['deploymentType'] as String).input(),
-      highAvailabilityConfig: map['highAvailabilityConfig'] == null ? null : (HighAvailabilityConfiguration.fromMap((map['highAvailabilityConfig'] as Map).cast<String, dynamic>())).input(),
-      networkConfiguration: map['networkConfiguration'] == null ? null : (NetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      storageConfiguration: map['storageConfiguration'] == null ? null : (StorageConfiguration.fromMap((map['storageConfiguration'] as Map).cast<String, dynamic>())).input(),
+      highAvailabilityConfig: map['highAvailabilityConfig'] == null ? null : (HighAvailabilityConfiguration.fromMap((map['highAvailabilityConfig']! as Map).cast<String, dynamic>())).input(),
+      networkConfiguration: map['networkConfiguration'] == null ? null : (NetworkConfiguration.fromMap((map['networkConfiguration']! as Map).cast<String, dynamic>())).input(),
+      storageConfiguration: map['storageConfiguration'] == null ? null : (StorageConfiguration.fromMap((map['storageConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

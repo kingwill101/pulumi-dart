@@ -42,11 +42,11 @@ class LogicalNetworkInterface {
 
   factory LogicalNetworkInterface.fromMap(Map<String, dynamic> map) {
     return LogicalNetworkInterface(
-      defaultGateway: map['defaultGateway'] == null ? null : (map['defaultGateway'] as bool).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      networkType: map['networkType'] == null ? null : (LogicalNetworkInterfaceNetworkType.fromValue(map['networkType'] as String)).input(),
+      defaultGateway: map['defaultGateway'] == null ? null : (map['defaultGateway']! as bool).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      networkType: map['networkType'] == null ? null : (LogicalNetworkInterfaceNetworkType.fromValue(map['networkType']! as String)).input(),
     );
   }
 }

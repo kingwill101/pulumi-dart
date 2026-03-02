@@ -30,9 +30,9 @@ class AccessPointRootPathPermission {
 
   factory AccessPointRootPathPermission.fromMap(Map<String, dynamic> map) {
     return AccessPointRootPathPermission(
-      ownerGroupId: map['ownerGroupId'] == null ? null : (map['ownerGroupId'] as int).input(),
-      ownerUserId: map['ownerUserId'] == null ? null : (map['ownerUserId'] as int).input(),
-      permission: map['permission'] == null ? null : (map['permission'] as String).input(),
+      ownerGroupId: map['ownerGroupId'] == null ? null : (map['ownerGroupId']! as int).input(),
+      ownerUserId: map['ownerUserId'] == null ? null : (map['ownerUserId']! as int).input(),
+      permission: map['permission'] == null ? null : (map['permission']! as String).input(),
     );
   }
 }

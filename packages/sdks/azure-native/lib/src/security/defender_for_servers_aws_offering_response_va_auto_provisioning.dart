@@ -27,8 +27,8 @@ class DefenderForServersAwsOfferingResponseVaAutoProvisioning {
 
   factory DefenderForServersAwsOfferingResponseVaAutoProvisioning.fromMap(Map<String, dynamic> map) {
     return DefenderForServersAwsOfferingResponseVaAutoProvisioning(
-      configuration: map['configuration'] == null ? null : (DefenderForServersAwsOfferingResponseConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      configuration: map['configuration'] == null ? null : (DefenderForServersAwsOfferingResponseConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

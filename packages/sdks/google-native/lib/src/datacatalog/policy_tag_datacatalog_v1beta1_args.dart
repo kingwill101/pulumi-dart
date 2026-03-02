@@ -46,11 +46,11 @@ class PolicyTagDatacatalogV1beta1Args {
 
   factory PolicyTagDatacatalogV1beta1Args.fromMap(Map<String, dynamic> map) {
     return PolicyTagDatacatalogV1beta1Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      parentPolicyTag: map['parentPolicyTag'] == null ? null : (map['parentPolicyTag'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      parentPolicyTag: map['parentPolicyTag'] == null ? null : (map['parentPolicyTag']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       taxonomyId: (map['taxonomyId'] as String).input(),
     );
   }

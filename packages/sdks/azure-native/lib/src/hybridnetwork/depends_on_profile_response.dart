@@ -31,9 +31,9 @@ class DependsOnProfileResponse {
 
   factory DependsOnProfileResponse.fromMap(Map<String, dynamic> map) {
     return DependsOnProfileResponse(
-      installDependsOn: map['installDependsOn'] == null ? null : ((map['installDependsOn'] as List).cast<String>()).input(),
-      uninstallDependsOn: map['uninstallDependsOn'] == null ? null : ((map['uninstallDependsOn'] as List).cast<String>()).input(),
-      updateDependsOn: map['updateDependsOn'] == null ? null : ((map['updateDependsOn'] as List).cast<String>()).input(),
+      installDependsOn: map['installDependsOn'] == null ? null : ((map['installDependsOn']! as List).cast<String>()).input(),
+      uninstallDependsOn: map['uninstallDependsOn'] == null ? null : ((map['uninstallDependsOn']! as List).cast<String>()).input(),
+      updateDependsOn: map['updateDependsOn'] == null ? null : ((map['updateDependsOn']! as List).cast<String>()).input(),
     );
   }
 }

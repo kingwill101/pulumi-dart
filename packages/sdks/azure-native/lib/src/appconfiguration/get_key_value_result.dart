@@ -80,7 +80,7 @@ class GetKeyValueResult {
   factory GetKeyValueResult.fromMap(Map<String, dynamic> map) {
     return GetKeyValueResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      contentType: map['contentType'] == null ? null : map['contentType'] as String,
+      contentType: map['contentType'] == null ? null : map['contentType']! as String,
       eTag: map['eTag'] as String,
       id: map['id'] as String,
       key: map['key'] as String,
@@ -88,9 +88,9 @@ class GetKeyValueResult {
       lastModified: map['lastModified'] as String,
       locked: map['locked'] as bool,
       name: map['name'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : map['value']! as String,
     );
   }
 }

@@ -29,8 +29,8 @@ class DeliveryWithResourceIdentityResponse {
 
   factory DeliveryWithResourceIdentityResponse.fromMap(Map<String, dynamic> map) {
     return DeliveryWithResourceIdentityResponse(
-      destination: map['destination'] == null ? null : (AzureFunctionEventSubscriptionDestinationResponse.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (EventSubscriptionIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      destination: map['destination'] == null ? null : (AzureFunctionEventSubscriptionDestinationResponse.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (EventSubscriptionIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

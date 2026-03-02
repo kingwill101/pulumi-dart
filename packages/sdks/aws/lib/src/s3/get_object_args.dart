@@ -59,13 +59,13 @@ class GetObjectArgs {
   factory GetObjectArgs.fromMap(Map<String, dynamic> map) {
     return GetObjectArgs(
       bucket: (map['bucket'] as String).input(),
-      checksumMode: map['checksumMode'] == null ? null : (map['checksumMode'] as String).input(),
-      downloadBody: map['downloadBody'] == null ? null : (map['downloadBody'] as String).input(),
+      checksumMode: map['checksumMode'] == null ? null : ((map['checksumMode'] as String).input()).input(),
+      downloadBody: map['downloadBody'] == null ? null : ((map['downloadBody'] as String).input()).input(),
       key: (map['key'] as String).input(),
-      range: map['range'] == null ? null : (map['range'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
+      range: map['range'] == null ? null : ((map['range'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      versionId: map['versionId'] == null ? null : ((map['versionId'] as String).input()).input(),
     );
   }
 }

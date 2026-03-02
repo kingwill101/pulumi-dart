@@ -21,7 +21,7 @@ class AllocationAggregateReservationReservedResourceInfo {
 
   factory AllocationAggregateReservationReservedResourceInfo.fromMap(Map<String, dynamic> map) {
     return AllocationAggregateReservationReservedResourceInfo(
-      accelerator: map['accelerator'] == null ? null : (AllocationAggregateReservationReservedResourceInfoAccelerator.fromMap((map['accelerator'] as Map).cast<String, dynamic>())).input(),
+      accelerator: map['accelerator'] == null ? null : (AllocationAggregateReservationReservedResourceInfoAccelerator.fromMap((map['accelerator']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -31,8 +31,8 @@ class ServiceMeshMeshConfigControlPlaneLog {
   factory ServiceMeshMeshConfigControlPlaneLog.fromMap(Map<String, dynamic> map) {
     return ServiceMeshMeshConfigControlPlaneLog(
       enabled: (map['enabled'] as bool).input(),
-      logTtlInDay: map['logTtlInDay'] == null ? null : (map['logTtlInDay'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      logTtlInDay: map['logTtlInDay'] == null ? null : (map['logTtlInDay']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class CollectionResponse {
 
   factory CollectionResponse.fromMap(Map<String, dynamic> map) {
     return CollectionResponse(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      dataCollectionMode: map['dataCollectionMode'] == null ? null : (map['dataCollectionMode'] as String).input(),
-      dataId: map['dataId'] == null ? null : (map['dataId'] as String).input(),
-      samplingRate: map['samplingRate'] == null ? null : (map['samplingRate'] as double).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      dataCollectionMode: map['dataCollectionMode'] == null ? null : (map['dataCollectionMode']! as String).input(),
+      dataId: map['dataId'] == null ? null : (map['dataId']! as String).input(),
+      samplingRate: map['samplingRate'] == null ? null : (map['samplingRate']! as double).input(),
     );
   }
 }

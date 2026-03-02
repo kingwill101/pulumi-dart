@@ -31,9 +31,9 @@ class FunctionsDeploymentAuthentication {
 
   factory FunctionsDeploymentAuthentication.fromMap(Map<String, dynamic> map) {
     return FunctionsDeploymentAuthentication(
-      storageAccountConnectionStringName: map['storageAccountConnectionStringName'] == null ? null : (map['storageAccountConnectionStringName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : (map['userAssignedIdentityResourceId'] as String).input(),
+      storageAccountConnectionStringName: map['storageAccountConnectionStringName'] == null ? null : (map['storageAccountConnectionStringName']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : (map['userAssignedIdentityResourceId']! as String).input(),
     );
   }
 }

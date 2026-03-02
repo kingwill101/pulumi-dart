@@ -21,7 +21,7 @@ class ImageScanningConfiguration {
 
   factory ImageScanningConfiguration.fromMap(Map<String, dynamic> map) {
     return ImageScanningConfiguration(
-      scanOnPush: map['scanOnPush'] == null ? null : (map['scanOnPush'] as bool).input(),
+      scanOnPush: map['scanOnPush'] == null ? null : (map['scanOnPush']! as bool).input(),
     );
   }
 }

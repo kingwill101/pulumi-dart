@@ -72,17 +72,17 @@ class BmpConfigurationPropertiesResponse {
 
   factory BmpConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BmpConfigurationPropertiesResponse(
-      exportPolicy: map['exportPolicy'] == null ? null : (map['exportPolicy'] as String).input(),
-      monitoredAddressFamilies: map['monitoredAddressFamilies'] == null ? null : ((map['monitoredAddressFamilies'] as List).cast<String>()).input(),
-      monitoredNetworks: map['monitoredNetworks'] == null ? null : ((map['monitoredNetworks'] as List).cast<String>()).input(),
-      scopeResourceId: map['scopeResourceId'] == null ? null : (map['scopeResourceId'] as String).input(),
-      stationConfigurationState: map['stationConfigurationState'] == null ? null : (map['stationConfigurationState'] as String).input(),
-      stationConnectionMode: map['stationConnectionMode'] == null ? null : (map['stationConnectionMode'] as String).input(),
-      stationConnectionProperties: map['stationConnectionProperties'] == null ? null : (StationConnectionPropertiesResponse.fromMap((map['stationConnectionProperties'] as Map).cast<String, dynamic>())).input(),
-      stationIp: map['stationIp'] == null ? null : (map['stationIp'] as String).input(),
-      stationName: map['stationName'] == null ? null : (map['stationName'] as String).input(),
-      stationNetwork: map['stationNetwork'] == null ? null : (map['stationNetwork'] as String).input(),
-      stationPort: map['stationPort'] == null ? null : (map['stationPort'] as int).input(),
+      exportPolicy: map['exportPolicy'] == null ? null : (map['exportPolicy']! as String).input(),
+      monitoredAddressFamilies: map['monitoredAddressFamilies'] == null ? null : ((map['monitoredAddressFamilies']! as List).cast<String>()).input(),
+      monitoredNetworks: map['monitoredNetworks'] == null ? null : ((map['monitoredNetworks']! as List).cast<String>()).input(),
+      scopeResourceId: map['scopeResourceId'] == null ? null : (map['scopeResourceId']! as String).input(),
+      stationConfigurationState: map['stationConfigurationState'] == null ? null : (map['stationConfigurationState']! as String).input(),
+      stationConnectionMode: map['stationConnectionMode'] == null ? null : (map['stationConnectionMode']! as String).input(),
+      stationConnectionProperties: map['stationConnectionProperties'] == null ? null : (StationConnectionPropertiesResponse.fromMap((map['stationConnectionProperties']! as Map).cast<String, dynamic>())).input(),
+      stationIp: map['stationIp'] == null ? null : (map['stationIp']! as String).input(),
+      stationName: map['stationName'] == null ? null : (map['stationName']! as String).input(),
+      stationNetwork: map['stationNetwork'] == null ? null : (map['stationNetwork']! as String).input(),
+      stationPort: map['stationPort'] == null ? null : (map['stationPort']! as int).input(),
     );
   }
 }

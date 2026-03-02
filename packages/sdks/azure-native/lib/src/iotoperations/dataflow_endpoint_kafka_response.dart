@@ -70,15 +70,15 @@ class DataflowEndpointKafkaResponse {
   factory DataflowEndpointKafkaResponse.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointKafkaResponse(
       authentication: (DataflowEndpointKafkaAuthenticationResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      batching: map['batching'] == null ? null : (DataflowEndpointKafkaBatchingResponse.fromMap((map['batching'] as Map).cast<String, dynamic>())).input(),
-      cloudEventAttributes: map['cloudEventAttributes'] == null ? null : (map['cloudEventAttributes'] as String).input(),
-      compression: map['compression'] == null ? null : (map['compression'] as String).input(),
-      consumerGroupId: map['consumerGroupId'] == null ? null : (map['consumerGroupId'] as String).input(),
-      copyMqttProperties: map['copyMqttProperties'] == null ? null : (map['copyMqttProperties'] as String).input(),
+      batching: map['batching'] == null ? null : (DataflowEndpointKafkaBatchingResponse.fromMap((map['batching']! as Map).cast<String, dynamic>())).input(),
+      cloudEventAttributes: map['cloudEventAttributes'] == null ? null : (map['cloudEventAttributes']! as String).input(),
+      compression: map['compression'] == null ? null : (map['compression']! as String).input(),
+      consumerGroupId: map['consumerGroupId'] == null ? null : (map['consumerGroupId']! as String).input(),
+      copyMqttProperties: map['copyMqttProperties'] == null ? null : (map['copyMqttProperties']! as String).input(),
       host: (map['host'] as String).input(),
-      kafkaAcks: map['kafkaAcks'] == null ? null : (map['kafkaAcks'] as String).input(),
-      partitionStrategy: map['partitionStrategy'] == null ? null : (map['partitionStrategy'] as String).input(),
-      tls: map['tls'] == null ? null : (TlsPropertiesResponse.fromMap((map['tls'] as Map).cast<String, dynamic>())).input(),
+      kafkaAcks: map['kafkaAcks'] == null ? null : (map['kafkaAcks']! as String).input(),
+      partitionStrategy: map['partitionStrategy'] == null ? null : (map['partitionStrategy']! as String).input(),
+      tls: map['tls'] == null ? null : (TlsPropertiesResponse.fromMap((map['tls']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

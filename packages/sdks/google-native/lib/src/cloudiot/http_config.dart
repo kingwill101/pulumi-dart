@@ -22,7 +22,7 @@ class HttpConfig {
 
   factory HttpConfig.fromMap(Map<String, dynamic> map) {
     return HttpConfig(
-      httpEnabledState: map['httpEnabledState'] == null ? null : (HttpConfigHttpEnabledState.fromValue(map['httpEnabledState'] as String)).input(),
+      httpEnabledState: map['httpEnabledState'] == null ? null : (HttpConfigHttpEnabledState.fromValue(map['httpEnabledState']! as String)).input(),
     );
   }
 }

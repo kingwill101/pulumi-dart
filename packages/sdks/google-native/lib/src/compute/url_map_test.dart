@@ -62,15 +62,15 @@ class UrlMapTest {
 
   factory UrlMapTest.fromMap(Map<String, dynamic> map) {
     return UrlMapTest(
-      backendServiceWeight: map['backendServiceWeight'] == null ? null : (map['backendServiceWeight'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expectedOutputUrl: map['expectedOutputUrl'] == null ? null : (map['expectedOutputUrl'] as String).input(),
-      expectedRedirectResponseCode: map['expectedRedirectResponseCode'] == null ? null : (map['expectedRedirectResponseCode'] as int).input(),
-      expectedUrlRedirect: map['expectedUrlRedirect'] == null ? null : (map['expectedUrlRedirect'] as String).input(),
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<UrlMapTestHeader>(map['headers'], (value) => UrlMapTestHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      backendServiceWeight: map['backendServiceWeight'] == null ? null : (map['backendServiceWeight']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      expectedOutputUrl: map['expectedOutputUrl'] == null ? null : (map['expectedOutputUrl']! as String).input(),
+      expectedRedirectResponseCode: map['expectedRedirectResponseCode'] == null ? null : (map['expectedRedirectResponseCode']! as int).input(),
+      expectedUrlRedirect: map['expectedUrlRedirect'] == null ? null : (map['expectedUrlRedirect']! as String).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<UrlMapTestHeader>(map['headers']!, (value) => UrlMapTestHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

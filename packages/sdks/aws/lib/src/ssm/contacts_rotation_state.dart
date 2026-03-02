@@ -64,15 +64,15 @@ class ContactsRotationState {
 
   factory ContactsRotationState.fromMap(Map<String, dynamic> map) {
     return ContactsRotationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      contactIds: map['contactIds'] == null ? null : ((map['contactIds'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recurrence: map['recurrence'] == null ? null : (ContactsRotationRecurrence.fromMap((map['recurrence'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeZoneId: map['timeZoneId'] == null ? null : (map['timeZoneId'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      contactIds: map['contactIds'] == null ? null : (((map['contactIds'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      recurrence: map['recurrence'] == null ? null : ((ContactsRotationRecurrence.fromMap((map['recurrence']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      startTime: map['startTime'] == null ? null : ((map['startTime'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeZoneId: map['timeZoneId'] == null ? null : ((map['timeZoneId'] as String).input()).input(),
     );
   }
 }

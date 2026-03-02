@@ -24,8 +24,8 @@ class LocationResponse {
 
   factory LocationResponse.fromMap(Map<String, dynamic> map) {
     return LocationResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

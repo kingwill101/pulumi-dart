@@ -46,12 +46,12 @@ class TemplateState {
 
   factory TemplateState.fromMap(Map<String, dynamic> map) {
     return TemplateState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      html: map['html'] == null ? null : (map['html'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      html: map['html'] == null ? null : ((map['html'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      subject: map['subject'] == null ? null : ((map['subject'] as String).input()).input(),
+      text: map['text'] == null ? null : ((map['text'] as String).input()).input(),
     );
   }
 }

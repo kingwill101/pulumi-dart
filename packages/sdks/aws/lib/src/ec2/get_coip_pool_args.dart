@@ -48,11 +48,11 @@ class GetCoipPoolArgs {
 
   factory GetCoipPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetCoipPoolArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetCoipPoolFilter>(map['filters'], (value) => GetCoipPoolFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      localGatewayRouteTableId: map['localGatewayRouteTableId'] == null ? null : (map['localGatewayRouteTableId'] as String).input(),
-      poolId: map['poolId'] == null ? null : (map['poolId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetCoipPoolFilter>(map['filters']!, (value) => GetCoipPoolFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      localGatewayRouteTableId: map['localGatewayRouteTableId'] == null ? null : ((map['localGatewayRouteTableId'] as String).input()).input(),
+      poolId: map['poolId'] == null ? null : ((map['poolId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

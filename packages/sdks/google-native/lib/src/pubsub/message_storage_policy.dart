@@ -26,8 +26,8 @@ class MessageStoragePolicy {
 
   factory MessageStoragePolicy.fromMap(Map<String, dynamic> map) {
     return MessageStoragePolicy(
-      allowedPersistenceRegions: map['allowedPersistenceRegions'] == null ? null : ((map['allowedPersistenceRegions'] as List).cast<String>()).input(),
-      enforceInTransit: map['enforceInTransit'] == null ? null : (map['enforceInTransit'] as bool).input(),
+      allowedPersistenceRegions: map['allowedPersistenceRegions'] == null ? null : ((map['allowedPersistenceRegions']! as List).cast<String>()).input(),
+      enforceInTransit: map['enforceInTransit'] == null ? null : (map['enforceInTransit']! as bool).input(),
     );
   }
 }

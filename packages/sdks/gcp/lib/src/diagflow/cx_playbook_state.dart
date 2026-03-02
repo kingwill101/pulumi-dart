@@ -90,19 +90,19 @@ class CxPlaybookState {
 
   factory CxPlaybookState.fromMap(Map<String, dynamic> map) {
     return CxPlaybookState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      goal: map['goal'] == null ? null : (map['goal'] as String).input(),
-      instruction: map['instruction'] == null ? null : (CxPlaybookInstruction.fromMap((map['instruction'] as Map).cast<String, dynamic>())).input(),
-      llmModelSettings: map['llmModelSettings'] == null ? null : (CxPlaybookLlmModelSettings.fromMap((map['llmModelSettings'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      playbookType: map['playbookType'] == null ? null : (map['playbookType'] as String).input(),
-      referencedFlows: map['referencedFlows'] == null ? null : ((map['referencedFlows'] as List).cast<String>()).input(),
-      referencedPlaybooks: map['referencedPlaybooks'] == null ? null : ((map['referencedPlaybooks'] as List).cast<String>()).input(),
-      referencedTools: map['referencedTools'] == null ? null : ((map['referencedTools'] as List).cast<String>()).input(),
-      tokenCount: map['tokenCount'] == null ? null : (map['tokenCount'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      goal: map['goal'] == null ? null : (map['goal']! as String).input(),
+      instruction: map['instruction'] == null ? null : (CxPlaybookInstruction.fromMap((map['instruction']! as Map).cast<String, dynamic>())).input(),
+      llmModelSettings: map['llmModelSettings'] == null ? null : (CxPlaybookLlmModelSettings.fromMap((map['llmModelSettings']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      playbookType: map['playbookType'] == null ? null : (map['playbookType']! as String).input(),
+      referencedFlows: map['referencedFlows'] == null ? null : ((map['referencedFlows']! as List).cast<String>()).input(),
+      referencedPlaybooks: map['referencedPlaybooks'] == null ? null : ((map['referencedPlaybooks']! as List).cast<String>()).input(),
+      referencedTools: map['referencedTools'] == null ? null : ((map['referencedTools']! as List).cast<String>()).input(),
+      tokenCount: map['tokenCount'] == null ? null : (map['tokenCount']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

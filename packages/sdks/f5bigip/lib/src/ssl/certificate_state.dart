@@ -51,13 +51,13 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      fullPath: map['fullPath'] == null ? null : (map['fullPath'] as String).input(),
-      issuerCert: map['issuerCert'] == null ? null : (map['issuerCert'] as String).input(),
-      monitoringType: map['monitoringType'] == null ? null : (map['monitoringType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ocsp: map['ocsp'] == null ? null : (map['ocsp'] as String).input(),
-      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      fullPath: map['fullPath'] == null ? null : (map['fullPath']! as String).input(),
+      issuerCert: map['issuerCert'] == null ? null : (map['issuerCert']! as String).input(),
+      monitoringType: map['monitoringType'] == null ? null : (map['monitoringType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ocsp: map['ocsp'] == null ? null : (map['ocsp']! as String).input(),
+      partition: map['partition'] == null ? null : (map['partition']! as String).input(),
     );
   }
 }

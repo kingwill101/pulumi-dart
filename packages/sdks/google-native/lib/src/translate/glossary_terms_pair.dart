@@ -27,8 +27,8 @@ class GlossaryTermsPair {
 
   factory GlossaryTermsPair.fromMap(Map<String, dynamic> map) {
     return GlossaryTermsPair(
-      sourceTerm: map['sourceTerm'] == null ? null : (GlossaryTerm.fromMap((map['sourceTerm'] as Map).cast<String, dynamic>())).input(),
-      targetTerm: map['targetTerm'] == null ? null : (GlossaryTerm.fromMap((map['targetTerm'] as Map).cast<String, dynamic>())).input(),
+      sourceTerm: map['sourceTerm'] == null ? null : (GlossaryTerm.fromMap((map['sourceTerm']! as Map).cast<String, dynamic>())).input(),
+      targetTerm: map['targetTerm'] == null ? null : (GlossaryTerm.fromMap((map['targetTerm']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

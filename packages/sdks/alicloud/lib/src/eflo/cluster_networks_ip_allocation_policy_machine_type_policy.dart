@@ -25,8 +25,8 @@ class ClusterNetworksIpAllocationPolicyMachineTypePolicy {
 
   factory ClusterNetworksIpAllocationPolicyMachineTypePolicy.fromMap(Map<String, dynamic> map) {
     return ClusterNetworksIpAllocationPolicyMachineTypePolicy(
-      bonds: map['bonds'] == null ? null : (pulumi.Input.decodeList<ClusterNetworksIpAllocationPolicyMachineTypePolicyBond>(map['bonds'], (value) => ClusterNetworksIpAllocationPolicyMachineTypePolicyBond.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
+      bonds: map['bonds'] == null ? null : (pulumi.Input.decodeList<ClusterNetworksIpAllocationPolicyMachineTypePolicyBond>(map['bonds']!, (value) => ClusterNetworksIpAllocationPolicyMachineTypePolicyBond.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
     );
   }
 }

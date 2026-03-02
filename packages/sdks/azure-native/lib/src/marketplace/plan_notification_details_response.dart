@@ -26,8 +26,8 @@ class PlanNotificationDetailsResponse {
 
   factory PlanNotificationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return PlanNotificationDetailsResponse(
-      planDisplayName: map['planDisplayName'] == null ? null : (map['planDisplayName'] as String).input(),
-      planId: map['planId'] == null ? null : (map['planId'] as String).input(),
+      planDisplayName: map['planDisplayName'] == null ? null : (map['planDisplayName']! as String).input(),
+      planId: map['planId'] == null ? null : (map['planId']! as String).input(),
     );
   }
 }

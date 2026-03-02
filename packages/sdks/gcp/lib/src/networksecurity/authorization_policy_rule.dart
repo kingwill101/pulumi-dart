@@ -31,8 +31,8 @@ class AuthorizationPolicyRule {
 
   factory AuthorizationPolicyRule.fromMap(Map<String, dynamic> map) {
     return AuthorizationPolicyRule(
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<AuthorizationPolicyRuleDestination>(map['destinations'], (value) => AuthorizationPolicyRuleDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<AuthorizationPolicyRuleSource>(map['sources'], (value) => AuthorizationPolicyRuleSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<AuthorizationPolicyRuleDestination>(map['destinations']!, (value) => AuthorizationPolicyRuleDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<AuthorizationPolicyRuleSource>(map['sources']!, (value) => AuthorizationPolicyRuleSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

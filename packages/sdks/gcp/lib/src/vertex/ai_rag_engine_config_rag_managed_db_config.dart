@@ -32,9 +32,9 @@ class AiRagEngineConfigRagManagedDbConfig {
 
   factory AiRagEngineConfigRagManagedDbConfig.fromMap(Map<String, dynamic> map) {
     return AiRagEngineConfigRagManagedDbConfig(
-      basic: map['basic'] == null ? null : ((map['basic'] as Map).cast<String, dynamic>()).input(),
-      scaled: map['scaled'] == null ? null : ((map['scaled'] as Map).cast<String, dynamic>()).input(),
-      unprovisioned: map['unprovisioned'] == null ? null : ((map['unprovisioned'] as Map).cast<String, dynamic>()).input(),
+      basic: map['basic'] == null ? null : ((map['basic']! as Map).cast<String, dynamic>()).input(),
+      scaled: map['scaled'] == null ? null : ((map['scaled']! as Map).cast<String, dynamic>()).input(),
+      unprovisioned: map['unprovisioned'] == null ? null : ((map['unprovisioned']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

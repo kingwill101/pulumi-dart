@@ -44,11 +44,11 @@ class GetBgpPeersArgs {
 
   factory GetBgpPeersArgs.fromMap(Map<String, dynamic> map) {
     return GetBgpPeersArgs(
-      bgpGroupId: map['bgpGroupId'] == null ? null : (map['bgpGroupId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      routerId: map['routerId'] == null ? null : (map['routerId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      bgpGroupId: map['bgpGroupId'] == null ? null : (map['bgpGroupId']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      routerId: map['routerId'] == null ? null : (map['routerId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

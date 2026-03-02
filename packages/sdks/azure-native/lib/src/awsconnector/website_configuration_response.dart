@@ -38,10 +38,10 @@ class WebsiteConfigurationResponse {
 
   factory WebsiteConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return WebsiteConfigurationResponse(
-      errorDocument: map['errorDocument'] == null ? null : (map['errorDocument'] as String).input(),
-      indexDocument: map['indexDocument'] == null ? null : (map['indexDocument'] as String).input(),
-      redirectAllRequestsTo: map['redirectAllRequestsTo'] == null ? null : (RedirectAllRequestsToResponse.fromMap((map['redirectAllRequestsTo'] as Map).cast<String, dynamic>())).input(),
-      routingRules: map['routingRules'] == null ? null : (pulumi.Input.decodeList<RoutingRuleResponse>(map['routingRules'], (value) => RoutingRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errorDocument: map['errorDocument'] == null ? null : (map['errorDocument']! as String).input(),
+      indexDocument: map['indexDocument'] == null ? null : (map['indexDocument']! as String).input(),
+      redirectAllRequestsTo: map['redirectAllRequestsTo'] == null ? null : (RedirectAllRequestsToResponse.fromMap((map['redirectAllRequestsTo']! as Map).cast<String, dynamic>())).input(),
+      routingRules: map['routingRules'] == null ? null : (pulumi.Input.decodeList<RoutingRuleResponse>(map['routingRules']!, (value) => RoutingRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

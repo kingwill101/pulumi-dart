@@ -21,7 +21,7 @@ class IpamStateEnumValue {
 
   factory IpamStateEnumValue.fromMap(Map<String, dynamic> map) {
     return IpamStateEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

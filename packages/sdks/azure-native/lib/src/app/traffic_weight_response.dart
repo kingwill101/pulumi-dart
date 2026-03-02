@@ -36,10 +36,10 @@ class TrafficWeightResponse {
 
   factory TrafficWeightResponse.fromMap(Map<String, dynamic> map) {
     return TrafficWeightResponse(
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      latestRevision: map['latestRevision'] == null ? null : (map['latestRevision'] as bool).input(),
-      revisionName: map['revisionName'] == null ? null : (map['revisionName'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      latestRevision: map['latestRevision'] == null ? null : (map['latestRevision']! as bool).input(),
+      revisionName: map['revisionName'] == null ? null : (map['revisionName']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }
